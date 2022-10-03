@@ -414,7 +414,7 @@ function DialogInventoryBuild(C, Offset, redrawPreviews = false) {
  * @param {Item} [SourceItem] - The source of the extended menu
  * @returns {void} - Nothing
  */
- function DialogExtendItem(Item, SourceItem) {
+function DialogExtendItem(Item, SourceItem) {
 	const C = CharacterGetCurrent();
 	if (InventoryBlockedOrLimited(C, Item)) return;
 	StruggleProgress = -1;
@@ -431,7 +431,7 @@ function DialogInventoryBuild(C, Offset, redrawPreviews = false) {
  * item's asset group name and the item's name and tries to call that.
  * @returns {boolean} - Returns true, if an item specific exit function was called, false otherwise
  */
- function DialogLeaveFocusItem() {
+function DialogLeaveFocusItem() {
 	if (DialogFocusItem != null) {
 		if (DialogFocusItem.Asset.Extended) {
 			ExtendedItemExit();
@@ -446,4 +446,16 @@ function DialogInventoryBuild(C, Offset, redrawPreviews = false) {
 		DialogFocusItem = null;
 	}
 	return false;
+}
+
+/**
+ * Returns a specific reputation value for the player
+ * @param {string} RepType - Type/name of the reputation to get the value of.
+ * @returns {number} - Returns the value of the reputation. It can range from 100 to -100, and it defaults to 0 if the player never earned this type of reputation before.
+ */
+function ReputationGet(RepType) {
+	return 0;
+}
+/** Smile and wave */
+function DialogSetReputation(a, b) {
 }

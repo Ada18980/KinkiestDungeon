@@ -586,7 +586,7 @@ function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc) {
 		KDOrigDistraction = Math.max(0, Math.floor(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * 100));
 	}
 }
-function KinkyDungeonChangeStamina(Amount, NoFloater, Pause) {
+function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow) {
 	KinkyDungeonStatStamina += Amount;
 	KinkyDungeonStatStamina = Math.min(Math.max(0, KinkyDungeonStatStamina), KinkyDungeonStatStaminaMax);
 	if (!NoFloater && Math.abs(KDOrigStamina - Math.floor(KinkyDungeonStatStamina * 10)) >= 0.99) {
@@ -596,7 +596,7 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause) {
 	if (Pause) {
 		if (!(KDGameData.StaminaPause > Pause))
 			KDGameData.StaminaPause = Pause;
-		if (!(KDGameData.StaminaSlow > 5))
+		if (!(KDGameData.StaminaSlow > 5) && !NoSlow)
 			KDGameData.StaminaSlow = 5;
 	}
 }
