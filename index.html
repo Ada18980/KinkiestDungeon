@@ -30,10 +30,6 @@
 <script src="Scripts/Mouse.js"></script>
 <script src="Scripts/Drawing.js"></script>
 <script src="Scripts/Timer.js"></script>
-<script src="Scripts/AfkTimer.js"></script>
-<script src="Scripts/GameLog.js"></script>
-<script src="Scripts/Reputation.js"></script>
-<script src="Scripts/Skill.js"></script>
 <script src="Scripts/Character.js"></script>
 <script src="Scripts/CharacterName.js"></script>
 <script src="Scripts/ColorPicker.js"></script>
@@ -41,11 +37,9 @@
 <script src="Scripts/Speech.js"></script>
 <script src="Scripts/Text.js"></script>
 <script src="Scripts/Inventory.js"></script>
-<script src="Scripts/Import.js"></script>
 <script src="Scripts/Asset.js"></script>
 <script src="Scripts/Audio.js"></script>
 <script src="Scripts/MiniGame.js"></script>
-<script src="Scripts/NPC.js"></script>
 <script src="Scripts/Validation.js"></script>
 <script src="Scripts/Server.js"></script>
 <script src="Scripts/Element.js"></script>
@@ -283,7 +277,6 @@ window.onload = function() {
 	Character = [];
 	CharacterNextId = 1;
 	CharacterReset(0, "Female3DCG");
-	CharacterLoadCSVDialog(Player);
 
 	Player.ArousalSettings = {};
 	Player.ArousalSettings.VFXFilter = "VFXFilterHeavy";
@@ -292,6 +285,8 @@ window.onload = function() {
 	Player.AudioSettings = {};
 	Player.AudioSettings.Volume = 1;
 	Player.ImmersionSettings = {};
+
+	CharacterLoadCSVDialog(Player);
 
 	CharacterAppearanceSetDefault(Player);
 	CurrentCharacter = null;

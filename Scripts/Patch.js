@@ -50,7 +50,6 @@ var DialogSortOrder = {
 var DialogSelfMenuSelected = null;
 var DialogLeaveDueToItem = false; // This allows dynamic items to call DialogLeave() without crashing the game
 var DialogLockMenu = false;
-var DialogCraftingMenu = false;
 var DialogLentLockpicks = false;
 var DialogGamingPreviousRoom = "";
 var DialogGamingPreviousModule = "";
@@ -165,7 +164,6 @@ function DialogMenuButtonBuild(C) {
 	}
 
 	// Pushes all valid main buttons, based on if the player is restrained, has a blocked group, has the key, etc.
-	const IsItemLocked = InventoryItemHasEffect(Item, "Lock", true);
 	const IsGroupBlocked = InventoryGroupIsBlocked(C);
 
 	if ((DialogInventory != null) && (DialogInventory.length > 12) && ((Player.CanInteract() && !IsGroupBlocked) || DialogItemPermissionMode)) {
@@ -233,22 +231,6 @@ function DialogInventoryStringified(C) {
 function DialogInventoryAdd(C, item, isWorn, sortOrder) {
 	if (!DialogItemPermissionMode) {
 		const asset = item.Asset;
-
-		// Make sure we do not add owner/lover only items for invalid characters, owner/lover locks can be applied on the player by the player for self-bondage
-		if (asset.OwnerOnly && !isWorn && !C.IsOwnedByPlayer())
-			if ((C.ID != 0) || ((C.Owner == "") && (C.Ownership == null)) || !asset.IsLock || ((C.ID == 0) && LogQuery("BlockOwnerLockSelf", "OwnerRule")))
-				return;
-		if (asset.LoverOnly && !isWorn && !C.IsLoverOfPlayer()) {
-			if (!asset.IsLock || C.GetLoversNumbers(true).length == 0) return;
-			if (C.ID == 0) {
-				if (LogQuery("BlockLoverLockSelf", "LoverRule")) return;
-			}
-			else if (!C.IsOwnedByPlayer() || LogQueryRemote(C, "BlockLoverLockOwner", "LoverRule")) return;
-		}
-
-		// Do not show keys if they are in the deposit
-		if (LogQuery("KeyDeposit", "Cell") && InventoryIsKey(item)) return;
-
 		// Make sure we do not duplicate the item in the list, including crafted items
 		for (let I = 0; I < DialogInventory.length; I++)
 			if ((DialogInventory[I].Asset.Group.Name == asset.Group.Name) && (DialogInventory[I].Asset.Name == asset.Name)) {
@@ -289,7 +271,7 @@ function DialogGetFavoriteStateDetails(C, asset, type = null) {
  * @param {string} KeyWord - The key word to search for
  * @returns {string}
  */
- function DialogFindPlayer(KeyWord) {
+function DialogFindPlayer(KeyWord) {
 	const res = PlayerDialog.get(KeyWord);
 	return res !== undefined ? res : `MISSING PLAYER DIALOG: ${KeyWord}`;
 }
@@ -337,6 +319,7 @@ function DialogInventoryCreateItem(C, item, isWorn, sortOrder) {
 	const inventoryItem = {
 		Asset: asset,
 		Worn: isWorn,
+		// @ts-ignore
 		Icons: icons,
 		SortOrder: sortOrder.toString() + asset.Description,
 		Hidden: CharacterAppearanceItemIsHidden(asset.Name, asset.Group.Name),
@@ -421,4 +404,46 @@ function DialogInventoryBuild(C, Offset, redrawPreviews = false) {
 		const redraw = redrawPreviews || (DialogInventoryBefore !== DialogInventoryAfter);
 		AppearancePreviewBuild(C, redraw);
 	}
+}
+
+
+/**
+ * Shows the extended item menue for a given item, if possible.
+ * Therefore a dynamic function name is created and then called.
+ * @param {Item} Item - The item the extended menu should be shown for
+ * @param {Item} [SourceItem] - The source of the extended menu
+ * @returns {void} - Nothing
+ */
+ function DialogExtendItem(Item, SourceItem) {
+	const C = CharacterGetCurrent();
+	if (InventoryBlockedOrLimited(C, Item)) return;
+	StruggleProgress = -1;
+	DialogLockMenu = false;
+	DialogColor = null;
+	DialogFocusItem = Item;
+	DialogFocusSourceItem = SourceItem;
+	CommonDynamicFunction("Inventory" + Item.Asset.Group.Name + Item.Asset.Name + "Load()");
+}
+
+
+/**
+ * Leaves the item menu of the focused item. Constructs a function name from the
+ * item's asset group name and the item's name and tries to call that.
+ * @returns {boolean} - Returns true, if an item specific exit function was called, false otherwise
+ */
+ function DialogLeaveFocusItem() {
+	if (DialogFocusItem != null) {
+		if (DialogFocusItem.Asset.Extended) {
+			ExtendedItemExit();
+		}
+
+		var funcName = "Inventory" + DialogFocusItem.Asset.Group.Name + DialogFocusItem.Asset.Name + "Exit";
+		if (typeof window[funcName] === "function") {
+			window[funcName]();
+			DialogFocusItem = null;
+			return true;
+		}
+		DialogFocusItem = null;
+	}
+	return false;
 }

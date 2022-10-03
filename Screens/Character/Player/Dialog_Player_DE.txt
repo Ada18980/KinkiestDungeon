@@ -1,0 +1,1031 @@
+###_NPC
+Select an item to use
+Wähle einen Gegenstand aus
+Cannot use on yourself
+Nicht an dir selbst anwendbar
+Remove some clothes first
+Vorher etwas Kleidung entfernen
+Remove the suspension first
+Vorher das Hängeseil entfernen
+Must be standing and not suspended first.
+Muss aufrecht stehen und nicht von der Decke hängen.
+Cannot be used when mounted.
+Muss zuerst vom Gerät absteigen.
+Cannot be used with legs spreader.
+Kann nicht mit der Spreizstange kombiniert werden.
+Must remove chastity first.
+Vorher Keuschheitsvorrichtung entfernen.
+Remove the chain to the floor first
+Vorher die Kette zum Boden entfernen
+A collar must be fitted first to attach accessories to.
+Für Zubehör muss zunächst ein Halsband angelegt werden.
+Must be collared and not suspended first.
+Muss ein Halsband tragen und auf festem Boden sein.
+Must be collared and not suspended/mounted first.
+Muss ein Halsband tragen und darf nicht hängen/reiten.
+Legs cannot open.
+Die Beine lassen sich nicht spreizen.
+Must free feet frist.
+Vorher die Füße befreien.
+Must remove shackles first.
+Vorher die Ketten entfernen.
+Cancel
+Abbrechen
+Back to character
+Zurück zum Charakter
+View next items
+Weitere Items
+Remove the item
+Gegenstand entfernen
+Use this item
+Gegenstand benutzen
+Try to struggle out
+Entfesselung versuchen
+Dismount
+Absteigen
+Escape from the item
+Ausbrechen
+Use a lock
+Schloss anbringen
+Unlock the item
+Gegenstand aufschließen
+Inspect the lock
+Das Schloss untersuchen
+Use your remote
+Fernbedienung verwenden
+Exit Permission Mode
+Berechtigungsmodus verlassen
+Edit Item Permissions
+Item-Berechtigungen bearbeiten
+Use the Butt Plug's pump
+Analpumpe benutzen
+Color of next item
+Farbe des nächsten Gegenstands
+Use this color
+Diese Farbe verwenden
+Default color
+Standard-Farbe
+Challenge:
+Stufe:
+Swapping...
+Auswechseln...
+Struggling...
+Befreien...
+Unlocking...
+Aufschließen...
+Removing...
+Entfernen...
+Dismounting...
+Absteigen...
+Escaping...
+Ausbrechen...
+Locking...
+Abschließen...
+Adding...
+Hinzufügen...
+Impossible to escape!
+Entkommen unmöglich!
+Struggle to free yourself
+Zappeln, um dich zu befreien
+You'll need help to get out
+Du brauchst Hilfe zum Befreien
+You can unlock yourself
+Du kannst dich befreien
+You cannot unlock yourself
+Du kannst dich nicht befreien
+This zone is out of reach from another item
+Diese Zone wird von einem anderen Objekt versperrt
+Another item is blocking access to this lock
+Ein anderes Item blockiert den Zugriff auf dieses Schloss
+You cannot access your items
+Du kommst nicht an deine Items
+Click here to speed up the progress
+Klicke hier zum Beschleunigen
+Alternate keys A and S to speed up
+Abwechselnd A und S zum Beschleunigen drücken
+Pump gag level: Empty
+Pumpknebel: Leer
+Pump gag level: Light
+Pumpknebel: Leicht gefüllt
+Pump gag level: Inflated
+Pumpknebel: Aufgeblasen
+Pump gag level: Bloated
+Pumpknebel: Aufgebläht
+Pump gag level: Full mouth
+Pumpknebel: Mund ausfüllend
+Inflation level: Empty
+Aufblasstufe: Leer
+Inflation level: Light
+Aufblasstufe: Leicht gefüllt
+Inflation level: Inflated
+Aufblasstufe: Aufgeblasen
+Inflation level: Bloated
+Aufblasstufe: Aufgebläht
+Inflation level: Max
+Aufblasstufe: Maximal
+Suction Cup level: Loose
+Saugstärke: Locker
+Suction Cup level: Light
+Saugstärke: Leicht
+Suction Cup level: Medium
+Saugstärke: Mittel
+Suction Cup level: Heavy
+Saugstärke: Stark
+Suction Cup level: Max
+Saugstärke: Maximal
+Deflate it
+Luft ablassen
+Pump it
+Aufpumpen
+pumps
+pumpt
+deflates
+reduziert
+plug
+Stöpsel
+gag
+Knebel
+'s
+
+Heads
+Kopf
+Tails
+Zahl
+her
+sich selbst
+SourceCharacter kneels down
+SourceCharacter kniet sich hin
+SourceCharacter stands up
+SourceCharacter steht auf
+Delete
+Löschen
+Confirm
+Bestätigen
+Beep
+Biep
+Beep from
+Biep von
+Beep from your owner in your private room
+Beip von deiner Besitzerin im Privatzimmer
+Sent at
+Gesendet um
+Received at
+Erhalten um
+<i>Your private room</i>
+<i>Dein Privatzimmer</i>
+in room
+im Raum
+<i>Private room</i>
+<i>Privater Raum</i>
+(As you enter the luxurious hallway, a maid comes to greet you.)  Welcome to the Bondage Club, is this your first visit?
+(Als du die luxoriöse Eingangshalle betrittst, wirst du von einem Hausmädchen begrüßt.) Willkommen im Bondage-Club, bist du zum ersten Mal hier?
+SourceCharacter is offering you to start a trial period as her submissive.  Click on her and manage your relationship to accept, don't do anything to refuse.
+SourceCharacter bietet dir eine Probezeit als ihre Sklavin an. Um dies zu akzeptieren, klicke sie an und bearbeite eure Beziehung. Zum Ablehnen musst du nichts tun.
+The Bondage Club is pleased to announce that SourceCharacter is starting a 7 days minimum trial period as a submissive.
+Es ist dem Bondage-Club eine Freude, die mindestens siebentägige Probezeit von SourceCharacter als Untergebene zu verkünden.
+SourceCharacter has prepared a great collaring ceremony.  A maid brings a slave collar, which her submissive must consent to wear.
+SourceCharacter hat eine fabelhafte Halsband-Zeremonie vorbereitet. Ein Hausmädchen bringt ein Sklavinnen-Halsband, das die Untergebene freien Willens annehmen muss.
+The Bondage Club is proud to announce that SourceCharacter is now fully collared.  Her fate is in her Mistress hands.
+Der Bondage-Club verkündet stolz, dass SourceCharacter nun ein ordnungsgemäßes Halsband trägt. Ihr Schicksal liegt in den Händen ihrer Herrin.
+Your owner is now allowing you to access your wardrobe and change clothes.
+Deine Besitzerin erlaubt dir nun, auf deinen Kleiderschrank zuzugreifen und dich umzuziehen.
+Your owner has blocked your wardrobe access for an hour.  You won't be able to change clothes.
+Deine Besitzerin hat deinen Kleiderschrank für eine Stunde gesperrt. Du kannst deine Kleidung nicht wechseln.
+Your owner has blocked your wardrobe access for a day.  You won't be able to change clothes.
+Deine Besitzerin hat deinen Kleiderschrank für einen Tag gesperrt. Du kannst deine Kleidung nicht wechseln.
+Your owner has blocked your wardrobe access for a week.  You won't be able to change clothes.
+Deine Besitzerin hat deinen Kleiderschrank für eine Woche gesperrt. Du kannst deine Kleidung nicht wechseln.
+Your owner has blocked your wardrobe access.  You won't be able to change clothes until that rule is revoked.
+Deine Besitzerin hat deinen Kleiderschrank gesperrt. Du kannst deine Kleidung nicht wechseln, bis diese Regel aufgehoben ist.
+Your owner is now allowing you to whisper to other members when she's there.
+Deine Besitzerin erlaubt dir nun, mit anderen Mitgliedern zu flüstern, wenn sie da ist.
+Your owner is now preventing you from whispering to other members when she's there.
+Deine Besitzerin verbietet dir nun, mit anderen Mitgliedern zu flüstern, wenn sie da ist.
+Your owner is now allowing you to have keys.  You can buy keys from the club shop.
+Deine Besitzerin erlaubt dir nun, Schlüssel zu besitzen. Du kannst Schlüssel im Clubladen kaufen.
+Your owner has confiscated your keys.  All your regular keys are lost.
+Deine Besitzerin hat deine Schlüssel beschlagnahmt. Alle deine gewöhnlichen Schlüssel sing weg.
+Your owner is now preventing you from getting new keys.  The club shop will not sell keys to you anymore.
+Deine Besitzerin hindert dich nun daran, neue Schlüssel zu erlangen. Der Clubladen wird dir keine Schlüssel mehr verkaufen.
+You're on SourceCharacter blacklist.  Your message was blocked by the server.
+Du bist auf SourceCharacter Blacklist. Deine Nachricht wurde vom Server blockiert.
+SourceCharacter swaps a PrevAsset for a NextAsset on DestinationCharacter FocusAssetGroup.
+SourceCharacter tauscht bei DestinationCharacter PrevAsset gegen NextAsset.
+SourceCharacter uses a NextAsset on DestinationCharacter FocusAssetGroup.
+SourceCharacter setzt NextAsset an DestinationCharacter ein.
+SourceCharacter locks a NextAsset on DestinationCharacter FocusAssetGroup.
+SourceCharacter verschließt NextAsset an DestinationCharacter.
+SourceCharacter adds a NextAsset on DestinationCharacter FocusAssetGroup PrevAsset.
+SourceCharacter bringt ein NextAsset an DestinationCharacters PrevAsset an.
+SourceCharacter removes the PrevAsset from DestinationCharacter FocusAssetGroup.
+SourceCharacter entfernt PrevAsset von DestinationCharacter.
+SourceCharacter unlocks and removes the PrevAsset from DestinationCharacter FocusAssetGroup.
+SourceCharacter öffnet und entfernt PrevAsset von DestinationCharacter.
+SourceCharacter rolls a DiceType sided dice.  The result is: DiceResult.
+SourceCharacter rollt einen DiceType-seitigen Würfel. Das Ergebnis ist: DiceResult.
+SourceCharacter flips a coin.  The result is: CoinResult.
+SourceCharacter wirft eine Münze. Das Ergebnis ist: CoinResult.
+TargetCharacterName gets grabbed by two maids and locked in a timer cell, following her owner's commands.
+TargetCharacterName wird auf Befehl ihrer Besitzerin von zwei Hausmädchen gepackt und in eine Timer-Zelle gesperrt.
+TargetCharacterName gets grabbed by two maids and escorted to the maid quarters to serve drinks for her owner.
+TargetCharacterName wird von zwei Hausmädchen gepackt und in die Dienerkammer gebracht, um für ihre Besitzerin Getränke zu servieren.
+TargetCharacterName gives a sealed envelope to her owner.
+TargetCharacterName gibt ihrer Besitzerin einen versiegelten Umschlag.
+SourceCharacter picks a glass of water from DestinationCharacter tray.
+SourceCharacter nimmt sich ein Glas Wasser von DestinationCharacter Servierplatte.
+SourceCharacter picks an orange juice from DestinationCharacter tray.
+SourceCharacter nimmt sich einen Orangensaft von DestinationCharacter Servierplatte.
+SourceCharacter picks a beer from DestinationCharacter tray.
+SourceCharacter nimmt sich ein Bier von DestinationCharacter Servierplatte.
+SourceCharacter picks a glass of wine from DestinationCharacter tray.
+SourceCharacter nimmt sich ein Glas Wein von DestinationCharacter Servierplatte.
+SourceCharacter buys a Virgin Mojito from DestinationCharacter tray.
+SourceCharacter kauft einen Virgin von DestinationCharacter Servierplatte.
+SourceCharacter buys a Margarita from DestinationCharacter tray.
+SourceCharacter kauft einen Margarita von DestinationCharacter Servierplatte.
+SourceCharacter buys a glass of Whiskey from TargetCharacter.
+SourceCharacter kauft ein Glas Whiskey von TargetCharacter.
+SourceCharacter buys a glass of champagne from TargetCharacter.
+SourceCharacter kauft ein Glas Champagner von TargetCharacter.
+SourceCharacter buys a jug of refreshing lemonade for everyone, from TargetCharacter.
+SourceCharacterkauft von TargetCharacter einen Krug erfrischende Limonade für alle.
+SourceCharacter buys a round of shooters for everyone, from TargetCharacter.
+SourceCharactergibt bei TargetCharacter allen eine Runde aus.
+SourceCharacterbuys a jug of Sex on the Beach for everyone, from TargetCharacter.
+SourceCharacter kauft von TargetCharacter einen Krug Sex on the Beach für alle.
+SourceCharacter buys a beer pitcher for everyone, from TargetCharacter.
+SourceCharacterkauft von TargetCharacter einen Krug Bier für alle.
+SourceCharacter picks a tea from DestinationCharacter tray.
+SourceCharacternimmt sich einen Tee von DestinationCharacter Servierplatte.
+SourceCharacter picks a coffee from DestinationCharacter tray.
+SourceCharacter nimmt sich einen Kaffee von DestinationCharacter Servierplatte.
+SourceCharacter buys a hot chocolate from DestinationCharacter tray.
+SourceCharacter kauft eine heiße Schokolade von DestinationCharacter Servierplatte.
+SourceCharacter buys an espresso from DestinationCharacter tray.
+SourceCharacter kauft einen Espresso von DestinationCharacter Servierplatte.
+SourceCharacter buys a cappuccino from DestinationCharacter tray.
+SourceCharacter kauft einen Cappuccino von DestinationCharacter Servierplatte.
+Member number on lock:
+Mitglieds-ID auf dem Schloss:
+Time left:
+Übrige Zeit:
+SourceCharacter restarts the five minutes timer padlock on DestinationCharacter FocusAssetGroup.
+SourceCharacter setzt das Fünf-Minuten-Schloss von DestinationCharacter zurück.
+Restart Timer
+Timer zurücksetzen
+Remove item when the lock timer runs out
+Item entfernen, sobald die Zeit um ist
+The item will be removed when the lock timer runs out
+Der Gegenstand wird entfernt, sobald die Zeit um ist
+The item will stay when the lock timer runs out
+Der Gegenstand bleibt, wenn die Zeit um ist
+Select the bondage position
+Fesselposition wählen
+Select the tape wrapping
+Anwendungsart wählen
+A victim cannot unlock herself if her elbows are bound
+Mit gefesselten Ellbogen ist eine Selbstbefreiung unmöglich
+"From your friendly hardware store"
+"Vom Baumarkt Ihres Vertrauens"
+"To keep your loved one secure"
+"Für die Sicherheit Ihrer Liebsten"
+You can restart the timer but cannot unlock
+Das Schloss kann zurückgesetzt, aber nicht entfernt werden.
+"Never forget who you belong to"
+"Vergiss nie, wem du gehörst"
+Can only be locked or unlocked by her owner
+Kann nur von ihrer Besitzerin verwendet werden
+Can only be locked or unlocked by a Club Mistress
+Kann nur von einer Club-Herrin verschlossen oder geöffnet werden
+Detached
+Getrennt
+Bind wrists
+Handgelenke
+Bind elbows
+Ellbogen
+Bind both
+Beides
+SourceCharacter detaches the chain from DestinationCharacter leather cuffs.
+SourceCharacter trennt die Kette von DestinationCharacters Ledermanschetten.
+SourceCharacter attaches the leather cuffs wrist chain behind DestinationCharacter back.
+SourceCharacter verbindet die Handgelenk-Kette der Ledermanschetten hinter DestinationCharacters Rücken.
+SourceCharacter attaches the leather cuffs elbow chain behind DestinationCharacter back.
+SourceCharacter verbindet die Ellbogen-Kette der Ledermanschetten hinter DestinationCharacters Rücken.
+SourceCharacter attaches the leather cuffs wrist and elbow chains behind DestinationCharacter back.
+SourceCharacter verbindet die Handgelenk- und Ellbogen-Ketten der Ledermanschetten hinter DestinationCharacters Rücken.
+Chain Closed
+Zusammen verketten
+SourceCharacter detaches the chain from DestinationCharacter leather leg cuffs.
+SourceCharacter trennt DestinationCharacters Leder-Beinfesseln voneinander.
+SourceCharacter attaches the leather leg cuffs chain on DestinationCharacter legs.
+SourceCharacter verbindet DestinationCharacters Leder-Beinfesseln mit einer Kette.
+SourceCharacter detaches the chain from DestinationCharacter leather ankle cuffs.
+SourceCharacter trennt DestinationCharacters Leder-Fußfesseln voneinander.
+SourceCharacter attaches the leather ankle cuffs chain on DestinationCharacter ankles.
+SourceCharacter verbindet DestinationCharacters Leder-Fußfesseln mit einer Kette.
+How tight do you want to strap the jacket?
+Wie eng möchtest du die Jacke ziehen?
+Loose
+Locker
+Normal
+Normal
+Snug
+Eng
+Tight
+Stramm
+SourceCharacter loosens the straps on DestinationCharacter straitjacket.
+SourceCharacter lockert die Gurte an DestinationCharacters Zwangsjacke.
+SourceCharacter adjusts the straps normally on DestinationCharacter straitjacket.
+SourceCharacter bringt die Gurte von DestinationCharacters Zwangsjacke in ihre normale Position.
+SourceCharacter snugs the straps on DestinationCharacter straitjacket.
+SourceCharacter zieht die Gurte an DestinationCharacters Zwangsjacke eng.
+SourceCharacter tightens the straps on DestinationCharacter straitjacket.
+SourceCharacter zieht die Gurte an DestinationCharacters Zwangsjacke stramm.
+SourceCharacter loosens the straps on DestinationCharacter leather straitjacket.
+SourceCharacter lockert die Gurte an DestinationCharacters Leder-Zwangsjacke.
+SourceCharacter adjusts the straps normally on DestinationCharacter leather straitjacket.
+SourceCharacter bringt die Gurte von DestinationCharacters Leder-Zwangsjacke in ihre normale Position.
+SourceCharacter snugs the straps on DestinationCharacter leather straitjacket.
+SourceCharacter zieht die Gurte an DestinationCharacters Leder-Zwangsjacke eng.
+SourceCharacter tightens the straps on DestinationCharacter leather straitjacket.
+SourceCharacter zieht die Gurte an DestinationCharacters Leder-Zwangsjacke stramm.
+How much do you want to inflate the body bag?
+Wie stark möchtest du den Schlafsack aufblasen?
+Light
+Leicht gefüllt
+Inflated
+Aufgeblasen
+Bloated
+Aufgebläht
+Max
+Maximal
+SourceCharacter adjusts DestinationCharacter inflatable body bag to be only lightly filled.
+SourceCharacter justiert DestinationCharacters aufblasbaren Schlafsack, sodass er nur leicht aufgeblasen ist.
+SourceCharacter adjusts DestinationCharacter inflatable body bag to be half filled.
+SourceCharacter justiert DestinationCharacter aufblasbaren Schlafsack, sodass er halb aufgeblasen ist.
+SourceCharacter adjusts DestinationCharacter inflatable body bag to three quarters filled.
+SourceCharacter justiert DestinationCharacter aufblasbaren Schlafsack, sodass er zu drei Vierteln aufgeblasen ist.
+SourceCharacter adjusts DestinationCharacter inflatable body bag to fill the maximum amount.
+SourceCharacter justiert DestinationCharacter aufblasbaren Schlafsack, sodass er vollständig aufgeblasen ist.
+How many leather belts do you want to apply?
+Wie viele Ledergurte möchtest du anbringen?
+One
+Einen
+Two
+Zwei
+Three
+Drei
+Four
+Vier
+SourceCharacter restrains TargetCharacter with only one sturdy leather belt.
+SourceCharacter fesselt TargetCharacter mit nur einem robusten Ledergurt.
+SourceCharacter restrains TargetCharacter with two sturdy leather belts.
+SourceCharacter fesselt TargetCharacter mit zwei robusten Ledergurten.
+SourceCharacter restrains TargetCharacter with three sturdy leather belts.
+SourceCharacter fesselt TargetCharacter mit drei robusten Ledergurten.
+SourceCharacter restrains TargetCharacter with four sturdy leather belts.
+SourceCharacter fesselt TargetCharacter mit vier robusten Ledergurten.
+Hands
+Hände
+Arms
+Arme
+Skirt
+Rock
+Torso
+Torso
+Mummy
+Mumie
+SourceCharacter wraps duct tape around DestinationCharacter hands.
+SourceCharacter wickelt Klebeband um DestinationCharacters Hände.
+SourceCharacter creates a duct tape skirt on TargetCharacter and traps her hands in it.
+SourceCharacter wickelt einen Klebeband-Rock um TargetCharacter und fängt ihre Hände darin ein.
+SourceCharacter creates a duct tape top on TargetCharacter and traps her arms in it.
+SourceCharacter wickelt ein Klebeband-Top um TargetCharacter und fängt ihre Arme darin ein.
+SourceCharacter creates a duct tape mummy on TargetCharacter and traps her arms in it.
+SourceCharacter mummifiziert TargetCharacter mit Klebeband und fängt ihre Arme darin ein.
+In-front of body
+Vor dem Körper
+Behind back.
+Hinter dem Rücken.
+SourceCharacter shackles DestinationCharacter wrist in-front of their body.
+SourceCharacter verkettet DestinationCharacters Handgelenke vor ihrem Körper.
+SourceCharacter shackles DestinationCharacter wrist behind their back.
+SourceCharacter verkettet DestinationCharacters Handgelenke hinter ihrem Rücken.
+Select the type of gag
+Knebel-Typ wählen
+Small
+Klein
+Cleave
+Spalt
+OTM
+Über Mund
+OTN
+Über Nase
+SourceCharacter ties the cloth into a small gag over DestinationCharacter mouth.
+SourceCharacter bindet das Tuch als kleinen Knebel über den Mund von DestinationCharacter.
+SourceCharacter ties the cloth into a cleave gag over DestinationCharacter mouth.
+SourceCharacter bindet das Tuch als Spaltknebel über den Mund von DestinationCharacter.
+SourceCharacter ties the cloth into a large gag over DestinationCharacter mouth.
+SourceCharacter bindet das Tush als großen Knebel über den Mund von DestinationCharacter.
+SourceCharacter ties the cloth into a large gag over DestinationCharacter mouth and nose.
+SourceCharacter bindet das Tush als großen Knebel über den Mund und der Nase von DestinationCharacter.
+Single strip
+Einzelstreifen
+Crossed strips
+Über Kreuz
+Full face
+Vollständig
+Double layer
+Doppelschicht
+SourceCharacter puts a piece of duct tape on DestinationCharacter mouth.
+SourceCharacter klebt einen Streifen Klebeband auf DestinationCharacters Mund.
+SourceCharacter crosses two pieces of duct tape on DestinationCharacter mouth.
+SourceCharacter klebt zwei überkreuzte Streifen Klebeband auf DestinationCharacters Mund.
+SourceCharacter fully tapes DestinationCharacter mouth.
+SourceCharacter klebt DestinationCharacters Mund vollständig zu.
+SourceCharacter fully tapes DestinationCharacter mouth with double layers.
+SourceCharacter klebt DestinationCharacters Mund mit einer doppelten Schicht Klebeband zu.
+SourceCharacter wraps many layers on DestinationCharacter mouth.
+SourceCharacter klebt viele Schichten über DestinationCharacters Mund.
+Plugged
+Gestöpselt
+Open
+Offen
+SourceCharacter plugs up DestinationCharacter mouth.
+SourceCharacter stöpselt DestinationCharacters Mund zu.
+SourceCharacter pulls out DestinationCharacter plug from her gag.
+SourceCharacter zieht den Stöpsel aus DestinationCharacters Knebel heraus.
+Select the type of blindfold
+Augenbinden-Typ wählen
+Double
+Doppelt
+Wrap
+Binde
+SourceCharacter takes a piece of duct tape for TargetCharacter and place on her face.
+SourceCharacter nimmt ein Stück Klebeband und klebt es auf TargetCharacter Gesicht.
+SourceCharacter wraps some duct tape onto DestinationCharacter face.
+SourceCharacter wickelt etwas Klebeband um DestinationCharacters Gesicht.
+SourceCharacter wraps DestinationCharacter head in tape with multiple layers. 
+SourceCharacter wickelt viele Schichten Klebeband um DestinationCharacters Kopf.
+Select the tie style
+Fesselstil wählen
+Basic Tie
+Einfach
+Crotch Rope Tie
+Schrittseil-Fesselung
+Diamond Harness
+Diamantharnisch
+Mermaid Tie
+Meerjungfrau-Fesselung
+SourceCharacter uses the rope on TargetCharacter to do a basic harness.
+SourceCharacter wendet das Seil an TargetCharacter an, um einen einfachen Harnisch zu binden.
+SourceCharacter uses the rope on TargetCharacter to do a crotch rope tie.
+SourceCharacter wendet das Seil an TargetCharacter an, um eine Schrittseil-Fesselung zu binden.
+SourceCharacter uses the rope on TargetCharacter to do a Diamond style harness.
+SourceCharacter wendet das Seil an TargetCharacter an, um einen Diamantharnisch zu binden.
+SourceCharacter uses the rope on TargetCharacter to do a basic tie.
+SourceCharacter wendet das Seil an TargetCharacter an, um einen einfache Fesselung zu binden.
+SourceCharacter uses the rope on TargetCharacter to do a mermaid tie.
+SourceCharacter wendet das Seil an TargetCharacter an, um eine Meerjungfrau-Fesselung zu binden.
+Item intensity: Disabled
+Intensität: Deaktiviert
+Item intensity: Low
+Intensität: Niedrig
+Item intensity: Medium
+Intensität: Mittel
+Item intensity: High
+Intensität: Hoch
+Item intensity: Maximum
+Intensität: Maximal
+Increase
+Erhöhen
+Decrease
+Verringern
+Show chat message
+Chat-Nachricht senden
+SourceCharacter sets DestinationCharacter AssetName to low intensity.
+SourceCharacter stellt DestinationCharacters AssetName auf "niedrig".
+SourceCharacter sets DestinationCharacter AssetName to moderate intensity.
+SourceCharacter stellt DestinationCharacters AssetName auf "mittel".
+SourceCharacter sets DestinationCharacter AssetName to high intensity.
+SourceCharacter stellt DestinationCharacters Elektrohalsband auf "hoch".
+DestinationCharacter AssetName gives her a light shock.
+Ihr AssetName gibt DestinationCharacter einen leichten Schock.
+DestinationCharacter AssetName lets out a sharp jolt!
+Ihr AssetName versetzt DestinationCharacter einen scharfen Ruck!
+DestinationCharacter AssetName delivers an intense shock!
+Ihr AssetName verabreicht DestinationCharacter einen heftigen Schock!
+DestinationCharacterName vibrating egg stops vibrating.
+DestinationCharacterNames Vibrator-Ei hört auf zu vibrieren.
+DestinationCharacterName vibrating egg slows down into a light tease.
+DestinationCharacterNames Vibrator-Ei fällt auf ein leichtes Surren herab.
+DestinationCharacterName vibrating egg returns to a moderate pace.
+DestinationCharacterNames Vibrator-Ei fällt auf eine moderate Stärke herab.
+DestinationCharacterName vibrating egg slows down a tiny bit.
+DestinationCharacterNames Vibrator-Ei lässt ein kleines bisschen nach.
+DestinationCharacterName vibrating egg starts teasing her lightly.
+DestinationCharacterNames Vibrator-Ei fängt an, sie sanft zu erregen.
+DestinationCharacterName vibrating egg builds up to a moderate pace.
+DestinationCharacterNames Vibrator-Ei nimmt etwas Fahrt auf.
+DestinationCharacterName vibrating egg starts buzzing strongly!
+DestinationCharacterNames Vibrator-Ei fängt an, stark zu vibrieren!
+DestinationCharacterName vibrating egg jumps up to maximum intensity!
+DestinationCharacterNames Vibrator-Ei springt auf die maximale Stufe!
+DestinationCharacterName vibrating dildo stops vibrating.
+DestinationCharacterNames Vibrator-Dildo hört auf zu vibrieren.
+DestinationCharacterName vibrating dildo slows down into a light tease.
+DestinationCharacterNames Vibrator-Dildo fällt auf ein leichtes Surren herab.
+DestinationCharacterName vibrating dildo returns to a moderate pace.
+DestinationCharacterNames Vibrator-Dildo fällt auf eine moderate Stärke herab.
+DestinationCharacterName vibrating dildo slows down a tiny bit.
+DestinationCharacterNames Vibrator-Dildo lässt ein kleines bisschen nach.
+DestinationCharacterName vibrating dildo starts teasing her lightly.
+DestinationCharacterNames Vibrator-Dildo fängt an, sie sanft zu erregen.
+DestinationCharacterName vibrating dildo builds up to a moderate pace.
+DestinationCharacterNames Vibrator-Dildo nimmt etwas Fahrt auf.
+DestinationCharacterName vibrating dildo starts buzzing strongly!
+DestinationCharacterNames Vibrator-Dildo fängt an, stark zu vibrieren!
+DestinationCharacterName vibrating dildo jumps up to maximum intensity!
+DestinationCharacterNames Vibrator-Dildo springt auf die maximale Stufe!
+DestinationCharacterName inflatable vibrating dildo stops vibrating.
+DestinationCharacterNames aufblasbarer Vibrator-Dildo hört auf zu vibrieren.
+DestinationCharacterName inflatable vibrating dildo slows down into a light tease.
+DestinationCharacterNames aufblasbarer Vibrator-Dildo fällt auf ein leichtes Surren herab.
+DestinationCharacterName inflatable vibrating dildo returns to a moderate pace.
+DestinationCharacterNames aufblasbarer Vibrator-Dildo fällt auf eine moderate Stärke herab.
+DestinationCharacterName inflatable vibrating dildo slows down a tiny bit.
+DestinationCharacterNames aufblasbarer Vibrator-Dildo lässt ein kleines bisschen nach.
+DestinationCharacterName inflatable vibrating dildo starts teasing her lightly.
+DestinationCharacterNames aufblasbarer Vibrator-Dildo fängt an, sie sanft zu erregen.
+DestinationCharacterName inflatable vibrating dildo builds up to a moderate pace.
+DestinationCharacterNames aufblasbarer Vibrator-Dildo nimmt etwas Fahrt auf.
+DestinationCharacterName inflatable vibrating dildo starts buzzing strongly!
+DestinationCharacterNames aufblasbarer Vibrator-Dildo fängt an, stark zu vibrieren!
+DestinationCharacterName inflatable vibrating dildo jumps up to maximum intensity!
+DestinationCharacterNames aufblasbarer Vibrator-Dildo springt auf die maximale Stufe!
+SourceCharacter deflates DestinationCharacter inflatable vibrating dildo till it's regular sized.
+SourceCharacter lässt Luft aus DestinationCharacters aufblasbarem Vibrator-Dildo ab, bis er seine normale Größe erreicht hat.
+SourceCharacter deflates DestinationCharacter inflatable vibrating dildo till only slighty bulging.
+SourceCharacter lässt Luft aus DestinationCharacters aufblasbarem Vibrator-Dildo ab, bis er nur noch leicht angeschwollen ist.
+SourceCharacter deflates DestinationCharacter inflatable vibrating dildo till it's moderately bulging.
+SourceCharacter lässt Luft aus DestinationCharacters aufblasbarem Vibrator-Dildo ab, bis er einigermaßen angeschwollen ist.
+SourceCharacter deflates DestinationCharacter inflatable vibrating dildo only a tiny bit.
+SourceCharacter lässt ein kleines bisschen Luft aus DestinationCharacters aufblasbarem Vibrator-Dildo ab.
+SourceCharacter inflates DestinationCharacter inflatable vibrating dildo only slightly.
+SourceCharacter bläst DestinationCharacters aufblasbarem Vibrator-Dildo ein kleines bisschen auf.
+SourceCharacter inflates DestinationCharacter inflatable vibrating dildo till it's moderately bulging.
+SourceCharacter bläst DestinationCharacters aufblasbarem Vibrator-Dildo auf, bis er ein wenig angeschwollen ist.
+SourceCharacter inflates DestinationCharacter inflatable vibrating dildo till it's heavily bulging.
+SourceCharacter bläst DestinationCharacters aufblasbarem Vibrator-Dildo auf, bis er stark angeschwollen ist.
+SourceCharacter inflates DestinationCharacter inflatable vibrating dildo to it's maximum size.
+SourceCharacter bläst DestinationCharacters aufblasbarem Vibrator-Dildo bis zu seiner Maximalgröße auf.
+DestinationCharacterName vibrating nipple clamps stop vibrating.
+Die Vibrator-Nippelklemmen von DestinationCharacterName hören auf zu vibrieren.
+DestinationCharacterName vibrating nipple clamps slow down into a light tease.
+Die Vibrator-Nippelklemmen von DestinationCharacterName fallen auf ein leichtes Surren herab.
+DestinationCharacterName vibrating nipple clamps return to a moderate pace.
+Die Vibrator-Nippelklemmen von DestinationCharacterName fallen auf eine moderate Stärke herab.
+DestinationCharacterName vibrating nipple clamps slow down a tiny bit.
+Die Vibrator-Nippelklemmen von DestinationCharacterName lassen ein kleines bisschen nach.
+DestinationCharacterName vibrating nipple clamps start teasing her lightly.
+Die Vibrator-Nippelklemmen von DestinationCharacterName fangen an, sie sanft zu erregen.
+DestinationCharacterName vibrating nipple clamps build up to a moderate pace.
+Die Vibrator-Nippelklemmen von DestinationCharacterName nehmen etwas Fahrt auf.
+DestinationCharacterName vibrating nipple clamps start buzzing strongly!
+Die Vibrator-Nippelklemmen von DestinationCharacterName fangen an, stark zu vibrieren!
+DestinationCharacterName vibrating nipple clamps jump up to maximum intensity!
+Die Vibrator-Nippelklemmen von DestinationCharacterName springen auf die maximale Stufe!
+DestinationCharacterName vibrating eggs on her nipples stop vibrating.
+DestinationCharacterNames Nippel-Vibratoren hören auf zu vibrieren.
+DestinationCharacterName vibrating eggs on her nipples slow down into a light tease.
+DestinationCharacterNames Nippel-Vibratoren fallen auf ein leichtes Surren herab.
+DestinationCharacterName vibrating eggs on her nipples return to a moderate pace.
+DestinationCharacterNames Nippel-Vibratoren fallen auf eine moderate Stärke herab.
+DestinationCharacterName vibrating eggs on her nipples slow down a tiny bit.
+DestinationCharacterNames Nippel-Vibratoren lassen ein kleines bisschen nach.
+DestinationCharacterName vibrating eggs on her nipples start teasing her lightly.
+DestinationCharacterNames Nippel-Vibratoren fangen an, sie sanft zu erregen.
+DestinationCharacterName vibrating eggs on her nipples build up to a moderate pace.
+DestinationCharacterNames Nippel-Vibratoren nehmen etwas Fahrt auf.
+DestinationCharacterName vibrating eggs on her nipples start buzzing strongly!
+DestinationCharacterNames Nippel-Vibratoren fangen an, stark zu vibrieren!
+DestinationCharacterName vibrating eggs on her nipples jump up to maximum intensity!
+DestinationCharacterNames Nippel-Vibratoren springen auf die maximale Stufe!
+SourceCharacter loosens DestinationCharacter nipple suction cups until they hang loosely.
+SourceCharacter lockert DestinationCharacters Nippel-Saugnäpfe, bis sie lose herabhängen.
+SourceCharacter loosens DestinationCharacter nipple suction cups to a light amount of suction.
+SourceCharacter lockert DestinationCharacters Nippel-Saugnäpfe, bis sie nur noch leicht saugen.
+SourceCharacter loosens DestinationCharacter nipple suction cups to a moderate amount of suction.
+SourceCharacter lockert DestinationCharacters Nippel-Saugnäpfe, bis sie mittelstark saugen.
+SourceCharacter loosens DestinationCharacter nipple suction cups a bit to a heavy amount of suction.
+SourceCharacter lockert DestinationCharacters Nippel-Saugnäpfe ein wenig.
+SourceCharacter tweaks DestinationCharacter nipple suction cups sucking in her nipples lightly.
+SourceCharacter justiert DestinationCharacters Nippel-Saugnäpfe, sodass sie leicht an ihren Nippeln saugen.
+SourceCharacter tweaks DestinationCharacter nipple suction cups sucking in her nipples firmly.
+SourceCharacter justiert DestinationCharacters Nippel-Saugnäpfe, sodass sie ordentlich an ihren Nippeln saugen.
+SourceCharacter tweaks DestinationCharacter nipple suction cups sucking in her nipples heavily.
+SourceCharacter justiert DestinationCharacters Nippel-Saugnäpfe, sodass sie kräftig an ihren Nippeln saugen.
+SourceCharacter tweaks DestinationCharacter nipple suction cups sucking in her nipples entirely.
+SourceCharacter justiert DestinationCharacters Nippel-Saugnäpfe, sodass sie vollständig an ihren Nippeln saugen.
+SourceCharacter loosens DestinationCharacter clit suction cup until it hangs loosely.
+SourceCharacter lockert DestinationCharacters Klitoris-Saugnapf, bis er lose herabhängt.
+SourceCharacter loosens DestinationCharacter clit suction cup to a light amount of suction.
+SourceCharacter lockert DestinationCharacters Klitoris-Saugnapf, bis er nur noch leicht saugt.
+SourceCharacter loosens DestinationCharacter clit suction cup to a moderate amount of suction.
+SourceCharacter lockert DestinationCharacters Klitoris-Saugnapf, bis er mittelstark saugt.
+SourceCharacter loosens DestinationCharacter clit suction cup a bit to a heavy amount of suction.
+SourceCharacter lockert DestinationCharacters Klitoris-Saugnapf, ein wenig.
+SourceCharacter tweaks DestinationCharacter clit suction cup sucking in her clit lightly.
+SourceCharacter justiert DestinationCharacters Klitoris-Saugnapf, sodass er leicht an ihrer Klitoris saugt.
+SourceCharacter tweaks DestinationCharacter clit suction cup sucking in her clit firmly.
+SourceCharacter justiert DestinationCharacters Klitoris-Saugnapf, sodass er ordentlich an ihrer Klitoris saugt.
+SourceCharacter tweaks DestinationCharacter clit suction cup sucking in her clit heavily.
+SourceCharacter justiert DestinationCharacters Klitoris-Saugnapf, sodass er kräftig an ihrer Klitoris saugt.
+SourceCharacter tweaks DestinationCharacter clit suction cup sucking in her clit entirely.
+SourceCharacter justiert DestinationCharacters Klitoris-Saugnapf, sodass er vollständig an ihrer Klitoris saugt.
+DestinationCharacterName vibrating latex panties stops vibrating.
+DestinationCharacterNames vibrierendes Latexhöschen hört auf zu vibrieren.
+DestinationCharacterName vibrating latex panties slows down into a light tease.
+DestinationCharacterNames vibrierendes Latexhöschen fällt auf ein leichtes Surren herab.
+DestinationCharacterName vibrating latex panties returns to a moderate pace.
+DestinationCharacterNames vibrierendes Latexhöschen fällt auf eine moderate Stärke herab.
+DestinationCharacterName vibrating latex panties slows down a tiny bit.
+DestinationCharacterNames vibrierendes Latexhöschen lässt ein kleines bisschen nach.
+DestinationCharacterName vibrating latex panties starts teasing her lightly.
+DestinationCharacterNames vibrierendes Latexhöschen fängt an, sie sanft zu erregen.
+DestinationCharacterName vibrating latex panties builds up to a moderate pace.
+DestinationCharacterNames vibrierendes Latexhöschen nimmt etwas Fahrt auf.
+DestinationCharacterName vibrating latex panties starts buzzing strongly!
+DestinationCharacterNames vibrierendes Latexhöschen fängt an, stark zu vibrieren!
+DestinationCharacterName vibrating latex panties jumps up to maximum intensity!
+DestinationCharacterNames vibrierendes Latexhöschen springt auf die maximale Stufe!
+DestinationCharacterName vibrating wand stops vibrating.
+DestinationCharacterNames Vibrator-Stab hört auf zu vibrieren.
+DestinationCharacterName vibrating wand slows down into a light tease.
+DestinationCharacterNames Vibrator-Stab fällt auf ein leichtes Surren herab.
+DestinationCharacterName vibrating wand returns to a moderate pace.
+DestinationCharacterNames Vibrator-Stab fällt auf eine moderate Stärke herab.
+DestinationCharacterName vibrating wand slows down a tiny bit.
+DestinationCharacterNames Vibrator-Stab lässt ein kleines bisschen nach.
+DestinationCharacterName vibrating wand starts teasing her lightly.
+DestinationCharacterNames Vibrator-Stab fängt an, sie sanft zu erregen.
+DestinationCharacterName vibrating wand builds up to a moderate pace.
+DestinationCharacterNames Vibrator-Stab nimmt etwas Fahrt auf.
+DestinationCharacterName vibrating wand starts buzzing strongly!
+DestinationCharacterNames Vibrator-Stab fängt an, stark zu vibrieren!
+DestinationCharacterName vibrating wand jumps up to maximum intensity!
+DestinationCharacterNames Vibrator-Stab springt auf die maximale Stufe!
+SourceCharacter deflates DestinationCharacter butt pump till it's empty.
+SourceCharacter lässt Luft aus DestinationCharacters Analpumpe, bis sie leer ist.
+SourceCharacter deflates DestinationCharacter butt pump till only slighty filled.
+SourceCharacter lässt Luft aus DestinationCharacters Analpumpe, bis sie nur noch leicht gefüllt ist.
+SourceCharacter deflates DestinationCharacter butt pump till it's half full.
+SourceCharacter lässt Luft aus DestinationCharacters Analpumpe, bis sie halb gefüllt ist.
+SourceCharacter deflates DestinationCharacter butt pump only a tiny bit.
+SourceCharacter lässt ein kleines bisschen Luft aus DestinationCharacters Analpumpe.
+SourceCharacter inflates DestinationCharacter butt pump only slightly.
+SourceCharacter bläst DestinationCharacters Analpumpe ein kleines bisschen auf.
+SourceCharacter inflates DestinationCharacter butt pump till half full.
+SourceCharacter bläst DestinationCharacters Analpumpe zur Hälfte auf.
+SourceCharacter inflates DestinationCharacter butt pump three quarters filled.
+SourceCharacter bläst DestinationCharacters Analpumpe zu drei Vierteln auf.
+SourceCharacter inflates DestinationCharacter butt pump to the maximum amount.
+SourceCharacter bläst DestinationCharacters Analpumpe vollständig auf.
+DestinationCharacterName vibrating buttplug stops vibrating.
+DestinationCharacterNames Vibrator-Analstöpsel hört auf zu vibrieren.
+DestinationCharacterName vibrating buttplug slows down into a light tease.
+DestinationCharacterNames Vibrator-Analstöpsel fällt auf ein leichtes Surren herab.
+DestinationCharacterName vibrating buttplug returns to a moderate pace.
+DestinationCharacterNames Vibrator-Analstöpsel fällt auf eine moderate Stärke herab.
+DestinationCharacterName vibrating buttplug slows down a tiny bit.
+DestinationCharacterNames Vibrator-Analstöpsel lässt ein kleines bisschen nach.
+DestinationCharacterName vibrating buttplug starts teasing her lightly.
+DestinationCharacterNames Vibrator-Analstöpsel fängt an, sie sanft zu erregen.
+DestinationCharacterName vibrating buttplug builds up to a moderate pace.
+DestinationCharacterNames Vibrator-Analstöpsel nimmt etwas Fahrt auf.
+DestinationCharacterName vibrating buttplug starts buzzing strongly!
+DestinationCharacterNames Vibrator-Analstöpsel fängt an, stark zu vibrieren!
+DestinationCharacterName vibrating buttplug jumps up to maximum intensity!
+DestinationCharacterNames Vibrator-Analstöpsel springt auf die maximale Stufe!
+DestinationCharacterName inflatable vibrating butt plug stops vibrating.
+DestinationCharacterName aufblasbarer Vibrator-Analstöpsel hört auf zu vibrieren.
+DestinationCharacterName inflatable vibrating butt plug slows down into a light tease.
+DestinationCharacterName aufblasbarer Vibrator-Analstöpsel fällt auf ein leichtes Surren herab.
+DestinationCharacterName inflatable vibrating butt plug returns to a moderate pace.
+DestinationCharacterName aufblasbarer Vibrator-Analstöpsel fällt auf eine moderate Stärke herab.
+DestinationCharacterName inflatable vibrating butt plug slows down a tiny bit.
+DestinationCharacterName aufblasbarer Vibrator-Analstöpsel lässt ein kleines bisschen nach.
+DestinationCharacterName inflatable vibrating butt plug starts teasing her lightly.
+DestinationCharacterName aufblasbarer Vibrator-Analstöpsel fängt an, sie sanft zu erregen.
+DestinationCharacterName inflatable vibrating butt plug builds up to a moderate pace.
+DestinationCharacterName aufblasbarer Vibrator-Analstöpsel nimmt etwas Fahrt auf.
+DestinationCharacterName inflatable vibrating butt plug starts buzzing strongly!
+DestinationCharacterName aufblasbarer Vibrator-Analstöpsel fängt an, stark zu vibrieren!
+DestinationCharacterName inflatable vibrating butt plug jumps up to maximum intensity!
+DestinationCharacterName aufblasbarer Vibrator-Analstöpsel springt auf die maximale Stufe!
+SourceCharacter deflates DestinationCharacter inflatable vibrating butt plug till it's empty.
+SourceCharacter lässt Luft aus DestinationCharacters aufblasbarem Vibrator-Analstöpsel, bis er leer ist.
+SourceCharacter deflates DestinationCharacter inflatable vibrating butt plug till only slightly filled.
+SourceCharacter lässt Luft aus DestinationCharacters aufblasbarem Vibrator-Analstöpsel, bis er nur noch leicht gefüllt ist.
+SourceCharacter deflates DestinationCharacter inflatable vibrating butt plug till it's half full.
+SourceCharacter lässt Luft aus DestinationCharacters aufblasbarem Vibrator-Analstöpsel, bis er halb gefüllt ist.
+SourceCharacter deflates DestinationCharacter inflatable vibrating butt plug only a tiny bit.
+SourceCharacter lässt ein kleines bisschen Luft aus DestinationCharacters aufblasbarem Vibrator-Analstöpsel.
+SourceCharacter inflates DestinationCharacter inflatable vibrating butt plug only slightly.
+SourceCharacter bläst DestinationCharacters aufblasbaren Vibrator-Analstöpsel ein kleines bisschen auf.
+SourceCharacter inflates DestinationCharacter inflatable vibrating butt plug till it's half full.
+SourceCharacter bläst DestinationCharacters aufblasbaren Vibrator-Analstöpsel zur Hälfte auf.
+SourceCharacter inflates DestinationCharacter inflatable vibrating butt plug till three quarters filled.
+SourceCharacter bläst DestinationCharacters aufblasbaren Vibrator-Analstöpsel zu drei Vierteln auf.
+SourceCharacter inflates DestinationCharacter inflatable vibrating butt plug to it's maximum amount.
+SourceCharacter bläst DestinationCharacters aufblasbaren Vibrator-Analstöpsel vollständig auf.
+SourceCharacter deflates DestinationCharacter gag fully till it's empty.
+SourceCharacter lässt Luft aus DestinationCharacters Knebel, bis er leer ist.
+SourceCharacter deflates DestinationCharacter gag till only slighty filled.
+SourceCharacter lässt Luft aus DestinationCharacters Knebel, bis er nur noch leicht gefüllt ist.
+SourceCharacter deflates DestinationCharacter gag till it's half full.
+SourceCharacter lässt Luft aus DestinationCharacters Knebel, bis er halb gefüllt ist.
+SourceCharacter deflates DestinationCharacter gag only a tiny bit.
+SourceCharacter lässt ein kleines bisschen Luft aus DestinationCharacters Knebel.
+SourceCharacter inflates DestinationCharacter gag only slightly.
+SourceCharacter bläst DestinationCharacters Knebel ein kleines bisschen auf.
+SourceCharacter inflates DestinationCharacter gag till half full.
+SourceCharacter bläst DestinationCharacters Knebel zur Hälfte auf.
+SourceCharacter inflates DestinationCharacter gag three quarters filled.
+SourceCharacter bläst DestinationCharacters Knebel zu drei Vierteln auf.
+SourceCharacter inflates DestinationCharacter gag to the maximum amount.
+SourceCharacter bläst DestinationCharacters Knebel vollständig auf.
+Empty
+Leer
+Medium
+Mittel
+Heavy
+Stark
+Maximum
+Maximal
+Use Remote
+Fernbedienung
+(You can use or remove items by selecting specific body regions on yourself.)
+(Wähle eine Körperregion, um Items zu benutzen oder zu entfernen.)
+(You clumsily whip your own breast and tummy.  It would be more painful if someone else did it.)
+(Du peitschst ungeschickt auf deine eigene Brust und deinen Bauch. Es wäre schmerzhafter, wenn jemand anderes es tun würde.)
+(You swing the crop on yourself a few times.  You can feel your breast and tummy becoming more sensitive.)
+(Du schwingst die Ledergerte einige Male auf dich. Du kannst fühlen, wie deine Brust und dein Bauch empfindlicher werden.)
+(You need a few tries but you're able to somewhat whip your own butt and feel the pain.)
+(Du brauchst ein paar Versuche, aber du peitschst halbwegs deinen Hintern und fühlst den Schmerz.)
+(You lash the leather crop pretty hard on your own butt.  Jumping from each good hit.)
+(Du schlägst die Ledergerte ziemlich doll auf deinen Hintern. Du springst bei jedem guten Treffer auf.)
+(You slowly massage your pussy with the wand.  Trembling from pleasure and excitement.)
+(Du massierst langsam mit dem Vibrator deine Pussy. Du zitterst dabei vor Freude und Aufregung.)
+Padlock mitten buckles
+Fäustling-Riemen verriegeln
+Unlock mittens
+Fäustlinge aufschließen
+Chain mittens
+Fäustlinge anketten
+Unchain mittens
+Fäustlinge entketten
+You need some padlocks to do this.
+Dafür brauchst du Vorhängeschlösser.
+You need a padlock key to do this.
+Dafür brauchst du den passenden Schlüssel.
+padlocks
+verriegelt
+unlocks
+entriegelt
+mittens
+Fäustlinge
+chains
+kettet die Fäustlinge von
+removes the chains
+entfernt die Ketten von
+mittens to the baby harness
+an ihr Babyharnisch
+She must be wearing a baby harness to chain the mittens.
+Sie muss einen Babyharnisch tragen, um die Fäustlinge anzuketten.
+You must free her arms before attaching mitten chains.
+Ihre Arme müssen frei sein, um die Fäustlingsketten anbringen zu können.
+Facial expression
+Gesichtsausdruck
+Select a spanking toy
+Spanking-Spielzeug wählen
+Crop
+Gerte
+Flogger
+Peitsche
+Cane
+Rohrstock
+Heart Crop
+Herzgerte
+Paddle
+Paddel
+Whip Paddle
+Peitschenpaddel
+Whip
+Peitsche
+Cattle Prod
+Viehtreiber
+Tennis Racket
+Tennisschläger
+SourceCharacter takes out a ItemUsed
+SourceCharacter holt ein(e(n)) ItemUsed hervor
+SourceCharacter gives TargetCharacter a ItemUsed
+SourceCharacter gibt TargetCharacter ein(e(n)) ItemUsed
+TurnOff
+Ausschalten
+Low
+Niedrig
+High
+Hoch
+Trigger Shock
+Schock auslösen
+Unlock Butt
+Po entriegeln
+Lock Butt
+Po verriegeln
+Remove Shield
+Schild entfernen
+Remove Vibe
+Vibrator entfernen
+Remove Shock
+Schocker entfernen
+Add Shield
+Schild anbringen
+Add Vibe
+Vibrator anbringen
+Add Shock
+Schocker anbringen
+SourceCharacter unlocks DestinationCharacter love chastity belt butt.
+SourceCharacter öffnet den Hintereingang von DestinationCharacters Liebes-Keuschheitsgürtel.
+SourceCharacter lock DestinationCharacter love chastity belt butt.
+SourceCharacter verriegelt den Hintereingang von DestinationCharacters Liebes-Keuschheitsgürtel.
+DestinationCharacterName love chastity belts starts teasing her lightly.
+DestinationCharacterNames Liebes-Keuschheitsgürtel fängt an, sie sanft zu erregen.
+DestinationCharacterName love chastity belts builds up to a moderate pace.
+DestinationCharacterNames Liebes-Keuschheitsgürtel nimmt etwas Fahrt auf.
+DestinationCharacterName love chastity belts starts buzzing strongly!
+DestinationCharacterNames Liebes-Keuschheitsgürtel fängt an, stark zu vibrieren!
+DestinationCharacterName love chastity belts jumps up to maximum intensity!
+DestinationCharacterNames Liebes-Keuschheitsgürtel springt auf die maximale Stufe!
+DestinationCharacterName love chastity belt stops vibrating.
+DestinationCharacterNames Liebes-Keuschheitsgürtel hört auf zu vibrieren.
+DestinationCharacterName love chastity belt slows down into a light tease.
+DestinationCharacterNames Liebes-Keuschheitsgürtel fällt auf ein leichtes Surren herab.
+DestinationCharacterName love chastity belt returns to a moderate pace.
+DestinationCharacterNames Liebes-Keuschheitsgürtel fällt auf eine moderate Stärke herab.
+DestinationCharacterName love chastity belt slows down a tiny bit.
+DestinationCharacterNames Liebes-Keuschheitsgürtel lässt ein kleines bisschen nach.
+SourceCharacter sets DestinationCharacter love chastity belt to low intensity.
+SourceCharacter stellt DestinationCharacters Liebes-Keuschheitsgürtel auf "niedrig".
+SourceCharacter sets DestinationCharacter love chastity belt to moderate intensity.
+SourceCharacter stellt DestinationCharacters Liebes-Keuschheitsgürtel auf "mittel".
+SourceCharacter sets DestinationCharacter love chastity belt to high intensity.
+SourceCharacter stellt DestinationCharacters Liebes-Keuschheitsgürtel auf "hoch".
+DestinationCharacterName love chastity belt gives her a light shock.
+Ihr Liebes-Keuschheitsgürtel gibt DestinationCharacterName einen leichten Schock.
+DestinationCharacterName love chastity belt lets out a sharp jolt!
+Ihr Liebes-Keuschheitsgürtel versetzt DestinationCharacterName einen scharfen Ruck!
+DestinationCharacterName love chastity belt delivers an intense shock!
+Ihr Liebes-Keuschheitsgürtel verabreicht DestinationCharacterName einen heftigen Schock!
+SourceCharacter removes shield from DestinationCharacter love chastity belt.
+SourceCharacter entfernt die Abschirmung von DestinationCharacters Liebes-Keuschheitsgürtel.
+SourceCharacter locks shield to DestinationCharacter love chastity belt.
+SourceCharacter bringt die Abschirmung an DestinationCharacters Liebes-Keuschheitsgürtel an.
+SourceCharacter locks vibe to DestinationCharacter love chastity belt.
+SourceCharacter befestigt einen Vibrator an DestinationCharacters Liebes-Keuschheitsgürtel.
+SourceCharacter locks shock device to DestinationCharacter love chastity belt.
+SourceCharacter befestigt einen Schocker an DestinationCharacters Liebes-Keuschheitsgürtel.
+Select what tag you want to use
+Namensschild wählen
+You cannot change the tag while it's locked
+Namensschilder mit Schlössern können nicht geändert werden
+SourceCharacter uses a NameTagType name tag on DestinationCharacter collar.
+SourceCharacter bringt ein "NameTagType"-Namensschild an DestinationCharacters Halsband an.
+Bad Girl
+Böses Mädchen
+Bind Me
+Fessel mich
+Bitch
+Bitch
+Bunny
+Häschen
+Cookie
+Keks
+Cupcake
+Törtchen
+Dom
+Dom
+Foxy
+Fuchs
+Free
+Frei
+Fuck Me
+Fick mich
+GagMe
+Knebel mich
+Good Girl
+Braves Mädchen
+Hold Me
+Halt mich fest
+Kitten
+Kätzchen
+Love
+Liebling
+Maid
+Dienerin
+Meat
+Fleisch
+Muffin
+Muffin
+Needy
+Gierig
+Owned
+Eigentum
+Panda
+Panda
+Pet
+Haustier
+Pet Me
+Streichel mich
+Pixie
+Fee
+Puppy
+Hündchen
+Racoon
+Waschbär
+Slave
+Sklavin
+Slut
+Schlampe
+Sub
+Sub
+Sweetie
+Schatz
+Taken
+Vergeben
+Toy
+Spielzeug
+Useless
+Nutzlos
+Use Me
+Benutz mich
+Whore
+Hure
+Legs
+Beine
+Half
+Halb
+Most
+Größtenteils
+Complete
+Vollständig
+SourceCharacter wraps duct tape around DestinationCharacter legs.
+SourceCharacter wickelt Klebeband um DestinationCharacters Beine.
+SourceCharacter wraps more duct tape on DestinationCharacter legs trapping them firmly.
+SourceCharacter wickelt viel Klebeband um DestinationCharacters Beine und hält sie gefangen.
+SourceCharacter wraps even more duct tape on DestinationCharacter legs trapping them tightly.
+SourceCharacter wickelt sehr viel Klebeband um DestinationCharacters Beine und hält sie fest zusammen.
+SourceCharacter wraps an extreme amount of duct tape on DestinationCharacter legs fully trapping them.
+SourceCharacter wickelt extrem viel Klebeband um DestinationCharacters Beine und umhüllt sie vollständig.
+Feet
+Füße
+SourceCharacter wraps duct tape around DestinationCharacter feet.
+SourceCharacter wickelt Klebeband um DestinationCharacters Füße.
+SourceCharacter wraps more duct tape on DestinationCharacter feet trapping them firmly.
+SourceCharacter wickelt viel Klebeband um DestinationCharacters Füße und hält sie gefangen.
+SourceCharacter wraps even more duct tape on DestinationCharacter feet trapping them tightly.
+SourceCharacter wickelt sehr viel Klebeband um DestinationCharacters Füße und hält sie fest zusammen.
+SourceCharacter wraps an extreme amount of duct tape on DestinationCharacter feet fully trapping them.
+SourceCharacter wickelt extrem viel Klebeband um DestinationCharacters Füße und umhüllt sie vollständig.
+Select the slave collar model
+Sklavenhalsband-Modell wählen
+SourceCharacter changes DestinationCharacter collar model.
+SourceCharacter wechselt DestinationCharacters Halsband aus.
+Select the Type of Teddy Bear
+Teddybär-Typ wählen
+Bear
+Bär
+Fox
+Fuchs
+Kitty
+Kätzchen
+Pony
+Pony
+SourceCharacter gives TargetCharacter a cute teddy bear.
+SourceCharacter gibt TargetCharacter einen süßen Teddybären.
+SourceCharacter gives TargetCharacter a cute foxy teddy.
+SourceCharacter gibt TargetCharacter einen süßen Plüschfuchs.
+SourceCharacter gives TargetCharacter a cute kitty teddy.
+SourceCharacter gibt TargetCharacter eine süße Plüschkatze.
+SourceCharacter gives TargetCharacter a cute puppy teddy.
+SourceCharacter gibt TargetCharacter einen süßen Plüschhund.
+SourceCharacter gives TargetCharacter a cute Bunny teddy.
+SourceCharacter gibt TargetCharacter einen süßen Stoffhasen.
+SourceCharacter gives TargetCharacter a cute Pony teddy.
+SourceCharacter gibt TargetCharacter ein süßes Plüschpony.
+View next page
+Nächste Seite
+View previous page
+Vorherige Seite
+Save color to currently selected slot
+Farbe im ausgewählten Platz speichern

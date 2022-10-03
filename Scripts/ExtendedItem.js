@@ -105,6 +105,8 @@ function ExtendedItemLoad(Options, DialogKey) {
 	}
 
 	if (ExtendedItemOffsets[ExtendedItemOffsetKey()] == null) ExtendedItemSetOffset(0);
+
+	DialogExtendedMessage = DialogFindPlayer(DialogKey);
 }
 
 /**
@@ -118,7 +120,70 @@ function ExtendedItemLoad(Options, DialogKey) {
  * @returns {void} Nothing
  */
 function ExtendedItemDraw(Options, DialogPrefix, OptionsPerPage, ShowImages = true) {
+	// If an option's subscreen is open, it overrides the standard screen
+	if (ExtendedItemSubscreen) {
+		CommonCallFunctionByNameWarn(ExtendedItemFunctionPrefix() + ExtendedItemSubscreen + "Draw");
+		return;
+	}
 
+	const C = CharacterGetCurrent();
+	const Asset = DialogFocusItem.Asset;
+	const ItemOptionsOffset = ExtendedItemGetOffset();
+	const XYPositions = !Asset.Group.Clothing ? (ShowImages ? ExtendedXY : ExtendedXYWithoutImages) : ExtendedXYClothes;
+	const ImageHeight = ShowImages ? 220 : 0;
+	OptionsPerPage = OptionsPerPage || Math.min(Options.length, XYPositions.length - 1);
+
+	// If we have to paginate, draw the back/next button
+	if (Options.length > OptionsPerPage) {
+		const currPage = Math.ceil(ExtendedItemGetOffset() / OptionsPerPage) + 1;
+		const totalPages = Math.ceil(Options.length / OptionsPerPage);
+		DrawBackNextButton(1675, 240, 300, 90, DialogFindPlayer("Page") + " " + currPage.toString() + " / " + totalPages.toString(), "White", "", () => "", () => "");
+	}
+
+	// Draw the header and item
+	const Locked = InventoryItemHasEffect(DialogFocusItem, "Lock", true);
+	DrawAssetPreview(1387, 55, Asset, {Icons: Locked ? ["Locked"] : undefined});
+	DrawText(DialogExtendedMessage, 1500, 375, "white", "gray");
+
+	const CurrentOption = Options.find(O => O.Property.Type === DialogFocusItem.Property.Type);
+
+	// Draw the possible variants and their requirements, arranged based on the number per page
+	for (let I = ItemOptionsOffset; I < Options.length && I < ItemOptionsOffset + OptionsPerPage; I++) {
+		const PageOffset = I - ItemOptionsOffset;
+		const X = XYPositions[OptionsPerPage][PageOffset][0];
+		const Y = XYPositions[OptionsPerPage][PageOffset][1];
+
+		const Option = Options[I];
+		const OptionType = Option.Property && Option.Property.Type;
+		const Hover = MouseIn(X, Y, 225, 55 + ImageHeight) && !CommonIsMobile;
+		const IsSelected = DialogFocusItem.Property.Type == OptionType;
+		const IsFavorite = InventoryIsFavorite(ExtendedItemPermissionMode ? Player : C, Asset.Name, Asset.Group.Name, OptionType);
+		const ButtonColor = ExtendedItemGetButtonColor(C, Option, CurrentOption, Hover, IsSelected);
+
+		DrawButton(X, Y, 225, 55 + ImageHeight, "", ButtonColor, null, null, IsSelected);
+		if (ShowImages) {
+			DrawImage(`${AssetGetInventoryPath(Asset)}/${Option.Name}.png`, X + 2, Y);
+			/** @type {InventoryIcon[]} */
+			const icons = [];
+			if (!C.IsPlayer() && InventoryIsAllowedLimited(C, DialogFocusItem, OptionType)) {
+				icons.push("AllowedLimited");
+			}
+			const FavoriteDetails = DialogGetFavoriteStateDetails(C, Asset, OptionType);
+			if (FavoriteDetails && FavoriteDetails.Icon) {
+				icons.push(FavoriteDetails.Icon);
+			}
+			DrawPreviewIcons(icons, X + 2, Y);
+		}
+		DrawTextFit((IsFavorite && !ShowImages ? "★ " : "") + DialogFindPlayer(DialogPrefix + Option.Name), X + 112, Y + 30 + ImageHeight, 225, "black");
+		if (ControllerActive == true) {
+			setButton(X + 112, Y + 30 + ImageHeight);
+		}
+	}
+
+	// Permission mode toggle
+	DrawButton(1775, 25, 90, 90, "", "White",
+		ExtendedItemPermissionMode ? "Icons/DialogNormalMode.png" : "Icons/DialogPermissionMode.png",
+		DialogFindPlayer(ExtendedItemPermissionMode ? "DialogNormalMode" : "DialogPermissionMode"));
 }
 
 /**
@@ -131,7 +196,42 @@ function ExtendedItemDraw(Options, DialogPrefix, OptionsPerPage, ShowImages = tr
  * @returns {string} The name or hex code of the color
  */
 function ExtendedItemGetButtonColor(C, Option, CurrentOption, Hover, IsSelected) {
-	return "#ffffff";
+	const IsSelfBondage = C.ID === 0;
+	let ButtonColor;
+	if (ExtendedItemPermissionMode) {
+		const PlayerBlocked = InventoryIsPermissionBlocked(
+			Player, DialogFocusItem.Asset.DynamicName(Player), DialogFocusItem.Asset.Group.Name,
+			Option.Property.Type,
+		);
+		const PlayerLimited = InventoryIsPermissionLimited(
+			Player, DialogFocusItem.Asset.Name, DialogFocusItem.Asset.Group.Name, Option.Property.Type);
+
+		if ((IsSelfBondage && IsSelected) || Option.Property.Type == null) {
+			ButtonColor = "#888888";
+		} else if (PlayerBlocked) {
+			ButtonColor = Hover ? "red" : "pink";
+		} else if (PlayerLimited) {
+			ButtonColor = Hover ? "orange" : "#fed8b1";
+		} else {
+			ButtonColor = Hover ? "green" : "lime";
+		}
+	} else {
+		const BlockedOrLimited = InventoryBlockedOrLimited(C, DialogFocusItem, Option.Property.Type);
+		const FailSkillCheck = !!ExtendedItemRequirementCheckMessageMemo(Option, CurrentOption);
+
+		if (IsSelected && !Option.HasSubscreen) {
+			ButtonColor = "#888888";
+		} else if (BlockedOrLimited) {
+			ButtonColor = "Red";
+		} else if (FailSkillCheck) {
+			ButtonColor = "Pink";
+		} else if (IsSelected && Option.HasSubscreen) {
+			ButtonColor = Hover ? "Cyan" : "LightGreen";
+		} else {
+			ButtonColor = Hover ? "Cyan" : "White";
+		}
+	}
+	return ButtonColor;
 }
 
 /**
@@ -143,7 +243,68 @@ function ExtendedItemGetButtonColor(C, Option, CurrentOption, Hover, IsSelected)
  * @returns {void} Nothing
  */
 function ExtendedItemClick(Options, OptionsPerPage, ShowImages = true) {
+	const C = CharacterGetCurrent();
 
+	// If an option's subscreen is open, pass the click into it
+	if (ExtendedItemSubscreen) {
+		CommonCallFunctionByNameWarn(ExtendedItemFunctionPrefix() + ExtendedItemSubscreen + "Click", C, Options);
+		return;
+	}
+
+	const ItemOptionsOffset = ExtendedItemGetOffset();
+	const IsCloth = DialogFocusItem.Asset.Group.Clothing;
+	const XYPositions = !IsCloth ? ShowImages ? ExtendedXY : ExtendedXYWithoutImages : ExtendedXYClothes;
+	const ImageHeight = ShowImages ? 220 : 0;
+	OptionsPerPage = OptionsPerPage || Math.min(Options.length, XYPositions.length - 1);
+
+	// Exit button
+	if (MouseIn(1885, 25, 90, 90)) {
+		DialogFocusItem = null;
+		ExtendedItemPermissionMode = false;
+		ExtendedItemExit();
+		return;
+	}
+
+	// Permission toggle button
+	if (MouseIn(1775, 25, 90, 90)) {
+		ExtendedItemPermissionMode = !ExtendedItemPermissionMode;
+	}
+
+	// Pagination buttons
+	if (MouseIn(1675, 240, 150, 90) && Options.length > OptionsPerPage) {
+		if (ItemOptionsOffset - OptionsPerPage < 0) ExtendedItemSetOffset(OptionsPerPage * (Math.ceil(Options.length / OptionsPerPage) - 1));
+		else ExtendedItemSetOffset(ItemOptionsOffset - OptionsPerPage);
+	}
+	else if (MouseIn(1825, 240, 150, 90) && Options.length > OptionsPerPage) {
+		if (ItemOptionsOffset + OptionsPerPage >= Options.length) ExtendedItemSetOffset(0);
+		else ExtendedItemSetOffset(ItemOptionsOffset + OptionsPerPage);
+	}
+
+	// Options
+	for (let I = ItemOptionsOffset; I < Options.length && I < ItemOptionsOffset + OptionsPerPage; I++) {
+		const PageOffset = I - ItemOptionsOffset;
+		const X = XYPositions[OptionsPerPage][PageOffset][0];
+		const Y = XYPositions[OptionsPerPage][PageOffset][1];
+		const Option = Options[I];
+		if (MouseIn(X, Y, 225, 55 + ImageHeight)) {
+			ExtendedItemHandleOptionClick(C, Options, Option);
+		}
+	}
+}
+
+/**
+ * Exit function for the extended item dialog.
+ * Mainly removes the cache from memory
+ * @returns {void} - Nothing
+ */
+function ExtendedItemExit() {
+	// invalidate the cache
+	ExtendedItemRequirementCheckMessageMemo.clearCache();
+
+	// Run the subscreen's Exit function if any
+	if (ExtendedItemSubscreen) {
+		CommonCallFunctionByName(ExtendedItemFunctionPrefix() + ExtendedItemSubscreen + "Exit");
+	}
 }
 
 /**
@@ -174,20 +335,16 @@ function ExtendedItemSetType(C, Options, Option) {
 		if (Option.Expression) {
 			InventoryExpressionTriggerApply(C, Option.Expression);
 		}
-		if (CurrentScreen === "ChatRoom") {
-			// If we're in a chatroom, call the item's publish function to publish a message to the chatroom
-			CommonCallFunctionByName(FunctionPrefix + "PublishAction", C, Option, previousOption);
+
+		CommonCallFunctionByName(FunctionPrefix + "Exit");
+		DialogFocusItem = null;
+		if (C.ID === 0) {
+			// Player is using the item on herself
+			DialogMenuButtonBuild(C);
 		} else {
-			CommonCallFunctionByName(FunctionPrefix + "Exit");
-			DialogFocusItem = null;
-			if (C.ID === 0) {
-				// Player is using the item on herself
-				//DialogMenuButtonBuild(C);
-			} else {
-				// Otherwise, call the item's NPC dialog function, if one exists
-				//CommonCallFunctionByName(FunctionPrefix + "NpcDialog", C, Option, previousOption);
-				C.FocusGroup = null;
-			}
+			// Otherwise, call the item's NPC dialog function, if one exists
+			CommonCallFunctionByName(FunctionPrefix + "NpcDialog", C, Option, previousOption);
+			C.FocusGroup = null;
 		}
 	}
 }
@@ -217,10 +374,11 @@ function ExtendedItemHandleOptionClick(C, Options, Option) {
 		if (RequirementMessage) {
 			DialogExtendedMessage = RequirementMessage;
 		} else if (Option.HasSubscreen) {
-			//ExtendedItemSubscreen = Option.Name;
-			//CommonCallFunctionByNameWarn(ExtendedItemFunctionPrefix() + ExtendedItemSubscreen + "Load", C, Option);
+			ExtendedItemSubscreen = Option.Name;
+			CommonCallFunctionByNameWarn(ExtendedItemFunctionPrefix() + ExtendedItemSubscreen + "Load", C, Option);
 		} else {
 			ExtendedItemSetType(C, Options, Option);
+			ExtendedItemExit();
 		}
 	}
 }
@@ -248,7 +406,9 @@ function ExtendedItemRequirementCheckMessage(Option, CurrentOption) {
  * @returns {string | undefined} - undefined if the
  */
 function ExtendedItemCheckSelfSelect(C, Option) {
-	return "foo";
+	if (C.ID === 0 && Option.AllowSelfSelect === false) {
+		return DialogFindPlayer("CannotSelfSelect");
+	}
 }
 
 /**
@@ -260,7 +420,7 @@ function ExtendedItemCheckSelfSelect(C, Option) {
  * a string message informing them of the requirements they do not meet.
  */
 function ExtendedItemCheckSkillRequirements(C, Item, Option) {
-	return "foo";
+	return "";
 }
 
 /**

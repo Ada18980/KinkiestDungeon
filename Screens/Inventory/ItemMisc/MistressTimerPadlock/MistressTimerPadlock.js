@@ -38,7 +38,7 @@ function InventoryItemMiscMistressTimerPadlockDraw() {
     }
 
     // Draw buttons to add/remove time if available
-    if (Player.CanInteract() && (LogQuery("ClubMistress", "Management") || (Player.MemberNumber == DialogFocusSourceItem.Property.LockMemberNumber))) {
+    if (Player.CanInteract() && ((Player.MemberNumber == DialogFocusSourceItem.Property.LockMemberNumber))) {
         DrawButton(1100, 910, 250, 70, DialogFindPlayer("AddTimerTime"), "White");
         DrawBackNextButton(1400, 910, 250, 70, MistressTimerChooseList[MistressTimerChooseIndex] + " " + DialogFindPlayer("Minutes"), "White", "",
             () => MistressTimerChooseList[(MistressTimerChooseList.length + MistressTimerChooseIndex - 1) % MistressTimerChooseList.length] + " " + DialogFindPlayer("Minutes"),
@@ -69,7 +69,7 @@ function InventoryItemMiscMistressTimerPadlockClick() {
     }
 
     if ((MouseY >= 910) && (MouseY <= 980)) {
-        if (LogQuery("ClubMistress", "Management") || (Player.MemberNumber == DialogFocusSourceItem.Property.LockMemberNumber)) {
+        if ((Player.MemberNumber == DialogFocusSourceItem.Property.LockMemberNumber)) {
             if ((MouseX >= 1100) && (MouseX < 1350)) InventoryItemMiscMistressTimerPadlockAdd(MistressTimerChooseList[MistressTimerChooseIndex] * 60, false);
             if ((MouseX >= 1400) && (MouseX < 1650)) {
                 if (MouseX <= 1525) MistressTimerChooseIndex = (MistressTimerChooseList.length + MistressTimerChooseIndex - 1) % MistressTimerChooseList.length;

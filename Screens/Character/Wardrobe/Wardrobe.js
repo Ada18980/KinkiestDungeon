@@ -74,7 +74,6 @@ function WardrobeLoadCharacters(Fast) {
 	if (W != null) {
 		WardrobeFixLength();
 		if (Fast) WardrobeFastLoad(WardrobeCharacter[W], W);
-		ServerAccountUpdate.QueueData({ Wardrobe: CharacterCompressWardrobe(Player.Wardrobe) });
 	}
 }
 
@@ -257,7 +256,6 @@ function WardrobeFastLoad(C, W, Update) {
 		CharacterLoadCanvas(C);
 		if (Update == null || Update) {
 			if (C.ID == 0 && C.OnlineID != null) ServerPlayerAppearanceSync();
-			if (C.ID == 0 || C.AccountName.indexOf("Online-") == 0) ChatRoomCharacterUpdate(C);
 		}
 	}
 }
@@ -285,7 +283,6 @@ function WardrobeFastSave(C, W, Push) {
 		}
 		WardrobeFixLength();
 		if (WardrobeCharacter != null && WardrobeCharacter[W] != null && C.AccountName != WardrobeCharacter[W].AccountName) WardrobeFastLoad(WardrobeCharacter[W], W);
-		if ((Push == null) || Push) ServerAccountUpdate.QueueData({ Wardrobe: CharacterCompressWardrobe(Player.Wardrobe) });
 	}
 }
 

@@ -349,15 +349,6 @@ function ServerValidateColorAgainstSchema(Color, Schema) {
  * @returns {void} - Nothing
  */
 function ServerPlayerAppearanceSync() {
-
-	// Creates a big parameter string of every appearance items and sends it to the server
-	if (Player.AccountName != "") {
-		var D = {};
-		D.AssetFamily = Player.AssetFamily;
-		D.Appearance = ServerAppearanceBundle(Player.Appearance);
-		ServerAccountUpdate.QueueData(D, true);
-	}
-
 }
 
 /**

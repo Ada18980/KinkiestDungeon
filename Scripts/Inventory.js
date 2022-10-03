@@ -240,7 +240,7 @@ function InventoryPrerequisiteMessage(C, Prerequisite) {
 		case "NotMasked": return InventoryIsItemInList(C, "ItemHood", ["OldGasMask"]) ? "RemoveFaceMaskFirst" : "";
 
 		// Blocked remotes on self
-		case "RemotesAllowed": return LogQuery("BlockRemoteSelf", "OwnerRule") && C.ID === 0 ? "OwnerBlockedRemotes" : "";
+		case "RemotesAllowed": return "";
 
 		// Layered Gags, prevent gags from being equipped over other gags they are incompatible with
 		case "GagUnique": return InventoryPrerequisiteConflictingGags(C, ["GagFlat", "GagCorset", "GagUnique"]);
@@ -387,8 +387,6 @@ function InventoryAllow(C, asset, prerequisites = asset.Prerequisite, setDialog 
 	let Msg = "";
 	prerequisites.some((prerequisite) => (Msg = InventoryPrerequisiteMessage(checkCharacter, prerequisite)));
 
-	// If no error message was found, we return TRUE, if a message was found, we can show it in the dialog
-	if (Msg && setDialog) DialogSetText(Msg);
 	return !Msg;
 }
 
@@ -405,132 +403,6 @@ function InventoryGet(C, AssetGroup) {
 	return null;
 }
 
-/**
-* Applies crafted properties to the item used
-* @param {Character} Source - The character that used the item
-* @param {Character} Target - The character on which the item is used
-* @param {String} GroupName - The name of the asset group to scan
-* @param {CraftingItem} Craft - The crafted properties to apply
-* @param {Boolean} Refresh - TRUE if we must refresh the character
-* @returns {void}
-*/
-function InventoryCraft(Source, Target, GroupName, Craft, Refresh) {
-
-	// Gets the item first
-	if ((Source == null) || (Target == null) || (GroupName == null) || (Craft == null)) return;
-	let Item = InventoryGet(Target, GroupName);
-	if (Item == null) return;
-	if (Item.Craft == null) Item.Craft = Craft;
-
-	// Applies the color schema, separated by commas
-	if (Craft.Color != null && typeof Craft.Color === "string") {
-		Item.Color = Craft.Color.replace(" ", "").split(",");
-		for (let C of Item.Color)
-			if (CommonIsColor(C) == false)
-				C = "Default";
-	}
-
-	// Applies a lock to the item
-	if ((Craft.Lock != null) && (Craft.Lock != ""))
-		InventoryLock(Target, Item, Craft.Lock, Source.MemberNumber, false);
-
-	// Sets the crafter name and ID
-	if (Item.Craft.MemberNumber == null) Item.Craft.MemberNumber = Source.MemberNumber;
-	if (Item.Craft.MemberName == null) Item.Craft.MemberName = CharacterNickname(Source);
-
-	// The properties are only applied on self or NPCs to prevent duplicating the effect
-	if ((Craft.Property != null) && (Target.IsPlayer() || Target.IsNpc())) {
-
-		// The secure property adds 5 to the difficulty rating to struggle out
-		if (Craft.Property === "Secure") {
-			if (Item.Difficulty == null) Item.Difficulty = 5;
-			else Item.Difficulty = Item.Difficulty + 5;
-		}
-
-		// The loose property removes 5 to the difficulty rating to struggle out
-		if (Craft.Property === "Loose") {
-			if (Item.Difficulty == null) Item.Difficulty = -5;
-			else Item.Difficulty = Item.Difficulty - 5;
-		}
-
-		// The decoy property makes it always possible to struggle out
-		if (Craft.Property === "Decoy") Item.Difficulty = -50;
-
-		// Expressions cannot be changed if the settings doesn't allow it for the player
-		if (!Target.IsPlayer() || (Player.OnlineSharedSettings == null) || Player.OnlineSharedSettings.ItemsAffectExpressions) {
-
-			// The painful property triggers an expression change
-			if (Craft.Property === "Painful") {
-				CharacterSetFacialExpression(Target, "Blush", "ShortBreath", 10);
-				CharacterSetFacialExpression(Target, "Eyes", "Angry", 10);
-				CharacterSetFacialExpression(Target, "Eyes2", "Angry", 10);
-				CharacterSetFacialExpression(Target, "Eyebrows1", "Angry", 10);
-			}
-
-			// The comfy property triggers an expression change
-			if (Craft.Property === "Comfy") {
-				CharacterSetFacialExpression(Target, "Blush", "Light", 10);
-				CharacterSetFacialExpression(Target, "Eyes", "Horny", 10);
-				CharacterSetFacialExpression(Target, "Eyes2", "Horny", 10);
-				CharacterSetFacialExpression(Target, "Eyebrows1", "Raised", 10);
-			}
-
-		}
-
-	}
-
-	// Refreshes the character if needed
-	if (Refresh && (Target.IsPlayer() || Target.IsNpc()))
-		CharacterRefresh(Target, true);
-
-}
-
-/**
-* Returns the number of items on a character with a specific property
-* @param {Character} C - The character to validate
-* @param {String} Property - The property to count
-* @returns {Number} - The number of times the property is found
-*/
-function InventoryCraftCount(C, Property) {
-	let Count = 0;
-	if ((C != null) && (C.Appearance != null))
-		for (let A of C.Appearance)
-			if ((A.Craft != null) && (A.Craft.Property != null) && (A.Craft.Property == Property))
-				Count++;
-	return Count;
-}
-
-/**
-* Returns TRUE if an item as the specified crafted property
-* @param {Item} Item - The item to validate
-* @param {String} Property - The property to check
-* @returns {boolean} - TRUE if the property matches
-*/
-function InventoryCraftPropertyIs(Item, Property) {
-	if ((Item == null) || (Item.Craft == null) || (Item.Craft.Property == null) || (Property == null)) return false;
-	return (Item.Craft.Property == Property);
-}
-
-/**
-* Sets the craft and type on the item, uses the achetype properties if possible
-* @param {Item} Item - The item being applied
-* @param {Object} [Craft] - The crafting properties of the item
-*/
-function InventoryWearCraft(Item, Craft) {
-	if ((Item == null) || (Item.Asset == null) || (Craft == null)) return;
-	Item.Craft = Craft;
-	if ((Craft.Type != null) && (Item.Asset.AllowType != null) && (Item.Asset.AllowType.indexOf(Craft.Type) >= 0)) {
-		if (Item.Asset.Extended && (Item.Asset.Archetype == "typed")) {
-			let Config = AssetFemale3DCGExtended[Item.Asset.Group.Name][Item.Asset.Name].Config;
-			if ((Config != null) && (Config.Options != null))
-				for (let O of Config.Options)
-					if (O.Name == Craft.Type)
-						return Item.Property = JSON.parse(JSON.stringify(O.Property));
-		}
-		if (Item.Property == null) Item.Property = {};
-		Item.Property.Type = Craft.Type;
-	}
-}
 
 /**
 * Makes the character wear an item on a body area
@@ -547,7 +419,6 @@ function InventoryWear(C, AssetName, AssetGroup, ItemColor, Difficulty, MemberNu
 	if (!A) return;
 	CharacterAppearanceSetItem(C, AssetGroup, A, ((ItemColor == null || ItemColor == "Default") && A.DefaultColor != null) ? A.DefaultColor : ItemColor, Difficulty, MemberNumber, false);
 	let Item = InventoryGet(C, AssetGroup);
-	InventoryWearCraft(Item, Craft);
 	CharacterRefresh(C, true);
 	InventoryExpressionTrigger(C, Item);
 }

@@ -63,8 +63,6 @@ function SpeechGetGagLevel(C, AssetGroups) {
  */
 function SpeechGetTotalGagLevel(C, NoDeaf=false) {
 	let GagEffect = SpeechGetGagLevel(C, ["ItemMouth", "ItemMouth2", "ItemMouth3", "ItemHead", "ItemHood", "ItemNeck", "ItemDevices"]);
-	GagEffect = GagEffect + InventoryCraftCount(C, "Large") * 2;
-	GagEffect = GagEffect - InventoryCraftCount(C, "Small") * 2;
 
 	if (C.ID != 0 && !NoDeaf) {
 		if (Player.GetDeafLevel() >= 7) GagEffect = Math.max(GagEffect, 20);

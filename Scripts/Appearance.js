@@ -69,14 +69,6 @@ function CharacterAppearanceValidate(C) {
 			Refresh = true;
 		}
 
-	// Remove items flagged as "Remove At Login"
-	if (LogQuery("Committed", "Asylum") || !Player.GameplaySettings || !Player.GameplaySettings.DisableAutoRemoveLogin)
-		for (let A = C.Appearance.length - 1; A >= 0; A--)
-			if (C.Appearance[A] && C.Appearance[A].Asset.RemoveAtLogin) {
-				InventoryRemove(C, C.Appearance[A].Asset.Group.Name, false);
-				Refresh = true;
-			}
-
 	// Dress back if there are missing appearance items
 	for (let A = 0; A < AssetGroup.length; A++)
 		if (!AssetGroup[A].AllowNone && (CharacterAppearanceGetCurrentValue(C, AssetGroup[A].Name, "Name") == "None"))
@@ -573,11 +565,10 @@ function AppearanceMenuBuild(C) {
 	switch (CharacterAppearanceMode) {
 		case "":
 			if (C.ID === 0) {
-				AppearanceMenu.push(LogQuery("Wardrobe", "PrivateRoom") ? "Wardrobe" : "WardrobeDisabled");
-				if (!LogQuery("Wardrobe", "PrivateRoom") && AppearanceGroupAllowed(C, "ALL")) AppearanceMenu.push("Reset");
+				if (AppearanceGroupAllowed(C, "ALL")) AppearanceMenu.push("Reset");
 				if (!DialogItemPermissionMode) AppearanceMenu.push("WearRandom");
 				AppearanceMenu.push("Random");
-			} else AppearanceMenu.push(LogQuery("Wardrobe", "PrivateRoom") ? "Wardrobe" : "WardrobeDisabled");
+			} else AppearanceMenu.push("WardrobeDisabled");
 			AppearanceMenu.push("Naked", "Character", "Next");
 			break;
 		case "Wardrobe":
@@ -611,57 +602,9 @@ function AppearanceMenuBuild(C) {
  * Checks if the appearance is locked for the current player
  * @param {Character} C - The character to validate
  * @param {String} GroupName - The group name to validate, can be "ALL" to check all groups
- * @returns {boolean} - Return TRUE if the appearance group isn't blocked 
+ * @returns {boolean} - Return TRUE if the appearance group isn't blocked
  */
 function AppearanceGroupAllowed(C, GroupName) {
-	if (CurrentScreen != "Appearance") return true;
-	if (!C.IsPlayer()) return true;
-	if (Player.IsOwned() == false) return true;
-	const Dict = [
-		["A", "Cloth"],
-		["B", "ClothAccessory"],
-		["C", "Necklace"],
-		["D", "Suit"],
-		["E", "ClothLower"],
-		["F", "SuitLower"],
-		["G", "Bra"],
-		["H", "Corset"],
-		["I", "Panties"],
-		["J", "Socks"],
-		["K", "RightAnklet"],
-		["L", "LeftAnklet"],
-		["M", "Garters"],
-		["N", "Shoes"],
-		["O", "Hat"],
-		["P", "HairAccessory3"],
-		["Q", "HairAccessory1"],
-		["R", "HairAccessory2"],
-		["S", "Gloves"],
-		["T", "Bracelet"],
-		["U", "Glasses"],
-		["V", "Mask"],
-		["W", "TailStraps"],
-		["X", "Wings"],
-		["0", "Height"],
-		["1", "BodyUpper"],
-		["2", "BodyLower"],
-		["3", "HairFront"],
-		["4", "HairBack"],
-		["5", "Eyes"],
-		["6", "Eyes2"],
-		["7", "Mouth"],
-		["8", "Nipples"],
-		["9", "Pussy"]
-	];
-	if (GroupName == "ALL") {
-		for (let D of Dict)
-			if (LogContain("BlockAppearance", "OwnerRule", D[0]))
-				return false;
-	} else {
-		for (let D of Dict)
-			if (D[1] == GroupName)
-				return !LogContain("BlockAppearance", "OwnerRule", D[0]);
-	}
 	return true;
 }
 
@@ -1055,7 +998,7 @@ function AppearanceClick() {
 		if ((MouseX >= 1210) && (MouseX < 1275) && (MouseY >= 145) && (MouseY < 975))
 			for (let A = CharacterAppearanceOffset; A < AssetGroup.length && A < CharacterAppearanceOffset + CharacterAppearanceNumPerPage; A++)
 				if ((AssetGroup[A].Family == C.AssetFamily) && (AssetGroup[A].Category == "Appearance") && WardrobeGroupAccessible(C, AssetGroup[A]) && AssetGroup[A].AllowNone && (InventoryGet(C, AssetGroup[A].Name) != null))
-					if ((MouseY >= 145 + (A - CharacterAppearanceOffset) * 95) && (MouseY <= 210 + (A - CharacterAppearanceOffset) * 95)) 
+					if ((MouseY >= 145 + (A - CharacterAppearanceOffset) * 95) && (MouseY <= 210 + (A - CharacterAppearanceOffset) * 95))
 						if (AppearanceGroupAllowed(C, AssetGroup[A].Name)) {
 							InventoryRemove(C, AssetGroup[A].Name, false);
 							CharacterRefresh(C, false);
@@ -1110,32 +1053,7 @@ function AppearanceClick() {
 
 	}
 
-	// In wardrobe mode
-	else if (CharacterAppearanceMode == "Wardrobe") {
 
-		// In warehouse mode, we draw the 12 possible warehouse slots for the character to save & load
-		if ((MouseX >= 1300) && (MouseX < 1800) && (MouseY >= 430) && (MouseY < 970))
-			for (let W = CharacterAppearanceWardrobeOffset; W < Player.Wardrobe.length && W < CharacterAppearanceWardrobeOffset + 6; W++)
-				if ((MouseY >= 430 + (W - CharacterAppearanceWardrobeOffset) * 95) && (MouseY <= 495 + (W - CharacterAppearanceWardrobeOffset) * 95)) {
-					WardrobeFastLoad(C, W, false);
-					ElementValue("InputWardrobeName", Player.WardrobeCharacterNames[W]);
-				}
-		if ((MouseX >= 1820) && (MouseX < 1975) && (MouseY >= 430) && (MouseY < 970))
-			for (let W = CharacterAppearanceWardrobeOffset; W < Player.Wardrobe.length && W < CharacterAppearanceWardrobeOffset + 6; W++)
-				if ((MouseY >= 430 + (W - CharacterAppearanceWardrobeOffset) * 95) && (MouseY <= 495 + (W - CharacterAppearanceWardrobeOffset) * 95)) {
-					WardrobeFastSave(C, W);
-					var LS = /^[a-zA-Z0-9 ]+$/;
-					var Name = ElementValue("InputWardrobeName").trim();
-					if (Name.match(LS) || Name.length == 0) {
-						WardrobeSetCharacterName(W, Name);
-						CharacterAppearanceWardrobeText = TextGet("WardrobeNameInfo");
-					} else {
-						CharacterAppearanceWardrobeText = TextGet("WardrobeNameError");
-					}
-				}
-		return;
-
-	}
 
 	// In cloth selection mode
 	else if (CharacterAppearanceMode == "Cloth") {
@@ -1149,22 +1067,15 @@ function AppearanceClick() {
 				const CurrentItem = InventoryGet(C, C.FocusGroup.Name);
 				const worn = (CurrentItem && (CurrentItem.Asset.Name == Item.Asset.Name));
 
-				// In permission mode, we toggle the settings for an item
-				if (DialogItemPermissionMode) {
-					DialogInventoryTogglePermission(Item, worn);
-				} else {
-					if (InventoryBlockedOrLimited(C, Item)) return;
-					if (InventoryAllow(C, Item.Asset)) {
-						if (worn && CurrentItem.Asset.Extended) {
-							DialogExtendItem(CurrentItem);
-						} else {
-							CharacterAppearanceSetItem(C, C.FocusGroup.Name, DialogInventory[I].Asset);
-							DialogInventoryBuild(C, DialogInventoryOffset);
-							AppearanceMenuBuild(C);
-						}
+
+				if (InventoryBlockedOrLimited(C, Item)) return;
+				if (InventoryAllow(C, Item.Asset)) {
+					if (worn && CurrentItem.Asset.Extended) {
+						DialogExtendItem(CurrentItem);
 					} else {
-						CharacterAppearanceHeaderTextTime = DialogTextDefaultTimer;
-						CharacterAppearanceHeaderText = DialogText;
+						CharacterAppearanceSetItem(C, C.FocusGroup.Name, DialogInventory[I].Asset);
+						DialogInventoryBuild(C, DialogInventoryOffset);
+						AppearanceMenuBuild(C);
 					}
 				}
 				return;
@@ -1353,14 +1264,6 @@ function CharacterAppearanceReady(C) {
 
 	// If there's no error, we continue to the login or main hall if already logged
 	if (C.AccountName != "") {
-		ServerPlayerAppearanceSync();
-		if ((CharacterAppearanceReturnRoom == "ChatRoom") && (C.ID != 0)) {
-			var Dictionary = [];
-			Dictionary.push({ Tag: "DestinationCharacter", Text: CharacterNickname(C), MemberNumber: C.MemberNumber });
-			Dictionary.push({ Tag: "SourceCharacter", Text: CharacterNickname(Player), MemberNumber: Player.MemberNumber });
-			ServerSend("ChatRoomChat", { Content: "ChangeClothes", Type: "Action", Dictionary: Dictionary });
-			ChatRoomCharacterUpdate(C);
-		}
 		CommonSetScreen(CharacterAppearanceReturnModule, CharacterAppearanceReturnRoom);
 		CharacterAppearanceReturnRoom = "MainHall";
 		CharacterAppearanceReturnModule = "Room";
@@ -1405,9 +1308,6 @@ function CharacterAppearanceLoadCharacter(C) {
 	CharacterAppearanceSelection = C;
 	CharacterAppearanceReturnRoom = CurrentScreen;
 	CharacterAppearanceReturnModule = CurrentModule;
-	if (CharacterAppearanceReturnRoom == "ChatRoom") {
-		ChatRoomStatusUpdate("Wardrobe");
-	}
 	CommonSetScreen("Character", "Appearance");
 }
 

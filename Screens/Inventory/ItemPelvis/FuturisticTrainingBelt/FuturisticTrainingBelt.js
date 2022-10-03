@@ -186,7 +186,7 @@ function InventoryItemPelvisFuturisticTrainingBeltDraw() {
 	DrawText(DialogFindPlayer("FuturisticTrainingBeltMode"), 1100, 945, "white", "gray");
 
 	MainCanvas.textAlign = "center";
-	if (Item.Property.PublicModePermission == 0 || (Item.Property.PublicModePermission == 1 && LogQuery("ClubMistress", "Management"))) canViewMode = true;
+	if (Item.Property.PublicModePermission == 0 || (Item.Property.PublicModePermission == 1)) canViewMode = true;
 	DrawBackNextButton(1550, 910, 350, 64, DialogFindPlayer("FuturisticTrainingBeltMode" + FuturisticTrainingBeltSetMode), !canViewMode ? "Gray" : "White", "",
 		() => !canViewMode ? "" : DialogFindPlayer("FuturisticTrainingBeltMode" + ((FuturisticTrainingBeltSetMode + FuturisticTrainingBeltModes.length - 1) % FuturisticTrainingBeltModes.length)),
 		() => !canViewMode ? "" : DialogFindPlayer("FuturisticTrainingBeltMode" + ((FuturisticTrainingBeltSetMode + 1) % FuturisticTrainingBeltModes.length)));
@@ -259,7 +259,7 @@ function InventoryItemPelvisFuturisticTrainingBeltClick() {
 	}
 
 
-	if (canViewMode || Item.Property.PublicModePermission == 0 || (Item.Property.PublicModePermission == 1 && LogQuery("ClubMistress", "Management"))) {
+	if (canViewMode || Item.Property.PublicModePermission == 0 || (Item.Property.PublicModePermission == 1)) {
 		if (MouseIn(1550, 910, 350, 64)) {
 			if (MouseX <= 1725) FuturisticTrainingBeltSetMode = (FuturisticTrainingBeltModes.length + FuturisticTrainingBeltSetMode - 1) % FuturisticTrainingBeltModes.length;
 			else FuturisticTrainingBeltSetMode = (FuturisticTrainingBeltSetMode + 1) % FuturisticTrainingBeltModes.length;

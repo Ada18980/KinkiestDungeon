@@ -26,18 +26,9 @@ const ValidationModifiableProperties = ValidationAllLockProperties.concat(["Effe
  * target and source characters
  */
 function ValidationCreateDiffParams(C, sourceMemberNumber) {
-	const fromSelf = sourceMemberNumber === C.MemberNumber;
-	const fromOwner = C.Ownership != null && (sourceMemberNumber === C.Ownership.MemberNumber || fromSelf);
-	const loverNumbers = CharacterGetLoversNumbers(C);
-	let fromLover = loverNumbers.includes(sourceMemberNumber) || fromSelf;
-	// An update from the player's owner is counted as being from a lover if lover locks aren't blocked by a lover rule
-	if (fromOwner && !fromLover) {
-		let ownerCanUseLoverLocks = true;
-		if (C.ID === 0 && LogQuery("BlockLoverLockOwner", "LoverRule")) {
-			ownerCanUseLoverLocks = false;
-		}
-		fromLover = ownerCanUseLoverLocks;
-	}
+	const fromSelf = false;
+	const fromOwner = false;
+	const fromLover = false;
 	return { C, fromSelf, fromOwner, fromLover, sourceMemberNumber };
 }
 
@@ -380,14 +371,6 @@ function ValidationCanAddItem(newItem, params) {
 	// If the update is coming from ourself, it's always permitted
 	if (fromSelf) return true;
 
-	const asset = newItem.Asset;
-
-	// If the item is blocked/limited and the source doesn't have the correct permission, prevent it from being added
-	const type = (newItem.Property && newItem.Property.Type) || null;
-	const itemBlocked = ValidationIsItemBlockedOrLimited(C, sourceMemberNumber, asset.Group.Name, asset.Name, type) ||
-						ValidationIsItemBlockedOrLimited(C, sourceMemberNumber, asset.Group.Name, asset.Name);
-	if (itemBlocked && OnlineGameAllowBlockItems()) return false;
-
 	// Fall back to common item add/remove validation
 	return ValidationCanAddOrRemoveItem(newItem, params);
 }
@@ -583,7 +566,6 @@ function ValidationSanitizeProperties(C, item) {
 function ValidationSanitizeEffects(C, item) {
 	const property = item.Property;
 	let changed = ValidationSanitizeStringArray(property, "Effect");
-	changed = ValidationSanitizeLock(C, item) || changed;
 
 	// If there is no Effect array, no further sanitization is needed
 	if (!Array.isArray(property.Effect)) return changed;
@@ -600,133 +582,6 @@ function ValidationSanitizeEffects(C, item) {
 			return false;
 		} else return true;
 	});
-
-	return changed;
-}
-
-/**
- * Sanitizes an item's lock properties, if present. This ensures that any lock on the item is valid, and removes or
- * corrects invalid properties.
- * @param {Character} C - The character on whom the item is equipped
- * @param {Item} item - The item whose lock properties should be sanitized
- * @returns {boolean} - TRUE if the item's properties were modified as part of the sanitization process (indicating the
- * lock was not valid), FALSE otherwise
- */
-function ValidationSanitizeLock(C, item) {
-	const property = item.Property;
-	// If there is no lock effect present, strip out any lock-related properties
-	if (!Array.isArray(property.Effect) || !property.Effect.includes("Lock")) return ValidationDeleteLock(property);
-
-	const lock = InventoryGetLock(item);
-
-	// If there is no lock, or the item in its current state does not permit locks
-	if (!lock || !InventoryDoesItemAllowLock(item)) {
-		return ValidationDeleteLock(property);
-	}
-
-	let changed = false;
-
-	// Remove any invalid lock member number
-	const lockNumber = property.LockMemberNumber;
-	if (lockNumber != null && typeof lockNumber !== "number") {
-		console.warn("Removing invalid lock member number:", lockNumber);
-		delete property.LockMemberNumber;
-		changed = true;
-	}
-
-	const lockedBySelf = lockNumber === C.MemberNumber;
-	const ownerNumber = C.Ownership && C.Ownership.MemberNumber;
-	const lockedByOwner = (typeof ownerNumber === 'number' && lockNumber === ownerNumber);
-
-	// Ensure the lock & its member number is valid on owner-only locks
-	if (lock.Asset.OwnerOnly) {
-		const selfCanUseOwnerLocks = !C.IsPlayer() || !LogQuery("BlockOwnerLockSelf", "OwnerRule");
-		const lockNumberValid = (lockedBySelf && selfCanUseOwnerLocks) || lockedByOwner;
-		if (!(C.IsOwned() || typeof ownerNumber === 'number') || !lockNumberValid) {
-			console.warn(`Removing invalid owner-only lock with member number: ${lockNumber}`);
-			return ValidationDeleteLock(property);
-		}
-	}
-
-	// Ensure the lock & its member number is valid on lover-only locks
-	if (lock.Asset.LoverOnly) {
-		const hasLovers = !!C.GetLoversNumbers().length;
-		const ownerCanUseLoverLocks = !C.IsPlayer() || !LogQuery("BlockLoverLockOwner", "LoverRule");
-		const selfCanUseLoverLocks = !C.IsPlayer() || !LogQuery("BlockLoverLockSelf", "LoverRule");
-		const lockNumberValid = (lockedBySelf && selfCanUseLoverLocks) ||
-			C.GetLoversNumbers().includes(lockNumber) ||
-			(lockedByOwner && ownerCanUseLoverLocks);
-
-		if (!hasLovers || !lockNumberValid) {
-			console.warn(`Removing invalid lover-only lock with member number: ${lockNumber}`);
-			return ValidationDeleteLock(property);
-		}
-	}
-
-	// Sanitize combination lock number
-	if (typeof property.CombinationNumber === "string") {
-		if (!ValidationCombinationNumberRegex.test(property.CombinationNumber)) {
-			// If the combination is invalid, reset to 0000
-			console.warn(
-				`Invalid combination number: ${property.CombinationNumber}. Combination will be reset to ${ValidationDefaultCombinationNumber}`
-			);
-			property.CombinationNumber = ValidationDefaultCombinationNumber;
-			changed = true;
-		}
-	} else if (property.CombinationNumber != null) {
-		delete property.CombinationNumber;
-		changed = true;
-	}
-
-	// Sanitize lockpicking seed
-	if (typeof property.LockPickSeed === "string") {
-		const seed = CommonConvertStringToArray(property.LockPickSeed);
-		if (!seed.length) {
-			console.warn("Deleting invalid lockpicking seed: ", property.LockPickSeed);
-			delete property.LockPickSeed;
-			changed = true;
-		} else {
-			// Check that every number from 0 up to the seed length is included in the seed
-			for (let i = 0; i < seed.length; i++) {
-				if (!seed.includes(i)) {
-					console.warn("Deleting invalid lockpicking seed: ", property.LockPickSeed);
-					delete property.LockPickSeed;
-					changed = true;
-					break;
-				}
-			}
-		}
-	} else if (property.LockPickSeed != null) {
-		delete property.LockPickSeed;
-		changed = true;
-	}
-
-	// Sanitize lock password
-	if (typeof property.Password === "string") {
-		if (!ValidationPasswordRegex.test(property.Password)) {
-			// If the password is invalid, reset to "UNLOCK"
-			console.warn(
-				`Invalid password: ${property.Password}. Combination will be reset to ${ValidationDefaultPassword}`
-			);
-			property.Password = ValidationDefaultPassword;
-			changed = true;
-		}
-	} else if (property.Password != null) {
-		delete property.Password;
-		changed = true;
-	}
-
-	// Sanitize timer lock remove timers
-	if (lock.Asset.RemoveTimer > 0 && typeof property.RemoveTimer === "number") {
-		// Ensure the lock's remove timer doesn't exceed the maximum for that lock type
-		if (property.RemoveTimer - ValidationRemoveTimerToleranceMs > CurrentTime + lock.Asset.MaxTimer * 1000) {
-			property.RemoveTimer = Math.round(CurrentTime + lock.Asset.MaxTimer * 1000);
-			changed = true;
-		}
-	} else if (property.RemoveTimer != null) {
-		delete property.RemoveTimer;
-		changed = true;
-	}
 
 	return changed;
 }
