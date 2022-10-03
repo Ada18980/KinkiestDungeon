@@ -1,0 +1,8 @@
+Load
+Laden
+Save
+Speichern
+Return
+Zurück
+Save or load your favorite appearance
+Speichere oder lade deine Erscheinung

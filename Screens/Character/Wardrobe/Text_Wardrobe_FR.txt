@@ -1,0 +1,8 @@
+Load
+Charger
+Save
+Sauvegarder
+Return
+Retour
+Save or load your favorite appearance
+Chargez ou sauvegardez vos apparences favorites

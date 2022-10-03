@@ -1,0 +1,90 @@
+/* Fixes for square overflow in Firefox (overwrites default styling) */
+.row-5277c {
+  display: flex;
+}
+
+.clearfix-7da63 {
+  display: none;
+}
+
+.notation-322f9 {
+  right: 0;
+  width: auto !important;
+  padding-right: 3px;
+}
+
+#DivChessBoard {
+  padding: 0;
+	margin: auto;
+	outline: none;
+	display: block;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+}
+
+#DivChessBoard > div {
+  width: 50vw;
+}
+
+#DivChessBoard > div > div {
+  width: 50vw;
+}
+
+#DivChessBoard > div > div > div {
+  width: 50vw;
+  height: 6.25vw
+}
+
+#DivChessBoard > div > div > div > div {
+  width: 6.25vw;
+  height: 6.25vw;
+}
+
+#DivChessBoard > div > div > div > div > div {
+  width: 6.25vw;
+  height: 6.25vw;
+}
+
+#DivChessBoard img {
+  width: 6.25vw;
+  height: 6.25vw;
+}
+
+@media (min-aspect-ratio: 2/1) {
+  #DivChessBoard {
+    width: 100vh;
+    height: 100vh;
+  }
+  #DivChessBoard > div {
+    width: 100vh;
+  }
+
+  #DivChessBoard > div > div {
+    width: 100vh;
+  }
+
+  #DivChessBoard > div > div > div {
+    width: 100vh;
+    height: 12.5vh;
+  }
+
+  #DivChessBoard > div > div > div > div {
+    width: 12.5vh;
+    height: 12.5vh;
+  }
+
+  #DivChessBoard > div > div > div > div > div {
+    width: 12.5vh;
+    height: 12.5vh;
+  }
+
+  #DivChessBoard img {
+    width: 12.5vh;
+    height: 12.5vh;
+  }
+}

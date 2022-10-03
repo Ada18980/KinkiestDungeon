@@ -1,0 +1,16 @@
+Accept
+Принять
+Cancel
+Отменить
+Default
+Стандартный
+Many
+Много
+Next page
+Следующая страница
+Whole Item
+Весь предмет
+All
+Все
+undefined
+неопределенный

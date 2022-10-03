@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"lib": ["es2018"],
+		"checkJs": true,
+		"strict": true,
+		"noImplicitAny": false
+	},
+	"include": [
+		"../../Assets/Female3DCG/Female3DCG_Types.d.ts",
+		"AssetCheck.js"
+	]
+}

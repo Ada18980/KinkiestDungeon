@@ -1,0 +1,1177 @@
+1.2 (Apr 10 2021)
+- First Beta Release
+
+
+1.3 (May 2021)
+Loot and Rewards
+- Added locked chests which are scattered around the dungeon. Each floor is guaranteed to have at least one locked chest but is likely to have more be locked. You can either pick them or unlock them
+- Added key drops and lockpick drops around the dungeon. You can find them in debris piles, but not chests.
+- Added handcuffs trap, which places a set of handcuffs on you that has a guaranteed lock on it
+- Added harness trap, which locks you in a harness that makes it easy for enemies to grab onto you
+- Added a kinky belt trap to keep you aroused
+- Added various other restraints from chests
+- Added scaling to the kinds of locks you encounter:
+- New locks:
+	Red locks are the most common in early levels, and can be only opened with red keys.
+	Green locks are less common, and have a chance of jamming, making them impossible to unlock.
+	Yellow locks require both a red and a green key to unlock.
+	Blue locks require blue keys, and can't be picked or cut off.
+Shrines
+- Added Shrines! These allow you to offer gold and will basically take restraints off in exchange.
+- Shrines for the goddesses of the elements, conjuration, and illusion who grant spells
+Balance
+- Made the rope snare have a 3 turn delay rather than a 1 turn delay, and a range of 1. This limits its in-combat use, while retaining its long duration and level 1 classification
+- Willpower no longer regenerates, instead you must find a willpower shrine to regenerate your willpower. The cost increases exponentially.
+- Conjure Slime now doesn't last forever, but stuns enemies for longer
+- Various other tweaks and fixes
+Mechanics
+- Enemies now have resistances and weaknesses. Discover them the hard way!
+- Miscast chance: While aroused, you have a chance of spells being either cast on your position or blowing up in your face and hitting you!
+- When you click on an open door, you have an option to close it
+- Some enemies (like the new witches) can open doors! Beware!
+- Vibrators have a charge which is increased by casting spells.
+New Enemies:
+- Added a new enemy, a rope snake that sacrifices itself to wrap you up!
+- Shock witches that cast electrical spells at you from a distance
+- Chain witch who fights by throwing chains at you. She will attempt to close the gap, and will lock the chains in place if she gets near!
+- Slime witch that hurls slime balls and conjures pools of slime at you! She is a formidable opponent, be careful not to get trapped against her as she can create tremendous amounts of slime!
+Spells
+- Electrify spell which is a delayed blast that also briefly stuns
+- Chain bolt spell which stuns enemies
+- Slime ball spell which conjures a ball of slime that leaves a sticky trail. Use with caution!
+- Shield and Barrier, two Conjuration spells for blocking projectiles
+- Shroud, a defensive spell which makes melee more difficult inside an area
+- Mistcall and Leap, teleportation spells with different strengths and weaknesses. Mistcall uses verrbal components so it can be used to escape from a sticky situation.
+Other
+- New brickwork visuals
+- The map has more doors, but some of them will be open at the start of the game. You can close them to prevent zombies from chasing you.
+- Added Undressing System. Certain things will pull clothes off, you gain distraction when this happens and visually will blush when extremely naked and aroused.
+- You can now hear the last chat message while ingame!
+- The game is persistent so if you hear chat you can exit out and communicate
+
+1.4 (June 2021)
+Features
+- Streaming mode to watch your friends play!
+
+1.51 (Aug 2021)
+Features
+- Enhanced graphics. Bullets, enemies, and the player all move fluidly across the screen now!
+- Some balance changes to struggling, too many to count
+- Mana system: Casting spells builds up mana, which lowers your stamina until you drink a mana potion or restore it at a shrine.
+- Enemy AI is now more diverse. Minion-type enemies such as zombies will now ignore you if you are harmless (cant cast any spells + arms and legs bound)
+- Removed the mummies shrine to focus on lockable restraint types
+- Restraints are now saved in the inventory and can be viewed
+- Added the Goddess of commerce, who has an item shop that sells potions
+- Inventory system with potions! Willpower potions keep you in the fight, stamina potions enhance your drive for combat, mana potions reduce the paralyzing effects of mana exposure, and bitter potions help suppress distractions
+- You can't use potions if your hands are covered or unavailable
+- (WIP TODO) The shop costs more as the game goes on
+- New floor: The catacombs, full of skeletons and rats and necromancers!
+ - Skeletons utilize a variety of ropes and chains
+ - Necromancers can summon more skeletons
+ - (WIP) Trapped floors and doors
+ - (WIP) Bondage gates which require you to be wearing a certain type of restraint to pass
+- (WIP) Can put on certain types of restraints as part of self bondage
+- (WIP) Dropping potions, items, etc, especially while naked
+
+1.52 (Aug 2021)
+Features
+- Some balance changes to struggling, too many to count. Should be less random now.
+
+2.0 (January 2022)
+Gameplay Overhaul
+- Removed willpower. Stamina is the primary resource now for determining whether the player gets captured
+- New consequences when an enemy closes the gap and you have 0 stamina
+- Stamina is overhauled. It does not regen except when sleeping. You can click a button to sleep for 20 turns to regain 20 stamina. If you are attacked then you wake up automatically, but you are blinded while sleeping so you won't be able to see enemies coming. You can cancel sleep by hitting any key.
+- Mana is now a separate resource. It does not regenerate, but mana potions can restore it.
+- Each shrine now has a mana pool. You can drink mana from any of the mana pools once per floor without repercussions. This restores your mana fully. Drinking more than once on the same floor (from any number of shrines), however, has a chance to backfire.
+
+UI Changes
+- Changed the stat bars visually
+- Added Buttons to drink stamina/mana potions without going to the inventory
+- Added restart button and confirmation screen
+
+Content
+- New Spell Point system: You can learn new spells by spending points. Find spell points in chests and on special orbs, but be wary of angering the gods
+- New curse system: Items which are Cursed can not be struggled out of, but can be unlocked if you meet their condition
+- Added shortcuts, on floor 3 there is a stairway to a new (unfinished) tomb area with a different tileset
+- Reputation system that affects certain enemy spawn rates
+- New rope themed enemies that appear more often if you annoy the rope goddess
+- New spell: Ice Breath, creates icicles that deal damage
+- Added a new spooky illusion Enemy
+- New enemies: samurai, ninjas, mummies
+- new bolt cutters weapon
+- Some doors have a chance to be locked
+- Added helpful (or unhelpful) adventurer ghosts that may assist you with struggling. Careful not to rely on them too much as they might enjoy seeing you bound!
+- New special pressure-plate traps (that are often the only way through if you dont have a key to unlock a door)
+- Enemies now have pathfinding! They should be a bit harder to evade now.
+- Some enemies now hunt along defined patrols rather than at random
+- Enemies now have a 2 turn delay before they start chasing you
+- Added grates you can squeeze through
+
+TODO (expecting to get this done soon):
+-Dream hunter or something
+-Add max SP, MP, and AP upgrades as a rare drop in chests
+-Make it so rope snare can't target spaces with enemies
+-Panel gag, Legbinder and bolero jacket restraints
+-Latex goddess and restraints
+-Shock plug that stuns you at high distraction
+-View buffs/penalties as a 3rd option for the struggle display
+-Aura spells that reduce max mana and mana regen
+-Contract spells Attached to a restraint
+-Etheral enemies
+-Return items to inventory if they get replaced
+-ESP spell that boosts vision range (or allows vision through walls in a short radius?) and reveals stealth
+
+Other Features
+- Knives now use the same random-number-of-uses mechanic as lockpicks which gives some guaranteed uses
+- Picks, Knives, and Red Keys are now in the shop
+- Gagged mumbling while moving around
+- More flavorful text when waiting
+- Made the player character more expressive based on stamina, mana and distraction
+- Removed green and yellow locks (too much bloat)
+- Only one shrine of each type per floor
+- If you are bound with shrine-able restraints, one random restraint type will be guaranteed to have a shrine on the next level
+- Removed enemy friendly-fire in most cases
+- Button to toggle automatic door-closing
+- Walking around with a plug inside of you will arouse you
+
+Bugfix:
+- Enemies with high attack width will now hit you properly even if you sidestep (as long as you are within range)
+- Enemies that attack while moving will no longer hit you if they move at the same time that you do such that you are still in range, even if you dodged last turn's warning tiles
+- Multiple enemies will no longer be spawned on the same tile
+- Blue locks can no longer be picked, as all things should be
+- The quick potion buttons no longer bypass being bound or gagged.
+- You can now pay shrines if the amount of gold you have is exactly the cost
+
+2.1
+- The player can now be dragged by enemies while wearing a leash
+- New status effects: Freeze, slow, and bind. Chains, ice, slime, etc have been moved over
+
+2.2
+- Fixed a bug where projectiles would pass through a target without harming it
+- New spell: Incinerate, deals damage over time in a 3x3 area
+- New spell: Bomb, deals damage after a delay in a 3x3 area
+- New spell: Crackle, deals damage in a line and stuns briefly
+- New spell: Shadow Dagger, a dagger that passes through enemies and walls, but only deals 1 damage
+
+2.3
+- Chests don't appear while there are jailers
+- New spell: Invisibility
+- Balance changes
+- Buffs to the bast clerics so they stun
+- Buffs have been changed and evasion works differently (diminishing returns)
+- New area: Underground jungle
+- Save feature
+- Upgrades for MP, SP, and AP in spell menu
+
+2.31
+- You can struggle a few times before it tells you it's impossible
+
+2.32
+- Fixed bug where the player is invisible inside a grate
+- Fixed bug where the game would crash if an enemy put a type of ankle cuffs on you
+- New barred prisons
+- Fixed unreal number of jailers
+- Changed saving. No more punishment
+- Fixed so numpad is treated as buttons
+- Keybindings are now saved to the browser
+- Periodic guard checkups in jail
+
+2.33
+- Fixed the infinite tickle ghost
+- Fixed shop crash
+- Removed exit button for standalone version
+- Fixed long-distance leashing by assassins
+- Reduced assassin spawning weight
+- Sleep doesnt restore stamina until the 1st turn of sleep is over
+- Released the kraken. Do not anger the rope goddess
+
+2.34
+- Fixed a bug where doors would stay locked after a jailer opened it
+- Fixed spell levels and points not resetting on a restart
+- New decoy and wall spell
+- Reduced assassin spawn rate and made clerics appear in all levels in the egyptian suite
+- Make prison easier at low security levels
+- Some new latex content
+- Fix save game being wiped!
+- Can change appearance!
+- New spells: Shadow Slash, Familiar, Golem, Fire Elemental, Storm Crystal, Shadow Warrior, and Lightning Bolt
+- Many spells have smmarter targeting, so you wont waste mana casting summons on an enemy space
+
+2.4
+- New sound effects for dealing damage, locked doors, picking items, etc
+- Organized the spell lists by component
+- New spell: Darkblade
+- UI now lists spell commponents
+- Nerfed shadow warrior
+- You can now wash slime off at mana pools
+- Slime now hardens after a while, changing from struggle to cut
+- Patrolling enemies no longer congregate in one location and become stuck permanently
+- Many restraints are now removed when you are imprisoned
+
+2.41
+- New conjuration enemy, if you annoy the goddess too much
+- Armor no longer effects most forms of spell damage
+- Submissiveness now can double trap chance at max level, but also doubles spell point chance
+- Added punishment for latex shrine
+- Fixed max stats not being loaded properly
+- New dragonslayer enemies associated with the leather goddess
+- 'Reset Appearance' button
+- Fixed a bug where everything was taking one turn longer than it should in order to hit the player.
+- Enemies now notice you less when you are wearing many restraints
+- New spell: Corona
+- Fixed assassins throwing shurikens through walls
+- Fireball mana cost to 9 from 10
+
+2.42
+- Rope tentacles now die if there is no more kraken on the map
+- Dragonhearts AI is now set to patrol
+- Enabled fast movement via pathfinding
+- Stat upgrades now work with any school of magic
+- Assassins no longer have stealth
+- Dragonhearts can now open doors T_T
+- Added ninja assassin with stealth (but no shuriken or stun)
+
+2.43
+- Auto struggle has been added
+- Message log has been added
+- Shrunk the Close Doors toggle
+- Moved Cut to be after Struggle rather than after everything else
+- Most enemies will not cast spells at the leashed player
+
+2.44
+- Necromancer now summons normal skeletons
+- Added a fourth and fifth spell slot, purchaseable in the spells menu
+- New elemental enemies if you annoy the elemental goddess
+- New obsidian restraints with a unique set of arm cuffs
+- Fixed enemies with spells crashing the game
+- Cosmetic changes to healthbars
+- Page headers and fast buttons for the new spell selection menu
+- Fixed bug with spells dealing damage 1 turn too late to the player (and enemies!)
+- Shadow warrior HP buffed from 8 to 11
+- Fixed a bug with text replacement when getting attacked and viewing the log
+- Fixed a bug that would cause the saved outfit to get overridden by the prisoner outfits
+- Stamina potion now heals 12 instantly and then 24 over 12 turns
+- Buff familiar Hp from 6 to 8
+- Reduce allied fire elemental spell CD by -1
+- Decoy hp to 12 from 15
+- Added a limit to the number of permanent summons you can have
+- Added a floating ball gag with the rope goddess
+- Added smoke bomb and invisibility potion
+- Added earth and ice runes and gave loot to elemental enemies (whoops...)
+- Water elemental now binds with her song
+- Added two new maid enemies if you annoy the illusion goddess.
+
+2.45
+- Fix crash when your minion tries to hit a ninja stalker
+- Fix infinite spells in place when you misfire a piercing spell (such as Crackle or Shadow Blade)
+- Fix wrong menu button positions on the loss screen
+- Added mitigation for key held down issue, clicking anywhere in the UI should reset the key array
+- Multiplied enemy hp by 10 (visually, internally there are no changes)
+- Tuned the floating numbers to make them always present integers
+- Added spell to increase summon cap
+- Gag mumbling no longer tracked in the log
+- Added maid stalker enemy and a maid who means business
+- Boosted priority of torso grab message and added a sound
+- Torso grab will only occur if you are not already slowed
+- Torso grab will no longer occur if your summons are fighting an enemy
+- Added a taser guard if your security is high
+- Killing the guard now increases security
+- Added a maid miniboss who is a remote holder
+- Added squeezing, slimes, mice, and ropes can now move through bars and don't avoid grates
+- Fixed bug with swords being impossible to pick up
+- Optimized restraint finding loop to improve performance
+- Stopped ropes and other items from being locked by the maids
+- Enemies with linear attacks (like shurikens) need projectile-level clearance to launch their attack
+- Shadow dagger now does 2 damage and costs 2 mana
+- Shadow dagger will no longer doublehit enemies sometimes
+- Enemies that are not jailers will still sound the jail alarm and make all enemies go for you in the cell
+- Obsidian cuffs can now be escaped with the help of a ghost
+- More helpful messages when you are struggling, explaining if you are using a ghost's help or using a tool
+- Weapon is now unequiped on defeat
+- You can now hover over the player graphic to show struggle groups even with struggle groups hidden
+- Surrendering now increases submissive rep
+- Floating text shows reputation gain/loss
+- Ghosts now have immunity to chain and glue attacks
+- Slime ball nerfed to 5 damage onhit (still does 4 on trail hit)
+- Picking up potions now gives a potion sfx
+- Increased priority of sword messages
+- Synchronous text messages now correctly replace the current message if the current one would expire on the same turn
+- Maid collar is now locked properly
+- Made Invisibility spell more effective... it still won't make you undetectable for more than a few casts, but enemy awareness will wear off faster if they are unaware
+- Parasol now has a minimum spellcast range for her hairpins (she will still buff allies even if you are close to her)
+- Piercing spells now damage ghosts and tickle hands in walls
+
+2.46
+- If there are bullets on the screen then fast move will get suppressed.
+- Being jailed doesn't send you back as far
+- Attempted to fix inventory being incomplete (catsuits, etc)
+- Added potion counts to the sidebar
+- Gave Maidforce Master Plan a restraining device spell
+- New 'quick inventory' for using consumables
+- Some expressions no longer stick forever
+- Storm crystal now has melee resist
+- Reduced ice elemental AoE damage vs player minions
+- Player summons now have resistances
+- Shadow warrior and familiar now have +100% evasion.
+- Decoy evasion now +200% from +400%
+- Drinking from a shrine now drains 2 rep instead of 1
+- Changed around some damage types
+- New armbinder harness trap that makes the armbinder harder to escape
+- New alchemist potion that she throws at you
+- New Air Elemental spell (instead of just casting electrify)
+- Blind level now correctly lowers accuracy
+- Can no longer blink into dark squares
+- Melee costs 1SP now
+- Automove is only paused if a bullet enters a tile next to you
+- Fast move suppression is no longer blocked on mobile
+- Increased submissive reduction for killing minibosses, added a little for elites
+- Many enemies now have the ability to toss your weapon away!
+
+2.5
+- Knives and lockpicks are now rarer, but last longer
+- Improved enemy AI. Higher-ranked enemies will swap places with lower ranks
+- Enemies will come to track you down if you sleep a lot
+- Increased blink mana to 8 from 4
+- Changes to loot tables
+- Traps are now 50% less likely with no enemies killed, rather than 100%
+- Heavy guard now binds normally instead of waiting
+- New spell: Iron Blood
+- Implemented layered items. You can now put an armbinder over ropes and this will make the binding extra secure and snug!!!
+- Familiar now has +33% evasion, from +100%
+- Resistance/weakness calculations no longer round down
+- Reputation gain is now linear. Relish in the gloriousness of round numbers
+- New enemy: alkahestor and latex elemental
+- Power of enemies nerfed across the board
+- Rebalanced tool/struggle costs. 1 for struggle, 0.25 for remove, 0.1 for picking and cutting
+- Chase waves now only happen after ~90 turns of sleeping and hunters spawn after 150 turns of sleeping
+- Iron blood now multiplies stamina cost by 0.2x
+
+2.51
+- Added targeting line for bolt spells
+- Made goddesses anger if you try to drink with 0 rep
+- Decreased enemy count in the jail
+- Golem now has grope resistance and HP 30 (from 24)
+- Storm crystal is now immune to electricity (instead of resisting)
+- Sleepiness now gives a penalty to attack stamina drain
+- Fixed a bug where an ally missing an attack displayed text that it misses you.
+- Fixed drool lasting forever, added tears when being leashed
+- Struggle progress bar
+- Zombie warrior does 5 damage instead of 1
+
+2.52
+- Iron blood lasts till the end of the floor
+- Some balancing changes to sleep waves
+- Fixed weapons not costing the right amount of stamina
+- Added wait button
+- Dex created a system for the guards to take you on a tour of the jail :)
+- Tweaked various difficulties of restraints, Remove is generally slower but costs less stamina
+- Changed up the elemental weights a little
+- Added tooltips so you can view enemy names
+
+2.53
+- New spell: Flame blade
+- Axe now cleaves
+- Hammer now knocks back
+
+2.54
+- Passive spells can now be toggled by clicking on them in the UI
+- Reputation numbers in the rep screen
+- Darkblade now lasts for 5 attacks or 50 turns, whichever is longer
+- Added tooltips and visual distinction for shrines
+- Removing restraints now requires an edge like an altar or opened
+- Struggling makes noise
+
+2.55
+- Hotfix for no loot from chests
+
+2.56
+- Blue locked chests should now have better loot
+- More visual cues for loot and restraints
+- Obsidian cuffs should now get linked if you are defeated
+- Hammer damage reduced from 6 to 5
+- New spell: Truesight
+- New spell: Heart Sense
+
+2.57
+- Fixed the text display from chest gold
+- Added noise factor to many spells
+- Enemy chase AI improved and fixed in a lot of cases
+- Flash stun duration to 3 from 5
+- Greater flash mana cost to 6 from 8
+- Focused flash mana cost to 9 from 12, duration to 14 from 20
+- Gold rebalanced
+
+2.58
+- New spell: Fissure
+- New spell: Floating Weapon
+- Ancient Tombs now has 1 more shrine and 1 more chest than other levels
+- Fixed bug with spells not toggling properly
+- Reverted exponential shrine costs
+
+2.59
+- Lowered weights for picks and knives
+- Lowered weights of stamina pots
+- Made most trap restraints harder
+- Floating weapon is now level 3 properly
+- New Drone enemy (metal goddess)
+- Attempting to fix jail stuff
+
+2.5.10
+- Added new wolfgirl enemy (metal goddess)
+- Attempted to fix the obsidian cuffs glitch for the jail
+
+2.6.0
+- Improved leashing system in the jail
+- Fixed obsidian cuffs being broken
+- Added new messages to tell you that an item's strictness is blocking you from escaping
+- Fixed item layering in general
+- New weapons: spear, flail, staff of flame, staff of binding
+- Binding chain binds for 10 turns instead of 6
+- Added caches, which can contain your items in jail but require a locked door to reach.
+- Bomb damage now 10 from 8, fuse time 5 from 6, now has 1 turn channel
+- Rebalanced restraints so harder ones need higher levels to get trapped in
+- Fixed quick inventory overlapping with the main UI
+- Item strictness only affects nearby items; display strictness impact in HUD
+
+2.6.1
+- Added tooltips to the item shop
+- Added buttons for rescue in the reputation menu
+- Fixed crash when loading save, enemy pathing, and when leashed
+- Fixed being slowed after sleep
+- Improved jail pathfinding
+
+2.6.2
+- KEYBINDINGS MUST BE REDONE, but now you can use numpad or space/enter/etc
+- You may now offer gold to the goddesses to improve your reputation. Be sure to hold up your end of the bargain.
+- Portal range up to 5 from 3
+- Portal mana cost to 6 from 4
+- Blink range down to 3 from 5
+- Blink is now instant
+- Added a hotkey to return to game (from inventory/note/magic screens)
+- Added a checkbox for faster waiting
+- Added orgasm and edging
+- Some pathing changes to reduce enemies getting stuck
+- Jailer now drags you back into the cell before taking off the leash
+- Jailer wont get stuck pathfinding just cause you're in the way
+- Being yanked by tether wakes you up
+- You now save every 5 floors instead of 10, unless you are in a side area (like ancient tomb)
+
+2.6.3
+- Gain submissive rep for following the jailer (only while you have stamina)
+- Iron blood no longer reduces slow level
+- New passive spell: Cat's Grace
+- Flame blade now requires a weapon to use
+- Can no longer finish casting a spell if you dont meet the components
+- Spear now costs 1.5 sp to use
+- When grabbed it tells you which restraint resulted in the grabbing
+- Various items will only be applied if you are at a lower level of stamina (like armbinders, jackets)
+- Fix crash when clicking chests
+- Iron blood now increases spell mana costs by 25% (rounding down)
+- New wolfgirl panties
+- Can now self-bind
+- Conjurer uses a new restraint now
+- Wolfgirls now get stunned if they miss the dropkick
+- Sleep and stamina potions now scale with max stamina
+- You may now find coins in unexpected places
+
+2.6.4
+- Skip button now cancels spell targeting
+- Reworked state machine for attacks. Wolfgirls, bast warriors, mummies, zombie warriors should be more consistent
+
+2.6.5
+- New enemies: Dryad, Bat, Patrol Unit, Enforcer Unit, Pixie, Orb of Light
+- Catgirls now have tails
+- Added new lore to the ancient tombs and jungle
+- Staff of binding duration up to 4 from 3
+- Pressing skip now closes out reputation menu options (back to the main screen instead of penance/rescue screens)
+- Fixed a crash when looking at a blue locked chest
+- Enemies (including the leash guard) should now recalculate if she gets stuck
+- Added new messages for unlacing corsets
+- Heavy Latex Corset now has a min remove speed and a max remove speed
+- Fixed a bug where the stairs were inside the cache
+- Can no longer equip knife in inventory
+- Guards now put you in the high security uniform, so there is time to fight your way out first!
+- Getting hit with rope kraken spells should now interrupt sleep
+- Rebalanced enemy weights to favor creatures native to the level
+- Greater skeleton now has 1 armor (he has a shield)
+- Ninjas now have pierce weakness and no longer have melee weakness
+
+2.6.6
+- Unarmed accuracy is not decreased by a single (nonblocking) restraint
+- Leg irons and cuffs that link your feet (and hobbleskirts) now give you a minimum of 2 slow level
+- Truesight now reduces your blind level by 1 while active
+- Enemies now have an indicator to show their spells are off cooldown
+- New collar: Tracking collar, applied by robots
+- Wolf Collar now shocks if you attack/cast verbal spells
+- Enemies now don't bind you as tight unless you resist, if your submissive stat is high. However they will bind you tight still if you attacked them a lot
+- Shrine base costs now scale with restraints/missing stamina/mana
+- New enemies: elf druid and elf ranger
+- Reduced availability of blue keys from goddess-specific enemies. Witches still drop them.
+- Red locked chests can have blue keys and spell points occur at a higher rate
+- Shops will rarely sell blue keys and magic knives at a hefty price
+- The ghost will now use bolt cutters if you have them in your inventory
+- Slime witches and slimes now consistently have fire resist
+- More variety in selections of enemy spawns. If you annoy one goddess, you will encounter her quite often, but if you annoy several, it will pick from a few so it's not too mismashed.
+- Drinking from a shrine more than once ever will now always be risky
+- You can now ask for a goddess to give you mana
+- Confirmation message for attacking allies or attacking a guard in jail
+- New enchanted restraints! Found in forbidden temples...
+- Jailer will only remove restraints after 90 turns in the prison
+- Added scrolls of Speech, Sleight, and Sauntering, which allow you to cast spells without components temporarily
+
+2.6.7
+- Added default outfit, when you get back from prison you can find it and get it back.
+- Added silver chests, which have above-average loot in exchange for more powerful traps
+- Added gold locks. These are impossible to unlock, and cannot be removed by shrines. After 2-4 floors, they will decay into blue locks
+- Added the enchanted grinder to help cut your way out of things
+- Increased pool drinking grace to 3 free uses (whole game), and lowered drink punish chance to 20%
+- Added fog of war (makes playing with the ancient blindfold much much better)
+- Ancient Ball Gag now has 30% miscast reduction
+- Gave the frog the projectileAttack flag
+- Added random orb button
+
+- Changed some enemy resistances:
+- - Zombies are now consistent
+- - Shadow warrior and allied fire elemental are consistent with their NPC counterparts
+- - Ninjas (and maidforce stalker) now have unarmed resistance, slash resistance ("they say a ninja can stop a sword with her hands"), and weakness to glue and chain attacks
+- - Frog now has electric weakness (water)
+- - Removed magic weaknesses from animated armor, since I'm not sure why fire/electrity would be resisted while ice wouldn't be
+- - Mimic now has melee resist and crushweakness. Still has electric resist since wood is not conductive, but took off glueimmune since it's not really the slime type of mimic
+- - Vine plants are now vulnerable to cold (basically shadow/necrotic) damage
+- - Latex elemental now weak to cold/shadow, and pierce, and resistant to electricity (because rubber)
+- - Red slime now consistent with other slime weaknesses
+- - Robots are now weak to piercing and severely weak to crush, but I increased the HP of drones and patrol units by 20%
+- - Wolfgirls arent wearing armor, so they have pierce and slash weakness, but I boosted the disarm value of the trainer
+- - Bandits have chain and glue weaknesses (weak to binding)
+- - Dragonhearts are more consistent with their types
+- - Elementals have more pronounced weakness, earth elemental is resistant to melee except crush
+- - Dryads have slash weakness
+- - Chain witch now weak to crush and fire, but has 33% more HP
+- - Baast enemies have cold resist (embalmed against necrotic damage), fire weakness due to being undead
+
+2.6.8
+- Can now always see diagonal tiles while heavily blindfolded
+- Spell shrines now cap out at level 5 and you can offer 100g at them for 1 rep afterward instead
+- Fixed traps trying to overwrite ancient restraints
+- Scroll of Purity, a new item that removes vibrators from your body. Available in the shop.
+- Added a new, stealthy rope artist
+- You can go back to 0 security level, but only if submissive is higher than 50
+- Fixed slow level counting weirdly for stamina-dependent restraints like hogties
+- Added a timer for the jailer to automatically move to the next waypoint in leash tours
+- Unarmed attacks now cost 1 stamina
+- There are low-rarity weapons available in the shop
+- Autosave now happens after every floor
+- New difficulty level that doesn't provide save codes
+- Fixed the RNG, should have much higher entropy now
+- Added two new zombies
+- Added a new skeleton
+- Added some new bandits
+- Modified kiting mechanics a little so enemies with a melee attack will sometimes stop to make a melee attack instead of always running away. orbs and other 'helpless' enemies won't do this.
+
+2.7
+- Obsidian/Mithril cuffs should finally be fixed and no longer create weird invisible items
+- New tiers of plugs from chests
+
+Content
+- New area: Lost Temple
+- Added leather and scale cuffs
+
+Balance
+- Ice Shard now stuns for 6 turns (from 10), costs 5 mana (from 8)
+- Shadow Slash costs 4 mana (from 6), deals 45 damage (from 50)
+- Corona costs 7 (from 8)
+- Enchanted heels drain more energy
+- Shadow Warrior now costs 10 mana (from 12)
+- Invisibility now costs 8 mana (from 9)
+- Shadow dagger now does 3 damage (from 2) and has 6 range (from 10)
+- Shroud now has a weaker blinding effect on the player
+- Enemies with shroud-like effects (MaidForce Unseen Blade) now cast a different version of Shroud which does not buff player evasion or sneak, but only gives half the evasion boost to enemies
+- Rebalanced enemy flinch (stun) resistance, and made stun resistance also reduce freeze, bind effects
+
+Changes
+- New changes to light propagation
+- Truesight now works better in low-light environments
+- Fixed some bugs, including being attacked in jail for no reason (besides teasing) and (hopefully) the bug where a different inventory item is removed than the one you are using, causing visual issues
+- Fixed a bug where enemies that squeeze through bars could push animated armors into bars
+- Enchanted items are now prepended to the restraints list so they're easier to find
+
+2.7.1
+- Changed map generator, should have some subtle effects
+- Fixed a very rare map generation glitch that happened on jungle
+- Added a pity timer for player hits, so you don't miss 4x in a row with a 70% hit chance
+- Enemies can no longer disarm if stunned or frozen
+- Shortcuts now have tiles from the tileset they lead to, near them
+- Frigid potions are now instant and reduce AP by 72 instead of 36 total
+- Added Crystal Cave (WIP)
+- Added Magic Library (WIP)
+- The struggle menu now rerquires mouseover (or click on mobile) to show the restraint buttons
+- Revamped the UI and game display, added a fullscreen toggle
+- Increased Teaser Plug cooldown to 170 turns from 130
+- Frog hitpoints to 19 from 24
+- Performance optimizations to make the game much smoother
+- You can now select some background traits at the start of the game ion order to make your run more difficult/more unique. You must take penalties in order to take bonuses
+
+2.7.2
+- Fixed a bug where enemies would drag you through a bookshelf o.o
+- Fixed strange miscast chance percentages
+- Axe, spear, cost 1.5 SP instead of 2.0 SP
+- Vibe wand weapon costs 0.15 stamina instead of 0.1
+- Armbinder chest traps now require being moderately restrained before they occur
+- Added more magic weapons
+- Fixed a bug with layering
+- Added some new enemies to the crystal cave
+- Added sleep spore hazard to the crystal cave
+- Levels like lost temple and crystal cave only sometimes have gas hazards, not every floor
+- New spell: Icicles
+- New spell: Ice Storm
+- New spell: Healing light
+- New spell: Heal
+- New spell: Afterimage
+- Replaced Shield spell with: Protection
+- Barrier mana cost to 1 from 2, duration to 5 from 8
+- Can now cast spells from the spellbook (takes 1 turn before you can cast)
+- The game now remembers which doors are open and which are closed
+- Fixed miscast chance not updating when drinking a frigid potion
+- Summoned creatures (familiar, fire elemental, golem) now follow you to the next level.
+- Miscasting a spell now only wastes a turn, no more mana loss or face-casting
+- Vibrator traps now require a chastity belt to be equipped already
+
+2.7.3
+- Analyze now has melee range but boosts damage dealt to the target for 3 attacks, and displays the target's weaknesses/resistances
+- New spell: Camouflage
+- Gag statues now apply a red locked gag, but the gag is harder to cut off.
+- Statues now have pierce weakness
+- Fixed bug where the pickaxe changes made air elementals have 0 armor instead of -1
+- Fixed a bug where the angel would aggro when you attack anything else using a cleave weapon
+- When enemies are swapped, their warning tiles are removed and their attack is cancelled
+- Shops no longer have duplicate items
+- When an item requires an enchanted knife, the cut button is now blue-tinted
+- Can no longer raise stats using spell points. Instead, you must find crystal hearts throughout the levels every 3rd, 7th, or 9th floor (9th floors only in special areas like the Tombs)
+
+Spell Balance:
+- Electrify to 5 mana from 7
+- Incinerate to 25 damage from 20
+- Ice Storm to 14 mana
+- Firebolt to 45 damage
+- Shadow dagger damage to 25 from 30
+- Slime ball mana to 4 from 8, damage to 40 from 50
+- Lightning bolt damage to 85 from 80
+- Shadow slash to 3 mana from 4
+- Crackle to 45 damage from 40
+- Binding chain speed to 3 tiles/turn from 2, cost to 2 from 3, duration to 8 from 10
+- Conjure slime mana cost to 8 from 9
+- Ice shard damage to 30 from 20
+- Ice Breath no longer affects the player
+
+2.7.4
+- Added a new potion collar that lets you use potions in exchange for some ancient energy
+- Fixed enemy weight multiplier being broken based on rep, should spawn more goddess enemies at low rep and less at neutral rep
+- Submissiveness score now downscales your stamina for the purpose of restraint thresholds, making it easier to get armbindered as a submissive.
+- Having brawler makes your unarmed attacks able to use flame blade
+- Mana potions now fully restore your mana
+- New binding mechanics! Try out binding spells, including slime spells
+- Ancient muzzle now consumes 85% less energy and multiplier is 2.5 instead of 3x
+- Shadow slash no longer makes noise
+- Ancient heels now properly consume mana on attack
+- Hearts now restore 24 stamina and mana if you pick them up and have max stats
+- Rope snare now stuns for 8 turns but applies 20 bind damage
+- New spell: Forbidden Rope
+- New spell: Summon gags
+- Added Rope weapon
+
+2.7.5
+- Base distraction decay, vibrator distraction amounts were halved
+- Wearing chastity now halves your base distraction decay
+- Unchaste now lowers it even further to 25% of base
+- Lockpicks and knives no longer appear in rubble if you have more than 3
+- Enemies are vulnerable when they miss you or when you are behind them and take extra damage
+- Enemies steal knives and picks from you now if they can bind and are humanoid (bindable)
+- New Kinky mode which only gives random spells!
+
+2.7.6
+- Changed the kill leniency system--attacks dealing 2 or less damage no longer kill enemies if the attack leaves them with 1-5hp.
+- Halved stamina cost to move while bound
+- Changed enemy spawning to spawn in clusters
+- Enemy counts generally increased slightly, but enemy difficulty should factor into the number of enemies better.
+- Increased enemy cohesiveness so they stay together
+- Enemies now alert each other in a 5 tile radius
+- Added more wonderful bound sprites by Song!
+- Vulnerable condition only gives +33% damage instead of +120% (bug)
+- New enemies: Witch's apprentice, Latex apprentice, and Summoner's apprentice
+- Monoliths don't spawn as crazy often
+- Changed binding system to work based on max hp instead. This is a nerf, but enemy struggle speed is still decreased when they are wounded.
+- New spell: True Steel
+
+2.8
+- World generation has been revamped considerably, most hallways are now 2 tiles wide, and the maps are twice as large in terms of tiles as before
+- Stamina drain from slow movement is now 0.3 stamina per slow level per turn spent moving, a 70% reduction from the original levels a few versions ago
+- There are now only 6 floors instead of 10 per area. Enemy minimum levels and such have been rebalanced for this
+- Gravitating gags and red slimes now ignore gagged players, except if summoned
+- Spell shrines now cost base of 200 instead of 100
+- Blind zombies now drop no gold, to prevent tedium from feeling like you have to clear the first stage to get maximum money
+- Regular bandits now drop less gold on average. They wouldn't be stealing if they weren't poor!
+- New enemies: Seductive Shackes and Levitating Locks
+- Only humanoid (bindable) enemies can now grab your torso (no more getting grabbed by floating handcuffs)
+- Improved enemy chasing so they won't run off in random directions now
+- New spell: Ring
+- Gags no longer block spellcasting and potions completely. Potions are less effective and verbal spells have a miscast chance. However, muzzles block it completely as usual.
+- You can now become a champion of a goddess in order to gain rep and mana by capturing humanoid enemies.
+- A new terrifying sight awaits those who escape from the dungeon's traps...
+
+2.9
+- Added barrels you can hide in! They slow you when you exit, however, and make it harder to attack out of...
+- The ghost now helps with potions and items while bound
+- New enemies: Cloud of Scarves/Cloud of Feathers/Cloud of Ribbons
+- Made the map have more interconnectivity
+- Added potion collars to the shop
+- The item shop has been reworked. It now gives much more information at a glance! Happy hunting!
+- New enemy: Toad
+- Pickpocketing does not happen while being leashed
+- Added a bola and a bomb to the shop
+- Added many new perks, some of which are game-changing, others which are good for reducing or increasing certain restraint types
+- New weapons: Flamberge, Staff of Frostbite, Staff of Permafrost
+- New restraint item you can buy from the shop: Slime Walkers, allowing you to walk on slime
+- New weapon: IceBreaker, Staff of Storms, Dollmaker's Staff
+- New set pieces have been added for some map variety
+- You no longer need arms for drinking potions and using items if you have the Psychic trait
+
+2.91
+- Fixed mana potions not scaling with MP
+- Fixed softlock in prison with guard remmoving restraints forever if you removed it first
+- Fixed Weapon effects applying even on a miss (such as flamberge still dealing fire damage)
+- Changed capture to a limit of 25 captures per level, instead of not applying to summoned enemies
+- Cleave and Pierce no longer damage allies
+
+2.92
+- Added one of the few planned content toggles: Distraction mode vs. Aroused mode, which toggles some of the more hardcore sexual stuff
+- Decoy now triggers traps
+- Added dragonslaver, a divine gift bestowed by the leather goddess
+
+2.93 (April 2022)
+- Perks are now persistent and autosave
+- New spell: Summon Rock
+- Rebalanced the perks that make restraints more difficult. They now halve the escape chance first, then apply a minor penalty, rather than applying a straight 20% penalty.
+- Added consent screen before menu if playing on standalone
+- Exhaustion from being fully aroused reduced to 0.1 per turn from 0.5 per turn
+- New jail system
+
+2.94
+- Changes to item layering (more items will layer with others, like belts over cuffs)
+- Effects like Ice restraints can now activate even if covered by something like an armbinder
+- Removed Willpower perk, added perk to increase average difficulty of restraints
+- Added Journeys, ways to customize the areas you visit in the game
+
+3.0
+- Major refactor! Saves will be broken
+- Flamberge now costs 1.25 sp instead of 1.0
+
+3.01
+- Jail doors now lock
+- Fixed issue with potion collar causing crashes
+- Experimental fix: Prevent leashers getting stuck if you get leashed into a statue
+- New spell: Enhance Power
+
+3.1
+- New system for being released after spending time in jail, enemies treat you as a prisoner and will play with you. You need to find a key to open the jail but it gets locked if enemies play with you
+- Removed multiplayer streaming in BC (too much bugs)
+- Stone Skin duration up to 50 turns from 40, mana cost 6 from 8
+- Added scrolling in consumable GameReturnToMenu
+
+3.11
+- Enemies can now take many kinds of items from the player
+- Refactored some events (Thanks Demopans)
+- Dragonslaver can now use the ranged attack separately
+- New weapon: Latex projector
+- More collars that start at level 3 and up
+- Added lesser pearly chests, which can contain gifts based on your goddess reputation, and also power crystals
+- New weapons: The Encaser and the Bondage Buster
+- Buffed Truesight and Heartsense
+- Orgasm progrress will now progress automatically and your character's hands will wander when
+
+3.12
+- Reorganized perks menu
+- New perks: Quick Draw, Quick Scribe, Disorganized
+- Bound power buffed, now increases Evasion by the same amount
+- added a ? to indicate the player is close to being spotted
+
+3.2
+- Fixed the parole system which had been majorly bugged for like a week
+- Added a dialogue system with a couple of bondage offers
+- Can now save outfits
+- Enemies won't aggro the whole map when you aggro them unless you fail to kill one in time (14 turns)
+- Made it take longer to leave prison if you get caught
+- Floating restraints and some other enemies like slimes will still attack you even on parole, but not in jail
+- Added wolfgirl, maid, dragonheart, blue catsuit, and elven dresses as outfits
+- New faction system! Enrage them by attacking and capturing their members, or please them though dialogue!
+- Enemies not hostile to you (or playing with you) now have a peace sign above their head
+- Enemies that are not yet aware of you but suspicious now have a question mark above their head
+- Golem does less damage (45 from 60) and has reduced accuracy
+- Summoned gags deal less damage (35 from 50) but now stuns for a few turns and silences longer
+- Air Elementals no longer self-stun while casting their special attack
+
+3.3
+- Enemies will now fight each other!
+- Bolt cutters do bonus damage to floating locks :)
+- Fixed water rune image
+- Smoke bomb and shroud now have a longer lasting stealth boost (8 turns)
+- Invisibility buffed to 14 turns
+- Nerfed ancient muzzle sneak boost
+
+3.31
+- Buffs are now shown in the bottom right
+- Summon AI has been tweaked to be less suicidal and stick around the player more
+- There are now a lot more traps
+- Added indicator for jail/chase/parole modes
+- Reworked struggling. Struggle is now more effective at low progress, the others are more effective at high progress. Remove and Cut use the same bar as struggling
+- Added logbook for viewing logs
+- Logs are now stored in browser localstorage instead of solely in BC
+- New interface for lore and inventory to make it easier to browse
+- Vibration rework!
+- Added multiple configs for starting perks
+- NPCs will now approach you looking to buy items
+- Rescue now grants you an angel to help you out instead
+
+3.32
+- New enemy: Skillful zombie
+- New door lock trap
+- New Ectoplasm item, gained from killing ghosts
+- Talking to shopkeepers now happens when you click on them, but you have an option to make them angry
+- New enemy: Leather Elemental, Rope Elemental
+- Allies now help you out of restraints
+- Reworked struggle system a little in order to make things less frustrating
+- Flexible now lets you use feet to hold consumables/keys/undo buckles/struggle
+
+3.33
+- New boss on floor 6!!!
+- Vibrator SFX
+- Infinite log scrolling (sort of, caps at 100 logs worth of log)
+- Reworked binding a bit
+- Refactored the system for areas (like graveyard, etc) and for linked items. Let me know if you find bugs.
+- Traps have delay of 1 again, but now vary in location slightly
+- Traps now release smoke!
+- Added purple locks, which require a command word to remove instead of a key
+- Lots of new perks
+- Goddesses now expect you to be wearing their uniform when you are their champion...
+- Shrines now remove the most powerful 3 restraints instead of all of them
+- Bondage buster now charges when held and deals up to 100 damage on a single shot after 10 turns of charging
+- Added a perk which allows bed and barrel traps to appear
+- Some reworks to the vision system
+- Rope krakens now eventually teleport you to another place on the map
+- You always need the keys now
+- Added QoL feature to easily swap spells
+
+3.34
+- Ice storm duration doubled, damage per turn halved.
+- Ice Shard damage to 40 from 30, duration to 4 turns from 6 turns
+- New spell: Freeze
+- New Toggle spell: Shatter
+- New spell: Ignite
+
+3.34.1 Bugfix/QoL
+-Added ambushing enemies to ambush faction
+-Ambushing enemies should ignore the player once exhausted and tied
+-Bed and barrel trap should be removed on leash
+-Bed and barrel trap now make noise to attract enemies
+-Limitchance is now 0 with any kind of help, even struggle
+-Only hostile NPCs can pickpocket the player
+-Alchemist's pet is now more distinctively colored
+-Player can now pick up items inside walls and bars
+-Red border that blocks fast moving only happens if an enemy starts playing with you, or if an aggressive enemy is nearby. Also won't trigger on aggressive enemies unless they are within 6 units
+-Added new game plus counter
+-Icebreaker now triggers shatter
+-Ice shard now slows, but freezes if target is already slowed or bound
+-Ice shard mana cost from 6 to 4, Ice Shard damage from 40 to 35
+-Freeze mana cost to 3 from 2
+
+3.34.2 Bugfix
+-Allied mobs get removed as soon as you threaten them
+-Binding bars should appear on enemies even at max health
+-Cant get pickpocketed inside a barrel
+-Fixed a crash with mithril ankle cuffs
+-Command word now costs mana
+-Fix orb softlock
+-Fix golems aggro sometimes
+-Fix scroll dialogue tags missing
+-New Game Plus is harder~
+-Use the inventory view for quick inventory for a unified experience (and showing damage/accuracy/etc)
+
+3.34.3 Bugfix/QoL
+- Starting perks now grant additional rep with their respective faction/goddess
+- Maid start now gives -3 points instead of -2
+- Fix bug with faction relationss growing way too quickly
+- Fix maid start being easy in distracted mode
+- Dragonslaver range reduced to 2.99 from 3.9
+- Shop dialogues now show the quick inventory
+- Shatter description fixed
+- Reduced minimum range on many spells (like monolith beam)
+- You can pass helpless NPCs but not bound NPCs that are not helpless
+- Only one commerce shrine will appear per level
+- Fixed enemies getting aggroed by you if they friendly fire each other
+
+3.34.4 Bugfix/QoL
+- New perk: Bound Crusader, which shifts the binding requirement for being a champion into the new perk
+- Kiting enemies should now occasionally stop to attack
+- Mystic locks are impassable
+- Added dominant and bound crusader traits
+- Your summons will aggro enemies
+- Fix rear/piercing button toggles being unclickable
+
+3.35 Feature Update
+- Escape buttons are now in the same order on both sides (this took surprisingly more effort to program than expected)
+- Added icons for all spells and increased the max number of spell slots from 5 to 7
+- New perk: Trespasser
+- New bound sprites by Song!
+- Jail shouldn't take off as many different types of restraints anymore
+- Added machine-translated chinese...
+- Layered restraints will now still render underneath!!!
+- Equipped layered items now show in the inventory under 'Equipped'
+- +20% max hp binding when binding a vulnerable target
+- Can now remove some layered items underneath by pressing a button to cycle through
+- Rope now costs 0.25 stamina from 0.5
+- Feather now costs 0.25 stamina from 0.1
+- Helpless enemies now need to be captured personally
+
+3.4 Feature Update
+- Many new keybindings!
+- Tying enemies no longer slows attack speed, only move speed
+- Features more diverse map generation!
+- Improved (?) Chinese translation!
+- New enemy: Deputy
+- New enemy: Magnet witch
+- Added tutorial
+- Revamped struggle system a bit... there's a few more tools to get out now...
+- A mini visual rework!
+- Healing people can befriend them and raises rep
+- Changes to distraction system
+- Made bullets easier to dodge, and added warnings
+- Golem HP reduced from 300 to 180
+- Golem now has 40% magic resist
+- Golem armor increased to 25 from 20
+- Binding chain binding reduced to 7 from 10
+- Forbidden Rope damage reduced to 30 from 50
+- New spell: Lockdown (melee range, enemy struggles slower for 8 turns, 1 mana)
+- Wall mana cost reduced to 3 from 6
+
+3.41
+- Added some more quest-like interactions
+- Added thought bubbles
+- New enemy: Librarian
+- New jail stuff
+
+3.42
+- Spells now have prerequisite spells instead of shrine levels
+- Elemental, Conjuration, and Illusion shrines now give an arcane buff instead.
+- New spell: Shock Orb
+- New spell: Light
+- New spell: Thunderstorm
+- New spell: Water Ball
+- New spell: Static Sphere
+- New spell: Lightning Rune
+- New upgrade: Temperature Play
+- New upgrade: Lightning Rod
+- Water now drenches you, same debuff as Water Ball
+- Firebolt damage to 40 from 45
+- Crackle damage to 40 from 45
+- Lightning bolt stuns for 2 turns instead of 1
+- CHanges to map enemy spawning
+- Now 5 levels per floor instead of 6
+- Frigid potions now always work at at least 50% effectiveness
+- Damaging an enemy that isn't aware of you will deal bonus damage
+- Removed Levitate; added a sprint feature instead!
+- Enter hotkey now lets you select spells in the inventory. To quickly learn a spell, click on it in the spell list and double tap Enter!
+- You now have 21 spell slots, split among 3 pages. Check the keybindings as there are new ones added!
+- Shift, control, and other keys now work as keybindings
+- Spell progression
+- New enemy: Flame witch
+
+3.5
+- Fixed command word not working on layered items
+- New spell indicators for AoE spells
+- New Spell: Boulder
+- New Spell: Earthshape
+- Ice Storm -> Field of Frost
+- New Spell: Winterblast
+- New Spell: Tidal Sphere
+- New spell: Earth Kick
+- New spell: Flash Freeze
+- Moved Shield (now called Runic Ward) and Barrier (now called Barrier Runes) to verbal column
+- Barrier runes range to 2.99 from 2.0
+- Perk balance: Quickdraw/scribe to 1 from 2, Rigger to 2 from 1, Slayer/Magician/Conjurer to 3 from 5, Blessed to 1 from 3, maid start to 2 from 3
+- Distraction cap no longer lowers in sleep
+- Water now evaporates into steam in the presence of flame spells
+- New upgrade: Fire Hazard
+- New upgrade: Frozen Prison
+- New Spell: Hailstorm
+- New Spell: Snowball
+- New Spell: Ice Lance
+- New Spell: Raincloud
+- New Spell: Freeze Rune
+- New Spell: Volcanism
+- Started cacheing pathfinding. Let me know if there are performance improvements!
+- New Spell: Windblast
+- Some nerfs to divine gift weapons (dragonslaver, bondage buster, metamorphosis)
+- New divine gift weapon: Moirai's Scissors (Rope goddess)
+- New divine gift weapon: Messenger of Love (Restoration goddess)
+- New divine gift weapon: Dreamcatcher (Illusion goddess)
+- Ice cube now does 1.5 damage
+- Dollmaker dolls now decay slowly and have 80 hp from 100
+- New divine gift weapon: Four Seasons (Elements goddess)
+- New divine gift weapon: The Arbiter (Conjuration goddess)
+- New spell: Firecracker
+- New spell: Flame Rune
+- New spell: Tremor
+- New spell: Earthquake
+
+3.51
+More balance:
+- Rope stamina cost 0.5, binding and damage increased
+- Vibe wand stuns for 2 turns, but only 20% of the time
+- Dreamcatcher deals half the bonus damage on vulnerable enemies if they are aware, and costs 8 SP instead of 7.5
+- Moirai's Scissors cost 8 SP/atk instead of 10
+- Arbiter damage increased to 40 from 30
+- Dollmaker staff can only have 3 controlled dolls now
+- Tremor now makes enemies vulnerable as well
+- Being a champion now only provides rep, no mana
+- Reduced chance of getting mana potions from enemies
+
+QoL
+- New 'switch weapon' hotkey!
+- Frozen Prison: Now adds binding UPON freezing
+
+Features
+- Tablets! They give you power!!!
+- New enemies: Earth, Ice, Water witch
+- Enemies can now be distracted
+- Major UI reskin and overhaul of the health bar area
+- You can now wait until interrupted, useful if you are being dragged to jail or if you are waiting for something to happen
+- New spell: Feather Cloud
+
+3.52
+- Updated the lighting engine so that embers from spells and such will now produce light, but you can't see an area unless you have line of sight
+- PIXI.js rendering, which is much more performant!
+- You can use Command Word to unlock naturally spawned ancient crystals in their brazier
+- Moved lost items chest to the transition tunnel
+- Slime is now flammable!
+- New weapons: Dagger, Foil, Rapier, Crop
+- New weapons: Katana, Shadow's Edge, Stormbreaker
+- Fire elemental graphics changed, mana cost now 15, renamed to Fire Mote
+- New spells: Earth Mote, Water Mote, Air Mote
+
+3.53
+- Enemies will now take you to cages and play with you
+- Conjure Gag changed mechanically, now a delayed projectile (very fast)
+- New spells: Summon Blindfold, Armbinder
+
+3.6
+- MAJOR rebalance, adding a new stat (willpower)
+- Added food in the halls of the dungeon, waiting to be munched on by the hungry adventurer (restores will)
+- Removed sleep as now stamina regenerates quickly
+- Max enemies capturable for rep reduced to 12 per floor from 25, but now gives 2x the rep
+- Added food which restores willpower
+
+3.61 (August 21)
+- Holding toggle hotkeys now automatically untoggles them on releasing the key
+- New spells: Summon Harness, Summon Legbinder, Summon Cuffs, Call Rope
+- Binding Chain is now a damage dealer spell
+- Fixed bugs with enemies ignoring you forever in a cage
+- Prevent barrels and cages from spawning in setpieces/cells
+- Added visual effect when enemies are summoned
+- Fixed issue where the enemy never puts you in jail even though she is standing next to it
+- Added some variety in jailers and restraints used in jail
+- Added kigurumi mask when starting as a Latex Doll
+- Added the ability to make noise and attract enemies
+- Reintroduced sleep as a once-per-floor thing to do on beds
+- Made the starting scenarios considerably more difficult, with items that punish struggling and/or make it more difficult
+- New spell: Summon Straitjacket
+- Lockdown changed, now locks the struggle bar at current level for 30 turns
+- Capturing costs 0 stamina
+- Frozen prison now freezes enemies for 300 turns if they are helpless (mostly thematic)
+- Stamina regens slower when kneeling
+- You no longer kneel when at low stamina, but do get knocked down when tugged by a leash (future attacks may knock you down as well)
+- You are more likely to get leash grabbed now if your willpower is 0 or if you are kneeling
+- Bondage offers now only happen DURING play
+- New perks: Butterfingers, Weak Grip, and Can't Hear You!
+- Perk menu has been updated to look nicer and be infinitely extendable
+- Replaced most (but not all) traps with enemy summons!
+- You can cast binding spells point blank
+- Enemies shouldnt aggro when you cast a spell if they're unaware
+- Mana cost reduced on most of the conjure leather restraints spells
+- Status durations increased a lot on blindfold and gag
+- Enemies struggle more slowly out of blind, silence, and disarm if they are tied.... unless they are Unstoppable or Unflinching in which case they tick it down 4x or 2x as fast than other enemies
+- Nerfed tickle cloud, buffed Feather Burst
+- New spells: Command: Capture, Commmand: Bind, Command: Release, Command: Disenchant
+- StormBreaker is now AoE
+- StormBreaker and IceBreaker cost less stamina to swing
+
+3.7 (August 22+)
+- Mana now has a pool (4x max mana) which you can regen from. This basically multiplies your max mana by 5x, which may be too much. Needs testing.
+- Teleport spells are cheaper because sprinting exists
+- Completely revammped world generation, and added a tile editor so you can contribute your own tiles if you desire
+- Fix setpieces spawning offset in some tiles
+- Fix sprinting over traps not setting them off
+- Made it so capture can only happen when you intentionally click
+- Reworked the way buffs and statuses are displayed, now using icons. Some icons are still missing
+- Some UI changes, moved many buttons to bottom bar and reformatted
+- There is now a spell empowering system. At the moment, this just makes it so some spells are upgraded versions of others that you have to charge up. Examples of spells affected:
+-- Fireball = Firebolt++
+-- Lightning Bolt = Crackle++
+-- Winterblast = Snowball+
+-- Boulder = Rock++
+-- Ice Breath = Hailstorm+
+-- Tidal Sphere = Water Ball+
+-- Static Sphere = Electric Field++
+-- Earthquake = Tremor++
+-- Incinerate = Firecracker+
+-- The flash spells
+-- Blink and Portal
+- Refactored spell schools so now there are 6 elements (for lore reasons)
+- New spell: Conjure Leather Cuffs
+- Removed aid and penance. The gods will not help you now.
+- New spell: Wall of Slime, Coalesce, Engulf, Solidify, Slime Eruption + Slime Splash, Elastic Grip
+- New spell: Conjure Petsuit
+
+3.71
+- New upgrades: One with Slime, Slime Resistance, Leather Burst
+- New spell: Awaken, Animate Slime, Greater Animate, Spread, Remove Slime, Steel Rain, Steel Torrent
+- CMD: Disenchant now makes magic restraints easier to escape
+- Vulnerable is consumed on hit
+- Pulling enemies through their own projectiles with Elastic Grip now hits them
+- New perk section with a lot of perks (Damage and resists)
+
+3.72 (October 2022)
+- Fixed a bug where you couldnt use bolas
+- Fixed a bug where Arcane Protection would attack enemies that are non-hostile trying to play with you
+- More perks: Kinky Prison, Unfair Doors
+- Added a perk room with a choice of 3 perk combinations!
+
+TODO ValidationFindBlockCycles to prevent bugs
+
+TODO: Mushrooms in the jungle
+
+TODO
+Warden (more comprehensive cuffs)
+Detective (Stealth, wanders around laying traps throughout the level)
+Nurse (applies straitjackets and stuff)
+Doctors (Applies sedatives and euphoric drugs)
+Troopers (Riot shield and tasers)
+
+Enemy ideas:
+-Silent sentinel, triggers ambush when the player casts a verbal spell, tries to gag the player
+
+Future content planned:
+- Wand item which reduces mana costs but is terrible for melee
+- Slimes which clean up items, dissolve doors, and potentially corrupt traps and such
+- Slimes that catch your sword and trap it
+- Exit stair puzzles (like for example a button or special key somewhere in the level, maybe with a high likelihood of traps)
+- Rats should have a kleptomaniac AI that steals items and holds them, drops them on death, and runs away from the player when confronted
+- Tranquilizer/stamina drain from an enemy (bandits? raiders?)
+- Latex witches that cast latex imprisonment spells at you from a distance
+- New shrine: chastity goddess. Places you in a set of magic cuffs that prevent you from being restrained in those slots. However if your stamina falls below half, the cuffs snap together until you get back to full stamina!
+- locked doors that trigger when you step on an obvious looking brickwork that's only generated on tiles you can avoid, maybe with some sort of sleep gas hazard or something to force a time limit if you cant progress
+- Monster Encyclopedia
+- Heels of avoiding traps: Causes all traps and dangerous terrain (slime, ice) to not affect the player
+
+Spell Ideas:
+- Divine Cuffs, a spell which gives you glowing arm and leg cuffs that block low level restraints from being put on you. Lasts for the whole floor.
+- Sleep, puts nearby creatures with low willpower to sleep until they take damage. Works on zombies, and also the player if the player is at low stamina.

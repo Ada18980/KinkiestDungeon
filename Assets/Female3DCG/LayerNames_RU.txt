@@ -1,0 +1,702 @@
+Dress
+Платье
+Buckle
+Пряжка
+Shirt
+Рубашка
+Bow
+Бант
+Trim
+Отделка
+Sash
+Cтворка
+Fur
+Мех
+Corset
+Корсет
+Main
+Главный
+Tie
+Галстук
+Pattern
+Узор
+Jacket
+Пиджак
+Chest
+Грудь
+Buttons
+Кнопки
+Arm Puffs
+Пуфы рук
+Main Dress
+Основное платье
+Inside Skirt
+Внутренняя юбка
+Dress Trim
+Отделка платья
+Belts
+Ремни
+Apron
+Фартук
+Frills
+Оборки
+Print
+Распечатать
+Lace
+Кружева
+Belt
+Пояс
+Collar
+Ошейник
+Suit
+Костюм
+Gloves
+Перчатки
+Top
+Верх
+Design
+Дизайн
+Holder
+Держатель
+Flowers
+Цветы
+Front
+Спереди
+Back
+Спина
+Bib
+Cлюнявчик
+Text
+Текст
+Chain
+Цепь
+Lock
+Замок
+Key
+Ключ
+Lanyard
+Ремешок
+Card
+Карточка
+Necklace
+Ожерелье
+Jewels
+Драгоценности
+Center
+Центр
+Petals
+Лепестки
+Ball
+Мяч
+Strap
+Ремень
+Chains
+Цепи
+Choker
+Чокер
+Zip
+Застежка-молния
+Fabric
+Ткань
+Straps
+Ремни
+Jewel
+Драгоценность
+Bra
+Бюстгальтер
+Shine
+Блеск
+Skirt
+Юбка
+Cloth
+Ткань
+Stripe
+Полоса
+ Pants
+ Брюки
+ Trim
+ Отделка
+Panty
+Трусы
+Veil
+Вуаль
+Panty Line
+Линия трусиков
+Waistband
+Пояс
+Layer 1
+Слой 1
+Layer 2
+Слой 2
+Layer 3
+Слой 3
+Layer 4
+Слой 4
+Leaves
+Уходит
+Pollen
+Пыльца
+Frill
+Оборка
+Diaper
+Подгузник
+Plastic Cover
+Пластиковое покрытие
+Tape
+Лента
+Crotch Padding
+Подкладка промежности
+Waist Band
+Поясной ремень
+Panties
+Трусики
+Base
+База
+Sock
+Носок
+Light Stripes
+Светлые полосы
+Dark Stripes
+Темные полосы
+Bands
+Группы
+Hat
+Шляпа
+Bonnet
+Чепчик
+Band
+Группа
+Bandana
+Бандана
+Skull
+Череп
+Dots
+Точки
+Patterns
+Узоры
+Crown
+Корона
+Badge
+Значок
+Insignia
+Знаки различия
+Rope
+Веревка
+Brim
+Поля
+Roses
+Розы
+Main Flowers
+Основные цветы
+End Flowers
+Конечные цветы
+Main Flower
+Главный цветок
+Side Flowers
+Боковые цветы
+Flower Center
+Центр цветов
+Shoulders
+Плечи
+Shawl
+Шаль
+Cowl
+Капюшон
+Outer Ear
+Наружное ухо
+Inner Ear
+Внутреннее ухо
+Bell
+Колокольчик
+Outer
+Внешний
+Inner
+Внутренний
+Glow
+Свечение
+Body
+Тело
+Core
+Основной
+ Fluff
+ Пух
+ Base
+ База
+Glove
+Перчатка
+String
+Нить
+Tail
+Хвост
+Ribbon
+Лента
+Tails
+Хвосты
+Tips
+Подсказки
+Heart
+Сердце
+Tip
+Подсказка
+Primary
+Первичный
+Secondary
+Вторичный
+Suckers
+Присоски
+Cuffs
+Манжеты
+Gems
+Драгоценные камни
+Display
+Дисплей
+Rings
+Кольца
+Bed Straps
+Ремни для кровати
+Lower Rope
+Нижняя веревка
+Upper Rope
+Верхняя веревка
+Color 1
+цвет 1
+Color 2
+цвет 2
+Binder
+Связующее
+Wand
+Палочка
+Remote
+Удаленный
+Dildo
+Фаллоимитатор
+End
+Конец
+Ring
+Кольцо
+Egg
+Яйцо
+Leash
+Поводок
+Studs
+Шпильки
+Locks
+Замки
+Crotch Plate
+Промежностная пластина
+Rivets
+Заклёпки
+Left Vibe Egg
+Левое вибрирующее яйцо
+Right Vibe Egg
+Правое вибрирующее яйцо
+Left Tape Strip
+Левая клейкая лента
+Right Tape Strip
+Правая клейкая лента
+Frame
+Рамка
+Clamps
+Зажимы
+Piercings
+Пирсинги
+Weights
+Веса
+Piercing
+Пирсинг
+Lower Half
+Нижняя половина
+Upper Half
+Верхняя половина
+Laces
+Шнурки
+Buckle Hole
+Отверстие для пряжки
+Crotch Panel
+Промежностная панель
+Crotch
+Промежность
+Bars
+Планки
+Wood
+Дерево
+Metal
+Металл
+Buckles
+Пряжки
+Ropes
+Веревки
+Suspension Rope
+Подвесной канат
+Suspension Chain
+Подвесная цепь
+Mesh
+Сетка
+Material
+Материал
+Sides
+Боковые стороны
+Shorts
+Шорты
+Slime Girl
+Девушка-слизь
+Leather
+Кожа
+Middle Ring
+Среднее кольцо
+Left Ring
+Левое кольцо
+Right Ring
+Правое кольцо
+Brooch
+Брошь
+Mesh (for copying to items)
+Сетка (для копирования на предметы)
+Ornaments
+Орнаменты
+Side Plates
+Боковые пластины
+Leather Strap
+Кожаный ремешок
+Heart Link
+Сердечная связь
+Tag
+Ярлык
+Plate
+Плита
+Cap
+Кепка
+Post
+Пост
+Baseplate
+Базовая плита
+Harness
+Упряжь
+Stripes
+Полоски
+Stripes Shine
+Полосы сияют
+Sign
+Символ
+Pillow
+Подушка
+Mattress
+Матрас
+Headboard
+Изголовье кровати
+Bench
+Скамья
+Velvet
+Бархат
+Lid (open)
+Крышка (открытая)
+Lid (closed)
+Крышка (закрыта)
+Bottom
+Низ
+Tint
+Оттенок
+Padding
+Прокладка
+Tabletop
+Стол
+Pillow Trim
+Отделка подушки
+Plushies
+Плюшевые
+Cloak
+Плащ
+Kennel
+Конура
+Front Frame
+Передняя рама
+Door
+Дверь
+Bed
+Кровать
+Bed Lining
+Подкладка кровати
+Blanket
+Одеяло
+Blanket Lining
+Подкладка одеяла
+Wheel Holders
+Держатели колес
+Wheels
+Колеса
+Bowl
+Миска
+Sheet Back
+Простынь Назад
+Sheet Front
+Простынь вперёд
+Sheet
+Простынь
+Upper
+Выше
+Lower
+Ниже
+Caps
+Кепки
+Plastic
+Пластик
+Pole
+Шест
+Net
+Сеть
+Arms
+Руки
+Hook
+Крюк
+Nose
+Нос
+Hair
+Волосы
+Hood
+Капюшон
+Snaps
+Защелка
+Face
+Лицо
+Eyes
+Глаза
+Mouth
+Рот
+Blush
+Румянец
+Mouthpiece
+Мундштук
+Lens
+Линзы
+Mask
+Маска
+Edges
+Края
+Canvas
+Холст
+Blinding Lenses
+Ослепляющие линзы
+Breathing Attachment
+Дыхательная насадка
+Visor
+Визор
+Chin Strap
+Ремешок для подбородка
+Helmet
+Шлем
+Side Pieces
+Боковые части
+Hypno Spiral Icon
+Гипнотическая спиральная иконка
+Interior
+Интерьер
+Switch
+Переключать
+Exterior
+Внешний вид
+Spots
+Пятна
+Inside
+Внутри
+Outside
+Снаружи
+Linings
+Подкладки
+Forehead Panel
+Панель лба
+Openings
+Отверстия
+Blindfold
+Повязка на глаза
+Gag
+Кляп
+Drawings
+Рисунки
+Boots
+Сапоги
+Heels
+Каблуки
+Mittens
+Варежки
+Vamp
+Вамп
+Left
+Лево
+Right
+Право
+Shoes
+Обувь
+Soles
+Подошвы
+Fins
+Плавники
+Inner & Laces
+Внутренняя часть и шнурки
+ Metal
+ Металл
+ Straps
+ Ремни
+ Bobble
+ Бурлить
+Cup
+Кубок
+Close
+Закрывать
+Rod
+Стержень
+Carrot
+Морковь
+Pumpkin
+Тыква
+Panel
+Панель
+Bit
+Бит
+Bone
+Кость
+Harness Straps
+Ремни безопасности
+Metal Parts
+Металлические части
+Pacifier
+Пустышка
+Pacifier Ring
+Кольцо для соски
+Duster
+Пыльник
+Shoe
+Ббувь
+Lips
+Губы
+Muzzle
+Намордник
+Icon
+Значок
+Light
+Легкий
+Highlights
+Основные моменты
+Cage
+Клетка
+Plug
+Пробка
+Lines
+Линии
+Plume
+Шлейф
+ManeBase
+Основа гривы
+Mane
+Грива
+Horn
+Рог
+Ornament
+Орнамент
+Reins
+Поводья
+Flags
+Флаги
+Blinders
+Шоры
+Mouth Shine
+Блеск рта
+Panel Shine
+Блеск панели
+Cheeks
+Щеки
+Nose Gloss
+Блеск носа
+Whiskers
+Усы
+Color One
+Цвет Один
+Color Two
+Цвет два
+Clasps
+Застежки
+Module
+Модуль
+Screen
+Экран
+Plug Cap
+Пробка Cap
+Interface
+Интерфейс
+Panty Base
+Основа трусиков
+Wires
+Провода
+Metal Band
+Металлическая группа
+Pussy Toy
+киска игрушка
+Clitoris Toy
+клитор игрушка
+Lock Icon
+Значок замка
+Lid
+крышка
+Restraint Frame
+Ограничительная рама
+Harness Clamps
+Зажимы для жгутов
+Restraint Padding
+Удерживающая прокладка
+Actuator
+Актуатор
+Structure
+Структура
+Window
+Окно
+Label
+Этикетка
+Custom Text
+Пользовательский текст
+Glass
+Стакан
+Stains
+Пятна
+ Ropes
+ Веревки
+Underlayment
+Подложка
+Feet
+Ноги
+Dark
+Темный
+Paws
+Лапы
+Left Lens
+Левая линза
+Right Lens
+Правая линза
+HUD
+HUD
+Ears
+Уши
+Right Eye
+Правый глаз
+Left Eye
+Левый глаз
+Right Eye Sticker
+Наклейка для правого глаза
+Left Eye Sticker
+Наклейка для левого глаза
+Tray
+Поднос
+Refreshments
+Закуски
+Details
+Подробности
+Spikes
+Шипы
+Gears
+Шестерни
+Wings
+Крылья
+Veins
+Вены
+Shade
+Оттенок
+Lenses
+Линзы

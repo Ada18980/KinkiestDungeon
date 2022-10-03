@@ -1,0 +1,28 @@
+Select your appearance
+Wähle dein Aussehen
+ Select TargetCharacterName's appearance
+Wähle ein Aussehen für TargetCharacterName
+You must pick an item of type:
+Folgende Auswahl muss getroffen werden:
+Set wardrobe character name:
+Name für Kleiderschrank-Charakter:
+Invalid name for character.
+Ungültiger Charaktername.
+Reset character
+Charakter zurücksetzen
+Randomize character
+Zufälliger Charakter
+Strip naked
+Alles ausziehen
+Next
+Weiter
+Previous
+Zurück
+Cancel changes
+Änderungen verwerfen
+Accept changes
+Änderungen übernehmen
+Wardrobe
+Kleiderschrank
+Dress manually
+Manuell kleiden

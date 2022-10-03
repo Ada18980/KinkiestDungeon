@@ -1,0 +1,14 @@
+Accept
+接受
+Cancel
+取消
+Default
+默认
+Many
+复数
+Next page
+下一页
+Whole Item
+物品整体
+All
+所有

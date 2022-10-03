@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"noEmit": true,
+		"module": "commonjs",
+		"lib": ["es2018", "dom"],
+		"allowJs": true,
+		"strict": true,
+		"noImplicitAny": true
+	},
+	"include": [
+		"../../Scripts/**/*",
+		"../../Screens/**/*",
+		"../../Assets/**/*",
+		"../../Backgrounds/**/*.js"
+	],
+	"exclude": [
+		"../../Scripts/lib/**/*.js"
+	]
+}

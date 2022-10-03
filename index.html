@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html style="width:100%; height:100%; padding:0px; margin:0px;">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta charset="UTF-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<title>Kinky Dungeon</title>
+	<link rel="icon" type="image/png" href="Icons/Logo.png" id="favicon">
+	<link rel="stylesheet" href="CSS/Styles.css">
+	<link rel="stylesheet" href="CSS/chessboard-4.3.9.css">
+	<link rel="stylesheet" href="CSS/Chess.css">
+	<script src="Scripts/lib/webgl/resources/m4.js"></script>
+	<script src="Scripts/lib/LZString.js"></script>
+	<script src="Scripts/lib/socket.io/socket.io.min.js"></script>
+	<script async src="Scripts/lib/chess.min.js"></script>
+	<script async src="Scripts/lib/chessboard-4.3.9.min.js"></script>
+</head>
+
+<script src="Game/pixi.min.js"></script>
+<script src="Scripts/Patch.js"></script>
+<script src="Scripts/GLDraw.js"></script>
+<script src="Scripts/Common.js"></script>
+<script src="Scripts/CommonDraw.js"></script>
+<script src="Scripts/Animation.js"></script>
+<script src="Scripts/Mouse.js"></script>
+<script src="Scripts/Drawing.js"></script>
+<script src="Scripts/Timer.js"></script>
+<script src="Scripts/AfkTimer.js"></script>
+<script src="Scripts/GameLog.js"></script>
+<script src="Scripts/Reputation.js"></script>
+<script src="Scripts/Skill.js"></script>
+<script src="Scripts/Character.js"></script>
+<script src="Scripts/CharacterName.js"></script>
+<script src="Scripts/ColorPicker.js"></script>
+<script src="Scripts/ControllerSupport.js"></script>
+<script src="Scripts/Speech.js"></script>
+<script src="Scripts/Text.js"></script>
+<script src="Scripts/Inventory.js"></script>
+<script src="Scripts/Import.js"></script>
+<script src="Scripts/Asset.js"></script>
+<script src="Scripts/Audio.js"></script>
+<script src="Scripts/MiniGame.js"></script>
+<script src="Scripts/NPC.js"></script>
+<script src="Scripts/Validation.js"></script>
+<script src="Scripts/Server.js"></script>
+<script src="Scripts/Element.js"></script>
+<script src="Scripts/Translation.js"></script>
+<script src="Scripts/ExtendedItem.js"></script>
+<script src="Scripts/ModularItem.js"></script>
+<script src="Scripts/TypedItem.js"></script>
+<script src="Screens/Inventory/Futuristic/Futuristic.js"></script>
+<script src="Screens/Character/ItemColor/ItemColor.js"></script>
+<script src="Screens/Character/Wardrobe/Wardrobe.js"></script>
+<script src="Screens/Inventory/ItemNipples/VibeNippleClamp/VibeNippleClamp.js"></script>
+<script src="Screens/Inventory/ItemNipplesPiercings/VibeHeartPiercings/VibeHeartPiercings.js"></script>
+<script src="Screens/Inventory/ItemVulvaPiercings/VibeHeartClitPiercing/VibeHeartClitPiercing.js"></script>
+<script src="Screens/Inventory/ItemVulvaPiercings/TapedClitEgg/TapedClitEgg.js"></script>
+<script src="Screens/Inventory/ItemNeck/ShockCollar/ShockCollar.js"></script>
+<script src="Screens/Inventory/ItemNeck/AutoShockCollar/AutoShockCollar.js"></script>
+<script src="Screens/Inventory/ItemNeckAccessories/CollarShockUnit/CollarShockUnit.js"></script>
+<script src="Screens/Inventory/ItemNeckAccessories/CollarAutoShockUnit/CollarAutoShockUnit.js"></script>
+<script src="Screens/Inventory/ItemArms/HempRope/HempRope.js"></script>
+<script src="Screens/Inventory/ItemArms/NylonRope/NylonRope.js"></script>
+<script src="Screens/Inventory/ItemHands/PaddedMittens/PaddedMittens.js"></script>
+<script src="Screens/Inventory/ItemHands/PawMittens/PawMittens.js"></script>
+<script src="Screens/Inventory/ItemMisc/MetalPadlock/MetalPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/IntricatePadlock/IntricatePadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/TimerPadlock/TimerPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/CombinationPadlock/CombinationPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/HighSecurityPadlock/HighSecurityPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/PasswordPadlock/PasswordPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/SafewordPadlock/SafewordPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/TimerPasswordPadlock/TimerPasswordPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/MistressTimerPadlock/MistressTimerPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/OwnerTimerPadlock/OwnerTimerPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/OwnerPadlock/OwnerPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/LoversPadlock/LoversPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/LoversTimerPadlock/LoversTimerPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/MistressPadlock/MistressPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/PandoraPadlock/PandoraPadlock.js"></script>
+<script src="Screens/Inventory/ItemMisc/ExclusivePadlock/ExclusivePadlock.js"></script>
+<script src="Screens/Inventory/ItemMouth/FuturisticPanelGag/FuturisticPanelGag.js"></script>
+<script src="Screens/Inventory/ItemMouth/FuturisticHarnessPanelGag/FuturisticHarnessPanelGag.js"></script>
+<script src="Screens/Inventory/ItemMouth/FuturisticHarnessBallGag/FuturisticHarnessBallGag.js"></script>
+<script src="Screens/Inventory/ItemNeck/FuturisticCollar/FuturisticCollar.js"></script>
+<script src="Screens/Inventory/ItemTorso/FuturisticHarness/FuturisticHarness.js"></script>
+<script src="Screens/Inventory/ItemTorso2/FuturisticHarness/FuturisticHarness.js"></script>
+<script src="Screens/Inventory/ItemHands/SpankingToys/SpankingToy.js"></script>
+<script src="Screens/Inventory/ItemFeet/HempRope/HempRope.js"></script>
+<script src="Screens/Inventory/ItemFeet/NylonRope/NylonRope.js"></script>
+<script src="Screens/Inventory/ItemPelvis/LoveChastityBelt/LoveChastityBelt.js"></script>
+<script src="Screens/Inventory/ItemNeckAccessories/CollarNameTag/CollarNameTag.js"></script>
+<script src="Screens/Inventory/ItemNeckAccessories/CollarNameTagOval/CollarNameTagOval.js"></script>
+<script src="Screens/Inventory/ItemNeckAccessories/CollarNameTagPet/CollarNameTagPet.js"></script>
+<script src="Screens/Inventory/ItemNeckAccessories/CollarNameTagLover/CollarNameTagLover.js"></script>
+<script src="Screens/Inventory/ItemNeckAccessories/CollarNameTagLivestock/CollarNameTagLivestock.js"></script>
+<script src="Screens/Inventory/ItemNeck/SlaveCollar/SlaveCollar.js"></script>
+<script src="Screens/Inventory/ItemButt/VibratingButtplug/VibratingButtplug.js"></script>
+<script src="Screens/Inventory/ItemNipples/TapedVibeEggs/TapedVibeEggs.js"></script>
+<script src="Screens/Inventory/ItemVulva/InflatableVibeDildo/InflatableVibeDildo.js"></script>
+<script src="Screens/Inventory/ItemVulva/LoversVibrator/LoversVibrator.js"></script>
+<script src="Screens/Inventory/ItemButt/InflVibeButtPlug/InflVibeButtPlug.js"></script>
+<script src="Screens/Inventory/ItemDevices/Sybian/Sybian.js"></script>
+<script src="Screens/Inventory/ItemButt/AnalBeads2/AnalBeads2.js"></script>
+<script src="Screens/Inventory/ItemButt/VibratingDildoPlug/VibratingDildoPlug.js"></script>
+<script src="Screens/Inventory/ItemButt/LockingVibePlug/LockingVibePlug.js"></script>
+<script src="Screens/Inventory/ItemArms/FullLatexSuit/FullLatexSuit.js"></script>
+<script src="Screens/Inventory/ItemVulva/FuturisticVibrator/FuturisticVibrator.js"></script>
+<script src="Screens/Inventory/ItemDevices/Locker/Locker.js"></script>
+<script src="Screens/Inventory/ItemDevices/PetBowl/PetBowl.js"></script>
+<script src="Screens/Inventory/ItemDevices/SmallLocker/SmallLocker.js"></script>
+<script src="Screens/Inventory/ItemVulva/ClitAndDildoVibratorbelt/ClitAndDildoVibratorbelt.js"></script>
+<script src="Screens/Inventory/ItemFeet/SpreaderVibratingDildoBar/SpreaderVibratingDildoBar.js"></script>
+<script src="Screens/Inventory/ItemPelvis/FuturisticChastityBelt/FuturisticChastityBelt.js"></script>
+<script src="Screens/Inventory/ItemPelvis/FuturisticTrainingBelt/FuturisticTrainingBelt.js"></script>
+<script src="Screens/Inventory/ItemPelvis/SciFiPleasurePanties/SciFiPleasurePanties.js"></script>
+<script src="Screens/Inventory/ItemPelvis/ObedienceBelt/ObedienceBelt.js"></script>
+<script src="Screens/Inventory/ItemBreast/FuturisticBra/FuturisticBra.js"></script>
+<script src="Screens/Inventory/ItemButt/ShockPlug/ShockPlug.js"></script>
+<script src="Screens/Inventory/ItemVulva/ShockDildo/ShockDildo.js"></script>
+<script src="Screens/Inventory/ItemNipples/ShockClamps/ShockClamps.js"></script>
+<script src="Screens/Inventory/ItemButt/BunnyTailVibePlug/BunnyTailVibePlug.js"></script>
+<script src="Screens/Inventory/ItemButt/EggVibePlugXXL/EggVibePlugXXL.js"></script>
+<script src="Screens/Inventory/ItemArms/PrisonLockdownSuit/PrisonLockdownSuit.js"></script>
+<script src="Screens/Inventory/ItemNeckAccessories/CustomCollarTag/CustomCollarTag.js"></script>
+<script src="Screens/Inventory/ItemNeckAccessories/ElectronicTag/ElectronicTag.js"></script>
+<script src="Screens/Inventory/ItemLegs/MermaidTail/MermaidTail.js"></script>
+<script src="Screens/Inventory/ItemDevices/Kennel/Kennel.js"></script>
+<script src="Screens/Inventory/ItemMisc/WoodenSign/WoodenSign.js"></script>
+<script src="Screens/Inventory/ItemHood/CanvasHood/CanvasHood.js"></script>
+<script src="Screens/Inventory/ItemDevices/WoodenBox/WoodenBox.js"></script>
+<script src="Screens/Inventory/ItemDevices/TransportWoodenBox/TransportWoodenBox.js"></script>
+<script src="Screens/Inventory/ItemDevices/FuturisticCrate/FuturisticCrate.js"></script>
+<script src="Screens/Inventory/ItemDevices/DollBox/DollBox.js"></script>
+<script src="Screens/Inventory/ItemNeckRestraints/PetPost/PetPost.js"></script>
+<script src="Screens/Inventory/HairAccessory3/Halo/Halo.js"></script>
+<script src="Screens/Inventory/HairAccessory1/Halo/Halo.js"></script>
+<script src="Screens/Inventory/ItemArms/TransportJacket/TransportJacket.js"></script>
+<script src="Scripts/VibratorMode.js"></script>
+<script src="Scripts/DynamicDraw.js"></script>
+<script src="Scripts/Notification.js"></script>
+<script src="Scripts/Graph.js"></script>
+<script src="Scripts/VariableHeight.js"></script>
+<script src="Assets/Female3DCG/Female3DCG.js"></script>
+<script src="Assets/Female3DCG/Female3DCGExtended.js"></script>
+<script src="Scripts/Appearance.js"></script>
+<script src="Game/KinkyDungeonStats.js"></script>
+<script src="Game/KinkyDungeonEditorTiles.js"></script>
+<script src="Game/KinkyDungeonEditor.js"></script>
+<script src="Game/KinkyDungeonEditorGen.js"></script>
+<script src="Game/KinkyDungeon.js"></script>
+<script src="Game/KinkyDungeonGame.js"></script>
+<script src="Game/KinkyDungeonVibe.js"></script>
+<script src="Game/KinkyDungeonBuffsList.js"></script>
+<script src="Game/KinkyDungeonAlt.js"></script>
+<script src="Game/KinkyDungeonBones.js"></script>
+<script src="Game/KinkyDungeonMapMods.js"></script>
+<script src="Game/KinkyDungeonBoss.js"></script>
+<script src="Game/KinkyDungeonPerks.js"></script>
+<script src="Game/KinkyDungeonParams.js"></script>
+<script src="Game/KinkyDungeonVision.js"></script>
+<script src="Game/KinkyDungeonQuest.js"></script>
+<script src="Game/KinkyDungeonLoot.js"></script>
+<script src="Game/KinkyDungeonLootList.js"></script>
+<script src="Game/KinkyDungeonEnemies.js"></script>
+<script src="Game/KinkyDungeonPersonality.js"></script>
+<script src="Game/KinkyDungeonEnemiesList.js"></script>
+<script src="Game/KinkyDungeonEnemyEventList.js"></script>
+<script src="Game/KinkyDungeonRestraints.js"></script>
+<script src="Game/KinkyDungeonRestraintsList.js"></script>
+<script src="Game/KinkyDungeonFight.js"></script>
+<script src="Game/KinkyDungeonWeaponList.js"></script>
+<script src="Game/KinkyDungeonInput.js"></script>
+<script src="Game/KinkyDungeonHUD.js"></script>
+<script src="Game/KinkyDungeonDraw.js"></script>
+<script src="Game/KinkyDungeonMagic.js"></script>
+<script src="Game/KinkyDungeonMagicCode.js"></script>
+<script src="Game/KinkyDungeonMagicList.js"></script>
+<script src="Game/KinkyDungeonPlayerEffects.js"></script>
+<script src="Game/KinkyDungeonShrine.js"></script>
+<script src="Game/KinkyDungeonObject.js"></script>
+<script src="Game/KinkyDungeonItem.js"></script>
+<script src="Game/KinkyDungeonDress.js"></script>
+<script src="Game/KinkyDungeonEffectTiles.js"></script>
+<script src="Game/KinkyDungeonDressList.js"></script>
+<script src="Game/KinkyDungeonConsumables.js"></script>
+<script src="Game/KinkyDungeonConsumablesList.js"></script>
+<script src="Game/KinkyDungeonInventory.js"></script>
+<script src="Game/KinkyDungeonMultiplayer.js"></script>
+<script src="Game/KinkyDungeonLore.js"></script>
+<script src="Game/KinkyDungeonCurse.js"></script>
+<script src="Game/KinkyDungeonReputation.js"></script>
+<script src="Game/KinkyDungeonTraps.js"></script>
+<script src="Game/KinkyDungeonTiles.js"></script>
+<script src="Game/KinkyDungeonTilesList.js"></script>
+<script src="Game/KinkyDungeonPathfinding.js"></script>
+<script src="Game/KinkyDungeonBuffs.js"></script>
+<script src="Game/KinkyDungeonEvents.js"></script>
+<script src="Game/KinkyDungeonSpawns.js"></script>
+<script src="Game/KinkyDungeonJail.js"></script>
+<script src="Game/KinkyDungeonJailList.js"></script>
+<script src="Game/KinkyDungeonSetpiece.js"></script>
+<script src="Game/KinkyDungeonDialogue.js"></script>
+<script src="Game/KinkyDungeonDialogueList.js"></script>
+<script src="Game/KinkyDungeonDialogueTriggers.js"></script>
+<script src="Game/KinkyDungeonFactions.js"></script>
+<script src="Game/KinkyDungeonFactionsList.js"></script>
+<script src="Game/KinkyDungeonMistress.js"></script>
+<script src="Game/KinkyDungeonTests.js"></script>
+<script>
+
+/*
+
+	NEXT VERSION:
+
+	TO DO - Proof-reading
+	TO DO - Patreon Import/Update
+
+*/
+
+// When the code is loaded, we start the game engine
+window.onload = function() {
+	//CheatImport();
+	GameVersion = "4.0";
+	console.log("Version: " + GameVersion);
+	CommonIsMobile = CommonDetectMobile();
+	TranslationLoad();
+	DrawLoad();
+	AssetLoadAll();
+
+	// Inserted from KD load
+	DrawProcessScreenFlash = () => {};
+
+	// Bootstrap BC enough to be able to run KD
+	KinkyDungeonMainRun = () => {};
+	KinkyDungeonMainClick = () => {};
+
+	TimerPrivateOwnerBeep = () => {};
+
+	ServerSend = () => {};
+	ServerPrivateCharacterSync = () => {};
+	ServerPlayerIsInChatRoom = () => false;
+	ServerAccountUpdate = {
+		SyncToServer: () => {},
+		QueueData: () => {}
+	};
+
+	PrivateCharacter = [];
+
+	ChatRoomChatLog = [];
+	ChatRoomCharacterUpdate = () => {};
+	ChatRoomCharacterItemUpdate = () => {};
+
+	AsylumGGTSControlItem = () => false;
+	AsylumGGTSCharacterName = () => "";
+
+	ArcadeKinkyDungeonEnd = () => {}
+
+	KinkyDungeonMultiplayerUpdate = () => {};
+
+	ArcadeDeviousDungeonChallenge = false;
+	KinkyDungeonRootDirectory = "Game/";
+
+	// window.onload in index.html
+	ServerURL = "foobar";
+	CommonIsMobile = CommonDetectMobile();
+	TranslationLoad();
+	DrawLoad();
+	AssetLoadAll();
+	ControllerActive = false;
+	let _TextLoad = TextLoad; // Avoid nonexistent text query
+	TextLoad = () => {};
+	CommonSetScreen("KinkyDungeon", "KinkyDungeonMain");
+	TextLoad = _TextLoad;
+	MainRun(0);
+
+	// LoginLoad
+	Character = [];
+	CharacterNextId = 1;
+	CharacterReset(0, "Female3DCG");
+	CharacterLoadCSVDialog(Player);
+
+	Player.ArousalSettings = {};
+	Player.ArousalSettings.VFXFilter = "VFXFilterHeavy";
+	Player.OnlineSharedSettings = {};
+	Player.OnlineSharedSettings.ItemsAffectExpressions = true
+	Player.AudioSettings = {};
+	Player.AudioSettings.Volume = 1;
+	Player.ImmersionSettings = {};
+
+	CharacterAppearanceSetDefault(Player);
+	CurrentCharacter = null;
+	MiniGameStart("KinkyDungeon", 1, "ArcadeKinkyDungeonEnd");
+
+	// Default keybindings, these are initialized as part of the Player
+	KinkyDungeonKeybindings = {
+		Down: "KeyS",
+		DownLeft: "KeyZ",
+		DownRight: "KeyC",
+		Left: "KeyA",
+		Right: "KeyD",
+		Skip: "Space",
+		Spell1: "Digit1",
+		Spell2: "Digit2",
+		Spell3: "Digit3",
+		Spell4: "Digit4",
+		Spell5: "Digit5",
+		Up: "KeyW",
+		UpLeft: "KeyQ",
+		UpRight: "KeyE",
+		Wait: "KeyX",
+	};
+	if (localStorage.getItem("KinkyDungeonKeybindings") && JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"))) {
+		KinkyDungeonKeybindings = JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"));
+	}
+
+	GLDrawLoad(); // Normally invoked from window.onload
+};
+
+/**
+ * Main game running state, runs the drawing
+ * @param {number} Timestamp
+ */
+function MainRun(Timestamp) {
+	DrawProcess(Timestamp);
+	TimerProcess(Timestamp);
+}
+
+/**
+ * When the user presses a key, we send the KeyDown event to the current screen if it can accept it
+ * @param {KeyboardEvent} event
+ */
+function KeyDown(event) {
+	if (event.repeat) return;
+	KeyPress = event.keyCode || event.which;
+	CommonKeyDown(event);
+}
+
+/**
+ * Handler for document-wide keydown event
+ * @param {KeyboardEvent} event
+ */
+function DocumentKeyDown(event) {
+	if (event.repeat) return;
+	if (event.key == "Escape") {
+		if (CurrentScreenFunctions.Exit) {
+			CurrentScreenFunctions.Exit();
+		} else if ((CurrentCharacter != null) && Array.isArray(DialogMenuButton) && (DialogMenuButton.indexOf("Exit") >= 0)) {
+			if (!DialogLeaveFocusItem())
+				DialogLeaveItemMenu();
+		} else if ((CurrentCharacter != null) && (CurrentScreen == "ChatRoom")) {
+			DialogLeave();
+		} else if ((CurrentCharacter == null) && (CurrentScreen == "ChatRoom") && (document.getElementById("TextAreaChatLog") != null)) {
+			ElementScrollToEnd("TextAreaChatLog");
+		}
+	} else if (event.key == "Tab") {
+		KeyDown(event);
+	}
+}
+
+/**
+ * When the user clicks, we fire the click event for other screens
+ * @param {MouseEvent} event
+ */
+function Click(event) {
+	if (!CommonIsMobile) {
+		MouseMove(event);
+		CommonClick(event);
+	}
+}
+
+/**
+ * When the user touches the screen (mobile only), we fire the click event for other screens
+ * @param {TouchEvent} event
+ */
+function TouchStart(event) {
+	if (CommonIsMobile && MainCanvas) {
+		TouchMove(event.touches[0]);
+		CommonClick(event);
+		CommonTouchList = event.touches;
+	}
+}
+
+/**
+ * When the user touches the screen (mobile only), we fire the click event for other screens
+ * @param {TouchEvent} event
+ */
+function TouchEnd(event) {
+	if (CommonIsMobile && MainCanvas)
+		CommonTouchList = event.touches;
+}
+
+/**
+ * When touch moves, we keep it's position for other scripts
+ * @param {Touch} touch
+ */
+function TouchMove(touch) {
+	if (MainCanvas) {
+		MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
+		MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+	}
+}
+
+/**
+ * When mouse move, we keep the mouse position for other scripts
+ * @param {MouseEvent} event
+ */
+function MouseMove(event) {
+	if (MainCanvas) {
+		MouseX = Math.round(event.offsetX * 2000 / MainCanvas.canvas.clientWidth);
+		MouseY = Math.round(event.offsetY * 1000 / MainCanvas.canvas.clientHeight);
+	}
+}
+
+/**
+ * When the mouse is away from the control, we stop keeping the coordinates,
+ * we also check for false positives with "relatedTarget"
+ * @param {MouseEvent} event
+ */
+function LoseFocus(event) {
+	if (event.relatedTarget || event.toElement) {
+		MouseX = -1;
+		MouseY = -1;
+	}
+}
+
+</script>
+
+<body style="width:100%; height:100%; background-color:black; margin:0px; padding:0px; overflow:hidden;">
+	<canvas id="MainCanvas" Width="2000" Height="1000" onClick="Click(event);" onTouchStart="TouchStart(event);" onTouchEnd="TouchEnd(event);" onMouseMove="MouseMove(event);" onMouseLeave="LoseFocus(event);"></canvas>
+</body>
+</html>

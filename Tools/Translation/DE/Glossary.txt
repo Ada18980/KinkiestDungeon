@@ -1,0 +1,9 @@
+# Begriffe mit schwieriger Übersetzungsentscheidung, Änderungsvorschläge willkommen
+
+English       German/Deutsch Remarks/Anmerkungen
+
+Maid          Hausmädchen
+Head Maid     Hausdame
+Mistress      Herrin
+Club Mistress Clubherrin
+Head Mistress Hausherrin
