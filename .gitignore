@@ -1,4 +1,19 @@
+*
+!*/
 
-adakey
+!/Assets/**/*
+!/Backgrounds/**/*.jpg
+!/Icons/**/*
+!/Fonts/**/*
+!/Game/**/*
+!/Scripts/**/*
+!/Screens/**/*
 
-adakey.pub
+!/.editorconfig
+!/.eslintrc.json
+!/.gitignore
+!/index.html
+!/package-lock.json
+!/package.json
+!/README.md
+!/style.css
