@@ -2121,6 +2121,7 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 		}
 	}
 	if (sprite) {
+		sprite.interactive = false;
 		// Modify the sprite according to the params
 		let tex = KDTex(Image);
 		if (tex) sprite.texture = tex;

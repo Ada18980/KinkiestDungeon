@@ -146,7 +146,7 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas) {
 			view: view,
 			antialias: true,
 		});
-		KDCanvasRenderMap.set(DrawCanvas, renderer);
+		KDCanvasRenderMap.set(DrawCanvas.canvas, renderer);
 	}
 
 	if (renderer) {
