@@ -29,7 +29,43 @@
 	<script async src="Scripts/lib/chessboard-4.3.9.min.js"></script>
 </head>
 
+<body style="width:100%; height:100%; background-color:black; margin:0px; padding:0px; overflow:hidden;">
+	<style>
+		#load-progress-root {
+			margin: 0;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 50%;
+			transform: translate(-25%, -25%);
+		}
+
+		#load-progress-bar {
+			position: absolute;
+			width: 1%;
+			height: 35px;
+			background-color: #4CAF50;
+		}
+
+		#load-progress-text {
+			position: absolute;
+			width: 50%;
+			text-align: center;
+			line-height: 32px;
+			color: white;
+		}
+		</style>
+		<div id="load-progress-root">
+			<div id="load-progress-bar"></div>
+			<div id="load-progress-text"></div>
+		</div>
+
+
+
+<script src="./Scripts/Loader.js"></script>
+<script>updateProgress('Loading PIXI...', 0, 100);</script>
 <script src="Game/pixi.min.js"></script>
+<script>updateProgress('Loading Scripts...', 10, 100);</script>
 <script src="Scripts/Patch.js"></script>
 <script src="Scripts/GLDraw.js"></script>
 <script src="Scripts/Common.js"></script>
@@ -45,6 +81,7 @@
 <script src="Scripts/Speech.js"></script>
 <script src="Scripts/Text.js"></script>
 <script src="Scripts/Inventory.js"></script>
+<script>updateProgress('Loading Scripts...', 20, 100);</script>
 <script src="Scripts/Asset.js"></script>
 <script src="Scripts/Audio.js"></script>
 <script src="Scripts/MiniGame.js"></script>
@@ -55,6 +92,7 @@
 <script src="Scripts/ExtendedItem.js"></script>
 <script src="Scripts/ModularItem.js"></script>
 <script src="Scripts/TypedItem.js"></script>
+<script>updateProgress('Loading Items...', 30, 100);</script>
 <script src="Screens/Inventory/Futuristic/Futuristic.js"></script>
 <script src="Screens/Character/ItemColor/ItemColor.js"></script>
 <script src="Screens/Character/Wardrobe/Wardrobe.js"></script>
@@ -143,14 +181,17 @@
 <script src="Screens/Inventory/HairAccessory3/Halo/Halo.js"></script>
 <script src="Screens/Inventory/HairAccessory1/Halo/Halo.js"></script>
 <script src="Screens/Inventory/ItemArms/TransportJacket/TransportJacket.js"></script>
+<script>updateProgress('Loading Assets...', 50, 100);</script>
 <script src="Scripts/VibratorMode.js"></script>
 <script src="Scripts/DynamicDraw.js"></script>
 <script src="Scripts/Notification.js"></script>
 <script src="Scripts/Graph.js"></script>
 <script src="Scripts/VariableHeight.js"></script>
 <script src="Assets/Female3DCG/Female3DCG.js"></script>
+<script>updateProgress('Loading Assets...', 70, 100);</script>
 <script src="Assets/Female3DCG/Female3DCGExtended.js"></script>
 <script src="Scripts/Appearance.js"></script>
+<script>updateProgress('Loading Game Files...', 80, 100);</script>
 <script src="Game/KinkyDungeonStats.js"></script>
 <script src="Game/KinkyDungeonEditorTiles.js"></script>
 <script src="Game/KinkyDungeonEditor.js"></script>
@@ -215,6 +256,7 @@
 <script src="Game/KinkyDungeonMistress.js"></script>
 <script src="Game/KinkyDungeonTests.js"></script>
 <script>
+updateProgress('Setting up launcher...', 90, 100);
 
 /*
 
@@ -227,6 +269,7 @@
 
 // When the code is loaded, we start the game engine
 window.onload = function() {
+	updateProgress('Patching files...', 95, 100);
 	//CheatImport();
 	GameVersion = "4.0";
 	console.log("Version: " + GameVersion);
@@ -279,6 +322,7 @@ window.onload = function() {
 	TextLoad = () => {};
 	CommonSetScreen("KinkyDungeon", "KinkyDungeonMain");
 	TextLoad = _TextLoad;
+	updateProgress('Launching...', 99, 100);
 	MainRun(0);
 
 	// LoginLoad
@@ -322,8 +366,11 @@ window.onload = function() {
 		KinkyDungeonKeybindings = JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"));
 	}
 
+
 	GLDrawLoad(); // Normally invoked from window.onload
 };
+
+updateProgress('Loading Input...', 94, 100);
 
 /**
  * Main game running state, runs the drawing
@@ -431,10 +478,8 @@ function LoseFocus(event) {
 		MouseY = -1;
 	}
 }
-
+updateProgress('Generating canvas...', 97, 100);
 </script>
-
-<body style="width:100%; height:100%; background-color:black; margin:0px; padding:0px; overflow:hidden;">
 	<canvas id="MainCanvas" Width="2000" Height="1000" onClick="Click(event);" onTouchStart="TouchStart(event);" onTouchEnd="TouchEnd(event);" onMouseMove="MouseMove(event);" onMouseLeave="LoseFocus(event);"></canvas>
 </body>
 <!-- Google Tag Manager (noscript) -->

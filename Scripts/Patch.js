@@ -468,3 +468,4 @@ function remap(src) {
 }
 
 let ChatRoomLastMessage = [];
+let ChatRoomChatLog = [];
