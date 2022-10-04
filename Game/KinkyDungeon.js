@@ -455,6 +455,7 @@ function KDistChebyshev(x, y) {
  * @returns {void} - Nothing
  */
 function KinkyDungeonLoad() {
+	console.log(ModelDefs);
 	KDCategories = Object.assign([], KDCategoriesStart);
 	for (let c of KDCategories) {
 		c.buffs = [];

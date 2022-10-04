@@ -2101,9 +2101,11 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
  * @param {number} [Rotation]
  * @param {any} [options]
  * @param {boolean} [Centered]
+ * @param {Map<string, boolean>} [SpritesDrawn]
+ * @param {number} [Scale]
  * @returns {boolean}
  */
-function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered) {
+function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered, SpritesDrawn, Scale) {
 	let sprite = Map.get(id);
 	if (!sprite) {
 		// Load the texture
@@ -2129,6 +2131,10 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 			sprite.width = Width;
 		if (Height)
 			sprite.height = Height;
+		if (Scale) {
+			sprite.scale.x = Scale;
+			sprite.scale.y = Scale;
+		}
 		if (Centered) {
 			sprite.anchor.set(0.5);
 		}
@@ -2139,7 +2145,10 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 				sprite[o[0]] = o[1];
 			}
 		}
-		kdSpritesDrawn.set(id, true);
+		if (SpritesDrawn)
+			SpritesDrawn.set(id, true);
+		else
+			kdSpritesDrawn.set(id, true);
 		return true;
 	}
 	return false;

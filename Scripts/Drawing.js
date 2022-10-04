@@ -210,7 +210,7 @@ function DrawArousalMeter(C, X, Y, Zoom) {
  * @param {CanvasRenderingContext2D} [DrawCanvas] - The canvas to draw to; If undefined `MainCanvas` is used
  * @returns {void} - Nothing
  */
-function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas) {
+function DrawCharacterLegacy(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas) {
 	// Record that the character was drawn this frame
 	DrawLastCharacters.push(C);
 
