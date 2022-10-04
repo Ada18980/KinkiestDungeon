@@ -1074,11 +1074,7 @@ function KinkyDungeonDrawGame() {
 		KinkyDungeonDrawLore();
 	} else if (KinkyDungeonDrawState == "Restart") {
 		MainCanvas.textAlign = "left";
-		// Check URL to see if indev branch
-		const params = new URLSearchParams(window.location.search);
-		let branch = params.has('branch') ? params.get('branch') : "";
-		let localhost = params.has('localhost') ? params.get('localhost') : "";
-		if (branch || localhost || ServerURL == 'https://bc-server-test.herokuapp.com/' || TestMode) {
+		if (TestMode) {
 			DrawCheckboxVis(600, 20, 64, 64, "Debug Mode", KDDebugMode, false, "#ffffff");
 			if (KDDebugMode) {
 				let dd = 30;
