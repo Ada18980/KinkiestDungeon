@@ -487,7 +487,7 @@ function KinkyDungeonLoad() {
 	if (!KinkyDungeonGameRunning) {
 		if (!KinkyDungeonPlayer) { // new game
 			KDrandomizeSeed(false);
-			KinkyDungeonPlayer = CharacterLoadNPC("NPC_Avatar");
+			KinkyDungeonPlayer = suppressCanvasUpdate(() => CharacterLoadNPC("NPC_Avatar"));
 			KinkyDungeonPlayer.Type = "simple";
 			// @ts-ignore
 			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: true, };
@@ -522,9 +522,9 @@ function KinkyDungeonLoad() {
 
 			CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
 
-			CharacterReleaseTotal(KinkyDungeonPlayer);
+			suppressCanvasUpdate(() => CharacterReleaseTotal(KinkyDungeonPlayer));
 			KinkyDungeonDressSet();
-			CharacterNaked(KinkyDungeonPlayer);
+			suppressCanvasUpdate(() => CharacterNaked(KinkyDungeonPlayer));
 			KinkyDungeonInitializeDresses();
 			KinkyDungeonDressPlayer();
 			KDInitProtectedGroups();
