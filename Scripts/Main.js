@@ -1,36 +1,20 @@
-updateProgress('Setting up launcher...', 90, 100);
+// While we want KD to be backwards compatible with BC, we want to avoid making modifications that are standalone specific to the KD code itself
+// These bootstraps must be loaded last, as they replace BC specific KD functionality
+KinkyDungeonMainRun = () => {};
+KinkyDungeonMainClick = () => {};
+
+ChatRoomChatLog = [];
+ChatRoomLastMessage = [];
+
+ChatRoomCharacterUpdate = () => {};
+ChatRoomCharacterItemUpdate = () => {};
+
+ArcadeKinkyDungeonEnd = () => {}
+KinkyDungeonMultiplayerUpdate = () => {};
+
+ArcadeDeviousDungeonChallenge = false;
 
 window.onload = function() {
-	// Inserted from KD load
-	DrawProcessScreenFlash = () => {};
-
-	// Bootstrap BC enough to be able to run KD
-	KinkyDungeonMainRun = () => {};
-	KinkyDungeonMainClick = () => {};
-
-	TimerPrivateOwnerBeep = () => {};
-
-	ServerSend = () => {};
-	ServerPrivateCharacterSync = () => {};
-	ServerPlayerIsInChatRoom = () => false;
-	ServerAccountUpdate = {
-		SyncToServer: () => {},
-		QueueData: () => {}
-	};
-
-	PrivateCharacter = [];
-
-	ChatRoomChatLog = [];
-	ChatRoomCharacterUpdate = () => {};
-	ChatRoomCharacterItemUpdate = () => {};
-
-	AsylumGGTSControlItem = () => false;
-	AsylumGGTSCharacterName = () => "";
-
-	ArcadeKinkyDungeonEnd = () => {}
-
-	KinkyDungeonMultiplayerUpdate = () => {};
-
 	ArcadeDeviousDungeonChallenge = false;
 	KinkyDungeonRootDirectory = "Game/";
 
@@ -45,7 +29,6 @@ window.onload = function() {
 	TextLoad = () => {};
 	CommonSetScreen("KinkyDungeon", "KinkyDungeonMain");
 	TextLoad = _TextLoad;
-	updateProgress('Launching...', 99, 100);
 	MainRun(0);
 
 	// LoginLoad
@@ -91,8 +74,6 @@ window.onload = function() {
 
 	GLDrawLoad(); // Normally invoked from window.onload
 };
-
-updateProgress('Loading Input...', 94, 100);
 
 /**
  * Main game running state, runs the drawing
@@ -200,4 +181,3 @@ function LoseFocus(event) {
 		MouseY = -1;
 	}
 }
-updateProgress('Initializing canvas...', 97, 100);

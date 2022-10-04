@@ -466,6 +466,3 @@ function DialogSetReputation(a, b) {
 function remap(src) {
 	return src;
 }
-
-let ChatRoomLastMessage = [];
-let ChatRoomChatLog = [];
