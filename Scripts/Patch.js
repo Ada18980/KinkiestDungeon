@@ -91,6 +91,9 @@ var DialogFavoriteStateDetails = [
 ];
 
 
+function DialogCanUnlock() {
+	return true;
+}
 
 // This file patches KD
 function CheatFactor() {
