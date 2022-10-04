@@ -1,6 +1,8 @@
 "use strict";
 let ArcadeDeviousChallenge = false;
 
+let Patched = true;
+
 var DialogText = "";
 var DialogTextDefault = "";
 var DialogTextDefaultTimer = -1;

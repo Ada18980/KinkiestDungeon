@@ -869,7 +869,10 @@ function KinkyDungeonDrawGame() {
 
 			// Draw the player no matter what
 			KinkyDungeonContextPlayer.clearRect(0, 0, KinkyDungeonCanvasPlayer.width, KinkyDungeonCanvasPlayer.height);
-			DrawCharacter(KinkyDungeonPlayer, -KinkyDungeonGridSizeDisplay/2, KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0), KinkyDungeonGridSizeDisplay/250, false, KinkyDungeonContextPlayer);
+			DrawCharacter(KinkyDungeonPlayer,
+				-KinkyDungeonGridSizeDisplay/2 + (Patched ? KinkyDungeonGridSizeDisplay*-0.2 : 0),
+				KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0) + (Patched ? KinkyDungeonGridSizeDisplay*-0.1 : 0),
+				KinkyDungeonGridSizeDisplay/250, false, KinkyDungeonContextPlayer);
 
 			KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 			KinkyDungeonDrawFloaters(CamX+CamX_offset, CamY+CamY_offset);

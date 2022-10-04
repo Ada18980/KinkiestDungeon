@@ -150,9 +150,11 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas) {
 	}
 
 	if (renderer) {
+		PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 		renderer.render(MC.Container, {
 			clear: false,
 		});
+		PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 	}
 
 	// Store it in the map so we don't have to create it again
