@@ -1319,19 +1319,6 @@ function DrawProcess(time) {
  * @returns {void}
  */
 function DrawProcessScreenFlash() {
-	if (BlindFlash == true && CurrentTime < DrawingBlindFlashTimer) {
-		if (Player.GetBlindLevel() == 0) {
-			let FlashTime = DrawingBlindFlashTimer - CurrentTime;
-			DrawRect(0, 0, 2000, 1000, "#ffffff" + DrawGetScreenFlashAlpha(FlashTime/Math.max(1, 4 - DrawLastDarkFactor)));
-		}
-	}
-
-	if ((Player.ImmersionSettings != null && Player.GraphicsSettings != null) && (Player.ImmersionSettings.StimulationEvents && Player.GraphicsSettings.StimulationFlash) && DrawScreenFlashTime > CommonTime()) {
-		// DrawScreenFlashTime is the end of the flash. The flash is brighter based on the distance to the end.
-		let FlashTime = DrawScreenFlashTime - CommonTime();
-		let PinkFlashAlpha = DrawGetScreenFlashAlpha(FlashTime);
-		DrawRect(0, 0, 2000, 1000, DrawScreenFlashColor + PinkFlashAlpha);
-	}
 }
 
 /**

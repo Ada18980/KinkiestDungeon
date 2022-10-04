@@ -92,7 +92,7 @@ function ModularItemRegister(asset, config) {
 	ModularItemCreateDrawFunction(data);
 	ModularItemCreateClickFunction(data);
 	ModularItemCreateExitFunction(data);
-	ModularItemGenerateValidationProperties(data);
+	//ModularItemGenerateValidationProperties(data);
 }
 
 /**

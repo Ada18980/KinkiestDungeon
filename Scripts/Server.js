@@ -27,38 +27,9 @@ function ServerInit() {
 }
 
 /** @readonly */
-var ServerAccountUpdate = new class AccountUpdater {
-
-	constructor() {
-		/**
-		 * @private
-		 * @type {Map<string, object>}
-		 */
-		this.Queue = new Map;
-		/**
-		 * @private
-		 * @type {null | number}
-		 */
-		this.Timeout = null;
-		/**
-		 * @private
-		 * @type {number}
-		 */
-		this.Start = 0;
-	}
-
-	/** Clears queue and sync with server  */
-	SyncToServer() {
-	}
-
-	/**
-	 * Queues a data to be synced at a later time
-	 * @param {object} Data
-	 * @param {true} [Force] - force immediate sync to server
-	 */
-	QueueData(Data, Force) {
-
-	}
+var ServerAccountUpdate = {
+	SyncToServer: () => {},
+	QueueData: () => {}
 };
 
 /**
