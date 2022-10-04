@@ -3,7 +3,13 @@
 // Disable interpolation when scaling, will make texture be pixelated
 //PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
-let TestMode = false;
+
+// Check URL to see if indev branch
+const pp = new URLSearchParams(window.location.search);
+let branch = pp.has('branch') ? pp.get('branch') : "";
+let test = pp.has('test') ? pp.get('test') : "";
+let localhost = pp.has('localhost') ? pp.get('localhost') : "";
+let TestMode = test || branch || localhost || ServerURL == 'https://bc-server-test.herokuapp.com/';
 
 let KDDebugMode = false;
 let KDDebug = false;
@@ -734,11 +740,7 @@ function KinkyDungeonRun() {
 			return true;
 		}, true, 1075, 780, 350, 64, TextGet("GameConfigKeys"), "#ffffff", "");
 
-		// Check URL to see if indev branch
-		const pp = new URLSearchParams(window.location.search);
-		let branch = pp.has('branch') ? pp.get('branch') : "";
-		let localhost = pp.has('localhost') ? pp.get('localhost') : "";
-		if (branch || localhost || ServerURL == 'https://bc-server-test.herokuapp.com/' || TestMode) {
+		if (TestMode) {
 			DrawButtonKDEx("TileEditor", () => {
 				KDInitTileEditor();
 				KinkyDungeonState = "TileEditor";

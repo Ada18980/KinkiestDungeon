@@ -1829,11 +1829,7 @@ function KinkyDungeonHandleHUD() {
 		}
 	} else if (KinkyDungeonDrawState == "Restart") {
 		if (MouseIn(600, 20, 64, 64)) {
-			// Check URL to see if indev branch
-			const params = new URLSearchParams(window.location.search);
-			let branch = params.has('branch') ? params.get('branch') : "";
-			let localhost = params.has('localhost') ? params.get('localhost') : "";
-			if (branch || localhost || ServerURL == 'https://bc-server-test.herokuapp.com/' || TestMode) {
+			if (TestMode) {
 				KDDebugMode = !KDDebugMode;
 				ElementCreateTextArea("DebugEnemy");
 				ElementValue("DebugEnemy", "Maidforce");
