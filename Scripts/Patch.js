@@ -459,3 +459,7 @@ function ReputationGet(RepType) {
 /** Smile and wave */
 function DialogSetReputation(a, b) {
 }
+
+function remap(src) {
+	return src;
+}
