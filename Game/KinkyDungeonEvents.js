@@ -1578,7 +1578,7 @@ let KDEventMapSpell = {
 	},
 	"beforeStruggleCalc": {
 		"ModifyStruggle": (e, spell, data) => {
-			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.escapeChance && (!e.StruggleType || data.StruggleType)) {
+			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.escapeChance != undefined && (!e.StruggleType || e.StruggleType == data.struggleType)) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 				if (e.mult && data.escapeChance > 0)
 					data.escapeChance *= e.mult;

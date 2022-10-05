@@ -291,6 +291,11 @@ function KinkyDungeonDefaultStats(Load) {
 	KDOrigWill = KinkyDungeonStatWillMax * 10;
 	KDOrigDistraction = 0;
 
+	if (test == 'godmode') {
+		KinkyDungeonSeeAll = true;
+		KinkyDungeonSpellPoints = 9001;
+	}
+
 	if (!Load) {
 		for (let perk of [...KinkyDungeonStatsChoice.keys()].filter((e) => {return KDPerkStart[e] != undefined;})
 			.sort((a, b) => {
