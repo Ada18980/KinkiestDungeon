@@ -197,8 +197,8 @@ KinkyDungeonStat57,"Disorganized"
 KinkyDungeonStatDesc57,"Switching weapons, learning/choosing spells, and casting from spellbook takes 3 turns."
 
 
-KinkyDungeonStatFuukaCollar,"Fuuka's Pet"
-KinkyDungeonStatDescFuukaCollar,"Start with Fuuka's collar and a few restraints."
+KinkyDungeonStatStart5FuukaCollar,"Fuuka's Pet"
+KinkyDungeonStatDescStart5FuukaCollar,"Start with Fuuka's collar and a few restraints."
 KinkyDungeonStatCommonFuuka,"Fuuka Fan Club"
 KinkyDungeonStatDescCommonFuuka,"All humanoids that can bind you also apply Fuuka's special restraints."
 
@@ -338,15 +338,14 @@ KinkyDungeonStatDescJacketLover,"More straitjackets, less armbinders."
 
 
 
-KinkyDungeonStatStartMaid,"Maid Sweeper"
-KinkyDungeonStatDescStartMaid,"Start in a magically locked maid outfit."
-KinkyDungeonStatStartWolfgirl,"Wolf Trainee"
-KinkyDungeonStatDescStartWolfgirl,"Start in a uniform of a naughty wolfgirl."
-KinkyDungeonStatStartLatex,"Latex Doll"
-KinkyDungeonStatDescStartLatex,"Start bound in latex restraints."
-KinkyDungeonStatStartObsidian,"Iron Slave"
-KinkyDungeonStatDescStartObsidian,"Start in a full set of magically locked obsidian cuffs."
-
+KinkyDungeonStatStart3Maid,"Maid Sweeper"
+KinkyDungeonStatDescStart3Maid,"Start in a magically locked maid outfit."
+KinkyDungeonStatStart2Wolfgirl,"Wolf Trainee"
+KinkyDungeonStatDescStart2Wolfgirl,"Start in a uniform of a naughty wolfgirl."
+KinkyDungeonStatStart4Latex,"Latex Doll"
+KinkyDungeonStatDescStart4Latex,"Start bound in latex restraints."
+KinkyDungeonStatStart1Obsidian,"Iron Slave"
+KinkyDungeonStatDescStart1Obsidian,"Start in a full set of magically locked obsidian cuffs."
 
 
 KinkyDungeonCopyPerks,Copy to Clipboard
@@ -3176,6 +3175,9 @@ KinkyDungeonLinkScaleArmCuffs4,"The enemy attaches your wrist cuffs back togethe
 RestraintMaidJacket,Latex Jacket
 RestraintMaidJacketDesc,"A bolero jacket keeping your arms pinned snugly. You can't even move them."
 RestraintMaidJacketDesc2,"There is no hope of struggling out. Better hope you can cut it..."
+RestraintMaidDress,Devious Maid Costume
+RestraintMaidDressDesc,"A devious maid outfit that forces the arms into an elbows-touching position."
+RestraintMaidDressDesc2,"Makes sure you focus on your work and not fooling around."
 RestraintMaidBelt,Reinforced Leather Belt
 RestraintMaidBeltDesc,"A leather belt used to keep your legs hobbled."
 RestraintMaidBeltDesc2,"It's made of a very tough reinforced leather. It will take some time to cut."

@@ -195,16 +195,16 @@ let KinkyDungeonStatsPresets = {
 	//"Novice": {category: "Magic", id: 7, cost: -1},
 	"Meditation": {category: "Magic", id: 13, cost: 2},
 	"QuickScribe": {category: "Magic", id: 56, cost: 1, block: ["Disorganized"]},
-	"FuukaCollar": {category: "Boss", id: "FuukaCollar", cost: -3, locked: true, tags: ["start"]},
 	"BerserkerRage": {category: "Combat", id: "BerserkerRage", cost: 3},
 	"UnstableMagic": {category: "Magic", id: "UnstableMagic", cost: 2},
 	"Vengeance": {category: "Enemies", id: "Vengeance", cost: -1},
 	"AbsoluteFocus": {category: "Magic", id: "AbsoluteFocus", cost: -1},
 
-	"StartMaid": {category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", block: ["StartLatex", "StartWolfgirl", "StartObsidian"], tags: ["start"]},
-	"StartLatex": {category: "Start", id: "StartLatex", cost: -2, block: ["StartMaid", "StartWolfgirl", "StartObsidian"], tags: ["start"]},
-	"StartWolfgirl": {category: "Start", id: "StartWolfgirl", cost: -2, outfit: "Wolfgirl", block: ["StartMaid", "StartLatex", "StartObsidian"], tags: ["start"]},
-	"StartObsidian": {category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", block: ["StartMaid", "StartLatex", "StartWolfgirl"], tags: ["start"]},
+	"Start1Obsidian": {category: "Start", id: "Start1Obsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
+	"Start2Wolfgirl": {category: "Start", id: "Start2Wolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
+	"Start3Maid": {category: "Start", id: "Start3Maid", cost: -2, outfit: "Maid", tags: ["start"]},
+	"Start4Latex": {category: "Start", id: "Start4Latex", cost: -2, tags: ["start"]},
+	"Start5FuukaCollar": {category: "Boss", id: "Start5FuukaCollar", cost: -3, locked: true, tags: ["start"]},
 
 	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},
 	"Prisoner": {category: "Start", id: "Prisoner", cost: 0},
@@ -254,6 +254,7 @@ let KinkyDungeonStatsPresets = {
 
 	"KinkyPrison":  {category: "Map", id: "KinkyPrison", cost: -1},
 	"Doorknobs":  {category: "Map", id: "Doorknobs", cost: -1},
+	"Doorknobs2":  {category: "Map", id: "Doorknobs", cost: -1},
 };
 
 function KinkyDungeonGetStatPoints(Stats) {
@@ -329,7 +330,7 @@ let KDPerkStart = {
 		KinkyDungeonRedKeys += 1;
 	},
 
-	FuukaCollar: () =>{
+	Start5FuukaCollar: () =>{
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoDress"), 0, true);
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoGag"), 0, true);
@@ -354,7 +355,7 @@ let KDPerkStart = {
 		KDSetWeapon("Knife");
 		KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
 	},
-	StartLatex: () =>{
+	Start4Latex: () =>{
 		KinkyDungeonChangeRep("Latex", 10);
 		for (let i = 0; i < 5; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["latexCatsuits"]}, 12, "grv", true, "Red");
@@ -362,13 +363,13 @@ let KDPerkStart = {
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple");
 		}
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexRestraintsHeavy"]}, 12, "grv", true, "Red");
+			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexRestraintsHeavy", "latexCollar"]}, 12, "grv", true, "Red");
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple");
 		}
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("KiguMask"), 0, true, "Purple");
 	},
-	StartMaid: () =>{
+	Start3Maid: () =>{
 		KDChangeFactionRelation("Player", "Maidforce", 0.2 - KDFactionRelation("Player", "Maidforce"), true);
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints"]}, 12, "grv", true, "Purple");
@@ -380,22 +381,29 @@ let KDPerkStart = {
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Maid", "Maid");
 	},
-	StartWolfgirl: () =>{
+	Start2Wolfgirl: () =>{
 		KDChangeFactionRelation("Player", "Nevermere", 0.2 - KDFactionRelation("Player", "Nevermere"), true);
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints"])}, 12, "grv", true, "Red");
-			if (r)
+			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Red");
+				let item = KinkyDungeonGetRestraintItem(r.Group);
+				if (item && KDRestraint(item).Link) {
+					let newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
+					KinkyDungeonAddRestraint(newRestraint, item.tightness, true, "Red", false, undefined, undefined, undefined, item.faction);
+					//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
+				}
+			}
 		}
 		let outfit = {name: "Wolfgirl", type: Outfit};
 		if (!KinkyDungeonInventoryGet("Wolfgirl")) KinkyDungeonInventoryAdd(outfit);
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Wolfgirl", "Wolfgirl");
 	},
-	StartObsidian: () =>{
+	Start1Obsidian: () =>{
 		KDChangeFactionRelation("Player", "Elemental", 0.2 - KDFactionRelation("Player", "Elemental"), true);
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "genericChastity", "genericToys"]}, 12, "grv", true, "Red");
+			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "ornateChastity", "genericToys"]}, 12, "grv", true, "Red");
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple");
 				let item = KinkyDungeonGetRestraintItem(r.Group);
@@ -403,6 +411,10 @@ let KDPerkStart = {
 					let newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
 					KinkyDungeonAddRestraint(newRestraint, item.tightness, true, "Purple", false, undefined, undefined, undefined, item.faction);
 					//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
+					if (newRestraint && KDRestraint(newRestraint).Link) {
+						let newRestraint2 = KinkyDungeonGetRestraintByName(KDRestraint(newRestraint).Link);
+						KinkyDungeonAddRestraint(newRestraint2, newRestraint.tightness, true, "Purple", false, undefined, undefined, undefined, newRestraint.faction);
+					}
 				}
 			}
 		}

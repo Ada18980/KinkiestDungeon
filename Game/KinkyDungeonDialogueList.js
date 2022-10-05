@@ -2030,7 +2030,7 @@ let KDDialogue = {
 					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
 					KinkyDungeonAddGold(1000);
 					if (KinkyDungeonIsPlayer()) {
-						KDUnlockPerk("FuukaCollar");
+						KDUnlockPerk("Start5FuukaCollar");
 						KDUnlockPerk("CommonFuuka");
 					}
 					return false;

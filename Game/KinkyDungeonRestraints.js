@@ -2200,8 +2200,8 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack) {
 function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction) {
 	if (KDCanAddRestraint(restraint, Bypass, Lock, false)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
-		let linkUnder = KDCanLinkUnder(r, restraint);
-		let linkableCurrent = !linkUnder && r && KDRestraint(r) && KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r.dynamicLink);
+		let linkableCurrent = r && KDRestraint(r) && KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r.dynamicLink);
+		let linkUnder = !linkableCurrent && KDCanLinkUnder(r, restraint, Bypass);
 
 		let ret = 0;
 		let alwaysLinkUnder = false;
