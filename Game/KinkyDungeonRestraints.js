@@ -2139,8 +2139,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r) {
 	if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug")) return false;
 	if (restraint.Group == "ItemNipplesPiercing" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
 	if (!r || (!r.dynamicLink ||
-			(restraint.linkCategory && KDLinkCategorySize(r, restraint.linkCategory) + KDLinkSize(restraint) <= (NoStack ? 0.1 : 1.0))
-			|| (!restraint.linkCategory && !KDDynamicLinkList(r, true).some((item) => {return restraint.name == item.name;}))
+			KDCheckLinkSize(r, restraint, Bypass, NoStack)
 	) && !KDRestraint(r).enchanted
 		&& (
 			(power < ((newLock) ? restraint.power * KinkyDungeonGetLockMult(newLock) : restraint.power))
@@ -2153,7 +2152,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r) {
 }
 
 /**
- *
+ * Returns whether or not the restraint can go under the currentRestraint
  * @param {item} currentRestraint
  * @param {restraint} restraint
  * @param {boolean} [bypass]
@@ -2168,11 +2167,23 @@ function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack) {
 
 	if (!linkUnder) return false;
 	if (
-		(restraint.linkCategory && KDLinkCategorySize(currentRestraint, restraint.linkCategory) + KDLinkSize(restraint) <= (NoStack ? 0.1 : 1.0))
-		|| (!restraint.linkCategory && !KDDynamicLinkList(currentRestraint, true).some((item) => {return restraint.name == item.name;}))
+		KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack)
 	) {
 		return true;
 	}
+}
+
+/**
+ *
+ * @param {item} currentRestraint
+ * @param {restraint} restraint
+ * @param {boolean} [bypass]
+ * @param {boolean} [NoStack]
+ * @returns {boolean}
+ */
+function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack) {
+	return (restraint.linkCategory && KDLinkCategorySize(currentRestraint, restraint.linkCategory) + KDLinkSize(restraint) <= (NoStack ? 0.1 : 1.0))
+		|| (!restraint.linkCategory && !KDDynamicLinkList(currentRestraint, true).some((item) => {return restraint.name == item.name;}))
 }
 
 /**
@@ -2221,6 +2232,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
  */
 function KinkyDungeonIsLinkable(oldRestraint, newRestraint) {
 	if (!oldRestraint.nonbinding && newRestraint.nonbinding) return false;
+	if (!KDCheckLinkSize(oldRestraint, newRestraint, false, false)) return false;
 	if (oldRestraint && newRestraint && oldRestraint && oldRestraint.LinkableBy && newRestraint.shrine) {
 		for (let l of oldRestraint.LinkableBy) {
 			for (let s of newRestraint.shrine) {
