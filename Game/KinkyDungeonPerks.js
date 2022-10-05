@@ -200,11 +200,11 @@ let KinkyDungeonStatsPresets = {
 	"Vengeance": {category: "Enemies", id: "Vengeance", cost: -1},
 	"AbsoluteFocus": {category: "Magic", id: "AbsoluteFocus", cost: -1},
 
-	"Start1Obsidian": {category: "Start", id: "Start1Obsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
-	"Start2Wolfgirl": {category: "Start", id: "Start2Wolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
-	"Start3Maid": {category: "Start", id: "Start3Maid", cost: -2, outfit: "Maid", tags: ["start"]},
-	"Start4Latex": {category: "Start", id: "Start4Latex", cost: -2, tags: ["start"]},
-	"Start5FuukaCollar": {category: "Boss", id: "Start5FuukaCollar", cost: -3, locked: true, tags: ["start"]},
+	"z1Obsidian": {category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
+	"z2Wolfgirl": {category: "Start", id: "StartWolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
+	"z3Maid": {category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
+	"z4Latex": {category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
+	"z5Fuuka": {category: "Boss", id: "FuukaCollar", cost: -3, locked: true, tags: ["start"]},
 
 	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},
 	"Prisoner": {category: "Start", id: "Prisoner", cost: 0},
@@ -330,7 +330,7 @@ let KDPerkStart = {
 		KinkyDungeonRedKeys += 1;
 	},
 
-	Start5FuukaCollar: () =>{
+	z5Fuuka: () =>{
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoDress"), 0, true);
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoGag"), 0, true);
@@ -355,7 +355,7 @@ let KDPerkStart = {
 		KDSetWeapon("Knife");
 		KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
 	},
-	Start4Latex: () =>{
+	z4Latex: () =>{
 		KinkyDungeonChangeRep("Latex", 10);
 		for (let i = 0; i < 5; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["latexCatsuits"]}, 12, "grv", true, "Red");
@@ -369,7 +369,7 @@ let KDPerkStart = {
 		}
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("KiguMask"), 0, true, "Purple");
 	},
-	Start3Maid: () =>{
+	z3Maid: () =>{
 		KDChangeFactionRelation("Player", "Maidforce", 0.2 - KDFactionRelation("Player", "Maidforce"), true);
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints"]}, 12, "grv", true, "Purple");
@@ -381,7 +381,7 @@ let KDPerkStart = {
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Maid", "Maid");
 	},
-	Start2Wolfgirl: () =>{
+	z2Wolfgirl: () =>{
 		KDChangeFactionRelation("Player", "Nevermere", 0.2 - KDFactionRelation("Player", "Nevermere"), true);
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints"])}, 12, "grv", true, "Red");
@@ -400,7 +400,7 @@ let KDPerkStart = {
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Wolfgirl", "Wolfgirl");
 	},
-	Start1Obsidian: () =>{
+	z1Obsidian: () =>{
 		KDChangeFactionRelation("Player", "Elemental", 0.2 - KDFactionRelation("Player", "Elemental"), true);
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "ornateChastity", "genericToys"]}, 12, "grv", true, "Red");

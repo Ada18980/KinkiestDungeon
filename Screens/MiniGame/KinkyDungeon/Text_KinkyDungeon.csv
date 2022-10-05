@@ -197,8 +197,8 @@ KinkyDungeonStat57,"Disorganized"
 KinkyDungeonStatDesc57,"Switching weapons, learning/choosing spells, and casting from spellbook takes 3 turns."
 
 
-KinkyDungeonStatStart5FuukaCollar,"Fuuka's Pet"
-KinkyDungeonStatDescStart5FuukaCollar,"Start with Fuuka's collar and a few restraints."
+KinkyDungeonStatFuukaCollar,"Fuuka's Pet"
+KinkyDungeonStatDescFuukaCollar,"Start with Fuuka's collar and a few restraints."
 KinkyDungeonStatCommonFuuka,"Fuuka Fan Club"
 KinkyDungeonStatDescCommonFuuka,"All humanoids that can bind you also apply Fuuka's special restraints."
 
@@ -338,14 +338,14 @@ KinkyDungeonStatDescJacketLover,"More straitjackets, less armbinders."
 
 
 
-KinkyDungeonStatStart3Maid,"Maid Sweeper"
-KinkyDungeonStatDescStart3Maid,"Start in a magically locked maid outfit."
-KinkyDungeonStatStart2Wolfgirl,"Wolf Trainee"
-KinkyDungeonStatDescStart2Wolfgirl,"Start in a uniform of a naughty wolfgirl."
-KinkyDungeonStatStart4Latex,"Latex Doll"
-KinkyDungeonStatDescStart4Latex,"Start bound in latex restraints."
-KinkyDungeonStatStart1Obsidian,"Iron Slave"
-KinkyDungeonStatDescStart1Obsidian,"Start in a full set of magically locked obsidian cuffs."
+KinkyDungeonStatStartMaid,"Maid Sweeper"
+KinkyDungeonStatDescStartMaid,"Start in a magically locked maid outfit."
+KinkyDungeonStatStartWolfgirl,"Wolf Trainee"
+KinkyDungeonStatDescStartWolfgirl,"Start in a uniform of a naughty wolfgirl."
+KinkyDungeonStatStartLatex,"Latex Doll"
+KinkyDungeonStatDescStartLatex,"Start bound in latex restraints."
+KinkyDungeonStatStartObsidian,"Iron Slave"
+KinkyDungeonStatDescStartObsidian,"Start in a full set of magically locked obsidian cuffs."
 
 
 KinkyDungeonCopyPerks,Copy to Clipboard
