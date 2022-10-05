@@ -292,7 +292,7 @@ function KinkyDungeonDefaultStats(Load) {
 	KDOrigDistraction = 0;
 
 	if (!Load) {
-		for (let perk of KinkyDungeonStatsChoice.keys()) {
+		for (let perk of [...KinkyDungeonStatsChoice.keys()].sort()) {
 			if (KinkyDungeonStatsChoice.get(perk) && KDPerkStart[perk]) {
 				KDPerkStart[perk](Load);
 			}
