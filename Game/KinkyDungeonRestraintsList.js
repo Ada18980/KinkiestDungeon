@@ -1,8 +1,8 @@
 "use strict";
 
 // LinkableBy array templates
-let KDHarnessLink = ["HeavyCorsets", "Corsets", "ArmbinderHarness", "Ties", "Belts", "Harnesses"];
-let KDCorsetLink = ["Harnesses", "ArmbinderHarness", "Ties", "Belts"];
+let KDHarnessLink = ["Wrapping", "HeavyCorsets", "Corsets", "ArmbinderHarness", "Ties", "Belts", "Harnesses"];
+let KDCorsetLink = ["Wrapping", "Harnesses", "ArmbinderHarness", "Ties", "Belts"];
 let KDBindable = ["Wrapping", "Belts", "Tape", "Ties"]; // Things that can be wrapped in various restraints
 let KDWrappable = ["Wrapping", "Belts", "Tape"]; // Things that can be wrapped in various restraints but not tied due to covering
 let KDArmbinderLink = ["Wrapping", "Belts", "BindingDress"]; // Standard link for an armbinder
