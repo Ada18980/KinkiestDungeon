@@ -16,6 +16,7 @@ let KinkyDungeonFactionColors = {
 /** Hidden factions do not auto-rep change when you attack them */
 let KinkyDungeonHiddenFactions = [
 	"Plant",
+	"Natural",
 	"Player",
 	"Enemy",
 	"Jail",
@@ -101,6 +102,10 @@ let KinkyDungeonFactionRelationsBase = {
 		AncientRobot: -0.25,
 		Nevermere: -0.1,
 		Enemy: 0.1,
+	},
+	"Natural": {
+		Player: -1,
+		Jail: -1,
 	},
 	"Ghost": {
 		Player: -1.0,
@@ -378,6 +383,13 @@ function KDInitFactions(Reset) {
 			KinkyDungeonFactionRelations[relation[0]] = Object.assign({}, KinkyDungeonFactionRelationsBase[relation[0]]);
 		}
 	}
+
+	for (let f of Object.keys(KinkyDungeonFactionRelationsBase)) {
+		if (!KinkyDungeonFactionRelations[f]) {
+			KinkyDungeonFactionRelations[f] = Object.assign(KinkyDungeonFactionRelationsBase[f]);
+		}
+	}
+
 	KDFactionRelations = new Map();
 	// For each faction in faction relations we create all the maps
 	for (let f1 of Object.entries(KinkyDungeonFactionRelationsBase)) {

@@ -594,7 +594,7 @@ let KinkyDungeonEnemies = [
 		],
 		dropTable: [{name: "Nothing", weight: 9}, {name: "Pick", weight: 4}, {name: "RedKey", weight: 2}, {name: "BlueKey", weight: 1}, {name: "Knife", ignoreInInventory: true, weight: 4}, {name: "MagicSword", weight: 1, ignoreInInventory: true}, {name: "MagicSpear", weight: 1, ignoreInInventory: true}, {name: "MagicAxe", weight: 1, ignoreInInventory: true}, {name: "MagicFlail", weight: 1, ignoreInInventory: true}, {name: "MagicHammer", weight: 1, ignoreInInventory: true}]},
 
-	{name: "StoneDoor", blockVision: true,
+	{name: "StoneDoor", faction: "Natural", blockVision: true,
 		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "poisonimmune",
 			"soulimmune", "slashresist", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "chainimmune", "glueresist", "acidresist", "tickleimmune", "gropeimmune", "painimmune", "charmimmune",
 		]), spellResist: 0, sneakThreshold: 0.01,
@@ -605,7 +605,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "duringDamageEnemy", type: "damageThreshold", power: 1, chance: 1.0},
 		],
 	},
-	{name: "SteelDoor", blockVision: true,
+	{name: "SteelDoor", faction: "Natural", blockVision: true,
 		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "poisonimmune",
 			"soulimmune", "slashresist", "pierceresist", "electricimmune", "unarmedresist", "chainimmune", "glueresist", "tickleimmune", "gropeimmune", "painimmune", "charmimmune",
 		]), spellResist: 1, sneakThreshold: 0.01,
@@ -617,7 +617,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 
-	{name: "GiantMushroom", clusterWith: "mushroom", tags: KDMapInit(["mushroom", "scenery", "nonvulnerable", "minor", "inactive", "immobile", "unstoppable", "soulimmune", "slashweakness", "fireweakness", "glueresist", "poisonimmune", "coldweakness"]), spellResist: 0.33, sneakThreshold: 0.01,
+	{name: "GiantMushroom", faction: "Natural", clusterWith: "mushroom", tags: KDMapInit(["mushroom", "scenery", "nonvulnerable", "minor", "inactive", "immobile", "unstoppable", "soulimmune", "slashweakness", "fireweakness", "glueresist", "poisonimmune", "coldweakness"]), spellResist: 0.33, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, immobile: true,
 		visionRadius: 0, maxhp: 1, minLevel:0, weight:5, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
 		terrainTags: {}, floors:KDMapInit(["cry", "jng"]), shrines: ["Will"], ondeath: [{type: "spellOnSelf", spell: "Spores"}],
@@ -828,14 +828,14 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, blindSight: 7, maxhp: 1, evasion: 1.0, minLevel:0, weight:0.1, movePoints: 1.25, attackPoints: 2, attack: "MeleeWillSpell", attackWidth: 1, attackRange: 1, power: 2, dmgType: "charm",
 		terrainTags: {"willAnger": 2, "willRage": 3}, shrines: ["Will"], allFloors: true},
 
-	{name: "ChaoticCrystal", clusterWith: "chaos", color: "#ff00aa", immobile: true, hitsfx: "DealDamage", tags: KDMapInit(["crystal", "chaos", "minor", "inactive", "melee", "crushweakness", "soulimmune"]),
+	{name: "ChaoticCrystal", faction: "Natural", clusterWith: "chaos", color: "#ff00aa", immobile: true, hitsfx: "DealDamage", tags: KDMapInit(["crystal", "chaos", "minor", "inactive", "melee", "crushweakness", "soulimmune"]),
 		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "wander", sneakThreshold: 0.01,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ff44aa"}
 		],
 		visionRadius: 1.5, blindSight: 1.5, maxhp: 8, minLevel:0, weight:0, movePoints: 99999, attackPoints: 1, attack: "MeleeWill", attackWidth: 8, attackRange: 1, power: 1, dmgType: "drain",
 		terrainTags: {"passage": -999, "door": -99, "crystalline": 45}, floors:KDMapInit(["cry"]), shrines: []},
-	{name: "ChaoticCrystalActive", clusterWith: "chaos", immobile: true, color: "#ff00aa", hitsfx: "DealDamage", tags: KDMapInit(["crystal", "active", "chaos", "melee", "crushweakness", "crystalRestraints", "soulimmune"]),
+	{name: "ChaoticCrystalActive", faction: "Natural", clusterWith: "chaos", immobile: true, color: "#ff00aa", hitsfx: "DealDamage", tags: KDMapInit(["crystal", "active", "chaos", "melee", "crushweakness", "crystalRestraints", "soulimmune"]),
 		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "wander", sneakThreshold: 0.01,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff44aa"}
@@ -843,7 +843,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 5, blindSight: 5, maxhp: 16, minLevel:0, weight:0, movePoints: 99999, attackPoints: 4, attack: "MeleeWillBind", attackWidth: 8, attackRange: 2, power: 2, dmgType: "drain", fullBoundBonus: 2,
 		terrainTags: {"passage": -999, "door": -99, "crystalline": 5, "open": 45}, floors:KDMapInit(["cry"]), shrines: []},
 
-	{name: "Statue", tags: KDMapInit(["mimicBlock", "statue", "minor", "melee", "unflinching", "crushweakness", "pierceweakness", "chainresist", "soulimmune"]), immobile: true, spellResist: 0.33, sneakThreshold: 0.01,
+	{name: "Statue", faction: "Natural", tags: KDMapInit(["mimicBlock", "statue", "minor", "melee", "unflinching", "crushweakness", "pierceweakness", "chainresist", "soulimmune"]), immobile: true, spellResist: 0.33, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "ambush", ambushRadius: 0,
 		visionRadius: 0, maxhp: 8, minLevel:0, weight:30, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 4, dmgType: "souldrain",
 		terrainTags: {"passage": -999, "temple": 82, "open": 10}, floors:KDMapInit(["tmp"]), shrines: []},
