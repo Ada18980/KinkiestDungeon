@@ -166,7 +166,7 @@ let KinkyDungeonStatsPresets = {
 	"Dragon": {category: "Kinky", id: 33, cost: -1, block: ["Escapee"]},
 	"Dodge": {category: "Combat", id: 18, cost: 3, block: ["Distracted"]},
 	"Distracted": {category: "Combat", id: 19, cost: -1, block: ["Dodge"]},
-	"Submissive": {category: "Kinky", id: 10, cost: 0},
+	"Submissive": {startPriority: -1, category: "Kinky", id: 10, cost: 0},
 	"Wanted": {category: "Kinky", id: 11, cost: -1},
 	"QuickDraw": {category: "Combat", id: 55, cost: 1, block: ["Disorganized"]},
 	"Disorganized": {category: "Combat", id: 57, cost: -2, block: ["QuickDraw", "QuickScribe"]},
