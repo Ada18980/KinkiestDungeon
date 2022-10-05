@@ -501,14 +501,6 @@ function ValidationSanitizeProperties(C, item) {
 
 	const asset = item.Asset;
 
-	// If the property has a type, it needs to be in the asset's AllowType array
-	const allowType = asset.AllowType || [];
-	if (property.Type != null && !allowType.includes(property.Type)) {
-		console.warn(`Removing invalid type "${property.Type}" from ${asset.Name}`);
-		delete property.Type;
-		changed = true;
-	}
-
 	// If the property has an expression, it needs to be in the asset or group's AllowExpression array
 	const allowExpression = asset.AllowExpression || asset.Group.AllowExpression || [];
 	if (property.Expression != null && !allowExpression.includes(property.Expression)) {
@@ -532,17 +524,6 @@ function ValidationSanitizeProperties(C, item) {
 	if (property.Tint && !asset.AllowTint) {
 		delete property.Tint;
 		changed = true;
-	}
-
-	// Remove invalid properties from non-typed items
-	if (!asset.AllowType || !asset.AllowType.length) {
-		["SetPose", "Difficulty", "SelfUnlock", "Hide"].forEach(P => {
-			if (property[P] != null) {
-				console.warn(`Removing invalid property "${P}" from ${asset.Name}`);
-				delete property[P];
-				changed = true;
-			}
-		});
 	}
 
 	// Block advanced vibrator modes if disabled

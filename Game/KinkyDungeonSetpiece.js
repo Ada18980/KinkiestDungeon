@@ -8,7 +8,7 @@ let KDSetPieces = [
 	{Name: "Altar", tags: ["shrine", "temple"], Radius: 5},
 	{Name: "SmallAltar", tags: ["shrine", "temple", "endpoint"], Radius: 3, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
 	{Name: "FuukaAltar", tags: ["boss", "temple"], Radius: 7, Max: 1},
-	{Name: "Storage", tags: ["loot", "urban"], Radius: 5},
+	{Name: "Storage", tags: ["loot", "urban"], Radius: 7},
 	{Name: "GuardedChest", tags: ["loot", "endpoint"], Radius: 3, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
 	{Name: "BanditPrison", tags: ["rep", "endpoint"], Radius: 3, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
 	{Name: "QuadCell", tags: ["decorative", "urban"], Radius: 7},
@@ -17,7 +17,7 @@ let KDSetPieces = [
 	{Name: "GuaranteedCell", tags: ["jail", "urban"], Radius: 5, Max: 1, xPad: 2},
 	{Name: "ForbiddenChest", tags: ["loot", "temple", "urban", "endpoint"], Radius: 3, Max: 1, xPad: 1},
 	{Name: "ForbiddenHall", tags: ["loot", "temple", "open"], Radius: 7, Max: 1, xPad: 1},
-	{Name: "Cache", tags: ["loot", "urban", "endpoint"], Radius: 5, Max: 1, xPad: 2},
+	{Name: "Cache", tags: ["loot", "urban", "endpoint"], Radius: 7, Max: 1, xPad: 2},
 	{Name: "ExtraCell", tags: ["jail", "urban"], Radius: 4, xPad: 2, yPad: 1, xPadEnd: 2, yPadEnd: 1},
 	{Name: "JungleLight", tags: ["natural", "light"], noPOI: true, Radius: 1, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
 	{Name: "Fireflies", tags: ["natural", "light"], noPOI: true, Radius: 1, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
@@ -452,41 +452,43 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				KinkyDungeonTiles.set((cornerX) + "," + (cornerY), {Light: 2, Skin: "Magicflies"});
 				break;
 			}
-			case "Storage":
-				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, true, false, 1, false);
-				KinkyDungeonPatrolPoints.push({x: cornerX + 2, y: cornerY + 2});
-				KinkyDungeonMapSet(cornerX+2, cornerY , KDRandom() < 0.5 ? 'D' : (KDRandom() < 0.5 ? 'g' : 'd'));
-				KinkyDungeonTiles.set("" + (cornerX+2) + "," + (cornerY), {Type: "Door"});
-				KinkyDungeonMapSet(cornerX+2, cornerY+4 , KDRandom() < 0.5 ? 'D' : (KDRandom() < 0.5 ? 'g' : 'd'));
-				KinkyDungeonTiles.set("" + (cornerX+2) + "," + (cornerY+4), {Type: "Door"});
+			case "Storage": {
+				let rad = radius - 2;
+				KinkyDungeonCreateRectangle(cornerX + 1, cornerY + 1, rad, rad, true, false, 1, false);
+				KinkyDungeonPatrolPoints.push({x: cornerX + 1 + 2, y: cornerY + 1 + 2});
+				KinkyDungeonMapSet(cornerX + 1+2, cornerY + 1 , KDRandom() < 0.5 ? 'D' : (KDRandom() < 0.5 ? 'g' : 'd'));
+				KinkyDungeonTiles.set("" + (cornerX + 1+2) + "," + (cornerY + 1), {Type: "Door"});
+				KinkyDungeonMapSet(cornerX + 1+2, cornerY + 1+4 , KDRandom() < 0.5 ? 'D' : (KDRandom() < 0.5 ? 'g' : 'd'));
+				KinkyDungeonTiles.set("" + (cornerX + 1+2) + "," + (cornerY + 1+4), {Type: "Door"});
 
-				KinkyDungeonMapSet(cornerX+1, cornerY+1 , KDRandom() < 0.6 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
-				if (KinkyDungeonMapGet(cornerX+1, cornerY+1) == 'C')
-					KinkyDungeonTiles.set((cornerX + 1) + "," + (cornerY + 1), {Loot: "storage", Roll: KDRandom()});
-				KinkyDungeonMapSet(cornerX+1, cornerY+2 , KDRandom() < 0.5 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
-				if (KinkyDungeonMapGet(cornerX+1, cornerY+2) == 'C')
-					KinkyDungeonTiles.set((cornerX + 1) + "," + (cornerY + 2), {Loot: "storage", Roll: KDRandom()});
-				KinkyDungeonMapSet(cornerX+1, cornerY+3 , KDRandom() < 0.7 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
-				if (KinkyDungeonMapGet(cornerX+1, cornerY+3) == 'C')
-					KinkyDungeonTiles.set((cornerX + 1) + "," + (cornerY + 3), {Loot: "storage", Roll: KDRandom()});
-				KinkyDungeonMapSet(cornerX+3, cornerY+1 , KDRandom() < 0.5 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
-				if (KinkyDungeonMapGet(cornerX+3, cornerY+1) == 'C')
-					KinkyDungeonTiles.set((cornerX + 3) + "," + (cornerY + 1), {Loot: "storage", Roll: KDRandom()});
-				KinkyDungeonMapSet(cornerX+3, cornerY+2 , KDRandom() < 0.75 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
-				if (KinkyDungeonMapGet(cornerX+3, cornerY+2) == 'C')
-					KinkyDungeonTiles.set((cornerX + 3) + "," + (cornerY + 2), {Loot: "storage", Roll: KDRandom()});
-				KinkyDungeonMapSet(cornerX+3, cornerY+3 , KDRandom() < 0.5 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
-				if (KinkyDungeonMapGet(cornerX+3, cornerY+3) == 'C')
-					KinkyDungeonTiles.set((cornerX + 3) + "," + (cornerY + 3), {Loot: "storage", Roll: KDRandom()});
+				KinkyDungeonMapSet(cornerX + 1+1, cornerY + 1+1 , KDRandom() < 0.6 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
+				if (KinkyDungeonMapGet(cornerX + 1+1, cornerY + 1+1) == 'C')
+					KinkyDungeonTiles.set((cornerX + 1 + 1) + "," + (cornerY + 1 + 1), {Loot: "storage", Roll: KDRandom()});
+				KinkyDungeonMapSet(cornerX + 1+1, cornerY + 1+2 , KDRandom() < 0.5 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
+				if (KinkyDungeonMapGet(cornerX + 1+1, cornerY + 1+2) == 'C')
+					KinkyDungeonTiles.set((cornerX + 1 + 1) + "," + (cornerY + 1 + 2), {Loot: "storage", Roll: KDRandom()});
+				KinkyDungeonMapSet(cornerX + 1+1, cornerY + 1+3 , KDRandom() < 0.7 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
+				if (KinkyDungeonMapGet(cornerX + 1+1, cornerY + 1+3) == 'C')
+					KinkyDungeonTiles.set((cornerX + 1 + 1) + "," + (cornerY + 1 + 3), {Loot: "storage", Roll: KDRandom()});
+				KinkyDungeonMapSet(cornerX + 1+3, cornerY + 1+1 , KDRandom() < 0.5 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
+				if (KinkyDungeonMapGet(cornerX + 1+3, cornerY + 1+1) == 'C')
+					KinkyDungeonTiles.set((cornerX + 1 + 3) + "," + (cornerY + 1 + 1), {Loot: "storage", Roll: KDRandom()});
+				KinkyDungeonMapSet(cornerX + 1+3, cornerY + 1+2 , KDRandom() < 0.75 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
+				if (KinkyDungeonMapGet(cornerX + 1+3, cornerY + 1+2) == 'C')
+					KinkyDungeonTiles.set((cornerX + 1 + 3) + "," + (cornerY + 1 + 2), {Loot: "storage", Roll: KDRandom()});
+				KinkyDungeonMapSet(cornerX + 1+3, cornerY + 1+3 , KDRandom() < 0.5 ? 'L' : (KDRandom() < 0.5 ? 'c' : 'C'));
+				if (KinkyDungeonMapGet(cornerX + 1+3, cornerY + 1+3) == 'C')
+					KinkyDungeonTiles.set((cornerX + 1 + 3) + "," + (cornerY + 1 + 3), {Loot: "storage", Roll: KDRandom()});
 				if (KDRandom() < 0.5) {
 					if (KDRandom() < 0.75)
-						spawnPoints.push({x:cornerX+2, y:cornerY+3, required:["beast"], AI: "guard"});
+						spawnPoints.push({x:cornerX + 1+2, y:cornerY + 1+3, required:["beast"], AI: "guard"});
 					else if (KDRandom() < 0.5)
-						spawnPoints.push({x:cornerX+2, y:cornerY+3, required:["human"], AI: "guard"});
+						spawnPoints.push({x:cornerX + 1+2, y:cornerY + 1+3, required:["human"], AI: "guard"});
 					else
-						spawnPoints.push({x:cornerX+2, y:cornerY+3, required:["mold", "spawner"], tags: ["mold"], AI: "guard"});
+						spawnPoints.push({x:cornerX + 1+2, y:cornerY + 1+3, required:["mold", "spawner"], tags: ["mold"], AI: "guard"});
 				}
 				break;
+			}
 			case "GuardedChest": {
 				let chests = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].chestcount ? KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].chestcount : 6;
 				if ((!favoringPOI && KDRandom() < 0.7) || KinkyDungeonBoringGet(cornerX + 1, cornerY + 1) < 3 || chestlist.length >= chests) skip = true;
@@ -613,21 +615,22 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				break;
 			}
 			case "Cache": {
-				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, true, false, 1, true);
-				KinkyDungeonPatrolPoints.push({x: cornerX - 1, y: cornerY + 2});
-				KinkyDungeonMapSet(cornerX + Math.floor(radius/2), cornerY + Math.floor(radius/2), 'C');
-				KinkyDungeonTiles.set((cornerX + Math.floor(radius/2)) + "," + (cornerY + Math.floor(radius/2)), {Loot: "cache", Faction: "Bandit", Roll: KDRandom()});
-				KDTorch(cornerX + Math.floor(radius/2), cornerY, altType, MapParams);
-				KinkyDungeonMapSet(cornerX, cornerY + Math.floor(radius/2) - 1, 'b');
-				KinkyDungeonMapSet(cornerX, cornerY + Math.floor(radius/2) + 1, 'b');
-				KinkyDungeonMapSet(cornerX, cornerY + Math.floor(radius/2), 'D');
-				spawnPoints.push({x:cornerX-1, y:cornerY + Math.floor(radius/2)-1, required: ["cacheguard"], tags: ["bandit"], AI: "guard"});
-				spawnPoints.push({x:cornerX-1, y:cornerY + Math.floor(radius/2)+1, required: ["cacheguard"], tags: ["bandit"], AI: "guard"});
-				KinkyDungeonTiles.set(cornerX + "," + (cornerY + Math.floor(radius/2)), {Type: "Door", Lock: "Red", OffLimits: true, ReLock: true});
+				let rad = radius - 2;
+				KinkyDungeonCreateRectangle(cornerX + 1, cornerY + 1, rad, rad, true, false, 1, true);
+				KinkyDungeonPatrolPoints.push({x: cornerX, y: cornerY + 3});
+				KinkyDungeonMapSet(cornerX + 1 + Math.floor(rad/2), cornerY + 1 + Math.floor(rad/2), 'C');
+				KinkyDungeonTiles.set((cornerX + 1 + Math.floor(rad/2)) + "," + (cornerY + 1 + Math.floor(rad/2)), {Loot: "cache", Faction: "Bandit", Roll: KDRandom()});
+				KDTorch(cornerX + 1 + Math.floor(rad/2), cornerY + 1, altType, MapParams);
+				KinkyDungeonMapSet(cornerX + 1, cornerY + 1 + Math.floor(rad/2) - 1, 'b');
+				KinkyDungeonMapSet(cornerX + 1, cornerY + 1 + Math.floor(rad/2) + 1, 'b');
+				KinkyDungeonMapSet(cornerX + 1, cornerY + 1 + Math.floor(rad/2), 'D');
+				spawnPoints.push({x:cornerX, y:cornerY + 1 + Math.floor(rad/2)-1, required: ["cacheguard"], tags: ["bandit"], AI: "guard"});
+				spawnPoints.push({x:cornerX, y:cornerY + 1 + Math.floor(rad/2)+1, required: ["cacheguard"], tags: ["bandit"], AI: "guard"});
+				KinkyDungeonTiles.set((cornerX + 1) + "," + (cornerY + 1 + Math.floor(rad/2)), {Type: "Door", Lock: "Red", OffLimits: true, ReLock: true});
 				break;
 			}
 			case "ForbiddenHall": {
-				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, false, false, 1, false);
+				//KinkyDungeonCreateRectangle(cornerX + 1, cornerY, radius, radius, false, false, 1, false);
 				KinkyDungeonCreateRectangle(cornerX+1, cornerY, radius-2, radius, true, false, 1, true);
 
 				for (let X = cornerX + Math.floor(radius/2) - 1; X <= cornerX + Math.floor(radius/2) + 1; X++) {

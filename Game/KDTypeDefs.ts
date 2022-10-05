@@ -1061,6 +1061,7 @@ type KDPerk = {
 	locked?: boolean,
 	outfit?: string,
 	require?: string,
+	startPriority?: number,
 }
 
 interface spell {

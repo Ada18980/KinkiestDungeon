@@ -672,6 +672,13 @@ function ModularItemGenerateAllowLockType(data) {
  */
 function ModularItemGenerateLayerAllowTypes(layer, data) {
 	if (Array.isArray(layer.AllowModuleTypes)) {
+		layer.AllowTypes = true;
+		layer.ReverseAllowEmptyType = layer.AllowModuleTypes.some(t => t.includes('0'));
+		layer.ReverseAllowTypes = layer.AllowModuleTypes;
+		/*
+		Let's generate every possible value of this cartesian product!
+		SAID NO ONE EVER.
+
 		const allowedModuleCombinations = layer.AllowModuleTypes.map((shorthand) => {
 			const regex = /([a-zA-Z]+)(\d+)/g;
 			const values = [];
@@ -696,6 +703,7 @@ function ModularItemGenerateLayerAllowTypes(layer, data) {
 		if (allowedModuleCombinations.find(arr => arr.find(combo => combo[1] === 0))) {
 			layer.AllowTypes.push("");
 		}
+		*/
 	}
 }
 
@@ -719,7 +727,7 @@ function ModularItemRequirementMessageCheck(option, currentOption, changeWhenLoc
  */
 function ModularItemGenerateValidationProperties(data) {
 	const {asset, modules} = data;
-	asset.AllowType = ModularItemGenerateTypeList(data);
+	//asset.AllowType = ModularItemGenerateTypeList(data); // Only used in validation
 	asset.AllowEffect = Array.isArray(asset.AllowEffect) ? asset.AllowEffect.slice() : [];
 	CommonArrayConcatDedupe(asset.AllowEffect, asset.Effect);
 	asset.AllowBlock = Array.isArray(asset.Block) ? asset.Block.slice() : [];
@@ -733,5 +741,5 @@ function ModularItemGenerateValidationProperties(data) {
 		}
 	}
 	asset.Layer.forEach((layer) => ModularItemGenerateLayerAllowTypes(layer, data));
-	ModularItemGenerateAllowLockType(data);
+	//ModularItemGenerateAllowLockType(data); // No locks
 }

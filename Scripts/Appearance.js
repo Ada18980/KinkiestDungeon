@@ -303,7 +303,10 @@ function CharacterAppearanceSortLayers(C) {
 			var type = (item.Property && item.Property.Type) || "";
 			var layersToDraw = asset.Layer
 				// Only include layers that permit the current type (if AllowTypes is not defined, also include the layer)
-				.filter(layer => !layer.AllowTypes || layer.AllowTypes.includes(type))
+				.filter(layer => !layer.AllowTypes || (
+					layer.ReverseAllowTypes ?
+						(type == '' ? layer.ReverseAllowEmptyType : layer.ReverseAllowTypes.some(t => type.includes(t))) :
+						layer.AllowTypes.includes(type)))
 				// Hide the layer if its HideAs proxy asset should be hidden
 				.filter(layer => !layer.HideAs || CharacterAppearanceVisible(C, layer.HideAs.Asset, layer.HideAs.Group))
 				// Hide the layer if it should be hidden for the current pose

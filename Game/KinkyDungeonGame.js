@@ -973,7 +973,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			if (box && !Enemy) {
 				box.currentCount += 0.1;
 			}
-			if (Enemy && (!InJail || (Enemy.tags.jailer || Enemy.tags.jail))) {
+			if (Enemy && (!InJail || (Enemy.tags.jailer || Enemy.tags.jail || Enemy.tags.leashing))) {
 				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, AI: AI};
 				KDAddEntity(e);
 				// Give it a custom name, 5% chance

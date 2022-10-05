@@ -1772,7 +1772,7 @@ KillAnimStraitjacket,"The straitjacket falls apart."
 AttackAnimStraitjacketBind,"The straitjacket slips itself on over your head and pulls your arms close to your body! (+RestraintAdded)"
 AttackAnimStraitjacket,"The straitjacket squeezes you tightly! (DamageTaken)"
 
-NameAnimChastity,Lurid Chastity Belt
+NameAnimChastity,Brusque Belt
 KillAnimChastity,"The chastity belt falls to the floor with a clang."
 AttackAnimChastityBind,"The chastity belt secures itself around your waist! (+RestraintAdded)"
 AttackAnimChastity,"The chastity belt buzzes against your body alluringly! (DamageTaken)"
@@ -3176,6 +3176,9 @@ KinkyDungeonLinkScaleArmCuffs4,"The enemy attaches your wrist cuffs back togethe
 RestraintMaidJacket,Latex Jacket
 RestraintMaidJacketDesc,"A bolero jacket keeping your arms pinned snugly. You can't even move them."
 RestraintMaidJacketDesc2,"There is no hope of struggling out. Better hope you can cut it..."
+RestraintMaidDress,Devious Maid Costume
+RestraintMaidDressDesc,"A devious maid outfit that forces the arms into an elbows-touching position."
+RestraintMaidDressDesc2,"Makes sure you focus on your work and not fooling around."
 RestraintMaidBelt,Reinforced Leather Belt
 RestraintMaidBeltDesc,"A leather belt used to keep your legs hobbled."
 RestraintMaidBeltDesc2,"It's made of a very tough reinforced leather. It will take some time to cut."

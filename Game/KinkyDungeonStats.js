@@ -291,10 +291,19 @@ function KinkyDungeonDefaultStats(Load) {
 	KDOrigWill = KinkyDungeonStatWillMax * 10;
 	KDOrigDistraction = 0;
 
+	if (test == 'godmode') {
+		KinkyDungeonSeeAll = true;
+		KinkyDungeonSpellPoints = 9001;
+	}
+
 	if (!Load) {
-		for (let perk of KinkyDungeonStatsChoice.keys()) {
+		for (let perk of [...KinkyDungeonStatsChoice.keys()].filter((e) => {return KDPerkStart[e] != undefined;})
+			.sort((a, b) => {
+				return ((KinkyDungeonStatsPresets[a] && KinkyDungeonStatsPresets[a].startPriority) || -1) - ((KinkyDungeonStatsPresets[b] && KinkyDungeonStatsPresets[b].startPriority) || -1);
+			})) {
 			if (KinkyDungeonStatsChoice.get(perk) && KDPerkStart[perk]) {
 				KDPerkStart[perk](Load);
+				console.log("started with perk " + perk);
 			}
 		}
 	}

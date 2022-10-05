@@ -893,15 +893,7 @@ function InventoryHasLockableItems(C) {
  * @returns {boolean} - TRUE if the asset's current type permits locks
  */
 function InventoryDoesItemAllowLock(item) {
-	const asset = item.Asset;
-	const property = item.Property;
-	const type = property && property.Type;
-	if (Array.isArray(asset.AllowLockType)) {
-		// "" is used to represent the null type in AllowLockType arrays
-		return type != null ? asset.AllowLockType.includes(type) : asset.AllowLockType.includes("");
-	} else {
-		return asset.AllowLock;
-	}
+	return true;
 }
 
 /**
@@ -919,12 +911,9 @@ function InventoryLock(C, Item, Lock, MemberNumber, Update = true) {
 		if (Item.Property == null) Item.Property = {};
 		if (Item.Property.Effect == null) Item.Property.Effect = [];
 		if (Item.Property.Effect.indexOf("Lock") < 0) Item.Property.Effect.push("Lock");
-
-		if (!Item.Property.MemberNumberListKeys && Lock.Asset.Name == "HighSecurityPadlock") Item.Property.MemberNumberListKeys = "" + MemberNumber;
 		Item.Property.LockedBy = /** @type AssetLockType */(Lock.Asset.Name);
 		if (MemberNumber != null) Item.Property.LockMemberNumber = MemberNumber;
 		if (Update) {
-			if (Lock.Asset.RemoveTimer > 0) TimerInventoryRemoveSet(C, Item.Asset.Group.Name, Lock.Asset.RemoveTimer);
 			CharacterRefresh(C, true);
 		}
 	}
