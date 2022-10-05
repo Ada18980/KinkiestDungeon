@@ -1771,7 +1771,7 @@ KillAnimStraitjacket,"The straitjacket falls apart."
 AttackAnimStraitjacketBind,"The straitjacket slips itself on over your head and pulls your arms close to your body! (+RestraintAdded)"
 AttackAnimStraitjacket,"The straitjacket squeezes you tightly! (DamageTaken)"
 
-NameAnimChastity,Brusque Belt
+NameAnimChastity,Lurid Chastity Belt
 KillAnimChastity,"The chastity belt falls to the floor with a clang."
 AttackAnimChastityBind,"The chastity belt secures itself around your waist! (+RestraintAdded)"
 AttackAnimChastity,"The chastity belt buzzes against your body alluringly! (DamageTaken)"
@@ -1783,8 +1783,8 @@ AttackAnimHarness,"The harness wraps itself around your body and squeezes! (Dama
 
 NameLock,Levitating Locks
 KillLock,"The locks and chains fall to the floor in a loud crash."
-AttackLockLock,"A lock clicks itself onto one of your restraints!"
-AttackLockBind,"A chain locks itself in place on your body! (+RestraintAdded)"
+AttackLockLock,"A lock clicks itself onto one of your restraints! (+RestraintAdded)"
+AttackLockBind,"A chain locks itself in place on your body! (DamageTaken)"
 AttackLock,"The floating locks and chains rub themselves across your body! (DamageTaken)"
 
 NamePlayerGag,Conjured Gag
