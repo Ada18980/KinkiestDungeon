@@ -1784,8 +1784,8 @@ AttackAnimHarness,"The harness wraps itself around your body and squeezes! (Dama
 
 NameLock,Levitating Locks
 KillLock,"The locks and chains fall to the floor in a loud crash."
-AttackLockLock,"A lock clicks itself onto one of your restraints! (+RestraintAdded)"
-AttackLockBind,"A chain locks itself in place on your body! (DamageTaken)"
+AttackLockLock,"A lock clicks itself onto one of your restraints!"
+AttackLockBind,"A chain locks itself in place on your body! (+RestraintAdded)"
 AttackLock,"The floating locks and chains rub themselves across your body! (DamageTaken)"
 
 NamePlayerGag,Conjured Gag
