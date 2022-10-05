@@ -2187,7 +2187,7 @@ function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack) {
  */
 function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack) {
 	return (restraint.linkCategory && KDLinkCategorySize(currentRestraint, restraint.linkCategory) + KDLinkSize(restraint) <= (NoStack ? 0.1 : 1.0))
-		|| (!restraint.linkCategory && !KDDynamicLinkList(currentRestraint, true).some((item) => {return restraint.name == item.name;}))
+		|| (!restraint.linkCategory && !KDDynamicLinkList(currentRestraint, true).some((item) => {return restraint.name == item.name;}));
 }
 
 /**
