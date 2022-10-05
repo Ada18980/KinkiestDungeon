@@ -111,7 +111,7 @@ function KinkyDungeonAggroFaction(faction, noAllyRepPenalty) {
 function KinkyDungeonPlayerIsVisibleToJailers() {
 	let list = [];
 	for (let enemy of KinkyDungeonEntities) {
-		if (KDHostile(enemy) && !(enemy.rage > 0) && (enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || enemy.Enemy.playLine)) {
+		if (KDHostile(enemy) && !(enemy.rage > 0) && (enemy.Enemy.tags.leashing || enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || enemy.Enemy.playLine)) {
 			if (KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y), enemy.Enemy.visionRadius, false, true)) {
 				list.push(enemy);
 			}

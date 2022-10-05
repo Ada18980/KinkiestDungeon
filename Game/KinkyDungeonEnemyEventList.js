@@ -128,7 +128,7 @@ let KDIntentEvents = {
 		forceattack: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
-			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail) && (KinkyDungeonFlags.has("Released")) ? 100 : 0;
+			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released")) ? 100 : 0;
 		},
 		trigger: (enemy, AIData) => {
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
