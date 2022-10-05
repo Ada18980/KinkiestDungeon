@@ -254,7 +254,6 @@ let KinkyDungeonStatsPresets = {
 
 	"KinkyPrison":  {category: "Map", id: "KinkyPrison", cost: -1},
 	"Doorknobs":  {category: "Map", id: "Doorknobs", cost: -1},
-	"Doorknobs2":  {category: "Map", id: "Doorknobs", cost: -1},
 };
 
 function KinkyDungeonGetStatPoints(Stats) {
