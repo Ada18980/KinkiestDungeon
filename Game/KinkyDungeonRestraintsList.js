@@ -300,7 +300,7 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region Cosplay
-	{renderWhenLinked: ["Armbinders"], inventory: true, name: "BindingDress", inaccessible: true, remove: ["Cloth", "Bra"], Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#473488'], Group: "ItemArms", LinkableBy: ["Armbinders"], bindarms: true, bindhands: true, power: 7, weight: 0,
+	{alwaysRender: true, inventory: true, name: "BindingDress", inaccessible: true, remove: ["Cloth", "Bra"], Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#473488'], Group: "ItemArms", LinkableBy: ["Armbinders"], bindarms: true, bindhands: true, power: 7, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": -0.2, "Pick": 0.15}, helpChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.025},
 		limitChance: {"Struggle": 0.125, "Cut": 0.125, "Remove": 0.1, "Unlock": 0.5},
 		alwaysDress: [
@@ -352,7 +352,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "MikoGag", Asset: "OTNPlugGag", Type: "Plug", gag: 1.0, Color: ["#ffffff", "#AA2222", "#ffffff"], Group: "ItemMouth", power: 9, weight: 2, DefaultLock: "Blue", magic: true,
 		escapeChance: {"Struggle": -0.2, "Cut": 0.2, "Remove": 0.15, "Pick": 0.07},
 		maxwill: 0.6, enemyTags: {"mikoRestraints" : 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Gags"]},
-	{renderWhenLinked: ["Armbinders"], inventory: true, name: "MikoDress", inaccessible: true, remove: ["Cloth", "Bra"], Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#ffffff'], Group: "ItemArms", LinkableBy: ["Armbinders"], bindarms: true, bindhands: true, power: 7, weight: 0, DefaultLock: "Blue",
+	{alwaysRender: true, inventory: true, name: "MikoDress", inaccessible: true, remove: ["Cloth", "Bra"], Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#ffffff'], Group: "ItemArms", LinkableBy: ["Armbinders"], bindarms: true, bindhands: true, power: 7, weight: 0, DefaultLock: "Blue",
 		escapeChance: {"Struggle": -0.2, "Cut": 0.2, "Remove": -0.2, "Pick": 0.15}, helpChance: {"Struggle": -0.15, "Cut": 0.2, "Remove": 0.025},
 		limitChance: {"Struggle": 0.125, "Cut": 0.125, "Remove": 0.1, "Unlock": 0.5},
 		alwaysDress: [
@@ -777,7 +777,7 @@ const KinkyDungeonRestraints = [
 		limitChance: {"Struggle": 0.12, "Cut": 0.03, "Remove": 0.1, "Unlock": 0.75}, // Hard to escape the arms box by struggling
 		escapeChance: {"Struggle": -0.175, "Cut": 0.1, "Remove": 0.15, "Pick": 0.15},
 		maxwill: 0.3, enemyTags: {"maidRestraints":5}, playerTags: {"ItemArmsFull":-2}, minLevel: 7, allFloors: true, shrine: ["Latex", "Straitjackets"]},
-	{renderWhenLinked: ["Armbinders"], inventory: true, name: "MaidDress", inaccessible: true, Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#191919'], Group: "ItemArms", LinkableBy: ["Armbinders"], bindarms: true, bindhands: true, power: 8, weight: 0,
+	{alwaysRender: true, inventory: true, name: "MaidDress", inaccessible: true, Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#191919'], Group: "ItemArms", LinkableBy: ["Armbinders"], bindarms: true, bindhands: true, power: 8, weight: 0,
 		escapeChance: {"Struggle": -0.175, "Cut": 0.1, "Remove": -0.2, "Pick": 0.15},
 		limitChance: {"Struggle": 0.12, "Cut": 0.03, "Remove": 0.1, "Unlock": 0.75}, // Hard to escape the arms box by struggling
 		alwaysDress: [

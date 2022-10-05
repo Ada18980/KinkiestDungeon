@@ -2135,8 +2135,12 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r) {
 	let link = r?.dynamicLink;
 	while (link) {
 		let linkableUnder = KinkyDungeonLinkableAndStricter(KDRestraint(link), restraint, link);
-		if (!linkableUnder && !linkableCurrent) power = Math.max(power, KinkyDungeonRestraintPower(link, false, restraint));
-		link = link.dynamicLink;
+		if (!linkableUnder && !linkableCurrent) {
+			power = Math.max(power, KinkyDungeonRestraintPower(link, false, restraint));
+			link = link.dynamicLink;
+		} else {
+			link = null;
+		}
 	}
 
 	let newLock = (Lock && KinkyDungeonIsLockable(restraint)) ? Lock : restraint.DefaultLock;
