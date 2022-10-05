@@ -2133,9 +2133,9 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r) {
 
 	// We raise the power if the current item cannot be linked, but the item underneath also cannot be linked
 	let link = r?.dynamicLink;
-	while (link) {
+	while (link && !linkableCurrent) {
 		let linkableUnder = KinkyDungeonLinkableAndStricter(KDRestraint(link), restraint, link);
-		if (!linkableUnder && !linkableCurrent) {
+		if (!linkableUnder) {
 			power = Math.max(power, KinkyDungeonRestraintPower(link, false, restraint));
 			link = link.dynamicLink;
 		} else {
