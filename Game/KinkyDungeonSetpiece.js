@@ -627,7 +627,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				break;
 			}
 			case "ForbiddenHall": {
-				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, false, false, 1, false);
+				//KinkyDungeonCreateRectangle(cornerX + 1, cornerY, radius, radius, false, false, 1, false);
 				KinkyDungeonCreateRectangle(cornerX+1, cornerY, radius-2, radius, true, false, 1, true);
 
 				for (let X = cornerX + Math.floor(radius/2) - 1; X <= cornerX + Math.floor(radius/2) + 1; X++) {
