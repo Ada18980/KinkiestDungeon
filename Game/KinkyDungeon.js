@@ -494,7 +494,7 @@ function KinkyDungeonLoad() {
 		if (!KinkyDungeonPlayer) { // new game
 			KDrandomizeSeed(false);
 			// @ts-ignore
-			if (Patched)
+			if (KDPatched)
 				KinkyDungeonPlayer = suppressCanvasUpdate(() => CharacterLoadNPC("NPC_Avatar"));
 			else
 				KinkyDungeonPlayer = CharacterLoadNPC("NPC_Avatar");
