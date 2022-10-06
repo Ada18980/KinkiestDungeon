@@ -466,3 +466,5 @@ function DialogSetReputation(a, b) {
 function remap(src) {
 	return src;
 }
+
+let Patched = true;
