@@ -658,6 +658,7 @@ function KDGetRandomPerks(existing) {
 		if (netcost < 0 && negperk) {
 			singlepointcandidates = negcandidates.filter((p) => {
 				return (KinkyDungeonCanPickStat(p[0], 999)
+				&& p[0] != poscandidate[0]
 				&& !KDPerkBlocked(p[0], poscandidate[0])
 				&& !KDPerkBlocked(p[0], negperk[0]));
 			});

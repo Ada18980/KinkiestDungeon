@@ -537,13 +537,13 @@ function KinkyDungeonLoad() {
 				// @ts-ignore
 				suppressCanvasUpdate(() => CharacterReleaseTotal(KinkyDungeonPlayer));
 			else
-				CharacterReleaseTotal(KinkyDungeonPlayer)
+				CharacterReleaseTotal(KinkyDungeonPlayer);
 			KinkyDungeonDressSet();
 			if (KDPatched)
 				// @ts-ignore
 				suppressCanvasUpdate(() => CharacterNaked(KinkyDungeonPlayer));
 			else
-				CharacterNaked(KinkyDungeonPlayer)
+				CharacterNaked(KinkyDungeonPlayer);
 			KinkyDungeonInitializeDresses();
 			KinkyDungeonDressPlayer();
 			KDInitProtectedGroups();
