@@ -18,6 +18,8 @@ interface ModelLayer extends Namable {
     Sprite?: string,
     /** These layers are apended to the Sprite if the pose is met*/
     Poses?: Record<string, boolean>,
+    /** If one of these poses is present then the layer will default to "" pose */
+    DefaultPoses?: Record<string, boolean>,
 }
 
 interface Namable {

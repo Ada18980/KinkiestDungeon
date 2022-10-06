@@ -8,6 +8,7 @@
 !/Game/**/*
 !/Scripts/**/*
 !/Screens/**/*
+!/Data/**/*
 
 !/.editorconfig
 !/.eslintrc.json

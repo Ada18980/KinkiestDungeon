@@ -214,13 +214,26 @@ function ModelLayerString(Model, Layer, Poses) {
  */
 function LayerSprite(Layer, Poses) {
 	let pose = "";
-	if (Layer.Poses)
-		for (let p of Object.keys(Poses)) {
-			if (Layer.Poses[p]) {
-				pose = p;
-				break;
+	if (Layer.Poses) {
+		// "" if its a defaultpose
+		let cancel = false;
+		if (Layer.DefaultPoses) {
+			for (let dp of Object.keys(Layer.DefaultPoses)) {
+				if (Poses[dp]) {
+					cancel = true;
+					break;
+				}
 			}
 		}
+		// Otherwise we append pose name to layer name
+		if (!cancel)
+			for (let p of Object.keys(Poses)) {
+				if (Layer.Poses[p]) {
+					pose = p;
+					break;
+				}
+			}
+	}
 
 	return (Layer.Sprite ? Layer.Sprite : Layer.Name) + pose;
 }
