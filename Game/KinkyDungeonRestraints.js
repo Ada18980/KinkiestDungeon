@@ -19,7 +19,7 @@ let KDWillEscapePenaltyStart = 0.0;
 let KDWillEscapePenaltyStartArms = 0.0;
 let KDWillEscapePenaltyEnd = 0.0;
 
-let KDMinEscapeRate = 0.1;
+let KDMinEscapeRate = 0.2;
 
 /**
  *
@@ -1771,7 +1771,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
 					if (KinkyDungeonStatsChoice.get("Inflexible")) mult *= KDInflexibleSpeedBonus;
 					mult *= 0.4 + 0.6 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
-					restraint.struggleProgress += escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.4 + 0.3 * KDRandom() + 0.4 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax));
+					restraint.struggleProgress += escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.65 + 0.1 * KDRandom() + 0.4 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax));
 				}
 			}
 
