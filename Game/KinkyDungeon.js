@@ -493,8 +493,8 @@ function KinkyDungeonLoad() {
 	if (!KinkyDungeonGameRunning) {
 		if (!KinkyDungeonPlayer) { // new game
 			KDrandomizeSeed(false);
-			// @ts-ignore
 			if (KDPatched)
+				// @ts-ignore
 				KinkyDungeonPlayer = suppressCanvasUpdate(() => CharacterLoadNPC("NPC_Avatar"));
 			else
 				KinkyDungeonPlayer = CharacterLoadNPC("NPC_Avatar");
@@ -532,9 +532,18 @@ function KinkyDungeonLoad() {
 
 			CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
 
-			suppressCanvasUpdate(() => CharacterReleaseTotal(KinkyDungeonPlayer));
+
+			if (KDPatched)
+				// @ts-ignore
+				suppressCanvasUpdate(() => CharacterReleaseTotal(KinkyDungeonPlayer));
+			else
+				CharacterReleaseTotal(KinkyDungeonPlayer)
 			KinkyDungeonDressSet();
-			suppressCanvasUpdate(() => CharacterNaked(KinkyDungeonPlayer));
+			if (KDPatched)
+				// @ts-ignore
+				suppressCanvasUpdate(() => CharacterNaked(KinkyDungeonPlayer));
+			else
+				CharacterNaked(KinkyDungeonPlayer)
 			KinkyDungeonInitializeDresses();
 			KinkyDungeonDressPlayer();
 			KDInitProtectedGroups();
