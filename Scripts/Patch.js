@@ -466,3 +466,7 @@ function DialogSetReputation(a, b) {
 function remap(src) {
 	return src;
 }
+
+
+
+let KDPatched = true;

@@ -3,8 +3,6 @@
 KinkyDungeonMainRun = () => {};
 KinkyDungeonMainClick = () => {};
 
-KDPatched = true;
-
 ChatRoomChatLog = [];
 ChatRoomLastMessage = [];
 
