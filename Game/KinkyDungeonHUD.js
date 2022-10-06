@@ -647,7 +647,7 @@ function KinkyDungeonDrawInputs() {
 				}
 				item = surfaceItems[KDStruggleGroupLinkIndex[sg.group]];
 			}
-			if (MouseIn(((!sg.left) ? (260) : 0), y-48, 230, (ButtonWidth + 70))) {
+			if (MouseIn(((!sg.left) ? (260) : 0), y-48, 230, (ButtonWidth + 40))) {
 				let lastO = 0;
 				// 0 = no draw
 				// 1 = grey

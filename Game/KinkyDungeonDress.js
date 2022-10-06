@@ -461,6 +461,7 @@ function KDCharacterAppearanceNaked() {
 
 
 function KDApplyItem(inv, tags) {
+	// @ts-ignore
 	let _ChatRoomCharacterUpdate = ChatRoomCharacterUpdate;
 	// @ts-ignore
 	ChatRoomCharacterUpdate = () => {};
@@ -479,6 +480,7 @@ function KDApplyItem(inv, tags) {
 		}
 
 		let already = InventoryGet(KinkyDungeonPlayer, AssetGroup);
+		let difficulty = already?.Property?.Difficulty || 0;
 
 		let placed = KDAddAppearance(KinkyDungeonPlayer, AssetGroup, AssetGet("3DCGFemale", AssetGroup, restraint.Asset), color, undefined, undefined, undefined, inv);
 
@@ -490,8 +492,8 @@ function KDApplyItem(inv, tags) {
 					type = restraint.changeRenderType[key];
 				}
 			}
-			placed.Property = {Type: type, LockedBy: inv.lock ? "MetalPadlock" : undefined};
-			if (!already && type) {
+			placed.Property = {Type: type, Difficulty: restraint.power, LockedBy: inv.lock ? "MetalPadlock" : undefined};
+			if ((!already || restraint.power > difficulty) && type) {
 				KinkyDungeonPlayer.FocusGroup = AssetGroupGet("Female3DCG", AssetGroup);
 				let options = window["Inventory" + ((AssetGroup.includes("ItemMouth")) ? "ItemMouth" : AssetGroup) + restraint.Asset + "Options"];
 				if (!options) options = TypedItemDataLookup[`${AssetGroup}${restraint.Asset}`].options; // Try again

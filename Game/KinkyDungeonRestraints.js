@@ -2106,10 +2106,10 @@ function KDGetLockVisual(item) {
  * @param {boolean} NoStack
  * @param {string} Lock
  * @param {item} [r]
- * @param {boolean} Under
+ * @param {boolean} [Deep]
  * @returns {boolean} - Restraint can be added
  */
-function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Under) {
+function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep) {
 	// Limits
 	if (restraint.shrine && restraint.shrine.includes("Vibes") && KinkyDungeonPlayerTags.get("NoVibes")) return false;
 	if (restraint.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
@@ -2128,10 +2128,8 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Under) {
 	}
 	if (!r) r = KinkyDungeonGetRestraintItem(restraint.Group);
 	let power = KinkyDungeonRestraintPower(r, false, restraint);
-	let linkUnder = null;
-	if (Under) {
-		linkUnder = KDGetLinkUnder(r, restraint, Bypass, NoStack);
-	}
+	let linkUnder = KDGetLinkUnder(r, restraint, Bypass, NoStack, Deep);
+
 	let linkableCurrent = r && KDRestraint(r) && KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
 
 	if (linkUnder) return true;
@@ -2170,15 +2168,18 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Under) {
  * @param {restraint} restraint
  * @param {boolean} [bypass]
  * @param {boolean} [NoStack]
+ * @param {boolean} [Deep] - Whether or not it can look deeper into the stack
  * @returns {item}
  */
-function KDGetLinkUnder(currentRestraint, restraint, bypass, NoStack) {
+function KDGetLinkUnder(currentRestraint, restraint, bypass, NoStack, Deep) {
 	let link = currentRestraint;
 	while (link) {
 		if (KDCanLinkUnder(link, restraint, bypass, NoStack)) {
 			return link;
 		}
-		link = link.dynamicLink;
+		if (Deep)
+			link = link.dynamicLink;
+		else link = null;
 	}
 	return null;
 }
@@ -2227,16 +2228,14 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack) {
  * @param {boolean} [Trapped]
  * @param {KinkyDungeonEvent[]} [events]
  * @param {string} [faction]
- * @param {boolean} [Under]
+ * @param {boolean} [Deep] - whether or not it can go deeply in the stack
  * @returns {number}
  */
-function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Under) {
-	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Under)) {
+function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep) {
+	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
 		let linkUnder = null;
-		if (Under) {
-      linkUnder = KDGetLinkUnder(r, restraint, Bypass);
-		}
+		linkUnder = KDGetLinkUnder(r, restraint, Bypass);
 		let linkableCurrent = r
 			&& KDRestraint(r)
 			&& KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
