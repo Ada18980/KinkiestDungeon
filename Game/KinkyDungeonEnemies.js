@@ -2925,7 +2925,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							restraintblock = KDRestraintBlockPower(restraintblock, restraintpower + (enemy.Enemy.power || 0));
 							if (!restraintblock || KDRandom() < restraintblock) {
 								for (let r of restraintAdd) {
-									let bb =  KinkyDungeonAddRestraintIfWeaker(r, AIData.power, enemy.Enemy.bypass, enemy.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, KDGetFaction(enemy)) * 2;
+									let bb =  KinkyDungeonAddRestraintIfWeaker(r, AIData.power, KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy.Enemy.bypass, enemy.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, KDGetFaction(enemy), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined) * 2;
 									if (bb) {
 										KDSendStatus('bound', r.name, "enemy_" + enemy.Enemy.name);
 									}

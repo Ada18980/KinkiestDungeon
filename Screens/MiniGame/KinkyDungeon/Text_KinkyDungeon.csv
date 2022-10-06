@@ -196,6 +196,8 @@ KinkyDungeonStatDesc56,"Switching spells and casting from spellbook does not tak
 KinkyDungeonStat57,"Disorganized"
 KinkyDungeonStatDesc57,"Switching weapons, learning/choosing spells, and casting from spellbook takes 3 turns."
 
+KinkyDungeonStatMagicHands,"Magic Hands"
+KinkyDungeonStatDescMagicHands,"Enemies can add restraints underneath existing restraints."
 
 KinkyDungeonStatFuukaCollar,"Fuuka's Pet"
 KinkyDungeonStatDescFuukaCollar,"Start with Fuuka's collar and a few restraints."
