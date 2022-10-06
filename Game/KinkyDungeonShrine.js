@@ -392,14 +392,14 @@ function KDSummonRevengeMobs(x, y, Goddess, mult = 1.0, LevelBoost = 2) {
 	let tags = ["revenge"];
 	KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
 
-	for (let i = 0; i < 30; i++) {
+	for (let i = 0; i < 30 + maxspawn; i++) {
 		if (spawned < maxspawn) {
 			let Enemy = KinkyDungeonGetEnemy(
 				tags, MiniGameKinkyDungeonLevel + LevelBoost,
 				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 				'0', requireTags, false, undefined, filter, requireSingleTag);
 			if (Enemy) {
-				let pass = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 10, false, undefined, true, false, "Ambush", true, 1.5, true, undefined, true, true);
+				let pass = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 10, false, undefined, i < 24, false, "Ambush", true, 1.5, true, undefined, true, true);
 
 				if (pass) {
 					if (Enemy.tags.minor) spawned += 0.4;

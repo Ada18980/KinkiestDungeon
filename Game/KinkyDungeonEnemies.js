@@ -284,7 +284,8 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				enemy.revealed = true;
 				if (((KinkyDungeonAggressive(enemy) && playerDist <= 6.9) || (playerDist < 1.5 && enemy.playWithPlayer))) {
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KinkyDungeonFastMove &&
-					(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
+						!enemy.Enemy.tags.harmless &&
+						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
 						if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
 							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
 						KinkyDungeonFastMove = false;
@@ -294,7 +295,8 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 							KinkyDungeonFastMoveSuppress = true;
 					}
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KinkyDungeonFastStruggle &&
-					(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
+						!enemy.Enemy.tags.harmless &&
+						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
 						if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
 							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
 						KinkyDungeonFastStruggle = false;
@@ -1849,7 +1851,7 @@ function KDAddThought(id, name, priority, duration) {
 }
 
 function KDEnemyCanTalk(enemy) {
-	return enemy.Enemy && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.playLine) && !(enemy.silence > 0);
+	return enemy.Enemy && !enemy.Enemy.gagged && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.playLine) && !(enemy.silence > 0);
 }
 
 let AIData = {};

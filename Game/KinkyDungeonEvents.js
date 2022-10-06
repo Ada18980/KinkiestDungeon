@@ -2573,6 +2573,7 @@ let KDEventMapEnemy = {
 							if (slot) {
 								KDCreateEffectTile(enemy.x + slot.x, enemy.y + slot.y, {
 									name: e.kind,
+									duration: e.duration
 								}, e.time);
 							}
 						}

@@ -576,26 +576,26 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"increasingWeight":-1, "slimeBonus": 4, "jungle": 20}, allFloors: true, shrines: ["Latex"],
 		dropTable: [{name: "Nothing", weight: 49}, {name: "Pick", weight: 4}, {name: "Knife", ignoreInInventory: true, weight: 4}],
 		events: [
-			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0},
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],},
 	{name: "FastSlime", clusterWith: "slime", faction: "Slime", color: "#FF00FF", tags: KDMapInit(["ignoretiedup", "latexTrap", "slime", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness"]), squeeze: true, evasion: 0.3, followRange: 1, AI: "hunt",  sneakThreshold: 1,
 		visionRadius: 3, maxhp: 3, minLevel: 9, weight:3, movePoints: 1, attackPoints: 3, attack: "MeleeBindSlowSuicideWill", suicideOnAdd: true, attackWidth: 1, attackRange: 3, power: 2, dmgType: "acid", fullBoundBonus: 2,
 		terrainTags: {"increasingWeight":1, "slimeBonus": 2.5, "jungle": 8}, allFloors: true, shrines: ["Latex"],
 		dropTable: [{name: "Nothing", weight: 29}, {name: "Pick", weight: 4}, {name: "RedKey", weight: 2}, {name: "BlueKey", weight: 1}, {name: "Knife", ignoreInInventory: true, weight: 4}],
 		events: [
-			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0},
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],},
 	{name: "BigSlime", clusterWith: "slime", faction: "Slime", color: "#FF00FF", tags: KDMapInit(["ignoretiedup", "slime", "latexTrap", "elite", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness"]), squeeze: true, evasion: 0.3, followRange: 1, AI: "hunt",  sneakThreshold: 1,
 		visionRadius: 3, maxhp: 12, minLevel: 9, weight:2, movePoints: 3, attackPoints: 3, attack: "MeleeBindWill", attackWidth: 8, attackRange: 1, power: 4, dmgType: "acid", fullBoundBonus: 2, disarm: 0.5,
 		terrainTags: {"slimeBonus": 1.5}, allFloors: true, shrines: ["Latex"], ondeath: [{type: "summon", enemy: "SmallSlime", range: 2.5, count: 4, strict: true, lifetime: 50}],
 		events: [
-			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0},
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Slime", time: 25, power: 2, chance: 0.3, aoe: 0.5}
 		],
 		dropTable: [{name: "Nothing", weight: 9}, {name: "Pick", weight: 4}, {name: "RedKey", weight: 2}, {name: "BlueKey", weight: 1}, {name: "Knife", ignoreInInventory: true, weight: 4}, {name: "MagicSword", weight: 1, ignoreInInventory: true}, {name: "MagicSpear", weight: 1, ignoreInInventory: true}, {name: "MagicAxe", weight: 1, ignoreInInventory: true}, {name: "MagicFlail", weight: 1, ignoreInInventory: true}, {name: "MagicHammer", weight: 1, ignoreInInventory: true}]},
 
 	{name: "StoneDoor", faction: "Natural", blockVision: true,
-		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "poisonimmune",
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "poisonimmune", "harmless",
 			"soulimmune", "slashresist", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "chainimmune", "glueresist", "acidresist", "tickleimmune", "gropeimmune", "painimmune", "charmimmune",
 		]), spellResist: 0, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 3, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, immobile: true,
@@ -606,7 +606,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "SteelDoor", faction: "Natural", blockVision: true,
-		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "poisonimmune",
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "poisonimmune", "harmless",
 			"soulimmune", "slashresist", "pierceresist", "electricimmune", "unarmedresist", "chainimmune", "glueresist", "tickleimmune", "gropeimmune", "painimmune", "charmimmune",
 		]), spellResist: 1, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 5, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, immobile: true,
@@ -617,7 +617,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 
-	{name: "GiantMushroom", faction: "Natural", clusterWith: "mushroom", tags: KDMapInit(["mushroom", "scenery", "nonvulnerable", "minor", "inactive", "immobile", "unstoppable", "soulimmune", "slashweakness", "fireweakness", "glueresist", "poisonimmune", "coldweakness"]), spellResist: 0.33, sneakThreshold: 0.01,
+	{name: "GiantMushroom", faction: "Natural", clusterWith: "mushroom", tags: KDMapInit(["mushroom", "scenery", "nonvulnerable", "minor", "inactive", "harmless", "immobile", "unstoppable", "soulimmune", "slashweakness", "fireweakness", "glueresist", "poisonimmune", "coldweakness"]), spellResist: 0.33, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, immobile: true,
 		visionRadius: 0, maxhp: 1, minLevel:0, weight:5, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
 		terrainTags: {}, floors:KDMapInit(["cry", "jng"]), shrines: ["Will"], ondeath: [{type: "spellOnSelf", spell: "Spores"}],
@@ -843,7 +843,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 5, blindSight: 5, maxhp: 16, minLevel:0, weight:0, movePoints: 99999, attackPoints: 4, attack: "MeleeWillBind", attackWidth: 8, attackRange: 2, power: 2, dmgType: "drain", fullBoundBonus: 2,
 		terrainTags: {"passage": -999, "door": -99, "crystalline": 5, "open": 45}, floors:KDMapInit(["cry"]), shrines: []},
 
-	{name: "Statue", faction: "Natural", tags: KDMapInit(["mimicBlock", "statue", "minor", "melee", "unflinching", "crushweakness", "pierceweakness", "chainresist", "soulimmune"]), immobile: true, spellResist: 0.33, sneakThreshold: 0.01,
+	{name: "Statue", faction: "Natural", tags: KDMapInit(["mimicBlock", "statue", "minor", "melee", "unflinching", "crushweakness", "harmless", "pierceweakness", "chainresist", "soulimmune"]), immobile: true, spellResist: 0.33, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "ambush", ambushRadius: 0,
 		visionRadius: 0, maxhp: 8, minLevel:0, weight:30, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 4, dmgType: "souldrain",
 		terrainTags: {"passage": -999, "temple": 82, "open": 10}, floors:KDMapInit(["tmp"]), shrines: []},

@@ -973,7 +973,7 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 
 				while (d > 0.1) {
 					if (!first && delta > 0) {
-						dt = (d - Math.max(0, d - 1))/Math.sqrt(Math.max(1, b.vx*b.vx+b.vy*b.vy));
+						dt = 0.5 * (d - Math.max(0, d - 1))/Math.sqrt(Math.max(1, b.vx*b.vx+b.vy*b.vy));
 
 						if (bborn >= 0) bborn -= dt;
 						if (bborn < mod) {
@@ -1074,7 +1074,7 @@ function KDCheckCollideableBullets(entity, force) {
 		let b = KinkyDungeonBullets[E];
 		if (b.x == entity.x && b.y == entity.y && b.bullet && b.bullet.damage
 				&& (b.time > 1 // Only bullets that arent instantly ending
-					&& !(!entity.player || b.vx != 0 || b.vy != 0))) {// Enemies can run into bullets as they move, but the player can walk into bullets that are moving
+					&& !(entity.player || b.vx != 0 || b.vy != 0))) {// Enemies can run into bullets as they move, but the player can walk into bullets that are moving without being hit
 			let pierce = b.bullet.spell && (b.bullet.spell.piercing || b.bullet.spell.pierceEnemies);
 			if (pierce && b.bullet.damage.damage != 0) continue;
 			if (!KDBulletCanHitEntity(b, entity) && !force) continue;
@@ -1453,7 +1453,7 @@ function KinkyDungeonBulletsCheckCollision(bullet, AoE, force, d, inWarningOnly,
 	if (bullet.bullet.damage && (bullet.time > 0 || force)) {
 		if ((AoE || bullet.vx != 0 || bullet.vy != 0)) { // Moving bullets always have a chance to hit, while AoE only has a chance to hit when AoE is explicitly being checked
 			if (bullet.bullet.aoe ? KDBulletAoECanHitEntity(bullet, KinkyDungeonPlayerEntity) : KDBulletCanHitEntity(bullet, KinkyDungeonPlayerEntity, inWarningOnly)) {
-				if (!bullet.bullet.spell || bullet.born < 0 || (bullet.vx == 0 && bullet.vy == 0) || bullet.bullet.spell.enemySpell) { // Projectiles just born cant hurt you, unless they're enemy projectiles
+				if (!bullet.bullet.spell || bullet.born < 1 || (bullet.vx == 0 && bullet.vy == 0) || bullet.bullet.spell.enemySpell) { // Projectiles just born cant hurt you, unless they're enemy projectiles
 					KDBulletHitPlayer(bullet, KinkyDungeonPlayerEntity);
 					hitEnemy = true;
 				}
