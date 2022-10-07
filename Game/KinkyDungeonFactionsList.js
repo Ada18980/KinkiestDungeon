@@ -44,7 +44,7 @@ let KinkyDungeonTooltipFactions = [
 	"Rock",
 ];
 
-/** Tag for these factions */
+/** Tag for these factions, these also can have increased chances to appear on a map */
 let KinkyDungeonFactionTag = {
 	Bountyhunter: "bountyhunter",
 	Bandit: "bandit",

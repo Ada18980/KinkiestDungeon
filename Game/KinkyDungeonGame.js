@@ -803,7 +803,13 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 	}
 
 	let factions = Object.keys(KinkyDungeonFactionTag);
-	let randomFaction = factions[Math.floor(KDRandom() * factions.length)];
+	let randomFactions = [
+		factions[Math.floor(KDRandom() * factions.length)],
+		factions[Math.floor(KDRandom() * factions.length)],
+		factions[Math.floor(KDRandom() * factions.length)]
+	];
+
+	console.log(randomFactions[0] + "," + randomFactions[1] + "," + randomFactions[2]);
 
 	// These tags are disallowed unless working in the specific box
 	let filterTags = ["boss", "miniboss", "elite", "minor"];
@@ -814,7 +820,9 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		{requiredTags: ["miniboss"], tags: [], currentCount: 0, maxCount: 0.1},
 		{requiredTags: ["elite"], tags: [], currentCount: 0, maxCount: 0.2},
 		{requiredTags: ["minor"], tags: [], currentCount: 0, maxCount: 0.2},
-		{requiredTags: [KinkyDungeonFactionTag[randomFaction]], tags: [KinkyDungeonFactionTag[randomFaction]], currentCount: 0, maxCount: 0.1},
+		{requiredTags: [KinkyDungeonFactionTag[randomFactions[0]]], tags: [KinkyDungeonFactionTag[randomFactions[0]]], currentCount: 0, maxCount: 0.15},
+		{requiredTags: [KinkyDungeonFactionTag[randomFactions[1]]], tags: [KinkyDungeonFactionTag[randomFactions[1]]], currentCount: 0, maxCount: 0.15},
+		{requiredTags: [KinkyDungeonFactionTag[randomFactions[2]]], tags: [KinkyDungeonFactionTag[randomFactions[2]]], currentCount: 0, maxCount: 0.15},
 	];
 	if (KDGameData.MapMod) {
 		let mapMod = KDMapMods[KDGameData.MapMod];
@@ -901,6 +909,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			currentCluster = null;
 			if (spawns.length > 0 && KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(spawns[0].x, spawns[0].y))) {
 				spawnPoint = true;
+				let specific = false;
 				if (spawns[0].required) {
 					required = spawns[0].required;
 					for (let t of required) {
@@ -909,10 +918,15 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				}
 
 				if (spawns[0].tags) {
+					specific = true;
 					tags = spawns[0].tags;
 					for (let t of tags) {
 						if (filterTags.includes(t)) filterTags.splice(filterTags.indexOf(t), 1);
 					}
+				}
+
+				if (!specific) {
+					tags.push(randomFactions[Math.floor(randomFactions.length * KDRandom())]);
 				}
 				X = spawns[0].x;
 				Y = spawns[0].y;
@@ -933,7 +947,9 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				if (filterTags.includes(tag)) filterTags.splice(filterTags.indexOf(tag), 1);
 				tags.push(tag);
 			}
-		} else box = null;
+		} else {
+			box = null;
+		}
 
 		if ((spawnPoint && KinkyDungeonNoEnemy(X, Y, true)) || ((!KinkyDungeonTiles.get("" + X + "," + Y) || !KinkyDungeonTiles.get("" + X + "," + Y).OffLimits)
 			&& Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) > playerDist && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))
@@ -968,6 +984,8 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			for (let t of Tags) {
 				tags.push(t);
 			}
+			if (randomFactions.length > 0 && !box && !currentCluster && !spawnPoint)
+				tags.push(randomFactions[Math.floor(randomFactions.length * KDRandom())]);
 			if (required.length == 0) required = undefined;
 			let Enemy = KinkyDungeonGetEnemy(tags, Floor + KinkyDungeonDifficulty/5, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], KinkyDungeonMapGet(X, Y), required, ncount > neutralCount && (!box || !box.ignoreAllyCount), BonusTags, currentCluster ? filterTagsCluster : filterTags);
 			if (box && !Enemy) {
@@ -996,8 +1014,10 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 					KinkyDungeonSetEnemyFlag(e, shop, -1);
 				}
 				if (!spawnPoint && !currentCluster && Enemy.clusterWith) {
-					let clusterChance = 1.0; //1.1 + 0.9 * MiniGameKinkyDungeonLevel/KinkyDungeonMaxLevel;
-					if (Enemy.tags.boss) clusterChance *= 0.4;
+					let clusterChance = 0.2; //1.1 + 0.9 * MiniGameKinkyDungeonLevel/KinkyDungeonMaxLevel;
+					if (Enemy.tags.boss) clusterChance *= 2;
+					if (Enemy.tags.miniboss) clusterChance *= 3;
+					if (Enemy.tags.elite) clusterChance = 1.0;
 					//else if (Enemy.tags.elite || Enemy.tags.miniboss) clusterChance *= 0.6;
 					if (KDRandom() < clusterChance)
 						currentCluster = {
@@ -1037,7 +1057,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				if (KDFactionRelation("Player", KDGetFaction(e)) > -0.5) {
 					ncount += 1;
 				}
-				EnemyNames.push(Enemy.name);
+				EnemyNames.push(Enemy.name + `_${box?"box":""},${currentCluster?"cluster":""},${spawnPoint}`);
 			}
 		}
 		tries += 1;

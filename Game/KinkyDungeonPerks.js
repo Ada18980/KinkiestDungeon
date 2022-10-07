@@ -195,7 +195,7 @@ let KinkyDungeonStatsPresets = {
 	"Studious": {category: "Magic", id: 12, cost: 1, tags: ["start"]},
 	//"Novice": {category: "Magic", id: 7, cost: -1},
 	"Meditation": {category: "Magic", id: 13, cost: 2},
-	"QuickScribe": {category: "Magic", id: 56, cost: 1, block: ["Disorganized"]},
+	//"QuickScribe": {category: "Magic", id: 56, cost: 1, block: ["Disorganized"]},
 	"BerserkerRage": {category: "Combat", id: "BerserkerRage", cost: 3},
 	"UnstableMagic": {category: "Magic", id: "UnstableMagic", cost: 2},
 	"Vengeance": {category: "Enemies", id: "Vengeance", cost: -1},
