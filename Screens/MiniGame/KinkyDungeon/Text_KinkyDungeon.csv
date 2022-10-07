@@ -14,6 +14,8 @@ KinkyDungeonCreditsList1,"Opening the sarcophagus - Breviceps - Modified|Knife S
 Language,Language
 English,English
 Chinese,Chinese
+KDMods,Mods
+KDModsLoaded,Mods Loaded.
 
 RestartNeeded,"Restart required!"
 RestartNeededCN,"需要重启！"
@@ -601,8 +603,13 @@ GameConfigKeys,Change Keybindings
 
 KinkyDungeonLoadConfirm,"Load from code"
 KinkyDungeonLoadBack,"Back to main menu"
+KinkyDungeonLoadMod,"Load Mod"
+KinkyDungeonDeleteMod,"Delete Mod"
 KinkyDungeonClearAll,"Clear Perks"
 KinkyDungeonConfig,"Config "
+
+KinkyDungeonLoadModWarning1,"DANGER: Loading a mod will execute ARBITRARY CODE on your machine."
+KinkyDungeonLoadModWarning2,"Like connecting to a server, etc. Only load mods from a TRUSTED source."
 
 KinkyDungeonKeyUp,Up
 KinkyDungeonKeyDown,Down

@@ -1641,5 +1641,6 @@ type KDMapTile = {
 }
 
 declare const PIXI: any;
+declare const zip: any;
 
 

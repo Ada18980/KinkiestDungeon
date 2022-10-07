@@ -92,7 +92,7 @@ function KDUpdateVibeSound(Location, Sound, Volume) {
 				// @ts-ignore
 				audio.src = remap(Sound);
 			} else
-				audio.src = Sound;
+				audio.src = KDModFiles[Sound] || Sound;
 			audio.volume = Math.min(vol, 1);
 			audio.loop = true;
 			audio.play();

@@ -422,6 +422,7 @@ function KDUnlockPerk(Perk) {
 	localStorage.setItem("KDUnlockedPerks", JSON.stringify(KDUnlockedPerks));
 }
 
+// @ts-ignore
 function KDLoadPerks(Perk) {
 	if (localStorage.getItem("KDUnlockedPerks")) {
 		let perks = JSON.parse(localStorage.getItem("KDUnlockedPerks"));
@@ -677,7 +678,24 @@ function KinkyDungeonRun() {
 	if ((KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats")
 		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
 
-	if (KinkyDungeonState == "Credits") {
+
+
+	if (KinkyDungeonState == "Mods") {
+		DrawButtonKDEx("mods_back", (bdata) => {
+			KinkyDungeonState = "Menu";
+			KDExecuteMods();
+			return true;
+		}, true, 975, 850, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		DrawButtonKDEx("mods_load", (bdata) => {
+			getFileInput();
+			return true;
+		}, true, 975, 250, 350, 64, TextGet("KinkyDungeonLoadMod"), "#ffffff", "");
+		DrawTextKD(TextGet("KinkyDungeonLoadModWarning1"), 1175, 100, "#ffffff", KDTextGray2);
+		DrawTextKD(TextGet("KinkyDungeonLoadModWarning2"), 1175, 150, "#ffffff", KDTextGray2);
+
+		KDDrawMods();
+
+	} else if (KinkyDungeonState == "Credits") {
 		let credits = TextGet("KinkyDungeonCreditsList" + KinkyDungeonCreditsPos).split('|');
 		let i = 0;
 		MainCanvas.textAlign = "left";
@@ -689,7 +707,7 @@ function KinkyDungeonRun() {
 
 		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), "#ffffff", "");
 		DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
-	} if (KinkyDungeonState == "Patrons") {
+	} else if (KinkyDungeonState == "Patrons") {
 		for (let x = 0; x <= 3; x++) {
 			let credits = TextGet("KinkyDungeonPatronsList" + x).split('|');
 			let i = 0;
@@ -770,6 +788,15 @@ function KinkyDungeonRun() {
 		DrawButtonVis(1275, 942, 375, 50, TextGet("KinkyDungeonPatreon"), "#ffeecc", "");
 
 		DrawButtonVis(1700, 874, 280, 50, TextGet(localStorage.getItem("BondageClubLanguage") ? "English" : "Chinese"), "#ffffff", "");
+
+		if (KDPatched) {
+			// @ts-ignore
+			DrawButtonKDEx("mods_button", (bdata) => {
+				KinkyDungeonState = "Mods";
+				return true;
+			}, !KDModsLoaded, 1700, 814, 280, 50, TextGet(!KDModsLoaded ? "KDMods" : "KDModsLoaded"), "#ffffff", "");
+		}
+
 		if (KDRestart)
 			DrawTextKD(TextGet(localStorage.getItem("BondageClubLanguage") ? "RestartNeededCN" : "RestartNeeded"), 1840, 800, "#ffffff", KDTextGray2);
 	} else if (KinkyDungeonState == "Consent") {
@@ -871,6 +898,7 @@ function KinkyDungeonRun() {
 		for (let i = 0; i < KDClasses; i++) {
 			X = i % 4;
 			Y = Math.floor(i / 4);
+			// @ts-ignore
 			DrawButtonKDEx("Class" + i, (bdata) => {
 				KinkyDungeonClassMode = Object.keys(KDClassStart)[i];
 				localStorage.setItem("KinkyDungeonClassMode", "" + KinkyDungeonClassMode);
@@ -932,6 +960,7 @@ function KinkyDungeonRun() {
 		DrawButtonVis(480, 930, 140, 54, TextGet("KinkyDungeonConfig") + "2", KinkyDungeonPerksConfig == "2" ? "#ffffff" : "#888888", "");
 		DrawButtonVis(630, 930, 140, 54, TextGet("KinkyDungeonConfig") + "3", KinkyDungeonPerksConfig == "3" ? "#ffffff" : "#888888", "");
 
+		// @ts-ignore
 		DrawButtonKDEx("copyperks", (bdata) => {
 			let txt = "";
 			for (let k of KinkyDungeonStatsChoice.keys()) {
@@ -2404,7 +2433,7 @@ let kdSoundCache = new Map();
 function AudioPlayInstantSoundKD(Path, volume) {
 	const vol = volume != null ? volume : Player.AudioSettings.Volume;
 	if (vol > 0) {
-		let src = Path;
+		let src = KDModFiles[Path] || Path;
 		let audio = kdSoundCache.has(src) ? kdSoundCache.get(src) : new Audio();
 		if (!kdSoundCache.has(src))  {
 			audio.src = src;
