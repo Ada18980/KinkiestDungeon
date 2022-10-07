@@ -91,7 +91,8 @@ async function KDExecuteMods() {
 
 	}
 
-	KDModsLoaded = true;
+	if (KDAllModFiles.length > 0)
+		KDModsLoaded = true;
 }
 
 let KDModFiles = {};

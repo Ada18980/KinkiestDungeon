@@ -1145,6 +1145,9 @@ Features
 - More perks: Kinky Prison, Unfair Doors
 - Added a perk room with a choice of 3 perk combinations!
 
+3.8 (October 2022)
+- Added mod API
+
 TODO ValidationFindBlockCycles to prevent bugs
 
 TODO: Mushrooms in the jungle

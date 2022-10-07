@@ -201,6 +201,7 @@ let KinkyDungeonStatsPresets = {
 	"Vengeance": {category: "Enemies", id: "Vengeance", cost: -1},
 	"AbsoluteFocus": {category: "Magic", id: "AbsoluteFocus", cost: -1},
 
+	"Hogtied": {startPriority: 0, category: "Start", id: "Hogtied", cost: -1, tags: ["start"]},
 	"StartObsidian": {startPriority: 0, category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
 	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
 	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
@@ -418,6 +419,29 @@ let KDPerkStart = {
 		if (!KinkyDungeonInventoryGet("Obsidian")) KinkyDungeonInventoryAdd(outfit);
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Obsidian", "Obsidian");
+	},
+	Hogtied: () =>{
+		for (let i = 0; i < 30; i++) {
+			let r = KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "tapeRestraints", "genericToys"]}, 24, "grv", true, undefined);
+			if (r) {
+				KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
+				let item = r;
+				for (let j = 0; j < 2; j++) {
+					if (item && item.Link) {
+						let newRestraint = KinkyDungeonGetRestraintByName(item.Link);
+						KinkyDungeonAddRestraintIfWeaker(newRestraint, 8, true, undefined, undefined, undefined, undefined, undefined, true);
+						item = newRestraint;
+					}
+				}
+			}
+		}
+		KinkyDungeonAddRestraintIfWeaker("TrapMittens", 5, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("Stuffing", 5, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("PanelGag", 5, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("TrapBlindfold", 5, true, undefined, false, undefined, undefined, undefined, true);
+
+		if (KinkyDungeonInventoryGet("Knife")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Knife"));
+		if (KinkyDungeonInventoryGet("Dirk")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Dirk"));
 	},
 };
 

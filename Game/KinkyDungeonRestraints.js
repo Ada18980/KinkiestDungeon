@@ -2220,7 +2220,7 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack) {
 }
 
 /**
- * @param {restraint} restraint
+ * @param {restraint | string} restraint
  * @param {number} [Tightness]
  * @param {boolean} [Bypass]
  * @param {string} [Lock]
@@ -2232,6 +2232,7 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack) {
  * @returns {number}
  */
 function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep) {
+	if (typeof restraint === "string") restraint = KinkyDungeonGetRestraintByName(restraint);
 	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
 		let linkUnder = null;

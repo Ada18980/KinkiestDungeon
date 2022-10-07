@@ -20,7 +20,7 @@ KDModsLoaded,Mods Loaded.
 RestartNeeded,"Restart required!"
 RestartNeededCN,"需要重启！"
 
-KinkyDungeon,"Kinky Dungeon v3.72"
+KinkyDungeon,"Kinky Dungeon v3.8"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
@@ -125,6 +125,9 @@ KinkyDungeonStat30,"Slippery"
 KinkyDungeonStatDesc30,"Start with high Latex reputation, and all latex restraints are easier to escape from."
 KinkyDungeonStat31,"Latex Doll"
 KinkyDungeonStatDesc31,"Latex restraints are harder to escape from."
+
+KinkyDungeonStatHogtied,"Hogtied!"
+KinkyDungeonStatDescHogtied,"Start the game trussed up in tight ropes."
 
 KinkyDungeonStat32,"Escapee"
 KinkyDungeonStatDesc32,"Start with high Leather reputation, and all leather restraints are easier to escape from."
@@ -2953,6 +2956,9 @@ RestraintRopeSnakeHogtieDesc2,"It's very secure. You tug on the rope connecting 
 RestraintRopeSnakeTorso,Rope Belt
 RestraintRopeSnakeTorsoDesc,"A harness acting as a handle to pull you around"
 RestraintRopeSnakeTorsoDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeHarness,Rope Harness
+RestraintRopeSnakeHarnessDesc,"A harness that secures your other restraints and makes them tighter."
+RestraintRopeSnakeHarnessDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeCrotch,Crotch Rope
 RestraintRopeSnakeCrotchDesc,"A tight rope impressing upon your most private areas..."
 RestraintRopeSnakeCrotchDesc2,"The ropes squeeze you gently."
