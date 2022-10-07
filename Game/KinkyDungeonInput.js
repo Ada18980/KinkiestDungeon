@@ -462,7 +462,7 @@ function KDProcessInput(type, data) {
 			if (KinkyDungeonStatsChoice.has("Disorganized")) {
 				KinkyDungeonAdvanceTime(1);
 				KinkyDungeonSlowMoveTurns = 2;
-			} else if (!KinkyDungeonStatsChoice.has("QuickScribe"))
+			} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
 				KinkyDungeonAdvanceTime(1);
 			break;
 		case "spellRemove":
@@ -476,7 +476,7 @@ function KDProcessInput(type, data) {
 				if (KinkyDungeonStatsChoice.has("Disorganized")) {
 					KinkyDungeonAdvanceTime(1);
 					KinkyDungeonSlowMoveTurns = 2;
-				} else if (!KinkyDungeonStatsChoice.has("QuickScribe"))
+				} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
 					KinkyDungeonAdvanceTime(1);
 				KinkyDungeonSendActionMessage(5, TextGet("KinkyDungeonSpellTarget" + spell.name).replace("SpellArea", "" + Math.floor(spell.aoe)), "white", 0.1, true);
 			}
@@ -517,7 +517,7 @@ function KDProcessInput(type, data) {
 						if (KinkyDungeonStatsChoice.has("Disorganized")) {
 							KinkyDungeonAdvanceTime(1);
 							KinkyDungeonSlowMoveTurns = 2;
-						} else if (!KinkyDungeonStatsChoice.has("QuickScribe"))
+						} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
 							KinkyDungeonAdvanceTime(1);
 						if (KinkyDungeonIsPlayer()) {
 							KinkyDungeonPreviewSpell = undefined;
