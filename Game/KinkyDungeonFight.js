@@ -1074,7 +1074,7 @@ function KDCheckCollideableBullets(entity, force) {
 		let b = KinkyDungeonBullets[E];
 		if (b.x == entity.x && b.y == entity.y && b.bullet && b.bullet.damage
 				&& (b.time > 1 // Only bullets that arent instantly ending
-					&& !(entity.player || b.vx != 0 || b.vy != 0))) {// Enemies can run into bullets as they move, but the player can walk into bullets that are moving without being hit
+					&& (!entity.player || !(b.vx != 0 || b.vy != 0)))) {// Enemies can run into bullets as they move, but the player can walk into bullets that are moving without being hit
 			let pierce = b.bullet.spell && (b.bullet.spell.piercing || b.bullet.spell.pierceEnemies);
 			if (pierce && b.bullet.damage.damage != 0) continue;
 			if (!KDBulletCanHitEntity(b, entity) && !force) continue;

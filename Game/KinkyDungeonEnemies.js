@@ -3668,7 +3668,7 @@ function KDGetDir(enemy, target) {
 }
 
 function KDIsImmobile(enemy) {
-	return enemy?.Enemy?.immobile || enemy?.Enemy?.tags?.has("immobile");
+	return enemy?.Enemy?.immobile || enemy?.Enemy?.tags?.immobile;
 }
 
 /**

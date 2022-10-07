@@ -4620,7 +4620,7 @@ KinkyDungeonSpellSlime,Slime Blast
 KinkyDungeonSpellSlimePuddle,Apprentice's Slime
 KinkyDungeonSpellWitchSlime,Witch's Slime
 KinkyDungeonSpellMiniSlime,Witch's Slime Ball
-KinkyDungeonSpellDescriptionSlime,A pool of slime deals DamageDealt glue damage to enemies on impact and covers the area in slime.
+KinkyDungeonSpellDescriptionSlime,A pool of slime deals DamageDealt glue damage to enemies on impact and covers the area in temporary slime.
 KinkyDungeonSpellCastSlime,You conjure a pool of slime!
 KinkyDungeonSpellTargetSlime,Select where the slime will appear
 

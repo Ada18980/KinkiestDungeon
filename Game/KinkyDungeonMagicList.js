@@ -476,7 +476,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				name: "Slime",
 				duration: 8,
 			},
-			onhit:"lingering", time: 4, delay: 1, range: 3.5, size: 3, aoe: 1.5, lifetime: 1, power: 4, damage: "glue", playerEffect: {name: "SlimeTrap", time: 3}}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
+			onhit:"lingering", time: 4, delay: 1, range: 3.5, size: 3, aoe: 1.5, lifetime: 3, power: 4, damage: "glue", playerEffect: {name: "SlimeTrap", time: 3}}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
 		{name: "SlimeSplash", color: "#ff00ff", prerequisite: "ApprenticeLatex", tags: ["latex", "slime", "aoe", "offense"], landsfx: "MagicSlash", school: "Conjure", manacost: 1.4, components: ["Legs"], level:1, type:"inert",
 			effectTileDurationMod: 4, effectTile: {
 				name: "Slime",
