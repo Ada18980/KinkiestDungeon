@@ -2236,7 +2236,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
 		let linkUnder = null;
-		linkUnder = KDGetLinkUnder(r, restraint, Bypass);
+		linkUnder = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep);
 		let linkableCurrent = r
 			&& KDRestraint(r)
 			&& KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
