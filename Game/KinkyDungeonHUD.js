@@ -1779,44 +1779,6 @@ function KinkyDungeonHandleHUD() {
 		// Done, converted to input
 		return KinkyDungeonHandleLore();
 	} else if (KinkyDungeonDrawState == "Perks2") {
-		/*if (KDDebugPerks) {
-			let X = KDPerksXStart;
-			let Y = KDPerksYStart;
-			let Y_alt = KDPerksYStart;
-
-			for (let c of KDCategories) {
-
-				Y = Math.max(Y, Y_alt);
-				let height = KDPerksYPad + KDPerksButtonHeight*Math.max(c.buffs.length, c.debuffs.length);
-				if (Y + height > KDPerksMaxY) {
-					X += (KDPerksButtonWidth + KDPerksButtonWidthPad)*2 + KDPerksXPad;
-					Y = KDPerksYStart;
-				}
-
-				Y += KDPerksYPad;
-				Y_alt = Y;
-				for (let stat of c.buffs.concat(c.debuffs)) {
-					if (!stat[1].locked || KDUnlockedPerks.includes(stat[0])) {
-						let YY = stat[1].cost < 0 ? Y_alt : Y;
-						let XX = stat[1].cost < 0 ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
-
-						if (MouseIn(XX, YY, KDPerksButtonWidth, KDPerksButtonHeight)) {
-							if (!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) {
-								KinkyDungeonStatsChoice.set(stat[0], true);
-								localStorage.setItem('KinkyDungeonStatsChoice' + KinkyDungeonPerksConfig, JSON.stringify(Array.from(KinkyDungeonStatsChoice.keys())));
-							} else if (KinkyDungeonStatsChoice.get(stat[0])) {
-								KinkyDungeonStatsChoice.delete(stat[0]);
-								localStorage.setItem('KinkyDungeonStatsChoice' + KinkyDungeonPerksConfig, JSON.stringify(Array.from(KinkyDungeonStatsChoice.keys())));
-							}
-						}
-						if (stat[1].cost < 0) Y_alt += KDPerksButtonHeight + KDPerksButtonHeightPad;
-						else Y += KDPerksButtonHeight + KDPerksButtonHeightPad;
-					}
-				}
-			}
-		}*/
-
-
 		if (MouseIn(1650, 920, 300, 64)) {
 			KinkyDungeonDrawState = "Restart";
 			if (KDDebugMode) {

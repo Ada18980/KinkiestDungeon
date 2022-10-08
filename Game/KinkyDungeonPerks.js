@@ -244,13 +244,13 @@ let KinkyDungeonStatsPresets = {
 	"Masochist":  {category: "Damage", id: "Masochist", cost: -1},
 	"PainTolerance":  {category: "Damage", id: "PainTolerance", cost: 1},
 
-	"CommonFuuka": {category: "Enemies", id: "CommonFuuka", cost: 0, locked: true},
-	"CommonMaid": {category: "Enemies", id: "CommonMaid", cost: 0},
-	"CommonLatex": {category: "Enemies", id: "CommonLatex", cost: 0},
-	"CommonExp": {category: "Enemies", id: "CommonExp", cost: 0},
-	"CommonDress": {category: "Enemies", id: "CommonDress", cost: 0},
-	"CommonWolf": {category: "Enemies", id: "CommonWolf", cost: 0},
-	"CommonKitty": {category: "Enemies", id: "CommonKitty", cost: 0},
+	"CommonFuuka": {category: "Enemies", id: "CommonFuuka", cost: -1, locked: true},
+	"CommonMaid": {category: "Enemies", id: "CommonMaid", cost: -1, costGroup: "common"},
+	"CommonLatex": {category: "Enemies", id: "CommonLatex", cost: -1, costGroup: "common"},
+	"CommonExp": {category: "Enemies", id: "CommonExp", cost: -1, costGroup: "common"},
+	"CommonDress": {category: "Enemies", id: "CommonDress", cost: -1, costGroup: "common"},
+	"CommonWolf": {category: "Enemies", id: "CommonWolf", cost: -1, costGroup: "common"},
+	"CommonKitty": {category: "Enemies", id: "CommonKitty", cost: -1, costGroup: "common"},
 
 	"KeepOutfit":  {category: "Kinky", id: "KeepOutfit", cost: 0},
 
@@ -258,12 +258,35 @@ let KinkyDungeonStatsPresets = {
 	"Doorknobs":  {category: "Map", id: "Doorknobs", cost: -1},
 };
 
+
+
+function KDGetPerkCost(perk) {
+	if (!perk) return 0;
+	if (!perk.costGroup) return perk.cost;
+	let costGroups = {};
+	let first = false;
+	// Only the first one has a cost
+	for (let p of KinkyDungeonStatsChoice.keys()) {
+		if (KinkyDungeonStatsPresets[p] && KinkyDungeonStatsPresets[p].costGroup) {
+			if (!first) {
+				first = true;
+				if (KinkyDungeonStatsPresets[p].id == perk.id) {
+					return KinkyDungeonStatsPresets[p].cost;
+				}
+			}
+			costGroups[KinkyDungeonStatsPresets[p].costGroup] = KinkyDungeonStatsPresets[p].cost;
+		}
+	}
+	if (costGroups[perk.costGroup] != undefined && perk.cost >= costGroups[perk.costGroup]) return 0;
+	else return perk.cost;
+}
+
 function KinkyDungeonGetStatPoints(Stats) {
 	let total = 0;
 	for (let k of Stats.keys()) {
 		if (Stats.get(k)) {
 			if (KinkyDungeonStatsPresets[k]) {
-				total -= KinkyDungeonStatsPresets[k].cost;
+				total -= KDGetPerkCost(KinkyDungeonStatsPresets[k]);
 			}
 		}
 	}
@@ -273,7 +296,7 @@ function KinkyDungeonGetStatPoints(Stats) {
 function KinkyDungeonCanPickStat(Stat, points) {
 	let stat = KinkyDungeonStatsPresets[Stat];
 	if (!stat) return false;
-	if (stat.cost > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < stat.cost) return false;
+	if (KDGetPerkCost(stat) > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < KDGetPerkCost(stat)) return false;
 	for (let k of KinkyDungeonStatsChoice.keys()) {
 		if (KinkyDungeonStatsChoice.get(k)) {
 			if (KinkyDungeonStatsPresets[k] && KinkyDungeonStatsPresets[k].block && KinkyDungeonStatsPresets[k].block.includes(Stat)) {
@@ -304,7 +327,7 @@ function KDPerkBlocked(perk1, perk2) {
 function KinkyDungeonCanUnPickStat(Stat) {
 	let stat = KinkyDungeonStatsPresets[Stat];
 	if (!stat) return false;
-	if (stat.cost < 0 && KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) < -stat.cost) return false;
+	if (KDGetPerkCost(stat) < 0 && KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) < -KDGetPerkCost(stat)) return false;
 	for (let k of KinkyDungeonStatsChoice.keys()) {
 		if (KinkyDungeonStatsChoice.get(k)) {
 			if (KinkyDungeonStatsPresets[k] && KinkyDungeonStatsPresets[k].require == Stat) {
@@ -524,13 +547,13 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 				if (inView()) {
 					let colorAvailable = NonSelectable ?
 					fadeColor :
-					stat[1].cost > 0 ?
+					KDGetPerkCost(stat[1]) > 0 ?
 						"#aaaacc" :
-						stat[1].cost < 0 ?
+						KDGetPerkCost(stat[1]) < 0 ?
 							"#ccaaaa" :
 							"#aaaacc";
-					let colorSelected = stat[1].cost > 0 ? "#eeeeff" : stat[1].cost < 0 ? "#ffeeee" : "#eeeeff";
-					let colorExpensive = stat[1].cost > 0 ? "#555588" : stat[1].cost < 0 ? "#885555" : "#555588";
+					let colorSelected = KDGetPerkCost(stat[1]) > 0 ? "#eeeeff" : KDGetPerkCost(stat[1]) < 0 ? "#ffeeee" : "#eeeeff";
+					let colorExpensive = KDGetPerkCost(stat[1]) > 0 ? "#555588" : KDGetPerkCost(stat[1]) < 0 ? "#885555" : "#555588";
 
 					DrawButtonKDEx(stat[0], (bdata) => {
 						if (!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) {
@@ -541,7 +564,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 							localStorage.setItem('KinkyDungeonStatsChoice' + KinkyDungeonPerksConfig, JSON.stringify(Array.from(KinkyDungeonStatsChoice.keys())));
 						}
 						return true;
-					}, !NonSelectable && (KinkyDungeonState == "Stats" || (KinkyDungeonDrawState == "Perks2" && KDDebugPerks)), XX, YY, KDPerksButtonWidth, KDPerksButtonHeight, TextGet("KinkyDungeonStat" + (stat[1].id)) + ` (${stat[1].cost})`,
+					}, !NonSelectable && (KinkyDungeonState == "Stats" || (KinkyDungeonDrawState == "Perks2" && KDDebugPerks)), XX, YY, KDPerksButtonWidth, KDPerksButtonHeight, TextGet("KinkyDungeonStat" + (stat[1].id)) + ` (${KDGetPerkCost(stat[1])})`,
 						(!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) ? colorAvailable : (KinkyDungeonStatsChoice.get(stat[0]) ? colorSelected : (NonSelectable ? colorAvailable : colorExpensive)),
 						KinkyDungeonStatsChoice.get(stat[0]) ? (KinkyDungeonRootDirectory + "UI/TickPerk.png") : "", undefined, false, true,
 						KinkyDungeonStatsChoice.get(stat[0]) ? "rgba(140, 140, 140, 0.5)" : KDButtonColor, undefined, undefined, {
@@ -549,7 +572,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 						});
 					if (MouseIn(XX, YY, KDPerksButtonWidth, KDPerksButtonHeight)) {
 						DrawTextFitKD(TextGet("KinkyDungeonStatDesc" + (stat[1].id)), 1000, 150, 1500, KDTextWhite, KDTextGray1);
-						DrawTextFitKD(TextGet("KinkyDungeonStatCost").replace("AMOUNT", stat[1].cost + ""), 1000, 190, 1400, KDTextWhite, KDTextGray1);
+						DrawTextFitKD(TextGet("KinkyDungeonStatCost").replace("AMOUNT", KDGetPerkCost(stat[1]) + ""), 1000, 190, 1400, KDTextWhite, KDTextGray1);
 						tooltip = true;
 					}
 				}
@@ -642,11 +665,11 @@ function KDGetRandomPerks(existing) {
 		if (!existing[p[0]] && !KinkyDungeonStatsChoice.get(p[0]) && KinkyDungeonCanPickStat(p[0], 999)) { // No dupes
 			if ((!p[1].tags || !p[1].tags.includes("start"))) {
 				if (!p[1].locked || KDUnlockedPerks.includes(p[0])) {
-					if (p[1].cost > 0) {
+					if (KDGetPerkCost(p[1]) > 0) {
 						poscandidates.push(p);
-						if (p[1].cost == 1)
+						if (KDGetPerkCost(p[1]) == 1)
 							singlepointcandidates.push(p);
-					} else if (p[1].cost < 0) {
+					} else if (KDGetPerkCost(p[1]) < 0) {
 						negcandidates.push(p);
 					}
 				}
@@ -657,19 +680,19 @@ function KDGetRandomPerks(existing) {
 	let poscandidate = poscandidates[Math.floor(poscandidates.length * KDRandom())];
 	if (!poscandidate) return [];
 
-	let netcost = poscandidate[1].cost;
+	let netcost = KDGetPerkCost(poscandidate[1]);
 	let perks = [poscandidate[0]];
-	if (poscandidate[1].cost > 1) {
+	if (KDGetPerkCost(poscandidate[1]) > 1) {
 		negcandidates = negcandidates.filter((p) => {
 			return (KinkyDungeonCanPickStat(p[0], 999))
 				&& !KDPerkBlocked(p[0], poscandidate[0])
-				&& (-p[1].cost) >= (poscandidate[1].cost - 1);
+				&& (-KDGetPerkCost(p[1])) >= (KDGetPerkCost(poscandidate[1]) - 1);
 		});
 		let negperk = null;
 		if (negcandidates.length > 0) {
 			negperk = negcandidates[Math.floor(negcandidates.length * KDRandom())];
 			perks.push(negperk[0]);
-			netcost += negperk[1].cost;
+			netcost += KDGetPerkCost(negperk[1]);
 		}
 
 		if (netcost < 0 && negperk) {

@@ -471,7 +471,7 @@ function KinkyDungeonLoad() {
 	for (let stat of Object.entries(KinkyDungeonStatsPresets)) {
 		for (let c of KDCategories) {
 			if (stat[1].category == c.name) {
-				if (stat[1].cost < 0)
+				if (KDGetPerkCost(stat[1]) < 0)
 					c.debuffs.push(stat);
 				else
 					c.buffs.push(stat);
@@ -1685,41 +1685,6 @@ function KinkyDungeonHandleClick() {
 			return true;
 		}
 	} else if (KinkyDungeonState == "Stats") {
-		/*let X = KDPerksXStart;
-		let Y = KDPerksYStart;
-		let Y_alt = KDPerksYStart;
-
-		for (let c of KDCategories) {
-
-			Y = Math.max(Y, Y_alt);
-			let height = KDPerksYPad + KDPerksButtonHeight*Math.max(c.buffs.length, c.debuffs.length);
-			if (Y + height > KDPerksMaxY) {
-				X += (KDPerksButtonWidth + KDPerksButtonWidthPad)*2 + KDPerksXPad;
-				Y = KDPerksYStart;
-			}
-
-			Y += KDPerksYPad;
-			Y_alt = Y;
-			for (let stat of c.buffs.concat(c.debuffs)) {
-				if (!stat[1].locked || KDUnlockedPerks.includes(stat[0])) {
-					let YY = stat[1].cost < 0 ? Y_alt : Y;
-					let XX = stat[1].cost < 0 ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
-
-					if (MouseIn(XX, YY, KDPerksButtonWidth, KDPerksButtonHeight)) {
-						if (!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) {
-							KinkyDungeonStatsChoice.set(stat[0], true);
-							localStorage.setItem('KinkyDungeonStatsChoice' + KinkyDungeonPerksConfig, JSON.stringify(Array.from(KinkyDungeonStatsChoice.keys())));
-						} else if (KinkyDungeonStatsChoice.get(stat[0])) {
-							KinkyDungeonStatsChoice.delete(stat[0]);
-							localStorage.setItem('KinkyDungeonStatsChoice' + KinkyDungeonPerksConfig, JSON.stringify(Array.from(KinkyDungeonStatsChoice.keys())));
-						}
-					}
-					if (stat[1].cost < 0) Y_alt += KDPerksButtonHeight + KDPerksButtonHeightPad;
-					else Y += KDPerksButtonHeight + KDPerksButtonHeightPad;
-				}
-			}
-		}*/
-
 		if (MouseIn(100, 920, 190, 64)) {
 			KinkyDungeonStatsChoice = new Map();
 			KDUpdatePlugSettings();

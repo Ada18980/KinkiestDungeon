@@ -824,7 +824,6 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 
 	// Place the exit stairs
 	KinkyDungeonMapSet(width*2 - 2, VisitedRooms[0].y*2, 's');
-	KinkyDungeonMapSet(width*2 - 2, VisitedRooms[0].y*2 + 1, 'G');
 	KinkyDungeonTiles.set("" + (width*2 - 2) + "," + (VisitedRooms[0].y*2), {RoomType: "Tunnel"});
 
 	KinkyDungeonEndPosition = {x: width*2 - 2, y: VisitedRooms[0].y*2};
