@@ -167,7 +167,7 @@ let KinkyDungeonStatsPresets = {
 	"Dragon": {category: "Kinky", id: 33, cost: -1, block: ["Escapee"]},
 	"Dodge": {category: "Combat", id: 18, cost: 3, block: ["Distracted"]},
 	"Distracted": {category: "Combat", id: 19, cost: -1, block: ["Dodge"]},
-	"Submissive": {startPriority: -1, category: "Kinky", id: 10, cost: 0},
+	"Submissive": {startPriority: 0, category: "Kinky", id: 10, cost: 0},
 	"Wanted": {category: "Kinky", id: 11, cost: -1},
 	"QuickDraw": {category: "Combat", id: 55, cost: 1, block: ["Disorganized"]},
 	"Disorganized": {category: "Combat", id: 57, cost: -2, block: ["QuickDraw", "QuickScribe"]},
@@ -201,8 +201,8 @@ let KinkyDungeonStatsPresets = {
 	"Vengeance": {category: "Enemies", id: "Vengeance", cost: -1},
 	"AbsoluteFocus": {category: "Magic", id: "AbsoluteFocus", cost: -1},
 
-	"Hogtied": {startPriority: 0, category: "Start", id: "Hogtied", cost: -1, tags: ["start"]},
-	"StartObsidian": {startPriority: 0, category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
+	"Hogtied": {startPriority: 15, category: "Start", id: "Hogtied", cost: -1, tags: ["start"]},
+	"StartObsidian": {startPriority: 5, category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
 	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
 	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
 	"StartLatex": {startPriority: 30, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
@@ -358,11 +358,7 @@ let KDPerkStart = {
 	},
 	StartLatex: () =>{
 		KinkyDungeonChangeRep("Latex", 10);
-		for (let i = 0; i < 5; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["latexCatsuits"]}, 12, "grv", true, "Red");
-			if (r)
-				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, undefined, true);
-		}
+		KinkyDungeonAddRestraintIfWeaker("LatexCatsuit", 5, true, "Red", false, undefined, undefined, undefined, true);
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexRestraintsHeavy", "latexCollar"]}, 12, "grv", true, "Red");
 			if (r)
@@ -422,7 +418,7 @@ let KDPerkStart = {
 	},
 	Hogtied: () =>{
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "tapeRestraints", "genericToys"]}, 24, "grv", true, undefined);
+			let r = KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist", "tapeRestraints", "genericToys"]}, 24, "grv", true, undefined);
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
 				let item = r;
