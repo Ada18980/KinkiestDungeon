@@ -572,7 +572,7 @@ const KinkyDungeonRestraints = [
 	{alwaysRender: true, inventory: true, trappable: true, name: "TrapHarness", strictness: 0.05, Asset: "LeatherStrapHarness", accessible: true, LinkableBy: [...KDHarnessLink], OverridePriority: 26, Color: "#222222", Group: "ItemTorso", power: 2, weight: 2,
 		escapeChance: {"Struggle": 0.1, "Cut": 0.3, "Remove": 0.8, "Pick": 1.0}, enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "harnessSpell": 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Harnesses"]},
 	{inventory: true, trappable: true, name: "TrapGag", Asset: "BallGag", factionColor: [[], [0]], gag: 0.35, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", power: 3, weight: 2,
-		maxwill: 0.6, escapeChance: {"Struggle": 0.35, "Cut": 0.45, "Remove": 0.3, "Pick": 0.5}, enemyTags: {"trap":100, "leatherRestraintsHeavy":6}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Latex", "Gags"]},
+		maxwill: 0.6, escapeChance: {"Struggle": 0.35, "Cut": 0.45, "Remove": 0.3, "Pick": 0.5}, enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "gagSpell": 8}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Latex", "Gags"]},
 	{inventory: true, trappable: true, name: "TrapBlindfold", Asset: "LeatherBlindfold", LinkableBy: ["Wrapping", "Mask"], Color: "Default", Group: "ItemHead", power: 3, weight: 2,
 		maxwill: 0.5, blindfold: 2, escapeChance: {"Struggle": 0.4, "Cut": 0.6, "Remove": 0.3, "Pick": 0.5}, enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "ropeAuxiliary": 4, "blindfoldSpell": 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Blindfolds"]},
 	{inventory: true, trappable: true, name: "TrapBoots", Asset: "BalletHeels", Color: "Default", Group: "ItemBoots", hobble: true, power: 3, weight: 2,
@@ -652,8 +652,12 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"ballGagRestraintsMagic" : 4, "gagSpellStrong": 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Latex", "Gags"]},
 
 	// Generic stronger gag
-	{inventory: true, trappable: true, name: "PanelGag", Asset: "HarnessPanelGag", gag: 1.0, Color: "#888888", Group: "ItemMouth2", power: 5, strictness: 0.2, weight: 2, escapeChance: {"Struggle": 0, "Cut": 0.3, "Remove": 0.4, "Pick": 0.5},
+	{inventory: true, trappable: true, name: "PanelGag", Asset: "HarnessPanelGag", gag: 1.0, Color: "#888888", Group: "ItemMouth2", power: 5, strictness: 0.2, weight: 2,
+		escapeChance: {"Struggle": 0, "Cut": 0.3, "Remove": 0.4, "Pick": 0.5},
 		maxwill: 0.75, enemyTags: {"leatherRestraintsHeavy":8, "ropeAuxiliary": 4}, playerTags: {}, minLevel: 4, allFloors: true, shrine: ["Leather", "Gags"]},
+	{inventory: true, trappable: true, name: "HarnessGag", Asset: "HarnessBallGag", gag: 0.75, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", power: 4, strictness: 0.2, weight: 3,
+		escapeChance: {"Struggle": 0.05, "Cut": 0.3, "Remove": 0.4, "Pick": 0.5},
+		maxwill: 0.75, enemyTags: {"leatherRestraints":1, "ropeAuxiliary": 8}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Gags"]},
 	{inventory: true, name: "PanelPlugGag", Asset: "OTNPlugGag", Type: "Plug", gag: 1.0, Color: ["#888888", "#444444", "#aaaaaa"], Group: "ItemMouth", strictness: 0.4, power: 7, weight: 1,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.15, "Pick": 0.07},
 		maxwill: 0.1, enemyTags: {"leatherRestraintsHeavy" : 10, "ropeAuxiliary": 1}, playerTags: {}, minLevel: 8, allFloors: true, shrine: ["Leather", "Gags"]},

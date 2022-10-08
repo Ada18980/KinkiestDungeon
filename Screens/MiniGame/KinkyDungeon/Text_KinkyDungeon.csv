@@ -2680,6 +2680,9 @@ RestraintDuctTapeLegsMummyDesc2,"It clings, almost of its own accord, but seems 
 RestraintPanelGag,Leather Panel Gag
 RestraintPanelGagDesc,"A gag that seals your lips tightly and stuffs your mouth with a ball."
 RestraintPanelGagDesc2,"The harness is comprehensive and it's locked in place."
+RestraintHarnessGag,Harness Ball Gag
+RestraintHarnessGagDesc,"A gag that stuffs your mouth with a large silicone ball."
+RestraintHarnessGagDesc2,"The harness is comprehensive and it's locked in place."
 
 RestraintKittyGag,Bast Gag
 RestraintKittyGagDesc,"A gag used to silence new initiates of the Bast cult."
@@ -6380,6 +6383,34 @@ dOfferDressForce_Yes,"Fine, I guess."
 dOfferDressForce_YesGag,"(Giggle and nod)"
 dOfferDressForce_No,"Wait! That's too much! (PERCENT chance to avoid)"
 dOfferDressForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
+
+
+
+rOfferKigu,"(The SPEAKER looks at with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?"
+rOfferKiguYes,"(The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here..."
+rOfferKiguYes_Yes,"(The SPEAKER nods seriously)|My hypothesis was correct..."
+rOfferKiguYes_No,"(The SPEAKER frowns)|Such a philistine. Begone."
+rOfferKiguNo,"(The SPEAKER turns away and thinks deeply)"
+rOfferKiguForce,"(The SPEAKER is lost deep in thought)|Like... become someone else?"
+rOfferKiguForceYes,"(The SPEAKER smiles)|You can be someone else..."
+rOfferKiguForce_No,"(The SPEAKER turns around and keeps pondering)|Hmmm..."
+rOfferKiguForce_Yes,"(The SPEAKER nods)|I see you are a truth seeker after all."
+rOfferKiguForce_Failure,"(The SPEAKER lets you go. But then...)|(You feel her clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior."
+
+dOfferKigu_Yes,"Um, sure?"
+dOfferKigu_YesGag,"(Nod seriously)"
+dOfferKigu_No,"...What?"
+dOfferKigu_NoGag,"(Shake your head)"
+
+dOfferKiguYes_Yes,"Show me the truth."
+dOfferKiguYes_YesGag,"(Nod again)"
+dOfferKiguYes_No,"That's just creepy."
+dOfferKiguYes_NoGag,"(Shake your head)"
+
+dOfferKiguForce_Yes,"Fine, you've convinced me."
+dOfferKiguForce_YesGag,"(Giggle and nod)"
+dOfferKiguForce_No,"I don't have time for this. (PERCENT chance to avoid)"
+dOfferKiguForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 
 

@@ -1010,6 +1010,8 @@ interface KinkyDialogueTrigger {
 	playRequired?: boolean;
 	/** Require play to be ONGOING */
 	onlyDuringPlay?: boolean;
+	/** Allow this to happen even out of playtime if the player is submissive enough */
+	allowPlayExceptionSub?: boolean;
 	/** If any NPC is in combat in last 3 turns this wont happen */
 	noCombat?: boolean;
 	/** Prevents this from happening if the target is hostile */

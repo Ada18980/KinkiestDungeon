@@ -2096,7 +2096,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				&& (!trigger.nonHostile || !KinkyDungeonAggressive(enemy))
 				&& (!trigger.allowedPrisonStates || trigger.allowedPrisonStates.includes(KDGameData.PrisonerState))
 				&& (!trigger.allowedPersonalities || trigger.allowedPersonalities.includes(enemy.personality))
-				&& (!trigger.onlyDuringPlay || enemy.playWithPlayer > 0)) {
+				&& (!trigger.onlyDuringPlay || enemy.playWithPlayer > 0
+					|| (trigger.allowPlayExceptionSub && KDIsSubmissiveEnough(enemy)))) {
 				let end = false;
 				if (trigger.excludeTags) {
 					for (let tt of trigger.excludeTags) {

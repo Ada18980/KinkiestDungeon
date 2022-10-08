@@ -38,6 +38,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -46,6 +47,32 @@ let KDDialogueTriggers = {
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& KDRandom() < 0.25
 				&& KinkyDungeonGetRestraint({tags: ["bindingDress"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+		},
+		weight: (enemy, dist) => {
+			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
+		},
+	},
+	"OfferKigu": {
+		dialogue: "OfferKigu",
+		allowedPrisonStates: ["parole", ""],
+		allowedPersonalities: ["Sub"],
+		requireTagsSingle: ["kiguRestraints"],
+		excludeTags: ["zombie", "skeleton", "robot"],
+		playRequired: true,
+		nonHostile: true,
+		noCombat: true,
+		noAlly: true,
+		blockDuringPlaytime: false,
+		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
+		prerequisite: (enemy, dist) => {
+			return (dist < 1.5
+				&& !KDEnemyHasFlag(enemy, "playstart")
+				&& !KinkyDungeonFlags.get("DangerFlag")
+				&& !KinkyDungeonFlags.get("BondageOffer")
+				&& !KinkyDungeonFlags.get("NoTalk")
+				&& KDRandom() < 0.25
+				&& KinkyDungeonGetRestraint({tags: ["kiguRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
@@ -63,6 +90,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -87,6 +115,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -112,6 +141,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -137,6 +167,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -162,6 +193,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -187,6 +219,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -212,6 +245,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -237,6 +271,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -262,6 +297,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -287,6 +323,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -312,6 +349,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -337,6 +375,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -362,6 +401,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -387,6 +427,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -412,6 +453,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -437,6 +479,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -463,6 +506,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -488,6 +532,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -513,6 +558,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -554,7 +600,7 @@ let KDDialogueTriggers = {
 		dialogue: "OfferRopes",
 		allowedPrisonStates: ["parole", ""],
 		allowedPersonalities: ["Dom"],
-		requireTagsSingle: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsWrist"],
+		requireTagsSingle: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsWrist", "ropeRestraintsHogtie"],
 		excludeTags: ["zombie", "skeleton", "robot"],
 		playRequired: true,
 		nonHostile: true,
@@ -562,6 +608,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")
@@ -569,7 +616,7 @@ let KDDialogueTriggers = {
 				&& !KinkyDungeonFlags.get("BondageOffer")
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& KDRandom() < 0.5
-				&& KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+				&& KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Rope + 50)/100;
@@ -586,6 +633,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
 			return (dist < 1.5
 				&& !KDEnemyHasFlag(enemy, "playstart")

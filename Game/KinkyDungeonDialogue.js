@@ -881,13 +881,21 @@ function KDYesNoTemplate(setupFunction, yesFunction, noFunction, domFunction) {
  * @param {string[]} goddess
  * @param {string[]} antigoddess
  * @param {string[]} restraint
- * @param {number[]} diffSpread
- * @param {number[]} OffdiffSpread
+ * @param {number[]} diffSpread - 0 is yesfunction diff, 2 is nofunction diff, 1 is yesfunction dom (should be lower), 3 is nofunction dom (should be lower)
+ * @param {number[]} OffdiffSpread - 0 is submissive diff, 1 is normal diff, 2 is dom diff, 3 is dom diff if you have dom personality (should be between 1 and 2)
+ * @param {number} count
+ * @param {number} countAngry
+ * @param {string} countAngry
+ * @param {boolean} Ally
+ * @param {{name: string, duration: number, floors?: number}[]} Flags - Sets flags on setup
  * @returns {KinkyDialogue}
  */
-function KDYesNoSingle(name, goddess, antigoddess, restraint, diffSpread, OffdiffSpread) {
+function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, OffdiffSpread, count = 1, countAngry = 1, Lock = "Red", Ally = false, Flags = []) {
 	return KDYesNoTemplate(
 		(refused) => { // Setup function. This is run when you click Yes or No in the start of the dialogue
+			for (let f of Flags) {
+				KinkyDungeonSetFlag(f.name, f.duration, f.floors);
+			}
 			// This is the restraint that the dialogue offers to add. It's selected from a set of tags. You can change the tags to change the restraint
 			let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 			if (r) {
@@ -921,6 +929,7 @@ function KDYesNoSingle(name, goddess, antigoddess, restraint, diffSpread, Offdif
 					KDGameData.CurrentDialogMsgValue.Percent = KDAgilityDialogueSuccessChance(KDBasicCheck(goddess, antigoddess));
 					KDGameData.CurrentDialogMsgData.PERCENT = `${Math.round(100 * KDGameData.CurrentDialogMsgValue.Percent)}%`;
 				} else {
+					// You succeed but get fatigue
 					KDIncreaseOfferFatigue(10);
 				}
 				KinkyDungeonChangeRep(antigoddess[0], -1); // Reduce submission because of refusal
@@ -928,9 +937,19 @@ function KDYesNoSingle(name, goddess, antigoddess, restraint, diffSpread, Offdif
 			return false;
 		},(refused) => { // Yes function. This happens if the user submits willingly
 			KinkyDungeonChangeRep(goddess[0], 1);
-			KDPleaseSpeaker(refused ? 0.004 : 0.005); // Less reputation if you refused
+			if (Ally)
+				KDAllySpeaker(9999, true);
+			else
+				KDPleaseSpeaker(refused ? 0.004 : 0.005); // Less reputation if you refused
 			KinkyDungeonChangeRep(antigoddess[0], refused ? 1 : 2); // Less submission if you refused
-			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), 0, true, "Red");
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), 0, true, Lock);
+			let num = count;
+			// Apply additional restraints
+			if (num > 1) {
+				let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+				if (r)
+					KinkyDungeonAddRestraintIfWeaker(r, 0, true, Lock);
+			}
 			return false;
 		},(refused) => { // No function. This happens when the user refuses.
 			// The first half is basically the same as the setup function, but only if the user did not refuse the first yes/no
@@ -954,6 +973,13 @@ function KDYesNoSingle(name, goddess, antigoddess, restraint, diffSpread, Offdif
 					KDIncreaseOfferFatigue(-20);
 					KDGameData.CurrentDialogMsg = name + "Force_Failure";
 					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), 0, true, "Red");
+					let num = refused ? countAngry : count;
+					// Apply additional restraints
+					if (num > 1) {
+						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+						if (r)
+							KinkyDungeonAddRestraintIfWeaker(r, 0, true, Lock);
+					}
 				} else {
 					KDIncreaseOfferFatigue(10);
 				}
@@ -983,7 +1009,6 @@ function KDYesNoSingle(name, goddess, antigoddess, restraint, diffSpread, Offdif
 			return false;
 		});
 }
-
 
 /**
  * A shop where the seller sells items
@@ -1136,4 +1161,15 @@ function DialogueBringNearbyEnemy(x, y, radius) {
 		}
 	}
 	return null;
+}
+
+/**
+ * Returns if you are submissive enough to be played with by this enemy
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDIsSubmissiveEnough(enemy) {
+	let diff = KDPersonalitySpread(20, -20, -51);
+	if (KinkyDungeonGoddessRep.Ghost >= diff) return true;
+	return false;
 }
