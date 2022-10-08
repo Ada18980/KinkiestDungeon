@@ -6495,7 +6495,6 @@ dOfferAutoTapeForce_Yes,"If you have to..."
 dOfferAutoTapeForce_YesGag,"(Giggle and nod)"
 dOfferAutoTapeForce_No,"Go away robot! (PERCENT chance to avoid)"
 dOfferAutoTapeForce_NoGag,"(Shake your head rapidly) (PERCENT chance to avoid)"
-dOfferAutoTapeForce_NoGag,"(Shake your head rapidly) (PERCENT chance to avoid)"
 
 
 
@@ -6523,6 +6522,7 @@ dOfferHiTechCablesYes_NoGag,"(Shake your head)"
 dOfferHiTechCablesForce_Yes,"If you have to..."
 dOfferHiTechCablesForce_YesGag,"(Giggle and nod)"
 dOfferHiTechCablesForce_No,"Go away robot! (PERCENT chance to avoid)"
+dOfferHiTechCablesForce_NoGag,"(Shake your head rapidly) (PERCENT chance to avoid)"
 
 
 
