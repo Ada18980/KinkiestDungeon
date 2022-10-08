@@ -80,7 +80,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.1);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.1));
 		},
 		weight: (enemy, dist) => {
 			return 0.1 + 0.1 * Math.max(Math.abs(KinkyDungeonGoddessRep.Prisoner)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
