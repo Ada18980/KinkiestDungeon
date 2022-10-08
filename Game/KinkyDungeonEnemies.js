@@ -1243,10 +1243,11 @@ function KDNearbyEnemies(x, y, dist, hostileEnemy) {
 	} else {
 		let e = null;
 		for (let X = Math.floor(x - dist); X < Math.ceil(x + dist); X++)
-			for (let Y = Math.floor(y - dist); Y < Math.ceil(y + dist); Y++) {
-				e = cache.get(X + "," + Y);
-				if (e && (!hostileEnemy || KDHostile(e, hostileEnemy))) list.push(e);
-			}
+			for (let Y = Math.floor(y - dist); Y < Math.ceil(y + dist); Y++)
+				if (KDistEuclidean(X - x, Y - y) <= dist) {
+					e = cache.get(X + "," + Y);
+					if (e && (!hostileEnemy || KDHostile(e, hostileEnemy))) list.push(e);
+				}
 	}
 	return list;
 }
