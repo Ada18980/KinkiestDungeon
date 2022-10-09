@@ -40,13 +40,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["bindingDress"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["bindingDress"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
@@ -66,13 +60,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["kiguRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["kiguRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
@@ -92,12 +80,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.1);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.1));
 		},
 		weight: (enemy, dist) => {
 			return 0.1 + 0.1 * Math.max(Math.abs(KinkyDungeonGoddessRep.Prisoner)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
@@ -117,13 +100,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.1
-				&& KinkyDungeonGetRestraint({tags: ["shackleGag"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.1,["shackleGag"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100);
@@ -143,13 +120,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["chainRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["chainRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
@@ -169,13 +140,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["vineRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["vineRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Rope)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
@@ -195,13 +160,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["obsidianRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["obsidianRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Elements)/100);
@@ -221,13 +180,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["maidRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["maidRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100);
@@ -247,13 +200,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["dragonRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["dragonRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Leather)/100;
@@ -273,13 +220,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["comfyRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["comfyRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Conjure)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100);
@@ -299,13 +240,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["shackleRestraints", "steelCuffs"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["shackleRestraints", "steelCuffs"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Prisoner)/100);
@@ -325,13 +260,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["kittyRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["kittyRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Leather)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
@@ -351,13 +280,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["mithrilRope","mithrilRopeHogtie"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["mithrilRope","mithrilRopeHogtie"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Rope)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
@@ -377,13 +300,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["mithrilRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["mithrilRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
@@ -403,13 +320,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["wolfRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["wolfRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
@@ -429,13 +340,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["slimeRestraintsRandom"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["slimeRestraintsRandom"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
@@ -455,13 +360,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["scarfRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["scarfRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Rope)/100;
@@ -481,13 +380,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["autoTape"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["autoTape"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Metal + 50)/100;
@@ -508,13 +401,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["hitechCables", "cableGag"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["hitechCables", "cableGag"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Metal + 50)/100;
@@ -534,13 +421,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["iceRestraints"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["iceRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 0.5 + 0.1 * Math.max(Math.abs(KinkyDungeonGoddessRep.Elements)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
@@ -560,13 +441,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.25
-				&& KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexRestraintsHeavy"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["latexRestraints", "latexRestraintsHeavy"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
@@ -610,13 +485,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.5
-				&& KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.5,["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Rope + 50)/100;
@@ -635,13 +504,7 @@ let KDDialogueTriggers = {
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist) => {
-			return (dist < 1.5
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < 0.5
-				&& KinkyDungeonGetRestraint({tags: ["leatherRestraintsHeavy"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+			return (KDDefaultPrereqs(enemy,dist,1.5,0.5,["leatherRestraintsHeavy"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.5 * Math.abs(KinkyDungeonGoddessRep.Leather + 50)/100;
@@ -659,6 +522,16 @@ let KDDialogueTriggers = {
 	"FuukaLose": KDBossLose("FuukaLose", ["Fuuka1", "Fuuka2"]),
 
 };
+
+function KDDefaultPrereqs(enemy,dist,maxdist,random,dialogue_tags) {
+		return dist < maxdist
+				&& !KDEnemyHasFlag(enemy, "playstart")
+				&& !KinkyDungeonFlags.get("DangerFlag")
+				&& !KinkyDungeonFlags.get("BondageOffer")
+				&& !KinkyDungeonFlags.get("NoTalk")
+				&& KDRandom() < random
+				&& (!dialogue_tags || KinkyDungeonGetRestraint({tags: dialogue_tags}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+}
 
 function KDShopTrigger(name) {
 	return {
