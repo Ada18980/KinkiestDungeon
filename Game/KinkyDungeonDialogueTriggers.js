@@ -66,26 +66,6 @@ let KDDialogueTriggers = {
 			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
 		},
 	},
-	"OfferHighSec": {
-		dialogue: "OfferHighSec",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom"],
-		requireTagsSingle: ["jail"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.1));
-		},
-		weight: (enemy, dist) => {
-			return 0.1 + 0.1 * Math.max(Math.abs(KinkyDungeonGoddessRep.Prisoner)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
-		},
-	},
 	"OfferArmor": {
 		dialogue: "OfferArmor",
 		allowedPrisonStates: ["parole", ""],
@@ -523,14 +503,23 @@ let KDDialogueTriggers = {
 
 };
 
-function KDDefaultPrereqs(enemy,dist,maxdist,random,dialogue_tags) {
-		return dist < maxdist
-				&& !KDEnemyHasFlag(enemy, "playstart")
-				&& !KinkyDungeonFlags.get("DangerFlag")
-				&& !KinkyDungeonFlags.get("BondageOffer")
-				&& !KinkyDungeonFlags.get("NoTalk")
-				&& KDRandom() < random
-				&& (!dialogue_tags || KinkyDungeonGetRestraint({tags: dialogue_tags}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+/**
+ * Generic condition for Bondage Offers
+ * @param {entity} enemy
+ * @param {number} dist - Current player dist, its sent as a param for faster runtime
+ * @param {number} maxdist
+ * @param {number} chance
+ * @param {string[]} restraintTags - Tags of required restraints
+ * @returns {boolean}
+ */
+function KDDefaultPrereqs(enemy, dist, maxdist, chance, restraintTags) {
+	return dist < maxdist
+			&& !KDEnemyHasFlag(enemy, "playstart")
+			&& !KinkyDungeonFlags.get("DangerFlag")
+			&& !KinkyDungeonFlags.get("BondageOffer")
+			&& !KinkyDungeonFlags.get("NoTalk")
+			&& KDRandom() < chance
+			&& (!restraintTags || KinkyDungeonGetRestraint({tags: restraintTags}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
 }
 
 function KDShopTrigger(name) {
