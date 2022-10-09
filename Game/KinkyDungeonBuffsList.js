@@ -30,6 +30,14 @@ let KDVolcanism = {id: "Volcanism", type: "event", aura: "#ff0000", power: 0.5, 
 let KDDrenched2 = {id: "Drenched2", type: "electricDamageResist", power: -0.35, player: true, duration: 20, enemies: true};
 let KDDrenched3 = {id: "Drenched2", type: "iceDamageResist", power: -0.35, player: true, duration: 20, enemies: true};
 
+
+let KDEager = {
+	id: "Eager", type: "MoveSpeed", power: 0.95, duration: 1, events: [
+		{type: "ApplyVuln", duration: 1, trigger: "tick"},
+		{type: "ApplyVuln", duration: 1, power: -1.0, trigger: "tickAfter"},
+	]
+};
+
 let KDChilled = {id: "Chilled", aura: "#73efe8", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 2,};
 let KDSlimed = {
 	id: "Slimed", aura: "#dc16bc", aurasprite: "Slimed", noAuraColor: true, type: "SlimeProgress", power: 1.0, player: true, enemies: true, duration: 3, range: 0.5, hideHelpless: true, tags: ["slimed"], events: [

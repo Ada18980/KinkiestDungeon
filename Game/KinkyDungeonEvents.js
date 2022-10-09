@@ -1080,6 +1080,11 @@ let KDEventMapBuff = {
 				KinkyDungeonApplyBuff(entity.buffs, bb);
 			}
 		},
+		"ApplyVuln": (e, buff, entity, data) => {
+			if (!entity.player) {
+				if (!entity.vulnerable) entity.vulnerable = 1;
+			}
+		},
 		"ApplyAttackSlow": (e, buff, entity, data) => {
 			let bb = Object.assign({}, KDAttackSlow);
 			if (e.power) bb.duration = e.duration;
@@ -1222,6 +1227,11 @@ let KDEventMapBuff = {
 			} else {
 				if (!entity.buffs) entity.buffs = {};
 				KinkyDungeonApplyBuff(entity.buffs, bb);
+			}
+		},
+		"ApplyVuln": (e, buff, entity, data) => {
+			if (!entity.player) {
+				if (!entity.vulnerable) entity.vulnerable = 1;
 			}
 		},
 		"ApplyAttackSlow": (e, buff, entity, data) => {
