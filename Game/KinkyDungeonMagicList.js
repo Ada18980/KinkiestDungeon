@@ -1145,7 +1145,7 @@ let KinkyDungeonSpellListEnemies = [
 
 	// Elemental witch spells
 	{enemySpell: true, name: "WitchWaterBall", color: "#4f7db8", tags: ["water", "bolt", "offense", "utility"], sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"buff",
-		power: 3.5, delay: 0, range: 50, damage: "acid", speed: 3, playerEffect: {name: "Drench"},
+		power: 3.0, delay: 0, range: 50, damage: "acid", speed: 3, playerEffect: {name: "Drench"},
 		buffs: [
 			Object.assign({}, KDDrenched),
 			Object.assign({}, KDDrenched2),
