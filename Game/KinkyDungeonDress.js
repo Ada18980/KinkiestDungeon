@@ -400,7 +400,18 @@ function KinkyDungeonWearForcedClothes(restraints) {
 							else item.Property.OverridePriority = dress.OverridePriority;
 						}
 					}
-					let color = dress.Color;
+					let color = (typeof dress.Color === "string") ? [dress.Color] : dress.Color;
+					let faction = inv.faction;
+					if (inv.faction)
+						if (dress.factionColor && faction && KinkyDungeonFactionColors[faction]) {
+							for (let i = 0; i < dress.factionColor.length; i++) {
+								for (let n of dress.factionColor[i]) {
+									color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
+								}
+							}
+						}
+
+					// @ts-ignore
 					if (dress.useHairColor && InventoryGet(KinkyDungeonPlayer, "HairFront")) color = InventoryGet(KinkyDungeonPlayer, "HairFront").Color;
 					// @ts-ignore
 					CharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, dress.Group);
