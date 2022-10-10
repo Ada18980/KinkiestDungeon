@@ -8,6 +8,8 @@
 !/Game/**/*
 !/Scripts/**/*
 !/Screens/**/*
+!/Mods/example_enemy.zip
+!/Mods/example_enemy/**/*
 
 !/.editorconfig
 !/.eslintrc.json
