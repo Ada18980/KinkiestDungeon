@@ -935,7 +935,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			}
 		}
 
-		let playerDist = 5;
+		let playerDist = 8;
 		let PlayerEntity = KinkyDungeonNearestPlayer({x:X, y:Y});
 
 		if (box && (!spawnPoint || box.addToSpawn) && !currentCluster) {
