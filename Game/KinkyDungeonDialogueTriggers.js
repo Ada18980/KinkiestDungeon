@@ -499,7 +499,7 @@ let KDDialogueTriggers = {
 	"GhostSell": KDShopTrigger("GhostSell"),
 	"WolfgirlSell": KDShopTrigger("WolfgirlSell"),
 	"Fuuka": KDBossTrigger("Fuuka", ["Fuuka1", "Fuuka2"]),
-	"FuukaLose": KDBossLose("FuukaLose", ["Fuuka1", "Fuuka2"]),
+	"FuukaLose": KDBossLose("FuukaLose", ["Fuuka1", "Fuuka2"], ["mikoRestraints"]),
 
 };
 
@@ -596,9 +596,14 @@ function KDBossTrigger(name, enemyName) {
 		},
 	};
 }
-
-/** Lose to a boss */
-function KDBossLose(name, enemyName) {
+/**
+ * Lose to a boss
+ * @param {string} name
+ * @param {string[]} enemyName
+ * @param {string[]} tags
+ * @returns {KinkyDialogueTrigger}
+ */
+function KDBossLose(name, enemyName, tags) {
 	return {
 		dialogue: name,
 		prerequisite: (enemy, dist) => {
@@ -607,7 +612,8 @@ function KDBossLose(name, enemyName) {
 				&& !(KDGameData.SleepTurns > 0)
 				&& enemyName.includes(enemy.Enemy.name)
 				&& !KinkyDungeonFlags.has("BossUnlocked")
-				&& !KinkyDungeonHasWill(0.1));
+				&& !KinkyDungeonHasWill(0.1)
+				&& (!tags || !KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint])));
 		},
 		weight: (enemy, dist) => {
 			return 100;
