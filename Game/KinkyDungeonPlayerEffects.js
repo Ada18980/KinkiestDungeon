@@ -567,6 +567,8 @@ function KinkyDungeonPlayerEffect(damage, playerEffect, spell, faction, bullet) 
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, b);
 				}
 			}
+			if (spell.power > 0 && spell.damage == 'acid')
+				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		} else if (playerEffect.name == "LustBomb") {
 			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonLustBomb"), "pink", 4);
 			if (playerEffect.power > 0) {

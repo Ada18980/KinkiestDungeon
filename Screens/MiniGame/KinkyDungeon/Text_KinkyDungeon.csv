@@ -610,6 +610,7 @@ KinkyDungeonLoadMod,"Load Mod"
 KinkyDungeonDeleteMod,"Delete Mod"
 KinkyDungeonClearAll,"Clear Perks"
 KinkyDungeonConfig,"Config "
+KinkyDungeonCancel,"Cancel"
 
 KinkyDungeonLoadModWarning1,"DANGER: Loading a mod will execute ARBITRARY CODE on your machine."
 KinkyDungeonLoadModWarning2,"Like connecting to a server, etc. Only load mods from a TRUSTED source."
@@ -2622,6 +2623,55 @@ RestraintSlimeWalkersDesc2,"They will slow you down, but you can walk on slime w
 KinkyDungeonInventoryItemSlimeWalkers,Slime Walkers
 KinkyDungeonInventoryItemSlimeWalkersDesc,"A pair of heels coated in a nonstick material."
 KinkyDungeonInventoryItemSlimeWalkersDesc2,"They will slow you down, but you can walk on slime without getting stuck!"
+
+
+RestraintBreastplate,"Breastplate"
+RestraintBreastplateDesc,"A steel breastplate secured by many straps"
+RestraintBreastplateDesc2,"Provides +10 armor, but makes it harder to escape your restraints."
+KinkyDungeonInventoryItemBreastplate,"Breastplate"
+KinkyDungeonInventoryItemBreastplateDesc,"A steel breastplate secured by many straps"
+KinkyDungeonInventoryItemBreastplateDesc2,"Provides +10 armor, but makes it harder to escape your restraints."
+LootBreastplate,"You find a steel breastplate"
+
+RestraintGlovesDexterity,"Gloves of Dexterity"
+RestraintGlovesDexterityDesc,"A pair of gloves that makes your hits strike with elven grace--and force."
+RestraintGlovesDexterityDesc2,"Increases accuracy by +50. Reduces melee damage by 30%."
+KinkyDungeonInventoryItemGlovesDexterity,"Gloves of Dexterity"
+KinkyDungeonInventoryItemGlovesDexterityDesc,"A pair of gloves that makes your hits strike with elven grace--and force."
+KinkyDungeonInventoryItemGlovesDexterityDesc2,"Increases accuracy by +50. Reduces melee damage by 30%."
+LootGlovesDexterity,"You find a pair of leather gloves with a magic rune."
+
+RestraintBracersTide,"Bracers of Roaring Tides"
+RestraintBracersTideDesc,"A pair of bracers that conjures a mighty wave upon attacking."
+RestraintBracersTideDesc2,"Creates an AoE delayed explosion on attack that stuns enemies and deals 10 acid damage."
+KinkyDungeonInventoryItemBracersTide,"Bracers of Roaring Tides"
+KinkyDungeonInventoryItemBracersTideDesc,"A pair of bracers that conjures a mighty wave upon attacking."
+KinkyDungeonInventoryItemBracersTideDesc2,"Creates an AoE delayed explosion on attack that stuns enemies and deals 10 acid damage."
+LootBracersTide,"You find a pair of bracers that are transparent like water."
+
+RestraintT,""
+RestraintTDesc,""
+RestraintTDesc2,""
+KinkyDungeonInventoryItemT,""
+KinkyDungeonInventoryItemTDesc,""
+KinkyDungeonInventoryItemTDesc2,""
+LootT,"You find "
+
+RestraintT,""
+RestraintTDesc,""
+RestraintTDesc2,""
+KinkyDungeonInventoryItemT,""
+KinkyDungeonInventoryItemTDesc,""
+KinkyDungeonInventoryItemTDesc2,""
+LootT,"You find "
+
+RestraintT,""
+RestraintTDesc,""
+RestraintTDesc2,""
+KinkyDungeonInventoryItemT,""
+KinkyDungeonInventoryItemTDesc,""
+KinkyDungeonInventoryItemTDesc2,""
+LootT,"You find "
 
 RestraintBasicCollar,Collar
 RestraintBasicCollarDesc,"A classy leather collar."

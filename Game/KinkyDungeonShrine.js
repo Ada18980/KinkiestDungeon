@@ -548,6 +548,11 @@ function KinkyDungeonDrawOrb() {
 	}
 
 	DrawButtonVis(canvasOffsetX_ui + 525, yPad + canvasOffsetY_ui + spacing * i, 425, 55, TextGet("KinkyDungeonSurpriseMe"), "white");
+	i += 2;
+	DrawButtonKDEx("cancelorb", (bdata) => {
+		KinkyDungeonDrawState = "Game";
+		return true;
+	}, true, canvasOffsetX_ui + 525, yPad + canvasOffsetY_ui + spacing * i, 425, 55, TextGet("KinkyDungeonCancel"), "white");
 
 	MainCanvas.textAlign = "center";
 }
