@@ -180,3 +180,13 @@ let KinkyDungeonLootTable = {
 	],
 
 };
+
+
+let KDLootEvents = {
+	"Test": (Loot, Floor, Replacemsg, Lock) => {
+		return {
+			value: 0,
+			Replacemsg: Replacemsg,
+		};
+	},
+};

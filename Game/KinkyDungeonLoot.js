@@ -615,7 +615,13 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			}
 		}
 		KinkyDungeonLostItems = [];
+	} else if (KDLootEvents[Loot.name]) {
+		let ret = KDLootEvents[Loot.name](Loot, Floor, Replacemsg, Lock);
+		if (ret.value) value = ret.value;
+		if (ret.Replacemsg) Replacemsg = ret.Replacemsg;
 	}
+
+
 	if (Loot.trap) {
 		if (!Loot.noSmoke) {
 			KDSmokePuff(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 2.9, 0.4);
@@ -635,6 +641,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 function KinkyDungeonAddGold(value) {
 	if (!isNaN(value)) {
 		KinkyDungeonGold += value;
+		// @ts-ignore
 		if (ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable()) CharacterChangeMoney(Player, Math.round(value/10));
 		let pre = value >= 0 ? "+" : "";
 		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, pre + `${value} GP`, "white", 3.5);

@@ -157,8 +157,6 @@ function KDHasUpcast(name) {
 	}
 	return false;
 }
-
-
 /**
  *
  * @returns {boolean}
@@ -777,6 +775,7 @@ function KDGetPrerequisite(spell) {
 
 function KinkyDungeonCheckSpellPrerequisite(spell) {
 	if (!spell || !spell.prerequisite) return true;
+	if (spell.upcastFrom && !KDHasSpell(spell.upcastFrom)) return false;
 	if (typeof spell.prerequisite === "string") {
 		let spell_prereq = KinkyDungeonSearchSpell(KinkyDungeonSpells, spell.prerequisite);
 		if (spell_prereq) return true;

@@ -309,22 +309,12 @@ function KDProcessInput(type, data) {
 					let spell = null;
 					let spellList = [];
 					let maxSpellLevel = 4;
-					for (let sp of KinkyDungeonSpellList.Conjure) {
-						if (KinkyDungeonCheckSpellPrerequisite(sp) && sp.school == "Conjure" && !sp.secret) {
-							for (let iii = 0; iii < maxSpellLevel - sp.level; iii++)
-								spellList.push(sp);
-						}
-					}
-					for (let sp of KinkyDungeonSpellList.Elements) {
-						if (KinkyDungeonCheckSpellPrerequisite(sp) && sp.school == "Elements" && !sp.secret) {
-							for (let iii = 0; iii < maxSpellLevel - sp.level; iii++)
-								spellList.push(sp);
-						}
-					}
-					for (let sp of KinkyDungeonSpellList.Illusion) {
-						if (KinkyDungeonCheckSpellPrerequisite(sp) && sp.school == "Illusion" && !sp.secret) {
-							for (let iii = 0; iii < maxSpellLevel - sp.level; iii++)
-								spellList.push(sp);
+					for (let k of Object.keys(KinkyDungeonSpellList)) {
+						for (let sp of KinkyDungeonSpellList[k]) {
+							if (KinkyDungeonCheckSpellPrerequisite(sp) && sp.school == k && !sp.secret) {
+								for (let iii = 0; iii < maxSpellLevel - sp.level; iii++)
+									spellList.push(sp);
+							}
 						}
 					}
 
