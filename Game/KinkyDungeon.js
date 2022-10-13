@@ -2264,7 +2264,9 @@ function KinkyDungeonLoadGame(String) {
 				KDOrigMana = KinkyDungeonStatMana*10;
 				KDOrigDistraction = KinkyDungeonStatDistraction*10;
 			}
-			if (saveData.KDGameData != undefined) KDGameData = saveData.KDGameData;
+			KDGameData = Object.assign({}, KDGameDataBase);
+			if (saveData.KDGameData != undefined) KDGameData = Object.assign({}, saveData.KDGameData);
+
 			if (saveData.statchoice != undefined) KinkyDungeonStatsChoice = new Map(saveData.statchoice);
 			if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;
 			KDInitFactions();
