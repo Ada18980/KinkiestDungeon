@@ -222,9 +222,11 @@ let KDOptOut = false;
 * ManaSlow: number,
 * TempFlagFloorTicks: Record<string, number>,
 * KneelTurns: number,
+* HiddenSpellPages : Record<string, boolean>,
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	HiddenSpellPages: {},
 	PriorJailbreaks: 0,
 	MapFaction: "",
 	KeysNeeded: false,
