@@ -511,28 +511,36 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 						cast.mx = moveDirection.x;
 						cast.my = moveDirection.y;
 					}
-				} else if (cast.randomDirectionPartial) {
-					let slots = [];
-					let dist = KDistEuclidean(entity.x - tX, entity.y - tY);
-					for (let XX = -1; XX <= 1; XX++) {
-						for (let YY = -1; YY <= 1; YY++) {
-							if ((XX != 0 || YY != 0) && KinkyDungeonNoEnemy(entity.x + XX, entity.y + YY, true) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + XX, entity.y + YY))
-								&& (entity.x + XX != tX || entity.y + YY != tY)
-								&& KDistEuclidean(entity.x + XX - tX, entity.y + YY - tY) <= dist + 0.1) slots.push({x:XX, y:YY});
-						}
-					}
-					if (slots.length > 0) {
-						let slot = slots[Math.floor(KDRandom() * slots.length)];
-						cast.mx = slot.x;
-						cast.my = slot.y;
-						moveDirection.x = slot.x;
-						moveDirection.y = slot.y;
-					} else {
+				} else if (cast.randomDirectionPartial || cast.randomDirectionFallback) {
+					if (cast.randomDirectionFallback && (!cast.alwaysRandomBuff || !KDEntityHasBuff(entity, cast.alwaysRandomBuff))
+						&& KinkyDungeonNoEnemy(entity.x + moveDirection.x, entity.y + moveDirection.y, true)
+						&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + moveDirection.x, entity.y + moveDirection.y))) {
+
 						cast.mx = moveDirection.x;
 						cast.my = moveDirection.y;
-						if (entity.x + cast.mx == tX && entity.y + cast.my == tY) {
-							cast.tx += moveDirection.x;
-							cast.ty += moveDirection.y;
+					} else {
+						let slots = [];
+						let dist = KDistEuclidean(entity.x - tX, entity.y - tY);
+						for (let XX = -1; XX <= 1; XX++) {
+							for (let YY = -1; YY <= 1; YY++) {
+								if ((XX != 0 || YY != 0) && KinkyDungeonNoEnemy(entity.x + XX, entity.y + YY, true) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + XX, entity.y + YY))
+									&& (entity.x + XX != tX || entity.y + YY != tY)
+									&& KDistEuclidean(entity.x + XX - tX, entity.y + YY - tY) <= dist + 0.1) slots.push({x:XX, y:YY});
+							}
+						}
+						if (slots.length > 0) {
+							let slot = slots[Math.floor(KDRandom() * slots.length)];
+							cast.mx = slot.x;
+							cast.my = slot.y;
+							moveDirection.x = slot.x;
+							moveDirection.y = slot.y;
+						} else {
+							cast.mx = moveDirection.x;
+							cast.my = moveDirection.y;
+							if (entity.x + cast.mx == tX && entity.y + cast.my == tY) {
+								cast.tx += moveDirection.x;
+								cast.ty += moveDirection.y;
+							}
 						}
 					}
 				} else {
