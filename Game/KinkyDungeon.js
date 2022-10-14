@@ -252,10 +252,10 @@ let KDGameDataBase = {
 
 	KinkyDungeonJailGuard: 0,
 	KinkyDungeonGuardTimer: 0,
-	KinkyDungeonGuardTimerMax: 22,
+	KinkyDungeonGuardTimerMax: 28,
 	KinkyDungeonGuardSpawnTimer: 0,
-	KinkyDungeonGuardSpawnTimerMax: 40,
-	KinkyDungeonGuardSpawnTimerMin: 25,
+	KinkyDungeonGuardSpawnTimerMax: 80,
+	KinkyDungeonGuardSpawnTimerMin: 50,
 	KinkyDungeonMaxPrisonReduction: 10,
 	KinkyDungeonPrisonReduction: 0,
 	KinkyDungeonPrisonExtraGhostRep: 0,
