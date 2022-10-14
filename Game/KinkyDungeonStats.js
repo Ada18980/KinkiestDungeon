@@ -899,6 +899,8 @@ function KinkyDungeonUpdateStats(delta) {
 	KinkyDungeonCalculateMiscastChance();
 
 	KinkyDungeonHasCrotchRope = false;
+	let drains = [];
+
 
 	for (let item of KinkyDungeonFullInventory()) {
 		if (item.type == Restraint) {
@@ -907,10 +909,23 @@ function KinkyDungeonUpdateStats(delta) {
 			}
 			if (KDRestraint(item).crotchrope) KinkyDungeonHasCrotchRope = true;
 			if (KDRestraint(item).enchantedDrain) {
-				if (KDGameData.AncientEnergyLevel > 0) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - KDRestraint(item).enchantedDrain * delta);
+				if (KDGameData.AncientEnergyLevel > 0) {
+					//maxDrain = Math.max(maxDrain, KDRestraint(item).enchantedDrain);
+					drains.push(KDRestraint(item).enchantedDrain);
+				}
+				//KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - KDRestraint(item).enchantedDrain * delta);
 			}
 		}
 	}
+	if (drains.length > 0 && delta > 0) {
+		drains = drains.sort().reverse();
+		for (let i = 0; i < drains.length; i++) {
+			KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - (
+				drains[i]/(i + 1)
+			) * delta);
+		}
+	}
+
 	KinkyDungeonSubmissiveMult = KinkyDungeonCalculateSubmissiveMult();
 
 	if (!KDGameData.TimeSinceLastVibeEnd) KDGameData.TimeSinceLastVibeEnd = {};
@@ -997,7 +1012,7 @@ function KinkyDungeonCanKneel() {
 	return true;
 }
 
-function KinkyDungeonCalculateSlowLevel() {
+function KinkyDungeonCalculateSlowLevel(delta) {
 	KinkyDungeonSlowLevel = 0;
 	if (KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).immobile;})) {KinkyDungeonSlowLevel += 100; KinkyDungeonMovePoints = -1;}
 	else {
@@ -1020,7 +1035,7 @@ function KinkyDungeonCalculateSlowLevel() {
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevel")) KinkyDungeonSlowLevel += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevel");
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "MoveSpeed")) KinkyDungeonSlowLevel = Math.max(0, KinkyDungeonSlowLevel - KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "MoveSpeed"));
 	KinkyDungeonSlowLevel = Math.max(0, KinkyDungeonSlowLevel);
-	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevelEnergyDrain")) KDGameData.AncientEnergyLevel =
+	if (delta > 0 && KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevelEnergyDrain")) KDGameData.AncientEnergyLevel =
 		Math.max(0, KDGameData.AncientEnergyLevel - Math.max(0, origSlowLevel - KinkyDungeonSlowLevel) * KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevelEnergyDrain"));
 }
 /**

@@ -1151,6 +1151,7 @@ Features
 
 3.81
 - Golem armor reduced from 25 to 20
+- Buffed enchanted restraints by reducing their drain over time
 
 TODO ValidationFindBlockCycles to prevent bugs
 

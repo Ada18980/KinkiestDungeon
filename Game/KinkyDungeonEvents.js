@@ -241,18 +241,17 @@ let KDEventMapInventory = {
 		},
 		"ApplySlowLevelBuff": (e, item, data) => {
 			if (item.type === Restraint) {
-				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-					id: item.name + e.type + e.trigger,
-					type: "SlowLevel",
-					duration: 1,
-					power: e.power
-				});
-				if (e.energyCost) KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-					id: item.name + e.type + e.trigger + "2",
-					type: "SlowLevelEnergyDrain",
-					duration: 1,
-					power: e.energyCost
-				});
+				if (KinkyDungeonPlayerBuffs[item.name + e.type + e.trigger]) delete KinkyDungeonPlayerBuffs[item.name + e.type + e.trigger];
+				KinkyDungeonCalculateSlowLevel(0);
+				if (KinkyDungeonSlowLevel > 0) {
+					if (e.energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
+					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+						id: item.name + e.type + e.trigger,
+						type: "SlowLevel",
+						duration: 2,
+						power: e.power
+					});
+				}
 			}
 		},
 		"AlertEnemies": (e, item, data) => {
