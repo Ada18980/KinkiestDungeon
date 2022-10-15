@@ -9,7 +9,7 @@ let KinkyDungeonMissChancePerBlind = 0.15; // Max 3
 let KinkyDungeonMissChancePerSlow = 0.1; // Max 3
 let KinkyDungeonBullets = []; // Bullets on the game board
 /**
- * @type {Map<string, {end: boolean, name: string, size: number, spriteID: string, xx:number, yy:number, visual_x: number, visual_y: number, aoe?: boolean, updated: boolean, vx: number, vy: number, scale: number, alpha: number, delay: number}>}
+ * @type {Map<string, {end: boolean, temporary?: boolean, name: string, size: number, spriteID: string, xx:number, yy:number, visual_x: number, visual_y: number, aoe?: boolean, updated: boolean, vx: number, vy: number, scale: number, alpha: number, delay: number}>}
  */
 let KinkyDungeonBulletsVisual = new Map(); // Bullet sprites on the game board
 let KinkyDungeonBulletsID = {}; // Bullets on the game board
@@ -981,7 +981,7 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 						E -= 1;
 					}
 					if (!((outOfTime || outOfRange) && b.bullet.spell && ((!b.bullet.trail && b.bullet.spell.nonVolatile) || (b.bullet.trail && b.bullet.spell.nonVolatileTrail))))
-						KinkyDungeonBulletHit(b, 1.0, outOfTime, outOfRange, delta - d, dt, end);
+						KinkyDungeonBulletHit(b, 1.0, outOfTime, outOfRange, d, dt, end);
 				}
 				if (endTime) b.time = 0;
 				// Update the bullet's visual position
@@ -1070,7 +1070,9 @@ function KinkyDungeonUpdateSingleBulletVisual(b, end, delay) {
 		let visy = bb ? bb.visual_y : b.visual_y;
 		if (visx == undefined) visx = b.xx;
 		if (visy == undefined) visy = b.yy;
-		KinkyDungeonBulletsVisual.set(b.spriteID, {end: end, name: b.bullet.name, spriteID: b.spriteID, size: b.bullet.width ? b.bullet.width : 1, aoe: (b.bullet.spell && b.bullet.spell.aoe) ? b.bullet.spell.aoe : undefined, vx: b.vx, vy: b.vy, xx: b.xx, yy: b.yy, visual_x: visx, visual_y: visy, updated: true, scale: scale, alpha: alpha, delay: dd});
+
+		let temp = !b.vx && !b.vy && b.time <= 1 && !b.bullet.hit;
+		KinkyDungeonBulletsVisual.set(b.spriteID, {end: end, temporary: temp, name: b.bullet.name, spriteID: b.spriteID, size: b.bullet.width ? b.bullet.width : 1, aoe: (b.bullet.spell && b.bullet.spell.aoe) ? b.bullet.spell.aoe : undefined, vx: b.vx, vy: b.vy, xx: b.xx, yy: b.yy, visual_x: visx, visual_y: visy, updated: true, scale: scale, alpha: alpha, delay: dd});
 	}
 }
 
@@ -1683,10 +1685,15 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			let alpha = bullet.alpha != undefined ? bullet.alpha : 1.0;
 			let aoe = bullet.aoe ? bullet.aoe : 3;
 
-			if (bullet.end && dd == 0 && (!bullet.scale || bullet.scale <= 0.0)) {
+			if ((bullet.end) && dd == 0 && (!bullet.scale || bullet.scale <= 0.0)) {
 				KinkyDungeonBulletsVisual.delete(bullet.spriteID);
 			} else if (bullet.xx >= CamX && bullet.yy >= CamY && bullet.xx < CamX + KinkyDungeonGridWidthDisplay && bullet.yy < CamY + KinkyDungeonGridHeightDisplay
-				&& (KinkyDungeonVisionGet(Math.round(tx), Math.round(ty)) > 0 || KDistChebyshev(tx - KinkyDungeonPlayerEntity.x, ty - KinkyDungeonPlayerEntity.y) < aoe)) {
+				&& (KinkyDungeonVisionGet(Math.round(tx), Math.round(ty)) > 0 || KDistChebyshev(tx - KinkyDungeonPlayerEntity.x, ty - KinkyDungeonPlayerEntity.y) < aoe) && alpha > 0) {
+
+				if (!bullet.end && bullet.temporary && alpha >= 1.0 && scale >= 1.0) {
+					bullet.end = true;
+				}
+
 				KDDraw(kdgameboard, kdpixisprites, bullet.spriteID, KinkyDungeonRootDirectory + "Bullets/" + sprite + ".png",
 					(tx - CamX + 0.5)*KinkyDungeonGridSizeDisplay,
 					(ty - CamY + 0.5)*KinkyDungeonGridSizeDisplay,

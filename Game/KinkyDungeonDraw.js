@@ -1401,7 +1401,7 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 		}
 		if (Entity.alpha != undefined) {
 			let alphamult = 1;
-			if (dist > 0 || !Entity.end) {
+			if (dist > 0 || (!Entity.end && !Entity.fade)) {
 				Entity.alpha = Math.min(1.0, Entity.alpha + KDTimescale*amount*3.0);
 			} else {
 				if ((Entity.vx || Entity.vy)) {
