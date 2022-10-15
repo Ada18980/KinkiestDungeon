@@ -877,7 +877,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "ShadowHand", hidetimerbar: true, clusterWith: "ghost", color: "#880044", tags: KDMapInit(["shadowHandEnemy", "shadowTrap", "ghost", "soulimmune", "fireweakness", "melee", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
-		ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt", noAlert: true, hitsfx: "Evil",
+		ignorechance: 0, armor: 0, followRange: 1, AI: "hunt", noAlert: true, hitsfx: "Evil",
 		visionRadius: 10, blindSight: 10, evasion: 0.4, maxhp: 10, minLevel:0, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeWillBind", attackWidth: 1, attackRange: 1, power: 1.0, dmgType: "grope", fullBoundBonus: 4,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 0, color: "#880044"},
