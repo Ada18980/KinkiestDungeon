@@ -515,6 +515,7 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 			for (let t of enemy.warningTiles) {
 				let tx = enemy.x + t.x;
 				let ty = enemy.y + t.y;
+				if (!KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(tx, ty)) && KinkyDungeonNoEnemy(tx, ty, true)) continue;
 				let special = enemy.usingSpecial ? "Special" : "";
 				let attackMult = KinkyDungeonGetBuffedStat(enemy.buffs, "AttackSlow", true);
 				let attackPoints = enemy.attackPoints - attackMult + 1.1;
