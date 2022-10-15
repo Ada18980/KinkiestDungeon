@@ -935,7 +935,7 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonDrawTether(KinkyDungeonPlayerEntity, CamX+CamX_offset, CamY+CamY_offset);
 
 				if (tooltip) {
-					DrawTextFitKD(TextGet("KinkyDungeonShrineTooltip") + tooltip, MouseX, MouseY - KinkyDungeonGridSizeDisplay/2, 200, "#ffffff", KDTextGray2);
+					DrawTextFitKD(tooltip, MouseX, MouseY - KinkyDungeonGridSizeDisplay/2, 200, "#ffffff", KDTextGray2);
 				}
 			}
 
@@ -1401,7 +1401,7 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 		}
 		if (Entity.alpha != undefined) {
 			let alphamult = 1;
-			if (dist > 0 || (!Entity.end && !Entity.fade)) {
+			if (dist > 0 || !Entity.end) {
 				Entity.alpha = Math.min(1.0, Entity.alpha + KDTimescale*amount*3.0);
 			} else {
 				if ((Entity.vx || Entity.vy)) {
@@ -2073,7 +2073,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 				if (KinkyDungeonVisionGet(RX, RY) > 0
 					&& (KinkyDungeonTiles.get(RX + "," + RY) && rows[RY][RX] == "A" || KinkyDungeonTiles.get(RX + "," + RY) && rows[RY][RX] == "M")
 					&& MouseIn(canvasOffsetX + (-CamX_offset + X)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)) {
-					tooltip = TextGet("KinkyDungeonShrine" + KinkyDungeonTiles.get(RX + "," + RY).Name);
+					tooltip = TextGet("KinkyDungeon" + KinkyDungeonTiles.get(RX + "," + RY).Type + "Tooltip") + TextGet("KinkyDungeonShrine" + KinkyDungeonTiles.get(RX + "," + RY).Name);
 				}
 			}
 		}
