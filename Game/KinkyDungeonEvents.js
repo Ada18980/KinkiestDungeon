@@ -979,9 +979,9 @@ let KDEventMapBuff = {
 		"CounterattackDamage": (e, buff, entity, data) => {
 			if (data.attacker && data.target == entity && (!(e.prereq == "hit") || (!data.missed && data.hit))) {
 				if (data.attacker.player) {
-					KinkyDungeonDealDamage({damage: e.power, type: e.damage, bind: e.bind, time: e.time});
+					KinkyDungeonDealDamage({damage: e.power, type: e.damage, bind: e.bind, time: e.time, bindType: e.bindType,});
 				} else {
-					KinkyDungeonDamageEnemy(data.attacker, {damage: e.power, type: e.damage, bind: e.bind, time: e.time}, false, true, undefined, undefined, entity);
+					KinkyDungeonDamageEnemy(data.attacker, {damage: e.power, type: e.damage, bind: e.bind, bindType: e.bindType, time: e.time}, false, true, undefined, undefined, entity);
 				}
 				if (e.requiredTag)
 					KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, e.requiredTag, 1);
@@ -1187,6 +1187,7 @@ let KDEventMapBuff = {
 						damage: e.power,
 						time: e.time,
 						bind: e.bind,
+						bindType: e.bindType,
 						flags: ["BurningDamage"]
 					});
 				} else {
@@ -1195,6 +1196,7 @@ let KDEventMapBuff = {
 						damage: e.power,
 						time: e.time,
 						bind: e.bind,
+						bindType: e.bindType,
 						flags: ["BurningDamage"]
 					}, false, true, undefined, undefined, undefined);
 				}
@@ -1477,6 +1479,7 @@ let KDEventMapSpell = {
 						damage: 0,
 						time: 0,
 						bind: data.froze + data.enemy.Enemy.maxhp * 0.1,
+						bindType: "Ice",
 					}, false, true, undefined, undefined, KinkyDungeonPlayerEntity);
 					if (KDHelpless(data.enemy) && !(data.enemy.freeze > 300)) data.enemy.freeze = 300;
 				}
@@ -1569,6 +1572,7 @@ let KDEventMapSpell = {
 					damage: e.power,
 					time: e.time,
 					bind: e.bind,
+					bindType: e.bindType,
 				}, false, true, undefined, undefined, KinkyDungeonPlayerEntity);
 			}
 		},
@@ -1931,7 +1935,8 @@ let KDEventMapWeapon = {
 						type: e.damage,
 						damage: e.power,
 						time: e.time,
-						bind: e.bind
+						bind: e.bind,
+						bindType: e.bindType,
 					}, false, true, undefined, undefined, KinkyDungeonPlayerEntity);
 				}
 			}
@@ -1947,7 +1952,8 @@ let KDEventMapWeapon = {
 							type: e.damage,
 							damage: damage,
 							time: e.time,
-							bind: e.bind
+							bind: e.bind,
+							bindType: e.bindType,
 						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
 						KDCreateEffectTile(en.x, en.y, {
 							name: "Sparks",
@@ -2018,7 +2024,8 @@ let KDEventMapWeapon = {
 						type: e.damage,
 						damage: e.power,
 						time: e.time,
-						bind: e.bind
+						bind: e.bind,
+						bindType: e.bindType,
 					}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
 				}
 			}
@@ -2030,7 +2037,8 @@ let KDEventMapWeapon = {
 						type: e.damage,
 						damage: e.power,
 						time: e.time,
-						bind: e.bind
+						bind: e.bind,
+						bindType: e.bindType,
 					}, false, true, undefined, undefined, KinkyDungeonPlayerEntity);
 				}
 			}
@@ -2043,7 +2051,8 @@ let KDEventMapWeapon = {
 							type: e.damage,
 							damage: e.power,
 							time: e.time,
-							bind: e.bind
+							bind: e.bind,
+							bindType: e.bindType,
 						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
 					}
 				}
@@ -2057,7 +2066,8 @@ let KDEventMapWeapon = {
 							type: e.damage,
 							damage: e.power,
 							time: e.time,
-							bind: e.bind
+							bind: e.bind,
+							bindType: e.bindType,
 						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
 					}
 				}
@@ -2071,14 +2081,16 @@ let KDEventMapWeapon = {
 							type: e.damage,
 							damage: e.power,
 							time: e.time,
-							bind: e.bind
+							bind: e.bind,
+							bindType: e.bindType,
 						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
 					} else if (data.enemy.vulnerable > 0 && !data.enemy.Enemy.tags.nonvulnerable) {
 						KinkyDungeonDamageEnemy(data.enemy, {
 							type: e.damage,
 							damage: e.power * 0.5,
 							time: e.time,
-							bind: e.bind
+							bind: e.bind,
+							bindType: e.bindType,
 						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
 					}
 				}
@@ -2092,7 +2104,8 @@ let KDEventMapWeapon = {
 							type: e.damage,
 							damage: e.power,
 							time: e.time,
-							bind: e.bind
+							bind: e.bind,
+							bindType: e.bindType,
 						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
 					}
 				}
@@ -2106,7 +2119,8 @@ let KDEventMapWeapon = {
 							type: e.damage,
 							damage: e.power,
 							time: e.time,
-							bind: e.bind
+							bind: e.bind,
+							bindType: e.bindType,
 						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
 					}
 				}
@@ -2305,7 +2319,8 @@ let KDEventMapBullet = {
 					type: e.damage,
 					damage: e.power,
 					time: e.time,
-					bind: e.bind
+					bind: e.bind,
+					bindType: e.bindType,
 				}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 			}
 		},
@@ -2338,6 +2353,7 @@ let KDEventMapBullet = {
 							type: e.damage,
 							damage: e.power,
 							bind: e.bind,
+							bindType: e.bindType,
 						}, true, false, b.bullet.spell, b, undefined, b.delay, true);
 						KDBlindEnemy(data.enemy, e.time);
 						KinkyDungeonSetEnemyFlag(data.enemy, "latexWall", 21);
@@ -2386,7 +2402,8 @@ let KDEventMapBullet = {
 						type: e.damage,
 						damage: e.power,
 						time: e.time,
-						bind: e.bind
+						bind: e.bind,
+						bindType: e.bindType,
 					}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 				}
 			}
@@ -2398,7 +2415,8 @@ let KDEventMapBullet = {
 						type: e.damage,
 						damage: e.power,
 						time: e.time,
-						bind: e.bind
+						bind: e.bind,
+						bindType: e.bindType,
 					}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 				}
 			}
@@ -2410,7 +2428,8 @@ let KDEventMapBullet = {
 						type: e.damage,
 						damage: e.power,
 						time: e.time,
-						bind: e.bind
+						bind: e.bind,
+						bindType: e.bindType,
 					}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 				}
 			}
@@ -2422,7 +2441,8 @@ let KDEventMapBullet = {
 						type: e.damage,
 						damage: e.power,
 						time: e.time,
-						bind: e.bind
+						bind: e.bind,
+						bindType: e.bindType,
 					}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 				}
 			}
@@ -2435,6 +2455,7 @@ let KDEventMapBullet = {
 						damage: e.power,
 						time: e.time,
 						bind: e.bind,
+						bindType: e.bindType,
 					}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 				}
 			}
@@ -2446,6 +2467,7 @@ let KDEventMapBullet = {
 					damage: e.power,
 					time: e.time,
 					bind: e.bind,
+					bindType: e.bindType,
 				}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 			}
 		},
@@ -2458,6 +2480,7 @@ let KDEventMapBullet = {
 						damage: e.power ? e.power * mult : undefined,
 						time: e.time,
 						bind: e.bind ? e.bind * mult : undefined,
+						bindType: e.bindType,
 					}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 				}
 			}
@@ -2468,7 +2491,8 @@ let KDEventMapBullet = {
 					type: e.damage,
 					damage: e.power,
 					time: e.time,
-					bind: e.bind
+					bind: e.bind,
+					bindType: e.bindType,
 				}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 			}
 		},
@@ -2478,7 +2502,8 @@ let KDEventMapBullet = {
 					type: e.damage,
 					damage: e.power,
 					time: e.time,
-					bind: e.bind
+					bind: e.bind,
+					bindType: e.bindType,
 				}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 			}
 		},

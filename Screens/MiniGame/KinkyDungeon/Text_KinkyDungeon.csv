@@ -4001,7 +4001,7 @@ KinkyDungeonSpellTargetChainBolt,Choose aim direction
 
 KinkyDungeonSpellRopeBoltLaunch,Conjure Ropes
 KinkyDungeonSpellRopeBolt,Animated Rope
-KinkyDungeonSpellDescriptionRopeBoltLaunch,Launch 3 ropes that deal DamageDealt chain damage each and add 10 binding.
+KinkyDungeonSpellDescriptionRopeBoltLaunch,Launch 3 ropes that deal DamageDealt chain damage each and add 22 rope binding.
 KinkyDungeonSpellCastRopeBoltLaunch,You animate a bunch of ropes!
 KinkyDungeonSpellTargetRopeBoltLaunch,Choose aim direction
 
@@ -4343,7 +4343,7 @@ KinkyDungeonSpellCastSnare,You set an invisible trap!
 KinkyDungeonSpellTargetSnare,Select where to put the trap (it will be invisible)
 
 KinkyDungeonSpellRopeStrike,Rope Burst
-KinkyDungeonSpellDescriptionRopeStrike,An explosion of rope deals DamageDealt chain damage in a 3x3 AoE and applies 30 points of binding. Snares for Duration turns.
+KinkyDungeonSpellDescriptionRopeStrike,An explosion of rope deals DamageDealt chain damage in a 3x3 AoE and applies 40 points of rope binding. Snares for Duration turns.
 KinkyDungeonSpellCastRopeStrike,You call forth ropes from the abyss!
 KinkyDungeonSpellTargetRopeStrike,Select center of a a 3x3 AoE
 

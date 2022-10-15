@@ -37,6 +37,21 @@ let KinkyDungeonSlowDamageTypes = ["crush", "slash", "pierce", "frost", "cold", 
 let KinkyDungeonVulnerableDamageTypes = ["tickle", "acid", "magicbind"];
 
 
+let KDDamageBinds = {
+	"glue": "Slime",
+	"ice": "Ice",
+	"frost": "Ice",
+	"crush": "Metal",
+};
+let KDSpellTagBinds = {
+	"rope": "Rope",
+	"leather": "Leather",
+	"chain": "Metal",
+	"metal": "Metal",
+	"vine": "Vine",
+	"nature": "Vine",
+};
+
 /**
  * These also are affected by resistances to the second damage type, but not weaknesses
  * Repeats up to 3 times
@@ -325,6 +340,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		time: (Damage) ? Damage.time : 0,
 		dmg: (Damage) ? Damage.damage : 0,
 		bind: (Damage) ? Damage.bind : 0,
+		bindType: (Damage) ? Damage.bindType : 0,
 		flags: (Damage) ? Damage.flags : undefined,
 		boundBonus: (Damage) ? Damage.boundBonus : 0,
 		bindEff: (Damage) ? Damage.bindEff : 0,
@@ -350,6 +366,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	}
 
 	KinkyDungeonSendEvent("beforeDamageEnemy", predata);
+
 	if (!predata.dmg) predata.dmg = 0;
 	//let type = (Damage) ? Damage.type : "";
 	let effect = false;
@@ -541,10 +558,28 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				else if (KDLoosePersonalities.includes(Enemy.personality)) Thought = "Embarrassed";
 				KDAddThought(Enemy.id, Thought, 5, 2);
 			}
-			Enemy.boundLevel += efficiency * (predata.bind ? predata.bind : predata.dmg);
+
+
+			let amt = efficiency * (predata.bind ? predata.bind : predata.dmg);
 			if (predata.vulnerable && efficiency * (predata.bind ? predata.bind : predata.dmg) > 0.01 && Enemy.boundLevel < Enemy.Enemy.maxhp * 0.4) {
-				Enemy.boundLevel += Enemy.Enemy.maxhp * 0.2;
+				amt += Enemy.Enemy.maxhp * 0.2;
 			}
+			// Determine binding type based on damage and spell -- best guess
+			if (amt > 0 && !predata.bindType) {
+				if (KDDamageBinds[predata.type]) predata.bindType = KDDamageBinds[predata.type];
+				else if (Spell) {
+					if (Spell.tags) {
+						for (let t of Spell.tags) {
+							if (KDSpellTagBinds[t]) {
+								predata.bindType = KDSpellTagBinds[t];
+								break;
+							}
+						}
+					}
+				}
+			}
+			// Do the deed
+			KDTieUpEnemy(Enemy, amt, predata.bindType, predata.dmg);
 		}
 		if ((predata.dmg || predata.distract) && Enemy.Enemy.bound && (resistDamage < 2)
 			&& (predata.distract || KinkyDungeonDistractDamageTypes.includes(predata.type) || (KDLoosePersonalities.includes(Enemy.personality) && KinkyDungeonMasochistDamageTypes.includes(predata.type)))) {
@@ -1185,7 +1220,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 				damage:(b.bullet.spell.aoedamage) ? b.bullet.spell.aoedamage : b.bullet.spell.power, type:b.bullet.spell.damage,
 				hitevents: b.bullet.spell.hitevents,
 				distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
-				bind: b.bullet.spell.bind, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
+				bind: b.bullet.spell.bind, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
 		KinkyDungeonBullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false, d);
 
@@ -1225,7 +1260,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 							effectTileLinger: b.bullet.spell.effectTileLinger, effectTileDurationModLinger: b.bullet.spell.effectTileDurationModLinger,
 							hitevents: b.bullet.spell.hitevents,
 							damage: {
-								damage:b.bullet.spell.power, type:b.bullet.spell.damage, bind: b.bullet.spell.bind, time:b.bullet.spell.time,
+								damage:b.bullet.spell.power, type:b.bullet.spell.damage, bind: b.bullet.spell.bind, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time,
 								distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
 							}, lifetime: b.bullet.spell.lifetime + LifetimeBonus, name:b.bullet.name+"Hit", width:1, height:1}};
 					KinkyDungeonBullets.push(newB);
@@ -1239,7 +1274,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 				damage:(b.bullet.spell.aoedamage) ? b.bullet.spell.aoedamage : b.bullet.spell.power, type:b.bullet.spell.damage,
 				hitevents: b.bullet.spell.hitevents,
 				distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
-				bind: b.bullet.spell.bind, time:b.bullet.spell.time
+				bind: b.bullet.spell.bind, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time
 			}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
 		KinkyDungeonBullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false);
@@ -1298,7 +1333,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 					damage:(b.bullet.spell.aoedamage) ? b.bullet.spell.aoedamage : b.bullet.spell.power, type:b.bullet.spell.damage, boundBonus: b.bullet.spell.boundBonus,
 					hitevents: b.bullet.spell.hitevents,
 					distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
-					bind: b.bullet.spell.bind, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height
+					bind: b.bullet.spell.bind, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height
 				}};
 			KinkyDungeonBullets.push(newB);
 			KinkyDungeonUpdateSingleBulletVisual(newB, false);
@@ -1412,7 +1447,7 @@ function KinkyDungeonBulletTrail(b) {
 									damage:b.bullet.spell.trailPower, type:b.bullet.spell.trailDamage, boundBonus: b.bullet.spell.boundBonus,
 									hitevents: b.bullet.spell.hitevents,
 									distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
-									bind: b.bullet.spell.trailBind, time:b.bullet.spell.trailTime}, lifetime: b.bullet.spell.trailLifetime, name:b.bullet.name+"Trail", width:1, height:1}};
+									bind: b.bullet.spell.trailBind, bindType: b.bullet.spell.bindType, time:b.bullet.spell.trailTime}, lifetime: b.bullet.spell.trailLifetime, name:b.bullet.name+"Trail", width:1, height:1}};
 						KinkyDungeonBullets.push(newB);
 						KinkyDungeonUpdateSingleBulletVisual(newB, false);
 					}

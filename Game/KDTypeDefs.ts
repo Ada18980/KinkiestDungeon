@@ -844,6 +844,7 @@ interface KinkyDungeonEvent {
 	aoe?: number;
 	buffType?: string;
 	time?: number;
+	bindType?: string;
 	chance?: number;
 	buff?: any;
 	lock?: string;
@@ -924,6 +925,7 @@ interface entity {
 	idle?: boolean,
 	summoned?: boolean,
 	boundLevel?: number,
+	specialBoundLevel?: Record<string, number>,
 	distraction?: number,
 	lifetime?: number,
 	maxlifetime?: number,
@@ -1070,6 +1072,8 @@ type KDPerk = {
 }
 
 interface spell {
+	/** Type of binding applied to the power */
+	bindType?: string,
 	/** Stops the spell from moving more than 1 tile */
 	slowStart?: boolean,
 	/** Forces spell to move more than 1 tile at beginning */
@@ -1645,7 +1649,18 @@ type KDMapTile = {
 	notTags?: any[],
 }
 
+interface KDBondage {
+	color: string,
+	/** Order in which enemies will struggle */
+	priority: number,
+	/** Multiplier for struggle rate */
+	struggleRate: number,
+	/** Multiplier for the max health component of struggle */
+	healthStruggleBoost: number,
+	/** Multiplier for the power component of struggle */
+	powerStruggleBoost: number,
+}
+
 declare const PIXI: any;
 declare const zip: any;
-
 

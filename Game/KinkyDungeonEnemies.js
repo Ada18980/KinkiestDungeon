@@ -668,7 +668,7 @@ function KDCanSeeEnemy(enemy, playerDist) {
  * @param {entity} enemy
  * @returns {number}
  */
-function KDGetEnemyStruggleRate(enemy) {
+function KDGetEnemyStruggleMod(enemy) {
 	let level = KDBoundEffects(enemy);
 	let mult = 0.1;
 
@@ -680,7 +680,7 @@ function KDGetEnemyStruggleRate(enemy) {
 		if (enemy.blind > 0) mult *= 0.75;
 		if (enemy.bind > 0) mult *= 0.5;
 		else if (enemy.slow > 0) mult *= 0.75;
-		if (level > 3) mult *= 4; // Struggle faster when bound heavily, because they're using all their energy to try to escape
+		if (level > 3) mult *= 3; // Struggle faster when bound heavily, because they're using all their energy to try to escape
 		if (enemy.vulnerable > 0 || enemy.attackPoints > 0) mult *= 0.5; // They're busy
 		if (enemy.boundLevel > 0) {
 			mult *= Math.pow(1.5, -enemy.boundLevel / enemy.Enemy.maxhp); // The more you tie, the stricter the bondage gets
@@ -688,8 +688,7 @@ function KDGetEnemyStruggleRate(enemy) {
 		if (enemy.distraction > 0) mult *= 1 / (1 + 2 * enemy.distraction / enemy.Enemy.maxhp);
 		if (KinkyDungeonGetBuffedStat(enemy.buffs, "Lockdown")) mult *= KinkyDungeonGetBuffedStat(enemy.buffs, "Lockdown");
 	}
-	let amount = mult * (10 + Math.pow(Math.max(0.01, enemy.hp), 0.75)); // Lower health enemies struggle slower
-	return amount;
+	return mult;
 }
 
 /**
@@ -720,25 +719,65 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			// Draw bars
 			if ((!enemy.Enemy.stealth || KDHelpless(enemy) || playerDist <= enemy.Enemy.stealth + 0.1) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0)) {
 				if ((KDAllied(enemy) || ((enemy.lifetime != undefined || enemy.hp < enemy.Enemy.maxhp || enemy.boundLevel)))) {
-					let spacing = 8;
+					let spacing = 7;
 					// Draw binding bars
 					let helpless = KDHelpless(enemy);
 					if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
 						if (!helpless) {
 							let bindingBars = Math.ceil(enemy.boundLevel / enemy.Enemy.maxhp);
+							let SM = KDGetEnemyStruggleMod(enemy);
+							let futureBound = KDPredictStruggle(enemy, SM, 1);
 							for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
 								if (i > 0) II++;
-								let mod = 0;
-								if (i == bindingBars - 1) {
-									mod = KDGetEnemyStruggleRate(enemy);
-									KinkyDungeonBar(canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
-										KinkyDungeonGridSizeDisplay, 8, Math.min(1, (enemy.boundLevel - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
-									KinkyDungeonBar(1 + canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
-										KinkyDungeonGridSizeDisplay, 8, Math.min(1, (enemy.boundLevel - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
-								}
+								let mod = enemy.boundLevel - futureBound.boundLevel;
+								// Part that will be struggled out of
 								KinkyDungeonBar(canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
-									KinkyDungeonGridSizeDisplay, 8, Math.min(1, (Math.max(0, enemy.boundLevel - mod - i * enemy.Enemy.maxhp)) / enemy.Enemy.maxhp) * 100, "#ffae70", i == bindingBars - 1 ? "none" : "#52333f",
-									undefined, undefined, [0.25, 0.5, 0.75], "#85522c", "#85522c");
+									KinkyDungeonGridSizeDisplay, 8, Math.min(1, (enemy.boundLevel - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
+								// Separator between part that will be struggled and not
+								KinkyDungeonBar(1 + canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
+									KinkyDungeonGridSizeDisplay, 8, Math.min(1, (enemy.boundLevel - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
+
+							}
+							II -= Math.max(0, Math.min(bindingBars-1, KDMaxBindingBars-1));
+							// Temp value of bondage level, decremented based on special bound level and priority
+							let bb = 0;
+							let bcolor = "#ffae70";
+							let bondage = [];
+							if (futureBound.specialBoundLevel) {
+								for (let b of Object.entries(futureBound.specialBoundLevel)) {
+									bondage.push({name: b[0], amount: b[1], level: 0, pri: KDSpecialBondage[b[0]].priority});
+								}
+								bondage = bondage.sort((a, b) => {
+									return b.pri - a.pri;
+								});
+							} else {
+								bondage.push({name: "Normal", amount: 0, level: futureBound.boundLevel, pri: 0});
+							}
+
+							for (let b of bondage) {
+								if (!b.level) {
+									b.level = bb + b.amount;
+									bb = b.level;
+								}
+							}
+							for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
+								if (i > 0) II++;
+								// Determine current bondage type
+								let bars = false;
+								for (let bi = bondage.length - 1; bi >= 0; bi--) {
+									let b = bondage[bi];
+									// Filter out anything that doesnt fit currently
+									if (b.level > i * enemy.Enemy.maxhp) {
+										bcolor = KDSpecialBondage[b.name] ? KDSpecialBondage[b.name].color : "#ffae70";
+										// Struggle bars themselves
+										KinkyDungeonBar(canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
+											KinkyDungeonGridSizeDisplay, 8, Math.min(1, (Math.max(0, b.level - i * enemy.Enemy.maxhp)) / enemy.Enemy.maxhp) * 100, bcolor, "none",
+											undefined, undefined, bars ? [0.25, 0.5, 0.75] : undefined, bars ? "#85522c" : undefined, bars ? "#85522c" : undefined, 55.5 + b.pri*0.1);
+										bars = true;
+									}
+
+								}
+
 							}
 						} else {
 							// TODO draw a lock or some other icon
@@ -1486,10 +1525,12 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "slow"});
 			}
 			if (enemy.boundLevel > 0 && !(enemy.stun > 0 || enemy.freeze > 0) && (enemy.hp > enemy.Enemy.maxhp * 0.1)) {
-				let SR = KDGetEnemyStruggleRate(enemy);
-				let minLevel = (enemy.buffs && KinkyDungeonGetBuffedStat(enemy.buffs, "MinBoundLevel")) ? KinkyDungeonGetBuffedStat(enemy.buffs, "MinBoundLevel") : 0;
-				enemy.boundLevel = Math.max(Math.min(Math.max(0, enemy.boundLevel), minLevel), enemy.boundLevel - delta * SR);
+				let SM = KDGetEnemyStruggleMod(enemy);
+				let newBound = KDPredictStruggle(enemy, SM, delta);
+				enemy.boundLevel = newBound.boundLevel;
+				enemy.specialBoundLevel = newBound.specialBoundLevel;
 
+				let SR = SM * (10 + Math.pow(Math.max(0.01, enemy.hp), 0.75));
 				if (SR <= 0 || KDRandom() < 0.1) {
 					KDAddThought(enemy.id, "GiveUp", 5, SR <= 0 ? 4 : 1);
 				} else {
@@ -3703,4 +3744,96 @@ function KDPushModifier(power, enemy, allowNeg = false) {
 	else if (enemy.Enemy.tags.unflinching || enemy.Enemy.tags.slowresist || enemy.Enemy.tags.slowimmune) pushPower -= 1;
 	if (allowNeg) return pushPower;
 	return Math.max(0, pushPower);
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} amount
+ * @param {string} type
+ * @param {any} Damage
+ * @returns {*}
+ */
+function KDTieUpEnemy(enemy, amount, type = "Leather", Damage) {
+	if (!enemy) return 0;
+	let data = {
+		amount: amount,
+		specialAmount: amount,
+		type: type, // Type of BONDAGE, e.g. leather, rope, etc
+		Damage: Damage,
+	};
+
+	KinkyDungeonSendEvent("bindEnemy", data);
+
+	if (data.amount) {
+		enemy.boundLevel = (enemy.boundLevel || 0) + data.amount;
+	}
+	if (data.type) {
+		if (!enemy.specialBoundLevel)
+			enemy.specialBoundLevel = {};
+		enemy.specialBoundLevel[type] = (enemy.specialBoundLevel[type] || 0) + data.specialAmount;
+	}
+
+	return data;
+}
+
+function KDPredictStruggle(enemy, struggleMod, delta) {
+	let data = {
+		enemy: enemy,
+		struggleMod: struggleMod,
+		delta: delta,
+		boundLevel: enemy.boundLevel || 0,
+		specialBoundLevel: enemy.specialBoundLevel ? Object.assign({}, enemy.specialBoundLevel): {},
+	};
+
+	let minLevel = (enemy.buffs && KinkyDungeonGetBuffedStat(enemy.buffs, "MinBoundLevel")) ? KinkyDungeonGetBuffedStat(enemy.buffs, "MinBoundLevel") : 0;
+
+	if (Object.keys(data.specialBoundLevel).length < 1) {
+		// Simple math, reduce bound level, dont have to worry.
+		data.struggleMod *= (10 + Math.pow(Math.max(0.01, enemy.hp), 0.75));
+		data.boundLevel = Math.max(Math.min(Math.max(0, data.boundLevel), minLevel), data.boundLevel - data.delta * data.struggleMod);
+	} else {
+		// We go layer by layer
+		let bondage = Object.entries(data.specialBoundLevel);
+		bondage = bondage.sort((a, b) => {
+			return KDSpecialBondage[a[0]].priority - KDSpecialBondage[b[0]].priority;
+		});
+		// These are the base resources, we exhaust till they are out
+		data.struggleMod *= 2;
+
+		let i = 0;
+		while (i < bondage.length
+			&& data.struggleMod > 0
+			&& data.boundLevel > 0) {
+			let layer = bondage[i];
+			let type = KDSpecialBondage[layer[0]];
+			let hBoost = type.healthStruggleBoost;
+			let pBoost = type.powerStruggleBoost;
+			let sr = type.struggleRate;
+
+			if (sr <= 0) {
+				i = bondage.length;
+				// We are done, cant struggle past here
+			}
+			// Otherwise
+			let totalCost = layer[1] / sr;
+			if (enemy.hp > 1)
+				totalCost *= 10/(10 + hBoost * Math.pow(enemy.hp, 0.75));
+			totalCost *= 3/(3 + pBoost * enemy.Enemy.power || 0);
+
+			let effect = Math.min(data.struggleMod, totalCost);
+			let difference = layer[1] * (effect / totalCost);
+			let origBL = data.boundLevel;
+			data.boundLevel = Math.max(minLevel, data.boundLevel - difference);
+			data.specialBoundLevel[layer[0]] -= Math.max(0, origBL - data.boundLevel);
+			if (data.specialBoundLevel[layer[0]] <= 0) delete data.specialBoundLevel[layer[0]];
+			data.struggleMod -= effect;
+			if (data.struggleMod <= 0) data.struggleMod = 0;
+			i++;
+		}
+		// We can only struggle as much as the current struggle layer
+		// If we have complicated types we have to do advanced differential calculus
+	}
+
+	return data;
 }

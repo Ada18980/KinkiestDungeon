@@ -417,7 +417,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			components: ["Arms"], level:1, type:"dot", onhit:"aoe", delay: 9, power: 0.8, range: 3.99, size: 1, aoe: 0.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"},
 		},//, distractEff: 2.0
 		{name: "Snare", color: "#ff8899", prerequisite: "ApprenticeRope", tags: ["rope", "binding", "denial", "utility", "offense"], sfx: "FireSpell",
-			school: "Conjure", manacost: 2, components: ["Legs"], noTargetEnemies: true, level:1, type:"inert", onhit:"lingering", lifetime:90,
+			school: "Conjure", manacost: 2, components: ["Legs"], noTargetEnemies: true, level:1, type:"inert", onhit:"lingering", lifetime:90, bindType: "Rope",
 			time: 8, bind: 15, delay: 5, range: 1, damage: "stun", playerEffect: {name: "MagicRope", time: 3}}, // Creates a magic rope trap that creates magic ropes on anything that steps on it. They are invisible once placed. Enemies get rooted, players get fully tied!
 
 		{name: "LeatherBurst", prerequisite: "ApprenticeLeather", tags: ["buff", "offense", "binding"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: [], level:1, passive: true, type:"",
@@ -469,7 +469,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "RopeStrike", prerequisite: "RopeBoltLaunch", tags: ["rope", "binding", "aoe", "offense"], sfx: "MagicSlash", effectTileDurationMod: 10, effectTile: {
 			name: "Ropes",
 			duration: 20,
-		}, school: "Conjure", manacost: 3.5, components: ["Verbal"], level:2, type:"inert", onhit:"aoe", delay: 1, power: 3, bind: 3, time: 6, range: 3.5, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "MagicRope", time: 4}},
+		}, school: "Conjure", manacost: 3.5, components: ["Verbal"], level:2, type:"inert", onhit:"aoe", delay: 1, power: 3, bind: 4, time: 6, range: 3.5, size: 3, aoe: 1.5, lifetime: 1, damage: "chain",  bindType: "Rope", playerEffect: {name: "MagicRope", time: 4}},
 		{name: "Slime", color: "#ff00ff", prerequisite: "SlimeSplash", tags: ["latex", "slime", "aoe", "offense"], landsfx: "MagicSlash", school: "Conjure", manacost: 4, components: ["Legs"], level:1, type:"inert",
 			upcastFrom: "SlimeSplash", upcastLevel: 1,
 			effectTileDurationMod: 12, effectTile: {
@@ -492,7 +492,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			onhit:"lingering", time: 4, delay: 1, range: 4, size: 3, aoe: 2.99, lifetime: 8, power: 5, lifetimeHitBonus: 4, damage: "glue", playerEffect: {name: "SlimeTrap", time: 3}},
 		//{name: "PinkGas", manacost: 4, components: ["Verbal"], level:2, type:"inert", onhit:"lingering", time: 1, delay: 2, range: 4, size: 3, aoe: 2.5, lifetime: 9999, damage: "stun", playerEffect: {name: "PinkGas", time: 3}}, // Dizzying gas, increases distraction
 		{name: "ChainBolt", color: "#ffffff", prerequisite: "ApprenticeMetal", tags: ["metal", "binding", "bolt", "offense"], noise: 5,
-			sfx: "FireSpell", school: "Conjure", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 0, power: 2.5, delay: 0, range: 50, damage: "chain", speed: 3,
+			sfx: "FireSpell", school: "Conjure", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 0, power: 2.5, delay: 0, range: 50, damage: "chain", speed: 3, bindType: "Metal",
 			playerEffect: {name: "SingleChain", time: 1}, effectTileDurationMod: 10, effectTile: {
 				name: "Chains",
 				duration: 20,
@@ -968,8 +968,8 @@ let KinkyDungeonSpellListEnemies = [
 	{allySpell: true, name: "ArcaneStrike", school: "Element", manacost: 0, components: [], level:1, type:"hit", onhit:"instant", noTerrainHit: true, power: 2.5, delay: 1, range: 1.5, size: 3, aoe: 1.5, lifetime: 1, damage: "soul"},
 	{enemySpell: true, name: "ShadowStrike", sfx: "MagicSlash", school: "Illusion", manacost: 3, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", power: 6, time: 2, delay: 1, range: 1.5, size: 1, aoe: 0.75, lifetime: 1, damage: "cold", playerEffect: {name: "ShadowStrike", damage: "cold", power: 4, count: 1}},
 
-	{name: "RopeBolt", color: "#ffff00", sfx: "Miss", school: "Conjure", manacost: 1, components: ["Verbal"], level:1, type:"bolt",
-		projectileTargeting:true, onhit:"",  power: 2.0, bind: 1.0, delay: 0, range: 50, damage: "chain", speed: 3, playerEffect: {name: "SingleRope"},
+	{name: "RopeBolt", color: "#ffff00", sfx: "Miss", school: "Conjure", manacost: 1, tags: ["rope"], components: ["Verbal"], level:1, type:"bolt",
+		projectileTargeting:true, onhit:"",  power: 2.0, bind: 2.2, delay: 0, range: 50, damage: "chain", bindType: "Rope", speed: 3, playerEffect: {name: "SingleRope"},
 		effectTileDurationMod: 10, effectTileAoE: 0.5, effectTile: {
 			name: "Ropes",
 			duration: 20,
@@ -1077,40 +1077,40 @@ let KinkyDungeonSpellListEnemies = [
 		name: "Chains",
 		duration: 20,
 	},}, // Throws a chain which stuns the target for 1 turn
-	{enemySpell: true, name: "BanditBola", color: "#ff2200", sfx: "Miss", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "BanditBola"}}, // Throws a chain which stuns the target for 1 turn
-	{enemySpell: true, name: "WitchRope", color: "#ff2200", sfx: "Miss", effectTileDurationMod: 10, effectTile: {
+	{enemySpell: true, name: "BanditBola",  bindType: "Rope", color: "#ff2200", sfx: "Miss", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "BanditBola"}}, // Throws a chain which stuns the target for 1 turn
+	{enemySpell: true, name: "WitchRope",  bindType: "Rope", color: "#ff2200", sfx: "Miss", effectTileDurationMod: 10, effectTile: {
 		name: "Ropes",
 		duration: 20,
 	}, manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "chain", speed: 3, playerEffect: {name: "SingleRope"}},
-	{allySpell: true, name: "PlayerBola", fastStart: true, color: "#ff2200", noMiscast: true, sfx: "Miss", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 4, power: 3, bind: 9, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "BanditBola", time: 1}}, // Throws a chain which stuns the target for 1 turn
-	{enemySpell: true, name: "RestrainingDevice", color: "#19fac1", sfx: "Miss", manacost: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 6, delay: 0, range: 50, damage: "chain", speed: 1, playerEffect: {name: "RestrainingDevice", count: 3, time: 3, power: 5, damage: "crush"}},
+	{allySpell: true, name: "PlayerBola",  bindType: "Rope", fastStart: true, color: "#ff2200", noMiscast: true, sfx: "Miss", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 4, power: 3, bind: 9, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "BanditBola", time: 1}}, // Throws a chain which stuns the target for 1 turn
+	{enemySpell: true, name: "RestrainingDevice",  bindType: "Metal", color: "#19fac1", sfx: "Miss", manacost: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 6, delay: 0, range: 50, damage: "chain", speed: 1, playerEffect: {name: "RestrainingDevice", count: 3, time: 3, power: 5, damage: "crush"}},
 	{enemySpell: true, name: "MummyBolt", color: "#88ff88", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "fire", speed: 3, playerEffect: {name: "MysticShock", time: 3}},
 	{enemySpell: true, name: "RobotBolt", color: "#ff5277", minRange: 0, sfx: "Laser", manacost: 2, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "electric", speed: 2, playerEffect: {name: "RobotShock", time: 2}},
-	{enemySpell: true, name: "RubberBullets", color: "#ffff00", minRange: 2.9, sfx: "Gunfire", manacost: 2, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "glue", speed: 3, playerEffect: {name: "RubberBullets", power: 4, count: 1, damage: "glue"}},
+	{enemySpell: true, name: "RubberBullets",  bindType: "Slime", color: "#ffff00", minRange: 2.9, sfx: "Gunfire", manacost: 2, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "glue", speed: 3, playerEffect: {name: "RubberBullets", power: 4, count: 1, damage: "glue"}},
 	{enemySpell: true, name: "HeatBolt", color: "#ffff00", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "fire", speed: 2, playerEffect: {name: "HeatBlast", time: 1, damage: "pain", power: 5}},
 	{enemySpell: true, noFirstChoice: true, name: "Hairpin", color: "#ffffff", minRange: 2.9, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "pain", speed: 2, playerEffect: {name: "Hairpin", power: 2, damage: "pain", time: 1}},
-	{enemySpell: true, name: "PoisonDragonBlast", color: "#88ff88", sfx: "FireSpell", hitsfx: "Bones", manacost: 5, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "grope", speed: 3, effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
+	{enemySpell: true, name: "PoisonDragonBlast",  bindType: "Vine", color: "#88ff88", sfx: "FireSpell", hitsfx: "Bones", manacost: 5, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "grope", speed: 3, effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "Vines",
 		duration: 20,
 	}, playerEffect: {name: "VineEngulf", power: 2}},
-	{enemySpell: true, name: "ElfArrow", color: "#88ff88", sfx: "Miss", hitsfx: "FireSpell", manacost: 3, components: ["Arms"], level: 1, type:"bolt", projectileTargeting:true, onhit:"", power: 2, delay: 0, range: 50, damage: "fire", speed: 1, playerEffect: {name: "EnchantedArrow", power: 2, count: 1}},
+	{enemySpell: true, name: "ElfArrow",  bindType: "Vine", color: "#88ff88", sfx: "Miss", hitsfx: "FireSpell", manacost: 3, components: ["Arms"], level: 1, type:"bolt", projectileTargeting:true, onhit:"", power: 2, delay: 0, range: 50, damage: "fire", speed: 1, playerEffect: {name: "EnchantedArrow", power: 2, count: 1}},
 	{enemySpell: true, name: "ShadowOrb", color: "#8833ff", minRange: 2.9, sfx: "MagicSlash", manacost: 5, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 5, damage: "inert", speed: 2, playerEffect: {name: ""},
 		spellcast: {spell: "ShadowScythe", target: "onhit", directional:true, offset: false}},
 	{enemySpell: true, name: "ShadowScythe", color: "#0000ff", sfx: "MagicSlash", manacost: 4, components: ["Verbal"], level:1, type:"inert", noTerrainHit: true, onhit:"aoe", time: 5, delay: 1, power: 6, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "ShadowBind", time: 4}},
-	{enemySpell: true, name: "WitchSlime", color: "#ff00ff", minRange: 0, landsfx: "MagicSlash", manacost: 7, components: ["Legs"], level:2, type:"inert", onhit:"lingering",
+	{enemySpell: true, name: "WitchSlime",  bindType: "Slime", color: "#ff00ff", minRange: 0, landsfx: "MagicSlash", manacost: 7, components: ["Legs"], level:2, type:"inert", onhit:"lingering",
 		time: 2, delay: 1, range: 4, power: 2, size: 3, aoe: 1, lifetime: 1, lifetimeHitBonus: 9, damage: "glue", playerEffect: {name: "SlimeTrap", time: 3},
 		effectTileDurationModLinger: 8, effectTileLinger: {
 			name: "Slime",
 			duration: 10,
 		},}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
-	{enemySpell: true, name: "WitchSlimeBall", color: "#ff00ff", sfx: "FireSpell", manacost: 6, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"",
+	{enemySpell: true, name: "WitchSlimeBall", bindType: "Slime", color: "#ff00ff", sfx: "FireSpell", manacost: 6, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"",
 		time: 2,  power: 2, delay: 0, range: 50, damage: "glue", speed: 1, trailLifetime: 10, trailDamage:"glue", trail:"lingering", trailPower: 2, trailChance: 1.0, playerEffect: {name: "Slime", time: 3},
 		effectTileDurationModTrail: 4, effectTileTrail: {
 			name: "Slime",
 			duration: 4,
 		}
 	}, // Throws a ball of slime which oozes more slime
-	{enemySpell: true, name: "SlimePuddle", color: "#ff00ff", sfx: "FireSpell", manacost: 3, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"lingering",
+	{enemySpell: true, name: "SlimePuddle", bindType: "Slime", color: "#ff00ff", sfx: "FireSpell", manacost: 3, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"lingering",
 		time: 2, power: 2, lifetime: 5, lifetimeHitBonus: 5, aoe: 1.5, delay: 0, range: 50, damage: "glue", speed: 1, playerEffect: {name: "SlimeTrap", time: 3},
 		effectTileDurationModLinger: 8, effectTileLinger: {
 			name: "Slime",
@@ -1237,3 +1237,51 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "TrapSCloud", sfx: "Freeze", manacost: 1, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", playerEffect: {name: "TrapSPCloud", damage: "pain", power: 5.0 }},
 	{enemySpell: true, name: "SleepDart", sfx: "Miss", manacost: 1, components: [], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "pain", speed: 1, playerEffect: {name: "TrapSleepDart", power: 5}},
 ];
+
+
+
+/** @type {Record<string, KDBondage>} */
+let KDSpecialBondage = {
+	"Leather": {
+		priority: 0,
+		color: "#ad2f45",
+		struggleRate: 1.0,
+		powerStruggleBoost: 1.0,
+		healthStruggleBoost: 1.0,
+	},
+	"Rope": {
+		priority: -3,
+		color: "#ffae70",
+		struggleRate: 2.0,
+		powerStruggleBoost: 1.0,
+		healthStruggleBoost: 1.0,
+	},
+	"Metal": {
+		priority: 10,
+		color: "#aaaaaa",
+		struggleRate: 0.5,
+		powerStruggleBoost: 0.25,
+		healthStruggleBoost: 1.5,
+	},
+	"Slime": {
+		priority: -10,
+		color: "#c0248d",
+		struggleRate: 1.5,
+		powerStruggleBoost: 2.0,
+		healthStruggleBoost: 0.75,
+	},
+	"Vine": {
+		priority: -7,
+		color: "#00ff00",
+		struggleRate: 1.25,
+		powerStruggleBoost: 2.0,
+		healthStruggleBoost: 1.0,
+	},
+	"Ice": {
+		priority: -15,
+		color: "#00ffff",
+		struggleRate: 0.6,
+		powerStruggleBoost: 3.0,
+		healthStruggleBoost: 0.7,
+	},
+};

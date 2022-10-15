@@ -577,7 +577,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 					pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
 					lifetime:miscast || selfCast ? 1 : (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: entity.x, y: entity.y}, range: spellRange, hit:spell.onhit,
-					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, miscast);
+					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, miscast);
 			b.visual_x = entity.x;
 			b.visual_y = entity.y;
 			data.bulletfired = b;
@@ -595,7 +595,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 						(spell.delayRandom ? Math.floor(KDRandom() * spell.delayRandom) : 0), cast: cast, dot: spell.dot, events: spell.events, alwaysCollideTags: spell.alwaysCollideTags,
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
-					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell
+					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell
 				}, miscast);
 			data.bulletfired = b;
 		} else if (spell.type == "hit") {
@@ -609,7 +609,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 				vx: moveDirection.x,vy: moveDirection.y, born: 1,
 				bullet: {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:sz, height:sz, summon:spell.summon, lifetime:spell.lifetime, cast: cast, dot: spell.dot, events: spell.events, aoe: spell.aoe,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
-					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}};
+					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}};
 			KinkyDungeonBulletHit(b, 1);
 			data.bulletfired = b;
 		} else if (spell.type == "buff") {
