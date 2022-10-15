@@ -1625,6 +1625,7 @@ type KDMapTile = {
     weight: number;
     grid: string;
     POI: any[];
+    Keyring?: any[];
 	Jail: any[];
     Tiles: [string, any][];
     effectTiles: [string, [string, effectTile][]][];

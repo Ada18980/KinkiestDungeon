@@ -368,10 +368,15 @@ function KinkyDungeonPlaceJailKeys() {
 				jailKeyList.push({x:X, y:Y});
 
 	let i = 0;
+
 	while (jailKeyList.length > 0) {
 		let N = Math.floor(KDRandom()*jailKeyList.length);
-		if (i < 1000 && !KinkyDungeonGroundItems.some((item) => {return item.name == "Keyring" && KDistChebyshev(item.x - jailKeyList[N].x, item.y - jailKeyList[N].y) < KinkyDungeonGridHeight / 3;})) {
-			KinkyDungeonGroundItems.push({x:jailKeyList[N].x, y:jailKeyList[N].y, name: "Keyring"});
+		let slot = jailKeyList[N];
+		if (KDGameData.KeyringLocations && i < KDGameData.KeyringLocations.length) {
+			slot = KDGameData.KeyringLocations[Math.floor(KDRandom() * KDGameData.KeyringLocations.length)];
+		}
+		if (i < 1000 && !KinkyDungeonGroundItems.some((item) => {return item.name == "Keyring" && KDistChebyshev(item.x - slot.x, item.y - slot.y) < KinkyDungeonGridHeight / 3;})) {
+			KinkyDungeonGroundItems.push({x:slot.x, y:slot.y, name: "Keyring"});
 		}
 		i++;
 		return true;

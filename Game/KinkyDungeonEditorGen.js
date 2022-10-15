@@ -337,6 +337,11 @@ function KD_PasteTile(tile, x, y, data) {
 			KinkyDungeonMapSetForce(x + xx, y + yy, tileTile);
 		}
 
+	if (tile.Keyring) {
+		for (let k of tile.Keyring) {
+			KDGameData.KeyringLocations.push({x:x + k.x, y:y + k.y});
+		}
+	}
 
 	if (tile.POI)
 		for (let origPoi of tile.POI) {

@@ -230,6 +230,13 @@ let KinkyDungeonStatsPresets = {
 	"WeakGrip":  {category: "Restraints", id: "WeakGrip", cost: -1},
 	"Incantation":  {category: "Magic", id: "Incantation", cost: -1},
 
+	"Stoic":  {category: "Damage", id: "Stoic", cost: 1, block: ["Ticklish"]},
+	"Ticklish":  {category: "Damage", id: "Ticklish", cost: -1, block: ["Stoic"]},
+	"Unperturbed":  {category: "Damage", id: "Unperturbed", cost: 1, block: ["Lascivious"]},
+	"Lascivious":  {category: "Damage", id: "Lascivious", cost: -1, block: ["Unperturbed"]},
+	"Masochist":  {category: "Damage", id: "Masochist", cost: -1},
+	"PainTolerance":  {category: "Damage", id: "PainTolerance", cost: 1},
+
 	"Rigger": {category: "Damage", id: 24, cost: 2},
 	"Pacifist": {category: "Damage", id: 25, cost: -2},
 	"BurningDesire":  {category: "Damage", id: "BurningDesire", cost: 1},
@@ -241,12 +248,6 @@ let KinkyDungeonStatsPresets = {
 
 	"Sticky":  {category: "Damage", id: "Sticky", cost: -1},
 	"Breathless":  {category: "Damage", id: "Breathless", cost: -1},
-	"Ticklish":  {category: "Damage", id: "Ticklish", cost: -1, block: ["Stoic"]},
-	"Stoic":  {category: "Damage", id: "Stoic", cost: 1, block: ["Ticklish"]},
-	"Lascivious":  {category: "Damage", id: "Lascivious", cost: -1, block: ["Unperturbed"]},
-	"Unperturbed":  {category: "Damage", id: "Unperturbed", cost: 1, block: ["Lascivious"]},
-	"Masochist":  {category: "Damage", id: "Masochist", cost: -1},
-	"PainTolerance":  {category: "Damage", id: "PainTolerance", cost: 1},
 
 	"CommonFuuka": {category: "Enemies", id: "CommonFuuka", cost: -1, locked: true},
 	"CommonMaid": {category: "Enemies", id: "CommonMaid", cost: -1, costGroup: "common"},

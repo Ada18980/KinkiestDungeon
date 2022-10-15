@@ -382,11 +382,14 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit) {
 	};
 
 	if (KinkyDungeonStatsChoice.get("Masochist")) {
-		data.distractionTypesStrong.push("pain");
+		let types = ["pain", "electric", "slash", "pierce", "crush", "fire", "ice", "frost", "acid"];
+		data.distractionTypesStrong.push(...types);
 		data.arouseMod = Math.max(data.arouseMod, 2.0);
-		data.arouseTypes.push("pain");
+		data.arouseTypes.push(...types);
 		if (data.distractionTypesWeakNeg.includes("pain"))
 			data.distractionTypesWeakNeg = data.distractionTypesWeakNeg.splice(data.distractionTypesWeakNeg.indexOf("pain"), 1);
+		if (data.distractionTypesWeakNeg.includes("acid"))
+			data.distractionTypesWeakNeg = data.distractionTypesWeakNeg.splice(data.distractionTypesWeakNeg.indexOf("acid"), 1);
 	}
 
 	if (data.arouseTypes.includes(data.type) && !data.arouseAmount) {

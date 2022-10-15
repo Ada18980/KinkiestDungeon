@@ -313,6 +313,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		KinkyDungeonBullets = []; // Clear all bullets
 		KDGameData.OfferFatigue = 0;
 		KinkyDungeonEffectTiles = new Map();
+		KDGameData.KeyringLocations = [];
 
 		KinkyDungeonEndPosition = null;
 

@@ -223,9 +223,11 @@ let KDOptOut = false;
 * TempFlagFloorTicks: Record<string, number>,
 * KneelTurns: number,
 * HiddenSpellPages : Record<string, boolean>,
+* KeyringLocations : {x: number, y: number}[],
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	KeyringLocations: [],
 	HiddenSpellPages: {},
 	PriorJailbreaks: 0,
 	MapFaction: "",
