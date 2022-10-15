@@ -234,7 +234,7 @@ function KinkyDungeonHandleSpellCast(spell) {
 			return spell;
 		else KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonNoMana"), "#ff0000", 1);
 	} else {
-		KinkyDungeonTargetingSpell = "";
+		KinkyDungeonTargetingSpell = null;
 		KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonComponentsFail" + KinkyDungeoCheckComponents(spell)[0]), "#ff0000", 1);
 	}
 	return null;
@@ -750,7 +750,7 @@ function KinkyDungeonHandleMagic() {
 
 		if (MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale * 0.5 - 200, canvasOffsetY_ui - 70 + 483*KinkyDungeonBookScale, 400, 60)) {
 			KDSendInput("spellCastFromBook", {CurrentSpell: KinkyDungeonCurrentPage});
-			KinkyDungeonTargetingSpell = KinkyDungeonSpells[KinkyDungeonCurrentPage];
+			KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast(KinkyDungeonSpells[KinkyDungeonCurrentPage]);
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = null;
