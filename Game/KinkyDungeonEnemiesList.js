@@ -115,7 +115,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, floors:KDMapInit([])},
 
 	{name: "Golem", tags: KDMapInit(["construct", "poisonimmune", "soulimmune", "player", "melee", "fireresist", "unstoppable", "tickleresist", "groperesist", "electricresist", "notalk"]), keepLevel: true, allied: true, armor: 2.0, spellResist: 0.4, followRange: 1, AI: "hunt",
-		visionRadius: 20, playerBlindSight: 100, maxhp: 18, minLevel:0, weight:0, movePoints: 2, attackPoints: 3, attack: "MeleeWill", attackRange: 1, attackWidth: 5, power: 4.5, accuracy: 0.7, CountLimit: true,
+		visionRadius: 20, playerBlindSight: 100, maxhp: 18, minLevel:0, weight:0, movePoints: 2, attackPoints: 3, attack: "MeleeWill", attackRange: 1, attackWidth: 1, power: 4.5, accuracy: 0.7, CountLimit: true,
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "StormCrystal", tags: KDMapInit(["construct", "flying", "poisonimmune", "soulimmune", "player", "ranged", "unstoppable", "meleeresist", "tickleimmune", "electricimmune", "soulimmune", "temporary", "notalk", "nonvulnerable", "immobile", "nobrain"]), immobile: true, noblockplayer: true, allied: true, armor: 1.5, followRange: 1, AI: "wander", evasion: -10,
 		spells: ["AllyCrackle"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
