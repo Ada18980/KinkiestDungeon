@@ -1701,7 +1701,7 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					bullet.size*scale*KinkyDungeonGridSizeDisplay,
 					(!bullet.vy && !bullet.vx) ? 0 : Math.atan2(bullet.vy, bullet.vx), alpha != 1 ? {
 						alpha : alpha,
-						zindex: 0.2,
+						zindex: -0.01,
 					} : undefined, true);
 			}
 			bullet.delay = undefined;
