@@ -1076,6 +1076,10 @@ interface spell {
 	bindType?: string,
 	/** Stops the spell from moving more than 1 tile */
 	slowStart?: boolean,
+	/** Spinrate of the bullet */
+	bulletSpin?: number,
+	/** Spinrate of the bullet hit */
+	hitSpin?: number,
 	/** Forces spell to move more than 1 tile at beginning */
 	fastStart?: boolean,
 	/** Affects aoe type

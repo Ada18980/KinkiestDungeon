@@ -1493,6 +1493,13 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 			}
 		}
 
+		if (Entity.spin != undefined && Entity.spinAngle != undefined) {
+			Entity.spinAngle += Entity.spin * KDTimescale*amount;
+			if (Entity.spinAngle > Math.PI * 2) Entity.spinAngle -= Math.PI*2;
+			else if (Entity.spinAngle < 0) Entity.spinAngle += Math.PI*2;
+			//Math.min(1.0, Entity.alpha + KDTimescale*amount*3.0);
+		}
+
 		if (dist == 0) return dist;
 		// Increment
 		let weightx = Math.abs(Entity.visual_x - tx)/(dist);
