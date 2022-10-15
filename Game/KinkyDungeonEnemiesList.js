@@ -1219,11 +1219,15 @@ let KinkyDungeonEnemies = [
 		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 13, minLevel:0, weight:-40, movePoints: 2, attackPoints: 2, attack: "SpellMeleeBindWillLock", projectileTargeting: true,
 		attackWidth: 1, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 3, focusPlayer: true, attackLock: "Red",
 		terrainTags: {"secondhalf":2, "lastthird":1, "jailGuard": 50, "Guard": 50, "willAnger": 49, "willRage": 4, "ropeAnger": 3, "ropeRage": 2, "dressmaker": 50}, allFloors: true, shrines: ["Will", "Rope"],
+		events: [
+			{trigger: "afterEnemyTick", type: "nurseAura", power: 0.1, dist: 2.59},
+		],
 		dropTable: [{name: "RedKey", weight: 8}, {name: "BlueKey", weight: 1}, {name: "ScrollArms", weight: 1}, {name: "ScrollVerbal", weight: 1}, {name: "ScrollLegs", weight: 1}]},
 
 
 
-	{name: "Librarian", clusterWith: "construct", bound: "Dressmaker", playLine: "Dressmaker", faction: "Dressmaker", color: "#f135a4", tags: KDMapInit(["leashing", "dressmaker", "miniboss", "jailer", "acidweakness", "conjurer", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "magicRibbons"]),
+	{name: "Librarian", clusterWith: "construct", bound: "Dressmaker", playLine: "Librarian", faction: "Dressmaker", color: "#f135a4",
+		tags: KDMapInit(["leashing", "dressmaker", "miniboss", "jailer", "acidweakness", "conjurer", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "lowWeightRibbons", "magicRibbonsHarsh", "gagSpell", "mittensSpell"]),
 		followLeashedOnly: true, kite: 1.5, kiteChance: 0.3, followRange: 4, castWhileMoving: true, spells: [
 			"SummonBookChain",
 			"SummonBookSlime",

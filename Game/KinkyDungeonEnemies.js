@@ -1289,6 +1289,32 @@ function KDNearbyEnemies(x, y, dist, hostileEnemy) {
 	}
 	return list;
 }
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {number} dist
+ * @param {entity} [neutralEnemy]
+ * @returns {entity[]}
+ */
+function KDNearbyNeutrals(x, y, dist, neutralEnemy) {
+	let cache = KDGetEnemyCache();
+	let list = [];
+	if (!cache) {
+		for (let e of KinkyDungeonEntities) {
+			if (KDistEuclidean(x - e.x, y - e.y) <= dist && (!neutralEnemy || !KDHostile(e, neutralEnemy))) list.push(e);
+		}
+	} else {
+		let e = null;
+		for (let X = Math.floor(x - dist); X < Math.ceil(x + dist); X++)
+			for (let Y = Math.floor(y - dist); Y < Math.ceil(y + dist); Y++)
+				if (KDistEuclidean(X - x, Y - y) <= dist) {
+					e = cache.get(X + "," + Y);
+					if (e && (!neutralEnemy || !KDHostile(e, neutralEnemy))) list.push(e);
+				}
+	}
+	return list;
+}
 
 function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy) {
 	let tries = 0;

@@ -3108,17 +3108,49 @@ RestraintAsylumJacketDesc2,"It has many straps and is very difficult to escape."
 RestraintAsylumLegbinder,Asylum Legbinder
 RestraintAsylumLegbinderDesc,"This legbinder will keep the patient from kicking the nurses."
 RestraintAsylumLegbinderDesc2,"It has both laces and straps."
-RestraintAsylumAnkleCuffs,Leather Ankle Cuffs
-RestraintAsylumAnkleCuffsDesc,"A pair of chained cuffs made of leather. They make patients easier to catch."
+
+
+RestraintAsylumAnkleCuffs,Asylum Ankle Cuffs
+RestraintAsylumAnkleCuffsDesc,"A pair of chained cuffs made of reinforced leather. They make patients easier to catch."
 RestraintAsylumAnkleCuffsDesc2,"They can be thrown from long distances."
 KinkyDungeonLinkAsylumAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintAsylumAnkleCuffs2,Cuffs Chain
-RestraintAsylumAnkleCuffs2Desc,"A pair of chained cuffs made of leather. They make patients easier to catch."
+RestraintAsylumAnkleCuffs2Desc,"A pair of chained cuffs made of reinforced leather. They make patients easier to catch."
 RestraintAsylumAnkleCuffs2Desc2,"They can be thrown from long distances."
 KinkyDungeonUnLinkAsylumAnkleCuffs2,"The ankle cuff chain detaches!"
+
+RestraintAsylumLegCuffs,Asylum Leg Cuffs
+RestraintAsylumLegCuffsDesc,"A pair of chained cuffs made of reinforced leather. They make patients easier to catch."
+RestraintAsylumLegCuffsDesc2,"They can be thrown from long distances."
+KinkyDungeonLinkAsylumLegCuffs,"The enemy attaches your ankle cuffs together!"
+
+
 RestraintTransportJacket,Transport Jacket
 RestraintTransportJacketDesc,"This jacket goes over a straitjacket to keep the arms trapped."
 RestraintTransportJacketDesc2,"It makes it extraordinarily difficult to escape the jacket it covers."
+
+RestraintAsylumArmCuffs,Asylum Cuffs
+RestraintAsylumArmCuffsDesc,"A pair of leather cuffs that make it easy to restrain you."
+RestraintAsylumArmCuffsDesc2,"They're made of tough cowhide."
+KinkyDungeonLinkAsylumArmCuffs,"The enemy attaches your wrist cuffs together!"
+
+RestraintAsylumArmCuffs2,Wrist Chain
+RestraintAsylumArmCuffs2Desc,"A pair of leather cuffs keeping your arms behind your back."
+RestraintAsylumArmCuffs2Desc2,"They're made of tough cowhide."
+KinkyDungeonUnLinkAsylumArmCuffs2,"Your cuffs detatch!"
+KinkyDungeonLinkAsylumArmCuffs2,"The enemy attaches your elbow cuffs together!"
+
+RestraintAsylumArmCuffs3,Wrist Chain
+RestraintAsylumArmCuffs3Desc,"A full set of leather cuffs keeping your arms in a strict elbow tie!"
+RestraintAsylumArmCuffs3Desc2,"They're made of tough cowhide."
+KinkyDungeonUnLinkAsylumArmCuffs3,"Your wrists detatch, leaving your elbows still bound!"
+
+RestraintAsylumArmCuffs4,Elbow Chain
+RestraintAsylumArmCuffs4Desc,"A pair of leather cuffs keeping your elbows locked together!."
+RestraintAsylumArmCuffs4Desc2,"They're made of tough cowhide."
+KinkyDungeonUnLinkAsylumArmCuffs4,"Your elbows detatch!"
+KinkyDungeonLinkAsylumArmCuffs4,"The enemy attaches your wrist cuffs back together!"
+
 
 RestraintComfyGag,Comfy Muzzle
 RestraintComfyGagDesc,A lovely muzzle that's extraordinarily comfy!
@@ -3205,6 +3237,20 @@ RestraintMagneticAnkleCuffs2Desc,"The magnetic cuffs are rigidly attached!"
 RestraintMagneticAnkleCuffs2Desc2,"They won't budge! There's a button to release them but it's hard to reach..."
 KinkyDungeonUnLinkMagneticAnkleCuffs2,"Your ankle cuffs detatch!"
 
+
+RestraintLeatherAnkleCuffs,Leather Ankle Cuffs
+RestraintLeatherAnkleCuffsDesc,"A pair of chained cuffs made of leather. They make it trickier to run away."
+RestraintLeatherAnkleCuffsDesc2,"They're made of tough cowhide."
+KinkyDungeonLinkLeatherAnkleCuffs,"The enemy attaches your ankle cuffs together!"
+RestraintLeatherAnkleCuffs2,Cuffs Chain
+RestraintLeatherAnkleCuffs2Desc,"A pair of chained cuffs made of leather. They make it trickier to run away."
+RestraintLeatherAnkleCuffs2Desc2,"They're made of tough cowhide."
+KinkyDungeonUnLinkLeatherAnkleCuffs2,"The ankle cuff chain detaches!"
+
+RestraintLeatherLegCuffs,Leather Leg Cuffs
+RestraintLeatherLegCuffsDesc,"A pair of chained cuffs made of leather. They make it trickier to run away."
+RestraintLeatherLegCuffsDesc2,"They're made of tough cowhide."
+KinkyDungeonLinkLeatherLegCuffs,"The enemy attaches your ankle cuffs together!"
 
 RestraintLeatherArmCuffs,Leather Cuffs
 RestraintLeatherArmCuffsDesc,"A pair of leather cuffs that make it easy to restrain you."
@@ -5844,9 +5890,41 @@ KinkyDungeonRemindJailDressmakerMiss,"A slippery one, aren't you?"
 KinkyDungeonRemindJailDressmakerMissedMe,"Tsk tsk. You can do better, dear~"
 KinkyDungeonRemindJailDressmakerLeash,"I can't wait to dress you up!"
 KinkyDungeonRemindJailDressmakerPull,"So nice of you to join me!"
-KinkyDungeonRemindJailDressmakerStun,"Now let's see, what to dress you in..."
+KinkyDungeonRemindJailDressmakerStun,"Now let's see, what kind of dress..."
 KinkyDungeonRemindJailDressmakerPickpocket,"A gift? Thank you so much!"
 KinkyDungeonRemindJailDressmakerLock,"You won't be getting out of that any time soon!"
+
+
+KinkyDungeonRemindJailPlayLibrarian0,"Shhhhh."
+KinkyDungeonRemindJailPlayLibrarian1,"Be quiet."
+KinkyDungeonRemindJailPlayLibrarian2,"Keep your hands off my books."
+KinkyDungeonRemindJailPlayLibrarianStruggle,"Heh. Serves you right."
+KinkyDungeonRemindJailPlayLibrarianLeash,"Time to lock you away."
+KinkyDungeonRemindJailPlayLibrarianFree,"Don't get your paws on anything important."
+KinkyDungeonRemindJailPlayLibrarianLoot,"I was reading that!"
+KinkyDungeonRemindJailPlayLibrarianKey,"You're not supposed to have that."
+KinkyDungeonRemindJailChaseLibrarianAttack0,"Who are you?"
+KinkyDungeonRemindJailChaseLibrarianAttack1,"You're entering my personal space."
+KinkyDungeonRemindJailChaseLibrarianAttack2,"I'm going to ask you to leave"
+KinkyDungeonRemindJailChaseLibrarianSpell0,"You're ruining the books!"
+KinkyDungeonRemindJailChaseLibrarianSpell1,"Keep the damage under control!"
+KinkyDungeonRemindJailChaseLibrarianSpell2,"Shut up!!!"
+KinkyDungeonRemindJailChaseLibrarianSpellItem,"Put that back!"
+KinkyDungeonRemindJailChaseLibrarianShrine,"There's nothing to learn from that, you ignorant buffon."
+KinkyDungeonRemindJailChaseLibrarianChest,"Don't dive into someone else's belongings!"
+KinkyDungeonRemindJailChaseLibrarianOrb,"You've destroyed an ancient artifact, imbecile!"
+KinkyDungeonRemindJailChaseLibrarianJailbreak,"I wish you'd just stay out of trouble..."
+KinkyDungeonRemindJailLibrarianGrab,"Gotchya."
+KinkyDungeonRemindJailLibrarianDisarm,"You're going to hurt someone with that."
+KinkyDungeonRemindJailLibrarianHit,"My books!"
+KinkyDungeonRemindJailLibrarianHitPlayer,"Stay down."
+KinkyDungeonRemindJailLibrarianMiss,"Get back here--"
+KinkyDungeonRemindJailLibrarianMissedMe,"Why you..."
+KinkyDungeonRemindJailLibrarianLeash,"Time for you to stay out of trouble."
+KinkyDungeonRemindJailLibrarianPull,"Come along."
+KinkyDungeonRemindJailLibrarianStun,"Stay put!"
+KinkyDungeonRemindJailLibrarianPickpocket,"I'll be taking that back."
+KinkyDungeonRemindJailLibrarianLock,"Click."
 
 KinkyDungeonRemindJailPlayNurse0,"It's time for your shot..."
 KinkyDungeonRemindJailPlayNurse1,"Why are you out of your cell?"
