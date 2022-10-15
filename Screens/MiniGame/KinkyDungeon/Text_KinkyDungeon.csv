@@ -301,6 +301,11 @@ KinkyDungeonStatDescSecondWind,"Gain 2 WP every time you remove a non-trivial re
 KinkyDungeonStatDominant,"Dominant"
 KinkyDungeonStatDescDominant,"They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage."
 
+KinkyDungeonStatStranger,"Stranger"
+KinkyDungeonStatDescStranger,"Randomizes your relationship to most factions."
+KinkyDungeonStatWrongNeighborhood,"Wrong Neighborhood"
+KinkyDungeonStatDescWrongNeighborhood,"All factions are hostile and united against you."
+
 KinkyDungeonStatTrespasser,"Trespasser"
 KinkyDungeonStatDescTrespasser,"You lose reputation with the goddesses every time you advance a floor."
 

@@ -146,6 +146,9 @@ let KinkyDungeonStatsPresets = {
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -2, block: ["SecondWind"]},
 	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1, block: ["FutileStruggles"]},
 
+	"Stranger": {category: "Enemies", id: "Stranger", cost: 0, block: ["WrongNeighborhood"]},
+	"WrongNeighborhood": {category: "Enemies", id: "WrongNeighborhood", cost: -1, block: ["Stranger"]},
+
 	"Strong": {category: "Restraints", id: 0, cost: 2, block: ["Weak"]},
 	"Weak": {category: "Restraints", id: 1, cost: -1, block: ["Strong"]},
 	"Flexible": {category: "Restraints", id: 2, cost: 2, block: ["Inflexible"]},
@@ -221,6 +224,7 @@ let KinkyDungeonStatsPresets = {
 	"BoundCrusader": {category: "Kinky", id: "BoundCrusader", cost: -1},
 
 	"Trespasser": {category: "Map", id: "Trespasser", cost: -2},
+
 
 	"Butterfingers":  {category: "Restraints", id: "Butterfingers", cost: -1},
 	"WeakGrip":  {category: "Restraints", id: "WeakGrip", cost: -1},
@@ -461,6 +465,20 @@ let KDPerkStart = {
 
 		if (KinkyDungeonInventoryGet("Knife")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Knife"));
 		if (KinkyDungeonInventoryGet("Dirk")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Dirk"));
+	},
+	Stranger: () => {
+		for (let key of Object.keys(KinkyDungeonFactionTag)) {
+			let rand = KDRandom();
+			KDSetFactionRelation("Player", key, -1 + 1.7 * rand*rand);
+		}
+	},
+	WrongNeighborhood: () => {
+		for (let key of Object.keys(KinkyDungeonFactionTag)) {
+			KDSetFactionRelation("Player", key, -1);
+			for (let key2 of Object.keys(KinkyDungeonFactionTag)) {
+				KDSetFactionRelation(key, key2, 1);
+			}
+		}
 	},
 };
 

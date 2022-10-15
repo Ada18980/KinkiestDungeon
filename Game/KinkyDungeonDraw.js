@@ -113,28 +113,35 @@ function KDWallVertTunnel(x, y) {
 }
 
 let KDSprites = {
+	// @ts-ignore
 	"1": (x, y, Fog, noReplace) => {
 		if (KDWallVert(x, y, noReplace))
 			return "WallVert";
 		return "Wall";
 	},
+	// @ts-ignore
 	"2": (x, y, Fog, noReplace) => {
 		return "Brickwork";
 	},
+	// @ts-ignore
 	"3": (x, y, Fog, noReplace) => {
 		return Fog ? "Doodad" : "MimicBlock";
 	},
+	// @ts-ignore
 	"b": (x, y, Fog, noReplace) => {
 		return "Bars";
 	},
+	// @ts-ignore
 	"X": (x, y, Fog, noReplace) => {
 		return "Doodad";
 	},
+	// @ts-ignore
 	"4": (x, y, Fog, noReplace) => {
 		if (KDWallVert(x, y, noReplace))
 			return "WallVert";
 		return "Wall";
 	},
+	// @ts-ignore
 	"L": (x, y, Fog, noReplace) => {
 		if (KinkyDungeonTiles.get(x + "," + y)) {
 			if (KinkyDungeonTiles.get(x + "," + y).Furniture == "Cage") {
@@ -143,20 +150,25 @@ let KDSprites = {
 		}
 		return "Barrel";
 	},
+	// @ts-ignore
 	"F": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
+	// @ts-ignore
 	"?": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
+	// @ts-ignore
 	"/": (x, y, Fog, noReplace) => {
 		return "RubbleLooted";
 	},
+	// @ts-ignore
 	",": (x, y, Fog, noReplace) => {
 		if (KDWallVert(x, y, noReplace))
 			return "WallVert";
 		return "Wall";
 	},
+	// @ts-ignore
 	"D": (x, y, Fog, noReplace) => {
 		if (Fog) {
 			if (KinkyDungeonTilesMemory.get(x + "," + y)) return KinkyDungeonTilesMemory.get(x + "," + y);
@@ -165,6 +177,7 @@ let KDSprites = {
 		}
 		return "Door";
 	},
+	// @ts-ignore
 	"d": (x, y, Fog, noReplace) => {
 		if (Fog) {
 			if (KinkyDungeonTilesMemory.get(x + "," + y)) return KinkyDungeonTilesMemory.get(x + "," + y);
@@ -173,23 +186,29 @@ let KDSprites = {
 		}
 		return "DoorOpen";
 	},
+	// @ts-ignore
 	"a": (x, y, Fog, noReplace) => {
 		return "ShrineBroken";
 	},
+	// @ts-ignore
 	"A": (x, y, Fog, noReplace) => {
 		return (KinkyDungeonTiles.get(x + "," + y) && KinkyDungeonTiles.get(x + "," + y).Type == "Shrine" && KinkyDungeonTiles.get(x + "," + y).Name == "Commerce") ? "ShrineC" : (
 			(KinkyDungeonTiles.get(x + "," + y) && KinkyDungeonTiles.get(x + "," + y).drunk) ? "ShrineEmpty" : "Shrine"
 		);
 	},
+	// @ts-ignore
 	"H": (x, y, Fog, noReplace) => {
 		return "StairsDown";
 	},
+	// @ts-ignore
 	"s": (x, y, Fog, noReplace) => {
 		return "StairsDown";
 	},
+	// @ts-ignore
 	"S": (x, y, Fog, noReplace) => {
 		return "StairsUp";
 	},
+	// @ts-ignore
 	"g": (x, y, Fog, noReplace) => {
 		if (KDWallHorizTunnel(x, y))
 			return "GrateHoriz";
@@ -200,115 +219,151 @@ let KDSprites = {
 		}
 		return "Grate";
 	},
+	// @ts-ignore
 	"r": (x, y, Fog, noReplace) => {
 		return "RubbleLooted";
 	},
+	// @ts-ignore
 	"t": (x, y, Fog, noReplace) => {
 		return "Wall";
 	},
+	// @ts-ignore
 	"T": (x, y, Fog, noReplace) => {
 		return (KinkyDungeonBlindLevel > 0) ?"Floor" : "Trap";
 	},
+	// @ts-ignore
 	"Y": (x, y, Fog, noReplace) => {
 		return "Doodad";
 	},
+	// @ts-ignore
 	"R": (x, y, Fog, noReplace) => {
 		return "RubbleLooted";
 	},
+	// @ts-ignore
 	"m": (x, y, Fog, noReplace) => {
 		return "Brickwork";
 	},
+	// @ts-ignore
 	"M": (x, y, Fog, noReplace) => {
 		return "Brickwork";
 	},
+	// @ts-ignore
 	"O": (x, y, Fog, noReplace) => {
 		return "OrbEmpty";
 	},
+	// @ts-ignore
 	"P": (x, y, Fog, noReplace) => {
 		return "OrbEmpty";
 	},
+	// @ts-ignore
 	"p": (x, y, Fog, noReplace) => {
 		return "OrbEmpty";
 	},
+	// @ts-ignore
 	"o": (x, y, Fog, noReplace) => {
 		return "OrbEmpty";
 	},
+	// @ts-ignore
 	"w": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
+	// @ts-ignore
 	"]": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
+	// @ts-ignore
 	"[": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
+	// @ts-ignore
 	"=": (x, y, Fog, noReplace) => {
 		return "Brickwork";
 	},
+	// @ts-ignore
 	"+": (x, y, Fog, noReplace) => {
 		return "Brickwork";
 	},
+	// @ts-ignore
 	"-": (x, y, Fog, noReplace) => {
 		return "Brickwork";
 	},
+	// @ts-ignore
 	"l": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
 };
 
 let KDOverlays = {
+	// @ts-ignore
 	"-": (x, y, Fog, noReplace) => {
 		return "ChargerSpent";
 	},
+	// @ts-ignore
 	"l": (x, y, Fog, noReplace) => {
 		return "Leyline";
 	},
+	// @ts-ignore
 	"+": (x, y, Fog, noReplace) => {
 		return "Charger";
 	},
+	// @ts-ignore
 	"=": (x, y, Fog, noReplace) => {
 		return "ChargerCrystal";
 	},
+	// @ts-ignore
 	"Y": (x, y, Fog, noReplace) => {
 		return "Rubble";
 	},
+	// @ts-ignore
 	"/": (x, y, Fog, noReplace) => {
 		return "Scrap";
 	},
+	// @ts-ignore
 	"R": (x, y, Fog, noReplace) => {
 		return "Rubble";
 	},
+	// @ts-ignore
 	"$": (x, y, Fog, noReplace) => {
 		return "Angel";
 	},
+	// @ts-ignore
 	"m": (x, y, Fog, noReplace) => {
 		return "TabletSpent";
 	},
+	// @ts-ignore
 	"M": (x, y, Fog, noReplace) => {
 		if (KinkyDungeonTiles.get(x + "," + y) && !Object.keys(KinkyDungeonGoddessRep).includes(KinkyDungeonTiles.get(x + "," + y).Name)) return "Tablet" + KinkyDungeonTiles.get(x + "," + y).Name;
 		return "Tablet";
 	},
+	// @ts-ignore
 	"[": (x, y, Fog, noReplace) => {
 		return "Spores";
 	},
+	// @ts-ignore
 	"]": (x, y, Fog, noReplace) => {
 		return "HappyGas";
 	},
+	// @ts-ignore
 	"w": (x, y, Fog, noReplace) => {
 		return Fog ? "" : "Water";
 	},
+	// @ts-ignore
 	"O": (x, y, Fog, noReplace) => {
 		return "Orb";
 	},
+	// @ts-ignore
 	"P": (x, y, Fog, noReplace) => {
 		return "Perk";
 	},
+	// @ts-ignore
 	",": (x, y, Fog, noReplace) => {
 		return "HookLow";
 	},
+	// @ts-ignore
 	"?": (x, y, Fog, noReplace) => {
 		return "HookHigh";
 	},
+	// @ts-ignore
 	"B": (x, y, Fog, noReplace) => {
 		return "Bed";
 	},
@@ -443,7 +498,9 @@ function KinkyDungeonDrawGame() {
 
 	KinkyDungeonCapStats();
 
+	// @ts-ignore
 	if (ChatRoomChatLog.length > 0) {
+		// @ts-ignore
 		let LastChatObject = ChatRoomChatLog[ChatRoomChatLog.length - 1];
 		let LastChat = LastChatObject.Garbled;
 		let LastChatTime = LastChatObject.Time;
@@ -972,41 +1029,50 @@ function KinkyDungeonDrawGame() {
 	} else if (KinkyDungeonDrawState == "Heart") {
 		KinkyDungeonDrawHeart();
 	} else if (KinkyDungeonDrawState == "Magic") {
+		// @ts-ignore
 		DrawButtonKDEx("goInv", (bdata) => {
 			KinkyDungeonDrawState = "Inventory";
 			return true;
 		}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonInventory"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_inventory.png", undefined, undefined, false, "", 24, true); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("goRep", (bdata) => {
 			KinkyDungeonDrawState = "Reputation";
 			return true;
 		}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonReputation"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_reputation.png", undefined, undefined, false, "", 24, true); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("goSpells", (bdata) => {
 			KinkyDungeonDrawState = "MagicSpells";
 			return true;
 		}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonMagic"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_spells.png", undefined, undefined, false, "", 24, true); bindex++;
 
 		let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
+		// @ts-ignore
 		DrawButtonKDEx("goLog", (bdata) => {
 			KinkyDungeonDrawState = "Logbook";
 			KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
 			return true;
 		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, logtxt, "#ffffff", KinkyDungeonRootDirectory + "UI/button_logbook.png", undefined, undefined, false, "", 24, true); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, bwidth, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 
 		KinkyDungeonDrawMagic();
 
 	} else if (KinkyDungeonDrawState == "MagicSpells") {
+		// @ts-ignore
 		DrawButtonKDEx("goInv", (bdata) => {
 			KinkyDungeonDrawState = "Inventory";
 			return true;
 		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonInventory"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_inventory.png", undefined, undefined, false, "", 24, true); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("goRep", (bdata) => {
 			KinkyDungeonDrawState = "Reputation";
 			return true;
 		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonReputation"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_reputation.png", undefined, undefined, false, "", 24, true); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, bwidth, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", ""); bindex++;
 
 		let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
+		// @ts-ignore
 		DrawButtonKDEx("goLog", (bdata) => {
 			KinkyDungeonDrawState = "Logbook";
 			KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
@@ -1014,17 +1080,21 @@ function KinkyDungeonDrawGame() {
 		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, logtxt, "#ffffff", KinkyDungeonRootDirectory + "UI/button_logbook.png", undefined, undefined, false, "", 24, true); bindex++;
 		KinkyDungeonDrawMagicSpells();
 	} else if (KinkyDungeonDrawState == "Inventory") {
+		// @ts-ignore
 		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, bwidth, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", ""); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("goRep", (bdata) => {
 			KinkyDungeonDrawState = "Reputation";
 			return true;
 		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonReputation"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_reputation.png", undefined, undefined, false, "", 24, true); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("goSpells", (bdata) => {
 			KinkyDungeonDrawState = "MagicSpells";
 			return true;
 		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonMagic"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_spells.png", undefined, undefined, false, "", 24, true); bindex++;
 
 		let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
+		// @ts-ignore
 		DrawButtonKDEx("goLog", (bdata) => {
 			KinkyDungeonDrawState = "Logbook";
 			KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
@@ -1034,34 +1104,42 @@ function KinkyDungeonDrawGame() {
 
 		KinkyDungeonDrawInventory();
 	} else if (KinkyDungeonDrawState == "Logbook") {
+		// @ts-ignore
 		DrawButtonKDEx("goInv", (bdata) => {
 			KinkyDungeonDrawState = "Inventory";
 			return true;
 		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonInventory"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_inventory.png", undefined, undefined, false, "", 24, true); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("goRep", (bdata) => {
 			KinkyDungeonDrawState = "Reputation";
 			return true;
 		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonReputation"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_reputation.png", undefined, undefined, false, "", 24, true); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("goSpells", (bdata) => {
 			KinkyDungeonDrawState = "MagicSpells";
 			return true;
 		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonMagic"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_spells.png", undefined, undefined, false, "", 24, true); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, bwidth, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", ""); bindex++;
 
 
 
 		KinkyDungeonDrawLore();
 	} else if (KinkyDungeonDrawState == "Reputation") {
+		// @ts-ignore
 		DrawButtonKDEx("goInv", (bdata) => {
 			KinkyDungeonDrawState = "Inventory";
 			return true;
 		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonInventory"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_inventory.png", undefined, undefined, false, "", 24, true); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", ""); bindex++;
+		// @ts-ignore
 		DrawButtonKDEx("goSpells", (bdata) => {
 			KinkyDungeonDrawState = "MagicSpells";
 			return true;
 		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonMagic"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_spells.png", undefined, undefined, false, "", 24, true); bindex++;
 		let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
+		// @ts-ignore
 		DrawButtonKDEx("goLog", (bdata) => {
 			KinkyDungeonDrawState = "Logbook";
 			KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
@@ -1070,6 +1148,7 @@ function KinkyDungeonDrawGame() {
 
 		KinkyDungeonDrawReputation();
 	} else if (KinkyDungeonDrawState == "Lore") {
+		// @ts-ignore
 		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 250, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KinkyDungeonDrawLore();
 	} else if (KinkyDungeonDrawState == "Restart") {
@@ -1283,6 +1362,7 @@ let KDMsgX = 450;
 
 function KinkyDungeonDrawMessages(NoLog) {
 	if (!NoLog)
+		// @ts-ignore
 		DrawButtonKDEx("logtog", (bdata) => {
 			KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle;
 			KDLogIndex = 0;
@@ -1312,12 +1392,14 @@ function KinkyDungeonDrawMessages(NoLog) {
 			DrawTextFitKD(log.text, KDMsgX + KDMsgWidth/2, KDLogTopPad + i * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray2);
 		}
 		if (KinkyDungeonMessageLog.length > KDMaxLog) {
+			// @ts-ignore
 			DrawButtonKDEx("logscrollup", (bdata) => {
 				if (KDLogIndex > 0)
 					KDLogIndex = Math.max(0, KDLogIndex - KDLogIndexInc);
 				return true;
 			}, true, 1500, 20, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png");
 			//KDMsgX + KDMsgWidth/2 - 45, KDLogTopPad + KDLogHeight + 10
+			// @ts-ignore
 			DrawButtonKDEx("logscrolldown", (bdata) => {
 				if (KDLogIndex < KinkyDungeonMessageLog.length - KDMaxLog)
 					KDLogIndex = Math.min(Math.max(0, KinkyDungeonMessageLog.length - KDMaxLog), KDLogIndex + KDLogIndexInc);
@@ -1871,6 +1953,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {string} [TextColor] - Color of the text
  * @returns {void} - Nothing
  */
+// @ts-ignore
 function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = KDTextGray0, CheckImage = "Icons/Checked.png") {
 	DrawTextFitKD(Text, Left + 100, Top + 33, 1000, TextColor, "#333333");
 	DrawButtonVis(Left, Top, Width, Height, "", Disabled ? "#ebebe4" : "#ffffff", IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled);
@@ -1893,6 +1976,7 @@ function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = f
  * @param {boolean} [NoBorder] - Disables the hovering options if set to true
  * @returns {void} - Nothing
  */
+// @ts-ignore
 function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, BackText, NextText, Disabled, ArrowWidth, NoBorder) {
 	// Set the widths of the previous/next sections to be colored cyan when hovering over them
 	// By default each covers half the width, together covering the whole button
