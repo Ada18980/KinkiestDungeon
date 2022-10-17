@@ -267,7 +267,7 @@ function KinkyDungeonPlayerEffect(damage, playerEffect, spell, faction, bullet) 
 			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "PoisonDagger", aura: "#22ff44", type: "Sleepiness", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
 			effect = true;
 		} else if (playerEffect.name == "SporesSick") {
-			KinkyDungeonSleepiness += 2;
+			KinkyDungeonSleepiness += 1.5;
 			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesSick"), "#63ab3f", 2);
 			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			effect = true;

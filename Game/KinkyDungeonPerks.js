@@ -209,6 +209,8 @@ let KinkyDungeonStatsPresets = {
 	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
 	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
 	"StartLatex": {startPriority: 30, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
+
+	"CommonFuuka": {category: "Boss", id: "CommonFuuka", cost: -1, locked: true},
 	"FuukaCollar": {startPriority: 40, category: "Boss", id: "FuukaCollar", cost: -3, locked: true, tags: ["start"]},
 
 	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},
@@ -249,7 +251,6 @@ let KinkyDungeonStatsPresets = {
 	"Sticky":  {category: "Damage", id: "Sticky", cost: -1},
 	"Breathless":  {category: "Damage", id: "Breathless", cost: -1},
 
-	"CommonFuuka": {category: "Enemies", id: "CommonFuuka", cost: -1, locked: true},
 	"CommonMaid": {category: "Enemies", id: "CommonMaid", cost: -1, costGroup: "common"},
 	"CommonLatex": {category: "Enemies", id: "CommonLatex", cost: -1, costGroup: "common"},
 	"CommonExp": {category: "Enemies", id: "CommonExp", cost: -1, costGroup: "common"},
