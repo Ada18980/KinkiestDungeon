@@ -471,7 +471,7 @@ let KDPerkStart = {
 	Stranger: () => {
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {
 			let rand = KDRandom();
-			KDSetFactionRelation("Player", key, -1 + 1.7 * rand*rand);
+			KDSetFactionRelation("Player", key, -1 + 0.7 * rand*rand + 1.0*KDRandom());
 		}
 	},
 	WrongNeighborhood: () => {
