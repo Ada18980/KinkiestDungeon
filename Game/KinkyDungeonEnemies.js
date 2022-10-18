@@ -1652,7 +1652,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					}
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "playWithPlayer"});
 				}
-			}
+			} else enemy.playWithPlayer = 0;
 			if (enemy.playWithPlayerCD > 0) {
 				enemy.playWithPlayerCD -= delta;
 				if (enemy.playWithPlayerCD <= 0)
