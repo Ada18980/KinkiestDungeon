@@ -100,6 +100,29 @@ function KDCanEscape() {
 	return KDGameData.JailKey || KinkyDungeonFlags.has("BossUnlocked");
 }
 
+/**
+ * Creates combined record of tags
+ * @param {number} x
+ * @param {number} y
+ * @returns {Record<String, boolean>}
+ */
+function KDEffectTileTags(x, y) {
+	/** @type {Record<String, boolean>} */
+	let ret = {};
+	let tiles = KDGetEffectTiles(x, y);
+	if (tiles) {
+		for (let t of tiles.values()) {
+			if (t.tags) {
+				for (let tag of t.tags) {
+					ret[tag] = true;
+				}
+			}
+		}
+	}
+
+	return ret;
+}
+
 function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 	if (!KDCanEscape()) {
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonNeedJailKey"), "#ffffff", 1);
@@ -309,16 +332,42 @@ function KDCreateAoEEffectTiles(x, y, tile, durationMod, rad, avoidPoint, densit
 		}
 }
 
+/**
+ * Current alpha vs fade type
+ * @param {string} id
+ * @param {number} alpha
+ * @param {string} fade
+ * @param {number} delta
+ */
+function KDApplyAlpha(id, alpha, fade, delta) {
+	if (!fade) return undefined;
+	switch (fade) {
+		case "random": {
+			if (alpha >= 1 || alpha <= 0) KDTileModes[id] = !KDTileModes[id];
+			return alpha + (KDTileModes[id] ? -delta*0.001 : delta*0.001);
+		}
+	}
+}
 
+/** @type {Record<string, boolean>} */
+let KDTileModes = {
+};
+
+
+let KDLastEffTileUpdate = 0;
 function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
+	let delta = CommonTime() - KDLastEffTileUpdate;
+	KDLastEffTileUpdate = CommonTime();
 	for (let tileLocation of KinkyDungeonEffectTiles.values()) {
 		for (let tile of tileLocation.values()) {
 			let sprite = (tile.pauseDuration > 0 && tile.pauseSprite) ? tile.pauseSprite : (tile.skin ? tile.skin : tile.name);
 			if (tile.x >= CamX && tile.y >= CamY && tile.x < CamX + KinkyDungeonGridWidthDisplay && tile.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(tile.x, tile.y) > 0) {
-				KDDraw(kdgameboard, kdpixisprites, tile.x + "," + tile.y + "_" + sprite, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",
+				let tileid = tile.x + "," + tile.y + "_" + sprite;
+				KDDraw(kdgameboard, kdpixisprites, tileid, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",
 					(tile.x + (tile.xoffset ? tile.xoffset : 0) - CamX)*KinkyDungeonGridSizeDisplay, (tile.y - CamY + (tile.yoffset ? tile.yoffset : 0))*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, 0, {
 						zIndex: -0.1 + 0.01 * tile.priority,
+						alpha: KDApplyAlpha(tileid, kdpixisprites.get(tileid)?.alpha, tile.fade, delta),
 					});
 			}
 		}

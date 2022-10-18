@@ -17,7 +17,7 @@ let KDEffectTiles = {
 		name: "Water",
 		duration: 40,
 		priority: 1,
-		tags: ["water", "freezeover"],
+		tags: ["water", "freezeover", "conductive"],
 	},
 	"Cracked": {
 		name: "Cracked",
@@ -31,14 +31,14 @@ let KDEffectTiles = {
 		duration: 10,
 		priority: 2,
 		affinities: ["Sticky"],
-		tags: ["slime", "freezeover", "flammable"],
+		tags: ["slime", "freezeover", "flammable", "conductive"],
 	},
 	"Latex": {
 		name: "Latex",
 		duration: 80,
 		priority: -2,
 		affinities: ["Latex"],
-		tags: ["latex"],
+		tags: ["latex", "insulator"],
 	},
 	"Ropes": {
 		name: "Ropes",
@@ -62,14 +62,14 @@ let KDEffectTiles = {
 		name: "Chains",
 		duration: 30,
 		priority: 5,
-		tags: ["bind", "chain", "noisy"],
+		tags: ["bind", "chain", "noisy", "conductive"],
 	},
 	"SlimeBurning": {
 		name: "SlimeBurning",
 		duration: 5,
 		priority: 3,
 		affinities: ["Sticky"],
-		tags: ["slime", "ignite", "fire", "hot"],
+		tags: ["slime", "ignite", "fire", "hot", "conductive"],
 	},
 	"Smoke": {
 		name: "Smoke",
@@ -99,7 +99,7 @@ let KDEffectTiles = {
 		priority: 7,
 		brightness: 6,
 		lightColor: 0xaaaaff,
-		tags: ["ignite"],
+		tags: ["ignite", "electric"],
 	},
 	"Ignition": {
 		name: "Ignition",

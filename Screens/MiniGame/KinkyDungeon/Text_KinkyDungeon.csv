@@ -3858,6 +3858,7 @@ KinkyDungeonFilterlearnable,Learnable
 KinkyDungeonFilterunlearned,Unlearned
 KinkyDungeonFilternoupgrade,Excl. Upgrades
 KinkyDungeonFilteryesupgrade,Passive
+KinkyDungeonFilterupcast,Upcast
 KinkyDungeonFilterbuff,Buffs
 KinkyDungeonFilterdot,DoT
 KinkyDungeonFilterbolt,Projectiles

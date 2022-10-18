@@ -940,7 +940,7 @@ function KinkyDungeonDrawMagic() {
 
 
 let selectedFilters = ["learnable"];
-let genericfilters = ['learnable', 'unlearned', 'noupgrade', 'yesupgrade'];
+let genericfilters = ['learnable', 'unlearned', 'noupgrade', 'yesupgrade', "upcast"];
 
 let KDSpellListIndex = 0;
 let KDSpellListIndexVis = 0;
@@ -1075,7 +1075,8 @@ function KinkyDungeonListSpells(Mode) {
 				&& (!selectedFilters.includes("learnable") || (prereq || learned || prereqHost))
 				&& (!selectedFilters.includes("unlearned") || (!learned))
 				&& (!selectedFilters.includes("noupgrade") || (!upgrade && !upcast))
-				&& (!selectedFilters.includes("yesupgrade") || (upgrade || upcast || passive))) {
+				&& (!selectedFilters.includes("yesupgrade") || (upgrade || passive))
+				&& (!selectedFilters.includes("upcast") || (upcast))) {
 
 				if (iii < Math.round(KDSpellListIndexVis)) {
 					iii += 1;

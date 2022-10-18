@@ -300,10 +300,25 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			upcastFrom: "BoulderLaunch", upcastLevel: 2,
 			manacost: 6, components: ["Legs"], projectileTargeting: true, noTargetPlayer: true, noEnemyCollision: true, CastInWalls: true, level:2, type:"inert", onhit:"aoe", time: 8, delay: 1, power: 12, range: 50, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "BigBoulder", target: "target", directional:true, offset: false}, channel: 1},
-		{name: "Electrify", tags: ["electric", "offense"], prerequisite: "ApprenticeLightning", noise: 6, sfx: "FireSpell", landsfx: "Shock", school: "Elements", manacost: 5, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", power: 9, time: 4, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "electric", playerEffect: {name: "Shock", time: 1}}, // A series of light shocks incapacitate you
-		{name: "Shock", tags: ["electric", "bolt", "offense", "dot"], prerequisite: "ApprenticeLightning", sfx: "FireSpell", school: "Elements", manacost: 5, components: ["Arms"], noEnemyCollision: true, level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 2.5, delay: 0, range: 50, damage: "inert", speed: 1,
+		{name: "Electrify", tags: ["electric", "offense"], prerequisite: "ApprenticeLightning", noise: 6,
+			effectTileDurationMod: 2, effectTile: {
+				name: "Sparks",
+				duration: 3,
+			},
+			sfx: "FireSpell", landsfx: "Shock", school: "Elements", manacost: 5, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", power: 9, time: 4, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "electric", playerEffect: {name: "Shock", time: 1}}, // A series of light shocks incapacitate you
+		{name: "Shock", tags: ["electric", "bolt", "offense", "dot"], prerequisite: "ApprenticeLightning", sfx: "FireSpell",
+			effectTileDurationMod: 2, effectTile: {
+				name: "Sparks",
+				duration: 3,
+			},
+			school: "Elements", manacost: 5, components: ["Arms"], noEnemyCollision: true, level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 2.5, delay: 0, range: 50, damage: "inert", speed: 1,
 			events: [{type: "CastSpellNearbyEnemy", trigger: "bulletTick", spell: "ShockStrike", aoe: 1.5},]},
-		{name: "Crackle", tags: ["electric", "offense", "aoe"], prerequisite: "Shock", noise: 6, sfx: "Shock", school: "Elements", manacost: 4, components: ["Arms"], level:2, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 4.0, delay: 0, time: 1, range: 4, speed: 4, size: 1, damage: "electric",
+		{name: "Crackle", tags: ["electric", "offense", "aoe"], prerequisite: "Shock", noise: 6, sfx: "Shock",
+			effectTileDurationModTrail: 2, effectTileTrail: {
+				name: "Sparks",
+				duration: 3,
+			},
+			school: "Elements", manacost: 4, components: ["Arms"], level:2, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 4.0, delay: 0, time: 1, range: 4, speed: 4, size: 1, damage: "electric",
 			trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1.0, playerEffect: {name: "Shock", time: 1}},
 		{name: "Fissure", tags: ["fire", "denial", "dot", "aoe", "offense"], noUniqueHits: true, prerequisite: "Ignite", noise: 7, sfx: "FireSpell", school: "Elements", manacost: 8, components: ["Legs"], level:3, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 5.5, delay: 0, range: 4, speed: 4, size: 1, damage: "fire",
 			trailPower: 1.5, trailLifetime: 6, piercingTrail: true, trailDamage:"fire", trail:"lingering", trailChance: 1, playerEffect: {name: "DamageNoMsg", hitTag: "Fissure", time: 1, damage:"fire", power: 3}},
@@ -316,11 +331,12 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "IceBreath", tags: ["ice", "denial", "offense", "utility", "aoe"], prerequisite: "Hailstorm", sfx: "MagicSlash", hitsfx: "Freeze", school: "Elements", manacost: 8,
 			upcastFrom: "Hailstorm", upcastLevel: 1,
 			components: ["Verbal"], level:2, type:"inert", onhit:"lingering", time: 1, delay: 1, range: 3, size: 3, aoe: 1.5, lifetime: 10, power: 5, lifetimeHitBonus: 5, damage: "ice"}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
-		{name: "LightningBolt", tags: ["electric", "aoe", "offense"], prerequisite: "Crackle", noise: 11, sfx: "Lightning", school: "Elements", spellPointCost: 2, manacost: 8, components: ["Arms"], level:3, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 8.5, delay: 0, time: 2, range: 50, speed: 50, size: 1, damage: "electric",
+		{name: "LightningBolt", tags: ["electric", "aoe", "offense"], prerequisite: "Crackle", noise: 11, sfx: "Lightning",
+			school: "Elements", spellPointCost: 2, manacost: 8, components: ["Arms"], level:3, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 8.5, delay: 0, time: 2, range: 50, speed: 50, size: 1, damage: "electric",
 			upcastFrom: "Crackle", upcastLevel: 2,
 			trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "Shock", time: 3},
 			effectTileDurationModTrail: 4, effectTileDensityTrail: 0.6, effectTileTrail: {
-				name: "Ember",
+				name: "Sparks",
 				duration: 2,
 			}
 		},
@@ -889,6 +905,10 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "StaticSphereStrike", sfx: "Shock", manacost: 2, bulletColor: 0x8888ff, bulletLight: 2,
 		hitColor: 0x8888ff, hitLight: 6, components: ["Verbal"], level:1, type:"hit", noTerrainHit: true, onhit:"aoe", time: 1, delay: 1, power: 1.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
 	{name: "LightningRuneStrike", bulletColor: 0x8888ff, bulletLight: 2,
+		effectTileDurationMod: 2, effectTile: {
+			name: "Sparks",
+			duration: 3,
+		},
 		hitColor: 0x8888ff, hitLight: 6, hitsfx: "Shock", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", time: 4, delay: 300, power: 4.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
 	{name: "FlameRuneStrike", bulletColor: 0xb83716, bulletLight: 2,
 		hitColor: 0xe64539, hitLight: 6, hitsfx: "Lightning", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", delay: 300, power: 5.5, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "fire"},
@@ -1138,10 +1158,20 @@ let KinkyDungeonSpellListEnemies = [
 		power: 6, delay: 0, range: 50, damage: "poison", speed: 1, playerEffect: {name: "Flummox", time: 1, damage: "poison", power: 6}},
 
 	// Shockwitch spells
-	{enemySpell: true, name: "WitchElectrify", color: "#8888ff", minRange: 0, landsfx: "Shock", manacost: 5, components: ["Arms"], level:2, type:"inert", onhit:"aoe", power: 3.5, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "electric", playerEffect: {name: "Shock", time: 1}}, // A series of light shocks incapacitate you
+	{enemySpell: true, name: "WitchElectrify", color: "#8888ff", minRange: 0, landsfx: "Shock", manacost: 5,
+		effectTileDurationMod: 2, effectTile: {
+			name: "Sparks",
+			duration: 3,
+		},
+		components: ["Arms"], level:2, type:"inert", onhit:"aoe", power: 3.5, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "electric", playerEffect: {name: "Shock", time: 1}}, // A series of light shocks incapacitate you
 	{enemySpell: true, name: "WitchElectricOrb", color: "#8888ff", sfx: "MagicSlash", manacost: 4, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 5, damage: "inert", speed: 1, playerEffect: {name: ""},
 		spellcast: {spell: "WitchElectricBurst", target: "onhit", directional:true, offset: false}},
-	{enemySpell: true, name: "WitchElectricBurst", sfx: "Shock", manacost: 4, components: ["Verbal"], level:1, type:"hit", noTerrainHit: true, onhit:"aoe", time: 5, delay: 1, power: 4, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "electric", playerEffect: {name: "Shock", time: 1}},
+	{enemySpell: true, name: "WitchElectricBurst", sfx: "Shock", manacost: 4, components: ["Verbal"], level:1, type:"hit",
+		effectTileDurationMod: 2, effectTile: {
+			name: "Sparks",
+			duration: 3,
+		},
+		noTerrainHit: true, onhit:"aoe", time: 5, delay: 1, power: 4, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "electric", playerEffect: {name: "Shock", time: 1}},
 
 	// Elemental witch spells
 	{enemySpell: true, name: "WitchWaterBall", color: "#4f7db8", tags: ["water", "bolt", "offense", "utility"], sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"buff",

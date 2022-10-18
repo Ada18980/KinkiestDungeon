@@ -1863,3 +1863,20 @@ function KDCreateParticle(xx, yy, name) {
 	KinkyDungeonBullets.push(newB);
 	KinkyDungeonUpdateSingleBulletVisual(newB, false);
 }
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {number} aoe
+ * @param {any} Damage
+ * @param {entity} Damage
+ */
+function KDDealEnvironmentalDamage(x, y, aoe, Damage, Attacker) {
+	for (let enemy of KDNearbyEnemies(x, y, aoe)) {
+		KinkyDungeonDamageEnemy(enemy, Damage, true, true, undefined, undefined, Attacker, 0.1);
+	}
+	if (KinkyDungeonPlayerEntity.x == x && KinkyDungeonPlayerEntity.y == y) {
+		KinkyDungeonPlayerEffect(Damage.type, {name: "EnvDamage", power: Damage.damage, damage: Damage.type}, undefined, KDGetFaction(Attacker), undefined);
+	}
+}

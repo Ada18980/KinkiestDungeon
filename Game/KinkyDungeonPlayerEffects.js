@@ -1,10 +1,21 @@
 'use strict';
 
+/**
+ * @type {Record<string, (damage, playerEffect, spell, faction, bullet) => {sfx: string, effect: boolean}>}
+ */
+let KDPlayerEffects = {
+	"EnvDamage": (damage, playerEffect, spell, faction, bullet) => {
+		let dmg = KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
+		KinkyDungeonSendTextMessage(Math.min(playerEffect.power, 5), TextGet("KinkyDungeonDamageSelf").replace("DamageDealt", dmg.string), "#ff0000", 1);
+		if (dmg.happened) return {sfx: undefined, effect: true}; return {sfx: undefined, effect: false};
+	}
+};
+
 
 function KinkyDungeonPlayerEffect(damage, playerEffect, spell, faction, bullet) {
 	if (!playerEffect.name) return;
 	let effect = false;
-	let sfx = spell.hitsfx;
+	let sfx = spell ? spell.hitsfx : undefined;
 	if (!sfx) sfx = (playerEffect.power && playerEffect.power < 2) ? "DamageWeak" : "Damage";
 	if (damage == "inert") return;
 	if (playerEffect.hitTag && !KDPlayerHitBy.includes(playerEffect.hitTag)) KDPlayerHitBy.push(playerEffect.hitTag);
@@ -54,7 +65,7 @@ function KinkyDungeonPlayerEffect(damage, playerEffect, spell, faction, bullet) 
 			}
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
 			if (dmg.happened) effect = true;
-		} if (playerEffect.name == "Damage") {
+		} else if (playerEffect.name == "Damage") {
 			let dmg = KinkyDungeonDealDamage({damage: Math.max((spell.aoepower) ? spell.aoepower : 0, spell.power), type: spell.damage}, bullet);
 			KinkyDungeonSendTextMessage(Math.min(spell.power, 5), TextGet("KinkyDungeonDamageSelf").replace("DamageDealt", dmg.string), "#ff0000", 1);
 			if (dmg.happened) effect = true;
@@ -616,6 +627,10 @@ function KinkyDungeonPlayerEffect(damage, playerEffect, spell, faction, bullet) 
 			KinkyDungeonStatBind = Math.max(0, playerEffect.time);
 			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonShadowBind"), "#ff0000", playerEffect.time);
 			effect = true;
+		} else if (KDPlayerEffects[playerEffect.name]) {
+			let ret = KDPlayerEffects[playerEffect.name](damage, playerEffect, spell, faction, bullet);
+			if (ret.sfx) sfx = ret.sfx;
+			effect = ret.effect;
 		}
 	}
 

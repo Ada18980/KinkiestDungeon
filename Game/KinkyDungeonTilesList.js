@@ -408,6 +408,50 @@ let KDEffectTileCreateFunctionsCreator = {
 		}
 		return true;
 	},
+	"Sparks": (newTile, existingTile) => {
+		if (existingTile.tags.includes("conductive")) {
+			let rt = KDEffectTileTags(existingTile.x + 1, existingTile.y);
+			let lt = KDEffectTileTags(existingTile.x - 1, existingTile.y);
+			let ut = KDEffectTileTags(existingTile.x, existingTile.y - 1);
+			let dt = KDEffectTileTags(existingTile.x, existingTile.y + 1);
+			let dmg = {
+				type: "electric",
+				damage: 2.5,
+				time: 0,
+				bind: 0,
+				flags: ["EchoDamage"],
+			};
+			if (!rt.electric && rt.conductive) {
+				KDCreateEffectTile(existingTile.x + 1, existingTile.y, {
+					name: "Sparks",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x + 1, existingTile.y, 0.5, dmg, undefined);
+			}
+			if (!lt.electric && lt.conductive) {
+				KDCreateEffectTile(existingTile.x - 1, existingTile.y, {
+					name: "Sparks",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x - 1, existingTile.y, 0.5, dmg, undefined);
+			}
+			if (!dt.electric && dt.conductive) {
+				KDCreateEffectTile(existingTile.x, existingTile.y + 1, {
+					name: "Sparks",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x, existingTile.y + 1, 0.5, dmg, undefined);
+			}
+			if (!ut.electric && ut.conductive) {
+				KDCreateEffectTile(existingTile.x, existingTile.y - 1, {
+					name: "Sparks",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x, existingTile.y - 1, 0.5, dmg, undefined);
+			}
+		}
+		return true;
+	},
 };
 
 /**
@@ -645,13 +689,19 @@ let KDEffectTileBulletFunctions = {
 					duration: 3,
 				}, 1); // Create ice
 			} else {
-				if ((KDIgnitionSources.includes(type)) && b.bullet.damage.damage > 0) {
+				if (type == "fire" && b.bullet.damage.damage > 0) {
 					tile.duration = 0;
 					KDSmokePuff(tile.x, tile.y, 1.5, 0.1, true);
 					KDCreateEffectTile(tile.x, tile.y, {
 						name: "Steam",
 						duration: 6,
 					}, 2); // Create steam
+				}
+				if (type == "electric" && b.bullet.damage.damage > 0) {
+					KDCreateEffectTile(tile.x, tile.y, {
+						name: "Sparks",
+						duration: 3,
+					}, 1); // Create sparks
 				}
 			}
 		}

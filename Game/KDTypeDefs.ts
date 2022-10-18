@@ -1045,6 +1045,8 @@ interface effectTile {
 	pauseSprite?: string,
 	brightness?: number,
 	skin?: string,
+	/** random = basic effect where it fades in and has a chance to fade out again */
+	fade?: string,
 };
 
 /** For spells */
