@@ -209,7 +209,7 @@ function KinkyDungeonDressPlayer() {
 					}
 					// Ignored because BC uses string[] as a type!
 					// @ts-ignore
-					CharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, clothes.Color, clothes.Group);
+					KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, clothes.Color, clothes.Group);
 				}
 			}
 
@@ -404,9 +404,9 @@ function KinkyDungeonWearForcedClothes(restraints) {
 					let faction = inv.faction;
 					if (inv.faction)
 						if (dress.factionColor && faction && KinkyDungeonFactionColors[faction]) {
-							for (let i = 0; i < dress.factionColor.length; i++) {
-								for (let n of dress.factionColor[i]) {
-									color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
+							for (let ii = 0; ii < dress.factionColor.length; ii++) {
+								for (let n of dress.factionColor[ii]) {
+									color[n] = KinkyDungeonFactionColors[faction][ii]; // 0 is the primary color
 								}
 							}
 						}
@@ -414,10 +414,17 @@ function KinkyDungeonWearForcedClothes(restraints) {
 					// @ts-ignore
 					if (dress.useHairColor && InventoryGet(KinkyDungeonPlayer, "HairFront")) color = InventoryGet(KinkyDungeonPlayer, "HairFront").Color;
 					// @ts-ignore
-					CharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, dress.Group);
+					KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, dress.Group);
 				}
 			});
 		}
+	}
+}
+
+function KDCharacterAppearanceSetColorForGroup(Player, Color, Group) {
+	let item = InventoryGet(Player, Group);
+	if (item) {
+		item.Color = Color;
 	}
 }
 

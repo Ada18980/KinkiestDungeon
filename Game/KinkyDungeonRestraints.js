@@ -2413,10 +2413,10 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				}
 				if (color) {
 					// @ts-ignore
-					CharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, AssetGroup);
+					KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, AssetGroup);
 					if (placedOnPlayer)
 						// @ts-ignore
-						CharacterAppearanceSetColorForGroup(Player, color, AssetGroup);
+						KDCharacterAppearanceSetColorForGroup(Player, color, AssetGroup);
 				}
 				let item = {name: restraint.name, type: Restraint, events:events ? events : Object.assign([], restraint.events), tightness: tight, lock: "", faction: faction, dynamicLink: dynamicLink };
 				KinkyDungeonInventoryAdd(item);

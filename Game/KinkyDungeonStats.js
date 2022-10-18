@@ -851,8 +851,6 @@ function KinkyDungeonUpdateStats(delta) {
 	KinkyDungeonPlayerDamage = KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
 
 	KinkyDungeonUpdateStruggleGroups();
-
-	KinkyDungeonDressPlayer();
 	// Slowness calculation
 	KinkyDungeonCalculateSlowLevel();
 	let sleepRate = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sleepiness");

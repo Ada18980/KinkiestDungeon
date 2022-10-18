@@ -3422,6 +3422,8 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	KinkyDungeonSendEvent("tickAfter", {delta: delta});
 
 	KinkyDungeonUpdateStats(0);
+
+	KinkyDungeonDressPlayer();
 	KDGetEnemyCache();
 	if (delta > 0)
 		KDEntitiesFloaterRegisty = new Map();
