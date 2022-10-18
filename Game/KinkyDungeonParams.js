@@ -206,7 +206,7 @@ const KinkyDungeonMapParams = {
 			{Type: "SmallAltar", Weight: 20},
 			{Type: "GuardedChest", Weight: 10},
 			{Type: "LargeGuardedChest", Weight: 20},
-			{Type: "JungleLight", Weight: 20},
+			{Type: "JungleLight", Weight: 8},
 			{Type: "Fireflies", Weight: 40},
 		],
 

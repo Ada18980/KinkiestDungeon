@@ -438,18 +438,23 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				break;
 			}
 			case "JungleLight": {
-				KinkyDungeonMapSet(cornerX, cornerY, '2');
-				KinkyDungeonTiles.set((cornerX) + "," + (cornerY), {Light: 6, Skin: "LightRays"});
+				if (!KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(cornerX, cornerY))) skip = true;
+				else {
+					KinkyDungeonMapSet(cornerX, cornerY, '2');
+					KinkyDungeonTiles.set((cornerX) + "," + (cornerY), {Light: 6, Skin: "LightRays"});
+				}
 				break;
 			}
 			case "Fireflies": {
-				KinkyDungeonMapSet(cornerX, cornerY, '0');
-				KinkyDungeonTiles.set((cornerX) + "," + (cornerY), {Light: 2, Skin: "Fireflies"});
+				if (!KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(cornerX, cornerY))) skip = true;
+				else
+					KinkyDungeonTiles.set((cornerX) + "," + (cornerY), {Light: 2, Skin: "Fireflies"});
 				break;
 			}
 			case "Magicflies": {
-				KinkyDungeonMapSet(cornerX, cornerY, '0');
-				KinkyDungeonTiles.set((cornerX) + "," + (cornerY), {Light: 2, Skin: "Magicflies"});
+				if (!KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(cornerX, cornerY))) skip = true;
+				else
+					KinkyDungeonTiles.set((cornerX) + "," + (cornerY), {Light: 2, Skin: "Magicflies"});
 				break;
 			}
 			case "Storage": {
