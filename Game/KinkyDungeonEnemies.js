@@ -143,7 +143,7 @@ function KDHelpless(enemy) {
 	return enemy && (enemy.hp <= enemy.Enemy.maxhp * 0.1 || enemy.hp <= 0.52 || enemy.boundLevel > 10 * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
 }
 
-function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius) {
+function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI_Data) {
 	if (enemy && enemy.Enemy && !visionRadius) {
 		visionRadius = enemy.Enemy.visionRadius;
 		if (enemy.blind && !enemy.aware) visionRadius = 1.5;
@@ -155,7 +155,7 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius) {
 
 		if (enemy.Enemy.focusPlayer && KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, pdist, visionRadius, false, false) && !KinkyDungeonCheckPath(enemy.x, enemy.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true)) return KinkyDungeonPlayerEntity;
 
-		let nearestDistance = KDHostile(enemy) ? pdist - 0.1 : 100000;
+		let nearestDistance = (AIData && AIData.hostile) ? pdist - 0.1 : 100000;
 
 		if ((enemy.Enemy.visionRadius || enemy.Enemy.blindSight) && !(enemy.Enemy.noAttack && !enemy.Enemy.spells))
 			for (let e of KinkyDungeonEntities) {
@@ -1701,7 +1701,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				// Delete the enemy
 				if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1; continue;}
 
-				let player = (!KinkyDungeonAngel()) ? KinkyDungeonNearestPlayer(enemy, false, true, enemy.Enemy.visionRadius ? (enemy.Enemy.visionRadius + ((enemy.lifetime > 0 && enemy.Enemy.visionSummoned) ? enemy.Enemy.visionSummoned : 0)) : 0) : KinkyDungeonPlayerEntity;
+				let player = (!KinkyDungeonAngel()) ? KinkyDungeonNearestPlayer(enemy, false, true, enemy.Enemy.visionRadius ? (enemy.Enemy.visionRadius + ((enemy.lifetime > 0 && enemy.Enemy.visionSummoned) ? enemy.Enemy.visionSummoned : 0)) : 0, AIData) : KinkyDungeonPlayerEntity;
 
 
 				if (enemy.Enemy.convertTiles) {
@@ -1965,6 +1965,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.harmless = (KinkyDungeonPlayerDamage.dmg <= enemy.Enemy.armor || !KinkyDungeonHasWill(0.1)) && !KinkyDungeonFlags.has("PlayerCombat") && !KinkyDungeonCanTalk() && !KinkyDungeonPlayer.CanInteract() && KinkyDungeonSlowLevel > 1;
 
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
+	AIData.hostile = KDHostile(enemy);
 
 	AIData.leashing = enemy.Enemy.tags.leashing && KDFactionRelation(KDGetFaction(enemy), "Jail") > -0.1;
 	AIData.highdistraction = enemy.distraction > 0 && enemy.distraction >= enemy.Enemy.maxhp * 0.9;
@@ -2129,7 +2130,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (AIData.playerDist < enemy.Enemy.visionRadius / 2) AIData.playChance += 0.1;
 	if (KDEnemyHasFlag(enemy, "Shop")) AIData.playChance = KDStrictPersonalities.includes(enemy.personality) ?  0.01 : 0;
 
-	if (KDAllied(enemy) || (!KDHostile(enemy) && KDGameData.PrisonerState != "jail" && KDGameData.PrisonerState != "parole" && !KinkyDungeonStatsChoice.has("Submissive"))) AIData.playChance *= 0.07; // Drastically reduced chance to play if not hostile
+	if (KDAllied(enemy) || (!AIData.hostile && KDGameData.PrisonerState != "jail" && KDGameData.PrisonerState != "parole" && !KinkyDungeonStatsChoice.has("Submissive"))) AIData.playChance *= 0.07; // Drastically reduced chance to play if not hostile
 
 	let aware = (enemy.vp > sneakThreshold || enemy.aware);
 	if (KinkyDungeonCanPlay(enemy) && !KinkyDungeonFlags.get("NPCCombat") && !enemy.Enemy.alwaysHostile && !(enemy.rage > 0) && !(enemy.hostile > 0) && player.player && AIData.canSeePlayer && (aware) && KDEnemyCanTalk(enemy) && !KinkyDungeonInJail()) {
@@ -2145,7 +2146,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 
 	if (player.player && AIData.canSeePlayer && aware && !enemy.IntentAction) {
-		let event = KDGetIntentEvent(enemy, AIData, AIData.playEvent, KDAllied(enemy), KDHostile(enemy), KinkyDungeonAggressive(enemy));
+		let event = KDGetIntentEvent(enemy, AIData, AIData.playEvent, KDAllied(enemy), AIData.hostile, KinkyDungeonAggressive(enemy));
 		if (event) event(enemy, AIData);
 	}
 
@@ -2234,7 +2235,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		if (AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer) {
 			if (!enemy.aware && KinkyDungeonAggressive(enemy)) KDAddThought(enemy.id, "Aware", 3, 3);
 			enemy.aware = true;
-			if (KDHostile(enemy) && KinkyDungeonAggressive(enemy) && !enemy.rage && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
+			if (AIData.hostile && KinkyDungeonAggressive(enemy) && !enemy.rage && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
 				for (let e of KinkyDungeonEntities) {
 					if (KDHostile(e) && KinkyDungeonAggressive(e) && !enemy.rage && e != enemy && KDistChebyshev(e.x - enemy.x, e.y - enemy.y) <= KinkyDungeonEnemyAlertRadius) {
 						if (player.player && KDPlayerLight < 1.5) {
@@ -2261,7 +2262,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	AIData.kite = false;
 	AIData.kiteChance = enemy.Enemy.kiteChance ? enemy.Enemy.kiteChance : 0.75;
-	if (AIData.canSeePlayer && (!player.player || KinkyDungeonAggressive(enemy)) && enemy.Enemy && enemy.Enemy.kite && !enemy.usingSpecial && (!player.player || KinkyDungeonHasWill(0.1)) && (enemy.attackPoints <= 0 || enemy.Enemy.attackWhileMoving) && AIData.playerDist <= enemy.Enemy.kite && (KDHostile(enemy) || !player.player)) {
+	if (AIData.canSeePlayer && (!player.player || KinkyDungeonAggressive(enemy)) && enemy.Enemy && enemy.Enemy.kite && !enemy.usingSpecial && (!player.player || KinkyDungeonHasWill(0.1)) && (enemy.attackPoints <= 0 || enemy.Enemy.attackWhileMoving) && AIData.playerDist <= enemy.Enemy.kite && (AIData.hostile || !player.player)) {
 		if (!enemy.Enemy.dontKiteWhenDisabled || !(KinkyDungeonStatBlind < 0 || KinkyDungeonStatBind > 0 || KinkyDungeonStatFreeze > 0 || KinkyDungeonSlowMoveTurns > 0 || KDGameData.SleepTurns > 0))
 			if (!enemy.Enemy.noKiteWhenHarmless || !AIData.harmless)
 				if (AIData.kiteChance >= 1 || KDRandom() < AIData.kiteChance)
@@ -2318,7 +2319,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						enemy.gy = KinkyDungeonPlayerEntity.y;
 					}
 					if (KDEnemyHasFlag(enemy, "StayHere") || KDEnemyHasFlag(enemy, "Defensive")) AIData.dontFollow = true;
-					if (KDHostile(enemy)) {
+					if (AIData.hostile) {
 						KinkyDungeonSetEnemyFlag(enemy, "StayHere", 0);
 						KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
 					} else if (!KDAllied(enemy)) {
@@ -2519,8 +2520,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
 	if (!(enemy.disarm > 0)
 		&& (!enemy.Enemy.followLeashedOnly || KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id)
-		&& ((KDHostile(enemy) || (enemy.playWithPlayer && player.player)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage)))
-		&& (((enemy.aware && KinkyDungeonTrackSneak(enemy, 0, player)) || (AIData.playerDist < Math.max(1.5, AIData.blindSight) && enemy.vp >= sneakThreshold*0.7)) || (!KDAllied(enemy) && !KDHostile(enemy)))
+		&& ((AIData.hostile || (enemy.playWithPlayer && player.player)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage)))
+		&& (((enemy.aware && KinkyDungeonTrackSneak(enemy, 0, player)) || (AIData.playerDist < Math.max(1.5, AIData.blindSight) && enemy.vp >= sneakThreshold*0.7)) || (!KDAllied(enemy) && !AIData.hostile))
 		&& !AIData.ignore
 		&& (AIData.attack.includes("Melee") || (enemy.Enemy.tags && AIData.leashing && !KinkyDungeonHasWill(0.1)))
 		&& (!AIData.ignoreRanged || AIData.playerDist < 1.5)
@@ -3192,8 +3193,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		&& (!enemy.Enemy.noSpellsLowSP || KinkyDungeonHasWill(0.1) || KinkyDungeonFlags.has("PlayerCombat"))
 		&& (!enemy.Enemy.noSpellLeashing || KDGameData.KinkyDungeonLeashingEnemy != enemy.id || KDGameData.KinkyDungeonLeashedPlayer < 1)
 		&& (!enemy.Enemy.followLeashedOnly || (KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id) || !AIData.addMoreRestraints)
-		&& (KDHostile(enemy) || (!player.player && (KDHostile(player) || enemy.rage)))
-		&& ((enemy.aware && (KinkyDungeonTrackSneak(enemy, 0, player) || AIData.playerDist < Math.max(1.5, AIData.blindSight))) || (!KDAllied(enemy) && !KDHostile(enemy)))
+		&& (AIData.hostile || (!player.player && (KDHostile(player) || enemy.rage)))
+		&& ((enemy.aware && (KinkyDungeonTrackSneak(enemy, 0, player) || AIData.playerDist < Math.max(1.5, AIData.blindSight))) || (!KDAllied(enemy) && !AIData.hostile))
 		&& !AIData.ignore && (!AIData.moved || enemy.Enemy.castWhileMoving) && enemy.Enemy.attack.includes("Spell")
 		&& !AIData.ignoreRanged
 		&& AIType.spell(enemy, player, AIData)
