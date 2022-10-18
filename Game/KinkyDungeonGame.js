@@ -3295,6 +3295,13 @@ let KDLastTick = 0;
 function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	KDLastTick = performance.now();
+
+	if (delta > 0 && CommonTime() > lastFloaterRefresh + 1000) {
+		KDEntitiesFloaterRegisty = new Map();
+		lastFloaterRefresh = CommonTime();
+	}
+
+
 	let _CharacterRefresh = CharacterRefresh;
 	let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
 	// @ts-ignore
@@ -3425,13 +3432,12 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	KinkyDungeonDressPlayer();
 	KDGetEnemyCache();
-	if (delta > 0)
-		KDEntitiesFloaterRegisty = new Map();
 
 	KDAllowDialogue = true;
 }
 let KDAllowDialogue = true;
 
+let lastFloaterRefresh = 0;
 
 function KinkyDungeonTargetTileMsg() {
 	if (KDObjectMessages[KinkyDungeonTargetTile.Type]) {

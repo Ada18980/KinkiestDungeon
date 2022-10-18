@@ -1315,11 +1315,11 @@ function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, 
 			x: Entity.x + 0.5,// + Math.random(),
 			y: Entity.y - (II - 1) * KDFloaterSpacing,// + Math.random(),
 			override: LocationOverride,
-			speed: 20,// + (Time ? Time : 0) + Math.random()*10,
+			speed: 30,// + (Time ? Time : 0) + Math.random()*10,
 			t: 0,
 			color: Color,
 			text: "" + ((typeof Amount === "string") ? Amount : Math.round(Amount * 10)/10) + suff,
-			lifetime: Time ? Time : ((typeof Amount === "string") ? 5 : ((Amount < 3) ? 2 : (Amount > 5 ? 4 : 3))),
+			lifetime: Time ? Time : ((typeof Amount === "string") ? 4 : ((Amount < 3) ? 2 : (Amount > 5 ? 3 : 2))),
 		};
 		KinkyDungeonFloaters.push(floater);
 	}
@@ -1339,12 +1339,25 @@ function KinkyDungeonDrawFloaters(CamX, CamY) {
 		let y = floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay;
 		DrawTextKD(floater.text,
 			x, y - floater.speed*floater.t,
-			floater.color, KDTextGray1, undefined, undefined, 120);
+			floater.color, KDTextGray1, undefined, undefined, 120, KDEase(floater.t / floater.lifetime));
 		if (floater.t < floater.lifetime) newFloaters.push(floater);
 	}
 	KinkyDungeonFloaters = newFloaters;
 
 	KinkyDungeonLastFloaterTime = CommonTime();
+}
+
+/**
+ * Easing function makes things smooth
+ * @param {number} value
+ * @returns {number}
+ */
+function KDEase(value) {
+	if (value < 0.25)
+		return Math.sin(value * Math.PI * 2);
+	else if (value > 0.75)
+		return Math.sin(-value * Math.PI * 2);
+	else return 1;
 }
 
 let KinkyDungeonMessageToggle = false;
@@ -1440,9 +1453,9 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 		return -1;
 	} else {
 		let speed = 100;
-		if (Entity.player && KinkyDungeonSlowLevel > 0 && KDGameData.KinkyDungeonLeashedPlayer < 2 && (KinkyDungeonFastMovePath.length < 1 || KinkyDungeonSlowLevel > 1)) speed = 100 + 80 * KinkyDungeonSlowLevel;
+		if (Entity.player && KinkyDungeonSlowLevel > 0 && KDGameData.KinkyDungeonLeashedPlayer < 2 && (KinkyDungeonFastMovePath.length < 1 || KinkyDungeonSlowLevel > 1)) speed = 100 + 70 * KinkyDungeonSlowLevel;
 		if (KDGameData.SleepTurns > 0) speed = 100;
-		if (speed > 500) speed = 500;
+		if (speed > 300) speed = 300;
 		if (Entity.scale) speed = KDBulletSpeed;
 		let value = amount/speed;// How many ms to complete a move
 		// xx is the true position of a bullet

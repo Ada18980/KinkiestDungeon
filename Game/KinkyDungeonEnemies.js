@@ -155,7 +155,7 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 
 		if (enemy.Enemy.focusPlayer && KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, pdist, visionRadius, false, false) && !KinkyDungeonCheckPath(enemy.x, enemy.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true)) return KinkyDungeonPlayerEntity;
 
-		let nearestDistance = (AIData && AIData.hostile) ? pdist - 0.1 : 100000;
+		let nearestDistance = (AI_Data && AI_Data.hostile) ? pdist - 0.1 : 100000;
 
 		if ((enemy.Enemy.visionRadius || enemy.Enemy.blindSight) && !(enemy.Enemy.noAttack && !enemy.Enemy.spells))
 			for (let e of KinkyDungeonEntities) {
@@ -168,7 +168,7 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 					let pdist_enemy = (KDGetFaction(enemy) == "Player" && !KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "StayHere") && (enemy.Enemy.allied || (!KDGameData.PrisonerState || KDGameData.PrisonerState == "chase")))
 						? KDistChebyshev(e.x - KinkyDungeonPlayerEntity.x, e.y - KinkyDungeonPlayerEntity.y) :
 						-1;
-					if (pdist_enemy > 0 && pdist_enemy < 1.5 && KDHostile(e)) KinkyDungeonSetFlag("AIHelpPlayer", 4);
+					if (pdist_enemy > 0 && pdist_enemy < 1.5 && AI_Data.hostile) KinkyDungeonSetFlag("AIHelpPlayer", 4);
 					if (pdist_enemy > 0 && KinkyDungeonFlags.get("AIHelpPlayer") && dist > 2.5) {
 						if (pdist_enemy > 2.5) dist += 2;
 						else dist = Math.max(1.01 + dist/4, dist/3);
