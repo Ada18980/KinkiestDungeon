@@ -1287,7 +1287,7 @@ let KinkyDungeonEnemies = [
 		]), cohesion: 0.9, armor: 0, followRange: 1, AI: "hunt",
 		spells: ["PoisonDagger", "LustBomb"], spellCooldownMult: 1, spellCooldownMod: 0, noSpellLeashing: true,
 		summon: [
-			{enemy: "BanditGuard", range: 3, count: 4, chance: 1.0, strict: true},],
+			{enemy: "BanditPet", range: 3, count: 2, chance: 1.0, strict: true},],
 		visionRadius: 8, maxhp: 30, minLevel:3, weight:-20, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindWill", attackWidth: 3.6, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"miniboss": -5, "open": 10, "increasingWeight":1, "BanditEnemy": 11, "BanditWanted": 3, "BanditHated": 4}, shrines: ["Leather"], allFloors: true,
 		factionrep: {"Bountyhunter": 0.02},
