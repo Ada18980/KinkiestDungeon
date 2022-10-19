@@ -33,6 +33,7 @@ let KinkyDungeonHiddenFactions = [
 	"Rebel",
 	"Rock",
 	"Delinquent",
+	"Wolfhunter",
 	"Chase",
 ];
 
@@ -41,6 +42,7 @@ let KinkyDungeonTooltipFactions = [
 	"Rebel",
 	"Ambush",
 	"Delinquent",
+	"Wolfhunter",
 	"Rock",
 ];
 
@@ -154,6 +156,11 @@ let KinkyDungeonFactionRelationsBase = {
 	"Delinquent": {
 		Player: -1,
 		Maidforce: -1,
+		Chase: -1,
+	},
+	"Wolfhunter": {
+		Player: -1,
+		Nevermere: -1,
 		Chase: -1,
 	},
 	"Trap": {

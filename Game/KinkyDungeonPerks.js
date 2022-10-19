@@ -419,6 +419,7 @@ let KDPerkStart = {
 				}
 			}
 		}
+		KDAddQuest("WolfgirlHunters");
 		let outfit = {name: "Wolfgirl", type: Outfit};
 		if (!KinkyDungeonInventoryGet("Wolfgirl")) KinkyDungeonInventoryAdd(outfit);
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
