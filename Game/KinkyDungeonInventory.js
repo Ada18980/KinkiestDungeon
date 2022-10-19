@@ -16,6 +16,11 @@ var KinkyDungeonCurrentPageInventory = 0;
 let KinkyDungeonShowInventory = false;
 let KinkyDungeonInventoryOffset = 0;
 
+function KDCloseQuickInv() {
+	KinkyDungeonShowInventory = false;
+	KDHideQuickInv = false;
+}
+
 function KDSwitchWeapon() {
 	let previousWeapon = KDGameData.PreviousWeapon ? KDGameData.PreviousWeapon : null;
 	if (!previousWeapon || KinkyDungeonInventoryGet(previousWeapon))
@@ -312,11 +317,19 @@ function KDGetItemPreview(item) {
 	return ret;
 }
 
-function KinkyDungeonFilterInventory(Filter, enchanted) {
+/**
+ *
+ * @param {string} Filter
+ * @param {boolean} [enchanted]
+ * @param {boolean} [ignoreHidden]
+ * @returns {any[]}
+ */
+function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden) {
 	let ret = [];
 	let category = KinkyDungeonInventory.get(Filter);
 	if (category)
 		for (let item of category.values()) {
+			if (ignoreHidden && KDGameData.HiddenItems && KDGameData.HiddenItems[item.name]) continue;
 			let preview = KDGetItemPreview(item);
 			if (preview && (item.type != LooseRestraint || (!enchanted || KDRestraint(item).enchanted || KDRestraint(item).showInQuickInv)))
 				ret.push(preview);
@@ -565,15 +578,16 @@ let KDItemsPerScreen = {
 };
 
 let KDScrollAmount = 6;
+let KDHideQuickInv = false;
 
 function KinkyDungeonDrawQuickInv() {
 	let H = 80;
 	let V = 80;
-	let fC = KinkyDungeonFilterInventory(Consumable);
+	let fC = KinkyDungeonFilterInventory(Consumable, false, !KDHideQuickInv);
 	let consumables = fC.slice(KDScrollOffset.Consumable, KDScrollOffset.Consumable + KDItemsPerScreen.Consumable);
-	let fW = KinkyDungeonFilterInventory(Weapon);
+	let fW = KinkyDungeonFilterInventory(Weapon, false, !KDHideQuickInv);
 	let weapons = fW.slice(KDScrollOffset.Weapon, KDScrollOffset.Weapon + KDItemsPerScreen.Weapon);
-	let fR = KinkyDungeonFilterInventory(LooseRestraint, true);
+	let fR = KinkyDungeonFilterInventory(LooseRestraint, true, !KDHideQuickInv);
 	let restraints = fR.slice(KDScrollOffset.Restraint, KDScrollOffset.Restraint + KDItemsPerScreen.Restraint);
 	let Wheight = KinkyDungeonQuickGrid(weapons.length-1, H, V, 6).y;
 	let Rheight = 480;
@@ -594,6 +608,11 @@ function KinkyDungeonDrawQuickInv() {
 		DrawButtonVis(510, 455, 90, 40, "", "white", KinkyDungeonRootDirectory + "Up.png");
 		DrawButtonVis(510, 500, 90, 40, "", "white", KinkyDungeonRootDirectory + "Down.png");
 	}
+
+	DrawButtonKDEx("inventoryhide", (bdata) => {
+		KDHideQuickInv = !KDHideQuickInv;
+		return true;
+	}, true, 510, 625, 120, 60, "", "white", KinkyDungeonRootDirectory + (KDHideQuickInv ? "InvHide.png" : "InvNoHide.png"));
 
 
 	for (let c = 0; c < consumables.length; c++) {
@@ -617,6 +636,12 @@ function KinkyDungeonDrawQuickInv() {
 				item.preview, point.x, point.y + 30, 80, 80, undefined, {
 					zIndex: 109,
 				});
+			if (KDGameData.HiddenItems[item.name]) {
+				KDDraw(kdcanvas, kdpixisprites, "consumablesiconhidden" + c,
+					KinkyDungeonRootDirectory + "InvHidden.png", point.x, point.y + 30, 80, 80, undefined, {
+						zIndex: 110,
+					});
+			}
 			//DrawImageEx(item.preview, point.x, point.y + 30, {Width: 80, Height: 80});
 
 			MainCanvas.textAlign = "left";
@@ -648,6 +673,12 @@ function KinkyDungeonDrawQuickInv() {
 				item.preview, point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
 					zIndex: 109,
 				});
+			if (KDGameData.HiddenItems[item.name]) {
+				KDDraw(kdcanvas, kdpixisprites, "weaponsiconhid" + w,
+					KinkyDungeonRootDirectory + "InvHidden.png", point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
+						zIndex: 110,
+					});
+			}
 			//DrawImageEx(item.preview, point.x, 1000 - V - Wheight + point.y, {Width: 80, Height: 80});
 		}
 	}
@@ -674,6 +705,12 @@ function KinkyDungeonDrawQuickInv() {
 				item.preview, point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 					zIndex: 109,
 				});
+			if (KDGameData.HiddenItems[item.name]) {
+				KDDraw(kdcanvas, kdpixisprites, "restraintsiconhid" + w,
+					KinkyDungeonRootDirectory + "InvHidden.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
+						zIndex: 109,
+					});
+			}
 		}
 	}
 }
@@ -683,11 +720,11 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 
 	let H = 80;
 	let V = 80;
-	let fC = KinkyDungeonFilterInventory(Consumable);
+	let fC = KinkyDungeonFilterInventory(Consumable, false, !KDHideQuickInv);
 	let consumables = fC.slice(KDScrollOffset.Consumable, KDScrollOffset.Consumable + KDItemsPerScreen.Consumable);
-	let fW = KinkyDungeonFilterInventory(Weapon);
+	let fW = KinkyDungeonFilterInventory(Weapon, false, !KDHideQuickInv);
 	let weapons = fW.slice(KDScrollOffset.Weapon, KDScrollOffset.Weapon + KDItemsPerScreen.Weapon);
-	let fR = KinkyDungeonFilterInventory(LooseRestraint, true);
+	let fR = KinkyDungeonFilterInventory(LooseRestraint, true, !KDHideQuickInv);
 	let restraints = fR.slice(KDScrollOffset.Restraint, KDScrollOffset.Restraint + KDItemsPerScreen.Restraint);
 	let Wheight = KinkyDungeonQuickGrid(weapons.length-1, H, V, 6).y;
 	let Rheight = 480;
@@ -726,14 +763,21 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 	if (NoUse) {
 		return false;
 	}
-	if (MouseX > 500) KinkyDungeonShowInventory = false;
+	if (MouseX > 500) {
+		KDCloseQuickInv();
+		return false;
+	}
 
 	for (let c = 0; c < consumables.length; c++) {
 		let item = consumables[c];
 		if (item.preview) {
 			let point = KinkyDungeonQuickGrid(c, H, V, 6);
 			if (MouseIn(point.x, point.y + 30, H, V)) {
-				KDSendInput("consumable", {item: item.name, quantity: 1});
+				if (KDHideQuickInv) {
+					KDGameData.HiddenItems[item.name] = !KDGameData.HiddenItems[item.name];
+				} else {
+					KDSendInput("consumable", {item: item.name, quantity: 1});
+				}
 			}
 		}
 	}
@@ -743,9 +787,13 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 		if (item.preview) {
 			let point = KinkyDungeonQuickGrid(w, H, V, 6);
 			if (MouseIn(point.x, 1000 - V - Wheight + point.y, H, V)) {
-				let weapon = item.name != "Unarmed" ? item.name : null;
-				KDSendInput("switchWeapon", {weapon: weapon});
-				KinkyDungeonShowInventory = false;
+				if (KDHideQuickInv) {
+					KDGameData.HiddenItems[item.name] = !KDGameData.HiddenItems[item.name];
+				} else {
+					let weapon = item.name != "Unarmed" ? item.name : null;
+					KDSendInput("switchWeapon", {weapon: weapon});
+					KDCloseQuickInv();
+				}
 			}
 		}
 	}
@@ -755,26 +803,31 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 		if (item.preview) {
 			let point = KinkyDungeonQuickGrid(w, H, V, 6);
 			if (MouseIn(point.x, 1000 - V - Rheight + point.y, H, V)) {
-				let equipped = false;
-				let newItem = null;
-				let currentItem = null;
+				if (KDHideQuickInv) {
+					KDGameData.HiddenItems[item.name] = !KDGameData.HiddenItems[item.name];
+				} else {
+					let equipped = false;
+					let newItem = null;
+					let currentItem = null;
 
-				if (item
-					&& item.item) {
-					newItem = KDRestraint(item.item);
-					if (newItem) {
-						currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
-						if (!currentItem
-							|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem) &&
-								((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
-								|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((ii) => {return newItem.name == ii.name;}))))) {
-							equipped = false;
-						} else equipped = true;
+					if (item
+						&& item.item) {
+						newItem = KDRestraint(item.item);
+						if (newItem) {
+							currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+							if (!currentItem
+								|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem) &&
+									((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
+									|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((ii) => {return newItem.name == ii.name;}))))) {
+								equipped = false;
+							} else equipped = true;
+						}
+					}
+					if (!equipped && newItem) {
+						if (KDSendInput("equip", {name: newItem.name, group: newItem.Group, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.item.events)})) return true;
 					}
 				}
-				if (!equipped && newItem) {
-					if (KDSendInput("equip", {name: newItem.name, group: newItem.Group, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.item.events)})) return true;
-				}
+
 			}
 		}
 	}

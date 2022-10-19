@@ -491,7 +491,7 @@ function KinkyDungeonDrawGame() {
 			KinkyDungeonTargetTileLocation = "";
 			KinkyDungeonSpellPress = "";
 			KDModalArea = false;
-			KinkyDungeonShowInventory = false;
+			KDCloseQuickInv();
 			KDRepSelectionMode = "";
 		}
 	}

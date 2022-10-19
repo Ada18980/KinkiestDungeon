@@ -163,7 +163,7 @@ function KinkyDungeonConsumableEffect(Consumable) {
 		KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonFindSpell(Consumable.spell, true), undefined, undefined, undefined);
 		KinkyDungeonAdvanceTime(1);
 	} else if (Consumable.type == "targetspell") {
-		KinkyDungeonShowInventory = false;
+		KDCloseQuickInv();
 		KinkyDungeonTargetingSpell = KinkyDungeonFindSpell(Consumable.spell, true);
 		KinkyDungeonTargetingSpellItem = Consumable;
 	} else if (Consumable.type == "charge") {

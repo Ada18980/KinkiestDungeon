@@ -86,9 +86,9 @@ let KinkyDungeonLearnableSpells = [
 	//Page 2: Conjuration
 	[
 		// Verbal
-		["CommandWord", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "Lockdown", "Heal2", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Blink", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
+		["CommandWord", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "Lockdown", "Heal", "Heal2", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Blink", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
 		// Arms
-		["Heal", "TickleCloud", "FeatherCloud", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
+		["TickleCloud", "FeatherCloud", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
 		["Snare", "Wall", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "StormCrystal", "Ally", "EarthMote", "Golem"],
 		// Passive

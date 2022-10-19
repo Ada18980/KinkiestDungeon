@@ -2614,7 +2614,7 @@ function KinkyDungeonClickGame(Level) {
 	if (KinkyDungeonControlsEnabled() && KinkyDungeonHandleHUD()) {
 		try {
 			if (prevSpell) {
-				if (prevInv) KinkyDungeonShowInventory = false;
+				if (prevInv) KDCloseQuickInv();
 				else KinkyDungeonTargetingSpell = null;
 			}
 			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");

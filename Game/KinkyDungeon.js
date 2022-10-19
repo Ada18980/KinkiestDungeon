@@ -224,9 +224,11 @@ let KDOptOut = false;
 * KneelTurns: number,
 * HiddenSpellPages : Record<string, boolean>,
 * KeyringLocations : {x: number, y: number}[],
+* HiddenItems : Record<string, boolean>,
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	HiddenItems: {},
 	KeyringLocations: [],
 	HiddenSpellPages: {},
 	PriorJailbreaks: 0,
