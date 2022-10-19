@@ -618,6 +618,8 @@ function KinkyDungeonDrawQuickInv() {
 	}
 
 	DrawButtonKDEx("inventoryhide", (bdata) => {
+		if (!KDGameData.HiddenItems)
+			KDGameData.HiddenItems = {};
 		KDHideQuickInv = !KDHideQuickInv;
 		return true;
 	}, true, 510, 625, 120, 60, "", "white", KinkyDungeonRootDirectory + (KDHideQuickInv ? "InvHide.png" : "InvNoHide.png"));
@@ -644,7 +646,7 @@ function KinkyDungeonDrawQuickInv() {
 				item.preview, point.x, point.y + 30, 80, 80, undefined, {
 					zIndex: 109,
 				});
-			if (KDGameData.HiddenItems[item.name]) {
+			if (KDGameData.HiddenItems && KDGameData.HiddenItems[item.name]) {
 				KDDraw(kdcanvas, kdpixisprites, "consumablesiconhidden" + c,
 					KinkyDungeonRootDirectory + "InvHidden.png", point.x, point.y + 30, 80, 80, undefined, {
 						zIndex: 110,
@@ -681,7 +683,7 @@ function KinkyDungeonDrawQuickInv() {
 				item.preview, point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
 					zIndex: 109,
 				});
-			if (KDGameData.HiddenItems[item.name]) {
+			if (KDGameData.HiddenItems && KDGameData.HiddenItems[item.name]) {
 				KDDraw(kdcanvas, kdpixisprites, "weaponsiconhid" + w,
 					KinkyDungeonRootDirectory + "InvHidden.png", point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
 						zIndex: 110,
@@ -713,7 +715,7 @@ function KinkyDungeonDrawQuickInv() {
 				item.preview, point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 					zIndex: 109,
 				});
-			if (KDGameData.HiddenItems[item.name]) {
+			if (KDGameData.HiddenItems && KDGameData.HiddenItems[item.name]) {
 				KDDraw(kdcanvas, kdpixisprites, "restraintsiconhid" + w,
 					KinkyDungeonRootDirectory + "InvHidden.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 						zIndex: 109,
