@@ -416,7 +416,7 @@ let KDEffectTileCreateFunctionsCreator = {
 			let dt = KDEffectTileTags(existingTile.x, existingTile.y + 1);
 			let dmg = {
 				type: "electric",
-				damage: 2.5,
+				damage: 2.0,
 				time: 0,
 				bind: 0,
 				flags: ["EchoDamage"],

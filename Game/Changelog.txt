@@ -1154,6 +1154,8 @@ Features
 - Buffed enchanted restraints by reducing their drain over time
 - Binding has been rebalanced with different bind types
 - Added two new perks, Stranger and Wrong Neighborhood
+- You can now hide items in the quick inventory
+- Electricity now conducts along water! Watch your step!
 
 TODO ValidationFindBlockCycles to prevent bugs
 
