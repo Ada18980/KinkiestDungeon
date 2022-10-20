@@ -1153,9 +1153,9 @@ let KinkyDungeonPlayWithSelfMult = 0.25;
 
 /**
  * Try to let go...
- * @param {number} [Bonus]
+ * @param {number} Bonus
  */
-function KinkyDungeonDoTryOrgasm(Bonus) {
+function KinkyDungeonDoTryOrgasm(Bonus = 0) {
 	let amount = KinkyDungeonOrgasmVibeLevel * KinkyDungeonOrgasmVibeLevelMult + Bonus;
 	let playSelfAmount = KinkyDungeonDoPlayWithSelf();
 	//if (playSelfAmount > KinkyDungeonOrgasmVibeLevel) {
