@@ -981,7 +981,7 @@ let KDEventMapBuff = {
 	},
 	"beforeAttack": {
 		"CounterattackDamage": (e, buff, entity, data) => {
-			if (data.attacker && data.target == entity && (!(e.prereq == "hit") || (!data.missed && data.hit))) {
+			if (data.attacker && data.target == entity && (!(e.prereq == "hit") || (!data.missed && data.hit)) && (data.attacker.player || !data.target.player || KinkyDungeonAggressive(data.attacker))) {
 				if (data.attacker.player) {
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage, bind: e.bind, time: e.time, bindType: e.bindType,});
 				} else {
@@ -994,7 +994,7 @@ let KDEventMapBuff = {
 		"CounterattackSpell": (e, buff, entity, data) => {
 			if (data.attacker && data.target == entity
 				&& (!(e.prereq == "hit") || (!data.missed && data.hit))
-				&& (!(e.prereq == "hit-hostile") || (!data.missed && data.hit && !data.attacker.player && KDHostile(data.attacker)))) {
+				&& (!(e.prereq == "hit-hostile") || (!data.missed && data.hit && (data.attacker.player || !data.target.player || KinkyDungeonAggressive(data.attacker))))) {
 				// @ts-ignore
 				KinkyDungeonCastSpell(data.attacker.x, data.attacker.y, KinkyDungeonFindSpell(e.spell, true), undefined, undefined, undefined, entity.player ? "Player" : KDGetFaction(entity));
 				if (e.requiredTag)
@@ -2998,7 +2998,7 @@ let KDEventMapGeneric = {
 	"beforeDamage": {
 		"LeastResistance": (e, data) => {
 			if (KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.01 && KinkyDungeonStatsChoice.has("LeastResistance")) {
-				if (data.attacker && data.target.player && data.bound) {
+				if (data.attacker && data.target.player && data.bound && (data.attacker.player || !data.target.player || KinkyDungeonAggressive(data.attacker))) {
 					if (data.attacker.player) {
 						KinkyDungeonDealDamage({damage: KinkyDungeonStatWillMax*0.1, type: "acid"});
 					} else {
