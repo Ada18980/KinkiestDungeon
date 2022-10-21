@@ -134,7 +134,11 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		}
 		return costt;
 	}
-	return 15;
+	let costs = 15;
+	if (KinkyDungeonStatsChoice.has("PriceGouging") && !sell) {
+		costs *= 5;
+	}
+	return costs;
 }
 
 function KinkyDungeonShrineCost(type) {
