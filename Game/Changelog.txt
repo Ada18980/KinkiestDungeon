@@ -1157,6 +1157,7 @@ Features
 - You can now hide items in the quick inventory
 - Electricity now conducts along water! Watch your step!
 - Being rescued in jail now depends on having factions in good standing.
+- Added offer dialogues for all major factions except Fungals
 
 TODO ValidationFindBlockCycles to prevent bugs
 

@@ -2534,8 +2534,18 @@ RestraintBedTrapDesc2,"You have to get out somehow..."
 KDBedTrap,"Belts emerge from underneath the bed and wrap around you, strapping you down tightly!"
 
 RestraintBindingDress,Binding Dress
-RestraintBindingDressDesc,"A devious dress that forces the arms into an elbows-touching position."
-RestraintBindingDressDesc2,"It is extremely strict but it is only fabric. The lacing is intricate and will take a long time to remove."
+RestraintBindingDressDesc,"It's a devious dress! I hope your elbows are flexible~"
+RestraintBindingDressDesc2,"So many laces! It would quite a while to put this on normally. That's what magic is for!"
+RestraintDressCorset,Ornamental Corset
+RestraintDressCorsetDesc,"Your figure looks gorgeous in this~"
+RestraintDressCorsetDesc2,"It's so tight you won't be able to undo the laces yourself, dear!"
+
+RestraintDressGag,Fancy Ball Gag
+RestraintDressGagDesc,"A cute ball gag that fills your mouth right up!"
+RestraintDressGagDesc2,"What's this? it seems to have a magic spell protecting it from harm!"
+RestraintDressMuzzle,Fancy Muzzle
+RestraintDressMuzzleDesc,A muzzle to keep you from spitting out what's underneath.
+RestraintDressMuzzleDesc2,"Sorry dear, there's a mystic seal on there to keep it on nice and tight."
 
 RestraintMikoDress,Red Binding Dress
 RestraintMikoDressDesc,"A devious dress that forces the arms into an elbows-touching position."
@@ -2689,6 +2699,9 @@ RestraintSteelCollarDesc2,"Allows fitting of a leash."
 RestraintMagicCollar,Enchanted Collar
 RestraintMagicCollarDesc,"A collar made with magically enchanted materials. It is difficult to cut off."
 RestraintMagicCollarDesc2,"Allows fitting of a leash."
+RestraintKittyCollar,Kitty Collar
+RestraintKittyCollarDesc,"A collar made with magically enchanted materials. It is protected by the blessing of Bast."
+RestraintKittyCollarDesc2,"Allows fitting of a leash."
 RestraintBasicLeash,Leash
 RestraintBasicLeashDesc,"A leash made from a strong material."
 RestraintBasicLeashDesc2,"Functions as a handle for moving unruly prisoners."
@@ -3458,25 +3471,25 @@ RestraintCableHarnessDesc,"Cables made from a high-tech metallized polyfiber. Im
 RestraintCableHarnessDesc2,"They are wrapped methodically around your body!"
 
 RestraintRibbonArms,Magic Ribbons (Arms)
-RestraintRibbonArmsDesc,"Ribbons enchanted with powerful magic. They can't be cut without a magic implement!"
-RestraintRibbonArmsDesc2,"They are wrapped tightly around your body with a bow knot!"
+RestraintRibbonArmsDesc,"Those ribbons will hold you tight~"
+RestraintRibbonArmsDesc2,"I've put a magic seal in that bow-knot to keep it secure!"
 RestraintRibbonLegs,Magic Ribbons (Legs)
-RestraintRibbonLegsDesc,"Ribbons enchanted with powerful magic. They can't be cut without a magic implement!"
-RestraintRibbonLegsDesc2,"They are wrapped tightly around your body with a bow knot!"
+RestraintRibbonLegsDesc,"Those ribbons will hold you tight~"
+RestraintRibbonLegsDesc2,"I've put a magic seal in that bow-knot to keep it secure!"
 RestraintRibbonFeet,Magic Ribbons (Feet)
-RestraintRibbonFeetDesc,"Ribbons enchanted with powerful magic. They can't be cut without a magic implement!"
-RestraintRibbonFeetDesc2,"They are wrapped tightly around your body with a bow knot!"
+RestraintRibbonFeetDesc,"Those ribbons will hold you tight~"
+RestraintRibbonFeetDesc2,"I've put a magic seal in that bow-knot to keep it secure!"
 RestraintRibbonHarness,Magic Ribbons (Harness)
-RestraintRibbonHarnessDesc,"Ribbons enchanted with powerful magic. They can't be cut without a magic implement!"
-RestraintRibbonHarnessDesc2,"They are wrapped tightly around your body with a bow knot!"
+RestraintRibbonHarnessDesc,"Those ribbons will hold you tight~"
+RestraintRibbonHarnessDesc2,"I've put a magic seal in that bow-knot to keep it secure!"
 RestraintRibbonCrotch,Magic Ribbons (Pelvis)
-RestraintRibbonCrotchDesc,"Ribbons enchanted with powerful magic. They can't be cut without a magic implement!"
-RestraintRibbonCrotchDesc2,"They are wrapped tightly around your body with a bow knot!"
+RestraintRibbonCrotchDesc,"Those ribbons will hold you tight~"
+RestraintRibbonCrotchDesc2,"I've put a magic seal in that bow-knot to keep it secure!"
 RestraintRibbonHands,Magic Ribbons (Mittens)
-RestraintRibbonHandsDesc,"Ribbons enchanted with powerful magic. They can't be cut without a magic implement!"
+RestraintRibbonHandsDesc,"Those ribbons will hold you tight~"
 RestraintRibbonHandsDesc2,"They are wrapped tightly around your hands with a bow knot!"
 RestraintRibbonMouth,Magic Ribbons (Gag)
-RestraintRibbonMouthDesc,"Ribbons enchanted with powerful magic. They can't be cut without a magic implement!"
+RestraintRibbonMouthDesc,"Those ribbons will hold you tight~"
 RestraintRibbonMouthDesc2,"They are wrapped tightly around your mouth with a bow knot!"
 
 RestraintIceArms,Ice (Arms)
@@ -5286,8 +5299,8 @@ KinkyDungeonRepNameFactionAngered,"Annoyed"
 KinkyDungeonRepNameFactionEnraged,"Hostile"
 KinkyDungeonRepNameFactionCursed,"Wanted"
 KinkyDungeonRepNameFactionPleased,"Favorable"
-KinkyDungeonRepNameFactionBlessed,"Friendly"
-KinkyDungeonRepNameFactionThankful,"Allied"
+KinkyDungeonRepNameFactionBlessed,"Allied"
+KinkyDungeonRepNameFactionThankful,"Friendly"
 
 KinkyDungeonTetherTooShort,"You run up against the TETHER pulling you back."
 KinkyDungeonTetherPull,"You are yanked back by the TETHER!"
@@ -5992,7 +6005,7 @@ KinkyDungeonRemindJailTemplatePickpocket,""
 KinkyDungeonRemindJailTemplateLock,""
 
 
-KinkyDungeonRemindJailPlayElf0,"Well met, mortal!"
+KinkyDungeonRemindJailPlayElf0,"Hello, Outsider."
 KinkyDungeonRemindJailPlayElf1,"You look so... bland."
 KinkyDungeonRemindJailPlayElf2,"Mortals are so picky about what they wear..."
 KinkyDungeonRemindJailPlayElfStruggle,"Tight and secure, as all things should be."
@@ -7225,6 +7238,405 @@ dOfferMaidForce_No,"Never! (PERCENT chance to avoid)"
 dOfferMaidForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
 
 
+rOfferWitch,"(The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position..."
+rOfferWitchYes,"(The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here..."
+rOfferWitchYes_Yes,"(The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck."
+rOfferWitchYes_No,"(The SPEAKER tilts her head and shrugs)|We are always prepared..."
+rOfferWitchNo,"(The SPEAKER nods)|Fair enough."
+rOfferWitchForce,"(The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them..."
+rOfferWitchForceYes,"(The SPEAKER nods proudly)|We are willing to made some changes to our records~"
+rOfferWitchForce_No,"(The SPEAKER frowns)|You won't know what hit you."
+rOfferWitchForce_Yes,"(The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck."
+rOfferWitchForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose..."
+
+dOfferWitch_Yes,"This sounds like an interesting opportunity."
+dOfferWitch_YesGag,"(Nod excitedly)"
+dOfferWitch_No,"No thanks, I know what that entails..."
+dOfferWitch_NoGag,"(Shake your head)"
+
+dOfferWitchYes_Yes,"Gladly!"
+dOfferWitchYes_YesGag,"(Accept the contract)"
+dOfferWitchYes_No,"W-where did you get that uniform? (Refuse)"
+dOfferWitchYes_NoGag,"(Refuse the contract)"
+
+dOfferWitchForce_Yes,"Fine. I'll sign it..."
+dOfferWitchForce_YesGag,"(Moan and nod)"
+dOfferWitchForce_No,"Never! (PERCENT chance to avoid)"
+dOfferWitchForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+
+
+rOfferBast,"(The SPEAKER perks her ears as she sees you)|Glory to the blessed kitty!|Are you prepared to join us?"
+rOfferBastYes,"(The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to cats.|And also we own you now."
+rOfferBastYes_Yes,"(The SPEAKER jumps happily)|Wonderful! Here's your collar!"
+rOfferBastYes_No,"(The SPEAKER whimpers and looks at you)|How mean!"
+rOfferBastNo,"(The SPEAKER's ears flop)|Aww... we thought you were cute."
+rOfferBastForce,"(The SPEAKER frowns)|Oh? Well, I guess I'll tell the others~"
+rOfferBastForceYes,"(The SPEAKER grins slyly)|You wouldn't hurt the kitties, would you?"
+rOfferBastForce_No,"(The SPEAKER frowns)|Then we'll have to make sure you don't come to harm anyone!"
+rOfferBastForce_Yes,"(The SPEAKER smiles proudly)|I knew you would pull through!"
+rOfferBastForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose..."
+
+dOfferBast_Yes,"Yes! I love the blessed kity!"
+dOfferBast_YesGag,"(Nod excitedly)"
+dOfferBast_No,"No, you guys are a bunch of weirdos."
+dOfferBast_NoGag,"(Shake your head)"
+
+dOfferBastYes_Yes,"Yes! I will be nice to the kitties!"
+dOfferBastYes_YesGag,"(Join them)"
+dOfferBastYes_No,"Wait, I didn't agree to that! (Refuse)"
+dOfferBastYes_NoGag,"(Refuse)"
+
+dOfferBastForce_Yes,"Okay fine... I won't hurt the kitties. (Join them)"
+dOfferBastForce_YesGag,"(Moan and nod)"
+dOfferBastForce_No,"Never! (PERCENT chance to avoid)"
+dOfferBastForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+
+
+
+rOfferDressmaker,"(The SPEAKER does a curtsy)|Why hello there!|You have a wonderful bod-er, book!|Would you like to help me?"
+rOfferDressmakerYes,"(The SPEAKER smiles briefly)|You have an opportunity to model for me!|I need someone to wear all of my wonderful inventions!"
+rOfferDressmakerYes_Yes,"(The SPEAKER laces you up in the tight fabric...)|(You hear the click of a few locks going on...)|Oh my goodness... So pretty!|You'll make a fine assistant!"
+rOfferDressmakerYes_No,"(The SPEAKER frowns)|Aw..."
+rOfferDressmakerNo,"(The SPEAKER clenches her fist to the ceiling)|Nooooo!!!"
+rOfferDressmakerForce,"(The SPEAKER grins and pulls out a frilly dress)|Don't knock it till you try it!|Trust me, it'll be fun!"
+rOfferDressmakerForceYes,"(The SPEAKER furrows her brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you..."
+rOfferDressmakerForce_No,"(The SPEAKER folds her arms as ribbons rise up around her)|Suit yourself, hehe~"
+rOfferDressmakerForce_Yes,"(The SPEAKER smiles)|Yes! Yes! Wonderful!"
+rOfferDressmakerForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose..."
+
+dOfferDressmaker_Yes,"Sure!"
+dOfferDressmaker_YesGag,"(Nod excitedly)"
+dOfferDressmaker_No,"Nope."
+dOfferDressmaker_NoGag,"(Shake your head)"
+
+dOfferDressmakerYes_Yes,"Sign me up!"
+dOfferDressmakerYes_YesGag,"(Accept the position)"
+dOfferDressmakerYes_No,"And wear tacky clothes all the time?"
+dOfferDressmakerYes_NoGag,"(Refuse the position)"
+
+dOfferDressmakerForce_Yes,"Fine... sign me up."
+dOfferDressmakerForce_YesGag,"(Moan and nod)"
+dOfferDressmakerForce_No,"Why don't you try it on yourself! (PERCENT chance to avoid)"
+dOfferDressmakerForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+
+
+
+
+rOfferAlchemist,"(The SPEAKER runs up to you)|Wow! You make a fine specimen-er, I mean...|Nice to meet you!"
+rOfferAlchemistYes,"(The SPEAKER smiles)|Now, I have something wonderful in store for you.|(She takes out a blue catsuit)|I'd like you to be my assistant!"
+rOfferAlchemistYes_Yes,"(The SPEAKER looks excited)|Awesome! Let me help you get in uniform..."
+rOfferAlchemistYes_No,"(The SPEAKER shrugs)|It was worth a shot..."
+rOfferAlchemistNo,"(The SPEAKER shrugs)|It was worth a shot..."
+rOfferAlchemistForce,"(The SPEAKER looks frustrated)|I'm not... my work is not crazy!|There's just... a lot to do.|That's why I need an assistant."
+rOfferAlchemistForceYes,"(The SPEAKER looks frustrated)|I'm not... my work is not crazy!|We seek only knowledge!"
+rOfferAlchemistForce_No,"(The SPEAKER frowns)|Time for a test run!"
+rOfferAlchemistForce_Yes,"(The SPEAKER looks happy again)|Thank you! I'm super grateful!"
+rOfferAlchemistForce_Failure,"(The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as she breaks a glass vial)|(A suit of blue latex envelops you!)"
+
+dOfferAlchemist_Yes,"...Hello?"
+dOfferAlchemist_YesGag,"(Nod excitedly)"
+dOfferAlchemist_No,"You guys are crazy."
+dOfferAlchemist_NoGag,"(Shake your head)"
+
+dOfferAlchemistYes_Yes,"Gladly!"
+dOfferAlchemistYes_YesGag,"(Accept the offer)"
+dOfferAlchemistYes_No,"W-where did you get that uniform? (Refuse)"
+dOfferAlchemistYes_NoGag,"(Refuse the offer)"
+
+dOfferAlchemistForce_Yes,"Fine. I'll be your assistant."
+dOfferAlchemistForce_YesGag,"(Moan and nod)"
+dOfferAlchemistForce_No,"Go find someone else. (PERCENT chance to avoid)"
+dOfferAlchemistForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+
+
+
+
+rOfferElf,"(The SPEAKER greets you)|Normally we don't meddle in mortal affairs.|But you, Outsider, are different.|Let's have a conversation."
+rOfferElfYes,"(The SPEAKER smiles warmly)|Outsiders have a lower rank in our society.|But it is a rank all the same.|You will be above your mortal peers.|What do you say?"
+rOfferElfYes_Yes,"(The SPEAKER clasps some 'jewelry' around your limbs)|You look beautiful, my dear.|I will leave you to your own affairs until we meet again."
+rOfferElfYes_No,"(The SPEAKER turns her head away)|Hmph. I offer you a bargain and you refuse."
+rOfferElfNo,"(The SPEAKER turns her head away)|Hmph. As expected."
+rOfferElfForce,"(The SPEAKER folds her arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild."
+rOfferElfForceYes,"(The SPEAKER frowns)|Hardly slavery!|A mere slave would not be allowed to even set foot in our society."
+rOfferElfForce_No,"(The SPEAKER frowns)|We will meet again."
+rOfferElfForce_Yes,"(The SPEAKER nods and smiles)|(She decorates your body with 'jewelry')|I am glad you had a change of heart."
+rOfferElfForce_Failure,"(The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur."
+
+dOfferElf_Yes,"I'm interested. (Talk with her)"
+dOfferElf_YesGag,"(Nod excitedly)"
+dOfferElf_No,"No thanks."
+dOfferElf_NoGag,"(Shake your head)"
+
+dOfferElfYes_Yes,"I accept your gracious offer!"
+dOfferElfYes_YesGag,"(Accept)"
+dOfferElfYes_No,"I won't be a slave to you."
+dOfferElfYes_NoGag,"(Refuse)"
+
+dOfferElfForce_Yes,"Fine, fine... I will accept."
+dOfferElfForce_YesGag,"(Moan and nod)"
+dOfferElfForce_No,"No way. (PERCENT chance to avoid)"
+dOfferElfForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+
+
+rOfferElemental,"(The SPEAKER smiles at you)|Mortal."
+rOfferElementalYes,"(The SPEAKER points to the ground)|Kneel before me and accept your collar."
+rOfferElementalYes_Yes,"(The SPEAKER snaps her fingers)|(A collar of cold black metal materializes around your neck)|A girl who knows her place! Wonderful..."
+rOfferElementalYes_No,"(The SPEAKER scoffs)|Hmmph. Mortals..."
+rOfferElementalNo,"(The SPEAKER scoffs)|Hmmph. Mortals..."
+rOfferElementalForce,"(The SPEAKER folds her arms)|Well, look who doesn't know her place~"
+rOfferElementalForceYes,"(The SPEAKER folds her arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that."
+rOfferElementalForce_No,"(The SPEAKER's eyes begin to glow)|Looks like we'll do this the fun way!"
+rOfferElementalForce_Yes,"(The SPEAKER smiles)|Wonderful~|Now come along, my pet!"
+rOfferElementalForce_Failure,"(The SPEAKER scoffs and snaps her fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?"
+
+dOfferElemental_Yes,"Yes?"
+dOfferElemental_YesGag,"(Nod excitedly)"
+dOfferElemental_No,"I don't talk to monsters!"
+dOfferElemental_NoGag,"(Shake your head)"
+
+dOfferElementalYes_Yes,"O-okay. (Kneel)"
+dOfferElementalYes_YesGag,"(Kneel)"
+dOfferElementalYes_No,"I refuse!"
+dOfferElementalYes_NoGag,"(Refuse)"
+
+dOfferElementalForce_Yes,"Then it looks like I have no choice. (Join her)"
+dOfferElementalForce_YesGag,"(Moan and nod)"
+dOfferElementalForce_No,"I will never bow to you! (PERCENT chance to avoid)"
+dOfferElementalForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+
+
+
+rOfferBountyhunter,"(The SPEAKER waves)|You seem like an exceptional individual.|What do you think of joining the Guild?"
+rOfferBountyhunterYes,"(The SPEAKER smiles)|Excellent! I'll put in a word with the Guild.|Do note: this will affect your reputation with certain bad actors."
+rOfferBountyhunterYes_Yes,"(The SPEAKER takes out a magic scroll and signs it)|(The scroll vanishes into the aether)|Good luck out there, freelancer."
+rOfferBountyhunterYes_No,"(The SPEAKER nods)|Fair enough. Guild work is not for everyone."
+rOfferBountyhunterNo,"(The SPEAKER nods)|Very well, then I won't bother you."
+rOfferBountyhunterForce,"(The SPEAKER looks dubious)|You know, there's quite a bounty on your head.|I'm sure we could do something about it."
+rOfferBountyhunterForceYes,"(The SPEAKER tilts her head)|Haha, very funny.|We both know that you're not one of those... right?"
+rOfferBountyhunterForce_No,"(The SPEAKER frowns and readies for battle)|My instincts were right."
+rOfferBountyhunterForce_Yes,"(The SPEAKER takes out a magic scroll and signs it)|(The scroll vanishes into the aether)|Good luck out there, freelancer."
+rOfferBountyhunterForce_Failure,"(The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as she ties you in a strict rope hogtie...)|(She dusts off her hands)|We'll have a talk when you get out of that, okay?"
+
+dOfferBountyhunter_Yes,"This sounds like an interesting opportunity."
+dOfferBountyhunter_YesGag,"(Nod excitedly)"
+dOfferBountyhunter_No,"I have no interest in joining the guild."
+dOfferBountyhunter_NoGag,"(Shake your head)"
+
+dOfferBountyhunterYes_Yes,"Gladly!"
+dOfferBountyhunterYes_YesGag,"(Accept the offer)"
+dOfferBountyhunterYes_No,"What if I am one of those bad actors? (Refuse)"
+dOfferBountyhunterYes_NoGag,"(Refuse the offer)"
+
+dOfferBountyhunterForce_Yes,"Fine... (Join)"
+dOfferBountyhunterForce_YesGag,"(Moan and nod)"
+dOfferBountyhunterForce_No,"Go away. (PERCENT chance to avoid)"
+dOfferBountyhunterForce_NoGag,"(Frown at her) (PERCENT chance to avoid)"
+
+
+
+
+
+
+
+rOfferAncientRobot,"(The SPEAKER beeps)|Prisoner 74121 identified.|Subject not registered in database."
+rOfferAncientRobotYes,"(The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good girl' to enter database."
+rOfferAncientRobotYes_Yes,"(The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good girl."
+rOfferAncientRobotYes_No,"(The SPEAKER beeps)|Acknowledged. Be warned:|Lost contact with Sections 98, 97, 96, 95...|(The list goes on...)"
+rOfferAncientRobotNo,"(The SPEAKER beeps)|Acknowledged. Updating records."
+rOfferAncientRobotForce,"(The SPEAKER beeps and flashes its lights)|Target acquired."
+rOfferAncientRobotForceYes,"(The SPEAKER beeps and flashes its lights)|Target has complied. Supplying uniform."
+rOfferAncientRobotForce_No,"(The SPEAKER beeps and flashes its lights)|Engaging capture protocol."
+rOfferAncientRobotForce_Yes,"(The SPEAKER beeps and flashes its lights)|"
+rOfferAncientRobotForce_Failure,"(The SPEAKER blasts you with a stunning ray and captures you)|Target neutralized."
+
+dOfferAncientRobot_Yes,"Please register me."
+dOfferAncientRobot_YesGag,"(Stop to talk to the robot)"
+dOfferAncientRobot_No,"Prisoner 74121? You must be mistaken..."
+dOfferAncientRobot_NoGag,"(Avoid the robot)"
+
+dOfferAncientRobotYes_Yes,"Prisoner 74121 reporting. I will be a good girl."
+dOfferAncientRobotYes_YesGag,"(Accept the contract)"
+dOfferAncientRobotYes_No,"Actually, I am an administrator. (Refuse)"
+dOfferAncientRobotYes_NoGag,"(Refuse the contract)"
+
+dOfferAncientRobotForce_Yes,"I'm sorry, I will be a good girl!"
+dOfferAncientRobotForce_YesGag,"(Moan and nod)"
+dOfferAncientRobotForce_No,"What? (PERCENT chance to avoid)"
+dOfferAncientRobotForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+
+
+
+rOfferDragonheart,"(The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!"
+rOfferDragonheartYes,"(The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!"
+rOfferDragonheartYes_Yes,"(The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!"
+rOfferDragonheartYes_No,"(The SPEAKER tilts her head and shrugs)|Ah well. "
+rOfferDragonheartNo,"(The SPEAKER nods)|Fair enough."
+rOfferDragonheartForce,"(The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?"
+rOfferDragonheartForceYes,"(The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice."
+rOfferDragonheartForce_No,"(The SPEAKER frowns and cracks her knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat..."
+rOfferDragonheartForce_Yes,"(The SPEAKER giggles)|Hehe, just messin' with ya.|Anyway, welcome to the sisterhood!"
+rOfferDragonheartForce_Failure,"(The SPEAKER grabs you and ties you up)|You won't be making trouble like that any time soon."
+
+dOfferDragonheart_Yes,"I wish I could join you."
+dOfferDragonheart_YesGag,"(Nod excitedly)"
+dOfferDragonheart_No,"Please go away."
+dOfferDragonheart_NoGag,"(Back away)"
+
+dOfferDragonheartYes_Yes,"Great! Sign me up!"
+dOfferDragonheartYes_YesGag,"(Join)"
+dOfferDragonheartYes_No,"Fight for justice? Sounds restrictive..."
+dOfferDragonheartYes_NoGag,"(Back away)"
+
+dOfferDragonheartForce_Yes,"Actually, justice doesn't sound bad!"
+dOfferDragonheartForce_YesGag,"(Moan and nod)"
+dOfferDragonheartForce_No,"What are you going to do about it? (PERCENT chance to avoid)"
+dOfferDragonheartForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+
+rOfferBandit,"(The SPEAKER waves and calls you over)|Looks like you've made a name for yourself.|What do you say to a little agreement?"
+rOfferBanditYes,"(The SPEAKER clears her throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us."
+rOfferBanditYes_Yes,"(The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!"
+rOfferBanditYes_No,"(The SPEAKER tilts her head and shrugs)|Ah well. "
+rOfferBanditNo,"(The SPEAKER nods)|Fair enough."
+rOfferBanditForce,"(The SPEAKER frowns)|Criminals? Girl, we ARE the law around these parts~"
+rOfferBanditForceYes,"(The SPEAKER grins)|I like your spunk, girl.|But you're kidding, right?"
+rOfferBanditForce_No,"(The SPEAKER raises her fists and smiles)|You're on!"
+rOfferBanditForce_Yes,"(The SPEAKER chuckles)|Here's a toast to a new partnership!"
+rOfferBanditForce_Failure,"(The SPEAKER catches you and trusses you up)|Maybe we'll just have to find you an owner, then!|Hehe."
+
+dOfferBandit_Yes,"I'm all ears."
+dOfferBandit_YesGag,"(Listen closely)"
+dOfferBandit_No,"I don't deal with criminals."
+dOfferBandit_NoGag,"(Back away)"
+
+dOfferBanditYes_Yes,"It's a deal!"
+dOfferBanditYes_YesGag,"(Mumble in agreement)"
+dOfferBanditYes_No,"You don't understand. This is MY turf."
+dOfferBanditYes_NoGag,"(Scoff at her through your gag)"
+
+dOfferBanditForce_Yes,"Haha, just kidding. I'm with you."
+dOfferBanditForce_YesGag,"(Moan and nod)"
+dOfferBanditForce_No,"Put 'em up! (PERCENT chance to avoid)"
+dOfferBanditForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+
+
+
+
+
+
+
+rOfferFungal,"(The SPEAKER stops walking and speaks)|You there!|It seems your attunement with magic is high.|Join us."
+rOfferFungalYes,"(The SPEAKER nods calmly)|We will use some special equipment to increase your attunement.|Put these on."
+rOfferFungalYes_Yes,"(The 'equipment' locks in place)|Excellent. Soon you will be much more powerful."
+rOfferFungalYes_No,"(The SPEAKER stops talking and walks away.)"
+rOfferFungalNo,"(The SPEAKER walks away like nothing happened.)"
+rOfferFungalForce,"(The SPEAKER frowns slightly)|We are prepared to use force if need be..."
+rOfferFungalForceYes,"(The SPEAKER stares at you)|Why? Did you not say you wanted to join us?"
+rOfferFungalForce_No,"(The SPEAKER frowns)|We have failed to convince the human."
+rOfferFungalForce_Yes,"(The SPEAKER nods.)|You have made a wise decision."
+rOfferFungalForce_Failure,"(The SPEAKER uses magic to force you.)|There. Try not to succumb to your desires too much."
+
+dOfferFungal_Yes,"Um... sure?"
+dOfferFungal_YesGag,"(Nod excitedly)"
+dOfferFungal_No,"Get away from me!"
+dOfferFungal_NoGag,"(Shake your head)"
+
+dOfferFungalYes_Yes,"Shiny... (Put them on)"
+dOfferFungalYes_YesGag,"(Let her put them on you)"
+dOfferFungalYes_No,"What? No way! (Refuse)"
+dOfferFungalYes_NoGag,"(Refuse the contract)"
+
+dOfferFungalForce_Yes,"Okay, I will wear them..."
+dOfferFungalForce_YesGag,"(Moan and nod)"
+dOfferFungalForce_No,"Monster! (PERCENT chance to avoid)"
+dOfferFungalForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+rOfferApprentice,"(The SPEAKER does a short bow as she sees you)|Um... hi!|I have a letter for you..."
+rOfferApprenticeYes,"(The letter is a contract from the College)|(They want you to sign up as an instructor for apprentices)|(The SPEAKER looks at you nervously.)"
+rOfferApprenticeYes_Yes,"(The SPEAKER sighs in relief)|That's good...|(You sign the contract and it vanishes into the aether)"
+rOfferApprenticeYes_No,"(The SPEAKER whimpers)|What will I tell them..."
+rOfferApprenticeNo,"(The SPEAKER whimpers)|What will I tell them..."
+rOfferApprenticeForce,"(The SPEAKER glares at you)|It's an important message concerning your standing!|With the College!"
+rOfferApprenticeForceYes,"(The SPEAKER blushes)|Well...|I was told we would make changes to your academic record,|should you refuse..."
+rOfferApprenticeForce_No,"(The SPEAKER frowns)|They told me to make sure you sign...|by any means necessary!"
+rOfferApprenticeForce_Yes,"(The SPEAKER nods and smiles)|Thank you so much!|I don't know what I would have done if you said no..."
+rOfferApprenticeForce_Failure,"(The SPEAKER frowns and waves her wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed."
+
+dOfferApprentice_Yes,"Thank you for delivering it. (Read it)"
+dOfferApprentice_YesGag,"(Read the letter)"
+dOfferApprentice_No,"There's nothing good inside that letter."
+dOfferApprentice_NoGag,"(Shake your head)"
+
+dOfferApprenticeYes_Yes,"Great! Wonderful!"
+dOfferApprenticeYes_YesGag,"(Accept the contract)"
+dOfferApprenticeYes_No,"There is no way I'd accept."
+dOfferApprenticeYes_NoGag,"(Refuse the contract)"
+
+dOfferApprenticeForce_Yes,"Fine. I'll read it. (Join the College as an instructor)"
+dOfferApprenticeForce_YesGag,"(Moan and nod)"
+dOfferApprenticeForce_No,"This is unethical! I refuse! (PERCENT chance to avoid)"
+dOfferApprenticeForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+rOfferTemp,"(The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position..."
+rOfferTempYes,"(The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here..."
+rOfferTempYes_Yes,"(The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck."
+rOfferTempYes_No,"(The SPEAKER tilts her head and shrugs)|We are always prepared..."
+rOfferTempNo,"(The SPEAKER nods)|Fair enough."
+rOfferTempForce,"(The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them..."
+rOfferTempForceYes,"(The SPEAKER nods proudly)|We are willing to made some changes to our records~"
+rOfferTempForce_No,"(The SPEAKER frowns)|You won't know what hit you."
+rOfferTempForce_Yes,"(The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck."
+rOfferTempForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose..."
+
+dOfferTemp_Yes,"This sounds like an interesting opportunity."
+dOfferTemp_YesGag,"(Nod excitedly)"
+dOfferTemp_No,"No thanks, I know what that entails..."
+dOfferTemp_NoGag,"(Shake your head)"
+
+dOfferTempYes_Yes,"Gladly!"
+dOfferTempYes_YesGag,"(Accept the contract)"
+dOfferTempYes_No,"W-where did you get that uniform? (Refuse)"
+dOfferTempYes_NoGag,"(Refuse the contract)"
+
+dOfferTempForce_Yes,"Fine. I'll sign it..."
+dOfferTempForce_YesGag,"(Moan and nod)"
+dOfferTempForce_No,"Never! (PERCENT chance to avoid)"
+dOfferTempForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
+
+
+
+
+
 
 
 rBlacksmithShop,"(The SPEAKER waves)|Greetings,|I manufacture all sorts of goods.|Would you like to buy some?"
@@ -7248,7 +7660,7 @@ rPotionSellPotionStamina,"(The SPEAKER smiles)|Refreshing!"
 rPotionSellPotionFrigid,"(The SPEAKER smiles)|They say a bitter tea cures all ails..."
 rPotionSellPotionInvisibility,"(The SPEAKER smiles)|An empty flask?|...Oh."
 
-rElfCrystalSell,"(The SPEAKER approaches you)|I greet you!|My throat is parched and I seek the bounties of nature.|Do you have what I seek?"
+rElfCrystalSell,"(The SPEAKER approaches you)|My greetings, Outsider!|My throat is parched and I seek the bounties of nature.|Do you have what I seek?"
 rElfCrystalSellAttack,"(The SPEAKER doesn't look surprised)|Then let us have a battle of wits!"
 rElfCrystalSellPotionMana,"(The SPEAKER thanks you)|A kind offering! You have my thanks."
 rElfCrystalSellManaOrb,"(The SPEAKER thanks you)|A magnificent offering! You have my thanks."

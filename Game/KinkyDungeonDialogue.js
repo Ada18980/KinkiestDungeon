@@ -645,7 +645,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 	let recruit = {
 		response: "Default",
 		clickFunction: (gagged) => {
-			KinkyDungeonSetFlag(name, 100);
+			KinkyDungeonSetFlag(name, -1, 1);
 			return false;
 		},
 		options: {
@@ -663,11 +663,13 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 							if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
 							if (KinkyDungeonInventoryGet("OutfitDefault")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("OutfitDefault"));
 							KinkyDungeonSetDress(outfitName, outfitName);
+							KinkyDungeonSetFlag("Recruit_" + name, -1);
+							KinkyDungeonSetFlag("Recruited", -1);
 							KDChangeFactionRelation("Player", faction, 0.4, true);
 							KDChangeFactionRelation("Player", faction, -0.2);
 							KinkyDungeonSlowMoveTurns = 3;
 							KinkyDungeonSleepTime = CommonTime() + 200;
-							KinkyDungeonSetFlag(name, 100);
+							KinkyDungeonSetFlag(name, -1, 1);
 							return false;
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},
@@ -682,7 +684,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 								KDGameData.CurrentDialogMsgData.PERCENT = `${Math.round(100 * KDGameData.CurrentDialogMsgValue.Percent)}%`;
 							}
 							KinkyDungeonChangeRep("Ghost", -1);
-							KinkyDungeonSetFlag(name, 100);
+							KinkyDungeonSetFlag(name, -1, 1);
 							return false;
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},
@@ -699,7 +701,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 						KDGameData.CurrentDialogMsgData.PERCENT = `${Math.round(100 * KDGameData.CurrentDialogMsgValue.Percent)}%`;
 					}
 					KinkyDungeonChangeRep("Ghost", -1);
-					KinkyDungeonSetFlag(name, 100);
+					KinkyDungeonSetFlag(name, -1, 1);
 					return false;
 				},
 				options: {"Leave": {playertext: "Leave", exitDialogue: true}},
@@ -719,11 +721,13 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 							if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
 							if (KinkyDungeonInventoryGet("OutfitDefault")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("OutfitDefault"));
 							KinkyDungeonSetDress(outfitName, outfitName);
+							KinkyDungeonSetFlag("Recruit_" + name, -1);
+							KinkyDungeonSetFlag("Recruited", -1);
 							KDChangeFactionRelation("Player", faction, 0.4, true);
 							KDChangeFactionRelation("Player", faction, -0.2);
 							KinkyDungeonSlowMoveTurns = 3;
 							KinkyDungeonSleepTime = CommonTime() + 200;
-							KinkyDungeonSetFlag(name, 100);
+							KinkyDungeonSetFlag(name, -1, 1);
 							return false;
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},},
@@ -753,7 +757,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 									KinkyDungeonChangeRep(goddess, -2);
 								}
 							}
-							KinkyDungeonSetFlag(name, 100);
+							KinkyDungeonSetFlag(name, -1, 1);
 							return false;
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},},
@@ -763,6 +767,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 	};
 
 	KDRecruitDialog[name] = {name: name, outfit: outfitName, tags: requireTags, singletag: requireSingleTag, excludeTags: excludeTags, chance: chance};
+	KDDialogueTriggers[name] = KDRecruitTrigger(name, KDRecruitDialog[name]);
 	return recruit;
 }
 

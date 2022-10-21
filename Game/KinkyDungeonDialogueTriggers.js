@@ -490,8 +490,9 @@ let KDDialogueTriggers = {
 			return 1 + 0.5 * Math.abs(KinkyDungeonGoddessRep.Leather + 50)/100;
 		},
 	},
-	"OfferWolfgirl": KDRecruitTrigger("OfferWolfgirl"),
-	"OfferMaid": KDRecruitTrigger("OfferMaid"),
+
+
+
 	"PotionSell": KDShopTrigger("PotionSell"),
 	"ElfCrystalSell": KDShopTrigger("ElfCrystalSell"),
 	"NinjaSell": KDShopTrigger("NinjaSell"),
@@ -546,10 +547,10 @@ function KDShopTrigger(name) {
 /**
  *
  * @param {string} name
+ * @param {KinkyDialogue} name
  * @returns {KinkyDialogueTrigger}
  */
-function KDRecruitTrigger(name) {
-	let dialogue = KDRecruitDialog[name];
+function KDRecruitTrigger(name, dialogue) {
 	if (dialogue)
 		return {
 			dialogue: name,
@@ -560,14 +561,16 @@ function KDRecruitTrigger(name) {
 			playRequired: true,
 			nonHostile: true,
 			noCombat: true,
-			noAlly: true,
 			blockDuringPlaytime: true,
 			prerequisite: (enemy, dist) => {
 				return (dist < 1.5
+					&& !KinkyDungeonFlags.get("Recruited")
 					&& !KinkyDungeonFlags.get("DangerFlag")
 					&& !KinkyDungeonFlags.get(name)
 					&& !KinkyDungeonFlags.get("NoTalk")
 					&& KinkyDungeonCurrentDress != dialogue.outfit
+					&& !enemy.faction
+					&& !enemy.allied
 					&& KDFactionRelation("Player", KDGetFactionOriginal(enemy)) > -0.1
 					&& KDRandom() < dialogue.chance);
 			},

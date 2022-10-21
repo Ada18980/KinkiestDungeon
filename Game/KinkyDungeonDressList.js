@@ -5,7 +5,9 @@ let KinkyDungeonOutfitsBase = [
 	{name: "OutfitDefault", dress: "Default", shop: false, rarity: 1},// To avoid breaking saves
 	{name: "Default", dress: "Default", shop: false, rarity: 1},
 	{name: "JailUniform", dress: "JailUniform", shop: false, rarity: 1},
-	{name: "Wolfgirl", dress: "Wolfgirl", shop: false, rarity: 2},
+	{name: "Bast", dress: "Bast", shop: false, rarity: 1},
+	{name: "Bountyhunter", dress: "Bountyhunter", shop: false, rarity: 1},
+	{name: "Bikini", dress: "Bikini", shop: false, rarity: 1},
 	{name: "Maid", dress: "Maid", shop: false, rarity: 2, events: [{trigger: "calcEvasion", type: "AccuracyBuff", requiredTag: "mold", power: 10.0}]},
 	{name: "Dragon", dress: "Dragon", shop: false, rarity: 2},
 	{name: "Elven", dress: "Elven", shop: false, rarity: 2},
@@ -57,7 +59,7 @@ let KinkyDungeonDresses = {
 		{Item: "AnkleStrapShoes", Group: "Shoes", Color: "#2D2D2D", Lost: false},
 		{Item: "FloralPanties2", Group: "Panties", Color: ['#303030', '#F0F0F0'], Lost: false},
 	],
-	"Egyptian" : [
+	"Bast" : [
 		{Item: "Sarashi1", Group: "Bra", Color: "Default", Lost: false},
 		{Item: "Panties7", Group: "Panties", Color: "#ffffff", Lost: false},
 		{Item: "Sandals", Group: "Shoes", Color: "Default", Lost: false},
@@ -81,6 +83,11 @@ let KinkyDungeonDresses = {
 		{Item: "SeamlessCatsuit", Group: "Suit", Color: "#3873C3", Lost: false},
 		{Item: "SeamlessCatsuit", Group: "SuitLower", Color: "#3873C3", Lost: false},
 		{Item: "Catsuit", Group: "Gloves", Color: "#3873C3", Lost: false},
+	],
+	"Bountyhunter" : [
+		{Item: "SeamlessCatsuit", Group: "Suit", Color: "#222222", Lost: false},
+		{Item: "SeamlessCatsuit", Group: "SuitLower", Color: "#222222", Lost: false},
+		{Item: "Catsuit", Group: "Gloves", Color: "#222222", Lost: false},
 	],
 	"BlueSuitPrison" : [
 		{Item: "SeamlessCatsuit", Group: "Suit", Color: "#3873C3", Lost: false},

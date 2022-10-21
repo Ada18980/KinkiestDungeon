@@ -402,7 +402,7 @@ const KinkyDungeonMapParams = {
 		"max_height" : 8,
 
 		enemyTags: ["mummy", "ghost"],
-		"defeat_outfit": "Egyptian",
+		"defeat_outfit": "Bast",
 		"shrines": [
 			{Type: "Latex", Weight: 3},
 			{Type: "Commerce", Weight: 0},
