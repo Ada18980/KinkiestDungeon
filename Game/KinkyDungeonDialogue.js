@@ -661,7 +661,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 							}
 							let outfit = {name: outfitName, type: Outfit};
 							if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
-							if (KinkyDungeonInventoryGet("OutfitDefault")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("OutfitDefault"));
+							//if (KinkyDungeonInventoryGet("OutfitDefault")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("OutfitDefault"));
 							KinkyDungeonSetDress(outfitName, outfitName);
 							KinkyDungeonSetFlag("Recruit_" + name, -1);
 							KinkyDungeonSetFlag("Recruited", -1);
