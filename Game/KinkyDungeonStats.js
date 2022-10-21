@@ -1156,20 +1156,21 @@ let KinkyDungeonPlayWithSelfMult = 0.25;
 
 /**
  * Try to let go...
- * @param {number} Bonus
+ * @param {number} [Bonus]
  */
-function KinkyDungeonDoTryOrgasm(Bonus = 0) {
-	let amount = KinkyDungeonOrgasmVibeLevel * KinkyDungeonOrgasmVibeLevelMult + Bonus;
-	let playSelfAmount = KinkyDungeonDoPlayWithSelf();
+function KinkyDungeonDoTryOrgasm(Bonus) {
+	let chance = KinkyDungeonOrgasmChanceBase + KinkyDungeonOrgasmChanceScaling*(KDGameData.OrgasmTurns/KinkyDungeonOrgasmTurnsMax);
+	let denied = KinkyDungeonVibratorsDeny(chance);
+
+	let amount = denied ? 0 : KinkyDungeonOrgasmVibeLevel * KinkyDungeonOrgasmVibeLevelMult;
+	let playSelfAmount = Bonus != undefined ? Bonus : KinkyDungeonDoPlayWithSelf();
 	//if (playSelfAmount > KinkyDungeonOrgasmVibeLevel) {
 	amount += playSelfAmount;
 	//}
-	let chance = KinkyDungeonOrgasmChanceBase + KinkyDungeonOrgasmChanceScaling*(KDGameData.OrgasmTurns/KinkyDungeonOrgasmTurnsMax);
 	let msg = "KinkyDungeonOrgasm";
 	let msgTime = 4;
 
-	let denied = KinkyDungeonVibratorsDeny(chance);
-	if (!denied && amount > KinkyDungeonPlaySelfOrgasmThreshold && KDRandom() < chance) {
+	if (amount > KinkyDungeonPlaySelfOrgasmThreshold && KDRandom() < chance) {
 		// You finally shudder and tremble as a wave of pleasure washes over you...
 		KinkyDungeonStatBlind = 6;
 		KinkyDungeonOrgasmStunTime = 4;
@@ -1178,6 +1179,7 @@ function KinkyDungeonDoTryOrgasm(Bonus = 0) {
 		KinkyDungeonChangeWill(KinkyDungeonOrgasmWillpowerCost);
 		KinkyDungeonStatDistractionLower = 0;
 		KinkyDungeonAlert = 7; // Alerts nearby enemies because of your moaning~
+		KDGameData.PlaySelfTurns = 3;
 	} else {
 		KinkyDungeonChangeStamina(KinkyDungeonEdgeCost);
 		// You close your eyes and breath rapidly in anticipation...
