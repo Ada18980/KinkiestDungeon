@@ -952,6 +952,9 @@ function KinkyDungeonUpdateStats(delta) {
 	if (delta > 0) {
 		KinkyDungeonTeaseLevel = 0;
 	}
+
+	if (KinkyDungeonSlowLevel > 9) KDGameData.CagedTime = (KDGameData.CagedTime || 0) + delta;
+	else KDGameData.CagedTime = 0;
 }
 
 let KDDamageAmpPerks = 0;

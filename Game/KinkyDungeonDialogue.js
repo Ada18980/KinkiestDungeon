@@ -575,6 +575,68 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 	return dialog;
 }
 
+
+/**
+ * @type {Record<string, {speaker: string, faction: string}>}
+ */
+let KDPrisonRescues = {};
+
+
+/**
+ *
+ * @param {string} name
+ * @param {string} faction
+ * @param {string[]} enemytypes
+ * @returns {KinkyDialogue}
+ */
+function KDPrisonerRescue(name, faction, enemytypes) {
+	/**
+	 * @type {KinkyDialogue}
+	 */
+	let dialogue = {
+		response: "Default",
+		clickFunction: (gagged) => {
+			KinkyDungeonInterruptSleep();
+			let door = KDGetJailDoor(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+			if (door) {
+				if (door.tile) {
+					door.tile.Lock = undefined;
+					KDUpdateDoorNavMap();
+				}
+				KinkyDungeonMapSet(door.x, door.y, 'd');
+				let e = DialogueCreateEnemy(door.x, door.y, enemytypes[0]);
+				e.allied = 9999;
+				e.faction = "Player";
+				KDGameData.CurrentDialogMsgSpeaker = e.Enemy.name;
+
+				let reinforcementCount = Math.floor(1 + KDRandom() * (KDGameData.PriorJailbreaks ? (Math.min(5, KDGameData.PriorJailbreaks) + 1) : 1));
+				KDGameData.PriorJailbreaks += 1;
+				for (let i = 0; i < reinforcementCount; i++) {
+					let pp = KinkyDungeonGetNearbyPoint(door.x, door.y, true, undefined, undefined);
+					if (pp) {
+						let ee = DialogueCreateEnemy(pp.x, pp.y, enemytypes[1] || enemytypes[0]);
+						ee.allied = 9999;
+						ee.faction = "Player";
+					}
+				}
+			}
+			KDGameData.KinkyDungeonGuardSpawnTimer = 50 + Math.floor(KDRandom() * 10);
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	};
+	KDPrisonRescues[name] = {
+		speaker: enemytypes[0],
+		faction: faction,
+	};
+	return dialogue;
+}
+
 // ["wolfGear", "wolfRestraints"]
 function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restraintscount, restraintsAngry, restraintscountAngry, requireTags, requireSingleTag, excludeTags, chance) {
 	/**
@@ -1158,6 +1220,25 @@ function DialogueBringNearbyEnemy(x, y, radius) {
 				KDMoveEntity(e, point.x, point.y, true);
 				return e;
 			}
+		}
+	}
+	return null;
+}
+
+/** Yoinks a nearby enemy and brings them next to x */
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {entity} enemy
+ * @returns {entity}
+ */
+function DialogueBringSpecific(x, y, enemy) {
+	if (enemy) {
+		let point = KinkyDungeonNoEnemy(x, y, true) ? {x:x, y:y} : KinkyDungeonGetNearbyPoint(x, y, true);
+		if (point) {
+			KDMoveEntity(enemy, point.x, point.y, true);
+			return enemy;
 		}
 	}
 	return null;

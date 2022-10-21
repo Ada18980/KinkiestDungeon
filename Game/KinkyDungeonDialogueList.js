@@ -737,43 +737,21 @@ let KDDialogue = {
 			},
 		}
 	},
-	"PrisonerRescue": {
-		response: "Default",
-		clickFunction: (gagged) => {
-			KinkyDungeonInterruptSleep();
-			let door = KDGetJailDoor(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
-			if (door) {
-				if (door.tile) {
-					door.tile.Lock = undefined;
-					KDUpdateDoorNavMap();
-				}
-				KinkyDungeonMapSet(door.x, door.y, 'd');
-				let e = DialogueCreateEnemy(door.x, door.y, "Bandit");
-				e.allied = 9999;
-				e.faction = "Player";
-				KDGameData.CurrentDialogMsgSpeaker = e.Enemy.name;
+	"PrisonerRescueBountyhunter": KDPrisonerRescue("PrisonerRescueBountyhunter", "Bountyhunter", ["Nawashi", "Ninja"]),
+	"PrisonerRescueBandit": KDPrisonerRescue("PrisonerRescue", "Bandit", ["Bandit", "Bandit"]),
+	"PrisonerRescueAlchemist": KDPrisonerRescue("PrisonerRescueAlchemist", "Alchemist", ["Alkahestor", "Alchemist"]),
+	"PrisonerRescueNevermere": KDPrisonerRescue("PrisonerRescueNevermere", "Nevermere", ["Wolfgirl", "WolfgirlPet"]),
+	"PrisonerRescueApprentice": KDPrisonerRescue("PrisonerRescueApprentice", "Apprentice", ["Apprentice2", "Apprentice"]),
+	"PrisonerRescueDressmaker": KDPrisonerRescue("PrisonerRescueDressmaker", "Dressmaker", ["Librarian", "Dressmaker"]),
+	"PrisonerRescueWitch": KDPrisonerRescue("PrisonerRescueWitch", "Witch", ["WitchIce", "Apprentice"]),
+	"PrisonerRescueElemental": KDPrisonerRescue("PrisonerRescueElemental", "Elemental", ["ElementalAir", "ElementalFire"]),
+	"PrisonerRescueDragon": KDPrisonerRescue("PrisonerRescueDragon", "Dragon", ["DragonShield", "Dragon"]),
+	"PrisonerRescueMaid": KDPrisonerRescue("PrisonerRescueMaid", "Maidforce", ["MaidforceStalker", "Maidforce"]),
+	"PrisonerRescueBast": KDPrisonerRescue("PrisonerRescueBast", "Bast", ["Cleric", "MeleeCleric"]),
+	"PrisonerRescueElf": KDPrisonerRescue("PrisonerRescueElf", "Elf", ["Elf", "ElfRanger"]),
+	"PrisonerRescueMushy": KDPrisonerRescue("PrisonerRescueMushy", "Mushy", ["Fungal", "Mushy"]),
+	"PrisonerRescueAncientRobot": KDPrisonerRescue("PrisonerRescueAncientRobot", "AncientRobot", ["CaptureBot", "Drone"]),
 
-				let reinforcementCount = Math.floor(1 + KDRandom() * (KDGameData.PriorJailbreaks ? (Math.min(5, KDGameData.PriorJailbreaks) + 1) : 1));
-				KDGameData.PriorJailbreaks += 1;
-				for (let i = 0; i < reinforcementCount; i++) {
-					let pp = KinkyDungeonGetNearbyPoint(door.x, door.y, true, undefined, undefined);
-					if (pp) {
-						let ee = DialogueCreateEnemy(pp.x, pp.y, "Bandit");
-						ee.allied = 9999;
-						ee.faction = "Player";
-					}
-				}
-			}
-			KDGameData.KinkyDungeonGuardSpawnTimer = 50 + Math.floor(KDRandom() * 10);
-			return false;
-		},
-		options: {
-			"Leave": {
-				playertext: "Leave", response: "Default",
-				exitDialogue: true,
-			},
-		}
-	},
 	"BlacksmithShop": KDSaleShop("BlacksmithShop", ["RedKey", "Knife", "Sword", "Axe", "Spear", "TrapCuffs"], [], ["blacksmith"], 0.4, 1.5),
 	"PrisonerBandit": {
 		response: "Default",

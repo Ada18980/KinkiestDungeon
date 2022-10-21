@@ -1,5 +1,8 @@
 "use strict";
 
+/** Time spent in cage before guards start getting teleported */
+let KDMaxCageTime = 100;
+
 function KDAssignGuardAction(guard, xx, yy) {
 	let eventWeightTotal = 0;
 	let eventWeights = [];

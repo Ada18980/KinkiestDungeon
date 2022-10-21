@@ -300,7 +300,7 @@ let KDEventMapInventory = {
 			if (!data.delta) return;
 			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < 0.1) {
 				KinkyDungeonSetFlag("GuardCalled", 35);
-				if (KinkyDungeonEntities.length < 100) {
+				if (KinkyDungeonEntities.length < 100 || KDGameData.CagedTime > KDMaxCageTime) {
 					let requireTags = null;
 					if (KinkyDungeonFlags.has("callGuardJailerOnly")) {
 						requireTags = ["jailer"];
@@ -311,6 +311,10 @@ let KDEventMapInventory = {
 						ee.playWithPlayer = 12;
 					}
 				}
+			}
+			let guard = KinkyDungeonJailGuard();
+			if (KDGameData.CagedTime > KDMaxCageTime && KDistChebyshev(guard.x - KinkyDungeonPlayerEntity.x, guard.y - KinkyDungeonPlayerEntity.y) < 4) {
+				DialogueBringSpecific(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, guard);
 			}
 		},
 		"slimeSpread": (e, item, data) => {

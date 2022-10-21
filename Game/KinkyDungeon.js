@@ -225,9 +225,11 @@ let KDOptOut = false;
 * HiddenSpellPages : Record<string, boolean>,
 * KeyringLocations : {x: number, y: number}[],
 * HiddenItems : Record<string, boolean>,
+* CagedTime : number,
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	CagedTime: 0,
 	HiddenItems: {},
 	KeyringLocations: [],
 	HiddenSpellPages: {},

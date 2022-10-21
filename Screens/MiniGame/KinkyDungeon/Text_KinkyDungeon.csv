@@ -7661,7 +7661,19 @@ dPrisonerJail_Word,Use a command word
 
 KinkyDungeonDiscovered,An enemy found you while you were busy!
 
-rPrisonerRescue,"(A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)"
+rPrisonerRescueBandit,"(A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)"
+rPrisonerRescueBountyhunter,"(You wake up to find a SPEAKER creeping up outside the door)|You've been marked as a person of interest.|We are here to escort you out of this place."
+rPrisonerRescueNevermere,"(A SPEAKER wakes you up by banging on the bars)|Hey wake up!|You should join me and my pals here~|Maybe you'll join them once we're out of here?"
+rPrisonerRescueElf,"(A SPEAKER wakes you up by banging on the bars)|I have been sent to inform you...|...that you are of good standing with the Council.|That being said, I'm only doing this because of procedure."
+rPrisonerRescueBast,"(A SPEAKER wakes you up by banging on the bars)|Greetings, follower of the blessed kitty!|Because of your faith, we have been sent to rescue you!"
+rPrisonerRescueMushy,"(You sense a presence nearby and look up to see a SPEAKER)|Because you are one, we have come to free you.|Do not take this as an excuse to get yourself into further trouble."
+rPrisonerRescueDressmaker,"(A SPEAKER wakes you up with the sound of copious fabric rustling)|Oh why hello there!|Would you be interested in a trial run of my latest product?|Of course, we'll have to get you out of here first..."
+rPrisonerRescueWitch,"(A SPEAKER wakes you up by banging on the bars)|Hello my pretty~|I thought to myself I'd rather have you than these folk.|Now why don't you come along and follow me..."
+rPrisonerRescueApprentice,"(A SPEAKER wakes you up by banging on the bars)|Um... hello!|I received a quest to help you out of here!|Now, where do we go..."
+rPrisonerRescueMaidforce,"(You wake up to find a SPEAKER whispering to you)|Greetings.|We've been sent to free you.|Let's get moving."
+rPrisonerRescueDragon,"(A SPEAKER wakes you up by banging loudly)|Hey! Good news!|My friends and I came to rescue you!"
+rPrisonerRescueElemental,"(A SPEAKER wakes you up by knocking on the bars)|Hey, wake up.|I happen to like you, so we're going to get you out of here."
+rPrisonerRescueAncientRobot,"(A SPEAKER flashes a bright light in your direction)|Prisoner 74121 located. Commence transfer to different location."
 rAllyRescue,"(A SPEAKER wakes you up)|We came to rescue you. Come on!"
 
 rBed,"(The bed looks comfy and inviting)|(Napping here will restore half of your willpower)|(You can only sleep once per floor)"

@@ -4,17 +4,6 @@
  * @type {Record<string, {weight: (guard: any, xx: any, yy: any) => number, trigger: (guard: any, xx: any, yy: any) => void}>}
  */
 let KDJailEvents = {
-	"BanditRescue": {
-		// Determines the weight
-		weight: (guard, xx, yy) => {
-			if (guard) return 0;
-			return KDGameData.JailTurns > 30 ? 100 * Math.min(0.3, 0.11 + 0.01 * (KDGameData.PriorJailbreaks ? KDGameData.PriorJailbreaks : 0)) : 0;
-		},
-		// Occurs when the jail event triggers
-		trigger: (guard, xx, yy) => {
-			KDStartDialog("PrisonerRescue", "Bandit", true, "", undefined);
-		},
-	},
 	"spawnGuard": {
 		// Determines the weight
 		weight: (guard, xx, yy) => {
@@ -64,6 +53,21 @@ let KDJailEvents = {
 		},
 	},
 };
+
+for (let rescue of Object.entries(KDPrisonRescues)) {
+	KDJailEvents[rescue[0]] = {
+		// Determines the weight
+		weight: (guard, xx, yy) => {
+			if (guard) return 0;
+			if (KDGameData.JailTurns <= 70 || KDFactionRelation("Player", rescue[1].faction) < 0.09) return 0;
+			return 100 * Math.min(0.05, Math.max(0.1, 0.35 * KDFactionRelation("Player", rescue[1].faction)) + 0.005 * (KDGameData.PriorJailbreaks ? KDGameData.PriorJailbreaks : 0));
+		},
+		// Occurs when the jail event triggers
+		trigger: (guard, xx, yy) => {
+			KDStartDialog(rescue[0], rescue[1].speaker, true, "", undefined);
+		},
+	};
+}
 
 // if (KinkyDungeonGoddessRep.Prisoner) securityLevel = Math.max(0, KinkyDungeonGoddessRep.Prisoner + 50);
 
