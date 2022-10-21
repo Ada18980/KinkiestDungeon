@@ -8078,7 +8078,7 @@ rPrisonerRescueBountyhunter,"(You wake up to find a SPEAKER creeping up outside 
 rPrisonerRescueNevermere,"(A SPEAKER wakes you up by banging on the bars)|Hey wake up!|You should join me and my pals here~|Maybe you'll join them once we're out of here?"
 rPrisonerRescueElf,"(A SPEAKER wakes you up by banging on the bars)|I have been sent to inform you...|...that you are of good standing with the Council.|That being said, I'm only doing this because of procedure."
 rPrisonerRescueBast,"(A SPEAKER wakes you up by banging on the bars)|Greetings, follower of the blessed kitty!|Because of your faith, we have been sent to rescue you!"
-rPrisonerRescueMushy,"(You sense a presence nearby and look up to see a SPEAKER)|Because you are one, we have come to free you.|Do not take this as an excuse to get yourself into further trouble."
+rPrisonerRescueMushy,"(You sense a presence nearby and look up to see a SPEAKER)|Because you are one, we have come to free you.|Do not take this as an excuse|to get yourself into further trouble."
 rPrisonerRescueDressmaker,"(A SPEAKER wakes you up with the sound of copious fabric rustling)|Oh why hello there!|Would you be interested in a trial run of my latest product?|Of course, we'll have to get you out of here first..."
 rPrisonerRescueWitch,"(A SPEAKER wakes you up by banging on the bars)|Hello my pretty~|I thought to myself I'd rather have you than these folk.|Now why don't you come along and follow me..."
 rPrisonerRescueApprentice,"(A SPEAKER wakes you up by banging on the bars)|Um... hello!|I received a quest to help you out of here!|Now, where do we go..."

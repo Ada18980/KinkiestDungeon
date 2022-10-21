@@ -807,10 +807,9 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 	let randomFactions = [
 		factions[Math.floor(KDRandom() * factions.length)],
 		factions[Math.floor(KDRandom() * factions.length)],
-		factions[Math.floor(KDRandom() * factions.length)]
 	];
 
-	console.log(randomFactions[0] + "," + randomFactions[1] + "," + randomFactions[2]);
+	console.log(randomFactions[0] + "," + randomFactions[1]);
 
 	// These tags are disallowed unless working in the specific box
 	let filterTags = ["boss", "miniboss", "elite", "minor"];
@@ -821,9 +820,8 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		{requiredTags: ["miniboss"], tags: [], currentCount: 0, maxCount: 0.075},
 		{requiredTags: ["elite"], tags: [], currentCount: 0, maxCount: 0.15},
 		{requiredTags: ["minor"], tags: [], currentCount: 0, maxCount: 0.1},
-		{requiredTags: [KinkyDungeonFactionTag[randomFactions[0]]], tags: [KinkyDungeonFactionTag[randomFactions[0]]], currentCount: 0, maxCount: 0.15},
-		{requiredTags: [KinkyDungeonFactionTag[randomFactions[1]]], tags: [KinkyDungeonFactionTag[randomFactions[1]]], currentCount: 0, maxCount: 0.15},
-		{requiredTags: [KinkyDungeonFactionTag[randomFactions[2]]], tags: [KinkyDungeonFactionTag[randomFactions[2]]], currentCount: 0, maxCount: 0.15},
+		{requiredTags: [KinkyDungeonFactionTag[randomFactions[0]]], tags: [KinkyDungeonFactionTag[randomFactions[0]]], currentCount: 0, maxCount: 0.2},
+		{requiredTags: [KinkyDungeonFactionTag[randomFactions[1]]], tags: [KinkyDungeonFactionTag[randomFactions[1]]], currentCount: 0, maxCount: 0.2},
 	];
 	if (KDGameData.MapMod) {
 		let mapMod = KDMapMods[KDGameData.MapMod];
