@@ -313,7 +313,7 @@ let KDEventMapInventory = {
 				}
 			}
 			let guard = KinkyDungeonJailGuard();
-			if (KDGameData.CagedTime > KDMaxCageTime && KDistChebyshev(guard.x - KinkyDungeonPlayerEntity.x, guard.y - KinkyDungeonPlayerEntity.y) < 4) {
+			if (guard && KDGameData.CagedTime > KDMaxCageTime && KDistChebyshev(guard.x - KinkyDungeonPlayerEntity.x, guard.y - KinkyDungeonPlayerEntity.y) < 4) {
 				DialogueBringSpecific(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, guard);
 			}
 		},
