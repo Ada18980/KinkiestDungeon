@@ -11,6 +11,7 @@ let KinkyDungeonOutfitsBase = [
 	{name: "Maid", dress: "Maid", shop: false, rarity: 2, events: [{trigger: "calcEvasion", type: "AccuracyBuff", requiredTag: "mold", power: 10.0}]},
 	{name: "Dragon", dress: "Dragon", shop: false, rarity: 2},
 	{name: "Elven", dress: "Elven", shop: false, rarity: 2},
+	{name: "Wolfgirl", dress: "Wolfgirl", shop: false, rarity: 2},
 	{name: "BlueSuitPrison", dress: "BlueSuitPrison", shop: false, rarity: 2},
 	{name: "BlueSuit", dress: "BlueSuit", shop: false, rarity: 2},
 	{name: "Obsidian", dress: "Obsidian", shop: false, rarity: 2},
