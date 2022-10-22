@@ -101,7 +101,7 @@ let KinkyDungeonLootTable = {
 
 		{name: "StaffDoll", minLevel: 5, weight:0.25, weapon: "StaffDoll", goddess: "Latex", goddessWeight: 1.25, noweapon: ["StaffDoll"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "StaffIncineration", minLevel: 5, weight:1, weapon: "StaffIncineration", goddess: "Elements", goddessWeight: 0.75, noweapon: ["StaffIncineration"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
-		{name: "StaffStorm", minLevel: 5, weight:1, weapon: "StaffGlue", goddess: "Elements", goddessWeight: 0.75, noweapon: ["StaffStorm"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "StaffStorm", minLevel: 5, weight:1, weapon: "StaffStorm", goddess: "Elements", goddessWeight: 0.75, noweapon: ["StaffStorm"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "StaffFrostbite", minLevel: 5, weight:1, weapon: "StaffElectric", goddess: "Elements", goddessWeight: 0.75, noweapon: ["StaffFrostbite"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "StaffBind", minLevel: 5, weight:1, weapon: "StaffBind", goddess: "Rope", goddessWeight: 2.75, noweapon: ["StaffBind"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 
