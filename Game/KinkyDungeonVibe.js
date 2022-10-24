@@ -279,7 +279,7 @@ function KinkyDungeonAddVibeModifier(source, name, location, intensityMod, durat
 function KinkyDungeonGetDenyChance(chance) {
 	if (!KDGameData.CurrentVibration) return 0;
 	let data = {
-		denyChance: KDGameData.CurrentVibration.denialChance ? KDGameData.CurrentVibration.denialChance : 1.0,
+		denyChance: KDGameData.CurrentVibration.denialChance ? KDGameData.CurrentVibration.denialChance : 0.0,
 		orgasmChance: chance,
 	};
 	if (chance > 0) {
@@ -403,6 +403,8 @@ function KinkyDungeonCalculateVibeLevel(delta) {
 
 			if (edge && !bypassEdge) {
 				KDGameData.Edged = true;
+			} else {
+				KinkyDungeonOrgasmVibeLevel = Math.max(KinkyDungeonOrgasmVibeLevel || 0, vibration.intensity);
 			}
 		} else {
 			KinkyDungeonEndVibration();
