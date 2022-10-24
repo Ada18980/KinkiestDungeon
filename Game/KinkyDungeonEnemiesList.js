@@ -1218,7 +1218,7 @@ let KinkyDungeonEnemies = [
 		followLeashedOnly: true, kite: 1.5, kiteChance: 0.3, followRange: 4, castWhileMoving: true, spells: ["NurseBola", "NurseSyringe"], stopToCast: true, spellRdy: true, noKiteWhenHarmless: true, noSpellsWhenHarmless: true, dontKiteWhenDisabled: true,
 		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 13, minLevel:0, weight:-40, movePoints: 2, attackPoints: 2, attack: "SpellMeleeBindWillLock", projectileTargeting: true,
 		attackWidth: 1, attackRange: 1, power: 3, dmgType: "charm", fullBoundBonus: 3, focusPlayer: true, attackLock: "Red",
-		terrainTags: {"secondhalf":2, "lastthird":1, "jailGuard": 50, "Guard": 50, "willAnger": 49, "willRage": 4, "ropeAnger": 3, "ropeRage": 2, "dressmaker": 50}, allFloors: true, shrines: ["Will", "Rope"],
+		terrainTags: {"secondhalf":2, "lastthird":1, "jailGuard": 50, "Guard": 50, "willAnger": 49, "willRage": 4, "ropeAnger": 3, "ropeRage": 2, "dressmaker": 50, "NoNurse": -10000}, allFloors: true, shrines: ["Will", "Rope"],
 		events: [
 			{trigger: "afterEnemyTick", type: "nurseAura", power: 0.1, dist: 2.59},
 		],

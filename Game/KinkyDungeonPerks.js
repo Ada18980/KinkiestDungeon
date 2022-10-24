@@ -6,6 +6,7 @@ let KDDoorAttractChance = 0.25; // Chance to attract someone by banging
 let KDDoorAttractChanceArms = 0.1; // Chance to attract someone by rattling
 
 let KDCategoriesStart = [
+	{name: "Toggles", buffs: [], debuffs: [],},
 	{name: "Restraints", buffs: [], debuffs: [],},
 	{name: "Kinky", buffs: [], debuffs: [],},
 	{name: "Damage", buffs: [], debuffs: [],},
@@ -219,7 +220,8 @@ let KinkyDungeonStatsPresets = {
 	"Panic": {category: "Map", id: "Panic", cost: -1},
 
 	"Rusted": {category: "Map", id: "Rusted", cost: 1},
-	"Unmasked": {category: "Kinky", id: "Unmasked", cost: 0},
+	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0},
+	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0},
 
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 

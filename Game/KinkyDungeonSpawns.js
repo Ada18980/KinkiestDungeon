@@ -93,9 +93,13 @@ function KinkyDungeonAddTags(tags, Floor) {
 	return overrideTags;
 }
 
+let KDPerkToggleTags = [
+	"NoNurse",
+];
+
 /**
  *
- * @param {string[]} tags
+ * @param {string[]} enemytags
  * @param {number} Level
  * @param {string} Index
  * @param {string} Tile
@@ -106,9 +110,15 @@ function KinkyDungeonAddTags(tags, Floor) {
  * @param {string[]} [requireSingleTag]
  * @returns {enemy}
  */
-function KinkyDungeonGetEnemy(tags, Level, Index, Tile, requireTags, requireHostile, bonusTags, filterTags, requireSingleTag) {
+function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, requireHostile, bonusTags, filterTags, requireSingleTag) {
 	let enemyWeightTotal = 0;
 	let enemyWeights = [];
+	let tags = Object.assign([], enemytags);
+	for (let t of KDPerkToggleTags) {
+		if (KinkyDungeonStatsChoice.get(t)) {
+			tags.push(t);
+		}
+	}
 
 	for (let enemy of KinkyDungeonEnemies) {
 		let effLevel = Level + 25 * KinkyDungeonNewGame;

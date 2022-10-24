@@ -317,6 +317,8 @@ KinkyDungeonStatDescRusted,"Most traps have a 25% misfire chance."
 
 KinkyDungeonStatUnmasked,"Unmasked"
 KinkyDungeonStatDescUnmasked,"Hoods and full-face covering masks do not appear, but blindfolds are more powerful."
+KinkyDungeonStatNoNurse,"No Nurses"
+KinkyDungeonStatDescNoNurse,"Nurses will not appear in the game."
 
 KinkyDungeonStatPanic,"Panic!!!"
 KinkyDungeonStatDescPanic,"When you step on a trap, you are stunned for 2 turns."
@@ -6401,6 +6403,7 @@ KinkyDungeonSpecialFlamberge,Ignite torches and nearby objects
 KinkyDungeonSpecialStaffFlame,Ignite torches and nearby objects
 KinkyDungeonSpecialStaffIncineration,Ignite torches and nearby objects
 
+KDCategoryToggles,Toggles
 KDCategoryRestraints,Locks and Restraints
 KDCategoryCombat,General Combat
 KDCategoryKinky,Kinks and Preferences
