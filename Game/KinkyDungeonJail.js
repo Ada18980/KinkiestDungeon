@@ -522,7 +522,15 @@ function KinkyDungeonMissingJailUniform() {
 		let rest = KinkyDungeonGetJailRestraintForGroup(g);
 		let currentItem = KinkyDungeonGetRestraintItem(g);
 		if (rest
-			&& (!currentItem || (KinkyDungeonIsLinkable(KDRestraint(currentItem), rest) && (!currentItem.dynamicLink || !KDDynamicLinkList(currentItem, true).some((item) => {return rest.name == item.name;}))))
+			&& (!currentItem || (
+				KDCanAddRestraint(rest,
+					KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+					undefined,
+					KinkyDungeonStatsChoice.has("TightRestraints") ? true : undefined,
+					undefined,
+					KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined)
+				&& (!currentItem.dynamicLink || !KDDynamicLinkList(currentItem, true).some((item) => {return rest.name == item.name;})))
+			)
 			&& (KinkyDungeonStatsChoice.get("arousalMode") || !rest.arousalMode)
 			&& (KinkyDungeonStatsChoice.get("arousalModePlug") || rest.Group != "ItemButt")
 			&& (KinkyDungeonStatsChoice.get("arousalModePiercing") || !rest.piercing)) {
