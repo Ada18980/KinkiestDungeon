@@ -3937,17 +3937,17 @@ KinkyDungeonSpellShadowStrike,Shadowy chains appear from a rift in space!
 KinkyDungeonInfernoBurn,The roaring inferno deals 10 damage to you!
 
 KinkyDungeonSpellApprenticeFire,Flame Novice
-KinkyDungeonSpellDescriptionApprenticeFire,Unlocks fire and arcane spells. Learn Firebolt.
+KinkyDungeonSpellDescriptionApprenticeFire,Unlocks fire spells. Learn Firebolt.
 KinkyDungeonSpellApprenticeLightning,Lightning Novice
-KinkyDungeonSpellDescriptionApprenticeLightning,Unlocks fire and arcane spells. Learn Electrify.
+KinkyDungeonSpellDescriptionApprenticeLightning,Unlocks electrice spells. Learn Electrify.
 KinkyDungeonSpellApprenticeWater,Water Novice
-KinkyDungeonSpellDescriptionApprenticeWater,Unlocks ice and water spells. Learn Water Ball.
+KinkyDungeonSpellDescriptionApprenticeWater,Unlocks water spells. Learn Water Ball.
 KinkyDungeonSpellApprenticeIce,Ice Novice
-KinkyDungeonSpellDescriptionApprenticeIce,Unlocks ice and water spells. Learn Freeze.
+KinkyDungeonSpellDescriptionApprenticeIce,Unlocks ice spells. Learn Freeze.
 KinkyDungeonSpellApprenticeEarth,Earth Novice
-KinkyDungeonSpellDescriptionApprenticeEarth,Unlocks earth and metal spells. Learn Stone Skin.
+KinkyDungeonSpellDescriptionApprenticeEarth,Unlocks earth spells. Learn Stone Skin.
 KinkyDungeonSpellApprenticeAir,Air Novice
-KinkyDungeonSpellDescriptionApprenticeAir,Unlocks air and electric spells. Learn Wind Blast.
+KinkyDungeonSpellDescriptionApprenticeAir,Unlocks air spells. Learn Wind Blast.
 
 KinkyDungeonSpellApprenticeLatex,Latex 101
 KinkyDungeonSpellDescriptionApprenticeLatex,Unlocks latex spells. Learn Slime Ball.
