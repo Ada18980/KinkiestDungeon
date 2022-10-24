@@ -629,6 +629,14 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
 			{trigger:"tick",  type: "PeriodicDenial", power: 2, time: 36, cooldown: {"normal": 150, "tease": 40}, chance: 0.05},
 		]},
+	{inventory: true, arousalMode: true, name: "TrapPlug4", Asset: "VibratingDildo", Color: "Default", Group: "ItemVulva", plugSize: 1.0, power: 5, weight: 1,
+		escapeChance: {"Struggle": 10}, enemyTags: {"trap":0}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Plugs"], linkedVibeTags: ["plugs"],
+		allowRemote: true, events: [
+			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
+			{trigger:"tick",  type: "PeriodicTeasing", power: 3, time: 20, edgeOnly: false, cooldown: {"normal": 40, "tease": 20}, chance: 0.02},
+			{trigger:"tick",  type: "PeriodicDenial", power: 2, time: 30, edgeOnly: false, cooldown: {"normal": 70, "tease": 20}, chance: 0.02},
+			{trigger:"tick",  type: "PeriodicTeasing", power: 4, time: 10, edgeOnly: false, cooldown: {"normal": 90, "tease": 5}, chance: 0.005},
+		]},
 	{inventory: true, trappable: true, name: "TrapMittens", inaccessible: true, Asset: "LeatherMittens", Color: "Default", Group: "ItemHands", bindhands: true, power: 5, weight: 0,
 		maxwill: 0.5, escapeChance: {"Struggle": 0.05, "Cut": 0.4, "Remove": 0.15, "Pick": 1.0}, enemyTags: {"leatherRestraintsHeavy":6, "mittensSpell": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Mittens"]},
 	// These ones are tougher

@@ -516,6 +516,13 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("RestraintType", TextGet("RestraintTrapPlug3"));
 	}
+	else if (Loot.name == "trap_plug_thunder") {
+		value = Math.ceil((150 + 50 * KDRandom()) * (1 + Floor/40));
+		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapPlug4"), MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, "");
+		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapBelt"), MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, Lock ? Lock : KinkyDungeonGenerateLock(true, undefined, true), undefined, Loot.trap);
+		if (Replacemsg)
+			Replacemsg = Replacemsg.replace("RestraintType", TextGet("RestraintTrapPlug4"));
+	}
 	else if (Loot.name == "trap_nipple") {
 		value = Math.ceil((150 + 50 * KDRandom()) * (1 + Floor/40));
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("NippleClamps"), MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, "");
