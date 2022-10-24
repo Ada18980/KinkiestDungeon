@@ -2730,8 +2730,23 @@ function KinkyDungeonListenKeyMove() {
 
 		if (moveDirection) {
 			if (KinkyDungeonLastMoveTimerStart < performance.now() && KinkyDungeonLastMoveTimerStart > 0) {
-				KDSendInput("move", {dir: moveDirection, delta: 1, AllowInteract: KinkyDungeonLastMoveTimer == 0, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
-				KinkyDungeonLastMoveTimer = performance.now() + KinkyDungeonLastMoveTimerCooldown;
+
+				let _CharacterRefresh = CharacterRefresh;
+				let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
+				// @ts-ignore
+				CharacterRefresh = () => {KDRefresh = true;};
+				// @ts-ignore
+				CharacterAppearanceBuildCanvas = () => {};
+
+				try {
+					KDSendInput("move", {dir: moveDirection, delta: 1, AllowInteract: KinkyDungeonLastMoveTimer == 0, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
+					KinkyDungeonLastMoveTimer = performance.now() + KinkyDungeonLastMoveTimerCooldown;
+				} finally {
+					// @ts-ignore
+					CharacterRefresh = _CharacterRefresh;
+					// @ts-ignore
+					CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
+				}
 			} else if (KinkyDungeonLastMoveTimerStart == 0) {
 				KinkyDungeonLastMoveTimerStart = performance.now()+ KinkyDungeonLastMoveTimerCooldownStart;
 			}

@@ -455,14 +455,17 @@ let KDLastKeyTime = {
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
-
-	KDProcessInputs();
-
 	if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
 		if (KinkyDungeonKeybindingCurrentKey)
 			KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
 		KinkyDungeonKeybindingCurrentKey = '';
 	}
+
+	if (KinkyDungeonDrawState == "Game")
+		KinkyDungeonListenKeyMove();
+
+	KDProcessInputs();
+
 
 	if (KDRefresh) {
 		CharacterRefresh(KinkyDungeonPlayer);
@@ -477,8 +480,6 @@ function KinkyDungeonDrawGame() {
 	}
 
 
-	if (KinkyDungeonDrawState == "Game")
-		KinkyDungeonListenKeyMove();
 	if ((KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
 		if (KinkyDungeonDrawState == "Magic") {
 			KinkyDungeonDrawState = "MagicSpells";
