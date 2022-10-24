@@ -3432,7 +3432,8 @@ function KinkyDungeonEnemyTryMove(enemy, Direction, delta, x, y) {
 			ee.movePoints = 0;
 			ee.stun = 1;
 		}
-		KDMoveEntity(enemy, enemy.x + Direction.x, enemy.y + Direction.y, true);
+		if (!ee || !KinkyDungeonEnemyAt(enemy.x + Direction.x, enemy.y + Direction.y))
+			KDMoveEntity(enemy, enemy.x + Direction.x, enemy.y + Direction.y, true);
 
 		if (KinkyDungeonMapGet(x, y) == 'D' && enemy.Enemy && enemy.Enemy.tags.opendoors) {
 			KinkyDungeonMapSet(x, y, 'd');
