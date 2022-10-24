@@ -36,7 +36,7 @@ let KinkyDungeonMiscastChance = 0;
 let KinkyDungeonVibeLevel = 0;
 let KinkyDungeonTeaseLevel = 0;
 let KinkyDungeonOrgasmVibeLevel = 0;
-let KinkyDungeonDistractionPerVibe = 0.5; // How much distraction per turn per vibe energy cost
+let KinkyDungeonDistractionPerVibe = 0.05; // How much distraction per turn per vibe energy cost
 let KinkyDungeonDistractionPerPlug = 0.25; // How much distraction per move per plug level
 let KinkyDungeonVibeCostPerIntensity = 0.15;
 
