@@ -76,11 +76,11 @@ let KinkyDungeonEnemies = [
 	{name: "AllyDoll", bound: "AllyDoll", color: "#9c2a70", tags: KDMapInit(["human", "player", "gagged", "blindfold", "melee", "glueimmune", "ticklesevereweakness", "nohelp"]), allied: true, armor: 0, followRange: 1, AI: "hunt",
 		visionRadius: 20, playerBlindSight: 100, maxhp: 8, regen: -0.1, minLevel:0, weight:0, movePoints: 2, attackPoints: 2, attack: "MeleeWill", attackRange: 1, attackWidth: 1, power: 1.5, dmgType: "glue",
 		terrainTags: {}, floors:KDMapInit([])},
-	{name: "Pet", color: "#8888ff", tags: KDMapInit(["human", "player", "gagged", "melee", "ticklesevereweakness", "nohelp"]), allied: true, armor: 0, followRange: 1, AI: "hunt",
+	{name: "Pet", color: "#8888ff", tags: KDMapInit(["human", "player", "gagged", "melee", "ticklesevereweakness", "nohelp"]), allied: true, armor: 0, followRange: 4, AI: "hunt",
 		events: [
 			{trigger: "calcManaPool", type: "PetManaRegen", power: 0.01, dist: 1.5},
 		],
-		visionRadius: 20, playerBlindSight: 100, maxhp: 8, minLevel:0, weight:0, movePoints: 1, attackPoints: 2, attack: "", attackRange: 0, power: 1.5, dmgType: "tickle", focusPlayer: true,
+		visionRadius: 20, playerBlindSight: 100, maxhp: 10, minLevel:0, weight:0, movePoints: 1, attackPoints: 2, attack: "", attackRange: 0, power: 1.5, dmgType: "tickle", focusPlayer: true,
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "PlayerGag", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "player", "melee", "temporary", "notalk"]), noblockplayer: true, allied: true, armor: 0, followRange: 1, AI: "guard", accuracy: 1.5, noTargetSilenced: true,
 		visionRadius: 20, playerBlindSight: 100, maxhp: 4, minLevel:0, weight:0, movePoints: 1, attackPoints: 1, attack: "MeleeWillSilenceSuicideStun", silenceTime: 9, stunTime: 1, attackRange: 1, attackWidth: 1, power: 3.5, dmgType: "grope",
