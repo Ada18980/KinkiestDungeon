@@ -176,7 +176,8 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 					if (dist <= nearestDistance && (pdist_enemy <= 0 ||
 						((KinkyDungeonVisionGet(e.x, e.y) > 0 || pdist_enemy < 5) && (pdist_enemy < 8 || enemy.Enemy.followRange > 1))
 					)) {
-						if (KinkyDungeonCheckLOS(enemy, e, dist, visionRadius, true, true)) {
+						if (KinkyDungeonCheckLOS(enemy, e, dist, visionRadius, true, true)
+							&& (KinkyDungeonVisionGet(e.x, e.y) > 0 || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 || e.aware || enemy.aware)) {
 							if (enemy.rage || !e.Enemy.lowpriority
 									|| (!KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, pdist, visionRadius, true, true) || !KinkyDungeonCheckPath(enemy.x, enemy.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true))) {
 								nearestVisible = e;
