@@ -799,9 +799,9 @@ function KDGroupBlocked(Group, External) {
 
 	if (hood && KDRestraint(hood) && KDRestraint(hood).gag && Group.includes("ItemM")) return true;
 
-	let mask = KinkyDungeonGetRestraintItem("ItemHead");
+	//let mask = KinkyDungeonGetRestraintItem("ItemHead");
 
-	if (mask && KDRestraint(mask) && KDRestraint(mask).gag && Group.includes("ItemM")) return true;
+	//if (mask && KDRestraint(mask) && KDRestraint(mask).gag && Group.includes("ItemM")) return true;
 
 	let arms = KinkyDungeonGetRestraintItem("ItemArms");
 

@@ -5620,6 +5620,7 @@ KinkyDungeonHookHigh,A hook hangs at shoulder height.
 KinkyDungeonHookHighFail,You can't reach that with the hook!
 KinkyDungeonHookLow,There's a hook on the wall.
 KinkyDungeonCrack,The wall is cracked.
+KinkyDungeonPlayCorner,You rub yourself on the corner...
 
 KinkyDungeonRemoveLowLevelRope,"Many ropes emerge around you, removing weaker ropes from your body and binding enemies!"
 

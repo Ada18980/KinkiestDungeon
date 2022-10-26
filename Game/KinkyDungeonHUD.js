@@ -1993,7 +1993,7 @@ function KinkyDungeonUpdateStruggleGroups() {
 			else Group = "ItemMouth";
 		}
 		if (sg == "ItemH") {
-			if (InventoryGet(KinkyDungeonPlayer, "ItemHood")) Group = "ItemHood";
+			if (InventoryGet(KinkyDungeonPlayer, "ItemHood") || KinkyDungeonGetRestraintItem("ItemHood")) Group = "ItemHood";
 			else Group = "ItemHead";
 		}
 

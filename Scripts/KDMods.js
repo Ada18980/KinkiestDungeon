@@ -11,7 +11,7 @@ function KDDrawMods() {
 	let count = 0;
 	let keys = Object.keys(KDMods);
 	for (let i = KDModIndex; i < keys.length && count < KDModCount; i++) {
-		DrawTextKD(keys[i], 975, 370 + KDModSpacing, "#ffffff", KDTextGray2);
+		DrawTextKD(keys[i], 975, 370 + KDModSpacing * count, "#ffffff", KDTextGray2);
 		DrawButtonKDEx("moddelete_" + i, (bdata) => {
 			delete KDMods[keys[i]];
 			return true;

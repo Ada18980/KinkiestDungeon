@@ -828,6 +828,7 @@ function KDGetJailDoor(x, y) {
 }
 
 function KinkyDungeonDefeat(PutInJail) {
+	KDBreakTether();
 	KDGameData.CurrentDialog = "";
 	KDGameData.CurrentDialogStage = "";
 	KDGameData.KinkyDungeonLeashedPlayer = 0;

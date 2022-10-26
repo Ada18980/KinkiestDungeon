@@ -335,6 +335,13 @@ function KD_PasteTile(tile, x, y, data) {
 		for (let yy = 0; yy < tileHeight; yy++) {
 			let tileTile = tile.grid[xx + yy*(tileWidth+1)];
 			KinkyDungeonMapSetForce(x + xx, y + yy, tileTile);
+			if (tileTile == 'B' && KinkyDungeonStatsChoice.has("Nowhere")) {
+				if (KDRandom() < 0.5)
+					KinkyDungeonTiles.set((x + xx) + "," + (y + yy), {
+						Type: "Trap",
+						Trap: "BedTrap",
+					});
+			}
 		}
 
 	if (tile.Keyring) {

@@ -4,7 +4,7 @@ let KinkyDungeonSlimeLevel = 0;
 let KinkyDungeonSlimeLevelStart = 0;
 let KinkyDungeonAttackTwiceFlag = false;
 let KinkyDungeonSlimeParts = [
-	{group: "ItemHead", restraint: "SlimeHead", noUnmasked: true},
+	{group: "ItemHood", restraint: "SlimeHead", noUnmasked: true},
 	{group: "ItemMouth3", restraint: "SlimeMouth"},
 	{group: "ItemArms", restraint: "SlimeArms"},
 	{group: "ItemHands", restraint: "SlimeHands"},
@@ -319,7 +319,9 @@ let KDEventMapInventory = {
 		},
 		"slimeSpread": (e, item, data) => {
 			if (!data.delta) return;
-			KinkyDungeonSlimeLevel = Math.max(KinkyDungeonSlimeLevel, KinkyDungeonSlimeLevelStart + e.power);
+			let mult = Math.max(0.25, Math.min(2.0,
+				KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist"))));
+			KinkyDungeonSlimeLevel = Math.max(KinkyDungeonSlimeLevel, KinkyDungeonSlimeLevelStart + e.power * mult);
 			if (KinkyDungeonSlimeLevel >= 0.99999) {
 				KinkyDungeonSlimeLevel = 0;
 				KinkyDungeonSlimeLevelStart = -100;
