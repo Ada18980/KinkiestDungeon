@@ -2353,6 +2353,8 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 
 			}
 
+
+
 			let color = (typeof restraint.Color === "string") ? [restraint.Color] : restraint.Color;
 			if (restraint.factionColor && faction && KinkyDungeonFactionColors[faction]) {
 				for (let i = 0; i < restraint.factionColor.length; i++) {

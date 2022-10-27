@@ -795,19 +795,20 @@ function KinkyDungeonUpdateStats(delta) {
 	}
 	KinkyDungeonDifficulty = KinkyDungeonNewGame * 20;
 	if (KinkyDungeonStatsChoice.get("hardMode")) KinkyDungeonDifficulty += 10;
+	KinkyDungeonTeaseLevel = KinkyDungeonTeaseLevel * KinkyDungeonChastityMult();
 	if (KinkyDungeonVibeLevel > 0 || KinkyDungeonTeaseLevel > 0) {
 		KDGameData.OrgasmNextStageTimer = Math.min(KDOrgasmStageTimerMax, KDGameData.OrgasmNextStageTimer + delta);
 		let Chance = (KDGameData.OrgasmStage >= KinkyDungeonMaxOrgasmStage) ? 1.0 : (KDOrgasmStageTimerMaxChance + (1 - KinkyDungeonStatWill/KinkyDungeonStatWillMax) * KinkyDungeonStatDistractionLower / KinkyDungeonStatDistractionMax);
 		if ((KinkyDungeonTeaseLevel > 0 || KDGameData.OrgasmNextStageTimer >= KDOrgasmStageTimerMax) && (KDRandom() < Chance && KinkyDungeonControlsEnabled())) {
 			if (KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage) {
-				if (KinkyDungeonCanPlayWithSelf() && (!KinkyDungeonInDanger() || !KinkyDungeonHasWill(0.01))) {
+				if (KinkyDungeonCanPlayWithSelf() && !KinkyDungeonInDanger()) {
 					KinkyDungeonDoPlayWithSelf(KinkyDungeonTeaseLevel);
 					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonPlaySelfAutomatic" + (KinkyDungeonIsArmsBound() ? "Bound" : "")), "#FF5BE9", 5);
 				}
 				KDGameData.OrgasmStage += 1;
 				KDGameData.OrgasmNextStageTimer = 1;
 			} else {
-				if (KinkyDungeonCanOrgasm()) {
+				if (KinkyDungeonCanOrgasm() && KDGameData.OrgasmStamina < 0.5 && KDGameData.PlaySelfTurns < 1) {
 					KinkyDungeonDoTryOrgasm(KinkyDungeonTeaseLevel);
 					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonOrgasmAutomatic"), "#FF5BE9", KinkyDungeonOrgasmStunTime + 1);
 					KDGameData.OrgasmNextStageTimer = 1;
