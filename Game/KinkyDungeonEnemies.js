@@ -2756,19 +2756,23 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 							if (AIData.addMoreRestraints || AIData.addLeash) {
 								if (!AIData.intentToLeash && enemy.Enemy.bound && KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y) && KDGameData.KinkyDungeonLeashedPlayer < 1
-									&& KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture == "Cage"
-									&& !KinkyDungeonPlayerTags.has("Furniture")) {
-									let rest = KinkyDungeonGetRestraint(
-										{tags: ["cage"]}, MiniGameKinkyDungeonLevel,
-										KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
-										true,
-										"",
-										true,
-										false,
-										false);
-									replace.push({keyword:"RestraintAdded", value: TextGet("Restraint" + rest.name)});
-									restraintAdd.push(rest);
-									addedRestraint = true;
+									&& KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture
+									&& !KinkyDungeonPlayerTags.has("Furniture")
+									&& KDFurniture[KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture]) {
+									let furn = KDFurniture[KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture];
+									if (furn) {
+										let rest = KinkyDungeonGetRestraint(
+											{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+											KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+											true,
+											"",
+											true,
+											false,
+											false);
+										replace.push({keyword:"RestraintAdded", value: TextGet("Restraint" + rest.name)});
+										restraintAdd.push(rest);
+										addedRestraint = true;
+									}
 								} else {
 									let numTimes = 1;
 									if (enemy.Enemy.multiBind) numTimes = enemy.Enemy.multiBind;

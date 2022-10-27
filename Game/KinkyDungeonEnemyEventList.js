@@ -228,14 +228,23 @@ function KDSettlePlayerInFurniture(enemy, AIData, tags, guardDelay = 24) {
 		KDMoveEntity(enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, false);
 	KDMovePlayer(nearestfurniture.x, nearestfurniture.y, false);
 	if (KinkyDungeonPlayerEntity.x == nearestfurniture.x && KinkyDungeonPlayerEntity.y == nearestfurniture.y) {
-		if (type == "Cage") {
+		let furn = KDFurniture[type];
+		if (furn) {
 			KinkyDungeonSetFlag("GuardCalled", guardDelay);
 			if (tags) {
 				for (let t of tags) {
 					KinkyDungeonSetFlag(t, guardDelay + 60);
 				}
 			}
-			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("CageTrap"), 0, true);
+			let rest = KinkyDungeonGetRestraint(
+				{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				true,
+				"",
+				true,
+				false,
+				false);
+			KinkyDungeonAddRestraintIfWeaker(rest, 0, true);
 			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 			KinkyDungeonMakeNoise(10, nearestfurniture.x, nearestfurniture.y);
 		}

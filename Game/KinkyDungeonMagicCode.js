@@ -118,6 +118,52 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
+	"DisplayStand": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let en = KinkyDungeonEntityAt(targetX, targetY);
+		if (en && en.player) {
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["displaySpell"]}, MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			if (restraintAdd) {
+				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastSelf"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+				KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, faction);
+				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
+				return "Cast";
+			}
+
+
+		} else if (en && KDCanBind(en) && KDHelpless(en)) {
+			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+			// Summon a pet
+			let Enemy = KinkyDungeonGetEnemyByName("PetDisplay");
+			if (Enemy) {
+				// Deal 0 damage to aggro
+				KinkyDungeonDamageEnemy(en, {
+					type: "chain",
+					damage: 0,
+					time: 0,
+					bind: 0,
+				}, false, true, undefined, undefined, entity);
+				en.hp = 0;
+
+				let doll = {
+					summoned: true,
+					rage: Enemy.summonRage ? 9999 : undefined,
+					Enemy: Enemy,
+					id: KinkyDungeonGetEnemyID(),
+					x: en.x,
+					y: en.y,
+					hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp,
+					movePoints: 0,
+					attackPoints: 0
+				};
+				KDAddEntity(doll);
+
+				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				KinkyDungeonChangeCharge(0.08);
+				return "Cast";
+			}
+			return "Fail";
+		} else return "Fail";
+	},
 	"Petsuit": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && en.player) {

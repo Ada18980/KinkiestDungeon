@@ -82,6 +82,12 @@ let KDGlueVulnLow = {
 let KDGlueResist = {
 	id: "GlueVuln", type: "glueDamageResist", power: 0.5, player: false, enemies: true, duration: 1
 };
+let KDDollDebuff = {
+	id: "DollDebuff", type: "soulDamageResist", power: -0.5, player: false, enemies: true, duration: 2, aura: "#ff8888",
+};
+let KDDollDebuff2 = {
+	id: "DollDebuff2", type: "charmDamageResist", power: -0.5, player: false, enemies: true, duration: 2
+};
 let KDSlowed = {
 	id: "Slowed", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1
 };

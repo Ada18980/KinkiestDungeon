@@ -2190,6 +2190,7 @@ function KinkyDungeonReplaceDoodads(Chance, barchance, wallRubblechance, wallhoo
 	}
 
 }
+
 function KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, altType) {
 	// Add special stuff
 	if (!altType || !altType.noClutter)
@@ -2208,7 +2209,8 @@ function KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, alt
 						|| (KDRandom() < barrelChance && KinkyDungeonMapGet(X, Y+1) == '1' && KinkyDungeonMapGet(X, Y-1) == '0' && KinkyDungeonMapGet(X+1, Y-1) == '0' && KinkyDungeonMapGet(X-1, Y-1) == '0'))) {
 					KinkyDungeonMapSet(X, Y, 'L'); // Barrel
 					if (KDRandom() < cageChance) {
-						KinkyDungeonTiles.set(X + "," + Y, {Furniture: "Cage"});
+						let furn = KDRandom() ? "Cage" : "DisplayStand";
+						KinkyDungeonTiles.set(X + "," + Y, {Furniture: furn});
 						KDGameData.JailPoints.push({x: X, y: Y, type: "furniture", radius: 1}); // , requireFurniture: true Standing in the cage alone will prevent jailbreak--good for stealth!
 					}
 				}

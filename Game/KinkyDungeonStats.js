@@ -576,6 +576,7 @@ function KinkyDungeonSendDialogue(entity, dialogue, color, duration, priority, f
 let KDOrigStamina = KDMaxStatStart*10;
 let KDOrigMana = KDMaxStatStart*10;
 let KDOrigWill = KDMaxStatStart*10;
+let KDOrigCharge = 1000;
 let KDOrigDistraction = 0;
 
 function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc) {
@@ -651,6 +652,16 @@ function KinkyDungeonChangeWill(Amount, NoFloater) {
 	if (!NoFloater && Math.abs(KDOrigWill - Math.floor(KinkyDungeonStatWill * 10)) >= 0.99) {
 		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatWill * 10) - KDOrigWill, "#ff4444", undefined, undefined, " wp");
 		KDOrigWill = Math.floor(KinkyDungeonStatWill * 10);
+	}
+}
+
+
+function KinkyDungeonChangeCharge(Amount, NoFloater) {
+	if (!KDGameData.AncientEnergyLevel) KDGameData.AncientEnergyLevel = 0;
+	KDGameData.AncientEnergyLevel = Math.min(1, KDGameData.AncientEnergyLevel + Amount);
+	if (!NoFloater && Math.abs(KDOrigCharge - Math.floor(KDGameData.AncientEnergyLevel * 1000)) >= 0.99) {
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.AncientEnergyLevel * 1000 * 10) - KDOrigCharge, "#ffff44", undefined, undefined, " charge");
+		KDOrigCharge = Math.floor(KDGameData.AncientEnergyLevel * 1000);
 	}
 }
 

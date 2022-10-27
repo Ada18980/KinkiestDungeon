@@ -425,8 +425,8 @@ KDStatFreeEyes,"Your vision is clear."
 KDStatFreeHands,"Your hands are unobstructed."
 KDStatFreeArms,"Your arms are free to move as you please."
 KDStatFreeLegs,"Your legs are free and unimpeded."
-KDStatGag,"You are gagged! Miscast chance is increased and your potions are less effective!"
-KDStatGagFull,"Your mouth is totally filled! You can't drink potions and have a high miscast chance!"
+KDStatGag,"You are gagged! Verbal miscast chance is increased and your potions are less effective!"
+KDStatGagFull,"Your mouth is totally filled! You can't drink potions and have a high verbal miscast chance!"
 
 KinkyDungeonBuffEmpower,"Spell Empowerment!"
 
@@ -2524,6 +2524,9 @@ KDBarrelTrap,"The lid of the barrel suddenly snaps shut as you hide inside!!!"
 RestraintCageTrap,Cage Trap
 RestraintCageTrapDesc,"A booby-trapped cage!"
 RestraintCageTrapDesc2,"Fit for a pretty toy like you~"
+RestraintDisplayTrap,Display Stand
+RestraintDisplayTrapDesc,"A display stand, fit for only the prettiest of trophies!"
+RestraintDisplayTrapDesc2,"Your arms are pinned behind your back and you can barely move!"
 KDCageTrap,"You hear a click as the door shuts behind you..."
 
 KinkyDungeonCage0,You're not fooling anyone...
@@ -4507,11 +4510,20 @@ KinkyDungeonSpellTargetTickleCloud,Choose location
 NamePet,Mana Pet
 KillPet,The enemy steals your pet from you!
 
+NamePetDisplay,Display Doll
+KillPetDisplay,The enemy steals your doll from you!
+
 KinkyDungeonSpellPetsuit,Conjure Petsuit
 KinkyDungeonSpellDescriptionPetsuit,"Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana regen."
 KinkyDungeonSpellCastPetsuit,"You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!"
 KinkyDungeonSpellCastSelfPetsuit,"You watch in horror as your own creation lunges toward you, binding your hands and feet!"
 KinkyDungeonSpellTargetPetsuit,Choose a helpless target
+
+KinkyDungeonSpellDisplayStand,Conjure Display Stand
+KinkyDungeonSpellDescriptionDisplayStand,"Target only Helpless enemies. Creates a fixture that increases passive mana regen, restores 80 Charge, and makes nearby enemies take 50% more charm/psychic damage."
+KinkyDungeonSpellCastDisplayStand,"You conjure a fixture to hold your helpless target in place!"
+KinkyDungeonSpellCastSelfDisplayStand,"You watch in horror as your own creation surrounds you, locking you in place with a hefty click!"
+KinkyDungeonSpellTargetDisplayStand,Choose a helpless target
 
 
 KinkyDungeonSpellFlash,Lesser Flash
@@ -4914,7 +4926,7 @@ KinkyDungeonVibing3,Your toys are buzzing strongly!
 KinkyDungeonVibing4,Your toys vibrate intensely!
 KinkyDungeonVibing5,The vibration is torturous!
 KinkyDungeonEndVibe,Your toys stop vibrating.
-KinkyDungeonPlugWalk0,You feel slightly full as you walk...
+KinkyDungeonPlugWalk0,You feel slightly full as you move...
 KinkyDungeonPlugWalk1,Your movement disturbs the plugs inside of you...
 KinkyDungeonPlugWalk2,The large plugs shift(s) around inside of you...
 KinkyDungeonPlugWalk3,The huge plugs rub(s) around constantly inside of you...
@@ -5289,7 +5301,7 @@ KinkyDungeonHuntDownPlayer,You hear movements all around as you realize you are 
 
 KinkyDungeonUnLink,"There is another restraint underneath!"
 
-KinkyDungeonCrotchRope,"Your restraints rub you in sensitive places as you walk..."
+KinkyDungeonCrotchRope,"Your restraints rub you in sensitive places as you move..."
 
 KinkyDungeonRepName,"Indifferent"
 KinkyDungeonRepNameAngered,"Angered"

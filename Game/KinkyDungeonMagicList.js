@@ -88,7 +88,7 @@ let KinkyDungeonLearnableSpells = [
 		// Verbal
 		["CommandWord", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "Lockdown", "Heal", "Heal2", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Blink", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
 		// Arms
-		["TickleCloud", "FeatherCloud", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
+		["TickleCloud", "FeatherCloud", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
 		["Snare", "Wall", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "StormCrystal", "Ally", "EarthMote", "Golem"],
 		// Passive
@@ -474,8 +474,12 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			spellcast: {spell: "StraitjacketBolt", target: "target", directional:true, randomDirectionFallback: true, aimAtTarget: true, noTargetMoveDir: true, offset: false}},
 
 
-		{name: "Petsuit", prerequisite: "SummonHarness", tags: ["leather", "summon", "utility", "petsuit"], sfx: "Magic", school: "Conjure", manacost: 4, components: [], level:2,
+		{name: "Petsuit", prerequisite: "SummonHarness", tags: ["leather", "summon", "utility", "petsuit"], sfx: "Magic", school: "Conjure", manacost: 1, components: [], level:2,
 			type:"special", special: "Petsuit",
+			onhit:"", time:0, power: 0.0, range: 2.99, size: 1, aoe: 0.5, damage: "glue"},
+
+		{name: "DisplayStand", prerequisite: "ApprenticeMetal", tags: ["metal", "summon", "utility", "petsuit"], sfx: "Magic", school: "Conjure", manacost: 1, components: [], level:2,
+			type:"special", special: "DisplayStand",
 			onhit:"", time:0, power: 0.0, range: 2.99, size: 1, aoe: 0.5, damage: "glue"},
 
 		{name: "RopeBoltLaunch", tags: ["rope", "bolt", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "MagicSlash", school: "Conjure",

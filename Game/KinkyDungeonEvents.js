@@ -2560,6 +2560,15 @@ let KDEventMapEnemy = {
 			}
 		},
 	},
+	"tick": {
+		"DisplayAura": (e, enemy, data) => {
+			let enemies = KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy);
+			for (let en of enemies) {
+				KinkyDungeonApplyBuffToEntity(en, KDDollDebuff);
+				KinkyDungeonApplyBuffToEntity(en, KDDollDebuff2);
+			}
+		},
+	},
 	"getLights": {
 		"enemyTorch": (e, enemy, data) => {
 			data.lights.push({brightness: e.power, x: enemy.x, y: enemy.y, color: string2hex(e.color)});

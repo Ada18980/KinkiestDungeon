@@ -82,6 +82,13 @@ let KinkyDungeonEnemies = [
 		],
 		visionRadius: 20, playerBlindSight: 100, maxhp: 10, minLevel:0, weight:0, movePoints: 1, attackPoints: 2, attack: "", attackRange: 0, power: 1.5, dmgType: "tickle", focusPlayer: true,
 		terrainTags: {}, floors:KDMapInit([])},
+	{name: "PetDisplay", color: "#8888ff", tags: KDMapInit(["human", "player", "gagged", "melee", "meleeresist", "nohelp"]), immobile: true, allied: true, armor: 1.5, followRange: 4, AI: "hunt",
+		events: [
+			{trigger: "calcManaPool", type: "PetManaRegen", power: 0.04, dist: 3.99},
+			{trigger: "tick", type: "DisplayAura", power: 0.5, dist: 3.99},
+		],
+		visionRadius: 0, playerBlindSight: 100, maxhp: 15, minLevel:0, weight:0, movePoints: 9999, attackPoints: 2, attack: "", attackRange: 0, power: 1.5, dmgType: "tickle", focusPlayer: true,
+		terrainTags: {}, floors:KDMapInit([])},
 	{name: "PlayerGag", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "player", "melee", "temporary", "notalk"]), noblockplayer: true, allied: true, armor: 0, followRange: 1, AI: "guard", accuracy: 1.5, noTargetSilenced: true,
 		visionRadius: 20, playerBlindSight: 100, maxhp: 4, minLevel:0, weight:0, movePoints: 1, attackPoints: 1, attack: "MeleeWillSilenceSuicideStun", silenceTime: 9, stunTime: 1, attackRange: 1, attackWidth: 1, power: 3.5, dmgType: "grope",
 		terrainTags: {}, floors:KDMapInit([])},
