@@ -76,6 +76,9 @@ let KinkyDungeonEnemies = [
 	{name: "AllyDoll", bound: "AllyDoll", color: "#9c2a70", tags: KDMapInit(["human", "player", "gagged", "blindfold", "melee", "glueimmune", "ticklesevereweakness", "nohelp"]), allied: true, armor: 0, followRange: 1, AI: "hunt",
 		visionRadius: 20, playerBlindSight: 100, maxhp: 8, regen: -0.1, minLevel:0, weight:0, movePoints: 2, attackPoints: 2, attack: "MeleeWill", attackRange: 1, attackWidth: 1, power: 1.5, dmgType: "glue",
 		terrainTags: {}, floors:KDMapInit([])},
+	{name: "PetChastity", bound: "AllyDoll", color: "#8888ff", tags: KDMapInit(["human", "player", "gagged", "blindfold", "melee", "glueimmune", "ticklesevereweakness", "nohelp"]), rage: true, armor: 0, followRange: 1, AI: "hunt",
+		visionRadius: 6, maxhp: 8, minLevel:0, weight:0, movePoints: 2, attackPoints: 2, attack: "MeleeWill", attackRange: 1, attackWidth: 1, power: 2, dmgType: "charm",
+		terrainTags: {}, floors:KDMapInit([])},
 	{name: "Pet", color: "#8888ff", tags: KDMapInit(["human", "player", "gagged", "melee", "ticklesevereweakness", "nohelp"]), allied: true, armor: 0, followRange: 4, AI: "hunt",
 		events: [
 			{trigger: "calcManaPool", type: "PetManaRegen", power: 0.01, dist: 1.5},

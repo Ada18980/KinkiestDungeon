@@ -1159,6 +1159,7 @@ Features
 - Being rescued in jail now depends on having factions in good standing.
 - Added offer dialogues for all major factions except Fungals
 - added display frame and spell
+- New spell: Chastity, Frustration
 
 TODO ValidationFindBlockCycles to prevent bugs
 

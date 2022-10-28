@@ -118,6 +118,15 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
+	"Chastity": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let en = KinkyDungeonEnemyAt(targetX, targetY);
+		if (en && en.Enemy.bound && KinkyDungeonIsDisabled(en)) {
+			KDTieUpEnemy(en, spell.power, "Metal");
+			KinkyDungeonApplyBuffToEntity(en, KDChastity);
+			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			return "Cast";
+		} else return "Fail";
+	},
 	"DisplayStand": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && en.player) {
@@ -158,7 +167,7 @@ let KinkyDungeonSpellSpecials = {
 				KDAddEntity(doll);
 
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-				KinkyDungeonChangeCharge(0.08);
+				KinkyDungeonChangeCharge(0.05);
 				return "Cast";
 			}
 			return "Fail";

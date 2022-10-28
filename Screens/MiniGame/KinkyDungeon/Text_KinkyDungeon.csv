@@ -4380,6 +4380,8 @@ KinkyDungeonSpellIcePrison,Frozen Prison
 KinkyDungeonSpellDescriptionIcePrison,"Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn of freeze."
 KinkyDungeonSpellLightningRod,Lightning Rod
 KinkyDungeonSpellDescriptionLightningRod,"After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns."
+KinkyDungeonSpellFrustration,Frustration
+KinkyDungeonSpellDescriptionFrustration,"When enabled, enemies in chastity become angry Frustrated Pets when becoming helpless."
 
 KinkyDungeonSpellMPUp1,Mana Up I
 KinkyDungeonSpellDescriptionMPUp1,Increases maximum MP by 12
@@ -4507,6 +4509,9 @@ KinkyDungeonSpellDescriptionTickleCloud,"For 10 turns, disembodied hands tickle 
 KinkyDungeonSpellCastTickleCloud,A swarm of hands holding feathers appears!
 KinkyDungeonSpellTargetTickleCloud,Choose location
 
+NamePetChastity,Frustrated Pet
+KillPetChastity,The pet collapses in frustration.
+
 NamePet,Mana Pet
 KillPet,The enemy steals your pet from you!
 
@@ -4520,7 +4525,7 @@ KinkyDungeonSpellCastSelfPetsuit,"You watch in horror as your own creation lunge
 KinkyDungeonSpellTargetPetsuit,Choose a helpless target
 
 KinkyDungeonSpellDisplayStand,Conjure Display Stand
-KinkyDungeonSpellDescriptionDisplayStand,"Target only Helpless enemies. Creates a fixture that increases passive mana regen, restores 80 Charge, and makes nearby enemies take 50% more charm/psychic damage."
+KinkyDungeonSpellDescriptionDisplayStand,"Target only Helpless enemies. Creates a fixture that increases passive mana regen, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage."
 KinkyDungeonSpellCastDisplayStand,"You conjure a fixture to hold your helpless target in place!"
 KinkyDungeonSpellCastSelfDisplayStand,"You watch in horror as your own creation surrounds you, locking you in place with a hefty click!"
 KinkyDungeonSpellTargetDisplayStand,Choose a helpless target
@@ -4566,6 +4571,11 @@ KinkyDungeonSpellLockdown,CMD: Lock
 KinkyDungeonSpellTargetLockdown,Select which creature to lock
 KinkyDungeonSpellDescriptionLockdown,"Locks down a target, preventing them from struggling below the current level of binding for 30 turns."
 KinkyDungeonSpellCastLockdown,"You say a command word, and magical locks bind your target!"
+
+KinkyDungeonSpellChastity,Chastity
+KinkyDungeonSpellTargetChastity,Select which creature to lock in a belt
+KinkyDungeonSpellDescriptionChastity,"Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs and distracts constantly."
+KinkyDungeonSpellCastChastity,"You conjure a chastity belt, which latches onto your target!"
 
 KinkyDungeonSpellCommandCapture,CMD: Capture
 KinkyDungeonSpellTargetCommandCapture,Select which creature to bind

@@ -1153,7 +1153,7 @@ let KDEventMapBuff = {
 			}
 		},
 		"RemoveFree": (e, buff, entity, data) => {
-			if (!(entity.boundLevel > 0)) {
+			if (!(entity.boundLevel > 0) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
 				if (entity.player) {
 					delete KinkyDungeonPlayerBuffs[buff.id];
 				} else {
@@ -1162,7 +1162,7 @@ let KDEventMapBuff = {
 			}
 		},
 		"Distract": (e, buff, entity, data) => {
-			if (entity.Enemy?.bound) {
+			if (entity.Enemy?.bound && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
 				if (!entity.distraction) entity.distraction = data.delta * e.power;
 				else entity.distraction += data.delta * e.power;
 			}
@@ -1559,6 +1559,30 @@ let KDEventMapSpell = {
 			if (KinkyDungeonHasMana(e.cost != undefined ? e.cost : KinkyDungeonGetManaCost(spell))) {
 				if (KDCheckPrereq(null, e.prereq, e, data)) {
 					data.buffdmg = Math.max(0, data.buffdmg + e.power);
+				}
+			}
+		},
+	},
+	"tickAfter": {
+		"Frustration": (e, spell, data) => {
+			for (let en of KinkyDungeonEntities) {
+				if (en.Enemy.bound && en.buffs && KDEntityBuffedStat(en, "Chastity")) {
+					if (KDHelpless(en)) {
+						let Enemy = KinkyDungeonGetEnemyByName("PetChastity");
+						let doll = {
+							summoned: true,
+							rage: Enemy.summonRage ? 9999 : undefined,
+							Enemy: Enemy,
+							id: KinkyDungeonGetEnemyID(),
+							x: en.x,
+							y: en.y,
+							hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp,
+							movePoints: 0,
+							attackPoints: 0
+						};
+						KDAddEntity(doll);
+						en.hp = 0;
+					}
 				}
 			}
 		},
@@ -2339,7 +2363,7 @@ let KDEventMapBullet = {
 		"PlugEnemy": (e, b, data) => {
 			if (b && data.enemy) {
 				if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
-					if (data.enemy.Enemy?.bound && data.enemy.boundLevel > 0) {
+					if (data.enemy.Enemy?.bound && (data.enemy.boundLevel > 0 || KDEntityGetBuff(data.enemy, "Chastity"))) {
 						let plugAmount = KDEntityBuffedStat(data.enemy, "Plug");
 						if (!plugAmount)
 							KDApplyGenBuffs(data.enemy, "Plugged", 9999);

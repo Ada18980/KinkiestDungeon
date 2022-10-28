@@ -1808,9 +1808,11 @@ function KDDisarmEnemy(enemy, time) {
 }
 
 let KDPrereqs = {
+	"NoChastity": (enemy, e, data) => {return KDEntityBuffedStat(enemy, "Chastity") < 0.01;},
 	"blinded": (enemy, e, data) => {return enemy.blind > 0;},
 	"silenced": (enemy, e, data) => {return enemy.silence > 0;},
 	"disarmed": (enemy, e, data) => {return enemy.disarm > 0;},
+	"bound": (enemy, e, data) => {return enemy.boundLevel > 0;},
 	"damageType": (enemy, e, data) => {
 		switch (e.kind) {
 			case "melee": return KinkyDungeonMeleeDamageTypes.includes(data.Damage?.type);

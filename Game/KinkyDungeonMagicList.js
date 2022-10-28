@@ -86,13 +86,13 @@ let KinkyDungeonLearnableSpells = [
 	//Page 2: Conjuration
 	[
 		// Verbal
-		["CommandWord", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "Lockdown", "Heal", "Heal2", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Blink", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
+		["CommandWord", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "Lockdown", "Chastity", "Heal", "Heal2", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Blink", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
 		// Arms
 		["TickleCloud", "FeatherCloud", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
 		["Snare", "Wall", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "StormCrystal", "Ally", "EarthMote", "Golem"],
 		// Passive
-		["LeatherBurst", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf", "FloatingWeapon"],
+		["Frustration", "LeatherBurst", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf", "FloatingWeapon"],
 	],
 
 	//Page 3: Illusion
@@ -553,6 +553,15 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			], */
 			type:"special", special: "Lockdown",
 			onhit:"", time:8, power: 0, range: 1.5, size: 1, damage: ""},
+		{name: "Chastity", prerequisite: "Lockdown", tags: ["metal", "lock", "binding", "utility"], sfx: "MagicSlash", school: "Conjure", manacost: 4, components: ["Verbal"], mustTarget: true, level:1,
+			type:"special", special: "Chastity",
+			onhit:"", time:8, power: 3.5, range: 1.5, size: 1, damage: ""},
+
+		{name: "Frustration", tags: ["metal", "offense", "utility"], prerequisite: "Chastity", sfx: "FireSpell", school: "Conjure", manacost: 0, components: [], level:1, type:"passive", events: [
+			{type: "Frustration", trigger: "tickAfter"}
+		]},
+
+
 		{name: "CommandCapture", prerequisite: "CommandDisenchant", tags: ["command", "binding", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], mustTarget: true, level:1,
 			type:"special", special: "CommandCapture",
 			onhit:"", time:0, power: 2.5, range: 3.5, bind: 5, size: 1, aoe: 1.5, damage: "chain"},
