@@ -2955,6 +2955,9 @@ RestraintTrapBlindfold,Blindfold
 RestraintTrapBlindfoldDesc,"A leather strap secured onto your face and blocking vision."
 RestraintTrapBlindfoldDesc2,"You can still see through the gap around your nose."
 
+RestraintMagicBelt,Magic Chastity Belt
+RestraintMagicBeltDesc,"A belt protected by a magic seal."
+RestraintMagicBeltDesc2,"The shields will open up to accept new toys, but won't let them out..."
 RestraintTrapBelt,Steel Chastity Belt
 RestraintTrapBeltDesc,"A cruel device used for locking magical vibrators in place."
 RestraintTrapBeltDesc2,"The shields will open up to accept new toys, but won't let them out..."
@@ -4576,6 +4579,12 @@ KinkyDungeonSpellChastity,Chastity
 KinkyDungeonSpellTargetChastity,Select which creature to lock in a belt
 KinkyDungeonSpellDescriptionChastity,"Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs and distracts constantly."
 KinkyDungeonSpellCastChastity,"You conjure a chastity belt, which latches onto your target!"
+KDZoneOfPuritySelf,"Your own spell locks you in chastity!"
+
+KinkyDungeonSpellZoneOfPurity,Zone of Purity
+KinkyDungeonSpellTargetZoneOfPurity,Select an area
+KinkyDungeonSpellDescriptionZoneOfPurity,"Creates an area which applies Chastity constantly to any enemy over 50% bondage that steps inside."
+KinkyDungeonSpellCastZoneOfPurity,"You conjure a realm of absolute purity."
 
 KinkyDungeonSpellCommandCapture,CMD: Capture
 KinkyDungeonSpellTargetCommandCapture,Select which creature to bind

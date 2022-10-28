@@ -86,7 +86,7 @@ let KinkyDungeonLearnableSpells = [
 	//Page 2: Conjuration
 	[
 		// Verbal
-		["CommandWord", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "Lockdown", "Chastity", "Heal", "Heal2", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Blink", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
+		["CommandWord", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "Lockdown", "Chastity", "ZoneOfPurity", "Heal", "Heal2", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Blink", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
 		// Arms
 		["TickleCloud", "FeatherCloud", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
@@ -553,10 +553,13 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			], */
 			type:"special", special: "Lockdown",
 			onhit:"", time:8, power: 0, range: 1.5, size: 1, damage: ""},
-		{name: "Chastity", prerequisite: "Lockdown", tags: ["metal", "lock", "binding", "utility"], sfx: "MagicSlash", school: "Conjure", manacost: 4, components: ["Verbal"], mustTarget: true, level:1,
+		{name: "Chastity", prerequisite: "Lockdown", tags: ["metal", "binding", "utility"], sfx: "MagicSlash", school: "Conjure", manacost: 3.5, components: ["Verbal"], mustTarget: true, level:1,
 			type:"special", special: "Chastity",
 			onhit:"", time:8, power: 3.5, range: 1.5, size: 1, damage: ""},
-
+		{name: "ZoneOfPurity", color: "#ffff00", prerequisite: "Chastity", tags: ["metal", "binding", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 7, components: ["Verbal"], level:1, type:"inert",
+			onhit:"aoe", power: 0, delay: 20, range: 4.5, size: 3, lifetime: 1, aoe: 2.5, damage: "charm",
+			events: [{trigger: "bulletTick", type: "ZoneOfPurity", aoe: 2.5, power: 0.5}]
+		},
 		{name: "Frustration", tags: ["metal", "offense", "utility"], prerequisite: "Chastity", sfx: "FireSpell", school: "Conjure", manacost: 0, components: [], level:1, type:"passive", events: [
 			{type: "Frustration", trigger: "tickAfter"}
 		]},

@@ -2539,6 +2539,23 @@ let KDEventMapBullet = {
 		},
 	},
 	"bulletTick": {
+		"ZoneOfPurity": (e, b, data) => {
+			let enemies = KDNearbyEnemies(b.x, b.y, e.aoe);
+			if (enemies.length > 0) {
+				for (let en of enemies) {
+					if (en && en.Enemy.bound && en.boundLevel > e.power) {
+						KinkyDungeonApplyBuffToEntity(en, KDChastity);
+					}
+				}
+			}
+			if (KDistChebyshev(KinkyDungeonPlayerEntity.x - b.x, KinkyDungeonPlayerEntity.y - b.y) <= e.aoe) {
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+				if (restraintAdd) {
+					KinkyDungeonSendActionMessage(3, TextGet("KDZoneOfPuritySelf"), "#88AAFF", 2);
+					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, undefined);
+				}
+			}
+		},
 		"CastSpellNearbyEnemy": (e, b, data) => {
 			if (data.delta > 0) {
 				let born = b.born ? 0 : 1;
