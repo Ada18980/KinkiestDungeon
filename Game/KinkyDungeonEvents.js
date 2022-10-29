@@ -2578,7 +2578,7 @@ let KDEventMapBullet = {
 			let enemies = KDNearbyEnemies(b.x, b.y, e.aoe);
 			if (enemies.length > 0) {
 				for (let en of enemies) {
-					if (en && en.Enemy.bound && KinkyDungeonHasStatus(en)) {
+					if (en && en.Enemy.bound) {
 						KinkyDungeonApplyBuffToEntity(en, KDToy);
 					}
 				}
