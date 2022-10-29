@@ -85,7 +85,7 @@ let KDVibrate3 = {
 	]
 };
 let KDToy = {
-	id: "Toy", type: "Plug", power: 0.1, aura: "#dddddd", aurasprite: "Toy", player: false, enemies: true, duration: 20, range: 0.5, tags: ["toy"]
+	id: "Toy", type: "Plug", power: 0.1, aura: "#dddddd", aurasprite: "Toy", player: false, enemies: true, duration: 30, range: 0.5, tags: ["toy"]
 };
 let KDPlugged = {
 	id: "Plugged", type: "Plug", power: 1.0, aura: "#dddddd", aurasprite: "Plugged", player: false, enemies: true, duration: 9999, range: 0.5, tags: ["plugged"], events: [

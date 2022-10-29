@@ -700,7 +700,7 @@ function KDGetEnemyStruggleMod(enemy) {
  * @returns {number}
  */
 function KDGetEnemyDistractRate(enemy, vibe) {
-	if (vibe) return -vibe * enemy.Enemy.maxhp * 0.033;
+	if (vibe) return -(enemy.Enemy.maxhp**0.5) * (0.1 + 0.05 * vibe);
 	let level = KDBoundEffects(enemy);
 	let mult = enemy.distraction/enemy.Enemy.maxhp > 0.9 ? 0.02 : (enemy.distraction/enemy.Enemy.maxhp > 0.5 ? 0.04 : 0.06);
 	if (KDStrictPersonalities.includes(enemy.personality)) mult = mult * 2;
@@ -717,9 +717,9 @@ function KDGetEnemyDistractRate(enemy, vibe) {
  */
 function KDGetEnemyDistractionDamage(enemy, vibe) {
 	if (vibe <= 0) return 0;
-	let mult = Math.max(0.25, enemy.distraction/enemy.Enemy.maxhp) * 0.033 * vibe;
+	let mult = Math.max(0.25, enemy.distraction/enemy.Enemy.maxhp) * 0.05 * vibe;
 	if (enemy.hp <= 1 || enemy.hp <= enemy.Enemy.maxhp * 0.101) return 0;
-	return Math.min(Math.max(enemy.Enemy.maxhp * 0.1, 1), mult * enemy.hp);
+	return Math.min(Math.max(0.2 * enemy.Enemy.maxhp**0.75, 1), mult * enemy.hp);
 }
 
 let KDMaxBindingBars = 3;
@@ -1618,7 +1618,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 						}
 					}
 				}
-				enemy.distraction = Math.max(0, Math.min(enemy.distraction - delta * DR, enemy.Enemy.maxhp));
+				enemy.distraction = Math.max(0, Math.min(enemy.distraction || 0 - delta * DR, enemy.Enemy.maxhp));
 
 
 				if (enemy.distraction <= 0) {

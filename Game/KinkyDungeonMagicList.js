@@ -561,7 +561,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			events: [{trigger: "bulletTick", type: "ZoneOfPurity", aoe: 2.5, power: 0.5}]
 		},
 		{name: "ZoneOfExcitement", color: "#ff8888", prerequisite: "CommandVibrate", tags: ["binding", "utility"], sfx: "MagicSlash", school: "Conjure", manacost: 3.5, components: ["Verbal"], level:1, type:"inert",
-			onhit:"aoe", power: 0, delay: 20, range: 4.5, size: 3, lifetime: 1, aoe: 1.99, damage: "charm",
+			onhit:"aoe", power: 0, delay: 30, range: 4.5, size: 3, lifetime: 1, aoe: 1.99, damage: "charm",
 			events: [{trigger: "bulletTick", type: "ZoneOfExcitement", aoe: 1.99, power: 0.5}]
 		},
 		{name: "Frustration", tags: ["metal", "offense", "utility"], prerequisite: "Chastity", sfx: "FireSpell", school: "Conjure", manacost: 0, components: [], level:1, type:"passive", events: [
@@ -580,7 +580,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			onhit:"", time:0, power: 3.0, range: 3.5, size: 1, aoe: 3.5, damage: "inert"},
 		{name: "CommandVibrate", prerequisite: "CommandWord", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], level:1,
 			type:"special", special: "CommandVibrate",
-			onhit:"", time:20, power: 5, range: 3.5, size: 1, aoe: 3.5, damage: "charm"},
+			onhit:"", time:30, power: 5, range: 3.5, size: 1, aoe: 3.5, damage: "charm"},
 		{name: "CommandOrgasm", prerequisite: "CommandVibrate", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], level:1,
 			type:"special", special: "CommandOrgasm",
 			onhit:"", time:0, power: 5, range: 7, size: 1, aoe: 4.99, damage: "charm"},
