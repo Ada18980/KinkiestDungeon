@@ -914,6 +914,7 @@ function KinkyDungeonUpdateStats(delta) {
 
 	KDOrigDistraction = Math.floor(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * 100);
 	KDOrigStamina = Math.floor(KinkyDungeonStatStamina * 10);
+	KDOrigMana = Math.floor(KinkyDungeonStatMana * 10);
 
 	KinkyDungeonCalculateMiscastChance();
 

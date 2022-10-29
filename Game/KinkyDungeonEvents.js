@@ -1152,8 +1152,26 @@ let KDEventMapBuff = {
 				}
 			}
 		},
+		"RemoveNoPlug": (e, buff, entity, data) => {
+			if (!(KDEntityBuffedStat(entity, "Plug") > 0) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
+				if (entity.player) {
+					delete KinkyDungeonPlayerBuffs[buff.id];
+				} else {
+					delete entity.buffs[buff.id];
+				}
+			}
+		},
 		"RemoveFree": (e, buff, entity, data) => {
 			if (!(entity.boundLevel > 0) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
+				if (entity.player) {
+					delete KinkyDungeonPlayerBuffs[buff.id];
+				} else {
+					delete entity.buffs[buff.id];
+				}
+			}
+		},
+		"RemoveFreeStrict": (e, buff, entity, data) => {
+			if (!(entity.boundLevel > 0 || KinkyDungeonHasStatus(entity)) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
 				if (entity.player) {
 					delete KinkyDungeonPlayerBuffs[buff.id];
 				} else {
@@ -2552,6 +2570,23 @@ let KDEventMapBullet = {
 				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 				if (restraintAdd) {
 					KinkyDungeonSendActionMessage(3, TextGet("KDZoneOfPuritySelf"), "#88AAFF", 2);
+					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, undefined);
+				}
+			}
+		},
+		"ZoneOfExcitement": (e, b, data) => {
+			let enemies = KDNearbyEnemies(b.x, b.y, e.aoe);
+			if (enemies.length > 0) {
+				for (let en of enemies) {
+					if (en && en.Enemy.bound && KinkyDungeonHasStatus(en)) {
+						KinkyDungeonApplyBuffToEntity(en, KDToy);
+					}
+				}
+			}
+			if (KDistChebyshev(KinkyDungeonPlayerEntity.x - b.x, KinkyDungeonPlayerEntity.y - b.y) <= e.aoe) {
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["genericToys"]}, MiniGameKinkyDungeonLevel + 10, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+				if (restraintAdd) {
+					KinkyDungeonSendActionMessage(3, TextGet("KDZoneOfExcitementSelf"), "#88AAFF", 2);
 					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, undefined);
 				}
 			}

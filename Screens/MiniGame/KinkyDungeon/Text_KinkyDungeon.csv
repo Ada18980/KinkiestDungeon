@@ -4572,7 +4572,7 @@ KinkyDungeonSpellCastInvisibility,You snap your fingers!
 
 KinkyDungeonSpellLockdown,CMD: Lock
 KinkyDungeonSpellTargetLockdown,Select which creature to lock
-KinkyDungeonSpellDescriptionLockdown,"Locks down a target, preventing them from struggling below the current level of binding for 30 turns."
+KinkyDungeonSpellDescriptionLockdown,"Magically locks down a target, preventing them from struggling below the current level of binding for 15 turns (max 100% binding)."
 KinkyDungeonSpellCastLockdown,"You say a command word, and magical locks bind your target!"
 
 KinkyDungeonSpellChastity,Chastity
@@ -4580,11 +4580,17 @@ KinkyDungeonSpellTargetChastity,Select which creature to lock in a belt
 KinkyDungeonSpellDescriptionChastity,"Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs and distracts constantly."
 KinkyDungeonSpellCastChastity,"You conjure a chastity belt, which latches onto your target!"
 KDZoneOfPuritySelf,"Your own spell locks you in chastity!"
+KDZoneOfExcitementSelf,"Something fun enters your body..."
 
 KinkyDungeonSpellZoneOfPurity,Zone of Purity
 KinkyDungeonSpellTargetZoneOfPurity,Select an area
 KinkyDungeonSpellDescriptionZoneOfPurity,"Creates an area which applies Chastity constantly to any enemy over 50% bondage that steps inside."
 KinkyDungeonSpellCastZoneOfPurity,"You conjure a realm of absolute purity."
+
+KinkyDungeonSpellZoneOfExcitement,Zone of Excitement
+KinkyDungeonSpellTargetZoneOfExcitement,Select an area
+KinkyDungeonSpellDescriptionZoneOfExcitement,"Creates an area which adds a vibrating toy to enemies with status effects that step inside. Toy lasts 20 turns."
+KinkyDungeonSpellCastZoneOfExcitement,"You conjure a realm of absolute fun!"
 
 KinkyDungeonSpellCommandCapture,CMD: Capture
 KinkyDungeonSpellTargetCommandCapture,Select which creature to bind
@@ -4595,6 +4601,17 @@ KinkyDungeonSpellCommandDisenchant,CMD: Disenchant
 KinkyDungeonSpellTargetCommandDisenchant,Select an area
 KinkyDungeonSpellDescriptionCommandDisenchant,"Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Makes magic bindings easier."
 KinkyDungeonSpellCastCommandDisenchant,"You say a command word, siphoning the magic from nearby constructs!"
+
+KinkyDungeonSpellCommandVibrate,CMD: Vibrate
+KinkyDungeonSpellTargetCommandVibrate,Select an area
+KinkyDungeonSpellDescriptionCommandVibrate,"Target a large area. Enemies with plugs or toys are teased for Duration turns, taking charm damage each turn."
+KinkyDungeonSpellCastCommandVibrate,"You say a command word, causing all toys in the area to vibrate!"
+
+KinkyDungeonSpellCommandOrgasm,CMD: Explosive Finish
+KinkyDungeonSpellOrgasmStrike,Explosive Finish
+KinkyDungeonSpellTargetCommandOrgasm,Select an area
+KinkyDungeonSpellDescriptionCommandOrgasm,"Target a large area. Consumes enemy distraction to deal up to DamageDealt charm damage, twice if at 90% distraction or more."
+KinkyDungeonSpellCastCommandOrgasm,"You say a command word, resulting in a surge of energy entering your targets!"
 
 KinkyDungeonSpellCommandRelease,CMD: Release
 KinkyDungeonSpellTargetCommandRelease,Select an area

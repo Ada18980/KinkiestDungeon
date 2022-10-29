@@ -1325,3 +1325,17 @@ function KinkyDungeonSendMagicEvent(Event, data) {
 		}
 	}
 }
+
+
+function KDCastSpellToEnemies(fn, tX, tY, spell) {
+	let enList = KDNearbyEnemies(tX, tY, spell.aoe);
+	let cast = false;
+
+	if (enList.length > 0) {
+		for (let en of enList) {
+			if (fn(en)) cast = true;
+		}
+	}
+
+	return cast;
+}

@@ -112,7 +112,7 @@ let KinkyDungeonSpellSpecials = {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en && en.boundLevel > 0) {
 			KinkyDungeonApplyBuffToEntity(en, {
-				id: "Lockdown", aura: "#a96ef5", type: "MinBoundLevel", duration: 30, power: en.boundLevel, player: true, enemies: true, tags: ["lock", "debuff", "commandword"]
+				id: "Lockdown", aura: "#a96ef5", type: "MinBoundLevel", duration: 15, power: Math.min(en.Enemy.maxhp, en.boundLevel), player: true, enemies: true, tags: ["lock", "debuff", "commandword"]
 			});
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 			return "Cast";
@@ -619,6 +619,59 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
+	"CommandVibrate": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, KinkyDungeonTargetingSpell.aoetype || "")
+			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull"))) {
+
+			let vibes = [];
+			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
+			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
+			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
+			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 0.5, 30, undefined, undefined, undefined, undefined, true);
+
+			cast = true;
+		}
+		cast = cast || KDCastSpellToEnemies((en) => {
+			if (en.Enemy.bound && KDEntityBuffedStat(en, "Plug") > 0) {
+				KDApplyGenBuffs(en, "Vibrate1", spell.time);
+				return true;
+			}
+		}, tX, tY, spell);
+		if (cast) {
+			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			return "Cast";
+		} else return "Fail";
+	},
+	"CommandOrgasm": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, KinkyDungeonTargetingSpell.aoetype || "")
+			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull"))) {
+
+			let vibes = [];
+			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
+			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
+			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
+			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 3.0, 10, undefined, undefined, undefined, undefined, true);
+			KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonFindSpell("OrgasmStrike", true), undefined, undefined, undefined, "Player");
+			cast = true;
+		}
+		cast = cast || KDCastSpellToEnemies((en) => {
+			if (en.Enemy.bound && en.distraction > 0) {
+				let dist = en.distraction / en.Enemy.maxhp;
+				if (dist < 0.9) dist *= 2;
+				KinkyDungeonDamageEnemy(en, {
+					type: "charm",
+					damage: spell.power * Math.max(0.1, dist),
+				}, true, false, spell);
+				KinkyDungeonCastSpell(en.x, en.y, KinkyDungeonFindSpell("OrgasmStrike", true), undefined, undefined, undefined, "Player");
+				en.distraction = 0;
+				return true;
+			}
+		}, tX, tY, spell);
+		if (cast) {
+			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			return "Cast";
+		} else return "Fail";
+	},
 	"CommandSlime": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let enList = KDNearbyEnemies(tX, tY, spell.aoe);
 		let count = 0;
@@ -626,7 +679,7 @@ let KinkyDungeonSpellSpecials = {
 		if (enList.length > 0) {
 			count += enList.length;
 			for (let en of enList) {
-				if (en.boundLevel && (!en.buffs || !en.buffs.Lockdown)) {
+				if (en.boundLevel) {
 					en.boundLevel = Math.max(0, en.boundLevel - 5);
 				}
 				KinkyDungeonRemoveBuffsWithTag(en, ["encased", "slimed"]);
@@ -669,7 +722,7 @@ let KinkyDungeonSpellSpecials = {
 		if (enList.length > 0) {
 			count += enList.length;
 			for (let en of enList) {
-				if (en.boundLevel && (!en.buffs || !en.buffs.Lockdown)) {
+				if (en.boundLevel) {
 					en.boundLevel = Math.max(0, en.boundLevel - spell.power);
 				}
 			}

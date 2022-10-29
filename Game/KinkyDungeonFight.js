@@ -1788,7 +1788,7 @@ function KDApplyGenBuffs(entity, buff, time) {
 	if (buffs && entity) {
 		for (let b of buffs) {
 			let newBuff = Object.assign({}, b);
-			if (newBuff && time) newBuff.time = time;
+			if (newBuff && time) newBuff.duration = time;
 			KinkyDungeonApplyBuffToEntity(entity, newBuff);
 		}
 	}

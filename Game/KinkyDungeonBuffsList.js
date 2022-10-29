@@ -66,8 +66,26 @@ let KDEncased = {
 };
 let KDChastity = {
 	id: "Chastity", type: "Chastity", power: 1.0, aura: "#dddddd", aurasprite: "Chastity", player: false, enemies: true, duration: 9999, range: 0.5, tags: ["chastity"], events: [
-		{type: "Distract", power: 0.5, trigger: "tick", prereq: "bound"},
+		{type: "Distract", power: 0.1, trigger: "tick", prereq: "bound"},
 	]
+};
+let KDVibrate1 = {
+	id: "Vibrate1", type: "Vibration", power: 1.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
+		{type: "RemoveNoPlug", trigger: "tick"},
+	]
+};
+let KDVibrate2 = {
+	id: "Vibrate2", type: "Vibration", power: 1.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
+		{type: "RemoveNoPlug", trigger: "tick"},
+	]
+};
+let KDVibrate3 = {
+	id: "Vibrate3", type: "Vibration", power: 1.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
+		{type: "RemoveNoPlug", trigger: "tick"},
+	]
+};
+let KDToy = {
+	id: "Toy", type: "Plug", power: 0.1, aura: "#dddddd", aurasprite: "Toy", player: false, enemies: true, duration: 20, range: 0.5, tags: ["toy"]
 };
 let KDPlugged = {
 	id: "Plugged", type: "Plug", power: 1.0, aura: "#dddddd", aurasprite: "Plugged", player: false, enemies: true, duration: 9999, range: 0.5, tags: ["plugged"], events: [
@@ -120,6 +138,9 @@ let KDBuffReference = {
 	"Plugged": [KDPlugged],
 	"DoublePlugged": [KDDoublePlugged],
 	"Chastity": [KDChastity],
+	"Vibrate1": [KDVibrate1],
+	"Vibrate2": [KDVibrate2],
+	"Vibrate3": [KDVibrate3],
 };
 
 let KDDisenchantSelf = {id: "DisenchantSelf", aura: "#8888ff", type: "Disenchant", power: 9.9, player: true, enemies: true, duration: 10,};

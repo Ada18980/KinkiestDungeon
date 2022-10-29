@@ -696,15 +696,30 @@ function KDGetEnemyStruggleMod(enemy) {
 /**
  *
  * @param {entity} enemy
+ * @param {number} vibe
  * @returns {number}
  */
-function KDGetEnemyDistractRate(enemy) {
+function KDGetEnemyDistractRate(enemy, vibe) {
+	if (vibe) return -vibe * enemy.Enemy.maxhp * 0.033;
 	let level = KDBoundEffects(enemy);
-	let mult = enemy.distraction > 0.9 ? 0.02 : (enemy.distraction > 0.5 ? 0.04 : 0.06);
+	let mult = enemy.distraction/enemy.Enemy.maxhp > 0.9 ? 0.02 : (enemy.distraction/enemy.Enemy.maxhp > 0.5 ? 0.04 : 0.06);
 	if (KDStrictPersonalities.includes(enemy.personality)) mult = mult * 2;
 	else if (!KDLoosePersonalities.includes(enemy.personality)) mult = mult * 1.5;
 
 	return mult * enemy.Enemy.maxhp / (1 + level * 0.25);
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} vibe
+ * @returns {number}
+ */
+function KDGetEnemyDistractionDamage(enemy, vibe) {
+	if (vibe <= 0) return 0;
+	let mult = Math.max(0.25, enemy.distraction/enemy.Enemy.maxhp) * 0.033 * vibe;
+	if (enemy.hp <= 1 || enemy.hp <= enemy.Enemy.maxhp * 0.101) return 0;
+	return Math.min(Math.max(enemy.Enemy.maxhp * 0.1, 1), mult * enemy.hp);
 }
 
 let KDMaxBindingBars = 3;
@@ -1575,9 +1590,18 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "boundLevel"});
 				}
 			}
+			let vibe = KDEntityBuffedStat(enemy, "Vibration");
+			if (enemy.distraction > 0 || vibe) {
+				let DD = KDGetEnemyDistractionDamage(enemy, vibe);
+				if (DD > 0) {
+					KinkyDungeonDamageEnemy(enemy, {
+						damage: DD,
+						type: "charm",
+					}, true, true);
+				}
 
-			if (enemy.distraction > 0 ) {
-				let DR = KDGetEnemyDistractRate(enemy);
+
+				let DR = KDGetEnemyDistractRate(enemy, vibe);
 				if (enemy.distraction > enemy.Enemy.maxhp) {
 					enemy.distraction = enemy.Enemy.maxhp;
 					KDAddThought(enemy.id, "Embarrassed", 7, 1);
@@ -1594,7 +1618,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 						}
 					}
 				}
-				enemy.distraction = Math.max(0, enemy.distraction - delta * DR);
+				enemy.distraction = Math.max(0, Math.min(enemy.distraction - delta * DR, enemy.Enemy.maxhp));
 
 
 				if (enemy.distraction <= 0) {

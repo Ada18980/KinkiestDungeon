@@ -86,7 +86,7 @@ let KinkyDungeonLearnableSpells = [
 	//Page 2: Conjuration
 	[
 		// Verbal
-		["CommandWord", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "Lockdown", "Chastity", "ZoneOfPurity", "Heal", "Heal2", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Blink", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
+		["CommandWord", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "CommandVibrate", "CommandOrgasm", "ZoneOfExcitement", "Lockdown", "Chastity", "ZoneOfPurity", "Heal", "Heal2", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Blink", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
 		// Arms
 		["TickleCloud", "FeatherCloud", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
@@ -545,7 +545,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			onhit:"heal", time:2, lifetime: 1, delay: 1, power: 4.5, aoe: 0.9, range: 7, size: 1, damage: "inert"},
 		{name: "FloatingWeapon", prerequisite: "ApprenticePhysics", tags: ["buff", "offense", "physics"], sfx: "MagicSlash", school: "Conjure", manacost: 2, components: [], level:3, type:"passive",
 			events: [{type: "FloatingWeapon", trigger: "playerAttack"}, {type: "HandsFree", trigger: "getWeapon"}, {type: "HandsFree", trigger: "calcDamage"}]},
-		{name: "Lockdown", prerequisite: "ApprenticeMetal", tags: ["metal", "lock", "binding", "utility", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 1, components: ["Verbal"], mustTarget: true, level:2,
+		{name: "Lockdown", prerequisite: "ApprenticeMetal", tags: ["metal", "lock", "binding", "utility", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], mustTarget: true, level:1,
 			/*buffs: [
 				{id: "Lockdown", aura: "#a96ef5", type: "Locked", duration: 8, power: 1.0, player: true, enemies: true, tags: ["lock", "debuff"]},
 				{id: "Lockdown2", type: "MoveSpeed", duration: 8, power: -1.0, player: false, enemies: true, noAlly: true, tags: ["slow", "debuff"]},
@@ -557,8 +557,12 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			type:"special", special: "Chastity",
 			onhit:"", time:8, power: 3.5, range: 1.5, size: 1, damage: ""},
 		{name: "ZoneOfPurity", color: "#ffff00", prerequisite: "Chastity", tags: ["metal", "binding", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 7, components: ["Verbal"], level:1, type:"inert",
-			onhit:"aoe", power: 0, delay: 20, range: 4.5, size: 3, lifetime: 1, aoe: 2.5, damage: "charm",
+			onhit:"aoe", power: 0, delay: 40, range: 4.5, size: 3, lifetime: 1, aoe: 2.5, damage: "charm",
 			events: [{trigger: "bulletTick", type: "ZoneOfPurity", aoe: 2.5, power: 0.5}]
+		},
+		{name: "ZoneOfExcitement", color: "#ff8888", prerequisite: "CommandVibrate", tags: ["binding", "utility"], sfx: "MagicSlash", school: "Conjure", manacost: 3.5, components: ["Verbal"], level:1, type:"inert",
+			onhit:"aoe", power: 0, delay: 20, range: 4.5, size: 3, lifetime: 1, aoe: 1.99, damage: "charm",
+			events: [{trigger: "bulletTick", type: "ZoneOfExcitement", aoe: 1.99, power: 0.5}]
 		},
 		{name: "Frustration", tags: ["metal", "offense", "utility"], prerequisite: "Chastity", sfx: "FireSpell", school: "Conjure", manacost: 0, components: [], level:1, type:"passive", events: [
 			{type: "Frustration", trigger: "tickAfter"}
@@ -574,6 +578,12 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "CommandDisenchant", prerequisite: "CommandWord", tags: ["command", "offense", "aoe"], sfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Verbal"], level:1,
 			type:"special", special: "CommandDisenchant",
 			onhit:"", time:0, power: 3.0, range: 3.5, size: 1, aoe: 3.5, damage: "inert"},
+		{name: "CommandVibrate", prerequisite: "CommandWord", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], level:1,
+			type:"special", special: "CommandVibrate",
+			onhit:"", time:20, power: 5, range: 3.5, size: 1, aoe: 3.5, damage: "charm"},
+		{name: "CommandOrgasm", prerequisite: "CommandVibrate", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], level:1,
+			type:"special", special: "CommandOrgasm",
+			onhit:"", time:0, power: 5, range: 7, size: 1, aoe: 4.99, damage: "charm"},
 		{name: "CommandRelease", prerequisite: "CommandDisenchant", tags: ["command", "binding", "defense"], sfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Verbal"], level:3,
 			type:"special", special: "CommandRelease",
 			onhit:"", time:0, power: 10.0, range: 2.5, size: 1, aoe: 1.5, damage: "inert"},
@@ -757,6 +767,9 @@ let KinkyDungeonSpellListEnemies = [
 		events: [
 			{trigger: "bulletHitEnemy", type: "EncaseBound"},
 		],
+	},
+	{name: "OrgasmStrike", tags: ["offense", "nature", "binding"], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
+		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "inert",
 	},
 	{name: "BindRope", tags: ["offense", "rope", "binding"], sfx: "MagicSlash", school: "Conjure", manacost: 0.5, components: ["Verbal"],
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 3.0, time: 5, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "chain",
