@@ -15,7 +15,7 @@ function KDDrawMods() {
 		DrawButtonKDEx("moddelete_" + i, (bdata) => {
 			delete KDMods[keys[i]];
 			return true;
-		}, true, 1275, 350 + KDModSpacing, 200, 45, TextGet("KinkyDungeonDeleteMod"), "#ffffff", "");
+		}, true, 1275, 350 + KDModSpacing * count, 200, 45, TextGet("KinkyDungeonDeleteMod"), "#ffffff", "");
 		count++;
 	}
 }

@@ -1876,7 +1876,10 @@ function KinkyDungeonRefreshRestraintsCache() {
 function KinkyDungeonGetRestraintByName(Name) {
 	if (KinkyDungeonRestraintsCache.size > 0) {
 		return KinkyDungeonRestraintsCache.get(Name);
-	} else KinkyDungeonRefreshRestraintsCache();
+	} else {
+		KinkyDungeonRefreshRestraintsCache();
+		return KinkyDungeonRestraintsCache.get(Name);
+	}
 }
 
 /**
