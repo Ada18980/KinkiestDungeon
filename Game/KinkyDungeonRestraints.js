@@ -2372,6 +2372,31 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 					for (let remove of restraint.remove) {
 						InventoryRemove(KinkyDungeonPlayer, remove);
 					}
+				if (restraint.removeShrine)
+					for (let remove of restraint.removeShrine) {
+						for (let removeR of KinkyDungeonAllRestraint()) {
+							let host = removeR;
+							let link = removeR.dynamicLink;
+							let iter = 0;
+							while (link) {
+								if (KDRestraint(link).shrine && KDRestraint(link).shrine.includes(remove)) {
+									KinkyDungeonRemoveDynamicRestraint(host, Keep, false);
+
+									host = link;
+									link = link.dynamicLink;
+									iter += 1;
+									if (iter < 100) {
+										host = removeR;
+										link = removeR.dynamicLink;
+									}
+								}
+							}
+
+							if (KDRestraint(removeR).shrine && KDRestraint(removeR).shrine.includes(remove)) {
+								KinkyDungeonRemoveRestraint(KDRestraint(removeR).Group, Keep, false, false, false, false);
+							}
+						}
+					}
 				InventoryWear(KinkyDungeonPlayer, restraint.Asset, AssetGroup, color);
 				KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, `+${TextGet("Restraint" + restraint.name)}!`, "pink", 5, true);
 				KDRecentRepIndex += 1;

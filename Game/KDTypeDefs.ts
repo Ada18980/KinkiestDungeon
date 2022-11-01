@@ -268,7 +268,10 @@ type restraint = {
 	failSuffix?: Record<string, string>,
 	/** Changes the dialogue text when you try to struggle completely */
 	specStruggleTypes?: string[],
+	/** List of Groups removed */
 	remove?: string[],
+	/** List of tags removed */
+	removeShrine?: string[],
 	slimeLevel?: number,
 	addTag?: string[],
 	OverridePriority?: number,

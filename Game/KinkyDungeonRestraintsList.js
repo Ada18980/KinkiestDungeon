@@ -540,6 +540,7 @@ const KinkyDungeonRestraints = [
 		DefaultLock: "Red",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.8, "Remove": 0.35, "Pick": 0.25, "Unlock": 0.5},
 		helpChance: {"Remove": 0.15, "Pick": 0.25, "Unlock": 0.5},
+		removeShrine: ["Hogties"],
 		enemyTags: {"displaySpell":100, "display": 100, "displaystand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture"], ignoreSpells: true, removeOnLeash: true,
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	// Bed trap, always possible to struggle out but takes time
