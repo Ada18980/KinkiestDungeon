@@ -795,6 +795,7 @@ interface weapon {
 	chance: number;
 	type: string;
 	bind?: number;
+	bindType?: string;
 	distract?: number;
 	bindEff?: number;
 	distractEff?: number;

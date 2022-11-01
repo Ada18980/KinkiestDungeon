@@ -3032,6 +3032,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					distract: KinkyDungeonPlayerDamage.distract,
 					distractEff: KinkyDungeonPlayerDamage.distractEff,
 					bind: KinkyDungeonPlayerDamage.bind,
+					bindType: KinkyDungeonPlayerDamage.bindType,
 					bindEff: KinkyDungeonPlayerDamage.bindEff,
 					boundBonus: KinkyDungeonPlayerDamage.boundBonus,
 					novulnerable: KinkyDungeonPlayerDamage.novulnerable,

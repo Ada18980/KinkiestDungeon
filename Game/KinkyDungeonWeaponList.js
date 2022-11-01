@@ -80,10 +80,10 @@ let KinkyDungeonWeapons = {
 	"StaffFlame": {name: "StaffFlame", dmg: 4, chance: 0.85, staminacost: 5.0, type: "fire", unarmed: false, rarity: 3, shop: true, sfx: "MagicSlash", magic: true,
 		events: [{type: "Buff", trigger: "tick", power: 0.15, buffType: "fireDamageBuff"}],
 		special: {type: "ignite"},},
-	"StaffChain": {name: "StaffChain", dmg: 3, bindEff: 1.5, chance: 1.1, staminacost: 3.0, type: "chain", unarmed: false, rarity: 3, shop: true, sfx: "Chain", magic: true,
+	"StaffChain": {name: "StaffChain", dmg: 3, bindEff: 1.25, bindType: "Metal", chance: 1.1, staminacost: 3.0, type: "chain", unarmed: false, rarity: 3, shop: true, sfx: "Chain", magic: true,
 		events: [{type: "Buff", trigger: "tick", power: 0.1, buffType: "chainDamageBuff"},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "chain", time: 2}]},
-	"StaffGlue": {name: "StaffGlue", dmg: 3, bindEff: 1.5, chance: 1.0, staminacost: 4.0, type: "glue", unarmed: false, rarity: 3, shop: true, sfx: "MagicSlash", magic: true,
+	"StaffGlue": {name: "StaffGlue", dmg: 3, bindEff: 1.5, bindType: "Slime", chance: 1.0, staminacost: 4.0, type: "glue", unarmed: false, rarity: 3, shop: true, sfx: "MagicSlash", magic: true,
 		events: [{type: "Buff", trigger: "tick", power: 0.1, buffType: "glueDamageBuff"}]},
 	"StaffElectric": {name: "StaffElectric", dmg: 3, chance: 1.1, staminacost: 4.0, type: "electric", unarmed: false, rarity: 3, shop: true, sfx: "Shock", magic: true,
 		events: [{type: "Buff", trigger: "tick", power: 0.1, buffType: "electricDamageBuff"}, {type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "electric", time: 3, chance: 0.1}]},
@@ -94,7 +94,7 @@ let KinkyDungeonWeapons = {
 			{type: "MultiplyTime", trigger: "beforeDamageEnemy", power: 1.5, damage: "ice"}]},
 
 	// Tier 2 Staves
-	"StaffBind": {name: "StaffBind", dmg: 2.3, bindEff: 1.5, chance: 1.0, staminacost: 3.0, type: "chain", unarmed: false, rarity: 4, shop: true, sfx: "Chain", magic: true,
+	"StaffBind": {name: "StaffBind", dmg: 2.3, bindEff: 1, bindType: "Metal", chance: 1.0, staminacost: 3.0, type: "chain", unarmed: false, rarity: 4, shop: true, sfx: "Chain", magic: true,
 		events: [
 			{type: "Buff", trigger: "tick", power: 0.2, buffType: "chainDamageBuff"},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "chain", time: 4}]},
@@ -141,7 +141,7 @@ let KinkyDungeonWeapons = {
 	"Crop": {name: "Crop", dmg: 2.5, chance: 1.0, staminacost: 2.0, distract: 3, type: "pain", tease: true, unarmed: false, rarity: 2, shop: true, sfx: "Whip"},
 	"IceCube": {name: "IceCube", dmg: 1.5, chance: 1.0, staminacost: 1.0, distract: 1, type: "ice", tease: true, unarmed: false, rarity: 1, shop: true, sfx: "Freeze",
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "ice", time: 3, chance: 0.1}]},
-	"Rope": {name: "Rope", dmg: 1.0, bind: 5, chance: 1.0, staminacost: 1.0, type: "chain", unarmed: false, rarity: 1, shop: true, sfx: "Struggle"},
+	"Rope": {name: "Rope", dmg: 1.0, bind: 5, chance: 1.0, staminacost: 1.0, type: "chain", unarmed: false, rarity: 1, shop: true, sfx: "Struggle", bindType: "Rope"},
 	"VibeWand": {name: "VibeWand", dmg: 2.0, chance: 1.0, staminacost: 1.5, type: "charm", unarmed: false, rarity: 1, shop: true, sfx: "Vibe",
 		playSelfBonus: 4,
 		playSelfMsg: "KinkyDungeonPlaySelfVibeWand",
@@ -167,7 +167,7 @@ let KinkyDungeonWeapons = {
 	"Dragonslaver": {name: "Dragonslaver", dmg: 3.5, chance: 1.25, staminacost: 2.5, type: "slash", unarmed: false, rarity: 10, shop: false, cutBonus: 0.1, sfx: "LightSwing",
 		events: [{type: "CastSpell", spell: "BeltStrike", trigger: "playerAttack", requireEnergy: true, energyCost: 0.0075}],
 		special: {type: "hitorspell", spell: "BeltStrike", requiresEnergy: true, energyCost: 0.0075, range: 2.99}},
-	"Arbiter": {name: "Arbiter", dmg: 4, bindEff: 2.0, chance: 2.0, staminacost: 2.5, type: "chain", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "HeavySwing",
+	"Arbiter": {name: "Arbiter", dmg: 4, bindEff: 1.5, chance: 2.0, bindType: "Metal", staminacost: 2.5, type: "chain", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "HeavySwing",
 		events: [
 			{type: "BuffMulti", trigger: "tick", power: 0.25, buffTypes: [
 				"glueDamageBuff",
@@ -183,7 +183,7 @@ let KinkyDungeonWeapons = {
 			{type: "BondageBustBoost", trigger: "spellCast", power: 0.25, sfx: "Shock", energyCost: 0.0025},
 		],
 		special: {type: "spell", spell: "BondageBust", requiresEnergy: true, energyCost: 0.005, range: 4}},
-	"TheEncaser": {name: "TheEncaser", dmg: 4, chance: 1.0, staminacost: 3.0, type: "glue", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "MagicSlash",
+	"TheEncaser": {name: "TheEncaser", dmg: 4, chance: 1.0, bindType: "Slime", staminacost: 3.0, type: "glue", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "MagicSlash",
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "glue", time: 2}],
 		special: {type: "spell", selfCast: true, spell: "SlimeForm", requiresEnergy: true, energyCost: 0.025}},
 	"FourSeasons": {name: "FourSeasons", dmg: 4, chance: 1.0, staminacost: 4.0, type: "cold", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "Fwoosh",

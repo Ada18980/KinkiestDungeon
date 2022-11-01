@@ -1324,7 +1324,7 @@ let KDSpecialBondage = {
 	},
 	"Slime": {
 		priority: -10,
-		color: "#c0248d",
+		color: "#f23db7",
 		struggleRate: 1.5,
 		powerStruggleBoost: 2.0,
 		healthStruggleBoost: 0.75,
