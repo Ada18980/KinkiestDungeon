@@ -312,6 +312,8 @@ function KinkyDungeonDefaultStats(Load) {
 	CharacterRefresh(KinkyDungeonPlayer);
 }
 
+let KDMaxVisionDist = 8;
+
 function KinkyDungeonGetVisionRadius() {
 	let data = {
 		brightness: KinkyDungeonMapBrightness,
@@ -319,7 +321,7 @@ function KinkyDungeonGetVisionRadius() {
 		noperipheral: KinkyDungeonDeaf || KinkyDungeonStatBlind > 0
 	};
 	KinkyDungeonSendEvent("calcVision", data);
-	return (KDGameData.SleepTurns > 2) ? 1 : (Math.max((data.noperipheral) ? 1 : 2, Math.round(8-data.blindlevel)));
+	return (KDGameData.SleepTurns > 2) ? 1 : (Math.max((data.noperipheral) ? 1 : 2, Math.round(KDMaxVisionDist-data.blindlevel)));
 }
 
 function KinkyDungeonInterruptSleep() {
@@ -785,7 +787,7 @@ function KinkyDungeonUpdateStats(delta) {
 
 	KinkyDungeonPlayers = [KinkyDungeonPlayerEntity];
 
-	KDBlindnessCap = 6;
+	KDBlindnessCap = 7;
 	KinkyDungeonSendEvent("calcStats", {});
 	// Initialize
 	KinkyDungeonCalculateVibeLevel(delta);

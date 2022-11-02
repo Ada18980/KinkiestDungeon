@@ -5,7 +5,7 @@ let KinkyDungeonAlert = 0;
 let KDBrawlerAmount = 1.0;
 let KDClumsyAmount = 0.7;
 let KDDodgeAmount = 0.75;
-let KinkyDungeonMissChancePerBlind = 0.15; // Max 3
+let KinkyDungeonMissChancePerBlind = 0.1; // Max 3
 let KinkyDungeonMissChancePerSlow = 0.1; // Max 3
 let KinkyDungeonBullets = []; // Bullets on the game board
 /**

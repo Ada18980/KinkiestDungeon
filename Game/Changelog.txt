@@ -1160,6 +1160,7 @@ Features
 - Added offer dialogues for all major factions except Fungals
 - added display frame and spell
 - New spell: Chastity, Frustration, Zone of Purity, CMD: Vibrate, CMD: Explosive Finish, Zone of Excitement
+- Blindfold changes to be more 'immersive'
 
 TODO ValidationFindBlockCycles to prevent bugs
 

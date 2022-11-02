@@ -366,9 +366,14 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 
 	let rad = KinkyDungeonGetVisionRadius();
 	for (let X = 0; X < KinkyDungeonGridWidth; X++) {
-		for (let Y = 0; Y < KinkyDungeonGridHeight; Y++)
-			if (KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y) > rad)
+		for (let Y = 0; Y < KinkyDungeonGridHeight; Y++) {
+			let dd = KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y)
+			if (dd > rad)
 				KinkyDungeonVisionSet(X, Y, 0);
+			else if (rad < KDMaxVisionDist && dd > 1.5) {
+				KinkyDungeonVisionSet(X, Y, KinkyDungeonVisionGet(X, Y) * Math.min(1, Math.max(0, rad - dd)/3));
+			}
+		}
 	}
 
 
