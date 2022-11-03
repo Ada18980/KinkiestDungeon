@@ -634,7 +634,7 @@ function KinkyDungeonDrawInputs() {
 			let item = KinkyDungeonGetRestraintItem(sg.group);
 			let drawLayers = 0;
 
-			let MY = Math.min(500, MouseY);
+			let MY = 200;
 			let surfaceItems = [];
 			let dynamicList = [];
 			let noRefreshlists = false;
@@ -678,16 +678,16 @@ function KinkyDungeonDrawInputs() {
 						{
 							drawn = true;
 							let msg = TextGet("Restraint" + d.name);
-							DrawTextKD(msg, 1 + 530, 1 + MY + O * 50, "#333333", "#333333");
-							DrawTextKD(msg, 530, MY + O * 50, "#ffffff", "#333333");
+							DrawTextKD(msg, 1 + 530, 1 + MY + O * 45, "#333333", "#333333");
+							DrawTextKD(msg, 530, MY + O * 45, "#ffffff", "#333333");
 							O++;
 						}
 					}
 					lastO = O;
 					O = 0;
 					if (drawn) {
-						DrawTextKD(TextGet("KinkyDungeonItemsUnderneath"), 1 + 530, 1 + MY + O * 50, "#333333", "#333333");
-						DrawTextKD(TextGet("KinkyDungeonItemsUnderneath"), 530, MY + O * 50, "#ffffff", "#333333");
+						DrawTextKD(TextGet("KinkyDungeonItemsUnderneath"), 1 + 530, 1 + MY + O * 45, "#333333", "#333333");
+						DrawTextKD(TextGet("KinkyDungeonItemsUnderneath"), 530, MY + O * 45, "#ffffff", "#333333");
 					}
 					O = lastO + 1;
 					MainCanvas.textAlign = "center";
@@ -701,14 +701,14 @@ function KinkyDungeonDrawInputs() {
 					for (let s of strictItems) {
 						drawn = true;
 						let msg = TextGet("Restraint" + s);
-						DrawTextKD(msg, 1 + 530, 1 + MY + O * 50, "#333333", "#333333");
-						DrawTextKD(msg, 530, MY + O * 50, "#ffffff", "#333333");
+						DrawTextKD(msg, 1 + 530, 1 + MY + O * 45, "#333333", "#333333");
+						DrawTextKD(msg, 530, MY + O * 45, "#ffffff", "#333333");
 						O++;
 					}
 					O = lastO;
 					if (drawn) {
-						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 1 + 530, 1 + MY + O * 50, "#333333", "#333333");
-						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * 50, "#ffffff", "#333333");
+						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 1 + 530, 1 + MY + O * 45, "#333333", "#333333");
+						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * 45, "#ffffff", "#333333");
 					}
 					MainCanvas.textAlign = "center";
 				}

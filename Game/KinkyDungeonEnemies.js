@@ -2817,7 +2817,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 											!enemy.Enemy.ignoreStaminaForBinds && !AIData.attack.includes("Suicide"),
 											!AIData.addMoreRestraints && AIData.addLeash,
-											KinkyDungeonStatsChoice.has("TightRestraints") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss,
+											!(KinkyDungeonStatsChoice.has("TightRestraints") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss),
 											enemy.Enemy.bound ? KDExtraEnemyTags : undefined);
 										if (rest) {
 											replace.push({keyword:"RestraintAdded", value: TextGet("Restraint" + rest.name)});
