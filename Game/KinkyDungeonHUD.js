@@ -1988,13 +1988,15 @@ function KinkyDungeonUpdateStruggleGroups() {
 		let sg = struggleGroups[S];
 		let Group = sg;
 		if (sg == "ItemM") {
-			if (InventoryGet(KinkyDungeonPlayer, "ItemMouth3")) Group = "ItemMouth3";
-			else if (InventoryGet(KinkyDungeonPlayer, "ItemMouth2")) Group = "ItemMouth2";
-			else Group = "ItemMouth";
+			//if (InventoryGet(KinkyDungeonPlayer, "ItemMouth3")) Group = "ItemMouth3";
+			//else if (InventoryGet(KinkyDungeonPlayer, "ItemMouth2")) Group = "ItemMouth2";
+			//else Group = "ItemMouth";
+			Group = "ItemMouth";
 		}
 		if (sg == "ItemH") {
-			if (InventoryGet(KinkyDungeonPlayer, "ItemHood") || KinkyDungeonGetRestraintItem("ItemHood")) Group = "ItemHood";
-			else Group = "ItemHead";
+			//if (KinkyDungeonGetRestraintItem("ItemHood")) Group = "ItemHood";
+			//else Group = "ItemHead";
+			Group = "ItemHead";
 		}
 
 		let restraint = KinkyDungeonGetRestraintItem(Group);
