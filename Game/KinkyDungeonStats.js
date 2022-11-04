@@ -1135,7 +1135,7 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 	let OrigAmount = power.orig;
 	let amount = power.final;
 	let bound = KinkyDungeonIsArmsBound();
-	if (!bound || affinity) amount = Math.max(0, Math.min(amount, OrigAmount - KinkyDungeonPlayWithSelfBoundPenalty));
+	if (bound && !affinity) amount = Math.max(0, Math.min(amount, OrigAmount - KinkyDungeonPlayWithSelfBoundPenalty));
 	if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfBonus) amount += KinkyDungeonPlayerDamage.playSelfBonus;
 	KinkyDungeonChangeDistraction(amount * KinkyDungeonPlayWithSelfMult, false, 0.05);
 	KinkyDungeonChangeStamina(KinkyDungeonPlayCost);
@@ -1180,6 +1180,7 @@ let KDOrgasmStageTimerMaxChance = 0.1; // Chance for the event to happen
 let KDWillpowerMultiplier = 0.5;
 
 let KinkyDungeonOrgasmCost = -8;
+let KinkyDungeonOrgasmCostPercent = 0.7;
 let KinkyDungeonOrgasmWillpowerCost = -2;
 let KinkyDungeonEdgeCost = -1;
 let KinkyDungeonPlayCost = -0.05;
@@ -1208,7 +1209,7 @@ function KinkyDungeonDoTryOrgasm(Bonus) {
 		KinkyDungeonStatBlind = 6;
 		KinkyDungeonOrgasmStunTime = 4;
 		KDGameData.OrgasmStamina = KinkyDungeonStatDistraction;
-		KinkyDungeonChangeStamina(KinkyDungeonOrgasmCost);
+		KinkyDungeonChangeStamina(Math.min(KinkyDungeonOrgasmCost, -KinkyDungeonOrgasmCostPercent * KinkyDungeonStatStamina));
 		KinkyDungeonChangeWill(KinkyDungeonOrgasmWillpowerCost);
 		KinkyDungeonStatDistractionLower = 0;
 		KinkyDungeonAlert = 7; // Alerts nearby enemies because of your moaning~
