@@ -1626,7 +1626,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 						}
 					}
 				}
-				enemy.distraction = Math.max(0, Math.min(enemy.distraction || 0 - delta * DR, enemy.Enemy.maxhp));
+				enemy.distraction = Math.max(0, Math.min((enemy.distraction || 0) - delta * DR, enemy.Enemy.maxhp));
 
 
 				if (enemy.distraction <= 0) {
