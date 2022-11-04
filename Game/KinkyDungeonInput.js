@@ -134,7 +134,7 @@ function KDProcessInput(type, data) {
 				return msg;
 			} else return "KDCantEquip";
 		case "tryOrgasm":
-			KinkyDungeonDoTryOrgasm();
+			KinkyDungeonDoTryOrgasm(data.bonus);
 			break;
 		case "tryPlay":
 			KinkyDungeonDoPlayWithSelf();

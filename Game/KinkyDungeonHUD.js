@@ -1349,7 +1349,7 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 		if (!KinkyDungeonControlsEnabled()) return false;
 		if (KinkyDungeonCanTryOrgasm()) {
 			// Done, converted to input
-			KDSendInput("tryOrgasm", {});
+			KDSendInput("tryOrgasm", {bonus: KDGetPlaySelfPower(0).final});
 		} else if (KinkyDungeonCanPlayWithSelf()) {
 			// Done, converted to input
 			KDSendInput("tryPlay", {});

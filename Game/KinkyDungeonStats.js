@@ -1117,11 +1117,23 @@ function KinkyDungeonCanTryOrgasm() {
 	return KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax - 0.01 && (KinkyDungeonHasStamina(-KinkyDungeonOrgasmCost) || KDGameData.OrgasmStage > 3) && KDGameData.OrgasmStamina < 1;
 }
 
+/**
+ * @param {number} [tease] - The teasing power
+ * @returns {{orig: number, final: number}}
+ */
+function KDGetPlaySelfPower(tease) {
+	let OrigAmount = Math.max(tease ? Math.min(KinkyDungeonPlayWithSelfPowerMax, tease) : 0, KinkyDungeonPlayWithSelfPowerMin + (KinkyDungeonPlayWithSelfPowerMax - KinkyDungeonPlayWithSelfPowerMin)*KDRandom());
+	let amount = Math.max(0, OrigAmount - KinkyDungeonChastityMult() * KinkyDungeonPlayWithSelfChastityPenalty);
+
+	return {orig: OrigAmount, final: amount};
+}
+
 function KinkyDungeonDoPlayWithSelf(tease) {
 	let affinity = KinkyDungeonGetAffinity(false, "Edge");
 	KinkyDungeonAlert = 3; // Alerts nearby enemies because of your moaning~
-	let OrigAmount = Math.max(tease ? Math.min(KinkyDungeonPlayWithSelfPowerMax, tease) : 0, KinkyDungeonPlayWithSelfPowerMin + (KinkyDungeonPlayWithSelfPowerMax - KinkyDungeonPlayWithSelfPowerMin)*KDRandom());
-	let amount = Math.max(0, OrigAmount - KinkyDungeonChastityMult() * KinkyDungeonPlayWithSelfChastityPenalty);
+	let power = KDGetPlaySelfPower(tease);
+	let OrigAmount = power.orig;
+	let amount = power.final;
 	let bound = KinkyDungeonIsArmsBound();
 	if (!bound || affinity) amount = Math.max(0, Math.min(amount, OrigAmount - KinkyDungeonPlayWithSelfBoundPenalty));
 	if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfBonus) amount += KinkyDungeonPlayerDamage.playSelfBonus;

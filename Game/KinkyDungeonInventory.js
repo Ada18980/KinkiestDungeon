@@ -302,13 +302,11 @@ function KDGetItemPreview(item) {
 	if ((item.type == Restraint || item.type == LooseRestraint) && KDRestraint(item).AssetGroup) Group = KDRestraint(item).AssetGroup;
 	if (Group == "ItemMouth2" || Group == "ItemMouth3") Group = "ItemMouth";
 
-	if (item.type == Restraint){
-		if (KDRestraint(item).AssetGroup) ret = {name: item.name, item: item, preview: `Assets/Female3DCG/${KDRestraint(item).AssetGroup}/Preview/${KDRestraint(item).Asset}.png`};
-		else ret = {name: item.name, item: item, preview: `Assets/Female3DCG/${Group}/Preview/${KDRestraint(item).Asset}.png`};
+	if (item.type == Restraint) {
+		ret = {name: item.name, item: item, preview: `Assets/Female3DCG/${Group}/Preview/${KDRestraint(item).Asset}.png`};
 	}
-	else if (item.type == LooseRestraint){
-		if (KDRestraint(item).AssetGroup) ret = {name: item.name, item: item, preview: `Assets/Female3DCG/${KDRestraint(item).AssetGroup}/Preview/${KDRestraint(item).Asset}.png`};
-		else ret = {name: KDRestraint(item).name, item: item, preview: `Assets/Female3DCG/${Group}/Preview/${KDRestraint(item).Asset}.png`};
+	else if (item.type == LooseRestraint) {
+		ret = {name: KDRestraint(item).name, item: item, preview: `Assets/Female3DCG/${Group}/Preview/${KDRestraint(item).Asset}.png`};
 	}
 	else if (item.type == Consumable) ret = {name: KDConsumable(item).name, item: item, preview: KinkyDungeonRootDirectory + `/Items/${KDConsumable(item).name}.png`};
 	else if (item.type == Weapon) ret = {name: KDWeapon(item).name, item: item, preview: KinkyDungeonRootDirectory + `/Items/${KDWeapon(item).name}.png`};
