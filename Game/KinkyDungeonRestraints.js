@@ -2378,18 +2378,16 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 							let host = removeR;
 							let link = removeR.dynamicLink;
 							let iter = 0;
-							while (link) {
+							while (link && iter < 100) {
 								if (KDRestraint(link).shrine && KDRestraint(link).shrine.includes(remove)) {
 									KinkyDungeonRemoveDynamicRestraint(host, Keep, false);
-
+									host = removeR;
+									link = removeR.dynamicLink;
+								} else {
 									host = link;
 									link = link.dynamicLink;
-									iter += 1;
-									if (iter < 100) {
-										host = removeR;
-										link = removeR.dynamicLink;
-									}
 								}
+								iter += 1;
 							}
 
 							if (KDRestraint(removeR).shrine && KDRestraint(removeR).shrine.includes(remove)) {
