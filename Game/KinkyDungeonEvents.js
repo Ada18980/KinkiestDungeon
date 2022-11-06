@@ -4,8 +4,8 @@ let KinkyDungeonSlimeLevel = 0;
 let KinkyDungeonSlimeLevelStart = 0;
 let KinkyDungeonAttackTwiceFlag = false;
 let KinkyDungeonSlimeParts = [
-	{group: "ItemHood", restraint: "SlimeHead", noUnmasked: true},
-	{group: "ItemMouth3", restraint: "SlimeMouth"},
+	{group: "ItemHead", restraint: "SlimeHead", noUnmasked: true},
+	{group: "ItemMouth", restraint: "SlimeMouth"},
 	{group: "ItemArms", restraint: "SlimeArms"},
 	{group: "ItemHands", restraint: "SlimeHands"},
 	{group: "ItemLegs", restraint: "SlimeLegs"},
