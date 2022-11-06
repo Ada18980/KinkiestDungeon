@@ -992,7 +992,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "Lock", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["metalTrap", "leatherTrap", "ignorenoSP", "lock", "construct", "poisonimmune", "soulimmune", "melee", "minor", "chainresist", "meleeresist", "glueweakness", "iceweakness", "doortrap", "flying"]), difficulty: 0.2,
-		ignorechance: 0.75, armor: 1, followRange: 1, AI: "hunt",  ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], squeeze: true, suicideOnLock: true,
+		ignorechance: 0.75, armor: 1, followRange: 1, AI: "hunt",  ignoreflag: ["lockignore"], failAttackflag: ["lockignore"], squeeze: true, suicideOnLock: true,
 		Attack: {
 			mustBindorFail: true,
 		},

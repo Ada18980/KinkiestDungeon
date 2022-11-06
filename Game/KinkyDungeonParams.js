@@ -378,6 +378,9 @@ const KinkyDungeonMapParams = {
 			"jungle": 0,
 			"cavern": 0,
 		},
+		globalTags: {
+			"egyptian": true,
+		},
 
 		"shortcuts": [
 			{Level: 4, checkpoint: "cry", chance: 1.0},

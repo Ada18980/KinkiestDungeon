@@ -344,6 +344,7 @@ type mapKey = string
 
 interface floorParams {
 	tagModifiers?: Record<string, number>;
+	globalTags?: Record<string, boolean>;
 	shadowColor?: number,
 	lightColor?: number,
 	background : string,

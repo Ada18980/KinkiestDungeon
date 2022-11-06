@@ -820,8 +820,6 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		{requiredTags: ["miniboss"], tags: [], currentCount: 0, maxCount: 0.075},
 		{requiredTags: ["elite"], tags: [], currentCount: 0, maxCount: 0.15},
 		{requiredTags: ["minor"], tags: [], currentCount: 0, maxCount: 0.1},
-		{requiredTags: [KinkyDungeonFactionTag[randomFactions[0]]], tags: [KinkyDungeonFactionTag[randomFactions[0]]], currentCount: 0, maxCount: 0.2},
-		{requiredTags: [KinkyDungeonFactionTag[randomFactions[1]]], tags: [KinkyDungeonFactionTag[randomFactions[1]]], currentCount: 0, maxCount: 0.2},
 	];
 	if (KDGameData.MapMod) {
 		let mapMod = KDMapMods[KDGameData.MapMod];
@@ -830,6 +828,9 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				spawnBoxes.unshift(Object.assign({}, m));
 			}
 		}
+	} else {
+		spawnBoxes.push({requiredTags: [KinkyDungeonFactionTag[randomFactions[0]]], tags: [KinkyDungeonFactionTag[randomFactions[0]]], currentCount: 0, maxCount: 0.2});
+		spawnBoxes.push({requiredTags: [KinkyDungeonFactionTag[randomFactions[1]]], tags: [KinkyDungeonFactionTag[randomFactions[1]]], currentCount: 0, maxCount: 0.2});
 	}
 
 	let currentCluster = null;

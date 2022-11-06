@@ -98,6 +98,7 @@ let KDTilePalette = {
 	'BarrelAlways': {type: "tile", tile: 'L', special: {Type: "Barrel", Always: true}},
 	'Cage': {type: "tile", tile: 'L', special: {Type: "Cage", Furniture: "Cage"}, jail: {type: "furniture", radius: 1}},
 	'DisplayStand': {type: "tile", tile: 'L', special: {Type: "DisplayStand", Furniture: "DisplayStand"}, jail: {type: "furniture", radius: 1}},
+	'DisplayEgyptian': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayEgyptian"}, jail: {type: "furniture", radius: 1}},
 	'----Chests----': {type: "none"},
 	'Chest': {type: "tile", tile: 'C', special: {Type: "Chest"}},
 	'ChestRed': {type: "tile", tile: 'C', special: {Type: "Chest", Lock: "Red"}},

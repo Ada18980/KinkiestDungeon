@@ -59,8 +59,7 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 	/**
 	 * @type {Record<string, boolean>}
 	 */
-	let globalTags = {
-	};
+	let globalTags = Object.assign({}, data.params.globalTags || {});
 
 	while (tileOrder.length > 0) {
 		let tileOrderInd = Math.floor(KDRandom() * tileOrder.length);
@@ -564,6 +563,11 @@ let KDTileGen = {
 		KinkyDungeonMapSet(x, y, 'L');
 		KDGameData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Furniture: "DisplayStand"};
+	},
+	"Furniture": (x, y, tile, tileGenerator, data) => {
+		//KinkyDungeonMapSet(x, y, tileGenerator.tile);
+		KDGameData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		return {Furniture: tileGenerator.Furniture};
 	},
 	"Table": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'F');
