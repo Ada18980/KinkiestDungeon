@@ -63,7 +63,7 @@ function KDProcessInput(type, data) {
 			break;
 		}
 		case "curseUnlock":
-			KinkyDungeonCurseUnlock(data.group, data.curse);
+			KinkyDungeonCurseUnlock(data.group, data.index, data.curse);
 			break;
 		case "toggleSpell":
 			KinkyDungeonSpellChoicesToggle[data.i] = !KinkyDungeonSpellChoicesToggle[data.i];

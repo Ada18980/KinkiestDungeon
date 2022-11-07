@@ -1,5 +1,32 @@
 "use strict";
 
+/** @type {Record<string, {condition: (item: item) => boolean, remove: (item: item, host: item) => void}>} */
+let KDCurses = {
+	"GhostLock" : {
+		condition: (item) => {
+			return KinkyDungeonItemCount("Ectoplasm") >= 25;
+		},
+		remove: (item, host) => {
+			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Ectoplasm, -25);
+		}
+	},
+	"MistressKey": {
+		condition: (item) => {
+			return KinkyDungeonItemCount("MistressKey") > 0;
+		},
+		remove: (item, host) => {
+			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, -1);
+		}
+	},
+	"5Keys" : {
+		condition: (item) => {
+			return KinkyDungeonRedKeys >= 5;
+		},
+		remove: (item, host) => {
+			KinkyDungeonRedKeys -= 5;
+		}
+	},
+};
 
 
 function KinkyDungeonCurseInfo(item, Curse) {
@@ -18,30 +45,43 @@ function KinkyDungeonCurseStruggle(item, Curse) {
 }
 
 function KinkyDungeonCurseAvailable(item, Curse) {
-	if (Curse == "5Keys" && KinkyDungeonRedKeys >= 5) {
-		return true;
-	} else if (Curse == "GhostLock" && KinkyDungeonItemCount("Ectoplasm") >= 25) {
-		return true;
-	} else if (Curse == "MistressKey" && KinkyDungeonItemCount("MistressKey") > 0) {
+	if (KDCurses[Curse] && KDCurses[Curse].condition(item)) {
 		return true;
 	}
 	return false;
 }
 
-function KinkyDungeonCurseUnlock(group, Curse) {
+/**
+ *
+ * @param {string} group
+ * @param {number} index
+ * @param {string} Curse
+ */
+function KinkyDungeonCurseUnlock(group, index, Curse) {
 	let unlock = true;
 	let keep = false;
-	if (Curse == "GhostLock") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Ectoplasm, -25);
-	} else if (Curse == "5Keys") {
-		KinkyDungeonRedKeys -= 5;
-	} else if (Curse == "MistressKey") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, -1);
+	let restraint = KinkyDungeonGetRestraintItem(group);
+	let host = restraint;
+	if (index) {
+		let surfaceItems = KDDynamicLinkListSurface(restraint);
+		if (surfaceItems[index]) {
+			host = surfaceItems[index - 1];
+			restraint = surfaceItems[index];
+		}
+		else console.log("Error! Please report the item combination and screenshot to Ada!");
+	}
+
+	if (KDCurses[Curse]) {
+		KDCurses[Curse].remove(restraint, host);
 	}
 
 	if (unlock) {
 		KDSendStatus('escape', KinkyDungeonGetRestraintItem(group).name, "Curse");
 		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseUnlock" + Curse), "#99FF99", 2);
-		KinkyDungeonRemoveRestraint(group, keep);
+		if (restraint != host) {
+			KinkyDungeonRemoveDynamicRestraint(host, keep);
+		} else {
+			KinkyDungeonRemoveRestraint(group, keep);
+		}
 	}
 }

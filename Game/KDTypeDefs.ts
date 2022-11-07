@@ -1,5 +1,7 @@
 /** Kinky Dungeon Typedefs*/
 type item = {
+	/** If the item has a different curse from the base curse */
+	curse?: string,
 	/** Name of the item*/
 	name: string,
 	/** Type of the item*/
@@ -22,6 +24,8 @@ type item = {
 	tetherToGuard?: boolean,
 	/** ID of leashing enemy*/
 	tetherEntity?: number,
+	/** Leashing location*/
+	tetherLocation?: {x: number, y: number},
 	/** Location of the tether*/
 	tx?: number,
 	/** Location of the tether*/
