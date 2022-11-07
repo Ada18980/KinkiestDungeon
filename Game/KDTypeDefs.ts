@@ -62,6 +62,10 @@ interface consumable {
 	spell?: string,
 	potion?: boolean,
 	noHands?: boolean,
+	/** Requirement that overrides all other requirements */
+	prereq?: string,
+	/** Requirement in addition to all other requirements such as not being gagged for potions, bound, etc */
+	postreq?: string,
 	/** Minimum effectiveness when gagged */
 	gagFloor?: number,
 	needMouth?: boolean,
