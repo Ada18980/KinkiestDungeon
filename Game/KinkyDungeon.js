@@ -16,6 +16,9 @@ let KDDebug = false;
 let KDDebugPerks = false;
 let KDDebugGold = false;
 
+let KDAllModFiles = [];
+let KDModFiles = {};
+
 let KDClasses = 4;
 
 let KinkyDungeonPerksConfig = "1";
@@ -60,6 +63,8 @@ let KinkyDungeonKeyMenu = ['KeyT', 'KeyI', 'KeyG', 'KeyM', 'KeyL']; // QuikInv, 
 let KinkyDungeonKeyToggle = ['Backquote', 'KeyB', 'KeyV', 'KeyN', 'Comma']; // Log, Passing, Door, Auto Struggle, Auto Pathfind
 let KinkyDungeonKeySpellPage = ['Backquote'];
 let KinkyDungeonKeySwitchWeapon = ['ControlRight'];
+
+let KDLoadingTextKeys = {};
 
 let KDDefaultKB = {
 	Down: KinkyDungeonKey[2],
@@ -470,6 +475,9 @@ function KDistChebyshev(x, y) {
  * @returns {void} - Nothing
  */
 function KinkyDungeonLoad() {
+	for (let entry of Object.entries(KDLoadingTextKeys)) {
+		addTextKey(entry[0], entry[1]);
+	}
 	KDCategories = Object.assign([], KDCategoriesStart);
 	for (let c of KDCategories) {
 		c.buffs = [];
@@ -1040,7 +1048,7 @@ function KinkyDungeonRun() {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					KinkyDungeonSlowMoveTurns -= 1;
 					KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
-					KinkyDungeonSleepTime = CommonTime() + 100 * (0.25 + KDAnimSpeed * 0.75);
+					KinkyDungeonSleepTime = CommonTime() + 100 * (0.5 + KDAnimSpeed * 0.5);
 				}
 			} else if (KinkyDungeonFastMove && KinkyDungeonFastMovePath && KinkyDungeonFastMovePath.length > 0) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
@@ -1051,7 +1059,7 @@ function KinkyDungeonRun() {
 							KDSendInput("move", {dir: {x:next.x-KinkyDungeonPlayerEntity.x, y:next.y-KinkyDungeonPlayerEntity.y}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
 						else KinkyDungeonFastMovePath = [];
 					}
-					KinkyDungeonSleepTime = CommonTime() + 100 * (0.25 + KDAnimSpeed * 0.75);
+					KinkyDungeonSleepTime = CommonTime() + 100 * (0.5 + KDAnimSpeed * 0.5);
 				}
 			} else if (KinkyDungeonFastStruggle && KinkyDungeonFastStruggleType && KinkyDungeonFastStruggleGroup) {
 				if (CommonTime() > KinkyDungeonSleepTime) {

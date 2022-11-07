@@ -130,6 +130,11 @@ function KinkyDungeonInventoryAddWeapon(Name) {
 		KinkyDungeonInventoryAdd({name:Name, type:Weapon, events: Object.assign([], KinkyDungeonWeapons[Name].events)});
 }
 
+function KinkyDungeonInventoryAddLoose(Name) {
+	if (!KinkyDungeonInventoryGetLoose(Name) && KinkyDungeonGetRestraintByName(Name))
+		KinkyDungeonInventoryAdd({name: Name, type: LooseRestraint, events:KDRestraint(KinkyDungeonGetRestraintByName(Name)).events, quantity: 1});
+}
+
 function KinkyDungeonInventoryAddOutfit(Name) {
 	if (!KinkyDungeonInventoryGetOutfit(Name) && KinkyDungeonOutfitCache.has(Name))
 		KinkyDungeonInventoryAdd({name:Name, type:Outfit});

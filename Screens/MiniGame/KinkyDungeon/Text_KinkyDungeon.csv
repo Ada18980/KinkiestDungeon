@@ -20,7 +20,7 @@ KDModsLoaded,Mods Loaded.
 RestartNeeded,"Restart required!"
 RestartNeededCN,"需要重启！"
 
-KinkyDungeon,"Kinky Dungeon v3.81"
+KinkyDungeon,"Kinky Dungeon v3.82"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
@@ -729,6 +729,7 @@ LootChestBomb,You found some high explosives!
 LootChestSpell,"You find a magic scroll, which you place in your spellbook. (+SpellLearned)"
 LootChestSpellPoints,"You find an orb containing magical knowledge! (+AMOUNT spell points)"
 LootChestWeapon,"You find a weapon! (+WeaponAcquired)"
+LootChestArmor,"You find a wearable item! (+ArmorAcquired)"
 LootChestTrapMagic,"You find gold and a magic trap! (+RestraintType) (+XXX gold)"
 LootChestTrapMagicHarness,"Swirling belts emerge from the chest and leave you bound! (+RestraintType)"
 LootChestTrapMagicBelt,"You find gold and a chastity belt that locks around your waist! (+RestraintType) (+XXX gold)"

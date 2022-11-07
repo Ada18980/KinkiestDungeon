@@ -62,6 +62,9 @@ let KinkyDungeonLootTable = {
 		{name: "sword", minLevel: 0, weight:1, weapon: "Sword", noweapon: ["Sword"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Dirk", minLevel: 0, weight:1, weapon: "Dirk", noweapon: ["Dirk"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Foil", minLevel: 0, weight:0.5, weapon: "Foil", noweapon: ["Foil"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Breastplate", minLevel: 0, weight:0.5, armor: "Breastplate", noarmor: ["Breastplate"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Bracers", minLevel: 0, weight:0.5, armor: "Bracers", noarmor: ["Bracers"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "LeatherBoots", minLevel: 0, weight:0.5, armor: "LeatherBoots", noarmor: ["LeatherBoots"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		/*{name: "trap_armbinder", trap: true, minLevel: 1, weight:2, message:"LootChestTrapMagic", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms", "ModerateRestraint"], power: 6},
 		{name: "trap_armbinderHeavy", minLevel: 1, weight:2, message:"LootChestTrapMagicHarness", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms", "ModerateRestraint"], submissive: 15, power: 8},
 		{name: "trap_cuffs", trap: true, minLevel: 1, weight:1, message:"LootChestTrapMagic", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms"], power: 2},
@@ -184,7 +187,7 @@ let KinkyDungeonLootTable = {
 
 
 let KDLootEvents = {
-	"Test": (Loot, Floor, Replacemsg, Lock) => {
+	"Armor": (Loot, Floor, Replacemsg, Lock) => {
 		return {
 			value: 0,
 			Replacemsg: Replacemsg,

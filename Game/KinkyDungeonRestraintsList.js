@@ -1316,6 +1316,45 @@ const KinkyDungeonRestraints = [
 	//endregion
 ];
 
+KinkyDungeonCreateRestraint({
+	name: "Breastplate",
+	Group: "ItemBreast",
+	Asset: "PolishedChastityBra",
+	OverridePriority: 27,
+	escapeChance: {
+		"Struggle": 10,
+		"Cut": -0.5,
+		"Remove": 10
+	},
+	protection: 1,
+}, "Breastplate", "Rock-solid and form-fitting.", "Provides minor protection against enemy attacks.");
+
+KinkyDungeonCreateRestraint({
+	name: "Bracers",
+	Group: "ItemArms",
+	Asset: "SteelCuffs",
+	escapeChance: {
+		"Struggle": 10,
+		"Cut": -0.5,
+		"Remove": 10
+	},
+	protection: 1,
+}, "Steel Bracers", "Dependable protection for the average adventurer.", "Provides minor protection against enemy attacks.");
+
+KinkyDungeonCreateRestraint({
+	name: "LeatherBoots",
+	Group: "ItemBoots",
+	Asset: "Boots1",
+	AssetGroup: "Shoes",
+	Color: ["#444444", "#222222"],
+	escapeChance: {
+		"Struggle": 10,
+		"Cut": 0.1,
+		"Remove": 10
+	},
+	protection: 1,
+}, "Adventuring Boots", "For stepping into all kinds of trouble!", "Provides minor protection against enemy attacks.");
+
 /**
  * @type {Record<string, KDLockType>}
  */

@@ -39,8 +39,6 @@ function KDLoadMod(files) {
 	}
 }
 
-let KDAllModFiles = [];
-
 async function KDExecuteMods() {
 	KDAllModFiles = [];
 	for (let file of Object.values(KDMods)) {
@@ -97,8 +95,6 @@ async function KDExecuteMods() {
 	KinkyDungeonRefreshRestraintsCache();
 	KinkyDungeonRefreshEnemiesCache();
 }
-
-let KDModFiles = {};
 
 if (typeof TransformStream == "undefined") {
 	const script = document.createElement("script");

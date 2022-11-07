@@ -1,10 +1,13 @@
 'use strict';
 
 function addTextKey(Name, Text) {
-	for (let screen of TextAllScreenCache.entries())
+	let ct = 0;
+	for (let screen of TextAllScreenCache.entries()) {
 		if (screen[0].includes("KinkyDungeon")) {
 			screen[1].cache[Name] = Text;
 		} else console.log("ERROR LOADING TEXT!!!");
+	}
+	if (ct == 0) KDLoadingTextKeys[Name] = Text;
 }
 
 const cloneDeep = (obj) =>
@@ -35,9 +38,17 @@ const defaultRestraint = {
  * @param {object} props
  * A list of restraint props to be applied.  At minimum, the "name", "Group" and "Asset" props should be provided.
  *
+ * @param {string} [displayName]
+ * The name displayed to the user for the restraint.
+ *
+ * @param {string} [flavorText]
+ * Text that describes the "look and feel" of the restraint.
+ *
+ * @param {string} [functionText]
+ * Text that describes how the restraint operates.
  * @returns The created restraint.
  */
-function KinkyDungeonCreateRestraint(props) {
+function KinkyDungeonCreateRestraint(props, displayName, flavorText, functionText) {
 	if (!props.name || !props.Group || !props.Asset) {
 		throw new Error('name, Group and Asset props must be provided.');
 	}
@@ -48,6 +59,9 @@ function KinkyDungeonCreateRestraint(props) {
 	});
 
 	KinkyDungeonRestraints.push(restraint);
+	if (displayName) {
+		KinkyDungeonAddRestraintText(props.name, displayName, flavorText, functionText);
+	}
 	return restraint;
 }
 

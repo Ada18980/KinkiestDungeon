@@ -1162,6 +1162,10 @@ Features
 - New spell: Chastity, Frustration, Zone of Purity, CMD: Vibrate, CMD: Explosive Finish, Zone of Excitement
 - Blindfold changes to be more 'immersive'
 
+3.82
+- Added a few pieces of armor
+
+
 TODO ValidationFindBlockCycles to prevent bugs
 
 TODO: Mushrooms in the jungle

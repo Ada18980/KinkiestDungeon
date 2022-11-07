@@ -209,6 +209,11 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItem" + Loot.weapon));
 	}
+	else if (Loot.armor) {
+		KinkyDungeonInventoryAddLoose(Loot.armor);
+		if (Replacemsg)
+			Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + Loot.armor));
+	}
 	else if (Loot.name == "spell_points") {
 		let amount = 1;
 		KinkyDungeonSpellPoints += amount;
@@ -622,7 +627,8 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			}
 		}
 		KinkyDungeonLostItems = [];
-	} else if (KDLootEvents[Loot.name]) {
+	}
+	if (KDLootEvents[Loot.name]) {
 		let ret = KDLootEvents[Loot.name](Loot, Floor, Replacemsg, Lock);
 		if (ret.value) value = ret.value;
 		if (ret.Replacemsg) Replacemsg = ret.Replacemsg;

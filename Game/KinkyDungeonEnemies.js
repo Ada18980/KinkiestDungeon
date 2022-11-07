@@ -3055,20 +3055,48 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							for (let r of restraintAdd) {
 								restraintpower += r.power;
 							}
-							restraintblock = KDRestraintBlockPower(restraintblock, restraintpower + (enemy.Enemy.power || 0));
-							if (!restraintblock || KDRandom() < restraintblock) {
-								for (let r of restraintAdd) {
-									let bb =  KinkyDungeonAddRestraintIfWeaker(r, AIData.power, KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy.Enemy.bypass, enemy.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, KDGetFaction(enemy), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined) * 2;
-									if (bb) {
-										KDSendStatus('bound', r.name, "enemy_" + enemy.Enemy.name);
-									}
-									bound += bb;
-								}
-							} else {
+							let blocked = () => {
 								KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: enemy.x - 0.5, y: enemy.y - 0.5}, Color: "white", Time: 2, Delay: 0});
 								bound += 1;
 								if (willpowerDamage == 0)
 									willpowerDamage += AIData.power;
+							};
+							restraintblock = KDRestraintBlockPower(restraintblock, restraintpower + (enemy.Enemy.power || 0));
+							if (!restraintblock || KDRandom() < restraintblock) {
+								let protection = 0;
+								let multiPower = restraintAdd.length;
+								// Calculate power of an attack vs protection
+								let protectRestraints = KinkyDungeonAllRestraint().filter((r) => {return KDRestraint(r).protection > 0;});
+								for (let r of protectRestraints) {
+									if (r && KDRestraint(r).protection) {
+										protection += KDRestraint(r).protection;
+									}
+								}
+
+								let count = 0;
+								if (protection >= multiPower) {
+									for (let r of protectRestraints) {
+										if (count < multiPower) {
+											KinkyDungeonRemoveRestraint(KDRestraint(r).Group, true);
+										}
+										count += KDRestraint(r).protection;
+									}
+									blocked();
+								} else {
+									for (let r of restraintAdd) {
+										let bb = 0;
+										if (count >= protection) {
+											bb = KinkyDungeonAddRestraintIfWeaker(r, AIData.power, KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy.Enemy.bypass, enemy.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, KDGetFaction(enemy), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined) * 2;
+											if (bb) {
+												KDSendStatus('bound', r.name, "enemy_" + enemy.Enemy.name);
+											}
+										}
+										bound += bb;
+										count += 1;
+									}
+								}
+							} else {
+								blocked();
 							}
 						}
 
