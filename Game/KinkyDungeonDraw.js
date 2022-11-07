@@ -1226,6 +1226,10 @@ function KinkyDungeonDrawGame() {
 			() => KDVibeVolumeList[(KDVibeVolumeListIndex + KDVibeVolumeList.length - 1) % KDVibeVolumeList.length] * 100 + "%",
 			() => KDVibeVolumeList[(KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length] * 100 + "%");
 
+		DrawBackNextButtonVis(600, 500, 350, 64, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), "#ffffff", "",
+			() => KDAnimSpeedList[(KDAnimSpeedListIndex + KDAnimSpeedList.length - 1) % KDAnimSpeedList.length] * 100 + "%",
+			() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
+
 		MainCanvas.textAlign = "center";
 		DrawTextFitKD(TextGet("KinkyDungeonRestartConfirm"), 1250, 400, 1000, "#ffffff", "#333333");
 		DrawButtonVis(975, 550, 550, 64, TextGet("KinkyDungeonRestartNo"), "#ffffff", "");
@@ -1455,10 +1459,10 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 		Entity.visual_y = (Entity.yy != undefined) ? Entity.yy : Entity.y;
 		return -1;
 	} else {
-		let speed = 100;
-		if (Entity.player && KinkyDungeonSlowLevel > 0 && KDGameData.KinkyDungeonLeashedPlayer < 2 && (KinkyDungeonFastMovePath.length < 1 || KinkyDungeonSlowLevel > 1)) speed = 100 + 70 * KinkyDungeonSlowLevel;
+		let speed = 75 + KDAnimSpeed * 25;
+		if (Entity.player && KinkyDungeonSlowLevel > 0 && KDGameData.KinkyDungeonLeashedPlayer < 2 && (KinkyDungeonFastMovePath.length < 1 || KinkyDungeonSlowLevel > 1)) speed += KDAnimSpeed * 50 * KinkyDungeonSlowLevel;
 		if (KDGameData.SleepTurns > 0) speed = 100;
-		if (speed > 300) speed = 300;
+		if (speed > 300) speed = 250;
 		if (Entity.scale) speed = KDBulletSpeed;
 		let value = amount/speed;// How many ms to complete a move
 		// xx is the true position of a bullet

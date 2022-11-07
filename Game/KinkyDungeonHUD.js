@@ -1888,6 +1888,12 @@ function KinkyDungeonHandleHUD() {
 			KDVibeVolume = KDVibeVolumeList[KDVibeVolumeListIndex];
 			localStorage.setItem("KDVibeVolume", "" + KDVibeVolumeListIndex);
 		}
+		if (MouseIn(600, 500, 350, 64)) {
+			if (MouseX <= 600 + 350/2) KDAnimSpeedListIndex = (KDAnimSpeedList.length + KDAnimSpeedListIndex - 1) % KDAnimSpeedList.length;
+			else KDAnimSpeedListIndex = (KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length;
+			KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex];
+			localStorage.setItem("KDAnimSpeed", "" + KDAnimSpeedListIndex);
+		}
 
 		if (MouseIn(1650, 900, 300, 64)) {
 			KinkyDungeonDrawState = "Perks2";

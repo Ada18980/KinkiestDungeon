@@ -40,6 +40,7 @@ KDBlockedRestraint,Blocked restraint!
 KDWallBump,You bump into a wall.
 
 KDVibeVolume,Toy Volume:
+KDAnimSpeed,Animation Speed:
 
 KinkyDungeonJourney,"Select a journey. This will determine the ordering of game areas."
 KinkyDungeonJourney0,"Standard: The intended experience"

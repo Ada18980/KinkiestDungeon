@@ -43,6 +43,10 @@ let KDVibeVolume = 1;
 let KDVibeVolumeListIndex = 0;
 let KDVibeVolumeList = [1, 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
 
+let KDAnimSpeed = 1;
+let KDAnimSpeedListIndex = 0;
+let KDAnimSpeedList = [1, 0.75, 0.5, 0.25, 0, 1.5];
+
 function KDStopAllVibeSounds(Exceptions) {
 	let EE = [];
 	if (Exceptions)
