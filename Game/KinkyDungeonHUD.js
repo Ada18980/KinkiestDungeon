@@ -650,7 +650,7 @@ function KinkyDungeonDrawInputs() {
 			if (MouseIn(((!sg.left) ? (260) : 0), y-48, 230, (ButtonWidth + 45))) {
 				let data = {
 					struggleGroup: sg,
-					struggleIndex: KDStruggleGroupLinkIndex[sg.group],
+					struggleIndex: KDStruggleGroupLinkIndex ? KDStruggleGroupLinkIndex[sg.group] : 0,
 					surfaceItems: surfaceItems,
 					dynamicList: dynamicList,
 					extraLines: [],
