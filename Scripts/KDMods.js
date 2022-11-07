@@ -93,6 +93,9 @@ async function KDExecuteMods() {
 
 	if (KDAllModFiles.length > 0)
 		KDModsLoaded = true;
+
+	KinkyDungeonRefreshRestraintsCache();
+	KinkyDungeonRefreshEnemiesCache();
 }
 
 let KDModFiles = {};

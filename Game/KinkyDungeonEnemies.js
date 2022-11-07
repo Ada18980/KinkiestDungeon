@@ -12,6 +12,32 @@ let actionDialogueChance = 0.1;
 let actionDialogueChanceIntense = 0.4;
 
 
+
+/**
+ * Refreshes the enemies map
+ */
+function KinkyDungeonRefreshEnemiesCache() {
+	KDEnemiesCache = new Map();
+	for (let enemy of KinkyDungeonEnemies) {
+		KDEnemiesCache.set(enemy.name, enemy);
+	}
+}
+
+
+/**
+ *
+ * @param {string} Name
+ * @returns {enemy}
+ */
+function KinkyDungeonGetEnemyByName(Name) {
+	if (KDEnemiesCache.size > 0) {
+		return KDEnemiesCache.get(Name);
+	} else {
+		KinkyDungeonRefreshEnemiesCache();
+		return KDEnemiesCache.get(Name);
+	}
+}
+
 /**
  *
  * @param {number} x

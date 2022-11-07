@@ -195,6 +195,7 @@ function KinkyDungeonInitialize(Level, Load) {
 	//Object.assign(KDGameData, KDGameDataBase);
 
 	KinkyDungeonRefreshRestraintsCache();
+	KinkyDungeonRefreshEnemiesCache();
 	KinkyDungeonRefreshOutfitCache();
 	//KinkyDungeonRefreshEnemyCache();
 	KinkyDungeonFlags = new Map();
