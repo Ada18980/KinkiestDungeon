@@ -1,5 +1,12 @@
 'use strict';
 
+function addTextKey(Name, Text) {
+	for (let screen of TextAllScreenCache.entries())
+		if (screen[0].includes("KinkyDungeon")) {
+			screen[1].cache[Name] = Text;
+		} else console.log("ERROR LOADING TEXT!!!");
+}
+
 const cloneDeep = (obj) =>
 	JSON.parse(JSON.stringify(obj));
 

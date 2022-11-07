@@ -100,15 +100,6 @@ async function KDExecuteMods() {
 
 let KDModFiles = {};
 
-
-
-function addTextKey(Name, Text) {
-	for (let screen of TextAllScreenCache.entries())
-		if (screen[0].includes("KinkyDungeon")) {
-			screen[1].cache[Name] = Text;
-		} else console.log("ERROR LOADING TEXT!!!");
-}
-
 if (typeof TransformStream == "undefined") {
 	const script = document.createElement("script");
 	script.src = "lib/web-streams-polyfill.min.js";
