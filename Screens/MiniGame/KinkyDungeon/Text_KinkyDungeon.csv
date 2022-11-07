@@ -2175,7 +2175,7 @@ KinkyDungeonStruggleLimit,"This is as far as you can struggle. You'll have to re
 KinkyDungeonRemoveLimit,"The item is too tight. You'll need to loosen it somehow first..."
 KinkyDungeonCutLimit,"The item is to tight to get your tool into position. You'll have to first make it looser."
 KinkyDungeonPickLimit,"You can't quite get your pick into position. Maybe if you loosened the item first..."
-KinkyDungeonUnlockLimit,"You can't reach the lock. You'll have to loosen the item somehow first..."
+KinkyDungeonUnlockLimit,"The lock is tucked in securely under straps. You'll have to get it out from under there..."
 
 KinkyDungeonStruggleBarely,"You can feel some ply but can't quite make any progress..."
 KinkyDungeonRemoveBarely,"It's just barely out of reach..."
