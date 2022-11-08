@@ -1,7 +1,9 @@
 "use strict";
 
-let KDBasicArmorWeight = 0.5;
+let KDBasicArmorWeight = 0.6;
 let KDBasicArmorWeight_Cursed = 0.3;
+let KDAdvancedArmorWeight = 0.5;
+let KDAdvancedArmorWeight_Cursed = 0.3;
 
 let KDBasicArmor = [
 	{name: "Breastplate", minLevel: 0, weight: KDBasicArmorWeight,
@@ -28,6 +30,17 @@ let KDBasicArmor = [
 	{name: "LeatherBoots", minLevel: 0, weight: KDBasicArmorWeight,
 		armor: "LeatherBoots",
 		norestraint: [...KinkyDungeonGetCurses("LeatherBoots", true)], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+];
+let KDAdvancedArmor = [
+	{name: "SteelArmor", minLevel: 0, weight: KDAdvancedArmorWeight,
+		armor: "SteelArmor",
+		norestraint: [...KinkyDungeonGetCurses("SteelArmor", true)], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+	{name: "SteelSkirt", minLevel: 0, weight: KDAdvancedArmorWeight,
+		armor: "SteelSkirt",
+		norestraint: [...KinkyDungeonGetCurses("SteelArmor", true)], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+	{name: "MageArmor", minLevel: 0, weight: KDAdvancedArmorWeight,
+		armor: "MageArmor",
+		norestraint: [...KinkyDungeonGetCurses("MageArmor", true)], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 ];
 let KDBasicArmor_Cursed = [
 	{name: "Breastplate_Cursed", minLevel: 0, weight: KDBasicArmorWeight_Cursed,
@@ -62,6 +75,20 @@ let KDBasicArmor_Cursed = [
 		armor: "LeatherBoots",
 		curses: [...KinkyDungeonGetCurses("LeatherBoots")],
 		norestraint: [...KinkyDungeonGetCurses("LeatherBoots", true)], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+];
+let KDAdvancedArmor_Cursed = [
+	{name: "SteelArmor_Cursed", minLevel: 0, weight: KDBasicArmorWeight_Cursed*0.5,
+		armor: "SteelArmor",
+		curses: [...KinkyDungeonGetCurses("SteelArmor")],
+		norestraint: [...KinkyDungeonGetCurses("SteelArmor", true)], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+	{name: "SteelSkirt_Cursed", minLevel: 0, weight: KDBasicArmorWeight_Cursed*0.5,
+		armor: "SteelSkirt",
+		curses: [...KinkyDungeonGetCurses("SteelSkirt")],
+		norestraint: [...KinkyDungeonGetCurses("SteelSkirt", true)], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+	{name: "MageArmor_Cursed", minLevel: 0, weight: KDBasicArmorWeight_Cursed*0.5,
+		armor: "MageArmor",
+		curses: [...KinkyDungeonGetCurses("MageArmor")],
+		norestraint: [...KinkyDungeonGetCurses("MageArmor", true)], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 ];
 
 let KinkyDungeonLootTable = {
@@ -99,7 +126,7 @@ let KinkyDungeonLootTable = {
 		{name: "magicknife", minLevel: 0, weight:7.0, weapon: "EnchKnife", message:"LootChestMagicKnife", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["EnchKnife"]},
 		{name: "bluekey", minLevel: 0, weight:0.5, message:"LootChestBlueKey", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "spell_points", magic: true, minLevel: 0, weight:8, message:"LootChestSpellPoints", messageColor:"lightblue", messageTime: 3, allFloors: true, max: 1},
-		...KDBasicArmor_Cursed,
+		...KDAdvancedArmor, ...KDAdvancedArmor_Cursed,
 	],
 	"storage": [
 		{name: "redkey", key: true, minLevel: 0, weight:1, message:"LootChestRedKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},

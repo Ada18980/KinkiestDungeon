@@ -124,6 +124,11 @@ let KDEventMapInventory = {
 			data.extraLineColor.push(e.color);
 		},
 	},
+	"perksBonus": {
+		"spellDamage": (e, item, data) => {
+			KDDamageAmpPerksSpell += e.power;
+		},
+	},
 	"tick": {
 		"armorBuff": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Armor", type: "Armor", power: e.power, duration: 2,});
@@ -133,6 +138,9 @@ let KDEventMapInventory = {
 		},
 		"evasionBuff": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Evasion", type: "Evasion", power: e.power, duration: 2,});
+		},
+		"buff": (e, item, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + e.buff, type: e.buff, power: e.power, duration: 2,});
 		},
 		"restraintBlock": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Block", type: "RestraintBlock", power: e.power, duration: 2,});

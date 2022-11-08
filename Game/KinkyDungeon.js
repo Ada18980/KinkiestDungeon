@@ -510,11 +510,12 @@ function KinkyDungeonLoad() {
 	if (!KinkyDungeonGameRunning) {
 		if (!KinkyDungeonPlayer) { // new game
 			KDrandomizeSeed(false);
-			if (KDPatched)
+			if (KDPatched) {
 				// @ts-ignore
 				KinkyDungeonPlayer = suppressCanvasUpdate(() => CharacterLoadNPC("NPC_Avatar"));
-			else
+			} else {
 				KinkyDungeonPlayer = CharacterLoadNPC("NPC_Avatar");
+			}
 			KinkyDungeonPlayer.Type = "simple";
 			// @ts-ignore
 			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: true, };
@@ -1879,7 +1880,6 @@ function KinkyDungeonHandleClick() {
 			// @ts-ignore
 			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: false, AllowFullWardrobeAccess: true};
 			CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
-			KinkyDungeonConfigAppearance = true;
 			return true;
 		} else if (MouseIn(360, 930, 220, 64)) {
 			if (KinkyDungeonReplaceConfirm > 0) {

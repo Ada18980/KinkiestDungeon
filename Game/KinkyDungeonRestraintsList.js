@@ -1375,11 +1375,74 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	strictness: 0.25,
 	events: [
 		{trigger: "tick", type: "armorBuff", power: 1.0, inheritLinked: true},
-		{trigger: "tick", type: "restraintBlock", power: 2, inheritLinked: true},
+		{trigger: "tick", type: "restraintBlock", power: 2.5, inheritLinked: true},
 		{trigger: "tick", type: "evasionBuff", power: -0.5, inheritLinked: true},
 		{trigger: "tick", type: "sneakBuff", power: -0.5, inheritLinked: true},
 	],
 }, "Chainmail Tank Top", "Cumbersome, but effective!", "Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder.")
+, [...KDBasicCurses]);
+
+KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+	name: "SteelArmor",
+	Group: "ItemTorso",
+	Asset: "MistressTop",
+	AssetGroup: "Cloth",
+	Color: ["Default"],
+	showInQuickInv: true,
+	escapeChance: {
+		"Struggle": -0.5,
+		"Cut": -0.5,
+		"Remove": 0.01,
+	},
+	protection: 3,
+	protectionCursed: true,
+	strictness: 0.3,
+	events: [
+		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
+		{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
+	],
+}, "Light Plate Armor", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
+, [...KDBasicCurses]);
+
+KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+	name: "MageArmor",
+	Group: "ItemTorso",
+	Asset: "GrandMage",
+	AssetGroup: "Cloth",
+	Color: ["#5555ff"],
+	showInQuickInv: true,
+	escapeChance: {
+		"Struggle": 0,
+		"Cut": -0.5,
+		"Remove": 0.25,
+	},
+	protection: 1,
+	protectionCursed: true,
+	events: [
+		{trigger: "perksBonus", type: "spellDamage", power: 0.25, inheritLinked: true},
+	],
+}, "Wizard's Robe", "I have the power!", "+25% spell damage.")
+, [...KDBasicCurses]);
+
+KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+	name: "SteelSkirt",
+	Group: "ItemLegs",
+	Asset: "LatexSkirt2",
+	AssetGroup: "ClothLower",
+	Color: ["#ffffff"],
+	showInQuickInv: true,
+	escapeChance: {
+		"Struggle": -0.5,
+		"Cut": -0.5,
+		"Remove": 0.04,
+	},
+	protection: 2,
+	protectionCursed: true,
+	events: [
+		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
+		{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
+	],
+}, "Armored Skirt", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
 , [...KDBasicCurses]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
@@ -1468,6 +1531,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 1,
 }, "Hide Boots", "For stepping into all kinds of trouble!", "Provides minor protection against enemy attacks.")
 , [...KDBasicCurses]);
+
 
 /**
  * @type {Record<string, KDLockType>}

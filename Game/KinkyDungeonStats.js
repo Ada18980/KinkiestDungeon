@@ -987,6 +987,7 @@ function KDUpdatePerksBonus() {
 	for (let perk of KinkyDungeonStatsChoice.keys()) {
 		if (KDPerkUpdateStats[perk]) KDPerkUpdateStats[perk]();
 	}
+	KinkyDungeonSendEvent("perksBonus", {});
 }
 
 function KinkyDungeonCalculateMiscastChance() {
