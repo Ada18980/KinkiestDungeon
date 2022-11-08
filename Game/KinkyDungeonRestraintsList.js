@@ -1350,6 +1350,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	protection: 1,
 	strictness: 0.05,
+	protectionCursed: true,
 	events: [
 		{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
 	],
@@ -1370,13 +1371,15 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Remove": 0.05,
 	},
 	protection: 2,
+	protectionCursed: true,
 	strictness: 0.25,
 	events: [
 		{trigger: "tick", type: "armorBuff", power: 1.0, inheritLinked: true},
 		{trigger: "tick", type: "restraintBlock", power: 2, inheritLinked: true},
 		{trigger: "tick", type: "evasionBuff", power: -0.5, inheritLinked: true},
+		{trigger: "tick", type: "sneakBuff", power: -0.5, inheritLinked: true},
 	],
-}, "Chainmail Tank Top", "Cumbersome, but effective!", "Provides +10 armor and protection against enemy attacks. Decreases evasion and makes struggling harder.")
+}, "Chainmail Tank Top", "Cumbersome, but effective!", "Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder.")
 , [...KDBasicCurses]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
