@@ -2256,6 +2256,10 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 			ret = Math.max(1, Tightness);
 			linkUnder.dynamicLink = {name: restraint.name, type: Restraint, events:events ? events : Object.assign([], restraint.events), tightness: Tightness, lock: "", faction: faction, dynamicLink: linkUnder.dynamicLink };
 			KinkyDungeonLock(linkUnder.dynamicLink, Lock);
+
+			if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {
+				KDCurses[Curse].onApply(linkUnder.dynamicLink, linkUnder);
+			}
 		} else {
 			ret = KinkyDungeonAddRestraint(restraint, Tightness + Math.round(0.1 * KinkyDungeonDifficulty), Bypass, Lock, Keep, false, !linkableCurrent, events, faction, undefined, undefined, Curse);
 		}
@@ -2449,6 +2453,10 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				let item = {name: restraint.name, type: Restraint, curse: Curse, events:events ? events : Object.assign([], restraint.events), tightness: tight, lock: "", faction: faction, dynamicLink: dynamicLink };
 				KinkyDungeonInventoryAdd(item);
 
+				if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {
+					KDCurses[Curse].onApply(item, undefined);
+				}
+
 				if (Lock) KinkyDungeonLock(item, Lock);
 				else if (restraint.DefaultLock && !Unlink) KinkyDungeonLock(item, restraint.DefaultLock);
 			} else if ((!Link && !linked) || SwitchItems) {
@@ -2457,7 +2465,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				// Then we link the new item to the unlinked item if possible
 				r = KinkyDungeonGetRestraintItem(restraint.Group);
 				if (SwitchItems) {
-					KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, false, undefined, faction);
+					KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, false, undefined, faction, undefined, Curse);
 				} else if (r && KDRestraint(r) && KinkyDungeonIsLinkable(KDRestraint(r), restraint)) {
 					KinkyDungeonLinkItem(restraint, r, Tightness, Lock, Keep, faction, Curse);
 				}

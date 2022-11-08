@@ -5240,10 +5240,15 @@ KinkyDungeonCurseStruggle5Keys,"The item is extremely secure with five separate 
 KinkyDungeonCurseUnlock5Keys,"You insert your 5 keys into the lock and the item finally comes off."
 
 curseInfoTickle,"This item is tickling you without end!"
+curseInfoPunish,"This item inflicts psychic damage when you attack or cast a spell!"
 
 KinkyDungeonCurseInfoKey,"The item is sealed with a locking spell! You will need a key to dispel the magic."
 KinkyDungeonCurseStruggleKey,"You tug on the item but it is magically sealed to your body!"
 KinkyDungeonCurseUnlockKey,"You insert your magic key into the lock and the item finally comes off!"
+
+KinkyDungeonCurseInfoWill,"The item is protected by a seal of Determination. You must have maximum willpower to remove it."
+KinkyDungeonCurseStruggleWill,"You are unable to muster the willpower to bypass the seal..."
+KinkyDungeonCurseUnlockWill,"Feeling determined, you override the seal and release the item!"
 
 KinkyDungeonCurseInfoGhostLock,"The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it."
 KinkyDungeonCurseStruggleGhostLock,"Your fingers pass right through the collar. Pity your neck doesn't pass through it."
@@ -5496,6 +5501,8 @@ KinkyDungeonPunishPlayerBandit,"Your RestraintName constricts, warning you not t
 KinkyDungeonPunishPlayerBanditHarsh,"Your RestraintName tightens painfully to punish your misbehavior!"
 KinkyDungeonPunishPlayer,Your RestraintName punishes you for your behavior!
 KinkyDungeonPunishPlayerHarsh,Your RestraintName punishes you and warns you with a harsh beep!
+KinkyDungeonPunishPlayerCurse,"Your RestraintName emits a red flash, causing you to feel faint!"
+KinkyDungeonPunishPlayerArmor,"Your armor makes noise as you move around!"
 KinkyDungeonAlertEnemies,Your RestraintName lets out an alert!
 
 KinkyDungeonGoldLockRemove,A golden lock fades into a blue lock on one of your restraints!

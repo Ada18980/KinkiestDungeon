@@ -334,16 +334,16 @@ function KinkyDungeonInterruptSleep() {
 let KDBaseDamageTypes = {
 	arouseTypes: ["grope", "charm", "happygas"],
 	distractionTypesWeakNeg: ["pain", "acid"],
-	distractionTypesWeak:[],
+	distractionTypesWeak:["soul"],
 	distractionTypesStrong:["tickle", "grope", "charm", "souldrain", "happygas"],
 	teaseTypes: ["grope", "charm"],
-	staminaTypesWeak:["drain", "stun", "fire", "glue", "chain", "tickle", "electric"],
+	staminaTypesWeak:["drain", "stun", "fire", "glue", "chain", "tickle", "electric", "soul"],
 	staminaTypesStrong:["ice", "frost", "poison", "crush", "souldrain"],
 	manaTypesWeak:["electric", "drain"],
 	manaTypesStrong:[],
-	willTypesVeryWeak:["tickle"],
+	willTypesVeryWeak:["tickle", "souldrain"],
 	willTypesWeak:["ice", "frost", "poison", "stun", "electric", "acid", "grope", "pierce", "slash", "crush", "unarmed", "glue", "chain"],
-	willTypesStrong:["cold", "fire", "souldrain", "charm", "pain"],
+	willTypesStrong:["cold", "fire", "charm", "soul", "pain"],
 };
 
 function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit) {

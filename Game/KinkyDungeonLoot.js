@@ -722,3 +722,8 @@ let KDTrapChestType = {
 		return {trap: "shadowTrap", mult: 2.5};
 	},
 };
+
+function KDTriggerLoot(Loot, Type) {
+	let lootobj = KinkyDungeonLootTable[Type].find((element) => {return element.name == Loot;});
+	console.log(KinkyDungeonLootEvent(lootobj, KinkyDungeonMapIndex, lootobj.message));
+}
