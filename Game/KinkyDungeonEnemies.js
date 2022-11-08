@@ -3065,10 +3065,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							if (!restraintblock || KDRandom() < restraintblock) {
 								let protection = 0;
 								let multiPower = restraintAdd.length;
+								let targetGroups = {};
+								for (let r of restraintAdd) {
+									targetGroups[r.Group] = true;
+								}
 								// Calculate power of an attack vs protection
 								let protectRestraints = KinkyDungeonAllRestraint().filter((r) => {return KDRestraint(r).protection > 0;});
 								for (let r of protectRestraints) {
-									if (r && KDRestraint(r).protection) {
+									if (r && KDRestraint(r).protection && (!KDRestraint(r).protectionCursed || targetGroups[KDRestraint(r).Group])) {
 										protection += KDRestraint(r).protection;
 									}
 								}

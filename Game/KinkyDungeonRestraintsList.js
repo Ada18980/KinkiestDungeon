@@ -1316,7 +1316,9 @@ const KinkyDungeonRestraints = [
 	//endregion
 ];
 
-KinkyDungeonCreateRestraint({
+let KDBasicCurses = ["Tickle"];
+
+KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "Breastplate",
 	Group: "ItemBreast",
 	Asset: "PolishedChastityBra",
@@ -1327,9 +1329,10 @@ KinkyDungeonCreateRestraint({
 		"Remove": 10
 	},
 	protection: 1,
-}, "Breastplate", "Rock-solid and form-fitting.", "Provides minor protection against enemy attacks.");
+}, "Breastplate", "Rock-solid and form-fitting.", "Provides minor protection against enemy attacks.")
+, [...KDBasicCurses]);
 
-KinkyDungeonCreateRestraint({
+KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "Bracers",
 	Group: "ItemArms",
 	Asset: "SteelCuffs",
@@ -1339,9 +1342,10 @@ KinkyDungeonCreateRestraint({
 		"Remove": 10
 	},
 	protection: 1,
-}, "Steel Bracers", "Dependable protection for the average adventurer.", "Provides minor protection against enemy attacks.");
+}, "Steel Bracers", "Dependable protection for the average adventurer.", "Provides minor protection against enemy attacks.")
+, [...KDBasicCurses]);
 
-KinkyDungeonCreateRestraint({
+KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "LeatherBoots",
 	Group: "ItemBoots",
 	Asset: "Boots1",
@@ -1353,7 +1357,8 @@ KinkyDungeonCreateRestraint({
 		"Remove": 10
 	},
 	protection: 1,
-}, "Adventuring Boots", "For stepping into all kinds of trouble!", "Provides minor protection against enemy attacks.");
+}, "Adventuring Boots", "For stepping into all kinds of trouble!", "Provides minor protection against enemy attacks.")
+, [...KDBasicCurses]);
 
 /**
  * @type {Record<string, KDLockType>}

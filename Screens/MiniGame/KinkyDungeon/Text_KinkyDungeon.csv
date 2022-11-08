@@ -3930,6 +3930,7 @@ KinkyDungeonSpellMiscast,You fail to concentrate on the spell and it fizzles!
 KinkyDungeonSpellMiscastGagged,Your gag causes you to mispronounce the magic words!
 KinkyDungeonIceDrain,The ice drains your concentration! Your mana and stamina are slipping away!
 KinkyDungeonCrystalDrain,"A strange, chaotic energy flows into you! Your will is weakened and your mana fades!"
+KinkyDungeonTickleDrain,"Something gently, constantly tickles you!"
 
 KinkyDungeonSpellShatterAmpule,The ampule shatters on impact!
 KinkyDungeonSpellShatterAmpuleGreen,The gas ampule shatters on impact!
@@ -5237,6 +5238,10 @@ KinkyDungeonLore-10,"(The note contains a magic spell you were taught never to c
 KinkyDungeonCurseInfo5Keys,"The item requires 5 keys and free hands to remove"
 KinkyDungeonCurseStruggle5Keys,"The item is extremely secure with five separate keyholes."
 KinkyDungeonCurseUnlock5Keys,"You insert your 5 keys into the lock and the item finally comes off."
+
+KinkyDungeonCurseInfoTickle,"The item is tickling you without end! You'll need a key to unlock it!"
+KinkyDungeonCurseStruggleTickle,"You tug on the item but it is magically sealed to your body!"
+KinkyDungeonCurseUnlockTickle,"You insert your magic key into the lock and the item finally comes off!"
 
 KinkyDungeonCurseInfoGhostLock,"The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it."
 KinkyDungeonCurseStruggleGhostLock,"Your fingers pass right through the collar. Pity your neck doesn't pass through it."

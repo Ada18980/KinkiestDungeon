@@ -278,6 +278,13 @@ let KDEventMapInventory = {
 				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrystalDrain"), "lightblue", 2);
 			}
 		},
+		"tickleDrain": (e, item, data) => {
+			if (!data.delta) return;
+			if (e.power) {
+				KinkyDungeonChangeDistraction(-e.power, false, 0.01);
+				KinkyDungeonSendTextMessage(0.5, TextGet("KinkyDungeonTickleDrain"), "lightblue", 2);
+			}
+		},
 		"barrelDebuff": (e, item, data) => {
 			if (!data.delta) return;
 			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Counterbarrel", type: "SlowDetection", duration: 1, power: -10, player: true, enemies: true, endSleep: true, tags: ["SlowDetection", "move", "cast"]});

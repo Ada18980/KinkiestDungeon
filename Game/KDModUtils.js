@@ -35,7 +35,7 @@ const defaultRestraint = {
 /**
  * Creates a restraint using a set of reasonable defaults and adds it to the list of restraints.
  *
- * @param {object} props
+ * @param {KDRestraintProps} props
  * A list of restraint props to be applied.  At minimum, the "name", "Group" and "Asset" props should be provided.
  *
  * @param {string} [displayName]
@@ -66,6 +66,47 @@ function KinkyDungeonCreateRestraint(props, displayName, flavorText, functionTex
 }
 
 /**
+ * @type {Record<string, Record<string, number>>}
+ */
+let KDCursedVariantsCreated = {
+};
+
+/**
+ * This function adds cursed variants to the restraint list
+ * @param {restraint} Restraint - The restraint to have extra variants added onto
+ * @param {string[]} Variants - Names of the cursed variants to apply. Must be from KDCursedVars
+ */
+function KinkyDungeonAddCursedVariants(Restraint, Variants) {
+	for (let v of Variants) {
+		if (KDCursedVars[v]) {
+			KinkyDungeonCloneRestraint(Restraint.name, Restraint.name+v, KDCursedVars[v].variant(Restraint, Restraint.name+v));
+			if (!KDCursedVariantsCreated[Restraint.name]) KDCursedVariantsCreated[Restraint.name] = {};
+			KDCursedVariantsCreated[Restraint.name][v] = KDCursedVars[v].level;
+		}
+	}
+}
+
+/**
+ * Gets a list of curses applied to the item
+ * @param {string} Restraint
+ * @param {boolean} [includeOrig] - includes thje original item
+ * @param {number} [minLevel] - for gating curse severity
+ * @param {number} [maxLevel] - for gating curse severity
+ * @returns {string[]}
+ */
+function KinkyDungeonGetCurses(Restraint, includeOrig, minLevel, maxLevel) {
+	if (KDCursedVariantsCreated[Restraint]) {
+		let keys = Object.keys(KDCursedVariantsCreated[Restraint]).filter((key) => {
+			return (!minLevel || KDCursedVariantsCreated[Restraint][key] >= minLevel)
+				&& (!maxLevel || KDCursedVariantsCreated[Restraint][key] < maxLevel);
+		}).map((element) => {return Restraint + element;});
+		if (includeOrig) keys.push(Restraint);
+		return keys;
+	}
+	return [];
+}
+
+/**
  * Creates a restraint using an existing restraint as a base and adds it to the list of restraints.
  *
  * @param {string} clonedName
@@ -90,6 +131,8 @@ function KinkyDungeonCloneRestraint(clonedName, newName, props) {
 		...cloneDeep(existingRestraint),
 		name: newName
 	});
+
+	Object.assign(newRestraint, props);
 
 	KinkyDungeonRestraints.push(newRestraint);
 
@@ -118,3 +161,20 @@ function KinkyDungeonAddRestraintText(name, displayName, flavorText, functionTex
 	addTextKey(`${baseKey}Desc`, flavorText);
 	addTextKey(`${baseKey}Desc2`, functionText);
 }
+
+/**
+ * Registers text for a named restraint.
+ *
+ * @param {string} restraint - The name of the restraint used by the system.
+ * @param {string} newRestraint - The name of the new restraint used by the system.
+ *
+ */
+function KinkyDungeonDupeRestraintText(restraint, newRestraint) {
+	const oldKey = `Restraint${restraint}`;
+	const baseKey = `Restraint${newRestraint}`;
+
+	addTextKey(baseKey, TextGetKD(oldKey));
+	addTextKey(`${baseKey}Desc`, TextGetKD(`${oldKey}Desc`));
+	addTextKey(`${baseKey}Desc2`, TextGetKD(`${oldKey}Desc2`));
+}
+

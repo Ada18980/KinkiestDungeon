@@ -2445,3 +2445,9 @@ function hashCode(s) {
 		h = Math.imul(31, h) + s.charCodeAt(i) | 0;
 	return h;
 }
+
+function TextGetKD(Text) {
+	if (TextGet(Text))
+		return TextGet(Text);
+	else return KDLoadingTextKeys[Text] || "Missing text";
+}

@@ -102,7 +102,20 @@ type KDHasTags = {
 	tags: any
 }
 
-type restraint = {
+interface KDRestraintProps {
+	inventory?: boolean,
+	power?: number,
+	weight?: number,
+	minLevel?: number,
+	allFloors?: boolean,
+
+	escapeChance?: any,
+
+	events?: KinkyDungeonEvent[],
+	enemyTags?: Record<string, number>,
+	playerTags?: Record<string, number>,
+	shrine?: string[],
+
 	/** Affinity type: Hook, Edge, or Sharp, Sticky, defaults are Hook (struggle), Sharp (Cut), Edge (Pick), Sticky (Unlock), and none (Pick)*/
 	affinity?: {
 		Struggle?: string[],
@@ -120,6 +133,10 @@ type restraint = {
 	 * Higher number means resistance to multibind
 	 */
 	protection?: number;
+	/**
+	 * This item only provides protection if its group is being targeted
+	 */
+	protectionCursed?: boolean;
 	/** Determines if the item appears in aroused mode only */
 	arousalMode?: boolean,
 	/** This item lets you access linked items under it */
@@ -149,28 +166,11 @@ type restraint = {
 	Asset: string,
 	/** Used for when the visual asset in BC is different from the actual group of the item*/
 	AssetGroup?: string,
-	Color: string[] | string,
-	/** Weight for the restraint to be selected */
-	weight: number,
-	/** Minimum floor for the restraint to be used by enemies */
-	minLevel: number,
+	Color?: string[] | string,
 	/** Maximum level, wont be used at this or higher. Inclusive. */
 	maxLevel?: number,
-	/** Relative power level. Used to determine if the restraint will get overridden by a more powerful one */
-	power: number,
-	/** Copied to the events variable */
-	events?: KinkyDungeonEvent[],
-	/** The item is present on all floors */
-	allFloors?: boolean,
 	/** Determines the floors the restraint can appear on */
 	floors?: Record<string, boolean>,
-	escapeChance: {
-		Struggle?: number,
-		Cut?: number,
-		Remove?: number,
-		Pick?: number,
-		Unlock?: number,
-	},
 	/** Overrides escapeChance when you have a ghost helping*/
 	helpChance?: {
 		Struggle?: number,
@@ -253,11 +253,6 @@ type restraint = {
 	crotchrope?: boolean,
 	/** The item provides distraction when you walk around*/
 	plugSize?: number,
-	/** Enemy tags that modify the weight */
-	enemyTags: any,
-	/** Player tags that modify the weight */
-	playerTags: any,
-	shrine: string[],
 	/** Binding arms hurts a lot of things but isn't as punishing as hands */
 	bindarms?: boolean,
 	/** Binding hands prevents use of weapons and picks */
@@ -289,8 +284,6 @@ type restraint = {
 	addTag?: string[],
 	OverridePriority?: number,
 	Modules?: number[],
-	/** The item is added to the inventory when you remove it yourself without cutting */
-	inventory?: boolean,
 	/** When added to the inventory, is added as a different item instead. Good for multiple stages of the same item, like cuffs */
 	inventoryAs?: string,
 	/** The item is always kept in your inventory no matter how it gets removed, so long as you don't cut it */
@@ -349,6 +342,20 @@ type restraint = {
 	enchanted?: boolean,
 	/** Faction color index */
 	factionColor?: number[][],
+};
+
+interface restraint extends KDRestraintProps {
+	power: number,
+	weight: number,
+	minLevel: number,
+
+	Color: string[] | string,
+
+	escapeChance: any,
+
+	enemyTags: Record<string, number>,
+	playerTags: Record<string, number>,
+	shrine: string[],
 }
 
 type outfitKey = string
@@ -1686,6 +1693,11 @@ interface KDBondage {
 	powerStruggleBoost: number,
 }
 
+interface KDCursedVar {
+	variant: (restraint: restraint, newRestraintName: string) => any,
+	level: number,
+}
+
+
 declare const PIXI: any;
 declare const zip: any;
-

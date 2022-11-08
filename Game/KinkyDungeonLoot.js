@@ -210,7 +210,9 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItem" + Loot.weapon));
 	}
 	else if (Loot.armor) {
-		KinkyDungeonInventoryAddLoose(Loot.armor);
+		let armor = Loot.armor;
+		if (Loot.curses) armor = CommonRandomItemFromList("", Loot.curses);
+		KinkyDungeonInventoryAddLoose(armor);
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + Loot.armor));
 	}

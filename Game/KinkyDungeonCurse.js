@@ -26,8 +26,35 @@ let KDCurses = {
 			KinkyDungeonRedKeys -= 5;
 		}
 	},
+	"Tickle" : {
+		condition: (item) => {
+			return KinkyDungeonRedKeys >= 1;
+		},
+		remove: (item, host) => {
+			KinkyDungeonRedKeys -= 1;
+		}
+	},
 };
 
+/** Cursed variants of restraints
+ * @type {Record<string, KDCursedVar>}
+ */
+let KDCursedVars = {
+	"Tickle": {
+		level: 1,
+		variant: (restraint, newRestraintName) => {
+			KinkyDungeonDupeRestraintText(restraint.name, newRestraintName);
+			let events = Object.assign([
+				{trigger: "tick", type: "tickleDrain", power: -0.02, inheritLinked: true}
+			], restraint.events);
+			return {
+				protectionCursed: true,
+				events: events,
+				curse: "Tickle",
+			};
+		}
+	}
+};
 
 function KinkyDungeonCurseInfo(item, Curse) {
 	if (Curse == "MistressKey" && KinkyDungeonItemCount("MistressKey")) {
@@ -85,3 +112,4 @@ function KinkyDungeonCurseUnlock(group, index, Curse) {
 		}
 	}
 }
+
