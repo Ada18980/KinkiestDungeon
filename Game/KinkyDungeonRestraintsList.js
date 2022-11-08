@@ -1331,7 +1331,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 1,
 	events: [
 		{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
-		{trigger: "tick", type: "sneakBuff", power: -0.25, inheritLinked: true},
+		{trigger: "tick", type: "sneakBuff", power: -0.15, inheritLinked: true},
 	],
 }, "Breastplate", "Rock-solid and form-fitting.", "Provides minor protection against enemy attacks. Decreases stealth.")
 , [...KDBasicCurses]);
@@ -1365,9 +1365,9 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	OverridePriority: 27,
 	showInQuickInv: true,
 	escapeChance: {
-		"Struggle": 0.1,
+		"Struggle": -0.1,
 		"Cut": -0.35,
-		"Remove": 0.1,
+		"Remove": 0.05,
 	},
 	protection: 2,
 	strictness: 0.25,
@@ -1376,7 +1376,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "restraintBlock", power: 2, inheritLinked: true},
 		{trigger: "tick", type: "evasionBuff", power: -0.5, inheritLinked: true},
 	],
-}, "Chainmail Tank Top", "Cumbersome, but ", "Provides +10 armor and protection against enemy attacks. Decreases evasion and makes struggling harder.")
+}, "Chainmail Tank Top", "Cumbersome, but effective!", "Provides +10 armor and protection against enemy attacks. Decreases evasion and makes struggling harder.")
 , [...KDBasicCurses]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
@@ -1445,7 +1445,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	events: [
 		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
 		{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
-		{trigger: "tick", type: "sneakBuff", power: -0.25, inheritLinked: true},
+		{trigger: "tick", type: "sneakBuff", power: -0.35, inheritLinked: true},
 	],
 }, "Armored Boots", "Noisy, but fashionable!", "Provides +5 armor and protection against enemy attacks. Decreases stealth.")
 , [...KDBasicCurses]);
