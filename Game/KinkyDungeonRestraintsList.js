@@ -1417,11 +1417,10 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Remove": 0.25,
 	},
 	protection: 1,
-	protectionCursed: true,
 	events: [
-		{trigger: "perksBonus", type: "spellDamage", power: 0.25, inheritLinked: true},
+		{trigger: "perksBonus", type: "spellDamage", power: 0.3, inheritLinked: true},
 	],
-}, "Wizard's Robe", "I have the power!", "+25% spell damage.")
+}, "Wizard's Robe", "I have the power!", "+30% spell damage.")
 , [...KDBasicCurses]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
