@@ -1323,6 +1323,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Group: "ItemBreast",
 	Asset: "PolishedChastityBra",
 	OverridePriority: 27,
+	showInQuickInv: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": -0.5,
@@ -1336,6 +1337,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "Bracers",
 	Group: "ItemArms",
 	Asset: "SteelCuffs",
+	showInQuickInv: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": -0.5,
@@ -1351,6 +1353,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Asset: "Boots1",
 	AssetGroup: "Shoes",
 	Color: ["#444444", "#222222"],
+	showInQuickInv: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": 0.1,

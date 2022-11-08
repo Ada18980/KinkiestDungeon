@@ -295,6 +295,7 @@ interface KDRestraintProps {
 	/** Can be linked by items with this shrine category */
 	LinkableBy?: string[],
 	DefaultLock?: string,
+	HideDefaultLock?: boolean,
 	Link?: string,
 	UnLink?: string,
 	/** Removes when the player is leashed */

@@ -118,6 +118,12 @@ let KDEventMapInventory = {
 			}
 		},
 	},
+	"drawSGTooltip": {
+		"curseInfo": (e, item, data) => {
+			data.extraLines.push(TextGet("curseInfo" + e.msg));
+			data.extraLineColor.push(e.color);
+		},
+	},
 	"tick": {
 		"ShadowHandTether": (e, item, data) => {
 			let enemy = (item.tx && item.ty) ? KinkyDungeonEnemyAt(item.tx, item.ty) : undefined;

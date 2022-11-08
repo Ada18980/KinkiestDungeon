@@ -2491,7 +2491,7 @@ KinkyDungeonCategoryFilterconsumable,Consumable
 KinkyDungeonCategoryFilterrestraint,Equipped
 KinkyDungeonCategoryFilterweapon,Weapons
 KinkyDungeonCategoryFilteroutfit,Outfits
-KinkyDungeonCategoryFilterlooserestraint,Restraints
+KinkyDungeonCategoryFilterlooserestraint,Wearable
 KinkyDungeonCategoryFiltermisc,Miscellaneous
 
 KDNoisyTerrain,The terrain makes noise as you rush across it...
@@ -5239,9 +5239,11 @@ KinkyDungeonCurseInfo5Keys,"The item requires 5 keys and free hands to remove"
 KinkyDungeonCurseStruggle5Keys,"The item is extremely secure with five separate keyholes."
 KinkyDungeonCurseUnlock5Keys,"You insert your 5 keys into the lock and the item finally comes off."
 
-KinkyDungeonCurseInfoTickle,"The item is tickling you without end! You'll need a key to unlock it!"
-KinkyDungeonCurseStruggleTickle,"You tug on the item but it is magically sealed to your body!"
-KinkyDungeonCurseUnlockTickle,"You insert your magic key into the lock and the item finally comes off!"
+curseInfoTickle,"This item is tickling you without end!"
+
+KinkyDungeonCurseInfoKey,"The item is sealed with a locking spell! You will need a key to dispel the magic."
+KinkyDungeonCurseStruggleKey,"You tug on the item but it is magically sealed to your body!"
+KinkyDungeonCurseUnlockKey,"You insert your magic key into the lock and the item finally comes off!"
 
 KinkyDungeonCurseInfoGhostLock,"The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it."
 KinkyDungeonCurseStruggleGhostLock,"Your fingers pass right through the collar. Pity your neck doesn't pass through it."

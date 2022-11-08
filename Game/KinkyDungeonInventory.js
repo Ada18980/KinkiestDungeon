@@ -115,7 +115,7 @@ function KinkyDungeonHandleInventory() {
 				}
 			}
 			if (!equipped && newItem) {
-				if (KDSendInput("equip", {name: newItem.name, group: newItem.Group, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], filteredInventory[KinkyDungeonCurrentPageInventory].item.events)})) return true;
+				if (KDSendInput("equip", {name: newItem.name, group: newItem.Group, curse: filteredInventory[KinkyDungeonCurrentPageInventory].item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], filteredInventory[KinkyDungeonCurrentPageInventory].item.events)})) return true;
 
 			}
 		}
@@ -130,9 +130,12 @@ function KinkyDungeonInventoryAddWeapon(Name) {
 		KinkyDungeonInventoryAdd({name:Name, type:Weapon, events: Object.assign([], KinkyDungeonWeapons[Name].events)});
 }
 
-function KinkyDungeonInventoryAddLoose(Name) {
-	if (!KinkyDungeonInventoryGetLoose(Name) && KinkyDungeonGetRestraintByName(Name))
-		KinkyDungeonInventoryAdd({name: Name, type: LooseRestraint, events:KDRestraint(KinkyDungeonGetRestraintByName(Name)).events, quantity: 1});
+function KinkyDungeonInventoryAddLoose(Name, UnlockCurse) {
+	if (!KinkyDungeonInventoryGetLoose(Name) || UnlockCurse)
+		KinkyDungeonInventoryAdd({name: Name, type: LooseRestraint, curse: UnlockCurse, events:KDRestraint(KinkyDungeonGetRestraintByName(Name)).events, quantity: 1});
+	else {
+		KinkyDungeonInventoryGetLoose(Name).quantity += 1;
+	}
 }
 
 function KinkyDungeonInventoryAddOutfit(Name) {
@@ -401,7 +404,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover) {
 			DrawTextKD(TextGet("KinkyDungeonRestraintLevel").replace("RestraintLevel", "" + Math.max(1, restraint.power)).replace("Rarity", TextGet("KinkyDungeonRarity" + Math.max(0, Math.min(Math.floor(restraint.power/3),10)))), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 330, "#000000", KDTextTan);
 			DrawTextKD(
 			restraint.escapeChance ? (item.item.lock ? (TextGet("KinkyLocked") + " " + TextGet("Kinky" + item.item.lock + "LockType")) :
-				(restraint.DefaultLock ? (TextGet("KinkyLocked") + " " + TextGet("Kinky" + restraint.DefaultLock + "LockType")) : TextGet("KinkyUnlocked")))
+				(restraint.DefaultLock && !restraint.HideDefaultLock ? (TextGet("KinkyLocked") + " " + TextGet("Kinky" + restraint.DefaultLock + "LockType")) : TextGet("KinkyUnlocked")))
 			: (restraint.escapeChance.Pick != null ? TextGet("KinkyLockable") : TextGet("KinkyNonLockable")), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 370, "#000000", KDTextTan);
 
 			let goddesses = "";
@@ -837,7 +840,7 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 						}
 					}
 					if (!equipped && newItem) {
-						if (KDSendInput("equip", {name: newItem.name, group: newItem.Group, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.item.events)})) return true;
+						if (KDSendInput("equip", {name: newItem.name, group: newItem.Group, curse: item.item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.item.events)})) return true;
 					}
 				}
 

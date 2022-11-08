@@ -26,7 +26,7 @@ let KDCurses = {
 			KinkyDungeonRedKeys -= 5;
 		}
 	},
-	"Tickle" : {
+	"Key" : {
 		condition: (item) => {
 			return KinkyDungeonRedKeys >= 1;
 		},
@@ -44,17 +44,29 @@ let KDCursedVars = {
 		level: 1,
 		variant: (restraint, newRestraintName) => {
 			KinkyDungeonDupeRestraintText(restraint.name, newRestraintName);
+			/** @type {KinkyDungeonEvent[]} */
 			let events = Object.assign([
-				{trigger: "tick", type: "tickleDrain", power: -0.02, inheritLinked: true}
+				{trigger: "tick", type: "tickleDrain", power: -0.02, inheritLinked: true},
+				{trigger: "drawSGTooltip", type: "curseInfo", msg: "Tickle", color: "#ff5555", inheritLinked: true}
 			], restraint.events);
+			let escapeChance = {
+				Struggle: Math.min(restraint.escapeChance.Struggle, 0-.2),
+				Cut: Math.min(restraint.escapeChance.Cut || 1.0, -0.1),
+				Pick: Math.min(restraint.escapeChance.Pick || 1.0, 0.1),
+			}
 			return {
 				protectionCursed: true,
+				escapeChance: escapeChance,
+				DefaultLock: "Purple",
+				HideDefaultLock: true,
+				magic: true,
 				events: events,
-				curse: "Tickle",
 			};
 		}
 	}
 };
+
+let KDBasicCurseUnlock = ["Key"];
 
 function KinkyDungeonCurseInfo(item, Curse) {
 	if (Curse == "MistressKey" && KinkyDungeonItemCount("MistressKey")) {

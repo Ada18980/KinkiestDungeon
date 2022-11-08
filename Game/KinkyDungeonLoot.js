@@ -211,8 +211,10 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	}
 	else if (Loot.armor) {
 		let armor = Loot.armor;
+		let unlockcurse = undefined;
 		if (Loot.curses) armor = CommonRandomItemFromList("", Loot.curses);
-		KinkyDungeonInventoryAddLoose(armor);
+		if (Loot.unlockcurse) unlockcurse = CommonRandomItemFromList("", Loot.unlockcurse);
+		KinkyDungeonInventoryAddLoose(armor, unlockcurse);
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + Loot.armor));
 	}
