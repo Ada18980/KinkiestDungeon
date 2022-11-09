@@ -545,6 +545,7 @@ const KinkyDungeonRestraints = [
 	// Display trap
 	{removePrison: true, name: "DisplayTrap", Asset: "TheDisplayFrame", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
 		DefaultLock: "Red",
+		bindarms: true,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.8, "Remove": 0.35, "Pick": 0.25, "Unlock": 0.5},
 		helpChance: {"Remove": 0.15, "Pick": 0.25, "Unlock": 0.5},
 		removeShrine: ["Hogties"],
