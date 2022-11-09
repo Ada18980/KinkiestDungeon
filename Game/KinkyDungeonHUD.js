@@ -530,20 +530,20 @@ function KinkyDungeonDrawInputs() {
 		};
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerVibrated" + Math.max(0, Math.min(Math.floor(KinkyDungeonVibeLevel), 5))) + suff, X3, 900 - i * 35, 260, "#ff8888", "#333333"); i++;
 	}
-	if (KDGameData.OrgasmTurns > KinkyDungeonOrgasmTurnsCrave) {
-		statsDraw.sex = {
-			text: TextGet("KinkyDungeonPlayerEdged"),
-			icon: "Edged",
-			category: "kinky", color: "#ff0000", bgcolor: "#333333", priority: 7,
-		};
-		//DrawTextFitKD(TextGet("KinkyDungeonPlayerEdged"), X3, 900 - i * 35, 260, "#ff0000", "#333333"); i++;
-	} else if (KDGameData.OrgasmStamina > 0) {
+	if (KDGameData.OrgasmStamina > 0) {
 		statsDraw.sex = {
 			text: TextGet("KinkyDungeonPlayerStatisfied"),
 			icon: "Satisfied",
 			category: "kinky", color: "#ff88aa", bgcolor: "#333333", priority: 7,
 		};
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerStatisfied"), X3, 900 - i * 35, 260, "#ff8888", "#333333"); i++;
+	} else if (KDGameData.OrgasmTurns > KinkyDungeonOrgasmTurnsCrave) {
+		statsDraw.sex = {
+			text: TextGet("KinkyDungeonPlayerEdged"),
+			icon: "Edged",
+			category: "kinky", color: "#ff0000", bgcolor: "#333333", priority: 7,
+		};
+		//DrawTextFitKD(TextGet("KinkyDungeonPlayerEdged"), X3, 900 - i * 35, 260, "#ff0000", "#333333"); i++;
 	}
 	if (KDGameData.CurrentVibration  && KDGameData.CurrentVibration.denyTimeLeft > 0) {
 		statsDraw.deny = {

@@ -3174,6 +3174,17 @@ let KDEventMapGeneric = {
 			}
 		},
 	},
+	"playerCast": {
+		"DistractionCast": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("DistractionCast")) {
+				if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.99) {
+					let tb = KinkyDungeonGetManaCost(data.spell) * 0.25;
+					KinkyDungeonTeaseLevelBypass += tb;
+					KDGameData.OrgasmStage = Math.max((KDGameData.OrgasmStage + Math.ceil(tb)) || tb, KinkyDungeonMaxOrgasmStage);
+				}
+			}
+		}
+	},
 	"beforeDamage": {
 		"LeastResistance": (e, data) => {
 			if (KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.01 && KinkyDungeonStatsChoice.has("LeastResistance")) {

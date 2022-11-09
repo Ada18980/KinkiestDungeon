@@ -1164,6 +1164,7 @@ Features
 
 3.82
 - Added a few pieces of armor
+- New perk: Mana Burst
 
 
 TODO ValidationFindBlockCycles to prevent bugs

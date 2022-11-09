@@ -504,10 +504,10 @@ function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets) {
 		KinkyDungeonPlayerEntity.y = moveY;
 	}
 	KinkyDungeonSendEvent("playerMove", {
-		cancelmove: cancel.cancelmove,
-		returnvalue: cancel.returnvalue,
-		willing: willing,
-		sprint: sprint,
+		cancelmove: cancel.cancelmove, // If true, cancels the move
+		returnvalue: cancel.returnvalue, // Returns this
+		willing: willing, // True if the player triggers it, false if yoinked by tether
+		sprint: sprint, // True if faster than usual
 		lastX: KinkyDungeonPlayerEntity.lastx,
 		lastY: KinkyDungeonPlayerEntity.lasty,
 		moveX: moveX,

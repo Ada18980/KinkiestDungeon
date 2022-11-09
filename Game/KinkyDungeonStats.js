@@ -35,6 +35,7 @@ let KinkyDungeonStatDistractionMiscastChance = 0.7; // Miscast chance at max dis
 let KinkyDungeonMiscastChance = 0;
 let KinkyDungeonVibeLevel = 0;
 let KinkyDungeonTeaseLevel = 0;
+let KinkyDungeonTeaseLevelBypass = 0;
 let KinkyDungeonOrgasmVibeLevel = 0;
 let KinkyDungeonDistractionPerVibe = 0.05; // How much distraction per turn per vibe energy cost
 let KinkyDungeonDistractionPerPlug = 0.1; // How much distraction per move per plug level
@@ -333,6 +334,7 @@ function KinkyDungeonInterruptSleep() {
 
 let KDBaseDamageTypes = {
 	arouseTypes: ["grope", "charm", "happygas"],
+	bypassTeaseTypes: ["charm", "happygas"],
 	distractionTypesWeakNeg: ["pain", "acid"],
 	distractionTypesWeak:["soul"],
 	distractionTypesStrong:["tickle", "grope", "charm", "souldrain", "happygas"],
@@ -369,6 +371,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit) {
 		arouseAmount: 0,
 		arouseMod: 1,
 		arouseTypes: Object.assign([], KDBaseDamageTypes.arouseTypes),
+		bypassTeaseTypes: Object.assign([], KDBaseDamageTypes.bypassTeaseTypes),
 		distractionTypesWeakNeg: Object.assign([], KDBaseDamageTypes.distractionTypesWeakNeg),
 		teaseTypes: Object.assign([], KDBaseDamageTypes.teaseTypes),
 		distractionTypesWeak: Object.assign([], KDBaseDamageTypes.distractionTypesWeak),
@@ -433,7 +436,11 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit) {
 
 	if (data.teaseTypes.includes(data.type)) {
 		let amt = data.dmg;
-		KinkyDungeonTeaseLevel += amt;
+		if (data.bypassTeaseTypes.includes(data.type)) {
+			KinkyDungeonTeaseLevelBypass += amt;
+		} else {
+			KinkyDungeonTeaseLevel += amt;
+		}
 	}
 
 	if (data.distractionTypesWeak.includes(data.type)) {
@@ -797,7 +804,7 @@ function KinkyDungeonUpdateStats(delta) {
 	}
 	KinkyDungeonDifficulty = KinkyDungeonNewGame * 20;
 	if (KinkyDungeonStatsChoice.get("hardMode")) KinkyDungeonDifficulty += 10;
-	KinkyDungeonTeaseLevel = KinkyDungeonTeaseLevel * KinkyDungeonChastityMult();
+	KinkyDungeonTeaseLevel = Math.max(KinkyDungeonTeaseLevel * (1 - KinkyDungeonChastityMult()) + (delta > 0 ? KinkyDungeonTeaseLevelBypass : 0), 0);
 	if (KinkyDungeonVibeLevel > 0 || KinkyDungeonTeaseLevel > 0) {
 		KDGameData.OrgasmNextStageTimer = Math.min(KDOrgasmStageTimerMax, KDGameData.OrgasmNextStageTimer + delta);
 		let Chance = (KDGameData.OrgasmStage >= KinkyDungeonMaxOrgasmStage) ? 1.0 : (KDOrgasmStageTimerMaxChance + (1 - KinkyDungeonStatWill/KinkyDungeonStatWillMax) * KinkyDungeonStatDistractionLower / KinkyDungeonStatDistractionMax);
@@ -806,6 +813,8 @@ function KinkyDungeonUpdateStats(delta) {
 				if (KinkyDungeonCanPlayWithSelf() && !KinkyDungeonInDanger()) {
 					KinkyDungeonDoPlayWithSelf(KinkyDungeonTeaseLevel);
 					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonPlaySelfAutomatic" + (KinkyDungeonIsArmsBound() ? "Bound" : "")), "#FF5BE9", 5);
+				} else {
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPlaySelfTease"), "#FF5BE9", 2);
 				}
 				KDGameData.OrgasmStage += 1;
 				KDGameData.OrgasmNextStageTimer = 1;
@@ -905,7 +914,8 @@ function KinkyDungeonUpdateStats(delta) {
 		let EdgeDrainAmount = KinkyDungeonStatDistractionLower < KinkyDungeonStatDistractionLowerCap ? KinkyDungeonOrgasmExhaustionAmountWillful : KinkyDungeonOrgasmExhaustionAmount;
 		KinkyDungeonChangeWill(EdgeDrainAmount);
 		let vibe = KinkyDungeonVibeLevel > 0 ? "Vibe" : "";
-		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonOrgasmExhaustion" + vibe), "#ff0000", 2, false, true);
+		let suff = KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage ? (KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage / 2 ? "0" : "1") : "2";
+		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonOrgasmExhaustion" + vibe + suff), "#ff0000", 2, false, true);
 	}
 
 	KinkyDungeonStatBlind = Math.max(0, KinkyDungeonStatBlind - delta);
@@ -966,6 +976,7 @@ function KinkyDungeonUpdateStats(delta) {
 
 	if (delta > 0) {
 		KinkyDungeonTeaseLevel = 0;
+		KinkyDungeonTeaseLevelBypass = 0;
 	}
 
 	if (KinkyDungeonSlowLevel > 9) KDGameData.CagedTime = (KDGameData.CagedTime || 0) + delta;
@@ -998,6 +1009,7 @@ function KinkyDungeonCalculateMiscastChance() {
 		flags.miscastChance = Math.min(flags.miscastChance * 2, 1);
 	}
 	if (KinkyDungeonStatsChoice.get("Distracted")) flags.miscastChance += KDDistractedAmount;
+	if (KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax > 0.99 && KinkyDungeonStatsChoice.get("DistractionCast")) flags.miscastChance -= 1.0;
 	KinkyDungeonSendEvent("calcMiscast", {flags: flags});
 	KinkyDungeonMiscastChance = flags.miscastChance;
 }

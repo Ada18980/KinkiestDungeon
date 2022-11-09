@@ -29,6 +29,7 @@ let KDPerkIcons = {
 	"GroundedInReality" : () => {return KinkyDungeonPlayerDamage && KinkyDungeonStatMana >= KinkyDungeonStatManaMax * 0.999;},
 	"LikeTheWind" : () => {return KinkyDungeonStatStamina >= KinkyDungeonStatStaminaMax * 0.95;},
 	"LeastResistance" : () => {return KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.01;},
+	"DistractionCast" : () => {return KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99;},
 };
 
 let KDPerkUpdateStats = {
@@ -198,7 +199,8 @@ let KinkyDungeonStatsPresets = {
 	"Cursed": {category: "Enemies", id: 9, cost: -3},
 	"Studious": {category: "Magic", id: 12, cost: 1, tags: ["start"]},
 	//"Novice": {category: "Magic", id: 7, cost: -1},
-	"Meditation": {category: "Magic", id: 13, cost: 2},
+	//"Meditation": {category: "Magic", id: 13, cost: 2},
+	"DistractionCast":  {category: "Magic", id: "DistractionCast", cost: 2},
 	//"QuickScribe": {category: "Magic", id: 56, cost: 1, block: ["Disorganized"]},
 	"BerserkerRage": {category: "Combat", id: "BerserkerRage", cost: 3},
 	"UnstableMagic": {category: "Magic", id: "UnstableMagic", cost: 2},

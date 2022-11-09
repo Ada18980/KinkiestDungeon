@@ -363,6 +363,9 @@ KinkyDungeonStatStartObsidian,"Iron Slave"
 KinkyDungeonStatDescStartObsidian,"Start in a full set of magically locked obsidian cuffs."
 
 
+KinkyDungeonStatDistractionCast,"Mana Burst"
+KinkyDungeonStatDescDistractionCast,"While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge."
+
 
 KinkyDungeonCopyPerks,Copy to Clipboard
 
@@ -5488,12 +5491,17 @@ KinkyDungeonPlaySelf,"You play with yourself..."
 KinkyDungeonPlaySelfAutomatic,"You let your hands wander for a moment..."
 KinkyDungeonPlaySelfAutomaticBound,"You squirm your hips and whimper in your bindings..."
 KinkyDungeonPlaySelfAutomaticPurity,"Your instincts are getting the better of you..."
-KinkyDungeonOrgasmAutomatic,"Your body moves of its own accord..."
+KinkyDungeonPlaySelfTease,"Your body shudders briefly from pleasure..."
+KinkyDungeonOrgasmAutomatic,"You are unable to control yourself."
 KinkyDungeonPlaySelfVibeWand,"You play with yourself using the magic wand..."
 KinkyDungeonPlaySelfPurity,"You would never do such a thing."
 KinkyDungeonPlaySelfBound,"You try to rub your erogenous zones by squirming your legs..."
-KinkyDungeonOrgasmExhaustion,"Your will is draining as you crave release, but can't quite get there without help..."
-KinkyDungeonOrgasmExhaustionVibe,"Your will is draining as you crave release, and the toys continue to vibrate..."
+KinkyDungeonOrgasmExhaustion0,"Your will is draining as you crave release, but can't quite get there without help..."
+KinkyDungeonOrgasmExhaustion1,"Your will is draining as your heart beats faster and your body trembles..."
+KinkyDungeonOrgasmExhaustion2,"Your will is draining as you simmer just under the edge..."
+KinkyDungeonOrgasmExhaustionVibe0,"Your will is draining as you crave release, and the toys continue to vibrate..."
+KinkyDungeonOrgasmExhaustionVibe1,"Your will is draining as the toys continue buzzing..."
+KinkyDungeonOrgasmExhaustionVibe2,"Your will is draining as you are tormented by vibrations..."
 
 KinkyDungeonSleepDeprivation,"A buzzing vibration wakes you up!"
 
