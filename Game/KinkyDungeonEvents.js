@@ -830,11 +830,14 @@ let KDEventMapInventory = {
 			}
 		},
 		"armorNoise": (e, item, data) => {
-			if (item.type === Restraint && data.targetX && data.targetY && data.enemy) {
+			if (item.type === Restraint && data.targetX && data.targetY && data.enemy && !data.armorNoise) {
 				if (!e.chance || KDRandom() < e.chance ) {
 					KinkyDungeonMakeNoise(e.dist, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", 5);
+					data.armorNoise = true;
 				}
 			}
 		},
@@ -911,11 +914,14 @@ let KDEventMapInventory = {
 			}
 		},
 		"armorNoise": (e, item, data) => {
-			if (data.spell && item.type === Restraint && (!e.punishComponent || (data.spell.components && data.spell.components.includes(e.punishComponent)))) {
+			if (data.spell && item.type === Restraint && (!e.punishComponent || (data.spell.components && data.spell.components.includes(e.punishComponent))) && !data.armorNoise) {
 				if (!e.chance || KDRandom() < e.chance ) {
 					KinkyDungeonMakeNoise(e.dist, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", 5);
+					data.armorNoise = true;
 				}
 			}
 		},

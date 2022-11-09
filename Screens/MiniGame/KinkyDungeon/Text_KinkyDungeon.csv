@@ -8187,3 +8187,5 @@ KDShoutHelp0,You call for help!
 KDShoutHelp1,You let out a garbled cry!
 KDShoutHelp2,Your screams are muffled by your gag!
 KDShoutHelp3,You can hardly make a noise...
+
+KDArmorNoise,"*clink*"
