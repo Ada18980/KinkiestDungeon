@@ -702,7 +702,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "Flash", color: "#ffffff", prerequisite: "ApprenticeLight", tags: ["light", "utility", "aoe", "offense"], noise: 8, sfx: "FireSpell",
 			hitColor: 0xffffff, hitLight: 6,
 			school: "Illusion", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 4, delay: 1, power: 1, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 4}},
-		{name: "Ring", prerequisite: "ApprenticeLight", tags: ["aoe", "utility", "stealth"], noise: 10, sfx: "MagicSlash", school: "Illusion", manacost: 1, components: ["Arms"], level:2, type:"inert", onhit:"aoe", time: 2, delay: 1, power: 1, range: 7, size: 3, aoe: 1.5, lifetime: 1, damage: "stun"},
+		{name: "Ring", prerequisite: "ApprenticeLight", tags: ["aoe", "utility", "stealth"], noise: 10, sfx: "MagicSlash", school: "Illusion", manacost: 1, components: ["Arms"], level:1, type:"inert", onhit:"aoe", time: 2, delay: 1, power: 1, range: 7, size: 3, aoe: 1.5, lifetime: 1, damage: "stun"},
 		{name: "GreaterFlash", color: "#ffffff", tags: ["light", "utility", "aoe", "offense"], prerequisite: "Flash", spellPointCost: 1,
 			upcastFrom: "Flash", upcastLevel: 1,
 			hitColor: 0xffffff, hitLight: 8,
