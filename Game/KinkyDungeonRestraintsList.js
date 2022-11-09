@@ -1419,8 +1419,9 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 1,
 	events: [
 		{trigger: "perksBonus", type: "spellDamage", power: 0.3, inheritLinked: true},
+		{trigger: "tick", type: "spellWardBuff", power: 1, inheritLinked: true},
 	],
-}, "Wizard's Robe", "I have the power!", "+30% spell damage.")
+}, "Wizard's Robe", "I have the power!", "+30% spell damage and +10 spell ward")
 , [...KDBasicCurses]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({

@@ -133,6 +133,9 @@ let KDEventMapInventory = {
 		"armorBuff": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Armor", type: "Armor", power: e.power, duration: 2,});
 		},
+		"spellWardBuff": (e, item, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "SpellResist", type: "SpellResist", power: e.power, duration: 2,});
+		},
 		"sneakBuff": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Sneak", type: "SlowDetection", power: e.power, duration: 2,});
 		},
@@ -824,8 +827,11 @@ let KDEventMapInventory = {
 						KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
-					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+					if (!data.cursePunish) {
+						KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+						if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+					}
+					data.cursePunish = true;
 				}
 			}
 		},
@@ -908,8 +914,11 @@ let KDEventMapInventory = {
 						KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
-					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+					if (!data.cursePunish) {
+						KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+						if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+					}
+					data.cursePunish = true;
 				}
 			}
 		},
