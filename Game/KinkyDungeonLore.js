@@ -20,7 +20,7 @@ let KinkyDungeonCheckpointLore = {
 	/*1*/ "cat": [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 9,],
 	/*2*/ "jng": [201, 202, 203, 204, 205],
 
-	/*11*/ "tmb": [9, 1100, 1101, 1102, 1103, 1104],
+	/*11*/ "tmb": [9, 1100, 1101, 1102, 1103, 1104, 1105, 1106, 1107, 1108, 1109, 1110, 1111],
 
 };
 let KinkyDungeonLoreScale = 1.5;
@@ -110,7 +110,11 @@ function KinkyDungeonDrawLore() {
 	MainCanvas.textAlign = "left";
 
 	let wrapAmount = TranslationLanguage == 'CN' ? 19 : 45;
-	let lore = KinkyDungeonWordWrap(TextGet("KinkyDungeonLore" + KinkyDungeonCurrentLore), wrapAmount).split('\n');
+	let loreOrig = TextGet("KinkyDungeonLore" + KinkyDungeonCurrentLore).split('|');
+	let lore = [];
+	for (let str of loreOrig) {
+		lore.push(...(KinkyDungeonWordWrap(str, wrapAmount).split('\n')));
+	}
 	let i = 0;
 	for (let N = 0; N < lore.length; N++) {
 		DrawTextFitKD(lore[N],

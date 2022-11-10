@@ -1166,6 +1166,7 @@ Features
 - Added a few pieces of armor
 - New perk: Mana Burst
 - New enemy: Cursed One
+- Added additional lore to the ancient tombs
 
 
 TODO ValidationFindBlockCycles to prevent bugs
