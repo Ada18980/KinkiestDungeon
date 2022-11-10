@@ -364,6 +364,8 @@ type outfitKey = string
 type mapKey = string
 
 interface floorParams {
+	/** This code is run after a worldgen */
+	worldGenCode?: () => void;
 	tagModifiers?: Record<string, number>;
 	globalTags?: Record<string, boolean>;
 	shadowColor?: number,

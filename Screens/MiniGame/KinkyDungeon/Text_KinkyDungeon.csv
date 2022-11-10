@@ -1636,6 +1636,11 @@ KillMummy,"The Mummy collapses and her body vanishes."
 AttackMummyBind,"The Mummy conjures a mystic wrapping! (+RestraintAdded)"
 AttackMummy,"The Mummy punishes you with a blow from her staff! (DamageTaken)"
 
+NameMummyCursed,Cursed One
+KillMummyCursed,"The Cursed One is drawn into an eldritch portal."
+AttackMummyCursedBind,"The Cursed One's bindings transfer to you! (+RestraintAdded)"
+AttackMummyCursed,"The Cursed One's bindings emit a strange aura... (DamageTaken)"
+
 NameMeleeCleric,Bast Warrior
 KillMeleeCleric,"The Bast Warrior collapses and meows loudly."
 AttackMeleeClericBind,"The Bast Warrior restrains you! (+RestraintAdded)"

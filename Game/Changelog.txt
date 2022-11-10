@@ -1165,6 +1165,7 @@ Features
 3.82
 - Added a few pieces of armor
 - New perk: Mana Burst
+- New enemy: Cursed One
 
 
 TODO ValidationFindBlockCycles to prevent bugs

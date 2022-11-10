@@ -365,6 +365,17 @@ const KinkyDungeonMapParams = {
 		torchchance: 0.1,
 		torchchanceboring: 0.1,
 
+		worldGenCode: () => {
+			for (let X = 1; X < KinkyDungeonGridWidth - 1; X++) {
+				for (let Y = 1; Y < KinkyDungeonGridHeight - 1; Y++) {
+					if (KinkyDungeonMapGet(X, Y) == 'X' && KDRandom() < 0.15 + 0.45 * Math.min(1, KinkyDungeonDifficulty/30)) {
+						KinkyDungeonMapSet(X, Y, '3');
+						DialogueCreateEnemy(X, Y, "MummyCursed");
+					}
+				}
+			}
+		},
+
 		"setpieces": [
 			{Type: "Altar", Weight: 6},
 			{Type: "SmallAltar", Weight: 20},
