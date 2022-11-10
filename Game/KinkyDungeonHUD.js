@@ -170,6 +170,8 @@ let KDBuffSprites = {
 	"AvatarEarth": true,
 	"AvatarAir": true,
 
+	"DistractionCast": true,
+
 	//KinkyDungeonBuffShrineElements,"Arcane Power: Deals bonus damage when you hit an enemy."
 	//KinkyDungeonBuffShrineConjure,"Arcane Protection: Reduces damage taken, and deals retaliation damage."
 	//KinkyDungeonBuffShrineIllusion,"Arcane Cunning: You turn invisible briefly after attacking."

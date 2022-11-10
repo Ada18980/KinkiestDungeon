@@ -29,7 +29,7 @@ let KDPerkIcons = {
 	"GroundedInReality" : () => {return KinkyDungeonPlayerDamage && KinkyDungeonStatMana >= KinkyDungeonStatManaMax * 0.999;},
 	"LikeTheWind" : () => {return KinkyDungeonStatStamina >= KinkyDungeonStatStaminaMax * 0.95;},
 	"LeastResistance" : () => {return KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.01;},
-	"DistractionCast" : () => {return KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99;},
+	//"DistractionCast" : () => {return KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99;},
 };
 
 let KDPerkUpdateStats = {
@@ -82,6 +82,12 @@ let KDPerkUpdateStats = {
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
 			id: "PainTolerance", type: "glueDamageResist", power: -0.4, duration: 2
 		});
+	},
+	"DistractionCast": () => {
+		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99)
+			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+				id: "DistractionCast", type: "sfx", power: 1, duration: 1, sfxApply: "PowerMagic", aura: "#ff8888", aurasprite: "Heart"
+			});
 	},
 	"BoundPower": () => {
 		KDDamageAmpPerks += KDBoundPowerLevel *  KDBoundPowerMult;
@@ -201,6 +207,7 @@ let KinkyDungeonStatsPresets = {
 	//"Novice": {category: "Magic", id: 7, cost: -1},
 	//"Meditation": {category: "Magic", id: 13, cost: 2},
 	"DistractionCast":  {category: "Magic", id: "DistractionCast", cost: 2},
+	"ArousingMagic":  {category: "Magic", id: "ArousingMagic", cost: -1},
 	//"QuickScribe": {category: "Magic", id: 56, cost: 1, block: ["Disorganized"]},
 	"BerserkerRage": {category: "Combat", id: "BerserkerRage", cost: 3},
 	"UnstableMagic": {category: "Magic", id: "UnstableMagic", cost: 2},

@@ -3183,7 +3183,12 @@ let KDEventMapGeneric = {
 					KDGameData.OrgasmStage = Math.max((KDGameData.OrgasmStage + Math.ceil(tb)) || tb, KinkyDungeonMaxOrgasmStage);
 				}
 			}
-		}
+		},
+		"ArousingMagic": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("ArousingMagic")) {
+				KinkyDungeonChangeDistraction(KinkyDungeonGetManaCost(data.spell), false, 0.1);
+			}
+		},
 	},
 	"beforeDamage": {
 		"LeastResistance": (e, data) => {

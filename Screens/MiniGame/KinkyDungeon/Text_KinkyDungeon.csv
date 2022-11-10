@@ -365,6 +365,8 @@ KinkyDungeonStatDescStartObsidian,"Start in a full set of magically locked obsid
 
 KinkyDungeonStatDistractionCast,"Mana Burst"
 KinkyDungeonStatDescDistractionCast,"While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge."
+KinkyDungeonStatArousingMagic,"Arousing Magic"
+KinkyDungeonStatDescArousingMagic,"Your magic is powered by otherworldly distracting energies. Casting spells increases distraction based on the mana spent."
 
 
 KinkyDungeonCopyPerks,Copy to Clipboard
