@@ -3189,6 +3189,11 @@ let KDEventMapGeneric = {
 				KinkyDungeonChangeDistraction(KinkyDungeonGetManaCost(data.spell), false, 0.1);
 			}
 		},
+		"Clearheaded": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("Clearheaded")) {
+				KinkyDungeonChangeDistraction(-KinkyDungeonGetManaCost(data.spell), false, 0.1);
+			}
+		},
 	},
 	"beforeDamage": {
 		"LeastResistance": (e, data) => {

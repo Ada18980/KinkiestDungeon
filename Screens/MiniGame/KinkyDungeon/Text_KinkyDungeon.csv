@@ -367,6 +367,8 @@ KinkyDungeonStatDistractionCast,"Mana Burst"
 KinkyDungeonStatDescDistractionCast,"While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge."
 KinkyDungeonStatArousingMagic,"Arousing Magic"
 KinkyDungeonStatDescArousingMagic,"Your magic is powered by otherworldly distracting energies. Casting spells increases distraction based on the mana spent."
+KinkyDungeonStatClearheaded,"Clearheaded"
+KinkyDungeonStatDescClearheaded,"Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction."
 
 
 KinkyDungeonCopyPerks,Copy to Clipboard

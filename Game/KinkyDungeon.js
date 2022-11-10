@@ -969,6 +969,7 @@ function KinkyDungeonRun() {
 
 
 	} else if (KinkyDungeonState == "Stats") {
+
 		let tooltip = KinkyDungeonDrawPerks(false);
 		DrawTextKD(TextGet("KinkyDungeonStats"), 1000, 30, "#ffffff", KDTextGray2);
 		DrawTextKD(TextGet("KinkyDungeonStats2"), 1000, 80, "#ffffff", KDTextGray2);
@@ -993,6 +994,13 @@ function KinkyDungeonRun() {
 			navigator.clipboard.writeText(txt);
 			return true;
 		}, true, 1780, 930, 150, 54, TextGet("KinkyDungeonCopyPerks"), "#ffffff", "");
+
+
+		if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
+			if (KinkyDungeonKeybindingCurrentKey)
+				KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
+			KinkyDungeonKeybindingCurrentKey = '';
+		}
 	} else if (KinkyDungeonState == "Save") {
 		// Draw temp start screen
 		DrawTextKD(TextGet("KinkyDungeonSaveIntro0"), 1250, 350, "#ffffff", KDTextGray2);
@@ -1316,6 +1324,14 @@ function KDProcessButtons() {
 				return button[1].func();
 			}
 		}
+	}
+	return false;
+}
+
+function KDClickButton(name) {
+	let button = KDButtonsCache[name];
+	if (button && button.enabled) {
+		return button.func();
 	}
 	return false;
 }

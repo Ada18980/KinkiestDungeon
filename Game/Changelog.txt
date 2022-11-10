@@ -1164,7 +1164,7 @@ Features
 
 3.82
 - Added a few pieces of armor
-- New perk: Mana Burst
+- New perks: Mana Burst, Arousing Magic, Clearheaded
 - New enemy: Cursed One
 - Added additional lore to the ancient tombs
 

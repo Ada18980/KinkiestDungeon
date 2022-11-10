@@ -2825,6 +2825,12 @@ function KinkyDungeonGameKeyDown() {
 		KDSwitchWeapon();
 		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
 		return true;
+	} else if (KinkyDungeonState == "Stats") {
+		if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
+			KDClickButton("perks>");
+		} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey) {
+			KDClickButton("perks<");
+		}
 	} else if (KinkyDungeonDrawState != "Restart" && KinkyDungeonDrawState != "Keybindings" && KinkyDungeonDrawState != "Perks2") {
 		if (KinkyDungeonDrawState == "Inventory" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey)) {
 			if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
