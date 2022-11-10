@@ -40,7 +40,7 @@ let KDIntentEvents = {
 			enemy.IntentLeashPoint = null;
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", -1);
 			enemy.playWithPlayer = 12 + Math.floor(KDRandom() * 12);
-			KinkyDungeonSetEnemyFlag(enemy, "playstart", 3);
+			KinkyDungeonSetEnemyFlag(enemy, "playstart", 7);
 			return KDSettlePlayerInFurniture(enemy, AIData);
 		},
 		maintain: (enemy, delta) => {
@@ -71,7 +71,7 @@ let KDIntentEvents = {
 		trigger: (enemy, AIData) => {
 			KDResetIntent(enemy, AIData);
 			enemy.playWithPlayer = 8 + Math.floor(KDRandom() * (5 * Math.min(5, Math.max(enemy.Enemy.attackPoints || 0, enemy.Enemy.movePoints || 0))));
-			KinkyDungeonSetEnemyFlag(enemy, "playstart", 3);
+			KinkyDungeonSetEnemyFlag(enemy, "playstart", 7);
 			enemy.playWithPlayerCD = 20 + enemy.playWithPlayer * 2.5;
 			KDAddThought(enemy.id, "Play", 4, enemy.playWithPlayer);
 
