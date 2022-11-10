@@ -638,7 +638,7 @@ let KinkyDungeonEnemies = [
 		pullTowardSelf: true, pullDist: 3, master: {type: "GiantMushroom", range: 3}, projectileAttack: true, projectileTargeting: true,
 		visionRadius: 5, maxhp: 16, minLevel:0, weight:7, movePoints: 2, attackPoints: 3, attack: "MeleePullWill", attackRange: 5, attackWidth: 1, power: 2, strictAttackLOS: true, dmgType: "tickle",
 		terrainTags: {"increasingWeight":2, "secondhalf":3, }, floors:KDMapInit(["cry"]), dropTable: [{name: "Nothing", weight: 12}, {name: "WaterRune", weight: 3}]},
-	{name: "Mushy", faction: "Mushy", clusterWith: "mushroom", playLine: "Mushy", color: "#4fa4b8", difficulty: 0.2,
+	{name: "Mushy", faction: "Mushy", clusterWith: "mushroom", color: "#4fa4b8", difficulty: 0.2,
 		tags: KDMapInit(["leashing", "mushroom", "soulresist", "mushy", "melee", "minor", "slashweakness", "fireweakness", "glueresist", "poisonimmune", "coldweakness", "ropeMagicStrong", "ropeAuxiliary", "ropeRestraintsHogtie", "clothRestraints", "tapeRestraints"]),
 		squeeze: true, evasion: -0.5, followRange: 1, AI: "patrol", regen: 0.1,
 		visionRadius: 5, maxhp: 8, minLevel: 4, weight:14, movePoints: 4, attackPoints: 2, attack: "MeleeBindBlindWill", blindTime: 2, attackWidth: 3, attackRange: 1, power: 2, dmgType: "poison", fullBoundBonus: 2,
@@ -647,7 +647,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0},
 		],},
-	{name: "MushyHappy", clusterWith: "mushroom", color: "#4fa4b8", playLine: "Mushy", difficulty: 0.1,
+	{name: "MushyHappy", clusterWith: "mushroom", color: "#4fa4b8", difficulty: 0.1,
 		tags: KDMapInit(["ignorenoSP", "mushroom", "soulresist", "mushy", "melee", "minor", "slashweakness", "fireweakness", "glueresist", "poisonimmune", "coldweakness"]),
 		squeeze: true, evasion: -0.5, followRange: 1, AI: "hunt", regen: 0.1,
 		spells: ["SporesHappy"], spellCooldownMult: 1, spellCooldownMod: 0, stopToCast: true, castWhileMoving: true,
@@ -658,7 +658,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0},
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff44aa"},
 		],},
-	{name: "MushySick", clusterWith: "mushroom", color: "#4fa4b8", playLine: "Mushy", difficulty: 0.1,
+	{name: "MushySick", clusterWith: "mushroom", color: "#4fa4b8", difficulty: 0.1,
 		tags: KDMapInit(["ignorenoSP", "mushroom", "soulresist", "mushy", "melee", "minor", "slashweakness", "fireweakness", "glueresist", "poisonimmune", "coldweakness"]),
 		squeeze: true, evasion: -0.5, followRange: 1, AI: "hunt",
 		spells: ["SporesSick"], spellCooldownMult: 1, spellCooldownMod: 0, stopToCast: true, castWhileMoving: true,
@@ -1256,21 +1256,21 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":2, "lastthird":1, "open": 10, "miniboss": -5, "dressmaker": 12, "elementsAnger": 7, "elementsRage": 5}, allFloors: true, shrines: ["Conjure", "Elements"],
 		dropTable: [{name: "ScrollArms", weight: 2}, {name: "ScrollVerbal", weight: 2}, {name: "ScrollLegs", weight: 2}, {name: "ScrollPurity", weight: 1}]},
 
-	{name: "MummyCursed", color: "#55ff55", tags: KDMapInit(["mimicBlock", "removeDoorSpawn", "ignoreharmless", "darkvision", "mummy", "melee", "elite", "mummyRestraints", "coldresist", "fireweakness", "meleeweakness", "charmweakness"]),
+	{name: "MummyCursed", bound: "MummyCursed", nopickpocket: true, color: "#55ff55", playLine: "GaggedMummy", faction: "Bast", tags: KDMapInit(["mimicBlock", "gagged", "removeDoorSpawn", "ignoreharmless", "darkvision", "mummy", "melee", "elite", "mummyRestraints", "coldresist", "fireweakness", "meleeweakness", "charmweakness"]),
 		evasion: -0.25, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", difficulty: 0.05, guardChance: 0,
 		visionRadius: 10, ambushRadius: 2.01, blindSight: 10, maxhp: 12, minLevel:0, weight:5, movePoints: 1, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "charm", fullBoundBonus: 1,
 		terrainTags: {"secondhalf":5, "lastthird":5, "door": 50}, floors:KDMapInit(["tmb"]), shrines: ["Will"],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 25}, {name: "PotionStamina", weight: 1}]},
 
 
-	{name: "Mummy", clusterWith: "mummy", nopickpocket: true, bound: "Mummy", faction: "Bast", color: "#00FF00", tags: KDMapInit(["leashing", "darkvision", "opendoors", "closedoors", "jailer", "mummy", "melee", "elite", "mummyRestraints", "coldresist", "fireweakness", "meleeweakness", "hunter"]), followLeashedOnly: true, followRange: 1,
-		spells: ["MummyBolt"], specialCD: 3, specialAttack: "Bind", spellCooldownMult: 1, spellCooldownMod: 5, specialAttackPoints: 2, specialWidth: 3, spellRdy: true,
+	{name: "Mummy", clusterWith: "mummy", nopickpocket: true, bound: "Mummy", faction: "Bast", color: "#55ff55", tags: KDMapInit(["leashing", "darkvision", "opendoors", "closedoors", "jailer", "mummy", "melee", "elite", "mummyRestraints", "coldresist", "fireweakness", "meleeweakness", "hunter"]), followLeashedOnly: true, followRange: 1,
+		spells: ["MummyBolt"], specialCD: 3, specialAttack: "Bind", playLine: "Mummy", spellCooldownMult: 1, spellCooldownMod: 5, specialAttackPoints: 2, specialWidth: 3, spellRdy: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#00ff00"},
 		],
 		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 8, minLevel:3, weight:18, movePoints: 2, attackPoints: 1, attack: "SpellMeleeWill", attackWidth: 1, attackRange: 1, power: 2, fullBoundBonus: 1, dmgType: "crush",
 		terrainTags: {"secondhalf":2, "lastthird":4, "open": 2, "increasingWeight":1, "mummy": 4}, floors:KDMapInit(["tmb"]), shrines: ["Will"], dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "PotionStamina", weight: 1}, {name: "RedKey", weight: 1}]},
-	{name: "Cleric", clusterWith: "mummy", bound: "Cleric", faction: "Bast", color: "#00FF00", tags: KDMapInit(["leashing", "opendoors", "closedoors", "mummy", "ranged", "search", "coldresist", "fireweakness"]),
+	{name: "Cleric", clusterWith: "mummy", bound: "Cleric", faction: "Bast", playLine: "Mummy", color: "#00FF00", tags: KDMapInit(["leashing", "opendoors", "closedoors", "mummy", "ranged", "search", "coldresist", "fireweakness"]),
 		followLeashedOnly: true, followRange: 4, attackThruBars: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#00ff00"},
@@ -1279,7 +1279,7 @@ let KinkyDungeonEnemies = [
 		attackPoints: 3, attack: "Spell", attackWidth: 1, attackRange: 1, power: 3, dmgType: "fire",
 		AI: "guard", visionRadius: 7, maxhp: 8, minLevel:0, weight:13, movePoints: 1.5, fullBoundBonus: 1,
 		terrainTags: {"secondhalf":0, "lastthird":1, "passage": -99, "open": 4, "mummy": 5}, floors:KDMapInit(["tmb"]), shrines: ["Will"], dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 12}, {name: "PotionMana", weight: 0.1}, {name: "RedKey", weight: 1}]},
-	{name: "MeleeCleric", clusterWith: "mummy", bound: "MeleeCleric", faction: "Bast", tags: KDMapInit(["leashing", "darkvision", "opendoors", "closedoors", "mummy", "melee", "kittyRestraints", "jailer", "search", "coldresist", "fireweakness"]), followRange: 1, blindSight: 2.5, specialCD: 3, specialAttack: "Bind",
+	{name: "MeleeCleric", clusterWith: "mummy", bound: "MeleeCleric", playLine: "Mummy", faction: "Bast", tags: KDMapInit(["leashing", "darkvision", "opendoors", "closedoors", "mummy", "melee", "kittyRestraints", "jailer", "search", "coldresist", "fireweakness"]), followRange: 1, blindSight: 2.5, specialCD: 3, specialAttack: "Bind",
 		AI: "hunt", guardChance: 0.6, visionRadius: 6, maxhp: 8, minLevel:0, weight:15, movePoints: 1.5, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 2, fullBoundBonus: 2, dmgType: "grope",
 		terrainTags: {"secondhalf":0, "lastthird":-2, "mummy": 6}, floors:KDMapInit(["tmb"]), shrines: ["Will"], dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 12}, {name: "PotionStamina", weight: 1}, {name: "RedKey", weight: 1}]},
 
