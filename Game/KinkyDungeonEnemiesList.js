@@ -1264,7 +1264,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "Mummy", clusterWith: "mummy", nopickpocket: true, bound: "Mummy", faction: "Bast", color: "#00FF00", tags: KDMapInit(["leashing", "darkvision", "opendoors", "closedoors", "jailer", "mummy", "melee", "elite", "mummyRestraints", "coldresist", "fireweakness", "meleeweakness", "hunter"]), followLeashedOnly: true, followRange: 1,
-		spells: ["MummyBolt"], specialCD: 3, specialAttack: "Bind", spellCooldownMult: 1, spellCooldownMod: 5, spellRdy: true,
+		spells: ["MummyBolt"], specialCD: 3, specialAttack: "Bind", spellCooldownMult: 1, spellCooldownMod: 5, specialAttackPoints: 2, specialWidth: 3, spellRdy: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#00ff00"},
 		],
