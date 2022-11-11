@@ -231,6 +231,7 @@ function KinkyDungeonCallGuard(x, y, noTransgress, normalDrops, requireTags) {
 	//if (!noTransgress)
 	// KinkyDungeonAggroAction('call', {});
 	let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, true, true);
+	if (!point) point = KinkyDungeonGetRandomEnemyPoint(true);
 	if (point) {
 		if (!KinkyDungeonJailGuard()) {
 
