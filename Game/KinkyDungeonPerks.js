@@ -154,8 +154,8 @@ let KinkyDungeonStatsPresets = {
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -2, block: ["SecondWind"]},
 	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1, block: ["FutileStruggles"]},
 
-	"Stranger": {category: "Enemies", id: "Stranger", cost: 0, block: ["WrongNeighborhood"], tags: ["start"]},
-	"WrongNeighborhood": {category: "Enemies", id: "WrongNeighborhood", cost: -1, block: ["Stranger"], tags: ["start"]},
+	"Stranger": {startPriority: 1000, category: "Enemies", id: "Stranger", cost: 0, block: ["WrongNeighborhood"], tags: ["start"]},
+	"WrongNeighborhood": {startPriority: 1000, category: "Enemies", id: "WrongNeighborhood", cost: -1, block: ["Stranger"], tags: ["start"]},
 
 	"Strong": {category: "Restraints", id: 0, cost: 2, block: ["Weak"]},
 	"Weak": {category: "Restraints", id: 1, cost: -1, block: ["Strong"]},
@@ -490,7 +490,7 @@ let KDPerkStart = {
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {
 			KDSetFactionRelation("Player", key, -1);
 			for (let key2 of Object.keys(KinkyDungeonFactionTag)) {
-				KDSetFactionRelation(key, key2, 1);
+				KDSetFactionRelation(key, key2, 0.5);
 			}
 		}
 	},
