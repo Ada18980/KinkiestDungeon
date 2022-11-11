@@ -597,7 +597,8 @@ function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc) {
 	if (!KDGameData.DistractionCooldown) {
 		KDGameData.DistractionCooldown = 0;
 	}
-	KDGameData.DistractionCooldown = Math.max(KDGameData.DistractionCooldown, 3, KinkyDungeonSlowMoveTurns + 1);
+	let cdBonus = KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax ? Math.min(4, Math.max(1, Math.ceil(Amount/1.5))) : 0;
+	KDGameData.DistractionCooldown = Math.max(KDGameData.DistractionCooldown, 3 + cdBonus, KinkyDungeonSlowMoveTurns + 1 + cdBonus);
 
 	if (lowerPerc) {
 		KinkyDungeonStatDistractionLower += Amount * lowerPerc;
@@ -1161,6 +1162,7 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChastityDeny"), "#FF5BE9", 4);
 	} else KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPlaySelf"), "#FF5BE9", 4);
 	KDGameData.PlaySelfTurns = 3;
+	KDGameData.DistractionCooldown = Math.max(KDGameData.DistractionCooldown, 13);
 
 	if (affinity) {
 		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonPlayCorner"), "#88FF00", 4);
