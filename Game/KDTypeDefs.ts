@@ -343,6 +343,8 @@ interface KDRestraintProps {
 	enchanted?: boolean,
 	/** Faction color index */
 	factionColor?: number[][],
+	/** Determines if it gets hidden by the 'Hide Armor' option */
+	armor?: boolean,
 };
 
 interface restraint extends KDRestraintProps {

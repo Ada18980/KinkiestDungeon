@@ -1329,6 +1329,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Cut": -0.5,
 		"Remove": 10
 	},
+	shrine: ["Armor", "ChestArmor", "MetalArmor"],
+	armor: true,
 	protection: 1,
 	events: [
 		{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
@@ -1349,6 +1351,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Cut": 0.1,
 		"Remove": 0.1,
 	},
+	shrine: ["Armor", "TorsoArmor"],
+	armor: true,
 	protection: 1,
 	strictness: 0.05,
 	protectionCursed: true,
@@ -1374,6 +1378,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 2,
 	protectionCursed: true,
 	strictness: 0.25,
+	shrine: ["Armor", "TorsoArmor", "MetalArmor"],
+	armor: true,
 	events: [
 		{trigger: "tick", type: "armorBuff", power: 1.0, inheritLinked: true},
 		{trigger: "tick", type: "restraintBlock", power: 2.5, inheritLinked: true},
@@ -1395,6 +1401,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Cut": -0.5,
 		"Remove": 0.01,
 	},
+	shrine: ["Armor", "TorsoArmor", "MetalArmor"],
+	armor: true,
 	protection: 3,
 	protectionCursed: true,
 	strictness: 0.3,
@@ -1417,6 +1425,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Cut": -0.5,
 		"Remove": 0.25,
 	},
+	shrine: ["Armor", "Robe"],
+	armor: true,
 	protection: 1,
 	events: [
 		{trigger: "perksBonus", type: "spellDamage", power: 0.3, inheritLinked: true},
@@ -1437,6 +1447,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Cut": -0.5,
 		"Remove": 0.04,
 	},
+	shrine: ["Armor", "PelvisArmor", "MetalArmor"],
+	armor: true,
 	protection: 2,
 	protectionCursed: true,
 	events: [
@@ -1457,6 +1469,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Cut": -0.5,
 		"Remove": 10
 	},
+	shrine: ["Armor", "GlovesArmor", "MetalArmor"],
+	armor: true,
 	protection: 1,
 	events: [
 		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
@@ -1478,6 +1492,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Cut": 0.1,
 		"Remove": 10
 	},
+	shrine: ["Armor", "GlovesArmor"],
+	armor: true,
 	protection: 1,
 }, "Leather Gloves", "Protecting you in style.", "Provides minor protection against enemy attacks.")
 , [...KDBasicCurses]);
@@ -1492,6 +1508,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Cut": -0.5,
 		"Remove": 10
 	},
+	shrine: ["Armor", "ArmArmor", "MetalArmor"],
+	armor: true,
 	protection: 1,
 }, "Steel Bracers", "Dependable protection for the average adventurer.", "Provides minor protection against enemy attacks.")
 , [...KDBasicCurses]);
@@ -1508,6 +1526,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Cut": -0.5,
 		"Remove": 10
 	},
+	shrine: ["Armor", "BootsArmor", "MetalArmor"],
+	armor: true,
 	protection: 1,
 	events: [
 		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
@@ -1529,6 +1549,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Cut": 0.1,
 		"Remove": 10
 	},
+	shrine: ["Armor", "BootsArmor"],
+	armor: true,
 	protection: 1,
 }, "Hide Boots", "For stepping into all kinds of trouble!", "Provides minor protection against enemy attacks.")
 , [...KDBasicCurses]);

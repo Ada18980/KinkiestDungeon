@@ -1933,6 +1933,11 @@ function KinkyDungeonHandleHUD() {
 			localStorage.setItem("KinkyDungeonDrool", KinkyDungeonDrool ? "True" : "False");
 			return true;
 		}
+		if (!KDDebug && MouseIn(1000, 180, 64, 64)) {
+			KinkyDungeonArmor = !KinkyDungeonArmor;
+			localStorage.setItem("KinkyDungeonArmor", KinkyDungeonArmor ? "True" : "False");
+			return true;
+		}
 		if (MouseIn(600, 340, 64, 64) && (ServerURL == "foobar")) {
 			KinkyDungeonGraphicsQuality = !KinkyDungeonGraphicsQuality;
 			localStorage.setItem("KinkyDungeonDrool", KinkyDungeonGraphicsQuality ? "True" : "False");

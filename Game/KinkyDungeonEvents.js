@@ -328,7 +328,7 @@ let KDEventMapInventory = {
 			if (!data.delta) return;
 			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < 0.25) {
 				KinkyDungeonSetFlag("GuardCalled", 35);
-				console.log("Attempting to call guard")
+				console.log("Attempting to call guard");
 				if (KinkyDungeonEntities.length < 400) {
 					console.log("Called guard");
 					KinkyDungeonCallGuard(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, true);

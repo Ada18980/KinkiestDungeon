@@ -522,7 +522,7 @@ function KinkyDungeonLoad() {
 			KinkyDungeonSound = localStorage.getItem("KinkyDungeonSound") != undefined ? localStorage.getItem("KinkyDungeonSound") == "True" : true;
 			KinkyDungeonFullscreen = localStorage.getItem("KinkyDungeonFullscreen") != undefined ? localStorage.getItem("KinkyDungeonFullscreen") == "True" : true;
 			KinkyDungeonDrool = localStorage.getItem("KinkyDungeonDrool") != undefined ? localStorage.getItem("KinkyDungeonDrool") == "True" : true;
-
+			KinkyDungeonArmor = localStorage.getItem("KinkyDungeonArmor") != undefined ? localStorage.getItem("KinkyDungeonArmor") == "True" : true;
 			KinkyDungeonBones = localStorage.getItem("KinkyDungeonBones") != undefined ? localStorage.getItem("KinkyDungeonBones") : KinkyDungeonBones;
 
 			if (localStorage.getItem("KDVibeVolume")) {
@@ -646,6 +646,7 @@ let KinkyDungeonPatronPos = 0;
 let KinkyDungeonSound = true;
 let KinkyDungeonFullscreen = true;
 let KinkyDungeonDrool = true;
+let KinkyDungeonArmor = true;
 let KinkyDungeonGraphicsQuality = true;
 let KinkyDungeonFastWait = true;
 let KinkyDungeonTempWait = false;

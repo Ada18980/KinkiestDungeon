@@ -219,7 +219,7 @@ function KinkyDungeonDressPlayer() {
 
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if (KinkyDungeonCheckClothesLoss)
-				if (KDRestraint(inv).AssetGroup) {
+				if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KinkyDungeonArmor)) {
 					InventoryWear(KinkyDungeonPlayer, KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, KDRestraint(inv).Color);
 				}
 		}
@@ -500,7 +500,12 @@ function KDApplyItem(inv, tags) {
 		let already = InventoryGet(KinkyDungeonPlayer, AssetGroup);
 		let difficulty = already?.Property?.Difficulty || 0;
 
-		let placed = KDAddAppearance(KinkyDungeonPlayer, AssetGroup, AssetGet("3DCGFemale", AssetGroup, restraint.Asset), color, undefined, undefined, undefined, inv);
+		/** @type {Item} */
+		let placed = null;
+
+		if (!restraint.armor || KinkyDungeonArmor) {
+			placed = KDAddAppearance(KinkyDungeonPlayer, AssetGroup, AssetGet("3DCGFemale", AssetGroup, restraint.Asset), color, undefined, undefined, undefined, inv);
+		}
 
 		if (placed) {
 			let type = restraint.Type;
