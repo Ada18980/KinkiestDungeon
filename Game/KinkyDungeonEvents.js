@@ -328,8 +328,11 @@ let KDEventMapInventory = {
 			if (!data.delta) return;
 			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < 0.25) {
 				KinkyDungeonSetFlag("GuardCalled", 35);
-				if (KinkyDungeonEntities.length < 100)
+				console.log("Attempting to call guard")
+				if (KinkyDungeonEntities.length < 100) {
+					console.log("Called guard");
 					KinkyDungeonCallGuard(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, true);
+				}
 			}
 		},
 		"callGuardFurniture": (e, item, data) => {
