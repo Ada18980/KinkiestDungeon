@@ -767,22 +767,12 @@ function KDGetDistractionRate(delta) {
 
 function KinkyDungeonUpdateStats(delta) {
 	KDBoundPowerLevel = 0;
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (!KDRestraint(inv).nonbinding)
-			switch (KDRestraint(inv).Group) {
-				case "ItemArms": KDBoundPowerLevel += 0.2; break;
-				case "ItemLegs": KDBoundPowerLevel += 0.08; break;
-				case "ItemFeet": KDBoundPowerLevel += 0.08; break;
-				case "ItemBoots": KDBoundPowerLevel += 0.04; break;
-				case "ItemHead": KDBoundPowerLevel += 0.1; break;
-				case "ItemHands": KDBoundPowerLevel += 0.1; break;
-				case "ItemPelvis": KDBoundPowerLevel += 0.05; break;
-				case "ItemTorso": KDBoundPowerLevel += 0.05; break;
-				case "ItemBreast": KDBoundPowerLevel += 0.05; break;
-				case "ItemNeck": KDBoundPowerLevel += 0.05; break;
-			}
-	}
+	KDBoundPowerLevel += 0.1 * Math.max(0, Math.min(1, KinkyDungeonBlindLevel / 3));
+	if (KinkyDungeonIsArmsBound(false, false)) KDBoundPowerLevel += 0.15;
+	if (KinkyDungeonIsHandsBound(false, false)) KDBoundPowerLevel += 0.15;
+	KDBoundPowerLevel += 0.15 * KinkyDungeonChastityMult();
 	KDBoundPowerLevel += 0.2 * KinkyDungeonGagTotal();
+	KDBoundPowerLevel += 0.25 * Math.max(0, Math.min(1, KinkyDungeonSlowLevel / 3));
 	if (KDBoundPowerLevel > 1) KDBoundPowerLevel = 1;
 	if (KinkyDungeonStatsChoice.get("BoundPower")) {
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
