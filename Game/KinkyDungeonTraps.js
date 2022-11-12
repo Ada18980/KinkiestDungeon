@@ -159,6 +159,7 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 							}
 						}
 						if (success) {
+							triggered = true;
 							// We fire the dart
 							let player = KinkyDungeonEnemyAt(x, y) ? KinkyDungeonEnemyAt(x, y) : KinkyDungeonPlayerEntity;
 							KinkyDungeonCastSpell(x, y, spell, { x: startX, y: startY }, player, undefined);
@@ -166,6 +167,7 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 							msg = ""; // We don't want to warn the player about what just happened
 							KinkyDungeonTiles.delete(x + "," + y);
 						} else {
+							triggered = true;
 							// We do sleep gas instead
 							spell = KinkyDungeonFindSpell("SleepGas", true);
 							if (spell) {
