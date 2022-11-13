@@ -1919,6 +1919,7 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 			} else {
 				KinkyDungeonMapSet(trap.x, trap.y, 'T');
 				let t = KinkyDungeonGetTrap(traptypes, Floor, []);
+				let tile = KinkyDungeonTiles.get(trap.x + "," + trap.y);
 				KinkyDungeonTiles.set(trap.x + "," + trap.y, {
 					Type: "Trap",
 					Trap: t.Name,
@@ -1926,6 +1927,7 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 					Enemy: t.Enemy,
 					Spell: t.Spell,
 					Power: t.Power,
+					OffLimits: tile?.OffLimits,
 				});
 			}
 		}
