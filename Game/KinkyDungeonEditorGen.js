@@ -273,7 +273,7 @@ function KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, ind
 			// The index store of the map tile, we compare to the indices of indexfilled
 			let ind = mapTile.index[xx + ',' + yy];
 			// Skip this mapTile if it doesnt fit
-			if (ind != indices[(xx + indX - 1) + ',' + (yy + indY - 1)]) return false;
+			if (ind != indices[(xx + indX - 1) + ',' + (yy + indY - 1)] && KDLooseIndexRankingSuspend(indices[(xx + indX - 1) + ',' + (yy + indY - 1)], ind, mapTile.w, mapTile.h, xx, yy)) return false;
 			// Skip this mapTile if it's already filled
 			if (indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1)]) return false;
 			// Make sure none of the tile overlaps with required access...
@@ -282,6 +282,16 @@ function KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, ind
 			}
 		}
 	return true;
+}
+
+function KDLooseIndexRankingSuspend(indexCheck, indexTile, w, h, xx, yy) {
+	if (w == 1 && h == 1) return true; // Tiles that are 1/1 dont get requirements suspended
+	if (xx > 1 && xx < w && yy > 1 && yy < h) return false; // Suspended tiles in the middle
+	if (indexCheck.includes('u') && yy == 1 && !indexTile.includes('u')) return true; // Dont suspend if we dont have the appropriate index entrance
+	if (indexCheck.includes('d') && yy == h && !indexTile.includes('d')) return true; // Dont suspend if we dont have the appropriate index entrance
+	if (indexCheck.includes('l') && xx == 1 && !indexTile.includes('l')) return true; // Dont suspend if we dont have the appropriate index entrance
+	if (indexCheck.includes('r') && xx == w && !indexTile.includes('r')) return true; // Dont suspend if we dont have the appropriate index entrance
+	return false;
 }
 
 /**

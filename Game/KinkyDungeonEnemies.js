@@ -880,7 +880,7 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				let bb = false;
 				if (enemy.Enemy.bound && KDThoughtBubbles.has(enemy.id)) {
 					let bubble = KDThoughtBubbles.get(enemy.id);
-					if (bubble.index + bubble.duration >= KinkyDungeonCurrentTick) {
+					if (bubble.index + bubble.duration >= KinkyDungeonCurrentTick && (enemy.ambushtrigger || !KDAIType[KDGetAI(enemy)]?.ambush)) {
 						bb = true;
 						let name = CommonTime() % 1000 < 500 ? "Thought" : bubble.name;
 						if (name != "Thought" || !((enemy.lifetime != undefined || enemy.hp < enemy.Enemy.maxhp || enemy.boundLevel)))
