@@ -287,8 +287,8 @@ function KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, ind
 function KDLooseIndexRankingSuspend(indexCheck, indexTile, w, h, xx, yy) {
 	if (w == 1 && h == 1) return true; // Tiles that are 1/1 dont get requirements suspended
 	if (xx > 1 && xx < w && yy > 1 && yy < h) return false; // Suspended tiles in the middle
-	if (!indexCheck) return false;
-	if (!indexTile) return true;
+	if (!indexCheck) return true; // This means we hit the border
+	if (!indexTile) return true; // This is bad but it shouldnt crash the game. We just dont place the tile
 	if (indexCheck.includes('u') && yy == 1 && !indexTile.includes('u')) return true; // Dont suspend if we dont have the appropriate index entrance
 	if (indexCheck.includes('d') && yy == h && !indexTile.includes('d')) return true; // Dont suspend if we dont have the appropriate index entrance
 	if (indexCheck.includes('l') && xx == 1 && !indexTile.includes('l')) return true; // Dont suspend if we dont have the appropriate index entrance
