@@ -368,6 +368,10 @@ let KDPerkStart = {
 	Pacifist: () =>{
 		KinkyDungeonInventoryAddWeapon("Rope");
 	},
+	Rigger: () =>{
+		KinkyDungeonInventoryAddWeapon("Rope");
+		KinkyDungeonInventoryAddWeapon("Scissors");
+	},
 	Unchained: () =>{
 		KinkyDungeonRedKeys += 1;
 	},

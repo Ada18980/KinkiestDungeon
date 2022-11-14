@@ -148,6 +148,8 @@ let KinkyDungeonWeapons = {
 		playSelfSound: "Vibe",
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 2, chance: 0.2}]},
 
+	"Scissors": {name: "Scissors", dmg: 1.2, chance: 1.8, staminacost: 0.7, type: "slash", unarmed: false, rarity: 2, shop: true, light: true, cutBonus: 0.1, sfx: "Cut"},
+
 	// Divine
 	"MoiraiScissors": {name: "MoiraiScissors", dmg: 1.5, chance: 1.1, staminacost: 1.5, type: "slash", unarmed: false, rarity: 10, shop: false, magic: true, cutBonus: 0.2, sfx: "Cut",
 		events: [

@@ -1009,6 +1009,11 @@ KinkyDungeonInventoryItemCropDesc,"For those unruly subs."
 KinkyDungeonInventoryItemCropDesc2,"Deals pain damage. Highly distracting."
 ItemPickupCrop,"You pick up a riding crop."
 
+KinkyDungeonInventoryItemScissors,Scissors
+KinkyDungeonInventoryItemScissorsDesc,"Safety first!"
+KinkyDungeonInventoryItemScissorsDesc2,"Deals slash damage. Better than a knife for cutting restraints."
+ItemPickupScissors,"You pick up a pair of scissors."
+
 KinkyDungeonInventoryItemDirk,Dagger
 KinkyDungeonInventoryItemDirkDesc,"Designed with subterfuge in mind."
 KinkyDungeonInventoryItemDirkDesc2,"Deals slash damage. Deals 55 pierce damage instead on unaware targets."

@@ -175,7 +175,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":5, "lastthird":5}, shrines: ["Will"], floors:KDMapInit(["grv", "tmb"]), dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Sword", weight: 3.5, ignoreInInventory: true},]},
 	{name: "NawashiZombie", bound: "NawashiZombie", playLine: "Zombie", clusterWith: "zombie", tags: KDMapInit(["leashing", "zombie", "melee", "elite", "fireweakness", "unflinching", "ropeRestraints", "jail", "ropeRestraints2", "meleeweakness", "hunter"]), evasion: -1, armor: 0, followRange: 1, AI: "hunt",
 		visionRadius: 8, maxhp: 12, minLevel:0, weight:2, movePoints: 2, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2, difficulty: 1.4,
-		terrainTags: {"secondhalf":1, "lastthird":2}, shrines: [], floors:KDMapInit(["grv", "tmb"]), dropTable: [{name: "Gold", amountMin: 5, amountMax: 15, weight: 10}, {name: "Rope", weight: 3.5, ignoreInInventory: true},]},
+		terrainTags: {"secondhalf":1, "lastthird":2}, shrines: [], floors:KDMapInit(["grv", "tmb"]), dropTable: [{name: "Gold", amountMin: 5, amountMax: 15, weight: 10}, {name: "Rope", weight: 3.5, ignoreInInventory: true}, {name: "Scissors", weight: 0.5, ignoreInInventory: true},]},
 
 	{name: "Ninja", faction: "Bountyhunter", bound: "Ninja", clusterWith: "human", color: "#814BB7", tags: KDMapInit(["leashing", "opendoors", "human", "guardCall", "imprisonable", "bountyhunter", "ninja", "melee", "ropeRestraints", "ropeRestraints2", "jail", "unarmedresist", "slashresist", "glueweakness", "chainweakness", "search"]), followLeashedOnly: true, blindSight: 5, followRange: 1, AI: "hunt", projectileAttack: true,
 		stunTime: 4, specialCD: 6, specialCharges: 6, specialAttack: "Stun", specialRemove: "Bind", specialCDonAttack: true, strictAttackLOS: true, focusPlayer: true,
@@ -197,7 +197,7 @@ let KinkyDungeonEnemies = [
 		followLeashedOnly: true, blindSight: 10, followRange: 1, kite: 3, AI: "hunt", evasion: 0.5, dontKiteWhenDisabled: true,
 		visionRadius: 7, maxhp: 22, minLevel:8, weight:1, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 1, specialWidth: 1, specialAttackPoints: 3, specialRange: 4, specialMinrange: 1.5, //specialFollow: 3,
 		terrainTags: {"secondhalf":1, "lastthird":2, "ropeAnger": 1, "ropeRage": 1, "bountyhunter": 4}, shrines: ["Rope"], allFloors: true,
-		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 10}, {name: "Knife", ignoreInInventory: true, weight: 4}, {name: "EnchKnife", weight: 1}]},
+		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 10}, {name: "Scissors", ignoreInInventory: true, weight: 10}, {name: "EnchKnife", ignoreInInventory: true, weight: 1}, {name: "Rope", weight: 100, ignoreInInventory: true},]},
 
 	{name: "Maidforce", faction: "Maidforce", bound: "Maid", clusterWith: "maid", playLine: "SubMaid", color: "#814BB7", tags: KDMapInit(["leashing", "submissive", "tickleweakness", "imprisonable", "opendoors", "human", "maid", "melee", "ropeRestraints", "ropeRestraints2", "handcuffer", "maidVibeRestraintsLimited", "maidRestraintsLight", "jail", "search"]), blindSight: 3, followRange: 1, AI: "hunt",
 		stealth: 4, noReveal: true, bindOnDisableSpecial: true, bindOnDisable: true, hitsfx: "Tickle", useLock: "Red",
@@ -239,7 +239,7 @@ let KinkyDungeonEnemies = [
 		useLock: "Red", kite: 2.5, remote: 5, remoteAmount: 4, bypass: true, multiBind: 7, noLeashUnlessExhausted: true, evasion: 0.15, //-15 weight
 		visionRadius: 8, maxhp: 28, minLevel:6, weight:-14, movePoints: 2, attackPoints: 1, attack: "SpellMeleeWillBindLockAllVibe", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 1.5, dmgType: "charm", fullBoundBonus: 1,
 		terrainTags: {"secondhalf":1, "lastthird":1, "open": 4, "illusionAnger": 10, "illusionRage": 4, "maid": 12}, shrines: ["Illusion"], allFloors: true, attackLock: "Red",
-		dropTable: [{name: "Gold", amountMin: 30, amountMax: 40, weight: 20}, {name: "RedKey", weight: 10}, {name: "Pick", weight: 6}, {name: "EnchKnife", weight: 1}]},
+		dropTable: [{name: "Gold", amountMin: 30, amountMax: 40, weight: 20}, {name: "RedKey", weight: 10}, {name: "Pick", weight: 6}, {name: "EnchKnife", ignoreInInventory: true, weight: 1}]},
 
 	{name: "Skeleton", bound: "Skeleton", playLine: "Skeleton", clusterWith: "skeleton", tags: KDMapInit(["leashing", "skeleton", "gagged", "melee", "ropeRestraints", "leatherRestraints", "clothRestraints", "coldresist", "crushweakness", "search"]), ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",
 		visionRadius: 4, maxhp: 5, minLevel:1, weight:8, movePoints: 2, attackPoints: 3, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1.0,
@@ -727,7 +727,7 @@ let KinkyDungeonEnemies = [
 		],
 		visionRadius: 8, maxhp: 20, minLevel:6, weight:-11, movePoints: 2, attackPoints: 2, attack: "MeleeBindWill", attackWidth: 1, attackRange: 1, power: 4, dmgType: "crush", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":2, "thirdhalf":4, "open": 10, "leatherAnger":6, "leatherRage":30, "boss": -55, "increasingWeight":0.5, "dragon": 1}, shrines: ["Leather"], allFloors: true,
-		dropTable: [{name: "Gold", amountMin: 30, amountMax: 40, weight: 10}, {name: "Knife", ignoreInInventory: true, weight: 3}, {name: "Knives", weight: 2}, {name: "EnchKnife", weight: 1}]},
+		dropTable: [{name: "Gold", amountMin: 30, amountMax: 40, weight: 10}, {name: "Knife", ignoreInInventory: true, weight: 3}, {name: "Sword", ignoreInInventory: true, weight: 100}, {name: "EnchKnife", ignoreInInventory: true, weight: 1}]},
 
 
 	{name: "ElementalFire", faction: "Elemental", playLine: "Elemental", clusterWith: "fire", bound: "ElementalFire", color: "#FF6200", tags: KDMapInit(["opendoors", "fire", "guardCall", "elemental", "fireimmune", "ranged", "coldweakness", "icesevereweakness", "obsidianRestraints", "shackleRestraints", "leashing", "jail", "search"]),
@@ -1089,7 +1089,7 @@ let KinkyDungeonEnemies = [
 		spells: ["RopeEngulf"], spellCooldownMult: 1, spellCooldownMod: 1, ignoreflag: ["kraken"], disarm: 0.25,
 		visionRadius: 10, maxhp: 60, minLevel: 3, weight:-31, movePoints: 4, attackPoints: 2, attack: "Spell", attackWidth: 1, attackRange: 1, power: 6, dmgType: "grope",
 		terrainTags: {"secondhalf":16, "lastthird":5, "boss": -80, "open": 20, "passage": -60, "ropeAnger": 20, "ropeRage": 60, "increasingWeight":0.5}, allFloors: true, shrines: ["Rope"],
-		dropTable: [{name: "Knives", weight: 2}, {name: "Knife", ignoreInInventory: true, weight: 5}, {name: "EnchKnife", weight: 2}, {name: "ElfCrystal", weight: 3}]},
+		dropTable: [{name: "Scissors", ignoreInInventory: true, weight: 2}, {name: "Knife", ignoreInInventory: true, weight: 5}, {name: "EnchKnife", ignoreInInventory: true, weight: 2}, {name: "ElfCrystal", weight: 3}]},
 	{name: "RopeMinion", faction: "KinkyConstruct", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "fireweakness", "minor", "slashweakness", "chainresist"]), ignorechance: 0.75, followRange: 1, AI: "hunt",  master: {type: "RopeKraken", range: 4}, ignoreflag: ["kraken"], dependent: true,
 		visionRadius: 10, maxhp: 8, minLevel: 0, weight:-1000, movePoints: 1, attackPoints: 2, attack: "MeleePullWill", attackWidth: 1, attackRange: 1, power: 3, dmgType: "crush", noAlert: true,
 		terrainTags: {}, allFloors: true, shrines: ["Rope"]},
