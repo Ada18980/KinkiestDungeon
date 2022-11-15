@@ -1019,6 +1019,13 @@ function KinkyDungeonRun() {
 		KinkyDungeonGameFlag = true;
 		KinkyDungeonDrawGame();
 		if (KinkyDungeonInputQueue.length < 1) {
+			let _CharacterRefresh = CharacterRefresh;
+			let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
+			// @ts-ignore
+			CharacterRefresh = () => {KDRefresh = true;};
+			// @ts-ignore
+			CharacterAppearanceBuildCanvas = () => {};
+
 			if (KDGameData.SleepTurns > 0) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					KDGameData.SleepTurns -= 1;
@@ -1091,7 +1098,12 @@ function KinkyDungeonRun() {
 					KinkyDungeonSleepTime = CommonTime() + (KinkyDungeonFastWait ? 100 : 300);
 				}
 			} else KinkyDungeonSleepTime = CommonTime() + 100;
+			// @ts-ignore
+			CharacterRefresh = _CharacterRefresh;
+			// @ts-ignore
+			CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
 		} else KinkyDungeonSleepTime = CommonTime() + 100;
+
 	} else if (KinkyDungeonState == "End") {
 		KinkyDungeonGameRunning = false;
 		// Draw temp start screen

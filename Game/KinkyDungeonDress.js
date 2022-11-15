@@ -391,7 +391,8 @@ function KinkyDungeonWearForcedClothes(restraints) {
 
 					if (!canReplace) {return;}
 					if (KDProtectedCosplay.includes(dress.Group)){return;}
-					KDInventoryWear(dress.Item, dress.Group, inv.name);
+					let color = (typeof dress.Color === "string") ? [dress.Color] : dress.Color;
+					KDInventoryWear(dress.Item, dress.Group, inv.name, color);
 
 					if (dress.OverridePriority) {
 						let item = InventoryGet(KinkyDungeonPlayer, dress.Group);
@@ -400,7 +401,6 @@ function KinkyDungeonWearForcedClothes(restraints) {
 							else item.Property.OverridePriority = dress.OverridePriority;
 						}
 					}
-					let color = (typeof dress.Color === "string") ? [dress.Color] : dress.Color;
 					let faction = inv.faction;
 					if (inv.faction)
 						if (dress.factionColor && faction && KinkyDungeonFactionColors[faction]) {
@@ -443,11 +443,12 @@ function KinkyDungeonGetOutfit(Name) {
  * @param {string} AssetName - The name of the asset to wear
  * @param {string} AssetGroup - The name of the asset group to wear
  * @param {string} par - parent item
+ * @param {string | string[]} color - parent item
  */
-function KDInventoryWear(AssetName, AssetGroup,par) {
+function KDInventoryWear(AssetName, AssetGroup, par, color) {
 	const A = AssetGet(KinkyDungeonPlayer.AssetFamily, AssetGroup, AssetName);
 	if (!A) return;
-	CharacterAppearanceSetItem(KinkyDungeonPlayer, AssetGroup, A, A.DefaultColor,0,-1, false);
+	CharacterAppearanceSetItem(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor,0,-1, false);
 	CharacterRefresh(KinkyDungeonPlayer, true);
 	InventoryExpressionTrigger(KinkyDungeonPlayer, InventoryGet(KinkyDungeonPlayer, AssetGroup));
 }

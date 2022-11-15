@@ -714,14 +714,15 @@ function KDSendInput(type, data, frame, noUpdate) {
  * @returns {string}
  */
 function KDProcessInputs(ReturnResult) {
-	if (KinkyDungeonInputQueue.length > 0) {
-		let input = KinkyDungeonInputQueue.splice(0, 1)[0];
-		if (input) {
-			let res = KDProcessInput(input.type, input.data);
-			if (ReturnResult) return res;
+	for (let i = 0; i < 3; i++) {
+		if (KinkyDungeonInputQueue.length > 0) {
+			let input = KinkyDungeonInputQueue.splice(0, 1)[0];
+			if (input) {
+				let res = KDProcessInput(input.type, input.data);
+				if (ReturnResult) return res;
+			}
 		}
-
-
 	}
+
 	return "";
 }

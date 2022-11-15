@@ -455,6 +455,7 @@ let KDSpecialChests = {
 let KDLastKeyTime = {
 };
 
+
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
 	if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
