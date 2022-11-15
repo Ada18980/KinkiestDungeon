@@ -2067,7 +2067,7 @@ function KinkyDungeonRestraintPower(item, NoLink, toLink) {
 
 		if (item.dynamicLink && !NoLink) {
 			let link = item.dynamicLink;
-			if (!toLink || !KinkyDungeonIsLinkable(KinkyDungeonGetRestraintByName(link.name), toLink)) {
+			if (!toLink || !KinkyDungeonIsLinkable(KinkyDungeonGetRestraintByName(link.name), toLink, link)) {
 				let lock = link.lock;
 				let mult = lock ? KinkyDungeonGetLockMult(lock) : 1;
 				let pp = link ? (KDRestraint({name: link.name}).power) : 0;
@@ -2114,9 +2114,10 @@ function KDGetLockVisual(item) {
  * @param {string} Lock
  * @param {item} [r]
  * @param {boolean} [Deep]
+ * @param {boolean} [noOverpower]
  * @returns {boolean} - Restraint can be added
  */
-function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep) {
+function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpower) {
 	// Limits
 	if (restraint.shrine && restraint.shrine.includes("Vibes") && KinkyDungeonPlayerTags.get("NoVibes")) return false;
 	if (restraint.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
@@ -2161,7 +2162,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep) {
 		|| linkableCurrent
 		// We are weak enough to override
 		|| (!KDRestraint(r).enchanted
-			&& power < restraint.power * KinkyDungeonGetLockMult(newLock))
+			&& (!noOverpower && power < restraint.power * KinkyDungeonGetLockMult(newLock)))
 	) {
 		if (Bypass || restraint.bypass || !KDGroupBlocked(restraint.Group, true))
 			return true; // Recursion!!
@@ -2202,8 +2203,8 @@ function KDGetLinkUnder(currentRestraint, restraint, bypass, NoStack, Deep) {
 function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack) {
 	let linkUnder = currentRestraint
 		&& (bypass || (KDRestraint(currentRestraint).accessible))
-		&& KinkyDungeonIsLinkable(restraint, KDRestraint(currentRestraint))
-		&& (!currentRestraint.dynamicLink || KinkyDungeonIsLinkable(KDRestraint(currentRestraint.dynamicLink), restraint));
+		&& KinkyDungeonIsLinkable(restraint, KDRestraint(currentRestraint), currentRestraint)
+		&& (!currentRestraint.dynamicLink || KinkyDungeonIsLinkable(KDRestraint(currentRestraint.dynamicLink), restraint, currentRestraint.dynamicLink));
 
 	if (!linkUnder) return false;
 	if (
@@ -2260,6 +2261,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 			if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {
 				KDCurses[Curse].onApply(linkUnder.dynamicLink, linkUnder);
 			}
+			if (r) KDUpdateLinkCaches(r);
 		} else {
 			ret = KinkyDungeonAddRestraint(restraint, Tightness + Math.round(0.1 * KinkyDungeonDifficulty), Bypass, Lock, Keep, false, !linkableCurrent, events, faction, undefined, undefined, Curse);
 		}
@@ -2284,6 +2286,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 function KinkyDungeonIsLinkable(oldRestraint, newRestraint, item) {
 	if (!oldRestraint.nonbinding && newRestraint.nonbinding) return false;
 	if (item && !KDCheckLinkSize(item, newRestraint, false, false)) return false;
+	if (item && !KDCheckLinkTotal(item, newRestraint)) return false;
 	if (oldRestraint && newRestraint && oldRestraint && oldRestraint.LinkableBy && newRestraint.shrine) {
 		for (let l of oldRestraint.LinkableBy) {
 			for (let s of newRestraint.shrine) {
@@ -2297,6 +2300,76 @@ function KinkyDungeonIsLinkable(oldRestraint, newRestraint, item) {
 		if (newRestraint.name == oldRestraint.Link) return true;
 	}
 	return false;
+}
+
+/**
+ * Checks if all the items linked under allow this item
+ * @param {item} oldRestraint
+ * @param {restraint} newRestraint
+ * @returns {boolean}
+ */
+function KDCheckLinkTotal(oldRestraint, newRestraint) {
+	if (KDRestraint(oldRestraint).Link && KDRestraint(oldRestraint).Link == newRestraint.name) {
+		return true;
+	}
+	if (newRestraint.UnLink && oldRestraint.name == newRestraint.UnLink) {
+		return true;
+	}
+	let link = oldRestraint;
+	if (oldRestraint.linkCache) {
+		for (let s of newRestraint.shrine) {
+			if (oldRestraint.linkCache.includes(s)) return true;
+		}
+	}
+	while (link) {
+		let pass = false;
+		let r = KDRestraint(link);
+		if (r.LinkableBy && newRestraint.shrine) {
+			for (let l of r.LinkableBy) {
+				if (!pass)
+					for (let s of newRestraint.shrine) {
+						if (l == s) {
+							pass = true;
+						}
+					}
+			}
+		}
+		if (!pass) return false;
+		link = link.dynamicLink;
+	}
+	return true;
+}
+
+/**
+ * Gets the linkability cache
+ * @param {item} restraint
+ */
+function KDUpdateLinkCaches(restraint) {
+	let link = restraint;
+	while (link) {
+		link.linkCache = KDGetLinkCache(link);
+		link = link.dynamicLink;
+	}
+}
+
+/**
+ * Gets the linkability cache
+ * @param {item} restraint
+ * @returns {string[]}
+ */
+function KDGetLinkCache(restraint) {
+	let cache = Object.assign([], KDRestraint(restraint).LinkableBy);
+	let link = restraint.dynamicLink;
+	while (link) {
+		let r = KDRestraint(link);
+		if (r.LinkableBy) {
+			for (let l of cache) {
+				if (!r.LinkableBy.includes(l)) cache.splice(cache.indexOf(l), 1);
+			}
+		} else return [];
+		link = link.dynamicLink;
+	}
+	return cache;
 }
 
 let KinkyDungeonRestraintAdded = false;
@@ -2459,6 +2532,8 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 
 				if (Lock) KinkyDungeonLock(item, Lock);
 				else if (restraint.DefaultLock && !Unlink) KinkyDungeonLock(item, restraint.DefaultLock);
+
+				KDUpdateLinkCaches(item);
 			} else if ((!Link && !linked) || SwitchItems) {
 				KinkyDungeonCancelFlag = false;
 				// Otherwise, if we did unlink an item, and we are not in the process of linking (very important to prevent loops)
@@ -2466,7 +2541,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				r = KinkyDungeonGetRestraintItem(restraint.Group);
 				if (SwitchItems) {
 					KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, false, undefined, faction, undefined, Curse);
-				} else if (r && KDRestraint(r) && KinkyDungeonIsLinkable(KDRestraint(r), restraint)) {
+				} else if (r && KDRestraint(r) && KinkyDungeonIsLinkable(KDRestraint(r), restraint, r)) {
 					KinkyDungeonLinkItem(restraint, r, Tightness, Lock, Keep, faction, Curse);
 				}
 			}
@@ -2483,7 +2558,8 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 			}
 			KinkyDungeonCancelFlag = false;
 		}
-		KinkyDungeonWearForcedClothes();
+
+		//KinkyDungeonWearForcedClothes();
 
 		KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints(); // We update the restraints but no time drain on batteries, etc
 
@@ -2636,6 +2712,8 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent) {
 
 			// Remove the item itself by unlinking it from the chain
 			hostItem.dynamicLink = item.dynamicLink;
+			let r = KinkyDungeonGetRestraintItem(KDRestraint(hostItem).Group);
+			if (r) KDUpdateLinkCaches(r);
 
 			if (!NoEvent) {
 				if (rest.events) {
@@ -2704,11 +2782,13 @@ function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, fact
 		if (newRestraint) {
 			KinkyDungeonAddRestraint(newRestraint, tightness, true, Lock, Keep, true, undefined, undefined, faction, undefined, oldItem, Curse);
 			let newItem = KinkyDungeonGetRestraintItem(newRestraint.Group);
-			if (newItem) newItem.dynamicLink = oldItem;
+			if (newItem)
+				newItem.dynamicLink = oldItem;
 			if (newRestraint.UnLink && KDRestraint(oldItem).Link == newRestraint.name) {
 				oldItem.name = newRestraint.UnLink;
 				oldItem.events = Object.assign([], KDRestraint(oldItem).events);
 			}
+			KDUpdateLinkCaches(newItem);
 			if (KDRestraint(oldItem).Link)
 				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonLink" + oldItem.name), "#ff0000", 2);
 			return true;

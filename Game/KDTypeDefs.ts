@@ -1,5 +1,6 @@
 /** Kinky Dungeon Typedefs*/
 type item = {
+	linkCache?: string[],
 	/** If the item has a different curse from the base curse */
 	curse?: string,
 	/** Name of the item*/

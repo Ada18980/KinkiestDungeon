@@ -107,7 +107,7 @@ function KinkyDungeonHandleInventory() {
 				if (newItem) {
 					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 					if (!currentItem
-						|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem) &&
+						|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
 							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
 							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((item) => {return newItem.name == item.name;}))))) {
 						equipped = false;
@@ -519,7 +519,7 @@ function KinkyDungeonDrawInventory() {
 				if (newItem) {
 					let currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 					if (!currentItem
-						|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem) &&
+						|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
 							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
 							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((item) => {return newItem.name == item.name;}))))) {
 						equipped = false;
@@ -832,7 +832,7 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 						if (newItem) {
 							currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 							if (!currentItem
-								|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem) &&
+								|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
 									((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
 									|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((ii) => {return newItem.name == ii.name;}))))) {
 								equipped = false;
