@@ -392,15 +392,6 @@ function KinkyDungeonWearForcedClothes(restraints) {
 					if (!canReplace) {return;}
 					if (KDProtectedCosplay.includes(dress.Group)){return;}
 					let color = (typeof dress.Color === "string") ? [dress.Color] : dress.Color;
-					KDInventoryWear(dress.Item, dress.Group, inv.name, color);
-
-					if (dress.OverridePriority) {
-						let item = InventoryGet(KinkyDungeonPlayer, dress.Group);
-						if (item) {
-							if (!item.Property) item.Property = {OverridePriority: dress.OverridePriority};
-							else item.Property.OverridePriority = dress.OverridePriority;
-						}
-					}
 					let faction = inv.faction;
 					if (inv.faction)
 						if (dress.factionColor && faction && KinkyDungeonFactionColors[faction]) {
@@ -410,9 +401,18 @@ function KinkyDungeonWearForcedClothes(restraints) {
 								}
 							}
 						}
-
 					// @ts-ignore
 					if (dress.useHairColor && InventoryGet(KinkyDungeonPlayer, "HairFront")) color = InventoryGet(KinkyDungeonPlayer, "HairFront").Color;
+					KDInventoryWear(dress.Item, dress.Group, inv.name, color);
+
+					if (dress.OverridePriority) {
+						let item = InventoryGet(KinkyDungeonPlayer, dress.Group);
+						if (item) {
+							if (!item.Property) item.Property = {OverridePriority: dress.OverridePriority};
+							else item.Property.OverridePriority = dress.OverridePriority;
+						}
+					}
+
 					// @ts-ignore
 					KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, dress.Group);
 				}
