@@ -195,7 +195,7 @@ function KinkyDungeonDressPlayer() {
 
 			if (!clothes.Lost) {
 				if (KinkyDungeonCheckClothesLoss) {
-					InventoryWear(KinkyDungeonPlayer, clothes.Item, clothes.Group);
+					KDInventoryWear(clothes.Item, clothes.Group, undefined, clothes.Color);
 					if (clothes.OverridePriority) {
 						let item = InventoryGet(KinkyDungeonPlayer, clothes.Group);
 						if (item) {
@@ -209,7 +209,7 @@ function KinkyDungeonDressPlayer() {
 					}
 					// Ignored because BC uses string[] as a type!
 					// @ts-ignore
-					KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, clothes.Color, clothes.Group);
+					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, clothes.Color, clothes.Group);
 				}
 			}
 
@@ -220,7 +220,7 @@ function KinkyDungeonDressPlayer() {
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if (KinkyDungeonCheckClothesLoss)
 				if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KinkyDungeonArmor)) {
-					InventoryWear(KinkyDungeonPlayer, KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, KDRestraint(inv).Color);
+					KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color);
 				}
 		}
 		if (KinkyDungeonCheckClothesLoss)
@@ -414,7 +414,7 @@ function KinkyDungeonWearForcedClothes(restraints) {
 					}
 
 					// @ts-ignore
-					KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, dress.Group);
+					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, dress.Group);
 				}
 			});
 		}
@@ -448,9 +448,9 @@ function KinkyDungeonGetOutfit(Name) {
 function KDInventoryWear(AssetName, AssetGroup, par, color) {
 	const A = AssetGet(KinkyDungeonPlayer.AssetFamily, AssetGroup, AssetName);
 	if (!A) return;
-	CharacterAppearanceSetItem(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor,0,-1, false);
+	KDAddAppearance(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor);
+	//CharacterAppearanceSetItem(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor,0,-1, false);
 	CharacterRefresh(KinkyDungeonPlayer, true);
-	InventoryExpressionTrigger(KinkyDungeonPlayer, InventoryGet(KinkyDungeonPlayer, AssetGroup));
 }
 
 function KDCharacterNaked() {

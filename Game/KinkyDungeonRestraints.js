@@ -2401,7 +2401,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 							}
 						}
 					}
-				InventoryWear(KinkyDungeonPlayer, restraint.Asset, AssetGroup, color);
+				KDInventoryWear(restraint.Asset, AssetGroup,  undefined, color);
 				KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, `+${TextGet("Restraint" + restraint.name)}!`, "pink", 5, true);
 				KDRecentRepIndex += 1;
 				let placed = InventoryGet(KinkyDungeonPlayer, AssetGroup);
@@ -2445,10 +2445,10 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				}
 				if (color) {
 					// @ts-ignore
-					KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, AssetGroup);
-					if (placedOnPlayer)
-						// @ts-ignore
-						KDCharacterAppearanceSetColorForGroup(Player, color, AssetGroup);
+					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, AssetGroup);
+					//if (placedOnPlayer)
+					// @ts-ignore
+					//KDCharacterAppearanceSetColorForGroup(Player, color, AssetGroup);
 				}
 				let item = {name: restraint.name, type: Restraint, curse: Curse, events:events ? events : Object.assign([], restraint.events), tightness: tight, lock: "", faction: faction, dynamicLink: dynamicLink };
 				KinkyDungeonInventoryAdd(item);
