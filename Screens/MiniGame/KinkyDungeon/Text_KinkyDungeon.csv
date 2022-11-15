@@ -1817,6 +1817,11 @@ KillAnimChastity,"The chastity belt falls to the floor with a clang."
 AttackAnimChastityBind,"The chastity belt secures itself around your waist! (+RestraintAdded)"
 AttackAnimChastity,"The chastity belt buzzes against your body alluringly! (DamageTaken)"
 
+NameAnimYoke,Yammering Yoke
+KillAnimYoke,"The yoke falls to the floor with a loud clang."
+AttackAnimYokeBind,"The yoke clasps your arms tightly and forces them to the sides! (+RestraintAdded)"
+AttackAnimYoke,"The yoke makes alluring clicking noises! (DamageTaken)"
+
 NameAnimHarness,Haughty Harness
 KillAnimHarness,"The harness unravels."
 AttackAnimHarnessBind,"The harness buckles itself tightly around your body! (+RestraintAdded)"
@@ -2953,6 +2958,9 @@ KinkyDungeonRemoveCuffs,The cuff chains come off with the cuffs.
 RestraintTrapCuffs,Handcuffs
 RestraintTrapCuffsDesc,"A pair of steel cuffs locked securely around your wrists."
 RestraintTrapCuffsDesc2,"The lock doesn't seem very complicated."
+RestraintTrapYoke,Steel Yoke
+RestraintTrapYokeDesc,"A steel bar clamped firmly around your wrists and neck, leaving you in a helpless position."
+RestraintTrapYokeDesc2,"This is not something you can pick by yourself..."
 RestraintTrapHarness,Leather Harness
 RestraintTrapHarnessDesc,"A leather harness of tight straps buckled around your torso."
 RestraintTrapHarnessDesc2,"It provides an anchor point for enemies to grab onto!"

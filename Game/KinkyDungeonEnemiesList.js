@@ -991,6 +991,17 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],
 	},
+	{name: "AnimYoke", arousalMode: true, faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["metalTrap", "ignoreharmless", "doortrap", "construct", "poisonimmune", "soulimmune", "melee", "yokeSpell", "minor", "chainresist", "meleeresist", "glueweakness", "iceweakness", "flying"]), ignorechance: 0.75,
+		armor: 2, followRange: 1, AI: "hunt",  ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], squeeze: true, ignoreStaminaForBinds: true,
+		Attack: {
+			mustBindorFail: true,
+		},
+		visionRadius: 6, visionSummoned: 12, maxhp: 5, minLevel: 4, weight:0, movePoints: 1.5, attackPoints: 2, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 2, dmgType: "charm", fullBoundBonus: 1,
+		terrainTags: {"doortrap": 6, "trap": 35}, allFloors: true, shrines: ["Metal"],
+		events: [
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
+		],
+	},
 	{name: "Lock", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["metalTrap", "leatherTrap", "ignorenoSP", "lock", "construct", "poisonimmune", "soulimmune", "melee", "minor", "chainresist", "meleeresist", "glueweakness", "iceweakness", "doortrap", "flying"]), difficulty: 0.2,
 		ignorechance: 0.75, armor: 1, followRange: 1, AI: "hunt",  ignoreflag: ["lockignore"], failAttackflag: ["lockignore"], squeeze: true, suicideOnLock: true,
 		Attack: {
