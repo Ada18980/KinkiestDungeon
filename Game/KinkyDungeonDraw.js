@@ -112,6 +112,8 @@ function KDWallVertTunnel(x, y) {
 	return false;
 }
 
+let KDChainablePillar = 'b';
+
 let KDSprites = {
 	// @ts-ignore
 	"1": (x, y, Fog, noReplace) => {
@@ -129,6 +131,8 @@ let KDSprites = {
 	},
 	// @ts-ignore
 	"b": (x, y, Fog, noReplace) => {
+		if (KDWallVert(x, y, noReplace))
+			return KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "BarsVertCont" : "BarsVert";
 		return "Bars";
 	},
 	// @ts-ignore
