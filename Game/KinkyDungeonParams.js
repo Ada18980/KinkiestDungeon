@@ -108,7 +108,7 @@ const KinkyDungeonMapParams = {
 		"forbiddenGreaterChance" : 0.33,
 		cageChance: 0.8,
 		torchchance: 0.05,
-		torchchanceboring: 1.0,
+		torchchanceboring: 0.7,
 
 		tagModifiers: {
 			"narrow": 2,
