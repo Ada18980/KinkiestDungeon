@@ -78,7 +78,12 @@ let KDIntentEvents = {
 
 			let index = Math.floor(Math.random() * 3);
 			let suff = (enemy.Enemy.playLine ? enemy.Enemy.playLine : "");
-			if (AIData.domMe) suff = "Sub" + suff;
+			if (AIData.domMe) {
+				if (KDEnemyPersonalities[enemy.personality] && KDEnemyPersonalities[enemy.personality].brat)
+					suff = "Brat" + suff;
+				else
+					suff = "Sub" + suff;
+			}
 			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + index).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
 		},
 	},
@@ -162,7 +167,7 @@ let KDIntentEvents = {
 			if (KDGameData.PrisonerState == 'jail') return 0;
 			if (KinkyDungeonGetRestraintItem("ItemDevices")) return 0;
 			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]);
-			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) < 14 ? (hostile ? 120 : 40) : 0;
+			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) < 14 ? (hostile ? 120 : (AIData.domMe ? 0 : 40)) : 0;
 		},
 		trigger: (enemy, AIData) => {
 			KDResetIntent(enemy, AIData);

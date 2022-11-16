@@ -922,6 +922,8 @@ interface KinkyDungeonEvent {
 }
 
 interface entity {
+	/** Determines if an enemy can be dommed or not */
+	domVariance?: number,
 	hideTimer?: boolean,
 	Enemy: enemy,
 	player?: boolean,

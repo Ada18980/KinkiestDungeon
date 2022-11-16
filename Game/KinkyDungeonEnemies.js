@@ -2188,10 +2188,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (!enemy.personality) enemy.personality = KDGetPersonality(enemy);
 
 	if (AIData.playerDist < enemy.Enemy.visionRadius / 2) AIData.playChance += 0.1;
-	if (KDEnemyHasFlag(enemy, "Shop")) AIData.playChance = KDStrictPersonalities.includes(enemy.personality) ?  0.01 : 0;
 
 	if (KDAllied(enemy) || (!AIData.hostile && KDGameData.PrisonerState != "jail" && KDGameData.PrisonerState != "parole" && !KinkyDungeonStatsChoice.has("Submissive"))) AIData.playChance *= 0.07; // Drastically reduced chance to play if not hostile
 
+	if (AIData.domMe) {
+		AIData.playChance += 0.25;
+	}
+
+	if (KDEnemyHasFlag(enemy, "Shop")) AIData.playChance = 0;
 	let aware = (enemy.vp > sneakThreshold || enemy.aware);
 	if (KinkyDungeonCanPlay(enemy) && !KinkyDungeonFlags.get("NPCCombat") && !enemy.Enemy.alwaysHostile && !(enemy.rage > 0) && !(enemy.hostile > 0) && player.player && AIData.canSeePlayer && (aware) && KDEnemyCanTalk(enemy) && !KinkyDungeonInJail()) {
 		AIData.playAllowed = true;
@@ -2330,7 +2334,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						AIData.kite = true;
 	}
 
-	if (!KinkyDungeonAggressive(enemy) && player.player && (enemy.playWithPlayer || KDAllied(enemy))) AIData.followRange = 1;
+	if (!KinkyDungeonAggressive(enemy) && player.player && (enemy.playWithPlayer || KDAllied(enemy))) {
+		if (AIData.domMe && KDEnemyPersonalities[enemy.personality] && KDEnemyPersonalities[enemy.personality].brat) {
+			AIData.followRange = 4;
+			AIData.kite = true;
+		} else
+			AIData.followRange = 1;
+	}
 
 	if ((AIType.resetguardposition(enemy, player, AIData)) && (!enemy.gxx || !enemy.gyy)) {
 		enemy.gxx = enemy.gx;
@@ -3970,7 +3980,7 @@ let KDDomThresh_Loose = 0.5;
 let KDDomThresh_Normal = 0.0;
 let KDDomThresh_Strict = -0.4;
 
-let KDDomThresh_Variance = 0.1; // random variance
+let KDDomThresh_Variance = 0.15; // random variance
 let KDDomThresh_PerkMod = -0.5;
 
 /**
@@ -3982,8 +3992,10 @@ function KDCanDom(enemy) {
 	if (enemy.Enemy.tags.nosub) return false;
 	// Very bad pseudo RNG based on enemy.id as seed
 	// TODO replace with better prng with variable seed
-	let modifier = (KinkyDungeonGoddessRep.Ghost + 50)/100 + KDDomThresh_Variance * (((0.76112 * enemy.id) % 2) - 1);
+	if (enemy.domVariance == undefined) enemy.domVariance = (KDEnemyPersonalities[enemy.personality]?.domVariance || KDDomThresh_Variance) * (2 * KDRandom() - 1);
+	let modifier = (KinkyDungeonGoddessRep.Ghost + 50)/100 + enemy.domVariance;
 	if (KinkyDungeonStatsChoice.get("Dominant")) modifier += KDDomThresh_PerkMod;
+	if (KDEnemyPersonalities[enemy.personality] && KDEnemyPersonalities[enemy.personality].domThresh) return modifier <= KDEnemyPersonalities[enemy.personality].domThresh;
 	if (KDLoosePersonalities.includes(enemy.personality)) return modifier <= KDDomThresh_Loose;
 	if (KDStrictPersonalities.includes(enemy.personality)) return modifier <= KDDomThresh_Strict;
 	return modifier <= KDDomThresh_Normal;
