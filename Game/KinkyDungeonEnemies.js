@@ -2335,7 +2335,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 
 	if (!KinkyDungeonAggressive(enemy) && player.player && (enemy.playWithPlayer || KDAllied(enemy))) {
-		if (AIData.domMe && KDEnemyPersonalities[enemy.personality] && KDEnemyPersonalities[enemy.personality].brat) {
+		if (AIData.domMe && KDIsBrat(enemy)) {
 			AIData.followRange = 4;
 			AIData.kite = true;
 		} else
@@ -3999,4 +3999,14 @@ function KDCanDom(enemy) {
 	if (KDLoosePersonalities.includes(enemy.personality)) return modifier <= KDDomThresh_Loose;
 	if (KDStrictPersonalities.includes(enemy.personality)) return modifier <= KDDomThresh_Strict;
 	return modifier <= KDDomThresh_Normal;
+}
+
+/**
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDIsBrat(enemy) {
+	if (KinkyDungeonStatsChoice.get("OnlyBrats")) return true;
+	if (KinkyDungeonStatsChoice.get("NoBrats")) return false;
+	return (KDEnemyPersonalities[enemy.personality] && KDEnemyPersonalities[enemy.personality].brat || KDEnemyHasFlag(enemy, "forcebrat"));
 }

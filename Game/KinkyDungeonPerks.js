@@ -234,6 +234,8 @@ let KinkyDungeonStatsPresets = {
 	"Rusted": {category: "Map", id: "Rusted", cost: 1},
 	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0},
 	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0},
+	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, debuff: true, block: ["OnlyBrats"]},
+	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, debuff: true, block: ["NoBrats"]},
 
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 
@@ -579,8 +581,8 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 		}
 		for (let stat of c.buffs.concat(c.debuffs)) {
 			if (!stat[1].locked || KDUnlockedPerks.includes(stat[0])) {
-				let YY = stat[1].cost < 0 ? Y_alt : Y;
-				let XX = stat[1].cost < 0 ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
+				let YY = (stat[1].cost < 0 || stat[1].debuff) ? Y_alt : Y;
+				let XX = (stat[1].cost < 0 || stat[1].debuff) ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
 
 				if (inView()) {
 					let colorAvailable = NonSelectable ?
@@ -627,7 +629,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 					});
 					filled_x[X] = X;
 				}
-				if (stat[1].cost < 0) Y_alt += KDPerksButtonHeight + KDPerksButtonHeightPad;
+				if (stat[1].cost < 0 || stat[1].debuff) Y_alt += KDPerksButtonHeight + KDPerksButtonHeightPad;
 				else Y += KDPerksButtonHeight + KDPerksButtonHeightPad;
 			}
 		}

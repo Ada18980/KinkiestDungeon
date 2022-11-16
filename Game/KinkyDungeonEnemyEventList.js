@@ -79,7 +79,7 @@ let KDIntentEvents = {
 			let index = Math.floor(Math.random() * 3);
 			let suff = (enemy.Enemy.playLine ? enemy.Enemy.playLine : "");
 			if (AIData.domMe) {
-				if (KDEnemyPersonalities[enemy.personality] && KDEnemyPersonalities[enemy.personality].brat)
+				if (KDIsBrat(enemy))
 					suff = "Brat" + suff;
 				else
 					suff = "Sub" + suff;
