@@ -339,15 +339,26 @@ let KDEventMapInventory = {
 			if (!data.delta) return;
 			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < 0.1) {
 				KinkyDungeonSetFlag("GuardCalled", 35);
-				if (KinkyDungeonEntities.length < 100 || KDGameData.CagedTime > KDMaxCageTime) {
+				console.log("Attempting to call guard");
+				if (KinkyDungeonEntities.length < 400 || KDGameData.CagedTime > KDMaxCageTime) {
+					console.log("Called guard");
 					let requireTags = null;
 					if (KinkyDungeonFlags.has("callGuardJailerOnly")) {
 						requireTags = ["jailer"];
 					}
 					let ee = KinkyDungeonCallGuard(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, true, requireTags);
+					if (ee) {
+						let point = KinkyDungeonGetRandomEnemyPoint(true);
+						if (point) {
+							ee.x = point.x;
+							ee.y = point.y;
+						}
+					}
 					if (ee && (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail')) {
 						ee.IntentAction = 'freeFurniture';
 						ee.playWithPlayer = 12;
+						//if (KDGameData.CagedTime > KDMaxCageTime * 10) {
+						//}
 					}
 				}
 			}
