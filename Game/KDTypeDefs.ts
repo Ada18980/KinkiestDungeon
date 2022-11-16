@@ -346,6 +346,8 @@ interface KDRestraintProps {
 	factionColor?: number[][],
 	/** Determines if it gets hidden by the 'Hide Armor' option */
 	armor?: boolean,
+	/** Power to display, not actual power */
+	displayPower?: number,
 };
 
 interface restraint extends KDRestraintProps {

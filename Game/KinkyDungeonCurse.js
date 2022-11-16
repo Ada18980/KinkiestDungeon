@@ -101,6 +101,7 @@ function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = "P
 		magic: true,
 		events: events,
 		power: power,
+		displayPower: restraint.displayPower || restraint.power,
 	};
 }
 

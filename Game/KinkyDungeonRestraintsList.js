@@ -1418,6 +1418,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 3,
 	protectionCursed: true,
 	strictness: 0.3,
+	displayPower: 10,
 	events: [
 		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
 		{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
@@ -1440,6 +1441,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	shrine: ["Armor", "Robe"],
 	armor: true,
 	protection: 1,
+	displayPower: 10,
 	events: [
 		{trigger: "perksBonus", type: "spellDamage", power: 0.3, inheritLinked: true},
 		{trigger: "tick", type: "spellWardBuff", power: 1, inheritLinked: true},
@@ -1463,6 +1465,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	armor: true,
 	protection: 2,
 	protectionCursed: true,
+	displayPower: 8,
 	events: [
 		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
 		{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
