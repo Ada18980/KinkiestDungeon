@@ -1109,7 +1109,7 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 
 
 		if (!(enemy.lifetime < 9000)) {
-			if (enemy.playerdmg) {
+			if (enemy.playerdmg && !(!KinkyDungeonAggressive(enemy) && KDHelpless(enemy) && KDCanDom(enemy))) {
 				if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.boss)
 					KinkyDungeonChangeRep("Ghost", -5);
 				else if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.miniboss)
@@ -2025,6 +2025,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
 	AIData.hostile = KDHostile(enemy);
+	AIData.domMe = (player.player && KinkyDungeonAggressive(enemy)) ? false : KDCanDom(enemy);
 
 	AIData.leashing = enemy.Enemy.tags.leashing && KDFactionRelation(KDGetFaction(enemy), "Jail") > -0.1;
 	AIData.highdistraction = enemy.distraction > 0 && enemy.distraction >= enemy.Enemy.maxhp * 0.9;
@@ -2579,7 +2580,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
 	if (!(enemy.disarm > 0)
 		&& (!enemy.Enemy.followLeashedOnly || KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id)
-		&& ((AIData.hostile || (enemy.playWithPlayer && player.player)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage)))
+		&& ((AIData.hostile || (enemy.playWithPlayer && player.player && !AIData.domMe)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage)))
 		&& (((enemy.aware && KinkyDungeonTrackSneak(enemy, 0, player)) || (AIData.playerDist < Math.max(1.5, AIData.blindSight) && enemy.vp >= sneakThreshold*0.7)) || (!KDAllied(enemy) && !AIData.hostile))
 		&& !AIData.ignore
 		&& (AIData.attack.includes("Melee") || (enemy.Enemy.tags && AIData.leashing && !KinkyDungeonHasWill(0.1)))
@@ -3388,7 +3389,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		KDIntentEvents[enemy.IntentAction].maintain(enemy, delta);
 	}
 
-	if (enemy.playWithPlayer > 0 && !enemy.hostile) KinkyDungeonApplyBuffToEntity(enemy, KDEager);
+	if (enemy.playWithPlayer > 0 && !enemy.hostile) {
+		KinkyDungeonApplyBuffToEntity(enemy, KDEager);
+		if (AIData.domMe)
+			KinkyDungeonApplyBuffToEntity(enemy, KDMasochist);
+	}
 
 	if (enemy.usingSpecial && (AIData.idle || (AIData.moved && !enemy.Enemy.attackWhileMoving)) && enemy.Enemy.specialCDonAttack) {
 		enemy.specialCD = enemy.Enemy.specialCD;
@@ -3959,4 +3964,27 @@ function KDPredictStruggle(enemy, struggleMod, delta) {
 	}
 
 	return data;
+}
+
+let KDDomThresh_Loose = 0.5;
+let KDDomThresh_Normal = 0.0;
+let KDDomThresh_Strict = -0.4;
+
+let KDDomThresh_Variance = 0.1; // random variance
+let KDDomThresh_PerkMod = -0.5;
+
+/**
+ * @param {entity} enemy - the enemy to check if the player can domme
+ * @returns {boolean}
+ */
+function KDCanDom(enemy) {
+	if (!enemy.Enemy.bound) return false;
+	if (enemy.Enemy.tags.nosub) return false;
+	// Very bad pseudo RNG based on enemy.id as seed
+	// TODO replace with better prng with variable seed
+	let modifier = (KinkyDungeonGoddessRep.Ghost + 50)/100 + KDDomThresh_Variance * (((0.76112 * enemy.id) % 2) - 1);
+	if (KinkyDungeonStatsChoice.get("Dominant")) modifier += KDDomThresh_PerkMod;
+	if (KDLoosePersonalities.includes(enemy.personality)) return modifier <= KDDomThresh_Loose;
+	if (KDStrictPersonalities.includes(enemy.personality)) return modifier <= KDDomThresh_Strict;
+	return modifier <= KDDomThresh_Normal;
 }

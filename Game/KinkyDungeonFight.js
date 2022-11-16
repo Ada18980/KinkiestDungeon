@@ -234,13 +234,18 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 
 function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 	if (Enemy && Enemy.Enemy && (!Spell || !Spell.enemySpell) && (!Faction || Faction == "Player") && !(Enemy.rage > 0) && (!Attacker || Attacker.player || Attacker.Enemy.allied)) {
-		if (Enemy.Enemy.name == "Angel") {
-			Enemy.Enemy = KinkyDungeonGetEnemyByName("AngelHostile");
-			if (KDGameData.KDPenanceStage < 4)
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonAngelAggro"), "yellow", 2);
-		} else if (Enemy && !Enemy.Enemy.allied) {
-			KinkyDungeonSetFlag("PlayerCombat", 24);
-			KinkyDungeonAggroAction('attack', {enemy: Enemy});
+		if ((Enemy.playWithPlayer || !KDHostile(Enemy)) && KDCanDom(Enemy)) {
+			KDAddThought(Enemy.id, "Embarrassed", 5, 1);
+			Enemy.distraction = (Enemy.distraction || 0) + Enemy.Enemy.maxhp * 0.1;
+		} else {
+			if (Enemy.Enemy.name == "Angel") {
+				Enemy.Enemy = KinkyDungeonGetEnemyByName("AngelHostile");
+				if (KDGameData.KDPenanceStage < 4)
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonAngelAggro"), "yellow", 2);
+			} else if (Enemy && !Enemy.Enemy.allied) {
+				KinkyDungeonSetFlag("PlayerCombat", 24);
+				KinkyDungeonAggroAction('attack', {enemy: Enemy});
+			}
 		}
 	}
 }

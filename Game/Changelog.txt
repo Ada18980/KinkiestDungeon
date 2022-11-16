@@ -1167,6 +1167,7 @@ Features
 - New perks: Mana Burst, Arousing Magic, Clearheaded
 - New enemy: Cursed One
 - Added additional lore to the ancient tombs
+- Submissive enemies will now solicit you to... um... yeah. Careful not to actually kill them though.
 
 
 TODO ValidationFindBlockCycles to prevent bugs

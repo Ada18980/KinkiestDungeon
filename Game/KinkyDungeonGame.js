@@ -3006,7 +3006,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 	}
 	let noadvance = false;
 	if (KinkyDungeonHasStamina(Math.abs(attackCost), true)) {
-		if (!KDGameData.ConfirmAttack && (!KinkyDungeonAggressive(Enemy) || KDAllied(Enemy))) {
+		if (!KDGameData.ConfirmAttack && (!KinkyDungeonAggressive(Enemy) || KDAllied(Enemy)) && !(Enemy.playWithPlayer && KDCanDom(Enemy))) {
 			if ((!Enemy.lifetime || Enemy.lifetime > 9000) && !Enemy.Enemy.tags.notalk) { // KDAllied(Enemy)
 				let d = Enemy.Enemy.specialdialogue ? Enemy.Enemy.specialdialogue : "GenericAlly";
 				if (Enemy.specialdialogue) d = Enemy.specialdialogue; // Special dialogue override

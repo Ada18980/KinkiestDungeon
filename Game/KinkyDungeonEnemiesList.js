@@ -241,19 +241,19 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":1, "lastthird":1, "open": 4, "illusionAnger": 10, "illusionRage": 4, "maid": 12}, shrines: ["Illusion"], allFloors: true, attackLock: "Red",
 		dropTable: [{name: "Gold", amountMin: 30, amountMax: 40, weight: 20}, {name: "RedKey", weight: 10}, {name: "Pick", weight: 6}, {name: "EnchKnife", ignoreInInventory: true, weight: 1}]},
 
-	{name: "Skeleton", bound: "Skeleton", playLine: "Skeleton", clusterWith: "skeleton", tags: KDMapInit(["leashing", "skeleton", "gagged", "melee", "ropeRestraints", "leatherRestraints", "clothRestraints", "coldresist", "crushweakness", "search"]), ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",
+	{name: "Skeleton", bound: "Skeleton", playLine: "Skeleton", clusterWith: "skeleton", tags: KDMapInit(["nosub", "leashing", "skeleton", "gagged", "melee", "ropeRestraints", "leatherRestraints", "clothRestraints", "coldresist", "crushweakness", "search"]), ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",
 		visionRadius: 4, maxhp: 5, minLevel:1, weight:8, movePoints: 2, attackPoints: 3, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1.0,
 		terrainTags: {"secondhalf":4, "increasingWeight":-0.5}, shrines: ["Leather"], floors:KDMapInit(["cat", "tmb"]), dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}]},
-	{name: "SummonedSkeleton", bound: "Skeleton", playLine: "Skeleton", clusterWith: "skeleton", tags: KDMapInit(["leashing", "skeleton", "gagged", "melee", "coldresist", "ropeRestraints", "leatherRestraints", "clothRestraints", "crushweakness"]), ignorechance: 0, armor: 0, followRange: 1, AI: "guard",
+	{name: "SummonedSkeleton", bound: "Skeleton", playLine: "Skeleton", clusterWith: "skeleton", tags: KDMapInit(["nosub", "leashing", "skeleton", "gagged", "melee", "coldresist", "ropeRestraints", "leatherRestraints", "clothRestraints", "crushweakness"]), ignorechance: 0, armor: 0, followRange: 1, AI: "guard",
 		visionRadius: 5, maxhp: 5, minLevel:1, weight:8, movePoints: 2, attackPoints: 3, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 0.5, dmgType: "grope", fullBoundBonus: 0.5,
 		terrainTags: {"lastthird":-8}, shrines: [], floors:KDMapInit([])},
-	{name: "LesserSkeleton", bound: "Skeleton", playLine: "Skeleton", noChaseUnrestrained: true, clusterWith: "skeleton", tags: KDMapInit(["leashing", "ignorenoSP", "skeleton", "gagged", "melee", "coldresist", "crushweakness"]), ignorechance: 0, armor: 0, followRange: 1, AI: "wander", evasion: -2,
+	{name: "LesserSkeleton", bound: "Skeleton", playLine: "Skeleton", noChaseUnrestrained: true, clusterWith: "skeleton", tags: KDMapInit(["nosub", "leashing", "ignorenoSP", "skeleton", "gagged", "melee", "coldresist", "crushweakness"]), ignorechance: 0, armor: 0, followRange: 1, AI: "wander", evasion: -2,
 		visionRadius: 1, maxhp: 2.5, minLevel:0, weight:10, movePoints: 2, attackPoints: 3, attack: "MeleeWillSlow", attackWidth: 1, attackRange: 1, power: 0.5, dmgType: "grope", fullBoundBonus: 0.5,
 		terrainTags: {"secondhalf":-8, "lastthird":-8, "increasingWeight":-1}, floors:KDMapInit(["cat", "tmb"])},
-	{name: "GreaterSkeleton", bound: "GreaterSkeleton", playLine: "Skeleton", clusterWith: "skeleton", tags: KDMapInit(["leashing", "skeleton", "gagged", "melee", "unflinching", "elite", "coldresist", "crushweakness", "hunter"]), ignorechance: 0, armor: 1, followRange: 1.5, AI: "hunt", guardChance: 0.6, disarm: 0.5,
+	{name: "GreaterSkeleton", bound: "GreaterSkeleton", playLine: "Skeleton", clusterWith: "skeleton", tags: KDMapInit(["nosub", "leashing", "skeleton", "gagged", "melee", "unflinching", "elite", "coldresist", "crushweakness", "hunter"]), ignorechance: 0, armor: 1, followRange: 1.5, AI: "hunt", guardChance: 0.6, disarm: 0.5,
 		visionRadius: 4, maxhp: 10, minLevel:9, weight:5, movePoints: 3, attackPoints: 3, attack: "MeleeWillSlow", attackWidth: 3, attackRange: 1, power: 5, dmgType: "crush", fullBoundBonus: 0,
 		terrainTags: {"secondhalf":4, "lastthird":6, "increasingWeight":0.5}, floors:KDMapInit(["cat", "tmb", "tmp"]), dropTable: [{name: "PotionStamina", weight: 3}, {name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Hammer", weight: 50, ignoreInInventory: true}]},
-	{name: "HeavySkeleton", bound: "HeavySkeleton", playLine: "Skeleton", clusterWith: "skeleton", color: "#aaaaaa", tags: KDMapInit(["leashing", "skeleton", "gagged", "melee", "unflinching", "elite", "coldresist", "crushweakness", "hunter", "obsidianRestraints"]), ignorechance: 0, armor: 2, followRange: 1.5, AI: "hunt", guardChance: 0.6, disarm: 0.5,
+	{name: "HeavySkeleton", bound: "HeavySkeleton", playLine: "Skeleton", clusterWith: "skeleton", color: "#aaaaaa", tags: KDMapInit(["nosub", "leashing", "skeleton", "gagged", "melee", "unflinching", "elite", "coldresist", "crushweakness", "hunter", "obsidianRestraints"]), ignorechance: 0, armor: 2, followRange: 1.5, AI: "hunt", guardChance: 0.6, disarm: 0.5,
 		visionRadius: 6, maxhp: 16, minLevel:15, weight:4, movePoints: 3, attackPoints: 3, attack: "MeleeWillSlowBind", attackWidth: 3.6, attackRange: 1, power: 5, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"secondhalf":1, "lastthird":4, "increasingWeight":1}, floors:KDMapInit(["cat", "tmb", "tmp"]),
 		dropTable: [{name: "PotionStamina", weight: 3}, {name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Axe", weight: 50, ignoreInInventory: true}]},
@@ -1325,7 +1325,7 @@ let KinkyDungeonEnemies = [
 
 
 	// Bosses
-	{name: "Fuuka1", playLine: "Fuuka", bound: "TalismanZombie", faction: "Boss", clusterWith: "zombie", tags: KDMapInit(["leashing", "noshop", "zombie", "ranged", "mikoRestraints", "stageBoss", "jail", "boss", "nocapture", "unflinching"]),
+	{name: "Fuuka1", playLine: "Fuuka", bound: "TalismanZombie", faction: "Boss", clusterWith: "zombie", tags: KDMapInit(["nosub", "leashing", "noshop", "zombie", "ranged", "mikoRestraints", "stageBoss", "jail", "boss", "nocapture", "unflinching"]),
 		armor: 0, followRange: 3, AI: "guard",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ffffff"},
@@ -1333,7 +1333,7 @@ let KinkyDungeonEnemies = [
 		spells: ["ZombieOrb", "ManyOrbs", "SummonZombies"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 1.5, projectileAttack: true, accuracy: 0.7, noChannel: true,
 		visionRadius: 8, maxhp: 80, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeWillBind", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"FuukaStage2", click: true}, {type: "summon", enemy: "Fuuka2", range: 2.5, count: 1, strict: true, hostile: true}]},
-	{name: "Fuuka2", playLine: "Fuuka", bound: "TalismanZombie", faction: "Boss", clusterWith: "zombie", tags: KDMapInit(["leashing", "zombie", "ranged", "mikoRestraints", "stageBoss", "jail", "boss", "nocapture", "unflinching"]),
+	{name: "Fuuka2", playLine: "Fuuka", bound: "TalismanZombie", faction: "Boss", clusterWith: "zombie", tags: KDMapInit(["nosub", "leashing", "zombie", "ranged", "mikoRestraints", "stageBoss", "jail", "boss", "nocapture", "unflinching"]),
 		armor: 0, followRange: 1, AI: "hunt",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 7, color: "#ffffff"},

@@ -73,10 +73,12 @@ let KDIntentEvents = {
 			enemy.playWithPlayer = 8 + Math.floor(KDRandom() * (5 * Math.min(5, Math.max(enemy.Enemy.attackPoints || 0, enemy.Enemy.movePoints || 0))));
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 7);
 			enemy.playWithPlayerCD = 20 + enemy.playWithPlayer * 2.5;
+			if (AIData.domMe) enemy.playWithPlayer = enemy.playWithPlayerCD;
 			KDAddThought(enemy.id, "Play", 4, enemy.playWithPlayer);
 
 			let index = Math.floor(Math.random() * 3);
 			let suff = (enemy.Enemy.playLine ? enemy.Enemy.playLine : "");
+			if (AIData.domMe) suff = "Sub" + suff;
 			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + index).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
 		},
 	},

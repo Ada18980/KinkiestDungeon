@@ -1,8 +1,16 @@
 "use strict";
 
-function KDPersonalitySpread(Min, Avg, Max) {
-	return KDStrictPersonalities.includes(KDGameData.CurrentDialogMsgPersonality) ? Max :
-		(!KDLoosePersonalities.includes(KDGameData.CurrentDialogMsgPersonality) ? Avg :
+/**
+ *
+ * @param {number} Min
+ * @param {number} Avg
+ * @param {number} Max
+ * @param {entity} [Enemy]
+ * @returns {number}
+ */
+function KDPersonalitySpread(Min, Avg, Max, Enemy) {
+	return KDStrictPersonalities.includes(Enemy?.personality || KDGameData.CurrentDialogMsgPersonality) ? Max :
+		(!KDLoosePersonalities.includes(Enemy?.personality || KDGameData.CurrentDialogMsgPersonality) ? Avg :
 		Min);
 }
 
