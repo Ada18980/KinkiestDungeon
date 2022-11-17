@@ -17,7 +17,7 @@ function KDUpdateDoorNavMap() {
 let KDPathfindingCacheHits = 0;
 let KDPathfindingCacheFails = 0;
 
-let KDPFTrim = 100;
+let KDPFTrim = 40;
 
 /**
  * @param {number} startx - the start position

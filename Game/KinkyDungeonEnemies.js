@@ -1367,7 +1367,7 @@ function KDNearbyNeutrals(x, y, dist, neutralEnemy) {
 	return list;
 }
 
-function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy) {
+function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6) {
 	let tries = 0;
 
 	while (tries < 100) {
@@ -1376,10 +1376,9 @@ function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy) {
 		if (point) {
 			let X = point.x;//1 + Math.floor(KDRandom()*(KinkyDungeonGridWidth - 1));
 			let Y = point.y;//1 + Math.floor(KDRandom()*(KinkyDungeonGridHeight - 1));
-			let playerDist = 6;
 			let PlayerEntity = KinkyDungeonNearestPlayer({x:X, y:Y});
 
-			if (((!avoidPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) > playerDist)
+			if (((!avoidPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) > minDist)
 				&& (!onlyPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) <= playerDist))
 				&& (!KinkyDungeonPointInCell(X, Y)) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))
 				&& KinkyDungeonNoEnemyExceptSub(X, Y, true, Enemy) && (!KinkyDungeonTiles.get(X + "," + Y) || !KinkyDungeonTiles.get(X + "," + Y).OffLimits)) {
@@ -2431,16 +2430,16 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								}
 							}
 							enemy.path = KinkyDungeonFindPath(enemy.x, enemy.y, player.x, player.y,
-								KDEnemyHasFlag(enemy, "blocked"), KDRandom() < 0.5 ? true : false,
+								KDEnemyHasFlag(enemy, "blocked"), KDEnemyHasFlag(enemy, "blocked"),
 								enemy == KinkyDungeonLeashingEnemy() || AIData.ignoreLocks, AIData.MovableTiles,
-								undefined, undefined, undefined, enemy, true); // Give up and pathfind
+								undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard()); // Give up and pathfind
 						} if (enemy.path && enemy.path.length > 0 && Math.max(Math.abs(enemy.path[0].x - enemy.x),Math.abs(enemy.path[0].y - enemy.y)) < 1.5) {
 							dir = {x: enemy.path[0].x - enemy.x, y: enemy.path[0].y - enemy.y, delta: KDistChebyshev(enemy.path[0].x - enemy.x, enemy.path[0].y - enemy.y)};
 							if (!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
 								|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
 								enemy.path = undefined;
 								KinkyDungeonSetEnemyFlag(enemy, "failpath", 20);
-								KinkyDungeonSetEnemyFlag(enemy, "blocked", 5);
+								KinkyDungeonSetEnemyFlag(enemy, "blocked", 3);
 							}
 							splice = true;
 						} else {
@@ -2487,18 +2486,21 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					let splice = false;
 					if (T > 2 && T < 8) dir = KinkyDungeonGetDirectionRandom(dir.x * 10, dir.y * 10); // Fan out a bit
 					if (T >= 8 || enemy.path || !KinkyDungeonCheckPath(enemy.x, enemy.y, enemy.gx, enemy.gy)) {
-						if (!enemy.path) enemy.path = KinkyDungeonFindPath(
-							enemy.x, enemy.y, enemy.gx, enemy.gy,
-							AIData.playerDist > AIData.chaseRadius, KDRandom() < 0.5 ? true : false,
-							enemy == KinkyDungeonLeashingEnemy() || AIData.ignoreLocks, AIData.MovableTiles,
-							undefined, undefined, undefined, enemy, true); // Give up and pathfind
+						if (!enemy.path && !KDEnemyHasFlag(enemy, "genpath")) {
+							enemy.path = KinkyDungeonFindPath(
+								enemy.x, enemy.y, enemy.gx, enemy.gy,
+								false, KDEnemyHasFlag(enemy, "blocked"),
+								enemy == KinkyDungeonLeashingEnemy() || AIData.ignoreLocks, AIData.MovableTiles,
+								undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard()); // Give up and pathfind
+							KinkyDungeonSetEnemyFlag(enemy, "genpath", 10);
+						}
 						if (enemy.path && enemy.path.length > 0 && Math.max(Math.abs(enemy.path[0].x - enemy.x),Math.abs(enemy.path[0].y - enemy.y)) < 1.5) {
 							dir = {x: enemy.path[0].x - enemy.x, y: enemy.path[0].y - enemy.y, delta: KDistChebyshev(enemy.path[0].x - enemy.x, enemy.path[0].y - enemy.y)};
 							if (!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
 								|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
 								enemy.path = undefined;
 								KinkyDungeonSetEnemyFlag(enemy, "failpath", 20);
-								KinkyDungeonSetEnemyFlag(enemy, "blocked", 5);
+								KinkyDungeonSetEnemyFlag(enemy, "blocked", 3);
 							}
 							splice = true;
 						} else {
@@ -2537,14 +2539,16 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				if ((wanderfar || wandernear) && !AIData.followPlayer && (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere")) && !KDEnemyHasFlag(enemy, "StayHere") && enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive)) {
 					if ((Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 1.5 || (KDRandom() < 0.02 && KDEnemyHasFlag(enemy, "failpath"))) || (!(enemy.vp > 0.05) && (!enemy.path || KDRandom() < 0.1))) {
 						let master = KinkyDungeonFindMaster(enemy).master;
-						if (KDRandom() < 0.1 && !master && wanderfar) {
+						if (!KDEnemyHasFlag(enemy, "wander") && !master && wanderfar) {
 							// long distance hunt
 							let newPoint = KinkyDungeonGetRandomEnemyPoint(false, enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
 							if (newPoint) {
 								enemy.gx = newPoint.x;
 								enemy.gy = newPoint.y;
 							}
+							KinkyDungeonSetEnemyFlag(enemy, "wander", 35 + Math.floor(KDRandom() * 35));
 						} else if (wandernear) {
+							KinkyDungeonSetEnemyFlag(enemy, "wander", 8 + Math.floor(KDRandom() * 12));
 							if (KinkyDungeonAlert && AIData.playerDist < Math.max(4, AIData.visionRadius)) {
 								enemy.gx = KinkyDungeonPlayerEntity.x;
 								enemy.gy = KinkyDungeonPlayerEntity.y;
