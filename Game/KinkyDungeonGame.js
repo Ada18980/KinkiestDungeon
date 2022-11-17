@@ -205,7 +205,7 @@ function KinkyDungeonInitialize(Level, Load) {
 		localStorage.setItem("kinkydungeonappearance", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
 		KinkyDungeonConfigAppearance = false;
 	}
-
+	CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayer));
 	KinkyDungeonDressPlayer();
 	KinkyDungeonDrawState = "Game";
 
@@ -296,6 +296,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 	for (let iterations = 0; iterations < 100; iterations++) {
 		KDPathfindingCacheFails = 0;
 		KDPathfindingCacheHits = 0;
+		KDPathCache = new Map();
 		KDThoughtBubbles = new Map();
 		KinkyDungeonSpecialAreas = [];
 		KinkyDungeonShortcutPosition = null;

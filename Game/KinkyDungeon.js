@@ -1814,6 +1814,7 @@ function KinkyDungeonHandleClick() {
 			}
 			// Return to menu
 			KinkyDungeonState = "Menu";
+			KinkyDungeonNewDress = true;
 			ElementRemove("saveInputField");
 			return true;
 		} else if (MouseIn(1275, 750, 350, 64)) {

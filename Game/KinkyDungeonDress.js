@@ -517,14 +517,14 @@ function KDApplyItem(inv, tags) {
 				}
 			}
 			placed.Property = {Type: type, Difficulty: restraint.power, LockedBy: inv.lock ? "MetalPadlock" : undefined};
-			if ((!already || restraint.power > difficulty) && type) {
+			/*if ((!already) && type) {
 				KinkyDungeonPlayer.FocusGroup = AssetGroupGet("Female3DCG", AssetGroup);
 				let options = window["Inventory" + ((AssetGroup.includes("ItemMouth")) ? "ItemMouth" : AssetGroup) + restraint.Asset + "Options"];
 				if (!options) options = TypedItemDataLookup[`${AssetGroup}${restraint.Asset}`].options; // Try again
 				const option = options.find(o => o.Name === type);
 				ExtendedItemSetType(KinkyDungeonPlayer, options, option);
 				KinkyDungeonPlayer.FocusGroup = null;
-			}
+			}*/
 
 			if (restraint.Modules) {
 				let data = ModularItemDataLookup[AssetGroup + restraint.Asset];
