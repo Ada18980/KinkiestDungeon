@@ -1807,6 +1807,11 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 							KDClearItems(enemy);
 						}
 					}
+
+					if (idle && enemy.hp > 0) {
+						KDCaptureNearby(enemy);
+					}
+
 					let end = performance.now();
 					if (KDDebug)
 						console.log(`Took ${end - start} milliseconds to run loop for enemy ${enemy.Enemy.name}`);
@@ -4010,4 +4015,17 @@ function KDIsBrat(enemy) {
 	if (KinkyDungeonStatsChoice.get("OnlyBrats")) return true;
 	if (KinkyDungeonStatsChoice.get("NoBrats")) return false;
 	return (KDEnemyPersonalities[enemy.personality]?.brat || KDEnemyHasFlag(enemy, "forcebrat"));
+}
+
+/**
+ * Captures helpless enemies near the enemy
+ * @param {entity} enemy
+ */
+function KDCaptureNearby(enemy) {
+	let enemies = KDNearbyEnemies(enemy.x, enemy.y, 1.5, enemy);
+	for (let en of enemies) {
+		if (KDHelpless(en) && en.hp < 0.52) {
+			en.hp = 0;
+		}
+	}
 }
