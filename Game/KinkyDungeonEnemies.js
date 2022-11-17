@@ -4009,5 +4009,5 @@ function KDCanDom(enemy) {
 function KDIsBrat(enemy) {
 	if (KinkyDungeonStatsChoice.get("OnlyBrats")) return true;
 	if (KinkyDungeonStatsChoice.get("NoBrats")) return false;
-	return (KDEnemyPersonalities[enemy.personality] && KDEnemyPersonalities[enemy.personality].brat || KDEnemyHasFlag(enemy, "forcebrat"));
+	return (KDEnemyPersonalities[enemy.personality]?.brat || KDEnemyHasFlag(enemy, "forcebrat"));
 }

@@ -928,6 +928,12 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 					}
 				}
 
+				if (spawns[0].ftags) {
+					for (let t of spawns[0].ftags) {
+						filterTags.push(t);
+					}
+				}
+
 				if (!specific) {
 					tags.push(randomFactions[Math.floor(randomFactions.length * KDRandom())]);
 				}
@@ -992,7 +998,15 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			if (randomFactions.length > 0 && !box && !currentCluster && !spawnPoint)
 				tags.push(randomFactions[Math.floor(randomFactions.length * KDRandom())]);
 			if (required.length == 0) required = undefined;
-			let Enemy = KinkyDungeonGetEnemy(tags, Floor + KinkyDungeonDifficulty/5, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], KinkyDungeonMapGet(X, Y), required, ncount > neutralCount && (!box || !box.ignoreAllyCount), BonusTags, currentCluster ? filterTagsCluster : filterTags);
+			let Enemy = KinkyDungeonGetEnemy(
+				tags,
+				Floor + KinkyDungeonDifficulty/5,
+				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				KinkyDungeonMapGet(X, Y),
+				required,
+				ncount > neutralCount && (!box || !box.ignoreAllyCount),
+				BonusTags,
+				currentCluster ? filterTagsCluster : filterTags);
 			if (box && !Enemy) {
 				box.currentCount += 0.05;
 			}

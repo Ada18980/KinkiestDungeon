@@ -883,20 +883,20 @@ function KDCreateDoors(Left, Top, Width, Height, openChance = 0, convertDoodads 
 function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToChestList) {
 	// Determine faction
 	let factionList = [
-		{faction: "Bandit", tags: ["bandit"], rtags: ["bandit"]},
-		{faction: "Dragon", tags: ["dragon"], rtags: ["dragon"]},
-		{faction: "AncientRobot", tags: ["robot"], rtags: ["robot"]},
-		{faction: "Maidforce", tags: ["maid"], rtags: ["maid"]},
-		{faction: "Bountyhunter", tags: ["bountyhunter"], rtags: ["bountyhunter"]},
-		{faction: "Dressmaker", tags: ["dressmaker"], rtags: ["dressmaker"]},
-		{faction: "Witch", tags: ["witch", "apprentice", "skeleton"], rtags: ["witch", "apprentice", "skeleton"]},
-		{faction: "Apprentice", tags: ["apprentice"], rtags: ["apprentice"]},
-		{faction: "Mushy", tags: ["mushroom"], rtags: ["mushy"]},
-		{faction: "Nevermere", tags: ["wolfgirl"], rtags: ["wolfgirl"]},
-		{faction: "Bast", tags: ["mummy"], rtags: ["mummy"]},
-		{faction: "Elf", tags: ["elf"], rtags: ["elf"]},
-		{faction: "Elemental", tags: ["elemental", "witch"], rtags: ["elemental", "witch"]},
-		{faction: "Alchemist", tags: ["alchemist"], rtags: ["alchemist"]},
+		{faction: "Bandit", tags: ["bandit"], rtags: ["bandit"], ftags: ["miniboss", "boss"]},
+		{faction: "Dragon", tags: ["dragon"], rtags: ["dragon"], ftags: ["miniboss", "boss"]},
+		{faction: "AncientRobot", tags: ["robot"], rtags: ["robot"], ftags: ["miniboss", "boss"]},
+		{faction: "Maidforce", tags: ["maid"], rtags: ["maid"], ftags: ["miniboss", "boss"]},
+		{faction: "Bountyhunter", tags: ["bountyhunter"], rtags: ["bountyhunter"], ftags: ["miniboss", "boss"]},
+		{faction: "Dressmaker", tags: ["dressmaker"], rtags: ["dressmaker"], ftags: ["miniboss", "boss"]},
+		{faction: "Witch", tags: ["witch", "apprentice", "skeleton"], rtags: ["witch", "apprentice", "skeleton"], ftags: ["miniboss", "boss"]},
+		{faction: "Apprentice", tags: ["apprentice"], rtags: ["apprentice"], ftags: ["miniboss", "boss"]},
+		{faction: "Mushy", tags: ["mushroom"], rtags: ["mushy"], ftags: ["miniboss", "boss"]},
+		{faction: "Nevermere", tags: ["wolfgirl"], rtags: ["wolfgirl"], ftags: ["miniboss", "boss"]},
+		{faction: "Bast", tags: ["mummy"], rtags: ["mummy"], ftags: ["miniboss", "boss"]},
+		{faction: "Elf", tags: ["elf"], rtags: ["elf"], ftags: ["miniboss", "boss"]},
+		{faction: "Elemental", tags: ["elemental", "witch"], rtags: ["elemental", "witch"], ftags: ["miniboss", "boss"]},
+		{faction: "Alchemist", tags: ["alchemist"], rtags: ["alchemist"], ftags: ["miniboss", "boss"]},
 	];
 	let factionSelected = factionList[Math.floor(KDRandom() * factionList.length)];
 	// Place the chest
@@ -904,10 +904,10 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 		chestlist.push({x: cornerX + 1, y: cornerY + 1, priority: true, Faction: factionSelected.faction, NoTrap: true});
 	}
 	// Place the guards
-	spawnPoints.push({x:cornerX, y:cornerY, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], tags: factionSelected.tags, AI: "guard"});
-	spawnPoints.push({x:cornerX+2, y:cornerY, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], tags: factionSelected.tags, AI: "guard"});
-	spawnPoints.push({x:cornerX, y:cornerY+2, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], tags: factionSelected.tags, AI: "guard"});
-	spawnPoints.push({x:cornerX+2, y:cornerY+2, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], tags: factionSelected.tags, AI: "guard"});
+	spawnPoints.push({x:cornerX, y:cornerY, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
+	spawnPoints.push({x:cornerX+2, y:cornerY, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
+	spawnPoints.push({x:cornerX, y:cornerY+2, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
+	spawnPoints.push({x:cornerX+2, y:cornerY+2, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
 
 	return factionSelected.faction;
 }

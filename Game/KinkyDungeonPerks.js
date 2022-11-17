@@ -164,7 +164,7 @@ let KinkyDungeonStatsPresets = {
 	"Locksmith": {category: "Restraints", id: 4, cost: 2, block: ["Clueless"]},
 	"Clueless": {category: "Restraints", id: 5, cost: -1, block: ["Locksmith"]},
 	"HighSecurity": {category: "Restraints", id: 48, cost: -1},
-	"SearchParty": {category: "Enemies", id: 51, cost: -1},
+	//"SearchParty": {category: "Enemies", id: 51, cost: -1},
 	"NoWayOut": {category: "Restraints", id: 52, cost: -1},
 	"TightRestraints": {category: "Restraints", id: 54, cost: -1},
 	"MagicHands": {category: "Restraints", id: "MagicHands", cost: -1},

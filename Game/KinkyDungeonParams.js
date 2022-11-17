@@ -39,7 +39,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Graveyard", Weight: 6},
 			{Type: "Altar", Weight: 3},
 			{Type: "SmallAltar", Weight: 18},
-			{Type: "GuardedChest", Weight: 10},
+			{Type: "GuardedChest", Weight: 30},
 			{Type: "LargeGuardedChest", Weight: 20},
 			{Type: "QuadCell", Weight: 3},
 			{Type: "Storage", Weight: 5},
@@ -123,7 +123,7 @@ const KinkyDungeonMapParams = {
 			{Type: "QuadCell", Weight: 8},
 			{Type: "Storage", Weight: 5},
 			{Type: "SmallAltar", Weight: 18},
-			{Type: "GuardedChest", Weight: 10},
+			{Type: "GuardedChest", Weight: 30},
 			{Type: "LargeGuardedChest", Weight: 20},
 			{Type: "ExtraCell", Weight: 10},
 		],
@@ -204,7 +204,7 @@ const KinkyDungeonMapParams = {
 		"setpieces": [
 			{Type: "Altar", Weight: 6},
 			{Type: "SmallAltar", Weight: 20},
-			{Type: "GuardedChest", Weight: 10},
+			{Type: "GuardedChest", Weight: 30},
 			{Type: "LargeGuardedChest", Weight: 20},
 			{Type: "JungleLight", Weight: 8},
 			{Type: "Fireflies", Weight: 40},
@@ -295,7 +295,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Bedroom", Weight: 1},
 			{Type: "Altar", Weight: 6},
 			{Type: "SmallAltar", Weight: 20},
-			{Type: "GuardedChest", Weight: 10},
+			{Type: "GuardedChest", Weight: 30},
 			{Type: "LargeGuardedChest", Weight: 20},
 			{Type: "Magicflies", Weight: 12},
 		],
@@ -379,7 +379,7 @@ const KinkyDungeonMapParams = {
 		"setpieces": [
 			{Type: "Altar", Weight: 6},
 			{Type: "SmallAltar", Weight: 20},
-			{Type: "GuardedChest", Weight: 10},
+			{Type: "GuardedChest", Weight: 30},
 			{Type: "LargeGuardedChest", Weight: 20},
 			{Type: "Storage", Weight: 7},
 		],
@@ -461,6 +461,12 @@ const KinkyDungeonMapParams = {
 			sprite: "TorchOrb",
 			brightness: 4,
 		},
+
+		"setpieces": [
+			{Type: "SmallAltar", Weight: 20},
+			{Type: "GuardedChest", Weight: 30},
+			{Type: "LargeGuardedChest", Weight: 20},
+		],
 
 		tagModifiers: {
 			"urban": 2,
@@ -548,7 +554,7 @@ const KinkyDungeonMapParams = {
 		"setpieces": [
 			{Type: "Altar", Weight: 6},
 			{Type: "SmallAltar", Weight: 20},
-			{Type: "GuardedChest", Weight: 10},
+			{Type: "GuardedChest", Weight: 30},
 			{Type: "LargeGuardedChest", Weight: 20},
 			{Type: "Storage", Weight: 2},
 			{Type: "Magicflies", Weight: 40},
