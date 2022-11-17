@@ -19,7 +19,7 @@ let KinkyDungeonOutfitsBase = [
 
 /**
  * List off all dresses items
- * @type {Object.<outfitKey,KinkyDungeonDress>}
+ * @type {Record<string,KinkyDungeonDress>}
  */
 let KinkyDungeonDresses = {
 	"Default" : KinkyDungeonDefaultDefaultDress,
