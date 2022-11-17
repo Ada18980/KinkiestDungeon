@@ -162,7 +162,7 @@ function KDAllySpeaker(Turns, Follow) {
 	}
 }
 
-function KDAggroSpeaker(Turns) {
+function KDAggroSpeaker(Turns = 300) {
 	let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 	if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 		if (!(enemy.hostile > 0)) {

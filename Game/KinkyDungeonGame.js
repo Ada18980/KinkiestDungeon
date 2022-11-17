@@ -305,6 +305,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		KDGameData.KinkyDungeonPenance = false;
 		KDRestraintsCache = new Map();
 		KDEnemiesCache = new Map();
+		KDEnemyCache = new Map();
 		KinkyDungeonGrid = "";
 		KinkyDungeonTiles = new Map();
 		KinkyDungeonTilesSkin = new Map();
@@ -2668,7 +2669,7 @@ function KinkyDungeonClickGame(Level) {
 		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Damage.ogg");
 	}
 	// If no buttons are clicked then we handle move
-	else if (KinkyDungeonControlsEnabled()) {
+	else if (KinkyDungeonControlsEnabled() && KinkyDungeonDrawState == "Game") {
 		try {
 
 			if (KDModalArea || KinkyDungeonTargetTile) {
@@ -2728,7 +2729,7 @@ function KinkyDungeonGetMovable() {
 }
 
 function KinkyDungeonListenKeyMove() {
-	if (KinkyDungeonLastMoveTimer < performance.now() && KinkyDungeonControlsEnabled()) {
+	if (KinkyDungeonLastMoveTimer < performance.now() && KinkyDungeonControlsEnabled() && KinkyDungeonDrawState == "Game") {
 		let moveDirection = null;
 		let moveDirectionDiag = null;
 

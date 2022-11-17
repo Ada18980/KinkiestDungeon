@@ -121,7 +121,11 @@ let KDDialogue = {
 				prerequisiteFunction: (gagged) => {return false;},
 				options: {"Leave": {playertext: "Leave", exitDialogue: true}}},
 			"Deny": {gag: true, playertext: "WeaponFoundDeny", response: "Punishment", personalities: ["Dom", "Sub", "Robot"],
-				clickFunction: (gagged) => {KinkyDungeonStartChase(undefined, "Refusal"); return false;},
+				clickFunction: (gagged) => {
+					KinkyDungeonStartChase(undefined, "Refusal");
+					KDAggroSpeaker();
+					return false;
+				},
 				options: {"Leave": {playertext: "Leave", exitDialogue: true}}},
 			"Illusion": {gagDisabled: true, playertext: "WeaponFoundIllusion", response: "Disbelief", personalities: ["Dom", "Sub", "Robot"],
 				prerequisiteFunction: (gagged) => {return KinkyDungeonGoddessRep.Illusion >= 51;},
@@ -130,6 +134,7 @@ let KDDialogue = {
 						KDGameData.CurrentDialogStage = "Deny";
 						KDGameData.CurrentDialogMsg = "HeadMaidExcuseMe";
 						KinkyDungeonStartChase(undefined, "Refusal");
+						KDAggroSpeaker();
 					} else {
 						let diff = KDPersonalitySpread(40, 60, 80);
 						if (KDBasicCheck(["Illusion", "Ghost"], ["Prisoner"]) > diff) {

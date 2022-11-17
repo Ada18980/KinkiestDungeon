@@ -258,9 +258,10 @@ let KDLocalChaseTypes = ["Refusal", "Attack", "Spell", "SpellItem", "Shrine", "O
  * @param {entity} enemy
  * @param {string} Type
  * @param {string} [faction]
+ * @param {boolean} [force]
  */
-function KinkyDungeonStartChase(enemy, Type, faction) {
-	if (enemy && (!enemy.aware && !(enemy.vp > 0.5))) return;
+function KinkyDungeonStartChase(enemy, Type, faction, force) {
+	if (!force && enemy && (!enemy.aware && !(enemy.vp > 0.5))) return;
 	if ((!enemy && !KDLocalChaseTypes.includes(Type))) {
 		if (KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'parole') {
 			KinkyDungeonChangeRep("Ghost", -10);

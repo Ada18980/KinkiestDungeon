@@ -679,7 +679,7 @@ function KDSpawnLootTrap(x, y, trap, mult) {
 	for (let i = 0; i < 30; i++) {
 		if (spawned < maxspawn) {
 			let Enemy = KinkyDungeonGetEnemy(
-				tags, MiniGameKinkyDungeonLevel,
+				tags, MiniGameKinkyDungeonLevel + KinkyDungeonDifficulty/5,
 				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 				'0', requireTags, true);
 			if (Enemy) {
