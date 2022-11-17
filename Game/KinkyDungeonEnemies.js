@@ -2025,7 +2025,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
 	AIData.hostile = KDHostile(enemy);
-	AIData.domMe = (player.player && KinkyDungeonAggressive(enemy)) ? false : KDCanDom(enemy);
+	AIData.aggressive = KinkyDungeonAggressive(enemy);
+	AIData.domMe = (player.player && AIData.aggressive) ? false : KDCanDom(enemy);
 
 	AIData.leashing = enemy.Enemy.tags.leashing && KDFactionRelation(KDGetFaction(enemy), "Jail") > -0.1;
 	AIData.highdistraction = enemy.distraction > 0 && enemy.distraction >= enemy.Enemy.maxhp * 0.9;
@@ -2058,7 +2059,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		if (enemy.Enemy.tags.leashing && !AIData.leashing && !KinkyDungeonHasWill(0.1) && !KinkyDungeonPlayer.CanInteract()) {
 			AIData.ignore = true;
 		}
-		if (!KinkyDungeonAggressive(enemy) && !(enemy.rage > 0) && !enemy.Enemy.alwaysHostile && (!enemy.playWithPlayer || !player.player)) AIData.ignore = true;
+		if (!AIData.aggressive && !(enemy.rage > 0) && !enemy.Enemy.alwaysHostile && (!enemy.playWithPlayer || !player.player)) AIData.ignore = true;
 		if (AIData.distracted) AIData.ignore = true;
 	}
 
@@ -2101,9 +2102,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.hitsfx = (enemy.Enemy && enemy.Enemy.hitsfx) ? enemy.Enemy.hitsfx : "";
 	if (KinkyDungeonAlert && AIData.playerDist < KinkyDungeonAlert) {
 		if (KDPlayerLight < 1.5 && AIData.playerDist < KinkyDungeonAlert*0.5) {
-			if (!enemy.aware && KinkyDungeonAggressive(enemy)) KDAddThought(enemy.id, "Blind", 3, 3);
+			if (!enemy.aware && AIData.aggressive) KDAddThought(enemy.id, "Blind", 3, 3);
 		} else {
-			if (!enemy.aware && KinkyDungeonAggressive(enemy)) KDAddThought(enemy.id, "Aware", 3, 3);
+			if (!enemy.aware && AIData.aggressive) KDAddThought(enemy.id, "Aware", 3, 3);
 			enemy.aware = true;
 			if (!enemy.aggro) enemy.aggro = 0;
 			enemy.aggro += 0.1;
@@ -2157,14 +2158,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (enemy.Enemy.projectileAttack && (!AIData.canShootPlayer || !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y))) AIData.followRange = 1;
 
-	if (!KinkyDungeonAggressive(enemy) && !enemy.Enemy.alwaysHostile && !(enemy.rage > 0) && AIData.canSeePlayer && player.player && !KDAllied(enemy)
+	if (!AIData.aggressive && !enemy.Enemy.alwaysHostile && !(enemy.rage > 0) && AIData.canSeePlayer && player.player && !KDAllied(enemy)
 		&& ((!KinkyDungeonFlags.has("nojailbreak") && !KinkyDungeonPlayerInCell(true, true)) || KinkyDungeonLastTurnAction == "Struggle" || KinkyDungeonLastAction == "Struggle")) {
 		if (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) {
 			if (KDGameData.PrisonerState == 'parole' && KinkyDungeonPlayer.CanInteract() && !KDEnemyHasFlag(enemy, "Shop")) KinkyDungeonAggroAction('unrestrained', {enemy: enemy});
 			else if ((KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail') && (KinkyDungeonLastTurnAction == "Struggle" || KinkyDungeonLastAction == "Struggle")) KinkyDungeonAggroAction('struggle', {enemy: enemy});
 			else if ((!KinkyDungeonFlags.has("nojailbreak") && !KinkyDungeonPlayerInCell(true, true)) && KDGameData.PrisonerState == 'jail' && !KDIsPlayerTethered() && KinkyDungeonSlowLevel < 9) KinkyDungeonAggroAction('jailbreak', {enemy: enemy});
 		}
-		AIData.ignore = !KinkyDungeonAggressive(enemy) && (!enemy.playWithPlayer || !player.player);
+		AIData.ignore = !AIData.aggressive && (!enemy.playWithPlayer || !player.player);
 	}
 
 	let sneakThreshold = enemy.Enemy.sneakThreshold ? enemy.Enemy.sneakThreshold : 2;
@@ -2210,7 +2211,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 
 	if (player.player && AIData.canSeePlayer && aware && !enemy.IntentAction) {
-		let event = KDGetIntentEvent(enemy, AIData, AIData.playEvent, KDAllied(enemy), AIData.hostile, KinkyDungeonAggressive(enemy));
+		let event = KDGetIntentEvent(enemy, AIData, AIData.playEvent, KDAllied(enemy), AIData.hostile, AIData.aggressive);
 		if (event) event(enemy, AIData);
 	}
 
@@ -2225,7 +2226,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				&& (!trigger.noAlly || !KDAllied(enemy))
 				&& (!trigger.playRequired || AIData.playAllowed)
 				&& (!trigger.noCombat || !KinkyDungeonFlags.get("NPCCombat"))
-				&& (!trigger.nonHostile || !KinkyDungeonAggressive(enemy))
+				&& (!trigger.nonHostile || !AIData.aggressive)
 				&& (!trigger.allowedPrisonStates || trigger.allowedPrisonStates.includes(KDGameData.PrisonerState))
 				&& (!trigger.allowedPersonalities || trigger.allowedPersonalities.includes(enemy.personality))
 				&& (!trigger.onlyDuringPlay || enemy.playWithPlayer > 0
@@ -2279,7 +2280,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	let intentAction = enemy.IntentAction && KDIntentEvents[enemy.IntentAction] ? KDIntentEvents[enemy.IntentAction] : null;
 
-	if (!KinkyDungeonAggressive(enemy) && player.player && (enemy.playWithPlayer || (intentAction && intentAction.forceattack))) AIData.ignore = false;
+	if (!AIData.aggressive && player.player && (enemy.playWithPlayer || (intentAction && intentAction.forceattack))) AIData.ignore = false;
 
 	AIData.sneakMult = 0.25;
 	if (AIData.canSeePlayerMedium) AIData.sneakMult += 0.45;
@@ -2291,15 +2292,15 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			if (KDEnemyHasFlag(enemy, "Defensive")) {
 				enemy.gx = KinkyDungeonPlayerEntity.x;
 				enemy.gy = KinkyDungeonPlayerEntity.y;
-			} else if (!AIData.ignore && (KinkyDungeonAggressive(enemy) || enemy.playWithPlayer || !KDEnemyHasFlag(enemy, "NoFollow"))) {
+			} else if (!AIData.ignore && (AIData.aggressive || enemy.playWithPlayer || !KDEnemyHasFlag(enemy, "NoFollow"))) {
 				enemy.gx = player.x;
 				enemy.gy = player.y;
 			}
 		}
 		if (AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer) {
-			if (!enemy.aware && KinkyDungeonAggressive(enemy)) KDAddThought(enemy.id, "Aware", 3, 3);
+			if (!enemy.aware && AIData.aggressive) KDAddThought(enemy.id, "Aware", 3, 3);
 			enemy.aware = true;
-			if (AIData.hostile && KinkyDungeonAggressive(enemy) && !enemy.rage && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
+			if (AIData.hostile && AIData.aggressive && !enemy.rage && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
 				for (let e of KinkyDungeonEntities) {
 					if (KDHostile(e) && KinkyDungeonAggressive(e) && !enemy.rage && e != enemy && KDistChebyshev(e.x - enemy.x, e.y - enemy.y) <= KinkyDungeonEnemyAlertRadius) {
 						if (player.player && KDPlayerLight < 1.5) {
@@ -2326,7 +2327,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	AIData.kite = false;
 	AIData.kiteChance = enemy.Enemy.kiteChance ? enemy.Enemy.kiteChance : 0.75;
-	if (AIData.canSeePlayer && (!player.player || KinkyDungeonAggressive(enemy)) && enemy.Enemy && enemy.Enemy.kite && !enemy.usingSpecial && (!player.player || KinkyDungeonHasWill(0.1)) && (enemy.attackPoints <= 0 || enemy.Enemy.attackWhileMoving) && AIData.playerDist <= enemy.Enemy.kite && (AIData.hostile || !player.player)) {
+	if (AIData.canSeePlayer && (!player.player || AIData.aggressive) && enemy.Enemy && enemy.Enemy.kite && !enemy.usingSpecial && (!player.player || KinkyDungeonHasWill(0.1)) && (enemy.attackPoints <= 0 || enemy.Enemy.attackWhileMoving) && AIData.playerDist <= enemy.Enemy.kite && (AIData.hostile || !player.player)) {
 		if (!enemy.Enemy.dontKiteWhenDisabled || !(KinkyDungeonStatBlind < 0 || KinkyDungeonStatBind > 0 || KinkyDungeonStatFreeze > 0 || KinkyDungeonSlowMoveTurns > 0 || KDGameData.SleepTurns > 0))
 			if (!enemy.Enemy.noKiteWhenHarmless || !AIData.harmless)
 				if (AIData.kiteChance >= 1 || KDRandom() < AIData.kiteChance)
@@ -2334,7 +2335,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						AIData.kite = true;
 	}
 
-	if (!KinkyDungeonAggressive(enemy) && player.player && (enemy.playWithPlayer || KDAllied(enemy))) {
+	if (!AIData.aggressive && player.player && (enemy.playWithPlayer || KDAllied(enemy))) {
 		if (AIData.domMe && KDIsBrat(enemy)) {
 			AIData.followRange = 4;
 			AIData.kite = true;
@@ -2528,7 +2529,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				}
 				let wanderfar = AIType.wander_far(enemy, player, AIData);
 				let wandernear = AIType.wander_near(enemy, player, AIData);
-				if ((wanderfar || wandernear) && !AIData.followPlayer && (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere")) && !KDEnemyHasFlag(enemy, "StayHere") && enemy.movePoints < 1 && (!enemy.aware || !KinkyDungeonAggressive(enemy))) {
+				if ((wanderfar || wandernear) && !AIData.followPlayer && (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere")) && !KDEnemyHasFlag(enemy, "StayHere") && enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive)) {
 					if ((Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 1.5 || (KDRandom() < 0.02 && KDEnemyHasFlag(enemy, "failpath"))) || (!(enemy.vp > 0.05) && (!enemy.path || KDRandom() < 0.1))) {
 						let master = KinkyDungeonFindMaster(enemy).master;
 						if (KDRandom() < 0.1 && !master && wanderfar) {
@@ -2756,7 +2757,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					let bound = 0;
 
 					if (player.player) {
-						if (player.player && AIData.playerDist < AIData.range + 0.5 && (KinkyDungeonAggressive(enemy) || AIData.attack.includes("Pull") || enemy.IntentLeashPoint) && (((!enemy.Enemy.noLeashUnlessExhausted || !KinkyDungeonHasWill(0.1)) && enemy.Enemy.tags && AIData.leashing && KDGetFaction(enemy) != "Ambush") || AIData.attack.includes("Pull") || enemy.IntentLeashPoint) && (KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id)) {
+						if (player.player && AIData.playerDist < AIData.range + 0.5 && (AIData.aggressive || AIData.attack.includes("Pull") || enemy.IntentLeashPoint) && (((!enemy.Enemy.noLeashUnlessExhausted || !KinkyDungeonHasWill(0.1)) && enemy.Enemy.tags && AIData.leashing && KDGetFaction(enemy) != "Ambush") || AIData.attack.includes("Pull") || enemy.IntentLeashPoint) && (KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id)) {
 							AIData.intentToLeash = true;
 
 							let wearingLeash = false;
@@ -3291,7 +3292,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (!AIType.afteridle || !AIType.afteridle(enemy, player, AIData)) {
 		// Spell loop
 		if ((!enemy.Enemy.enemyCountSpellLimit || KinkyDungeonEntities.length < enemy.Enemy.enemyCountSpellLimit)
-		&& ((!player.player || (KinkyDungeonAggressive(enemy) || (KDGameData.PrisonerState == 'parole' && enemy.Enemy.spellWhileParole))))
+		&& ((!player.player || (AIData.aggressive || (KDGameData.PrisonerState == 'parole' && enemy.Enemy.spellWhileParole))))
 		&& (!enemy.silence || enemy.silence < 0.01)
 		&& (!enemy.blind || enemy.blind < 0.01 || AIData.playerDist < 2.99)
 		&& (!enemy.Enemy.noSpellDuringAttack || enemy.attackPoints < 1)
@@ -3399,7 +3400,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		KDIntentEvents[enemy.IntentAction].maintain(enemy, delta);
 	}
 
-	if (enemy.playWithPlayer > 0 && !KinkyDungeonAggressive(enemy)) {
+	if (enemy.playWithPlayer > 0 && !AIData.aggressive) {
 		KinkyDungeonApplyBuffToEntity(enemy, KDEager);
 		if (AIData.domMe)
 			KinkyDungeonApplyBuffToEntity(enemy, KDMasochist);
