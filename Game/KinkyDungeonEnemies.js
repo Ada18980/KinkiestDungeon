@@ -3399,7 +3399,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		KDIntentEvents[enemy.IntentAction].maintain(enemy, delta);
 	}
 
-	if (enemy.playWithPlayer > 0 && !enemy.hostile) {
+	if (enemy.playWithPlayer > 0 && !KinkyDungeonAggressive(enemy)) {
 		KinkyDungeonApplyBuffToEntity(enemy, KDEager);
 		if (AIData.domMe)
 			KinkyDungeonApplyBuffToEntity(enemy, KDMasochist);
