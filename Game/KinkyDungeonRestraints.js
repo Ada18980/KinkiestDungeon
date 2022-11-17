@@ -2474,20 +2474,20 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 							}
 						}
 					}
-				KDInventoryWear(restraint.Asset, AssetGroup,  undefined, color);
+				//KDInventoryWear(restraint.Asset, AssetGroup,  undefined, color);
 				KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, `+${TextGet("Restraint" + restraint.name)}!`, "pink", 5, true);
 				KDRecentRepIndex += 1;
-				let placed = InventoryGet(KinkyDungeonPlayer, AssetGroup);
+				//let placed = InventoryGet(KinkyDungeonPlayer, AssetGroup);
 				let placedOnPlayer = false;
-				if (!placed) console.log(`Error placing ${restraint.name} on player!!!`);
-				if (placed && ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable() && !KinkyDungeonRestraintsLocked.includes(AssetGroup) && AssetGroup != "ItemHead" && InventoryAllow(
-					Player, placed.Asset) &&
+				//if (!placed) console.log(`Error placing ${restraint.name} on player!!!`);
+				if (ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable() && !KinkyDungeonRestraintsLocked.includes(AssetGroup) && AssetGroup != "ItemHead" && InventoryAllow(
+					Player, AssetGet("3DCGFemale", restraint.AssetGroup, restraint.Asset)) &&
 					(!InventoryGetLock(InventoryGet(Player, AssetGroup))
 					|| (InventoryGetLock(InventoryGet(Player, AssetGroup)).Asset.OwnerOnly == false && InventoryGetLock(InventoryGet(Player, AssetGroup)).Asset.LoverOnly == false))) {
 					InventoryWear(Player, restraint.Asset, AssetGroup, color);
 					placedOnPlayer = true;
 				}
-				if (placed && !placed.Property) placed.Property = {};
+				/*if (placed && !placed.Property) placed.Property = {};
 				if (restraint.Type) {
 					KinkyDungeonPlayer.FocusGroup = AssetGroupGet("Female3DCG", AssetGroup);
 					let options = window["Inventory" + ((AssetGroup.includes("ItemMouth")) ? "ItemMouth" : AssetGroup) + restraint.Asset + "Options"];
@@ -2515,7 +2515,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				if (restraint.OverridePriority) {
 					if (!InventoryGet(KinkyDungeonPlayer, AssetGroup).Property) InventoryGet(KinkyDungeonPlayer, AssetGroup).Property = {OverridePriority: restraint.OverridePriority};
 					else InventoryGet(KinkyDungeonPlayer, AssetGroup).Property.OverridePriority = restraint.OverridePriority;
-				}
+				}*/
 				if (color) {
 					// @ts-ignore
 					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, AssetGroup);
