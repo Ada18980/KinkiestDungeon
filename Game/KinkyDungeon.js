@@ -2404,7 +2404,9 @@ function KinkyDungeonLoadGame(String) {
 
 			if (saveData.KDGameData && saveData.KDGameData.LastMapSeed) KDsetSeed(saveData.KDGameData.LastMapSeed);
 
-			KDUpdateVision();
+			if (saveData.KinkyDungeonGrid) {
+				KDUpdateVision();
+			}
 			return true;
 		}
 	}
