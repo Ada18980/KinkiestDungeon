@@ -14,6 +14,7 @@ let KDResertNGTags = [
 let KDShops = {};
 
 
+
 /**
  * @type {Record<string, {name: string, outfit: string, tags: string[], singletag: string[], excludeTags: string[], chance: number}>}
  */

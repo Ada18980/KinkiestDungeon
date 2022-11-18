@@ -1,5 +1,8 @@
 "use strict";
 
+let KDMagicLocks = ["Purple"]; // Magical locks
+let KDKeyedLocks = ["Red", "White", "Blue"];
+
 // LinkableBy array templates
 let KDHarnessLink = ["Wrapping", "HeavyCorsets", "Corsets", "ArmbinderHarness", "Ties", "Belts", "Harnesses"];
 let KDCorsetLink = ["Wrapping", "Harnesses", "ArmbinderHarness", "Ties", "Belts"];

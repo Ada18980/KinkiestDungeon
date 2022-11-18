@@ -4043,3 +4043,46 @@ function KDCaptureNearby(enemy) {
 		}
 	}
 }
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {boolean} guaranteed
+ * @returns {string}
+ */
+function KinkyDungeonGetLoadoutForEnemy(enemy, guaranteed) {
+	if (enemy.Enemy.tags.noshop) return "";
+	let loadout_list = [];
+	for (let s of Object.values(KDLoadouts)) {
+		let end = false;
+		if (s.tags) {
+			for (let t of s.tags) {
+				if (!enemy.Enemy.tags[t]) {
+					end = true;
+					break;
+				}
+			}
+		}
+		if (s.forbidtags) {
+			for (let t of s.forbidtags) {
+				if (enemy.Enemy.tags[t]) {
+					end = true;
+					break;
+				}
+			}
+		}
+		let hasTag = !s.singletag;
+		if (!end && s.singletag) {
+			for (let t of s.singletag) {
+				if (enemy.Enemy.tags[t]) {
+					hasTag = true;
+					break;
+				}
+			}
+		}
+		if (!hasTag) end = true;
+		if (!end && (guaranteed || !s.chance || KDRandom() < s.chance)) loadout_list.push(s.name);
+	}
+	if (loadout_list.length > 0) return loadout_list[Math.floor(KDRandom() * loadout_list.length)];
+	return "";
+}

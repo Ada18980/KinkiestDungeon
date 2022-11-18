@@ -935,6 +935,8 @@ interface KinkyDungeonEvent {
 }
 
 interface entity {
+	/** Opinion of you. Positive is good. */
+	opinion?: number,
 	/** Determines if an enemy can be dommed or not */
 	domVariance?: number,
 	hideTimer?: boolean,

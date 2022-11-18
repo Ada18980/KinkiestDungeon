@@ -90,20 +90,23 @@ let KinkyDungeonSpellSpecials = {
 					}
 				en.boundLevel = Math.max(0, en.boundLevel);
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 				return "Cast";
 			}
 			return "Fail";
-		} else if (KinkyDungeonPlayerGetRestraintsWithLocks(["Purple"]).length > 0) {
-			for (let r of KinkyDungeonPlayerGetRestraintsWithLocks(["Purple"], true)) {
+		} else if (KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0) {
+			for (let r of KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks, true)) {
 				KinkyDungeonLock(r, "");
 			}
 			KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "yellow", 2);
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 			return "Cast";
 		} else if (KinkyDungeonTiles.get(targetX + "," + targetY) && KinkyDungeonTiles.get(targetX + "," + targetY).Type == "Charger" && KinkyDungeonTiles.get(targetX + "," + targetY).NoRemove) {
 			KinkyDungeonTiles.get(targetX + "," + targetY).NoRemove = false;
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonPurpleLockRemoveCharger"), "yellow", 2);
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 			return "Cast";
 		}
 		return "Fail";
@@ -116,6 +119,7 @@ let KinkyDungeonSpellSpecials = {
 			});
 			KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyLock1", true), undefined, undefined, undefined);
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 			return "Cast";
 		} else return "Fail";
 	},
@@ -124,6 +128,7 @@ let KinkyDungeonSpellSpecials = {
 		if (en) {
 			KinkyDungeonTickBuffTag(en.buffs, "CM1", 1);
 			KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyCM" + (entity?.Enemy?.unlockCommandLevel || 1), true), undefined, undefined, undefined);
+			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 			if (entity?.Enemy) {
 				KinkyDungeonSetEnemyFlag(entity, "commandword", entity.Enemy.unlockCommandCD || 90);
 				KinkyDungeonSendActionMessage(7,

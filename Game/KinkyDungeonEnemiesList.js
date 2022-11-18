@@ -1493,3 +1493,34 @@ let KDAIType = {
 		aftermove: (enemy, player, aidata) => {return false;},
 	},
 };
+
+
+/**
+ * @type {Record<string, {name: string, tags?: string[], singletag: string[], forbidtags: string[], chance: number, items?: string[]}>}
+ */
+let KDLoadouts = {
+	"guard": {
+		name: "guard",
+		tags: ["elite"],
+		singletag: ["human", "elf", "alchemist", "dragon", "witch", "apprentice", "mummy"],
+		forbidtags: ["submissive", "gagged"],
+		chance: 0.35,
+		items: ["RedKey"],
+	},
+	"mistress": {
+		name: "mistress",
+		tags: ["miniboss"],
+		singletag: ["human", "elf", "alchemist", "dragon", "witch", "apprentice", "mummy"],
+		forbidtags: ["submissive", "gagged"],
+		chance: 0.65,
+		items: ["RedKey"],
+	},
+	"boss": {
+		name: "boss",
+		tags: ["boss"],
+		singletag: ["human", "elf", "alchemist", "dragon", "witch", "apprentice", "mummy"],
+		forbidtags: ["submissive", "gagged"],
+		chance: 1.0,
+		items: ["RedKey"],
+	},
+};

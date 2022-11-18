@@ -1169,6 +1169,7 @@ Features
 - Added additional lore to the ancient tombs
 - Submissive enemies will now solicit you to... um... yeah. Careful not to actually kill them though.
 - Distracted enemies will have a miscast chance
+- Spellcaster-type enemies now know command word and will unlock each other. Lockdown, on the other hand, is now infinite.
 
 
 TODO ValidationFindBlockCycles to prevent bugs

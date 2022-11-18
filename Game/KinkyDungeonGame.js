@@ -1029,10 +1029,14 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				}
 				let incrementCount = 1;
 				KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
-				let shop = KinkyDungeonGetShopForEnemy(e);
+				let shop = KinkyDungeonGetShopForEnemy(e, false);
 				if (shop) {
 					KinkyDungeonSetEnemyFlag(e, "Shop", -1);
 					KinkyDungeonSetEnemyFlag(e, shop, -1);
+				}
+				let loadout = KinkyDungeonGetLoadoutForEnemy(e, false);
+				if (loadout) {
+					e.items = Object.assign([], KDLoadouts[loadout].items);
 				}
 				if (!spawnPoint && !currentCluster && Enemy.clusterWith) {
 					let clusterChance = 0.2; //1.1 + 0.9 * MiniGameKinkyDungeonLevel/KinkyDungeonMaxLevel;
