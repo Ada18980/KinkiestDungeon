@@ -579,7 +579,7 @@ interface enemy extends KDHasTags {
 	miscastmsg?: string,
 	/** This enemy knows the unlock command up to this level*/
 	unlockCommandLevel?: number,
-	/** This enemy must wait this long between unlock command attempts. Default is 10*/
+	/** This enemy must wait this long between unlock command attempts. Default is 90*/
 	unlockCommandCD?: number,
 	/** */
 	spellCooldownMult?: number,

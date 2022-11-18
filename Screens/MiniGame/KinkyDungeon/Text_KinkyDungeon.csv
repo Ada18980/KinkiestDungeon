@@ -4611,7 +4611,7 @@ KinkyDungeonSpellCastInvisibility,You snap your fingers!
 
 KinkyDungeonSpellLockdown,CMD: Lock
 KinkyDungeonSpellTargetLockdown,Select which creature to lock
-KinkyDungeonSpellDescriptionLockdown,"Magically locks down a target, preventing them from struggling below the current level of binding for 15 turns (max 100% binding)."
+KinkyDungeonSpellDescriptionLockdown,"Magically locks down a target, preventing them from struggling below the current level of binding until freed by an enemy spellcaster (max 100% binding)."
 KinkyDungeonSpellCastLockdown,"You say a command word, and magical locks bind your target!"
 
 KinkyDungeonSpellChastity,Chastity

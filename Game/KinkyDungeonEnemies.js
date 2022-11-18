@@ -1821,6 +1821,8 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					enemy.fy = undefined;
 				}
 
+				if (KDHelpless(enemy)) enemy.playWithPlayer = 0;
+
 				if (idle) {
 					// These happen when an enemy is disabled or not doing anything
 					enemy.movePoints = 0;
@@ -3365,7 +3367,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						spelltarget = enemy;
 						if (spell.castCondition && !KDCastConditions[spell.castCondition](enemy, enemy)) spell = null;
 					}
-				} else if (spell.castCondition && !KDCastConditions[spell.castCondition](enemy, player)) spell = null;
+				} else if (spell?.castCondition && !KDCastConditions[spell.castCondition](enemy, player)) spell = null;
 				let minSpellRange = (spell && spell.minRange != undefined) ? spell.minRange : ((spell && (spell.selfcast || spell.buff || (spell.range && spell.range < 1.6))) ? 0 : 1.5);
 				if (spell && spell.heal && spelltarget.hp >= spelltarget.Enemy.maxhp) spell = null;
 				if (spell && !(!minSpellRange || (AIData.playerDist > minSpellRange))) spell = null;

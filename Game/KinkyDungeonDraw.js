@@ -1494,7 +1494,7 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 			value = 1;
 		}
 		if (Entity.scale != undefined) {
-			let scalemult = 1;
+			let scalemult = 0.9;
 			if (dist > 0 || !Entity.end) {
 				if (Entity.vx || Entity.vy) {
 					scalemult = KDistEuclidean(Entity.vx, Entity.vy);
@@ -1508,11 +1508,11 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 			}
 		}
 		if (Entity.alpha != undefined) {
-			let alphamult = 1;
+			let alphamult = 0.28;
 			if (dist > 0 || !Entity.end) {
 				Entity.alpha = Math.min(1.0, Entity.alpha + KDTimescale*amount*3.0);
 			} else {
-				if ((Entity.vx || Entity.vy)) {
+				if ((Entity.vx || Entity.vy) || Entity.time > 1) {
 					alphamult = 0;
 				}
 				Entity.alpha = Math.max(0.0, Entity.alpha - KDTimescale*amount*alphamult);

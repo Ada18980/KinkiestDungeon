@@ -768,16 +768,24 @@ let KinkyDungeonSpellListEnemies = [
 			{trigger: "bulletHitEnemy", type: "EncaseBound"},
 		],
 	},
+
+	/** The following are particle effects */
 	{name: "OrgasmStrike", tags: ["offense", "nature", "binding"], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "inert",
 	},
 	{name: "EffectEnemyCM1", tags: [], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
-		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "inert",
+		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 3, lifetime: 1, aoe: 0.5, damage: "inert",
 	},
-
+	{name: "EffectEnemyLock1", tags: [], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
+		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 3, lifetime: 1, aoe: 0.5, damage: "inert",
+	},
 	{name: "EnemyMiscast", tags: [], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "inert",
 	},
+	{name: "Summon", faction: "Enemy", school: "Conjure", manacost: 0, components: ["Verbal"], level:1, type:"hit", onhit:"instant", time:0, power: 0, delay: 0, range: 4, size: 1, lifetime: 1, damage: ""}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
+
+	/** End particle effects */
+
 	{name: "BindRope", tags: ["offense", "rope", "binding"], sfx: "MagicSlash", school: "Conjure", manacost: 0.5, components: ["Verbal"],
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 3.0, time: 5, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "chain",
 		playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "ropeRestraints"},
@@ -887,7 +895,6 @@ let KinkyDungeonSpellListEnemies = [
 		{id: "SmokePuff", type: "Evasion", power: 5.0, player: true, enemies: true, tags: ["darkness"], range: 0.5},
 		{id: "SmokePuff2", type: "Sneak", power: 3.0, player: true, duration: 1, enemies: true, tags: ["darkness"], range: 0.5}
 	], onhit:"", time:5, aoe: 0.5, power: 0, delay: 2, delayRandom: 5, range: 4, size: 1, damage: ""},
-	{name: "Summon", faction: "Enemy", school: "Conjure", manacost: 0, components: ["Verbal"], level:1, type:"hit", onhit:"instant", time:0, power: 0, delay: 0, range: 4, size: 1, lifetime: 1, damage: ""}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 
 	{name: "LesserInvisibility", sfx: "MagicSlash", school: "Illusion", manacost: 0, components: ["Verbal"], mustTarget: true, level:3, type:"buff", buffs: [{id: "LesserInvisibility", aura: "#888888", type: "Sneak", duration: 10, power: 3, player: true, enemies: true, tags: ["invisibility"]}], onhit:"", time:10, power: 0, range: 1.5, size: 1, damage: ""},
 
@@ -1273,6 +1280,8 @@ let KinkyDungeonSpellListEnemies = [
 			{id: "ParasolBuff3", type: "SpellResist", duration: 5, power: 2.5, player: true, enemies: true, tags: ["defense", "spellresist"]},
 		], onhit:"", time:5, power: 0, range: 6, size: 1, damage: ""},
 	{enemySpell: true, commandword: true, buff: true, buffallies: true, castCondition: "commandword", name: "EnemyCM1", minRange: 0, sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Arms"], mustTarget: true, level:3, type:"special", special: "Enemy_CM1",
+		onhit:"", time:5, power: 0, range: 6, size: 1, damage: "", noCastMsg: true},
+	{enemySpell: true, commandword: true, buff: true, buffallies: true, selfbuff: true, castCondition: "commandword", name: "EnemyCM_self", minRange: 0, sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Arms"], mustTarget: true, level:3, type:"special", special: "Enemy_CM1",
 		onhit:"", time:5, power: 0, range: 6, size: 1, damage: "", noCastMsg: true},
 	{enemySpell: true, buff: true, name: "ZombieBuff", minRange: 0, sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Arms"], mustTarget: true, level:3, type:"buff", filterTags: ["zombie", "mummy"],
 		buffs: [
