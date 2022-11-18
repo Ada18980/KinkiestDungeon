@@ -237,6 +237,7 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 		if ((Enemy.playWithPlayer || !KDHostile(Enemy)) && KDCanDom(Enemy)) {
 			KDAddThought(Enemy.id, "Embarrassed", 5, 1);
 			Enemy.distraction = (Enemy.distraction || 0) + Enemy.Enemy.maxhp * 0.1;
+			KDAddOpinion(Enemy, 10);
 		} else {
 			if (Enemy.Enemy.name == "Angel") {
 				Enemy.Enemy = KinkyDungeonGetEnemyByName("AngelHostile");
