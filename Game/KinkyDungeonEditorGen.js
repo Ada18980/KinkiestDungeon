@@ -379,11 +379,11 @@ function KD_PasteTile(tile, x, y, data) {
 				KinkyDungeonTiles.set((xx + x) + "," + (yy + y), gennedTile);
 		}
 	}
-	for (let tileLoc of tile.Skin) {
+	for (let tileLoc of Object.entries(tile.Skin)) {
 		let xx = parseInt(tileLoc[0].split(',')[0]);
 		let yy = parseInt(tileLoc[0].split(',')[1]);
 		if (xx != undefined && yy != undefined) {
-			KinkyDungeonTilesSkin.set((xx + x) + "," + (yy + y), tileLoc[1]);
+			KinkyDungeonTilesSkin[(xx + x) + "," + (yy + y)] = tileLoc[1];
 		}
 	}
 	/*for (let jail of tile.Jail) {
@@ -394,11 +394,11 @@ function KD_PasteTile(tile, x, y, data) {
 
 	}*/
 
-	for (let tileLoc of tile.effectTiles) {
+	for (let tileLoc of Object.entries(tile.effectTiles)) {
 		let xx = parseInt(tileLoc[0].split(',')[0]);
 		let yy = parseInt(tileLoc[0].split(',')[1]);
 		if (xx != undefined && yy != undefined) {
-			for (let eTile of tileLoc[1]) {
+			for (let eTile of Object.entries(tileLoc[1])) {
 				KDCreateEffectTileTile(xx+x, yy+y, eTile[1], data);
 			}
 		}

@@ -111,8 +111,8 @@ function KinkyDungeonMakeBrightnessMap(width, height, mapBrightness, Lights, del
 			KDLightBlockers.set(EE.x + "," + EE.y, true);
 	}
 	let LightsTemp = new Map();
-	for (let location of KinkyDungeonEffectTiles.values()) {
-		for (let tile of location.values()) {
+	for (let location of Object.values(KinkyDungeonEffectTiles)) {
+		for (let tile of Object.values(location)) {
 			if (tile.duration > 0) {
 				if (tile.lightColor) {
 					if (tile.brightness > KinkyDungeonBrightnessGet(tile.x, tile.y))
@@ -259,8 +259,8 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 			KDVisionBlockers.set(EE.x + "," + EE.y, true);
 	}
 	let LightsTemp = new Map();
-	for (let location of KinkyDungeonEffectTiles.values()) {
-		for (let tile of location.values()) {
+	for (let location of Object.values(KinkyDungeonEffectTiles)) {
+		for (let tile of Object.values(location)) {
 			if (tile.duration > 0 && tile.tags.includes("visionblock")) {
 				KDVisionBlockers.set(tile.x + "," + tile.y, true);
 			}

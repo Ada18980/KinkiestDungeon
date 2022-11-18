@@ -73,19 +73,23 @@ let KinkyDungeonTransparentMovableObjects = KinkyDungeonMovableTiles.replace("D"
 let KDRandomDisallowedNeighbors = "AasSHcCHDdOoPp+F"; // tiles that can't be neighboring a randomly selected point
 let KDTrappableNeighbors = "DA+-F"; // tiles that might have traps bordering them with a small chance
 let KDTrappableNeighborsLikely = "COP="; // tiles that might have traps bordering them with a big chance
+
 /**
  * Cost growth, overrides the default amount
-//@type {Map<string, {x: number, y: number, tags?:string[]}>}
+//@type {Record<string, {x: number, y: number, tags?:string[]}>}
  */
-let KinkyDungeonRandomPathablePoints = new Map();
+let KinkyDungeonRandomPathablePoints = {};
 /** @type {Map<string, any>} */
 let KinkyDungeonTiles = new Map();
-/** @type {Map<string, Map<string, effectTile>>} */
-let KinkyDungeonEffectTiles = new Map();
-/** @type {Map<string, any>} */
-let KinkyDungeonTilesMemory = new Map();
-/** @type {Map<string, any>} */
-let KinkyDungeonTilesSkin = new Map();
+/** @type {Record<string, Record<string, effectTile>>} */
+let KinkyDungeonEffectTiles = {};
+/** @type {Record<string, any>} */
+let KinkyDungeonTilesMemory = {};
+/** @type {Record<string, any>} */
+let KinkyDungeonTilesSkin = {};
+
+
+
 let KinkyDungeonTargetTile = null;
 let KinkyDungeonTargetTileLocation = "";
 
@@ -142,6 +146,23 @@ let KinkyDungeonSaveInterval = 10;
 
 let KinkyDungeonSFX = [];
 
+/**
+ *
+ * @param {string} location
+ * @param {Record<string, effectTile>} value
+ */
+function KinkyDungeonEffectTilesSet(location, value) {
+	KinkyDungeonEffectTiles[location] = value;
+}
+/**
+ *
+ * @param {string} location
+ * @returns {Record<string, effectTile>}
+ */
+function KinkyDungeonEffectTilesGet(location) {
+	return KinkyDungeonEffectTiles[location];
+}
+
 function KDAlreadyOpened(x, y) {
 	if (KDGameData.AlreadyOpened) {
 		for (let ao of KDGameData.AlreadyOpened) {
@@ -186,12 +207,17 @@ function KDResetData(Data) {
 	if (!Data) Data = KDGameDataBase;
 	KDGameData = JSON.parse(JSON.stringify( Data));
 }
+function KDResetEventData(Data) {
+	if (!Data) Data = KDEventDataBase;
+	KDEventData = JSON.parse(JSON.stringify( Data));
+}
 
 function KinkyDungeonInitialize(Level, Load) {
 	KDGameData.RespawnQueue = [];
 	KDInitFactions(true);
 	CharacterReleaseTotal(KinkyDungeonPlayer);
 	KDResetData();
+	KDResetEventData();
 	//Object.assign(KDGameData, KDGameDataBase);
 
 	KinkyDungeonRefreshRestraintsCache();
@@ -309,13 +335,13 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		KDEnemyCache = new Map();
 		KinkyDungeonGrid = "";
 		KinkyDungeonTiles = new Map();
-		KinkyDungeonTilesSkin = new Map();
+		KinkyDungeonTilesSkin = {};
+		KinkyDungeonEffectTiles = {};
 		KinkyDungeonTargetTile = null;
 		KinkyDungeonTargetTileLocation = "";
 		KinkyDungeonGroundItems = []; // Clear items on the ground
 		KinkyDungeonBullets = []; // Clear all bullets
 		KDGameData.OfferFatigue = 0;
-		KinkyDungeonEffectTiles = new Map();
 		KDGameData.KeyringLocations = [];
 
 		KinkyDungeonEndPosition = null;
@@ -684,14 +710,14 @@ let KDStageBossGenerated = false;
  * Creates a list of all tiles accessible and not hidden by doors
  */
 function KinkyDungeonGenNavMap() {
-	KinkyDungeonRandomPathablePoints = new Map();
+	KinkyDungeonRandomPathablePoints = {};
 	let accessible = KinkyDungeonGetAccessible(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y);
 	for (let a of Object.entries(accessible)) {
 		let X = a[1].x;
 		let Y = a[1].y;
 		let tags = [];
 		if (!KinkyDungeonTiles.get(a[0]) || !KinkyDungeonTiles.get(a[0]).OffLimits)
-			KinkyDungeonRandomPathablePoints.set(a,{x: X, y:Y, tags:tags});
+			KinkyDungeonRandomPathablePoints[a] = {x: X, y:Y, tags:tags};
 	}
 }
 
@@ -1126,7 +1152,7 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 				}
 				if (setTo != "" && KinkyDungeonMapGet(Left + X, Top + Y) != "s") {
 					KinkyDungeonMapSet(Left + X, Top + Y, setTo);
-					KinkyDungeonEffectTiles.delete((Left + X) + "," + (Top + Y));
+					delete KinkyDungeonEffectTiles[(Left + X) + "," + (Top + Y)];
 					if (offlimit && OffLimits) {
 						KinkyDungeonTiles.set((Left + X) + "," + (Top + Y), {OffLimits: true, NoWander: NoWander});
 					}
@@ -1231,8 +1257,8 @@ function KinkyDungeonSkinArea(skin, X, Y, Radius, NoStairs) {
 		for (let yy = Math.floor(Y - Radius); yy <= Math.ceil(Y + Radius); yy++) {
 			if (xx >= 0 && xx <= KinkyDungeonGridWidth - 1 && yy >= 0 && yy <= KinkyDungeonGridHeight - 1) {
 				if (KDistEuclidean(xx - X, yy - Y) <= Radius + 0.01 && (!NoStairs || KinkyDungeonMapGet(xx, yy) != 's')) {
-					if (!KinkyDungeonTilesSkin.get(xx + "," + yy)) {
-						KinkyDungeonTilesSkin.set(xx + "," + yy, skin);
+					if (!KinkyDungeonTilesSkin[xx + "," + yy]) {
+						KinkyDungeonTilesSkin[xx + "," + yy] =  skin;
 					} else {
 						//
 					}
@@ -2164,7 +2190,7 @@ function KinkyDungeonReplaceDoodads(Chance, barchance, wallRubblechance, wallhoo
 			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < Chance)
 				KinkyDungeonMapSet(X, Y, '4');
 			else
-			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < wallRubblechance && !KinkyDungeonTilesSkin.get(X + "," + Y)) {
+			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < wallRubblechance && !KinkyDungeonTilesSkin[X + "," + Y]) {
 				KinkyDungeonMapSet(X, Y, 'Y');
 				if (KDAlreadyOpened(X, Y)) {
 					KinkyDungeonMapSet(X, Y, '1');
@@ -2392,9 +2418,9 @@ function KinkyDungeonPlaceTorches(torchchance, torchlitchance, torchchanceboring
 		for (let Y = 1; Y < height-1; Y += 1) {
 			if (KinkyDungeonMapGet(X, Y) == '1'
 				&& KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(X, Y + 1))
-				&& !KinkyDungeonEffectTiles.get((X - 1) + "," + (Y+1))
-				&& !KinkyDungeonEffectTiles.get((X) + "," + (Y+1))
-				&& !KinkyDungeonEffectTiles.get((X + 1) + "," + (Y+1))
+				&& !KinkyDungeonEffectTilesGet((X - 1) + "," + (Y+1))
+				&& !KinkyDungeonEffectTilesGet((X) + "," + (Y+1))
+				&& !KinkyDungeonEffectTilesGet((X + 1) + "," + (Y+1))
 				&& !KinkyDungeonTiles.get((X - 1) + "," + (Y+1))
 				&& !KinkyDungeonTiles.get((X) + "," + (Y+1))
 				&& !KinkyDungeonTiles.get((X + 1) + "," + (Y+1))

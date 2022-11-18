@@ -1555,6 +1555,7 @@ interface KinkyDungeonSave {
 	spells: string[];
 	inventory: item[];
 	KDGameData: KDGameDataBase;
+	KDEventData: Object;
 	flags: [string, number][];
 	stats: {
 		picks: number;
@@ -1571,6 +1572,7 @@ interface KinkyDungeonSave {
 		diff: number;
 	};
 	faction: Record<string, Record<string, number>>;
+
 }
 
 
@@ -1694,8 +1696,8 @@ type KDMapTile = {
     Keyring?: any[];
 	Jail: any[];
     Tiles: [string, any][];
-    effectTiles: [string, [string, effectTile][]][];
-    Skin: [string, any][];
+    effectTiles: Record<string, Record<string, effectTile>>;
+    Skin: Record<string, any>;
 	/** List of inaccessible entrance pairs */
 	inaccessible: {indX1: number, indY1: number, dir1: string, indX2: number, indY2: number, dir2: string}[];
 	/** tags */

@@ -260,8 +260,8 @@ let KinkyDungeonSpellSpecials = {
 				for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
 					if (KDistEuclidean(X, Y) <= spell.aoe) {
 						let loc = (tX + X) + "," + (tY + Y);
-						if (KinkyDungeonEffectTiles.get(loc)) {
-							for (let tile of KinkyDungeonEffectTiles.get(loc).values()) {
+						if (KinkyDungeonEffectTilesGet(loc)) {
+							for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
 								if (tile.tags && tile.tags.includes("bind")) {
 									for (let t of tile.tags) {
 										// Run the special feature per restraint type
@@ -339,8 +339,8 @@ let KinkyDungeonSpellSpecials = {
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
 				if (KDistEuclidean(X, Y) <= spell.aoe) {
 					let loc = (tX + X) + "," + (tY + Y);
-					if (KinkyDungeonEffectTiles.get(loc)) {
-						for (let tile of KinkyDungeonEffectTiles.get(loc).values()) {
+					if (KinkyDungeonEffectTilesGet(loc)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
 							if (tile.tags && tile.tags.includes("slime") && !KinkyDungeonEntityAt(tX+X, tY+Y)) {
 								if (KDRandom() < 0.5)
 									slots.push({x: tX+X, y:tY+Y});
@@ -372,8 +372,8 @@ let KinkyDungeonSpellSpecials = {
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
 				if (KDistEuclidean(X, Y) <= spell.aoe) {
 					let loc = (tX + X) + "," + (tY + Y);
-					if (KinkyDungeonEffectTiles.get(loc)) {
-						for (let tile of KinkyDungeonEffectTiles.get(loc).values()) {
+					if (KinkyDungeonEffectTilesGet(loc)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
 							if (tile.tags && tile.tags.includes("slime")) {
 								if (!KinkyDungeonEntityAt(tX+X, tY+Y)) {
 									if (KDRandom() < 0.5)
@@ -451,8 +451,8 @@ let KinkyDungeonSpellSpecials = {
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
 				if (KDistEuclidean(X, Y) <= spell.aoe) {
 					let loc = (tX + X) + "," + (tY + Y);
-					if (KinkyDungeonEffectTiles.get(loc)) {
-						for (let tile of KinkyDungeonEffectTiles.get(loc).values()) {
+					if (KinkyDungeonEffectTilesGet(loc)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
 							if (tile.tags && (tile.tags.includes("slime") || tile.tags.includes("latex"))) {
 								//for (let t of tile.tags) {
 								// Run the special feature per restraint type
@@ -476,8 +476,8 @@ let KinkyDungeonSpellSpecials = {
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
 				if (KDistEuclidean(X, Y) <= spell.aoe) {
 					let loc = (tX + X) + "," + (tY + Y);
-					if (KinkyDungeonEffectTiles.get(loc)) {
-						for (let tile of KinkyDungeonEffectTiles.get(loc).values()) {
+					if (KinkyDungeonEffectTilesGet(loc)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
 							if (tile.tags && (tile.tags.includes("slime"))) {
 								slots.push({x: tX + X, y: tY+Y, duration: tile.duration});
 							}
@@ -508,8 +508,8 @@ let KinkyDungeonSpellSpecials = {
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
 				if (KDistEuclidean(X, Y) <= spell.aoe) {
 					let loc = (tX + X) + "," + (tY + Y);
-					if (KinkyDungeonEffectTiles.get(loc)) {
-						for (let tile of KinkyDungeonEffectTiles.get(loc).values()) {
+					if (KinkyDungeonEffectTilesGet(loc)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
 							if (tile.tags && tile.tags.includes("bind")) {
 								for (let t of tile.tags) {
 									// Run the special feature per restraint type
@@ -538,8 +538,8 @@ let KinkyDungeonSpellSpecials = {
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
 				if (KDistEuclidean(X, Y) <= spell.aoe) {
 					let loc = (tX + X) + "," + (tY + Y);
-					if (KinkyDungeonEffectTiles.get(loc)) {
-						for (let tile of KinkyDungeonEffectTiles.get(loc).values()) {
+					if (KinkyDungeonEffectTilesGet(loc)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
 							if (tile.tags && tile.tags.includes("slime")) {
 								count += 1;
 								if (tile.duration > finalTileDuration) finalTileDuration = tile.duration;
@@ -591,8 +591,8 @@ let KinkyDungeonSpellSpecials = {
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
 				if (KDistEuclidean(X, Y) <= spell.aoe) {
 					let loc = (tX + X) + "," + (tY + Y);
-					if (KinkyDungeonEffectTiles.get(loc)) {
-						for (let tile of KinkyDungeonEffectTiles.get(loc).values()) {
+					if (KinkyDungeonEffectTilesGet(loc)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
 							if (tile.tags && tile.tags.includes("slime")) {
 								count += 1;
 								tile.duration = 0;

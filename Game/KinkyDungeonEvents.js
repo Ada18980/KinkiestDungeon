@@ -1,7 +1,6 @@
 "use strict";
 
-let KinkyDungeonSlimeLevel = 0;
-let KinkyDungeonSlimeLevelStart = 0;
+
 let KinkyDungeonAttackTwiceFlag = false;
 let KinkyDungeonSlimeParts = [
 	{group: "ItemHead", restraint: "SlimeHead", noUnmasked: true},
@@ -17,6 +16,13 @@ let KDAlertCD = 5;
 let KDEventDataReset = {
 
 };
+
+
+let KDEventDataBase = {
+	SlimeLevel: 0,
+	SlimeLevelStart: 0,
+};
+let KDEventData = Object.assign({}, KDEventDataBase);
 
 function KDMapHasEvent(map, event) {
 	return map[event] != undefined;
@@ -371,10 +377,10 @@ let KDEventMapInventory = {
 			if (!data.delta) return;
 			let mult = Math.max(0.25, Math.min(2.0,
 				KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist"))));
-			KinkyDungeonSlimeLevel = Math.max(KinkyDungeonSlimeLevel, KinkyDungeonSlimeLevelStart + e.power * mult);
-			if (KinkyDungeonSlimeLevel >= 0.99999) {
-				KinkyDungeonSlimeLevel = 0;
-				KinkyDungeonSlimeLevelStart = -100;
+			KDEventData.SlimeLevel = Math.max(KDEventData.SlimeLevel, KDEventData.SlimeLevelStart + e.power * mult);
+			if (KDEventData.SlimeLevel >= 0.99999) {
+				KDEventData.SlimeLevel = 0;
+				KDEventData.SlimeLevelStart = -100;
 				let slimedParts = [];
 				let potentialSlimeParts = [];
 				for (let inv of KinkyDungeonAllRestraint()) {
@@ -421,8 +427,8 @@ let KDEventMapInventory = {
 				}
 				let slimed = false;
 				if (potentialSlimeParts.length === 0) {
-					KinkyDungeonSlimeLevel = Math.min(KinkyDungeonSlimeLevel, 0.5);
-					KinkyDungeonSlimeLevelStart = Math.min(KinkyDungeonSlimeLevelStart, 0.5);
+					KDEventData.SlimeLevel = Math.min(KDEventData.SlimeLevel, 0.5);
+					KDEventData.SlimeLevelStart = Math.min(KDEventData.SlimeLevelStart, 0.5);
 				}
 				else while (potentialSlimeParts.length > 0) {
 					let newSlime = potentialSlimeParts[Math.floor(KDRandom() * potentialSlimeParts.length)];
@@ -431,7 +437,7 @@ let KDEventMapInventory = {
 						if (added) {
 							KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSlimeSpread"), "#ff44ff", 3);
 							potentialSlimeParts = [];
-							KinkyDungeonSlimeLevel = -100;
+							KDEventData.SlimeLevel = -100;
 							slimed = true;
 						}
 					}
@@ -447,14 +453,14 @@ let KDEventMapInventory = {
 							KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSlimeSpread"), "#ff44ff", 3);
 						}
 					}
-					KinkyDungeonSlimeLevel = -100;
+					KDEventData.SlimeLevel = -100;
 				}
 			}
 		}
 	},
 	"remove": {
 		"slimeStop": (e, item, data) => {
-			if (data.item === item) KinkyDungeonSlimeLevel = 0;
+			if (data.item === item) KDEventData.SlimeLevel = 0;
 		},
 		"unlinkItem": (e, item, data) => {
 			if (data.item === item && !data.add && !data.shrine) {
@@ -1448,7 +1454,7 @@ let KDEventMapSpell = {
 		"OneWithSlime": (e, spell, data) => {
 			if (data.spell && data.spell.tags && data.failed.length > 0 && (data.spell.tags.includes("slime") || data.spell.tags.includes("latex"))) {
 				let tiles = KDGetEffectTiles(data.x, data.y);
-				for (let t of tiles.values()) {
+				for (let t of Object.values(tiles)) {
 					if (t.tags && (t.tags.includes("slime") || t.tags.includes("latex"))) {
 						data.failed = [];
 						return;
@@ -3041,8 +3047,8 @@ let KDEventMapGeneric = {
 					{x: data.moveX, y: data.moveY, str: data.moveX + "," + data.moveY},
 				];
 				for (let m of moves)
-					if (KinkyDungeonEffectTiles.get(m.str)) {
-						for (let tile of KinkyDungeonEffectTiles.get(m.str).values()) {
+					if (KinkyDungeonEffectTilesGet(m.str)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(m.str))) {
 							if (tile.tags && tile.tags.includes("noisy")) {
 								KinkyDungeonMakeNoise(5, m.x, m.y);
 								KinkyDungeonSendTextMessage(3, TextGet("KDNoisyTerrain"), "#ff8800", 3, false, true);
@@ -3058,7 +3064,7 @@ let KDEventMapGeneric = {
 		 * You can add your own event like this one
 		 */
 		"resetVars": (e, data) => {
-			KinkyDungeonSlimeLevel = 0;
+			KDEventData.SlimeLevel = 0;
 		},
 	},
 	"resetEventVarTick": {
@@ -3067,9 +3073,9 @@ let KDEventMapGeneric = {
 		 * You can add your own event like this one
 		 */
 		"resetVars": (e, data) => {
-			if (KinkyDungeonSlimeLevel < 0)
-				KinkyDungeonSlimeLevel = 0;
-			KinkyDungeonSlimeLevelStart = KinkyDungeonSlimeLevel;
+			if (KDEventData.SlimeLevel < 0)
+				KDEventData.SlimeLevel = 0;
+			KDEventData.SlimeLevelStart = KDEventData.SlimeLevel;
 			if (KDAlertCD > 0) KDAlertCD -= data.delta;
 
 			if (KinkyDungeonLastTurnAction != "Attack" && KDGameData.WarningLevel > 0) {

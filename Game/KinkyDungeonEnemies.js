@@ -1371,7 +1371,7 @@ function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerD
 	let tries = 0;
 
 	while (tries < 100) {
-		let points = Array.from(KinkyDungeonRandomPathablePoints, ([name, value]) => (value));
+		let points = Object.values(KinkyDungeonRandomPathablePoints);
 		let point = points[Math.floor(points.length * KDRandom())];
 		if (point) {
 			let X = point.x;//1 + Math.floor(KDRandom()*(KinkyDungeonGridWidth - 1));

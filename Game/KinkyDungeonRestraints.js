@@ -649,7 +649,7 @@ function KinkyDungeonGetAffinity(Message, affinity, group) {
 	);
 	let canStand = KinkyDungeonCanStand();
 	if (effectTiles)
-		for (let t of effectTiles.values()) {
+		for (let t of Object.values(effectTiles)) {
 			if (t.affinities && t.affinities.includes(affinity)) return true;
 			else if (canStand && groupIsHigh && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) return true;
 		}

@@ -2232,6 +2232,7 @@ function KinkyDungeonGenerateSaveData() {
 	save.spells = spells;
 	save.inventory = newInv;
 	save.KDGameData = KDGameData;
+	save.KDEventData = KDEventData;
 
 	save.stats = {
 		picks: KinkyDungeonLockpicks,
@@ -2316,8 +2317,10 @@ function KinkyDungeonLoadGame(String) {
 				KDOrigMana = KinkyDungeonStatMana*10;
 				KDOrigDistraction = KinkyDungeonStatDistraction*10;
 			}
-			KDGameData = Object.assign({}, KDGameDataBase);
+			KDGameData = JSON.parse(JSON.stringify(KDGameDataBase));
 			if (saveData.KDGameData != undefined) KDGameData = Object.assign({}, saveData.KDGameData);
+			KDEventData = JSON.parse(JSON.stringify(KDEventDataBase));
+			if (saveData.KDEventData != undefined) KDEventData = Object.assign({}, saveData.KDEventData);
 
 			if (saveData.statchoice != undefined) KinkyDungeonStatsChoice = new Map(saveData.statchoice);
 			if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;

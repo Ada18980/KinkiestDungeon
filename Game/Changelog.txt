@@ -1170,6 +1170,7 @@ Features
 - Submissive enemies will now solicit you to... um... yeah. Careful not to actually kill them though.
 - Distracted enemies will have a miscast chance
 - Spellcaster-type enemies now know command word and will unlock each other. Lockdown, on the other hand, is now infinite.
+- You can ask neutrals and allies to give you a key or cast command word on you
 
 
 TODO ValidationFindBlockCycles to prevent bugs

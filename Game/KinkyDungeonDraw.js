@@ -176,18 +176,18 @@ let KDSprites = {
 	// @ts-ignore
 	"D": (x, y, Fog, noReplace) => {
 		if (Fog) {
-			if (KinkyDungeonTilesMemory.get(x + "," + y)) return KinkyDungeonTilesMemory.get(x + "," + y);
+			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
 		} else {
-			KinkyDungeonTilesMemory.set(x + "," + y, "Door");
+			KinkyDungeonTilesMemory[x + "," + y] = "Door";
 		}
 		return "Door";
 	},
 	// @ts-ignore
 	"d": (x, y, Fog, noReplace) => {
 		if (Fog) {
-			if (KinkyDungeonTilesMemory.get(x + "," + y)) return KinkyDungeonTilesMemory.get(x + "," + y);
+			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
 		} else {
-			KinkyDungeonTilesMemory.set(x + "," + y, "DoorOpen");
+			KinkyDungeonTilesMemory[x + "," + y] = "DoorOpen";
 		}
 		return "DoorOpen";
 	},
@@ -2098,7 +2098,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 
 	let noReplace = "";
 	let noReplace_skin = {};
-	for (let tile of KinkyDungeonTilesSkin.values()) {
+	for (let tile of Object.values(KinkyDungeonTilesSkin)) {
 		if (tile.skin && noReplace_skin[tile.skin] != undefined) {
 			let paramskin = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
 			if (paramskin.noReplace)
@@ -2153,9 +2153,9 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 						}
 					}
 				}
-				let floor = KinkyDungeonTilesSkin.get(RX + "," + RY) ? KinkyDungeonMapIndex[KinkyDungeonTilesSkin.get(RX + "," + RY).skin] : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+				let floor = KinkyDungeonTilesSkin[RX + "," + RY] ? KinkyDungeonMapIndex[KinkyDungeonTilesSkin[RX + "," + RY].skin] : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
 				let vision = KinkyDungeonVisionGet(RX, RY);
-				let nR = KinkyDungeonTilesSkin.get(RX + "," + RY) ? noReplace : noReplace_skin[floor];
+				let nR = KinkyDungeonTilesSkin[RX + "," + RY] ? noReplace : noReplace_skin[floor];
 				let sprite = KinkyDungeonGetSprite(rows[RY][RX], RX, RY, vision == 0, nR);
 				let sprite2 = KinkyDungeonGetSpriteOverlay(rows[RY][RX], RX, RY, vision == 0, nR);
 				if (KinkyDungeonForceRender) {
