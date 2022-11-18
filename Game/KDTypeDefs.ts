@@ -1524,6 +1524,7 @@ interface VibeMod {
 }
 
 interface KinkyDungeonSave {
+	KinkyDungeonPlayerEntity: any;
 	level: number;
 	checkpoint: string;
 	rep: Record<string, number>;
@@ -1573,6 +1574,18 @@ interface KinkyDungeonSave {
 	};
 	faction: Record<string, Record<string, number>>;
 
+
+	KinkyDungeonTiles: Record<string, any>;
+	KinkyDungeonTilesSkin: Record<string, any>;
+	KinkyDungeonTilesMemory: Record<string, any>;
+	KinkyDungeonEffectTiles: Record<string, Record<string, effectTile>>;
+	KinkyDungeonRandomPathablePoints: Record<string, {x: number, y: number, tags?:string[]}>;
+	KinkyDungeonEntities: entity[];
+	KinkyDungeonBullets: any[];
+	KinkyDungeonGrid: string;
+	KinkyDungeonGridWidth: number;
+	KinkyDungeonGridHeight: number;
+	KinkyDungeonFogGrid: any[];
 }
 
 
@@ -1695,7 +1708,7 @@ type KDMapTile = {
     POI: any[];
     Keyring?: any[];
 	Jail: any[];
-    Tiles: [string, any][];
+    Tiles: Record<string, any>;
     effectTiles: Record<string, Record<string, effectTile>>;
     Skin: Record<string, any>;
 	/** List of inaccessible entrance pairs */

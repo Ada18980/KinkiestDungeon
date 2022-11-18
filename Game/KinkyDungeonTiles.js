@@ -179,8 +179,8 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			}
 
 			KDGameData.RoomType = roomType;
-			if (KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)) {
-				let MapMod = KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).MapMod;
+			if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)) {
+				let MapMod = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).MapMod;
 				if (MapMod) {
 					KDGameData.MapMod = MapMod;
 					KDGameData.MapFaction = KDMapMods[KDGameData.MapMod].faction;
@@ -188,12 +188,12 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 					KDGameData.MapMod = "";
 					KDGameData.MapFaction = "";
 				}
-				let Journey = KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Journey;
+				let Journey = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Journey;
 				if (Journey) {
 					KDGameData.Journey = Journey;
 					KDInitializeJourney(KDGameData.Journey);
 				}
-				let RoomType = KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).RoomType;
+				let RoomType = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).RoomType;
 				if (RoomType) {
 					KDGameData.RoomType = RoomType;
 				}

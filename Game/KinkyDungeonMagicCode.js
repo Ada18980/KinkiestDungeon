@@ -13,7 +13,7 @@ let KinkyDungeonSpellSpecials = {
 				KinkyDungeonApplyBuff(en.buffs, {id: "Analyze2", type: "Info", duration: 99999, power: 1.0, player: false, enemies: true, tags: ["info"]},);
 			} else return "Fail";
 		} else {
-			let tile = KinkyDungeonTiles.get(targetX + "," + targetY);
+			let tile = KinkyDungeonTilesGet(targetX + "," + targetY);
 			if (tile) {
 				if (tile.Loot && tile.Roll) {
 					let event = KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], tile.Loot, tile.Roll, tile, true);
@@ -102,8 +102,8 @@ let KinkyDungeonSpellSpecials = {
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 			return "Cast";
-		} else if (KinkyDungeonTiles.get(targetX + "," + targetY) && KinkyDungeonTiles.get(targetX + "," + targetY).Type == "Charger" && KinkyDungeonTiles.get(targetX + "," + targetY).NoRemove) {
-			KinkyDungeonTiles.get(targetX + "," + targetY).NoRemove = false;
+		} else if (KinkyDungeonTilesGet(targetX + "," + targetY) && KinkyDungeonTilesGet(targetX + "," + targetY).Type == "Charger" && KinkyDungeonTilesGet(targetX + "," + targetY).NoRemove) {
+			KinkyDungeonTilesGet(targetX + "," + targetY).NoRemove = false;
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonPurpleLockRemoveCharger"), "yellow", 2);
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");

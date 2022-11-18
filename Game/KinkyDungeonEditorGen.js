@@ -348,7 +348,7 @@ function KD_PasteTile(tile, x, y, data) {
 			KinkyDungeonMapSetForce(x + xx, y + yy, tileTile);
 			if (tileTile == 'B' && KinkyDungeonStatsChoice.has("Nowhere")) {
 				if (KDRandom() < 0.5)
-					KinkyDungeonTiles.set((x + xx) + "," + (y + yy), {
+					KinkyDungeonTilesSet((x + xx) + "," + (y + yy), {
 						Type: "Trap",
 						Trap: "BedTrap",
 					});
@@ -370,13 +370,13 @@ function KD_PasteTile(tile, x, y, data) {
 			if (poi.chance && KDRandom() > poi.chance)
 				poi.used = true;
 		}
-	for (let tileLoc of tile.Tiles) {
+	for (let tileLoc of Object.entries(tile.Tiles)) {
 		let xx = parseInt(tileLoc[0].split(',')[0]);
 		let yy = parseInt(tileLoc[0].split(',')[1]);
 		if (xx != undefined && yy != undefined) {
 			let gennedTile = KDCreateTile(xx+x, yy+y, tileLoc[1], data);
 			if (gennedTile)
-				KinkyDungeonTiles.set((xx + x) + "," + (yy + y), gennedTile);
+				KinkyDungeonTilesSet((xx + x) + "," + (yy + y), gennedTile);
 		}
 	}
 	for (let tileLoc of Object.entries(tile.Skin)) {

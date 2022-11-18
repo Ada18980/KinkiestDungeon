@@ -224,7 +224,7 @@ function KDResetIntent(enemy, AIData) {
  */
 function KDSettlePlayerInFurniture(enemy, AIData, tags, guardDelay = 24) {
 	let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]);
-	let tile = KinkyDungeonTiles.get(nearestfurniture.x + "," + nearestfurniture.y);
+	let tile = KinkyDungeonTilesGet(nearestfurniture.x + "," + nearestfurniture.y);
 	let type = tile ? tile.Furniture : undefined;
 
 	let ee = KinkyDungeonEnemyAt(nearestfurniture.x, nearestfurniture.y);

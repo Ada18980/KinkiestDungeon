@@ -74,9 +74,9 @@ function KDLockNearbyJailDoors(x, y) {
 		if (radius)
 			for (let X = x - Math.ceil(radius); X <= x + Math.ceil(radius); X++)
 				for (let Y = y - Math.ceil(radius); Y <= y + Math.ceil(radius); Y++)
-					if (KinkyDungeonTiles.get(X + ',' + Y)?.Jail && KinkyDungeonMapGet(X, Y) == 'd') {
+					if (KinkyDungeonTilesGet(X + ',' + Y)?.Jail && KinkyDungeonMapGet(X, Y) == 'd') {
 						KinkyDungeonMapSet(X, Y, 'D');
-						KinkyDungeonTiles.get(X + ',' + Y).Lock = "Red";
+						KinkyDungeonTilesGet(X + ',' + Y).Lock = "Red";
 					}
 	}
 }
@@ -1381,7 +1381,7 @@ function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerD
 			if (((!avoidPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) > minDist)
 				&& (!onlyPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) <= playerDist))
 				&& (!KinkyDungeonPointInCell(X, Y)) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))
-				&& KinkyDungeonNoEnemyExceptSub(X, Y, true, Enemy) && (!KinkyDungeonTiles.get(X + "," + Y) || !KinkyDungeonTiles.get(X + "," + Y).OffLimits)) {
+				&& KinkyDungeonNoEnemyExceptSub(X, Y, true, Enemy) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
 				return {x: X, y:Y};
 			}
 		}
@@ -1420,7 +1420,7 @@ function KinkyDungeonGetNearbyPoint(x, y, allowNearPlayer=false, Enemy, Adjacent
 	let foundslot = undefined;
 	for (let C = 0; C < 100; C++) {
 		let slot = slots[Math.floor(KDRandom() * slots.length)];
-		if (slot && KinkyDungeonNoEnemyExceptSub(slot.x, slot.y, false, Enemy) && (ignoreOffLimits || !KinkyDungeonTiles.get(slot.x + "," + slot.y) || !KinkyDungeonTiles.get(slot.x + "," + slot.y).NoWander)
+		if (slot && KinkyDungeonNoEnemyExceptSub(slot.x, slot.y, false, Enemy) && (ignoreOffLimits || !KinkyDungeonTilesGet(slot.x + "," + slot.y) || !KinkyDungeonTilesGet(slot.x + "," + slot.y).NoWander)
 			&& (allowNearPlayer || Math.max(Math.abs(KinkyDungeonPlayerEntity.x - slot.x), Math.abs(KinkyDungeonPlayerEntity.y - slot.y)) > 1.5)
 			&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(slot.x, slot.y))) {
 			foundslot = {x: slot.x, y: slot.y};
@@ -2569,7 +2569,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 										if (e == enemy) continue;
 										if (['guard', 'ambush'].includes(KDGetAI(enemy))) continue;
 										if (enemy.Enemy.clusterWith && !e.Enemy.tags[enemy.Enemy.clusterWith]) continue;
-										if (KinkyDungeonTiles.get(e.x + "," + e.y) && KinkyDungeonTiles.get(e.x + "," + e.y).OffLimits) continue;
+										if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits) continue;
 										let dist = KDistEuclidean(e.x - enemy.x, e.y - enemy.y);
 										if (dist < minDist) {
 											minDist = dist;
@@ -2836,11 +2836,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							&& ((!enemy.usingSpecial && !enemy.Enemy.bindOnDisable) || (enemy.usingSpecial && !enemy.Enemy.bindOnDisableSpecial) || !KinkyDungeonHasWill(0.01) || !KinkyDungeonHasStamina(2.5) || KinkyDungeonPlayer.Pose.includes("Kneel") || KinkyDungeonPlayer.Pose.includes("Hogtie"))) {
 
 							if (AIData.addMoreRestraints || AIData.addLeash) {
-								if (!AIData.intentToLeash && enemy.Enemy.bound && KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y) && KDGameData.KinkyDungeonLeashedPlayer < 1
-									&& KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture
+								if (!AIData.intentToLeash && enemy.Enemy.bound && KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y) && KDGameData.KinkyDungeonLeashedPlayer < 1
+									&& KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture
 									&& !KinkyDungeonPlayerTags.has("Furniture")
-									&& KDFurniture[KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture]) {
-									let furn = KDFurniture[KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture];
+									&& KDFurniture[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture]) {
+									let furn = KDFurniture[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture];
 									if (furn) {
 										let rest = KinkyDungeonGetRestraint(
 											{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
@@ -3014,8 +3014,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											}
 											if (KinkyDungeonMapGet(enemy.x, enemy.y) == 'D')  {
 												KinkyDungeonMapSet(enemy.x, enemy.y, 'd');
-												if (KinkyDungeonTiles.get(enemy.x + ',' +enemy.y) && KinkyDungeonTiles.get(enemy.x + ',' +enemy.y).Type == "Door")
-													KinkyDungeonTiles.get(enemy.x + ',' +enemy.y).Lock = undefined;
+												if (KinkyDungeonTilesGet(enemy.x + ',' +enemy.y) && KinkyDungeonTilesGet(enemy.x + ',' +enemy.y).Type == "Door")
+													KinkyDungeonTilesGet(enemy.x + ',' +enemy.y).Lock = undefined;
 											}
 
 											if (KDRandom() < actionDialogueChanceIntense)
@@ -3464,7 +3464,7 @@ function KinkyDungeonNoEnemy(x, y, Player) {
 function KinkyDungeonCanSwapWith(e, Enemy) {
 	if (e.Enemy && e.Enemy.immobile) return false; // Definition of noSwap
 	if (e && KDEnemyHasFlag(e, "noswap")) return false; // Definition of noSwap
-	if (KinkyDungeonTiles.get(e.x + "," + e.y) && KinkyDungeonTiles.get(e.x + "," + e.y).OffLimits && Enemy != KinkyDungeonJailGuard() && !KinkyDungeonAggressive(Enemy)) return false; // Only jailguard or aggressive enemy is allowed to swap into offlimits spaces unless hostile
+	if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits && Enemy != KinkyDungeonJailGuard() && !KinkyDungeonAggressive(Enemy)) return false; // Only jailguard or aggressive enemy is allowed to swap into offlimits spaces unless hostile
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.ethereal && e && e.Enemy && !e.Enemy.ethereal) return false; // Ethereal enemies NEVER have seniority, this can teleport other enemies into walls
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.squeeze && e && e.Enemy && !e.Enemy.squeeze) return false; // Squeeze enemies NEVER have seniority, this can teleport other enemies into walls
 	if (Enemy == KinkyDungeonLeashingEnemy()) return true;
@@ -3544,11 +3544,11 @@ function KinkyDungeonEnemyTryMove(enemy, Direction, delta, x, y) {
 
 		if (!ee && KinkyDungeonMapGet(enemy.x, enemy.y) == 'd' && enemy.Enemy && enemy.Enemy.tags.closedoors && !(KDGameData.KinkyDungeonLeashedPlayer > 0 || KinkyDungeonFlags.has("noclosedoors"))
 			&& ((dist > 5) ||
-				(KinkyDungeonTiles.get(enemy.x + "," + enemy.y) && KDHostile(enemy) && (KinkyDungeonTiles.get(enemy.x + "," + enemy.y).Jail || KinkyDungeonTiles.get(enemy.x + "," + enemy.y).ReLock) && !KinkyDungeonFlags.has("nojailbreak")))) {
+				(KinkyDungeonTilesGet(enemy.x + "," + enemy.y) && KDHostile(enemy) && (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Jail || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).ReLock) && !KinkyDungeonFlags.has("nojailbreak")))) {
 			KinkyDungeonMapSet(enemy.x, enemy.y, 'D');
-			if (KDGameData.PrisonerState == 'jail' && KinkyDungeonTiles.get(enemy.x + "," + enemy.y) && KDHostile(enemy) && (KinkyDungeonTiles.get(enemy.x + "," + enemy.y).Jail || KinkyDungeonTiles.get(enemy.x + "," + enemy.y).ReLock)
+			if (KDGameData.PrisonerState == 'jail' && KinkyDungeonTilesGet(enemy.x + "," + enemy.y) && KDHostile(enemy) && (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Jail || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).ReLock)
 				&& !KinkyDungeonFlags.has("nojailbreak")) {
-				KinkyDungeonTiles.get(enemy.x + "," + enemy.y).Lock = "Red";
+				KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Lock = "Red";
 				KDUpdateDoorNavMap();
 			}
 			if (dist < 10) {
@@ -3568,8 +3568,8 @@ function KinkyDungeonEnemyTryMove(enemy, Direction, delta, x, y) {
 
 		if (KinkyDungeonMapGet(x, y) == 'D' && enemy.Enemy && enemy.Enemy.tags.opendoors) {
 			KinkyDungeonMapSet(x, y, 'd');
-			if (KinkyDungeonTiles.get(x + ',' +y) && KinkyDungeonTiles.get(x + ',' +y).Type == "Door")
-				KinkyDungeonTiles.get(x + ',' +y).Lock = undefined;
+			if (KinkyDungeonTilesGet(x + ',' +y) && KinkyDungeonTilesGet(x + ',' +y).Type == "Door")
+				KinkyDungeonTilesGet(x + ',' +y).Lock = undefined;
 			if (dist < 5) {
 				KinkyDungeonSendTextMessage(2, TextGet("KinkyDungeonHearDoorOpenNear"), "#dddddd", 4);
 			} else if (dist < 15)
@@ -3735,7 +3735,7 @@ function KinkyDungeonEnemyCanMove(enemy, dir, MovableTiles, AvoidTiles, ignoreLo
 		}
 	}
 	return MovableTiles.includes(KinkyDungeonMapGet(xx, yy)) && ((Tries && Tries > 5) || !AvoidTiles.includes(KinkyDungeonMapGet(enemy.x + dir.x, enemy.y + dir.y)))
-		&& (ignoreLocks || !KinkyDungeonTiles.get((xx) + "," + (yy)) || !KinkyDungeonTiles.get((xx) + "," + (yy)).Lock)
+		&& (ignoreLocks || !KinkyDungeonTilesGet((xx) + "," + (yy)) || !KinkyDungeonTilesGet((xx) + "," + (yy)).Lock)
 		&& KinkyDungeonNoEnemyExceptSub(xx, yy, true, enemy);
 }
 

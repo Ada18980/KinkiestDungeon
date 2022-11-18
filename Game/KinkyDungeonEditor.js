@@ -529,7 +529,7 @@ let KDTELoadConfirm = false;
 function KDTE_Clear(x, y, force = false) {
 	if (force || !KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(x, y))) {
 		KinkyDungeonMapSetForce(x, y, '0');
-		KinkyDungeonTiles.delete(x + "," + y);
+		KinkyDungeonTilesDelete(x + "," + y);
 		delete KinkyDungeonTilesSkin[x + "," + y];
 		for (let jail of KDGameData.JailPoints) {
 			if (jail.x == x && jail.y == y)
@@ -551,13 +551,13 @@ let KDTE_Brush = {
 		delete KinkyDungeonEffectTiles[KinkyDungeonTargetX + "," + KinkyDungeonTargetY];
 	},
 	"tile": (brush, curr, noSwap) => {
-		let OL = KinkyDungeonTiles.get(KinkyDungeonTargetX + "," + KinkyDungeonTargetY) ? KinkyDungeonTiles.get(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits : undefined;
+		let OL = KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY) ? KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits : undefined;
 		let tile = (curr == brush.tile && !noSwap) ? '0' : brush.tile;
 		if (tile == '0') {
 			if (!noSwap) {
 				KDTE_Clear(KinkyDungeonTargetX, KinkyDungeonTargetY, true);
 				if (OL)
-					KinkyDungeonTiles.set(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
+					KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
 			}
 		} else if (curr != tile) {
 			KinkyDungeonMapSetForce(KinkyDungeonTargetX, KinkyDungeonTargetY, tile);
@@ -566,26 +566,26 @@ let KDTE_Brush = {
 				KDGameData.JailPoints.push({x: KinkyDungeonTargetX, y: KinkyDungeonTargetY, type: brush.jail.type, radius: brush.jail.radius});
 			}
 			if (brush.special) {
-				KinkyDungeonTiles.set(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, brush.special);
+				KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, brush.special);
 				if (OL)
-					KinkyDungeonTiles.get(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
+					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
 			} else {
 				if (OL)
-					KinkyDungeonTiles.set(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
+					KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
 				else
-					KinkyDungeonTiles.delete(KinkyDungeonTargetX + "," + KinkyDungeonTargetY);
+					KinkyDungeonTilesDelete(KinkyDungeonTargetX + "," + KinkyDungeonTargetY);
 			}
 		}
 	},
 	'offlimits': (brush, curr, noSwap) => {
-		if (KinkyDungeonTiles.get(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
-			if (KinkyDungeonTiles.get(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits) {
+		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
+			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits) {
 				if (!noSwap)
-					KinkyDungeonTiles.get(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = false;
+					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = false;
 			} else
-				KinkyDungeonTiles.get(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
+				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
 		} else {
-			KinkyDungeonTiles.set(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
+			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
 		}
 	},
 	'Keyring': (brush, curr, noSwap) => {
@@ -849,7 +849,7 @@ function KDTE_Create(w, h, chkpoint = 'grv') {
 		}
 		KinkyDungeonGrid = KinkyDungeonGrid + "\n";
 	}
-	KinkyDungeonTiles = new Map();
+	KinkyDungeonTiles = {};
 	KinkyDungeonEffectTiles = {};
 	KinkyDungeonTilesSkin = {};
 	KinkyDungeonEntities = [];
@@ -902,7 +902,7 @@ function KDTE_LoadTile(name) {
 		}
 	}
 
-	KinkyDungeonTiles = new Map(nt.Tiles);
+	KinkyDungeonTiles = KDObjFromMapArray(nt.Tiles);
 	KinkyDungeonTilesSkin = KDObjFromMapArray(nt.Skin);
 	KDGameData.JailPoints = [];
 	for (let j of nt.Jail) {
@@ -957,7 +957,7 @@ function KDTE_SaveTile(tile) {
 		POI: KinkyDungeonPOI,
 		Keyring: KDGameData.KeyringLocations,
 		Jail: KDGameData.JailPoints,
-		Tiles: Array.from(KinkyDungeonTiles),
+		Tiles: KinkyDungeonTiles,
 		effectTiles: KinkyDungeonEffectTiles,
 		Skin: KinkyDungeonTilesSkin,
 		inaccessible: KDTEGetInaccessible(),

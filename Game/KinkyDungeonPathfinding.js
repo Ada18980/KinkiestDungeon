@@ -103,7 +103,7 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 						let xx = lowest.x + x;
 						let yy = lowest.y + y;
 						let tile = (xx == endx && yy == endy) ? "" : KinkyDungeonMapGet(xx, yy);
-						MapTile = KinkyDungeonTiles.get((xx) + "," + (yy));
+						MapTile = KinkyDungeonTilesGet((xx) + "," + (yy));
 						let locIndex = `${lowLoc},${endx},${endy},${tileShort}`;
 						// If we have found the end
 						if (xx == endx && yy == endy) {

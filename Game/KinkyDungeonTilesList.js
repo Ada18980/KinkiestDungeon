@@ -17,9 +17,9 @@ let KDTileUpdateFunctions = {
 		return true;
 	},
 	"L" : (delta) => { // Barrel
-		if (KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)
-			&& KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture) {
-			let furn = KDFurniture[KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture];
+		if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)
+			&& KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture) {
+			let furn = KDFurniture[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture];
 			if (furn) {
 				furn.tickFunction(delta);
 			}
@@ -83,7 +83,7 @@ let KDMoveObjectFunctions = {
 			KinkyDungeonMapSet(moveX, moveY, 'd');
 
 			// For private doors, aggro the faction
-			let faction = KinkyDungeonTiles.get(moveX + "," +moveY) && KinkyDungeonTiles.get(moveX + "," +moveY).Faction ? KinkyDungeonTiles.get(moveX + "," +moveY).Faction : undefined;
+			let faction = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Faction ? KinkyDungeonTilesGet(moveX + "," +moveY).Faction : undefined;
 			if (faction) {
 				KinkyDungeonAggroFaction(faction, true);
 			}
@@ -94,16 +94,16 @@ let KDMoveObjectFunctions = {
 		return true;
 	},
 	'C': (moveX, moveY) => { // Open the chest
-		let chestType = KinkyDungeonTiles.get(moveX + "," +moveY) && KinkyDungeonTiles.get(moveX + "," +moveY).Loot ? KinkyDungeonTiles.get(moveX + "," +moveY).Loot : "chest";
-		let faction = KinkyDungeonTiles.get(moveX + "," +moveY) && KinkyDungeonTiles.get(moveX + "," +moveY).Faction ? KinkyDungeonTiles.get(moveX + "," +moveY).Faction : undefined;
-		let noTrap = KinkyDungeonTiles.get(moveX + "," +moveY) && KinkyDungeonTiles.get(moveX + "," +moveY).NoTrap ? KinkyDungeonTiles.get(moveX + "," +moveY).NoTrap : false;
-		let lootTrap = KinkyDungeonTiles.get(moveX + "," +moveY) && KinkyDungeonTiles.get(moveX + "," +moveY).lootTrap ? KinkyDungeonTiles.get(moveX + "," +moveY).lootTrap : undefined;
-		let roll = KinkyDungeonTiles.get(moveX + "," +moveY) ? KinkyDungeonTiles.get(moveX + "," +moveY).Roll : KDRandom();
+		let chestType = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Loot ? KinkyDungeonTilesGet(moveX + "," +moveY).Loot : "chest";
+		let faction = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Faction ? KinkyDungeonTilesGet(moveX + "," +moveY).Faction : undefined;
+		let noTrap = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).NoTrap ? KinkyDungeonTilesGet(moveX + "," +moveY).NoTrap : false;
+		let lootTrap = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).lootTrap ? KinkyDungeonTilesGet(moveX + "," +moveY).lootTrap : undefined;
+		let roll = KinkyDungeonTilesGet(moveX + "," +moveY) ? KinkyDungeonTilesGet(moveX + "," +moveY).Roll : KDRandom();
 		if (faction && !KinkyDungeonChestConfirm) {
 			KinkyDungeonChestConfirm = true;
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2);
 		} else {
-			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType, roll, KinkyDungeonTiles.get(moveX + "," +moveY), undefined, noTrap);
+			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType, roll, KinkyDungeonTilesGet(moveX + "," +moveY), undefined, noTrap);
 			if (lootTrap) KDSpawnLootTrap(moveX, moveY, lootTrap.trap, lootTrap.mult, lootTrap.duration);
 			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/ChestOpen.ogg");
 			KinkyDungeonMapSet(moveX, moveY, 'c');

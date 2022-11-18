@@ -149,7 +149,7 @@ function KDProcessInput(type, data) {
 			break;
 		}
 		case "pick":
-			tile = KinkyDungeonTiles.get(data.targetTile);
+			tile = KinkyDungeonTilesGet(data.targetTile);
 			KinkyDungeonTargetTile = tile;
 			KinkyDungeonTargetTileLocation = data.targetTile;
 			KinkyDungeonAdvanceTime(1, true);
@@ -162,7 +162,7 @@ function KDProcessInput(type, data) {
 			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			break;
 		case "unlock":
-			tile = KinkyDungeonTiles.get(data.targetTile);
+			tile = KinkyDungeonTilesGet(data.targetTile);
 			KinkyDungeonTargetTile = tile;
 			KinkyDungeonTargetTileLocation = data.targetTile;
 
@@ -177,7 +177,7 @@ function KDProcessInput(type, data) {
 			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			break;
 		case "commandunlock": {
-			tile = KinkyDungeonTiles.get(data.targetTile);
+			tile = KinkyDungeonTilesGet(data.targetTile);
 			KinkyDungeonTargetTile = tile;
 			KinkyDungeonTargetTileLocation = data.targetTile;
 			KinkyDungeonAdvanceTime(1, true);
@@ -215,14 +215,14 @@ function KDProcessInput(type, data) {
 			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 			break;
 		case "shrineUse":
-			tile = KinkyDungeonTiles.get(data.targetTile);
+			tile = KinkyDungeonTilesGet(data.targetTile);
 			//KinkyDungeonTargetTile = tile;
 			//KinkyDungeonTargetTileLocation = data.targetTile;
 			KinkyDungeonAdvanceTime(1, true);
 			//KinkyDungeonTargetTile = null;
 			if (KinkyDungeonGold >= data.cost) {
 				KinkyDungeonPayShrine(data.type);
-				KinkyDungeonTiles.delete(KinkyDungeonTargetTileLocation);
+				KinkyDungeonTilesDelete(KinkyDungeonTargetTileLocation);
 				let x =  data.targetTile.split(',')[0];
 				let y =  data.targetTile.split(',')[1];
 				KinkyDungeonMapSet(parseInt(x), parseInt(y), "a");
@@ -239,7 +239,7 @@ function KDProcessInput(type, data) {
 			break;
 		case "shrineDrink": {
 			if (!KDCanDrinkShrine(false)) break;
-			tile = KinkyDungeonTiles.get(data.targetTile);
+			tile = KinkyDungeonTilesGet(data.targetTile);
 			if (tile) tile.drunk = true;
 			KinkyDungeonAdvanceTime(1, true);
 
@@ -270,7 +270,7 @@ function KDProcessInput(type, data) {
 		}
 		case "shrineBottle": {
 			if (!KDCanDrinkShrine(true)) break;
-			tile = KinkyDungeonTiles.get(data.targetTile);
+			tile = KinkyDungeonTilesGet(data.targetTile);
 			if (tile) tile.drunk = true;
 
 			KinkyDungeonAdvanceTime(1, true);
@@ -403,7 +403,7 @@ function KDProcessInput(type, data) {
 				KDGameData.PrisonerState = '';
 				KDGameData.KinkyDungeonJailGuard = 0;
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRescueMe"), "purple", 10);
-				for (let T of KinkyDungeonTiles.values()) {
+				for (let T of Object.values(KinkyDungeonTiles)) {
 					if (T.Lock) T.Lock = undefined;
 					if (T.Type == "Lock") T.Type = undefined;
 					if (T.Type == "Trap") T.Type = undefined;
@@ -415,7 +415,7 @@ function KDProcessInput(type, data) {
 					tile = tiles[Math.floor(tiles.length * KDRandom())];
 					if (tile) {
 						KinkyDungeonMapSet(tile.x, tile.y, "$");
-						KinkyDungeonTiles.set(tile.x + "," + tile.y, {Type: "Angel"});
+						KinkyDungeonTilesSet(tile.x + "," + tile.y, {Type: "Angel"});
 						KDStartDialog("AngelHelp","Angel", true, "");
 					}
 					KDGameData.RescueFlag = true;
@@ -521,7 +521,7 @@ function KDProcessInput(type, data) {
 		}
 		case "tabletInteract": {
 			if (data.action == "read") {
-				tile = KinkyDungeonTiles.get(data.targetTile);
+				tile = KinkyDungeonTilesGet(data.targetTile);
 				if (tile && tile.Type == "Tablet") {
 					// Perform the tablet buff action
 					if (tile.Name == "Will") {
@@ -548,7 +548,7 @@ function KDProcessInput(type, data) {
 					let y = parseInt(data.targetTile.split(',')[1]);
 					if (x && y) {
 						KinkyDungeonMapSet(x, y, 'm');
-						KinkyDungeonTiles.delete(data.targetTile);
+						KinkyDungeonTilesDelete(data.targetTile);
 					}
 				}
 			}
@@ -556,7 +556,7 @@ function KDProcessInput(type, data) {
 		}
 		case "foodInteract": {
 			if (data.action == "eat") {
-				tile = KinkyDungeonTiles.get(data.targetTile);
+				tile = KinkyDungeonTilesGet(data.targetTile);
 				if (tile && tile.Type == "Food") {
 					let gagged = KinkyDungeonGagTotal();
 					if (gagged > 0) {
@@ -589,7 +589,7 @@ function KDProcessInput(type, data) {
 					let x = parseInt(data.targetTile.split(',')[0]);
 					let y = parseInt(data.targetTile.split(',')[1]);
 					if (x && y) {
-						KinkyDungeonTiles.delete(data.targetTile);
+						KinkyDungeonTilesDelete(data.targetTile);
 						KinkyDungeonMapSet(x, y, '-');
 					}
 					return "Pass";
@@ -598,7 +598,7 @@ function KDProcessInput(type, data) {
 					return "Fail";
 				}
 			} else if (data.action == "place") {
-				tile = KinkyDungeonTiles.get(data.targetTile);
+				tile = KinkyDungeonTilesGet(data.targetTile);
 				if (tile && tile.Type == "Charger" && KinkyDungeonInventoryGet("AncientPowerSource")) {
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, -1);
 					tile.Light = KDChargerLight;
@@ -611,7 +611,7 @@ function KDProcessInput(type, data) {
 					}
 				}
 			} else if (data.action == "remove") {
-				tile = KinkyDungeonTiles.get(data.targetTile);
+				tile = KinkyDungeonTilesGet(data.targetTile);
 				if (tile && tile.Type == "Charger" && tile.Light > 0 && !tile.NoRemove) {
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
 					tile.Light = undefined;

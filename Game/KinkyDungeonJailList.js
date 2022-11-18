@@ -41,8 +41,8 @@ let KDJailEvents = {
 				KDStartDialog("PrisonRepeat", guard.Enemy.name, true, "");
 			}
 
-			if (KinkyDungeonTiles.get((xx-1) + "," + yy) && KinkyDungeonTiles.get((xx-1) + "," + yy).Type == "Door") {
-				KinkyDungeonTiles.get((xx-1) + "," + yy).Lock = undefined;
+			if (KinkyDungeonTilesGet((xx-1) + "," + yy) && KinkyDungeonTilesGet((xx-1) + "," + yy).Type == "Door") {
+				KinkyDungeonTilesGet((xx-1) + "," + yy).Lock = undefined;
 			}
 			KDGameData.KinkyDungeonJailGuard = guard.id;
 			KDAddEntity(guard);
@@ -108,7 +108,7 @@ let KDGuardActions = {
 				KDGameData.PrisonerState = 'parole';
 				guard.CurrentAction = "jailWander";
 				// Unlock all jail doors
-				for (let T of KinkyDungeonTiles.values()) {
+				for (let T of Object.values(KinkyDungeonTiles)) {
 					if (T.Lock && T.Jail) T.Lock = undefined;
 					if (T.Type == "Lock") T.Type = undefined;
 				}

@@ -651,7 +651,7 @@ function KinkyDungeonCanRescue(rep, value) {
 function KinkyDungeonUpdateAngel(delta) {
 	// Remove it
 	if (KinkyDungeonFlags.get("AngelHelp") > 0 && KinkyDungeonFlags.get("AngelHelp") < 5) {
-		for (let t of KinkyDungeonTiles.entries()) {
+		for (let t of Object.entries(KinkyDungeonTiles)) {
 			if (t[1].Type == "Angel") {
 				let x = parseInt(t[0].split(',')[0]);
 				let y = parseInt(t[0].split(',')[1]);
@@ -660,7 +660,7 @@ function KinkyDungeonUpdateAngel(delta) {
 						KinkyDungeonTargetTile = null;
 						KinkyDungeonTargetTileLocation = "";
 					}
-					KinkyDungeonTiles.delete(t[0]);
+					KinkyDungeonTilesDelete(t[0]);
 					KinkyDungeonMapSet(x, y, '0');
 				}
 			}
