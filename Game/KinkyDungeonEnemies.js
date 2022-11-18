@@ -769,7 +769,7 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			let II = 0;
 			// Draw bars
 			if ((!enemy.Enemy.stealth || KDHelpless(enemy) || playerDist <= enemy.Enemy.stealth + 0.1) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0)) {
-				if ((KDAllied(enemy) || ((enemy.lifetime != undefined || enemy.hp < enemy.Enemy.maxhp || enemy.boundLevel))) && KDCanSeeEnemy(enemy, playerDist)) {
+				if ((KDAllied(enemy) || enemy.distraction > 0 || ((enemy.lifetime != undefined || enemy.hp < enemy.Enemy.maxhp || enemy.boundLevel))) && KDCanSeeEnemy(enemy, playerDist)) {
 					let spacing = 7;
 					// Draw binding bars
 					let helpless = KDHelpless(enemy);
@@ -887,7 +887,7 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 							KDDraw(kdcanvas, kdpixisprites, enemy.id + "_th", KinkyDungeonRootDirectory + `Conditions/Thought/${name}.png`,
 								canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 								KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
-									zIndex: 103,
+									zIndex: 4,
 								});
 					}
 				}
@@ -2947,7 +2947,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							enemy.hp = 0;
 						} else if ((!KinkyDungeonHasWill(0.1) || (enemy.Enemy.Attack?.mustBindorFail)) && enemy.Enemy.failAttackflag) {
 							for (let f of enemy.Enemy.failAttackflag) {
-								KinkyDungeonSetFlag(f, 12);
+								KinkyDungeonSetFlag(f, enemy.Enemy.failAttackflagDuration || 12);
 							}
 						}
 					}
@@ -3370,8 +3370,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				if (spell && !(!spell.minRange || (AIData.playerDist > spell.minRange))) spell = null;
 				if (spell) break;
 			}
-
-			if (spell) {
+			if (spell && enemy.distraction && !enemy.Enemy.noMiscast && KDRandom() < enemy.distraction / enemy.Enemy.maxhp * 0.8) {
+				if (player == KinkyDungeonPlayerEntity) KinkyDungeonSendTextMessage(4, TextGet("KDEnemyMiscast").replace("EnemyName", "Name" + enemy.Enemy.name), "#88ff88", 2);
+				KinkyDungeonCastSpell(enemy.x, enemy.y, KinkyDungeonFindSpell("EnemyMiscast", true), enemy, player);
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + (enemy.Enemy.miscastsfx || "SoftShield") + ".ogg", enemy);
+			} else if (spell) {
 				if (spell.channel && !enemy.Enemy.noChannel) enemy.channel = spell.channel;
 				enemy.castCooldown = spell.manacost*enemy.Enemy.spellCooldownMult + enemy.Enemy.spellCooldownMod + 1;
 				if (spell.specialCD)
@@ -3392,10 +3395,12 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonSpellCast" + spell.name).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "white", 2, undefined, undefined, enemy);
 				}
 
+
 				if (spell && KinkyDungeonCastSpell(xx, yy, spell, enemy, player).result == "Cast" && spell.sfx) {
 					if (enemy.Enemy.suicideOnSpell) enemy.hp = 0;
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + spell.sfx + ".ogg", enemy);
 				}
+
 
 			//console.log("casted "+ spell.name);
 			}

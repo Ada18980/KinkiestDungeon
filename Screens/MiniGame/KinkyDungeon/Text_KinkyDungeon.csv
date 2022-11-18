@@ -389,10 +389,15 @@ KinkyDungeonBuffLockdownTry,"You struggle against your bonds, but a magical forc
 KinkyDungeonRopeEngulfEnd1,"The ropes squeeze you tighter and tighter..."
 KinkyDungeonRopeEngulfEnd2,"Your body sinks deeper into a sea of bindings..."
 KinkyDungeonRopeEngulfEnd3,"You struggle to breath as you are buried alive in squirming ropes..."
+KinkyDungeonShadowEngulfEnd1,"The hands squeeze you tightly..."
+KinkyDungeonShadowEngulfEnd2,"More hands clasp over your body..."
+KinkyDungeonShadowEngulfEnd3,"You struggle to breath as you are pulled into the mass of shadow hands..."
 KinkyDungeonPassOut,"The world goes dark..."
 KinkyDungeonPassOut2,"You wake up in a different place..."
 
 KinkyDungeonSpellArcaneStrike,Arcane Explosion
+
+KDEnemyMiscast,"EnemyName says something incomprehensible! Her spell miscasts!"
 
 
 KinkyDungeonPlayerVibratedLocationItemNipplesPiercings,Nipples

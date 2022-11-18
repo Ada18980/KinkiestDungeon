@@ -1168,6 +1168,7 @@ Features
 - New enemy: Cursed One
 - Added additional lore to the ancient tombs
 - Submissive enemies will now solicit you to... um... yeah. Careful not to actually kill them though.
+- Distracted enemies will have a miscast chance
 
 
 TODO ValidationFindBlockCycles to prevent bugs

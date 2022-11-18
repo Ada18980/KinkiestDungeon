@@ -104,7 +104,7 @@ let KDMoveObjectFunctions = {
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2);
 		} else {
 			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType, roll, KinkyDungeonTiles.get(moveX + "," +moveY), undefined, noTrap);
-			if (lootTrap) KDSpawnLootTrap(moveX, moveY, lootTrap.trap, lootTrap.mult);
+			if (lootTrap) KDSpawnLootTrap(moveX, moveY, lootTrap.trap, lootTrap.mult, lootTrap.duration);
 			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/ChestOpen.ogg");
 			KinkyDungeonMapSet(moveX, moveY, 'c');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});

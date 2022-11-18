@@ -570,6 +570,14 @@ interface enemy extends KDHasTags {
 	silenceTime?: number,
 	/** List of spells*/
 	spells?: string[],
+	/** This enemy will not miscast spells when distracted*/
+	noMiscast?: boolean,
+	/** Sound effect when miscasting */
+	miscastsfx?: string,
+	/** This enemy knows the unlock command up to this level*/
+	unlockCommandLevel?: number,
+	/** This enemy must wait this long between unlock command attempts. Default is 10*/
+	unlockCommandCD?: number,
 	/** */
 	spellCooldownMult?: number,
 	/** */
@@ -752,6 +760,8 @@ interface enemy extends KDHasTags {
 	ignoreflag?: string[],
 	/** flags set when the player is hit but no binding occurs*/
 	failAttackflag?: string[],
+	/** How long to set the flag for */
+	failAttackflagDuration?: number,
 	/** */
 	visionSummoned?: number,
 	/** */

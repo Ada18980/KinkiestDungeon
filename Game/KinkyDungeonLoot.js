@@ -667,7 +667,7 @@ function KinkyDungeonAddGold(value) {
 }
 
 
-function KDSpawnLootTrap(x, y, trap, mult) {
+function KDSpawnLootTrap(x, y, trap, mult, duration) {
 	let spawned = 0;
 	let maxspawn = 1 + Math.round(Math.min(2 + KDRandom() * 2, KinkyDungeonDifficulty/25) + Math.min(2 + KDRandom() * 2, 0.5*MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint));
 	if (mult) maxspawn *= mult;
@@ -683,7 +683,7 @@ function KDSpawnLootTrap(x, y, trap, mult) {
 				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 				'0', requireTags, true);
 			if (Enemy) {
-				let pass = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, Enemy.tags.construct ? 40 : undefined, undefined, false, "Ambush", true, 1.5, true, undefined, true, true);
+				let pass = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, (duration || Enemy.tags.construct) ? (duration || 40) : undefined, undefined, false, "Ambush", true, 1.5, true, undefined, true, true);
 				if (pass) {
 					if (Enemy.tags.minor) spawned += 0.4;
 					else spawned += 1;
@@ -719,7 +719,7 @@ let KDTrapChestType = {
 			return {trap: "ropeTrap", mult: 1.5};
 	},
 	"shadow" : (guaranteed, x, y, chestType, lock, noTrap) => {
-		return {trap: "shadowTrap", mult: 2.5};
+		return {trap: "shadowTrap", mult: 2.5, duration: 300};
 	},
 };
 

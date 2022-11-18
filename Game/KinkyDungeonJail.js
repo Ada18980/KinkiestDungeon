@@ -811,6 +811,7 @@ function KinkyDungeonPassOut() {
 		if (e.hostile < 9000) e.hostile = 0;
 		if (e.vp > 0) e.vp = 0;
 		if (e.aware) e.aware = false;
+		if (e.maxlifetime && e.maxlifetime < 9000) e.lifetime = 0;
 		KDExpireFlags(e);
 	}
 
