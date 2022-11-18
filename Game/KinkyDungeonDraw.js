@@ -474,6 +474,11 @@ function KinkyDungeonDrawGame() {
 	KDProcessInputs();
 
 
+	if (!KinkyDungeonFlags.get("lastAuto") && KinkyDungeonStatsChoice.get("saveMode")) {
+		KinkyDungeonSetFlag("lastAuto", Math.floor(50 + KDRandom() * 50));
+		KinkyDungeonSaveGame();
+	}
+
 	if (KDRefresh) {
 		CharacterRefresh(KinkyDungeonPlayer);
 	}
@@ -1198,7 +1203,7 @@ function KinkyDungeonDrawGame() {
 		if (ServerURL == "foobar")
 			DrawCheckboxVis(600, 340, 64, 64, TextGet("KinkyDungeonGraphicsQuality"), KinkyDungeonGraphicsQuality, false, "#ffffff");
 
-		DrawCheckboxVis(600, 650, 64, 64, TextGet("KinkyDungeonFastWait"), KinkyDungeonFastWait, false, "#ffffff");
+		//DrawCheckboxVis(600, 650, 64, 64, TextGet("KinkyDungeonFastWait"), KinkyDungeonFastWait, false, "#ffffff");
 		MainCanvas.textAlign = "center";
 		DrawBackNextButtonVis(600, 420, 350, 64, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), "#ffffff", "",
 			() => KDVibeVolumeList[(KDVibeVolumeListIndex + KDVibeVolumeList.length - 1) % KDVibeVolumeList.length] * 100 + "%",
@@ -1211,9 +1216,9 @@ function KinkyDungeonDrawGame() {
 		MainCanvas.textAlign = "center";
 		DrawTextFitKD(TextGet("KinkyDungeonRestartConfirm"), 1250, 400, 1000, "#ffffff", "#333333");
 		DrawButtonVis(975, 550, 550, 64, TextGet("KinkyDungeonRestartNo"), "#ffffff", "");
-		DrawButtonVis(975, 650, 550, 64, TextGet("KinkyDungeonRestartWait"), "#ffffff", "");
+		DrawButtonVis(975, 650, 550, 64, TextGet("KinkyDungeonRestartQuitNoErase"), "#ffffff", "");
 		DrawButtonVis(975, 750, 550, 64, TextGet("KinkyDungeonRestartCapture"),  (KDGameData.PrisonerState == 'jail' || !KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)) ? "Pink" : "#ffffff", "");
-		DrawButtonVis(975, 850, 550, 64, TextGet("KinkyDungeonRestartYes"), "#ffffff", "");
+		//DrawButtonVis(975, 850, 550, 64, TextGet("KinkyDungeonRestartYes"), "#ffffff", "");
 		DrawButtonVis(1650, 900, 300, 64, TextGet("KinkyDungeonCheckPerks"), "#ffffff", "");
 		DrawButtonVis(1075, 450, 350, 64, TextGet("GameConfigKeys"), "#ffffff", "");
 	} else if (KinkyDungeonDrawState == "Perks2") {

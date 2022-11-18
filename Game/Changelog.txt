@@ -1171,7 +1171,7 @@ Features
 - Distracted enemies will have a miscast chance
 - Spellcaster-type enemies now know command word and will unlock each other. Lockdown, on the other hand, is now infinite.
 - You can ask neutrals and allies to give you a key or cast command word on you
-- Saving is now save-state based.
+- Saving is now save-state based and there are autosaves in roguelike mode
 
 
 TODO ValidationFindBlockCycles to prevent bugs

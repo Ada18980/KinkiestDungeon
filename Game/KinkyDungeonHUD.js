@@ -1952,10 +1952,10 @@ function KinkyDungeonHandleHUD() {
 			}
 			return true;
 		}
-		if (MouseIn(600, 650, 64, 64)) {
-			KinkyDungeonFastWait = !KinkyDungeonFastWait;
-			return true;
-		}
+		//if (MouseIn(600, 650, 64, 64)) {
+		//KinkyDungeonFastWait = !KinkyDungeonFastWait;
+		//return true;
+		//}
 		// Done, converted to input
 		if (KinkyDungeonIsPlayer() && MouseIn(975, 750, 550, 64) && KDGameData.PrisonerState != 'jail' && KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)) {
 			KDSendInput("defeat", {});
@@ -1973,22 +1973,23 @@ function KinkyDungeonHandleHUD() {
 			return true;
 		}
 		// Done, converted to input
-		if (KinkyDungeonIsPlayer() && MouseIn(975, 850, 550, 64)) {
+		/*if (KinkyDungeonIsPlayer() && MouseIn(975, 850, 550, 64)) {
 			KDSendInput("lose", {});
 			//Player.KinkyDungeonSave = {};
 			//ServerAccountUpdate.QueueData({KinkyDungeonSave : Player.KinkyDungeonSave});
 			// Update bones here once we create them
 			localStorage.setItem('KinkyDungeonSave', "");
 			return true;
-		} else if (MouseIn(975, 550, 550, 64)) {
+		} else*/ if (MouseIn(975, 550, 550, 64)) {
 			KinkyDungeonDrawState = "Game";
 			return true;
 		} else if (KinkyDungeonIsPlayer() && MouseIn(975, 650, 550, 64)) {
-			KinkyDungeonDrawState = "Game";
-			KinkyDungeonAutoWait = true;
-			KinkyDungeonTempWait = false;
-			KinkyDungeonAutoWaitSuppress = true;
-			KinkyDungeonSleepTime = CommonTime() + 500;
+			KinkyDungeonSaveGame();
+			KinkyDungeonState = "Menu";
+			//KinkyDungeonAutoWait = true;
+			//KinkyDungeonTempWait = false;
+			//KinkyDungeonAutoWaitSuppress = true;
+			//KinkyDungeonSleepTime = CommonTime() + 500;
 			return true;
 		}
 		return true;

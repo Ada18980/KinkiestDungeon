@@ -536,6 +536,7 @@ KinkyDungeonGameContinue,"Continue..."
 KinkyDungeonRestart,"Menu"
 KinkyDungeonRestartConfirm,""
 KinkyDungeonRestartWait,"I will simply wait to see what happens."
+KinkyDungeonRestartQuitNoErase,"Save my current progress."
 KinkyDungeonRestartYes,"Give up (Clears save file)"
 KinkyDungeonRestartCapture,"Actually, I will let the enemy capture me instead."
 KinkyDungeonRestartNo,"No, I wish to press on"
@@ -5760,8 +5761,8 @@ KinkyDungeonRandomModeDesc1,Break orbs and pray you get something good.
 
 KinkyDungeonSaveMode0,Save Codes
 KinkyDungeonSaveMode1,Roguelike
-KinkyDungeonSaveModeDesc0,Grants you a save code every 5 floors you can write down elsewhere.
-KinkyDungeonSaveModeDesc1,No save codes. You are in it to win it.
+KinkyDungeonSaveModeDesc0,"Grants a save code every few floors you can write down. Saves only on exit and floor start."
+KinkyDungeonSaveModeDesc1,"No save codes, forced autosaves. You are in it to win it."
 
 KinkyDungeonStartGame,Start Playing
 KinkyDungeonStartGameDesc,"Lock your settings in, nice and tight."
