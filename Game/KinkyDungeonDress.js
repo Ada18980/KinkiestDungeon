@@ -533,6 +533,7 @@ function KDApplyItem(inv, tags) {
 				}
 			}
 			placed.Property = {Type: type, Difficulty: restraint.power, LockedBy: inv.lock ? "MetalPadlock" : undefined};
+			TypedItemSetOptionByName(KinkyDungeonPlayer, placed, type, false);
 			/*if ((!already) && type) {
 				KinkyDungeonPlayer.FocusGroup = AssetGroupGet("Female3DCG", AssetGroup);
 				let options = window["Inventory" + ((AssetGroup.includes("ItemMouth")) ? "ItemMouth" : AssetGroup) + restraint.Asset + "Options"];

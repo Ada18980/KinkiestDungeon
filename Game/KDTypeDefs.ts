@@ -117,6 +117,7 @@ interface KDRestraintProps {
 	playerTags?: Record<string, number>,
 	shrine?: string[],
 
+
 	/** Affinity type: Hook, Edge, or Sharp, Sticky, defaults are Hook (struggle), Sharp (Cut), Edge (Pick), Sticky (Unlock), and none (Pick)*/
 	affinity?: {
 		Struggle?: string[],
@@ -574,6 +575,8 @@ interface enemy extends KDHasTags {
 	noMiscast?: boolean,
 	/** Sound effect when miscasting */
 	miscastsfx?: string,
+	/** Message when miscasting */
+	miscastmsg?: string,
 	/** This enemy knows the unlock command up to this level*/
 	unlockCommandLevel?: number,
 	/** This enemy must wait this long between unlock command attempts. Default is 10*/

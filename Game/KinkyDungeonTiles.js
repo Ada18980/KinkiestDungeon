@@ -50,10 +50,10 @@ function KDPeripheralTileEffects(delta) {
 	let tileD = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y + 1);
 	if (tileUp == ",") {
 		// Low hook
-		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonHookLow"), "lightgreen", 1, true);
+		KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonHookLow"), "lightgreen", 1, true);
 	} else if (tileUp == "4" || tileL == '4' || tileR == '4' || tileD == '4') {
 		// Crack
-		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCrack"), "lightgreen", 1, true);
+		KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrack"), "lightgreen", 1, true);
 	}
 }
 

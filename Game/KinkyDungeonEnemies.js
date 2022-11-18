@@ -3371,7 +3371,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				if (spell) break;
 			}
 			if (spell && enemy.distraction && !enemy.Enemy.noMiscast && KDRandom() < enemy.distraction / enemy.Enemy.maxhp * 0.8) {
-				if (player == KinkyDungeonPlayerEntity) KinkyDungeonSendTextMessage(4, TextGet("KDEnemyMiscast").replace("EnemyName", "Name" + enemy.Enemy.name), "#88ff88", 2);
+				if (player == KinkyDungeonPlayerEntity) KinkyDungeonSendTextMessage(4,
+					TextGet(enemy.Enemy.miscastmsg || "KDEnemyMiscast").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#88ff88", 2);
 				KinkyDungeonCastSpell(enemy.x, enemy.y, KinkyDungeonFindSpell("EnemyMiscast", true), enemy, player);
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + (enemy.Enemy.miscastsfx || "SoftShield") + ".ogg", enemy);
 			} else if (spell) {
