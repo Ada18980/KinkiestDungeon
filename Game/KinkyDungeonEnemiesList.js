@@ -1136,7 +1136,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 15, weight: 14, noSummon: true}, {name: "RedKey", weight: 1}]},
 
 	{name: "WitchFlame", faction: "Witch", clusterWith: "elemental", bound: "WitchFlame", playLine: "Witch", color: "#d30000", tags: KDMapInit(["leashing", "guardCall", "jailer", "opendoors", "handcuffer", "fire", "closedoors", "human", "witch", "ranged", "elite", "unflinching", "fireimmune", "acidweakness", "iceweakness", "hunter"]), followRange: 2,
-		castWhileMoving: true, spells: ["HeatBolt"], stopToCast: true, spellRdy: true, kite: 1.5, kiteChance: 0.9,
+		castWhileMoving: true, spells: ["HeatBolt", "EnemyCM1"], unlockCommandLevel: 1, stopToCast: true, spellRdy: true, kite: 1.5, kiteChance: 0.9,
 		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 11, minLevel:0, weight:4, movePoints: 2, attackPoints: 2, attack: "SpellMeleeBindWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 3,
 		terrainTags: {"secondhalf":1, "lastthird":2, "elementsAnger": 6}, allFloors: true, shrines: [], followLeashedOnly: true,
 		events: [{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff8933"}],

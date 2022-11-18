@@ -112,11 +112,24 @@ let KinkyDungeonSpellSpecials = {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en && en.boundLevel > 0) {
 			KinkyDungeonApplyBuffToEntity(en, {
-				id: "Lockdown", aura: "#a96ef5", type: "MinBoundLevel", duration: 15, power: Math.min(en.Enemy.maxhp, en.boundLevel), player: true, enemies: true, tags: ["lock", "debuff", "commandword"]
+				id: "Lockdown", aura: "#a96ef5", type: "MinBoundLevel", duration: 15, power: Math.min(en.Enemy.maxhp, en.boundLevel), maxCount: 1, tags: ["lock", "debuff", "commandword", "CM1"]
 			});
+			KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyCM" + (entity?.Enemy?.unlockCommandLevel || 1), true), undefined, undefined, undefined);
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 			return "Cast";
 		} else return "Fail";
+	},
+	"Enemy_CM1": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let en = KinkyDungeonEnemyAt(targetX, targetY);
+		if (en) {
+			KinkyDungeonTickBuffTag(en.buffs, "CM1", 1);
+			if (entity?.Enemy)
+				KinkyDungeonSendActionMessage(7,
+					TextGet("KDCastCM1").replace("EnemyName", TextGet("Name" + entity.Enemy.name)).replace("TargetName", TextGet("Name" + en.Enemy.name)),
+					"#ff5555", 4);
+			return "Cast";
+		}
+		return "Fail";
 	},
 	"Chastity": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);

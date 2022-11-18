@@ -1124,6 +1124,12 @@ type KDPerk = {
 }
 
 interface spell {
+	/** Marks the spell as a command word spell to enemies */
+	commandword?: boolean,
+	/** The spell is used to buff allies */
+	buffallies?: boolean,
+	/** caster will also target themselves */
+	selfbuff?: boolean,
 	/** Type of binding applied to the power */
 	bindType?: string,
 	/** Stops the spell from moving more than 1 tile */
@@ -1310,6 +1316,8 @@ interface spell {
 	heal?: boolean;
 	/** Whether AI treats as a buff */
 	buff?: boolean;
+	/** The spell needs this condition for an enemy to cast it*/
+	castCondition?: string;
 	/** Player can only cast spell on a creature or player */
 	mustTarget?: boolean;
 	/** Player cant target player */

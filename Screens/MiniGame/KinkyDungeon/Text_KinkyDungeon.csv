@@ -398,8 +398,8 @@ KinkyDungeonPassOut2,"You wake up in a different place..."
 KinkyDungeonSpellArcaneStrike,Arcane Explosion
 
 KDEnemyMiscast,"EnemyName says something incomprehensible! Her spell miscasts!"
-KDBanditMiscast,"EnemyName clumsily drops what she was holding!"
-
+KDBanditMiscast,"EnemyName fumbles her next move!"
+KDCastCM1,"The EnemyName utters a command word on the TargetName!"
 
 KinkyDungeonPlayerVibratedLocationItemNipplesPiercings,Nipples
 KinkyDungeonPlayerVibratedLocationItemNipples,Nipples

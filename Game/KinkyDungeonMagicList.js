@@ -771,6 +771,10 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "OrgasmStrike", tags: ["offense", "nature", "binding"], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "inert",
 	},
+	{name: "EffectEnemyCM1", tags: [], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
+		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "inert",
+	},
+
 	{name: "EnemyMiscast", tags: [], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "inert",
 	},
@@ -1268,6 +1272,8 @@ let KinkyDungeonSpellListEnemies = [
 			{id: "ParasolBuff2", type: "Evasion", duration: 5, power: 0.33, player: true, enemies: true, tags: ["defense", "evasion"]},
 			{id: "ParasolBuff3", type: "SpellResist", duration: 5, power: 2.5, player: true, enemies: true, tags: ["defense", "spellresist"]},
 		], onhit:"", time:5, power: 0, range: 6, size: 1, damage: ""},
+	{enemySpell: true, commandword: true, buff: true, buffallies: true, castCondition: "commandword", name: "EnemyCM1", minRange: 0, sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Arms"], mustTarget: true, level:3, type:"special", special: "Enemy_CM1",
+		onhit:"", time:5, power: 0, range: 6, size: 1, damage: "", noCastMsg: true},
 	{enemySpell: true, buff: true, name: "ZombieBuff", minRange: 0, sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Arms"], mustTarget: true, level:3, type:"buff", filterTags: ["zombie", "mummy"],
 		buffs: [
 			{id: "ZombieBuff", type: "Armor", duration: 8, power: 2.0, player: false, enemies: true, tags: ["defense", "armor"]},
@@ -1346,4 +1352,12 @@ let KDSpecialBondage = {
 		powerStruggleBoost: 3.0,
 		healthStruggleBoost: 0.7,
 	},
+};
+
+/** @type {Record<string, (enemy: entity, target: entity) => boolean>} */
+let KDCastConditions = {
+	"commandword": (enemy, target) => {
+		if (KDEnemyHasFlag(enemy, "commandword")) return false;
+		return KDEntityHasBuffTags(target, "commandword");
+	}
 };
