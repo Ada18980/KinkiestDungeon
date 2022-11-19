@@ -144,7 +144,7 @@ function KinkyDungeonShrineCost(type) {
 
 	if (type == "Commerce" && KinkyDungeonShopIndex < KDGameData.ShopItems.length) {
 		let item = KDGameData.ShopItems[KinkyDungeonShopIndex];
-		return Math.round(KinkyDungeonItemCost(item) * (1 + 0.01 * KinkyDungeonDifficulty));
+		return Math.round(KinkyDungeonItemCost(item));
 	} else if (KinkyDungeonShrineTypeRemove.includes(type)) {
 		let rest = KinkyDungeonGetRestraintsWithShrine(type);
 		let maxPower = 1;
