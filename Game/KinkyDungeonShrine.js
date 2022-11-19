@@ -143,6 +143,7 @@ function KinkyDungeonShrineCost(type) {
 	let noMult = false;
 
 	if (type == "Commerce" && KinkyDungeonShopIndex < KDGameData.ShopItems.length) {
+		if (!KDGameData.ShopItems) KDGameData.ShopItems = [];
 		let item = KDGameData.ShopItems[KinkyDungeonShopIndex];
 		return Math.round(KinkyDungeonItemCost(item));
 	} else if (KinkyDungeonShrineTypeRemove.includes(type)) {
