@@ -3414,6 +3414,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		if (AIData.vibe || (enemy.Enemy.remote && AIData.playerDist < enemy.Enemy.remote)) {
 			KinkyDungeonSendEvent("remoteVibe", {enemy: enemy.Enemy.name, power: enemy.Enemy.remoteAmount ? enemy.Enemy.remoteAmount : 5, overcharge: AIData.vibe, noSound: AIData.vibe});
 		}
+		if (AIData.aggressive && AIData.canSensePlayer && enemy.Enemy.punishRemote && AIData.playerDist < enemy.Enemy.punishRemote) {
+			KinkyDungeonSendEvent("remotePunish", {enemy});
+		}
 	}
 
 	if (enemy.IntentAction && KDIntentEvents[enemy.IntentAction] && KDIntentEvents[enemy.IntentAction].maintain) {
@@ -4086,4 +4089,21 @@ function KinkyDungeonGetLoadoutForEnemy(enemy, guaranteed) {
 	}
 	if (loadout_list.length > 0) return loadout_list[Math.floor(KDRandom() * loadout_list.length)];
 	return "";
+}
+
+/**
+ * Gets the text for a key, suffixed with the enemy faction or name if available. Otherwise falls back to just the key
+ * @param {string} key - The base text key
+ * @param {entity} enemy - The enemy
+ * @param {boolean} useName - Whether to use the enemy name or faction
+ * @returns {string}
+ */
+function KinkyDungeonGetTextForEnemy(key, enemy, useName = false) {
+	const enemyKey = `${key}${useName ? enemy.Enemy.name : enemy.Enemy.faction}`;
+	let text = TextGet(enemyKey);
+	if (!text || text.endsWith(enemyKey)) {
+		// Couldn't find enemy-specific text - fall back to just the key
+		text = TextGet(key);
+	}
+	return text;
 }

@@ -884,6 +884,50 @@ let KDEventMapInventory = {
 			}
 		}
 	},
+	"remotePunish": {
+		"RemoteActivatedShock": (e, item, data) => {
+			/** @type {entity} */
+			const enemy = data.enemy;
+			if (!enemy || KDRandom() >= (enemy.Enemy.punishRemoteChance || 0.25) || KDEnemyHasFlag(enemy, "remoteShockCooldown") || (e.noLeash && KDGameData.KinkyDungeonLeashedPlayer >= 1)) {
+				return;
+			}
+			// 7 tick cooldown stops it feeling overly spammy
+			KinkyDungeonSetEnemyFlag(enemy, "remoteShockCooldown", 7);
+			if (e.stun) {
+				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
+				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints - 1); // This is to prevent stunlock while slowed heavily
+			}
+			KinkyDungeonDealDamage({damage: e.power, type: e.damage});
+			const msg = TextGet(e.msg ? e.msg : "KinkyDungeonRemoteShock")
+				.replace("RestraintName", TextGet(`Restraint${item.name}`))
+				.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
+			KinkyDungeonSendTextMessage(5, msg, "#ff8800", 2);
+			if (e.sfx) KinkyDungeonPlaySound(`${KinkyDungeonRootDirectory}/Audio/${e.sfx}.ogg`);
+		},
+		"RemoteLinkItem": (e, item, data) => {
+			const enemy = data.enemy;
+			if (KDRandom() >= (enemy.Enemy.punishRemoteChance || 0.1) || (e.noLeash && KDGameData.KinkyDungeonLeashedPlayer >= 1)) {
+				return;
+			}
+
+			const newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
+			if (e.sfx) KinkyDungeonPlaySound(`${KinkyDungeonRootDirectory}/Audio/${e.sfx}.ogg`);
+
+			KinkyDungeonAddRestraint(newRestraint, item.tightness, true, "", false, undefined, undefined, undefined, item.faction, undefined, undefined, undefined, false);
+
+			if (e.enemyDialogue) {
+				const dialogue = KinkyDungeonGetTextForEnemy(e.enemyDialogue, enemy);
+				KinkyDungeonSendDialogue(enemy, dialogue, KDGetColor(enemy), 2, 4);
+			}
+
+			if (e.msg) {
+				const msg = TextGet(e.msg)
+					.replace("RestraintName", TextGet(`Restraint${item.name}`))
+					.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
+				KinkyDungeonSendTextMessage(5, msg, "#ff8800", 2);
+			}
+		}
+	},
 	"playerMove": {
 		"removeOnMove": (e, item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {

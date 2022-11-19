@@ -691,6 +691,10 @@ interface enemy extends KDHasTags {
 	remote?: number,
 	/** */
 	remoteAmount?: number,
+	/** If the enemy has a remote that can control punishing items (e.g. shock collars), the range that they can control items from */
+	punishRemote?: number,
+	/** The chance per tick that the enemy will use their remote remote to punish the player when they are within range */
+	punishRemoteChance?: number,
 	/** */
 	bypass?: boolean,
 	/** */
@@ -929,6 +933,8 @@ interface KinkyDungeonEvent {
 	humanOnly?: boolean;
 	/** Distance having to do with stealth */
 	distStealth?: number;
+	/** Dialogue key an enemy should send */
+	enemyDialogue?: string;
 
 	// MUTABLE QUANTITIES
 	prevSlowLevel?: number;

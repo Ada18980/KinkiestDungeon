@@ -472,7 +472,7 @@ let KinkyDungeonEnemies = [
 		summon: [
 			{enemy: "Drone", range: 2, count: 2, chance: 0.25, strict: true},],
 		armor: 2, maxhp: 10, movePoints: 2,
-		visionRadius: 6, followRange: 1, projectileAttack: true, useLock: "Red",
+		visionRadius: 6, followRange: 1, projectileAttack: true, useLock: "Red", punishRemote: 4, punishRemoteChance: 0.25,
 		attack: "MeleeBindWill", attackPoints: 4, attackWidth: 3, tilesMinRange: 2, attackRange: 2, power: 3, dmgType: "crush", multiBind: 2,
 		minLevel:3, weight:-6, terrainTags: {"secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 6, "metalRage": 4, "robot": 10}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}]},
@@ -491,7 +491,7 @@ let KinkyDungeonEnemies = [
 		summon: [
 			{enemy: "Drone", range: 2, count: 2, chance: 0.25, strict: true},],
 		armor: 2, maxhp: 24, movePoints: 4,
-		visionRadius: 16, followRange: 1, projectileAttack: true, useLock: "Red",
+		visionRadius: 16, followRange: 1, projectileAttack: true, useLock: "Red", punishRemote: 6, punishRemoteChance: 0.5,
 		attack: "SpellMeleeBindWill", attackPoints: 2, attackWidth: 1, attackRange: 3, power: 1, dmgType: "crush", multiBind: 1, fullBoundBonus: 2,
 		minLevel:9, weight:-106, terrainTags: {"thirdhalf":1, "increasingWeight":0.5, "open": 100, "metalAnger": 44, "metalRage": 13, "robot": 6}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 10, noSummon: true}]},
@@ -511,7 +511,7 @@ let KinkyDungeonEnemies = [
 	{name: "Wolfgirl", faction: "Nevermere", clusterWith: "wolfgirl", bound: "Wolfgirl", color: "#00EFAB", tags: KDMapInit(["leashing", "imprisonable", "trainer", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "wolfRestraints", "melee", "elite", "unflinching", "glueweakness", "ticklesevereweakness", "slashweakness", "pierceweakness", "unflinching", "jail", "hunter"]), followRange: 1,
 		summon: [
 			{enemy: "WolfgirlPet", range: 2, count: 1, chance: 0.7, strict: true},],
-		spells: ["RestrainingDevice"], spellCooldownMult: 1, spellCooldownMod: 1, AI: "hunt",  visionRadius: 10, maxhp: 22, minLevel:0, weight:-6, movePoints: 2, disarm: 0.5,
+		spells: ["RestrainingDevice"], spellCooldownMult: 1, spellCooldownMod: 1, AI: "hunt",  visionRadius: 10, maxhp: 22, minLevel:0, weight:-6, movePoints: 2, disarm: 0.5, punishRemote: 4, punishRemoteChance: 0.25,
 		attackPoints: 3, attack: "MeleeBindLockAllWillSpell", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 4, dmgType: "grope", sneakThreshold: 1, attackLock: "Red",
 		terrainTags: {"secondhalf":3, "lastthird":5, "metalAnger": 9, "metalRage": 5, "wolfgirl": 7}, allFloors: true, shrines: ["Metal"],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "EscortDrone", weight: 0.25, ignoreInInventory: true}, {name: "RedKey", weight: 9}]},
@@ -1301,11 +1301,11 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"jailGuard": 15, "Guard": 1}, allFloors: true, disarm: 0.5, evasion: -0.5, focusPlayer: true,
 		dropTable: [{name: "Pick", weight: 15}, {name: "RedKey", weight: 5}, {name: "SmokeBomb", weight: 7}, {name: "ScrollArms", weight: 1}, {name: "ScrollVerbal", weight: 1}, {name: "ScrollLegs", weight: 1}], rep: {"Prisoner": 5}},
 	{name: "Guard", faction: "Jail", bound: "Guard", tags: KDMapInit(["leashing", "opendoors", "closedoors", "miniboss", "jailer", "melee", "shackleRestraints", "jailRestraints", "guardCall"]), noDisplace: true, keys: true, followRange: 1, AI: "guard", visionRadius: 6, disarm: 0.5,
-		maxhp: 12, minLevel: -1, weight:-1000, movePoints: 1, attackPoints: 3, attack: "MeleeBindLockAllWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2, evasion: -0.5, focusPlayer: true, attackLock: "Red",
+		maxhp: 12, minLevel: -1, weight:-1000, movePoints: 1, attackPoints: 3, attack: "MeleeBindLockAllWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2, evasion: -0.5, focusPlayer: true, attackLock: "Red", punishRemote: 3, punishRemoteChance: 0.15,
 		terrainTags: {"Guard": 1010}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}], rep: {"Prisoner": 10}},
 	{name: "GuardHeavy", faction: "Jail", bound: "GuardHeavy", tags: KDMapInit(["leashing", "opendoors", "closedoors", "jailer", "melee", "unflinching", "hunter", "guardCall", "miniboss", "shackleRestraints", "handcuffer", "jailRestraints"]), noDisplace: true, disarm: 0.5,
 		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 12, minLevel: 4, weight:-20, movePoints: 1, attackPoints: 2, evasion: -0.5, focusPlayer: true,
-		attack: "MeleeBindLockAllWillStun", attackWidth: 3, attackRange: 1, power: 5, dmgType: "electric", stunTime: 1, attackLock: "Red",
+		attack: "MeleeBindLockAllWillStun", attackWidth: 3, attackRange: 1, power: 5, dmgType: "electric", stunTime: 1, attackLock: "Red", punishRemote: 4, punishRemoteChance: 0.2,
 		terrainTags: {"jailGuard": 22, "increasingWeight": 1, "jailbreak": 28}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}], rep: {"Prisoner": 10}},
 
 

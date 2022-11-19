@@ -8547,3 +8547,10 @@ KDShoutHelp2,Your screams are muffled by your gag!
 KDShoutHelp3,You can hardly make a noise...
 
 KDArmorNoise,"*clink*"
+
+KinkyDungeonRemoteShock,You yelp as the EnemyName activates your RestraintName
+
+KDDialogueRemoteLinkCuffs,That should slow you down!
+KDDialogueRemoteLinkCuffsNevermere,Try running away now~
+KDDialogueRemoteLinkCuffsAncientRobot,Initiating prisoner lockdown protocol
+KDMsgRemoteLinkCuffs,Your RestraintName suddenly snap together as the EnemyName activates them
