@@ -1586,6 +1586,8 @@ interface KinkyDungeonSave {
 	KinkyDungeonGridWidth: number;
 	KinkyDungeonGridHeight: number;
 	KinkyDungeonFogGrid: any[];
+	KinkyDungeonStartPosition: {x: number, y: number};
+	KinkyDungeonEndPosition: {x: number, y: number};
 }
 
 

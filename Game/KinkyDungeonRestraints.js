@@ -1266,7 +1266,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		if (data.hasAffinity) {
 			if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp() || !KinkyDungeonPlayerDamage) {
 				let maxBonus = 0;
-				for (let inv of KinkyDungeonAllWeapon()) {
+				let weaponsToTest = KinkyDungeonAllWeapon();//KinkyDungeonCanUseWeapon() ? KinkyDungeonAllWeapon() : [KinkyDungeonPlayerDamage];
+				for (let inv of weaponsToTest) {
 					if (KDWeapon(inv).cutBonus > maxBonus) maxBonus = KDWeapon(inv).cutBonus;
 					if (KDWeapon(inv).cutBonus != undefined && KDWeapon(inv).magic) data.canCutMagic = true;
 				}
@@ -1691,7 +1692,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					} else {
 						if (KDItemIsMagic(restraint) && !data.canCutMagic) {
 							if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/"
-								+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.NoMagic) ? KDRestraint(restraint).sfxEscape.NoMagic : "MagicSlash")
+								+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.NoMagic) ? KDRestraint(restraint).sfxEscape.NoMagic : "SoftShield")
 								+ ".ogg");
 							Pass = "Fail";
 						} else {

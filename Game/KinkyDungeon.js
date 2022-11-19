@@ -231,6 +231,7 @@ let KDOptOut = false;
 * KeyringLocations : {x: number, y: number}[],
 * HiddenItems : Record<string, boolean>,
 * CagedTime : number,
+* ShopItems: shopItem[],
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
@@ -354,6 +355,7 @@ let KDGameDataBase = {
 	StaminaSlow: 0,
 	ManaSlow: 0,
 	KneelTurns: 0,
+	ShopItems: [],
 };
 /**
  * @type {KDGameDataBase}
@@ -2248,6 +2250,8 @@ function KinkyDungeonGenerateSaveData() {
 	save.KinkyDungeonGridWidth = KinkyDungeonGridWidth;
 	save.KinkyDungeonGridHeight = KinkyDungeonGridHeight;
 	save.KinkyDungeonFogGrid = KinkyDungeonFogGrid;
+	save.KinkyDungeonEndPosition = KinkyDungeonEndPosition;
+	save.KinkyDungeonStartPosition = KinkyDungeonStartPosition;
 
 	save.stats = {
 		picks: KinkyDungeonLockpicks,
@@ -2381,6 +2385,8 @@ function KinkyDungeonLoadGame(String) {
 			if (saveData.KinkyDungeonPlayerEntity) KinkyDungeonPlayerEntity = saveData.KinkyDungeonPlayerEntity;
 			if (saveData.KinkyDungeonEntities) KinkyDungeonEntities = saveData.KinkyDungeonEntities;
 			if (saveData.KinkyDungeonBullets) KinkyDungeonBullets = saveData.KinkyDungeonBullets;
+			if (saveData.KinkyDungeonStartPosition) KinkyDungeonStartPosition = saveData.KinkyDungeonStartPosition;
+			if (saveData.KinkyDungeonEndPosition) KinkyDungeonEndPosition = saveData.KinkyDungeonEndPosition;
 			if (saveData.KinkyDungeonGrid) {
 				KinkyDungeonGrid = saveData.KinkyDungeonGrid;
 				KinkyDungeonGridWidth = saveData.KinkyDungeonGridWidth;
