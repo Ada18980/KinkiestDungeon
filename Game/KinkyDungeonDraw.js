@@ -112,7 +112,7 @@ function KDWallVertTunnel(x, y) {
 	return false;
 }
 
-let KDChainablePillar = 'b';
+let KDChainablePillar = 'bdD';
 
 let KDSprites = {
 	// @ts-ignore
@@ -177,19 +177,21 @@ let KDSprites = {
 	"D": (x, y, Fog, noReplace) => {
 		if (Fog) {
 			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
-		} else {
-			KinkyDungeonTilesMemory[x + "," + y] = "Door";
 		}
-		return "Door";
+		if (KDWallVert(x, y, noReplace))
+			KinkyDungeonTilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertCont" : "DoorVert";
+		else KinkyDungeonTilesMemory[x + "," + y] = "Door";
+		return KinkyDungeonTilesMemory[x + "," + y];
 	},
 	// @ts-ignore
 	"d": (x, y, Fog, noReplace) => {
 		if (Fog) {
 			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
-		} else {
-			KinkyDungeonTilesMemory[x + "," + y] = "DoorOpen";
 		}
-		return "DoorOpen";
+		if (KDWallVert(x, y, noReplace))
+			KinkyDungeonTilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertOpenCont" : "DoorVertOpen";
+		else KinkyDungeonTilesMemory[x + "," + y] = "DoorOpen";
+		return KinkyDungeonTilesMemory[x + "," + y];
 	},
 	// @ts-ignore
 	"a": (x, y, Fog, noReplace) => {
