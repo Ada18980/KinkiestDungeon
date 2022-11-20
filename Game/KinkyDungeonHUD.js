@@ -373,7 +373,7 @@ function KinkyDungeonDrawInputs() {
 			statsDraw.helphook = {text: TextGet("KinkyDungeonPlayerHook"), icon: "HelpHook", category: "help", color: "#ffffff", bgcolor: "#333333", priority: 5};
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerHook"), X1, 900 - i * 35, 200, "#ffffff", "#333333"); i++;
 		}
-		if (KinkyDungeonGetAffinity(false, "Sharp") && !KinkyDungeonWeaponCanCut(true)) {
+		if (KinkyDungeonGetAffinity(false, "Sharp") || KinkyDungeonWeaponCanCut(true)) {
 			statsDraw.helpsharp = {text: TextGet("KinkyDungeonPlayerSharp"), icon: "HelpSharp", category: "help", color: "#ffffff", bgcolor: "#333333", priority: 5};
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerSharp"), X1, 900 - i * 35, 200, "#ffffff", "#333333"); i++;
 		}
@@ -649,7 +649,7 @@ function KinkyDungeonDrawInputs() {
 				}
 				item = surfaceItems[KDStruggleGroupLinkIndex[sg.group]];
 			}
-			if (MouseIn(((!sg.left) ? (260) : 0), y-48, 230, (ButtonWidth + 45))) {
+			if (MouseIn(((!sg.left) ? (260) : 0), y-48, 230, (ButtonWidth + 45)) && sg) {
 				let data = {
 					struggleGroup: sg,
 					struggleIndex: KDStruggleGroupLinkIndex ? KDStruggleGroupLinkIndex[sg.group] : 0,
@@ -737,9 +737,9 @@ function KinkyDungeonDrawInputs() {
 
 			let color = "#ffffff";
 			let locktext = "";
-			if (item.lock) {color = "#ffaadd";}
+			if (item && item.lock) {color = "#ffaadd";}
 
-			let GroupText = sg.name ? ("Restraint" + item.name) : ("KinkyDungeonGroup"+ sg.group); // The name of the group to draw.
+			let GroupText = (sg.name && item) ? ("Restraint" + item.name) : ("KinkyDungeonGroup"+ sg.group); // The name of the group to draw.
 
 			DrawTextFitKD(TextGet(GroupText) + locktext, x + ((!sg.left) ? ButtonWidth - (drawLayers ? ButtonWidth : 0) : 0), y-24, 240 - (drawLayers ? ButtonWidth : 0), color, "#333333");
 			MainCanvas.textAlign = "center";
@@ -755,7 +755,7 @@ function KinkyDungeonDrawInputs() {
 			}
 
 			i = 0;
-			if (MouseIn(((!sg.left) ? (260) : 0), y-48, 230, (ButtonWidth + 70)) || KinkyDungeonDrawStruggle > 1) {
+			if (item && (MouseIn(((!sg.left) ? (260) : 0), y-48, 230, (ButtonWidth + 70)) || KinkyDungeonDrawStruggle > 1)) {
 				let r = KDRestraint(item);
 
 				if (!KinkyDungeonDrawStruggleHover) {
