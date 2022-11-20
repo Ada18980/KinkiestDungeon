@@ -148,6 +148,8 @@ let KDIntentEvents = {
 			if (KDGameData.PrisonerState == 'parole') {
 				KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Mistake").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 6, 8);
 				KDBreakTether();
+				if (enemy.IntentLeashPoint)
+					KDMovePlayer(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y, false, false);
 				KDResetIntent(enemy, AIData);
 				enemy.playWithPlayerCD = 24;
 				return true;
