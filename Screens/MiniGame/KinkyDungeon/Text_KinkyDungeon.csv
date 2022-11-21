@@ -209,6 +209,8 @@ KinkyDungeonStatDesc56,"Switching spells and casting from spellbook does not tak
 
 KinkyDungeonStat57,"Disorganized"
 KinkyDungeonStatDesc57,"Switching weapons, learning/choosing spells, and casting from spellbook takes 3 turns."
+KinkyDungeonStatSavourTheTaste,"Savour the Taste"
+KinkyDungeonStatDescSavourTheTaste,"Drinking a potion takes 2 turns"
 
 KinkyDungeonStatMagicHands,"Magic Hands"
 KinkyDungeonStatDescMagicHands,"Enemies can add restraints underneath existing restraints."
