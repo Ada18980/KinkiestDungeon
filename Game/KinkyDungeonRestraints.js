@@ -1073,7 +1073,7 @@ function KDGetRestraintAffinity(item, data) {
 	return data.affinity;
 }
 
-function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChancePre, ApplyGhost, ApplyPlayerBonus) {
+function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChancePre, ApplyGhost, ApplyPlayerBonus, Msg) {
 	let escapeChance = escapeChancePre != undefined ? escapeChancePre : KDRestraint(restraint).escapeChance[StruggleType] != undefined ? KDRestraint(restraint).escapeChance[StruggleType] : 1.0;
 	let limitChance = limitChancePre != undefined ? limitChancePre : (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
 		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.05);
@@ -1136,10 +1136,22 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 			limitChance = KDDragonBonus;
 	}
 
-
-	return {
+	let data = {
+		restraint: restraint,
 		escapeChance: escapeChance,
 		limitChance: limitChance,
+		struggleType: StruggleType,
+		escapeChancePre: escapeChancePre,
+		limitChancePre: limitChancePre,
+		ApplyGhost: ApplyGhost,
+		ApplyPlayerBonus: ApplyPlayerBonus,
+		Msg: Msg,
+	};
+	KinkyDungeonSendEvent("perksStruggleCalc", data);
+
+	return {
+		escapeChance: data.escapeChance,
+		limitChance: data.limitChance,
 	};
 
 }
@@ -1249,7 +1261,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	if (!restraint.struggleProgress) restraint.struggleProgress = 0;
 	if (!restraint.unlockProgress) restraint.unlockProgress = 0;
 	if (!restraint.cutProgress) restraint.cutProgress = 0;
-	let EC = KDGetEscapeChance(restraint, StruggleType, data.escapeChance, data.limitChance, true, true);
+	let EC = KDGetEscapeChance(restraint, StruggleType, data.escapeChance, data.limitChance, true, true, true);
 	data.escapeChance = EC.escapeChance;
 	data.limitChance = EC.limitChance;
 

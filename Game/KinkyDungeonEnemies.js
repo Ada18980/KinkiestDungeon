@@ -2203,6 +2203,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 
 	if (KDEnemyHasFlag(enemy, "Shop")) AIData.playChance = 0;
+	if (KinkyDungeonStatsChoice.get("Undeniable")) AIData.playChance = 0.9;
 	let aware = (enemy.vp > sneakThreshold || enemy.aware);
 	if (KinkyDungeonCanPlay(enemy) && !KinkyDungeonFlags.get("NPCCombat") && !enemy.Enemy.alwaysHostile && !(enemy.rage > 0) && !(enemy.hostile > 0) && player.player && AIData.canSeePlayer && (aware) && KDEnemyCanTalk(enemy) && !KinkyDungeonInJail()) {
 		AIData.playAllowed = true;
@@ -3181,7 +3182,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						KinkyDungeonSendEvent("beforeDamage", data);
 						let dmg = KinkyDungeonDealDamage({damage: data.damage, type: data.damagetype});
 						happened += dmg.happened;
-						KinkyDungeonSetFlag("NPCCombat",  3);
+						if (!enemy.playWithPlayer)
+							KinkyDungeonSetFlag("NPCCombat",  3);
 
 						replace.push({keyword:"DamageTaken", value: dmg.string});
 					} else { // if (KDRandom() <= playerEvasion)
@@ -3624,7 +3626,8 @@ function KinkyDungeonEnemyTryAttack(enemy, player, Tiles, delta, x, y, points, r
 	}
 
 	enemy.attackPoints += delta;
-	KinkyDungeonSetFlag("NPCCombat",  3);
+	if (!enemy.playWithPlayer)
+		KinkyDungeonSetFlag("NPCCombat",  3);
 
 	if (enemy.attackPoints >= points) {
 		enemy.attackPoints = 0;

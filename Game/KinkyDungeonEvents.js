@@ -3297,6 +3297,16 @@ let KDEventMapGeneric = {
 			}
 		},
 	},
+	"perksStruggleCalc": {
+		"CursedLocks": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("CursedLocks") && data.struggleType == "Cut" && data.restraint.lock) {
+				data.escapeChance = -100;
+				if (data.Msg) {
+					KinkyDungeonSendTextMessage(10, TextGet("KDCursedLocks"), "#aa4488", 1.1);
+				}
+			}
+		},
+	},
 };
 
 /**

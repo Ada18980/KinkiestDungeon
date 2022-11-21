@@ -20,7 +20,7 @@ KDModsLoaded,Mods Loaded.
 RestartNeeded,"Restart required!"
 RestartNeededCN,"需要重启！"
 
-KinkyDungeon,"Kinky Dungeon v3.82"
+KinkyDungeon,"Kinky Dungeon v3.83"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
@@ -117,6 +117,13 @@ KinkyDungeonStat26,"Unchained"
 KinkyDungeonStatDesc26,"Start with high Metal reputation, and all metal restraints are easier to escape from."
 KinkyDungeonStat27,"Damsel in Chains"
 KinkyDungeonStatDesc27,"Metal restraints are harder to escape from."
+
+
+KinkyDungeonStatCursedLocks,"Cursed Locks"
+KinkyDungeonStatDescCursedLocks,"Those without keys shall face the Wrath of the Lock. Locked items cannot be cut."
+KDCursedLocks,"The magical warding from the lock protects the item."
+KinkyDungeonStatUndeniable,"Undeniable"
+KinkyDungeonStatDescUndeniable,"Born with an intense submissive desire, you cannot refuse bondage from dialogues."
 
 KinkyDungeonStat28,"Escape Artist"
 KinkyDungeonStatDesc28,"Start with high Rope reputation, and all rope restraints are easier to escape from."

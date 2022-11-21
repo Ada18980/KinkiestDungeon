@@ -519,9 +519,9 @@ function KDDefaultPrereqs(enemy, dist, maxdist, chance, restraintTags) {
 			&& !KinkyDungeonFlags.get("DangerFlag")
 			&& !KinkyDungeonFlags.get("BondageOffer")
 			&& !KinkyDungeonFlags.get("NoTalk")
-			&& KDRandom() < chance
+			&& (KinkyDungeonStatsChoice.get("Undeniable") || KDRandom() < chance)
 			&& (!restraintTags || KinkyDungeonGetRestraint({tags: restraintTags}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined)
-			&& !KDIsBrat(enemy);
+			&& (KinkyDungeonStatsChoice.get("Undeniable") || !KDIsBrat(enemy));
 }
 
 function KDShopTrigger(name) {
