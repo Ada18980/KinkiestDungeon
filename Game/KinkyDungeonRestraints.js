@@ -2389,9 +2389,10 @@ let KinkyDungeonCancelFlag = false;
  * @param {string} [faction]
  * @param {item} [dynamicLink]
  * @param {string} [Curse] - Curse to apply
+ * @param {boolean} [autoMessage] - Whether or not to automatically dispatch messages
  * @returns
  */
-function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link, SwitchItems, events, faction, Unlink, dynamicLink, Curse) {
+function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link, SwitchItems, events, faction, Unlink, dynamicLink, Curse, autoMessage = true) {
 	KDStruggleGroupLinkIndex = {};
 	let start = performance.now();
 	let tight = (Tightness) ? Tightness : 0;
@@ -2405,7 +2406,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 			let linked = false;
 			if (linkable) {
 				linked = true;
-				KinkyDungeonCancelFlag = KinkyDungeonLinkItem(restraint, r, Tightness, Lock, Keep, faction, Curse);
+				KinkyDungeonCancelFlag = KinkyDungeonLinkItem(restraint, r, Tightness, Lock, Keep, faction, Curse, autoMessage);
 			}
 
 			let eventsAdd = false;
@@ -2776,9 +2777,10 @@ function KinkyDungeonRestraintTypes(ShrineFilter) {
  * @param {boolean} [Keep]
  * @param {string} [faction]
  * @param {string} [Curse]
+ * @param {boolean} [autoMessage] - Whether or not to automatically dispatch a message
  * @returns {boolean}
  */
-function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, faction, Curse) {
+function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, faction, Curse, autoMessage = true) {
 	if (newRestraint && oldItem && oldItem.type == Restraint) {
 		if (newRestraint) {
 			KinkyDungeonAddRestraint(newRestraint, tightness, true, Lock, Keep, true, undefined, undefined, faction, undefined, oldItem, Curse);
@@ -2790,7 +2792,7 @@ function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, fact
 				oldItem.events = Object.assign([], KDRestraint(oldItem).events);
 			}
 			KDUpdateLinkCaches(newItem);
-			if (KDRestraint(oldItem).Link)
+			if (autoMessage && KDRestraint(oldItem).Link)
 				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonLink" + oldItem.name), "#ff0000", 2);
 			return true;
 		}
