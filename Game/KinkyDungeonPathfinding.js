@@ -41,12 +41,12 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 		if (ignoreLocks) {
 			if (KDPathCacheIgnoreLocks.has(index)) {
 				KDPathfindingCacheHits++;
-				return KDPathCacheIgnoreLocks.get(index);
+				return Object.assign([], KDPathCacheIgnoreLocks.get(index));
 			}
 		} else {
 			if (KDPathCache.has(index)) {
 				KDPathfindingCacheHits++;
-				return KDPathCache.get(index);
+				return Object.assign([], KDPathCache.get(index));
 			}
 		}
 
