@@ -888,7 +888,7 @@ let KDEventMapInventory = {
 		"RemoteActivatedShock": (e, item, data) => {
 			/** @type {entity} */
 			const enemy = data.enemy;
-			if (!enemy || KDRandom() >= (enemy.Enemy.punishRemoteChance || 0.25) || KDEnemyHasFlag(enemy, "remoteShockCooldown") || (e.noLeash && KDGameData.KinkyDungeonLeashedPlayer >= 1)) {
+			if (!enemy || KDRandom() >= (enemy.Enemy.RemoteControl?.punishRemoteChance || 0.25) || KDEnemyHasFlag(enemy, "remoteShockCooldown") || (e.noLeash && KDGameData.KinkyDungeonLeashedPlayer >= 1)) {
 				return;
 			}
 			// 7 tick cooldown stops it feeling overly spammy
@@ -906,7 +906,7 @@ let KDEventMapInventory = {
 		},
 		"RemoteLinkItem": (e, item, data) => {
 			const enemy = data.enemy;
-			if (KDRandom() >= (enemy.Enemy.punishRemoteChance || 0.1) || (e.noLeash && KDGameData.KinkyDungeonLeashedPlayer >= 1)) {
+			if (KDRandom() >= (enemy.Enemy.RemoteControl?.punishRemoteChance || 0.1) || (e.noLeash && KDGameData.KinkyDungeonLeashedPlayer >= 1)) {
 				return;
 			}
 
