@@ -14,6 +14,8 @@ function KDProcessInput(type, data) {
 	let msg = "";
 	let success = 0;
 	let tile = null;
+
+	KDUpdateEnemyCache = true;
 	switch (type) {
 		case "move":
 			KinkyDungeonToggleAutoDoor = data.AutoDoor;
