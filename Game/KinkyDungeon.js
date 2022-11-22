@@ -477,6 +477,8 @@ function KDistChebyshev(x, y) {
  * @returns {void} - Nothing
  */
 function KinkyDungeonLoad() {
+	KinkyDungeonSetupCrashHandler();
+
 	for (let entry of Object.entries(KDLoadingTextKeys)) {
 		addTextKey(entry[0], entry[1]);
 	}
@@ -2030,6 +2032,8 @@ function KinkyDungeonExit() {
 		ChatRoomPublishCustomAction("KinkyDungeonLose", false, Dictionary);
 	}
 	CharacterRefresh(Player, true);
+
+	KinkyDungeonTeardownCrashHandler();
 }
 
 
@@ -2284,13 +2288,17 @@ function KinkyDungeonGenerateSaveData() {
 function KinkyDungeonSaveGame(ToString) {
 	let save = KinkyDungeonGenerateSaveData();
 
-	let data = LZString.compressToBase64(JSON.stringify(save));
+	let data = KinkyDungeonCompressSave(save);
 	if (!ToString) {
 		//Player.KinkyDungeonSave = saveData.KinkyDungeonSave;
 		//ServerAccountUpdate.QueueData(saveData);
 		localStorage.setItem('KinkyDungeonSave', data);
 	}
 	return data;
+}
+
+function KinkyDungeonCompressSave(save) {
+	return LZString.compressToBase64(JSON.stringify(save));
 }
 
 // N4IgNgpgbhYgXARgDQgMYAsJoNYAcB7ASwDsAXBABlQCcI8FQBxDAgZwvgFoBWakAAo0ibAiQg0EvfgBkIAQzJZJ8fgFkIZeXFWoASgTwQqqAOpEwO/gFFIAWwjk2JkAGExAKwCudFwElLLzYiMSoAX1Q0djJneGAIkAIaACNYgG0AXUisDnSskAATOjZYkAARCAAzeS8wClQAcwIwApdCUhiEAGZUSBgwWNBbCAcnBBQ3Tx9jJFQAsCCQknGEtiNLPNRSGHIkgE8ENNAokjYvO3lkyEYQEnkHBEECMiW1eTuQBIBHL3eXsgOSAixzEZwuVxmoDuD3gTxeYgAylo7KR5J9UD8/kQAStkCDTudLtc4rd7jM4UsAGLCBpEVrfX7kbGAxDAkAAdwUhGWJOh5IA0iQiJVjGE2cUyDR5B0bnzHmUvGgyAAVeRGOQNZwJF4NDBkcQlca9Ai4R7o0ASqUy3lk+WKlVqiCUiCaNTnOwHbVEXX6iCG2bgE04M1hDJhIA=
