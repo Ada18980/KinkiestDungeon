@@ -369,8 +369,9 @@ let KDEventMapInventory = {
 				}
 			}
 			let guard = KinkyDungeonJailGuard();
-			if (guard && KDGameData.CagedTime > KDMaxCageTime && KDistChebyshev(guard.x - KinkyDungeonPlayerEntity.x, guard.y - KinkyDungeonPlayerEntity.y) < 4) {
+			if (guard && !KinkyDungeonFlags.has("guardTP") && KDGameData.CagedTime > KDMaxCageTime && KDistChebyshev(guard.x - KinkyDungeonPlayerEntity.x, guard.y - KinkyDungeonPlayerEntity.y) > 4) {
 				DialogueBringSpecific(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, guard);
+				KinkyDungeonSetFlag("guardTP", 20);
 			}
 		},
 		"slimeSpread": (e, item, data) => {
