@@ -254,12 +254,12 @@ let KDEventMapInventory = {
 		},
 		"EnchantedAnkleCuffs2": (e, item, data) => {
 			KinkyDungeonRemoveRestraint(KDRestraint(item).Group);
-			KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("EnchantedAnkleCuffs"), 0, true, undefined, undefined, undefined, undefined, undefined, item.faction);
+			KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("EnchantedAnkleCuffs"), 0, true, undefined, false, undefined, undefined, undefined, item.faction);
 		},
 		"EnchantedAnkleCuffs": (e, item, data) => {
 			if (KDGameData.AncientEnergyLevel <= 0.0000001) {
 				KinkyDungeonRemoveRestraint(KDRestraint(item).Group);
-				KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("EnchantedAnkleCuffs2"), 0, true, undefined, undefined, undefined, undefined, undefined, item.faction);
+				KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("EnchantedAnkleCuffs2"), 0, true, undefined, false, undefined, undefined, undefined, item.faction);
 			}
 		},
 		"RegenMana": (e, item, data) => {

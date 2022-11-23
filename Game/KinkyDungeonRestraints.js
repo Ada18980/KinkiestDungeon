@@ -2631,7 +2631,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink) 
 					}
 				}
 
-				if (rest.inventory && (Keep || rest.enchanted || rest.alwaysKeep)) {
+				if (rest.inventory && (Keep || ((rest.enchanted || rest.alwaysKeep) && !KinkyDungeonInventoryGetLoose(rest.inventoryAs|| rest.name)))) {
 					if (rest.inventoryAs) {
 						let origRestraint = KinkyDungeonGetRestraintByName(rest.inventoryAs);
 						if (!KinkyDungeonInventoryGetLoose(origRestraint.name)) {

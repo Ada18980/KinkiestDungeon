@@ -1280,11 +1280,12 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup) 
 					if (KinkyDungeonGetRestraintByName(item)) {
 						// Sell the player a restraint
 						let rest = KinkyDungeonGetRestraintByName(item);
-						if (!KinkyDungeonInventoryGetLoose(rest.name)) {
-							KinkyDungeonInventoryAdd({name: rest.name, type: LooseRestraint, events:rest.events, quantity: 1});
+						let Rname = rest.inventoryAs || rest.name;
+						if (!KinkyDungeonInventoryGetLoose(Rname)) {
+							KinkyDungeonInventoryAdd({name: Rname, type: LooseRestraint, events:rest.events, quantity: 1});
 						} else {
-							if (!KinkyDungeonInventoryGetLoose(rest.name).quantity) KinkyDungeonInventoryGetLoose(rest.name).quantity = 0;
-							KinkyDungeonInventoryGetLoose(rest.name).quantity += 1;
+							if (!KinkyDungeonInventoryGetLoose(Rname).quantity) KinkyDungeonInventoryGetLoose(Rname).quantity = 0;
+							KinkyDungeonInventoryGetLoose(Rname).quantity += 1;
 						}
 					} else if (KinkyDungeonFindBasic(item)) {
 						KDAddBasic(KinkyDungeonFindBasic(item));
