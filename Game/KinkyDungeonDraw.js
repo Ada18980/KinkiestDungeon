@@ -77,6 +77,28 @@ function KDWallVert(x, y, noReplace) {
  *
  * @param {number} x
  * @param {number} y
+ * @param {string} [noReplace]
+ * @returns {boolean}
+ */
+function KDWallVertBoth(x, y, noReplace) {
+	//let tileUp = KinkyDungeonMapGet(x, y);
+	let tileBelow = KinkyDungeonMapGet(x, y + 1);
+	let tileAbove = KinkyDungeonMapGet(x, y - 1);
+	if (
+		// These are the tiles that trigger a replacement
+		KDWallReplacers.includes(tileBelow)
+		&& (!noReplace || !noReplace.includes(tileBelow))
+		&& KDWallReplacers.includes(tileAbove)
+		&& (!noReplace || !noReplace.includes(tileAbove))
+	)
+		return true;
+
+	return false;
+}
+/**
+ *
+ * @param {number} x
+ * @param {number} y
  * @returns {boolean}
  */
 function KDWallHorizTunnel(x, y) {
@@ -178,7 +200,7 @@ let KDSprites = {
 		if (Fog) {
 			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
 		}
-		if (KDWallVert(x, y, noReplace))
+		if (KDWallVertBoth(x, y, noReplace))
 			KinkyDungeonTilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertCont" : "DoorVert";
 		else KinkyDungeonTilesMemory[x + "," + y] = "Door";
 		return KinkyDungeonTilesMemory[x + "," + y];
@@ -188,7 +210,7 @@ let KDSprites = {
 		if (Fog) {
 			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
 		}
-		if (KDWallVert(x, y, noReplace))
+		if (KDWallVertBoth(x, y, noReplace))
 			KinkyDungeonTilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertOpenCont" : "DoorVertOpen";
 		else KinkyDungeonTilesMemory[x + "," + y] = "DoorOpen";
 		return KinkyDungeonTilesMemory[x + "," + y];
