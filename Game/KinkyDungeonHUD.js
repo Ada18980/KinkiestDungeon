@@ -1529,6 +1529,7 @@ let KDModalArea_y = 700;
 let KDModalArea_width = 800;
 let KDModalArea_height = 100;
 let KDModalArea = true;
+let KDConfirmDeleteSave = false;
 
 function KinkyDungeonHandleHUD() {
 	let buttonWidth = 48;
@@ -1598,6 +1599,7 @@ function KinkyDungeonHandleHUD() {
 
 		if ((ServerURL == "foobar" && MouseIn(1880, 82, 100, 50)) || (ServerURL != "foobar" && MouseIn(1750, 20, 100, 50))) {
 			KinkyDungeonDrawState = "Restart";
+			KDConfirmDeleteSave = false;
 			if (KDDebugMode) {
 				ElementCreateTextArea("DebugEnemy");
 				ElementValue("DebugEnemy", "Maidforce");
@@ -1795,6 +1797,7 @@ function KinkyDungeonHandleHUD() {
 	} else if (KinkyDungeonDrawState == "Perks2") {
 		if (MouseIn(1650, 920, 300, 64)) {
 			KinkyDungeonDrawState = "Restart";
+			KDConfirmDeleteSave = false;
 			if (KDDebugMode) {
 				ElementCreateTextArea("DebugEnemy");
 				ElementValue("DebugEnemy", "Maidforce");
@@ -1964,8 +1967,13 @@ function KinkyDungeonHandleHUD() {
 		//}
 		// Done, converted to input
 		if (KinkyDungeonIsPlayer() && MouseIn(975, 800, 550, 64) && KDGameData.PrisonerState != 'jail' && KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)) {
-			KDSendInput("defeat", {});
-			KinkyDungeonDrawState = "Game";
+
+			if (KDConfirmDeleteSave) {
+				KDSendInput("defeat", {});
+				KinkyDungeonDrawState = "Game";
+			} else {
+				KDConfirmDeleteSave = true;
+			}
 			return true;
 		}
 		if (MouseIn(1075, 450, 350, 64)) {
@@ -1979,14 +1987,20 @@ function KinkyDungeonHandleHUD() {
 			return true;
 		}
 		// Done, converted to input
-		/*if (KinkyDungeonIsPlayer() && MouseIn(975, 850, 550, 64)) {
-			KDSendInput("lose", {});
-			//Player.KinkyDungeonSave = {};
-			//ServerAccountUpdate.QueueData({KinkyDungeonSave : Player.KinkyDungeonSave});
-			// Update bones here once we create them
-			localStorage.setItem('KinkyDungeonSave', "");
+		if (KinkyDungeonIsPlayer() && MouseIn(975, 900, 550, 64)) {
+			if (KDConfirmDeleteSave) {
+				KDSendInput("lose", {});
+				//Player.KinkyDungeonSave = {};
+				//ServerAccountUpdate.QueueData({KinkyDungeonSave : Player.KinkyDungeonSave});
+				// Update bones here once we create them
+				localStorage.setItem('KinkyDungeonSave', "");
+			} else {
+				KDConfirmDeleteSave = true;
+			}
+
+
 			return true;
-		} else*/ if (MouseIn(975, 550, 550, 64)) {
+		} else if (MouseIn(975, 550, 550, 64)) {
 			KinkyDungeonDrawState = "Game";
 			return true;
 		} else if (KinkyDungeonIsPlayer() && MouseIn(975, 650, 550, 64)) {
@@ -1998,6 +2012,7 @@ function KinkyDungeonHandleHUD() {
 			//KinkyDungeonSleepTime = CommonTime() + 500;
 			return true;
 		}
+		KDConfirmDeleteSave = false;
 		return true;
 	}
 
