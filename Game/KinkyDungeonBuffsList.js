@@ -38,7 +38,7 @@ let KDEager = {
 	]
 };
 let KDMasochist = {
-	id: "Masochist", type: "DamageAmp", power: -3, duration: 1
+	id: "Masochist", type: "DamageAmp", power: -1, duration: 1
 };
 
 let KDChilled = {id: "Chilled", aura: "#73efe8", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 2,};

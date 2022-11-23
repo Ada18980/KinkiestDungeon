@@ -1175,6 +1175,7 @@ Features
 
 3.83 (Nov 2022)
 - New perks: Cursed Locks, Undeniable
+- Added music by kocaeli
 
 
 TODO ValidationFindBlockCycles to prevent bugs

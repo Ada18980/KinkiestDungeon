@@ -652,6 +652,8 @@ function KinkyDungeonIsPlayer() {
 
 let KinkyDungeonCreditsPos = 0;
 let KinkyDungeonPatronPos = 0;
+let KDMaxPatronPerPage = 4;
+let KDMaxPatron = 3;
 let KinkyDungeonSound = true;
 let KinkyDungeonFullscreen = true;
 let KinkyDungeonDrool = true;
@@ -743,12 +745,12 @@ function KinkyDungeonRun() {
 		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), "#ffffff", "");
 		DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 	} else if (KinkyDungeonState == "Patrons") {
-		for (let x = 0; x <= 3; x++) {
+		for (let x = KinkyDungeonPatronPos * KDMaxPatronPerPage; x < KinkyDungeonPatronPos * KDMaxPatronPerPage + KDMaxPatronPerPage && x <= KDMaxPatron; x++) {
 			let credits = TextGet("KinkyDungeonPatronsList" + x).split('|');
 			let i = 0;
 			MainCanvas.textAlign = "left";
 			for (let c of credits) {
-				DrawTextKD(c, 550 + 350 * x, 25 + 40 * i, "#ffffff", KDTextGray2);
+				DrawTextKD(c, 550 + 350 * (x - KinkyDungeonPatronPos * KDMaxPatronPerPage), 25 + 40 * i, "#ffffff", KDTextGray2);
 				i++;
 			}
 			MainCanvas.textAlign = "center";
@@ -756,6 +758,7 @@ function KinkyDungeonRun() {
 
 
 		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), "#ffffff", "");
+		//DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 		//DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 	} else if (KinkyDungeonState == "Menu") {
 		KinkyDungeonGameFlag = false;
@@ -1690,8 +1693,8 @@ function KinkyDungeonHandleClick() {
 			return true;
 		}
 		if (MouseIn(1730, 930, 110, 64)) {
-			if (KinkyDungeonCreditsPos < 1) KinkyDungeonCreditsPos += 1;
-			else KinkyDungeonCreditsPos = 0;
+			if (KinkyDungeonPatronPos < 1) KinkyDungeonPatronPos += 1;
+			else KinkyDungeonPatronPos = 0;
 		}
 	} else if (KinkyDungeonState == "Journey") {
 		if (MouseIn(875, 350, 750, 64)) {
