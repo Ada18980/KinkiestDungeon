@@ -534,6 +534,13 @@ function KinkyDungeonLoad() {
 					KDVibeVolume = KDVibeVolumeList[KDVibeVolumeListIndex];
 				}
 			}
+			if (localStorage.getItem("KDMusicVolume")) {
+				let parsed = parseInt(localStorage.getItem("KDMusicVolume"));
+				if (parsed != undefined) {
+					KDMusicVolumeListIndex = parsed;
+					KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
+				}
+			}
 			if (localStorage.getItem("KDAnimSpeed")) {
 				let parsed = parseInt(localStorage.getItem("KDAnimSpeed"));
 				if (parsed != undefined) {
@@ -679,6 +686,7 @@ function KinkyDungeonRun() {
 
 	KDButtonsCache = {};
 	KDUpdateVibeSounds();
+	KDUpdateMusic();
 	let BG = "BrickWall";
 	DrawImage("Backgrounds/" + BG + ".jpg", 0, 0);
 

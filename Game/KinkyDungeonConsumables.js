@@ -281,5 +281,11 @@ function KinkyDungeonUseConsumable(Name, Quantity) {
 	if (KDConsumable(item.item).sfx) {
 		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/" + KDConsumable(item.item).sfx + ".ogg");
 	}
+
+	if (KDConsumable(item.item).potion && KinkyDungeonStatsChoice.has("SavourTheTaste")) {
+		KinkyDungeonAdvanceTime(1);
+		KinkyDungeonSlowMoveTurns = 1;
+	}
+
 	return true;
 }
