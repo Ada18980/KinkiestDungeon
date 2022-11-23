@@ -41,7 +41,7 @@ function KDUpdateMusic() {
 		if (performance.now() - lastKDMusicTick < 100) return;
 
 		let globalVolume = KDMusicVolume * KDMusicVolumeMult;
-		if (!KDCurrentMusicSound || KDCurrentMusicSound.ended || KDCurrentMusicSound.paused || !KDCurrentSong) {
+		if (globalVolume > 0 && (!KDCurrentMusicSound || KDCurrentMusicSound.ended || KDCurrentMusicSound.paused || !KDCurrentSong)) {
 			KDPlayMusic(KDMusic[KDGetCheckpoint()][Math.floor(KDRandom() * KDMusic[KDGetCheckpoint()].length)], globalVolume);
 		}
 		else if (KDCurrentMusicSound && KDCurrentSong && !KDMusic[KDGetCheckpoint()].includes(KDCurrentSong)) {
@@ -59,6 +59,7 @@ function KDUpdateMusic() {
 }
 
 function KDPlayMusic(Sound, Volume) {
+
 	// Start the new sound
 	let audio = KDCurrentMusicSound || new Audio();
 	let vol = Player.AudioSettings.Volume * (Volume != undefined ? Volume : 1.0);
@@ -79,6 +80,7 @@ function KDPlayMusic(Sound, Volume) {
 		KDCurrentSong = "";
 	}, false);
 	audio.play();
+
 	KDCurrentSong = Sound;
 }
 
