@@ -40,7 +40,7 @@ function KDUpdateMusic() {
 	if (KDPatched) {
 		if (performance.now() - lastKDMusicTick < 100) return;
 
-		let globalVolume = KDMusicVolume * KDMusicVolumeMult;
+		let globalVolume = KinkyDungeonSound ? KDMusicVolume * KDMusicVolumeMult : 0;
 		if (globalVolume > 0 && (!KDCurrentMusicSound || KDCurrentMusicSound.ended || KDCurrentMusicSound.paused || !KDCurrentSong)) {
 			KDPlayMusic(KDMusic[KDGetCheckpoint()][Math.floor(KDRandom() * KDMusic[KDGetCheckpoint()].length)], globalVolume);
 		}
