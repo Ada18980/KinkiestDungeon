@@ -119,9 +119,11 @@ KinkyDungeonStatDesc26,"Start with high Metal reputation, and all metal restrain
 KinkyDungeonStat27,"Damsel in Chains"
 KinkyDungeonStatDesc27,"Metal restraints are harder to escape from."
 
+KinkyDungeonStatForgetful,"Forgetful"
+KinkyDungeonStatDescForgetful,"You don't remember where you've been in the level."
 
 KinkyDungeonStatCursedLocks,"Cursed Locks"
-KinkyDungeonStatDescCursedLocks,"Those without keys shall face the Wrath of the Lock. Locked items cannot be cut."
+KinkyDungeonStatDescCursedLocks,"Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle."
 KDCursedLocks,"The magical warding from the lock protects the item."
 KinkyDungeonStatUndeniable,"Undeniable"
 KinkyDungeonStatDescUndeniable,"Born with an intense submissive desire, you cannot refuse bondage from dialogues."

@@ -978,13 +978,19 @@ let KDDamageAmpPerks = 0;
 let KDDamageAmpPerksMelee = 0;
 let KDDamageAmpPerksMagic = 0;
 let KDDamageAmpPerksSpell = 0;
+let KDDamageAmpEnvironmental = 0;
 let KDExtraEnemyTags = {};
+
+function KDGetEnvironmentalDmg() {
+	return KinkyDungeonMultiplicativeStat(-KDDamageAmpEnvironmental);
+}
 
 function KDUpdatePerksBonus() {
 	KDDamageAmpPerks = 0;
 	KDDamageAmpPerksMagic = 0;
 	KDDamageAmpPerksMelee = 0;
 	KDDamageAmpPerksSpell = 0;
+	KDDamageAmpEnvironmental = 0;
 	KDExtraEnemyTags = {};
 	for (let perk of KinkyDungeonStatsChoice.keys()) {
 		if (KDPerkUpdateStats[perk]) KDPerkUpdateStats[perk]();

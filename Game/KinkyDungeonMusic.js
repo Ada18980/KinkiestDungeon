@@ -38,6 +38,7 @@ let lastKDMusicTick = 0;
 function KDUpdateMusic() {
 
 	if (KDPatched) {
+		KDCurrentMusicSoundUpdate = false;
 		if (performance.now() - lastKDMusicTick < 100) return;
 
 		let globalVolume = KinkyDungeonSound ? KDMusicVolume * KDMusicVolumeMult : 0;
@@ -45,7 +46,8 @@ function KDUpdateMusic() {
 			KDPlayMusic(KDMusic[KDGetCheckpoint()][Math.floor(KDRandom() * KDMusic[KDGetCheckpoint()].length)], globalVolume);
 		}
 		else if (KDCurrentMusicSound && KDCurrentSong && !KDMusic[KDGetCheckpoint()].includes(KDCurrentSong)) {
-			KDEndMusic();
+			if (!KDCurrentMusicSoundUpdate)
+				KDEndMusic();
 		}
 
 		if (KDCurrentMusicSound) {

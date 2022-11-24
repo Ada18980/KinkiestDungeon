@@ -269,18 +269,18 @@ let KDEffectTileFunctions = {
 				if (entity.player) {
 					let latexData = {
 						cancelDamage: false,
-						dmg: KDLatexDmg,
+						dmg: KDLatexDmg*KDGetEnvironmentalDmg(),
 						type: "glue",
 					};
 					KinkyDungeonSendEvent("tickLatexPlayer", latexData);
 					if (!latexData.cancelDamage)
-						KinkyDungeonDealDamage({damage: latexData.dmg, type: latexData.type});
+						KinkyDungeonDealDamage({damage: latexData.dmg*KDGetEnvironmentalDmg(), type: latexData.type});
 				} else if (KDCanBind(entity)) {
 					let latexData = {
 						cancelDamage: entity.boundLevel > entity.Enemy.maxhp + KDLatexBind,
 						enemy: entity,
 						dmg: 0,
-						bind: KDLatexBind,
+						bind: KDLatexBind*KDGetEnvironmentalDmg(),
 						type: "glue",
 					};
 					KinkyDungeonSendEvent("tickLatex", latexData);
@@ -288,7 +288,7 @@ let KDEffectTileFunctions = {
 						KinkyDungeonDamageEnemy(entity, {
 							type: "glue",
 							damage: 0,
-							bind: KDLatexBind,
+							bind: KDLatexBind*KDGetEnvironmentalDmg(),
 							flags: ["DoT"]
 						}, false, true, undefined, undefined, undefined, "Rage");
 						if (entity.boundLevel >= entity.Enemy.maxhp) {
@@ -323,7 +323,7 @@ let KDEffectTileFunctions = {
 		if (entity.player) {
 			KinkyDungeonDealDamage({
 				type: "fire",
-				damage: 1,
+				damage: 1*KDGetEnvironmentalDmg(),
 				time: 0,
 				bind: 0,
 				flags: ["BurningDamage"]
@@ -332,7 +332,7 @@ let KDEffectTileFunctions = {
 		} else {
 			KinkyDungeonDamageEnemy(entity, {
 				type: "fire",
-				damage: 1,
+				damage: 1*KDGetEnvironmentalDmg(),
 				time: 0,
 				bind: 0,
 				flags: ["BurningDamage"]

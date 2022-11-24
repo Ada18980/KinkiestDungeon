@@ -1174,7 +1174,7 @@ Features
 - Saving is now save-state based and there are autosaves in roguelike mode
 
 3.83 (Nov 2022)
-- New perks: Cursed Locks, Undeniable
+- New perks: Cursed Locks, Undeniable, Forgetful
 - Added music by kocaeli
 
 
