@@ -476,6 +476,40 @@ function KDDrawEditorUI() {
 	}
 
 
+
+
+	DrawButtonKDEx("PasteTileFromCB", () => {
+		let success = false;
+		navigator.clipboard.readText()
+			.then(text => {
+				let tile = JSON.parse(text);
+				if (tile && tile.name) {
+					console.log(JSON.parse(text));
+					console.log("Parse successful!!!");
+					KDTE_LoadTile(tile.name, tile);
+
+					if (success) {
+						localStorage.setItem("KDMapTilesListEditor", JSON.stringify(KDMapTilesListEditor));
+						console.log("Saved new tiles to browser local storage.");
+					}
+				}
+			})
+			.catch(err => {
+				console.error('Failed to read clipboard contents: ', err);
+			});
+		return true;
+	}, true, 1250, 950, 175, 45, "Load tile from Clipboard", "#ffffff", "");
+
+	DrawButtonKDEx("MakeTileCB", () => {
+		var text = JSON.stringify(KDTE_ExportTile());
+		navigator.clipboard.writeText(text).then(function() {
+			console.log('Async: Copying to clipboard was successful!');
+		}, function(err) {
+			console.error('Async: Could not copy text: ', err);
+		});
+		return true;
+	}, true, 1250, 900, 175, 45, "Copy Tile to Clipboard", "#ffffff", "");
+
 	DrawButtonKDEx("CommitTiles", () => {
 		if (KDTE_confirmcommit) {
 			KDTE_confirmcommit = false;
@@ -879,11 +913,11 @@ function KDTE_Create(w, h, chkpoint = 'grv') {
 	KDTE_UpdateUI(true);
 }
 
-function KDTE_LoadTile(name) {
+function KDTE_LoadTile(name, loadedTile) {
 	/**
 	 * @type {KDMapTile}
 	 */
-	let nt = KDMapTilesListEditor[name];
+	let nt = loadedTile || KDMapTilesListEditor[name];
 	KDTE_Create(nt.w, nt.h);
 	KDEditorTileIndexStore = nt.index;
 	if (nt.category)
@@ -940,8 +974,11 @@ function KDTE_LoadTile(name) {
 	}
 }
 
-function KDTE_SaveTile(tile) {
-	/**
+/**
+ * @returns {KDMapTile}
+ */
+function KDTE_ExportTile() {
+/**
 	 * @type {KDMapTile}
 	 */
 	let saveTile = {
@@ -981,6 +1018,11 @@ function KDTE_SaveTile(tile) {
 			saveTile.notTags.push(ElementValue("MapCountTagNot" + i));
 		}
 	}
+	return saveTile;
+}
+
+function KDTE_SaveTile(tile) {
+	let saveTile = KDTE_ExportTile();
 
 	// JSON recreation to kill all references
 	KDMapTilesListEditor[KDEditorCurrentMapTileName] = saveTile;
