@@ -4802,7 +4802,7 @@ KinkyDungeonSpellCastAlly,You create a circle on the ground with your foot!
 
 KinkyDungeonSpellStormCrystal,Summon Storm Crystal
 KinkyDungeonSpellTargetStormCrystal,Select where to put the storm crystal (cannot place on occupied squares)
-KinkyDungeonSpellDescriptionStormCrystal,Create a stationary crystal that casts Crackle on nearby targets for Duration turns
+KinkyDungeonSpellDescriptionStormCrystal,Create a stationary crystal that casts Crackle on nearby targets for Duration turns. Can be healed to extend duration.
 KinkyDungeonSummonSingleStormCrystal,A crackling crystal emerges from the ground!
 KinkyDungeonSpellCastStormCrystal,You stomp and the ground shakes!
 

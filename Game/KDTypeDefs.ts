@@ -478,6 +478,8 @@ interface overrideDisplayItem {
 }
 
 interface enemy extends KDHasTags {
+	/** If true, this enemy will always be bound to the enemy that summons it */
+	alwaysBound?: boolean,
 	/** These enemies wont appear in distracted mode */
 	arousalMode?: boolean,
 	name: string,
@@ -949,6 +951,10 @@ interface entity {
 	domVariance?: number,
 	hideTimer?: boolean,
 	Enemy: enemy,
+	/** List an enemy ID. Enemy will be bound to this one and dies if not found. BoundTo of -1 indicates bound to the player, and will expire if the player is jailed or passes out*/
+	boundTo?: number,
+	/** This enemy is weakly bound and simply stunning the caster will delete it */
+	weakBinding?: boolean,
 	player?: boolean,
 	/** This enemy has keys to red locked doors */
 	keys?: boolean,

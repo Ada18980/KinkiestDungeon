@@ -308,7 +308,8 @@ let KinkyDungeonEnemies = [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
 		],
 		terrainTags: {}, shrines: [], allFloors: true},
-	{name: "TickleHandSlave", faction: "Witch", color: "#FFFFFF", tags: KDMapInit(["ignorenoSP", "ghost", "flying", "melee", "glueimmune", "chainimmune"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  master: {type: "ConjurerTickler", range: 3}, noAlert: true, hitsfx: "Tickle",
+	{name: "TickleHandSlave", faction: "Witch", color: "#FFFFFF", tags: KDMapInit(["ignorenoSP", "ghost", "flying", "melee", "glueimmune", "chainimmune"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",
+		master: {type: "ConjurerTickler", range: 3, dependent: true}, noAlert: true, hitsfx: "Tickle",
 		visionRadius: 10, blindSight: 3, evasion: 9.0, alwaysEvade: true, maxhp: 1, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 1, attack: "MeleeWill", attackWidth: 3, attackRange: 1, power: 3, dmgType: "tickle", fullBoundBonus: 0,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},

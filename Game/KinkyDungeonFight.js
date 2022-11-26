@@ -1393,7 +1393,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 					else if (!faction && b.bullet.spell && b.bullet.spell.allySpell) faction = "Player";
 
 					if (b.bullet.faction) faction = b.bullet.faction;
-					let e = KinkyDungeonSummonEnemy(b.x, b.y, summonType, count, rad, sum.strict, sum.time ? sum.time : undefined, sum.hidden, sum.goToTarget, faction, faction && KDFactionRelation("Player", faction) <= -0.5, sum.minRange, undefined, undefined, undefined, undefined, KDBulletAoEMod(b));
+					let e = KinkyDungeonSummonEnemy(b.x, b.y, summonType, count, rad, sum.strict, sum.time ? sum.time : undefined, sum.hidden, sum.goToTarget, faction, faction && KDFactionRelation("Player", faction) <= -0.5, sum.minRange, undefined, undefined, undefined, undefined, KDBulletAoEMod(b), sum.bound ? b.bullet.source : undefined, sum.weakBinding);
 					created += e;
 				}
 			}
@@ -1406,7 +1406,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 }
 
 
-function KinkyDungeonSummonEnemy(x, y, summonType, count, rad, strict, lifetime, hidden, goToTarget, faction, hostile, minrad, startAware, noBullet, hideTimer, pathfind, mod) {
+function KinkyDungeonSummonEnemy(x, y, summonType, count, rad, strict, lifetime, hidden, goToTarget, faction, hostile, minrad, startAware, noBullet, hideTimer, pathfind, mod, boundTo, weakBinding) {
 	let slots = [];
 	for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
 		for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
@@ -1434,7 +1434,7 @@ function KinkyDungeonSummonEnemy(x, y, summonType, count, rad, strict, lifetime,
 			) : null;
 
 			if ((!hidden && !pathfind) || path) {
-				let e = {summoned: true, faction: faction, hostile: hostile ? 100 : undefined, hideTimer: hideTimer, rage: Enemy.summonRage ? 9999 : undefined, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), gx: goToTarget ? KinkyDungeonTargetX : undefined, gy: goToTarget ? KinkyDungeonTargetY : undefined,
+				let e = {summoned: true, boundTo: boundTo, weakBinding: weakBinding, faction: faction, hostile: hostile ? 100 : undefined, hideTimer: hideTimer, rage: Enemy.summonRage ? 9999 : undefined, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), gx: goToTarget ? KinkyDungeonTargetX : undefined, gy: goToTarget ? KinkyDungeonTargetY : undefined,
 					x:x+slot.x, y:y+slot.y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, lifetime: lifetime, maxlifetime: lifetime, path: path};
 				KDAddEntity(e);
 				if (!noBullet) {
