@@ -218,7 +218,6 @@ Magician
 魔术师
 You can cast Illusion spells without having the components, at twice the cost. Start w/ Shadow Dagger.
 你可以以两倍魔力消耗为代价无视施法条件使用幻术。开局获得技能 暗影匕首。
-嗜睡症
 You slowly lose stamina over time.
 随着时间的推移，你会慢慢失去体力。
 Stealth Mission
@@ -481,8 +480,6 @@ I will not be caught! (-5 submissiveness)
 我不会被抓的！ （-5 顺从）
 Menu
 菜单
-
-
 I will simply wait to see what happens.
 我会等着看会发生什么。
 Give up (Clears save file)
@@ -507,8 +504,6 @@ You have reached the end of the playable portion.
 您已到达可游玩部分的末尾。
 Come back later for new dungeons!
 请以后再来游玩全新的地牢！
-
-
 Got the keys!
 拿到钥匙了！
 Missing key
@@ -663,8 +658,6 @@ Press a key, then press a button to set that key
 按下一个键，然后按一个按钮来设置该键
 Floor FLOORNUMBER: DUNGEONNAME
 楼层 FLOORNUMBER: DUNGEONNAME
-
-
 Lockpicks:
 撬锁工具：
 Keys:
@@ -699,10 +692,6 @@ Forgotten Garden
 被遗忘的花园
 Kingdom of Ice
 冰之王国
-
-
-
-
 The Mansion
 豪宅
 Ancient Tombs
@@ -723,8 +712,6 @@ Marble Halls
 大理石大厅
 Doll Storage
 娃娃收纳
-
-
 You search through the debris but find nothing of note
 你在碎片中寻找，但没有发现任何值得注意的东西
 You find some gold coins in a corner (+XXX gold)
@@ -1165,7 +1152,6 @@ Arcane Orb
 神秘球
 Look into my eyes...
 看着我的眼睛。。。
-造成暗影伤害。可以不用手使用。敌人易受攻击并不会使其受益。
 Hammer
 锤子
 A rather simplistic bludgeoning weapon.
@@ -1517,7 +1503,9 @@ As you cross the threshold, a mystical lock appears to prevent you from stepping
 As you cross the threshold, a mystical lock appears to prevent you from stepping back!
 当你跨过门槛时，一个神秘的锁会出现，阻止你返回！
 Illusion
-幻象
+幻术
+Misc
+通用
 The illusion vanishes into thin air.
 幻象消失得无影无踪。
 Wall
@@ -3124,8 +3112,6 @@ Purple Lock
 紫锁
 Yellow Lock
 黄锁
-
-
 (G)
 （G）
 (S)
@@ -5220,16 +5206,12 @@ Throw one of your knives DamageDealt damage. Lands in the target's tile
 投掷你的一把刀，造成 DamageDealt 伤害，并落在命中目标的格子中。
 You a throw a knife!
 你扔出一把刀！
-Choose aim direction
-选择瞄准方向
 Shadow Dagger
 暗影匕首
 A cold shadowy blade that deals DamageDealt damage and pierces all in its path.
 一把冰冷的暗影之刃，对路径上所有格子造成DamageDealt贯穿伤害。
 You a hurl a shadowy dagger!
 你投出一把暗影匕首！
-Choose aim direction
-选择瞄准方向
 Shadow Slash
 暗影斩
 Shadow Scythe
@@ -5238,8 +5220,6 @@ Slice the area in front of you, dealing a delayed DamageDealt damage in an area 
 切开你面前的区域，在一个区域内造成延迟的 DamageDealt 伤害并短暂减速。
 You create a tear in space with your finger!
 你用你的手指撕裂了前方的空间！
-Choose aim direction
-选择瞄准方向
 Portal Walk
 进入传送门
 Teleport to a nearby location (including into darkness) after DelayTime turns.
@@ -5262,8 +5242,6 @@ A shard of ice that does DamageDealt damage and slows for Duration turns. Freeze
 投掷一个造成DamageDealt伤害并在Duration回合内造成减速的冰枪。如果目标已经减速，则改为冻结。
 You a hurl a shard of ice!
 你投出一杆冰枪！
-Choose aim direction
-选择瞄准方向
 Freeze
 冻结
 Freeze an adjacent target for Duration turns.
@@ -5298,8 +5276,6 @@ Throws a chain that does DamageDealt damage and roots an enemy for Duration turn
 投掷一条锁链，造成 DamageDealt 伤害并在 Duration 回合内定身敌人。为目标添加 10 点捆绑值。
 You a hurl a strand of chain!
 你投出一条锁链！
-Choose aim direction
-选择瞄准方向
 Bola
 投石索
 Restraining Device
@@ -5310,8 +5286,6 @@ The restraining device wraps many elastic cables around you!!!
 拘束装置将许多弹性绳索缠绕在您的周围！！！
 Bola
 投石索
-Choose aim direction
-选择瞄准方向
 You throw a bola!
 你扔一个投石索！
 You ready a bola!
@@ -5355,7 +5329,7 @@ You create a temporary shield!
 Choose shield location
 选择屏蔽位置
 Electrify
-落泪
+落雷
 Witch's Electricity
 女巫的落雷
 Witch's Electric Orb
@@ -5376,8 +5350,6 @@ A slow moving ball of flame that explodes for 120 fire damage to the target and 
 一个缓慢移动的火焰球，会爆炸，对目标造成 120 点火焰伤害，并对周围的敌人造成 DamageDealt 点伤害。
 You a hurl a fireball!
 你投掷了火球！
-Choose aim direction
-选择瞄准方向
 Incinerate
 焚风
 A tornado of flame that does DamageDealt damage per turn for LifeTime turns.
@@ -5400,8 +5372,6 @@ Channel to heal 15 hitpoints per turn to summoned allies within a 5x5 area.
 引导每回合为 5x5 区域内的召唤盟友治疗 15 点生命值（不包括你自己）。
 You conjure a healing light!
 你召唤出治愈之光！
-Choose target AoE location (5x5)
-选择目标 AoE 位置 (5x5)
 Crackle
 暴雷
 Storm Bolt
@@ -5528,8 +5498,6 @@ Channel for 1 turn for a bomb that does DamageDealt fire damage in an area after
 消耗1回合，放置一个 DelayTime 回合后在一个区域内造成DamageDealt 火焰伤害的炸弹。
 Fire in the hole!
 小心手雷！
-Choose target AoE location
-选择目标 AoE 位置
 Rope Snare
 绳陷阱
 An invisible circle on the grounds that stuns anyone who walks on it for Duration turns and applies 20 points of binding.
@@ -5562,8 +5530,6 @@ Flash Bomb
 闪光弹
 Mirror Image
 镜像
-
-
 A flash of light which renders anyone caught within blind for Duration turns
 一道闪光，使受到影响的所有人在 Duration 回合内陷入失明
 You charge up a bright flash!
@@ -5912,8 +5878,6 @@ A ball of slime leaves a trail of sticky slime (40 damage when stepped on). It d
 一团史莱姆会留下粘糊糊的痕迹（踩到时造成 40 伤害）。它在击中时造成 DamageDealt 点胶水伤害。
 You hurl a ball of slime!
 你扔出一个史莱姆球！
-Choose aim direction
-选择瞄准方向
 Summon Skeleton
 召唤骷髅
 Mass Summon Skeleton
@@ -8296,8 +8260,6 @@ There is no valid space next to you!
 （算了...）
 (Confirm? You will walk through her for a few turns)
 （确认？你会在接下来几回合中可以穿过他）
-(...)
-(...)
 (Stop following me)
 （停止跟着我）
 (Stop following me)
@@ -8330,8 +8292,6 @@ There is no valid space next to you!
 （没关系...）
 (The SPEAKER follows your orders)
 （SPEAKER 听从您的命令）
-(...)
-(...)
 (The SPEAKER refuses to follow your orders)
 （SPEAKER 拒绝听从您的命令）
 (Don't stay here)
@@ -8474,28 +8434,18 @@ What kind of name is that?
 （SPEAKER看起来很生气）|因为名字和含义是不同的东西！|我的名字使用了旧文明的脚本！|你只是一个装腔作势的人！
 Why not just call yourself Windsong?
 为什么不直接称自己为风歌？
-(...)
-(...)
-(...)
-(...)
 I am an adventurer.
 我是冒险家。
 Mmmmph.
 嗯。
 (SPEAKER blushes)|Ah, right then...
 （SPEAKER脸红了）|啊，那么……
-(...)
-(...)
 (SPEAKER giggles)|Very well. I don't really care who you are.
 （SPEAKER咯咯笑）|很好。我真的不在乎你是谁。
 I do not need to introduce myself.
 我不需要自我介绍。
 Neither do I.
 我也不。
-(...)
-(...)
-(...)
-(...)
 I'm an adventurer. And who are you?
 我是冒险家。你是谁？
 Mmmmm... (Blush)
@@ -8510,18 +8460,12 @@ Reincarnated ones?
 （说话者喜欢讨论）|通常情况下，灵魂会传递到下辈子。|但只要有正确的技巧，人们就可以将它们留在这里。|我打算让它们成为真正的身体……|最终。
 But... reincarnated?
 但是……转世了？
-(...)
-(...)
-(...)
-(...)
 I am an adventurer.
 我是冒险家。
 Mmmmph.
 嗯。
 (SPEAKER giggles)|Hehe... you sound interested.
 （SPEAKER 咯咯笑）|呵呵……你听起来很感兴趣。
-(...)
-(...)
 (SPEAKER frowns)|Never ask a woman about her age!
 （SPEAKER皱眉）|永远不要问女人的年龄！
 I take it you're the hag in charge?
@@ -8530,8 +8474,6 @@ You are in charge, right?
 你负责，对吧？
 (Giggle)
 （傻笑）
-(...)
-(...)
 Don't mess with me, little girl.
 别烦我，小姑娘。
 Mmpphgh? (Pout at her)
@@ -8546,10 +8488,6 @@ That's right. How powerful are you?
 （她笑）|你在墓地里看到的所有僵尸？|它们是我的宠物，我关心每一只。
 What the heck are 'Resurrection Arts'?
 “复活术”到底是什么鬼？
-(...)
-(...)
-(...)
-(...)
 It's time for a true display of skill!
 是时候展现真正的技能了！
 Hmmph. (Look away)
@@ -8566,8 +8504,6 @@ I bet I could do better.
 我敢打赌我可以做得更好。
 (Giggle)
 （傻笑）
-(...)
-(...)
 Why does that matter to you?
 为什么这对你很重要？
 (Stare at her silently, maintaining your posture)
@@ -8604,8 +8540,6 @@ It is indeed!
 确实！
 (Giggle)
 （傻笑）
-(...)
-(...)
 I'm an adventurer, miss.
 我是冒险家，小姐。
 Mmmpphh~ (Moan and wiggle seductively)
@@ -8628,8 +8562,6 @@ That sounds great. But who are you miss?
 这听起来很不错。但您是谁？
 (SPEAKER giggles)|Hehe... We will have so much fun~
 （SPEAKER咯咯笑）|呵呵……我们会玩得很开心的~
-(...)
-(...)
 (SPEAKER giggles)|You don't have to consent, dear~
 （SPEAKER咯咯笑）|不需要你的同意，亲爱的~
 I never said I consented to being a pet!
@@ -8755,7 +8687,7 @@ This is the entrance to the ancient tombs.|It's harder than the normal entrance.
 This part of the dungeon has been altered by the goddess of chaos.|The order of zones you'll go through is totally random.
 地牢的这一部分被混沌女神改变了|你要经过的区域顺序完全是随机的。
 These are the stairs to the tutorial hall.
-这是通往教程室的楼梯。
+这是通往新手教程的楼梯。
 Congratulations! You've completed the tutorial!|Now get in there and stay out of trouble~
 祝贺您已经完成了教程|现在进去，别惹麻烦~
 Welcome to the dungeon!|Don't panic, this is a turn-based game,|and nothing will happen until you move.|On your left you'll see your character,|displayed with all of the bondage they don't have.|Don't worry, you'll find some soon!
@@ -8921,7 +8853,7 @@ An enemy found you while you were busy!
 (Recharge your mana pool)
 （补充你的法力池）
 Prerequisite
-先决条件
+前置条件
 Unlocks:
 解锁：
 You need to learn REQUIREDSPELL before you can learn this one.
@@ -8950,3 +8882,543 @@ Your screams are muffled by your gag!
 你的尖叫声被你的堵嘴掩盖了！
 You can hardly make a noise...
 你几乎不能发出声音...
+Grants a save code every few floors you can write down. Saves only on exit and floor start.
+每隔几层提供存档。存档仅在每层开始和结束时生效。
+Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
+传说在广阔的丛林中有一座神庙。戴好你的装备，去寻找宝藏吧！
+Iron Will
+钢铁意志
+While you have 100 willpower or more, regain an additional 4 stamina per turn.
+当你具有 100 点或更多意志力时，每回合将额外恢复 4 点体力。
+Magical Implements
+魔法武器精通
+While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%.
+手持法杖或附魔刀等魔法武器时，法力消耗降低20%。
+Choose AoE location
+选择施放位置
+Firecracker
+迸裂火花
+A small delayed explosion that deals DamageDealt fire damage.
+施放一个小型的延时爆炸，造成 DamageDealt 点火焰伤害。
+Hailstorm
+冰雹
+A cloud of falling ice that does DamageDealt damage per turn for LifeTime turns and slows.
+降下冰雹，在 LifeTime 回合内每回合造成 DamageDealt 点伤害和减速。
+You conjure a flurry of frost!
+你召唤了冰霜！
+Tremor
+震颤
+Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage.
+在持续回合内向目标区域中的敌人施加脆弱和减速，并造成 DamageDealt 点碾压伤害。
+You call forth the rage of the earth.
+你召唤了大地之怒。
+Earthquake
+地震术
+Channel for 5 turns to send 2 tremors per turn in target area.
+持续施法五回合，每回合在目标区域施放两次 震颤 。
+Runic Ward
+符文盾
+Gives yourself or a creature a magic shield for 50 turns, granting +30 Warding.
+对自己或一个生物施加魔法护盾，持续 50 回合，获得 +30 护盾值。
+You whisper a word of protection!
+你轻声吟唱守护咒文！
+Windblast
+暴风
+Three puffs of wind that do DamageDealt pressure damage, stun briefly, and push targets back.
+召唤三道风压造成 DamageDealt 点压力伤害，附加短暂眩晕和击退。
+You press your wrists together and conjure a blast of wind!
+你并拢手腕召唤出暴风！
+Snowball
+雪球
+A fast orb that leaves behind a frigid cloud of ice. Enemies walking in the cloud take DamageDealt ice damage per tile and are slowed.
+快速滚动并在路径上留下寒冰云。 在云中的敌人每移动一格都会受到 DamageDealt 点冰伤害并被减速。
+You a hurl a snowy blast!
+你掷出一团暴雪！
+Winterblast
+凛冽寒流
+A piercing orb that leaves a trail of ice. Deals DamageDealt ice damage to enemies hit.
+贯穿整个路径并留下冰痕。 对击中的敌人造成 DamageDealt 点冰伤害。
+You a hurl a frigid orb!
+你掷出一个严寒结晶！
+Shock Orb
+冲击之球
+A slow-moving orb that deals DamageDealt electric damage to an adjacent enemy each turn.
+召唤一个缓慢移动的球体，每回合对相邻敌人造成 DamageDealt 点电击伤害。
+You hurl a charged orb!
+你释放了一个带电的球体！
+Choose aim direction (max range 4 tiles)
+选择瞄准方向（最大射程 4 格）
+Water Ball
+水球
+Fast projectile. Deals DamageDealt acid damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage.
+高速发射并造成 DamageDealt 点酸蚀伤害。 潮湿的目标承受 +35% 的电/冰伤害，-42% 的火伤害，并造成 50% 的电击伤害。
+You hurl a ball of water!
+你出扔一个水球！
+Tidal Sphere
+潮汐球
+Slow moving projectile, deals DamageDealt acid damage to enemies it passes thru. Leaves a large amount of water in its wake.
+缓慢移动并对其经过的敌人造成 DamageDealt 点酸蚀伤害。 在它的身后留下大量的水。
+You raise a huge mass of water!
+你召唤出一大团水！
+Field of Frost
+冰霜领域
+Freezes a 5x5 area (ice slows entities). Enemies in the area take DamageDealt damage per turn for LifeTime turns.
+冻结 5x5 的区域并附加减速。 该区域中的敌人每回合受到 DamageDealt 点伤害，持续 LifeTime 回合。
+You stomp your foot and call forth the storm!
+你跺脚召来寒冰风暴！
+Boulder
+巨石
+Channel 1 turn to launch a huge slow rock that deals DamageDealt crush damage and slows for 8 turns. AoE, collides with summoned rocks. Blocks up to 200 damage.
+消耗 1 回合发射一块巨大但缓慢的岩石，造成 DamageDealt 碾压伤害并减速，持续 8 回合。 范围攻击会被巨岩抵挡。最多格挡 200 点伤害。
+You raise a massive boulder from the ground and kick it forward!
+你从地上举起一块巨石并将其向前踢去！
+Earthshape
+地形转变
+Unlocks 3 spells that allow creating mounds, rings, or lines of 50hp, 25 armor rocks.
+解锁 3 个法术，分别允许创建方形、环形和直线形的的岩石地形，岩石具有 50hp 和 25 护甲。
+Earthen monoliths rise from the ground!
+大地巨石拔地而起！
+An earthen monolith rises from the ground!
+一块巨石拔地而起！
+Earthshape (Ring)
+地型转变 (环形)
+Create a large ring of Earthen Monoliths. They have 50 hitpoints and 25 armor.
+创造环形岩石地形。 岩石具有 50 点hp和 25 点护甲。
+You stomp your foot and monoliths emerge in a ring around you!
+你跺了跺脚，巨石出现在你周围！
+Choose ring origin
+选择环形区域
+Earthshape (Mound)
+地型转变 (方形)
+Create a 3x3 field of Earthen Monoliths. They have 50 hitpoints and 25 armor.
+创造 3x3 的方形岩石地形。 岩石具有 50 点hp和 25 点护甲。
+You stomp your foot and monoliths emerge from the ground!
+你跺了跺脚，巨石在地上出现！
+Choose mound origin
+选择方形区域
+Earthshape (Line)
+地型转变 (直线形)
+Create a 4-tile line of Earthen Monoliths. They have 50 hitpoints and 25 armor.
+创造4格的的线形岩石地形。 岩石具有 50 点hp和 25 点护甲。
+You stomp your foot and monoliths emerge from the ground!
+你跺了跺脚，巨石在地上出现！
+Choose line direction
+选择直线区域
+Earth Kick
+岩石踢射
+Stone Projectile
+岩石飞弹
+Kick a summoned rock to turn it into a projectile. Deals DamageDealt crush damage in a 3x3 area and slows for 4 turns.
+踢向一块召唤出的岩石将其射出。 在 3x3 区域内造成 DamageDealt 点碾压伤害并减速 4 回合。
+With a solid kick, you launch one of your monoliths forward!
+你用力一踢，向前射出了一个巨石！
+Choose a monolith to kick
+选择要踢射的岩石
+Volcanism
+火山爆发
+An area of summoned rocks becomes explosive. Deal fire damage to them to ignite, dealing DamageDealt fire damage to adjacent targets.
+引爆一块召唤出的岩石。 引燃相邻目标并造成 DamageDealt 火焰伤害。
+You stomp your foot and magma wells up beneath the ground!
+你跺了跺脚，岩浆从地下喷涌而出！
+Choose monoliths to enchant
+选择需要附魔的巨石
+Flame Rune
+火焰符文
+A trap that deals  fire damage in an area. Takes 5 turns to setup.
+设置一个陷阱，陷阱能够造成 DamageDealt 点范围火焰伤害。 需要 5 回合进行设置。
+You conjure an incendiary trap!
+你设置了一个火焰陷阱！
+Choose location for trap
+选择陷阱位置
+Lightning Rune
+闪电符文
+A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 5 turns to setup.
+设置一个陷阱，陷阱能够造成 DamageDealt 点电击伤害并眩晕 4 回合。 需要 5 回合进行设置。
+You conjure a charged trap!
+你设置了一个闪电陷阱！
+Freeze Rune
+霜冻符文
+A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 5 turns to setup.
+设置一个陷阱，陷阱能够造成 DamageDealt 点冰伤害并冰冻 30 回合。 需要 5 回合进行设置。
+You conjure an icy trap!
+你设置了一个霜冻陷阱！
+Strengthen
+强化
+When enabled: Struggling is more powerful, and your attack damage is increased by +20 if your weapon deals physical damage.
+激活时：快速挣扎，如果你的武器造成物理伤害，你的攻击伤害+20。
+Your body glows with magical energy!
+你的身体散发着神奇的能量！
+Frozen Prison
+寒冰牢狱
+Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn of freeze.
+冻结敌人并施加敌人最大生命值 10% 的束缚，每冻结一回合增加 10 点。
+Lightning Rod
+避雷针
+After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns.
+在施放消耗法力的大气或风暴法术后，变得导电并获得 300% 的电击抗性，持续 3 回合。
+CMD: Unlock
+指令: 解锁
+CMD: Disenchant
+指令: 附魔解除
+Select an area
+选择一个区域
+Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Makes magic bindings easier.
+在大范围内永久减慢构装体速度，降低 50% 攻击速度，并造成 30 点暗影伤害。 命中 3 个或更多目标时返还 50% 法力值。 使魔法拘束更容易。
+You say a command word, siphoning the magic from nearby constructs!
+你下达指令，从附近的构装体中抽取魔力！
+CMD: Vibrate
+指令: 震动
+Target a large area. Enemies with plugs or toys are teased for Duration turns, taking charm damage each turn.
+对大范围内带有插入具或玩具的敌人玩弄 Duration 回合，每回合造成魅惑伤害。
+You say a command word, causing all toys in the area to vibrate!
+你下达指令，范围内所有玩具开始震动！
+CMD: Explosive Finish
+指令: 激烈释放
+Target a large area. Consumes enemy distraction to deal up to DamageDealt charm damage, twice if at 90% distraction or more.
+消耗大范围内敌人的干扰值以造成高达 DamageDealt 的魅惑伤害，如果干扰值处于 90% 或以上则造成双倍伤害。
+You say a command word, resulting in a surge of energy entering your targets!
+你下达指令，一股能量涌入目标的身体！
+CMD: Release
+指令：解放
+Target bound (but unlocked) targets in a 3x3 area, reducing binding by 100. Removes unlocked restraints on player that are removable.
+以 3x3 区域内被束缚(但未解锁)的单位为目标，减少 100 点束缚。移除已解锁并可移除的束缚。
+You say a command word, causing restraints to loosen!
+你一声令下，身上的束缚解除了！
+You say a command word, but your restraints remain tight!
+你下达指令，但身上的束缚仍然很紧！
+Remove Slime
+移除史莱姆
+Select a creature or yourself
+选择一个生物或你自己
+Remove Slime and Encasement from target creatures in an area. Also removes slime from self.
+移除区域内目标身上的史莱姆和包裹物。 同时去除自身的粘液。
+You issue a command to the slime!
+你向史莱姆发出指令！
+You whisper a command word, but the slime is already hardened and won't budge...
+你低声说出指令，但史莱姆已经变硬了，纹丝不动...
+Spread
+增殖
+Slime in the target area expands by 1 unit in the four cardinal directions. Refreshes duration to 12-20 turns.
+目标区域中的粘液会在四个主要方向上扩展 1 个单位。 将持续时间刷新为 12-20 回合。
+The slime spreads!
+粘液蔓延开来！
+Choose area containing slime
+选择含有粘液的区域
+Awaken
+唤醒
+The slime awakens and turns on you!!!
+史莱姆醒来并转向你！！！
+Select area to awaken
+选择唤醒区域
+Activates the slime in an area, causing it to deal DamageDealt glue damage. Encases fully bound targets.
+激活一个区域的史莱姆，使其造成 DamageDealt 点胶水伤害。 包裹完全束缚的目标。
+You command the slime to draw in targets!
+你命令史莱姆吸引目标！
+Conjure Ropes
+召唤绳索
+Launch 3 ropes that deal DamageDealt chain damage each and add 22 rope binding.
+发射 3 根绳索，每根绳索造成 DamageDealt 点锁链伤害，并增加 22 点绳缚。
+You animate a bunch of ropes!
+你让一堆绳子动了起来！
+Coalesce
+聚合
+Gathers slime and slimed enemies into a central point. Deals DamageDealt glue damage per square of slime and Encases slimed enemies. Costs half mana if there is only slime.
+将粘液和粘液包裹的敌人聚集到一个中心点。 每块粘液造成 DamageDealt 点胶水伤害并包裹粘液中的敌人。如果目标只有粘液则只消耗一半法力值。
+You command the slime to draw enemies in!
+你命令粘液包裹敌人！
+Summon Fire Mote
+召唤火晶尘
+Select where to put the fire mote (cannot place on occupied squares)
+选择放置火晶尘的位置（不能放置在被占用的方块上）
+Create an orb of fire that follows you and attacks using firebolt.
+创造一个跟随并能够火焰箭进行攻击的火球。
+A flaming spirit answers your call!
+一个燃烧的灵魂响应你的召唤！
+You call upon the plane of Fire!
+你向火元素位面呼唤！
+Summon Earth Mote
+召唤岩晶尘
+Select where to put the earth mote (cannot place on occupied squares)
+选择放置位置（不能放置在被占用的方块上）
+Create an animated stone that attacks using a strong but slow crush attack.
+创造一个可移动的岩石，进行强大但缓慢的碾压攻击，
+A rocky spirit rushes forth from the ground!
+一个岩石精灵从地面冲出！
+You call upon the plane of Earth!
+你向岩元素位面呼唤！
+Summon Air Mote
+召唤风晶尘
+Select where to put the air mote (cannot place on occupied squares)
+选择放置位置（不能放置在被占用的方块上）
+Create a dusty mote that attacks using gusts of wind.
+创造一个用阵风攻击的风晶。
+A dust devil arises in front of you!
+一个尘妖出现在你的面前！
+You call upon the plane of Air!
+你向风元素位面呼唤！
+Summon Water Mote
+召唤水晶尘
+Select where to put the water mote (cannot place on occupied squares)
+选择放置位置（不能放置在被占用的方块上）
+Create a watery serpent which stuns enemies with its melee attack.
+创造一条水龙，用近战攻击击晕敌人。
+A watery spirit bubbles up from the ground!
+水之精灵灵从地上涌现！
+You call upon the plane of Water!
+你向水元素位面呼唤！
+Tickle Cloud
+挠痒云
+For 10 turns, disembodied hands tickle a target location for DamageDealt tickle damage.
+在 10 回合内，看不见的手会挠痒目标位置以造成 DamageDealt 挠痒伤害。
+A swarm of hands holding feathers appears!
+一群拿着羽毛的看不见的手出现了！
+Choose location
+选择位置
+Conjure Chain
+召唤锁链
+Magic Chain
+魔法锁链
+Witch's Chain
+女巫的锁链
+Throws a chain that does DamageDealt chain damage. Targets with 50% or more binding take 50 crush damage and are slowed for 4 turns.
+投掷锁链造成 DamageDealt 点锁链伤害。 具有 50% 或更多束缚的目标会受到 50 点碾压伤害并减速 4 回合。
+You a hurl a strand of chain!
+你扔出了一根锁链！
+Steel Torrent
+钢铁洪流
+Steel Rain
+钢之雨
+The plug hits you! (DamageDealt)
+插入物撞到你了！(DamageDealt)
+The plug directs itself between your legs!
+插入物直接插进了你的两腿之间！
+Fire 4 Steel Rain in quick succession toward the target point. Best in open spaces.
+向目标点快速连续发射 4 片钢之雨。 最好在空旷的地方施放。
+Fires a steel plug that deals DamageDealt piercing damage. Bound targets are Plugged, which increases Distraction over time.
+发射一个造成 DamageDealt 穿刺伤害的钢制插入物。 被束缚的目标会被插入，随着时间的推移会增加干扰值。
+You raise your hand and a steel projectile appears!
+你举起手，一个钢弹出现了！
+You raise your hand and several steel projectiles appear!
+你一抬手，数枚钢弹出现！
+Choose aim direction
+选择瞄准方向
+Choose target point
+选择目标点
+Conjure Display Stand
+召唤展示架
+Target only Helpless enemies. Creates a fixture that increases passive mana regen, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage.
+只对无助的敌人生效。 创造一个增加被动法力恢复的装置，恢复 50 电荷，并使附近的敌人受到额外 50% 的魅惑/精神伤害。
+You conjure a fixture to hold your helpless target in place!
+你召唤出一个装置来固定无助的目标！
+You watch in horror as your own creation surrounds you, locking you in place with a hefty click!
+你惊恐地看着你自己的创造物包围着你，用重重的咔嗒声将你锁在了原地！
+Choose a helpless target
+选择一个无助的目标
+Conjure Gag
+召唤口球
+Conjured Gag
+魔法口球
+The gag forces itself into your mouth and buckles tightly!
+口球自动进入你的嘴巴并紧紧扣住！
+The gag hits you! (DamageDealt)
+口球击中了你！ (DamageDealt)
+Summons a gag which deals DamageDealt chain damage and silences for 15 turns. +40 binding if target is not silenced.
+召唤一个造成 DamageDealt 点锁链伤害并沉默 15 回合的口球。如果目标未被沉默，则 +40 束缚。
+You conjure a gag!
+你召唤了口球！
+The gag will appear next to you and fly toward the target point.
+口球出现在你旁边并飞向目标点。
+Conjure Armbinder
+召唤束手套
+Conjured Armbinder
+魔法束手套
+The armbinder slips itself around your arms and buckles itself tightly!
+束手套包在你的手臂上并紧紧扣紧！
+The armbinder hits you! (DamageDealt)
+束手套击中了你！ (DamageDealt)
+Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Blinded/Silenced targets are silenced/blinded for the same time.
+召唤一个能够造成 DamageDealt 点锁链伤害并缴械 13 回合的束手套。被沉默/致盲的目标会被同时附加沉默/致盲。
+You conjure a armbinder!
+你召唤了束手套！
+The armbinder will appear next to you and fly toward the target point.
+个束手套出现在你旁边并飞向目标点。
+Conjure Leather Cuffs
+召唤皮革铐
+Conjured Leather Cuffs
+魔法皮革铐
+The leather cuffs clasp your wrists and pull them tightly!
+皮革铐扣住了你的手腕并拉紧！
+The leather cuffs hit you! (DamageDealt)
+皮革铐撞到了你！ (DamageDealt)
+Summons a pair of cuffs which deals DamageDealt chain damage and adds 40 binding. Until the target struggles free, attacking the target disarms them for 3 turns.
+召唤皮革铐，造成 DamageDealt 点锁链伤害并增加 40 束缚。在目标挣脱之前，攻击目标会使他们缴械 3 回合。
+You conjure leather cuffs!
+你召唤了皮革铐！
+The cuffs will appear next to you and fly toward the target point.
+皮革铐将出现在你身边并飞向目标点。
+Conjure Blindfold
+召唤眼罩
+Conjured Blindfold
+魔法眼罩
+The blindfold wraps around your head and buckles tightly!
+眼罩缠绕在你的头上并扣紧！
+The blindfold hits you! (DamageDealt)
+眼罩击中了你！ (DamageDealt)
+Summons a blindfold which deals DamageDealt chain damage and blinds for 20 turns. +40 binding if target is not silenced.
+召唤一个造成 DamageDealt 点锁链伤害并致盲 20 回合的眼罩。如果目标未被沉默则 +40 束缚。
+You conjure a blindfold!
+你召唤了眼罩！
+The blindfold will appear next to you and fly toward the target point.
+眼罩将出现在你身边并飞向目标点。
+Conjure Cuffs
+召唤手铐
+Conjured Cuffs
+魔法手铐
+The cuffs pull your wrists together and click tightly!
+手铐将您的手腕拉在一起并紧紧地咔哒一声！
+The cuffs hit you! (DamageDealt)
+手铐击中了你！ (DamageDealt)
+Summons a pair of cuffs which deals DamageDealt chain damage and disarms for 5 turns. +40 binding if target is not disarmed.
+召唤一对手铐，造成 DamageDealt 点锁链伤害并缴械 5 回合。如果目标未被缴械，则 +40 束缚。
+You conjure a pair of cuffs!
+你召唤了一对手铐！
+The cuffs will appear next to you and fly toward the target point.
+手铐将出现在你身边并飞向目标点。
+Conjure Legbinder
+召唤束腿套
+Conjured Legbinder
+魔法束腿套
+The legbinder slips itself around your legs and buckles itself tightly!
+束腿套包住你的腿并紧紧扣住！
+The legbinder hits you! (DamageDealt)
+束腿套击中了你！ (DamageDealt)
+Summons a legbinder which deals DamageDealt chain damage and snares for 10 turns. +50 binding if target is not snared.
+召唤一个束腿套，造成 DamageDealt 点锁链伤害并束缚 10 回合。如果目标未被束缚则 +50 绑定。
+You conjure a legbinder!
+你召唤了一个束腿套！
+The legbinder will appear next to you and fly toward the target point.
+束腿套将出现在你旁边并飞向目标点。
+Conjure Straitjacket
+召唤紧身衣
+Conjured Straitjacket
+魔法紧身衣
+The straitjacket slips itself around your body and pulls your arms into its sleeves!
+紧身衣包住你的身体，将你的手臂拉入了袖口！
+The straitjacket hits you! (DamageDealt)
+紧身衣击中了你！ (DamageDealt)
+Summons a straitjacket which adds DamageDealt binding and reduces struggle speed for 14 turns.
+召唤一件紧身衣，增加 DamageDealt 绑定并降低挣扎速度 14 回合。
+You conjure a straitjacket!
+你召唤了一件紧身衣！
+The straitjacket will appear next to you and fly toward the target point.
+紧身衣将出现在你身边并飞向目标点。
+Conjure Harness
+召唤束衣
+Conjured Harness
+魔法束衣
+The harness slips itself around your torso and squeezes tightly as each buckle secures itself one by one!
+束衣围在你身体周围并收紧，紧接着带扣一个个地被固定住！
+The harness hits you! (DamageDealt)
+束衣击中了你！ (DamageDealt)
+Summons a harness which deals DamageDealt crush damage. Adds +50 binding per 25% binding level on target, up to +200.
+召唤一个造成 DamageDealt 碾压伤害的束衣。在目标上每 25% 束缚级别增加 +50 束缚，最多 +200。
+You conjure a harness!
+你召唤了束衣！
+The harness will appear next to you and fly toward the target point.
+束衣将出现在你旁边并飞向目标点。
+Conjure Petsuit
+召唤宠物服
+Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana regen.
+只针对无助的敌人。 将它们变成跟随你的宠物并增加你的被动法力回复。
+You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!
+你召唤出一件附魔的宠物装，包裹着你的目标，迫使她跟着你！
+You watch in horror as your own creation lunges toward you, binding your hands and feet!
+你惊恐地看着你自己的造物冲向你，束缚了你的手脚！
+Choose a helpless target
+选择一个无助的目标
+Slime Splash
+史莱姆飞溅
+After one turn, deals DamageDealt glue damage in a small area and spreads slime.
+一回合后，在小范围内造成伤害造成胶水伤害并传播粘液。
+You conjure a small amount of slime!
+你召唤了少量的粘液！
+Select where the slime will appear
+选择粘液出现的位置
+Slime Blast
+史莱姆爆炸
+Apprentice's Slime
+学徒的史莱姆
+Witch's Slime
+女巫的史莱姆
+Witch's Slime Ball
+女巫的史莱姆球
+A pool of slime deals DamageDealt glue damage to enemies on impact and covers the area in temporary slime.
+召唤一滩史莱姆，在撞击时对敌人造成 DamageDealt 点胶水伤害，并临时用史莱姆覆盖该区域。
+You conjure a pool of slime!
+你变出了一滩史莱姆！
+Select where the slime will appear
+选择粘液出现的位置
+Slime Eruption
+史莱姆喷发
+A huge blast of slime deals DamageDealt glue damage to enemies that enter and binds them friefly.
+巨大的粘液喷发会对进入的敌人造成 DamageDealt 点胶水伤害，并轻松将其束缚。
+You conjure an explosion of slime!
+你令史莱姆喷发！
+Select where the slime will appear
+选择粘液出现的位置
+Wall of Slime
+史莱姆墙
+Unlocks horizontal and vertical slime walls that traps enemies who try to pass through.
+解锁水平和垂直史莱姆墙，困住试图穿过的敌人。
+Wall of Slime (Vert)
+史莱姆墙（垂直）
+Creates a vertical wall of slime for 20 turns. Enemies that pass through are stuck in the wall and slimed.
+创造一堵垂直的史莱姆墙，持续 20 回合。 穿过的敌人会卡在墙上并变得黏糊糊的。
+You tap your foot and a wall of slime slowly raises out of the ground.
+你轻踮脚尖，一堵史莱姆墙慢慢地从地上升起。
+Choose vertical wall origin (5 tiles high)
+选择垂直墙原点（5 格高）
+Wall of Slime (Horiz)
+史莱姆墙（水平）
+Creates a horizontal wall of slime for 20 turns. Enemies that pass through are stuck in the wall and slimed.
+创造一面水平的史莱姆墙，持续 20 回合。 穿过的敌人会卡在墙上并变得黏糊糊的。
+Choose horizontal wall origin (5 tiles wide)
+选择水平墙原点（5 格宽）
+Solidify
+固化
+Solidifies slime in the area into Latex. Latex adheres to enemies and slowly binds them, escasing them when they are fully bound.
+将区域内的史莱姆凝固成乳胶。 乳胶会粘附在敌人身上并慢慢地束缚他们，当他们完全被束缚时彻底转化。
+You inscribe a transmutation circle on the floor.
+你在地板上刻下了一个转化圈。
+Choose area containing slime
+选择含有粘液的区域
+Summon Familiar
+召唤魔宠
+Select where to put the familiar (cannot place on occupied squares)
+选择放置魔宠的位置（不能放置在被占用的方块上）
+Create a familiar that fights by your side for the rest of the level
+创建一个魔宠，在剩下的关卡中与你并肩作战
+A familiar appears!
+魔宠出现了！
+You create a circle on the ground with your foot!
+你用脚在地上画了一个圈！
+Summon Storm Crystal
+召唤风暴水晶
+Select where to put the storm crystal (cannot place on occupied squares)
+选择放置风暴水晶的位置（不能放置在被占用的方块上）
+Create a stationary crystal that casts Crackle on nearby targets for Duration turns. Can be healed to extend duration.
+创造一个静止的水晶，在持续时间回合内对附近的目标施放暴雷。可以通过治愈以延长持续时间。
+A crackling crystal emerges from the ground!
+一块噼啪作响的水晶从地下冒了出来！
+You stomp and the ground shakes!
+你跺了跺脚，地面开始震动！
+Summon Golem
+召唤傀儡
+Select where to put the golem (cannot place on occupied squares)
+选择放置傀儡的位置（不能放置在被占用的方块上）
+Create a slow but powerful golem to fight by your side
+创造一个缓慢但强大的傀儡与你并肩作战
+A golem arises!
+傀儡出现了！
+You stomp your foot and draw the words of life on the floor!
+你跺了跺脚，在地板上绘出生命咒文！
