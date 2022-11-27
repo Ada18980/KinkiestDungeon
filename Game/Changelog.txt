@@ -1176,6 +1176,7 @@ Features
 3.83 (Nov 2022)
 - New perks: Cursed Locks, Undeniable, Forgetful
 - Added music by kocaeli
+- New enemy: Trainer's Apprentice, Nevermere Drone
 
 
 TODO ValidationFindBlockCycles to prevent bugs

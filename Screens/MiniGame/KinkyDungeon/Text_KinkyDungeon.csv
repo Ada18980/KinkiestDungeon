@@ -1571,6 +1571,17 @@ AttackWolfgirl,"The wolfgirl trainer squeezes your breasts playfully! (DamageTak
 AttackWolfgirlBind,"The wolfgirl trainer secures you in training gear! (+RestraintAdded)"
 AttackWolfgirlLock,"The wolfgirl trainer pins you and skillfully locks all of your restraints."
 
+NameWolfApprentice,Trainer's Apprentice
+KillWolfApprentice,"The trainer's apprentice escapes!"
+AttackWolfApprentice,"The trainer's apprentice rubs her claws across your chest playfully! (DamageTaken)"
+AttackWolfApprenticeBind,"The trainer's apprentice secures you in training gear! (+RestraintAdded)"
+AttackWolfApprenticeLock,"The trainer's apprentice adds a lock to your restraints."
+
+NameWp;fDrone,Nevermere Drone
+KillWolfDrone,"The drone loses power and falls to the ground!"
+KinkyDungeonSummonSingleWolfDrone,A Nevermere Drone takes off!
+KinkyDungeonSummonMultiWolfDrone,You hear buzzing as several Nevermere Drones take to the air!
+
 NameDrone,Ancient Drone
 KillDrone,"The drone fizzles and falls to the ground!"
 AttackDroneStun,"The drone zaps you with a restraining energy ray! (DamageTaken)"

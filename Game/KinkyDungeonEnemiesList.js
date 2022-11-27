@@ -520,7 +520,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, maxhp: 14, minLevel:0, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"metalAnger": 3, "metalRage": 3, "wolfgirl": 2}, shrines: ["Metal"], allFloors: true,
 		dropTable: []},
-	{name: "Wolfgirl", faction: "Nevermere", clusterWith: "wolfgirl", bound: "Wolfgirl", color: "#00EFAB", tags: KDMapInit(["leashing", "imprisonable", "trainer", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "wolfRestraints", "melee", "elite", "unflinching", "glueweakness", "ticklesevereweakness", "slashweakness", "pierceweakness", "unflinching", "jail", "hunter"]), followRange: 1,
+	{name: "Wolfgirl", faction: "Nevermere", clusterWith: "wolfgirl", bound: "Wolfgirl", color: "#00EFAB", tags: KDMapInit(["leashing", "imprisonable", "trainer", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "wolfRestraints", "melee", "miniboss", "unflinching", "glueweakness", "ticklesevereweakness", "slashweakness", "pierceweakness", "unflinching", "jail", "hunter"]), followRange: 1,
 		summon: [
 			{enemy: "WolfgirlPet", range: 2, count: 1, chance: 0.7, strict: true},],
 		spells: ["RestrainingDevice"], spellCooldownMult: 1, spellCooldownMod: 1, AI: "hunt",  visionRadius: 10, maxhp: 22, minLevel:0, weight:-6, movePoints: 2, disarm: 0.5,
@@ -530,7 +530,30 @@ let KinkyDungeonEnemies = [
 		},
 		attackPoints: 3, attack: "MeleeBindLockAllWillSpell", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 4, dmgType: "grope", sneakThreshold: 1, attackLock: "Red",
 		terrainTags: {"secondhalf":3, "lastthird":5, "metalAnger": 9, "metalRage": 5, "wolfgirl": 7}, allFloors: true, shrines: ["Metal"],
-		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "EscortDrone", weight: 0.25, ignoreInInventory: true}, {name: "RedKey", weight: 9}]},
+		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "EscortDrone", weight: 1.0, ignoreInInventory: true}, {name: "RedKey", weight: 9}, {name: "AncientPowerSource", weight: 0.5}]},
+
+	{name: "WolfApprentice", faction: "Nevermere", clusterWith: "wolfgirl", bound: "Wolfgirl", color: "#00EFAB", tags: KDMapInit(["leashing", "imprisonable", "trainer", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "wolfRestraints", "melee", "elite", "unflinching", "glueweakness", "ticklesevereweakness", "slashweakness", "pierceweakness", "unflinching", "jail", "hunter"]),
+		spells: ["SummonWolfDrone"], spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt",  visionRadius: 10, maxhp: 9, minLevel:0, weight:6, movePoints: 2.5,
+		RemoteControl: {
+			punishRemote: 3,
+			punishRemoteChance: 0.15,
+		},
+		followRange: 1, kite: 2.5, dontKiteWhenDisabled: true, castWhileMoving: true,
+		attackPoints: 3, attack: "MeleeBindLockWillSpell", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 2, dmgType: "grope", sneakThreshold: 1.5, attackLock: "Red",
+		terrainTags: {"secondhalf":1, "lastthird":2, "metalAnger": 12, "metalRage": 6, "wolfgirl": 10}, allFloors: true, shrines: ["Metal"],
+		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "EscortDrone", weight: 0.25, ignoreInInventory: true}, {name: "AncientPowerSource", weight: 0.25}]},
+
+	{name: "WolfDrone", faction: "Nevermere", clusterWith: "wolfgirl", color: "#00EFAB",
+		tags: KDMapInit(["ignoreharmless", "doortrap", "robot", "wolfdrone", "flying", "acidweakness", "soulresist", "minor", "ranged", "electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
+		followRange: 2.5, kite: 1.5,
+		spells: ["WolfCrackle"], spellCooldownMult: 1, spellCooldownMod: 1, AI: "hunt",  visionRadius: 9, maxhp: 6, minLevel:0, weight:-1000, movePoints: 1,
+		RemoteControl: {
+			punishRemote: 3,
+			punishRemoteChance: 0.15,
+		},
+		attackPoints: 3, attack: "Spell", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "grope",
+		terrainTags: {}, allFloors: true, shrines: ["Metal"],
+	},
 
 
 	{name: "BanditGuard", faction: "Bandit", clusterWith: "bandit", playLine: "Bandit", bound: "Bandit", tags: KDMapInit(["opendoors", "closedoors", "leashing", "cacheguard", "bandit", "minor", "melee", "leatherRestraints", "leatherRestraintsHeavy", "clothRestraints", "chainweakness", "glueweakness", "jail", "search"]), cohesion: 0.9, armor: 0, followRange: 1, AI: "hunt",
