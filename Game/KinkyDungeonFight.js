@@ -817,7 +817,9 @@ function KinkyDungeonAttackEnemy(Enemy, Damage) {
 		predata.vulnConsumed = true;
 		let dmgBonus = Math.max(Math.min(2 * dmg.damage, KDVulnerableDmg), dmg.damage * KDVulnerableDmgMult);
 		dmg.damage = Math.max(0, dmg.damage + dmgBonus);
-		KinkyDungeonSendTextMessage(4, TextGet((Enemy.vulnerable || Enemy.distraction > Enemy.Enemy.maxhp) ? "KinkyDungeonVulnerable" : "KinkyDungeonUnseen").replace("AMOUNT", "" + Math.round(10 * dmgBonus)), "lightgreen", 2);
+		KinkyDungeonSendTextMessage(4, TextGet((Enemy.vulnerable || Enemy.distraction > Enemy.Enemy.maxhp) ? "KinkyDungeonVulnerable" : "KinkyDungeonUnseen")
+			.replace("AMOUNT", "" + Math.round(10 * dmgBonus))
+			.replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), "lightgreen", 2);
 	}
 
 

@@ -2751,7 +2751,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 				if (hit && missed) {
 					if (player.player) {
-						KinkyDungeonSendEvent("miss", {enemy: enemy});
+						KinkyDungeonSendEvent("miss", {enemy: enemy, player: player});
 						KinkyDungeonSendTextMessage(2, TextGet("KinkyDungeonAttackMiss").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "lightgreen", 1);
 
 						if (KDRandom() < actionDialogueChance)
@@ -3281,6 +3281,15 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				} else {
 					let sfx = (enemy.Enemy && enemy.Enemy.misssfx) ? enemy.Enemy.misssfx : "Miss";
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + sfx + ".ogg", enemy);
+					if (player.player) {
+						KinkyDungeonSendEvent("miss", {enemy: enemy, player: player});
+						KinkyDungeonSendTextMessage(2, TextGet("KinkyDungeonAttackMiss").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "lightgreen", 1);
+
+						if (KDRandom() < actionDialogueChance)
+							KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (enemy.Enemy.playLine ? enemy.Enemy.playLine : "") + "Miss").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 4);
+					}
+					KDAddThought(enemy.id, "Annoyed", 4, 1);
+
 					enemy.vulnerable = Math.max(enemy.vulnerable, 1);
 					if (AIData.attack.includes("Dash") && enemy.Enemy.dashOnMiss) {
 						KDDash(enemy, player, AIData.MovableTiles);

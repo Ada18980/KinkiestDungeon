@@ -5728,8 +5728,8 @@ KinkyDungeonHeartStamina,"+Stamina"
 KinkyDungeonHeartWill,"+Willpower"
 KinkyDungeonHeartMana,"+Mana"
 
-KinkyDungeonVulnerable,The enemy is vulnerable and takes an extra AMOUNT damage!
-KinkyDungeonUnseen,The enemy isn't aware of you and takes an extra AMOUNT damage!
+KinkyDungeonVulnerable,The EnemyName is vulnerable and took an extra AMOUNT damage!
+KinkyDungeonUnseen,The EnemyName isn't aware of you and took an extra AMOUNT damage!
 KinkyDungeonStealPick,The enemy steals a pick from you!
 KinkyDungeonStealKnife,The enemy takes away your knife!
 KinkyDungeonStealRedKey,The enemy steals a key from your body!

@@ -1408,12 +1408,12 @@ function KinkyDungeonDrawMessages(NoLog) {
 		let i = 0;
 		let spacing = 35;
 		if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
-			DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray2);
+			DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray1);
 			ignoreMSG.push(KinkyDungeonActionMessage);
 			i++;
 		}
 		if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessageNoPush) {
-			DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray2);
+			DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray1);
 			ignoreMSG.push(KinkyDungeonTextMessage);
 			i++;
 		}
@@ -1446,7 +1446,7 @@ function KinkyDungeonDrawMessages(NoLog) {
 				if (i > KDMaxConsoleMsg) break;
 				if (alpha > 0) {
 					alpha = Math.max(0, Math.min(1, 2.0 - i / KDMaxConsoleMsg)) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
-					DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, msg.color, KDTextGray2, 28, undefined, undefined, alpha); i++;
+					DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, msg.color, KDTextGray1, 28, undefined, undefined, alpha); i++;
 				}
 			}
 		}
