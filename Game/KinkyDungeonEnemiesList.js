@@ -543,7 +543,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":1, "lastthird":2, "metalAnger": 12, "metalRage": 6, "wolfgirl": 10}, allFloors: true, shrines: ["Metal"],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "EscortDrone", weight: 0.25, ignoreInInventory: true}, {name: "AncientPowerSource", weight: 0.25}]},
 
-	{name: "WolfDrone", faction: "Nevermere", clusterWith: "wolfgirl", color: "#00EFAB",
+	{name: "WolfDrone", faction: "Nevermere", clusterWith: "wolfgirl", color: "#00EFAB", playLine: "Robot",
 		tags: KDMapInit(["ignoreharmless", "doortrap", "robot", "wolfdrone", "flying", "acidweakness", "soulresist", "minor", "ranged", "electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
 		followRange: 2.5, kite: 1.5,
 		spells: ["WolfCrackle"], spellCooldownMult: 1, spellCooldownMod: 1, AI: "hunt",  visionRadius: 9, maxhp: 6, minLevel:0, weight:-1000, movePoints: 1,

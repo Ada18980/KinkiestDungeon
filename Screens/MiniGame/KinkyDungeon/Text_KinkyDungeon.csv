@@ -1577,7 +1577,7 @@ AttackWolfApprentice,"The trainer's apprentice rubs her claws across your chest 
 AttackWolfApprenticeBind,"The trainer's apprentice secures you in training gear! (+RestraintAdded)"
 AttackWolfApprenticeLock,"The trainer's apprentice adds a lock to your restraints."
 
-NameWp;fDrone,Nevermere Drone
+NameWolfDrone,Nevermere Drone
 KillWolfDrone,"The drone loses power and falls to the ground!"
 KinkyDungeonSummonSingleWolfDrone,A Nevermere Drone takes off!
 KinkyDungeonSummonMultiWolfDrone,You hear buzzing as several Nevermere Drones take to the air!
