@@ -1380,7 +1380,7 @@ function KDEase(value) {
 
 let KinkyDungeonMessageToggle = false;
 let KinkyDungeonMessageLog = [];
-let KDLogDist = 50;
+let KDLogDist = 35;
 let KDLogHeight = 700;
 let KDMaxLog = Math.floor(700/KDLogDist);
 let KDLogTopPad = 100;
@@ -1406,7 +1406,7 @@ function KinkyDungeonDrawMessages(NoLog) {
 		let msg2nd = [];
 		let ignoreMSG = [];
 		let i = 0;
-		let spacing = 35;
+		let spacing = KDLogDist;
 		if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
 			DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray1);
 			ignoreMSG.push(KinkyDungeonActionMessage);
@@ -1459,13 +1459,13 @@ function KinkyDungeonDrawMessages(NoLog) {
 			Height: KDLogHeight,
 			Color: KDTextGray0,
 			LineWidth: 1,
-			zIndex: 50,
-			alpha: 0.4,
+			zIndex: 100,
+			alpha: 0.6,
 		});
 		for (let i = 0; i < KinkyDungeonMessageLog.length && i < KDMaxLog; i++) {
 			let log = KinkyDungeonMessageLog[Math.max(0, KinkyDungeonMessageLog.length - 1 - (i + KDLogIndex))];
 			let col = log.color;
-			DrawTextFitKD(log.text, KDMsgX + KDMsgWidth/2, KDLogTopPad + i * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray2);
+			DrawTextFitKD(log.text, KDMsgX + KDMsgWidth/2, KDLogTopPad + i * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray1, 28, undefined, 101);
 		}
 		if (KinkyDungeonMessageLog.length > KDMaxLog) {
 			// @ts-ignore
