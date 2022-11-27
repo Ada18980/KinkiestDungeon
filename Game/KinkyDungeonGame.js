@@ -37,11 +37,13 @@ let KinkyDungeonMoveDirection = KinkyDungeonGetDirection(0, 0);
 
 let KinkyDungeonTextMessagePriority = 0;
 let KinkyDungeonTextMessage = "";
+let KinkyDungeonTextMessageNoPush = false;
 let KinkyDungeonTextMessageTime = 0;
 let KinkyDungeonTextMessageColor = "white";
 
 let KinkyDungeonActionMessagePriority = 0;
 let KinkyDungeonActionMessage = "";
+let KinkyDungeonActionMessageNoPush = false;
 let KinkyDungeonActionMessageTime = 0;
 let KinkyDungeonActionMessageColor = "white";
 
@@ -3025,7 +3027,7 @@ function KinkyDungeonSendTextMessage(priority, text, color, time, noPush, noDupe
 		if (!noPush)
 			if (!noDupe || KinkyDungeonMessageLog.length == 0 || !KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1] || text != KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].text) {
 				if (KDLogIndex > 0) KDLogIndex += 1;
-				KinkyDungeonMessageLog.push({text: text, color: color});
+				KinkyDungeonMessageLog.push({text: text, color: color, time: KinkyDungeonCurrentTick});
 			}
 
 		if ( priority >= KinkyDungeonTextMessagePriority || KinkyDungeonActionMessageTime < 0.5) {
@@ -3033,6 +3035,7 @@ function KinkyDungeonSendTextMessage(priority, text, color, time, noPush, noDupe
 			KinkyDungeonTextMessage = text;
 			KinkyDungeonTextMessageColor = color;
 			KinkyDungeonTextMessagePriority = priority;
+			KinkyDungeonTextMessageNoPush = noPush;
 			return true;
 		}
 	}
@@ -3046,13 +3049,14 @@ function KinkyDungeonSendActionMessage(priority, text, color, time, noPush, noDu
 		if (!noPush)
 			if (!noDupe || KinkyDungeonMessageLog.length == 0 || !KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1] || text != KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].text){
 				if (KDLogIndex > 0) KDLogIndex += 1;
-				KinkyDungeonMessageLog.push({text: text, color: color});
+				KinkyDungeonMessageLog.push({text: text, color: color, time: KinkyDungeonCurrentTick});
 			}
 		if ( priority >= KinkyDungeonActionMessagePriority || KinkyDungeonActionMessageTime < 0.5) {
 			KinkyDungeonActionMessageTime = time;
 			KinkyDungeonActionMessage = text;
 			KinkyDungeonActionMessageColor = color;
 			KinkyDungeonActionMessagePriority = priority;
+			KinkyDungeonActionMessageNoPush = noPush;
 			return true;
 		}
 	}

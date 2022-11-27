@@ -923,7 +923,7 @@ function KinkyDungeonDrawGame() {
 			DrawTextFitKD(
 				TextGet("CurrentLevel").replace("FLOORNUMBER", "" + MiniGameKinkyDungeonLevel).replace("DUNGEONNAME", TextGet("DungeonName" + KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]))
 				+ (KinkyDungeonNewGame ? TextGet("KDNGPlus").replace("XXX", "" + KinkyDungeonNewGame) : ""),
-				1000, 42, 1000, "#ffffff", "#333333");
+				KDMsgX + KDMsgWidth/2, 42, 1000, "#ffffff", "#333333");
 			//DrawTextKD(TextGet("DungeonName" + KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]), 1500, 42, "#ffffff", KDTextGray2);
 
 			// Draw the stats
@@ -1390,6 +1390,9 @@ let KDLogIndexInc = 3;
 
 let KDMsgWidth = 1200;
 let KDMsgX = 450;
+let KDMsgFadeTime = 10;
+
+let KDMaxConsoleMsg = 6;
 
 function KinkyDungeonDrawMessages(NoLog) {
 	if (!NoLog)
@@ -1400,12 +1403,54 @@ function KinkyDungeonDrawMessages(NoLog) {
 			return true;
 		}, true, 1750, 82, 100, 50, TextGet("KinkyDungeonLog"), "#ffffff");
 	if (!KinkyDungeonMessageToggle || NoLog) {
-		if (KinkyDungeonTextMessageTime > 0) {
-			DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + KDMsgWidth/2, 82, KDMsgWidth, KinkyDungeonTextMessageColor, KDTextGray2);
+		let msg2nd = [];
+		let ignoreMSG = [];
+		let i = 0;
+		let spacing = 35;
+		if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
+			DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray2);
+			ignoreMSG.push(KinkyDungeonActionMessage);
+			i++;
 		}
-		if (KinkyDungeonActionMessageTime > 0) {
-			DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + KDMsgWidth/2, 132, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray2);
+		if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessageNoPush) {
+			DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray2);
+			ignoreMSG.push(KinkyDungeonTextMessage);
+			i++;
 		}
+		for (let ii = 0; ii < KinkyDungeonMessageLog.length && ii < 100; ii++) {
+			let index = KinkyDungeonMessageLog.length - 1 - ii;
+			let msg = KinkyDungeonMessageLog[index];
+			if (!msg) break;
+			if (ignoreMSG.includes(msg.text)) {
+				ignoreMSG.splice(ignoreMSG.indexOf(msg.text), 1);
+				continue;
+			}
+			if (KinkyDungeonCurrentTick - msg.time < KDMsgFadeTime) {
+				let count = 1;
+				for (let iii = 1; iii < 100; iii++) {
+					if (KinkyDungeonMessageLog[index - iii] && KinkyDungeonMessageLog[index-iii].text == msg.text) {
+						count += 1;
+						//KinkyDungeonMessageLog.splice(ii+iii, 1);
+						//ii -= 1;
+					} else break;
+				}
+				if (count > 1) {
+					ii += count - 1;
+				}
+				msg2nd.push(count == 1 ? msg : Object.assign({}, {text: msg.text + ` (x${count})`, color: msg.color, time: msg.time}));
+			}
+		}
+		if (msg2nd.length > 0) {
+			let alpha = 1;
+			for (let msg of msg2nd) {
+				if (i > KDMaxConsoleMsg) break;
+				if (alpha > 0) {
+					alpha = Math.max(0, Math.min(1, 2.0 - i / KDMaxConsoleMsg)) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
+					DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, msg.color, KDTextGray2, 28, undefined, undefined, alpha); i++;
+				}
+			}
+		}
+
 	} else {
 		FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
 			Left: KDMsgX,

@@ -1177,6 +1177,7 @@ Features
 - New perks: Cursed Locks, Undeniable, Forgetful
 - Added music by kocaeli
 - New enemy: Trainer's Apprentice, Nevermere Drone
+- Changes to the log to fit more text
 
 
 TODO ValidationFindBlockCycles to prevent bugs
