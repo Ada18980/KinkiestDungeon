@@ -91,7 +91,7 @@ function KinkyDungeonHandleMoveToTile(toTile) {
 		} else if (!(KDGameData.SleepTurns > 0)) {
 			if (KinkyDungeonLastAction == "Move" || KinkyDungeonLastAction == "Wait")
 				KinkyDungeonConfirmStairs = true;
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonConfirmStairs"), "white", 1);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonConfirmStairs"), "white", 1, true);
 		}
 	}
 }
