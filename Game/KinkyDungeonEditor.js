@@ -67,6 +67,11 @@ let KDTilePalette = {
 	'SpawnChaosCrys': {type: "tile", tile: '3', special: {Type: "Spawn", required: ["chaos"], tags: ["chaos"], Label: "ChaosC"}},
 	'SpawnChaosCrysActive': {type: "tile", tile: '3', special: {Type: "Spawn", required: ["chaos", "active"], tags: ["chaos"], Label: "ChaosC_A"}},
 	'SpawnMushroom': {type: "tile", tile: '3', special: {Type: "Spawn", required: ["mushroom", "scenery"], tags: ["mushroom"], Label: "Mushroom"}},
+	'SpawnCustom': {type: "tile", tile: '3', special: {Type: "Spawn", required: [], Label: "Custom"}, customfields: {
+		required: {type: "array"},
+		tags: {type: "array"},
+		Label: {type: "string"},
+	}},
 	'----Tiles----': {type: "none"},
 	'Brick': {type: "tile", tile: '2'},
 	'Doodad': {type: "tile", tile: 'X'},
@@ -548,6 +553,35 @@ function KDDrawEditorUI() {
 			KDHandleTileEditor(true);
 	} else KDTE_lastMouse = 0;
 
+	KDTE_CustomUI();
+}
+
+let customfieldsElements = [];
+
+function KDTE_CustomUI() {
+
+	let brush = KDTilePalette[KDEditorTileBrush];
+	let names = [];
+	if (brush?.customfields) {
+		names.push(...Object.keys(brush.customfields));
+	}
+
+	for (let element of customfieldsElements) {
+		if (!names.includes(element)) {
+			ElementRemove("KDTECustomField" + element);
+			customfieldsElements.splice(customfieldsElements.indexOf(element), 1);
+		}
+	}
+	let YY = 700;
+	let XX = 650;
+	for (let name of names) {
+		if (!customfieldsElements.includes(name)) {
+			ElementCreateTextArea("KDTECustomField" + name);
+			document.getElementById("KDTECustomField" + name).setAttribute("placeholder", name);
+			ElementPosition("KDTECustomField" + name, XX, YY, 300, 45); YY += 55;
+			customfieldsElements.push(name);
+		}
+	}
 }
 
 let KDTE_lastMouse = 0;
@@ -600,9 +634,15 @@ let KDTE_Brush = {
 				KDGameData.JailPoints.push({x: KinkyDungeonTargetX, y: KinkyDungeonTargetY, type: brush.jail.type, radius: brush.jail.radius});
 			}
 			if (brush.special) {
-				KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, brush.special);
+				KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, Object.assign({}, brush.special));
 				if (OL)
 					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
+
+				if (brush.customfields) {
+					for (let field of Object.entries(brush.customfields)) {
+						KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)[field[0]] = KDTE_GetField(field);
+					}
+				}
 			} else {
 				if (OL)
 					KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
@@ -1129,4 +1169,10 @@ function KDReloadAllEditorTiles() {
 		KDTE_LoadTile(tile[0]);
 		KDTE_SaveTile();
 	}
+}
+
+function KDTE_GetField(field) {
+	if (!field[1]) return undefined;
+	if (field[1].type == 'array') return ElementValue("KDTECustomField" + field[0])?.split(',');
+	return ElementValue("KDTECustomField" + field[0]);
 }
