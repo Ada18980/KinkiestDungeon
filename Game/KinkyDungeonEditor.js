@@ -117,6 +117,7 @@ let KDTilePalette = {
 		Faction: {type: "string"},
 		NoTrap: {type: "string"},
 		lootTrap: {type: "string"},
+		Lock: {type: "string"},
 	}},
 	'GuardedChest': {type: "tile", tile: 'C', special: {Type: "GuardedChest", Label: "Guarded"}},
 	'GuardedChestLocked': {type: "tile", tile: 'C', special: {Type: "GuardedChest", Lock: "Red", Label: "Guarded"}},
