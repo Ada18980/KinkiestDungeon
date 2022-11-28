@@ -1443,7 +1443,7 @@ function KinkyDungeonDrawMessages(NoLog) {
 		if (msg2nd.length > 0) {
 			let alpha = 1;
 			for (let msg of msg2nd) {
-				if (i > KDMaxConsoleMsg) break;
+				if (i > KDMaxConsoleMsg || (KinkyDungeonDrawState != "Game" && i > 3)) break;
 				if (alpha > 0) {
 					alpha = Math.max(0, Math.min(1, 2.0 - i / KDMaxConsoleMsg)) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
 					DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, msg.color, KDTextGray1, 28, undefined, undefined, alpha); i++;
