@@ -112,6 +112,12 @@ let KDTilePalette = {
 	'HighPriorityChest': {type: "tile", tile: 'C', special: {Priority: true}},
 	'SilverChest': {type: "tile", tile: 'C', special: {Type: "Chest", Loot: "silver", Priority: true}},
 	'StorageChest': {type: "tile", tile: 'C', special: {Type: "Chest", Loot: "storage"}},
+	'ChestCustom': {type: "tile", tile: 'C', special: {Type: "Chest", Loot: "storage"}, customfields: {
+		Loot: {type: "string"},
+		Faction: {type: "string"},
+		NoTrap: {type: "string"},
+		lootTrap: {type: "string"},
+	}},
 	'GuardedChest': {type: "tile", tile: 'C', special: {Type: "GuardedChest", Label: "Guarded"}},
 	'GuardedChestLocked': {type: "tile", tile: 'C', special: {Type: "GuardedChest", Lock: "Red", Label: "Guarded"}},
 	'----Shrines----': {type: "none"},
