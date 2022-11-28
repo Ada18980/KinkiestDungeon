@@ -2767,7 +2767,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					let replace = [];
 					let restraintAdd = [];
 					let willpowerDamage = 0;
-					let msgColor = "yellow";
+					let msgColor = "#ffff00";
 					let Locked = false;
 					let Stun = false;
 					let Blind = false;
@@ -3075,7 +3075,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							willpowerDamage += AIData.power;
 						let buffdmg = KinkyDungeonGetBuffedStat(enemy.buffs, "AttackDmg");
 						if (buffdmg) willpowerDamage = Math.max(0, willpowerDamage + buffdmg);
-						msgColor = "#ff8888";
+						msgColor = "#ff5555";
 						if (enemy.usingSpecial && willpowerDamage > 0 && enemy.Enemy.specialAttack && enemy.Enemy.specialAttack.includes("Will")) {
 							enemy.specialCD = enemy.Enemy.specialCD;
 						}
@@ -3083,6 +3083,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					if (player.player) {
 						KinkyDungeonTickBuffTag(enemy.buffs, "hit", 1);
 						if (restraintAdd && restraintAdd.length > 0) {
+							msgColor = "#ff5555";
 							let restraintblock = KinkyDungeonGetPlayerStat("RestraintBlock");
 							let restraintpower = 0;
 							for (let r of restraintAdd) {
@@ -3090,6 +3091,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							}
 							let blocked = () => {
 								KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: enemy.x - 0.5, y: enemy.y - 0.5}, Color: "white", Time: 2, Delay: 0});
+								for (let rep of replace) {
+									if (rep.keyword == "RestraintAdded") rep.value = TextGet("KDRestraintBlockedItem");
+								}
+								msgColor = "#ff8800";
 								bound += 1;
 								if (willpowerDamage == 0)
 									willpowerDamage += AIData.power;
@@ -3115,6 +3120,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									for (let r of protectRestraints) {
 										if (count < multiPower) {
 											KinkyDungeonRemoveRestraint(KDRestraint(r).Group, true);
+											KinkyDungeonSendTextMessage(
+												5, TextGet("KDArmorBlock")
+													.replace("ArmorName", TextGet("Restraint" + r.name))
+													.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+												"#ffff00", 1);
 										}
 										count += KDRestraint(r).protection;
 									}

@@ -1253,6 +1253,9 @@ KinkyDungeonAngelDefeated,"Angel: MMMMMPHH!!!"
 
 KinkyDungeonAngelUnlock,"(The angel looks puzzled and unlocks your divine restraints)"
 
+KDArmorBlock,"Your ArmorName blocks the EnemyName's attack, falling off in the process."
+KDAttackBlocked,"The EnemyName attacks you, but you block the attack!"
+KDRestraintBlockedItem,"Blocked!"
 
 NameDoorLock,Mystic Lock
 KillDoorLock,"The mystic lock fades, allowing you to pass once more."
