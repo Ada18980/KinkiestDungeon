@@ -374,7 +374,7 @@ function KD_PasteTile(tile, x, y, data) {
 		let xx = parseInt(tileLoc[0].split(',')[0]);
 		let yy = parseInt(tileLoc[0].split(',')[1]);
 		if (xx != undefined && yy != undefined) {
-			let gennedTile = KDCreateTile(xx+x, yy+y, tileLoc[1], data);
+			let gennedTile = KDCreateTile(xx+x, yy+y, Object.assign({}, tileLoc[1]), data);
 			if (gennedTile)
 				KinkyDungeonTilesSet((xx + x) + "," + (yy + y), gennedTile);
 		}

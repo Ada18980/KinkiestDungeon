@@ -71,6 +71,9 @@ let KDTilePalette = {
 		required: {type: "array"},
 		tags: {type: "array"},
 		Label: {type: "string"},
+		Chance: {type: "number"},
+		AI: {type: "string"},
+		force: {type: "boolean"},
 	}},
 	'----Tiles----': {type: "none"},
 	'Brick': {type: "tile", tile: '2'},
@@ -115,9 +118,10 @@ let KDTilePalette = {
 	'ChestCustom': {type: "tile", tile: 'C', special: {Type: "Chest", Loot: "storage"}, customfields: {
 		Loot: {type: "string"},
 		Faction: {type: "string"},
-		NoTrap: {type: "string"},
+		NoTrap: {type: "boolean"},
 		lootTrap: {type: "string"},
 		Lock: {type: "string"},
+		Priority: {type: "boolean"},
 	}},
 	'GuardedChest': {type: "tile", tile: 'C', special: {Type: "GuardedChest", Label: "Guarded"}},
 	'GuardedChestLocked': {type: "tile", tile: 'C', special: {Type: "GuardedChest", Lock: "Red", Label: "Guarded"}},
@@ -579,7 +583,7 @@ function KDTE_CustomUI() {
 			customfieldsElements.splice(customfieldsElements.indexOf(element), 1);
 		}
 	}
-	let YY = 700;
+	let YY = 990 - names.length * 55;
 	let XX = 650;
 	for (let name of names) {
 		if (!customfieldsElements.includes(name)) {
@@ -1159,7 +1163,7 @@ function KDTEGetInaccessible() {
 }
 
 function KDObjFromMapArray(array) {
-	if (array.length) {
+	if (array.length != undefined) {
 		let map = {};
 		for (let entry of array) {
 			map[entry[0]] = entry[1];
@@ -1180,6 +1184,8 @@ function KDReloadAllEditorTiles() {
 
 function KDTE_GetField(field) {
 	if (!field[1]) return undefined;
+	if (ElementValue("KDTECustomField" + field[0]) == "") return undefined;
 	if (field[1].type == 'array') return ElementValue("KDTECustomField" + field[0])?.split(',');
+	if (field[1].type == 'number') return parseFloat(ElementValue("KDTECustomField" + field[0])) || 0;
 	return ElementValue("KDTECustomField" + field[0]);
 }

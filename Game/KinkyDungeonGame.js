@@ -928,8 +928,16 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 
 	});
 
+	let culledSpawns = false;
 	// Create this number of enemies
-	while (count < enemyCount && tries < 10000) {
+	while (((count < enemyCount) || (spawns.length > 0)) && tries < 10000) {
+		if (count >= enemyCount && !culledSpawns) {
+			spawns = spawns.filter((spawn) => {
+				return spawn.force;
+			});
+			culledSpawns = true;
+			if (spawns.length == 0) break;
+		}
 		let spawnBox_filter = spawnBoxes.filter((bb) => {
 			return bb.currentCount < bb.maxCount * enemyCount;
 		});
