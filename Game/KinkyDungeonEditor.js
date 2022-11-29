@@ -1105,7 +1105,7 @@ function KDTEGetInaccessible() {
 		if (indX && indY) {
 			if (indX == 1 && ind[1].includes('l'))
 				listEntrances.push({indX: indX, indY: indY, dir: 'l'});
-			if (indX == 1 + Math.floor((KinkyDungeonGridHeight-1)/KDTE_Scale) && ind[1].includes('r'))
+			if (indX == 1 + Math.floor((KinkyDungeonGridWidth-1)/KDTE_Scale) && ind[1].includes('r'))
 				listEntrances.push({indX: indX, indY: indY, dir: 'r'});
 			if (indY == 1 && ind[1].includes('u'))
 				listEntrances.push({indX: indX, indY: indY, dir: 'u'});
