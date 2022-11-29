@@ -63,10 +63,10 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 1, Weight: 10},
 		],
 
-		"min_width" : 6,
+		"min_width" : 5,
 		"max_width" : 7,
-		"min_height" : 4,
-		"max_height" : 5,
+		"min_height" : 5,
+		"max_height" : 6,
 		"defeat_outfit": "Prisoner",
 		"shrines": [
 			//{Type: "Charms", Weight: 5},
@@ -152,8 +152,8 @@ const KinkyDungeonMapParams = {
 
 		"min_width" : 5,
 		"max_width" : 7,
-		"min_height" : 4,
-		"max_height" : 5,
+		"min_height" : 5,
+		"max_height" : 6,
 
 		enemyTags: ["skeleton"],
 		"defeat_outfit": "Dungeon",
@@ -230,7 +230,7 @@ const KinkyDungeonMapParams = {
 
 		"min_width" : 5,
 		"max_width" : 6,
-		"min_height" : 4,
+		"min_height" : 5,
 		"max_height" : 5,
 
 		enemyTags: ["plant", "jungle"],
@@ -319,7 +319,7 @@ const KinkyDungeonMapParams = {
 
 		"min_width" : 5,
 		"max_width" : 7,
-		"min_height" : 4,
+		"min_height" : 5,
 		"max_height" : 5,
 
 		enemyTags: ["skeleton", "temple", "ghost"],
