@@ -1066,7 +1066,8 @@ function KinkyDungeonCapture(enemy) {
 				}
 			}
 			if (disapproval == 0) {
-				KinkyDungeonChangeRep(KDGameData.Champion, 1);
+				KinkyDungeonChangeRep(KDGameData.Champion, KinkyDungeonGoddessRep[KDGameData.Champion] < -10 ? 1 :
+					(KinkyDungeonGoddessRep[KDGameData.Champion] > 30 ? 0.25 : 0.5));
 				KDGameData.ChampionCurrent += 1;
 			} else goddessCapture = false;
 		} else msg = "KinkyDungeonCaptureMax";

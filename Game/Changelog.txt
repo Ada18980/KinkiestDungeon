@@ -1178,6 +1178,7 @@ Features
 - Added music by kocaeli
 - New enemy: Trainer's Apprentice, Nevermere Drone
 - Changes to the log to fit more text
+- Captures yield less rep when you already have high rep
 
 
 TODO ValidationFindBlockCycles to prevent bugs
