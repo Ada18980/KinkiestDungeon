@@ -1274,7 +1274,7 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs) 
 
 		if (!placed) // Loosen the constraints
 			for (let L = 100; L > 0; L -= 1) { // Try up to 100 times
-				let X = width - 2 - Math.floor(KDRandom() * width/4);
+				let X = width - 2 - Math.floor(KDRandom() * width/(4));
 				let Y = 1 + Math.floor(KDRandom() * (height - 2));
 				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))) {
 					KinkyDungeonMapSet(X, Y, 's');

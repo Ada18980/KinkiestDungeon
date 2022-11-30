@@ -1717,6 +1717,7 @@ type KDMapTile = {
     h: number;
 	primInd: string,
     index: Record<string, string>;
+    flexEdge?: Record<string, string>;
     scale: number;
     category: string;
     weight: number;

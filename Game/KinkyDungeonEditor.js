@@ -10,6 +10,7 @@ function KDInitTileEditor() {
 }
 
 let KDEditorTileIndex = 'lr';
+let KDEditorTileFlex = "";
 
 let KDEditorTileIndexQuery = '1,1';
 
@@ -18,6 +19,11 @@ let KDEditorTileIndexQuery = '1,1';
  */
 let KDEditorTileIndexStore = {
 	"1,1": 'lr',
+};
+/**
+ * @type {Record<string, string>}
+ */
+let KDEditorTileFlexStore = {
 };
 
 let KDEditorCurrentMapTileName = 'test';
@@ -254,6 +260,7 @@ function KDDrawEditorUI() {
 	DrawTextFitKD("Tile Index", xx + grid * 1.5 , yy - 30, 200, "#ffffff");
 	KDEditorTileIndexHover = '';
 	KDEditorTileIndex = KDEditorTileIndexStore[KDEditorTileIndexQuery];
+	KDEditorTileFlex = KDEditorTileFlexStore[KDEditorTileIndexQuery] || "";
 	for (let index of Object.keys(KDTileIndices)) {
 		let patt = KDGetTileIndexImg(index);
 
@@ -282,6 +289,16 @@ function KDDrawEditorUI() {
 
 		yy += grid * 5;
 	}
+
+	DrawButtonKDEx("flextoggle", (bdata) => {
+		KDEditorTileFlex = KDEditorTileFlex ? "" : "y";
+		if (KDEditorTileFlexStore[KDEditorTileIndexQuery] && !KDEditorTileFlex) {
+			delete KDEditorTileFlexStore[KDEditorTileIndexQuery];
+		} else if (!KDEditorTileFlexStore[KDEditorTileIndexQuery] && KDEditorTileFlex) {
+			KDEditorTileFlexStore[KDEditorTileIndexQuery] = KDEditorTileFlex;
+		}
+		return true;
+	}, true, 150 , 160, 140, 45, 'Flex', "#ffffff", KDEditorTileFlex ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
 
 	// For later
 	let tileKeys = Object.keys(KDMapTilesListEditor);
@@ -949,6 +966,7 @@ function KDTE_Create(w, h, chkpoint = 'grv') {
 			KDEditorTileIndexStore[ww + "," + hh] = 'udlr';
 		}
 	}
+	KDEditorTileFlexStore = {};
 
 	KinkyDungeonPlayerEntity = {
 		x: Math.floor(KinkyDungeonGridWidth/2),
@@ -971,6 +989,7 @@ function KDTE_LoadTile(name, loadedTile) {
 	let nt = loadedTile || KDMapTilesListEditor[name];
 	KDTE_Create(nt.w, nt.h);
 	KDEditorTileIndexStore = nt.index;
+	KDEditorTileFlexStore = nt.flexEdge || {};
 	if (nt.category)
 		ElementValue("MapTileCategory", nt.category);
 	if (nt.weight)
@@ -1038,6 +1057,7 @@ function KDTE_ExportTile() {
 		h: KinkyDungeonGridHeight / KDTE_Scale,
 		primInd: KDEditorTileIndexStore["1,1"],
 		index: KDEditorTileIndexStore,
+		flexEdge: KDEditorTileFlexStore || {},
 		scale: KDTE_Scale,
 		category: ElementValue("MapTileCategory"),
 		weight: parseInt(ElementValue("MapTileWeight")) ? parseInt(ElementValue("MapTileWeight")) : 10,

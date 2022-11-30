@@ -192,7 +192,7 @@ function KDIsPlayerTethered() {
 	}
 	let found = KinkyDungeonFindID(KDGameData.KinkyDungeonLeashingEnemy);
 	if (!found) KDGameData.KinkyDungeonLeashingEnemy = 0;
-	return found || KDGameData.KinkyDungeonLeashedPlayer > 0;
+	return KDGameData.KinkyDungeonLeashedPlayer > 0;
 }
 function KinkyDungeonAttachTetherToEntity(dist, entity) {
 	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
@@ -254,6 +254,8 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 				inv.tx = undefined;
 				inv.ty = undefined;
 			}
+
+			if (inv.tx && inv.ty) KDGameData.KinkyDungeonLeashedPlayer = Math.max(KDGameData.KinkyDungeonLeashedPlayer, 5);
 
 			if (xTo || yTo) {// This means we arre trying to move
 				if (KDistChebyshev(xTo-inv.tx, yTo-inv.ty) > KDRestraint(inv).tether) {

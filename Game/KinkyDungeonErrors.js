@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Sets up the KD crash handler
  */

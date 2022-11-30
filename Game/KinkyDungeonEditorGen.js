@@ -267,21 +267,28 @@ function KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, r
  * @returns {boolean}
  */
 function KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, indexFilled) {
+	let passCount = 0;
 	// Skip over larger tiles that dont fit the tilesFilled map or are already filled
 	for (let xx = 1; xx <= mapTile.w; xx++)
 		for (let yy = 1; yy <= mapTile.h; yy++) {
+			let fail = false;
 			// The index store of the map tile, we compare to the indices of indexfilled
 			let ind = mapTile.index[xx + ',' + yy];
 			// Skip this mapTile if it doesnt fit
-			if (ind != indices[(xx + indX - 1) + ',' + (yy + indY - 1)] && KDLooseIndexRankingSuspend(indices[(xx + indX - 1) + ',' + (yy + indY - 1)], ind, mapTile.w, mapTile.h, xx, yy)) return false;
+			if (ind != indices[(xx + indX - 1) + ',' + (yy + indY - 1)] && KDLooseIndexRankingSuspend(indices[(xx + indX - 1) + ',' + (yy + indY - 1)], ind, mapTile.w, mapTile.h, xx, yy)) {
+				if (mapTile.flexEdge && mapTile.flexEdge[xx + ',' + yy]) fail = true;
+				else return false;
+			}
 			// Skip this mapTile if it's already filled
 			if (indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1)]) return false;
 			// Make sure none of the tile overlaps with required access...
 			if (mapTile.w != 1 || mapTile.h != 1 || (mapTile.inaccessible && mapTile.inaccessible.length > 0)) {
 				if (requiredAccess[(xx + indX - 1) + ',' + (yy + indY - 1)]) return false;
 			}
+			if (!fail)
+				passCount += 1;
 		}
-	return true;
+	return passCount > 0;
 }
 
 function KDLooseIndexRankingSuspend(indexCheck, indexTile, w, h, xx, yy) {
