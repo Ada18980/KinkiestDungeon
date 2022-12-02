@@ -117,6 +117,8 @@ interface KDRestraintProps {
 	playerTags?: Record<string, number>,
 	shrine?: string[],
 
+	debris?: string,
+	debrisChance?: number,
 
 	/** Affinity type: Hook, Edge, or Sharp, Sticky, defaults are Hook (struggle), Sharp (Cut), Edge (Pick), Sticky (Unlock), and none (Pick)*/
 	affinity?: {

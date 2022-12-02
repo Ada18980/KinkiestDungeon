@@ -1726,6 +1726,23 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 							let speed = data.cutSpeed * mult + Math.max(0, data.escapeChance);
 							mult *= 0.4 + 0.6 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 							restraint.cutProgress += escapeSpeed * speed * (0.3 + 0.2 * KDRandom() + 0.6 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax));
+							if (speed > 0) {
+								let debris = "";
+								let debrisFlag = KDRestraint(restraint).Group + "deb";
+								if (!KinkyDungeonFlags.get(debrisFlag)) {
+									if (KDRestraint(restraint)?.debris && KDRandom() < KDRestraint(restraint)?.debrisChance ? KDRestraint(restraint)?.debrisChance : 1.0) debris = KDRestraint(restraint)?.debris;
+								}
+
+								if (debris) {
+									KinkyDungeonSetFlag(debrisFlag, 4);
+									KDCreateDebris(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, {
+										aoe: 1.5,
+										dist: 0.5,
+										kind: debris,
+										number: 1,
+									});
+								}
+							}
 						}
 					}
 				} else if (StruggleType == "Pick") {
@@ -2846,4 +2863,38 @@ function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 		}
 	}
 	return false;
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {{aoe: number, number: number, dist: number, kind: string, duration?: number, durationExtra?: number}} options
+ */
+function KDCreateDebris(x, y, options) {
+	let count = options.number ? options.number : 1;
+	let rad = options.aoe ? options.aoe : 1.5;
+	let minrad = options.dist;
+	for (let i = 0; i < count; i++) {
+		let slots = [];
+		for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
+			for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
+				if (Math.sqrt(X*X+Y*Y) <= rad && (!minrad || Math.sqrt(X*X+Y*Y) >= minrad)) {
+					if ((x + X > 0 && y + Y > 0 && x + X < KinkyDungeonGridWidth && y + Y < KinkyDungeonGridHeight)
+						&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x + X, y + Y)))
+						slots.push({x:X, y:Y});
+				}
+			}
+
+		if (slots.length > 0) {
+			let slot = slots[Math.floor(KDRandom() * slots.length)];
+			if (slot) {
+				KDCreateEffectTile(x + slot.x, y + slot.y, {
+					name: options.kind,
+					duration: options.duration
+				}, options.durationExtra || 0);
+			}
+		}
+
+	}
 }

@@ -46,6 +46,20 @@ let KDEffectTiles = {
 		priority: 5,
 		tags: ["bind", "rope", "flammable"],
 	},
+	"Fabric": {
+		name: "Fabric",
+		duration: 30,
+		priority: 5,
+		tags: ["bind", "fabric", "flammable"],
+	},
+	"FabricGreen": {
+		name: "FabricGreen",
+		duration: 30,
+		priority: 5,
+		brightness: 3.5,
+		lightColor: 0x55ff55,
+		tags: ["bind", "fabric"],
+	},
 	"Vines": {
 		name: "Vines",
 		duration: 50,

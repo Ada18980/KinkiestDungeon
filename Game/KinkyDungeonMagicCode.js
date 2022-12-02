@@ -849,6 +849,30 @@ let KDCommandCaptureBindings = {
 			}, false, false, undefined, undefined, attacker);
 		}
 	},
+	"fabric": (spell, entity, faction, bullet, miscast, attacker, counter) => {
+		// Ropes slow the target down
+		if (entity.player) {
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ribbonRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			if (restraintAdd) {
+				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
+				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleFabric"), "#ff0055", spell.time);
+			} else {
+				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", spell.time);
+				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+			}
+		} else {
+			if (!(entity.slow)) entity.bind = counter * spell.level * 3;
+			else entity.bind = Math.max(entity.bind, counter * spell.level * 3);
+			KinkyDungeonDamageEnemy(entity, {
+				type: "glue",
+				damage: 0,
+				time: 0,
+				bind: 0,
+			}, false, false, undefined, undefined, attacker);
+		}
+	},
 	"belt": (spell, entity, faction, bullet, miscast, attacker, counter) => {
 		// Belts apply extra binding (10 per spell level)
 		if (entity.player) {
@@ -901,6 +925,9 @@ let KDCommandBindBindings = {
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindVine", true), undefined, undefined, undefined, "Player");
 	},
 	"rope": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
+		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindRope", true), undefined, undefined, undefined, "Player");
+	},
+	"rofabricpe": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindRope", true), undefined, undefined, undefined, "Player");
 	},
 	"chain": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
