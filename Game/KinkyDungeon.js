@@ -6,10 +6,10 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
 // Check URL to see if indev branch
 const pp = new URLSearchParams(window.location.search);
-let branch = pp.has('branch') ? pp.get('branch') : "";
-let test = pp.has('test') ? pp.get('test') : "";
-let localhost = pp.has('localhost') ? pp.get('localhost') : "";
-let TestMode = test || branch || localhost || ServerURL == 'https://bc-server-test.herokuapp.com/';
+let param_branch = pp.has('branch') ? pp.get('branch') : "";
+let param_test = pp.has('test') ? pp.get('test') : "";
+let param_localhost = pp.has('localhost') ? pp.get('localhost') : "";
+let TestMode = param_test || param_branch || param_localhost || ServerURL == 'https://bc-server-test.herokuapp.com/';
 
 let KDDebugMode = false;
 let KDDebug = false;

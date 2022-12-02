@@ -160,6 +160,7 @@ let KDTE_State = "";
 function KDDrawTileEditor() {
 
 	if (KinkyDungeonCanvas) {
+
 		KinkyDungeonContext.fillStyle = "rgba(0,0,0.0,1.0)";
 		KinkyDungeonContext.fillRect(0, 0, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height);
 		KinkyDungeonContext.fill();
@@ -231,6 +232,11 @@ function KDDrawTileEditor() {
 
 	}
 
+	if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
+		if (KinkyDungeonKeybindingCurrentKey)
+			KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
+		KinkyDungeonKeybindingCurrentKey = '';
+	}
 }
 
 function KDDrawEditorTagsUI() {

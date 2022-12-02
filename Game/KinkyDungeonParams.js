@@ -288,6 +288,9 @@ const KinkyDungeonMapParams = {
 			"cavern": 0,
 			"temple": 3,
 		},
+		globalTags: {
+			"temple": true,
+		},
 
 		shadowColor: 0x000703,
 

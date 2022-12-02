@@ -762,12 +762,13 @@ function KinkyDungeonGetAccessible(startX, startY, testX, testY) {
 			let Y = g[1].y;
 			for (let XX = -1; XX <= 1; XX++)
 				for (let YY = -1; YY <= 1; YY++) {
-					let test = ((X+XX) + "," + (Y+YY));
+					let testLoc = ((X+XX) + "," + (Y+YY));
 					let locked = (testX != undefined && testY != undefined && X+XX == testX && Y+YY == testY)
 						|| (KinkyDungeonTilesGet("" + (X+XX) + "," + (Y+YY)) && KinkyDungeonTilesGet("" + (X+XX) + "," + (Y+YY)).Lock);
-					if (!checkGrid[test] && !tempGrid[test] && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(X+XX, Y+YY)) && !locked) {
-						checkGrid[test] = {x:X+XX,y:Y+YY};
-						tempGrid[test] = {x:X+XX,y:Y+YY};
+					if (!checkGrid[testLoc] && !tempGrid[testLoc] && X+XX > 0 && X+XX < KinkyDungeonGridWidth-1 && Y+YY > 0 && Y+YY < KinkyDungeonGridHeight-1
+						&& KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(X+XX, Y+YY)) && !locked) {
+						checkGrid[testLoc] = {x:X+XX,y:Y+YY};
+						tempGrid[testLoc] = {x:X+XX,y:Y+YY};
 					}
 				}
 
@@ -1171,7 +1172,7 @@ function KinkyDungeonGetClosestSpecialAreaDist(x ,y) {
 // Type 1: hollow, no empty border
 // Type 2: only empty space
 // Type 3: completely filled
-function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Padding, OffLimits, NoWander) {
+function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Padding, OffLimits, NoWander, flexCorner) {
 	let pad = Padding ? Padding : 0;
 	let borderType = (Border) ? '1' : '0';
 	let fillType = (Fill) ? '1' : '0';
@@ -1225,6 +1226,30 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 					KinkyDungeonMapSet(X, Y, '1');
 			} else KinkyDungeonMapSet(X, Y, '0');*/
 		}
+
+	if (flexCorner) {
+		// flexCorner is a feature to place doodads to avoid unnecessary passageways into other tiles
+		if (!KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-pad - 1, Top -pad))
+			&& !KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-pad, Top -pad - 1))
+			&& KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-pad - 1, Top -pad - 1))) {
+			KinkyDungeonMapSet(Left -pad, Top -pad, 'X');
+		}
+		if (!KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-pad - 1, Top -1 + Height + pad))
+			&& !KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-pad, Top -1 + Height + pad + 1))
+			&& KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-pad - 1, Top -1 + Height + pad + 1))) {
+			KinkyDungeonMapSet(Left-pad, Top -1 + Height + pad, 'X');
+		}
+		if (!KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-1 + Height + pad + 1, Top -pad))
+			&& !KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-1 + Height + pad, Top -pad - 1))
+			&& KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-1 + Height + pad + 1, Top -pad - 1))) {
+			KinkyDungeonMapSet(Left-1 + Height + pad, Top -pad, 'X');
+		}
+		if (!KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-1 + Height + pad + 1, Top -1 + Height + pad))
+			&& !KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-1 + Height + pad, Top -1 + Height + pad + 1))
+			&& KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(Left-1 + Height + pad + 1, Top -1 + Height + pad + 1))) {
+			KinkyDungeonMapSet(Left-1 + Height + pad, Top -1 + Height + pad, 'X');
+		}
+	}
 }
 
 function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs) {
@@ -2864,6 +2889,26 @@ function KinkyDungeonGameKeyDown() {
 		}
 		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
 		return true;
+	}
+
+	if (KinkyDungeonState == "TileEditor") {
+		if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
+			KDClickButton("maptileU");
+			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+			return true;
+		} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey) {
+			KDClickButton("maptileL");
+			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+			return true;
+		} else if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
+			KDClickButton("maptileD");
+			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+			return true;
+		} else if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
+			KDClickButton("maptileR");
+			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+			return true;
+		}
 	}
 
 	if (KDGameData.CurrentDialog) return;

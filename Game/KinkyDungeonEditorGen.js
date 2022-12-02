@@ -216,7 +216,7 @@ function KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, r
 	let Weights = [];
 
 	for (let mapTile of Object.values(KDMapTilesList)) {
-		if (mapTile.primInd == index) {
+		if (mapTile.primInd == index || (mapTile.flexEdge && mapTile.flexEdge['0,0'])) {
 			if (!KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, indexFilled)) continue;
 
 			if (!KDCheckMapTileAccess(mapTile, indX, indY, indexFilled, requiredAccess)) continue;
@@ -274,9 +274,16 @@ function KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, ind
 			let fail = false;
 			// The index store of the map tile, we compare to the indices of indexfilled
 			let ind = mapTile.index[xx + ',' + yy];
+			// Skip map tile if out of bounds
+			if (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)]) return false;
 			// Skip this mapTile if it doesnt fit
 			if (ind != indices[(xx + indX - 1) + ',' + (yy + indY - 1)] && KDLooseIndexRankingSuspend(indices[(xx + indX - 1) + ',' + (yy + indY - 1)], ind, mapTile.w, mapTile.h, xx, yy)) {
-				if (mapTile.flexEdge && mapTile.flexEdge[xx + ',' + yy]) fail = true;
+				if (mapTile.flexEdge && mapTile.flexEdge[xx + ',' + yy]
+				&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('u') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)])
+				&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('d') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)])
+				&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('l') || indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)])
+				&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('r') || indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)])
+				) fail = true;
 				else return false;
 			}
 			// Skip this mapTile if it's already filled

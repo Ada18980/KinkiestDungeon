@@ -292,7 +292,7 @@ function KinkyDungeonDefaultStats(Load) {
 	KDOrigWill = KinkyDungeonStatWillMax * 10;
 	KDOrigDistraction = 0;
 
-	if (test == 'godmode') {
+	if (param_test == 'godmode') {
 		KinkyDungeonSeeAll = true;
 		KinkyDungeonSpellPoints = 9001;
 	}

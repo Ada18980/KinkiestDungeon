@@ -108,9 +108,10 @@ function KDGetFavoredSetpieces(POI, setpieces) {
 	}
 	return setpieces.filter((p) => {return pieces.includes(p.Name);});
 }
-function KDGetFavoringSetpieces(Name, tags, POI) {
+function KDGetFavoringSetpieces(Name, tags, POI, POIBlacklist) {
 	let pois = [];
 	for (let p of POI) {
+		if (POIBlacklist && POIBlacklist.get(p)) continue;
 		if (p.used) continue;
 		if (p.favor.includes(Name)) {
 			pois.push(p);
@@ -167,17 +168,19 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 	}
 
 	let i = 0;
+	let POIBlacklist = new Map();
 	for (i = 0; i < 1000; i++) {
 		let specialDist = KinkyDungeonGetClosestSpecialAreaDist(cornerX + Math.floor(radius/2) - 1, cornerY + Math.floor(radius/2));
 		if (specialDist <= (forcePOI ? 0 : 1) + Math.ceil(radius/2) || !(cornerX > Math.ceil(xPadStart) && cornerX < KinkyDungeonGridWidth - radius - xPadEnd && cornerY > Math.ceil(yPadStart) && cornerY < KinkyDungeonGridHeight - radius - yPadEnd)) {
 			cornerY = Math.ceil(yPadStart) + Math.floor(KDRandom() * (KinkyDungeonGridHeight - yPadStart - yPadEnd - radius - 1));
 			cornerX = Math.ceil(xPadStart) + Math.floor(KDRandom() * (KinkyDungeonGridWidth - xPadStart - radius - 1));
 
-			if (i < 30 || i % 3 == 0 || forcePOI) {
-				favoringPOI = KDGetFavoringSetpieces(Piece.Name, Piece.tags ? Piece.tags : ["decorative"], POI);
+			if (i < 100 || i % 3 == 0 || forcePOI) {
+				favoringPOI = KDGetFavoringSetpieces(Piece.Name, Piece.tags ? Piece.tags : ["decorative"], POI, POIBlacklist);
 				if (favoringPOI) {
 					cornerX = favoringPOI.x - Math.floor(Piece.Radius / 2);
 					cornerY = favoringPOI.y - Math.floor(Piece.Radius / 2);
+					POIBlacklist.set(favoringPOI, true);
 				}
 			}
 		} else break;
@@ -369,7 +372,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 
 				break;
 			case "GuaranteedCell": {
-				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, true, false, 1, true, true);
+				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, true, false, 1, true, true, true);
 				KinkyDungeonMapSet(cornerX+4, cornerY+2, 'd');
 				KinkyDungeonTilesSet("" + (cornerX+4) + "," + (cornerY+2), {Type: "Door", NoTrap: true, Jail: true, ReLock: true, OffLimits: true});
 				KinkyDungeonPatrolPoints.push({x: cornerX + 5, y: cornerY + 2});
@@ -703,7 +706,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 	else if (favoringPOI)
 		favoringPOI.used = false;
 
-	if ( KDDebug) {
+	if ( TestMode) {
 		console.log("Created " + Piece.Name);
 	}
 	return {Pass: true, Traps: trapLocations};
