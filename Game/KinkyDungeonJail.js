@@ -772,7 +772,7 @@ function KinkyDungeonPointInCell(x, y) {
 	//return (Math.abs(x - KinkyDungeonStartPosition.x) < KinkyDungeonJailLeashX - 1 && Math.abs(y - KinkyDungeonStartPosition.y) <= KinkyDungeonJailLeash);
 }
 
-function KinkyDungeonPassOut() {
+function KinkyDungeonPassOut(noteleport) {
 	KDBreakTether();
 	KDGameData.KinkyDungeonLeashedPlayer = 0;
 	KinkyDungeonBlindLevel = 6;
@@ -802,10 +802,13 @@ function KinkyDungeonPassOut() {
 	//if (KinkyDungeonMapGet(nearestJail.x, nearestJail.y) != "B") {
 	// KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
 	//} else {
-	let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined);
-	if (point) {
-		KDMovePlayer(point.x, point.y, false);
+	if (!noteleport) {
+		let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined);
+		if (point) {
+			KDMovePlayer(point.x, point.y, false);
+		}
 	}
+
 
 	for (let e of  KinkyDungeonEntities) {
 		if (e.hostile < 9000) e.hostile = 0;

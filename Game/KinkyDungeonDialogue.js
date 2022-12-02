@@ -1017,6 +1017,9 @@ function KDYesNoTemplate(setupFunction, yesFunction, noFunction, domFunction) {
 						clickFunction: (gagged) => {
 							return domFunction(false);
 						},
+						prerequisiteFunction: (gagged) => {
+							return KDGetSpeaker()?.Enemy?.bound != undefined;
+						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},
 					},
 				},
@@ -1044,6 +1047,9 @@ function KDYesNoTemplate(setupFunction, yesFunction, noFunction, domFunction) {
 					"Dominant": {gag: true, playertext: "OfferDominant", response: "OfferDominantSuccess",
 						clickFunction: (gagged) => {
 							return domFunction(true);
+						},
+						prerequisiteFunction: (gagged) => {
+							return KDGetSpeaker()?.Enemy?.bound != undefined;
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},
 					},
