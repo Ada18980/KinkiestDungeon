@@ -1568,6 +1568,12 @@ AttackWolfgirlPetDash,"The wolfgirl lunges at you with a powerful kick!"
 AttackWolfgirlPetStun,"The wolfgirl lunges at you with a powerful kick!"
 AttackWolfgirlPet,"The wolfgirl cuddles with you! (DamageTaken)"
 
+NameWolfGuard,Wolfguard
+KillWolfGuard,"The wolfguard's suit punishes her for poor performance!"
+AttackWolfGuardDash,"The wolfguard lunges at you and strikes you!"
+AttackWolfGuard,"The wolfguard's escort drones electrocute you! (DamageTaken)"
+AttackWolfGuardBind,"The wolfguard's escort drones deploy some restraints! (+RestraintAdded)"
+
 NameWolfgirl,Wolfgirl Trainer
 KillWolfgirl,"The trainer retreats!"
 AttackWolfgirl,"The wolfgirl trainer squeezes your breasts playfully! (DamageTaken)"

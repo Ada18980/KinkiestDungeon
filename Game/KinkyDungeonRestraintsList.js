@@ -302,7 +302,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.75, escapeChance: {"Struggle": -0.3, "Cut": 0.0, "Remove": 0.05, "Pick": 0.2},
 		enemyTags: {"wolfRestraints" : 8}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Gags", "BallGags", "Leather"]},
 	{inventory: true, name: "WolfCollar", accessible: true, Asset: "AutoShockCollar", Color: ['#6EAF81', '#6EAF81'], Group: "ItemNeck", LinkableBy: [...KDCollarLink], power: 11, weight: 0, escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0.1, "Pick": -0.05},
-		maxwill: 0.5, enemyTags: {"wolfRestraints":3, "wolfGear":3}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Collars", "HighCollars"],
+		maxwill: 0.5, enemyTags: {"wolfRestraints":3, "wolfGear":3, "wolfLeash": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Collars", "HighCollars"],
 		events: [
 			{trigger: "playerAttack", type: "PunishPlayer", chance: 0.25, stun: 2, warningchance: 1.0, damage: "electric", power: 2, sfx: "Shock", inheritLinked: true,},
 			{trigger: "beforeStruggleCalc", type: "ShockForStruggle", chance: 0.75, stun: 2, warningchance: 1.0, damage: "electric", power: 2, sfx: "Shock", bind: 0.2, inheritLinked: true,},
@@ -310,7 +310,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "remotePunish", type: "RemoteActivatedShock", chance: 0.1, stun: 2, damage: "electric", power: 2, sfx: "Shock", noLeash: true, inheritLinked: true,}
 		]},
 	{inventory: true, removePrison: true, name: "WolfLeash", tether: 2.9, Asset: "CollarLeash", Color: "#44fF76", Group: "ItemNeckRestraints", leash: true, power: 1, weight: -99, harness: true,
-		escapeChance: {"Struggle": -0.3, "Cut": -0.2, "Remove": 0.4, "Pick": 0.35}, enemyTags: {"wolfRestraints":9}, playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":999}, minLevel: 0, allFloors: true, shrine: []},
+		escapeChance: {"Struggle": -0.3, "Cut": -0.2, "Remove": 0.4, "Pick": 0.35}, enemyTags: {"wolfRestraints":9, "wolfLeash": 10}, playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":999}, minLevel: 0, allFloors: true, shrine: []},
 	{renderWhenLinked: ["Chastity"], inventory: true, arousalMode: true, name: "WolfPanties", inaccessible: true, Asset: "SciFiPleasurePanties", strictness: 0.05, Color: ["#4F91DE", "#2E2E2E", "#3b7d4f", "#2f5753", "#4F91DE", "#4F91DE", "#000000"] ,Group: "ItemPelvis", LinkableBy: ["Chastity"], power: 4,
 		weight: 0, escapeChance: {"Struggle": 0.05, "Cut": 0.3, "Remove": 0.05, "Pick": 0.35}, escapeMult: 3.0, vibeLocation: "ItemVulva",
 		linkedVibeTags: ["teaser"], allowRemote: true, events: [
