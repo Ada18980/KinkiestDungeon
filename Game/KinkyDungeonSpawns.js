@@ -93,9 +93,13 @@ function KinkyDungeonAddTags(tags, Floor) {
 	return overrideTags;
 }
 
+let KDPerkToggleTags = [
+	"NoNurse",
+];
+
 /**
  *
- * @param {string[]} tags
+ * @param {string[]} enemytags
  * @param {number} Level
  * @param {string} Index
  * @param {string} Tile
@@ -106,9 +110,15 @@ function KinkyDungeonAddTags(tags, Floor) {
  * @param {string[]} [requireSingleTag]
  * @returns {enemy}
  */
-function KinkyDungeonGetEnemy(tags, Level, Index, Tile, requireTags, requireHostile, bonusTags, filterTags, requireSingleTag) {
+function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, requireHostile, bonusTags, filterTags, requireSingleTag) {
 	let enemyWeightTotal = 0;
 	let enemyWeights = [];
+	let tags = Object.assign([], enemytags);
+	for (let t of KDPerkToggleTags) {
+		if (KinkyDungeonStatsChoice.get(t)) {
+			tags.push(t);
+		}
+	}
 
 	for (let enemy of KinkyDungeonEnemies) {
 		let effLevel = Level + 25 * KinkyDungeonNewGame;
@@ -221,6 +231,7 @@ function KinkyDungeonCallGuard(x, y, noTransgress, normalDrops, requireTags) {
 	//if (!noTransgress)
 	// KinkyDungeonAggroAction('call', {});
 	let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, true, true);
+	if (!point) point = KinkyDungeonGetRandomEnemyPoint(true);
 	if (point) {
 		if (!KinkyDungeonJailGuard()) {
 
@@ -254,6 +265,11 @@ function KinkyDungeonCallGuard(x, y, noTransgress, normalDrops, requireTags) {
 			KinkyDungeonJailGuard().gy = point.y;
 			KinkyDungeonJailGuard().gxx = point.x;
 			KinkyDungeonJailGuard().gyy = point.y;
+			if (KinkyDungeonFindPath(KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, false, true, KinkyDungeonMovableTilesSmartEnemy) < 15) {
+				let p = KinkyDungeonGetRandomEnemyPoint(true, true, undefined, 20, 10);
+				KinkyDungeonJailGuard().x = p.x;
+				KinkyDungeonJailGuard().y = p.y;
+			}
 			return KinkyDungeonJailGuard();
 		}
 	}

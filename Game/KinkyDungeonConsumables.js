@@ -92,7 +92,7 @@ function KinkyDungeonGetShopItem(Level, Rarity, Shop) {
 
 	// No duplicates
 	for (let R = Rarity; R >= 0; R--) {
-		let available = Table.filter((item) => (item.rarity == R && !KinkyDungeonShopItems.some((item2) => {return item2.name == item.name;})));
+		let available = Table.filter((item) => (item.rarity == R && !KDGameData.ShopItems.some((item2) => {return item2.name == item.name;})));
 		if (available.length > 0) return available[Math.floor(KDRandom() * available.length)];
 	}
 	return null;
@@ -123,47 +123,13 @@ function KinkyDungeonChangeConsumable(consumable, Quantity) {
 }
 
 function KinkyDungeonConsumableEffect(Consumable) {
-	if (Consumable.type == "restore") {
-		let multi = 1.0;
-		if (Consumable.scaleWithMaxSP) {
-			multi = Math.max(KinkyDungeonStatStaminaMax / KDMaxStatStart);
-		}
-		let Manamulti = 1.0;
-		if (Consumable.scaleWithMaxMP) {
-			Manamulti = Math.max(KinkyDungeonStatManaMax / KDMaxStatStart);
-		}
-		let Willmulti = 1.0;
-		if (Consumable.scaleWithMaxWP) {
-			Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
-		}
-		let Distmulti = 1.0;
-		if (Consumable.scaleWithMaxAP) {
-			Distmulti = Math.max(KinkyDungeonStatDistractionMax / KDMaxStatStart);
-		}
-		let gagFloor = Consumable.gagFloor ? Consumable.gagFloor : 0;
-		let gagMult = (Consumable.potion && gagFloor != 1.0) ? Math.max(0, gagFloor + (1 - gagFloor) * (1 - Math.max(0, Math.min(1.0, KinkyDungeonGagTotal(true))))) : 1.0;
-		if (gagMult < 0.999) {
-			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonConsumableLessEffective"), "#ff0000", 2);
-		}
-		if (Consumable.mp_instant != undefined) {
-			//let manaAmt = Math.min(KinkyDungeonStatManaMax, KinkyDungeonStatMana + Consumable.mp_instant * Manamulti * gagMult) - KinkyDungeonStatMana;
-			KinkyDungeonChangeMana(Consumable.mp_instant * Manamulti * gagMult, false, Consumable.mpool_instant * Manamulti * gagMult, false, true);
-		}
-		if (Consumable.wp_instant) KinkyDungeonChangeWill(Consumable.wp_instant * Willmulti * gagMult);
-		if (Consumable.sp_instant) KinkyDungeonChangeStamina(Consumable.sp_instant * multi * gagMult);
-		if (Consumable.ap_instant) KinkyDungeonChangeDistraction(Consumable.ap_instant * Distmulti * gagMult, false, Consumable.arousalRatio ? Consumable.arousalRatio : 0);
-
-		KinkyDungeonCalculateMiscastChance();
-
-		if (Consumable.mp_gradual) KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "PotionMana", type: "restore_mp", power: Consumable.mp_gradual/Consumable.duration * gagMult * Manamulti, duration: Consumable.duration});
-		if (Consumable.wp_gradual) KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "PotionWill", type: "restore_wp", power: Consumable.wp_gradual/Consumable.duration * gagMult * Willmulti, duration: Consumable.duration});
-		if (Consumable.sp_gradual) KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "PotionStamina", type: "restore_sp", power: Consumable.sp_gradual/Consumable.duration * gagMult * multi, duration: Consumable.duration});
-		if (Consumable.ap_gradual) KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "PotionFrigid", type: "restore_ap", power: Consumable.ap_gradual/Consumable.duration * gagMult * Distmulti, duration: Consumable.duration});
+	if (KDConsumableEffects[Consumable.type]) {
+		KDConsumableEffects[Consumable.type](Consumable);
 	} else if (Consumable.type == "spell") {
 		KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonFindSpell(Consumable.spell, true), undefined, undefined, undefined);
 		KinkyDungeonAdvanceTime(1);
 	} else if (Consumable.type == "targetspell") {
-		KinkyDungeonShowInventory = false;
+		KDCloseQuickInv();
 		KinkyDungeonTargetingSpell = KinkyDungeonFindSpell(Consumable.spell, true);
 		KinkyDungeonTargetingSpellItem = Consumable;
 	} else if (Consumable.type == "charge") {
@@ -204,6 +170,15 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 	if (KDGameData.SleepTurns > 0 || KinkyDungeonSlowMoveTurns > 0) return false;
 	let item = KinkyDungeonGetInventoryItem(Name, Consumable);
 	if (!item) return false;
+
+
+	if (KDConsumable(item).prereq && KDConsumablePrereq[KDConsumable(item).prereq]) {
+		if (KDConsumablePrereq[KDConsumable(item).prereq](item, Quantity)) {
+			KinkyDungeonUseConsumable(Name, Quantity);
+			return true;
+		} else return false;
+	}
+
 	if (item.item && KDConsumable(item.item) && KDConsumable(item.item).type == "unusuable") {
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnusable"), "#ff0000", 1);
 		return false;
@@ -282,6 +257,12 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 		return false;
 	}
 
+	if (KDConsumable(item).postreq && KDConsumablePrereq[KDConsumable(item).postreq]) {
+		if (KDConsumablePrereq[KDConsumable(item).postreq](item, Quantity)) {
+			KinkyDungeonUseConsumable(Name, Quantity);
+			return true;
+		} else return false;
+	}
 	KinkyDungeonUseConsumable(Name, Quantity);
 	return true;
 }
@@ -300,5 +281,11 @@ function KinkyDungeonUseConsumable(Name, Quantity) {
 	if (KDConsumable(item.item).sfx) {
 		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/" + KDConsumable(item.item).sfx + ".ogg");
 	}
+
+	if (KDConsumable(item.item).potion && KinkyDungeonStatsChoice.has("SavourTheTaste")) {
+		KinkyDungeonAdvanceTime(1);
+		KinkyDungeonSlowMoveTurns = 1;
+	}
+
 	return true;
 }

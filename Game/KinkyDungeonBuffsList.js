@@ -30,6 +30,17 @@ let KDVolcanism = {id: "Volcanism", type: "event", aura: "#ff0000", power: 0.5, 
 let KDDrenched2 = {id: "Drenched2", type: "electricDamageResist", power: -0.35, player: true, duration: 20, enemies: true};
 let KDDrenched3 = {id: "Drenched2", type: "iceDamageResist", power: -0.35, player: true, duration: 20, enemies: true};
 
+
+let KDEager = {
+	id: "Eager", type: "MoveSpeed", power: 0.95, duration: 1, events: [
+		{type: "ApplyVuln", duration: 1, trigger: "tick"},
+		{type: "ApplyVuln", duration: 1, power: -1.0, trigger: "tickAfter"},
+	]
+};
+let KDMasochist = {
+	id: "Masochist", type: "DamageAmp", power: -1, duration: 1
+};
+
 let KDChilled = {id: "Chilled", aura: "#73efe8", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 2,};
 let KDSlimed = {
 	id: "Slimed", aura: "#dc16bc", aurasprite: "Slimed", noAuraColor: true, type: "SlimeProgress", power: 1.0, player: true, enemies: true, duration: 3, range: 0.5, hideHelpless: true, tags: ["slimed"], events: [
@@ -56,16 +67,39 @@ let KDEncased = {
 		{type: "ApplyGlueVuln", duration: 1, power: -0.5, trigger: "tickAfter"},
 	]
 };
+let KDChastity = {
+	id: "Chastity", type: "Chastity", power: 1.0, aura: "#dddddd", aurasprite: "Chastity", player: false, enemies: true, duration: 9999, range: 0.5, tags: ["chastity"], events: [
+		{type: "Distract", power: 0.1, trigger: "tick", prereq: "bound"},
+	]
+};
+let KDVibrate1 = {
+	id: "Vibrate1", type: "Vibration", power: 1.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
+		{type: "RemoveNoPlug", trigger: "tick"},
+	]
+};
+let KDVibrate2 = {
+	id: "Vibrate2", type: "Vibration", power: 1.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
+		{type: "RemoveNoPlug", trigger: "tick"},
+	]
+};
+let KDVibrate3 = {
+	id: "Vibrate3", type: "Vibration", power: 1.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
+		{type: "RemoveNoPlug", trigger: "tick"},
+	]
+};
+let KDToy = {
+	id: "Toy", type: "Plug", power: 0.1, aura: "#dddddd", aurasprite: "Toy", player: false, enemies: true, duration: 30, range: 0.5, tags: ["toy"]
+};
 let KDPlugged = {
 	id: "Plugged", type: "Plug", power: 1.0, aura: "#dddddd", aurasprite: "Plugged", player: false, enemies: true, duration: 9999, range: 0.5, tags: ["plugged"], events: [
 		{type: "Distract", power: 2.0, trigger: "tick"},
-		{type: "RemoveFree", trigger: "tick"},
+		{type: "RemoveFree", trigger: "tick", prereq: "NoChastity"},
 	]
 };
 let KDDoublePlugged = {
 	id: "DoublePlugged", type: "Plug", power: 2.0, aura: "#dddddd", aurasprite: "DoublePlugged", player: false, enemies: true, duration: 9998, range: 0.5, tags: ["plugged"], events: [
 		{type: "Distract", power: 5.0, trigger: "tick"},
-		{type: "RemoveFree", trigger: "tick"},
+		{type: "RemoveFree", trigger: "tick", prereq: "NoChastity"},
 	]
 };
 let KDGlueVulnLow = {
@@ -73,6 +107,12 @@ let KDGlueVulnLow = {
 };
 let KDGlueResist = {
 	id: "GlueVuln", type: "glueDamageResist", power: 0.5, player: false, enemies: true, duration: 1
+};
+let KDDollDebuff = {
+	id: "DollDebuff", type: "soulDamageResist", power: -0.5, player: false, enemies: true, duration: 2, aura: "#ff8888",
+};
+let KDDollDebuff2 = {
+	id: "DollDebuff2", type: "charmDamageResist", power: -0.5, player: false, enemies: true, duration: 2
 };
 let KDSlowed = {
 	id: "Slowed", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1
@@ -100,6 +140,10 @@ let KDBuffReference = {
 	"Unsteady": [KDUnsteady, KDUnsteady2, KDUnsteady3],
 	"Plugged": [KDPlugged],
 	"DoublePlugged": [KDDoublePlugged],
+	"Chastity": [KDChastity],
+	"Vibrate1": [KDVibrate1],
+	"Vibrate2": [KDVibrate2],
+	"Vibrate3": [KDVibrate3],
 };
 
 let KDDisenchantSelf = {id: "DisenchantSelf", aura: "#8888ff", type: "Disenchant", power: 9.9, player: true, enemies: true, duration: 10,};

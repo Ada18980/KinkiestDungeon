@@ -28,7 +28,7 @@ function TextLoad(TextGroup) {
 
 	TextScreenCache = TextAllScreenCache.get(FullPath);
 	if (!TextScreenCache) {
-		TextScreenCache = new TextCache(FullPath, "MISSING VALUE FOR TAG: ");
+		TextScreenCache = new TextCache(FullPath, "");
 		TextAllScreenCache.set(FullPath, TextScreenCache);
 	}
 }

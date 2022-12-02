@@ -158,8 +158,8 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap) {
 			if (returnOnly) return lootWeights[L].loot;
 			let replace = KinkyDungeonLootEvent(lootWeights[L].loot, Level, TextGet(lootWeights[L].loot.message), lootWeights[L].loot.lock);
 
-			if (!KinkyDungeonSendActionMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime))
-				KinkyDungeonSendTextMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime, true, true);
+			if (!KinkyDungeonSendActionMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime || 2))
+				KinkyDungeonSendTextMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime || 2, true, true);
 
 			break;
 		}
@@ -208,6 +208,15 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		KinkyDungeonInventoryAddWeapon(Loot.weapon);
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItem" + Loot.weapon));
+	}
+	else if (Loot.armor) {
+		let armor = Loot.armor;
+		let unlockcurse = undefined;
+		if (Loot.curses) armor = CommonRandomItemFromList("", Loot.curses);
+		if (Loot.unlockcurse) unlockcurse = CommonRandomItemFromList("", Loot.unlockcurse);
+		KinkyDungeonInventoryAddLoose(armor, unlockcurse);
+		if (Replacemsg)
+			Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + Loot.armor));
 	}
 	else if (Loot.name == "spell_points") {
 		let amount = 1;
@@ -516,6 +525,13 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("RestraintType", TextGet("RestraintTrapPlug3"));
 	}
+	else if (Loot.name == "trap_plug_thunder") {
+		value = Math.ceil((150 + 50 * KDRandom()) * (1 + Floor/40));
+		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapPlug4"), MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, "");
+		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapBelt"), MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, Lock ? Lock : KinkyDungeonGenerateLock(true, undefined, true), undefined, Loot.trap);
+		if (Replacemsg)
+			Replacemsg = Replacemsg.replace("RestraintType", TextGet("RestraintTrapPlug4"));
+	}
 	else if (Loot.name == "trap_nipple") {
 		value = Math.ceil((150 + 50 * KDRandom()) * (1 + Floor/40));
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("NippleClamps"), MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, "");
@@ -562,8 +578,8 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	}
 
 	else if (Loot.name == "lost_items") {
-		if (!KinkyDungeonInventoryGet("OutfitDefault")) {
-			KinkyDungeonInventoryAdd({name: "OutfitDefault", type: Outfit});
+		if (!KinkyDungeonInventoryGet("Default")) {
+			KinkyDungeonInventoryAdd({name: "Default", type: Outfit});
 		}
 		for (let I = 0; I < KinkyDungeonLostItems.length; I++) {
 			let lostitem = KinkyDungeonLostItems[I];
@@ -616,6 +632,13 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		}
 		KinkyDungeonLostItems = [];
 	}
+	if (KDLootEvents[Loot.name]) {
+		let ret = KDLootEvents[Loot.name](Loot, Floor, Replacemsg, Lock);
+		if (ret.value) value = ret.value;
+		if (ret.Replacemsg) Replacemsg = ret.Replacemsg;
+	}
+
+
 	if (Loot.trap) {
 		if (!Loot.noSmoke) {
 			KDSmokePuff(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 2.9, 0.4);
@@ -635,6 +658,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 function KinkyDungeonAddGold(value) {
 	if (!isNaN(value)) {
 		KinkyDungeonGold += value;
+		// @ts-ignore
 		if (ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable()) CharacterChangeMoney(Player, Math.round(value/10));
 		let pre = value >= 0 ? "+" : "";
 		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, pre + `${value} GP`, "white", 3.5);
@@ -643,7 +667,7 @@ function KinkyDungeonAddGold(value) {
 }
 
 
-function KDSpawnLootTrap(x, y, trap, mult) {
+function KDSpawnLootTrap(x, y, trap, mult, duration) {
 	let spawned = 0;
 	let maxspawn = 1 + Math.round(Math.min(2 + KDRandom() * 2, KinkyDungeonDifficulty/25) + Math.min(2 + KDRandom() * 2, 0.5*MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint));
 	if (mult) maxspawn *= mult;
@@ -655,11 +679,11 @@ function KDSpawnLootTrap(x, y, trap, mult) {
 	for (let i = 0; i < 30; i++) {
 		if (spawned < maxspawn) {
 			let Enemy = KinkyDungeonGetEnemy(
-				tags, MiniGameKinkyDungeonLevel,
+				tags, MiniGameKinkyDungeonLevel + KinkyDungeonDifficulty/5,
 				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 				'0', requireTags, true);
 			if (Enemy) {
-				let pass = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, Enemy.tags.construct ? 40 : undefined, undefined, false, "Ambush", true, 1.5, true, undefined, true, true);
+				let pass = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, (duration || Enemy.tags.construct) ? (duration || 40) : undefined, undefined, false, "Ambush", true, 1.5, true, undefined, true, true);
 				if (pass) {
 					if (Enemy.tags.minor) spawned += 0.4;
 					else spawned += 1;
@@ -695,6 +719,11 @@ let KDTrapChestType = {
 			return {trap: "ropeTrap", mult: 1.5};
 	},
 	"shadow" : (guaranteed, x, y, chestType, lock, noTrap) => {
-		return {trap: "shadowTrap", mult: 2.5};
+		return {trap: "shadowTrap", mult: 2.5, duration: 300};
 	},
 };
+
+function KDTriggerLoot(Loot, Type) {
+	let lootobj = KinkyDungeonLootTable[Type].find((element) => {return element.name == Loot;});
+	console.log(KinkyDungeonLootEvent(lootobj, KinkyDungeonMapIndex, lootobj.message));
+}

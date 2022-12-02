@@ -17,19 +17,11 @@ let KDTileUpdateFunctions = {
 		return true;
 	},
 	"L" : (delta) => { // Barrel
-		if (KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)) {
-			if (KinkyDungeonTiles.get(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture == "Cage" && !KDGameData.PrisonerState) {
-				let power = 0;
-				if (KDBoundPowerLevel >= 0.35) power = 2;
-				else if (KDBoundPowerLevel >= 0.1) power = 1;
-				if (power >= 2) {
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "cage", type: "SlowDetection", duration: 1, power: 4.0, player: true, enemies: true, endSleep: true, maxCount: 1, tags: ["SlowDetection", "move", "cast"]});
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "cage2", type: "Sneak", duration: 1, power: 9.95, player: true, enemies: true, endSleep: true, maxCount: 1, tags: ["Sneak", "darkness", "move", "cast"]});
-				} else if (power >= 1) {
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "cage", type: "SlowDetection", duration: 1, power: 4.0, player: true, enemies: true, endSleep: true, maxCount: 1, tags: ["SlowDetection", "move", "cast"]});
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "cage2", type: "Sneak", duration: 1, power: 2.95, player: true, enemies: true, endSleep: true, maxCount: 1, tags: ["Sneak", "darkness", "move", "cast"]});
-				}
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), "lightgreen", 1, true);
+		if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)
+			&& KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture) {
+			let furn = KDFurniture[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture];
+			if (furn) {
+				furn.tickFunction(delta);
 			}
 		} else {
 			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "barrel", type: "SlowDetection", duration: 1, power: 9.0, player: true, enemies: true, endSleep: true, maxCount: 1, tags: ["SlowDetection", "move", "cast"]});
@@ -91,7 +83,7 @@ let KDMoveObjectFunctions = {
 			KinkyDungeonMapSet(moveX, moveY, 'd');
 
 			// For private doors, aggro the faction
-			let faction = KinkyDungeonTiles.get(moveX + "," +moveY) && KinkyDungeonTiles.get(moveX + "," +moveY).Faction ? KinkyDungeonTiles.get(moveX + "," +moveY).Faction : undefined;
+			let faction = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Faction ? KinkyDungeonTilesGet(moveX + "," +moveY).Faction : undefined;
 			if (faction) {
 				KinkyDungeonAggroFaction(faction, true);
 			}
@@ -102,17 +94,17 @@ let KDMoveObjectFunctions = {
 		return true;
 	},
 	'C': (moveX, moveY) => { // Open the chest
-		let chestType = KinkyDungeonTiles.get(moveX + "," +moveY) && KinkyDungeonTiles.get(moveX + "," +moveY).Loot ? KinkyDungeonTiles.get(moveX + "," +moveY).Loot : "chest";
-		let faction = KinkyDungeonTiles.get(moveX + "," +moveY) && KinkyDungeonTiles.get(moveX + "," +moveY).Faction ? KinkyDungeonTiles.get(moveX + "," +moveY).Faction : undefined;
-		let noTrap = KinkyDungeonTiles.get(moveX + "," +moveY) && KinkyDungeonTiles.get(moveX + "," +moveY).NoTrap ? KinkyDungeonTiles.get(moveX + "," +moveY).NoTrap : false;
-		let lootTrap = KinkyDungeonTiles.get(moveX + "," +moveY) && KinkyDungeonTiles.get(moveX + "," +moveY).lootTrap ? KinkyDungeonTiles.get(moveX + "," +moveY).lootTrap : undefined;
-		let roll = KinkyDungeonTiles.get(moveX + "," +moveY) ? KinkyDungeonTiles.get(moveX + "," +moveY).Roll : KDRandom();
+		let chestType = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Loot ? KinkyDungeonTilesGet(moveX + "," +moveY).Loot : "chest";
+		let faction = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Faction ? KinkyDungeonTilesGet(moveX + "," +moveY).Faction : undefined;
+		let noTrap = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).NoTrap ? KinkyDungeonTilesGet(moveX + "," +moveY).NoTrap : false;
+		let lootTrap = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).lootTrap ? KinkyDungeonTilesGet(moveX + "," +moveY).lootTrap : undefined;
+		let roll = KinkyDungeonTilesGet(moveX + "," +moveY) ? KinkyDungeonTilesGet(moveX + "," +moveY).Roll : KDRandom();
 		if (faction && !KinkyDungeonChestConfirm) {
 			KinkyDungeonChestConfirm = true;
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2, true);
 		} else {
-			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType, roll, KinkyDungeonTiles.get(moveX + "," +moveY), undefined, noTrap);
-			if (lootTrap) KDSpawnLootTrap(moveX, moveY, lootTrap.trap, lootTrap.mult);
+			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType, roll, KinkyDungeonTilesGet(moveX + "," +moveY), undefined, noTrap);
+			if (lootTrap) KDSpawnLootTrap(moveX, moveY, lootTrap.trap, lootTrap.mult, lootTrap.duration);
 			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/ChestOpen.ogg");
 			KinkyDungeonMapSet(moveX, moveY, 'c');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
@@ -277,18 +269,18 @@ let KDEffectTileFunctions = {
 				if (entity.player) {
 					let latexData = {
 						cancelDamage: false,
-						dmg: KDLatexDmg,
+						dmg: KDLatexDmg*KDGetEnvironmentalDmg(),
 						type: "glue",
 					};
 					KinkyDungeonSendEvent("tickLatexPlayer", latexData);
 					if (!latexData.cancelDamage)
-						KinkyDungeonDealDamage({damage: latexData.dmg, type: latexData.type});
+						KinkyDungeonDealDamage({damage: latexData.dmg*KDGetEnvironmentalDmg(), type: latexData.type});
 				} else if (KDCanBind(entity)) {
 					let latexData = {
 						cancelDamage: entity.boundLevel > entity.Enemy.maxhp + KDLatexBind,
 						enemy: entity,
 						dmg: 0,
-						bind: KDLatexBind,
+						bind: KDLatexBind*KDGetEnvironmentalDmg(),
 						type: "glue",
 					};
 					KinkyDungeonSendEvent("tickLatex", latexData);
@@ -296,7 +288,7 @@ let KDEffectTileFunctions = {
 						KinkyDungeonDamageEnemy(entity, {
 							type: "glue",
 							damage: 0,
-							bind: KDLatexBind,
+							bind: KDLatexBind*KDGetEnvironmentalDmg(),
 							flags: ["DoT"]
 						}, false, true, undefined, undefined, undefined, "Rage");
 						if (entity.boundLevel >= entity.Enemy.maxhp) {
@@ -331,7 +323,7 @@ let KDEffectTileFunctions = {
 		if (entity.player) {
 			KinkyDungeonDealDamage({
 				type: "fire",
-				damage: 1,
+				damage: 1*KDGetEnvironmentalDmg(),
 				time: 0,
 				bind: 0,
 				flags: ["BurningDamage"]
@@ -340,7 +332,7 @@ let KDEffectTileFunctions = {
 		} else {
 			KinkyDungeonDamageEnemy(entity, {
 				type: "fire",
-				damage: 1,
+				damage: 1*KDGetEnvironmentalDmg(),
 				time: 0,
 				bind: 0,
 				flags: ["BurningDamage"]
@@ -405,6 +397,50 @@ let KDEffectTileCreateFunctionsCreator = {
 		if (existingTile.tags.includes("fire")) {
 			newTile.pauseDuration = existingTile.duration;
 			newTile.pauseSprite = newTile.name;
+		}
+		return true;
+	},
+	"Sparks": (newTile, existingTile) => {
+		if (existingTile.tags.includes("conductive")) {
+			let rt = KDEffectTileTags(existingTile.x + 1, existingTile.y);
+			let lt = KDEffectTileTags(existingTile.x - 1, existingTile.y);
+			let ut = KDEffectTileTags(existingTile.x, existingTile.y - 1);
+			let dt = KDEffectTileTags(existingTile.x, existingTile.y + 1);
+			let dmg = {
+				type: "electric",
+				damage: 2.0,
+				time: 0,
+				bind: 0,
+				flags: ["EchoDamage"],
+			};
+			if (!rt.electric && rt.conductive) {
+				KDCreateEffectTile(existingTile.x + 1, existingTile.y, {
+					name: "Sparks",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x + 1, existingTile.y, 0.5, dmg, undefined);
+			}
+			if (!lt.electric && lt.conductive) {
+				KDCreateEffectTile(existingTile.x - 1, existingTile.y, {
+					name: "Sparks",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x - 1, existingTile.y, 0.5, dmg, undefined);
+			}
+			if (!dt.electric && dt.conductive) {
+				KDCreateEffectTile(existingTile.x, existingTile.y + 1, {
+					name: "Sparks",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x, existingTile.y + 1, 0.5, dmg, undefined);
+			}
+			if (!ut.electric && ut.conductive) {
+				KDCreateEffectTile(existingTile.x, existingTile.y - 1, {
+					name: "Sparks",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x, existingTile.y - 1, 0.5, dmg, undefined);
+			}
 		}
 		return true;
 	},
@@ -645,13 +681,19 @@ let KDEffectTileBulletFunctions = {
 					duration: 3,
 				}, 1); // Create ice
 			} else {
-				if ((KDIgnitionSources.includes(type)) && b.bullet.damage.damage > 0) {
+				if (type == "fire" && b.bullet.damage.damage > 0) {
 					tile.duration = 0;
 					KDSmokePuff(tile.x, tile.y, 1.5, 0.1, true);
 					KDCreateEffectTile(tile.x, tile.y, {
 						name: "Steam",
 						duration: 6,
 					}, 2); // Create steam
+				}
+				if (type == "electric" && b.bullet.damage.damage > 0) {
+					KDCreateEffectTile(tile.x, tile.y, {
+						name: "Sparks",
+						duration: 3,
+					}, 1); // Create sparks
 				}
 			}
 		}

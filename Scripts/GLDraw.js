@@ -484,7 +484,7 @@ function GLDrawLoadImage(gl, url) {
 					if (GLDrawCacheLoadedImages == GLDrawCacheTotalImages) CharacterLoadCanvasAll();
 				}
 			});
-			Img.src = url;
+			Img.src = KDModFiles[url] || url;
 		}
 	}
 	return textureInfo;

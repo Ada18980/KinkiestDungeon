@@ -33,6 +33,7 @@ let KinkyDungeonHiddenFactions = [
 	"Rebel",
 	"Rock",
 	"Delinquent",
+	"Wolfhunter",
 	"Chase",
 ];
 
@@ -41,10 +42,11 @@ let KinkyDungeonTooltipFactions = [
 	"Rebel",
 	"Ambush",
 	"Delinquent",
+	"Wolfhunter",
 	"Rock",
 ];
 
-/** Tag for these factions */
+/** Tag for these factions, these also can have increased chances to appear on a map */
 let KinkyDungeonFactionTag = {
 	Bountyhunter: "bountyhunter",
 	Bandit: "bandit",
@@ -80,11 +82,11 @@ let KinkyDungeonFactionRelationsBase = {
 		Bandit: -0.7,
 		Alchemist: -0.25,
 		Nevermere: -0.1,
-		Apprentice: 0.2,
+		Apprentice: 0.25,
 		Dressmaker: -0.45,
 		Witch: -0.8,
 		Elemental: -0.6,
-		Dragon: 0.0,
+		Dragon: 0.1,
 		Maidforce: -0.05,
 		Bast: -0.6,
 		Elf: -0.26,
@@ -154,6 +156,11 @@ let KinkyDungeonFactionRelationsBase = {
 	"Delinquent": {
 		Player: -1,
 		Maidforce: -1,
+		Chase: -1,
+	},
+	"Wolfhunter": {
+		Player: -1,
+		Nevermere: -1,
 		Chase: -1,
 	},
 	"Trap": {
@@ -271,7 +278,6 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Nevermere": {
 		"Alchemist": 1.0,
-		"Elf": -1.0,
 		"Bast": -0.55,
 		"Mushy": -0.4,
 		"Bandit": 0.3,
@@ -282,6 +288,7 @@ let KinkyDungeonFactionRelationsBase = {
 	"Alchemist": {
 		"Bandit": 0.15,
 		"AncientRobot": -0.55,
+		"Dressmaker": -0.25,
 	},
 	"Bountyhunter": {
 		"Jail": 0.8,
@@ -305,12 +312,11 @@ let KinkyDungeonFactionRelationsBase = {
 		"Mushy": -0.6,
 	},
 	"Elemental": {
-		"Witch": 0.4,
 		"KinkyConstruct": 0.55,
 		"Dressmaker": 0.35,
-		"Apprentice": 1.0,
+		"Witch": 0.8,
 		"Bandit": -0.15,
-		"Elf": -0.5,
+		"Elf": 0.5,
 		"Bast": -0.35,
 		"Dragon": -0.5,
 		"AncientRobot": -0.15,
@@ -333,6 +339,7 @@ let KinkyDungeonFactionRelationsBase = {
 		"Mushy": 0.1,
 	},
 	"Mushy": {
+		"Alchemist": -0.55
 	},
 	"Witch": {
 		"Apprentice": 0.55,
@@ -340,8 +347,10 @@ let KinkyDungeonFactionRelationsBase = {
 		"Elf": -1.0,
 	},
 	"Dressmaker": {
-		"Apprentice": 1.0,
+		"Witch": 0.6,
 		"Nevermere": 0.8,
+		"Bandit": -0.5,
+		"Dragon": -0.5,
 	},
 	"Apprentice": {
 		"Jail": 1.0,
@@ -352,8 +361,6 @@ let KinkyDungeonFactionRelationsBase = {
 		"Jail": 0.55,
 		"Nevermere": 0.55,
 		"Dragon": 0.55,
-		"Elf": 0.55,
-		"Bast": 0.2,
 		"Apprentice": 0.55,
 		"Bandit": -0.6,
 		"Witch": -0.4,

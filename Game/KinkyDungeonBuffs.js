@@ -50,7 +50,7 @@ function KinkyDungeonTickBuffs(list, delta, endFloor, entity) {
 	}
 }
 
-function KinkyDungeonTickBuffTag(list, tag, Amount) {
+function KinkyDungeonTickBuffTag(list, tag, Amount = 1) {
 	if (list)
 		for (const [key, value] of Object.entries(list)) {
 			if (value) {
@@ -61,6 +61,42 @@ function KinkyDungeonTickBuffTag(list, tag, Amount) {
 				}
 			}
 		}
+}
+
+/**
+ *
+ * @param {entity} entity
+ * @param {string} tag
+ * @returns {boolean}
+ */
+function KDEntityHasBuffTags(entity, tag) {
+	let list = entity.player ? KinkyDungeonPlayerBuffs : entity.buffs;
+	if (list) {
+		for (const buff of Object.values(list)) {
+			if (buff) {
+				if (buff.tags && buff.tags.includes(tag)) return true;
+			}
+		}
+	}
+	return false;
+}
+/**
+ *
+ * @param {entity} entity
+ * @param {string} tag
+ * @returns {Record<string, any>}
+ */
+function KDGetBuffsWithTag(entity, tag) {
+	let ret = {};
+	let list = entity.player ? KinkyDungeonPlayerBuffs : entity.buffs;
+	if (list) {
+		for (const [key, buff] of Object.entries(list)) {
+			if (buff) {
+				if (buff.tags && buff.tags.includes(tag)) ret[key] = buff;
+			}
+		}
+	}
+	return ret;
 }
 
 /**
@@ -153,6 +189,7 @@ function KinkyDungeonApplyBuff(list, origbuff, changes) {
 	if (list[id] && buff.cancelOnReapply) {
 		KinkyDungeonExpireBuff(list, id);
 	} else {
+		if (!list[id] && buff.sfxApply) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + buff.sfxApply + ".ogg");
 		if (!list[id] || (list[id].power > 0 && buff.power >= list[id].power) || (list[id].power < 0 && ((buff.power > 0 && buff.power >= list[id].power) || buff.power <= list[id].power))) list[id] = buff;
 		if ((list[id].power && buff.power == list[id].power && buff.duration >= list[id].duration)) list[id].duration = buff.duration;
 

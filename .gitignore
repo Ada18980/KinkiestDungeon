@@ -6,8 +6,11 @@
 !/Icons/**/*
 !/Fonts/**/*
 !/Game/**/*
+!/Music/**/*
 !/Scripts/**/*
 !/Screens/**/*
+!/Mods/example_enemy.zip
+!/Mods/example_enemy/**/*
 !/Data/**/*
 
 !/.editorconfig
@@ -19,3 +22,5 @@
 !/jsconfig.json
 !/README.md
 !/style.css
+
+*.wav

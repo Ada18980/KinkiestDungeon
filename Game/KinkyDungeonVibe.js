@@ -43,6 +43,15 @@ let KDVibeVolume = 1;
 let KDVibeVolumeListIndex = 0;
 let KDVibeVolumeList = [1, 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
 
+let KDMusicVolumeMult = 0.25; // Global mult
+let KDMusicVolume = 1;
+let KDMusicVolumeListIndex = 0;
+let KDMusicVolumeList = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 0, 0.1, 0.2];
+
+let KDAnimSpeed = 1;
+let KDAnimSpeedListIndex = 0;
+let KDAnimSpeedList = [1, 0, 0.25, 0.5, 0.75, 1.25, 1.5];
+
 function KDStopAllVibeSounds(Exceptions) {
 	let EE = [];
 	if (Exceptions)
@@ -92,7 +101,7 @@ function KDUpdateVibeSound(Location, Sound, Volume) {
 				// @ts-ignore
 				audio.src = remap(Sound);
 			} else
-				audio.src = Sound;
+				audio.src = KDModFiles[Sound] || Sound;
 			audio.volume = Math.min(vol, 1);
 			audio.loop = true;
 			audio.play();
@@ -279,7 +288,7 @@ function KinkyDungeonAddVibeModifier(source, name, location, intensityMod, durat
 function KinkyDungeonGetDenyChance(chance) {
 	if (!KDGameData.CurrentVibration) return 0;
 	let data = {
-		denyChance: KDGameData.CurrentVibration.denialChance ? KDGameData.CurrentVibration.denialChance : 1.0,
+		denyChance: KDGameData.CurrentVibration.denialChance ? KDGameData.CurrentVibration.denialChance : 0.0,
 		orgasmChance: chance,
 	};
 	if (chance > 0) {
@@ -403,6 +412,8 @@ function KinkyDungeonCalculateVibeLevel(delta) {
 
 			if (edge && !bypassEdge) {
 				KDGameData.Edged = true;
+			} else {
+				KinkyDungeonOrgasmVibeLevel = Math.max(KinkyDungeonOrgasmVibeLevel || 0, vibration.intensity);
 			}
 		} else {
 			KinkyDungeonEndVibration();

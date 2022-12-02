@@ -127,14 +127,23 @@ function KinkyDungeonDressPlayer() {
 		if (KinkyDungeonCheckClothesLoss) {
 			// We refresh all the restraints
 
-			// First we remove all restraints
+			// First we remove all restraints and clothes
+			let clothGroups = {};
+			for (let cloth of KinkyDungeonDresses[KinkyDungeonCurrentDress]) {
+				clothGroups[cloth.Group] = true;
+			}
+			let newAppearance = {};
 			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
 				let asset = KinkyDungeonPlayer.Appearance[A].Asset;
-				if (asset.Group.Name.startsWith("Item")) {
-					KinkyDungeonPlayer.Appearance.splice(A, 1);
-					A -= 1;
+				if (!asset.Group.Name.startsWith("Item") && !clothGroups[asset.Group.Name]) {
+					//KinkyDungeonPlayer.Appearance.splice(A, 1);
+					//A -= 1;
+					newAppearance[asset.Group.Name] = KinkyDungeonPlayer.Appearance[A];
 				}
 			}
+			KinkyDungeonPlayer.Appearance = Object.values(newAppearance);
+
+			//KinkyDungeonPlayer.Appearance = [];
 
 
 			// Next we revisit all the player's restraints
@@ -161,7 +170,15 @@ function KinkyDungeonDressPlayer() {
 			KinkyDungeonUndress = 0;
 		}
 
+		let alreadyClothed = {};
+
+		for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
+			let asset = KinkyDungeonPlayer.Appearance[A].Asset;
+			alreadyClothed[asset.Group.Name] = true;
+		}
+
 		for (let clothes of KinkyDungeonDresses[KinkyDungeonCurrentDress]) {
+			if (alreadyClothed[clothes.Group]) continue;
 			data.updateDress = true;
 			if (!clothes.Lost && KinkyDungeonCheckClothesLoss) {
 				if (clothes.Group == "Necklace") {
@@ -195,21 +212,20 @@ function KinkyDungeonDressPlayer() {
 
 			if (!clothes.Lost) {
 				if (KinkyDungeonCheckClothesLoss) {
-					InventoryWear(KinkyDungeonPlayer, clothes.Item, clothes.Group);
+					let item = KDInventoryWear(clothes.Item, clothes.Group, undefined, clothes.Color);
+					alreadyClothed[clothes.Group] = true;
 					if (clothes.OverridePriority) {
-						let item = InventoryGet(KinkyDungeonPlayer, clothes.Group);
 						if (item) {
 							if (!item.Property) item.Property = {OverridePriority: clothes.OverridePriority};
 							else item.Property.OverridePriority = clothes.OverridePriority;
 						}
 					} else if (KDClothOverrides[clothes.Group] && KDClothOverrides[clothes.Group][clothes.Item] != undefined) {
-						let item = InventoryGet(KinkyDungeonPlayer, clothes.Group);
 						if (!item.Property) item.Property = {OverridePriority: KDClothOverrides[clothes.Group][clothes.Item]};
 						else item.Property.OverridePriority = KDClothOverrides[clothes.Group][clothes.Item];
 					}
 					// Ignored because BC uses string[] as a type!
 					// @ts-ignore
-					CharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, clothes.Color, clothes.Group);
+					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, clothes.Color, clothes.Group);
 				}
 			}
 
@@ -219,8 +235,8 @@ function KinkyDungeonDressPlayer() {
 
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if (KinkyDungeonCheckClothesLoss)
-				if (KDRestraint(inv).AssetGroup) {
-					InventoryWear(KinkyDungeonPlayer, KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, KDRestraint(inv).Color);
+				if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KinkyDungeonArmor)) {
+					KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color);
 				}
 		}
 		if (KinkyDungeonCheckClothesLoss)
@@ -387,28 +403,45 @@ function KinkyDungeonWearForcedClothes(restraints) {
 		if (KDRestraint(inv).alwaysDress) {
 			KDRestraint(inv).alwaysDress.forEach(dress=>{ // for .. of  loop has issues with iterations
 				if (dress.override || !dress.Group.includes("Item") || !InventoryGet(KinkyDungeonPlayer, dress.Group)) {
-					let canReplace = dress.override!==null && dress.override===true ? true : !InventoryGet(KinkyDungeonPlayer,dress.Group);
+					let canReplace = (dress.override!==null && dress.override===true) ? true : !InventoryGet(KinkyDungeonPlayer,dress.Group);
 
 					if (!canReplace) {return;}
 					if (KDProtectedCosplay.includes(dress.Group)){return;}
-					KDInventoryWear(dress.Item, dress.Group, inv.name);
+					let color = (typeof dress.Color === "string") ? [dress.Color] : dress.Color;
+					let faction = inv.faction;
+					if (inv.faction)
+						if (dress.factionColor && faction && KinkyDungeonFactionColors[faction]) {
+							for (let ii = 0; ii < dress.factionColor.length; ii++) {
+								for (let n of dress.factionColor[ii]) {
+									color[n] = KinkyDungeonFactionColors[faction][ii]; // 0 is the primary color
+								}
+							}
+						}
+					// @ts-ignore
+					if (dress.useHairColor && InventoryGet(KinkyDungeonPlayer, "HairFront")) color = InventoryGet(KinkyDungeonPlayer, "HairFront").Color;
+					let item = KDInventoryWear(dress.Item, dress.Group, inv.name, color);
 
 					if (dress.OverridePriority) {
-						let item = InventoryGet(KinkyDungeonPlayer, dress.Group);
 						if (item) {
 							if (!item.Property) item.Property = {OverridePriority: dress.OverridePriority};
 							else item.Property.OverridePriority = dress.OverridePriority;
 						}
 					}
-					let color = dress.Color;
-					if (dress.useHairColor && InventoryGet(KinkyDungeonPlayer, "HairFront")) color = InventoryGet(KinkyDungeonPlayer, "HairFront").Color;
+
 					// @ts-ignore
-					CharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, dress.Group);
+					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, dress.Group);
 				}
 			});
 		}
 	}
 }
+/*
+function KDCharacterAppearanceSetColorForGroup(Player, Color, Group) {
+	let item = InventoryGet(Player, Group);
+	if (item) {
+		item.Color = Color;
+	}
+}*/
 
 function KinkyDungeonGetOutfit(Name) {
 	if (KinkyDungeonOutfitCache && KinkyDungeonOutfitCache.get(Name)) {
@@ -425,13 +458,15 @@ function KinkyDungeonGetOutfit(Name) {
  * @param {string} AssetName - The name of the asset to wear
  * @param {string} AssetGroup - The name of the asset group to wear
  * @param {string} par - parent item
+ * @param {string | string[]} color - parent item
  */
-function KDInventoryWear(AssetName, AssetGroup,par) {
+function KDInventoryWear(AssetName, AssetGroup, par, color) {
 	const A = AssetGet(KinkyDungeonPlayer.AssetFamily, AssetGroup, AssetName);
 	if (!A) return;
-	CharacterAppearanceSetItem(KinkyDungeonPlayer, AssetGroup, A, A.DefaultColor,0,-1, false);
+	let item = KDAddAppearance(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor);
+	//CharacterAppearanceSetItem(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor,0,-1, false);
 	CharacterRefresh(KinkyDungeonPlayer, true);
-	InventoryExpressionTrigger(KinkyDungeonPlayer, InventoryGet(KinkyDungeonPlayer, AssetGroup));
+	return item;
 }
 
 function KDCharacterNaked() {
@@ -461,6 +496,7 @@ function KDCharacterAppearanceNaked() {
 
 
 function KDApplyItem(inv, tags) {
+	// @ts-ignore
 	let _ChatRoomCharacterUpdate = ChatRoomCharacterUpdate;
 	// @ts-ignore
 	ChatRoomCharacterUpdate = () => {};
@@ -478,9 +514,15 @@ function KDApplyItem(inv, tags) {
 			}
 		}
 
-		let already = InventoryGet(KinkyDungeonPlayer, AssetGroup);
+		//let already = InventoryGet(KinkyDungeonPlayer, AssetGroup);
+		//let difficulty = already?.Property?.Difficulty || 0;
 
-		let placed = KDAddAppearance(KinkyDungeonPlayer, AssetGroup, AssetGet("3DCGFemale", AssetGroup, restraint.Asset), color, undefined, undefined, undefined, inv);
+		/** @type {Item} */
+		let placed = null;
+
+		if (!restraint.armor || KinkyDungeonArmor) {
+			placed = KDAddAppearance(KinkyDungeonPlayer, AssetGroup, AssetGet("3DCGFemale", AssetGroup, restraint.Asset), color, undefined, undefined, undefined, inv);
+		}
 
 		if (placed) {
 			let type = restraint.Type;
@@ -490,15 +532,16 @@ function KDApplyItem(inv, tags) {
 					type = restraint.changeRenderType[key];
 				}
 			}
-			placed.Property = {Type: type, LockedBy: inv.lock ? "MetalPadlock" : undefined};
-			if (!already && type) {
+			placed.Property = {Type: type, Difficulty: restraint.power, LockedBy: inv.lock ? "MetalPadlock" : undefined};
+
+			/*if ((!already) && type) {
 				KinkyDungeonPlayer.FocusGroup = AssetGroupGet("Female3DCG", AssetGroup);
 				let options = window["Inventory" + ((AssetGroup.includes("ItemMouth")) ? "ItemMouth" : AssetGroup) + restraint.Asset + "Options"];
 				if (!options) options = TypedItemDataLookup[`${AssetGroup}${restraint.Asset}`].options; // Try again
 				const option = options.find(o => o.Name === type);
 				ExtendedItemSetType(KinkyDungeonPlayer, options, option);
 				KinkyDungeonPlayer.FocusGroup = null;
-			}
+			}*/
 
 			if (restraint.Modules) {
 				let data = ModularItemDataLookup[AssetGroup + restraint.Asset];
@@ -507,7 +550,7 @@ function KDApplyItem(inv, tags) {
 				// @ts-ignore
 				placed.Property = ModularItemMergeModuleValues({ asset, modules }, restraint.Modules);
 				placed.Property.LockedBy = inv.lock ? "MetalPadlock" : undefined;
-			}
+			} else if (type) TypedItemSetOptionByName(KinkyDungeonPlayer, placed, type, false);
 			if (restraint.OverridePriority) {
 				placed.Property.OverridePriority = restraint.OverridePriority;
 			}

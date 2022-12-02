@@ -124,7 +124,7 @@ function DrawGetImage(Source) {
 		});
 
 		// Start loading
-		Img.src = Source;
+		Img.src = KDModFiles[Source] || Source;
 	}
 
 	// returns the final image

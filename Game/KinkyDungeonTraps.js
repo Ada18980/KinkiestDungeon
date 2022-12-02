@@ -6,7 +6,7 @@ function KinkyDungeonHandleStepOffTraps(x, y, moveX, moveY) {
 	let flags = {
 		AllowTraps: true,
 	};
-	let tile = KinkyDungeonTiles.get(x + "," + y);
+	let tile = KinkyDungeonTilesGet(x + "," + y);
 	if (tile && tile.StepOffTrap && !KinkyDungeonFlags.has("nojailbreak")) {
 		if (!tile.StepOffTiles || tile.StepOffTiles.includes(moveX + "," + moveY)) {
 			KinkyDungeonSendEvent("beforeStepOffTrap", {x:x, y:y, tile: tile, flags: flags});
@@ -44,7 +44,7 @@ function KinkyDungeonHandleStepOffTraps(x, y, moveX, moveY) {
 						if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/MagicSlash.ogg");
 						msg = "Default";
 						KinkyDungeonMakeNoise(12, x, y);
-						KinkyDungeonTiles.delete(x + "," + y);
+						KinkyDungeonTilesDelete(x + "," + y);
 						KinkyDungeonMapSet(x, y, 'D');
 					}
 				} else
@@ -68,7 +68,7 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 	let flags = {
 		AllowTraps: true,
 	};
-	let tile = KinkyDungeonTiles.get(x + "," + y);
+	let tile = KinkyDungeonTilesGet(x + "," + y);
 	if (tile && tile.Type == "Trap" && !KinkyDungeonFlags.has("nojailbreak")) {
 		KinkyDungeonSendEvent("beforeTrap", {x:x, y:y, tile: tile, flags: flags});
 		if (flags.AllowTraps && Moved) {
@@ -84,7 +84,7 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 					if (created > 0) {
 						if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 						msg = TextGet("KinkyDungeonTrapSpawn" + tile.Enemy);
-						KinkyDungeonTiles.delete(x + "," + y);
+						KinkyDungeonTilesDelete(x + "," + y);
 						if (!tile.noSmoke) {
 							KDSmokePuff(x, y, 1.9, 0.5);
 						}
@@ -107,7 +107,7 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 						if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 						msg = ""; // The spell will show a message on its own
 						triggered = true;
-						KinkyDungeonTiles.delete(x + "," + y);
+						KinkyDungeonTilesDelete(x + "," + y);
 						if (!tile.noSmoke) {
 							KDSmokePuff(x, y, 1.9, 0.5);
 						}
@@ -159,20 +159,22 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 							}
 						}
 						if (success) {
+							triggered = true;
 							// We fire the dart
 							let player = KinkyDungeonEnemyAt(x, y) ? KinkyDungeonEnemyAt(x, y) : KinkyDungeonPlayerEntity;
 							KinkyDungeonCastSpell(x, y, spell, { x: startX, y: startY }, player, undefined);
 							if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 							msg = ""; // We don't want to warn the player about what just happened
-							KinkyDungeonTiles.delete(x + "," + y);
+							KinkyDungeonTilesDelete(x + "," + y);
 						} else {
+							triggered = true;
 							// We do sleep gas instead
 							spell = KinkyDungeonFindSpell("SleepGas", true);
 							if (spell) {
 								KinkyDungeonCastSpell(x, y, spell, undefined, undefined, undefined);
 								if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 								msg = "KinkyDungeonSpellCast" + spell.name;
-								KinkyDungeonTiles.delete(x + "," + y);
+								KinkyDungeonTilesDelete(x + "," + y);
 							}
 						}
 					}
@@ -188,7 +190,7 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 					if (created > 0) {
 						if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 						msg = "Default";
-						KinkyDungeonTiles.delete(x + "," + y);
+						KinkyDungeonTilesDelete(x + "," + y);
 					}
 				}
 			}

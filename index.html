@@ -21,8 +21,9 @@
 </head>
 
 <body style="width:100%; height:100%; background-color:black; margin:0px; padding:0px; overflow:hidden;">
-
 <script src="Game/pixi.min.js"></script>
+<script src="Scripts/lib/zip-full.min.js"></script>
+<script src="Scripts/lib/web-streams-polyfill.min.js"></script>
 <script src="Scripts/Patch.js"></script>
 <script src="Scripts/GLDraw.js"></script>
 <script src="Scripts/Common.js"></script>
@@ -144,10 +145,12 @@
 <script src="Assets/Female3DCG/Female3DCG.js"></script>
 <script src="Assets/Female3DCG/Female3DCGExtended.js"></script>
 <script src="Scripts/Appearance.js"></script>
+<script src="Game/KDModUtils.js"></script>
 <script src="Game/KinkyDungeonStats.js"></script>
 <script src="Game/KinkyDungeonEditorTiles.js"></script>
 <script src="Game/KinkyDungeonEditor.js"></script>
 <script src="Game/KinkyDungeonEditorGen.js"></script>
+<script src="Game/KinkyDungeonErrors.js"></script>
 <script src="Game/KinkyDungeon.js"></script>
 <script src="Game/KinkyDungeonGame.js"></script>
 <script src="Game/KinkyDungeonVibe.js"></script>
@@ -161,11 +164,11 @@
 <script src="Game/KinkyDungeonVision.js"></script>
 <script src="Game/KinkyDungeonQuest.js"></script>
 <script src="Game/KinkyDungeonLoot.js"></script>
-<script src="Game/KinkyDungeonLootList.js"></script>
 <script src="Game/KinkyDungeonEnemies.js"></script>
 <script src="Game/KinkyDungeonPersonality.js"></script>
 <script src="Game/KinkyDungeonEnemiesList.js"></script>
 <script src="Game/KinkyDungeonEnemyEventList.js"></script>
+<script src="Game/KinkyDungeonCurse.js"></script>
 <script src="Game/KinkyDungeonRestraints.js"></script>
 <script src="Game/KinkyDungeonRestraintsList.js"></script>
 <script src="Game/KinkyDungeonFight.js"></script>
@@ -173,6 +176,7 @@
 <script src="Game/KinkyDungeonInput.js"></script>
 <script src="Game/KinkyDungeonHUD.js"></script>
 <script src="Game/KinkyDungeonDraw.js"></script>
+<script src="Game/KinkyDungeonFurniture.js"></script>
 <script src="Game/KinkyDungeonMagic.js"></script>
 <script src="Game/KinkyDungeonMagicCode.js"></script>
 <script src="Game/KinkyDungeonMagicList.js"></script>
@@ -188,7 +192,6 @@
 <script src="Game/KinkyDungeonInventory.js"></script>
 <script src="Game/KinkyDungeonMultiplayer.js"></script>
 <script src="Game/KinkyDungeonLore.js"></script>
-<script src="Game/KinkyDungeonCurse.js"></script>
 <script src="Game/KinkyDungeonReputation.js"></script>
 <script src="Game/KinkyDungeonTraps.js"></script>
 <script src="Game/KinkyDungeonTiles.js"></script>
@@ -198,15 +201,18 @@
 <script src="Game/KinkyDungeonEvents.js"></script>
 <script src="Game/KinkyDungeonSpawns.js"></script>
 <script src="Game/KinkyDungeonJail.js"></script>
-<script src="Game/KinkyDungeonJailList.js"></script>
 <script src="Game/KinkyDungeonSetpiece.js"></script>
 <script src="Game/KinkyDungeonDialogue.js"></script>
-<script src="Game/KinkyDungeonDialogueList.js"></script>
 <script src="Game/KinkyDungeonDialogueTriggers.js"></script>
+<script src="Game/KinkyDungeonDialogueList.js"></script>
 <script src="Game/KinkyDungeonFactions.js"></script>
 <script src="Game/KinkyDungeonFactionsList.js"></script>
 <script src="Game/KinkyDungeonMistress.js"></script>
+<script src="Game/KinkyDungeonJailList.js"></script>
 <script src="Game/KinkyDungeonTests.js"></script>
+<script src="Game/KinkyDungeonLootList.js"></script>
+<script src="Game/KinkyDungeonMusic.js"></script>
+<script src="Scripts/KDMods.js"></script>
 <script src="Scripts/Main.js"></script>
 
 <canvas id="MainCanvas" Width="2000" Height="1000" onClick="Click(event);" onTouchStart="TouchStart(event);" onTouchEnd="TouchEnd(event);" onMouseMove="MouseMove(event);" onMouseLeave="LoseFocus(event);"></canvas>

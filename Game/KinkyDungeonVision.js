@@ -111,8 +111,8 @@ function KinkyDungeonMakeBrightnessMap(width, height, mapBrightness, Lights, del
 			KDLightBlockers.set(EE.x + "," + EE.y, true);
 	}
 	let LightsTemp = new Map();
-	for (let location of KinkyDungeonEffectTiles.values()) {
-		for (let tile of location.values()) {
+	for (let location of Object.values(KinkyDungeonEffectTiles)) {
+		for (let tile of Object.values(location)) {
 			if (tile.duration > 0) {
 				if (tile.lightColor) {
 					if (tile.brightness > KinkyDungeonBrightnessGet(tile.x, tile.y))
@@ -259,8 +259,8 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 			KDVisionBlockers.set(EE.x + "," + EE.y, true);
 	}
 	let LightsTemp = new Map();
-	for (let location of KinkyDungeonEffectTiles.values()) {
-		for (let tile of location.values()) {
+	for (let location of Object.values(KinkyDungeonEffectTiles)) {
+		for (let tile of Object.values(location)) {
 			if (tile.duration > 0 && tile.tags.includes("visionblock")) {
 				KDVisionBlockers.set(tile.x + "," + tile.y, true);
 			}
@@ -366,9 +366,14 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 
 	let rad = KinkyDungeonGetVisionRadius();
 	for (let X = 0; X < KinkyDungeonGridWidth; X++) {
-		for (let Y = 0; Y < KinkyDungeonGridHeight; Y++)
-			if (KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y) > rad)
+		for (let Y = 0; Y < KinkyDungeonGridHeight; Y++) {
+			let dd = KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y);
+			if (dd > rad)
 				KinkyDungeonVisionSet(X, Y, 0);
+			else if (rad < KDMaxVisionDist && dd > 1.5) {
+				KinkyDungeonVisionSet(X, Y, KinkyDungeonVisionGet(X, Y) * Math.min(1, Math.max(0, rad - dd)/3));
+			}
+		}
 	}
 
 
@@ -384,13 +389,14 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 	} else {
 		// Generate the grid
 		let dist = 0;
+		let fog = !KinkyDungeonStatsChoice.get("Forgetful");
 		for (let X = 0; X < KinkyDungeonGridWidth; X++) {
 			for (let Y = 0; Y < KinkyDungeonGridHeight; Y++)
 				if (X >= 0 && X <= width-1 && Y >= 0 && Y <= height-1) {
 					dist = KDistChebyshev(KinkyDungeonPlayerEntity.x - X, KinkyDungeonPlayerEntity.y - Y);
 					if (dist < 3) {
 						let distE = KDistEuclidean(KinkyDungeonPlayerEntity.x - X, KinkyDungeonPlayerEntity.y - Y);
-						if (dist < 3
+						if (fog && dist < 3
 							&& distE < 2.9
 							&& KinkyDungeonCheckPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, X, Y)) {
 							KinkyDungeonFogGrid[X + Y*(width)] = Math.max(KinkyDungeonFogGrid[X + Y*(width)], 3);
@@ -401,7 +407,8 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 						}
 					}
 
-					KinkyDungeonFogGrid[X + Y*(width)] = Math.max(KinkyDungeonFogGrid[X + Y*(width)], KinkyDungeonVisionGrid[X + Y*(width)] ? 2 : 0);
+					if (fog)
+						KinkyDungeonFogGrid[X + Y*(width)] = Math.max(KinkyDungeonFogGrid[X + Y*(width)], KinkyDungeonVisionGrid[X + Y*(width)] ? 2 : 0);
 				}
 		}
 	}

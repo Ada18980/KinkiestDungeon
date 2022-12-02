@@ -17,7 +17,7 @@ function KDUpdateDoorNavMap() {
 let KDPathfindingCacheHits = 0;
 let KDPathfindingCacheFails = 0;
 
-let KDPFTrim = 100;
+let KDPFTrim = 40;
 
 /**
  * @param {number} startx - the start position
@@ -41,12 +41,12 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 		if (ignoreLocks) {
 			if (KDPathCacheIgnoreLocks.has(index)) {
 				KDPathfindingCacheHits++;
-				return KDPathCacheIgnoreLocks.get(index);
+				return Object.assign([], KDPathCacheIgnoreLocks.get(index));
 			}
 		} else {
 			if (KDPathCache.has(index)) {
 				KDPathfindingCacheHits++;
-				return KDPathCache.get(index);
+				return Object.assign([], KDPathCache.get(index));
 			}
 		}
 
@@ -103,7 +103,7 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 						let xx = lowest.x + x;
 						let yy = lowest.y + y;
 						let tile = (xx == endx && yy == endy) ? "" : KinkyDungeonMapGet(xx, yy);
-						MapTile = KinkyDungeonTiles.get((xx) + "," + (yy));
+						MapTile = KinkyDungeonTilesGet((xx) + "," + (yy));
 						let locIndex = `${lowLoc},${endx},${endy},${tileShort}`;
 						// If we have found the end
 						if (xx == endx && yy == endy) {
@@ -150,7 +150,7 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 							&& (ignoreLocks || !MapTile || !MapTile.Lock)
 							&& (!blockEnemy || KinkyDungeonNoEnemyExceptSub(xx, yy, false, Enemy))
 							&& (!blockPlayer || KinkyDungeonPlayerEntity.x != xx || KinkyDungeonPlayerEntity.y != yy)
-							&& (!needDoorMemory || tile != "d" || KinkyDungeonTilesMemory.get(xx + "," + yy) == "DoorOpen")) {
+							&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KinkyDungeonTilesMemory[xx + "," + yy]))) {
 							costBonus = 0;
 							if (KinkyDungeonMapGet(xx, yy) == "D") costBonus = 2;
 							else if (KinkyDungeonMapGet(xx, yy) == "d") costBonus = 1;

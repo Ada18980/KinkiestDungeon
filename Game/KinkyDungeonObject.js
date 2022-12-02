@@ -96,7 +96,7 @@ function KinkyDungeonFoodMessage() {
 }
 
 function KinkyDungeonMakeGhostDecision() {
-	for (let tile of KinkyDungeonTiles.values()) {
+	for (let tile of Object.values(KinkyDungeonTiles)) {
 		if (tile.Type == "Ghost") {
 			tile.GhostDecision = 0;
 

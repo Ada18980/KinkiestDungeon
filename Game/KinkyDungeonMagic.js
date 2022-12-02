@@ -157,8 +157,6 @@ function KDHasUpcast(name) {
 	}
 	return false;
 }
-
-
 /**
  *
  * @returns {boolean}
@@ -236,7 +234,7 @@ function KinkyDungeonHandleSpellCast(spell) {
 			return spell;
 		else KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonNoMana"), "#ff0000", 1);
 	} else {
-		KinkyDungeonTargetingSpell = "";
+		KinkyDungeonTargetingSpell = null;
 		KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonComponentsFail" + KinkyDungeoCheckComponents(spell)[0]), "#ff0000", 1);
 	}
 	return null;
@@ -513,28 +511,36 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 						cast.mx = moveDirection.x;
 						cast.my = moveDirection.y;
 					}
-				} else if (cast.randomDirectionPartial) {
-					let slots = [];
-					let dist = KDistEuclidean(entity.x - tX, entity.y - tY);
-					for (let XX = -1; XX <= 1; XX++) {
-						for (let YY = -1; YY <= 1; YY++) {
-							if ((XX != 0 || YY != 0) && KinkyDungeonNoEnemy(entity.x + XX, entity.y + YY, true) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + XX, entity.y + YY))
-								&& (entity.x + XX != tX || entity.y + YY != tY)
-								&& KDistEuclidean(entity.x + XX - tX, entity.y + YY - tY) <= dist + 0.1) slots.push({x:XX, y:YY});
-						}
-					}
-					if (slots.length > 0) {
-						let slot = slots[Math.floor(KDRandom() * slots.length)];
-						cast.mx = slot.x;
-						cast.my = slot.y;
-						moveDirection.x = slot.x;
-						moveDirection.y = slot.y;
-					} else {
+				} else if (cast.randomDirectionPartial || cast.randomDirectionFallback) {
+					if (cast.randomDirectionFallback && (!cast.alwaysRandomBuff || !KDEntityHasBuff(entity, cast.alwaysRandomBuff))
+						&& KinkyDungeonNoEnemy(entity.x + moveDirection.x, entity.y + moveDirection.y, true)
+						&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + moveDirection.x, entity.y + moveDirection.y))) {
+
 						cast.mx = moveDirection.x;
 						cast.my = moveDirection.y;
-						if (entity.x + cast.mx == tX && entity.y + cast.my == tY) {
-							cast.tx += moveDirection.x;
-							cast.ty += moveDirection.y;
+					} else {
+						let slots = [];
+						let dist = KDistEuclidean(entity.x - tX, entity.y - tY);
+						for (let XX = -1; XX <= 1; XX++) {
+							for (let YY = -1; YY <= 1; YY++) {
+								if ((XX != 0 || YY != 0) && KinkyDungeonNoEnemy(entity.x + XX, entity.y + YY, true) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + XX, entity.y + YY))
+									&& (entity.x + XX != tX || entity.y + YY != tY)
+									&& KDistEuclidean(entity.x + XX - tX, entity.y + YY - tY) <= dist + 0.1) slots.push({x:XX, y:YY});
+							}
+						}
+						if (slots.length > 0) {
+							let slot = slots[Math.floor(KDRandom() * slots.length)];
+							cast.mx = slot.x;
+							cast.my = slot.y;
+							moveDirection.x = slot.x;
+							moveDirection.y = slot.y;
+						} else {
+							cast.mx = moveDirection.x;
+							cast.my = moveDirection.y;
+							if (entity.x + cast.mx == tX && entity.y + cast.my == tY) {
+								cast.tx += moveDirection.x;
+								cast.ty += moveDirection.y;
+							}
 						}
 					}
 				} else {
@@ -564,14 +570,15 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			}
 			let b = KinkyDungeonLaunchBullet(xx, yy,
 				tX-entity.x,tY - entity.y,
-				speed, {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:size, height:size, summon:spell.summon, cast: cast, dot: spell.dot,
+				speed, {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:size, height:size, summon:spell.summon, source: entity?.player ? -1 : entity?.id, cast: cast, dot: spell.dot,
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
+					bulletSpin: spell.bulletSpin,
 					effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
 					effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
 					passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 					pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
 					lifetime:miscast || selfCast ? 1 : (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: entity.x, y: entity.y}, range: spellRange, hit:spell.onhit,
-					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, miscast);
+					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, miscast);
 			b.visual_x = entity.x;
 			b.visual_y = entity.y;
 			data.bulletfired = b;
@@ -585,11 +592,12 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			let b = KinkyDungeonLaunchBullet(tX, tY,
 				moveDirection.x,moveDirection.y,
 				0, {
-					noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:sz, height:sz, summon:spell.summon, lifetime:spell.delay +
+					noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:sz, height:sz, summon:spell.summon, source: entity?.player ? -1 : entity?.id, lifetime:spell.delay +
 						(spell.delayRandom ? Math.floor(KDRandom() * spell.delayRandom) : 0), cast: cast, dot: spell.dot, events: spell.events, alwaysCollideTags: spell.alwaysCollideTags,
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
+					bulletSpin: spell.bulletSpin,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
-					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell
+					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell
 				}, miscast);
 			data.bulletfired = b;
 		} else if (spell.type == "hit") {
@@ -601,9 +609,9 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			}
 			let b = {x: tX, y:tY,
 				vx: moveDirection.x,vy: moveDirection.y, born: 1,
-				bullet: {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:sz, height:sz, summon:spell.summon, lifetime:spell.lifetime, cast: cast, dot: spell.dot, events: spell.events, aoe: spell.aoe,
+				bullet: {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:sz, height:sz, summon:spell.summon, source: entity?.player ? -1 : entity?.id, lifetime:spell.lifetime, cast: cast, dot: spell.dot, events: spell.events, aoe: spell.aoe,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
-					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}};
+					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}};
 			KinkyDungeonBulletHit(b, 1);
 			data.bulletfired = b;
 		} else if (spell.type == "buff") {
@@ -711,7 +719,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 function KinkyDungeonClickSpellChoice(I, CurrentSpell) {
 	// Set spell choice
 	KDSendInput("spellChoice", {I:I, CurrentSpell: CurrentSpell});
-	if (KinkyDungeonTextMessageTime > 0)
+	if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessagePriority > 3)
 		KinkyDungeonDrawState = "Game";
 	if (KinkyDungeonSpellChoicesToggle[I] && KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].cancelAutoMove) {
 		KinkyDungeonFastMove = false;
@@ -744,7 +752,7 @@ function KinkyDungeonHandleMagic() {
 
 		if (MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale * 0.5 - 200, canvasOffsetY_ui - 70 + 483*KinkyDungeonBookScale, 400, 60)) {
 			KDSendInput("spellCastFromBook", {CurrentSpell: KinkyDungeonCurrentPage});
-			KinkyDungeonTargetingSpell = KinkyDungeonSpells[KinkyDungeonCurrentPage];
+			KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast(KinkyDungeonSpells[KinkyDungeonCurrentPage]);
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = null;
@@ -777,6 +785,7 @@ function KDGetPrerequisite(spell) {
 
 function KinkyDungeonCheckSpellPrerequisite(spell) {
 	if (!spell || !spell.prerequisite) return true;
+	if (spell.upcastFrom && !KDHasSpell(spell.upcastFrom)) return false;
 	if (typeof spell.prerequisite === "string") {
 		let spell_prereq = KinkyDungeonSearchSpell(KinkyDungeonSpells, spell.prerequisite);
 		if (spell_prereq) return true;
@@ -906,7 +915,7 @@ function KinkyDungeonDrawMagic() {
 
 			if (!spell.passive && !(spell.type == "passive") && !spell.upcastFrom)
 				DrawButtonVis(canvasOffsetX_ui + 640*KinkyDungeonBookScale * 0.5 - 200, canvasOffsetY_ui - 70 + 483*KinkyDungeonBookScale, 400, 60, TextGet("KinkyDungeonSpellCastFromBook")
-					.replace("XXX", KinkyDungeonStatsChoice.has("Disorganized") ? "3" : (KinkyDungeonStatsChoice.has("QuickScribe") ? "No" : "1")), "White", "", "", false, true, KDButtonColor);
+					.replace("XXX", KinkyDungeonStatsChoice.has("Disorganized") ? "3" : (KinkyDungeonStatsChoice.has("QuickDraw") ? "No" : "1")), "White", "", "", false, true, KDButtonColor);
 		} else {
 			let cost = KinkyDungeonGetCost(spell);
 			DrawButtonVis(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 40, canvasOffsetY_ui + 125, 225, 60, TextGet("KinkyDungeonSpellsBuy"),
@@ -931,14 +940,43 @@ function KinkyDungeonDrawMagic() {
 
 
 let selectedFilters = ["learnable"];
-let genericfilters = ['learnable', 'unlearned', 'noupgrade', 'yesupgrade'];
+let genericfilters = ['learnable', 'unlearned', 'noupgrade', 'yesupgrade', "upcast"];
 
 let KDSpellListIndex = 0;
 let KDSpellListIndexVis = 0;
 let KDMaxSpellPerColumn = 8;
 let KDMaxSpellYY = 480;
 
+function KDFilterSpellPages() {
+	if (!KDGameData.HiddenSpellPages) return KinkyDungeonLearnableSpells;
+	let pages = [];
+	for (let i = 0; i < KinkyDungeonLearnableSpells.length; i++) {
+		if (!KDGameData.HiddenSpellPages[KinkyDungeonSpellPages[i]]) {
+			pages.push(KinkyDungeonLearnableSpells[i]);
+		}
+	}
+	return pages;
+}
+function KDFilterSpellPageNames() {
+	if (!KDGameData.HiddenSpellPages) return KinkyDungeonSpellPages;
+	let pages = [];
+	for (let i = 0; i < KinkyDungeonLearnableSpells.length; i++) {
+		if (!KDGameData.HiddenSpellPages[KinkyDungeonSpellPages[i]]) {
+			pages.push(KinkyDungeonSpellPages[i]);
+		}
+	}
+	return pages;
+}
 
+function KDCorrectCurrentSpellPage(pages) {
+	let ret = 0;
+	for (let i = 0; i < KinkyDungeonCurrentSpellsPage; i++) {
+		if (!KDGameData.HiddenSpellPages[KinkyDungeonSpellPages[i]]) {
+			ret += 1;
+		}
+	}
+	return ret;
+}
 
 function KinkyDungeonListSpells(Mode) {
 	let i = 0;
@@ -957,10 +995,12 @@ function KinkyDungeonListSpells(Mode) {
 	let weight = 5;
 	KDSpellListIndexVis = (KDSpellListIndex + KDSpellListIndexVis * (weight-1)) / weight;
 
-	let spellPages = KinkyDungeonLearnableSpells[KinkyDungeonCurrentSpellsPage];
-	let pageNames = KinkyDungeonSpellPages;
-	let columnLabels = KDColumnLabels[KinkyDungeonCurrentSpellsPage];
-	let extraFilters = filtersExtra[KinkyDungeonCurrentSpellsPage];
+	let pages = KDFilterSpellPages();
+	let currentPage = KinkyDungeonCurrentSpellsPage;
+	let spellPages = pages[currentPage];
+	let pageNames = KDFilterSpellPageNames();
+	let columnLabels = KDColumnLabels[currentPage];
+	let extraFilters = filtersExtra[currentPage];
 
 	// Draw filters
 	if (Mode == "Draw") {
@@ -1035,7 +1075,8 @@ function KinkyDungeonListSpells(Mode) {
 				&& (!selectedFilters.includes("learnable") || (prereq || learned || prereqHost))
 				&& (!selectedFilters.includes("unlearned") || (!learned))
 				&& (!selectedFilters.includes("noupgrade") || (!upgrade && !upcast))
-				&& (!selectedFilters.includes("yesupgrade") || (upgrade || upcast || passive))) {
+				&& (!selectedFilters.includes("yesupgrade") || (upgrade || passive))
+				&& (!selectedFilters.includes("upcast") || (upcast))) {
 
 				if (iii < Math.round(KDSpellListIndexVis)) {
 					iii += 1;
@@ -1105,7 +1146,7 @@ function KinkyDungeonListSpells(Mode) {
 	}
 
 	let procList = pageNames;
-	let adjLists = GetAdjacentList(procList, KinkyDungeonCurrentSpellsPage, 1);
+	let adjLists = GetAdjacentList(procList, currentPage, 1);
 	let left = adjLists.left;
 	let right = adjLists.right;
 
@@ -1132,10 +1173,13 @@ function KinkyDungeonDrawMagicSpells() {
 	KinkyDungeonListSpells("Draw");
 	MainCanvas.textAlign = "center";
 
-	let pageNames = KinkyDungeonSpellPages;
+
+	let pages = KDFilterSpellPages();
+	let currentPage = KinkyDungeonCurrentSpellsPage;//KDCorrectCurrentSpellPage(pages);
+	let pageNames = KDFilterSpellPageNames();
 
 	DrawTextKD(
-		TextGet("KinkyDungeonSpellsPage").replace("NUM", "" + (KinkyDungeonCurrentSpellsPage + 1)).replace("TOTAL", "" + (KinkyDungeonSpellPages.length)) + ": " + TextGet("KinkyDungeonSpellsPage" + pageNames[KinkyDungeonCurrentSpellsPage]),
+		TextGet("KinkyDungeonSpellsPage").replace("NUM", "" + (currentPage + 1)).replace("TOTAL", "" + (pages.length)) + ": " + TextGet("KinkyDungeonSpellsPage" + pageNames[currentPage]),
 		canvasOffsetX_ui + 575, canvasOffsetY_ui + 25 + MagicSpellsUIShift, "white", KDTextGray0);
 	//DrawTextKD(TextGet("KinkyDungeonSpellsPoints") + KinkyDungeonSpellPoints, 650, 900, "white", KDTextGray0);
 
@@ -1169,16 +1213,19 @@ function KinkyDungeonDrawMagicSpells() {
 
 function KinkyDungeonHandleMagicSpells() {
 
+
+	let pages = KDFilterSpellPages();
+
 	if (MouseIn(canvasOffsetX_ui + 50, canvasOffsetY_ui + MagicSpellsUIShift, 50, 50)) {
 		if (KinkyDungeonCurrentSpellsPage > 0) KinkyDungeonCurrentSpellsPage -= 1;
-		else KinkyDungeonCurrentSpellsPage = KinkyDungeonLearnableSpells.length - 1;
+		else KinkyDungeonCurrentSpellsPage = pages.length - 1;
 		KDSpellListIndex = 0;
 		selectedFilters = selectedFilters.filter((filter) => {
 			return filters.includes(filter);
 		});
 		return true;
 	} else if (MouseIn(canvasOffsetX_ui + 1045, canvasOffsetY_ui + MagicSpellsUIShift, 50, 50)) {
-		if (KinkyDungeonCurrentSpellsPage < KinkyDungeonLearnableSpells.length - 1) KinkyDungeonCurrentSpellsPage += 1;
+		if (KinkyDungeonCurrentSpellsPage < pages.length - 1) KinkyDungeonCurrentSpellsPage += 1;
 		else KinkyDungeonCurrentSpellsPage = 0;
 		KDSpellListIndex = 0;
 		selectedFilters = selectedFilters.filter((filter) => {
@@ -1189,16 +1236,16 @@ function KinkyDungeonHandleMagicSpells() {
 		if (KinkyDungeonCurrentSpellsPage > 0) {
 			if (KinkyDungeonCurrentSpellsPage > 2) KinkyDungeonCurrentSpellsPage -= 3;
 			else KinkyDungeonCurrentSpellsPage = 0;
-		} else KinkyDungeonCurrentSpellsPage = KinkyDungeonLearnableSpells.length - 1;
+		} else KinkyDungeonCurrentSpellsPage = pages.length - 1;
 		KDSpellListIndex = 0;
 		selectedFilters = selectedFilters.filter((filter) => {
 			return filters.includes(filter);
 		});
 		return true;
 	} else if (MouseIn(canvasOffsetX_ui + 1100, canvasOffsetY_ui + MagicSpellsUIShift, 50, 50)) {
-		if (KinkyDungeonCurrentSpellsPage < KinkyDungeonLearnableSpells.length - 1)  {
-			if (KinkyDungeonCurrentSpellsPage < KinkyDungeonLearnableSpells.length - 3) KinkyDungeonCurrentSpellsPage += 3;
-			else KinkyDungeonCurrentSpellsPage = KinkyDungeonLearnableSpells.length - 1;
+		if (KinkyDungeonCurrentSpellsPage < pages.length - 1)  {
+			if (KinkyDungeonCurrentSpellsPage < pages.length - 3) KinkyDungeonCurrentSpellsPage += 3;
+			else KinkyDungeonCurrentSpellsPage = pages.length - 1;
 		}
 		else KinkyDungeonCurrentSpellsPage = 0;
 		selectedFilters = selectedFilters.filter((filter) => {
@@ -1277,4 +1324,18 @@ function KinkyDungeonSendMagicEvent(Event, data) {
 			}
 		}
 	}
+}
+
+
+function KDCastSpellToEnemies(fn, tX, tY, spell) {
+	let enList = KDNearbyEnemies(tX, tY, spell.aoe);
+	let cast = false;
+
+	if (enList.length > 0) {
+		for (let en of enList) {
+			if (fn(en)) cast = true;
+		}
+	}
+
+	return cast;
 }

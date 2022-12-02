@@ -45,6 +45,7 @@ let KDMapMods = {
 		guardType: "bandit",
 		bonusTags: {
 			"bandit": {bonus: 4, mult: 2.5},
+			"bountyhunter": {bonus: 1, mult: 2.5},
 			"banditleader": {bonus: 40, mult: 0.3},
 		},
 		altRoom: "",
@@ -62,7 +63,8 @@ let KDMapMods = {
 		jailType: "dragon",
 		guardType: "dragon",
 		bonusTags: {
-			"dragon": {bonus: 7, mult: 1.25},
+			"dragon": {bonus: 7, mult: 2},
+			"elemental": {bonus: 3, mult: 1.5},
 		},
 		bonussetpieces: [
 			{Type: "BanditPrison", Weight: 8},
@@ -82,7 +84,7 @@ let KDMapMods = {
 		jailType: "witch",
 		guardType: "apprentice",
 		bonusTags: {
-			"witch": {bonus: 3, mult: 1.2},
+			"witch": {bonus: 3, mult: 1.5},
 			"apprentice": {bonus: 3, mult: 1.4},
 		},
 		altRoom: "",
@@ -115,7 +117,7 @@ let KDMapMods = {
 		tags: ["robot"],
 		faction: "AncientRobots",
 		bonusTags: {
-			"robot": {bonus: 10, mult: 2},
+			"robot": {bonus: 10, mult: 4},
 		},
 		altRoom: "",
 		spawnBoxes: [
@@ -148,8 +150,8 @@ let KDMapMods = {
 		jailType: "alchemist",
 		guardType: "alchemist",
 		bonusTags: {
-			"slime": {bonus: 4, mult: 2},
-			"maid": {bonus: 4.5, mult: 1},
+			"slime": {bonus: 4, mult: 3},
+			"maid": {bonus: 4.5, mult: 1.5},
 		},
 		altRoom: "",
 		spawnBoxes: [

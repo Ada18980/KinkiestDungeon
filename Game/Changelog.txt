@@ -1145,6 +1145,43 @@ Features
 - More perks: Kinky Prison, Unfair Doors
 - Added a perk room with a choice of 3 perk combinations!
 
+3.8 (October 2022)
+- Added mod API
+- Enemies are eager which makes them faster when they are playing with you, but also applies vulnerable
+
+3.81
+- Golem armor reduced from 25 to 20
+- Buffed enchanted restraints by reducing their drain over time
+- Binding has been rebalanced with different bind types
+- Added two new perks, Stranger and Wrong Neighborhood
+- You can now hide items in the quick inventory
+- Electricity now conducts along water! Watch your step!
+- Being rescued in jail now depends on having factions in good standing.
+- Added offer dialogues for all major factions except Fungals
+- added display frame and spell
+- New spell: Chastity, Frustration, Zone of Purity, CMD: Vibrate, CMD: Explosive Finish, Zone of Excitement
+- Blindfold changes to be more 'immersive'
+
+3.82
+- Added a few pieces of armor
+- New perks: Mana Burst, Arousing Magic, Clearheaded
+- New enemy: Cursed One
+- Added additional lore to the ancient tombs
+- Submissive enemies will now solicit you to... um... yeah. Careful not to actually kill them though.
+- Distracted enemies will have a miscast chance
+- Spellcaster-type enemies now know command word and will unlock each other. Lockdown, on the other hand, is now infinite.
+- You can ask neutrals and allies to give you a key or cast command word on you
+- Saving is now save-state based and there are autosaves in roguelike mode
+
+3.83 (Nov 2022)
+- New perks: Cursed Locks, Undeniable, Forgetful
+- Added music by kocaeli
+- New enemy: Trainer's Apprentice, Nevermere Drone, Wolfguard
+- Changes to the log to fit more text
+- Captures yield less rep when you already have high rep
+- Cutting restraints now makes debris
+
+
 TODO ValidationFindBlockCycles to prevent bugs
 
 TODO: Mushrooms in the jungle
