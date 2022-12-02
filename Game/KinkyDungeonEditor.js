@@ -333,7 +333,8 @@ function KDDrawEditorUI() {
 	let brushKeys = Object.keys(KDTilePalette);
 
 	DrawButtonKDEx("tilebrushup", (bdata) => {
-		KDEditorTileBrushIndex = Math.max(0, KDEditorTileBrushIndex - 14);
+		if (KDEditorTileBrushIndex == 0) KDEditorTileBrushIndex = brushKeys.length - 4;
+		else KDEditorTileBrushIndex = Math.max(0, KDEditorTileBrushIndex - 14);
 		return true;
 	}, true, xx , yy, width, grid-5, '^', KDEditorTileBrushIndex > 0 ? "#ffffff" : "#888888");
 	KDTE_CullIndex(tileKeys, brushKeys);
@@ -350,7 +351,8 @@ function KDDrawEditorUI() {
 		yy += grid;
 	}
 	DrawButtonKDEx("tilebrushdown", (bdata) => {
-		KDEditorTileBrushIndex = Math.min(brushKeys.length - 4, KDEditorTileBrushIndex + 14);
+		if (KDEditorTileBrushIndex >= brushKeys.length - 6) KDEditorTileBrushIndex = 0;
+		else KDEditorTileBrushIndex = Math.min(brushKeys.length - 4, KDEditorTileBrushIndex + 14);
 		return true;
 	}, true, xx , yy, width, grid-5, 'v', KDEditorTileBrushIndex < brushKeys.length - 4 ? "#ffffff" : "#888888");
 
@@ -361,7 +363,8 @@ function KDDrawEditorUI() {
 	grid = 40;
 
 	DrawButtonKDEx("tilebrushup2", (bdata) => {
-		KDEditorTileBrushIndex2 = Math.max(0, KDEditorTileBrushIndex2 - 8);
+		if (KDEditorTileBrushIndex2 == 0) KDEditorTileBrushIndex2 = brushKeys.length - 4;
+		else KDEditorTileBrushIndex2 = Math.max(0, KDEditorTileBrushIndex2 - 8);
 		return true;
 	}, true, xx , yy, width, grid-5, '^', KDEditorTileBrushIndex2 > 0 ? "#ffffff" : "#888888");
 	KDTE_CullIndex(tileKeys, brushKeys);
@@ -378,7 +381,8 @@ function KDDrawEditorUI() {
 		yy += grid;
 	}
 	DrawButtonKDEx("tilebrushdown2", (bdata) => {
-		KDEditorTileBrushIndex2 = Math.min(brushKeys.length - 4, KDEditorTileBrushIndex2 + 8);
+		if (KDEditorTileBrushIndex2 >= brushKeys.length - 6) KDEditorTileBrushIndex2 = 0;
+		else KDEditorTileBrushIndex2 = Math.min(brushKeys.length - 4, KDEditorTileBrushIndex2 + 8);
 		return true;
 	}, true, xx , yy, width, grid-5, 'v', KDEditorTileBrushIndex2 < brushKeys.length - 4 ? "#ffffff" : "#888888");
 
@@ -391,7 +395,8 @@ function KDDrawEditorUI() {
 	DrawTextFitKD("Tile List", xx + width/2 , yy - 30, width, "#ffffff", undefined, 36);
 
 	DrawButtonKDEx("tilenameup", (bdata) => {
-		KDEditorTileNameIndex = Math.max(0, KDEditorTileNameIndex - 9);
+		if (KDEditorTileNameIndex == 0) KDEditorTileNameIndex = tileKeys.length - 4;
+		else KDEditorTileNameIndex = Math.max(0, KDEditorTileNameIndex - 9);
 		KDTELoadConfirm = false;
 		return true;
 	}, true, xx , yy, width, grid-5, '^', KDEditorTileNameIndex > 0 ? "#ffffff" : "#888888");
@@ -423,7 +428,8 @@ function KDDrawEditorUI() {
 		yy += grid;
 	}
 	DrawButtonKDEx("tilenamedown", (bdata) => {
-		KDEditorTileNameIndex = Math.min(tileKeys.length - 4, KDEditorTileNameIndex + 9);
+		if (KDEditorTileNameIndex >= tileKeys.length - 6) KDEditorTileNameIndex = 0
+		else KDEditorTileNameIndex = Math.min(tileKeys.length - 4, KDEditorTileNameIndex + 9);
 		KDTELoadConfirm = false;
 		return true;
 	}, true, xx , yy, width, grid-5, 'v', KDEditorTileNameIndex < tileKeys.length - 4 ? "#ffffff" : "#888888");
