@@ -2258,6 +2258,7 @@ function KinkyDungeonGenerateSaveData() {
 	save.KinkyDungeonTiles = KinkyDungeonTiles;
 	save.KinkyDungeonTilesSkin = KinkyDungeonTilesSkin;
 	save.KinkyDungeonTilesMemory = KinkyDungeonTilesMemory;
+	save.KinkyDungeonRandomPathablePoints = KinkyDungeonRandomPathablePoints;
 	save.KinkyDungeonPlayerEntity = KinkyDungeonPlayerEntity;
 	save.KinkyDungeonEntities = KinkyDungeonEntities;
 	save.KinkyDungeonBullets = KinkyDungeonBullets;
@@ -2402,6 +2403,7 @@ function KinkyDungeonLoadGame(String) {
 			if (saveData.KinkyDungeonTiles) KinkyDungeonTiles = saveData.KinkyDungeonTiles;
 			if (saveData.KinkyDungeonTilesSkin) KinkyDungeonTilesSkin = saveData.KinkyDungeonTilesSkin;
 			if (saveData.KinkyDungeonTilesMemory) KinkyDungeonTilesMemory = saveData.KinkyDungeonTilesMemory;
+			if (saveData.KinkyDungeonRandomPathablePoints) KinkyDungeonRandomPathablePoints = saveData.KinkyDungeonRandomPathablePoints;
 			if (saveData.KinkyDungeonPlayerEntity) KinkyDungeonPlayerEntity = saveData.KinkyDungeonPlayerEntity;
 			if (saveData.KinkyDungeonEntities) KinkyDungeonEntities = saveData.KinkyDungeonEntities;
 			KDUpdateEnemyCache = true;

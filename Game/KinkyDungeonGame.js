@@ -79,8 +79,7 @@ let KDTrappableNeighbors = "DA+-F"; // tiles that might have traps bordering the
 let KDTrappableNeighborsLikely = "COP="; // tiles that might have traps bordering them with a big chance
 
 /**
- * Cost growth, overrides the default amount
-//@type {Record<string, {x: number, y: number, tags?:string[]}>}
+ * @type {Record<string, {x: number, y: number, tags?:string[]}>}
  */
 let KinkyDungeonRandomPathablePoints = {};
 /** @type {Record<string, any>} */
@@ -747,7 +746,7 @@ function KinkyDungeonGenNavMap() {
 		let Y = a[1].y;
 		let tags = [];
 		if (!KinkyDungeonTilesGet(a[0]) || !KinkyDungeonTilesGet(a[0]).OffLimits)
-			KinkyDungeonRandomPathablePoints[a] = {x: X, y:Y, tags:tags};
+			KinkyDungeonRandomPathablePoints[a[0]] = {x: X, y:Y, tags:tags};
 	}
 }
 
