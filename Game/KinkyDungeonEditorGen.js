@@ -278,12 +278,12 @@ function KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, ind
 			if (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)]) return false;
 			// Skip this mapTile if it doesnt fit
 			if (ind != indices[(xx + indX - 1) + ',' + (yy + indY - 1)] && KDLooseIndexRankingSuspend(indices[(xx + indX - 1) + ',' + (yy + indY - 1)], ind, mapTile.w, mapTile.h, xx, yy)) {
-				if (mapTile.flexEdge && mapTile.flexEdge[xx + ',' + yy]
-				&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('u') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)])
-				&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('d') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)])
-				&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('l') || indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)])
-				&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('r') || indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)])
-				) fail = true;
+				if (mapTile.flexEdge && mapTile.flexEdge[xx + ',' + yy] && ((mapTile.flexEdgeSuper && mapTile.flexEdgeSuper[xx + ',' + yy]) || (
+					(!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('u') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)])
+					&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('d') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)])
+					&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('l') || indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)])
+					&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('r') || indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)])
+				))) fail = true;
 				else return false;
 			}
 			// Skip this mapTile if it's already filled
@@ -559,6 +559,13 @@ let KDTileGen = {
 			|| "Ddg".includes(KinkyDungeonMapGet(x, y - 1))
 			|| "Ddg".includes(KinkyDungeonMapGet(x, y + 1)))
 			nodoorchance = 1.0;
+		else if (
+			!(KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x + 1, y)) && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x - 1, y)))
+			&& !(KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y + 1)) && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y - 1)))
+		) {
+			// No doors if there isn't a straight path
+			nodoorchance = 1.0;
+		}
 
 		// The door algorithm has been deprecated
 		//let doorlockchance = data.params.doorlockchance; // Max treasure chest count

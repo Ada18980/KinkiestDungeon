@@ -11,6 +11,7 @@ function KDInitTileEditor() {
 
 let KDEditorTileIndex = 'lr';
 let KDEditorTileFlex = "";
+let KDEditorTileFlexSuper = "";
 
 let KDEditorTileIndexQuery = '1,1';
 
@@ -24,6 +25,11 @@ let KDEditorTileIndexStore = {
  * @type {Record<string, string>}
  */
 let KDEditorTileFlexStore = {
+};
+/**
+ * @type {Record<string, string>}
+ */
+let KDEditorTileFlexSuperStore = {
 };
 
 let KDEditorCurrentMapTileName = 'test';
@@ -267,6 +273,7 @@ function KDDrawEditorUI() {
 	KDEditorTileIndexHover = '';
 	KDEditorTileIndex = KDEditorTileIndexStore[KDEditorTileIndexQuery];
 	KDEditorTileFlex = KDEditorTileFlexStore[KDEditorTileIndexQuery] || "";
+	KDEditorTileFlexSuper = KDEditorTileFlexSuperStore[KDEditorTileIndexQuery] || "";
 	for (let index of Object.keys(KDTileIndices)) {
 		let patt = KDGetTileIndexImg(index);
 
@@ -305,6 +312,16 @@ function KDDrawEditorUI() {
 		}
 		return true;
 	}, true, 150 , 160, 140, 45, 'Flex', "#ffffff", KDEditorTileFlex ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
+
+	DrawButtonKDEx("flexsupertoggle", (bdata) => {
+		KDEditorTileFlexSuper = KDEditorTileFlexSuper ? "" : "y";
+		if (KDEditorTileFlexSuperStore[KDEditorTileIndexQuery] && !KDEditorTileFlexSuper) {
+			delete KDEditorTileFlexSuperStore[KDEditorTileIndexQuery];
+		} else if (!KDEditorTileFlexSuperStore[KDEditorTileIndexQuery] && KDEditorTileFlexSuper) {
+			KDEditorTileFlexSuperStore[KDEditorTileIndexQuery] = KDEditorTileFlexSuper;
+		}
+		return true;
+	}, true, 150 , 210, 140, 45, 'OpenBorder', "#ffffff", KDEditorTileFlexSuper ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
 
 	// For later
 	let tileKeys = Object.keys(KDMapTilesListEditor);
@@ -973,6 +990,7 @@ function KDTE_Create(w, h, chkpoint = 'grv') {
 		}
 	}
 	KDEditorTileFlexStore = {};
+	KDEditorTileFlexSuperStore = {};
 
 	KinkyDungeonPlayerEntity = {
 		x: Math.floor(KinkyDungeonGridWidth/2),
@@ -996,6 +1014,7 @@ function KDTE_LoadTile(name, loadedTile) {
 	KDTE_Create(nt.w, nt.h);
 	KDEditorTileIndexStore = nt.index;
 	KDEditorTileFlexStore = nt.flexEdge || {};
+	KDEditorTileFlexSuperStore = nt.flexEdgeSuper || {};
 	if (nt.category)
 		ElementValue("MapTileCategory", nt.category);
 	if (nt.weight)
@@ -1064,6 +1083,7 @@ function KDTE_ExportTile() {
 		primInd: KDEditorTileIndexStore["1,1"],
 		index: KDEditorTileIndexStore,
 		flexEdge: KDEditorTileFlexStore || {},
+		flexEdgeSuper: KDEditorTileFlexSuperStore || {},
 		scale: KDTE_Scale,
 		category: ElementValue("MapTileCategory"),
 		weight: parseInt(ElementValue("MapTileWeight")) ? parseInt(ElementValue("MapTileWeight")) : 10,
