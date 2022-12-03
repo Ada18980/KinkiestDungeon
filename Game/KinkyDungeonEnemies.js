@@ -503,6 +503,19 @@ function KinkyDungeonDrawEnemiesStatus(canvasOffsetX, canvasOffsetY, CamX, CamY)
 							zIndex: 2.1,
 						});
 				}
+				if (KinkyDungeonGetBuffedStat(enemy.buffs, "SpellResist") < 0 && enemy.Enemy.spellResist > 0) {
+					KDDraw(kdgameboard, kdpixisprites, "armd" + enemy.id, KinkyDungeonRootDirectory + "Conditions/ShieldDebuff.png",
+						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
+						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+							zIndex: 2.1,
+						});
+				} else if (KinkyDungeonGetBuffedStat(enemy.buffs, "SpellResist") > 0) {
+					KDDraw(kdgameboard, kdpixisprites, "arm" + enemy.id, KinkyDungeonRootDirectory + "Conditions/ShieldBuff.png",
+						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
+						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+							zIndex: 2.1,
+						});
+				}
 				if (KinkyDungeonGetBuffedStat(enemy.buffs, "Evasion") > 0) {
 					KDDraw(kdgameboard, kdpixisprites, "evab" + enemy.id, KinkyDungeonRootDirectory + "Conditions/EvasionBuff.png",
 						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,

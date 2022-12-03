@@ -620,18 +620,22 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			if (!aoe) aoe = 0.1;
 			if (Math.sqrt((KinkyDungeonPlayerEntity.x - targetX) * (KinkyDungeonPlayerEntity.x - targetX) + (KinkyDungeonPlayerEntity.y - targetY) * (KinkyDungeonPlayerEntity.y - targetY)) <= aoe) {
 				for (let buff of spell.buffs) {
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff);
-					if (KinkyDungeonPlayerEntity.x == targetX && KinkyDungeonPlayerEntity.y == targetY) data.target = KinkyDungeonPlayerEntity;
-					casted = true;
+					if (buff.player) {
+						KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff);
+						if (KinkyDungeonPlayerEntity.x == targetX && KinkyDungeonPlayerEntity.y == targetY) data.target = KinkyDungeonPlayerEntity;
+						casted = true;
+					}
 				}
 			}
 			for (let e of KinkyDungeonEntities) {
 				if (Math.sqrt((e.x - targetX) * (e.x - targetX) + (e.y - targetY) * (e.y - targetY)) <= aoe) {
 					for (let buff of spell.buffs) {
-						if (!e.buffs) e.buffs = [];
-						KinkyDungeonApplyBuff(e.buffs, buff);
-						if (e.x == targetX && e.y == targetY) data.target = e;
-						casted = true;
+						if (!spell.filterTags || KDMatchTags(spell.filterTags, e)) {
+							if (!e.buffs) e.buffs = {};
+							KinkyDungeonApplyBuff(e.buffs, buff);
+							if (e.x == targetX && e.y == targetY) data.target = e;
+							casted = true;
+						}
 					}
 				}
 			}
@@ -1338,4 +1342,19 @@ function KDCastSpellToEnemies(fn, tX, tY, spell) {
 	}
 
 	return cast;
+}
+
+/**
+ * Returns true if the enemy matches one of the tags
+ * @param {string[]} tags
+ * @param {entity} entity
+ * @returns {boolean}
+ */
+function KDMatchTags(tags, entity) {
+	if (tags) {
+		for (let tag of tags) {
+			if (entity?.Enemy?.tags[tag]) return true;
+		}
+	}
+	return false;
 }

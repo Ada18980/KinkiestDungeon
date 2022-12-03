@@ -1586,6 +1586,12 @@ AttackWolfApprentice,"The trainer's apprentice rubs her claws across your chest 
 AttackWolfApprenticeBind,"The trainer's apprentice secures you in training gear! (+RestraintAdded)"
 AttackWolfApprenticeLock,"The trainer's apprentice adds a lock to your restraints."
 
+NameWolfInstructor,Wolf Instructor
+KillWolfInstructor,"The instructor deploys active camoflague and retreats!"
+AttackWolfInstructor,"The instructor disciplies you! (DamageTaken)"
+AttackWolfInstructorBind,"The instructor applies advanced training gear! (+RestraintAdded)"
+AttackWolfInstructorLock,"The instructor adds a lock to your restraints."
+
 NameWolfDrone,Nevermere Drone
 KillWolfDrone,"The drone loses power and falls to the ground!"
 KinkyDungeonSummonSingleWolfDrone,A Nevermere Drone takes off!
@@ -4797,6 +4803,7 @@ KinkyDungeonSpellCastStoneSkin,Your skin takes on the appearance of cracked eart
 
 KinkyDungeonSpellCastArmorUp,The EnemyName gains increased armor!
 KinkyDungeonSpellCastArmorUpArea,The EnemyName buffs the armor of her allies!
+KinkyDungeonSpellCastSpellArmorUpAreaNevermere,"The EnemyName deploys an energy shield to allies!"
 KinkyDungeonSpellCastEarthfield,The EnemyName creates a zone of increased defense!
 KinkyDungeonSpellCastParasolBuff,"EnemyName uses a charm to buff an enemy's Warding and evasion!"
 KinkyDungeonSpellCastZombieBuff,"EnemyName uses a glowing talisman to buff an undead's armor and speed!"

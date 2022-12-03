@@ -1286,12 +1286,17 @@ let KinkyDungeonSpellListEnemies = [
 
 	{enemySpell: true, selfcast: true, buff: true, minRange: 0, name: "ArmorUp", sfx: "Bones", school: "Elements", manacost: 8, components: ["Arms"], mustTarget: true, level:1, type:"buff", buffs: [{id: "ArmorUp", type: "Armor", duration: 6, power: 1.0, player: true, enemies: true, tags: ["defense", "armor"]}], onhit:"", time:6, power: 0, range: 2, size: 1, damage: ""},
 	{enemySpell: true, selfcast: true, buff: true, minRange: 0, name: "ArmorUpArea", sfx: "MagicSlash", school: "Elements", manacost: 8, components: ["Arms"], mustTarget: true, level:1,
-		type:"buff", buffs: [{id: "ArmorUpArea", type: "Armor", duration: 6, power: 2.0, player: true, enemies: true, tags: ["defense", "armor"]}], onhit:"", time:6, power: 0, range: 2.9, aoe: 2.9, size: 1, damage: ""},
+		type:"buff", buffs: [{id: "ArmorUpArea", type: "Armor", duration: 6, power: 2.0, player: false, enemies: true, tags: ["defense", "armor"]}], onhit:"", time:6, power: 0, range: 2.9, aoe: 2.9, size: 1, damage: ""},
+	{enemySpell: true, selfcast: true, buff: true, minRange: 0, name: "SpellArmorUpAreaNevermere", sfx: "MagicSlash", school: "Elements", manacost: 8, components: ["Arms"], mustTarget: true, level:1, filterTags: ["wolfPet", "robot"],
+		type:"buff", buffs: [
+			{id: "SpellArmorUpAreaNevermere", type: "SpellResist", duration: 6, power: 2.0, player: false, enemies: true, tags: ["defense", "spellresist"]},
+			{id: "ArmorUpAreaNevermere", type: "Armor", duration: 6, power: 1.5, player: false, enemies: true, tags: ["defense", "armor"]}
+		], onhit:"", time:6, power: 0, range: 4.9, aoe: 4.9, size: 1, damage: ""},
 	{enemySpell: true, buff: true, name: "ParasolBuff", minRange: 0, sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Arms"], mustTarget: true, level:3, type:"buff",
 		buffs: [
-			{id: "ParasolBuff", type: "Armor", duration: 5, power: 1.0, player: true, enemies: true, tags: ["defense", "armor"]},
-			{id: "ParasolBuff2", type: "Evasion", duration: 5, power: 0.33, player: true, enemies: true, tags: ["defense", "evasion"]},
-			{id: "ParasolBuff3", type: "SpellResist", duration: 5, power: 2.5, player: true, enemies: true, tags: ["defense", "spellresist"]},
+			{id: "ParasolBuff", type: "Armor", duration: 5, power: 1.0, player: false, enemies: true, tags: ["defense", "armor"]},
+			{id: "ParasolBuff2", type: "Evasion", duration: 5, power: 0.33, player: false, enemies: true, tags: ["defense", "evasion"]},
+			{id: "ParasolBuff3", type: "SpellResist", duration: 5, power: 2.5, player: false, enemies: true, tags: ["defense", "spellresist"]},
 		], onhit:"", time:5, power: 0, range: 6, size: 1, damage: ""},
 	{enemySpell: true, commandword: true, buff: true, buffallies: true, castCondition: "commandword", name: "EnemyCM1", minRange: 0, sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Arms"], mustTarget: true, level:3, type:"special", special: "Enemy_CM1",
 		onhit:"", time:5, power: 0, range: 6, size: 1, damage: "", noCastMsg: true},
