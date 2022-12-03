@@ -630,13 +630,12 @@ let KDTileGen = {
 		let trapchance = data.params.trapchance || 0.1;
 		if (tileGenerator.Always || KDRandom() < trapchance)
 			data.traps.push(({x: x, y: y}));
-		else
-			KinkyDungeonMapSet(x, y, '2');
+		KinkyDungeonMapSet(x, y, '2');
 		return null;
 	},
 	"Charger": (x, y, tile, tileGenerator, data) => {
 		if (tileGenerator.priority) {
-			return {Type: "Charger", NoRemove: tile == '=', lightColor: KDChargerColor, Light: (tile == '=' ? KDChargerLight : undefined)};
+			return {Type: "Charger", NoRemove: KinkyDungeonMapGet(x, y) == '=', lightColor: KDChargerColor, Light: (KinkyDungeonMapGet(x, y) == '=' ? KDChargerLight : undefined)};
 		}
 		KinkyDungeonMapSet(x, y, '-');
 		data.chargerlist.push(({x: x, y: y}));

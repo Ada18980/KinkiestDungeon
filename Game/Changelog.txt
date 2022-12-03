@@ -1176,7 +1176,7 @@ Features
 3.83 (Nov 2022)
 - New perks: Cursed Locks, Undeniable, Forgetful
 - Added music by kocaeli
-- New enemy: Trainer's Apprentice, Nevermere Drone, Wolfguard
+- New enemy: Trainer's Apprentice, Nevermere Drone, Wolfguard, Wolf Instructor
 - Changes to the log to fit more text
 - Captures yield less rep when you already have high rep
 - Cutting restraints now makes debris
