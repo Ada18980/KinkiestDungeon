@@ -533,7 +533,7 @@ let KinkyDungeonEnemies = [
 			{enemy: "WolfgirlPet", range: 2, count: 1, chance: 1.0, strict: true},
 			{enemy: "WolfgirlPet", range: 2, count: 1, chance: 0.5, strict: true},
 		],
-		spells: ["SpellArmorUpAreaNevermere"], spellCooldownMult: 1, spellCooldownMod: 5, buffallies: true,
+		spells: ["NevermereBoost"], spellCooldownMult: 1, spellCooldownMod: 5, buffallies: true,
 		AI: "hunt",  visionRadius: 10, maxhp: 9, minLevel:0, weight:-2, movePoints: 2, evasion: 0.3,
 		RemoteControl: {
 			punishRemote: 4,
