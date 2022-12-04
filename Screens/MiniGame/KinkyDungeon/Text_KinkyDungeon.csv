@@ -1131,6 +1131,9 @@ KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 200% binding effi
 KinkyDungeonInventoryItemBondageBuster,Bondage Buster
 KinkyDungeonInventoryItemBondageBusterDesc,"Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge."
 KinkyDungeonInventoryItemBondageBusterDesc2,"Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns."
+KinkyDungeonInventoryItemBlaster,Nevermere Blaster
+KinkyDungeonInventoryItemBlasterDesc,"Can fire a blast that deals 25 electric damage."
+KinkyDungeonInventoryItemBlasterDesc2,"Melee mode deals tickle damage."
 KinkyDungeonInventoryItemMessengerOfLove,Messenger of Love
 KinkyDungeonInventoryItemMessengerOfLoveDesc,"Love shines in many ways..."
 KinkyDungeonInventoryItemMessengerOfLoveDesc2,"Can fire an arrow that makes an enemy extremely lustful, causing them to attack others. Lasts forever on lesser enemies, 30 turns on high-level enemies, and 10 turns on bosses."
@@ -1578,13 +1581,25 @@ NameWolfgirl,Wolfgirl Trainer
 KillWolfgirl,"The trainer retreats!"
 AttackWolfgirl,"The wolfgirl trainer squeezes your breasts playfully! (DamageTaken)"
 AttackWolfgirlBind,"The wolfgirl trainer secures you in training gear! (+RestraintAdded)"
-AttackWolfgirlLock,"The wolfgirl trainer pins you and skillfully locks all of your restraints."
+AttackWolfgirlLock,"The wolfgirl trainer pins you and skillfully locks all of your restraints!"
+
+NameWolfOperative,Nevermere Operative
+KillWolfOperative,"The operative does a fumbled retreat!"
+AttackWolfOperative,"The Nevermere Operative smiles and gropes your body! (DamageTaken)"
+AttackWolfOperativeBind,"The Nevermere Operative apprehends you with training gear! (+RestraintAdded)"
+AttackWolfOperativeLock,"The Nevermere Operative pins you and skillfully locks all of your restraints!"
 
 NameWolfApprentice,Trainer's Apprentice
 KillWolfApprentice,"The trainer's apprentice escapes!"
 AttackWolfApprentice,"The trainer's apprentice rubs her claws across your chest playfully! (DamageTaken)"
 AttackWolfApprenticeBind,"The trainer's apprentice secures you in training gear! (+RestraintAdded)"
 AttackWolfApprenticeLock,"The trainer's apprentice adds a lock to your restraints."
+
+NameWolfExecutive,The Executive
+KillWolfExecutive,"The executive surrenders gracefully."
+AttackWolfExecutive,"The Executive makes a persuasive argument! (DamageTaken)"
+AttackWolfExecutiveBind,"The Executive's drones apprehend you! (+RestraintAdded)"
+AttackWolfExecutiveLock,"The Executive's drones apply high-security locks to your restraints!"
 
 NameWolfInstructor,Wolf Instructor
 KillWolfInstructor,"The instructor deploys active camoflague and retreats!"
@@ -3922,6 +3937,7 @@ ItemPickupFourSeasons,"You pick up Four Seasons."
 ItemPickupArbiter,"You pick up The Arbiter."
 ItemPickupDreamcatcher,"You pick up Dreamcatcher."
 ItemPickupBondageBuster,"You retrieve the Bondage Buster."
+ItemPickupBlaster,"You retrieve a Nevermere Blaster Mark IV."
 ItemPickupMessengerOfLove,"You retrieve the Messenger of Love."
 ItemPickupMoiraiScissors,"You retrieve Moirai's scissors."
 
@@ -6357,12 +6373,50 @@ KinkyDungeonRemindJailHunterDisarm,"Wrong move, buddy."
 KinkyDungeonRemindJailHunterHit,"I can't believe it..."
 KinkyDungeonRemindJailHunterHitPlayer,"You're too slow."
 KinkyDungeonRemindJailHunterMiss,"...she's fast."
-KinkyDungeonRemindJailHunterMissedMe,"Why do you even try?"
+KinkyDungeonRemindJailHunterMissedMe,"Nothing personal."
 KinkyDungeonRemindJailHunterLeash,"This battle is over."
 KinkyDungeonRemindJailHunterPull,"Get over here!"
 KinkyDungeonRemindJailHunterStun,"Too slow!"
 KinkyDungeonRemindJailHunterPickpocket,"I'll be taking that."
 KinkyDungeonRemindJailHunterLock,"There's no way out."
+
+
+KinkyDungeonRemindJailPlayBratWolfgirl0,"I'm not in trouble, am I?"
+KinkyDungeonRemindJailPlayBratWolfgirl1,"I'm not hiding anything, if you know what I mean..."
+KinkyDungeonRemindJailPlayBratWolfgirl2,"Who are you looking for? Me?"
+KinkyDungeonRemindJailPlaySubWolfgirl0,"So... wanna hang out?"
+KinkyDungeonRemindJailPlaySubWolfgirl1,"It's not like I... LIKE you or something..."
+KinkyDungeonRemindJailPlaySubWolfgirl2,"I'm not following you! I'm just..."
+KinkyDungeonRemindJailPlayWolfgirl0,"You're a cute one~"
+KinkyDungeonRemindJailPlayWolfgirl1,"You've got a nice pair of wrists~"
+KinkyDungeonRemindJailPlayWolfgirl2,"Hey~! Let's have a talk."
+KinkyDungeonRemindJailPlayWolfgirlStruggle,"Looks like you need additional training."
+KinkyDungeonRemindJailPlayWolfgirlLeash,"I'm going to have some fun with you~"
+KinkyDungeonRemindJailPlayWolfgirlFree,"Watch yourself, girl~"
+KinkyDungeonRemindJailPlayWolfgirlLoot,"Nice find. I'll take it."
+KinkyDungeonRemindJailPlayWolfgirlKey,"This place is off-limits for you."
+KinkyDungeonRemindJailChaseWolfgirlAttack0,"Bad pet!"
+KinkyDungeonRemindJailChaseWolfgirlAttack1,"Looks like you're gonna need the extra special treatment~"
+KinkyDungeonRemindJailChaseWolfgirlAttack2,"Now you've done it!"
+KinkyDungeonRemindJailChaseWolfgirlSpell0,"Magic? Hah..."
+KinkyDungeonRemindJailChaseWolfgirlSpell1,"Such outdated practices..."
+KinkyDungeonRemindJailChaseWolfgirlSpell2,"Your spells are nothing compared to technology."
+KinkyDungeonRemindJailChaseWolfgirlSpellItem,"Quit messing around."
+KinkyDungeonRemindJailChaseWolfgirlShrine,"Don't even think about appealing to your goddess!"
+KinkyDungeonRemindJailChaseWolfgirlChest,"Stop right there!"
+KinkyDungeonRemindJailChaseWolfgirlOrb,"It'll take you quite a while to pay off those damages!"
+KinkyDungeonRemindJailChaseWolfgirlJailbreak,"Finally, I've tracked you down!"
+KinkyDungeonRemindJailWolfgirlGrab,"Now there, good girl!"
+KinkyDungeonRemindJailWolfgirlDisarm,"Wrong move!"
+KinkyDungeonRemindJailWolfgirlHit,"Get your paws off me!"
+KinkyDungeonRemindJailWolfgirlHitPlayer,"*scoffs* Could use some work~"
+KinkyDungeonRemindJailWolfgirlMiss,"Such speed!"
+KinkyDungeonRemindJailWolfgirlMissedMe,"Nothing personal."
+KinkyDungeonRemindJailWolfgirlLeash,"This battle is over."
+KinkyDungeonRemindJailWolfgirlPull,"Get over here!"
+KinkyDungeonRemindJailWolfgirlStun,"Too slow!"
+KinkyDungeonRemindJailWolfgirlPickpocket,"I'll be taking that."
+KinkyDungeonRemindJailWolfgirlLock,"There's no way out."
 
 
 KinkyDungeonRemindJailPlayBratElf0,"An outsider!"
@@ -6856,12 +6910,13 @@ KinkyDungeonRemindJailZombieLock,"...Secure..."
 
 KinkyDungeonInsufficientEnergy,The weapon requires power from an Ancient Crystal to function.
 KinkyDungeonSpecialDragonslaver,Target an enemy: Attack with Dragonslaver. Target a tile: Spend 0.75% energy to launch binding belts
-KinkyDungeonSpecialTheEncaser,"2.5% energy to enter Slime Form for 25 turns, and create slime around yourself."
-KinkyDungeonSpecialFourSeasons,"5% energy to reduce mana cost of next fire, earth, air, and water spell by 50 (once for each element)"
-KinkyDungeonSpecialArbiter,"2.5% energy to disarm a target for 8 turns, rendering them unable to attack."
-KinkyDungeonSpecialBondageBuster,"0.5% energy (+0.25% per charge) to channel and fire a beam that deals 30 + 3/charge electric damage, or 90 at max charge."
-KinkyDungeonSpecialMessengerOfLove,"5% energy to fire an arrow that enrages a target."
-KinkyDungeonSpecialMoiraiScissors,"5% energy to enter a frenzy for 10 turns, attacking twice per turn."
+KinkyDungeonSpecialTheEncaser,"25 charge to enter Slime Form for 25 turns, and create slime around yourself."
+KinkyDungeonSpecialFourSeasons,"50 charge to reduce mana cost of next fire, earth, air, and water spell by 50 (once for each element)"
+KinkyDungeonSpecialArbiter,"25 charge to disarm a target for 8 turns, rendering them unable to attack."
+KinkyDungeonSpecialBondageBuster,"5 charge (+2.5 per charge) to channel and fire a beam that deals 30 + 3/charge electric damage, or 90 at max charge."
+KinkyDungeonSpecialBlaster,"5 charge to fire a blast that deals 25 electric damage."
+KinkyDungeonSpecialMessengerOfLove,"50 charge to fire an arrow that enrages a target."
+KinkyDungeonSpecialMoiraiScissors,"50 charge to enter a frenzy for 10 turns, attacking twice per turn."
 KinkyDungeonSpecialSlimethrower,Create a '+' shaped pool of slime that deals 35 glue damage per hit
 KinkyDungeonSpecialTorch,Ignite torches and nearby objects
 KinkyDungeonSpecialFlamberge,Ignite torches and nearby objects

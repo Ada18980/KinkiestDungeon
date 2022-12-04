@@ -3389,14 +3389,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							&& Math.sqrt((enemy.x - e.x)*(enemy.x - e.x) + (enemy.y - e.y)*(enemy.y - e.y)) < spell.range
 							&& (!spell.castCondition || KDCastConditions[spell.castCondition](enemy, e))) {
 								let allow = !spell.filterTags;
-								if (spell.filterTags) {
-									for (let t of spell.filterTags) {
-										if (e.Enemy.tags && e.Enemy.tags[t]) {
-											allow = true;
-											break;
-										}
-									}
-								}
+								if (spell.filterTags && KDMatchTags(spell.filterTags, e)) allow = true;
 								if (allow)
 									nearAllies.push(e);
 							}
