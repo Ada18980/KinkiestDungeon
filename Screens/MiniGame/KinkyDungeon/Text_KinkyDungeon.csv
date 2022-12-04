@@ -1597,6 +1597,12 @@ KillWolfDrone,"The drone loses power and falls to the ground!"
 KinkyDungeonSummonSingleWolfDrone,A Nevermere Drone takes off!
 KinkyDungeonSummonMultiWolfDrone,You hear buzzing as several Nevermere Drones take to the air!
 
+NameWolfShieldDrone,Shield Drone
+KillWolfShieldDrone,"The drone's power source explodes."
+KinkyDungeonSummonSingleWolfShieldDrone,A Shield Drone takes off!
+KinkyDungeonSummonMultiWolfShieldDrone,"Several Shield Drones take flight, their shields interlinking."
+KinkyDungeonSpellDroneExplosion,Drone Explosion
+
 NameDrone,Ancient Drone
 KillDrone,"The drone fizzles and falls to the ground!"
 AttackDroneStun,"The drone zaps you with a restraining energy ray! (DamageTaken)"
