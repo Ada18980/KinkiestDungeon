@@ -37,6 +37,10 @@ let KinkyDungeonHiddenFactions = [
 	"Chase",
 ];
 
+let KDPiousFactions = {
+	"Angel": 1.0,
+};
+
 /** Shows tooltips for these factions even though they are hidden */
 let KinkyDungeonTooltipFactions = [
 	"Rebel",

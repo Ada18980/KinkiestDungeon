@@ -5,14 +5,14 @@ const KDRAGE = -31;
 
 let KDFactionGoddess = {
 	"Metal": {
-		"Angel": 0.001,
+		"Angel": 0.004,
 		"Demon": -0.001,
 		"Nevermere": 0.01,
 		"AncientRobot": 0.005,
 		"Alchemist": 0.0025,
 	},
 	"Rope": {
-		"Angel": 0.001,
+		"Angel": 0.004,
 		"Demon": -0.001,
 		"KinkyConstruct": 0.005,
 		"Dressmaker": 0.005,
@@ -20,14 +20,14 @@ let KDFactionGoddess = {
 		"Bast": 0.0025,
 	},
 	"Elements": {
-		"Angel": 0.001,
+		"Angel": 0.004,
 		"Demon": -0.001,
 		"Witch": 0.003,
 		"Apprentice": 0.0015,
 		"Elemental": 0.01,
 	},
 	"Leather": {
-		"Angel": 0.001,
+		"Angel": 0.004,
 		"Demon": -0.001,
 		"Elf": 0.001,
 		"Dragon": 0.005,
@@ -35,7 +35,7 @@ let KDFactionGoddess = {
 		"Elemental": 0.002,
 	},
 	"Latex": {
-		"Angel": 0.001,
+		"Angel": 0.004,
 		"Demon": -0.001,
 		"Maidforce": 0.0015,
 		"Alchemist": 0.01,
@@ -43,7 +43,7 @@ let KDFactionGoddess = {
 		"Elemental": 0.001,
 	},
 	"Will": {
-		"Angel": 0.001,
+		"Angel": 0.004,
 		"Demon": -0.005,
 		"Elf": 0.005,
 		"Mushy": 0.0035,
@@ -51,7 +51,7 @@ let KDFactionGoddess = {
 		"Apprentice": 0.001,
 	},
 	"Conjure": {
-		"Angel": 0.001,
+		"Angel": 0.004,
 		"Demon": -0.001,
 		"Alchemist": 0.002,
 		"Witch": 0.003,
@@ -59,7 +59,7 @@ let KDFactionGoddess = {
 		"Dressmaker": 0.005,
 	},
 	"Illusion": {
-		"Angel": 0.001,
+		"Angel": 0.004,
 		"Demon": -0.001,
 		"Witch": 0.003,
 		"Apprentice": 0.0015,
@@ -313,7 +313,7 @@ function KinkyDungeonDrawReputation() {
 	KinkyDungeonDrawMessages(true);
 	let i = 0;
 	let XX = 0;
-	let spacing = 60;
+	let spacing = 600 / Object.keys(KinkyDungeonGoddessRep).length;
 	let yPad = 50;
 	let tooltip = "";
 
@@ -626,7 +626,7 @@ function KinkyDungeonRescueTiles() {
 	for (let X = KinkyDungeonPlayerEntity.x - 1; X <= KinkyDungeonPlayerEntity.x + 1; X++)
 		for (let Y = KinkyDungeonPlayerEntity.y - 1; Y <= KinkyDungeonPlayerEntity.y + 1; Y++) {
 			if (X != 0 || Y != 0) {
-				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && !KinkyDungeonEnemyAt(X, Y)) {
+				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && KinkyDungeonNoEnemy(X, Y, true)) {
 					tiles.push({x:X, y:Y});
 				}
 			}

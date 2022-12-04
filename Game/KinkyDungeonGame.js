@@ -864,13 +864,30 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		}
 	}
 
+	// Determine factions to spawn
 	let factions = Object.keys(KinkyDungeonFactionTag);
+	let primaryFaction = factions[Math.floor(KDRandom() * factions.length)];
 	let randomFactions = [
-		factions[Math.floor(KDRandom() * factions.length)],
-		factions[Math.floor(KDRandom() * factions.length)],
+		primaryFaction
 	];
 
-	console.log(randomFactions[0] + "," + randomFactions[1]);
+	// Add up to one friend of the faction and one enemy
+	let allyCandidates = [];
+	for (let f of factions) {
+		if (KDFactionRelation(primaryFaction, f) > 0.2) allyCandidates.push(f);
+	}
+	let enemyCandidates = [];
+	for (let f of factions) {
+		if (KDFactionRelation(primaryFaction, f) < -0.2) enemyCandidates.push(f);
+	}
+
+	let factionAllied = allyCandidates.length > 0 ? allyCandidates[Math.floor(KDRandom() * allyCandidates.length)] : "";
+	let factionEnemy = enemyCandidates.length > 0 ? enemyCandidates[Math.floor(KDRandom() * enemyCandidates.length)] : "";
+
+	if (factionAllied) randomFactions.push(factionAllied);
+	if (factionEnemy) randomFactions.push(factionEnemy);
+
+	console.log(randomFactions[0] + "," + randomFactions[1] + "," + randomFactions[2]);
 
 	// These tags are disallowed unless working in the specific box
 	let filterTags = ["boss", "miniboss", "elite", "minor"];
@@ -890,8 +907,9 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			}
 		}
 	} else {
-		spawnBoxes.push({requiredTags: [KinkyDungeonFactionTag[randomFactions[0]]], tags: [KinkyDungeonFactionTag[randomFactions[0]]], currentCount: 0, maxCount: 0.2});
-		spawnBoxes.push({requiredTags: [KinkyDungeonFactionTag[randomFactions[1]]], tags: [KinkyDungeonFactionTag[randomFactions[1]]], currentCount: 0, maxCount: 0.2});
+		for (let rf of randomFactions) {
+			spawnBoxes.push({requiredTags: [KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.2, bias: rf == factionEnemy ? 2 : 1});
+		}
 	}
 
 	let currentCluster = null;
@@ -938,18 +956,13 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			culledSpawns = true;
 			if (spawns.length == 0) break;
 		}
-		let spawnBox_filter = spawnBoxes.filter((bb) => {
-			return bb.currentCount < bb.maxCount * enemyCount;
-		});
-		let box = null;
-		if (spawnBox_filter.length > 0) {
-			box = spawnBox_filter[Math.floor(KDRandom() * spawnBox_filter.length)];
-		}
 
 		let pointIndex = Math.floor(KDRandom() * 0.5 * enemyPoints.length);
 		let point = enemyPoints[pointIndex];
 		let X = point ? point.x : (1 + Math.floor(KDRandom()*(width - 1)));
 		let Y = point ? point.y : (1 + Math.floor(KDRandom()*(height - 1)));
+
+
 
 		if (point && KinkyDungeonBoringGet(X, Y) > 0 && KDRandom() < 0.5) {
 			continue;
@@ -1012,6 +1025,18 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 
 		let playerDist = 8;
 		let PlayerEntity = KinkyDungeonNearestPlayer({x:X, y:Y});
+
+		let spawnBox_filter = spawnBoxes.filter((bb) => {
+			return bb.currentCount < bb.maxCount * enemyCount && (!bb.bias
+				// This part places allied faction toward the center of the map and enemy faction around the edges
+				|| (bb.bias == 1 && X > width * 0.25 && X < width * 0.75 && Y > height * 0.25 && Y < height * 0.75)
+				|| (bb.bias == 2 && (X < width * 0.25 || X > width * 0.75) && (Y < height * 0.25 || Y > height * 0.75))
+			);
+		});
+		let box = null;
+		if (spawnBox_filter.length > 0) {
+			box = spawnBox_filter[Math.floor(KDRandom() * spawnBox_filter.length)];
+		}
 
 		if (box && (!spawnPoint || box.addToSpawn) && !currentCluster) {
 			if (!spawnPoint) {

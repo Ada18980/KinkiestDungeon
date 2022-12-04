@@ -506,6 +506,9 @@ let KDPerkStart = {
 			}
 		}
 	},
+	Cursed: () => {
+		KinkyDungeonChangeFactionRep("Angel", -100);
+	},
 };
 
 
