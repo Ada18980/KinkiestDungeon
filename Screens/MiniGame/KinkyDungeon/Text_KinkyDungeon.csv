@@ -1597,6 +1597,13 @@ KillWolfDrone,"The drone loses power and falls to the ground!"
 KinkyDungeonSummonSingleWolfDrone,A Nevermere Drone takes off!
 KinkyDungeonSummonMultiWolfDrone,You hear buzzing as several Nevermere Drones take to the air!
 
+NameWolfTapeDrones,Swarm of Tape Drones
+KillWolfTapeDrones,"The tape drones lose control and crash all over the place!"
+KinkyDungeonSummonSingleWolfTapeDrones,A swarm of tape drones takes flight!
+KinkyDungeonSummonMultiWolfTapeDrones,The air fills with buzzing as dozens of tiny drones lift off!
+AttackWolfTapeDrones,"The tape drones attach additional sticky layers! (DamageTaken)"
+AttackWolfTapeDronesBind,"The tape drones circle around you, wrapping you in tape! (+RestraintAdded)"
+
 NameWolfShieldDrone,Shield Drone
 KillWolfShieldDrone,"The drone's power source explodes."
 KinkyDungeonSummonSingleWolfShieldDrone,A Shield Drone takes off!

@@ -2915,6 +2915,24 @@ let KDEventMapEnemy = {
 				}
 			}
 		},
+		"wolfShieldDroneAura": (e, enemy, data) => {
+			// We apply a buff to nearby allies, but not self
+			if (data.delta && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				if (!e.chance || KDRandom() < e.chance) {
+					let nearby = KDNearbyNeutrals(enemy.x, enemy.y, e.dist, enemy);
+					for (let en of nearby) {
+						if (en != enemy && en.hp > 0.52 && KDMatchTags(["nevermere", "wolfgirl", "alchemist", "dressmaker", "bountyhunter"], en)) {
+							KinkyDungeonApplyBuffToEntity(en, {
+								id: "WolfDroneArmor", aura: "#00ffff", type: "Armor", duration: 1.1, power: e.power, player: false, enemies: true, tags: ["defense", "armor"]
+							});
+							KinkyDungeonApplyBuffToEntity(en, {
+								id: "WolfDroneSpellResist", type: "SpellResist", duration: 1.1, power: e.power, player: false, enemies: true, tags: ["defense", "spellresist"]
+							});
+						}
+					}
+				}
+			}
+		},
 		"electrifyLocal": (e, enemy, data) => {
 			if (data.delta && (enemy.aware || enemy.vp > 0.5) && (KDNearbyEnemies(enemy.x, enemy.y, 1.5, enemy).length > 0 || KinkyDungeonAggressive(enemy)) && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 				if (!e.chance || KDRandom() < e.chance) {

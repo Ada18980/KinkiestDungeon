@@ -895,7 +895,7 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 		{faction: "Witch", tags: ["witch", "apprentice", "skeleton"], rtags: ["witch", "apprentice", "skeleton"], ftags: ["miniboss", "boss"]},
 		{faction: "Apprentice", tags: ["apprentice"], rtags: ["apprentice"], ftags: ["miniboss", "boss"]},
 		{faction: "Mushy", tags: ["mushroom"], rtags: ["mushy"], ftags: ["miniboss", "boss"]},
-		{faction: "Nevermere", tags: ["wolfgirl"], rtags: ["wolfgirl"], ftags: ["miniboss", "boss"]},
+		{faction: "Nevermere", tags: ["nevermere"], rtags: ["nevermere"], ftags: ["miniboss", "boss"]},
 		{faction: "Bast", tags: ["mummy"], rtags: ["mummy"], ftags: ["miniboss", "boss"]},
 		{faction: "Elf", tags: ["elf"], rtags: ["elf"], ftags: ["miniboss", "boss"]},
 		{faction: "Elemental", tags: ["elemental", "witch"], rtags: ["elemental", "witch"], ftags: ["miniboss", "boss"]},

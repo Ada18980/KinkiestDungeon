@@ -55,7 +55,7 @@ let KinkyDungeonFactionTag = {
 	Bountyhunter: "bountyhunter",
 	Bandit: "bandit",
 	Alchemist: "alchemist",
-	Nevermere: "wolfgirl",
+	Nevermere: "nevermere",
 	Apprentice: "apprentice",
 	Dressmaker: "dressmaker",
 	Witch: "witch",
@@ -363,7 +363,6 @@ let KinkyDungeonFactionRelationsBase = {
 	"Maidforce": {
 		"Alchemist": 0.55,
 		"Jail": 0.55,
-		"Nevermere": 0.55,
 		"Dragon": 0.55,
 		"Apprentice": 0.55,
 		"Bandit": -0.6,
