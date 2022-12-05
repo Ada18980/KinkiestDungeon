@@ -428,7 +428,7 @@ function KDDrawEditorUI() {
 		yy += grid;
 	}
 	DrawButtonKDEx("tilenamedown", (bdata) => {
-		if (KDEditorTileNameIndex >= tileKeys.length - 6) KDEditorTileNameIndex = 0
+		if (KDEditorTileNameIndex >= tileKeys.length - 6) KDEditorTileNameIndex = 0;
 		else KDEditorTileNameIndex = Math.min(tileKeys.length - 4, KDEditorTileNameIndex + 9);
 		KDTELoadConfirm = false;
 		return true;

@@ -1007,11 +1007,38 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("copyperks", (bdata) => {
 			let txt = "";
 			for (let k of KinkyDungeonStatsChoice.keys()) {
-				if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "\n" : "") + TextGet(k);
+				if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "\n" : "") + k;
 			}
 			navigator.clipboard.writeText(txt);
 			return true;
-		}, true, 1780, 930, 150, 54, TextGet("KinkyDungeonCopyPerks"), "#ffffff", "");
+		}, true, 1850, 930, 140, 54, TextGet("KinkyDungeonCopyPerks"), "#ffffff", "");
+
+		DrawButtonKDEx("pasteperks", (bdata) => {
+			navigator.clipboard.readText()
+				.then(text => {
+					let list = text.split('\n');
+					let changed = 1;
+					let iter = 0;
+					while (changed > 0 && iter < 1000) {
+						changed = 0;
+						for (let l of list) {
+							let lp = l.replace('\r','');// List processed
+							// Find the perk that matches the name
+							for (let perk of Object.entries(KinkyDungeonStatsPresets)) {
+								if (perk[0] == lp) {
+									KinkyDungeonStatsChoice.set(perk[0], true);
+									changed += 1;
+								}// else if (KinkyDungeonStatsChoice.get(perk[0])) KinkyDungeonStatsChoice.delete(perk[0])
+							}
+						}
+						iter += 1;
+					}
+				})
+				.catch(err => {
+					console.error('Failed to read clipboard contents: ', err);
+				});
+			return true;
+		}, true, 1700, 930, 140, 54, TextGet("KinkyDungeonPastePerks"), "#ffffff", "");
 
 
 		if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {

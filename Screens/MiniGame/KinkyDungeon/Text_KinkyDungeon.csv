@@ -388,7 +388,8 @@ KinkyDungeonStatClearheaded,"Clearheaded"
 KinkyDungeonStatDescClearheaded,"Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction."
 
 
-KinkyDungeonCopyPerks,Copy to Clipboard
+KinkyDungeonCopyPerks,Copy (clipboard)
+KinkyDungeonPastePerks,Paste (clipboard)
 
 
 KDConductionDamageTaken,DAMAGEDEALT electric damage conducts to you!!!

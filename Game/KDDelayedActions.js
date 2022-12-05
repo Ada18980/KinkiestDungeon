@@ -36,6 +36,10 @@ let KDDelayedActionCommit = {
 		if (KinkyDungeonGetInventoryItem(action.data.Name))
 			KinkyDungeonUseConsumable(action.data.Name, action.data.Quantity);
 	},
+	"Armor": (action) => {
+		if (KinkyDungeonGetInventoryItem(action.data.Name))
+			KinkyDungeonUseConsumable(action.data.Name, action.data.Quantity);
+	},
 	"Struggle": (action) => {
 		/**
 		 * Data format:
