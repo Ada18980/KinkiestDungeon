@@ -365,7 +365,7 @@ const KinkyDungeonRestraints = [
 		Group: "ItemArms", power: 10, weight: -10, bindarms: true, bindhands: true, strictness: 0.3, LinkableBy: ["Wrapping"],
 		limitChance: {"Struggle": 0.12, "Cut": 0.1, "Remove": 0.15, "Unlock": 0.75},
 		escapeChance: {"Struggle": -0.175, "Cut": 0.1, "Remove": 0.1, "Pick": 0.15},
-		enemyTags: {"nurseRestraints": 1}, playerTags: {"ItemArmsFull":9.1, "AsylumJacketWorn": 20}, minLevel: 0, maxwill: 0.30, allFloors: true, shrine: ["Straitjackets", "TransportJackets", "Leather"]},
+		enemyTags: {"nurseRestraints": 1}, playerTags: {"ItemArmsFull":10, "AsylumJacketWorn": 20}, minLevel: 0, maxwill: 0.1, allFloors: true, shrine: ["Straitjackets", "TransportJackets", "Leather"]},
 
 	{renderWhenLinked: ["Belts"], inventory: true, name: "AsylumLegbinder", debris: "Belts", inaccessible: true, Asset: "LegBinder", LinkableBy: ["Hobbleskirts", "Belts"], Color: "Default", Group: "ItemLegs", blockfeet: true,
 		power: 6, weight: 2, escapeChance: {"Struggle": -0.2, "Cut": 0.1, "Remove": 0.3, "Pick": 0.25}, enemyTags: {"nurseRestraints": 1}, playerTags: {"ItemArmsFull":3},
