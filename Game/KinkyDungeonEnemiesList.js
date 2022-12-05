@@ -1166,7 +1166,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},
 		],
 	},
-	{name: "MonsterRope", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["ropeTrap", "ignoreharmless", "doortrap", "construct", "poisonresist", "soulimmune", "melee", "unstoppable", "ropeRestraints", "ropeRestraints2", "elite", "fireweakness", "slashweakness", "chainresist", "hunter"]), ignorechance: 0.75, followRange: 1, AI: "guard",
+	{name: "MonsterRope", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["ropeTrap", "ignoreharmless", "doortrap", "construct", "poisonresist", "soulimmune", "melee", "unstoppable", "ropeRestraintsHogtie", "ropeRestraints", "ropeRestraints2", "elite", "fireweakness", "slashweakness", "chainresist", "hunter"]), ignorechance: 0.75, followRange: 1, AI: "guard",
 		ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], disarm: 0.5, ignoreStaminaForBinds: true,
 		visionRadius: 6, maxhp: 20, minLevel: 3, weight:0, movePoints: 3, attackPoints: 2, attack: "MeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 5, multiBind: 6, dmgType: "grope", fullBoundBonus: 6,
 		terrainTags: {"secondhalf":1, "lastthird":4, "increasingWeight":2, "trap": 20}, allFloors: true, shrines: ["Rope"],
