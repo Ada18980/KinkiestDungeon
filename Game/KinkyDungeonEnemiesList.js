@@ -1008,7 +1008,7 @@ let KinkyDungeonEnemies = [
 
 
 
-	{name: "Gag", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["leatherTrap", "ignoregagged", "construct", "poisonresist", "soulimmune", "melee", "ballGagRestraints", "gagSpell", "minor", "chainresist", "doortrap", "flying"]),
+	{name: "Gag", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["leatherTrap", "ropeTrap", "ignoregagged", "construct", "poisonresist", "soulimmune", "melee", "ballGagRestraints", "gagSpell", "minor", "chainresist", "doortrap", "flying"]),
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Gag"], failAttackflag: ["FA_Gag"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
@@ -1056,7 +1056,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
 	},
-	{name: "AnimBlindfold", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["leatherTrap", "ignoreharmless", "construct", "poisonresist", "soulimmune", "melee", "blindfoldSpell", "minor", "chainresist", "doortrap", "flying"]),
+	{name: "AnimBlindfold", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["leatherTrap", "ropeTrap", "ignoreharmless", "construct", "poisonresist", "soulimmune", "melee", "blindfoldSpell", "minor", "chainresist", "doortrap", "flying"]),
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["FA_BF"], failAttackflag: ["FA_BF"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
