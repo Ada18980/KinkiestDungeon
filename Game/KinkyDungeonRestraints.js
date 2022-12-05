@@ -2970,7 +2970,7 @@ function KDAddDelayedStruggle(amount, time, StruggleType, struggleGroup, index, 
 	let cur = progress;
 	for (let t = 1; t <= time; t++) {
 		let plus = amount/time * Math.max(0, 1 - (limit > 0 ? (cur / limit) : 1));
-		if (plus > 0 && plus < 0.01) plus = 0.01;
+		if (plus > 0 && plus < 0.04) plus = 0.04;
 		cur += plus;
 		KDAddDelayedAction({
 			commit: "Struggle",
