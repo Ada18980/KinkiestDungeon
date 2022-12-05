@@ -205,7 +205,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, maxhp: 8, minLevel:0, weight:-2, movePoints: 2, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "tickle", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":1, "lastthird":1, "illusionAnger": 22, "illusionRage": 12, "increasingWeight":-1, "maid": 9}, shrines: ["Illusion"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}, {name: "Knife", ignoreInInventory: true, weight: 3}, {name: "SmokeBomb", weight: 3}]},
-	{name: "MaidforcePara", faction: "Maidforce", bound: "MaidforcePara", clusterWith: "maid", playLine: "DomMaid", color: "#814BB7", tags: KDMapInit(["leashing", "opendoors", "tickleweakness", "guardCall", "human", "elite", "maid", "ranged", "ropeRestraints", "ropeRestraints2", "handcuffer", "maidVibeRestraintsLimited", "maidRestraintsLight", "hunter"]), followLeashedOnly: true, blindSight: 5, followRange: 4, AI: "hunt", guardChance: 0.6, projectileAttack: true,
+	{name: "MaidforcePara", faction: "Maidforce", bound: "MaidforcePara", clusterWith: "maid", playLine: "DomMaid", color: "#814BB7", tags: KDMapInit(["leashing", "opendoors", "tickleweakness", "guardCall", "human", "miniboss", "maid", "ranged", "ropeRestraints", "ropeRestraints2", "handcuffer", "maidVibeRestraintsLimited", "maidRestraintsLight", "hunter"]), followLeashedOnly: true, blindSight: 5, followRange: 4, AI: "hunt", guardChance: 0.6, projectileAttack: true,
 		spells: ["ParasolBuff", "Hairpin", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, spellCooldownMult: 1, spellCooldownMod: 0, buffallies: true, kite: 2.5,
 		stealth: 3, disarm: 0.5, spellRdy: true,
 		visionRadius: 8, maxhp: 10, minLevel:0, weight:-2, movePoints: 2, attackPoints: 3, attack: "SpellMeleeWillBindLock", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope",
@@ -234,7 +234,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 7, maxhp: 14, minLevel:4, weight:-9, movePoints: 3, attackPoints: 3, attack: "SpellMeleeWillBindLock", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "pain", fullBoundBonus: 3,
 		terrainTags: {"secondhalf":1, "lastthird":1, "open": 6, "illusionAnger": 12, "illusionRage": 5, "latexAnger": 4, "maid": 5}, shrines: ["Illusion"], allFloors: true, attackLock: "Red",
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "RedKey", weight: 2}, {name: "Pick", weight: 4}]},
-	{name: "MaidforceHead", faction: "Maidforce", bound: "MaidforceHead", clusterWith: "maid", color: "#814BB7", playLine: "HeadMaid", tags: KDMapInit(["leashing", "guardCall", "tickleweakness", "opendoors", "human", "maid", "unflinching", "miniboss", "ranged", "maidRestraints", "maidVibeRestraints", "handcuffer", "maidCollar", "jail", "hunter"]), followLeashedOnly: true, followRange: 3.5, AI: "hunt", guardChance: 0.6, projectileAttack: true,
+	{name: "MaidforceHead", faction: "Maidforce", bound: "MaidforceHead", clusterWith: "maid", color: "#814BB7", playLine: "HeadMaid", tags: KDMapInit(["leashing", "guardCall", "tickleweakness", "opendoors", "human", "maid", "unflinching", "boss", "ranged", "maidRestraints", "maidVibeRestraints", "handcuffer", "maidCollar", "jail", "hunter"]), followLeashedOnly: true, followRange: 3.5, AI: "hunt", guardChance: 0.6, projectileAttack: true,
 		spells: ["AmpuleGreen", "Hairpin", "RestrainingDevice"], spellCooldownMult: 1, spellCooldownMod: 0, hitsfx: "Tickle", disarm: 1, ignoreStaminaForBinds: true, sneakThreshold: 1, focusPlayer: true,
 		useLock: "Red", kite: 2.5,
 		RemoteControl: {
