@@ -1006,7 +1006,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "Gag", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["leatherTrap", "ignoregagged", "construct", "poisonresist", "soulimmune", "melee", "ballGagRestraints", "gagSpell", "minor", "chainresist", "doortrap", "flying"]),
-		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], squeeze: true, ignoreStaminaForBinds: true,
+		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Gag"], failAttackflag: ["FA_Gag"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
 		},
@@ -1018,7 +1018,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "AnimLegbinder", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["leatherTrap", "ignoreharmless", "construct", "poisonresist", "soulimmune", "melee", "legbinderSpell", "minor", "chainresist", "doortrap", "flying"]),
-		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], squeeze: true, ignoreStaminaForBinds: true,
+		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Legb"], failAttackflag: ["FA_Legb"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
 		},
@@ -1030,7 +1030,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "AnimArmbinder", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["leatherTrap", "ignoreharmless", "construct", "poisonresist", "soulimmune", "melee", "armbinderSpell", "minor", "chainresist", "doortrap", "flying"]),
-		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], squeeze: true, ignoreStaminaForBinds: true,
+		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Armb"], failAttackflag: ["FA_Armb"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
 		},
@@ -1042,7 +1042,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "AnimHarness", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["leatherTrap", "ignoreharmless", "construct", "poisonresist", "soulimmune", "melee", "harnessSpell", "minor", "chainresist", "doortrap", "flying"]),
-		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], squeeze: true, ignoreStaminaForBinds: true,
+		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Harness"], failAttackflag: ["FA_Harness"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
 		},
@@ -1054,7 +1054,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "AnimBlindfold", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["leatherTrap", "ignoreharmless", "construct", "poisonresist", "soulimmune", "melee", "blindfoldSpell", "minor", "chainresist", "doortrap", "flying"]),
-		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], squeeze: true, ignoreStaminaForBinds: true,
+		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["FA_BF"], failAttackflag: ["FA_BF"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
 		},
@@ -1066,7 +1066,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "AnimStraitjacket", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["leatherTrap", "ignoreharmless", "construct", "poisonresist", "soulimmune", "melee", "jacketSpell", "minor", "chainresist", "doortrap", "flying"]),
-		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], squeeze: true, ignoreStaminaForBinds: true,
+		ignorechance: 0.75, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Jacket"], failAttackflag: ["FA_Jacket"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
 		},
@@ -1078,7 +1078,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "Cuffs", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["metalTrap", "doortrap", "ignoreharmless", "construct", "poisonimmune", "soulimmune", "melee", "cuffsSpell", "minor", "chainresist", "meleeresist", "glueweakness", "iceweakness", "flying"]), ignorechance: 0.75,
-		armor: 1, followRange: 1, AI: "hunt",  ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], squeeze: true, ignoreStaminaForBinds: true,
+		armor: 1, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Cuffs"], failAttackflag: ["FA_Cuffs"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
 		},
@@ -1089,7 +1089,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "AnimChastity", arousalMode: true, faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["metalTrap", "ignoreharmless", "doortrap", "construct", "poisonimmune", "soulimmune", "melee", "chastitySpell", "minor", "chainresist", "meleeresist", "glueweakness", "iceweakness", "flying"]), ignorechance: 0.75,
-		armor: 2, followRange: 1, AI: "hunt",  ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], squeeze: true, ignoreStaminaForBinds: true,
+		armor: 2, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Chastity"], failAttackflag: ["FA_Chastity"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
 		},
@@ -1100,7 +1100,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "AnimYoke", arousalMode: true, faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["metalTrap", "ignoreharmless", "doortrap", "construct", "poisonimmune", "soulimmune", "melee", "yokeSpell", "minor", "chainresist", "meleeresist", "glueweakness", "iceweakness", "flying"]), ignorechance: 0.75,
-		armor: 2, followRange: 1, AI: "hunt",  ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"], squeeze: true, ignoreStaminaForBinds: true,
+		armor: 2, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Yoke"], failAttackflag: ["FA_Yoke"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
 		},
@@ -1111,7 +1111,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "Lock", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["metalTrap", "leatherTrap", "ignorenoSP", "lock", "construct", "poisonimmune", "soulimmune", "melee", "minor", "chainresist", "meleeresist", "glueweakness", "iceweakness", "doortrap", "flying"]), difficulty: 0.2,
-		ignorechance: 0.75, armor: 1, followRange: 1, AI: "hunt",  ignoreflag: ["lockignore"], failAttackflag: ["lockignore"], squeeze: true, suicideOnLock: true,
+		ignorechance: 0.75, armor: 1, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Lock"], failAttackflag: ["FA_Lock"], squeeze: true, suicideOnLock: true,
 		Attack: {
 			mustBindorFail: true,
 		},
