@@ -2910,6 +2910,10 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 		destroyChance = restraint.cutProgress / progress;
 	}
 	let destroy = false;
+
+	KinkyDungeonFastStruggleType = "";
+	KinkyDungeonFastStruggleGroup = "";
+
 	if (StruggleType == "Pick" || StruggleType == "Unlock") {
 		if (StruggleType == "Unlock") {
 			if (lockType && lockType.canUnlock(data)) {
