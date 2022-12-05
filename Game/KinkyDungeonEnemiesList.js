@@ -243,7 +243,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "afterEnemyTick", type: "maidforceHeadAura", dist: 1.5},
 		],
-		visionRadius: 8, maxhp: 28, minLevel:6, weight:-14, movePoints: 2, attackPoints: 2, attack: "SpellMeleeWillBindLockAllVibe", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 1.5, dmgType: "charm", fullBoundBonus: 1,
+		visionRadius: 8, maxhp: 28, minLevel:6, weight:-14, movePoints: 2, attackPoints: 2, attack: "SpellMeleeWillBindLockAllVibe", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 1.5, dmgType: "tickle", fullBoundBonus: 1,
 		terrainTags: {"secondhalf":1, "lastthird":1, "open": 4, "illusionAnger": 10, "illusionRage": 4, "maid": 12}, shrines: ["Illusion"], allFloors: true, attackLock: "Red",
 		dropTable: [{name: "Gold", amountMin: 30, amountMax: 40, weight: 20}, {name: "RedKey", weight: 10}, {name: "Pick", weight: 6}, {name: "EnchKnife", ignoreInInventory: true, weight: 1}]},
 
