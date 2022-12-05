@@ -32,6 +32,10 @@ let KDDelayedActionUpdate = {
  * @type {Record<string, (action: KDDelayedAction) => void>}
  */
 let KDDelayedActionCommit = {
+	"Consumable": (action) => {
+		if (KinkyDungeonGetInventoryItem(action.data.Name))
+			KinkyDungeonUseConsumable(action.data.Name, action.data.Quantity);
+	},
 	"Struggle": (action) => {
 		/**
 		 * Data format:

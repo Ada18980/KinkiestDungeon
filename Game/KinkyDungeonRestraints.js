@@ -2960,7 +2960,6 @@ function KDAddDelayedStruggle(amount, time, StruggleType, struggleGroup, index, 
 				escapeData: data,
 			},
 			time: t,
-			type: "Struggle",
 			tags: ["Action", "Remove", "Restrain", "Hit"],
 		});
 	}

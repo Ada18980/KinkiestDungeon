@@ -260,12 +260,34 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 	if (KDConsumable(item).postreq && KDConsumablePrereq[KDConsumable(item).postreq]) {
 		if (KDConsumablePrereq[KDConsumable(item).postreq](item, Quantity)) {
 			KDDelayedActionPrune(["Action", "Consume"]);
-			KinkyDungeonUseConsumable(Name, Quantity);
+			if (KDConsumable(item.item).potion && KinkyDungeonStatsChoice.has("SavourTheTaste")) {
+				KDAddDelayedAction({
+					commit: "Consumable",
+					data: {
+						Name: Name,
+						Quantity: Quantity,
+					},
+					time: 2,
+					tags: ["Action", "Remove", "Restrain"],
+				});
+				KDStunTurns(2);
+			} else KinkyDungeonUseConsumable(Name, Quantity);
 			return true;
 		} else return false;
 	}
 	KDDelayedActionPrune(["Action", "Consume"]);
-	KinkyDungeonUseConsumable(Name, Quantity);
+	if (KDConsumable(item.item).potion && KinkyDungeonStatsChoice.has("SavourTheTaste")) {
+		KDAddDelayedAction({
+			commit: "Consumable",
+			data: {
+				Name: Name,
+				Quantity: Quantity,
+			},
+			time: 2,
+			tags: ["Action", "Remove", "Restrain"],
+		});
+		KDStunTurns(2);
+	} else KinkyDungeonUseConsumable(Name, Quantity);
 	return true;
 }
 
@@ -283,11 +305,5 @@ function KinkyDungeonUseConsumable(Name, Quantity) {
 	if (KDConsumable(item.item).sfx) {
 		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/" + KDConsumable(item.item).sfx + ".ogg");
 	}
-
-	if (KDConsumable(item.item).potion && KinkyDungeonStatsChoice.has("SavourTheTaste")) {
-		KinkyDungeonAdvanceTime(1);
-		KinkyDungeonSlowMoveTurns = 1;
-	}
-
 	return true;
 }

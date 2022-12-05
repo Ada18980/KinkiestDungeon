@@ -1769,7 +1769,6 @@ interface KDCursedVar {
 }
 
 interface KDDelayedAction {
-	type: string,
 	data: any,
 	time: number,
 	commit: string,
