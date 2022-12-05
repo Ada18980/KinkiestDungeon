@@ -1690,17 +1690,19 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 		let ty = t.y;
 		//  && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(tx, ty))
 		if (tx >= CamX && ty >= CamY && tx < CamX + KinkyDungeonGridWidthDisplay && ty < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(tx, ty) > 0) {
-			if (t.color)
-				KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w" + t.color, KinkyDungeonRootDirectory + "WarningColorSpecialBasic.png",
-					(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
-						tint: string2hex(t.color),
-						zindex: 1.31,
-					});
-			else
-				KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w", KinkyDungeonRootDirectory + "WarningSpecialBasic.png",
-					(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonSpriteSize, KinkyDungeonSpriteSize);
+			KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w" + t.color, KinkyDungeonRootDirectory + "WarningColorSpecial.png",
+				(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
+				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+					tint: string2hex(t.color || "#ff5555"),
+					zIndex: 1.31,
+				});
+			KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_b" + t.color, KinkyDungeonRootDirectory + "WarningBacking.png",
+				(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
+				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+					tint: string2hex(t.color || "#ff5555"),
+					zIndex: -0.2,
+					alpha: 0.75
+				});
 		}
 	}
 

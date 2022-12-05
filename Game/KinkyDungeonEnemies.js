@@ -578,7 +578,8 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 							tint: color,
-							zIndex: (preHit ? -0.2 : 0.1) + 0.001 * (enemy.Enemy.power ? enemy.Enemy.power : 0),
+							zIndex: -0.2 + 0.001 * (enemy.Enemy.power ? enemy.Enemy.power : 0),
+							alpha: preHit ? 0.5 : 0.9,
 						});
 					KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_h" + enemy.id, KinkyDungeonRootDirectory + ((KDAllied(enemy)) ? "WarningHighlightAlly" : "WarningHighlight" + special) + ".png",
 						(tx - CamX)*KinkyDungeonGridSizeDisplay - 1, (ty - CamY)*KinkyDungeonGridSizeDisplay - 1,
