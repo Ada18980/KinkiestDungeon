@@ -1180,6 +1180,8 @@ Features
 - Changes to the log to fit more text
 - Captures yield less rep when you already have high rep
 - Cutting restraints now makes debris
+- Can now paste copied perks
+- Struggling now takes more time but requires less click spam
 
 
 TODO ValidationFindBlockCycles to prevent bugs
