@@ -2026,6 +2026,7 @@ function KinkyDungeonUpdateRestraints(delta) {
 		if (group) {
 			if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
 			playerTags.set(group + "Full", true);
+			playerTags.set(inv.name + "Worn", true);
 		}
 	}
 	for (let sg of KinkyDungeonStruggleGroupsBase) {
