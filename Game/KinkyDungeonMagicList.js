@@ -1164,7 +1164,7 @@ let KinkyDungeonSpellListEnemies = [
 			name: "Sparks",
 			duration: 3,
 		},
-		school: "Elements", manacost: 4, components: ["Arms"], level:2, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 4.0, delay: 0, time: 1, range: 4, speed: 4, size: 1, damage: "electric",
+		school: "Elements", manacost: 4, components: ["Arms"], level:2, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 2.0, delay: 0, time: 1, range: 4, speed: 4, size: 1, damage: "electric",
 		trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1.0, playerEffect: {name: "Shock", time: 1}},
 
 
