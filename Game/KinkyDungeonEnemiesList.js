@@ -1174,8 +1174,8 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, maxhp: 20, minLevel: 3, weight:0, movePoints: 3, attackPoints: 3, attack: "MeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 5, multiBind: 6, dmgType: "grope", fullBoundBonus: 6,
 		terrainTags: {"secondhalf":1, "lastthird":4, "increasingWeight":2, "trap": 20}, allFloors: true, shrines: ["Rope"],
 		ondeath: [
-			{type: "summon", enemy: "RopeSnake", range: 2.5, count: 3, strict: true},
-			{type: "summon", enemy: "LearnedRope", range: 2.5, count: 1, strict: true},
+			{type: "summon", enemy: "RopeSnake", range: 2.5, count: 3, strict: true, lifetime: 30},
+			{type: "summon", enemy: "LearnedRope", range: 2.5, count: 1, strict: true, lifetime: 30},
 		],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},

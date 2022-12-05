@@ -685,7 +685,10 @@ function KDSpawnLootTrap(x, y, trap, mult, duration) {
 			if (Enemy) {
 				let pass = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, (duration || Enemy.tags.construct) ? (duration || 40) : undefined, undefined, false, "Ambush", true, 1.5, true, undefined, true, true);
 				if (pass) {
-					if (Enemy.tags.minor) spawned += 0.4;
+					if (Enemy.tags.minor) spawned += 0.5;
+					else if (Enemy.tags.elite) spawned += 1.5;
+					else if (Enemy.tags.miniboss) spawned += 2;
+					else if (Enemy.tags.boss) spawned += 4;
 					else spawned += 1;
 				}
 			}
@@ -712,11 +715,11 @@ function KDGenChestTrap(guaranteed, x, y, chestType, lock, noTrap) {
 let KDTrapChestType = {
 	"default" : (guaranteed, x, y, chestType, lock, noTrap) => {
 		if (KDRandom() < 0.33)
-			return {trap: "metalTrap", mult: 1.25};
+			return {trap: "metalTrap", mult: 1};
 		else if (KDRandom() < 0.34)
-			return {trap: "leatherTrap", mult: 1.25};
+			return {trap: "leatherTrap", mult: 1.2};
 		else
-			return {trap: "ropeTrap", mult: 1.5};
+			return {trap: "ropeTrap", mult: 1.4};
 	},
 	"shadow" : (guaranteed, x, y, chestType, lock, noTrap) => {
 		return {trap: "shadowTrap", mult: 2.5, duration: 300};
