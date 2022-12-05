@@ -3988,6 +3988,11 @@ KinkyDungeonColumnPassive,"Misc"
 KinkyDungeonColumnElements,"Elements"
 KinkyDungeonColumnConjure,"Conjuration"
 KinkyDungeonColumnIllusion,"Illusion"
+KinkyDungeonColumnOther,"Other"
+KinkyDungeonColumnStrength,"Strength"
+KinkyDungeonColumnDexterity,"Dexterity"
+KinkyDungeonColumnIntelligence,"Intelligence"
+KinkyDungeonColumnMisc,"Misc"
 
 KinkyDungeonFilterlearnable,Learnable
 KinkyDungeonFilterunlearned,Unlearned
@@ -4026,6 +4031,11 @@ KinkyDungeonFilterknowledge,Knowledge
 KinkyDungeonFilterutility,Utility
 KinkyDungeonFilterupgrade,Upgrades
 KinkyDungeonFiltermagic,Spell Tree
+KinkyDungeonFilterwill,Willpower
+KinkyDungeonFilterstamina,Stamina
+KinkyDungeonFiltermana,Magic
+KinkyDungeonFilterdamage,Damage
+KinkyDungeonFilterdistract,Distraction
 
 KDSpellEmpower,Empower to upcast spells
 KDSpellEmpowerCancel,Cancel empowerment
@@ -4473,6 +4483,18 @@ KinkyDungeonSpellDescriptionSPUp1,Increases maximum SP by 12
 
 KinkyDungeonSpellIronWill,Iron Will
 KinkyDungeonSpellDescriptionIronWill,"While you have 100 willpower or more, regain an additional 4 stamina per turn."
+KinkyDungeonSpellAthlete,Athlete
+KinkyDungeonSpellDescriptionAthlete,"Sprinting costs 40% less stamina."
+KinkyDungeonSpellSneaky,Sneaky
+KinkyDungeonSpellDescriptionSneaky,"You are harder to see when waiting."
+KinkyDungeonSpellEvasive1,Dodge I
+KinkyDungeonSpellDescriptionEvasive1,"+10% evasion"
+KinkyDungeonSpellEvasive2,Dodge II
+KinkyDungeonSpellDescriptionEvasive2,"+15% evasion (25 total)"
+KinkyDungeonSpellEvasive3,Dodge III
+KinkyDungeonSpellDescriptionEvasive3,"+25% evasion (50 total)"
+KinkyDungeonSpellCriticalStrike,Critical Strike
+KinkyDungeonSpellDescriptionCriticalStrike,"Excess accuracy (over 100%) is converted to bonus physical damage at 50% efficiency."
 
 KinkyDungeonSpellOneWithSlime,One With Slime
 KinkyDungeonSpellDescriptionOneWithSlime,"While standing on slime/latex, you can cast rubber spells without components."
@@ -5208,6 +5230,7 @@ KinkyDungeonSpellsPageUpgrade,"Spell Tree"
 KinkyDungeonSpellsPageElements,"Elemental Spells"
 KinkyDungeonSpellsPageConjure,"Conjuration Spells"
 KinkyDungeonSpellsPageIllusion,"Illusion Spells"
+KinkyDungeonSpellsPageUpgrades,"Upgrades"
 KinkyDungeonSpellsPage3,"Perks"
 KinkyDungeonSpellsPage4,"Perks II"
 KinkyDungeonSpellsPage5,"Perks III"

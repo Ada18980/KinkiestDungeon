@@ -1823,6 +1823,7 @@ let KDPrereqs = {
 	"silenced": (enemy, e, data) => {return enemy.silence > 0;},
 	"disarmed": (enemy, e, data) => {return enemy.disarm > 0;},
 	"bound": (enemy, e, data) => {return enemy.boundLevel > 0;},
+	"Waiting": (enemy, e, data) => {return (enemy && !enemy.player) ? enemy.idle : KinkyDungeonLastTurnAction == "Wait";},
 	"damageType": (enemy, e, data) => {
 		switch (e.kind) {
 			case "melee": return KinkyDungeonMeleeDamageTypes.includes(data.Damage?.type);

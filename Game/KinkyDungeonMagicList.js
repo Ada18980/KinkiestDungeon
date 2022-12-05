@@ -36,14 +36,15 @@ let filtersExtra = [
 	["fire", "ice", "earth", "electric", "air", "water"],
 	["binding", "slime", "summon", "physics", "metal", "leather", "rope"],
 	["stealth", "light", "shadow", "knowledge"],
+	["will", "stamina", "mana", "damage"],
 ];
 
 let KDColumnLabels = [
-	["Elements", "Conjure", "Illusion", "Passive"],
+	["Elements", "Conjure", "Illusion", "Other"],
 	["Verbal", "Arms", "Legs", "Passive"],
 	["Verbal", "Arms", "Legs", "Passive"],
 	["Verbal", "Arms", "Legs", "Passive"],
-	[],
+	["Strength", "Dexterity", "Intelligence", "Misc"],
 ];
 
 let KinkyDungeonSpellPages = [
@@ -51,6 +52,7 @@ let KinkyDungeonSpellPages = [
 	"Elements",
 	"Conjure",
 	"Illusion",
+	"Upgrades",
 ];
 
 /**
@@ -67,8 +69,6 @@ let KinkyDungeonLearnableSpells = [
 		["ApprenticeRope", "ApprenticeLeather", "ApprenticeMetal", "ApprenticeLatex", "ApprenticePhysics", "ApprenticeSummon"],
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
-		// Misc
-		["SummonUp1", "SummonUp2", "IronWill", "StaffUser1", "StaffUser2", "StaffUser3"],
 	],
 
 	//Page 1: Elements
@@ -105,6 +105,18 @@ let KinkyDungeonLearnableSpells = [
 		["Evasion", "Camo", "Decoy"],
 		// Passive
 		["Analyze", "TrueSight", "EnemySense"],
+	],
+
+	//Page 4: Upgrades
+	[
+		// Strength
+		["IronWill"],
+		// Dex
+		["Athlete", "Sneaky", "Evasive1", "Evasive2", "Evasive3"],
+		// Intellect
+		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser2", "StaffUser3"],
+		// Misc
+		["CriticalStrike"],
 	],
 ];
 
@@ -157,7 +169,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "TemperaturePlay", tags: ["fire", "ice", "offense"], prerequisite: ["ApprenticeIce", "ApprenticeFire"], school: "Elements", spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "TemperaturePlay", trigger: "beforeDamageEnemy", power: 0.3},
 		]},
-		{name: "IronWill", tags: ["utility"], school: "Elements", spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+		{name: "IronWill", tags: ["will", "defense"], school: "Elements", spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "IronWill", trigger: "calcMaxStats", power: 0.4},
 		]},
 		{name: "StaffUser1", tags: ["utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
@@ -694,6 +706,26 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{goToPage: 3, name: "ApprenticeMystery", tags: ["magic"], autoLearn: ["Camo"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{goToPage: 3, name: "ApprenticeProjection", tags: ["magic"], autoLearn: ["Decoy"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{goToPage: 3, name: "ApprenticeKnowledge", tags: ["magic"], autoLearn: ["TrueSteel"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+
+		{name: "Athlete", tags: ["stamina", "utility"], school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Buff", trigger: "tick", power: 0.67, buffType: "SprintEfficiency"},
+		]},
+		{name: "Sneaky", tags: ["buff", "utility"], school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Buff", trigger: "tick", power: 0.5, prereq: "Waiting", buffType: "Sneak", mult: 1, tags: ["SlowDetection", "move", "cast"]},
+		]},
+		{name: "Evasive1", tags: ["buff", "defense"], school: "Illusion", spellPointCost: 1, hideLearned: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Buff", trigger: "tick", power: 0.1, buffType: "Evasion"},
+		]},
+		{name: "Evasive2", tags: ["buff", "defense"], school: "Illusion", spellPointCost: 1, hideLearned: true, prerequisite: "Evasive1", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Buff", trigger: "tick", power: 0.15, buffType: "Evasion"},
+		]},
+		{name: "Evasive3", tags: ["buff", "defense"], school: "Illusion", spellPointCost: 1, prerequisite: "Evasive2", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Buff", trigger: "tick", power: 0.25, buffType: "Evasion"},
+		]},
+		{name: "CriticalStrike", tags: ["damage", "offense", "buff"], school: "Illusion", spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+			{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+		]},
 
 		{name: "APUp1", hide: true, school: "Any", manacost: 0, components: [], level:2, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "APUp2", hide: true, school: "Any", manacost: 0, components: [], level:3, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},

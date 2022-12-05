@@ -914,7 +914,9 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		}
 	} else {
 		for (let rf of randomFactions) {
-			spawnBoxes.push({requiredTags: [KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.2, bias: rf == factionEnemy ? 2 : 1});
+			spawnBoxes.push({requiredTags: [KinkyDungeonFactionTag[rf]], filterTags: ["boss", "miniboss"], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.15, bias: rf == factionEnemy ? 2 : 1});
+			spawnBoxes.push({requiredTags: ["miniboss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.1, bias: rf == factionEnemy ? 2 : 1});
+			spawnBoxes.push({requiredTags: ["boss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.01, bias: rf == factionEnemy ? 2 : 1});
 		}
 	}
 
@@ -1050,6 +1052,10 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 					if (filterTags.includes(rtag)) filterTags.splice(filterTags.indexOf(rtag), 1);
 					required.push(rtag);
 				}
+				if (box.filterTags)
+					for (let ftag of box.filterTags) {
+						if (!filterTags.includes(ftag)) filterTags.push(ftag);
+					}
 			}
 			for (let tag of box.tags) {
 				if (filterTags.includes(tag)) filterTags.splice(filterTags.indexOf(tag), 1);
@@ -3457,7 +3463,8 @@ function KinkyDungeonMoveTo(moveX, moveY, SuppressSprint) {
 				}
 			}
 			if (unblocked) {
-				KinkyDungeonChangeStamina(-KDSprintCost - KDSprintCostSlowLevel[Math.round(KinkyDungeonSlowLevel)], false, 1);
+				let sprintCostMult = KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SprintEfficiency"));
+				KinkyDungeonChangeStamina((-KDSprintCost - KDSprintCostSlowLevel[Math.round(KinkyDungeonSlowLevel)]) * sprintCostMult, false, 1);
 				KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
 				if (KinkyDungeonSlowLevel < 2) {
 					// Move faster

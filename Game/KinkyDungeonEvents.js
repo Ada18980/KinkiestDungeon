@@ -149,7 +149,10 @@ let KDEventMapInventory = {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Evasion", type: "Evasion", power: e.power, duration: 2,});
 		},
 		"buff": (e, item, data) => {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + e.buff, type: e.buff, power: e.power, duration: 2,});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + e.buff, type: e.buff, power: e.power, duration: 2,
+				tags: e.tags,
+				currentCount: e.mult ? -1 : undefined,
+				maxCount: e.mult,});
 		},
 		"restraintBlock": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Block", type: "RestraintBlock", power: e.power, duration: 2,});
@@ -180,6 +183,9 @@ let KDEventMapInventory = {
 				id: item.name,
 				type: e.buffType,
 				power: e.power,
+				tags: e.tags,
+				currentCount: e.mult ? -1 : undefined,
+				maxCount: e.mult,
 				duration: 2
 			});
 		},
@@ -1584,12 +1590,16 @@ let KDEventMapSpell = {
 	},
 	"tick": {
 		"Buff": (e, spell, data) => {
-			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-				id: spell.name,
-				type: e.buffType,
-				power: e.power,
-				duration: 2
-			});
+			if (KDCheckPrereq(null, e.prereq, e, data))
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+					id: spell.name,
+					type: e.buffType,
+					power: e.power,
+					tags: e.tags,
+					currentCount: e.mult ? -1 : undefined,
+					maxCount: e.mult,
+					duration: 2
+				});
 		},
 		"SlimeMimic": (e, spell, data) => {
 			if (KinkyDungeonLastAction == "Wait"
@@ -1742,6 +1752,14 @@ let KDEventMapSpell = {
 				}
 			}
 		},
+		"CritBoost": (e, spell, data) => {
+			if (data.eva&& !data.miss && !data.disarm && data.targetX && data.targetY && data.enemy && KDHostile(data.enemy)) {
+				if (KDCheckPrereq(null, e.prereq, e, data)) {
+					let power = Math.max(0, Math.max(((KinkyDungeonPlayerDamage.chance || 0) - 1)*e.power));
+					data.buffdmg = Math.max(0, data.buffdmg + (KinkyDungeonPlayerDamage.dmg || 0) * power);
+				}
+			}
+		},
 	},
 	"calcDisplayDamage": {
 		"BoostDamage": (e, spell, data) => {
@@ -1749,6 +1767,12 @@ let KDEventMapSpell = {
 				if (KDCheckPrereq(null, e.prereq, e, data)) {
 					data.buffdmg = Math.max(0, data.buffdmg + e.power);
 				}
+			}
+		},
+		"CritBoost": (e, spell, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data)) {
+				let power = Math.max(0, Math.max(((KinkyDungeonPlayerDamage.chance || 0) - 1)*e.power));
+				data.buffdmg = Math.max(0, data.buffdmg + (KinkyDungeonPlayerDamage.dmg || 0) * power);
 			}
 		},
 	},
@@ -2024,21 +2048,29 @@ let KDEventMapWeapon = {
 			}
 		},
 		"Buff": (e, weapon, data) => {
-			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-				id: weapon.name,
-				type: e.buffType,
-				power: e.power,
-				duration: 2
-			});
-		},
-		"BuffMulti": (e, weapon, data) => {
-			for (let buff of e.buffTypes)
+			if (KDCheckPrereq(null, e.prereq, e, data))
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-					id: weapon.name + buff,
-					type: buff,
+					id: weapon.name,
+					type: e.buffType,
 					power: e.power,
+					tags: e.tags,
+					currentCount: e.mult ? -1 : undefined,
+					maxCount: e.mult,
 					duration: 2
 				});
+		},
+		"BuffMulti": (e, weapon, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data))
+				for (let buff of e.buffTypes)
+					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+						id: weapon.name + buff,
+						type: buff,
+						power: e.power,
+						tags: e.tags,
+						currentCount: e.mult ? -1 : undefined,
+						maxCount: e.mult,
+						duration: 2
+					});
 		},
 
 		"AoEDamageFrozen": (e, weapon, data) => {

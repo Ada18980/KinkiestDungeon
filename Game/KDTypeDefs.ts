@@ -884,6 +884,7 @@ interface weapon {
 
 interface KinkyDungeonEvent {
 	cost?: number,
+	tags?: string[],
 	duration?: number,
 	always?: boolean,
 	type: string;

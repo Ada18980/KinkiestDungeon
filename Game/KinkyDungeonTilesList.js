@@ -64,17 +64,23 @@ let KDMoveObjectFunctions = {
 				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFeet"), "#88ff88", 2);
 				open = true;
 			} else {
+				let grace = 0;
+				if (KinkyDungeonFlags.get("failUnfairFirst") && !KinkyDungeonFlags.get("failUnfair")) grace = 0.4;
 				let armsbound = KinkyDungeonIsArmsBound(true, true);
-				if (KDRandom() < (armsbound ? KDDoorKnobChance : KDDoorKnobChanceArms)) {
+				if (KDRandom() - grace < (armsbound ? KDDoorKnobChance : KDDoorKnobChanceArms)) {
 					KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobSuccess" + ((armsbound) ? "" : "Arms")), "#88ff88", 2);
 					open = true;
-				} else if (KDRandom() < (armsbound ? KDDoorAttractChance : KDDoorAttractChanceArms) && DialogueBringNearbyEnemy(moveX, moveY, 10)) {
+				} else if (KDRandom() - grace < (armsbound ? KDDoorAttractChance : KDDoorAttractChanceArms) && DialogueBringNearbyEnemy(moveX, moveY, 10)) {
 					KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobAttract" + ((armsbound) ? "" : "Arms")), "#ff5555", 2);
 					KinkyDungeonMakeNoise(armsbound ? 6 : 3, moveX, moveY);
 					open = true;
 				} else {
 					KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFail" + (armsbound ? "" : "Arms")), "#ff5555", 2);
 					KinkyDungeonMakeNoise(armsbound ? 6 : 3, moveX, moveY);
+					if (!KinkyDungeonFlags.get("failUnfairFirst")) {
+						KinkyDungeonSetFlag("failUnfair", 5);
+						KinkyDungeonSetFlag("failUnfairFirst", 10);
+					}
 					if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Locked.ogg");
 				}
 			}

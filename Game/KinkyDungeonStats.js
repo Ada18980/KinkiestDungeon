@@ -180,7 +180,7 @@ let KDClassStart = {
 		KinkyDungeonSpellPoints = 1;
 		KinkyDungeonRedKeys = 1;
 		KinkyDungeonLockpicks = 1;
-		KinkyDungeonGold = 100;
+		KinkyDungeonGold = 150;
 
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, 1);
@@ -194,9 +194,10 @@ let KDClassStart = {
 		KDSetWeapon("Dirk");
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("SPUp1"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("SPUp1"));
-		KinkyDungeonSpellPoints = 2;
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CriticalStrike"));
+		KinkyDungeonSpellPoints = 1;
 		KinkyDungeonLockpicks = 2;
-		KinkyDungeonGold = 50;
+		KinkyDungeonGold = 100;
 
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, 2);
@@ -212,7 +213,7 @@ let KDClassStart = {
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("MPUp1"));
 		KinkyDungeonSpellPoints = 3;
 		KinkyDungeonRedKeys = 1;
-		KinkyDungeonGold = 25;
+		KinkyDungeonGold = 100;
 
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 3);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, 1);
