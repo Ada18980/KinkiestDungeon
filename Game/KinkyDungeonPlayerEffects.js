@@ -569,7 +569,7 @@ function KinkyDungeonPlayerEffect(damage, playerEffect, spell, faction, bullet) 
 			KinkyDungeonSlowMoveTurns = 8;
 			KinkyDungeonStatBlind = 8;
 			KinkyDungeonSleepiness = 8;
-			KinkyDungeonAlert = 6;
+			KinkyDungeonAlert = 5;
 			effect = true;
 		} else if (playerEffect.name == "Drench") {
 			KinkyDungeonSendTextMessage(4, TextGet("KDEffectDrench"), "#9999ff", 3);

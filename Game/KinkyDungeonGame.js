@@ -978,7 +978,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		let AI = undefined;
 		let tags = [];
 
-		if (currentCluster && !(5 * KDRandom() < currentCluster.count)) {
+		if (currentCluster && !(2.5 * KDRandom() < currentCluster.count)) {
 			required.push(currentCluster.required);
 			X = currentCluster.x - 2 + Math.floor(KDRandom() * 5);
 			Y = currentCluster.y - 2 + Math.floor(KDRandom() * 5);

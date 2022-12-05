@@ -1856,7 +1856,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		KinkyDungeonLastAction = "Struggle";
 		if (StruggleType == "Struggle") {
 			KinkyDungeonMakeNoise(4, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
-			KinkyDungeonAlert = 4;
+			KinkyDungeonAlert = 3;
 		}
 		KinkyDungeonAdvanceTime(1);
 		if (Pass == "Success") KinkyDungeonCurrentEscapingItem = null;

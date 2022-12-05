@@ -552,7 +552,7 @@ let KinkyDungeonEnemies = [
 			{enemy: "WolfShieldDrone", range: 2, count: 1, chance: 0.5, strict: true},
 		],
 		spells: ["NevermereBoost", "SummonWolfDrone", "SummonWolfTapeDrone", "EnemyBlast"], spellCooldownMult: 0.5, spellCooldownMod: 0, buffallies: true, projectileTargeting: true,
-		AI: "hunt",  visionRadius: 10, maxhp: 40, minLevel:0, weight:-30, movePoints: 1.2, evasion: 0.2, bindOnDisable: true,
+		AI: "hunt",  visionRadius: 10, maxhp: 40, minLevel:5, weight:-30, movePoints: 1.2, evasion: 0.2, bindOnDisable: true,
 		RemoteControl: {
 			punishRemote: 5,
 			punishRemoteChance: 0.35,
