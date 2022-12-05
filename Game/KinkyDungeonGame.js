@@ -978,7 +978,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		let AI = undefined;
 		let tags = [];
 
-		if (currentCluster && !(2.5 * KDRandom() < currentCluster.count)) {
+		if (currentCluster && !(3 * KDRandom() < currentCluster.count)) {
 			required.push(currentCluster.required);
 			X = currentCluster.x - 2 + Math.floor(KDRandom() * 5);
 			Y = currentCluster.y - 2 + Math.floor(KDRandom() * 5);
@@ -1128,10 +1128,10 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 					e.items = Object.assign([], KDLoadouts[loadout].items);
 				}
 				if (!spawnPoint && !currentCluster && Enemy.clusterWith) {
-					let clusterChance = 0.2; //1.1 + 0.9 * MiniGameKinkyDungeonLevel/KinkyDungeonMaxLevel;
-					if (Enemy.tags.boss) clusterChance = 0.4;
-					else if (Enemy.tags.miniboss) clusterChance = 1.0;
-					else if (Enemy.tags.elite) clusterChance = 0.55;
+					let clusterChance = 0.5; //1.1 + 0.9 * MiniGameKinkyDungeonLevel/KinkyDungeonMaxLevel;
+					if (Enemy.tags.boss) clusterChance = 0;
+					else if (Enemy.tags.miniboss) clusterChance = 0;
+					else if (Enemy.tags.elite) clusterChance = 0.15;
 					//else if (Enemy.tags.elite || Enemy.tags.miniboss) clusterChance *= 0.6;
 					if (KDRandom() < clusterChance)
 						currentCluster = {
