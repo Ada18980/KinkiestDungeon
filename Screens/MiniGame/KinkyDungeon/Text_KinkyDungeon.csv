@@ -1348,8 +1348,9 @@ AttackMaidforcePara,"The maid caresses your breasts with a smile! (DamageTaken)"
 NameMaidforceHead,M.F. 'Master Plan'
 KillMaidforceHead,"The head maid surrenders gracefully."
 AttackMaidforceHeadBind,"The head maid suddenly whips out a restraint and locks it on! (+RestraintAdded)"
-AttackMaidforceHeadLock,"The head maid snaps her fingers and locks your restraints! (DamageTaken)"
+AttackMaidforceHeadLock,"The head maid snaps her fingers and you find your restraints locked! (DamageTaken)"
 AttackMaidforceHead,"The head maid tickles you strategically! (DamageTaken)"
+KDMaidforceHeadBelting,"You are distracted for a moment and suddenly you find yourself in chastity!"
 
 NameElementalFire,Fire Elemental
 KillElementalFire,"The fire elemental dissolves into ash."

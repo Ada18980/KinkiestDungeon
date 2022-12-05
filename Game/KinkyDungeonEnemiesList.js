@@ -229,18 +229,21 @@ let KinkyDungeonEnemies = [
 		useLock: "Red",
 		events: [
 			// It's supposed to be the light of the cigar
-			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffaa"},
+			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffaa00"},
 		],
 		visionRadius: 7, maxhp: 14, minLevel:4, weight:-9, movePoints: 3, attackPoints: 3, attack: "SpellMeleeWillBindLock", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "pain", fullBoundBonus: 3,
 		terrainTags: {"secondhalf":1, "lastthird":1, "open": 6, "illusionAnger": 12, "illusionRage": 5, "latexAnger": 4, "maid": 5}, shrines: ["Illusion"], allFloors: true, attackLock: "Red",
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "RedKey", weight: 2}, {name: "Pick", weight: 4}]},
-	{name: "MaidforceHead", faction: "Maidforce", bound: "MaidforceHead", clusterWith: "maid", color: "#814BB7", playLine: "HeadMaid", tags: KDMapInit(["leashing", "guardCall", "tickleweakness", "opendoors", "human", "maid", "unflinching", "miniboss", "ranged", "maidVibeRestraints", "maidCollar", "jail", "hunter"]), followLeashedOnly: true, followRange: 3.5, AI: "hunt", guardChance: 0.6, projectileAttack: true,
+	{name: "MaidforceHead", faction: "Maidforce", bound: "MaidforceHead", clusterWith: "maid", color: "#814BB7", playLine: "HeadMaid", tags: KDMapInit(["leashing", "guardCall", "tickleweakness", "opendoors", "human", "maid", "unflinching", "miniboss", "ranged", "maidRestraints", "maidVibeRestraints", "handcuffer", "maidCollar", "jail", "hunter"]), followLeashedOnly: true, followRange: 3.5, AI: "hunt", guardChance: 0.6, projectileAttack: true,
 		spells: ["AmpuleGreen", "Hairpin", "RestrainingDevice"], spellCooldownMult: 1, spellCooldownMod: 0, hitsfx: "Tickle", disarm: 1, ignoreStaminaForBinds: true, sneakThreshold: 1, focusPlayer: true,
 		useLock: "Red", kite: 2.5,
 		RemoteControl: {
 			remote: 5, remoteAmount: 4,
-		}, bypass: true, multiBind: 7, noLeashUnlessExhausted: true, evasion: 0.15, //-15 weight
-		visionRadius: 8, maxhp: 28, minLevel:6, weight:-14, movePoints: 2, attackPoints: 1, attack: "SpellMeleeWillBindLockAllVibe", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 1.5, dmgType: "charm", fullBoundBonus: 1,
+		}, bypass: true, noLeashUnlessExhausted: true, evasion: 0.15, //-15 weight
+		events: [
+			{trigger: "afterEnemyTick", type: "maidforceHeadAura", dist: 1.5},
+		],
+		visionRadius: 8, maxhp: 28, minLevel:6, weight:-14, movePoints: 2, attackPoints: 2, attack: "SpellMeleeWillBindLockAllVibe", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 1.5, dmgType: "charm", fullBoundBonus: 1,
 		terrainTags: {"secondhalf":1, "lastthird":1, "open": 4, "illusionAnger": 10, "illusionRage": 4, "maid": 12}, shrines: ["Illusion"], allFloors: true, attackLock: "Red",
 		dropTable: [{name: "Gold", amountMin: 30, amountMax: 40, weight: 20}, {name: "RedKey", weight: 10}, {name: "Pick", weight: 6}, {name: "EnchKnife", ignoreInInventory: true, weight: 1}]},
 

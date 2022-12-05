@@ -1889,8 +1889,8 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				}
 				if (enemy.boundTo) {
 					if (enemy.boundTo == -1) {
-						if (KinkyDungeonFlags.get("playerDisabled")) enemy.hp = 0;
-						if (enemy.weakBinding && KinkyDungeonFlags.get("playerStun")) enemy.hp = 0;
+						if (KDPlayerIsDisabled()) enemy.hp = 0;
+						if (enemy.weakBinding && KDPlayerIsStunned()) enemy.hp = 0;
 					} else if (!KinkyDungeonFindID(enemy.boundTo) || KDHelpless(KinkyDungeonFindID(enemy.boundTo)) || (enemy.weakBinding && KinkyDungeonIsDisabled(KinkyDungeonFindID(enemy.boundTo)))) enemy.hp = 0;
 				}
 			}
@@ -2360,7 +2360,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.kite = false;
 	AIData.kiteChance = enemy.Enemy.kiteChance ? enemy.Enemy.kiteChance : 0.75;
 	if (AIData.canSeePlayer && (!player.player || AIData.aggressive) && enemy.Enemy && enemy.Enemy.kite && !enemy.usingSpecial && (!player.player || KinkyDungeonHasWill(0.1)) && (enemy.attackPoints <= 0 || enemy.Enemy.attackWhileMoving) && AIData.playerDist <= enemy.Enemy.kite && (AIData.hostile || !player.player)) {
-		if (!enemy.Enemy.dontKiteWhenDisabled || !(KinkyDungeonStatBlind > 0 || KinkyDungeonStatBind > 0 || KinkyDungeonStatFreeze > 0 || KinkyDungeonSlowMoveTurns > 0 || KDGameData.SleepTurns > 0))
+		if (!enemy.Enemy.dontKiteWhenDisabled || !(KDPlayerIsDisabled()))
 			if (!enemy.Enemy.noKiteWhenHarmless || !AIData.harmless)
 				if (AIData.kiteChance >= 1 || KDRandom() < AIData.kiteChance)
 					if (!AIData.ignoreRanged)
@@ -4150,4 +4150,14 @@ function KinkyDungeonGetTextForEnemy(key, enemy, useName = false) {
 		text = TextGet(key);
 	}
 	return text;
+}
+
+
+function KDPlayerIsDisabled() {
+	return KinkyDungeonFlags.get("playerDisabled")
+		|| (KinkyDungeonStatBlind > 0 || KinkyDungeonStatBind > 0 || KinkyDungeonStatFreeze > 0 || KinkyDungeonSlowMoveTurns > 0 || KDGameData.SleepTurns > 0);
+}
+function KDPlayerIsStunned() {
+	return KDPlayerIsDisabled() || KinkyDungeonFlags.get("playerStun")
+		|| (KinkyDungeonMovePoints < 0 || KDGameData.KneelTurns > 0 || KinkyDungeonSleepiness > 0);
 }
