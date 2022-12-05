@@ -685,8 +685,14 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 				}
 			}
 			// Place enemies after player
-			if (!altType || altType.enemies)
-				KinkyDungeonPlaceEnemies(spawnPoints, false, tags, (mapMod && mapMod.bonusTags) ? mapMod.bonusTags : undefined, Floor, width, height, altRoom);
+			if (!altType || altType.enemies) {
+				let bonus = (mapMod && mapMod.bonusTags) ? mapMod.bonusTags : undefined;
+				if (altType && altType.bonusTags) {
+					if (!bonus) bonus = altType.bonusTags;
+					else bonus = Object.assign(Object.assign(Object.assign({}, bonus)), altType.bonusTags);
+				}
+				KinkyDungeonPlaceEnemies(spawnPoints, false, tags, bonus, Floor, width, height, altRoom);
+			}
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for enemy creation`);
 				startTime = performance.now();

@@ -690,6 +690,16 @@ function KDSpawnLootTrap(x, y, trap, mult, duration) {
 					else if (Enemy.tags.miniboss) spawned += 2;
 					else if (Enemy.tags.boss) spawned += 4;
 					else spawned += 1;
+					if (Enemy.summonTags) {
+						for (let t of Enemy.summonTags) {
+							if (!tags.includes(t)) tags.push(t);
+						}
+					}
+					if (Enemy.summonTagsMulti) {
+						for (let t of Enemy.summonTagsMulti) {
+							tags.push(t);
+						}
+					}
 				}
 			}
 		}

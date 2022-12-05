@@ -1015,7 +1015,7 @@ let KinkyDungeonEnemies = [
 		},
 		visionRadius: 3, visionSummoned: 12, maxhp: 4, minLevel: 0, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {"trap": 50}, allFloors: true, shrines: [],
+		terrainTags: {"trap": 50, gag: -40}, allFloors: true, shrines: [], summonTags: ["gag"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -1027,7 +1027,7 @@ let KinkyDungeonEnemies = [
 		},
 		visionRadius: 6, visionSummoned: 12, maxhp: 10, minLevel: 5, weight:0, movePoints: 2, attackPoints: 3, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {"trap": 30}, allFloors: true, shrines: [],
+		terrainTags: {"trap": 30, legbinder: -25}, allFloors: true, shrines: [], summonTags: ["legbinder"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -1039,7 +1039,7 @@ let KinkyDungeonEnemies = [
 		},
 		visionRadius: 6, visionSummoned: 12, maxhp: 8, minLevel: 3, weight:0, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {"trap": 30}, allFloors: true, shrines: [],
+		terrainTags: {"trap": 30, armbinder: -25}, allFloors: true, shrines: [], summonTags: ["armbinder"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -1051,7 +1051,7 @@ let KinkyDungeonEnemies = [
 		},
 		visionRadius: 6, visionSummoned: 12, maxhp: 6, minLevel: 0, weight:0, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 1,
-		terrainTags: {"trap": 25}, allFloors: true, shrines: [],
+		terrainTags: {"trap": 25, harness: -20}, allFloors: true, shrines: [], summonTags: ["harness"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -1063,7 +1063,7 @@ let KinkyDungeonEnemies = [
 		},
 		visionRadius: 9, visionSummoned: 12, maxhp: 4, minLevel: 4, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {"trap": 25}, allFloors: true, shrines: [],
+		terrainTags: {"trap": 25, blindfold: -20}, allFloors: true, shrines: [], summonTags: ["blindfold"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -1075,7 +1075,7 @@ let KinkyDungeonEnemies = [
 		},
 		visionRadius: 9, visionSummoned: 12, maxhp: 12, minLevel: 7, weight:0, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {"trap": 20, "leatherRage": 5}, allFloors: true, shrines: [],
+		terrainTags: {"trap": 20, "leatherRage": 5, jacket: -20}, allFloors: true, shrines: [], summonTags: ["jacket"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -1086,7 +1086,7 @@ let KinkyDungeonEnemies = [
 			mustBindorFail: true,
 		},
 		visionRadius: 4, visionSummoned: 12, maxhp: 2, minLevel: 0, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "charm", fullBoundBonus: 1,
-		terrainTags: {"doortrap": 6, "trap": 50}, allFloors: true, shrines: ["Metal"],
+		terrainTags: {"doortrap": 6, "trap": 50, cuffs: -40}, allFloors: true, shrines: ["Metal"], summonTags: ["cuffs"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -1097,7 +1097,7 @@ let KinkyDungeonEnemies = [
 			mustBindorFail: true,
 		},
 		visionRadius: 6, visionSummoned: 12, maxhp: 5, minLevel: 2, weight:0, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 2, dmgType: "charm", fullBoundBonus: 1,
-		terrainTags: {"doortrap": 6, "trap": 35}, allFloors: true, shrines: ["Metal"],
+		terrainTags: {"doortrap": 6, "trap": 35, chastity: -25}, allFloors: true, shrines: ["Metal"], summonTagsMulti: ["chastity"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -1108,7 +1108,7 @@ let KinkyDungeonEnemies = [
 			mustBindorFail: true,
 		},
 		visionRadius: 6, visionSummoned: 12, maxhp: 5, minLevel: 4, weight:0, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 2, dmgType: "charm", fullBoundBonus: 1,
-		terrainTags: {"doortrap": 6, "trap": 35}, allFloors: true, shrines: ["Metal"],
+		terrainTags: {"doortrap": 6, "trap": 35, yoke: -30}, allFloors: true, shrines: ["Metal"], summonTags: ["yoke"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],

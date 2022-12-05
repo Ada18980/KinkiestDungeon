@@ -108,6 +108,9 @@ let alts = {
 			"QuadCell": 7,
 			"Storage": 12,
 		},
+		bonusTags: {
+			"construct": {bonus: 0, mult: 0},
+		},
 		genType: "NarrowMaze",
 		spawns: false,
 		chests: false,

@@ -480,6 +480,10 @@ interface overrideDisplayItem {
 }
 
 interface enemy extends KDHasTags {
+	/** This tag will be added to the selection tags if the enemy has it, for loot and ambush spawning purposes */
+	summonTags?: string[],
+	/** This tag will be added to the selection tags if the enemy has it, for loot and ambush spawning purposes. Multiple copies will be pushed*/
+	summonTagsMulti?: string[],
 	/** If true, this enemy will always be bound to the enemy that summons it */
 	alwaysBound?: boolean,
 	/** These enemies wont appear in distracted mode */
