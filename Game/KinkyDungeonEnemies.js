@@ -3214,6 +3214,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							target: player,
 						};
 						KinkyDungeonSendEvent("beforeDamage", data);
+						KDDelayedActionPrune(["Hit"]);
 						let dmg = KinkyDungeonDealDamage({damage: data.damage, type: data.damagetype});
 						happened += dmg.happened;
 						if (!enemy.playWithPlayer)

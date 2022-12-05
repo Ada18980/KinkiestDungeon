@@ -955,7 +955,7 @@ function KinkyDungeonDrawGame() {
 						barInt += 1;
 					}
 				}*/
-				if (KinkyDungeonCurrentEscapingItem && KinkyDungeonLastTurnAction == "Struggle") {
+				if (KinkyDungeonCurrentEscapingItem && KinkyDungeonFlags.get("escaping")) {
 					let item = KinkyDungeonCurrentEscapingItem;
 					let value = 0;
 					let value2 = 0;

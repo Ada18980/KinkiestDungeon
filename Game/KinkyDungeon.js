@@ -232,6 +232,7 @@ let KDOptOut = false;
 * HiddenItems : Record<string, boolean>,
 * CagedTime : number,
 * ShopItems: shopItem[],
+* DelayedActions: KDDelayedAction[],
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
@@ -356,6 +357,7 @@ let KDGameDataBase = {
 	ManaSlow: 0,
 	KneelTurns: 0,
 	ShopItems: [],
+	DelayedActions: [],
 };
 /**
  * @type {KDGameDataBase}

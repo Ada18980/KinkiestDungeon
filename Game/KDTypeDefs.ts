@@ -1768,6 +1768,16 @@ interface KDCursedVar {
 	level: number,
 }
 
+interface KDDelayedAction {
+	type: string,
+	data: any,
+	time: number,
+	commit: string,
+	update?: string,
+	/** Cancel this in certain cases */
+	tags: string[],
+}
+
 
 declare const PIXI: any;
 declare const zip: any;

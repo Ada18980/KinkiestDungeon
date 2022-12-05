@@ -259,10 +259,12 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 
 	if (KDConsumable(item).postreq && KDConsumablePrereq[KDConsumable(item).postreq]) {
 		if (KDConsumablePrereq[KDConsumable(item).postreq](item, Quantity)) {
+			KDDelayedActionPrune(["Action", "Consume"]);
 			KinkyDungeonUseConsumable(Name, Quantity);
 			return true;
 		} else return false;
 	}
+	KDDelayedActionPrune(["Action", "Consume"]);
 	KinkyDungeonUseConsumable(Name, Quantity);
 	return true;
 }

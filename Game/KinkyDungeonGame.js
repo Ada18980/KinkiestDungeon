@@ -3241,6 +3241,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 		&& (KinkyDungeonToggleAutoPass || KDEnemyHasFlag(Enemy, "passthrough") || (KinkyDungeonFlags.has("Passthrough")) || Enemy.Enemy.noblockplayer);
 	if (Enemy && !allowPass) {
 		if (AllowInteract) {
+			KDDelayedActionPrune(["Action", "Attack"]);
 			KinkyDungeonLaunchAttack(Enemy);
 		}
 	} else {
@@ -3253,6 +3254,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 			if (KinkyDungeonTilesGet("" + moveX + "," + moveY) && KinkyDungeonTilesGet("" + moveX + "," + moveY).Type && ((KinkyDungeonToggleAutoDoor && moveObject == 'd' && KinkyDungeonTargetTile == null && KinkyDungeonNoEnemy(moveX, moveY, true))
 				|| (KinkyDungeonTilesGet("" + moveX + "," + moveY).Type != "Trap" && (KinkyDungeonTilesGet("" + moveX + "," + moveY).Type != "Door" || (KinkyDungeonTilesGet("" + moveX + "," + moveY).Lock && KinkyDungeonTilesGet("" + moveX + "," + moveY).Type == "Door"))))) {
 				if (AllowInteract) {
+					KDDelayedActionPrune(["Action", "World"]);
 					KinkyDungeonTargetTileLocation = "" + moveX + "," + moveY;
 					KinkyDungeonTargetTile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
 					if (moveObject == 'd') {
@@ -3263,6 +3265,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 
 				}
 			} else if (moveX != KinkyDungeonPlayerEntity.x || moveY != KinkyDungeonPlayerEntity.y) {
+				KDDelayedActionPrune(["Action", "Move"]);
 				let newDelta = 1;
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
@@ -3559,6 +3562,24 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	// KinkyDungeonState = "Lose";
 	//}
 
+	// Handle delayed actions
+	if (!KDGameData.DelayedActions) KDGameData.DelayedActions = [];
+	for (let action of KDGameData.DelayedActions) {
+		action.time -= delta;
+		if (action.time <= 0) {
+			if (KDDelayedActionCommit[action.commit]) {
+				KDDelayedActionCommit[action.commit](action);
+			}
+		} else if (action.update && KDDelayedActionUpdate[action.update]) {
+			KDDelayedActionUpdate[action.update](action);
+		}
+	}
+
+	// Tim actions that have happened
+	KDGameData.DelayedActions = KDGameData.DelayedActions.filter((action) => {
+		return action.time > 0;
+	});
+
 	if (!NoUpdate)
 		KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 
@@ -3592,6 +3613,7 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	KinkyDungeonLastTurnAction = KinkyDungeonLastAction;
 	KinkyDungeonLastAction = "";
+
 	if (KDGameData.AncientEnergyLevel > 1) KDGameData.AncientEnergyLevel = 1;
 
 	KinkyDungeonUpdateBulletVisuals(delta);
@@ -3734,4 +3756,13 @@ function KDTileDelete(x, y) {
 	if (x == undefined) x = KinkyDungeonPlayerEntity.x;
 	if (y == undefined) y = KinkyDungeonPlayerEntity.y;
 	KinkyDungeonTilesDelete(x + "," + y);
+}
+
+/**
+ * Stuns the player for [turns] turns
+ * @param {number} turns
+ */
+function KDStunTurns(turns) {
+	KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, turns);
+	KinkyDungeonSleepTime = CommonTime() + 200;
 }
