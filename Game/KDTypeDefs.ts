@@ -1656,6 +1656,11 @@ type AIType = {
 	aftermove: (enemy, player, aidata) => boolean,
 	/** This executes after enemy is determined to be idle or not. If true, prevents spells.*/
 	afteridle?: (enemy, player, aidata) => boolean,
+	/** Returns the current wander long delay.*/
+	wanderDelay_long?: (enemy, aidata) => number,
+	/** Returns the current wander short delay.*/
+	wanderDelay_short?: (enemy, aidata) => number,
+
 }
 
 type EnemyEvent = {

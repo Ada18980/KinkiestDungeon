@@ -1509,6 +1509,8 @@ let KDAIType = {
 		attack: (enemy, player, aidata) => {return true;},
 		spell: (enemy, player, aidata) => {return true;},
 		aftermove: (enemy, player, aidata) => {return false;},
+		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 25);},
 	},
 	"hunt": {
 		init: (enemy, player, aidata) => {},
@@ -1524,6 +1526,8 @@ let KDAIType = {
 		attack: (enemy, player, aidata) => {return true;},
 		spell: (enemy, player, aidata) => {return true;},
 		aftermove: (enemy, player, aidata) => {return false;},
+		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 25);},
 	},
 	"patrol": {
 		init: (enemy, player, aidata) => {},
@@ -1555,6 +1559,8 @@ let KDAIType = {
 			}
 			return false;
 		},
+		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, aidata) => {return 20 + Math.floor(KDRandom() * 25);},
 	},
 	"guard": {
 		init: (enemy, player, aidata) => {
@@ -1571,6 +1577,8 @@ let KDAIType = {
 		attack: (enemy, player, aidata) => {return true;},
 		spell: (enemy, player, aidata) => {return true;},
 		aftermove: (enemy, player, aidata) => {return false;},
+		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 25);},
 	},
 	"looseguard": {
 		strictwander: true,
@@ -1587,6 +1595,8 @@ let KDAIType = {
 		attack: (enemy, player, aidata) => {return true;},
 		spell: (enemy, player, aidata) => {return true;},
 		aftermove: (enemy, player, aidata) => {return false;},
+		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 25);},
 	},
 	"ambush": {
 		ambush: true,
@@ -1606,6 +1616,8 @@ let KDAIType = {
 		attack: (enemy, player, aidata) => {return enemy.ambushtrigger;},
 		spell: (enemy, player, aidata) => {return enemy.ambushtrigger;},
 		aftermove: (enemy, player, aidata) => {return false;},
+		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 25);},
 	},
 };
 
