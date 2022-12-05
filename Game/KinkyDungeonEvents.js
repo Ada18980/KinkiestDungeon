@@ -505,6 +505,20 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"RequireCollar": (e, item, data) => {
+			if (data.item !== item && KDRestraint(item).Group) {
+				let collar = false;
+				for (let inv of KinkyDungeonAllRestraint()) {
+					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("Collars"))) {
+						collar = true;
+						break;
+					}
+				}
+				if (!collar) {
+					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false);
+				}
+			}
+		},
 		"RequireBaseAnkleCuffs": (e, item, data) => {
 			if (data.item !== item && KDRestraint(item).Group) {
 				let cuffsbase = false;
