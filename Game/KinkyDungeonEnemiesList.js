@@ -524,7 +524,7 @@ let KinkyDungeonEnemies = [
 		ignorechance: 0, armor: 1, followRange: 2, AI: "hunt",  cohesion: 0.5,
 		master: {type: "Wolfgirl", range: 2, loose: true, aggressive: true}, sneakThreshold: 1, blindSight: 2, projectileAttack: true, strictAttackLOS: true, dashOnMiss: true,
 		specialCD: 9, specialAttack: "DashWill", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 2, specialRange: 4, specialMinrange: 1.5, specialsfx: "HeavySwing", stunTime: 4, stunOnSpecialCD: 4, specialDamage: "crush",
-		visionRadius: 6, maxhp: 16, minLevel:5, weight:0, movePoints: 1, attackPoints: 3, attack: "MeleeBind", attackWidth: 1, attackRange: 3, projectileTargeting: true, power: 2, dmgType: "electric", fullBoundBonus: 2,
+		visionRadius: 6, maxhp: 16, minLevel:6, weight:0, movePoints: 1, attackPoints: 3, attack: "MeleeBind", attackWidth: 1, attackRange: 3, projectileTargeting: true, power: 2, dmgType: "electric", fullBoundBonus: 2,
 		terrainTags: {"metalAnger": 1.5, "metalRage": 8, "nevermere": 1}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Nothing", weight: 10}, {name: "EscortDrone", weight: 0.5, ignoreInInventory: true}, {name: "VibeWand", weight: 100, ignoreInInventory: true},]},
 	{name: "WolfInstructor", faction: "Nevermere", clusterWith: "nevermere", bound: "Wolfgirl", playLine: "Wolfgirl", color: "#00EFAB", tags: KDMapInit(["leashing", "nevermere", "imprisonable", "trainer", "controlHarness", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "wolfGear", "handcuffer", "melee", "unflinching", "iceresist", "charmweakness", "stunweakness", "ticklesevereweakness", "jail", "hunter"]),
@@ -552,7 +552,7 @@ let KinkyDungeonEnemies = [
 			{enemy: "WolfShieldDrone", range: 2, count: 1, chance: 0.5, strict: true},
 		],
 		spells: ["NevermereBoost", "SummonWolfDrone", "SummonWolfTapeDrone", "EnemyBlast"], spellCooldownMult: 0.5, spellCooldownMod: 0, buffallies: true, projectileTargeting: true,
-		AI: "hunt",  visionRadius: 10, maxhp: 40, minLevel:5, weight:-30, movePoints: 1.2, evasion: 0.2, bindOnDisable: true,
+		AI: "hunt",  visionRadius: 10, maxhp: 40, minLevel:7, weight:-30, movePoints: 1.2, evasion: 0.2, bindOnDisable: true,
 		RemoteControl: {
 			punishRemote: 5,
 			punishRemoteChance: 0.35,
