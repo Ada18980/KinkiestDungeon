@@ -1560,7 +1560,7 @@ let KDAIType = {
 			return false;
 		},
 		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
-		wanderDelay_short: (enemy, aidata) => {return 20 + Math.floor(KDRandom() * 25);},
+		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 20);},
 	},
 	"guard": {
 		init: (enemy, player, aidata) => {
@@ -1578,7 +1578,7 @@ let KDAIType = {
 		spell: (enemy, player, aidata) => {return true;},
 		aftermove: (enemy, player, aidata) => {return false;},
 		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
-		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 25);},
+		wanderDelay_short: (enemy, aidata) => {return 15 + Math.floor(KDRandom() * 30);},
 	},
 	"looseguard": {
 		strictwander: true,
@@ -1596,7 +1596,7 @@ let KDAIType = {
 		spell: (enemy, player, aidata) => {return true;},
 		aftermove: (enemy, player, aidata) => {return false;},
 		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
-		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 25);},
+		wanderDelay_short: (enemy, aidata) => {return 15 + Math.floor(KDRandom() * 30);},
 	},
 	"ambush": {
 		ambush: true,
