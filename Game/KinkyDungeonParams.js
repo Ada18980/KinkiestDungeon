@@ -453,7 +453,7 @@ const KinkyDungeonMapParams = {
 		"trapchance" : 0.3,
 		"grateChance" : 0.7,
 		"rubblechance" : 0.3,
-		"brickchance" : 0.03,
+		"brickchance" : 0.01,
 		"cacheInterval" : 1,
 		// Side routes have more high-value loot
 		"forbiddenChance" : 1.0,
