@@ -218,7 +218,7 @@ function KinkyDungeonPayShrine(type) {
 			]});
 		}
 		KDSendStatus('goddess', type, 'shrineDonate');
-		rep = 1;
+		rep = 2.5;
 	} else if (type == "Will") {
 		rep = Math.ceil(5 - KinkyDungeonStatMana * 1.5 / KinkyDungeonStatManaMax - KinkyDungeonStatWill * 3.5 / KinkyDungeonStatWillMax);
 		KinkyDungeonChangeMana(KinkyDungeonStatManaMax, false, 0, false, true);
