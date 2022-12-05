@@ -123,6 +123,14 @@ function KDProcessInput(type, data) {
 				if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Unlock.ogg");
 				KDSendStatus('bound', data.name, "self");
 				loose = KinkyDungeonInventoryGetLoose(data.name);
+				if (!(loose.quantity > 1)) {
+					KinkyDungeonInventoryRemove(loose);
+				} else {
+					loose.quantity -= 1;
+				}
+
+				KDStunTurns(2);
+
 				msg = "KinkyDungeonSelfBondage";
 				if (KDRestraint(loose).Group == "ItemVulvaPiercings" || KDRestraint(loose).Group == "ItemVulva" || KDRestraint(loose).Group == "ItemButt") {
 					if (KinkyDungeonIsChaste(false)) {
@@ -136,11 +144,7 @@ function KDProcessInput(type, data) {
 					msg = "KinkyDungeonSelfBondageEnchanted";
 				}
 				KinkyDungeonSendTextMessage(10, TextGet(msg).replace("RestraintName", TextGet("Restraint" + KDRestraint(loose).name)), "yellow", 1);
-				if (!(loose.quantity > 1)) {
-					KinkyDungeonInventoryRemove(loose);
-				} else {
-					loose.quantity -= 1;
-				}
+
 				return msg;
 			} else return "KDCantEquip";
 		case "tryOrgasm":
