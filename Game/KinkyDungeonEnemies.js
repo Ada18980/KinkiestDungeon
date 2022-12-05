@@ -3665,12 +3665,12 @@ function KinkyDungeonEnemyTryAttack(enemy, player, Tiles, delta, x, y, points, r
 		}
 	}
 
-	enemy.attackPoints += delta;
+	enemy.attackPoints += delta * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(enemy.buffs, "AttackSpeed"));
 	if (!enemy.playWithPlayer)
 		KinkyDungeonSetFlag("NPCCombat",  3);
 
 	if (enemy.attackPoints >= points) {
-		enemy.attackPoints = 0;
+		enemy.attackPoints = enemy.attackPoints - points;
 		return true;
 	}
 	return false;

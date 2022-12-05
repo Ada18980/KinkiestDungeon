@@ -1306,6 +1306,7 @@ let KinkyDungeonSpellListEnemies = [
 		type:"buff", buffs: [
 			{id: "NevermereBoost", aura: "#ffaaaa", type: "MoveSpeed", duration: 10, power: 1.0, player: false, enemies: true, tags: ["offense", "speed"]},
 			{id: "NevermereBoost2", type: "Evasion", duration: 6, power: 0.3, player: false, enemies: true, tags: ["offense", "evasion"]},
+			{id: "NevermereBoost3", type: "AttackSpeed", duration: 6, power: 0.5, player: false, enemies: true, tags: ["offense", "attackspeed"]},
 		], onhit:"", time:6, power: 0, range: 4.9, aoe: 4.9, size: 1, damage: ""},
 
 
