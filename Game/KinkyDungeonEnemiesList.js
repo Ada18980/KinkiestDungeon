@@ -832,7 +832,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ff5555"},
 		],
-		visionRadius: 8, maxhp: 20, minLevel:6, weight:-11, movePoints: 2, attackPoints: 2, attack: "MeleeBindWill", attackWidth: 1, attackRange: 1, power: 4, dmgType: "crush", fullBoundBonus: 2,
+		visionRadius: 8, maxhp: 20, minLevel:4, weight:-11, movePoints: 2, attackPoints: 2, attack: "MeleeBindWill", attackWidth: 1, attackRange: 1, power: 4, dmgType: "crush", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":2, "thirdhalf":4, "open": 10, "leatherAnger":6, "leatherRage":30, "boss": -55, "increasingWeight":0.5, "dragon": 1}, shrines: ["Leather"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 30, amountMax: 40, weight: 10}, {name: "Knife", ignoreInInventory: true, weight: 3}, {name: "Sword", ignoreInInventory: true, weight: 100}, {name: "EnchKnife", ignoreInInventory: true, weight: 1}]},
 
@@ -899,13 +899,13 @@ let KinkyDungeonEnemies = [
 	{name: "ElfRanger", faction: "Elf", clusterWith: "nature", bound: "ElfRanger", playLine: "Elf", color: "#67ff44", tags: KDMapInit(["opendoors", "guardCall", "leashing", "elf", "ranged", "elite", "mithrilRope", "pierceweakness", "iceweakness", "chainresist", "hunter"]), cohesion: 0.0,
 		followLeashedOnly: true, ignorechance: 0, armor: 0, followRange: 3, AI: "hunt",  stealth: 3, focusPlayer: true,
 		spells: ["ElfArrow"], miscastmsg: "KDBanditMiscast", miscastsfx: "Miss", spellCooldownMult: 1, spellCooldownMod: 0, stopToCast: true, castWhileMoving: true, kite: 1.5, projectileAttack: true,
-		visionRadius: 9, maxhp: 13, minLevel:7, weight:-1, movePoints: 1, attackPoints: 3, attack: "SpellMeleeWillBind", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2,
+		visionRadius: 9, maxhp: 13, minLevel:3, weight:-0.5, movePoints: 1, attackPoints: 3, attack: "SpellMeleeWillBind", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":1, "thirdhalf":1, "willAnger": 5, "willRage": 8, "temple": 5, "elf": 12}, shrines: ["Will"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 12}, {name: "ElfCrystal", weight: 3}, {name: "PotionMana", weight: 0.1}]},
 	{name: "Elf", faction: "Elf", clusterWith: "elf", bound: "Elf", playLine: "Elf", color: "#67ff44", tags: KDMapInit(["opendoors", "guardCall", "jailer", "leashing", "elf", "imprisonable", "ranged", "elite", "mithrilRestraints", "pierceweakness", "iceweakness", "chainresist", "hunter"]), cohesion: 0.7,
 		followLeashedOnly: true, ignorechance: 0, armor: 0, followRange: 3, AI: "hunt", guardChance: 0.6, buffallies: true, spellRdy: true,
 		spells: ["Entangle", "OrbHeal", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 16, spellCooldownMult: 1, spellCooldownMod: 0, stopToCast: true, castWhileMoving: true, kite: 1.5,
-		visionRadius: 9, maxhp: 16, minLevel:4, weight:-3, movePoints: 2, attackPoints: 3, attack: "SpellMeleeWillBind", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 1,
+		visionRadius: 9, maxhp: 16, minLevel:7, weight:-3, movePoints: 2, attackPoints: 3, attack: "SpellMeleeWillBind", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 1,
 		terrainTags: {"secondhalf":1, "thirdhalf":1, "willAnger": 4, "willRage": 6, "temple": 5, "elf": 8}, shrines: ["Will"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 9}, {name: "ElfCrystal", weight: 4}, {name: "PotionMana", weight: 0.2}],
 		ondeath: [
@@ -1429,14 +1429,14 @@ let KinkyDungeonEnemies = [
 	{name: "BanditMerchant", faction: "Bandit", clusterWith: "bandit", playLine: "Bandit", bound: "BanditChief",
 		tags: KDMapInit([
 			"opendoors", "cacheguard", "closedoors", "leashing", "bandit", "banditleader", "jailer",
-			"miniboss", "melee", "ranged", "caster",
+			"boss", "melee", "ranged", "caster",
 			"ballGagRestraints", "banditMagicRestraints","leatherRestraints", "leatherRestraintsHeavy", "chainweakness", "glueweakness", "jail", "hunter"
 		]), cohesion: 0.9, armor: 0, followRange: 1, AI: "hunt",
 		spells: ["PoisonDagger", "LustBomb"], spellCooldownMult: 1, spellCooldownMod: 0, noSpellLeashing: true,
 		summon: [
 			{enemy: "BanditPet", range: 3, count: 2, chance: 1.0, strict: true},],
 		visionRadius: 8, maxhp: 30, minLevel:3, weight:-20, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindWill", attackWidth: 3.6, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 2,
-		terrainTags: {"miniboss": -5, "open": 10, "increasingWeight":1, "BanditEnemy": 11, "BanditWanted": 3, "BanditHated": 4}, shrines: ["Leather"], allFloors: true,
+		terrainTags: {"boss": -5, "open": 10, "increasingWeight":1, "BanditEnemy": 11, "BanditWanted": 3, "BanditHated": 4}, shrines: ["Leather"], allFloors: true,
 		factionrep: {"Bountyhunter": 0.02},
 		dropTable: [{name: "Gold", amountMin: 80, amountMax: 100, weight: 10}, {name: "Knife", ignoreInInventory: true, weight: 2}, {name: "PotionStamina", weight: 4}, {name: "PotionMana", weight: 1}, {name: "PotionFrigid", weight: 4}, ]},
 
