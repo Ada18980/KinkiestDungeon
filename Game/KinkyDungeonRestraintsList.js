@@ -696,7 +696,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
 		],
 	},
-	{inventory: true, arousalMode: true, name: "SteelPlugR", Asset: "VibratingDildo", Color: "#ffffff", Group: "ItemButt", plugSize: 1.5, power: 1, weight: 2,
+	{inventory: true, arousalMode: true, name: "SteelPlugR", Asset: "VibratingDildoPlug", Color: "#ffffff", Group: "ItemButt", plugSize: 1.5, power: 1, weight: 2,
 		escapeChance: {"Struggle": 0.35}, enemyTags: {"plugSpell":1}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs"],
 		events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
