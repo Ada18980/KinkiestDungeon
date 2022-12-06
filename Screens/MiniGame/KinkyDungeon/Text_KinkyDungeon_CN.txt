@@ -3320,8 +3320,8 @@ Weapons
 武器
 Outfits
 服装
-Restraints
-拘束具
+Wearable
+可穿戴物
 Miscellaneous
 杂项
 You hear an ominous click, but nothing seems to happen. Looks like a misfire!
