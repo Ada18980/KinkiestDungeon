@@ -6810,8 +6810,8 @@ Ancient Heels
 远古高跟鞋
 You find a set of glowing heels, glowing magnificently, along with a strange crystal next to it.
 你发现一双发光的高跟鞋，闪闪发光，旁边还有一个奇怪的水晶。
-A pair of towering heels, enchanted with combat magic. When powered, they reduce slow level by 2, and deal 25 shadow damage on-hit with brief slow.
-一双高耸的高跟鞋，刻满了战斗魔法。充能后，它们会降低 2 级减速等级，并在击中时造成 25 点暗影伤害并带有短暂减速。
+A pair of towering heels, enchanted with combat magic. When powered, they reduce slow level by 1, and deal 25 shadow damage on-hit with brief slow.
+一双高耸的高跟鞋，刻满了战斗魔法。充能后，它们会降低 1 级减速等级，并在击中时造成 25 点暗影伤害并带有短暂减速。
 'Shoes of the graceful'
 '优雅之鞋'
 You can barely stand in these heels. They are rigid, metallic, and unbreakable, yet padded on the inside.
