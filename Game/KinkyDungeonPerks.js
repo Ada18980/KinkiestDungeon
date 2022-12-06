@@ -103,6 +103,10 @@ let KDPerkUpdateStats = {
 		KDExtraEnemyTags.latexRestraints = 0;
 		KDExtraEnemyTags.latexRestraintsHeavy = 4;
 	},
+	"CommonLeather": () => {
+		KDExtraEnemyTags.leatherRestraints = 0;
+		KDExtraEnemyTags.leatherRestraintsHeavy = 4;
+	},
 	"CommonMaid": () => {
 		KDExtraEnemyTags.maidRestraints = 0;
 		KDExtraEnemyTags.maidVibeRestraintsLimited = 0;
@@ -273,6 +277,7 @@ let KinkyDungeonStatsPresets = {
 
 	"CommonMaid": {category: "Enemies", id: "CommonMaid", cost: -1, costGroup: "common"},
 	"CommonLatex": {category: "Enemies", id: "CommonLatex", cost: -1, costGroup: "common"},
+	"CommonLeather": {category: "Enemies", id: "CommonLeather", cost: -1, costGroup: "common"},
 	"CommonExp": {category: "Enemies", id: "CommonExp", cost: -1, costGroup: "common"},
 	"CommonDress": {category: "Enemies", id: "CommonDress", cost: -1, costGroup: "common"},
 	"CommonWolf": {category: "Enemies", id: "CommonWolf", cost: -1, costGroup: "common"},

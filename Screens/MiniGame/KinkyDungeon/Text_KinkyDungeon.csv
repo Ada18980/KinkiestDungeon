@@ -160,6 +160,8 @@ KinkyDungeonStat38,"Stealth Mission"
 KinkyDungeonStatDesc38,"You are harder to detect and there are more chests, but enemies are harder and drop no gold."
 KinkyDungeonStatCommonLatex,"Latex Lovers"
 KinkyDungeonStatDescCommonLatex,"All humanoids that can bind you also apply latex restraints."
+KinkyDungeonStatCommonLeather,"Leather Lovers"
+KinkyDungeonStatDescCommonLeather,"All humanoids that can bind you also apply leather restraints."
 KinkyDungeonStatCommonWolf,"Wolfgirl Lovers"
 KinkyDungeonStatDescCommonWolf,"All humanoids that can bind you also apply wolfgirl restraints."
 KinkyDungeonStatCommonMaid,"Maid Lovers"
@@ -4494,7 +4496,11 @@ KinkyDungeonSpellDescriptionEvasive2,"+15% evasion (25 total)"
 KinkyDungeonSpellEvasive3,Dodge III
 KinkyDungeonSpellDescriptionEvasive3,"+25% evasion (50 total)"
 KinkyDungeonSpellCriticalStrike,Critical Strike
-KinkyDungeonSpellDescriptionCriticalStrike,"Excess accuracy (over 100%) is converted to bonus physical damage at 50% efficiency."
+KinkyDungeonSpellDescriptionCriticalStrike,"Excess accuracy (over 100%) is converted to bonus physical damage percentage at 50% efficiency."
+
+
+KinkyDungeonSpellBruteForce1,Brute Force
+KinkyDungeonSpellDescriptionBruteForce1,"When enabled, your attacks deal 10% of your willpower as additional crush damage but cost 10 more stamina."
 
 KinkyDungeonSpellOneWithSlime,One With Slime
 KinkyDungeonSpellDescriptionOneWithSlime,"While standing on slime/latex, you can cast rubber spells without components."

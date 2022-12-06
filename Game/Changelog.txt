@@ -1182,6 +1182,7 @@ Features
 - Cutting restraints now makes debris
 - Can now paste copied perks
 - Struggling now takes more time but requires less click spam
+- Added some upgrades to a dedicated area in the spell list
 
 
 TODO ValidationFindBlockCycles to prevent bugs
