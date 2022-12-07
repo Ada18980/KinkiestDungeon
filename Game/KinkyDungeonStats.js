@@ -177,10 +177,10 @@ let KDClassStart = {
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("WPUp1"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("WPUp1"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("IronWill"));
-		KinkyDungeonSpellPoints = 1;
+		KinkyDungeonSpellPoints = 3;
 		KinkyDungeonRedKeys = 1;
 		KinkyDungeonLockpicks = 1;
-		KinkyDungeonGold = 150;
+		KinkyDungeonGold = 100;
 
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, 1);
@@ -194,8 +194,8 @@ let KDClassStart = {
 		KDSetWeapon("Dirk");
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("SPUp1"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("SPUp1"));
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CriticalStrike"));
-		KinkyDungeonSpellPoints = 1;
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Sneaky"));
+		KinkyDungeonSpellPoints = 3;
 		KinkyDungeonLockpicks = 2;
 		KinkyDungeonGold = 100;
 
@@ -211,6 +211,7 @@ let KDClassStart = {
 		KDSetWeapon("ArcaneCrystal");
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("MPUp1"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("MPUp1"));
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Analyze"));
 		KinkyDungeonSpellPoints = 3;
 		KinkyDungeonRedKeys = 1;
 		KinkyDungeonGold = 100;
