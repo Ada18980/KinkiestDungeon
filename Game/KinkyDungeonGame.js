@@ -584,7 +584,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 
 		KinkyDungeonPlaceSetPieces(POI, traps, chestlist, shrinelist, chargerlist, spawnPoints, false, width, height);
 
-		if (!KinkyDungeonNearestJailPoint(1, 1)) {
+		if (!((KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules))) {
 			console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 			continue;
 		}
