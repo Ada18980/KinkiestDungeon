@@ -1659,7 +1659,7 @@ let KDLocks = {
 		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		pick_time: 1.0, // Multiplies the picking rate
 		pick_diff: 0.0, // Added to the item's pick difficulty
-		pick_lim: 0.1, // Added to the item's pick limitchance
+		pick_lim: 0.15, // Added to the item's pick limitchance
 
 		canPick: (data) => {
 			return true;

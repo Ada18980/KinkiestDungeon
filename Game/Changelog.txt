@@ -1183,6 +1183,9 @@ Features
 - Can now paste copied perks
 - Struggling now takes more time but requires less click spam
 - Added some upgrades to a dedicated area in the spell list
+- Analyze now reveals magic runes that spawn traps
+- Knowledge magic tree now unlocks advanced tooltips
+- Not all red locks are created equal...
 
 
 TODO ValidationFindBlockCycles to prevent bugs
