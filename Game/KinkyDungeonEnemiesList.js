@@ -1638,6 +1638,14 @@ let KDLoadouts = {
 		chance: 0.35,
 		items: ["RedKey"],
 	},
+	"thief": {
+		name: "guard",
+		tags: ["human"],
+		singletag: ["bandit", "bountyhunter"],
+		forbidtags: ["submissive", "gagged"],
+		chance: 0.15,
+		items: ["Pick", "Knife"],
+	},
 	"mistress": {
 		name: "mistress",
 		tags: ["miniboss"],
