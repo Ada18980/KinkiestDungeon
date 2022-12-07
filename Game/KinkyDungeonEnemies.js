@@ -726,7 +726,7 @@ function KDGetEnemyStruggleMod(enemy) {
 		mult = 0;
 	}
 	if (!KDEnemyHasFlag(enemy, "imprisoned") && enemy.hp > 0.51 && KDNearbyEnemies(enemy.x, enemy.y, 1.5).some((en) => {
-		return en != enemy && en.Enemy.bound && !KDHelpless(enemy) && !KDEnemyHasFlag(en, "imprisoned") && !KinkyDungeonIsDisabled(en) && KDFactionRelation(KDGetFaction(enemy), KDGetFaction(en)) >= Math.max(0.1, KDFactionRelation("Player", KDGetFaction(en)));
+		return en != enemy && en.Enemy.bound && !KDHelpless(enemy) && KDBoundEffects(en) < 3 && !KDEnemyHasFlag(en, "imprisoned") && !KinkyDungeonIsDisabled(en) && KDFactionRelation(KDGetFaction(enemy), KDGetFaction(en)) >= Math.max(0.1, KDFactionRelation("Player", KDGetFaction(en)));
 	})) {
 		mult += 0.15;
 	}
