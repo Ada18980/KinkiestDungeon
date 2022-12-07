@@ -138,10 +138,12 @@ function TranslationStringCache(S, translationsStringLineCache, translationsLine
 			try {
 				let l = translationsStringLineCache.get(S1);
 				if (l) {
+					// the translation always in the next line
 					let s = translationsLineStringCache.get(l + 1);
 					if (s) {
 						return s;
 					}
+					console.warn('TranslationStringCache lost translationsLineStringCache:', S, l);
 				}
 				return S;
 			} catch (e) {
