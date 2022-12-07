@@ -108,25 +108,15 @@ class TextCache {
 	 */
 	buildCache() {
 		if (!this.path) return;
-		console.time('buildCache');
-		console.time('fetchCsv');
 		this.fetchCsv()
 			.then((lines) => {
-				console.timeEnd('fetchCsv');
-				console.time('translate');
 				return  this.translate(lines);
 			})
 			.then((lines) => {
-				console.timeEnd('translate');
-				console.time('cacheLines');
 				return this.cacheLines(lines);
 			})
 			.then(() => {
-				console.timeEnd('cacheLines');
-				console.time('rebuildListeners');
 				this.rebuildListeners.forEach((listener) => listener(this));
-				console.timeEnd('rebuildListeners');
-				console.timeEnd('buildCache');
 			});
 	}
 
@@ -165,29 +155,22 @@ class TextCache {
 	 * values translated to the current game language
 	 */
 	translate(lines) {
-		console.log('translate 1', (new Date()).getMilliseconds());
 		this.language = TranslationLanguage;
 		const lang = (TranslationLanguage || "").trim().toUpperCase();
 		if (!lang || lang === "EN") return Promise.resolve(lines);
 
-		console.log('translate 2', (new Date()).getMilliseconds());
 		const translationPath = this.path.replace(/\/([^/]+)\.csv$/, `/$1_${lang}.txt`);
 		if (!TranslationAvailable(translationPath)) {
 			return Promise.resolve(lines);
 		}
 
-		console.log('translate 3', (new Date()).getMilliseconds());
 		if (TranslationCache[translationPath]) {
 			return Promise.resolve(this.buildTranslations(lines, TranslationCache[translationPath]));
 		} else {
-			console.log('translate 4', (new Date()).getMilliseconds());
 			return new Promise((resolve) => {
-				console.log('translate 5', (new Date()).getMilliseconds());
 				CommonGet(translationPath, (xhr) => {
-					console.log('translate 6', (new Date()).getMilliseconds());
 					if (xhr.status === 200) {
 						TranslationCache[translationPath] = TranslationParseTXT(xhr.responseText);
-						console.log('translate 7', (new Date()).getMilliseconds());
 						return resolve(this.buildTranslations(lines, TranslationCache[translationPath]));
 					}
 					return resolve(lines);
@@ -210,7 +193,6 @@ class TextCache {
 			translationsStringLineCache.set(T, i);
 			translationsLineStringCache.set(i, T);
 		})
-		// return lines.map(line => ([line[0], TranslationString(line[1], translations, "")]));
 		return lines.map(line => ([line[0], TranslationStringCache(line[1], translationsStringLineCache, translationsLineStringCache, "")]));
 	}
 }

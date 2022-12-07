@@ -80,7 +80,6 @@ function TranslationAvailable(FullPath) {
  * @returns {string[]} - Array of strings with each line divided. For each translated line, the english string precedes the translated one in the array.
  */
 function TranslationParseTXT(str) {
-	console.time('TranslationParseTXT')
 
 	const arr = [];
 	let c;
@@ -103,7 +102,6 @@ function TranslationParseTXT(str) {
 	// Trims the full translated array
 	for (let row = 0; row < arr.length; row++)
 		arr[row] = arr[row].trim();
-	console.timeEnd('TranslationParseTXT')
 	return arr;
 }
 
