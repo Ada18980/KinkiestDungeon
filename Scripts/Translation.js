@@ -126,7 +126,7 @@ function TranslationString(S, T, CharacterName) {
  * build [translationsStringLineCache, translationsLineStringCache] for TranslationStringCache
  * @param {string[]} translations - An array of strings in translation file format (with EN and translated values on alternate lines)
  * @param {string} CharacterName - Name of the character if it is required to replace it within the string.
- * values translated to the current game language
+ * @returns {[Map<string, number>, Map<number, string>]} - The translated cache [translationsStringLineCache, translationsLineStringCache]
  */
 function TranslationStringCachePreBuild(translations, CharacterName) {
 	let translationsStringLineCache = new Map();
