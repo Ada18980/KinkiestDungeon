@@ -187,12 +187,7 @@ class TextCache {
 	 * values translated to the current game language
 	 */
 	buildTranslations(lines, translations) {
-		let translationsStringLineCache = new Map();
-		let translationsLineStringCache = new Map();
-		translations.forEach((T, i) => {
-			translationsStringLineCache.set(T, i);
-			translationsLineStringCache.set(i, T);
-		})
-		return lines.map(line => ([line[0], TranslationStringCache(line[1], translationsStringLineCache, translationsLineStringCache, "")]));
+		let [translationsStringLineCache, translationsLineStringCache] = TranslationStringCachePreBuild(translations, "");
+		return lines.map(line => ([line[0], TranslationStringCache(line[1], translationsStringLineCache, translationsLineStringCache)]));
 	}
 }

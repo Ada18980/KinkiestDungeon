@@ -123,22 +123,43 @@ function TranslationString(S, T, CharacterName) {
 }
 
 /**
- * Translates a string to another language from the array, the translation is always the one right after the english line
+ * build [translationsStringLineCache, translationsLineStringCache] for TranslationStringCache
+ * @param {string[]} translations - An array of strings in translation file format (with EN and translated values on alternate lines)
+ * @param {string} CharacterName - Name of the character if it is required to replace it within the string.
+ * values translated to the current game language
+ */
+function TranslationStringCachePreBuild(translations, CharacterName) {
+	let translationsStringLineCache = new Map();
+	let translationsLineStringCache = new Map();
+	// for (let P = 0; P < T.length - 1; P++) {
+	// 	if (S1 === T[P].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player)))
+	// 		return T[P + 1].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
+	// }
+	translations.forEach((T, i) => {
+		let S = T.replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
+		translationsStringLineCache.set(S, i);
+		translationsLineStringCache.set(i, S);
+	})
+	return [translationsStringLineCache, translationsLineStringCache];
+}
+
+/**
+ * Translates a string to another language from the array,
+ * the translation is always the one right after the english line
  * this is the cache mode of TranslationString
  * @param {string} S - The original english string to translate
  * @param {Map<string, number>} translationsStringLineCache - The active translation dictionary <string, stringLine>
  * @param {Map<number, string>} translationsLineStringCache - The active translation dictionary <stringLine, string>
- * @param {string} CharacterName - Name of the character if it is required to replace it within the string.
  * @returns {string} - The translated string
  */
-function TranslationStringCache(S, translationsStringLineCache, translationsLineStringCache, CharacterName) {
+function TranslationStringCache(S, translationsStringLineCache, translationsLineStringCache) {
 	if (S != null) {
 		let S1 = S.trim();
 		if (S1 !== "") {
 			try {
 				let l = translationsStringLineCache.get(S1);
 				if (l) {
-					// the translation always in the next line
+					// the translation is always the one right after the english line
 					let s = translationsLineStringCache.get(l + 1);
 					if (s) {
 						return s;
@@ -150,10 +171,6 @@ function TranslationStringCache(S, translationsStringLineCache, translationsLine
 				// ignore
 				console.warn('TranslationStringCache catch:', S, translationsStringLineCache.get(S1), e);
 			}
-			// for (let P = 0; P < T.length - 1; P++) {
-			// 	if (S1 === T[P].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player)))
-			// 		return T[P + 1].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
-			// }
 		}
 	}
 	return S;
