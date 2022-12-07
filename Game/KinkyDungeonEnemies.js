@@ -725,7 +725,7 @@ function KDGetEnemyStruggleMod(enemy) {
 	if (enemy.boundLevel > enemy.Enemy.maxhp * 10) {
 		mult = 0;
 	}
-	if (KDNearbyEnemies(enemy.x, enemy.y, 1.5).some((en) => {
+	if (!KDEnemyHasFlag(enemy, "imprisoned") && enemy.hp > 0.51 && KDNearbyEnemies(enemy.x, enemy.y, 1.5).some((en) => {
 		return en != enemy && KDFactionRelation(KDGetFaction(enemy), KDGetFaction(en)) >= Math.max(0.1, KDFactionRelation("Player", KDGetFaction(en)));
 	})) {
 		mult += 0.15;
