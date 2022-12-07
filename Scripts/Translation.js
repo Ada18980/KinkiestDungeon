@@ -80,6 +80,7 @@ function TranslationAvailable(FullPath) {
  * @returns {string[]} - Array of strings with each line divided. For each translated line, the english string precedes the translated one in the array.
  */
 function TranslationParseTXT(str) {
+	console.time('TranslationParseTXT')
 
 	const arr = [];
 	let c;
@@ -102,6 +103,7 @@ function TranslationParseTXT(str) {
 	// Trims the full translated array
 	for (let row = 0; row < arr.length; row++)
 		arr[row] = arr[row].trim();
+	console.timeEnd('TranslationParseTXT')
 	return arr;
 }
 
@@ -113,11 +115,46 @@ function TranslationParseTXT(str) {
  * @returns {string} - The translated string
  */
 function TranslationString(S, T, CharacterName) {
-	if ((S != null) && (S.trim() != "")) {
+	if ((S != null) && (S.trim() !== "")) {
 		S = S.trim();
 		for (let P = 0; P < T.length - 1; P++)
-			if (S == T[P].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player)))
+			if (S === T[P].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player)))
 				return T[P + 1].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
+	}
+	return S;
+}
+
+/**
+ * Translates a string to another language from the array, the translation is always the one right after the english line
+ * this is the cache mode of TranslationString
+ * @param {string} S - The original english string to translate
+ * @param {Map<string, number>} translationsStringLineCache - The active translation dictionary <string, stringLine>
+ * @param {Map<number, string>} translationsLineStringCache - The active translation dictionary <stringLine, string>
+ * @param {string} CharacterName - Name of the character if it is required to replace it within the string.
+ * @returns {string} - The translated string
+ */
+function TranslationStringCache(S, translationsStringLineCache, translationsLineStringCache, CharacterName) {
+	if (S != null) {
+		let S1 = S.trim();
+		if (S1 !== "") {
+			try {
+				let l = translationsStringLineCache.get(S1);
+				if (l) {
+					let s = translationsLineStringCache.get(l + 1);
+					if (s) {
+						return s;
+					}
+				}
+				return S;
+			} catch (e) {
+				// ignore
+				console.warn('TranslationStringCache catch:', S, translationsStringLineCache.get(S1), e);
+			}
+			// for (let P = 0; P < T.length - 1; P++) {
+			// 	if (S1 === T[P].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player)))
+			// 		return T[P + 1].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
+			// }
+		}
 	}
 	return S;
 }
