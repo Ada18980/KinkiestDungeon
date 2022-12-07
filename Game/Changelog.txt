@@ -1186,6 +1186,7 @@ Features
 - Analyze now reveals magic runes that spawn traps
 - Knowledge magic tree now unlocks advanced tooltips
 - Not all red locks are created equal...
+- Buffed enemy sense
 
 
 TODO ValidationFindBlockCycles to prevent bugs

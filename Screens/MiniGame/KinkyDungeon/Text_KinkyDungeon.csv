@@ -2259,6 +2259,8 @@ KinkyDungeonStruggleUnlockFail3,"You work on unlocking the TargetRestraint with 
 KinkyDungeonStruggleUnlockDrop,"You fiddle with the key on the TargetRestraint..."
 
 KinkyDungeonStruggleUnlockNoRedKey,"The lock requires a key."
+KinkyDungeonStruggleUnlockNoRed_HiKey,"The lock requires a key."
+KinkyDungeonStruggleUnlockNoRed_MedKey,"The lock requires a key."
 KinkyDungeonStruggleUnlockNoGreenKey,"The green padlock only accepts green keys."
 KinkyDungeonStruggleUnlockNoYellowKey,"The yellow padlock requires a red and a green key."
 KinkyDungeonStruggleUnlockNoBlueKey,"The magical lock only accepts blue keys and can't be picked."
@@ -4255,7 +4257,7 @@ KinkyDungeonSpellTargetEvasion,Choose creature to buff
 
 
 KinkyDungeonSpellAnalyze,Magical Sight
-KinkyDungeonSpellDescriptionAnalyze,"Highlight the location of interesting magical phenomena for 12 turns"
+KinkyDungeonSpellDescriptionAnalyze,"Highlight the location of interesting magical phenomena for 20 turns"
 KinkyDungeonSpellCastAnalyze,You analyze the target!
 KinkyDungeonSpellTargetAnalyze,Choose object to analyze
 
@@ -4847,7 +4849,7 @@ KinkyDungeonSpellTrueSight,Truesight
 KinkyDungeonSpellDescriptionTrueSight,When enabled: Drain mana every turn to see through walls and increase accuracy by 40%.
 
 KinkyDungeonSpellEnemySense,Heartsense
-KinkyDungeonSpellDescriptionEnemySense,Highlight the locations of enemies through walls on the map for 4 turns.
+KinkyDungeonSpellDescriptionEnemySense,Highlight the locations of enemies through walls on the map for 12 turns.
 
 KinkyDungeonSpellLight,Light
 KinkyDungeonSpellDescriptionLight,"Produce a bright light for Duration turns. Has no effect in dark rooms."
