@@ -94,7 +94,7 @@ let KDGuardActions = {
 		},
 		assign: (guard, xx, yy) => {
 			KinkyDungeonInterruptSleep();
-			if (KinkyDungeonGoddessRep.Prisoner >= KDSecurityLevelHiSec && KDGameData.RoomType != "Jail") {
+			if (KinkyDungeonGoddessRep.Prisoner >= KDSecurityLevelHiSec && KDGameData.RoomType != "Jail" && (!(KDGameData.JailFaction?.length > 0) || KDFactionRelation("Player", KDGameData.JailFaction[0]) < 0.4)) {
 				KDStartDialog("JailerHiSec", guard.Enemy.name, true, "", guard);
 			} else {
 				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonRemindJailRelease" + KinkyDungeonCheckRelease()).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#ffff00", 4, 8);
