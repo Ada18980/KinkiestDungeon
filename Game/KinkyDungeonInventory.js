@@ -378,8 +378,8 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover) {
 
 	DrawTextFitKD(TextGet(prefix + name), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5, 300, "#000000", KDTextTan);
 	let wrapAmount = TranslationLanguage == 'CN' ? 9 : 22;
-	let textSplit = KinkyDungeonWordWrap(TextGet(prefix + name + "Desc"), wrapAmount).split('\n');
-	let textSplit2 = KinkyDungeonWordWrap(TextGet(prefix + name + "Desc2"), wrapAmount).split('\n');
+	let textSplit = KinkyDungeonWordWrap(TextGet(prefix + name + "Desc"), wrapAmount, 22).split('\n');
+	let textSplit2 = KinkyDungeonWordWrap(TextGet(prefix + name + "Desc2"), wrapAmount, 22).split('\n');
 
 
 	let showpreview = (item.preview && !MouseIn(canvasOffsetX_ui, canvasOffsetY_ui, 840, 583));

@@ -803,10 +803,40 @@ function KinkyDungeonCheckSpellPrerequisite(spell) {
 	}
 }
 
+// Patch un-translated english string display issue in chinese Language game mode
+// the using detect lib from https://github.com/richtr/guessLanguage.js
+// i rewrite the origin lib useless callback mode to return mode
+// now only fix chinese
+function KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthEnglish) {
+	try {
+		if (TranslationLanguage === 'CN') {
+			let languageName = guessLanguage.name(str);
+			// console.log('KinkyDungeonDetectLanguageForMaxWidth languageName', languageName);
+			if (languageName === "unknown") {
+				return maxWidthTranslate;
+			} else if (languageName === "Chinese") {
+				return 9;
+			} else if (languageName === "English") {
+				return maxWidthEnglish;
+			} else {
+				// if not Chinese then all are english fallback
+				return maxWidthEnglish;
+			}
+		} else {
+			return maxWidthTranslate;
+		}
+	} catch (e) {
+		return maxWidthTranslate;
+	}
+}
+
 // https://stackoverflow.com/questions/14484787/wrap-text-in-javascript
-function KinkyDungeonWordWrap(str, maxWidth) {
+function KinkyDungeonWordWrap(str, maxWidthTranslate, maxWidthEnglish) {
 	let newLineStr = "\n";
 	let res = '';
+	// console.log('KinkyDungeonDetectLanguageForMaxWidth before', str, maxWidth);
+	let	maxWidth = KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthEnglish);
+	// console.log('KinkyDungeonDetectLanguageForMaxWidth after', maxWidth);
 	while (str.length > maxWidth) {
 		let found = false;
 		// Inserts new line at first whitespace of the line
@@ -872,7 +902,7 @@ function KinkyDungeonDrawMagic() {
 		if (KinkyDungeonPreviewSpell) DrawTextKD(TextGet("KinkyDungeonMagicCost") + KinkyDungeonGetCost(spell), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 150, KDTextGray0, KDTextTan);
 		DrawTextKD(TextGet("KinkyDungeonMagicManaCost") + (spell.manacost * 10), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 195, KDTextGray0, KDTextTan);
 		let wrapAmount = TranslationLanguage == 'CN' ? 9 : 22;
-		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription"+ spell.name).replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)), wrapAmount).split('\n');
+		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription"+ spell.name).replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)), wrapAmount, 22).split('\n');
 		let i = 0;
 		for (let N = 0; N < textSplit.length; N++) {
 			DrawTextKD(textSplit[N],
