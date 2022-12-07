@@ -4093,18 +4093,18 @@ KinkyDungeonSpellDescriptionApprenticePhysics,Unlocks teleportation and physical
 KinkyDungeonSpellApprenticeSummon,Summoning 101
 KinkyDungeonSpellDescriptionApprenticeSummon,Unlocks summoning spells. Learn Summon Familiar.
 
-KinkyDungeonSpellApprenticeShadow,Shadow Magic
+KinkyDungeonSpellApprenticeShadow,Blessing of Shadow
 KinkyDungeonSpellDescriptionApprenticeShadow,Unlocks shadow spells. Learn Shadow Dagger.
-KinkyDungeonSpellApprenticeLight,Light Magic
+KinkyDungeonSpellApprenticeLight,Blessing of Light
 KinkyDungeonSpellDescriptionApprenticeLight,Unlocks light spells. Learn Flash.
-KinkyDungeonSpellApprenticeMystery,Mystery Magic
+KinkyDungeonSpellApprenticeMystery,Blessing of Obscurity
 KinkyDungeonSpellDescriptionApprenticeMystery,Unlocks invisibility spells. Learn Camouflage.
 KinkyDungeonSpellApprenticeProjection,Projection Magic
 KinkyDungeonSpellDescriptionApprenticeProjection,Unlocks illusory spells. Learn Summon Decoy.
 KinkyDungeonSpellApprenticeAlteration,Alteration Magic
 KinkyDungeonSpellDescriptionApprenticeAlteration,Unlocks alteration spells. Learn Confuse.
-KinkyDungeonSpellApprenticeKnowledge,Arcane Magic
-KinkyDungeonSpellDescriptionApprenticeKnowledge,Unlocks knowledge and critical-strike spells. Learn True Steel.
+KinkyDungeonSpellApprenticeKnowledge,Arcane Knowledge
+KinkyDungeonSpellDescriptionApprenticeKnowledge,"Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies."
 
 KinkyDungeonSpellGlue,Glue
 KinkyDungeonGlue,The glue attaches to your legs as you try to move through!
@@ -5764,9 +5764,27 @@ KinkyDungeonHappyGas,"The air swirls with traces of pleasing magic..."
 KinkyDungeonSporeGas,"The spores make you feel sleepy..."
 
 KinkyDungeonTooltipWeakness,"DAMAGETYPE: MULTIPLIERx modifier"
-KinkyDungeonTooltipArmor,"Armor: AMOUNT"
-KinkyDungeonTooltipEvasion,"Base Chance to Hit: AMOUNT%"
+KinkyDungeonTooltipArmor,"Base Armor: AMOUNT"
+KinkyDungeonTooltipEvasion,"Base Evasion: AMOUNT%"
 KinkyDungeonTooltipDealsDamage,"Deals DAMAGETYPE damage"
+KDTooltipDisarm,"Can disarm (chance: DISARMCHANCE%)"
+KDTooltipDamageResists,Resistances:
+KDTooltipHP,"HP: "
+KDTooltipOpinion0,"Ambivalent"
+KDTooltipOpinion1,"Likes you"
+KDTooltipOpinion2,"Loves you"
+KDTooltipOpinion3,"Adores you"
+KDTooltipOpinion-1,"Dislikes you"
+KDTooltipOpinion-2,"Hates you"
+KDTooltipOpinion-3,"Despises you"
+KDTooltipAwareTalking,"Talking to you"
+KDTooltipAwareAware,"Pursuing you!"
+KDTooltipAwareSuspicious,"Slightly suspicious"
+KDTooltipAwareDanger,"Saw something..."
+KDTooltipAwareDangerHigh,"Notices you!"
+KDTooltipAwareUnnoticed,"Unaware"
+KDTooltipInventory,"Items carried:"
+KDTooltipInventoryFull,"...and NUMBER more"
 KinkyDungeonDamageTypeacid,"Acid"
 KinkyDungeonDamageTypecold,"Shadow"
 KinkyDungeonDamageTypefrost,"Ice"
