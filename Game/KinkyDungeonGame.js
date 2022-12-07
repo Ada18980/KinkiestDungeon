@@ -2154,6 +2154,27 @@ function KinkyDungeonPlacePatrols(Count, width, height) {
 }
 
 /**
+ *
+ * @returns {number}
+ */
+function KDGetEffLevel() {
+	let effLevel = MiniGameKinkyDungeonLevel + Math.round(KinkyDungeonDifficulty/5);
+	if (KinkyDungeonNewGame) effLevel += KinkyDungeonMaxLevel;
+
+	return effLevel;
+}
+
+/**
+ * @returns {string}
+ */
+function KDRandomizeRedLock() {
+	let level = KDGetEffLevel();
+	if (KDRandom() < -0.1 + Math.min(0.5, level * 0.03)) return "Red_Hi";
+	if (KDRandom() < 0.25 + Math.min(0.55, level * 0.03)) return "Red_Med";
+	return "Red";
+}
+
+/**
  * Generates a lock
  * @param {boolean} [Guaranteed]
  * @param {number} [Floor]
@@ -2199,11 +2220,11 @@ function KinkyDungeonGenerateLock(Guaranteed, Floor, AllowGold, Type) {
 			if (AllowGold && KDRandom() < GoldChance) lock = "Gold" + modifiers;
 			else lock = "Blue" + modifiers;
 		} else {
-			lock = "Red" + modifiers;
+			lock = KDRandomizeRedLock() + modifiers;
 		}
 	}
 	if (Type == "Door") {
-		if (lock.includes("Blue") || lock.includes("Gold")) lock = "Red";
+		if (lock.includes("Blue") || lock.includes("Gold")) lock = KDRandomizeRedLock();
 	}
 
 	return lock;

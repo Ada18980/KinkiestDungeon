@@ -3020,7 +3020,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								Lstart = Math.floor(Lmax*KDRandom()); // Lock one at random
 							}
 							for (let L = Lstart; L <= Lmax; L++) {
-								let l = enemy.Enemy.attackLock ? enemy.Enemy.attackLock : KinkyDungeonGenerateLock(true);
+								let l = enemy.Enemy.attackLock ? KDProcessLock(enemy.Enemy.attackLock) : KinkyDungeonGenerateLock(true);
 								KinkyDungeonLock(Lockable[L], l); // Lock it!
 								priorityBonus += KDRestraint(Lockable[L]).power;
 							}
@@ -4364,4 +4364,14 @@ function KDGetAwareTooltip(enemy) {
 		suff: "Unnoticed",
 		color: "#88ff88",
 	};
+}
+
+/**
+ *
+ * @param {string} lock
+ * @returns {string}
+ */
+function KDProcessLock(lock) {
+	if (lock == "Red") return KDRandomizeRedLock();
+	else return lock;
 }

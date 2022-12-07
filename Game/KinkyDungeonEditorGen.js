@@ -508,12 +508,12 @@ let KDTileGen = {
 				KinkyDungeonMapSet(x, y, 'C');
 				return {
 					NoTrap: tileGenerator.NoTrap,
-					Type: tileGenerator.Lock ? "Lock" : undefined, Lock: tileGenerator.Lock,
+					Type: tileGenerator.Lock ? "Lock" : undefined, Lock: tileGenerator.Lock == "RedRand" ? KDRandomizeRedLock() : "Red",
 					Loot: tileGenerator.Lock == "Blue" ? "blue" : (tileGenerator.Loot ? tileGenerator.Loot : "chest"),
 					//Faction: tileGenerator.Faction,
 					Roll: KDRandom(),
 					Special: tileGenerator.Lock == "Blue",
-					RedSpecial: tileGenerator.Lock == "Red",
+					RedSpecial: tileGenerator.Lock?.includes("Red"),
 					lootTrap: KDGenChestTrap(false, x, y, (tileGenerator.Loot ? tileGenerator.Loot : "chest"), tileGenerator.Lock, tileGenerator.NoTrap),
 				};
 			} else {
@@ -535,7 +535,7 @@ let KDTileGen = {
 			Faction: faction,
 			Roll: KDRandom(),
 			Special: tileGenerator.Lock == "Blue",
-			RedSpecial: tileGenerator.Lock == "Red",
+			RedSpecial: tileGenerator.Lock?.includes("Red"),
 			lootTrap: KDGenChestTrap(false, x, y, (tileGenerator.Loot ? tileGenerator.Loot : "chest"), tileGenerator.Lock, tileGenerator.NoTrap),
 		};
 	},
@@ -576,7 +576,7 @@ let KDTileGen = {
 			} else {
 				KinkyDungeonMapSet(x, y, 'd');
 			}
-			return {Type: "Door", Lock: tileGenerator.Lock, OffLimits: tileGenerator.OffLimits};
+			return {Type: "Door", Lock: tileGenerator.Lock == "RedRand" ? KDRandomizeRedLock() : "Red", OffLimits: tileGenerator.OffLimits};
 		} else {
 			KinkyDungeonMapSet(x, y, '2');
 		}

@@ -1653,6 +1653,110 @@ let KDLocks = {
 		loot_special: false,
 		loot_locked: true,
 	},
+	"Red_Med": {
+		lockmult: 2.1,
+		// Picking
+		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_time: 1.0, // Multiplies the picking rate
+		pick_diff: 0.0, // Added to the item's pick difficulty
+		pick_lim: 0.1, // Added to the item's pick limitchance
+
+		canPick: (data) => {
+			return true;
+		},
+		doPick: (data) => {
+			return true;
+		},
+		failPick: (data) => {
+			return "Fail";
+		},
+		breakChance: (data) => {
+			return KDRandom() < KinkyDungeonKeyGetPickBreakChance();
+		},
+
+		// Key
+		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "Red",
+		canUnlock: (data) => {
+			return KinkyDungeonRedKeys > 0;
+		},
+		doUnlock: (data) => {
+			KinkyDungeonRedKeys -= 1;
+			return true;
+		},
+		removeKeys: (data) => {
+			KinkyDungeonRedKeys -= 1;
+		},
+		failUnlock: (data) => {
+			return "Fail";
+		},
+
+		// Start of level -- for gold locks
+		levelStart: (item) => {
+		},
+		shrineImmune: false,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: false,
+		loot_locked: true,
+	},
+	"Red_Hi": {
+		lockmult: 2.2,
+		// Picking
+		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_time: 1.0, // Multiplies the picking rate
+		pick_diff: 0.0, // Added to the item's pick difficulty
+		pick_lim: 0.3, // Added to the item's pick limitchance
+
+		canPick: (data) => {
+			return true;
+		},
+		doPick: (data) => {
+			return true;
+		},
+		failPick: (data) => {
+			return "Fail";
+		},
+		breakChance: (data) => {
+			return KDRandom() < KinkyDungeonKeyGetPickBreakChance();
+		},
+
+		// Key
+		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "Red",
+		canUnlock: (data) => {
+			return KinkyDungeonRedKeys > 0;
+		},
+		doUnlock: (data) => {
+			KinkyDungeonRedKeys -= 1;
+			return true;
+		},
+		removeKeys: (data) => {
+			KinkyDungeonRedKeys -= 1;
+		},
+		failUnlock: (data) => {
+			return "Fail";
+		},
+
+		// Start of level -- for gold locks
+		levelStart: (item) => {
+		},
+		shrineImmune: false,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: false,
+		loot_locked: true,
+	},
 	"Blue": {
 		lockmult: 3.0,
 		penalty: {

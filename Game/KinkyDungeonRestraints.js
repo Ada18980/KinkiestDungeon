@@ -1583,8 +1583,11 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			KinkyDungeonWaitMessage(true);
 		} else if (data.escapeChance > 0) {
 
+			let extraLim = (StruggleType == "Pick" && lockType.pick_lim) ? Math.max(0, lockType.pick_lim) : 0;
+			let extraLimPenalty = (StruggleType == "Pick") ? extraLim * restraint.pickProgress : 0;
+			let extraLimThreshold = Math.min(1, (data.escapeChance / extraLim));
 			// One last check: check limits
-			if (data.limitChance > 0 && data.escapeChance > 0) {
+			if ((data.limitChance > 0 || extraLim > 0) && data.escapeChance > 0) {
 				let threshold = 0.75;
 				if (data.limitChance > data.escapeChance) {
 					threshold = Math.min(threshold, 0.9*(data.escapeChance / data.limitChance));
@@ -1593,17 +1596,37 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					(restraint.struggleProgress < threshold ? threshold * restraint.struggleProgress : 1.0) :
 					Math.min(1, 1.15 - 1.15 * restraint.struggleProgress))
 					: (StruggleType == "Struggle" ? 0 : 1);
-				let limitPenalty = Math.max(0, Math.min(1, limitProgress) * data.limitChance);
+				let limitPenalty = Math.max(0, Math.min(1, limitProgress) * data.limitChance, extraLimPenalty);
 				let maxPossible = 1;
-				if (data.limitChance > 0 && data.limitChance > data.escapeChance && StruggleType == "Struggle") {
+				if ((data.limitChance > 0 && data.limitChance > data.escapeChance && StruggleType == "Struggle")) {
 					// Find the intercept
 					maxPossible = threshold;
 				}
+				if (extraLim > data.escapeChance) {
+					// Find the intercept
+					maxPossible = Math.min(extraLimThreshold, maxPossible);
+				}
+
 
 				// Prevent struggling past this
 				if (maxPossible < 1) maxLimit = maxPossible;
 
-				if (limitPenalty > 0) {
+				if (extraLimPenalty > 0 && extraLimPenalty > limitPenalty) {
+					data.escapeChance -= extraLimPenalty;
+					if (data.escapeChance <= 0) {
+						// Replace with frustrated moan later~
+						if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Struggle.ogg");
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit"), "#ff0000", 2, true);
+						KinkyDungeonLastAction = "Struggle";
+						KinkyDungeonSendEvent("struggle", {
+							restraint: restraint,
+							group: struggleGroup,
+							struggleType: StruggleType,
+							result: "LimitExtra",
+						});
+						return "LimitExtra";
+					}
+				} else if (limitPenalty > 0) {
 					data.escapeChance -= limitPenalty;
 					if (data.escapeChance <= 0) {
 						// Replace with frustrated moan later~
@@ -1745,7 +1768,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 						if (KinkyDungeonStatsChoice.get("Clueless")) mult *= KDCluelessSpeedBonus;
 						mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 						KDAddDelayedStruggle(
-							escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinPickRate : 0, data.escapeChance) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
+							escapeSpeed * mult * (data.escapeChance > 0 ? (KDMinPickRate * (data.escapeChance > 0.5 ? 2 : 1)) : 0) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
 							KDStruggleTime, StruggleType, struggleGroup, index, data,
 							restraint.pickProgress, maxLimit
 						);
@@ -2178,7 +2201,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 		}
 	}
 
-	let newLock = (Lock && KinkyDungeonIsLockable(restraint)) ? Lock : restraint.DefaultLock;
+	let newLock = (Lock && KinkyDungeonIsLockable(restraint)) ? Lock : KDProcessLock(restraint.DefaultLock);
 	if (
 		// Nothing to overwrite so we good
 		!r
@@ -2557,7 +2580,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				}
 
 				if (Lock) KinkyDungeonLock(item, Lock);
-				else if (restraint.DefaultLock && !Unlink) KinkyDungeonLock(item, restraint.DefaultLock);
+				else if (restraint.DefaultLock && !Unlink) KinkyDungeonLock(item, KDProcessLock(restraint.DefaultLock));
 
 				KDUpdateLinkCaches(item);
 			} else if ((!Link && !linked) || SwitchItems) {

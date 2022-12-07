@@ -1700,6 +1700,7 @@ type KDLockType = {
 	pickable: boolean;
 	pick_time: number;
 	pick_diff: number;
+	pick_lim?: number;
 	canPick: (data: any) => boolean;
 	doPick: (data: any) => boolean;
 	failPick: (data: any) => string;
