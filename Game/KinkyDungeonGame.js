@@ -584,6 +584,11 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 
 		KinkyDungeonPlaceSetPieces(POI, traps, chestlist, shrinelist, chargerlist, spawnPoints, false, width, height);
 
+		if (!KinkyDungeonNearestJailPoint(1, 1)) {
+			console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
+			continue;
+		}
+
 		if (altType && !altType.noFurniture)
 			KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, altType); // Replace random internal walls with doodads
 
