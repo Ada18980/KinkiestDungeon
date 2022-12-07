@@ -15,14 +15,11 @@
 
 let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 9, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
 	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
-let KDAnalyze = {name: "Analyze", tags: ["knowledge", "utility", "offense"], sfx: "MagicSlash", school: "Illusion", manacost: 4, components: [], level:1, type:"special", special: "analyze", noMiscast: true,
-	onhit:"", time:25, power: 0, range: 3.99, size: 1, damage: ""};
 
 /**
  * These are starting spells
  */
 let KinkyDungeonSpellsStart = [
-	KDAnalyze,
 	KDCommandWord,
 	//{name: "FleetFooted", sfx: "FireSpell", school: "Illusion", manacost: 0.5, components: [], level:1, type:"passive",
 	//events: [{type: "FleetFooted", trigger: "beforeMove", power: 1}, {type: "FleetFooted", trigger: "afterMove"}, {type: "FleetFooted", trigger: "beforeTrap", msg: "KinkyDungeonFleetFootedIgnoreTrapFail", chance: 0.35}]},
@@ -726,6 +723,9 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
 			{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
 		]},
+
+		{name: "Analyze", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 3, defaultOff: true, cancelAutoMove: true, costOnToggle: true, components: [], level:1, type:"passive",
+			events: [{type: "Analyze", trigger: "toggleSpell", power: 5, time: 12}, {type: "Analyze", trigger: "tick", power: 5, time: 12}]},
 
 		{name: "APUp1", hide: true, school: "Any", manacost: 0, components: [], level:2, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "APUp2", hide: true, school: "Any", manacost: 0, components: [], level:3, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},

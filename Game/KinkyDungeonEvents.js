@@ -1624,6 +1624,19 @@ let KDEventMapSpell = {
 				});
 			}
 		},
+		"Analyze": (e, spell, data) => {
+			let activate = false;
+			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && !KinkyDungeonPlayerBuffs.Analyze) {
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Analyze", aura:"#ff5555", type: "MagicalSight", power: e.power, duration: e.time});
+				activate = true;
+			}
+			if (KinkyDungeonPlayerBuffs.Analyze && KinkyDungeonPlayerBuffs.Analyze.duration > 1) {
+				// Nothing!
+			} else if (!activate) {
+				KinkyDungeonDisableSpell("Analyze");
+				KinkyDungeonExpireBuff(KinkyDungeonPlayerBuffs, "Analyze");
+			}
+		},
 	},
 	"calcStats": {
 		"Blindness": (e, spell, data) => {
@@ -1909,6 +1922,9 @@ let KDEventMapSpell = {
 	"toggleSpell": {
 		"Light": (e, spell, data) => {
 			KinkyDungeonUpdateLightGrid = true;
+		},
+		"Analyze": (e, spell, data) => {
+			KinkyDungeonAdvanceTime(0, true, true);
 		},
 	},
 	"enemyStatusEnd": {

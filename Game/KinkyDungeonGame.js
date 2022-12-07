@@ -1618,6 +1618,63 @@ function KinkyDungeonPlaceChests(chestlist, treasurechance, treasurecount, rubbl
 		}*/
 		list.splice(N, 1);
 	}
+
+
+	for (let tile of Object.entries(KinkyDungeonTiles)) {
+		if (tile[1].lootTrap) {
+			let x = parseInt(tile[0].split(',')[0]);
+			let y = parseInt(tile[0].split(',')[1]);
+			let spawned = 0;
+			let mult = tile[1].lootTrap.mult;
+			let trap = tile[1].lootTrap.trap;
+			//let duration = tile[1].lootTrap.duration;
+			let maxspawn = 1 + Math.round(Math.min(2 + KDRandom() * 2, KinkyDungeonDifficulty/25) + Math.min(2 + KDRandom() * 2, 0.5*MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint));
+			if (mult) maxspawn *= mult;
+			let requireTags = trap ? [trap] : undefined;
+
+			let tags = ["trap", trap];
+			KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
+
+			for (let i = 0; i < 30; i++) {
+				if (spawned < maxspawn) {
+					let Enemy = KinkyDungeonGetEnemy(
+						tags, MiniGameKinkyDungeonLevel + KinkyDungeonDifficulty/5,
+						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+						'0', requireTags, true);
+					if (Enemy) {
+						let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, undefined, false, (xx, yy) => {
+							return !KDEffectTileTags(xx, yy).rune;
+						});
+
+						//KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, (duration || Enemy.tags.construct) ? (duration || 40) : undefined, undefined, false, "Ambush", true, 1.5, true, undefined, true, true);
+						if (point) {
+							if (!KinkyDungeonTilesGet(point.x + ',' + point.y)) KinkyDungeonTilesSet(point.x + ',' + point.y, {});
+							KinkyDungeonTilesGet(point.x + ',' + point.y).lootTrapEnemy = Enemy.name;
+							KDCreateEffectTile(point.x, point.y, {
+								name: "Runes",
+								duration: 9999,
+							}, 0);
+							if (Enemy.tags.minor) spawned += 0.5;
+							else if (Enemy.tags.elite) spawned += 1.5;
+							else if (Enemy.tags.miniboss) spawned += 2;
+							else if (Enemy.tags.boss) spawned += 4;
+							else spawned += 1;
+							if (Enemy.summonTags) {
+								for (let t of Enemy.summonTags) {
+									if (!tags.includes(t)) tags.push(t);
+								}
+							}
+							if (Enemy.summonTagsMulti) {
+								for (let t of Enemy.summonTagsMulti) {
+									tags.push(t);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 

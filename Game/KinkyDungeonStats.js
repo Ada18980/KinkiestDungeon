@@ -220,8 +220,8 @@ let KDClassStart = {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 1);
 	},
 	"Peasant": () => { // Peasant
-		KinkyDungeonSpells = [KDAnalyze];
-		KinkyDungeonSpellChoices = [0];
+		KinkyDungeonSpells = [];
+		KinkyDungeonSpellChoices = [];
 	},
 };
 

@@ -464,6 +464,8 @@ KDStatGagFull,"Your mouth is totally filled! You can't drink potions and have a 
 
 KinkyDungeonBuffEmpower,"Spell Empowerment!"
 
+KinkyDungeonBuffMagicalSight,"You're seeing things..."
+
 KinkyDungeonBuffPoisonDagger,"You've been poisoned!"
 
 KinkyDungeonBuffTabletLatex,-50% MP Cost (Latex)
@@ -4106,6 +4108,7 @@ KinkyDungeonSpellDescriptionApprenticeAlteration,Unlocks alteration spells. Lear
 KinkyDungeonSpellApprenticeKnowledge,Arcane Knowledge
 KinkyDungeonSpellDescriptionApprenticeKnowledge,"Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies."
 
+
 KinkyDungeonSpellGlue,Glue
 KinkyDungeonGlue,The glue attaches to your legs as you try to move through!
 KinkyDungeonGlueSlow,The glue slows you down!
@@ -4242,8 +4245,9 @@ KinkyDungeonSpellDescriptionEvasion,Massively increases a creature's evasion for
 KinkyDungeonSpellCastEvasion,Your movements intensify!
 KinkyDungeonSpellTargetEvasion,Choose creature to buff
 
-KinkyDungeonSpellAnalyze,Analyze
-KinkyDungeonSpellDescriptionAnalyze,"Cast on Chest: Detect if there is a trap. Cast on Enemy: Show weaknesses on mouseover, and the next 3 hits it takes deal +30% damage."
+
+KinkyDungeonSpellAnalyze,Magical Sight
+KinkyDungeonSpellDescriptionAnalyze,"Highlight the location of interesting magical phenomena for 12 turns"
 KinkyDungeonSpellCastAnalyze,You analyze the target!
 KinkyDungeonSpellTargetAnalyze,Choose object to analyze
 
