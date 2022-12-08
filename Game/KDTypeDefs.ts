@@ -480,6 +480,8 @@ interface overrideDisplayItem {
 }
 
 interface enemy extends KDHasTags {
+	/** This enemy wont appear outside of its designated floors even if it shares the tag */
+	noOverrideFloor?: boolean,
 	/** This tag will be added to the selection tags if the enemy has it, for loot and ambush spawning purposes */
 	summonTags?: string[],
 	/** This tag will be added to the selection tags if the enemy has it, for loot and ambush spawning purposes. Multiple copies will be pushed*/

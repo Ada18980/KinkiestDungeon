@@ -233,6 +233,8 @@ let KDOptOut = false;
 * CagedTime : number,
 * ShopItems: shopItem[],
 * DelayedActions: KDDelayedAction[],
+* JailFaction: string[],
+* GuardFaction: string[],
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
@@ -358,6 +360,8 @@ let KDGameDataBase = {
 	KneelTurns: 0,
 	ShopItems: [],
 	DelayedActions: [],
+	JailFaction: [],
+	GuardFaction: [],
 };
 /**
  * @type {KDGameDataBase}
