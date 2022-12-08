@@ -1189,6 +1189,8 @@ Features
 - Buffed enemy sense
 - Enemies now have limited restraints
 
+3.9 (Dec 2022)
+
 
 TODO ValidationFindBlockCycles to prevent bugs
 
