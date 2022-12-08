@@ -689,6 +689,15 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 						tags.push(t);
 				}
 			}
+
+			KDGameData.JailFaction = [];
+			if (mapMod?.jailType) KDGameData.JailFaction.push(mapMod.jailType);
+			else if (altType?.jailType) KDGameData.JailFaction.push(altType.jailType);
+
+			KDGameData.GuardFaction = [];
+			if (mapMod?.guardType) KDGameData.GuardFaction.push(mapMod.guardType);
+			else if (altType?.guardType) KDGameData.GuardFaction.push(mapMod.guardType);
+
 			// Place enemies after player
 			if (!altType || altType.enemies) {
 				let bonus = (mapMod && mapMod.bonusTags) ? mapMod.bonusTags : undefined;
@@ -897,6 +906,12 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 
 	if (factionAllied) randomFactions.push(factionAllied);
 	if (factionEnemy) randomFactions.push(factionEnemy);
+
+	KDGameData.JailFaction.push(primaryFaction);
+	KDGameData.GuardFaction.push(primaryFaction);
+	if (factionAllied) {
+		KDGameData.GuardFaction.push(factionAllied);
+	}
 
 	console.log(randomFactions[0] + "," + randomFactions[1] + "," + randomFactions[2]);
 

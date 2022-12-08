@@ -11,21 +11,14 @@ let KDJailEvents = {
 		},
 		// Occurs when the jail event triggers
 		trigger: (g, xx, yy) => {
-			let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
-			let jailtag = params.jailType;
-			let mapMod = null;
-			if (KDGameData.MapMod) {
-				mapMod = KDMapMods[KDGameData.MapMod];
-			}
 			// Jail tag
-			let jt = (mapMod && mapMod.jailType ? mapMod.jailType : (jailtag ? jailtag : "jailer"));
-			let Enemy = KinkyDungeonGetEnemy(["jailGuard"], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt], false, undefined, ["gagged"]);
+			let jt = KDGameData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDGameData.JailFaction[Math.floor(KDRandom() * KDGameData.JailFaction.length)]]] : "jailer";
+			let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], false, undefined, ["gagged"]);
 			if (!Enemy) {
-				jt = jailtag;
-				Enemy = KinkyDungeonGetEnemy(["jailGuard"], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt], false, undefined, ["gagged"]);
+				Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], false, undefined, ["gagged"]);
 				if (!Enemy) {
-					jt = "jailer";
-					Enemy = KinkyDungeonGetEnemy(["jailGuard"], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt]);
+					jt = "genericJailer";
+					Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"]);
 				}
 			}
 			//KinkyDungeonGetEnemyByName((KinkyDungeonGoddessRep.Prisoner < 0 ? "Guard" : "GuardHeavy"));
@@ -101,7 +94,7 @@ let KDGuardActions = {
 		},
 		assign: (guard, xx, yy) => {
 			KinkyDungeonInterruptSleep();
-			if (KinkyDungeonGoddessRep.Prisoner >= KDSecurityLevelHiSec && KDGameData.RoomType != "Jail") {
+			if (KinkyDungeonGoddessRep.Prisoner >= KDSecurityLevelHiSec && KDGameData.RoomType != "Jail" && (!(KDGameData.JailFaction?.length > 0) || KDFactionRelation("Player", KDGameData.JailFaction[0]) < 0.4)) {
 				KDStartDialog("JailerHiSec", guard.Enemy.name, true, "", guard);
 			} else {
 				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonRemindJailRelease" + KinkyDungeonCheckRelease()).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#ffff00", 4, 8);
@@ -238,7 +231,7 @@ let KDGuardActions = {
 				} else if (oldRestraintItem) {
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartRemoving")
 						.replace("EnemyName", TextGet("Name" + guard.Enemy.name))
-						.replace("RestraintName", TextGet("Restraint" + oldRestraintItem.name)), "yellow", 2);
+						.replace("RestraintName", TextGet("Restraint" + oldRestraintItem.name)), "yellow", 2, true);
 					KDGameData.GuardApplyTime += delta;
 				} else {
 					guard.CurrentAction = "jailWander";
@@ -279,7 +272,7 @@ let KDGuardActions = {
 							msg = msg.replace("NewRestraintName", TextGet("Restraint"+newRestraint.name));
 							KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
 						} else
-							KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonJailerCheck"), "yellow", 3);
+							KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonJailerCheck"), "yellow", 3, true);
 					}
 					guard.CurrentAction = "jailWander";
 					guard.gx = guard.x;
@@ -289,7 +282,7 @@ let KDGuardActions = {
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
 						.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
 						.replace("EnemyName", TextGet("Name" + guard.Enemy.name)),
-					"yellow", 2);
+					"yellow", 2, true);
 
 					KDGameData.GuardApplyTime += delta;
 				}
@@ -333,7 +326,7 @@ let KDGuardActions = {
 				} else if (oldRestraintItem) {
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartLocking")
 						.replace("EnemyName", TextGet("Name" + guard.Enemy.name))
-						.replace("RestraintName", TextGet("Restraint" + oldRestraintItem.name)), "yellow", 2);
+						.replace("RestraintName", TextGet("Restraint" + oldRestraintItem.name)), "yellow", 2, true);
 					KDGameData.GuardApplyTime += delta;
 				} else {
 					guard.CurrentAction = "jailWander";
