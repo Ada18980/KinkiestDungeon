@@ -136,6 +136,29 @@ function KDWallVertTunnel(x, y) {
 
 let KDChainablePillar = 'bdD';
 
+let KDTileTooltips = {
+	'1': () => {return {color: "#ffffff", text: "1"};},
+	'0': () => {return {color: "#ffffff", text: "0"};},
+	'2': () => {return {color: "#ffffff", text: "2"};},
+	'R': () => {return {color: "#ffffff", text: "R"};},
+	'L': () => {return {color: "#ffffff", text: "L"};},
+	'A': () => {return {color: "#ffffff", text: "A"};},
+	'a': () => {return {color: "#ffffff", text: "a"};},
+	'O': () => {return {color: "#ffffff", text: "O"};},
+	'o': () => {return {color: "#ffffff", text: "o"};},
+	'C': () => {return {color: "#ffffff", text: "C"};},
+	'c': () => {return {color: "#ffffff", text: "c"};},
+	'T': () => {return {color: "#ffffff", text: "T"};},
+	'4': () => {return {color: "#ffffff", text: "4"};},
+	'X': () => {return {color: "#ffffff", text: "X"};},
+	'?': () => {return {color: "#ffffff", text: "Hook"};},
+	',': () => {return {color: "#ffffff", text: "Hook"};},
+	'S': () => {return {color: "#ffffff", text: "S"};},
+	's': () => {return {color: "#ffffff", text: "s"};},
+	'H': () => {return {color: "#ffffff", text: "H"};},
+	'G': () => {return {color: "#ffffff", text: "G"};},
+};
+
 let KDSprites = {
 	// @ts-ignore
 	"1": (x, y, Fog, noReplace) => {
@@ -840,6 +863,24 @@ function KinkyDungeonDrawGame() {
 								zIndex: 100,
 							});
 					}
+				}
+
+
+				let cursorX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamX;
+				let cursorY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
+				let tooltips = [];
+				if (KinkyDungeonEnemyAt(cursorX, cursorY)) {
+					tooltips.push((offset) => KDDrawEnemyTooltip(KinkyDungeonEnemyAt(cursorX, cursorY), offset));
+				}
+				if (KinkyDungeonInspect) {
+					let tile = KinkyDungeonMapGet(cursorX, cursorY);
+					if (KDTileTooltips[tile]) {
+						tooltips.push((offset) => KDDrawTileTooltip(tile, cursorX, cursorY, offset));
+					}
+				}
+				let tooltipOffset = 0;
+				for (let t of tooltips) {
+					tooltipOffset = t(tooltipOffset);
 				}
 
 				if (KinkyDungeonFastMoveSuppress) {
@@ -2376,4 +2417,53 @@ function KDUpdateVision() {
 	KinkyDungeonMakeBrightnessMap(KinkyDungeonGridWidth, KinkyDungeonGridHeight, KinkyDungeonMapBrightness, data.lights, KDVisionUpdate);
 	KinkyDungeonMakeVisionMap(KinkyDungeonGridWidth, KinkyDungeonGridHeight, viewpoints, data.lights, KDVisionUpdate, KinkyDungeonMapBrightness);
 	KDVisionUpdate = 0;
+}
+
+function KDDrawTileTooltip(maptile, x, y, offset) {
+	let TooltipList = [];
+	TooltipList.push({
+		str: TextGet("KDTileTooltip" + maptile),
+		fg: KDTileTooltips[maptile]().color,
+		bg: "#000000",
+		size: 24,
+		center: true,
+	});
+
+
+	return KDDrawTooltip(TooltipList, offset);
+}
+
+function KDDrawTooltip(TooltipList, offset) {
+	let TooltipWidth = 300;
+	let TooltipHeight = 0;
+	let extra = 5;
+	for (let listItem of TooltipList) {
+		TooltipHeight += listItem.size + extra;
+	}
+	TooltipHeight = Math.max(20, TooltipHeight);
+	let tooltipX = 2000 - 260 - TooltipWidth;
+	let tooltipY = 890 - TooltipHeight - offset;
+	let YY = 0;
+
+	FillRectKD(kdcanvas, kdpixisprites, "inspectTooltip" + offset, {
+		Left: tooltipX,
+		Top: tooltipY - 25,
+		Width: TooltipWidth,
+		Height: TooltipHeight + 20,
+		Color: "#111111",
+		LineWidth: 1,
+		zIndex: 60,
+		alpha: 0.4,
+	});
+
+	let pad = 10;
+
+	for (let listItem of TooltipList) {
+		DrawTextFitKD(listItem.str,
+			tooltipX + (listItem.center ? TooltipWidth/2 : pad),
+			tooltipY + YY, TooltipWidth - 2 * pad, listItem.fg, listItem.bg,
+			listItem.size, listItem.center ? "center" : "left", 61);
+		YY += extra + listItem.size;
+	}
+	return offset + TooltipHeight + 30;
 }

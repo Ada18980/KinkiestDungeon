@@ -1939,6 +1939,14 @@ function KinkyDungeonGetLockMult(Lock) {
 	return 1;
 }
 
+/** Tags which the 'agnostic' option on KinkyDungeonGetRestraint does not override */
+let KDNoOverrideTags = [
+	"NoVibes",
+	"Unmasked",
+	"Unchained",
+	"Damsel",
+];
+
 /**
  *
  * @param {KDHasTags} enemy
@@ -1950,9 +1958,11 @@ function KinkyDungeonGetLockMult(Lock) {
  * @param {*} LeashingOnly
  * @param {*} NoStack
  * @param {*} extraTags
+ * @param {*} agnostic - Determines if playertags and current bondage are ignored
+ * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[]}} [filter] - Filters for items
  * @returns
  */
-function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags) {
+function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter) {
 	let restraintWeightTotal = 0;
 	if (KinkyDungeonStatsChoice.has("NoWayOut")) RequireWill = false;
 	let restraintWeights = [];
@@ -1976,6 +1986,12 @@ function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill
 			if (Level >= t[1])
 				tags.set(t[0], true);
 		}
+
+	if (filter?.ignoreTags) {
+		for (let ft of filter.ignoreTags) {
+			tags.delete(ft);
+		}
+	}
 
 	let arousalMode = KinkyDungeonStatsChoice.get("arousalMode");
 	let cache = [];
@@ -2004,16 +2020,26 @@ function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill
 	let start = performance.now();
 	for (let r of cache) {
 		let restraint = r.r;
+		if (filter) {
+			if (filter.maxPower && r.r.power > filter.maxPower) continue;
+			if (filter.minPower && r.r.power < filter.minPower && (!filter.looseLimit || !r.r.limited) && !r.r.unlimited) continue;
+			if (filter.onlyUnlimited && r.r.limited) continue;
+			if (filter.noUnlimited && r.r.unlimited) continue;
+			if (filter.noLimited && r.r.limited) continue;
+			if (filter.onlyLimited && !r.r.limited && !r.r.unlimited) continue;
+			if (filter.ignore && filter.ignore.includes(r.r.name)) continue;
+			if (filter.require && !filter.require.includes(r.r.name)) continue;
+		}
 		if ((!LeashingOnly || (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints"))
 			&& (!RequireWill || !restraint.maxwill || willPercent <= restraint.maxwill || (LeashingOnly && (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints"))))
-			if (KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined)) {
+			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined)) {
 
 				restraintWeights.push({restraint: restraint, weight: restraintWeightTotal});
 				let weight = r.w;
 				weight += restraint.weight;
 				if (restraint.playerTags)
 					for (let tag in restraint.playerTags)
-						if (KinkyDungeonPlayerTags.get(tag)) weight += restraint.playerTags[tag];
+						if ((!agnostic || !KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) weight += restraint.playerTags[tag];
 				restraintWeightTotal += Math.max(0, weight);
 			}
 	}

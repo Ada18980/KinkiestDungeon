@@ -1187,6 +1187,7 @@ Features
 - Knowledge magic tree now unlocks advanced tooltips
 - Not all red locks are created equal...
 - Buffed enemy sense
+- Enemies now have limited restraints
 
 
 TODO ValidationFindBlockCycles to prevent bugs

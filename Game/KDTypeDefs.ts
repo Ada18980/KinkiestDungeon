@@ -120,6 +120,11 @@ interface KDRestraintProps {
 	debris?: string,
 	debrisChance?: number,
 
+	/** These items can only be applied if an enemy has the items in her inventory or the unlimited enemy tag */
+	limited?: boolean,
+	/** Forced to allow these, mainly leashes and collars */
+	unlimited?: boolean,
+
 	/** Affinity type: Hook, Edge, or Sharp, Sticky, defaults are Hook (struggle), Sharp (Cut), Edge (Pick), Sticky (Unlock), and none (Pick)*/
 	affinity?: {
 		Struggle?: string[],
@@ -479,7 +484,29 @@ interface overrideDisplayItem {
 	OverridePriority?: number[]|number,
 }
 
+interface KDLoadout {name: string, tags?: string[], singletag: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number};
+
 interface enemy extends KDHasTags {
+	/** Restraint filters */
+	RestraintFilter?: {
+		/** This enemy can apply restraints without needing them in her pockets */
+		unlimitedRestraints?: boolean,
+		/** Restraints applied must all be from inventory */
+		invRestraintsOnly?: boolean,
+		/** Restraints applied must all be limited */
+		limitedRestraintsOnly?: boolean,
+		/** Restraints with more power than this must be in inventory. Default is 3*/
+		powerThresh?: number,
+		/** These wont be added to the initial inventory 3*/
+		ignoreInitial?: string[],
+		/** These wont be added to the initial inventory 3*/
+		ignoreInitialTag?: string[],
+		/** This enemy won't restock restraints out of sight */
+		noRestock?: boolean,
+		/** Enemy will restock to this percentage */
+		restockPercent?: number,
+	}
+
 	/** This enemy wont appear outside of its designated floors even if it shares the tag */
 	noOverrideFloor?: boolean,
 	/** This tag will be added to the selection tags if the enemy has it, for loot and ambush spawning purposes */

@@ -50,7 +50,8 @@ function KinkyDungeonLoseJailKeys(Taken, boss, enemy) {
 			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonRemoveJailKey"), "#ff0000", 3);
 			if (enemy) {
 				if (!enemy.items) enemy.items = [];
-				enemy.items.push("Keyring");
+				if (!enemy.items.includes("Keyring"))
+					enemy.items.push("Keyring");
 			}
 		}
 		KDGameData.JailKey = false;
@@ -773,6 +774,7 @@ function KinkyDungeonPointInCell(x, y) {
 }
 
 function KinkyDungeonPassOut(noteleport) {
+	KDDefeatedPlayerTick();
 	KDBreakTether();
 	KDGameData.KinkyDungeonLeashedPlayer = 0;
 	KinkyDungeonBlindLevel = 6;
@@ -832,7 +834,12 @@ function KDGetJailDoor(x, y) {
 	return {tile: KinkyDungeonTilesGet((x) + "," + y), x: x, y: y};
 }
 
+function KDDefeatedPlayerTick() {
+	KinkyDungeonSetFlag("playerDefeated", 1);
+}
+
 function KinkyDungeonDefeat(PutInJail) {
+	KDDefeatedPlayerTick();
 	KDBreakTether();
 	KDGameData.CurrentDialog = "";
 	KDGameData.CurrentDialogStage = "";

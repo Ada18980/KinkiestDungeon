@@ -691,6 +691,7 @@ KinkyDungeonKeyPass,Pass thru allies
 KinkyDungeonKeyAStruggle,Auto-Struggle
 KinkyDungeonKeyAPathfind,Auto-Pathfind
 KinkyDungeonKeySprint,Sprint/Hop
+KinkyDungeonKeyInspect,Inspect
 
 KinkyDungeonKeyQInventory,Quick Inventory
 KinkyDungeonKeyInventory,Inventory
@@ -3972,6 +3973,31 @@ KinkyDungeonEquipWeapon,"You equip the WEAPONNAME"
 KinkyDungeonUnEquip,"Unequip"
 KinkyDungeonEquip,"Equip"
 KinkyDungeonEquipped,"Equipped"
+
+
+KDTileTooltip0,Floor
+KDTileTooltip1,Wall
+KDTileTooltip2,Brickwork
+KDTileTooltipX,Doodad
+KDTileTooltipL,Furniture
+KDTileTooltipT,Table
+KDTileTooltipA,Shrine
+KDTileTooltipa,Ruined Shrine
+KDTileTooltipO,Orb Altar
+KDTileTooltipo,Empty Altar
+KDTileTooltipC,Chest
+KDTileTooltipc,Empty Chest
+KDTileTooltipR,Shiny Object
+KDTileTooltipY,Shiny Object
+KDTileTooltip4,Crack
+KDTileTooltipHook,Hook
+KDTileTooltipS,Entrance
+KDTileTooltips,Exit Stairs
+KDTileTooltipH,Mysterious Stairs
+KDTileTooltipG,Ghostly Adventurer
+
+
+
 
 KinkyDungeonBookElements,Ars Pyrotecnica
 KinkyDungeonBookConjure,Codex Imaginus
@@ -8729,3 +8755,5 @@ KDDialogueRemoteLinkCuffs,That should slow you down!
 KDDialogueRemoteLinkCuffsNevermere,Try running away now~
 KDDialogueRemoteLinkCuffsAncientRobot,Initiating prisoner lockdown protocol
 KDMsgRemoteLinkCuffs,Your RestraintName suddenly snap together as the EnemyName activates them
+
+

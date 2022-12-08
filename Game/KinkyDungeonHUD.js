@@ -39,6 +39,7 @@ let KinkyDungeonStatBarHeight = 50;
 let KinkyDungeonToggleAutoDoor = false;
 let KinkyDungeonToggleAutoPass = false;
 let KinkyDungeonToggleAutoSprint = false;
+let KinkyDungeonInspect = false;
 
 let KinkyDungeonFastMove = true;
 let KinkyDungeonFastMovePath = [];
@@ -226,8 +227,6 @@ function KinkyDungeonDrawInputs() {
 
 	if (ServerURL == "foobar") DrawButtonVis(1880, 82, 100, 50, TextGet("KinkyDungeonRestart"), "#ffffff");
 	else DrawButtonVis(1750, 20, 100, 50, TextGet("KinkyDungeonRestart"), "#ffffff");
-	DrawButtonVis(1925, 925, 60, 60, "", KDTextGray2, KinkyDungeonRootDirectory + (KinkyDungeonFastMove ? "FastMove" : "FastMoveOff") + ".png");
-	DrawButtonVis(1860, 925, 60, 60, "", KDTextGray2, KinkyDungeonRootDirectory + (KinkyDungeonFastStruggle ? "AutoStruggle" : "AutoStruggleOff") + ".png");
 
 	//let X1 = 1640;
 	//let X2 = 1360;
@@ -1334,7 +1333,7 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	let actionBarWidth = 64;
 	let actionBarSpacing = actionBarWidth + 5;
 	let actionBarII = 0;
-	let actionBarXX = 1395;
+	let actionBarXX = 1360;
 	let actionBarYY = 925;
 
 	DrawButtonKDEx("switchWeapon", (bdata) => {
@@ -1424,6 +1423,31 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60,
 	"", "", KinkyDungeonRootDirectory + (KinkyDungeonToggleAutoDoor ? "UI/DoorClose.png" : "UI/Door.png"), undefined, undefined, !KinkyDungeonToggleAutoDoor);
 
+	DrawButtonKDEx("toggleAutoStruggle", (bdata) => {
+		if (!KinkyDungeonFastStruggleSuppress)
+			KinkyDungeonFastStruggle = !KinkyDungeonFastStruggle;
+		KinkyDungeonFastStruggleSuppress = false;
+		KinkyDungeonFastStruggleGroup = "";
+		KinkyDungeonFastStruggleType = "";
+		return true;
+	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60,
+	"", "", KinkyDungeonRootDirectory + (KinkyDungeonFastStruggle ? "AutoStruggle" : "AutoStruggleOff") + ".png", undefined, undefined, !KinkyDungeonFastStruggle);
+	DrawButtonKDEx("toggleFastMove", (bdata) => {
+		if (!KinkyDungeonFastMoveSuppress)
+			KinkyDungeonFastMove = !KinkyDungeonFastMove;
+		KinkyDungeonFastMoveSuppress = false;
+		KinkyDungeonFastMovePath = [];
+		return true;
+	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60,
+	"", "", KinkyDungeonRootDirectory + (KinkyDungeonFastMove ? "FastMove" : "FastMoveOff") + ".png", undefined, undefined, !KinkyDungeonFastMove);
+	DrawButtonKDEx("toggleInspect", (bdata) => {
+		KinkyDungeonInspect = !KinkyDungeonInspect;
+		return true;
+	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60,
+	"", "", KinkyDungeonRootDirectory + (KinkyDungeonInspect ? "UI/Inspect" : "UI/Inspect") + ".png", undefined, undefined, !KinkyDungeonInspect);
+
+	//DrawButtonVis(1925, 925, 60, 60, "", KDTextGray2, KinkyDungeonRootDirectory + (KinkyDungeonFastMove ? "FastMove" : "FastMoveOff") + ".png");
+	//DrawButtonVis(1860, 925, 60, 60, "", KDTextGray2, KinkyDungeonRootDirectory + (KinkyDungeonFastStruggle ? "AutoStruggle" : "AutoStruggleOff") + ".png");
 
 	//if (MouseIn(x, y+i*heightPerBar + actionButtonAdj - 250, 260, 64) || MouseIn(1855, 925, 200, 60)) {
 	let str = "";
@@ -1439,10 +1463,12 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDSprint";}
 	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDDoor";}
-
-
-	else if (MouseIn(1860, actionBarYY, 60, 60)) str = "KDAutoStruggle";
-	else if (MouseIn(1925, actionBarYY, 60, 60)) str = "KDAutoPath";
+	// eslint-disable-next-line no-dupe-else-if
+	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDAutoStruggle";}
+	// eslint-disable-next-line no-dupe-else-if
+	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDAutoPath";}
+	// eslint-disable-next-line no-dupe-else-if
+	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "Inspect";}
 
 	else if (MouseIn(x, y+i*heightPerBar + switchAdj, width + 5, 60)) {
 		str = "KDSwitchWeapon";
@@ -1556,7 +1582,7 @@ function KinkyDungeonHandleHUD() {
 				return true;
 			}
 		}
-		if (KinkyDungeonIsPlayer() && MouseIn(1925, 925, 60, 60)) {
+		/*if (KinkyDungeonIsPlayer() && MouseIn(1925, 925, 60, 60)) {
 			if (!KinkyDungeonFastMoveSuppress)
 				KinkyDungeonFastMove = !KinkyDungeonFastMove;
 			KinkyDungeonFastMoveSuppress = false;
@@ -1569,7 +1595,7 @@ function KinkyDungeonHandleHUD() {
 			KinkyDungeonFastStruggleGroup = "";
 			KinkyDungeonFastStruggleType = "";
 			return true;
-		}
+		}*/
 
 		if (KinkyDungeonIsPlayer() && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height))
 			KinkyDungeonSetTargetLocation();
