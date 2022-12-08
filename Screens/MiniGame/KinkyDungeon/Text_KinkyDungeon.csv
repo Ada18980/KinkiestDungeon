@@ -810,6 +810,8 @@ KinkyDungeonConsumableQuantity,Quantity:
 KinkyDungeonConsume,Use Item (Consumes 1)
 
 KinkyDungeonInventoryItemnull,way of the fist
+KinkyDungeonInventoryItemPick,Lockpick
+KinkyDungeonInventoryItemKeyring,Exit Keys
 
 KinkyDungeonInventoryItemDefault,Wizard's Outfit
 KinkyDungeonInventoryItemDefaultDesc,Your favorite outfit for adventuring.

@@ -479,6 +479,9 @@ function KinkyDungeonHandleJailSpawns(delta) {
 		if (KDHelpless(KinkyDungeonJailGuard())) {
 			KDGameData.KinkyDungeonJailGuard = 0;
 		}
+		if (KDistEuclidean(KinkyDungeonJailGuard().x - KinkyDungeonPlayerEntity.x, KinkyDungeonJailGuard().y - KinkyDungeonPlayerEntity.y) > 8 && KDGameData.KinkyDungeonGuardTimer < 4) {
+			KDGameData.KinkyDungeonJailGuard = 0;
+		}
 	}
 	if (!KinkyDungeonEntities.includes(KinkyDungeonJailGuard())) {
 		if (KDGameData.KinkyDungeonGuardSpawnTimer == 0 || KinkyDungeonJailGuard())
