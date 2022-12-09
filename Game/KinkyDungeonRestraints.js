@@ -227,6 +227,8 @@ let KDLeashPullKneelTime = 8;
  * @returns {boolean}
  */
 function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
+	if (Entity.player && KinkyDungeonFlags.get("pulled")) return false;
+	else if (KDEnemyHasFlag(Entity, "pulled")) return false;
 	let exceeded = false;
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).tether && (inv.tx && inv.ty || inv.tetherToLeasher || inv.tetherToGuard || inv.tetherEntity)) {
@@ -301,21 +303,31 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 								if (slot2) {
 									KDMoveEntity(enemy, slot2.x, slot2.y, false);
 								} else {
-									KDMoveEntity(enemy, Entity.x, Entity.y, false);
+									let pointSwap = KinkyDungeonGetNearbyPoint(slot.x, slot.y, true, undefined, true, true);
+									if (pointSwap)
+										KDMoveEntity(enemy, pointSwap.x, pointSwap.y, false);
+									else
+										KDMoveEntity(enemy, Entity.x, Entity.y, false);
 								}
 							}
 
 							KDMoveEntity(Entity, slot.x, slot.y, false);
-							if (KinkyDungeonCanStand()) {
-								KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KinkyDungeonSlowMoveTurns);
-								KinkyDungeonChangeStamina(-KDLeashPullCost, false, true);
+							if (Entity.player) KinkyDungeonSetFlag("pulled", 1);
+							else KinkyDungeonSetEnemyFlag(Entity, "pulled");
+							if (Entity.player) {
+								if (KinkyDungeonCanStand()) {
+									KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KinkyDungeonSlowMoveTurns);
+									KinkyDungeonChangeStamina(-KDLeashPullCost, false, true);
+								}
+								KinkyDungeonInterruptSleep();
+								KinkyDungeonSendEvent("leashTug", {Entity: Entity, slot: slot, item: inv});
+								if (KinkyDungeonLeashingEnemy()) {
+									KinkyDungeonSetEnemyFlag(KinkyDungeonLeashingEnemy(), "harshpull", 5);
+								}
+								if (Msg) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherPull").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
+
 							}
-							KinkyDungeonInterruptSleep();
-							KinkyDungeonSendEvent("leashTug", {Entity: Entity, slot: slot, item: inv});
-							if (KinkyDungeonLeashingEnemy()) {
-								KinkyDungeonSetEnemyFlag(KinkyDungeonLeashingEnemy(), "harshpull", 5);
-							}
-							if (Msg) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherPull").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
+
 						}
 					}
 				}
