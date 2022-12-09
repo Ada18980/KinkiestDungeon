@@ -48,6 +48,8 @@ let alts = {
 		chests: false,
 		shrines: false,
 		orbs: 0,
+		setpieces: {
+		},
 		chargers: false,
 		torches: true,
 		heart: false,
