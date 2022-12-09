@@ -986,9 +986,6 @@ function KDKickEnemies(nearestJail) {
 			enemies.push(e);
 		}
 	}
-	for (let e of KinkyDungeonEntities) {
-		KDClearItems(e);
-	}
 	KinkyDungeonEntities = enemies;
 	KDUpdateEnemyCache = true;
 }
