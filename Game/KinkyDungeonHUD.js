@@ -1011,9 +1011,9 @@ function KinkyDungeonDrawInputs() {
 				});
 			}
 			DrawButtonKD("SpellCast" + index, true, buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, "", "rgba(0, 0, 0, 0)", KinkyDungeonRootDirectory + "Spells/" + spell.name + ".png", "", false, true);
-			if ((KinkyDungeoCheckComponents(spell).length > 0 || (spell.components.includes("Verbal") && KinkyDungeonGagTotal() > 0 && !spell.noMiscast))) {
+			if ((KinkyDungeoCheckComponents(spell).length > 0 || (spell.components.includes("Verbal") && !KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() > 0 && !spell.noMiscast))) {
 				let sp = "SpellFail";
-				if (spell.components.includes("Verbal") && KinkyDungeonGagTotal() < 1 && !KinkyDungeonStatsChoice.get("Incantation")) {
+				if (spell.components.includes("Verbal") && !KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() < 1) {
 					sp = "SpellFailPartial";
 				}
 				KDDraw(kdcanvas, kdpixisprites, "spellFail" + "SpellCast" + i, KinkyDungeonRootDirectory + "Spells/" + sp + ".png",
@@ -1083,9 +1083,9 @@ function KinkyDungeonDrawInputs() {
 					//Width: buttonDim.wsmall,
 					//Height: buttonDim.hsmall,
 					//});
-					if ((KinkyDungeoCheckComponents(spellPaged).length > 0 || (spellPaged.components.includes("Verbal") && KinkyDungeonGagTotal() > 0 && !spellPaged.noMiscast))) {
+					if ((KinkyDungeoCheckComponents(spellPaged).length > 0 || (spellPaged.components.includes("Verbal") && !KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() > 0 && !spellPaged.noMiscast))) {
 						let sp = "SpellFail";
-						if (spellPaged.components.includes("Verbal") && KinkyDungeonGagTotal() < 1 && !KinkyDungeonStatsChoice.get("Incantation")) {
+						if (spellPaged.components.includes("Verbal") && !KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() < 1) {
 							sp = "SpellFailPartial";
 						}
 						KDDraw(kdcanvas, kdpixisprites, "spellFail" + icon + "," + page + "," + indexPaged, KinkyDungeonRootDirectory + "Spells/" + sp + ".png",

@@ -869,15 +869,18 @@ function KinkyDungeonDrawGame() {
 				let cursorX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamX;
 				let cursorY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
 				let tooltips = [];
-				if (KinkyDungeonEnemyAt(cursorX, cursorY)) {
-					tooltips.push((offset) => KDDrawEnemyTooltip(KinkyDungeonEnemyAt(cursorX, cursorY), offset));
-				}
-				if (KinkyDungeonInspect) {
-					let tile = KinkyDungeonMapGet(cursorX, cursorY);
-					if (KDTileTooltips[tile]) {
-						tooltips.push((offset) => KDDrawTileTooltip(tile, cursorX, cursorY, offset));
+				if (KinkyDungeonVisionGet(cursorX, cursorY) > 0) {
+					if (KinkyDungeonEnemyAt(cursorX, cursorY) && KDCanSeeEnemy(KinkyDungeonEnemyAt(cursorX, cursorY))) {
+						tooltips.push((offset) => KDDrawEnemyTooltip(KinkyDungeonEnemyAt(cursorX, cursorY), offset));
+					}
+					if (KinkyDungeonInspect) {
+						let tile = KinkyDungeonMapGet(cursorX, cursorY);
+						if (KDTileTooltips[tile]) {
+							tooltips.push((offset) => KDDrawTileTooltip(tile, cursorX, cursorY, offset));
+						}
 					}
 				}
+
 				let tooltipOffset = 0;
 				for (let t of tooltips) {
 					tooltipOffset = t(tooltipOffset);
