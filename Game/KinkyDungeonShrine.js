@@ -18,7 +18,7 @@ let KinkyDungeonShrineBaseCosts = {
 
 let KDWillShrineWill = 0.25;
 let KinkyDungeonOrbAmount = 0;
-let KDShrineRemoveCount = 3;
+let KDShrineRemoveCount = 30;
 
 /**
  * Cost growth, overrides the default amount
@@ -195,7 +195,7 @@ function KinkyDungeonPayShrine(type) {
 
 	// TODO shrine effects
 	if (KinkyDungeonShrineTypeRemove.includes(type)) {
-		rep = KinkyDungeonRemoveRestraintsWithShrine(type, KDShrineRemoveCount);
+		rep = KinkyDungeonRemoveRestraintsWithShrine(type, KDShrineRemoveCount, true);
 		KinkyDungeonChangeRep("Ghost", -rep);
 
 		ShrineMsg = TextGet("KinkyDungeonPayShrineRemoveRestraints");

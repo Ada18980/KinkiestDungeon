@@ -979,6 +979,12 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	}
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} offset
+ * @returns {number}
+ */
 function KDDrawEnemyTooltip(enemy, offset) {
 	let analyze = KDHasSpell("ApprenticeKnowledge");
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
@@ -997,6 +1003,33 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		size: 20,
 		center: true,
 	});
+	if (enemy.boundTo) {
+		TooltipList.push({
+			str: TextGet(enemy.weakBinding ? "KDTooltipWeakBinding" : "KDTooltipNormalBinding"),
+			fg: KDHostile(enemy) ? "#88ff88" : "#ff5555",
+			bg: "#000000",
+			size: 14,
+			center: true,
+		});
+		let caster = KinkyDungeonFindID(enemy.boundTo);
+		if (caster)
+			TooltipList.push({
+				str: TextGet("KDTooltipBoundTo").replace("ENEMYNAME", TextGet("Name" + caster.Enemy.name)),
+				fg: KDHostile(enemy) ? "#88ff88" : "#ff5555",
+				bg: "#000000",
+				size: 14,
+				center: true,
+			});
+		else
+			TooltipList.push({
+				str: TextGet("KDTooltipDisappearing"),
+				fg: "#ff5555",
+				bg: "#000000",
+				size: 14,
+				center: true,
+			});
+	}
+
 
 	TooltipList.push({
 		str: "",
