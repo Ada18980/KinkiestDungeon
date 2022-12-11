@@ -4350,10 +4350,17 @@ function KDGetAwareTooltip(enemy) {
 		suff: "Talking",
 		color: "#ffffff",
 	};
-	if (enemy.aware) return {
-		suff: "Aware",
-		color: "#ff5555",
-	};
+	if (enemy.aware) {
+		if (KDHostile(enemy)) {
+			return {
+				suff: "Aware",
+				color: "#ff5555",
+			};
+		} else return {
+			suff:  "AwareFriendly",
+			color: "#ffffff",
+		};
+	}
 	if (enemy.vp > 2) return {
 		suff: "DangerHigh",
 		color: "#ff5555",
