@@ -136,28 +136,6 @@ function KDWallVertTunnel(x, y) {
 
 let KDChainablePillar = 'bdD';
 
-let KDTileTooltips = {
-	'1': () => {return {color: "#ffffff", text: "1"};},
-	'0': () => {return {color: "#ffffff", text: "0"};},
-	'2': () => {return {color: "#ffffff", text: "2"};},
-	'R': () => {return {color: "#ffffff", text: "R"};},
-	'L': () => {return {color: "#ffffff", text: "L"};},
-	'A': () => {return {color: "#ffffff", text: "A"};},
-	'a': () => {return {color: "#ffffff", text: "a"};},
-	'O': () => {return {color: "#ffffff", text: "O"};},
-	'o': () => {return {color: "#ffffff", text: "o"};},
-	'C': () => {return {color: "#ffffff", text: "C"};},
-	'c': () => {return {color: "#ffffff", text: "c"};},
-	'T': () => {return {color: "#ffffff", text: "T"};},
-	'4': () => {return {color: "#ffffff", text: "4"};},
-	'X': () => {return {color: "#ffffff", text: "X"};},
-	'?': () => {return {color: "#ffffff", text: "Hook"};},
-	',': () => {return {color: "#ffffff", text: "Hook"};},
-	'S': () => {return {color: "#ffffff", text: "S"};},
-	's': () => {return {color: "#ffffff", text: "s"};},
-	'H': () => {return {color: "#ffffff", text: "H"};},
-	'G': () => {return {color: "#ffffff", text: "G"};},
-};
 
 let KDSprites = {
 	// @ts-ignore
@@ -872,6 +850,12 @@ function KinkyDungeonDrawGame() {
 				if (KinkyDungeonVisionGet(cursorX, cursorY) > 0) {
 					if (KinkyDungeonEnemyAt(cursorX, cursorY) && KDCanSeeEnemy(KinkyDungeonEnemyAt(cursorX, cursorY))) {
 						tooltips.push((offset) => KDDrawEnemyTooltip(KinkyDungeonEnemyAt(cursorX, cursorY), offset));
+					}
+					let eTiles = KDGetEffectTiles(cursorX, cursorY);
+					for (let etile of Object.values(eTiles)) {
+						if (KDEffectTileTooltips[etile.name]) {
+							tooltips.push((offset) => KDDrawEffectTileTooltip(etile, cursorX, cursorY, offset));
+						}
 					}
 					if (KinkyDungeonInspect) {
 						let tile = KinkyDungeonMapGet(cursorX, cursorY);
@@ -2422,6 +2406,31 @@ function KDUpdateVision() {
 	KDVisionUpdate = 0;
 }
 
+
+let KDTileTooltips = {
+	'1': () => {return {color: "#ffffff", text: "1"};},
+	'0': () => {return {color: "#ffffff", text: "0"};},
+	'2': () => {return {color: "#ffffff", text: "2"};},
+	'R': () => {return {color: "#ffffff", text: "R"};},
+	'L': () => {return {color: "#ffffff", text: "L"};},
+	'A': () => {return {color: "#ffffff", text: "A"};},
+	'a': () => {return {color: "#ffffff", text: "a"};},
+	'O': () => {return {color: "#ffffff", text: "O"};},
+	'o': () => {return {color: "#ffffff", text: "o"};},
+	'C': () => {return {color: "#ffffff", text: "C"};},
+	'c': () => {return {color: "#ffffff", text: "c"};},
+	'T': () => {return {color: "#ffffff", text: "T"};},
+	'4': () => {return {color: "#ffffff", text: "4"};},
+	'X': () => {return {color: "#ffffff", text: "X"};},
+	'?': () => {return {color: "#ffffff", text: "Hook"};},
+	',': () => {return {color: "#ffffff", text: "Hook"};},
+	'S': () => {return {color: "#ffffff", text: "S"};},
+	's': () => {return {color: "#ffffff", text: "s"};},
+	'H': () => {return {color: "#ffffff", text: "H"};},
+	'G': () => {return {color: "#ffffff", text: "G"};},
+};
+
+
 function KDDrawTileTooltip(maptile, x, y, offset) {
 	let TooltipList = [];
 	TooltipList.push({
@@ -2432,6 +2441,101 @@ function KDDrawTileTooltip(maptile, x, y, offset) {
 		center: true,
 	});
 
+
+	return KDDrawTooltip(TooltipList, offset);
+}
+
+
+let KDEffectTileTooltips = {
+	'Runes': (tile, x, y, TooltipList) => {
+		TooltipList.push({
+			str: TextGet("KDEffectTileTooltip" + tile.name),
+			fg: "#ff5555",
+			bg: "#000000",
+			size: 24,
+			center: true,
+		});
+		TooltipList.push({
+			str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 16,
+			center: true,
+		});
+	},
+	'Inferno': (tile, x, y, TooltipList) => {
+		TooltipList.push({
+			str: TextGet("KDEffectTileTooltip" + tile.name),
+			fg: "#ff8855",
+			bg: "#000000",
+			size: 24,
+			center: true,
+		});
+		TooltipList.push({
+			str: TextGet("KDEffectTileTooltip" + tile.name + "Desc").replace("DAMAGEDEALT", "" + Math.round(10 * KDGetEnvironmentalDmg())),
+			fg: "#ffaa55",
+			bg: "#000000",
+			size: 16,
+			center: true,
+		});
+	},
+	'Ember': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffaa88");},
+	'Ice': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#88ffff");},
+	'Vines': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#44ff44", "KDEffectTileTooltipCMDBindings");},
+	'Ropes': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffae70", "KDEffectTileTooltipCMDBindings");},
+	'Chains': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#aaaaaa", "KDEffectTileTooltipCMDBindings");},
+	'Belts': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#8f4d57", "KDEffectTileTooltipCMDBindings");},
+	'Fabric': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff5277", "KDEffectTileTooltipCMDBindings");},
+	'FabricGreen': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#63ab3f", "KDEffectTileTooltipCMDBindings");},
+	'Slime': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff", "KDEffectTileTooltipCMDSlime");},
+	'Latex': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");},
+	'Steam': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
+	'Smoke': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#888888");},
+	'Torch': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
+	'TorchUnlit': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
+	'Lantern': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
+	'LanternUnlit': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
+	'TorchOrb': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
+	'Cracked': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");},
+};
+/**
+ *
+ * @param {effectTile} tile
+ * @param {any[]} TooltipList
+ * @param {string} color
+ * @param {string} [extra]
+ * @param {string} [descColor]
+ * @param {string} [extraColor]
+ */
+function KDETileTooltipSimple(tile, TooltipList, color, extra, descColor = "#ffffff", extraColor = "#ffffff") {
+	TooltipList.push({
+		str: TextGet("KDEffectTileTooltip" + tile.name),
+		fg: color,
+		bg: "#000000",
+		size: 24,
+		center: true,
+	});
+	TooltipList.push({
+		str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+		fg: descColor,
+		bg: "#000000",
+		size: 16,
+		center: true,
+	});
+	if (extra) {
+		TooltipList.push({
+			str: TextGet(extra),
+			fg: extraColor,
+			bg: "#000000",
+			size: 16,
+			center: true,
+		});
+	}
+}
+
+function KDDrawEffectTileTooltip(tile, x, y, offset) {
+	let TooltipList = [];
+	KDEffectTileTooltips[tile.name](tile, x, y, TooltipList);
 
 	return KDDrawTooltip(TooltipList, offset);
 }

@@ -340,7 +340,7 @@ function KDCreateAoEEffectTiles(x, y, tile, durationMod, rad, avoidPoint, densit
  * @param {number} delta
  */
 function KDApplyAlpha(id, alpha, fade, delta) {
-	if (!fade) return undefined;
+	if (!fade) return 1.0;
 	switch (fade) {
 		case "random": {
 			if (alpha >= 1 || alpha <= 0) KDTileModes[id] = !KDTileModes[id];
@@ -362,10 +362,7 @@ function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 		for (let tile of Object.values(tileLocation)) {
 			let sprite = (tile.pauseDuration > 0 && tile.pauseSprite) ? tile.pauseSprite : (tile.skin ? tile.skin : tile.name);
 			if (tile.x >= CamX && tile.y >= CamY && tile.x < CamX + KinkyDungeonGridWidthDisplay && tile.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(tile.x, tile.y) > 0) {
-				if (tile.tags?.includes("hiddenmagic")) {
-					let rad = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "MagicalSight");
-					if (rad <= 0 || KDistEuclidean(tile.x - KinkyDungeonPlayerEntity.x, tile.y - KinkyDungeonPlayerEntity.y) > rad) continue;
-				}
+				if (!KDCanSeeEffectTile(tile)) continue;
 				let tileid = tile.x + "," + tile.y + "_" + sprite;
 				KDDraw(kdgameboard, kdpixisprites, tileid, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",
 					(tile.x + (tile.xoffset ? tile.xoffset : 0) - CamX)*KinkyDungeonGridSizeDisplay, (tile.y - CamY + (tile.yoffset ? tile.yoffset : 0))*KinkyDungeonGridSizeDisplay,
@@ -376,6 +373,19 @@ function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			}
 		}
 	}
+}
+
+/**
+ *
+ * @param {effectTile} tile
+ * @returns {boolean}
+ */
+function KDCanSeeEffectTile(tile) {
+	if (tile.tags?.includes("hiddenmagic")) {
+		let rad = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "MagicalSight");
+		if (rad <= 0 || KDistEuclidean(tile.x - KinkyDungeonPlayerEntity.x, tile.y - KinkyDungeonPlayerEntity.y) > rad) return false;
+	}
+	return true;
 }
 
 

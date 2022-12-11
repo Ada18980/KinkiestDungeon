@@ -3980,6 +3980,53 @@ KinkyDungeonUnEquip,"Unequip"
 KinkyDungeonEquip,"Equip"
 KinkyDungeonEquipped,"Equipped"
 
+KDEffectTileTooltipT,
+KDEffectTileTooltipTDesc,""
+
+KDEffectTileTooltipTorchUnlit,Unlit Torch
+KDEffectTileTooltipTorchUnlitDesc,"Can be lit"
+KDEffectTileTooltipTorch,Torch
+KDEffectTileTooltipTorchDesc,"Provides light"
+KDEffectTileTooltipLantern,Lantern
+KDEffectTileTooltipLanternDesc,"Provides light"
+KDEffectTileTooltipTorchOrb,Magic Lantern
+KDEffectTileTooltipTorchOrbDesc,"Provides light"
+KDEffectTileTooltipLanternUnlit,Unlit Lantern
+KDEffectTileTooltipLanternUnlitDesc,"Can be lit"
+KDEffectTileTooltipLatex,Liquid Latex
+KDEffectTileTooltipLatexDesc,"Engulfs creatures"
+KDEffectTileTooltipSlime,Slime
+KDEffectTileTooltipSlimeDesc,"Slows creatures"
+KDEffectTileTooltipIce,Ice
+KDEffectTileTooltipIceDesc,"Chilling and slippery"
+KDEffectTileTooltipRopes,Ropes
+KDEffectTileTooltipRopesDesc,"Looking for a new wearer"
+KDEffectTileTooltipChains,Chains
+KDEffectTileTooltipChainsDesc,"Broken pieces of chain"
+KDEffectTileTooltipBelts,Belts
+KDEffectTileTooltipBeltsDesc,"Pieces of straps and leather"
+KDEffectTileTooltipVines,Vines
+KDEffectTileTooltipVinesDesc,"Fierce plantlife"
+KDEffectTileTooltipFabric,Ribbons
+KDEffectTileTooltipFabricDesc,"Empowered with magic"
+KDEffectTileTooltipFabricGreen,Blessed Wrappings
+KDEffectTileTooltipFabricGreenDesc,"Enchanted wrappings"
+KDEffectTileTooltipRunes,Summoning Runes
+KDEffectTileTooltipRunesDesc,"Mystical runes used for summoning"
+KDEffectTileTooltipEmber,Embers
+KDEffectTileTooltipEmberDesc,Ignition source. Blocks vision.
+KDEffectTileTooltipInferno,Inferno
+KDEffectTileTooltipInfernoDesc,Deals DAMAGEDEALT fire damage per turn
+KDEffectTileTooltipSteam,Steam
+KDEffectTileTooltipSteamDesc,Blocks vision
+KDEffectTileTooltipSmoke,Smoke
+KDEffectTileTooltipSmokeDesc,Blocks vision
+KDEffectTileTooltipCracked,Cracked Earth
+KDEffectTileTooltipCrackedDesc,Makes creatures unsteady
+
+KDEffectTileTooltipCMDBindings,"Can be controlled using CMD spells"
+KDEffectTileTooltipCMDSlime,"Can be controlled using Rubbermancy"
+
 
 KDTileTooltip0,Floor
 KDTileTooltip1,Wall
@@ -3995,7 +4042,7 @@ KDTileTooltipC,Chest
 KDTileTooltipc,Empty Chest
 KDTileTooltipR,Shiny Object
 KDTileTooltipY,Shiny Object
-KDTileTooltip4,Crack
+KDTileTooltip4,Cracked Wall
 KDTileTooltipHook,Hook
 KDTileTooltipS,Entrance
 KDTileTooltips,Exit Stairs
