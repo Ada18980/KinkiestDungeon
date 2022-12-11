@@ -578,13 +578,14 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 							tint: color,
-							zIndex: -0.2 + 0.001 * (enemy.Enemy.power ? enemy.Enemy.power : 0),
-							alpha: preHit ? 0.5 : 0.9,
+							zIndex: 0.2 + 0.001 * (enemy.Enemy.power ? enemy.Enemy.power : 0),
+							alpha: preHit ? 0.5 : 0.8,
 						});
 					KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_h" + enemy.id, KinkyDungeonRootDirectory + ((KDAllied(enemy)) ? "WarningHighlightAlly" : "WarningHighlight" + special) + ".png",
 						(tx - CamX)*KinkyDungeonGridSizeDisplay - 1, (ty - CamY)*KinkyDungeonGridSizeDisplay - 1,
 						KinkyDungeonSpriteSize + 2, KinkyDungeonSpriteSize + 2, undefined, {
-							zIndex: 2.21,
+							zIndex: 3.21,
+							alpha: 0.2,
 						});
 				}
 			}
@@ -1053,7 +1054,16 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		size: 20,
 	});
 	if (enemy.Enemy.armor) {
-		let st = TextGet("KinkyDungeonTooltipArmor").replace("AMOUNT", "" + enemy.Enemy.armor);
+		let st = TextGet("KinkyDungeonTooltipArmor").replace("AMOUNT", "" + 10* enemy.Enemy.armor);
+		TooltipList.push({
+			str: st,
+			fg: "#ffffff",
+			bg: KDTextGray0,
+			size: 20,
+		});
+	}
+	if (enemy.Enemy.spellResist) {
+		let st = TextGet("KinkyDungeonTooltipSpellResist").replace("AMOUNT", "" + 10* enemy.Enemy.spellResist);
 		TooltipList.push({
 			str: st,
 			fg: "#ffffff",

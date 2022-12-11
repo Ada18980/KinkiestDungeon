@@ -430,8 +430,8 @@ KinkyDungeonPlayerVibratedLocationItemButt,Rear
 KinkyDungeonPlayerVibratedLocationItemBoots,Feet
 KinkyDungeonPlayerVibratedLocationMultiple,Everywhere!
 
-KinkyDungeonPlayerArmor,"Armor: "
-KinkyDungeonPlayerSpellResist,"Warding: "
+KinkyDungeonPlayerArmor,"Physical Armor: "
+KinkyDungeonPlayerSpellResist,"Magic Armor: "
 KinkyDungeonPlayerShadow,"In the Shadows: You are harder to see."
 KinkyDungeonPlayerSneak,"Invisible: You are very difficult to see."
 KinkyDungeonPlayerQuickness,"Quickness: Your next movement is so fast it doesn't advance a turn."
@@ -508,7 +508,7 @@ KinkyDungeonBuffShroud2,"Shroud: Visibility decreased, evasion increased."
 KinkyDungeonBuffCamo,"Camoflage: While holding still, you are very hard to see."
 KinkyDungeonBuffStoneSkin,"Stone Skin: Increased armor."
 KinkyDungeonBuffShadowBlade,"Darkblade: Increased damage."
-KinkyDungeonBuffShield,"Runic Ward: Increased Warding."
+KinkyDungeonBuffShield,"Runic Ward: Increased Magic Armor."
 KinkyDungeonBuffInvisibility,"Invisibility: It is very difficult for enemies to see you."
 KinkyDungeonBuffLesserInvisibility,"Lesser Invisibility: It is harder for enemies to see you."
 KinkyDungeonBuffCutting,"FULL POWER: Cutting power increased."
@@ -969,7 +969,7 @@ KinkyDungeonInventoryItemEarthRuneDesc2,"Creates a 3x3 area of +20 armor centere
 KinkyDungeonInventoryItemWaterRune,Water Rune
 KinkyDungeonInventoryItemWaterRuneUse,"You crush the rune in your hand, and it turns into water that coats the floor"
 KinkyDungeonInventoryItemWaterRuneDesc,"It feels slimmy."
-KinkyDungeonInventoryItemWaterRuneDesc2,"Creates a 3x3 area on you for 9 turns. Gives +30 Warding to friendlies, halves enemy speed."
+KinkyDungeonInventoryItemWaterRuneDesc2,"Creates a 3x3 area on you for 9 turns. Gives +30 Magic Armor to friendlies, halves enemy speed."
 KinkyDungeonInventoryItemIceRune,Ice Rune
 KinkyDungeonInventoryItemIceRuneUse,"You smash the rune in front of you, and icicles pierce through the floor!"
 KinkyDungeonInventoryItemIceRuneDesc,"It feels cold to the touch."
@@ -4325,7 +4325,7 @@ KinkyDungeonSpellAllyShadowStrike,Shadow Strike
 KinkyDungeonSpellHeelShadowStrike,Shadow Heel
 
 KinkyDungeonSpellShield,Runic Ward
-KinkyDungeonSpellDescriptionShield,"Gives yourself or a creature a magic shield for 50 turns, granting +30 Warding."
+KinkyDungeonSpellDescriptionShield,"Gives yourself or a creature a magic shield for 50 turns, granting +30 Magic Armor."
 KinkyDungeonSpellCastShield,You whisper a word of protection!
 KinkyDungeonSpellTargetShield,Choose creature to shield
 
@@ -4953,13 +4953,13 @@ KinkyDungeonSpellTargetStoneSkin,Select which creature to buff
 KinkyDungeonSpellDescriptionStoneSkin,Make the targeted creature (or yourself) gain +20 armor for Duration turns
 KinkyDungeonSpellCastStoneSkin,Your skin takes on the appearance of cracked earth!
 
-KinkyDungeonSpellCastArmorUp,The EnemyName gains increased armor!
-KinkyDungeonSpellCastArmorUpArea,The EnemyName buffs the armor of her allies!
+KinkyDungeonSpellCastArmorUp,The EnemyName gains increased physical armor!
+KinkyDungeonSpellCastArmorUpArea,The EnemyName buffs the physical armor of her allies!
 KinkyDungeonSpellCastSpellArmorUpAreaNevermere,"The EnemyName deploys an energy shield to allies!"
 KinkyDungeonSpellCastNevermereBoost,"The EnemyName activates the vibrators of nearby wolfgirls, greatly motivating them!"
 KinkyDungeonSpellCastEarthfield,The EnemyName creates a zone of increased defense!
-KinkyDungeonSpellCastParasolBuff,"EnemyName uses a charm to buff an enemy's Warding and evasion!"
-KinkyDungeonSpellCastZombieBuff,"EnemyName uses a glowing talisman to buff an undead's armor and speed!"
+KinkyDungeonSpellCastParasolBuff,"EnemyName uses a charm to buff an enemy's Magic Armor and Evasion!"
+KinkyDungeonSpellCastZombieBuff,"EnemyName uses a glowing talisman to buff an undead's physical armor and speed!"
 KinkyDungeonSpellCastEarthrune,You create a zone of increased defense!
 KinkyDungeonSpellCastWaterrune,You create a protective zone!
 KinkyDungeonSpellCastIcerune,You create a fan of icicles!
@@ -5857,7 +5857,8 @@ KinkyDungeonHappyGas,"The air swirls with traces of pleasing magic..."
 KinkyDungeonSporeGas,"The spores make you feel sleepy..."
 
 KinkyDungeonTooltipWeakness,"DAMAGETYPE: MULTIPLIERx modifier"
-KinkyDungeonTooltipArmor,"Base Armor: AMOUNT"
+KinkyDungeonTooltipArmor,"Base Physical Armor: AMOUNT"
+KinkyDungeonTooltipSpellResist,"Base Magic Armor: AMOUNT"
 KinkyDungeonTooltipEvasion,"Base Evasion: AMOUNT%"
 KinkyDungeonTooltipDealsDamage,"Deals DAMAGETYPE damage"
 KDTooltipDisarm,"Can disarm (chance: DISARMCHANCE%)"
