@@ -1691,6 +1691,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 			// Pass block
 			let progress = restraint.cutProgress ? restraint.cutProgress : 0;
+			let struggleTime = KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 : KDStruggleTime;
+			if (KinkyDungeonStatsChoice.get("FranticStruggle")) data.cost *= 1.5;
 
 			if (((StruggleType == "Cut" && progress >= 1 - data.escapeChance)
 					|| (StruggleType == "Pick" && restraint.pickProgress >= 1 - data.escapeChance)
@@ -1733,7 +1735,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 							mult *= 0.7 + 0.3 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 							KDAddDelayedStruggle(
 								escapeSpeed * speed * (0.3 + 0.2 * KDRandom() + 0.6 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
-								KDStruggleTime, StruggleType, struggleGroup, index, data,
+								struggleTime, StruggleType, struggleGroup, index, data,
 								restraint.cutProgress, maxLimit
 							);
 							if (speed > 0) {
@@ -1781,7 +1783,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 						mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 						KDAddDelayedStruggle(
 							escapeSpeed * mult * (data.escapeChance > 0 ? (KDMinPickRate * (data.escapeChance > 0.5 ? 2 : 1)) : 0) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
-							KDStruggleTime, StruggleType, struggleGroup, index, data,
+							struggleTime, StruggleType, struggleGroup, index, data,
 							restraint.pickProgress, maxLimit
 						);
 					}
@@ -1806,7 +1808,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 						mult *= 0.7 + 0.3 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 						KDAddDelayedStruggle(
 							escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
-							KDStruggleTime, StruggleType, struggleGroup, index, data,
+							struggleTime, StruggleType, struggleGroup, index, data,
 							restraint.unlockProgress, maxLimit
 						);
 					}
@@ -1820,7 +1822,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					mult *= 0.7 + 0.3 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 					KDAddDelayedStruggle(
 						escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.5 + 0.4 * KDRandom() + 0.3 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
-						KDStruggleTime, StruggleType, struggleGroup, index, data,
+						struggleTime, StruggleType, struggleGroup, index, data,
 						restraint.struggleProgress, maxLimit
 					);
 				} else if (StruggleType == "Struggle") {
@@ -1833,7 +1835,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					mult *= 0.7 + 0.3 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 					KDAddDelayedStruggle(
 						escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.5 + 0.4 * KDRandom() + 0.3 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
-						KDStruggleTime, StruggleType, struggleGroup, index, data,
+						struggleTime, StruggleType, struggleGroup, index, data,
 						restraint.struggleProgress, maxLimit
 					);
 				}
@@ -2033,7 +2035,7 @@ function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill
 	for (let r of cache) {
 		let restraint = r.r;
 		if (filter) {
-			if (filter.maxPower && r.r.power > filter.maxPower) continue;
+			if (filter.maxPower && r.r.power > filter.maxPower && (!filter.looseLimit || !r.r.unlimited)) continue;
 			if (filter.minPower && r.r.power < filter.minPower && (!filter.looseLimit || !r.r.limited) && !r.r.unlimited) continue;
 			if (filter.onlyUnlimited && r.r.limited) continue;
 			if (filter.noUnlimited && r.r.unlimited) continue;

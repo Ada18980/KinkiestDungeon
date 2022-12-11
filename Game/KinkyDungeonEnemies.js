@@ -3070,6 +3070,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												false,
 												{
 													maxPower: rThresh + 0.01,
+													looseLimit: true,
 													onlyUnlimited: true,
 													ignore: enemy.items,
 												});
