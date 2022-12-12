@@ -7554,7 +7554,7 @@ rOfferShacklesForce,"(The SPEAKER grins maliciously)|I like seeing prisoners tho
 rOfferShacklesForceYes,"(The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in her hand)"
 rOfferShacklesForce_No,"(The SPEAKER gulps)|M-Maybe I won't then!"
 rOfferShacklesForce_Yes,"(The SPEAKER adds the RESTRAINT)|You're blushing dear~|She doth protest too much?"
-rOfferShacklesForce_Failure,"(The SPEAKER)||"
+rOfferShacklesForce_Failure,"(The SPEAKER giggles as she catches you and slaps on the cuffs)|No so fast, dear~"
 
 dOfferShackles_Yes,"Maybe a bit~"
 dOfferShackles_YesGag,"(Nod eagerly)"
