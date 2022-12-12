@@ -1192,6 +1192,7 @@ Features
 3.9 (Dec 2022)
 - New perk: Frantic Struggle
 - Shrines are buffed so now they remove much more restraints than before
+- Armbinders now need other arm restraints on in order to be applied by most things
 
 
 TODO ValidationFindBlockCycles to prevent bugs

@@ -78,7 +78,7 @@ let KinkyDungeonPlayerDamage = KinkyDungeonPlayerDamageDefault;
 
 let KinkyDungeonDamageTypes = {
 	acid: {name: "acid", color: "#c8d45d", bg: "black"},
-	cold: {name: "cold", color: "#21007F", bg: "white"},
+	cold: {name: "cold", color: "#554bd4", bg: "black"},
 	ice: {name: "ice", color: "#00D8FF", bg: "black"},
 	frost: {name: "ice", color: "#00D8FF", bg: "black"},
 	fire: {name: "fire", color: "#FF6A00", bg: "black"},

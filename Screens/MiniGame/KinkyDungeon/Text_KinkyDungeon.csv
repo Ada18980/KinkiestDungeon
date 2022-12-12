@@ -2970,6 +2970,9 @@ RestraintStrongMagicRopeArmsDesc2,"The knots appear to tie themselves together a
 RestraintStrongMagicRopeCuffs,Magic Rope Cuffs
 RestraintStrongMagicRopeCuffsDesc,"Strongly glowing ropes."
 RestraintStrongMagicRopeCuffsDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeCuffsAdv,Magic Ropework
+RestraintStrongMagicRopeCuffsAdvDesc,"Strongly glowing ropes tied in an intricate pattern, making hand restraints more secure."
+RestraintStrongMagicRopeCuffsAdvDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
 RestraintStrongMagicRopeLegs,Magic Leg Rope
 RestraintStrongMagicRopeLegsDesc,"Strongly glowing ropes."
 RestraintStrongMagicRopeLegsDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
@@ -3171,6 +3174,9 @@ RestraintRopeSnakeArmsDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeCuffs,Rope Cuffs
 RestraintRopeSnakeCuffsDesc,"A quick tie for apprehending prisoners."
 RestraintRopeSnakeCuffsDesc2,"It's not very secure."
+RestraintRopeSnakeCuffsAdv,Intricate Ropework
+RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
+RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
 RestraintRopeSnakeHogtie,Rope Hogtie
 RestraintRopeSnakeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintRopeSnakeHogtieDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
@@ -3199,6 +3205,9 @@ RestraintCelestialRopeArmsDesc2,"They are aware of your movements..."
 RestraintCelestialRopeCuffs,Holy Rope Cuffs
 RestraintCelestialRopeCuffsDesc,"A quick tie for apprehending prisoners."
 RestraintCelestialRopeCuffsDesc2,"They are aware of your movements..."
+RestraintCelestialRopeCuffsAdv,Holy Ropework
+RestraintCelestialRopeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles and fasteners."
+RestraintCelestialRopeCuffsAdvDesc2,"They are aware of your movements..."
 RestraintCelestialRopeTorso,Holy Rope Belt
 RestraintCelestialRopeTorsoDesc,"A harness acting as a handle to pull you around"
 RestraintCelestialRopeTorsoDesc2,"They are aware of your movements..."
@@ -3336,6 +3345,9 @@ RestraintLatexCatsuit,Blue Latex Catsuit
 RestraintLatexCatsuitDesc,"A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult."
 RestraintLatexCatsuitDesc2,"Blue latex is silky smooth, very stretchy, and very good at adhering to itself."
 
+RestraintDragonArmbinder,Scale Boxtie Binder
+RestraintDragonArmbinderDesc,"A secure but comfortable binder meant for long-term wear by long-term prisoners of the Dragonhearts."
+RestraintDragonArmbinderDesc2,"It is made from durable dragonscale, but secured with ordinary buckles."
 RestraintDragonStraps,Dragonscale Straps
 RestraintDragonStrapsDesc,"A set of straps buckling tightly around your body and secured at the wrists."
 RestraintDragonStrapsDesc2,"It's made from hard-to-cut dragonscale!!!"
