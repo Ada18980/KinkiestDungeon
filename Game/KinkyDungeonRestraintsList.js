@@ -62,7 +62,7 @@ const KinkyDungeonRestraints = [
 	// Not super punishing but would be hard to apply IRL
 	{inventory: true, name: "DuctTapeHands", unlimited: true, inaccessible: true, Asset: "DuctTape", Color: "Default", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHands",
 		bindhands: true, power: 1, weight: 0, escapeChance: {"Struggle": -0.1, "Cut": 0.4, "Remove": 0.4}, struggleMaxSpeed: {"Remove": 0.1},
-		strictness: 0.15, strictnessZones: ["ItemHands"],
+		strictness: 0.05, strictnessZones: ["ItemHands"], failSuffix: {"Remove": "Tape"},
 		maxwill: 0.6, enemyTags: {"tapeRestraints":8}, playerTags: {"ItemHandsFull": -4}, minLevel: 0, allFloors: true, shrine: ["Tape"]},
 
 	{removePrison: true, name: "DuctTapeArms", unlimited: true, debris: "Fabric", accessible: true, Asset: "DuctTape", Color: "#AA2222", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemArms", bindarms: true, power: -2, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.9, "Remove": 0}, failSuffix: {"Remove": "Tape"},
@@ -103,7 +103,12 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region AutoTape
-	{removePrison: true, name: "AutoTapeArms", unlimited: true, accessible: true, Type: "Top", Asset: "DuctTape", Color: "#6E9FA3", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemArms", bindarms: true, power: 5, weight: 0, escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0}, failSuffix: {"Remove": "Tape"},
+	{inventory: true, name: "AutoTapeHands", unlimited: true, inaccessible: true, Asset: "DuctTape", Color: "#6E9FA3", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHands",
+		bindhands: true, power: 6, weight: 0, escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.}, struggleMaxSpeed: {"Remove": 0.1}, failSuffix: {"Remove": "Tape"},
+		strictness: 0.1, strictnessZones: ["ItemHands"], limitChance: {Struggle: 0.12},
+		maxwill: 0.6, enemyTags: {"autoTape":8}, playerTags: {"ItemHandsFull": -4}, minLevel: 8, allFloors: true, shrine: ["Tape"]},
+	{removePrison: true, name: "AutoTapeArms", unlimited: true, accessible: true, Type: "Top", Asset: "DuctTape", Color: "#6E9FA3", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemArms",
+		bindarms: true, power: 5, weight: 0, escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		enemyTags: {"autoTape":10}, playerTags: {"ItemArmsFull":8}, minLevel: 0, allFloors: true, shrine: ["Tape"]},
 	{removePrison: true, name: "AutoTapeFeet", unlimited: true, accessible: true, Asset: "DuctTape", Color: "#6E9FA3", Group: "ItemFeet", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], blockfeet: true, power: 5, weight: 0, escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		enemyTags: {"autoTape":10}, playerTags: {"ItemLegsFull":8}, minLevel: 0, allFloors: true, shrine: ["Tape"]},

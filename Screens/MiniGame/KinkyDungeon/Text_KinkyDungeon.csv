@@ -2929,6 +2929,9 @@ RestraintMysticDuctTapeLegsMummyDesc,"A layer of magic embalming ribbon wrapped 
 RestraintMysticDuctTapeLegsMummyDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 
 
+RestraintAutoTapeHands,Autotape (Hands)
+RestraintAutoTapeHandsDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
+RestraintAutoTapeHandsDesc2,"It's very sticky and seals your hands tightly, making any struggling ineffective."
 RestraintAutoTapeHead,Autotape (Head)
 RestraintAutoTapeHeadDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
 RestraintAutoTapeHeadDesc2,"It's very sticky and tough but you could probably get a knife through it."
