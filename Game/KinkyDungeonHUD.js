@@ -709,8 +709,8 @@ function KinkyDungeonDrawInputs() {
 					MainCanvas.textAlign = "center";
 				}
 				if (lastO) lastO += 1;
-				if (item && KDRestraint(item) && KinkyDungeonStrictness(false, KDRestraint(item).Group)) {
-					let strictItems = KinkyDungeonGetStrictnessItems(KDRestraint(item).Group);
+				if (item && KDRestraint(item) && KinkyDungeonStrictness(false, KDRestraint(item).Group, item)) {
+					let strictItems = KinkyDungeonGetStrictnessItems(KDRestraint(item).Group, item);
 					let O = lastO + 1;
 					MainCanvas.textAlign = "left";
 					let drawn = false;

@@ -3454,14 +3454,14 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 									KinkyDungeonChangeStamina(moveMult * (KinkyDungeonStatStaminaRegenPerSlowLevel * KinkyDungeonSlowLevel) * delta, false, moveMult, true);
 								}
 							}
-							let plugIncreaseAmount = (KinkyDungeonStatPlugLevel * KinkyDungeonDistractionPerPlug * moveMult);
+							let plugIncreaseAmount = (KinkyDungeonStatPlugLevel * KinkyDungeonDistractionPerPlug);
 							KinkyDungeonStatDistraction += plugIncreaseAmount;
-							if (plugIncreaseAmount > 0) KinkyDungeonStatDistractionLower += plugIncreaseAmount * 0.33;
+							if (plugIncreaseAmount > 0) KinkyDungeonStatDistractionLower += plugIncreaseAmount * 0.2;
 							if (KinkyDungeonHasCrotchRope) {
 								if (KinkyDungeonStatPlugLevel == 0) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrotchRope"), "pink", 2);
-								KinkyDungeonStatDistraction += (KinkyDungeonCrotchRopeDistraction * moveMult);
+								KinkyDungeonStatDistraction += (KinkyDungeonCrotchRopeDistraction);
 
-								if (moveMult > 0) KinkyDungeonStatDistractionLower += (KinkyDungeonCrotchRopeDistraction * moveMult) * 0.33;
+								if (moveMult > 0) KinkyDungeonStatDistractionLower += (KinkyDungeonCrotchRopeDistraction) * 0.2;
 							}
 							//if (KinkyDungeonVibeLevel == 0 && KinkyDungeonStatPlugLevel > 0 && !KinkyDungeonHasCrotchRope) KinkyDungeonStatDistraction += KDGetDistractionRate(delta) * delta;
 						} else if (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax) {
