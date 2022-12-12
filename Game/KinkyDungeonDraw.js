@@ -80,6 +80,25 @@ function KDWallVert(x, y, noReplace) {
  * @param {string} [noReplace]
  * @returns {boolean}
  */
+function KDWallVertAbove(x, y, noReplace) {
+	//let tileUp = KinkyDungeonMapGet(x, y);
+	let tileAbove = KinkyDungeonMapGet(x, y - 1);
+	if (
+		// These are the tiles that trigger a replacement
+		KDWallReplacers.includes(tileAbove)
+		&& (!noReplace || !noReplace.includes(tileAbove))
+	)
+		return true;
+
+	return false;
+}
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {string} [noReplace]
+ * @returns {boolean}
+ */
 function KDWallVertBoth(x, y, noReplace) {
 	//let tileUp = KinkyDungeonMapGet(x, y);
 	let tileBelow = KinkyDungeonMapGet(x, y + 1);
@@ -154,7 +173,7 @@ let KDSprites = {
 	},
 	// @ts-ignore
 	"b": (x, y, Fog, noReplace) => {
-		if (KDWallVert(x, y, noReplace))
+		if (KDWallVertAbove(x, y, noReplace))
 			return KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "BarsVertCont" : "BarsVert";
 		return "Bars";
 	},
@@ -1280,6 +1299,16 @@ function KinkyDungeonDrawGame() {
 	} else if (KinkyDungeonDrawState == "Perks2") {
 		KinkyDungeonDrawPerks(!KDDebugPerks);
 		DrawButtonVis(1650, 920, 300, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+
+		// @ts-ignore
+		DrawButtonKDEx("copyperks", (bdata) => {
+			let txt = "";
+			for (let k of KinkyDungeonStatsChoice.keys()) {
+				if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "\n" : "") + k;
+			}
+			navigator.clipboard.writeText(txt);
+			return true;
+		}, true, 1400, 930, 200, 54, TextGet("KinkyDungeonCopyPerks"), "#ffffff", "");
 	}
 
 	if (KinkyDungeonStatFreeze > 0) {

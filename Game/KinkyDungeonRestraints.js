@@ -920,8 +920,8 @@ function KinkyDungeonStrictness(ApplyGhost, Group) {
 function KinkyDungeonGetStrictnessItems(Group) {
 	let list = [];
 	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv).Group != Group && (KDRestraint(inv).strictness || inv.dynamicLink))  {
-			let strictGroups = KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
+		if (KDRestraint(inv).strictness || inv.dynamicLink)  {
+			let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
 			if (strictGroups) {
 				for (let s of strictGroups) {
 					if (s == Group) {

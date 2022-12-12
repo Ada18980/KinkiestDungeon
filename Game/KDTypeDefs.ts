@@ -301,6 +301,8 @@ interface KDRestraintProps {
 	noJailRemove?: boolean,
 	/** Increases the difficulty of other items */
 	strictness?: number,
+	/** Overrides the existing strictness zones for the item's group */
+	strictnessZones?: string[],
 	/** Can be linked by items with this shrine category */
 	LinkableBy?: string[],
 	DefaultLock?: string,
