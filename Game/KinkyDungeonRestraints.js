@@ -2582,9 +2582,9 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				//let placedOnPlayer = false;
 				//if (!placed) console.log(`Error placing ${restraint.name} on player!!!`);
 				if (ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable() && !KinkyDungeonRestraintsLocked.includes(AssetGroup) && AssetGroup != "ItemHead" && InventoryAllow(
-					Player, AssetGet("3DCGFemale", restraint.AssetGroup, restraint.Asset)) &&
-					(!InventoryGetLock(InventoryGet(Player, AssetGroup))
-					|| (InventoryGetLock(InventoryGet(Player, AssetGroup)).Asset.OwnerOnly == false && InventoryGetLock(InventoryGet(Player, AssetGroup)).Asset.LoverOnly == false))) {
+					Player, AssetGet("3DCGFemale", restraint.AssetGroup, restraint.Asset)) && !InventoryGet(Player, AssetGroup)) {
+					//(!InventoryGetLock(InventoryGet(Player, AssetGroup))
+					//|| (InventoryGetLock(InventoryGet(Player, AssetGroup)).Asset.OwnerOnly == false && InventoryGetLock(InventoryGet(Player, AssetGroup)).Asset.LoverOnly == false))) {
 					InventoryWear(Player, restraint.Asset, AssetGroup, color);
 					//placedOnPlayer = true;
 				}

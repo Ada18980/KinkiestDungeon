@@ -2577,7 +2577,7 @@ function KDDrawTooltip(TooltipList, offset) {
 		TooltipHeight += listItem.size + extra;
 	}
 	TooltipHeight = Math.max(20, TooltipHeight);
-	let tooltipX = 2000 - 260 - TooltipWidth;
+	let tooltipX = 2000 - 410 - TooltipWidth;
 	let tooltipY = 890 - TooltipHeight - offset;
 	let YY = 0;
 
