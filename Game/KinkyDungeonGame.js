@@ -3463,7 +3463,6 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 
 								if (moveMult > 0) KinkyDungeonStatDistractionLower += (KinkyDungeonCrotchRopeDistraction) * 0.2;
 							}
-							//if (KinkyDungeonVibeLevel == 0 && KinkyDungeonStatPlugLevel > 0 && !KinkyDungeonHasCrotchRope) KinkyDungeonStatDistraction += KDGetDistractionRate(delta) * delta;
 						} else if (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax) {
 							KinkyDungeonWaitMessage();
 						}

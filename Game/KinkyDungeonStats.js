@@ -756,7 +756,7 @@ function KDGetDistractionRate(delta) {
 		(KinkyDungeonChastityMult() > 0.9 ? KDNoUnchasteMult : (KinkyDungeonChastityMult() > 0 ? KDNoUnchasteBraMult : 1.0))) : 0)) : (KinkyDungeonDistractionPerVibe * KinkyDungeonVibeLevel);
 
 	if (KDGameData.OrgasmStamina > 0 && delta > 0) {
-		let amount = KDGameData.OrgasmStamina/24;
+		let amount = (KDGameData.OrgasmStamina || 0)/24;
 		KDGameData.OrgasmStamina = Math.max(0, KDGameData.OrgasmStamina*0.98 - delta/70);
 		distractionRate += -amount;
 	}
@@ -1086,7 +1086,8 @@ function KinkyDungeonGagTotal(AllowFlags) {
 	let total = 0;
 	let allow = false;
 	let prevent = false;
-	for (let inv of KinkyDungeonAllRestraint()) {
+	for (let rest of KinkyDungeonAllRestraintDynamic()) {
+		let inv = rest.item;
 		if (KDRestraint(inv).gag) total += KDRestraint(inv).gag;
 		if (KDRestraint(inv).allowPotions) allow = true;
 	}
