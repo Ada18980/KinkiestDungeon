@@ -113,7 +113,7 @@ function KinkyDungeonDrawLore() {
 	let loreOrig = TextGet("KinkyDungeonLore" + KinkyDungeonCurrentLore).split('|');
 	let lore = [];
 	for (let str of loreOrig) {
-		lore.push(...(KinkyDungeonWordWrap(str, wrapAmount).split('\n')));
+		lore.push(...(KinkyDungeonWordWrap(str, wrapAmount, 45).split('\n')));
 	}
 	let i = 0;
 	for (let N = 0; N < lore.length; N++) {
