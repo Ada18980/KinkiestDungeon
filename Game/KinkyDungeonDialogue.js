@@ -18,8 +18,8 @@ function KinkyDungeonCanPutNewDialogue() {
 	return !KDGameData.CurrentDialog && !KinkyDungeonFlags.get("NoDialogue");
 }
 
-function KDBasicCheck(PositiveReps, NegativeReps) {
-	let value = 0;
+function KDBasicCheck(PositiveReps, NegativeReps, Modifier = 0) {
+	let value = Modifier;
 	if (KinkyDungeonFlags.has("OfferRefused")) value -= 15;
 	if (KinkyDungeonFlags.has("OfferRefusedLight")) value -= 15;
 	// Being low willpower makes it harder
@@ -1097,7 +1097,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				KDGameData.CurrentDialogMsgValue.PercentOff =
 					KDOffensiveDialogueSuccessChance(KDBasicCheck(goddess, [])
 					- (KDDialogueGagged() ? 60 : 40)
-					- (KinkyDungeonStatsChoice.get("Undeniable") ? 70 : 0)
+					- (KinkyDungeonStatsChoice.get("Undeniable") ? 100 : 0)
 					- (KinkyDungeonStatsChoice.has("Dominant") ? 0 : 40)
 					- KDPersonalitySpread(OffdiffSpread[0], OffdiffSpread[1], KinkyDungeonStatsChoice.has("Dominant") ? OffdiffSpread[3] : OffdiffSpread[2]));
 				// Set the string to replace in the UI
@@ -1109,13 +1109,13 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				// Set up the difficulty of the check
 				// This check basically determines if we switch to the Force stage where the speaker tries to force you
 				let diff = KinkyDungeonStatsChoice.has("Dominant") ? diffSpread[1] : diffSpread[0];
-				if (KinkyDungeonStatsChoice.get("Undeniable")) diff += 100;
+				if (KinkyDungeonStatsChoice.get("Undeniable")) diff += 140;
 				// Failure condition
 				if (KDBasicCheck(goddess, antigoddess) <= diff) {
 					KDGameData.CurrentDialogStage = "Force";
 					KDGameData.CurrentDialogMsg = name + "ForceYes"; // This is different from OfferLatexForce_Yes, it's a more reluctant dialogue...
 					// Set up percentage chance to resist
-					KDGameData.CurrentDialogMsgValue.Percent = KDAgilityDialogueSuccessChance(KDBasicCheck(goddess, antigoddess));
+					KDGameData.CurrentDialogMsgValue.Percent = KDAgilityDialogueSuccessChance(KDBasicCheck(goddess, antigoddess, KinkyDungeonStatsChoice.get("Undeniable") ? -70 : 0));
 					KDGameData.CurrentDialogMsgData.PERCENT = `${Math.round(100 * KDGameData.CurrentDialogMsgValue.Percent)}%`;
 				} else {
 					// You succeed but get fatigue
@@ -1146,13 +1146,13 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 			if (!refused) {
 				// This check basically determines if we switch to the Force stage where the speaker tries to force you
 				let diff = KinkyDungeonStatsChoice.has("Dominant") ? diffSpread[3] : diffSpread[2]; // Slightly harder because we refused
-				if (KinkyDungeonStatsChoice.get("Undeniable")) diff += 100;
+				if (KinkyDungeonStatsChoice.get("Undeniable")) diff += 140;
 				// Failure condition
 				if (KDBasicCheck(goddess, antigoddess) <= diff) {
 					KDGameData.CurrentDialogStage = "Force";
 					KDGameData.CurrentDialogMsg = "";
 					// Set up percentage chance to resist
-					KDGameData.CurrentDialogMsgValue.Percent = KDAgilityDialogueSuccessChance(KDBasicCheck(goddess, antigoddess));
+					KDGameData.CurrentDialogMsgValue.Percent = KDAgilityDialogueSuccessChance(KDBasicCheck(goddess, antigoddess, KinkyDungeonStatsChoice.get("Undeniable") ? -70 : 0));
 					KDGameData.CurrentDialogMsgData.PERCENT = `${Math.round(100 * KDGameData.CurrentDialogMsgValue.Percent)}%`;
 				} else {
 					KDIncreaseOfferFatigue(10);

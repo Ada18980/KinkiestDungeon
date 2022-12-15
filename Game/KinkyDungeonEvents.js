@@ -382,7 +382,7 @@ let KDEventMapInventory = {
 		},
 		"slimeSpread": (e, item, data) => {
 			if (!data.delta) return;
-			let mult = 0.1 * Math.max(0.25, Math.min(2.0,
+			let mult = 0.2 * Math.max(0.25, Math.min(2.0,
 				KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist"))));
 			KDEventData.SlimeLevel = Math.max(KDEventData.SlimeLevel, KDEventData.SlimeLevelStart + e.power * mult);
 			if (KDEventData.SlimeLevel >= 0.99999) {
@@ -1524,6 +1524,15 @@ let KDEventMapSpell = {
 						data.failed = [];
 						return;
 					}
+				}
+			}
+		},
+	},
+	"perkOrb": {
+		"Cursed": (e, spell, data) => {
+			if (data.perks && data.perks.includes("Cursed")) {
+				for (let shrine in KinkyDungeonShrineBaseCosts) {
+					KinkyDungeonGoddessRep[shrine] = -50;
 				}
 			}
 		},

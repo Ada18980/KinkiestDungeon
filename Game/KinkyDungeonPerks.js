@@ -195,6 +195,7 @@ let KinkyDungeonStatsPresets = {
 	"Undeniable": {category: "Kinky", id: "Undeniable", cost: -1},
 	"BoundPower": {category: "Combat", id: 40, cost: 3},
 	"SavourTheTaste": {category: "Combat", id: "SavourTheTaste", cost: -1},
+	"ResilientFoes": {category: "Enemies", id: "ResilientFoes", cost: -1},
 	"KillSquad": {category: "Enemies", id: 41, cost: -3, block: ["Conspicuous"]},
 	"Stealthy": {category: "Enemies", id: 38, cost: 0},
 	"Conspicuous": {category: "Enemies", id: 39, cost: -1, block: ["KillSquad"]},

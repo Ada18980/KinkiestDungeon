@@ -80,6 +80,25 @@ function KDWallVert(x, y, noReplace) {
  * @param {string} [noReplace]
  * @returns {boolean}
  */
+function KDWallVertAbove(x, y, noReplace) {
+	//let tileUp = KinkyDungeonMapGet(x, y);
+	let tileAbove = KinkyDungeonMapGet(x, y - 1);
+	if (
+		// These are the tiles that trigger a replacement
+		KDWallReplacers.includes(tileAbove)
+		&& (!noReplace || !noReplace.includes(tileAbove))
+	)
+		return true;
+
+	return false;
+}
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {string} [noReplace]
+ * @returns {boolean}
+ */
 function KDWallVertBoth(x, y, noReplace) {
 	//let tileUp = KinkyDungeonMapGet(x, y);
 	let tileBelow = KinkyDungeonMapGet(x, y + 1);
@@ -154,7 +173,7 @@ let KDSprites = {
 	},
 	// @ts-ignore
 	"b": (x, y, Fog, noReplace) => {
-		if (KDWallVert(x, y, noReplace))
+		if (KDWallVertAbove(x, y, noReplace))
 			return KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "BarsVertCont" : "BarsVert";
 		return "Bars";
 	},
@@ -1280,6 +1299,16 @@ function KinkyDungeonDrawGame() {
 	} else if (KinkyDungeonDrawState == "Perks2") {
 		KinkyDungeonDrawPerks(!KDDebugPerks);
 		DrawButtonVis(1650, 920, 300, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+
+		// @ts-ignore
+		DrawButtonKDEx("copyperks", (bdata) => {
+			let txt = "";
+			for (let k of KinkyDungeonStatsChoice.keys()) {
+				if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "\n" : "") + k;
+			}
+			navigator.clipboard.writeText(txt);
+			return true;
+		}, true, 1400, 930, 200, 54, TextGet("KinkyDungeonCopyPerks"), "#ffffff", "");
 	}
 
 	if (KinkyDungeonStatFreeze > 0) {
@@ -2245,7 +2274,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 				let lightColor = KDAvgColor(KinkyDungeonColorGet(RX, RY), KinkyDungeonShadowGet(RX, RY), light, 1);
 				lightColor = KDAvgColor(lightColor, 0xffffff, 1, 1); // Brighten
 
-				KDDraw(kdgameboard, kdpixisprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floor_" + floor + "/" + sprite + ".png",
+				KDDraw(kdgameboard, kdpixisprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
 					(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: -2,
 						tint: lightColor,
@@ -2548,7 +2577,7 @@ function KDDrawTooltip(TooltipList, offset) {
 		TooltipHeight += listItem.size + extra;
 	}
 	TooltipHeight = Math.max(20, TooltipHeight);
-	let tooltipX = 2000 - 260 - TooltipWidth;
+	let tooltipX = 2000 - 410 - TooltipWidth;
 	let tooltipY = 890 - TooltipHeight - offset;
 	let YY = 0;
 

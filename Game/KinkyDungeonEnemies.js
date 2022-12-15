@@ -1054,7 +1054,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		size: 20,
 	});
 	if (enemy.Enemy.armor) {
-		let st = TextGet("KinkyDungeonTooltipArmor").replace("AMOUNT", "" + 10* enemy.Enemy.armor);
+		let st = TextGet("KinkyDungeonTooltipArmor").replace("AMOUNT", "" + Math.round(10* enemy.Enemy.armor));
 		TooltipList.push({
 			str: st,
 			fg: "#ffffff",
@@ -1063,7 +1063,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		});
 	}
 	if (enemy.Enemy.spellResist) {
-		let st = TextGet("KinkyDungeonTooltipSpellResist").replace("AMOUNT", "" + 10* enemy.Enemy.spellResist);
+		let st = TextGet("KinkyDungeonTooltipSpellResist").replace("AMOUNT", "" + Math.round(10* enemy.Enemy.spellResist));
 		TooltipList.push({
 			str: st,
 			fg: "#ffffff",

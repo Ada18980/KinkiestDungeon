@@ -597,22 +597,22 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 							KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonMistressKeysTakenAway"), "orange", 2);
 					}
 				} else {
-					if (lostitem.type == Consumable) {
+					if (lostitem.type == Consumable && KinkyDungeonFindConsumable(lostitem.name)) {
 						if (lostitem.name != "MistressKey")
 							KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
 								`+${lostitem.quantity} ${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 4);
 						else
 							KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonMistressKeysTakenAway"), "orange", 2);
 						remove = true;
-					} if (lostitem.type == Weapon) {
+					} if (lostitem.type == Weapon && KinkyDungeonFindWeapon(lostitem.name)) {
 						KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
 							`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 6);
 						remove = true;
-					} else if (lostitem.type == Outfit) {
+					} else if (lostitem.type == Outfit && KinkyDungeonGetOutfit(lostitem.name)) {
 						KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
 							`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 7);
 						remove = true;
-					} else if (lostitem.type == LooseRestraint) {
+					} else if (lostitem.type == LooseRestraint && KinkyDungeonGetRestraintByName(lostitem.name)) {
 						KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
 							`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);
 						remove = true;

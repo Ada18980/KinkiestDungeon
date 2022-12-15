@@ -21,6 +21,7 @@ let KDRiggerDmgBoost = 0.2;
 let KDRiggerBindBoost = 0.3;
 let KDStealthyDamageMult = 0.7;
 let KDStealthyEvaMult = 0.8;
+let KDResilientDamageMult = 0.7;
 let KDStealthyEnemyCountMult = 1.7;
 let KDBoundPowerMult = 0.4;
 let KDBerserkerAmp = 0.3;
@@ -78,7 +79,7 @@ let KinkyDungeonPlayerDamage = KinkyDungeonPlayerDamageDefault;
 
 let KinkyDungeonDamageTypes = {
 	acid: {name: "acid", color: "#c8d45d", bg: "black"},
-	cold: {name: "cold", color: "#21007F", bg: "white"},
+	cold: {name: "cold", color: "#554bd4", bg: "black"},
 	ice: {name: "ice", color: "#00D8FF", bg: "black"},
 	frost: {name: "ice", color: "#00D8FF", bg: "black"},
 	fire: {name: "fire", color: "#FF6A00", bg: "black"},
@@ -395,9 +396,6 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	if (Enemy.freeze > 0 && Damage && KinkyDungeonMeleeDamageTypes.includes(predata.type)) {
 		predata.dmg *= 2;
 	}
-	if (KDHostile(Enemy) && KinkyDungeonStatsChoice.get("Stealthy")) {
-		predata.dmg *= KDStealthyDamageMult;
-	}
 
 	let miss = !(!Damage || !Damage.evadeable || KinkyDungeonEvasion(Enemy, (true && Spell), !KinkyDungeonMeleeDamageTypes.includes(predata.type), attacker));
 	if (Damage && !miss) {
@@ -468,6 +466,8 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		let killed = Enemy.hp > 0;
 		let forceKill = false;
 
+
+
 		if (predata.type != "inert" && resistDamage < 2) {
 			if (resistDamage == 1 || (resistStun > 0 && predata.type == "stun")) {
 				predata.dmgDealt = Math.max(predata.dmg * KDArmorFormula(predata.dmg, armor), 0); // Armor goes before resistance
@@ -502,6 +502,14 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				}
 			}
 
+			if (KDHostile(Enemy)) {
+				if (KinkyDungeonStatsChoice.get("Stealthy"))
+					predata.dmgDealt *= KDStealthyDamageMult;
+
+				if (KinkyDungeonStatsChoice.get("ResilientFoes"))
+					predata.dmgDealt *= KDResilientDamageMult;
+			}
+
 			KinkyDungeonSendEvent("duringDamageEnemy", predata);
 
 			if (Spell && Spell.hitsfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + Spell.hitsfx + ".ogg");
@@ -512,6 +520,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				//KinkyDungeonSendFloater(Enemy, Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), "#ff4444");
 			}
 			//forceKill = (Enemy.hp <= Enemy.Enemy.maxhp*0.1 || Enemy.hp <= 0.52) && KDistChebyshev(Enemy.x - KinkyDungeonPlayerEntity.x, Enemy.y - KinkyDungeonPlayerEntity.y) < 1.5;
+
 			Enemy.hp -= predata.dmgDealt;
 			if (Enemy.hp > 0 && Enemy.hp <= 0.51 && predata.dmgDealt > 2.01 && !forceKill && KDBoundEffects(Enemy) < 4) Enemy.hp = 0;
 			if (predata.dmgDealt > 0) Enemy.revealed = true;

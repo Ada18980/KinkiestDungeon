@@ -884,26 +884,37 @@ function KinkyDungeonIsArmsBound(ApplyGhost, Other) {
  *
  * @param {boolean} ApplyGhost
  * @param {string} Group
+ * @param {item} [excludeItem]
  * @returns {number}
  */
-function KinkyDungeonStrictness(ApplyGhost, Group) {
+function KinkyDungeonStrictness(ApplyGhost, Group, excludeItem) {
 	if (ApplyGhost && (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) return 0;
 	let strictness = 0;
 	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv).Group != Group && ((KDRestraint(inv).strictness && KDRestraint(inv).strictness > strictness) || inv.dynamicLink))  {
-			let strictGroups = KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
+		if (inv != excludeItem && ((KDRestraint(inv).strictness && KDRestraint(inv).strictness > strictness)))  {
+			let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
 			if (strictGroups) {
 				for (let s of strictGroups) {
 					if (s == Group) {
 						if (KDRestraint(inv).strictness > strictness)
 							strictness = KDRestraint(inv).strictness;
-						if (inv.dynamicLink) {
-							for (let invLink of KDDynamicLinkList(inv)) {
+						break;
+					}
+				}
+			}
+		}
+		if (inv.dynamicLink) {
+			for (let invLink of KDDynamicLinkList(inv)) {
+				if (invLink != excludeItem && KDRestraint(invLink).strictness > strictness) {
+					let strictGroups = KDRestraint(invLink).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(invLink).Group);
+					if (strictGroups) {
+						for (let s of strictGroups) {
+							if (s == Group) {
 								if (KDRestraint(invLink).strictness > strictness)
 									strictness = KDRestraint(invLink).strictness;
+								break;
 							}
 						}
-						break;
 					}
 				}
 			}
@@ -915,13 +926,14 @@ function KinkyDungeonStrictness(ApplyGhost, Group) {
 /**
  * Gets the list of restraint nammes affecting the Group
  * @param {string} Group
+ * @param {item} excludeItem
  * @returns {string[]}
  */
-function KinkyDungeonGetStrictnessItems(Group) {
+function KinkyDungeonGetStrictnessItems(Group, excludeItem) {
 	let list = [];
 	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv).Group != Group && (KDRestraint(inv).strictness || inv.dynamicLink))  {
-			let strictGroups = KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
+		if (inv != excludeItem && KDRestraint(inv).strictness)  {
+			let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
 			if (strictGroups) {
 				for (let s of strictGroups) {
 					if (s == Group) {
@@ -929,15 +941,15 @@ function KinkyDungeonGetStrictnessItems(Group) {
 						if (KDRestraint(inv).strictness)
 							list.push(KDRestraint(inv).name);
 						// Add the items underneath it!!
-						if (inv.dynamicLink) {
-							for (let invLink of KDDynamicLinkList(inv)) {
-								if (KDRestraint(invLink).strictness)
-									list.push(KDRestraint(invLink).name);
-							}
-						}
 						break;
 					}
 				}
+			}
+		}
+		if (inv.dynamicLink) {
+			for (let invLink of KDDynamicLinkList(inv)) {
+				if (invLink != excludeItem && KDRestraint(invLink).strictness)
+					list.push(KDRestraint(invLink).name);
 			}
 		}
 	}
@@ -1267,7 +1279,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		helpChance: helpChance,
 		cutSpeed: 0.25,
 		affinity: affinity,
-		strict: KinkyDungeonStrictness(true, struggleGroup),
+		strict: KinkyDungeonStrictness(true, struggleGroup, restraint),
 		hasAffinity: KinkyDungeonGetAffinity(true, affinity, struggleGroup),
 		restraintEscapeChance: KDRestraint(restraint).escapeChance[StruggleType],
 		cost: KinkyDungeonStatStaminaCostStruggle,
@@ -2570,9 +2582,9 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				//let placedOnPlayer = false;
 				//if (!placed) console.log(`Error placing ${restraint.name} on player!!!`);
 				if (ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable() && !KinkyDungeonRestraintsLocked.includes(AssetGroup) && AssetGroup != "ItemHead" && InventoryAllow(
-					Player, AssetGet("3DCGFemale", restraint.AssetGroup, restraint.Asset)) &&
-					(!InventoryGetLock(InventoryGet(Player, AssetGroup))
-					|| (InventoryGetLock(InventoryGet(Player, AssetGroup)).Asset.OwnerOnly == false && InventoryGetLock(InventoryGet(Player, AssetGroup)).Asset.LoverOnly == false))) {
+					Player, AssetGet("3DCGFemale", restraint.AssetGroup, restraint.Asset)) && !InventoryGet(Player, AssetGroup)) {
+					//(!InventoryGetLock(InventoryGet(Player, AssetGroup))
+					//|| (InventoryGetLock(InventoryGet(Player, AssetGroup)).Asset.OwnerOnly == false && InventoryGetLock(InventoryGet(Player, AssetGroup)).Asset.LoverOnly == false))) {
 					InventoryWear(Player, restraint.Asset, AssetGroup, color);
 					//placedOnPlayer = true;
 				}

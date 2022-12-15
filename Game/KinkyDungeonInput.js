@@ -384,6 +384,7 @@ function KDProcessInput(type, data) {
 						KinkyDungeonMapSet(x, data.y, 'p');
 					}
 				}
+				KinkyDungeonSendEvent("perkOrb", {x: data.x, y: data.y, perks: data.perks});
 			}
 			break;
 		case "heart":

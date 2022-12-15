@@ -5,7 +5,7 @@ KinkyDungeonPatreon,Support @ Patreon
 KinkyDungeonPatronsList0,"Thank you to the following awesome people for supporting me at patreon.com/ada18980|cyberjoel|Samantha Lear|Kara|The-Fisher-King|selly-grim|Dex♪|Churro|Gamefan|Shogo|X27|Blox|Slacker|Nikos S.|WATA|Flame|Alexis Octavia|Finn|Dmitri S.|Noxgarm|Siegfried K.|Hellgete"
 KinkyDungeonPatronsList1,"|nuzzles|Rest|LoudestQuietPerson|Violet EverGardner|BoopleDoopleson|Dazman1234|linlizheng|Laioken|Mechio|Vikingberserker|PWMRM|devan|LukeB|atetete|Aussie895|0xA4C1B842|Rika|Physicsphail|Loony|Jeremy P.|ItsYahboi9"
 KinkyDungeonPatronsList2,"|AlexisTheFlame|Chen Yu|Sinohisaki|nnm711|Ron lsrp|Miro|Anthony R.|John T.|Geng114514|塵狐|kamil|Iaysakuya|tsang|Somprad|Thatguu|damit damit|Victor|Hjake2|anton A.|Dakra|CuvyanTaylor|"
-KinkyDungeonPatronsList3,"|hanhan|The_rogue1|Tatsuya S.|James K.|Misa|eddy z.|theshrimpyone|Eislobo|OTKTamashii|Michael M.|Jose G.|Minescence|HanQing Z.|hanhan|Shakymunch|Crimson|Arentios|Vini J.|Treemen555|Lordfabricator"
+KinkyDungeonPatronsList3,"|hanhan|The_rogue1|Tatsuya S.|James K.|Misa|eddy z.|theshrimpyone|Eislobo|OTKTamashii|Michael M.|Jose G.|Minescence|HanQing Z.|hanhan|Shakymunch|Crimson|Arentios|Vini J.|Treemen555|Lordfabricator|ML|Hannes"
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
 KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi|Door locked.wav - mitchanary - Modified"
@@ -20,7 +20,7 @@ KDModsLoaded,Mods Loaded.
 RestartNeeded,"Restart required!"
 RestartNeededCN,"需要重启！"
 
-KinkyDungeon,"Kinky Dungeon v3.83"
+KinkyDungeon,"Kinky Dungeon v3.9"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
@@ -57,6 +57,9 @@ KinkyDungeonStartGameQuick,"Confirm and start playing!"
 
 KinkyDungeonStatCost,"Point Cost: AMOUNT"
 KinkyDungeonStatPoints,"Points Available: AMOUNT"
+
+KinkyDungeonStatResilientFoes,"Resilient Foes"
+KinkyDungeonStatDescResilientFoes,"Enemies take 30% less damage."
 
 KinkyDungeonStat0,"Strong"
 KinkyDungeonStatDesc0,"Boosts the Struggle option when escaping."
@@ -161,7 +164,7 @@ KinkyDungeonStat37,"Narcoleptic"
 KinkyDungeonStatDesc37,"You slowly lose stamina over time."
 
 KinkyDungeonStat38,"Stealth Mission"
-KinkyDungeonStatDesc38,"You are harder to detect and there are more chests, but enemies are harder and drop no gold."
+KinkyDungeonStatDesc38,"You are harder to detect and there are more chests, but enemies take 30% less damage, are more evasive, and drop no gold."
 KinkyDungeonStatCommonLatex,"Latex Lovers"
 KinkyDungeonStatDescCommonLatex,"All humanoids that can bind you also apply latex restraints."
 KinkyDungeonStatCommonLeather,"Leather Lovers"
@@ -2319,8 +2322,8 @@ KinkyDungeonStruggleStruggleImpossible,"The item is too secure to struggle out."
 KinkyDungeonStruggleStruggleImpossibleAroused,"You groan in frustration as you realize the item is too tight to escape."
 KinkyDungeonStruggleStruggleImpossible2,"The item tightens itself as you try to squeeze out!"
 KinkyDungeonStruggleStruggleImpossible3,"You will need someone's help to squeeze out."
-KinkyDungeonStruggleStruggleStrict,"You pull and tug but something is keeping it in place."
-KinkyDungeonStruggleStruggleStrictAroused,"You groan and tug uselessly. Something is keeping it item strapped in place!"
+KinkyDungeonStruggleStruggleStrict,"You pull and tug but your other restraints keep it securely in place!"
+KinkyDungeonStruggleStruggleStrictAroused,"You groan and tug but nothing budges. You're bound too tightly by something else."
 KinkyDungeonStruggleStruggleImpossibleBound,"You are too tightly bound to have a chance."
 KinkyDungeonStruggleStruggleImpossibleBoundAroused,"You shake and moan as you realize your struggles are futile."
 KinkyDungeonStruggleUnlockImpossible,"You can't find a keyhole!"
@@ -2929,6 +2932,9 @@ RestraintMysticDuctTapeLegsMummyDesc,"A layer of magic embalming ribbon wrapped 
 RestraintMysticDuctTapeLegsMummyDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 
 
+RestraintAutoTapeHands,Autotape (Hands)
+RestraintAutoTapeHandsDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
+RestraintAutoTapeHandsDesc2,"It's very sticky and seals your hands tightly, making any struggling ineffective."
 RestraintAutoTapeHead,Autotape (Head)
 RestraintAutoTapeHeadDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
 RestraintAutoTapeHeadDesc2,"It's very sticky and tough but you could probably get a knife through it."
@@ -2967,6 +2973,9 @@ RestraintStrongMagicRopeArmsDesc2,"The knots appear to tie themselves together a
 RestraintStrongMagicRopeCuffs,Magic Rope Cuffs
 RestraintStrongMagicRopeCuffsDesc,"Strongly glowing ropes."
 RestraintStrongMagicRopeCuffsDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeCuffsAdv,Magic Ropework
+RestraintStrongMagicRopeCuffsAdvDesc,"Strongly glowing ropes tied in an intricate pattern, making hand restraints more secure."
+RestraintStrongMagicRopeCuffsAdvDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
 RestraintStrongMagicRopeLegs,Magic Leg Rope
 RestraintStrongMagicRopeLegsDesc,"Strongly glowing ropes."
 RestraintStrongMagicRopeLegsDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
@@ -3168,6 +3177,9 @@ RestraintRopeSnakeArmsDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeCuffs,Rope Cuffs
 RestraintRopeSnakeCuffsDesc,"A quick tie for apprehending prisoners."
 RestraintRopeSnakeCuffsDesc2,"It's not very secure."
+RestraintRopeSnakeCuffsAdv,Intricate Ropework
+RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
+RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
 RestraintRopeSnakeHogtie,Rope Hogtie
 RestraintRopeSnakeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintRopeSnakeHogtieDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
@@ -3196,6 +3208,9 @@ RestraintCelestialRopeArmsDesc2,"They are aware of your movements..."
 RestraintCelestialRopeCuffs,Holy Rope Cuffs
 RestraintCelestialRopeCuffsDesc,"A quick tie for apprehending prisoners."
 RestraintCelestialRopeCuffsDesc2,"They are aware of your movements..."
+RestraintCelestialRopeCuffsAdv,Holy Ropework
+RestraintCelestialRopeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles and fasteners."
+RestraintCelestialRopeCuffsAdvDesc2,"They are aware of your movements..."
 RestraintCelestialRopeTorso,Holy Rope Belt
 RestraintCelestialRopeTorsoDesc,"A harness acting as a handle to pull you around"
 RestraintCelestialRopeTorsoDesc2,"They are aware of your movements..."
@@ -3333,6 +3348,9 @@ RestraintLatexCatsuit,Blue Latex Catsuit
 RestraintLatexCatsuitDesc,"A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult."
 RestraintLatexCatsuitDesc2,"Blue latex is silky smooth, very stretchy, and very good at adhering to itself."
 
+RestraintDragonArmbinder,Scale Boxtie Binder
+RestraintDragonArmbinderDesc,"A secure but comfortable binder meant for long-term wear by long-term prisoners of the Dragonhearts."
+RestraintDragonArmbinderDesc2,"It is made from durable dragonscale, but secured with ordinary buckles."
 RestraintDragonStraps,Dragonscale Straps
 RestraintDragonStrapsDesc,"A set of straps buckling tightly around your body and secured at the wrists."
 RestraintDragonStrapsDesc2,"It's made from hard-to-cut dragonscale!!!"
@@ -7554,7 +7572,7 @@ rOfferShacklesForce,"(The SPEAKER grins maliciously)|I like seeing prisoners tho
 rOfferShacklesForceYes,"(The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in her hand)"
 rOfferShacklesForce_No,"(The SPEAKER gulps)|M-Maybe I won't then!"
 rOfferShacklesForce_Yes,"(The SPEAKER adds the RESTRAINT)|You're blushing dear~|She doth protest too much?"
-rOfferShacklesForce_Failure,"(The SPEAKER)||"
+rOfferShacklesForce_Failure,"(The SPEAKER giggles as she catches you and slaps on the cuffs)|No so fast, dear~"
 
 dOfferShackles_Yes,"Maybe a bit~"
 dOfferShackles_YesGag,"(Nod eagerly)"
