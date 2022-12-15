@@ -1528,6 +1528,15 @@ let KDEventMapSpell = {
 			}
 		},
 	},
+	"perkOrb": {
+		"Cursed": (e, spell, data) => {
+			if (data.perks && data.perks.includes("Cursed")) {
+				for (let shrine in KinkyDungeonShrineBaseCosts) {
+					KinkyDungeonGoddessRep[shrine] = -50;
+				}
+			}
+		},
+	},
 	"calcMaxStats": {
 		"IronWill": (e, spell, data) => {
 			if (KinkyDungeonStatWill >= 9.999)
