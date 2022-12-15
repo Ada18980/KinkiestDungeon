@@ -109,9 +109,15 @@ class TextCache {
 	buildCache() {
 		if (!this.path) return;
 		this.fetchCsv()
-			.then((lines) => this.translate(lines))
-			.then((lines) => this.cacheLines(lines))
-			.then(() => this.rebuildListeners.forEach((listener) => listener(this)));
+			.then((lines) => {
+				return  this.translate(lines);
+			})
+			.then((lines) => {
+				return this.cacheLines(lines);
+			})
+			.then(() => {
+				this.rebuildListeners.forEach((listener) => listener(this));
+			});
 	}
 
 	/**
@@ -181,6 +187,7 @@ class TextCache {
 	 * values translated to the current game language
 	 */
 	buildTranslations(lines, translations) {
-		return lines.map(line => ([line[0], TranslationString(line[1], translations, "")]));
+		let [translationsStringLineCache, translationsLineStringCache] = TranslationStringCachePreBuild(translations, "");
+		return lines.map(line => ([line[0], TranslationStringCache(line[1], translationsStringLineCache, translationsLineStringCache)]));
 	}
 }
