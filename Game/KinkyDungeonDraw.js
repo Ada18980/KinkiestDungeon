@@ -1313,7 +1313,7 @@ function KinkyDungeonDrawGame() {
 
 	if (KinkyDungeonStatFreeze > 0) {
 		KDDrawArousalScreenFilter(0, 1000, 2000, 100, '190, 190, 255');
-	} else if (KinkyDungeonStatDistraction > 0) {
+	} else if (KinkyDungeonStatDistraction > 1.0) {
 		KDDrawArousalScreenFilter(0, 1000, 2000, KinkyDungeonStatDistraction * 100 / KinkyDungeonStatDistractionMax);
 	}
 

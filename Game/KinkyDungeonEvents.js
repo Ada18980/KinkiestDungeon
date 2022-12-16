@@ -3304,6 +3304,15 @@ let KDEventMapGeneric = {
 
 			}
 		},
+		"Needs": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("Needs")) {
+				if (data.delta > 0 && !(KDGameData.OrgasmStamina > 0)) {
+					if (KinkyDungeonStatDistractionLower < KinkyDungeonStatDistractionLowerCap * KinkyDungeonStatDistractionMax) {
+						KinkyDungeonStatDistractionLower = Math.min(KinkyDungeonStatDistractionLower + data.delta*0.01, KinkyDungeonStatDistractionLowerCap * KinkyDungeonStatDistractionMax);
+					}
+				}
+			}
+		},
 		"LikeTheWind": (e, data) => {
 			if (KinkyDungeonStatStamina >= KinkyDungeonStatStaminaMax * 0.95 && KinkyDungeonStatsChoice.has("LikeTheWind")) {
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {

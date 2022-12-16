@@ -247,6 +247,12 @@ KinkyDungeonStatDescBoundCrusader,"Goddesses will expect you to wear their restr
 KinkyDungeonStatNowhere,"Nowhere is Safe"
 KinkyDungeonStatDescNowhere,"Beds and furniture are often trapped."
 
+KinkyDungeonStatNeeds,"I have... needs"
+KinkyDungeonStatDescNeeds,"Distraction builds up over time."
+
+KinkyDungeonStatHopeless,"Hopeless"
+KinkyDungeonStatDescHopeless,"Willpower decays over time."
+
 KinkyDungeonStatQuickness,"Quickness"
 KinkyDungeonStatDescQuickness,"Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock."
 
@@ -5931,11 +5937,11 @@ KinkyDungeonDamageTypespell,"Spell"
 KinkyDungeonDamageTypeunstoppable,"Unstoppable"
 KinkyDungeonDamageTypeunflinching,"Unflinching"
 
-KinkyDungeonHeartIntro,"You found a heart amulet! Choose one of the following stats to improve:"
-KinkyDungeonHeartIntro1,"Distraction: Increases max distraction by +50% and makes it decay faster."
-KinkyDungeonHeartIntro2,"Stamina: Increases max stamina by +50, +50% stamina potion effectiveness."
-KinkyDungeonHeartIntro3,"Mana: Increases max mana by +50. Mana pool size and potion effectiveness scale."
-KinkyDungeonHeartIntro4,"Will: Increases max willpower by +50, +50% willpower potion effectiveness, +1 stamina regen/turn."
+KinkyDungeonHeartIntro,"You found a magical amulet! Choose one of the following to determine its benefits:"
+KinkyDungeonHeartIntro1,"Focus: +50% max distraction, increased distraction decay. +5% stamina protected from damage (base: 30%)."
+KinkyDungeonHeartIntro2,"Vigour: +50 max stamina, +50% stamina potion effectiveness."
+KinkyDungeonHeartIntro3,"Wisdom: +50 max mana. +50% mana potion effectiveness."
+KinkyDungeonHeartIntro4,"Fortitude: +50 max willpower, +50% willpower potion effectiveness. +1 stamina regen/turn."
 
 KinkyDungeonHeartDistraction,"+Distraction"
 KinkyDungeonHeartStamina,"+Stamina"
