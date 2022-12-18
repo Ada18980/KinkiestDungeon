@@ -28,8 +28,8 @@ function KDMapHasEvent(map, event) {
 	return map[event] != undefined;
 }
 
-function KinkyDungeonSendEvent(Event, data) {
-	KinkyDungeonSendMagicEvent(Event, data);
+function KinkyDungeonSendEvent(Event, data, forceSpell) {
+	KinkyDungeonSendMagicEvent(Event, data, forceSpell);
 	KinkyDungeonSendWeaponEvent(Event, data);
 	KinkyDungeonSendInventoryEvent(Event, data);
 	KinkyDungeonSendBulletEvent(Event, data.bullet, data);
@@ -1930,10 +1930,21 @@ let KDEventMapSpell = {
 	},
 	"toggleSpell": {
 		"Light": (e, spell, data) => {
-			KinkyDungeonUpdateLightGrid = true;
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonUpdateLightGrid = true;
+				if (KinkyDungeonPlayerBuffs.Light && KinkyDungeonPlayerBuffs.Light.duration > 1) {
+					KinkyDungeonExpireBuff(KinkyDungeonPlayerBuffs, "Light");
+				}
+			}
 		},
 		"Analyze": (e, spell, data) => {
-			KinkyDungeonAdvanceTime(0, true, true);
+			if (data.spell?.name == spell?.name) {
+				if (KinkyDungeonPlayerBuffs.Analyze && KinkyDungeonPlayerBuffs.Analyze.duration > 1) {
+					KinkyDungeonExpireBuff(KinkyDungeonPlayerBuffs, "Analyze");
+				}
+				KinkyDungeonAdvanceTime(0, true, true);
+
+			}
 		},
 	},
 	"enemyStatusEnd": {

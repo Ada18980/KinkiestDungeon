@@ -1038,7 +1038,7 @@ let KinkyDungeonSpellListEnemies = [
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "MysticShock", time: 3}},
 
 	{name: "BlasterBlast", hitsfx: "Shock", sfx: "Laser", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 2.5, time: 1, delay: 0,
-		bulletColor: 0xffff00, bulletLight: 5,
+		bulletColor: 0xffff00, bulletLight: 5, noMiscast: true,
 		range: 8, speed: 3, size: 1, damage: "electric", playerEffect: {name: "Shock", time: 3}},
 	{enemySpell: true, name: "EnemyBlast", noFirstChoice: true, hitsfx: "Shock", sfx: "Laser", school: "Elements", manacost: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 2.5, time: 1, delay: 0,
 		bulletColor: 0x00ffff, bulletLight: 5,

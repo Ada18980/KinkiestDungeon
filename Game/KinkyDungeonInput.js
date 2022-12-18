@@ -73,12 +73,12 @@ function KDProcessInput(type, data) {
 			break;
 		case "toggleSpell":
 			KinkyDungeonSpellChoicesToggle[data.i] = !KinkyDungeonSpellChoicesToggle[data.i];
+			KinkyDungeonSendEvent("toggleSpell", {index: data.i, spell: KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]]}, KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]]);
 			if (KinkyDungeonSpellChoicesToggle[data.i] && KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]].costOnToggle) {
 				if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]]))) {
 					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]]));
 				} else KinkyDungeonSpellChoicesToggle[data.i] = false;
 			}
-			KinkyDungeonSendEvent("toggleSpell", {index: data.i});
 			break;
 		case "consumable":
 			KDModalArea = false;

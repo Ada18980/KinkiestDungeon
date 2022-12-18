@@ -872,7 +872,7 @@ function KinkyDungeonDrawGame() {
 					}
 					let eTiles = KDGetEffectTiles(cursorX, cursorY);
 					for (let etile of Object.values(eTiles)) {
-						if (KDEffectTileTooltips[etile.name]) {
+						if (KDEffectTileTooltips[etile.name] && KDCanSeeEffectTile(etile)) {
 							tooltips.push((offset) => KDDrawEffectTileTooltip(etile, cursorX, cursorY, offset));
 						}
 					}
@@ -1437,7 +1437,8 @@ function KDEase(value) {
 
 let KinkyDungeonMessageToggle = false;
 let KinkyDungeonMessageLog = [];
-let KDLogDist = 35;
+let KDLogDist = 30;
+let KDMSGFontSize = 22;
 let KDLogHeight = 700;
 let KDMaxLog = Math.floor(700/KDLogDist);
 let KDLogTopPad = 100;
@@ -1465,12 +1466,12 @@ function KinkyDungeonDrawMessages(NoLog) {
 		let i = 0;
 		let spacing = KDLogDist;
 		if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
-			DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray1);
+			DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize);
 			ignoreMSG.push(KinkyDungeonActionMessage);
 			i++;
 		}
 		if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessageNoPush) {
-			DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray1);
+			DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize);
 			ignoreMSG.push(KinkyDungeonTextMessage);
 			i++;
 		}
@@ -1503,7 +1504,7 @@ function KinkyDungeonDrawMessages(NoLog) {
 				if (i > KDMaxConsoleMsg || (KinkyDungeonDrawState != "Game" && i > 3)) break;
 				if (alpha > 0) {
 					alpha = Math.max(0, Math.min(1, 2.0 - i / KDMaxConsoleMsg)) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
-					DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, msg.color, KDTextGray1, 28, undefined, undefined, alpha); i++;
+					DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, msg.color, KDTextGray1, KDMSGFontSize, undefined, undefined, alpha); i++;
 				}
 			}
 		}

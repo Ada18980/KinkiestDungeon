@@ -1155,6 +1155,8 @@ KinkyDungeonInventoryItemBondageBusterDesc2,"Melee mode deals tickle damage and 
 KinkyDungeonInventoryItemBlaster,Nevermere Blaster
 KinkyDungeonInventoryItemBlasterDesc,"Can fire a blast that deals 25 electric damage."
 KinkyDungeonInventoryItemBlasterDesc2,"Melee mode deals tickle damage."
+KinkyDungeonSpellBlasterBlast,Blaster Shot
+KinkyDungeonSpellCastBlasterBlast,You set your blaster to stun and fire!
 KinkyDungeonInventoryItemMessengerOfLove,Messenger of Love
 KinkyDungeonInventoryItemMessengerOfLoveDesc,"Love shines in many ways..."
 KinkyDungeonInventoryItemMessengerOfLoveDesc2,"Can fire an arrow that makes an enemy extremely lustful, causing them to attack others. Lasts forever on lesser enemies, 30 turns on high-level enemies, and 10 turns on bosses."

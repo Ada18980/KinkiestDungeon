@@ -807,6 +807,7 @@ function SetpieceSpawnPrisoner(x, y) {
 		e.faction = "Prisoner";
 		e.boundLevel = e.hp * 11;
 		e.specialdialogue = "PrisonerJail";
+		e.items = [];
 		KinkyDungeonSetEnemyFlag(e, "noswap", -1);
 		KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
 	}

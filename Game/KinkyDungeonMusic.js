@@ -1,29 +1,5 @@
 "use strict";
 
-let KDMusic = {
-	'grv': [
-		"AREA1-GRAVEYARD.ogg",
-	],
-	'tmb': [
-		"AREA2-ANCIENTTOMBS.ogg",
-	],
-	'cat': [
-		"AREA1-GRAVEYARD.ogg",
-	],
-	'lib': [
-		"AREA4-MAGICLIBRARY.ogg",
-	],
-	'jng': [
-		"AREA1-GRAVEYARD.ogg",
-	],
-	'cry': [
-		"AREA6-CRYSTALCAVE.ogg",
-	],
-	'tmp': [
-		"AREA6-CRYSTALCAVE.ogg",
-	],
-};
-
 let KDCurrentSong = "";
 /** @type {HTMLAudioElement} */
 let KDCurrentMusicSound = null;
@@ -40,12 +16,13 @@ function KDUpdateMusic() {
 	if (KDPatched) {
 		KDCurrentMusicSoundUpdate = false;
 		if (performance.now() - lastKDMusicTick < 100) return;
+		let KDMusic = KinkyDungeonMapParams[KDGetCheckpoint()].music;
 
 		let globalVolume = KinkyDungeonSound ? KDMusicVolume * KDMusicVolumeMult : 0;
 		if (globalVolume > 0 && (!KDCurrentMusicSound || KDCurrentMusicSound.ended || KDCurrentMusicSound.paused || !KDCurrentSong)) {
-			KDPlayMusic(KDMusic[KDGetCheckpoint()][Math.floor(KDRandom() * KDMusic[KDGetCheckpoint()].length)], globalVolume);
+			KDPlayMusic(KDMusic[Math.floor(KDRandom() * KDMusic.length)], globalVolume);
 		}
-		else if (KDCurrentMusicSound && KDCurrentSong && !KDMusic[KDGetCheckpoint()].includes(KDCurrentSong)) {
+		else if (KDCurrentMusicSound && KDCurrentSong && !KDMusic.includes(KDCurrentSong)) {
 			if (!KDCurrentMusicSoundUpdate)
 				KDEndMusic();
 		}

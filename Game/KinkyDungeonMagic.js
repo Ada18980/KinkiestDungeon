@@ -810,7 +810,7 @@ function KinkyDungeonCheckSpellPrerequisite(spell) {
 // now only fix chinese
 function KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthEnglish) {
 	try {
-		if (TranslationLanguage === 'CN') {
+		if (TranslationLanguage === 'CN' && guessLanguage) {
 			let languageName = guessLanguage.name(str);
 			// console.log('KinkyDungeonDetectLanguageForMaxWidth languageName', languageName);
 			if (languageName === "unknown") {
@@ -836,7 +836,7 @@ function KinkyDungeonWordWrap(str, maxWidthTranslate, maxWidthEnglish) {
 	let newLineStr = "\n";
 	let res = '';
 	// console.log('KinkyDungeonDetectLanguageForMaxWidth before', str, maxWidth);
-	let	maxWidth = KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthEnglish);
+	let maxWidth = KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthEnglish);
 	// console.log('KinkyDungeonDetectLanguageForMaxWidth after', maxWidth);
 	while (str.length > maxWidth) {
 		let found = false;
@@ -1337,13 +1337,13 @@ function KinkyDungeonGetCompList(spell) {
 	return ret;
 }
 
-function KinkyDungeonSendMagicEvent(Event, data) {
+function KinkyDungeonSendMagicEvent(Event, data, forceSpell) {
 	if (!KDMapHasEvent(KDEventMapSpell, Event)) return;
 	for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
 		let spell = KinkyDungeonSpells[KinkyDungeonSpellChoices[i]];
 		if (spell && spell.events) {
 			for (let e of spell.events) {
-				if (e.trigger == Event && (KinkyDungeonSpellChoicesToggle[i] || e.always)) {
+				if (e.trigger == Event && (KinkyDungeonSpellChoicesToggle[i] || e.always || spell.name == forceSpell?.name)) {
 					KinkyDungeonHandleMagicEvent(Event, e, spell, data);
 				}
 			}

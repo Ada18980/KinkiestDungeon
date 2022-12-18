@@ -27,6 +27,10 @@ const KinkyDungeonMapParams = {
 		"torchchance": 0.35,
 		"torchchanceboring": 1.0,
 
+		music: [
+			"AREA1-GRAVEYARD.ogg",
+		],
+
 		tagModifiers: {
 			"jungle": 0,
 			"cavern": 0,
@@ -109,6 +113,10 @@ const KinkyDungeonMapParams = {
 		cageChance: 0.8,
 		torchchance: 0.05,
 		torchchanceboring: 0.7,
+
+		music: [
+			"AREA1-GRAVEYARD.ogg",
+		],
 
 		tagModifiers: {
 			"narrow": 2,
@@ -201,6 +209,10 @@ const KinkyDungeonMapParams = {
 			"cavern": 60,
 		},
 
+		music: [
+			"AREA1-GRAVEYARD.ogg",
+		],
+
 		"setpieces": [
 			{Type: "Altar", Weight: 6},
 			{Type: "SmallAltar", Weight: 20},
@@ -282,6 +294,10 @@ const KinkyDungeonMapParams = {
 			unlitsprite: "LanternUnlit",
 			brightness: 6,
 		},
+
+		music: [
+			"AREA7-LOSTTEMPLE.ogg",
+		],
 
 		tagModifiers: {
 			"jungle": 0,
@@ -367,6 +383,10 @@ const KinkyDungeonMapParams = {
 		"forbiddenGreaterChance" : 0.45,
 		torchchance: 0.1,
 		torchchanceboring: 0.1,
+
+		music: [
+			"AREA2-ANCIENTTOMBS.ogg",
+		],
 
 		worldGenCode: () => {
 			for (let X = 1; X < KinkyDungeonGridWidth - 1; X++) {
@@ -465,6 +485,10 @@ const KinkyDungeonMapParams = {
 			brightness: 4,
 		},
 
+		music: [
+			"AREA4-MAGICLIBRARY.ogg",
+		],
+
 		"setpieces": [
 			{Type: "SmallAltar", Weight: 20},
 			{Type: "GuardedChest", Weight: 30},
@@ -533,6 +557,10 @@ const KinkyDungeonMapParams = {
 		"brickchance" : 0.2,
 		torchchance: 0.3,
 		torchchanceboring: 0.1,
+
+		music: [
+			"AREA6-CRYSTALCAVE.ogg",
+		],
 
 		shadowColor: 0x080311,
 
