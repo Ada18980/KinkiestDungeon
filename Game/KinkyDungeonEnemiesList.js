@@ -6,23 +6,29 @@ let KinkyDungeonEnemies = [
 	// Prisoners
 	{name: "PrisonerBandit", tags: KDMapInit(["prisoner", "bandit", "human", "peaceful", "noshop"]), faction: "Prisoner", immobile: true, lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: 0.1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "PrisonerBandit",
+		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
 
 	// Quest NPC
 	{name: "DressmakerQuest", tags: KDMapInit(["dressmaker", "human", "peaceful", "noshop"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "hunt", regen: 0.1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "DressmakerQuest",
+		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "ApprenticeQuest", tags: KDMapInit(["apprentice", "human", "peaceful", "noshop"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "hunt", regen: 0.1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "ApprenticeQuest",
+		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "BlacksmithQuest", tags: KDMapInit(["human", "peaceful", "alwayshelp", "noshop"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "hunt", regen: 0.1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "BlacksmithShop", data: {"shop": "BlacksmithShop"},
+		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "DragonheartQuest", tags: KDMapInit(["dragon", "peaceful", "alwayshelp", "noshop"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "hunt", regen: 0.1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "DragonheartQuest",
+		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "MaidforceQuest", tags: KDMapInit(["maid", "peaceful", "alwayshelp", "noshop"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "hunt", regen: 0.1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "MaidforceQuest",
+		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "DragonLeaderDuelist", faction: "Enemy", bound: "DragonLeader", color: "#F92900", tags: KDMapInit(["opendoors", "fire", "ignorenoSP", "noshop", "dragon", "melee", "elite", "dragonRestraints", "unflinching", "handcuffer", "leatherRestraints", "leatherRestraintsHeavy", "fireimmune"]),
 		ignorechance: 0, armor: 0, followRange: 1, AI: "hunt", focusPlayer: true,
@@ -32,6 +38,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [], factionrep: {"Dragon": 0.015}, ondeath: [{type: "removeQuest", quest: "DragonheartQuest"}]},
 	{name: "BanditQuest", tags: KDMapInit(["bandit", "peaceful", "alwayshelp", "noshop"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "hunt", regen: 0.1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "BanditQuest",
+		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
 	// End Quest NPC
 

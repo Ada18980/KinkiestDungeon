@@ -131,7 +131,7 @@ function KinkyDungeonPlayerIsVisibleToJailers() {
  * @returns {boolean}
  */
 function KinkyDungeonCanPlay(enemy) {
-	return KDGameData.PrisonerState == 'parole' || (!KDHostile(enemy) && !KDAllied(enemy)) && (enemy.ambushtrigger || !KDAIType[KDGetAI(enemy)] || !KDAIType[KDGetAI(enemy)].ambush);
+	return KDGameData.PrisonerState == 'parole' || (!KDHostile(enemy) && !KDAllied(enemy)) && (enemy.ambushtrigger || !KDAIType[KDGetAI(enemy)] || !KDAIType[KDGetAI(enemy)].ambush) && !enemy.Enemy.Behavior?.noPlay;
 }
 
 function KinkyDungeonCheckRelease() {

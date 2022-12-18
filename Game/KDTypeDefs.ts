@@ -510,6 +510,12 @@ interface enemy extends KDHasTags {
 		restockPercent?: number,
 	}
 
+	/** Behavior tags */
+	Behavior?: {
+		/** Can't play */
+		noPlay?: boolean,
+	}
+
 	/** This enemy wont appear outside of its designated floors even if it shares the tag */
 	noOverrideFloor?: boolean,
 	/** This tag will be added to the selection tags if the enemy has it, for loot and ambush spawning purposes */
