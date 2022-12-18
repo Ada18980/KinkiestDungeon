@@ -2253,7 +2253,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 		}
 	}
 
-	let newLock = (Lock && KinkyDungeonIsLockable(restraint)) ? Lock : KDProcessLock(restraint.DefaultLock);
+	let newLock = (Lock && KinkyDungeonIsLockable(restraint)) ? Lock : restraint.DefaultLock;
 	if (
 		// Nothing to overwrite so we good
 		!r
