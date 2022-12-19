@@ -210,7 +210,7 @@ const KinkyDungeonMapParams = {
 		},
 
 		music: [
-			"AREA1-GRAVEYARD.ogg",
+			"AREA5-UNDERGROUNDJUNGLE.ogg",
 		],
 
 		"setpieces": [

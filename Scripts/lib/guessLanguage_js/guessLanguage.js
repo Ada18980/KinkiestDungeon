@@ -32,9 +32,12 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/** @type {function ()} */
+var guessLanguage = null;
+
 (function (global, undefined) {
 
-	var guessLanguage = function () {
+	guessLanguage = function () {
 
 		var models = global._languageData || {};
 

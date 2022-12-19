@@ -5890,6 +5890,7 @@ KinkyDungeonTooltipDealsDamage,"Deals DAMAGETYPE damage"
 KDTooltipDisarm,"Can disarm (chance: DISARMCHANCE%)"
 KDTooltipDamageResists,Resistances:
 KDTooltipHP,"HP: "
+KDTooltipBinding,"Binding: "
 KDTooltipOpinion0,"Ambivalent"
 KDTooltipOpinion1,"Likes you"
 KDTooltipOpinion2,"Loves you"
@@ -5910,6 +5911,22 @@ KDTooltipWeakBinding,"Disappears if the caster is stunned"
 KDTooltipNormalBinding,"Disappears if the caster is defeated"
 KDTooltipBoundTo,"Caster: ENEMYNAME"
 KDTooltipDisappearing,"Demise immanent"
+
+KDStatusTooltipEnemyVulnerable,Vulnerable
+KDStatusTooltipEnemyStunned,Stunned
+KDStatusTooltipEnemyBind,Snared
+KDStatusTooltipEnemySlow,Slowed
+KDStatusTooltipEnemySilence,Silence
+KDStatusTooltipEnemyDisarm,Disarmed
+KDStatusTooltipEnemyBlind,Blinded
+KDStatusTooltipEnemyBound1,Restrained!
+KDStatusTooltipEnemyBound2,Restricted!
+KDStatusTooltipEnemyBound3,Trussed up!
+KDStatusTooltipEnemyBound4,Fully Bound!
+KDStatusTooltipEnemyBelt,Belted
+KDStatusTooltipEnemyPlug,Wearing a toy
+KDStatusTooltipEnemyVibed,Vibed!
+
 KinkyDungeonDamageTypeacid,"Acid"
 KinkyDungeonDamageTypecold,"Shadow"
 KinkyDungeonDamageTypefrost,"Ice"

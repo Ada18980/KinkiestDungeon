@@ -1004,6 +1004,15 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		size: 20,
 		center: true,
 	});
+	if (enemy.boundLevel) {
+		TooltipList.push({
+			str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel/enemy.Enemy.maxhp*100) + "%",
+			fg: "#ffae70",
+			bg: "#000000",
+			size: 20,
+			center: true,
+		});
+	}
 	if (enemy.boundTo) {
 		TooltipList.push({
 			str: TextGet(enemy.weakBinding ? "KDTooltipWeakBinding" : "KDTooltipNormalBinding"),
@@ -1025,6 +1034,46 @@ function KDDrawEnemyTooltip(enemy, offset) {
 			TooltipList.push({
 				str: TextGet("KDTooltipDisappearing"),
 				fg: "#ff5555",
+				bg: "#000000",
+				size: 14,
+				center: true,
+			});
+	}
+	let statuses = [];
+
+	if (enemy.vulnerable) statuses.push({name: "Vulnerable", count: undefined});
+	if (KDEntityBuffedStat(enemy, "Vibration")) statuses.push({name: "Vibed", count: undefined});
+	if (enemy.stun) statuses.push({name: "Stunned", count: enemy.stun});
+	if (enemy.bind) statuses.push({name: "Bind", count: enemy.bind});
+	if (enemy.slow) statuses.push({name: "Slow", count: enemy.slow});
+	if (enemy.silence) statuses.push({name: "Silence", count: enemy.silence});
+	if (enemy.disarm) statuses.push({name: "Disarm", count: enemy.disarm});
+	if (enemy.blind) statuses.push({name: "Blind", count: enemy.blind});
+	if (enemy.slow) statuses.push({name: "Slow", count: enemy.slow});
+	if (KDBoundEffects(enemy)) statuses.push({name: "Bound" + KDBoundEffects(enemy)});
+	if (KDEntityBuffedStat(enemy, "Plug")) statuses.push({name: "Plug", count: undefined});
+	if (KDEntityBuffedStat(enemy, "Chastity")) statuses.push({name: "Belt", count: undefined});
+
+	if (statuses.length > 0) {
+		let strings = [""];
+		let strr = "";
+		let count = 0;
+		let maxcount = 4;
+		for (let stat of statuses) {
+			count += 1;
+			if (count > maxcount) {
+				strr = "";
+				strings.push("");
+			}
+			if (strr) strr = strr + ", ";
+			strr = strr + `${TextGet("KDStatusTooltipEnemy" + stat.name)}`;
+			if (stat.count) strr = strr + ` (${stat.count})`;
+			strings[strings.length - 1] = strr;
+		}
+		for (let stringlisted of strings)
+			TooltipList.push({
+				str: stringlisted,
+				fg: "#dddddd",
 				bg: "#000000",
 				size: 14,
 				center: true,

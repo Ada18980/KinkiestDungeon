@@ -723,6 +723,11 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "StoneDoor", faction: "Natural", blockVision: true,
+		cueSfx: {
+			Block: "Clang",
+			Resist: "Clang",
+			Damage: "ArmorHit",
+		},
 		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "poisonimmune", "harmless",
 			"soulimmune", "slashresist", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "chainimmune", "glueresist", "acidresist", "tickleimmune", "gropeimmune", "painimmune", "charmimmune",
 		]), spellResist: 0, sneakThreshold: 0.01,
@@ -734,6 +739,11 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "SteelDoor", faction: "Natural", blockVision: true,
+		cueSfx: {
+			Block: "Clang",
+			Resist: "Clang",
+			Damage: "ArmorHit",
+		},
 		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "poisonimmune", "harmless",
 			"soulimmune", "slashresist", "pierceresist", "electricimmune", "unarmedresist", "chainimmune", "glueresist", "tickleimmune", "gropeimmune", "painimmune", "charmimmune",
 		]), spellResist: 1, sneakThreshold: 0.01,
