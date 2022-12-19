@@ -660,9 +660,9 @@ function KinkyDungeonIsPlayer() {
  */
 
 let KinkyDungeonCreditsPos = 0;
-let KinkyDungeonPatronPos = 0;
 let KDMaxPatronPerPage = 4;
-let KDMaxPatron = 3;
+let KDMaxPatron = 4;
+let KinkyDungeonPatronPos = 0;
 let KinkyDungeonSound = true;
 let KinkyDungeonFullscreen = true;
 let KinkyDungeonDrool = true;
@@ -767,7 +767,7 @@ function KinkyDungeonRun() {
 
 
 		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), "#ffffff", "");
-		//DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
+		DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 		//DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 	} else if (KinkyDungeonState == "Menu") {
 		KinkyDungeonGameFlag = false;
