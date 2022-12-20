@@ -20,8 +20,8 @@ English
 英语
 Chinese
 简体中文
-Kinky Dungeon v3.7
-变态地牢 v3.7
+Kinky Dungeon v3.9
+变态地牢 v3.9
 You are an adventurer descending into an ancient underground city of magic.
 你是一个冒险家，下降到一个古老的地下魔法城市。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -66,6 +66,12 @@ Advanced start (choose perks)
 高级启动（选择额外选项）
 Confirm and start playing!
 确认并开始游戏！
+Select perks to start with.
+选择初始技能
+Having 10+ spare points will trigger Hard Mode, granting unique loot.
+可用积分大于10将进入困难模式，可获得独特的战利品
+(HARD MODE ENABLED)
+(困难模式启用)
 Point Cost: AMOUNT
 积分成本：AMOUNT
 Points Available: AMOUNT
@@ -363,7 +369,11 @@ Most traps have a 25% misfire chance.
 Unmasked
 无面罩
 Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
-头套和全覆盖面罩不会出现，但眼罩更强大。
+头套和全覆盖面罩将不会出现，但眼罩更强大。
+No Nurses
+无护士
+Nurses will not appear in the game.
+护士将不再出现在游戏中
 Panic!!!
 惊恐！！！
 When you step on a trap, you are stunned for 2 turns.
@@ -386,8 +396,24 @@ Iron Slave
 钢铁奴隶
 Start in a full set of magically locked obsidian cuffs.
 开局时穿戴被魔法锁住的全套黑曜石铐。
+Frantic Struggle
+疯狂挣扎
+Your struggling is 3 times as fast, but less efficient in terms of stamina.
+你的挣扎速度是原来的3倍，但降低你的体力。
+Fashionable
+时尚的
+When you are jailed, you keep your outfit.
+当你入狱时，保留你的衣物。
+Undeniable
+不可否认的
+Born with an intense submissive desire, you cannot refuse bondage from dialogues.
+你生来就有强烈的顺从欲望，无法在对话时拒绝束缚请求。
 Copy to Clipboard
 复制到剪贴板
+Copy (clipboard)
+复制 (粘贴板)
+Paste (clipboard)
+粘贴 (粘贴板)
 Ignited!!!
 点燃！！！
 The air around you is ablaze! (-DamageDealt SP)
@@ -7704,14 +7730,18 @@ Target an enemy: Attack with Dragonslaver. Target a tile: Launch binding belts
 消耗5%能量进入狂乱10回合，每回合攻击2次。
 Create a '+' shaped pool of slime that deals 35 glue damage per hit
 创建一个十字史莱姆池，每一击造成 35 点胶水伤害
+Toggles
+切换
 Locks and Restraints
 锁具和拘束具
 General Combat
 一般战斗
 Kinks and Preferences
 扭结和偏好
+Damage and Resists
+伤害和抵抗
 Wizardry and Sorcery
-巫术和巫术
+魔法和巫术
 Devious Threats
 狡猾的威胁
 World Generation
