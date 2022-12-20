@@ -9452,3 +9452,7 @@ A golem arises!
 傀儡出现了！
 You stomp your foot and draw the words of life on the floor!
 你跺了跺脚，在地板上绘出生命咒文！
+You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
+你受到PERCENT1 DAMAGETYPE伤害，基于PERCENT2 DAMAGETYPE抗性和PERCENT3 DAMAGECATEGORY修正
+Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage.
+你的基础攻击可造成 DAMAGEDEALT 点 DAMAGETYPE 伤害
