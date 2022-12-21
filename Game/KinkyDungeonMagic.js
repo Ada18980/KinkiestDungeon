@@ -380,7 +380,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			gaggedMiscastFlag = true;
 	}
 
-	let data = {
+	let data = Object.assign({...castData}, {
 		spell: spell,
 		bulletfired: null,
 		target: null,
@@ -393,8 +393,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		bullet: bullet,
 		player: player,
 		delta: 1,
-		...castData
-	};
+	});
 
 
 

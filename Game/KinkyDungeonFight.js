@@ -1712,13 +1712,14 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 					tint: string2hex(t.color || "#ff5555"),
 					zIndex: 1.31,
+					alpha: 0.75,
 				});
 			KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_b" + t.color, KinkyDungeonRootDirectory + "WarningBacking.png",
 				(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 					tint: string2hex(t.color || "#ff5555"),
 					zIndex: -0.2,
-					alpha: 0.75
+					alpha: 0.6
 				});
 		}
 	}
