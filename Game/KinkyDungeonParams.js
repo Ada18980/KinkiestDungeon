@@ -115,7 +115,7 @@ const KinkyDungeonMapParams = {
 		torchchanceboring: 0.7,
 
 		music: [
-			"AREA1-GRAVEYARD.ogg",
+			"AREA2-ANCIENTTOMBS.ogg",
 		],
 
 		tagModifiers: {

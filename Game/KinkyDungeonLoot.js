@@ -170,7 +170,7 @@ function KinkyDungeonGetUnlearnedSpells(minlevel, maxlevel, SpellList) {
 	let SpellsUnlearned = [];
 
 	for (let spell of SpellList) {
-		if (spell.level >= minlevel && spell.level <= maxlevel && !spell.passive) {
+		if (spell.level >= minlevel && spell.level <= maxlevel && !spell.passive && KinkyDungeonCheckSpellPrerequisite(spell)) {
 			SpellsUnlearned.push(spell);
 		}
 	}

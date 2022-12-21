@@ -1053,6 +1053,7 @@ interface entity {
 	disarmflag?: number,
 	channel?: number,
 	items?: string[],
+	tempitems?: string[],
 	x: number,
 	y: number,
 	lastx?: number,

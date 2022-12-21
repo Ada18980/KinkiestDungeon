@@ -540,8 +540,8 @@ function KDSlip(dir) {
 	for (let i = 0; i < maxSlip; i++) {
 		let newTiles = KDGetEffectTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		let oldTiles = KDGetEffectTiles(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y);
-		if ((newTiles.Ice
-			|| oldTiles.Ice)
+		if ((Object.values(newTiles).some((tile) => {return tile.tags?.includes("slippery");})
+			|| Object.values(oldTiles).some((tile) => {return tile.tags?.includes("slippery");}))
 			&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y))
 			&& !KinkyDungeonEnemyAt(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y)) {
 			KDMovePlayer(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y, false, true);

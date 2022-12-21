@@ -310,14 +310,18 @@ let KDEffectTileFunctions = {
 	"Ice": (delta, entity, tile) => {
 		if ((!entity.player && !entity.Enemy.tags.ice && !entity.Enemy.tags.nofreeze) || (entity.player && !KDChillWalk(entity)))
 			KinkyDungeonApplyBuffToEntity(entity, KDChilled);
-		if (entity.player && KinkyDungeonPlayerBuffs.Slipping)
+		if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
+			KinkyDungeonSetFlag("slipped", 1);
+		}
 		return true;
 	},
 	"Water": (delta, entity, tile) => {
 		if (tile.pauseSprite == tile.name + "Frozen") {
-			if (entity.player && KinkyDungeonPlayerBuffs.Slipping)
+			if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
 				KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
+				KinkyDungeonSetFlag("slipped", 1);
+			}
 		} else if (KDWettable(entity)) {
 			KinkyDungeonApplyBuffToEntity(entity, KDDrenched);
 			KinkyDungeonApplyBuffToEntity(entity, KDDrenched2);
@@ -534,16 +538,18 @@ let KDEffectTileMoveOnFunctions = {
 		return {cancelmove: false, returnvalue: false};
 	},
 	"Ice": (entity, tile, willing, dir, sprint) => {
-		if (sprint && entity.player && willing && (dir.x || dir.y)) {
+		if (sprint && entity.player && willing && (dir.x || dir.y) && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip(dir);
+			KinkyDungeonSetFlag("slipped", 1);
 			return {cancelmove: true, returnvalue: true};
 		}
 		return {cancelmove: false, returnvalue: false};
 	},
 	"Water": (entity, tile, willing, dir, sprint) => {
 		if (tile.pauseSprite == tile.name + "Frozen") {
-			if (sprint && entity.player && willing && (dir.x || dir.y)) {
+			if (sprint && entity.player && willing && (dir.x || dir.y) && !KinkyDungeonFlags.get("slipped")) {
 				KDSlip(dir);
+				KinkyDungeonSetFlag("slipped", 1);
 				return {cancelmove: true, returnvalue: true};
 			}
 		}

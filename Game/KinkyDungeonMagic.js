@@ -347,9 +347,10 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY) {
  * @param {*} player
  * @param {*} bullet
  * @param {string} [forceFaction]
+ * @param {any} [castData]
  * @returns {{result: string, data: any}}
  */
-function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, forceFaction) {
+function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, forceFaction, castData) {
 	let entity = KinkyDungeonPlayerEntity;
 	let moveDirection = KinkyDungeonMoveDirection;
 	let flags = {
@@ -392,6 +393,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		bullet: bullet,
 		player: player,
 		delta: 1,
+		...castData
 	};
 
 
@@ -668,12 +670,12 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 	if (!enemy && !bullet && player) { // Costs for the player
 		KinkyDungeonSetFlag("PlayerCombat", 20);
 
-		if (KinkyDungeonTargetingSpellItem) {
+		if (data.targetingSpellItem) {
 			KinkyDungeonChangeConsumable(KinkyDungeonTargetingSpellItem, -(KinkyDungeonTargetingSpellItem.useQuantity ? KinkyDungeonTargetingSpellItem.useQuantity : 1));
 			KinkyDungeonTargetingSpellItem = null;
 			if (!spell.noAggro)
 				KinkyDungeonAggroAction('item', {});
-		} else if (KinkyDungeonTargetingSpellWeapon) {
+		} else if (data.targetingSpellWeapon) {
 			let special = KinkyDungeonPlayerDamage ? KinkyDungeonPlayerDamage.special : null;
 			if (special) {
 				let energyCost = KinkyDungeonPlayerDamage.special.energyCost;

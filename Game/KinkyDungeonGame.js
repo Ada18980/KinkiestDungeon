@@ -2827,14 +2827,14 @@ function KinkyDungeonControlsEnabled() {
 	return !KinkyDungeonInspect && KinkyDungeonSlowMoveTurns < 1 && KinkyDungeonStatFreeze < 1 && KDGameData.SleepTurns < 1 && !KDGameData.CurrentDialog && !KinkyDungeonMessageToggle;
 }
 
-function KDStartSpellcast(tx, ty, SpellToCast, enemy, player, bullet) {
+function KDStartSpellcast(tx, ty, SpellToCast, enemy, player, bullet, data) {
 	let spell = KinkyDungeonFindSpell(SpellToCast.name, true);
 	let spellname = undefined;
 	if (spell) {
 		spellname = spell.name;
 		spell = undefined;
 	} else spell = SpellToCast;
-	return KDSendInput("tryCastSpell", {tx: tx, ty: ty, spell: spell, spellname: spellname, enemy: enemy, player: player, bullet: bullet});
+	return KDSendInput("tryCastSpell", {tx: tx, ty: ty, spell: spell, spellname: spellname, enemy: enemy, player: player, bullet: bullet, ...data});
 }
 
 // Click function for the game portion
@@ -2919,7 +2919,7 @@ function KinkyDungeonClickGame(Level) {
 							|| (KinkyDungeonStatsChoice.get("Conjurer") && KinkyDungeonTargetingSpell.school == "Conjure")
 							|| (KinkyDungeonStatsChoice.get("Magician") && KinkyDungeonTargetingSpell.school == "Illusion"))) {
 							if (KinkyDungeonSpellValid) {
-								KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonTargetingSpell, undefined, KinkyDungeonPlayerEntity, undefined);
+								KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonTargetingSpell, undefined, KinkyDungeonPlayerEntity, undefined, {targetingSpellItem: KinkyDungeonTargetingSpellItem, targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon});
 
 								KinkyDungeonTargetingSpell = null;
 							}
