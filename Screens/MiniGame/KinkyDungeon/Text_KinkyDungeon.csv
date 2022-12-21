@@ -4917,6 +4917,9 @@ KinkyDungeonSpellCommandWord,CMD: Unlock
 KinkyDungeonSpellTargetCommandWord,Select which creature to unlock
 KinkyDungeonSpellDescriptionCommandWord,"On yourself: Removes all purple locks. On a creature: Reduces the target's binding by 20 points."
 KinkyDungeonSpellCastCommandWord,You speak a command word!
+KDCommandWordFail_NoLocks,None of the locks you are wearing respond to your magic.
+KDCommandWordFail_NoEnemy,You can't help her with this.
+KDCommandWordFail_NoTarget,"You must target yourself, an enemy, or a locked object."
 
 KinkyDungeonSpellLesserInvisibility,Lesser Invisibility
 KinkyDungeonSpellTargetLesserInvisibility,Select which creature to buff

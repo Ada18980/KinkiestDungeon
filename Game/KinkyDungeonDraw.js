@@ -1473,7 +1473,7 @@ function KinkyDungeonDrawMessages(NoLog) {
 			i++;
 		}
 		if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessageNoPush) {
-			DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize);
+			DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidth, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize);
 			ignoreMSG.push(KinkyDungeonTextMessage);
 			i++;
 		}

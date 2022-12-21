@@ -14,7 +14,7 @@
 // onhit: What happens on AoE. Deals aoepower damage, or just power otherwise
 
 let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 9, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
-	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
+	onhit:"", time:25, power: 0, range: 2.8, size: 1, damage: ""};
 
 /**
  * These are starting spells
