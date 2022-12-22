@@ -1463,11 +1463,13 @@ function KDDropItems(enemy) {
 		let dropped = null;
 		if (enemy.data && enemy.data.shop && KDShops[enemy.data.shop] && KDShops[enemy.data.shop].items) {
 			for (let i of KDShops[enemy.data.shop].items) {
-				dropped = {x:enemy.x, y:enemy.y, name: i};
-				KinkyDungeonGroundItems.push(dropped);
+				if (!enemy.tempitems || !enemy.tempitems.includes(i)) {
+					dropped = {x:enemy.x, y:enemy.y, name: i};
+					KinkyDungeonGroundItems.push(dropped);
+				}
 			}
 		}
-		else if (KDEnemyHasFlag(enemy, "Shop")) {
+		if (KDEnemyHasFlag(enemy, "Shop")) {
 			dropped = {x:enemy.x, y:enemy.y, name: "Gold", amount: 100};
 			KinkyDungeonGroundItems.push(dropped);
 		}
