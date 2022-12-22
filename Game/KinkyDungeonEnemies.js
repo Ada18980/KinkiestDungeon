@@ -1318,10 +1318,13 @@ function KinkyDungeonCapture(enemy) {
 function KDDropStolenItems(enemy) {
 	if (enemy.items) {
 		for (let name of enemy.items) {
-			let item = {x:enemy.x, y:enemy.y, name: name};
-			KinkyDungeonGroundItems.push(item);
+			if (!enemy.tempitems || !enemy.tempitems.includes(name)) {
+				let item = {x:enemy.x, y:enemy.y, name: name};
+				KinkyDungeonGroundItems.push(item);
+			}
 		}
 		enemy.items = [];
+		enemy.tempitems = undefined;
 	}
 }
 
@@ -4548,8 +4551,13 @@ function KDStockRestraints(enemy, restMult, count) {
 				ignore: enemy.items.concat(enemy.Enemy.RestraintFilter?.ignoreInitial || []),
 				ignoreTags: enemy.Enemy.RestraintFilter?.ignoreInitialTag,
 			});
-		if (rest)
+		if (rest) {
 			enemy.items.push(rest.name);
+			if (!KDEnemyIsTemporary(enemy)) {
+				if (!enemy.tempitems) enemy.tempitems = [];
+				enemy.tempitems.push(rest.name);
+			}
+		}
 	}
 }
 

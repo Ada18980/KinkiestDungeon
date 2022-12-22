@@ -79,6 +79,7 @@ function KinkyDungeonResetMagic() {
 	KinkyDungeonCurrentPage = 0;
 	KinkyDungeonCurrentSpellsPage = 0;
 	KinkyDungeonSpellPoints = 3;
+	KDSpellPage = 0;
 	if (KinkyDungeonStatsChoice.get("randomMode")) {
 		KinkyDungeonSpells.push({name: "ApprenticeFire", hideLearned: true, hideUnlearned: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
 		KinkyDungeonSpells.push({name: "ApprenticeWater", hideLearned: true, hideUnlearned: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
@@ -347,9 +348,10 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY) {
  * @param {*} player
  * @param {*} bullet
  * @param {string} [forceFaction]
+ * @param {any} [castData]
  * @returns {{result: string, data: any}}
  */
-function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, forceFaction) {
+function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, forceFaction, castData) {
 	let entity = KinkyDungeonPlayerEntity;
 	let moveDirection = KinkyDungeonMoveDirection;
 	let flags = {
@@ -379,7 +381,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			gaggedMiscastFlag = true;
 	}
 
-	let data = {
+	let data = Object.assign({...castData}, {
 		spell: spell,
 		bulletfired: null,
 		target: null,
@@ -392,7 +394,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		bullet: bullet,
 		player: player,
 		delta: 1,
-	};
+	});
 
 
 
@@ -668,12 +670,12 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 	if (!enemy && !bullet && player) { // Costs for the player
 		KinkyDungeonSetFlag("PlayerCombat", 20);
 
-		if (KinkyDungeonTargetingSpellItem) {
+		if (data.targetingSpellItem) {
 			KinkyDungeonChangeConsumable(KinkyDungeonTargetingSpellItem, -(KinkyDungeonTargetingSpellItem.useQuantity ? KinkyDungeonTargetingSpellItem.useQuantity : 1));
 			KinkyDungeonTargetingSpellItem = null;
 			if (!spell.noAggro)
 				KinkyDungeonAggroAction('item', {});
-		} else if (KinkyDungeonTargetingSpellWeapon) {
+		} else if (data.targetingSpellWeapon) {
 			let special = KinkyDungeonPlayerDamage ? KinkyDungeonPlayerDamage.special : null;
 			if (special) {
 				let energyCost = KinkyDungeonPlayerDamage.special.energyCost;

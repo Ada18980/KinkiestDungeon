@@ -11,13 +11,13 @@ let KDEffectTiles = {
 		name: "Ice",
 		duration: 1,
 		priority: 1,
-		tags: ["ice"],
+		tags: ["ice", "slippery"],
 	},
 	"Water": {
 		name: "Water",
 		duration: 40,
 		priority: 1,
-		tags: ["water", "freezeover", "conductive"],
+		tags: ["water", "freezeover", "conductive", "slippery"],
 	},
 	"Cracked": {
 		name: "Cracked",

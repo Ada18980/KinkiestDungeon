@@ -170,7 +170,7 @@ let KinkyDungeonWeapons = {
 		special: {type: "spell", spell: "HeartArrow", requiresEnergy: true, energyCost: 0.05, range: 50},
 	},
 	"Dragonslaver": {name: "Dragonslaver", dmg: 3.5, chance: 1.25, staminacost: 2.5, type: "slash", unarmed: false, rarity: 10, shop: false, cutBonus: 0.1, sfx: "LightSwing",
-		events: [{type: "CastSpell", spell: "BeltStrike", trigger: "playerAttack", requireEnergy: true, energyCost: 0.0075}],
+		events: [{type: "CastSpell", spell: "BeltStrike", trigger: "playerAttack", requireEnergy: true, energyCost: 0.008}],
 		special: {type: "hitorspell", spell: "BeltStrike", requiresEnergy: true, energyCost: 0.0075, range: 2.99}},
 	"Arbiter": {name: "Arbiter", dmg: 4, bindEff: 1.5, chance: 2.0, bindType: "Metal", staminacost: 2.5, type: "chain", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "HeavySwing",
 		events: [

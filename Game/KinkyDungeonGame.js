@@ -2827,14 +2827,14 @@ function KinkyDungeonControlsEnabled() {
 	return !KinkyDungeonInspect && KinkyDungeonSlowMoveTurns < 1 && KinkyDungeonStatFreeze < 1 && KDGameData.SleepTurns < 1 && !KDGameData.CurrentDialog && !KinkyDungeonMessageToggle;
 }
 
-function KDStartSpellcast(tx, ty, SpellToCast, enemy, player, bullet) {
+function KDStartSpellcast(tx, ty, SpellToCast, enemy, player, bullet, data) {
 	let spell = KinkyDungeonFindSpell(SpellToCast.name, true);
 	let spellname = undefined;
 	if (spell) {
 		spellname = spell.name;
 		spell = undefined;
 	} else spell = SpellToCast;
-	return KDSendInput("tryCastSpell", {tx: tx, ty: ty, spell: spell, spellname: spellname, enemy: enemy, player: player, bullet: bullet});
+	return KDSendInput("tryCastSpell", {tx: tx, ty: ty, spell: spell, spellname: spellname, enemy: enemy, player: player, bullet: bullet, ...data});
 }
 
 // Click function for the game portion
@@ -2919,7 +2919,7 @@ function KinkyDungeonClickGame(Level) {
 							|| (KinkyDungeonStatsChoice.get("Conjurer") && KinkyDungeonTargetingSpell.school == "Conjure")
 							|| (KinkyDungeonStatsChoice.get("Magician") && KinkyDungeonTargetingSpell.school == "Illusion"))) {
 							if (KinkyDungeonSpellValid) {
-								KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonTargetingSpell, undefined, KinkyDungeonPlayerEntity, undefined);
+								KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonTargetingSpell, undefined, KinkyDungeonPlayerEntity, undefined, {targetingSpellItem: KinkyDungeonTargetingSpellItem, targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon});
 
 								KinkyDungeonTargetingSpell = null;
 							}
@@ -3882,4 +3882,30 @@ function KDTileDelete(x, y) {
 function KDStunTurns(turns) {
 	KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, turns);
 	KinkyDungeonSleepTime = CommonTime() + 200;
+}
+
+/**
+ * Picks a string based on weights
+ * @param {Record<string, number>} list - a list of weights with string keys
+ * @returns {string} - the key that was selected
+ */
+function KDGetByWeight(list) {
+	let WeightTotal = 0;
+	let Weights = [];
+	let type = "";
+
+	for (let obj of Object.entries(list)) {
+		Weights.push({obj: obj[0], weight: WeightTotal});
+		WeightTotal += obj[1];
+	}
+
+	let selection = KDRandom() * WeightTotal;
+
+	for (let L = Weights.length - 1; L >= 0; L--) {
+		if (selection > Weights[L].weight) {
+			type =  Weights[L].obj;
+			break;
+		}
+	}
+	return type;
 }

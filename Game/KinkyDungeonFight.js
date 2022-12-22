@@ -891,6 +891,20 @@ function KinkyDungeonAttackEnemy(Enemy, Damage) {
 let KDBulletWarnings = [];
 let KDUniqueBulletHits = new Map();
 
+
+function KDUpdateBulletEffects(b, d) {
+	// At the start we guarantee interactions
+	if (!b.bullet.noInteractTiles) {
+		let rad = b.bullet.aoe || 0.5;
+		for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
+			for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
+				if (AOECondition(b.x, b.y, b.x + X, b.y + Y, rad, KDBulletAoEMod(b)) && (X != 0 || Y != 0)) {
+					KDEffectTileInteractions(b.x + X, b.y + Y, b, d);
+				}
+			}
+	}
+}
+
 function KinkyDungeonUpdateBullets(delta, Allied) {
 	if (Allied) KDUniqueBulletHits = new Map();
 	if (delta > 0)
@@ -955,9 +969,11 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 			let end = false;
 			let mod = (b.bullet.spell && !b.bullet.spell.slowStart && (b.bullet.spell.fastStart || (b.bullet.spell.speed > b.bullet.spell.range * 0.8 && b.bullet.spell.speed > 1) || (!b.bullet.spell.enemySpell && !b.bullet.spell.allySpell && (b.vx != 0 || b.vy != 0)))) ? 1 : 0;
 
+			KDBulletEffectTiles(b);
+			KDUpdateBulletEffects(b, 0);
 
 			let dt = 0.1;
-			while (d > 0.1) {
+			while (d >= 0.05) {
 				dt = (d - Math.max(0, d - 1))/Math.sqrt(Math.max(1, b.vx*b.vx+b.vy*b.vy));
 				if (!first && delta > 0) {
 					if (b.born >= 0) {
@@ -1544,15 +1560,7 @@ function KinkyDungeonBulletsCheckCollision(bullet, AoE, force, d, inWarningOnly,
 				}
 			}
 
-			if (!bullet.bullet.noInteractTiles) {
-				let rad = bullet.bullet.aoe || 0.5;
-				for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
-					for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
-						if (AOECondition(bullet.x, bullet.y, bullet.x + X, bullet.y + Y, rad, KDBulletAoEMod(bullet)) && (X != 0 || Y != 0)) {
-							KDEffectTileInteractions(bullet.x + X, bullet.y + Y, bullet, d);
-						}
-					}
-			}
+			KDUpdateBulletEffects(bullet, d);
 
 		}
 	}
@@ -1704,13 +1712,14 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 					tint: string2hex(t.color || "#ff5555"),
 					zIndex: 1.31,
+					alpha: 0.75,
 				});
 			KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_b" + t.color, KinkyDungeonRootDirectory + "WarningBacking.png",
 				(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 					tint: string2hex(t.color || "#ff5555"),
 					zIndex: -0.2,
-					alpha: 0.75
+					alpha: 0.6
 				});
 		}
 	}
@@ -1742,7 +1751,7 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					bullet.size*scale*KinkyDungeonGridSizeDisplay,
 					(!bullet.vy && !bullet.vx) ? bullet.spinAngle : bullet.spinAngle + Math.atan2(bullet.vy, bullet.vx), alpha != 1 ? {
 						alpha : alpha,
-						zindex: -0.01,
+						zIndex: -0.01,
 					} : undefined, true);
 			}
 			bullet.delay = undefined;

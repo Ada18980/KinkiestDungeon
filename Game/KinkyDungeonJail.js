@@ -961,6 +961,15 @@ function KinkyDungeonDefeat(PutInJail) {
 	KDKickEnemies(nearestJail);
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDEnemyIsTemporary(enemy) {
+	return enemy.Enemy.tags.temporary || (enemy.lifetime > 0);
+}
+
 function KDKickEnemies(nearestJail) {
 	let enemies = [];
 	for (let e of  KinkyDungeonEntities) {

@@ -27,9 +27,10 @@ const KinkyDungeonMapParams = {
 		"torchchance": 0.35,
 		"torchchanceboring": 1.0,
 
-		music: [
-			"AREA1-GRAVEYARD.ogg",
-		],
+		music: {
+			"AREA1-GRAVEYARD.ogg": 10,
+			"GENERIC-DOLLRACK.ogg": 4,
+		},
 
 		tagModifiers: {
 			"jungle": 0,
@@ -114,9 +115,10 @@ const KinkyDungeonMapParams = {
 		torchchance: 0.05,
 		torchchanceboring: 0.7,
 
-		music: [
-			"AREA1-GRAVEYARD.ogg",
-		],
+		music: {
+			"GENERIC-DOLLRACK.ogg": 10,
+			"AREA2-ANCIENTTOMBS.ogg": 2,
+		},
 
 		tagModifiers: {
 			"narrow": 2,
@@ -209,9 +211,9 @@ const KinkyDungeonMapParams = {
 			"cavern": 60,
 		},
 
-		music: [
-			"AREA5-UNDERGROUNDJUNGLE.ogg",
-		],
+		music: {
+			"AREA5-UNDERGROUNDJUNGLE.ogg": 10,
+		},
 
 		"setpieces": [
 			{Type: "Altar", Weight: 6},
@@ -295,9 +297,10 @@ const KinkyDungeonMapParams = {
 			brightness: 6,
 		},
 
-		music: [
-			"AREA7-LOSTTEMPLE.ogg",
-		],
+		music: {
+			"AREA7-LOSTTEMPLE.ogg": 14,
+			"AREA8-BELLOWS.ogg": 2,
+		},
 
 		tagModifiers: {
 			"jungle": 0,
@@ -384,9 +387,9 @@ const KinkyDungeonMapParams = {
 		torchchance: 0.1,
 		torchchanceboring: 0.1,
 
-		music: [
-			"AREA2-ANCIENTTOMBS.ogg",
-		],
+		music: {
+			"AREA2-ANCIENTTOMBS.ogg": 10,
+		},
 
 		worldGenCode: () => {
 			for (let X = 1; X < KinkyDungeonGridWidth - 1; X++) {
@@ -485,9 +488,10 @@ const KinkyDungeonMapParams = {
 			brightness: 4,
 		},
 
-		music: [
-			"AREA4-MAGICLIBRARY.ogg",
-		],
+		music: {
+			"AREA4-MAGICLIBRARY.ogg": 10,
+			"GENERIC-DOLLRACK.ogg": 4,
+		},
 
 		"setpieces": [
 			{Type: "SmallAltar", Weight: 20},
@@ -558,9 +562,10 @@ const KinkyDungeonMapParams = {
 		torchchance: 0.3,
 		torchchanceboring: 0.1,
 
-		music: [
-			"AREA6-CRYSTALCAVE.ogg",
-		],
+		music: {
+			"AREA6-CRYSTALCAVE.ogg": 10,
+			"AREA8-BELLOWS.ogg": 3,
+		},
 
 		shadowColor: 0x080311,
 

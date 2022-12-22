@@ -390,7 +390,7 @@ interface floorParams {
 	density : number, // Density of tunnels (inverse of room spawn chance)
 	torchchance?: number,
 	torchlitchance?: number,
-	music: string[],
+	music: Record<string, number>,
 	/** Will add more/less torches on the main path */
 	torchchanceboring?: number,
 	torchreplace?: {
@@ -1053,6 +1053,7 @@ interface entity {
 	disarmflag?: number,
 	channel?: number,
 	items?: string[],
+	tempitems?: string[],
 	x: number,
 	y: number,
 	lastx?: number,

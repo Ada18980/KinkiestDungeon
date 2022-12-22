@@ -6,7 +6,7 @@ KinkyDungeonPatronsList0,"Thank you to the following awesome people for supporti
 KinkyDungeonPatronsList1,"|nuzzles|Rest|LoudestQuietPerson|Violet EverGardner|BoopleDoopleson|Dazman1234|linlizheng|Laioken|Mechio|Vikingberserker|PWMRM|devan|LukeB|atetete|Aussie895|0xA4C1B842|Rika|Physicsphail|Loony|Jeremy P.|ItsYahboi9"
 KinkyDungeonPatronsList2,"|AlexisTheFlame|Chen Yu|Sinohisaki|nnm711|Ron lsrp|Miro|Anthony R.|John T.|Geng114514|塵狐|kamil|Iaysakuya|tsang|Somprad|Thatguu|damit damit|Victor|Hjake2|anton A.|Dakra|CuvyanTaylor|"
 KinkyDungeonPatronsList3,"|hanhan|The_rogue1|Tatsuya S.|James K.|Misa|eddy z.|theshrimpyone|Eislobo|OTKTamashii|Michael M.|Jose G.|Minescence|HanQing Z.|hanhan|Shakymunch|Crimson|Arentios|Vini J.|Treemen555|Lordfabricator|ML"
-KinkyDungeonPatronsList4,"Hannes|Isaiah L.|darklink11|Cerb"
+KinkyDungeonPatronsList4,"Hannes|Isaiah L.|darklink11|Cerb|Diablo200"
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
 KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi|Door locked.wav - mitchanary - Modified"
@@ -529,6 +529,8 @@ KinkyDungeonBuffEvasion,"Afterimage: Evasion greatly increased."
 KinkyDungeonBuffSlimeMimic,"We did it! We made outselves invisible--mmmmph!!!"
 KinkyDungeonBuffDisenchantSelf,"Your restraints are disenchanted, treating them as nonmagical for purposes of cutting."
 KinkyDungeonBuffLeatherBurst,"You can launch another leather restraint instantly!"
+
+KinkyDungeonBuffDistractionCast,Your motivation is powerful enough your spells cannot be stopped!
 
 KinkyDungeonBuffStraitjacketBolt,"Locked Down: Struggling power is greatly reduced."
 KinkyDungeonBuffLockdown,"Locked Down: Struggling power is greatly reduced."
@@ -2395,7 +2397,7 @@ KinkyDungeonStruggleCutImpossible,"The item is too durable to cut."
 KinkyDungeonStruggleCutImpossibleAroused,"Your hopeless attempts fail to even leave a scratch."
 KinkyDungeonStruggleCutImpossible2,"You fail to leave even a scratch!"
 KinkyDungeonStruggleCutImpossible3,"You can't get any leverage to cut it with..."
-KinkyDungeonStruggleCutImpossibleBound,"You can't hold a knife, let alone cut the thing."
+KinkyDungeonStruggleCutImpossibleBound,"You can't hold the knife firmly enough to cut."
 KinkyDungeonStruggleCutImpossibleBoundAroused,"You cry out in your bindings as the knife bounces around uselessly."
 KinkyDungeonStruggleCutStrict,"Your arms are kept from having leverage due to another item."
 KinkyDungeonStruggleCutStrictAroused,"You fiddle with the tool, but your arms lack leverage due to another item"
@@ -4915,6 +4917,9 @@ KinkyDungeonSpellCommandWord,CMD: Unlock
 KinkyDungeonSpellTargetCommandWord,Select which creature to unlock
 KinkyDungeonSpellDescriptionCommandWord,"On yourself: Removes all purple locks. On a creature: Reduces the target's binding by 20 points."
 KinkyDungeonSpellCastCommandWord,You speak a command word!
+KDCommandWordFail_NoLocks,None of the locks you are wearing respond to your magic.
+KDCommandWordFail_NoEnemy,You can't help her with this.
+KDCommandWordFail_NoTarget,"You must target yourself, an enemy, or a locked object."
 
 KinkyDungeonSpellLesserInvisibility,Lesser Invisibility
 KinkyDungeonSpellTargetLesserInvisibility,Select which creature to buff
@@ -7101,7 +7106,7 @@ KinkyDungeonRemindJailZombiePickpocket,"...Shiny..."
 KinkyDungeonRemindJailZombieLock,"...Secure..."
 
 KinkyDungeonInsufficientEnergy,The weapon requires power from an Ancient Crystal to function.
-KinkyDungeonSpecialDragonslaver,Target an enemy: Attack with Dragonslaver. Target a tile: Spend 0.75% energy to launch binding belts
+KinkyDungeonSpecialDragonslaver,Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to launch binding belts
 KinkyDungeonSpecialTheEncaser,"25 charge to enter Slime Form for 25 turns, and create slime around yourself."
 KinkyDungeonSpecialFourSeasons,"50 charge to reduce mana cost of next fire, earth, air, and water spell by 50 (once for each element)"
 KinkyDungeonSpecialArbiter,"25 charge to disarm a target for 8 turns, rendering them unable to attack."

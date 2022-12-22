@@ -1493,7 +1493,9 @@ function KinkyDungeonActivateWeaponSpell(instant) {
 		}
 		if (KinkyDungeonPlayerDamage.special.selfCast) {
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
-			KDStartSpellcast(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonFindSpell(KinkyDungeonPlayerDamage.special.spell, true), undefined, undefined, undefined);
+			KDStartSpellcast(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonFindSpell(KinkyDungeonPlayerDamage.special.spell, true), undefined, KinkyDungeonPlayerEntity, undefined, {
+				targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon,
+			});
 			KinkyDungeonTargetingSpellWeapon = null;
 			//KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, , undefined, undefined, undefined);
 		} else if (!instant) {
@@ -1504,7 +1506,9 @@ function KinkyDungeonActivateWeaponSpell(instant) {
 			KinkyDungeonTargetTileLocation = null;
 		} else {
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
-			KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonFindSpell(KinkyDungeonPlayerDamage.special.spell, true), undefined, KinkyDungeonPlayerEntity, undefined);
+			KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonFindSpell(KinkyDungeonPlayerDamage.special.spell, true), undefined, KinkyDungeonPlayerEntity, undefined, {
+				targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon,
+			});
 			//KinkyDungeonCastSpell(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonFindSpell(KinkyDungeonPlayerDamage.special.spell, true), undefined, KinkyDungeonPlayerEntity, undefined);
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
 		}

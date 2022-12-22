@@ -93,22 +93,28 @@ let KinkyDungeonSpellSpecials = {
 				if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 				return "Cast";
 			}
+			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoEnemy"), "#ff5555", 1, true);
 			return "Fail";
-		} else if (KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0) {
-			for (let r of KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks, true)) {
-				KinkyDungeonLock(r, "");
+		} else if (targetX == KinkyDungeonPlayerEntity.x && targetY == KinkyDungeonPlayerEntity.y) {
+			if (KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0) {
+				for (let r of KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks, true)) {
+					KinkyDungeonLock(r, "");
+				}
+				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#ffff00", 2);
+				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
+				return "Cast";
 			}
-			KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "yellow", 2);
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
-			return "Cast";
+			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoLocks"), "#ff5555", 1, true);
+			return "Fail";
 		} else if (KinkyDungeonTilesGet(targetX + "," + targetY) && KinkyDungeonTilesGet(targetX + "," + targetY).Type == "Charger" && KinkyDungeonTilesGet(targetX + "," + targetY).NoRemove) {
 			KinkyDungeonTilesGet(targetX + "," + targetY).NoRemove = false;
-			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonPurpleLockRemoveCharger"), "yellow", 2);
+			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonPurpleLockRemoveCharger"), "#ffff00", 2);
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 			return "Cast";
 		}
+		KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoTarget"), "#ff5555", 1, true);
 		return "Fail";
 	},
 	"Lockdown": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {

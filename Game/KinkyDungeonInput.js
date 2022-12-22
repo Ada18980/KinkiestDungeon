@@ -37,9 +37,10 @@ function KDProcessInput(type, data) {
 		case "tryCastSpell": {
 			KDDelayedActionPrune(["Action", "Cast"]);
 			let sp = data.spell ? data.spell : KinkyDungeonFindSpell(data.spellname, true);
+			if (!data.spell) data.spell = sp;
 			if (sp) {
 				/** @type {{result: string, data: any}} */
-				let res = KinkyDungeonCastSpell(data.tx, data.ty, sp, data.enemy, data.player, data.bullet);
+				let res = KinkyDungeonCastSpell(data.tx, data.ty, sp, data.enemy, data.player, data.bullet, undefined, data);
 				if (res.result == "Cast" && sp.sfx) {
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + sp.sfx + ".ogg");
 				}

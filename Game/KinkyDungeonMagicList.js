@@ -14,7 +14,7 @@
 // onhit: What happens on AoE. Deals aoepower damage, or just power otherwise
 
 let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 9, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
-	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
+	onhit:"", time:25, power: 0, range: 2.8, size: 1, damage: ""};
 
 /**
  * These are starting spells
@@ -138,20 +138,20 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			onhit:"", power: 4.0, range: 1.5, size: 1, damage: ""},
 		{name: "Volcanism", tags: ["earth", "fire", "offense"], sfx: "FireSpell", school: "Elements", prerequisite: "Earthform", manacost: 6, components: [], level:2, type:"special", special: "Volcanism", noMiscast: true,
 			filterTags: ["summonedRock"], onhit:"", power: 6.0, range: 5.99, aoe: 2.5, size: 1, damage: ""},
-		{name: "EarthformRing", tags: ["earth", "utility", "summon"], noSprite: true, noise: 6, minRange: 0, landsfx: "Bones", school: "Elements", hideUnlearnable: true, manacost: 4, components: ["Legs"], prerequisite: ["Earthform"],
+		{name: "EarthformRing", secret: true, tags: ["earth", "utility", "summon"], noSprite: true, noise: 6, minRange: 0, landsfx: "Bones", school: "Elements", hideUnlearnable: true, manacost: 4, components: ["Legs"], prerequisite: ["Earthform"],
 			level:1, type:"hit", onhit:"summon", summon: [{name: "EarthenMonolith", count: 30, minRange: 2.5, time: 9999, bound: true}], power: 0, time: 9999, delay: 1, range: 2.5, size: 1, aoe: 3.99, lifetime: 1, damage: "inert",
 			effectTileDurationMod: 40, effectTile: {
 				name: "Cracked",
 				duration: 100,
 			}, effectTileDensity: 0.3},
-		{name: "EarthformMound", tags: ["earth", "utility", "summon"], noSprite: true, noise: 6, minRange: 0, landsfx: "Bones", school: "Elements", hideUnlearnable: true, manacost: 3, components: ["Legs"], prerequisite: ["Earthform"],
+		{name: "EarthformMound", secret: true, tags: ["earth", "utility", "summon"], noSprite: true, noise: 6, minRange: 0, landsfx: "Bones", school: "Elements", hideUnlearnable: true, manacost: 3, components: ["Legs"], prerequisite: ["Earthform"],
 			level:1, type:"hit", onhit:"summon", summon: [{name: "EarthenMonolith", count: 9, time: 9999, bound: true}], power: 0, time: 9999, delay: 1, range: 4, size: 1, aoe: 1.5, lifetime: 1, damage: "inert",
 			effectTileDurationMod: 40, effectTile: {
 				name: "Cracked",
 				duration: 100,
 			}},
 
-		{name: "EarthformLine", tags: ["earth", "utility", "summon"], noSprite: true, noise: 6, sfx: "Bones", school: "Elements", hideUnlearnable: true, manacost: 2, components: ["Legs"], level:2, type:"bolt", prerequisite: ["Earthform"],
+		{name: "EarthformLine", secret: true, tags: ["earth", "utility", "summon"], noSprite: true, noise: 6, sfx: "Bones", school: "Elements", hideUnlearnable: true, manacost: 2, components: ["Legs"], level:2, type:"bolt", prerequisite: ["Earthform"],
 			piercing: true, projectileTargeting:true, castRange: 3, nonVolatile: true, onhit:"", power: 3, delay: 0, range: 4.99, speed: 7, size: 1, damage: "inert",
 			trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"cast", trailChance: 1.0, trailOnSelf: true,
 			trailcast: {spell: "EarthformSingle", target: "onhit", directional:true, offset: false},
@@ -607,18 +607,18 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		]},
 
 		{name: "SlimeWall", tags: ["latex", "utility", "slime", "wall"], hide: true, autoLearn: ["SlimeWallHoriz", "SlimeWallVert"], prerequisite: "ApprenticeLatex", hideLearned: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{name: "SlimeWallVert", color: "#ff00ff", hideUnlearnable: true, prerequisite: "SlimeWall", tags: ["latex", "slime", "defense", "aoe", "denial", "utility", "wall"], landsfx: "MagicSlash", school: "Conjure", manacost: 4, components: ["Legs"], level:1, type:"inert",
+		{name: "SlimeWallVert", secret: true, color: "#ff00ff", hideUnlearnable: true, prerequisite: "SlimeWall", tags: ["latex", "slime", "defense", "aoe", "denial", "utility", "wall"], landsfx: "MagicSlash", school: "Conjure", manacost: 4, components: ["Legs"], level:1, type:"inert",
 			onhit:"lingering", aoetype: "vert", pierceEnemies: true, time: 2, delay: 2, range: 4, size: 3, aoe: 2.5, lifetime: 20, power: 0, lifetimeHitBonus: 4, damage: "glue", secondaryhit: "buffnoAoE",
 			hitColor: 0xff00ff, hitLight: 2.5, bulletColor: 0xff00ff, bulletLight: 3.5,
 			buffs: [KDSlimed]}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
-		{name: "SlimeWallHoriz", color: "#ff00ff", hideUnlearnable: true, prerequisite: "SlimeWall", tags: ["latex", "slime", "defense", "aoe", "denial", "utility", "wall"], landsfx: "MagicSlash", school: "Conjure", manacost: 4, components: ["Legs"], level:1, type:"inert",
+		{name: "SlimeWallHoriz", secret: true, color: "#ff00ff", hideUnlearnable: true, prerequisite: "SlimeWall", tags: ["latex", "slime", "defense", "aoe", "denial", "utility", "wall"], landsfx: "MagicSlash", school: "Conjure", manacost: 4, components: ["Legs"], level:1, type:"inert",
 			onhit:"lingering", aoetype: "horiz", pierceEnemies: true, time: 2, delay: 2, range: 4, size: 3, aoe: 2.5, lifetime: 20, power: 0, lifetimeHitBonus: 4, damage: "glue", secondaryhit: "buffnoAoE",
 			hitColor: 0xff00ff, hitLight: 2.5, bulletColor: 0xff00ff, bulletLight: 3.5,
 			buffs: [KDSlimed]}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
 
 		{name: "LatexWall", tags: ["latex", "utility", "slime", "wall"], hide: true, autoLearn: ["LatexWallVert", "LatexWallHoriz"],
 			prerequisite: "SlimeWall", hideLearned: true, school: "Conjure", manacost: 0, spellPointCost: 2, components: [], level:1, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{name: "LatexWallVert", color: "#aa00ff", hideUnlearnable: true, prerequisite: "LatexWall", tags: ["latex", "slime", "defense", "aoe", "denial", "utility", "wall"], landsfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Legs"], level:1, type:"inert",
+		{name: "LatexWallVert", secret: true, color: "#aa00ff", hideUnlearnable: true, prerequisite: "LatexWall", tags: ["latex", "slime", "defense", "aoe", "denial", "utility", "wall"], landsfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Legs"], level:1, type:"inert",
 			upcastFrom: "SlimeWallVert", upcastLevel: 1,
 			hitColor: 0xff00ff, hitLight: 2.5, bulletColor: 0xff00ff, bulletLight: 3.5,
 			onhit:"lingering", aoetype: "vert", pierceEnemies: true, time: 0, delay: 2, range: 4, size: 3, aoe: 2.5, lifetime: 20, power: 0, lifetimeHitBonus: 4, damage: "glue", secondaryhit: "buffnoAoE",
@@ -626,7 +626,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				{trigger: "bulletHitEnemy", type: "LatexWall", power: 5, damage: "glue", time: 6},
 			],
 			buffs: [KDEncased]}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
-		{name: "LatexWallHoriz", color: "#aa00ff", hideUnlearnable: true, prerequisite: "LatexWall", tags: ["latex", "slime", "defense", "aoe", "denial", "utility", "wall"], landsfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Legs"], level:1, type:"inert",
+		{name: "LatexWallHoriz", secret: true, color: "#aa00ff", hideUnlearnable: true, prerequisite: "LatexWall", tags: ["latex", "slime", "defense", "aoe", "denial", "utility", "wall"], landsfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Legs"], level:1, type:"inert",
 			upcastFrom: "SlimeWallHoriz", upcastLevel: 1,
 			hitColor: 0xff00ff, hitLight: 2.5, bulletColor: 0xff00ff, bulletLight: 3.5,
 			onhit:"lingering", aoetype: "horiz", pierceEnemies: true, time: 0, delay: 2, range: 4, size: 3, aoe: 2.5, lifetime: 20, power: 0, lifetimeHitBonus: 4, damage: "glue", secondaryhit: "buffnoAoE",
