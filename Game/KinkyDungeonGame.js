@@ -3883,3 +3883,29 @@ function KDStunTurns(turns) {
 	KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, turns);
 	KinkyDungeonSleepTime = CommonTime() + 200;
 }
+
+/**
+ * Picks a string based on weights
+ * @param {Record<string, number>} list - a list of weights with string keys
+ * @returns {string} - the key that was selected
+ */
+function KDGetByWeight(list) {
+	let WeightTotal = 0;
+	let Weights = [];
+	let type = "";
+
+	for (let obj of Object.entries(list)) {
+		Weights.push({obj: obj[0], weight: WeightTotal});
+		WeightTotal += obj[1];
+	}
+
+	let selection = KDRandom() * WeightTotal;
+
+	for (let L = Weights.length - 1; L >= 0; L--) {
+		if (selection > Weights[L].weight) {
+			type =  Weights[L].obj;
+			break;
+		}
+	}
+	return type;
+}

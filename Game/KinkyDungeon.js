@@ -236,6 +236,7 @@ let KDOptOut = false;
 * DelayedActions: KDDelayedAction[],
 * JailFaction: string[],
 * GuardFaction: string[],
+* OfferCount: number,
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
@@ -363,6 +364,8 @@ let KDGameDataBase = {
 	DelayedActions: [],
 	JailFaction: [],
 	GuardFaction: [],
+
+	OfferCount: 0,
 };
 /**
  * @type {KDGameDataBase}

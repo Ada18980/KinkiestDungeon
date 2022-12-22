@@ -79,6 +79,7 @@ function KinkyDungeonResetMagic() {
 	KinkyDungeonCurrentPage = 0;
 	KinkyDungeonCurrentSpellsPage = 0;
 	KinkyDungeonSpellPoints = 3;
+	KDSpellPage = 0;
 	if (KinkyDungeonStatsChoice.get("randomMode")) {
 		KinkyDungeonSpells.push({name: "ApprenticeFire", hideLearned: true, hideUnlearned: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
 		KinkyDungeonSpells.push({name: "ApprenticeWater", hideLearned: true, hideUnlearned: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
