@@ -890,34 +890,22 @@ function KinkyDungeonIsArmsBound(ApplyGhost, Other) {
 function KinkyDungeonStrictness(ApplyGhost, Group, excludeItem) {
 	if (ApplyGhost && (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) return 0;
 	let strictness = 0;
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (inv != excludeItem && ((KDRestraint(inv).strictness && KDRestraint(inv).strictness > strictness)))  {
-			let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
-			if (strictGroups) {
-				for (let s of strictGroups) {
-					if (s == Group) {
-						if (KDRestraint(inv).strictness > strictness)
-							strictness = KDRestraint(inv).strictness;
-						break;
-					}
-				}
-			}
-		}
-		if (inv.dynamicLink) {
-			for (let invLink of KDDynamicLinkList(inv)) {
-				if (invLink != excludeItem && KDRestraint(invLink).strictness > strictness) {
-					let strictGroups = KDRestraint(invLink).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(invLink).Group);
-					if (strictGroups) {
-						for (let s of strictGroups) {
-							if (s == Group) {
-								if (KDRestraint(invLink).strictness > strictness)
-									strictness = KDRestraint(invLink).strictness;
-								break;
-							}
+	for (let invItem of KinkyDungeonAllRestraint()) {
+		let inv = invItem;
+		while (inv) {
+			if (inv != excludeItem && ((KDRestraint(inv).strictness && KDRestraint(inv).strictness > strictness)))  {
+				let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
+				if (strictGroups) {
+					for (let s of strictGroups) {
+						if (s == Group) {
+							if (KDRestraint(inv).strictness > strictness)
+								strictness = KDRestraint(inv).strictness;
+							break;
 						}
 					}
 				}
 			}
+			inv = inv.dynamicLink;
 		}
 	}
 	return strictness;
@@ -931,26 +919,24 @@ function KinkyDungeonStrictness(ApplyGhost, Group, excludeItem) {
  */
 function KinkyDungeonGetStrictnessItems(Group, excludeItem) {
 	let list = [];
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (inv != excludeItem && KDRestraint(inv).strictness)  {
-			let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
-			if (strictGroups) {
-				for (let s of strictGroups) {
-					if (s == Group) {
-						// Add the top item
-						if (KDRestraint(inv).strictness)
-							list.push(KDRestraint(inv).name);
-						// Add the items underneath it!!
-						break;
+	for (let invItem of KinkyDungeonAllRestraint()) {
+		let inv = invItem;
+		while (inv) {
+			if (inv != excludeItem && KDRestraint(inv).strictness)  {
+				let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
+				if (strictGroups) {
+					for (let s of strictGroups) {
+						if (s == Group) {
+							// Add the top item
+							if (KDRestraint(inv).strictness)
+								list.push(KDRestraint(inv).name);
+							// Add the items underneath it!!
+							break;
+						}
 					}
 				}
 			}
-		}
-		if (inv.dynamicLink) {
-			for (let invLink of KDDynamicLinkList(inv)) {
-				if (invLink != excludeItem && KDRestraint(invLink).strictness)
-					list.push(KDRestraint(invLink).name);
-			}
+			inv = inv.dynamicLink;
 		}
 	}
 	return list;
