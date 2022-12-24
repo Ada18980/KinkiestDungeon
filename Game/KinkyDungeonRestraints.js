@@ -462,7 +462,7 @@ function KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, recursive) {
  * @param {string} shrine
  * @returns {number}
  */
-function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive) {
+function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noPlayer) {
 	let count = 0;
 
 	for (let i = 0; i < (maxCount ? maxCount : 100); i++) {
@@ -473,7 +473,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive) {
 		// Get the most powerful item
 		let item = items.length > 0 ? items.reduce((prev, current) => (KDRestraint(prev).power * KinkyDungeonGetLockMult(prev.lock) > KDRestraint(current).power * KinkyDungeonGetLockMult(current.lock)) ? prev : current) : null;
 		if (item) {
-			KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false, true);
+			KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false, true, undefined, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
 			KDSendStatus('escape', item.name, "shrine_" + shrine);
 			count++;
 		}
@@ -487,7 +487,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive) {
 			if (item) {
 				let groupItem = KinkyDungeonGetRestraintItem(KDRestraint(item).Group);
 				if (groupItem == item) {
-					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false, true);
+					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false, true, undefined, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
 					KDSendStatus('escape', item.name, "shrine_" + shrine);
 					count++;
 				} else {
@@ -495,7 +495,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive) {
 					let link = host.dynamicLink;
 					while (link) {
 						if (link == item) {
-							KinkyDungeonRemoveDynamicRestraint(host, false, false);
+							KinkyDungeonRemoveDynamicRestraint(host, false, false, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
 							KDSendStatus('escape', item.name, "shrine_" + shrine);
 							count++;
 							link = null;
@@ -2681,9 +2681,10 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
  * @param {boolean} [NoEvent] - If true, the item will not trigger any events.
  * @param {boolean} [Shrine] - If the item is being removed from a shrine, this is true.
  * @param {boolean} [UnLink] - If the item is being removed as part of an unlinking process
+ * @param {entity} [Remover] - Who removes this
  * @returns {boolean} true if the item was removed, false if it was not.
  */
-function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink) {
+function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, Remover) {
 	KDDelayedActionPrune(["Remove"]);
 	KDStruggleGroupLinkIndex = {};
 	for (let item of KinkyDungeonAllRestraint()) {
@@ -2707,10 +2708,10 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink) 
 						InventoryRemove(Player, "ItemNeckRestraints");
 					}
 				}
-
-				if (rest.inventory && (Keep || ((rest.enchanted || rest.alwaysKeep) && !KinkyDungeonInventoryGetLoose(rest.inventoryAs|| rest.name)))) {
-					if (rest.inventoryAs) {
-						let origRestraint = KinkyDungeonGetRestraintByName(rest.inventoryAs);
+				let inventoryAs = Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs;
+				if (rest.inventory && (Keep || ((rest.enchanted || rest.alwaysKeep) && !KinkyDungeonInventoryGetLoose(inventoryAs|| rest.name)))) {
+					if (inventoryAs) {
+						let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
 						if (!KinkyDungeonInventoryGetLoose(origRestraint.name)) {
 							KinkyDungeonInventoryAdd({name: origRestraint.name, type: LooseRestraint, events:origRestraint.events, quantity: 1});
 						} else {
@@ -2782,9 +2783,10 @@ function KDIInsertRestraintUnderneath(restraint) {
  * @param {item} hostItem - The group of the item to remove.
  * @param {boolean} [Keep] - If true, the item will be kept in the player's inventory.
  * @param {boolean} [NoEvent] - If true, the item will not trigger any events.
+ * @param {entity} [Remover] - Who removes this
  * @returns {boolean} true if the item was removed, false if it was not.
  */
-function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent) {
+function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover) {
 	let item = hostItem.dynamicLink;
 	if (item) {
 		const rest = KDRestraint(item);
@@ -2793,8 +2795,9 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent) {
 
 		if (!KinkyDungeonCancelFlag) {
 			if (rest.inventory && (Keep || rest.enchanted || rest.alwaysKeep) && !KinkyDungeonInventoryGetLoose(rest.name)) {
-				if (rest.inventoryAs) {
-					let origRestraint = KinkyDungeonGetRestraintByName(rest.inventoryAs);
+				let inventoryAs = Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs;
+				if (inventoryAs) {
+					let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
 					if (!KinkyDungeonInventoryGetLoose(origRestraint.name)) {
 						KinkyDungeonInventoryAdd({name: origRestraint.name, type: LooseRestraint, events:origRestraint.events, quantity: 1});
 					} else KinkyDungeonInventoryGetLoose(origRestraint.name).quantity += 1;
@@ -3019,9 +3022,9 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 			}
 		}
 		if (index) {
-			KinkyDungeonRemoveDynamicRestraint(host, (StruggleType != "Cut") || !destroy, false);
+			KinkyDungeonRemoveDynamicRestraint(host, (StruggleType != "Cut") || !destroy, false, KinkyDungeonPlayerEntity);
 		} else {
-			KinkyDungeonRemoveRestraint(KDRestraint(restraint).Group, (StruggleType != "Cut") || !destroy);
+			KinkyDungeonRemoveRestraint(KDRestraint(restraint).Group, (StruggleType != "Cut") || !destroy, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity);
 		}
 		if (KinkyDungeonStatsChoice.get("FutileStruggles") && data.escapeChance < 0.25) KinkyDungeonChangeWill(KinkyDungeonStatWillCostEscape);
 		else if (KinkyDungeonStatsChoice.get("SecondWind") && data.escapeChance < 0.25) KinkyDungeonChangeWill(KinkyDungeonStatWillBonusEscape);

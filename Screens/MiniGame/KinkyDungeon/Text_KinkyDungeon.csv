@@ -2787,15 +2787,6 @@ KinkyDungeonInventoryItemSlimeWalkers,Slime Walkers
 KinkyDungeonInventoryItemSlimeWalkersDesc,"A pair of heels coated in a nonstick material."
 KinkyDungeonInventoryItemSlimeWalkersDesc2,"They will slow you down, but you can walk on slime without getting stuck!"
 
-
-RestraintBreastplate,"Breastplate"
-RestraintBreastplateDesc,"A steel breastplate secured by many straps"
-RestraintBreastplateDesc2,"Provides +10 armor, but makes it harder to escape your restraints."
-KinkyDungeonInventoryItemBreastplate,"Breastplate"
-KinkyDungeonInventoryItemBreastplateDesc,"A steel breastplate secured by many straps"
-KinkyDungeonInventoryItemBreastplateDesc2,"Provides +10 armor, but makes it harder to escape your restraints."
-LootBreastplate,"You find a steel breastplate"
-
 RestraintGlovesDexterity,"Gloves of Dexterity"
 RestraintGlovesDexterityDesc,"A pair of gloves that makes your hits strike with elven grace--and force."
 RestraintGlovesDexterityDesc2,"Increases accuracy by +50. Reduces melee damage by 30%."
@@ -6031,7 +6022,7 @@ KinkyDungeonRandomModeDesc1,Break orbs and pray you get something good.
 
 KinkyDungeonSaveMode0,Save Codes
 KinkyDungeonSaveMode1,Roguelike
-KinkyDungeonSaveModeDesc0,"Grants a save code every few floors you can write down. Saves only on exit and floor start."
+KinkyDungeonSaveModeDesc0,"Grants a save code every floor you can write down. Autosaves only on floor start."
 KinkyDungeonSaveModeDesc1,"No save codes, forced autosaves. You are in it to win it."
 
 KinkyDungeonStartGame,Start Playing

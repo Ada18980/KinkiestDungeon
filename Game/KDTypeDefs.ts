@@ -295,6 +295,8 @@ interface KDRestraintProps {
 	Modules?: number[],
 	/** When added to the inventory, is added as a different item instead. Good for multiple stages of the same item, like cuffs */
 	inventoryAs?: string,
+	/** When added to the inventory by self, is added as a different item instead. Good for multiple stages of the same item, like cuffs */
+	inventoryAsSelf?: string,
 	/** The item is always kept in your inventory no matter how it gets removed, so long as you don't cut it */
 	alwaysKeep?: boolean,
 	/** The jailer won't remove these */
