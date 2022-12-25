@@ -126,8 +126,10 @@ let KDEventMapInventory = {
 	},
 	"drawSGTooltip": {
 		"curseInfo": (e, item, data) => {
-			data.extraLines.push(TextGet("curseInfo" + e.msg));
-			data.extraLineColor.push(e.color);
+			if (item == data.item) {
+				data.extraLines.push(TextGet("curseInfo" + e.msg));
+				data.extraLineColor.push(e.color);
+			}
 		},
 	},
 	"perksBonus": {

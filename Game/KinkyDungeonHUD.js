@@ -654,6 +654,7 @@ function KinkyDungeonDrawInputs() {
 					struggleIndex: KDStruggleGroupLinkIndex ? KDStruggleGroupLinkIndex[sg.group] : 0,
 					surfaceItems: surfaceItems,
 					dynamicList: dynamicList,
+					item: item,
 					extraLines: [],
 					extraLineColor: [],
 				};
