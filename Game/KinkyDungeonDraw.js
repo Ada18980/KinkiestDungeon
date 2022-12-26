@@ -506,6 +506,7 @@ let KDLastKeyTime = {
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
+
 	if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
 		if (KinkyDungeonKeybindingCurrentKey)
 			KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
@@ -769,8 +770,11 @@ function KinkyDungeonDrawGame() {
 
 
 				// Draw targeting reticule
-				if (!KinkyDungeonMessageToggle && !KinkyDungeonAutoWait && !KinkyDungeonShowInventory && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height) && KinkyDungeonIsPlayer()
-					&& !MouseIn(0, 0, 500, 1000)&& !MouseIn(1750, 0, 250, 1000) && (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))) {
+				if (!KinkyDungeonMessageToggle && !KinkyDungeonAutoWait && !KinkyDungeonShowInventory
+					&& MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height) && KinkyDungeonIsPlayer()
+					&& !MouseIn(0, 0, 500, 1000) && !MouseIn(1750, 0, 250, 1000)
+					&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))
+				) {
 					if (KinkyDungeonTargetingSpell) {
 						KinkyDungeonSetTargetLocation();
 
@@ -1058,6 +1062,12 @@ function KinkyDungeonDrawGame() {
 				let yboost = 0;//-1*KinkyDungeonGridSizeDisplay/7;
 				DrawTextFitKD(KinkyDungeonPlayerEntity.dialogue, canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5, 10 + KinkyDungeonPlayerEntity.dialogue.length * 8, KinkyDungeonPlayerEntity.dialogueColor, KDTextGray0);
 			}
+
+
+			KDModalArea_x = 600;
+			KDModalArea_y = 700;
+			KDModalArea_width = 800;
+			KDModalArea_height = 100;
 
 			if (KinkyDungeonIsPlayer()) {
 				KinkyDungeonDrawInputs();
@@ -1690,23 +1700,11 @@ let KDBorderColor = '#f0b541';
  * @param {number} Height - Height of the component
  * @param {string} Color - Color of the component
  * @param {boolean} [NoBorder] - Color of the component
+ * @param {number} [Alpha] - Transparency of the box
  *  @returns {void} - Nothing
  */
-function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder) {
-	/*let sprite = "UI/BoxLarge.png";
-	let grid = 14;
-	let pad = 11;
-	if (Width < KDBoxThreshold) {
-		sprite = "UI/BoxTiny.png";
-		grid = 2;
-		pad = 2;
-	} else if (Height < KDBoxThreshold) {
-		sprite = "UI/BoxSmall.png";
-		grid = 8;
-		pad = 5;
-	}*/
-
-	// Draw the button rectangle (makes the background color cyan if the mouse is over it)
+function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder, Alpha) {
+	/*// Draw the button rectangle (makes the background color cyan if the mouse is over it)
 	MainCanvas.beginPath();
 	MainCanvas.fillStyle = Color;
 	MainCanvas.fillRect(Left, Top, Width, Height);
@@ -1718,43 +1716,29 @@ function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder) {
 		MainCanvas.stroke();
 	}
 
-	MainCanvas.closePath();
-	/* // Cancelled because too laggy
-	// Draw corners
-	DrawImageEx(KinkyDungeonRootDirectory + sprite, Left, Top, {
-		SourcePos: [0, 0, grid, grid],
-	});
-	DrawImageEx(KinkyDungeonRootDirectory + sprite, Left + Width - grid, Top, {
-		SourcePos: [grid*2, 0, grid, grid],
-	});
-	DrawImageEx(KinkyDungeonRootDirectory + sprite, Left, Top + Height - grid, {
-		SourcePos: [0, grid*2, grid, grid],
-	});
-	DrawImageEx(KinkyDungeonRootDirectory + sprite, Left + Width - grid, Top + Height - grid, {
-		SourcePos: [grid*2, grid*2, grid, grid],
+	MainCanvas.closePath();*/
+	FillRectKD(kdcanvas, kdpixisprites, "box" + Left + "," + Top + "," + Width + "," + Height + Color, {
+		Left: Left,
+		Top: Top,
+		Width: Width,
+		Height: Height,
+		Color: Color,
+		LineWidth: 1,
+		zIndex: 90,
+		alpha: Alpha != undefined ? Alpha : 1,
 	});
 
-	// Draw edges
-	DrawImageEx(KinkyDungeonRootDirectory + sprite, Left + grid, Top, {
-		SourcePos: [grid, 0, grid, grid],
-		Width: Width - 2 * grid,
-		Height: grid,
-	});
-	DrawImageEx(KinkyDungeonRootDirectory + sprite, Left + grid, Top + Height - grid, {
-		SourcePos: [grid, grid*2, grid, grid],
-		Width: Width - 2 * grid,
-		Height: grid,
-	});
-	DrawImageEx(KinkyDungeonRootDirectory + sprite, Left, Top + grid, {
-		SourcePos: [0, grid, grid, grid],
-		Width: grid,
-		Height: Height - 2 * grid,
-	});
-	DrawImageEx(KinkyDungeonRootDirectory + sprite, Left + Width - grid, Top + grid, {
-		SourcePos: [2 * grid, grid, grid, grid],
-		Width: grid,
-		Height: Height - 2 * grid,
-	});*/
+	if (!NoBorder) {
+		DrawRectKD(kdcanvas, kdpixisprites, "boxBorder" + Left + "," + Top + "," + Width + "," + Height, {
+			Left: Left,
+			Top: Top,
+			Width: Width,
+			Height: Height,
+			Color: KDBorderColor,
+			LineWidth: 2,
+			zIndex: 101,
+		});
+	}
 }
 
 let KDFont = 'Arial';
@@ -2021,6 +2005,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {number} [zIndex] - Stretch the image to fit
  * @param {object} [options] - Additional options
  * @param {boolean} [options.noTextBG] - Dont show text backgrounds
+ * @param {number} [options.alpha]
  * @returns {void} - Nothing
  */
 function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex, options) {
@@ -2028,7 +2013,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 	if (!NoBorder || FillColor)
 		DrawBoxKD(Left, Top, Width, Height,
 			FillColor ? FillColor : (hover ? (KDTextGray2) : KDButtonColor),
-			NoBorder
+			NoBorder, options?.alpha || 0.5,
 		);
 	if (hover) {
 		let pad = 4;
@@ -2093,12 +2078,16 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {boolean} IsChecked - Whether or not the checkbox is checked
  * @param {boolean} [Disabled] - Disables the hovering options if set to true
  * @param {string} [TextColor] - Color of the text
+ * @param {object} [options] - Additional options
+ * @param {boolean} [options.noTextBG] - Dont show text backgrounds
+ * @param {number} [options.alpha]
  * @returns {void} - Nothing
  */
 // @ts-ignore
-function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = KDTextGray0, CheckImage = "Icons/Checked.png") {
+function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = KDTextGray0, CheckImage = "Icons/Checked.png", options) {
 	DrawTextFitKD(Text, Left + 100, Top + 33, 1000, TextColor, "#333333");
-	DrawButtonVis(Left, Top, Width, Height, "", Disabled ? "#ebebe4" : "#ffffff", IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled);
+	DrawButtonVis(Left, Top, Width, Height, "", Disabled ? "#ebebe4" : "#ffffff", IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled,
+		undefined, undefined, undefined, undefined, undefined, undefined, options);
 }
 
 
@@ -2116,10 +2105,13 @@ function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = f
  * @param {boolean} [Disabled] - Disables the hovering options if set to true
  * @param {number} [ArrowWidth] - How much of the button the previous/next sections cover. By default, half each.
  * @param {boolean} [NoBorder] - Disables the hovering options if set to true
+ * @param {object} [options] - Additional options
+ * @param {boolean} [options.noTextBG] - Dont show text backgrounds
+ * @param {number} [options.alpha]
  * @returns {void} - Nothing
  */
 // @ts-ignore
-function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, BackText, NextText, Disabled, ArrowWidth, NoBorder) {
+function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, BackText, NextText, Disabled, ArrowWidth, NoBorder, options) {
 	// Set the widths of the previous/next sections to be colored cyan when hovering over them
 	// By default each covers half the width, together covering the whole button
 	if (ArrowWidth == null || ArrowWidth > Width / 2) ArrowWidth = Width / 2;
@@ -2132,7 +2124,7 @@ function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, Ba
 	}
 
 	DrawBoxKD(Left, Top, Width, Height,
-		KDButtonColor
+		KDButtonColor, undefined, options?.alpha || 0.5
 	);
 
 	// Draw the button rectangle

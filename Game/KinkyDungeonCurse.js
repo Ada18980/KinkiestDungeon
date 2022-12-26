@@ -101,6 +101,7 @@ function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = "P
 		magic: true,
 		events: events,
 		power: power,
+		shrine: restraint.shrine?.concat(["Cursed"]),
 		inventoryAsSelf: restraint.inventoryAsSelf || restraint.inventoryAs || restraint.name,
 		displayPower: restraint.displayPower || restraint.power,
 	};

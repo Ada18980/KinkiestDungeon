@@ -387,10 +387,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit) {
 		armor: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Armor"),
 		armorbreak: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ArmorBreak"),
 		spellResist: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellResist"),
-		buffresist: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, Damage.type + "DamageResist"))
-			* (KinkyDungeonMeleeDamageTypes.includes(Damage.type) ?
-			KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "meleeDamageResist"))
-			: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "magicDamageResist"))),
+		buffresist: KDBuffResist(KinkyDungeonPlayerBuffs, Damage.type),
 		arouseAmount: 0,
 		arouseMod: 1,
 		arouseTypes: Object.assign([], KDBaseDamageTypes.arouseTypes),
@@ -1296,4 +1293,18 @@ function KinkyDungeonChastityMult() {
 		else if (KDRestraint(inv).chastitybra) chaste += 0.2;
 	}
 	return chaste;
+}
+
+/**
+ *
+ * @param {any} buffs
+ * @param {string} type
+ * @returns {number}
+ */
+function KDBuffResist(buffs, type) {
+	if (KDDamageEquivalencies[type]) type = KDDamageEquivalencies[type];
+	return KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(buffs, type + "DamageResist"))
+		* (KinkyDungeonMeleeDamageTypes.includes(type) ?
+		KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(buffs, "meleeDamageResist"))
+		: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(buffs, "magicDamageResist")));
 }

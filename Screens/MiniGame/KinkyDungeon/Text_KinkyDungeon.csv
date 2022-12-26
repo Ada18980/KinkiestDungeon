@@ -2803,6 +2803,8 @@ KinkyDungeonInventoryItemBracersTideDesc,"A pair of bracers that conjures a migh
 KinkyDungeonInventoryItemBracersTideDesc2,"Creates an AoE delayed explosion on attack that stuns enemies and deals 10 acid damage."
 LootBracersTide,"You find a pair of bracers that are transparent like water."
 
+KDCursedArmorUncurse,The curse on the RestraintName is lifted!
+
 RestraintT,""
 RestraintTDesc,""
 RestraintTDesc2,""
