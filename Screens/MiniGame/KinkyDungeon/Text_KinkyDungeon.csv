@@ -2619,7 +2619,7 @@ KinkyDungeonPoolDrinkSlime,"The slime washes off in the fountain!!!"
 
 KinkyDungeonCommerceBuy,"The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)"
 KinkyDungeonCommerceNext,"Next Offer"
-KinkyDungeonCommercePurchase,"Buy"
+KinkyDungeonCommercePurchase,"Buy (press right)"
 KinkyDungeonCommerceCost,"Cost: ItemCostgp"
 
 ClimbDown,"You climb down to the next level"
@@ -2804,6 +2804,7 @@ KinkyDungeonInventoryItemBracersTideDesc2,"Creates an AoE delayed explosion on a
 LootBracersTide,"You find a pair of bracers that are transparent like water."
 
 KDCursedArmorUncurse,The curse on the RestraintName is lifted!
+KDShopConfirm,Press RIGHT to confirm buy!
 
 RestraintT,""
 RestraintTDesc,""

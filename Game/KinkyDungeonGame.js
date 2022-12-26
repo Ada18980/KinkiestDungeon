@@ -2962,7 +2962,7 @@ function KinkyDungeonGetMovable() {
 }
 
 function KinkyDungeonListenKeyMove() {
-	if (KinkyDungeonLastMoveTimer < performance.now() && KinkyDungeonControlsEnabled() && KinkyDungeonDrawState == "Game") {
+	if (KinkyDungeonLastMoveTimer < performance.now() && KinkyDungeonControlsEnabled() && KinkyDungeonDrawState == "Game" && !KDModalArea) {
 		let moveDirection = null;
 		let moveDirectionDiag = null;
 
@@ -3014,6 +3014,8 @@ function KinkyDungeonListenKeyMove() {
 	if (!KinkyDungeonGameKey.keyPressed.some((element)=>{return element;})) { KinkyDungeonLastMoveTimer = 0;}
 }
 
+let KDShopBuyConfirm = false;
+
 function KinkyDungeonGameKeyDown() {
 	let moveDirection = null;
 
@@ -3030,6 +3032,33 @@ function KinkyDungeonGameKeyDown() {
 		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
 		return true;
 	}
+
+	if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KinkyDungeonTargetTile?.Type == "Shrine" && KinkyDungeonTargetTile.Name == "Commerce") {
+		if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
+			KinkyDungeonShopIndex = (KinkyDungeonShopIndex + 1) % KDGameData.ShopItems.length;
+			KDShopBuyConfirm = false;
+			return true;
+		} else if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
+			KinkyDungeonShopIndex = KinkyDungeonShopIndex - 1;
+			if (KinkyDungeonShopIndex < 0) KinkyDungeonShopIndex = KDGameData.ShopItems.length - 1;
+			KDShopBuyConfirm = false;
+			return true;
+		} else if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
+			let cost = KinkyDungeonShrineCost("Commerce");
+			if (cost <= KinkyDungeonGold) {
+				if (!KDShopBuyConfirm) KDShopBuyConfirm = true;
+				else {
+					KDSendInput("shrineBuy", {type: "Commerce", shopIndex: KinkyDungeonShopIndex});
+					KDShopBuyConfirm = false;
+				}
+			}
+			return true;
+		} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey) {
+			KDShopBuyConfirm = false;
+			return true;
+		}
+	}
+	KDShopBuyConfirm = false;
 
 	if (KinkyDungeonState == "TileEditor") {
 		if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
