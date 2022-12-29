@@ -1142,7 +1142,7 @@ KinkyDungeonInventoryItemMagicSwordDesc,"Slices through ghosts with ease!"
 KinkyDungeonInventoryItemMagicSwordDesc2,"A sword that guides itself toward its target, making it easy to hit with."
 KinkyDungeonInventoryItemDragonslaver,Dragonslaver
 KinkyDungeonInventoryItemDragonslaverDesc,"A powerful weapon with an ancient mechanism that launches binding belts."
-KinkyDungeonInventoryItemDragonslaverDesc2,"Deals slash damage. Drains 0.75% ancient energy to fire a line of belts that deal 40 chain damage and 4 extra binding."
+KinkyDungeonInventoryItemDragonslaverDesc2,"Deals slash damage. Can make ranged attacks.. Drains 0.75% ancient energy to fire a line of belts that deal 40 chain damage and 40 binding."
 KinkyDungeonInventoryItemTheEncaser,Metamorphosis
 KinkyDungeonInventoryItemTheEncaserDesc,"You can enter slime form for 25 turns, which lets you pass thru bars, +50% evasion, and deals 25 glue damage when attacked."
 KinkyDungeonInventoryItemTheEncaserDesc2,"Deals glue damage. Roots targets for 2 turns on a hit."
@@ -1151,7 +1151,7 @@ KinkyDungeonInventoryItemFourSeasonsDesc,"Activate to reduce the cost of your ne
 KinkyDungeonInventoryItemFourSeasonsDesc2,"Deals shadow damage. +25% fire, ice, acid, crush, electric, pressure damage."
 KinkyDungeonInventoryItemArbiter,The Arbiter
 KinkyDungeonInventoryItemArbiterDesc,"I have altered the rules. Pray I do not alter them further."
-KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 200% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm"
+KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 110% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm"
 KinkyDungeonInventoryItemBondageBuster,Bondage Buster
 KinkyDungeonInventoryItemBondageBusterDesc,"Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge."
 KinkyDungeonInventoryItemBondageBusterDesc2,"Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns."
@@ -1164,8 +1164,8 @@ KinkyDungeonInventoryItemMessengerOfLove,Messenger of Love
 KinkyDungeonInventoryItemMessengerOfLoveDesc,"Love shines in many ways..."
 KinkyDungeonInventoryItemMessengerOfLoveDesc2,"Can fire an arrow that makes an enemy extremely lustful, causing them to attack others. Lasts forever on lesser enemies, 30 turns on high-level enemies, and 10 turns on bosses."
 KinkyDungeonInventoryItemMoiraiScissors,Moirai's Scissors
-KinkyDungeonInventoryItemMoiraiScissorsDesc,"While you have ancient energy, this weapon attacks twice."
-KinkyDungeonInventoryItemMoiraiScissorsDesc2,"Deals slash damage. Adds up to 30 bonus psychic damage her hit by converting binding into damage."
+KinkyDungeonInventoryItemMoiraiScissorsDesc,"Safety first!"
+KinkyDungeonInventoryItemMoiraiScissorsDesc2,"Deals slash damage. Adds up to 30 bonus psychic damage her hit by converting binding into damage. Drains 5 charge to attack twice."
 KinkyDungeonInventoryItemSlimethrower,Latex Projector
 KinkyDungeonInventoryItemSlimethrowerDesc,"Deals crush damage. Can be used to spray a '+' shaped pool of slime."
 KinkyDungeonInventoryItemSlimethrowerDesc2,"Drains 1.5% ancient energy to create a pool of slime that deals 35 glue damage per tile and slows enemies."

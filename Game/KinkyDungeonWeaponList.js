@@ -156,7 +156,7 @@ let KinkyDungeonWeapons = {
 	// Divine
 	"MoiraiScissors": {name: "MoiraiScissors", dmg: 1.5, chance: 1.1, staminacost: 1.5, type: "slash", unarmed: false, rarity: 10, shop: false, magic: true, cutBonus: 0.2, sfx: "Cut",
 		events: [
-			{type: "DoubleStrike", trigger: "afterPlayerAttack", requireEnergy: true, energyCost: 0.0075},
+			{type: "DoubleStrike", trigger: "afterPlayerAttack", requireEnergy: true, energyCost: 0.005},
 			{type: "ConvertBindingToDamage", trigger: "afterPlayerAttack", power: 1.0, bind: 3.0, damage: "soul"},
 		],
 	},
@@ -172,7 +172,7 @@ let KinkyDungeonWeapons = {
 	"Dragonslaver": {name: "Dragonslaver", dmg: 3.5, chance: 1.25, staminacost: 2.5, type: "slash", unarmed: false, rarity: 10, shop: false, cutBonus: 0.1, sfx: "LightSwing",
 		events: [{type: "CastSpell", spell: "BeltStrike", trigger: "playerAttack", requireEnergy: true, energyCost: 0.008}],
 		special: {type: "hitorspell", spell: "BeltStrike", requiresEnergy: true, energyCost: 0.0075, range: 2.99}},
-	"Arbiter": {name: "Arbiter", dmg: 4, bindEff: 1.5, chance: 2.0, bindType: "Metal", staminacost: 2.5, type: "chain", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "HeavySwing",
+	"Arbiter": {name: "Arbiter", dmg: 4, bindEff: 1.1, chance: 2.0, bindType: "Metal", staminacost: 3, type: "chain", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "HeavySwing",
 		events: [
 			{type: "BuffMulti", trigger: "tick", power: 0.25, buffTypes: [
 				"glueDamageBuff",
