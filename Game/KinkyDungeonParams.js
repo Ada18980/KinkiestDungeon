@@ -33,6 +33,7 @@ const KinkyDungeonMapParams = {
 		},
 
 		tagModifiers: {
+			"temple": 0.4,
 			"jungle": 0,
 			"cavern": 0,
 		},
