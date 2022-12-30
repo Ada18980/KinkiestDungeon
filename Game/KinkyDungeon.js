@@ -698,6 +698,7 @@ function KinkyDungeonRun() {
 	// Reset the sprites drawn cache
 	kdSpritesDrawn = new Map();
 
+	KDLastButtonsCache = KDButtonsCache;
 	KDButtonsCache = {};
 	KDUpdateVibeSounds();
 	KDUpdateMusic();
@@ -1191,25 +1192,25 @@ function KinkyDungeonRun() {
 
 		// Draw key buttons
 		DrawButtonKDEx("KBUp", () => {KinkyDungeonKeybindingsTemp.Up = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			1075, 100, 300, 64, TextGet("KinkyDungeonKeyUp") + ": '" + (KinkyDungeonKeybindingsTemp.Up) + "'", "#ffffff", "");
+			1075, 100, 300, 50, TextGet("KinkyDungeonKeyUp") + ": '" + (KinkyDungeonKeybindingsTemp.Up) + "'", "#ffffff", "");
 		DrawButtonKDEx("KBDown", () => {KinkyDungeonKeybindingsTemp.Down = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			1075, 180, 300, 64, TextGet("KinkyDungeonKeyDown") + ": '" + (KinkyDungeonKeybindingsTemp.Down) + "'", "#ffffff", "");
+			1075, 160, 300, 50, TextGet("KinkyDungeonKeyDown") + ": '" + (KinkyDungeonKeybindingsTemp.Down) + "'", "#ffffff", "");
 		DrawButtonKDEx("KBLeft", () => {KinkyDungeonKeybindingsTemp.Left = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			1075, 260, 300, 64, TextGet("KinkyDungeonKeyLeft") + ": '" + (KinkyDungeonKeybindingsTemp.Left) + "'", "#ffffff", "");
+			1075, 220, 300, 50, TextGet("KinkyDungeonKeyLeft") + ": '" + (KinkyDungeonKeybindingsTemp.Left) + "'", "#ffffff", "");
 		DrawButtonKDEx("KBRight", () => {KinkyDungeonKeybindingsTemp.Right = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			1075, 340, 300, 64, TextGet("KinkyDungeonKeyRight") + ": '" + (KinkyDungeonKeybindingsTemp.Right) + "'", "#ffffff", "");
+			1075, 280, 300, 50, TextGet("KinkyDungeonKeyRight") + ": '" + (KinkyDungeonKeybindingsTemp.Right) + "'", "#ffffff", "");
 
 		DrawButtonKDEx("KBUpLleft", () => {KinkyDungeonKeybindingsTemp.UpLeft = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			1075, 420, 300, 64, TextGet("KinkyDungeonKeyUpLeft") + ": '" + (KinkyDungeonKeybindingsTemp.UpLeft) + "'", "#ffffff", "");
+			1075, 340, 300, 50, TextGet("KinkyDungeonKeyUpLeft") + ": '" + (KinkyDungeonKeybindingsTemp.UpLeft) + "'", "#ffffff", "");
 		DrawButtonKDEx("KBUpRight", () => {KinkyDungeonKeybindingsTemp.UpRight = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			1075, 500, 300, 64, TextGet("KinkyDungeonKeyUpRight") + ": '" + (KinkyDungeonKeybindingsTemp.UpRight) + "'", "#ffffff", "");
+			1075, 400, 300, 50, TextGet("KinkyDungeonKeyUpRight") + ": '" + (KinkyDungeonKeybindingsTemp.UpRight) + "'", "#ffffff", "");
 		DrawButtonKDEx("KBDownLeft", () => {KinkyDungeonKeybindingsTemp.DownLeft = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			1075, 580, 300, 64, TextGet("KinkyDungeonKeyDownLeft") + ": '" + (KinkyDungeonKeybindingsTemp.DownLeft) + "'", "#ffffff", "");
+			1075, 460, 300, 50, TextGet("KinkyDungeonKeyDownLeft") + ": '" + (KinkyDungeonKeybindingsTemp.DownLeft) + "'", "#ffffff", "");
 		DrawButtonKDEx("KBDownRight", () => {KinkyDungeonKeybindingsTemp.DownRight = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			1075, 660, 300, 64, TextGet("KinkyDungeonKeyDownRight") + ": '" + (KinkyDungeonKeybindingsTemp.DownRight) + "'", "#ffffff", "");
+			1075, 520, 300, 50, TextGet("KinkyDungeonKeyDownRight") + ": '" + (KinkyDungeonKeybindingsTemp.DownRight) + "'", "#ffffff", "");
 
 		DrawButtonKDEx("KBWait", () => {KinkyDungeonKeybindingsTemp.Wait = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			1075, 780, 300, 64, TextGet("KinkyDungeonKeyWait") + ": '" + (KinkyDungeonKeybindingsTemp.Wait) + "'", "#ffffff", "");
+			1075, 600, 300, 50, TextGet("KinkyDungeonKeyWait") + ": '" + (KinkyDungeonKeybindingsTemp.Wait) + "'", "#ffffff", "");
 
 		DrawButtonKDEx("KBSpell1", () => {KinkyDungeonKeybindingsTemp.Spell1 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 100, 300, 50, TextGet("KinkyDungeonKeySpell1") + ": '" + (KinkyDungeonKeybindingsTemp.Spell1) + "'", "#ffffff", "");
@@ -1240,7 +1241,9 @@ function KinkyDungeonRun() {
 			675, 760, 300, 50, TextGet("KinkyDungeonKeySpellWeapon") + ": '" + (KinkyDungeonKeybindingsTemp.SpellWeapon) + "'", "#ffffff", "");
 
 		DrawButtonKDEx("KBSkip", () => {KinkyDungeonKeybindingsTemp.Skip = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			675, 820, 300, 50, TextGet("KinkyDungeonKeySkip") + ": '" + (KinkyDungeonKeybindingsTemp.Skip) + "'", "#ffffff", "");
+			1075, 680, 300, 50, TextGet("KinkyDungeonKeySkip") + ": '" + (KinkyDungeonKeybindingsTemp.Skip) + "'", "#ffffff", "");
+		DrawButtonKDEx("KBEnter", () => {KinkyDungeonKeybindingsTemp.Enter = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
+			1075, 740, 300, 50, TextGet("KinkyDungeonKeyEnter") + ": '" + (KinkyDungeonKeybindingsTemp.Enter) + "'", "#ffffff", "");
 
 
 		DrawButtonKDEx("KBMsgLog", () => {KinkyDungeonKeybindingsTemp.MsgLog = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
@@ -1314,6 +1317,8 @@ function KinkyDungeonRun() {
 	}
 
 	MainCanvas.textBaseline = "middle";
+
+	KDLastButtonsCache = {};
 }
 
 /**
@@ -1322,6 +1327,14 @@ function KinkyDungeonRun() {
 let KDButtonsCache = {
 
 };
+/**
+ * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean}>}
+ */
+let KDLastButtonsCache = {
+
+};
+
+
 /**
  * Draws a button component
  * @param {string} name - Name of the button element
@@ -1371,10 +1384,11 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
  * @param {object} [options] - Additional options
  * @param {boolean} [options.noTextBG] - Dont show text backgrounds
  * @param {number} [options.alpha] - Dont show text backgrounds
+ * @param {number} [options.zIndex] - zIndex
  * @returns {void} - Nothing
  */
 function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
-	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, undefined, options);
+	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
 	KDButtonsCache[name] = {
 		Left,
 		Top,
@@ -1396,8 +1410,13 @@ function KDProcessButtons() {
 	return false;
 }
 
+/**
+ * Buttons are clickable one frame later, please factor this in to UI design (especially when enforcing validation)
+ * @param {string} name
+ * @returns {boolean}
+ */
 function KDClickButton(name) {
-	let button = KDButtonsCache[name];
+	let button = KDButtonsCache[name] || KDLastButtonsCache[name];
 	if (button && button.enabled) {
 		return button.func();
 	}

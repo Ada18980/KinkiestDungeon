@@ -3019,44 +3019,8 @@ let KDShopBuyConfirm = false;
 function KinkyDungeonGameKeyDown() {
 	let moveDirection = null;
 
-	if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KinkyDungeonKeyToggle.includes(KinkyDungeonKeybindingCurrentKey)) {
-		switch (KinkyDungeonKeybindingCurrentKey) {
-			// Log, Passing, Door, Auto Struggle, Auto Pathfind
-			case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
-			case KinkyDungeonKeyToggle[1]: KinkyDungeonToggleAutoPass = !KinkyDungeonToggleAutoPass; break;
-			case KinkyDungeonKeyToggle[2]: KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor; break;
-			case KinkyDungeonKeyToggle[3]: KinkyDungeonFastStruggle = !KinkyDungeonFastStruggle; break;
-			case KinkyDungeonKeyToggle[4]: KinkyDungeonFastMove = !KinkyDungeonFastMove; break;
-			case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; break;
-		}
-		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
-		return true;
-	}
-
-	if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KinkyDungeonTargetTile?.Type == "Shrine" && KinkyDungeonTargetTile.Name == "Commerce") {
-		if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
-			KinkyDungeonShopIndex = (KinkyDungeonShopIndex + 1) % KDGameData.ShopItems.length;
-			KDShopBuyConfirm = false;
-			return true;
-		} else if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
-			KinkyDungeonShopIndex = KinkyDungeonShopIndex - 1;
-			if (KinkyDungeonShopIndex < 0) KinkyDungeonShopIndex = KDGameData.ShopItems.length - 1;
-			KDShopBuyConfirm = false;
-			return true;
-		} else if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
-			let cost = KinkyDungeonShrineCost("Commerce");
-			if (cost <= KinkyDungeonGold) {
-				if (!KDShopBuyConfirm) KDShopBuyConfirm = true;
-				else {
-					KDSendInput("shrineBuy", {type: "Commerce", shopIndex: KinkyDungeonShopIndex});
-					KDShopBuyConfirm = false;
-				}
-			}
-			return true;
-		} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey) {
-			KDShopBuyConfirm = false;
-			return true;
-		}
+	for (let keybinding of Object.values(KDKeyCheckers)) {
+		if (keybinding()) return true;
 	}
 	KDShopBuyConfirm = false;
 
@@ -3938,3 +3902,64 @@ function KDGetByWeight(list) {
 	}
 	return type;
 }
+
+let KDKeyCheckers = {
+	"Toggles": () => {
+		if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KinkyDungeonKeyToggle.includes(KinkyDungeonKeybindingCurrentKey)) {
+			switch (KinkyDungeonKeybindingCurrentKey) {
+				// Log, Passing, Door, Auto Struggle, Auto Pathfind
+				case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
+				case KinkyDungeonKeyToggle[1]: KinkyDungeonToggleAutoPass = !KinkyDungeonToggleAutoPass; break;
+				case KinkyDungeonKeyToggle[2]: KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor; break;
+				case KinkyDungeonKeyToggle[3]: KinkyDungeonFastStruggle = !KinkyDungeonFastStruggle; break;
+				case KinkyDungeonKeyToggle[4]: KinkyDungeonFastMove = !KinkyDungeonFastMove; break;
+				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; break;
+			}
+			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+			return true;
+		}
+	},
+
+	"Shop": () => {
+		if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KinkyDungeonTargetTile?.Type == "Shrine" && KinkyDungeonTargetTile.Name == "Commerce") {
+			if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
+				KinkyDungeonShopIndex = (KinkyDungeonShopIndex + 1) % KDGameData.ShopItems.length;
+				KDShopBuyConfirm = false;
+				return true;
+			} else if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
+				KinkyDungeonShopIndex = KinkyDungeonShopIndex - 1;
+				if (KinkyDungeonShopIndex < 0) KinkyDungeonShopIndex = KDGameData.ShopItems.length - 1;
+				KDShopBuyConfirm = false;
+				return true;
+			} else if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
+				let cost = KinkyDungeonShrineCost("Commerce");
+				if (cost <= KinkyDungeonGold) {
+					if (!KDShopBuyConfirm) KDShopBuyConfirm = true;
+					else {
+						KDSendInput("shrineBuy", {type: "Commerce", shopIndex: KinkyDungeonShopIndex});
+						KDShopBuyConfirm = false;
+					}
+				}
+				return true;
+			} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey) {
+				KDShopBuyConfirm = false;
+				return true;
+			}
+		}
+	},
+
+	"Dialogue": () => {
+		if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KDGameData.CurrentDialog) {
+			if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
+				KDDialogueData.CurrentDialogueIndex += 1;
+				return true;
+			} else if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
+				KDDialogueData.CurrentDialogueIndex = Math.max(0, KDDialogueData.CurrentDialogueIndex - 1);
+				return true;
+			} else if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey) {
+				KDClickButton("dialogue" + KDDialogueData.CurrentDialogueIndex);
+				return true;
+			}
+		}
+	},
+};

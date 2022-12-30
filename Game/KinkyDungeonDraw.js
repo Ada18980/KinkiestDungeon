@@ -1701,9 +1701,10 @@ let KDBorderColor = '#f0b541';
  * @param {string} Color - Color of the component
  * @param {boolean} [NoBorder] - Color of the component
  * @param {number} [Alpha] - Transparency of the box
+ * @param {number} [zIndex] - z Index
  *  @returns {void} - Nothing
  */
-function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder, Alpha) {
+function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder, Alpha, zIndex = 90) {
 	/*// Draw the button rectangle (makes the background color cyan if the mouse is over it)
 	MainCanvas.beginPath();
 	MainCanvas.fillStyle = Color;
@@ -1724,7 +1725,7 @@ function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder, Alpha) {
 		Height: Height,
 		Color: Color,
 		LineWidth: 1,
-		zIndex: 90,
+		zIndex: zIndex,
 		alpha: Alpha != undefined ? Alpha : 1,
 	});
 
@@ -1736,7 +1737,7 @@ function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder, Alpha) {
 			Height: Height,
 			Color: KDBorderColor,
 			LineWidth: 2,
-			zIndex: 101,
+			zIndex: zIndex + 0.001,
 		});
 	}
 }
@@ -2006,14 +2007,15 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {object} [options] - Additional options
  * @param {boolean} [options.noTextBG] - Dont show text backgrounds
  * @param {number} [options.alpha]
+ * @param {number} [options.zIndex] - zIndex
  * @returns {void} - Nothing
  */
-function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex, options) {
+function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (!NoBorder || FillColor)
 		DrawBoxKD(Left, Top, Width, Height,
 			FillColor ? FillColor : (hover ? (KDTextGray2) : KDButtonColor),
-			NoBorder, options?.alpha || 0.5,
+			NoBorder, options?.alpha || 0.5, zIndex
 		);
 	if (hover) {
 		let pad = 4;
@@ -2031,7 +2033,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 			Height: Height - 2 * pad + 1,
 			Color: "#ffffff",
 			LineWidth: 2,
-			zIndex: 100,
+			zIndex: zIndex,
 		});
 	}
 
@@ -2042,7 +2044,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 		if (Stretch) {
 			KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 				Image, Left, Top, Width, Height, undefined, {
-					zIndex: 100,
+					zIndex: zIndex,
 				});
 			/*DrawImageEx(Image, Left, Top, {
 				Width: Width,
@@ -2050,14 +2052,14 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 			});*/
 		} else KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 			Image, Left + 2, Top + Height/2 - img.height/2, img.width, img.height, undefined, {
-				zIndex: 100,
+				zIndex: zIndex,
 			});
 		textPush = img.width;
 	}
 	DrawTextFitKD(Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
 		Color,
 		(options && options.noTextBG) ? "none" : undefined,
-		FontSize, undefined, zIndex);
+		FontSize, undefined, zIndex + 0.001);
 
 	// Draw the tooltip
 	if ((HoveringText != null) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
@@ -2081,13 +2083,14 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {object} [options] - Additional options
  * @param {boolean} [options.noTextBG] - Dont show text backgrounds
  * @param {number} [options.alpha]
+ * @param {number} [options.zIndex] - zIndex
  * @returns {void} - Nothing
  */
 // @ts-ignore
 function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = KDTextGray0, CheckImage = "Icons/Checked.png", options) {
 	DrawTextFitKD(Text, Left + 100, Top + 33, 1000, TextColor, "#333333");
 	DrawButtonVis(Left, Top, Width, Height, "", Disabled ? "#ebebe4" : "#ffffff", IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled,
-		undefined, undefined, undefined, undefined, undefined, undefined, options);
+		undefined, undefined, undefined, undefined, undefined, options?.zIndex, options);
 }
 
 

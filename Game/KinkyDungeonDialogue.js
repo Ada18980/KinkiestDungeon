@@ -1,5 +1,9 @@
 "use strict";
 
+let KDDialogueData = {
+	CurrentDialogueIndex: 0,
+};
+
 /**
  *
  * @param {number} Min
@@ -103,17 +107,39 @@ function KDDrawDialogue() {
 							tt = tt.replace(d[0], d[1]);
 						}
 					}
-					DrawButtonVis(700, 450 + II * 60, 600, 50, tt, KinkyDungeonDialogueTimer < CommonTime() ? "white" : "#888888", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 122);
+					DrawButtonKDEx("dialogue" + II, (bdata) => {
+						KDOptionOffset = 0;
+						KDDialogueData.CurrentDialogueIndex = 0;
+						KDSendInput("dialogue", {dialogue: KDGameData.CurrentDialog, dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0], click: true});
+						return true;
+					}, KinkyDungeonDialogueTimer < CommonTime(), 700, 450 + II * 60, 600, 50, tt, KinkyDungeonDialogueTimer < CommonTime() ? "#ffffff" : "#888888", undefined, undefined, undefined, undefined,
+					KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined, undefined, undefined, {
+						zIndex: 122,
+					});
+					if (MouseIn(700, 450 + II * 60, 600, 50)) KDDialogueData.CurrentDialogueIndex = II;
 					II += 1;
 				}
 			}
 			if (II >= KDMaxDialogue) {
-				DrawButtonVis(1350, 450, 90, 40, "", KDOptionOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png",
-					undefined, undefined, undefined, undefined, undefined, undefined, undefined, 112);
-				DrawButtonVis(1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40, "", KDOptionOffset + KDMaxDialogue < entries.length ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png",
-					undefined, undefined, undefined, undefined, undefined, undefined, undefined, 112);
+				DrawButtonKDEx("dialogueUP", (bdata) => {
+					KDOptionOffset -= 1;
+					return true;
+				}, KDOptionOffset > 0, 1350, 450, 90, 40, "", KDOptionOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png",
+				undefined, undefined, undefined, undefined, undefined, undefined, {
+					zIndex: 122,
+				});
+				DrawButtonKDEx("dialogueDOWN", (bdata) => {
+					KDOptionOffset += 1;
+					return true;
+				}, KDOptionOffset + KDMaxDialogue < entries.length, 1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40, "", KDOptionOffset + KDMaxDialogue < entries.length ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png",
+				undefined, undefined, undefined, undefined, undefined, undefined, {
+					zIndex: 122,
+				});
 			}
+			if (KDDialogueData.CurrentDialogueIndex < 0) KDDialogueData.CurrentDialogueIndex = 0;
+			if (KDDialogueData.CurrentDialogueIndex >= II) KDDialogueData.CurrentDialogueIndex = II - 1;
 		}
+
 	} else if (!KDGameData.CurrentDialog) {
 		// Clear data
 		KDGameData.CurrentDialogMsgData = {};
@@ -232,6 +258,7 @@ function KDStartDialog(Dialogue, Speaker, Click, Personality, enemy) {
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
 	KinkyDungeonDrawState = "Game";
+	KDDialogueData.CurrentDialogueIndex = 0;
 	KDSendInput("dialogue", {dialogue: Dialogue, dialogueStage: "", click: Click, speaker: Speaker, personality: Personality, enemy: enemy ? enemy.id : undefined});
 }
 
@@ -250,34 +277,6 @@ function KDHandleDialogue() {
 
 		if (dialogue.inventory)
 			KinkyDungeonhandleQuickInv(true);
-
-		// Handle the options
-		if (dialogue.options) {
-			let entries = Object.entries(dialogue.options);
-			let II = 0;
-			let gagged = KDDialogueGagged();
-			for (let i = KDOptionOffset; i < entries.length && II < KDMaxDialogue; i++) {
-				if ((!entries[i][1].prerequisiteFunction || entries[i][1].prerequisiteFunction(gagged))
-					&& (!entries[i][1].gagRequired || gagged)
-					&& (!entries[i][1].gagDisabled || !gagged)) {
-					if (MouseIn(700, 450 + II * 60, 600, 50)) {
-						KDOptionOffset = 0;
-						KDSendInput("dialogue", {dialogue: KDGameData.CurrentDialog, dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0], click: true});
-						return true;
-					}
-					II += 1;
-				}
-			}
-			if (II >= KDMaxDialogue) {
-				if (MouseIn(1350, 450, 90, 40) && KDOptionOffset > 0) {
-					KDOptionOffset -= 1;
-					return true;
-				} else if (MouseIn(1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40) && KDOptionOffset + KDMaxDialogue < entries.length) {
-					KDOptionOffset += 1;
-					return true;
-				}
-			}
-		}
 	}
 
 	return false;
