@@ -1400,6 +1400,7 @@ function KDGetModifiedOpinion(enemy) {
 
 	op += 30 * KDFactionRelation("Player", KDGetFaction(enemy));
 	if (KinkyDungeonStatsChoice.get("Dominant") && enemy.personality && KDLoosePersonalities.includes(enemy.personality)) op += 12;
+	if (KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
 
 	return op;
 }
