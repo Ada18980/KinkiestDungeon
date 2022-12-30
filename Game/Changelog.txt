@@ -1196,6 +1196,7 @@ Features
 
 3.91
 - Ancient restrains now allow you to stack things on top
+- Rope kraken now drains its own HP to summon additional tentacles
 
 
 TODO ValidationFindBlockCycles to prevent bugs

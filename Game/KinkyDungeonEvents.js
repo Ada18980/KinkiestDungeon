@@ -2953,6 +2953,13 @@ let KDEventMapEnemy = {
 			}
 		},
 	},
+	"spellCast": {
+		"ropeKrakenSummonTentacle": (e, enemy, data) => {
+			if (enemy == data.enemy && data.spell?.name == "SummonRopeTentacle") {
+				enemy.hp = Math.max(enemy.hp - enemy.Enemy.maxhp * KDMagicDefs.RopeKraken_TentacleCost, Math.min(enemy.hp, enemy.Enemy.maxhp * KDMagicDefs.RopeKraken_TentacleThreshold));
+			}
+		}
+	},
 	"afterDamageEnemy": {
 		"bleedEffectTile": (e, enemy, data) => {
 			if (data.dmg > 0 && enemy == data.enemy) {

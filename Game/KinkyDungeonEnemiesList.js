@@ -1225,15 +1225,17 @@ let KinkyDungeonEnemies = [
 	},
 
 
-	{name: "RopeKraken", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "boss", "elite", "unflinching", "fireweakness", "slashweakness", "chainresist", "hunter"]), ignorechance: 0.75, followRange: 1, AI: "hunt",  summon: [{enemy: "RopeMinion", range: 2.5, count: 8, strict: true}],
-		spells: ["RopeEngulf"], spellCooldownMult: 1, spellCooldownMod: 1, ignoreflag: ["kraken"], disarm: 0.25,
+	{name: "RopeKraken", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "boss", "elite", "unflinching", "fireweakness", "slashweakness", "chainresist", "hunter"]),
+		ignorechance: 0.75, followRange: 1, AI: "hunt",
+		spells: ["RopeEngulf", "SummonRopeTentacle"], spellCooldownMult: 1, spellCooldownMod: 0, ignoreflag: ["kraken"], disarm: 0.25,
 		visionRadius: 10, maxhp: 60, minLevel: 3, weight:-31, movePoints: 4, attackPoints: 2, attack: "Spell", attackWidth: 1, attackRange: 1, power: 6, dmgType: "grope",
 		terrainTags: {"secondhalf":16, "lastthird":5, "boss": -80, "open": 20, "passage": -60, "ropeAnger": 20, "ropeRage": 60, "increasingWeight":0.5}, allFloors: true, shrines: ["Rope"],
 		events: [
-			{trigger: "passout", type: "delete", chance: 1.0}, // All rope krakens vanish after you pass out
+			{trigger: "passout", type: "delete", chance: 1.0}, // All rope krakens vanish after you pass outevents: [
+			{trigger: "spellCast", type: "ropeKrakenSummonTentacle"}, // Drain HP when casting
 		],
 		dropTable: [{name: "Scissors", ignoreInInventory: true, weight: 2}, {name: "Knife", ignoreInInventory: true, weight: 5}, {name: "EnchKnife", ignoreInInventory: true, weight: 2}, {name: "ElfCrystal", weight: 3}]},
-	{name: "RopeMinion", faction: "KinkyConstruct", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "fireweakness", "minor", "slashweakness", "chainresist"]), ignorechance: 0.75, followRange: 1, AI: "hunt",  master: {type: "RopeKraken", range: 4}, ignoreflag: ["kraken"], dependent: true,
+	{name: "RopeMinion", faction: "KinkyConstruct", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "fireweakness", "minor", "slashweakness", "chainresist", "krakententacle"]), ignorechance: 0.75, followRange: 1, AI: "hunt",  master: {type: "RopeKraken", range: 4}, ignoreflag: ["kraken"], dependent: true,
 		visionRadius: 10, maxhp: 8, minLevel: 0, weight:-1000, movePoints: 1, attackPoints: 2, attack: "MeleePullWill", attackWidth: 1, attackRange: 1, power: 3, dmgType: "crush", noAlert: true,
 		terrainTags: {}, allFloors: true, shrines: ["Rope"]},
 
