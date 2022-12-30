@@ -384,7 +384,7 @@ let KDEventMapInventory = {
 		},
 		"slimeSpread": (e, item, data) => {
 			if (!data.delta) return;
-			let mult = 0.2 * Math.max(0.25, Math.min(2.0,
+			let mult = 0.4 * Math.max(0.25, Math.min(2.0,
 				KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist"))));
 			KDEventData.SlimeLevel = Math.max(KDEventData.SlimeLevel, KDEventData.SlimeLevelStart + e.power * mult);
 			if (KDEventData.SlimeLevel >= 0.99999) {
