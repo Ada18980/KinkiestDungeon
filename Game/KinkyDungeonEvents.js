@@ -456,7 +456,7 @@ let KDEventMapInventory = {
 					let slime = slimedParts[Math.floor(KDRandom() * slimedParts.length)];
 					if (KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Hard" + slime.name), 0, true)) {
 						KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSlimeHarden"), "#ff44ff", 3);
-						ilet slimesuit = "SlimeSuit";
+						let slimesuit = "SlimeSuit";
 						if (slime.name.includes("Proto")){
 							slimesuit = "ProtoSlimeSuit";
 						}
