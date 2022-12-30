@@ -437,11 +437,11 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0.15},
 		maxwill: 0.6, enemyTags: {"expRestraints" : 9}, playerTags: {"Boxbinders": 20, "Armbinders": 20}, minLevel: 7, allFloors: true, shrine: ["Latex", "ArmbinderHarness"],
 		events: [{trigger: "postRemoval", type: "armbinderHarness"}], requireSingleTagToEquip: ["Armbinders", "Boxbinders"]},
-	{inventory: true, name: "ExpAnkleCuffs", debris: "Chains", accessible: true, Asset: "SteelAnkleCuffs", Link: "ExpAnkleCuffs2", DefaultLock: "Red", LinkableBy: [...KDBindable], Type: "Chained", Color: "#333333", Group: "ItemFeet", hobble: true, power: 9, weight: 0,
+	{inventory: true, name: "ExpAnkleCuffs", debris: "Chains", accessible: true, Asset: "SteelAnkleCuffs", Link: "ExpAnkleCuffs2", DefaultLock: "Red", LinkableBy: [...KDBindable, ...KDDevices], Type: "Chained", Color: "#333333", Group: "ItemFeet", hobble: true, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.4, "Remove": 0.1, "Pick": 0.15},
 		enemyTags: {"expRestraints":7}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs", "AnkleCuffsBase"],
 		events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, noLeash: true}]},
-	{name: "ExpAnkleCuffs2", accessible: true, Asset: "SteelAnkleCuffs", debris: "Chains", UnLink: "ExpAnkleCuffs", LinkableBy: [...KDBindable], Type: "Closed", Color: "#333333", Group: "ItemFeet", blockfeet: true, power: 9, weight: 0,
+	{name: "ExpAnkleCuffs2", accessible: true, Asset: "SteelAnkleCuffs", debris: "Chains", UnLink: "ExpAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], Type: "Closed", Color: "#333333", Group: "ItemFeet", blockfeet: true, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.1, "Pick": 0.15},
 		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
 		events: [{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
@@ -597,7 +597,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "HighsecArmbinder", debris: "Belts", strictness: 0.1, Asset: "LeatherArmbinder", inaccessible: true, LinkableBy: [...KDArmbinderLink], Type: "Strap", Group: "ItemArms", bindarms: true, bindhands: true, Color: "#333333",
 		limitChance: {"Unlock": 0.2}, DefaultLock: "Red", power: 7, weight: 2,
 		escapeChance: {"Struggle": -0.2, "Cut": 0.1, "Remove": 0.35, "Pick": 0.2}, enemyTags: {"leatherRestraintsHeavy":4, "armbinderSpell": 100}, playerTags: {"ItemArmsEmpty": -10}, minLevel: 8, allFloors: true, shrine: ["Leather", "Armbinders"]},
-	{inventory: true, name: "HighsecShackles", debris: "Chains", Asset: "SteelAnkleCuffs", Type: "Chained", LinkableBy: ["Wrapping"], Group: "ItemFeet", hobble: true, Color: ["Default", "Default"], DefaultLock: "Red", power: 6, weight: 2,
+	{inventory: true, name: "HighsecShackles", debris: "Chains", Asset: "SteelAnkleCuffs", Type: "Chained", LinkableBy: [...KDBindable, ...KDDevices], Group: "ItemFeet", hobble: true, Color: ["Default", "Default"], DefaultLock: "Red", power: 6, weight: 2,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 1.1, "Pick": 0.3}, enemyTags: {}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Metal", "Cuffs"]},
 	{inventory: true, name: "HighsecBallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "HarnessBallGag", strictness: 0.2, gag: 0.75, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", DefaultLock: "Red", power: 8, weight: 2,
 		escapeChance: {"Struggle": -0.25, "Cut": -0.05, "Remove": 0.5, "Pick": 0.25}, enemyTags: {"ballGagRestraints" : 4, "gagSpell": 100}, playerTags: {}, minLevel: 5, allFloors: true, shrine: ["Leather", "Latex", "Gags", "BallGags"]},
@@ -774,12 +774,12 @@ const KinkyDungeonRestraints = [
 	//region These restraints are easy, so they dont have maxwill
 	{inventory: true, name: "WristShackles", debris: "Chains", Asset: "WristShackles", linkCategory: "Cuffs", linkSize: 0.33, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemArms", Color: "Default", bindarms: true, Type: "Behind", power: 1, weight: 2, DefaultLock: "Red", escapeChance: {"Struggle": -0.05, "Cut": -0.25, "Remove": 10, "Pick": 5}, enemyTags: {"shackleRestraints":7, "handcuffer": 6, "Unchained": -8}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"]},
 	{inventory: true, name: "LegShackles", debris: "Chains", Asset: "LeatherLegCuffs", LinkableBy: ["Legbinders", "Hobbleskirts", "Belts", "Ties"], Group: "ItemLegs", hobble: true, Type: "Chained", Color: ["Default", "#888888", "#AAAAAA"], power: 3, weight: 2, DefaultLock: "Red", escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 10, "Pick": 5}, enemyTags: {"shackleRestraints":2}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"]},
-	{inventory: true, name: "FeetShackles", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable], Link: "FeetShackles2", Group: "ItemFeet", hobble: true, Type: "Chained", Color: ["Default", "Default"], power: 5, weight: 2, DefaultLock: "Red", escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 10, "Pick": 5}, enemyTags: {"shackleRestraints":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
+	{inventory: true, name: "FeetShackles", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], Link: "FeetShackles2", Group: "ItemFeet", hobble: true, Type: "Chained", Color: ["Default", "Default"], power: 5, weight: 2, DefaultLock: "Red", escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 10, "Pick": 5}, enemyTags: {"shackleRestraints":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
 		events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, noLeash: true}]},
 	// Dummy, remove in future
-	{inventory: true, name: "AnkleShackles", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable], Link: "FeetShackles2", Group: "ItemFeet", hobble: true, Type: "Chained", Color: ["Default", "Default"], power: 5, weight: -9999, DefaultLock: "Red", escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 10, "Pick": 5}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
+	{inventory: true, name: "AnkleShackles", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], Link: "FeetShackles2", Group: "ItemFeet", hobble: true, Type: "Chained", Color: ["Default", "Default"], power: 5, weight: -9999, DefaultLock: "Red", escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 10, "Pick": 5}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
 		events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, noLeash: true}]},
-	{name: "FeetShackles2", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: ["Wrapping"], UnLink: "FeetShackles", Group: "ItemFeet", blockfeet: true, Type: "Closed", Color: ["Default", "Default"], power: 5, weight: 2, DefaultLock: "Red", escapeChance: {"Struggle": -0.05, "Cut": -0.3, "Remove": 10, "Pick": 5}, enemyTags: {"shackleRestraints":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
+	{name: "FeetShackles2", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], UnLink: "FeetShackles", Group: "ItemFeet", blockfeet: true, Type: "Closed", Color: ["Default", "Default"], power: 5, weight: 2, DefaultLock: "Red", escapeChance: {"Struggle": -0.05, "Cut": -0.3, "Remove": 10, "Pick": 5}, enemyTags: {"shackleRestraints":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
 		events: [{trigger: "remove", type: "unlinkItem"}]},
 	{inventory: true, name: "SteelMuzzleGag", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 1.0, Asset: "MuzzleGag", Group: "ItemMouth", AssetGroup: "ItemMouth3", Color: "#999999",
 		power: 3, weight: 2, DefaultLock: "Red", escapeChance: {"Struggle": -0.3, "Cut": -0.25, "Remove": 10, "Pick": 5}, enemyTags: {"shackleGag":1}, playerTags: {"ItemMouthFull":1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Gags", "FlatGags"]},
@@ -878,7 +878,7 @@ const KinkyDungeonRestraints = [
 		events: [{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true}]},
 
 
-	{inventory: true, nonbinding: true, name: "MagneticAnkleCuffs", Asset: "SteelAnkleCuffs", debris: "Chains", LinkableBy: [...KDBindable], Link: "MagneticAnkleCuffs2", Color: "#444444", Group: "ItemFeet", power: 5, weight: 0,
+	{inventory: true, nonbinding: true, name: "MagneticAnkleCuffs", Asset: "SteelAnkleCuffs", debris: "Chains", LinkableBy: [...KDBindable, ...KDDevices], Link: "MagneticAnkleCuffs2", Color: "#444444", Group: "ItemFeet", power: 5, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": 0.1, "Pick": 0.15},
 		enemyTags: {"magnetCuffs": 5}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs", "AnkleCuffsBase"],
 		maxwill: 0.8, events: [
@@ -886,7 +886,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforePlayerDamage", type: "lockItemOnDamageType", sfx: "LightJingle", damage: "electric", chance: 1.0, lock: "Blue"},
 			{trigger: "defeat", type: "linkItem", chance: 1.0}
 		]},
-	{name: "MagneticAnkleCuffs2", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable], UnLink: "MagneticAnkleCuffs", Type: "Closed", Color: "#444444", Group: "ItemFeet", blockfeet: true, power: 5, weight: 0,
+	{name: "MagneticAnkleCuffs2", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], UnLink: "MagneticAnkleCuffs", Type: "Closed", Color: "#444444", Group: "ItemFeet", blockfeet: true, power: 5, weight: 0,
 		escapeChance: {"Struggle": 0.05, "Remove": 0.05}, helpChance: {"Remove": 0.25},
 		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
 		events: [{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
@@ -931,11 +931,11 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "MaidBelt", debris: "Belts", Asset: "LeatherBelt", Color: "#DBDBDB", Group: "ItemLegs", LinkableBy: ["Wrapping", "Legbinders", "Hobbleskirts", "Ties"], hobble: true, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": 0.05, "Remove": 0.1, "Pick": 0.25},
 		maxwill: 1.0, enemyTags: {"maidRestraints":10, "maidRestraintsNonChastity": 10, "maidRestraintsLight":1}, playerTags: {"ItemLegsFull":-2}, minLevel: 2, allFloors: true, shrine: ["Leather", "Belts"]},
-	{inventory: true, name: "MaidAnkleCuffs", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable], Link: "MaidAnkleCuffs2", DefaultLock: "Blue", Type: "Chained", Color: "Default", Group: "ItemFeet", hobble: true, power: 9, weight: 0,
+	{inventory: true, name: "MaidAnkleCuffs", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], Link: "MaidAnkleCuffs2", DefaultLock: "Blue", Type: "Chained", Color: "Default", Group: "ItemFeet", hobble: true, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": 0.1, "Pick": 0.15},
 		enemyTags: {"maidRestraints":7, "maidRestraintsNonChastity": 10, "steelCuffs": 5}, playerTags: {"ItemFeetFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cuffs", "AnkleCuffsBase"],
 		maxwill: 0.8, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, noLeash: true}]},
-	{name: "MaidAnkleCuffs2", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable], UnLink: "MaidAnkleCuffs", Type: "Closed", Color: "Default", Group: "ItemFeet", blockfeet: true, power: 9, weight: 0,
+	{name: "MaidAnkleCuffs2", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], UnLink: "MaidAnkleCuffs", Type: "Closed", Color: "Default", Group: "ItemFeet", blockfeet: true, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": 0.1, "Pick": 0.15},
 		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
 		events: [{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
@@ -1314,53 +1314,62 @@ const KinkyDungeonRestraints = [
 	//region Enchanted
 	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, arousalMode: true, enchanted: true, name: "EnchantedBelt", Asset: "PolishedChastityBelt", OverridePriority: 26, Color: "#AE915C", Group: "ItemPelvis", chastity: true, power: 25, weight: 0,
 		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
+		//renderWhenLinked: ["Ornate],
+		LinkableBy: ["Ornate"],
 		events: [
 			{trigger: "calcMiscast", type: "ReduceMiscastFlat", power: 0.3, requireEnergy: true},
 			{trigger: "tick", type: "RegenStamina", power: 1, requireEnergy: true, energyCost: 0.0005},
 		]},
 	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, arousalMode: true, enchanted: true, name: "EnchantedBra", Asset: "PolishedChastityBra", OverridePriority: 26, Color: "#AE915C", Group: "ItemBreast", chastitybra: true, power: 25, weight: 0,
 		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
+		//renderWhenLinked: ["Ornate],
+		LinkableBy: ["Ornate"],
 		events: [
-			{trigger: "beforeDamage", type: "ModifyDamageFlat", power: -1, requireEnergy: true, energyCost: 0.01}
+			{trigger: "beforeDamage", type: "ModifyDamageFlat", power: -1, requireEnergy: true, energyCost: 0.01, inheritLinked: true}
 		]},
 	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, name: "EnchantedHeels", Asset: "BalletWedges", Color: "#AE915C", Group: "ItemBoots", hobble: true, power: 25, weight: 0,
 		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
 		events: [
-			{trigger: "tick", type: "ApplySlowLevelBuff", power: -2, requireEnergy: true, energyCost: 0.0005},
-			{type: "ShadowHeel", trigger: "playerAttack", requireEnergy: true, energyCost: 0.00225},
+			{trigger: "tick", type: "ApplySlowLevelBuff", power: -2, requireEnergy: true, energyCost: 0.0005, inheritLinked: true},
+			{type: "ShadowHeel", trigger: "playerAttack", requireEnergy: true, energyCost: 0.00225, inheritLinked: true},
 			//{trigger: "beforePlayerAttack", type: "BoostDamage", power: 1, requireEnergy: true, energyCost: 0.001125}
 		]},
 	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, name: "EnchantedBlindfold", Asset: "PaddedBlindfold", Color: ["#AE915C", "#262626"], Group: "ItemHead", blindfold: 5, power: 25, weight: 0,
 		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
+		LinkableBy: [...KDBlindfoldLink],
 		events: [
-			{trigger: "calcEvasion", type: "BlindFighting", requireEnergy: true},
-			{trigger: "tick", type: "AccuracyBuff", power: 1.0, requireEnergy: true},
-			{trigger: "beforePlayerAttack", type: "BoostDamage", power: 1, requireEnergy: true, energyCost: 0.001125},
+			{trigger: "calcEvasion", type: "BlindFighting", requireEnergy: true, inheritLinked: true},
+			{trigger: "tick", type: "AccuracyBuff", power: 1.0, requireEnergy: true, inheritLinked: true},
+			{trigger: "beforePlayerAttack", type: "BoostDamage", power: 1, requireEnergy: true, energyCost: 0.001125, inheritLinked: true},
 		]},
 	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, name: "EnchantedAnkleCuffs", Asset: "SteelAnkleCuffs", Type: "Chained", Color: ["#AE915C", "#B0B0B0"], Group: "ItemFeet", power: 25, weight: 0,
 		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
+		LinkableBy: [...KDBindable, ...KDDevices], renderWhenLinked: [...KDBindable],
 		events: [
 			{trigger: "tick", type: "EnchantedAnkleCuffs"},
-			{trigger: "tick", type: "AllyHealingAura", aoe: 3.9, power: 1.5},
-			{trigger: "tick", type: "EvasionBuff", power: 0.25, requireEnergy: true},
-			{trigger: "miss", type: "EnergyCost", requireEnergy: true, energyCost: 0.0075}
+			{trigger: "tick", type: "AllyHealingAura", aoe: 3.9, power: 1.5, inheritLinked: true},
+			{trigger: "tick", type: "EvasionBuff", power: 0.25, requireEnergy: true, inheritLinked: true},
+			{trigger: "miss", type: "EnergyCost", requireEnergy: true, energyCost: 0.0075, inheritLinked: true}
 		]},
 	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, inventoryAs: "EnchantedAnkleCuffs", name: "EnchantedAnkleCuffs2", Asset: "SteelAnkleCuffs", Type: "Closed", blockfeet: true, Color: ["#AE915C", "#B0B0B0"], Group: "ItemFeet", power: 25, weight: 0,
 		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
+		LinkableBy: [...KDBindable, ...KDDevices], renderWhenLinked: [...KDBindable],
 		events: [
-			{trigger: "tick", type: "EnchantedAnkleCuffs2", requireEnergy: true}
+			// These wont unlink if they're under something else
+			{trigger: "tick", type: "EnchantedAnkleCuffs2", requireEnergy: true, inheritLinked: true}
 		]},
 	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, name: "EnchantedMuzzle", gag: 1.0, Asset: "FuturisticMuzzle", Modules: [1, 1, 2], Color: ['#AE915C', '#AE915C', '#CAA562', '#000000'],
 		Group: "ItemMouth", power: 25, weight: 0,
-		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["AncientMuzzle"],
+		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["AncientMuzzle", "FlatGags"],
 		events: [
 			{trigger: "tick", type: "SneakBuff", power: 1.15, requireEnergy: true},
 			{trigger: "tick", type: "RegenMana", power: 1.0, requireEnergy: true, energyCost: 0.0025},
 			{trigger: "beforeDamageEnemy", type: "MultiplyDamageStealth", power: 2.5, requireEnergy: true, energyCost: 0.0015}
 		]},
-	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, name: "EnchantedBallGag", LinkableBy: ["AncientMuzzle"], gag: 0.6, Asset: "FuturisticHarnessBallGag", Color: ['#AE915C', '#AE915C', '#424242', "#CAA562", '#000000'],
+	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, name: "EnchantedBallGag", gag: 0.6, Asset: "FuturisticHarnessBallGag", Color: ['#AE915C', '#AE915C', '#424242', "#CAA562", '#000000'],
 		Group: "ItemMouth", power: 25, weight: 0,
-		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
+		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Flat"],
+		LinkableBy: [...KDBallGagLink, "AncientMuzzle"], renderWhenLinked: [...KDBallGagLink],
 		events: [
 			{trigger: "calcMiscast", type: "ReduceMiscastFlat", power: 0.3, requireEnergy: true, inheritLinked: true},
 			{trigger: "tick", type: "RegenMana", power: 1.0, requireEnergy: true, energyCost: 0.0025, inheritLinked: true},
@@ -1369,6 +1378,7 @@ const KinkyDungeonRestraints = [
 	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, name: "EnchantedArmbinder", inaccessible: true, Asset: "FuturisticArmbinder", Type: "Tight", Color: ['#AE915C', '#AE915C', '#424242', "#424242", '#000000'],
 		Group: "ItemArms", power: 25, weight: 0,
 		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
+		LinkableBy: [...KDArmbinderLink], renderWhenLinked: [...KDArmbinderLink],
 		events: [
 			{trigger: "tick", type: "spellRange", power: 0.5, requireEnergy: true},
 			{trigger: "beforeDamageEnemy", type: "MultiplyDamageMagic", power: 1.4, requireEnergy: true, energyCost: 0.00002}
@@ -1376,6 +1386,7 @@ const KinkyDungeonRestraints = [
 	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, name: "EnchantedMittens", Asset: "FuturisticMittens", bindhands: true,
 		Color: ['#B6A262', '#B6A262', '#424242', '#000000'], Group: "ItemHands", power: 25, weight: 0,
 		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
+		LinkableBy: ["Tape", "Mittens"],
 		events: [
 			{trigger: "beforeDamageEnemy", type: "MultiplyDamageMagic", power: 1.4, requireEnergy: true, energyCost: 0.000025} // Energy cost per point o' extra damage
 		]},

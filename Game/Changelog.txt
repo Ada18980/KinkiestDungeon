@@ -1194,6 +1194,9 @@ Features
 - Shrines are buffed so now they remove much more restraints than before
 - Armbinders now need other arm restraints on in order to be applied by most things
 
+3.91
+- Ancient restrains now allow you to stack things on top
+
 
 TODO ValidationFindBlockCycles to prevent bugs
 
