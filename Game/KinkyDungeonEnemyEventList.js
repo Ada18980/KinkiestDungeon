@@ -26,7 +26,7 @@ let KDIntentEvents = {
 			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]);
 			enemy.IntentLeashPoint = nearestfurniture;
 			enemy.playWithPlayer = 22;
-			enemy.playWithPlayerCD = 30;
+			KDSetPlayCD(enemy, 2);
 
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 3);
 
@@ -49,7 +49,7 @@ let KDIntentEvents = {
 			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
 				if (enemy.playWithPlayer < 10) {
 					enemy.playWithPlayer = 10;
-					enemy.playWithPlayerCD = Math.max(enemy.playWithPlayerCD, 15);
+					KDSetPlayCD(enemy, 1.5);
 				}// else enemy.playWithPlayer += delta;
 			}
 			return false;
@@ -75,8 +75,8 @@ let KDIntentEvents = {
 			KDResetIntent(enemy, AIData);
 			enemy.playWithPlayer = 8 + Math.floor(KDRandom() * (5 * Math.min(5, Math.max(enemy.Enemy.attackPoints || 0, enemy.Enemy.movePoints || 0))));
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 7);
-			enemy.playWithPlayerCD = 20 + enemy.playWithPlayer * 2.5;
-			if (AIData.domMe) enemy.playWithPlayer = Math.floor(enemy.playWithPlayerCD * 0.8);
+			KDSetPlayCD(enemy, 2.5);
+			if (AIData.domMe) enemy.playWithPlayer = Math.floor(enemy.playWithPlayerCD * 0.7);
 			KDAddThought(enemy.id, "Play", 4, enemy.playWithPlayer);
 
 			let index = Math.floor(Math.random() * 3);

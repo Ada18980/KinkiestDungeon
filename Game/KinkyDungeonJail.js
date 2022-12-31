@@ -307,7 +307,7 @@ function KinkyDungeonPlayExcuse(enemy, Type) {
 	}
 	if (KinkyDungeonCanPlay(enemy) && !(enemy.playWithPlayer > 0) && enemy.aware && !(enemy.playWithPlayerCD > 0) && (enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || enemy.Enemy.playLine)) {
 		enemy.playWithPlayer = 17;
-		enemy.playWithPlayerCD = enemy.playWithPlayer * 1.5;
+		KDSetPlayCD(enemy, 1.5);
 		KinkyDungeonSetEnemyFlag(enemy, "playstart", 3);
 		if (Type == "Key") {
 			enemy.playWithPlayer = 30;
@@ -316,6 +316,16 @@ function KinkyDungeonPlayExcuse(enemy, Type) {
 		let suff = enemy.Enemy.playLine ? enemy.Enemy.playLine + Type : Type;
 		KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 4);
 	}
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} mult
+ * @param {number} base
+ */
+function KDSetPlayCD(enemy, mult, base = 10) {
+	enemy.playWithPlayerCD = Math.max(enemy.playWithPlayerCD, base * mult + enemy.playWithPlayerCD * mult);
 }
 
 /**
