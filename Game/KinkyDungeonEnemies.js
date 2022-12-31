@@ -4334,6 +4334,8 @@ let KDDomThresh_PerkMod = -0.5;
  */
 function KDCanDom(enemy) {
 	if (!enemy.Enemy.bound) return false;
+	if (KDEnemyHasFlag(enemy, "isSubbing")) return true;
+	if (KDEnemyHasFlag(enemy, "isDomming")) return false;
 	if (enemy.Enemy.tags.nosub) return false;
 	// Very bad pseudo RNG based on enemy.id as seed
 	// TODO replace with better prng with variable seed
