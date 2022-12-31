@@ -76,7 +76,7 @@ let KDIntentEvents = {
 			enemy.playWithPlayer = 8 + Math.floor(KDRandom() * (5 * Math.min(5, Math.max(enemy.Enemy.attackPoints || 0, enemy.Enemy.movePoints || 0))));
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 7);
 			KDSetPlayCD(enemy, 2.5);
-			if (AIData.domMe) enemy.playWithPlayer = Math.floor(enemy.playWithPlayerCD * 0.7);
+			if (AIData.domMe) enemy.playWithPlayer = Math.floor(enemy.playWithPlayer * 0.7);
 			KDAddThought(enemy.id, "Play", 4, enemy.playWithPlayer);
 
 			let index = Math.floor(Math.random() * 3);
