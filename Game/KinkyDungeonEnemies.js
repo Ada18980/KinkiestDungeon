@@ -2542,7 +2542,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					}
 				}
 				if (!hastag) end = true;
-				if (!end && (!trigger.prerequisite || trigger.prerequisite(enemy, AIData.playerDist))) {
+				if (!end && (!trigger.prerequisite || trigger.prerequisite(enemy, AIData.playerDist, AIData))) {
 					weight =  trigger.weight(enemy, AIData.playerDist);
 				}
 			}

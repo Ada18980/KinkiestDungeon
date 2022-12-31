@@ -1132,7 +1132,7 @@ interface KinkyDialogueTrigger {
 	noCombat?: boolean;
 	/** Prevents this from happening if the target is hostile */
 	nonHostile?: boolean;
-	prerequisite: (enemy: entity, dist: number) => boolean;
+	prerequisite: (enemy: entity, dist: number, AIData: any) => boolean;
 	weight: (enemy: entity, dist: number) => number;
 }
 
