@@ -69,7 +69,7 @@ let KDIntentEvents = {
 		nonaggressive: true,
 		// This is the basic 'it's time to play!' dialogue
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
-			return allied ? 10 : 110 && !enemy?.playWithPlayer;
+			return !enemy?.playWithPlayer ? (allied ? 10 : 110) : 0;
 		},
 		trigger: (enemy, AIData) => {
 			KDResetIntent(enemy, AIData);
