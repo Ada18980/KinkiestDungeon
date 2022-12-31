@@ -1488,6 +1488,8 @@ interface KinkyDialogue {
 	/** Jumps to the specified dialogue when clicked, after setting the response string*/
 	leadsTo?: string;
 	leadsToStage?: string;
+	/** Pressing the skip key will click this option */
+	skip?: boolean;
 	/** After leading to another dialogue, the response will NOT be updated */
 	dontTouchText?: boolean;
 	exitDialogue?: boolean;

@@ -3949,16 +3949,39 @@ let KDKeyCheckers = {
 	},
 
 	"Dialogue": () => {
-		if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KDGameData.CurrentDialog) {
-			if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
-				KDDialogueData.CurrentDialogueIndex += 1;
-				return true;
-			} else if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
-				KDDialogueData.CurrentDialogueIndex = Math.max(0, KDDialogueData.CurrentDialogueIndex - 1);
-				return true;
-			} else if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey) {
-				KDClickButton("dialogue" + KDDialogueData.CurrentDialogueIndex);
-				return true;
+		if (KDGameData.CurrentDialog && !(KinkyDungeonSlowMoveTurns > 0)) {
+
+			if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KDGameData.CurrentDialog) {
+				if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
+					KDDialogueData.CurrentDialogueIndex += 1;
+					return true;
+				} else if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
+					KDDialogueData.CurrentDialogueIndex = Math.max(0, KDDialogueData.CurrentDialogueIndex - 1);
+					return true;
+				} else if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey) {
+					KDClickButton("dialogue" + KDDialogueData.CurrentDialogueIndex);
+					return true;
+				} else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
+					// Get the current dialogue and traverse down the tree
+					let dialogue = KDGetDialogue();
+					if (dialogue.options) {
+						let entries = Object.entries(dialogue.options);
+
+						let II = 0;
+						let gagged = KDDialogueGagged();
+						for (let i = KDOptionOffset; i < entries.length && II < KDMaxDialogue; i++) {
+							if ((!entries[i][1].prerequisiteFunction || entries[i][1].prerequisiteFunction(gagged))
+								&& (!entries[i][1].gagRequired || gagged)
+								&& (!entries[i][1].gagDisabled || !gagged)) {
+								if (entries[i][0] == "Leave" || entries[i][0] == "Continue" || entries[i][1].skip) {
+									KDClickButton("dialogue" + i);
+									return true;
+								}
+							}
+						}
+					}
+					return false;
+				}
 			}
 		}
 	},
