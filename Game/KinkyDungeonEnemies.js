@@ -2471,11 +2471,16 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (AIData.domMe) {
 		AIData.playChance += 0.25;
+	} else if (!KDPlayerIsTied()) {
+		AIData.playChance *= 0.4;
 	}
 	if (KinkyDungeonFlags.get("PlayerCombat")) AIData.playChance *= 0.2;
 
 	if (KDEnemyHasFlag(enemy, "Shop")) AIData.playChance = 0;
-	if (KinkyDungeonStatsChoice.get("Undeniable")) AIData.playChance = 0.9;
+	if (KinkyDungeonStatsChoice.get("Undeniable")) {
+		if (AIData.playChance < 0.1) AIData.playChance = 0.1;
+		else AIData.playChance = 0.9;
+	}
 	let aware = (enemy.vp > sneakThreshold || enemy.aware);
 	if (KinkyDungeonCanPlay(enemy) && !KinkyDungeonFlags.get("NPCCombat") && !enemy.Enemy.alwaysHostile && !(enemy.rage > 0) && !(enemy.hostile > 0) && player.player && AIData.canSeePlayer && (aware) && KDEnemyCanTalk(enemy) && !KinkyDungeonInJail()) {
 		AIData.playAllowed = true;

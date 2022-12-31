@@ -325,7 +325,7 @@ function KinkyDungeonPlayExcuse(enemy, Type) {
  * @param {number} base
  */
 function KDSetPlayCD(enemy, mult, base = 10) {
-	enemy.playWithPlayerCD = Math.max(enemy.playWithPlayerCD, base * mult + enemy.playWithPlayerCD * mult);
+	enemy.playWithPlayerCD = Math.max(enemy.playWithPlayerCD, base * mult + enemy.playWithPlayer * mult);
 }
 
 /**

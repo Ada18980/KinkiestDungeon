@@ -2044,7 +2044,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 		if (Stretch) {
 			KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 				Image, Left, Top, Width, Height, undefined, {
-					zIndex: zIndex,
+					zIndex: zIndex + 0.001,
 				});
 			/*DrawImageEx(Image, Left, Top, {
 				Width: Width,
@@ -2052,7 +2052,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 			});*/
 		} else KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 			Image, Left + 2, Top + Height/2 - img.height/2, img.width, img.height, undefined, {
-				zIndex: zIndex,
+				zIndex: zIndex + 0.001,
 			});
 		textPush = img.width;
 	}
