@@ -2454,21 +2454,23 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (KDGameData.JailKey) AIData.playChance += 0.2;
 	if (AIData.playerDist < 1.5) AIData.playChance += 0.1;
 	if (enemy.aware) AIData.playChance += 0.1;
-	if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed) {
-		AIData.playChance += 0.25;
-	}
-	if (playerItems || KinkyDungeonRedKeys > 0) {
-		AIData.playChance += 0.2;
-		if (playerItems.length > 6) {
-			AIData.playChance += 0.5;
-		}
-	}
+
 	if (!enemy.personality) enemy.personality = KDGetPersonality(enemy);
 
 	if (AIData.playerDist < enemy.Enemy.visionRadius / 2) AIData.playChance += 0.1;
 
 	if (KDAllied(enemy) || (!AIData.hostile && KDGameData.PrisonerState != "jail" && KDGameData.PrisonerState != "parole" && !KinkyDungeonStatsChoice.has("Submissive"))) AIData.playChance *= 0.07; // Drastically reduced chance to play if not hostile
-
+	else {
+		if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed) {
+			AIData.playChance += 0.25;
+		}
+		if (playerItems || KinkyDungeonRedKeys > 0) {
+			AIData.playChance += 0.2;
+			if (playerItems.length > 6) {
+				AIData.playChance += 0.5;
+			}
+		}
+	}
 	if (AIData.domMe) {
 		AIData.playChance += 0.25;
 	} else if (!KDPlayerIsTied()) {
