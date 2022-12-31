@@ -80,6 +80,11 @@ let KinkyDungeonDresses = {
 		{Item: "SeamlessCatsuit", Group: "SuitLower", Color: "#7F3C9B", Lost: false},
 		{Item: "Catsuit", Group: "Gloves", Color: "#7F3C9B", Lost: false},
 	],
+	"ProtoSlimeSuit" : [
+		{Item: "SeamlessCatsuit", Group: "Suit", Color: "#404973", Lost: false},
+		{Item: "SeamlessCatsuit", Group: "SuitLower", Color: "#404973", Lost: false},
+		{Item: "Catsuit", Group: "Gloves", Color: "#404973", Lost: false},
+	],
 	"BlueSuit" : [
 		{Item: "SeamlessCatsuit", Group: "Suit", Color: "#3873C3", Lost: false},
 		{Item: "SeamlessCatsuit", Group: "SuitLower", Color: "#3873C3", Lost: false},
