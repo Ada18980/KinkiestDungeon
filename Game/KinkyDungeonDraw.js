@@ -1718,7 +1718,7 @@ function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder, Alpha, zIndex = 90
 	}
 
 	MainCanvas.closePath();*/
-	FillRectKD(kdcanvas, kdpixisprites, "box" + Left + "," + Top + "," + Width + "," + Height + Color, {
+	FillRectKD(kdcanvas, kdpixisprites, "box" + Left + "," + Top + "," + Width + "," + Height + Color + zIndex, {
 		Left: Left,
 		Top: Top,
 		Width: Width,
@@ -1730,7 +1730,7 @@ function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder, Alpha, zIndex = 90
 	});
 
 	if (!NoBorder) {
-		DrawRectKD(kdcanvas, kdpixisprites, "boxBorder" + Left + "," + Top + "," + Width + "," + Height, {
+		DrawRectKD(kdcanvas, kdpixisprites, "boxBorder" + Left + "," + Top + "," + Width + "," + Height + zIndex, {
 			Left: Left,
 			Top: Top,
 			Width: Width,
