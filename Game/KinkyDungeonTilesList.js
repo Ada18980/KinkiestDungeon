@@ -142,7 +142,7 @@ let KDMoveObjectFunctions = {
 		return true;
 	},
 	'-': (moveX, moveY) => { // Open the chest
-		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonObjectChargerDestroyed"), "gray", 2);
+		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonObjectChargerDestroyed"), "#999999", 1, true);
 		return true;
 	},
 };

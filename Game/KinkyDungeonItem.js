@@ -9,7 +9,7 @@ function KinkyDungeonItemDrop(x, y, dropTable, summoned) {
 		for (let drop of dropTable) {
 			let weight = drop.weight;
 			dropWeights.push({drop: drop, weight: dropWeightTotal});
-			if (drop.ignoreInInventory && KinkyDungeonInventoryGet(drop.name)) weight = 0;
+			if (drop.ignoreInInventory && (KinkyDungeonInventoryGet(drop.name) || KinkyDungeonFlags.get("ItemDrop_" + drop.name))) weight = 0;
 			if (drop.chance && KDRandom() > drop.chance) weight = 0;
 			dropWeightTotal += Math.max(weight, 0);
 		}
@@ -30,6 +30,7 @@ function KinkyDungeonItemDrop(x, y, dropTable, summoned) {
 						}
 					}
 					KinkyDungeonGroundItems.push(dropped);
+					KinkyDungeonSetFlag("ItemDrop_" + dropped.name, Math.round(12 + KDRandom() * 8));
 					return dropped;
 				}
 				return false;

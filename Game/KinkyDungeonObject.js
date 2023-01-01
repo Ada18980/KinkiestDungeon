@@ -80,7 +80,7 @@ function KinkyDungeonAngelMessage() {
 		msg = TextGet("KinkyDungeonAngelHelpful");
 	}
 	if (msg) {
-		KinkyDungeonSendActionMessage(3, msg, "white", 3);
+		KinkyDungeonSendActionMessage(3, msg, "#ffffff", 1, true);
 	}
 }
 
@@ -89,7 +89,7 @@ function KinkyDungeonFoodMessage() {
 		let msg = TextGet("KinkyDungeonFood" + (KinkyDungeonTargetTile.Food ? KinkyDungeonTargetTile.Food : ""));
 
 		if (msg) {
-			KinkyDungeonSendActionMessage(3, msg, "white", 3);
+			KinkyDungeonSendActionMessage(3, msg, "#ffffff", 1, true);
 		}
 	}
 
