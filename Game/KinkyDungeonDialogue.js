@@ -331,6 +331,11 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		},
 	};
 	dialog.options.Attack = {playertext: name + "Attack", response: "Default",
+		prerequisiteFunction: (gagged) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (!enemy || (enemy.aware && !enemy.playWithPlayer)) return true;
+			return false;
+		},
 		options: {
 			"Confirm": {playertext: name + "Attack_Confirm", response: "Default",
 				clickFunction: (gagged) => {
@@ -352,6 +357,64 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				exitDialogue: true,
 			},
 			"Leave": {playertext: name + "Attack_Leave", response: "Default",
+				leadsToStage: "",
+			},
+		}
+	};
+	dialog.options.AttackPlay = {playertext: name + "AttackPlay", response: "Default",
+		prerequisiteFunction: (gagged) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.playWithPlayer) return true;
+			return false;
+		},
+		options: {
+			"Confirm": {playertext: name + "Attack_Confirm", response: "Default",
+				clickFunction: (gagged) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						if (!enemy.Enemy.allied) {
+							KDMakeHostile(enemy);
+							let faction = KDGetFactionOriginal(enemy);
+							if (!KinkyDungeonHiddenFactions.includes(faction)) {
+								KinkyDungeonChangeRep("Ghost", -5);
+							}
+						} else {
+							enemy.hp = 0;
+						}
+					}
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"Leave": {playertext: name + "AttackPlay_Leave", response: "Default",
+				leadsToStage: "",
+			},
+		}
+	};
+	dialog.options.AttackUnaware = {playertext: name + "AttackUnaware", response: "Default",
+		prerequisiteFunction: (gagged) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && (enemy.aware || enemy.playWithPlayer)) return false;
+			return true;
+		},
+		options: {
+			"Confirm": {playertext: name + "AttackUnaware_Confirm", response: "Default",
+				clickFunction: (gagged) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						if (!enemy.Enemy.allied) {
+							KDMakeHostile(enemy);
+							enemy.stun = Math.max(enemy.stun || 0, 1);
+							enemy.vulnerable = Math.max(enemy.vulnerable || 0, 1);
+						} else {
+							enemy.hp = 0;
+						}
+					}
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"Leave": {playertext: name + "AttackUnaware_Leave", response: "Default",
 				leadsToStage: "",
 			},
 		}

@@ -8461,6 +8461,18 @@ dGenericAllyAttack_Confirm,"(Attack her)"
 dGenericAllyAttack_Leave,"(Never mind...)"
 rGenericAllyAttack_Leave,"(You decide not to)"
 
+dGenericAllyAttackPlay,"(Retaliate)"
+rGenericAllyAttackPlay,"(Really attack? You will be justified and won't take a rep penalty.)"
+dGenericAllyAttackPlay_Confirm,"(Attack her)"
+dGenericAllyAttackPlay_Leave,"(Never mind...)"
+rGenericAllyAttackPlay_Leave,"(You decide not to)"
+
+dGenericAllyAttackUnaware,"(Sneak Attack)"
+rGenericAllyAttackUnaware,"(Really attack? Target is unaware and will be stunned 1 turn.)"
+dGenericAllyAttackUnaware_Confirm,"(Attack her)"
+dGenericAllyAttackUnaware_Leave,"(Never mind...)"
+rGenericAllyAttackUnaware_Leave,"(You decide not to)"
+
 dGenericAllyLetMePass,"(Walk past)"
 dGenericAllyLetMePass_Confirm,"(Walk past)"
 dGenericAllyLetMePass_ConfirmAll,"(Walk past multiple allies)"
