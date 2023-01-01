@@ -29,6 +29,7 @@ let KDIntentEvents = {
 			KDSetPlayCD(enemy, 2);
 
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 3);
+			KinkyDungeonSetEnemyFlag(enemy, "motivated", 50);
 
 			KDAddThought(enemy.id, "Jail", 5, enemy.playWithPlayer);
 
@@ -46,7 +47,7 @@ let KDIntentEvents = {
 			return KDSettlePlayerInFurniture(enemy, AIData);
 		},
 		maintain: (enemy, delta) => {
-			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
+			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && (KDEnemyHasFlag(enemy, "motivated") || KDHostile(enemy))) {
 				if (enemy.playWithPlayer < 10) {
 					enemy.playWithPlayer = 10;
 					KDSetPlayCD(enemy, 1.5);
