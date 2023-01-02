@@ -697,7 +697,8 @@ let KDTE_Brush = {
 
 				if (brush.customfields) {
 					for (let field of Object.entries(brush.customfields)) {
-						KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)[field[0]] = KDTE_GetField(field);
+						if (KDTE_GetField(field))
+							KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)[field[0]] = KDTE_GetField(field);
 					}
 				}
 			} else {
