@@ -1398,7 +1398,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffffff"},
 		],
-		spellCooldownMult: 0.7, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 8, spellResist: 0.35, minLevel:0, weight: -12, movePoints: 2, attackPoints: 2, attack: "SpellMeleeBindWillLockAll", projectileTargeting: true,
+		spellCooldownMult: 0.7, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 8, spellResist: 0.35, minLevel:0, weight: -12, movePoints: 2, attackPoints: 2, attack: "SpellMeleeBindWillLockAll", projectileAttack: true,
 		attackWidth: 1, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 3, focusPlayer: true, attackLock: "Purple",
 		terrainTags: {"secondhalf":2, "lastthird":1, "open": 10, "miniboss": -5, "dressmaker": 12, "elementsAnger": 7, "elementsRage": 5}, allFloors: true, shrines: ["Conjure", "Elements"],
 		dropTable: [{name: "ScrollArms", weight: 2}, {name: "ScrollVerbal", weight: 2}, {name: "ScrollLegs", weight: 2}, {name: "ScrollPurity", weight: 1}]},
