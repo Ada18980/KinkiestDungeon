@@ -295,7 +295,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		value = Math.ceil((250 + 100 * KDRandom()) * (1 + Floor/40));
 	}
 	else if (Loot.name == "smallgold") {
-		value = Math.ceil((20 + 10 * KDRandom()) * (1 + Floor/35));
+		value = Math.ceil((25 + 15 * KDRandom()) * (1 + Floor/35));
 	}
 	else if (Loot.name == "knife") {
 		KinkyDungeonInventoryAddWeapon("Knife");
