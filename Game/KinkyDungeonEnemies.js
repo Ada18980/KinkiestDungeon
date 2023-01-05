@@ -4597,7 +4597,7 @@ function KDStockRestraints(enemy, restMult, count) {
 			});
 		if (rest) {
 			enemy.items.push(rest.name);
-			if (!KDEnemyIsTemporary(enemy)) {
+			if (KDEnemyIsTemporary(enemy)) {
 				if (!enemy.tempitems) enemy.tempitems = [];
 				enemy.tempitems.push(rest.name);
 			}
