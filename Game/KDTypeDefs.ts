@@ -489,7 +489,7 @@ interface overrideDisplayItem {
 	OverridePriority?: number[]|number,
 }
 
-interface KDLoadout {name: string, tags?: string[], singletag: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number};
+interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
 
 interface enemy extends KDHasTags {
 	/** Restraint filters */
@@ -1159,6 +1159,7 @@ interface effectTile {
 	skin?: string,
 	/** random = basic effect where it fades in and has a chance to fade out again */
 	fade?: string,
+	statuses?: Record<string, number>,
 };
 
 /** For spells */
@@ -1169,6 +1170,7 @@ interface effectTileRef {
 	pauseDuration?: number,
 	pauseSprite?: string,
 	skin?: string,
+	statuses?: Record<string, number>,
 };
 
 type KDPerk = {

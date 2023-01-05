@@ -2463,7 +2463,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					0.01));
 	}
 
-	if (enemy.Enemy.projectileAttack && (!AIData.canShootPlayer || !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y))) AIData.followRange = 1.5;
+	if ((enemy.Enemy.projectileAttack || enemy.Enemy.projectileTargeting) && (!AIData.canShootPlayer || !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y))) AIData.followRange = 1.5;
 
 	if (!AIData.aggressive && !enemy.Enemy.alwaysHostile && !(enemy.rage > 0) && AIData.canSeePlayer && player.player && !KDAllied(enemy)
 		&& ((!KinkyDungeonFlags.has("nojailbreak") && !KinkyDungeonPlayerInCell(true, true)) || KinkyDungeonLastTurnAction == "Struggle" || KinkyDungeonLastAction == "Struggle")) {
@@ -2678,7 +2678,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			&& (
 				(enemy.Enemy.attackWhileMoving && enemy != KinkyDungeonLeashingEnemy())
 				|| AIData.ignore
-				|| !(KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.followRange, enemy.attackPoints < 1 || !enemy.Enemy.projectileAttack, false) && enemy.aware)
+				|| !(KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.followRange, enemy.attackPoints < 1 || !(enemy.Enemy.projectileTargeting || enemy.Enemy.projectileAttack), false) && enemy.aware)
 				|| AIData.kite
 			)
 		) {
@@ -4458,8 +4458,21 @@ function KinkyDungeonGetLoadoutForEnemy(enemy, guaranteed) {
 				}
 			}
 		}
+		let hasTag2 = !s.singletag2;
+		if (!end && s.singletag2) {
+			for (let t of s.singletag2) {
+				if (enemy.Enemy.tags[t]) {
+					hasTag = true;
+					break;
+				}
+			}
+		}
 		if (!hasTag) end = true;
-		if (!end && (guaranteed || !s.chance || KDRandom() < s.chance)) loadout_list.push(s.name);
+		if (!hasTag2) end = true;
+		if (!end && (guaranteed || !s.chance || KDRandom() < s.chance)) {
+			for (let i = 0; i < (s.multiplier || 1); i++)
+				loadout_list.push(s.name);
+		}
 	}
 	if (loadout_list.length > 0) return loadout_list[Math.floor(KDRandom() * loadout_list.length)];
 	return "";
@@ -4614,7 +4627,7 @@ function KDStockRestraints(enemy, restMult, count) {
 			});
 		if (rest) {
 			enemy.items.push(rest.name);
-			if (!KDEnemyIsTemporary(enemy)) {
+			if (KDEnemyIsTemporary(enemy)) {
 				if (!enemy.tempitems) enemy.tempitems = [];
 				enemy.tempitems.push(rest.name);
 			}
