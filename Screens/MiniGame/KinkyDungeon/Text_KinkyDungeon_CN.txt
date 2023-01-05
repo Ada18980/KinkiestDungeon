@@ -5252,26 +5252,12 @@ You teleport!
 传送！
 Choose target location
 选择目标位置
-Ice Shard
-冰枪术
-A shard of ice that does DamageDealt damage and slows for Duration turns. Freezes if already slowed.
-投掷一个造成DamageDealt伤害并在Duration回合内造成减速的冰枪。如果目标已经减速，则改为冻结。
 You a hurl a shard of ice!
 你投出一杆冰枪！
-Freeze
-冻结
-Freeze an adjacent target for Duration turns.
-在 Duration 回合内冻结一个相邻的目标。
 You utter dark words of ice-cold truths.
 你说出冰封的黑暗咒语。
 Choose a target to freeze
 选择要冻结的目标
-Shatter
-冰爆
-Shatter
-冰爆
-When a frozen target thaws or dies, deals DamageDealt ice damage to nearby targets.
-当被冻结的目标解冻或死亡时，对附近的目标造成DamageDealt冰伤害。
 Ignite a target for Duration turns
 在 Duration 回合内点燃目标
 You spin in a circle, inscribing flames with your feet!
@@ -5340,16 +5326,12 @@ You create a temporary shield!
 你创造了一个临时的盾牌！
 Choose shield location
 选择屏蔽位置
-Electrify
-落雷
 Witch's Electricity
 女巫的落雷
 Witch's Electric Orb
 女巫的雷电球
 Witch's Electric Burst
 女巫的电击
-A delayed shock that deals DamageDealt damage and stuns for Duration turns.
-造成DamageDealt伤害和Duration回合眩晕的延迟雷击。
 You charge up a burst of electricty!
 你召唤了落雷！
 Choose target location
@@ -5376,8 +5358,6 @@ Channel to heal 15 hitpoints per turn to summoned allies within a 5x5 area.
 引导每回合为 5x5 区域内的召唤盟友治疗 15 点生命值（不包括你自己）。
 You conjure a healing light!
 你召唤出治愈之光！
-Crackle
-暴雷
 Storm Bolt
 风暴之箭
 A bolt of lightning that does DamageDealt damage to enemies in a 4-range line and briefly stuns.
@@ -5386,20 +5366,12 @@ Lightning erupts from your fingertips!
 闪电从指尖爆发！
 Choose line direction (max range 4 tiles)
 选择线方向（最大范围 4 个图块）
-Fissure
-裂地
 Lava Fissure
 熔岩裂缝
-A great fissure erupts from the earth, dealing 70 fire damage to enemies in a 4-range line and dealing 15 damage/turn for 6 turns.
-大地裂开喷出熔岩，对4内的敌人造成70点火焰伤害，接下来每回合造成15点伤害，持续6回合。
 You stomp the ground and the earth opens its gaping maw!
 你重踏大地，地面出现了无底洞！
 Choose line direction (max range 4 tiles)
 选择线方向（最大范围 4 个图块）
-Lightning Bolt
-闪电箭
-A bolt of lightning that does DamageDealt damage to enemies in an infinite line and briefly stuns.
-一道闪电对无限距离直线上的敌人造成 DamageDealt 点伤害并短暂眩晕。
 You unleash a bolt of lightning!
 你释放出一道闪电！
 Choose line direction
@@ -5420,12 +5392,6 @@ You charge a powerful beam attack!!!
 你蓄力释放强大的光束攻击！！！
 Choose line direction
 选择线方向
-Icicles
-冰柱
-Icicle
-冰柱
-Channel 3 turns to fire 3 icicles that deal DamageDealt ice damage and slow for 4 turns, freezing slowed targets for 3 turns.
-接下来 3 回合一共发射 3 根冰柱造成 DamageDealt 点冰伤害并减速 4 回合，冻结减速的目标 3 回合。
 You raise a hand and icicles fly forward!
 你举起手，冰柱开始出现！
 Choose line direction
@@ -5630,12 +5596,6 @@ Restore 45 hitpoints to an allied creature.
 为一个友方生物恢复 45 点生命值（不包括你自己）。
 You utter a word of healing.
 你咏唱治愈的咒语。
-Flame Blade
-火焰之刃
-When enabled: Weapon attacks cost mana and create a flame strike that deals 30 fire damage to adjacent targets.
-启用后：武器攻击消耗法力值并造成火焰伤害，对相邻目标造成 30 点火焰伤害。
-Flame Blade
-火焰之刃
 Enhance Power
 增强力量
 When enabled: Struggling is more powerful, and attacks deal +2 crush damage
@@ -5796,10 +5756,6 @@ You conjure a pool of slime!
 你召唤出一滩史莱姆粘液！
 Select where the slime will start (SpellArea radius)
 选择起始的位置（SpellArea 半径）
-Ice Breath
-冰霜吐息
-A field of icicles that deals DamageDealt damage on a hit and stuns briefly.
-生成一片冰柱，冰柱会造成 DamageDealt 点伤害并造成短暂眩晕。
 You breath out a chilling frost!
 你呼出一股令人毛骨悚然的冰霜！
 Select where to put the icicles (SpellArea radius)
@@ -8898,10 +8854,6 @@ While holding a magical weapon like a staff or enchanted knife, your mana costs 
 手持法杖或附魔刀等魔法武器时，法力消耗降低20%。
 Choose AoE location
 选择施放位置
-Hailstorm
-冰雹
-A cloud of falling ice that does DamageDealt damage per turn for LifeTime turns and slows.
-降下冰雹，在 LifeTime 回合内每回合造成 DamageDealt 点伤害和减速。
 You conjure a flurry of frost!
 你召唤了冰霜！
 Tremor
@@ -8920,28 +8872,12 @@ Gives yourself or a creature a magic shield for 50 turns, granting +30 Warding.
 对自己或一个生物施加魔法护盾，持续 50 回合，获得 +30 护盾值。
 You whisper a word of protection!
 你轻声吟唱守护咒文！
-Windblast
-暴风
-Three puffs of wind that do DamageDealt pressure damage, stun briefly, and push targets back.
-召唤三道风压造成 DamageDealt 点压力伤害，附加短暂眩晕和击退。
 You press your wrists together and conjure a blast of wind!
 你并拢手腕召唤出暴风！
-Snowball
-雪球
-A fast orb that leaves behind a frigid cloud of ice. Enemies walking in the cloud take DamageDealt ice damage per tile and are slowed.
-快速滚动并在路径上留下寒冰云。 在云中的敌人每移动一格都会受到 DamageDealt 点冰伤害并被减速。
 You a hurl a snowy blast!
 你掷出一团暴雪！
-Winterblast
-凛冽寒流
-A piercing orb that leaves a trail of ice. Deals DamageDealt ice damage to enemies hit.
-贯穿整个路径并留下冰痕。 对击中的敌人造成 DamageDealt 点冰伤害。
 You a hurl a frigid orb!
 你掷出一个严寒结晶！
-Shock Orb
-冲击之球
-A slow-moving orb that deals DamageDealt electric damage to an adjacent enemy each turn.
-召唤一个缓慢移动的球体，每回合对相邻敌人造成 DamageDealt 点电击伤害。
 You hurl a charged orb!
 你释放了一个带电的球体！
 Choose aim direction (max range 4 tiles)
@@ -8958,10 +8894,6 @@ Slow moving projectile, deals DamageDealt acid damage to enemies it passes thru.
 缓慢移动并对其经过的敌人造成 DamageDealt 点酸蚀伤害。 在它的身后留下大量的水。
 You raise a huge mass of water!
 你召唤出一大团水！
-Field of Frost
-冰霜领域
-Freezes a 5x5 area (ice slows entities). Enemies in the area take DamageDealt damage per turn for LifeTime turns.
-冻结 5x5 的区域并附加减速。 该区域中的敌人每回合受到 DamageDealt 点伤害，持续 LifeTime 回合。
 You stomp your foot and call forth the storm!
 你跺脚召来寒冰风暴！
 Boulder
@@ -9020,24 +8952,12 @@ You stomp your foot and magma wells up beneath the ground!
 你跺了跺脚，岩浆从地下喷涌而出！
 Choose monoliths to enchant
 选择需要附魔的巨石
-Flame Rune
-火焰符文
-A trap that deals  fire damage in an area. Takes 5 turns to setup.
-设置一个陷阱，陷阱能够造成 DamageDealt 点范围火焰伤害。 需要 5 回合进行设置。
 You conjure an incendiary trap!
 你设置了一个火焰陷阱！
 Choose location for trap
 选择陷阱位置
-Lightning Rune
-闪电符文
-A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 5 turns to setup.
-设置一个陷阱，陷阱能够造成 DamageDealt 点电击伤害并眩晕 4 回合。 需要 5 回合进行设置。
 You conjure a charged trap!
 你设置了一个闪电陷阱！
-Freeze Rune
-霜冻符文
-A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 5 turns to setup.
-设置一个陷阱，陷阱能够造成 DamageDealt 点冰伤害并冰冻 30 回合。 需要 5 回合进行设置。
 You conjure an icy trap!
 你设置了一个霜冻陷阱！
 Strengthen
@@ -9046,14 +8966,6 @@ When enabled: Struggling is more powerful, and your attack damage is increased b
 激活时：快速挣扎，如果你的武器造成物理伤害，你的攻击伤害+20。
 Your body glows with magical energy!
 你的身体散发着神奇的能量！
-Frozen Prison
-寒冰牢狱
-Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn of freeze.
-冻结敌人并施加敌人最大生命值 10% 的束缚，每冻结一回合增加 10 点。
-Lightning Rod
-避雷针
-After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns.
-在施放消耗法力的大气或风暴法术后，变得导电并获得 300% 的电击抗性，持续 3 回合。
 CMD: Unlock
 指令: 解锁
 CMD: Disenchant
@@ -9424,6 +9336,16 @@ You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PER
 你受到 PERCENT1 DAMAGETYPE 伤害，基于 PERCENT2 DAMAGETYPE 抗性和 PERCENT3 DAMAGECATEGORY 修正
 Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage.
 你的基础攻击可造成 DAMAGEDEALT 点 DAMAGETYPE 伤害
+Empower to upcast spells
+积蓄魔力
+Cancel empowerment
+释放魔力
+You channel mana through your body! Empowerment level: LEVEL
+你通过你的身体来积蓄魔力！充能级别：LEVEL
+You are already at the maximum empowerment level!
+你已经达到了最高充能级别！
+You don't have any upcast spells yet.
+你没有任何高级法术。
 attack
 攻击
 damage
@@ -9437,7 +9359,7 @@ Spell Points:
 Spell Points: SPELLPOINTS
 技能点：SPELLPOINTS
 Upcast from SPELL
-SPELL 升级
+SPELL 进阶
 Upcast Level LEVEL
 LEVEL 级
 Learnable
@@ -9445,9 +9367,9 @@ Learnable
 Unlearned
 不可学习
 Excl. Upgrades
-排除升级
+排除进阶
 Upcast
-升级
+进阶
 Passive
 被动
 Projectiles
@@ -9490,6 +9412,8 @@ Knowledge
 知识
 Other
 其它
+pressure
+压力
 Flame Novice
 基础火法术
 Unlocks fire spells. Learn Firebolt.
@@ -9573,6 +9497,119 @@ A ball of flame that does DamageDealt damage.
 Fireball
 火球
 A slow moving ball of flame that explodes for 120 fire damage to the target and DamageDealt damage to surrounding enemies.
-释放可缓慢移动的爆炸火球，对目标造成 120 点火焰伤害，并对目标周围造成 DamageDealt 点火焰伤害
+释放可缓慢移动的爆炸火球，对目标造成 120 点火焰伤害，并对其附近单位造成 DamageDealt 点火焰伤害
 Ignite
 点燃
+Ignite a friendly target for Duration turns, dealing DamageDealt fire damage per turn to it and nearby targets.
+点燃一个友方单位 Duration 回合，每回合对其及附近单位造成 DamageDealt 点火焰伤害
+Flame Rune
+火焰符文
+A trap that deals DamageDealt fire damage in an area. Takes 5 turns to setup.
+设置一个陷阱，陷阱可造成 DamageDealt 点范围性火焰伤害。 需要 5 回合进行设置
+Flame Blade
+火焰之刃
+When enabled: Weapon attacks cost mana and create a flame strike that deals 30 fire damage to adjacent targets.
+启用后武器攻击消耗法力值并造成火焰伤害，对相邻目标造成 30 点火焰伤害
+Fire Hazard
+危险之火
+Fire damage ignites enemies for 5 damage per turn for 6 turns.
+火焰伤害可使敌人进入燃烧状态 6 回合，每回合造成 5 点伤害
+Temperature Play
+温度Play
+Fire and Ice damage do 30% more damage to fully bound enemies.
+对被完全束缚的敌人造成额外 30% 火焰或冰霜伤害
+Fissure
+裂地
+A great fissure erupts from the earth, dealing 70 fire damage to enemies in a 4-range line and dealing 15 damage/turn for 6 turns.
+使大地崩裂喷出熔岩，对 4 格范围内的敌人造成 70 点火焰伤害，接下来每回合造成 15 点火焰伤害，持续6回合
+Electrify
+落雷
+A delayed shock that deals DamageDealt damage and stuns for Duration turns.
+释放一道造成 DamageDealt 电击伤害和 Duration 回合眩晕的延迟雷击
+Electric Field
+电场
+Creates a conductive area for Duration turns. Makes all entities in the area Conductive, forcing them to share 50% electric damage.
+创造一个持续 Duration 回合的导电区域，使区域内个体导电。在导电区域内个体被电击伤害时，使区域内其他所有个体同时承受被攻击个体的 50% 电击伤害
+Static Sphere
+静态球体
+Conjure a sphere for Duration turns that makes nearby entities Conductive and each turn deals DamageDealt electric damage to one of them.
+召唤一个球体 Duration 回合，使相邻的个体导电，且每回合对其中一个个体造成 DamageDealt 电击伤害
+Shock Orb
+冲击之球
+A slow-moving orb that deals DamageDealt electric damage to an adjacent enemy each turn.
+召唤一个缓慢移动的球体，每回合对相邻敌人造成 DamageDealt 点电击伤害
+Crackle
+暴雷
+A bolt of lightning that does DamageDealt electric damage to enemies in a 4-range line and briefly stuns.
+召唤一道闪电，对施法方向 4 格内的敌人造成 DamageDealt 点电击伤害，附加短暂眩晕
+Lightning Bolt
+闪电箭
+A bolt of lightning that does DamageDealt damage to enemies in an infinite line and briefly stuns.
+召唤一道闪电，对施法方向上所有的敌人造成 DamageDealt 点电击伤害，附加短暂眩晕
+Lightning Rune
+闪电符文
+A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 5 turns to setup.
+设置一个陷阱，陷阱可造成 DamageDealt 点电击伤害并眩晕 4 回合。需要 5 回合进行设置
+Lightning Rod
+避雷针
+After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns.
+在施放消耗法力的风或雷法术后，变得导电并获得 300% 的电击抗性，持续 3 回合
+Windblast
+暴风
+Three puffs of wind that do DamageDealt pressure damage, stun briefly, and push targets back.
+召唤三道风压造成 DamageDealt 点压力伤害，附加短暂眩晕和击退
+Freeze
+冻结
+Freeze an adjacent target for Duration turns.
+冻结一个相邻的目标 Duration 回合
+Flash Frost
+霜闪
+Deal DamageDealt ice damage in a 3x3 area. Drenched creatures are frozen for 8 turns.
+在3x3范围内造成 DamageDealt 点寒冰伤害，被淋湿的个体被冻结 8 回合
+Hailstorm
+冰雹
+A cloud of falling ice that does DamageDealt damage per turn for LifeTime turns and slows.
+降下一道冰雹，持续 LifeTime 回合，每回合造成 DamageDealt 点寒冰伤害和减速
+Ice Breath
+冰霜吐息
+A field of icicles that deals DamageDealt damage on a hit and stuns briefly.
+生成一片冰柱，冰柱可造成 DamageDealt 点寒冰伤害并造成短暂眩晕
+Ice Shard
+冰枪术
+A shard of ice that does DamageDealt damage and slows for Duration turns. Freezes if already slowed or drenched.
+投掷一个造成 DamageDealt 寒冰伤害并在 Duration 回合内造成减速的冰枪。如果目标已经减速或淋湿，则改为冻结
+Snowball
+雪球
+A fast orb that leaves behind a frigid cloud of ice. Enemies walking in the cloud take DamageDealt ice damage per tile and are slowed.
+发射一个雪球，雪球将在路径上留下寒冰云。在云中的敌人每移动一格都会受到 DamageDealt 点寒冰伤害并被减速
+Winterblast
+凛冽寒流
+A piercing orb that leaves a trail of ice. Deals DamageDealt ice damage to enemies hit.
+发射一个贯穿整个路径并留下冰痕的严寒结晶。对击中的敌人造成 DamageDealt 点寒冰伤害
+Icicles
+冰柱
+Icicle
+冰柱
+Channel 3 turns to fire 3 icicles that deal DamageDealt ice damage and slow for 4 turns, freezing slowed/drenched targets for 3 turns.
+在 3 回合内发射 3 根造成 DamageDealt 点寒冰伤害并减速 4 回合的冰柱，冻结减速或淋湿的目标 3 回合
+Ice Lance
+冰矛
+A quick-moving shard of ice that does DamageDealt damage and slows for Duration turns and passes through enemies. Freezes if already slowed or drenched.
+发射一个快速移动的冰矛，造成 DamageDealt 寒冰伤害并减速 Duration 回合，冻结减速或淋湿的目标
+Field of Frost
+冰霜领域
+Freezes a 5x5 area (ice slows entities). Enemies in the area take DamageDealt damage per turn for LifeTime turns.
+冻结 5x5 的区域并附加减速。 该区域中的敌人每回合受到 DamageDealt 点伤害，持续 LifeTime 回合
+Shatter
+冰爆
+When a frozen target thaws or dies, deals DamageDealt ice damage to nearby targets and slow for 4 turns..
+当被冻结的目标解冻或死亡时，对附近的目标造成 DamageDealt 寒冰伤害，并减速 4 回合。
+Frozen Prison
+寒冰牢狱
+Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn of freeze.
+冻结敌人并施加敌人最大生命值 10% 的束缚，每冻结一回合增加 10 点。
+Freeze Rune
+霜冻符文
+A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 5 turns to setup.
+设置一个陷阱，陷阱可造成 DamageDealt 点寒冰伤害并冰冻 30 回合。 需要 5 回合进行设置。
+
