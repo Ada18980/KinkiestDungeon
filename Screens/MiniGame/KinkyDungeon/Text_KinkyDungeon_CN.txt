@@ -2764,10 +2764,6 @@ AttackName hits TargetEnemy for DamageDealt DamageType damage, reduced by an ant
 AttackName 击中 TargetEnemy 造成 DamageDealt 点 DamageType 伤害，减少了它的魔法抗性！
 AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!
 AttackName 击中 TargetEnemy 造成毁灭性的 DamageDealt 点 DamageType 伤害！
-attack
-攻击
-damage
-伤害
 You miss the TargetEnemy!
 你没有命中目标敌人！
 Your attack is too feeble to hurt the TargetEnemy!
@@ -3124,6 +3120,8 @@ Purple
 紫色
 Gold
 金色
+Gold 
+金币
 Yellow
 黄色
 Red Lock
@@ -5170,10 +5168,6 @@ Next Page
 下一页
 Last Page
 最后一页
->>>
->>>
-<<<
-<<<
 Random Page (your hands are tied)
 随机页面（你的双手被束缚）
 You fail to concentrate on the spell and it fizzles!
@@ -6186,10 +6180,6 @@ Next Page
 下一页
 Previous Page
 上一页
->>>
->>>
-<<<
-<<<
 Spell Points: SPELLPOINTS --- Elementalist lvELEMLEVEL --- Conjuration lvCONJLEVEL --- Illusionist lvILLULEVEL
 法术点数: SPELLPOINTS --- 元素法术师 lvELEMLEVEL --- 咒术师 lvCONJLEVEL --- 幻术师 lvILLULEVEL
 You need a higher level in SCHOOL magic to learn this spell.
@@ -9456,3 +9446,142 @@ You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PER
 你受到 PERCENT1 DAMAGETYPE 伤害，基于 PERCENT2 DAMAGETYPE 抗性和 PERCENT3 DAMAGECATEGORY 修正
 Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage.
 你的基础攻击可造成 DAMAGEDEALT 点 DAMAGETYPE 伤害
+attack
+攻击
+damage
+伤害
+damage 
+攻击
+Damage
+攻击
+Spell Points: 
+技能点：
+Spell Points: SPELLPOINTS
+技能点：SPELLPOINTS
+Upcast from SPELL
+SPELL 升级
+Upcast Level LEVEL
+LEVEL 级
+Learnable
+可学习
+Unlearned
+不可学习
+Excl. Upgrades
+排除升级
+Upcast
+升级
+Passive
+被动
+Projectiles
+抛射物
+Area Damage
+范围伤害
+DoT
+持续伤害
+Offense
+进攻
+Defense
+防御
+Utility
+实用
+Upgrades
+升级
+Spell Tree
+技能树
+Earth
+岩
+Lightning
+电
+Air
+风
+Water
+水
+Rubber
+橡胶
+Summoning
+召唤
+Physics
+物理
+Stealth
+隐形
+Light
+光芒
+Stamina
+耐力
+Knowledge
+知识
+Other
+其它
+Flame Novice
+基础火法术
+Unlocks fire spells. Learn Firebolt.
+允许学习火法术 并习得元素法术 “火焰弹”
+Lightning Novice
+基础电法术
+Unlocks electrice spells. Learn Electrify.
+允许学习电法术 并习得元素法术 “落雷”
+Air Novice
+基础风法术
+Unlocks air spells. Learn Wind Blast.
+允许学习风法术 并习得元素法术 “暴风”
+Ice Novice
+基础冰法术
+Unlocks ice spells. Learn Freeze.
+允许学习冰法术 并习得元素法术“冻结”
+Water Novice
+基础水法术
+Unlocks water spells. Learn Water Ball.
+允许学习水法术 并习得元素法术“水球”
+Earth Novice
+基础岩法术
+Unlocks earth spells. Learn Stone Skin.
+允许学习岩法术 并习得元素法术“石肤术”
+Rope 101
+绳索 101
+Unlocks rope spells. Learn Conjure Ropes.
+允许学习绳索咒术 并习得咒术 “召唤绳索”
+Leather 101
+皮革 101
+Unlocks leather spells. Learn Conjure Gag.
+允许学习皮革咒术 并习得咒术 “召唤口球”
+Metal 101
+金属 101
+Unlocks metal spells. Learn Conjure Cuffs.
+允许学习金属咒术 并习得咒术 “召唤手铐”
+Latex 101
+乳胶 101
+Unlocks latex spells. Learn Slime Ball.
+允许学习乳胶咒术 并习得咒术 “史莱姆球”
+Physics 101
+物理 101
+Unlocks teleportation and physical manipulation spells. Learn Wall.
+允许学习物理、传送和控制咒术 并习得咒术 “墙”
+Summoning 101
+召唤 101
+Unlocks summoning spells. Learn Summon Familiar.
+允许学习召唤咒术 并习得咒术 “召唤魔宠”
+Blessing of Light
+光之祝福
+Unlocks light spells. Learn Flash.
+允许学习光芒幻术 并习得幻术 “小闪电”
+Blessing of Shadow
+暗之祝福
+Unlocks shadow spells. Learn Shadow Dagger.
+允许学习暗影幻术 并习得幻术 “暗影匕首”
+Blessing of Obscurity
+影之祝福
+Unlocks invisibility spells. Learn Camouflage.
+允许学习隐形幻术 并习得幻术 “拟态”
+Projection Magic
+投影幻术
+Unlocks illusory spells. Learn Summon Decoy.
+允许学习投影幻术 并习得幻术 “召唤诱饵”
+Arcane Knowledge
+秘密知识
+Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies.
+允许学习知识和暴击幻术 解锁对敌人的高级工具提示 并习得幻术 “共析钢”
+
+
+
+
+
