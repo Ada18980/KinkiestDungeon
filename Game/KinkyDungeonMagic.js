@@ -843,31 +843,64 @@ function KinkyDungeonWordWrap(str, maxWidthTranslate, maxWidthEnglish) {
 	// console.log('KinkyDungeonDetectLanguageForMaxWidth before', str, maxWidth);
 	let maxWidth = KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthEnglish);
 	// console.log('KinkyDungeonDetectLanguageForMaxWidth after', maxWidth);
-	while (str.length > maxWidth) {
-		let found = false;
-		// Inserts new line at first whitespace of the line
-		for (let i = maxWidth - 1; i >= 0; i--) {
-			if (KinkyDungeonTestWhite(str.charAt(i))) {
-				res = res + [str.slice(0, i), newLineStr].join('');
-				str = str.slice(i + 1);
-				found = true;
-				break;
+
+	if (maxWidth == maxWidthTranslate){
+		while (str.length > maxWidth) {
+			let found = false;
+
+			for (let i = maxWidth - 1; i >= 0; i--) {
+				if (KinkyDungeonTestWhite(str.charAt(i),"Chinese") && i < 6 && i > 4) {
+					res = res + [str.slice(0, i+1), newLineStr].join('');
+					str = str.slice(i + 1);
+					found = true;
+					break;
+				}
+			}
+
+			if (!found) {
+				if ((str.length - maxWidth) <= 3) {
+					res += [str.slice(0, maxWidth+3), newLineStr].join('');
+					str = str.slice(maxWidth+3);
+				} else {
+					res += [str.slice(0, maxWidth), newLineStr].join('');
+					str = str.slice(maxWidth);
+				}
 			}
 		}
-		// Inserts new line at maxWidth position, the word is too long to wrap
-		if (!found) {
-			res += [str.slice(0, maxWidth), newLineStr].join('');
-			str = str.slice(maxWidth);
+	} else {
+		while (str.length > maxWidth) {
+			let found = false;
+			// Inserts new line at first whitespace of the line
+			for (let i = maxWidth - 1; i >= 0; i--) {
+				if (KinkyDungeonTestWhite(str.charAt(i),"English")) {
+					res = res + [str.slice(0, i), newLineStr].join('');
+					str = str.slice(i + 1);
+					found = true;
+					break;
+				}
+			}
+			// Inserts new line at maxWidth position, the word is too long to wrap
+			if (!found) {
+				res += [str.slice(0, maxWidth), newLineStr].join('');
+				str = str.slice(maxWidth);
+			}
+	
 		}
-
 	}
+	
 
 	return res + str;
 }
 
-function KinkyDungeonTestWhite(x) {
-	let white = new RegExp(/^\s$/);
-	return white.test(x.charAt(0));
+function KinkyDungeonTestWhite(x,language) {
+	if (language == "English") {
+		let white = new RegExp(/^\s$/);
+		return white.test(x.charAt(0));
+	}
+	if (language == "Chinese") {
+		let white = new RegExp(/^[\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b\uff01\u3010\u3011\uffe5]$/);
+		return white.test(x.charAt(0));
+	}
 }
 
 function KDSchoolColor(school) {

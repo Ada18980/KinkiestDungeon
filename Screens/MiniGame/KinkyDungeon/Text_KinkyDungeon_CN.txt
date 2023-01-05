@@ -5210,12 +5210,8 @@ The glue slows you down!
 胶水让你慢下来！
 The glue slows you down! (-DamageDealt SP)
 胶水让你慢下来！ (-DamageDealt SP)
-Firebolt
-火焰弹
 Elemental's Firebolt
 元素的火焰弹
-A ball of flame that does DamageDealt damage.
-造成DamageDealt伤害的火焰球。
 You a hurl a firebolt!
 你投掷了火焰弹！
 Choose aim direction
@@ -5276,10 +5272,6 @@ Shatter
 冰爆
 When a frozen target thaws or dies, deals DamageDealt ice damage to nearby targets.
 当被冻结的目标解冻或死亡时，对附近的目标造成DamageDealt冰伤害。
-Ignite
-点燃
-Ignite
-点燃
 Ignite a target for Duration turns
 在 Duration 回合内点燃目标
 You spin in a circle, inscribing flames with your feet!
@@ -5364,16 +5356,8 @@ Choose target location
 选择目标位置
 The elemental channels the force of the storm!
 元素引导风暴之力！
-Fireball
-火球
-A slow moving ball of flame that explodes for 120 fire damage to the target and DamageDealt damage to surrounding enemies.
-一个缓慢移动的火焰球，会爆炸，对目标造成 120 点火焰伤害，并对周围的敌人造成 DamageDealt 点伤害。
 You a hurl a fireball!
 你投掷了火球！
-Incinerate
-焚风
-A tornado of flame that does DamageDealt damage per turn for LifeTime turns.
-一种火焰龙卷风，在 LifeTime 回合中每回合造成 DamageDealt 电伤害。
 You conjure a gout of flame!
 你召唤出一团火焰！
 Choose target AoE location
@@ -5858,8 +5842,6 @@ You swing Dragonslaver and it lashes out in a whip-like fashion!
 你挥动驯龙者，它像鞭子一样猛烈攻击！
 The slime from your staff coats your body, granting you strange powers!
 法杖上的史莱姆覆盖在你的身体上，赋予你奇怪的力量！
-Firebolt
-火焰弹
 An explosion knocks you to the ground!
 爆炸将你击倒在地！
 Curious Spell
@@ -8916,10 +8898,6 @@ While holding a magical weapon like a staff or enchanted knife, your mana costs 
 手持法杖或附魔刀等魔法武器时，法力消耗降低20%。
 Choose AoE location
 选择施放位置
-Firecracker
-迸裂火花
-A small delayed explosion that deals DamageDealt fire damage.
-施放一个小型的延时爆炸，造成 DamageDealt 点火焰伤害。
 Hailstorm
 冰雹
 A cloud of falling ice that does DamageDealt damage per turn for LifeTime turns and slows.
@@ -9580,8 +9558,21 @@ Arcane Knowledge
 秘密知识
 Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies.
 允许学习知识和暴击幻术 解锁对敌人的高级工具提示 并习得幻术 “共析钢”
-
-
-
-
-
+Firecracker
+迸裂火花
+A small delayed explosion that deals DamageDealt fire damage.
+释放小型延时爆炸，造成 DamageDealt 点火伤害
+Incinerate
+焚风
+A tornado of flame that does DamageDealt damage per turn for LifeTime turns.
+释放火焰龙卷风，持续 LifeTime 回合，每回合造成 DamageDealt 点火伤害
+Firebolt
+火焰弹
+A ball of flame that does DamageDealt damage.
+释放造成 DamageDealt 点火焰伤害的火焰弹
+Fireball
+火球
+A slow moving ball of flame that explodes for 120 fire damage to the target and DamageDealt damage to surrounding enemies.
+释放可缓慢移动的爆炸火球，对目标造成 120 点火焰伤害，并对目标周围造成 DamageDealt 点火焰伤害
+Ignite
+点燃
