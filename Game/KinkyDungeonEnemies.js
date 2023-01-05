@@ -4440,7 +4440,7 @@ function KinkyDungeonGetLoadoutForEnemy(enemy, guaranteed) {
 		if (!hasTag) end = true;
 		if (!hasTag2) end = true;
 		if (!end && (guaranteed || !s.chance || KDRandom() < s.chance)) {
-			for (let i = 0; i < s.multiplier || 1; i++)
+			for (let i = 0; i < (s.multiplier || 1); i++)
 				loadout_list.push(s.name);
 		}
 	}
