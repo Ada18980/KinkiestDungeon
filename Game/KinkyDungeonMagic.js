@@ -852,11 +852,10 @@ function KinkyDungeonWordWrap(str, maxWidthTranslate, maxWidthEnglish) {
 			let maxChineseWidth = maxWidth
 			
 			for (let i = 0; i <= maxChineseWidth+1; i++) {
-				if (KinkyDungeonTestWhite(str.charAt(i),"ChineseSN")) {
-					//Spaces and numbers are calculated as 0.5 characters
-					maxChineseWidth += 0.5;
-				}
-				if (KinkyDungeonTestWhite(str.charAt(i),"ChineseP") && i >= 7) {
+				//Numbers are calculated as 0.5 characters,Space are calculated as 0 characters
+				if (KinkyDungeonTestWhite(str.charAt(i),"ChineseN")) {maxChineseWidth += 0.5;}
+				if (KinkyDungeonTestWhite(str.charAt(i),"English")) {maxChineseWidth += 1;}
+				if (KinkyDungeonTestWhite(str.charAt(i),"ChineseP") && (maxChineseWidth-i) <= 2) {
 					//Inserts new line at first punctuation and seventh character of the line
 					res = res + [str.slice(0, i+1), newLineStr].join('');
 					str = str.slice(i + 1);
@@ -918,8 +917,8 @@ function KinkyDungeonTestWhite(x,language) {
 		let white = new RegExp(/^[\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b\uff01\u3010\u3011\uffe5]$/);
 		return white.test(x.charAt(0));
 	}
-	if (language == "ChineseSN") {
-		let white = new RegExp(/^[\s0-9]$/);
+	if (language == "ChineseN") {
+		let white = new RegExp(/^[0-9]$/);
 		return white.test(x.charAt(0));
 	}
 }

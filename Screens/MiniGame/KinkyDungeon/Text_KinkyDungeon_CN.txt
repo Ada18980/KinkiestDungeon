@@ -9497,7 +9497,7 @@ A ball of flame that does DamageDealt damage.
 Fireball
 火球
 A slow moving ball of flame that explodes for 120 fire damage to the target and DamageDealt damage to surrounding enemies.
-释放可缓慢移动的爆炸火球，对目标造成 120 点火焰伤害，并对其附近单位造成 DamageDealt 点火焰伤害
+释放缓慢移动的爆炸火球，对目标造成 120 点火焰伤害，并对其附近单位造成 DamageDealt 点火焰伤害
 Ignite
 点燃
 Ignite a friendly target for Duration turns, dealing DamageDealt fire damage per turn to it and nearby targets.
