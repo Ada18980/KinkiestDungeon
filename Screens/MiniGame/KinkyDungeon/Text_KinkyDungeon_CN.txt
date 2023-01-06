@@ -432,8 +432,6 @@ Shroud
 影雾
 Camoflage
 拟态
-Stone Skin
-石肤术
 Darkblade
 暗影之刃
 Protection
@@ -446,8 +444,6 @@ FULL POWER
 充满电
 Graceful
 优美
-Iron Blood
-铁血
 Sleepy
 困
 Afterimage
@@ -5398,10 +5394,6 @@ Choose line direction
 选择线方向
 Summon Rock
 岩石召唤
-Rock
-岩石
-Channel 1 turn to launch a rock that deals DamageDealt crush damage and slows for 4 turns.
-接下来 1 回合发射一块岩石，造成 DamageDealt 碾压伤害并减速 4 回合。
 You raise a boulder from the ground and kick it forward!
 你从地上举起一块巨石并向前踢！
 Choose line direction
@@ -5630,20 +5622,12 @@ You recover gracefully from the slowdown!
 你优雅地从减速中恢复过来！
 You walk gracefully with reduced effect from bindings.
 你优雅地行走，减少了束缚的影响。
-Iron Blood
-铁血
 Select yourself
 选择自己
-Channel 4 turns: Gain +100% melee SP cost reduction (half, with no other buffs). Ends on sleep or a recast. MP cost of spells increased by 25% (rounding down) while active.
-通道 4 回合：近战体力消耗减少100%（减半，在没有其他增益时）。睡眠或再次使用时会。激活时法术的 MP 消耗增加 25%（向下取整）。
 Your skin glows a pale red!
 你的皮肤发出淡红色的光芒！
-Stone Skin
-石肤术
 Select which creature to buff
 选择要增益的生物
-Make the targeted creature gain +20 armor for Duration turns
-使目标生物在持续时间回合内获得 +20 护甲
 Your skin takes on the appearance of cracked earth!
 你的皮肤呈现出裂开的土地的外观！
 The EnemyName gains increased armor!
@@ -8856,20 +8840,8 @@ Choose AoE location
 选择施放位置
 You conjure a flurry of frost!
 你召唤了冰霜！
-Tremor
-震颤
-Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage.
-在持续回合内向目标区域中的敌人施加脆弱和减速，并造成 DamageDealt 点碾压伤害。
 You call forth the rage of the earth.
 你召唤了大地之怒。
-Earthquake
-地震术
-Channel for 5 turns to send 2 tremors per turn in target area.
-持续施法五回合，每回合在目标区域施放两次 震颤 。
-Runic Ward
-符文盾
-Gives yourself or a creature a magic shield for 50 turns, granting +30 Warding.
-对自己或一个生物施加魔法护盾，持续 50 回合，获得 +30 护盾值。
 You whisper a word of protection!
 你轻声吟唱守护咒文！
 You press your wrists together and conjure a blast of wind!
@@ -8882,72 +8854,36 @@ You hurl a charged orb!
 你释放了一个带电的球体！
 Choose aim direction (max range 4 tiles)
 选择瞄准方向（最大射程 4 格）
-Water Ball
-水球
-Fast projectile. Deals DamageDealt acid damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage.
-高速发射并造成 DamageDealt 点酸蚀伤害。 潮湿的目标承受 +35% 的电/冰伤害，-42% 的火伤害，并造成 50% 的电击伤害。
 You hurl a ball of water!
 你出扔一个水球！
-Tidal Sphere
-潮汐球
-Slow moving projectile, deals DamageDealt acid damage to enemies it passes thru. Leaves a large amount of water in its wake.
-缓慢移动并对其经过的敌人造成 DamageDealt 点酸蚀伤害。 在它的身后留下大量的水。
 You raise a huge mass of water!
 你召唤出一大团水！
 You stomp your foot and call forth the storm!
 你跺脚召来寒冰风暴！
-Boulder
-巨石
-Channel 1 turn to launch a huge slow rock that deals DamageDealt crush damage and slows for 8 turns. AoE, collides with summoned rocks. Blocks up to 200 damage.
-消耗 1 回合发射一块巨大但缓慢的岩石，造成 DamageDealt 碾压伤害并减速，持续 8 回合。 范围攻击会被巨岩抵挡。最多格挡 200 点伤害。
 You raise a massive boulder from the ground and kick it forward!
 你从地上举起一块巨石并将其向前踢去！
-Earthshape
-地形转变
-Unlocks 3 spells that allow creating mounds, rings, or lines of 50hp, 25 armor rocks.
-解锁 3 个法术，分别允许创建方形、环形和直线形的的岩石地形，岩石具有 50hp 和 25 护甲。
 Earthen monoliths rise from the ground!
 大地巨石拔地而起！
 An earthen monolith rises from the ground!
 一块巨石拔地而起！
-Earthshape (Ring)
-地型转变 (环形)
-Create a large ring of Earthen Monoliths. They have 50 hitpoints and 25 armor.
-创造环形岩石地形。 岩石具有 50 点hp和 25 点护甲。
 You stomp your foot and monoliths emerge in a ring around you!
 你跺了跺脚，巨石出现在你周围！
 Choose ring origin
 选择环形区域
-Earthshape (Mound)
-地型转变 (方形)
-Create a 3x3 field of Earthen Monoliths. They have 50 hitpoints and 25 armor.
-创造 3x3 的方形岩石地形。 岩石具有 50 点hp和 25 点护甲。
 You stomp your foot and monoliths emerge from the ground!
 你跺了跺脚，巨石在地上出现！
 Choose mound origin
 选择方形区域
-Earthshape (Line)
-地型转变 (直线形)
-Create a 4-tile line of Earthen Monoliths. They have 50 hitpoints and 25 armor.
-创造4格的的线形岩石地形。 岩石具有 50 点hp和 25 点护甲。
 You stomp your foot and monoliths emerge from the ground!
 你跺了跺脚，巨石在地上出现！
 Choose line direction
 选择直线区域
-Earth Kick
-岩石踢射
 Stone Projectile
 岩石飞弹
-Kick a summoned rock to turn it into a projectile. Deals DamageDealt crush damage in a 3x3 area and slows for 4 turns.
-踢向一块召唤出的岩石将其射出。 在 3x3 区域内造成 DamageDealt 点碾压伤害并减速 4 回合。
 With a solid kick, you launch one of your monoliths forward!
 你用力一踢，向前射出了一个巨石！
 Choose a monolith to kick
 选择要踢射的岩石
-Volcanism
-火山爆发
-An area of summoned rocks becomes explosive. Deal fire damage to them to ignite, dealing DamageDealt fire damage to adjacent targets.
-引爆一块召唤出的岩石。 引燃相邻目标并造成 DamageDealt 火焰伤害。
 You stomp your foot and magma wells up beneath the ground!
 你跺了跺脚，岩浆从地下喷涌而出！
 Choose monoliths to enchant
@@ -8960,10 +8896,6 @@ You conjure a charged trap!
 你设置了一个闪电陷阱！
 You conjure an icy trap!
 你设置了一个霜冻陷阱！
-Strengthen
-强化
-When enabled: Struggling is more powerful, and your attack damage is increased by +20 if your weapon deals physical damage.
-激活时：快速挣扎，如果你的武器造成物理伤害，你的攻击伤害+20。
 Your body glows with magical energy!
 你的身体散发着神奇的能量！
 CMD: Unlock
@@ -9485,125 +9417,125 @@ Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks adva
 Firecracker
 迸裂火花
 A small delayed explosion that deals DamageDealt fire damage.
-释放小型延时爆炸，造成 DamageDealt 点火伤害
+释放小型延时爆炸，造成 DamageDealt 点火伤害。
 Incinerate
 焚风
 A tornado of flame that does DamageDealt damage per turn for LifeTime turns.
-释放火焰龙卷风，持续 LifeTime 回合，每回合造成 DamageDealt 点火伤害
+释放火焰龙卷风，持续 LifeTime 回合，每回合造成 DamageDealt 点火伤害。
 Firebolt
 火焰弹
 A ball of flame that does DamageDealt damage.
-释放造成 DamageDealt 点火焰伤害的火焰弹
+释放造成 DamageDealt 点火焰伤害的火焰弹。
 Fireball
 火球
 A slow moving ball of flame that explodes for 120 fire damage to the target and DamageDealt damage to surrounding enemies.
-释放缓慢移动的爆炸火球，对目标造成 120 点火焰伤害，并对其附近单位造成 DamageDealt 点火焰伤害
+释放缓慢移动的爆炸火球，对目标造成 120 点火焰伤害，并对其附近单位造成 DamageDealt 点火焰伤害。
 Ignite
 点燃
 Ignite a friendly target for Duration turns, dealing DamageDealt fire damage per turn to it and nearby targets.
-点燃一个友方单位 Duration 回合，每回合对其及附近单位造成 DamageDealt 点火焰伤害
+点燃一个友方单位 Duration 回合，每回合对其及附近单位造成 DamageDealt 点火焰伤害。
 Flame Rune
 火焰符文
 A trap that deals DamageDealt fire damage in an area. Takes 5 turns to setup.
-设置一个陷阱，陷阱可造成 DamageDealt 点范围性火焰伤害。 需要 5 回合进行设置
+设置一个陷阱，陷阱可造成 DamageDealt 点范围性火焰伤害。 需要 5 回合进行设置。
 Flame Blade
 火焰之刃
 When enabled: Weapon attacks cost mana and create a flame strike that deals 30 fire damage to adjacent targets.
-启用后武器攻击消耗法力值并造成火焰伤害，对相邻目标造成 30 点火焰伤害
+启用后武器攻击消耗法力值并造成火焰伤害，对相邻目标造成 30 点火焰伤害。
 Fire Hazard
 危险之火
 Fire damage ignites enemies for 5 damage per turn for 6 turns.
-火焰伤害可使敌人进入燃烧状态 6 回合，每回合造成 5 点伤害
+火焰伤害可使敌人进入燃烧状态 6 回合，每回合造成 5 点伤害。
 Temperature Play
 温度Play
 Fire and Ice damage do 30% more damage to fully bound enemies.
-对被完全束缚的敌人造成额外 30% 火焰或冰霜伤害
+对被完全束缚的敌人造成额外 30% 火焰或冰霜伤害。
 Fissure
 裂地
 A great fissure erupts from the earth, dealing 70 fire damage to enemies in a 4-range line and dealing 15 damage/turn for 6 turns.
-使大地崩裂喷出熔岩，对 4 格范围内的敌人造成 70 点火焰伤害，接下来每回合造成 15 点火焰伤害，持续6回合
+使大地崩裂喷出熔岩，对 4 格范围内的敌人造成 70 点火焰伤害，接下来每回合造成 15 点火焰伤害，持续6回合。
 Electrify
 落雷
 A delayed shock that deals DamageDealt damage and stuns for Duration turns.
-释放一道造成 DamageDealt 电击伤害和 Duration 回合眩晕的延迟雷击
+释放一道造成 DamageDealt 电击伤害和 Duration 回合眩晕的延迟雷击。
 Electric Field
 电场
 Creates a conductive area for Duration turns. Makes all entities in the area Conductive, forcing them to share 50% electric damage.
-创造一个持续 Duration 回合的导电区域，使区域内个体导电。在导电区域内个体被电击伤害时，使区域内其他所有个体同时承受被攻击个体的 50% 电击伤害
+创造一个持续 Duration 回合的导电区域，使区域内个体导电。在导电区域内个体被电击伤害时，使区域内其他所有个体同时承受被攻击个体的 50% 电击伤害。
 Static Sphere
 静态球体
 Conjure a sphere for Duration turns that makes nearby entities Conductive and each turn deals DamageDealt electric damage to one of them.
-召唤一个球体 Duration 回合，使相邻的个体导电，且每回合对其中一个个体造成 DamageDealt 电击伤害
+召唤一个球体 Duration 回合，使相邻的个体导电，且每回合对其中一个个体造成 DamageDealt 电击伤害。
 Shock Orb
 冲击之球
 A slow-moving orb that deals DamageDealt electric damage to an adjacent enemy each turn.
-召唤一个缓慢移动的球体，每回合对相邻敌人造成 DamageDealt 点电击伤害
+召唤一个缓慢移动的球体，每回合对相邻敌人造成 DamageDealt 点电击伤害。
 Crackle
 暴雷
 A bolt of lightning that does DamageDealt electric damage to enemies in a 4-range line and briefly stuns.
-召唤一道闪电，对施法方向 4 格内的敌人造成 DamageDealt 点电击伤害，附加短暂眩晕
+召唤一道闪电，对施法方向 4 格内的敌人造成 DamageDealt 点电击伤害，附加短暂眩晕。
 Lightning Bolt
 闪电箭
 A bolt of lightning that does DamageDealt damage to enemies in an infinite line and briefly stuns.
-召唤一道闪电，对施法方向上所有的敌人造成 DamageDealt 点电击伤害，附加短暂眩晕
+召唤一道闪电，对施法方向上所有的敌人造成 DamageDealt 点电击伤害，附加短暂眩晕。
 Lightning Rune
 闪电符文
 A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 5 turns to setup.
-设置一个陷阱，陷阱可造成 DamageDealt 点电击伤害并眩晕 4 回合。需要 5 回合进行设置
+设置一个陷阱，陷阱可造成 DamageDealt 点电击伤害并眩晕 4 回合。需要 5 回合进行设置。
 Lightning Rod
 避雷针
 After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns.
-在施放消耗法力的风或雷法术后，变得导电并获得 300% 的电击抗性，持续 3 回合
+在施放消耗法力的风或雷法术后，变得导电并获得 300% 的电击抗性，持续 3 回合。
 Windblast
 暴风
 Three puffs of wind that do DamageDealt pressure damage, stun briefly, and push targets back.
-召唤三道风压造成 DamageDealt 点压力伤害，附加短暂眩晕和击退
+召唤三道风压造成 DamageDealt 点压力伤害，附加短暂眩晕和击退。
 Freeze
 冻结
 Freeze an adjacent target for Duration turns.
-冻结一个相邻的目标 Duration 回合
+冻结一个相邻的目标 Duration 回合。
 Flash Frost
 霜闪
 Deal DamageDealt ice damage in a 3x3 area. Drenched creatures are frozen for 8 turns.
-在3x3范围内造成 DamageDealt 点寒冰伤害，被淋湿的个体被冻结 8 回合
+在3x3范围内造成 DamageDealt 点冰霜伤害，被潮湿的个体被冻结 8 回合。
 Hailstorm
 冰雹
 A cloud of falling ice that does DamageDealt damage per turn for LifeTime turns and slows.
-降下一道冰雹，持续 LifeTime 回合，每回合造成 DamageDealt 点寒冰伤害和减速
+降下一道冰雹，持续 LifeTime 回合，每回合造成 DamageDealt 点冰霜伤害和减速。
 Ice Breath
 冰霜吐息
 A field of icicles that deals DamageDealt damage on a hit and stuns briefly.
-生成一片冰柱，冰柱可造成 DamageDealt 点寒冰伤害并造成短暂眩晕
+生成一片冰柱，冰柱可造成 DamageDealt 点冰霜伤害并造成短暂眩晕。
 Ice Shard
 冰枪术
 A shard of ice that does DamageDealt damage and slows for Duration turns. Freezes if already slowed or drenched.
-投掷一个造成 DamageDealt 寒冰伤害并在 Duration 回合内造成减速的冰枪。如果目标已经减速或淋湿，则改为冻结
+投掷一个造成 DamageDealt 冰霜伤害并在 Duration 回合内造成减速的冰枪。冻结减速或潮湿的目标。
 Snowball
 雪球
 A fast orb that leaves behind a frigid cloud of ice. Enemies walking in the cloud take DamageDealt ice damage per tile and are slowed.
-发射一个雪球，雪球将在路径上留下寒冰云。在云中的敌人每移动一格都会受到 DamageDealt 点寒冰伤害并被减速
+发射一个雪球，雪球将在路径上留下寒冰云。在云中的敌人每移动一格都会受到 DamageDealt 点冰霜伤害并被减速。
 Winterblast
 凛冽寒流
 A piercing orb that leaves a trail of ice. Deals DamageDealt ice damage to enemies hit.
-发射一个贯穿整个路径并留下冰痕的严寒结晶。对击中的敌人造成 DamageDealt 点寒冰伤害
+发射一个贯穿整个路径并留下冰痕的严寒结晶。对击中的敌人造成 DamageDealt 点冰霜伤害。
 Icicles
 冰柱
 Icicle
 冰柱
 Channel 3 turns to fire 3 icicles that deal DamageDealt ice damage and slow for 4 turns, freezing slowed/drenched targets for 3 turns.
-在 3 回合内发射 3 根造成 DamageDealt 点寒冰伤害并减速 4 回合的冰柱，冻结减速或淋湿的目标 3 回合
+在 3 回合内发射 3 根造成 DamageDealt 点冰霜伤害并减速 4 回合的冰柱，冻结减速或潮湿的目标 3 回合。
 Ice Lance
 冰矛
 A quick-moving shard of ice that does DamageDealt damage and slows for Duration turns and passes through enemies. Freezes if already slowed or drenched.
-发射一个快速移动的冰矛，造成 DamageDealt 寒冰伤害并减速 Duration 回合，冻结减速或淋湿的目标
+发射一个高速冰矛，造成 DamageDealt 冰霜伤害并减速 Duration 回合，冻结减速或潮湿的目标。
 Field of Frost
 冰霜领域
 Freezes a 5x5 area (ice slows entities). Enemies in the area take DamageDealt damage per turn for LifeTime turns.
-冻结 5x5 的区域并附加减速。 该区域中的敌人每回合受到 DamageDealt 点伤害，持续 LifeTime 回合
+冻结 5x5 的区域并附加减速。 该区域中的敌人每回合受到 DamageDealt 点伤害，持续 LifeTime 回合。
 Shatter
 冰爆
 When a frozen target thaws or dies, deals DamageDealt ice damage to nearby targets and slow for 4 turns..
-当被冻结的目标解冻或死亡时，对附近的目标造成 DamageDealt 寒冰伤害，并减速 4 回合。
+当被冻结的目标解冻或死亡时，对附近的目标造成 DamageDealt 冰霜伤害，并减速 4 回合。
 Frozen Prison
 寒冰牢狱
 Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn of freeze.
@@ -9611,5 +9543,92 @@ Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn
 Freeze Rune
 霜冻符文
 A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 5 turns to setup.
-设置一个陷阱，陷阱可造成 DamageDealt 点寒冰伤害并冰冻 30 回合。 需要 5 回合进行设置。
+设置一个陷阱，陷阱可造成 DamageDealt 点冰霜伤害并冰冻 30 回合。 需要 5 回合进行设置。
+Raincloud
+雨云
+After 3 turns, rain falls, creating a 3x3 grid of water and dealing DamageDealt acid damage to enemies within.
+创造一个持续 3 个回合 3x3 的酸雨团，对敌人造成 DamageDealt 点酸蚀伤害，3 回合后形成 3x3 的积水。
+Water Ball
+水球
+Fast projectile. Deals DamageDealt acid damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage.
+发射一个高速水球并造成 DamageDealt 点酸蚀伤害。潮湿的目标承受 +35% 电击/冰霜伤害 -42% 火焰伤害，并造成 50% 的电击伤害。
+Tidal Sphere
+潮汐球
+Slow moving projectile, deals DamageDealt acid damage to enemies it passes thru. Leaves a large amount of water in its wake.
+发射一个缓慢移动的水团，对其经过的敌人造成 DamageDealt 点酸蚀伤害。在它的身后留下大量的水。
+Tremor
+震颤
+Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage.
+在 Duration 回合内向目标区域中的敌人施加脆弱和减速，并造成 DamageDealt 点碾压伤害。
+Earthquake
+地震术
+Channel for 5 turns to send 2 tremors per turn in target area.
+持续 5 回合，每回合在目标区域施放两次“震颤”
+Runic Ward
+符文盾
+Gives yourself or a creature a magic shield for 50 turns, granting +30 Magic Armor.
+对自身或其他个体施加魔法护盾，持续 50 回合，获得 +30 魔法护甲。
+Barrier Runes
+符文障
+Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement.
+创造一个 1x1 的可通过的巨石屏障，在 DelayTime 回合内阻挡来自投射物的 BlockAmount 点伤害。
+Iron Blood
+铁血
+Channel 4 turns: Halves SP cost of melee attacks by 50%, but increases MP cost of spells by 25%. Ends on sleep or recast.
+近战攻击SP消耗 -50%，但法术MP消耗 +25%，睡眠或再次使用时停止。
+Stone Skin
+石肤术
+Make the targeted creature (or yourself) gain +20 armor for Duration turns
+使自身或目标生物在 Duration 回合内获得 +20 物理护甲。
+Rock
+岩石
+Channel 1 turn to launch a rock that deals DamageDealt crush damage and slows for 4 turns. Blocks up to 80 damage.
+消耗 1 回合发射一块岩石，造成 DamageDealt 点碾压伤害并减速 4 回合，阻挡最多 80 点伤害。
+Boulder
+巨石
+Channel 1 turn to launch a huge slow rock that deals DamageDealt crush damage and slows for 8 turns. AoE, collides with summoned rocks. Blocks up to 200 damage.
+消耗 1 回合发射一块巨大但缓慢的岩石，造成 DamageDealt 碾压伤害并减速 8 回合。范围攻击会被巨岩抵挡，阻挡最多 200 点伤害。
+Earthshape
+地形转变
+Unlocks 3 spells that allow creating mounds, rings, or lines of 50hp, 25 armor rocks.
+解锁 3 个法术，分别允许创建方形、环形和直线形的的岩石地形，岩石具有 50HP 和 25 点护甲。
+Earthshape (Ring)
+地型转变 (环形)
+Create a large ring of Earthen Monoliths. They have 50 hitpoints and 25 armor.
+创造环形岩石地形。岩石具有 50HP 和 25 点护甲。
+Earthshape (Mound)
+地型转变 (方形)
+Create a 3x3 field of Earthen Monoliths. They have 50 hitpoints and 25 armor.
+创造 3x3 的方形岩石地形。岩石具有 50HP 和 25 点护甲。
+Earthshape (Line)
+地型转变 (直线形)
+Create a 4-tile line of Earthen Monoliths. They have 50 hitpoints and 25 armor.
+创造 4 格的的线形岩石地形。岩石具有 50HP 和 25 点护甲。
+Earth Kick
+岩石踢射
+Kick a summoned rock to turn it into a projectile. Deals DamageDealt crush damage in a 3x3 area and slows for 4 turns.
+踢向一块召唤出的岩石将其射出。 在 3x3 区域内造成 DamageDealt 点碾压伤害并减速 4 回合。
+Volcanism
+火山爆发
+An area of summoned rocks becomes explosive. Deal fire damage to them to ignite, dealing DamageDealt fire damage to adjacent targets.
+引爆一块召唤出的岩石。引燃相邻目标并造成 DamageDealt 火焰伤害。
+Strengthen
+强化
+When enabled: Struggling is more powerful, and your attack damage is increased by +20 if your weapon deals physical damage.
+激活时可快速挣扎 +20 点物理武器伤害。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
