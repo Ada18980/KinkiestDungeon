@@ -20,8 +20,8 @@ English
 英语
 Chinese
 简体中文
-Kinky Dungeon v3.9
-变态地牢 v3.9
+Kinky Dungeon v3.91
+变态地牢 v3.91
 You are an adventurer descending into an ancient underground city of magic.
 你是一个冒险家，下降到一个古老的地下魔法城市。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -428,26 +428,14 @@ Arcane Cunning
 诡计多端
 Slime Form
 史莱姆形态
-Shroud
-影雾
-Camoflage
-拟态
-Darkblade
-暗影之刃
 Protection
 防护
-Invisibility
-隐形
-Lesser Invisibility
-次级隐形
 FULL POWER
 充满电
 Graceful
 优美
 Sleepy
 困
-Afterimage
-残像
 Verbal spells allowed!
 允许使用口头法术！
 Arm spells allowed!
@@ -5206,28 +5194,12 @@ Elemental's Firebolt
 元素的火焰弹
 You a hurl a firebolt!
 你投掷了火焰弹！
-Choose aim direction
-选择瞄准方向
 Knife
 刀
 Throw one of your knives DamageDealt damage. Lands in the target's tile
 投掷你的一把刀，造成 DamageDealt 伤害，并落在命中目标的格子中。
 You a throw a knife!
 你扔出一把刀！
-Shadow Dagger
-暗影匕首
-A cold shadowy blade that deals DamageDealt damage and pierces all in its path.
-一把冰冷的暗影之刃，对路径上所有格子造成DamageDealt贯穿伤害。
-You a hurl a shadowy dagger!
-你投出一把暗影匕首！
-Shadow Slash
-暗影斩
-Shadow Scythe
-暗影镰刀
-Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly.
-切开你面前的区域，在一个区域内造成延迟的 DamageDealt 伤害并短暂减速。
-You create a tear in space with your finger!
-你用你的手指撕裂了前方的空间！
 Portal Walk
 进入传送门
 Teleport to a nearby location (including into darkness) after DelayTime turns.
@@ -5290,22 +5262,10 @@ You create a temporary shield!
 你创造了一个临时的护盾！
 Choose shielded creature
 选择被保护的生物
-Afterimage
-残像
-Massively increases a creature's evasion for 5 attacks. Expires after 25 turns.
-大幅增加生物下 5 次收到攻击时的闪避。 25回合后失效。
-Your movements intensify!
-你的动作加快了！
-Choose creature to buff
-选择要增益的生物
 Analyze
 分析
 Cast on Chest: Detect if there is a trap. Cast on Enemy: Show weaknesses on mouseover, and the next 3 hits it takes deal +30% damage.
 对宝箱释放：检测是否有陷阱。对敌人施放：鼠标悬停时显示弱点，接下来的 3 次命中造成 +30% 伤害。
-You analyze the target!
-你分析了目标！
-Choose object to analyze
-选择要分析的对象
 Barrier
 屏障
 Creates a shield that blocks BlockAmount damage from projectiles for DelayTime turns.
@@ -5358,20 +5318,10 @@ You unleash a bolt of lightning!
 你释放出一道闪电！
 Choose line direction
 选择线方向
-Corona
-电晕
-Corona
-电晕
-Binding Light
-束缚之光
 Binding Light
 束缚之光
 Chaos Beam
 混沌光束
-A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt fire damage to the first target hit.
-一束光束引导 2 回合（让你短暂眩晕），然后立即对击中的第一个目标造成 DamageDealt 火焰伤害。
-You charge a powerful beam attack!!!
-你蓄力释放强大的光束攻击！！！
 Choose line direction
 选择线方向
 You raise a hand and icicles fly forward!
@@ -5454,62 +5404,10 @@ You call forth ropes from the abyss!
 你从深渊中召唤绳索！
 Select center of a a 3x3 AoE
 选择 3x3 AoE 的中心
-Lesser Flash
-小闪电
-Ring
-光环
-Flash Bomb
-闪光弹
-Mirror Image
-镜像
-A flash of light which renders anyone caught within blind for Duration turns
-一道闪光，使受到影响的所有人在 Duration 回合内陷入失明
-You charge up a bright flash!
-你发出一道闪光！
-Select where to center the flash (SpellArea radius)
-选择闪光的中心位置（SpellArea 半径）
-A loud noise which stuns for Duration turns and attracts enemies to it. Long-ranged.
-会在 Duration 回合内眩晕并吸引敌人。远距离释放。
-You point and a noise emanates from the location!
-你手一指，一阵噪音从该位置发出！
-Select where to center the noise (SpellArea radius)
-选择噪声的中心位置（SpellArea 半径）
-Greater Flash
-大闪光
-A massive flash of light which renders anyone caught within blind for Duration turns
-一道巨大的闪光，使受到影响的所有人在 Duration 回合内陷入失明
-You charge up a bright flash!
-你发出一道闪光！
-Select where to center the flash (SpellArea radius)
-选择闪光的中心位置（SpellArea 半径）
-Focused Flash
-聚焦闪光
-Select where to center the flash (SpellArea radius)
-选择闪光的中心位置（SpellArea 半径）
-A focused flash of light which renders anyone caught within blind for Duration turns
-一道聚焦的闪光，使受到影响的所有人在 Duration 回合内陷入失明
-You slowly charge up a powerful flash!
-你慢慢地释放出一道强力的闪光！
-Shroud
-影雾
 Smoke Bomb
 烟雾弹
 Sleep Gas
 睡眠气体
-Select where to center the shroud (SpellArea radius)
-选择影雾的中心位置（SpellArea 半径）
-Creates a cloud for Duration turns that buffs evasion for all creatures. You are temporarily invisible for 8 turns after leaving.
-在持续时间回合中创造一片雾，增强所有生物的闪避。离开后你会暂时隐身 8 回合。
-You exhale a misty shroud
-你呼出一层朦胧的雾
-Invisibility
-隐形
-Select which creature to buff
-选择要增益的生物
-Make the targeted creature invisible
-使目标生物隐形
-You snap your fingers!
-你打了一个响指！
 Select which creature to bind
 选择要绑定的生物
 You say a command word, and the bindings on the ground do your bidding!
@@ -5518,30 +5416,6 @@ Select which creature to unlock
 选择要解锁的生物
 You speak a command word!
 你说出命令咒语！
-Lesser Invisibility
-次级隐形
-Select which creature to buff
-选择要增益的生物
-Make the targeted creature invisible
-使目标生物隐形
-You become semitransparent!
-你变得半透明！
-Camouflage
-拟态
-Select yourself
-选择自己
-Enemies have a harder time noticing you for Duration turns. Cancels if you move, cast, or sleep.
-在持续时间回合中，敌人很难注意到你。如果您移动、施法或睡眠，则会取消。
-You pose in a clandestine manner.
-你摆出了一个隐秘的姿势。
-Darkblade
-暗影之刃
-Select which creature to buff
-选择要增益的生物
-Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks
-使目标生物（或自身）在 Duration 回合或下 5 次攻击中获得 +20 伤害
-You call forth dark runes on your weapon and arms!
-你在你的武器和手臂上召唤出黑暗符文！
 Enhance Power
 增强力量
 When enabled: Struggling is more powerful, and attacks deal +2 crush damage
@@ -5554,14 +5428,6 @@ When enabled: Miscast chance is halved
 启用时：施法失败几率减半
 You focus intently!
 你集中了注意力！
-Truesight
-真实视野
-When enabled: Drain mana every turn to see through walls and increase accuracy by 40%.
-启用时：每回合消耗法力以透视墙壁并将准确度提高 40%。
-Heartsense
-心灵感应
-Highlight the locations of enemies through walls on the map for 4 turns.
-在地图上通过墙壁突出显示敌人的位置 4 回合。
 Cat's Grace
 猫之优雅
 When enabled and above 0 stamina: Drain 0.5 MP per step to reduce slow level by 1 (if above 1), and 2 mana (total) to ignore a temporary slow effect.
@@ -5572,12 +5438,8 @@ You recover gracefully from the slowdown!
 你优雅地从减速中恢复过来！
 You walk gracefully with reduced effect from bindings.
 你优雅地行走，减少了束缚的影响。
-Select yourself
-选择自己
 Your skin glows a pale red!
 你的皮肤发出淡红色的光芒！
-Select which creature to buff
-选择要增益的生物
 Your skin takes on the appearance of cracked earth!
 你的皮肤呈现出裂开的土地的外观！
 The EnemyName gains increased armor!
@@ -5626,26 +5488,6 @@ A flaming spirit answers your call!
 一个燃烧的灵魂回应你的召唤！
 You call upon the planes of fire!
 你在火焰之上进行召唤！
-Shadow Warrior
-影子武士
-Select where to put the shadow warrior (cannot place on occupied squares)
-选择放置影子战士的位置（不能放置在已被占用的方格上）
-Call forth a shadow warrior for 16 turns who deals DamageDealt damage every other turn.
-召唤一名持续 16 回合的暗影战士，每隔一回合造成一次 DamageDealt 伤害。
-...and the abyss answers!
-……深渊的答案！
-You call...
-你召唤了...
-Decoy
-诱饵
-Select where to create an illusion (cannot place on occupied squares)
-选择创建幻象的位置（不能放置在已被占用的方格上）
-Create a decoy for Duration turns. It attracts enemy attention and triggers traps.
-创造一个持续 Duration 回合的诱饵。它会吸引敌人的注意力并触发陷阱。
-A shadow of yourself materializes!
-自己的影子出现了！
-You create a line on the ground and toss in a lock of your hair!
-你在地上画了一条线，然后扔进你的一绺头发！
 Feather Explosion
 羽毛爆炸
 Conjure Slime
@@ -8798,8 +8640,6 @@ Choose mound origin
 选择方形区域
 You stomp your foot and monoliths emerge from the ground!
 你跺了跺脚，巨石在地上出现！
-Choose line direction
-选择直线区域
 Stone Projectile
 岩石飞弹
 With a solid kick, you launch one of your monoliths forward!
@@ -8866,8 +8706,6 @@ You raise your hand and a steel projectile appears!
 你举起手，一个钢弹出现了！
 You raise your hand and several steel projectiles appear!
 你一抬手，数枚钢弹出现！
-Choose aim direction
-选择瞄准方向
 Choose target point
 选择目标点
 You conjure a fixture to hold your helpless target in place!
@@ -9070,6 +8908,12 @@ Other
 其它
 pressure
 压力
+Strength
+耐力
+Dexterity
+灵巧
+Intelligence
+智力
 Flame Novice
 基础火法术
 Unlocks fire spells. Learn Firebolt.
@@ -9673,12 +9517,159 @@ A golem arises!
 You stomp your foot and draw the words of life on the floor!
 你跺了跺脚，在地板上绘出生命咒文！
 
+##幻术##
+#光之祝福#
+Lesser Flash
+小闪光
+A flash of light which renders anyone caught within blind for Duration turns
+一道闪光，使受到影响的所有人在 Duration 回合内陷入失明
+Greater Flash
+大闪光
+A massive flash of light which renders anyone caught within blind for Duration turns
+一道巨大的闪光，使受到影响的所有人在 Duration 回合内陷入失明
+Focused Flash
+聚焦闪光
+A focused flash of light which renders anyone caught within blind for Duration turns
+一道聚焦的闪光，使受到影响的所有人在 Duration 回合内陷入失明
+Select where to center the flash (SpellArea radius)
+选择闪光的中心位置（SpellArea 半径）
+You charge up a bright flash!
+你发出一道闪光！
+You slowly charge up a powerful flash!
+你缓慢地释放出一道强力的闪光！
+
+Ring
+光环
+A loud noise which stuns for Duration turns and attracts enemies to it. Long-ranged.
+会在 Duration 回合内眩晕并吸引敌人。远距离释放。
+You point and a noise emanates from the location!
+你手指一挥，一阵噪音从该位置发出！
+Select where to center the noise (SpellArea radius)
+选择噪声的中心位置（SpellArea 半径）
+
+Light
+光芒
+Produce a bright light for Duration turns. Has no effect in dark rooms.
+产生持续 Duration 回合的亮光，在黑暗房间内没有效果。
+
+Corona
+电晕
+A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt fire damage to the first target hit.
+引导一束光束 2 回合（让你短暂眩晕），然后立即对击中的第一个目标造成 DamageDealt 点火焰伤害。
+You charge a powerful beam attack!!!
+你蓄力释放强大的光束攻击！！！
 
 
+#暗之祝福#
+Summon Shadow Warrior
+召唤影子武士
+Select where to put the shadow warrior (cannot place on occupied squares)
+选择放置影子武士的位置（不能放置在已被占用的方格上）
+Call forth a shadow warrior for 16 turns who deals DamageDealt damage every other turn.
+召唤一名持续 16 回合的暗影武士，每隔一回合造成 DamageDealt 点伤害。
+...and the abyss answers!
+……深渊的答案！
+You call...
+你召唤了...
 
+Shroud
+影雾
+Creates a cloud for Duration turns that buffs evasion for all creatures. You are temporarily invisible for 8 turns after leaving.
+在 Duration 回合内创造一片雾，增强所有生物的闪避。离开后你会暂时隐身 8 回合。
+Select where to center the shroud (SpellArea radius)
+选择影雾的中心位置（SpellArea 半径）
+You exhale a misty shroud
+你呼出一层朦胧的雾
 
+Darkblade
+暗影之刃
+Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks
+使目标生物在 Duration 回合内或下 5 次攻击中伤害增加 20。
+You call forth dark runes on your weapon and arms!
+你在你的武器和手臂上召唤出黑暗符文！
 
+Shadow Slash
+暗影斩
+Shadow Scythe
+暗影镰刀
+Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly.
+切开你面前的区域，在一个区域内造成延迟的 DamageDealt 伤害并短暂减速。
+You create a tear in space with your finger!
+你用你的手指撕裂了前方的空间！
 
+Shadow Dagger
+暗影匕首
+A cold shadowy blade that deals DamageDealt damage and pierces all in its path.
+一把冰冷的暗影之刃，对路径上所有格子造成DamageDealt贯穿伤害。
+You a hurl a shadowy dagger!
+你投出一把暗影匕首！
 
+#影之祝福#
+Invisibility
+隐形
+Make the targeted creature invisible
+使目标生物隐形。
+You snap your fingers!
+你打了一个响指！
+Lesser Invisibility
+次级隐形
+You become semitransparent!
+你变得半透明！
 
+Afterimage
+残像
+Massively increases a creature's evasion for 5 attacks. Expires after 25 turns.
+大幅增加个体下 5 次被攻击时的闪避。 25回合后失效。
+Your movements intensify!
+你的动作加快了！
 
+Camouflage
+拟态
+Enemies have a harder time noticing you for Duration turns. Cancels if you move, cast, or sleep.
+在持续时间回合中，敌人很难注意到你。但如果你移动、施法或睡眠，则会失效。
+You pose in a clandestine manner.
+你摆出了一个隐秘的姿势。
+
+#投影幻术#
+Summon Decoy
+召唤诱饵
+Select where to create an illusion (cannot place on occupied squares)
+选择创建幻象的位置（不能放置在已被占用的方格上）
+Create a decoy for Duration turns. It attracts enemy attention and triggers traps.
+创造一个持续 Duration 回合的诱饵。它会吸引敌人的注意力并触发陷阱。
+A shadow of yourself materializes!
+自己的影子出现了！
+You create a line on the ground and toss in a lock of your hair!
+你在地上画了一条线，然后扔进你的一绺头发！
+
+#秘密知识#
+Magical Sight
+魔之眼
+Highlight the location of interesting magical phenomena for 20 turns
+突出有趣的魔法现象，持续 20 回合。
+You analyze the target!
+你分析了目标！
+Choose object to analyze
+选择要分析的对象
+
+Truesight
+真实视野
+When enabled: Drain mana every turn to see through walls and increase accuracy by 40%.
+启用时：每回合消耗法力以透视墙壁并将准确度提高 40%。
+Heartsense
+心灵感应
+Highlight the locations of enemies through walls on the map for 4 turns.
+在地图上通过墙壁突出显示敌人的位置 4 回合。
+
+Flash Bomb
+闪光弹
+Mirror Image
+镜像
+Choose line direction
+选择直线区域
+Choose aim direction
+选择瞄准方向
+Select which creature to buff
+选择要增益的生物
+Select yourself
+选择自己
