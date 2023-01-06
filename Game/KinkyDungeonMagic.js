@@ -918,7 +918,7 @@ function KinkyDungeonTestWhite(x,language) {
 		return white.test(x.charAt(0));
 	}
 	if (language == "ChineseN") {
-		let white = new RegExp(/^[0-9]$/);
+		let white = new RegExp(/^[0-9.]$/);
 		return white.test(x.charAt(0));
 	}
 }
