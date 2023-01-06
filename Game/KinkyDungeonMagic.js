@@ -844,12 +844,20 @@ function KinkyDungeonWordWrap(str, maxWidthTranslate, maxWidthEnglish) {
 	let maxWidth = KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthEnglish);
 	// console.log('KinkyDungeonDetectLanguageForMaxWidth after', maxWidth);
 
+	// Check language
 	if (maxWidth == maxWidthTranslate){
+		//Chinese
 		while (str.length > maxWidth) {
 			let found = false;
-
-			for (let i = maxWidth - 1; i >= 0; i--) {
-				if (KinkyDungeonTestWhite(str.charAt(i),"Chinese") && i < 6 && i > 4) {
+			let maxChineseWidth = maxWidth
+			
+			for (let i = 0; i <= maxChineseWidth+1; i++) {
+				if (KinkyDungeonTestWhite(str.charAt(i),"ChineseSN")) {
+					//Spaces and numbers are calculated as 0.5 characters
+					maxChineseWidth += 0.5;
+				}
+				if (KinkyDungeonTestWhite(str.charAt(i),"ChineseP") && i >= 7) {
+					//Inserts new line at first punctuation and seventh character of the line
 					res = res + [str.slice(0, i+1), newLineStr].join('');
 					str = str.slice(i + 1);
 					found = true;
@@ -857,17 +865,26 @@ function KinkyDungeonWordWrap(str, maxWidthTranslate, maxWidthEnglish) {
 				}
 			}
 
+			//Round up
+			maxChineseWidth = Math.ceil(maxChineseWidth)
+
 			if (!found) {
-				if ((str.length - maxWidth) <= 3) {
-					res += [str.slice(0, maxWidth+3), newLineStr].join('');
-					str = str.slice(maxWidth+3);
+				if ((str.length - maxChineseWidth) <= 2) {
+					//If the last line does not satisfy at least 2 characters, the last 2 characters are moved to the previous line
+					res += [str.slice(0, maxChineseWidth+3), newLineStr].join('');
+					str = str.slice(maxChineseWidth+3);
+				} else if ((str.length - maxChineseWidth) <= 5){
+					//If the last line does not satisfy at least 5 characters, the last character of the previous line is moved to the last line
+					res += [str.slice(0, maxChineseWidth-1), newLineStr].join('');
+					str = str.slice(maxChineseWidth-1);
 				} else {
-					res += [str.slice(0, maxWidth), newLineStr].join('');
-					str = str.slice(maxWidth);
+					res += [str.slice(0, maxChineseWidth), newLineStr].join('');
+					str = str.slice(maxChineseWidth);
 				}
 			}
 		}
 	} else {
+		//Engilsh
 		while (str.length > maxWidth) {
 			let found = false;
 			// Inserts new line at first whitespace of the line
@@ -897,8 +914,12 @@ function KinkyDungeonTestWhite(x,language) {
 		let white = new RegExp(/^\s$/);
 		return white.test(x.charAt(0));
 	}
-	if (language == "Chinese") {
+	if (language == "ChineseP") {
 		let white = new RegExp(/^[\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b\uff01\u3010\u3011\uffe5]$/);
+		return white.test(x.charAt(0));
+	}
+	if (language == "ChineseSN") {
+		let white = new RegExp(/^[\s0-9]$/);
 		return white.test(x.charAt(0));
 	}
 }
