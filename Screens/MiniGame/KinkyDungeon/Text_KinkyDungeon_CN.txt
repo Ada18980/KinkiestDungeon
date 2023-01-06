@@ -5192,8 +5192,6 @@ The glue slows you down! (-DamageDealt SP)
 胶水让你慢下来！ (-DamageDealt SP)
 Elemental's Firebolt
 元素的火焰弹
-You a hurl a firebolt!
-你投掷了火焰弹！
 Knife
 刀
 Throw one of your knives DamageDealt damage. Lands in the target's tile
@@ -5218,12 +5216,6 @@ You utter dark words of ice-cold truths.
 你说出冰封的黑暗咒语。
 Choose a target to freeze
 选择要冻结的目标
-Ignite a target for Duration turns
-在 Duration 回合内点燃目标
-You spin in a circle, inscribing flames with your feet!
-你旋转一圈，用你的脚产生火焰！
-Choose a target to ignite
-选择一个目标来点燃
 Binding Chain
 捆绑锁链
 Magic Chain
@@ -5286,12 +5278,6 @@ Choose target location
 选择目标位置
 The elemental channels the force of the storm!
 元素引导风暴之力！
-You a hurl a fireball!
-你投掷了火球！
-You conjure a gout of flame!
-你召唤出一团火焰！
-Choose target AoE location
-选择目标 AOE 位置
 Ice Storm
 暴风雪
 Swirling frost that deals DamageDealt damage per turn for LifeTime turns and slows enemies within. 5x5 area. You are unaffected.
@@ -5306,14 +5292,6 @@ A bolt of lightning that does DamageDealt damage to enemies in a 4-range line an
 一道闪电对 4 格内的敌人造成穿透伤害并短暂眩晕。
 Lightning erupts from your fingertips!
 闪电从指尖爆发！
-Choose line direction (max range 4 tiles)
-选择线方向（最大范围 4 个图块）
-Lava Fissure
-熔岩裂缝
-You stomp the ground and the earth opens its gaping maw!
-你重踏大地，地面出现了无底洞！
-Choose line direction (max range 4 tiles)
-选择线方向（最大范围 4 个图块）
 You unleash a bolt of lightning!
 你释放出一道闪电！
 Choose line direction
@@ -5382,14 +5360,6 @@ Legendary Wizard
 传奇法师
 Gives you an additional spell choice slot
 给你一个额外的法术选择槽
-Expert Summoner
-专家召唤师
-Increases the permanent summon cap by +1 (from 2 to 3)
-永久召唤上限增加 +1（从 2 增加到 3）
-Master Summoner
-召唤师大师
-Increases the permanent summon cap by +1 (from 3 to 4)
-永久召唤上限增加 +1（从 3 增加到 4）
 Fire in the hole!
 小心手雷！
 You set an invisible trap!
@@ -8592,16 +8562,6 @@ Grants a save code every few floors you can write down. Saves only on exit and f
 每隔几层提供存档。存档仅在每层开始和结束时生效。
 Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
 传说在广阔的丛林中有一座神庙。戴好你的装备，去寻找宝藏吧！
-Iron Will
-钢铁意志
-While you have 100 willpower or more, regain an additional 4 stamina per turn.
-当你具有 100 点或更多意志力时，每回合将额外恢复 4 点体力。
-Magical Implements
-魔法武器精通
-While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%.
-手持法杖或附魔刀等魔法武器时，法力消耗降低20%。
-Choose AoE location
-选择施放位置
 You conjure a flurry of frost!
 你召唤了冰霜！
 You call forth the rage of the earth.
@@ -8650,10 +8610,6 @@ You stomp your foot and magma wells up beneath the ground!
 你跺了跺脚，岩浆从地下喷涌而出！
 Choose monoliths to enchant
 选择需要附魔的巨石
-You conjure an incendiary trap!
-你设置了一个火焰陷阱！
-Choose location for trap
-选择陷阱位置
 You conjure a charged trap!
 你设置了一个闪电陷阱！
 You conjure an icy trap!
@@ -8847,7 +8803,6 @@ Damage
 
 
 ###法术###
-
 Spell Points: 
 技能点：
 Spell Points: SPELLPOINTS
@@ -8914,6 +8869,8 @@ Dexterity
 灵巧
 Intelligence
 智力
+
+##技能树##
 Flame Novice
 基础火法术
 Unlocks fire spells. Learn Firebolt.
@@ -8982,30 +8939,62 @@ Arcane Knowledge
 秘密知识
 Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies.
 允许学习知识和暴击幻术 解锁对敌人的高级工具提示 并习得幻术 “共析钢”
+
+##元素法术##
+#基础火法术#
 Firecracker
 迸裂火花
 A small delayed explosion that deals DamageDealt fire damage.
-释放小型延时爆炸，造成 DamageDealt 点火伤害。
+造成 DamageDealt 点火伤害小型的延时爆炸， 。
+You shout an incendiary retort!
+你丢出一团燃烧的炸药！
+
 Incinerate
 焚风
 A tornado of flame that does DamageDealt damage per turn for LifeTime turns.
 释放火焰龙卷风，持续 LifeTime 回合，每回合造成 DamageDealt 点火伤害。
+You conjure a gout of flame!
+你召唤出一团火焰！
+
 Firebolt
 火焰弹
 A ball of flame that does DamageDealt damage.
 释放造成 DamageDealt 点火焰伤害的火焰弹。
+You a hurl a firebolt!
+你投掷了火焰弹！
+
 Fireball
 火球
 A slow moving ball of flame that explodes for 120 fire damage to the target and DamageDealt damage to surrounding enemies.
 释放缓慢移动的爆炸火球，对目标造成 120 点火焰伤害，并对其附近单位造成 DamageDealt 点火焰伤害。
+You a hurl a fireball!
+你投掷了火球！
+
 Ignite
 点燃
 Ignite a friendly target for Duration turns, dealing DamageDealt fire damage per turn to it and nearby targets.
 点燃一个友方单位 Duration 回合，每回合对其及附近单位造成 DamageDealt 点火焰伤害。
+You spin in a circle, inscribing flames with your feet!
+你旋转一圈，用你的脚产生火焰！
+Choose a friendly target to ignite
+选择一个友方目标来点燃
+
 Flame Rune
 火焰符文
 A trap that deals DamageDealt fire damage in an area. Takes 5 turns to setup.
 设置一个陷阱，陷阱可造成 DamageDealt 点范围性火焰伤害。 需要 5 回合进行设置。
+You conjure an incendiary trap!
+你设置了一个火焰陷阱！
+
+Fissure
+熔岩裂缝
+Lava Fissure
+熔岩裂缝
+A great fissure erupts from the earth, dealing 70 fire damage to enemies in a 4-range line and dealing 15 damage/turn for 6 turns.
+使大地崩裂喷出熔岩，对 4 格范围内的敌人造成 70 点火焰伤害，接下来每回合造成 15 点火焰伤害，持续6回合。
+You stomp the ground and the earth opens its gaping maw!
+你重踏大地，地面出现了无底洞！
+
 Flame Blade
 火焰之刃
 When enabled: Weapon attacks cost mana and create a flame strike that deals 30 fire damage to adjacent targets.
@@ -9018,10 +9007,8 @@ Temperature Play
 温度Play
 Fire and Ice damage do 30% more damage to fully bound enemies.
 对被完全束缚的敌人造成额外 30% 火焰或冰霜伤害。
-Fissure
-裂地
-A great fissure erupts from the earth, dealing 70 fire damage to enemies in a 4-range line and dealing 15 damage/turn for 6 turns.
-使大地崩裂喷出熔岩，对 4 格范围内的敌人造成 70 点火焰伤害，接下来每回合造成 15 点火焰伤害，持续6回合。
+
+#基础雷法术#
 Electrify
 落雷
 A delayed shock that deals DamageDealt damage and stuns for Duration turns.
@@ -9661,10 +9648,65 @@ Heartsense
 Highlight the locations of enemies through walls on the map for 4 turns.
 在地图上通过墙壁突出显示敌人的位置 4 回合。
 
+
+##升级##
+Iron Will
+钢铁意志
+While you have 100 willpower or more, regain an additional 4 stamina per turn.
+当你具有 100 点或更多意志力时，每回合将额外恢复 4 点体力。
+Athlete
+体育健将
+Sprinting costs 40% less stamina.
+疾跑消耗的耐力减少 40%。
+Sneaky
+影于暗处
+You are harder to see when waiting.
+你在等待时很难被发现。
+Dodge I
+闪避 I
++10% evasion
++10% 闪避率
+Dodge II
+闪避 II
++15% evasion (25 total)
++15% 闪避率 (共 25%)
+Dodge III
+闪避 III
++25% evasion (50 total)
++25% 闪避率 (共 50%)
+More Summons
+专家召唤师
+Increases the permanent summon cap by +1 (from 2 to 3)
+召唤上限永久增加 +1（从 2 增加到 3）
+Many Summons
+召唤师大师
+Increases the permanent summon cap by +1 (from 3 to 4)
+召唤上限永久增加 +1（从 3 增加到 4）
+Magical Implements
+魔法武器精通
+While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%.
+手持法杖或附魔刀等魔法武器时，法力消耗降低20%。
+Mage Circuits
+魔法电路
+Increases the size of the passive mana pool by +100.
+使被动法力池增加 100 点。
+Archmage
+大魔法师
+Upcasted spells cost 25% less mana.
+减少进阶法术 25% MP消耗。
+Critical Strike
+致命一击
+Excess accuracy (over 100%) is converted to bonus physical damage percentage at 50% efficiency.
+超额准确度（超过 100%）会以 50% 的效率转化为额外的物理伤害百分比。
+
 Flash Bomb
 闪光弹
 Mirror Image
 镜像
+Choose AoE location
+选择施放位置
+Choose target AoE location
+选择施放位置
 Choose line direction
 选择直线区域
 Choose aim direction
@@ -9673,3 +9715,7 @@ Select which creature to buff
 选择要增益的生物
 Select yourself
 选择自己
+Choose location for trap
+选择陷阱位置
+Choose line direction (max range 4 tiles)
+选择直线区域（最大范围 4 个格）
