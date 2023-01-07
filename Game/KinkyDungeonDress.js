@@ -435,13 +435,12 @@ function KinkyDungeonWearForcedClothes(restraints) {
 		}
 	}
 }
-/*
 function KDCharacterAppearanceSetColorForGroup(Player, Color, Group) {
 	let item = InventoryGet(Player, Group);
 	if (item) {
 		item.Color = Color;
 	}
-}*/
+}
 
 function KinkyDungeonGetOutfit(Name) {
 	if (KinkyDungeonOutfitCache && KinkyDungeonOutfitCache.get(Name)) {

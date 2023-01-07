@@ -4,6 +4,10 @@
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
 
+
+let KinkyDungeonPlayerNeedsRefresh = false;
+let KinkyDungeonNextRefreshCheck = 0;
+
 // Check URL to see if indev branch
 const pp = new URLSearchParams(window.location.search);
 let param_branch = pp.has('branch') ? pp.get('branch') : "";
@@ -513,6 +517,8 @@ function KinkyDungeonLoad() {
 
 	CurrentDarkFactor = 0;
 
+	KinkyDungeonPlayerNeedsRefresh = false;
+
 	KinkyDungeonInitTime = CommonTime();
 	KinkyDungeonGameKey.load();
 
@@ -723,6 +729,8 @@ function KinkyDungeonRun() {
 		KinkyDungeonCanvas.width = KinkyDungeonGridSizeDisplay * KinkyDungeonGridWidthDisplay;
 		KinkyDungeonCanvas.height = KinkyDungeonGridSizeDisplay * KinkyDungeonGridHeightDisplay;
 	}
+	// Check to see whether the player (outside of KD) needs a refresh
+	KinkyDungeonCheckPlayerRefresh();
 
 	// Draw the characters
 	if ((KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats")
@@ -2073,6 +2081,15 @@ function KinkyDungeonClick() {
 function KinkyDungeonExit() {
 	CommonDynamicFunction(MiniGameReturnFunction + "()");
 
+	// Refresh the player character if needed
+	if (ArcadeDeviousChallenge && KinkyDungeonPlayerNeedsRefresh) {
+		if (ServerPlayerIsInChatRoom()) {
+			ChatRoomCharacterUpdate(Player);
+		} else {
+			CharacterRefresh(Player);
+		}
+	}
+
 	if (CharacterAppearancePreviousEmoticon) {
 		CharacterSetFacialExpression(Player, "Emoticon", CharacterAppearancePreviousEmoticon);
 		CharacterAppearancePreviousEmoticon = "";
@@ -2611,4 +2628,26 @@ function TextGetKD(Text) {
 	if (TextGet(Text))
 		return TextGet(Text);
 	else return KDLoadingTextKeys[Text] || "Missing text";
+}
+
+
+function KinkyDungeonCheckPlayerRefresh() {
+	if (!ArcadeDeviousChallenge || CommonTime() < KinkyDungeonNextRefreshCheck) {
+		return;
+	}
+
+	// We've exceeded the refresh check time - check again in 1 second
+	KinkyDungeonNextRefreshCheck = CommonTime() + 1000;
+
+	if (!KinkyDungeonPlayerNeedsRefresh) {
+		return;
+	}
+
+	KinkyDungeonPlayerNeedsRefresh = false;
+
+	if (ServerPlayerIsInChatRoom()) {
+		ChatRoomCharacterUpdate(Player);
+	} else {
+		CharacterRefresh(Player);
+	}
 }
