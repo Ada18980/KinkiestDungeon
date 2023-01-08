@@ -1278,7 +1278,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 	} else if (b.bullet.hit == "instant") {
 		if (!KinkyDungeonBulletsCheckCollision(b, true, true, d)) {
 			if (!(b.bullet.spell && (b.bullet.spell.piercing || (b.bullet.spell.pierceEnemies && KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(b.x, b.y)))))) {
-				KinkyDungeonBullets.splice(KinkyDungeonBullets.indexOf(b), 1);
+				let ind = KinkyDungeonBullets.indexOf(b);
+				if (ind > -1)
+					KinkyDungeonBullets.splice(ind, 1);
 				KinkyDungeonBulletsID[b.spriteID] = null;
 				KinkyDungeonUpdateSingleBulletVisual(b, true, d);
 				KinkyDungeonSendEvent("bulletDestroy", {bullet: b, target: undefined, outOfRange:outOfRange, outOfTime: outOfTime});

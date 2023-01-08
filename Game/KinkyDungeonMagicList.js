@@ -814,7 +814,7 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "EnemyMiscast", tags: [], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "inert",
 	},
-	{name: "Summon", faction: "Enemy", school: "Conjure", manacost: 0, components: ["Verbal"], level:1, type:"hit", onhit:"instant", time:0, power: 0, delay: 0, range: 4, size: 1, lifetime: 1, damage: ""}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
+	{name: "Summon", faction: "Enemy", school: "Conjure", manacost: 0, components: ["Verbal"], level:1, type:"hit", onhit:"instant", time:0, power: 0, delay: 0, range: 4, size: 1, lifetime: 1, damage: "inert"}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 
 	/** End particle effects */
 
