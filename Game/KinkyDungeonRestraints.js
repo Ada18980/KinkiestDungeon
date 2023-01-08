@@ -2586,44 +2586,30 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 					}
 				}
 				//if (placed && !placed.Property) placed.Property = {};
-				if (restraint.Type) {
+				if (placedOnPlayer && restraint.Type) {
 					let options = window["Inventory" + ((AssetGroup.includes("ItemMouth")) ? "ItemMouth" : AssetGroup) + restraint.Asset + "Options"];
 					if (!options) options = TypedItemDataLookup[`${AssetGroup}${restraint.Asset}`].options; // Try again
 					const option = options.find(o => o.Name === restraint.Type);
-					/*
-					KinkyDungeonPlayer.FocusGroup = AssetGroupGet("Female3DCG", AssetGroup);
-					ExtendedItemSetType(KinkyDungeonPlayer, options, option);
-					*/
-					if (placedOnPlayer) {
-						const playerItem = InventoryGet(Player, AssetGroup);
-						if (playerItem) {
-							TypedItemSetOption(Player, playerItem, options, option, false);
-							KinkyDungeonPlayerNeedsRefresh = true;
-						}
+					const playerItem = InventoryGet(Player, AssetGroup);
+					if (playerItem) {
+						TypedItemSetOption(Player, playerItem, options, option, false);
+						KinkyDungeonPlayerNeedsRefresh = true;
 					}
-					//KinkyDungeonPlayer.FocusGroup = null;
 				}
-				if (restraint.Modules) {
+				if (placedOnPlayer && restraint.Modules) {
 					let data = ModularItemDataLookup[AssetGroup + restraint.Asset];
 					let asset = data.asset;
 					let modules = data.modules;
 					// @ts-ignore
-					//InventoryGet(KinkyDungeonPlayer, AssetGroup).Property = ModularItemMergeModuleValues({ asset, modules }, restraint.Modules);
-					if (placedOnPlayer) {
-						// @ts-ignore
-						InventoryGet(Player, AssetGroup).Property = ModularItemMergeModuleValues({ asset, modules }, restraint.Modules);
-					}
+					InventoryGet(Player, AssetGroup).Property = ModularItemMergeModuleValues({ asset, modules }, restraint.Modules);
 				}
 				/*if (restraint.OverridePriority) {
 					if (!InventoryGet(KinkyDungeonPlayer, AssetGroup).Property) InventoryGet(KinkyDungeonPlayer, AssetGroup).Property = {OverridePriority: restraint.OverridePriority};
 					else InventoryGet(KinkyDungeonPlayer, AssetGroup).Property.OverridePriority = restraint.OverridePriority;
 				}*/
-				if (color) {
+				if (placedOnPlayer && color) {
 					// @ts-ignore
-					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, AssetGroup);
-					if (placedOnPlayer)
-						// @ts-ignore
-						KDCharacterAppearanceSetColorForGroup(Player, color, AssetGroup);
+					KDCharacterAppearanceSetColorForGroup(Player, color, AssetGroup);
 				}
 				let item = {name: restraint.name, type: Restraint, curse: Curse, events:events ? events : Object.assign([], restraint.events), tightness: tight, lock: "", faction: faction, dynamicLink: dynamicLink };
 				KinkyDungeonInventoryAdd(item);
