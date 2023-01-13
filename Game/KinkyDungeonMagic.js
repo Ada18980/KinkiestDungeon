@@ -849,8 +849,8 @@ function KinkyDungeonWordWrap(str, maxWidthTranslate, maxWidthEnglish) {
 		//Chinese
 		while (str.length > maxWidth) {
 			let found = false;
-			let maxChineseWidth = maxWidth
-			
+			let maxChineseWidth = maxWidth;
+
 			for (let i = 0; i <= maxChineseWidth+1; i++) {
 				//Numbers are calculated as 0.5 characters,Space are calculated as 0 characters
 				if (KinkyDungeonTestWhite(str.charAt(i),"ChineseN")) {maxChineseWidth += 0.5;}
@@ -865,7 +865,7 @@ function KinkyDungeonWordWrap(str, maxWidthTranslate, maxWidthEnglish) {
 			}
 
 			//Round up
-			maxChineseWidth = Math.ceil(maxChineseWidth)
+			maxChineseWidth = Math.ceil(maxChineseWidth);
 
 			if (!found) {
 				if ((str.length - maxChineseWidth) <= 2) {
@@ -900,10 +900,10 @@ function KinkyDungeonWordWrap(str, maxWidthTranslate, maxWidthEnglish) {
 				res += [str.slice(0, maxWidth), newLineStr].join('');
 				str = str.slice(maxWidth);
 			}
-	
+
 		}
 	}
-	
+
 
 	return res + str;
 }
