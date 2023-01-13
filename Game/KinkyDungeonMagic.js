@@ -814,13 +814,13 @@ function KinkyDungeonCheckSpellPrerequisite(spell) {
 function KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthEnglish) {
 	try {
 		// @ts-ignore
-		if (TranslationLanguage === 'CN' && guessLanguage) {
+		if (KDBigLanguages.includes(TranslationLanguage) && guessLanguage) {
 			// @ts-ignore
 			let languageName = guessLanguage.name(str);
 			// console.log('KinkyDungeonDetectLanguageForMaxWidth languageName', languageName);
 			if (languageName === "unknown") {
 				return maxWidthTranslate;
-			} else if (languageName === "Chinese") {
+			} else if (languageName === "Chinese" || languageName === "Korean") {
 				return maxWidthTranslate;
 			} else if (languageName === "English") {
 				return maxWidthEnglish;
@@ -960,7 +960,7 @@ function KinkyDungeonDrawMagic() {
 
 		if (KinkyDungeonPreviewSpell) DrawTextKD(TextGet("KinkyDungeonMagicCost") + KinkyDungeonGetCost(spell), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 150, KDTextGray0, KDTextTan);
 		DrawTextKD(TextGet("KinkyDungeonMagicManaCost") + (spell.manacost * 10), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 195, KDTextGray0, KDTextTan);
-		let wrapAmount = TranslationLanguage == 'CN' ? 9 : 22;
+		let wrapAmount = KDBigLanguages.includes(TranslationLanguage) ? 9 : 22;
 		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription"+ spell.name).replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)), wrapAmount, 22).split('\n');
 		let i = 0;
 		for (let N = 0; N < textSplit.length; N++) {

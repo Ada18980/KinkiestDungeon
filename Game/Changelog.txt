@@ -1201,6 +1201,7 @@ Features
 
 3.92
 - Penalties due to goddess reputation
+- Added Korean language support (Thanks Phantasm!)
 
 TODO ValidationFindBlockCycles to prevent bugs
 
