@@ -710,9 +710,13 @@ function KDCanSeeEnemy(enemy, playerDist) {
 }
 
 function KDMaxEnemyViewDist(enemy) {
+	let data = {
+		blindMult: KinkyDungeonStatsChoice.get("Blackout") ? 100 : 2,
+	};
+	//KinkyDungeonSendEvent("calcEnemyRad", data);
 	if (enemy.hp < enemy.Enemy.maxhp || enemy.attackPoints > 0) return KDMaxVisionDist;
 	if (KinkyDungeonBlindLevel < 2) return KDMaxVisionDist;
-	else return Math.max(1.5, KDMaxVisionDist - KinkyDungeonBlindLevel * 2);
+	else return Math.max(1.5, KDMaxVisionDist - KinkyDungeonBlindLevel * data.blindMult);
 }
 
 /**

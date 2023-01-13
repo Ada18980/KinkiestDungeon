@@ -836,7 +836,9 @@ function KinkyDungeonDrawGame() {
 					} else if (KinkyDungeonFastMove && !KinkyDungeonToggleAutoSprint && (KinkyDungeonMoveDirection.x != 0 || KinkyDungeonMoveDirection.y != 0)) {
 						KinkyDungeonSetTargetLocation();
 
-						if (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0) {
+
+						let allowFog = KDAllowFog();
+						if (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || (allowFog && KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0)) {
 							KDDraw(kdgameboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "TargetMove.png",
 								(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 									zIndex: 100,
@@ -2223,7 +2225,8 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 		for (let X = -1; X <= KinkyDungeonGridWidthDisplay + 1; X++)  {
 			let RY = R+CamY;
 			let RX = X+CamX;
-			if (RY >= 0 && RY < KinkyDungeonGridHeight && RX >= 0 && RX < KinkyDungeonGridWidth && (KinkyDungeonVisionGet(RX, RY) > 0 || KinkyDungeonFogGet(RX, RY) > 0)) {
+			let allowFog = KDAllowFog();
+			if (RY >= 0 && RY < KinkyDungeonGridHeight && RX >= 0 && RX < KinkyDungeonGridWidth && (KinkyDungeonVisionGet(RX, RY) > 0 || (allowFog && KinkyDungeonFogGet(RX, RY) > 0))) {
 				if (Debug) {
 					if ( KinkyDungeonTilesGet(RX + "," + RY)) {
 						if (KinkyDungeonTilesGet(RX + "," + RY).Lock)

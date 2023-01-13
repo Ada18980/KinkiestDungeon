@@ -389,7 +389,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 	} else {
 		// Generate the grid
 		let dist = 0;
-		let fog = !KinkyDungeonStatsChoice.get("Forgetful");
+		let fog = true;//KDAllowFog();
 		for (let X = 0; X < KinkyDungeonGridWidth; X++) {
 			for (let Y = 0; Y < KinkyDungeonGridHeight; Y++)
 				if (X >= 0 && X <= width-1 && Y >= 0 && Y <= height-1) {
@@ -427,7 +427,8 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset) {
 
 				let RY = R+CamY;
 				let RX = X+CamX;
-				if (RY >= 1 && RY < KinkyDungeonGridHeight && RX >= 1 && RX < KinkyDungeonGridWidth && (KinkyDungeonVisionGet(RX, RY) > 0 || KinkyDungeonFogGet(RX, RY) > 0)) {
+				let allowFog = KDAllowFog();
+				if (RY >= 1 && RY < KinkyDungeonGridHeight && RX >= 1 && RX < KinkyDungeonGridWidth && (KinkyDungeonVisionGet(RX, RY) > 0 || (allowFog && KinkyDungeonFogGet(RX, RY) > 0))) {
 					let fog = KinkyDungeonStatBlind > 0 ? 0 : Math.min(0.5, KinkyDungeonFogGet(RX, RY)/10);
 					let lightDiv = (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(RX, RY))) ? KDLightCropValue : KDLightCropValue * 0.7;
 					let light = Math.max(KinkyDungeonVisionGrid[RX + RY*KinkyDungeonGridWidth]/lightDiv, fog);
@@ -451,4 +452,11 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset) {
 			// @ts-ignore
 			KDFogTexture = PIXI.Texture.from(img);
 	}
+}
+
+/**
+ * Allows fog of war to be rendered
+ */
+function KDAllowFog() {
+	return !(KinkyDungeonStatsChoice.get("Forgetful") || (KinkyDungeonBlindLevel > 0 && KinkyDungeonStatsChoice.get("TotalBlackout")));
 }

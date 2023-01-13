@@ -1203,6 +1203,10 @@ Features
 - Penalties due to goddess reputation
 - Added Korean language support (Thanks Phantasm!)
 
+3.93
+- Leash walks are more likely if you have higher submissiveness
+- New perks: Blackout, Total Blackout
+
 TODO ValidationFindBlockCycles to prevent bugs
 
 TODO: Mushrooms in the jungle
