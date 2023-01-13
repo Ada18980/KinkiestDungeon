@@ -3,7 +3,10 @@
 // Disable interpolation when scaling, will make texture be pixelated
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
-
+/** These languages have characters which are rendered bigger than English. */
+let KDBigLanguages = ["CN", "KR"];
+/** Language List */
+let KDLanguages = ["", "CN", "KR"];
 
 let KinkyDungeonPlayerNeedsRefresh = false;
 let KinkyDungeonNextRefreshCheck = 0;
@@ -846,7 +849,7 @@ function KinkyDungeonRun() {
 		DrawButtonVis(850, 942, 375, 50, TextGet("KinkyDungeonDeviantart"), "#ffffff", "");
 		DrawButtonVis(1275, 942, 375, 50, TextGet("KinkyDungeonPatreon"), "#ffeecc", "");
 
-		DrawButtonVis(1700, 874, 280, 50, TextGet(localStorage.getItem("BondageClubLanguage") ? "English" : "Chinese"), "#ffffff", "");
+		DrawButtonVis(1700, 874, 280, 50, TextGet(localStorage.getItem("BondageClubLanguage") || "EN"), "#ffffff", "");
 
 		if (KDPatched) {
 			// @ts-ignore
@@ -857,7 +860,7 @@ function KinkyDungeonRun() {
 		}
 
 		if (KDRestart)
-			DrawTextKD(TextGet(localStorage.getItem("BondageClubLanguage") ? "RestartNeededCN" : "RestartNeeded"), 1840, 800, "#ffffff", KDTextGray2);
+			DrawTextKD(TextGet("RestartNeeded" + (localStorage.getItem("BondageClubLanguage") || "EN")), 1840, 800, "#ffffff", KDTextGray2);
 	} else if (KinkyDungeonState == "Consent") {
 		MainCanvas.textAlign = "center";
 		// Draw temp start screen
@@ -1953,9 +1956,9 @@ function KinkyDungeonHandleClick() {
 		}
 
 		if (MouseIn(1700, 874, 280, 50)) {
-			if (localStorage.getItem("BondageClubLanguage")) {
-				localStorage.setItem("BondageClubLanguage", "");
-			} else localStorage.setItem("BondageClubLanguage", "CN");
+			let langIndex = KDLanguages.indexOf(localStorage.getItem("BondageClubLanguage")) || 0;
+			let newIndex = (langIndex + 1) % KDLanguages.length;
+			localStorage.setItem("BondageClubLanguage", KDLanguages[newIndex]);
 			KDRestart = true;
 			return true;
 		}
