@@ -566,6 +566,8 @@ function KinkyDungeonDrawOrb() {
 			}
 			DrawButtonVis(canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), "white");
 			DrawProgressBar(canvasOffsetX_ui + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value, color, KDTextGray2);
+			if (KinkyDungeonShrineBaseCosts[shrine])
+				KDDrawRestraintBonus(shrine, canvasOffsetX_ui + 275 + XX - 50, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
 
 			i++;
 		}
@@ -721,4 +723,22 @@ function KinkyDungeonDrawPerkOrb() {
 	}, true, 1250 - bwidth/2, 750 + 80, bwidth, bheight, TextGet("KinkyDungeonPerkReject"), "#ffffff");
 
 	MainCanvas.textAlign = "center";
+}
+
+function KDGetPosNegColor(value) {
+	return (value ? (value > 0 ? KDGoodColor : KDCurseColor) : "#dddddd");
+}
+
+function KDGetGoddessBonus(shrine) {
+	if (KinkyDungeonGoddessRep[shrine]) {
+		return KinkyDungeonGoddessRep[shrine] / 50 * 0.25;
+	}
+	return 0;
+}
+
+function KDDrawRestraintBonus(shrine, x, y, width = 100, FontSize, align, zIndex, alpha, forceColor) {
+	let bonus = KDGetGoddessBonus(shrine);
+	let color = forceColor ? forceColor : KDGetPosNegColor(bonus);
+	let str = (bonus >= 0 ? "+" : "") + Math.round(bonus * 100) + "%";
+	DrawTextFitKD(str, x, y, width, color, "#000000", FontSize, align, zIndex, alpha);
 }

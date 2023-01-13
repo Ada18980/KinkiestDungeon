@@ -1089,6 +1089,9 @@ function KDGetRestraintAffinity(item, data) {
 	return data.affinity;
 }
 
+/**
+ *
+ */
 function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChancePre, ApplyGhost, ApplyPlayerBonus, Msg) {
 	let escapeChance = escapeChancePre != undefined ? escapeChancePre : KDRestraint(restraint).escapeChance[StruggleType] != undefined ? KDRestraint(restraint).escapeChance[StruggleType] : 1.0;
 	let limitChance = limitChancePre != undefined ? limitChancePre : (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
@@ -1110,7 +1113,8 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	if (KinkyDungeonStatsChoice.get("Unchained") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal"))
 		escapeChance += KDUnchainedBonus;
 	if (KinkyDungeonStatsChoice.get("Damsel") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal")) {
-		escapeChance /= 1.5;
+		if (escapeChance > 0)
+			escapeChance /= 1.5;
 		if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < KDDamselBonus)
 			limitChance = KDDamselBonus;
 	}
@@ -1124,7 +1128,8 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	if (KinkyDungeonStatsChoice.get("Artist") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Rope"))
 		escapeChance += KDArtistBonus;
 	if (KinkyDungeonStatsChoice.get("Bunny") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Rope")) {
-		escapeChance /= 1.5;
+		if (escapeChance > 0)
+			escapeChance /= 1.5;
 		if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < KDBunnyBonus)
 			limitChance = KDBunnyBonus;
 	}
@@ -1139,7 +1144,8 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	if (KinkyDungeonStatsChoice.get("Slippery") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Latex"))
 		escapeChance += KDSlipperyBonus;
 	else if (KinkyDungeonStatsChoice.get("Doll") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Latex")) {
-		escapeChance /= 1.5;
+		if (escapeChance > 0)
+			escapeChance /= 1.5;
 		if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < KDDollBonus)
 			limitChance = KDDollBonus;
 	}
@@ -1147,10 +1153,14 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	if (KinkyDungeonStatsChoice.get("Escapee") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Leather"))
 		escapeChance += KDEscapeeBonus;
 	else if (KinkyDungeonStatsChoice.get("Dragon") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Leather")) {
-		escapeChance /= 1.5;
+		if (escapeChance > 0)
+			escapeChance /= 1.5;
 		if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < KDDragonBonus)
 			limitChance = KDDragonBonus;
 	}
+
+	let bonus = KDGetItemGoddessBonus(restraint);
+	escapeChance += bonus;
 
 	let data = {
 		restraint: restraint,
@@ -1161,6 +1171,7 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 		limitChancePre: limitChancePre,
 		ApplyGhost: ApplyGhost,
 		ApplyPlayerBonus: ApplyPlayerBonus,
+		GoddessBonus: bonus,
 		Msg: Msg,
 	};
 	KinkyDungeonSendEvent("perksStruggleCalc", data);
@@ -3061,4 +3072,17 @@ function KDAddDelayedStruggle(amount, time, StruggleType, struggleGroup, index, 
 			tags: ["Action", "Remove", "Restrain", "Hit"],
 		});
 	}
+}
+
+/**
+ * Gets the goddess bonus for this item
+ * @param {item} item
+ */
+function KDGetItemGoddessBonus(item) {
+	if (!item) return 0;
+	let bonus = 0;
+	for (let s of KDRestraint(item)?.shrine) {
+		bonus += KDGetGoddessBonus(s);
+	}
+	return bonus;
 }

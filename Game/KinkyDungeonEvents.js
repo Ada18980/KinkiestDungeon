@@ -3212,6 +3212,18 @@ function KinkyDungeonHandleEnemyEvent(Event, e, enemy, data) {
  * @type {Object.<string, Object.<string, function(string, *): void>>}
  */
 let KDEventMapGeneric = {
+	"drawSGTooltip": {
+		"goddessBonus": (e, data) => {
+			if (data.item && KDRestraint(data.item)?.shrine) {
+				let bonus = KDGetItemGoddessBonus(data.item);
+
+				if (bonus) {
+					data.extraLines.push(TextGet("KDGoddessStat_" + (bonus > 0 ? "Bonus" : "Penalty")) + Math.round(100 * bonus) + "%");
+					data.extraLineColor.push(KDGetPosNegColor(bonus));
+				}
+			}
+		},
+	},
 	"playerMove": {
 		"noisyTerrain": (e, data) => {
 			if (data.sprint && !data.cancelmove) {

@@ -667,6 +667,7 @@ function KinkyDungeonDrawInputs() {
 						lastO += 1;
 					}
 				}
+				let OInit = lastO;
 
 				// 0 = no draw
 				// 1 = grey
@@ -689,7 +690,7 @@ function KinkyDungeonDrawInputs() {
 						drawLayers = 2;
 					}
 
-					let O = 1;
+					let O = OInit + 1;
 					MainCanvas.textAlign = "left";
 					let drawn = false;
 					for (let d of dynamicList) {
@@ -702,7 +703,7 @@ function KinkyDungeonDrawInputs() {
 						}
 					}
 					lastO = O;
-					O = 0;
+					O = OInit;
 					if (drawn) {
 						DrawTextKD(TextGet("KinkyDungeonItemsUnderneath"), 530, MY + O * 45, "#ffffff", "#333333");
 					}

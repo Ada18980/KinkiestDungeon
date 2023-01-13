@@ -9,7 +9,8 @@ let KDMusicLoopTracksChance = {
 	"AREA5-UNDERGROUNDJUNGLE.ogg": 0.5,
 	"AREA6-CRYSTALCAVE.ogg": 0.5,
 	"AREA7-LOSTTEMPLE.ogg": 0.5,
-	"AREA8-BELLOWS.ogg": 0.5,
+	"AREA8-ORRERY.ogg": 0.7,
+	"AREA9-BELLOWS.ogg": 0.5,
 };
 
 let KDCurrentSong = "";

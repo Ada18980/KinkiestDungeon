@@ -1199,6 +1199,9 @@ Features
 - Rope kraken now drains its own HP to summon additional tentacles
 - Dialogue can now be manupulated using keys and Enter
 
+3.92
+- Penalties due to goddess reputation
+
 TODO ValidationFindBlockCycles to prevent bugs
 
 TODO: Mushrooms in the jungle

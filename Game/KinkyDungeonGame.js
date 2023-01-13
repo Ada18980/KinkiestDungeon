@@ -3931,7 +3931,7 @@ let KDKeyCheckers = {
 				if (KinkyDungeonShopIndex < 0) KinkyDungeonShopIndex = KDGameData.ShopItems.length - 1;
 				KDShopBuyConfirm = false;
 				return true;
-			} else if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
+			} else if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey) {
 				let cost = KinkyDungeonShrineCost("Commerce");
 				if (cost <= KinkyDungeonGold) {
 					if (!KDShopBuyConfirm) KDShopBuyConfirm = true;
