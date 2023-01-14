@@ -347,7 +347,7 @@ let KDGuardActions = {
 	"jailLeashTour": {
 		weight: (guard, xx, yy) => {
 			KDGameData.KinkyDungeonJailTourTimer = 0;
-			return (KDGameData.SleepTurns < 1 && KDGameData.KinkyDungeonJailTourTimer < 1 && KinkyDungeonGoddessRep.Ghost >= -45) ? 5 : 0;
+			return (KDGameData.SleepTurns < 1 && KDGameData.KinkyDungeonJailTourTimer < 1 && KinkyDungeonGoddessRep.Ghost >= -45) ? (5 + Math.max(0, (50 + KinkyDungeonGoddessRep.Ghost)/5)) : 0;
 		},
 		assign: (guard, xx, yy) => {
 			guard.RemainingJailLeashTourWaypoints = 2 + Math.ceil(KDRandom() * 4);

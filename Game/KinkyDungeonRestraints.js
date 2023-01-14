@@ -3081,8 +3081,14 @@ function KDAddDelayedStruggle(amount, time, StruggleType, struggleGroup, index, 
 function KDGetItemGoddessBonus(item) {
 	if (!item) return 0;
 	let bonus = 0;
+	let avg = 0;
 	for (let s of KDRestraint(item)?.shrine) {
-		bonus += KDGetGoddessBonus(s);
+		if (KinkyDungeonGoddessRep[s] != undefined) {
+			bonus += KDGetGoddessBonus(s);
+			avg += 1;
+		}
 	}
-	return bonus;
+	if (avg > 0)
+		return bonus/avg;
+	return 0;
 }

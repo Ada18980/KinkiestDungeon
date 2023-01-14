@@ -242,7 +242,7 @@ let KinkyDungeonStatsPresets = {
 	"Panic": {category: "Map", id: "Panic", cost: -1},
 
 	"Rusted": {category: "Map", id: "Rusted", cost: 1},
-	"Forgetful": {category: "Map", id: "Forgetful", cost: -1},
+	"Forgetful": {category: "Map", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
 	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0},
 	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0},
 	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, debuff: true, block: ["OnlyBrats"]},
@@ -257,7 +257,10 @@ let KinkyDungeonStatsPresets = {
 
 	"Butterfingers":  {category: "Restraints", id: "Butterfingers", cost: -1},
 	"WeakGrip":  {category: "Restraints", id: "WeakGrip", cost: -1},
+	"Blackout":  {category: "Combat", id: "Blackout", cost: -1, block: ["TotalBlackout"]},
+	"TotalBlackout":  {category: "Combat", id: "TotalBlackout", cost: -2, block: ["Blackout", "Forgetful"]},
 	"Incantation":  {category: "Magic", id: "Incantation", cost: -1},
+
 
 	"Stoic":  {category: "Damage", id: "Stoic", cost: 1, block: ["Ticklish"]},
 	"Ticklish":  {category: "Damage", id: "Ticklish", cost: -1, block: ["Stoic"]},
