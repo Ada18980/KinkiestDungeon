@@ -649,6 +649,9 @@ function KinkyDungeonDrawInputs() {
 				item = surfaceItems[KDStruggleGroupLinkIndex[sg.group]];
 			}
 			if (MouseIn(((!sg.left) ? (260) : 0), y-48, 230, (ButtonWidth + 45)) && sg) {
+
+				KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 500);
+
 				let data = {
 					struggleGroup: sg,
 					struggleIndex: KDStruggleGroupLinkIndex ? KDStruggleGroupLinkIndex[sg.group] : 0,
@@ -764,7 +767,6 @@ function KinkyDungeonDrawInputs() {
 					KinkyDungeonDrawStruggleHover = true;
 				}
 
-				KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 500);
 
 				let buttons = ["Struggle", "CurseInfo", "CurseUnlock", "Cut", "Remove", "Pick"];
 
