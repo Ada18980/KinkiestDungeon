@@ -711,7 +711,7 @@ function KDCanSeeEnemy(enemy, playerDist) {
 
 function KDMaxEnemyViewDist(enemy) {
 	let data = {
-		blindMult: KinkyDungeonStatsChoice.get("Blackout") ? 100 : 2,
+		blindMult: (KinkyDungeonStatsChoice.get("Blackout") || KinkyDungeonStatsChoice.get("TotalBlackout")) ? 100 : 2,
 	};
 	//KinkyDungeonSendEvent("calcEnemyRad", data);
 	if (enemy.hp < enemy.Enemy.maxhp || enemy.attackPoints > 0) return KDMaxVisionDist;

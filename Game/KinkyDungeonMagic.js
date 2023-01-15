@@ -829,10 +829,10 @@ function KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthE
 				return maxWidthEnglish;
 			}
 		} else {
-			return maxWidthTranslate;
+			return maxWidthEnglish;
 		}
 	} catch (e) {
-		return maxWidthTranslate;
+		return maxWidthEnglish;
 	}
 }
 
@@ -960,8 +960,7 @@ function KinkyDungeonDrawMagic() {
 
 		if (KinkyDungeonPreviewSpell) DrawTextKD(TextGet("KinkyDungeonMagicCost") + KinkyDungeonGetCost(spell), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 150, KDTextGray0, KDTextTan);
 		DrawTextKD(TextGet("KinkyDungeonMagicManaCost") + (spell.manacost * 10), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 195, KDTextGray0, KDTextTan);
-		let wrapAmount = KDBigLanguages.includes(TranslationLanguage) ? 9 : 22;
-		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription"+ spell.name).replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)), wrapAmount, 22).split('\n');
+		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription"+ spell.name).replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)), 9, 19).split('\n');
 		let i = 0;
 		for (let N = 0; N < textSplit.length; N++) {
 			DrawTextKD(textSplit[N],
