@@ -966,12 +966,14 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 						} else {
 							let ttCJKcheck1 = CJKcheck(tt,1);
 							let ttCJKcheck2 = CJKcheck(tt);
-
+	
 							if (ttCJKcheck1){
-								ttlength += ttCJKcheck1[0].length * 8;
+								var i;
+								for (i in ttCJKcheck1){ttlength += ttCJKcheck1[i].length * 8}
 							}
 							if (ttCJKcheck2){
-								ttlength += ttCJKcheck2[0].length * 16;
+								var i;
+								for (i in ttCJKcheck2){ttlength += ttCJKcheck2[i].length * 16}
 							}
 							DrawTextFitKD(tt, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, ttlength, "white", "black");
 							yboost += -3*KinkyDungeonGridSizeDisplay/8;
@@ -987,10 +989,12 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 						let nameCJKcheck2 = CJKcheck(name);
 
 						if (nameCJKcheck1){
-							namelength += nameCJKcheck1[0].length * 8;
+							var i;
+							for (i in nameCJKcheck1){namelength += nameCJKcheck1[i].length * 8;};
 						}
 						if (nameCJKcheck2){
-							namelength += nameCJKcheck2[0].length * 16;
+							var i;
+							for (i in nameCJKcheck2){namelength += nameCJKcheck2[i].length * 16;};
 						}
 						DrawTextFitKD(name, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, namelength, "white", "black");
 					}
@@ -1010,13 +1014,12 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 						let dialougeCJKcheck2 = CJKcheck(enemy.dialogue);
 
 						if (dialougeCJKcheck1){
-							dialougelenth = dialougeCJKcheck1[0].length * 8;
+							var i;
+							for (i in dialougeCJKcheck1){dialougelenth += dialougeCJKcheck1[i].length * 8;};
 						}
 						if (dialougeCJKcheck2){
-							var i
-							for(i in dialougeCJKcheck2){
-								dialougelenth += dialougeCJKcheck2[i].length * 16;
-							}
+							var i;
+							for (i in dialougeCJKcheck2){dialougelenth += dialougeCJKcheck2[i].length * 16;};
 						}
 						DrawTextFitKD(enemy.dialogue, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5, dialougelenth, enemy.dialogueColor, "#000000", 18, undefined, 20);
 					}
