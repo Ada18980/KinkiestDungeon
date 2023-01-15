@@ -4678,3 +4678,70 @@ function KDClearItems(enemy) {
 function KDCanDetect(enemy, player) {
 	return (KinkyDungeonTrackSneak(enemy, 0, player) || (AIData.playerDist < Math.max(1.5, AIData.blindSight) && enemy.aware));
 }
+
+let KDFactionSecurityMod = {
+	Dressmaker: {
+		level_magic: 1,
+		level_key: 1,
+	},
+	Witch: {
+		level_magic: 1,
+		level_key: 1,
+	},
+	Apprentice: {
+		level_magic: 1,
+	},
+	Elf: {
+		level_magic: 1,
+		level_key: 1,
+	},
+	Bast: {
+		level_magic: 1,
+	},
+	AncientRobot: {
+		level_tech: 2,
+		level_key: 1,
+	},
+	Nevermere: {
+		level_tech: 1,
+	},
+	Maidforce: {
+		level_tech: 1,
+	},
+	Alchemist: {
+		level_tech: 1,
+	},
+	Bountyhunter: {
+		level_key: 1,
+	},
+};
+
+let KDBaseSecurity = {
+	level_key: 0,
+};
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {string} type
+ * @returns {number}
+ */
+function KDGetSecurity(enemy, type) {
+	// Base securities; inherited from BaseSecurity but otherwise populated by the Security matrix of the enemy
+	let security = KDBaseSecurity[type] || -100;
+	if (enemy?.Enemy?.Security && enemy.Enemy.Security[type])
+		security = enemy.Enemy.Security[type];
+
+	// Add factional securities
+	let faction = KDGetFactionOriginal(enemy);
+	if (KDFactionSecurityMod[faction] && KDFactionSecurityMod[faction][type]) security += KDFactionSecurityMod[faction][type];
+
+	// If the enemy is cleared to have security, increase it based on rank
+	if (security > 0) {
+		if (!enemy.Enemy.tags.boss) security += 4;
+		else if (!enemy.Enemy.tags.miniboss) security += 3;
+		else if (!enemy.Enemy.tags.elite) security += 2;
+		else if (!enemy.Enemy.tags.minor) security += 1;
+	}
+	return security;
+}

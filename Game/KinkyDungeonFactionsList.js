@@ -37,6 +37,49 @@ let KinkyDungeonHiddenFactions = [
 	"Chase",
 ];
 
+
+
+let KDFactionSecurityMod = {
+	Dressmaker: {
+		level_magic: 1,
+		level_key: 1,
+	},
+	Witch: {
+		level_magic: 1,
+		level_key: 1,
+	},
+	Apprentice: {
+		level_magic: 1,
+	},
+	Elf: {
+		level_magic: 1,
+		level_key: 1,
+	},
+	Bast: {
+		level_magic: 1,
+	},
+	AncientRobot: {
+		level_tech: 2,
+		level_key: 1,
+	},
+	Nevermere: {
+		level_tech: 1,
+	},
+	Maidforce: {
+		level_tech: 1,
+	},
+	Alchemist: {
+		level_tech: 1,
+	},
+	Bountyhunter: {
+		level_key: 1,
+	},
+};
+
+let KDBaseSecurity = {
+	level_key: 0,
+};
+
 let KDPiousFactions = {
 	"Angel": 1.0,
 };
