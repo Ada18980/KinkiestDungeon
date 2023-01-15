@@ -1207,6 +1207,9 @@ Features
 - Leash walks are more likely if you have higher submissiveness
 - New perks: Blackout, Total Blackout
 
+3.94
+- Enemies now require security clearance to bypass chastity belts... unless you just take the Magic Hands perk
+
 TODO ValidationFindBlockCycles to prevent bugs
 
 TODO: Mushrooms in the jungle
