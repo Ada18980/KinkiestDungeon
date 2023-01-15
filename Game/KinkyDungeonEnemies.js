@@ -4693,7 +4693,7 @@ function KDGetSecurity(enemy, type) {
 
 	// Add factional securities
 	let faction = KDGetFactionOriginal(enemy);
-	if (KDFactionSecurityMod[faction] && KDFactionSecurityMod[faction][type]) security += KDFactionSecurityMod[faction][type];
+	if (KDFactionSecurityMod[faction] && KDFactionSecurityMod[faction][type] != undefined) security = Math.max(security + KDFactionSecurityMod[faction][type], KDFactionSecurityMod[faction][type]);
 
 	// If the enemy is cleared to have security, increase it based on rank
 	if (security >= 0) {
