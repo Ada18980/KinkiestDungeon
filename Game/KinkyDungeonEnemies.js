@@ -4696,7 +4696,7 @@ function KDGetSecurity(enemy, type) {
 	if (KDFactionSecurityMod[faction] && KDFactionSecurityMod[faction][type] != undefined) security = Math.max(security + KDFactionSecurityMod[faction][type], KDFactionSecurityMod[faction][type]);
 
 	// If the enemy is cleared to have security, increase it based on rank
-	if (security >= 0) {
+	if (security >= -10) {
 		if (enemy.Enemy.tags.boss) security += 4;
 		else if (enemy.Enemy.tags.miniboss) security += 3;
 		else if (enemy.Enemy.tags.elite) security += 2;

@@ -48,8 +48,16 @@ let KDFactionSecurityMod = {
 		level_magic: 1,
 		level_key: 1,
 	},
-	Apprentice: {
+	Elemental: {
+		level_magic: 2,
+	},
+	Mushy: {
 		level_magic: 1,
+		level_tech: 0,
+	},
+	Apprentice: {
+		level_magic: 0,
+		level_key: -1,
 	},
 	Elf: {
 		level_magic: 1,
@@ -64,15 +72,20 @@ let KDFactionSecurityMod = {
 	},
 	Nevermere: {
 		level_tech: 1,
+		level_key: 1,
 	},
 	Maidforce: {
-		level_tech: 1,
+		level_tech: 0,
+		level_magic: -1,
+		level_key: 1,
 	},
 	Alchemist: {
 		level_tech: 1,
+		level_magic: -1,
 	},
 	Bountyhunter: {
-		level_key: 1,
+		level_tech: 0,
+		level_key: 2,
 	},
 };
 
