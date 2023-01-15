@@ -895,7 +895,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 							}
 							let outfit = {name: outfitName, type: Outfit};
 							if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
-							if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+							//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 							KinkyDungeonSetDress(outfitName, outfitName);
 							KinkyDungeonSetFlag("Recruit_" + name, -1);
 							KinkyDungeonSetFlag("Recruited", -1);
@@ -921,7 +921,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 								}
 								let outfit = {name: outfitName, type: Outfit};
 								if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
-								if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+								//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 								KinkyDungeonSetDress(outfitName, outfitName);
 								KinkyDungeonSlowMoveTurns = 3;
 								KinkyDungeonSleepTime = CommonTime() + 200;
