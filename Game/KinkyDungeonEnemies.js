@@ -969,11 +969,11 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	
 							if (ttCJKcheck1){
 								var i;
-								for (i in ttCJKcheck1){ttlength += ttCJKcheck1[i].length * 8}
+								for (i in ttCJKcheck1){ttlength += ttCJKcheck1[i].length * 8;};
 							}
 							if (ttCJKcheck2){
 								var i;
-								for (i in ttCJKcheck2){ttlength += ttCJKcheck2[i].length * 16}
+								for (i in ttCJKcheck2){ttlength += ttCJKcheck2[i].length * 16;};
 							}
 							DrawTextFitKD(tt, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, ttlength, "white", "black");
 							yboost += -3*KinkyDungeonGridSizeDisplay/8;
