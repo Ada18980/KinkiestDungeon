@@ -805,24 +805,7 @@ function KDGroupBlocked(Group, External) {
 	if (KinkyDungeonPlayerTags.get("ChastityUpper") && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) return true;
 	if (KinkyDungeonPlayerTags.get("Block_" + Group)) return true;
 
-	let belt = KinkyDungeonGetRestraintItem("ItemPelvis");
-
-	if (belt && KDRestraint(belt) && KDRestraint(belt).chastity && ["ItemVulva", "ItemVulvaPiercings", "ItemButt"].includes(Group)) return true;
-
-	let bra = KinkyDungeonGetRestraintItem("ItemBreast");
-
-	if (bra && KDRestraint(bra) && KDRestraint(bra).chastitybra && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) return true;
-
-	let hood = KinkyDungeonGetRestraintItem("ItemHood");
-
-	if (hood && KDRestraint(hood) && KDRestraint(hood).gag && Group.includes("ItemM")) return true;
-
-	//let mask = KinkyDungeonGetRestraintItem("ItemHead");
-
-	//if (mask && KDRestraint(mask) && KDRestraint(mask).gag && Group.includes("ItemM")) return true;
-
 	let arms = KinkyDungeonGetRestraintItem("ItemArms");
-
 	if (arms && !KDIsTreeAccessible(arms) && Group.includes("ItemHands")) return true;
 
 	return false;
@@ -830,6 +813,69 @@ function KDGroupBlocked(Group, External) {
 
 	//if (device && KDRestraint(device) && KDRestraint(device).enclose) return true;
 
+}
+
+/**
+ * @param {string} Group
+ * @param {boolean} External
+ * @return {item[]}
+ * Gets a list of restraints blocking this group */
+function KDGetBlockingRestraints(Group, External) {
+	// Create the storage system
+	/** @type {Map<item, boolean>} */
+	let map = new Map();
+	let all = KinkyDungeonAllRestraintDynamic();
+	// For this section we just create a set of items that block this one
+	if (KinkyDungeonPlayerTags.get("ChastityLower") && ["ItemVulva", "ItemVulvaPiercings", "ItemButt"].includes(Group)) {
+		for (let item of all) {
+			if (!map.get(item.item) && (KDRestraint(item.item)?.chastity)) {
+				map.set(item.item, true);
+			}
+		}
+	}
+	if (KinkyDungeonPlayerTags.get("ChastityUpper") && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) {
+		for (let item of all) {
+			if (!map.get(item.item) && (KDRestraint(item.item)?.chastitybra)) {
+				map.set(item.item, true);
+			}
+		}
+	}
+	if (KinkyDungeonPlayerTags.get("Block_" + Group)) {
+		for (let item of all) {
+			if (!map.get(item.item) && KDRestraint(item.item)?.shrine?.includes("Block_" + Group)) {
+				map.set(item.item, true);
+			}
+		}
+	}
+
+	if (Group.includes("ItemHands")) {
+		let arms = KinkyDungeonGetRestraintItem("ItemArms");
+		if (arms) {
+			let link = arms;
+			while (link && KDRestraint(link)) {
+				if (KDRestraint(link).inaccessible && !map.get(link)) {
+					map.set(link, true);
+				}
+				link = link.dynamicLink;
+			}
+		}
+	}
+
+	// Return restraints still in the list
+	return [...map.keys()];
+}
+
+/**
+ * @param {string} Group
+ * @param {boolean} External
+ * @return {item[]}
+ * Gets a list of restraints with Security that block this */
+function KDGetBlockingSecurity(Group, External) {
+	let items = KDGetBlockingRestraints(Group, External);
+	items = items.filter((item) => {
+		return KDRestraint(item)?.Security != undefined;
+	});
+	return items;
 }
 
 function KinkyDungeonCanUseKey() {
