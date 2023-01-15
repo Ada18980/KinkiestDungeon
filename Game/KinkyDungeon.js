@@ -2654,3 +2654,15 @@ function KinkyDungeonCheckPlayerRefresh() {
 		CharacterRefresh(Player);
 	}
 }
+
+function CJKcheck(text,p = 0,o = "search"){
+	if (o == "search")
+	{
+		if (p == 1){ return /[a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(text);}
+		if (p == 2){ return /^[a-zA-Z\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+$/.exec(text);}
+		else { return text.match(/[\u3000-\u9fff\ue000-\uf8ff\uff01-\uffdc]+/g);};
+	} else if (o == "test")
+	{
+		return (/[\u3000-\u9fff\ue000-\uf8ff\uff01-\uffdc]+/g).test(text);
+	}
+}
