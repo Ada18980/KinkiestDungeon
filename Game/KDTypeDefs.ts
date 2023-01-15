@@ -125,6 +125,25 @@ interface KDRestraintProps {
 	/** Forced to allow these, mainly leashes and collars */
 	unlimited?: boolean,
 
+	/** Security levels for chastity. Non-tech belts should have a Tech security of undefined. Magic belts should have undefined for key and tech.
+	 * KEY can be circumvented by having a key. Normally you cant remove a plug but you can spend a key to unlock a plug slot for 30 turns or until you are hit or a restraint is removed in that slot.
+	 * 	Key difficulty of 1 can simply be lockpicked, taking a bit of time.
+	 * 	Key difficulty of 3 becomes a blue key.
+	 * MAGIC can be circumvented thru CMD: Unlock
+	 * Tech cannot be circumvented by the player. TODO add keycard to allow this.
+	 * Undefined means the specified method can not be used
+	 * Chastity without Security ignores the security system
+	 * NPC ability to unlock is OR. Having the ability to unlock just one of the security levels means the NPC can unlock.
+	*/
+	Security?: {
+		/** Key security level, for low-tech non-mage factions */
+		level_key?: number,
+		/** Tech security level, for robots and wolfgirls */
+		level_tech?: number,
+		/** Magic security level, for mage factions */
+		level_magic?: number,
+	},
+
 	/** Affinity type: Hook, Edge, or Sharp, Sticky, defaults are Hook (struggle), Sharp (Cut), Edge (Pick), Sticky (Unlock), and none (Pick)*/
 	affinity?: {
 		Struggle?: string[],
@@ -510,7 +529,17 @@ interface enemy extends KDHasTags {
 		noRestock?: boolean,
 		/** Enemy will restock to this percentage */
 		restockPercent?: number,
-	}
+	},
+
+	/** Security levels for accessing chastity */
+	Security?: {
+		/** Key security level, for low-tech non-mage factions */
+		level_key?: number,
+		/** Tech security level, for robots and wolfgirls */
+		level_tech?: number,
+		/** Magic security level, for mage factions */
+		level_magic?: number,
+	},
 
 	/** Behavior tags */
 	Behavior?: {
