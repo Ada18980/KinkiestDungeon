@@ -23,7 +23,7 @@ RestartNeededEN,"Restart required!"
 RestartNeededCN,"需要重启！"
 RestartNeededKR,"재시작 필요！"
 
-KinkyDungeon,"Kinky Dungeon v3.92"
+KinkyDungeon,"Kinky Dungeon v3.94"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
@@ -258,6 +258,14 @@ KinkyDungeonStatDescHopeless,"Willpower decays over time."
 
 KinkyDungeonStatQuickness,"Quickness"
 KinkyDungeonStatDescQuickness,"Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock."
+
+
+KinkyDungeonStatMapLarge,"Expansive Halls"
+KinkyDungeonStatDescMapLarge,"Increases the size of maps by 1 in each direction."
+KinkyDungeonStatMapHuge,"Gargantuan Halls"
+KinkyDungeonStatDescMapHuge,"Increases the size of maps by 2 in each direction."
+KinkyDungeonStatMapGigantic,"Labyrinthine Halls"
+KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 3 in each direction."
 
 KinkyDungeonStat24,"Rigger"
 KinkyDungeonStatDesc24,"Chain and glue damage increased by 20%. Binding on enemies is 30% stronger."

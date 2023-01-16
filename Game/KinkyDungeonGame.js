@@ -339,6 +339,16 @@ function KDCreateBoringness() {
 	console.log("Time to create Boring" + (performance.now() - start));
 }
 
+/**
+ * @returns {number}
+ */
+function KDGetMapSize() {
+	if (KinkyDungeonStatsChoice.get("MapLarge")) return 1;
+	if (KinkyDungeonStatsChoice.get("MapHuge")) return 2;
+	if (KinkyDungeonStatsChoice.get("MapGigantic")) return 3;
+	return 0;
+}
+
 // Starts the the game at a specified level
 /**
  *
@@ -430,6 +440,11 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 
 		let height = MapParams.min_height * 2 + 2*Math.floor(0.5*KDRandom() * (MapParams.max_height * 2 - MapParams.min_height * 2));
 		let width = MapParams.min_width * 2 + 2*Math.floor(0.5*KDRandom() * (MapParams.max_width * 2 - MapParams.min_width * 2));
+
+		let mapSizeBonus = KDGetMapSize();
+
+		height = Math.max(2, height + mapSizeBonus);
+		width = Math.max(2, width + mapSizeBonus);
 
 		// They have to be odd for the maze generator to work
 		height += 1 - height % 2;

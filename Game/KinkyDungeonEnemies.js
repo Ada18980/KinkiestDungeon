@@ -3194,7 +3194,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												//onlyLimited: !enemy.Enemy.RestraintFilter?.limitedRestraintsOnly,
 												looseLimit: true,
 												require: enemy.Enemy.RestraintFilter?.unlimitedRestraints ? undefined : enemy.items,
-											});
+											}, enemy);
 
 										if (!rest) {
 											rest = KinkyDungeonGetRestraint(
@@ -3212,7 +3212,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 													looseLimit: true,
 													onlyUnlimited: true,
 													ignore: enemy.items,
-												});
+												}, enemy);
 										} else {
 											restraintFromInventory.push(rest.name);
 										}
@@ -3472,7 +3472,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									for (let r of restraintAdd) {
 										let bb = 0;
 										if (count >= protection) {
-											bb = KinkyDungeonAddRestraintIfWeaker(r, AIData.power, KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy.Enemy.bypass, enemy.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, KDGetFaction(enemy), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined) * 2;
+											bb = KinkyDungeonAddRestraintIfWeaker(r, AIData.power, KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy.Enemy.bypass, enemy.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, KDGetFaction(enemy), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, enemy) * 2;
 											if (bb) {
 												if (restraintFromInventory.includes(r.name)) {
 													restraintFromInventory.splice(restraintFromInventory.indexOf(r.name), 1);
@@ -4677,4 +4677,30 @@ function KDClearItems(enemy) {
  */
 function KDCanDetect(enemy, player) {
 	return (KinkyDungeonTrackSneak(enemy, 0, player) || (AIData.playerDist < Math.max(1.5, AIData.blindSight) && enemy.aware));
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {string} type
+ * @returns {number}
+ */
+function KDGetSecurity(enemy, type) {
+	// Base securities; inherited from BaseSecurity but otherwise populated by the Security matrix of the enemy
+	let security = KDBaseSecurity[type] != undefined ? KDBaseSecurity[type] : -100;
+	if (enemy?.Enemy?.Security && enemy.Enemy.Security[type])
+		security = enemy.Enemy.Security[type];
+
+	// Add factional securities
+	let faction = KDGetFactionOriginal(enemy);
+	if (KDFactionSecurityMod[faction] && KDFactionSecurityMod[faction][type] != undefined) security = Math.max(security + KDFactionSecurityMod[faction][type], KDFactionSecurityMod[faction][type]);
+
+	// If the enemy is cleared to have security, increase it based on rank
+	if (security >= -10) {
+		if (enemy.Enemy.tags.boss) security += 4;
+		else if (enemy.Enemy.tags.miniboss) security += 3;
+		else if (enemy.Enemy.tags.elite) security += 2;
+		else if (!enemy.Enemy.tags.minor) security += 1;
+	}
+	return security;
 }
