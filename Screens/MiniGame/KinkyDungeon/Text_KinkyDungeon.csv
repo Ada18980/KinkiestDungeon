@@ -259,6 +259,14 @@ KinkyDungeonStatDescHopeless,"Willpower decays over time."
 KinkyDungeonStatQuickness,"Quickness"
 KinkyDungeonStatDescQuickness,"Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock."
 
+
+KinkyDungeonStatMapLarge,"Expansive Halls"
+KinkyDungeonStatDescMapLarge,"Increases the size of maps by 1 in each direction."
+KinkyDungeonStatMapHuge,"Gargantuan Halls"
+KinkyDungeonStatDescMapHuge,"Increases the size of maps by 2 in each direction."
+KinkyDungeonStatMapGigantic,"Labyrinthine Halls"
+KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 3 in each direction."
+
 KinkyDungeonStat24,"Rigger"
 KinkyDungeonStatDesc24,"Chain and glue damage increased by 20%. Binding on enemies is 30% stronger."
 KinkyDungeonStat25,"Pacifist"
