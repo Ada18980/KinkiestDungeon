@@ -293,6 +293,11 @@ let KinkyDungeonStatsPresets = {
 
 	"KinkyPrison":  {category: "Map", id: "KinkyPrison", cost: -1},
 	"Doorknobs":  {category: "Map", id: "Doorknobs", cost: -1},
+
+
+	"MapLarge": {category: "Map", id: "MapLarge", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
+	"MapHuge": {category: "Map", id: "MapHuge", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
+	"MapGigantic": {category: "Map", id: "MapGigantic", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
 };
 
 

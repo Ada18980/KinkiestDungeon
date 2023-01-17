@@ -266,7 +266,7 @@ let KDGuardActions = {
 						let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
 						let added = KinkyDungeonAddRestraintIfWeaker(newRestraint, 0,
 							true, "Red", undefined, undefined, undefined, KDGetFaction(KinkyDungeonJailGuard()),
-							KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
+							KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, KinkyDungeonJailGuard());
 						if (added) {
 							let restraintModification = oldRestraintItem ? "ChangeRestraints" : "AddRestraints";
 							let msg = TextGet("KinkyDungeon" + restraintModification).replace("EnemyName", TextGet("Name" + guard.Enemy.name));
