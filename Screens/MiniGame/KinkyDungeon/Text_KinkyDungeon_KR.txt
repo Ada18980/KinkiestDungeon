@@ -1,5 +1,7 @@
 Credits
 크레딧
+Credits
+크레딧
 Patrons
 후원자
 News and Updates
@@ -30,18 +32,13 @@ Language
 English
 영어
 Chinese
-한국어
+중국어
 Korean
 한국어
 Mods
 모드
 Mods Loaded.
 모드가 로드되었습니다.
-
-Restart required!
-Restart required!
-需要重启！
-재시작 필요！
 
 Kinky Dungeon v3.9
 Kinky Dungeon v3.9
@@ -66,7 +63,7 @@ Enable Fullscreen
 High Quality Animations
 고품질 애니메이션
 Wait Quickly
-빨리 기다려
+잠깐 기다려
 
 Helpless!
 무력화!
@@ -90,14 +87,14 @@ Animation Speed:
 Select a journey. This will determine the ordering of game areas.
 여정을 선택하세요. 게임 영역의 순서가 결정됩니다.
 Standard: The intended experience
-표준: 의도된 경험
+스탠다드: 의도된 경험
 Random: A chaotic journey
 랜덤: 혼돈의 여정
 Harder: A more difficult journey
-Harder: 더 어려운 여정
+하드: 더 어려운 여정
 
 Select perks to start with.
-시작할 혜택을 선택하세요.
+시작할때 함께할 특전을 선택하세요.
 Having 10+ spare points will trigger Hard Mode, granting unique loot.
 예비 포인트가 10개 이상 있으면 하드 모드가 시작되어 고유한 전리품을 얻을 수 있습니다.
  (HARD MODE ENABLED)
@@ -169,12 +166,12 @@ Your submissiveness starts at 100 and cannot go below 70.
 Wanted
 수배당함
 Your security level starts at 100 and cannot go below 70.
-귀하의 보안 수준은 100에서 시작하며 70 아래로 내려갈 수 없습니다.
+당신의 보안 수준은 100에서 시작하며 70 아래로 내려갈 수 없습니다.
 
 Studious
 신중함
 You start the game with +3 additional spell points.
-+3 추가 스펠 포인트로 게임을 시작합니다.
++3 추가 주문 포인트로 게임을 시작합니다.
 Meditation
 심사 숙고
 You slowly regenerate mana, up to a maximum of 50.
@@ -255,7 +252,7 @@ Start with high Rope reputation, and all rope restraints are easier to escape fr
 Rope Bunny
 로프 버니
 Rope restraints are harder to escape from.
-로프 구속은 탈출하기가 더 어렵습니다.
+로프 구속으로부터 탈출하기가 더 어렵습니다.
 
 Slippery
 미끄러운
@@ -264,12 +261,12 @@ Start with high Latex reputation, and all latex restraints are easier to escape 
 Latex Doll
 라텍스 인형
 Latex restraints are harder to escape from.
-라텍스 구속은 탈출하기가 더 어렵습니다.
+라텍스 구속으로부터 탈출하기가 더 어렵습니다.
 
 Hogtied!
-손발!
+사지 구속!
 Start the game trussed up in tight ropes.
-팽팽한 밧줄로 묶여 게임을 시작하십시오.
+팽팽한 밧줄로 묶인 상태로 게임을 시작합니다.
 
 Escapee
 탈출자
@@ -278,7 +275,7 @@ Start with high Leather reputation, and all leather restraints are easier to esc
 Leather-Bound
 가죽 바인딩
 Leather restraints are harder to escape from.
-가죽 구속은 탈출하기가 더 어렵습니다.
+가죽 구속으로부터 탈출하기가 더 어렵습니다.
 
 Slayer
 살해자
@@ -296,22 +293,22 @@ You can cast Illusion spells without having the components, at twice the cost. S
 Narcoleptic
 기면증
 You slowly lose stamina over time.
-시간이 지남에 따라 천천히 체력을 잃습니다.
+시간이 지남에 따라 천천히 스태미나를 잃습니다.
 
 Stealth Mission
 스텔스 미션
 You are harder to detect and there are more chests, but enemies take 30% less damage, are more evasive, and drop no gold.
 적에게 잘 감지당하지 않고 상자가 더 많지만 적이 받는 피해가 30% 감소하고, 적의 회피율이 증가하며, 금화를 떨어뜨리지 않습니다.
 Latex Lovers
-라텍스 애호가
+라텍스 애호가들
 All humanoids that can bind you also apply latex restraints.
 당신을 묶을 수 있는 모든 인간형 적이 라텍스 구속을 사용합니다.
 Leather Lovers
-가죽 애호가
+가죽 애호가들
 All humanoids that can bind you also apply leather restraints.
 당신을 구속할 수 있는 모든 인간형 적이 가죽 구속을 사용합니다.
 Wolfgirl Lovers
-울프걸의 연인들
+늑대소녀 애호가들
 All humanoids that can bind you also apply wolfgirl restraints.
 당신을 묶을 수 있는 모든 인간형 적이 늑대소녀 구속을 사용합니다.
 Maid Lovers
@@ -319,19 +316,19 @@ Maid Lovers
 All humanoids that can bind you also apply maid restraints.
 당신을 구속할 수 있는 모든 인간형 적이 메이드 구속을 사용합니다.
 Dress Lovers
-드레스 애호가
+드레스 애호가들
 All humanoids that can bind you also apply dress restraints.
 당신을 속박할 수 있는 모든 인간형 적이 드레스 구속을 사용합니다.
 Kitty Lovers
-키티 애호가
+고양이 애호가들
 All humanoids that can bind you also apply kitty restraints.
 당신을 묶을 수 있는 모든 인간형 적이 고양이 구속을 사용합니다.
 Adv Latex Lovers
-고급 라텍스 애호가
+고급 라텍스 애호가들
 All humanoids that can bind you also apply advanced latex restraints.
 당신을 묶을 수 있는 모든 인간형 적이 고급 라텍스 구속을 사용합니다.
 Conspicuous
-확실히 보이는
+눈에띔
 Enemies detect you more easily.
 적들이 당신을 더 쉽게 감지합니다.
 
@@ -386,10 +383,10 @@ Enemies will always use the tightest restraints possible and fully bind you.
 Graceful Walk
 우아한 산책
 You don't lose stamina when walking with one slowing item, unless it binds your legs together.
-다리를 묶지 않는 한 둔화 아이템 하나로 걸을 때 체력을 잃지 않습니다.
+다리를 묶지 않는 한 둔화 아이템 하나로 걸을 때 스태미나을 잃지 않습니다.
 
 Well-Equipped
-잘 갖춰진
+잘 갖춰짐
 Restraints and traps that are limited by level appear sooner, and enemies will stack many restraints.
 레벨 제한이 있는 구속과 ​​함정이 더 빨리 나타나고 적들은 많은 구속을 쌓을 것입니다.
 
@@ -423,7 +420,7 @@ Start with Fuuka's collar and a few restraints.
 Fuuka Fan Club
 후우카 팬클럽
 All humanoids that can bind you also apply Fuuka's special restraints.
-당신을 구속할 수 있는 모든 휴머노이드도 Fuuka의 특별한 구속을 적용합니다.
+당신을 구속할 수 있는 모든 인간형 적이 후우카의 특별한 구속을 사용합니다.
 
 Vengeance
 복수
@@ -438,7 +435,7 @@ Unstable Magic
 Spells do up to 60% additional damage based on distraction or miscast chance, whichever is higher.
 주의 산만 또는 잘못 시전 확률 중 높은 쪽을 기준으로 주문이 최대 60%의 추가 피해를 입힙니다.
 Absolute Focus
-절대 집중
+완벽한 집중
 Miscast chance is doubled.
 미스캐스트 확률이 2배가 됩니다.
 
@@ -448,7 +445,7 @@ Goddesses will expect you to wear their restraints as their champion.
 여신들은 당신이 그들의 투사로서 그들의 구속을 착용하기를 기대할 것입니다.
 
 Nowhere is Safe
-아무데도 안전하지 않다
+안전한 곳은 없다
 Beds and furniture are often trapped.
 침대와 가구는 종종 함정이 됩니다.
 
@@ -458,7 +455,7 @@ Distraction builds up over time.
 산만함은 시간이 지남에 따라 쌓입니다.
 
 Hopeless
-희망
+절망적임
 Willpower decays over time.
 의지력은 시간이 지남에 따라 쇠퇴합니다.
 
@@ -492,7 +489,7 @@ While at max mana, your attacks deal an additional 30% of their base damage as e
 Like the Wind
 바람처럼
 While above 95% stamina, you gain +30% evasion and your slow level is reduced by 1.
-체력이 95% 이상일 때 회피율이 30% 증가하고 슬로우 레벨이 1 감소합니다.
+스태미나 95% 이상일 때 회피율이 30% 증가하고 슬로우 레벨이 1 감소합니다.
 
 Immovable Object
 움직일 수 없는 물체
@@ -550,7 +547,7 @@ Instead of fizzling, most miscasted projectiles and AoE spells will target you i
 
 
 Ticklish
-불안정한
+간지럼을 잘탐
 You take 50% more tickle damage.
 50% 간지럼 피해를 더 받습니다.
 Stoic
@@ -559,18 +556,18 @@ You gain 82% tickle resist.
 간지럼 저항이 82% 증가합니다.
 
 Lascivious
-음탕한
+음탕함
 You take 50% more grope damage.
 더듬이 피해를 50% 더 받습니다.
 Unperturbed
-동요되지 않음
+침착함
 You gain 82% grope resist.
 82% 더듬기 저항을 얻습니다.
 
 Masochist
 마조히스트
 Pain is strongly arousing.
-고통이 강하게 일어납니다.
+고통이 흥분을 유발합니다.
 Pain Tolerance
 통증 내성
 You gain 200% pain resist.
@@ -618,22 +615,22 @@ Start the game as a submissive prisoner wandering the halls.
 Rusty Bolts
 녹슨 볼트
 Most traps have a 25% misfire chance.
-대부분의 함정은 25%의 오발 확률이 있습니다.
+대부분의 함정은 25%의 확률로 불발합니다.
 
 Unmasked
 마스크 해제
 Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
-후드와 전면 가리는 마스크는 나오지 않지만 눈가리개가 더 강력합니다.
+후드와 전면 가리는 마스크는 나오지 않지만 눈가리개가 더 강력해집니다.
 No Nurses
 간호사는 없다
 Nurses will not appear in the game.
-간호사는 게임에 나타나지 않습니다.
+간호사가 게임에 나타나지 않습니다.
 No Brats
 노 브라츠
 Submissive enemies won't run away from you.
 복종하는 적들은 당신에게서 도망치지 않을 것입니다.
 Brats Only
-자식만
+브라츠 온리
 Submissive enemies will always be bratty and force you to catch them.
 복종하는 적들은 항상 뻔뻔할 것이고 당신이 그들을 붙잡도록 강요할 것입니다.
 
@@ -677,7 +674,7 @@ Greatly increases the occurrence of muzzles.
 총구 발생률이 크게 증가합니다.
 
 Armbinder Lover
-완장 애호가
+암바인더 애호가
 More armbinders, less straitjackets.
 더 많은 암바인더, 더 적은 구속복.
 
@@ -692,19 +689,19 @@ More straitjackets, less armbinders.
 Maid Sweeper
 메이드 스위퍼
 Start in a magically locked maid outfit.
-마법으로 잠긴 메이드 복장으로 시작하세요.
+마법으로 잠긴 메이드 복장으로 시작합니다.
 Wolf Trainee
 늑대 훈련생
 Start in a uniform of a naughty wolfgirl.
-개구쟁이 울프걸의 제복을 입고 시작하세요.
+개구쟁이 늑대소녀의 제복을 입고 시작합니다.
 Latex Doll
 라텍스 인형
 Start bound in latex restraints.
-라텍스 구속에 묶여 시작하십시오.
+라텍스 구속구를 입고 시작합니다.
 Iron Slave
 철의 노예
 Start in a full set of magically locked obsidian cuffs.
-마법으로 잠긴 흑요석 수갑 풀 세트로 시작하십시오.
+마법으로 잠긴 흑요석 수갑 풀 세트를 장착하고 시작합니다.
 
 
 Mana Burst
@@ -718,7 +715,7 @@ Your magic is powered by otherworldly distracting energies. Casting spells incre
 Clearheaded
 깨끗한
 Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction.
-마법은 정신을 맑게 해줍니다. 주문을 시전하면 주의가 산만해집니다.
+마법은 정신을 맑게 해줍니다. 주문을 시전하면 산만함이 감소합니다.
 
 
 Copy (clipboard)
@@ -783,9 +780,9 @@ Front
 Rear
 뒤쪽
 Feet
-피트
+발목
 Everywhere!
-어디에나!
+모든 부위!
 
 Physical Armor: 
 물리적 갑옷: 
@@ -808,11 +805,11 @@ Your bindings are PERCENT more effective.
 Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage.
 당신의 공격은 기본적으로 DAMAGEDEALT DAMAGETYPE 피해를 입힙니다.
 Plugged!
-연결!
+Plugged!
 Plugged up!!!
-연결!!!
+Plugged up!!!
 Denied! You won't be getting off that easy~
-거부! 그렇게 쉽게 내릴 수는 없어~
+거부! 그렇게 쉽게 가버릴 수는 없어~
 Teasing vibrations...
 놀리는 진동...
 Gentle vibrations...
@@ -949,7 +946,7 @@ Sleepy: You are sluggish and have a hard time keeping your eyes open.
 Afterimage: Evasion greatly increased.
 잔상: 회피율 대폭 상승.
 We did it! We made outselves invisible--mmmmph!!!
-우리가 해냈어! 우리는 스스로를 보이지 않게 만들었다--으음!!!
+우리가 해냈어! 우리는 스스로를 보이지 않게 만들었--으읍읍!!!
 Your restraints are disenchanted, treating them as nonmagical for purposes of cutting.
 당신의 구속은 마법을 풀고 절단을 목적으로 비마법적인 것으로 취급합니다.
 You can launch another leather restraint instantly!
@@ -966,9 +963,9 @@ Locked Down: 투쟁력이 크게 감소합니다.
 Verbose: You can cast verbal spells while gagged.
 Verbose: 재갈을 물린 상태에서 구두 주문을 시전할 수 있습니다.
 Dextrous: You can cast arm spells while tied up.
-Dextrous: 묶인 상태에서 팔 주문을 시전할 수 있습니다.
+Dextrous: 팔이 묶인 상태에서 주문을 시전할 수 있습니다.
 Spell Dance: You can cast leg spells while tied up.
-주문 춤: 묶인 상태에서 다리 주문을 시전할 수 있습니다.
+주문 춤: 다리가 묶인 상태에서 주문을 시전할 수 있습니다.
 
 Bondage Buster: Lazor is charging...
 본디지 버스터: 레이저가 돌격 중입니다...
@@ -991,16 +988,16 @@ Kinky: No save codes, orbs give random spells, start with very little
 Kinky: 저장 코드 없음, 오브는 임의의 주문을 제공합니다. 아주 적은 양으로 시작합니다.
 
 Log
-통나무
+기록
 
 Change Outfit
 옷 갈아입기
 Reset Outfit
-복장 재설정
+옷 리셋
 Code
-암호
+코드
 Confirm Reset?
-재설정을 확인하시겠습니까?
+정말 리셋하시겠습니까?
 
 (Copy the code above and save it on your computer to load later)
 (위의 코드를 복사하고 나중에 로드할 수 있도록 컴퓨터에 저장)
@@ -1016,7 +1013,7 @@ They may still prove useful to future adventurers should you get caught...
 
 
 Continue...
-계속하다...
+계속...
 
 Menu
 메뉴
@@ -1025,17 +1022,17 @@ Menu
 I will simply wait to see what happens.
 무슨 일이 일어나는지 기다리겠습니다.
 Save my current progress.
-현재 진행 상황을 저장합니다.
+현재 진행 상황을 저장하고 타이틀로 나갑니다.
 Give up & delete save
-저장 포기 & 삭제
+포기 & 세이브 삭제
 Yes, delete my save file!
-예, 내 세이브 파일을 삭제하십시오!
+네, 세이브 파일을 삭제합니다!
 Actually, I will let the enemy capture me instead.
-사실은 대신 적에게 붙잡히게 두겠습니다.
+사실, 적에게 붙잡히고 싶습니다.
 Yes, jail me!
-그래, 날 감옥에 가둬!
+네, 저를 감옥에 가둬주세요!
 No, I wish to press on
-아니요, 계속 누르고 싶습니다
+아니요, 계속 하고 싶습니다
 See Perks
 특전 보기
 
@@ -1066,13 +1063,13 @@ Got the keys! Find the stairs to go to the next floor.
 You haven't found the keys for this floor yet.
 아직 이 층의 열쇠를 찾지 못했습니다.
 Missing key
-누락된 키
+열쇠 미발견
 Chance for a spell to fizzle: 
-주문이 어지러울 확률:
+주문을 실패할 확률:
 Chance to dodge an attack: Percent%
-공격을 회피할 확률: 퍼센트%
+공격을 회피할 확률: Percent%
 Chance to block a level 10 restraint: Percent%
-레벨 10 구속을 차단할 확률: 퍼센트%
+레벨 10 구속을 차단할 확률: Percent%
 Sight Range: RADIUS
 시야 범위: RADIUS
 Speed: SPD
@@ -1082,60 +1079,48 @@ Normal
 Stunned!
 기절!
 Slowed
-느려졌다
+느려짐
 Very Slow
-아주 느린
+매우 느림
 Immobile
-부동
-DP: PERCENT%
-DP: 퍼센트%
-SP: CURRENT/MAX
-SP: 전류/최대
-Willpower: CURRENT/MAX
-의지력: CURRENT/MAX
-MP: CURRENT/MAX
-MP: 전류/최대
+움직이지 않음
 Mana slowly recovers from a pool equal to 4x your max mana. Drink potions to restore the pool.
 마나는 최대 마나의 4배에 해당하는 웅덩이에서 천천히 회복됩니다. 물약을 마셔 웅덩이를 회복하십시오.
 Your minimum distraction increases over time as you encounter distracting things.
 시간이 지남에 따라 주의를 산만하게 하는 것들을 만나면 최소한의 주의가 산만해집니다.
 Stamina recovers more quickly when you aren't spending it.
-사용하지 않을 때 체력이 더 빨리 회복됩니다.
+사용하지 않을 때 스태미나가 더 빨리 회복됩니다.
 Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape.
 의지는 음식, 수면, 물약으로 회복됩니다. 의지력이 없으면 탈출하기가 매우 어려워집니다.
 Charge is used to power various magic items and weapons.
 충전은 다양한 마법 아이템과 무기에 전원을 공급하는 데 사용됩니다.
-WP: CURRENT/MAX
-WP: 전류/최대
-Charge: PERCENT
-요금: PERCENT
 Use Potion
 포션 사용
  MP
  MP
 Go to sleep
-자러가
+잔다.
 Call for help!
-도움을 요청해라!
+도움을 요청한다!
 Play with yourself
-자신과 놀아 라
+스스로.. 한다
 Let go...
-가자...
+간닷...
 
 Let go...
-가자...
+간닷...
 Play with yourself
-자신과 놀아 라
+스스로.. 한다
 Go to sleep
-자러가
+잔다.
 Make noise!
-소음을!
+소음을 낸다!
 Wait until interrupted
 중단될 때까지 기다리십시오
 Auto-struggle
-자동투쟁
+자동 발버둥
 Auto-path
-자동 경로
+자동 길찾기
 Quick-Swap Weapon
 퀵 스왑 무기
 Pass NPCs
@@ -1169,7 +1154,7 @@ Ooooh...
 (기쁨에 몸서리친다)
 
 You wait.
-기다려.
+기다린다.
 You wait, legs trembling with arousal.
 기다려라, 흥분으로 다리가 떨린다.
 You wait, trembling and moaning.
@@ -1181,25 +1166,25 @@ You wait to regain your composure, panting with frustration.
 You wait to regain your composure, shaking with frustration.
 당신은 좌절감에 떨면서 평정을 되찾기를 기다립니다.
 You are exhausted from spellcasting.
-당신은 철자법에 지쳤습니다.
+당신은 주문 시전에 지쳤습니다.
 
 You are feeling tired.
-피곤하시군요.
+당신은 피곤함을 느낍니다.
 You feel exhausted...
-피곤하시군요...
+당신은 피곤함을 느낍니다...
 You feel like you are going to pass out...
-너 기절할 것 같아...
+당신은 기절할 것 같은 느낍이 듭니다...
 
 Start New Game
 새 게임 시작
 New Game+
 새 게임+
 Continue Last Save
-마지막 저장 계속
+마지막 저장 시점에서 계속
 Load From Code
-코드에서 로드
+세이브 코드 로드
 Save Outfit (overwrites!)
-의상 저장(덮어쓰기!)
+옷 저장(덮어쓰기!)
 Save Keybindings
 키 바인딩 저장
 Cancel Changes
@@ -1208,17 +1193,17 @@ Change Keybindings
 키바인딩 변경
 
 Load from code
-코드에서 로드
+세이브 코드 로드
 Back to main menu
 메인 메뉴로 돌아가기
 Load Mod
-로드 모드
+모드 로드
 Delete Mod
 모드 삭제
 Clear Perks
 클리어 특전
 Config 
-구성
+설정
 Cancel
 취소
 
@@ -1244,21 +1229,21 @@ Down Left
 Down Right
 오른쪽 아래
 Spell 1
-철자 1
+마법 1
 Spell 2
-철자 2
+마법 2
 Spell 3
-철자 3
+마법 3
 Spell 4
-철자 4
+마법 4
 Spell 5
-철자 5
+마법 5
 Spell 6
-철자 6
+마법 6
 Spell 7
-철자 7
+마법 7
 Cycle Spell Page
-주기 철자 페이지
+사이클 주문 페이지
 Upcast Spells
 업캐스트 주문
 Cancel Upcast
@@ -1279,26 +1264,26 @@ Message Log
 Close Door
 문을 닫다
 Pass thru allies
-아군 통과
+아군 지나가기
 Auto-Struggle
-자동 투쟁
+자동 몸부림
 Auto-Pathfind
-자동 경로 찾기
+자동 길찾기
 Sprint/Hop
 스프린트/홉
 Inspect
 검사
 
 Quick Inventory
-빠른 인벤토리
+퀵 인벤토리
 Inventory
-목록
+인벤토리
 Reputation
 평판
 Spell List
-철자 목록
+주문 목록
 Logbook
-항공 일지
+일지
 
 Current Key Pressed
 현재 키 눌림
@@ -1306,42 +1291,39 @@ Press a key, then press a button to set that key
 키를 누른 다음 버튼을 눌러 해당 키를 설정하십시오.
 
 Floor FLOORNUMBER: DUNGEONNAME
-층 FLOORNUMBER: DUNGEONNAME
+FLOORNUMBER 층 : DUNGEONNAME
 
 
 Lockpicks: 
-자물쇠: 
+락픽: 
 Keys: 
 키: 
 Magic Keys: 
-매직 키: 
+마법 키: 
 Knife: 
-칼: 
+나이프: 
 Mag. Knife: 
 매기나이프: 
 
 You climb down the stairs. The passage closes behind you.
-계단을 내려가십시오. 통로가 닫힙니다.
+당신은 계단을 내려갔습니다. 뒤의 통로가 닫힙니다.
 You can't climb down until you get out of this leash...
 이 목줄에서 벗어날 때까지 내려갈 수 없습니다...
 You climb down and find yourself in a strange new place.
 당신은 아래로 내려가 이상한 새로운 장소에 있는 자신을 발견합니다.
 
- plus XXX
- 더하기 XXX
-
 Graveyard
-묘소
+묘지
 Catacombs
-카타콤
+지하 묘지
 Underground Jungle
 지하 정글
 Lost Temple
 잃어버린 사원
 The Bellows
-벨로우즈
+The Bellows
 Rundown Laboratory
-런다운 연구소
+버려진 연구소
 Forgotten Garden
 잊혀진 정원
 Kingdom of Ice
@@ -1357,15 +1339,15 @@ The Mansion
 Ancient Tombs
 고대 무덤
 Magic Library
-매직 라이브러리
+마법 도서관
 Crystal Cave
-크리스탈 케이브
+수정 동굴
 Orrery
 Orrery
 Training Center
 트레이닝 센터
 Rubber Facility
-고무설비
+고무 시설
 Wizards' Den
 마법사의 소굴
 Marble Halls
@@ -1516,8 +1498,8 @@ Wizard's Outfit
 마법사 의상
 Your favorite outfit for adventuring.
 모험을 위해 가장 좋아하는 복장.
-Your original outfit. No bonuses, no penalties.
-당신의 원래 복장. 보너스도 페널티도 없습니다.
+Your original outfit.No bonuses,
+당신의 원래 복장. 보너스도, 페널티도 없습니다.
 
 Jail Uniform
 감옥 제복
@@ -1528,7 +1510,7 @@ A prisoner's 'outfit'. No bonuses, no penalties.
 
 
 Wolfgirl Suit
-울프걸 수트
+늑대소녀수트
 An advanced suit designed for sport, breathable and also warm.
 스포츠, 통기성 및 따뜻함을 위해 설계된 고급 수트.
 No bonuses, no penalties.
@@ -1565,7 +1547,7 @@ No bonuses, no penalties.
 Latex Catsuit
 라텍스 캣수트
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
-심하게 가공된 슬라임으로 만든 의상. 자연스럽게 실키하고 부드럽습니다.
+심하게 가공된 슬라임으로 만든 의상. 자연스럽고 매끄러우며 부드럽습니다.
 No bonuses, no penalties.
 보너스도 페널티도 없습니다.
 
@@ -1590,7 +1572,7 @@ The scroll makes your memories of arm movements clear as day!
 A scroll used by thieves to make their plays in secret.
 도둑들이 비밀리에 장난을 치기 위해 사용하는 두루마리.
 Allows you to cast Arm spells without components for 12 turns.
-12턴 동안 부품 없이 Arm 주문을 시전할 수 있습니다.
+12턴 동안 팔이 필요한 주문을 조건 없이 시전할 수 있습니다.
 
 Scroll of Purity
 순수의 두루마리
@@ -1608,7 +1590,7 @@ The scroll makes your gagged speech slightly more intelligible!
 A scroll used to help translate different languages.
 다른 언어를 번역하는 데 사용되는 두루마리.
 Allows you to cast Verbal spells without components for 12 turns.
-12턴 동안 구성 요소 없이 언어 주문을 시전할 수 있습니다.
+12턴 동안 주창이 필요한 주문을 조건 없이 시전할 수 있습니다.
 
 Scroll of Sauntering
 유랑의 두루마리
@@ -1617,7 +1599,7 @@ The scroll lets you move your body in swift and accurate ways!
 A scroll used by dancers to upgrade their moves.
 댄서들이 동작을 업그레이드하기 위해 사용하는 두루마리.
 Allows you to cast Leg spells without components for 12 turns.
-12턴 동안 부품 없이 다리 주문을 시전할 수 있습니다.
+12턴 동안 다리가 필요한 주문을 조건 없이 시전할 수 있습니다.
 
 Ancient Key
 고대의 열쇠
@@ -1629,14 +1611,14 @@ You pick up a shining golden key.
 당신은 빛나는 황금 열쇠를 줍습니다.
 
 You pick up a ReplaceValue.
-ReplaceValue를 선택합니다.
+ReplaceValue 를 선택합니다.
 
 Power Crystal
 파워 크리스탈
 You hold the crystal and the power flows into you.
 크리스탈을 쥐고 있으면 힘이 흘러들어옵니다.
 You're not sure how they charged these...
-당신은 그들이 이것을 어떻게 청구했는지 확신할 수 없습니다...
+당신은 그들이 이것을 어떻게 충전했는지 확신할 수 없습니다...
 A mysterious device used by the old civilization, powering their ancient devices.
 오래된 문명이 고대 장치에 동력을 공급하는 신비한 장치입니다.
 
@@ -1650,7 +1632,7 @@ You touch the spent crystal and it siphons 100 gold from your bag!
 You are not sure how to charge this back up.
 이 백업을 충전하는 방법을 잘 모르겠습니다.
 You're not sure how they charged these...
-당신은 그들이 이것을 어떻게 청구했는지 확신할 수 없습니다...
+당신은 그들이 이것을 어떻게 충전했는지 확신할 수 없습니다...
 A mysterious device used by the old civilization, now depleted.
 오래된 문명이 사용하던 신비한 장치로, 이제 고갈되었습니다.
 
@@ -1735,13 +1717,13 @@ Mystical energies swirl inside a glass form.
 Adds 200 MP to your mana pool. Requires no hands to use.
 당신의 마나 풀에 200 MP를 추가합니다. 사용하는 데 손이 필요하지 않습니다.
 Stamina Potion
-체력 물약
+스태미나 물약
 You drink the stamina potion and feel invigorated.
 당신은 스태미나 물약을 마시고 활력을 느낍니다.
 A potion brimming with heat and energy.
 열과 에너지가 넘치는 물약.
 Restores 50% stamina and 250% more over 25 turns. Effect does not stack.
-25턴 동안 체력 50% 회복, 250% 추가 회복. 효과는 중첩되지 않는다.
+즉시 스태미나를 50% 회복하고, 25초에 걸쳐 250%를 추가로 회복합니다. 효과는 중첩되지 않는다.
 Willpower Potion
 의지의 물약
 You drink the willpower potion and feel motivated.
@@ -2354,7 +2336,7 @@ The angel frowns as you attack her, and glowing rings appear.
 당신이 그녀를 공격하자 천사가 눈살을 찌푸리고 빛나는 고리가 나타납니다.
 
 Angel: MMMMMPHH!!!
-천사: 으으으으으으으으으!!!
+천사: 으으으읍으읍읍!!!
 
 (The angel looks puzzled and unlocks your divine restraints)
 (천사가 의아해하며 당신의 신성한 구속을 풀어줍니다)
@@ -2939,15 +2921,15 @@ The wolfguard's escort drones deploy some restraints! (+RestraintAdded)
 울프가드의 호위 드론이 구속을 전개합니다! (+RestraintAdded)
 
 Wolfgirl Trainer
-울프걸 트레이너
+늑대소녀트레이너
 The trainer retreats!
 트레이너 퇴각!
 The wolfgirl trainer squeezes your breasts playfully! (DamageTaken)
-장난스럽게 당신의 가슴을 쥐어짜는 울프걸 조련사! (DamageTaken)
+장난스럽게 당신의 가슴을 쥐어짜는 늑대소녀조련사! (DamageTaken)
 The wolfgirl trainer secures you in training gear! (+RestraintAdded)
-울프걸 조련사가 당신을 훈련 장비로 보호합니다! (+RestraintAdded)
+늑대소녀조련사가 당신을 훈련 장비로 보호합니다! (+RestraintAdded)
 The wolfgirl trainer pins you and skillfully locks all of your restraints!
-울프걸 조련사가 당신을 고정시키고 당신의 모든 구속을 능숙하게 잠급니다!
+늑대소녀조련사가 당신을 고정시키고 당신의 모든 구속을 능숙하게 잠급니다!
 
 Nevermere Operative
 네버미어 오퍼레이티브
@@ -3485,7 +3467,7 @@ The blindfold crawls over your helpless face! (DamageTaken)
 눈가리개가 무기력한 얼굴을 기어다닙니다! (DamageTaken)
 
 Amorous Armbinder
-사랑의 완장
+사랑의 암바인더
 The armbinder flops to the floor.
 암바인더가 바닥에 쓰러집니다.
 The armbinder slips itself around your arms and pushes your elbows together! (+RestraintAdded)
@@ -4102,7 +4084,7 @@ You tug on the TargetRestraint with increased power...
 Your ally helps you try to pull the TargetRestraint off...
 당신의 동맹은 당신이 TargetRestraint를 풀도록 도와줍니다...
 You work on picking the TargetRestraint...
-TargetResttraint를 선택하는 중입니다...
+TargetRestraint를 선택하는 중입니다...
 Your trembling hands work on picking the TargetRestraint...
 당신의 떨리는 손이 TargetRestraint를 고르느라 애쓰고 있습니다...
 You work on picking the TargetRestraint with your powers...
@@ -4110,11 +4092,11 @@ You work on picking the TargetRestraint with your powers...
 Your ally tries to pick the lock on your TargetRestraint...
 당신의 동료가 당신의 TargetRestraint를 잠그려고 합니다...
 You try to pick open the TargetRestraint but break your lockpick.
-TargetResttraint를 열려고 시도했지만 자물쇠 따기가 깨졌습니다.
+TargetRestraint를 열려고 시도했지만 자물쇠 따기가 깨졌습니다.
 You work on picking the TargetRestraint...
-TargetResttraint를 선택하는 중입니다...
+TargetRestraint를 선택하는 중입니다...
 You work on picking the TargetRestraint...
-TargetResttraint를 선택하는 중입니다...
+TargetRestraint를 선택하는 중입니다...
 Your trembling hands work on picking the TargetRestraint...
 당신의 떨리는 손이 TargetRestraint를 고르느라 애쓰고 있습니다...
 You work on picking the TargetRestraint with your powers...
@@ -4124,7 +4106,7 @@ Your ally tries to pick the lock on your TargetRestraint...
 You break your lockpick trying to open the TargetRestraint.
 TargetRestraint를 열려고 시도하다가 락픽을 부수었습니다.
 You try to remove the TargetRestraint...
-TargetResttraint를 제거하려고 합니다...
+TargetRestraint를 제거하려고 합니다...
 You shakily try to remove the TargetRestraint...
 흔들리며 TargetRestraint를 제거하려고 합니다...
 You try to remove the TargetRestraint with a tool...
@@ -4132,27 +4114,27 @@ You try to remove the TargetRestraint with a tool...
 Your ally helps you remove the TargetRestraint...
 당신의 동료가 TargetRestraint를 제거하도록 도와줍니다...
 You try to cut the TargetRestraint...
-TargetResttraint를 자르려고 합니다...
+TargetRestraint를 자르려고 합니다...
 You tremble as you try to cut the TargetRestraint...
 TargetRestraint를 자르려고 할 때 떨립니다...
 You try to cut the TargetRestraint using your tools...
 도구를 사용하여 TargetRestraint를 자르려고 합니다...
 You try to cut the TargetRestraint with help...
-도움을 받아 TargetResttraint를 자르려고 합니다...
+도움을 받아 TargetRestraint를 자르려고 합니다...
 You break your knife trying to cut the TargetRestraint.
-TargetResttraint를 자르려고 칼을 부러뜨렸습니다.
+TargetRestraint를 자르던 중 칼이 부러졌습니다.
 You try to cut the TargetRestraint...
-TargetResttraint를 자르려고 합니다...
+TargetRestraint를 자르려고 합니다...
 You fiddle with the key on the TargetRestraint...
-TargetRestraint의 키를 만지작거리며...
+TargetRestraint의 열쇠를 만지작거립니다...
 Your jittering hands fumble with the key on the TargetRestraint...
-TargetRestraint의 키를 만지작거리는 당신의 떨리는 손...
+당신의 떨리는 손이 목표물 TargetRestraint 의 열쇠를 더듬고 있어요......
 You concentrate on unlocking the TargetRestraint...
 당신은 TargetRestraint의 잠금을 해제하는 데 집중합니다...
 You work on unlocking the TargetRestraint with help...
 당신은 도움을 받아 TargetRestraint의 잠금을 해제하는 작업을 하고 있습니다...
 You fiddle with the key on the TargetRestraint...
-TargetRestraint의 키를 만지작거리며...
+TargetRestraint의 열쇠를 만지작거립니다...
 
 The lock requires a key.
 자물쇠에는 열쇠가 필요합니다.
@@ -4183,78 +4165,78 @@ The key sticks in the lock and jams, mangling the key!
 열쇠가 자물쇠에 꽂혀서 끼어서 열쇠가 망가졌어요!
 
 You unlock the TargetRestraint.
-TargetResttraint를 잠금 해제합니다.
+당신은 TargetRestraint 를 잠금 해제합니다.
 You manage to squeeze out of the TargetRestraint!
-TargetRestraint에서 빠져나오는데 성공했습니다!
+TargetRestraint 에서 빠져나오는데 성공했습니다!
 You pick the lock on the TargetRestraint!
-TargetRestraint의 자물쇠를 선택하세요!
+당신은 TargetRestraint 의 자물쇠를 따고 있습니다!
 You pick the lock on the TargetRestraint!
-TargetRestraint의 자물쇠를 선택하세요!
+당신은 TargetRestraint 의 자물쇠를 따고 있습니다!
 You free yourself from the TargetRestraint!
-당신은 TargetRestraint에서 자신을 해방!
+당신은 TargetRestraint 에서 스스로 빠져나왔습니다!
 You damage the TargetRestraint enough to escape!
-탈출할 만큼 TargetRestraint를 손상시켰습니다!
+당신은 탈출할 수 있을 정도로 TargetRestraint 에 피해를 가했습니다!
 
 The TargetRestraint is destroyed by your attempts.
-TargetRestraint는 당신의 시도에 의해 파괴되었습니다.
+TargetRestraint 는 당신에 의해 파괴되었습니다.
 
 This is as far as you can struggle. You'll have to remove it some other way.
-이것은 당신이 고군분투할 수 있는 한입니다. 다른 방법으로 제거해야 합니다.
+이것이 당신이 발버둥 칠 수 있는 한계입니다. 다른 방법으로 제거해야 합니다.
 The item is too tight. You'll need to loosen it somehow first...
-물건이 너무 빡빡합니다. 먼저 어떻게든 풀어야 합니다...
+구속이 너무 꽉 조여져 있습니다. 먼저 어떻게든 느슨하게 풀어야 합니다...
 The item is to tight to get your tool into position. You'll have to first make it looser.
-도구가 제 위치에 놓이기에는 항목이 너무 빡빡합니다. 먼저 느슨하게 만들어야 합니다.
+도구를 원하는 방향으로 잡기가 어렵습니다. 먼저 구속을 느슨하게 만들어야 합니다.
 You can't quite get your pick into position. Maybe if you loosened the item first...
-곡괭이를 제 위치에 놓을 수 없습니다. 물건을 먼저 풀었다면...
+락픽을 원하는 방향으로 잡을 수 없습니다. 아마도 먼저 다른 구속을 풀어야 합니다...
 The lock is tucked in securely under straps. You'll have to get it out from under there...
 자물쇠는 스트랩 아래에 단단히 고정되어 있습니다. 그 아래에서 꺼내야 합니다...
 
 After numerous failed attempts, you realize that this lock is more than you can handle.
-수많은 시도가 실패한 후, 당신은 이 자물쇠가 당신이 감당할 수 있는 것보다 많다는 것을 깨달았습니다.
+수많은 시도가 실패한 후, 당신은 이 자물쇠가 당신이 감당할 수 있는 것 이상이라는 것을 깨달았습니다.
 
 You can feel some ply but can't quite make any progress...
-당신은 약간의 장단점을 느낄 수 있지만 어떤 진전도 이룰 수 없습니다...
+당신은 열심히 움직이지만 어떤 진전도 이룰 수 없습니다...
 It's just barely out of reach...
 거의 손이 닿지 않는 거리에...
 Your tool leaves only a scratch...
 당신의 도구는 흠집만 남습니다...
 The lock is just above your skill level...
-자물쇠는 당신의 스킬 레벨 바로 위에 있습니다...
+자물쇠는 당신의 기술 수준보다 조금 위에 있습니다...
 The keyholes are just barely out of reach...
 열쇠 구멍은 거의 손이 닿지 않는 곳에 있습니다...
 
 You unlock the TargetRestraint and sigh with relief.
-TargetRestraint의 잠금을 해제하고 안도의 한숨을 내쉽니다.
+TargetRestraint 의 잠금을 해제하고 안도의 한숨을 내쉽니다.
 You give out a huge moan as you squeeze out of the TargetRestraint!
-TargetRestraint를 쥐어짜내면서 큰 신음소리를 냅니다!
+TargetRestraint 를 쥐어짜내면서 큰 신음소리를 냅니다!
 You pick the lock on the TargetRestraint with a sigh of relief!
-당신은 안도의 한숨을 쉬며 TargetResttraint의 자물쇠를 선택합니다!
+당신은 안도의 한숨을 쉬며 TargetRestraint 의 자물쇠를 땁니다!
 You pick the lock on the TargetRestraint with a sigh of relief!
-당신은 안도의 한숨을 쉬며 TargetResttraint의 자물쇠를 선택합니다!
+당신은 안도의 한숨을 쉬며 TargetRestraint 의 자물쇠를 땁니다!
 Trembling, you free yourself from the TargetRestraint!
-전율, 당신은 TargetRestraint에서 자신을 해방!
+떨면서, 당신은 TargetRestraint 에서 벗어났습니다!
 You damage the TargetRestraint enough to wiggle out!
-당신은 흔들릴 정도로 TargetRestraint를 손상시켰습니다!
+당신은 벗어날 수 있을 정도로 TargetRestraint 를 손상시켰습니다!
 
 You stick the knife into a crack in the wall!
 당신은 칼을 벽의 갈라진 틈에 꽂습니다!
 You use your feet to place the knife into a crack!
-당신은 발을 사용하여 칼을 균열에 넣습니다!
+당신은 발을 사용하여 칼을 갈라진 틈에 넣습니다!
 You glare at the crack in the wall as you realize you couldn't maneuver the knife if you tried.
 당신이 시도하면 칼을 조종할 수 없다는 것을 깨닫고 당신은 벽의 갈라진 틈을 노려봅니다.
 You can't hold your knife like this...
-이렇게 칼을 들고 있으면 안돼...
+당신은 칼을 손에 쥘 수 없습니다...
 
 The item is too secure to struggle out.
-아이템이 너무 안전해서 어려움을 겪을 수 없습니다.
+아이템이 너무 단단히 고정되어서 발버둥 칠 수 없습니다.
 You groan in frustration as you realize the item is too tight to escape.
-물건이 탈출하기에 너무 꽉 조여 있다는 사실을 깨닫고 좌절감에 신음합니다.
+구속이 탈출하기에 너무 꽉 조여 있다는 사실을 깨닫고 좌절감에 신음합니다.
 The item tightens itself as you try to squeeze out!
-물건을 짜내려고 하면 저절로 조여집니다!
+구속을 벗어나려고 할 수록 더욱 조여집니다!
 You will need someone's help to squeeze out.
-짜내려면 누군가의 도움이 필요합니다.
+벗어나려면 누군가의 도움이 필요합니다.
 You pull and tug but your other restraints keep it securely in place!
-당신은 당기고 잡아당기지만 당신의 다른 구속은 그것을 제자리에 안전하게 유지합니다!
+당신은 그것을 잡아당기지만 당신의 다른 구속구가 그것을 제자리에 단단하게 유지합니다!
 You groan and tug but nothing budges. You're bound too tightly by something else.
 신음하고 잡아당겨도 꿈쩍도 하지 않습니다. 당신은 다른 무언가에 너무 단단히 묶여 있습니다.
 You are too tightly bound to have a chance.
@@ -4424,7 +4406,7 @@ You hopelessly try to untie the lacing but it's just too tight!
 You grasp at the slime, trying to peel it off...
 당신은 슬라임을 잡고 떼어내려고 합니다...
 You wiggle madly as you try to peel off the slime!
-당신은 미친 듯이 꿈틀대며 슬라임을 벗겨내려고 합니다!
+당신은 미친 듯이 몸부림 치며 슬라임을 벗겨내려고 합니다!
 The slime reforms as you scoop it away!
 점액을 퍼내면 슬라임이 변합니다!
 You can't get the slime off at all!
@@ -4445,7 +4427,7 @@ Try as you might, the rubber hugs you completely without any seams!
 The rubber is too tight to get any traction...
 고무가 너무 빡빡해서 견인력을 얻을 수 없습니다...
 The rubber squeezes your body too tightly to get any sort of ply...
-고무가 몸을 너무 세게 조여서 어떤 종류의 플라이도 얻을 수 없습니다...
+고무가 몸을 너무 세게 조여서 움직일 수 없습니다...
 
 You start peeling off the wrapping...
 포장을 벗기기 시작합니다...
@@ -4512,37 +4494,29 @@ Unlocked
 Lock Type: 
 잠금 유형: 
 Red
-빨간색
-Red
-빨간색
-Red
-빨간색
+빨강
 Simple
-단순한
+심플
 Green
-녹색
+초록
 Blue
-파란색
+파랑
 Purple
 보라
 Gold
 금
 Yellow
-노란색
+노랑
 Red Lock
-레드 락
-Red Lock
-레드락
-Red Lock
-레드 락
+빨간 자물쇠
 Simple Lock
-간단 잠금
+심플한 자물쇠
 Green Lock
-그린 락
+초록 자물쇠
 Blue Lock
 파란 자물쇠
 Purple Lock
-보라색 자물쇠
+보라 자물쇠
 Yellow Lock
 노란 자물쇠
 
@@ -4554,17 +4528,17 @@ Yellow Lock
 (G)
 (G)
 (S)
-(에스)
+(S)
 (B)
-(비)
+(B)
 (G)
 (G)
 (P)
-(피)
+(P)
 (?)
 (?)
 (Y)
-(와이)
+(Y)
 
 You can't drink that while gagged!
 재갈을 물린 상태에서 마실 수 없습니다!
@@ -4573,46 +4547,46 @@ You can't use that without your fingers!
 You struggle against your bindings but it's too strict!.
 당신은 당신의 속박에 맞서 싸우고 있지만 그것은 너무 엄격합니다!.
 You drop the pick due to your bound hands!
-손이 묶여서 곡괭이를 떨어뜨리다니!
+손이 묶여서 락픽을 떨어뜨렸습니다!
 You drop your knife due to your bound hands!
 손이 묶인 탓에 칼을 떨어뜨리다니!
 You drop the precious knife due to your bound hands!
-손이 묶인 탓에 소중한 칼을 떨어뜨리다니!
+손이 묶인 탓에 소중한 칼을 떨어뜨렸습니다!
 You drop the key due to your bound hands!
-손이 묶인 탓에 열쇠를 떨어뜨리다니!
+손이 묶인 탓에 열쇠를 떨어뜨렸습니다!
 You drop the magic key due to your bound hands!
-손이 묶인 탓에 마법의 열쇠를 떨어뜨리다니!
+손이 묶인 탓에 마법의 열쇠를 떨어뜨렸습니다!
 You drop the magic key due to your bound hands!
-손이 묶인 탓에 마법의 열쇠를 떨어뜨리다니!
+손이 묶인 탓에 마법의 열쇠를 떨어뜨렸습니다!
 
 Logbook
-항공 일지
+일지
 Logbook (N)
-일지(N)
+일지 (N)
 Passing...
 통과...
 Pass NPCs
-패스 NPC
+NPC 통과
 Closing...
-폐쇄...
+닫는중...
 Close door
 문을 닫다
 Sprinting!!!
-전력질주!!!
+달립니다!!!
 Sprint!
-스프린트!
+달리기!
 Hopping!!!
-호핑!!!
+도약합니다!!!
 Hop!
-깡충깡충 뛰다!
+도약!
 You run!
-당신은 실행!
+당신은 달립니다!
 You hop desperately!
-당신은 필사적으로 뛰어!
+당신은 필사적으로 뜁니다!
 Close Door
-문을 닫다
+문 닫기
 Unlock
-터놓다
+잠금 해제
 Command
 명령
 You utter a command word and release the lock!
@@ -4620,11 +4594,11 @@ You utter a command word and release the lock!
 You mutter an unintelligible command word and your locks do not open.
 이해할 수 없는 명령을 중얼거려도 자물쇠가 열리지 않습니다.
 You mumble a command word but the lock opens!
-당신은 명령 단어를 중얼하지만 자물쇠가 열립니다!
+당신이 명령 단어를 말하자, 자물쇠가 열립니다!
 You mess up saying the command word. The lock stays put!
-당신은 명령어를 말하는 것을 망쳤습니다. 자물쇠는 제자리에 있습니다!
+당신은 명령어를 잘못 말했습니다. 자물쇠는 제자리에 있습니다!
 Pick
-선택하다
+락픽
 (No way to open)
 (열 수 있는 방법이 없습니다)
 (She cannot help you)
@@ -4650,7 +4624,7 @@ SCHOOL의 여신이 당신을 보호하고 보복합니다!
 You leave the coins on the altar and they transform into a ItemBought!
 동전을 제단에 두면 아이템 구매로 바뀝니다!
 object
-물체
+오브젝트
 
 It appears to be a receptacle for an ancient crystal.
 고대 수정을 담는 그릇인 것 같습니다.
@@ -4667,13 +4641,13 @@ That door is open. Do you want to close it?
 You slam the door and jam it shut!
 당신은 문을 쾅 닫고 잼!
 Submissive
-복종
+순종
 Security Level
 보안 수준
 Undead
 언데드
 Latex
-유액
+라텍스
 Leather
 가죽
 Metal
@@ -4681,19 +4655,15 @@ Metal
 Ropes
 로프
 Restoration
-복구
+회복
 Elements
-집단
+정령
 Conjuration
-주문
+주술
 Illusions
 환상
 Commerce
 상업
-Shrine of 
-의 신사
-Tablet of 
-의 태블릿
 
 Curses
 저주
@@ -4701,9 +4671,7 @@ Willpower
 의지력
 
 A tablet inscribed with runes of TYPE.
-TYPE의 룬 문자가 새겨진 서판.
-Teachings of 
-의 가르침
+TYPE 의 룬 문자가 새겨진 서판.
 Decypher
 해독
 You read the runes and they imbue you with power!
@@ -4723,7 +4691,7 @@ DressUp Co.
 Bounty Hunters Guild
 현상금 사냥꾼 길드
 Bandits
-산적
+밴딧
 Constructs
 구성
 Witches' Coven
@@ -4739,7 +4707,7 @@ Cult of Bast
 Alchemists
 연금술사
 Elementals
-엘리멘탈
+정령들
 Dragonheart Order
 드래곤하트 오더
 MaidForce
@@ -4748,7 +4716,7 @@ Fungal Kingdom
 곰팡이 왕국
 
 Wanted
-구함
+수배
 Delinquent
 체납
 Illegal Poacher
@@ -4756,10 +4724,10 @@ Illegal Poacher
 Nature
 자연
 Surprise!
-놀라다!
+서프라이즈!
 
 Angels
-천사들
+천사
 Demons
 악마
 
@@ -4768,29 +4736,27 @@ You sense that the chest contains a trap and a lot of gold.
 You sense that the chest is safe to open.
 상자를 열어도 안전하다는 느낌이 듭니다.
 
-Drink
-마시다
 Bottle
 병
 You drink from the pool and and absorb its energies.
 당신은 수영장에서 물을 마시고 그 에너지를 흡수합니다.
 You absorb the pool's energies through your face.
-당신은 당신의 얼굴을 통해 수영장의 에너지를 흡수합니다.
+당신은 당신의 얼굴을 통해 웅덩이의 에너지를 흡수합니다.
 You collect what mana you can in a bottle.
 병에 최대한 마나를 모을 수 있습니다.
 You drink from the pool and your mana is restored.
 수영장에서 물을 마시면 마나가 회복됩니다.
 You drink again, but you feel as if you are trespassing.
-또 술을 마시지만 무단 침입한 것 같은 느낌이 듭니다.
+또 마시지만 무단 침입한 것 같은 느낌이 듭니다.
 You drink again, knowing the risk this may entail...
-이것이 수반할 수 있는 위험을 알면서 또 술을 마십니다...
+이것이 수반할 수 있는 위험을 알면서 또 마십니다...
 You have angered the goddess of TYPE!!!
 타입의 여신님을 화나게 하셨습니다!!!
 The slime washes off in the fountain!!!
 점액이 샘물에 씻겨내려갔어!!!
 
 The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)
-여신은 ItemCost(NumCurrent/NumMax)에 대해 ItemTraded를 제공합니다.
+여신은 ItemCost (NumCurrent/NumMax)에 대해 ItemTraded 를 제공합니다.
 Next Offer
 다음 제안
 Buy
@@ -4976,7 +4942,7 @@ It seems to be made of flexible steel plates.
 유연한 철판으로 만들어진 것 같다.
 
 Tracking Collar
-추적 칼라
+추적 목걸이
 An advanced collar for tracking high-security prisoners.
 보안이 철저한 죄수를 추적하기 위한 고급 목걸이입니다.
 It seems to be made of flexible steel plates, and it has a high-security lock.
@@ -5035,7 +5001,7 @@ They are not coming off without the key.
 The ankle cuff chain detaches!
 발목 커프스 체인이 분리되었습니다!
 Latex Posture Collar
-라텍스 자세 칼라
+라텍스 자세 목걸이
 A strict collar that makes it tougher to escape from other items.
 다른 아이템에서 벗어나기 어렵게 만드는 엄격한 목걸이.
 It has steel boning but could be cut with enough care.
@@ -5173,7 +5139,7 @@ You find
 찾아
 
 Collar
-칼라
+목걸이
 A classy leather collar.
 고급스러운 가죽 목걸이.
 Allows fitting of a leash.
@@ -5185,13 +5151,13 @@ A high-security steel collar befitting of a slave.
 Allows fitting of a leash.
 목줄을 끼울 수 있습니다.
 Enchanted Collar
-인챈티드 칼라
+인챈티드 목걸이
 A collar made with magically enchanted materials. It is difficult to cut off.
 마법의 마력이 깃든 재료로 만든 목걸이. 잘리기 어렵다.
 Allows fitting of a leash.
 목줄을 끼울 수 있습니다.
 Kitty Collar
-키티 칼라
+키티 목걸이
 A collar made with magically enchanted materials. It is protected by the blessing of Bast.
 마법의 마력이 깃든 소재로 만든 목걸이. 바스트의 가호로 지켜지고 있다.
 Allows fitting of a leash.
@@ -5535,7 +5501,7 @@ Made of woven mithril and enchanted to require magic blades to cut!
 
 
 Mithril Collar
-미스릴 칼라
+미스릴 목걸이
 A collar made from an almost-weightless alloy..
 무게에 가까운 합금으로 만든 목걸이..
 It feels comfortable but it's also really hard.
@@ -5618,7 +5584,7 @@ A pair of tight leather mittens enclosing your hands.
 They make it almost impossible to manipulate keys and tools. Keep your hands to yourself!
 그것들은 열쇠와 도구를 조작하는 것을 거의 불가능하게 만듭니다. 손을 조심하세요!
 Leather Armbinder
-가죽 완장
+가죽 암바인더
 A tight leather armbinder enclosing your hands and arms completely.
 손과 팔을 완전히 감싸는 타이트한 가죽 암바인더.
 It's quite snug and secured by lockable buckles in the back. Picking the locks yourself is impossible.
@@ -6006,7 +5972,7 @@ A gag used to prevent wolfgirls from biting their owners.
 It is reinforced with steel cables, so getting it off will be tricky.
 강철 케이블로 보강되어 있어 떼어내기가 까다로울 것입니다.
 Training Collar
-트레이닝 칼라
+트레이닝 목걸이
 A collar used to keep unruly wolfgirls in check.
 제멋대로인 울프걸을 견제하기 위해 사용하는 목걸이입니다.
 If it works on them, it sure as heck works on you.
@@ -6039,7 +6005,7 @@ It has many straps and is very difficult to escape.
 Asylum Legbinder
 망명 입법자
 This legbinder will keep the patient from kicking the nurses.
-이 다리 바인더는 환자가 간호사를 발로 차는 것을 막아줄 것입니다.
+이 레그 바인더는 환자가 간호사를 발로 차는 것을 막아줄 것입니다.
 It has both laces and straps.
 끈과 끈이 모두 있습니다.
 
@@ -6139,19 +6105,17 @@ A tight jacket that holds your arms completely useless.
 It has too much grip to struggle out of, but is made of a fragile material.
 힘겨워하기에는 너무 많은 그립력이 있지만 깨지기 쉬운 재료로 만들어졌습니다.
 Latex Armbinder
-라텍스 완장
+라텍스 암바인더
 A tight armbinder that pins your arms tightly behind your back, enclosed completely.
 팔을 등 뒤로 단단히 고정하는 타이트한 암바인더가 완전히 감싸여 있습니다.
 It has too much grip to struggle out of, but is made of a fragile material.
 힘겨워하기에는 너무 많은 그립력이 있지만 깨지기 쉬운 재료로 만들어졌습니다.
 Latex Legbinder
-라텍스 다리 바인더
+라텍스 레그 바인더
 A tight legbinder that keeps your legs together!
 다리를 고정시켜주는 타이트한 레그바인더!
 It has too much grip to struggle out of, but is made of a fragile material.
 힘겨워하기에는 너무 많은 그립력이 있지만 깨지기 쉬운 재료로 만들어졌습니다.
-Latex MonoHeel
-라텍스 모노힐
 A tight pair of boots that makes it difficult to walk!
 걷기 힘들게 만드는 타이트한 부츠!
 It has too much grip to struggle out of, but is made of a fragile material.
@@ -6222,7 +6186,7 @@ A muzzle to keep ball gags pressed firmly into the mouth.
 It's made from hard-to-cut dragonscale!!!
 잘라내기 힘든 용비늘로 만들었다!!!
 Dragon Collar
-드래곤 칼라
+드래곤 목걸이
 A collar owned by the Dragonhearts, an order of dragonslayers.
 드래곤슬레이어 교단인 드래곤하트가 소유한 목걸이.
 It's made from hard-to-cut dragonscale!!!
@@ -6429,7 +6393,7 @@ The ankle cuff chain detaches!
 발목 커프스 체인이 분리됩니다!
 
 Maid Collar
-메이드 칼라
+메이드 목걸이
 A collar for operatives of the Maidforce, a group of covert saboteurs.
 은밀한 공작원 그룹인 메이드포스 요원의 목걸이.
 It's reinforced with metal and guarded with an expert-level lock.
@@ -7209,7 +7173,7 @@ Mouth
 Ears
 귀
 Collar
-칼라
+목걸이
 Neck
 목
 Arms
@@ -7663,7 +7627,7 @@ Utility
 Upgrades
 업그레이드
 Spell Tree
-스펠 트리
+주문 트리
 Willpower
 의지력
 Stamina
@@ -7693,7 +7657,7 @@ You fail to concentrate on the spell and it fizzles!
 Your gag causes you to mispronounce the magic words!
 당신의 개그 때문에 마법의 단어를 잘못 발음하게 됩니다!
 The ice drains your concentration! Your mana and stamina are slipping away!
-얼음이 집중력을 떨어뜨립니다! 당신의 마나와 체력이 빠져나가고 있습니다!
+얼음이 집중력을 떨어뜨립니다! 당신의 마나와 스태미나가 빠져나가고 있습니다!
 A strange, chaotic energy flows into you! Your will is weakened and your mana fades!
 이상하고 혼란스러운 에너지가 당신에게 흘러 들어옵니다! 의지가 약해지고 마나가 사라집니다!
 Something gently, constantly tickles you!
@@ -8141,7 +8105,7 @@ Choose target AoE location (5x5)
 Healing Light
 치유의 빛
 Channel to heal 15 hitpoints per turn to summoned allies within a 5x5 area.
-5x5 영역 내에서 소환된 아군에게 턴당 15개의 체력을 치료하는 채널입니다.
+정신집중 하여 5x5 영역 내의 소환된 아군의 체력을 턴당 15씩 치료합니다.
 You conjure a healing light!
 당신은 치유의 빛을 불러일으킵니다!
 Choose target AoE location (5x5)
@@ -8415,7 +8379,7 @@ An earthen monolith rises from the ground!
 Earthshape (Ring)
 어스셰이프(반지)
 Create a large ring of Earthen Monoliths. They have 50 hitpoints and 25 armor.
-거대한 대지 기둥 고리를 만듭니다. 그들은 50개의 체력과 25개의 방어구를 가지고 있습니다.
+거대한 대지 기둥 고리를 만듭니다. 그들은 50의 체력과 25의 방어력을 가지고 있습니다.
 You stomp your foot and monoliths emerge in a ring around you!
 발을 구르면 돌기둥이 주변에 고리 모양으로 나타납니다!
 Choose ring origin
@@ -8424,7 +8388,7 @@ Choose ring origin
 Earthshape (Mound)
 Earthshape (마운드)
 Create a 3x3 field of Earthen Monoliths. They have 50 hitpoints and 25 armor.
-Earthen Monoliths의 3x3 필드를 만듭니다. 그들은 50개의 체력과 25개의 방어구를 가지고 있습니다.
+Earthen Monoliths의 3x3 필드를 만듭니다. 그들은 50의 체력과 25의 방어력을 가지고 있습니다.
 You stomp your foot and monoliths emerge from the ground!
 발을 구르면 땅에서 모놀리스가 나타납니다!
 Choose mound origin
@@ -8433,7 +8397,7 @@ Choose mound origin
 Earthshape (Line)
 지구 모양(선)
 Create a 4-tile line of Earthen Monoliths. They have 50 hitpoints and 25 armor.
-4타일 라인의 대지 기둥을 만듭니다. 그들은 50개의 체력과 25개의 방어구를 가지고 있습니다.
+4타일 라인의 대지 기둥을 만듭니다. 그들은 50의 체력과 25의 방어력을 가지고 있습니다.
 You stomp your foot and monoliths emerge from the ground!
 발을 구르면 땅에서 모놀리스가 나타납니다!
 Choose line direction
@@ -8481,11 +8445,11 @@ Increases maximum SP by 12
 Iron Will
 불굴의 의지
 While you have 100 willpower or more, regain an additional 4 stamina per turn.
-의지력이 100 이상일 때 매 턴 체력을 추가로 4 회복합니다.
+의지력이 100 이상일 때 매 턴 스태미나를 추가로 4 회복합니다.
 Athlete
 운동 선수
 Sprinting costs 40% less stamina.
-전력질주 시 체력 소모가 40% 감소합니다.
+전력질주 시 스태미나 소모가 40% 감소합니다.
 Sneaky
 운동화
 You are harder to see when waiting.
@@ -8511,7 +8475,7 @@ Excess accuracy (over 100%) is converted to bonus physical damage percentage at 
 Brute Force
 브루트 포스
 When enabled, your attacks deal 10% of your willpower as additional crush damage but cost 10 more stamina.
-활성화되면 공격이 의지력의 10%를 추가 크러쉬 데미지로 처리하지만 체력이 10 더 소모됩니다.
+활성화되면 공격이 의지력의 10%를 추가 크러쉬 데미지로 처리하지만 스태미나가 10 더 소모됩니다.
 
 One With Slime
 점액과 하나
@@ -9086,7 +9050,7 @@ Heal
 Select which creature to heal
 치료할 생물 선택
 Restore 45 hitpoints to an allied creature.
-아군 생물의 체력을 45 회복합니다.
+아군 크리쳐의 체력을 45 회복시킵니다.
 You utter a word of healing.
 치유의 말씀을 하십니다.
 
@@ -9664,38 +9628,38 @@ You climb into the grate
 당신은 창살에 올라
 
 Mmmph...
-음...
+으읍...
 Mmmmmmmmm...
-음음...
+으읍읍으읍...
 Hhmmpphh...
-흠...
+흐으읍읍...
 Gghhhh!!!
 으악!!!
 Mmmmmphh!!!
-음!!!
+읍읍으읍흡!!!
 Mmm...
-음...
+읍...
 MMM!!!
-음!!!
+읍읍!!!
 Mmmmmm.
-음.
+읍으으.
 
 Mmmaaaaahhh...
-음음...
+응으핫...
 Mmmmmmmmm~
-음음~
+으읍읍~
 Unnnghhh...
-우응...
+우읏...
 Mmmmmmmphhh..
-음음..
+읍읍흐으..
 Mmmmmphh~
-음~
+읍으읍~
 Mmm~
-음~
+으읍~
 Mmmmm~~
-음~~
+읍읍~~
 Mmmmmm~~~
-음~~~
+으읍읍~~~
 
 You are blinded!
 당신은 눈이 멀었습니다!
@@ -9842,7 +9806,7 @@ You breathe in the gas, and feel lethargic...
 당신은 가스를 들이마시고 무기력함을 느낍니다...
 
 Inventory
-목록
+인벤토리
 Reputation
 평판
 Spells
@@ -9864,7 +9828,7 @@ Spell Tree
 Elemental Spells
 원소 주문
 Conjuration Spells
-컨저레이션 스펠
+컨저레이션 주문
 Illusion Spells
 일루전 마법
 Upgrades
@@ -9891,7 +9855,7 @@ Spell Points: SPELLPOINTS
 You need a higher level in SCHOOL magic to learn this spell.
 이 주문을 배우려면 더 높은 수준의 SCHOOL 마법이 필요합니다.
 You need more spell points.
-스펠 포인트가 더 필요합니다.
+주문 포인트가 더 필요합니다.
 You don't have enough maximum mana to cast this spell!
 이 주문을 시전하기에는 최대 마나가 부족합니다!
 School: 
@@ -9920,33 +9884,33 @@ Spell Point Cost:
 
 
 Remove Spell 1
-철자 1 제거
+마법 1 제거
 Remove Spell 2
-철자 2 제거
+마법 2 제거
 Remove Spell 3
-철자 3 제거
+마법 3 제거
 Remove Spell 4
-철자 4 제거
+마법 4 제거
 Remove Spell 5
-철자 5 제거
+마법 5 제거
 Remove Spell 6
-철자 6 제거
+마법 6 제거
 Remove Spell 7
-철자 7 제거
+마법 7 제거
 Replace Spell 1
-교체 철자 1
+교체 마법 1
 Replace Spell 2
-교체 철자 2
+교체 마법 2
 Replace Spell 3
-교체 철자 3
+교체 마법 3
 Replace Spell 4
-교체 철자 4
+교체 마법 4
 Replace Spell 5
-교체 철자 5
+교체 마법 5
 Replace Spell 6
-교체 철자 6
+교체 마법 6
 Replace Spell 7
-교체 철자 7
+교체 마법 7
  Current Spell 1: 
  현재 주문 1: 
  Current Spell 2: 
@@ -10177,7 +10141,7 @@ Feeling determined, you override the seal and release the item!
 The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
 그 자물쇠는 원령 봉인으로 보호되어 있습니다. 마력을 추출하려면 25개의 엑토플라즘이 필요합니다.
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
-당신의 손가락은 칼라를 통과합니다. 목이 통과하지 않는 것이 유감입니다.
+당신의 손가락은 목걸이를 통과합니다. 목이 통과하지 않는 것이 유감입니다.
 You channel ghastly energy into the lock and break the seal!!!
 당신은 무시무시한 에너지를 자물쇠에 쏟아부어 봉인을 부수고 있습니다!!!
 
@@ -10186,7 +10150,7 @@ The item seems to drain divine energy from shrines. Maybe that has something to 
 The collar is enchanted with multiple layers of magical seals.
 목걸이는 여러 겹의 마법 봉인으로 매혹되어 있습니다.
 The collar has absorbed enough energy and pops off!
-칼라가 충분한 에너지를 흡수하고 튀어나옵니다!
+목걸이가 충분한 에너지를 흡수하고 튀어나옵니다!
 
 That item cant be used.
 그 아이템은 사용할 수 없습니다.
@@ -10683,7 +10647,7 @@ Ancient Chastity Belt
 You find a chastity belt, glowing magnificently, along with a strange crystal next to it.
 당신은 그 옆에 이상한 수정과 함께 화려하게 빛나는 정조대를 발견했습니다.
 A chastity belt of sleek, ancient design. While powered, it gives -30% miscast chance due to distraction and slowly regenerates stamina.
-매끄럽고 고대 디자인의 정조대입니다. 전원이 공급되는 동안 산만함으로 인한 오시전 확률이 -30% 감소하고 체력이 천천히 회복됩니다.
+매끄럽고 고대 디자인의 정조대입니다. 전원이 공급되는 동안 산만함으로 인한 오시전 확률이 -30% 감소하고 스태미나가 천천히 회복됩니다.
 'Belt of the devoted'
 '헌신자의 허리띠'
 You tug at your chastity belt, but you can't even stick a finger inside because it's so tight...
@@ -10951,17 +10915,17 @@ Slash
 Pain
 통증
 Psychic
-무당
+초능력
 Psychic
-무당
+초능력
 Psychic
-무당
+초능력
 Electric
 전기 같은
 Pressure
 압력
 Chain
-체인
+사슬
 Charm
 매력
 Glue
@@ -10984,16 +10948,16 @@ You found a magical amulet! Choose one of the following to determine its benefit
 Focus: +50% max distraction, increased distraction decay. +5% stamina protected from damage (base: 30%).
 집중력: +50% 최대 산만함, 산만함 감쇠 증가. +5% 손상으로부터 보호되는 체력(기본: 30%).
 Vigour: +50 max stamina, +50% stamina potion effectiveness.
-활력: 최대 체력 +50, 체력 물약 효과 +50%.
+활력: 최대 스태미나 +50, 스태미나 물약 효과 +50%.
 Wisdom: +50 max mana. +50% mana potion effectiveness.
 지혜: 최대 마나 +50. 마나 물약 효과 +50%.
 Fortitude: +50 max willpower, +50% willpower potion effectiveness. +1 stamina regen/turn.
-Fortitude: +50 최대 의지력, +50% 의지력 물약 효과. +1 체력 재생/턴.
+Fortitude: +50 최대 의지력, +50% 의지력 물약 효과. +1 스태미나 재생/턴.
 
 +Distraction
 +산만
 +Stamina
-+체력
++스태미나
 +Willpower
 +의지력
 +Mana
@@ -11069,55 +11033,55 @@ Distracted
 Aroused
 흥분
 Removes all chastity belts, vibrating restraints, plugs, and removes the option to play with yourself.
-모든 순결 벨트, 진동 억제 장치, 플러그를 제거하고 스스로 놀 수 있는 옵션을 제거합니다.
+모든 순결 벨트, 바이브 구속, 플러그를 제거하고 자위를 할 수 없게 됩니다.
 Includes all that good stuff.
-모든 좋은 것들을 포함합니다.
+모든 좋은(?) 것들을 포함합니다.
 Allow Rear Plugs
-후면 플러그 허용
+엉덩이 플러그 허용
 Allow Piercings
 피어싱 허용
 
 Fighter
-전투기
-Start with 200 willpower and 2 spell points, good for escaping and taking blows.
-200의 의지력과 2개의 스펠 포인트로 시작하세요. 도망치고 일격을 가하는 데 좋습니다.
+싸움꾼
+"Start with 200 willpower and 2 spell points, good for escaping and taking blows."
+200의 의지력과 2개의 주문 포인트로 시작합니다. 도망치거나 회심의 일격을 가하는 데 좋습니다.
 Rogue
 도적
-Start with 200 stamina and 2 spell points, good for sprinting around.
-스태미너 200과 스펠 포인트 2로 시작하여 질주하기에 좋습니다.
+"Start with 200 stamina and 2 spell points, good for sprinting around."
+200의 스테미나와 2개의 주문 포인트로 시작합니다. 질주하기에 좋습니다.
 Mage
-마술사
-Start with 200 mana and 3 spell points, good for casting spells.
-200 마나와 3개의 스펠 포인트로 시작하세요. 스펠 캐스팅에 좋습니다.
+마법사
+"Start with 200 mana and 3 spell points, good for casting spells."
+200 마나와 3개의 주문 포인트로 시작합니다. 주문 시전에 좋습니다.
 Peasant
 농부
-Start with nothing to your name. For those who want a challenge.
-이름에 걸맞지 않게 시작하세요. 도전을 원하는 분들을 위해.
+"Start with nothing to your name. For those who want a challenge."
+평범하게 시작하세요. 도전을 원하는 분들을 위해.
 
 Choose Spells
 주문 선택
 Random Spells
 무작위 주문
 Break orbs. Get points. Buy spells. It's that simple.
-오브를 깰 수 있습니다. 포인트를 받으세요. 주문을 구입하십시오. 그렇게 간단합니다.
+오브를 깨고. 포인트를 받고. 주문을 사십시오. 이렇게나 간단합니다.
 Break orbs and pray you get something good.
-보주를 부수고 좋은 것을 얻기를 기도하세요.
+오브를 깨고 좋은 것을 나오기를 기도하세요.
 
 Save Codes
-코드 저장
+세이브 코드
 Roguelike
-로그 같은
+로그라이크
 Grants a save code every floor you can write down. Autosaves only on floor start.
-기록할 수 있는 모든 층에 저장 코드를 부여합니다. 층 시작 시에만 자동 저장됩니다.
+기록할 수 있는 모든 층에 세이브 코드를 발급합니다. 층 시작 지점에서 자동 저장이 됩니다.
 No save codes, forced autosaves. You are in it to win it.
-저장 코드 없음, 강제 자동 저장. 당신은 그것을 이길 수 있습니다.
+세이브 코드 없음, 강제 자동 저장. 당신은 그것을 이겨낼 수 있습니다.
 
 Start Playing
-재생 시작
+시작
 Lock your settings in, nice and tight.
 설정을 단단히 고정하세요.
 Choose some perks to spice up your run.
-달리기에 활기를 불어넣을 몇 가지 특전을 선택하세요.
+진행에 활기를 불어넣을 몇 가지 특전을 선택하세요.
 
 This game engages in safe and consensual analytics.
 이 게임은 안전하고 합의된 분석에 관여합니다.
@@ -11126,12 +11090,12 @@ It sends data about spell choices, levels reached, etc, to help balance and impr
 No personal data is sent or stored.
 개인 데이터는 전송되거나 저장되지 않습니다.
 Accept
-수용하다
+수락
 Don't Track Me
-날 추적하지마
+거절
 
 Your key to the stairs is taken away!
-계단 열쇠를 빼앗겼어!
+계단 열쇠를 빼앗겼습니다!
 You found a keyring to the stairs! Now you just need to get there.
 계단의 열쇠고리를 찾았군요! 이제 거기까지만 가면 됩니다.
 There seems to be a locked high-security door. Looks like you need a key.
@@ -11208,7 +11172,7 @@ Not so slippery now!
 I'll be taking that~
 내가 가져갈게~
 'Click!'
-'딸깍 하는 소리!'
+'딸깍!'
 
 
 
@@ -11224,7 +11188,7 @@ I've been naughty, looks like I need to be punished...
 I've been a bad girl, won't you do something about it?
 나는 나쁜 여자 였어, 그것에 대해 뭔가를하지 않을거야?
 Mmmph... maybe I talk too much...
-음... 말이 너무 많은 것 같은데...
+흐음... 말이 너무 많은 것 같은데...
 Hey! Where do you think you're going?
 이봐! 어디로 갈 것 같아?
 You look like you're having fun!
@@ -11288,17 +11252,17 @@ Nice and tight!
 
 
 Mmmmph!!!
-음!!!
+읍으읍!!!
 Mmmmm~
 음~
 Mmmgh!
-음!
+읍읍!
 Mmmmmm <3
-으음 <3
+으읍읍 <3
 Mmmmmm~
 음~
 Mmmph~
-음~
+흐음~
 *looks at you nervously*
 *초조하게 쳐다본다*
 *giggles*
@@ -11306,7 +11270,7 @@ Mmmph~
 *giggles eagerly*
 *간절히 낄낄 웃는다*
 Mmmph?
-음?
+흐음?
 Mmmghgh!!!
 음!!!
 Mmmmph...
@@ -11314,31 +11278,31 @@ Mmmmph...
 Hhhhmph!
 헉헉!
 Mmmmmmmmm...
-으으으음으음...
+으으으읍으읍...
 Mmmph!
-음!
+읍!
 Nngghhh!
 으악!
 Gggghh!!!
 으악!!!
 Mmmaaghthh!
-으음!
+으읍!
 Wwwmmmthhh!
 우우으으음!
 Mmmmmph!
-으음!
+으읍!
 Mmmph.
-음.
+읍.
 Mmmph!
-음!
+읍!
 *looks at you suspiciously*
 *당신을 의심스럽게 쳐다봅니다*
 *looks at you angrily*
 *당신을 화나게 쳐다봅니다*
 Mmmmph!!!
-음!!!
+읍!!!
 Mmmmph!
-음!
+읍!
 *jumps up and down excitedly*
 *신나게 위아래로 점프*
 *groans*
@@ -11346,11 +11310,11 @@ Mmmmph!
 *does a happy dance*
 *행복한 춤을 춥니다*
 Mmmph!!!
-음!!!
+읍!!!
 *giggles*
 *킥킥*
 Mmmph.
-음.
+읍.
 Nngghhh!
 으악!
 Mmm-hmmm.
@@ -11358,7 +11322,7 @@ Mmm-hmmm.
 Mmmmmmm~
 음~
 Mmmph~
-음~
+으흠~
 
 
 
@@ -13270,40 +13234,40 @@ You hand over your weapon reluctantly...
 (SPEAKER 신호음)|활력 징후는 부정직함을 나타냅니다.
 
 (The SPEAKER furrows her brow)|...Excuse me?
-(스피커가 눈썹을 찌푸리며)|...실례합니다.
+(SPEAKER 가 눈썹을 찌푸리며)|...실례합니다.
 
 (The SPEAKER tilts her head)|Right, sorry.
-(스피커가 고개를 기울인다)|맞아, 미안해.
+(SPEAKER 가 고개를 기울인다)|맞아, 미안해.
 (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
-(스피커가 얼굴을 붉히며)|저...미안합니다! 계속해 주세요...
+(SPEAKER 가 얼굴을 붉히며)|저...미안합니다! 계속해 주세요...
 (The SPEAKER smiles)|Keep up the good work, girl.
-(스피커가 웃는다)|계속 잘 하세요, 아가씨.
+(SPEAKER 가 웃는다)|계속 잘 하세요, 아가씨.
 (The SPEAKER beeps)|Vital signs indicate honesty. Carry on.
 (SPEAKER 신호음)|활력 징후는 정직함을 나타냅니다. 계속하십시오.
 
 (The SPEAKER smiles)|Good girl.
-(스피커가 웃는다)|잘했어.
+(SPEAKER 가 웃는다)|잘했어.
 (The SPEAKER smiles)|That's a good girl.
-(스피커가 웃는다)|착한 여자야.
+(SPEAKER 가 웃는다)|착한 여자야.
 (The SPEAKER smiles)|Thank you.
-(스피커 미소)|감사합니다.
+(SPEAKER  미소)|감사합니다.
 (The SPEAKER beeps)|Thank you for complying.
-(스피커가 삐 소리를 낸다)|따라주셔서 감사합니다.
+(SPEAKER 가 삐 소리를 낸다)|따라주셔서 감사합니다.
 
 (The SPEAKER frowns)|Looks like you'll need to be punished. Get her!
-(스피커가 눈살을 찌푸린다)|처벌을 받아야 할 것 같습니다. 그녀를 잡아요!
+(SPEAKER 가 눈살을 찌푸린다)|처벌을 받아야 할 것 같습니다. 그녀를 잡아요!
 (The SPEAKER looks Embarrassed)|Then... then... uh... someone stop her!
 (화자가 당황한 듯)|그럼...그럼...어...누군가 말려!
 (The SPEAKER grins)|Then allow me to personally show you the rules.
-(스피커가 웃는다)|그럼 제가 개인적으로 규칙을 보여드리겠습니다.
+(SPEAKER 가 웃는다)|그럼 제가 개인적으로 규칙을 보여드리겠습니다.
 (The SPEAKER beeps)|Subject is resisting. Begin capture protocol.
-(스피커가 삐 소리를 냄)|피험자가 저항하고 있습니다. 캡처 프로토콜을 시작합니다.
+(SPEAKER 가 삐 소리를 냄)|피험자가 저항하고 있습니다. 캡처 프로토콜을 시작합니다.
 
 
 (The SPEAKER calls at you)|You're not supposed to be carrying a weapon.|Hand it over.
-(스피커가 당신을 부릅니다)|당신은 무기를 들고 있으면 안 됩니다.|이리 주세요.
+(SPEAKER 가 당신을 부릅니다)|당신은 무기를 들고 있으면 안 됩니다.|이리 주세요.
 (The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply.
-(스피커가 다가온다)|밀수품이 감지되었습니다. 몰수를 시작합니다.|따라주세요.
+(SPEAKER 가 다가온다)|밀수품이 감지되었습니다. 몰수를 시작합니다.|따라주세요.
 Yes, miss... (Currently held weapon will be lost)
 네, 아가씨... (현재 들고 있는 무기는 사라집니다)
 Mmph... (Nod politely) (Currently held weapon will be lost)
@@ -13327,25 +13291,25 @@ Are you questioning me? I'm a dragonslayer.
 (계속하다...)
 
 (The SPEAKER approaches you in your cell)|Well well, what do we have here? A new guest?|Perhaps I should give you a rundown of your new life~
-(스피커가 당신의 감방에서 당신에게 접근합니다)|글쎄요, 우리는 무엇을 가지고 있습니까? 새로운 손님?|당신의 새로운 삶에 대한 개요를 알려줘야 할 것 같습니다~
+(SPEAKER 가 당신의 감방에서 당신에게 접근합니다)|글쎄요, 우리는 무엇을 가지고 있습니까? 새로운 손님?|당신의 새로운 삶에 대한 개요를 알려줘야 할 것 같습니다~
 
 (The SPEAKER chuckles)|Don't tell me you seriously think we're letting you go?|You broke the rules, ignored the warnings.|Your new job is to make the people here happy.
 (발표자 웃음)|우리가 당신을 놓아줄 거라고 진지하게 생각하지 말아요?|당신은 규칙을 어겼고 경고를 무시했습니다.|당신의 새로운 임무는 여기 사람들을 행복하게 만드는 것입니다.
 (The SPEAKER chuckles)|Hah, looks like you've got lots of training ahead of you.|Soon you'll have too much pleasure for your own good~
-(스피커 웃음)|하, 앞으로 훈련이 많이 남았나 보군요.|곧 당신은 자신의 이익을 위해 너무 많은 즐거움을 갖게 될 것입니다~
+(SPEAKER  웃음)|하, 앞으로 훈련이 많이 남았나 보군요.|곧 당신은 자신의 이익을 위해 너무 많은 즐거움을 갖게 될 것입니다~
 (The SPEAKER giggles)|Don't worry, you'll come to enjoy it soon enough.
-(스피커 낄낄거림)|걱정마, 곧 즐기게 될거야.
+(SPEAKER  낄낄거림)|걱정마, 곧 즐기게 될거야.
 (The SPEAKER smiles)|Heh, looks like you'll be fitting right in.
-(스피커가 웃는다)|헤, 잘 어울릴 것 같군요.
+(SPEAKER 가 웃는다)|헤, 잘 어울릴 것 같군요.
 
 (The SPEAKER chuckles)|You're probably wondering what's in store for you.|It's simple: You behave and do as you're told.|Eventually you will get to roam around.|Don't you dare try to steal anything.
 (발표자 웃음)|당신은 아마 당신을 위해 무엇이 준비되어 있는지 궁금할 것입니다.|그것은 간단합니다: 당신은 당신이 시키는 대로 행동하고 행합니다.|결국 당신은 돌아다니게 될 것입니다.|감히 훔치려 하지 마십시오 아무것.
 (The SPEAKER chuckles)|Babe, you're going to be locked up for a looooong time.
 (발표자 웃음)|베이비, 당신은 아주 오랜 시간 동안 감금될 것입니다.
 (The SPEAKER giggles and returns to her work)
-(스피커가 낄낄거리며 일하러 돌아간다)
+(SPEAKER 가 낄낄거리며 일하러 돌아간다)
 (The SPEAKER smiles)|Wonderful. You'll be meeting your new friends soon!
-(스피커가 웃는다)|멋지네요. 곧 새로운 친구들을 만나게 될 거에요!
+(SPEAKER 가 웃는다)|멋지네요. 곧 새로운 친구들을 만나게 될 거에요!
 
 (New life?)
 (새로운 삶?)
@@ -13377,24 +13341,24 @@ I will be a good girl!
 
 
 (The SPEAKER approaches you in your cell)|Back again, are we? Silly girl.|You know we don't take no for an answer.
-(스피커가 당신의 감방에서 당신에게 접근합니다)|다시 돌아왔습니까? 바보 같은 여자.|우리는 대답을 거절하지 않는다는 것을 알고 있습니다.
+(SPEAKER 가 당신의 감방에서 당신에게 접근합니다)|다시 돌아왔습니까? 바보 같은 여자.|우리는 대답을 거절하지 않는다는 것을 알고 있습니다.
 
 (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(She leaves and returns with some toys...)|Now hold still!
 (화자가 미소를 지으며 대답한다)|오, 이건 너에게 게임이야?|그럼 내가 너를 위해 더 재미있게 만들어야 할 것 같은데...|(그녀는 장난감을 가지고 떠났다가 돌아온다...)|이제 가만히 있어!
 (The SPEAKER frowns)|I know exactly what you need...
-(스피커가 눈살을 찌푸린다)|당신에게 필요한 것이 무엇인지 정확히 알고 있습니다...
+(SPEAKER 가 눈살을 찌푸린다)|당신에게 필요한 것이 무엇인지 정확히 알고 있습니다...
 (The SPEAKER smiles back)|I'm glad you're enjoying yourself.|However, your behavior is still unacceptable.|You need to learn some respect.
-(스피커가 미소를 지으며)|즐거우셨다니 다행입니다.|하지만, 당신의 행동은 여전히 ​​용납할 수 없습니다.|당신은 약간의 존경심을 배울 필요가 있습니다.
+(SPEAKER 가 미소를 지으며)|즐거우셨다니 다행입니다.|하지만, 당신의 행동은 여전히 ​​용납할 수 없습니다.|당신은 약간의 존경심을 배울 필요가 있습니다.
 (The SPEAKER chuckles)|Looks like you're enjoying your restraints?|Let's make them tighter, shall we?
-(스피커가 웃는다)|자제를 즐기는 것 같나요?|자제를 더 빡세게 합시다, 그렇죠?
+(SPEAKER 가 웃는다)|자제를 즐기는 것 같나요?|자제를 더 빡세게 합시다, 그렇죠?
 (The SPEAKER shrugs)|Well, I hope you learn.
-(스피커가 어깨를 으쓱한다)|글쎄, 나는 네가 배우기를 바란다.
+(SPEAKER 가 어깨를 으쓱한다)|글쎄, 나는 네가 배우기를 바란다.
 (The SPEAKER looks greedy)|Oh, you have an idea?
-(스피커가 욕심이 많아 보인다)|오, 아이디어가 있어?
+(SPEAKER 가 욕심이 많아 보인다)|오, 아이디어가 있어?
 (The SPEAKER nods)|I'll put in a good word with you~
-(스피커가 고개를 끄덕인다)|좋은 말을 해줄게~
+(SPEAKER 가 고개를 끄덕인다)|좋은 말을 해줄게~
 (The SPEAKER shakes her head)|Babe, you know who's going to be blamed|if a max-security prisoner escapes?
-(스피커가 고개를 젓는다)|자기야, 누가 비난을 받을지 알아|만일 최고 보안 죄수가 탈출하면?
+(SPEAKER 가 고개를 젓는다)|자기야, 누가 비난을 받을지 알아|만일 최고 보안 죄수가 탈출하면?
 
 (Giggle and smile)
 (낄낄 웃으며)
@@ -13418,32 +13382,32 @@ Why don't you wear it instead? (OFFPERC chance, may aggro)
 (Point to her instead) (OFFPERC chance, may aggro)
 (대신 그녀를 가리킨다) (OFFPERC 기회, 공격적일 수 있음)
 (The SPEAKER resists and fights back!)
-(스피커가 저항하고 반격한다!)
+(SPEAKER 가 저항하고 반격한다!)
 (The SPEAKER blushes and accepts)
-(스피커가 얼굴을 붉히며 받아들인다)
+(SPEAKER 가 얼굴을 붉히며 받아들인다)
 
 
 
 (The SPEAKER looks at you curiously)|Oh, you'd be perfect!|Would you please model my latest design?
-(스피커가 당신을 신기하게 바라본다)|오, 당신은 완벽할 거에요!|제 최근 디자인을 모델로 만들어 주시겠어요?
+(SPEAKER 가 당신을 신기하게 바라본다)|오, 당신은 완벽할 거에요!|제 최근 디자인을 모델로 만들어 주시겠어요?
 (The SPEAKER holds up a restrictive outfit)|This RESTRAINT might be a tight fit|so hold still while I lace it~
-(스피커가 제한적인 의상을 들고 있다)|이 RESTRAINT는 딱 맞을 수 있습니다|그러니까 끈을 묶는 동안 가만히 계세요~
+(SPEAKER 가 제한적인 의상을 들고 있다)|이 RESTRAINT는 딱 맞을 수 있습니다|그러니까 끈을 묶는 동안 가만히 계세요~
 (The SPEAKER giggles)|It looks even better than I thought!|Thank you girl~
-(스피커 낄낄거림)|생각보다 훨씬 좋아보이네요!|고마워요~
+(SPEAKER  낄낄거림)|생각보다 훨씬 좋아보이네요!|고마워요~
 (The SPEAKER sighs and moves away)|Such a shame...
-(스피커가 한숨을 쉬며 멀어진다)|이런 부끄러운 일이...
+(SPEAKER 가 한숨을 쉬며 멀어진다)|이런 부끄러운 일이...
 (The SPEAKER looks disappointed)|Guess I'll find someone else then...
-(스피커가 실망한 듯)|그럼 다른 사람을 찾아봐야지...
+(SPEAKER 가 실망한 듯)|그럼 다른 사람을 찾아봐야지...
 (The SPEAKER pouts)|But I just have to see how you look in it!
-(스피커가 삐죽거린다)|하지만 당신이 어떻게 보이는지 봐야겠어요!
+(SPEAKER 가 삐죽거린다)|하지만 당신이 어떻게 보이는지 봐야겠어요!
 (The SPEAKER smiles)|Maybe you'll change your mind when it's on~
-(스피커가 웃는다)|켜지면 마음이 바뀔지도 몰라~
+(SPEAKER 가 웃는다)|켜지면 마음이 바뀔지도 몰라~
 (The SPEAKER grumbles)|...fine, but you'd look cute~
-(스피커 투덜거림)|...괜찮아요. 하지만 귀엽게 보이겠죠~
+(SPEAKER  투덜거림)|...괜찮아요. 하지만 귀엽게 보이겠죠~
 (The SPEAKER looks bemused)|Changed your mind?|It does look good on you though~
-(스피커가 어리둥절해 보인다)|마음이 바뀌었나요?|그래도 잘 어울리네요~
+(SPEAKER 가 어리둥절해 보인다)|마음이 바뀌었나요?|그래도 잘 어울리네요~
 (The SPEAKER snaps her fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
-(스피커가 손가락을 튕긴다)|(제지 장치가 마법처럼 자신에게 나타나는 것을 느낀다)|아하! 멋지군! 이제 가도 돼~
+(SPEAKER 가 손가락을 튕긴다)|(제지 장치가 마법처럼 자신에게 나타나는 것을 느낀다)|아하! 멋지군! 이제 가도 돼~
 
 Yes please!
 예, 부탁합니다!
@@ -13475,25 +13439,25 @@ Wait! That's too much! (PERCENT chance to avoid)
 
 
 (The SPEAKER looks at with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
-(The SPEAKER가 철학적인 시각으로 바라본다)|너는...|변하고 싶다고 느낀 적이 있니?
+(The SPEAKER 가 철학적인 시각으로 바라본다)|너는...|변하고 싶다고 느낀 적이 있니?
 (The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
 (화자가 가방에서 이상한 가면을 꺼낸다)|글쎄, 바로 여기에 답이 있어...
 (The SPEAKER nods seriously)|My hypothesis was correct...
-(스피커가 진지하게 고개를 끄덕인다)|내 가설이 맞았다...
+(SPEAKER 가 진지하게 고개를 끄덕인다)|내 가설이 맞았다...
 (The SPEAKER frowns)|Such a philistine. Begone.
 (화자가 눈살을 찌푸린다)|이런 속물. 물러나.
 (The SPEAKER turns away and thinks deeply)
-(스피커가 돌아서며 깊이 생각한다)
+(SPEAKER 가 돌아서며 깊이 생각한다)
 (The SPEAKER is lost deep in thought)|Like... become someone else?
-(스피커가 깊은 생각에 잠긴다)|마치... 다른 사람이 되는 것?
+(SPEAKER 가 깊은 생각에 잠긴다)|마치... 다른 사람이 되는 것?
 (The SPEAKER smiles)|You can be someone else...
-(스피커 미소)|넌 다른 사람이 될 수 있어...
+(SPEAKER  미소)|넌 다른 사람이 될 수 있어...
 (The SPEAKER turns around and keeps pondering)|Hmmm...
-(스피커가 뒤돌아서 계속 생각에 잠긴다)|흠...
+(SPEAKER 가 뒤돌아서 계속 생각에 잠긴다)|흠...
 (The SPEAKER nods)|I see you are a truth seeker after all.
-(스피커가 고개를 끄덕인다)|당신은 결국 진실을 찾는 사람이군요.
+(SPEAKER 가 고개를 끄덕인다)|당신은 결국 진실을 찾는 사람이군요.
 (The SPEAKER lets you go. But then...)|(You feel her clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
-(SPEAKER가 당신을 가도록 합니다. 하지만 그때...)|(당신은 그녀의 클립이 뒤에서 당신을 구속하는 것을 느낍니다!)|저기... 이제 당신의 행동을 관찰하겠습니다.
+(SPEAKER 가 당신을 가도록 합니다. 하지만 그때...)|(당신은 그녀의 클립이 뒤에서 당신을 구속하는 것을 느낍니다!)|저기... 이제 당신의 행동을 관찰하겠습니다.
 
 Um, sure?
 음, 그래?
@@ -13525,25 +13489,25 @@ I don't have time for this. (PERCENT chance to avoid)
 
 
 (The SPEAKER swings an imaginary sword around)|En guar- Oh, you're unarmored!|Do you want to borrow some of mine?
-(SPEAKER가 상상의 검을 휘두른다)|En guar- 오, 당신은 갑옷을 입지 않았군요!|내 것을 좀 빌릴래요?
+(SPEAKER 가 상상의 검을 휘두른다)|En guar- 오, 당신은 갑옷을 입지 않았군요!|내 것을 좀 빌릴래요?
 (The SPEAKER holds up a RESTRAINT)|I found this near an old suit of armor.|I think it's a helmet or something...
-(SPEAKER가 RESTTRAINT를 들어 올린다)|이것은 낡은 갑옷 근처에서 찾았습니다.|투구 같은 것 같은데...
+(SPEAKER 가 RESTTRAINT를 들어 올린다)|이것은 낡은 갑옷 근처에서 찾았습니다.|투구 같은 것 같은데...
 (The SPEAKER winks and locks it on)|I feel much safer already~
-(스피커가 윙크하고 잠급니다)|이제 훨씬 안전해진 것 같아요~
+(SPEAKER 가 윙크하고 잠급니다)|이제 훨씬 안전해진 것 같아요~
 (The SPEAKER pouts)|Aww, spoilsport!|(She returns to fighting her imaginary enemies)
-(스피커가 삐죽거린다)|아, 망할 짓이야!|(그녀는 상상의 적과 싸우기 위해 돌아간다)
+(SPEAKER 가 삐죽거린다)|아, 망할 짓이야!|(그녀는 상상의 적과 싸우기 위해 돌아간다)
 (The SPEAKER shrugs)|Your loss~
-(스피커가 어깨를 으쓱한다)|당신의 패배~
+(SPEAKER 가 어깨를 으쓱한다)|당신의 패배~
 (The SPEAKER grins deviously)|So? It might help...|(The SPEAKER dives at you suddenly!)
-(스피커가 사악하게 웃는다)|그래서? 도움이 될지도...|(스피커가 갑자기 당신에게 뛰어든다!)
+(SPEAKER 가 사악하게 웃는다)|그래서? 도움이 될지도...|(SPEAKER 가 갑자기 당신에게 뛰어든다!)
 (The SPEAKER giggles)|Close enough, right?|Come on, there's enemies to fight!
-(스피커 낄낄거림)|충분히 가깝지, 그렇지?|자, 싸워야 할 적들이 있다!
+(SPEAKER  낄낄거림)|충분히 가깝지, 그렇지?|자, 싸워야 할 적들이 있다!
 (The SPEAKER trips over the floor)|AHHHHH!|Maybe I need more protection...
-(스피커가 바닥을 넘어간다)|아아아아아!|보호가 더 필요한 것 같은데...
+(SPEAKER 가 바닥을 넘어간다)|아아아아아!|보호가 더 필요한 것 같은데...
 (The SPEAKER locks it in place quickly)|There, all set for battle now!|(The SPEAKER giggles, cheekily winking at you)
-(SPEAKER가 재빨리 제자리에 고정)|저기, 이제 전투 준비가 모두 끝났습니다!|(SPEAKER가 낄낄거리며 당신에게 건방진 윙크를 합니다)
+(SPEAKER 가 재빨리 제자리에 고정)|저기, 이제 전투 준비가 모두 끝났습니다!|(SPEAKER 가 낄낄거리며 당신에게 건방진 윙크를 합니다)
 (The SPEAKER tightly fastens the muzzle on)|Safe and secure~|(You whimper as the SPEAKER spanks you goodbye)
-(SPEAKER가 총구를 단단히 조입니다)|안전하고 안전합니다~|(SPEAKER가 당신에게 작별인사를 할 때 당신은 훌쩍거립니다)
+(SPEAKER 가 총구를 단단히 조입니다)|안전하고 안전합니다~|(SPEAKER 가 당신에게 작별인사를 할 때 당신은 훌쩍거립니다)
 
 Extra defense can't hurt...
 추가 방어력은 아프지 않아...
@@ -13575,23 +13539,23 @@ Well, it might...
 
 
 (A smirking SPEAKER bumps into you)|So, you're with us now, huh?|I think you need a welcome gift.
-(미소 짓는 SPEAKER가 당신에게 부딪친다)|그래서, 이제 우리와 함께 있군요, 응?|환영 선물이 필요한 것 같아요.
+(미소 짓는 SPEAKER 가 당신에게 부딪친다)|그래서, 이제 우리와 함께 있군요, 응?|환영 선물이 필요한 것 같아요.
 Mmhmm, a gift~|(The SPEAKER leans forward to whisper in your ear)|Is it cold in here, or is it just you?
-으음, 선물~|(스피커가 몸을 앞으로 숙여 귀에 대고 속삭인다)|여기가 추운가요, 아니면 당신만 그런가요?
+으음, 선물~|(SPEAKER 가 몸을 앞으로 숙여 귀에 대고 속삭인다)|여기가 추운가요, 아니면 당신만 그런가요?
 (You shiver as everything gets colder)|(RESTRAINT forms around you!)|(The SPEAKER blows you a kiss and giggles)
-(모든 것이 추워지면서 몸이 떨립니다.)|(RESTRAINT가 주변에 형성됩니다!)|(스피커가 키스를 날리며 낄낄거립니다.)
+(모든 것이 추워지면서 몸이 떨립니다.)|(RESTRAINT가 주변에 형성됩니다!)|(SPEAKER 가 키스를 날리며 낄낄거립니다.)
 (The SPEAKER thinks for a moment)|I really wanted to try this too...|(Sighing, the SPEAKER walks away)
-(스피커가 잠시 생각하다)|나도 이거 해보고 싶었어...|(한숨, 스피커가 가버린다)
+(SPEAKER 가 잠시 생각하다)|나도 이거 해보고 싶었어...|(한숨, SPEAKER 가 가버린다)
 (The SPEAKER scowls)|How boring.
-(스피커가 얼굴을 찌푸린다)|얼마나 지루한가.
+(SPEAKER 가 얼굴을 찌푸린다)|얼마나 지루한가.
 (The SPEAKER laughs at your protest)|It's so much fun though~|(You feel the temperature drop suddenly)
 (당신의 항의에 화자가 웃는다)|그래도 너무 재미있다~|(갑자기 온도가 떨어지는 걸 느낀다)
 (The SPEAKER thinks for a moment)|Well, I want to try this anyway~|(You feel the temperature drop suddenly)
-(스피커가 잠시 생각하다)|글쎄, 그래도 해보고 싶어~|(갑자기 온도가 떨어지는 느낌이 든다)
+(SPEAKER 가 잠시 생각하다)|글쎄, 그래도 해보고 싶어~|(갑자기 온도가 떨어지는 느낌이 든다)
 (The temperature returns to normal)|(The SPEAKER seems surprised)|Hmm, that wasn't meant to happen.
-(온도가 정상으로 돌아온다)|(스피커가 놀란 듯하다)|흠, 그럴 리가 없군.
+(온도가 정상으로 돌아온다)|(SPEAKER 가 놀란 듯하다)|흠, 그럴 리가 없군.
 (RESTRAINT solidifies on you as the SPEAKER grins)|It worked! I did it!|Thanks for your, uh, help~
-(RESTRAINT가 당신에게 굳어지고 스피커가 웃는다)|성공했습니다! 해냈습니다!|도와주셔서 감사합니다~
+(RESTRAINT가 당신에게 굳어지고 SPEAKER 가 웃는다)|성공했습니다! 해냈습니다!|도와주셔서 감사합니다~
 (RESTRAINT solidifies on you as the SPEAKER smiles)|Yes! Finally! How's that feel?|(The SPEAKER admires your restraints)
 (화자가 미소를 지을 때 자제력이 굳어짐)|네! 드디어! 기분이 어때요?|(화자님이 자제력에 감탄합니다)
 
@@ -13625,25 +13589,25 @@ Ah! T-That's freezing! (PERCENT chance to avoid)
 
 
 (A robotic SPEAKER approaches)|QUERY: Good girl detected:|Restraint desired?
-(로봇 스피커가 접근함)|질문: 착한 여자 감지:|제지 필요?
+(로봇 SPEAKER 가 접근함)|질문: 착한 여자 감지:|제지 필요?
 (The SPEAKER beeps and whirrs)|SPEAKER will add RESTRAINT.|Acceptable?
-(SPEAKER가 삐 소리를 내며 윙윙거린다)|SPEAKER가 RESTRAINT를 추가합니다.|Acceptable?
+(SPEAKER 가 삐 소리를 내며 윙윙거린다)|SPEAKER 가 RESTRAINT를 추가합니다.|Acceptable?
 (The SPEAKER spins around you, releasing tape)|RESTRAINT dispensed.|Have a nice day.
-(SPEAKER가 주위를 돌며 테이프를 뗀다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
+(SPEAKER 가 주위를 돌며 테이프를 뗀다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
 (The SPEAKER buzzes)|Understood. Proceding back to duty.
-(스피커가 윙윙거린다)|알았다. 임무로 돌아가는 중.
+(SPEAKER 가 윙윙거린다)|알았다. 임무로 돌아가는 중.
 (The SPEAKER clicks and beeps)|Rejection noted.|SPEAKER will return to patrol.
-(SPEAKER가 찰칵 소리를 내며 삐 소리를 냄)|거절이 확인되었습니다.|SPEAKER가 다시 순찰할 것입니다.
+(SPEAKER 가 찰칵 소리를 내며 삐 소리를 냄)|거절이 확인되었습니다.|SPEAKER 가 다시 순찰할 것입니다.
 (The SPEAKER buzzes)|ERROR: Contradiction in answer.|STATEMENT: SPEAKER will add RESTRAINT.
-(스피커가 윙윙거림)|오류: 답변에 모순이 있습니다.|스피커가 제한을 추가할 것입니다.
+(SPEAKER 가 윙윙거림)|오류: 답변에 모순이 있습니다.|SPEAKER 가 제한을 추가할 것입니다.
 ERROR: Acceptance expected.|STATEMENT: SPEAKER will add RESTRAINT.
-오류: 수락이 예상됩니다.|문: 스피커가 제한을 추가합니다.
+오류: 수락이 예상됩니다.|문: SPEAKER 가 제한을 추가합니다.
 (The SPEAKER makes a whirring noise)|ERROR: SPEAKER out of tape.|Returning to routine.
-(SPEAKER가 윙윙거리는 소리를 냄)|오류: SPEAKER가 테이프에서 벗어났습니다.|루틴으로 돌아가고 있습니다.
+(SPEAKER 가 윙윙거리는 소리를 냄)|오류: SPEAKER 가 테이프에서 벗어났습니다.|루틴으로 돌아가고 있습니다.
 (The SPEAKER spins around you, releasing tape)|RESTRAINT dispensed.|Have a nice day.
-(SPEAKER가 주위를 돌며 테이프를 뗀다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
+(SPEAKER 가 주위를 돌며 테이프를 뗀다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
 (The SPEAKER launches tape which catches you as you run)|RESTRAINT dispensed.|Have a nice day.
-(스피커가 당신이 달리는 동안 당신을 붙잡는 테이프를 발사합니다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
+(SPEAKER 가 당신이 달리는 동안 당신을 붙잡는 테이프를 발사합니다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
 
 Uh, affirmative?
 어, 긍정?
@@ -13675,25 +13639,25 @@ Go away robot! (PERCENT chance to avoid)
 
 
 (A robotic SPEAKER approaches)|QUERY: Good girl detected:|Restraint desired?
-(로봇 스피커가 접근함)|질문: 착한 여자 감지:|제지 필요?
+(로봇 SPEAKER 가 접근함)|질문: 착한 여자 감지:|제지 필요?
 (The SPEAKER beeps and whirrs)|SPEAKER will add RESTRAINT.|Acceptable?
-(SPEAKER가 삐 소리를 내며 윙윙거린다)|SPEAKER가 RESTRAINT를 추가합니다.|Acceptable?
+(SPEAKER 가 삐 소리를 내며 윙윙거린다)|SPEAKER 가 RESTRAINT를 추가합니다.|Acceptable?
 (The SPEAKER shoots cables at you)|RESTRAINT dispensed.|Have a nice day.
-(스피커가 당신에게 케이블을 쏜다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
+(SPEAKER 가 당신에게 케이블을 쏜다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
 (The SPEAKER buzzes)|Understood. Proceding back to duty.
-(스피커가 윙윙거린다)|알았다. 임무로 돌아가는 중.
+(SPEAKER 가 윙윙거린다)|알았다. 임무로 돌아가는 중.
 (The SPEAKER clicks and beeps)|Rejection noted.|SPEAKER will return to patrol.
-(SPEAKER가 찰칵 소리를 내며 삐 소리를 냄)|거절이 확인되었습니다.|SPEAKER가 다시 순찰할 것입니다.
+(SPEAKER 가 찰칵 소리를 내며 삐 소리를 냄)|거절이 확인되었습니다.|SPEAKER 가 다시 순찰할 것입니다.
 (The SPEAKER buzzes)|ERROR: Contradiction in answer.|STATEMENT: SPEAKER will add RESTRAINT.
-(스피커가 윙윙거림)|오류: 답변에 모순이 있습니다.|스피커가 제한을 추가할 것입니다.
+(SPEAKER 가 윙윙거림)|오류: 답변에 모순이 있습니다.|SPEAKER 가 제한을 추가할 것입니다.
 ERROR: Acceptance expected.|STATEMENT: SPEAKER will add RESTRAINT.
-오류: 수락이 예상됩니다.|문: 스피커가 제한을 추가합니다.
+오류: 수락이 예상됩니다.|문: SPEAKER 가 제한을 추가합니다.
 (The SPEAKER makes a whirring noise)|ERROR: SPEAKER cable jammed.|Returning to routine.
 (SPEAKER에서 윙윙거리는 소리가 납니다.)|오류: SPEAKER 케이블이 걸렸습니다.|루틴으로 돌아가고 있습니다.
 (The SPEAKER shoots cables at you)|RESTRAINT dispensed.|Have a nice day.
-(스피커가 당신에게 케이블을 쏜다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
+(SPEAKER 가 당신에게 케이블을 쏜다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
 (The SPEAKER shoots cables at you)|RESTRAINT dispensed.|Have a nice day.
-(스피커가 당신에게 케이블을 쏜다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
+(SPEAKER 가 당신에게 케이블을 쏜다)|RESTRAINT가 해제되었습니다.|좋은 하루 되세요.
 
 Uh, affirmative?
 어, 긍정?
@@ -13725,25 +13689,25 @@ Go away robot! (PERCENT chance to avoid)
 
 
 (A happy SPEAKER looks at you)|Hey there cutie~|Want to try some scarf bondage?
-(행복한 SPEAKER가 당신을 바라본다)|저기 귀염둥이~|스카프 속박을 해볼래?
+(행복한 SPEAKER 가 당신을 바라본다)|저기 귀염둥이~|스카프 속박을 해볼래?
 (The SPEAKER holds up some scarves)|If you want to try, I've got a few here.|I could give you a RESTRAINT?
-(스피커가 스카프 몇 개를 들고 있다)|해 보고 싶으시면 여기 몇 개 있습니다.|제지해 드릴까요?
+(SPEAKER 가 스카프 몇 개를 들고 있다)|해 보고 싶으시면 여기 몇 개 있습니다.|제지해 드릴까요?
 (The SPEAKER smiles gently at you as she ties)|I love the silky feeling~|(The SPEAKER tightens all her knots)
-(스피커가 매듭을 지으며 부드럽게 미소짓는다)|매끈한 느낌이 좋아~|(스피커가 매듭을 조여준다)
+(SPEAKER 가 매듭을 지으며 부드럽게 미소짓는다)|매끈한 느낌이 좋아~|(SPEAKER 가 매듭을 조여준다)
 (The SPEAKER looks away and nods)|Well... maybe next time.
 (발표자가 시선을 돌리고 고개를 끄덕인다)|글쎄... 다음 기회에.
 (The SPEAKER shuffles awkwardly)|Oh... well...|Come back if you change your mind~
-(스피커가 어색하게 뒤섞인다)|아...그럼...|마음이 바뀌면 다시 오세요~
+(SPEAKER 가 어색하게 뒤섞인다)|아...그럼...|마음이 바뀌면 다시 오세요~
 (The SPEAKER scowls)|Hey, don't back out!|I promise I'll make it comfortable!
-(스피커가 찡그린다)|이봐, 물러서지 마!|편안하게 해줄게 약속할게!
+(SPEAKER 가 찡그린다)|이봐, 물러서지 마!|편안하게 해줄게 약속할게!
 (The SPEAKER frowns)|Too bad, I want to tie someone!
 (화자가 눈살을 찌푸린다)|안타깝지만, 누군가를 묶고 싶어요!
 (The SPEAKER drops her scarves)|Aww, really?|I'll go find someone else then...
-(SPEAKER가 스카프를 떨어뜨린다)|아, 정말?|그럼 다른 사람을 찾으러 갈게...
+(SPEAKER 가 스카프를 떨어뜨린다)|아, 정말?|그럼 다른 사람을 찾으러 갈게...
 (The SPEAKER beams a smile)|Yay, thank you!|Feels nice, right?
-(스피커가 미소를 짓는다)|예, 감사합니다!|기분이 좋죠?
+(SPEAKER 가 미소를 짓는다)|예, 감사합니다!|기분이 좋죠?
 (The SPEAKER tosses a scarf around you like a lasso)|Not so fast! You cannot escape the fluff!
-(스피커가 올가미처럼 네 주위에 스카프를 던진다)|너무 빠르지 않아! 보풀에서 벗어날 수 없어!
+(SPEAKER 가 올가미처럼 네 주위에 스카프를 던진다)|너무 빠르지 않아! 보풀에서 벗어날 수 없어!
 
 Sounds good!
 좋아요!
@@ -13775,25 +13739,25 @@ Hey! Stop! (PERCENT chance to avoid)
 
 
 (A messy looking SPEAKER turns to you)|Hmm, curious. Very curious.|Can you help me with an experiment?
-(어지러워 보이는 SPEAKER가 당신에게 돌아섭니다)|음, 궁금하네요. 매우 궁금하네요.|실험을 도와주실 수 있나요?
+(어지러워 보이는 SPEAKER 가 당신에게 돌아섭니다)|음, 궁금하네요. 매우 궁금하네요.|실험을 도와주실 수 있나요?
 (The SPEAKER pulls out a flask)|I isolated some slime, but it's inert.|Would you let me spill some on you?
-(스피커가 플라스크를 꺼낸다.)|점액을 분리했는데 활성이 없어.|당신에게 좀 흘려줄래?
+(SPEAKER 가 플라스크를 꺼낸다.)|점액을 분리했는데 활성이 없어.|당신에게 좀 흘려줄래?
 (The SPEAKER tips out the entire flask)|Aha! It's growing again! Fascinating.|(Sticky RESTRAINT clings to you)
-(스피커가 플라스크 전체를 기울인다)|아하! 다시 커지고 있다! 신기하다.|(끈적끈적한 구속이 달라붙는다)
+(SPEAKER 가 플라스크 전체를 기울인다)|아하! 다시 커지고 있다! 신기하다.|(끈적끈적한 구속이 달라붙는다)
 (The SPEAKER tuts disapprovingly)|Not one for chemistry, eh?
-(스피커가 못마땅하게 혀를 내민다)|화학은 아니죠?
+(SPEAKER 가 못마땅하게 혀를 내민다)|화학은 아니죠?
 (The SPEAKER sighs)|So hard to find good help out here...
 (화자 한숨)|여기서 좋은 도움을 찾기가 너무 힘들어...
 (The SPEAKER glares at you)|You've got no sense of adventure!|For science!
-(스피커가 당신을 노려본다)|당신은 모험 감각이 없어요!|과학을 위해!
+(SPEAKER 가 당신을 노려본다)|당신은 모험 감각이 없어요!|과학을 위해!
 Ah, but it'll be quick!|(The SPEAKER begins tipping the flask)|See? It's already moving toward you!
-아, 하지만 빨리 될거야!|(스피커가 플라스크를 기울이기 시작한다)|봐? 이미 너를 향해 움직이고 있어!
+아, 하지만 빨리 될거야!|(SPEAKER 가 플라스크를 기울이기 시작한다)|봐? 이미 너를 향해 움직이고 있어!
 (The SPEAKER tosses the slime on you)|(The slime flops off limply)|Ah. Back to the drawing board.
-(스피커가 당신에게 슬라임을 던집니다.)|(슬라임이 절뚝거리며 떨어집니다.)|아. 다시 제도판으로 돌아갑니다.
+(SPEAKER 가 당신에게 슬라임을 던집니다.)|(슬라임이 절뚝거리며 떨어집니다.)|아. 다시 제도판으로 돌아갑니다.
 (The SPEAKER pours the slime onto you)|That's the spirit girl!|(Sticky RESTRAINT clings to you)
-(SPEAKER가 당신에게 점액을 붓는다)|그건 정령 소녀야!|(끈적끈적한 구속이 당신에게 달라붙는다)
+(SPEAKER 가 당신에게 점액을 붓는다)|그건 정령 소녀야!|(끈적끈적한 구속이 당신에게 달라붙는다)
 (The SPEAKER tosses the slime on you)|Ha, look, it's alive!|(Sticky RESTRAINT clings to you)
-(스피커가 당신에게 점액을 던진다)|하, 봐, 살아있어!|(끈적끈적한 구속이 당신에게 달라붙는다)
+(SPEAKER 가 당신에게 점액을 던진다)|하, 봐, 살아있어!|(끈적끈적한 구속이 당신에게 달라붙는다)
 
 Sure.
 확신하는.
@@ -13818,32 +13782,32 @@ Okay, for science...
 (Giggle and nod)
 (낄낄거리며 끄덕인다)
 Ah! Don't you dare! (PERCENT chance to avoid)
-아! 감히 하지마! (피할 확률이 퍼센트)
+아! 감히 하지마! (피할 확률이 PERCENT)
 (Shake your head and whimper) (PERCENT chance to avoid)
 (고개를 흔들며 칭얼거림) (피할 확률이 PERCENT)
 
 
 
 (A SPEAKER whispers to you)|Ever wonder how wolfgirls feel?|Or why they're so obedient?
-(A SPEAKER가 당신에게 속삭임)|늑대소녀들이 어떻게 느끼는지 궁금한 적이 있나요?|아니면 그들이 왜 그렇게 순종적인지?
+(A SPEAKER 가 당신에게 속삭임)|늑대소녀들이 어떻게 느끼는지 궁금한 적이 있나요?|아니면 그들이 왜 그렇게 순종적인지?
 (The SPEAKER grins)|I've got a RESTRAINT here~|Wanna give it a try?
-(스피커가 웃는다)|여기에 제약이 있어요~|한 번 해볼래요?
+(SPEAKER 가 웃는다)|여기에 제약이 있어요~|한 번 해볼래요?
 (The SPEAKER puts on the RESTRAINT)|Perfect. Better behave now~|(The SPEAKER pats your butt)
-(스피커가 구속을 걸다)|완벽해. 이제 행동하는 게 나아~|(스피커가 엉덩이를 두드린다)
+(SPEAKER 가 구속을 걸다)|완벽해. 이제 행동하는 게 나아~|(SPEAKER 가 엉덩이를 두드린다)
 (The SPEAKER rolls her eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
-(스피커가 눈을 굴리며)|울프걸 본 적 있지?|아 뭐, 놀러 가~
+(SPEAKER 가 눈을 굴리며)|늑대소녀본 적 있지?|아 뭐, 놀러 가~
 (The SPEAKER nods glumly)|Not a fan?|Shame, I am~
-(스피커가 침울하게 고개를 끄덕인다)|팬이 아니야?|부끄럽지만 난~
+(SPEAKER 가 침울하게 고개를 끄덕인다)|팬이 아니야?|부끄럽지만 난~
 (The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained...
-(SPEAKER가 당신을 재빨리 붙잡는다)|오, 매우 엄격하다~|그리고 훈련을 받는 것이 좋다...
+(SPEAKER 가 당신을 재빨리 붙잡는다)|오, 매우 엄격하다~|그리고 훈련을 받는 것이 좋다...
 (The SPEAKER looks at you deviously)|You're going to wear this RESTRAINT,|if you want to or not~
-(스피커가 당신을 사악하게 바라본다)|당신은 이 구속을 입게 될 것이다|원하든 원하지 않든~
+(SPEAKER 가 당신을 사악하게 바라본다)|당신은 이 구속을 입게 될 것이다|원하든 원하지 않든~
 (The SPEAKER sulks)|Have it your way then.
-(스피커가 토라짐)|그럼 마음대로 하세요.
+(SPEAKER 가 토라짐)|그럼 마음대로 하세요.
 (The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good girl~
 (화자가 구속을 추가함)|(잠그기 전에 그녀가 모든 것을 조이는 것을 느낄 수 있습니다.)|잘했어~
 (The SPEAKER pushes you to the ground)|I'll make it extra tight for you~|(The RESTRAINT locks tightly onto you)
-(SPEAKER가 널 바닥으로 밀어붙인다)|내가 널 더 꽉 조일게~|(RESTRAINT가 널 단단히 조이네)
+(SPEAKER 가 널 바닥으로 밀어붙인다)|내가 널 더 꽉 조일게~|(RESTRAINT가 널 단단히 조이네)
 
 Maybe a little~
 조금~
@@ -13877,23 +13841,23 @@ I don't want to get stuck! (PERCENT chance to avoid)
 (A SPEAKER gracefully gestures to you)|So good to see a friendly face~|Care to see some elven goods?
 (화자가 우아하게 손짓한다)|친절한 얼굴을 보니 너무 반가워~|엘프 상품 좀 볼래?
 (The SPEAKER holds up a RESTRAINT)|These are some of our strictest.|Want to try?
-(스피커가 제지를 들고 있다)|이것들은 우리의 가장 엄격한 것 중 일부입니다.|시도하시겠습니까?
+(SPEAKER 가 제지를 들고 있다)|이것들은 우리의 가장 엄격한 것 중 일부입니다.|시도하시겠습니까?
 (The SPEAKER smiles sweetly)|Such a good girl~|(The RESTRAINT locks with a loud click)
-(스피커가 상냥하게 웃는다)|착한 여자야~|(큰 소리와 함께 RESTTRAINT가 잠긴다)
+(SPEAKER 가 상냥하게 웃는다)|착한 여자야~|(큰 소리와 함께 RESTTRAINT가 잠긴다)
 (The SPEAKER sagely nods)|As you wish~
-(스피커가 현명하게 고개를 끄덕인다)|원하는 대로~
+(SPEAKER 가 현명하게 고개를 끄덕인다)|원하는 대로~
 (The SPEAKER frowns briefly)|I understand~
-(스피커가 짧게 눈살을 찌푸리며)|알겠습니다~
+(SPEAKER 가 짧게 눈살을 찌푸리며)|알겠습니다~
 (The SPEAKER leans closer)|Then you can test their escapability!|(The SPEAKER dives towards you!)
-(스피커가 더 가까이 몸을 기울인다)|그러면 그들의 탈출 가능성을 테스트할 수 있습니다!|(스피커가 당신을 향해 뛰어듭니다!)
+(SPEAKER 가 더 가까이 몸을 기울인다)|그러면 그들의 탈출 가능성을 테스트할 수 있습니다!|(SPEAKER 가 당신을 향해 뛰어듭니다!)
 (The SPEAKER shifts her weight back)|I'm afraid I must insist.|(She's gripping a RESTRAINT)|(The SPEAKER dives towards you!)
-(스피커가 체중을 뒤로 이동)|장난을 쳐야겠네요.|(레스트레인트를 움켜쥐고 있습니다)|(스피커가 당신을 향해 뛰어듭니다!)
+(SPEAKER 가 체중을 뒤로 이동)|장난을 쳐야겠네요.|(레스트레인트를 움켜쥐고 있습니다)|(SPEAKER 가 당신을 향해 뛰어듭니다!)
 (The SPEAKER rolls past harmlessly)|Oh! So fast~
-(스피커가 무해하게 지나간다)|오! 너무 빨라~
+(SPEAKER 가 무해하게 지나간다)|오! 너무 빨라~
 (The SPEAKER snaps the RESTRAINT on)|There, much better.|Now squirm for me cutie~
-(스피커가 구속 장치를 찰칵)|거기, 훨씬 나아졌어.|이제 나를 위해 꿈틀거려 귀염둥이~
+(SPEAKER 가 구속 장치를 찰칵)|거기, 훨씬 나아졌어.|이제 나를 위해 꿈틀거려 귀염둥이~
 (The SPEAKER trips you over)|(Before you can move, the RESTRAINT closes firmly)|Strict, isn't it?~
-(SPEAKER가 당신을 넘어뜨린다)|(당신이 움직이기도 전에 RESTTRAINT가 단단히 닫힙니다.)|엄격하지 않습니까?~
+(SPEAKER 가 당신을 넘어뜨린다)|(당신이 움직이기도 전에 RESTTRAINT가 단단히 닫힙니다.)|엄격하지 않습니까?~
 
 Of course!
 물론!
@@ -13927,21 +13891,21 @@ Stop! (PERCENT chance to avoid)
 (A SPEAKER plays with silvery rope)|Hmm, I need to get better with this.|Can I practice on you?
 (A SPEAKER play with silvery rope)|흠, 이걸 좀 더 잘해야겠어.|연습해도 될까?
 (The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~
-(SPEAKER가 행복하게 웃는다)|고마워요~|그럼 RESTRAINT로 묶을게요~
+(SPEAKER 가 행복하게 웃는다)|고마워요~|그럼 RESTRAINT로 묶을게요~
 (The SPEAKER binds you tightly)|(The rope is tight, and she's clearly and expert.)|Mmm, not too bad~
-(SPEAKER가 당신을 단단히 묶습니다.)|(로프가 팽팽하고 그녀는 분명히 전문가입니다.)|음, 나쁘지 않습니다~
+(SPEAKER 가 당신을 단단히 묶습니다.)|(로프가 팽팽하고 그녀는 분명히 전문가입니다.)|음, 나쁘지 않습니다~
 (The SPEAKER pouts indignantly)|Why say yes then?!|(The SPEAKER walks off grumbling)
-(스피커가 화를 내며 입을 삐죽거린다)|그럼 왜 예라고 할까요?!|(스피커가 투덜거리며 걸어나간다)
+(SPEAKER 가 화를 내며 입을 삐죽거린다)|그럼 왜 예라고 할까요?!|(SPEAKER 가 투덜거리며 걸어나간다)
 (The SPEAKER sighs)|Very well then~
-(스피커가 한숨을 쉬며)|그럼 좋아요~
+(SPEAKER 가 한숨을 쉬며)|그럼 좋아요~
 (The SPEAKER pouts indignantly)|Oh no, you don't get out that easy.|You said you'd help!
-(스피커가 화를 내며 입을 삐죽 내밀었다)|오 이런, 그렇게 쉽게 빠져나오지 못하는군.|도와주겠다고 했잖아!
+(SPEAKER 가 화를 내며 입을 삐죽 내밀었다)|오 이런, 그렇게 쉽게 빠져나오지 못하는군.|도와주겠다고 했잖아!
 (The SPEAKER smirks)|Ooh, a chance to practice against resistance~|I can't pass that up!
-(스피커가 웃는다)|오, 저항에 맞서 연습할 기회야~|그건 그냥 지나칠 수 없어!
+(SPEAKER 가 웃는다)|오, 저항에 맞서 연습할 기회야~|그건 그냥 지나칠 수 없어!
 (The SPEAKER can't keep the knots tight)|(Eventually, she gives up)|S-Stupid human...
 (SPEAKER는 매듭을 단단히 묶을 수 없습니다)|(결국 그녀는 포기합니다)|S-멍청한 인간...
 (The SPEAKER strictly ties you up)|(You can feel she's done this many times)|(She smirks at you as she departs)
-(SPEAKER가 당신을 엄격하게 묶습니다)|(그녀가 이것을 여러 번 했다는 것을 느낄 수 있습니다)|(그녀는 떠날 때 당신에게 히죽 웃습니다)
+(SPEAKER 가 당신을 엄격하게 묶습니다)|(그녀가 이것을 여러 번 했다는 것을 느낄 수 있습니다)|(그녀는 떠날 때 당신에게 히죽 웃습니다)
 (The SPEAKER strictly ties you up)|(There's no slack anywhere!)|(She makes a face at you as she leaves)
 (SPEAKER는 당신을 엄격하게 묶습니다)|(느슨한 곳이 없습니다!)|(떠나면서 당신에게 얼굴을 찌푸립니다)
 
@@ -13975,25 +13939,25 @@ I'll play along then~
 
 
 (The SPEAKER quickly motions to you)|Hey! Over here!| I got something to show you!
-(스피커가 재빨리 당신을 가리킨다)|이봐! 여기!| 보여줄 게 ​​있어!
+(SPEAKER 가 재빨리 당신을 가리킨다)|이봐! 여기!| 보여줄 게 ​​있어!
 (The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in her hands)
-(스피커 웃음)|너 이거 입게 될거야~|(억제장치가 그녀의 손에 있다)
+(SPEAKER  웃음)|너 이거 입게 될거야~|(억제장치가 그녀의 손에 있다)
 (The SPEAKER looks surprised)|Oh, uh, sure!|(They quickly add the RESTRAINT)
 (발표자가 놀란 표정을 짓는다)|오, 어, 그렇군요!|(재빨리 구속을 추가합니다)
 (The SPEAKER grins sneakily)|I thought you might say that~|But- ahh!|(They drop the item and you slip away)
-(스피커가 살금살금 웃는다)|네가 그렇게 말할 줄 알았는데~|하지만- 아!|(그들이 물건을 떨어뜨리고 너는 미끄러져 나간다)
+(SPEAKER 가 살금살금 웃는다)|네가 그렇게 말할 줄 알았는데~|하지만- 아!|(그들이 물건을 떨어뜨리고 너는 미끄러져 나간다)
 (The SPEAKER looks angry)|Hey! HEY! I'm talking to-|Ah, forget it.
-(스피커가 화난 듯)|이봐! 이봐! 지금 얘기하고 있는데-|아, 잊어버려.
+(SPEAKER 가 화난 듯)|이봐! 이봐! 지금 얘기하고 있는데-|아, 잊어버려.
 (The SPEAKER grins sneakily)|I thought you might say that~|But it wasn't a choice...
-(스피커가 살금살금 웃는다)|그렇게 말할 줄 알았는데~|선택이 아니었어...
+(SPEAKER 가 살금살금 웃는다)|그렇게 말할 줄 알았는데~|선택이 아니었어...
 (The SPEAKER follows you)|Not so fast there~|(She blocks your path)
-(SPEAKER가 당신을 따라옵니다)|그렇게 빠르지 않습니다~|(그녀는 당신의 길을 막습니다)
+(SPEAKER 가 당신을 따라옵니다)|그렇게 빠르지 않습니다~|(그녀는 당신의 길을 막습니다)
 (The SPEAKER fumbles with the RESTRAINT)|C-Come on, open-|(You quickly walk away)
-(스피커가 구속 장치를 더듬으며)|C-어서, 열어-|(빨리 걸어가세요)
+(SPEAKER 가 구속 장치를 더듬으며)|C-어서, 열어-|(빨리 걸어가세요)
 (The SPEAKER adds the RESTRAINT)|Good luck with that one~|(She sounds like she's gloating...)
 (화자가 RESTTRAINT를 추가함)|행운을 빌어요~|(화난 것처럼 들리는데...)
 (The SPEAKER roughly forces you down)|(Pushing your head down, the RESTRAINT slides on)|(The SPEAKER tugs your hair, then walks away)
-(SPEAKER가 대략적으로 강제로 아래로 내리게 함)|(머리를 내리면 RESTTRAINT가 미끄러짐)|(SPEAKER가 머리카락을 잡아당긴 다음 걸어갑니다)
+(SPEAKER 가 대략적으로 강제로 아래로 내리게 함)|(머리를 내리면 RESTTRAINT가 미끄러짐)|(SPEAKER 가 머리카락을 잡아당긴 다음 걸어갑니다)
 
 (Walk over, curiously)
 (이상하게 걸어가)
@@ -14025,25 +13989,25 @@ Stop! (PERCENT chance to avoid)
 
 
 (The SPEAKER walks over)|You'd make a cute catgirl~|Want help becoming one?
-(스피커가 걸어온다)|귀엽게 캣걸을 만들 수 있겠지~|고양이 소녀가 되는 데 도움이 필요해?
+(SPEAKER 가 걸어온다)|귀엽게 캣걸을 만들 수 있겠지~|고양이 소녀가 되는 데 도움이 필요해?
 (The SPEAKER grins)|Here, I've got this RESTRAINT.|That'll help!
-(스피커가 웃는다)|여기에 구속 장치가 있습니다.|그게 도움이 될 거에요!
+(SPEAKER 가 웃는다)|여기에 구속 장치가 있습니다.|그게 도움이 될 거에요!
 (The SPEAKER gleefully comes closer)|(The RESTRAINT fits snugly)|So adorable!
-(스피커가 유쾌하게 다가온다)|(레스트레인트가 꼭 맞음)|너무 사랑스러워!
+(SPEAKER 가 유쾌하게 다가온다)|(레스트레인트가 꼭 맞음)|너무 사랑스러워!
 (The SPEAKER nods disappointed)|Fair enough~
-(스피커가 실망하며 고개를 끄덕인다)|괜찮아~
+(SPEAKER 가 실망하며 고개를 끄덕인다)|괜찮아~
 (The SPEAKER sighs)|Maybe another time~
-(스피커가 한숨을 쉬며)|다음 기회에~
+(SPEAKER 가 한숨을 쉬며)|다음 기회에~
 (The SPEAKER titters)|It's going on, kitty~
-(스피커가 큭큭대며)|잘 되고 있어, 고양이~
+(SPEAKER 가 큭큭대며)|잘 되고 있어, 고양이~
 (The SPEAKER giggles)|Let's see if you can get away then~|(You see a RESTRAINT in her hand)
 (화자 웃음)|그럼 도망칠 수 있는지 보자~|(그녀의 손에 구속 장치가 보인다)
 (The SPEAKER whimpers and drops it)|Owwww!|I hit my knee!
-(스피커가 낑낑거리며 떨어뜨린다)|오오오!|무릎을 쳤어요!
+(SPEAKER 가 낑낑거리며 떨어뜨린다)|오오오!|무릎을 쳤어요!
 (The SPEAKER wiggles happily)|Oh, you're so cute!|Enjoy it~
-(스피커가 행복하게 꿈틀거림)|오, 너무 귀여워요!|즐기세요~
+(SPEAKER 가 행복하게 꿈틀거림)|오, 너무 귀여워요!|즐기세요~
 (The SPEAKER traps you)|(You feel the RESTRAINT being forced on)|Meow~
-(SPEAKER가 당신을 가둔다)|(당신은 구속이 강제되는 것을 느낀다)|야옹~
+(SPEAKER 가 당신을 가둔다)|(당신은 구속이 강제되는 것을 느낀다)|야옹~
 
 Sure!
 확신하는!
@@ -14068,32 +14032,32 @@ Y-Yes miss~
 (Moan and squirm)
 (신음하며 몸부림친다)
 (Duck out the way) (PERCENT chance to avoid)
-(길 비켜) (피할 확률 퍼센트)
+(길 비켜) (피할 확률 PERCENT)
 (Duck out the way) (PERCENT chance to avoid)
-(길 비켜) (피할 확률 퍼센트)
+(길 비켜) (피할 확률 PERCENT)
 
 
 
 (A SPEAKER winks at you)|You look like a girl who likes feeling|like a prisoner, am I right?
 (A SPEAKER 윙크)|죄수 같은 느낌을 좋아하는 여자 같아 보여요, 맞죠?
 (The SPEAKER nods happily)|I knew it! Well, it's your lucky day.|I've got some RESTRAINT for you~
-(스피커가 행복하게 고개를 끄덕인다)|알고 있었어! 자, 오늘은 너의 행운의 날이야.|너를 위한 구속이 있어~
+(SPEAKER 가 행복하게 고개를 끄덕인다)|알고 있었어! 자, 오늘은 너의 행운의 날이야.|너를 위한 구속이 있어~
 (The SPEAKER spins you around)|(You hear the cold metal click shut)|Nice and submissive~
-(SPEAKER가 당신을 빙글빙글 돌립니다)|(차가운 금속이 닫히는 소리가 들립니다)|착하고 순종적입니다~
+(SPEAKER 가 당신을 빙글빙글 돌립니다)|(차가운 금속이 닫히는 소리가 들립니다)|착하고 순종적입니다~
 (The SPEAKER shrugs)|It's not for everyone, I guess~
-(스피커가 어깨를 으쓱한다)|모두를 위한 것은 아닌 것 같아요~
+(SPEAKER 가 어깨를 으쓱한다)|모두를 위한 것은 아닌 것 같아요~
 (The SPEAKER frowns)|Really?|I was so sure...
-(스피커가 눈살을 찌푸린다)|정말요?|확실히...
+(SPEAKER 가 눈살을 찌푸린다)|정말요?|확실히...
 (The SPEAKER grins maliciously)|I like seeing prisoners though~|And you're right here...
-(스피커가 악의적으로 웃는다)|그래도 죄수를 보는 건 좋아~|그리고 당신은 바로 여기...
+(SPEAKER 가 악의적으로 웃는다)|그래도 죄수를 보는 건 좋아~|그리고 당신은 바로 여기...
 (The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in her hand)
-(스피커 웃음)|어차피 내가 하나 만들어줄게~|(그녀의 손에 있는 구속이 보인다)
+(SPEAKER  웃음)|어차피 내가 하나 만들어줄게~|(그녀의 손에 있는 구속이 보인다)
 (The SPEAKER gulps)|M-Maybe I won't then!
-(스피커가 침을 꿀꺽 삼킨다)|M-그럼 안 할지도 몰라!
+(SPEAKER 가 침을 꿀꺽 삼킨다)|M-그럼 안 할지도 몰라!
 (The SPEAKER adds the RESTRAINT)|You're blushing dear~|She doth protest too much?
-(스피커가 제지 추가)|얼굴이 빨개졌구나~|그녀가 너무 항의하는 거지?
+(SPEAKER 가 제지 추가)|얼굴이 빨개졌구나~|그녀가 너무 항의하는 거지?
 (The SPEAKER giggles as she catches you and slaps on the cuffs)|No so fast, dear~
-(스피커가 당신을 붙잡고 수갑을 찰싹 때리며 낄낄거립니다.)|그렇게 빨리는 안 돼요, 여보~
+(SPEAKER 가 당신을 붙잡고 수갑을 찰싹 때리며 낄낄거립니다.)|그렇게 빨리는 안 돼요, 여보~
 
 Maybe a bit~
 조금~
@@ -14125,25 +14089,25 @@ Don't even try. (PERCENT chance to avoid)
 
 
 (A SPEAKER is looking at something)|So comfy... but how?|Hey, you! Come see this!
-(A SPEAKER가 무언가를 보고 있다)|너무 편안해... 근데 어때?|이봐, 너! 이거 보러와!
+(A SPEAKER 가 무언가를 보고 있다)|너무 편안해... 근데 어때?|이봐, 너! 이거 보러와!
 (The SPEAKER holds up a RESTRAINT)|It's so soft, but so strict~|Want to give it a try?
-(SPEAKER가 RESTRAINT를 들어 올린다)|너무 부드럽지만 너무 엄격해~|한번 해볼까?
+(SPEAKER 가 RESTRAINT를 들어 올린다)|너무 부드럽지만 너무 엄격해~|한번 해볼까?
 (The SPEAKER quickly fastens it on)|(A wave of comfort passes over you)|(The SPEAKER looks on enviously)
-(스피커가 재빨리 고정한다)|(안락의 물결이 당신을 지나간다)|(스피커가 부러워하며 바라본다)
+(SPEAKER 가 재빨리 고정한다)|(안락의 물결이 당신을 지나간다)|(SPEAKER 가 부러워하며 바라본다)
 (The SPEAKER shrugs)|Eh, alright then.
-(스피커가 어깨를 으쓱한다)|어, 그럼.
+(SPEAKER 가 어깨를 으쓱한다)|어, 그럼.
 (The SPEAKER shrugs)|Up to you.
-(스피커가 어깨를 으쓱한다)|당신에게 달렸습니다.
+(SPEAKER 가 어깨를 으쓱한다)|당신에게 달렸습니다.
 (The SPEAKER frowns)|But it's so comfy!|Here, look, I'll show you...
-(스피커가 눈살을 찌푸린다)|하지만 너무 편해요!|자, 보세요, 보여드릴께요...
+(SPEAKER 가 눈살을 찌푸린다)|하지만 너무 편해요!|자, 보세요, 보여드릴께요...
 (The SPEAKER approaches)|Hey, see this RESTRAINT?|I'm going to put it on you~
-(스피커가 다가온다)|이봐, 이 RESTRAINT 보여?|붙일게~
+(SPEAKER 가 다가온다)|이봐, 이 RESTRAINT 보여?|붙일게~
 (The SPEAKER looks startled)|Oh! Uh, I guess you're right...
 (발표자가 놀란 듯)|오! 어, 당신 말이 맞는 것 같아요...
 (The RESTRAINT is buckled firmly in place)|See? Good, huh?|(You sink into the comforting feeling)
 (RESTRAINT가 단단히 고정되어 있습니다.)|보이죠? 좋죠?|(편안한 느낌에 빠져듭니다)
 (The SPEAKER ignores you)|(The RESTRAINT is buckled firmly in place)|(A wave of comfort passes over you)
-(SPEAKER가 당신을 무시함)|(억제 장치가 제자리에 단단히 고정됨)|(안락의 물결이 당신을 지나감)
+(SPEAKER 가 당신을 무시함)|(억제 장치가 제자리에 단단히 고정됨)|(안락의 물결이 당신을 지나감)
 
 (Approach)
 (접근하다)
@@ -14175,25 +14139,25 @@ It looks too strict! (PERCENT chance to avoid)
 
 
 (The SPEAKER brushes past hurriedly)|Careful girl!|Else I'll lock you away~
-(스피커가 황급히 지나간다)|조심해!|그렇지 않으면 널 가둘게~
+(SPEAKER 가 황급히 지나간다)|조심해!|그렇지 않으면 널 가둘게~
 (The SPEAKER looks at you intrigued)|Aren't you something...|How about wearing this RESTRAINT?
-(스피커가 당신을 흥미롭게 바라본다)|당신은 뭔가...|이 구속복을 입는 건 어때?
+(SPEAKER 가 당신을 흥미롭게 바라본다)|당신은 뭔가...|이 구속복을 입는 건 어때?
 (The SPEAKER grins and locks it on)|Maybe I should bump into you more~
-(스피커가 싱긋 웃으며 입을 다물었다)|좀 더 부딪혀야 할 것 같아요~
+(SPEAKER 가 싱긋 웃으며 입을 다물었다)|좀 더 부딪혀야 할 것 같아요~
 (The SPEAKER rolls her eyes)|Run along then girl~
-(스피커가 눈을 굴리며)|따라와 아가씨~
+(SPEAKER 가 눈을 굴리며)|따라와 아가씨~
 (The SPEAKER nods)|Didn't think so~|Oh, and, uh, sorry for the bump.
-(스피커 고개 끄덕임)|그렇게 생각하지 않았어~|아, 그리고, 어, 부딪쳐서 미안해.
+(SPEAKER  고개 끄덕임)|그렇게 생각하지 않았어~|아, 그리고, 어, 부딪쳐서 미안해.
 (The SPEAKER shakes her head)|You don't get off that lightly.|These are going on.
-(스피커가 고개를 젓는다)|그 말을 가볍게 할 수는 없습니다.|이런 일이 벌어지고 있습니다.
+(SPEAKER 가 고개를 젓는다)|그 말을 가볍게 할 수는 없습니다.|이런 일이 벌어지고 있습니다.
 (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(She holds up a RESTRAINT)
 (화자가 눈살을 찌푸린다)|제 생각에는 그래야 할 것 같아요.|당신은 다른 사람을 귀찮게 할 뿐입니다.|(그녀는 제지 장치를 들고 있습니다)
 (The SPEAKER sighs)|I'll let you off then.|Oh, and, uh, sorry for the bump.
-(스피커가 한숨을 쉬며)|그럼 놓아줄게.|아, 그리고, 어, 부딪쳐서 미안해.
+(SPEAKER 가 한숨을 쉬며)|그럼 놓아줄게.|아, 그리고, 어, 부딪쳐서 미안해.
 (The SPEAKER adds the RESTRAINT)|(As she's locking it, she giggles)|You're really cute actually~
 (화자가 구속을 추가함)|(잠그면서 낄낄거림)|너 진짜 귀엽다~
 (The SPEAKER stumbles and grimaces)|Ugh! Fine, you can go then.|D-Didn't want to see you tied anyway...
-(스피커가 비틀거리며 얼굴을 찡그린다)|으! 좋아, 그럼 가도 돼.|D-어차피 묶이는 걸 보고 싶지 않았어...
+(SPEAKER 가 비틀거리며 얼굴을 찡그린다)|으! 좋아, 그럼 가도 돼.|D-어차피 묶이는 걸 보고 싶지 않았어...
 
 That doesn't sound bad...
 나쁜 소리는 아닌데...
@@ -14225,25 +14189,25 @@ You ran into me! (PERCENT chance to avoid)
 
 
 (A SPEAKER gives you a small curtsy)|Good day.|Care to try part of our uniform?
-(A SPEAKER가 작게 퉁명스럽게 말함)|좋은 하루 되세요.|우리 유니폼 좀 입어보실래요?
+(A SPEAKER 가 작게 퉁명스럽게 말함)|좋은 하루 되세요.|우리 유니폼 좀 입어보실래요?
 (The SPEAKER looks content)|We can offer you this RESTRAINT.|It's a snug fit...
-(스피커가 만족해 보인다)|이 구속을 제공할 수 있습니다.|딱 맞네요...
+(SPEAKER 가 만족해 보인다)|이 구속을 제공할 수 있습니다.|딱 맞네요...
 (The SPEAKER buckles it strictly)|All maids wear this at sometime.|You'd fit right in!
-(SPEAKER가 엄격하게 버클을 채운다)|모든 메이드는 언젠가 이것을 입는다.|당신은 딱 맞을거야!
+(SPEAKER 가 엄격하게 버클을 채운다)|모든 메이드는 언젠가 이것을 입는다.|당신은 딱 맞을거야!
 (The SPEAKER frowns for a second)|Ah, I see.|As you were then.
-(스피커가 잠시 눈살을 찌푸리며)|아, 알겠습니다.|그때처럼.
+(SPEAKER 가 잠시 눈살을 찌푸리며)|아, 알겠습니다.|그때처럼.
 (The SPEAKER nods)|We hope to see you again nonetheless.
 (발표자 고개 끄덕임)|그럼에도 불구하고 다시 뵙기를 바랍니다.
 (The SPEAKER glares)|We urge you to reconsider.
-(스피커가 노려본다)|다시 생각해 보시기 바랍니다.
+(SPEAKER 가 노려본다)|다시 생각해 보시기 바랍니다.
 (The SPEAKER has a twinkle in her eye)|We will offer you this RESTRAINT.|You should accept.
-(스피커의 눈이 반짝인다)|우리는 당신에게 이 구속을 제안할 것입니다.|당신은 받아들여야 합니다.
+(SPEAKER 의 눈이 반짝인다)|우리는 당신에게 이 구속을 제안할 것입니다.|당신은 받아들여야 합니다.
 (The SPEAKER pulls an odd smile)|Very well.
 (화자가 묘한 미소를 지으며)|아주 좋아.
 (The SPEAKER smugly nods)|(With surprising speed, the RESTRAINT locks in place)|Excellent, a good fit.
-(스피커가 멋쩍게 고개를 끄덕인다)|(놀라운 속도로 RESTTRAINT가 제자리에 고정됨)|훌륭합니다. 잘 맞습니다.
+(SPEAKER 가 멋쩍게 고개를 끄덕인다)|(놀라운 속도로 RESTTRAINT가 제자리에 고정됨)|훌륭합니다. 잘 맞습니다.
 (The SPEAKER covers your hand with her mouth)|Shush, no more bad decisions.|(You feel her buckle the restraint strictly)
-(SPEAKER가 당신의 손을 입으로 가리고 있습니다.)|쉿, 더 이상 나쁜 결정은 하지 마세요.|(당신은 그녀가 구속을 엄격하게 조이는 것을 느낍니다)
+(SPEAKER 가 당신의 손을 입으로 가리고 있습니다.)|쉿, 더 이상 나쁜 결정은 하지 마세요.|(당신은 그녀가 구속을 엄격하게 조이는 것을 느낍니다)
 
 Yes please!
 예, 부탁합니다!
@@ -14275,25 +14239,25 @@ No way! (PERCENT chance to avoid)
 
 
 (The SPEAKER looks at you inquisitively)|(Wordlessly, they motion at your body)|(They seem to be asking about restraints)
-(SPEAKER가 당신을 의아하게 쳐다본다)|(말없이, 그들은 당신의 몸을 움직인다)|(그들은 구속에 대해 묻는 것 같다)
+(SPEAKER 가 당신을 의아하게 쳐다본다)|(말없이, 그들은 당신의 몸을 움직인다)|(그들은 구속에 대해 묻는 것 같다)
 (The SPEAKER nods understandingly)|(RESTRAINT appears in their hand)|(They tilt their head at you)
 (화자가 이해한다는 듯 고개를 끄덕임)|(RESTRAINT가 손에 나타남)|(그들은 당신에게 고개를 기울입니다)
 (The SPEAKER spins around you)|(You feel the oddly cold restraint lock in place)|(The SPEAKER nods and moves away)
-(스피커가 당신 주위를 돕니다)|(당신은 이상하게도 차가운 구속이 제자리에 고정되는 것을 느낍니다)|(스피커가 고개를 끄덕이며 멀어집니다)
+(SPEAKER 가 당신 주위를 돕니다)|(당신은 이상하게도 차가운 구속이 제자리에 고정되는 것을 느낍니다)|(SPEAKER 가 고개를 끄덕이며 멀어집니다)
 (The SPEAKER stares at you)|(They put away the RESTRAINT and leave)
-(스피커가 당신을 쳐다본다)|(그들은 구속을 치우고 떠납니다)
+(SPEAKER 가 당신을 쳐다본다)|(그들은 구속을 치우고 떠납니다)
 (The SPEAKER leaves you alone)
-(스피커가 널 내버려둔다)
+(SPEAKER 가 널 내버려둔다)
 (The SPEAKER seems to frown)|(RESTRAINT appears in their hand)|(They rapidly approach)
 (화자가 눈살을 찌푸리는 것 같다)|(RESTRAINT가 그들의 손에 나타난다)|(그들은 빠르게 다가온다)
 (The SPEAKER tilts their head)|(RESTRAINT appears in their hand)|(They come closer)
-(스피커가 고개를 기울인다)|(RESTRAINT가 그들의 손에 나타난다)|(그들이 다가온다)
+(SPEAKER 가 고개를 기울인다)|(RESTRAINT가 그들의 손에 나타난다)|(그들이 다가온다)
 (The SPEAKER stares at you)|(They put away the RESTRAINT and leave)
-(스피커가 당신을 쳐다본다)|(그들은 구속을 치우고 떠납니다)
+(SPEAKER 가 당신을 쳐다본다)|(그들은 구속을 치우고 떠납니다)
 (The SPEAKER holds you in place)|(You hear the oddly cold material locking)|(They nod at you)
-(SPEAKER가 당신을 제자리에 고정시킵니다)|(이상하게 차가운 물질이 잠기는 소리가 들립니다)|(그들은 당신에게 고개를 끄덕입니다)
+(SPEAKER 가 당신을 제자리에 고정시킵니다)|(이상하게 차가운 물질이 잠기는 소리가 들립니다)|(그들은 당신에게 고개를 끄덕입니다)
 (The SPEAKER firmly grabs you)|(The RESTRAINT locks onto your body tightly)|(The oddly cold material makes you shiver)
-(SPEAKER가 당신을 단단히 잡습니다)|(RESTRAINT가 당신의 몸을 단단히 고정시킵니다)|(이상하게 차가운 물체가 당신을 떨게 만듭니다)
+(SPEAKER 가 당신을 단단히 잡습니다)|(RESTRAINT가 당신의 몸을 단단히 고정시킵니다)|(이상하게 차가운 물체가 당신을 떨게 만듭니다)
 
 Y-Yes?
 그 - 그래?
@@ -14325,25 +14289,25 @@ Stop! (PERCENT chance to avoid)
 
 
 (A SPEAKER giggles and calls to you)|Hey there~|Fancy seeing some nature?~
-(스피커가 낄낄거리며 당신을 부른다)|이봐~|자연을 보고 싶니?~
+(SPEAKER 가 낄낄거리며 당신을 부른다)|이봐~|자연을 보고 싶니?~
 (The SPEAKER motions with her hands)|(Vines rise from the floor and twirl)|These will bind you nicely...
-(SPEAKER가 손으로 움직인다)|(덩굴이 바닥에서 솟아올라 빙글빙글 돌았다)|이것이 당신을 멋지게 묶을 것입니다...
+(SPEAKER 가 손으로 움직인다)|(덩굴이 바닥에서 솟아올라 빙글빙글 돌았다)|이것이 당신을 멋지게 묶을 것입니다...
 (The SPEAKER grins and motions again)|(The plants wrap around you quickly)|(You wriggle against the RESTRAINT)
-(스피커가 씩 웃으며 다시 움직인다)|(식물이 빠르게 당신을 감쌉니다)|(당신은 구속에 맞서 꿈틀거립니다)
+(SPEAKER 가 씩 웃으며 다시 움직인다)|(식물이 빠르게 당신을 감쌉니다)|(당신은 구속에 맞서 꿈틀거립니다)
 (The SPEAKER pouts)|Aww...
-(스피커가 삐죽거린다)|아...
+(SPEAKER 가 삐죽거린다)|아...
 (The SPEAKER frowns)|Not even a little?
-(스피커가 눈살을 찌푸린다)|조금도?
+(SPEAKER 가 눈살을 찌푸린다)|조금도?
 (The SPEAKER smirks)|That wasn't a question~
-(스피커가 웃는다)|그건 질문이 아니었어~
+(SPEAKER 가 웃는다)|그건 질문이 아니었어~
 (The SPEAKER giggles again)|(Vines begin to move around your feet)|Hold still dear~
-(스피커가 다시 낄낄 웃는다)|(덩굴이 네 발 주위를 움직이기 시작한다)|가만히 있어라~
+(SPEAKER 가 다시 낄낄 웃는다)|(덩굴이 네 발 주위를 움직이기 시작한다)|가만히 있어라~
 (The SPEAKER sighs and nods)|(The vines retreat from you)|Fiiine, you can go~
 (발표자가 한숨을 쉬며 고개를 끄덕인다)|(포도나무가 물러난다)|피이네, 가도 돼~
 (The vines move much faster)|(You feel the RESTRAINT as you squirm)|A gift, from me~
 (덩굴이 훨씬 더 빨리 움직인다)|(움직일 때 구속을 느낀다)|내가 주는 선물~
 (The SPEAKER giggles loudly)|(The vines catch up and pin you down)|(When they let go, you're left with a RESTRAINT)
-(스피커가 큰 소리로 낄낄거림)|(덩굴이 따라붙어 당신을 꼼짝 못하게 합니다.)|(그들이 놓아주면 당신은 구속을 받게 됩니다)
+(SPEAKER 가 큰 소리로 낄낄거림)|(덩굴이 따라붙어 당신을 꼼짝 못하게 합니다.)|(그들이 놓아주면 당신은 구속을 받게 됩니다)
 
 Always!
 언제나!
@@ -14375,23 +14339,23 @@ Don't! (PERCENT chance to avoid)
 
 
 (A SPEAKER approaches)|Nothing quite beats a strong metal|chain, right?
-(스피커가 다가온다)|강한 금속|사슬만큼 좋은 건 없지?
+(SPEAKER 가 다가온다)|강한 금속|사슬만큼 좋은 건 없지?
 (The SPEAKER nods happily)|Exactly!|Want one for yourself?
-(스피커가 행복하게 고개를 끄덕인다)|맞아요!|직접 하나 원하세요?
+(SPEAKER 가 행복하게 고개를 끄덕인다)|맞아요!|직접 하나 원하세요?
 (The SPEAKER wraps a long chain around you)|This should do the trick~|(RESTRAINT settles in place)
-(SPEAKER가 당신을 긴 사슬로 감쌉니다)|이렇게 하면 됩니다~|(RESTRAINT가 자리를 잡습니다)
+(SPEAKER 가 당신을 긴 사슬로 감쌉니다)|이렇게 하면 됩니다~|(RESTRAINT가 자리를 잡습니다)
 (The SPEAKER sighs)|Ah well.
-(스피커가 한숨을 쉬며)|아 그렇군요.
+(SPEAKER 가 한숨을 쉬며)|아 그렇군요.
 (The SPEAKER frowns sadly)|But they make the best noise!
-(스피커가 슬프게 눈살을 찌푸린다)|하지만 그들은 최고의 소리를 낸다!
+(SPEAKER 가 슬프게 눈살을 찌푸린다)|하지만 그들은 최고의 소리를 낸다!
 (The SPEAKER rolls her eyes)|Tough luck then~|You're getting one!
-(스피커가 눈을 굴리며)|그럼 운이 없군~|하나를 얻다니!
+(SPEAKER 가 눈을 굴리며)|그럼 운이 없군~|하나를 얻다니!
 (The SPEAKER grins)|See how you feel when|you're wearing one!
-(스피커가 웃는다)|당신이 그것을 입고 있을 때 당신이 어떻게 느끼는지 보십시오!
+(SPEAKER 가 웃는다)|당신이 그것을 입고 있을 때 당신이 어떻게 느끼는지 보십시오!
 (The SPEAKER sighs)|Maybe another time then.
-(스피커가 한숨을 쉬며)|그럼 또 한 번.
+(SPEAKER 가 한숨을 쉬며)|그럼 또 한 번.
 (The SPEAKER wraps a long chain around you)|(RESTRAINT hugs your body closely)|(You shiver as the cold metal touches you)
-(SPEAKER가 긴 사슬로 당신을 감쌉니다)|(RESTRAINT가 당신의 몸을 꼭 껴안습니다)|(차가운 금속이 당신을 만질 때 당신은 떨립니다)
+(SPEAKER 가 긴 사슬로 당신을 감쌉니다)|(RESTRAINT가 당신의 몸을 꼭 껴안습니다)|(차가운 금속이 당신을 만질 때 당신은 떨립니다)
 (The SPEAKER grins as she binds your body)|(RESTRAINT digs into you a little)|Enjoy, cutie~
 (SPEAKER는 그녀가 당신의 몸을 묶으면서 미소를 짓습니다)|(RESTRAINT가 당신을 조금 파헤칩니다)|즐기세요, 귀염둥이~
 
@@ -14427,23 +14391,23 @@ Ah! Cold! (PERCENT chance to avoid)
 (The SPEAKER nervously walks up to you)|Excuse me miss...|Are you a fan of latex by chance?
 (화자가 초조하게 당신에게 다가갑니다)|실례합니다 아가씨...|당신은 우연히 라텍스의 팬입니까?
 (The SPEAKER blushes deeply)|Then would you like to try on this RESTRAINT?
-(스피커가 얼굴을 붉히며)|그럼 이 RESTTRAINT를 입어 보시겠습니까?
+(SPEAKER 가 얼굴을 붉히며)|그럼 이 RESTTRAINT를 입어 보시겠습니까?
 (The SPEAKER smiles)|You look so good in that!
-(스피커가 웃는다)|너 정말 잘 어울려!
+(SPEAKER 가 웃는다)|너 정말 잘 어울려!
 (The SPEAKER frowns)|Aww...
-(스피커가 눈살을 찌푸린다)|아...
+(SPEAKER 가 눈살을 찌푸린다)|아...
 (The SPEAKER blushes)|Okay... sorry I asked.
 (발표자 얼굴이 붉어짐)|알았어... 물어봐서 미안해.
 (The SPEAKER grins and reaches for a RESTRAINT)|Well, too bad--
-(스피커가 싱긋 웃으며 제지하려고 손을 뻗는다)|글쎄, 안됐군--
+(SPEAKER 가 싱긋 웃으며 제지하려고 손을 뻗는다)|글쎄, 안됐군--
 (The SPEAKER grins)|I wasn't offering you a choice...|I was asking if you would LIKE it, hehe~
-(스피커가 웃는다)|당신에게 선택권을 주는 게 아니었어...|좋아하겠느냐고 물은 거였어, 헤헤~
+(SPEAKER 가 웃는다)|당신에게 선택권을 주는 게 아니었어...|좋아하겠느냐고 물은 거였어, 헤헤~
 (The SPEAKER frowns)|...You're fast!
 (발표자가 눈살을 찌푸린다)|...당신은 빠르군요!
 (The SPEAKER smiles)|That's right~
-(스피커 미소)|맞아요~
+(SPEAKER  미소)|맞아요~
 (The SPEAKER restraints you and clicks a lock on)|There! Nice and tight!
-(스피커가 당신을 제지하고 자물쇠를 클릭합니다.)|저기! 멋지고 단단합니다!
+(SPEAKER 가 당신을 제지하고 자물쇠를 클릭합니다.)|저기! 멋지고 단단합니다!
 
 Why of course!
 물론이죠!
@@ -14475,25 +14439,25 @@ Wait, what? (PERCENT chance to avoid)
 
 
 (The SPEAKER nervously walks up to you)|Excuse me miss...|Can you help me out?
-(스피커가 초조하게 당신에게 다가갑니다)|실례합니다 아가씨...|도와주실 수 있나요?
+(SPEAKER 가 초조하게 당신에게 다가갑니다)|실례합니다 아가씨...|도와주실 수 있나요?
 (The SPEAKER blushes deeply)|I managed to unlock my RESTRAINT,|but my mistress expects me to wear it!|Do you mind wearing it instead?
-(스피커가 깊이 얼굴을 붉힌다)|나는 내 구속장치를 풀 수 있었지만|내 여주인은 내가 그것을 착용하기를 기대합니다!|대신 그것을 착용하시겠습니까?
+(SPEAKER 가 깊이 얼굴을 붉힌다)|나는 내 구속장치를 풀 수 있었지만|내 여주인은 내가 그것을 착용하기를 기대합니다!|대신 그것을 착용하시겠습니까?
 (The SPEAKER smiles)|Thank you so much, miss!
-(스피커가 웃는다)|정말 고마워요, 아가씨!
+(SPEAKER 가 웃는다)|정말 고마워요, 아가씨!
 (The SPEAKER frowns)|I'm going to get in trouble...
-(스피커가 눈살을 찌푸리며)|곤경에 빠지겠다...
+(SPEAKER 가 눈살을 찌푸리며)|곤경에 빠지겠다...
 (The SPEAKER blushes)|Oh... okay.
 (발표자가 얼굴을 붉힌다)|아...알았어.
 (The SPEAKER frowns angrily)|Look, I know you're in trouble around here.|Just do me a favor. Please.|I need you to wear this RESTRAINT.
-(스피커가 화를 내며 눈살을 찌푸린다)|이봐, 네가 여기서 문제가 있다는 걸 알아.|부탁 하나만 들어줘. 제발.|이 구속 장치를 착용해야 해.
+(SPEAKER 가 화를 내며 눈살을 찌푸린다)|이봐, 네가 여기서 문제가 있다는 걸 알아.|부탁 하나만 들어줘. 제발.|이 구속 장치를 착용해야 해.
 (The SPEAKER pleads with you)|My mistress is a magician!|She put a spell on it that senses if it's being worn.|Please, you have to hurry!
-(SPEAKER가 당신에게 간청합니다)|내 여주인은 마술사입니다!|그녀는 착용 여부를 감지하는 주문을 걸었습니다.|제발, 서둘러야 해요!
+(SPEAKER 가 당신에게 간청합니다)|내 여주인은 마술사입니다!|그녀는 착용 여부를 감지하는 주문을 걸었습니다.|제발, 서둘러야 해요!
 (The SPEAKER sighs and wears it herself)|(The lock starts glowing brightly...)
-(SPEAKER가 한숨을 쉬며 직접 착용)|(자물쇠가 밝게 빛나기 시작합니다...)
+(SPEAKER 가 한숨을 쉬며 직접 착용)|(자물쇠가 밝게 빛나기 시작합니다...)
 (The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
-(스피커가 안도하는 듯)|고마워요, 아가씨!|잊지 않을게요!
+(SPEAKER 가 안도하는 듯)|고마워요, 아가씨!|잊지 않을게요!
 (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Hmmph! Serves you right!|
-(뒤돌아보면 SPEAKER가 당신을 놀라게 합니다.)|(허리 주변에서 딸깍하는 소리가 들립니다.)|흠! 잘 먹겠습니다!|
+(뒤돌아보면 SPEAKER 가 당신을 놀라게 합니다.)|(허리 주변에서 딸깍하는 소리가 들립니다.)|흠! 잘 먹겠습니다!|
 (The lock on the RESTRAINT starts glowing...)
 (RESTRAINT의 잠금 장치가 빛나기 시작합니다...)
 
@@ -14530,25 +14494,25 @@ I won't help you. Wear it yourself. (PERCENT chance to avoid)
 
 
 (The SPEAKER walks up to you)|We don't get a lot of visitors.|I take it that you enjoy bondage?
-(스피커가 당신에게 다가온다)|방문객이 많지 않습니다.|속박을 즐기시는 걸로 압니다.
+(SPEAKER 가 당신에게 다가온다)|방문객이 많지 않습니다.|속박을 즐기시는 걸로 압니다.
 (The SPEAKER tilts her head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it.
-(스피커가 고개를 갸웃한다)|글쎄요, 제 주변에 구속 장치가 있는데|즐거우실 거라 생각했습니다.
+(SPEAKER 가 고개를 갸웃한다)|글쎄요, 제 주변에 구속 장치가 있는데|즐거우실 거라 생각했습니다.
 (The SPEAKER smiles)|I'm glad you like it!
-(스피커가 웃는다)|당신이 좋아해서 기뻐요!
+(SPEAKER 가 웃는다)|당신이 좋아해서 기뻐요!
 (The SPEAKER frowns)|I guess I'll have to find someone else to wear it.
-(스피커가 눈살을 찌푸린다)|그것을 입을 다른 사람을 찾아야 할 것 같아요.
+(SPEAKER 가 눈살을 찌푸린다)|그것을 입을 다른 사람을 찾아야 할 것 같아요.
 (The SPEAKER looks disappointed)|Oh well.
-(스피커가 실망한 듯)|아, 그렇군요.
+(SPEAKER 가 실망한 듯)|아, 그렇군요.
 (The SPEAKER grins and reaches toward you!)|Well, I think it'd look great on you!
-(스피커가 씩 웃으며 당신에게 손을 뻗는다!)|음, 당신에게 잘 어울릴 것 같아요!
+(SPEAKER 가 씩 웃으며 당신에게 손을 뻗는다!)|음, 당신에게 잘 어울릴 것 같아요!
 (The SPEAKER grins)|You don't have a choice, dear~
-(스피커가 웃는다)|당신은 선택의 여지가 없어요, 얘야~
+(SPEAKER 가 웃는다)|당신은 선택의 여지가 없어요, 얘야~
 (The SPEAKER frowns)|Darn it! Missed my chance.
 (화자가 눈살을 찌푸린다)|젠장! 기회를 놓쳤어.
 (The SPEAKER smiles)|Good, good~
-(스피커 미소)|좋아 좋아~
+(SPEAKER  미소)|좋아 좋아~
 (The SPEAKER restraints you and clicks a lock on)|There! Nice and tight!
-(스피커가 당신을 제지하고 자물쇠를 클릭합니다.)|저기! 멋지고 단단합니다!
+(SPEAKER 가 당신을 제지하고 자물쇠를 클릭합니다.)|저기! 멋지고 단단합니다!
 
 Why of course!
 물론이죠!
@@ -14581,27 +14545,27 @@ Wait, what? (PERCENT chance to avoid)
 
 
 (The SPEAKER grins as she sees you)|Hey there sweetie~|I think you'd look good in some ropes!
-(스피커가 당신을 보고 싱긋 웃는다)|안녕하세요 자기야~|로프를 착용하면 멋져 보일 것 같아요!
+(SPEAKER 가 당신을 보고 싱긋 웃는다)|안녕하세요 자기야~|로프를 착용하면 멋져 보일 것 같아요!
 (The SPEAKER looks at your bound body)|I've got some more ropes for you, babe!
-(스피커가 묶인 몸을 본다)|당신을 위한 밧줄이 더 있어요, 자기야!
+(SPEAKER 가 묶인 몸을 본다)|당신을 위한 밧줄이 더 있어요, 자기야!
 (The SPEAKER smiles)|Okay, hold still while I get you rigged up~
-(스피커 미소)|알았어, 내가 장비할 동안 가만히 있어~
+(SPEAKER  미소)|알았어, 내가 장비할 동안 가만히 있어~
 (The SPEAKER slaps your butt as she ties the last knot)|All trussed up~
-(스피커가 마지막 매듭을 묶으면서 당신의 엉덩이를 찰싹 때립니다)|모두 묶었습니다~
+(SPEAKER 가 마지막 매듭을 묶으면서 당신의 엉덩이를 찰싹 때립니다)|모두 묶었습니다~
 (The SPEAKER looks disappointed and packs her rope away)
-(스피커가 실망한 표정을 지으며 밧줄을 움켜쥔다)
+(SPEAKER 가 실망한 표정을 지으며 밧줄을 움켜쥔다)
 (The SPEAKER frowns)|Aw. What a missed opportunity!
 (화자가 눈살을 찌푸린다)|아. 정말 놓친 기회!
 (The SPEAKER grins and reaches for her satchel)|Well, too bad--
-(스피커가 씩 웃으며 가방에 손을 뻗는다)|글쎄, 안됐군--
+(SPEAKER 가 씩 웃으며 가방에 손을 뻗는다)|글쎄, 안됐군--
 (The SPEAKER grins)|But I've already brought so much rope with me~
-(스피커가 웃는다)|하지만 이미 밧줄을 너무 많이 가져왔어~
+(SPEAKER 가 웃는다)|하지만 이미 밧줄을 너무 많이 가져왔어~
 (The SPEAKER frowns)|Suit yourself.
-(스피커가 눈살을 찌푸린다)|마음대로 해.
+(SPEAKER 가 눈살을 찌푸린다)|마음대로 해.
 (The SPEAKER smiles)|Good girl~
-(스피커 미소)|잘했어~
+(SPEAKER  미소)|잘했어~
 (The SPEAKER takes you down and trusses you up tightly)|That'll teach you~
-(SPEAKER가 당신을 끌어내리고 당신을 단단히 묶습니다)|그게 당신에게 가르쳐 줄 것입니다~
+(SPEAKER 가 당신을 끌어내리고 당신을 단단히 묶습니다)|그게 당신에게 가르쳐 줄 것입니다~
 
 I think so too!
 나도 그렇게 생각해!
@@ -14633,25 +14597,25 @@ Go away! (PERCENT chance to avoid)
 
 
 (The SPEAKER perks her ears as she sees you)|You've got a nice body.|I think it'll do better with some training!
-(SPEAKER가 당신을 보고 귀를 쫑긋 세웁니다)|당신은 몸매가 좋습니다.|운동을 좀 하면 더 잘할 것 같아요!
+(SPEAKER 가 당신을 보고 귀를 쫑긋 세웁니다)|당신은 몸매가 좋습니다.|운동을 좀 하면 더 잘할 것 같아요!
 (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
-(스피커가 웃으며 당신에게 종이를 건네준다)|Nevermere Training은 항상 신입 사원을 찾고 있습니다!|여기에 사인을 하도록 하겠습니다...
+(SPEAKER 가 웃으며 당신에게 종이를 건네준다)|Nevermere Training은 항상 신입 사원을 찾고 있습니다!|여기에 사인을 하도록 하겠습니다...
 (The SPEAKER gets you suited up)|There you go! Now go be a good girl!
-(스피커가 옷을 입혀준다)|자, 간다! 이제 좋은 여자가 되어라!
+(SPEAKER 가 옷을 입혀준다)|자, 간다! 이제 좋은 여자가 되어라!
 (The SPEAKER scoffs)|That's what they all say.
-(스피커가 비웃는다)|다들 그렇게 말한다.
+(SPEAKER 가 비웃는다)|다들 그렇게 말한다.
 (The SPEAKER frowns)|What a shame.
 (화자가 눈살을 찌푸린다)|안타까운 일이네요.
 (The SPEAKER grins and reaches for her baton)|No? Well, I heard you have some debts to pay~
-(스피커가 씩 웃으며 지휘봉을 잡는다)|아니요? 갚아야 할 빚이 있다고 들었는데~
+(SPEAKER 가 씩 웃으며 지휘봉을 잡는다)|아니요? 갚아야 할 빚이 있다고 들었는데~
 (The SPEAKER grins)|I promise you it's a good deal~
-(스피커가 웃는다)|좋은 거래라고 약속할게요~
+(SPEAKER 가 웃는다)|좋은 거래라고 약속할게요~
 (The SPEAKER frowns)|Fine. I'll look for other candidates.
 (의장이 눈살을 찌푸린다)|좋아요. 다른 후보자를 찾아보겠습니다.
 (The SPEAKER smiles)|That's right. Your name, please?
-(스피커가 웃는다)|맞습니다. 이름을 말씀해 주십시오.
+(SPEAKER 가 웃는다)|맞습니다. 이름을 말씀해 주십시오.
 (The SPEAKER zaps you and places you in restrictive gear)|Hmph. Unruly girls need training!
-(스피커가 당신을 재촉하고 제한적인 장비를 착용하게 합니다.)|흠. 제멋대로인 소녀들은 훈련이 필요합니다!
+(SPEAKER 가 당신을 재촉하고 제한적인 장비를 착용하게 합니다.)|흠. 제멋대로인 소녀들은 훈련이 필요합니다!
 
 This sounds like an interesting opportunity.
 이것은 흥미로운 기회처럼 들립니다.
@@ -14682,25 +14646,25 @@ Never! (PERCENT chance to avoid)
 
 
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
-(스피커가 당신을 보고 짧은 인사를 합니다)|안녕하세요.|당신은 우리가 사용할 수 있는 자질을 가지고 있는 것 같습니다.|당신에게 자리를 제공하게 되어 기쁩니다...
+(SPEAKER 가 당신을 보고 짧은 인사를 합니다)|안녕하세요.|당신은 우리가 사용할 수 있는 자질을 가지고 있는 것 같습니다.|당신에게 자리를 제공하게 되어 기쁩니다...
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
-(스피커가 목을 가다듬기 전에 잠시 미소를 지음)|멋지다!|여기 유니폼이 있어...
+(SPEAKER 가 목을 가다듬기 전에 잠시 미소를 지음)|멋지다!|여기 유니폼이 있어...
 (The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck.
-(SPEAKER가 버클을 채우고 끈을 아주 세게 잡아당겨...)|(자물쇠 몇 개가 딸깍하는 소리가 들린다...)|멋지군. 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다. .
+(SPEAKER 가 버클을 채우고 끈을 아주 세게 잡아당겨...)|(자물쇠 몇 개가 딸깍하는 소리가 들린다...)|멋지군. 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다. .
 (The SPEAKER tilts her head and shrugs)|We are always prepared...
-(스피커가 고개를 갸우뚱하며 어깨를 으쓱한다)|우리는 항상 준비되어 있습니다...
+(SPEAKER 가 고개를 갸우뚱하며 어깨를 으쓱한다)|우리는 항상 준비되어 있습니다...
 (The SPEAKER nods)|Fair enough.
-(스피커가 고개를 끄덕인다)|그만하면 됐어.
+(SPEAKER 가 고개를 끄덕인다)|그만하면 됐어.
 (The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them...
-(스피커가 씩 웃으며 헐렁한 드레스를 꺼낸다)|당신이 꽤 많은... 적을 만들었다는 것을 상기시켜 드려도 될까요?|그들 중 한 명과 마주치게 된다면 안타까운 일이 될 것입니다...
+(SPEAKER 가 씩 웃으며 헐렁한 드레스를 꺼낸다)|당신이 꽤 많은... 적을 만들었다는 것을 상기시켜 드려도 될까요?|그들 중 한 명과 마주치게 된다면 안타까운 일이 될 것입니다...
 (The SPEAKER nods proudly)|We are willing to made some changes to our records~
-(스피커가 자랑스럽게 고개를 끄덕인다)|우리는 기록을 약간 변경할 용의가 있습니다~
+(SPEAKER 가 자랑스럽게 고개를 끄덕인다)|우리는 기록을 약간 변경할 용의가 있습니다~
 (The SPEAKER frowns)|You won't know what hit you.
-(스피커가 눈살을 찌푸린다)|당신은 무엇이 당신을 때렸는지 모를 것입니다.
+(SPEAKER 가 눈살을 찌푸린다)|당신은 무엇이 당신을 때렸는지 모를 것입니다.
 (The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck.
-(스피커 미소)|올바른 결정을 내리셨다니 기쁩니다.|이제 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다.
+(SPEAKER  미소)|올바른 결정을 내리셨다니 기쁩니다.|이제 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다.
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
-(SPEAKER가 갑자기 당신이 반응할 수 있는 것보다 더 빨리 움직입니다.)|(당신이 아래로 내려가면서 발이 당신의 등을 누르는 것을 느낍니다.)|(그녀는 당신에게 제복을 입히고 단단히 고정시킵니다...)|당신은 추가로 필요합니다. 훈련, 아마...
+(SPEAKER 가 갑자기 당신이 반응할 수 있는 것보다 더 빨리 움직입니다.)|(당신이 아래로 내려가면서 발이 당신의 등을 누르는 것을 느낍니다.)|(그녀는 당신에게 제복을 입히고 단단히 고정시킵니다...)|당신은 추가로 필요합니다. 훈련, 아마...
 
 This sounds like an interesting opportunity.
 이것은 흥미로운 기회처럼 들립니다.
@@ -14731,25 +14695,25 @@ Never! (PERCENT chance to avoid)
 
 
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
-(스피커가 당신을 보고 짧은 인사를 합니다)|안녕하세요.|당신은 우리가 사용할 수 있는 자질을 가지고 있는 것 같습니다.|당신에게 자리를 제공하게 되어 기쁩니다...
+(SPEAKER 가 당신을 보고 짧은 인사를 합니다)|안녕하세요.|당신은 우리가 사용할 수 있는 자질을 가지고 있는 것 같습니다.|당신에게 자리를 제공하게 되어 기쁩니다...
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
-(스피커가 목을 가다듬기 전에 잠시 미소를 지음)|멋지다!|여기 유니폼이 있어...
+(SPEAKER 가 목을 가다듬기 전에 잠시 미소를 지음)|멋지다!|여기 유니폼이 있어...
 (The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck.
-(SPEAKER가 버클을 채우고 끈을 아주 세게 잡아당겨...)|(자물쇠 몇 개가 딸깍하는 소리가 들린다...)|멋지군. 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다. .
+(SPEAKER 가 버클을 채우고 끈을 아주 세게 잡아당겨...)|(자물쇠 몇 개가 딸깍하는 소리가 들린다...)|멋지군. 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다. .
 (The SPEAKER tilts her head and shrugs)|We are always prepared...
-(스피커가 고개를 갸우뚱하며 어깨를 으쓱한다)|우리는 항상 준비되어 있습니다...
+(SPEAKER 가 고개를 갸우뚱하며 어깨를 으쓱한다)|우리는 항상 준비되어 있습니다...
 (The SPEAKER nods)|Fair enough.
-(스피커가 고개를 끄덕인다)|그만하면 됐어.
+(SPEAKER 가 고개를 끄덕인다)|그만하면 됐어.
 (The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them...
-(스피커가 씩 웃으며 헐렁한 드레스를 꺼낸다)|당신이 꽤 많은... 적을 만들었다는 것을 상기시켜 드려도 될까요?|그들 중 한 명과 마주치게 된다면 안타까운 일이 될 것입니다...
+(SPEAKER 가 씩 웃으며 헐렁한 드레스를 꺼낸다)|당신이 꽤 많은... 적을 만들었다는 것을 상기시켜 드려도 될까요?|그들 중 한 명과 마주치게 된다면 안타까운 일이 될 것입니다...
 (The SPEAKER nods proudly)|We are willing to made some changes to our records~
-(스피커가 자랑스럽게 고개를 끄덕인다)|우리는 기록을 약간 변경할 용의가 있습니다~
+(SPEAKER 가 자랑스럽게 고개를 끄덕인다)|우리는 기록을 약간 변경할 용의가 있습니다~
 (The SPEAKER frowns)|You won't know what hit you.
-(스피커가 눈살을 찌푸린다)|당신은 무엇이 당신을 때렸는지 모를 것입니다.
+(SPEAKER 가 눈살을 찌푸린다)|당신은 무엇이 당신을 때렸는지 모를 것입니다.
 (The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck.
-(스피커 미소)|올바른 결정을 내리셨다니 기쁩니다.|이제 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다.
+(SPEAKER  미소)|올바른 결정을 내리셨다니 기쁩니다.|이제 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다.
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
-(SPEAKER가 갑자기 당신이 반응할 수 있는 것보다 더 빨리 움직입니다.)|(당신이 아래로 내려가면서 발이 당신의 등을 누르는 것을 느낍니다.)|(그녀는 당신에게 제복을 입히고 단단히 고정시킵니다...)|당신은 추가로 필요합니다. 훈련, 아마...
+(SPEAKER 가 갑자기 당신이 반응할 수 있는 것보다 더 빨리 움직입니다.)|(당신이 아래로 내려가면서 발이 당신의 등을 누르는 것을 느낍니다.)|(그녀는 당신에게 제복을 입히고 단단히 고정시킵니다...)|당신은 추가로 필요합니다. 훈련, 아마...
 
 This sounds like an interesting opportunity.
 이것은 흥미로운 기회처럼 들립니다.
@@ -14783,25 +14747,25 @@ Never! (PERCENT chance to avoid)
 
 
 (The SPEAKER perks her ears as she sees you)|Glory to the blessed kitty!|Are you prepared to join us?
-(스피커가 당신을 보고 귀를 쫑긋 세웁니다)|축복받은 고양이에게 영광을!|우리와 함께할 준비가 되셨습니까?
+(SPEAKER 가 당신을 보고 귀를 쫑긋 세웁니다)|축복받은 고양이에게 영광을!|우리와 함께할 준비가 되셨습니까?
 (The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to cats.|And also we own you now.
-(스피커가 행복하게 고개를 끄덕인다)|멋지다! 고양이에게 친절하게 대하는 데 동의하기만 하면 된다.|그리고 이제 우리는 당신을 소유하고 있다.
+(SPEAKER 가 행복하게 고개를 끄덕인다)|멋지다! 고양이에게 친절하게 대하는 데 동의하기만 하면 된다.|그리고 이제 우리는 당신을 소유하고 있다.
 (The SPEAKER jumps happily)|Wonderful! Here's your collar!
-(스피커가 행복하게 뛰어오른다)|멋지군! 여기 옷깃이야!
+(SPEAKER 가 행복하게 뛰어오른다)|멋지군! 여기 옷깃이야!
 (The SPEAKER whimpers and looks at you)|How mean!
-(스피커가 훌쩍거리며 당신을 바라본다)|정말 못됐군!
+(SPEAKER 가 훌쩍거리며 당신을 바라본다)|정말 못됐군!
 (The SPEAKER's ears flop)|Aww... we thought you were cute.
-(스피커의 귀가 쫑긋)|아...귀엽다고 생각했는데.
+(SPEAKER 의 귀가 쫑긋)|아...귀엽다고 생각했는데.
 (The SPEAKER frowns)|Oh? Well, I guess I'll tell the others~
-(스피커가 찡그린다)|오? 글쎄, 다른 사람들에게 말할 것 같아요~
+(SPEAKER 가 찡그린다)|오? 글쎄, 다른 사람들에게 말할 것 같아요~
 (The SPEAKER grins slyly)|You wouldn't hurt the kitties, would you?
-(스피커가 교활하게 웃는다)|당신은 고양이들을 다치게 하지 않을 거에요, 그렇죠?
+(SPEAKER 가 교활하게 웃는다)|당신은 고양이들을 다치게 하지 않을 거에요, 그렇죠?
 (The SPEAKER frowns)|Then we'll have to make sure you don't come to harm anyone!
 (화자가 눈살을 찌푸린다)|그럼 우리는 당신이 누구에게도 해를 끼치지 않도록 해야 합니다!
 (The SPEAKER smiles proudly)|I knew you would pull through!
-(스피커가 자랑스럽게 웃는다)|당신이 이겨낼 줄 알았어!
+(SPEAKER 가 자랑스럽게 웃는다)|당신이 이겨낼 줄 알았어!
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
-(SPEAKER가 갑자기 당신이 반응할 수 있는 것보다 더 빨리 움직입니다.)|(당신이 아래로 내려가면서 발이 당신의 등을 누르는 것을 느낍니다.)|(그녀는 당신에게 제복을 입히고 단단히 고정시킵니다...)|당신은 추가로 필요합니다. 훈련, 아마...
+(SPEAKER 가 갑자기 당신이 반응할 수 있는 것보다 더 빨리 움직입니다.)|(당신이 아래로 내려가면서 발이 당신의 등을 누르는 것을 느낍니다.)|(그녀는 당신에게 제복을 입히고 단단히 고정시킵니다...)|당신은 추가로 필요합니다. 훈련, 아마...
 
 Yes! I love the blessed kity!
 예! 축복받은 고양이를 사랑합니다!
@@ -14836,25 +14800,25 @@ Never! (PERCENT chance to avoid)
 
 
 (The SPEAKER does a curtsy)|Why hello there!|You have a wonderful bod-er, book!|Would you like to help me?
-(스피커가 퉁명스럽게 말함)|안녕하세요!|멋진 몸매를 가지셨네요, 책님!|도와주실래요?
+(SPEAKER 가 퉁명스럽게 말함)|안녕하세요!|멋진 몸매를 가지셨네요, 책님!|도와주실래요?
 (The SPEAKER smiles briefly)|You have an opportunity to model for me!|I need someone to wear all of my wonderful inventions!
-(스피커가 짧게 웃는다)|당신은 나를 위해 모델이 될 기회가 있습니다!|내 모든 멋진 발명품을 착용할 누군가가 필요합니다!
+(SPEAKER 가 짧게 웃는다)|당신은 나를 위해 모델이 될 기회가 있습니다!|내 모든 멋진 발명품을 착용할 누군가가 필요합니다!
 (The SPEAKER laces you up in the tight fabric...)|(You hear the click of a few locks going on...)|Oh my goodness... So pretty!|You'll make a fine assistant!
-(SPEAKER가 당신을 꽉 조이는 천으로 묶습니다...)|(자물쇠 몇 개가 딸깍하는 소리가 들립니다...)|맙소사... 너무 예뻐요!|당신은 훌륭한 조수가 될 것입니다! 
+(SPEAKER 가 당신을 꽉 조이는 천으로 묶습니다...)|(자물쇠 몇 개가 딸깍하는 소리가 들립니다...)|맙소사... 너무 예뻐요!|당신은 훌륭한 조수가 될 것입니다! 
 (The SPEAKER frowns)|Aw...
-(스피커가 눈살을 찌푸린다)|아...
+(SPEAKER 가 눈살을 찌푸린다)|아...
 (The SPEAKER clenches her fist to the ceiling)|Nooooo!!!
-(스피커가 천장을 향해 주먹을 쥔다)|안돼!!!
+(SPEAKER 가 천장을 향해 주먹을 쥔다)|안돼!!!
 (The SPEAKER grins and pulls out a frilly dress)|Don't knock it till you try it!|Trust me, it'll be fun!
-(스피커가 웃으며 주름 장식이 달린 드레스를 꺼낸다)|해보기 전에는 노크하지 마세요!|저를 믿으세요, 재미있을 거예요!
+(SPEAKER 가 웃으며 주름 장식이 달린 드레스를 꺼낸다)|해보기 전에는 노크하지 마세요!|저를 믿으세요, 재미있을 거예요!
 (The SPEAKER furrows her brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you...
-(스피커가 미간을 찌푸리며)|혀 조심해, 아가씨.|아니면 내가 당신을 위해 플러그를 꽂아야겠어...
+(SPEAKER 가 미간을 찌푸리며)|혀 조심해, 아가씨.|아니면 내가 당신을 위해 플러그를 꽂아야겠어...
 (The SPEAKER folds her arms as ribbons rise up around her)|Suit yourself, hehe~
-(스피커가 팔짱을 끼고 리본이 그녀 주위로 올라간다)|마음대로 해, 헤헤~
+(SPEAKER 가 팔짱을 끼고 리본이 그녀 주위로 올라간다)|마음대로 해, 헤헤~
 (The SPEAKER smiles)|Yes! Yes! Wonderful!
-(스피커가 웃는다)|예! 예! 훌륭합니다!
+(SPEAKER 가 웃는다)|예! 예! 훌륭합니다!
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
-(SPEAKER가 갑자기 당신이 반응할 수 있는 것보다 더 빨리 움직입니다.)|(당신이 아래로 내려가면서 발이 당신의 등을 누르는 것을 느낍니다.)|(그녀는 당신에게 제복을 입히고 단단히 고정시킵니다...)|당신은 추가로 필요합니다. 훈련, 아마...
+(SPEAKER 가 갑자기 당신이 반응할 수 있는 것보다 더 빨리 움직입니다.)|(당신이 아래로 내려가면서 발이 당신의 등을 누르는 것을 느낍니다.)|(그녀는 당신에게 제복을 입히고 단단히 고정시킵니다...)|당신은 추가로 필요합니다. 훈련, 아마...
 
 Sure!
 확신하는!
@@ -14890,25 +14854,25 @@ Why don't you try it on yourself! (PERCENT chance to avoid)
 
 
 (The SPEAKER runs up to you)|Wow! You make a fine specimen-er, I mean...|Nice to meet you!
-(스피커가 당신에게 달려옵니다)|와! 당신은 훌륭한 표본이군요. 제 말은...|만나서 반가워요!
+(SPEAKER 가 당신에게 달려옵니다)|와! 당신은 훌륭한 표본이군요. 제 말은...|만나서 반가워요!
 (The SPEAKER smiles)|Now, I have something wonderful in store for you.|(She takes out a blue catsuit)|I'd like you to be my assistant!
-(스피커가 웃는다)|이제, 당신을 위해 준비한 멋진 것이 있습니다.|(그녀는 파란색 캣수트를 꺼냅니다)|당신이 제 비서가 되어주셨으면 합니다!
+(SPEAKER 가 웃는다)|이제, 당신을 위해 준비한 멋진 것이 있습니다.|(그녀는 파란색 캣수트를 꺼냅니다)|당신이 제 비서가 되어주셨으면 합니다!
 (The SPEAKER looks excited)|Awesome! Let me help you get in uniform...
-(스피커가 흥분해 보인다)|멋지다! 제복 입는 걸 도와줄게...
+(SPEAKER 가 흥분해 보인다)|멋지다! 제복 입는 걸 도와줄게...
 (The SPEAKER shrugs)|It was worth a shot...
-(스피커가 어깨를 으쓱한다)|그럴만한 가치가 있었어...
+(SPEAKER 가 어깨를 으쓱한다)|그럴만한 가치가 있었어...
 (The SPEAKER shrugs)|It was worth a shot...
-(스피커가 어깨를 으쓱한다)|그럴만한 가치가 있었어...
+(SPEAKER 가 어깨를 으쓱한다)|그럴만한 가치가 있었어...
 (The SPEAKER looks frustrated)|I'm not... my work is not crazy!|There's just... a lot to do.|That's why I need an assistant.
 (화자가 답답해 보인다)|난... 내 일이 미친 짓이 아니야!|그냥... 할 일이 많아.|그래서 조수가 필요해.
 (The SPEAKER looks frustrated)|I'm not... my work is not crazy!|We seek only knowledge!
 (화자가 답답해 보인다)|그게 아니라... 내 일은 미친 짓이 아니야!|우리는 오직 지식만을 추구한다!
 (The SPEAKER frowns)|Time for a test run!
-(스피커가 눈살을 찌푸린다)|테스트 실행 시간입니다!
+(SPEAKER 가 눈살을 찌푸린다)|테스트 실행 시간입니다!
 (The SPEAKER looks happy again)|Thank you! I'm super grateful!
-(스피커가 다시 행복해 보인다)|고맙습니다! 정말 감사합니다!
+(SPEAKER 가 다시 행복해 보인다)|고맙습니다! 정말 감사합니다!
 (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as she breaks a glass vial)|(A suit of blue latex envelops you!)
-(스피커가 고개를 기울인다)|그럼 좋다. 당신이 이겼다.|(떠나면서 그녀가 유리병을 깨면서 '농담'하는 소리가 들린다)|(파란색 라텍스가 당신을 감싼다!)
+(SPEAKER 가 고개를 기울인다)|그럼 좋다. 당신이 이겼다.|(떠나면서 그녀가 유리병을 깨면서 '농담'하는 소리가 들린다)|(파란색 라텍스가 당신을 감싼다!)
 
 ...Hello?
 ...여보세요?
@@ -14948,11 +14912,11 @@ Go find someone else. (PERCENT chance to avoid)
 (The SPEAKER smiles warmly)|Outsiders have a lower rank in our society.|But it is a rank all the same.|You will be above your mortal peers.|What do you say?
 (화자가 따뜻하게 웃는다)|외부인은 우리 사회에서 낮은 지위에 있다.|하지만 그것은 모두 같은 계급이다.|당신은 필멸의 동료들보다 위에 있게 될 것이다.|무슨 말을 합니까?
 (The SPEAKER clasps some 'jewelry' around your limbs)|You look beautiful, my dear.|I will leave you to your own affairs until we meet again.
-(SPEAKER가 당신의 팔다리에 '보석'을 움켜쥔다)|당신은 아름다워요, 여보.|우리가 다시 만날 때까지 당신의 일에 맡기겠습니다.
+(SPEAKER 가 당신의 팔다리에 '보석'을 움켜쥔다)|당신은 아름다워요, 여보.|우리가 다시 만날 때까지 당신의 일에 맡기겠습니다.
 (The SPEAKER turns her head away)|Hmph. I offer you a bargain and you refuse.
-(스피커가 고개를 돌린다)|흠. 내가 당신에게 흥정을 제안했지만 당신은 거절했습니다.
+(SPEAKER 가 고개를 돌린다)|흠. 내가 당신에게 흥정을 제안했지만 당신은 거절했습니다.
 (The SPEAKER turns her head away)|Hmph. As expected.
-(스피커가 고개를 돌린다)|흥. 역시.
+(SPEAKER 가 고개를 돌린다)|흥. 역시.
 (The SPEAKER folds her arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild.
 (화자가 팔짱을 낀다)|당신이 우리와 함께하지 않는다면 당신은 우리를 대적하는 것입니다.|당신은 야생의 분노에 직면하게 될 것입니다.
 (The SPEAKER frowns)|Hardly slavery!|A mere slave would not be allowed to even set foot in our society.
@@ -14960,9 +14924,9 @@ Go find someone else. (PERCENT chance to avoid)
 (The SPEAKER frowns)|We will meet again.
 (화자가 눈살을 찌푸린다)|우리는 다시 만날 것입니다.
 (The SPEAKER nods and smiles)|(She decorates your body with 'jewelry')|I am glad you had a change of heart.
-(스피커가 고개를 끄덕이며 웃는다)|(그녀는 당신의 몸을 '장신구'로 장식합니다)|마음이 바뀌어서 다행입니다.
+(SPEAKER 가 고개를 끄덕이며 웃는다)|(그녀는 당신의 몸을 '장신구'로 장식합니다)|마음이 바뀌어서 다행입니다.
 (The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur.
-(스피커가 비웃는다)|(그녀의 마법이 갑자기 당신을 빛나는 밧줄로 단단히 묶는다)|아마추어.
+(SPEAKER 가 비웃는다)|(그녀의 마법이 갑자기 당신을 빛나는 밧줄로 단단히 묶는다)|아마추어.
 
 I'm interested. (Talk with her)
 관심이 있어. (그녀와 이야기해봐)
@@ -14996,25 +14960,25 @@ No way. (PERCENT chance to avoid)
 
 
 (The SPEAKER smiles at you)|Mortal.
-(스피커가 당신에게 미소 짓는다)|필멸자.
+(SPEAKER 가 당신에게 미소 짓는다)|필멸자.
 (The SPEAKER points to the ground)|Kneel before me and accept your collar.
-(스피커가 땅을 가리키며)|내 앞에 무릎을 꿇고 당신의 옷깃을 받으십시오.
+(SPEAKER 가 땅을 가리키며)|내 앞에 무릎을 꿇고 당신의 옷깃을 받으십시오.
 (The SPEAKER snaps her fingers)|(A collar of cold black metal materializes around your neck)|A girl who knows her place! Wonderful...
-(스피커가 손가락을 튕긴다)|(당신의 목에 차갑고 검은 금속 목걸이가 나타난다)|자신의 위치를 ​​아는 소녀! 훌륭하다...
+(SPEAKER 가 손가락을 튕긴다)|(당신의 목에 차갑고 검은 금속 목걸이가 나타난다)|자신의 위치를 ​​아는 소녀! 훌륭하다...
 (The SPEAKER scoffs)|Hmmph. Mortals...
-(스피커가 비웃는다)|흠. 필멸자...
+(SPEAKER 가 비웃는다)|흠. 필멸자...
 (The SPEAKER scoffs)|Hmmph. Mortals...
-(스피커가 비웃는다)|흠. 필멸자...
+(SPEAKER 가 비웃는다)|흠. 필멸자...
 (The SPEAKER folds her arms)|Well, look who doesn't know her place~
-(스피커가 팔짱을 낀다)|글쎄, 누가 자기 위치를 모르나봐~
+(SPEAKER 가 팔짱을 낀다)|글쎄, 누가 자기 위치를 모르나봐~
 (The SPEAKER folds her arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that.
-(스피커가 팔짱을 낀다)|나는 당신에게 그 문제에 대해 선택권을 주지 않았습니다.|당신은 내 꺼야, 내가 결정했어.
+(SPEAKER 가 팔짱을 낀다)|나는 당신에게 그 문제에 대해 선택권을 주지 않았습니다.|당신은 내 꺼야, 내가 결정했어.
 (The SPEAKER's eyes begin to glow)|Looks like we'll do this the fun way!
-(스피커의 눈이 빛나기 시작한다)|우리가 이것을 재미있는 방법으로 할 것 같다!
+(SPEAKER 의 눈이 빛나기 시작한다)|우리가 이것을 재미있는 방법으로 할 것 같다!
 (The SPEAKER smiles)|Wonderful~|Now come along, my pet!
-(스피커가 웃는다)|멋지다~|이제 따라와, 내 애완동물!
+(SPEAKER 가 웃는다)|멋지다~|이제 따라와, 내 애완동물!
 (The SPEAKER scoffs and snaps her fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?
-(스피커가 비웃으며 손가락을 튕긴다)|(금속 구속이 모든 각도에서 당신에게 다가오고 제자리에 단단히 고정됩니다.)|(재갈이 당신의 입에 억지로 박힙니다)|그럼 우리가 뭐라고 하던가요?
+(SPEAKER 가 비웃으며 손가락을 튕긴다)|(금속 구속이 모든 각도에서 당신에게 다가오고 제자리에 단단히 고정됩니다.)|(재갈이 당신의 입에 억지로 박힙니다)|그럼 우리가 뭐라고 하던가요?
 
 Yes?
 예?
@@ -15039,7 +15003,7 @@ Then it looks like I have no choice. (Join her)
 (Moan and nod)
 (신음하며 고개를 끄덕인다)
 I will never bow to you! (PERCENT chance to avoid)
-절대 절하지 않겠습니다! (피할 확률이 퍼센트)
+절대 절하지 않겠습니다! (피할 확률이 PERCENT)
 (Shake your head and frown) (PERCENT chance to avoid)
 (고개를 흔들며 찡그린다) (피할 확률이 PERCENT)
 
@@ -15049,25 +15013,25 @@ I will never bow to you! (PERCENT chance to avoid)
 
 
 (The SPEAKER waves)|You seem like an exceptional individual.|What do you think of joining the Guild?
-(스피커가 손을 흔든다)|당신은 특별한 사람인 것 같습니다.|길드에 가입하는 것에 대해 어떻게 생각하세요?
+(SPEAKER 가 손을 흔든다)|당신은 특별한 사람인 것 같습니다.|길드에 가입하는 것에 대해 어떻게 생각하세요?
 (The SPEAKER smiles)|Excellent! I'll put in a word with the Guild.|Do note: this will affect your reputation with certain bad actors.
 (발표자가 웃는다)|좋아요! 길드에 한마디 하겠습니다.|주의: 이것은 특정 나쁜 배우들에 대한 평판에 영향을 미칠 것입니다.
 (The SPEAKER takes out a magic scroll and signs it)|(The scroll vanishes into the aether)|Good luck out there, freelancer.
-(스피커가 마법 두루마리를 꺼내 서명한다)|(두루마리가 에테르 속으로 사라진다)|행운을 빈다, 프리랜서.
+(SPEAKER 가 마법 두루마리를 꺼내 서명한다)|(두루마리가 에테르 속으로 사라진다)|행운을 빈다, 프리랜서.
 (The SPEAKER nods)|Fair enough. Guild work is not for everyone.
-(스피커가 고개를 끄덕인다)|그렇군요. 길드 작업은 아무나 하는 것이 아닙니다.
+(SPEAKER 가 고개를 끄덕인다)|그렇군요. 길드 작업은 아무나 하는 것이 아닙니다.
 (The SPEAKER nods)|Very well, then I won't bother you.
-(스피커가 고개를 끄덕인다)|좋아요, 그럼 귀찮게 하지 않겠습니다.
+(SPEAKER 가 고개를 끄덕인다)|좋아요, 그럼 귀찮게 하지 않겠습니다.
 (The SPEAKER looks dubious)|You know, there's quite a bounty on your head.|I'm sure we could do something about it.
-(스피커가 수상쩍어 보인다)|당신도 알다시피, 당신의 목에는 상당한 현상금이 걸려 있습니다.|우리가 그것에 대해 뭔가를 할 수 있을 것이라고 확신합니다.
+(SPEAKER 가 수상쩍어 보인다)|당신도 알다시피, 당신의 목에는 상당한 현상금이 걸려 있습니다.|우리가 그것에 대해 뭔가를 할 수 있을 것이라고 확신합니다.
 (The SPEAKER tilts her head)|Haha, very funny.|We both know that you're not one of those... right?
-(스피커가 고개를 갸웃한다)|하하, 아주 웃기다.|당신이 그런 사람이 아니라는 건 우리 둘 다 알고 있어...맞지?
+(SPEAKER 가 고개를 갸웃한다)|하하, 아주 웃기다.|당신이 그런 사람이 아니라는 건 우리 둘 다 알고 있어...맞지?
 (The SPEAKER frowns and readies for battle)|My instincts were right.
-(스피커가 눈살을 찌푸리며 전투를 준비한다)|내 직감이 맞았다.
+(SPEAKER 가 눈살을 찌푸리며 전투를 준비한다)|내 직감이 맞았다.
 (The SPEAKER takes out a magic scroll and signs it)|(The scroll vanishes into the aether)|Good luck out there, freelancer.
-(스피커가 마법 두루마리를 꺼내 서명한다)|(두루마리가 에테르 속으로 사라진다)|행운을 빈다, 프리랜서.
+(SPEAKER 가 마법 두루마리를 꺼내 서명한다)|(두루마리가 에테르 속으로 사라진다)|행운을 빈다, 프리랜서.
 (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as she ties you in a strict rope hogtie...)|(She dusts off her hands)|We'll have a talk when you get out of that, okay?
-(SPEAKER가 갑자기 당신을 바닥으로 내리칩니다.)|(그녀가 당신을 엄격한 밧줄 매춘부로 묶을 때 당신은 당신의 등에 발이 닿는 것을 느낍니다...)|(그녀는 그녀의 손에서 먼지를 털어냅니다.)|당신이 그만둬, 알았지?
+(SPEAKER 가 갑자기 당신을 바닥으로 내리칩니다.)|(그녀가 당신을 엄격한 밧줄 매춘부로 묶을 때 당신은 당신의 등에 발이 닿는 것을 느낍니다...)|(그녀는 그녀의 손에서 먼지를 털어냅니다.)|당신이 그만둬, 알았지?
 
 This sounds like an interesting opportunity.
 이것은 흥미로운 기회처럼 들립니다.
@@ -15103,25 +15067,25 @@ Go away. (PERCENT chance to avoid)
 
 
 (The SPEAKER beeps)|Prisoner 74121 identified.|Subject not registered in database.
-(스피커가 삐 소리를 냄)|수감자 74121이 확인되었습니다.|대상은 데이터베이스에 등록되지 않았습니다.
+(SPEAKER 가 삐 소리를 냄)|수감자 74121이 확인되었습니다.|대상은 데이터베이스에 등록되지 않았습니다.
 (The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good girl' to enter database.
-(스피커가 삐 소리를 냄)|데이터베이스 입력 확인 중.|데이터베이스에 들어가려면 '착한 여자가 될게'라고 말하세요.
+(SPEAKER 가 삐 소리를 냄)|데이터베이스 입력 확인 중.|데이터베이스에 들어가려면 '착한 여자가 될게'라고 말하세요.
 (The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good girl.
-(스피커가 신호음을 울리고 추적 장치를 적용함)|(금속 케이블이 부드러운 신호음과 함께 제자리에 고정됨)|죄수 74121이 등록되었습니다. 착합니다.
+(SPEAKER 가 신호음을 울리고 추적 장치를 적용함)|(금속 케이블이 부드러운 신호음과 함께 제자리에 고정됨)|죄수 74121이 등록되었습니다. 착합니다.
 (The SPEAKER beeps)|Acknowledged. Be warned:|Lost contact with Sections 98, 97, 96, 95...|(The list goes on...)
 (SPEAKER 신호음)|확인했습니다. 경고:|섹션 98, 97, 96, 95와 연락 두절...|(목록은 계속됩니다...)
 (The SPEAKER beeps)|Acknowledged. Updating records.
 (SPEAKER 신호음)|확인했습니다. 기록 업데이트 중.
 (The SPEAKER beeps and flashes its lights)|Target acquired.
-(SPEAKER가 신호음을 울리고 조명을 깜박임)|목표물을 획득했습니다.
+(SPEAKER 가 신호음을 울리고 조명을 깜박임)|목표물을 획득했습니다.
 (The SPEAKER beeps and flashes its lights)|Target has complied. Supplying uniform.
-(SPEAKER가 신호음을 울리고 조명을 깜박임)|목표가 준수했습니다. 유니폼을 공급합니다.
+(SPEAKER 가 신호음을 울리고 조명을 깜박임)|목표가 준수했습니다. 유니폼을 공급합니다.
 (The SPEAKER beeps and flashes its lights)|Engaging capture protocol.
 (SPEAKER에서 신호음이 울리고 조명이 깜박임)|포획 프로토콜을 사용 중입니다.
 (The SPEAKER beeps and flashes its lights)|
 (SPEAKER에서 신호음이 울리고 표시등이 깜박임)|
 (The SPEAKER blasts you with a stunning ray and captures you)|Target neutralized.
-(SPEAKER가 놀라운 광선으로 당신을 폭파하고 당신을 붙잡습니다)|목표물을 무력화시킵니다.
+(SPEAKER 가 놀라운 광선으로 당신을 폭파하고 당신을 붙잡습니다)|목표물을 무력화시킵니다.
 
 Please register me.
 저를 등록해주세요.
@@ -15156,25 +15120,25 @@ What? (PERCENT chance to avoid)
 
 
 (The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!
-(스피커 미소)|나도 너 같은 모험가였어.|그때 드래곤하트에 합류했어!
+(SPEAKER  미소)|나도 너 같은 모험가였어.|그때 드래곤하트에 합류했어!
 (The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
 (화자가 목을 가다듬는다)|음, 우리는 실제로 모집하고 있습니다!|정의를 위해 싸우는 데 동의한다면 우리와 함께 할 수 있습니다!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
-(스피커가 힘차게 악수를 건넸다)|자매 관계에 오신 것을 환영합니다, 모험가님!
+(SPEAKER 가 힘차게 악수를 건넸다)|자매 관계에 오신 것을 환영합니다, 모험가님!
 (The SPEAKER tilts her head and shrugs)|Ah well. 
-(스피커가 고개를 기울이고 어깨를 으쓱한다)|아 그렇군요.
+(SPEAKER 가 고개를 기울이고 어깨를 으쓱한다)|아 그렇군요.
 (The SPEAKER nods)|Fair enough.
-(스피커가 고개를 끄덕인다)|그만하면 됐어.
+(SPEAKER 가 고개를 끄덕인다)|그만하면 됐어.
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (화자가 눈살을 찌푸리며)|뭐야?|당신은 정의의 적이 아니지, 그렇지?
 (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
 (화자가 눈살을 찌푸린다)|...정의를 위해 싸우지 않는다면 정의의 적이 되는 것입니다.
 (The SPEAKER frowns and cracks her knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
-(스피커가 눈살을 찌푸리며 손가락 관절을 꺾는다)|제 생각이 맞았나 보군요!|당신과 제가 잡담을 좀 할 것 같군요...
+(SPEAKER 가 눈살을 찌푸리며 손가락 관절을 꺾는다)|제 생각이 맞았나 보군요!|당신과 제가 잡담을 좀 할 것 같군요...
 (The SPEAKER giggles)|Hehe, just messin' with ya.|Anyway, welcome to the sisterhood!
-(스피커 낄낄거림)|헤헤, 그냥 장난칠 뿐이야.|어쨌든 자매결연에 온 걸 환영해!
+(SPEAKER  낄낄거림)|헤헤, 그냥 장난칠 뿐이야.|어쨌든 자매결연에 온 걸 환영해!
 (The SPEAKER grabs you and ties you up)|You won't be making trouble like that any time soon.
-(SPEAKER가 당신을 붙잡고 묶습니다.)|언젠가는 그런 문제를 일으키지 않을 것입니다.
+(SPEAKER 가 당신을 붙잡고 묶습니다.)|언젠가는 그런 문제를 일으키지 않을 것입니다.
 
 I wish I could join you.
 당신과 함께 할 수 있으면 좋겠습니다.
@@ -15207,25 +15171,25 @@ What are you going to do about it? (PERCENT chance to avoid)
 
 
 (The SPEAKER waves and calls you over)|Looks like you've made a name for yourself.|What do you say to a little agreement?
-(SPEAKER가 손을 흔들며 당신을 부릅니다)|당신은 이름을 알린 것 같습니다.|약간의 합의에 대해 뭐라고 말합니까?
+(SPEAKER 가 손을 흔들며 당신을 부릅니다)|당신은 이름을 알린 것 같습니다.|약간의 합의에 대해 뭐라고 말합니까?
 (The SPEAKER clears her throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us.
-(스피커가 목을 가다듬는다)|음, 당신은 현재 우리 영역에 있습니다.|하지만 우리는 당신에게 약간의 여유를 줄 용의가 있습니다.|당신은 우리 중 누구도 공격하지 않기로 동의하기만 하면 됩니다.
+(SPEAKER 가 목을 가다듬는다)|음, 당신은 현재 우리 영역에 있습니다.|하지만 우리는 당신에게 약간의 여유를 줄 용의가 있습니다.|당신은 우리 중 누구도 공격하지 않기로 동의하기만 하면 됩니다.
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
-(스피커가 힘차게 악수를 건넸다)|자매 관계에 오신 것을 환영합니다, 모험가님!
+(SPEAKER 가 힘차게 악수를 건넸다)|자매 관계에 오신 것을 환영합니다, 모험가님!
 (The SPEAKER tilts her head and shrugs)|Ah well. 
-(스피커가 고개를 기울이고 어깨를 으쓱한다)|아 그렇군요.
+(SPEAKER 가 고개를 기울이고 어깨를 으쓱한다)|아 그렇군요.
 (The SPEAKER nods)|Fair enough.
-(스피커가 고개를 끄덕인다)|그만하면 됐어.
+(SPEAKER 가 고개를 끄덕인다)|그만하면 됐어.
 (The SPEAKER frowns)|Criminals? Girl, we ARE the law around these parts~
 (화자 눈살을 찌푸리며)|범죄자? 여보, 이 부분은 우리가 법이야~
 (The SPEAKER grins)|I like your spunk, girl.|But you're kidding, right?
-(스피커가 웃는다)|난 당신의 엉덩이가 좋아요, 아가씨.|하지만 농담하는 거에요, 그렇죠?
+(SPEAKER 가 웃는다)|난 당신의 엉덩이가 좋아요, 아가씨.|하지만 농담하는 거에요, 그렇죠?
 (The SPEAKER raises her fists and smiles)|You're on!
-(스피커가 주먹을 치켜들고 웃는다)|시작합니다!
+(SPEAKER 가 주먹을 치켜들고 웃는다)|시작합니다!
 (The SPEAKER chuckles)|Here's a toast to a new partnership!
 (발표자 웃음)|새로운 파트너십을 위한 건배입니다!
 (The SPEAKER catches you and trusses you up)|Maybe we'll just have to find you an owner, then!|Hehe.
-(SPEAKER가 당신을 잡아 묶습니다.)|그럼 우리는 당신에게 주인을 찾아야 할 것 같습니다!|헤헤.
+(SPEAKER 가 당신을 잡아 묶습니다.)|그럼 우리는 당신에게 주인을 찾아야 할 것 같습니다!|헤헤.
 
 I'm all ears.
 나는 모두 귀입니다.
@@ -15264,23 +15228,23 @@ Put 'em up! (PERCENT chance to avoid)
 
 
 (The SPEAKER stops walking and speaks)|You there!|It seems your attunement with magic is high.|Join us.
-(SPEAKER가 걸음을 멈추고 말함)|거기 있구나!|마법에 대한 조율이 높은 것 같군.|함께하자.
+(SPEAKER 가 걸음을 멈추고 말함)|거기 있구나!|마법에 대한 조율이 높은 것 같군.|함께하자.
 (The SPEAKER nods calmly)|We will use some special equipment to increase your attunement.|Put these on.
-(스피커가 침착하게 고개를 끄덕인다)|우리는 당신의 조율을 높이기 위해 특별한 장비를 사용할 것입니다.|이걸 입으세요.
+(SPEAKER 가 침착하게 고개를 끄덕인다)|우리는 당신의 조율을 높이기 위해 특별한 장비를 사용할 것입니다.|이걸 입으세요.
 (The 'equipment' locks in place)|Excellent. Soon you will be much more powerful.
 ('장비'가 제자리에 고정됨)|훌륭합니다. 곧 당신은 훨씬 더 강력해질 것입니다.
 (The SPEAKER stops talking and walks away.)
-(스피커가 말을 멈추고 자리를 떴다.)
+(SPEAKER 가 말을 멈추고 자리를 떴다.)
 (The SPEAKER walks away like nothing happened.)
-(스피커가 아무 일도 없었다는 듯이 걸어나간다.)
+(SPEAKER 가 아무 일도 없었다는 듯이 걸어나간다.)
 (The SPEAKER frowns slightly)|We are prepared to use force if need be...
-(스피커가 살짝 눈살을 찌푸린다)|우리는 필요하다면 무력을 사용할 준비가 되어 있습니다...
+(SPEAKER 가 살짝 눈살을 찌푸린다)|우리는 필요하다면 무력을 사용할 준비가 되어 있습니다...
 (The SPEAKER stares at you)|Why? Did you not say you wanted to join us?
-(스피커가 당신을 쳐다본다)|왜요? 우리와 함께하고 싶다고 하지 않았나요?
+(SPEAKER 가 당신을 쳐다본다)|왜요? 우리와 함께하고 싶다고 하지 않았나요?
 (The SPEAKER frowns)|We have failed to convince the human.
 (화자가 눈살을 찌푸린다)|우리는 인간을 설득하는 데 실패했습니다.
 (The SPEAKER nods.)|You have made a wise decision.
-(스피커가 고개를 끄덕인다.)|당신은 현명한 결정을 내렸습니다.
+(SPEAKER 가 고개를 끄덕인다.)|당신은 현명한 결정을 내렸습니다.
 (The SPEAKER uses magic to force you.)|There. Try not to succumb to your desires too much.
 (SPEAKER는 당신을 강제하기 위해 마법을 사용합니다.)|저기요. 당신의 욕망에 너무 굴복하지 마세요.
 
@@ -15314,25 +15278,25 @@ Monster! (PERCENT chance to avoid)
 
 
 (The SPEAKER does a short bow as she sees you)|Um... hi!|I have a letter for you...
-(스피커가 당신을 보고 짧은 인사를 합니다)|음... 안녕!|당신에게 줄 편지가 있어요...
+(SPEAKER 가 당신을 보고 짧은 인사를 합니다)|음... 안녕!|당신에게 줄 편지가 있어요...
 (The letter is a contract from the College)|(They want you to sign up as an instructor for apprentices)|(The SPEAKER looks at you nervously.)
-(그 편지는 대학에서 온 계약서입니다.)|(그들은 당신이 견습생 강사로 등록하기를 원합니다.)|(스피커가 당신을 초조하게 바라보고 있습니다.)
+(그 편지는 대학에서 온 계약서입니다.)|(그들은 당신이 견습생 강사로 등록하기를 원합니다.)|(SPEAKER 가 당신을 초조하게 바라보고 있습니다.)
 (The SPEAKER sighs in relief)|That's good...|(You sign the contract and it vanishes into the aether)
 (화자가 안도의 한숨을 내쉬며)|잘됐네요...|(계약서에 서명하면 에테르 속으로 사라집니다)
 (The SPEAKER whimpers)|What will I tell them...
-(스피커가 흐느끼며)|그들에게 무엇을 말해야 할까...
+(SPEAKER 가 흐느끼며)|그들에게 무엇을 말해야 할까...
 (The SPEAKER whimpers)|What will I tell them...
-(스피커가 흐느끼며)|그들에게 무엇을 말해야 할까...
+(SPEAKER 가 흐느끼며)|그들에게 무엇을 말해야 할까...
 (The SPEAKER glares at you)|It's an important message concerning your standing!|With the College!
-(스피커가 당신을 노려본다)|그것은 당신의 지위에 관한 중요한 메시지입니다!|대학과 함께!
+(SPEAKER 가 당신을 노려본다)|그것은 당신의 지위에 관한 중요한 메시지입니다!|대학과 함께!
 (The SPEAKER blushes)|Well...|I was told we would make changes to your academic record,|should you refuse...
 (발표자가 얼굴을 붉힌다)|글쎄...|당신의 학업 기록을 변경하겠다고 들었는데|거절하면...
 (The SPEAKER frowns)|They told me to make sure you sign...|by any means necessary!
 (발표자가 눈살을 찌푸린다)|그들은 당신이 서명했는지 확인하라고 하더군요...|어떤 수단을 써서라도!
 (The SPEAKER nods and smiles)|Thank you so much!|I don't know what I would have done if you said no...
-(스피커가 고개를 끄덕이며 웃는다)|정말 감사합니다!|아니라고 했다면 어떻게 했을지 모르겠습니다...
+(SPEAKER 가 고개를 끄덕이며 웃는다)|정말 감사합니다!|아니라고 했다면 어떻게 했을지 모르겠습니다...
 (The SPEAKER frowns and waves her wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed.
-(스피커가 눈살을 찌푸리며 지팡이를 흔든다)|(다발의 밧줄이 땅에서 나와 당신을 구속합니다)|흠. 어쨌든 당신이 서명했다고 말하겠습니다.|빈손으로 돌아갈 수 없습니다.
+(SPEAKER 가 눈살을 찌푸리며 지팡이를 흔든다)|(다발의 밧줄이 땅에서 나와 당신을 구속합니다)|흠. 어쨌든 당신이 서명했다고 말하겠습니다.|빈손으로 돌아갈 수 없습니다.
 
 Thank you for delivering it. (Read it)
 전달해주셔서 감사합니다. (읽어보세요)
@@ -15357,32 +15321,32 @@ Fine. I'll read it. (Join the College as an instructor)
 (Moan and nod)
 (신음하며 고개를 끄덕인다)
 This is unethical! I refuse! (PERCENT chance to avoid)
-이것은 비윤리적입니다! 거절합니다! (피할 확률이 퍼센트)
+이것은 비윤리적입니다! 거절합니다! (피할 확률이 PERCENT)
 (Shake your head and frown) (PERCENT chance to avoid)
 (고개를 흔들며 찡그린다) (피할 확률이 PERCENT)
 
 
 
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
-(스피커가 당신을 보고 짧은 인사를 합니다)|안녕하세요.|당신은 우리가 사용할 수 있는 자질을 가지고 있는 것 같습니다.|당신에게 자리를 제공하게 되어 기쁩니다...
+(SPEAKER 가 당신을 보고 짧은 인사를 합니다)|안녕하세요.|당신은 우리가 사용할 수 있는 자질을 가지고 있는 것 같습니다.|당신에게 자리를 제공하게 되어 기쁩니다...
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
-(스피커가 목을 가다듬기 전에 잠시 미소를 지음)|멋지다!|여기 유니폼이 있어...
+(SPEAKER 가 목을 가다듬기 전에 잠시 미소를 지음)|멋지다!|여기 유니폼이 있어...
 (The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck.
-(SPEAKER가 버클을 채우고 끈을 아주 세게 잡아당겨...)|(자물쇠 몇 개가 딸깍하는 소리가 들린다...)|멋지군. 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다. .
+(SPEAKER 가 버클을 채우고 끈을 아주 세게 잡아당겨...)|(자물쇠 몇 개가 딸깍하는 소리가 들린다...)|멋지군. 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다. .
 (The SPEAKER tilts her head and shrugs)|We are always prepared...
-(스피커가 고개를 갸우뚱하며 어깨를 으쓱한다)|우리는 항상 준비되어 있습니다...
+(SPEAKER 가 고개를 갸우뚱하며 어깨를 으쓱한다)|우리는 항상 준비되어 있습니다...
 (The SPEAKER nods)|Fair enough.
-(스피커가 고개를 끄덕인다)|그만하면 됐어.
+(SPEAKER 가 고개를 끄덕인다)|그만하면 됐어.
 (The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them...
-(스피커가 씩 웃으며 헐렁한 드레스를 꺼낸다)|당신이 꽤 많은... 적을 만들었다는 것을 상기시켜 드려도 될까요?|그들 중 한 명과 마주치게 된다면 안타까운 일이 될 것입니다...
+(SPEAKER 가 씩 웃으며 헐렁한 드레스를 꺼낸다)|당신이 꽤 많은... 적을 만들었다는 것을 상기시켜 드려도 될까요?|그들 중 한 명과 마주치게 된다면 안타까운 일이 될 것입니다...
 (The SPEAKER nods proudly)|We are willing to made some changes to our records~
-(스피커가 자랑스럽게 고개를 끄덕인다)|우리는 기록을 약간 변경할 용의가 있습니다~
+(SPEAKER 가 자랑스럽게 고개를 끄덕인다)|우리는 기록을 약간 변경할 용의가 있습니다~
 (The SPEAKER frowns)|You won't know what hit you.
-(스피커가 눈살을 찌푸린다)|당신은 무엇이 당신을 때렸는지 모를 것입니다.
+(SPEAKER 가 눈살을 찌푸린다)|당신은 무엇이 당신을 때렸는지 모를 것입니다.
 (The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck.
-(스피커 미소)|올바른 결정을 내리셨다니 기쁩니다.|이제 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다.
+(SPEAKER  미소)|올바른 결정을 내리셨다니 기쁩니다.|이제 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다.
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
-(SPEAKER가 갑자기 당신이 반응할 수 있는 것보다 더 빨리 움직입니다.)|(당신이 아래로 내려가면서 발이 당신의 등을 누르는 것을 느낍니다.)|(그녀는 당신에게 제복을 입히고 단단히 고정시킵니다...)|당신은 추가로 필요합니다. 훈련, 아마...
+(SPEAKER 가 갑자기 당신이 반응할 수 있는 것보다 더 빨리 움직입니다.)|(당신이 아래로 내려가면서 발이 당신의 등을 누르는 것을 느낍니다.)|(그녀는 당신에게 제복을 입히고 단단히 고정시킵니다...)|당신은 추가로 필요합니다. 훈련, 아마...
 
 This sounds like an interesting opportunity.
 이것은 흥미로운 기회처럼 들립니다.
@@ -15418,110 +15382,110 @@ Never! (PERCENT chance to avoid)
 
 
 (The SPEAKER waves)|Greetings,|I manufacture all sorts of goods.|Would you like to buy some?
-(스피커가 손을 흔든다)|안녕하세요,|나는 모든 종류의 상품을 제조합니다.|사시겠습니까?
+(SPEAKER 가 손을 흔든다)|안녕하세요,|나는 모든 종류의 상품을 제조합니다.|사시겠습니까?
 (The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
-(스피커가 망치를 떨어뜨리고 손가락 마디를 꺾는다)| 올려!
+(SPEAKER 가 망치를 떨어뜨리고 손가락 마디를 꺾는다)| 올려!
 (The SPEAKER looks at you.)|But you already have one?
-(스피커가 당신을 쳐다봅니다.)|그런데 이미 갖고 계시죠?
+(SPEAKER 가 당신을 쳐다봅니다.)|그런데 이미 갖고 계시죠?
 (The SPEAKER folds her arms)|I don't do charity, ma'am.
 (발표자가 팔짱을 끼며)|저는 자선사업을 하지 않습니다, 부인.
 (The SPEAKER nods)|See this magic rune here?|Stick it in any lock, and it opens, just like that!|Only works once, though.
-(스피커가 고개를 끄덕인다)|여기 이 마법의 룬이 보이나요?|아무 자물쇠에 꽂아도 그대로 열립니다!|하지만 한 번만 작동합니다.
+(SPEAKER 가 고개를 끄덕인다)|여기 이 마법의 룬이 보이나요?|아무 자물쇠에 꽂아도 그대로 열립니다!|하지만 한 번만 작동합니다.
 (The SPEAKER nods)|A versatile weapon. One of my favorites.
-(스피커가 고개를 끄덕인다)|다재다능한 무기입니다. 제가 가장 좋아하는 무기 중 하나입니다.
+(SPEAKER 가 고개를 끄덕인다)|다재다능한 무기입니다. 제가 가장 좋아하는 무기 중 하나입니다.
 (The SPEAKER nods)|Keep your friends close, and your enemies far away.
-(스피커가 고개를 끄덕인다)|친구는 가까이 두고 적들은 멀리 두십시오.
+(SPEAKER 가 고개를 끄덕인다)|친구는 가까이 두고 적들은 멀리 두십시오.
 (The SPEAKER nods)|Handy to have one of these around.
-(스피커가 고개를 끄덕인다)|이것들 중 하나가 있으면 편리합니다.
+(SPEAKER 가 고개를 끄덕인다)|이것들 중 하나가 있으면 편리합니다.
 (The SPEAKER nods)|The best defense is a good offense.
-(스피커가 고개를 끄덕인다)|최선의 방어는 좋은 공격입니다.
+(SPEAKER 가 고개를 끄덕인다)|최선의 방어는 좋은 공격입니다.
 (The SPEAKER looks puzzled)|Don't know why you want 'em, but sure.
-(스피커가 어리둥절해 보인다)|당신이 왜 그들을 원하는지 모르겠지만, 확실합니다.
+(SPEAKER 가 어리둥절해 보인다)|당신이 왜 그들을 원하는지 모르겠지만, 확실합니다.
 
 
 (The SPEAKER approaches you with an offer)|Greetings! I am a potion trader.|Give me your strongest potions!|I pay cash!
-(SPEAKER가 제안을 가지고 당신에게 접근합니다)|안녕하세요! 저는 물약 상인입니다.|당신의 가장 강력한 물약을 주세요!|현금을 지불합니다!
+(SPEAKER 가 제안을 가지고 당신에게 접근합니다)|안녕하세요! 저는 물약 상인입니다.|당신의 가장 강력한 물약을 주세요!|현금을 지불합니다!
 (The SPEAKER doesn't look surprised)|Okay, just let me set these down real quick...
-(스피커는 놀란 표정을 짓지 않는다)|좋아요, 빨리 내려놓겠습니다...
+(SPEAKER 는 놀란 표정을 짓지 않는다)|좋아요, 빨리 내려놓겠습니다...
 (The SPEAKER smiles)|A spellcaster will have great use for this!
-(스피커가 웃는다)|스펠캐스터는 이것을 아주 유용하게 사용할 것입니다!
+(SPEAKER 가 웃는다)|주문캐스터는 이것을 아주 유용하게 사용할 것입니다!
 (The SPEAKER smiles)|Wow! That's a lot of mana!|It requires a skilled mage to tap into, though...
-(스피커가 웃는다)|와우! 엄청난 마나네요!|사용하려면 숙련된 마법사가 필요하지만...
+(SPEAKER 가 웃는다)|와우! 엄청난 마나네요!|사용하려면 숙련된 마법사가 필요하지만...
 (The SPEAKER smiles)|It fills me with... determination.
-(스피커가 웃는다)|그것은 저를... 결단력으로 가득 채웁니다.
+(SPEAKER 가 웃는다)|그것은 저를... 결단력으로 가득 채웁니다.
 (The SPEAKER smiles)|Refreshing!
-(스피커가 웃는다)|상쾌하다!
+(SPEAKER 가 웃는다)|상쾌하다!
 (The SPEAKER smiles)|They say a bitter tea cures all ails...
 (화자 미소)|그들은 쓴 차가 만병을 치료한다고 하던데...
 (The SPEAKER smiles)|An empty flask?|...Oh.
-(스피커 미소)|빈 플라스크?|...오.
+(SPEAKER  미소)|빈 플라스크?|...오.
 
 (The SPEAKER approaches you)|My greetings, Outsider!|My throat is parched and I seek the bounties of nature.|Do you have what I seek?
-(스피커가 당신에게 다가옵니다)|안녕하세요, 아웃사이더!|목이 바짝 마르고 자연의 은혜를 찾습니다.|당신은 내가 찾는 것을 가지고 있습니까?
+(SPEAKER 가 당신에게 다가옵니다)|안녕하세요, 아웃사이더!|목이 바짝 마르고 자연의 은혜를 찾습니다.|당신은 내가 찾는 것을 가지고 있습니까?
 (The SPEAKER doesn't look surprised)|Then let us have a battle of wits!
-(스피커는 놀란 기색이 없다)|그럼 슬기롭게 싸우자!
+(SPEAKER 는 놀란 기색이 없다)|그럼 슬기롭게 싸우자!
 (The SPEAKER thanks you)|A kind offering! You have my thanks.
 (화자 감사합니다)|친절한 제물입니다! 감사합니다.
 (The SPEAKER thanks you)|A magnificent offering! You have my thanks.
 (화자님 감사합니다)|훌륭한 제안입니다! 감사합니다.
 (The SPEAKER tilts her head)|...where did you get this?
-(스피커가 고개를 갸웃한다)|...이거 어디서 났어?
+(SPEAKER 가 고개를 갸웃한다)|...이거 어디서 났어?
 (The SPEAKER thanks you)|A fine trinket!|I will enjoy meditating upon it.
 (화자 감사합니다)|좋은 장신구입니다!|명상하는 것을 즐기겠습니다.
 (The SPEAKER thanks you)|I sense its flowing essence.|You have my thanks.
-(The SPEAKER가 당신에게 감사합니다)|나는 그것의 흐르는 정수를 느낍니다.|감사합니다.
+(The SPEAKER 가 당신에게 감사합니다)|나는 그것의 흐르는 정수를 느낍니다.|감사합니다.
 (The SPEAKER thanks you)|I can feel a great sadness emanating from it.|It calls for warmth.
 (The SPEAKER thanks you)|그것에서 뿜어져 나오는 커다란 슬픔을 느낄 수 있어.|따뜻함이 필요해.
 
 (The SPEAKER approaches you with an offer)|Hello!|I am searching for magical scrolls.|Would you happen to have any?
-(SPEAKER가 제안을 가지고 당신에게 다가옵니다)|안녕하세요!|마법의 두루마리를 찾고 있습니다.|가지고 계실까요?
+(SPEAKER 가 제안을 가지고 당신에게 다가옵니다)|안녕하세요!|마법의 두루마리를 찾고 있습니다.|가지고 계실까요?
 (The SPEAKER doesn't look surprised)|Rude!
 (발표자는 놀란 기색이 없다)|무례하다!
 (The SPEAKER smiles)|Thank you!
-(스피커 미소)|감사합니다!
+(SPEAKER  미소)|감사합니다!
 (The SPEAKER smiles)|Thank you!
-(스피커 미소)|감사합니다!
+(SPEAKER  미소)|감사합니다!
 (The SPEAKER smiles)|Thank you!
-(스피커 미소)|감사합니다!
+(SPEAKER  미소)|감사합니다!
 (The SPEAKER raises a brow)|Thank you! This one is rare!
 (화자가 이마를 찡그린다)|고마워요! 이건 희귀해요!
 
 (The SPEAKER approaches you with an offer)|Hey girl~|You seem like the explorer type.|Happen to have any good finds?
-(SPEAKER가 제안을 가지고 접근함)|이봐 아가씨~|당신은 탐험가 타입인 것 같군요.|혹시 좋은 발견이 있으신가요?
+(SPEAKER 가 제안을 가지고 접근함)|이봐 아가씨~|당신은 탐험가 타입인 것 같군요.|혹시 좋은 발견이 있으신가요?
 (The SPEAKER frowns)|Well then.
-(스피커가 눈살을 찌푸린다)|그럼.
+(SPEAKER 가 눈살을 찌푸린다)|그럼.
 (The SPEAKER grins)|Are you willing to part with this?
-(스피커가 찡그린다)|이것과 헤어질 의향이 있습니까?
+(SPEAKER 가 찡그린다)|이것과 헤어질 의향이 있습니까?
 (The SPEAKER smiles)|Aha!|Fantastic.
-(스피커 미소)|아하!|멋지다.
+(SPEAKER  미소)|아하!|멋지다.
 (The SPEAKER frowns)|I'll take it, I guess...
-(스피커가 눈살을 찌푸린다)|내가 할게요, 아마...
+(SPEAKER 가 눈살을 찌푸린다)|내가 할게요, 아마...
 (The SPEAKER smiles)|Oooh~!|I love technology!
-(스피커가 웃는다)|오오오~!|기술이 좋아요!
+(SPEAKER 가 웃는다)|오오오~!|기술이 좋아요!
 
 (The SPEAKER surprises you)|Greetings, traveler.|I am looking for tools to aid in my mission.
-(스피커가 당신을 놀라게 함)|안녕하세요, 여행자님.|내 임무에 도움이 될 도구를 찾고 있습니다.
+(SPEAKER 가 당신을 놀라게 함)|안녕하세요, 여행자님.|내 임무에 도움이 될 도구를 찾고 있습니다.
 (The SPEAKER doesn't look surprised)|That's how it is, then.
-(스피커는 놀란 기색이 없다)|그럼 그렇구나.
+(SPEAKER 는 놀란 기색이 없다)|그럼 그렇구나.
 (The SPEAKER bows)|Always be prepared.
-(스피커 인사)|항상 준비하십시오.
+(SPEAKER  인사)|항상 준비하십시오.
 (The SPEAKER bows)|A bit dangerous, but I'll take it.
-(스피커 인사)|약간 위험하지만 내가 할게요.
+(SPEAKER  인사)|약간 위험하지만 내가 할게요.
 (The SPEAKER bows)|A tool of the trade.
-(스피커가 절을 한다)|무역의 도구.
+(SPEAKER 가 절을 한다)|무역의 도구.
 (The SPEAKER bows)|A most valuable find.
 (발표자 인사)|가장 값진 발견입니다.
 
 (The SPEAKER runs up to you)|Hello!|You wouldn't happen to have seen any ghosts lately?|I'm gathering evidence!
-(스피커가 달려온다)|안녕하세요!|최근에 유령을 본 적이 없을까요?|증거를 수집 중입니다!
+(SPEAKER 가 달려온다)|안녕하세요!|최근에 유령을 본 적이 없을까요?|증거를 수집 중입니다!
 (The SPEAKER gasps)|You wouldn't!
-(스피커 헐떡거림)|당신은 그러지 않을 겁니다!
+(SPEAKER  헐떡거림)|당신은 그러지 않을 겁니다!
 (The SPEAKER shakes your hand)|Ah! Ghosts love these!
-(스피커가 당신의 손을 흔든다)|아! 유령들이 이걸 좋아해요!
+(SPEAKER 가 당신의 손을 흔든다)|아! 유령들이 이걸 좋아해요!
 (The SPEAKER smiles)|This looks like strong evidence for my investigation!
 (화자 미소)|이것은 내 조사에 대한 강력한 증거처럼 보입니다!
 (The SPEAKER grins)|Woah! That's so cool!
-(스피커가 웃는다)|와! 정말 멋져요!
+(SPEAKER 가 웃는다)|와! 정말 멋져요!
 
 You're giving me everything you have.
 당신은 당신이 가진 모든 것을 나에게주고 있습니다.
@@ -15574,13 +15538,13 @@ You're giving me everything you have.
 (ItemCost9 gp로 Item9 구매)
 
 (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(She will remain and help you with restraints for 50 turns)
-(SPEAKER가 섬광 속에서 나타납니다)|나는 여신의 이름으로 왔습니다.|내 도움이 필요한 것 같습니까?|(그녀는 남아서 50턴 동안 구속을 도와줄 것입니다)
+(SPEAKER 가 섬광 속에서 나타납니다)|나는 여신의 이름으로 왔습니다.|내 도움이 필요한 것 같습니까?|(그녀는 남아서 50턴 동안 구속을 도와줄 것입니다)
 (The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?
-(스피커가 너에게 칼 두 개를 준다)|이걸로 다치지마, 알았지?
+(SPEAKER 가 너에게 칼 두 개를 준다)|이걸로 다치지마, 알았지?
 (The SPEAKER gives you three picks)|I don't know how you plan to use these...
-(스피커가 당신에게 세 가지 선택권을 줍니다)|나는 당신이 이것들을 어떻게 사용할 계획인지 모르겠습니다...
+(SPEAKER 가 당신에게 세 가지 선택권을 줍니다)|나는 당신이 이것들을 어떻게 사용할 계획인지 모르겠습니다...
 (The SPEAKER reluctantly gives you a magic key)|Okay, these don't grow on trees...
-(스피커가 마지못해 마법의 열쇠를 준다)|좋아, 이건 나무에서 자라지 않아...
+(SPEAKER 가 마지못해 마법의 열쇠를 준다)|좋아, 이건 나무에서 자라지 않아...
 
 (Ask for 2 knives)
 (칼 2개 요청)
@@ -15594,7 +15558,7 @@ There is no valid space next to you!
 
 
 (You approach the SPEAKER)
-(스피커에게 접근)
+(SPEAKER 에게 접근)
 (Threaten)
 (협박)
 (Really attack?)
@@ -15602,7 +15566,7 @@ There is no valid space next to you!
 (Attack her)
 (그녀를 공격)
 (Never mind...)
-(괜찮아요...)
+(그만두자...)
 (You decide not to)
 (하지 않기로 결정)
 
@@ -15613,7 +15577,7 @@ There is no valid space next to you!
 (Walk past multiple allies)
 (여러 아군 지나서 걸어가기)
 (Never mind...)
-(괜찮아요...)
+(그만두자...)
 (Confirm? You will walk through her for a few turns)
 (확인? 몇 턴 동안 그녀를 통해 걸을 것입니다)
 (...)
@@ -15624,75 +15588,75 @@ There is no valid space next to you!
 (Stop following me)
 (따라 다니지 말아 줘)
 (Never mind...)
-(괜찮아요...)
+(그만두자...)
 (Confirm? You will have to find the SPEAKER again.)
 (확인? SPEAKER를 다시 찾아야 합니다.)
 (You decide you still need the help)
 (당신은 여전히 ​​도움이 필요하다고 결정했습니다)
 (The SPEAKER refuses to follow your orders)
-(스피커가 당신의 명령을 따르기를 거부합니다)
+(SPEAKER 가 당신의 명령을 따르기를 거부합니다)
 
 (Follow me)
 (나를 따라와)
 (Follow me)
 (나를 따라와)
 (Never mind...)
-(괜찮아요...)
+(그만두자...)
 (The SPEAKER starts following you)
-(SPEAKER가 당신을 따라오기 시작합니다)
+(SPEAKER 가 당신을 따라오기 시작합니다)
 (You decide you don't need the help)
 (당신은 도움이 필요하지 않다고 결정했습니다)
 (The SPEAKER refuses to follow your orders)
-(스피커가 당신의 명령을 따르기를 거부합니다)
+(SPEAKER 가 당신의 명령을 따르기를 거부합니다)
 
 (Stay here)
 (여기 있어)
 (Stay here)
 (여기 있어)
 (Never mind...)
-(괜찮아요...)
+(그만두자...)
 (The SPEAKER follows your orders)
-(스피커는 당신의 명령을 따릅니다)
+(SPEAKER 는 당신의 명령을 따릅니다)
 (...)
 (...)
 (The SPEAKER refuses to follow your orders)
-(스피커가 당신의 명령을 따르기를 거부합니다)
+(SPEAKER 가 당신의 명령을 따르기를 거부합니다)
 
 (Don't stay here)
 (여기에 머물지 마세요)
 (Don't stay here)
 (여기에 머물지 마세요)
 (Never mind...)
-(괜찮아요...)
+(그만두자...)
 (Confirm?)
-(확인하다?)
+(확인?)
 (You decide you would rather the SPEAKER stay put)
-(당신은 SPEAKER가 가만히 있기로 결정했습니다)
+(당신은 SPEAKER 가 가만히 있기로 결정했습니다)
 (The SPEAKER refuses to follow your orders)
-(스피커가 당신의 명령을 따르기를 거부합니다)
+(SPEAKER 가 당신의 명령을 따르기를 거부합니다)
 
 (Switch to Aggressive)
 (공격적으로 전환)
 (The SPEAKER will now pursue enemies)
-(SPEAKER가 이제 적을 추적합니다)
+(SPEAKER 가 이제 적을 추적합니다)
 
 (Switch to Defensive)
 (수비로 전환)
 (The SPEAKER will stay close to you or its assigned position)
-(스피커는 당신이나 할당된 위치에 가까이 있을 것입니다)
+(SPEAKER 는 당신이나 할당된 위치에 가까이 있을 것입니다)
 
 (Ask her for help)
 (그녀에게 도움을 요청하세요)
 (Ask her for help)
 (그녀에게 도움을 요청하세요)
 (Never mind...)
-(괜찮아요...)
+(그만두자...)
 (Are you sure? She might see you as being submissive)
 (정말입니까? 그녀는 당신을 복종하는 것으로 볼 수 있습니다)
 (The SPEAKER prefers you the way you are)
-(스피커는 있는 그대로의 당신을 선호합니다)
+(SPEAKER 는 있는 그대로의 당신을 선호합니다)
 (The SPEAKER will help you out of your restraints)
-(SPEAKER가 당신의 속박에서 벗어나도록 도와줄 것입니다)
+(SPEAKER 가 당신의 속박에서 벗어나도록 도와줄 것입니다)
 (You decide to deal with your problems yourself.)
 (문제를 스스로 해결하기로 결정했습니다.)
 (Plead with her to unlock you with a Command Word)
@@ -15700,13 +15664,13 @@ There is no valid space next to you!
 (Yes!)
 (예!)
 (Never mind...)
-(괜찮아요...)
+(그만두자...)
 (Are you sure? She might see you as being submissive)
 (정말입니까? 그녀는 당신을 복종하는 것으로 볼 수 있습니다)
 (The SPEAKER would rather 'conserve her mana')
 (SPEAKER는 '마나를 절약'하는 것이 좋습니다)
 (The SPEAKER utters a command word on you)
-(스피커가 당신에게 명령을 내립니다)
+(SPEAKER 가 당신에게 명령을 내립니다)
 (Your magical locks continue to restrain you.)
 (당신의 마법 자물쇠가 계속 당신을 구속하고 있습니다.)
 (Plead with her to unlock your restraints)
@@ -15714,7 +15678,7 @@ There is no valid space next to you!
 (Yes!)
 (예!)
 (Never mind...)
-(괜찮아요...)
+(그만두자...)
 (Are you sure? She might see you as being submissive)
 (정말입니까? 그녀는 당신을 복종하는 것으로 볼 수 있습니다)
 (The SPEAKER would rather not give up a magic key)
@@ -15722,7 +15686,7 @@ There is no valid space next to you!
 (The SPEAKER doesn't have any keys)
 (SPEAKER에는 열쇠가 없습니다)
 (The SPEAKER giggles and gives you a key)
-(스피커가 낄낄거리며 열쇠를 준다)
+(SPEAKER 가 낄낄거리며 열쇠를 준다)
 (You remain locked tight.)
 (당신은 단단히 잠겨 있습니다.)
 (Stop receiving help)
@@ -15732,7 +15696,7 @@ There is no valid space next to you!
 (Stop receiving help)
 (도움 받지마)
 (Never mind...)
-(괜찮아요...)
+(그만두자...)
 (The SPEAKER will no longer help you.)
 (SPEAKER는 더 이상 당신을 돕지 않을 것입니다.)
 (You sigh as you realize you really need her help.)
@@ -15783,13 +15747,13 @@ Why not just call yourself Windsong?
 I am an adventurer.
 나는 모험가입니다.
 Mmmmph.
-음음.
+으읍.
 (SPEAKER blushes)|Ah, right then...
 (SPEAKER 붉어짐)|아, 그럼...
 (...)
 (...)
 (SPEAKER giggles)|Very well. I don't really care who you are.
-(스피커 낄낄거림)|좋아요. 당신이 누군지 별로 신경쓰지 않아요.
+(SPEAKER  낄낄거림)|좋아요. 당신이 누군지 별로 신경쓰지 않아요.
 I do not need to introduce myself.
 나 자신을 소개할 필요가 없습니다.
 Neither do I.
@@ -15807,9 +15771,9 @@ Mmmmm... (Blush)
 Reincarnated ones?
 환생자들?
 (SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue.
-(스피커가 고개를 갸웃한다)|일반적인 언어로 '좀비'라는 용어가 있는 것 같아요.
+(SPEAKER 가 고개를 갸웃한다)|일반적인 언어로 '좀비'라는 용어가 있는 것 같아요.
 (SPEAKER enjoys the discussion)|Normally, spirits pass on to the next life.|But with the right tricks, one can keep them here.|I plan to make them all proper bodies...|Eventually.
-(스피커가 토론을 즐긴다)|일반적으로 영혼은 다음 생으로 넘어간다.|그러나 올바른 트릭을 사용하면 여기에 보관할 수 있다.|나는 그것들을 모두 적절한 몸으로 만들 계획이다...|결국.
+(SPEAKER 가 토론을 즐긴다)|일반적으로 영혼은 다음 생으로 넘어간다.|그러나 올바른 트릭을 사용하면 여기에 보관할 수 있다.|나는 그것들을 모두 적절한 몸으로 만들 계획이다...|결국.
 But... reincarnated?
 하지만... 환생했다고?
 (...)
@@ -15819,13 +15783,13 @@ But... reincarnated?
 I am an adventurer.
 나는 모험가입니다.
 Mmmmph.
-음음.
+으읍.
 (SPEAKER giggles)|Hehe... you sound interested.
-(스피커 웃음)|헤헤...흥미가 있는 것 같군요.
+(SPEAKER  웃음)|헤헤...흥미가 있는 것 같군요.
 (...)
 (...)
 (SPEAKER frowns)|Never ask a woman about her age!
-(스피커 찡그린다)|절대 여자에게 나이를 묻지 마세요!
+(SPEAKER  찡그린다)|절대 여자에게 나이를 묻지 마세요!
 I take it you're the hag in charge?
 당신이 담당 노파라고 생각합니까?
 You are in charge, right?
@@ -15879,9 +15843,9 @@ Why does that matter to you?
 By what authority?
 어떤 권한으로?
 (SPEAKER tilts her head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries.
-(스피커가 고개를 갸웃한다)|음.... 어...|오래된 문명! 물론이죠!|나는 그들의 전통을 수세기 동안 지켜왔습니다.
+(SPEAKER 가 고개를 갸웃한다)|음.... 어...|오래된 문명! 물론이죠!|나는 그들의 전통을 수세기 동안 지켜왔습니다.
 (SPEAKER blushes)|Umm... That's because...|Oh shut up!
-(스피커 얼굴이 붉어짐)|음...그건...|아 닥쳐!
+(SPEAKER  얼굴이 붉어짐)|음...그건...|아 닥쳐!
 You don't sound too confident.
 자신감이 없으신 것 같군요.
 Who are you anyway?
@@ -15891,17 +15855,17 @@ Who are you anyway?
 Fair enough. I am an adventurer.
 그럴 수 있지. 나는 모험가입니다.
 Hmmph.
-흠.
+흐읍읍.
 (SPEAKER giggles)|Is that a challenge?
-(스피커 웃음)|그게 도전인가요?
+(SPEAKER  웃음)|그게 도전인가요?
 (Nod calmly)
 (조용히 끄덕인다)
 (SPEAKER grins)|Is that a challenge?
-(스피커가 웃는다)|그게 도전인가요?
+(SPEAKER 가 웃는다)|그게 도전인가요?
 We'll see about that.
 우리는 그것에 대해 볼 수 있습니다.
 Hmmph. (Scoff into your gag)
-흠. (당신의 개그에 비웃는다)
+흐읍읍. (당신의 개그에 비웃는다)
 It is indeed!
 정말이다!
 (Giggle)
@@ -15917,9 +15881,9 @@ Mmmpphh~ (Moan and wiggle seductively)
 A pet? What kind?
 애완 동물? 어떤 종류?
 (SPEAKER hops up and down excitedly)|Oh I've got dresses!|And all sorts of fun gear!|Maybe even this huge gag for you to chew on!
-(SPEAKER가 신나게 위아래로 뛰어다님)|오 드레스가 있어요!|그리고 온갖 종류의 재미있는 장비가 있어요!|아마도 당신이 씹을 수 있는 이 거대한 개그까지요!
+(SPEAKER 가 신나게 위아래로 뛰어다님)|오 드레스가 있어요!|그리고 온갖 종류의 재미있는 장비가 있어요!|아마도 당신이 씹을 수 있는 이 거대한 개그까지요!
 (SPEAKER grins)|Having second thoughts?
-(스피커가 웃는다)|생각이 바뀌었나요?
+(SPEAKER 가 웃는다)|생각이 바뀌었나요?
 That sounds... harsh.
 그건... 심한데.
 ...Maybe
@@ -15929,13 +15893,13 @@ Exciting!
 That sounds great. But who are you miss?
 그거 좋을 거 같아. 하지만 당신은 누구를 그리워합니까?
 Mmmmph~
-음~
+으읍읍~
 (SPEAKER giggles)|Hehe... We will have so much fun~
-(스피커 낄낄거림)|헤헤... 너무 재미있겠다~
+(SPEAKER  낄낄거림)|헤헤... 너무 재미있겠다~
 (...)
 (...)
 (SPEAKER giggles)|You don't have to consent, dear~
-(스피커 웃음)|동의하지 않아도 돼, 얘야~
+(SPEAKER  웃음)|동의하지 않아도 돼, 얘야~
 I never said I consented to being a pet!
 나는 내가 애완 동물이되는 데 동의했다고 말한 적이 없습니다!
 (Give her a puzzled look and shake your head)
@@ -15950,59 +15914,59 @@ No way!
 (아무 말도 없이 그녀를 공격한다)
 
 (SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|All who roam this place do so under my express permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
-(스피커가 목을 가다듬는다)|나는 이 묘지를 순수하고 거룩하게 유지하는 임무를 맡은 사람이다.|이 곳을 돌아다니는 모든 사람들은 나의 명시적인 허가 하에 그렇게 한다.|하지만 당신은? 나는 당신과 거래를 한 기억이 없다. |당신은 나에게 도전하기 위해 여기 왔습니까?
+(SPEAKER 가 목을 가다듬는다)|나는 이 묘지를 순수하고 거룩하게 유지하는 임무를 맡은 사람이다.|이 곳을 돌아다니는 모든 사람들은 나의 명시적인 허가 하에 그렇게 한다.|하지만 당신은? 나는 당신과 거래를 한 기억이 없다. |당신은 나에게 도전하기 위해 여기 왔습니까?
 I do what I want.
 나는 내가 원하는 것을 한다.
 (Glare at her and scoff)
 (그녀를 노려보며 비웃는다)
 (SPEAKER makes a big grin)|I take that you wish to challenge me?|Very well!|Come at me!
-(스피커가 활짝 웃는다)|나에게 도전하고 싶다고 생각합니까?|좋아요!|이리 와요!
+(SPEAKER 가 활짝 웃는다)|나에게 도전하고 싶다고 생각합니까?|좋아요!|이리 와요!
 You have no power over me
 당신은 나에 대한 권한이 없습니다
 Hmmph. (Stand proudly)
-흠. (자랑스럽게 서다)
+으읍. (자랑스럽게 서다)
 (SPEAKER smiles)|Then let us fight!|If I win, I will make you my pet.|If you win, I will let you pass.
-(스피커 미소)|그럼 우리 싸우자!|내가 이기면 너를 내 애완동물로 만들겠다.|네가 이기면 너를 통과시키겠다.
+(SPEAKER  미소)|그럼 우리 싸우자!|내가 이기면 너를 내 애완동물로 만들겠다.|네가 이기면 너를 통과시키겠다.
 I don't want to fight, miss...
 난 싸우고 싶지 않아, 아가씨...
 Mmph! (Shake your head frantically)
-음! (고개를 미친듯이 흔든다)
+읍! (고개를 미친듯이 흔든다)
 (SPEAKER giggles)|Come now, I want to see how good you are!
-(스피커 웃음)|이리 오세요, 당신이 얼마나 좋은지 보고 싶어요!
+(SPEAKER  웃음)|이리 오세요, 당신이 얼마나 좋은지 보고 싶어요!
 Yes, I am here to fight you.
 네, 당신과 싸우러 왔습니다.
 (Nod)
 (목례)
 (SPEAKER smiles)|Then what are we waiting for?
-(스피커 미소)|그럼 우리는 무엇을 기다리고 있는 거지?
+(SPEAKER  미소)|그럼 우리는 무엇을 기다리고 있는 거지?
 
 You're on!
 당신은 켜져 있습니다!
 Hmmmph!
-흠!
+흐읍읍!
 Let us duel!
 결투하자!
 Mmmmmghh!
-음음!
+읍흐읍읍!
 I suppose...
 아마도...
 Mmmmph...
-음...
+읍으...
 
 (SPEAKER smiles as she stands over you)|Well well. Look who won.
-(스피커가 당신을 바라보며 미소짓는다)|글쎄요. 누가 이겼는지 보세요.
+(SPEAKER 가 당신을 바라보며 미소짓는다)|글쎄요. 누가 이겼는지 보세요.
 (SPEAKER nods)|Absolutely. Now allow me to make my conditions clear.|You will wear my collar from now on.|Then you will be allowed to go.
-(스피커 고개 끄덕임)|당연합니다. 이제 제 조건을 분명히 하겠습니다.|지금부터는 제 옷깃을 착용하세요.|그럼 가셔도 됩니다.
+(SPEAKER  고개 끄덕임)|당연합니다. 이제 제 조건을 분명히 하겠습니다.|지금부터는 제 옷깃을 착용하세요.|그럼 가셔도 됩니다.
 (SPEAKER giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go... but only wearing my collar.
 (SPEAKER 킥킥)|당신은 저항할 위치에 있지 않습니다.|자, 그럼 분명히 할게요.|당신을 놓아줄게요...하지만 내 목걸이만 하고 있어요.
 You beat me fair and square.
 당신은 나를 공정하게 이겼습니다.
 Mmmph. (Submit)
-음. (제출)
+읍읍. (수락)
 You cheated!
 당신은 속였다!
 Mmmph! (Struggle weakly)
-음! (약하게 몸부림친다)
+읍! (약하게 몸부림친다)
 (Sigh and accept your fate)
 (한숨 쉬고 운명을 받아들여)
 (Accept the collar eagerly)
@@ -16010,19 +15974,19 @@ Mmmph! (Struggle weakly)
 (Accept the collar begrudgingly)
 (마지못해 옷깃을 받아)
 (SPEAKER presents you with her collar...)|(She locks it around your neck)|You are free to go now, dear!
-(SPEAKER가 당신에게 그녀의 옷깃을 선물합니다...)|(그녀는 당신의 목에 목걸이를 걸었습니다)|당신은 이제 가도 좋습니다, 얘야!
+(SPEAKER 가 당신에게 그녀의 옷깃을 선물합니다...)|(그녀는 당신의 목에 목걸이를 걸었습니다)|당신은 이제 가도 좋습니다, 얘야!
 
 (SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!
-(SPEAKER가 힘을 되찾기 위해 부적의 벽을 세움)|난... 아직 끝나지 않았어!
+(SPEAKER 가 힘을 되찾기 위해 부적의 벽을 세움)|난... 아직 끝나지 않았어!
 
 (SPEAKER is out of breath)|I... can't... believe... it...|She drops her keys...
-(스피커가 숨이 차다)|난... 믿을 수 없어... 믿을 수 없어...|열쇠를 떨어뜨리고...
+(SPEAKER 가 숨이 차다)|난... 믿을 수 없어... 믿을 수 없어...|열쇠를 떨어뜨리고...
 (SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a reward then...
 (SPEAKER 기가 막힌 듯)|R-정말요? 알았어...그럼 보상을 줄게...
 (Submit to her anyway)
 (어쨌든 그녀에게 제출)
 (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
-(스피커가 저항하지만 결국 당신은 그녀의 입에 재갈을 물려줍니다)|음음!
+(SPEAKER 가 저항하지만 결국 당신은 그녀의 입에 재갈을 물려줍니다)|음음!
 (Gag her)
 (개그 그녀)
 
@@ -16037,7 +16001,7 @@ Mmmph! (Struggle weakly)
 Thank you!
 고맙습니다!
 Mmmph!
-음!
+읍읍!
 I don't need your advice, strange ghostly person.
 네 충고는 필요 없어, 이상한 귀신아.
 (Glare at her)
@@ -16068,16 +16032,16 @@ This is totally a normal floor.|No doubt about it.
 This is the normal entrance to the dungeon.|The tutorial is at the beginning of the hall.
 여기가 일반 던전 입구입니다.|튜토리얼은 홀 시작 부분에 있습니다.
 This is the entrance to the ancient tombs.|It's harder than the normal entrance.
-여기가 고분 입구다.|일반 입구보다 어렵다.
+여기가 고대 무덤의 입구입니다.|이것은 일반 입구보다 어렵다.
 This part of the dungeon has been altered by the goddess of chaos.|The order of zones you'll go through is totally random.
 던전의 이 부분은 혼돈의 여신에 의해 변경되었습니다.|당신이 통과할 영역의 순서는 완전히 무작위입니다.
 Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
-광활한 정글 안에 비밀 사원이 있다는 전설이 있습니다.|페도라를 쓰고 보물을 찾으세요!
+광활한 정글 안에 비밀 사원이 있다는 전설이 있습니다.|중절모를 쓰고 보물을 찾으세요!
 You've gotten yourself lost wandering in the ruins.|The order of tilesets is reversed!
 당신은 폐허에서 헤매다 길을 잃었습니다. | 타일셋의 순서가 뒤바뀌었습니다!
 
 These are the stairs to the tutorial hall.
-여기가 튜토리얼 홀의 계단입니다.
+여기는 튜토리얼 홀의 계단입니다.
 
 Congratulations! You've completed the tutorial!|Now get in there and stay out of trouble~
 축하합니다! 튜토리얼을 완료했습니다!|이제 거기에 들어가서 문제를 피하세요~
@@ -16095,7 +16059,7 @@ Your WP, or willpower, is an important resource.|Without it, escaping from restr
 Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack).
 오 이런! 그 함정이 당신의 모든 의지력을 없앴습니다!|다행히 당신은 물약을 가지고 있습니다.|WP 막대 옆에 있는 '+' 아이콘을 클릭하여 마실 수 있습니다.|또한 하단 막대에서 인벤토리로 이동할 수 있습니다. |빠른 인벤토리 아이콘(백팩)도 있습니다.
 Another trap!|You'll notice that the trap also drained your stamina considerably, forcing you to kneel.|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|
-또 다른 함정!|함정으로 인해 체력이 상당히 소모되어 무릎을 꿇게 된 것을 알 수 있습니다.|위 방으로 후퇴하면 체력이 재생되는 동안 자신을 보호할 수 있습니다.|에서 문 닫기 버튼을 클릭하여 문을 닫으십시오. 하단 표시줄.|
+또 다른 함정!|함정으로 인해 스태미나가 상당히 소모되어 무릎을 꿇게 된 것을 알 수 있습니다.|위 방으로 후퇴하면 스태미나가 재생되는 동안 자신을 보호할 수 있습니다.|에서 문 닫기 버튼을 클릭하여 문을 닫으십시오. 하단 표시줄.|
 
 Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
 주문을 시전하는 데 사용되는 MP 또는 마나.|하지만 주문을 시전하려면 하나를 배워야 합니다.|오른쪽 하단의 Spells 버튼을 클릭합니다.|그런 다음 Flame Apprentice를 클릭하고 Firebolt를 잠금 해제하는 방법을 배웁니다. |그런 다음 뒤로 돌아가려면 스페이스바를 누르고 페이지를 전환하려면 오른쪽을 누르십시오.|Firebolt를 클릭하고 학습한 다음 슬롯 1에 할당하십시오.
@@ -16117,7 +16081,7 @@ That wasn't so hard, was it?|Now then, there's a treasure chest over here. Why d
 Yikes, looks like you're in a bind!|No worries, though. There's a key to those cuffs over there.|Simply hover over the cuffs item test on the left side.|Then, click the lock icon to remove the lock.|Finally, click the buckle to remove the cuffs.
 이런, 곤경에 처한 것 같군요!|그래도 걱정하지 마세요. 저기 수갑의 열쇠가 있습니다.|왼쪽의 수갑 항목 테스트 위로 마우스를 가져가면 됩니다.|그런 다음 자물쇠 아이콘을 클릭하여 잠그십시오.|마지막으로 버클을 클릭하여 커프스를 제거하십시오.
 I think we all know what's in the next chest.|It's important to understand the different ways you can escape.|You can struggle, which costs the most stamina|but makes other struggle methods faster.|You can cut, which requires a knife in hand.|You can remove, which represents untying or unbuckling.
-우리 모두는 다음 상자에 무엇이 있는지 알고 있다고 생각합니다.|탈출할 수 있는 다양한 방법을 이해하는 것이 중요합니다.|투쟁할 수 있습니다. 체력이 가장 많이 소모되지만|다른 투쟁 방법이 더 빨라집니다.|절단할 수 있습니다. 손에 칼.|제거할 수 있습니다.
+우리 모두는 다음 상자에 무엇이 있는지 알고 있다고 생각합니다.|탈출할 수 있는 다양한 방법을 이해하는 것이 중요합니다.|투쟁할 수 있습니다. 스태미나가 가장 많이 소모되지만|다른 투쟁 방법이 더 빨라집니다.|절단할 수 있습니다. 손에 칼.|제거할 수 있습니다.
 Ouch, that looked tight...|Sometimes you won't be able to struggle out of things.|You'll have to find some other way to take it off...
 아야, 빡빡해보이는데...|때때로 너는 물건에서 빠져나오지 못할 것이다.|그것을 벗을 다른 방법을 찾아야 할거야...
 There's a few zombies up ahead.|Fight your way through and claim the treasure!
@@ -16126,58 +16090,58 @@ There's a few zombies up ahead.|Fight your way through and claim the treasure!
 You're not feeling it...
 당신은 그것을 느끼지 않습니다 ...
 You close your eyes but the vibrations keep you from dozing off...
-눈을 감아도 진동 때문에 졸지 않는다...
+눈을 감아도 진동 때문에 잠이 오지 않는다...
 
 (A SPEAKER lies hogtied in front of you)|(She looks at you with pleading eyes,)|(and mumbles incoherently through her gag)
-(A SPEAKER가 당신 앞에 결박되어 누워 있습니다.)|(그녀는 애원하는 눈으로 당신을 바라보고 있습니다.)|(재갈을 물고 중얼중얼 중얼거립니다.)
+(A SPEAKER 가 당신 앞에 결박되어 누워 있습니다.)|(그녀는 애원하는 눈으로 당신을 바라보고 있습니다.)|(재갈을 물고 중얼중얼 중얼거립니다.)
 (A SPEAKER lies hogtied in front of you)|(She looks at you, mumbling and giggling into her gag)
-(A SPEAKER가 당신 앞에 결박되어 누워 있습니다.)|(그녀는 당신을 바라보며 중얼거리고 그녀의 재갈 속으로 낄낄거립니다)
+(A SPEAKER 가 당신 앞에 결박되어 누워 있습니다.)|(그녀는 당신을 바라보며 중얼거리고 그녀의 재갈 속으로 낄낄거립니다)
 (SPEAKER looks grateful)|Thank you so much|I shall join your party.
-(SPEAKER는 감사해 보인다)|정말 감사합니다|당신의 파티에 합류하겠습니다.
+(SPEAKER 는 감사해 보인다)|정말 감사합니다|당신의 파티에 합류하겠습니다.
 (SPEAKER looks grateful)|Thank you so much miss!|I owe you everything.
-(SPEAKER는 감사해 보인다)|정말 고마워요 아가씨!|당신에게 모든 것을 빚지고 있어요.
+(SPEAKER 는 감사해 보인다)|정말 고마워요 아가씨!|당신에게 모든 것을 빚지고 있어요.
 (SPEAKER groans and wriggles around uselessly)
-(SPEAKER가 신음하며 쓸데없이 몸부림친다)
+(SPEAKER 가 신음하며 쓸데없이 몸부림친다)
 (SPEAKER moans and rolls around, blushing deeply)
-(스피커가 신음하며 뒹굴며 얼굴을 붉히며)
+(SPEAKER 가 신음하며 뒹굴며 얼굴을 붉히며)
 Untie her
-그녀를 풀어
+그녀를 풀어준다
 Make sure she is tight and secure
-그녀가 단단하고 안전한지 확인하십시오
+그녀가 단단하게 꽉 조여져 있는지 확인한다
 
 (A SPEAKER bumps into you while immersed in her thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?
-(생각에 잠긴 당신과 마주친 스피커)|오! 여보세요!|말해, 당신은 사랑스러워 보인다...|내가 뭔가 찾는 것을 도와줄래?
+(생각에 잠긴 당신과 마주친 SPEAKER)|오! 여보세요!|말해, 당신은 사랑스러워 보인다...|내가 뭔가 찾는 것을 도와줄래?
 (The SPEAKER jumps up and down)|Ah, wonderful!|I've misplaced one of my dresses.|If you could find one, wear it, and bring it to me,|I'd greatly appreciate it! Thanks!
-(스피커가 위아래로 펄쩍펄쩍 뛰며)|아, 멋지군!|내 드레스 중 하나를 잃어버렸어.|찾을 수 있으면 입고, 가져다 줘,|정말 고맙겠어! 고마워! 
+(SPEAKER 가 위아래로 펄쩍펄쩍 뛰며)|아, 멋지군!|내 드레스 중 하나를 잃어버렸어.|찾을 수 있으면 입고, 가져다 줘,|정말 고맙겠어! 고마워! 
 (The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(She snaps a photo of you using a magic crystal)
-(스피커가 광견병에 걸린 동물처럼 당신을 응시합니다)|와위! 당신 정말 멋져요!|정말 감사합니다!|(그녀는 마법 수정을 사용하여 당신의 사진을 찍습니다)
+(SPEAKER 가 광견병에 걸린 동물처럼 당신을 응시합니다)|와위! 당신 정말 멋져요!|정말 감사합니다!|(그녀는 마법 수정을 사용하여 당신의 사진을 찍습니다)
 (The SPEAKER giggles)|I never said I'd take it off, did I?
-(스피커 낄낄거림)|내가 벗겠다고 말한 적 없지?
+(SPEAKER 가 낄낄거린다)|내가 벗겠다고 말한 적 없지?
 (The SPEAKER smiles)|Sure thing!
-(스피커가 웃는다)|물론이죠!
+(SPEAKER 가 웃는다)|물론이죠!
 (Show interest)
 (흥미를 보이다)
 I found your dress...
 너의 드레스를 찾았어...
 Mmmph... (Found the dress!)
-음... (드레스 찾았다!)
+으읍읍... (드레스를 발견했다!)
 Great! Can you take it off?
 엄청난! 벗을 수 있습니까?
 Mmmmm! (Struggle)
-음! (고심하다)
+흐읍읍! (저항한다)
 
 (A SPEAKER clutching her books approaches you)|Miss adventurer!|I happen to need a magic scroll of any kind.|It's for my studies.
-(책을 움켜쥐고 있는 스피커가 당신에게 다가온다)|모험가 양!|우연히 어떤 종류의 마법 두루마리가 필요합니다.|내 연구를 위한 것입니다.
+(책을 움켜쥐고 있는 SPEAKER 가 당신에게 다가온다)|모험가 양!|우연히 어떤 종류의 마법 두루마리가 필요합니다.|내 연구를 위한 것입니다.
 (The SPEAKER smiles)|Yes, thank you so much!|It's been so difficult to get them lately.|The magic library is closed off these days,|and there are mean people trying to get the scrolls back...
-(스피커 미소)|네, 정말 감사합니다!|요즘 구하기가 너무 힘들어요.|요즘 마법 도서관이 문을 닫았는데|두루마리를 되찾으려는 비열한 사람들이 있어요...
+(SPEAKER 가 미소짓는다)|네, 정말 감사합니다!|요즘 구하기가 너무 힘들어요.|요즘 마법 도서관이 문을 닫았는데|두루마리를 되찾으려는 비열한 사람들이 있어요...
 (The SPEAKER is happy)|Thank you so much!
-(스피커가 기뻐함)|정말 감사합니다!
+(SPEAKER 가 기뻐함)|정말 감사합니다!
 (The SPEAKER is happy)|Thank you so much!
-(스피커가 기뻐함)|정말 감사합니다!
+(SPEAKER 가 기뻐함)|정말 감사합니다!
 (The SPEAKER is happy)|Thank you so much!
-(스피커가 기뻐함)|정말 감사합니다!
+(SPEAKER 가 기뻐함)|정말 감사합니다!
 (The SPEAKER is happy)|Thank you so much!
-(스피커가 기뻐함)|정말 감사합니다!
+(SPEAKER 가 기뻐함)|정말 감사합니다!
 (Show interest)
 (흥미를 보이다)
 Give her a Scroll of Sauntering
@@ -16197,30 +16161,30 @@ Give her a Scroll of Purity
 (흥미를 보이다)
 
 (A SPEAKER scoffs in your direction)|Well? You lookin' for work or no?
-(스피커가 당신을 향해 비웃는다)|글쎄요? 일자리를 구하는 건가요, 없는 건가요?
+(SPEAKER 가 당신을 향해 비웃는다)|글쎄요? 일자리를 구하는 건가요, 없는 건가요?
 (The SPEAKER grins)|A bunch of delinquents stormed out recently.|They're looking for a way out of their belts.|Someone oughta show em their place,|if you catch what I'm saying.
-(스피커가 웃는다)|최근에 한 무리의 불량자들이 들이닥쳤습니다.|그들은 벨트에서 벗어날 방법을 찾고 있습니다.|누군가가 그들에게 그들의 위치를 ​​보여줘야 합니다|내가 말하는 것을 이해한다면.
+(SPEAKER 가 웃는다)|최근에 한 무리의 불량자들이 들이닥쳤습니다.|그들은 벨트에서 벗어날 방법을 찾고 있습니다.|누군가가 그들에게 그들의 위치를 ​​보여줘야 합니다|내가 말하는 것을 이해한다면.
 (Nod)
 (목례)
 
 (A SPEAKER approaches you in your cell)|Since you've been a bad girl,|we're taking you to the high-security prison.
-(감옥에서 스피커가 접근함)|당신이 나쁜 여자였으니|우리는 당신을 높은 보안 감옥으로 데려갈 것입니다.
+(감옥에서 SPEAKER 가 접근함)|당신이 나쁜 여자였으니|우리는 당신을 높은 보안 감옥으로 데려갈 것입니다.
 (The SPEAKER folds her arms)|Want to or not, you're going.
-(스피커가 팔짱을 끼며)|원하든 원하지 않든, 당신은 갑니다.
+(SPEAKER 가 팔짱을 끼며)|원하든 원하지 않든, 당신은 갑니다.
 (Resist)
 (저항하다)
 (Submit)
 (제출하다)
 
 (A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
-(A SPEAKER가 팔짱을 끼며)|누구를 보고 있니?|오, 모험가네.|말해, 당신은|우리와 일하는 데 관심이 없을 거야, 그렇지?
+(A SPEAKER 가 팔짱을 끼며)|누구를 보고 있니?|오, 모험가네.|말해, 당신은|우리와 일하는 데 관심이 없을 거야, 그렇지?
 (The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out.
 (발표자가 웃는다)|그게 더 좋아.|특종: 우리 중 하나가 다음 층에서 잡혔어.|가서 그녀를 꺼내야 해.
 (Show interest)
 (흥미를 보이다)
 
 (The SPEAKER sits bound in high-security manacles)|You'll need to open the lock to get her out...
-(스피커는 보안이 철저한 수갑에 묶여 있습니다.)|그녀를 꺼내려면 자물쇠를 열어야 합니다...
+(SPEAKER 는 보안이 철저한 수갑에 묶여 있습니다.)|그녀를 꺼내려면 자물쇠를 열어야 합니다...
 (You don't have any keys that work on the lock)
 (자물쇠에 작동하는 열쇠가 없습니다)
 (You can't help her, bound as tightly as you are...)
@@ -16228,64 +16192,64 @@ Give her a Scroll of Purity
 (You unlock her, fumbling around for a while with your bound hands)
 (당신은 그녀의 잠금을 해제하고, 묶인 손으로 잠시 더듬거립니다)
 (You unlock the SPEAKER)|Thank you!|Let's get out of here!
-(스피커 잠금 해제)|고맙습니다!|여기서 나가자!
+(SPEAKER 잠금 해제)|고맙습니다!|여기서 나가자!
 (You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
-(스피커 잠금 해제)|으음!|(재갈을 물고 싶어해...)
+(SPEAKER 잠금 해제)|으읍!|(그녀는 재갈을 그대로 물고있고 싶어한다...)
 (You don't have any lockpicks)
 (자물쇠가 없습니다)
 (You can't pick the lock with your hands bound)
 (손이 묶인 상태에서 자물쇠를 열 수 없습니다)
 (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
-(잠시 후 스피커를 풀어줍니다)|감사합니다!|가자!
+(잠시 후 SPEAKER 를 풀어줍니다)|감사합니다!|가자!
 (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
-(잠시 후, 당신은 스피커를 풀어줍니다)|으음!|(당신이 재갈을 물릴 때 그녀는 고개를 흔든다...)
+(잠시 후, 당신은 SPEAKER 를 풀어줍니다)|으읍읍!|(당신이 재갈을 물릴 때 그녀는 고개를 흔든다...)
 (You don't have enough mana for a command word)
 (명령어를 쓸 마나가 부족합니다)
 (Try as you might, your mouth is sealed tight)
 (힘껏 해봐, 입이 꽉 막혀)
 (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
-(스피커를 풀어주라는 명령을 내림)|대단히 감사합니다!|가자!
+(SPEAKER 를 풀어주라는 명령을 내림)|대단히 감사합니다!|가자!
 (You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
-(스피커를 풀어주라는 명령을 내림)|으음!|(그녀는 재갈을 물려...)
+(SPEAKER 를 풀어주라는 명령을 내림)|으으읍!|(그녀는 재갈을 물려...)
 
 Use a key to unlock her
-열쇠를 사용하여 잠금 해제
+열쇠를 사용하여 그녀를 풀어준다
 Try to pick her restraints
-그녀의 구속을 선택하려고
+그녀의 구속구를 따려고 시도한다
 Use a command word
-명령어 사용
+명령어를 쓴다
 
 An enemy found you while you were busy!
 당신이 바쁠 때 적이 당신을 발견했습니다!
 
 (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
-(A SPEAKER가 창살을 두드려 깨운다)|일어나! 여기서 나가자!|(그녀는 간신히 감방 문을 잠궜다)
+(A SPEAKER 가 창살을 두드려 깨운다)|일어나! 여기서 나가자!|(그녀는 간신히 감방 문을 잠궜다)
 (You wake up to find a SPEAKER creeping up outside the door)|You've been marked as a person of interest.|We are here to escort you out of this place.
-(당신은 잠에서 깨어나 문밖으로 살금살금 다가오는 스피커를 발견합니다.)|당신은 요주의 인물로 지정되었습니다.|우리는 당신을 이곳 밖으로 안내하기 위해 왔습니다.
+(당신은 잠에서 깨어나 문밖으로 살금살금 다가오는 SPEAKER 를 발견합니다.)|당신은 요주의 인물로 지정되었습니다.|우리는 당신을 이곳 밖으로 안내하기 위해 왔습니다.
 (A SPEAKER wakes you up by banging on the bars)|Hey wake up!|You should join me and my pals here~|Maybe you'll join them once we're out of here?
-(A SPEAKER가 창살을 두드려 깨운다)|야 일어나!|여기서 나와 내 친구들과 합류해야 해~|우리가 여기서 나가면 그들과 합류할 수 있겠지?
+(A SPEAKER 가 창살을 두드려 깨운다)|야 일어나!|여기서 나와 내 친구들과 합류해야 해~|우리가 여기서 나가면 그들과 합류할 수 있겠지?
 (A SPEAKER wakes you up by banging on the bars)|I have been sent to inform you...|...that you are of good standing with the Council.|That being said, I'm only doing this because of procedure.
-(A SPEAKER가 창살을 두드리며 깨운다)|나는 당신에게 알리기 위해 보냈습니다...|...당신이 의회에서 좋은 평판을 가지고 있다는 것을.|그러니까, 내가 이렇게 하는 이유는 절차의.
+(A SPEAKER 가 창살을 두드리며 깨운다)|나는 당신에게 알리기 위해 보냈습니다...|...당신이 의회에서 좋은 평판을 가지고 있다는 것을.|그러니까, 내가 이렇게 하는 이유는 절차의.
 (A SPEAKER wakes you up by banging on the bars)|Greetings, follower of the blessed kitty!|Because of your faith, we have been sent to rescue you!
-(스피커가 창살을 두드리며 깨운다)|안녕하세요, 축복받은 고양이의 추종자여!|당신의 믿음 때문에, 우리는 당신을 구출하기 위해 보내졌습니다!
+(SPEAKER 가 창살을 두드리며 깨운다)|안녕하세요, 축복받은 고양이의 추종자여!|당신의 믿음 때문에, 우리는 당신을 구출하기 위해 보내졌습니다!
 (You sense a presence nearby and look up to see a SPEAKER)|Because you are one, we have come to free you.|Do not take this as an excuse|to get yourself into further trouble.
-(근처의 존재를 감지하고 위를 올려다보면 SPEAKER가 보입니다.)|당신이 하나이기 때문에 우리는 당신을 구하러 왔습니다.
+(근처의 존재를 감지하고 위를 올려다보면 SPEAKER 가 보입니다.)|당신이 하나이기 때문에 우리는 당신을 구하러 왔습니다.
 (A SPEAKER wakes you up with the sound of copious fabric rustling)|Oh why hello there!|Would you be interested in a trial run of my latest product?|Of course, we'll have to get you out of here first...
-(A SPEAKER가 풍성한 천이 바스락거리는 소리로 당신을 깨웁니다.)|오 왜 안녕하십니까!|제 최신 제품의 시운전에 관심이 있으십니까?|물론 먼저 여기서 당신을 내보내야 합니다. ...
+(A SPEAKER 가 풍성한 천이 바스락거리는 소리로 당신을 깨웁니다.)|오 왜 안녕하십니까!|제 최신 제품의 시운전에 관심이 있으십니까?|물론 먼저 여기서 당신을 내보내야 합니다. ...
 (A SPEAKER wakes you up by banging on the bars)|Hello my pretty~|I thought to myself I'd rather have you than these folk.|Now why don't you come along and follow me...
-(A SPEAKER가 창살을 두드리며 깨운다)|안녕 내 예쁜아~|나는 이 사람들보다 네가 있는 게 낫다고 생각했어.|이제 나를 따라와...
+(A SPEAKER 가 창살을 두드리며 깨운다)|안녕 내 예쁜아~|나는 이 사람들보다 네가 있는 게 낫다고 생각했어.|이제 나를 따라와...
 (A SPEAKER wakes you up by banging on the bars)|Um... hello!|I received a quest to help you out of here!|Now, where do we go...
-(스피커가 창살을 두드리며 깨운다)|음...안녕하세요!|여기서 나갈 수 있도록 도와달라는 퀘스트를 받았어요!|자, 이제 어디로...
+(SPEAKER 가 창살을 두드리며 깨운다)|음...안녕하세요!|여기서 나갈 수 있도록 도와달라는 퀘스트를 받았어요!|자, 이제 어디로...
 (You wake up to find a SPEAKER whispering to you)|Greetings.|We've been sent to free you.|Let's get moving.
-(당신에게 속삭이는 SPEAKER를 발견하기 위해 깨어납니다.)|안녕하세요.|당신을 구출하기 위해 우리를 보냈습니다.|가자.
+(당신에게 속삭이는 SPEAKER 를 발견하기 위해 깨어납니다.)|안녕하세요.|당신을 구출하기 위해 우리를 보냈습니다.|가자.
 (A SPEAKER wakes you up by banging loudly)|Hey! Good news!|My friends and I came to rescue you!
-(A SPEAKER가 크게 두드리며 깨운다)|이봐! 좋은 소식!|내 친구들과 내가 너를 구하러 왔다!
+(A SPEAKER 가 크게 두드리며 깨운다)|이봐! 좋은 소식!|내 친구들과 내가 너를 구하러 왔다!
 (A SPEAKER wakes you up by knocking on the bars)|Hey, wake up.|I happen to like you, so we're going to get you out of here.
-(A SPEAKER가 창살을 두드려서 깨운다)|야, 일어나.|우연히 네가 좋아서 여기서 나가게 해줄게.
+(A SPEAKER 가 창살을 두드려서 깨운다)|야, 일어나.|우연히 네가 좋아서 여기서 나가게 해줄게.
 (A SPEAKER flashes a bright light in your direction)|Prisoner 74121 located. Commence transfer to different location.
-(스피커가 당신을 향해 밝은 빛을 비춥니다)|수감자 74121을 찾았습니다. 다른 위치로 이송을 시작하십시오.
+(SPEAKER 가 당신을 향해 밝은 빛을 비춥니다)|수감자 74121을 찾았습니다. 다른 위치로 이송을 시작하십시오.
 (A SPEAKER wakes you up)|We came to rescue you. Come on!
-(스피커가 당신을 깨운다)|우리는 당신을 구하러 왔습니다. 어서!
+(SPEAKER 가 당신을 깨운다)|우리는 당신을 구하러 왔습니다. 어서!
 
 (The bed looks comfy and inviting)|(Napping here will restore half of your willpower)|(You can only sleep once per floor)
 (침대가 편안하고 매력적으로 보입니다.)|(여기서 낮잠을 자면 의지력이 반으로 회복됩니다.)|(한 층에 한 번만 잘 수 있습니다.)
@@ -16340,7 +16304,7 @@ You can hardly make a noise...
 거의 소리를 낼 수 없습니다...
 
 *clink*
-*땡그랑 소리*
+*땡그랑*
 
 You yelp as the EnemyName activates your RestraintName
 EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니다.
