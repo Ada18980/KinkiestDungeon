@@ -187,6 +187,7 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 			for (let e of KinkyDungeonEntities) {
 				if (e == enemy) continue;
 				if (KDHelpless(e)) continue;
+				if (KDGetFaction(e) == "Natural") continue;
 				if (enemy.Enemy.noTargetSilenced && e.silence > 0) continue;
 				if ((e.Enemy && !e.Enemy.noAttack && KDHostile(enemy, e))) {
 					let dist = Math.sqrt((e.x - enemy.x)*(e.x - enemy.x)
@@ -1084,7 +1085,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 	if (enemy.disarm) statuses.push({name: "Disarm", count: enemy.disarm});
 	if (enemy.blind) statuses.push({name: "Blind", count: enemy.blind});
 	if (enemy.slow) statuses.push({name: "Slow", count: enemy.slow});
-	if (KDBoundEffects(enemy)) statuses.push({name: "Bound" + KDBoundEffects(enemy)});
+	if (KDBoundEffects(enemy)) statuses.push({name: "Bound" + (KDHelpless(enemy) ? 10 : KDBoundEffects(enemy))});
 	if (KDEntityBuffedStat(enemy, "Plug")) statuses.push({name: "Plug", count: undefined});
 	if (KDEntityBuffedStat(enemy, "Chastity")) statuses.push({name: "Belt", count: undefined});
 
@@ -3474,6 +3475,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 										if (count >= protection) {
 											bb = KinkyDungeonAddRestraintIfWeaker(r, AIData.power, KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy.Enemy.bypass, enemy.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, KDGetFaction(enemy), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, enemy) * 2;
 											if (bb) {
+												if (KDGroupBlocked(r.Group) && !enemy.Enemy.bypass) {
+													KinkyDungeonSendTextMessage(
+														5, TextGet("KDBypasses")
+															.replace("RestraintName", TextGet("Restraint" + r.name))
+															.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+														"#ffff00", 1);
+												}
 												if (restraintFromInventory.includes(r.name)) {
 													restraintFromInventory.splice(restraintFromInventory.indexOf(r.name), 1);
 													if (enemy.items?.includes(r.name)) {

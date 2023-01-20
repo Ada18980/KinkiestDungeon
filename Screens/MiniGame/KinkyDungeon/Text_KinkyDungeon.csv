@@ -621,7 +621,7 @@ StatDistraction,"DP: PERCENT%"
 StatStamina,"SP: CURRENT/MAX"
 StatWillpower,"Willpower: CURRENT/MAX"
 StatMana,"MP: CURRENT/MAX"
-TooltipMana,"Mana slowly recovers from a pool equal to 4x your max mana. Drink potions to restore the pool."
+TooltipMana,"Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool."
 TooltipDistraction,"Your minimum distraction increases over time as you encounter distracting things."
 TooltipStamina,"Stamina recovers more quickly when you aren't spending it."
 TooltipWill,"Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape."
@@ -643,6 +643,7 @@ KDWait,"Wait until interrupted"
 KDAutoStruggle,"Auto-struggle"
 KDAutoPath,"Auto-path"
 KDSwitchWeapon,"Quick-Swap Weapon"
+KDInspect,"Inspect"
 KDPass,Pass NPCs
 KDDoor,Close a Door
 KDSprint,Sprint/Hop
@@ -1298,6 +1299,7 @@ KinkyDungeonAngelDefeated,"Angel: MMMMMPHH!!!"
 KinkyDungeonAngelUnlock,"(The angel looks puzzled and unlocks your divine restraints)"
 
 KDArmorBlock,"Your ArmorName blocks the EnemyName's attack, falling off in the process."
+KDBypasses,"The EnemyName bypasses your security to add the RestraintName!"
 KDAttackBlocked,"The EnemyName attacks you, but you block the attack!"
 KDRestraintBlockedItem,"Blocked!"
 
@@ -2626,6 +2628,8 @@ KinkyDungeonShrineTooltipNoTrap,"You sense that the chest is safe to open."
 
 KinkyDungeonDrinkShrine,"Drink"
 KinkyDungeonBottleShrine,"Bottle"
+KDNoRestraints,"You have no restraints to 'offer' to the goddess."
+KDNoMana,"This shrine's mana pool is empty."
 KinkyDungeonPoolDrink,"You drink from the pool and and absorb its energies."
 KinkyDungeonPoolDrinkFace,"You absorb the pool's energies through your face."
 KinkyDungeonPoolBottle,"You collect what mana you can in a bottle."
@@ -5144,6 +5148,7 @@ KinkyDungeonSpellCastSlimethrower,You project a pool of sticky slime!
 KinkyDungeonSpellHeartArrow,Arrow of Love
 KinkyDungeonSpellCastHeartArrow,You loose a glowing arrow!
 KinkyDungeonSpellBondageBustBeam,Bondage Buster
+KinkyDungeonSpellEnemyBlast,Blaster
 KinkyDungeonSpellCastBondageBust,You charge up a beam and fire it!
 KinkyDungeonSpellCastDisarm,You swing your weapon and pull away the target's equipment!
 KinkyDungeonSpellCastBeltStrike,You swing Dragonslaver and it lashes out in a whip-like fashion!
@@ -5942,8 +5947,14 @@ KDStatusTooltipEnemyDisarm,Disarmed
 KDStatusTooltipEnemyBlind,Blinded
 KDStatusTooltipEnemyBound1,Restrained!
 KDStatusTooltipEnemyBound2,Restricted!
-KDStatusTooltipEnemyBound3,Trussed up!
+KDStatusTooltipEnemyBound3,Immobilized!
 KDStatusTooltipEnemyBound4,Fully Bound!
+KDStatusTooltipEnemyBound5,Trussed up!
+KDStatusTooltipEnemyBound6,Secured!
+KDStatusTooltipEnemyBound7,Trussed up!
+KDStatusTooltipEnemyBound8,Trussed up!
+KDStatusTooltipEnemyBound9,Trussed up!
+KDStatusTooltipEnemyBound10,Helpless!
 KDStatusTooltipEnemyBelt,Belted
 KDStatusTooltipEnemyPlug,Wearing a toy
 KDStatusTooltipEnemyVibed,Vibed!

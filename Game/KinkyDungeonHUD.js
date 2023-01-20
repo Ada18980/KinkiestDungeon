@@ -1256,7 +1256,7 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 		DrawTextFitKD(TextGet("TooltipStamina"), x-ttOffset, MouseY, 1000, "#ffffff", "#333333", 20, "right");
 	}
 	if (MouseIn(x, y + heightPerBar*2.45, width, heightPerBar*0.45)) {
-		DrawTextFitKD(TextGet("TooltipMana"), x-ttOffset, MouseY, 1000, "#ffffff", "#333333", 20, "right");
+		DrawTextFitKD(TextGet("TooltipMana").replace("POOLMANA", "" + KinkyDungeonStatManaPoolMax * 10), x-ttOffset, MouseY, 1000, "#ffffff", "#333333", 20, "right");
 	}
 	if (MouseIn(x, y + heightPerBar*3.45, width, heightPerBar*0.45)) {
 		DrawTextFitKD(TextGet("TooltipWill"), x-ttOffset, MouseY, 1000, "#ffffff", "#333333", 20, "right");
@@ -1475,7 +1475,7 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDAutoPath";}
 	// eslint-disable-next-line no-dupe-else-if
-	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "Inspect";}
+	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDInspect";}
 
 	else if (MouseIn(x, y+i*heightPerBar + switchAdj, width + 5, 60)) {
 		str = "KDSwitchWeapon";
