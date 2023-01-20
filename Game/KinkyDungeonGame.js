@@ -941,10 +941,10 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 	let filterTagsCluster = ["boss", "miniboss"];
 
 	let spawnBoxes = [
-		{requiredTags: ["boss"], tags: [], currentCount: 0, maxCount: 0.001},
-		{requiredTags: ["miniboss"], tags: [], currentCount: 0, maxCount: 0.1},
-		{requiredTags: ["elite"], tags: [], currentCount: 0, maxCount: 0.2},
-		{requiredTags: ["minor"], tags: [], currentCount: 0, maxCount: 0.2},
+		{requiredTags: ["boss"], tags: [], currentCount: 0, maxCount: 0.025},
+		{requiredTags: ["miniboss"], tags: [], currentCount: 0, maxCount: 0.075},
+		{requiredTags: ["elite"], tags: [], currentCount: 0, maxCount: 0.15},
+		{requiredTags: ["minor"], tags: [], currentCount: 0, maxCount: 0.1},
 	];
 	if (KDGameData.MapMod) {
 		let mapMod = KDMapMods[KDGameData.MapMod];
