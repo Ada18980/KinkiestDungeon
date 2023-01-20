@@ -72,7 +72,7 @@ async function KDExecuteMods() {
 		console.log(blob);
 		let reader = new FileReader();
 
-		if (entry.filename.endsWith('.js')) {
+		if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
 			let file = new File([blob], entry.filename);
 			// Eval js files. eval() is dangerous. Don't load untrusted mods.
 			reader.onload = function(event) {

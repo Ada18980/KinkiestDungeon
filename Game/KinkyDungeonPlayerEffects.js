@@ -8,6 +8,30 @@ let KDPlayerEffects = {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
 		KinkyDungeonSendTextMessage(Math.min(playerEffect.power, 5), TextGet("KinkyDungeonDamageSelf").replace("DamageDealt", dmg.string), "#ff0000", 1);
 		if (dmg.happened) return {sfx: undefined, effect: true}; return {sfx: undefined, effect: false};
+	},
+	"MaidChastity": (damage, playerEffect, spell, faction, bullet) => {
+		if (KinkyDungeonFlags.get("ChastityBelts")) {
+			// Tease the player
+			/*if (KinkyDungeonFlags.get("Vibes")) {
+				let dmg = KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
+				KinkyDungeonSendTextMessage(Math.min(playerEffect.power, 5), TextGet("KDMaidforceHeadVibe").replace("DamageDealt", dmg.string), "#ff9999", 1);
+				if (dmg.happened) return {sfx: "Vibe", effect: true}; return {sfx: undefined, effect: false};
+			}*/
+		} else {
+			let restrained = false;
+			for (let i = 0; i < 4; i++) {
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["maidVibeRestraints"]}, MiniGameKinkyDungeonLevel + (playerEffect.level || 0), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+				if (restraintAdd && KinkyDungeonAddRestraintIfWeaker(restraintAdd, playerEffect.tightness || 0, false, undefined, false, false, undefined, faction)) {
+					KDSendStatus('bound', restraintAdd.name, "maidhead");
+					restrained = true;
+				}
+			}
+			if (restrained)
+				KinkyDungeonSendTextMessage(8, TextGet("KDMaidforceHeadBelting"), "#ff5555", 2, false, true);
+
+			return {sfx: "LockHeavy", effect: restrained};
+		}
+		return {sfx: undefined, effect: false};
 	}
 };
 
@@ -21,7 +45,11 @@ function KinkyDungeonPlayerEffect(damage, playerEffect, spell, faction, bullet) 
 	if (playerEffect.hitTag && !KDPlayerHitBy.includes(playerEffect.hitTag)) KDPlayerHitBy.push(playerEffect.hitTag);
 	else if (playerEffect.hitTag) return;
 	if (!playerEffect.chance || KDRandom() < playerEffect.chance) {
-		if (playerEffect.name == "Ampule") {
+		if (KDPlayerEffects[playerEffect.name]) {
+			let ret = KDPlayerEffects[playerEffect.name](damage, playerEffect, spell, faction, bullet);
+			if (ret.sfx) sfx = ret.sfx;
+			effect = ret.effect;
+		} else if (playerEffect.name == "Ampule") {
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSpellShatter" + spell.name), "#ff0000", 1);
 			effect = true;
 		} else if (playerEffect.name == "AmpuleBlue") {
@@ -569,7 +597,7 @@ function KinkyDungeonPlayerEffect(damage, playerEffect, spell, faction, bullet) 
 			KinkyDungeonSlowMoveTurns = 8;
 			KinkyDungeonStatBlind = 8;
 			KinkyDungeonSleepiness = 8;
-			KinkyDungeonAlert = 6;
+			KinkyDungeonAlert = 5;
 			effect = true;
 		} else if (playerEffect.name == "Drench") {
 			KinkyDungeonSendTextMessage(4, TextGet("KDEffectDrench"), "#9999ff", 3);
@@ -627,10 +655,6 @@ function KinkyDungeonPlayerEffect(damage, playerEffect, spell, faction, bullet) 
 			KinkyDungeonStatBind = Math.max(0, playerEffect.time);
 			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonShadowBind"), "#ff0000", playerEffect.time);
 			effect = true;
-		} else if (KDPlayerEffects[playerEffect.name]) {
-			let ret = KDPlayerEffects[playerEffect.name](damage, playerEffect, spell, faction, bullet);
-			if (ret.sfx) sfx = ret.sfx;
-			effect = ret.effect;
 		}
 	}
 

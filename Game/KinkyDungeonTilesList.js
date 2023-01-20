@@ -64,17 +64,23 @@ let KDMoveObjectFunctions = {
 				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFeet"), "#88ff88", 2);
 				open = true;
 			} else {
+				let grace = 0;
+				if (KinkyDungeonFlags.get("failUnfairFirst") && !KinkyDungeonFlags.get("failUnfair")) grace = 0.4;
 				let armsbound = KinkyDungeonIsArmsBound(true, true);
-				if (KDRandom() < (armsbound ? KDDoorKnobChance : KDDoorKnobChanceArms)) {
+				if (KDRandom() - grace < (armsbound ? KDDoorKnobChance : KDDoorKnobChanceArms)) {
 					KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobSuccess" + ((armsbound) ? "" : "Arms")), "#88ff88", 2);
 					open = true;
-				} else if (KDRandom() < (armsbound ? KDDoorAttractChance : KDDoorAttractChanceArms) && DialogueBringNearbyEnemy(moveX, moveY, 10)) {
+				} else if (KDRandom() - grace < (armsbound ? KDDoorAttractChance : KDDoorAttractChanceArms) && DialogueBringNearbyEnemy(moveX, moveY, 10)) {
 					KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobAttract" + ((armsbound) ? "" : "Arms")), "#ff5555", 2);
 					KinkyDungeonMakeNoise(armsbound ? 6 : 3, moveX, moveY);
 					open = true;
 				} else {
 					KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFail" + (armsbound ? "" : "Arms")), "#ff5555", 2);
 					KinkyDungeonMakeNoise(armsbound ? 6 : 3, moveX, moveY);
+					if (!KinkyDungeonFlags.get("failUnfairFirst")) {
+						KinkyDungeonSetFlag("failUnfair", 5);
+						KinkyDungeonSetFlag("failUnfairFirst", 10);
+					}
 					if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Locked.ogg");
 				}
 			}
@@ -104,7 +110,7 @@ let KDMoveObjectFunctions = {
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2, true);
 		} else {
 			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType, roll, KinkyDungeonTilesGet(moveX + "," +moveY), undefined, noTrap);
-			if (lootTrap) KDSpawnLootTrap(moveX, moveY, lootTrap.trap, lootTrap.mult, lootTrap.duration);
+			if (lootTrap) KDSpawnLootTrap(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, lootTrap.trap, lootTrap.mult, lootTrap.duration);
 			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/ChestOpen.ogg");
 			KinkyDungeonMapSet(moveX, moveY, 'c');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
@@ -136,7 +142,7 @@ let KDMoveObjectFunctions = {
 		return true;
 	},
 	'-': (moveX, moveY) => { // Open the chest
-		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonObjectChargerDestroyed"), "gray", 2);
+		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonObjectChargerDestroyed"), "#999999", 1, true);
 		return true;
 	},
 };
@@ -304,14 +310,18 @@ let KDEffectTileFunctions = {
 	"Ice": (delta, entity, tile) => {
 		if ((!entity.player && !entity.Enemy.tags.ice && !entity.Enemy.tags.nofreeze) || (entity.player && !KDChillWalk(entity)))
 			KinkyDungeonApplyBuffToEntity(entity, KDChilled);
-		if (entity.player && KinkyDungeonPlayerBuffs.Slipping)
+		if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
+			KinkyDungeonSetFlag("slipped", 1);
+		}
 		return true;
 	},
 	"Water": (delta, entity, tile) => {
 		if (tile.pauseSprite == tile.name + "Frozen") {
-			if (entity.player && KinkyDungeonPlayerBuffs.Slipping)
+			if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
 				KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
+				KinkyDungeonSetFlag("slipped", 1);
+			}
 		} else if (KDWettable(entity)) {
 			KinkyDungeonApplyBuffToEntity(entity, KDDrenched);
 			KinkyDungeonApplyBuffToEntity(entity, KDDrenched2);
@@ -528,16 +538,18 @@ let KDEffectTileMoveOnFunctions = {
 		return {cancelmove: false, returnvalue: false};
 	},
 	"Ice": (entity, tile, willing, dir, sprint) => {
-		if (sprint && entity.player && willing && (dir.x || dir.y)) {
+		if (sprint && entity.player && willing && (dir.x || dir.y) && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip(dir);
+			KinkyDungeonSetFlag("slipped", 1);
 			return {cancelmove: true, returnvalue: true};
 		}
 		return {cancelmove: false, returnvalue: false};
 	},
 	"Water": (entity, tile, willing, dir, sprint) => {
 		if (tile.pauseSprite == tile.name + "Frozen") {
-			if (sprint && entity.player && willing && (dir.x || dir.y)) {
+			if (sprint && entity.player && willing && (dir.x || dir.y) && !KinkyDungeonFlags.get("slipped")) {
 				KDSlip(dir);
+				KinkyDungeonSetFlag("slipped", 1);
 				return {cancelmove: true, returnvalue: true};
 			}
 		}

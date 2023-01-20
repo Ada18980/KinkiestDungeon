@@ -103,6 +103,10 @@ let KDPerkUpdateStats = {
 		KDExtraEnemyTags.latexRestraints = 0;
 		KDExtraEnemyTags.latexRestraintsHeavy = 4;
 	},
+	"CommonLeather": () => {
+		KDExtraEnemyTags.leatherRestraints = 0;
+		KDExtraEnemyTags.leatherRestraintsHeavy = 4;
+	},
 	"CommonMaid": () => {
 		KDExtraEnemyTags.maidRestraints = 0;
 		KDExtraEnemyTags.maidVibeRestraintsLimited = 0;
@@ -151,7 +155,7 @@ let KDPerkCount = {
  * @type {Record<string, KDPerk>}
  */
 let KinkyDungeonStatsPresets = {
-	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -2, block: ["SecondWind"]},
+	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1, block: ["SecondWind"]},
 	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1, block: ["FutileStruggles"]},
 
 	"Stranger": {startPriority: 1000, category: "Enemies", id: "Stranger", cost: 0, block: ["WrongNeighborhood"], tags: ["start"]},
@@ -169,6 +173,7 @@ let KinkyDungeonStatsPresets = {
 	"TightRestraints": {category: "Restraints", id: 54, cost: -1},
 	"MagicHands": {category: "Restraints", id: "MagicHands", cost: -1},
 	"CursedLocks": {category: "Restraints", id: "CursedLocks", cost: -1},
+	"FranticStruggle": {category: "Restraints", id: "FranticStruggle", cost: 1},
 	"Unchained": {category: "Kinky", id: 26, cost: 2, block: ["Damsel"]},
 	"Damsel": {category: "Kinky", id: 27, cost: -1, block: ["Unchained"]},
 	"Artist": {category: "Kinky", id: 28, cost: 2, block: ["Bunny"]},
@@ -188,8 +193,10 @@ let KinkyDungeonStatsPresets = {
 	"HeelWalker": {category: "Combat", id: 53, cost: 1},
 	"BondageLover": {category: "Kinky", id: 15, cost: -1},
 	"Undeniable": {category: "Kinky", id: "Undeniable", cost: -1},
+	"Needs": {category: "Kinky", id: "Needs", cost: -1},
 	"BoundPower": {category: "Combat", id: 40, cost: 3},
 	"SavourTheTaste": {category: "Combat", id: "SavourTheTaste", cost: -1},
+	"ResilientFoes": {category: "Enemies", id: "ResilientFoes", cost: -1},
 	"KillSquad": {category: "Enemies", id: 41, cost: -3, block: ["Conspicuous"]},
 	"Stealthy": {category: "Enemies", id: 38, cost: 0},
 	"Conspicuous": {category: "Enemies", id: 39, cost: -1, block: ["KillSquad"]},
@@ -235,7 +242,7 @@ let KinkyDungeonStatsPresets = {
 	"Panic": {category: "Map", id: "Panic", cost: -1},
 
 	"Rusted": {category: "Map", id: "Rusted", cost: 1},
-	"Forgetful": {category: "Map", id: "Forgetful", cost: -1},
+	"Forgetful": {category: "Map", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
 	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0},
 	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0},
 	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, debuff: true, block: ["OnlyBrats"]},
@@ -250,7 +257,10 @@ let KinkyDungeonStatsPresets = {
 
 	"Butterfingers":  {category: "Restraints", id: "Butterfingers", cost: -1},
 	"WeakGrip":  {category: "Restraints", id: "WeakGrip", cost: -1},
+	"Blackout":  {category: "Combat", id: "Blackout", cost: -1, block: ["TotalBlackout"]},
+	"TotalBlackout":  {category: "Combat", id: "TotalBlackout", cost: -2, block: ["Blackout", "Forgetful"]},
 	"Incantation":  {category: "Magic", id: "Incantation", cost: -1},
+
 
 	"Stoic":  {category: "Damage", id: "Stoic", cost: 1, block: ["Ticklish"]},
 	"Ticklish":  {category: "Damage", id: "Ticklish", cost: -1, block: ["Stoic"]},
@@ -273,6 +283,7 @@ let KinkyDungeonStatsPresets = {
 
 	"CommonMaid": {category: "Enemies", id: "CommonMaid", cost: -1, costGroup: "common"},
 	"CommonLatex": {category: "Enemies", id: "CommonLatex", cost: -1, costGroup: "common"},
+	"CommonLeather": {category: "Enemies", id: "CommonLeather", cost: -1, costGroup: "common"},
 	"CommonExp": {category: "Enemies", id: "CommonExp", cost: -1, costGroup: "common"},
 	"CommonDress": {category: "Enemies", id: "CommonDress", cost: -1, costGroup: "common"},
 	"CommonWolf": {category: "Enemies", id: "CommonWolf", cost: -1, costGroup: "common"},
@@ -282,6 +293,11 @@ let KinkyDungeonStatsPresets = {
 
 	"KinkyPrison":  {category: "Map", id: "KinkyPrison", cost: -1},
 	"Doorknobs":  {category: "Map", id: "Doorknobs", cost: -1},
+
+
+	"MapLarge": {category: "Map", id: "MapLarge", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
+	"MapHuge": {category: "Map", id: "MapHuge", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
+	"MapGigantic": {category: "Map", id: "MapGigantic", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
 };
 
 
@@ -413,7 +429,7 @@ let KDPerkStart = {
 		KinkyDungeonChangeRep("Latex", 10);
 		KinkyDungeonAddRestraintIfWeaker("LatexCatsuit", 5, true, "Red", false, undefined, undefined, "Jail", true);
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexStart", "latexCollar"]}, 12, "grv", true, "Red");
+			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexStart", "latexCollar", "latexRestraintsForced"]}, 12, "grv", true, "Red");
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, "Jail", true);
 		}
@@ -422,7 +438,7 @@ let KDPerkStart = {
 	StartMaid: () =>{
 		KDChangeFactionRelation("Player", "Maidforce", 0.2 - KDFactionRelation("Player", "Maidforce"), true);
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket"]}, 12, "grv", true, "Purple");
+			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket", "handcuffer"]}, 12, "grv", true, "Purple");
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, undefined, true);
 		}
@@ -505,6 +521,9 @@ let KDPerkStart = {
 				KDSetFactionRelation(key, key2, 0.5);
 			}
 		}
+	},
+	Cursed: () => {
+		KinkyDungeonChangeFactionRep("Angel", -100);
 	},
 };
 

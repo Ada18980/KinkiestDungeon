@@ -109,11 +109,11 @@ function KinkyDungeonDrawLore() {
 	// Draw the current note
 	MainCanvas.textAlign = "left";
 
-	let wrapAmount = TranslationLanguage == 'CN' ? 19 : 45;
+	//let wrapAmount = KDBigLanguages.includes(TranslationLanguage) ? 19 : 45;
 	let loreOrig = TextGet("KinkyDungeonLore" + KinkyDungeonCurrentLore).split('|');
 	let lore = [];
 	for (let str of loreOrig) {
-		lore.push(...(KinkyDungeonWordWrap(str, wrapAmount).split('\n')));
+		lore.push(...(KinkyDungeonWordWrap(str, 19, 45).split('\n')));
 	}
 	let i = 0;
 	for (let N = 0; N < lore.length; N++) {

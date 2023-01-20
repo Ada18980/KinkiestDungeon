@@ -1176,11 +1176,39 @@ Features
 3.83 (Nov 2022)
 - New perks: Cursed Locks, Undeniable, Forgetful
 - Added music by kocaeli
-- New enemy: Trainer's Apprentice, Nevermere Drone, Wolfguard
+- New enemy: Trainer's Apprentice, Nevermere Drone, Wolfguard, Wolf Instructor, Shield Drone, Swarm of Tape Drones, Nevermere Operative, The Executive
 - Changes to the log to fit more text
 - Captures yield less rep when you already have high rep
 - Cutting restraints now makes debris
+- Can now paste copied perks
+- Struggling now takes more time but requires less click spam
+- Added some upgrades to a dedicated area in the spell list
+- Analyze now reveals magic runes that spawn traps
+- Knowledge magic tree now unlocks advanced tooltips
+- Not all red locks are created equal...
+- Buffed enemy sense
+- Enemies now have limited restraints
 
+3.9 (Dec 2022)
+- New perks: Frantic Struggle, Resilient Foes, I have... needs
+- Shrines are buffed so now they remove much more restraints than before
+- Armbinders now need other arm restraints on in order to be applied by most things
+
+3.91
+- Ancient restrains now allow you to stack things on top
+- Rope kraken now drains its own HP to summon additional tentacles
+- Dialogue can now be manupulated using keys and Enter
+
+3.92
+- Penalties due to goddess reputation
+- Added Korean language support (Thanks Phantasm!)
+
+3.93
+- Leash walks are more likely if you have higher submissiveness
+- New perks: Blackout, Total Blackout
+
+3.94
+- Enemies now require security clearance to bypass chastity belts... unless you just take the Magic Hands perk
 
 TODO ValidationFindBlockCycles to prevent bugs
 

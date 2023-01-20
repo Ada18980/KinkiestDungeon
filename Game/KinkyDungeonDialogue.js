@@ -1,5 +1,9 @@
 "use strict";
 
+let KDDialogueData = {
+	CurrentDialogueIndex: 0,
+};
+
 /**
  *
  * @param {number} Min
@@ -18,8 +22,8 @@ function KinkyDungeonCanPutNewDialogue() {
 	return !KDGameData.CurrentDialog && !KinkyDungeonFlags.get("NoDialogue");
 }
 
-function KDBasicCheck(PositiveReps, NegativeReps) {
-	let value = 0;
+function KDBasicCheck(PositiveReps, NegativeReps, Modifier = 0) {
+	let value = Modifier;
 	if (KinkyDungeonFlags.has("OfferRefused")) value -= 15;
 	if (KinkyDungeonFlags.has("OfferRefusedLight")) value -= 15;
 	// Being low willpower makes it harder
@@ -103,17 +107,39 @@ function KDDrawDialogue() {
 							tt = tt.replace(d[0], d[1]);
 						}
 					}
-					DrawButtonVis(700, 450 + II * 60, 600, 50, tt, KinkyDungeonDialogueTimer < CommonTime() ? "white" : "#888888", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 122);
+					DrawButtonKDEx("dialogue" + II, (bdata) => {
+						KDOptionOffset = 0;
+						KDDialogueData.CurrentDialogueIndex = 0;
+						KDSendInput("dialogue", {dialogue: KDGameData.CurrentDialog, dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0], click: true});
+						return true;
+					}, KinkyDungeonDialogueTimer < CommonTime(), 700, 450 + II * 60, 600, 50, tt, KinkyDungeonDialogueTimer < CommonTime() ? "#ffffff" : "#888888", undefined, undefined, undefined, undefined,
+					KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined, undefined, undefined, {
+						zIndex: 122,
+					});
+					if (MouseIn(700, 450 + II * 60, 600, 50)) KDDialogueData.CurrentDialogueIndex = II;
 					II += 1;
 				}
 			}
 			if (II >= KDMaxDialogue) {
-				DrawButtonVis(1350, 450, 90, 40, "", KDOptionOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png",
-					undefined, undefined, undefined, undefined, undefined, undefined, undefined, 112);
-				DrawButtonVis(1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40, "", KDOptionOffset + KDMaxDialogue < entries.length ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png",
-					undefined, undefined, undefined, undefined, undefined, undefined, undefined, 112);
+				DrawButtonKDEx("dialogueUP", (bdata) => {
+					KDOptionOffset -= 1;
+					return true;
+				}, KDOptionOffset > 0, 1350, 450, 90, 40, "", KDOptionOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png",
+				undefined, undefined, undefined, undefined, undefined, undefined, {
+					zIndex: 122,
+				});
+				DrawButtonKDEx("dialogueDOWN", (bdata) => {
+					KDOptionOffset += 1;
+					return true;
+				}, KDOptionOffset + KDMaxDialogue < entries.length, 1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40, "", KDOptionOffset + KDMaxDialogue < entries.length ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png",
+				undefined, undefined, undefined, undefined, undefined, undefined, {
+					zIndex: 122,
+				});
 			}
+			if (KDDialogueData.CurrentDialogueIndex < 0) KDDialogueData.CurrentDialogueIndex = 0;
+			if (KDDialogueData.CurrentDialogueIndex >= II) KDDialogueData.CurrentDialogueIndex = II - 1;
 		}
+
 	} else if (!KDGameData.CurrentDialog) {
 		// Clear data
 		KDGameData.CurrentDialogMsgData = {};
@@ -232,6 +258,7 @@ function KDStartDialog(Dialogue, Speaker, Click, Personality, enemy) {
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
 	KinkyDungeonDrawState = "Game";
+	KDDialogueData.CurrentDialogueIndex = 0;
 	KDSendInput("dialogue", {dialogue: Dialogue, dialogueStage: "", click: Click, speaker: Speaker, personality: Personality, enemy: enemy ? enemy.id : undefined});
 }
 
@@ -250,34 +277,6 @@ function KDHandleDialogue() {
 
 		if (dialogue.inventory)
 			KinkyDungeonhandleQuickInv(true);
-
-		// Handle the options
-		if (dialogue.options) {
-			let entries = Object.entries(dialogue.options);
-			let II = 0;
-			let gagged = KDDialogueGagged();
-			for (let i = KDOptionOffset; i < entries.length && II < KDMaxDialogue; i++) {
-				if ((!entries[i][1].prerequisiteFunction || entries[i][1].prerequisiteFunction(gagged))
-					&& (!entries[i][1].gagRequired || gagged)
-					&& (!entries[i][1].gagDisabled || !gagged)) {
-					if (MouseIn(700, 450 + II * 60, 600, 50)) {
-						KDOptionOffset = 0;
-						KDSendInput("dialogue", {dialogue: KDGameData.CurrentDialog, dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0], click: true});
-						return true;
-					}
-					II += 1;
-				}
-			}
-			if (II >= KDMaxDialogue) {
-				if (MouseIn(1350, 450, 90, 40) && KDOptionOffset > 0) {
-					KDOptionOffset -= 1;
-					return true;
-				} else if (MouseIn(1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40) && KDOptionOffset + KDMaxDialogue < entries.length) {
-					KDOptionOffset += 1;
-					return true;
-				}
-			}
-		}
 	}
 
 	return false;
@@ -332,6 +331,11 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		},
 	};
 	dialog.options.Attack = {playertext: name + "Attack", response: "Default",
+		prerequisiteFunction: (gagged) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (!enemy || (enemy.aware && !enemy.playWithPlayer)) return true;
+			return false;
+		},
 		options: {
 			"Confirm": {playertext: name + "Attack_Confirm", response: "Default",
 				clickFunction: (gagged) => {
@@ -353,6 +357,64 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				exitDialogue: true,
 			},
 			"Leave": {playertext: name + "Attack_Leave", response: "Default",
+				leadsToStage: "",
+			},
+		}
+	};
+	dialog.options.AttackPlay = {playertext: name + "AttackPlay", response: "Default",
+		prerequisiteFunction: (gagged) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.playWithPlayer) return true;
+			return false;
+		},
+		options: {
+			"Confirm": {playertext: name + "Attack_Confirm", response: "Default",
+				clickFunction: (gagged) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						if (!enemy.Enemy.allied) {
+							KDMakeHostile(enemy);
+							let faction = KDGetFactionOriginal(enemy);
+							if (!KinkyDungeonHiddenFactions.includes(faction)) {
+								KinkyDungeonChangeRep("Ghost", -5);
+							}
+						} else {
+							enemy.hp = 0;
+						}
+					}
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"Leave": {playertext: name + "AttackPlay_Leave", response: "Default",
+				leadsToStage: "",
+			},
+		}
+	};
+	dialog.options.AttackUnaware = {playertext: name + "AttackUnaware", response: "Default",
+		prerequisiteFunction: (gagged) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && (enemy.aware || enemy.playWithPlayer)) return false;
+			return true;
+		},
+		options: {
+			"Confirm": {playertext: name + "AttackUnaware_Confirm", response: "Default",
+				clickFunction: (gagged) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						if (!enemy.Enemy.allied) {
+							KDMakeHostile(enemy);
+							enemy.stun = Math.max(enemy.stun || 0, 1);
+							enemy.vulnerable = Math.max(enemy.vulnerable || 0, 1);
+						} else {
+							enemy.hp = 0;
+						}
+					}
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"Leave": {playertext: name + "AttackUnaware_Leave", response: "Default",
 				leadsToStage: "",
 			},
 		}
@@ -437,7 +499,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				if (!KDEnemyHasFlag(enemy, "NoStay")
-					&& (KDRandom() < (70 - KinkyDungeonGoddessRep.Ghost + enemy.opinion + (KinkyDungeonStatsChoice.get("Dominant") ? 50 : 0))/100 * 0.35 * KDEnemyHelpfulness(enemy) || enemy.Enemy.allied)
+					&& (KDRandom() < (70 - KinkyDungeonGoddessRep.Ghost + KDGetModifiedOpinion(enemy) + (KinkyDungeonStatsChoice.get("Dominant") ? 50 : 0))/100 * 0.35 * KDEnemyHelpfulness(enemy) || enemy.Enemy.allied)
 				) {
 					KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 0);
 				} else {
@@ -477,7 +539,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		clickFunction: (gagged) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				if (!KDEnemyHasFlag(enemy, "NoStay") && (KDRandom() < (50 - KinkyDungeonGoddessRep.Ghost + enemy.opinion + (KinkyDungeonStatsChoice.get("Dominant") ? 50 : 0))/100 * KDEnemyHelpfulness(enemy) * (KDAllied(enemy) ? 4.0 : 0.25) || enemy.Enemy.allied)) {
+				if (!KDEnemyHasFlag(enemy, "NoStay") && (KDRandom() < (50 - KinkyDungeonGoddessRep.Ghost + KDGetModifiedOpinion(enemy) + (KinkyDungeonStatsChoice.get("Dominant") ? 50 : 0))/100 * KDEnemyHelpfulness(enemy) * (KDAllied(enemy) ? 4.0 : 0.25) || enemy.Enemy.allied)) {
 					KinkyDungeonSetEnemyFlag(enemy, "StayHere", -1);
 					enemy.gx = enemy.x;
 					enemy.gy = enemy.y;
@@ -539,7 +601,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						if (!KDEnemyHasFlag(enemy, "NoHelp")
-							&& KDRandom() < (KDPersonalitySpread(125, 85, 25) - KinkyDungeonGoddessRep.Ghost + enemy.opinion + (KinkyDungeonStatsChoice.get("Dominant") ? 25 : 0))/100 * (KDPersonalitySpread(0.0, -0.25, -0.5) + (KDAllied(enemy) ? 2.0 : 1.0))
+							&& KDRandom() < (KDPersonalitySpread(125, 85, 25) - KinkyDungeonGoddessRep.Ghost + KDGetModifiedOpinion(enemy) + (KinkyDungeonStatsChoice.get("Dominant") ? 25 : 0))/100 * (KDPersonalitySpread(0.0, -0.25, -0.5) + (KDAllied(enemy) ? 2.0 : 1.0))
 						) {
 							KinkyDungeonChangeRep("Ghost", 3);
 							KinkyDungeonSetEnemyFlag(enemy, "HelpMe", 20);
@@ -574,7 +636,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						if (!KDEnemyHasFlag(enemy, "NoHelpCommandWord")
-							&& KDRandom() < (KDPersonalitySpread(125, 85, 25) - KinkyDungeonGoddessRep.Ghost + enemy.opinion + (KinkyDungeonStatsChoice.get("Dominant") ? 25 : 0))/100 * (KDPersonalitySpread(0.0, -0.25, -0.5) + (KDAllied(enemy) ? 2.0 : 1.0))
+							&& KDRandom() < (KDPersonalitySpread(125, 85, 25) - KinkyDungeonGoddessRep.Ghost + KDGetModifiedOpinion(enemy) + (KinkyDungeonStatsChoice.get("Dominant") ? 25 : 0))/100 * (KDPersonalitySpread(0.0, -0.25, -0.5) + (KDAllied(enemy) ? 2.0 : 1.0))
 						) {
 							KinkyDungeonChangeRep("Ghost", 3);
 							if (KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0) {
@@ -618,7 +680,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						if (!KDEnemyHasFlag(enemy, "NoHelpKey")
-							&& KDRandom() < (KDPersonalitySpread(125, 85, 25) - KinkyDungeonGoddessRep.Ghost + enemy.opinion + (KinkyDungeonStatsChoice.get("Dominant") ? 25 : 0))/100 * (KDPersonalitySpread(0.0, -0.25, -0.5) + (KDAllied(enemy) ? 2.0 : 1.0))
+							&& KDRandom() < (KDPersonalitySpread(125, 85, 25) - KinkyDungeonGoddessRep.Ghost + KDGetModifiedOpinion(enemy) + (KinkyDungeonStatsChoice.get("Dominant") ? 25 : 0))/100 * (KDPersonalitySpread(0.0, -0.25, -0.5) + (KDAllied(enemy) ? 2.0 : 1.0))
 						) {
 							KinkyDungeonChangeRep("Ghost", 3);
 							KinkyDungeonRedKeys += 1;
@@ -770,7 +832,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 							KDPleaseSpeaker(0.1);
 							KinkyDungeonChangeRep("Ghost", 2);
 							for (let i = 0; i < restraintscount; i++) {
-								let r = KinkyDungeonGetRestraint({tags: restraints}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+								let r = KinkyDungeonGetRestraint({tags: restraints}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 								if (r) KinkyDungeonAddRestraintIfWeaker(r, 0, true);
 							}
 							let outfit = {name: outfitName, type: Outfit};
@@ -828,12 +890,12 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 							KDPleaseSpeaker(0.08);
 							KinkyDungeonChangeRep("Ghost", 2);
 							for (let i = 0; i < restraintscount; i++) {
-								let r = KinkyDungeonGetRestraint({tags: restraints}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+								let r = KinkyDungeonGetRestraint({tags: restraints}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 								if (r) KinkyDungeonAddRestraintIfWeaker(r, 0, true);
 							}
 							let outfit = {name: outfitName, type: Outfit};
 							if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
-							if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+							//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 							KinkyDungeonSetDress(outfitName, outfitName);
 							KinkyDungeonSetFlag("Recruit_" + name, -1);
 							KinkyDungeonSetFlag("Recruited", -1);
@@ -854,12 +916,12 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 								KDIncreaseOfferFatigue(-20);
 								KDGameData.CurrentDialogMsg = name + "Force_Failure";
 								for (let i = 0; i < restraintscountAngry; i++) {
-									let r = KinkyDungeonGetRestraint({tags: restraintsAngry}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+									let r = KinkyDungeonGetRestraint({tags: restraintsAngry}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 									if (r) KinkyDungeonAddRestraintIfWeaker(r, 0, true);
 								}
 								let outfit = {name: outfitName, type: Outfit};
 								if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
-								if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+								//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 								KinkyDungeonSetDress(outfitName, outfitName);
 								KinkyDungeonSlowMoveTurns = 3;
 								KinkyDungeonSleepTime = CommonTime() + 200;
@@ -1084,7 +1146,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				KinkyDungeonSetFlag(f.name, f.duration, f.floors);
 			}
 			// This is the restraint that the dialogue offers to add. It's selected from a set of tags. You can change the tags to change the restraint
-			let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 			if (r) {
 				KDGameData.CurrentDialogMsgData = {
 					"Data_r": r.name,
@@ -1097,7 +1159,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				KDGameData.CurrentDialogMsgValue.PercentOff =
 					KDOffensiveDialogueSuccessChance(KDBasicCheck(goddess, [])
 					- (KDDialogueGagged() ? 60 : 40)
-					- (KinkyDungeonStatsChoice.get("Undeniable") ? 70 : 0)
+					- (KinkyDungeonStatsChoice.get("Undeniable") ? 100 : 0)
 					- (KinkyDungeonStatsChoice.has("Dominant") ? 0 : 40)
 					- KDPersonalitySpread(OffdiffSpread[0], OffdiffSpread[1], KinkyDungeonStatsChoice.has("Dominant") ? OffdiffSpread[3] : OffdiffSpread[2]));
 				// Set the string to replace in the UI
@@ -1109,13 +1171,13 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				// Set up the difficulty of the check
 				// This check basically determines if we switch to the Force stage where the speaker tries to force you
 				let diff = KinkyDungeonStatsChoice.has("Dominant") ? diffSpread[1] : diffSpread[0];
-				if (KinkyDungeonStatsChoice.get("Undeniable")) diff += 100;
+				if (KinkyDungeonStatsChoice.get("Undeniable")) diff += 140;
 				// Failure condition
 				if (KDBasicCheck(goddess, antigoddess) <= diff) {
 					KDGameData.CurrentDialogStage = "Force";
 					KDGameData.CurrentDialogMsg = name + "ForceYes"; // This is different from OfferLatexForce_Yes, it's a more reluctant dialogue...
 					// Set up percentage chance to resist
-					KDGameData.CurrentDialogMsgValue.Percent = KDAgilityDialogueSuccessChance(KDBasicCheck(goddess, antigoddess));
+					KDGameData.CurrentDialogMsgValue.Percent = KDAgilityDialogueSuccessChance(KDBasicCheck(goddess, antigoddess, KinkyDungeonStatsChoice.get("Undeniable") ? -70 : 0));
 					KDGameData.CurrentDialogMsgData.PERCENT = `${Math.round(100 * KDGameData.CurrentDialogMsgValue.Percent)}%`;
 				} else {
 					// You succeed but get fatigue
@@ -1133,10 +1195,11 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				KDPleaseSpeaker(refused ? 0.004 : 0.005); // Less reputation if you refused
 			KinkyDungeonChangeRep(antigoddess[0], refused ? 1 : 2); // Less submission if you refused
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), 0, true, Lock);
+			KDAddOffer(1);
 			let num = count;
 			// Apply additional restraints
 			if (num > 1) {
-				let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+				let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 				if (r)
 					KinkyDungeonAddRestraintIfWeaker(r, 0, true, Lock);
 			}
@@ -1146,13 +1209,13 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 			if (!refused) {
 				// This check basically determines if we switch to the Force stage where the speaker tries to force you
 				let diff = KinkyDungeonStatsChoice.has("Dominant") ? diffSpread[3] : diffSpread[2]; // Slightly harder because we refused
-				if (KinkyDungeonStatsChoice.get("Undeniable")) diff += 100;
+				if (KinkyDungeonStatsChoice.get("Undeniable")) diff += 140;
 				// Failure condition
 				if (KDBasicCheck(goddess, antigoddess) <= diff) {
 					KDGameData.CurrentDialogStage = "Force";
 					KDGameData.CurrentDialogMsg = "";
 					// Set up percentage chance to resist
-					KDGameData.CurrentDialogMsgValue.Percent = KDAgilityDialogueSuccessChance(KDBasicCheck(goddess, antigoddess));
+					KDGameData.CurrentDialogMsgValue.Percent = KDAgilityDialogueSuccessChance(KDBasicCheck(goddess, antigoddess, KinkyDungeonStatsChoice.get("Undeniable") ? -70 : 0));
 					KDGameData.CurrentDialogMsgData.PERCENT = `${Math.round(100 * KDGameData.CurrentDialogMsgValue.Percent)}%`;
 				} else {
 					KDIncreaseOfferFatigue(10);
@@ -1165,11 +1228,12 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				if (KDRandom() > percent) { // We failed! You get tied tight
 					KDIncreaseOfferFatigue(-20);
 					KDGameData.CurrentDialogMsg = name + "Force_Failure";
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), 0, true, "Red");
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), 0, true, Lock || "Red");
+					KDAddOffer(1);
 					let num = refused ? countAngry : count;
 					// Apply additional restraints
 					if (num > 1) {
-						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 						if (r)
 							KinkyDungeonAddRestraintIfWeaker(r, 0, true, Lock);
 					}
@@ -1387,4 +1451,35 @@ function KDIsSubmissiveEnough(enemy) {
 	let diff = KDPersonalitySpread(20, -20, -51);
 	if (KinkyDungeonGoddessRep.Ghost >= diff) return true;
 	return false;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {number}
+ */
+function KDGetModifiedOpinion(enemy) {
+	let op = enemy.opinion || 0;
+
+	op += 30 * KDFactionRelation("Player", KDGetFaction(enemy));
+	if (KinkyDungeonStatsChoice.get("Dominant") && enemy.personality && KDLoosePersonalities.includes(enemy.personality)) op += 12;
+	if (KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
+
+	return op;
+}
+
+/**
+ *
+ * @param {number} Amount
+ */
+function KDAddOffer(Amount) {
+	if (!KDGameData.OfferCount) KDGameData.OfferCount = 0;
+	KDGameData.OfferCount += Amount;
+}
+
+/**
+ * @returns {number}
+ */
+function KDGetOfferLevelMod() {
+	return Math.round(0.25 * (KDGameData.OfferCount || 0));
 }

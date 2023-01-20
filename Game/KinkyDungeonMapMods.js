@@ -97,17 +97,17 @@ let KDMapMods = {
 		name: "Wolf",
 		roomType: "",
 		weight: 70,
-		tags: ["wolfgirl"],
+		tags: ["nevermere"],
 		faction: "Nevermmere",
 		jailType: "trainer",
 		guardType: "trainer",
 		bonusTags: {
-			"wolfgirl": {bonus: 11, mult: 1.5},
+			"nevermere": {bonus: 11, mult: 1.5},
 			"trainer": {bonus: 11, mult: 0.75},
 		},
 		altRoom: "",
 		spawnBoxes: [
-			{requiredTags: ["wolfgirl"], tags: [], currentCount: 0, maxCount: 0.3, ignoreAllyCount: true},
+			{requiredTags: ["nevermere"], tags: [], currentCount: 0, maxCount: 0.3, ignoreAllyCount: true},
 		],
 	},
 	"Robot": {

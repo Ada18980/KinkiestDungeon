@@ -37,6 +37,66 @@ let KinkyDungeonHiddenFactions = [
 	"Chase",
 ];
 
+
+
+let KDFactionSecurityMod = {
+	Dressmaker: {
+		level_magic: 1,
+		level_key: 1,
+	},
+	Witch: {
+		level_magic: 1,
+		level_key: 1,
+	},
+	Elemental: {
+		level_magic: 2,
+	},
+	Mushy: {
+		level_magic: 1,
+		level_tech: 0,
+	},
+	Apprentice: {
+		level_magic: 0,
+		level_key: -1,
+	},
+	Elf: {
+		level_magic: 1,
+		level_key: 1,
+	},
+	Bast: {
+		level_magic: 1,
+	},
+	AncientRobot: {
+		level_tech: 2,
+		level_key: 1,
+	},
+	Nevermere: {
+		level_tech: 1,
+		level_key: 1,
+	},
+	Maidforce: {
+		level_tech: 0,
+		level_magic: -1,
+		level_key: 1,
+	},
+	Alchemist: {
+		level_tech: 1,
+		level_magic: -1,
+	},
+	Bountyhunter: {
+		level_tech: 0,
+		level_key: 2,
+	},
+};
+
+let KDBaseSecurity = {
+	level_key: 0,
+};
+
+let KDPiousFactions = {
+	"Angel": 1.0,
+};
+
 /** Shows tooltips for these factions even though they are hidden */
 let KinkyDungeonTooltipFactions = [
 	"Rebel",
@@ -51,7 +111,7 @@ let KinkyDungeonFactionTag = {
 	Bountyhunter: "bountyhunter",
 	Bandit: "bandit",
 	Alchemist: "alchemist",
-	Nevermere: "wolfgirl",
+	Nevermere: "nevermere",
 	Apprentice: "apprentice",
 	Dressmaker: "dressmaker",
 	Witch: "witch",
@@ -359,7 +419,6 @@ let KinkyDungeonFactionRelationsBase = {
 	"Maidforce": {
 		"Alchemist": 0.55,
 		"Jail": 0.55,
-		"Nevermere": 0.55,
 		"Dragon": 0.55,
 		"Apprentice": 0.55,
 		"Bandit": -0.6,

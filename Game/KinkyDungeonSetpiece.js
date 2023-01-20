@@ -259,7 +259,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 			case "SmallAltar":
 				if (!favoringPOI || KinkyDungeonBoringGet(cornerX + 1, cornerY + 1) < 3) skip = true;
 				else {
-					KinkyDungeonCreateRectangle(cornerX, cornerY, 2, 2, false, false, 0, true);
+					KinkyDungeonCreateRectangle(cornerX, cornerY, 2, 2, false, false, 0, false);
 					let xx = 1;
 					//if (KDRandom() < 0.5) {
 					// xx = 0;
@@ -282,7 +282,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				}
 				break;
 			case "FuukaAltar": {
-				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, false, false, 1, true);
+				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, false, false, 1, false);
 				KinkyDungeonMapSet(cornerX + 1, cornerY + 1 , 'o');
 				KinkyDungeonMapSet(cornerX + radius - 2, cornerY + 1, 'o');
 				KinkyDungeonMapSet(cornerX + 1, cornerY + radius - 2, 'o');
@@ -315,7 +315,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				KinkyDungeonTilesSet((cornerX + 1) + "," + (cornerY + 1), {Loot: "pearl", Roll: KDRandom()});
 				break;
 			case "ShadowChest":
-				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, false, false, 0, true);
+				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, false, false, 0, false);
 				// Place doors around pairs
 				KDCreateDoors(cornerX - 1, cornerY - 1, radius + 2, radius + 2);
 				KinkyDungeonMapSet(cornerX, cornerY , 'o');
@@ -514,7 +514,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				if ((!favoringPOI && KDRandom() < 0.7) || KinkyDungeonBoringGet(cornerX + 1, cornerY + 1) < 3 || chestlist.length >= chests) skip = true;
 				else {
 					// Hollow out a big area
-					KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, false, false, 0, true);
+					KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, false, false, 0, false);
 					KinkyDungeonCreateRectangle(cornerX, cornerY - 1, radius, 1, false, false, 0, false);
 					KinkyDungeonCreateRectangle(cornerX, cornerY + radius, radius, 1, false, false, 0, false);
 					KinkyDungeonCreateRectangle(cornerX - 1, cornerY, 1, radius, false, false, 0, false);
@@ -807,6 +807,7 @@ function SetpieceSpawnPrisoner(x, y) {
 		e.faction = "Prisoner";
 		e.boundLevel = e.hp * 11;
 		e.specialdialogue = "PrisonerJail";
+		e.items = [];
 		KinkyDungeonSetEnemyFlag(e, "noswap", -1);
 		KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
 	}
@@ -895,7 +896,7 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 		{faction: "Witch", tags: ["witch", "apprentice", "skeleton"], rtags: ["witch", "apprentice", "skeleton"], ftags: ["miniboss", "boss"]},
 		{faction: "Apprentice", tags: ["apprentice"], rtags: ["apprentice"], ftags: ["miniboss", "boss"]},
 		{faction: "Mushy", tags: ["mushroom"], rtags: ["mushy"], ftags: ["miniboss", "boss"]},
-		{faction: "Nevermere", tags: ["wolfgirl"], rtags: ["wolfgirl"], ftags: ["miniboss", "boss"]},
+		{faction: "Nevermere", tags: ["nevermere"], rtags: ["nevermere"], ftags: ["miniboss", "boss"]},
 		{faction: "Bast", tags: ["mummy"], rtags: ["mummy"], ftags: ["miniboss", "boss"]},
 		{faction: "Elf", tags: ["elf"], rtags: ["elf"], ftags: ["miniboss", "boss"]},
 		{faction: "Elemental", tags: ["elemental", "witch"], rtags: ["elemental", "witch"], ftags: ["miniboss", "boss"]},

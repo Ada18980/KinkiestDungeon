@@ -212,7 +212,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				KDGameData.HeartTaken = false;
 				KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], MiniGameKinkyDungeonLevel, undefined, undefined);
 				let saveData = KinkyDungeonSaveGame(true);
-				if (KDGameData.RoomType == "PerkRoom" && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3 && KDDefaultJourney.includes(MiniGameKinkyDungeonCheckpoint)) {
+				if (KDGameData.RoomType == "PerkRoom" && MiniGameKinkyDungeonLevel >= 1 && KDDefaultJourney.includes(MiniGameKinkyDungeonCheckpoint)) { //  && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3
 					if ((!KinkyDungeonStatsChoice.get("saveMode")) && !suppressCheckPoint) {
 						KinkyDungeonState = "Save";
 						ElementCreateTextArea("saveDataField");
@@ -340,7 +340,7 @@ function KDCreateAoEEffectTiles(x, y, tile, durationMod, rad, avoidPoint, densit
  * @param {number} delta
  */
 function KDApplyAlpha(id, alpha, fade, delta) {
-	if (!fade) return undefined;
+	if (!fade) return 1.0;
 	switch (fade) {
 		case "random": {
 			if (alpha >= 1 || alpha <= 0) KDTileModes[id] = !KDTileModes[id];
@@ -362,6 +362,7 @@ function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 		for (let tile of Object.values(tileLocation)) {
 			let sprite = (tile.pauseDuration > 0 && tile.pauseSprite) ? tile.pauseSprite : (tile.skin ? tile.skin : tile.name);
 			if (tile.x >= CamX && tile.y >= CamY && tile.x < CamX + KinkyDungeonGridWidthDisplay && tile.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(tile.x, tile.y) > 0) {
+				if (!KDCanSeeEffectTile(tile)) continue;
 				let tileid = tile.x + "," + tile.y + "_" + sprite;
 				KDDraw(kdgameboard, kdpixisprites, tileid, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",
 					(tile.x + (tile.xoffset ? tile.xoffset : 0) - CamX)*KinkyDungeonGridSizeDisplay, (tile.y - CamY + (tile.yoffset ? tile.yoffset : 0))*KinkyDungeonGridSizeDisplay,
@@ -372,6 +373,19 @@ function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			}
 		}
 	}
+}
+
+/**
+ *
+ * @param {effectTile} tile
+ * @returns {boolean}
+ */
+function KDCanSeeEffectTile(tile) {
+	if (tile.tags?.includes("hiddenmagic")) {
+		let rad = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "MagicalSight");
+		if (rad <= 0 || KDistEuclidean(tile.x - KinkyDungeonPlayerEntity.x, tile.y - KinkyDungeonPlayerEntity.y) > rad) return false;
+	}
+	return true;
 }
 
 
@@ -526,8 +540,10 @@ function KDSlip(dir) {
 	for (let i = 0; i < maxSlip; i++) {
 		let newTiles = KDGetEffectTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		let oldTiles = KDGetEffectTiles(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y);
-		if ((newTiles.Ice
-			|| oldTiles.Ice)
+		if ((Object.values(newTiles).some((tile) => {return tile.tags?.includes("slippery")
+				|| ((tile.statuses?.frozen || tile.name.includes("Frozen")) && tile.tags?.includes("slipperywhenfrozen"));})
+			|| Object.values(oldTiles).some((tile) => {return tile.tags?.includes("slippery")
+				|| ((tile.statuses?.frozen || tile.name.includes("Frozen")) && tile.tags?.includes("slipperywhenfrozen"));}))
 			&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y))
 			&& !KinkyDungeonEnemyAt(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y)) {
 			KDMovePlayer(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y, false, true);

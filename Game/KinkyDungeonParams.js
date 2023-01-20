@@ -27,7 +27,13 @@ const KinkyDungeonMapParams = {
 		"torchchance": 0.35,
 		"torchchanceboring": 1.0,
 
+		music: {
+			"AREA1-GRAVEYARD.ogg": 10,
+			"GENERIC-DOLLRACK.ogg": 4,
+		},
+
 		tagModifiers: {
+			"temple": 0.4,
 			"jungle": 0,
 			"cavern": 0,
 		},
@@ -109,6 +115,11 @@ const KinkyDungeonMapParams = {
 		cageChance: 0.8,
 		torchchance: 0.05,
 		torchchanceboring: 0.7,
+
+		music: {
+			"GENERIC-DOLLRACK.ogg": 10,
+			"AREA2-ANCIENTTOMBS.ogg": 2,
+		},
 
 		tagModifiers: {
 			"narrow": 2,
@@ -201,6 +212,10 @@ const KinkyDungeonMapParams = {
 			"cavern": 60,
 		},
 
+		music: {
+			"AREA5-UNDERGROUNDJUNGLE.ogg": 10,
+		},
+
 		"setpieces": [
 			{Type: "Altar", Weight: 6},
 			{Type: "SmallAltar", Weight: 20},
@@ -281,6 +296,11 @@ const KinkyDungeonMapParams = {
 			sprite: "Lantern",
 			unlitsprite: "LanternUnlit",
 			brightness: 6,
+		},
+
+		music: {
+			"AREA7-LOSTTEMPLE.ogg": 14,
+			"AREA8-BELLOWS.ogg": 2,
 		},
 
 		tagModifiers: {
@@ -368,6 +388,10 @@ const KinkyDungeonMapParams = {
 		torchchance: 0.1,
 		torchchanceboring: 0.1,
 
+		music: {
+			"AREA2-ANCIENTTOMBS.ogg": 10,
+		},
+
 		worldGenCode: () => {
 			for (let X = 1; X < KinkyDungeonGridWidth - 1; X++) {
 				for (let Y = 1; Y < KinkyDungeonGridHeight - 1; Y++) {
@@ -453,7 +477,7 @@ const KinkyDungeonMapParams = {
 		"trapchance" : 0.3,
 		"grateChance" : 0.7,
 		"rubblechance" : 0.3,
-		"brickchance" : 0.03,
+		"brickchance" : 0.01,
 		"cacheInterval" : 1,
 		// Side routes have more high-value loot
 		"forbiddenChance" : 1.0,
@@ -463,6 +487,11 @@ const KinkyDungeonMapParams = {
 		torchreplace: {
 			sprite: "TorchOrb",
 			brightness: 4,
+		},
+
+		music: {
+			"AREA4-MAGICLIBRARY.ogg": 10,
+			"GENERIC-DOLLRACK.ogg": 4,
 		},
 
 		"setpieces": [
@@ -533,6 +562,11 @@ const KinkyDungeonMapParams = {
 		"brickchance" : 0.2,
 		torchchance: 0.3,
 		torchchanceboring: 0.1,
+
+		music: {
+			"AREA6-CRYSTALCAVE.ogg": 10,
+			"AREA8-BELLOWS.ogg": 3,
+		},
 
 		shadowColor: 0x080311,
 

@@ -185,7 +185,7 @@ let KDQuests = {
 					}
 					let count = 3 + KDRandom() * Math.min(4, KinkyDungeonDifficulty / 20);
 					for (let i = 0; i < count; i++) {
-						e = KinkyDungeonGetEnemy(["wolfgirl"], MiniGameKinkyDungeonLevel + 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["wolfgirl"], false, {"wolfgirl": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
+						e = KinkyDungeonGetEnemy(["nevermere"], MiniGameKinkyDungeonLevel + 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["nevermere"], false, {"wolfgirl": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
 						let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 						if (epoint) {
 							let ee = DialogueCreateEnemy(point.x, point.y, e.name);

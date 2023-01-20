@@ -43,14 +43,13 @@ let alts = {
 		bossroom: false,
 		width: 8,
 		height: 8,
-		setpieces: {
-			"PearlChest": 100,
-		},
 		genType: "Tunnel",
 		spawns: false,
 		chests: false,
 		shrines: false,
 		orbs: 0,
+		setpieces: {
+		},
 		chargers: false,
 		torches: true,
 		heart: false,
@@ -107,6 +106,9 @@ let alts = {
 			"Bedroom": 10,
 			"QuadCell": 7,
 			"Storage": 12,
+		},
+		bonusTags: {
+			"construct": {bonus: 0, mult: 0},
 		},
 		genType: "NarrowMaze",
 		spawns: false,
@@ -683,7 +685,6 @@ function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, de
 	KinkyDungeonCreateRectangle(b1, y1, 1, h1, false, false, false, false);
 	KinkyDungeonCreateRectangle(b2, y2, 1, h2, false, false, false, false);
 
-	POI.push({x: VisitedRooms[0].x*2 + 7, y: VisitedRooms[0].y*2, requireTags: [], favor: ["PearlChest"], used: false});
 
 	/*
 	// Add the prison
@@ -805,6 +806,8 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 	let py = VisitedRooms[0].y*2 - 2;
 	let p1x = VisitedRooms[0].x*2 + 5;
 	KinkyDungeonCreateRectangle(p1x, py, 5, 2, false, false, false, false);
+
+	POI.push({x: VisitedRooms[0].x*2 + 7, y: VisitedRooms[0].y*2, requireTags: [], favor: ["PearlChest"], used: false});
 
 	let perkCount = 3;
 	/** @type {Record<string, boolean>} */

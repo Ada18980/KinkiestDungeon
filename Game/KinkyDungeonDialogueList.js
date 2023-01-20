@@ -337,7 +337,7 @@ let KDDialogue = {
 	"OfferKigu": KDYesNoBasic("OfferKigu", ["Conjure"], ["Ghost"], ["kiguRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15]),
 	"OfferLeather": KDYesNoBasic("OfferLeather", ["Leather"], ["Ghost"], ["armbinderSpell", "straitjacketSpell", "legbinderSpell", "harnessSpell", "gagSpell", "blindfoldSpell", "leathercuffsSpell"], [55, 0, 75, 0], [-25, 0, 40, 15], 1, 3),
 	"OfferRopes": KDYesNoBasic("OfferRopes", ["Rope"], ["Ghost"], ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist", "ropeAuxiliary"], [55, 0, 75, 0], [-25, 0, 40, 15],  3, 5, "Red"),
-	"OfferChastity": KDYesNoBasic("OfferChastity", ["Metal"], ["Ghost"], ["genericChastity"], [55, 0, 75, 0], [-25, 0, 40, 15],  1, 1, "Gold", true, [{name: "ChastityOffer", duration: 50}]),
+	"OfferChastity": KDYesNoBasic("OfferChastity", ["Metal"], ["Ghost"], ["genericChastity"], [55, 0, 75, 0], [-25, 0, 40, 15],  1, 1, "Gold", true, [{name: "ChastityOffer", duration: 300}]),
 
 
 
@@ -771,7 +771,7 @@ let KDDialogue = {
 	"PrisonerRescueMushy": KDPrisonerRescue("PrisonerRescueMushy", "Mushy", ["Fungal", "Mushy"]),
 	"PrisonerRescueAncientRobot": KDPrisonerRescue("PrisonerRescueAncientRobot", "AncientRobot", ["CaptureBot", "Drone"]),
 
-	"BlacksmithShop": KDSaleShop("BlacksmithShop", ["RedKey", "Knife", "Sword", "Axe", "Spear", "TrapCuffs"], [], ["blacksmith"], 0.4, 1.5),
+	"BlacksmithShop": KDSaleShop("BlacksmithShop", ["Lockpick", "Knife", "Sword", "Axe", "Spear", "TrapCuffs"], [], ["blacksmith"], 0.4, 1.5),
 	"PrisonerBandit": {
 		response: "Default",
 		personalities: ["Sub"],

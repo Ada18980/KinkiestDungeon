@@ -120,6 +120,30 @@ interface KDRestraintProps {
 	debris?: string,
 	debrisChance?: number,
 
+	/** These items can only be applied if an enemy has the items in her inventory or the unlimited enemy tag */
+	limited?: boolean,
+	/** Forced to allow these, mainly leashes and collars */
+	unlimited?: boolean,
+
+	/** Security levels for chastity. Non-tech belts should have a Tech security of undefined. Magic belts should have undefined for key and tech.
+	 * KEY can be circumvented by having a key. Normally you cant remove a plug but you can spend a key to unlock a plug slot for 30 turns or until you are hit or a restraint is removed in that slot.
+	 * 	Key difficulty of 1 can simply be lockpicked, taking a bit of time.
+	 * 	Key difficulty of 3 becomes a blue key.
+	 * MAGIC can be circumvented thru CMD: Unlock
+	 * Tech cannot be circumvented by the player. TODO add keycard to allow this.
+	 * Undefined means the specified method can not be used
+	 * Chastity without Security ignores the security system
+	 * NPC ability to unlock is OR. Having the ability to unlock just one of the security levels means the NPC can unlock.
+	*/
+	Security?: {
+		/** Key security level, for low-tech non-mage factions */
+		level_key?: number,
+		/** Tech security level, for robots and wolfgirls */
+		level_tech?: number,
+		/** Magic security level, for mage factions */
+		level_magic?: number,
+	},
+
 	/** Affinity type: Hook, Edge, or Sharp, Sticky, defaults are Hook (struggle), Sharp (Cut), Edge (Pick), Sticky (Unlock), and none (Pick)*/
 	affinity?: {
 		Struggle?: string[],
@@ -290,12 +314,16 @@ interface KDRestraintProps {
 	Modules?: number[],
 	/** When added to the inventory, is added as a different item instead. Good for multiple stages of the same item, like cuffs */
 	inventoryAs?: string,
+	/** When added to the inventory by self, is added as a different item instead. Good for multiple stages of the same item, like cuffs */
+	inventoryAsSelf?: string,
 	/** The item is always kept in your inventory no matter how it gets removed, so long as you don't cut it */
 	alwaysKeep?: boolean,
 	/** The jailer won't remove these */
 	noJailRemove?: boolean,
 	/** Increases the difficulty of other items */
 	strictness?: number,
+	/** Overrides the existing strictness zones for the item's group */
+	strictnessZones?: string[],
 	/** Can be linked by items with this shrine category */
 	LinkableBy?: string[],
 	DefaultLock?: string,
@@ -383,6 +411,7 @@ interface floorParams {
 	density : number, // Density of tunnels (inverse of room spawn chance)
 	torchchance?: number,
 	torchlitchance?: number,
+	music: Record<string, number>,
 	/** Will add more/less torches on the main path */
 	torchchanceboring?: number,
 	torchreplace?: {
@@ -479,7 +508,51 @@ interface overrideDisplayItem {
 	OverridePriority?: number[]|number,
 }
 
+interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
+
 interface enemy extends KDHasTags {
+	/** Restraint filters */
+	RestraintFilter?: {
+		/** This enemy can apply restraints without needing them in her pockets */
+		unlimitedRestraints?: boolean,
+		/** Restraints applied must all be from inventory */
+		invRestraintsOnly?: boolean,
+		/** Restraints applied must all be limited */
+		limitedRestraintsOnly?: boolean,
+		/** Restraints with more power than this must be in inventory. Default is 3*/
+		powerThresh?: number,
+		/** These wont be added to the initial inventory 3*/
+		ignoreInitial?: string[],
+		/** These wont be added to the initial inventory 3*/
+		ignoreInitialTag?: string[],
+		/** This enemy won't restock restraints out of sight */
+		noRestock?: boolean,
+		/** Enemy will restock to this percentage */
+		restockPercent?: number,
+	},
+
+	/** Security levels for accessing chastity */
+	Security?: {
+		/** Key security level, for low-tech non-mage factions */
+		level_key?: number,
+		/** Tech security level, for robots and wolfgirls */
+		level_tech?: number,
+		/** Magic security level, for mage factions */
+		level_magic?: number,
+	},
+
+	/** Behavior tags */
+	Behavior?: {
+		/** Can't play */
+		noPlay?: boolean,
+	}
+
+	/** This enemy wont appear outside of its designated floors even if it shares the tag */
+	noOverrideFloor?: boolean,
+	/** This tag will be added to the selection tags if the enemy has it, for loot and ambush spawning purposes */
+	summonTags?: string[],
+	/** This tag will be added to the selection tags if the enemy has it, for loot and ambush spawning purposes. Multiple copies will be pushed*/
+	summonTagsMulti?: string[],
 	/** If true, this enemy will always be bound to the enemy that summons it */
 	alwaysBound?: boolean,
 	/** These enemies wont appear in distracted mode */
@@ -880,6 +953,7 @@ interface weapon {
 
 interface KinkyDungeonEvent {
 	cost?: number,
+	tags?: string[],
 	duration?: number,
 	always?: boolean,
 	type: string;
@@ -1010,6 +1084,7 @@ interface entity {
 	disarmflag?: number,
 	channel?: number,
 	items?: string[],
+	tempitems?: string[],
 	x: number,
 	y: number,
 	lastx?: number,
@@ -1086,7 +1161,7 @@ interface KinkyDialogueTrigger {
 	noCombat?: boolean;
 	/** Prevents this from happening if the target is hostile */
 	nonHostile?: boolean;
-	prerequisite: (enemy: entity, dist: number) => boolean;
+	prerequisite: (enemy: entity, dist: number, AIData: any) => boolean;
 	weight: (enemy: entity, dist: number) => number;
 }
 
@@ -1113,6 +1188,7 @@ interface effectTile {
 	skin?: string,
 	/** random = basic effect where it fades in and has a chance to fade out again */
 	fade?: string,
+	statuses?: Record<string, number>,
 };
 
 /** For spells */
@@ -1123,6 +1199,7 @@ interface effectTileRef {
 	pauseDuration?: number,
 	pauseSprite?: string,
 	skin?: string,
+	statuses?: Record<string, number>,
 };
 
 type KDPerk = {
@@ -1442,6 +1519,8 @@ interface KinkyDialogue {
 	/** Jumps to the specified dialogue when clicked, after setting the response string*/
 	leadsTo?: string;
 	leadsToStage?: string;
+	/** Pressing the skip key will click this option */
+	skip?: boolean;
 	/** After leading to another dialogue, the response will NOT be updated */
 	dontTouchText?: boolean;
 	exitDialogue?: boolean;
@@ -1656,6 +1735,11 @@ type AIType = {
 	aftermove: (enemy, player, aidata) => boolean,
 	/** This executes after enemy is determined to be idle or not. If true, prevents spells.*/
 	afteridle?: (enemy, player, aidata) => boolean,
+	/** Returns the current wander long delay.*/
+	wanderDelay_long?: (enemy, aidata) => number,
+	/** Returns the current wander short delay.*/
+	wanderDelay_short?: (enemy, aidata) => number,
+
 }
 
 type EnemyEvent = {
@@ -1690,6 +1774,7 @@ type KDLockType = {
 	pickable: boolean;
 	pick_time: number;
 	pick_diff: number;
+	pick_lim?: number;
 	canPick: (data: any) => boolean;
 	doPick: (data: any) => boolean;
 	failPick: (data: any) => string;
@@ -1766,6 +1851,15 @@ interface KDBondage {
 interface KDCursedVar {
 	variant: (restraint: restraint, newRestraintName: string) => any,
 	level: number,
+}
+
+interface KDDelayedAction {
+	data: any,
+	time: number,
+	commit: string,
+	update?: string,
+	/** Cancel this in certain cases */
+	tags: string[],
 }
 
 

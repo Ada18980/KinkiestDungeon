@@ -87,7 +87,7 @@ let KDBasicCurses = ["Tickle", "Punish"];
 function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = "Purple") {
 	KinkyDungeonDupeRestraintText(restraint.name, newRestraintName);
 	/** @type {KinkyDungeonEvent[]} */
-	let events = Object.assign(ev, restraint.events);
+	let events = ev.concat(restraint.events);
 	let escapeChance = {
 		Struggle: Math.min(restraint.escapeChance.Struggle, 0-.2),
 		Cut: Math.min(restraint.escapeChance.Cut || 1.0, -0.1),
@@ -101,6 +101,8 @@ function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = "P
 		magic: true,
 		events: events,
 		power: power,
+		shrine: restraint.shrine?.concat(["Cursed"]),
+		inventoryAsSelf: restraint.inventoryAsSelf || restraint.inventoryAs || restraint.name,
 		displayPower: restraint.displayPower || restraint.power,
 	};
 }

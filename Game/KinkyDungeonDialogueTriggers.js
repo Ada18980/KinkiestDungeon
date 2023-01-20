@@ -13,7 +13,7 @@ let KDDialogueTriggers = {
 		noCombat: true,
 		noAlly: true,
 		blockDuringPlaytime: false,
-		prerequisite: (enemy, dist) => {
+		prerequisite: (enemy, dist, AIData) => {
 			return (KinkyDungeonPlayerDamage
 				&& !KinkyDungeonPlayerDamage.unarmed
 				&& KinkyDungeonPlayerDamage.name
@@ -39,8 +39,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["bindingDress"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["bindingDress"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
@@ -59,8 +59,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["kiguRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["kiguRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
@@ -79,8 +79,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.1,["shackleGag"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.1,["shackleGag"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100);
@@ -99,8 +99,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["chainRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["chainRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
@@ -119,8 +119,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["vineRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["vineRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Rope)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
@@ -139,8 +139,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["obsidianRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["obsidianRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Elements)/100);
@@ -159,8 +159,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["maidRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["maidRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100);
@@ -179,8 +179,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["dragonRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["dragonRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Leather)/100;
@@ -199,8 +199,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["comfyRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["comfyRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Conjure)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100);
@@ -219,8 +219,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["shackleRestraints", "steelCuffs"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["shackleRestraints", "steelCuffs"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Prisoner)/100);
@@ -239,8 +239,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["kittyRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["kittyRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Leather)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
@@ -259,8 +259,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["mithrilRope","mithrilRopeHogtie"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["mithrilRope","mithrilRopeHogtie"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Rope)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
@@ -279,8 +279,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["mithrilRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["mithrilRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
@@ -299,8 +299,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["wolfRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["wolfRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
@@ -319,8 +319,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["slimeRestraintsRandom"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["slimeRestraintsRandom"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
@@ -339,8 +339,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["scarfRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["scarfRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Rope)/100;
@@ -359,8 +359,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["autoTape"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["autoTape"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Metal + 50)/100;
@@ -380,8 +380,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["hitechCables", "cableGag"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["hitechCables", "cableGag"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Metal + 50)/100;
@@ -400,8 +400,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["iceRestraints"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["iceRestraints"]));
 		},
 		weight: (enemy, dist) => {
 			return 0.5 + 0.1 * Math.max(Math.abs(KinkyDungeonGoddessRep.Elements)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
@@ -420,8 +420,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.25,["latexRestraints", "latexRestraintsHeavy"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["latexRestraints", "latexRestraintsHeavy"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
@@ -437,7 +437,7 @@ let KDDialogueTriggers = {
 		noCombat: true,
 		noAlly: true,
 		blockDuringPlaytime: true,
-		prerequisite: (enemy, dist) => {
+		prerequisite: (enemy, dist, AIData) => {
 			return (dist < 1.5
 				&& KinkyDungeonStatsChoice.has("arousalMode")
 				&& !KinkyDungeonFlags.get("DangerFlag")
@@ -464,8 +464,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.5,["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.5,["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Rope + 50)/100;
@@ -483,8 +483,8 @@ let KDDialogueTriggers = {
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist) => {
-			return (KDDefaultPrereqs(enemy,dist,1.5,0.5,["leatherRestraintsHeavy"]));
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.5,["leatherRestraintsHeavy"]));
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.5 * Math.abs(KinkyDungeonGoddessRep.Leather + 50)/100;
@@ -507,14 +507,16 @@ let KDDialogueTriggers = {
 /**
  * Generic condition for Bondage Offers
  * @param {entity} enemy
+ * @param {any} AIData
  * @param {number} dist - Current player dist, its sent as a param for faster runtime
  * @param {number} maxdist
  * @param {number} chance
  * @param {string[]} restraintTags - Tags of required restraints
  * @returns {boolean}
  */
-function KDDefaultPrereqs(enemy, dist, maxdist, chance, restraintTags) {
+function KDDefaultPrereqs(enemy, AIData, dist, maxdist, chance, restraintTags) {
 	return dist < maxdist
+			&& !AIData.domMe
 			&& !KDEnemyHasFlag(enemy, "playstart")
 			&& !KinkyDungeonFlags.get("DangerFlag")
 			&& !KinkyDungeonFlags.get("BondageOffer")
@@ -532,7 +534,7 @@ function KDShopTrigger(name) {
 		noCombat: true,
 		excludeTags: ["noshop"],
 		blockDuringPlaytime: true,
-		prerequisite: (enemy, dist) => {
+		prerequisite: (enemy, dist, AIData) => {
 			return (dist < 1.5
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& !(KDGameData.SleepTurns > 0)
@@ -563,7 +565,7 @@ function KDRecruitTrigger(name, dialogue) {
 			nonHostile: true,
 			noCombat: true,
 			blockDuringPlaytime: true,
-			prerequisite: (enemy, dist) => {
+			prerequisite: (enemy, dist, AIData) => {
 				return (dist < 1.5
 					&& !KinkyDungeonFlags.get("Recruited")
 					&& !KinkyDungeonFlags.get("DangerFlag")
@@ -587,7 +589,7 @@ function KDBossTrigger(name, enemyName) {
 	return {
 		dialogue: name,
 		nonHostile: true,
-		prerequisite: (enemy, dist) => {
+		prerequisite: (enemy, dist, AIData) => {
 			return (dist < 1.5
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& !(KDGameData.SleepTurns > 0)
@@ -610,7 +612,7 @@ function KDBossTrigger(name, enemyName) {
 function KDBossLose(name, enemyName, tags) {
 	return {
 		dialogue: name,
-		prerequisite: (enemy, dist) => {
+		prerequisite: (enemy, dist, AIData) => {
 			return (dist < 1.5
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& !(KDGameData.SleepTurns > 0)

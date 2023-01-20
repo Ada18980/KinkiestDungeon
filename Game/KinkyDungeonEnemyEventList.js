@@ -26,9 +26,10 @@ let KDIntentEvents = {
 			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]);
 			enemy.IntentLeashPoint = nearestfurniture;
 			enemy.playWithPlayer = 22;
-			enemy.playWithPlayerCD = 30;
+			KDSetPlayCD(enemy, 2);
 
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 3);
+			KinkyDungeonSetEnemyFlag(enemy, "motivated", 50);
 
 			KDAddThought(enemy.id, "Jail", 5, enemy.playWithPlayer);
 
@@ -46,10 +47,10 @@ let KDIntentEvents = {
 			return KDSettlePlayerInFurniture(enemy, AIData);
 		},
 		maintain: (enemy, delta) => {
-			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
+			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && (KDEnemyHasFlag(enemy, "motivated") || KDHostile(enemy))) {
 				if (enemy.playWithPlayer < 10) {
 					enemy.playWithPlayer = 10;
-					enemy.playWithPlayerCD = Math.max(enemy.playWithPlayerCD, 15);
+					KDSetPlayCD(enemy, 1.5);
 				}// else enemy.playWithPlayer += delta;
 			}
 			return false;
@@ -69,14 +70,14 @@ let KDIntentEvents = {
 		nonaggressive: true,
 		// This is the basic 'it's time to play!' dialogue
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
-			return allied ? 10 : 110;
+			return !enemy?.playWithPlayer ? (allied ? 10 : 110) : 0;
 		},
 		trigger: (enemy, AIData) => {
 			KDResetIntent(enemy, AIData);
 			enemy.playWithPlayer = 8 + Math.floor(KDRandom() * (5 * Math.min(5, Math.max(enemy.Enemy.attackPoints || 0, enemy.Enemy.movePoints || 0))));
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 7);
-			enemy.playWithPlayerCD = 20 + enemy.playWithPlayer * 2.5;
-			if (AIData.domMe) enemy.playWithPlayer = Math.floor(enemy.playWithPlayerCD * 0.8);
+			KDSetPlayCD(enemy, 2.5);
+			if (AIData.domMe) enemy.playWithPlayer = Math.floor(enemy.playWithPlayer * 0.7);
 			KDAddThought(enemy.id, "Play", 4, enemy.playWithPlayer);
 
 			let index = Math.floor(Math.random() * 3);

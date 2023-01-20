@@ -11,13 +11,13 @@ let KDEffectTiles = {
 		name: "Ice",
 		duration: 1,
 		priority: 1,
-		tags: ["ice"],
+		tags: ["ice", "slippery"],
 	},
 	"Water": {
 		name: "Water",
 		duration: 40,
 		priority: 1,
-		tags: ["water", "freezeover", "conductive"],
+		tags: ["water", "freezeover", "conductive", "slippery"],
 	},
 	"Cracked": {
 		name: "Cracked",
@@ -65,6 +65,12 @@ let KDEffectTiles = {
 		duration: 50,
 		priority: 5,
 		tags: ["bind", "vine", "flammable"],
+	},
+	"Runes": {
+		name: "Runes",
+		duration: 9999,
+		priority: 10,
+		tags: ["rune", "hiddenmagic"],
 	},
 	"Belts": {
 		name: "Belts",

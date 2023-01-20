@@ -20,6 +20,10 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Demetria", color: "#c9d4fd", prisoner: true, free: false, customSprite: ""},
 	],
 	],
+	["Nurse", [
+		{name: "Rena", color: "#a452ff", prisoner: true, free: true, customSprite: ""},
+	],
+	],
 	["WitchRope", [
 		{name: "Kamikaze roper", color: "#ffae70", prisoner: true, free: false, customSprite: ""},
 	],

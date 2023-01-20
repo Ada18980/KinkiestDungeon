@@ -428,7 +428,7 @@ function KDDrawEditorUI() {
 		yy += grid;
 	}
 	DrawButtonKDEx("tilenamedown", (bdata) => {
-		if (KDEditorTileNameIndex >= tileKeys.length - 6) KDEditorTileNameIndex = 0
+		if (KDEditorTileNameIndex >= tileKeys.length - 6) KDEditorTileNameIndex = 0;
 		else KDEditorTileNameIndex = Math.min(tileKeys.length - 4, KDEditorTileNameIndex + 9);
 		KDTELoadConfirm = false;
 		return true;
@@ -697,7 +697,8 @@ let KDTE_Brush = {
 
 				if (brush.customfields) {
 					for (let field of Object.entries(brush.customfields)) {
-						KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)[field[0]] = KDTE_GetField(field);
+						if (KDTE_GetField(field))
+							KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)[field[0]] = KDTE_GetField(field);
 					}
 				}
 			} else {
