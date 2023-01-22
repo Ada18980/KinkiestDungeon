@@ -120,6 +120,7 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas) {
 
 	// TODO remove test code
 	MC.addModel(ModelDefs.Body);
+	MC.addModel(ModelDefs.Catsuit);
 
 	// Actual loop for drawing the models on the character
 	DrawCharacterModels(MC, X, Y, (Zoom * MODEL_SCALE) || MODEL_SCALE);

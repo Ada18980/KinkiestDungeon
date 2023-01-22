@@ -24,3 +24,12 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "Catsuit",
+	Folder: "Catsuit",
+	Layers: ToLayerMap([
+		{ Name: "Latex", Layer: "Torso", Pri: 10,
+			Poses: ToMap([...ARMPOSES, ...LEGPOSES])
+		},
+	])
+});
