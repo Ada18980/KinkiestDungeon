@@ -7522,10 +7522,6 @@ Next Page
 다음 페이지
 Last Page
 마지막 페이지
->>>
->>>
-<<<
-<<<
 Random Page (your hands are tied)
 랜덤 페이지(손이 묶여 있습니다)
 
@@ -9842,14 +9838,6 @@ Perks III
 
 pg. NUM/TOTAL
 페이지.NUM/총계
->
->
-<
-<
->>>
->>>
-<<<
-<<<
 Spell Points: SPELLPOINTS
 주문 포인트: SPELLPOINTS
 You need a higher level in SCHOOL magic to learn this spell.
