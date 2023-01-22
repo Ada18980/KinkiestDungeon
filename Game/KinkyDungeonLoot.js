@@ -713,7 +713,7 @@ function KDSpawnLootTrap(x, y, trap, mult, duration) {
 			if (etiles?.length > 0) {
 				let Enemy = KinkyDungeonGetEnemyByName(tile.tile.lootTrapEnemy);
 				if (Enemy) {
-					if (KinkyDungeonSummonEnemy(tile.x, tile.y, Enemy.name, 1, 0.5, true, (duration || Enemy.tags.construct) ? (duration || 40) : undefined, undefined, false, "Ambush", true, undefined, true, undefined, true, false))
+					if (KinkyDungeonSummonEnemy(tile.x, tile.y, Enemy.name, 1, 0.5, true, (duration || Enemy.tags.construct) ? (duration || 40) : undefined, undefined, false, "Ambush", true, undefined, true, undefined, duration > 300, false))
 						spawned += 1;
 					for (let et of etiles) {
 						et.duration = 0;

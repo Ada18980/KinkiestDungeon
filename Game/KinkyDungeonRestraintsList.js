@@ -1453,6 +1453,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Asset: "PolishedChastityBra",
 	OverridePriority: 27,
 	showInQuickInv: true,
+	alwaysKeep: true,
 	debris: "Belts",
 	escapeChance: {
 		"Struggle": 10,
@@ -1477,6 +1478,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	debris: "Belts",
 	OverridePriority: 27,
 	showInQuickInv: true,
+	alwaysKeep: true,
 	escapeChance: {
 		"Struggle": 0.1,
 		"Cut": 0.1,
@@ -1501,6 +1503,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Color: ["#808080", "#808080", "#808080"],
 	OverridePriority: 27,
 	showInQuickInv: true,
+	alwaysKeep: true,
 	debris: "Chains",
 	escapeChance: {
 		"Struggle": -0.1,
@@ -1528,6 +1531,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	AssetGroup: "Cloth",
 	Color: ["Default"],
 	showInQuickInv: true,
+	alwaysKeep: true,
 	escapeChance: {
 		"Struggle": -0.5,
 		"Cut": -0.5,
@@ -1554,6 +1558,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	AssetGroup: "Cloth",
 	Color: ["#5555ff"],
 	showInQuickInv: true,
+	alwaysKeep: true,
 	escapeChance: {
 		"Struggle": 0,
 		"Cut": -0.5,
@@ -1578,6 +1583,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	AssetGroup: "ClothLower",
 	Color: ["#ffffff"],
 	showInQuickInv: true,
+	alwaysKeep: true,
 	escapeChance: {
 		"Struggle": -0.5,
 		"Cut": -0.5,
@@ -1602,6 +1608,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Asset: "FingerlessGloves",
 	AssetGroup: "Gloves",
 	showInQuickInv: true,
+	alwaysKeep: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": -0.5,
@@ -1626,6 +1633,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Asset: "BikerGloves",
 	AssetGroup: "Gloves",
 	showInQuickInv: true,
+	alwaysKeep: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": 0.1,
@@ -1643,6 +1651,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Group: "ItemArms",
 	Asset: "SteelCuffs",
 	showInQuickInv: true,
+	alwaysKeep: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": -0.5,
@@ -1662,6 +1671,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	AssetGroup: "Shoes",
 	Color: ["#444444", "#222222"],
 	showInQuickInv: true,
+	alwaysKeep: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": -0.5,
@@ -1686,6 +1696,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	AssetGroup: "Shoes",
 	Color: ["#808080"],
 	showInQuickInv: true,
+	alwaysKeep: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": 0.1,

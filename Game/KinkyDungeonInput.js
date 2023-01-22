@@ -256,13 +256,19 @@ function KDProcessInput(type, data) {
 				KinkyDungeonUpdateStats(0);
 				if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 			} else {
-				KinkyDungeonSendActionMessage(1, TextGet("KinkyDungeonPayShrineFail"), "#ff0000", 1);
+				if (KinkyDungeonShrineTypeRemove.includes(type))
+					KinkyDungeonSendActionMessage(9, TextGet("KDNoRestraints"), "#ff5555", 1, true);
+				else
+					KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonPayShrineFail"), "#ff5555", 1, true);
 				if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Damage.ogg");
 			}
 			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			break;
 		case "shrineDrink": {
-			if (!KDCanDrinkShrine(false)) break;
+			if (!KDCanDrinkShrine(false)) {
+				KinkyDungeonSendActionMessage(9, TextGet("KDNoMana"), "#ff5555", 2, true);
+				break;
+			}
 			KDDelayedActionPrune(["Action", "World"]);
 			tile = KinkyDungeonTilesGet(data.targetTile);
 			if (tile) tile.drunk = true;
@@ -294,7 +300,10 @@ function KDProcessInput(type, data) {
 			break;
 		}
 		case "shrineBottle": {
-			if (!KDCanDrinkShrine(true)) break;
+			if (!KDCanDrinkShrine(true)) {
+				KinkyDungeonSendTextMessage(9, TextGet("KDNoMana"), "#ff5555", 2, true);
+				break;
+			}
 			KDDelayedActionPrune(["Action", "World"]);
 			tile = KinkyDungeonTilesGet(data.targetTile);
 			if (tile) tile.drunk = true;
