@@ -1,6 +1,6 @@
 "use strict";
 
-const LAYERS_BASE = [
+let LAYERS_BASE = [
 	"Eyes",
 	"Head",
 	"Chest",
@@ -41,6 +41,7 @@ let LayerProperties = {
 // Constants
 /** Internal value for layering */
 let LAYER_INCREMENT = 1000;
+
 let MODELHEIGHT = 3500;
 let MODELWIDTH = 2480;
 /** Model scale to UI scalee */

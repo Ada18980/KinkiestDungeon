@@ -108,7 +108,7 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend =
 
 	// TODO remove test code
 	MC.addModel(ModelDefs.Body);
-	MC.addModel(ModelDefs.Catsuit);
+	//MC.addModel(ModelDefs.Catsuit);
 
 	// Actual loop for drawing the models on the character
 	DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods);
@@ -197,10 +197,10 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods) {
 					/** @type {PoseMod[]} */
 					let mod_selected = mods[layer] || [];
 					for (let mod of mod_selected) {
-						ox = ox ? ox : mod.offset_x;
-						oy = oy ? oy : mod.offset_y;
-						ax = ax ? ax : mod.rotation_x_anchor;
-						ay = ay ? ay : mod.rotation_y_anchor;
+						ox = mod.offset_x || ox;
+						oy = mod.offset_y || oy;
+						ax = mod.rotation_x_anchor || ax;
+						ay = mod.rotation_y_anchor || ay;
 						sx *= mod.scale_x || 1;
 						sy *= mod.scale_y || 1;
 						rot += mod.rotation || 0;

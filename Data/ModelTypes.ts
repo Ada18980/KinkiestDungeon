@@ -54,7 +54,7 @@ interface ModelLayer extends Namable {
     Name: string,
     /** Layer for priority sorting */
     Layer: string,
-    /** Priority offset */
+    /** Priority offset, -499 to 500 */
     Pri?: number,
     /** Name of the sprite PNG, same as the name by default*/
     Sprite?: string,
