@@ -2686,7 +2686,7 @@ function CJKcheck(text,p = 0,o = "search"){
 		//Find all CJK Symbols and Punctuation
 		if (p == 3){ return text.match(/[\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\uff1f\uff01\uffe5\u3000-\u303f]+/g);}
 		//Find all CJK characters
-		else { return text.match(/[\u3000-\u9fff\ue000-\uf8ff\uff01-\uffdc\uac00-\ud7af]+/g);};
+		else { return text.match(/[\u3000-\u9fff\ue000-\uf8ff\uff01-\uffdc\uac00-\ud7af]+/g);}
 	} else if (o == "test")
 	{
 		//Check CJK Symbols and Punctuation
