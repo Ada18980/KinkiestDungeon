@@ -1205,9 +1205,6 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 			limitChance = KDDragonBonus;
 	}
 
-	let bonus = KDGetItemGoddessBonus(restraint);
-	escapeChance += bonus;
-
 	let data = {
 		restraint: restraint,
 		escapeChance: escapeChance,
@@ -1217,9 +1214,15 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 		limitChancePre: limitChancePre,
 		ApplyGhost: ApplyGhost,
 		ApplyPlayerBonus: ApplyPlayerBonus,
-		GoddessBonus: bonus,
+		GoddessBonus: 0,
 		Msg: Msg,
+
 	};
+
+	let GoddessBonus = KDGetItemGoddessBonus(restraint, data);
+	data.escapeChance += GoddessBonus;
+	data.GoddessBonus = GoddessBonus;
+
 	KinkyDungeonSendEvent("perksStruggleCalc", data);
 
 	return {
@@ -3148,9 +3151,13 @@ function KDAddDelayedStruggle(amount, time, StruggleType, struggleGroup, index, 
 /**
  * Gets the goddess bonus for this item
  * @param {item} item
+ * @param {any} data - Escape chance data
  */
-function KDGetItemGoddessBonus(item) {
+function KDGetItemGoddessBonus(item, data) {
 	if (!item) return 0;
+	if (data) {
+		if (data.struggleType == "Unlock") return 0;
+	}
 	let bonus = 0;
 	let avg = 0;
 	for (let s of KDRestraint(item)?.shrine) {
@@ -3160,6 +3167,6 @@ function KDGetItemGoddessBonus(item) {
 		}
 	}
 	if (avg > 0)
-		return bonus/avg;
-	return 0;
+		bonus = bonus/avg;
+	return bonus;
 }
