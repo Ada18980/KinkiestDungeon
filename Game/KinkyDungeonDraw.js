@@ -553,7 +553,6 @@ function KinkyDungeonDrawGame() {
 			KDModalArea = false;
 			KDCloseQuickInv();
 			KDRepSelectionMode = "";
-			KinkyDungeonGameKey.keyPressed[9] = false;
 		}
 	}
 
@@ -993,10 +992,25 @@ function KinkyDungeonDrawGame() {
 
 			// Draw the player no matter what
 			KinkyDungeonContextPlayer.clearRect(0, 0, KinkyDungeonCanvasPlayer.width, KinkyDungeonCanvasPlayer.height);
+			let PlayerModel = Patched ? KDCurrentModels.get(KinkyDungeonPlayer) : null;
+			let zoom = PlayerModel ? KinkyDungeonGridSizeDisplay/1200
+				: KinkyDungeonGridSizeDisplay/250;
+			/** @type {PoseMod[]} */
+			let mods = Patched ? [
+				{
+					Layer: "Head",
+					scale_x: 3,
+					scale_y: 3,
+					rotation_x_anchor: 1190/MODELWIDTH,
+					rotation_y_anchor: 690/MODELHEIGHT,
+					offset_x: 1190/MODELWIDTH,
+					offset_y: 690/MODELHEIGHT,
+				}
+			] : [];
 			DrawCharacter(KinkyDungeonPlayer,
-				-KinkyDungeonGridSizeDisplay/2 + (Patched ? KinkyDungeonGridSizeDisplay*-0.2 : 0),
-				KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0) + (Patched ? KinkyDungeonGridSizeDisplay*-0.1 : 0),
-				KinkyDungeonGridSizeDisplay/250, false, KinkyDungeonContextPlayer);
+				canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay + (Patched ? KinkyDungeonGridSizeDisplay/4: -KinkyDungeonGridSizeDisplay/2),
+				canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay + (Patched ? KinkyDungeonGridSizeDisplay/6 : (KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0))),
+				zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods);
 
 			KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 			KinkyDungeonDrawFloaters(CamX+CamX_offset, CamY+CamY_offset);
@@ -2370,11 +2384,23 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 		if (Centered) {
 			sprite.anchor.set(0.5);
 		}
-		if (Rotation)
+		if (Rotation != undefined)
 			sprite.rotation = Rotation;
 		if (options) {
 			for (let o of Object.entries(options)) {
 				sprite[o[0]] = o[1];
+			}
+			if (options.scalex != undefined) {
+				sprite.scale.x = sprite.scale.x * options.scalex;
+			}
+			if (options.scaley != undefined) {
+				sprite.scale.y = sprite.scale.y * options.scaley;
+			}
+			if (options.anchorx != undefined) {
+				sprite.anchor.x = options.anchorx;
+			}
+			if (options.anchory != undefined) {
+				sprite.anchor.y = options.anchory;
 			}
 		}
 		if (SpritesDrawn)

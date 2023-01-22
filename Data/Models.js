@@ -1,22 +1,5 @@
 "use strict";
 
-const LAYERS_BASE = [
-	"Eyes",
-	"Head",
-	"Arms",
-	"LegLeft",
-	"Butt",
-	"Torso",
-	"LegRight",
-	"FootRight",
-];
-
-// Constants
-/** Internal value for layering */
-const LAYER_INCREMENT = 1000;
-/** Model scale to UI scalee */
-const MODEL_SCALE = 1000/3500;
-const MODEL_XOFFSET = Math.floor((500 - 2000 * MODEL_SCALE)/2);
 
 let KDCanvasRenderMap = new Map();
 KDCanvasRenderMap.set(KinkyDungeonCanvasPlayer, "temp");
@@ -102,9 +85,11 @@ function ToLayerMap(Layers) {
  * @param {number} Zoom - Zoom factor
  * @param {boolean} [IsHeightResizeAllowed=true] - Whether or not the settings allow for the height modifier to be applied
  * @param {CanvasRenderingContext2D} [DrawCanvas] - The canvas to draw to; If undefined `MainCanvas` is used
+ * @param {any} [Blend] - The blend mode to use
+ * @param {PoseMod[]} [StartMods] - Mods applied
  * @returns {void} - Nothing
  */
-function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas) {
+function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend = PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR, StartMods = []) {
 	/** @type {ModelContainer} */
 	let MC = !KDCurrentModels.get(C) ? new ModelContainer(
 		C,
@@ -118,12 +103,15 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas) {
 		},
 	) : KDCurrentModels.get(C);
 
+
+	MC.SpritesDrawn.clear();
+
 	// TODO remove test code
 	MC.addModel(ModelDefs.Body);
 	MC.addModel(ModelDefs.Catsuit);
 
 	// Actual loop for drawing the models on the character
-	DrawCharacterModels(MC, X, Y, (Zoom * MODEL_SCALE) || MODEL_SCALE);
+	DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods);
 
 	// Cull sprites that weren't drawn yet
 	for (let sprite of MC.SpriteList.entries()) {
@@ -151,11 +139,13 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas) {
 	}
 
 	if (renderer) {
-		PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
+		// We always draw with the nice linear scaling
+		let sm = PIXI.settings.SCALE_MODE;
+		PIXI.settings.SCALE_MODE = Blend;
 		renderer.render(MC.Container, {
 			clear: false,
 		});
-		PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
+		PIXI.settings.SCALE_MODE = sm;
 	}
 
 	// Store it in the map so we don't have to create it again
@@ -171,29 +161,95 @@ let DrawModel = DrawCharacter;
  * Setup sprites from the modelcontainer
  * @param {ModelContainer} MC
  */
-function DrawCharacterModels(MC, X, Y, Zoom) {
+function DrawCharacterModels(MC, X, Y, Zoom, StartMods) {
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
 
 	// TODO hide, filtering based on pose, etc etc
+	let {X_Offset, Y_Offset} = ModelGetPoseOffsets(MC.Poses);
+	let {rotation, X_Anchor, Y_Anchor} = ModelGetPoseRotation(MC.Poses);
+	let mods = ModelGetPoseMods(MC.Poses);
+	MC.Container.angle = rotation;
+	MC.Container.pivot.x = MODELWIDTH*Zoom * X_Anchor;
+	MC.Container.pivot.y = MODELHEIGHT*Zoom * Y_Anchor;
+	MC.Container.x = X + (MODEL_XOFFSET + MODELWIDTH * X_Offset) * Zoom;
+	MC.Container.y = Y + (MODELHEIGHT * Y_Offset) * Zoom;
+
+	for (let m of StartMods) {
+		if (!mods[m.Layer]) mods[m.Layer] = [];
+		mods[m.Layer].push(m);
+	}
+
 
 	// Now that we have the final list of models we do a KDDraw
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
-			KDDraw(
-				MC.Container,
-				MC.SpriteList,
-				`layer_${m.Name}_${l.Name}`,
-				ModelLayerString(m, l, MC.Poses),
-				X + MODEL_XOFFSET * Zoom, Y, undefined, undefined,
-				undefined, {
-					zIndex: -ModelLayers[l.Layer] + (l.Pri || 0),
-				}, false,
-				MC.SpritesDrawn,
-				Zoom
-			);
+			if (ModelDrawLayer(m, l, MC.Poses)) {
+				let ox = 0;
+				let oy = 0;
+				let ax = 0;
+				let ay = 0;
+				let sx = 1;
+				let sy = 1;
+				let rot = 0;
+				let layer = l.Layer;
+				while (layer) {
+					/** @type {PoseMod[]} */
+					let mod_selected = mods[layer] || [];
+					for (let mod of mod_selected) {
+						ox = ox ? ox : mod.offset_x;
+						oy = oy ? oy : mod.offset_y;
+						ax = ax ? ax : mod.rotation_x_anchor;
+						ay = ay ? ay : mod.rotation_y_anchor;
+						sx *= mod.scale_x || 1;
+						sy *= mod.scale_y || 1;
+						rot += mod.rotation || 0;
+					}
+					layer = LayerProperties[layer]?.Parent;
+				}
+
+				KDDraw(
+					MC.Container,
+					MC.SpriteList,
+					`layer_${m.Name}_${l.Name}`,
+					ModelLayerString(m, l, MC.Poses),
+					ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
+					rot * Math.PI / 180, {
+						zIndex: -ModelLayers[l.Layer] + (l.Pri || 0),
+						anchorx: ax,
+						anchory: ay,
+						scalex: sx != 1 ? sx : undefined,
+						scaley: sy != 1 ? sy : undefined,
+					}, false,
+					MC.SpritesDrawn,
+					Zoom
+				);
+			}
 		}
 	}
+}
+
+/**
+ * Determines if we should draw this layer or not
+ * @param {Model} Model
+ * @param {ModelLayer} Layer
+ * @param {Record<string, boolean>} Poses
+ * @returns {boolean}
+ */
+function ModelDrawLayer(Model, Layer, Poses) {
+	// Filter poses
+	if (Layer.Poses) {
+		let found = false;
+		for (let p of Object.keys(Poses)) {
+			if (Layer.Poses[p]) {
+				found = true;
+				break;
+			}
+		}
+		if (!found) return false;
+	}
+	// TODO filter hide
+	return true;
 }
 
 /**
@@ -215,25 +271,57 @@ function ModelLayerString(Model, Layer, Poses) {
  */
 function LayerSprite(Layer, Poses) {
 	let pose = "";
-	if (Layer.Poses) {
-		// "" if its a defaultpose
-		let cancel = false;
-		if (Layer.DefaultPoses) {
-			for (let dp of Object.keys(Layer.DefaultPoses)) {
-				if (Poses[dp]) {
-					cancel = true;
-					break;
-				}
+	let foundPose = false;
+
+	// change the pose if its a morph pose, this helps to avoid duplication
+	let cancel = false;
+	if (Layer.MorphPoses) {
+		for (let dp of Object.entries(Layer.MorphPoses)) {
+			if (Poses[dp[0]] != undefined) {
+				pose = dp[1];
+				cancel = true;
+				foundPose = true;
+				break;
 			}
 		}
+	}
+	// Handle the actual poses
+	if (Layer.Poses && !cancel) {
 		// Otherwise we append pose name to layer name
-		if (!cancel)
-			for (let p of Object.keys(Poses)) {
-				if (Layer.Poses[p]) {
-					pose = p;
-					break;
-				}
+		for (let p of Object.keys(Layer.Poses)) {
+			if (Poses[p] != undefined) {
+				pose =
+					(
+						(
+							!(Layer.GlobalDefaultOverride && Layer.GlobalDefaultOverride[p])
+							&& PoseProperties[p])
+								? PoseProperties[p].global_default
+								: p)
+					|| p;
+				foundPose = true;
+				break;
 			}
+		}
+	}
+
+	// For simplicity, we can have a global default override and it will add it as a pose to the list
+	// This helps simplify definitions, like for hogtie
+	if (!foundPose && !cancel && Layer.GlobalDefaultOverride) {
+		for (let p of Object.keys(Layer.GlobalDefaultOverride)) {
+			if (Poses[p] != undefined) {
+				pose = p;
+				break;
+			}
+		}
+	}
+
+	if (Layer.AppendPose) {
+		for (let p of Object.keys(Layer.AppendPose)) {
+			if (Poses[p] != undefined && (!Layer.AppendPoseRequire || Layer.AppendPoseRequire[p])) {
+				pose = pose + p;
+				break;
+			}
+		}
 	}
 
 	return (Layer.Sprite ? Layer.Sprite : Layer.Name) + pose;

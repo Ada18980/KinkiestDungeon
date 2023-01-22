@@ -1,7 +1,5 @@
 "use strict";
 
-let ARMPOSES = ["Free", "Boxtie", "Wristtie"];
-let LEGPOSES = ["Spread", "Closed", "Kneel"];
 
 AddModel({
 	Name: "Body",
@@ -11,16 +9,27 @@ AddModel({
 		},
 		{ Name: "Head", Layer: "Head", Pri: 0,
 		},
-		{ Name: "Arms", Layer: "Arms", Pri: 0,
-			Poses: ToMap(ARMPOSES)
+		{ Name: "ArmRight", Layer: "ArmRight", Pri: 0,
+			Poses: ToMap(ARMPOSES),
+		},
+		{ Name: "ArmLeft", Layer: "ArmLeft", Pri: 0,
+			Poses: ToMap(ARMPOSES),
 		},
 		{ Name: "LegLeft", Layer: "LegLeft", Pri: 0,
-			Poses: ToMap(LEGPOSES)
+			Poses: ToMap(LEGPOSES),
 		},
 		{ Name: "Torso", Layer: "Torso", Pri: 0,
 		},
+		{ Name: "Chest", Layer: "Chest", Pri: 0,
+		},
+		{ Name: "FootRight", Layer: "FootRight", Pri: 0,
+			Poses: ToMap(["Kneel"]),
+		},
 		{ Name: "LegRight", Layer: "LegRight", Pri: 0,
-			Poses: ToMap(LEGPOSES)
+			Poses: ToMap(LEGPOSES),
+		},
+		{ Name: "Butt", Layer: "Butt", Pri: 0,
+			Poses: ToMap(KNEELPOSES),
 		},
 	])
 });
@@ -28,8 +37,39 @@ AddModel({
 	Name: "Catsuit",
 	Folder: "Catsuit",
 	Layers: ToLayerMap([
-		{ Name: "Latex", Layer: "Torso", Pri: 10,
-			Poses: ToMap([...ARMPOSES, ...LEGPOSES])
+		{ Name: "ArmRight", Layer: "ArmRight", Pri: 0,
+			Poses: ToMap(ARMPOSES, "Hogtie"),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			AppendPose: ToMap(["Hogtie"]),
+			AppendPoseRequire: ToMap(["Wristtie"]),
+		},
+		{ Name: "ArmLeft", Layer: "ArmLeft", Pri: 0,
+			Poses: ToMap(ARMPOSES, "Hogtie"),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			AppendPose: ToMap(["Hogtie"]),
+			AppendPoseRequire: ToMap(["Wristtie"]),
+		},
+		{ Name: "LegLeft", Layer: "LegLeft", Pri: 1,
+			Poses: ToMap(LEGPOSES),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+		},
+		{ Name: "Torso", Layer: "Torso", Pri: 1,
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+		},
+		{ Name: "Chest", Layer: "Chest", Pri: 1,
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+		},
+		{ Name: "FootRight", Layer: "FootRight", Pri: 0,
+			Poses: ToMap(["Kneel"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+		},
+		{ Name: "LegRight", Layer: "LegRight", Pri: 1,
+			Poses: ToMap(LEGPOSES),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+		},
+		{ Name: "Butt", Layer: "Butt", Pri: 0,
+			Poses: ToMap(KNEELPOSES),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
 		},
 	])
 });

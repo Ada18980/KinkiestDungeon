@@ -1,7 +1,7 @@
 "use strict";
 
 // Disable interpolation when scaling, will make texture be pixelated
-//PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
+PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
 
 /** These languages have characters which are rendered bigger than English. */
 let KDBigLanguages = ["CN", "KR"];
