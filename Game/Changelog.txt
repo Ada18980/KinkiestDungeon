@@ -1210,6 +1210,9 @@ Features
 3.94
 - Enemies now require security clearance to bypass chastity belts... unless you just take the Magic Hands perk
 
+3.95
+- New minor enemies: Encased Adventurer and Bouncy Slime
+
 TODO ValidationFindBlockCycles to prevent bugs
 
 TODO: Mushrooms in the jungle
