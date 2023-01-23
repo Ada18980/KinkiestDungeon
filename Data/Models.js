@@ -108,7 +108,7 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend =
 
 	// TODO remove test code
 	MC.addModel(ModelDefs.Body);
-	//MC.addModel(ModelDefs.Catsuit);
+	MC.addModel(ModelDefs.Catsuit);
 
 	// Actual loop for drawing the models on the character
 	DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods);

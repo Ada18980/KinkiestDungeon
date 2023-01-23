@@ -36,6 +36,25 @@ function ToMap(Array, ...Extra) {
 
 /**
  * @param {string[]} Array
+ * @param {string[]} Subtract
+ */
+function ToMapSubtract(Array, Subtract) {
+	/**
+	 * @type {Record<string, boolean>}
+	 */
+	let list = {};
+	for (let n of Array) {
+		list[n] = true;
+	}
+	// O(n) instead of O(n^2) to check while creating the first array
+	for (let n of Subtract) {
+		delete list[n];
+	}
+	return list;
+}
+
+/**
+ * @param {string[]} Array
  * @param {string} Default
  */
 function ToMapDefault(Array, Default = "") {

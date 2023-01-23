@@ -1,7 +1,10 @@
 "use strict";
 
 let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked"];
+let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked"];
+let HANDLEFTPOSES = ["Free", "Yoked"];
 let LEGPOSES = ["Spread", "Closed", "Kneel", "Hogtie"];
+let FOOTRIGHTPOSES = ["Spread", "Closed"];
 let KNEELPOSES = ["Kneel", "Hogtie"];
 /** Standard GlobalDefaultOverrides, this should be for any pose that's meant to use mostly normal assets */
 let STANDARD_DEFAULTS = ["Hogtie"];
