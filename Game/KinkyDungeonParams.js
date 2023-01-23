@@ -300,7 +300,7 @@ const KinkyDungeonMapParams = {
 
 		music: {
 			"AREA7-LOSTTEMPLE.ogg": 14,
-			"AREA8-BELLOWS.ogg": 2,
+			"AREA9-BELLOWS.ogg": 2,
 		},
 
 		tagModifiers: {
@@ -565,7 +565,7 @@ const KinkyDungeonMapParams = {
 
 		music: {
 			"AREA6-CRYSTALCAVE.ogg": 10,
-			"AREA8-BELLOWS.ogg": 3,
+			"AREA9-BELLOWS.ogg": 3,
 		},
 
 		shadowColor: 0x080311,
