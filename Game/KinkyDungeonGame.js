@@ -4,8 +4,6 @@ let KinkyDungeonGagMumbleChance = 0.02;
 let KinkyDungeonGagMumbleChancePerRestraint = 0.0025;
 
 let MiniGameKinkyDungeonCheckpoint = "grv";
-let MiniGameKinkyDungeonShortcut = "grv";
-let MiniGameKinkyDungeonMainPath = "grv";
 let MiniGameKinkyDungeonLevel = -1;
 /**
  * @type Record<string, string>
@@ -214,7 +212,7 @@ function KinkyDungeonPlaySound(src, entity) {
 
 function KinkyDungeonSetCheckPoint(Checkpoint, AutoSave, suppressCheckPoint) {
 	if (Checkpoint != undefined) MiniGameKinkyDungeonCheckpoint = Checkpoint;
-	else if (Math.floor(MiniGameKinkyDungeonLevel / 10) == MiniGameKinkyDungeonLevel / 10)
+	else if (Math.floor(MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint) == MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint)
 		MiniGameKinkyDungeonCheckpoint = KDDefaultJourney[Math.min(KDDefaultJourney.length - 1, Math.floor((MiniGameKinkyDungeonLevel) / KDLevelsPerCheckpoint))];
 }
 
@@ -1386,8 +1384,8 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs) 
 
 	}
 
-	MiniGameKinkyDungeonMainPath = checkpoint;
-	if (MiniGameKinkyDungeonMainPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: MiniGameKinkyDungeonMainPath}, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 8.5);
+	KDGameData.MainPath = checkpoint;
+	if (KDGameData.MainPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.MainPath}, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 8.5);
 	KinkyDungeonSpecialAreas.push({x: KinkyDungeonEndPosition.x, y: KinkyDungeonEndPosition.y, radius: 2});
 }
 
@@ -1427,7 +1425,7 @@ function KinkyDungeonGetMainPath(level) {
 			return path.checkpoint;
 		}
 	}
-	if ((MiniGameKinkyDungeonLevel + 1) % 6 == 0) {
+	if ((MiniGameKinkyDungeonLevel) % KDLevelsPerCheckpoint == 0) {
 		return KDDefaultJourney[Math.min(KDDefaultJourney.length - 1, Math.floor((MiniGameKinkyDungeonLevel + 1) / KDLevelsPerCheckpoint))];
 	}
 	return MiniGameKinkyDungeonCheckpoint;
@@ -1505,8 +1503,8 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 			}
 
 		if (placed) {
-			MiniGameKinkyDungeonShortcut = checkpoint;
-			if (MiniGameKinkyDungeonShortcut != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: MiniGameKinkyDungeonShortcut}, xx, yy, 4.5, true);
+			KDGameData.ShortcutPath = checkpoint;
+			if (KDGameData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.ShortcutPath}, xx, yy, 4.5, true);
 		}
 	}
 }
