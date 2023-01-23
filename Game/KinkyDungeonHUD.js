@@ -650,7 +650,8 @@ function KinkyDungeonDrawInputs() {
 			}
 			if (MouseIn(((!sg.left) ? (260) : 0), y-48, 230, (ButtonWidth + 45)) && sg) {
 
-				KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 500);
+				if (MouseY < y)
+					KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 500);
 
 				let data = {
 					struggleGroup: sg,
