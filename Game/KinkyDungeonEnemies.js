@@ -961,15 +961,20 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					if (faction && (!KinkyDungeonHiddenFactions.includes(faction) || KinkyDungeonTooltipFactions.includes(faction))) {
 						let tt = TextGet("KinkyDungeonFaction" + faction);
 						let ttlength = 10;
-						if (/^[a-zA-Z\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+$/.test(tt)){
+						if (CJKcheck(tt,2)){
 							DrawTextFitKD(tt, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, 10 + tt.length * 8, "white", "black");
 							yboost += -2*KinkyDungeonGridSizeDisplay/7;
 						} else {
-							if (/[a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(tt)){
-								ttlength = /[a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(tt)[0].length * 8;
+							let ttCJKcheck1 = CJKcheck(tt,1);
+							let ttCJKcheck2 = CJKcheck(tt);
+
+							if (ttCJKcheck1){
+								let i;
+								for (i in ttCJKcheck1){ttlength += ttCJKcheck1[i].length * 8;}
 							}
-							if (/[^a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(tt)){
-								ttlength += /[^a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(tt)[0].length * 16;
+							if (ttCJKcheck2){
+								let i;
+								for (i in ttCJKcheck2){ttlength += ttCJKcheck2[i].length * 16;}
 							}
 							DrawTextFitKD(tt, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, ttlength, "white", "black");
 							yboost += -3*KinkyDungeonGridSizeDisplay/8;
@@ -978,14 +983,19 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 
 					let name = TextGet("Name" + enemy.Enemy.name);
 					let namelength = 10;
-					if (/^[a-zA-Z\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+$/.test(name)){
+					if (CJKcheck(name,2)){
 						DrawTextFitKD(name, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, 10 + name.length * 8, "white", "black");
 					} else {
-						if (/[a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(name)){
-							namelength = /[a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(name)[0].length * 8;
+						let nameCJKcheck1 = CJKcheck(name,1);
+						let nameCJKcheck2 = CJKcheck(name);
+
+						if (nameCJKcheck1){
+							let i;
+							for (i in nameCJKcheck1){namelength += nameCJKcheck1[i].length * 8;}
 						}
-						if (/[^a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(name)){
-							namelength += /[^a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(name)[0].length * 16;
+						if (nameCJKcheck2){
+							let i;
+							for (i in nameCJKcheck2){namelength += nameCJKcheck2[i].length * 16;}
 						}
 						DrawTextFitKD(name, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, namelength, "white", "black");
 					}
@@ -998,14 +1008,19 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 
 				if (enemy.dialogue && !tooltip) {
 					let dialougelenth = 10;
-					if (/^[a-zA-Z\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+$/.test(enemy.dialogue)){
+					if (CJKcheck(enemy.dialogue,2)){
 						DrawTextFitKD(enemy.dialogue, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5, 10 + enemy.dialogue.length * 8, enemy.dialogueColor, "#000000", 18, undefined, 20);
 					} else {
-						if (/[a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(enemy.dialogue)){
-							dialougelenth = /[a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(enemy.dialogue)[0].length * 8;
+						let dialougeCJKcheck1 = CJKcheck(enemy.dialogue,1);
+						let dialougeCJKcheck2 = CJKcheck(enemy.dialogue);
+
+						if (dialougeCJKcheck1){
+							let i;
+							for (i in dialougeCJKcheck1){dialougelenth += dialougeCJKcheck1[i].length * 8;}
 						}
-						if (/[^a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(enemy.dialogue)){
-							dialougelenth += /[^a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/.exec(enemy.dialogue)[0].length * 16;
+						if (dialougeCJKcheck2){
+							let i;
+							for (i in dialougeCJKcheck2){dialougelenth += dialougeCJKcheck2[i].length * 16;}
 						}
 						DrawTextFitKD(enemy.dialogue, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5, dialougelenth, enemy.dialogueColor, "#000000", 18, undefined, 20);
 					}

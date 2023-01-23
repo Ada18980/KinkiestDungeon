@@ -151,7 +151,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 
 				if (MiniGameKinkyDungeonLevel >= KinkyDungeonMaxLevel) {
 					MiniGameKinkyDungeonLevel = 1;
-					MiniGameKinkyDungeonMainPath = "grv";
+					KDGameData.MainPath = "grv";
 					KinkyDungeonState = "End";
 					MiniGameVictory = true;
 					suppressCheckPoint = true;
@@ -202,10 +202,10 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 
 			if (toTile == 's') {
 				KinkyDungeonSendActionMessage(10, TextGet("ClimbDown"), "#ffffff", 1);
-				KinkyDungeonSetCheckPoint(MiniGameKinkyDungeonMainPath, true, suppressCheckPoint);
+				KinkyDungeonSetCheckPoint(KDGameData.MainPath, true, suppressCheckPoint);
 			} else if (toTile == 'H') {
 				KinkyDungeonSendActionMessage(10, TextGet("ClimbDownShortcut"), "#ffffff", 1);
-				KinkyDungeonSetCheckPoint(MiniGameKinkyDungeonShortcut, true, suppressCheckPoint);
+				KinkyDungeonSetCheckPoint(KDGameData.ShortcutPath, true, suppressCheckPoint);
 			}
 
 			if (KinkyDungeonState != "End") {
