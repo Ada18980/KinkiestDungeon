@@ -20,12 +20,14 @@ English
 英语
 Chinese
 简体中文
+Korean
+韩语
 Kinky Dungeon v3.91
 变态地牢 v3.91
 You are an adventurer descending into an ancient underground city of magic.
-你是一个冒险家，下降到一个古老的地下魔法城市。
+你是一个冒险家，前往了一个古老的地下魔法城市。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
-在它的深处是女主人的法杖，这是一件拥有无穷力量的神器。
+在它的深处隐藏着女主人的法杖，这是一件拥有无穷力量的神器。
 Will you prevail against forces unknown, or succumb to its dark secrets?
 你会战胜未知的力量，还是屈服于它的黑暗秘密？
 (This game does not contain spiders or any carnivorous creatures/plants)

@@ -553,6 +553,7 @@ function KinkyDungeonDrawGame() {
 			KDModalArea = false;
 			KDCloseQuickInv();
 			KDRepSelectionMode = "";
+			KinkyDungeonGameKey.keyPressed[9] = false;
 		}
 	}
 
