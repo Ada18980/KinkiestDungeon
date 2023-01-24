@@ -1156,17 +1156,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, AI: AI};
 				KDAddEntity(e);
 				// Give it a custom name, 5% chance
-				if (KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < 0.05) {
-					let customs = KDPatronCustomEnemies.get(Enemy.name).filter((element) => {
-						return (element.prisoner && Enemy.specialdialogue && Enemy.specialdialogue.includes("Prisoner")) || (element.free && !Enemy.specialdialogue);
-					});
-					if (customs.length > 0) {
-						let custom = customs[Math.floor(customs.length * KDRandom())];
-						e.CustomName = custom.name;
-						e.CustomNameColor = custom.color;
-						e.CustomSprite = custom.customSprite;
-					}
-				}
+				KDProcessCustomPatron(Enemy, e);
 				let incrementCount = 1;
 				KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
 				let shop = KinkyDungeonGetShopForEnemy(e, false);
