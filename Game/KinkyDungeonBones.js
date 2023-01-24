@@ -14,6 +14,7 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Nekora", color: "#42a459", prisoner: true, free: true, customSprite: ""},
 		{name: "Emeia", color: "#00A7FF", prisoner: true, free: true, customSprite: ""},
 		{name: "Dana", color: "#4444ff", prisoner: true, free: true, customSprite: ""},
+		{name: "Yami", color: "#88ff88", prisoner: true, free: true, customSprite: ""},
 	],
 	],
 	["WolfgirlPet", [
@@ -22,6 +23,10 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["Nurse", [
 		{name: "Rena", color: "#a452ff", prisoner: true, free: true, customSprite: ""},
+	],
+	],
+	["DragonLeaderDuelist", [
+		{name: "Kaitlyn", color: "#ff5555", prisoner: true, free: true, customSprite: ""},
 	],
 	],
 	["SlimeAdv", [
@@ -70,3 +75,22 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 ]);
+
+/**
+ *
+ * @param {enemy} Enemy
+ * @param {entity} e
+ */
+function KDProcessCustomPatron(Enemy, e) {
+	if (KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < 0.05) {
+		let customs = KDPatronCustomEnemies.get(Enemy.name).filter((element) => {
+			return (element.prisoner && Enemy.specialdialogue && Enemy.specialdialogue.includes("Prisoner")) || (element.free && !Enemy.specialdialogue);
+		});
+		if (customs.length > 0) {
+			let custom = customs[Math.floor(customs.length * KDRandom())];
+			e.CustomName = custom.name;
+			e.CustomNameColor = custom.color;
+			e.CustomSprite = custom.customSprite;
+		}
+	}
+}
