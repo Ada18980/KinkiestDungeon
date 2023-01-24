@@ -1623,7 +1623,7 @@ let KinkyDungeonReplaceConfirm = 0;
 let KinkyDungeonGameFlag = false;
 
 let KDDefaultJourney = ["grv", "cat", "jng", "tmp"];
-let KDDefaultAlt = ["tmb", "lib", "cry", "tmp"];
+let KDDefaultAlt = ["tmb", "lib", "cry", "ore"];
 
 function KDInitializeJourney(Journey) {
 	/**

@@ -634,6 +634,101 @@ const KinkyDungeonMapParams = {
 			{Type: "Leather", Weight: 6},
 			{Type: "Will", Weight: 7},]
 	},
+
+	"ore":{//DungeonName8,-Orrery-
+		"background" : "SpookyForest",
+		"openness" : 2,
+		"density" : 2,
+		"crackchance" : 0.05,
+		"barchance" : 0.1,
+		"brightness" : 1,
+		"chestcount" : 7,
+		"chargerchance": 0.9,
+		"litchargerchance": 0.2,
+		"chargercount": 10,
+		"shrinecount" : 10,
+		"shrinechance" : 0.5,
+		"ghostchance" : 0.7,
+		"doorchance" : 0.9,
+		"nodoorchance" : 0.25,
+		"doorlockchance" : -0.05,
+		"trapchance" : 0.5,
+		"grateChance" : 0.8,
+		"rubblechance" : 0.35,
+		"brickchance" : 0.1,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 1.0,
+		"forbiddenGreaterChance" : 0.45,
+		torchlitchance: 0.15,
+		torchchance: 0.1,
+		torchchanceboring: -0.4,
+		torchreplace: {
+			sprite: "TorchOrb",
+			brightness: 4,
+		},
+
+		music: {
+			"AREA8-ORRERY.ogg": 30,
+		},
+
+		tagModifiers: {
+			"jungle": 0,
+			"cavern": 0,
+			"temple": 3,
+		},
+		globalTags: {
+			"temple": true,
+			"orrery": true,
+		},
+
+		shadowColor: 0x000703,
+
+		"setpieces": [
+			{Type: "Bedroom", Weight: 1},
+			{Type: "Altar", Weight: 6},
+			{Type: "SmallAltar", Weight: 20},
+			{Type: "GuardedChest", Weight: 30},
+			{Type: "LargeGuardedChest", Weight: 20},
+			{Type: "Magicflies", Weight: 40},
+		],
+
+		"shortcuts": [
+
+		],
+		"mainpath": [
+			{Level: 21, checkpoint: "ore"},
+		],
+
+		"traps": [
+			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
+			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 10},
+			{Name: "SpecificSpell", Spell: "TrapShackleWeak", Level: 0, Power: 3, Weight: 10},
+			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpawnEnemies", Enemy: "GreaterSkeleton", strict: true, Level: 0, Power: 3, Weight: 10},
+			{Name: "SpawnEnemies", Enemy: "HeavySkeleton", strict: true, Level: 0, Power: 1, Weight: 10},
+		],
+
+		"min_width" : 5,
+		"max_width" : 7,
+		"min_height" : 5,
+		"max_height" : 7,
+
+		enemyTags: ["ghost", "temple", "ghost"],
+		"defeat_outfit": "LatexPrisoner",
+		"shrines": [
+			{Type: "Latex", Weight: 5},
+			{Type: "Commerce", Weight: 0},
+			{Type: "Elements", Weight: 5},
+			{Type: "Conjure", Weight: 5},
+			{Type: "Illusion", Weight: 10},
+			{Type: "Leather", Weight: 5},
+			{Type: "Metal", Weight: 3},
+			{Type: "Rope", Weight: 5},
+			{Type: "Will", Weight: 7},],
+
+		"lockmult" : 1.6,
+	},
 };
 
 
