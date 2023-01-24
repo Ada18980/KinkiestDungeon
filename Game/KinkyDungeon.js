@@ -244,9 +244,14 @@ let KDOptOut = false;
 * JailFaction: string[],
 * GuardFaction: string[],
 * OfferCount: number,
+* MainPath: string,
+* ShortcutPath: string,
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	MainPath: 'grv',
+	ShortcutPath: 'grv',
+
 	CagedTime: 0,
 	HiddenItems: {},
 	KeyringLocations: [],
