@@ -2609,3 +2609,123 @@ function KDDrawTooltip(TooltipList, offset) {
 	}
 	return offset + TooltipHeight + 30;
 }
+
+/**
+ * Elements which are temporary and drawn using a declarative style
+ * If not redrawn at the end of a frame, they will be removed
+ */
+let KDTempElements = new Map();
+/**
+ * Elements which are temporary and drawn using a declarative style
+ * If not redrawn at the end of a frame, they will be removed
+ */
+let KDDrawnElements = new Map();
+
+/**
+ * Creates a text field with the specified params
+ * @param {string} Name
+ * @param {number} Left
+ * @param {number} Top
+ * @param {number} Width
+ * @param {number} Height
+ */
+function KDTextArea(Name, Left, Top, Width, Height) {
+	let Element = KDTempElements.get(Name);
+	let created = false;
+	if (!Element) {
+		ElementCreateTextArea(Name);
+		Element = document.getElementById(Name);
+		KDTempElements.set(Name, Element)
+		if (Element) created = true;
+	}
+	KDElementPosition(Name, Left, Top, Width, Height);
+	KDDrawnElements.set(Name, Element)
+	return {Element: Element, Created: created}
+}
+
+/**
+ * Creates a text field with the specified params
+ * @param {string} Name
+ * @param {number} Left
+ * @param {number} Top
+ * @param {number} Width
+ * @param {number} Height
+ * @param {string} Type
+ * @param {string} Value
+ * @param {string} MaxLength
+ */
+function KDTextField(Name, Left, Top, Width, Height, Type = "text", Value = "", MaxLength = "30") {
+	let Element = KDTempElements.get(Name);
+	let created = false;
+	if (!Element) {
+		ElementCreateInput(Name, Type, Value, MaxLength);
+		Element = document.getElementById(Name);
+		KDTempElements.set(Name, Element)
+		if (Element) created = true;
+	}
+	KDElementPosition(Name, Left, Top, Width, Height);
+	KDDrawnElements.set(Name, Element)
+	return {Element: Element, Created: created}
+}
+
+
+/**
+ * Culls the text fields and other DOM elements created
+ */
+function KDCullTempElements() {
+	for (let Name of KDTempElements.keys()) {
+		if (!KDDrawnElements.get(Name)) {
+			ElementRemove(Name);
+			KDTempElements.delete(Name);
+		}
+	}
+
+	KDDrawnElements = new Map();
+}
+
+
+/**
+ * Draws an existing HTML element at a specific position within the document. The element is "centered" on the given coordinates by dividing its height and width by two.
+ * @param {string} ElementID - The id of the input tag to (re-)position.
+ * @param {number} X - Center point of the element on the X axis.
+ * @param {number} Y - Center point of the element on the Y axis.
+ * @param {number} W - Width of the element.
+ * @param {number} [H] - Height of the element.
+ * @returns {void} - Nothing
+ */
+function KDElementPosition(ElementID, X, Y, W, H) {
+	var E = document.getElementById(ElementID);
+
+	if (!E) {
+		console.warn("A call to ElementPosition was made on non-existent element with ID '" + ElementID + "'");
+		return;
+	}
+
+	// For a vertical slider, swap the width and the height (the transformation is handled by CSS)
+	if (E.tagName.toLowerCase() === "input" && E.getAttribute("type") === "range" && E.classList.contains("Vertical")) {
+		var tmp = W;
+		W = H;
+		H = tmp;
+	}
+
+	// Different positions based on the width/height ratio
+	const HRatio = MainCanvas.canvas.clientHeight / 1000;
+	const WRatio = MainCanvas.canvas.clientWidth / 2000;
+	const Font = MainCanvas.canvas.clientWidth <= MainCanvas.canvas.clientHeight * 2 ? MainCanvas.canvas.clientWidth / 50 : MainCanvas.canvas.clientHeight / 25;
+	const Height = H ? H * HRatio : Font * 1.1;
+	const Width = W * WRatio;
+	const Top = MainCanvas.canvas.offsetTop + Y * HRatio - 4;
+	const Left = MainCanvas.canvas.offsetLeft + (X) * WRatio + 4;
+
+	// Sets the element style
+	Object.assign(E.style, {
+		fontSize: Font + "px",
+		fontFamily: CommonGetFontName(),
+		position: "fixed",
+		left: Left + "px",
+		top: Top + "px",
+		width: Width + "px",
+		height: Height + "px",
+		display: "inline"
+	});
+}

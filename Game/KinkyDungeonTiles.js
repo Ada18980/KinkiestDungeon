@@ -143,6 +143,26 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 
 				MiniGameKinkyDungeonLevel += 1;
 
+				if (MiniGameKinkyDungeonLevel > 1) {
+					// Reduce security level when entering a new area
+					if (MiniGameKinkyDungeonCheckpoint != currCheckpoint)
+						KinkyDungeonChangeRep("Prisoner", -5);
+					else // Otherwise it's just a little bit
+						KinkyDungeonChangeRep("Prisoner", -1);
+
+					if (KinkyDungeonStatsChoice.get("Trespasser")) {
+						KinkyDungeonChangeRep("Rope", -1);
+						KinkyDungeonChangeRep("Metal", -1);
+						KinkyDungeonChangeRep("Leather", -1);
+						KinkyDungeonChangeRep("Latex", -1);
+						KinkyDungeonChangeRep("Will", -1);
+						KinkyDungeonChangeRep("Elements", -1);
+						KinkyDungeonChangeRep("Conjure", -1);
+						KinkyDungeonChangeRep("Illusion", -1);
+					}
+				}
+
+
 				if (KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
 					roomType = ""; // We let the boss spawn naturally
 				} else {
@@ -159,23 +179,6 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			} else {
 				roomType = "PerkRoom"; // We do a perk room, then a tunnel
 				KDGameData.MapMod = ""; // Reset the map mod
-
-				// Reduce security level when entering a new area
-				if (MiniGameKinkyDungeonCheckpoint != currCheckpoint)
-					KinkyDungeonChangeRep("Prisoner", -5);
-				else // Otherwise it's just a little bit
-					KinkyDungeonChangeRep("Prisoner", -1);
-
-				if (KinkyDungeonStatsChoice.get("Trespasser")) {
-					KinkyDungeonChangeRep("Rope", -1);
-					KinkyDungeonChangeRep("Metal", -1);
-					KinkyDungeonChangeRep("Leather", -1);
-					KinkyDungeonChangeRep("Latex", -1);
-					KinkyDungeonChangeRep("Will", -1);
-					KinkyDungeonChangeRep("Elements", -1);
-					KinkyDungeonChangeRep("Conjure", -1);
-					KinkyDungeonChangeRep("Illusion", -1);
-				}
 			}
 
 			KDGameData.RoomType = roomType;

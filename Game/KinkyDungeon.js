@@ -1042,12 +1042,50 @@ function KinkyDungeonRun() {
 			let hardmode = points >= KDHardModeThresh ? TextGet("KDHardMode") : "";
 			DrawTextKD(TextGet("KinkyDungeonStatPoints").replace("AMOUNT", "" + points) + hardmode, 1000, 150, "#ffffff", KDTextGray2);
 		}
-		DrawButtonVis(875, 920, 350, 64, TextGet("KinkyDungeonStartGame"), KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0 ? "#ffffff" : "pink", "");
-		DrawButtonVis(1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
-		DrawButtonVis(100, 920, 190, 64, TextGet("KinkyDungeonClearAll"), "#ffffff", "");
-		DrawButtonVis(330, 930, 140, 54, TextGet("KinkyDungeonConfig") + "1", KinkyDungeonPerksConfig == "1" ? "#ffffff" : "#888888", "");
-		DrawButtonVis(480, 930, 140, 54, TextGet("KinkyDungeonConfig") + "2", KinkyDungeonPerksConfig == "2" ? "#ffffff" : "#888888", "");
-		DrawButtonVis(630, 930, 140, 54, TextGet("KinkyDungeonConfig") + "3", KinkyDungeonPerksConfig == "3" ? "#ffffff" : "#888888", "");
+		DrawButtonKDEx("", (bdata) => {
+			if (KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0) {
+				//KinkyDungeonState = "Diff";
+				KDLose = false;
+				KinkyDungeonStartNewGame();
+			}
+			return true;
+		}, true, 875, 920, 350, 64, TextGet("KinkyDungeonStartGame"), KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0 ? "#ffffff" : "pink", "");
+		DrawButtonKDEx("", (bdata) => {
+			KinkyDungeonState = "Menu";
+			return true;
+		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		DrawButtonKDEx("", (bdata) => {
+			KinkyDungeonStatsChoice = new Map();
+			KDUpdatePlugSettings();
+			return true;
+		}, true, 40, 920, 190, 64, TextGet("KinkyDungeonClearAll"), "#ffffff", "");
+		DrawButtonKDEx("", (bdata) => {
+			KinkyDungeonPerksConfig = "1";
+			KinkyDungeonLoadStats();
+			KDUpdatePlugSettings();
+			return true;
+		}, true, 270, 930, 100, 54, TextGet("KinkyDungeonConfig") + "1", KinkyDungeonPerksConfig == "1" ? "#ffffff" : "#888888", "");
+		DrawButtonKDEx("", (bdata) => {
+			KinkyDungeonPerksConfig = "2";
+			KinkyDungeonLoadStats();
+			KDUpdatePlugSettings();
+			return true;
+		}, true, 380, 930, 100, 54, TextGet("KinkyDungeonConfig") + "2", KinkyDungeonPerksConfig == "2" ? "#ffffff" : "#888888", "");
+		DrawButtonKDEx("", (bdata) => {
+			KinkyDungeonPerksConfig = "3";
+			KinkyDungeonLoadStats();
+			KDUpdatePlugSettings();
+			return true;
+		}, true, 490, 930, 100, 54, TextGet("KinkyDungeonConfig") + "3", KinkyDungeonPerksConfig == "3" ? "#ffffff" : "#888888", "");
+
+
+		let TF = KDTextField("PerksFilter", 600, 930, 210, 54, "text", "", "45");
+		if (TF.Created) {
+			TF.Element.oninput = (event) => {
+				KDPerksFilter = ElementValue("PerksFilter");
+			};
+		}
+		DrawTextFitKD(TextGet("KinkyDungeonFilter"), 600 + 210/2, 930 + 54/2, 210, "#aaaaaa");
 
 		// @ts-ignore
 		DrawButtonKDEx("copyperks", (bdata) => {
@@ -1314,6 +1352,9 @@ function KinkyDungeonRun() {
 
 		DrawTextKD(TextGet("KinkyDungeonCurrentPressInfo"), 1250, 950, "#ffffff", KDTextGray2);
 	}
+
+	// Cull temp elements
+	KDCullTempElements();
 
 	//if (KDDebugMode) {
 	//DrawTextKD(dispfps, 20, 20, "#ffffff", undefined, undefined, "left");
@@ -1855,38 +1896,8 @@ function KinkyDungeonHandleClick() {
 			return true;
 		}
 	} else if (KinkyDungeonState == "Stats") {
-		if (MouseIn(100, 920, 190, 64)) {
-			KinkyDungeonStatsChoice = new Map();
-			KDUpdatePlugSettings();
-			return true;
-		}
 
-		if (MouseIn(330, 930, 140, 54)) {
-			KinkyDungeonPerksConfig = "1";
-			KinkyDungeonLoadStats();
-			KDUpdatePlugSettings();
-			return true;
-		} else if (MouseIn(480, 930, 140, 54)) {
-			KinkyDungeonPerksConfig = "2";
-			KinkyDungeonLoadStats();
-			KDUpdatePlugSettings();
-			return true;
-		} else if (MouseIn(630, 930, 140, 54)) {
-			KinkyDungeonPerksConfig = "3";
-			KinkyDungeonLoadStats();
-			KDUpdatePlugSettings();
-			return true;
-		}
-
-		if (MouseIn(875, 920, 350, 64) && KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0) {
-			//KinkyDungeonState = "Diff";
-			KDLose = false;
-			KinkyDungeonStartNewGame();
-			return true;
-		} else if (MouseIn(1275, 920, 350, 64)) {
-			KinkyDungeonState = "Menu";
-			return true;
-		}
+		// Removed and moved to DrawButtonKDEx
 	} else if (KinkyDungeonState == "TileEditor") {
 		KDHandleTileEditor();
 	}  else if (KinkyDungeonState == "Load"){

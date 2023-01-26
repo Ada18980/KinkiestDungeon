@@ -1,5 +1,13 @@
 "use strict";
 
+let KDTextBoxStyle = {
+	backgroundColor: "#000000a0",
+	fontFamily: "'Arial', sans-serif",
+	fontSize: "16px",
+	color: "#ffffff",
+	lineHeight: 1.6,
+};
+
 /**
  * Handles the value of a HTML element. It sets the value of the element when the Value parameter is provided or it returns the value when the parameter is omitted
  * @param {string} ID - The id of the element for which we want to get/set the value.
@@ -53,6 +61,7 @@ function ElementCreateTextArea(ID) {
 		TextArea.setAttribute("name", ID);
 		TextArea.addEventListener("keydown", KeyDown);
 		TextArea.className = "HideOnPopup";
+		Object.assign(TextArea.style, KDTextBoxStyle);
 		document.body.appendChild(TextArea);
 	}
 }
@@ -78,6 +87,7 @@ function ElementCreateInput(ID, Type, Value, MaxLength) {
 		Input.addEventListener("keydown", KeyDown);
 		Input.className = "HideOnPopup";
 		document.body.appendChild(Input);
+		Object.assign(Input.style, KDTextBoxStyle);
 		return Input;
 	}
 }
@@ -112,6 +122,7 @@ function ElementCreateRangeInput(id, value, min, max, step, thumbIcon, vertical)
 		input.classList.add("HideOnPopup");
 		if (vertical) input.classList.add("Vertical");
 		document.body.appendChild(input);
+		Object.assign(input.style, KDTextBoxStyle);
 		return input;
 	}
 }

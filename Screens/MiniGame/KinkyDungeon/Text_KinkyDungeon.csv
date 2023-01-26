@@ -690,6 +690,7 @@ KinkyDungeonDeleteMod,"Delete Mod"
 KinkyDungeonClearAll,"Clear Perks"
 KinkyDungeonConfig,"Config "
 KinkyDungeonCancel,"Cancel"
+KinkyDungeonFilter,"Filter"
 
 KinkyDungeonLoadModWarning1,"DANGER: Loading a mod will execute ARBITRARY CODE on your machine."
 KinkyDungeonLoadModWarning2,"Like connecting to a server, etc. Only load mods from a TRUSTED source."

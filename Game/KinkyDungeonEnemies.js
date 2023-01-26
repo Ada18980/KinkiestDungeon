@@ -192,7 +192,11 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 				if ((e.Enemy && !e.Enemy.noAttack && KDHostile(enemy, e))) {
 					let dist = Math.sqrt((e.x - enemy.x)*(e.x - enemy.x)
 						+ (e.y - enemy.y)*(e.y - enemy.y));
-					let pdist_enemy = (KDGetFaction(enemy) == "Player" && !KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "StayHere") && (enemy.Enemy.allied || (!KDGameData.PrisonerState || KDGameData.PrisonerState == "chase")))
+					let pdist_enemy =
+						(KDGetFaction(enemy) == "Player"
+						&& !KDEnemyHasFlag(enemy, "NoFollow")
+						&& !KDEnemyHasFlag(enemy, "StayHere")
+						&& (enemy.Enemy.allied || (!KDGameData.PrisonerState || KDGameData.PrisonerState == "chase")))
 						? KDistChebyshev(e.x - KinkyDungeonPlayerEntity.x, e.y - KinkyDungeonPlayerEntity.y) :
 						-1;
 					if (pdist_enemy > 0 && pdist_enemy < 1.5 && AI_Data.hostile) KinkyDungeonSetFlag("AIHelpPlayer", 4);
@@ -2123,7 +2127,9 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					}
 
 					if (idle && enemy.hp > 0) {
-						KDCaptureNearby(enemy);
+						// Removed for non guards because its fun to find tied up girls around
+						if (enemy == KinkyDungeonJailGuard())
+							KDCaptureNearby(enemy);
 					}
 
 					let end = performance.now();
