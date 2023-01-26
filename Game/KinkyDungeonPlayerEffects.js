@@ -32,9 +32,49 @@ let KDPlayerEffects = {
 			return {sfx: "LockHeavy", effect: restrained};
 		}
 		return {sfx: undefined, effect: false};
-	}
+	},
+	"ShadowBolt": (damage, playerEffect, spell, faction, bullet) => {
+		KDPlayerEffectRestrain(spell, playerEffect.count, ["shadowHands"], "Ghost");
+
+		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonShadowBolt"), "yellow", playerEffect.time);
+		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		return {sfx: "Evil", effect: true};
+	},
+	"ObsidianBolt": (damage, playerEffect, spell, faction, bullet) => {
+		KDPlayerEffectRestrain(spell, playerEffect.count, ["obsidianRestraints"], "Elemental");
+
+		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonObsidianBolt"), "yellow", playerEffect.time);
+		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		return {sfx: "Evil", effect: true};
+	},
+	"CelestialBolt": (damage, playerEffect, spell, faction, bullet) => {
+		KDPlayerEffectRestrain(spell, playerEffect.count, ["celestialRopes"], "Angel");
+
+		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCelestialBolt"), "yellow", playerEffect.time);
+		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		return {sfx: "Evil", effect: true};
+	},
 };
 
+/**
+ *
+ * @param {any} spell
+ * @param {number} count
+ * @param {string[]} tags
+ * @param {string} faction
+ * @returns {restraint[]}
+ */
+function KDPlayerEffectRestrain(spell, count, tags, faction) {
+	let added = [];
+	for (let i = 0; i < count; i++) {
+		let restraintAdd = KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+		if (restraintAdd && KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction)) {
+			KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
+			added.push(restraintAdd);
+		}
+	}
+	return added;
+}
 
 function KinkyDungeonPlayerEffect(damage, playerEffect, spell, faction, bullet) {
 	if (!playerEffect.name) return;

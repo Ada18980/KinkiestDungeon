@@ -48,6 +48,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["Alchemist", [
 		{name: "Morgan", color: "#6241e1", prisoner: true, free: true, customSprite: ""},
+		{name: "Myth", color: "#22ffff", prisoner: false, free: true, customSprite: ""},
 	],
 	],
 	["Dressmaker", [

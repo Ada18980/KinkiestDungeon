@@ -56,7 +56,7 @@ const KinkyDungeonMapParams = {
 			{Level: 3, checkpoint: "tmb", chance: 1.0},
 		],
 		"mainpath": [
-			{Level: 6, checkpoint: "cat"},
+			{Level: 4, checkpoint: "cat"},
 		],
 
 		"traps": [
@@ -140,24 +140,23 @@ const KinkyDungeonMapParams = {
 		],
 
 		"shortcuts": [
-			{Level: 6, checkpoint: "lib", chance: 0.5},
-			{Level: 7, checkpoint: "lib", chance: 1.0},
+			{Level: 5, checkpoint: "lib", chance: 0.5},
+			{Level: 6, checkpoint: "lib", chance: 1.0},
+			{Level: 7, checkpoint: "lib", chance: 0.25},
 			{Level: 8, checkpoint: "lib", chance: 0.25},
-			{Level: 9, checkpoint: "lib", chance: 0.25},
-			{Level: 10, checkpoint: "lib", chance: 1.0},
 		],
 		"mainpath": [
-			{Level: 11, checkpoint: "jng"},
+			{Level: 8, checkpoint: "jng"},
 		],
 
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 30},
-			{Name: "SpecificSpell", Spell: "TrapCharmWeak", Level: 0, Power: 1, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapShackleWeak", Level: 0, Power: 1, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpawnEnemies", Enemy: "SummonedSkeleton", strict: true, Level: 0, Power: 4, Weight: 10},
+			{Name: "SpawnEnemies", Enemy: "HeavySkeleton", extraTag: "Single", strict: true, Level: 0, Power: 2, Weight: 2},
 			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 2, Weight: 10},
 		],
 
@@ -226,11 +225,11 @@ const KinkyDungeonMapParams = {
 		],
 
 		"shortcuts": [
-			{Level: 13, checkpoint: "cry", chance: 1.0},
-			{Level: 15, checkpoint: "cry", chance: 1.0},
+			{Level: 9, checkpoint: "cry", chance: 1.0},
+			{Level: 10, checkpoint: "cry", chance: 1.0},
 		],
 		"mainpath": [
-			{Level: 16, checkpoint: "tmp"},
+			{Level: 12, checkpoint: "tmp"},
 		],
 
 		"traps": [
@@ -327,7 +326,7 @@ const KinkyDungeonMapParams = {
 
 		],
 		"mainpath": [
-			{Level: 21, checkpoint: "tmp"},
+			{Level: 17, checkpoint: "tmp"},
 		],
 
 		"traps": [
@@ -335,7 +334,7 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 10},
 			{Name: "SpecificSpell", Spell: "TrapShackleWeak", Level: 0, Power: 3, Weight: 10},
-			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpawnEnemies", Enemy: "GreaterSkeleton", strict: true, Level: 0, Power: 3, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "HeavySkeleton", strict: true, Level: 0, Power: 1, Weight: 10},
 		],
@@ -421,16 +420,16 @@ const KinkyDungeonMapParams = {
 		},
 
 		"shortcuts": [
-			{Level: 4, checkpoint: "cry", chance: 1.0},
+			{Level: 3, checkpoint: "cry", chance: 1.0},
 		],
 		"mainpath": [
-			{Level: 6, checkpoint: "cat"},
+			{Level: 4, checkpoint: "cat"},
 		],
 
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
 			{Name: "SpecificSpell", Spell: "TrapMummyWeak", Level: 0, Power: 1, Weight: 30},
-			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpawnEnemies", Enemy: "SummonedSkeleton", strict: true, Level: 0, Power: 5, Weight: 10},
@@ -507,18 +506,20 @@ const KinkyDungeonMapParams = {
 		},
 
 		"shortcuts": [
-			{Level: 9, checkpoint: "cat", chance: 1.0},
+			{Level: 7, checkpoint: "cat", chance: 1.0},
 		],
 		"mainpath": [
-			{Level: 11, checkpoint: "jng"},
+			{Level: 8, checkpoint: "ore"},
 		],
 
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
 			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapRopeStrong", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 3, Weight: 10},
+			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpawnEnemies", Enemy: "Dressmaker", strict: true, Level: 0, Power: 2, Weight: 10},
+			{Name: "SpawnEnemies", Enemy: "Librarian", strict: true, Level: 4, Power: 1, Weight: 5},
 		],
 
 		"min_width" : 5,
@@ -598,14 +599,14 @@ const KinkyDungeonMapParams = {
 		],
 
 		"shortcuts": [
-			{Level: 14, checkpoint: "jng", chance: 0.33},
-			{Level: 15, checkpoint: "jng", chance: 0.4},
-			{Level: 16, checkpoint: "jng", chance: 1.0},
+			{Level: 9, checkpoint: "jng", chance: 0.33},
+			{Level: 10, checkpoint: "jng", chance: 0.4},
+			{Level: 11, checkpoint: "jng", chance: 1.0},
 		],
 		"mainpath": [
-			{Level: 5, checkpoint: "cry"},
-			{Level: 7, checkpoint: "cat"},
-			{Level: 16, checkpoint: "tmp"},
+			{Level: 4, checkpoint: "cry"},
+			{Level: 6, checkpoint: "cat"},
+			{Level: 12, checkpoint: "ore"},
 		],
 
 		"traps": [
@@ -659,12 +660,13 @@ const KinkyDungeonMapParams = {
 		"cacheInterval" : 1,
 		"forbiddenChance" : 1.0,
 		"forbiddenGreaterChance" : 0.45,
-		torchlitchance: 0.15,
-		torchchance: 0.1,
+		torchlitchance: 0.2,
+		torchchance: 1.0,
 		torchchanceboring: -0.4,
 		torchreplace: {
-			sprite: "TorchOrb",
-			brightness: 4,
+			sprite: "IllusOrb",
+			unlitsprite: "IllusOrbDead",
+			brightness: 2,
 		},
 
 		music: {
@@ -689,24 +691,22 @@ const KinkyDungeonMapParams = {
 			{Type: "SmallAltar", Weight: 20},
 			{Type: "GuardedChest", Weight: 30},
 			{Type: "LargeGuardedChest", Weight: 20},
-			{Type: "Magicflies", Weight: 40},
 		],
 
 		"shortcuts": [
-
+			{Level: 14, checkpoint: "tmp", chance: 1.0},
 		],
 		"mainpath": [
-			{Level: 21, checkpoint: "ore"},
+			{Level: 17, checkpoint: "ore"},
 		],
 
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
-			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 10},
-			{Name: "SpecificSpell", Spell: "TrapShackleWeak", Level: 0, Power: 3, Weight: 10},
-			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpawnEnemies", Enemy: "GreaterSkeleton", strict: true, Level: 0, Power: 3, Weight: 10},
-			{Name: "SpawnEnemies", Enemy: "HeavySkeleton", strict: true, Level: 0, Power: 1, Weight: 10},
+			{Name: "SpecificSpell", Spell: "TrapRopeHoly", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpawnEnemies", Enemy: "ShadowHand", strict: true, Level: 0, Power: 3, Weight: 10},
+			{Name: "SpawnEnemies", Enemy: "TickleTerror", strict: true, Level: 0, Power: 1, Weight: 10},
+			{Name: "SpawnEnemies", Enemy: "HugHorror", strict: true, Level: 0, Power: 1, Weight: 10},
 		],
 
 		"min_width" : 5,
@@ -714,7 +714,7 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 7,
 
-		enemyTags: ["ghost", "temple", "ghost"],
+		enemyTags: ["shadowcreature", "magical", "elemental", "angel"],
 		"defeat_outfit": "LatexPrisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 5},

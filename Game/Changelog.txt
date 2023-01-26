@@ -1213,6 +1213,11 @@ Features
 3.95
 - New minor enemies: Encased Adventurer and Bouncy Slime
 
+4.0 (Jan 2023)
+- Soul crystals now are easier to dodge
+- New tileset: Orrery
+- New enemies: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced)
+
 TODO ValidationFindBlockCycles to prevent bugs
 
 TODO: Mushrooms in the jungle

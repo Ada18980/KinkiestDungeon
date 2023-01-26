@@ -1732,7 +1732,10 @@ function KinkyDungeonPlaceHeart(width, height, Floor) {
 	// Populate the lore
 	for (let X = 1; X < width; X += 1)
 		for (let Y = 1; Y < height; Y += 1)
-			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) heartList.push({x:X, y:Y});
+			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
+				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)
+				&& KDistChebyshev(X - KinkyDungeonStartPosition.x, Y - KinkyDungeonStartPosition.y) > 8
+			) heartList.push({x:X, y:Y});
 
 	while (heartList.length > 0) {
 		let N = Math.floor(KDRandom()*heartList.length);
@@ -2156,6 +2159,7 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 					Restraint: t.Restraint,
 					Enemy: t.Enemy,
 					Spell: t.Spell,
+					extraTag: t.extraTag,
 					Power: t.Power,
 					OffLimits: tile?.OffLimits,
 				});
@@ -2634,10 +2638,13 @@ function KinkyDungeonPlaceTorches(torchchance, torchlitchance, torchchanceboring
 				if ((!torchreplace || torchreplace.unlitsprite) && KDRandom() > torchlitchance) {
 					spr = torchreplace ? torchreplace.unlitsprite : "TorchUnlit";
 				}
-				KDCreateEffectTile(X, Y + 1, {
+				let torchref = {
 					name: spr,
 					duration: 9999,
-				}, 0);
+				};
+				//if (torchreplace)
+				//Object.assign(torchref, torchreplace);
+				KDCreateEffectTile(X, Y + 1, torchref, 0);
 				//KinkyDungeonMapSet(X, Y, 't');
 				//KinkyDungeonTilesSet(X + "," + Y, {Type: "Torch", Light: torchreplace ? torchreplace.brightness : KDTorchLight, Offset: true, Skin: torchreplace ? torchreplace.sprite : undefined});
 			}

@@ -1315,9 +1315,9 @@ function KinkyDungeonRun() {
 		DrawTextKD(TextGet("KinkyDungeonCurrentPressInfo"), 1250, 950, "#ffffff", KDTextGray2);
 	}
 
-	if (KDDebugMode) {
-		DrawTextKD(dispfps, 20, 20, "#ffffff", undefined, undefined, "left");
-	}
+	//if (KDDebugMode) {
+	//DrawTextKD(dispfps, 20, 20, "#ffffff", undefined, undefined, "left");
+	//}
 	// Cull the sprites that werent rendered or updated this frame
 	for (let sprite of kdpixisprites.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0])) {
@@ -1669,6 +1669,9 @@ function KDInitializeJourney(Journey) {
 		newIndex.jng = 'tmp';
 		newIndex.cry = 'tmb';
 		newIndex.cat = 'grv';
+	} else if (KDGameData.Journey == "Test") {
+		newIndex.grv = 'ore';
+		newIndex.tmb = 'tmp';
 	}
 
 	KinkyDungeonMapIndex = newIndex;
