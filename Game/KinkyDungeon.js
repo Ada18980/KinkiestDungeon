@@ -709,20 +709,25 @@ async function sleep(msec) {
 function KinkyDungeonRun() {
 	// Override right click and make it trigger the Skip key
 	// Normally we don't override right click on websites but this is a game
-	document.addEventListener('contextmenu', event => {
-		event.preventDefault();
-		let code = KinkyDungeonKeySkip[0];
-		if (!KinkyDungeonKeybindingCurrentKey) {
-			KinkyDungeonKeybindingCurrentKey = code;
-			KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime() + 100;
-			// We also press it for 100 msec
-			(async function() {
-				KinkyDungeonGameKey.keyPressed[9] = true;
-				await sleep(100);
-				KinkyDungeonGameKey.keyPressed[9] = false;
-			})();
-		}
-	});
+	if (!CommonIsMobile)
+		document.addEventListener('contextmenu', event => {
+			if (CommonIsMobile || document.activeElement?.id != "MainCanvas") {
+				// Nothing!!
+			} else {
+				event.preventDefault();
+				let code = KinkyDungeonKeySkip[0];
+				if (!KinkyDungeonKeybindingCurrentKey) {
+					KinkyDungeonKeybindingCurrentKey = code;
+					KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime() + 100;
+					// We also press it for 100 msec
+					(async function() {
+						KinkyDungeonGameKey.keyPressed[9] = true;
+						await sleep(100);
+						KinkyDungeonGameKey.keyPressed[9] = false;
+					})();
+				}
+			}
+		});
 
 	fpscounter++;
 	if (fpscounter > 10) {
