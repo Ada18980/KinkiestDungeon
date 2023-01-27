@@ -1242,6 +1242,17 @@ let KDEventMapBuff = {
 		},
 	},
 	"tick": {
+		"BoundByFate": (e, buff, entity, data) => {
+			if (buff.duration > 0) {
+				if (entity.player) {
+					if (!KDEffectTileTags(entity.x, entity.y).fate) {
+						buff.duration = 0;
+						KinkyDungeonPlayerEffect("soul", {name: "StarBondage", count: e.count, kind: e.kind, power: e.power});
+						KDRemoveAoEEffectTiles(entity.x, entity.y, ["fate"], 1.5);
+					}
+				}
+			}
+		},
 		"ApplyConduction": (e, buff, entity, data) => {
 			let bb = Object.assign({}, KDConduction);
 			if (e.power) bb.duration = e.duration;

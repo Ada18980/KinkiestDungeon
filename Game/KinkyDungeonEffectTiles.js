@@ -7,6 +7,12 @@ let KDLatexBind = 2;
  * @type {Record<string, effectTile>}
  */
 let KDEffectTiles = {
+	"FateBoundGround": {
+		name: "Ice",
+		duration: 2,
+		priority: 10,
+		tags: ["fate"],
+	},
 	"Ice": {
 		name: "Ice",
 		duration: 1,

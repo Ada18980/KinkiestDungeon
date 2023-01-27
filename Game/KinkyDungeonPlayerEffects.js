@@ -54,6 +54,28 @@ let KDPlayerEffects = {
 		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		return {sfx: "Evil", effect: true};
 	},
+	"BoundByFate": (damage, playerEffect, spell, faction, bullet) => {
+		KDCreateAoEEffectTiles(
+			bullet.x,
+			bullet.y,
+			{
+				name: "FateBoundGround",
+				duration: playerEffect.time,
+			}, 0, 2.5, undefined, undefined, undefined);
+
+		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonBoundByFate"), "yellow", playerEffect.time);
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, KDBoundByFate, {
+			duration: playerEffect.time,
+		});
+
+		return {sfx: "Evil", effect: true};
+	},
+	"StarBondage": (damage, playerEffect, spell, faction, bullet) => {
+		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonStarBondage"), "#ff5555", 4);
+		KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Demon");
+
+		return {sfx: "Evil", effect: true};
+	},
 };
 
 /**
@@ -67,9 +89,9 @@ let KDPlayerEffects = {
 function KDPlayerEffectRestrain(spell, count, tags, faction) {
 	let added = [];
 	for (let i = 0; i < count; i++) {
-		let restraintAdd = KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
-		if (restraintAdd && KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction)) {
-			KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
+		let restraintAdd = KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel + (spell?.power || 0), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+		if (restraintAdd && KinkyDungeonAddRestraintIfWeaker(restraintAdd, (spell?.power || 0), false, undefined, false, false, undefined, faction)) {
+			KDSendStatus('bound', restraintAdd.name, "spell_" + spell?.name);
 			added.push(restraintAdd);
 		}
 	}

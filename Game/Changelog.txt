@@ -1216,7 +1216,7 @@ Features
 4.0 (Jan 2023)
 - Soul crystals now are easier to dodge
 - New tileset: Orrery
-- New enemies: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced)
+- New enemies: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced), Star Demon
 - Added perks filter in the perks screen
 
 TODO ValidationFindBlockCycles to prevent bugs

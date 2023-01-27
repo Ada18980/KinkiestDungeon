@@ -868,7 +868,9 @@ let KinkyDungeonEnemies = [
 		visionRadius: 7, maxhp: 10, minLevel:7, weight:-1, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeBindWill", stunTime: 1, attackWidth: 1, attackRange: 1, power: 3, dmgType: "crush", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":1, "thirdhalf":2, "crystalline": 10, "dragon": 3}, shrines: ["Leather", "Conjure"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 15}, {name: "EarthRune", weight: 3}]},
-	{name: "DragonShadow", faction: "Dragon", clusterWith: "dragon", bound: "DragonShadow", color: "#4400ff", tags: KDMapInit(["opendoors", "shadow", "chaos", "leashing", "dragon", "melee", "elite", "dragonRestraints", "handcuffer", "shadowRestraints", "coldimmune", "fireresist", "jail", "jailer", "hunter"]), cohesion: 0.75,
+	{name: "DragonShadow", faction: "Dragon", clusterWith: "dragon", bound: "DragonShadow", color: "#4400ff",
+		tags: KDMapInit(["opendoors", "shadow", "chaos", "leashing", "dragon", "melee", "elite", "dragonRestraints", "handcuffer", "shadowRestraints", "coldimmune", "fireresist", "jail", "jailer", "hunter"]),
+		cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonLeader", range: 4, loose: true, aggressive: true},
 		spells: ["ShadowOrb"],  spellCooldownMult: 1, spellCooldownMod: 0, pullTowardSelf: true, pullDist: 3, disarm: 0.4,
 		specialCD: 7, specialAttack: "Pull", specialCDonAttack: true, specialAttackPoints: 2, specialRange: 4, specialsfx: "MagicSlash",
@@ -1090,6 +1092,18 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]
+	},
+
+
+
+	{name: "DemonStar", clusterWith: "demon", bound: "Demon", playLine: "Elemental", color: "#9ea7de",
+		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "melee", "miniboss", "mithrilRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
+		armor: 1, followRange: 0, AI: "hunt",
+		spells: ["BoundByFate"], spellCooldownMult: 1, spellCooldownMod: 0, followLeashedOnly: true, stopToCast: true, spellRdy: true, projectileTargeting: true,
+		visionRadius: 10, maxhp: 16, minLevel: 0, weight:-10, movePoints: 4,
+		attackPoints: 3, attack: "MeleeBindSpell", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 4, dmgType: "cold", fullBoundBonus: 2,
+		terrainTags: {"demon" : 15, "increasingWeight": 0.1, "goddessRage": 10, "goddessPleased": 10, }, shrines: [], allFloors: true,
+		dropTable: [{name: "Gold", amountMin: 25, amountMax: 35, weight: 10}]
 	},
 
 	{name: "Gag", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["leatherTrap", "ropeTrap", "ignoregagged", "construct", "poisonresist", "soulimmune", "melee", "ballGagRestraints", "gagSpell", "minor", "chainresist", "doortrap", "flying"]),

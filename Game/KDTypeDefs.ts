@@ -961,6 +961,7 @@ interface KinkyDungeonEvent {
 	restraint?: string;
 	sfx?: string;
 	power?: number;
+	count?: number;
 	player?: boolean;
 	bind?: number;
 	distract?: number;

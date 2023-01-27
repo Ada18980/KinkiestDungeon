@@ -2209,6 +2209,15 @@ KillChainBeing,"The obsidian construct stops moving, its spirit departed."
 AttackChainBeingBind,"The obsidian construct reaches out and touches you, forming metallic restraints! (+RestraintAdded)"
 AttackChainBeing,"The obsidian construct grips you and drains your willpower! (DamageTaken)"
 
+NameDemonStar,Star Demon
+KillDemonStar,"The star demon is exorcised."
+AttackDemonStarBind,"The star demon places you in shining, starry restraints. (+RestraintAdded)"
+AttackDemonStar,"The star demon places you under its curse! (DamageTaken)"
+KinkyDungeonStarBondage,The strings of fate glisten and wrap around you!
+KinkyDungeonBoundByFate,Many shining strings surround you!
+KinkyDungeonBuffBoundByFate,Stepping outside of the indicated tiles will result in punishment!
+KinkyDungeonSpellBoundByFate,Bindings of Fate
+
 
 NameTickleHand,Tickle Hand
 KillTickleHand,"The hand vanishes!"

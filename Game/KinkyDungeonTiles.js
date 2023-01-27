@@ -336,6 +336,33 @@ function KDCreateAoEEffectTiles(x, y, tile, durationMod, rad, avoidPoint, densit
 }
 
 /**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {string[]} tagsToRemove
+ * @param {number} [rad]
+ * @param {{x: number, y: number}} [avoidPoint]
+ * @param {number} [density]
+ * @param {string} mod - explosion modifier
+ */
+function KDRemoveAoEEffectTiles(x, y, tagsToRemove, rad, avoidPoint, density, mod = "") {
+	for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
+		for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
+			if (AOECondition(x, y, x+X, y+Y, rad, mod) && (!avoidPoint || avoidPoint.x != X + x || avoidPoint.y != Y + y) && (density == undefined || KDRandom() < density)) {
+				let tiles = KDGetEffectTiles(x + X, y + Y);
+				for (let tile of Object.values(tiles)) {
+					for (let tag of tagsToRemove) {
+						if (tile.tags && tile.tags.includes(tag)) {
+							tile.duration = 0;
+							break;
+						}
+					}
+				}
+			}
+		}
+}
+
+/**
  * Current alpha vs fade type
  * @param {string} id
  * @param {number} alpha
