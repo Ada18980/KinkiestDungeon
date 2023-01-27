@@ -475,22 +475,22 @@ function KinkyDungeonPlayerEffect(damage, playerEffect, spell, faction, bullet) 
 						KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonRopeEngulf"), "#ff0000", 2);
 						effect = true;
 					} else {
-						let buff1 = {id: "KrakenEngulf", type: "Blindness", duration: 8, power: 1.0, player: true, tags: []};
-						let buff2 = {id: "KrakenEngulf2", type: "Blindness", duration: 8, power: 2.0, player: true, tags: []};
-						let buff3 = {id: "KrakenEngulf3", type: "Blindness", duration: 8, power: 4.0, player: true, tags: []};
+						let buff1 = {id: "KrakenEngulf", type: "Blindness", duration: 8, power: 1.0, player: true, tags: ["passout"]};
+						let buff2 = {id: "KrakenEngulf2", type: "Blindness", duration: 8, power: 2.0, player: true, tags: ["passout"]};
+						let buff3 = {id: "KrakenEngulf3", type: "Blindness", duration: 8, power: 4.0, player: true, tags: ["passout"]};
 						if (KinkyDungeonPlayerBuffs[buff3.id]) {
 							KinkyDungeonPassOut();
 						} else if (KinkyDungeonPlayerBuffs[buff2.id]) {
-							KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonRopeEngulfEnd3"), "#ff0000", 4);
+							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRopeEngulfEnd3"), "#ff0000", 5);
 							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
 							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff3);
 						}  else if (KinkyDungeonPlayerBuffs[buff1.id]) {
-							KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonRopeEngulfEnd2"), "#ff0000", 4);
+							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRopeEngulfEnd2"), "#ff0000", 4);
 							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
 						} else {
-							KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonRopeEngulfEnd1"), "#ff0000", 4);
+							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRopeEngulfEnd1"), "#ff0000", 4);
 							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 						}
 					}

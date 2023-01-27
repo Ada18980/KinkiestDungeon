@@ -2912,24 +2912,24 @@ let KDEventMapEnemy = {
 	},
 	"beforeDamage": {
 		"shadowEngulf": (e, enemy, data) => {
-			if (data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
-				let buff1 = {id: "ShadowEngulf", type: "Blindness", duration: 8, power: 1.0, player: true, tags: []};
-				let buff2 = {id: "ShadowEngulf2", type: "Blindness", duration: 10, power: 2.0, player: true, tags: []};
-				let buff3 = {id: "ShadowEngulf3", type: "Blindness", duration: 12, power: 4.0, player: true, tags: []};
+			if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
+				let buff1 = {id: "ShadowEngulf", type: "Blindness", duration: 8, power: 1.0, player: true, tags: ["passout"]};
+				let buff2 = {id: "ShadowEngulf2", type: "Blindness", duration: 10, power: 2.0, player: true, tags: ["passout"]};
+				let buff3 = {id: "ShadowEngulf3", type: "Blindness", duration: 12, power: 4.0, player: true, tags: ["passout"]};
 				KinkyDungeonSetFlag("shadowEngulf", 4);
 				if (KinkyDungeonPlayerBuffs[buff3.id]) {
 					KinkyDungeonPassOut();
 				} else if (KinkyDungeonPlayerBuffs[buff2.id]) {
-					KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonShadowEngulfEnd3"), "#ff0000", 4);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonShadowEngulfEnd3"), "#ff0000", 5);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff3);
 				}  else if (KinkyDungeonPlayerBuffs[buff1.id]) {
-					KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonShadowEngulfEnd2"), "#ff0000", 4);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonShadowEngulfEnd2"), "#ff0000", 4);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
 				} else {
-					KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonShadowEngulfEnd1"), "#ff0000", 4);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonShadowEngulfEnd1"), "#ff0000", 4);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 				}
 			}

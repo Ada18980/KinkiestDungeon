@@ -205,13 +205,15 @@ function KinkyDungeonAttachTetherToEntity(dist, entity) {
 }
 
 function KDBreakTether() {
-	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
-	if (inv && KDRestraint(inv).tether) {
-		inv.tetherToLeasher = false;
-		inv.tetherToGuard = false;
-		inv.tetherEntity = undefined;
-		inv.tx = undefined;
-		inv.ty = undefined;
+	for (let pair of KinkyDungeonAllRestraintDynamic()) {
+		let inv = pair.item;
+		if (inv && KDRestraint(inv).tether) {
+			inv.tetherToLeasher = false;
+			inv.tetherToGuard = false;
+			inv.tetherEntity = undefined;
+			inv.tx = undefined;
+			inv.ty = undefined;
+		}
 	}
 }
 

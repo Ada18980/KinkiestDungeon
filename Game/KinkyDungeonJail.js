@@ -794,6 +794,7 @@ function KinkyDungeonPassOut(noteleport) {
 	KinkyDungeonStatBlind = 10;
 	KinkyDungeonUpdateLightGrid = true;
 	KDGameData.AlertTimer = 0;
+	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["passout"]);
 	KinkyDungeonSendEvent("passout", {});
 
 	KinkyDungeonStripInventory(false);
