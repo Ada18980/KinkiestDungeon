@@ -878,8 +878,16 @@ function KinkyDungeonDrawGame() {
 				let cursorY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
 				let tooltips = [];
 				if (KinkyDungeonVisionGet(cursorX, cursorY) > 0) {
-					if (KinkyDungeonEnemyAt(cursorX, cursorY) && KDCanSeeEnemy(KinkyDungeonEnemyAt(cursorX, cursorY))) {
-						tooltips.push((offset) => KDDrawEnemyTooltip(KinkyDungeonEnemyAt(cursorX, cursorY), offset));
+					let ambushTile = "";
+					let enemy = KinkyDungeonEnemyAt(cursorX, cursorY);
+					if (enemy && KDCanSeeEnemy(KinkyDungeonEnemyAt(cursorX, cursorY))) {
+						if (!enemy.ambushtrigger && KDAIType[KDGetAI(KinkyDungeonEnemyAt(cursorX, cursorY))]?.ambushtile) {
+							ambushTile = KDAIType[KDGetAI(enemy)].ambushtile;
+						} else {
+							tooltips.push((offset) => KDDrawEnemyTooltip(enemy, offset));
+						}
+
+
 					}
 					let eTiles = KDGetEffectTiles(cursorX, cursorY);
 					for (let etile of Object.values(eTiles)) {
@@ -888,7 +896,7 @@ function KinkyDungeonDrawGame() {
 						}
 					}
 					if (KinkyDungeonInspect) {
-						let tile = KinkyDungeonMapGet(cursorX, cursorY);
+						let tile = ambushTile || KinkyDungeonMapGet(cursorX, cursorY);
 						if (KDTileTooltips[tile]) {
 							tooltips.push((offset) => KDDrawTileTooltip(tile, cursorX, cursorY, offset));
 						}

@@ -1708,6 +1708,8 @@ type AIType = {
 	strictwander?: boolean,
 	/** This enemy is stealthy until the ambush is triggered */
 	ambush?: boolean,
+	/** This is the tile for the AI which registers as tooltip */
+	ambushtile?: string,
 	/** Happens at the start immediately after AI is assigned*/
 	init: (enemy, player, aidata) => void,
 	/** Happens before movement. Return true to skip movement loop*/

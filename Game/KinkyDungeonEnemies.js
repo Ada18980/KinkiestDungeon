@@ -959,8 +959,10 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 							});
 				}
 
-				if (!tooltip && (((!KDAmbushAI(enemy) || enemy.ambushtrigger) && MouseIn(canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)) || (KDGameData.CurrentDialog && KDGetSpeaker() == enemy))) {
+				if (!tooltip && (((!KDAmbushAI(enemy) || enemy.ambushtrigger)
+					&& (MouseIn(canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)
+						|| MouseIn(canvasOffsetX + (enemy.x - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (enemy.y - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay))
+						|| (KDGameData.CurrentDialog && KDGetSpeaker() == enemy)))) {
 					let faction = KDGetFaction(enemy);
 					if (faction && (!KinkyDungeonHiddenFactions.includes(faction) || KinkyDungeonTooltipFactions.includes(faction))) {
 						let tt = TextGet("KinkyDungeonFaction" + faction);

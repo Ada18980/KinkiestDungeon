@@ -1714,6 +1714,7 @@ let KDAIType = {
 	},
 	"ambush": {
 		ambush: true,
+		ambushtile: 'X',
 		init: (enemy, player, aidata) => {},
 		beforemove: (enemy, player, aidata) => {
 			if (aidata.playerDist < 1.5) enemy.ambushtrigger = true;
