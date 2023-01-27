@@ -1218,6 +1218,7 @@ Features
 - New tileset: Orrery
 - New enemies: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced), Star Demon
 - Added perks filter in the perks screen
+- Ambushing enemies no longer show tooltips before springing their ambush
 
 TODO ValidationFindBlockCycles to prevent bugs
 
