@@ -1404,9 +1404,9 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 		if (!(enemy.lifetime < 9000)) {
 			if (enemy.playerdmg && !(!KinkyDungeonAggressive(enemy) && KDHelpless(enemy) && KDCanDom(enemy))) {
 				if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.boss)
-					KinkyDungeonChangeRep("Ghost", -5);
+					KinkyDungeonChangeRep("Ghost", -3);
 				else if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.miniboss)
-					KinkyDungeonChangeRep("Ghost", -2);
+					KinkyDungeonChangeRep("Ghost", -1);
 				else if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.elite && KDRandom() < 0.33)
 					KinkyDungeonChangeRep("Ghost", -1);
 
