@@ -1042,7 +1042,7 @@ function KinkyDungeonRun() {
 			let hardmode = points >= KDHardModeThresh ? TextGet("KDHardMode") : "";
 			DrawTextKD(TextGet("KinkyDungeonStatPoints").replace("AMOUNT", "" + points) + hardmode, 1000, 150, "#ffffff", KDTextGray2);
 		}
-		DrawButtonKDEx("", (bdata) => {
+		DrawButtonKDEx("KDPerksStart", (bdata) => {
 			if (KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0) {
 				//KinkyDungeonState = "Diff";
 				KDLose = false;
@@ -1050,28 +1050,28 @@ function KinkyDungeonRun() {
 			}
 			return true;
 		}, true, 875, 920, 350, 64, TextGet("KinkyDungeonStartGame"), KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0 ? "#ffffff" : "pink", "");
-		DrawButtonKDEx("", (bdata) => {
+		DrawButtonKDEx("KDPerksBack", (bdata) => {
 			KinkyDungeonState = "Menu";
 			return true;
 		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
-		DrawButtonKDEx("", (bdata) => {
+		DrawButtonKDEx("KDPerksClear", (bdata) => {
 			KinkyDungeonStatsChoice = new Map();
 			KDUpdatePlugSettings();
 			return true;
 		}, true, 40, 920, 190, 64, TextGet("KinkyDungeonClearAll"), "#ffffff", "");
-		DrawButtonKDEx("", (bdata) => {
+		DrawButtonKDEx("KDPerkConfig1", (bdata) => {
 			KinkyDungeonPerksConfig = "1";
 			KinkyDungeonLoadStats();
 			KDUpdatePlugSettings();
 			return true;
 		}, true, 270, 930, 100, 54, TextGet("KinkyDungeonConfig") + "1", KinkyDungeonPerksConfig == "1" ? "#ffffff" : "#888888", "");
-		DrawButtonKDEx("", (bdata) => {
+		DrawButtonKDEx("KDPerkConfig2", (bdata) => {
 			KinkyDungeonPerksConfig = "2";
 			KinkyDungeonLoadStats();
 			KDUpdatePlugSettings();
 			return true;
 		}, true, 380, 930, 100, 54, TextGet("KinkyDungeonConfig") + "2", KinkyDungeonPerksConfig == "2" ? "#ffffff" : "#888888", "");
-		DrawButtonKDEx("", (bdata) => {
+		DrawButtonKDEx("KDPerkConfig3", (bdata) => {
 			KinkyDungeonPerksConfig = "3";
 			KinkyDungeonLoadStats();
 			KDUpdatePlugSettings();
