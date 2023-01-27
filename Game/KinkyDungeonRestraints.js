@@ -177,8 +177,9 @@ function KinkyDungeonDrawTether(Entity, CamX, CamY) {
 				MainCanvas.lineWidth = 4;
 				MainCanvas.moveTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*d, KinkyDungeonGridSizeDisplay*0.8 + yOffset + yy + dy*d);
 				MainCanvas.lineTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*(d+dd), KinkyDungeonGridSizeDisplay*0.8 + yOffset2 + yy + dy*(d+dd));
+				let color = KDRestraint(inv).Color[0] ? KDRestraint(inv).Color[0] : KDRestraint(inv).Color;
 				// @ts-ignore
-				MainCanvas.strokeStyle = KDRestraint(inv).Color[0] ? KDRestraint(inv).Color[0] : KDRestraint(inv).Color;//(color == "Default") ? "#aaaaaa" : color;
+				MainCanvas.strokeStyle = (!color || color == "Default") ? "#aaaaaa" : color;
 				MainCanvas.stroke();
 			}
 			return;
