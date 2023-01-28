@@ -610,7 +610,7 @@ let KDOrigCharge = 1000;
 let KDOrigDistraction = 0;
 
 function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0) {
-	if (!isNaN(Amount)) {
+	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
 	}
@@ -639,9 +639,14 @@ function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0
 		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet("KinkyDungeonChangeDistraction" + amount), "#ff00ff", 2, 1);
 		KDOrigDistraction = Math.max(0, Math.floor(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * 100));
 	}
+
+	if (isNaN(KinkyDungeonStatDistraction)) {
+		console.trace();
+		KinkyDungeonStatDistraction = 0;
+	}
 }
 function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0) {
-	if (!isNaN(Amount)) {
+	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
 	}
@@ -658,6 +663,11 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
 		if (!(KDGameData.StaminaSlow > 5) && !NoSlow)
 			KDGameData.StaminaSlow = 5;
 	}
+
+	if (isNaN(KinkyDungeonStatStamina)) {
+		console.trace();
+		KinkyDungeonStatDistraction = 0;
+	}
 }
 /**
  *
@@ -668,7 +678,7 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
  * @param {boolean} [spill]
  */
 function KinkyDungeonChangeMana(Amount, NoFloater, PoolAmount, Pause, spill, minimum = 0) {
-	if (!isNaN(Amount)) {
+	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
 	}
@@ -691,9 +701,14 @@ function KinkyDungeonChangeMana(Amount, NoFloater, PoolAmount, Pause, spill, min
 		if (!(KDGameData.ManaSlow > 10))
 			KDGameData.ManaSlow = 10;
 	}
+
+	if (isNaN(KinkyDungeonStatMana)) {
+		console.trace();
+		KinkyDungeonStatDistraction = 0;
+	}
 }
 function KinkyDungeonChangeWill(Amount, NoFloater, minimum = 0) {
-	if (!isNaN(Amount)) {
+	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
 	}
@@ -704,11 +719,16 @@ function KinkyDungeonChangeWill(Amount, NoFloater, minimum = 0) {
 		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatWill * 10) - KDOrigWill, "#ff4444", undefined, undefined, " wp");
 		KDOrigWill = Math.floor(KinkyDungeonStatWill * 10);
 	}
+
+	if (isNaN(KinkyDungeonStatWill)) {
+		console.trace();
+		KinkyDungeonStatDistraction = 0;
+	}
 }
 
 
 function KinkyDungeonChangeCharge(Amount, NoFloater) {
-	if (!isNaN(Amount)) {
+	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
 	}
@@ -717,6 +737,11 @@ function KinkyDungeonChangeCharge(Amount, NoFloater) {
 	if (!NoFloater && Math.abs(KDOrigCharge - Math.floor(KDGameData.AncientEnergyLevel * 1000)) >= 0.99) {
 		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.AncientEnergyLevel * 1000 * 10) - KDOrigCharge, "#ffff44", undefined, undefined, " charge");
 		KDOrigCharge = Math.floor(KDGameData.AncientEnergyLevel * 1000);
+	}
+
+	if (isNaN(KDGameData.AncientEnergyLevel)) {
+		console.trace();
+		KinkyDungeonStatDistraction = 0;
 	}
 }
 
