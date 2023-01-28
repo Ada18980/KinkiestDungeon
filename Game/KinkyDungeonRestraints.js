@@ -1468,7 +1468,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "Impossible" + typesuff), "#ff0000", 2, true);
 			if (EC.escapeChanceData.GoddessBonus < 0 && EC.escapeChanceData.escapeChance < 0 && EC.escapeChance - EC.escapeChanceData.GoddessBonus > 0) {
-				KinkyDungeonSendTextMessage(2, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleGoddess"), "#ff0000", 2, true);
+				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleGoddess"), "#ff0000", 2, true);
 			}
 			KinkyDungeonLastAction = "Struggle";
 			KinkyDungeonSendEvent("struggle", {
