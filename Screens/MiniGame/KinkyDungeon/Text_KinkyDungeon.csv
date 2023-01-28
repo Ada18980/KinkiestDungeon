@@ -336,7 +336,7 @@ KinkyDungeonStatDescKeepOutfit,"When you are jailed, you keep your outfit."
 KinkyDungeonStatFutileStruggles,"Futile Struggles"
 KinkyDungeonStatDescFutileStruggles,"Lose 2 WP every time you remove a non-trivial restraint."
 KinkyDungeonStatSecondWind,"Second Wind"
-KinkyDungeonStatDescSecondWind,"Gain 2 WP every time you remove a non-trivial restraint."
+KinkyDungeonStatDescSecondWind,"Gain 2 WP every time you remove a non-trivial restraint. Destroys restraints on removal."
 
 
 KinkyDungeonStatDominant,"Dominant"
