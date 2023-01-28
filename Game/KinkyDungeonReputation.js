@@ -365,7 +365,7 @@ function KinkyDungeonDrawReputation() {
 			}
 			DrawProgressBar(canvasOffsetX_ui + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value, color, KDTextGray2);
 			if (KinkyDungeonShrineBaseCosts[rep])
-				KDDrawRestraintBonus(rep, canvasOffsetX_ui + 275 + XX - 50, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
+				KDDrawRestraintBonus(rep, canvasOffsetX_ui + 275 + XX - 70, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
 
 			MainCanvas.textAlign = "center";
 			DrawTextKD(" " + (Math.round(value)+50) + " ", canvasOffsetX_ui + 275 + XX + 100,  2+yPad + canvasOffsetY_ui + spacing * i, "white", "black");

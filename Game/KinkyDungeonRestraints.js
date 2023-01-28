@@ -74,7 +74,7 @@ let KDCluelessSpeedBonus = 0.5;
 
 let KDFlexibleBonus = 0.1;
 let KDFlexibleSpeedBonus = 1.5;
-let KDInflexibleBonus = -0.1;
+let KDInflexibleMult = 0.5;
 let KDInflexibleSpeedBonus = 0.75;
 
 let KDUnchainedBonus = 0.12;
@@ -1152,7 +1152,7 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 			if (KinkyDungeonStatsChoice.get("Clueless")) escapeChance += KDCluelessBonus;
 		} else if (StruggleType == "Remove" || StruggleType == "Unlock") {
 			if (KinkyDungeonStatsChoice.get("Flexible")) escapeChance += KDFlexibleBonus;
-			if (KinkyDungeonStatsChoice.get("Inflexible")) escapeChance += KDInflexibleBonus;
+			if (KinkyDungeonStatsChoice.get("Inflexible")) escapeChance *= KDInflexibleMult;
 		} else if (StruggleType == "Struggle") {
 			if (KinkyDungeonStatsChoice.get("Strong")) escapeChance += KDStrongBonus;
 			if (KinkyDungeonStatsChoice.get("Weak")) escapeChance += KDWeakBonus;
@@ -1164,7 +1164,7 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	if (KinkyDungeonStatsChoice.get("Damsel") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal")) {
 		if (escapeChance > 0)
 			escapeChance /= 1.5;
-		if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < KDDamselBonus)
+		if (StruggleType != "Pick" && StruggleType != "Unlock" && limitChance > 0 && limitChance < KDDamselBonus)
 			limitChance = KDDamselBonus;
 	}
 	if (KinkyDungeonStatsChoice.get("HighSecurity")) {
@@ -1223,7 +1223,7 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	};
 
 	let GoddessBonus = KDGetItemGoddessBonus(restraint, data);
-	data.escapeChance += GoddessBonus;
+	data.escapeChance *= Math.max(0, 1 + GoddessBonus);
 	data.GoddessBonus = GoddessBonus;
 
 	KinkyDungeonSendEvent("perksStruggleCalc", data);
@@ -1231,6 +1231,7 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	return {
 		escapeChance: data.escapeChance,
 		limitChance: data.limitChance,
+		escapeChanceData: data,
 	};
 
 }
@@ -1462,6 +1463,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			if (typesuff == "" && failSuffix) typesuff = failSuffix;
 			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "Impossible" + typesuff), "#ff0000", 2, true);
+			if (EC.escapeChanceData.GoddessBonus < 0) {
+				KinkyDungeonSendTextMessage(2, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleGoddess"), "#ff0000", 2, true);
+			}
 			KinkyDungeonLastAction = "Struggle";
 			KinkyDungeonSendEvent("struggle", {
 				restraint: restraint,
