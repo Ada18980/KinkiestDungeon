@@ -610,6 +610,10 @@ let KDOrigCharge = 1000;
 let KDOrigDistraction = 0;
 
 function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0) {
+	if (!isNaN(Amount)) {
+		console.trace();
+		Amount = 0;
+	}
 	let minLevel = Math.min(KinkyDungeonStatDistractionMax * minimum, KinkyDungeonStatDistraction); // Cannot go below this or current
 	if (Amount > 1) {
 		KDNoRegenFlag = true;
@@ -637,6 +641,10 @@ function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0
 	}
 }
 function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0) {
+	if (!isNaN(Amount)) {
+		console.trace();
+		Amount = 0;
+	}
 	let minLevel = Math.min(KinkyDungeonStatStaminaMax * minimum, KinkyDungeonStatStamina); // Cannot go below this or current
 	KinkyDungeonStatStamina += Amount;
 	KinkyDungeonStatStamina = Math.min(Math.max(minLevel, KinkyDungeonStatStamina), KinkyDungeonStatStaminaMax);
@@ -660,6 +668,10 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
  * @param {boolean} [spill]
  */
 function KinkyDungeonChangeMana(Amount, NoFloater, PoolAmount, Pause, spill, minimum = 0) {
+	if (!isNaN(Amount)) {
+		console.trace();
+		Amount = 0;
+	}
 	let minLevel = Math.min(KinkyDungeonStatManaMax * minimum, KinkyDungeonStatMana); // Cannot go below this or current
 	let manaAmt = KinkyDungeonStatMana;
 	KinkyDungeonStatMana += Amount;
@@ -681,6 +693,10 @@ function KinkyDungeonChangeMana(Amount, NoFloater, PoolAmount, Pause, spill, min
 	}
 }
 function KinkyDungeonChangeWill(Amount, NoFloater, minimum = 0) {
+	if (!isNaN(Amount)) {
+		console.trace();
+		Amount = 0;
+	}
 	let minLevel = Math.min(KinkyDungeonStatWillMax * minimum, KinkyDungeonStatWill); // Cannot go below this or current
 	KinkyDungeonStatWill += Amount;
 	KinkyDungeonStatWill = Math.min(Math.max(minLevel, KinkyDungeonStatWill), KinkyDungeonStatWillMax);
@@ -692,6 +708,10 @@ function KinkyDungeonChangeWill(Amount, NoFloater, minimum = 0) {
 
 
 function KinkyDungeonChangeCharge(Amount, NoFloater) {
+	if (!isNaN(Amount)) {
+		console.trace();
+		Amount = 0;
+	}
 	if (!KDGameData.AncientEnergyLevel) KDGameData.AncientEnergyLevel = 0;
 	KDGameData.AncientEnergyLevel = Math.min(1, KDGameData.AncientEnergyLevel + Amount);
 	if (!NoFloater && Math.abs(KDOrigCharge - Math.floor(KDGameData.AncientEnergyLevel * 1000)) >= 0.99) {
