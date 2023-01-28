@@ -1223,10 +1223,11 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	};
 
 	let GoddessBonus = KDGetItemGoddessBonus(restraint, data);
-	if (data.escapeChance > 0)
-		data.escapeChance *= Math.max(0, 1 + GoddessBonus);
-	else
-		data.escapeChance /= Math.max(0.1, 1 + GoddessBonus);
+	//if (data.escapeChance > 0)
+	//data.escapeChance *= Math.max(0, 1 + GoddessBonus);
+	//else
+	//data.escapeChance /= Math.max(0.1, 1 + GoddessBonus);
+	data.escapeChance += GoddessBonus;
 	data.GoddessBonus = GoddessBonus;
 
 	KinkyDungeonSendEvent("perksStruggleCalc", data);
@@ -1466,7 +1467,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			if (typesuff == "" && failSuffix) typesuff = failSuffix;
 			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "Impossible" + typesuff), "#ff0000", 2, true);
-			if (EC.escapeChanceData.GoddessBonus < 0) {
+			if (EC.escapeChanceData.GoddessBonus < 0 && EC.escapeChanceData.escapeChance < 0 && EC.escapeChance - EC.escapeChanceData.GoddessBonus > 0) {
 				KinkyDungeonSendTextMessage(2, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleGoddess"), "#ff0000", 2, true);
 			}
 			KinkyDungeonLastAction = "Struggle";
