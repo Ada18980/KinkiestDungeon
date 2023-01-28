@@ -1347,6 +1347,13 @@ let KDDialogue = {
 		options: {
 			"Leave": {
 				playertext: "Leave", response: "Default",
+				clickFunction: (gagged) => {
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("FuukaCollar");
+						KDUnlockPerk("CommonFuuka");
+					}
+					return false;
+				},
 				exitDialogue: true,
 			},
 			"Accept": {
@@ -1371,6 +1378,10 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged) => {
 					KinkyDungeonChangeRep("Ghost", -5);
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("FuukaCollar");
+						KDUnlockPerk("CommonFuuka");
+					}
 					return false;
 				},
 				options: {

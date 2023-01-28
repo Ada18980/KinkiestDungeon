@@ -240,11 +240,7 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 			Enemy.distraction = (Enemy.distraction || 0) + Enemy.Enemy.maxhp * 0.1;
 			KDAddOpinion(Enemy, 10);
 		} else {
-			if (Enemy.Enemy.name == "Angel") {
-				Enemy.Enemy = KinkyDungeonGetEnemyByName("AngelHostile");
-				if (KDGameData.KDPenanceStage < 4)
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonAngelAggro"), "yellow", 2);
-			} else if (Enemy && !Enemy.Enemy.allied) {
+			if (Enemy && !Enemy.Enemy.allied) {
 				KinkyDungeonSetFlag("PlayerCombat", 24);
 				KinkyDungeonAggroAction('attack', {enemy: Enemy});
 			}
