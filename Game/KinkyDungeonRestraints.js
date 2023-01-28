@@ -1223,7 +1223,10 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	};
 
 	let GoddessBonus = KDGetItemGoddessBonus(restraint, data);
-	data.escapeChance *= Math.max(0, 1 + GoddessBonus);
+	if (data.escapeChance > 0)
+		data.escapeChance *= Math.max(0, 1 + GoddessBonus);
+	else
+		data.escapeChance /= Math.max(0.1, 1 + GoddessBonus);
 	data.GoddessBonus = GoddessBonus;
 
 	KinkyDungeonSendEvent("perksStruggleCalc", data);
