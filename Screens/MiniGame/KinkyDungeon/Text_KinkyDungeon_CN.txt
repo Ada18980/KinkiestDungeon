@@ -78,30 +78,6 @@ Point Cost: AMOUNT
 积分成本：AMOUNT
 Points Available: AMOUNT
 可用积分：AMOUNT
-Strong
-强健
-Boosts the Struggle option when escaping.
-加快挣扎进程。
-Helpless
-无助
-You are physically weak. Struggling is much less effective.
-你身体虚弱。挣扎的效果要差得多。
-Flexible
-灵活的
-Slightly boosts the Remove/Unlock option, escaping is 1.5x as fast except picking, and your feet can use items/buckles.
-略微加速了移除/解锁选项，除了撬锁之外，逃脱速度是 1.5 倍，并且你的脚可以使用物品/扣环。
-Inflexible
-不灵活
-You get a penalty to the Remove and Unlock action, and escaping is 0.75x as fast.
-你的移除和解锁选项会减慢，并且逃跑的速度是 0.75 倍。
-Locksmith
-锁匠
-You get a bonus to lockpicking, allowing you to pick some high-security locks previously impossible.
-您可以获得撬锁奖励，允许您尝试开一些以前不可能的高安全性锁。
-Clueless
-一头雾水
-You have no idea how to pick locks. Picking is 0.5x as fast and you can't pick most advanced locks.
-你不知道如何撬锁。撬锁速度是原来的 0.5 倍，而且您无法撬开最先进的锁。
 Psychic
 精神
 You no longer drop keys and picks, can unlock yourself with bound hands, and don't need hands for items/potions.
@@ -268,10 +244,6 @@ Price Gouging
 敲竹杠
 Items are 5x as expensive in the shop.
 商店里的商品价格是原来的 5 倍。
-High Security
-高安全性
-Picks are weaker, and randomly generated locks are harsher.
-开锁工具更加脆弱，随机生成的锁更难撬开。
 Shoddy Knives
 劣质刀
 Knives break more easily.
@@ -368,14 +340,6 @@ Rusty Bolts
 生锈的螺栓
 Most traps have a 25% misfire chance.
 大多数陷阱有 25% 的失效几率。
-Unmasked
-无面罩
-Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
-头套和全覆盖面罩将不会出现，但眼罩更强大。
-No Nurses
-无护士
-Nurses will not appear in the game.
-护士将不再出现在游戏中
 Panic!!!
 惊恐！！！
 When you step on a trap, you are stunned for 2 turns.
@@ -398,10 +362,6 @@ Iron Slave
 钢铁奴隶
 Start in a full set of magically locked obsidian cuffs.
 开局时穿戴被魔法锁住的全套黑曜石铐。
-Frantic Struggle
-疯狂挣扎
-Your struggling is 3 times as fast, but less efficient in terms of stamina.
-你的挣扎速度是原来的3倍，但降低你的体力。
 Fashionable
 时尚的
 When you are jailed, you keep your outfit.
@@ -7300,10 +7260,6 @@ Target an enemy: Attack with Dragonslaver. Target a tile: Launch binding belts
 消耗5%能量进入狂乱10回合，每回合攻击2次。
 Create a '+' shaped pool of slime that deals 35 glue damage per hit
 创建一个十字史莱姆池，每一击造成 35 点胶水伤害
-Toggles
-切换
-Locks and Restraints
-锁具和拘束具
 General Combat
 一般战斗
 Kinks and Preferences
@@ -9856,3 +9812,66 @@ Select where the slime will appear
 选择粘液出现的位置
 Select where to put the wall (cannot place on occupied squares)
 选择放置墙壁的位置（不能放置在占用的区域上）
+
+#初始技能#
+Toggles
+切换
+Unmasked
+无面罩
+Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
+头套和全覆盖面罩将不会出现，但眼罩更强大。
+No Nurses
+无护士
+Nurses will not appear in the game.
+护士将不再出现在游戏中。
+Brats Only
+淘气宝宝
+Submissive enemies will always be bratty and force you to catch them.
+顺从的敌人总是令人讨厌，迫使你去抓他们。
+No Brats
+安静宝宝
+Submissive enemies won't run away from you.
+顺从的敌人不会从你身边逃跑。
+
+Locks and Restraints
+锁具和拘束具
+Second Wind
+再生之气
+Gain 2 WP every time you remove a non-trivial restraint.
+每次移除特殊拘束时获得 2 WP。
+Futile Struggles
+无力挣扎
+Lose 2 WP every time you remove a non-trivial restraint.
+每次移除特殊拘束时消耗 2 WP。
+Strong
+强健
+Boosts the Struggle option when escaping.
+挣扎效果提升。
+Helpless
+无助
+You are physically weak. Struggling is much less effective.
+你的身体虚弱，挣扎效果要差得多。
+Flexible
+灵活的
+Slightly boosts the Remove/Unlock option, escaping is 1.5x as fast except picking, and your feet can use items/buckles.
+略微加速移除/解锁的速度，除了撬锁之外，逃脱速度变为原先的 1.5 倍，并且你的脚可以使用物品/扣环。
+Inflexible
+笨重
+You get a penalty to the Remove and Unlock action, and escaping is 0.75x as fast.
+减慢移除/解锁的速度，逃脱速度变为原先的 0.75 倍。
+Locksmith
+锁匠
+You get a bonus to lockpicking, allowing you to pick some high-security locks previously impossible.
+您可以获得撬锁奖励，并且允许撬一些以前不可能撬开的高安全性锁具。
+Clueless
+一头雾水
+You have no idea how to pick locks. Picking is 0.5x as fast and you can't pick most advanced locks.
+你不知道如何撬锁，撬锁速度变为原来的 0.5 倍，而且您无法撬开最先进的锁具。
+Frantic Struggle
+疯狂挣扎
+Your struggling is 3 times as fast, but less efficient in terms of stamina.
+你的挣扎速度变为原来的 3 倍，但会提高挣扎时的体力消耗。
+High Security
+高安全性
+Picks are weaker, and randomly generated locks are harsher.
+开锁工具更加脆弱，随机生成的锁更难撬开。
