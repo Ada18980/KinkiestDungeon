@@ -708,7 +708,7 @@ function KDSpawnLootTrap(x, y, trap, mult, duration) {
 	for (let tile of KDNearbyTiles(x, y, 2.5)) {
 		if (tile.tile.lootTrapEnemy) {
 			let etiles = Object.values(KDGetEffectTiles(tile.x, tile.y)).filter((etile) => {
-				return etile.tags && etile.tags.includes("rune");
+				return etile.tags && etile.tags.includes("runesummon");
 			});
 			if (etiles?.length > 0) {
 				let Enemy = KinkyDungeonGetEnemyByName(tile.tile.lootTrapEnemy);

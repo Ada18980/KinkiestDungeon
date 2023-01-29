@@ -2163,6 +2163,13 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 					Power: t.Power,
 					OffLimits: tile?.OffLimits,
 				});
+				let spell = t.Spell ? KinkyDungeonFindSpell(t.Spell, true) : "";
+				if (spell && !spell.nonmagical) {
+					KDCreateEffectTile(trap.x, trap.y, {
+						name: "RunesTrap",
+						duration: 9999,
+					}, 0);
+				}
 			}
 		}
 	}

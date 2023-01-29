@@ -1220,6 +1220,8 @@ type KDPerk = {
 }
 
 interface spell {
+	/** Marks a spell as non-magical, so traps dont leave a rune on the ground */
+	nonmagical?: boolean,
 	/** Marks the spell as a command word spell to enemies */
 	commandword?: boolean,
 	/** The spell is used to buff allies */

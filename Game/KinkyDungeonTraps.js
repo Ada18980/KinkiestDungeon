@@ -108,6 +108,14 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 						msg = ""; // The spell will show a message on its own
 						triggered = true;
 						KinkyDungeonTilesDelete(x + "," + y);
+						let etiles = Object.values(KDGetEffectTiles(x, y)).filter((etile) => {
+							return etile.tags && etile.tags.includes("runetrap");
+						});
+						if (etiles?.length > 0) {
+							for (let et of etiles) {
+								et.duration = 0;
+							}
+						}
 						//if (!tile.noSmoke) {
 						//KDSmokePuff(x, y, 1.9, 0.5);
 						//}

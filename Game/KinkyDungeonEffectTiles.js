@@ -76,7 +76,13 @@ let KDEffectTiles = {
 		name: "Runes",
 		duration: 9999,
 		priority: 10,
-		tags: ["rune", "hiddenmagic"],
+		tags: ["runesummon", "rune", "hiddenmagic"],
+	},
+	"RunesTrap": {
+		name: "RunesTrap",
+		duration: 9999,
+		priority: 10,
+		tags: ["magic", "runetrap", "rune", "hiddenmagic"],
 	},
 	"Belts": {
 		name: "Belts",

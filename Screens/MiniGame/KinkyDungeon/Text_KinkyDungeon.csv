@@ -4110,6 +4110,8 @@ KDEffectTileTooltipFabricGreen,Blessed Wrappings
 KDEffectTileTooltipFabricGreenDesc,"Enchanted wrappings"
 KDEffectTileTooltipRunes,Summoning Runes
 KDEffectTileTooltipRunesDesc,"Mystical runes used for summoning"
+KDEffectTileTooltipRunesTrap,Casting Runes
+KDEffectTileTooltipRunesTrapDesc,"Mystical runes used for casting spells"
 KDEffectTileTooltipEmber,Embers
 KDEffectTileTooltipEmberDesc,Ignition source. Blocks vision.
 KDEffectTileTooltipInferno,Inferno

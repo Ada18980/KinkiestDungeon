@@ -2504,6 +2504,22 @@ let KDEffectTileTooltips = {
 			center: true,
 		});
 	},
+	'RunesTrap': (tile, x, y, TooltipList) => {
+		TooltipList.push({
+			str: TextGet("KDEffectTileTooltip" + tile.name),
+			fg: "#92e8c0",
+			bg: "#000000",
+			size: 24,
+			center: true,
+		});
+		TooltipList.push({
+			str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 16,
+			center: true,
+		});
+	},
 	'Inferno': (tile, x, y, TooltipList) => {
 		TooltipList.push({
 			str: TextGet("KDEffectTileTooltip" + tile.name),
