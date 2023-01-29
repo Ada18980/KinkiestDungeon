@@ -678,7 +678,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 				console.log(`${performance.now() - startTime} ms for lore creation`);
 				startTime = performance.now();
 			}
-			if ((MiniGameKinkyDungeonLevel % KDLevelsPerCheckpoint == 2 || MiniGameKinkyDungeonLevel % KDLevelsPerCheckpoint == 4 || ((MiniGameKinkyDungeonLevel % KDLevelsPerCheckpoint == 1 || MiniGameKinkyDungeonLevel % KDLevelsPerCheckpoint == 3) && KDDefaultAlt.includes(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]))) && (!altType || altType.heart))
+			if (KDDefaultAlt.includes(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) && (!altType || altType.heart))
 				KinkyDungeonPlaceHeart(width, height, Floor);
 			if (!altType || altType.specialtiles)
 				KinkyDungeonPlaceSpecialTiles(gasChance, gasType, Floor, width, height);

@@ -1222,6 +1222,7 @@ Features
 - Changed the way goddess bonuses work to be multiplicative of the base chance
 - Increased the time taken to put on armor
 - Second Wind now destroys restraints when you get the willpower bonus
+- Training collar does less damage (still stuns)
 
 TODO ValidationFindBlockCycles to prevent bugs
 
