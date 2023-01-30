@@ -1912,9 +1912,9 @@ function KinkyDungeonHandleHUD() {
 				else if (KinkyDungeonWeapons[ElementValue("DebugItem")]) KinkyDungeonInventoryAddWeapon(ElementValue("DebugItem"));
 				else if (KinkyDungeonGetRestraintByName(ElementValue("DebugItem"))) {
 					let restraint = KinkyDungeonGetRestraintByName(ElementValue("DebugItem"));
-					KinkyDungeonInventoryAdd({name: ElementValue("DebugItem"), type: LooseRestraint, events: restraint.events, quantity: 10});
+					KinkyDungeonInventoryAdd({name: ElementValue("DebugItem"), type: LooseRestraint, events: restraint.events, quantity: 10, id: KinkyDungeonGetItemID()});
 				} else if (KinkyDungeonOutfitsBase.filter((outfit) => {return outfit.name == ElementValue("DebugItem");}).length > 0) {
-					KinkyDungeonInventoryAdd({name: KinkyDungeonOutfitsBase.filter((outfit) => {return outfit.name == ElementValue("DebugItem");})[0].name, type: Outfit});
+					KinkyDungeonInventoryAdd({name: KinkyDungeonOutfitsBase.filter((outfit) => {return outfit.name == ElementValue("DebugItem");})[0].name, type: Outfit, id: KinkyDungeonGetItemID()});
 				}
 
 				if (item)

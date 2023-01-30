@@ -127,12 +127,12 @@ function KinkyDungeonHandleInventory() {
 
 function KinkyDungeonInventoryAddWeapon(Name) {
 	if (!KinkyDungeonInventoryGetWeapon(Name) && KinkyDungeonWeapons[Name])
-		KinkyDungeonInventoryAdd({name:Name, type:Weapon, events: Object.assign([], KinkyDungeonWeapons[Name].events)});
+		KinkyDungeonInventoryAdd({name:Name, type:Weapon, events: Object.assign([], KinkyDungeonWeapons[Name].events), id: KinkyDungeonGetItemID()});
 }
 
 function KinkyDungeonInventoryAddLoose(Name, UnlockCurse) {
 	if (!KinkyDungeonInventoryGetLoose(Name) || UnlockCurse)
-		KinkyDungeonInventoryAdd({name: Name, type: LooseRestraint, curse: UnlockCurse, events:KDRestraint(KinkyDungeonGetRestraintByName(Name)).events, quantity: 1});
+		KinkyDungeonInventoryAdd({name: Name, type: LooseRestraint, curse: UnlockCurse, events:KDRestraint(KinkyDungeonGetRestraintByName(Name)).events, quantity: 1, id: KinkyDungeonGetItemID()});
 	else {
 		KinkyDungeonInventoryGetLoose(Name).quantity += 1;
 	}
@@ -140,7 +140,7 @@ function KinkyDungeonInventoryAddLoose(Name, UnlockCurse) {
 
 function KinkyDungeonInventoryAddOutfit(Name) {
 	if (!KinkyDungeonInventoryGetOutfit(Name) && KinkyDungeonOutfitCache.has(Name))
-		KinkyDungeonInventoryAdd({name:Name, type:Outfit});
+		KinkyDungeonInventoryAdd({name:Name, type:Outfit, id: KinkyDungeonGetItemID()});
 }
 /**
  *
@@ -623,6 +623,17 @@ function KinkyDungeonDrawQuickInv() {
 		DrawButtonVis(510, 455, 90, 40, "", "white", KinkyDungeonRootDirectory + "Up.png");
 		DrawButtonVis(510, 500, 90, 40, "", "white", KinkyDungeonRootDirectory + "Down.png");
 	}
+
+	FillRectKD(kdcanvas, kdpixisprites, "quickinvbg", {
+		Left: 5,
+		Top: 5,
+		Width: 490,
+		Height: 990,
+		Color: "#000000",
+		LineWidth: 1,
+		zIndex: 59,
+		alpha: 0.9
+	});
 
 	DrawButtonKDEx("inventoryhide", (bdata) => {
 		if (!KDGameData.HiddenItems)

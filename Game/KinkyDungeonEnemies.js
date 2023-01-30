@@ -3845,6 +3845,12 @@ function KinkyDungeonGetEnemyID() {
 	if (KinkyDungeonEnemyID > 100000000) KinkyDungeonEnemyID = 0;
 	return KinkyDungeonEnemyID++;
 }
+// Unique ID for items for identification reasons
+// Dont want to pass object handles around in case we ever allow saving a room
+function KinkyDungeonGetItemID() {
+	if (KDGameData.ItemID > 100000000 || KDGameData.ItemID == undefined) KDGameData.ItemID = 0;
+	return KDGameData.ItemID++;
+}
 
 let KinkyDungeonEnemyID = 1;
 
@@ -4690,11 +4696,11 @@ function KDClearItems(enemy) {
 	if (enemy.items) {
 		for (let item of enemy.items) {
 			if (KinkyDungeonFindWeapon(item)) {
-				KinkyDungeonAddLostItems([{name: item, type: Weapon}], false);
+				KinkyDungeonAddLostItems([{name: item, type: Weapon, id: KinkyDungeonGetItemID()}], false);
 			} else if (KinkyDungeonGetRestraintByName(item) && KinkyDungeonGetRestraintByName(item).showInQuickInv) {
-				KinkyDungeonAddLostItems([{name: item, type: LooseRestraint, quantity: 1}], false);
+				KinkyDungeonAddLostItems([{name: item, type: LooseRestraint, quantity: 1, id: KinkyDungeonGetItemID()}], false);
 			} else if (KinkyDungeonFindConsumable(item)) {
-				KinkyDungeonAddLostItems([{name: item, type: Consumable, quantity: 1}], false);
+				KinkyDungeonAddLostItems([{name: item, type: Consumable, quantity: 1, id: KinkyDungeonGetItemID()}], false);
 			}
 		}
 		enemy.items = undefined;

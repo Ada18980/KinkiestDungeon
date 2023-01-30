@@ -3694,6 +3694,7 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	for (let action of KDGameData.DelayedActions) {
 		action.time -= delta;
 		if (action.time <= 0) {
+			KDGameData.DelayedActions.splice(KDGameData.DelayedActions.indexOf(action), 1);
 			if (KDDelayedActionCommit[action.commit]) {
 				KDDelayedActionCommit[action.commit](action);
 			}

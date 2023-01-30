@@ -442,7 +442,7 @@ let KDPerkStart = {
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, undefined, true);
 		}
-		let outfit = {name: "Maid", type: Outfit};
+		let outfit = {name: "Maid", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Maid")) KinkyDungeonInventoryAdd(outfit);
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Maid", "Maid");
@@ -460,7 +460,7 @@ let KDPerkStart = {
 			}
 		}
 		KDAddQuest("WolfgirlHunters");
-		let outfit = {name: "Wolfgirl", type: Outfit};
+		let outfit = {name: "Wolfgirl", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Wolfgirl")) KinkyDungeonInventoryAdd(outfit);
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Wolfgirl", "Wolfgirl");
@@ -481,7 +481,7 @@ let KDPerkStart = {
 				}
 			}
 		}
-		let outfit = {name: "Obsidian", type: Outfit};
+		let outfit = {name: "Obsidian", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Obsidian")) KinkyDungeonInventoryAdd(outfit);
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Obsidian", "Obsidian");

@@ -1,5 +1,10 @@
+type Named = {
+	name: string,
+}
+
 /** Kinky Dungeon Typedefs*/
-type item = {
+interface item extends Named {
+	id: number,
 	linkCache?: string[],
 	/** If the item has a different curse from the base curse */
 	curse?: string,

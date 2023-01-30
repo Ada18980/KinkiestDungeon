@@ -269,7 +269,7 @@ function KinkyDungeonDefaultStats(Load) {
 
 	KinkyDungeonMovePoints = 0;
 	KDInitInventory();
-	KinkyDungeonInventoryAdd({name: "Default", type: Outfit});
+	KinkyDungeonInventoryAdd({name: "Default", type: Outfit, id: KinkyDungeonGetItemID()});
 	KinkyDungeonInventoryAddWeapon("Unarmed");
 	KDSetWeapon("Unarmed");
 	KinkyDungeonPlayerTags = new Map();
@@ -303,6 +303,11 @@ function KinkyDungeonDefaultStats(Load) {
 	}
 
 	if (!Load) {
+		let magicHands = KinkyDungeonStatsChoice.has("MagicHands");
+		if (!magicHands) {
+			// We use magichands for the start scenarios
+			KinkyDungeonStatsChoice.set("MagicHands", true);
+		}
 		for (let perk of [...KinkyDungeonStatsChoice.keys()].filter((e) => {return KDPerkStart[e] != undefined;})
 			.sort((a, b) => {
 				return ((KinkyDungeonStatsPresets[a] && KinkyDungeonStatsPresets[a].startPriority) || -1) - ((KinkyDungeonStatsPresets[b] && KinkyDungeonStatsPresets[b].startPriority) || -1);
@@ -312,6 +317,8 @@ function KinkyDungeonDefaultStats(Load) {
 				console.log("started with perk " + perk);
 			}
 		}
+		if (!magicHands)
+			KinkyDungeonStatsChoice.delete("MagicHands");
 	}
 
 	KinkyDungeonDressPlayer();

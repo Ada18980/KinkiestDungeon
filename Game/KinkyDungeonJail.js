@@ -923,8 +923,8 @@ function KinkyDungeonDefeat(PutInJail) {
 	KinkyDungeonStripInventory(true);
 
 	if (defeat_outfit != params.defeat_outfit) {
-		if (!KinkyDungeonInventoryGet(defeat_outfit)) KinkyDungeonInventoryAdd({name: defeat_outfit, type: Outfit});
-	} else if (!KinkyDungeonInventoryGet("JailUniform")) KinkyDungeonInventoryAdd({name: "JailUniform", type: Outfit});
+		if (!KinkyDungeonInventoryGet(defeat_outfit)) KinkyDungeonInventoryAdd({name: defeat_outfit, type: Outfit, id: KinkyDungeonGetItemID()});
+	} else if (!KinkyDungeonInventoryGet("JailUniform")) KinkyDungeonInventoryAdd({name: "JailUniform", type: Outfit, id: KinkyDungeonGetItemID()});
 
 	//KinkyDungeonChangeRep("Ghost", 1 + Math.round(KinkyDungeonSpawnJailers/2));
 	//KinkyDungeonChangeRep("Prisoner", securityBoost); // Each time you get caught, security increases...

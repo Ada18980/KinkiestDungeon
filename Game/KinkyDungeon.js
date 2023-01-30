@@ -246,6 +246,7 @@ let KDOptOut = false;
 * OfferCount: number,
 * MainPath: string,
 * ShortcutPath: string,
+* ItemID: number,
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
@@ -378,6 +379,8 @@ let KDGameDataBase = {
 	GuardFaction: [],
 
 	OfferCount: 0,
+
+	ItemID: 0,
 };
 /**
  * @type {KDGameDataBase}
