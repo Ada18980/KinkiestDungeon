@@ -1337,7 +1337,7 @@ let KinkyDungeonEnemies = [
 	},
 	{name: "SarcoMinion", faction: "KinkyConstruct", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "fireweakness", "minor", "slashweakness", "chainresist", "sarcotentacle"]),
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  master: {type: "SarcoKraken", range: 7}, ignoreflag: ["kraken"], dependent: true,
-		visionRadius: 10, maxhp: 8, minLevel: 0, weight:-1000, movePoints: 1, attackPoints: 2, attack: "MeleePullWill", attackWidth: 1, attackRange: 1, power: 3, dmgType: "chain", noAlert: true,
+		visionRadius: 10, maxhp: 5, minLevel: 0, weight:-1000, movePoints: 1, attackPoints: 2, attack: "MeleePullWill", attackWidth: 1, attackRange: 1, power: 3, dmgType: "chain", noAlert: true,
 		terrainTags: {}, allFloors: true, shrines: ["Rope"]},
 
 
