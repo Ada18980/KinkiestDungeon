@@ -116,7 +116,7 @@ function KinkyDungeonChangeConsumable(consumable, Quantity) {
 	}
 
 	if (Quantity >= 0) {
-		KinkyDungeonInventoryAdd({name: consumable.name, type: Consumable, quantity: Quantity});
+		KinkyDungeonInventoryAdd({name: consumable.name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity});
 	}
 
 	return false;
@@ -127,7 +127,7 @@ function KinkyDungeonConsumableEffect(Consumable) {
 		KDConsumableEffects[Consumable.type](Consumable);
 	} else if (Consumable.type == "spell") {
 		KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonFindSpell(Consumable.spell, true), undefined, undefined, undefined);
-		KinkyDungeonAdvanceTime(1);
+		KDStunTurns(1);
 	} else if (Consumable.type == "targetspell") {
 		KDCloseQuickInv();
 		KinkyDungeonTargetingSpell = KinkyDungeonFindSpell(Consumable.spell, true);
@@ -141,10 +141,10 @@ function KinkyDungeonConsumableEffect(Consumable) {
 	} else if (Consumable.type == "recharge") {
 		//KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
 		//KinkyDungeonAddGold(-Consumable.rechargeCost);
-		//KinkyDungeonAdvanceTime(1);
+		//KDStunTurns(1);
 	} else if (Consumable.type == "shrineRemove") {
 		KinkyDungeonRemoveRestraintsWithShrine(Consumable.shrine);
-		KinkyDungeonAdvanceTime(1);
+		KDStunTurns(1);
 	} else if (Consumable.type == "goldKey") {
 		for (let r of KinkyDungeonPlayerGetRestraintsWithLocks(["Gold"])) {
 			KinkyDungeonLock(r, "Blue");

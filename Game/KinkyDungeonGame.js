@@ -3692,10 +3692,14 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	// Handle delayed actions
 	if (!KDGameData.DelayedActions) KDGameData.DelayedActions = [];
-	for (let action of KDGameData.DelayedActions) {
+	let runActions = Object.assign([], KDGameData.DelayedActions);
+	// Trim actions that have happened
+	KDGameData.DelayedActions = KDGameData.DelayedActions.filter((action) => {
+		return action.time - delta > 0;
+	});
+	for (let action of runActions) {
 		action.time -= delta;
 		if (action.time <= 0) {
-			KDGameData.DelayedActions.splice(KDGameData.DelayedActions.indexOf(action), 1);
 			if (KDDelayedActionCommit[action.commit]) {
 				KDDelayedActionCommit[action.commit](action);
 			}
@@ -3703,11 +3707,6 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 			KDDelayedActionUpdate[action.update](action);
 		}
 	}
-
-	// Tim actions that have happened
-	KDGameData.DelayedActions = KDGameData.DelayedActions.filter((action) => {
-		return action.time > 0;
-	});
 
 	if (!NoUpdate)
 		KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
