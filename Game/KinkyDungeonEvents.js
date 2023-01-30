@@ -2051,7 +2051,8 @@ let KDEventMapWeapon = {
 						damage: bonus * e.power,
 						time: e.time
 					}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
-					data.enemy.boundLevel = Math.max(0, data.enemy.boundLevel - bonus);
+
+					KDReduceBinding(data.enemy, bonus);
 					if (data.enemy.hp <= 0 && KDHelpless(data.enemy)) data.enemy.hp = 0.01;
 					if (e.energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
 				}

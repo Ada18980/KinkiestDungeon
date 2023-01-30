@@ -4743,3 +4743,17 @@ function KDGetSecurity(enemy, type) {
 	}
 	return security;
 }
+
+/**
+ * Reduces the enemy's binding by a certain amount
+ * @param {entity} enemy
+ * @param {number} bonus
+ */
+function KDReduceBinding(enemy, bonus) {
+	let bindingPercent = enemy.boundLevel > 0 ? (((Math.max(0, enemy.boundLevel - bonus)) / enemy.boundLevel) || 0) : 0;
+	enemy.boundLevel = Math.max(0, enemy.boundLevel - bonus);
+	if (enemy.specialBoundLevel)
+		for (let key of Object.keys(enemy.specialBoundLevel)) {
+			enemy.specialBoundLevel[key] *= bindingPercent;
+		}
+}
