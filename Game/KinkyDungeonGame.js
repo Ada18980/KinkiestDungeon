@@ -1375,7 +1375,7 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs) 
 	}
 
 	KDGameData.MainPath = checkpoint;
-	if (KDGameData.MainPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.MainPath}, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 8.5);
+	if (KDGameData.MainPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.MainPath}, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 4.99);
 	KinkyDungeonSpecialAreas.push({x: KinkyDungeonEndPosition.x, y: KinkyDungeonEndPosition.y, radius: 2});
 }
 
@@ -1494,7 +1494,7 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 
 		if (placed) {
 			KDGameData.ShortcutPath = checkpoint;
-			if (KDGameData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.ShortcutPath}, xx, yy, 4.5, true);
+			if (KDGameData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.ShortcutPath}, xx, yy, 2.99, true);
 		}
 	}
 }

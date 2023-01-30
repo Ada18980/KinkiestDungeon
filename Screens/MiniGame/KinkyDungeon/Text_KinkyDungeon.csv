@@ -2194,6 +2194,8 @@ NameShadowHand,Shadow Hand
 KillShadowHand,"The shadow hand retreats into the darkness..."
 AttackShadowHandBind,"The shadow hand latches onto you!! (+RestraintAdded)"
 AttackShadowHand,"The shadow hand stretches its fingers across your body! (DamageTaken)"
+KinkyDungeonSummonSingleShadowHand,A dark hand stretches out beyond the shadows...
+KinkyDungeonSummonMultiShadowHand,Several dark hands emerge from the shadows!
 
 NameCorruptedAdventurer,Corrupted Adventurer
 KillCorruptedAdventurer,"The corrupted adventurer falls into a deep sleep."
