@@ -895,11 +895,9 @@ function KinkyDungeonDrawGame() {
 							tooltips.push((offset) => KDDrawEffectTileTooltip(etile, cursorX, cursorY, offset));
 						}
 					}
-					if (KinkyDungeonInspect) {
-						let tile = ambushTile || KinkyDungeonMapGet(cursorX, cursorY);
-						if (KDTileTooltips[tile]) {
-							tooltips.push((offset) => KDDrawTileTooltip(tile, cursorX, cursorY, offset));
-						}
+					let tile = ambushTile || KinkyDungeonMapGet(cursorX, cursorY);
+					if (KDTileTooltips[tile] && (KinkyDungeonInspect || KDTileTooltips[tile]().noInspect)) {
+						tooltips.push((offset) => KDDrawTileTooltip(tile, cursorX, cursorY, offset));
 					}
 				}
 
@@ -2452,30 +2450,35 @@ let KDTileTooltips = {
 	'1': () => {return {color: "#ffffff", text: "1"};},
 	'0': () => {return {color: "#ffffff", text: "0"};},
 	'2': () => {return {color: "#ffffff", text: "2"};},
-	'R': () => {return {color: "#ffffff", text: "R"};},
-	'L': () => {return {color: "#ffffff", text: "L"};},
-	'A': () => {return {color: "#ffffff", text: "A"};},
+	'R': () => {return {color: "#ffffff", noInspect: true, text: "R"};},
+	'Y': () => {return {color: "#ffffff", noInspect: true, text: "Y"};},
+	'L': () => {return {color: "#ffffff", noInspect: true, text: "L"};},
+	'A': () => {return {color: "#ffffff", noInspect: true, text: "A"};},
 	'a': () => {return {color: "#ffffff", text: "a"};},
 	'O': () => {return {color: "#ffffff", text: "O"};},
 	'o': () => {return {color: "#ffffff", text: "o"};},
-	'C': () => {return {color: "#ffffff", text: "C"};},
+	'C': () => {return {color: "#ffffff", noInspect: true, text: "C"};},
 	'c': () => {return {color: "#ffffff", text: "c"};},
 	'T': () => {return {color: "#ffffff", text: "T"};},
-	'4': () => {return {color: "#ffffff", text: "4"};},
+	'4': () => {return {color: "#ffffff", noInspect: true, text: "4"};},
 	'X': () => {return {color: "#ffffff", text: "X"};},
-	'?': () => {return {color: "#ffffff", text: "Hook"};},
-	',': () => {return {color: "#ffffff", text: "Hook"};},
-	'S': () => {return {color: "#ffffff", text: "S"};},
-	's': () => {return {color: "#ffffff", text: "s"};},
-	'H': () => {return {color: "#ffffff", text: "H"};},
-	'G': () => {return {color: "#ffffff", text: "G"};},
+	'?': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
+	',': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
+	'S': () => {return {color: "#ffffff", noInspect: true, text: "S"};},
+	's': () => {return {color: "#ffffff", noInspect: true, text: "s"};},
+	'H': () => {return {color: "#ffffff", noInspect: true, text: "H"};},
+	'G': () => {return {color: "#ffffff", noInspect: true, text: "G"};},
+	'B': () => {return {color: "#ffffff", noInspect: true, text: "B"};},
+	'b': () => {return {color: "#ffffff", noInspect: true, text: "b"};},
+	'D': () => {return {color: "#ffffff", noInspect: true, text: "D"};},
+	'd': () => {return {color: "#ffffff", noInspect: true, text: "d"};},
 };
 
 
 function KDDrawTileTooltip(maptile, x, y, offset) {
 	let TooltipList = [];
 	TooltipList.push({
-		str: TextGet("KDTileTooltip" + maptile),
+		str: TextGet("KDTileTooltip" + KDTileTooltips[maptile]().text),
 		fg: KDTileTooltips[maptile]().color,
 		bg: "#000000",
 		size: 24,

@@ -4136,6 +4136,10 @@ KDTileTooltipX,Doodad
 KDTileTooltipL,Furniture
 KDTileTooltipT,Table
 KDTileTooltipA,Shrine
+KDTileTooltipD,Closed Door
+KDTileTooltipd,Open Door
+KDTileTooltipB,Bed
+KDTileTooltipb,Bars
 KDTileTooltipa,Ruined Shrine
 KDTileTooltipO,Orb Altar
 KDTileTooltipo,Empty Altar
