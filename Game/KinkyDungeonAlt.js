@@ -65,6 +65,7 @@ let alts = {
 		noShrineTypes: ["Commerce", "Will"],
 		tickFlags: true,
 		noMusic: true,
+		keepMainPath: true,
 	},
 	"PerkRoom": {
 		name: "PerkRoom",
@@ -93,6 +94,7 @@ let alts = {
 		noClutter: true,
 		noShrineTypes: ["Commerce", "Will"],
 		noMusic: true,
+		keepMainPath: true,
 	},
 	"Jail": {
 		name: "Jail",
