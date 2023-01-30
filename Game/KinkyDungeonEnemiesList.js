@@ -144,7 +144,7 @@ let KinkyDungeonEnemies = [
 	},
 
 
-	{name: "HolyConstruct", faction: "Angel", clusterWith: "angel", color: "#ffffaa", tags: KDMapInit(["opendoors", "minor", "holy", "construct", "ranged", "soulimmune", "unstoppable", "celestialRopes", "coldsevereweakness", "flying"]),
+	{name: "HolyConstruct", faction: "Angel", clusterWith: "angel", color: "#ffffaa", tags: KDMapInit(["opendoors", "minor", "holy", "construct", "ranged", "soulimmune", "meleeresist", "unstoppable", "celestialRopes", "coldsevereweakness", "flying"]),
 		cohesion: 0.7, cohesionRange: 10,
 		spellResist: 3,
 		followLeashedOnly: true, ignorechance: 0, armor: 0, followRange: 3, AI: "hunt", buffallies: true,

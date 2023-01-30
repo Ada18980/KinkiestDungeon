@@ -1218,11 +1218,12 @@ Features
 - New tileset: Orrery
 - New enemies: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced), Star Demon
 - Added perks filter in the perks screen
-- Ambushing enemies no longer show tooltips before springing their ambush
-- Changed the way goddess bonuses work to be multiplicative of the base chance
+- Fixed a bug where ambushing enemies no longer show tooltips before springing their ambush
 - Increased the time taken to put on armor
 - Second Wind now destroys restraints when you get the willpower bonus
 - Training collar does less damage (still stuns)
+- Some tooltips still appear even without inspecting
+- Fixed a bug where selecting both Hogtied and Latex Doll would mistakenly not place a blindfold on the player character
 
 TODO ValidationFindBlockCycles to prevent bugs
 
