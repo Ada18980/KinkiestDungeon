@@ -331,12 +331,12 @@ let KDEventMapInventory = {
 		"barrelDebuff": (e, item, data) => {
 			if (!data.delta) return;
 			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Counterbarrel", type: "SlowDetection", duration: 1, power: -10, player: true, enemies: true, endSleep: true, tags: ["SlowDetection", "move", "cast"]});
-			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Counterbarrel3", type: "Sneak", duration: 1, power: -2.5, player: true, enemies: true, endSleep: true, tags: ["Sneak", "move", "cast"]});
+			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Counterbarrel3", type: "Sneak", duration: 1, power: -10, player: true, enemies: true, endSleep: true, tags: ["Sneak", "move", "cast"]});
 		},
 		"cageDebuff": (e, item, data) => {
 			if (!data.delta) return;
 			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Countercage", type: "SlowDetection", duration: 1, power: -5, player: true, enemies: true, endSleep: true, tags: ["SlowDetection", "move", "cast"]});
-			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Countercage2", type: "Sneak", duration: 1, power: -2.5, player: true, enemies: true, endSleep: true, tags: ["Sneak", "move", "cast"]});
+			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Countercage2", type: "Sneak", duration: 1, power: -10, player: true, enemies: true, endSleep: true, tags: ["Sneak", "move", "cast"]});
 		},
 		"callGuard": (e, item, data) => {
 			if (!data.delta) return;
@@ -2971,7 +2971,12 @@ let KDEventMapEnemy = {
 			if (enemy == data.enemy && data.spell?.name == "SummonRopeTentacle") {
 				enemy.hp = Math.max(enemy.hp - enemy.Enemy.maxhp * KDMagicDefs.RopeKraken_TentacleCost, Math.min(enemy.hp, enemy.Enemy.maxhp * KDMagicDefs.RopeKraken_TentacleThreshold));
 			}
-		}
+		},
+		"sarcoKrakenSummonTentacle": (e, enemy, data) => {
+			if (enemy == data.enemy && data.spell?.name == "SummonSarcoTentacle") {
+				enemy.hp = Math.max(enemy.hp - enemy.Enemy.maxhp * KDMagicDefs.SarcoKraken_TentacleCost, Math.min(enemy.hp, enemy.Enemy.maxhp * KDMagicDefs.SarcoKraken_TentacleThreshold));
+			}
+		},
 	},
 	"afterDamageEnemy": {
 		"bleedEffectTile": (e, enemy, data) => {

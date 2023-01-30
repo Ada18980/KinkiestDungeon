@@ -1329,7 +1329,8 @@ let KinkyDungeonEnemies = [
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  summon: [{enemy: "SarcoMinion", range: 2.5, count: 3, strict: true}],
 		spells: ["SarcoEngulf", "SarcoHex", "SummonSarcoTentacle"], spellCooldownMult: 1, spellCooldownMod: 0, ignoreflag: ["kraken"],
 		events: [
-			{trigger: "spellCast", type: "ropeKrakenSummonTentacle"}, // Drain HP when casting
+			{trigger: "spellCast", type: "sarcoKrakenSummonTentacle"}, // Drain HP when casting
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "FabricGreen", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],
 		visionRadius: 10, maxhp: 40, minLevel: 0, weight:-11, movePoints: 4, attackPoints: 2, attack: "Spell", attackWidth: 1, attackRange: 1, power: 6, dmgType: "charm",
 		terrainTags: {"secondhalf":16, "lastthird":5, "boss": -80, "open": 20, "passage": -60, "increasingWeight":1}, floors: KDMapInit(["tmb"]), shrines: [],
@@ -1338,6 +1339,9 @@ let KinkyDungeonEnemies = [
 	{name: "SarcoMinion", faction: "KinkyConstruct", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "fireweakness", "minor", "slashweakness", "chainresist", "sarcotentacle"]),
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  master: {type: "SarcoKraken", range: 7}, ignoreflag: ["kraken"], dependent: true,
 		visionRadius: 10, maxhp: 5, minLevel: 0, weight:-1000, movePoints: 1, attackPoints: 2, attack: "MeleePullWill", attackWidth: 1, attackRange: 1, power: 3, dmgType: "chain", noAlert: true,
+		events: [
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "FabricGreen", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
+		],
 		terrainTags: {}, allFloors: true, shrines: ["Rope"]},
 
 
