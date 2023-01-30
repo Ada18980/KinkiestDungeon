@@ -1150,10 +1150,19 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "ZombieOrbIce", color: "#00ffff", specialCD: 12, sfx: "MagicSlash", hitsfx: "Freeze", manacost: 2, components: ["Arms"], level:2, type:"bolt", projectileTargeting:true, time: 3, onhit:"", power: 3, delay: 0, range: 50, damage: "ice", speed: 1,
 		playerEffect: {name: "Freeze", power: 4, damage: "ice", time: 4}},
 
+	{enemySpell: true, name: "SarcoEngulf", castCondition: "sarcoEngulf", color: "#ff2200", sfx: "Fwoosh", effectTileDurationMod: 10, effectTileDensity: 0.33, effectTile: {
+		name: "FabricGreen",
+		duration: 20,
+	}, manacost: 3, minRange: 0, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 3, range: 2.5, size: 3, aoe: 1, lifetime: 1, damage: "chain", playerEffect: {name: "SarcoEngulf", power: 2}},
+
+	{enemySpell: true, name: "SarcoHex", castCondition: "sarcoHex", color: "#ff2200", sfx: "Fwoosh", manacost: 3, minRange: 0, components: ["Verbal"],
+		level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 2.5, size: 3, aoe: 1, lifetime: 1, damage: "charm", playerEffect: {name: "SarcoHex", power: 2}},
+
+
 	{enemySpell: true, name: "RopeEngulf", color: "#ff2200", sfx: "Struggle", effectTileDurationMod: 10, effectTileDensity: 0.33, effectTile: {
 		name: "Ropes",
 		duration: 20,
-	}, manacost: 3, minRange: 0, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 6, range: 2, size: 3, aoe: 1, lifetime: 1, damage: "chain", playerEffect: {name: "RopeEngulf", power: 2}},
+	}, manacost: 3, minRange: 0, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4.5, range: 2, size: 3, aoe: 1, lifetime: 1, damage: "chain", playerEffect: {name: "RopeEngulf", power: 2}},
 	{enemySpell: true, name: "RopeEngulfWeak", color: "#ff2200", sfx: "Struggle", effectTileDurationMod: 10, effectTile: {
 		name: "Ropes",
 		duration: 20,
@@ -1327,6 +1336,10 @@ let KinkyDungeonSpellListEnemies = [
 		projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "RopeMinion", count: 1, bound: true}],
 		power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {},
 	},
+	{enemySpell: true, name: "SummonSarcoTentacle", noSprite: true, sfx: "Evil", castCondition: "sarcoKraken", manacost: 2, specialCD: 4, components: ["Verbal"], level:1,
+		projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "SarcoMinion", count: 1, bound: true}],
+		power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {},
+	},
 	{enemySpell: true, name: "SummonTapeDrone", noSprite: true, sfx: "MagicSlash", castCondition: "wolfTapeDrone", manacost: 3, specialCD: 10, components: ["Verbal"], level:1, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "WolfDrone", count: 1, time: 40, bound: true}], power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {}},
 	{enemySpell: true, name: "MirrorImage", castCondition: "wolfDrone", noSprite: true, minRange: 0, selfcast: true, sfx: "FireSpell", manacost: 12, components: ["Verbal"], level:4, castRange: 50, type:"inert", onhit:"summon", summon: [{name: "MaidforceStalkerImage", count: 1, time: 12}], power: 0, time: 12, delay: 1, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "inert",
 		spellcast: {spell: "DarkShroud", target: "origin", directional:false, offset: false}},
@@ -1453,6 +1466,11 @@ let KDMagicDefs = {
 	RopeKraken_TentacleThreshold: 0.16,
 	RopeKraken_TentacleCountMin: 1,
 	RopeKraken_TentacleCountShare: 0.29, //1 tentacle max per this much hp
+	SarcoKraken_TentacleCost:0.00,
+	SarcoKraken_TentacleThreshold: 0.05,
+	SarcoKraken_TentacleCountMin: 1,
+	SarcoKraken_TentacleCountMax: 3,
+	SarcoKraken_TentacleCountShare: 0.2, //1 tentacle max per this much hp
 };
 
 /** @type {Record<string, (enemy: entity, target: entity) => boolean>} */
@@ -1478,5 +1496,33 @@ let KDCastConditions = {
 		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.tags.krakententacle;}).length
 			> KDMagicDefs?.RopeKraken_TentacleCountMin + Math.floor(enemy.hp/enemy.Enemy.maxhp/KDMagicDefs?.RopeKraken_TentacleCountShare)) return false;
 		return true;
+	},
+	"sarcoKraken": (enemy, target) => {
+		if (target.player) {
+			if (KinkyDungeonPlayerTags.get("Sarcophagus")) return false;
+
+			let restraint = KinkyDungeonGetRestraint({tags: ["mummyRestraints"]}, 100, "tmb");
+			if (!restraint) return false;
+		}
+		if (enemy.hp <= KDMagicDefs?.SarcoKraken_TentacleThreshold) return false;
+		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.tags.sarcotentacle;}).length
+			> Math.min(KDMagicDefs?.SarcoKraken_TentacleCountMax - 1, KDMagicDefs?.SarcoKraken_TentacleCountMin + Math.floor(enemy.hp/enemy.Enemy.maxhp/KDMagicDefs?.SarcoKraken_TentacleCountShare))) return false;
+		return true;
+	},
+	"sarcoEngulf": (enemy, target) => {
+		if (target.player && !KinkyDungeonPlayerTags.get("Sarcophagus")) {
+			let restraint = KinkyDungeonGetRestraint({tags: ["mummyRestraints"]}, 100, "tmb");
+			if (!restraint) return false;
+			return true;
+		}
+		return false;
+	},
+	"sarcoHex": (enemy, target) => {
+		if (target.player && !KinkyDungeonPlayerTags.get("Sarcophagus")) {
+			let restraint = KinkyDungeonGetRestraint({tags: ["mummyRestraints"]}, 100, "tmb");
+			if (!restraint) return true;
+			return false;
+		}
+		return false;
 	},
 };

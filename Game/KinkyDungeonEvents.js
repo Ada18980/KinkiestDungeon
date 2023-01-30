@@ -351,7 +351,7 @@ let KDEventMapInventory = {
 		},
 		"callGuardFurniture": (e, item, data) => {
 			if (!data.delta) return;
-			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < 0.1) {
+			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < (e.chance ? e.chance : 0.1)) {
 				KinkyDungeonSetFlag("GuardCalled", 35);
 				console.log("Attempting to call guard");
 				if (KinkyDungeonEntities.length < 400 || KDGameData.CagedTime > KDMaxCageTime) {
@@ -1247,7 +1247,7 @@ let KDEventMapBuff = {
 				if (entity.player) {
 					if (!KDEffectTileTags(entity.x, entity.y).fate) {
 						buff.duration = 0;
-						KinkyDungeonPlayerEffect("soul", {name: "StarBondage", count: e.count, kind: e.kind, power: e.power});
+						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "soul", {name: "StarBondage", count: e.count, kind: e.kind, power: e.power});
 						KDRemoveAoEEffectTiles(entity.x, entity.y, ["fate"], 1.5);
 					}
 				}
@@ -3048,7 +3048,7 @@ let KDEventMapEnemy = {
 			if (data.delta && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 				if (!e.chance || KDRandom() < e.chance) {
 					if (enemy.aware && KinkyDungeonAggressive(enemy) && (KDPlayerIsStunned())) {
-						KinkyDungeonPlayerEffect("charm", {name: "MaidChastity", power: 2, damage: "charm"});
+						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "charm", {name: "MaidChastity", power: 2, damage: "charm"});
 					}
 				}
 			}

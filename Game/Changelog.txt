@@ -1216,7 +1216,7 @@ Features
 4.0 (Jan 2023)
 - Soul crystals now are easier to dodge
 - New tileset: Orrery
-- New enemies: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced), Star Demon
+- New enemies in the Orrery: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced), Star Demon
 - Added perks filter in the perks screen
 - Fixed a bug where ambushing enemies no longer show tooltips before springing their ambush
 - Increased the time taken to put on armor
@@ -1224,6 +1224,7 @@ Features
 - Training collar does less damage (still stuns)
 - Some tooltips still appear even without inspecting
 - Fixed a bug where selecting both Hogtied and Latex Doll would mistakenly not place a blindfold on the player character
+- New enemy in Ancient Tombs: Animated Sarcophagus
 
 TODO ValidationFindBlockCycles to prevent bugs
 

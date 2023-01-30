@@ -433,6 +433,9 @@ KinkyDungeonBuffLockdownTry,"You struggle against your bonds, but a magical forc
 KinkyDungeonRopeEngulfEnd1,"The ropes squeeze you tighter and tighter..."
 KinkyDungeonRopeEngulfEnd2,"Your body sinks deeper into a sea of bindings..."
 KinkyDungeonRopeEngulfEnd3,"You struggle to breath as you are buried alive in squirming ropes..."
+KinkyDungeonSarcoHexEnd1,"You feel a force compelling you to stop resisting..."
+KinkyDungeonSarcoHexEnd2,"Your body struggles to move as you feel a power sealing you!"
+KinkyDungeonSarcoHexEnd3,"The sarcophagus' door slides open as you are slowly pulled inside..."
 KinkyDungeonShadowEngulfEnd1,"The hands squeeze you tightly..."
 KinkyDungeonShadowEngulfEnd2,"More hands clasp over your body..."
 KinkyDungeonShadowEngulfEnd3,"You struggle to breath as you are pulled into the mass of shadow hands..."
@@ -1780,6 +1783,13 @@ KillMummyCursed,"The Cursed One is drawn into an eldritch portal."
 AttackMummyCursedBind,"The Cursed One's bindings transfer to you! (+RestraintAdded)"
 AttackMummyCursed,"The Cursed One's bindings emit a strange aura... (DamageTaken)"
 
+NameSarcoMinion,Floating Wrapping
+KillSarcoMinion,"The wrapping falls to the floor, its magic spent."
+AttackSarcoMinion,"The wrappings grip you and pull you toward the sarcophagus! (DamageTaken)"
+
+NameSarcoKraken,Animated Sarcophagus
+KillSarcoKraken,"The sarcophagus falls to the ground and crumbles."
+
 NameMeleeCleric,Bast Warrior
 KillMeleeCleric,"The Bast Warrior collapses and meows loudly."
 AttackMeleeClericBind,"The Bast Warrior restrains you! (+RestraintAdded)"
@@ -2733,6 +2743,12 @@ RestraintBarrelTrap,Barrel Trap
 RestraintBarrelTrapDesc,"A booby-trapped barrel with a spring-loaded lid designed to trap you inside!"
 RestraintBarrelTrapDesc2,"You can push the lid off with enough force..."
 KDBarrelTrap,"The lid of the barrel suddenly snaps shut as you hide inside!!!"
+
+
+
+RestraintSarcophagus,Sarcophagus
+RestraintSarcophagusDesc,"A glass-walled chamber sealed with enchanting magic."
+RestraintSarcophagusDesc2,"Time feels like it's going by quickly outside..."
 
 RestraintCageTrap,Cage Trap
 RestraintCageTrapDesc,"A booby-trapped cage!"
@@ -5375,18 +5391,24 @@ KinkyDungeonSingleVine,"A vine slithers across your body and tightens!"
 KinkyDungeonSlowedBySpell,"The spell hits you and slows you down!"
 KinkyDungeonSpellWitchRope,"Rope"
 KinkyDungeonSpellRopeEngulf,"Rope Tendrils"
+KinkyDungeonSpellSarcoEngulf,"Blessed Wrappings"
+KinkyDungeonSpellSarcoHex,"The Blessing"
 KinkyDungeonSpellCastSummonRopeTentacle,"A long tendril emerges from the kraken's body!"
 KinkyDungeonSummonMultiRopeMinion,Coiled ropes spring up from the floor!
 KinkyDungeonSummonSingleRopeMinion,"A long tendril emerges from the kraken's body!"
+KinkyDungeonSummonMultiSarcoMinion,Several glowing wrappings emerge!
+KinkyDungeonSummonSingleSarcoMinion,A glowing wrapping emerges and starts moving toward you!
 KinkyDungeonSpellRopeEngulfWeak,"Rope Strike"
 KinkyDungeonSpellVineEngulf,"Animated Vines"
 KinkyDungeonSpellSoulCrystalBind,"Soul-binding Sigil"
 KinkyDungeonSpellElfArrow,Elven Arrow
 KinkyDungeonEnchantedArrow,"The elven arrow flashes and wraps you in mithril ropes!"
 KinkyDungeonRopeEngulf,"Ropes wrap themselves around your body from all sides!"
+KinkyDungeonSarcoEngulf,"Wrappings appear and wrap you head to toe!"
 KinkyDungeonRopeEngulfWeak,"Ropes wrap themselves around your body from all sides!"
 KinkyDungeonVineEngulf,"Nature magic causes vines to sprout around you!"
 KinkyDungeonRopeEngulfDress,"Your clothes are stripped and replaced!"
+KinkyDungeonSarcoEngulfDress,"Your clothes are stripped and replaced!"
 KinkyDungeonVineEngulfDress,"Vines tear off your clothes!"
 KinkyDungeonObsidianEngulf,"Restraints materialize on your body!"
 
