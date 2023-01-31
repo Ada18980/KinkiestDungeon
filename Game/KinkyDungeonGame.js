@@ -585,7 +585,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 			console.log(`${performance.now() - startTime} ms for doodad creation`);
 			startTime = performance.now();
 		}
-		KinkyDungeonPlaceStairs(KinkyDungeonGetMainPath(Floor), KinkyDungeonStartPosition.y, width, height, altType && altType.nostairs); // Place the start and end locations
+		KinkyDungeonPlaceStairs(KinkyDungeonGetMainPath(Floor, altType), KinkyDungeonStartPosition.y, width, height, altType && altType.nostairs); // Place the start and end locations
 		if (KDDebug) {
 			console.log(`${performance.now() - startTime} ms for stair creation`);
 			startTime = performance.now();
@@ -617,7 +617,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 
 		if (!testPlacement) {
 			if (!altType || altType.shortcut)
-				KinkyDungeonPlaceShortcut(KinkyDungeonGetShortcut(Floor), width, height);
+				KinkyDungeonPlaceShortcut(KinkyDungeonGetShortcut(Floor, altType), width, height);
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for shortcut creation`);
 				startTime = performance.now();
@@ -678,7 +678,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 				console.log(`${performance.now() - startTime} ms for lore creation`);
 				startTime = performance.now();
 			}
-			if ((MiniGameKinkyDungeonLevel % KDLevelsPerCheckpoint == 2 || MiniGameKinkyDungeonLevel % KDLevelsPerCheckpoint == 4 || ((MiniGameKinkyDungeonLevel % KDLevelsPerCheckpoint == 1 || MiniGameKinkyDungeonLevel % KDLevelsPerCheckpoint == 3) && KDDefaultAlt.includes(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]))) && (!altType || altType.heart))
+			if (KDDefaultAlt.includes(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) && (!altType || altType.heart))
 				KinkyDungeonPlaceHeart(width, height, Floor);
 			if (!altType || altType.specialtiles)
 				KinkyDungeonPlaceSpecialTiles(gasChance, gasType, Floor, width, height);
@@ -1375,7 +1375,7 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs) 
 	}
 
 	KDGameData.MainPath = checkpoint;
-	if (KDGameData.MainPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.MainPath}, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 8.5);
+	if (KDGameData.MainPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.MainPath}, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 4.99);
 	KinkyDungeonSpecialAreas.push({x: KinkyDungeonEndPosition.x, y: KinkyDungeonEndPosition.y, radius: 2});
 }
 
@@ -1397,7 +1397,8 @@ function KinkyDungeonSkinArea(skin, X, Y, Radius, NoStairs) {
 
 
 // @ts-ignore
-function KinkyDungeonGetMainPath(level) {
+function KinkyDungeonGetMainPath(level, altType) {
+	if (altType && altType.keepMainPath) return MiniGameKinkyDungeonCheckpoint;
 	let params = KinkyDungeonMapParams[MiniGameKinkyDungeonCheckpoint];
 	let paths = params ? params.mainpath : null;
 	let path = null;
@@ -1422,7 +1423,7 @@ function KinkyDungeonGetMainPath(level) {
 }
 
 // @ts-ignore
-function KinkyDungeonGetShortcut(level) {
+function KinkyDungeonGetShortcut(level, altType) {
 	let params = KinkyDungeonMapParams[MiniGameKinkyDungeonCheckpoint];
 	let paths = params ? params.shortcuts : null;
 	let path = null;
@@ -1494,7 +1495,7 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 
 		if (placed) {
 			KDGameData.ShortcutPath = checkpoint;
-			if (KDGameData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.ShortcutPath}, xx, yy, 4.5, true);
+			if (KDGameData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.ShortcutPath}, xx, yy, 2.99, true);
 		}
 	}
 }
@@ -1732,7 +1733,10 @@ function KinkyDungeonPlaceHeart(width, height, Floor) {
 	// Populate the lore
 	for (let X = 1; X < width; X += 1)
 		for (let Y = 1; Y < height; Y += 1)
-			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) heartList.push({x:X, y:Y});
+			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
+				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)
+				&& KDistChebyshev(X - KinkyDungeonStartPosition.x, Y - KinkyDungeonStartPosition.y) > 8
+			) heartList.push({x:X, y:Y});
 
 	while (heartList.length > 0) {
 		let N = Math.floor(KDRandom()*heartList.length);
@@ -2156,9 +2160,17 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 					Restraint: t.Restraint,
 					Enemy: t.Enemy,
 					Spell: t.Spell,
+					extraTag: t.extraTag,
 					Power: t.Power,
 					OffLimits: tile?.OffLimits,
 				});
+				let spell = t.Spell ? KinkyDungeonFindSpell(t.Spell, true) : "";
+				if (spell && !spell.nonmagical) {
+					KDCreateEffectTile(trap.x, trap.y, {
+						name: "RunesTrap",
+						duration: 9999,
+					}, 0);
+				}
 			}
 		}
 	}
@@ -2634,10 +2646,13 @@ function KinkyDungeonPlaceTorches(torchchance, torchlitchance, torchchanceboring
 				if ((!torchreplace || torchreplace.unlitsprite) && KDRandom() > torchlitchance) {
 					spr = torchreplace ? torchreplace.unlitsprite : "TorchUnlit";
 				}
-				KDCreateEffectTile(X, Y + 1, {
+				let torchref = {
 					name: spr,
 					duration: 9999,
-				}, 0);
+				};
+				//if (torchreplace)
+				//Object.assign(torchref, torchreplace);
+				KDCreateEffectTile(X, Y + 1, torchref, 0);
 				//KinkyDungeonMapSet(X, Y, 't');
 				//KinkyDungeonTilesSet(X + "," + Y, {Type: "Torch", Light: torchreplace ? torchreplace.brightness : KDTorchLight, Offset: true, Skin: torchreplace ? torchreplace.sprite : undefined});
 			}
@@ -3677,7 +3692,12 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	// Handle delayed actions
 	if (!KDGameData.DelayedActions) KDGameData.DelayedActions = [];
-	for (let action of KDGameData.DelayedActions) {
+	let runActions = Object.assign([], KDGameData.DelayedActions);
+	// Trim actions that have happened
+	KDGameData.DelayedActions = KDGameData.DelayedActions.filter((action) => {
+		return action.time - delta > 0;
+	});
+	for (let action of runActions) {
 		action.time -= delta;
 		if (action.time <= 0) {
 			if (KDDelayedActionCommit[action.commit]) {
@@ -3687,11 +3707,6 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 			KDDelayedActionUpdate[action.update](action);
 		}
 	}
-
-	// Tim actions that have happened
-	KDGameData.DelayedActions = KDGameData.DelayedActions.filter((action) => {
-		return action.time > 0;
-	});
 
 	if (!NoUpdate)
 		KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);

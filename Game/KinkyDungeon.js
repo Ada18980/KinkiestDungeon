@@ -246,6 +246,7 @@ let KDOptOut = false;
 * OfferCount: number,
 * MainPath: string,
 * ShortcutPath: string,
+* ItemID: number,
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
@@ -378,6 +379,8 @@ let KDGameDataBase = {
 	GuardFaction: [],
 
 	OfferCount: 0,
+
+	ItemID: 0,
 };
 /**
  * @type {KDGameDataBase}
@@ -710,20 +713,25 @@ async function sleep(msec) {
 function KinkyDungeonRun() {
 	// Override right click and make it trigger the Skip key
 	// Normally we don't override right click on websites but this is a game
-	document.addEventListener('contextmenu', event => {
-		event.preventDefault();
-		let code = KinkyDungeonKeySkip[0];
-		if (!KinkyDungeonKeybindingCurrentKey) {
-			KinkyDungeonKeybindingCurrentKey = code;
-			KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime() + 100;
-			// We also press it for 100 msec
-			(async function() {
-				KinkyDungeonGameKey.keyPressed[9] = true;
-				await sleep(100);
-				KinkyDungeonGameKey.keyPressed[9] = false;
-			})();
-		}
-	});
+	if (!CommonIsMobile)
+		document.addEventListener('contextmenu', event => {
+			if (CommonIsMobile || document.activeElement?.id != "MainCanvas") {
+				// Nothing!!
+			} else {
+				event.preventDefault();
+				let code = KinkyDungeonKeySkip[0];
+				if (!KinkyDungeonKeybindingCurrentKey) {
+					KinkyDungeonKeybindingCurrentKey = code;
+					KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime() + 100;
+					// We also press it for 100 msec
+					(async function() {
+						KinkyDungeonGameKey.keyPressed[9] = true;
+						await sleep(100);
+						KinkyDungeonGameKey.keyPressed[9] = false;
+					})();
+				}
+			}
+		});
 
 	fpscounter++;
 	if (fpscounter > 10) {
@@ -1043,12 +1051,50 @@ function KinkyDungeonRun() {
 			let hardmode = points >= KDHardModeThresh ? TextGet("KDHardMode") : "";
 			DrawTextKD(TextGet("KinkyDungeonStatPoints").replace("AMOUNT", "" + points) + hardmode, 1000, 150, "#ffffff", KDTextGray2);
 		}
-		DrawButtonVis(875, 920, 350, 64, TextGet("KinkyDungeonStartGame"), KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0 ? "#ffffff" : "pink", "");
-		DrawButtonVis(1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
-		DrawButtonVis(100, 920, 190, 64, TextGet("KinkyDungeonClearAll"), "#ffffff", "");
-		DrawButtonVis(330, 930, 140, 54, TextGet("KinkyDungeonConfig") + "1", KinkyDungeonPerksConfig == "1" ? "#ffffff" : "#888888", "");
-		DrawButtonVis(480, 930, 140, 54, TextGet("KinkyDungeonConfig") + "2", KinkyDungeonPerksConfig == "2" ? "#ffffff" : "#888888", "");
-		DrawButtonVis(630, 930, 140, 54, TextGet("KinkyDungeonConfig") + "3", KinkyDungeonPerksConfig == "3" ? "#ffffff" : "#888888", "");
+		DrawButtonKDEx("KDPerksStart", (bdata) => {
+			if (KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0) {
+				//KinkyDungeonState = "Diff";
+				KDLose = false;
+				KinkyDungeonStartNewGame();
+			}
+			return true;
+		}, true, 875, 920, 350, 64, TextGet("KinkyDungeonStartGame"), KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0 ? "#ffffff" : "pink", "");
+		DrawButtonKDEx("KDPerksBack", (bdata) => {
+			KinkyDungeonState = "Menu";
+			return true;
+		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		DrawButtonKDEx("KDPerksClear", (bdata) => {
+			KinkyDungeonStatsChoice = new Map();
+			KDUpdatePlugSettings();
+			return true;
+		}, true, 40, 920, 190, 64, TextGet("KinkyDungeonClearAll"), "#ffffff", "");
+		DrawButtonKDEx("KDPerkConfig1", (bdata) => {
+			KinkyDungeonPerksConfig = "1";
+			KinkyDungeonLoadStats();
+			KDUpdatePlugSettings();
+			return true;
+		}, true, 270, 930, 100, 54, TextGet("KinkyDungeonConfig") + "1", KinkyDungeonPerksConfig == "1" ? "#ffffff" : "#888888", "");
+		DrawButtonKDEx("KDPerkConfig2", (bdata) => {
+			KinkyDungeonPerksConfig = "2";
+			KinkyDungeonLoadStats();
+			KDUpdatePlugSettings();
+			return true;
+		}, true, 380, 930, 100, 54, TextGet("KinkyDungeonConfig") + "2", KinkyDungeonPerksConfig == "2" ? "#ffffff" : "#888888", "");
+		DrawButtonKDEx("KDPerkConfig3", (bdata) => {
+			KinkyDungeonPerksConfig = "3";
+			KinkyDungeonLoadStats();
+			KDUpdatePlugSettings();
+			return true;
+		}, true, 490, 930, 100, 54, TextGet("KinkyDungeonConfig") + "3", KinkyDungeonPerksConfig == "3" ? "#ffffff" : "#888888", "");
+
+
+		let TF = KDTextField("PerksFilter", 600, 930, 210, 54, "text", "", "45");
+		if (TF.Created) {
+			TF.Element.oninput = (event) => {
+				KDPerksFilter = ElementValue("PerksFilter");
+			};
+		}
+		DrawTextFitKD(TextGet("KinkyDungeonFilter"), 600 + 210/2, 930 + 54/2, 210, "#aaaaaa");
 
 		// @ts-ignore
 		DrawButtonKDEx("copyperks", (bdata) => {
@@ -1316,9 +1362,12 @@ function KinkyDungeonRun() {
 		DrawTextKD(TextGet("KinkyDungeonCurrentPressInfo"), 1250, 950, "#ffffff", KDTextGray2);
 	}
 
-	if (KDDebugMode) {
-		DrawTextKD(dispfps, 20, 20, "#ffffff", undefined, undefined, "left");
-	}
+	// Cull temp elements
+	KDCullTempElements();
+
+	//if (KDDebugMode) {
+	//DrawTextKD(dispfps, 20, 20, "#ffffff", undefined, undefined, "left");
+	//}
 	// Cull the sprites that werent rendered or updated this frame
 	for (let sprite of kdpixisprites.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0])) {
@@ -1624,7 +1673,7 @@ let KinkyDungeonReplaceConfirm = 0;
 let KinkyDungeonGameFlag = false;
 
 let KDDefaultJourney = ["grv", "cat", "jng", "tmp"];
-let KDDefaultAlt = ["tmb", "lib", "cry", "tmp"];
+let KDDefaultAlt = ["tmb", "lib", "cry", "ore"];
 
 function KDInitializeJourney(Journey) {
 	/**
@@ -1670,6 +1719,9 @@ function KDInitializeJourney(Journey) {
 		newIndex.jng = 'tmp';
 		newIndex.cry = 'tmb';
 		newIndex.cat = 'grv';
+	} else if (KDGameData.Journey == "Test") {
+		newIndex.grv = 'ore';
+		newIndex.tmb = 'tmp';
 	}
 
 	KinkyDungeonMapIndex = newIndex;
@@ -1853,38 +1905,8 @@ function KinkyDungeonHandleClick() {
 			return true;
 		}
 	} else if (KinkyDungeonState == "Stats") {
-		if (MouseIn(100, 920, 190, 64)) {
-			KinkyDungeonStatsChoice = new Map();
-			KDUpdatePlugSettings();
-			return true;
-		}
 
-		if (MouseIn(330, 930, 140, 54)) {
-			KinkyDungeonPerksConfig = "1";
-			KinkyDungeonLoadStats();
-			KDUpdatePlugSettings();
-			return true;
-		} else if (MouseIn(480, 930, 140, 54)) {
-			KinkyDungeonPerksConfig = "2";
-			KinkyDungeonLoadStats();
-			KDUpdatePlugSettings();
-			return true;
-		} else if (MouseIn(630, 930, 140, 54)) {
-			KinkyDungeonPerksConfig = "3";
-			KinkyDungeonLoadStats();
-			KDUpdatePlugSettings();
-			return true;
-		}
-
-		if (MouseIn(875, 920, 350, 64) && KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0) {
-			//KinkyDungeonState = "Diff";
-			KDLose = false;
-			KinkyDungeonStartNewGame();
-			return true;
-		} else if (MouseIn(1275, 920, 350, 64)) {
-			KinkyDungeonState = "Menu";
-			return true;
-		}
+		// Removed and moved to DrawButtonKDEx
 	} else if (KinkyDungeonState == "TileEditor") {
 		KDHandleTileEditor();
 	}  else if (KinkyDungeonState == "Load"){
@@ -2066,12 +2088,10 @@ function KinkyDungeonHandleClick() {
 		if (MouseIn(875, 750, 350, 64)) {
 			KinkyDungeonState = "Game";
 			ElementRemove("saveDataField");
-			KinkyDungeonChangeRep("Ghost", 5);
 			return true;
 		} else if (MouseIn(1275, 750, 350, 64)) {
 			KinkyDungeonState = "Game";
 			ElementRemove("saveDataField");
-			KinkyDungeonChangeRep("Ghost", -5);
 			return true;
 		}
 	} else if (KinkyDungeonState == "Game") {

@@ -442,7 +442,7 @@ let KDPerkStart = {
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, undefined, true);
 		}
-		let outfit = {name: "Maid", type: Outfit};
+		let outfit = {name: "Maid", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Maid")) KinkyDungeonInventoryAdd(outfit);
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Maid", "Maid");
@@ -460,7 +460,7 @@ let KDPerkStart = {
 			}
 		}
 		KDAddQuest("WolfgirlHunters");
-		let outfit = {name: "Wolfgirl", type: Outfit};
+		let outfit = {name: "Wolfgirl", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Wolfgirl")) KinkyDungeonInventoryAdd(outfit);
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Wolfgirl", "Wolfgirl");
@@ -481,7 +481,7 @@ let KDPerkStart = {
 				}
 			}
 		}
-		let outfit = {name: "Obsidian", type: Outfit};
+		let outfit = {name: "Obsidian", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Obsidian")) KinkyDungeonInventoryAdd(outfit);
 		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Obsidian", "Obsidian");
@@ -528,6 +528,7 @@ let KDPerkStart = {
 };
 
 
+let KDPerksFilter = "";
 
 let KDPerksButtonWidth = 298;
 let KDPerksButtonWidthPad = 2;
@@ -603,7 +604,8 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 			if (!firstDrawn) firstDrawn = c.name;
 		}
 		for (let stat of c.buffs.concat(c.debuffs)) {
-			if (!stat[1].locked || KDUnlockedPerks.includes(stat[0])) {
+			if ((!stat[1].locked || KDUnlockedPerks.includes(stat[0]))
+				&& (!KDPerksFilter || TextGet("KinkyDungeonStat" + ("" + stat[1].id)).toLocaleLowerCase().includes(KDPerksFilter.toLocaleLowerCase()))) {
 				let YY = (stat[1].cost < 0 || stat[1].debuff) ? Y_alt : Y;
 				let XX = (stat[1].cost < 0 || stat[1].debuff) ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
 
@@ -661,14 +663,16 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 
 
 	DrawButtonKDEx("perks>", (bdata) => {
-		if (catsdrawn > 2) {
+		// @ts-ignore
+		if (catsdrawn > 2 && !(document.activeElement?.id == 'PerksFilter')) {
 			KDPerksIndex += 1;
 		}
 		return true;
 	}, true, 1750, 50, 100, 50, ">>", KDTextWhite);
 
 	DrawButtonKDEx("perks<", (bdata) => {
-		if (KDPerksIndex > 0) {
+		// @ts-ignore
+		if (KDPerksIndex > 0 && !(document.activeElement?.id == 'PerksFilter')) {
 			KDPerksIndex -= 1;
 		}
 		return true;
@@ -692,6 +696,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 		};
 	}, "KDCategory");
 
+	if (catsdrawn < 3 && KDPerksIndex > 0) KDPerksIndex -= 1;
 
 	return tooltip;
 }

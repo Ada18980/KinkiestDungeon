@@ -9,23 +9,41 @@ function KinkyDungeonAddTags(tags, Floor) {
 	if (Floor % KDLevelsPerCheckpoint >= 3 || Floor % KDLevelsPerCheckpoint == 0 || KinkyDungeonDifficulty >= 40) tags.push("lastthird");
 
 	let angeredGoddesses = [];
+	let pleasedGoddessess = [];
 
 	if (KinkyDungeonGoddessRep.Rope < KDANGER) angeredGoddesses.push({tag: "ropeAnger", type: "rope"});
 	if (KinkyDungeonGoddessRep.Rope < KDRAGE) angeredGoddesses.push({tag: "ropeRage", type: "rope"});
-	if (KinkyDungeonGoddessRep.Leather < KDANGER) angeredGoddesses.push({tag: "leatherAnger", type: "rope"});
-	if (KinkyDungeonGoddessRep.Leather < KDRAGE) angeredGoddesses.push({tag: "leatherRage", type: "rope"});
-	if (KinkyDungeonGoddessRep.Metal < KDANGER) angeredGoddesses.push({tag: "metalAnger", type: "rope"});
-	if (KinkyDungeonGoddessRep.Metal < KDRAGE) angeredGoddesses.push({tag: "metalRage", type: "rope"});
-	if (KinkyDungeonGoddessRep.Latex < KDANGER) angeredGoddesses.push({tag: "latexAnger", type: "rope"});
-	if (KinkyDungeonGoddessRep.Latex < KDRAGE) angeredGoddesses.push({tag: "latexRage", type: "rope"});
-	if (KinkyDungeonGoddessRep.Elements < KDANGER) angeredGoddesses.push({tag: "elementsAnger", type: "rope"});
-	if (KinkyDungeonGoddessRep.Elements < KDRAGE) angeredGoddesses.push({tag: "elementsRage", type: "rope"});
-	if (KinkyDungeonGoddessRep.Conjure < KDANGER) angeredGoddesses.push({tag: "conjureAnger", type: "rope"});
-	if (KinkyDungeonGoddessRep.Conjure < KDRAGE) angeredGoddesses.push({tag: "conjureRage", type: "rope"});
-	if (KinkyDungeonGoddessRep.Illusion < KDANGER) angeredGoddesses.push({tag: "illusionAnger", type: "rope"});
-	if (KinkyDungeonGoddessRep.Illusion < KDRAGE) angeredGoddesses.push({tag: "illusionRage", type: "rope"});
-	if (KinkyDungeonGoddessRep.Will < KDANGER) angeredGoddesses.push({tag: "willAnger", type: "rope"});
-	if (KinkyDungeonGoddessRep.Will < KDRAGE) angeredGoddesses.push({tag: "willRage", type: "rope"});
+	if (KinkyDungeonGoddessRep.Leather < KDANGER) angeredGoddesses.push({tag: "leatherAnger", type: "leather"});
+	if (KinkyDungeonGoddessRep.Leather < KDRAGE) angeredGoddesses.push({tag: "leatherRage", type: "leather"});
+	if (KinkyDungeonGoddessRep.Metal < KDANGER) angeredGoddesses.push({tag: "metalAnger", type: "metal"});
+	if (KinkyDungeonGoddessRep.Metal < KDRAGE) angeredGoddesses.push({tag: "metalRage", type: "metal"});
+	if (KinkyDungeonGoddessRep.Latex < KDANGER) angeredGoddesses.push({tag: "latexAnger", type: "latex"});
+	if (KinkyDungeonGoddessRep.Latex < KDRAGE) angeredGoddesses.push({tag: "latexRage", type: "latex"});
+	if (KinkyDungeonGoddessRep.Elements < KDANGER) angeredGoddesses.push({tag: "elementsAnger", type: "elements"});
+	if (KinkyDungeonGoddessRep.Elements < KDRAGE) angeredGoddesses.push({tag: "elementsRage", type: "elements"});
+	if (KinkyDungeonGoddessRep.Conjure < KDANGER) angeredGoddesses.push({tag: "conjureAnger", type: "conjure"});
+	if (KinkyDungeonGoddessRep.Conjure < KDRAGE) angeredGoddesses.push({tag: "conjureRage", type: "conjure"});
+	if (KinkyDungeonGoddessRep.Illusion < KDANGER) angeredGoddesses.push({tag: "illusionAnger", type: "illusion"});
+	if (KinkyDungeonGoddessRep.Illusion < KDRAGE) angeredGoddesses.push({tag: "illusionRage", type: "illusion"});
+	if (KinkyDungeonGoddessRep.Will < KDANGER) angeredGoddesses.push({tag: "willAnger", type: "will"});
+	if (KinkyDungeonGoddessRep.Will < KDRAGE) angeredGoddesses.push({tag: "willRage", type: "will"});
+
+	if (KinkyDungeonGoddessRep.Rope > KDPLEASED) pleasedGoddessess.push({tag: "ropePleased", type: "rope"});
+	if (KinkyDungeonGoddessRep.Rope > KDFRIENDLY) pleasedGoddessess.push({tag: "ropeFriendly", type: "rope"});
+	if (KinkyDungeonGoddessRep.Leather > KDPLEASED) pleasedGoddessess.push({tag: "leatherPleased", type: "leather"});
+	if (KinkyDungeonGoddessRep.Leather > KDFRIENDLY) pleasedGoddessess.push({tag: "leatherFriendly", type: "leather"});
+	if (KinkyDungeonGoddessRep.Metal > KDPLEASED) pleasedGoddessess.push({tag: "metalPleased", type: "metal"});
+	if (KinkyDungeonGoddessRep.Metal > KDFRIENDLY) pleasedGoddessess.push({tag: "metalFriendly", type: "metal"});
+	if (KinkyDungeonGoddessRep.Latex > KDPLEASED) pleasedGoddessess.push({tag: "latexPleased", type: "latex"});
+	if (KinkyDungeonGoddessRep.Latex > KDFRIENDLY) pleasedGoddessess.push({tag: "latexFriendly", type: "latex"});
+	if (KinkyDungeonGoddessRep.Elements > KDPLEASED) pleasedGoddessess.push({tag: "elementsPleased", type: "elements"});
+	if (KinkyDungeonGoddessRep.Elements > KDFRIENDLY) pleasedGoddessess.push({tag: "elementsFriendly", type: "elements"});
+	if (KinkyDungeonGoddessRep.Conjure > KDPLEASED) pleasedGoddessess.push({tag: "conjurePleased", type: "conjure"});
+	if (KinkyDungeonGoddessRep.Conjure > KDFRIENDLY) pleasedGoddessess.push({tag: "conjureFriendly", type: "conjure"});
+	if (KinkyDungeonGoddessRep.Illusion > KDPLEASED) pleasedGoddessess.push({tag: "illusionPleased", type: "illusion"});
+	if (KinkyDungeonGoddessRep.Illusion > KDFRIENDLY) pleasedGoddessess.push({tag: "illusionFriendly", type: "illusion"});
+	if (KinkyDungeonGoddessRep.Will > KDPLEASED) pleasedGoddessess.push({tag: "willPleased", type: "will"});
+	if (KinkyDungeonGoddessRep.Will > KDFRIENDLY) pleasedGoddessess.push({tag: "willFriendly", type: "will"});
 
 	for (let pair of KDFactionRelations.get("Player").entries()) {
 		if (pair[1] > 0.5) {
@@ -51,6 +69,7 @@ function KinkyDungeonAddTags(tags, Floor) {
 			if (!rage && a.tag && a.tag.includes("Rage")) {
 				rage = true;
 				tags.push("goddessRage");
+				break;
 			}
 		}
 		for (let i = 0; i < 2; i++) {
@@ -64,6 +83,27 @@ function KinkyDungeonAddTags(tags, Floor) {
 			}
 		}
 		tags.push("goddessAnger");
+	}
+	if (pleasedGoddessess.length > 0) {
+		let rage = false;
+		for (let a of pleasedGoddessess) {
+			if (!rage && a.tag && a.tag.includes("Friend")) {
+				rage = true;
+				tags.push("goddessFriendly");
+				break;
+			}
+		}
+		for (let i = 0; i < 2; i++) {
+			let tag = pleasedGoddessess[Math.floor(pleasedGoddessess.length * KDRandom())];
+			if (tag && !tags.includes(tag.tag)) {
+				for (let a of pleasedGoddessess) {
+					if (a.type == tag.type) {
+						tags.push(a.tag);
+					}
+				}
+			}
+		}
+		tags.push("goddessPleased");
 	}
 
 

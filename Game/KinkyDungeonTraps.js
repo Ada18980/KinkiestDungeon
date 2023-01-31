@@ -85,9 +85,9 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 						if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 						msg = TextGet("KinkyDungeonTrapSpawn" + tile.Enemy);
 						KinkyDungeonTilesDelete(x + "," + y);
-						if (!tile.noSmoke) {
-							KDSmokePuff(x, y, 1.9, 0.5);
-						}
+						//if (!tile.noSmoke) {
+						//KDSmokePuff(x, y, 1.9, 0.5);
+						//}
 						triggered = true;
 					}
 				}
@@ -108,9 +108,17 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 						msg = ""; // The spell will show a message on its own
 						triggered = true;
 						KinkyDungeonTilesDelete(x + "," + y);
-						if (!tile.noSmoke) {
-							KDSmokePuff(x, y, 1.9, 0.5);
+						let etiles = Object.values(KDGetEffectTiles(x, y)).filter((etile) => {
+							return etile.tags && etile.tags.includes("runetrap");
+						});
+						if (etiles?.length > 0) {
+							for (let et of etiles) {
+								et.duration = 0;
+							}
 						}
+						//if (!tile.noSmoke) {
+						//KDSmokePuff(x, y, 1.9, 0.5);
+						//}
 					}
 				}
 				if (tile.Trap == "BarrelTrap") {
@@ -199,7 +207,7 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 			}
 			if (msg) {
 				if (msg == "Default")
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + tile.Trap), color, 2 + KinkyDungeonSlowMoveTurns);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + tile.Trap + (tile.extraTag || "")), color, 2 + KinkyDungeonSlowMoveTurns);
 				else
 					KinkyDungeonSendTextMessage(10, msg, color, 2 + KinkyDungeonSlowMoveTurns);
 			}
@@ -274,14 +282,17 @@ function KinkyDungeonGetGoddessTrapTypes() {
 	if (KinkyDungeonGoddessRep.Conjure < KDANGER) {
 		trapTypes.push({ Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 15 });
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "TickleHand", Level: 0, Power: 6, Weight: 10 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "Dressmaker", Level: 0, Power: 2, Weight: 5 });
 	}
 	if (KinkyDungeonGoddessRep.Conjure < KDRAGE) {
-		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "Conjurer", Level: 0, Power: 1, Weight: 25 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "Conjurer", Level: 0, Power: 1, Weight: 15 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "Dressmaker", Level: 0, Power: 2, Weight: 25 });
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ConjurerTickler", Level: 0, Power: 1, Weight: 25 });
 	}
 	if (KinkyDungeonGoddessRep.Illusion < KDANGER) {
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "Maidforce", Level: 0, Power: 3, Weight: 15 });
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "MaidforcePara", Level: 0, Power: 2, Weight: 10 });
+		trapTypes.push({ Name: "SpecificSpell", Spell: "TrapRopeHoly", Level: 2, Power: 3, Weight: 30 });
 	}
 	if (KinkyDungeonGoddessRep.Illusion < KDRAGE) {
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "Maidforce", Level: 0, Power: 4, Weight: 15 });
@@ -325,6 +336,7 @@ function KinkyDungeonGetTrap(trapTypes, Level, tags) {
 				Enemy: trapWeights[L].trap.Enemy,
 				Spell: trapWeights[L].trap.Spell,
 				Power: trapWeights[L].trap.Power,
+				extraTag: trapWeights[L].trap.extraTag,
 			};
 		}
 	}

@@ -835,7 +835,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 								let r = KinkyDungeonGetRestraint({tags: restraints}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 								if (r) KinkyDungeonAddRestraintIfWeaker(r, 0, true);
 							}
-							let outfit = {name: outfitName, type: Outfit};
+							let outfit = {name: outfitName, type: Outfit, id: KinkyDungeonGetItemID()};
 							if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
 							//if (KinkyDungeonInventoryGet("OutfitDefault")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("OutfitDefault"));
 							KinkyDungeonSetDress(outfitName, outfitName);
@@ -893,7 +893,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 								let r = KinkyDungeonGetRestraint({tags: restraints}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 								if (r) KinkyDungeonAddRestraintIfWeaker(r, 0, true);
 							}
-							let outfit = {name: outfitName, type: Outfit};
+							let outfit = {name: outfitName, type: Outfit, id: KinkyDungeonGetItemID()};
 							if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
 							//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 							KinkyDungeonSetDress(outfitName, outfitName);
@@ -919,7 +919,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 									let r = KinkyDungeonGetRestraint({tags: restraintsAngry}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 									if (r) KinkyDungeonAddRestraintIfWeaker(r, 0, true);
 								}
-								let outfit = {name: outfitName, type: Outfit};
+								let outfit = {name: outfitName, type: Outfit, id: KinkyDungeonGetItemID()};
 								if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
 								//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 								KinkyDungeonSetDress(outfitName, outfitName);
@@ -1352,7 +1352,7 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup) 
 						let rest = KinkyDungeonGetRestraintByName(item);
 						let Rname = rest.inventoryAs || rest.name;
 						if (!KinkyDungeonInventoryGetLoose(Rname)) {
-							KinkyDungeonInventoryAdd({name: Rname, type: LooseRestraint, events:rest.events, quantity: 1});
+							KinkyDungeonInventoryAdd({name: Rname, type: LooseRestraint, events:rest.events, quantity: 1, id: KinkyDungeonGetItemID()});
 						} else {
 							if (!KinkyDungeonInventoryGetLoose(Rname).quantity) KinkyDungeonInventoryGetLoose(Rname).quantity = 0;
 							KinkyDungeonInventoryGetLoose(Rname).quantity += 1;

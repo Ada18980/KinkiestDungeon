@@ -143,6 +143,26 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 
 				MiniGameKinkyDungeonLevel += 1;
 
+				if (MiniGameKinkyDungeonLevel > 1) {
+					// Reduce security level when entering a new area
+					if (MiniGameKinkyDungeonCheckpoint != currCheckpoint)
+						KinkyDungeonChangeRep("Prisoner", -5);
+					else // Otherwise it's just a little bit
+						KinkyDungeonChangeRep("Prisoner", -1);
+
+					if (KinkyDungeonStatsChoice.get("Trespasser")) {
+						KinkyDungeonChangeRep("Rope", -1);
+						KinkyDungeonChangeRep("Metal", -1);
+						KinkyDungeonChangeRep("Leather", -1);
+						KinkyDungeonChangeRep("Latex", -1);
+						KinkyDungeonChangeRep("Will", -1);
+						KinkyDungeonChangeRep("Elements", -1);
+						KinkyDungeonChangeRep("Conjure", -1);
+						KinkyDungeonChangeRep("Illusion", -1);
+					}
+				}
+
+
 				if (KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
 					roomType = ""; // We let the boss spawn naturally
 				} else {
@@ -159,23 +179,6 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			} else {
 				roomType = "PerkRoom"; // We do a perk room, then a tunnel
 				KDGameData.MapMod = ""; // Reset the map mod
-
-				// Reduce security level when entering a new area
-				if (MiniGameKinkyDungeonCheckpoint != currCheckpoint)
-					KinkyDungeonChangeRep("Prisoner", -5);
-				else // Otherwise it's just a little bit
-					KinkyDungeonChangeRep("Prisoner", -1);
-
-				if (KinkyDungeonStatsChoice.get("Trespasser")) {
-					KinkyDungeonChangeRep("Rope", -1);
-					KinkyDungeonChangeRep("Metal", -1);
-					KinkyDungeonChangeRep("Leather", -1);
-					KinkyDungeonChangeRep("Latex", -1);
-					KinkyDungeonChangeRep("Will", -1);
-					KinkyDungeonChangeRep("Elements", -1);
-					KinkyDungeonChangeRep("Conjure", -1);
-					KinkyDungeonChangeRep("Illusion", -1);
-				}
 			}
 
 			KDGameData.RoomType = roomType;
@@ -328,6 +331,33 @@ function KDCreateAoEEffectTiles(x, y, tile, durationMod, rad, avoidPoint, densit
 		for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
 			if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x + X, Y + y)) && AOECondition(x, y, x+X, y+Y, rad, mod) && (!avoidPoint || avoidPoint.x != X + x || avoidPoint.y != Y + y) && (density == undefined || KDRandom() < density)) {
 				KDCreateEffectTile(x + X, y + Y, tile, durationMod);
+			}
+		}
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {string[]} tagsToRemove
+ * @param {number} [rad]
+ * @param {{x: number, y: number}} [avoidPoint]
+ * @param {number} [density]
+ * @param {string} mod - explosion modifier
+ */
+function KDRemoveAoEEffectTiles(x, y, tagsToRemove, rad, avoidPoint, density, mod = "") {
+	for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
+		for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
+			if (AOECondition(x, y, x+X, y+Y, rad, mod) && (!avoidPoint || avoidPoint.x != X + x || avoidPoint.y != Y + y) && (density == undefined || KDRandom() < density)) {
+				let tiles = KDGetEffectTiles(x + X, y + Y);
+				for (let tile of Object.values(tiles)) {
+					for (let tag of tagsToRemove) {
+						if (tile.tags && tile.tags.includes(tag)) {
+							tile.duration = 0;
+							break;
+						}
+					}
+				}
 			}
 		}
 }

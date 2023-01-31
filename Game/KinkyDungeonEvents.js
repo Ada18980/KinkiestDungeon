@@ -331,12 +331,12 @@ let KDEventMapInventory = {
 		"barrelDebuff": (e, item, data) => {
 			if (!data.delta) return;
 			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Counterbarrel", type: "SlowDetection", duration: 1, power: -10, player: true, enemies: true, endSleep: true, tags: ["SlowDetection", "move", "cast"]});
-			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Counterbarrel3", type: "Sneak", duration: 1, power: -2.5, player: true, enemies: true, endSleep: true, tags: ["Sneak", "move", "cast"]});
+			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Counterbarrel3", type: "Sneak", duration: 1, power: -10, player: true, enemies: true, endSleep: true, tags: ["Sneak", "move", "cast"]});
 		},
 		"cageDebuff": (e, item, data) => {
 			if (!data.delta) return;
 			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Countercage", type: "SlowDetection", duration: 1, power: -5, player: true, enemies: true, endSleep: true, tags: ["SlowDetection", "move", "cast"]});
-			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Countercage2", type: "Sneak", duration: 1, power: -2.5, player: true, enemies: true, endSleep: true, tags: ["Sneak", "move", "cast"]});
+			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Countercage2", type: "Sneak", duration: 1, power: -10, player: true, enemies: true, endSleep: true, tags: ["Sneak", "move", "cast"]});
 		},
 		"callGuard": (e, item, data) => {
 			if (!data.delta) return;
@@ -351,7 +351,7 @@ let KDEventMapInventory = {
 		},
 		"callGuardFurniture": (e, item, data) => {
 			if (!data.delta) return;
-			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < 0.1) {
+			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < (e.chance ? e.chance : 0.1)) {
 				KinkyDungeonSetFlag("GuardCalled", 35);
 				console.log("Attempting to call guard");
 				if (KinkyDungeonEntities.length < 400 || KDGameData.CagedTime > KDMaxCageTime) {
@@ -1242,6 +1242,17 @@ let KDEventMapBuff = {
 		},
 	},
 	"tick": {
+		"BoundByFate": (e, buff, entity, data) => {
+			if (buff.duration > 0) {
+				if (entity.player) {
+					if (!KDEffectTileTags(entity.x, entity.y).fate) {
+						buff.duration = 0;
+						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "soul", {name: "StarBondage", count: e.count, kind: e.kind, power: e.power});
+						KDRemoveAoEEffectTiles(entity.x, entity.y, ["fate"], 1.5);
+					}
+				}
+			}
+		},
 		"ApplyConduction": (e, buff, entity, data) => {
 			let bb = Object.assign({}, KDConduction);
 			if (e.power) bb.duration = e.duration;
@@ -1920,7 +1931,7 @@ let KDEventMapSpell = {
 		"Light": (e, spell, data) => {
 			let activate = false;
 			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && !KinkyDungeonPlayerBuffs.Light) {
-				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Light", type: "Light", duration: e.time});
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Light", type: "Light", duration: e.time, aura: "#ffffff"});
 				activate = true;
 				KinkyDungeonUpdateLightGrid = true;
 			}
@@ -2040,7 +2051,8 @@ let KDEventMapWeapon = {
 						damage: bonus * e.power,
 						time: e.time
 					}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
-					data.enemy.boundLevel = Math.max(0, data.enemy.boundLevel - bonus);
+
+					KDReduceBinding(data.enemy, bonus);
 					if (data.enemy.hp <= 0 && KDHelpless(data.enemy)) data.enemy.hp = 0.01;
 					if (e.energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
 				}
@@ -2901,24 +2913,24 @@ let KDEventMapEnemy = {
 	},
 	"beforeDamage": {
 		"shadowEngulf": (e, enemy, data) => {
-			if (data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
-				let buff1 = {id: "ShadowEngulf", type: "Blindness", duration: 8, power: 1.0, player: true, tags: []};
-				let buff2 = {id: "ShadowEngulf2", type: "Blindness", duration: 10, power: 2.0, player: true, tags: []};
-				let buff3 = {id: "ShadowEngulf3", type: "Blindness", duration: 12, power: 4.0, player: true, tags: []};
+			if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
+				let buff1 = {id: "ShadowEngulf", type: "Blindness", duration: 8, power: 1.0, player: true, tags: ["passout"]};
+				let buff2 = {id: "ShadowEngulf2", type: "Blindness", duration: 10, power: 2.0, player: true, tags: ["passout"]};
+				let buff3 = {id: "ShadowEngulf3", type: "Blindness", duration: 12, power: 4.0, player: true, tags: ["passout"]};
 				KinkyDungeonSetFlag("shadowEngulf", 4);
 				if (KinkyDungeonPlayerBuffs[buff3.id]) {
 					KinkyDungeonPassOut();
 				} else if (KinkyDungeonPlayerBuffs[buff2.id]) {
-					KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonShadowEngulfEnd3"), "#ff0000", 4);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonShadowEngulfEnd3"), "#ff0000", 5);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff3);
 				}  else if (KinkyDungeonPlayerBuffs[buff1.id]) {
-					KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonShadowEngulfEnd2"), "#ff0000", 4);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonShadowEngulfEnd2"), "#ff0000", 4);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
 				} else {
-					KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonShadowEngulfEnd1"), "#ff0000", 4);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonShadowEngulfEnd1"), "#ff0000", 4);
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 				}
 			}
@@ -2960,7 +2972,12 @@ let KDEventMapEnemy = {
 			if (enemy == data.enemy && data.spell?.name == "SummonRopeTentacle") {
 				enemy.hp = Math.max(enemy.hp - enemy.Enemy.maxhp * KDMagicDefs.RopeKraken_TentacleCost, Math.min(enemy.hp, enemy.Enemy.maxhp * KDMagicDefs.RopeKraken_TentacleThreshold));
 			}
-		}
+		},
+		"sarcoKrakenSummonTentacle": (e, enemy, data) => {
+			if (enemy == data.enemy && data.spell?.name == "SummonSarcoTentacle") {
+				enemy.hp = Math.max(enemy.hp - enemy.Enemy.maxhp * KDMagicDefs.SarcoKraken_TentacleCost, Math.min(enemy.hp, enemy.Enemy.maxhp * KDMagicDefs.SarcoKraken_TentacleThreshold));
+			}
+		},
 	},
 	"afterDamageEnemy": {
 		"bleedEffectTile": (e, enemy, data) => {
@@ -3037,7 +3054,7 @@ let KDEventMapEnemy = {
 			if (data.delta && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 				if (!e.chance || KDRandom() < e.chance) {
 					if (enemy.aware && KinkyDungeonAggressive(enemy) && (KDPlayerIsStunned())) {
-						KinkyDungeonPlayerEffect("charm", {name: "MaidChastity", power: 2, damage: "charm"});
+						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "charm", {name: "MaidChastity", power: 2, damage: "charm"});
 					}
 				}
 			}

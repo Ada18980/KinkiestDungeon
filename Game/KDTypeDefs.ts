@@ -1,5 +1,10 @@
+type Named = {
+	name: string,
+}
+
 /** Kinky Dungeon Typedefs*/
-type item = {
+interface item extends Named {
+	id: number,
 	linkCache?: string[],
 	/** If the item has a different curse from the base curse */
 	curse?: string,
@@ -472,7 +477,7 @@ interface floorParams {
 	shortcuts: {Level: number, checkpoint: string, chance:number}[	],
 	mainpath: {Level: number, checkpoint: string, chance?: number}[],
 
-	traps: {Name: string, Enemy?: string, Spell?: string, Level: number, Power: number, Weight: number, strict?: true}[],
+	traps: {Name: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true}[],
 
 	min_width : number,
 	max_width : number,
@@ -961,6 +966,7 @@ interface KinkyDungeonEvent {
 	restraint?: string;
 	sfx?: string;
 	power?: number;
+	count?: number;
 	player?: boolean;
 	bind?: number;
 	distract?: number;
@@ -1219,6 +1225,8 @@ type KDPerk = {
 }
 
 interface spell {
+	/** Marks a spell as non-magical, so traps dont leave a rune on the ground */
+	nonmagical?: boolean,
 	/** Marks the spell as a command word spell to enemies */
 	commandword?: boolean,
 	/** The spell is used to buff allies */
@@ -1707,6 +1715,8 @@ type AIType = {
 	strictwander?: boolean,
 	/** This enemy is stealthy until the ambush is triggered */
 	ambush?: boolean,
+	/** This is the tile for the AI which registers as tooltip */
+	ambushtile?: string,
 	/** Happens at the start immediately after AI is assigned*/
 	init: (enemy, player, aidata) => void,
 	/** Happens before movement. Return true to skip movement loop*/

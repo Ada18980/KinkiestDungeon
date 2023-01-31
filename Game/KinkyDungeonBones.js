@@ -25,6 +25,10 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Rena", color: "#a452ff", prisoner: true, free: true, customSprite: ""},
 	],
 	],
+	["Dragon", [
+		{name: "Garss", color: "#ff8888", prisoner: true, free: false, customSprite: ""},
+	],
+	],
 	["DragonLeaderDuelist", [
 		{name: "Kaitlyn", color: "#ff5555", prisoner: true, free: true, customSprite: ""},
 	],
@@ -48,6 +52,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["Alchemist", [
 		{name: "Morgan", color: "#6241e1", prisoner: true, free: true, customSprite: ""},
+		{name: "Myth", color: "#22ffff", prisoner: false, free: true, customSprite: ""},
 	],
 	],
 	["Dressmaker", [

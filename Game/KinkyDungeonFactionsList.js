@@ -159,6 +159,7 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Angel": {
 		Demon: -1.0,
+		Ghost: -0.7,
 		Elemental: 0.15,
 		Dragon: 0.05,
 		AncientRobot: -0.25,
@@ -343,7 +344,7 @@ let KinkyDungeonFactionRelationsBase = {
 		"Bandit": 0.3,
 		"Witch": 0.15,
 		"Apprentice": 0.15,
-		"AncientRobot": -0.3,
+		"AncientRobot": -0.51,
 	},
 	"Alchemist": {
 		"Bandit": 0.15,
@@ -396,10 +397,11 @@ let KinkyDungeonFactionRelationsBase = {
 		"Witch": -0.4,
 		"Alchemist": -0.15,
 		"Beast": -1.0,
-		"Mushy": 0.1,
+		"Mushy": 0.15,
 	},
 	"Mushy": {
-		"Alchemist": -0.55
+		"Alchemist": -0.55,
+		"Elemental": 0.25,
 	},
 	"Witch": {
 		"Apprentice": 0.55,

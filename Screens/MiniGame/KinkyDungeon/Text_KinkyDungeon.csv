@@ -6,7 +6,8 @@ KinkyDungeonPatronsList0,"Thank you to the following awesome people for supporti
 KinkyDungeonPatronsList1,"|nuzzles|Rest|LoudestQuietPerson|Violet EverGardner|BoopleDoopleson|Dazman1234|WATA|linlizheng|Mechio|Vikingberserker|PWMRM|devan|LukeB|atetete|Aussie895|0xA4C1B842|Rika|Physicsphail|Loony|Jeremy P.|ItsYahboi9"
 KinkyDungeonPatronsList2,"|AlexisTheFlame|Chen Yu|Sinohisaki|nnm711|Ron lsrp|Miro|Anthony R.|John T.|Geng114514|塵狐|kamil|Iaysakuya|tsang|Somprad|Thatguu|damit damit|Victor|Hjake2|anton A.|Dakra|CuvyanTaylor|"
 KinkyDungeonPatronsList3,"|hanhan|The_rogue1|Tatsuya S.|James K.|Misa|eddy z.|theshrimpyone|Eislobo|OTKTamashii|Michael M.|Jose G.|Minescence|HanQing Z.|hanhan|Shakymunch|Crimson|Arentios|Vini J.|Treemen555|Lordfabricator|ML"
-KinkyDungeonPatronsList4,"Hannes|Isaiah L.|darklink11|Cerb|Diablo200|RNFRaptor|CMDR Salen|daniel C.|NDW|Sewdah N.|Sylicix|Wossa|ComradeArmtyom|逗比 徐|Null Fame|zipidyzap|Mister Mythe|Yagami Yami"
+KinkyDungeonPatronsList4,"Hannes|Isaiah L.|darklink11|Cerb|Diablo200|RNFRaptor|CMDR Salen|daniel C.|NDW|Sewdah N.|Sylicix|Wossa|ComradeArmtyom|逗比 徐|Null Fame|zipidyzap|Mister Mythe|Yagami Yami|Phoenix|Kritsanapong J.|Pyron|Tobi"
+KinkyDungeonPatronsList5,""
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
 KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|KR Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
@@ -23,7 +24,7 @@ RestartNeededEN,"Restart required!"
 RestartNeededCN,"需要重启！"
 RestartNeededKR,"재시작 필요！"
 
-KinkyDungeon,"Kinky Dungeon v3.95"
+KinkyDungeon,"Kinky Dungeon v4.00"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
@@ -335,7 +336,7 @@ KinkyDungeonStatDescKeepOutfit,"When you are jailed, you keep your outfit."
 KinkyDungeonStatFutileStruggles,"Futile Struggles"
 KinkyDungeonStatDescFutileStruggles,"Lose 2 WP every time you remove a non-trivial restraint."
 KinkyDungeonStatSecondWind,"Second Wind"
-KinkyDungeonStatDescSecondWind,"Gain 2 WP every time you remove a non-trivial restraint."
+KinkyDungeonStatDescSecondWind,"Gain 2 WP every time you remove a non-trivial restraint. Destroys restraints on removal."
 
 
 KinkyDungeonStatDominant,"Dominant"
@@ -432,6 +433,9 @@ KinkyDungeonBuffLockdownTry,"You struggle against your bonds, but a magical forc
 KinkyDungeonRopeEngulfEnd1,"The ropes squeeze you tighter and tighter..."
 KinkyDungeonRopeEngulfEnd2,"Your body sinks deeper into a sea of bindings..."
 KinkyDungeonRopeEngulfEnd3,"You struggle to breath as you are buried alive in squirming ropes..."
+KinkyDungeonSarcoHexEnd1,"You feel a force compelling you to stop resisting..."
+KinkyDungeonSarcoHexEnd2,"Your body struggles to move as you feel a power sealing you!"
+KinkyDungeonSarcoHexEnd3,"The sarcophagus' door slides open as you are slowly pulled inside..."
 KinkyDungeonShadowEngulfEnd1,"The hands squeeze you tightly..."
 KinkyDungeonShadowEngulfEnd2,"More hands clasp over your body..."
 KinkyDungeonShadowEngulfEnd3,"You struggle to breath as you are pulled into the mass of shadow hands..."
@@ -491,6 +495,8 @@ KDStatGag,"You are gagged! Verbal miscast chance is increased and your potions a
 KDStatGagFull,"Your mouth is totally filled! You can't drink potions and have a high verbal miscast chance!"
 
 KinkyDungeonBuffEmpower,"Spell Empowerment!"
+
+KinkyDungeonBuffLight,"Let there be light!"
 
 KinkyDungeonBuffMagicalSight,"You're seeing things..."
 
@@ -688,6 +694,7 @@ KinkyDungeonDeleteMod,"Delete Mod"
 KinkyDungeonClearAll,"Clear Perks"
 KinkyDungeonConfig,"Config "
 KinkyDungeonCancel,"Cancel"
+KinkyDungeonFilter,"Filter"
 
 KinkyDungeonLoadModWarning1,"DANGER: Loading a mod will execute ARBITRARY CODE on your machine."
 KinkyDungeonLoadModWarning2,"Like connecting to a server, etc. Only load mods from a TRUSTED source."
@@ -751,24 +758,24 @@ DungeonNamegrv,Graveyard
 DungeonNamecat,Catacombs
 DungeonNamejng,Underground Jungle
 DungeonNametmp,Lost Temple
-DungeonName4,The Bellows
-DungeonName5,Rundown Laboratory
-DungeonName6,Forgotten Garden
-DungeonName7,Kingdom of Ice
+DungeonNamebel,The Bellows
+DungeonNamelab,Rundown Laboratory
+DungeonNamefor,Forgotten Garden
+DungeonNameice,Kingdom of Ice
 DungeonName8,
 DungeonName9,
 
-DungeonName10,The Mansion
+DungeonNamemis,The Mansion
 
 DungeonNametmb,Ancient Tombs
 DungeonNamelib,Magic Library
 DungeonNamecry,Crystal Cave
-DungeonName14,Orrery
-DungeonName15,Training Center
-DungeonName16,Rubber Facility
-DungeonName17,Wizards' Den
-DungeonName18,Marble Halls
-DungeonName19,Doll Storage
+DungeonNameore,Orrery
+DungeonNametrn,Training Center
+DungeonNamerub,Rubber Facility
+DungeonNamewiz,Wizards' Den
+DungeonNamemrb,Marble Halls
+DungeonNamedll,Doll Storage
 DungeonName20,
 
 LootRubbleFail,You search through the debris but find nothing of note
@@ -1273,15 +1280,17 @@ KinkyDungeonSlimeSpread,"The slime is spreading over your body!!!"
 KinkyDungeonSlimeHarden,"The slime starts to harden over your skin..."
 
 
-NameAngel,Angel Courier
-KillAngel,"You oneshotted her. What kind of devil are you???"
-AttackAngel,"The angel decides to toy with you while you are trussed up."
-AttackAngelBind,"The angel snaps her fingers and divine restraints appear on your body!"
 
-NameAngelHostile,Angel Courier
-KillAngelHostile,"You subdue the angel!"
-AttackAngelHostile,"The angel decides to toy with you while you are trussed up."
-AttackAngelHostileBind,"The angel snaps her fingers and divine restraints appear on your body!"
+NameAngel,Angel
+KillAngel,"You subdue the angel!"
+AttackAngel,"The angel decides to toy with you while you are trussed up. (DamageTaken)"
+AttackAngelBind,"The angel snaps her fingers and divine restraints appear on your body! (+RestraintAdded)"
+
+NameHolyConstruct,Holy Construct
+KillHolyConstruct,"You banish the holy construct!"
+AttackHolyConstruct,"The holy construct emits a searing light! (DamageTaken)"
+AttackHolyConstructBlind,"The holy construct emits a blinding light! (DamageTaken)"
+AttackHolyConstructBind,"The holy construct emits a Binding light! (+RestraintAdded)"
 
 KinkyDungeonAngelIntro,"Be not afraid! I am the courier of a local shrine, and I have come to take your offering."
 KinkyDungeonAngelWarn,"Hold still and I will take the offering..."
@@ -1774,6 +1783,13 @@ KillMummyCursed,"The Cursed One is drawn into an eldritch portal."
 AttackMummyCursedBind,"The Cursed One's bindings transfer to you! (+RestraintAdded)"
 AttackMummyCursed,"The Cursed One's bindings emit a strange aura... (DamageTaken)"
 
+NameSarcoMinion,Floating Wrapping
+KillSarcoMinion,"The wrapping falls to the floor, its magic spent."
+AttackSarcoMinion,"The wrappings grip you and pull you toward the sarcophagus! (DamageTaken)"
+
+NameSarcoKraken,Animated Sarcophagus
+KillSarcoKraken,"The sarcophagus falls to the ground and crumbles."
+
 NameMeleeCleric,Bast Warrior
 KillMeleeCleric,"The Bast Warrior collapses and meows loudly."
 AttackMeleeClericBind,"The Bast Warrior restrains you! (+RestraintAdded)"
@@ -2188,6 +2204,33 @@ NameShadowHand,Shadow Hand
 KillShadowHand,"The shadow hand retreats into the darkness..."
 AttackShadowHandBind,"The shadow hand latches onto you!! (+RestraintAdded)"
 AttackShadowHand,"The shadow hand stretches its fingers across your body! (DamageTaken)"
+KinkyDungeonSummonSingleShadowHand,A dark hand stretches out beyond the shadows...
+KinkyDungeonSummonMultiShadowHand,Several dark hands emerge from the shadows!
+
+NameCorruptedAdventurer,Corrupted Adventurer
+KillCorruptedAdventurer,"The corrupted adventurer falls into a deep sleep."
+AttackCorruptedAdventurerBind,"The corrupted aventurer's many arms latch onto you! (+RestraintAdded)"
+AttackCorruptedAdventurer,"The corrupted adventurer drags her chilling fingers across your vulnerable skin! (DamageTaken)"
+
+NameShadowGhast,Shadowy Ghast
+KillShadowGhast,"The shadowy ghast screeches and disappears..."
+AttackShadowGhastBind,"The shadowy ghast latches onto you with its long arms! (+RestraintAdded)"
+AttackShadowGhast,"The shadowy ghast grips you in its chilling embrace! (DamageTaken)"
+
+NameChainBeing,Obsidian Construct
+KillChainBeing,"The obsidian construct stops moving, its spirit departed."
+AttackChainBeingBind,"The obsidian construct reaches out and touches you, forming metallic restraints! (+RestraintAdded)"
+AttackChainBeing,"The obsidian construct grips you and drains your willpower! (DamageTaken)"
+
+NameDemonStar,Star Demon
+KillDemonStar,"The star demon is exorcised."
+AttackDemonStarBind,"The star demon places you in shining, starry restraints. (+RestraintAdded)"
+AttackDemonStar,"The star demon places you under its curse! (DamageTaken)"
+KinkyDungeonStarBondage,The strings of fate glisten and wrap around you!
+KinkyDungeonBoundByFate,Many shining strings surround you!
+KinkyDungeonBuffBoundByFate,Stepping outside of the indicated tiles will result in punishment!
+KinkyDungeonSpellBoundByFate,Bindings of Fate
+
 
 NameTickleHand,Tickle Hand
 KillTickleHand,"The hand vanishes!"
@@ -2362,6 +2405,7 @@ KinkyDungeonStruggleStruggleImpossible,"The item is too secure to struggle out."
 KinkyDungeonStruggleStruggleImpossibleAroused,"You groan in frustration as you realize the item is too tight to escape."
 KinkyDungeonStruggleStruggleImpossible2,"The item tightens itself as you try to squeeze out!"
 KinkyDungeonStruggleStruggleImpossible3,"You will need someone's help to squeeze out."
+KinkyDungeonStruggleStruggleImpossibleGoddess,"The restraint flashes magically as the Goddess' curse resists your efforts!"
 KinkyDungeonStruggleStruggleStrict,"You pull and tug but your other restraints keep it securely in place!"
 KinkyDungeonStruggleStruggleStrictAroused,"You groan and tug but nothing budges. You're bound too tightly by something else."
 KinkyDungeonStruggleStruggleImpossibleBound,"You are too tightly bound to have a chance."
@@ -2372,6 +2416,7 @@ KinkyDungeonStruggleUnlockImpossible2,"The item can't be unlocked without a spec
 KinkyDungeonStruggleUnlockImpossible3,"You can't reach the keyhole by yourself!"
 KinkyDungeonStruggleUnlockImpossibleBound,"You can't hold the key to unlock this with."
 KinkyDungeonStruggleUnlockImpossibleBoundAroused,"Your bound and shaking hands can't even hold the key."
+KinkyDungeonStruggleUnlockImpossibleGoddess,"The goddess punishes you for trying to unlock her restraint!"
 KinkyDungeonStruggleUnlockStrict,"You try, but something is keeping your hands away."
 KinkyDungeonStruggleUnlockStrictAroused,"You flail the key around uselessly but a strap is preventing you!"
 KinkyDungeonStrugglePickImpossible,"This lock is beyond your skill level!"
@@ -2382,6 +2427,7 @@ KinkyDungeonStrugglePickImpossibleBound,"You can't maneuver the lockpick well en
 KinkyDungeonStrugglePickImpossibleBoundAroused,"You let out a frustrated sigh as your quivering pick makes no progress."
 KinkyDungeonStrugglePickStrict,"You try to start picking, but the lock is secured by something else."
 KinkyDungeonStrugglePickStrictAroused,"You whimper as you realize the lock is shielded by another strap."
+KinkyDungeonStrugglePickImpossibleGoddess,"You are distracted by mental images of yourself remaining in bondage..."
 
 KinkyDungeonStruggleRemoveNeedEdge,"You wiggle uselessly. Maybe you need some kind of tool..."
 KinkyDungeonStruggleRemoveNeedEdgeAroused,"You rub your body against the floor to no avail, and sigh."
@@ -2422,6 +2468,7 @@ KinkyDungeonStruggleRemoveImpossibleBound,"You are too tightly bound to manipula
 KinkyDungeonStruggleRemoveImpossibleBoundAroused,"Your futile struggles do nothing to loosen the fasteners."
 KinkyDungeonStruggleRemoveStrict,"You try to undo the fasteners, but they are blocked by other straps!"
 KinkyDungeonStruggleRemoveStrictAroused,"You rub your body uselessly as you find another strap securing the item."
+KinkyDungeonStruggleRemoveImpossibleGoddess,"You feel the Goddess' hand keeping the restraint tightly secured!"
 KinkyDungeonStruggleCutImpossible,"The item is too durable to cut."
 KinkyDungeonStruggleCutImpossibleAroused,"Your hopeless attempts fail to even leave a scratch."
 KinkyDungeonStruggleCutImpossible2,"You fail to leave even a scratch!"
@@ -2430,6 +2477,7 @@ KinkyDungeonStruggleCutImpossibleBound,"You can't hold the knife firmly enough t
 KinkyDungeonStruggleCutImpossibleBoundAroused,"You cry out in your bindings as the knife bounces around uselessly."
 KinkyDungeonStruggleCutStrict,"Your arms are kept from having leverage due to another item."
 KinkyDungeonStruggleCutStrictAroused,"You fiddle with the tool, but your arms lack leverage due to another item"
+KinkyDungeonStruggleCutImpossibleGoddess,"The restraint flashes magically as the Goddess' curse resists your efforts!"
 
 KinkyDungeonStruggleRemoveFailShadowHand,"You pry at the hands..."
 KinkyDungeonStruggleRemoveFailShadowHandAroused,"You moan as the hands squeeze you tightly..."
@@ -2695,6 +2743,12 @@ RestraintBarrelTrap,Barrel Trap
 RestraintBarrelTrapDesc,"A booby-trapped barrel with a spring-loaded lid designed to trap you inside!"
 RestraintBarrelTrapDesc2,"You can push the lid off with enough force..."
 KDBarrelTrap,"The lid of the barrel suddenly snaps shut as you hide inside!!!"
+
+
+
+RestraintSarcophagus,Sarcophagus
+RestraintSarcophagusDesc,"A glass-walled chamber sealed with enchanting magic."
+RestraintSarcophagusDesc2,"Time feels like it's going by quickly outside..."
 
 RestraintCageTrap,Cage Trap
 RestraintCageTrapDesc,"A booby-trapped cage!"
@@ -3207,7 +3261,7 @@ RestraintShadowHandFeetDesc,"They are holding your feet together!"
 RestraintShadowHandFeetDesc2,"You have no choice but to struggle."
 
 RestraintShadowHandCrotch,Shadow Hands...
-RestraintShadowHandCrotchDesc,"They are... uhh..."
+RestraintShadowHandCrotchDesc,"They are holding your... uh..."
 RestraintShadowHandCrotchDesc2,"You have no choice but to struggle."
 
 RestraintRopeSnakeArms,Wrist Rope
@@ -4050,6 +4104,10 @@ KDEffectTileTooltipTorchOrb,Magic Lantern
 KDEffectTileTooltipTorchOrbDesc,"Provides light"
 KDEffectTileTooltipLanternUnlit,Unlit Lantern
 KDEffectTileTooltipLanternUnlitDesc,"Can be lit"
+KDEffectTileTooltipIllusOrb,Wall Sconce
+KDEffectTileTooltipIllusOrbDesc,"Provides light"
+KDEffectTileTooltipIllusOrbDead,Broken Wall Sconce
+KDEffectTileTooltipIllusOrbDeadDesc,"It is beyond repair."
 KDEffectTileTooltipLatex,Liquid Latex
 KDEffectTileTooltipLatexDesc,"Engulfs creatures"
 KDEffectTileTooltipSlime,Slime
@@ -4070,6 +4128,8 @@ KDEffectTileTooltipFabricGreen,Blessed Wrappings
 KDEffectTileTooltipFabricGreenDesc,"Enchanted wrappings"
 KDEffectTileTooltipRunes,Summoning Runes
 KDEffectTileTooltipRunesDesc,"Mystical runes used for summoning"
+KDEffectTileTooltipRunesTrap,Casting Runes
+KDEffectTileTooltipRunesTrapDesc,"Mystical runes used for casting spells"
 KDEffectTileTooltipEmber,Embers
 KDEffectTileTooltipEmberDesc,Ignition source. Blocks vision.
 KDEffectTileTooltipInferno,Inferno
@@ -4092,6 +4152,10 @@ KDTileTooltipX,Doodad
 KDTileTooltipL,Furniture
 KDTileTooltipT,Table
 KDTileTooltipA,Shrine
+KDTileTooltipD,Closed Door
+KDTileTooltipd,Open Door
+KDTileTooltipB,Bed
+KDTileTooltipb,Bars
 KDTileTooltipa,Ruined Shrine
 KDTileTooltipO,Orb Altar
 KDTileTooltipo,Empty Altar
@@ -4370,6 +4434,14 @@ KinkyDungeonSpellBanditBola,Bola
 KinkyDungeonSpellRestrainingDevice,Restraining Device
 KinkyDungeonRestrainingDeviceStun,The thrown restraining device latches onto you as you struggle to get it off!!!
 KinkyDungeonRestrainingDevice,The restraining device wraps many elastic cables around you!!!
+
+KinkyDungeonSpellShadowBolt,Shadowy Grip
+KinkyDungeonShadowBolt,A dark hand latches onto you and holds you tight!
+KinkyDungeonSpellCelestialBolt,Celestial Orb
+KinkyDungeonCelestialBolt,You are snugly wrapped in glowing ropes!
+KinkyDungeonSpellObsidianBolt,Obsidian Orb
+KinkyDungeonObsidianBolt,Metallic restraints encircle your body!
+
 
 KinkyDungeonSpellPlayerBola,Bola
 KinkyDungeonSpellTargetPlayerBola,Choose aim direction
@@ -5319,18 +5391,24 @@ KinkyDungeonSingleVine,"A vine slithers across your body and tightens!"
 KinkyDungeonSlowedBySpell,"The spell hits you and slows you down!"
 KinkyDungeonSpellWitchRope,"Rope"
 KinkyDungeonSpellRopeEngulf,"Rope Tendrils"
+KinkyDungeonSpellSarcoEngulf,"Blessed Wrappings"
+KinkyDungeonSpellSarcoHex,"The Blessing"
 KinkyDungeonSpellCastSummonRopeTentacle,"A long tendril emerges from the kraken's body!"
 KinkyDungeonSummonMultiRopeMinion,Coiled ropes spring up from the floor!
 KinkyDungeonSummonSingleRopeMinion,"A long tendril emerges from the kraken's body!"
+KinkyDungeonSummonMultiSarcoMinion,Several glowing wrappings emerge!
+KinkyDungeonSummonSingleSarcoMinion,A glowing wrapping emerges and starts moving toward you!
 KinkyDungeonSpellRopeEngulfWeak,"Rope Strike"
 KinkyDungeonSpellVineEngulf,"Animated Vines"
 KinkyDungeonSpellSoulCrystalBind,"Soul-binding Sigil"
 KinkyDungeonSpellElfArrow,Elven Arrow
 KinkyDungeonEnchantedArrow,"The elven arrow flashes and wraps you in mithril ropes!"
 KinkyDungeonRopeEngulf,"Ropes wrap themselves around your body from all sides!"
+KinkyDungeonSarcoEngulf,"Wrappings appear and wrap you head to toe!"
 KinkyDungeonRopeEngulfWeak,"Ropes wrap themselves around your body from all sides!"
 KinkyDungeonVineEngulf,"Nature magic causes vines to sprout around you!"
 KinkyDungeonRopeEngulfDress,"Your clothes are stripped and replaced!"
+KinkyDungeonSarcoEngulfDress,"Your clothes are stripped and replaced!"
 KinkyDungeonVineEngulfDress,"Vines tear off your clothes!"
 KinkyDungeonObsidianEngulf,"Restraints materialize on your body!"
 
@@ -5343,6 +5421,7 @@ KinkyDungeonSpellTrapShackleWeak,Shackle Trap
 KinkyDungeonSpellTrapMummyWeak,Mummy Trap
 KinkyDungeonSpellTrapRopeWeak,Rope Trap
 KinkyDungeonSpellTrapRopeStrong,Rope Trap
+KinkyDungeonSpellTrapRopeHoly,Holy Rope Trap
 KinkyDungeonSpellTrapLeatherWeak,Belt Trap
 KinkyDungeonSpellTrapCableWeak,Cable Trap
 KinkyDungeonSpellTrapSlimeWeak,Slime Trap
@@ -5358,6 +5437,7 @@ KinkyDungeonSpellCastTrapShackleWeak,"The ceiling opens, letting a lot of shackl
 KinkyDungeonSpellCastTrapMummyWeak,"Bands of glowing wrappings start flying in from all sides!"
 KinkyDungeonSpellCastTrapRopeWeak,"Ropes slither out towards you from between the bricks!"
 KinkyDungeonSpellCastTrapRopeStrong,"Ropes fall on you from all sides!"
+KinkyDungeonSpellCastTrapRopeHoly,"A constellation of ropes surrounds you!"
 KinkyDungeonSpellCastTrapLeatherWeak,"Leather restraints start appearing around you!"
 KinkyDungeonSpellCastTrapCableWeak,"high-tech cables come out from the floor!"
 KinkyDungeonSpellCastTrapSlimeWeak,"Slimes pours out from the walls and ceiling!"
@@ -5370,6 +5450,7 @@ KinkyDungeonTrapBindingsShackleWeak,"Shackles close themselves over your limbs!"
 KinkyDungeonTrapBindingsMummyWeak,"The wrappings close in over your body!"
 KinkyDungeonTrapBindingsRopeWeak,"The ropes wrap themselves around your body!"
 KinkyDungeonTrapBindingsRopeStrong,"The ropes wrap themselves tightly around your body!"
+KinkyDungeonTrapBindingsRopeHoly,"The holy ropes secure themselves upon your body!"
 KinkyDungeonTrapBindingsLeatherWeak,"The leather restraints attach themselves to your body!"
 KinkyDungeonTrapBindingsCableWeak,"The high-tech cables wrap themselves over your body!"
 KinkyDungeonTrapBindingsSlimeWeak,"The slime pours all over you!"
@@ -5609,12 +5690,18 @@ KinkyDungeonGhostUnhelpfulChaste4,"Ghost: How's it feel to be under lock and key
 KinkyDungeonTrapSpawnSummonedSkeleton,"You step on a pressure plate and a number of skeletons rise up!"
 KinkyDungeonTrapSpawnBandit,"You are ambushed by bandits!"
 KinkyDungeonTrapSpawnGreaterSkeleton,"Armed skeletons appear from passages in the walls!"
+KinkyDungeonTrapSpawnGreaterSkeletonSingle,"An armed skeleton drops down from the ceiling!"
 KinkyDungeonTrapSpawnHeavySkeleton,"A wall panel falls down, and an armored skeleton appears!"
+KinkyDungeonTrapSpawnShadowHand,"You feel a chill down your spine..."
+KinkyDungeonTrapSpawnHugHorror,"You feel a constricting presence..."
+KinkyDungeonTrapSpawnTickleTerror,"You feel a titillating presence..."
 KinkyDungeonTrapSpawnNinja,"You are ambushed by ninjas!"
 KinkyDungeonTrapSpawnRopeKraken,"A large, wriggling mess of ropes fall from the ceiling!"
 KinkyDungeonTrapSpawnDragon,"You are ambushed by dragonhearts!"
 KinkyDungeonTrapSpawnDragonLeader,"You are ambushed by dragonhearts!"
 KinkyDungeonTrapSpawnDrone,"A group of drones surround you!"
+KinkyDungeonTrapSpawnDressmaker,"You stumble upon a group of mages wanting to play dress-up!"
+KinkyDungeonTrapSpawnLibrary,"You step on an open book, only to find a furious librarian staring you down!"
 KinkyDungeonTrapSpawnWolfgirl,"You are ambushed by wolfgirls!"
 KinkyDungeonTrapSpawnAlkahestor,"You are ambushed by an alkahestor!"
 KinkyDungeonTrapSpawnSmallSlime,"Small blobs of slime fall from the ceiling!"
@@ -8760,6 +8847,11 @@ rJourneyHarder,"This is the entrance to the ancient tombs.|It's harder than the 
 rJourneyRandom,"This part of the dungeon has been altered by the goddess of chaos.|The order of zones you'll go through is totally random."
 rJourneyExplorer,"Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!"
 rJourneyLost,"You've gotten yourself lost wandering in the ruins.|The order of tilesets is reversed!"
+
+
+
+rJourneyTest,"This is a debug mode journey for testing the latest region."
+
 
 rJourneyTutorial,"These are the stairs to the tutorial hall."
 
