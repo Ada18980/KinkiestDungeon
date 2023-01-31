@@ -3705,7 +3705,7 @@ Sticky tape made from a metallic material. Used to great effect in police situat
 It's very sticky and tough but you could probably get a knife through it.
 它非常粘稠且坚韧，但您可以用刀解决它。
 Autotape (Feet)
-自动胶带（英尺）
+自动胶带（足）
 Sticky tape made from a metallic material. Used to great effect in police situations.
 由金属材料制成的胶带。在警察情况下使用效果很好。
 It's very sticky and tough but you could probably get a knife through it.
