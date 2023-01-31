@@ -1225,6 +1225,7 @@ Features
 - Some tooltips still appear even without inspecting
 - Fixed a bug where selecting both Hogtied and Latex Doll would mistakenly not place a blindfold on the player character
 - New enemy in Ancient Tombs: Animated Sarcophagus
+- Added indicator for enemies which disappear if caster gets stunned (a hexagon)
 
 TODO ValidationFindBlockCycles to prevent bugs
 
