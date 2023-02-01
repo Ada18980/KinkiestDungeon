@@ -4300,6 +4300,10 @@ A collar owned by the Dragonhearts, an order of dragonslayers.
 龙之心：屠龙骑士团拥有的项圈。
 It's made from hard-to-cut dragonscale!!!
 它是由难以切割的龙鳞制成的！！！
+Leather Leg Cuffs
+皮革腿铐
+A pair of chained cuffs made of leather. They make it trickier to run away.
+一双由皮革制成的链式腿铐。 他们使逃跑变得更棘手。
 Leather Cuffs
 皮革铐
 A pair of cuffs that make it easy to restrain you.
