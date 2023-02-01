@@ -2055,7 +2055,7 @@ function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill
 	let restraintWeightTotal = 0;
 	if (KinkyDungeonStatsChoice.has("NoWayOut")) RequireWill = false;
 	let restraintWeights = [];
-	let willPercent = (Math.min(KinkyDungeonStatWill / KinkyDungeonStatWillMax, 1 - KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax))
+	let willPercent = (KinkyDungeonStatWill / KinkyDungeonStatWillMax - 0.15 * KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax)
 		/(1 + (KinkyDungeonGoddessRep.Ghost + 50)/100);
 
 	if (KinkyDungeonSlowLevel > 0) willPercent = willPercent * (0.6 + 0.4 * Math.min(1, Math.max(0, 1 - KinkyDungeonSlowLevel/3)));
@@ -2448,6 +2448,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 				KDCurses[Curse].onApply(linkUnder.dynamicLink, linkUnder);
 			}
 			if (r) KDUpdateLinkCaches(r);
+			KinkyDungeonSendEvent("postApply", {item: linkUnder.dynamicLink, host: linkUnder, keep: Keep, Link: true});
 		} else {
 			ret = KinkyDungeonAddRestraint(restraint, Tightness + Math.round(0.1 * KinkyDungeonDifficulty), Bypass, Lock, Keep, false, !linkableCurrent, events, faction, undefined, undefined, Curse, undefined, securityEnemy);
 		}
@@ -2711,6 +2712,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				}
 				let item = {name: restraint.name, id: KinkyDungeonGetItemID(), type: Restraint, curse: Curse, events:events ? events : Object.assign([], restraint.events), tightness: tight, lock: "", faction: faction, dynamicLink: dynamicLink };
 				KinkyDungeonInventoryAdd(item);
+				KinkyDungeonSendEvent("postApply", {item: item, host: undefined, keep: Keep, Link: Link});
 
 				if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {
 					KDCurses[Curse].onApply(item, undefined);
@@ -2989,6 +2991,9 @@ function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, fact
 			KDUpdateLinkCaches(newItem);
 			if (autoMessage && KDRestraint(oldItem).Link)
 				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonLink" + oldItem.name), "#ff0000", 2);
+
+
+			KinkyDungeonSendEvent("postApply", {item: newItem, host: undefined, keep: Keep, Link: true});
 			return true;
 		}
 	}

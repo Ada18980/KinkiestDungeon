@@ -617,6 +617,22 @@ let KDOrigCharge = 1000;
 let KDOrigDistraction = 0;
 
 function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0) {
+
+	if (isNaN(Amount)) {
+		console.trace();
+		Amount = 0;
+	}
+	let data = {
+		Amount: Amount,
+		NoFloater: NoFloater,
+		lowerPerc: lowerPerc,
+		minimum: minimum,
+	};
+	KinkyDungeonSendEvent("changeDistraction", data);
+	Amount = data.Amount;
+	lowerPerc = data.lowerPerc;
+	minimum = data.minimum;
+	NoFloater = data.NoFloater;
 	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
@@ -652,7 +668,29 @@ function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0
 		KinkyDungeonStatDistraction = 0;
 	}
 }
-function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0) {
+function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0, slowFloor = 5) {
+
+	if (isNaN(Amount)) {
+		console.trace();
+		Amount = 0;
+	}
+
+	let data = {
+		NoFloater: NoFloater,
+		Amount: Amount,
+		NoSlow: NoSlow,
+		minimum: minimum,
+		Pause: Pause,
+		slowFloor: slowFloor,
+	};
+	KinkyDungeonSendEvent("changeStamina", data);
+	NoFloater = data.NoFloater;
+	Amount = data.Amount;
+	NoSlow = data.NoSlow;
+	minimum = data.minimum;
+	slowFloor = data.slowFloor;
+	Pause = data.pause;
+
 	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
@@ -685,10 +723,33 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
  * @param {boolean} [spill]
  */
 function KinkyDungeonChangeMana(Amount, NoFloater, PoolAmount, Pause, spill, minimum = 0) {
+
 	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
 	}
+
+	let data = {
+		NoFloater: NoFloater,
+		Amount: Amount,
+		PoolAmount: PoolAmount,
+		minimum: minimum,
+		Pause: Pause,
+		spill: spill,
+	};
+	KinkyDungeonSendEvent("changeMana", data);
+	NoFloater = data.NoFloater;
+	Amount = data.Amount;
+	PoolAmount = data.PoolAmount;
+	minimum = data.minimum;
+	Pause = data.pause;
+	spill = data.spill;
+
+	if (isNaN(Amount)) {
+		console.trace();
+		Amount = 0;
+	}
+
 	let minLevel = Math.min(KinkyDungeonStatManaMax * minimum, KinkyDungeonStatMana); // Cannot go below this or current
 	let manaAmt = KinkyDungeonStatMana;
 	KinkyDungeonStatMana += Amount;
@@ -715,6 +776,22 @@ function KinkyDungeonChangeMana(Amount, NoFloater, PoolAmount, Pause, spill, min
 	}
 }
 function KinkyDungeonChangeWill(Amount, NoFloater, minimum = 0) {
+
+	if (isNaN(Amount)) {
+		console.trace();
+		Amount = 0;
+	}
+
+	let data = {
+		NoFloater: NoFloater,
+		Amount: Amount,
+		minimum: minimum,
+	};
+	KinkyDungeonSendEvent("changeWill", data);
+	NoFloater = data.NoFloater;
+	Amount = data.Amount;
+	minimum = data.minimum;
+
 	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
