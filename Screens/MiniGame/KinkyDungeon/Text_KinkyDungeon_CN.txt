@@ -4220,6 +4220,38 @@ Your ankle cuffs snap together on their own!
 您的脚铐会自行扣合！
 Your ankle cuffs detach!
 你的脚铐脱落！
+Asylum Muzzle
+安全口套
+The nurses use this on noisy patients!
+护士将其用于吵闹的患者！
+It's sturdy leather...
+它由坚固的皮革制成...
+Asylum Jacket
+安全夹克
+A straitjacket that keeps patients out of trouble.
+一种使患者摆脱麻烦的紧身衣。
+It has many straps and is very difficult to escape.
+它有许多皮带，很难逃脱。
+Asylum Legbinder
+安全束腿套
+This legbinder will keep the patient from kicking the nurses.
+该腿套将阻止患者踢护士。
+It has both laces and straps.
+它既有鞋带和皮带。
+Asylum Ankle Cuffs
+安全脚铐
+A pair of chained cuffs made of reinforced leather. They make patients easier to catch.
+一双由增强皮革制成的链式袖口。 他们使患者更容易捕获。
+They can be thrown from long distances.
+它们可以从长距离扔掉。
+The enemy attaches your ankle cuffs together!
+敌人将您的链式脚铐固定在一起！
+Cuffs Chain
+安全链式脚踝铐
+The ankle cuff chain detaches!
+链式脚踝铐脱离！
+Asylum Leg Cuffs
+安全足拷
 Comfy Muzzle
 舒适口套
 A lovely muzzle that's extraordinarily comfy!
