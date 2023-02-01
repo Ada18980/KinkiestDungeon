@@ -4854,6 +4854,8 @@ A piece of cloth secured onto your face and blocking vision.
 一块布固定在您的脸上并挡住视线。
 You can still see through the gap around your nose.
 您仍然可以通过鼻子周围的缝隙看到。
+Knotted Cloth Gag
+打结的布口塞
 OTN Cloth Gag
 OTN 布口塞
 A piece of cloth tightened over your mouth.
