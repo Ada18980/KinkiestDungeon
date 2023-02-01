@@ -36,6 +36,11 @@ let KDCurrentModels = new Map();
 
 class ModelContainer {
 	/**
+     * HighestPriority is used to store the highest priority in each layer
+     * @property {Record<string, number>} HighestPriority
+     * @public
+     */
+	/**
 	 * @param {Character} Character
 	 * @param {Map<string, Model>} Models
 	 * @param {any} Container
@@ -50,7 +55,9 @@ class ModelContainer {
 		this.SpritesDrawn = SpritesDrawn;
 		this.Models = Models;
 		this.Poses = Poses;
+		this.HighestPriority = {};
 	}
+
 
 	/**
 	 * Adds a model to the modelcontainer
@@ -75,6 +82,19 @@ class ModelContainer {
 function ToLayerMap(Layers) {
 	return ToNamedMap(Layers);
 }
+
+/**
+ * @param {string} ModelName
+ * @returns {ModelLayer[]}
+ */
+function GetModelLayers(ModelName) {
+	if (ModelDefs[ModelName]) {
+		return Object.values(ModelDefs[ModelName].Layers);
+	}
+	return [];
+}
+
+
 
 
 /**
@@ -106,9 +126,7 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend =
 
 	MC.SpritesDrawn.clear();
 
-	// TODO remove test code
-	MC.addModel(ModelDefs.Body);
-	MC.addModel(ModelDefs.Catsuit);
+	if (MC.Models.size == 0) UpdateModels(MC);
 
 	// Actual loop for drawing the models on the character
 	DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods);
@@ -165,6 +183,15 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods) {
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
 
+	// Create the highestpriority matrix
+	MC.HighestPriority = {};
+	for (let m of Models.values()) {
+		for (let l of Object.values(m.Layers)) {
+			MC.HighestPriority[l.Layer] = Math.max(MC.HighestPriority[l.Layer] || -500, l.Pri || -500);
+		}
+	}
+
+
 	// TODO hide, filtering based on pose, etc etc
 	let {X_Offset, Y_Offset} = ModelGetPoseOffsets(MC.Poses);
 	let {rotation, X_Anchor, Y_Anchor} = ModelGetPoseRotation(MC.Poses);
@@ -184,7 +211,7 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods) {
 	// Now that we have the final list of models we do a KDDraw
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
-			if (ModelDrawLayer(m, l, MC.Poses)) {
+			if (ModelDrawLayer(MC, m, l, MC.Poses)) {
 				let ox = 0;
 				let oy = 0;
 				let ax = 0;
@@ -231,12 +258,27 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods) {
 
 /**
  * Determines if we should draw this layer or not
+ * @param {ModelContainer} MC
  * @param {Model} Model
  * @param {ModelLayer} Layer
  * @param {Record<string, boolean>} Poses
  * @returns {boolean}
  */
-function ModelDrawLayer(Model, Layer, Poses) {
+function ModelDrawLayer(MC, Model, Layer, Poses) {
+	// Hide if not highest
+	if (Layer.HideWhenOverridden) {
+		let priTest = MC.HighestPriority[Layer.Layer];
+		if (priTest > Layer.Pri) return false;
+	}
+
+	// Hide poses
+	if (Layer.HidePoses) {
+		for (let p of Object.keys(Poses)) {
+			if (Layer.HidePoses[p]) {
+				return false;
+			}
+		}
+	}
 	// Filter poses
 	if (Layer.Poses) {
 		let found = false;
@@ -271,6 +313,7 @@ function ModelLayerString(Model, Layer, Poses) {
  */
 function LayerSprite(Layer, Poses) {
 	let pose = "";
+
 	let foundPose = false;
 
 	// change the pose if its a morph pose, this helps to avoid duplication
@@ -285,34 +328,38 @@ function LayerSprite(Layer, Poses) {
 			}
 		}
 	}
-	// Handle the actual poses
-	if (Layer.Poses && !cancel) {
-		// Otherwise we append pose name to layer name
-		for (let p of Object.keys(Layer.Poses)) {
-			if (Poses[p] != undefined) {
-				pose =
-					(
-						(
-							!(Layer.GlobalDefaultOverride && Layer.GlobalDefaultOverride[p])
-							&& PoseProperties[p])
-								? PoseProperties[p].global_default
-								: p)
-					|| p;
-				foundPose = true;
-				break;
-			}
-		}
-	}
 
-	// For simplicity, we can have a global default override and it will add it as a pose to the list
-	// This helps simplify definitions, like for hogtie
-	if (!foundPose && !cancel && Layer.GlobalDefaultOverride) {
-		for (let p of Object.keys(Layer.GlobalDefaultOverride)) {
-			if (Poses[p] != undefined) {
-				pose = p;
-				break;
+	if (!Layer.Invariant) {
+		// Handle the actual poses
+		if (Layer.Poses && !cancel) {
+			// Otherwise we append pose name to layer name
+			for (let p of Object.keys(Layer.Poses)) {
+				if (Poses[p] != undefined) {
+					pose =
+						(
+							(
+								!(Layer.GlobalDefaultOverride && Layer.GlobalDefaultOverride[p])
+								&& PoseProperties[p])
+									? PoseProperties[p].global_default
+									: p)
+						|| p;
+					foundPose = true;
+					break;
+				}
 			}
 		}
+
+		// For simplicity, we can have a global default override and it will add it as a pose to the list
+		// This helps simplify definitions, like for hogtie
+		if (!foundPose && !cancel && Layer.GlobalDefaultOverride) {
+			for (let p of Object.keys(Layer.GlobalDefaultOverride)) {
+				if (Poses[p] != undefined) {
+					pose = p;
+					break;
+				}
+			}
+		}
+
 	}
 
 	if (Layer.AppendPose) {
@@ -325,4 +372,30 @@ function LayerSprite(Layer, Poses) {
 	}
 
 	return (Layer.Sprite ? Layer.Sprite : Layer.Name) + pose;
+}
+
+/**
+ * Updates models on a character
+ * @param {ModelContainer} MC
+ */
+function UpdateModels(MC) {
+	MC.Models = new Map();
+
+	// Start with base body
+	MC.addModel(ModelDefs.Body);
+
+	let appearance = MC.Character.Appearance;
+	for (let A of appearance) {
+		if (A.Model) {
+			MC.addModel(ModelDefs[A.Model.Name]);
+		}
+	}
+
+	/*
+	MC.addModel(ModelDefs.Catsuit);
+	//MC.addModel(ModelDefs.Labcoat);
+	//MC.addModel(ModelDefs.Pauldrons);
+	//MC.addModel(ModelDefs.Breastplate);
+	MC.addModel(ModelDefs.Bandit);
+	*/
 }

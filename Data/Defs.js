@@ -3,6 +3,7 @@
 let LAYERS_BASE = [
 	"Eyes",
 	"Head",
+	"Shoulders",
 	"Chest",
 	"HandLeft",
 	"ArmLeft",
@@ -17,6 +18,8 @@ let LAYERS_BASE = [
 	"Torso",
 	"HandRight",
 	"ArmRight",
+	"Coat",
+	"Cape",
 ];
 
 let LayerProperties = {

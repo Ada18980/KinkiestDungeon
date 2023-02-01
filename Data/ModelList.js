@@ -109,3 +109,111 @@ AddModel({
 		},
 	])
 });
+
+AddModel({
+	Name: "Labcoat",
+	Folder: "Labcoat",
+	Layers: ToLayerMap([
+		// Duplicate yoked is to override Closed override
+		{ Name: "Shoulders", Layer: "Shoulders", Pri: 10,
+			Poses: ToMap(["Yoked", "Spread", "Closed", "Kneel"]),
+			MorphPoses: {Yoked: "Yoked", Closed: "Spread"},
+		},
+		{ Name: "ShouldersHogtie", Layer: "Shoulders", Pri: 10,
+			Poses: ToMapSubtract([...ARMPOSES, "Hogtie"], ["Wristtie", "Yoked"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			HidePoses: ToMap(["Spread", "Closed", "Yoked"]),
+			MorphPoses: {Boxtie: "Free", Free: "Free", Hogtie: ""},
+		},
+		{ Name: "Coat", Layer: "Coat", Pri: 0,
+			Poses: ToMap(["Kneel", "Yoked", "Spread", "Closed"]),
+			HidePoses: ToMap(["Hogtie"]),
+			MorphPoses: {Closed: "Spread"},
+		},
+		// This one is weird, its just a special case
+		{ Name: "CoatHogtieFree", Layer: "Cape", Pri: 0,
+			Poses: ToMap(["Hogtie"]),
+			HidePoses: ToMap(["Wristtie"]),
+			MorphPoses: {Hogtie: ""},
+		},
+		{ Name: "Cape", Layer: "Cape", Pri: 0,
+			Poses: ToMap(["Hogtie", "Kneel", "Yoked", "Spread", "Closed"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			MorphPoses: {Closed: "Spread"},
+		},
+	])
+});
+
+
+AddModel({
+	Name: "Pauldrons",
+	Folder: "ArmorPlate",
+	Layers: ToLayerMap([
+		{ Name: "Pauldrons", Layer: "Shoulders", Pri: 8,
+			Poses: ToMap([...ARMPOSES, "Hogtie"]),
+			MorphPoses: {Yoked: "Yoked", Hogtie: "Hogtie", Wristtie: "Free", Boxtie: "Free"},
+			HideWhenOverridden: true,
+		},
+	])
+});
+AddModel({
+	Name: "Breastplate",
+	Folder: "ArmorPlate",
+	Layers: ToLayerMap([
+		{ Name: "Breastplate", Layer: "Chest", Pri: 25,
+			Poses: ToMap([...ARMPOSES, "Hogtie"]),
+			HideWhenOverridden: true,
+			MorphPoses: {Hogtie: "Hogtie"},
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "ChainShirt",
+	Folder: "ArmorChain",
+	Layers: ToLayerMap([
+		{ Name: "ShirtChest", Layer: "Chest", Pri: 5,
+			Poses: ToMap([...ARMPOSES, "Hogtie"]),
+			MorphPoses: {Hogtie: "Hogtie"},
+			Invariant: true,
+		},
+		{ Name: "Shirt", Layer: "TorsoUpper", Pri: 5,
+			Poses: ToMap([...ARMPOSES, "Hogtie"]),
+			MorphPoses: {Hogtie: "Hogtie"},
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "BanditShorts",
+	Folder: "Bandit",
+	Layers: ToLayerMap([
+		{ Name: "Shorts", Layer: "Chest", Pri: 7,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Hogtie: "Hogtie"},
+		},
+	])
+});
+
+AddModel({
+	Name: "BanditBreastplate",
+	Folder: "Bandit",
+	Layers: ToLayerMap([
+		{ Name: "Breastplate", Layer: "Chest", Pri: 24,
+			Poses: ToMap([...ARMPOSES, "Hogtie"]),
+			HideWhenOverridden: true,
+			MorphPoses: {Hogtie: "Hogtie"},
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "Bandit",
+	Folder: "Bandit",
+	Layers: ToLayerMap([
+		...GetModelLayers("BanditShorts"),
+		...GetModelLayers("BanditBreastplate"),
+	])
+});

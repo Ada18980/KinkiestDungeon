@@ -41,7 +41,6 @@ window.onload = function() {
 	CommonIsMobile = CommonDetectMobile();
 	TranslationLoad();
 	DrawLoad();
-	AssetLoadAll();
 	ControllerActive = false;
 	let _TextLoad = TextLoad; // Avoid nonexistent text query
 	TextLoad = () => {};
@@ -64,7 +63,6 @@ window.onload = function() {
 
 	CharacterLoadCSVDialog(Player);
 
-	CharacterAppearanceSetDefault(Player);
 	CurrentCharacter = null;
 	MiniGameStart("KinkyDungeon", 1, "ArcadeKinkyDungeonEnd");
 

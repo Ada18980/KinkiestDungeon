@@ -47,6 +47,12 @@ interface Model extends Namable {
     Folder: string,
     /** Layers themselves */
     Layers: Record<string, ModelLayer>,
+    /** Protects from stripping, for ears and tail and such */
+    Protected?: boolean,
+    /** This is a restraint */
+    Restraint?: boolean,
+    /** Optional group, for items where there can should only be one (like panties or shoes)*/
+    Group?: string,
 }
 
 interface ModelLayer extends Namable {
@@ -60,6 +66,8 @@ interface ModelLayer extends Namable {
     Sprite?: string,
     /** These layers are apended to the Sprite if the pose is met*/
     Poses?: Record<string, boolean>,
+    /** This layer is hidden in this pose*/
+    HidePoses?: Record<string, boolean>,
 	/** If one of these poses is present then the layer will default to the relevant pose*/
 	MorphPoses?: Record<string, string>,
 	/** Overrides globaL_default of the listed poses */
@@ -68,6 +76,10 @@ interface ModelLayer extends Namable {
 	AppendPose?: Record<string, boolean>,
 	/** Lists the poses that can be affected by AppendPose*/
 	AppendPoseRequire?: Record<string, boolean>,
+	/** This layer gets hidden if something else is higher on the priority list */
+	HideWhenOverridden?: boolean
+	/** The name is as is */
+	Invariant?: boolean
 }
 
 interface Namable {

@@ -683,97 +683,15 @@ interface Pose {
 	MovePosition?: { Group: string; X: number; Y: number; }[];
 }
 
-interface Activity {
-	Name: string;
-	MaxProgress: number;
-	Prerequisite: string[];
-	Target: string[];
-	TargetSelf?: string[] | true;
-	/** used for setting AutoPunishGagActionFlag */
-	MakeSound?: boolean;
-	/** An action that trigger when that activity is used */
-	StimulationAction?: StimulationAction;
-}
-
-interface LogRecord {
-	Name: string;
-	Group: string;
-	Value: number;
-}
-
 type ItemColor = string | string[];
 
 /** An item is a pair of asset and its dynamic properties that define a worn asset. */
 interface Item {
-	Asset: Asset;
+	Asset?: Asset;
+	Model?: Model;
 	Color?: ItemColor;
 	Difficulty?: number;
-	Craft?: CraftedItemProperties;
 	Property?: ItemProperties;
-}
-
-interface CraftedItemProperties {
-	Name: string;
-	MemberName?: string;
-	MemberNumber?: number;
-	Description: string;
-	Property: string;
-}
-
-type FavoriteIcon = "Favorite" | "FavoriteBoth" | "FavoritePlayer";
-
-type InventoryIcon = FavoriteIcon | "AllowedLimited" | "Handheld" | "Locked" | "LoverOnly" | "OwnerOnly" | "Unlocked";
-
-interface DialogInventoryItem extends Item {
-	Worn: boolean;
-	Icons: InventoryIcon[];
-	SortOrder: string;
-	Hidden: boolean;
-	Vibrating: boolean;
-}
-
-interface InventoryItem {
-	Group: string;
-	Name: string;
-	Asset: Asset;
-}
-
-interface FavoriteState {
-	TargetFavorite: boolean;
-	PlayerFavorite: boolean;
-	Icon: FavoriteIcon;
-	UsableOrder: DialogSortOrder;
-	UnusableOrder: DialogSortOrder;
-}
-
-interface Skill {
-	Type: string;
-	Level: number;
-	Progress: number;
-	Ratio?: number;
-}
-
-interface Reputation {
-	Type: string;
-	Value: number;
-}
-
-interface Ownership {
-	Name: string;
-	MemberNumber: number;
-	Stage: number;
-	Start: number;
-}
-
-interface Lovership {
-	Name: string;
-	MemberNumber?: number;
-	Stage?: number;
-	Start?: number;
-	// Bad data sometimes received from server
-	BeginDatingOfferedByMemberNumber?: unknown;
-	BeginEngagementOfferedByMemberNumber?: unknown;
-	BeginWeddingOfferedByMemberNumber?: unknown;
 }
 
 interface ScreenFunctions {

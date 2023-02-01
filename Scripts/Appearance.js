@@ -425,45 +425,7 @@ function CharacterAppearanceItemIsHidden(AssetName, GroupName) {
  * @returns {void} - Nothing
  */
 function CharacterAppearanceSetHeightModifiers(C) {
-	if (CharacterAppearanceForceUpCharacter != C.MemberNumber) {
-		let Height = 0;
-		let HeightRatioProportion = 1;
 
-		// Check if there is any setting to override the standard asset height modifiers
-		let HeightOverrides = [];
-		let PoseOverrides = Pose.filter(P => C.Pose != null && C.Pose.indexOf(P.Name) >= 0 && P.OverrideHeight != null).map(P => P.OverrideHeight);
-		let AssetOverrides = C.DrawAppearance.filter(A => A.Asset.OverrideHeight != null).map(A => A.Asset.OverrideHeight);
-		let PropertyOverrides = C.DrawAppearance.filter(A => A.Property && A.Property.OverrideHeight != null).map(A => A.Property.OverrideHeight);
-		HeightOverrides = HeightOverrides.concat(PoseOverrides, AssetOverrides, PropertyOverrides);
-
-		if (HeightOverrides.length > 0) {
-			// Use the override with highest priority
-			let TopOverride = HeightOverrides.reduce((a, b) => a.Priority >= b.Priority ? a : b);
-			Height = TopOverride.Height || 0;
-			if (TopOverride.HeightRatioProportion != null) HeightRatioProportion = TopOverride.HeightRatioProportion;
-		}
-		else {
-			// Adjust the height based on modifiers on the assets
-			for (let A = 0; A < C.DrawAppearance.length; A++)
-				if (CharacterAppearanceVisible(C, C.DrawAppearance[A].Asset.Name, C.DrawAppearance[A].Asset.Group.Name)) {
-					if (C.DrawAppearance[A].Property && C.DrawAppearance[A].Property.HeightModifier != null) Height += C.DrawAppearance[A].Property.HeightModifier;
-					else Height += C.DrawAppearance[A].Asset.HeightModifier;
-				}
-		}
-
-		// Limit values affectable by Property settings in case invalid values were set via console
-		if (Height > CanvasLowerOverflow) Height = CanvasLowerOverflow;
-		if (Height < -CanvasUpperOverflow) Height = -CanvasUpperOverflow;
-		if (HeightRatioProportion > 1) HeightRatioProportion = 1;
-		if (HeightRatioProportion < 0) HeightRatioProportion = 0;
-
-		// Set the final modifier values for the character
-		C.HeightModifier = Height;
-		C.HeightRatioProportion = HeightRatioProportion;
-	}
-
-	// Set the height ratio here to avoid lookin it up when drawing. The setting can make all characters full height
-	C.HeightRatio = Player.VisualSettings && Player.VisualSettings.ForceFullHeight ? 1 : CharacterAppearanceGetCurrentValue(C, "Height", "Zoom");
 }
 
 /**
@@ -1357,7 +1319,7 @@ function AppearanceItemStringify(Item) {
  * @returns {void} - Nothing
  */
 function CharacterAppearanceRestore(C, backup) {
-	C.Appearance = AppearanceItemParse(backup);
+	//C.Appearance = AppearanceItemParse(backup);
 }
 
 function AppearanceItemParse(stringified) {

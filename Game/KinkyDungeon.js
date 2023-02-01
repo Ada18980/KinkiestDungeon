@@ -2052,7 +2052,7 @@ function KinkyDungeonHandleClick() {
 			return true;
 		} else if (MouseIn(360, 930, 220, 64)) {
 			if (KinkyDungeonReplaceConfirm > 0) {
-				KinkyDungeonDresses.Default = KinkyDungeonDefaultDefaultDress;
+				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
 				CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 				CharacterReleaseTotal(KinkyDungeonPlayer);
 				KinkyDungeonSetDress("Default", "Default");

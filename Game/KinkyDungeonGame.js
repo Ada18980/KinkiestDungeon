@@ -3824,6 +3824,47 @@ function KDAddAppearance(C, Group, ItemAsset, NewColor, DifficultyFactor, ItemMe
 	return null;
 }
 
+
+/**
+ * Sets an item in the character appearance
+ * @param {Character} C - The character whose appearance should be changed
+ * @param {string} Group - The name of the corresponding groupr for the item
+ * @param {Model} ItemModel - The asset collection of the item to be changed
+ * @param {string|string[]} NewColor - The new color (as "#xxyyzz" hex value) for that item
+ * @param {number} [DifficultyFactor=0] - The difficulty, on top of the base asset difficulty, that should be assigned
+ * to the item
+ * @param {number} [ItemMemberNumber=-1] - The member number of the player adding the item - defaults to -1
+ * @param {boolean} [Refresh=true] - Determines, wether the character should be redrawn after the item change
+ * @param {item} [item] - The item, to pass to the event
+ * @returns {Item} - the item itself
+ */
+function KDAddModel(C, Group, ItemModel, NewColor, DifficultyFactor, ItemMemberNumber, Refresh, item) {
+	DifficultyFactor = 0;
+
+	// Unlike the stock function, we do NOT remove the previous one
+	let data = {
+		color: NewColor,
+		item: item,
+	};
+
+	KinkyDungeonSendEvent("onWear", data);
+
+	// Add the new item to the character appearance
+	if (ItemModel != null) {
+		/** @type {Item} */
+		const NA = {
+			// @ts-ignore
+			Model: ItemModel,
+			Difficulty: 0,//parseInt((ItemModel.Difficulty == null) ? 0 : ItemModel.Difficulty) + parseInt(DifficultyFactor),
+			Color: data.color,
+			Property: undefined,
+		};
+		C.Appearance.push(NA);
+		return NA;
+	}
+	return null;
+}
+
 function KinkyDungeonCloseDoor(data) {
 	KinkyDungeonTargetTileLocation = data.targetTile;
 	KinkyDungeonTargetTile = null;

@@ -471,7 +471,6 @@ function CharacterLoadSimple(AccName) {
 function CharacterDelete(NPCType) {
 	for (let C = 0; C < Character.length; C++)
 		if (Character[C].AccountName == NPCType) {
-			AnimationPurge(Character[C], true);
 			Character.splice(C, 1);
 			return;
 		}
@@ -693,36 +692,7 @@ function CharacterLoadTints(C) {
  * @returns {void} - Nothing
  */
 function CharacterLoadCanvas(C) {
-	// Reset the property that tracks if wearing a hidden item
-	C.HasHiddenItems = false;
 
-	// We add a temporary appearance and pose here so that it can be modified by hooks.  We copy the arrays so no hooks can alter the reference accidentally
-	C.DrawAppearance = AppearanceItemParse(CharacterAppearanceStringify(C));
-	C.DrawPose = C.Pose.slice(); // Deep copy of pose array
-
-
-	// Run BeforeSortLayers hook
-	if (C.Hooks && typeof C.Hooks.get == "function") {
-		let hooks = C.Hooks.get("BeforeSortLayers");
-		if (hooks)
-			hooks.forEach((hook) => hook(C)); // If there's a hook, call it
-	}
-
-	// Generates a layer array from the character's appearance array, sorted by drawing order
-	C.AppearanceLayers = CharacterAppearanceSortLayers(C);
-
-	// Run AfterLoadCanvas hooks
-	if (C.Hooks && typeof C.Hooks.get == "function") {
-		let hooks = C.Hooks.get("AfterLoadCanvas");
-		if (hooks)
-			hooks.forEach((hook) => hook(C)); // If there's a hook, call it
-	}
-
-	// Sets the total height modifier for that character
-	CharacterAppearanceSetHeightModifiers(C);
-
-	// Reload the canvas
-	CharacterAppearanceBuildCanvas(C);
 }
 
 /**
@@ -745,13 +715,6 @@ function CharacterLoadCanvasAll() {
  * @returns {void} - Nothing
  */
 function CharacterRefresh(C, Push, RefreshDialog = true) {
-	AnimationPurge(C, false);
-	CharacterLoadEffect(C);
-	CharacterLoadPose(C);
-	CharacterLoadCanvas(C);
-	// Label often looped through checks:
-	C.RunScripts = (!C.AccountName.startsWith('Online-') || !(Player.OnlineSettings && Player.OnlineSettings.DisableAnimations)) && (!Player.GhostList || Player.GhostList.indexOf(C.MemberNumber) == -1);
-	C.HasScriptedAssets = !!C.Appearance.find(CA => CA.Asset.DynamicScriptDraw);
 }
 
 /**
@@ -1161,8 +1124,8 @@ function CharacterLoadNPC(NPCType) {
 	let C = Character[Character.length - 1];
 	C.AccountName = NPCType;
 	CharacterRandomName(C);
-	CharacterAppearanceBuildAssets(C);
-	CharacterAppearanceFullRandom(C);
+	//CharacterAppearanceBuildAssets(C);
+	//CharacterAppearanceFullRandom(C);
 
 	// Returns the new character
 	return C;
@@ -1176,15 +1139,8 @@ function CharacterLoadNPC(NPCType) {
  */
 function CharacterReleaseTotal(C) {
 	for (let E = C.Appearance.length - 1; E >= 0; E--) {
-		if (C.Appearance[E].Asset.Group.Category != "Appearance") {
-			if (C.IsOwned() && C.Appearance[E].Asset.Name == "SlaveCollar") {
-				// Reset slave collar to the default model if it has a gameplay effect (such as gagging the player)
-				if (C.Appearance[E].Property && C.Appearance[E].Property.Effect && C.Appearance[E].Property.Effect.length > 0)
-					delete C.Appearance[E].Property;
-			}
-			else {
-				C.Appearance.splice(E, 1);
-			}
+		if (!(C.Appearance[E].Model?.Restraint)) {
+			C.Appearance.splice(E, 1);
 		}
 	}
 	CharacterRefresh(C);

@@ -196,6 +196,8 @@ interface KDRestraintProps {
 	alwaysStruggleable?: boolean,
 	name: string,
 	Group: string,
+	/** Model to use in standalone. Defaults to Asset */
+	Model?: string,
 	Asset: string,
 	/** Used for when the visual asset in BC is different from the actual group of the item*/
 	AssetGroup?: string,
