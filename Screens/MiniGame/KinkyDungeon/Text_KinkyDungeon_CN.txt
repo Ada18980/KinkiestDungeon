@@ -3934,6 +3934,12 @@ A pair of steel cuffs locked securely around your wrists.
 一对钢制手铐牢固地锁在您的手腕上。
 The lock doesn't seem very complicated.
 锁似乎不是很复杂。
+Steel Yoke
+钢杆
+A steel bar clamped firmly around your wrists and neck, leaving you in a helpless position.
+钢杆牢牢地夹在您的手腕和脖子上，使您处于无助的位置。
+This is not something you can pick by yourself...
+这不是您自己可以选择的东西...
 Leather Harness
 皮革束衣
 A leather harness of tight straps buckled around your torso.
