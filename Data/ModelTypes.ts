@@ -53,6 +53,8 @@ interface Model extends Namable {
     Restraint?: boolean,
     /** Optional group, for items where there can should only be one (like panties or shoes)*/
     Group?: string,
+    /** Default string of colors*/
+    DefaultColor?: string[],
 }
 
 interface ModelLayer extends Namable {

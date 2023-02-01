@@ -829,6 +829,10 @@ function CharacterSetActivePose(C, NewPose, ForceChange = false) {
  * @returns {void} - Nothing
  */
 function CharacterSetFacialExpression(C, AssetGroup, Expression, Timer, Color) {
+	if (Patched) {
+		// TODO add facial expression handling
+		return;
+	}
 	// A normal eye expression is triggered for both eyes
 	if (AssetGroup == "Eyes") CharacterSetFacialExpression(C, "Eyes2", Expression, Timer);
 	if (AssetGroup == "Eyes1") AssetGroup = "Eyes";
@@ -1139,7 +1143,7 @@ function CharacterLoadNPC(NPCType) {
  */
 function CharacterReleaseTotal(C) {
 	for (let E = C.Appearance.length - 1; E >= 0; E--) {
-		if (!(C.Appearance[E].Model?.Restraint)) {
+		if (!(C.Appearance[E].Model?.Restraint == undefined)) {
 			C.Appearance.splice(E, 1);
 		}
 	}

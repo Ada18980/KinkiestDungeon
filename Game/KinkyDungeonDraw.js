@@ -1010,7 +1010,7 @@ function KinkyDungeonDrawGame() {
 					scale_y: 3,
 					rotation_x_anchor: 1190/MODELWIDTH,
 					rotation_y_anchor: 690/MODELHEIGHT,
-					offset_x: 1140/MODELWIDTH,
+					offset_x: 1100/MODELWIDTH,
 					offset_y: 620/MODELHEIGHT,
 				},
 			] : [];

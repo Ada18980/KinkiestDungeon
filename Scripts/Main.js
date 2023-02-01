@@ -15,18 +15,15 @@ KinkyDungeonMultiplayerUpdate = () => {};
 ArcadeDeviousDungeonChallenge = false;
 
 const _CharacterAppearanceSetDefault = CharacterAppearanceSetDefault;
-const _CharacterAppearanceFullRandom = CharacterAppearanceFullRandom;
 const _CharacterLoadCanvas = CharacterLoadCanvas;
 const _CharacterRefresh = CharacterRefresh;
 
 function suppressCanvasUpdate(fn) {
 	CharacterAppearanceSetDefault = () => {};
-	CharacterAppearanceFullRandom = () => {};
 	CharacterLoadCanvas = () => {};
 	CharacterRefresh = () => {};
 	let ret = fn();
 	CharacterAppearanceSetDefault = _CharacterAppearanceSetDefault;
-	CharacterAppearanceFullRandom = _CharacterAppearanceFullRandom;
 	CharacterLoadCanvas = _CharacterLoadCanvas;
 	CharacterRefresh = _CharacterRefresh;
 	return ret;

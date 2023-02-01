@@ -2047,7 +2047,9 @@ function KinkyDungeonHandleClick() {
 			KinkyDungeonDressPlayer();
 			// @ts-ignore
 			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: false, AllowFullWardrobeAccess: true};
-			CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
+			if (!Patched)
+				// @ts-ignore
+				CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
 			KinkyDungeonConfigAppearance = true;
 			return true;
 		} else if (MouseIn(360, 930, 220, 64)) {

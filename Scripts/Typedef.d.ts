@@ -1196,6 +1196,8 @@ interface ItemPropertiesBase {
 	OverridePriority?: unknown;
 	DefaultColor?: string;
 
+	Modules?: number[];
+
 	Attribute?: string[];
 
 	AllowActivity?: string[];

@@ -77,18 +77,32 @@ function KinkyDungeonDressSet() {
 	if (KinkyDungeonNewDress) {
 		KDGetDressList().Default = [];
 		let C = KinkyDungeonPlayer;
+
 		for (let A = 0; A < C.Appearance.length; A++) {
 			let save = false;
-			if (C.Appearance[A].Asset.Group.BodyCosplay || C.Appearance[A].Asset.BodyCosplay) save = true;
-			else if (C.Appearance[A].Asset.Group.Underwear) save = true;
-			else if (C.Appearance[A].Asset.Group.Clothing) save = true;
-			if (save) {
-				KDGetDressList().Default.push({
-					Item: C.Appearance[A].Asset.Name,
-					Group: C.Appearance[A].Asset.Group.Name,
-					Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Asset.DefaultColor ? C.Appearance[A].Asset.DefaultColor : "Default"),
-					Lost: false,
-				},);
+			if (Patched) {
+				if (C.Appearance[A].Model?.Protected) save = true;
+				if (!C.Appearance[A].Model?.Restraint) save = true;
+				if (save) {
+					KDGetDressList().Default.push({
+						Item: C.Appearance[A].Model?.Name || C.Appearance[A].Asset?.Name,
+						Group: C.Appearance[A].Model?.Group,
+						Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Model.DefaultColor ? C.Appearance[A].Model.DefaultColor : "Default"),
+						Lost: false,
+					},);
+				}
+			} else {
+				if (C.Appearance[A].Asset.Group.BodyCosplay || C.Appearance[A].Asset.BodyCosplay) save = true;
+				else if (C.Appearance[A].Asset.Group.Underwear) save = true;
+				else if (C.Appearance[A].Asset.Group.Clothing) save = true;
+				if (save) {
+					KDGetDressList().Default.push({
+						Item: C.Appearance[A].Asset.Name,
+						Group: C.Appearance[A].Asset.Group.Name,
+						Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Asset.DefaultColor ? C.Appearance[A].Asset.DefaultColor : "Default"),
+						Lost: false,
+					},);
+				}
 			}
 		}
 	}
@@ -531,15 +545,27 @@ function KDCharacterNaked() {
  */
 function KDCharacterAppearanceNaked() {
 	// For each item group (non default items only show at a 20% rate)
-	for (let A = KinkyDungeonPlayer.Appearance.length - 1; A >= 0; A--)
-		if (KinkyDungeonPlayer.Appearance[A].Asset.Group.AllowNone &&
-			(KinkyDungeonPlayer.Appearance[A].Asset.Group.Category === "Appearance")){
-			// conditional filter
-			let f = !(KinkyDungeonPlayer.Appearance[A].Asset.Group.BodyCosplay
-				&& (KDProtectedCosplay.includes(KinkyDungeonPlayer.Appearance[A].Asset.Group.Name)));
-			if (!f){continue;}
-			KinkyDungeonPlayer.Appearance.splice(A, 1);
+	for (let A = KinkyDungeonPlayer.Appearance.length - 1; A >= 0; A--) {
+		if (Patched) {
+			if (!KinkyDungeonPlayer.Appearance[A].Model.Restraint){
+				// conditional filter
+				let f = !(KinkyDungeonPlayer.Appearance[A].Model.Group
+					&& (KDProtectedCosplay.includes(KinkyDungeonPlayer.Appearance[A].Model.Group)));
+				if (!f){continue;}
+				KinkyDungeonPlayer.Appearance.splice(A, 1);
+			}
+		} else {
+			if (KinkyDungeonPlayer.Appearance[A].Asset.Group.AllowNone &&
+				(KinkyDungeonPlayer.Appearance[A].Asset.Group.Category === "Appearance")){
+				// conditional filter
+				let f = !(KinkyDungeonPlayer.Appearance[A].Asset.Group.BodyCosplay
+					&& (KDProtectedCosplay.includes(KinkyDungeonPlayer.Appearance[A].Asset.Group.Name)));
+				if (!f){continue;}
+				KinkyDungeonPlayer.Appearance.splice(A, 1);
+			}
 		}
+	}
+
 
 	// Loads the new character canvas
 	CharacterLoadCanvas(KinkyDungeonPlayer);
@@ -548,7 +574,52 @@ function KDCharacterAppearanceNaked() {
 
 function KDApplyItem(inv, tags) {
 	if (Patched) {
+		let restraint = KDRestraint(inv);
+		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
+		let faction = inv.faction ? inv.faction : "";
 
+		let color = (typeof restraint.Color === "string") ? [restraint.Color] : restraint.Color;
+		if (restraint.factionColor && faction && KinkyDungeonFactionColors[faction]) {
+			for (let i = 0; i < restraint.factionColor.length; i++) {
+				for (let n of restraint.factionColor[i]) {
+					color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
+				}
+			}
+		}
+
+		//let already = InventoryGet(KinkyDungeonPlayer, AssetGroup);
+		//let difficulty = already?.Property?.Difficulty || 0;
+
+		/** @type {Item} */
+		let placed = null;
+
+		if (!restraint.armor || KinkyDungeonArmor) {
+			placed = KDAddModel(KinkyDungeonPlayer, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], color, undefined, undefined, undefined, inv);
+		}
+
+		if (placed) {
+			let type = restraint.Type;
+			if (restraint.changeRenderType && Object.keys(restraint.changeRenderType).some((k) => {return tags.has(k);})) {
+				let key = Object.keys(restraint.changeRenderType).filter((k) => {return tags.has(k);})[0];
+				if (key) {
+					type = restraint.changeRenderType[key];
+				}
+			}
+			placed.Property = {Type: type, Modules: restraint.Modules, Difficulty: restraint.power, LockedBy: inv.lock ? "MetalPadlock" : undefined};
+
+			/*if ((!already) && type) {
+				KinkyDungeonPlayer.FocusGroup = AssetGroupGet("Female3DCG", AssetGroup);
+				let options = window["Inventory" + ((AssetGroup.includes("ItemMouth")) ? "ItemMouth" : AssetGroup) + restraint.Asset + "Options"];
+				if (!options) options = TypedItemDataLookup[`${AssetGroup}${restraint.Asset}`].options; // Try again
+				const option = options.find(o => o.Name === type);
+				ExtendedItemSetType(KinkyDungeonPlayer, options, option);
+				KinkyDungeonPlayer.FocusGroup = null;
+			}*/
+
+			if (restraint.OverridePriority) {
+				placed.Property.OverridePriority = restraint.OverridePriority;
+			}
+		}
 		return;
 	}
 	KDApplyItemLegacy(inv, tags);
@@ -583,9 +654,7 @@ function KDApplyItemLegacy(inv, tags) {
 		let placed = null;
 
 		if (!restraint.armor || KinkyDungeonArmor) {
-			placed = Patched ?
-				KDAddModel(KinkyDungeonPlayer, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], color, undefined, undefined, undefined, inv)
-				: KDAddAppearance(KinkyDungeonPlayer, AssetGroup, AssetGet("3DCGFemale", AssetGroup, restraint.Asset), color, undefined, undefined, undefined, inv);
+			placed = KDAddAppearance(KinkyDungeonPlayer, AssetGroup, AssetGet("3DCGFemale", AssetGroup, restraint.Asset), color, undefined, undefined, undefined, inv);
 		}
 
 		if (placed) {
