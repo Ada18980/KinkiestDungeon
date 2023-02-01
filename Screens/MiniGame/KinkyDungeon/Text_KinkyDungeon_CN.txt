@@ -3418,6 +3418,10 @@ An advanced collar for tracking high-security prisoners.
 用于追踪高度安全的囚犯的高级项圈。
 It seems to be made of flexible steel plates, and it has a high-security lock.
 它似乎由柔性钢板制成，并且具有高安全性锁。
+Harness Ball Gag
+马具式球口塞
+A gag that stuffs your mouth with a large silicone ball.
+一个塞满您嘴的大硅胶球口塞。
 Latex Ball Gag
 乳胶口塞
 A devious device that looks like a ball gag, but has a mouth-filling rod on the inside.
