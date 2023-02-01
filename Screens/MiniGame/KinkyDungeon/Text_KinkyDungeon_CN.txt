@@ -4672,6 +4672,8 @@ Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+Slime (Mouth)
+史莱姆（嘴）
 Slime (Head)
 史莱姆（头）
 Sticky slime that adheres to your body. It reacts negatively to mana...
@@ -4708,6 +4710,8 @@ Sticky rubber that has fused itself into a shell around your body.
 粘性橡胶，已经融合成您身体周围的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在没有挣扎了，但由于它是坚固的，它可能是可切割的。
+Rubber (Mouth)
+橡胶（嘴）
 Rubber (Head)
 橡胶（头）
 Sticky rubber that has fused itself into a shell around your body.
