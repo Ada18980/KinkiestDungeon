@@ -3043,11 +3043,11 @@ let KDEventMapEnemy = {
 			// We heal nearby allies and self
 			if (((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 				let light = KinkyDungeonBrightnessGet(enemy.x, enemy.y);
-				if (light > 6) {
+				if (light >= 4.5) {
 					KinkyDungeonApplyBuffToEntity(enemy, {id: "ShadowDebuff1", aura: "#ff5555", type: "MoveSpeed", duration: 1, power: -0.7, tags: ["speed"]});
-					KinkyDungeonApplyBuffToEntity(enemy, {id: "ShadowDebuff2", type: "AttackSpeed", duration: 1, power: -0.5, tags: ["speed"]});
+					KinkyDungeonApplyBuffToEntity(enemy, {id: "ShadowDebuff2", aura: "#ff5555", type: "AttackSpeed", duration: 1, power: -0.5, tags: ["speed"]});
 				} else if (light > 3) {
-					KinkyDungeonApplyBuffToEntity(enemy, {id: "ShadowDebuff1", aura: "#ff5555", type: "MoveSpeed", duration: 1, power: -0.3, tags: ["speed"]});
+					KinkyDungeonApplyBuffToEntity(enemy, {id: "ShadowDebuff1", aura: "#ff5555", type: "MoveSpeed", duration: 1, power: -0.4, tags: ["speed"]});
 				}
 			}
 		},
