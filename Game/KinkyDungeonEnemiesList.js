@@ -156,10 +156,10 @@ let KinkyDungeonEnemies = [
 		],
 	},
 
-	{name: "Angel", bound: "Angel", faction: "Angel", color:"#ffffaa", tags: KDMapInit(["angel", "flying", "ranged", "divineRestraints", "unarmedimmune", "unflinching"]),
-		armor:0, followRange: 0, AI: "hunt", evasion: 0.25, attackWhileMoving: true,
+	{name: "Angel", bound: "Angel", faction: "Angel", color:"#ffffaa", tags: KDMapInit(["angel", "flying", "ranged", "divineRestraints", "meleeresist", "unflinching"]),
+		followRange: 0, AI: "hunt", evasion: 0.25, attackWhileMoving: true,
 		spells: ["HeatBolt", "WitchElectrify", "EnemyCorona"], spellCooldownMult: 0, spellCooldownMod: 4, castWhileMoving: true, noSpellsLowSP: true, spellRdy: true,
-		visionRadius: 10, maxhp: 30, spellResist: 3, minLevel: 4, movePoints: 1.7, attackPoints: 3, attack: "SpellMeleeBind", attackRange: 1, attackWidth: 3, power: 2, fullBoundBonus: 4, dmgType: "tickle",
+		visionRadius: 10, maxhp: 25, spellResist: 3, minLevel: 4, movePoints: 1.7, attackPoints: 3, attack: "SpellMeleeBind", attackRange: 1, attackWidth: 3, power: 2, fullBoundBonus: 4, dmgType: "tickle",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 6, color: "#ffff44"},
 		],
