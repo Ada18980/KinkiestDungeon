@@ -3762,6 +3762,10 @@ Strongly glowing ropes.
 强烈发光的绳索。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
+Magic Ropework
+绳索（附魔）
+Strongly glowing ropes tied in an intricate pattern, making hand restraints more secure.
+强烈发光的绳索以复杂的方式捆绑起来，使束手更加可靠。
 Magic Leg Rope
 腿部绳缚（附魔）
 Strongly glowing ropes.
