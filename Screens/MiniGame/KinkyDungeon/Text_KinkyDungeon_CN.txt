@@ -1160,6 +1160,8 @@ Arcane Orb
 神秘球
 Look into my eyes...
 看着我的眼睛。。。
+Deals shadow damage. Can be used without hands. Does not benefit from enemies being vulnerable.
+造成暗影伤害。使用时无需双手。不从敌人的影响中受益。
 Hammer
 锤子
 A rather simplistic bludgeoning weapon.
