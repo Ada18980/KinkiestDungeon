@@ -2737,6 +2737,8 @@ KDLatexDebuff0,"Your catsuit adheres to latex, making struggling more difficult!
 KDLatexDebuff1,"The item sticks to your rubber catsuit, making it harder to pull off..."
 KDLatexDebuff2,"The item hugs your catsuit tightly, adhering firmly!"
 
+KDShadowBuff,"The bright light weakens the shadow hands!"
+
 KDTrapMisfire,"You hear an ominous click, but nothing seems to happen. Looks like a misfire!"
 
 RestraintBarrelTrap,Barrel Trap

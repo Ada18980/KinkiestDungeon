@@ -836,6 +836,18 @@ let KDEventMapInventory = {
 				KinkyDungeonSendTextMessage(5, TextGet("KDLatexDebuff" + Math.floor(KDRandom() * 3)), "#38a2c3", 2, true);
 			}
 		},
+		"shadowBuff": (e, item, data) => {
+			if (data.restraint && data.struggleType === "Struggle" && item == data.restraint) {
+
+				let brightness = KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+				if (brightness > 4) {
+					data.escapeChance += 0.1 * brightness;
+					KinkyDungeonSendTextMessage(7, TextGet("KDShadowBuff"), "#99ff99", 2, true);
+				}
+
+
+			}
+		},
 		"wristCuffsBlock": (e, item, data) => {
 			if (data.restraint && item != data.restraint && !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && KDRestraint(data.restraint).shrine.includes("ArmCuffsBase")) {
 				data.escapePenalty += e.power ? e.power : 0.075;
