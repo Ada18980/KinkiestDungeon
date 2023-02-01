@@ -881,10 +881,6 @@ function CharacterAppearanceRestore(C, backup) {
 
 function AppearanceItemParse(stringified) {
 	return JSON.parse(stringified, (key, value) => {
-		if (key === "Asset") {
-			const FGA = value.split("/");
-			return AssetGet(FGA[0], FGA[1], FGA[2]);
-		}
 		if (key === "Model") {
 			return ModelDefs[value];
 		}
