@@ -3455,7 +3455,7 @@ They are not coming off without the key.
 The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 Cuffs Chain
-连接黑钢手铐
+链式黑钢手铐
 Highly durable cuffs that can withstand even powerful acid.
 高度耐用的手铐，甚至可以承受强酸。
 They are not coming off without the key.
@@ -4266,6 +4266,8 @@ Scale Leg Cuffs
 龙鳞腿袖
 Scale Ankle Cuffs
 龙鳞脚铐
+Scale Cuffs Chain
+链式龙鳞脚铐
 Dragonscale Cuffs
 龙鳞铐
 A pair of chained cuffs made of dragonscale. They slow your stride.
