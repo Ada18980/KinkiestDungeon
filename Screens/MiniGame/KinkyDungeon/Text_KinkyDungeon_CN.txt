@@ -3623,7 +3623,7 @@ Bast堵嘴
 A gag used to silence new initiates of the Bast cult.
 用来让巴斯特教新信徒闭嘴的堵嘴。
 The harness is comprehensive and it's locked in place.
-束带带很全面，并且锁定到位。
+束带很全面，并且锁定到位。
 Bast Muzzle
 Bast口套
 A muzzle used to keep a Bast gag secure.
@@ -4262,6 +4262,10 @@ A set of straps buckling tightly around your body and secured at the wrists.
 一组带子紧紧地扣在您的身体上并固定在手腕上。
 It's made from hard-to-cut dragonscale!!!
 它是由难以切割的龙鳞制成的！！！
+Scale Leg Cuffs
+龙鳞腿袖
+Scale Ankle Cuffs
+龙鳞脚铐
 Dragonscale Cuffs
 龙鳞铐
 A pair of chained cuffs made of dragonscale. They slow your stride.
@@ -4487,7 +4491,7 @@ It's made of a dark, glistening volcanic metal.
 The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 Cuffs Chain
-连接黑曜石脚铐
+链式黑曜石脚铐
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
 It's made of a dark, glistening volcanic metal.
