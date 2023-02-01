@@ -2055,7 +2055,7 @@ function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill
 	let restraintWeightTotal = 0;
 	if (KinkyDungeonStatsChoice.has("NoWayOut")) RequireWill = false;
 	let restraintWeights = [];
-	let willPercent = (Math.min(KinkyDungeonStatWill / KinkyDungeonStatWillMax, 1 - KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax))
+	let willPercent = (KinkyDungeonStatWill / KinkyDungeonStatWillMax - 0.15 * KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax)
 		/(1 + (KinkyDungeonGoddessRep.Ghost + 50)/100);
 
 	if (KinkyDungeonSlowLevel > 0) willPercent = willPercent * (0.6 + 0.4 * Math.min(1, Math.max(0, 1 - KinkyDungeonSlowLevel/3)));

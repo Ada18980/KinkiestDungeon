@@ -681,7 +681,7 @@ function KinkyDungeonIsPlayer() {
 
 let KinkyDungeonCreditsPos = 0;
 let KDMaxPatronPerPage = 4;
-let KDMaxPatron = 4;
+let KDMaxPatron = 5;
 let KinkyDungeonPatronPos = 0;
 let KinkyDungeonSound = true;
 let KinkyDungeonFullscreen = true;

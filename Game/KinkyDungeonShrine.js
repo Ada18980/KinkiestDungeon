@@ -19,8 +19,8 @@ let KinkyDungeonShrineBaseCosts = {
 let KDWillShrineWill = 0.25;
 let KinkyDungeonOrbAmount = 0;
 let KDShrineRemoveCount = 30;
-let KDMaxGoddessBonus = 0.25;
-let KDMinGoddessBonus = 0.25;
+let KDMaxGoddessBonus = 0.2;
+let KDMinGoddessBonus = 0.15;
 
 /**
  * Cost growth, overrides the default amount
