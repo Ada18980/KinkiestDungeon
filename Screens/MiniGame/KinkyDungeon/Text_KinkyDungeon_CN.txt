@@ -4267,7 +4267,7 @@ Scale Leg Cuffs
 Scale Ankle Cuffs
 龙鳞脚铐
 Scale Cuffs Chain
-链式龙鳞脚铐
+龙鳞脚链铐
 Dragonscale Cuffs
 龙鳞铐
 A pair of chained cuffs made of dragonscale. They slow your stride.
