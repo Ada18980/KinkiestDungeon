@@ -685,6 +685,14 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"AddDamageStealth": (e, item, data) => {
+			if (data.dmg > 0 && data.enemy && KDHostile(data.enemy) && !data.enemy.aware) {
+				if (!e.chance || KDRandom() < e.chance) {
+					if (e.energyCost && e.power > 1) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost * (e.power - 1));
+					data.dmg = Math.max(data.dmg + e.power, 0);
+				}
+			}
+		},
 		"MultiplyDamageStatus": (e, item, data) => {
 			if (data.dmg > 0 && data.enemy && KDHostile(data.enemy) && (KinkyDungeonHasStatus(data.enemy))) {
 				if (!e.chance || KDRandom() < e.chance) {
@@ -3028,6 +3036,18 @@ let KDEventMapEnemy = {
 					for (let en of nearby) {
 						if (en.hp > 0.52) en.hp = Math.min(en.hp + e.power, en.Enemy.maxhp);
 					}
+				}
+			}
+		},
+		"shadowDebuff": (e, enemy, data) => {
+			// We heal nearby allies and self
+			if (((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				let light = KinkyDungeonBrightnessGet(enemy.x, enemy.y);
+				if (light > 6) {
+					KinkyDungeonApplyBuffToEntity(enemy, {id: "ShadowDebuff1", aura: "#ff5555", type: "MoveSpeed", duration: 1, power: -0.7, tags: ["speed"]});
+					KinkyDungeonApplyBuffToEntity(enemy, {id: "ShadowDebuff2", type: "AttackSpeed", duration: 1, power: -0.5, tags: ["speed"]});
+				} else if (light > 3) {
+					KinkyDungeonApplyBuffToEntity(enemy, {id: "ShadowDebuff1", aura: "#ff5555", type: "MoveSpeed", duration: 1, power: -0.3, tags: ["speed"]});
 				}
 			}
 		},
