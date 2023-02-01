@@ -3723,9 +3723,9 @@ Sticky tape made from a metallic material. Used to great effect in police situat
 It's very sticky and tough but you could probably get a knife through it.
 它非常粘稠且坚韧，但您可以用刀解决它。
 Stuffing
-填充物
+布团口塞
 A stuffing of cloth.
-一块布填充物。
+一块布团。
 You could spit it out easily, provided nothing's covering it.
 你可以很容易地把它吐出来，只要没有东西覆盖它。
 Arm Ropes
