@@ -281,12 +281,12 @@ KinkyDungeonStatDescFrigidPersonality,"While at 0% distraction, you gain +10% ic
 KinkyDungeonStatGroundedInReality,"Grounded in Reality"
 KinkyDungeonStatDescGroundedInReality,"While at max mana, your attacks deal an additional 30% of their base damage as electric damage."
 KinkyDungeonStatLikeTheWind,"Like the Wind"
-KinkyDungeonStatDescLikeTheWind,"While above 95% stamina, you gain +30% evasion and your slow level is reduced by 1."
+KinkyDungeonStatDescLikeTheWind,"While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 1."
 
 KinkyDungeonStatImmovableObject,"Immovable Object"
 KinkyDungeonStatDescImmovableObject,"While above 90% willpower, you gain +150 Restraint Block and Earth buff spells cost half mana."
 KinkyDungeonStatLeastResistance,"Path of Least Resistance"
-KinkyDungeonStatDescLeastResistance,"While at 0 willpower, you gain +35% evasion and deal 20% of your max willpower as acid damage when restrained."
+KinkyDungeonStatDescLeastResistance,"While at 0 willpower, you gain +35 Evasion and deal 20% of your max willpower as acid damage when restrained."
 
 KinkyDungeonStatSticky,"Sticky Situation"
 KinkyDungeonStatDescSticky,"You take 40% more glue damage."
@@ -1167,7 +1167,7 @@ KinkyDungeonInventoryItemDragonslaver,Dragonslaver
 KinkyDungeonInventoryItemDragonslaverDesc,"A powerful weapon with an ancient mechanism that launches binding belts."
 KinkyDungeonInventoryItemDragonslaverDesc2,"Deals slash damage. Can make ranged attacks.. Drains 0.75% ancient energy to fire a line of belts that deal 40 chain damage and 40 binding."
 KinkyDungeonInventoryItemTheEncaser,Metamorphosis
-KinkyDungeonInventoryItemTheEncaserDesc,"You can enter slime form for 25 turns, which lets you pass thru bars, +50% evasion, and deals 25 glue damage when attacked."
+KinkyDungeonInventoryItemTheEncaserDesc,"You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked."
 KinkyDungeonInventoryItemTheEncaserDesc2,"Deals glue damage. Roots targets for 2 turns on a hit."
 KinkyDungeonInventoryItemFourSeasons,Four Seasons
 KinkyDungeonInventoryItemFourSeasonsDesc,"Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element."
@@ -4712,11 +4712,11 @@ KinkyDungeonSpellDescriptionAthlete,"Sprinting costs 40% less stamina."
 KinkyDungeonSpellSneaky,Sneaky
 KinkyDungeonSpellDescriptionSneaky,"You are harder to see when waiting."
 KinkyDungeonSpellEvasive1,Dodge I
-KinkyDungeonSpellDescriptionEvasive1,"+10% evasion"
+KinkyDungeonSpellDescriptionEvasive1,"+10 Evasion"
 KinkyDungeonSpellEvasive2,Dodge II
-KinkyDungeonSpellDescriptionEvasive2,"+15% evasion (25 total)"
+KinkyDungeonSpellDescriptionEvasive2,"+15 Evasion (25 total)"
 KinkyDungeonSpellEvasive3,Dodge III
-KinkyDungeonSpellDescriptionEvasive3,"+25% evasion (50 total)"
+KinkyDungeonSpellDescriptionEvasive3,"+25 Evasion (50 total)"
 KinkyDungeonSpellCriticalStrike,Critical Strike
 KinkyDungeonSpellDescriptionCriticalStrike,"Excess accuracy (over 100%) is converted to bonus physical damage percentage at 50% efficiency."
 
