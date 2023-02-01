@@ -4857,7 +4857,7 @@ You can still see through the gap around your nose.
 Knotted Cloth Gag
 打结的布口塞
 OTN Cloth Gag
-OTN 布口塞
+覆嘴式布口塞
 A piece of cloth tightened over your mouth.
 一块布紧紧地捂在你的嘴上。
 On its own it's not very restrictive.
