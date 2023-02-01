@@ -614,7 +614,7 @@ StatKeyEscapeKey,Got the keys! Find the stairs to go to the next floor.
 StatKeyEscapeNoKey,You haven't found the keys for this floor yet.
 StatKey,Missing key
 StatMiscastChance,"Chance for a spell to fizzle: "
-StatEvasion,"Chance to dodge an attack: Percent%"
+StatEvasion,"Dodge Chance: Percent%, based on EVASIONSUM Evasion plus other modifiers"
 StatRestraintBlock,"Chance to block a level 10 restraint: Percent%"
 StatVision,"Sight Range: RADIUS"
 StatSpeed,"Speed: SPD"

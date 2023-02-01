@@ -261,7 +261,9 @@ function KinkyDungeonDrawInputs() {
 	let evasion = KinkyDungeonPlayerEvasion();
 	//if (evasion != 1.0) {
 	statsDraw.evasion = {
-		text: TextGet("StatEvasion").replace("Percent", ("") + Math.round((1 - evasion) * 100)),
+		text: TextGet("StatEvasion")
+			.replace("Percent", ("") + Math.round((1 - evasion) * 100))
+			.replace("EVASIONSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion")) * 100)),
 		count: ("") + Math.round((1 - evasion) * 100) + "%",
 		icon: "infoEvasion",
 		countcolor: evasion < 1 ? "#65d45d" : (evasion == 1 ? "#ffffff" : "#ff5555"),
