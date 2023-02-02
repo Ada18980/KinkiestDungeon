@@ -731,8 +731,10 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	if (predata.aggro)
 		KinkyDungeonAggro(Enemy, Spell, attacker, predata.faction);
 
-	if (predata.dmg > 0)
+	if (predata.dmg > 0) {
 		KinkyDungeonTickBuffTag(Enemy.buffs, "takeDamage", 1);
+		KinkyDungeonSetEnemyFlag(Enemy, "wander", 0);
+	}
 	return predata.dmg;
 }
 
