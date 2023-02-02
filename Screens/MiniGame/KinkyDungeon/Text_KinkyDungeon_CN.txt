@@ -6679,7 +6679,7 @@ Talking to you
 Aware of you!
 意识到你！
 Pursuing you!
-追你！
+正在追击你！
 Slightly suspicious
 有点可疑
 Saw something...
@@ -7011,7 +7011,7 @@ Dibs on this one!
 Gotta make sure no one gets to you~
 要确保没有人接近你~
 *starts chasing you*
-*开始追你*
+*开始追击你*
 *won't leave you be!*
 *不会离开你！*
 *tugs at your body!*
