@@ -6677,13 +6677,13 @@ Despises you
 Talking to you
 与你交谈
 Aware of you!
-意识到你！
+发现你了！
 Pursuing you!
 正在追击你！
 Slightly suspicious
-有点可疑
+感到有点可疑
 Saw something...
-看到一些可疑...
+看到一些可疑迹象...
 Notices you!
 注意到你了！
 Unaware
