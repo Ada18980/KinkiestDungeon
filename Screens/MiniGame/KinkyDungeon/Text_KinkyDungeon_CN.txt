@@ -4777,31 +4777,31 @@ Slime (Feet)
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Ankles)
 史莱姆（脚踝）
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Legs)
 史莱姆（腿）
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Arms)
 史莱姆（手臂）
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Hands)
 史莱姆（手）
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Mouth)
 史莱姆（嘴）
 Slime (Head)
@@ -4809,7 +4809,25 @@ Slime (Head)
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
+Proto-Slime (Feet)
+黏菌史莱姆（脚）
+It seems to be a precursor to the slimes everyone is familiar with?
+这似乎是每个人熟悉的史莱姆的先驱？
+It is an organic material that reforms around every cut you make!
+这是一种有机材料，可以对您所做的每一次切割行为进行变化！
+Proto-Slime (Ankles)
+黏菌史莱姆（脚踝）
+Proto-Slime (Legs)
+黏菌史莱姆（腿）
+Proto-Slime (Arms)
+黏菌史莱姆（手臂）
+Proto-Slime (Hands)
+黏菌史莱姆（手）
+Proto-Slime (Mouth)
+黏菌史莱姆（嘴）
+Proto-Slime (Head)
+黏菌史莱姆（头）
 Rubber (Feet)
 橡胶（脚）
 Sticky rubber that has fused itself into a shell around your body.
@@ -4848,6 +4866,20 @@ Sticky rubber that has fused itself into a shell around your body.
 粘性橡胶，已经融合成您身体周围的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在没有挣扎了，但由于它是坚固的，它可能是可切割的。
+Proto-Rubber (Feet)
+黏菌橡胶（脚）
+Proto-Rubber (Ankles)
+黏菌橡胶（脚踝）
+Proto-Rubber (Legs)
+黏菌橡胶（腿）
+Proto-Rubber (Arms)
+黏菌橡胶（手臂）
+Proto-Rubber (Hands)
+黏菌橡胶（手）
+Proto-Rubber (Mouth)
+黏菌橡胶（嘴）
+Proto-Rubber (Head)
+黏菌橡胶（头）
 Tape Mittens
 胶带手套
 Sticky tape that holds your hands into a fist!
