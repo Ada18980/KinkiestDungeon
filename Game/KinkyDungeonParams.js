@@ -123,6 +123,7 @@ const KinkyDungeonMapParams = {
 
 		tagModifiers: {
 			"narrow": 2,
+			"dungeon": 2,
 			"open": 0.5,
 			"jungle": 0,
 			"cavern": 0,
@@ -677,6 +678,8 @@ const KinkyDungeonMapParams = {
 			"jungle": 0,
 			"cavern": 0,
 			"temple": 3,
+			"urban": 0.4,
+			"dungeon": 0,
 		},
 		globalTags: {
 			"temple": true,
