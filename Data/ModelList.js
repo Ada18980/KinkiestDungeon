@@ -160,7 +160,7 @@ AddModel({
 	Name: "Breastplate",
 	Folder: "ArmorPlate",
 	Layers: ToLayerMap([
-		{ Name: "Breastplate", Layer: "Chest", Pri: 25,
+		{ Name: "Breastplate", Layer: "Chestplate", Pri: 25,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
 			HideWhenOverridden: true,
 			MorphPoses: {Hogtie: "Hogtie"},
@@ -200,7 +200,7 @@ AddModel({
 	Name: "BanditBreastplate",
 	Folder: "Bandit",
 	Layers: ToLayerMap([
-		{ Name: "Breastplate", Layer: "Chest", Pri: 24,
+		{ Name: "Breastplate", Layer: "Chestplate", Pri: 24,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
 			HideWhenOverridden: true,
 			MorphPoses: {Hogtie: "Hogtie"},
