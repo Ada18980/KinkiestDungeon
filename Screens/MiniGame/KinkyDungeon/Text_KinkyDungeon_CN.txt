@@ -6634,6 +6634,54 @@ Base Chance to Hit: AMOUNT%
 基础命中率：AMOUNT%
 Deals DAMAGETYPE damage
 造成 DAMAGETYPE 伤害
+Can disarm (chance: DISARMCHANCE%)
+可以解除武装（概率：DISARMCHANCE%）
+Resistances:
+抵抗：
+HP:
+HP:
+Binding:
+捆绑：
+Ambivalent
+矛盾
+Likes you
+喜欢你
+Loves you
+爱你
+Adores you
+崇拜你
+Dislikes you
+不喜欢你
+Hates you
+讨厌你
+Despises you
+鄙视你
+Talking to you
+与你交谈
+Aware of you!
+意识到你！
+Pursuing you!
+追你！
+Slightly suspicious
+有点可疑
+Saw something...
+到一些...
+Notices you!
+注意到你了！
+Unaware
+不知道
+Items carried:
+携带的物品：
+...and NUMBER more
+...还有 NUMBER 个
+Disappears if the caster is stunned
+如果敌人受到惊吓，就会消失
+Disappears if the caster is defeated
+如果敌人被击溃，就会消失
+Caster: ENEMYNAME
+敌人: ENEMYNAME
+Demise immanent
+灭亡
 Shadow
 暗影
 Ice
