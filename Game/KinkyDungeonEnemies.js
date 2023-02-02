@@ -1701,7 +1701,7 @@ function KDNearbyNeutrals(x, y, dist, neutralEnemy) {
 }
 
 function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6) {
-	return KinkyDungeonGetRandomEnemyPointCriteria(undefined, onlyPlayer, Enemy, playerDist, minDist);
+	return KinkyDungeonGetRandomEnemyPointCriteria(undefined, avoidPlayer, onlyPlayer, Enemy, playerDist, minDist);
 }
 function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6) {
 	let tries = 0;
