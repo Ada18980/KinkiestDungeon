@@ -4456,6 +4456,16 @@ A bolero jacket keeping your arms pinned snugly. You can't even move them.
 一件波莱罗夹克，让你的手臂紧紧地固定在一起。你甚至不能移动它们。
 There is no hope of struggling out. Better hope you can cut it...
 没有挣扎的希望。最好希望你能切开它...
+Maid Jacket
+女仆夹克
+A bolero jacket keeping your arms pinned snugly. You can't even move them.
+一件布洛罗夹克，保持双臂紧密地钉住。 您甚至无法移动它们。
+Devious Maid Costume
+狡猾的女仆服装
+A devious maid outfit that forces the arms into an elbows-touching position.
+一个狡猾的女仆服装，迫使手臂进入肘部接触的姿势。
+Makes sure you focus on your work and not fooling around.
+确保您专注于工作而不是欺骗。
 Reinforced Leather Belt
 强化皮革绑带
 A leather belt used to keep your legs hobbled.
