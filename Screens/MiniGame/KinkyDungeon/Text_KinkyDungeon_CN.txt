@@ -2734,6 +2734,8 @@ A light restores the health of its allies!
 一道光可以恢复了周围敌人的生命！
 You do not have enough resources to cast the spell! (Consider pleading with a goddess)
 你没有足够的资源来施法！ （考虑向女神请求）
+You do not have enough resources to cast the spell!
+您没有足够的资源来施放咒语！
 You AttackName TargetEnemy for DamageDealt DamageType damage!
 你 AttackName TargetEnemy 造成 DamageDealt 点 DamageType 伤害！
 You AttackName TargetEnemy for a decreased DamageDealt DamageType damage!
