@@ -624,6 +624,14 @@ Clear Perks
 清除词条
 Config
 配置
+Load Mod
+加载 Mod
+Delete Mod
+移除 Mod
+DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
+【危险】：加载 Mod 将在你的计算机上肆意执行任意代码。
+Like connecting to a server, etc. Only load mods from a TRUSTED source.
+就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的 Mod 。
 Up
 向上
 Down
