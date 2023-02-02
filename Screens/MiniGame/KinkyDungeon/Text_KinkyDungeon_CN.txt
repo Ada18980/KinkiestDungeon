@@ -6647,7 +6647,7 @@ Can disarm (chance: DISARMCHANCE%)
 Resistances:
 抵抗：
 HP:
-HP:
+生命值：
 Binding:
 捆绑：
 Ambivalent
@@ -6869,7 +6869,7 @@ Don't Track Me
 Your key to the stairs is taken away!
 你的楼梯钥匙被拿走了！
 Exit Keys
-逃生楼梯钥匙
+[离开的钥匙]
 You found a keyring to the stairs! Now you just need to get there.
 你找到了楼梯的钥匙圈！现在你只需要到达那里。
 There seems to be a locked high-security door. Looks like you need a key.
