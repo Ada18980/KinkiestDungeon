@@ -6687,7 +6687,7 @@ Saw something...
 Notices you!
 注意到你了！
 Unaware
-不知道
+没发现你
 Items carried:
 携带的物品：
 ...and NUMBER more
