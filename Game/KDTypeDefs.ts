@@ -761,6 +761,11 @@ interface enemy extends KDHasTags {
 	attackLock?: string,
 	/** Minimum range for attack warning tiles, used to prevent high range enemies from attacking all around them*/
 	tilesMinRange?: number,
+	/** Minimum range to try attacking */
+	attackMinRange?: number,
+	/** Minimum range to try attacking */
+	specialMinRange?: number,
+
 	/** */
 	noKiteWhenHarmless?: boolean,
 	/** */

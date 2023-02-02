@@ -1785,10 +1785,13 @@ AttackMummyCursed,"The Cursed One's bindings emit a strange aura... (DamageTaken
 
 NameSarcoMinion,Floating Wrapping
 KillSarcoMinion,"The wrapping falls to the floor, its magic spent."
-AttackSarcoMinion,"The wrappings grip you and pull you toward the sarcophagus! (DamageTaken)"
+AttackSarcoMinionBind,"The floating wrappings attach to you! (+RestraintAdded)"
+AttackSarcoMinion,"The wrappings grip you tightly and squeeze you! (DamageTaken)"
 
 NameSarcoKraken,Animated Sarcophagus
 KillSarcoKraken,"The sarcophagus falls to the ground and crumbles."
+AttackSarcoKrakenBind,"The sarcophagus emits long wrappings that pull you closer! (+RestraintAdded)"
+AttackSarcoKraken,"The sarcophagus emanates a strange power! (DamageTaken)"
 
 NameMeleeCleric,Bast Warrior
 KillMeleeCleric,"The Bast Warrior collapses and meows loudly."
