@@ -3254,8 +3254,8 @@ Illusions
 幻术
 Commerce
 商业
-Shrine of
-神泉
+Shrine of SHRINETYPE
+SHRINETYPE神泉
 Allies:
 盟友：
 Enemies:

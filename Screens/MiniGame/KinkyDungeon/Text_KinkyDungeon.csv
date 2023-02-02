@@ -2592,7 +2592,7 @@ KinkyDungeonShrineElements,"Elements"
 KinkyDungeonShrineConjure,"Conjuration"
 KinkyDungeonShrineIllusion,"Illusions"
 KinkyDungeonShrineCommerce,"Commerce"
-KinkyDungeonShrineTooltip,"Shrine of "
+KinkyDungeonShrineTooltip,"Shrine of SHRINETYPE"
 KinkyDungeonTabletTooltip,"Tablet of "
 
 KDGoddessStat_Bonus,"Goddess Blessing: "
