@@ -2234,6 +2234,22 @@ KinkyDungeonBoundByFate,Many shining strings surround you!
 KinkyDungeonBuffBoundByFate,Stepping outside of the indicated tiles will result in punishment!
 KinkyDungeonSpellBoundByFate,Bindings of Fate
 
+NameDemonMoon,Moon Demon
+KillDemonMoon,"The moon demon is exorcised."
+AttackDemonMoonBind,"The star demon places you in shining, starry restraints. (+RestraintAdded)"
+AttackDemonMoon,"The star demon places you under its curse! (DamageTaken)"
+KinkyDungeonMoonBondage,The weight of inescapable bondage falls upon you! (DamageTaken)
+KinkyDungeonSpellCrushingFate,Crushing Fate
+
+NameDemonVoid,Void Demon
+KillDemonVoid,"The void demon is exorcised."
+AttackDemonVoidBind,"The void demon places you in dark, glassy restraints. (+RestraintAdded)"
+AttackDemonVoid,"The void demon places you under its curse! (DamageTaken)"
+
+NameDemon,Demon
+KillDemon,"The demon is exorcised."
+AttackDemonBind,"The demon places you in dark, glassy restraints. (+RestraintAdded)"
+AttackDemon,"The demon whacks you with its mace! (DamageTaken)"
 
 NameTickleHand,Tickle Hand
 KillTickleHand,"The hand vanishes!"
@@ -4966,7 +4982,7 @@ KinkyDungeonSpellCastCommandCapture,"You say a command word, and the bindings on
 
 KinkyDungeonSpellCommandDisenchant,CMD: Disenchant
 KinkyDungeonSpellTargetCommandDisenchant,Select an area
-KinkyDungeonSpellDescriptionCommandDisenchant,"Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Makes magic bindings easier."
+KinkyDungeonSpellDescriptionCommandDisenchant,"Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Cast on self to disenchant bindings."
 KinkyDungeonSpellCastCommandDisenchant,"You say a command word, siphoning the magic from nearby constructs!"
 
 KinkyDungeonSpellCommandVibrate,CMD: Vibrate

@@ -1609,7 +1609,7 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 		let offX = 0;
 		let offY = 0;
 		let offamount = 0.25;
-		if (Entity.fx && Entity.fy && (Entity.fx != Entity.x || Entity.fy != Entity.y) && Entity.Enemy && !Entity.Enemy.immobile) {
+		if (Entity.fx && Entity.fy && (Entity.fx != Entity.x || Entity.fy != Entity.y) && Entity.Enemy && !KDIsImmobile(Entity)) {
 			if (Entity.fx != Entity.x) {
 				offX = offamount * Math.sign(Entity.fx - Entity.x);
 			}

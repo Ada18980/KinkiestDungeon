@@ -58,6 +58,7 @@ let KDMoveObjectFunctions = {
 		return false;
 	},
 	'D': (moveX, moveY) => { // Open the door
+		KinkyDungeonAdvanceTime(1, true);
 		let open = !KinkyDungeonStatsChoice.get("Doorknobs") || !KinkyDungeonIsHandsBound(true, true);
 		if (!open) {
 			if (KinkyDungeonCanUseFeet()) {

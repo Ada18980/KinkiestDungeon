@@ -1171,8 +1171,12 @@ let KinkyDungeonSpellListEnemies = [
 		name: "Vines",
 		duration: 20,
 	}, manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 4, range: 6, size: 3, aoe: 1, lifetime: 1, damage: "chain", playerEffect: {name: "VineEngulf", power: 2}},
-	{enemySpell: true, name: "BoundByFate", color: "#dddddd", minRange: 0, sfx: "MagicSlash",
+
+	{enemySpell: true, name: "CrushingFate", color: "#dddddd", minRange: 0, sfx: "MagicSlash", bulletSpin: 0.25,
+		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 4, delay: 6, power: 5, range: 7, size: 5, aoe: 2.5, lifetime: 1, damage: "crush", playerEffect: {name: "MoonBondage", count: 2, kind: "mithrilRestraints"}},
+	{enemySpell: true, name: "BoundByFate", color: "#dddddd", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
 		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 7, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "BoundByFate", time: 6}},
+
 	{enemySpell: true, name: "Feathers", color: "#ffffff", sfx: "Tickle", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 8, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"}},
 	{enemySpell: true, name: "NurseBola", color: "#ff2200", sfx: "Miss", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "NurseBola"}}, // Throws a chain which stuns the target for 1 turn
 	{enemySpell: true, name: "NurseSyringe", color: "#ff00ff", minRange: 1.5, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, speed: 1,

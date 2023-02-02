@@ -60,7 +60,7 @@ let KDPlayerEffects = {
 			bullet.y,
 			{
 				name: "FateBoundGround",
-				duration: playerEffect.time,
+				duration: playerEffect.time + 1,
 			}, 0, 2.5, undefined, undefined, undefined);
 
 		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonBoundByFate"), "yellow", playerEffect.time);
@@ -74,6 +74,12 @@ let KDPlayerEffects = {
 		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonStarBondage"), "#ff5555", 4);
 		KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Demon");
 
+		return {sfx: "Evil", effect: true};
+	},
+	"MoonBondage": (target, damage, playerEffect, spell, faction, bullet) => {
+		let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonMoonBondage").replace("DamageTaken", dmg.string), "#ff5555", 1);
+		KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Demon");
 		return {sfx: "Evil", effect: true};
 	},
 	"SarcoEngulf": (target, damage, playerEffect, spell, faction, bullet) => {

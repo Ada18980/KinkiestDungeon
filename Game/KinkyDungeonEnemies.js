@@ -1498,7 +1498,7 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 						}
 					}
 				}
-			} else if (!enemy.summoned && !enemy.Enemy.immobile && !enemy.Enemy.tags.temporary) {
+			} else if (!enemy.summoned && !KDIsImmobile(enemy) && !enemy.Enemy.tags.temporary) {
 				if (!KDGameData.RespawnQueue) KDGameData.RespawnQueue = [];
 				KDGameData.RespawnQueue.push({enemy: enemy.Enemy.name, faction: KDGetFaction(enemy)});
 			}
@@ -2768,7 +2768,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 			// try 12 times to find a moveable tile, with some random variance
 			if (
-				!enemy.Enemy.immobile &&
+				!KDIsImmobile(enemy) &&
 				AIType.chase(enemy, player, AIData)
 				&& !AIData.ignore
 				&& !AIData.dontFollow
@@ -2839,7 +2839,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						enemy.fy = undefined;
 					}
 				}
-			} else if (!enemy.Enemy.immobile && AIType.move(enemy, player, AIData) && (Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0))  {
+			} else if (!KDIsImmobile(enemy) && AIType.move(enemy, player, AIData) && (Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0))  {
 				if (enemy.aware) {
 					enemy.path = undefined;
 				}
@@ -2892,7 +2892,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				}
 			} else if (Math.abs(enemy.x - enemy.gx) < 2 || Math.abs(enemy.y - enemy.gy) < 2) AIData.patrolChange = true;
 
-			if (!enemy.Enemy.immobile && !AIType.aftermove(enemy, player, AIData)) {
+			if (!KDIsImmobile(enemy) && !AIType.aftermove(enemy, player, AIData)) {
 				if (AIType.resetguardposition(enemy, player, AIData) && !AIData.followPlayer && Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 1.5 && enemy.gxx && enemy.gyy) {
 					enemy.gx = enemy.gxx;
 					enemy.gy = enemy.gyy;
@@ -3893,6 +3893,15 @@ function KinkyDungeonNoEnemy(x, y, Player) {
 	return true;
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDIsImmobile(enemy) {
+	return enemy && (enemy.Enemy.immobile || enemy.Enemy.tags?.immobile || KDEnemyHasFlag(enemy, "imprisoned"));
+}
+
 // e = potential sub
 // Enemy = leader
 /**
@@ -3902,7 +3911,7 @@ function KinkyDungeonNoEnemy(x, y, Player) {
  * @returns
  */
 function KinkyDungeonCanSwapWith(e, Enemy) {
-	if (e.Enemy && e.Enemy.immobile) return false; // Definition of noSwap
+	if (KDIsImmobile(e)) return false; // Definition of noSwap
 	if (e && KDEnemyHasFlag(e, "noswap")) return false; // Definition of noSwap
 	if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits && Enemy != KinkyDungeonJailGuard() && !KinkyDungeonAggressive(Enemy)) return false; // Only jailguard or aggressive enemy is allowed to swap into offlimits spaces unless hostile
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.ethereal && e && e.Enemy && !e.Enemy.ethereal) return false; // Ethereal enemies NEVER have seniority, this can teleport other enemies into walls
@@ -4299,9 +4308,6 @@ function KDGetDir(enemy, target) {
 		(AIData.kite ? KinkyDungeonGetDirectionRandom(enemy.x - target.x, enemy.y - target.y) : KinkyDungeonGetDirectionRandom(target.x - enemy.x, target.y - enemy.y));
 }
 
-function KDIsImmobile(enemy) {
-	return enemy?.Enemy?.immobile || enemy?.Enemy?.tags?.immobile;
-}
 
 /**
  *

@@ -3364,7 +3364,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 	let moved = false;
 	let Enemy = KinkyDungeonEnemyAt(moveX, moveY);
 	let allowPass = Enemy
-		&& !Enemy.Enemy.immobile
+		&& !KDIsImmobile(Enemy)
 		&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
 		&& (KinkyDungeonToggleAutoPass || KDEnemyHasFlag(Enemy, "passthrough") || (KinkyDungeonFlags.has("Passthrough")) || Enemy.Enemy.noblockplayer);
 	if (Enemy && !allowPass) {

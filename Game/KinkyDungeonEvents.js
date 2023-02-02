@@ -2602,7 +2602,7 @@ let KDEventMapBullet = {
 	},
 	"bulletHitEnemy": {
 		"Knockback": (e, b, data) => {
-			if (b && data.enemy && !data.enemy.Enemy.tags.noknockback && !data.enemy.Enemy.immobile) {
+			if (b && data.enemy && !data.enemy.Enemy.tags.noknockback && !KDIsImmobile(data.enemy)) {
 				let pushPower = KDPushModifier(e.power, data.enemy, false);
 
 				if (pushPower > 0) {
