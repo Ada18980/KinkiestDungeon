@@ -1,12 +1,40 @@
 "use strict";
 
 let LAYERS_BASE = [
+	"Mask",
+	"Blindfold",
+	"Gag",
+	// Head
 	"Eyes",
 	"Head",
+
+	// Clothes that go over the chest and hang down
 	"Shoulders",
+
+	// Chest is breasts, should only intersect on bottom and side edges, top is indeterminate
 	"Chest",
+
+
+
+	// Left arm clothes
+	"SleeveLeft",
+	"GloveLeft",
+
+	// Left arm body - reserved for body and catsuits
 	"HandLeft",
 	"ArmLeft",
+
+
+	// Lower body clothes with a bit more bulk
+	"PantLeft",
+	"PantRight",
+	"Pants",
+	// Lower body underwear
+	"StockingLeft",
+	"StockingRight",
+	"Panties",
+
+	// Lower body body - reserved for body and catsuits
 	"FootLeft",
 	"LegLeft",
 	"FootRight",
@@ -16,8 +44,16 @@ let LAYERS_BASE = [
 	"TorsoUpper",
 	"TorsoLower",
 	"Torso",
+
+	// Right arm clothes
+	"SleeveRight",
+	"GloveRight",
+
+	// Right arm body - reserved for body and catsuits
 	"HandRight",
 	"ArmRight",
+
+	// Clothes that go behind
 	"Coat",
 	"Cape",
 ];

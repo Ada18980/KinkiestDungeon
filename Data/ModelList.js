@@ -189,7 +189,7 @@ AddModel({
 	Name: "BanditShorts",
 	Folder: "Bandit",
 	Layers: ToLayerMap([
-		{ Name: "Shorts", Layer: "Chest", Pri: 7,
+		{ Name: "Shorts", Layer: "Pants", Pri: 7,
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "Hogtie"},
 		},
