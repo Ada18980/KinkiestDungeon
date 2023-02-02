@@ -757,7 +757,7 @@ You find a magical key lying atop an open tome!
 You find a useful scroll wedged between some treatises!
 您在一些论文之间发现有一个有用的卷轴！
 You find a glowing book containing a binding spell!
-您在一本发光的书中发现包含绑定的法术！
+您发现一本发光的书中包含捆绑法术！
 You find a golden key surrounded by strange golden crystals.
 您发现一个被奇怪的金色晶体包围的金钥匙。
 You find a set of strange golden crystals.
@@ -6087,7 +6087,7 @@ I am writing this from inside prison. Who would have known they cared so much ab
 (A drawing of a bunch of zombies, ordered by danger level. Of note are a zombie surrounded by charms, a zombie surrounded by talismans, a zombie warrior with a sword, and... some kind of shrine maiden that you've never seen before)
 （一组僵尸的图画，按危险等级排序。值得注意的是一个被符咒包围的僵尸，一个被丝带包围的僵尸，一个拿着剑的僵尸战士，还有……某种你从未见过的巫女以前看过）
 (An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE) The first thing to understand is that tying someone up is difficult if they are not in a vulnerable position. If your opponent is vulnerable, then binding will be twice as effective!
-（摘自 BONDAGE WITCHERY: A STUDENT'S GUIDE） 首先要理解的是，如果某人不处于弱势地位，将其捆绑起来是很困难的。如果你的对手很脆弱，那么绑定的效果会翻倍！
+（摘自 BONDAGE WITCHERY: A STUDENT'S GUIDE） 首先要理解的是，如果某人不处于弱势地位，将其捆绑起来是很困难的。如果你的对手很脆弱，那么捆绑的效果会翻倍！
 (An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE) Once your opponent is nicely trussed up, you can break their will by ticking them with a Feather, Ice Cube, or Magic Wand.
 （摘自 BONDAGE WITCHERY：学生指南）一旦你的对手被很好地束缚，你可以用羽毛、冰块或魔杖打勾来打破他们的意志。
 (An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE) Bigger and more resilient opponents are much more effective at breaking out of your binds. Try to deal some damage to them to decrease the speed at which they struggle out of your restraints.
