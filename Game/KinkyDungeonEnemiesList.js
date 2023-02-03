@@ -1077,11 +1077,13 @@ let KinkyDungeonEnemies = [
 
 	{name: "CorruptedAdventurer", faction: "Ghost", clusterWith: "ghost", bound: "CorruptedAdventurer", playLine: "Elemental", color: "#880044",
 		tags: KDMapInit(["shadowHandEnemy", "ghost", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainimmune", "shadowHands"]),
-		followRange: 1,
+		followRange: 1, ignoreflag: ["ShadowDommed"], failAttackflag: ["ShadowDommed"],
 		spells: ["ShadowBolt"], spellCooldownMult: 1, spellCooldownMod: 0,
 		AI: "huntshadow",  visionRadius: 10, maxhp: 20, minLevel: 3, weight:-1, movePoints: 4, disarm: 0.33,
 		events: [
 			{trigger: "afterEnemyTick", type: "shadowDebuff", power: -0.5},
+			{trigger: "afterEnemyTick", type: "shadowDommeRefresh"},
+			{trigger: "beforeDamage", type: "shadowDomme", power: 0, color: "#880044"},
 		],
 		attackPoints: 4, attack: "MeleeBindWillSpell", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "cold", multiBind: 2,
 		terrainTags: {"shadowcreature" : 9, "increasingWeight": 0.1, "goddessRage": 3}, shrines: [], allFloors: true,

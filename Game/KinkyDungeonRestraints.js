@@ -188,7 +188,7 @@ function KinkyDungeonDrawTether(Entity, CamX, CamY) {
 }
 
 
-function KDIsPlayerTethered() {
+function KDIsPlayerTethered(player) {
 	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
 	if (inv && KDRestraint(inv).tether && (inv.tx || inv.ty)) {
 		return true;

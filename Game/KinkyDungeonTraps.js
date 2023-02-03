@@ -207,7 +207,7 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 					}
 				}
 			}
-			if (msg || triggered) {
+			if (entity.player && (msg || triggered)) {
 				KDTrigPanic();
 			}
 			if (msg) {

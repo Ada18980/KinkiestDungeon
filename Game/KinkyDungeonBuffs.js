@@ -43,6 +43,10 @@ function KinkyDungeonTickBuffs(list, delta, endFloor, entity) {
 					KinkyDungeonCastSpell(entity.x, entity.y, KinkyDungeonFindSpell(value.spell, true), undefined, undefined, undefined);
 				}
 
+				if (value.type == "Flag") {
+					KinkyDungeonSetFlag(value.id, 1 + delta);
+				}
+
 				if (!(value.infinite))
 					value.duration -= delta;
 			}

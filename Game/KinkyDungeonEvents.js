@@ -161,7 +161,7 @@ let KDEventMapInventory = {
 		},
 		"ShadowHandTether": (e, item, data) => {
 			let enemy = (item.tx && item.ty) ? KinkyDungeonEnemyAt(item.tx, item.ty) : undefined;
-			if (KDGameData.KinkyDungeonLeashedPlayer > 0 && KinkyDungeonLeashingEnemy() && enemy != KinkyDungeonLeashingEnemy()) {
+			if (KinkyDungeonFlags.get("ShadowDommed") || (KDGameData.KinkyDungeonLeashedPlayer > 0 && KinkyDungeonLeashingEnemy() && enemy != KinkyDungeonLeashingEnemy())) {
 				item.tx = undefined;
 				item.ty = undefined;
 			} else {
@@ -1262,6 +1262,15 @@ let KDEventMapBuff = {
 		},
 	},
 	"tick": {
+		"ShadowDommed": (e, buff, entity, data) => {
+			if (buff.duration > 0) {
+				if (entity.player) {
+					if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
+						buff.duration = 0;
+					}
+				}
+			}
+		},
 		"BoundByFate": (e, buff, entity, data) => {
 			if (buff.duration > 0) {
 				if (entity.player) {
@@ -2934,25 +2943,36 @@ let KDEventMapEnemy = {
 	"beforeDamage": {
 		"shadowEngulf": (e, enemy, data) => {
 			if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
-				let buff1 = {id: "ShadowEngulf", type: "Blindness", duration: 8, power: 1.0, player: true, tags: ["passout"]};
-				let buff2 = {id: "ShadowEngulf2", type: "Blindness", duration: 10, power: 2.0, player: true, tags: ["passout"]};
-				let buff3 = {id: "ShadowEngulf3", type: "Blindness", duration: 12, power: 4.0, player: true, tags: ["passout"]};
-				KinkyDungeonSetFlag("shadowEngulf", 4);
-				if (KinkyDungeonPlayerBuffs[buff3.id]) {
-					KinkyDungeonPassOut();
-				} else if (KinkyDungeonPlayerBuffs[buff2.id]) {
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonShadowEngulfEnd3"), "#ff0000", 5);
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff3);
-				}  else if (KinkyDungeonPlayerBuffs[buff1.id]) {
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonShadowEngulfEnd2"), "#ff0000", 4);
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
-				} else {
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonShadowEngulfEnd1"), "#ff0000", 4);
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
+				if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
+					KDTripleBuffKill("ShadowEngulf", KinkyDungeonPlayerEntity, 9, (tt) => {
+						KinkyDungeonPassOut();
+					}, "Blindness");
 				}
+			}
+		},
+		"shadowDomme": (e, enemy, data) => {
+			if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
+				KDTripleBuffKill("ShadowEngulf", KinkyDungeonPlayerEntity, 9, (tt) => {
+					// Passes out the player, but does NOT teleport
+					KinkyDungeonPassOut(true);
+					KDBreakTether();
+
+					// Instead it applies a debuff, and leash
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
+						{id: "ShadowDommed", type: "Flag", duration: 9999, power: 1, maxCount: 1, currentCount: 1, tags: ["attack", "cast"], events: [
+							{type: "ShadowDommed", trigger: "tick"},
+						]}
+					);
+
+					if (!KinkyDungeonGetRestraintItem("ItemNeck")) {
+						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("ObsidianCollar"), 0, true);
+					}
+					if (!KinkyDungeonGetRestraintItem("ItemNeckRestraints")) {
+						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 0, true);
+					}
+
+					KinkyDungeonAttachTetherToEntity(3.5, enemy);
+				}, "Blindness");
 			}
 		},
 	},
@@ -3061,6 +3081,11 @@ let KDEventMapEnemy = {
 				} else if (light > 3) {
 					KinkyDungeonApplyBuffToEntity(enemy, {id: "ShadowDebuff1", aura: "#ff5555", type: "MoveSpeed", duration: 1, power: -0.4, tags: ["speed"]});
 				}
+			}
+		},
+		"shadowDommeRefresh": (e, enemy, data) => {
+			if (KinkyDungeonFlags.get("ShadowDommed")) {
+				KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 			}
 		},
 		"wolfShieldDroneAura": (e, enemy, data) => {
