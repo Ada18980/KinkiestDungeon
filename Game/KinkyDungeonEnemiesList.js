@@ -1037,7 +1037,8 @@ let KinkyDungeonEnemies = [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ff0000"}
 		],
 		visionRadius: 100, maxhp: 20, minLevel:0, weight:-99, movePoints: 99999, attackPoints: 4, attack: "MeleeWill", attackWidth: 2.5, attackRange: 3, power: 4, dmgType: "souldrain",
-		terrainTags: {"passage": -999, "temple": 20, "open": 125}, floors:KDMapInit(["tmp"]), shrines: ["Conjure"]},
+		terrainTags: {"passage": -999, "temple": 20, "open": 125}, floors:KDMapInit(["tmp"]), shrines: ["Conjure"],
+		dropTable: [{name: "AncientPowerSourceSpent", weight: 9}, {name: "AncientPowerSource", weight: 1}]},
 	{name: "SoulCrystalActive", clusterWith: "chaos", color: "#880000", immobile: true, hitsfx: "Evil", tags: KDMapInit(["crystal", "soul", "active", "unstoppable", "miniboss", "ranged", "crushweakness", "soulimmune", "flying"]), spellResist: 0.33,
 		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "wander",
 		events: [
@@ -1045,7 +1046,8 @@ let KinkyDungeonEnemies = [
 		],
 		spells: ["SoulCrystalBind"], spellCooldownMult: 1, spellCooldownMod: 0, followLeashedOnly: true, stopToCast: true, castWhileMoving: true, sneakThreshold: 0.01,
 		visionRadius: 100, maxhp: 20, minLevel:0, weight:-99, movePoints: 99999, attackPoints: 4, attack: "SpellMeleeWill", attackWidth: 2.5, attackRange: 3, power: 4, dmgType: "souldrain",
-		terrainTags: {"passage": -999, "temple": 10, "open": 115}, floors:KDMapInit(["tmp"]), shrines: ["Conjure"]},
+		terrainTags: {"passage": -999, "temple": 10, "open": 115}, floors:KDMapInit(["tmp"]), shrines: ["Conjure"],
+		dropTable: [{name: "AncientPowerSource", weight: 10}]},
 
 
 
@@ -1081,7 +1083,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "afterEnemyTick", type: "shadowDebuff", power: -0.5},
 		],
-		attackPoints: 3, attack: "MeleeBindWillSpell", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "cold", multiBind: 2,
+		attackPoints: 4, attack: "MeleeBindWillSpell", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "cold", multiBind: 2,
 		terrainTags: {"shadowcreature" : 9, "increasingWeight": 0.1, "goddessRage": 3}, shrines: [], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Ectoplasm", weight: 10}]
 	},

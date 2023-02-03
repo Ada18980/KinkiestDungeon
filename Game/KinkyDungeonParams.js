@@ -324,7 +324,7 @@ const KinkyDungeonMapParams = {
 		],
 
 		"shortcuts": [
-
+			{Level: 13, checkpoint: "ore", chance: 1.0},
 		],
 		"mainpath": [
 			{Level: 17, checkpoint: "tmp"},

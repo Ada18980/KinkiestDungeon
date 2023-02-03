@@ -124,37 +124,37 @@ const KinkyDungeonRestraints = [
 
 	{removePrison: true, name: "ShadowHandMouth", unlimited: true, inaccessible: true, tether: 1.5, Asset: "DuctTape", Type: "Double", Color: ["#3c115c"], Group: "ItemMouth", AssetGroup: "ItemMouth3", gag: 0.5,
 		power: 4, weight: 0, escapeChance: {"Struggle": 0.5, "Remove": -100}, failSuffix: {"Struggle": "ShadowHand", "Remove": "ShadowHand"},
-		enemyTags: {"shadowHands":10}, playerTags: {"ItemMouth1Full":-9}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
+		enemyTags: {"shadowHands":10, "shadowBolt": 10}, playerTags: {"ItemMouth1Full":-9}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
 		events: [{trigger: "tick", type: "ShadowHandTether", requiredTag: "shadowHandEnemy", chance: 1.0, dist: 1.5},{trigger: "beforeStruggleCalc", type: "shadowBuff", inheritLinked: true}]},
 
 	{removePrison: true, name: "ShadowHandArms", unlimited: true, LinkableBy: ["Shadow"], accessible: true, tether: 1.5, Asset: "DuctTape", Color: ["#3c115c"], Group: "ItemArms", bindarms: true,
 		power: 4, weight: 0, escapeChance: {"Struggle": 0.35, "Remove": -100}, failSuffix: {"Struggle": "ShadowHand", "Remove": "ShadowHand"},
-		enemyTags: {"shadowHands":10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Tape", "Shadow", "Illusion"],
+		enemyTags: {"shadowHands":10, "shadowBolt": 6}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Tape", "Shadow", "Illusion"],
 		events: [{trigger: "tick", type: "ShadowHandTether", requiredTag: "shadowHandEnemy", chance: 1.0, dist: 1.5},{trigger: "beforeStruggleCalc", type: "shadowBuff", inheritLinked: true}]},
 
 	{removePrison: true, name: "ShadowHandArmsHeavy", unlimited: true, inaccessible: true, tether: 1.5, Asset: "DuctTape", Type: "Top", Color: ["#3c115c"], Group: "ItemArms", bindarms: true, bindhands: true,
 		power: 5, weight: -9, escapeChance: {"Struggle": 0.1, "Remove": -100}, failSuffix: {"Struggle": "ShadowHand", "Remove": "ShadowHand"},
-		enemyTags: {"shadowHands":1}, playerTags: {"ItemArmsFull":9}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
+		enemyTags: {"shadowHands":1, "shadowBolt": 1}, playerTags: {"ItemArmsFull":9}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
 		events: [{trigger: "tick", type: "ShadowHandTether", requiredTag: "shadowHandEnemy", chance: 1.0, dist: 1.5},{trigger: "beforeStruggleCalc", type: "shadowBuff", inheritLinked: true}]},
 
 	{removePrison: true, name: "ShadowHandLegs", unlimited: true, LinkableBy: ["Shadow"], accessible: true, tether: 1.5, Asset: "DuctTape", Color: ["#3c115c"], Group: "ItemLegs", hobble: true,
 		power: 4, weight: 0, escapeChance: {"Struggle": 0.5, "Remove": -100}, failSuffix: {"Struggle": "ShadowHand", "Remove": "ShadowHand"},
-		enemyTags: {"shadowHands":10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Tape", "Shadow", "Illusion"],
+		enemyTags: {"shadowHands":10, "shadowBolt": 1}, playerTags: {"ItemArmsEmpty": -1}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Tape", "Shadow", "Illusion"],
 		events: [{trigger: "tick", type: "ShadowHandTether", requiredTag: "shadowHandEnemy", chance: 1.0, dist: 1.5},{trigger: "beforeStruggleCalc", type: "shadowBuff", inheritLinked: true}]},
 	{removePrison: true, name: "ShadowHandLegsHeavy", unlimited: true, inaccessible: true, tether: 1.5, Asset: "DuctTape", Color: ["#3c115c"], Group: "ItemLegs", Type: "MostLegs", hobble: true, blockfeet: true,
 		power: 5, weight: -5, escapeChance: {"Struggle": 0.1, "Remove": -100}, failSuffix: {"Struggle": "ShadowHand", "Remove": "ShadowHand"},
-		enemyTags: {"shadowHands":1}, playerTags: {"ItemLegsFull": 5, "ItemFeetFull": 4}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
+		enemyTags: {"shadowHands":1, "shadowBolt": 1}, playerTags: {"ItemLegsFull": 5, "ItemFeetFull": 3}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
 		events: [{trigger: "tick", type: "ShadowHandTether", requiredTag: "shadowHandEnemy", chance: 1.0, dist: 1.5},{trigger: "beforeStruggleCalc", type: "shadowBuff", inheritLinked: true}]},
 
 
 	{removePrison: true, name: "ShadowHandCrotch", unlimited: true, accessible: true, tether: 1.5, Asset: "Ribbons", Color: ["#3c115c"], Group: "ItemPelvis", crotchrope: true, strictness: 0.15,
 		power: 4, weight: 0, escapeChance: {"Struggle": 0.3, "Remove": -100}, failSuffix: {"Struggle": "ShadowHand", "Remove": "ShadowHand"},
-		enemyTags: {"shadowHands":10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
+		enemyTags: {"shadowHands":10, "shadowBolt": 2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
 		events: [{trigger: "tick", type: "ShadowHandTether", requiredTag: "shadowHandEnemy", chance: 1.0, dist: 1.5},{trigger: "beforeStruggleCalc", type: "shadowBuff", inheritLinked: true}]},
 
 	{removePrison: true, name: "ShadowHandFeet", unlimited: true, accessible: true, tether: 1.5, Asset: "DuctTape", Color: ["#3c115c"], Group: "ItemFeet", blockfeet: true,
 		power: 4, weight: 0, escapeChance: {"Struggle": 0.4, "Remove": -100}, failSuffix: {"Struggle": "ShadowHand", "Remove": "ShadowHand"},
-		enemyTags: {"shadowHands":10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
+		enemyTags: {"shadowHands":10, "shadowBolt": 2}, playerTags: {"ItemLegsEmpty": -2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
 		events: [{trigger: "tick", type: "ShadowHandTether", requiredTag: "shadowHandEnemy", chance: 1.0, dist: 1.5},{trigger: "beforeStruggleCalc", type: "shadowBuff", inheritLinked: true}]},
 
 	//region Slime
