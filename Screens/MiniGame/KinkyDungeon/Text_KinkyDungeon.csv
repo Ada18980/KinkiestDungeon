@@ -9028,4 +9028,4 @@ KDDialogueRemoteLinkCuffsNevermere,Try running away now~
 KDDialogueRemoteLinkCuffsAncientRobot,Initiating prisoner lockdown protocol
 KDMsgRemoteLinkCuffs,Your RestraintName suddenly snap together as the EnemyName activates them
 
-
+TurnCounter,"Turn Count: "

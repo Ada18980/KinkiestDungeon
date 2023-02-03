@@ -2,7 +2,7 @@
 
 let KinkyDungeonTrapMoved = false;
 
-function KinkyDungeonHandleStepOffTraps(x, y, moveX, moveY) {
+function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 	let flags = {
 		AllowTraps: true,
 	};
@@ -64,7 +64,7 @@ function KinkyDungeonHandleStepOffTraps(x, y, moveX, moveY) {
 
 }
 
-function KinkyDungeonHandleTraps(x, y, Moved) {
+function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 	let flags = {
 		AllowTraps: true,
 	};
@@ -122,7 +122,8 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 					}
 				}
 				if (tile.Trap == "BarrelTrap") {
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BarrelTrap"), 0, true);
+					if (entity.player)
+						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BarrelTrap"), 0, true);
 					if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 					msg = TextGet("KDBarrelTrap");
 					triggered = true;
@@ -130,7 +131,8 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 					tile.Type = undefined;
 				}
 				if (tile.Trap == "CageTrap") {
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("CageTrap"), 0, true);
+					if (entity.player)
+						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("CageTrap"), 0, true);
 					if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 					msg = TextGet("KDCageTrap");
 					triggered = true;
@@ -138,7 +140,8 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 					tile.Type = undefined;
 				}
 				if (tile.Trap == "BedTrap") {
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BedTrap"), 0, true);
+					if (entity.player)
+						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BedTrap"), 0, true);
 					if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 					msg = TextGet("KDBedTrap");
 					triggered = true;
@@ -191,7 +194,9 @@ function KinkyDungeonHandleTraps(x, y, Moved) {
 					let restraint = KinkyDungeonGetRestraintByName("VinePlantFeet");
 					if (restraint) {
 						KDSendStatus('bound', tile.Trap, "trap");
-						KinkyDungeonAddRestraintIfWeaker(restraint, tile.Power, false);
+
+						if (entity.player)
+							KinkyDungeonAddRestraintIfWeaker(restraint, tile.Power, false);
 					}
 					triggered = true;
 					let created = KinkyDungeonSummonEnemy(x, y, "VinePlant", tile.Power, 1);

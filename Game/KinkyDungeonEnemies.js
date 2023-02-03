@@ -2114,7 +2114,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				KinkyDungeonHandleTilesEnemy(enemy, delta);
 
 				if (enemy.Enemy.triggersTraps) {
-					KinkyDungeonHandleTraps(enemy.x, enemy.y, true);
+					KinkyDungeonHandleTraps(enemy, enemy.x, enemy.y, true);
 				}
 
 				let idle = true;

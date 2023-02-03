@@ -3559,7 +3559,7 @@ function KinkyDungeonMoveTo(moveX, moveY, SuppressSprint) {
 	let willSprint = KinkyDungeonToggleAutoSprint && (xx != moveX || yy != moveY) && !SuppressSprint;
 	let cencelled = KDMovePlayer(moveX, moveY, true, willSprint);
 
-	if (stepOff) KinkyDungeonHandleStepOffTraps(xx, yy, moveX, moveY);
+	if (stepOff) KinkyDungeonHandleStepOffTraps(KinkyDungeonPlayerEntity, xx, yy, moveX, moveY);
 
 	KinkyDungeonMovePoints = 0;
 	KinkyDungeonSetFlag("Quickness", 0);
@@ -3583,6 +3583,7 @@ function KinkyDungeonMoveTo(moveX, moveY, SuppressSprint) {
 				KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
 				if (KinkyDungeonSlowLevel < 2) {
 					// Move faster
+					KinkyDungeonTrapMoved = true;
 					KDMovePlayer(moveX*2 - xx, moveY*2 - yy, true);
 				}
 			}

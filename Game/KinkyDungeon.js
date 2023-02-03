@@ -73,6 +73,14 @@ let KinkyDungeonKeySwitchWeapon = ['ControlRight'];
 
 let KDLoadingTextKeys = {};
 
+let KDToggles = {
+	Sound: true,
+	Fullscreen: true,
+	Drool: true,
+	VibeSounds: true,
+	DrawArmor: true,
+};
+
 let KDDefaultKB = {
 	Down: KinkyDungeonKey[2],
 	DownLeft: KinkyDungeonKey[6],
@@ -497,6 +505,17 @@ function KDistChebyshev(x, y) {
 	return Math.max(Math.abs(x), Math.abs(y));
 }
 
+function KDLoadToggles() {
+	let loaded = localStorage.getItem("KDToggles") ? JSON.parse(localStorage.getItem("KDToggles")) : {};
+	for (let t of Object.keys(KDToggles)) {
+		if (loaded[t])
+			KDToggles[t] = loaded[t];
+	}
+}
+function KDSaveToggles() {
+	localStorage.setItem("KDToggles", JSON.stringify(KDToggles));
+}
+
 /**
  * Loads the kinky dungeon game
  * @returns {void} - Nothing
@@ -550,10 +569,9 @@ function KinkyDungeonLoad() {
 			KinkyDungeonPlayer.Type = "simple";
 			// @ts-ignore
 			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: true, };
-			KinkyDungeonSound = localStorage.getItem("KinkyDungeonSound") != undefined ? localStorage.getItem("KinkyDungeonSound") == "True" : true;
-			KinkyDungeonFullscreen = localStorage.getItem("KinkyDungeonFullscreen") != undefined ? localStorage.getItem("KinkyDungeonFullscreen") == "True" : true;
-			KinkyDungeonDrool = localStorage.getItem("KinkyDungeonDrool") != undefined ? localStorage.getItem("KinkyDungeonDrool") == "True" : true;
-			KinkyDungeonArmor = localStorage.getItem("KinkyDungeonArmor") != undefined ? localStorage.getItem("KinkyDungeonArmor") == "True" : true;
+
+			KDLoadToggles();
+
 			KinkyDungeonBones = localStorage.getItem("KinkyDungeonBones") != undefined ? localStorage.getItem("KinkyDungeonBones") : KinkyDungeonBones;
 
 			if (localStorage.getItem("KDVibeVolume")) {
