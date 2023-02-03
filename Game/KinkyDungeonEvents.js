@@ -1268,6 +1268,7 @@ let KDEventMapBuff = {
 					if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
 						buff.duration = 0;
 					}
+					KinkyDungeonSetFlag("PlayerDommed", 2);
 				}
 			}
 		},

@@ -668,7 +668,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 	}
 
 	if (!enemy && !bullet && player) { // Costs for the player
-		KinkyDungeonSetFlag("PlayerCombat", 20);
+		KinkyDungeonSetFlag("PlayerCombat", 8);
 
 		if (data.targetingSpellItem) {
 			KinkyDungeonChangeConsumable(KinkyDungeonTargetingSpellItem, -(KinkyDungeonTargetingSpellItem.useQuantity ? KinkyDungeonTargetingSpellItem.useQuantity : 1));

@@ -2418,6 +2418,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		}
 		if (!AIData.aggressive && !(enemy.rage > 0) && !enemy.Enemy.alwaysHostile && (!enemy.playWithPlayer || !player.player)) AIData.ignore = true;
 		if (AIData.distracted) AIData.ignore = true;
+
+		// If the player is already being held by another NPC and is not resisting
+		if (KinkyDungeonFlags.get("PlayerDommed") && !KDPlayerDeservesPunishment(enemy, player)) AIData.ignore = true;
 	}
 
 	AIData.MovableTiles = KinkyDungeonMovableTilesEnemy;
@@ -2556,6 +2559,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	} else if (!KDPlayerIsTied()) {
 		AIData.playChance *= 0.4;
 	}
+	// Reduce chance of play in combat
 	if (KinkyDungeonFlags.get("PlayerCombat")) AIData.playChance *= 0.2;
 
 	if (KDEnemyHasFlag(enemy, "Shop")) AIData.playChance = 0;
@@ -2971,7 +2975,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	// Attack loop
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
 	let canAttack = !(enemy.disarm > 0)
-		&& (!enemy.Enemy.followLeashedOnly || KinkyDungeonFlags.get("PlayerCombat") || KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id)
+		&& (!enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id)
 		&& ((AIData.hostile || (enemy.playWithPlayer && player.player && !AIData.domMe)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage)))
 		&& ((enemy.aware && KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
 		&& !AIData.ignore
@@ -4791,4 +4795,17 @@ function KDReduceBinding(enemy, bonus) {
 		for (let key of Object.keys(enemy.specialBoundLevel)) {
 			enemy.specialBoundLevel[key] *= bindingPercent;
 		}
+}
+
+/**
+ * Helper function to determine if a character needs punishing
+ * @param {entity} enemy
+ * @param {entity} player
+ */
+function KDPlayerDeservesPunishment(enemy, player) {
+	if (player.player) {
+		if (KinkyDungeonFlags.get("PlayerCombat")) return true;
+	} else {
+		return true;
+	}
 }

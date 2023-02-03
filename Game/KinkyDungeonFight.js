@@ -241,7 +241,7 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 			KDAddOpinion(Enemy, 10);
 		} else {
 			if (Enemy && !Enemy.Enemy.allied) {
-				KinkyDungeonSetFlag("PlayerCombat", 24);
+				KinkyDungeonSetFlag("PlayerCombat", 8);
 				KinkyDungeonAggroAction('attack', {enemy: Enemy});
 			}
 		}
