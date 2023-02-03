@@ -2965,10 +2965,10 @@ let KDEventMapEnemy = {
 					);
 
 					if (!KinkyDungeonGetRestraintItem("ItemNeck")) {
-						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("ObsidianCollar"), 0, true);
+						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("ObsidianCollar"), 0, true, "Purple");
 					}
 					if (!KinkyDungeonGetRestraintItem("ItemNeckRestraints")) {
-						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 0, true);
+						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 0, true, "Purple");
 					}
 
 					KinkyDungeonAttachTetherToEntity(3.5, enemy);
