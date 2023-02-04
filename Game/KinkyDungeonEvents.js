@@ -604,7 +604,7 @@ let KDEventMapInventory = {
 					if (item && KDRestraint(item).Link && (KDRandom() < chance * subMult) && (!e.noLeash || KDGameData.KinkyDungeonLeashedPlayer < 1)) {
 						let newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
 						//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
-						if (KinkyDungeonSound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+						if (KDToggles.Sound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
 						KinkyDungeonAddRestraint(newRestraint, item.tightness, true, "", false, undefined, undefined, undefined, item.faction);
 					}
 				}
@@ -621,7 +621,7 @@ let KDEventMapInventory = {
 					if (prereq) {
 						let newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
 						//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
-						if (KinkyDungeonSound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+						if (KDToggles.Sound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
 						KinkyDungeonAddRestraint(newRestraint, item.tightness, true, "", false, undefined, undefined, undefined, item.faction);
 					}
 				}

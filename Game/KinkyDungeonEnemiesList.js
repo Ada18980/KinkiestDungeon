@@ -1663,7 +1663,7 @@ let KDAIType = {
 		follower: (enemy, player, AIData) => {return true;},
 		followsound: (enemy, player, AIData) => {return true;},
 		wander_near: (enemy, player, AIData) => {return true;},
-		wander_far: (enemy, player, AIData) => {return true;},
+		wander_far: (enemy, player, AIData) => {return KDRandom() < 0.2;},
 		resetguardposition: (enemy, player, AIData) => {return false;},
 		attack: (enemy, player, AIData) => {return true;},
 		spell: (enemy, player, AIData) => {return true;},
@@ -1680,7 +1680,7 @@ let KDAIType = {
 		follower: (enemy, player, AIData) => {return true;},
 		followsound: (enemy, player, AIData) => {return true;},
 		wander_near: (enemy, player, AIData) => {return true;},
-		wander_far: (enemy, player, AIData) => {return true;},
+		wander_far: (enemy, player, AIData) => {return KDRandom() < 0.2;},
 		resetguardposition: (enemy, player, AIData) => {return false;},
 		attack: (enemy, player, AIData) => {return true;},
 		spell: (enemy, player, AIData) => {return true;},
@@ -1697,19 +1697,8 @@ let KDAIType = {
 		follower: (enemy, player, AIData) => {return true;},
 		followsound: (enemy, player, AIData) => {return true;},
 		wander_near: (enemy, player, AIData) => {return true;},
-		wander_far: (enemy, player, AIData) => {return true;},
+		wander_far: (enemy, player, AIData) => {return KDRandom() < 0.4;},
 		wandernear_func: (enemy, player, AIData) => {
-			let newPoint = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
-				return KinkyDungeonBrightnessGet(x, y) < 4;
-			}, false, enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
-			if (newPoint) {
-				enemy.gx = newPoint.x;
-				enemy.gy = newPoint.y;
-				return true;
-			}
-			return false;
-		},
-		wanderfar_func: (enemy, player, AIData) => {
 			if (KinkyDungeonAlert && AIData.playerDist < Math.max(4, AIData.visionRadius)) {
 				enemy.gx = KinkyDungeonPlayerEntity.x;
 				enemy.gy = KinkyDungeonPlayerEntity.y;
@@ -1750,6 +1739,17 @@ let KDAIType = {
 				}
 			}
 
+			return false;
+		},
+		wanderfar_func: (enemy, player, AIData) => {
+			let newPoint = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+				return KinkyDungeonBrightnessGet(x, y) < 4;
+			}, false, enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
+			if (newPoint) {
+				enemy.gx = newPoint.x;
+				enemy.gy = newPoint.y;
+				return true;
+			}
 			return false;
 		},
 		resetguardposition: (enemy, player, AIData) => {return false;},

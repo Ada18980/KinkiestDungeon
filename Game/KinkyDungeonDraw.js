@@ -1290,10 +1290,10 @@ function KinkyDungeonDrawGame() {
 		}
 
 		MainCanvas.textAlign = "left";
-		DrawCheckboxVis(600, 100, 64, 64, TextGet("KinkyDungeonSound"), KinkyDungeonSound, false, "#ffffff");
-		DrawCheckboxVis(600, 180, 64, 64, TextGet("KinkyDungeonDrool"), KinkyDungeonDrool, false, "#ffffff");
-		if (!KDDebugMode)  DrawCheckboxVis(1000, 180, 64, 64, TextGet("KinkyDungeonArmor"), KinkyDungeonArmor, false, "#ffffff");
-		DrawCheckboxVis(600, 260, 64, 64, TextGet("KinkyDungeonFullscreen"), KinkyDungeonFullscreen, false, "#ffffff");
+		DrawCheckboxVis(600, 100, 64, 64, TextGet("KinkyDungeonSound"), KDToggles.Sound, false, "#ffffff");
+		DrawCheckboxVis(600, 180, 64, 64, TextGet("KinkyDungeonDrool"), KDToggles.Drool, false, "#ffffff");
+		if (!KDDebugMode)  DrawCheckboxVis(1000, 180, 64, 64, TextGet("KinkyDungeonArmor"), KDToggles.DrawArmor, false, "#ffffff");
+		DrawCheckboxVis(600, 260, 64, 64, TextGet("KinkyDungeonFullscreen"), KDToggles.Fullscreen, false, "#ffffff");
 		if (ServerURL == "foobar")
 			DrawCheckboxVis(600, 340, 64, 64, TextGet("KinkyDungeonGraphicsQuality"), KinkyDungeonGraphicsQuality, false, "#ffffff");
 

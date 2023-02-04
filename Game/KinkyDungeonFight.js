@@ -705,7 +705,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		if (KDRandom() < actionDialogueChanceIntense)
 			KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (Enemy.Enemy.playLine ? Enemy.Enemy.playLine : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
 
-		if (KinkyDungeonSound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx.Miss) {
+		if (KDToggles.Sound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx.Miss) {
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + Enemy.Enemy.cueSfx.Miss + ".ogg");
 		}
 		//KinkyDungeonSendFloater({x: Enemy.x - 0.5 + Math.random(), y: Enemy.y - 0.5 + Math.random()}, TextGet("KDMissed"), "white", 2);
@@ -718,11 +718,11 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		}
 
 		let type = KinkyDungeonMeleeDamageTypes.includes(predata.type) ? "Block" : "Resist";
-		if (KinkyDungeonSound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx[type]) {
+		if (KDToggles.Sound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx[type]) {
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + Enemy.Enemy.cueSfx[type] + ".ogg");
 		}
 		//KinkyDungeonSendFloater({x: Enemy.x - 0.5 + Math.random(), y: Enemy.y - 0.5 + Math.random()}, TextGet("KDBlocked"), "white", 2);
-	} else if (predata.dmgDealt > 0 && KinkyDungeonSound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx.Damage) {
+	} else if (predata.dmgDealt > 0 && KDToggles.Sound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx.Damage) {
 		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + Enemy.Enemy.cueSfx.Damage + ".ogg");
 		if (KDRandom() < actionDialogueChance)
 			KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (Enemy.Enemy.playLine ? Enemy.Enemy.playLine : "") + "Hit").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5);
@@ -833,9 +833,9 @@ function KinkyDungeonAttackEnemy(Enemy, Damage) {
 	let hp = Enemy.hp;
 	KinkyDungeonDamageEnemy(Enemy, (predata.eva) ? dmg : null, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity);
 	if (predata.eva && KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.sfx) {
-		if (KinkyDungeonSound) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "/Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg"});
+		if (KDToggles.Sound) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "/Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg"});
 		//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg");
-	} else if (!predata.eva) if (KinkyDungeonSound) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "/Audio/Miss.ogg"});
+	} else if (!predata.eva) if (KDToggles.Sound) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "/Audio/Miss.ogg"});
 	//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Miss.ogg");
 	if (disarm) {
 		KinkyDungeonDisarm(Enemy);
@@ -1191,7 +1191,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 	}
 
 	if (b.bullet.hit && b.bullet.spell && b.bullet.hit != b.bullet.spell.secondaryhit && b.bullet.spell.landsfx) {
-		if (KinkyDungeonSound && (b.bullet.faction == "Player" || KinkyDungeonVisionGet(b.x, b.y) > 0)) {
+		if (KDToggles.Sound && (b.bullet.faction == "Player" || KinkyDungeonVisionGet(b.x, b.y) > 0)) {
 			KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "/Audio/" + b.bullet.spell.landsfx + ".ogg"});
 		}
 		//KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + b.bullet.spell.landsfx + ".ogg");
@@ -1693,7 +1693,7 @@ function KinkyDungeonLaunchBullet(x, y, targetx, targety, speed, bullet, miscast
 function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	for (let damage of KDDamageQueue) {
 		if (!damage.Delay || KDTimescale * (performance.now() - KDLastTick) > damage.Delay) {
-			if (damage.sfx && KinkyDungeonSound) KinkyDungeonPlaySound(damage.sfx);
+			if (damage.sfx && KDToggles.Sound) KinkyDungeonPlaySound(damage.sfx);
 
 			if (damage.floater) {
 				KinkyDungeonSendFloater(damage.Entity, damage.floater, damage.Color, damage.Time);

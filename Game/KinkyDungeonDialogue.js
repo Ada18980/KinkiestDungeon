@@ -647,7 +647,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 							const unlockSpell = KinkyDungeonFindSpell("EffectEnemyCM" + (enemy?.Enemy?.unlockCommandLevel || 1), true) || KinkyDungeonFindSpell("EffectEnemyCM1", true);
 							KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, unlockSpell, undefined, undefined, undefined);
 
-							if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 							KinkyDungeonSetEnemyFlag(enemy, "commandword", enemy.Enemy.unlockCommandCD || 90);
 						} else {
 							KDGameData.CurrentDialogMsg = name + "HelpMeCommandWord_Fail";
@@ -684,7 +684,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 						) {
 							KinkyDungeonChangeRep("Ghost", 3);
 							KinkyDungeonRedKeys += 1;
-							if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Coins.ogg");
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Coins.ogg");
 							enemy.items.splice(enemy.items.indexOf("RedKey"), 1);
 						} else {
 							KDGameData.CurrentDialogMsg = name + "HelpMeKey_Fail";

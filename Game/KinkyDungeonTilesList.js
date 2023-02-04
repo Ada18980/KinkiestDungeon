@@ -82,7 +82,7 @@ let KDMoveObjectFunctions = {
 						KinkyDungeonSetFlag("failUnfair", 5);
 						KinkyDungeonSetFlag("failUnfairFirst", 10);
 					}
-					if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Locked.ogg");
+					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Locked.ogg");
 				}
 			}
 		}
@@ -95,7 +95,7 @@ let KDMoveObjectFunctions = {
 				KinkyDungeonAggroFaction(faction, true);
 			}
 
-			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/DoorOpen.ogg");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/DoorOpen.ogg");
 		}
 
 		return true;
@@ -112,7 +112,7 @@ let KDMoveObjectFunctions = {
 		} else {
 			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType, roll, KinkyDungeonTilesGet(moveX + "," +moveY), undefined, noTrap);
 			if (lootTrap) KDSpawnLootTrap(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, lootTrap.trap, lootTrap.mult, lootTrap.duration);
-			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/ChestOpen.ogg");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/ChestOpen.ogg");
 			KinkyDungeonMapSet(moveX, moveY, 'c');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
 			KinkyDungeonAggroAction('chest', {faction: faction});
@@ -122,7 +122,7 @@ let KDMoveObjectFunctions = {
 	'Y': (moveX, moveY) => { // Open the chest
 		let chestType = KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] == "lib" ? "shelf" : "rubble";
 		KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType);
-		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Coins.ogg");
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Coins.ogg");
 		KinkyDungeonMapSet(moveX, moveY, 'X');
 		KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
 		return true;
@@ -130,7 +130,7 @@ let KDMoveObjectFunctions = {
 	'O': (moveX, moveY) => { // Open the chest
 		if (KinkyDungeonIsPlayer())
 			KinkyDungeonTakeOrb(1, moveX, moveY); // 1 spell point
-		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 		KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
 		return true;
 	},
@@ -139,7 +139,7 @@ let KDMoveObjectFunctions = {
 			KDPerkConfirm = false;
 			KinkyDungeonTakePerk(1, moveX, moveY); // 1 perk choice
 		}
-		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
 		return true;
 	},
 	'-': (moveX, moveY) => { // Open the chest

@@ -1971,26 +1971,26 @@ function KinkyDungeonHandleHUD() {
 
 
 		if (MouseIn(600, 100, 64, 64)) {
-			KinkyDungeonSound = !KinkyDungeonSound;
-			localStorage.setItem("KinkyDungeonSound", KinkyDungeonSound ? "True" : "False");
+			KDToggles.Sound = !KDToggles.Sound;
+			KDSaveToggles();
 			return true;
 		}
 		if (MouseIn(600, 260, 64, 64)) {
-			KinkyDungeonFullscreen = !KinkyDungeonFullscreen;
+			KDToggles.Fullscreen = !KDToggles.Fullscreen;
 			if (pixirendererKD)
 				pixirendererKD.destroy();
 			pixirendererKD = null;
-			localStorage.setItem("KinkyDungeonFullscreen", KinkyDungeonFullscreen ? "True" : "False");
+			KDSaveToggles();
 			return true;
 		}
 		if (MouseIn(600, 180, 64, 64)) {
-			KinkyDungeonDrool = !KinkyDungeonDrool;
-			localStorage.setItem("KinkyDungeonDrool", KinkyDungeonDrool ? "True" : "False");
+			KDToggles.Drool = !KDToggles.Drool;
+			KDSaveToggles();
 			return true;
 		}
 		if (!KDDebug && MouseIn(1000, 180, 64, 64)) {
-			KinkyDungeonArmor = !KinkyDungeonArmor;
-			localStorage.setItem("KinkyDungeonArmor", KinkyDungeonArmor ? "True" : "False");
+			KDToggles.DrawArmor = !KDToggles.DrawArmor;
+			KDSaveToggles();
 			return true;
 		}
 		if (MouseIn(600, 340, 64, 64) && (ServerURL == "foobar")) {

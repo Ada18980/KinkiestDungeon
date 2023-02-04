@@ -73,6 +73,9 @@ let KinkyDungeonKeySwitchWeapon = ['ControlRight'];
 
 let KDLoadingTextKeys = {};
 
+
+let KinkyDungeonGraphicsQuality = true;
+
 let KDToggles = {
 	Sound: true,
 	Fullscreen: true,
@@ -508,7 +511,7 @@ function KDistChebyshev(x, y) {
 function KDLoadToggles() {
 	let loaded = localStorage.getItem("KDToggles") ? JSON.parse(localStorage.getItem("KDToggles")) : {};
 	for (let t of Object.keys(KDToggles)) {
-		if (loaded[t])
+		if (loaded[t] != undefined)
 			KDToggles[t] = loaded[t];
 	}
 }
@@ -701,11 +704,6 @@ let KinkyDungeonCreditsPos = 0;
 let KDMaxPatronPerPage = 4;
 let KDMaxPatron = 5;
 let KinkyDungeonPatronPos = 0;
-let KinkyDungeonSound = true;
-let KinkyDungeonFullscreen = true;
-let KinkyDungeonDrool = true;
-let KinkyDungeonArmor = true;
-let KinkyDungeonGraphicsQuality = true;
 let KinkyDungeonFastWait = true;
 let KinkyDungeonTempWait = false;
 let KinkyDungeonSexyMode = false;
@@ -769,7 +767,7 @@ function KinkyDungeonRun() {
 	if (ServerURL != "foobar")
 		DrawButtonVis(1885, 25, 90, 90, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Exit.png");
 
-	if (KinkyDungeonFullscreen) {
+	if (KDToggles.Fullscreen) {
 		KinkyDungeonGridWidthDisplay = 2000/KinkyDungeonGridSizeDisplay;//17;
 		KinkyDungeonGridHeightDisplay = 1000/KinkyDungeonGridSizeDisplay;//9;
 		canvasOffsetX = 0;
@@ -839,7 +837,7 @@ function KinkyDungeonRun() {
 	} else if (KinkyDungeonState == "Menu") {
 		KinkyDungeonGameFlag = false;
 		MainCanvas.textAlign = "left";
-		DrawCheckboxVis(600, 100, 64, 64, TextGet("KinkyDungeonSound"), KinkyDungeonSound, false, "#ffffff");
+		DrawCheckboxVis(600, 100, 64, 64, TextGet("KinkyDungeonSound"), KDToggles.Sound, false, "#ffffff");
 		MainCanvas.textAlign = "center";
 		// Draw temp start screen
 		if (KDLose) {
@@ -1817,7 +1815,7 @@ function KinkyDungeonStartNewGame(Load) {
 	if (KinkyDungeonKeybindings) {
 		KDCommitKeybindings();
 	}
-	if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
+	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
 }
 
 function KDUpdatePlugSettings() {
@@ -2017,8 +2015,8 @@ function KinkyDungeonHandleClick() {
 	} else if (KinkyDungeonState == "Menu" || KinkyDungeonState == "Lose") {
 
 		if (MouseIn(600, 100, 64, 64)) {
-			KinkyDungeonSound = !KinkyDungeonSound;
-			localStorage.setItem("KinkyDungeonSound", KinkyDungeonSound ? "True" : "False");
+			KDToggles.Sound = !KDToggles.Sound;
+			KDSaveToggles();
 		}
 
 		if (MouseIn(1700, 874, 280, 50)) {
@@ -2029,8 +2027,8 @@ function KinkyDungeonHandleClick() {
 			return true;
 		}
 		if (MouseIn(600, 260, 64, 64)) {
-			KinkyDungeonFullscreen = !KinkyDungeonFullscreen;
-			localStorage.setItem("KinkyDungeonFullscreen", KinkyDungeonFullscreen ? "True" : "False");
+			KDToggles.Fullscreen = !KDToggles.Fullscreen;
+			localStorage.setItem("KinkyDungeonFullscreen", KDToggles.Fullscreen ? "True" : "False");
 		}
 
 
@@ -2137,7 +2135,7 @@ function KinkyDungeonHandleClick() {
 function KinkyDungeonClick() {
 	if (KinkyDungeonHandleClick()) {
 		if (KinkyDungeonReplaceConfirm > 0) KinkyDungeonReplaceConfirm -= 1;
-		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
 	}
 }
 
