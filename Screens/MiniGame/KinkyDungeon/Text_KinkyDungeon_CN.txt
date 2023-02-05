@@ -44,6 +44,8 @@ Enable Fullscreen
 启用全屏
 High Quality Animations
 高品质动画
+Draw Armor
+绘制子弹
 Wait Quickly
 快速等待
 Helpless!
@@ -56,6 +58,20 @@ You bump into a wall.
 你撞到了一堵墙。
 Toy Volume:
 玩具音量：
+Music Volume:
+音乐音量：
+Animation Speed:
+动画速度：
+Save my current progress.
+保存当前进度
+Give up & delete save
+放弃并删除存档
+Yes,jail me!
+是的，囚禁我
+Yes,delete my save file!
+是的，删除我的存档文件！
+See Perks
+查看技能
 Select a journey. This will determine the ordering of game areas.
 选择旅程。这将决定游戏区域的顺序。
 Standard: The intended experience
@@ -80,34 +96,6 @@ Point Cost: AMOUNT
 积分成本：AMOUNT
 Points Available: AMOUNT
 可用积分：AMOUNT
-Strong
-强健
-Boosts the Struggle option when escaping.
-加快挣扎进程。
-Helpless
-无助
-You are physically weak. Struggling is much less effective.
-你身体虚弱。挣扎的效果要差得多。
-Flexible
-灵活的
-Slightly boosts the Remove/Unlock option, escaping is 1.5x as fast except picking, and your feet can use items/buckles.
-略微加速了移除/解锁选项，除了撬锁之外，逃脱速度是 1.5 倍，并且你的脚可以使用物品/扣环。
-Inflexible
-不灵活
-You get a penalty to the Remove and Unlock action, and escaping is 0.75x as fast.
-你的移除和解锁选项会减慢，并且逃跑的速度是 0.75 倍。
-Locksmith
-锁匠
-You get a bonus to lockpicking, allowing you to pick some high-security locks previously impossible.
-您可以获得撬锁奖励，允许您尝试开一些以前不可能的高安全性锁。
-Clueless
-一头雾水
-You have no idea how to pick locks. Picking is 0.5x as fast and you can't pick most advanced locks.
-你不知道如何撬锁。撬锁速度是原来的 0.5 倍，而且您无法撬开最先进的锁。
-Psychic
-精神
-You no longer drop keys and picks, can unlock yourself with bound hands, and don't need hands for items/potions.
-您不再掉落钥匙和镐，可以用拘束住的手解锁自己，并且不需要手来使用物品/药水。
 Novice
 新手
 All spells above 1st level cost 2x as many spell points.
@@ -116,22 +104,6 @@ Blessed
 祝福
 You can drink mana from the shrine fountains once per floor without chance of punishment.
 您可以在每层第一次饮用神泉恢复法力时不可能受到任何惩罚。
-Cursed
-诅咒
-Goddess reputations start at 0 and can never exceed 25.
-所有女神的声望从0开始，永远不能超过25。
-Submissive
-服从
-Your submissiveness starts at 100 and cannot go below 70.
-你的服从度从 100 开始，不能低于 70。
-Wanted
-通缉
-Your security level starts at 100 and cannot go below 70.
-您的安全级别从 100 开始，不能低于 70。
-Studious
-好学
-You start the game with +3 additional spell points.
-游戏开始时，您将获得3点额外法术点数。
 Meditation
 冥想
 You slowly regenerate mana, up to a maximum of 50.
@@ -140,10 +112,6 @@ Willpower
 坚毅
 -50% stamina drain from being at high arousal.
 因为高潮流失的体力减少50%。
-Bondage Lover
-束缚爱好者
-Attempting to escape arouses you.
-试图挣脱会提高你的干扰值。
 Purity
 纯洁
 You cannot play with yourself, but gain a flat 0.25 distraction decay per turn.
@@ -152,108 +120,8 @@ Unchaste
 不贞的
 Your distraction decay is 0.25x while wearing a chastity belt instead of 0.5x.
 佩戴贞操带时干扰值衰减为 0.25 倍，而不是 0.5 倍。
-Focused Dodge
-集中闪避
-While your miscast chance is 0%, your base evasion is 25% (multiplicative).
-在你的施法的失败率为 0%时，你获得额外 25%闪避率（乘算）。
-Distracted
-干扰
-+15% miscast chance (at all times)
-+15% 施法失败机会（始终）
-Brawler
-格斗家
-Unarmed attacks deal +10 damage.
-徒手攻击额外造成10伤害。
-Clumsy
-笨拙
-0.7x melee hit chance
-0.7x 近战命中率
-Pristine
-质朴
-There are no shiny loot objects in the dungeon.
-地牢中没有闪亮的战利品。
-Lost Technology
-失传的技术
-Ancient power cores break with use, and cannot be recharged.
-远古的能量核心会随着使用而损坏，并且无法充能。
-Rigger
-索具装配工
-Chain and glue damage increased by 20%. Binding on enemies is 30% stronger.
-锁链和胶水的伤害提高了 20%。对敌人的拘束强度提升 30%。
-Pacifist
-和平主义者
-All non-glue, non-chain, or non-teasing damage dealt to humanoid enemies is reduced by 90%.
-对人形敌人造成的所有非胶水、非锁链或非戏弄伤害降低 90%。
-Unchained
-无拘无束
-Start with high Metal reputation, and all metal restraints are easier to escape from.
-以更高的金属声望开始，所有金属束缚更容易逃脱。
-Damsel in Chains
-锁链中的少女
-Metal restraints are harder to escape from.
-金属束缚更难逃脱。
-Escape Artist
-逃脱大师
-Start with high Rope reputation, and all rope restraints are easier to escape from.
-从较高的绳索声望开始，所有绳索拘束都更容易逃脱。
-Rope Bunny
-绳模
-Rope restraints are harder to escape from.
-绳索束缚更难逃脱。
-Slippery
-顺滑
-Start with high Latex reputation, and all latex restraints are easier to escape from.
-从较高的乳胶声誉开始，所有乳胶拘束都更容易摆脱。
-Latex Doll
-乳胶娃娃
-Latex restraints are harder to escape from.
-乳胶拘束更难逃脱。
-Escapee
-流亡者
-Start with high Leather reputation, and all leather restraints are easier to escape from.
-从较高的皮革声誉开始，所有皮革束缚都更容易逃脱。
-Leather-Bound
-皮革拘束
-Leather restraints are harder to escape from.
-皮革拘束更难逃脱。
-Slayer
-杀手
-You can cast Elemental spells without having the components, at twice the cost. Start w/ Firebolt.
-你可以以两倍魔力消耗为代价无视施法条件使用元素法术。开局获得技能 火焰弹。
-Conjurer
-咒术师
-You can cast Conjuration spells without having the components, at twice the cost. Start w/ Conjure Chain.
-你可以以两倍魔力消耗为代价无视施法条件使用咒术。开局获得技能 咒术。
-Magician
-魔术师
-You can cast Illusion spells without having the components, at twice the cost. Start w/ Shadow Dagger.
-你可以以两倍魔力消耗为代价无视施法条件使用幻术。开局获得技能 暗影匕首。
 You slowly lose stamina over time.
 随着时间的推移，你会慢慢失去体力。
-Stealth Mission
-隐匿任务
-You are harder to detect and there are more chests, but enemies are harder and drop no gold.
-你更难被发现并且有更多的箱子，但敌人更难并且不会掉落金币。
-Conspicuous
-显眼
-Enemies detect you more easily.
-敌人更容易发现你。
-Bound Power
-拘束之力
-Your damage and evasion increases based on the number of restraints worn, up to +40% when thoroughly bound.
-你的伤害和闪避会根据佩戴的束缚数量增加，完全束缚时最多 +40%。
-Kill Squad
-杀戮小队
-Enemies see you through walls and at greater distance.
-敌人透过墙壁和更远的距离看到你。
-Supermarket
-超市
-Commerce shrines can appear in levels and have slightly more items.
-商业神殿可以出现在不同的层次上，并拥有更多的物品。
-Price Gouging
-敲竹杠
-Items are 5x as expensive in the shop.
-商店里的商品价格是原来的 5 倍。
 Free Spirit
 自由精神
 Most chastity belts can be struggled out of, but distraction decay is heavily reduced.
@@ -270,58 +138,18 @@ Price Gouging
 敲竹杠
 Items are 5x as expensive in the shop.
 商店里的商品价格是原来的 5 倍。
-High Security
-高安全性
-Picks are weaker, and randomly generated locks are harsher.
-开锁工具更加脆弱，随机生成的锁更难撬开。
 Shoddy Knives
 劣质刀
 Knives break more easily.
 刀更容易折断。
-Oppression
-压抑
-Ghosts are less likely to help you.
-鬼魂不愿意帮助你。
 Search Party
 搜查队伍
 More enemies spawn during sleep.
 更多的敌人在睡眠期间生成。
-No Way Out
-无法挣脱
-Enemies will always use the tightest restraints possible and fully bind you.
-敌人将始终使用最严格的束缚具并完全束缚您。
-Graceful Walk
-优雅的步行
-You don't lose stamina when walking with one slowing item, unless it binds your legs together.
-带着一件减速物品走路时不会失去耐力，除非它把你的腿绑在一起。
-Well-Equipped
-设备精良
-Restraints and traps that are limited by level appear sooner, and enemies will stack many restraints.
-限制在一定层数以后出现的拘束具和陷阱会更早的出现，并且敌人会堆叠更多的束缚。
-Butterfingers
-黄油手指
-Having arms bound prevents you from using your hands to struggle or unlock yourself.
-被束缚的手臂会阻止你用手挣扎或解锁自己。
-Weak Grip
-弱式握杆
-Having arms bound prevents you from holding weapons or potions.
-被束缚的手臂无法持有武器或药剂。
-Can't Hear You!
-听不见你说话！
-Being gagged blocks you from casting verbal spells regardless of gag power.
-被堵嘴会阻止你施放言语咒语，无论堵嘴的等级如何。
-Quick-Draw
-快速拔刀
-Switching weapons does not take a turn.
-切换武器不再需要等待一回合。
 Quick-Scribe
 高速咏唱
 Switching spells and casting from spellbook does not take a turn.
 从法术书切换法术和施法不再需要等待一回合。
-Disorganized
-杂乱无章
-Switching weapons, learning/choosing spells, and casting from spellbook takes 3 turns.
-切换武器、学习/选择法术和从法术书中施放需要 3 个回合。
 Fuuka's Pet
 Fuuka的宠物
 Start with Fuuka's collar.
@@ -330,88 +158,8 @@ Vengeance
 复仇
 Defeating an enemy greatly distracts you.
 击败敌人会极大地提高你的干扰值。
-Berserker Rage
-狂怒
-Melee attacks distract you, but melee (including chain) damage increases by up to 30% at max distraction.
-近战攻击会提高你的干扰值，但在干扰值达到最大值时，近战（包括锁链）伤害最多增加 30%。
-Unstable Magic
-不稳定的魔法
-Spells do up to 60% additional damage based on distraction or miscast chance, whichever is higher.
-根据干扰值或施法错误的几率，法术最多可造成 60% 的额外伤害，以较高者为准。
-Absolute Focus
-绝对专注
-Miscast chance is doubled.
-施法失败的概率翻倍。
-Bound Crusader
-束缚十字军
-Goddesses will expect you to wear their restraints as their champion.
-女神会期望你作为她们的卫士时穿戴她们的拘束具。
-Nowhere is Safe
-草木皆兵
-Beds and furniture are often trapped.
-床和木桶经常会是陷阱。
-Quickness
-速度
-Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock.
-4回合不动后获得"敏捷"。"敏捷"可以让您瞬间移动 1 格。
-Dominant
-支配者
-Trespasser
-入侵者
-You lose reputation with the goddesses every time you advance a floor.
-每次你进入下一层楼时，你会失去女神们的声誉。
-They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage.
-他们和你一起被困在这里。鬼魂更有帮助，你可以束缚与你对抗的敌人。
-Prisoner
-囚犯
-Start the game as a submissive prisoner wandering the halls.
-作为一个在大厅里游荡的顺从囚犯开始游戏。
-Rusty Bolts
-生锈的螺栓
-Most traps have a 25% misfire chance.
-大多数陷阱有 25% 的失效几率。
-Unmasked
-无面罩
-Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
-头套和全覆盖面罩将不会出现，但眼罩更强大。
-No Nurses
-无护士
-Nurses will not appear in the game.
-护士将不再出现在游戏中
-Panic!!!
-惊恐！！！
-When you step on a trap, you are stunned for 2 turns.
-当你踩到陷阱时，你会晕眩2回合。
 Panic sets in! (Stunned 2 turns)
 恐慌！（眩晕2回合）
-Maid Sweeper
-女仆清洁工
-Start in a magically locked maid outfit.
-开局时穿戴使用魔法锁住的女仆装。
-Wolf Trainee
-受训狼
-Start in a uniform of a naughty wolfgirl.
-开局时穿戴狼女的衣服。
-Latex Mannequin
-乳胶模型
-Start bound in latex restraints.
-开局时穿戴一整套乳胶拘束。
-Iron Slave
-钢铁奴隶
-Start in a full set of magically locked obsidian cuffs.
-开局时穿戴被魔法锁住的全套黑曜石铐。
-Frantic Struggle
-疯狂挣扎
-Your struggling is 3 times as fast, but less efficient in terms of stamina.
-你的挣扎速度是原来的3倍，但降低你的体力。
-Fashionable
-时尚的
-When you are jailed, you keep your outfit.
-当你入狱时，保留你的衣物。
-Undeniable
-不可否认的
-Born with an intense submissive desire, you cannot refuse bondage from dialogues.
-你生来就有强烈的顺从欲望，无法在对话时拒绝束缚请求。
 Copy to Clipboard
 复制到剪贴板
 Copy (clipboard)
@@ -499,7 +247,7 @@ I will simply wait to see what happens.
 Give up (Clears save file)
 放弃（清除保存文件）
 Actually, I will let the enemy capture me instead.
-实际上，我要让敌人俘虏我。
+实际上，我要让敌人俘虏我
 No, I wish to press on
 不，我想继续
 See Background
@@ -3262,8 +3010,8 @@ That door is open. Do you want to close it?
 那扇门是开着的。你想关闭它吗？
 You slam the door and jam it shut!
 你砰的一声关上门！
-Submissive
-顺从的
+Submissiveness
+顺从度
 Security Level
 安全级别
 Undead
@@ -6767,19 +6515,17 @@ Demise immanent
 Shadow
 暗影
 Ice
-冰
-Ice
-冰
+寒冰
 Fire
-火
+火焰
 Poison
-毒
+毒物
 Charm
 绷带
 Tickle
 挠痒
 Grope
-摸
+抚摸
 Crush
 碾压
 Pierce
@@ -6787,7 +6533,7 @@ Pierce
 Slash
 劈砍
 Pain
-痛
+疼痛
 Soul
 灵魂
 Mana Drain
@@ -7538,24 +7284,6 @@ Target an enemy: Attack with Dragonslaver. Target a tile: Launch binding belts
 消耗5%能量进入狂乱10回合，每回合攻击2次。
 Create a '+' shaped pool of slime that deals 35 glue damage per hit
 创建一个十字史莱姆池，每一击造成 35 点胶水伤害
-Toggles
-切换
-Locks and Restraints
-锁具和拘束具
-General Combat
-一般战斗
-Kinks and Preferences
-扭结和偏好
-Damage and Resists
-伤害和抵抗
-Wizardry and Sorcery
-魔法和巫术
-Devious Threats
-狡猾的威胁
-World Generation
-世界生成
-Starting Scenario
-起始场景
 Unlockable
 可解锁
 You hand over your weapon reluctantly...
@@ -10094,3 +9822,475 @@ Select where the slime will appear
 选择粘液出现的位置
 Select where to put the wall (cannot place on occupied squares)
 选择放置墙壁的位置（不能放置在占用的区域上）
+
+#初始技能#
+Toggles
+切换
+Unmasked
+无面罩
+Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
+头套和全覆盖面罩将不会出现，但眼罩更强大。
+No Nurses
+无护士
+Nurses will not appear in the game.
+护士将不再出现在游戏中。
+Brats Only
+淘气宝宝
+Submissive enemies will always be bratty and force you to catch them.
+顺从的敌人总是令人讨厌，迫使你去抓他们。
+No Brats
+安静宝宝
+Submissive enemies won't run away from you.
+顺从的敌人不会从你身边逃跑。
+
+Locks and Restraints
+锁具和拘束具
+Second Wind
+再生之气
+Gain 2 WP every time you remove a non-trivial restraint.
+每次移除特殊拘束时获得 2 WP。
+Futile Struggles
+无力挣扎
+Lose 2 WP every time you remove a non-trivial restraint.
+每次移除特殊拘束时消耗 2 WP。
+Strong
+强健
+Boosts the Struggle option when escaping.
+挣扎效果提升。
+Helpless
+无助
+You are physically weak. Struggling is much less effective.
+你的身体虚弱，挣扎效果要差得多。
+Flexible
+灵活
+Slightly boosts the Remove/Unlock option, escaping is 1.5x as fast except picking, and your feet can use items/buckles.
+略微加速移除/解锁的速度，除了撬锁之外，逃脱速度变为原先的 1.5 倍，并且你的脚可以使用物品/扣环。
+Inflexible
+笨重
+You get a penalty to the Remove and Unlock action, and escaping is 0.75x as fast.
+减慢移除/解锁的速度，逃脱速度变为原先的 0.75 倍。
+Locksmith
+锁匠
+You get a bonus to lockpicking, allowing you to pick some high-security locks previously impossible.
+你可以获得撬锁奖励，并且允许撬一些以前不可能撬开的高安全性锁具。
+Clueless
+一头雾水
+You have no idea how to pick locks. Picking is 0.5x as fast and you can't pick most advanced locks.
+你不知道如何撬锁，撬锁速度变为原来的 0.5 倍，而且您无法撬开最先进的锁具。
+Frantic Struggle
+疯狂挣扎
+Your struggling is 3 times as fast, but less efficient in terms of stamina.
+你的挣扎速度变为原来的 3 倍，但提高挣扎时的体力消耗。
+Psychic
+超凡之力
+You no longer drop keys and picks, can unlock yourself with bound hands, and don't need hands for items/potions.
+你不将会掉落钥匙和镐，可以用拘束住的手解锁自己，并且不需要手来使用物品/药水。
+High Security
+高安全性
+Picks are weaker, and randomly generated locks are harsher.
+开锁工具变得更加脆弱，且随机生成的锁具将更难撬开。
+No Way Out
+无法挣脱
+Enemies will always use the tightest restraints possible and fully bind you.
+敌人将始终使用最严格的拘束具来完全束缚你。
+Well-Equipped
+设备精良
+Restraints and traps that are limited by level appear sooner, and enemies will stack many restraints.
+限制在一定层数后出现的拘束具和陷阱会更早的出现，并且敌人会堆叠更多的束缚。
+Magic Hands
+魔法之手
+Enemies can add restraints underneath existing restraints.
+敌人可以在现有拘束具上添加额外拘束。
+Cursed Locks
+禁锢诅咒
+Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle.
+没有钥匙的人将受到禁锢的诅咒，锁定的物品不能被切割，且更难挣扎。
+Butterfingers
+黄油手指
+Having arms bound prevents you from using your hands to struggle or unlock yourself.
+被束缚的手臂会阻止你用手挣扎或解锁自己。
+Weak Grip
+弱式握杆
+Having arms bound prevents you from holding weapons or potions.
+被束缚的手臂无法持有武器或药剂。
+
+Kinks and Preferences
+怪癖和偏好
+Unchained
+无拘无束
+Start with high Metal reputation, and all metal restraints are easier to escape from.
+开局金属声望更高，所有金属拘束更容易逃脱。
+Damsel in Chains
+锁链少女
+Metal restraints are harder to escape from.
+金属拘束更难逃脱。
+Escape Artist
+逃脱大师
+Start with high Rope reputation, and all rope restraints are easier to escape from.
+开局绳索声望更高，所有绳索拘束更容易逃脱。
+Rope Bunny
+绳模
+Rope restraints are harder to escape from.
+绳索拘束更难逃脱。
+Slippery
+滑溜溜
+Start with high Latex reputation, and all latex restraints are easier to escape from.
+开局乳胶声望更高，所有乳胶拘束更容易摆脱。
+Latex Doll
+乳胶娃娃
+Latex restraints are harder to escape from.
+乳胶拘束更难逃脱。
+Escapee
+流亡者
+Start with high Leather reputation, and all leather restraints are easier to escape from.
+开局皮革声望更高，所有皮革束缚更容易逃脱。
+Leather-Bound
+皮革拘束
+Leather restraints are harder to escape from.
+皮革拘束更难逃脱。
+Submissive
+温顺小甜心
+Your submissiveness starts at 100 and cannot go below 70.
+开局服从度变为 100 ，且游戏中不能低于 70。
+Wanted
+通缉逃犯
+Your security level starts at 100 and cannot go below 70.
+开局安全级别变为 100 ，且游戏中不能低于 70。
+Fashionable
+时尚之星
+When you are jailed, you keep your outfit.
+入狱可保留你的衣物。
+Bondage Lover
+束缚爱好
+Attempting to escape arouses you.
+试图挣脱会提高你的干扰值。
+Undeniable
+无可争辩
+Born with an intense submissive desire, you cannot refuse bondage from dialogues.
+你生来就有强烈的顺从欲望，无法在对话时拒绝束缚请求。
+I have... needs
+我...想要...
+Distraction builds up over time.
+干扰值随时间累计。
+Bound Crusader
+束缚十字军
+Goddesses will expect you to wear their restraints as their champion.
+女神会期望你作为她们的卫士时穿戴她们的拘束具。
+
+Damage and Resists
+伤害和抵抗
+Stoic
+忍耐
+You gain 82% tickle resist.
+你获得 82% 挠痒抗性。
+Ticklish
+怕痒
+You take 50% more tickle damage.
+你受到的挠痒伤害增加 50%。
+Unperturbed
+冰洁
+You gain 82% grope resist.
+你获得 82% 抚摸抗性。
+Lascivious
+好色
+You take 50% more grope damage.
+你受到的抚摸伤害增加 50%。
+Pain Tolerance
+坚韧
+You gain 200% pain resist.
+你获得 200% 疼痛抗性。
+Masochist
+受虐
+Pain is strongly arousing.
+疼痛会使你强烈地兴奋。
+Rigger
+索具装配工
+Chain and glue damage increased by 20%. Binding on enemies is 30% stronger.
+提高 20% 锁链/胶水伤害，并提高对敌人的拘束强度 30%。
+Pacifist
+和平主义者
+All non-glue, non-chain, or non-teasing damage dealt to humanoid enemies is reduced by 90%.
+对人形敌人造成的所有非胶水、非锁链或非戏弄伤害降低 90%。
+Burning Desire
+焚心望火
+While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
+当干扰值超过 70% 时，你会点燃附近的物体并提高 40% 火焰伤害。
+Frigid Personality
+冰清玉洁
+While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
+当干扰值为 0% 时，提高 10% 寒冰伤害并且可以无惩罚的在冰上行走。
+Grounded in Reality
+现实之源
+While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
+当法力值最大时，攻击可造成额外 30% 基础伤害的电击伤害。
+Like the Wind
+风之旋律
+While above 95% stamina, you gain +30% evasion and your slow level is reduced by 1.
+当耐力大于 95% 时，获得 30% 闪避并且减速等级降低 1。
+Immovable Object
+坚不可摧
+While above 90% willpower, you gain +150 Restraint Block and Earth buff spells cost half mana.
+当意志力大于 90% 时，获得 150 点拘束阻挡，且岩系增益法术仅需消耗一半的法力值。
+Path of Least Resistance
+腐蚀之盾
+While at 0 willpower, you gain +35% evasion and deal 20% of your max willpower as acid damage when restrained.
+当意志力为 0 时，获得 35% 的闪避，并在受到拘束时造成相当于你最大意志力 20% 的酸蚀伤害。
+Sticky Situation
+粘滞窘境
+You take 40% more glue damage.
+你受到的胶水伤害增加 40%。
+Breathless
+气喘吁吁
+Taking chain, poison, and crush damage makes you dizzy.
+受到锁链、毒物和碾压伤害会让你头晕目眩。
+
+General Combat
+一般战斗
+Focused Dodge
+集中闪避
+While your miscast chance is 0%, your base evasion is 25% (multiplicative).
+施法失败率为 0% 时，获得额外 25% 闪避率（乘算）。
+Quick-Draw
+快速拔刀
+Switching weapons and spells does not take a turn.
+切换武器和法术无需等待一回合。
+Brawler
+格斗大师
+Unarmed attacks deal +10 damage.
+徒手攻击额外造成10伤害。
+Graceful Walk
+优雅步伐
+You don't lose stamina when walking with one slowing item, unless it binds your legs together.
+带着一件减速物品走路时不会失去耐力，除非你的腿被绑在一起。
+Bound Power
+拘束之力
+Your damage and evasion increases based on the number of restraints worn, up to +40% when thoroughly bound.
+你的伤害和闪避会根据佩戴的束缚数量增加，完全束缚时最多 +40%。
+Berserker Rage
+狂暴之怒 
+Melee attacks distract you, but melee (including chain) damage increases by up to 30% at max distraction.
+近战攻击会提高你的干扰值，但在干扰值达到最大值时，近战（包括锁链）伤害最多增加 30%。
+Quickness
+迅疾闪现
+Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock.
+4回合不动后获得"敏捷"，"敏捷"状态下可以瞬间移动 1 格。
+Distracted
+心神不定
++15% miscast chance (at all times)
+增加 15% 施法失败几率（始终）
+Disorganized
+杂乱无章
+Switching weapons, learning/choosing spells, and casting from spellbook takes 3 turns.
+切换武器、学习/选择法术和从法术书中施放需要 3 个回合。
+Clumsy
+笨手笨脚
+0.7x melee hit chance
+0.7x 近战命中率
+Savour the Taste
+细细品味
+Drinking a potion takes 2 turns
+喝一瓶药水需要 2 回合。
+Blackout
+屏蔽护目
+Blindfolds are stronger. While blindfolded you can only see enemies next to you.
+眼罩变得更强，当佩戴眼罩时，你只能看到身边的敌人。
+Total Blackout
+暗影护目
+Blindfolds are extremely punishing and you can't see explored areas while blindfolded.
+眼罩变得非常痛苦，当佩戴眼罩时，你看不到已探索区域。
+
+Wizardry and Sorcery
+魔法和巫术
+Slayer
+元素法师
+You can cast Elemental spells without having the components, at twice the cost. Start w/ Firebolt.
+你可以以两倍魔力消耗为代价无视施法条件使用元素法术。开局获得技能 火焰弹。
+Conjurer
+咒术法师
+You can cast Conjuration spells without having the components, at twice the cost. Start w/ Conjure Chain.
+你可以以两倍魔力消耗为代价无视施法条件使用咒术。开局获得技能 咒术。
+Magician
+幻术法师
+You can cast Illusion spells without having the components, at twice the cost. Start w/ Shadow Dagger.
+你可以以两倍魔力消耗为代价无视施法条件使用幻术。开局获得技能 暗影匕首。
+Studious
+学识渊博
+You start the game with +3 additional spell points.
+开局额外获得3点法术点数。
+Mana Burst
+法力冲击
+While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge.
+当干扰值为 100% ，施法失败几率 -100%，但一次消耗过多的法力值可能会导致高潮。
+Clearheaded
+冷静之术
+Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction.
+魔法可以让你头脑清醒，成功施法时可以减少干扰值。
+Unstable Magic
+混沌魔法
+Spells do up to 60% additional damage based on distraction or miscast chance, whichever is higher.
+根据干扰值或施法失败的几率，法术最多可造成 60% 的额外伤害，以较高者为准。
+Arousing Magic
+催化魔法
+Your magic is powered by otherworldly distracting energies. Casting spells increases distraction based on the mana spent.
+你的魔法由超凡脱俗的催情能量驱动，施法时会根据消耗的法力增加干扰值。
+Absolute Focus
+绝对专注
+Miscast chance is doubled.
+施法失败几率翻倍。
+Can't Hear You!
+听不见你说话！
+Being gagged blocks you from casting verbal spells regardless of gag power.
+堵嘴会阻止你施放言语咒语，无论堵嘴的等级如何。
+
+Devious Threats
+狡猾的威胁
+Stranger
+未知实体
+Randomizes your relationship to most factions.
+随机化你与大多数派系的关系。
+Stealth Mission
+隐匿任务
+You are harder to detect and there are more chests, but enemies are harder and drop no gold.
+你将更难被发现，且会刷新更多的箱子，但敌人更难并且不会掉落金币。
+Wrong Neighborhood
+敌意实体
+All factions are hostile and united against you.
+所有派系都对你敌对并联合起来反对你。
+Resilient Foes
+顽强之敌
+Enemies take 30% less damage.
+敌人受到的伤害减少 30%。
+Kill Squad
+杀戮小队
+Enemies see you through walls and at greater distance.
+敌人透过墙壁和更远的距离看到你。
+Conspicuous
+显眼
+Enemies detect you more easily.
+敌人更容易发现你。
+Cursed
+诅咒
+Goddess reputations start at 0 and can never exceed 25.
+所有女神的声望从0开始，永远不能超过25。
+Nowhere is Safe
+草木皆兵
+Beds and furniture are often trapped.
+床和木桶经常会是陷阱。
+Maid Lovers
+女仆之恋
+All humanoids that can bind you also apply maid restraints.
+所有可束缚你的人形生物可以使用女仆束缚。
+Latex Lovers
+乳胶之恋
+All humanoids that can bind you also apply latex restraints.
+所有可束缚你的人形生物可以使用乳胶束缚。
+Leather Lovers
+皮革之恋
+All humanoids that can bind you also apply leather restraints.
+所有可束缚你的人形生物可以使用皮革束缚。
+Adv Latex Lovers
+高级乳胶之恋
+All humanoids that can bind you also apply advanced latex restraints.
+所有可束缚你的人形生物可以使用高级乳胶束缚。
+Dress Lovers
+连衣之恋
+All humanoids that can bind you also apply dress restraints.
+所有可束缚你的人形生物可以使用连衣裙束缚。
+Wolfgirl Lovers
+狼女之恋
+All humanoids that can bind you also apply wolfgirl restraints.
+所有可束缚你的人形生物可以使用狼女束缚。
+Kitty Lovers
+猫咪之恋
+All humanoids that can bind you also apply kitty restraints.
+所有可束缚你的人形生物可以使用猫咪束缚。
+
+World Generation
+世界生成
+Dominant
+支配者
+They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage.
+他们和你一起被困在这里。鬼魂更有帮助，你可以束缚与你对抗的敌人。
+Supermarket
+超市
+Commerce shrines can appear in levels and have slightly more items.
+商业神殿可以出现在不同的层次上，并拥有更多的物品。
+Rusty Bolts
+生锈螺栓
+Most traps have a 25% misfire chance.
+大多数陷阱有 25% 的失效几率。
+Expansive Halls
+宽敞之牢
+Increases the size of maps by 1 in each direction.
+将每个方向的地图大小增加 1。
+Gargantuan Halls
+广阔之牢
+Increases the size of maps by 2 in each direction.
+将每个方向的地图大小增加 2。
+Labyrinthine Halls
+辽阔之牢
+Increases the size of maps by 3 in each direction.
+将每个方向的地图大小增加 3。
+Oppression
+压抑
+Ghosts are less likely to help you.
+鬼魂不愿意帮助你。
+Price Gouging
+敲竹杠
+Items are 5x as expensive in the shop.
+商店里的商品价格是原来的 5 倍。
+Pristine
+质朴
+There are no shiny loot objects in the dungeon.
+地牢中没有闪亮的战利品。
+Lost Technology
+遗落之术
+Ancient power cores break with use, and cannot be recharged.
+远古的能量核心会随着使用而损坏，并且无法充能。
+Panic!!!
+惊恐
+When you step on a trap, you are stunned for 2 turns.
+当你踩到陷阱时，你会晕眩2回合。
+Forgetful
+健忘
+You don't remember where you've been in the level.
+你不记得你在地牢中的位置。
+Trespasser
+入侵者
+You lose reputation with the goddesses every time you advance a floor.
+每次你进入下一层楼时，你会失去女神们的声誉。
+Kinky Prisoner
+变态囚犯
+Guards never remove restraints you are already wearing, unless they are applying something tighter.
+警卫永远不会移除您已经佩戴的束缚，除非他们使用更严格的束缚。
+Unfair Doors
+困难的门
+Doors are harder to open while your hands are bound.
+当你的手被束缚时，门更难打开。
+
+Starting Scenario
+起始场景
+Prisoner
+囚犯
+Start the game as a submissive prisoner wandering the halls.
+作为一个在大厅里游荡的顺从囚犯开始游戏。
+Hogtied!
+捆绑
+Start the game trussed up in tight ropes.
+开始游戏时被绳索捆绑。
+Maid Sweeper
+可爱女仆
+Start in a magically locked maid outfit.
+开局时穿戴使用魔法锁住的女仆装。
+Wolf Trainee
+受训狼女
+Start in a uniform of a naughty wolfgirl.
+开局时穿戴狼女的衣服。
+Latex Mannequin
+乳胶娃娃
+Start bound in latex restraints.
+开局时穿戴一整套乳胶拘束。
+Iron Slave
+钢铁奴隶
+Start in a full set of magically locked obsidian cuffs.
+开局时穿戴被魔法锁住的全套黑曜石铐。
