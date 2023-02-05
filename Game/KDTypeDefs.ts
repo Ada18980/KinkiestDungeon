@@ -586,6 +586,11 @@ interface enemy extends KDHasTags {
 	Attack?: {
 		mustBindorFail?: boolean,
 	},
+	/** Contains data pertaining to the creature's awareness */
+	Awareness?: {
+		/** Optional tag to override chase radius */
+		chaseradius?: number,
+	}
 	/** */
 	followRange?: number,
 	/** wander = wanders randomly

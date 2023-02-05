@@ -1326,6 +1326,9 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "RopeKraken", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "boss", "elite", "unflinching", "fireweakness", "slashweakness", "chainresist", "hunter"]),
+		Awareness: {
+			chaseradius: 15,
+		},
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  summon: [{enemy: "RopeMinion", range: 2.5, count: 4, strict: true}],
 		spells: ["RopeEngulf", "SummonRopeTentacle"], spellCooldownMult: 1, spellCooldownMod: 0, ignoreflag: ["kraken"], disarm: 0.25,
 		visionRadius: 9, maxhp: 60, minLevel: 3, weight:-31, movePoints: 4, attackPoints: 2, attack: "Spell", attackWidth: 1, attackRange: 1, power: 6, dmgType: "chain",
@@ -1336,7 +1339,11 @@ let KinkyDungeonEnemies = [
 		],
 		dropTable: [{name: "Scissors", ignoreInInventory: true, weight: 2}, {name: "Knife", ignoreInInventory: true, weight: 5}, {name: "EnchKnife", ignoreInInventory: true, weight: 2}, {name: "ElfCrystal", weight: 3}]},
 	{name: "RopeMinion", faction: "KinkyConstruct", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "fireweakness", "minor", "slashweakness", "chainresist", "krakententacle"]), ignorechance: 0.75, followRange: 1, AI: "hunt",  master: {type: "RopeKraken", range: 4}, ignoreflag: ["kraken"], dependent: true,
-		visionRadius: 10, maxhp: 8, minLevel: 0, weight:-1000, movePoints: 1.5, attackPoints: 2, attack: "MeleePullWill", attackWidth: 1, attackRange: 1, power: 3, dmgType: "crush", noAlert: true,
+		visionRadius: 10,
+		Awareness: {
+			chaseradius: 15,
+		},
+		maxhp: 8, minLevel: 0, weight:-1000, movePoints: 1.5, attackPoints: 2, attack: "MeleePullWill", attackWidth: 1, attackRange: 1, power: 3, dmgType: "crush", noAlert: true,
 		terrainTags: {}, allFloors: true, shrines: ["Rope"]},
 
 
