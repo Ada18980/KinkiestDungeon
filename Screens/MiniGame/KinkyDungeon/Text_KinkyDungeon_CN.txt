@@ -22,6 +22,8 @@ Chinese
 简体中文
 Korean
 韩语
+Mods Loaded.
+已加载 Mods
 Kinky Dungeon v3.91
 变态地牢 v3.91
 You are an adventurer descending into an ancient underground city of magic.
@@ -624,6 +626,14 @@ Clear Perks
 清除词条
 Config
 配置
+Load Mod
+加载 Mod
+Delete Mod
+移除 Mod
+DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
+【危险】：加载 Mod 将在你的计算机上肆意执行任意代码。
+Like connecting to a server, etc. Only load mods from a TRUSTED source.
+就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的 Mod 。
 Up
 向上
 Down
@@ -740,6 +750,24 @@ You find a bola, crafted by bandits
 你找到了一条由强盗制作的投石索
 You find some unexploded ordnance.
 你发现了一些未爆炸的弹药
+You find a key lying atop an open tome!
+您发现一个钥匙躺在敞开的书籍上！
+You find a magical key lying atop an open tome!
+您发现一个魔法钥匙躺在一个敞开的书籍上！
+You find a useful scroll wedged between some treatises!
+您在一些论文之间发现有一个有用的卷轴！
+You find a glowing book containing a binding spell!
+您发现一本发光的书中包含捆绑法术！
+You find a golden key surrounded by strange golden crystals.
+您发现一个被奇怪的金色晶体包围的金钥匙。
+You find a set of strange golden crystals.
+您发现一组奇怪的金色晶体。
+You find a pack of scrolls used for spellcasting, and some strange golden crystals.
+您发现一包用于施法的卷轴和一些奇怪的金色晶体。
+You find a pack of scrolls used for spellcasting.
+您发现一包用于施法的卷轴。
+You find a glowing scroll of purity.
+您发现纯净的卷轴。
 You find a key on the shelf!
 你在架子上找到一把钥匙！
 You find a useful scroll in between the books!
@@ -1160,6 +1188,8 @@ Arcane Orb
 神秘球
 Look into my eyes...
 看着我的眼睛。。。
+Deals shadow damage. Can be used without hands. Does not benefit from enemies being vulnerable.
+造成暗影伤害。使用时无需双手。不从敌人的影响中受益。
 Hammer
 锤子
 A rather simplistic bludgeoning weapon.
@@ -2722,6 +2752,8 @@ A light restores the health of its allies!
 一道光可以恢复了周围敌人的生命！
 You do not have enough resources to cast the spell! (Consider pleading with a goddess)
 你没有足够的资源来施法！ （考虑向女神请求）
+You do not have enough resources to cast the spell!
+您没有足够的资源来施放咒语！
 You AttackName TargetEnemy for DamageDealt DamageType damage!
 你 AttackName TargetEnemy 造成 DamageDealt 点 DamageType 伤害！
 You AttackName TargetEnemy for a decreased DamageDealt DamageType damage!
@@ -3032,6 +3064,18 @@ The laces are tied tight!
 带子系得很紧！
 You hopelessly try to untie the lacing but it's just too tight!
 你绝望地试图解开带子，但它太紧了！
+You grasp at the slime, trying to peel it off...
+你抓着粘液，试图将其剥去...
+You wiggle madly as you try to peel off the slime!
+你疯狂地蠕动试图摆脱史莱姆！
+The slime reforms as you scoop it away!
+当您将其铲去时，史莱姆变成皮革了！
+You can't get the slime off at all!
+您根本无法摆脱史莱姆！
+The slime is too fast at reforming!
+史莱姆太快变成皮革了！
+The slime reforms too quickly as you try to squirm it off...
+当您试图蠕动时，史莱姆变化得更快了...
 You start peeling off the wrapping...
 你开始剥掉外衣...
 You scratch at the wrapping furiously...
@@ -3081,7 +3125,7 @@ The clamps tug on your nipples as you squirm!
 The clamps tug on your nipples as you squirm!
 当你蠕动时，夹子会拉扯你的乳头！
 The chest is too smooth to help. Maybe if you opened it?
-胸部太光滑无济于事。也许如果你打开它？
+表面太光滑了。也许你可以打开它？
 Lockable
 可上锁
 Non-Lockable
@@ -3242,8 +3286,8 @@ Illusions
 幻术
 Commerce
 商业
-Shrine of
-神泉
+Shrine of SHRINETYPE
+SHRINETYPE神泉
 Allies:
 盟友：
 Enemies:
@@ -3368,12 +3412,36 @@ A devious dress that forces the arms into an elbows-touching position.
 一种连衣裙，迫使手臂在背后保持胳膊接触的位置。
 It is extremely strict but it is only fabric. The lacing is intricate and will take a long time to remove.
 它非常严苛，但它只是织物。绑带很复杂，需要很长时间才能去除。
+Ornamental Corset
+观赏紧身胸衣
+Your figure looks gorgeous in this~
+你的身材看起来真漂亮〜
+It's so tight you won't be able to undo the laces yourself, dear!
+亲爱的，这太紧了，你将无法自己解开系带！
+Fancy Ball Gag
+精致口球
+A cute ball gag that fills your mouth right up!
+一个可爱的口球，你的塞满嘴！
+What's this? it seems to have a magic spell protecting it from harm!
+这是什么？ 它似乎有一个神奇的法术保护它免受伤害！
+Fancy Muzzle
+精致口套
+A muzzle to keep you from spitting out what's underneath.
+口套可防止您吐出下面的东西。
+Sorry dear, there's a mystic seal on there to keep it on nice and tight.
+对不起，亲爱的，那里有一个神秘的封印，可以使其保持良好且紧密。
 Red Binding Dress
 红色捆绑连衣裙
 A devious dress that forces the arms into an elbows-touching position.
 一种连衣裙，迫使手臂在背后保持胳膊接触的位置。
 It is extremely strict but it is only fabric. The lacing is intricate and will take a long time to remove.
 它非常严苛，但它只是织物。绑带很复杂，需要很长时间才能去除。
+Panel Plug Gag
+镶嵌堵嘴
+A gag meant to keep people quiet by forcing a dildo into their mouth.
+一种堵嘴，旨在通过将假阳具塞入他们的嘴里来让人保持安静。
+It is difficult to pull off and though it is made from supple, heavy duty leather.
+它很难取出，尽管它是由柔软的厚皮革制成的。
 Ornamental Gag
 装饰堵嘴
 A gag meant to keep servants of the Resurrection Temple quiet by forcing a dildo into their mouth.
@@ -3412,6 +3480,10 @@ An advanced collar for tracking high-security prisoners.
 用于追踪高度安全的囚犯的高级项圈。
 It seems to be made of flexible steel plates, and it has a high-security lock.
 它似乎由柔性钢板制成，并且具有高安全性锁。
+Harness Ball Gag
+马具式球口塞
+A gag that stuffs your mouth with a large silicone ball.
+一个塞满您嘴的大硅胶球口塞。
 Latex Ball Gag
 乳胶口塞
 A devious device that looks like a ball gag, but has a mouth-filling rod on the inside.
@@ -3445,7 +3517,7 @@ They are not coming off without the key.
 The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 Cuffs Chain
-连接黑钢手铐
+链式黑钢手铐
 Highly durable cuffs that can withstand even powerful acid.
 高度耐用的手铐，甚至可以承受强酸。
 They are not coming off without the key.
@@ -3613,7 +3685,7 @@ Bast堵嘴
 A gag used to silence new initiates of the Bast cult.
 用来让巴斯特教新信徒闭嘴的堵嘴。
 The harness is comprehensive and it's locked in place.
-束带带很全面，并且锁定到位。
+束带很全面，并且锁定到位。
 Bast Muzzle
 Bast口套
 A muzzle used to keep a Bast gag secure.
@@ -3705,7 +3777,7 @@ Sticky tape made from a metallic material. Used to great effect in police situat
 It's very sticky and tough but you could probably get a knife through it.
 它非常粘稠且坚韧，但您可以用刀解决它。
 Autotape (Feet)
-自动胶带（英尺）
+自动胶带（足）
 Sticky tape made from a metallic material. Used to great effect in police situations.
 由金属材料制成的胶带。在警察情况下使用效果很好。
 It's very sticky and tough but you could probably get a knife through it.
@@ -3717,9 +3789,9 @@ Sticky tape made from a metallic material. Used to great effect in police situat
 It's very sticky and tough but you could probably get a knife through it.
 它非常粘稠且坚韧，但您可以用刀解决它。
 Stuffing
-填充物
+布团口塞
 A stuffing of cloth.
-一块布填充物。
+一块布团。
 You could spit it out easily, provided nothing's covering it.
 你可以很容易地把它吐出来，只要没有东西覆盖它。
 Arm Ropes
@@ -3752,6 +3824,10 @@ Strongly glowing ropes.
 强烈发光的绳索。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
+Magic Ropework
+绳索（附魔）
+Strongly glowing ropes tied in an intricate pattern, making hand restraints more secure.
+强烈发光的绳索以复杂的方式捆绑起来，使束手更加可靠。
 Magic Leg Rope
 腿部绳缚（附魔）
 Strongly glowing ropes.
@@ -3914,6 +3990,12 @@ A pair of steel cuffs locked securely around your wrists.
 一对钢制手铐牢固地锁在您的手腕上。
 The lock doesn't seem very complicated.
 锁似乎不是很复杂。
+Steel Yoke
+钢杆
+A steel bar clamped firmly around your wrists and neck, leaving you in a helpless position.
+钢杆牢牢地夹在您的手腕和脖子上，使您处于无助的位置。
+This is not something you can pick by yourself...
+这不是您自己可以选择的东西...
 Leather Harness
 皮革束衣
 A leather harness of tight straps buckled around your torso.
@@ -4200,6 +4282,38 @@ Your ankle cuffs snap together on their own!
 您的脚铐会自行扣合！
 Your ankle cuffs detach!
 你的脚铐脱落！
+Asylum Muzzle
+安全口套
+The nurses use this on noisy patients!
+护士将其用于吵闹的患者！
+It's sturdy leather...
+它由坚固的皮革制成...
+Asylum Jacket
+安全夹克
+A straitjacket that keeps patients out of trouble.
+一种使患者摆脱麻烦的紧身衣。
+It has many straps and is very difficult to escape.
+它有许多皮带，很难逃脱。
+Asylum Legbinder
+安全束腿套
+This legbinder will keep the patient from kicking the nurses.
+该腿套将阻止患者踢护士。
+It has both laces and straps.
+它既有鞋带和皮带。
+Asylum Ankle Cuffs
+安全脚铐
+A pair of chained cuffs made of reinforced leather. They make patients easier to catch.
+一双由增强皮革制成的链式袖口。 他们使患者更容易捕获。
+They can be thrown from long distances.
+它们可以从长距离扔掉。
+The enemy attaches your ankle cuffs together!
+敌人将您的链式脚铐固定在一起！
+Cuffs Chain
+安全链式脚踝铐
+The ankle cuff chain detaches!
+链式脚踝铐脱离！
+Asylum Leg Cuffs
+安全足拷
 Comfy Muzzle
 舒适口套
 A lovely muzzle that's extraordinarily comfy!
@@ -4242,12 +4356,24 @@ An excruciatingly tight corset that hugs your body
 相当紧的胸衣，紧贴您的身体
 It has too much grip to struggle out of
 它过于贴合，无法挣脱
+Blue Latex Catsuit
+蓝色乳胶束胸
+A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult.
+紧紧收缩的束胸。 乳胶约束的粘附性使挣扎变得更加困难。
+Blue latex is silky smooth, very stretchy, and very good at adhering to itself.
+蓝色乳胶丝滑光滑，非常弹性，并且非常擅长粘附。
 Dragonscale Straps
 龙鳞绑带
 A set of straps buckling tightly around your body and secured at the wrists.
 一组带子紧紧地扣在您的身体上并固定在手腕上。
 It's made from hard-to-cut dragonscale!!!
 它是由难以切割的龙鳞制成的！！！
+Scale Leg Cuffs
+龙鳞腿袖
+Scale Ankle Cuffs
+龙鳞脚铐
+Scale Cuffs Chain
+链式龙鳞脚铐
 Dragonscale Cuffs
 龙鳞铐
 A pair of chained cuffs made of dragonscale. They slow your stride.
@@ -4294,6 +4420,12 @@ A collar owned by the Dragonhearts, an order of dragonslayers.
 龙之心：屠龙骑士团拥有的项圈。
 It's made from hard-to-cut dragonscale!!!
 它是由难以切割的龙鳞制成的！！！
+Leather Ankle Cuffs
+皮革踝铐
+Leather Leg Cuffs
+皮革腿铐
+A pair of chained cuffs made of leather. They make it trickier to run away.
+一双由皮革制成的链式腿铐。 他们使逃跑变得更棘手。
 Leather Cuffs
 皮革铐
 A pair of cuffs that make it easy to restrain you.
@@ -4372,6 +4504,16 @@ A bolero jacket keeping your arms pinned snugly. You can't even move them.
 一件波莱罗夹克，让你的手臂紧紧地固定在一起。你甚至不能移动它们。
 There is no hope of struggling out. Better hope you can cut it...
 没有挣扎的希望。最好希望你能切开它...
+Maid Jacket
+女仆夹克
+A bolero jacket keeping your arms pinned snugly. You can't even move them.
+一件布洛罗夹克，保持双臂紧密地钉住。 您甚至无法移动它们。
+Devious Maid Costume
+狡猾的女仆服装
+A devious maid outfit that forces the arms into an elbows-touching position.
+一个狡猾的女仆服装，迫使手臂进入肘部接触的姿势。
+Makes sure you focus on your work and not fooling around.
+确保您专注于工作而不是欺骗。
 Reinforced Leather Belt
 强化皮革绑带
 A leather belt used to keep your legs hobbled.
@@ -4469,7 +4611,7 @@ It's made of a dark, glistening volcanic metal.
 The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 Cuffs Chain
-连接黑曜石脚铐
+链式黑曜石脚铐
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
 It's made of a dark, glistening volcanic metal.
@@ -4647,37 +4789,57 @@ Slime (Feet)
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Ankles)
 史莱姆（脚踝）
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Legs)
 史莱姆（腿）
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Arms)
 史莱姆（手臂）
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Hands)
 史莱姆（手）
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
+Slime (Mouth)
+史莱姆（嘴）
 Slime (Head)
 史莱姆（头）
 Sticky slime that adheres to your body. It reacts negatively to mana...
 粘在身上的史莱姆。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以围绕您所做的每一次切割进行改造！
+它是一种有机材料，可以对您所做的每一次切割行为进行变化！
+Proto-Slime (Feet)
+黏菌史莱姆（脚）
+It seems to be a precursor to the slimes everyone is familiar with?
+这似乎是每个人熟悉的史莱姆的先驱？
+It is an organic material that reforms around every cut you make!
+这是一种有机材料，可以对您所做的每一次切割行为进行变化！
+Proto-Slime (Ankles)
+黏菌史莱姆（脚踝）
+Proto-Slime (Legs)
+黏菌史莱姆（腿）
+Proto-Slime (Arms)
+黏菌史莱姆（手臂）
+Proto-Slime (Hands)
+黏菌史莱姆（手）
+Proto-Slime (Mouth)
+黏菌史莱姆（嘴）
+Proto-Slime (Head)
+黏菌史莱姆（头）
 Rubber (Feet)
 橡胶（脚）
 Sticky rubber that has fused itself into a shell around your body.
@@ -4708,12 +4870,28 @@ Sticky rubber that has fused itself into a shell around your body.
 粘性橡胶，已经融合成您身体周围的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在没有挣扎了，但由于它是坚固的，它可能是可切割的。
+Rubber (Mouth)
+橡胶（嘴）
 Rubber (Head)
 橡胶（头）
 Sticky rubber that has fused itself into a shell around your body.
 粘性橡胶，已经融合成您身体周围的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在没有挣扎了，但由于它是坚固的，它可能是可切割的。
+Proto-Rubber (Feet)
+黏菌橡胶（脚）
+Proto-Rubber (Ankles)
+黏菌橡胶（脚踝）
+Proto-Rubber (Legs)
+黏菌橡胶（腿）
+Proto-Rubber (Arms)
+黏菌橡胶（手臂）
+Proto-Rubber (Hands)
+黏菌橡胶（手）
+Proto-Rubber (Mouth)
+黏菌橡胶（嘴）
+Proto-Rubber (Head)
+黏菌橡胶（头）
 Tape Mittens
 胶带手套
 Sticky tape that holds your hands into a fist!
@@ -4840,8 +5018,10 @@ A piece of cloth secured onto your face and blocking vision.
 一块布固定在您的脸上并挡住视线。
 You can still see through the gap around your nose.
 您仍然可以通过鼻子周围的缝隙看到。
-Cloth Gag
-布口塞
+Knotted Cloth Gag
+打结的布口塞
+OTN Cloth Gag
+覆嘴式布口塞
 A piece of cloth tightened over your mouth.
 一块布紧紧地捂在你的嘴上。
 On its own it's not very restrictive.
@@ -5907,7 +6087,7 @@ I am writing this from inside prison. Who would have known they cared so much ab
 (A drawing of a bunch of zombies, ordered by danger level. Of note are a zombie surrounded by charms, a zombie surrounded by talismans, a zombie warrior with a sword, and... some kind of shrine maiden that you've never seen before)
 （一组僵尸的图画，按危险等级排序。值得注意的是一个被符咒包围的僵尸，一个被丝带包围的僵尸，一个拿着剑的僵尸战士，还有……某种你从未见过的巫女以前看过）
 (An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE) The first thing to understand is that tying someone up is difficult if they are not in a vulnerable position. If your opponent is vulnerable, then binding will be twice as effective!
-（摘自 BONDAGE WITCHERY: A STUDENT'S GUIDE） 首先要理解的是，如果某人不处于弱势地位，将其捆绑起来是很困难的。如果你的对手很脆弱，那么绑定的效果会翻倍！
+（摘自 BONDAGE WITCHERY: A STUDENT'S GUIDE） 首先要理解的是，如果某人不处于弱势地位，将其捆绑起来是很困难的。如果你的对手很脆弱，那么捆绑的效果会翻倍！
 (An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE) Once your opponent is nicely trussed up, you can break their will by ticking them with a Feather, Ice Cube, or Magic Wand.
 （摘自 BONDAGE WITCHERY：学生指南）一旦你的对手被很好地束缚，你可以用羽毛、冰块或魔杖打勾来打破他们的意志。
 (An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE) Bigger and more resilient opponents are much more effective at breaking out of your binds. Try to deal some damage to them to decrease the speed at which they struggle out of your restraints.
@@ -6519,15 +6699,71 @@ You don't have any valid targets on your body for that.
 The air swirls with traces of pleasing magic...
 空气中弥漫着令人愉悦的魔法痕迹……
 The spores make you feel sleepy...
-孢子让你感到匹佬...
+孢子让你感到疲劳...
 DAMAGETYPE: MULTIPLIERx modifier
 DAMAGETYPE：MULTIPLIERx 修正
+Base Physical Armor: AMOUNT
+基础物理装甲：AMOUNT
+Base Magic Armor: AMOUNT
+基础魔术装甲：AMOUNT
+Base Evasion: AMOUNT%
+基础逃避：AMOUNT%
+Deals DAMAGETYPE damage
+造成 DAMAGETYPE 的伤害
 Armor: AMOUNT
 护甲：AMOUNT
 Base Chance to Hit: AMOUNT%
 基础命中率：AMOUNT%
 Deals DAMAGETYPE damage
 造成 DAMAGETYPE 伤害
+Can disarm (chance: DISARMCHANCE%)
+可以解除武装（概率：DISARMCHANCE%）
+Resistances:
+抵抗：
+HP:
+生命值：
+Binding:
+捆绑：
+Ambivalent
+矛盾
+Likes you
+喜欢你
+Loves you
+爱你
+Adores you
+崇拜你
+Dislikes you
+不喜欢你
+Hates you
+讨厌你
+Despises you
+鄙视你
+Talking to you
+与你交谈
+Aware of you!
+发现你了！
+Pursuing you!
+正在追击你！
+Slightly suspicious
+感到有点可疑
+Saw something...
+看到一些可疑迹象...
+Notices you!
+注意到你了！
+Unaware
+没发现你
+Items carried:
+携带的物品：
+...and NUMBER more
+...还有 NUMBER 个
+Disappears if the caster is stunned
+如果敌人受到惊吓，就会消失
+Disappears if the caster is defeated
+如果敌人被击溃，就会消失
+Caster: ENEMYNAME
+敌人: ENEMYNAME
+Demise immanent
+灭亡
 Shadow
 暗影
 Ice
@@ -6706,6 +6942,8 @@ Don't Track Me
 不要追踪我的数据
 Your key to the stairs is taken away!
 你的楼梯钥匙被拿走了！
+Exit Keys
+[离开的钥匙]
 You found a keyring to the stairs! Now you just need to get there.
 你找到了楼梯的钥匙圈！现在你只需要到达那里。
 There seems to be a locked high-security door. Looks like you need a key.
@@ -6837,7 +7075,7 @@ Dibs on this one!
 Gotta make sure no one gets to you~
 要确保没有人接近你~
 *starts chasing you*
-*开始追你*
+*开始追击你*
 *won't leave you be!*
 *不会离开你！*
 *tugs at your body!*
