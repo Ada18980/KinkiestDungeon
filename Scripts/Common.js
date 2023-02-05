@@ -258,11 +258,7 @@ function CommonGetRetry(Path, Callback, RetriesLeft) {
  * @returns {void} - Nothing
  */
 function CommonClick(event) {
-	ServerClickBeep();
-	if (CurrentCharacter == null)
-		CurrentScreenFunctions.Click(event);
-	else
-		DialogClick();
+	CurrentScreenFunctions.Click(event);
 }
 
 /**

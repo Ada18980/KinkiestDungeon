@@ -411,26 +411,6 @@ function DialogInventoryBuild(C, Offset, redrawPreviews = false) {
 	}
 }
 
-
-/**
- * Shows the extended item menue for a given item, if possible.
- * Therefore a dynamic function name is created and then called.
- * @param {Item} Item - The item the extended menu should be shown for
- * @param {Item} [SourceItem] - The source of the extended menu
- * @returns {void} - Nothing
- */
-function DialogExtendItem(Item, SourceItem) {
-	const C = CharacterGetCurrent();
-	if (InventoryBlockedOrLimited(C, Item)) return;
-	StruggleProgress = -1;
-	DialogLockMenu = false;
-	DialogColor = null;
-	DialogFocusItem = Item;
-	DialogFocusSourceItem = SourceItem;
-	CommonDynamicFunction("Inventory" + Item.Asset.Group.Name + Item.Asset.Name + "Load()");
-}
-
-
 /**
  * Leaves the item menu of the focused item. Constructs a function name from the
  * item's asset group name and the item's name and tries to call that.
