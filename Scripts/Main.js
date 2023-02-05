@@ -1,3 +1,5 @@
+'use strict';
+
 // While we want KD to be backwards compatible with BC, we want to avoid making modifications that are standalone specific to the KD code itself
 // These bootstraps must be loaded last, as they replace BC specific KD functionality
 KinkyDungeonMainRun = () => {};

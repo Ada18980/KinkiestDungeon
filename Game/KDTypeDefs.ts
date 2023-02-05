@@ -763,6 +763,11 @@ interface enemy extends KDHasTags {
 	attackLock?: string,
 	/** Minimum range for attack warning tiles, used to prevent high range enemies from attacking all around them*/
 	tilesMinRange?: number,
+	/** Minimum range to try attacking */
+	attackMinRange?: number,
+	/** Minimum range to try attacking */
+	specialMinRange?: number,
+
 	/** */
 	noKiteWhenHarmless?: boolean,
 	/** */
@@ -1737,6 +1742,10 @@ type AIType = {
 	wander_near: (enemy, player, aidata) => boolean,
 	/** Whether enemy will randomly choose points on the map to wander to */
 	wander_far: (enemy, player, aidata) => boolean,
+	/** Function to replace wandernear. Return true to cancel stock func, false otherwise*/
+	wandernear_func?: (enemy, player, aidata) => boolean,
+	/** Function to replace wanderfar. Return true to cancel stock func, false otherwise*/
+	wanderfar_func?: (enemy, player, aidata) => boolean,
 	/** Whether it sets gx to gxx when idle, and gy to gyy */
 	resetguardposition: (enemy, player, aidata) => boolean,
 	/** Whether enemy attacks */

@@ -2,12 +2,12 @@ KinkyDungeonCredits,Credits
 KinkyDungeonPatrons,Patrons
 KinkyDungeonDeviantart,News and Updates
 KinkyDungeonPatreon,Support @ Patreon
-KinkyDungeonPatronsList0,"Thank you to the following awesome people for supporting me at patreon.com/ada18980|cyberjoel|Samantha Lear|Kara|The-Fisher-King|Laioken|selly-grim|Dex♪|Churro|Gamefan|Shogo|X27|Blox|Slacker|Nikos S.|Flame|Alexis Octavia|Finn|Dmitri S.|Noxgarm|Siegfried K.|Hellgete"
+KinkyDungeonPatronsList0,"Thank you to the following awesome people for supporting me at patreon.com/ada18980|cyberjoel|Samantha Lear|Kara|The-Fisher-King|Laioken|Finn|selly-grim|Dex♪|Churro|Gamefan|Shogo|X27|Blox|Slacker|Nikos S.|Flame|Alexis Octavia|Dmitri S.|Noxgarm|Siegfried K.|Hellgete"
 KinkyDungeonPatronsList1,"|nuzzles|Rest|LoudestQuietPerson|Violet EverGardner|BoopleDoopleson|Dazman1234|WATA|linlizheng|Mechio|Vikingberserker|PWMRM|devan|LukeB|atetete|Aussie895|0xA4C1B842|Rika|Physicsphail|Loony|Jeremy P.|ItsYahboi9"
 KinkyDungeonPatronsList2,"|AlexisTheFlame|Chen Yu|Sinohisaki|nnm711|Ron lsrp|Miro|Anthony R.|John T.|Geng114514|塵狐|kamil|Iaysakuya|tsang|Somprad|Thatguu|damit damit|Victor|Hjake2|anton A.|Dakra|CuvyanTaylor|"
 KinkyDungeonPatronsList3,"|hanhan|The_rogue1|Tatsuya S.|James K.|Misa|eddy z.|theshrimpyone|Eislobo|OTKTamashii|Michael M.|Jose G.|Minescence|HanQing Z.|hanhan|Shakymunch|Crimson|Arentios|Vini J.|Treemen555|Lordfabricator|ML"
 KinkyDungeonPatronsList4,"Hannes|Isaiah L.|darklink11|Cerb|Diablo200|RNFRaptor|CMDR Salen|daniel C.|NDW|Sewdah N.|Sylicix|Wossa|ComradeArmtyom|逗比 徐|Null Fame|zipidyzap|Mister Mythe|Yagami Yami|Phoenix|Kritsanapong J.|Pyron|Tobi"
-KinkyDungeonPatronsList5,"Traynfreek|森 韩|Meekohi|GRASS|Heavy Blues|Girador"
+KinkyDungeonPatronsList5,"Traynfreek|森 韩|Meekohi|GRASS|Heavy Blues|Girador|Sinohisaki"
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
 KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|KR Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
@@ -436,9 +436,9 @@ KinkyDungeonRopeEngulfEnd3,"You struggle to breath as you are buried alive in sq
 KinkyDungeonSarcoHexEnd1,"You feel a force compelling you to stop resisting..."
 KinkyDungeonSarcoHexEnd2,"Your body struggles to move as you feel a power sealing you!"
 KinkyDungeonSarcoHexEnd3,"The sarcophagus' door slides open as you are slowly pulled inside..."
-KinkyDungeonShadowEngulfEnd1,"The hands squeeze you tightly..."
-KinkyDungeonShadowEngulfEnd2,"More hands clasp over your body..."
-KinkyDungeonShadowEngulfEnd3,"You struggle to breath as you are pulled into the mass of shadow hands..."
+KinkyDungeonShadowEngulf1,"The hands squeeze you tightly..."
+KinkyDungeonShadowEngulf2,"More hands clasp over your body..."
+KinkyDungeonShadowEngulf3,"You struggle to breath as you are pulled into the mass of shadow hands..."
 KinkyDungeonPassOut,"The world goes dark..."
 KinkyDungeonPassOut2,"You wake up in a different place..."
 
@@ -1785,10 +1785,13 @@ AttackMummyCursed,"The Cursed One's bindings emit a strange aura... (DamageTaken
 
 NameSarcoMinion,Floating Wrapping
 KillSarcoMinion,"The wrapping falls to the floor, its magic spent."
-AttackSarcoMinion,"The wrappings grip you and pull you toward the sarcophagus! (DamageTaken)"
+AttackSarcoMinionBind,"The floating wrappings attach to you! (+RestraintAdded)"
+AttackSarcoMinion,"The wrappings grip you tightly and squeeze you! (DamageTaken)"
 
 NameSarcoKraken,Animated Sarcophagus
 KillSarcoKraken,"The sarcophagus falls to the ground and crumbles."
+AttackSarcoKrakenBind,"The sarcophagus emits long wrappings that pull you closer! (+RestraintAdded)"
+AttackSarcoKraken,"The sarcophagus emanates a strange power! (DamageTaken)"
 
 NameMeleeCleric,Bast Warrior
 KillMeleeCleric,"The Bast Warrior collapses and meows loudly."
@@ -2231,6 +2234,22 @@ KinkyDungeonBoundByFate,Many shining strings surround you!
 KinkyDungeonBuffBoundByFate,Stepping outside of the indicated tiles will result in punishment!
 KinkyDungeonSpellBoundByFate,Bindings of Fate
 
+NameDemonMoon,Moon Demon
+KillDemonMoon,"The moon demon is exorcised."
+AttackDemonMoonBind,"The star demon places you in shining, starry restraints. (+RestraintAdded)"
+AttackDemonMoon,"The star demon places you under its curse! (DamageTaken)"
+KinkyDungeonMoonBondage,The weight of inescapable bondage falls upon you! (DamageTaken)
+KinkyDungeonSpellCrushingFate,Crushing Fate
+
+NameDemonVoid,Void Demon
+KillDemonVoid,"The void demon is exorcised."
+AttackDemonVoidBind,"The void demon places you in dark, glassy restraints. (+RestraintAdded)"
+AttackDemonVoid,"The void demon places you under its curse! (DamageTaken)"
+
+NameDemon,Demon
+KillDemon,"The demon is exorcised."
+AttackDemonBind,"The demon places you in dark, glassy restraints. (+RestraintAdded)"
+AttackDemon,"The demon whacks you with its mace! (DamageTaken)"
 
 NameTickleHand,Tickle Hand
 KillTickleHand,"The hand vanishes!"
@@ -2736,6 +2755,8 @@ KDCrotchRopeBlock2,"The toy won't wiggle loose. It's kept in place by your restr
 KDLatexDebuff0,"Your catsuit adheres to latex, making struggling more difficult!"
 KDLatexDebuff1,"The item sticks to your rubber catsuit, making it harder to pull off..."
 KDLatexDebuff2,"The item hugs your catsuit tightly, adhering firmly!"
+
+KDShadowBuff,"The bright light weakens the shadow hands!"
 
 KDTrapMisfire,"You hear an ominous click, but nothing seems to happen. Looks like a misfire!"
 
@@ -4961,7 +4982,7 @@ KinkyDungeonSpellCastCommandCapture,"You say a command word, and the bindings on
 
 KinkyDungeonSpellCommandDisenchant,CMD: Disenchant
 KinkyDungeonSpellTargetCommandDisenchant,Select an area
-KinkyDungeonSpellDescriptionCommandDisenchant,"Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Makes magic bindings easier."
+KinkyDungeonSpellDescriptionCommandDisenchant,"Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Cast on self to disenchant bindings."
 KinkyDungeonSpellCastCommandDisenchant,"You say a command word, siphoning the magic from nearby constructs!"
 
 KinkyDungeonSpellCommandVibrate,CMD: Vibrate
@@ -8861,10 +8882,10 @@ rTutorial0,"Welcome to the dungeon!|Don't panic, this is a turn-based game,|and 
 
 rTutorial1,"You might be wondering what all these barrels are for.|Don't worry, they're, uh, totally safe!|When you are inside one you can click on yourself to wait.|Enemies have a hard time seeing you inside a barrel,|so you can wait until they pass by you."
 
-rTutorial2,"On the right you'll see your stats and spells slots.|Your DP, SP, and MP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.|Below that, two icons allow you to toggle automatic escape and movement modes."
+rTutorial2,"On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.|Below that, two icons allow you to toggle automatic escape and movement modes."
 rTutorial2_sp1,"Your WP, or willpower, is an important resource.|Without it, escaping from restraints is more difficult.|There is a willpower potion on the floor up there. Go get it!"
 rTutorial2_sp2,"Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack)."
-rTutorial2_sp3,"Another trap!|You'll notice that the trap also drained your stamina considerably, forcing you to kneel.|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|"
+rTutorial2_sp3,"Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|"
 
 rTutorial2_mp1,"Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1."
 rTutorial2_mp2,"On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook."
@@ -9007,4 +9028,4 @@ KDDialogueRemoteLinkCuffsNevermere,Try running away now~
 KDDialogueRemoteLinkCuffsAncientRobot,Initiating prisoner lockdown protocol
 KDMsgRemoteLinkCuffs,Your RestraintName suddenly snap together as the EnemyName activates them
 
-
+TurnCounter,"Turn Count: "

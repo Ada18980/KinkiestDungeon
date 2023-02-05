@@ -848,6 +848,7 @@ let KDDialogue = {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
 								e.boundLevel = 0;
+								KinkyDungeonSetEnemyFlag(e, "imprisoned", 0);
 								e.allied = 9999;
 								e.specialdialogue = undefined;
 								KinkyDungeonAggroFaction("Jail");
@@ -895,6 +896,7 @@ let KDDialogue = {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
 								e.boundLevel = 0;
+								KinkyDungeonSetEnemyFlag(e, "imprisoned", 0);
 								e.allied = 9999;
 								e.specialdialogue = undefined;
 								KinkyDungeonAggroFaction("Jail");

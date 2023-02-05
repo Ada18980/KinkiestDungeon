@@ -1037,7 +1037,8 @@ let KinkyDungeonEnemies = [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ff0000"}
 		],
 		visionRadius: 100, maxhp: 20, minLevel:0, weight:-99, movePoints: 99999, attackPoints: 4, attack: "MeleeWill", attackWidth: 2.5, attackRange: 3, power: 4, dmgType: "souldrain",
-		terrainTags: {"passage": -999, "temple": 20, "open": 125}, floors:KDMapInit(["tmp"]), shrines: ["Conjure"]},
+		terrainTags: {"passage": -999, "temple": 20, "open": 125}, floors:KDMapInit(["tmp"]), shrines: ["Conjure"],
+		dropTable: [{name: "AncientPowerSourceSpent", weight: 9}, {name: "AncientPowerSource", weight: 1}]},
 	{name: "SoulCrystalActive", clusterWith: "chaos", color: "#880000", immobile: true, hitsfx: "Evil", tags: KDMapInit(["crystal", "soul", "active", "unstoppable", "miniboss", "ranged", "crushweakness", "soulimmune", "flying"]), spellResist: 0.33,
 		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "wander",
 		events: [
@@ -1045,38 +1046,46 @@ let KinkyDungeonEnemies = [
 		],
 		spells: ["SoulCrystalBind"], spellCooldownMult: 1, spellCooldownMod: 0, followLeashedOnly: true, stopToCast: true, castWhileMoving: true, sneakThreshold: 0.01,
 		visionRadius: 100, maxhp: 20, minLevel:0, weight:-99, movePoints: 99999, attackPoints: 4, attack: "SpellMeleeWill", attackWidth: 2.5, attackRange: 3, power: 4, dmgType: "souldrain",
-		terrainTags: {"passage": -999, "temple": 10, "open": 115}, floors:KDMapInit(["tmp"]), shrines: ["Conjure"]},
+		terrainTags: {"passage": -999, "temple": 10, "open": 115}, floors:KDMapInit(["tmp"]), shrines: ["Conjure"],
+		dropTable: [{name: "AncientPowerSource", weight: 10}]},
 
 
 
 
-	{name: "ShadowHand", faction: "Ghost", clusterWith: "ghost", color: "#880044", tags: KDMapInit(["shadowHandEnemy", "shadowTrap", "ghost", "soulimmune", "fireweakness", "melee", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
-		ignorechance: 0, armor: 0, followRange: 1, AI: "hunt", noAlert: true, hitsfx: "Evil", ignoreflag: ["ShadowHand"], failAttackflag: ["ShadowHand"], failAttackflagDuration: 2,
+	{name: "ShadowHand", faction: "Ghost", clusterWith: "ghost", color: "#880044", tags: KDMapInit(["opendoors", "shadowHandEnemy", "shadowTrap", "ghost", "soulimmune", "fireweakness", "melee", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
+		ignorechance: 0, armor: 0, followRange: 1, AI: "huntshadow", noAlert: true, hitsfx: "Evil", ignoreflag: ["ShadowHand"], failAttackflag: ["ShadowHand"], failAttackflagDuration: 2,
 		visionRadius: 10, blindSight: 4, evasion: 0.4, maxhp: 6, minLevel: 0, weight:-5, movePoints: 1, attackPoints: 2, attack: "MeleeWillBind", attackWidth: 1, attackRange: 1, power: 1.0, dmgType: "grope", fullBoundBonus: 4,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 0, color: "#880044"},
 			{trigger: "beforeDamage", type: "shadowEngulf", power: 0, color: "#880044"},
+			{trigger: "afterEnemyTick", type: "shadowDebuff", power: -0.5},
 		],
 		terrainTags: {"trap": 100}, shrines: [], allFloors: true},
 
-	{name: "ShadowGhast", faction: "Ghost", clusterWith: "ghost", color: "#880044", tags: KDMapInit(["shadowHandEnemy", "shadowTrap", "ghost", "soulimmune", "fireweakness", "melee", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
-		ignorechance: 0, armor: 0, followRange: 1, AI: "hunt", hitsfx: "Evil", ignoreflag: ["ShadowHand"], failAttackflag: ["ShadowHand"], failAttackflagDuration: 2,
+	{name: "ShadowGhast", faction: "Ghost", clusterWith: "ghost", color: "#880044", tags: KDMapInit(["opendoors", "shadowHandEnemy", "shadowTrap", "ghost", "soulimmune", "fireweakness", "melee", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
+		ignorechance: 0, armor: 0, followRange: 1, AI: "huntshadow", hitsfx: "Evil", ignoreflag: ["ShadowHand"], failAttackflag: ["ShadowHand"], failAttackflagDuration: 2,
 		visionRadius: 10, blindSight: 5, evasion: 0.15, maxhp: 14, minLevel: 0, weight:-4, movePoints: 4, attackPoints: 3, attack: "SpellMeleeWillBindSlow", attackWidth: 1, attackRange: 3, power: 2.0, dmgType: "cold", fullBoundBonus: 2,
 		projectileAttack: true,
 		spells: ["SummonShadowHand"], spellCooldownMult: 2, spellCooldownMod: 0, castWhileMoving: true, followLeashedOnly: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 0, color: "#880044"},
 			{trigger: "beforeDamage", type: "shadowEngulf", power: 0, color: "#880044"},
+			{trigger: "afterEnemyTick", type: "shadowDebuff", power: -0.5},
 		],
 		terrainTags: {"shadowcreature" : 20, "increasingWeight": 0.1, "trap": 10, "goddessRage": 1}, shrines: [], allFloors: true,
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
 
 	{name: "CorruptedAdventurer", faction: "Ghost", clusterWith: "ghost", bound: "CorruptedAdventurer", playLine: "Elemental", color: "#880044",
-		tags: KDMapInit(["shadowHandEnemy", "ghost", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainimmune", "shadowHands"]),
-		followRange: 1,
+		tags: KDMapInit(["shadowHandEnemy", "ghost", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainresist", "shadowHands"]),
+		followRange: 1, ignoreflag: ["ShadowDommed"], failAttackflag: ["ShadowDommed"],
 		spells: ["ShadowBolt"], spellCooldownMult: 1, spellCooldownMod: 0,
-		AI: "hunt",  visionRadius: 10, maxhp: 20, minLevel: 3, weight:-1, movePoints: 4, disarm: 0.33,
-		attackPoints: 3, attack: "MeleeBindWillSpell", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "cold", multiBind: 2,
+		AI: "huntshadow",  visionRadius: 10, maxhp: 20, minLevel: 3, weight:-1, movePoints: 4, disarm: 0.33,
+		events: [
+			{trigger: "afterEnemyTick", type: "shadowDebuff", power: -0.5},
+			{trigger: "afterEnemyTick", type: "shadowDommeRefresh"},
+			{trigger: "beforeDamage", type: "shadowDomme", power: 0, color: "#880044"},
+		],
+		attackPoints: 4, attack: "MeleeBindWillSpell", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "cold", multiBind: 2,
 		terrainTags: {"shadowcreature" : 9, "increasingWeight": 0.1, "goddessRage": 3}, shrines: [], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Ectoplasm", weight: 10}]
 	},
@@ -1101,6 +1110,16 @@ let KinkyDungeonEnemies = [
 		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "melee", "miniboss", "mithrilRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
 		armor: 1, followRange: 0, AI: "hunt",
 		spells: ["BoundByFate"], spellCooldownMult: 1, spellCooldownMod: 0, followLeashedOnly: true, stopToCast: true, spellRdy: true, projectileTargeting: true,
+		visionRadius: 10, maxhp: 16, minLevel: 0, weight:-10, movePoints: 4,
+		attackPoints: 3, attack: "MeleeBindSpell", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 4, dmgType: "cold", fullBoundBonus: 2,
+		terrainTags: {"demon" : 15, "increasingWeight": 0.1, "goddessRage": 10, "goddessPleased": 10, }, shrines: [], allFloors: true,
+		dropTable: [{name: "Gold", amountMin: 25, amountMax: 35, weight: 10}]
+	},
+
+	{name: "DemonMoon", clusterWith: "demon", bound: "Demon", playLine: "Elemental", color: "#9ea7de",
+		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "melee", "miniboss", "mithrilRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
+		armor: 1, followRange: 0, AI: "hunt",
+		spells: ["CrushingFate"], spellCooldownMult: 1, spellCooldownMod: 0, followLeashedOnly: true, stopToCast: true, spellRdy: true, projectileTargeting: true,
 		visionRadius: 10, maxhp: 16, minLevel: 0, weight:-10, movePoints: 4,
 		attackPoints: 3, attack: "MeleeBindSpell", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 4, dmgType: "cold", fullBoundBonus: 2,
 		terrainTags: {"demon" : 15, "increasingWeight": 0.1, "goddessRage": 10, "goddessPleased": 10, }, shrines: [], allFloors: true,
@@ -1324,21 +1343,21 @@ let KinkyDungeonEnemies = [
 
 
 
-	{name: "SarcoKraken", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "boss", "elite", "unflinching", "fireresist", "crushweakness", "chainweakness", "glueweakness", "hunter"]),
+	{name: "SarcoKraken", faction: "KinkyConstruct", clusterWith: "construct", color: "#3b7d4f", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "boss", "elite", "unflinching", "fireresist", "crushweakness", "chainweakness", "glueweakness", "hunter"]),
 		armor: 2.5, spellResist: 1.5,
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  summon: [{enemy: "SarcoMinion", range: 2.5, count: 3, strict: true}],
-		spells: ["SarcoEngulf", "SarcoHex", "SummonSarcoTentacle"], spellCooldownMult: 1, spellCooldownMod: 0, ignoreflag: ["kraken"],
+		spells: ["SarcoHex", "SummonSarcoTentacle"], spellCooldownMult: 1, spellCooldownMod: 0, ignoreflag: ["kraken"],
 		events: [
 			{trigger: "spellCast", type: "sarcoKrakenSummonTentacle"}, // Drain HP when casting
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "FabricGreen", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],
-		visionRadius: 10, maxhp: 40, minLevel: 0, weight:-11, movePoints: 4, attackPoints: 2, attack: "Spell", attackWidth: 1, attackRange: 1, power: 6, dmgType: "charm",
+		visionRadius: 10, maxhp: 40, minLevel: 0, weight:-11, movePoints: 4, attackPoints: 3, attack: "SpellMeleePull", attackWidth: 1.5, attackMinRange: 1.5, attackRange: 6, power: 4, pullDist: 4, pullTowardSelf: true, dmgType: "charm",
 		terrainTags: {"secondhalf":16, "lastthird":5, "boss": -80, "open": 20, "passage": -60, "increasingWeight":1}, floors: KDMapInit(["tmb"]), shrines: [],
 		dropTable: [{name: "Gold", amountMin: 40, amountMax: 50, weight: 12}],
 	},
-	{name: "SarcoMinion", faction: "KinkyConstruct", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "fireweakness", "minor", "slashweakness", "chainresist", "sarcotentacle"]),
-		ignorechance: 0.75, followRange: 1, AI: "hunt",  master: {type: "SarcoKraken", range: 7}, ignoreflag: ["kraken"], dependent: true,
-		visionRadius: 10, maxhp: 5, minLevel: 0, weight:-1000, movePoints: 1, attackPoints: 2, attack: "MeleePullWill", attackWidth: 1, attackRange: 1, power: 3, dmgType: "chain", noAlert: true,
+	{name: "SarcoMinion", faction: "KinkyConstruct", color: "#99ff99", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "fireweakness", "minor", "slashweakness", "chainresist", "sarcotentacle", "mummyRestraints"]),
+		ignorechance: 0.75, followRange: 1, AI: "hunt",  master: {type: "SarcoKraken", range: 7}, ignoreflag: ["kraken"], dependent: true, suicideOnAdd: true,
+		visionRadius: 10, maxhp: 5, minLevel: 0, weight:-1000, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", attackWidth: 1, attackRange: 1, power: 2, fullBoundBonus: 2, dmgType: "chain", noAlert: true,
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "FabricGreen", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],
@@ -1636,53 +1655,124 @@ let KDOndeath = {
  */
 let KDAIType = {
 	"wander": {
-		init: (enemy, player, aidata) => {},
-		beforemove: (enemy, player, aidata) => {return false;},
-		chase: (enemy, player, aidata) => {return false;},
-		persist: (enemy, player, aidata) => {return false;},
-		move: (enemy, player, aidata) => {return true;},
-		follower: (enemy, player, aidata) => {return true;},
-		followsound: (enemy, player, aidata) => {return true;},
-		wander_near: (enemy, player, aidata) => {return true;},
-		wander_far: (enemy, player, aidata) => {return true;},
-		resetguardposition: (enemy, player, aidata) => {return false;},
-		attack: (enemy, player, aidata) => {return true;},
-		spell: (enemy, player, aidata) => {return true;},
-		aftermove: (enemy, player, aidata) => {return false;},
-		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
-		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 25);},
+		init: (enemy, player, AIData) => {},
+		beforemove: (enemy, player, AIData) => {return false;},
+		chase: (enemy, player, AIData) => {return false;},
+		persist: (enemy, player, AIData) => {return false;},
+		move: (enemy, player, AIData) => {return true;},
+		follower: (enemy, player, AIData) => {return true;},
+		followsound: (enemy, player, AIData) => {return true;},
+		wander_near: (enemy, player, AIData) => {return true;},
+		wander_far: (enemy, player, AIData) => {return KDRandom() < 0.2;},
+		resetguardposition: (enemy, player, AIData) => {return false;},
+		attack: (enemy, player, AIData) => {return true;},
+		spell: (enemy, player, AIData) => {return true;},
+		aftermove: (enemy, player, AIData) => {return false;},
+		wanderDelay_long: (enemy, AIData) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, AIData) => {return 10 + Math.floor(KDRandom() * 25);},
 	},
 	"hunt": {
-		init: (enemy, player, aidata) => {},
-		beforemove: (enemy, player, aidata) => {return false;},
-		chase: (enemy, player, aidata) => {return true;},
-		persist: (enemy, player, aidata) => {return true;},
-		move: (enemy, player, aidata) => {return true;},
-		follower: (enemy, player, aidata) => {return true;},
-		followsound: (enemy, player, aidata) => {return true;},
-		wander_near: (enemy, player, aidata) => {return true;},
-		wander_far: (enemy, player, aidata) => {return true;},
-		resetguardposition: (enemy, player, aidata) => {return false;},
-		attack: (enemy, player, aidata) => {return true;},
-		spell: (enemy, player, aidata) => {return true;},
-		aftermove: (enemy, player, aidata) => {return false;},
-		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
-		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 25);},
+		init: (enemy, player, AIData) => {},
+		beforemove: (enemy, player, AIData) => {return false;},
+		chase: (enemy, player, AIData) => {return true;},
+		persist: (enemy, player, AIData) => {return true;},
+		move: (enemy, player, AIData) => {return true;},
+		follower: (enemy, player, AIData) => {return true;},
+		followsound: (enemy, player, AIData) => {return true;},
+		wander_near: (enemy, player, AIData) => {return true;},
+		wander_far: (enemy, player, AIData) => {return KDRandom() < 0.2;},
+		resetguardposition: (enemy, player, AIData) => {return false;},
+		attack: (enemy, player, AIData) => {return true;},
+		spell: (enemy, player, AIData) => {return true;},
+		aftermove: (enemy, player, AIData) => {return false;},
+		wanderDelay_long: (enemy, AIData) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, AIData) => {return 10 + Math.floor(KDRandom() * 25);},
+	},
+	"huntshadow": {
+		init: (enemy, player, AIData) => {},
+		beforemove: (enemy, player, AIData) => {return false;},
+		chase: (enemy, player, AIData) => {return true;},
+		persist: (enemy, player, AIData) => {return true;},
+		move: (enemy, player, AIData) => {return true;},
+		follower: (enemy, player, AIData) => {return true;},
+		followsound: (enemy, player, AIData) => {return true;},
+		wander_near: (enemy, player, AIData) => {return true;},
+		wander_far: (enemy, player, AIData) => {return KDRandom() < 0.4;},
+		wandernear_func: (enemy, player, AIData) => {
+			if (KinkyDungeonAlert && AIData.playerDist < Math.max(4, AIData.visionRadius)) {
+				enemy.gx = KinkyDungeonPlayerEntity.x;
+				enemy.gy = KinkyDungeonPlayerEntity.y;
+			} else {
+				// Short distance
+				let ex = enemy.x;
+				let ey = enemy.y;
+				let cohesion = enemy.Enemy.cohesion ? enemy.Enemy.cohesion : 0.5;
+				let masterCloseness = enemy.Enemy.cohesion ? enemy.Enemy.cohesion : 0.7;
+				if (AIData.master && KDRandom() < masterCloseness) {
+					ex = AIData.master.x;
+					ey = AIData.master.y;
+				} else if (KDRandom() < cohesion) {
+					let minDist = enemy.Enemy.cohesionRange ? enemy.Enemy.cohesionRange : AIData.visionRadius;
+					for (let e of KinkyDungeonEntities) {
+						if (e == enemy) continue;
+						if (['guard', 'ambush'].includes(KDGetAI(enemy))) continue;
+						if (enemy.Enemy.clusterWith && !e.Enemy.tags[enemy.Enemy.clusterWith]) continue;
+						if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits) continue;
+						let dist = KDistEuclidean(e.x - enemy.x, e.y - enemy.y);
+						if (dist < minDist) {
+							minDist = dist;
+							let ePoint = KinkyDungeonGetNearbyPoint(ex, ey, false);
+							if (ePoint) {
+								ex = ePoint.x;
+								ey = ePoint.y;
+							}
+						}
+					}
+				}
+				let newPoint = KinkyDungeonGetNearbyPoint(ex, ey, false, undefined, undefined, undefined, (x, y) => {
+					return KinkyDungeonBrightnessGet(x, y) < 4;
+				});
+				if (newPoint && (KDGetFaction(enemy) != "Player" || !KinkyDungeonPointInCell(newPoint.x, newPoint.y))) {
+					enemy.gx = newPoint.x;
+					enemy.gy = newPoint.y;
+					return true;
+				}
+			}
+
+			return false;
+		},
+		wanderfar_func: (enemy, player, AIData) => {
+			let newPoint = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+				return KinkyDungeonBrightnessGet(x, y) < 4;
+			}, false, enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
+			if (newPoint) {
+				enemy.gx = newPoint.x;
+				enemy.gy = newPoint.y;
+				return true;
+			}
+			return false;
+		},
+		resetguardposition: (enemy, player, AIData) => {return false;},
+		attack: (enemy, player, AIData) => {return true;},
+		spell: (enemy, player, AIData) => {return true;},
+		aftermove: (enemy, player, AIData) => {return false;},
+		wanderDelay_long: (enemy, AIData) => {return 20 + Math.floor(KDRandom() * 15);},
+		wanderDelay_short: (enemy, AIData) => {return 10 + Math.floor(KDRandom() * 10);},
 	},
 	"patrol": {
-		init: (enemy, player, aidata) => {},
-		beforemove: (enemy, player, aidata) => {return false;},
-		chase: (enemy, player, aidata) => {return true;},
-		persist: (enemy, player, aidata) => {return true;},
-		move: (enemy, player, aidata) => {return true;},
-		follower: (enemy, player, aidata) => {return true;},
-		followsound: (enemy, player, aidata) => {return true;},
-		wander_near: (enemy, player, aidata) => {return true;},
-		wander_far: (enemy, player, aidata) => {return true;},
-		resetguardposition: (enemy, player, aidata) => {return false;},
-		attack: (enemy, player, aidata) => {return true;},
-		spell: (enemy, player, aidata) => {return true;},
-		aftermove: (enemy, player, aidata) => {
+		init: (enemy, player, AIData) => {},
+		beforemove: (enemy, player, AIData) => {return false;},
+		chase: (enemy, player, AIData) => {return true;},
+		persist: (enemy, player, AIData) => {return true;},
+		move: (enemy, player, AIData) => {return true;},
+		follower: (enemy, player, AIData) => {return true;},
+		followsound: (enemy, player, AIData) => {return true;},
+		wander_near: (enemy, player, AIData) => {return true;},
+		wander_far: (enemy, player, AIData) => {return true;},
+		resetguardposition: (enemy, player, AIData) => {return false;},
+		attack: (enemy, player, AIData) => {return true;},
+		spell: (enemy, player, AIData) => {return true;},
+		aftermove: (enemy, player, AIData) => {
 			if (!AIData.followPlayer && !KDEnemyHasFlag(enemy, "StayHere")) {
 				let patrolChance = AIData.patrolChange ? 0.13 : 0.02;
 				if (!enemy.patrolIndex) enemy.patrolIndex = KinkyDungeonNearestPatrolPoint(enemy.x, enemy.y);
@@ -1699,66 +1789,66 @@ let KDAIType = {
 			}
 			return false;
 		},
-		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
-		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 20);},
+		wanderDelay_long: (enemy, AIData) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, AIData) => {return 10 + Math.floor(KDRandom() * 20);},
 	},
 	"guard": {
-		init: (enemy, player, aidata) => {
-			aidata.visionMod *= 0.7;},
-		beforemove: (enemy, player, aidata) => {return false;},
-		chase: (enemy, player, aidata) => {return true;},
-		persist: (enemy, player, aidata) => {return false;},
-		move: (enemy, player, aidata) => {return true;},
-		follower: (enemy, player, aidata) => {return true;},
-		followsound: (enemy, player, aidata) => {return true;},
-		wander_near: (enemy, player, aidata) => {return false;},
-		wander_far: (enemy, player, aidata) => {return false;},
-		resetguardposition: (enemy, player, aidata) => {return true;},
-		attack: (enemy, player, aidata) => {return true;},
-		spell: (enemy, player, aidata) => {return true;},
-		aftermove: (enemy, player, aidata) => {return false;},
-		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
-		wanderDelay_short: (enemy, aidata) => {return 15 + Math.floor(KDRandom() * 30);},
+		init: (enemy, player, AIData) => {
+			AIData.visionMod *= 0.7;},
+		beforemove: (enemy, player, AIData) => {return false;},
+		chase: (enemy, player, AIData) => {return true;},
+		persist: (enemy, player, AIData) => {return false;},
+		move: (enemy, player, AIData) => {return true;},
+		follower: (enemy, player, AIData) => {return true;},
+		followsound: (enemy, player, AIData) => {return true;},
+		wander_near: (enemy, player, AIData) => {return false;},
+		wander_far: (enemy, player, AIData) => {return false;},
+		resetguardposition: (enemy, player, AIData) => {return true;},
+		attack: (enemy, player, AIData) => {return true;},
+		spell: (enemy, player, AIData) => {return true;},
+		aftermove: (enemy, player, AIData) => {return false;},
+		wanderDelay_long: (enemy, AIData) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, AIData) => {return 15 + Math.floor(KDRandom() * 30);},
 	},
 	"looseguard": {
 		strictwander: true,
-		init: (enemy, player, aidata) => {},
-		beforemove: (enemy, player, aidata) => {return false;},
-		chase: (enemy, player, aidata) => {return true;},
-		persist: (enemy, player, aidata) => {return false;},
-		move: (enemy, player, aidata) => {return true;},
-		follower: (enemy, player, aidata) => {return true;},
-		followsound: (enemy, player, aidata) => {return true;},
-		wander_near: (enemy, player, aidata) => {return true;},
-		wander_far: (enemy, player, aidata) => {return false;},
-		resetguardposition: (enemy, player, aidata) => {return true;},
-		attack: (enemy, player, aidata) => {return true;},
-		spell: (enemy, player, aidata) => {return true;},
-		aftermove: (enemy, player, aidata) => {return false;},
-		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
-		wanderDelay_short: (enemy, aidata) => {return 15 + Math.floor(KDRandom() * 30);},
+		init: (enemy, player, AIData) => {},
+		beforemove: (enemy, player, AIData) => {return false;},
+		chase: (enemy, player, AIData) => {return true;},
+		persist: (enemy, player, AIData) => {return false;},
+		move: (enemy, player, AIData) => {return true;},
+		follower: (enemy, player, AIData) => {return true;},
+		followsound: (enemy, player, AIData) => {return true;},
+		wander_near: (enemy, player, AIData) => {return true;},
+		wander_far: (enemy, player, AIData) => {return false;},
+		resetguardposition: (enemy, player, AIData) => {return true;},
+		attack: (enemy, player, AIData) => {return true;},
+		spell: (enemy, player, AIData) => {return true;},
+		aftermove: (enemy, player, AIData) => {return false;},
+		wanderDelay_long: (enemy, AIData) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, AIData) => {return 15 + Math.floor(KDRandom() * 30);},
 	},
 	"ambush": {
 		ambush: true,
 		ambushtile: 'X',
-		init: (enemy, player, aidata) => {},
-		beforemove: (enemy, player, aidata) => {
-			if (aidata.playerDist < 1.5) enemy.ambushtrigger = true;
+		init: (enemy, player, AIData) => {},
+		beforemove: (enemy, player, AIData) => {
+			if (AIData.playerDist < 1.5) enemy.ambushtrigger = true;
 			return false;
 		},
-		chase: (enemy, player, aidata) => {return enemy.ambushtrigger;},
-		persist: (enemy, player, aidata) => {return enemy.ambushtrigger;},
-		move: (enemy, player, aidata) => {return enemy.ambushtrigger || (enemy.Enemy.wanderTillSees && !aidata.canSeePlayer);},
-		follower: (enemy, player, aidata) => {return true;},
-		followsound: (enemy, player, aidata) => {return true;},
-		wander_near: (enemy, player, aidata) => {return (enemy.Enemy.wanderTillSees && !aidata.canSeePlayer);},
-		wander_far: (enemy, player, aidata) => {return false;},
-		resetguardposition: (enemy, player, aidata) => {return true;},
-		attack: (enemy, player, aidata) => {return enemy.ambushtrigger;},
-		spell: (enemy, player, aidata) => {return enemy.ambushtrigger;},
-		aftermove: (enemy, player, aidata) => {return false;},
-		wanderDelay_long: (enemy, aidata) => {return 35 + Math.floor(KDRandom() * 35);},
-		wanderDelay_short: (enemy, aidata) => {return 10 + Math.floor(KDRandom() * 25);},
+		chase: (enemy, player, AIData) => {return enemy.ambushtrigger;},
+		persist: (enemy, player, AIData) => {return enemy.ambushtrigger;},
+		move: (enemy, player, AIData) => {return enemy.ambushtrigger || (enemy.Enemy.wanderTillSees && !AIData.canSeePlayer);},
+		follower: (enemy, player, AIData) => {return true;},
+		followsound: (enemy, player, AIData) => {return true;},
+		wander_near: (enemy, player, AIData) => {return (enemy.Enemy.wanderTillSees && !AIData.canSeePlayer);},
+		wander_far: (enemy, player, AIData) => {return false;},
+		resetguardposition: (enemy, player, AIData) => {return true;},
+		attack: (enemy, player, AIData) => {return enemy.ambushtrigger;},
+		spell: (enemy, player, AIData) => {return enemy.ambushtrigger;},
+		aftermove: (enemy, player, AIData) => {return false;},
+		wanderDelay_long: (enemy, AIData) => {return 35 + Math.floor(KDRandom() * 35);},
+		wanderDelay_short: (enemy, AIData) => {return 10 + Math.floor(KDRandom() * 25);},
 	},
 };
 
