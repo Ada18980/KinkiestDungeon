@@ -4640,7 +4640,7 @@ That door is open. Do you want to close it?
 그 문은 열려 있습니다. 닫으시겠습니까?
 You slam the door and jam it shut!
 당신은 문을 쾅 닫고 잼!
-Submissive
+Submissiveness
 순종
 Security Level
 보안 수준

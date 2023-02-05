@@ -2647,7 +2647,7 @@ KinkyDungeonObjectShrine,"A shrine to the goddess of TYPE. A pool of mana glimme
 KinkyDungeonObjectShrineCommerce,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectDoor,"That door is open. Do you want to close it?"
 KinkyDungeonCloseDoorDone,"You slam the door and jam it shut!"
-KinkyDungeonShrineGhost,"Submissive"
+KinkyDungeonShrineGhost,"Submissiveness"
 KinkyDungeonShrinePrisoner,"Security Level"
 KinkyDungeonShrineCharms,"Undead"
 KinkyDungeonShrineLatex,"Latex"
@@ -2659,7 +2659,7 @@ KinkyDungeonShrineElements,"Elements"
 KinkyDungeonShrineConjure,"Conjuration"
 KinkyDungeonShrineIllusion,"Illusions"
 KinkyDungeonShrineCommerce,"Commerce"
-KinkyDungeonShrineTooltip,"Shrine of "
+KinkyDungeonShrineTooltip,"Shrine of SHRINETYPE"
 KinkyDungeonTabletTooltip,"Tablet of "
 
 KDGoddessStat_Bonus,"Goddess Blessing: "
@@ -3475,7 +3475,7 @@ RestraintDragonAnkleCuffs,Scale Ankle Cuffs
 RestraintDragonAnkleCuffsDesc,"A pair of chained cuffs made of dragonscale. They slow your stride."
 RestraintDragonAnkleCuffsDesc2,"It's made from hard-to-cut dragonscale!!!"
 KinkyDungeonLinkDragonAnkleCuffs,"The enemy attaches your ankle cuffs together!"
-RestraintDragonAnkleCuffs2,Cuffs Chain
+RestraintDragonAnkleCuffs2,Scale Cuffs Chain
 RestraintDragonAnkleCuffs2Desc,"A pair of chained cuffs made of dragonscale. They slow your stride."
 RestraintDragonAnkleCuffs2Desc2,"It's made from hard-to-cut dragonscale!!!"
 KinkyDungeonUnLinkDragonAnkleCuffs2,"The ankle cuff chain detaches!"
