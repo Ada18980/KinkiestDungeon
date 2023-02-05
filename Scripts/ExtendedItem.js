@@ -175,9 +175,7 @@ function ExtendedItemDraw(Options, DialogPrefix, OptionsPerPage, ShowImages = tr
 			DrawPreviewIcons(icons, X + 2, Y);
 		}
 		DrawTextFit((IsFavorite && !ShowImages ? "★ " : "") + DialogFindPlayer(DialogPrefix + Option.Name), X + 112, Y + 30 + ImageHeight, 225, "black");
-		if (ControllerActive == true) {
-			setButton(X + 112, Y + 30 + ImageHeight);
-		}
+
 	}
 
 	// Permission mode toggle

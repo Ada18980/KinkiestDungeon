@@ -1,38 +1,19 @@
 'use strict';
 
+
 // While we want KD to be backwards compatible with BC, we want to avoid making modifications that are standalone specific to the KD code itself
 // These bootstraps must be loaded last, as they replace BC specific KD functionality
-KinkyDungeonMainRun = () => {};
-KinkyDungeonMainClick = () => {};
-
-ChatRoomChatLog = [];
-ChatRoomLastMessage = [];
-
-ChatRoomCharacterUpdate = () => {};
-ChatRoomCharacterItemUpdate = () => {};
-
-ArcadeKinkyDungeonEnd = () => {}
-KinkyDungeonMultiplayerUpdate = () => {};
-
-ArcadeDeviousDungeonChallenge = false;
 
 const _CharacterAppearanceSetDefault = CharacterAppearanceSetDefault;
 const _CharacterLoadCanvas = CharacterLoadCanvas;
 const _CharacterRefresh = CharacterRefresh;
 
 function suppressCanvasUpdate(fn) {
-	CharacterAppearanceSetDefault = () => {};
-	CharacterLoadCanvas = () => {};
-	CharacterRefresh = () => {};
 	let ret = fn();
-	CharacterAppearanceSetDefault = _CharacterAppearanceSetDefault;
-	CharacterLoadCanvas = _CharacterLoadCanvas;
-	CharacterRefresh = _CharacterRefresh;
 	return ret;
 }
 
 window.onload = function() {
-	ArcadeDeviousDungeonChallenge = false;
 	KinkyDungeonRootDirectory = "Game/";
 
 	// window.onload in index.html
@@ -40,30 +21,26 @@ window.onload = function() {
 	CommonIsMobile = CommonDetectMobile();
 	TranslationLoad();
 	DrawLoad();
-	ControllerActive = false;
-	let _TextLoad = TextLoad; // Avoid nonexistent text query
-	TextLoad = () => {};
-	CommonSetScreen("KinkyDungeon", "KinkyDungeonMain");
-	TextLoad = _TextLoad;
-	MainRun(0);
+	MiniGameStart("KinkyDungeon", 1, "ArcadeKinkyDungeonEnd");
 
 	// LoginLoad
 	Character = [];
 	CharacterNextId = 1;
-	suppressCanvasUpdate(() => CharacterReset(0, "Female3DCG"));
+	CharacterReset(0, "Female3DCG");
 
+	// @ts-ignore
 	Player.ArousalSettings = {};
 	Player.ArousalSettings.VFXFilter = "VFXFilterHeavy";
+	// @ts-ignore
 	Player.OnlineSharedSettings = {};
-	Player.OnlineSharedSettings.ItemsAffectExpressions = true
+	Player.OnlineSharedSettings.ItemsAffectExpressions = true;
+	// @ts-ignore
 	Player.AudioSettings = {};
 	Player.AudioSettings.Volume = 1;
+	// @ts-ignore
 	Player.ImmersionSettings = {};
 
-	CharacterLoadCSVDialog(Player);
-
 	CurrentCharacter = null;
-	MiniGameStart("KinkyDungeon", 1, "ArcadeKinkyDungeonEnd");
 
 	// Default keybindings, these are initialized as part of the Player
 	KinkyDungeonKeybindings = {
@@ -86,7 +63,16 @@ window.onload = function() {
 	if (localStorage.getItem("KinkyDungeonKeybindings") && JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"))) {
 		KinkyDungeonKeybindings = JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"));
 	}
+
+	KinkyDungeonLoad();
+
+	MainRun(0);
 };
+
+let TimerRunInterval = 0;
+let TimerLastTime = 0;
+let CurrentTime = 0;
+let TimerLastCycleCall = 0;
 
 /**
  * Main game running state, runs the drawing
@@ -94,7 +80,19 @@ window.onload = function() {
  */
 function MainRun(Timestamp) {
 	DrawProcess(Timestamp);
-	TimerProcess(Timestamp);
+
+	// Increments the time from the last frame
+	TimerRunInterval = Timestamp - TimerLastTime;
+	TimerLastTime = Timestamp;
+	CurrentTime = CurrentTime + TimerRunInterval;
+
+	// At each 1700 ms, we check for timed events (equivalent of 100 cycles at 60FPS)
+	if (TimerLastCycleCall + 1700 <= CommonTime()) {
+		TimerLastCycleCall = CommonTime();
+	}
+
+	// Launches the main again for the next frame
+	requestAnimationFrame(MainRun);
 }
 
 /**
@@ -105,28 +103,6 @@ function KeyDown(event) {
 	if (event.repeat) return;
 	KeyPress = event.keyCode || event.which;
 	CommonKeyDown(event);
-}
-
-/**
- * Handler for document-wide keydown event
- * @param {KeyboardEvent} event
- */
-function DocumentKeyDown(event) {
-	if (event.repeat) return;
-	if (event.key == "Escape") {
-		if (CurrentScreenFunctions.Exit) {
-			CurrentScreenFunctions.Exit();
-		} else if ((CurrentCharacter != null) && Array.isArray(DialogMenuButton) && (DialogMenuButton.indexOf("Exit") >= 0)) {
-			if (!DialogLeaveFocusItem())
-				DialogLeaveItemMenu();
-		} else if ((CurrentCharacter != null) && (CurrentScreen == "ChatRoom")) {
-			DialogLeave();
-		} else if ((CurrentCharacter == null) && (CurrentScreen == "ChatRoom") && (document.getElementById("TextAreaChatLog") != null)) {
-			ElementScrollToEnd("TextAreaChatLog");
-		}
-	} else if (event.key == "Tab") {
-		KeyDown(event);
-	}
 }
 
 /**
@@ -189,6 +165,7 @@ function MouseMove(event) {
  * @param {MouseEvent} event
  */
 function LoseFocus(event) {
+	// @ts-ignore
 	if (event.relatedTarget || event.toElement) {
 		MouseX = -1;
 		MouseY = -1;

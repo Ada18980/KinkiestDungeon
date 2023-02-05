@@ -90,7 +90,6 @@ function DrawLoad() {
 	CharacterCanvas.canvas.height = CanvasDrawHeight;
 	document.getElementById("MainCanvas").addEventListener("keypress", KeyDown);
 	document.getElementById("MainCanvas").tabIndex = 1000;
-	document.addEventListener("keydown", DocumentKeyDown);
 
 	// Font is fixed for now, color can be set
 	MainCanvas.font = CommonGetFont(36);
@@ -221,10 +220,6 @@ function DrawCharacterLegacy(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas) {
 	if ((C != null) && ((C.ID == 0) || (OverrideDark || Player.GetBlindLevel() < 3 ))) {
 
 		CharacterCheckHooks(C, CurrentCharacter != null);
-
-		if (ControllerActive == true) {
-			setButton(X + 100, Y + 200);
-		}
 
 		// If there's a fixed image to draw instead of the character
 		if (C.FixedImage != null) {
@@ -696,35 +691,35 @@ function DrawImageEx(
  * @returns {Array<string>} - A list of string that being fragmented.
  */
 function fragmentText(text, maxWidth) {
-    let words = text.split(' '),
-        lines = [],
-        line = "";
+	let words = text.split(' '),
+		lines = [],
+		line = "";
 
-    if (MainCanvas.measureText(text).width < maxWidth) {
-        return [text];
-    }
+	if (MainCanvas.measureText(text).width < maxWidth) {
+		return [text];
+	}
 
-    while (words.length > 0) {
-        while (MainCanvas.measureText(words[0]).width >= maxWidth) {
-            let temp = words[0];
-            words[0] = temp.slice(0, -1);
-            if (words.length > 1) {
-                words[1] = temp.slice(-1) + words[1];
-            } else {
-                words.push(temp.slice(-1));
-            }
-        }
-        if (MainCanvas.measureText(line + words[0]).width < maxWidth) {
-            line += words.shift() + " ";
-        } else {
-            lines.push(line);
-            line = "";
-        }
-        if (words.length === 0) {
-            lines.push(line);
-        }
-    }
-    return lines;
+	while (words.length > 0) {
+		while (MainCanvas.measureText(words[0]).width >= maxWidth) {
+			let temp = words[0];
+			words[0] = temp.slice(0, -1);
+			if (words.length > 1) {
+				words[1] = temp.slice(-1) + words[1];
+			} else {
+				words.push(temp.slice(-1));
+			}
+		}
+		if (MainCanvas.measureText(line + words[0]).width < maxWidth) {
+			line += words.shift() + " ";
+		} else {
+			lines.push(line);
+			line = "";
+		}
+		if (words.length === 0) {
+			lines.push(line);
+		}
+	}
+	return lines;
 }
 
 /**
@@ -772,9 +767,6 @@ function GetWrapTextSize(Text, Width, MaxLine) {
  * @returns {void} - Nothing
  */
 function DrawTextWrap(Text, X, Y, Width, Height, ForeColor, BackColor, MaxLine) {
-	if (ControllerActive == true) {
-		setButton(X, Y);
-	}
 	// Draw the rectangle if we need too
 	if (BackColor != null) {
 		MainCanvas.beginPath();
@@ -931,10 +923,6 @@ function DrawText(Text, X, Y, Color, BackColor) {
  */
 function DrawButton(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled) {
 
-	if (ControllerActive == true) {
-		setButton(Left, Top);
-	}
-
 	// Draw the button rectangle (makes the background color cyan if the mouse is over it)
 	MainCanvas.beginPath();
 	MainCanvas.rect(Left, Top, Width, Height);
@@ -995,11 +983,6 @@ function DrawBackNextButton(Left, Top, Width, Height, Label, Color, Image, BackT
 	const LeftSplit = Left + ArrowWidth;
 	const RightSplit = Left + Width - ArrowWidth;
 
-	if (ControllerActive == true) {
-		setButton(Left, Top);
-		setButton(Left + Width - ArrowWidth, Top);
-	}
-
 	// Draw the button rectangle
 	MainCanvas.beginPath();
 	MainCanvas.rect(Left, Top, Width, Height);
@@ -1030,10 +1013,6 @@ function DrawBackNextButton(Left, Top, Width, Height, Label, Color, Image, BackT
 	// Draw the text or image
 	DrawTextFit(Label, Left + Width / 2, Top + (Height / 2) + 1, (CommonIsMobile) ? Width - 6 : Width - 36, "Black");
 	if ((Image != null) && (Image != "")) DrawImage(Image, Left + 2, Top + 2);
-	if (ControllerActive == true) {
-		setButton(Left + Width / 2, Top);
-	}
-
 	// Draw the back arrow
 	MainCanvas.beginPath();
 	MainCanvas.fillStyle = "black";
@@ -1292,25 +1271,15 @@ function DrawProcess(time) {
 		MainCanvas.filter = 'none';
 	}
 
-	CurrentScreenFunctions.Run(time);
-
-	// Handle screen flash effects
-	DrawProcessScreenFlash();
+	KinkyDungeonRun();
 
 	// Draw Hovering text so they can be above everything else
 	DrawProcessHoverElements();
-
-	// Draws beep from online player sent by the server
-	ServerDrawBeep();
-
 
 	// Checks for screen resize/position change and calls appropriate function
 	const newCanvasPosition = [MainCanvas.canvas.offsetLeft, MainCanvas.canvas.offsetTop, MainCanvas.canvas.clientWidth, MainCanvas.canvas.clientHeight];
 	if (!CommonArraysEqual(newCanvasPosition, DrawCanvasPosition)) {
 		DrawCanvasPosition = newCanvasPosition;
-		if (CurrentScreenFunctions.Resize) {
-			CurrentScreenFunctions.Resize(false);
-		}
 	}
 }
 

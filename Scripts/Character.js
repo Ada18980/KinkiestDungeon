@@ -829,7 +829,7 @@ function CharacterSetActivePose(C, NewPose, ForceChange = false) {
  * @returns {void} - Nothing
  */
 function CharacterSetFacialExpression(C, AssetGroup, Expression, Timer, Color) {
-	if (Patched) {
+	if (StandalonePatched) {
 		// TODO add facial expression handling
 		return;
 	}

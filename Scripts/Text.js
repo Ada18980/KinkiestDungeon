@@ -24,7 +24,7 @@ function TextLoad(TextGroup) {
 
 	// Finds the full path of the CSV file to use cache
 	if ((TextGroup == null) || (TextGroup == "")) TextGroup = CurrentScreen;
-	const FullPath = "Screens/" + CurrentModule + "/" + TextGroup + "/Text_" + TextGroup + ".csv";
+	const FullPath = "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv";
 
 	TextScreenCache = TextAllScreenCache.get(FullPath);
 	if (!TextScreenCache) {

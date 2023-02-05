@@ -2063,7 +2063,7 @@ function KinkyDungeonHandleClick() {
 			KinkyDungeonDressPlayer();
 			// @ts-ignore
 			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: false, AllowFullWardrobeAccess: true};
-			if (!Patched)
+			if (!StandalonePatched)
 				// @ts-ignore
 				CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
 			KinkyDungeonConfigAppearance = true;

@@ -999,11 +999,11 @@ function KinkyDungeonDrawGame() {
 
 			// Draw the player no matter what
 			KinkyDungeonContextPlayer.clearRect(0, 0, KinkyDungeonCanvasPlayer.width, KinkyDungeonCanvasPlayer.height);
-			let PlayerModel = Patched ? KDCurrentModels.get(KinkyDungeonPlayer) : null;
+			let PlayerModel = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer) : null;
 			let zoom = PlayerModel ? KinkyDungeonGridSizeDisplay/1200
 				: KinkyDungeonGridSizeDisplay/250;
 			/** @type {PoseMod[]} */
-			let mods = Patched ? [
+			let mods = StandalonePatched ? [
 				{
 					Layer: "Head",
 					scale_x: 3,
@@ -1015,8 +1015,8 @@ function KinkyDungeonDrawGame() {
 				},
 			] : [];
 			DrawCharacter(KinkyDungeonPlayer,
-				canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay + (Patched ? KinkyDungeonGridSizeDisplay/4: -KinkyDungeonGridSizeDisplay/2),
-				canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay + (Patched ? KinkyDungeonGridSizeDisplay/6 : (KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0))),
+				canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/4: -KinkyDungeonGridSizeDisplay/2),
+				canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/6 : (KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0))),
 				zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods);
 
 			KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
@@ -2150,11 +2150,6 @@ function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, Ba
 	const LeftSplit = Left + ArrowWidth;
 	const RightSplit = Left + Width - ArrowWidth;
 
-	if (ControllerActive == true) {
-		setButton(Left, Top);
-		setButton(Left + Width - ArrowWidth, Top);
-	}
-
 	DrawBoxKD(Left, Top, Width, Height,
 		KDButtonColor, undefined, options?.alpha || 0.5
 	);
@@ -2185,9 +2180,6 @@ function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, Ba
 	// Draw the text or image
 	DrawTextFitKD(Label, Left + Width / 2, Top + (Height / 2) + 1, (CommonIsMobile) ? Width - 6 : Width - 36, "#ffffff");
 	if ((Image != null) && (Image != "")) DrawImage(Image, Left + 2, Top + 2);
-	if (ControllerActive == true) {
-		setButton(Left + Width / 2, Top);
-	}
 
 	// Draw the back arrow
 	MainCanvas.beginPath();

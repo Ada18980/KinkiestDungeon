@@ -42,7 +42,7 @@ let KinkyDungeonDefaultDefaultDress = [
 	{Item: "Necklace4", Group: "Necklace", Color: "#222222", Lost: false},
 ];
 
-if (Patched) {
+if (StandalonePatched) {
 	KinkyDungeonDefaultDefaultDress = [
 		{Item: "Bandit", Group: "Suit", Color: "Default", Lost: false},
 	];
@@ -52,7 +52,7 @@ if (Patched) {
 let KinkyDungeonCheckClothesLoss = false;
 
 function KDGetDressList() {
-	if (Patched) return KDModelDresses;
+	if (StandalonePatched) return KDModelDresses;
 	return KinkyDungeonDresses;
 }
 
@@ -80,7 +80,7 @@ function KinkyDungeonDressSet() {
 
 		for (let A = 0; A < C.Appearance.length; A++) {
 			let save = false;
-			if (Patched) {
+			if (StandalonePatched) {
 				if (C.Appearance[A].Model?.Protected) save = true;
 				if (!C.Appearance[A].Model?.Restraint) save = true;
 				if (save) {
@@ -161,7 +161,7 @@ function KinkyDungeonDressPlayer(Character) {
 			}
 			let newAppearance = {};
 			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
-				if (Patched) {
+				if (StandalonePatched) {
 					let model = KinkyDungeonPlayer.Appearance[A].Model;
 					if (!model.Group?.startsWith("Item") && !clothGroups[model.Group]) {
 						//KinkyDungeonPlayer.Appearance.splice(A, 1);
@@ -212,7 +212,7 @@ function KinkyDungeonDressPlayer(Character) {
 
 		for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
 			let asset = KinkyDungeonPlayer.Appearance[A].Asset;
-			if (Patched) {
+			if (StandalonePatched) {
 				// @ts-ignore
 				if (KinkyDungeonPlayer.Appearance[A].Model?.Group)
 					// @ts-ignore
@@ -289,7 +289,7 @@ function KinkyDungeonDressPlayer(Character) {
 		KinkyDungeonCheckClothesLoss = false;
 
 		if (KDGameData.KneelTurns > 0 || KDGameData.SleepTurns > 0) {
-			if (Patched) {
+			if (StandalonePatched) {
 				// TODO add code
 			} else {
 				if (CharacterItemsHavePoseAvailable(KinkyDungeonPlayer, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(KinkyDungeonPlayer, "Kneel") && !KinkyDungeonPlayer.IsKneeling()) {
@@ -298,7 +298,7 @@ function KinkyDungeonDressPlayer(Character) {
 			}
 
 		} else if (KDGameData.SleepTurns < 1) {
-			if (Patched) {
+			if (StandalonePatched) {
 				// TODO add code
 			} else {
 				if (CharacterItemsHavePoseAvailable(KinkyDungeonPlayer, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(KinkyDungeonPlayer, "Kneel") && KinkyDungeonPlayer.IsKneeling()) {
@@ -373,7 +373,7 @@ function KinkyDungeonDressPlayer(Character) {
 		else if (BlushCounter == 5) Blush = "Extreme";
 
 
-		if (Patched) {
+		if (StandalonePatched) {
 			// Expressions for standalone
 
 		} else {
@@ -432,7 +432,7 @@ function KinkyDungeonDressPlayer(Character) {
 		CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
 	}
 
-	if (Patched && KDCurrentModels.get(Character))
+	if (StandalonePatched && KDCurrentModels.get(Character))
 		UpdateModels(KDCurrentModels.get(Character));
 }
 
@@ -523,10 +523,10 @@ function KinkyDungeonGetOutfit(Name) {
  * @param {string | string[]} color - parent item
  */
 function KDInventoryWear(AssetName, AssetGroup, par, color) {
-	const M = Patched ? ModelDefs[AssetName] : undefined;
-	const A = Patched ? undefined : AssetGet(KinkyDungeonPlayer.AssetFamily, AssetGroup, AssetName);
-	if ((Patched && !M) || (!Patched && !A)) return;
-	let item = Patched ?
+	const M = StandalonePatched ? ModelDefs[AssetName] : undefined;
+	const A = StandalonePatched ? undefined : AssetGet(KinkyDungeonPlayer.AssetFamily, AssetGroup, AssetName);
+	if ((StandalonePatched && !M) || (!StandalonePatched && !A)) return;
+	let item = StandalonePatched ?
 		KDAddModel(KinkyDungeonPlayer, AssetGroup, M, color || "Default")
 		: KDAddAppearance(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor);
 	//CharacterAppearanceSetItem(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor,0,-1, false);
@@ -546,7 +546,7 @@ function KDCharacterNaked() {
 function KDCharacterAppearanceNaked() {
 	// For each item group (non default items only show at a 20% rate)
 	for (let A = KinkyDungeonPlayer.Appearance.length - 1; A >= 0; A--) {
-		if (Patched) {
+		if (StandalonePatched) {
 			if (!KinkyDungeonPlayer.Appearance[A].Model.Restraint){
 				// conditional filter
 				let f = !(KinkyDungeonPlayer.Appearance[A].Model.Group
@@ -573,7 +573,7 @@ function KDCharacterAppearanceNaked() {
 
 
 function KDApplyItem(inv, tags) {
-	if (Patched) {
+	if (StandalonePatched) {
 		let restraint = KDRestraint(inv);
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
 		let faction = inv.faction ? inv.faction : "";
@@ -593,7 +593,7 @@ function KDApplyItem(inv, tags) {
 		/** @type {Item} */
 		let placed = null;
 
-		if (!restraint.armor || KinkyDungeonArmor) {
+		if (!restraint.armor || KDToggles.DrawArmor) {
 			placed = KDAddModel(KinkyDungeonPlayer, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], color, undefined, undefined, undefined, inv);
 		}
 

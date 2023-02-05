@@ -482,7 +482,6 @@ function InventoryWearRandom(C, GroupName, Difficulty, Refresh = true, MustOwn =
 	}
 	// Restrict the options to assets owned by the character
 	if (MustOwn) {
-		CharacterAppearanceBuildAssets(C);
 		if (AssetList) {
 			AssetList.filter(A => CharacterAppearanceAssets.some(CAA => CAA.Group.Name == A.Group.Name && CAA.Name == A.Name));
 		} else {
@@ -932,56 +931,7 @@ function InventoryUnlock(C, Item) {
 	}
 }
 
-/**
-* Applies a random lock on an item
-* @param {Character} C - The character on which the item must be locked
-* @param {Item} Item - The item from appearance to lock
-* @param {Boolean} FromOwner - Set to TRUE if the source is the owner, to apply owner locks
-*/
-function InventoryLockRandom(C, Item, FromOwner) {
-	if (InventoryDoesItemAllowLock(Item)) {
-		var List = [];
-		for (let A = 0; A < Asset.length; A++)
-			if (Asset[A].IsLock && Asset[A].Random && !Asset[A].LoverOnly && (FromOwner || !Asset[A].OwnerOnly))
-				List.push(Asset[A]);
-		if (List.length > 0) {
-			var Lock = { Asset: InventoryGetRandom(C, null, List) };
-			InventoryLock(C, Item, Lock);
-		}
-	}
-}
 
-/**
-* Applies random locks on each character items that can be locked
-* @param {Character} C - The character on which the items must be locked
-* @param {Boolean} FromOwner - Set to TRUE if the source is the owner, to apply owner locks
-*/
-function InventoryFullLockRandom(C, FromOwner) {
-	for (let I = 0; I < C.Appearance.length; I++)
-		if (InventoryGetLock(C.Appearance[I]) == null)
-			InventoryLockRandom(C, C.Appearance[I], FromOwner);
-}
-
-/**
-* Removes all common keys from the player inventory
-*/
-function InventoryConfiscateKey() {
-	InventoryDelete(Player, "MetalCuffsKey", "ItemMisc");
-	InventoryDelete(Player, "MetalPadlockKey", "ItemMisc");
-	InventoryDelete(Player, "IntricatePadlockKey", "ItemMisc");
-	InventoryDelete(Player, "HighSecurityPadlockKey", "ItemMisc");
-	InventoryDelete(Player, "Lockpicks", "ItemMisc");
-}
-
-/**
-* Removes the remotes of the vibrators from the player inventory
-*/
-function InventoryConfiscateRemote() {
-	InventoryDelete(Player, "VibratorRemote", "ItemVulva");
-	InventoryDelete(Player, "VibratorRemote", "ItemNipples");
-	InventoryDelete(Player, "LoversVibratorRemote", "ItemVulva");
-	InventoryDelete(Player, "SpankingToysVibeRemote", "ItemHands");
-}
 
 /**
 * Returns TRUE if the item is worn by the character
@@ -999,37 +949,6 @@ function InventoryIsWorn(C, AssetName, AssetGroup) {
 }
 
 /**
- * Toggles an item's permission for the player
- * @param {Item} Item - Appearance item to toggle
- * @param {string} [Type] - Type of the item to toggle
- * @param {boolean} [Worn] - True if the player is changing permissions for an item they're wearing
- * @returns {void} - Nothing
- */
-function InventoryTogglePermission(Item, Type, Worn) {
-	const onExtreme = Player.GetDifficulty() >= 3;
-	const blockAllowed = !Worn && !onExtreme;
-	const limitedAllowed = !Worn && (!onExtreme || MainHallStrongLocks.includes(Item.Asset.Name));
-
-	const removeFromPermissions = (B) => B.Name != Item.Asset.Name || B.Group != Item.Asset.Group.Name || B.Type != Type;
-	const permissionItem = { Name: Item.Asset.Name, Group: Item.Asset.Group.Name, Type: Type };
-	if (InventoryIsPermissionBlocked(Player, Item.Asset.Name, Item.Asset.Group.Name, Type)) {
-		Player.BlockItems = Player.BlockItems.filter(removeFromPermissions);
-		Player.LimitedItems.push(permissionItem);
-	} else if (InventoryIsPermissionLimited(Player, Item.Asset.Name, Item.Asset.Group.Name, Type)) {
-		Player.LimitedItems = Player.LimitedItems.filter(removeFromPermissions);
-	} else if (InventoryIsFavorite(Player, Item.Asset.Name, Item.Asset.Group.Name, Type)) {
-		if (blockAllowed)
-			Player.BlockItems.push(permissionItem);
-		else if (limitedAllowed)
-			Player.LimitedItems.push(permissionItem);
-		Player.FavoriteItems = Player.FavoriteItems.filter(removeFromPermissions);
-	} else {
-		Player.FavoriteItems.push(permissionItem);
-	}
-	ServerPlayerBlockItemsSync();
-}
-
-/**
 * Returns TRUE if a specific item / asset is blocked by the character item permissions
 * @param {Character} C - The character on which we check the permissions
 * @param {string} AssetName - The asset / item name to scan
@@ -1041,23 +960,6 @@ function InventoryIsPermissionBlocked(C, AssetName, AssetGroup, AssetType) {
 	if ((C != null) && (C.BlockItems != null) && Array.isArray(C.BlockItems))
 		for (let B = 0; B < C.BlockItems.length; B++)
 			if ((C.BlockItems[B].Name == AssetName) && (C.BlockItems[B].Group == AssetGroup) && (C.BlockItems[B].Type == AssetType))
-				return true;
-	return false;
-}
-
-
-/**
-* Returns TRUE if a specific item / asset is favorited by the character item permissions
-* @param {Character} C - The character on which we check the permissions
-* @param {string} AssetName - The asset / item name to scan
-* @param {string} AssetGroup - The asset group name to scan
-* @param {string} [AssetType] - The asset type to scan
-* @returns {boolean} - TRUE if asset / item is a favorite
-*/
-function InventoryIsFavorite(C, AssetName, AssetGroup, AssetType) {
-	if ((C != null) && (C.FavoriteItems != null) && Array.isArray(C.FavoriteItems))
-		for (let B = 0; B < C.FavoriteItems.length; B++)
-			if ((C.FavoriteItems[B].Name == AssetName) && (C.FavoriteItems[B].Group == AssetGroup) && (C.FavoriteItems[B].Type == AssetType))
 				return true;
 	return false;
 }

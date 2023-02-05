@@ -195,12 +195,6 @@ declare function MainRun(Timestamp: number): void;
 declare function KeyDown(event: KeyboardEvent): void;
 
 /**
- * Handler for document-wide keydown event
- * @param {KeyboardEvent} event
- */
-declare function DocumentKeyDown(event: KeyboardEvent): void;
-
-/**
  * When the user clicks, we fire the click event for other screens
  * @param {MouseEvent} event
  */
@@ -1035,23 +1029,6 @@ interface PlayerCharacter extends Character {
 		/** Play sounds only if the player is involved */
 		PlayItemPlayerOnly: boolean;
 		Notifications: boolean;
-	};
-	ControllerSettings?: {
-		ControllerSensitivity: number;
-		ControllerDeadZone: number;
-		ControllerA: number;
-		ControllerB: number;
-		ControllerX: number;
-		ControllerY: number;
-		ControllerStickUpDown: number;
-		ControllerStickLeftRight: number;
-		ControllerStickRight: number;
-		ControllerStickDown: number;
-		ControllerDPadUp: number;
-		ControllerDPadDown: number;
-		ControllerDPadLeft: number;
-		ControllerDPadRight: number;
-		ControllerActive: boolean;
 	};
 	GameplaySettings?: {
 		SensDepChatLog: string;

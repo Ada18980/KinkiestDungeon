@@ -7,8 +7,6 @@ var KeyPress = "";
 var CurrentModule;
 /** @type {string} */
 var CurrentScreen;
-/** @type {ScreenFunctions} */
-var CurrentScreenFunctions;
 /** @type {Character|NPCCharacter|null} */
 var CurrentCharacter = null;
 var CurrentOnlinePlayers = 0;
@@ -258,7 +256,7 @@ function CommonGetRetry(Path, Callback, RetriesLeft) {
  * @returns {void} - Nothing
  */
 function CommonClick(event) {
-	CurrentScreenFunctions.Click(event);
+	KinkyDungeonClick();
 }
 
 /**
@@ -284,24 +282,11 @@ function CommonTouchActive(X, Y, W, H, TL) {
 }
 
 /**
- * Catches key presses on the main screen and forwards it to the current screen key down function if it exists, otherwise it sends it to the dialog key down function
  * @param {KeyboardEvent} event - The event that triggered this
  * @returns {void} - Nothing
  */
 function CommonKeyDown(event) {
-	if (CurrentCharacter == null) {
-		if (CurrentScreenFunctions.KeyDown)
-			CurrentScreenFunctions.KeyDown(event);
-		if (ControllerActive == true) {
-			ControllerSupportKeyDown();
-		}
-	}
-	else {
-		StruggleKeyDown();
-		if (ControllerActive == true) {
-			ControllerSupportKeyDown();
-		}
-	}
+	KinkyDungeonKeyDown();
 }
 
 /**
@@ -404,50 +389,14 @@ function CommonCallFunctionByNameWarn(FunctionName/*, ...args */) {
  * @returns {void} - Nothing
  */
 function CommonSetScreen(NewModule, NewScreen) {
-	const prevScreen = CurrentScreen;
-
-	if (CurrentScreenFunctions && CurrentScreenFunctions.Unload) {
-		CurrentScreenFunctions.Unload();
-	}
-	if (ControllerActive == true) {
-		ClearButtons();
-	}
-
-
-	// Check for required functions
-	if (typeof window[`${NewScreen}Run`] !== "function") {
-		throw Error(`Screen "${NewScreen}": Missing required Run function`);
-	}
-	if (typeof window[`${NewScreen}Click`] !== "function") {
-		throw Error(`Screen "${NewScreen}": Missing required Click function`);
-	}
 
 	CurrentModule = NewModule;
 	CurrentScreen = NewScreen;
-	CurrentScreenFunctions = {
-		Run: window[`${NewScreen}Run`],
-		Click: window[`${NewScreen}Click`],
-		Load: typeof window[`${NewScreen}Load`] === "function" ? window[`${NewScreen}Load`] : undefined,
-		Unload: typeof window[`${NewScreen}Unload`] === "function" ? window[`${NewScreen}Unload`] : undefined,
-		Resize: typeof window[`${NewScreen}Resize`] === "function" ? window[`${NewScreen}Resize`] : undefined,
-		KeyDown: typeof window[`${NewScreen}KeyDown`] === "function" ? window[`${NewScreen}KeyDown`] : undefined,
-		Exit: typeof window[`${NewScreen}Exit`] === "function" ? window[`${NewScreen}Exit`] : undefined
-	};
 
 	CurrentDarkFactor = 1.0;
 	CommonGetFont.clearCache();
 	CommonGetFontName.clearCache();
 	TextLoad();
-
-	if (CurrentScreenFunctions.Load) {
-		CurrentScreenFunctions.Load();
-	}
-	if (CurrentScreenFunctions.Resize) {
-		CurrentScreenFunctions.Resize(true);
-	}
-
-	if (prevScreen == "ChatSearch" || prevScreen == "ChatCreate")
-		ChatRoomStimulationMessage("Walk");
 }
 
 /**

@@ -36,23 +36,6 @@ const AppearancePermissionColors = {
 	green: ["lime", "green"],
 };
 
-/**
- * Builds all the assets that can be used to dress up the character
- * @param {Character} C - The character whose appearance is modified
- * @returns {void} - Nothing
- */
-function CharacterAppearanceBuildAssets(C) {
-
-	// Adds all items with 0 value and from the appearance category
-	CharacterAppearanceAssets = [];
-	for (let A = 0; A < Asset.length; A++)
-		if ((Asset[A].Value == 0) && (Asset[A].Group.Family == C.AssetFamily) && (Asset[A].Group.Category == "Appearance"))
-			CharacterAppearanceAssets.push(Asset[A]);
-	for (let A = 0; A < C.Inventory.length; A++)
-		if ((C.Inventory[A].Asset != null) && (C.Inventory[A].Asset.Group.Family == C.AssetFamily) && (C.Inventory[A].Asset.Group.Category == "Appearance"))
-			CharacterAppearanceAssets.push(C.Inventory[A].Asset);
-
-}
 
 /**
  * Makes sure the character appearance is valid from inventory and asset requirement. This function is called during the login process.
@@ -95,7 +78,6 @@ function CharacterAppearanceSetDefault(C) {
 	if (!AppearanceGroupAllowed(C, "ALL")) return;
 	C.Appearance = [];
 	C.Pose = [];
-	if (CharacterAppearanceAssets.length == 0) CharacterAppearanceBuildAssets(C);
 
 	// For each items in the character appearance assets
 	for (let I = 0; I < CharacterAppearanceAssets.length; I++)
@@ -147,175 +129,6 @@ function CharacterAppearanceNaked(C) {
 	for (let A = C.Appearance.length - 1; A >= 0; A--)
 		if (!C.Appearance[A].Model?.Protected)
 			C.Appearance.splice(A, 1);
-}
-
-/**
- * Removes one layer of clothing: outer clothes, then underwear, then body-cosplay clothes, then nothing
- * @param {Character} C - The character to undress
- * @returns {void} - Nothing
- */
-function CharacterAppearanceStripLayer(C) {
-	var HasClothes = false;
-	var HasUnderwear = false;
-	var HasBodyCosplay = false;
-
-	// Find out what the top layer currently is
-	for (let A = 0; A < C.Appearance.length; A++) {
-		if (!WardrobeGroupAccessible(C, C.Appearance[A].Asset.Group)) continue;
-		if (!AppearanceGroupAllowed(C, C.Appearance[A].Asset.Group.Name)) continue;
-		if (C.Appearance[A].Asset.Group.BodyCosplay || C.Appearance[A].Asset.BodyCosplay) HasBodyCosplay = true;
-		else if (C.Appearance[A].Asset.Group.Underwear) HasUnderwear = true;
-		else if (C.Appearance[A].Asset.Group.Clothing) { HasClothes = true; break; }
-	}
-
-	// Check if there's anything to remove
-	if (!HasClothes && !HasUnderwear && !HasBodyCosplay) return;
-
-	// Ensure only the top layer is 'true'
-	HasBodyCosplay = HasBodyCosplay && !HasUnderwear && !HasClothes;
-	HasUnderwear = HasUnderwear && !HasClothes;
-
-	// Remove assets from the top layer only
-	var RemoveAsset = false;
-	for (let A = C.Appearance.length - 1; A >= 0; A--) {
-		RemoveAsset = false;
-		if (!WardrobeGroupAccessible(C, C.Appearance[A].Asset.Group)) continue;
-		if (!AppearanceGroupAllowed(C, C.Appearance[A].Asset.Group.Name)) continue;
-		if (C.Appearance[A].Asset.Group.BodyCosplay || C.Appearance[A].Asset.BodyCosplay) {
-			if (HasBodyCosplay) RemoveAsset = true;
-		}
-		else if (C.Appearance[A].Asset.Group.Underwear) {
-			if (HasUnderwear) RemoveAsset = true;
-		}
-		else if (C.Appearance[A].Asset.Group.Clothing) {
-			if (HasClothes) RemoveAsset = true;
-		}
-		if (RemoveAsset) {
-			C.Appearance.splice(A, 1);
-		}
-	}
-
-	// Loads the new character canvas
-	CharacterLoadCanvas(C);
-}
-
-/**
- * Builds a filtered and sorted set of appearance layers, each representing a drawable layer of a character's current appearance. Layers
- * that will not be drawn (because their asset is not visible or they do not permit the current asset type) are filtered out at this stage.
- * @param {Character} C - The character to build the layers for
- * @return {AssetLayer[]} - A sorted set of layers, sorted by layer drawing priority
- */
-function CharacterAppearanceSortLayers(C) {
-	var groupAlphas = {};
-	var layers = C.DrawAppearance.reduce((layersAcc, item) => {
-		var asset = item.Asset;
-		// Only include layers for visible assets
-		if (asset.Visible && CharacterAppearanceVisible(C, asset.Name, asset.Group.Name) && InventoryChatRoomAllow(asset.Category)) {
-			// Check if we need to draw a different variation (from type property)
-			var type = (item.Property && item.Property.Type) || "";
-			var layersToDraw = asset.Layer
-				// Only include layers that permit the current type (if AllowTypes is not defined, also include the layer)
-				.filter(layer => !layer.AllowTypes || (
-					layer.ReverseAllowTypes ?
-						(type == '' ? layer.ReverseAllowEmptyType : layer.ReverseAllowTypes.some(t => type.includes(t))) :
-						layer.AllowTypes.includes(type)))
-				// Hide the layer if its HideAs proxy asset should be hidden
-				.filter(layer => !layer.HideAs || CharacterAppearanceVisible(C, layer.HideAs.Asset, layer.HideAs.Group))
-				// Hide the layer if it should be hidden for the current pose
-				.filter(layer => !layer.HideForPose || !layer.HideForPose.includes(CommonDrawResolveAssetPose(C, asset, layer)))
-				.map(layer => {
-					var drawLayer = Object.assign({}, layer);
-					// Store any group-level alpha mask definitions
-					drawLayer.Alpha.forEach(alphaDef => {
-						if ((alphaDef.Group && alphaDef.Group.length) && (!alphaDef.Type || !Array.isArray(alphaDef.Type) || alphaDef.Type.includes(type))) {
-							alphaDef.Group.forEach(groupName => {
-								groupAlphas[groupName] = groupAlphas[groupName] || [];
-								groupAlphas[groupName].push({Pose: alphaDef.Pose, Masks: alphaDef.Masks});
-							});
-						}
-					});
-					// If the item has an OverridePriority property, it completely overrides the layer priority
-					if (item.Property && typeof item.Property.OverridePriority === "number") drawLayer.Priority = item.Property.OverridePriority;
-					return drawLayer;
-				});
-			Array.prototype.push.apply(layersAcc, layersToDraw);
-		}
-		return layersAcc;
-	}, []);
-
-	// Run back over the layers to apply the group-level alpha mask definitions to the appropriate layers
-	layers.forEach(layer => {
-		// If the layer has a HideAs proxy group name, apply those alphas rather than the actual group alphas
-		const groupName = (layer.HideAs && layer.HideAs.Group) || layer.Asset.Group.Name;
-		layer.GroupAlpha = [];
-		if (groupAlphas[groupName]) {
-			Array.prototype.push.apply(layer.GroupAlpha, groupAlphas[groupName]);
-		}
-	});
-
-	return layers.sort((l1, l2) => {
-		// If priorities are different, sort by priority
-		if (l1.Priority !== l2.Priority) return l1.Priority - l2.Priority;
-		// If the priorities are identical and the layers belong to the same Asset, ensure layer order is preserved
-		if (l1.Asset === l2.Asset) return l1.Asset.Layer.indexOf(l1) - l1.Asset.Layer.indexOf(l2);
-		// If priorities are identical, sort alphabetically to maintain consistency
-		return (l1.Asset.Group.Name + l1.Asset.Name).localeCompare(l2.Asset.Group.Name + l2.Asset.Name);
-	});
-}
-
-/**
- * Determines whether an item or a whole item group is visible or not
- * @param {Character} C - The character whose assets are checked
- * @param {string} AssetName - The name of the asset to check
- * @param {string} GroupName - The name of the item group to check
- * @param {boolean} Recursive - If TRUE, then other items which are themselves hidden will not hide this item. Parameterising this prevents
- *     infinite loops.
- * @returns {boolean} - Returns TRUE if we can show the item or the item group
- */
-function CharacterAppearanceVisible(C, AssetName, GroupName, Recursive = true) {
-	if (CharacterAppearanceItemIsHidden(AssetName, GroupName)) {
-		C.HasHiddenItems = true;
-		return false;
-	}
-
-	if (!C.DrawAppearance) C.DrawAppearance = C.Appearance;
-
-	const assetToCheck = AssetGet(C.AssetFamily, GroupName, AssetName);
-	if (assetToCheck) {
-		const Pose = CommonDrawResolveAssetPose(C, assetToCheck);
-		if (Pose && assetToCheck.HideForPose.includes(Pose)) return false;
-	}
-
-	for (const item of C.DrawAppearance) {
-		if (CharacterAppearanceItemIsHidden(item.Asset.Name, item.Asset.Group.Name)) continue;
-		let HidingItem = false;
-		let HideItemExclude = InventoryGetItemProperty(item, "HideItemExclude");
-		if (HideItemExclude == null) HideItemExclude = [];
-		const Excluded = HideItemExclude.includes(GroupName + AssetName);
-		if ((item.Asset.Hide != null) && (item.Asset.Hide.indexOf(GroupName) >= 0) && !Excluded) HidingItem = true;
-		else if (!Excluded && item.Asset.HideItemAttribute.length && assetToCheck && assetToCheck.Attribute.length) {
-			HidingItem = item.Asset.HideItemAttribute.some((val) => assetToCheck.Attribute.indexOf(val) !== -1);
-		}
-		else if ((item.Property != null) && (item.Property.Hide != null) && (item.Property.Hide.indexOf(GroupName) >= 0) && !Excluded) HidingItem = true;
-		else if ((item.Asset.HideItem != null) && (item.Asset.HideItem.indexOf(GroupName + AssetName) >= 0)) HidingItem = true;
-		else if ((item.Property != null) && (item.Property.HideItem != null) && (item.Property.HideItem.indexOf(GroupName + AssetName) >= 0)) HidingItem = true;
-		if (HidingItem) {
-			if (Recursive) {
-				if (CharacterAppearanceVisible(C, item.Asset.Name, item.Asset.Group.Name, false)) {
-					return false;
-				}
-			}
-			else return false;
-		}
-	}
-
-	if (C.Pose != null)
-		for (let A = 0; A < C.Pose.length; A++)
-			for (let P = 0; P < Pose.length; P++)
-				if (Pose[P].Name === C.Pose[A])
-					if ((Pose[P].Hide != null) && (Pose[P].Hide.indexOf(GroupName) >= 0))
-						return false;
-	return true;
 }
 
 /**
@@ -425,7 +238,6 @@ function AppearanceLoad() {
 	CharacterAppearanceOffset = 0;
 	if (!CharacterAppearanceSelection) CharacterAppearanceSelection = Player;
 	var C = CharacterAppearanceSelection;
-	CharacterAppearanceBuildAssets(Player);
 	CharacterAppearanceBackup = CharacterAppearanceStringify(C);
 	AppearanceMenuBuild(C);
 	AppearanceUseCharacterInPreviewsSetting = Player.VisualSettings ? Player.VisualSettings.UseCharacterInPreviews : AppearanceUseCharacterInPreviewsSetting;

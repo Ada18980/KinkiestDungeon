@@ -1,6 +1,5 @@
 "use strict";
 
-
 let KDCanvasRenderMap = new Map();
 KDCanvasRenderMap.set(KinkyDungeonCanvasPlayer, "temp");
 
