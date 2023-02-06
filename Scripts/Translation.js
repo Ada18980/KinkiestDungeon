@@ -140,14 +140,14 @@ function TranslationStringCachePreBuild(translations, CharacterName) {
 	let translationsStringLineCache = new Map();
 	let translationsLineStringCache = new Map();
 	// for (let P = 0; P < T.length - 1; P++) {
-	// 	if (S1 === T[P].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player)))
-	// 		return T[P + 1].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
+	// if (S1 === T[P].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player)))
+	// return T[P + 1].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
 	// }
 	translations.forEach((T, i) => {
 		let S = T.replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
 		translationsStringLineCache.set(S, i);
 		translationsLineStringCache.set(i, S);
-	})
+	});
 	return [translationsStringLineCache, translationsLineStringCache];
 }
 

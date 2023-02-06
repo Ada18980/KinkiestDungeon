@@ -128,44 +128,6 @@ function DialogIsMenuButtonDisabled(ButtonName) {
  */
 function DialogMenuButtonBuild(C) {
 
-	// The "Exit" button is always available
-	DialogMenuButton = ["Exit"];
-
-	/** The item in the current slot */
-	const Item = InventoryGet(C, C.FocusGroup.Name);
-	const ItemBlockedOrLimited = !!Item && InventoryBlockedOrLimited(C, Item);
-
-	// In color picker mode
-	if (DialogColor != null && Item == null) {
-		DialogMenuButton.push("ColorCancel");
-		DialogMenuButton.push("ColorSelect");
-		return;
-	}
-
-	// Pushes all valid main buttons, based on if the player is restrained, has a blocked group, has the key, etc.
-	const IsGroupBlocked = InventoryGroupIsBlocked(C);
-
-	if ((DialogInventory != null) && (DialogInventory.length > 12) && ((Player.CanInteract() && !IsGroupBlocked) || DialogItemPermissionMode)) {
-		DialogMenuButton.push("Next");
-		DialogMenuButton.push("Prev");
-	}
-
-	if (C.FocusGroup.Name == "ItemMouth" || C.FocusGroup.Name == "ItemMouth2" || C.FocusGroup.Name == "ItemMouth3")
-		DialogMenuButton.push("ChangeLayersMouth");
-
-	// Color selection
-	if (DialogCanColor(C, Item)) DialogMenuButton.push(ItemBlockedOrLimited ? "ColorPickDisabled" : "ColorPick");
-
-	// Item permission enter/exit
-	if (C.ID == 0) {
-		if (DialogItemPermissionMode) DialogMenuButton.push("DialogNormalMode");
-		else DialogMenuButton.push("DialogPermissionMode");
-	}
-
-	// Make sure the previous button doesn't overflow the menu
-	if ((DialogMenuButton.length >= 10) && (DialogMenuButton.indexOf("Prev") >= 0))
-		DialogMenuButton.splice(DialogMenuButton.indexOf("Prev"), 1);
-
 }
 
 

@@ -227,7 +227,7 @@ function KinkyDungeonDressPlayer(Character) {
 			if (!clothes.Lost && KinkyDungeonCheckClothesLoss) {
 				if (clothes.Group == "Necklace") {
 					if (KinkyDungeonGetRestraintItem("ItemTorso") && KDRestraint(KinkyDungeonGetRestraintItem("ItemTorso")).harness) clothes.Lost = true;
-					if (KinkyDungeonGetRestraintItem("ItemArms") && InventoryGroupIsBlockedForCharacter(KinkyDungeonPlayer, "ItemBreast")) clothes.Lost = true;
+					if (KinkyDungeonGetRestraintItem("ItemArms") && KDGroupBlocked("ItemBreast")) clothes.Lost = true;
 				}
 				//if (clothes.Group == "Bra" && !clothes.NoLose) {
 				//if (KinkyDungeonGetRestraintItem("ItemBreast")) clothes.Lost = true;
@@ -237,8 +237,8 @@ function KinkyDungeonDressPlayer(Character) {
 				}
 				if (clothes.Group == "ClothLower" && clothes.Skirt) {
 					if (KinkyDungeonGetRestraintItem("ItemPelvis")) clothes.Lost = true;
-					if (InventoryGroupIsBlockedForCharacter(KinkyDungeonPlayer, "ItemLegs")) clothes.Lost = true;
-					if (InventoryGroupIsBlockedForCharacter(KinkyDungeonPlayer, "ClothLower")) clothes.Lost = true;
+					if (KDGroupBlocked("ItemLegs")) clothes.Lost = true;
+					if (KDGroupBlocked("ClothLower")) clothes.Lost = true;
 				}
 				if (clothes.Group == "Shoes") {
 					if (KinkyDungeonGetRestraintItem("ItemBoots")) clothes.Lost = true;
@@ -317,8 +317,8 @@ function KinkyDungeonDressPlayer(Character) {
 		let Fluids = "";
 
 		if (KDToggles.Drool && !KinkyDungeonCanTalk()) {
-			if (SpeechGetTotalGagLevel(KinkyDungeonPlayer) > 8) Fluids = "DroolMessy";
-			else if (SpeechGetTotalGagLevel(KinkyDungeonPlayer) > 4) Fluids = "DroolMedium";
+			if (KinkyDungeonGagTotal() > 0.9) Fluids = "DroolMessy";
+			else if (KinkyDungeonGagTotal() > 0.5) Fluids = "DroolMedium";
 			else Fluids = "DroolLow";
 		}
 		if (KDToggles.Drool && KDGameData.KinkyDungeonLeashedPlayer > 0) {

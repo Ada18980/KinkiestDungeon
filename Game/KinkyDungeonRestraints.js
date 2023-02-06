@@ -893,13 +893,14 @@ function KinkyDungeonCanUseKey() {
  * @returns {boolean}
  */
 function KinkyDungeonIsHandsBound(ApplyGhost, Other) {
-	let blocked = InventoryItemHasEffect(InventoryGet(KinkyDungeonPlayer, "ItemHands"), "Block", true) || KDGroupBlocked("ItemHands");
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv).bindhands) {
-			blocked = true;
-			break;
+	let blocked = KDGroupBlocked("ItemHands");
+	if (!blocked)
+		for (let inv of KinkyDungeonAllRestraint()) {
+			if (KDRestraint(inv).bindhands) {
+				blocked = true;
+				break;
+			}
 		}
-	}
 	let help = ApplyGhost && (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp());
 	if (!Other && (!ApplyGhost || !(help)) && KinkyDungeonStatsChoice.get("Butterfingers") && KinkyDungeonIsArmsBound(ApplyGhost, Other)) return true;
 	return (!ApplyGhost || !(help)) &&
@@ -921,13 +922,14 @@ function KinkyDungeonCanUseFeet() {
  * @returns {boolean}
  */
 function KinkyDungeonIsArmsBound(ApplyGhost, Other) {
-	let blocked = InventoryItemHasEffect(InventoryGet(KinkyDungeonPlayer, "ItemArms"), "Block", true) || KDGroupBlocked("ItemArms");
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv).bindarms) {
-			blocked = true;
-			break;
+	let blocked = KDGroupBlocked("ItemArms");
+	if (!blocked)
+		for (let inv of KinkyDungeonAllRestraint()) {
+			if (KDRestraint(inv).bindarms) {
+				blocked = true;
+				break;
+			}
 		}
-	}
 	return (!ApplyGhost || !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) &&
 		blocked;
 }
@@ -1032,7 +1034,6 @@ function KinkyDungeonPickAttempt() {
 	let armsBound = KinkyDungeonIsArmsBound();
 	let strict = KinkyDungeonStrictness(false, "ItemHands");
 	if (!strict) strict = 0;
-	if (!KinkyDungeonPlayer.CanInteract()) escapeChance /= 2;
 	if (armsBound) escapeChance = Math.max(0.0, escapeChance - 0.25);
 	if (handsBound && strict < 0.5) escapeChance = Math.max(0, escapeChance - 0.5);
 	else if (strict) escapeChance = Math.max(0, escapeChance - strict);
@@ -1085,7 +1086,6 @@ function KinkyDungeonUnlockAttempt(lock) {
 	let armsBound = KinkyDungeonIsArmsBound();
 	let strict = KinkyDungeonStrictness(false, "ItemHands");
 	if (!strict) strict = 0;
-	if (!KinkyDungeonPlayer.CanInteract()) escapeChance /= 2;
 	if (armsBound) escapeChance = Math.max(0.1, escapeChance - 0.25);
 	if (handsBound && strict < 0.5) escapeChance = Math.max(0, escapeChance - 0.5);
 	else if (strict) escapeChance = Math.max(0, escapeChance - strict);

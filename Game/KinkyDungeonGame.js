@@ -3727,8 +3727,8 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	if (!KinkyDungeonCanTalk() && KDRandom() < gagchance) {
 		let msg = "KinkyDungeonGagMumble";
 		let gagMsg = Math.floor(KDRandom() * 5);
-		const GagEffect = -2 + SpeechGetGagLevel(KinkyDungeonPlayer, ["ItemMouth", "ItemMouth2", "ItemMouth3"]);
-		gagMsg += GagEffect/3;
+		const GagEffect = KinkyDungeonGagTotal() * 5;
+		gagMsg += GagEffect;
 		gagMsg = Math.max(0, Math.min(7, Math.floor(gagMsg)));
 
 		if (KDRandom() < KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax) msg = "KinkyDungeonGagMumbleAroused";

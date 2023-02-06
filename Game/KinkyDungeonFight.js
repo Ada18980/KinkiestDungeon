@@ -165,7 +165,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 
 	Object.assign(KinkyDungeonPlayerDamage, damage);
 
-	if (!KinkyDungeonPlayer.CanInteract() && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
+	if (KinkyDungeonIsArmsBound() && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
 		KinkyDungeonPlayerDamage.chance /= 2;
 	}
 	if (KinkyDungeonStatsChoice.get("Brawler") && !KinkyDungeonPlayerDamage.name) {
@@ -227,7 +227,6 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 	if (!IsSpell) {
 		if (flags.KDEvasionSight)
 			hitChance = Math.min(hitChance, Math.max(0.1, hitChance - Math.min(3, KinkyDungeonBlindLevel) * KinkyDungeonMissChancePerBlind));
-		if (flags.KDEvasionDeaf &&KinkyDungeonPlayer.IsDeaf()) hitChance *= 0.9;
 		if (flags.KDEvasionSlow && KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.name && KinkyDungeonSlowLevel > 0) hitChance *= 1.0 - Math.max(0.5, KinkyDungeonMissChancePerSlow * KinkyDungeonSlowLevel);
 	}
 	return hitChance;

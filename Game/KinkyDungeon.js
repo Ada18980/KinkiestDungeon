@@ -947,11 +947,12 @@ function KinkyDungeonRun() {
 					try {
 						let parsed = JSON.parse(decompressed);
 						if (parsed.length > 0) {
-							for (let g of parsed) {
-								InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
+							if (!StandalonePatched) {
+								for (let g of parsed) {
+									InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
+								}
+								CharacterRefresh(KinkyDungeonPlayer);
 							}
-
-							CharacterRefresh(KinkyDungeonPlayer);
 							KDOldValue = newValue;
 							KDInitProtectedGroups();
 						} else {
@@ -1195,9 +1196,7 @@ function KinkyDungeonRun() {
 				if (KDGameData.SleepTurns == 0) {
 					KinkyDungeonChangeStamina(0);
 					KinkyDungeonChangeWill(0);
-					if (CharacterItemsHavePoseAvailable(KinkyDungeonPlayer, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(KinkyDungeonPlayer, "Kneel") && KinkyDungeonPlayer.IsKneeling()) {
-						CharacterSetActivePose(KinkyDungeonPlayer, "BaseLower", false);
-					}
+					KDGameData.KneelTurns = 1;
 				}
 			} else if (KDGameData.PlaySelfTurns > 0) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
@@ -2053,7 +2052,7 @@ function KinkyDungeonHandleClick() {
 			// @ts-ignore
 			KinkyDungeonPlayer.OnlineSharedSettings = {AllowFullWardrobeAccess: true};
 			KinkyDungeonNewDress = true;
-			if (ServerURL == "foobar") {
+			if (ServerURL == "foobar" && !StandalonePatched) {
 				// Give all of the items
 				for (let A = 0; A < Asset.length; A++)
 					if ((Asset[A] != null) && (Asset[A].Group != null) && !InventoryAvailable(Player, Asset[A].Name, Asset[A].Group.Name))

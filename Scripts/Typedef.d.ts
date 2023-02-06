@@ -723,6 +723,7 @@ interface ScreenFunctions {
 //#region Characters
 
 interface Character {
+	IsKneeling(): unknown;
 	ID: number;
 	/** Only on `Player` */
 	OnlineID?: string;
@@ -756,89 +757,7 @@ interface Character {
 	WhiteList: number[];
 	HeightModifier: number;
 	MemberNumber?: number;
-	ItemPermission?: number;
-	Ownership?: Ownership;
-	Lovership?: Lovership[];
-	CanTalk: () => boolean;
-	CanWalk: () => boolean;
-	CanKneel: () => boolean;
-	CanInteract: () => boolean;
 
-	/**
-	 * Check whether a character can change its own outfit.
-	 *
-	 * @warning Only usable on Player
-	 * @returns {boolean} - TRUE if changing is possible, FALSE otherwise.
-	 */
-	CanChangeOwnClothes: () => boolean;
-
-	/**
-	 * Check whether a character can change another one's outfit.
-	 *
-	 * @param {Character} C - The character to check against.
-	 * @returns {boolean} - TRUE if changing is possible, FALSE otherwise.
-	 */
-	CanChangeClothesOn: (C: Character) => boolean;
-	IsProne: () => boolean;
-	IsRestrained: () => boolean;
-	IsBlind: () => boolean;
-	IsEnclose: () => boolean;
-	IsChaste: () => boolean;
-	IsVulvaChaste: () => boolean;
-	IsBreastChaste: () => boolean;
-	IsButtChaste: () => boolean;
-	IsEgged: () => boolean;
-	IsOwned: () => boolean;
-	IsOwnedByPlayer: () => boolean;
-	IsOwner: () => boolean;
-	IsKneeling: () => boolean;
-	IsNaked: () => boolean;
-	IsDeaf: () => boolean;
-	HasNoItem: () => boolean;
-	IsLoverOfPlayer: () => boolean;
-	GetLoversNumbers: (MembersOnly?: boolean) => (number | string)[];
-	AllowedActivePose: string[];
-	HiddenItems: any[];
-	HeightRatio: number;
-	HasHiddenItems: boolean;
-	SavedColors: HSVColor[];
-	GetBlindLevel: (eyesOnly?: boolean) => number;
-	GetBlurLevel: () => number;
-	IsLocked: () => boolean;
-	IsMounted: () => boolean;
-	IsPlugged: () => boolean;
-	IsShackled: () => boolean;
-	IsSlow: () => boolean;
-	IsMouthBlocked: () => boolean;
-	IsMouthOpen: () => boolean;
-	IsVulvaFull: () => boolean;
-	IsFixedHead: () => boolean;
-	IsOwnedByMemberNumber: (memberNumber: number) => boolean;
-	IsLover: (C: Character) => boolean;
-	IsLoverOfMemberNumber: (memberNumber: number) => boolean;
-	GetDeafLevel: () => number;
-	IsLoverPrivate: () => boolean;
-	IsEdged: () => boolean;
-	IsPlayer: () => this is PlayerCharacter;
-	IsOnline: () => boolean;
-	IsNpc: () => boolean;
-	IsSimple: () => boolean;
-	GetDifficulty: () => number;
-	IsSuspended: () => boolean;
-	IsInverted: () => boolean;
-	CanChangeToPose: (Pose: string) => boolean;
-	GetClumsiness: () => number;
-	HasEffect: (Effect: string) => boolean;
-	HasTints: () => boolean;
-	GetTints: () => RGBAColor[];
-	DrawPose?: string[];
-	DrawAppearance?: Item[];
-	AppearanceLayers?: AssetLayer[];
-	Hooks: Map<string, Map<string, any>> | null;
-	RegisterHook: (hookName: string, hookInstance: string, callback: any) => boolean | any;
-	UnregisterHook: (hookName: string, hookInstance: string) => boolean;
-	HeightRatioProportion?: number;
-	// Properties created in other places
 	ArousalSettings?: {
 		Active: string;
 		Visible: string;
@@ -1049,16 +968,6 @@ interface PlayerCharacter extends Character {
 		BlindAdjacent: boolean;
 		AllowTints: boolean;
 	};
-	LastChatRoom?: string;
-	LastChatRoomBG?: string;
-	LastChatRoomPrivate?: boolean;
-	LastChatRoomSize?: number;
-	LastChatRoomLanguage?: string;
-	LastChatRoomDesc?: string;
-	LastChatRoomAdmin?: any[];
-	LastChatRoomBan?: any[];
-	LastChatRoomBlockCategory?: string[];
-	LastChatRoomTimer?: any;
 	RestrictionSettings?: {
 		BypassStruggle: boolean;
 		SlowImmunity: boolean;
@@ -1117,7 +1026,6 @@ interface PlayerCharacter extends Character {
 	Wardrobe?: any[][];
 	WardrobeCharacterNames?: string[];
 	SavedExpressions?: ({ Group: string, CurrentExpression?: string }[] | null)[];
-	SavedColors: HSVColor[];
 	FriendList?: number[];
 	FriendNames?: Map<number, string>;
 	SubmissivesList?: Set<number>;

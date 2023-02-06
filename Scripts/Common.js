@@ -446,35 +446,7 @@ function CommonRandomItemFromList(ItemPrevious, ItemList) {
 	return NewItem;
 }
 
-/**
- * Converts a string of numbers split by commas to an array, sanitizes the array by removing all NaN or undefined elements.
- * @param {string} s - String of numbers split by commas
- * @returns {number[]} - Array of valid numbers from the given string
- */
-function CommonConvertStringToArray(s) {
-	var arr = [];
-	if (s != "") {
-		arr = s.split(',').reduce((list, curr) => {
-			if (!(!curr || Number.isNaN(Number(curr)))) list.push(Number(curr));
-			return list;
-		}, []);
-	}
-	return arr;
-}
 
-/**
- * Converts an array to a string separated by commas (equivalent of .join(","))
- * @param {Array} Arr - Array to convert to a joined string
- * @returns {string} - String of all the array items joined together
- */
-function CommonConvertArrayToString(Arr) {
-	var S = "";
-	for (let P = 0; P < Arr.length; P++) {
-		if (P != 0) S = S + ",";
-		S = S + Arr[P].toString();
-	}
-	return S;
-}
 
 /**
  * Checks whether two item colors are equal. An item color may either be a string or an array of strings.
@@ -500,92 +472,6 @@ function CommonArraysEqual(a1, a2) {
 	return a1.length === a2.length && a1.every((item, i) => item === a2[i]);
 }
 
-/**
- * Creates a debounced wrapper for the provided function with the provided wait time. The wrapped function will not be called as long as
- * the debounced function continues to be called. If the debounced function is called, and then not called again within the wait time, the
- * wrapped function will be called.
- * @param {function} func - The function to debounce
- * @returns {function} - A debounced version of the provided function
- */
-function CommonDebounce(func) {
-	let timeout, args, context, timestamp, result, wait;
-
-	function later() {
-		const last = CommonTime() - timestamp;
-		if (last >= 0 && last < wait) {
-			timeout = setTimeout(later, wait - last);
-		} else {
-			timeout = null;
-			result = func.apply(context, args);
-			context = args = null;
-		}
-	}
-
-	return function (waitInterval/*, ...args */) {
-		context = this;
-		wait = waitInterval;
-		args = Array.prototype.slice.call(arguments, 1);
-		timestamp = CommonTime();
-		if (!timeout) {
-			timeout = setTimeout(later, wait);
-		}
-		return result;
-	};
-}
-
-/**
- * Creates a throttling wrapper for the provided function with the provided wait time. If the wrapped function has been successfully called
- * within the wait time, further call attempts will be delayed until the wait time has passed.
- * @param {function} func - The function to throttle
- * @returns {function} - A throttled version of the provided function
- */
-function CommonThrottle(func) {
-	let timeout, args, context, timestamp = 0, result;
-
-	function run() {
-		timeout = null;
-		result = func.apply(context, args);
-		timestamp = CommonTime();
-	}
-
-	return function (wait/*, ...args */) {
-		context = this;
-		args = Array.prototype.slice.call(arguments, 1);
-		if (!timeout) {
-			const last = CommonTime() - timestamp;
-			if (last >= 0 && last < wait) {
-				timeout = setTimeout(run, wait - last);
-			} else {
-				run();
-			}
-		}
-		return result;
-	};
-}
-
-/**
- * Creates a wrapper for a function to limit how often it can be called. The player-defined wait interval setting determines the
- * allowed frequency. Below 100 ms the function will be throttled and above will be debounced.
- * @param {function} func - The function to limit calls of
- * @param {number} [minWait=0] - A lower bound for how long the wait interval can be, 0 by default
- * @param {number} [maxWait=1000] - An upper bound for how long the wait interval can be, 1 second by default
- * @returns {function} - A debounced or throttled version of the function
- */
-function CommonLimitFunction(func, minWait = 0, maxWait = 1000) {
-	const funcDebounced = CommonDebounce(func);
-	const funcThrottled = CommonThrottle(func);
-
-	return function () {
-		const wait = Math.min(
-			Math.max(
-				Player.GraphicsSettings ? Player.GraphicsSettings.AnimationQuality : 100, minWait
-			),
-			maxWait,
-		);
-		const args = [wait].concat(Array.from(arguments));
-		return wait < 100 ? funcThrottled.apply(this, args) : funcDebounced.apply(this, args);
-	};
-}
 
 /**
  * Creates a simple memoizer.
@@ -609,6 +495,7 @@ function CommonMemoize(func) {
 				index.push(String(arguments[i]));
 			}
 		} // for
+		// @ts-ignore
 		if (!(index in memo)) {
 			memo[index] = func.apply(this, arguments);
 		}
@@ -727,33 +614,6 @@ function CommonUnpackItemArray(arr) {
 	return res;
 }
 
-/**
- * Compares two version numbers and returns -1/0/1 if Other number is smaller/same/larger than Current one
- * @param {string} Current Current version number
- * @param {string} Other Other version number
- * @returns {-1|0|1} Comparison result
- */
-function CommonCompareVersion(Current, Other) {
-	const CurrentMatch = GameVersionFormat.exec(Current);
-	const OtherMatch = GameVersionFormat.exec(Other);
-	if (CurrentMatch == null || OtherMatch == null || isNaN(CurrentMatch[1]) || isNaN(OtherMatch[1])) return -1;
-	const CurrentVer = [
-		Number.parseInt(CurrentMatch[1]),
-		CurrentMatch[2] === "Alpha" ? 1 : CurrentMatch[2] === "Beta" ? 2 : 3,
-		Number.parseInt(CurrentMatch[3]) || 0
-	];
-	const OtherVer = [
-		Number.parseInt(OtherMatch[1]),
-		OtherMatch[2] === "Alpha" ? 1 : OtherMatch[2] === "Beta" ? 2 : 3,
-		Number.parseInt(OtherMatch[3]) || 0
-	];
-	for (let i = 0; i < 3; i++) {
-		if (CurrentVer[i] !== OtherVer[i]) {
-			return /** @type {-1|0|1} */ (Math.sign(OtherVer[i] - CurrentVer[i]));
-		}
-	}
-	return 0;
-}
 
 /**
  * A simple deep equality check function which checks whether two objects are equal. The function traverses recursively
@@ -812,24 +672,6 @@ function CommonArrayConcatDedupe(dest, src) {
 		}
 	}
 	return dest;
-}
-
-/**
- * Common function for removing a padlock from an item and publishing a corresponding chat message (must be called with
- * the item's group focused)
- * @param {Character} C - The character on whom the item is equipped
- * @param {Item} Item - The item to unlock
- * @returns {void} - Nothing
- */
-function CommonPadlockUnlock(C, Item) {
-	for (let A = 0; A < C.Appearance.length; A++) {
-		if (C.Appearance[A].Asset.Group.Name === C.FocusGroup.Name) {
-			C.Appearance[A] = Item;
-			break;
-		}
-	}
-	InventoryUnlock(C, C.FocusGroup.Name);
-	ChatRoomPublishAction(C, Item, null, true, "ActionUnlock");
 }
 
 /**

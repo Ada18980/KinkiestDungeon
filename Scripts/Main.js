@@ -8,6 +8,10 @@ const _CharacterAppearanceSetDefault = CharacterAppearanceSetDefault;
 const _CharacterLoadCanvas = CharacterLoadCanvas;
 const _CharacterRefresh = CharacterRefresh;
 
+function AssetGet(arg1, arg2, arg3) {
+	return undefined;
+}
+
 function suppressCanvasUpdate(fn) {
 	let ret = fn();
 	return ret;

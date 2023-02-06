@@ -1019,7 +1019,7 @@ function KinkyDungeonUpdateStats(delta) {
 	if (KinkyDungeonBlindLevel > 0 && KinkyDungeonStatsChoice.has("Unmasked")) KinkyDungeonBlindLevel += 1;
 	if (KinkyDungeonStatBlind > 0) KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel, 6);
 	//if (KinkyDungeonStatStamina < 2) KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel, Math.round(6 - 3*KinkyDungeonStatStamina));
-	KinkyDungeonDeaf = KinkyDungeonPlayer.IsDeaf();
+	KinkyDungeonDeaf = false;//KinkyDungeonPlayer.IsDeaf();
 
 	// Unarmed damage calc
 	KinkyDungeonPlayerDamage = KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
