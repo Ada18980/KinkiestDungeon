@@ -22,7 +22,7 @@ let PoseProperties = {
 		global_default: "Kneel",
 		mods: [{
 			Layer: "Head",
-			rotation: 60,
+			rotation: 30,
 			rotation_x_anchor: 1190/MODELWIDTH,
 			rotation_y_anchor: 690/MODELHEIGHT,
 			offset_x: 1190/MODELWIDTH,

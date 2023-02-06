@@ -513,33 +513,7 @@ let KDLastKeyTime = {
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
 
-	if (KDCurrentModels)
-		for (let MC of KDCurrentModels.values()) {
 
-
-			// Cull containers that werent drawn this turn
-			for (let Container of MC.Containers.entries()) {
-				// Cull sprites that weren't drawn yet
-				for (let sprite of Container[1].SpriteList.entries()) {
-					if ((!Container[1].SpritesDrawn.has(sprite[0]) && sprite[1]) || !MC.ContainersDrawn.has(Container[0])) {
-						sprite[1].parent.removeChild(sprite[1]);
-						Container[1].SpriteList.delete(sprite[0]);
-						sprite[1].destroy();
-					}
-				}
-				Container[1].SpritesDrawn.clear();
-
-
-				if (!MC.ContainersDrawn.has(Container[0]) && Container[1]) {
-					Container[1].Container.parent.removeChild(Container[1]);
-					MC.Containers.delete(Container[0]);
-					Container[1].Container.destroy();
-				}
-			}
-
-
-			MC.ContainersDrawn.clear();
-		}
 
 	if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
 		if (KinkyDungeonKeybindingCurrentKey)
