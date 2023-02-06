@@ -31,7 +31,7 @@ sudo npm install -g guesslanguage
 Including this library for use in a Node.js project can then be done as follows:
 
 ```javascript
-var guessLanguage = require('./lib/guessLanguage');
+let guessLanguage = require('./lib/guessLanguage');
 // See the API section for usage
 ```
 

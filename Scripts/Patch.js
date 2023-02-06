@@ -10,38 +10,38 @@ let ArcadeDeviousChallenge = false;
 let ChatRoomChatLog = [];
 let ChatRoomCharacter = null;
 
-var DialogText = "";
-var DialogTextDefault = "";
-var DialogTextDefaultTimer = -1;
-var StruggleProgress = -1;
-var DialogColor = null;
-var DialogExpressionColor = null;
-var DialogColorSelect = null;
-var DialogPreviousCharacterData = {};
-var DialogInventory = [];
-var DialogInventoryOffset = 0;
+let DialogText = "";
+let DialogTextDefault = "";
+let DialogTextDefaultTimer = -1;
+let StruggleProgress = -1;
+let DialogColor = null;
+let DialogExpressionColor = null;
+let DialogColorSelect = null;
+let DialogPreviousCharacterData = {};
+let DialogInventory = [];
+let DialogInventoryOffset = 0;
 /** @type {Item|null} */
-var DialogFocusItem = null;
+let DialogFocusItem = null;
 /** @type {Item|null} */
-var DialogFocusSourceItem = null;
-var DialogFocusItemColorizationRedrawTimer = null;
+let DialogFocusSourceItem = null;
+let DialogFocusItemColorizationRedrawTimer = null;
 /** @type {string[]} */
-var DialogMenuButton = [];
-var DialogItemToLock = null;
-var DialogAllowBlush = false;
-var DialogAllowEyebrows = false;
-var DialogAllowFluids = false;
-var DialogFacialExpressions = [];
-var DialogFacialExpressionsSelected = -1;
-var DialogFacialExpressionsSelectedBlindnessLevel = 2;
-var DialogSavedExpressionPreviews = [];
+let DialogMenuButton = [];
+let DialogItemToLock = null;
+let DialogAllowBlush = false;
+let DialogAllowEyebrows = false;
+let DialogAllowFluids = false;
+let DialogFacialExpressions = [];
+let DialogFacialExpressionsSelected = -1;
+let DialogFacialExpressionsSelectedBlindnessLevel = 2;
+let DialogSavedExpressionPreviews = [];
 /** @type {Pose[][]} */
-var DialogActivePoses = [];
-var DialogItemPermissionMode = false;
-var DialogExtendedMessage = "";
-var DialogActivityMode = false;
+let DialogActivePoses = [];
+let DialogItemPermissionMode = false;
+let DialogExtendedMessage = "";
+let DialogActivityMode = false;
 /** @type {Record<"Enabled" | "Equipped" | "BothFavoriteUsable" | "TargetFavoriteUsable" | "PlayerFavoriteUsable" | "Usable" | "TargetFavoriteUnusable" | "PlayerFavoriteUnusable" | "Unusable" | "Blocked", DialogSortOrder>} */
-var DialogSortOrder = {
+let DialogSortOrder = {
 	Enabled: 1,
 	Equipped: 2,
 	BothFavoriteUsable: 3,
@@ -53,18 +53,18 @@ var DialogSortOrder = {
 	Unusable: 9,
 	Blocked: 10
 };
-var DialogSelfMenuSelected = null;
-var DialogLeaveDueToItem = false; // This allows dynamic items to call DialogLeave() without crashing the game
-var DialogLockMenu = false;
-var DialogLentLockpicks = false;
-var DialogGamingPreviousRoom = "";
-var DialogGamingPreviousModule = "";
-var DialogButtonDisabledTester = /Disabled(For\w+)?$/u;
+let DialogSelfMenuSelected = null;
+let DialogLeaveDueToItem = false; // This allows dynamic items to call DialogLeave() without crashing the game
+let DialogLockMenu = false;
+let DialogLentLockpicks = false;
+let DialogGamingPreviousRoom = "";
+let DialogGamingPreviousModule = "";
+let DialogButtonDisabledTester = /Disabled(For\w+)?$/u;
 
 /** @type {Map<string, string>} */
-var PlayerDialog = new Map();
+let PlayerDialog = new Map();
 
-var DialogFavoriteStateDetails = [];
+let DialogFavoriteStateDetails = [];
 
 
 function DialogCanUnlock() {
@@ -82,7 +82,7 @@ function CheatFactor() {
  * @returns {object} Expression - The expresssion of a character
  */
 function WardrobeGetExpression(C) {
-	var characterExpression = {};
+	let characterExpression = {};
 	ServerAppearanceBundle(C.Appearance).filter(item => item.Property != null && item.Property.Expression != null).forEach(item => characterExpression[item.Group] = item.Property.Expression);
 	return characterExpression;
 }
@@ -209,7 +209,7 @@ function DialogLeaveFocusItem() {
 			ExtendedItemExit();
 		}
 
-		var funcName = "Inventory" + DialogFocusItem.Asset.Group.Name + DialogFocusItem.Asset.Name + "Exit";
+		let funcName = "Inventory" + DialogFocusItem.Asset.Group.Name + DialogFocusItem.Asset.Name + "Exit";
 		if (typeof window[funcName] === "function") {
 			window[funcName]();
 			DialogFocusItem = null;

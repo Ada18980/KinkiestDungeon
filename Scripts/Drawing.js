@@ -10,10 +10,9 @@ let TempCanvas;
 let ColorCanvas;
 /** @type {CanvasRenderingContext2D} */
 let CharacterCanvas;
-var DialogLeaveDueToItem = false;
 
-var BlindFlash = false;
-var DrawingBlindFlashTimer = 0;
+let BlindFlash = false;
+let DrawingBlindFlashTimer = 0;
 
 // A bank of all the chached images
 /** @type {Map<string, HTMLImageElement>} */
@@ -22,25 +21,25 @@ let DrawCacheLoadedImages = 0;
 let DrawCacheTotalImages = 0;
 
 // Last dark factor for blindflash
-var DrawLastDarkFactor = 0;
+let DrawLastDarkFactor = 0;
 
 /**
  * A list of the characters that are drawn every frame
  * @type {Character[]}
  */
-var DrawLastCharacters = [];
+let DrawLastCharacters = [];
 
 /**
  * A list of elements to draw at the end of the drawing process.
  * Mostly used for hovering button labels.
  * @type {Function[]}
  */
-var DrawHoverElements = [];
+let DrawHoverElements = [];
 
 /**
  * The last canvas position in format `[left, top, width, height]`
  */
-var DrawCanvasPosition = [0, 0, 0, 0];
+let DrawCanvasPosition = [0, 0, 0, 0];
 
 /**
  * Converts a hex color string to a RGB color

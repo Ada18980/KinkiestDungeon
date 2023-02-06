@@ -478,7 +478,7 @@ function KDDrawEditorUI() {
 	}, true, 1600, 130, 350, 64, "Resize (Clears all)", "#ffffff", "");
 
 	DrawButtonKDEx("CopyClip", () => {
-		var text = JSON.stringify(KDMapTilesListEditor);
+		let text = JSON.stringify(KDMapTilesListEditor);
 		navigator.clipboard.writeText(text).then(function() {
 			console.log('Async: Copying to clipboard was successful!');
 			console.log(KDMapTilesListEditor);
@@ -563,7 +563,7 @@ function KDDrawEditorUI() {
 	}, true, 1250, 950, 175, 45, "Load tile from Clipboard", "#ffffff", "");
 
 	DrawButtonKDEx("MakeTileCB", () => {
-		var text = JSON.stringify(KDTE_ExportTile());
+		let text = JSON.stringify(KDTE_ExportTile());
 		navigator.clipboard.writeText(text).then(function() {
 			console.log('Async: Copying to clipboard was successful!');
 		}, function(err) {

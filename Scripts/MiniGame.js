@@ -1,6 +1,7 @@
 "use strict";
-var MiniGameAdvancedPayment = 0;
-var MiniGameReturnFunction = "";
+let MiniGameAdvancedPayment = 0;
+let MiniGameReturnFunction = "";
+let MiniGameVictory = false;
 
 /**
  * Starts a given mini game at a set difficulty and keeps

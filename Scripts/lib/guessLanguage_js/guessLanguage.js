@@ -33,23 +33,23 @@
  */
 
 /** @type {function ()} */
-var guessLanguage = null;
+let guessLanguage = null;
 
 (function (global, undefined) {
 
 	guessLanguage = function () {
 
-		var models = global._languageData || {};
+		let models = global._languageData || {};
 
 		if (typeof module === "object" && module.exports === global) {
 			models = require('./_languageData') || {};
 		}
 
-		var MAX_LENGTH = 4096;
-		var MIN_LENGTH = 20;
-		var MAX_GRAMS = 300;
+		let MAX_LENGTH = 4096;
+		let MIN_LENGTH = 20;
+		let MAX_GRAMS = 300;
 
-		var NAME_MAP = {
+		let NAME_MAP = {
 			"ab": "Abkhazian",
 			"af": "Afrikaans",
 			"ar": "Arabic",
@@ -149,7 +149,7 @@ var guessLanguage = null;
 			"zu": "Zulu"
 		};
 
-		var IANA_MAP = {
+		let IANA_MAP = {
 			"ab": 12026,
 			"af": 40,
 			"ar": 26020,
@@ -240,7 +240,7 @@ var guessLanguage = null;
 			"zh-TW": 22
 		};
 
-		var SINGLETONS = [
+		let SINGLETONS = [
 			["Armenian", "hy"],
 			["Hebrew", "he"],
 			["Bengali", "bn"],
@@ -263,18 +263,18 @@ var guessLanguage = null;
 			["Pahawh Hmong", "hmn"]
 		];
 
-		var UNKNOWN = 'unknown';
+		let UNKNOWN = 'unknown';
 
-		var BASIC_LATIN = ["en", "ceb", "ha", "so", "tlh", "id", "haw", "la", "sw", "eu", "nr", "nso", "zu", "xh", "ss", "st", "tn", "ts"];
-		var EXTENDED_LATIN = ["cs", "af", "pl", "hr", "ro", "sk", "sl", "tr", "hu", "az", "et", "sq", "ca", "es", "fr", "de", "nl", "it", "da", "is", "no", "sv", "fi", "lv", "pt", "ve", "lt", "tl", "cy", "vi"];
-		var ALL_LATIN = BASIC_LATIN.concat(EXTENDED_LATIN);
-		var CYRILLIC = ["ru", "uk", "kk", "uz", "mn", "sr", "mk", "bg", "ky"];
-		var ARABIC = ["ar", "fa", "ps", "ur"];
-		var DEVANAGARI = ["hi", "ne"];
-		var PT = ["pt-BR", "pt-PT"];
+		let BASIC_LATIN = ["en", "ceb", "ha", "so", "tlh", "id", "haw", "la", "sw", "eu", "nr", "nso", "zu", "xh", "ss", "st", "tn", "ts"];
+		let EXTENDED_LATIN = ["cs", "af", "pl", "hr", "ro", "sk", "sl", "tr", "hu", "az", "et", "sq", "ca", "es", "fr", "de", "nl", "it", "da", "is", "no", "sv", "fi", "lv", "pt", "ve", "lt", "tl", "cy", "vi"];
+		let ALL_LATIN = BASIC_LATIN.concat(EXTENDED_LATIN);
+		let CYRILLIC = ["ru", "uk", "kk", "uz", "mn", "sr", "mk", "bg", "ky"];
+		let ARABIC = ["ar", "fa", "ps", "ur"];
+		let DEVANAGARI = ["hi", "ne"];
+		let PT = ["pt-BR", "pt-PT"];
 
 		// Unicode char greedy regex block range matchers
-		var unicodeBlockTests = {
+		let unicodeBlockTests = {
 			"Basic Latin": /[\u0000-\u007F]/g,
 			"Latin-1 Supplement": /[\u0080-\u00FF]/g,
 			"Latin Extended-A": /[\u0100-\u017F]/g,
@@ -406,17 +406,17 @@ var guessLanguage = null;
 
 		function findRuns(text) {
 
-			var relevantRuns = {};
+			let relevantRuns = {};
 
-			for (var key in unicodeBlockTests) {
+			for (let key in unicodeBlockTests) {
 
 				// Count the number of characters in each character block.
-				var charCount = text.match(unicodeBlockTests[key]);
+				let charCount = text.match(unicodeBlockTests[key]);
 
 				// return run types that used for 40% or more of the string
 				// always return basic latin if found more than 15%
 				// and extended additional latin if over 10% (for Vietnamese)
-				var pct = (charCount ? charCount.length : 0) / text.length;
+				let pct = (charCount ? charCount.length : 0) / text.length;
 
 				relevantRuns[key] = pct;
 
@@ -427,7 +427,7 @@ var guessLanguage = null;
 
 		function identify(text) {
 
-			var scripts = findRuns(text);
+			let scripts = findRuns(text);
 
 			// Identify the language.
 			if (scripts["Hangul Syllables"] + scripts["Hangul Jamo"] + scripts["Hangul Compatibility Jamo"] >= 0.4) {
@@ -466,7 +466,7 @@ var guessLanguage = null;
 			}
 
 			// Try languages with unique scripts
-			for (var i = 0, l = SINGLETONS.length; i < l; i++) {
+			for (let i = 0, l = SINGLETONS.length; i < l; i++) {
 				if (scripts[SINGLETONS[i][0]] >= 0.4) {
 					// callback.apply(undefined, [SINGLETONS[i][1]]);
 					return SINGLETONS[i][1];
@@ -482,7 +482,7 @@ var guessLanguage = null;
 				// 		callback.apply(undefined, [latinLang]);
 				// 	}
 				// });
-				var latinLang = check(text, EXTENDED_LATIN);
+				let latinLang = check(text, EXTENDED_LATIN);
 				if (latinLang === "pt") {
 					return check(text, PT);
 				} else {
@@ -507,13 +507,13 @@ var guessLanguage = null;
 		// 		return;
 		// 	}
 		//
-		// 	var scores = {};
-		// 	var model = createOrderedModel(sample);
-		// 	for (var i = 0, l = langs.length; i < l; i++) {
+		// 	let scores = {};
+		// 	let model = createOrderedModel(sample);
+		// 	for (let i = 0, l = langs.length; i < l; i++) {
 		//
-		// 		var lkey = langs[i].toLowerCase();
+		// 		let lkey = langs[i].toLowerCase();
 		//
-		// 		var knownModel = createKnownModel(lkey) || null;
+		// 		let knownModel = createKnownModel(lkey) || null;
 		//
 		// 		if (!knownModel) {
 		// 			continue;
@@ -523,8 +523,8 @@ var guessLanguage = null;
 		//
 		// 	}
 		//
-		// 	var scoresArr = [];
-		// 	for (var index in scores) {
+		// 	let scoresArr = [];
+		// 	for (let index in scores) {
 		// 		scoresArr.push([index, scores[index]]);
 		// 	}
 		//
@@ -534,7 +534,7 @@ var guessLanguage = null;
 		// 	}
 		//
 		// 	// we want the lowest score, less distance = greater chance of match
-		// 	var sortedScores = scoresArr.sort(function (objA, objB) {
+		// 	let sortedScores = scoresArr.sort(function (objA, objB) {
 		// 		return objA[1] - objB[1]; // sort low-to-high
 		// 	});
 		//
@@ -548,13 +548,13 @@ var guessLanguage = null;
 				return UNKNOWN;
 			}
 
-			var scores = {};
-			var model = createOrderedModel(sample);
-			for (var i = 0, l = langs.length; i < l; i++) {
+			let scores = {};
+			let model = createOrderedModel(sample);
+			for (let i = 0, l = langs.length; i < l; i++) {
 
-				var lkey = langs[i].toLowerCase();
+				let lkey = langs[i].toLowerCase();
 
-				var knownModel = createKnownModel(lkey) || null;
+				let knownModel = createKnownModel(lkey) || null;
 
 				if (!knownModel) {
 					continue;
@@ -564,8 +564,8 @@ var guessLanguage = null;
 
 			}
 
-			var scoresArr = [];
-			for (var index in scores) {
+			let scoresArr = [];
+			for (let index in scores) {
 				scoresArr.push([index, scores[index]]);
 			}
 
@@ -575,7 +575,7 @@ var guessLanguage = null;
 			}
 
 			// we want the lowest score, less distance = greater chance of match
-			var sortedScores = scoresArr.sort(function (objA, objB) {
+			let sortedScores = scoresArr.sort(function (objA, objB) {
 				return objA[1] - objB[1]; // sort low-to-high
 			});
 
@@ -586,13 +586,13 @@ var guessLanguage = null;
 
 		function createOrderedModel(content) {
 			// Create a list of trigrams in content sorted by frequency.
-			var trigrams = {},
+			let trigrams = {},
 				sortedTrigrams = [];
-			var content = content.toLowerCase();
+			content = content.toLowerCase();
 
-			var contentArr = content.split("");
-			for (var i = 0, l = contentArr.length - 2; i < l; i++) {
-				var trigramKey = contentArr[i] + contentArr[i + 1] + contentArr[i + 2] + "";
+			let contentArr = content.split("");
+			for (let i = 0, l = contentArr.length - 2; i < l; i++) {
+				let trigramKey = contentArr[i] + contentArr[i + 1] + contentArr[i + 2] + "";
 				if (!trigrams[trigramKey]) {
 					trigrams[trigramKey] = 1;
 				} else {
@@ -601,7 +601,7 @@ var guessLanguage = null;
 			}
 
 			// convert object to array
-			for (var i in trigrams) {
+			for (let i in trigrams) {
 				sortedTrigrams[sortedTrigrams.length] = [i, trigrams[i]];
 			}
 
@@ -611,7 +611,7 @@ var guessLanguage = null;
 			});
 		}
 
-		var knownModelCache = {};
+		let knownModelCache = {};
 
 		function createKnownModel(key) {
 			// Check if known model has been pre-computed in cache
@@ -619,16 +619,16 @@ var guessLanguage = null;
 				return knownModelCache[key];
 			}
 
-			var data = models[key];
+			let data = models[key];
 			if (!data) {
 				return {};
 			}
 
 			// Extract known trigram model data
-			var dataArr = data.match(/([\s\S]{1,3})/g);
+			let dataArr = data.match(/([\s\S]{1,3})/g);
 			// Contruct known trigram object based on provided raw data
-			var knownModel = {};
-			for (var i = 0, l = dataArr.length; i < l; i++) {
+			let knownModel = {};
+			for (let i = 0, l = dataArr.length; i < l; i++) {
 				knownModel[dataArr[i]] = i;
 			}
 
@@ -640,9 +640,9 @@ var guessLanguage = null;
 
 		function distance(model, knownModel) {
 			// Calculate the distance to the known model.
-			var dist = 0;
+			let dist = 0;
 
-			for (var i = 0, l = model.length; i < l; i++) {
+			for (let i = 0, l = model.length; i < l; i++) {
 
 				if (knownModel[model[i][0]]) {
 
@@ -686,7 +686,7 @@ var guessLanguage = null;
 				// 	]);
 				// });
 
-				var language = this.detect(text);
+				let language = this.detect(text);
 				if (language === UNKNOWN) {
 					return [UNKNOWN, UNKNOWN, UNKNOWN];
 				}
@@ -707,7 +707,7 @@ var guessLanguage = null;
 				// 	]);
 				// });
 
-				var language = this.detect(text);
+				let language = this.detect(text);
 				if (language === UNKNOWN) {
 					return [-1];
 				}
@@ -727,7 +727,7 @@ var guessLanguage = null;
 				// 	]);
 				// });
 
-				var language = this.detect(text);
+				let language = this.detect(text);
 				if (language === UNKNOWN) {
 					return UNKNOWN;
 				}

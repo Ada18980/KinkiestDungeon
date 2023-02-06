@@ -2,10 +2,10 @@
 "use strict";
 
 /** @type {Asset[]} */
-var Asset = [];
+let Asset = [];
 /** @type {AssetGroup[]} */
-var AssetGroup = [];
+let AssetGroup = [];
 /** @type {Map<string, AssetGroup>} */
-var AssetGroupMap = new Map();
+let AssetGroupMap = new Map();
 /** @type {Pose[]} */
-var Pose = [];
+let Pose = [];

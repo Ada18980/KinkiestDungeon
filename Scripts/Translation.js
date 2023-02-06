@@ -1,12 +1,12 @@
 "use strict";
-var TranslationLanguage = "EN";
-var TranslationCache = {};
+let TranslationLanguage = "EN";
+let TranslationCache = {};
 
 /**
  * Dictionary for all supported languages and their files
  * @constant
  */
-var TranslationDictionary = [
+let TranslationDictionary = [
 
 	{
 		LanguageCode: "EN",
@@ -73,7 +73,7 @@ var TranslationDictionary = [
  * @returns {boolean} - Returns TRUE if a translation is available for the given file
  */
 function TranslationAvailable(FullPath) {
-	var FileName = FullPath.trim().toUpperCase();
+	let FileName = FullPath.trim().toUpperCase();
 	for (let L = 0; L < TranslationDictionary.length; L++)
 		if (TranslationDictionary[L].LanguageCode == TranslationLanguage)
 			for (let F = 0; F < TranslationDictionary[L].Files.length; F++)
@@ -218,9 +218,9 @@ function TranslationDialog(C) {
 	// If we play in a foreign language
 	if ((TranslationLanguage != null) && (TranslationLanguage.trim() != "") && (TranslationLanguage.trim().toUpperCase() != "EN")) {
 
-		var OnlinePlayer = C.AccountName.indexOf("Online-") >= 0;
+		let OnlinePlayer = C.AccountName.indexOf("Online-") >= 0;
 		// Finds the full path of the translation file to use
-		var FullPath = (OnlinePlayer ? "Screens/Online/ChatRoom/Dialog_Online" :  (C.ID == 0) ? "Screens/Character/Player/Dialog_Player" : "Screens/" + CurrentModule + "/" + CurrentScreen + "/Dialog_" + C.AccountName) + "_" + TranslationLanguage + ".txt";
+		let FullPath = (OnlinePlayer ? "Screens/Online/ChatRoom/Dialog_Online" :  (C.ID == 0) ? "Screens/Character/Player/Dialog_Player" : "Screens/" + CurrentModule + "/" + CurrentScreen + "/Dialog_" + C.AccountName) + "_" + TranslationLanguage + ".txt";
 
 		// If the translation file is already loaded, we translate from it
 		if (TranslationCache[FullPath]) {
@@ -251,7 +251,7 @@ function TranslationText(Text) {
 	if ((TranslationLanguage != null) && (TranslationLanguage.trim() != "") && (TranslationLanguage.trim().toUpperCase() != "EN")) {
 
 		// Finds the full path of the translation file to use
-		var FullPath = "Screens/" + CurrentModule + "/" + CurrentScreen + "/Text_" + CurrentScreen + "_" + TranslationLanguage + ".txt";
+		let FullPath = "Screens/" + CurrentModule + "/" + CurrentScreen + "/Text_" + CurrentScreen + "_" + TranslationLanguage + ".txt";
 
 		// If the translation file is already loaded, we translate from it
 		if (TranslationCache[FullPath]) {
@@ -295,7 +295,7 @@ function TranslationAsset(Family) {
 	if ((TranslationLanguage != null) && (TranslationLanguage.trim() != "") && (TranslationLanguage.trim().toUpperCase() != "EN")) {
 
 		// Finds the full path of the translation file to use
-		var FullPath = "Assets/" + Family + "/" + Family + "_" + TranslationLanguage + ".txt";
+		let FullPath = "Assets/" + Family + "/" + Family + "_" + TranslationLanguage + ".txt";
 
 		// If the translation file is already loaded, we translate from it
 		if (TranslationCache[FullPath]) {
@@ -337,6 +337,6 @@ function TranslationNextLanguage() {
  * @returns {void} - Nothing
  */
 function TranslationLoad() {
-	var L = localStorage.getItem("BondageClubLanguage");
+	let L = localStorage.getItem("BondageClubLanguage");
 	if (L != null) TranslationLanguage = L;
 }

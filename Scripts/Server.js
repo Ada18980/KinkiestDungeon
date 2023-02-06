@@ -1,5 +1,5 @@
 "use strict";
-var ServerURL = "http://localhost:4288";
+let ServerURL = "http://localhost:4288";
 
 /**
  * Returns whether the player is currently in a chatroom or viewing a subscreen while in a chatroom
@@ -20,9 +20,9 @@ function ServerSend(Message, Data) {
  * @returns {AppearanceBundle} - The appearance bundle created from the given appearance array
  */
 function ServerAppearanceBundle(Appearance) {
-	var Bundle = [];
+	let Bundle = [];
 	for (let A = 0; A < Appearance.length; A++) {
-		var N = {};
+		let N = {};
 		N.Group = Appearance[A].Asset.Group.Name;
 		N.Name = Appearance[A].Asset.Name;
 		if ((Appearance[A].Color != null) && (Appearance[A].Color != "Default")) N.Color = Appearance[A].Color;

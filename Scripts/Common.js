@@ -1,26 +1,26 @@
 // Main variables
 "use strict";
 /** @type {PlayerCharacter} */
-var Player;
+let Player;
 /** @type {number|string} */
-var KeyPress = "";
-var CurrentModule;
+let KeyPress = "";
+let CurrentModule;
 /** @type {string} */
-var CurrentScreen;
+let CurrentScreen;
 /** @type {Character|NPCCharacter|null} */
-var CurrentCharacter = null;
-var CurrentOnlinePlayers = 0;
-var CurrentDarkFactor = 1.0;
-var CommonIsMobile = false;
+let CurrentCharacter = null;
+let CurrentOnlinePlayers = 0;
+let CurrentDarkFactor = 1.0;
+let CommonIsMobile = false;
 /** @type {Record<string, string[][]>} */
-var CommonCSVCache = {};
-var CutsceneStage = 0;
+let CommonCSVCache = {};
+let CutsceneStage = 0;
 
-var CommonPhotoMode = false;
-var GameVersion = "R0";
+let CommonPhotoMode = false;
+let GameVersion = "R0";
 const GameVersionFormat = /^R([0-9]+)(?:(Alpha|Beta)([0-9]+)?)?$/;
-var CommonVersionUpdated = false;
-var CommonTouchList = null;
+let CommonVersionUpdated = false;
+let CommonTouchList = null;
 
 /**
  * An enum encapsulating possible chatroom message substitution tags. Character name substitution tags are interpreted
@@ -84,13 +84,13 @@ function CommonIsNumeric(n) {
  * @returns {string} - Returns the current date and time in a yyyy-mm-dd hh:mm:ss format
  */
 function CommonGetFormatDate() {
-	var d = new Date();
-	var yyyy = d.getFullYear();
-	var mm = d.getMonth() < 9 ? "0" + (d.getMonth() + 1) : (d.getMonth() + 1); // getMonth() is zero-based
-	var dd = d.getDate() < 10 ? "0" + d.getDate() : d.getDate();
-	var hh = d.getHours() < 10 ? "0" + d.getHours() : d.getHours();
-	var min = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
-	var ss = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds();
+	let d = new Date();
+	let yyyy = d.getFullYear();
+	let mm = d.getMonth() < 9 ? "0" + (d.getMonth() + 1) : (d.getMonth() + 1); // getMonth() is zero-based
+	let dd = d.getDate() < 10 ? "0" + d.getDate() : d.getDate();
+	let hh = d.getHours() < 10 ? "0" + d.getHours() : d.getHours();
+	let min = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+	let ss = d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds();
 	return `${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
 }
 
@@ -101,7 +101,7 @@ function CommonGetFormatDate() {
 function CommonDetectMobile() {
 
 	// First check
-	var mobile = ['iphone', 'ipad', 'android', 'blackberry', 'nokia', 'opera mini', 'windows mobile', 'windows phone', 'iemobile', 'mobile/', 'webos', 'kindle'];
+	let mobile = ['iphone', 'ipad', 'android', 'blackberry', 'nokia', 'opera mini', 'windows mobile', 'windows phone', 'iemobile', 'mobile/', 'webos', 'kindle'];
 	for (let i in mobile) if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0) return true;
 
 	// IPad pro check
@@ -121,7 +121,7 @@ function CommonDetectMobile() {
  * @returns {{Name: string, Version: string}} - Browser info
  */
 function CommonGetBrowser() {
-	var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+	let ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
 	if (/trident/i.test(M[1])) {
 		tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
 		return { Name: "IE", Version: (tem[1] || "N/A") };
@@ -142,16 +142,16 @@ function CommonGetBrowser() {
  */
 function CommonParseCSV(str) {
 	/** @type {string[][]} */
-	var arr = [];
-	var quote = false;  // true means we're inside a quoted field
-	var c;
-	var col;
+	let arr = [];
+	let quote = false;  // true means we're inside a quoted field
+	let c;
+	let col;
 	// We remove whitespace on start and end
 	str = str.replace(/\r\n/g, '\n').trim();
 
 	// iterate over each character, keep track of current row and column (of the returned array)
 	for (let row = col = c = 0; c < str.length; c++) {
-		var cc = str[c], nc = str[c + 1];        // current character, next character
+		let cc = str[c], nc = str[c + 1];        // current character, next character
 		arr[row] = arr[row] || [];             // create a new row if necessary
 		arr[row][col] = arr[row][col] || '';   // create a new column (start with empty string) if necessary
 
@@ -188,7 +188,7 @@ function CommonReadCSV(Array, Path, Screen, File) {
 
 	// Changed from a single path to various arguments and internally concatenate them
 	// This ternary operator is used to keep backward compatibility
-	var FullPath = "Screens/" + Path + "/" + Screen + "/" + File + ".csv";
+	let FullPath = "Screens/" + Path + "/" + Screen + "/" + File + ".csv";
 	if (CommonCSVCache[FullPath]) {
 		window[Array] = CommonCSVCache[FullPath];
 		return;
@@ -203,7 +203,7 @@ function CommonReadCSV(Array, Path, Screen, File) {
 	});
 
 	// If a translation file is available, we open the txt file and keep it in cache
-	var TranslationPath = FullPath.replace(".csv", "_" + TranslationLanguage + ".txt");
+	let TranslationPath = FullPath.replace(".csv", "_" + TranslationLanguage + ".txt");
 	if (TranslationAvailable(TranslationPath))
 		CommonGet(TranslationPath, function () {
 			if (this.status == 200) TranslationCache[TranslationPath] = TranslationParseTXT(this.responseText);
@@ -219,7 +219,7 @@ function CommonReadCSV(Array, Path, Screen, File) {
  * @returns {void} - Nothing
  */
 function CommonGet(Path, Callback, RetriesLeft) {
-	var xhr = new XMLHttpRequest();
+	let xhr = new XMLHttpRequest();
 	xhr.open("GET", Path);
 	xhr.onloadend = function() {
 		// For non-error responses, call the callback
@@ -310,17 +310,17 @@ function CommonDynamicFunction(FunctionName) {
 function CommonDynamicFunctionParams(FunctionName) {
 
 	// Gets the reverse (!) sign
-	var Reverse = false;
+	let Reverse = false;
 	if (FunctionName.substring(0, 1) == "!") Reverse = true;
 	FunctionName = FunctionName.replace("!", "");
 
 	// Gets the real function name and parameters
-	var ParamCount = 1;
+	let ParamCount = 1;
 	if (FunctionName.indexOf("()") >= 0) ParamCount = 0;
 	else ParamCount = FunctionName.split(",").length;
-	var openParenthesisIndex = FunctionName.indexOf("(");
-	var closedParenthesisIndex = FunctionName.indexOf(")", openParenthesisIndex);
-	var Params = FunctionName.substring(openParenthesisIndex + 1, closedParenthesisIndex).split(",");
+	let openParenthesisIndex = FunctionName.indexOf("(");
+	let closedParenthesisIndex = FunctionName.indexOf(")", openParenthesisIndex);
+	let Params = FunctionName.substring(openParenthesisIndex + 1, closedParenthesisIndex).split(",");
 	for (let P = 0; P < Params.length; P++)
 		Params[P] = Params[P].trim().replace('"', '').replace('"', '');
 	FunctionName = FunctionName.substring(0, openParenthesisIndex);
@@ -330,7 +330,7 @@ function CommonDynamicFunctionParams(FunctionName) {
 	if (typeof window[FunctionName] === "function") {
 
 		// Launches the function with the params and returns the result
-		var Result = true;
+		let Result = true;
 		if (ParamCount == 0) Result = window[FunctionName]();
 		if (ParamCount == 1) Result = window[FunctionName](Params[0]);
 		if (ParamCount == 2) Result = window[FunctionName](Params[0], Params[1]);
@@ -359,9 +359,9 @@ function CommonDynamicFunctionParams(FunctionName) {
  * @returns {any} - returns the result of the function call, or undefined if the function name isn't valid
  */
 function CommonCallFunctionByName(FunctionName/*, ...args */) {
-	var Function = window[FunctionName];
+	let Function = window[FunctionName];
 	if (typeof Function === "function") {
-		var args = Array.prototype.slice.call(arguments, 1);
+		let args = Array.prototype.slice.call(arguments, 1);
 		return Function.apply(null, args);
 	}
 }
@@ -373,9 +373,9 @@ function CommonCallFunctionByName(FunctionName/*, ...args */) {
  * @returns {any} - returns the result of the function call, or undefined if the function name isn't valid
  */
 function CommonCallFunctionByNameWarn(FunctionName/*, ...args */) {
-	var Function = window[FunctionName];
+	let Function = window[FunctionName];
 	if (typeof Function === "function") {
-		var args = Array.prototype.slice.call(arguments, 1);
+		let args = Array.prototype.slice.call(arguments, 1);
 		return Function.apply(null, args);
 	} else {
 		console.warn(`Attempted to call invalid function "${FunctionName}"`);
@@ -440,7 +440,7 @@ function CommonColorIsValid(Color) {
  * @returns {T} - The randomly selected item from the list
  */
 function CommonRandomItemFromList(ItemPrevious, ItemList) {
-	var NewItem = ItemPrevious;
+	let NewItem = ItemPrevious;
 	while (NewItem == ItemPrevious)
 		NewItem = ItemList[Math.floor(Math.random() * ItemList.length)];
 	return NewItem;
@@ -482,13 +482,13 @@ function CommonArraysEqual(a1, a2) {
  * @returns {MemoizedFunction<T>} - The result of the memoized function
  */
 function CommonMemoize(func) {
-	var memo = {};
+	let memo = {};
 
 	/** @type {MemoizedFunction<T>} */
 	// @ts-ignore
-	var memoized = function () {
-		var index = [];
-		for (var i = 0; i < arguments.length; i++) {
+	let memoized = function () {
+		let index = [];
+		for (let i = 0; i < arguments.length; i++) {
 			if (typeof arguments[i] === "object") {
 				index.push(JSON.stringify(arguments[i]));
 			} else {

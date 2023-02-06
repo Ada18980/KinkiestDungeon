@@ -2753,7 +2753,7 @@ function KDCullTempElements() {
  * @returns {void} - Nothing
  */
 function KDElementPosition(ElementID, X, Y, W, H) {
-	var E = document.getElementById(ElementID);
+	let E = document.getElementById(ElementID);
 
 	if (!E) {
 		console.warn("A call to ElementPosition was made on non-existent element with ID '" + ElementID + "'");
@@ -2762,7 +2762,7 @@ function KDElementPosition(ElementID, X, Y, W, H) {
 
 	// For a vertical slider, swap the width and the height (the transformation is handled by CSS)
 	if (E.tagName.toLowerCase() === "input" && E.getAttribute("type") === "range" && E.classList.contains("Vertical")) {
-		var tmp = W;
+		let tmp = W;
 		W = H;
 		H = tmp;
 	}

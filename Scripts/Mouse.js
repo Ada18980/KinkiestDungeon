@@ -1,6 +1,6 @@
 "use strict";
-var MouseX = 0;
-var MouseY = 0;
+let MouseX = 0;
+let MouseY = 0;
 
 /**
  * Check if the mouse position is within the boundaries of a given zone (Useful for UI components)

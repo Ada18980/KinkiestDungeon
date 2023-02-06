@@ -1,7 +1,7 @@
 "use strict";
 
 
-var KinkyDungeonFilters = [
+let KinkyDungeonFilters = [
 	Consumable,
 	Restraint,
 	Weapon,
@@ -10,8 +10,8 @@ var KinkyDungeonFilters = [
 	Misc,
 ];
 
-var KinkyDungeonCurrentFilter = KinkyDungeonFilters[0];
-var KinkyDungeonCurrentPageInventory = 0;
+let KinkyDungeonCurrentFilter = KinkyDungeonFilters[0];
+let KinkyDungeonCurrentPageInventory = 0;
 
 let KinkyDungeonShowInventory = false;
 let KinkyDungeonInventoryOffset = 0;
