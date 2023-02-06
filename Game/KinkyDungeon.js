@@ -796,7 +796,11 @@ function KinkyDungeonRun() {
 		KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + ".jpg", 0, 0, CanvasWidth, CanvasHeight, undefined, {
 			zIndex: -115,
 		});
-
+		kdgameboard.visible = false;
+		kdgamefog.visible = false;
+	} else {
+		kdgameboard.visible = true;
+		kdgamefog.visible = true;
 	}
 
 
