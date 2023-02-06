@@ -672,10 +672,8 @@ function KinkyDungeonDrawQuickInv() {
 			}
 			//DrawImageEx(item.preview, point.x, point.y + 30, {Width: 80, Height: 80});
 
-			MainCanvas.textAlign = "left";
-			DrawTextKD("" + item.item.quantity, point.x+1, point.y+1 + 30, "black");
-			DrawTextKD("" + item.item.quantity, point.x, point.y + 30, "white");
-			MainCanvas.textAlign = "center";
+			DrawTextKD("" + item.item.quantity, point.x+1, point.y+1 + 30, "black", undefined, "left");
+			DrawTextKD("" + item.item.quantity, point.x, point.y + 30, "white", undefined, "left");
 		}
 	}
 

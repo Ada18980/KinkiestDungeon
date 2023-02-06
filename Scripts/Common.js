@@ -273,8 +273,8 @@ function CommonTouchActive(X, Y, W, H, TL) {
 	if (TL == null) TL = CommonTouchList;
 	if (TL != null)
 		for (let Touch of TL) {
-			let TouchX = Math.round((Touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
-			let TouchY = Math.round((Touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+			let TouchX = Math.round((Touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
+			let TouchY = Math.round((Touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
 			if ((TouchX >= X) && (TouchX <= X + W) && (TouchY >= Y) && (TouchY <= Y + H))
 				return true;
 		}
@@ -538,39 +538,6 @@ const CommonGetFontName = CommonMemoize(() => {
 	return `${font}, ${fontStack[1]}`;
 });
 
-/**
- * Take a screenshot of specified area in "photo mode" and open the image in a new tab
- * @param {number} Left - Position of the area to capture from the left of the canvas
- * @param {number} Top - Position of the area to capture from the top of the canvas
- * @param {number} Width - Width of the area to capture
- * @param {number} Height - Height of the area to capture
- * @returns {void} - Nothing
- */
-function CommonTakePhoto(Left, Top, Width, Height) {
-	CommonPhotoMode = true;
-
-	// Ensure everything is redrawn once in photo-mode
-	DrawProcess(0);
-
-	// Capture screen as image URL
-	const ImgData = /** @type {HTMLCanvasElement} */ (document.getElementById("MainCanvas")).getContext('2d').getImageData(Left, Top, Width, Height);
-	let PhotoCanvas = document.createElement('canvas');
-	PhotoCanvas.width = Width;
-	PhotoCanvas.height = Height;
-	PhotoCanvas.getContext('2d').putImageData(ImgData, 0, 0);
-	const PhotoImg = PhotoCanvas.toDataURL("image/png");
-
-	// Open the image in a new window
-	let newWindow = window.open('about:blank', '_blank');
-	if (newWindow) {
-		newWindow.document.write("<img src='" + PhotoImg + "' alt='from canvas'/>");
-		newWindow.document.close();
-	} else {
-		console.warn("Popups blocked: Cannot open photo in new tab.");
-	}
-
-	CommonPhotoMode = false;
-}
 
 /**
  * Takes an array of items and converts it to record format

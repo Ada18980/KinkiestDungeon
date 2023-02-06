@@ -125,7 +125,7 @@ function Click(event) {
  * @param {TouchEvent} event
  */
 function TouchStart(event) {
-	if (CommonIsMobile && MainCanvas) {
+	if (CommonIsMobile && PIXICanvas) {
 		TouchMove(event.touches[0]);
 		CommonClick(event);
 		CommonTouchList = event.touches;
@@ -137,7 +137,7 @@ function TouchStart(event) {
  * @param {TouchEvent} event
  */
 function TouchEnd(event) {
-	if (CommonIsMobile && MainCanvas)
+	if (CommonIsMobile && PIXICanvas)
 		CommonTouchList = event.touches;
 }
 
@@ -146,9 +146,9 @@ function TouchEnd(event) {
  * @param {Touch} touch
  */
 function TouchMove(touch) {
-	if (MainCanvas) {
-		MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
-		MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+	if (PIXICanvas) {
+		MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
+		MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
 	}
 }
 
@@ -157,9 +157,9 @@ function TouchMove(touch) {
  * @param {MouseEvent} event
  */
 function MouseMove(event) {
-	if (MainCanvas) {
-		MouseX = Math.round(event.offsetX * 2000 / MainCanvas.canvas.clientWidth);
-		MouseY = Math.round(event.offsetY * 1000 / MainCanvas.canvas.clientHeight);
+	if (PIXICanvas) {
+		MouseX = Math.round(event.offsetX * 2000 / PIXICanvas.clientWidth);
+		MouseY = Math.round(event.offsetY * 1000 / PIXICanvas.clientHeight);
 	}
 }
 

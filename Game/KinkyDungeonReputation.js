@@ -331,7 +331,6 @@ function KinkyDungeonDrawReputation() {
 	}
 
 	for (let rep in KinkyDungeonGoddessRep) {
-		MainCanvas.textAlign = "left";
 		let value = KinkyDungeonGoddessRep[rep];
 
 		if (rep) {
@@ -359,15 +358,14 @@ function KinkyDungeonDrawReputation() {
 			}
 			let suff = "";
 			if (rep != "Ghost" && rep != "Prisoner") suff = "" + KinkyDungeonRepName(value);
-			DrawTextKD(TextGet("KinkyDungeonShrine" + rep) + goddessSuff, canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i, goddessColor, "black");
+			DrawTextKD(TextGet("KinkyDungeonShrine" + rep) + goddessSuff, canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i, goddessColor, "black", undefined, "left");
 			if (suff) {
-				DrawTextFitKD(suff, canvasOffsetX_ui + 275 + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black");
+				DrawTextFitKD(suff, canvasOffsetX_ui + 275 + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
 			DrawProgressBar(canvasOffsetX_ui + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value, color, KDTextGray2);
 			if (KinkyDungeonShrineBaseCosts[rep])
 				KDDrawRestraintBonus(rep, canvasOffsetX_ui + 275 + XX - 70, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
 
-			MainCanvas.textAlign = "center";
 			DrawTextKD(" " + (Math.round(value)+50) + " ", canvasOffsetX_ui + 275 + XX + 100,  2+yPad + canvasOffsetY_ui + spacing * i, "white", "black");
 
 			if (KDFactionRepIndex < 0.1) {
@@ -381,7 +379,6 @@ function KinkyDungeonDrawReputation() {
 				}
 
 				if (KinkyDungeonShrineBaseCosts[rep]) {
-					MainCanvas.textAlign = "center";
 					//DrawButtonVis(canvasOffsetX_ui + 275 + XX + 400, yPad + canvasOffsetY_ui + spacing * i - 20, 100, 40, TextGet("KinkyDungeonAid"), value > 10 ? "white" : "pink");
 					if (KDRepSelectionMode == "Rescue") {
 						DrawButtonVis(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet("KinkyDungeonRescue"), (KinkyDungeonCanRescue(rep, value)) ? "white" : (KinkyDungeonAllRestraint().length > 0 && !KinkyDungeonRescued[rep] ? "pink" : "#999999"));
@@ -421,7 +418,6 @@ function KinkyDungeonDrawReputation() {
 			i++;
 		}
 	}
-	MainCanvas.textAlign = "center";
 }
 
 let KDFactionRepIndex = 0;
@@ -468,7 +464,6 @@ function KinkyDungeonDrawFactionRep() {
 
 	for (let e of Object.keys(KinkyDungeonFactionRelations.Player)) {
 		let rep = e;
-		MainCanvas.textAlign = "left";
 
 		if (rep && !KinkyDungeonHiddenFactions.includes(rep)) {
 			index++;
@@ -525,11 +520,11 @@ function KinkyDungeonDrawFactionRep() {
 				if (!text) {
 					if (allytext) {
 						text = true;
-						DrawTextFitKD(TextGet("KDAlliedWith") + allytext, loc.x, loc.y, loc.fit, "white", KDTextGray1, 20);
+						DrawTextFitKD(TextGet("KDAlliedWith") + allytext, loc.x, loc.y, loc.fit, "white", KDTextGray1, 20, undefined, "left");
 					}
 					if (enemytext) {
 						text = true;
-						DrawTextFitKD(TextGet("KDHostileWith") + enemytext, loc.x, loc.y + 30, loc.fit, "white", KDTextGray1, 20);
+						DrawTextFitKD(TextGet("KDHostileWith") + enemytext, loc.x, loc.y + 30, loc.fit, "white", KDTextGray1, 20, undefined, "left");
 					}
 				}
 
@@ -547,13 +542,12 @@ function KinkyDungeonDrawFactionRep() {
 				tcolor = "white";
 			}
 
-			DrawTextKD(TextGet("KinkyDungeonFaction" + rep), canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i, tcolor, KDTextGray1);
+			DrawTextKD(TextGet("KinkyDungeonFaction" + rep), canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i, tcolor, KDTextGray1, undefined, "left");
 			if (suff) {
-				DrawTextFitKD(suff, canvasOffsetX_ui + barSpacing + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black");
+				DrawTextFitKD(suff, canvasOffsetX_ui + barSpacing + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
 			DrawProgressBar(canvasOffsetX_ui + barSpacing + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value * 50, color, KDTextGray2);
 
-			MainCanvas.textAlign = "center";
 			DrawTextKD(" " + (Math.round(value * 50)+50) + " ", canvasOffsetX_ui + barSpacing + XX + 100,  1+yPad + canvasOffsetY_ui + spacing * i, "white", "black");
 
 
@@ -564,7 +558,6 @@ function KinkyDungeonDrawFactionRep() {
 		}
 
 	}
-	MainCanvas.textAlign = "center";
 	return tooltip;
 }
 

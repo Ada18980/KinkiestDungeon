@@ -286,13 +286,13 @@ function ElementPosition(ElementID, X, Y, W, H) {
 	}
 
 	// Different positions based on the width/height ratio
-	const HRatio = MainCanvas.canvas.clientHeight / 1000;
-	const WRatio = MainCanvas.canvas.clientWidth / 2000;
-	const Font = MainCanvas.canvas.clientWidth <= MainCanvas.canvas.clientHeight * 2 ? MainCanvas.canvas.clientWidth / 50 : MainCanvas.canvas.clientHeight / 25;
+	const HRatio = PIXICanvas.clientHeight / 1000;
+	const WRatio = PIXICanvas.clientWidth / 2000;
+	const Font = PIXICanvas.clientWidth <= PIXICanvas.clientHeight * 2 ? PIXICanvas.clientWidth / 50 : PIXICanvas.clientHeight / 25;
 	const Height = H ? H * HRatio : Font * 1.15;
 	const Width = W * WRatio - 18;
-	const Top = MainCanvas.canvas.offsetTop + Y * HRatio - Height / 2;
-	const Left = MainCanvas.canvas.offsetLeft + (X - W / 2) * WRatio;
+	const Top = PIXICanvas.offsetTop + Y * HRatio - Height / 2;
+	const Left = PIXICanvas.offsetLeft + (X - W / 2) * WRatio;
 
 	// Sets the element style
 	Object.assign(E.style, {
@@ -326,12 +326,12 @@ function ElementPositionFix(ElementID, Font, X, Y, W, H) {
 	}
 
 	// Different positions based on the width/height ratio
-	const HRatio = MainCanvas.canvas.clientHeight / 1000;
-	const WRatio = MainCanvas.canvas.clientWidth / 2000;
+	const HRatio = PIXICanvas.clientHeight / 1000;
+	const WRatio = PIXICanvas.clientWidth / 2000;
 	Font *= Math.max(HRatio, WRatio);
-	const Top = MainCanvas.canvas.offsetTop + Y * HRatio;
+	const Top = PIXICanvas.offsetTop + Y * HRatio;
 	const Height = H * HRatio;
-	const Left = MainCanvas.canvas.offsetLeft + X * WRatio;
+	const Left = PIXICanvas.offsetLeft + X * WRatio;
 	const Width = W * WRatio;
 
 	// Sets the element style

@@ -206,7 +206,7 @@ function KDDrawTileEditor() {
 		if (!pixirendererKD) {
 			if (KinkyDungeonContext && KinkyDungeonCanvas) {
 				// @ts-ignore
-				pixirendererKD = new PIXI.CanvasRenderer({
+				pixirendererKD = new PIXI.Renderer({
 					// @ts-ignore
 					width: KinkyDungeonCanvas.width,
 					// @ts-ignore

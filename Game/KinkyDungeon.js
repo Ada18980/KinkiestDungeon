@@ -3,6 +3,9 @@
 // Disable interpolation when scaling, will make texture be pixelated
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
 
+let CanvasWidth = 2000;
+let CanvasHeight = 1000;
+
 /** These languages have characters which are rendered bigger than English. */
 let KDBigLanguages = ["CN", "KR"];
 /** Language List */
@@ -762,8 +765,6 @@ function KinkyDungeonRun() {
 	KDButtonsCache = {};
 	KDUpdateVibeSounds();
 	KDUpdateMusic();
-	let BG = "BrickWall";
-	DrawImage("Backgrounds/" + BG + ".jpg", 0, 0);
 
 	if (ServerURL != "foobar")
 		DrawButtonVis(1885, 25, 90, 90, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Exit.png");
@@ -790,6 +791,13 @@ function KinkyDungeonRun() {
 	if ((KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats")
 		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
 
+	if (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") {
+		let BG = "BrickWall";
+		KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + ".jpg", 0, 0, CanvasWidth, CanvasHeight, undefined, {
+			zIndex: -115,
+		});
+
+	}
 
 
 	if (KinkyDungeonState == "Mods") {
@@ -810,12 +818,10 @@ function KinkyDungeonRun() {
 	} else if (KinkyDungeonState == "Credits") {
 		let credits = TextGet("KinkyDungeonCreditsList" + KinkyDungeonCreditsPos).split('|');
 		let i = 0;
-		MainCanvas.textAlign = "left";
 		for (let c of credits) {
-			DrawTextKD(c, 550, 25 + 40 * i, "#ffffff", KDTextGray2);
+			DrawTextKD(c, 550, 25 + 40 * i, "#ffffff", KDTextGray2, undefined, "left");
 			i++;
 		}
-		MainCanvas.textAlign = "center";
 
 		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), "#ffffff", "");
 		DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
@@ -823,12 +829,10 @@ function KinkyDungeonRun() {
 		for (let x = KinkyDungeonPatronPos * KDMaxPatronPerPage; x < KinkyDungeonPatronPos * KDMaxPatronPerPage + KDMaxPatronPerPage && x <= KDMaxPatron; x++) {
 			let credits = TextGet("KinkyDungeonPatronsList" + x).split('|');
 			let i = 0;
-			MainCanvas.textAlign = "left";
 			for (let c of credits) {
-				DrawTextKD(c, 550 + 350 * (x - KinkyDungeonPatronPos * KDMaxPatronPerPage), 25 + 40 * i, "#ffffff", KDTextGray2);
+				DrawTextKD(c, 550 + 350 * (x - KinkyDungeonPatronPos * KDMaxPatronPerPage), 25 + 40 * i, "#ffffff", KDTextGray2, undefined, "left");
 				i++;
 			}
-			MainCanvas.textAlign = "center";
 		}
 
 
@@ -837,9 +841,9 @@ function KinkyDungeonRun() {
 		//DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 	} else if (KinkyDungeonState == "Menu") {
 		KinkyDungeonGameFlag = false;
-		MainCanvas.textAlign = "left";
+		//MainCanvas.textAlign = "left";
 		DrawCheckboxVis(600, 100, 64, 64, TextGet("KinkyDungeonSound"), KDToggles.Sound, false, "#ffffff");
-		MainCanvas.textAlign = "center";
+		//MainCanvas.textAlign = "center";
 		// Draw temp start screen
 		if (KDLose) {
 			DrawTextKD(TextGet("End"), 1250, 250, "#ffffff", KDTextGray2);
@@ -913,7 +917,7 @@ function KinkyDungeonRun() {
 		if (KDRestart)
 			DrawTextKD(TextGet("RestartNeeded" + (localStorage.getItem("BondageClubLanguage") || "EN")), 1840, 800, "#ffffff", KDTextGray2);
 	} else if (KinkyDungeonState == "Consent") {
-		MainCanvas.textAlign = "center";
+		//MainCanvas.textAlign = "center";
 		// Draw temp start screen
 		DrawTextKD(TextGet("KinkyDungeonConsent"), 1250, 300, "#ffffff", KDTextGray2);
 		DrawTextKD(TextGet("KinkyDungeonConsent2"), 1250, 400, "#ffffff", KDTextGray2);
@@ -1051,10 +1055,10 @@ function KinkyDungeonRun() {
 		}
 
 		if (KinkyDungeonSexyMode) {
-			MainCanvas.textAlign = "left";
+			//MainCanvas.textAlign = "left";
 			DrawCheckboxVis(1500, 420, 64, 64, TextGet("KinkyDungeonSexyPlugs"), KinkyDungeonSexyPlug, false, "#ffffff");
 			DrawCheckboxVis(1500, 500, 64, 64, TextGet("KinkyDungeonSexyPiercings"), KinkyDungeonSexyPiercing, false, "#ffffff");
-			MainCanvas.textAlign = "center";
+			//MainCanvas.textAlign = "center";
 		}
 
 
@@ -1397,7 +1401,7 @@ function KinkyDungeonRun() {
 	if (!pixirenderer) {
 		if (pixiview) {
 			// @ts-ignore
-			pixirenderer = new PIXI.CanvasRenderer({
+			pixirenderer = new PIXI.Renderer({
 				// @ts-ignore
 				width: pixiview.width,
 				// @ts-ignore
@@ -1418,7 +1422,7 @@ function KinkyDungeonRun() {
 		});
 	}
 
-	MainCanvas.textBaseline = "middle";
+	//MainCanvas.textBaseline = "middle";
 
 	KDLastButtonsCache = {};
 }

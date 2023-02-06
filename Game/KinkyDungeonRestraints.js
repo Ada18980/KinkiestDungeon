@@ -140,6 +140,10 @@ const KinkyDungeonStrictnessTable = new Map([
  */
 let KDRestraintsCache = new Map();
 
+let KDTetherGraphics = new PIXI.Graphics;
+KDTetherGraphics.zIndex = 2;
+let KDGameBoardAddedTethers = false;
+
 /**
  *
  * @param {entity} Entity
@@ -147,7 +151,13 @@ let KDRestraintsCache = new Map();
  * @param {number} CamY
  * @returns {void}
  */
-function KinkyDungeonDrawTether(Entity, CamX, CamY) {
+function KinkyDungeonDrawTethers(Entity, CamX, CamY) {
+	if (!KDGameBoardAddedTethers) {
+		kdgameboard.addChild(KDTetherGraphics);
+	}
+
+	KDTetherGraphics.clear();
+
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (inv && KDRestraint(inv).tether && inv.tx && inv.ty) {
 			let vx = inv.tx;
@@ -169,18 +179,15 @@ function KinkyDungeonDrawTether(Entity, CamX, CamY) {
 			let dx = (txx - xx);
 			let dy = (tyy - yy);
 			let dd = 0.1; // Increments
+			let color = KDRestraint(inv).Color[0] ? KDRestraint(inv).Color[0] : KDRestraint(inv).Color;
+			if (!color || color == "Default") color = "#aaaaaa";
+			// @ts-ignore
+			KDTetherGraphics.lineStyle(4, string2hex(color), 1);
 			for (let d = 0; d < 1; d += dd) {
 				let yOffset = 30 * Math.sin(Math.PI * d);
 				let yOffset2 = 30 * Math.sin(Math.PI * (d + dd));
-
-				MainCanvas.beginPath();
-				MainCanvas.lineWidth = 4;
-				MainCanvas.moveTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*d, KinkyDungeonGridSizeDisplay*0.8 + yOffset + yy + dy*d);
-				MainCanvas.lineTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*(d+dd), KinkyDungeonGridSizeDisplay*0.8 + yOffset2 + yy + dy*(d+dd));
-				let color = KDRestraint(inv).Color[0] ? KDRestraint(inv).Color[0] : KDRestraint(inv).Color;
-				// @ts-ignore
-				MainCanvas.strokeStyle = (!color || color == "Default") ? "#aaaaaa" : color;
-				MainCanvas.stroke();
+				KDTetherGraphics.moveTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*d, KinkyDungeonGridSizeDisplay*0.8 + yOffset + yy + dy*d);
+				KDTetherGraphics.lineTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*(d+dd), KinkyDungeonGridSizeDisplay*0.8 + yOffset2 + yy + dy*(d+dd));
 			}
 			return;
 		}

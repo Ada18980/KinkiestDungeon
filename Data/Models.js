@@ -42,16 +42,14 @@ class ModelContainer {
 	/**
 	 * @param {Character} Character
 	 * @param {Map<string, Model>} Models
-	 * @param {any} Container
-	 * @param {Map<string, any>} SpriteList
-	 * @param {Map<string, any>} SpritesDrawn
+	 * @param {Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: any}>} Containers
+	 * @param {Map<string, any>} ContainersDrawn
 	 * @param {Record<string, boolean>} Poses
 	 */
-	constructor(Character, Models, Container, SpriteList, SpritesDrawn, Poses) {
+	constructor(Character, Models, Containers, ContainersDrawn, Poses) {
 		this.Character = Character;
-		this.Container = Container;
-		this.SpriteList = SpriteList;
-		this.SpritesDrawn = SpritesDrawn;
+		this.Containers = Containers;
+		this.ContainersDrawn = ContainersDrawn;
 		this.Models = Models;
 		this.Poses = Poses;
 		this.HighestPriority = {};
@@ -94,7 +92,15 @@ function GetModelLayers(ModelName) {
 }
 
 
+function DisposeCharacter(C) {
+	if (KDCurrentModels.get(C)) {
+		for (let Container of KDCurrentModels.get(C).Containers.values()) {
+			Container.Container.destroy();
+			kdcanvas.removeChild(Container);
+		}
 
+	}
+}
 
 /**
  * Refreshes the character if not all images are loaded and draw the character canvas on the main game screen
@@ -103,7 +109,7 @@ function GetModelLayers(ModelName) {
  * @param {number} Y - Position of the character on the Y axis
  * @param {number} Zoom - Zoom factor
  * @param {boolean} [IsHeightResizeAllowed=true] - Whether or not the settings allow for the height modifier to be applied
- * @param {CanvasRenderingContext2D} [DrawCanvas] - The canvas to draw to; If undefined `MainCanvas` is used
+ * @param {any} [DrawCanvas] - Pixi container to draw to
  * @param {any} [Blend] - The blend mode to use
  * @param {PoseMod[]} [StartMods] - Mods applied
  * @returns {void} - Nothing
@@ -113,7 +119,6 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend =
 	let MC = !KDCurrentModels.get(C) ? new ModelContainer(
 		C,
 		new Map(),
-		new PIXI.Container(),
 		new Map(),
 		new Map(),
 		{
@@ -122,52 +127,25 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend =
 		},
 	) : KDCurrentModels.get(C);
 
-
-	MC.SpritesDrawn.clear();
-
 	if (MC.Models.size == 0) UpdateModels(MC);
 
+	let containerID = `${X},${Y},${Zoom}`;
+	if (!MC.Containers.get(containerID)) {
+		let Container = {
+			Container: new PIXI.Container(),
+			SpritesDrawn: new Map(),
+			SpriteList: new Map(),
+		};
+		MC.Containers.set(containerID, Container);
+		kdcanvas.addChild(Container.Container);
+		Container.Container.sortableChildren = true;
+	}
+
 	// Actual loop for drawing the models on the character
-	DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods);
-
-	// Cull sprites that weren't drawn yet
-	for (let sprite of MC.SpriteList.entries()) {
-		if (!MC.SpritesDrawn.has(sprite[0]) && sprite[1] && sprite[1].parent == MC.Container) {
-			sprite[1].parent.removeChild(sprite[1]);
-			MC.SpriteList.delete(sprite[0]);
-			sprite[1].destroy();
-		}
-	}
-
-	// Render the container, committing its image to the screen
-	let renderer = DrawCanvas ? (KDCanvasRenderMap.get(DrawCanvas.canvas) || pixirenderer) : pixirenderer;
-
-	if (renderer == "temp") {
-		let view = DrawCanvas.canvas;
-		renderer = new PIXI.CanvasRenderer({
-			// @ts-ignore
-			width: view.width,
-			// @ts-ignore
-			height: view.height,
-			view: view,
-			antialias: true,
-		});
-		KDCanvasRenderMap.set(DrawCanvas.canvas, renderer);
-	}
-
-	if (renderer) {
-		// We always draw with the nice linear scaling
-		let sm = PIXI.settings.SCALE_MODE;
-		PIXI.settings.SCALE_MODE = Blend;
-		renderer.render(MC.Container, {
-			clear: false,
-		});
-		PIXI.settings.SCALE_MODE = sm;
-	}
+	DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods, MC.Containers.get(containerID));
 
 	// Store it in the map so we don't have to create it again
 	if (!KDCurrentModels.get(C)) {
-		MC.Container.sortableChildren = true;
 		KDCurrentModels.set(C, MC);
 	}
 }
@@ -178,7 +156,7 @@ let DrawModel = DrawCharacter;
  * Setup sprites from the modelcontainer
  * @param {ModelContainer} MC
  */
-function DrawCharacterModels(MC, X, Y, Zoom, StartMods) {
+function DrawCharacterModels(MC, X, Y, Zoom, StartMods, ContainerContainer) {
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
 
@@ -195,11 +173,11 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods) {
 	let {X_Offset, Y_Offset} = ModelGetPoseOffsets(MC.Poses);
 	let {rotation, X_Anchor, Y_Anchor} = ModelGetPoseRotation(MC.Poses);
 	let mods = ModelGetPoseMods(MC.Poses);
-	MC.Container.angle = rotation;
-	MC.Container.pivot.x = MODELWIDTH*Zoom * X_Anchor;
-	MC.Container.pivot.y = MODELHEIGHT*Zoom * Y_Anchor;
-	MC.Container.x = X + (MODEL_XOFFSET + MODELWIDTH * X_Offset) * Zoom;
-	MC.Container.y = Y + (MODELHEIGHT * Y_Offset) * Zoom;
+	ContainerContainer.Container.angle = rotation;
+	ContainerContainer.Container.pivot.x = MODELWIDTH*Zoom * X_Anchor;
+	ContainerContainer.Container.pivot.y = MODELHEIGHT*Zoom * Y_Anchor;
+	ContainerContainer.Container.x = X + (MODEL_XOFFSET + MODELWIDTH * X_Offset) * Zoom;
+	ContainerContainer.Container.y = Y + (MODELHEIGHT * Y_Offset) * Zoom;
 
 	for (let m of StartMods) {
 		if (!mods[m.Layer]) mods[m.Layer] = [];
@@ -235,8 +213,8 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods) {
 				}
 
 				KDDraw(
-					MC.Container,
-					MC.SpriteList,
+					ContainerContainer.Container,
+					ContainerContainer.SpriteList,
 					`layer_${m.Name}_${l.Name}`,
 					ModelLayerString(m, l, MC.Poses),
 					ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
@@ -247,7 +225,7 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods) {
 						scalex: sx != 1 ? sx : undefined,
 						scaley: sy != 1 ? sy : undefined,
 					}, false,
-					MC.SpritesDrawn,
+					ContainerContainer.SpritesDrawn,
 					Zoom
 				);
 			}
