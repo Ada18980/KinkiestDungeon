@@ -591,6 +591,11 @@ interface enemy extends KDHasTags {
 		/** Optional tag to override chase radius */
 		chaseradius?: number,
 	}
+	/** Contains data pertaining to the creature's effect on reputation and its behaviors from it */
+	Reputation?: {
+		/** Optional tag to make an enemy not give up rep when killed */
+		noRepLoss?: boolean,
+	},
 	/** */
 	followRange?: number,
 	/** wander = wanders randomly

@@ -338,6 +338,9 @@ let KinkyDungeonEnemies = [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
 		],
 		terrainTags: {}, shrines: [], allFloors: true,
+		Reputation: {
+			noRepLoss: true,
+		},
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
 	{name: "Frog", faction: "Witch", clusterWith: "beast", color: "#00FF44", tags: KDMapInit(["summoned", "beast", "ranged", "pierceweakness", "electricsevereweakness", "acidresist"]), followLeashedOnly: true, armor: 1, followRange: 1, AI: "hunt",
 		pullTowardSelf: true, pullDist: 3, master: {type: "Conjurer", range: 3}, projectileAttack: true, projectileTargeting: true,

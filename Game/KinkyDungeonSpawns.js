@@ -285,9 +285,10 @@ function KinkyDungeonCallGuard(x, y, noTransgress, normalDrops, requireTags) {
 					Enemy = KinkyDungeonGetEnemy(["Guard", jt], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jail"], false);
 				}
 			}
-			let guard = {summoned: true, noRep: true, noDrop: !normalDrops, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
+			let guard = {summoned: true, noDrop: !normalDrops, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
 				x:KinkyDungeonStartPosition.x, y:KinkyDungeonStartPosition.y, gx: point.x, gy: point.y,
 				hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
+			KinkyDungeonSetEnemyFlag(guard, "norep", -1);
 			KDGameData.KinkyDungeonJailGuard = guard.id;
 			KDAddEntity(guard);
 			return guard;

@@ -1401,6 +1401,12 @@ function KDDropStolenItems(enemy) {
 	}
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} E
+ * @returns {boolean}
+ */
 function KinkyDungeonEnemyCheckHP(enemy, E) {
 	if (enemy.hp <= 0) {
 		let noRepHit = false;
@@ -1438,11 +1444,11 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 					for (let rep of Object.keys(enemy.factionrep))
 						KinkyDungeonChangeFactionRep(rep, enemy.factionrep[rep]);
 
-				if (enemy.Enemy.rep && !enemy.noRep)
+				if (enemy.Enemy.rep && !KDEnemyHasFlag(enemy, "norep"))
 					for (let rep of Object.keys(enemy.Enemy.rep))
 						KinkyDungeonChangeRep(rep, enemy.Enemy.rep[rep]);
 
-				if (enemy.Enemy.factionrep && !enemy.noRep)
+				if (enemy.Enemy.factionrep && !KDEnemyHasFlag(enemy, "norep"))
 					for (let rep of Object.keys(enemy.Enemy.factionrep))
 						KinkyDungeonChangeFactionRep(rep, enemy.Enemy.factionrep[rep]);
 
@@ -1466,7 +1472,7 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 						amount = KDRandom() < 0.33 ? 0.004 : 0.001;
 
 				}
-				if (amount && !noRepHit) {
+				if (amount && !noRepHit && !enemy.Enemy.Reputation?.noRepLoss) {
 					KinkyDungeonChangeFactionRep(faction, -amount);
 
 					// For being near a faction
