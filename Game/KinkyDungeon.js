@@ -1429,7 +1429,7 @@ function KinkyDungeonRun() {
 		let YYd = 70;
 		let XXd = 250;
 		let toggles = Object.keys(KDToggles);
-		MainCanvas.textAlign = "left";
+		//MainCanvas.textAlign = "left";
 		for (let toggle of toggles) {
 			// Draw temp start screen
 			DrawCheckboxKDEx("toggle" + toggle, () => {
@@ -1444,7 +1444,7 @@ function KinkyDungeonRun() {
 				XX += XXd;
 			}
 		}
-		MainCanvas.textAlign = "center";
+		//MainCanvas.textAlign = "center";
 
 		YY = YYstart;
 
