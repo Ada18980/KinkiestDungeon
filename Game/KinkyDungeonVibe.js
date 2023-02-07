@@ -124,7 +124,7 @@ function KDUpdateVibeSounds() {
 	}
 	let vibe = KDGameData.CurrentVibration;
 	if (vibe && KinkyDungeonState == "Game" && KDToggles.Sound) {
-		let globalVolume = KDVibeVolume * (KinkyDungeonDrawState == "Game" ? 1 : 0.5);
+		let globalVolume = KDToggles.VibeSounds ? KDVibeVolume * (KinkyDungeonDrawState == "Game" ? 1 : 0.5) : 0;
 		let locations = KDSumVibeLocations();
 		KDStopAllVibeSounds(locations);
 

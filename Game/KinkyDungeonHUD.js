@@ -1970,44 +1970,6 @@ function KinkyDungeonHandleHUD() {
 			return true;
 		}
 
-
-		if (MouseIn(600, 100, 64, 64)) {
-			KDToggles.Sound = !KDToggles.Sound;
-			KDSaveToggles();
-			return true;
-		}
-		if (MouseIn(600, 260, 64, 64)) {
-			KDToggles.Fullscreen = !KDToggles.Fullscreen;
-			if (pixirendererKD)
-				pixirendererKD.destroy();
-			pixirendererKD = null;
-			KDSaveToggles();
-			return true;
-		}
-		if (MouseIn(600, 180, 64, 64)) {
-			KDToggles.Drool = !KDToggles.Drool;
-			KDSaveToggles();
-			return true;
-		}
-		if (!KDDebug && MouseIn(1000, 180, 64, 64)) {
-			KDToggles.DrawArmor = !KDToggles.DrawArmor;
-			KDSaveToggles();
-			return true;
-		}
-		if (MouseIn(600, 340, 64, 64) && (ServerURL == "foobar")) {
-			KinkyDungeonGraphicsQuality = !KinkyDungeonGraphicsQuality;
-			localStorage.setItem("KinkyDungeonDrool", KinkyDungeonGraphicsQuality ? "True" : "False");
-			if (KinkyDungeonGraphicsQuality) {
-				// @ts-ignore
-				if (!Player.GraphicsSettings) Player.GraphicsSettings = {};
-				Player.GraphicsSettings.AnimationQuality = 0;
-			} else {
-				// @ts-ignore
-				if (!Player.GraphicsSettings) Player.GraphicsSettings = {};
-				Player.GraphicsSettings.AnimationQuality = 10000;
-			}
-			return true;
-		}
 		//if (MouseIn(600, 650, 64, 64)) {
 		//KinkyDungeonFastWait = !KinkyDungeonFastWait;
 		//return true;
@@ -2020,16 +1982,6 @@ function KinkyDungeonHandleHUD() {
 				KinkyDungeonDrawState = "Game";
 			} else {
 				KDConfirmDeleteSave = true;
-			}
-			return true;
-		}
-		if (MouseIn(1075, 450, 350, 64)) {
-			KinkyDungeonState = "Keybindings";
-			if (!KinkyDungeonKeybindings)
-				KDSetDefaultKeybindings();
-			else {
-				KinkyDungeonKeybindingsTemp = {};
-				Object.assign(KinkyDungeonKeybindingsTemp, KinkyDungeonKeybindings);
 			}
 			return true;
 		}

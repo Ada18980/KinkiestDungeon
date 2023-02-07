@@ -77,10 +77,10 @@ let KDLoadingTextKeys = {};
 let KinkyDungeonGraphicsQuality = true;
 
 let KDToggles = {
-	Sound: true,
-	Fullscreen: true,
-	Drool: true,
 	VibeSounds: true,
+	Music: true,
+	Sound: true,
+	Drool: true,
 	DrawArmor: true,
 };
 
@@ -514,6 +514,11 @@ function KDLoadToggles() {
 		if (loaded[t] != undefined)
 			KDToggles[t] = loaded[t];
 	}
+
+	if (!Player.GraphicsSettings) {
+		// @ts-ignore
+		Player.GraphicsSettings = {AnimationQuality: 0};
+	}
 }
 function KDSaveToggles() {
 	localStorage.setItem("KDToggles", JSON.stringify(KDToggles));
@@ -837,7 +842,7 @@ function KinkyDungeonRun() {
 	} else if (KinkyDungeonState == "Menu") {
 		KinkyDungeonGameFlag = false;
 		MainCanvas.textAlign = "left";
-		DrawCheckboxVis(600, 100, 64, 64, TextGet("KinkyDungeonSound"), KDToggles.Sound, false, "#ffffff");
+		DrawCheckboxVis(600, 100, 64, 64, TextGet("KDToggleSound"), KDToggles.Sound, false, "#ffffff");
 		MainCanvas.textAlign = "center";
 		// Draw temp start screen
 		if (KDLose) {
@@ -846,10 +851,10 @@ function KinkyDungeonRun() {
 			DrawTextKD(TextGet("End3"), 1250, 470, "#ffffff", KDTextGray2);
 		} else {
 			DrawTextKD(TextGet("KinkyDungeon"), 1250, 200, "#ffffff", KDTextGray2);
-			DrawTextKD(TextGet("Intro"), 1250, 260, "#ffffff", KDTextGray2);
-			DrawTextKD(TextGet("Intro2"), 1250, 320, "#ffffff", KDTextGray2);
-			DrawTextKD(TextGet("Intro3"), 1250, 380, "#ffffff", KDTextGray2);
-			DrawTextKD(TextGet("Intro4" + (ServerURL == 'foobar' ? "" : "BC")), 1250, 440, "#ffffff", KDTextGray2);
+			DrawTextKD(TextGet("Intro"), 1250, 250, "#ffffff", KDTextGray2);
+			DrawTextKD(TextGet("Intro2"), 1250, 300, "#ffffff", KDTextGray2);
+			DrawTextKD(TextGet("Intro3"), 1250, 350, "#ffffff", KDTextGray2);
+			DrawTextKD(TextGet("Intro4" + (ServerURL == 'foobar' ? "" : "BC")), 1250, 400, "#ffffff", KDTextGray2);
 		}
 
 		if (ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable() && ServerURL != "foobar")
@@ -859,17 +864,17 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("GameContinue", () => {
 			KinkyDungeonStartNewGame(true);
 			return true;
-		}, true, 1075, 540, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
+		}, true, 1075, 460, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
 		DrawButtonKDEx("GameStart", () => {
 			KinkyDungeonState = "Diff";
 			KinkyDungeonLoadStats();
 			return true;
-		}, true, 1075, 620, 350, 64, TextGet("GameStart"), "#ffffff", "");
+		}, true, 1075, 540, 350, 64, TextGet("GameStart"), "#ffffff", "");
 		DrawButtonKDEx("LoadGame", () => {
 			KinkyDungeonState = "Load";
 			ElementCreateTextArea("saveInputField");
 			return true;
-		}, true, 1075, 700, 350, 64, TextGet("LoadGame"), "#ffffff", "");
+		}, true, 1075, 620, 350, 64, TextGet("LoadGame"), "#ffffff", "");
 		DrawButtonKDEx("GameConfigKeys", () => {
 			KinkyDungeonState = "Keybindings";
 
@@ -880,7 +885,11 @@ function KinkyDungeonRun() {
 				Object.assign(KinkyDungeonKeybindingsTemp, KinkyDungeonKeybindings);
 			}
 			return true;
-		}, true, 1075, 780, 350, 64, TextGet("GameConfigKeys"), "#ffffff", "");
+		}, true, 1075, 700, 350, 64, TextGet("GameConfigKeys"), "#ffffff", "");
+		DrawButtonKDEx("GameToggles", () => {
+			KinkyDungeonState = "Toggles";
+			return true;
+		}, true, 1075, 780, 350, 64, TextGet("GameToggles"), "#ffffff", "");
 
 		if (TestMode) {
 			DrawButtonKDEx("TileEditor", () => {
@@ -1375,6 +1384,57 @@ function KinkyDungeonRun() {
 			DrawTextKD(TextGet("KinkyDungeonCurrentPress") + ": '" + (KinkyDungeonKeybindingCurrentKey) + "'", 1250, 900, "#ffffff", KDTextGray2);
 
 		DrawTextKD(TextGet("KinkyDungeonCurrentPressInfo"), 1250, 950, "#ffffff", KDTextGray2);
+	} else if (KinkyDungeonState == "Toggles") {
+
+		let XX = 840;
+		let YYstart = 200;
+		let YYmax = 680;
+		let YY = YYstart;
+		let YYd = 70;
+		let XXd = 250;
+		let toggles = Object.keys(KDToggles);
+		MainCanvas.textAlign = "left";
+		for (let toggle of toggles) {
+			// Draw temp start screen
+			DrawCheckboxKDEx("toggle" + toggle, () => {
+				KDToggles[toggle] = !KDToggles[toggle];
+				KDSaveToggles();
+				return true;
+			}, true, XX, YY, 64, 64, TextGet("KDToggle" + toggle), KDToggles[toggle], false, "#ffffff");
+
+			YY += YYd;
+			if (YY > YYmax) {
+				YY = YYstart;
+				XX += XXd;
+			}
+		}
+		MainCanvas.textAlign = "center";
+
+		YY = YYstart;
+
+		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), "#ffffff", "",
+			() => KDVibeVolumeList[(KDVibeVolumeListIndex + KDVibeVolumeList.length - 1) % KDVibeVolumeList.length] * 100 + "%",
+			() => KDVibeVolumeList[(KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length] * 100 + "%");
+		YY += YYd;
+		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDMusicVolume") + " " + (KDMusicVolume * 100 + "%"), "#ffffff", "",
+			() => KDMusicVolumeList[(KDMusicVolumeListIndex + KDMusicVolumeList.length - 1) % KDMusicVolumeList.length] * 100 + "%",
+			() => KDMusicVolumeList[(KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length] * 100 + "%");
+		YY += YYd;
+		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), "#ffffff", "",
+			() => KDAnimSpeedList[(KDAnimSpeedListIndex + KDAnimSpeedList.length - 1) % KDAnimSpeedList.length] * 100 + "%",
+			() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
+		YY += YYd;
+
+		// Draw temp start screen
+		DrawButtonKDEx("KBBack2", () => {
+			KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
+			if (KinkyDungeonGameFlag) {
+				KinkyDungeonState = "Game";
+			} else KinkyDungeonState = "Menu";
+			//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
+			return true;
+		}, true, 975, 780, 550, 64, TextGet("GameReturnToMenu2"), "#ffffff", "");
+
 	}
 
 	// Cull temp elements

@@ -30,11 +30,13 @@ Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
 Intro4,"(This game does not contain spiders or any carnivorous creatures/plants)"
 Intro4BC,"(Check out the latest standalone version at the News and Updates link below!)"
-KinkyDungeonSound,Enable Sounds
-KinkyDungeonDrool,Enable Drool/Tears
-KinkyDungeonArmor,Draw Armor
-KinkyDungeonFullscreen,Enable Fullscreen
-KinkyDungeonGraphicsQuality,High Quality Animations
+KDToggleSound,Enable Sounds
+KDToggleDrool,Enable Drool/Tears
+KDToggleDrawArmor,Draw Armor
+KDToggleMusic,Enable Music
+KDToggleVibeSounds,Enable Toy SFX
+KDToggleFullscreen,Enable Fullscreen
+KDToggleGraphicsQuality,High Quality Animations
 KinkyDungeonFastWait,Wait Quickly
 
 KDHelpless,Helpless!
@@ -685,7 +687,8 @@ LoadGame,Load From Code
 LoadOutfit,Save Outfit (overwrites!)
 GameReturnToMenu,Save Keybindings
 GameReturnToMenu2,Cancel Changes
-GameConfigKeys,Change Keybindings
+GameConfigKeys,Keybindings
+GameToggles,Game Options
 
 KinkyDungeonLoadConfirm,"Load from code"
 KinkyDungeonLoadBack,"Back to main menu"
