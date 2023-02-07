@@ -5,7 +5,8 @@ let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked"];
 let HANDLEFTPOSES = ["Free", "Yoked"];
 let LEGPOSES = ["Spread", "Closed", "Kneel", "Hogtie"];
 let FOOTRIGHTPOSES = ["Spread", "Closed"];
-let KNEELPOSES = ["Kneel", "Hogtie"];
+let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel"];
+let KNEELPOSES = ["Kneel"];
 /** Standard GlobalDefaultOverrides, this should be for any pose that's meant to use mostly normal assets */
 let STANDARD_DEFAULTS = ["Hogtie"];
 
@@ -14,12 +15,12 @@ let STANDARD_DEFAULTS = ["Hogtie"];
  * */
 let PoseProperties = {
 	Hogtie: {
-		rotation: -105,
+		rotation: -95,
 		pri_rotation: 1,
 		offset_x: 0.32,
 		offset_y: 0.1,
 		pri_offset: 1,
-		global_default: "Kneel",
+		global_default: "Closed",
 		mods: [{
 			Layer: "Head",
 			rotation: 30,
