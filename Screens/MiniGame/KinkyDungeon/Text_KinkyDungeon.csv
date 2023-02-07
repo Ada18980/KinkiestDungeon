@@ -2236,8 +2236,8 @@ KinkyDungeonSpellBoundByFate,Bindings of Fate
 
 NameDemonMoon,Moon Demon
 KillDemonMoon,"The moon demon is exorcised."
-AttackDemonMoonBind,"The star demon places you in shining, starry restraints. (+RestraintAdded)"
-AttackDemonMoon,"The star demon places you under its curse! (DamageTaken)"
+AttackDemonMoonBind,"The moon demon places you in shining, starry restraints. (+RestraintAdded)"
+AttackDemonMoon,"The moon demon places you under its curse! (DamageTaken)"
 KinkyDungeonMoonBondage,The weight of inescapable bondage falls upon you! (DamageTaken)
 KinkyDungeonSpellCrushingFate,Crushing Fate
 
