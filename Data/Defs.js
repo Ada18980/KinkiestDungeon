@@ -49,6 +49,7 @@ let LAYERS_BASE = [
 	"LegLeft",
 	"FootRight",
 	"LegRight",
+	"FootLeftHogtie",
 	"FootRightKneel",
 	"Butt",
 	"TorsoUpper",

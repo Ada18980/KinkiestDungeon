@@ -44,7 +44,8 @@ let KinkyDungeonDefaultDefaultDress = [
 
 if (StandalonePatched) {
 	KinkyDungeonDefaultDefaultDress = [
-		{Item: "Bandit", Group: "Suit", Color: "Default", Lost: false},
+		{Item: "Labcoat", Group: "Labcoat", Color: "Default", Lost: false},
+		{Item: "Catsuit", Group: "Catsuit", Color: "Default", Lost: false},
 	];
 }
 
