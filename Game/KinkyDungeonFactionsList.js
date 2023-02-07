@@ -138,20 +138,20 @@ let KinkyDungeonFactionRelationsBase = {
 		Beast: -0.6,
 
 		// Mainline factions
-		Bountyhunter: -0.35,
+		Bountyhunter: -0.3,
 		Bandit: -0.7,
-		Alchemist: -0.25,
+		Alchemist: -0.2,
 		Nevermere: -0.1,
-		Apprentice: 0.25,
-		Dressmaker: -0.45,
+		Apprentice: 0.2,
+		Dressmaker: -0.4,
 		Witch: -0.8,
 		Elemental: -0.6,
 		Dragon: 0.1,
-		Maidforce: -0.05,
+		Maidforce: -0.1,
 		Bast: -0.6,
-		Elf: -0.26,
-		Mushy: -0.64,
-		AncientRobot: -0.45,
+		Elf: -0.3,
+		Mushy: -0.6,
+		AncientRobot: -0.4,
 
 		// Special factions
 		Angel: 0.1,
@@ -505,18 +505,23 @@ function KDChangeFactionRelation(a, b, amount, AffectRivals) {
 	if (!KinkyDungeonFactionRelations[a]) KinkyDungeonFactionRelations[a] = KinkyDungeonFactionRelationsBase[a] || 0;
 	if (!KinkyDungeonFactionRelations[b]) KinkyDungeonFactionRelations[b] = KinkyDungeonFactionRelationsBase[b] || 0;
 
+	let amountSetTo = 0;
+	let amountSet = false;
+
 	if (KinkyDungeonFactionRelations[a]) {
 		if (!KinkyDungeonFactionRelations[a][b] && KinkyDungeonFactionRelations[b][a])
 			KinkyDungeonFactionRelations[a][b] = KinkyDungeonFactionRelations[b][a];
 		else if (!KinkyDungeonFactionRelations[a][b]) KinkyDungeonFactionRelations[a][b] = 0;
-		KinkyDungeonFactionRelations[a][b] = Math.max(-1, Math.min(1, KinkyDungeonFactionRelations[a][b] + amount));
+		amountSetTo = Math.max(-1, Math.min(1, KinkyDungeonFactionRelations[a][b] + amount));
+		KinkyDungeonFactionRelations[a][b] = amountSetTo;
+		amountSet = true;
 	}
 
 	if (KinkyDungeonFactionRelations[b]) {
 		if (!KinkyDungeonFactionRelations[b][a] && KinkyDungeonFactionRelations[a][b])
 			KinkyDungeonFactionRelations[b][a] = KinkyDungeonFactionRelations[a][b];
 		else if (!KinkyDungeonFactionRelations[b][a]) KinkyDungeonFactionRelations[b][a] = 0;
-		KinkyDungeonFactionRelations[b][a] = Math.max(-1, Math.min(1, KinkyDungeonFactionRelations[b][a] + amount));
+		KinkyDungeonFactionRelations[b][a] = amountSet ? amountSetTo : Math.max(-1, Math.min(1, KinkyDungeonFactionRelations[b][a] + amount));
 	}
 
 	if (AffectRivals && a == "Player") {

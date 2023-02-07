@@ -95,6 +95,13 @@ let KDPerkUpdateStats = {
 	"BerserkerRage": () => {
 		KDDamageAmpPerksMelee += KDBerserkerAmp * KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax;
 	},
+	"Dodge": () => {
+		if (KinkyDungeonMiscastChance < 0.001) {
+			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+				id: "FocusedDodge", type: "Evasion", power: 0.4, duration: 1, sfxApply: "Fwoosh"
+			});
+		}
+	},
 	"UnstableMagic": () => {
 		KDDamageAmpPerksSpell += KDUnstableAmp * Math.min(1, Math.max(KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax, KinkyDungeonMiscastChance));
 	},
@@ -605,7 +612,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 		}
 		for (let stat of c.buffs.concat(c.debuffs)) {
 			if ((!stat[1].locked || KDUnlockedPerks.includes(stat[0]))
-				&& (!KDPerksFilter || TextGet("KinkyDungeonStat" + ("" + stat[1].id)).toLocaleLowerCase().includes(KDPerksFilter.toLocaleLowerCase()))) {
+				&& (NonSelectable|| !KDPerksFilter || TextGet("KinkyDungeonStat" + ("" + stat[1].id)).toLocaleLowerCase().includes(KDPerksFilter.toLocaleLowerCase()))) {
 				let YY = (stat[1].cost < 0 || stat[1].debuff) ? Y_alt : Y;
 				let XX = (stat[1].cost < 0 || stat[1].debuff) ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
 

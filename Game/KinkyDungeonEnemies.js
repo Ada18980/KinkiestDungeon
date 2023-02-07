@@ -1401,6 +1401,12 @@ function KDDropStolenItems(enemy) {
 	}
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} E
+ * @returns {boolean}
+ */
 function KinkyDungeonEnemyCheckHP(enemy, E) {
 	if (enemy.hp <= 0) {
 		let noRepHit = false;
@@ -1438,11 +1444,11 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 					for (let rep of Object.keys(enemy.factionrep))
 						KinkyDungeonChangeFactionRep(rep, enemy.factionrep[rep]);
 
-				if (enemy.Enemy.rep && !enemy.noRep)
+				if (enemy.Enemy.rep && !KDEnemyHasFlag(enemy, "norep"))
 					for (let rep of Object.keys(enemy.Enemy.rep))
 						KinkyDungeonChangeRep(rep, enemy.Enemy.rep[rep]);
 
-				if (enemy.Enemy.factionrep && !enemy.noRep)
+				if (enemy.Enemy.factionrep && !KDEnemyHasFlag(enemy, "norep"))
 					for (let rep of Object.keys(enemy.Enemy.factionrep))
 						KinkyDungeonChangeFactionRep(rep, enemy.Enemy.factionrep[rep]);
 
@@ -1466,7 +1472,7 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 						amount = KDRandom() < 0.33 ? 0.004 : 0.001;
 
 				}
-				if (amount && !noRepHit) {
+				if (amount && !noRepHit && !enemy.Enemy.Reputation?.noRepLoss) {
 					KinkyDungeonChangeFactionRep(faction, -amount);
 
 					// For being near a faction
@@ -2236,11 +2242,8 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				if (!(enemy.hostile > 0) && tickAlertTimerFactions.length > 0 && !KinkyDungeonAggressive(enemy) && !enemy.Enemy.tags.peaceful && (enemy.vp > 0.5 || enemy.lifetime < 900 || (!KDHostile(enemy) && KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 7))) {
 					for (let f of tickAlertTimerFactions) {
 						if ((KDGetFaction(enemy) != "Player") && (
-							(KDFactionAllied(f, enemy) && KDFactionRelation("Player", enemy) <= 0.9)
-							|| (KDFactionRelation(f, enemy) >= 0.51 && KDFactionRelation("Player", enemy) <= 0.4)
-							|| (KDFactionRelation(f, enemy) >= 0.39 && KDFactionRelation("Player", enemy) <= 0.25)
-							|| (KDFactionRelation(f, enemy) >= 0.25 && KDFactionRelation("Player", enemy) <= -0.1)
-							|| (KDFactionRelation(f, enemy) >= 0.1 && KDFactionRelation("Player", enemy) <= -0.25))) {
+							KDFactionRelation(f, KDGetFaction(enemy)) > 0 &&
+							KDFactionRelation(f, KDGetFaction(enemy)) - KDFactionRelation("Player", KDGetFaction(enemy)) > 0.15)) {
 							KDMakeHostile(enemy, KDMaxAlertTimer);
 						}
 					}
@@ -2364,7 +2367,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.visionRadius = enemy.Enemy.visionRadius ? (enemy.Enemy.visionRadius + ((enemy.lifetime > 0 && enemy.Enemy.visionSummoned) ? enemy.Enemy.visionSummoned : 0)) : 0;
 	let AIType = KDAIType[enemy.AI ? enemy.AI : enemy.Enemy.AI];
 	if (AIData.visionMod && AIData.visionRadius > 1.5) AIData.visionRadius = Math.max(1.5, AIData.visionRadius * AIData.visionMod);
-	AIData.chaseRadius = 8 + (Math.max(AIData.followRange * 2, 0)) + 2*Math.max(AIData.visionRadius ? AIData.visionRadius : 0, enemy.Enemy.blindSight ? enemy.Enemy.blindSight : 0);
+	AIData.chaseRadius = (enemy.Enemy.Awareness?.chaseradius != undefined) ? enemy.Enemy.Awareness.chaseradius
+		: 10 + 1.5*(Math.max(AIData.followRange, 0)) + 1.5*Math.max(AIData.visionRadius ? AIData.visionRadius : 0, enemy.Enemy.blindSight ? enemy.Enemy.blindSight : 0);
 	AIData.blindSight = (enemy && enemy.Enemy && enemy.Enemy.blindSight) ? enemy.Enemy.blindSight : 0;
 	if (KinkyDungeonStatsChoice.get("KillSquad")) {
 		AIData.visionRadius *= 2;
@@ -2502,7 +2506,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (!enemy.warningTiles) enemy.warningTiles = [];
 	AIData.canSensePlayer = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, true, true);
 	AIData.canSeePlayer = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, false, false);
-	AIData.canSeePlayerChase = !AIData.distracted && enemy.aware ? KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.chaseRadius, false, false) : false;
+	AIData.canSeePlayerChase = !AIData.distracted && (enemy.aware ? KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.chaseRadius, false, false) : false);
 	AIData.canSeePlayerMedium = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/1.4, false, true);
 	AIData.canSeePlayerClose = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/2, false, true);
 	AIData.canSeePlayerVeryClose = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/3, false, true);
@@ -2711,7 +2715,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			AIData.followRange = 3.9;
 			AIData.kite = true;
 		} else
-			AIData.followRange = 1;
+			AIData.followRange = 1.5;
 	}
 
 	if ((AIType.resetguardposition(enemy, player, AIData)) && (!enemy.gxx || !enemy.gyy)) {
@@ -2786,7 +2790,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					let splice = false;
 					if (T > 2 && T < 8) dir = KinkyDungeonGetDirectionRandom(dir.x * 10, dir.y * 10); // Fan out a bit
 					if (T >= 8 || (enemy.path && !AIData.canSeePlayer) || (!AIData.canSeePlayer && !(enemy.Enemy.stopToCast && AIData.canShootPlayer))) {
-						if (!enemy.path && (KinkyDungeonAlert || enemy.aware || AIData.canSeePlayer)) {
+						if (!enemy.path && (KinkyDungeonAlert || (enemy.vp > 0 && enemy.aware) || AIData.canSeePlayer)) {
 							if (!AIData.canSeePlayer) {
 								if (AIData.canShootPlayer) {
 									KDAddThought(enemy.id, "Shoot", 4, 2);

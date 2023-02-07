@@ -1226,6 +1226,8 @@ Features
 - Fixed a bug where selecting both Hogtied and Latex Doll would mistakenly not place a blindfold on the player character
 - New enemy in Ancient Tombs: Animated Sarcophagus
 - Added indicator for enemies which disappear if caster gets stunned (a hexagon)
+- Focused Dodge now gives +40 Evasion instead of 25% base evasion, making it easier to calculate
+- Being slowed now reduces your evasion
 
 TODO ValidationFindBlockCycles to prevent bugs
 

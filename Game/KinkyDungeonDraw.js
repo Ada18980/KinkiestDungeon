@@ -1307,25 +1307,6 @@ function KinkyDungeonDrawGame() {
 			}
 		}
 
-		DrawCheckboxVis(600, 100, 64, 64, TextGet("KinkyDungeonSound"), KDToggles.Sound, false, "#ffffff");
-		DrawCheckboxVis(600, 180, 64, 64, TextGet("KinkyDungeonDrool"), KDToggles.Drool, false, "#ffffff");
-		if (!KDDebugMode)  DrawCheckboxVis(1000, 180, 64, 64, TextGet("KinkyDungeonArmor"), KDToggles.DrawArmor, false, "#ffffff");
-		DrawCheckboxVis(600, 260, 64, 64, TextGet("KinkyDungeonFullscreen"), KDToggles.Fullscreen, false, "#ffffff");
-		if (ServerURL == "foobar")
-			DrawCheckboxVis(600, 340, 64, 64, TextGet("KinkyDungeonGraphicsQuality"), KinkyDungeonGraphicsQuality, false, "#ffffff");
-
-		//DrawCheckboxVis(600, 650, 64, 64, TextGet("KinkyDungeonFastWait"), KinkyDungeonFastWait, false, "#ffffff");
-		DrawBackNextButtonVis(600, 420, 350, 64, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), "#ffffff", "",
-			() => KDVibeVolumeList[(KDVibeVolumeListIndex + KDVibeVolumeList.length - 1) % KDVibeVolumeList.length] * 100 + "%",
-			() => KDVibeVolumeList[(KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length] * 100 + "%");
-
-		DrawBackNextButtonVis(600, 500, 350, 64, TextGet("KDMusicVolume") + " " + (KDMusicVolume * 100 + "%"), "#ffffff", "",
-			() => KDMusicVolumeList[(KDMusicVolumeListIndex + KDMusicVolumeList.length - 1) % KDMusicVolumeList.length] * 100 + "%",
-			() => KDMusicVolumeList[(KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length] * 100 + "%");
-
-		DrawBackNextButtonVis(600, 580, 350, 64, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), "#ffffff", "",
-			() => KDAnimSpeedList[(KDAnimSpeedListIndex + KDAnimSpeedList.length - 1) % KDAnimSpeedList.length] * 100 + "%",
-			() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
 
 		DrawTextFitKD(TextGet("KinkyDungeonRestartConfirm"), 1250, 400, 1000, "#ffffff", "#333333");
 		DrawButtonVis(975, 550, 550, 64, TextGet("KinkyDungeonRestartNo"), "#ffffff", "");
@@ -1333,7 +1314,22 @@ function KinkyDungeonDrawGame() {
 		DrawButtonVis(975, 800, 550, 64, TextGet("KinkyDungeonRestartCapture" + (KDConfirmDeleteSave ? "Confirm" : "")),  (KDGameData.PrisonerState == 'jail' || !KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)) ? "Pink" : "#ffffff", "");
 		DrawButtonVis(975, 900, 550, 64, TextGet("KinkyDungeonRestartYes" + (KDConfirmDeleteSave ? "Confirm" : "")), "#ffffff", "");
 		DrawButtonVis(1650, 900, 300, 64, TextGet("KinkyDungeonCheckPerks"), "#ffffff", "");
-		DrawButtonVis(1075, 450, 350, 64, TextGet("GameConfigKeys"), "#ffffff", "");
+
+		DrawButtonKDEx("GameConfigKeys", () => {
+			KinkyDungeonState = "Keybindings";
+			if (!KinkyDungeonKeybindings)
+				KDSetDefaultKeybindings();
+			else {
+				KinkyDungeonKeybindingsTemp = {};
+				Object.assign(KinkyDungeonKeybindingsTemp, KinkyDungeonKeybindings);
+			}
+			return true;
+		}, true, 975, 450, 250, 64, TextGet("GameConfigKeys"), "#ffffff", "");
+		DrawButtonKDEx("GameToggles", () => {
+			KinkyDungeonState = "Toggles";
+			return true;
+		}, true, 1250, 450, 250, 64, TextGet("GameToggles"), "#ffffff", "");
+
 	} else if (KinkyDungeonDrawState == "Perks2") {
 		KinkyDungeonDrawPerks(!KDDebugPerks);
 		DrawButtonVis(1650, 920, 300, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
@@ -2101,6 +2097,34 @@ function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = f
 }
 
 
+
+/**
+ * Draws a checkbox component
+ * @param {string} name - Name of the button element
+ * @param {(bdata: any) => boolean} func - Whether or not you can click on it
+ * @param {boolean} enabled - Whether or not you can click on it
+ * @param {number} Left - Position of the component from the left of the canvas
+ * @param {number} Top - Position of the component from the top of the canvas
+ * @param {number} Width - Width of the component
+ * @param {number} Height - Height of the component
+ * @param {string} Text - Label associated with the checkbox
+ * @param {boolean} IsChecked - Whether or not the checkbox is checked
+ * @param {boolean} [Disabled] - Disables the hovering options if set to true
+ * @param {string} [TextColor] - Color of the text
+ * @param {object} [options] - Additional options
+ * @param {boolean} [options.noTextBG] - Dont show text backgrounds
+ * @param {number} [options.alpha]
+ * @param {number} [options.zIndex] - zIndex
+ * @returns {void} - Nothing
+ */
+// @ts-ignore
+function DrawCheckboxKDEx(name, func, enabled, Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = KDTextGray0, CheckImage = "Icons/Checked.png", options) {
+	DrawTextFitKD(Text, Left + 100, Top + 33, 1000, TextColor, "#333333");
+	DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : "#ffffff", IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled,
+		undefined, undefined, undefined, undefined, options);
+}
+
+
 /**
  * Draw a back & next button component
  * @param {number} Left - Position of the component from the left of the canvas
@@ -2346,7 +2370,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 				if (KinkyDungeonVisionGet(RX, RY) > 0
 					&& (KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "A" || KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "M")
 					&& MouseIn(canvasOffsetX + (-CamX_offset + X)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)) {
-					tooltip = TextGet("KinkyDungeon" + KinkyDungeonTilesGet(RX + "," + RY).Type + "Tooltip") + TextGet("KinkyDungeonShrine" + KinkyDungeonTilesGet(RX + "," + RY).Name);
+					tooltip = TextGet("KinkyDungeon" + KinkyDungeonTilesGet(RX + "," + RY).Type + "Tooltip").replace("SHRINETYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTilesGet(RX + "," + RY).Name));
 				}
 			}
 		}

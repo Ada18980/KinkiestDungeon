@@ -7,7 +7,7 @@ KinkyDungeonPatronsList1,"|nuzzles|Rest|LoudestQuietPerson|Violet EverGardner|Bo
 KinkyDungeonPatronsList2,"|AlexisTheFlame|Chen Yu|Sinohisaki|nnm711|Ron lsrp|Miro|Anthony R.|John T.|Geng114514|塵狐|kamil|Iaysakuya|tsang|Somprad|Thatguu|damit damit|Victor|Hjake2|anton A.|Dakra|CuvyanTaylor|"
 KinkyDungeonPatronsList3,"|hanhan|The_rogue1|Tatsuya S.|James K.|Misa|eddy z.|theshrimpyone|Eislobo|OTKTamashii|Michael M.|Jose G.|Minescence|HanQing Z.|hanhan|Shakymunch|Crimson|Arentios|Vini J.|Treemen555|Lordfabricator|ML"
 KinkyDungeonPatronsList4,"Hannes|Isaiah L.|darklink11|Cerb|Diablo200|RNFRaptor|CMDR Salen|daniel C.|NDW|Sewdah N.|Sylicix|Wossa|ComradeArmtyom|逗比 徐|Null Fame|zipidyzap|Mister Mythe|Yagami Yami|Phoenix|Kritsanapong J.|Pyron|Tobi"
-KinkyDungeonPatronsList5,"Traynfreek|森 韩|Meekohi|GRASS|Heavy Blues|Girador|Sinohisaki"
+KinkyDungeonPatronsList5,"Traynfreek|森 韩|Meekohi|GRASS|Heavy Blues|Girador|Sinohisaki|Nymjii|Linex|werty989898|John H."
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
 KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|KR Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
@@ -30,11 +30,13 @@ Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
 Intro4,"(This game does not contain spiders or any carnivorous creatures/plants)"
 Intro4BC,"(Check out the latest standalone version at the News and Updates link below!)"
-KinkyDungeonSound,Enable Sounds
-KinkyDungeonDrool,Enable Drool/Tears
-KinkyDungeonArmor,Draw Armor
-KinkyDungeonFullscreen,Enable Fullscreen
-KinkyDungeonGraphicsQuality,High Quality Animations
+KDToggleSound,Enable Sounds
+KDToggleDrool,Enable Drool/Tears
+KDToggleDrawArmor,Draw Armor
+KDToggleMusic,Enable Music
+KDToggleVibeSounds,Enable Toy SFX
+KDToggleFullscreen,Enable Fullscreen
+KDToggleGraphicsQuality,High Quality Animations
 KinkyDungeonFastWait,Wait Quickly
 
 KDHelpless,Helpless!
@@ -106,7 +108,7 @@ KinkyDungeonStat15,"Bondage Lover"
 KinkyDungeonStatDesc15,"Attempting to escape arouses you."
 
 KinkyDungeonStat18,"Focused Dodge"
-KinkyDungeonStatDesc18,"While your miscast chance is 0%, your base evasion is 25% (multiplicative)."
+KinkyDungeonStatDesc18,"While your miscast chance is 0%, you gain +40 Evasion."
 KinkyDungeonStat19,"Distracted"
 KinkyDungeonStatDesc19,"+15% miscast chance (at all times)"
 
@@ -614,7 +616,7 @@ StatKeyEscapeKey,Got the keys! Find the stairs to go to the next floor.
 StatKeyEscapeNoKey,You haven't found the keys for this floor yet.
 StatKey,Missing key
 StatMiscastChance,"Chance for a spell to fizzle: "
-StatEvasion,"Dodge Chance: Percent%, based on EVASIONSUM Evasion plus other modifiers"
+StatEvasion,"Dodge Chance: Percent%, based on EVASIONSUM Evasion, -EVASIONPENALTY penalty from bindings"
 StatRestraintBlock,"Chance to block a level 10 restraint: Percent%"
 StatVision,"Sight Range: RADIUS"
 StatSpeed,"Speed: SPD"
@@ -685,7 +687,8 @@ LoadGame,Load From Code
 LoadOutfit,Save Outfit (overwrites!)
 GameReturnToMenu,Save Keybindings
 GameReturnToMenu2,Cancel Changes
-GameConfigKeys,Change Keybindings
+GameConfigKeys,Keybindings
+GameToggles,Game Options
 
 KinkyDungeonLoadConfirm,"Load from code"
 KinkyDungeonLoadBack,"Back to main menu"
@@ -2236,8 +2239,8 @@ KinkyDungeonSpellBoundByFate,Bindings of Fate
 
 NameDemonMoon,Moon Demon
 KillDemonMoon,"The moon demon is exorcised."
-AttackDemonMoonBind,"The star demon places you in shining, starry restraints. (+RestraintAdded)"
-AttackDemonMoon,"The star demon places you under its curse! (DamageTaken)"
+AttackDemonMoonBind,"The moon demon places you in shining, starry restraints. (+RestraintAdded)"
+AttackDemonMoon,"The moon demon places you under its curse! (DamageTaken)"
 KinkyDungeonMoonBondage,The weight of inescapable bondage falls upon you! (DamageTaken)
 KinkyDungeonSpellCrushingFate,Crushing Fate
 
@@ -2647,7 +2650,7 @@ KinkyDungeonObjectShrine,"A shrine to the goddess of TYPE. A pool of mana glimme
 KinkyDungeonObjectShrineCommerce,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectDoor,"That door is open. Do you want to close it?"
 KinkyDungeonCloseDoorDone,"You slam the door and jam it shut!"
-KinkyDungeonShrineGhost,"Submissive"
+KinkyDungeonShrineGhost,"Submissiveness"
 KinkyDungeonShrinePrisoner,"Security Level"
 KinkyDungeonShrineCharms,"Undead"
 KinkyDungeonShrineLatex,"Latex"
@@ -2659,7 +2662,7 @@ KinkyDungeonShrineElements,"Elements"
 KinkyDungeonShrineConjure,"Conjuration"
 KinkyDungeonShrineIllusion,"Illusions"
 KinkyDungeonShrineCommerce,"Commerce"
-KinkyDungeonShrineTooltip,"Shrine of "
+KinkyDungeonShrineTooltip,"Shrine of SHRINETYPE"
 KinkyDungeonTabletTooltip,"Tablet of "
 
 KDGoddessStat_Bonus,"Goddess Blessing: "
@@ -3475,7 +3478,7 @@ RestraintDragonAnkleCuffs,Scale Ankle Cuffs
 RestraintDragonAnkleCuffsDesc,"A pair of chained cuffs made of dragonscale. They slow your stride."
 RestraintDragonAnkleCuffsDesc2,"It's made from hard-to-cut dragonscale!!!"
 KinkyDungeonLinkDragonAnkleCuffs,"The enemy attaches your ankle cuffs together!"
-RestraintDragonAnkleCuffs2,Cuffs Chain
+RestraintDragonAnkleCuffs2,Scale Cuffs Chain
 RestraintDragonAnkleCuffs2Desc,"A pair of chained cuffs made of dragonscale. They slow your stride."
 RestraintDragonAnkleCuffs2Desc2,"It's made from hard-to-cut dragonscale!!!"
 KinkyDungeonUnLinkDragonAnkleCuffs2,"The ankle cuff chain detaches!"
