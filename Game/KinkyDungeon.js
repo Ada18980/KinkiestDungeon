@@ -772,7 +772,8 @@ function KinkyDungeonRun() {
 	if (ServerURL != "foobar")
 		DrawButtonVis(1885, 25, 90, 90, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Exit.png");
 
-	if (KDToggles.Fullscreen) {
+	// eslint-disable-next-line no-constant-condition
+	if (true || KDToggles.Fullscreen) {
 		KinkyDungeonGridWidthDisplay = 2000/KinkyDungeonGridSizeDisplay;//17;
 		KinkyDungeonGridHeightDisplay = 1000/KinkyDungeonGridSizeDisplay;//9;
 		canvasOffsetX = 0;
@@ -2085,10 +2086,6 @@ function KinkyDungeonHandleClick() {
 			localStorage.setItem("BondageClubLanguage", KDLanguages[newIndex]);
 			KDRestart = true;
 			return true;
-		}
-		if (MouseIn(600, 260, 64, 64)) {
-			KDToggles.Fullscreen = !KDToggles.Fullscreen;
-			localStorage.setItem("KinkyDungeonFullscreen", KDToggles.Fullscreen ? "True" : "False");
 		}
 
 
