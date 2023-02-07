@@ -248,9 +248,16 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 	}
 }
 
+function KDPlayerEvasionPenalty() {
+	let evasionPenalty = .25 * KinkyDungeonSlowLevel;
+
+	return evasionPenalty;
+}
+
 function KinkyDungeonPlayerEvasion() {
-	let playerEvasionMult = KinkyDungeonStatsChoice.get("Dodge") && KinkyDungeonMiscastChance < 0.001 ? KDDodgeAmount : 1.0;
-	let val = playerEvasionMult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion"));
+	let playerEvasionMult = 1.0;
+	let playerEvasionPenalty = KDPlayerEvasionPenalty();
+	let val = playerEvasionMult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion") - playerEvasionPenalty);
 
 	return val;
 }

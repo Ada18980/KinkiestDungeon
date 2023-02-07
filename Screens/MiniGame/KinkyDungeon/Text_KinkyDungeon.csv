@@ -106,7 +106,7 @@ KinkyDungeonStat15,"Bondage Lover"
 KinkyDungeonStatDesc15,"Attempting to escape arouses you."
 
 KinkyDungeonStat18,"Focused Dodge"
-KinkyDungeonStatDesc18,"While your miscast chance is 0%, your base evasion is 25% (multiplicative)."
+KinkyDungeonStatDesc18,"While your miscast chance is 0%, you gain +40 Evasion."
 KinkyDungeonStat19,"Distracted"
 KinkyDungeonStatDesc19,"+15% miscast chance (at all times)"
 
@@ -614,7 +614,7 @@ StatKeyEscapeKey,Got the keys! Find the stairs to go to the next floor.
 StatKeyEscapeNoKey,You haven't found the keys for this floor yet.
 StatKey,Missing key
 StatMiscastChance,"Chance for a spell to fizzle: "
-StatEvasion,"Dodge Chance: Percent%, based on EVASIONSUM Evasion plus other modifiers"
+StatEvasion,"Dodge Chance: Percent%, based on EVASIONSUM Evasion, -EVASIONPENALTY penalty from bindings"
 StatRestraintBlock,"Chance to block a level 10 restraint: Percent%"
 StatVision,"Sight Range: RADIUS"
 StatSpeed,"Speed: SPD"

@@ -2715,7 +2715,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			AIData.followRange = 3.9;
 			AIData.kite = true;
 		} else
-			AIData.followRange = 1;
+			AIData.followRange = 1.5;
 	}
 
 	if ((AIType.resetguardposition(enemy, player, AIData)) && (!enemy.gxx || !enemy.gyy)) {
