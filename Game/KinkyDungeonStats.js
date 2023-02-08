@@ -379,7 +379,7 @@ function KDGetStamDamageThresh() {
 	return data.thresh;
 }
 
-function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit) {
+function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 	if (bullet && !noAlreadyHit) {
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
@@ -527,7 +527,8 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit) {
 		str = str + `${Math.round(amt*10)}wp`;
 		KinkyDungeonChangeWill(amt, true);
 	}
-	KinkyDungeonInterruptSleep();
+	if (!noInterrupt)
+		KinkyDungeonInterruptSleep();
 
 	if (data.dmg > 0 && KinkyDungeonStatsChoice.get("Breathless")) {
 		let sleepAmount = data.dmg > 3 ? 6 : (data.dmg > 1 ? 4 : 2);

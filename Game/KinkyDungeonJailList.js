@@ -38,11 +38,22 @@ let KDJailEvents = {
 				KinkyDungeonTilesGet((xx-1) + "," + yy).Lock = undefined;
 			}
 			KDGameData.KinkyDungeonJailGuard = guard.id;
+			if (KinkyDungeonEnemyAt(guard.x, guard.y)) KDKickEnemy(KinkyDungeonEnemyAt(guard.x, guard.y));
 			KDAddEntity(guard);
 			if (KinkyDungeonVisionGet(guard.x, guard.y))
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardAppear").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "white", 6);
 			KDGameData.KinkyDungeonGuardTimer = KDGameData.KinkyDungeonGuardTimerMax;
 			KDGameData.KinkyDungeonGuardSpawnTimer = KDGameData.KinkyDungeonGuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.KinkyDungeonGuardSpawnTimerMax - KDGameData.KinkyDungeonGuardSpawnTimerMin));
+		},
+	},
+	"spawnRescue": {
+		// Determines the weight
+		weight: (guard, xx, yy) => {
+			return (KinkyDungeonStatsChoice.get("easyMode") && KinkyDungeonFlags.get("JailIntro") && !KinkyDungeonFlags.get("JailRepeat") && !KinkyDungeonFlags.get("refusedShopkeeperRescue") && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) ? 100 : 0;
+		},
+		// Occurs when the jail event triggers
+		trigger: (g, xx, yy) => {
+			KDStartDialog("ShopkeeperRescue", "ShopkeeperRescue", true, "", undefined);
 		},
 	},
 };
@@ -53,7 +64,7 @@ for (let rescue of Object.entries(KDPrisonRescues)) {
 		weight: (guard, xx, yy) => {
 			if (guard) return 0;
 			if (KDGameData.JailTurns <= 70 || KDFactionRelation("Player", rescue[1].faction) < 0.09) return 0;
-			return 100 * Math.min(0.05, Math.max(0.1, 0.35 * KDFactionRelation("Player", rescue[1].faction)) + 0.005 * (KDGameData.PriorJailbreaks ? KDGameData.PriorJailbreaks : 0));
+			return 100 * Math.min(0.05, Math.max(0.1, 0.35 * KDFactionRelation("Player", rescue[1].faction)) - 0.005 * (KDGameData.PriorJailbreaks ? (KDGameData.PriorJailbreaks - (KDGameData.PriorJailbreaksDecay || 0)) : 0));
 		},
 		// Occurs when the jail event triggers
 		trigger: (guard, xx, yy) => {
@@ -129,7 +140,7 @@ let KDGuardActions = {
 			} else if (guard.Enemy.dmgType === "grope" || guard.Enemy.dmgType === "tickle") {
 				let touchesPlayer = KinkyDungeonCheckLOS(KinkyDungeonJailGuard(), KinkyDungeonPlayerEntity, KDistChebyshev(guard.x - KinkyDungeonPlayerEntity.x, guard.y - KinkyDungeonPlayerEntity.y), 1.5, false, false);
 				if (touchesPlayer) {
-					let dmg = KinkyDungeonDealDamage({damage: guard.Enemy.power * 0.1, type: guard.Enemy.dmgType});
+					let dmg = KinkyDungeonDealDamage({damage: guard.Enemy.power * 0.1, type: guard.Enemy.dmgType}, undefined, undefined, true);
 					if (dmg && dmg.string)
 						KinkyDungeonSendTextMessage(5, TextGet("Attack" + guard.Enemy.name).replace("DamageTaken", dmg.string), "yellow", 3);
 				} else {
@@ -265,7 +276,7 @@ let KDGuardActions = {
 					if (newRestraint) {
 						let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
 						let added = KinkyDungeonAddRestraintIfWeaker(newRestraint, 0,
-							true, "Red", undefined, undefined, undefined, KDGetFaction(KinkyDungeonJailGuard()),
+							true, undefined, undefined, undefined, undefined, KDGetFaction(KinkyDungeonJailGuard()),
 							KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, KinkyDungeonJailGuard());
 						if (added) {
 							let restraintModification = oldRestraintItem ? "ChangeRestraints" : "AddRestraints";

@@ -9,6 +9,23 @@ let KinkyDungeonEnemies = [
 		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
 
+	// Easy mode rescuer
+	{name: "ShopkeeperRescue", tags: KDMapInit(["human", "peaceful", "alwayshelp", "noshop", "opendoors"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "guard",
+		visionRadius: 0, maxhp: 120, regen: 10, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "ShopkeeperRescueChatter",
+		Behavior: {noPlay: true},
+		noDisplace: true, keys: true,
+		events: [
+			{type: "ShopkeeperRescueAI", trigger: "afterEnemyTick"},
+		],
+		terrainTags: {}, floors:KDMapInit([])},
+
+	// Easy mode NPC
+	{name: "ShopkeeperStart", tags: KDMapInit(["human", "peaceful", "alwayshelp", "noshop", "opendoors"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "guard",
+		visionRadius: 0, maxhp: 120, regen: 10, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "ShopkeeperStart",
+		Behavior: {noPlay: true},
+		noDisplace: true, keys: true,
+		terrainTags: {}, floors:KDMapInit([])},
+
 	// Quest NPC
 	{name: "DressmakerQuest", tags: KDMapInit(["dressmaker", "human", "peaceful", "noshop"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "hunt", regen: 0.1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "DressmakerQuest",

@@ -1214,20 +1214,25 @@ Features
 - New minor enemies: Encased Adventurer and Bouncy Slime
 
 4.0 (Jan 2023)
-- Soul crystals now are easier to dodge
+Major changes:
 - New tileset: Orrery
 - New enemies in the Orrery: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced), Star Demon, Moon Demon
+- Added an easy mode, which has a shopkeeper that comes and rescues you if you get in trouble!
 - Added perks filter in the perks screen
+Other changes:
+- New enemy in Ancient Tombs: Animated Sarcophagus
+- Added indicator for enemies which disappear if caster gets stunned (a hexagon)
+- Jail rescues become rarer the more often you get rescued, penalty decays by 1 rescue per floor
+- Soul crystals now are easier to dodge
+- Being slowed now reduces your evasion
+- Focused Dodge now gives +40 Evasion instead of 25% base evasion, making it easier to calculate
 - Fixed a bug where ambushing enemies no longer show tooltips before springing their ambush
 - Increased the time taken to put on armor
 - Second Wind now destroys restraints when you get the willpower bonus
 - Training collar does less damage (still stuns)
 - Some tooltips still appear even without inspecting
 - Fixed a bug where selecting both Hogtied and Latex Doll would mistakenly not place a blindfold on the player character
-- New enemy in Ancient Tombs: Animated Sarcophagus
-- Added indicator for enemies which disappear if caster gets stunned (a hexagon)
-- Focused Dodge now gives +40 Evasion instead of 25% base evasion, making it easier to calculate
-- Being slowed now reduces your evasion
+- Other general bugfixes and crash fixes
 
 TODO ValidationFindBlockCycles to prevent bugs
 

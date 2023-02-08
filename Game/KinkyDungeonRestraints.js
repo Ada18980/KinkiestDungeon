@@ -177,7 +177,7 @@ function KinkyDungeonDrawTether(Entity, CamX, CamY) {
 				MainCanvas.lineWidth = 4;
 				MainCanvas.moveTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*d, KinkyDungeonGridSizeDisplay*0.8 + yOffset + yy + dy*d);
 				MainCanvas.lineTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*(d+dd), KinkyDungeonGridSizeDisplay*0.8 + yOffset2 + yy + dy*(d+dd));
-				let color = KDRestraint(inv).Color[0] ? KDRestraint(inv).Color[0] : KDRestraint(inv).Color;
+				let color = KDRestraint(inv).Color[0]?.length > 3 ? KDRestraint(inv).Color[0] : KDRestraint(inv).Color;
 				// @ts-ignore
 				MainCanvas.strokeStyle = (!color || color == "Default") ? "#aaaaaa" : color;
 				MainCanvas.stroke();
@@ -200,9 +200,12 @@ function KDIsPlayerTethered(player) {
 function KinkyDungeonAttachTetherToEntity(dist, entity) {
 	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
 	if (inv && KDRestraint(inv).tether) {
+		let newLeash = inv.tetherEntity != entity.id;
 		inv.tetherEntity = entity.id;
 		if (dist) inv.tetherLength = dist;
+		return newLeash;
 	}
+	return false;
 }
 
 function KDBreakTether() {
@@ -219,7 +222,7 @@ function KDBreakTether() {
 }
 
 let KDLeashPullCost = 0.5;
-let KDLeashPullKneelTime = 8;
+let KDLeashPullKneelTime = 2;
 
 /**
  *
@@ -320,7 +323,7 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 							if (Entity.player) {
 								if (KinkyDungeonCanStand()) {
 									KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KinkyDungeonSlowMoveTurns);
-									KinkyDungeonChangeStamina(-KDLeashPullCost, false, true);
+									KinkyDungeonChangeWill(-KDLeashPullCost, false);
 								}
 								KinkyDungeonInterruptSleep();
 								KinkyDungeonSendEvent("leashTug", {Entity: Entity, slot: slot, item: inv});
@@ -2473,6 +2476,9 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
  */
 function KinkyDungeonIsLinkable(oldRestraint, newRestraint, item, ignoreItem) {
 	if (!oldRestraint.nonbinding && newRestraint.nonbinding) return false;
+	if (oldRestraint && newRestraint && oldRestraint && oldRestraint.Link) {
+		if (newRestraint.name == oldRestraint.Link) return true;
+	}
 	if (item && !KDCheckLinkSize(item, newRestraint, false, false, undefined, ignoreItem)) return false;
 	if (item && !KDCheckLinkTotal(item, newRestraint)) return false;
 	if (oldRestraint && newRestraint && oldRestraint && oldRestraint.LinkableBy && newRestraint.shrine) {
@@ -2483,9 +2489,6 @@ function KinkyDungeonIsLinkable(oldRestraint, newRestraint, item, ignoreItem) {
 				}
 			}
 		}
-	}
-	if (oldRestraint && newRestraint && oldRestraint && oldRestraint.Link) {
-		if (newRestraint.name == oldRestraint.Link) return true;
 	}
 	return false;
 }

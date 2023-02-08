@@ -1017,6 +1017,10 @@ function KDResetAllIntents() {
 	}
 }
 
+/**
+ * Moves an enemy to a random position on the map
+ * @param {entity} e
+ */
 function KDKickEnemy(e) {
 	if (!e.Enemy.tags.temporary) {
 		if (!e.Enemy.tags.prisoner && !KDEnemyHasFlag(e, "imprisoned")) {
