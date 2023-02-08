@@ -2,7 +2,7 @@
 
 let KDDialogueParams = {
 	ShopkeeperFee: 1000,
-}
+};
 
 /**
  * Tags that are deleted on ng++
