@@ -1349,7 +1349,8 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	let actionBarXX = 1360;
 	let actionBarYY = 925;
 
-	DrawTextKD(TextGet("TurnCounter") + KinkyDungeonCurrentTick, 1995, 995, "#ffffff", "#333333", 10, "right");
+	if (KDToggles.TurnCounter)
+		DrawTextKD(TextGet("TurnCounter") + KinkyDungeonCurrentTick, 1995, 995, "#ffffff", "#333333", 12, "right");
 
 	DrawButtonKDEx("switchWeapon", (bdata) => {
 		if (!KinkyDungeonControlsEnabled()) return false;

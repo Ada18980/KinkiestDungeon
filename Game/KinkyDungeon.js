@@ -82,6 +82,7 @@ let KDToggles = {
 	Sound: true,
 	Drool: true,
 	DrawArmor: true,
+	TurnCounter: true,
 };
 
 let KDDefaultKB = {
@@ -1494,15 +1495,14 @@ function KinkyDungeonRun() {
 			() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
 		YY += YYd;
 
-		// Draw temp start screen
-		DrawButtonKDEx("KBBack2", () => {
+		DrawButtonKDEx("KBBackOptions", () => {
 			KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
 			if (KinkyDungeonGameFlag) {
 				KinkyDungeonState = "Game";
 			} else KinkyDungeonState = "Menu";
 			//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
 			return true;
-		}, true, 975, 780, 550, 64, TextGet("GameReturnToMenu2"), "#ffffff", "");
+		}, true, 975, 780, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "");
 
 	}
 
