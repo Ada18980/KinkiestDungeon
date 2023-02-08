@@ -439,7 +439,7 @@ function KDUpdateEffectTiles(delta) {
 			if (t[1].pauseDuration > 0) {
 				t[1].pauseDuration -= delta;
 			} else {
-				if (t[1].duration > 0) t[1].duration -= delta;
+				if (t[1].duration > 0 && t[1].duration < 9000) t[1].duration -= delta;
 			}
 			if (t[1].pauseDuration <= 0.001) t[1].pauseSprite = undefined;
 			if (t[1].duration <= 0.001) delete location[t[0]];
