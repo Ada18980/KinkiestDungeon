@@ -910,8 +910,19 @@ function KinkyDungeonRun() {
 		DrawButtonVis(590, 942, 150, 50, TextGet("KinkyDungeonDressPlayerImport"), "#ffffff", "");
 		DrawButtonVis(1870, 942, 110, 50, TextGet("KinkyDungeonCredits"), "#ffffff", "");
 		DrawButtonVis(1700, 942, 150, 50, TextGet("KinkyDungeonPatrons"), "#ffffff", "");
-		DrawButtonVis(850, 942, 375, 50, TextGet("KinkyDungeonDeviantart"), "#ffffff", "");
-		DrawButtonVis(1275, 942, 375, 50, TextGet("KinkyDungeonPatreon"), "#ffeecc", "");
+		DrawButtonKDEx("Deviantart", (bdata) => {
+			let url = 'https://www.deviantart.com/ada18980';
+			window.open(url, '_blank');
+			return true;
+		}, true, 1700, 694, 280, 50, TextGet("KinkyDungeonDeviantart"), "#ffffff", "");
+		DrawButtonKDEx("Patreon", (bdata) => {
+			let url = 'https://www.patreon.com/ada18980';
+			KDSendEvent('patreon');
+			window.open(url, '_blank');
+			return true;
+		}, true, 1700, 754, 280, 50, TextGet("KinkyDungeonPatreon"), "#ffeecc", "");
+
+
 
 		DrawButtonVis(1700, 874, 280, 50, TextGet(localStorage.getItem("BondageClubLanguage") || "EN"), "#ffffff", "");
 
@@ -2168,17 +2179,6 @@ function KinkyDungeonHandleClick() {
 		}
 		if (MouseIn(1700, 930, 150, 64)) {
 			KinkyDungeonState = "Patrons";
-			return true;
-		}
-		if (MouseIn(850, 930, 375, 64)) {
-			let url = 'https://www.deviantart.com/ada18980';
-			window.open(url, '_blank');
-			return true;
-		}
-		if (MouseIn(1275, 930, 375, 64)) {
-			let url = 'https://www.patreon.com/ada18980';
-			KDSendEvent('patreon');
-			window.open(url, '_blank');
 			return true;
 		}
 	} else if (KinkyDungeonState == "Save") {
