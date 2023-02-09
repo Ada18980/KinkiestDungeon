@@ -8872,6 +8872,9 @@ dGhostInfo_BrashGag,"(Glare at her)"
 
 rShopkeeperRescueChatter,"Oh, those people that locked you up?|I dealt with them.|Now come along, there's no time to waste!"
 
+rShopkeeperRescueChatterTreasure,"(The SPEAKER giggles)|Treasure? The treasure isn't going anywhere.|Plus, I made a few enemies on the way.|We better not wait till they come back."
+dShopkeeperRescueChatter_Treasure,"But what about the treasure!?"
+
 rShopkeeperRescue,"(You hear footsteps. It's the SPEAKER!)|Why look at you!|Well you seem to be in a bind, don't you?"
 rShopkeeperRescueAccept,"Not to worry! I'll get you out of here!"
 rShopkeeperRescueRefuse,"Hehe, alright! If that's what you want~"
@@ -8886,7 +8889,7 @@ rShopkeeperStart,"(The SPEAKER, your longtime friend, smiles)|Well well, if it i
 dShopkeeperStart_Danger,"Caught by...?"
 rShopkeeperStartDanger,"Hah!|You've been here a million times!|You obviously know about the many factions vying for power~"
 dShopkeeperStart_Fee,"F-fee? There's a fee?"
-rShopkeeperStartFee,"Yep! It'll cost ya!|1000 gold pieces. A bargain, if you ask me...|Unless you'd like to spend the rest of your life in chains!"
+rShopkeeperStartFee,"Yep! It'll cost ya!|RESCUECOST gold pieces. A bargain, if you ask me...|Unless you'd like to spend the rest of your life in chains!"
 dShopkeeperStart_Shop,"Will you buy my loot?"
 rShopkeeperStartShop,"Soon! I'm currently setting up my wares, so you'll have to wait."
 dShopkeeperStart_Gag,"Mmmph!"
@@ -8895,10 +8898,10 @@ rShopkeeperStartGag,"Daww! What a cutie!|(She smiles and pats your head gently)"
 dReturn,"(Return)"
 
 
-rShopkeeperTeleport,"(The SPEAKER brings you safely back to her shop on the surface)|There! Nice and safe.|Now, as for my fee..."
+rShopkeeperTeleport,"(The SPEAKER brings you safely back to her shop on the surface)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!"
 
-dShopkeeperTeleport_Pay,"Right! Here's 1000 gp."
-dShopkeeperTeleport_PayGag,"Mmmph. (Nod your head and pay 1000 gp)"
+dShopkeeperTeleport_Pay,"Right! Here's RESCUECOST gp."
+dShopkeeperTeleport_PayGag,"Mmmph. (Nod your head and pay RESCUECOST gp)"
 rShopkeeperTeleportPay,"(The SPEAKER smiles)|Pleasure doing business with ya~"
 
 dShopkeeperTeleport_Tab,"Mind adding it to my tab?"

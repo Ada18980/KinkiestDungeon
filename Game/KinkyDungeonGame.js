@@ -3561,7 +3561,8 @@ function KinkyDungeonMoveTo(moveX, moveY, SuppressSprint) {
 		KinkyDungeonTrapMoved = true;
 	}
 	let willSprint = KinkyDungeonToggleAutoSprint && (xx != moveX || yy != moveY) && !SuppressSprint;
-	let cencelled = KDMovePlayer(moveX, moveY, true, willSprint);
+	let cencelled = !KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity, moveX, moveY) ? KDMovePlayer(moveX, moveY, true, willSprint) : true;
+
 
 	if (stepOff) KinkyDungeonHandleStepOffTraps(KinkyDungeonPlayerEntity, xx, yy, moveX, moveY);
 

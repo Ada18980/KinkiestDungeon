@@ -260,6 +260,7 @@ let KDOptOut = false;
 * MainPath: string,
 * ShortcutPath: string,
 * ItemID: number,
+* ShopkeeperFee: number,
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
@@ -395,6 +396,7 @@ let KDGameDataBase = {
 	OfferCount: 0,
 
 	ItemID: 0,
+	ShopkeeperFee: 0,
 };
 /**
  * @type {KDGameDataBase}
@@ -2572,6 +2574,12 @@ function KinkyDungeonLoadGame(String) {
 			&& saveData.costs != undefined
 			&& saveData.rep != undefined
 			&& saveData.dress != undefined) {
+
+			KDPathfindingCacheFails = 0;
+			KDPathfindingCacheHits = 0;
+			KDPathCache = new Map();
+			KDThoughtBubbles = new Map();
+
 			KinkyDungeonEntities = [];
 			KDUpdateEnemyCache = true;
 			if (saveData.flags && saveData.flags.length) KinkyDungeonFlags = new Map(saveData.flags);

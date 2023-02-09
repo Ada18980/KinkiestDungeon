@@ -833,6 +833,15 @@ let KDDialogue = {
 			return false;
 		},
 		options: {
+			"Treasure": {
+				playertext: "Default", response: "Default", gagDisabled: true,
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
 			"Leave": {
 				playertext: "Leave", response: "Default",
 				exitDialogue: true,
@@ -842,6 +851,13 @@ let KDDialogue = {
 	"ShopkeeperTeleport": {
 		response: "Default",
 		clickFunction: (gagged) => {
+			if (!KDGameData.ShopkeeperFee) KDGameData.ShopkeeperFee = KDDialogueParams.ShopkeeperFee;
+			KDGameData.CurrentDialogMsgValue = {
+				"RESCUECOST": KDDialogueParams.ShopkeeperFee,
+			};
+			KDGameData.CurrentDialogMsgData = {
+				"RESCUECOST": "" + KDDialogueParams.ShopkeeperFee,
+			};
 			return false;
 		},
 		options: {
@@ -888,6 +904,13 @@ let KDDialogue = {
 	"ShopkeeperStart": {
 		response: "Default",
 		clickFunction: (gagged) => {
+			if (!KDGameData.ShopkeeperFee) KDGameData.ShopkeeperFee = KDDialogueParams.ShopkeeperFee;
+			KDGameData.CurrentDialogMsgValue = {
+				"RESCUECOST": KDDialogueParams.ShopkeeperFee,
+			};
+			KDGameData.CurrentDialogMsgData = {
+				"RESCUECOST": "" + KDDialogueParams.ShopkeeperFee,
+			};
 			return false;
 		},
 		options: {

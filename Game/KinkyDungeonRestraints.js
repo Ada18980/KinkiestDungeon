@@ -222,7 +222,7 @@ function KDBreakTether() {
 }
 
 let KDLeashPullCost = 0.5;
-let KDLeashPullKneelTime = 2;
+let KDLeashPullKneelTime = 5;
 
 /**
  *
@@ -268,17 +268,33 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 			if (inv.tx && inv.ty) KDGameData.KinkyDungeonLeashedPlayer = Math.max(KDGameData.KinkyDungeonLeashedPlayer, 5);
 
 			if (xTo || yTo) {// This means we arre trying to move
-				if (KDistChebyshev(xTo-inv.tx, yTo-inv.ty) > KDRestraint(inv).tether) {
+				let pathToTether = KinkyDungeonFindPath(xTo, yTo, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);
+				let playerDist = Math.max(pathToTether?.length || 0, KDistChebyshev(xTo-inv.tx, yTo-inv.ty));
+				// Fallback
+				if (playerDist > KDRestraint(inv).tether) {
 					if (Msg) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherTooShort").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
-					return false;
+					if (KinkyDungeonCanStand()) {
+						KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KinkyDungeonSlowMoveTurns);
+						KinkyDungeonChangeWill(-KDLeashPullCost, false);
+					}
+					return true;
 				}
 			} else {// Then we merely update
 				for (let i = 0; i < 10; i++) {
-					let playerDist = KDistChebyshev(Entity.x-inv.tx, Entity.y-inv.ty);
+					// Distance is in pathing units
+					let pathToTether = KinkyDungeonFindPath(Entity.x, Entity.y, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);
+					let playerDist = pathToTether?.length;
+					// Fallback
+					if (!pathToTether) playerDist = KDistChebyshev(Entity.x-inv.tx, Entity.y-inv.ty);
 					if (playerDist > tether) {
 						let slot = null;
-						let path = KinkyDungeonFindPath(Entity.x, Entity.y, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesEnemy);
-						if (path && path.length > 0 && KDistEuclidean(path[0].x - inv.tx, path[0].y - inv.ty) > -0.01 + KDistEuclidean(Entity.x - inv.tx, Entity.y - inv.ty) && KDistChebyshev(path[0].x - Entity.x, path[0].y - Entity.y) < 1.5) slot = path[0];
+						if (pathToTether
+							&& pathToTether?.length > 0
+							&& (
+								KDistEuclidean(pathToTether[0].x - inv.tx, pathToTether[0].y - inv.ty) > -0.01 + KDistEuclidean(Entity.x - inv.tx, Entity.y - inv.ty)
+								|| KinkyDungeonFindPath(pathToTether[0].x, pathToTether[0].y, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy)?.length < pathToTether.length
+							) && KDistChebyshev(pathToTether[0].x - Entity.x, pathToTether[0].y - Entity.y) < 1.5)
+							slot = pathToTether[0];
 						if (!slot) {
 							let mindist = playerDist;
 							for (let X = Entity.x-1; X <= Entity.x+1; X++) {
@@ -316,22 +332,20 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 										KDMoveEntity(enemy, Entity.x, Entity.y, false);
 								}
 							}
+							// Force open door
+							if (KinkyDungeonMapGet(slot.x, slot.y) == 'D') KinkyDungeonMapSet(slot.x, slot.y, 'd');
 
 							KDMoveEntity(Entity, slot.x, slot.y, false);
 							if (Entity.player) KinkyDungeonSetFlag("pulled", 1);
 							else KinkyDungeonSetEnemyFlag(Entity, "pulled");
 							if (Entity.player) {
-								if (KinkyDungeonCanStand()) {
-									KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KinkyDungeonSlowMoveTurns);
-									KinkyDungeonChangeWill(-KDLeashPullCost, false);
-								}
 								KinkyDungeonInterruptSleep();
 								KinkyDungeonSendEvent("leashTug", {Entity: Entity, slot: slot, item: inv});
 								if (KinkyDungeonLeashingEnemy()) {
 									KinkyDungeonSetEnemyFlag(KinkyDungeonLeashingEnemy(), "harshpull", 5);
 								}
-								if (Msg) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherPull").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
-
+								if (Msg) KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonTetherPull").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
+								exceeded = true;
 							}
 
 						}
