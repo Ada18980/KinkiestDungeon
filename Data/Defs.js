@@ -12,7 +12,8 @@ let LAYERS_BASE = [
 	"Shoulders",
 
 
-	// This slot is for things like breastplates
+	// This slot is for things like breastplates and things that go over
+	"ChestStraps",
 	"Chestplate",
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
@@ -20,7 +21,12 @@ let LAYERS_BASE = [
 	"Harness",
 	// Chest is breasts, should only intersect on bottom and side edges, top is indeterminate
 	"Chest",
+	// For things that go directly under the breasts
+	"Underbust",
+	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
+	"Underarms",
 	"Corset",
+
 
 
 	// Left arm clothes

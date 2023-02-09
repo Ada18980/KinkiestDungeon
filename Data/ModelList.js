@@ -223,3 +223,25 @@ AddModel({
 		...GetModelLayers("BanditBreastplate"),
 	])
 });
+
+AddModel({
+	Name: "RopeArms",
+	Folder: "Rope",
+	Layers: ToLayerMap([
+		{ Name: "ChestUpper", Layer: "ChestStraps", Pri: 0,
+			Poses: ToMap([...ARMPOSES]),
+			Invariant: true,
+		},
+		{ Name: "ShoulderStraps", Layer: "ChestStraps", Pri: 1,
+			Poses: ToMap([...ARMPOSES]),
+			Invariant: true,
+		},
+		{ Name: "ChestLower", Layer: "Underbust", Pri: 0,
+			Poses: ToMap([...ARMPOSES]),
+			Invariant: true,
+		},
+		{ Name: "Arms", Layer: "Underarms", Pri: 0,
+			Poses: ToMap(["Wristtie"]),
+		},
+	])
+});
