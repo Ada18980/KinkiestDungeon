@@ -8873,6 +8873,8 @@ dGhostInfo_BrashGag,"(Glare at her)"
 rShopkeeperRescueChatter,"Oh, those people that locked you up?|I dealt with them.|Now come along, there's no time to waste!"
 rShopkeeperRescueChatterTreasure,"(The SPEAKER giggles)|Treasure? The treasure isn't going anywhere.|Plus, I made a few enemies on the way.|We better not wait till they come back."
 dShopkeeperRescueChatter_Treasure,"But what about the treasure!?"
+rShopkeeperRescueChatterCost,"(The SPEAKER ponders your question)|I think we'll have to talk about compensation|AFTER we get out of here."
+dShopkeeperRescueChatter_Cost,"So how much is this going to cost me?"
 
 rShopkeeperRescue,"(You hear footsteps. It's the SPEAKER!)|Why look at you!|Well you seem to be in a bind, don't you?"
 rShopkeeperRescueAccept,"Not to worry! I'll get you out of here!"
@@ -8908,6 +8910,11 @@ dShopkeeperTeleport_TabGag,"(Shake your head regrettably.)"
 rShopkeeperTeleportTabYesRestrained,"(The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~"
 rShopkeeperTeleportTabYes,"(The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all."
 rShopkeeperTeleportTabNo,"(The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!"
+
+dShopkeeperTeleport_TabRetry,"Pretty please? I promise I'll pay you back."
+dShopkeeperTeleport_TabRetryGag,"(Be insistent)"
+rShopkeeperTeleportTabRetryRestrained,"(The SPEAKER rubs her chin)|Fine, I believe you.|But I won't be letting you out of those restraints!"
+rShopkeeperTeleportTabRetry,"(The SPEAKER sighs)|Fine, I believe you.|You better believe I won't forget, though!"
 
 
 

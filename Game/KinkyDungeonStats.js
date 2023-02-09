@@ -690,7 +690,7 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
 	NoSlow = data.NoSlow;
 	minimum = data.minimum;
 	slowFloor = data.slowFloor;
-	Pause = data.pause;
+	Pause = data.Pause;
 
 	if (isNaN(Amount)) {
 		console.trace();
