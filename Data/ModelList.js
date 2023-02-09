@@ -241,7 +241,7 @@ AddModel({
 			Invariant: true,
 		},
 		{ Name: "Arms", Layer: "Underarms", Pri: 0,
-			Poses: ToMap(["Wristtie"]),
+			Poses: ToMap(["Wristtie", "Boxtie"]),
 		},
 	])
 });
