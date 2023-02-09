@@ -49,7 +49,7 @@ KDWallBump,You bump into a wall.
 
 KDVibeVolume,Toy Volume:
 KDMusicVolume,Music Volume:
-KDAnimSpeed,Animation Speed:
+KDAnimSpeed,Animation Time:
 
 KinkyDungeonJourney,"Select a journey. This will determine the ordering of game areas."
 KinkyDungeonJourney0,"Standard: The intended experience"
@@ -8871,7 +8871,6 @@ dGhostInfo_BrashGag,"(Glare at her)"
 
 
 rShopkeeperRescueChatter,"Oh, those people that locked you up?|I dealt with them.|Now come along, there's no time to waste!"
-
 rShopkeeperRescueChatterTreasure,"(The SPEAKER giggles)|Treasure? The treasure isn't going anywhere.|Plus, I made a few enemies on the way.|We better not wait till they come back."
 dShopkeeperRescueChatter_Treasure,"But what about the treasure!?"
 
