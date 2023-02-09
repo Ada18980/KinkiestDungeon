@@ -1495,6 +1495,9 @@ function KinkyDungeonRun() {
 			() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
 		YY += YYd;
 
+
+
+
 		DrawButtonKDEx("KBBackOptions", () => {
 			KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
 			if (KinkyDungeonGameFlag) {
@@ -2196,6 +2199,35 @@ function KinkyDungeonHandleClick() {
 		if (KinkyDungeonIsPlayer()) KinkyDungeonClickGame();
 	} else if (KinkyDungeonState == "Keybindings") {
 		// Replaced by DrawButtonKDEx
+	} else if (KinkyDungeonState == "Toggles") {
+		let YYstart = 200;
+		let YY = YYstart;
+		let YYd = 70;
+
+		YY = YYstart;
+
+
+		if (MouseIn(450, YY, 350, 64)) {
+			if (MouseX <= 450 + 350/2) KDVibeVolumeListIndex = (KDVibeVolumeList.length + KDVibeVolumeListIndex - 1) % KDVibeVolumeList.length;
+			else KDVibeVolumeListIndex = (KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length;
+			KDVibeVolume = KDVibeVolumeList[KDVibeVolumeListIndex];
+			localStorage.setItem("KDVibeVolume", "" + KDVibeVolumeListIndex);
+		}
+		YY += YYd;
+		if (MouseIn(450, YY, 350, 64)) {
+			if (MouseX <= 450 + 350/2) KDMusicVolumeListIndex = (KDMusicVolumeList.length + KDMusicVolumeListIndex - 1) % KDMusicVolumeList.length;
+			else KDMusicVolumeListIndex = (KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length;
+			KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
+			localStorage.setItem("KDMusicVolume", "" + KDMusicVolumeListIndex);
+		}
+		YY += YYd;
+		if (MouseIn(450, YY, 350, 64)) {
+			if (MouseX <= 450 + 350/2) KDAnimSpeedListIndex = (KDAnimSpeedList.length + KDAnimSpeedListIndex - 1) % KDAnimSpeedList.length;
+			else KDAnimSpeedListIndex = (KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length;
+			KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex];
+			localStorage.setItem("KDAnimSpeed", "" + KDAnimSpeedListIndex);
+		}
+		YY += YYd;
 	} else if (KinkyDungeonState == "End") {
 		if (MouseIn(1075, 650, 350, 64)) {
 			KinkyDungeonState = "Game";
