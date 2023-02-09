@@ -1222,6 +1222,7 @@ Major changes:
 - New, cleaner options menu with a few additional options
 - Improved leash pathfinding to hopefully involve less players bouncing around
 Other changes:
+- Many spell point costs for active spells reduced
 - New enemy in Ancient Tombs: Animated Sarcophagus
 - Added indicator for enemies which disappear if caster gets stunned (a hexagon)
 - Jail rescues become rarer the more often you get rescued, penalty decays by 1 rescue per floor
