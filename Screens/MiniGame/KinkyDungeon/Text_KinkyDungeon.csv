@@ -30,10 +30,11 @@ Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
 Intro4,"(This game does not contain spiders or any carnivorous creatures/plants)"
 Intro4BC,"(Check out the latest standalone version at the News and Updates link below!)"
-KDToggleSound,Enable Sounds
+KDToggleSound,Enable Sound
 KDToggleDrool,Enable Drool/Tears
 KDToggleDrawArmor,Draw Armor
 KDToggleMusic,Enable Music
+KDToggleTurnCounter,Turn Counter
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
 KDToggleGraphicsQuality,High Quality Animations
@@ -687,6 +688,7 @@ LoadGame,Load From Code
 LoadOutfit,Save Outfit (overwrites!)
 GameReturnToMenu,Save Keybindings
 GameReturnToMenu2,Cancel Changes
+GameReturnToMenuFromOptions,Return
 GameConfigKeys,Keybindings
 GameToggles,Game Options
 
@@ -1351,6 +1353,11 @@ NameShadowWarrior,Shadow Warrior
 KillShadowWarrior,"The shadow warrior screeches as it vanishes into mist."
 NameGolem,Allied Golem
 KillGolem,"The words vanish from the golem's forehead as it crashes down."
+
+NameShopkeeperRescue,Shopkeeper
+KillShopkeeperRescue,"You have done a terrible deed."
+NameShopkeeperStart,Shopkeeper
+KillShopkeeperStart,"You have done a terrible deed."
 
 NameMonolith,Crystal Monolith
 KillMonolith,"The crystal fades from the monolith."
@@ -6183,6 +6190,14 @@ KinkyDungeonSaveMode1,Roguelike
 KinkyDungeonSaveModeDesc0,"Grants a save code every floor you can write down. Autosaves only on floor start."
 KinkyDungeonSaveModeDesc1,"No save codes, forced autosaves. You are in it to win it."
 
+
+KinkyDungeonEasyMode0,Normal
+KinkyDungeonEasyMode1,Easy
+KinkyDungeonEasyMode2,
+KinkyDungeonEasyModeDesc0,"If you get captured, you're on your own."
+KinkyDungeonEasyModeDesc1,"If you get captured, you will get rescued and pay a fee."
+KinkyDungeonEasyModeDesc2,""
+
 KinkyDungeonStartGame,Start Playing
 KinkyDungeonStartGameDesc,"Lock your settings in, nice and tight."
 KinkyDungeonStartGameDescAdc,"Choose some perks to spice up your run."
@@ -7330,9 +7345,9 @@ rPrisonIntroNewLife_Pout,"(The SPEAKER giggles)|Don't worry, you'll come to enjo
 rPrisonIntroNewLife_Sub,"(The SPEAKER smiles)|Heh, looks like you'll be fitting right in."
 
 rPrisonIntroRules,"(The SPEAKER chuckles)|You're probably wondering what's in store for you.|It's simple: You behave and do as you're told.|Eventually you will get to roam around.|Don't you dare try to steal anything."
-rPrisonIntroRules_Brat,"(The SPEAKER chuckles)|Babe, you're going to be locked up for a looooong time."
+rPrisonIntroRules_Brat,"(The SPEAKER chuckles)|Looks like it's going to be an extended stay for you~"
 rPrisonIntroRules_Pout,"(The SPEAKER giggles and returns to her work)"
-rPrisonIntroRules_Sub,"(The SPEAKER smiles)|Wonderful. You'll be meeting your new friends soon!"
+rPrisonIntroRules_Sub,"(The SPEAKER smiles)|Looks like you'll get the hang of it pretty quickly!"
 
 dPrisonIntro_NewLife,"(New life?)"
 dPrisonIntro_Rules,"(Let her continue)"
@@ -8855,6 +8870,45 @@ dGhostInfo_Brash,"I don't need your advice, strange ghostly person."
 dGhostInfo_BrashGag,"(Glare at her)"
 
 
+rShopkeeperRescueChatter,"Oh, those people that locked you up?|I dealt with them.|Now come along, there's no time to waste!"
+
+rShopkeeperRescue,"(You hear footsteps. It's the SPEAKER!)|Why look at you!|Well you seem to be in a bind, don't you?"
+rShopkeeperRescueAccept,"Not to worry! I'll get you out of here!"
+rShopkeeperRescueRefuse,"Hehe, alright! If that's what you want~"
+
+dShopkeeperRescue_AcceptGag,"(Nod slowly)"
+dShopkeeperRescue_RefuseGag,"(Shake your head and refuse rescue)"
+dShopkeeperRescue_Accept,"Yes please!"
+dShopkeeperRescue_Refuse,"Actually I was having fun..."
+
+rShopkeeperStart,"(The SPEAKER, your longtime friend, smiles)|Well well, if it isn't you again!|I see that you've decided to challenge the dungeon again.|Remember, if you get caught, I'll rescue you... for a fee~"
+
+dShopkeeperStart_Danger,"Caught by...?"
+rShopkeeperStartDanger,"Hah!|You've been here a million times!|You obviously know about the many factions vying for power~"
+dShopkeeperStart_Fee,"F-fee? There's a fee?"
+rShopkeeperStartFee,"Yep! It'll cost ya!|1000 gold pieces. A bargain, if you ask me...|Unless you'd like to spend the rest of your life in chains!"
+dShopkeeperStart_Shop,"Will you buy my loot?"
+rShopkeeperStartShop,"Soon! I'm currently setting up my wares, so you'll have to wait."
+dShopkeeperStart_Gag,"Mmmph!"
+rShopkeeperStartGag,"Daww! What a cutie!|(She smiles and pats your head gently)"
+
+dReturn,"(Return)"
+
+
+rShopkeeperTeleport,"(The SPEAKER brings you safely back to her shop on the surface)|There! Nice and safe.|Now, as for my fee..."
+
+dShopkeeperTeleport_Pay,"Right! Here's 1000 gp."
+dShopkeeperTeleport_PayGag,"Mmmph. (Nod your head and pay 1000 gp)"
+rShopkeeperTeleportPay,"(The SPEAKER smiles)|Pleasure doing business with ya~"
+
+dShopkeeperTeleport_Tab,"Mind adding it to my tab?"
+dShopkeeperTeleport_TabGag,"(Shake your head regrettably.)"
+rShopkeeperTeleportTabYesRestrained,"(The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~"
+rShopkeeperTeleportTabYes,"(The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all."
+rShopkeeperTeleportTabNo,"(The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!"
+
+
+
 rMapModNone,"The next floor is a normal floor."
 rMapModMold,"This floor is suffering from a slime mold infestation.|Maids have been deployed to deal with the problem.|They could use a hand."
 rMapModBandit,"This floor is being ransacked by bandits.|They are armed and dangerous.|But I hear there's a bounty on their heads?"
@@ -9032,3 +9086,5 @@ KDDialogueRemoteLinkCuffsAncientRobot,Initiating prisoner lockdown protocol
 KDMsgRemoteLinkCuffs,Your RestraintName suddenly snap together as the EnemyName activates them
 
 TurnCounter,"Turn Count: "
+
+KDShopkeeperLeash,"The Shopkeeper leashes you!"

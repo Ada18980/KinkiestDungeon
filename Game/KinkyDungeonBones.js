@@ -38,6 +38,10 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Rappy The Toy", color: "#C759FF", prisoner: true, free: false, customSprite: ""},
 	],
 	],
+	["SmallSlime", [
+		{name: "TY", color: "#ff5555", prisoner: false, free: true, customSprite: ""},
+	],
+	],
 	["WitchRope", [
 		{name: "Kamikaze roper", color: "#ffae70", prisoner: true, free: false, customSprite: ""},
 	],

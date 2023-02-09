@@ -1,5 +1,9 @@
 "use strict";
 
+let KDDialogueParams = {
+	ShopkeeperFee: 1000,
+};
+
 /**
  * Tags that are deleted on ng++
  * @type {string[]}
@@ -770,6 +774,169 @@ let KDDialogue = {
 	"PrisonerRescueElf": KDPrisonerRescue("PrisonerRescueElf", "Elf", ["Elf", "ElfRanger"]),
 	"PrisonerRescueMushy": KDPrisonerRescue("PrisonerRescueMushy", "Mushy", ["Fungal", "Mushy"]),
 	"PrisonerRescueAncientRobot": KDPrisonerRescue("PrisonerRescueAncientRobot", "AncientRobot", ["CaptureBot", "Drone"]),
+
+	"ShopkeeperRescue": {
+		response: "Default",
+		clickFunction: (gagged) => {
+			return false;
+		},
+		options: {
+			"Accept": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged) => {
+					KinkyDungeonInterruptSleep();
+					let door = KDGetJailDoor(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+					if (door) {
+						if (door.tile) {
+							door.tile.Lock = undefined;
+							KDUpdateDoorNavMap();
+						}
+						KinkyDungeonMapSet(door.x, door.y, 'd');
+					}
+					KinkyDungeonEntities = [];
+					KDUpdateEnemyCache = true;
+					let e = DialogueCreateEnemy(door.x, door.y, "ShopkeeperRescue");
+					e.allied = 9999;
+					e.faction = "Player";
+					KDGameData.CurrentDialogMsgSpeaker = e.Enemy.name;
+					KinkyDungeonSetEnemyFlag(e, "RescuingPlayer", -1);
+
+					KDGameData.KinkyDungeonGuardSpawnTimer = 100;
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Refuse": {
+				playertext: "Default", response: "Default",
+				gag: true,
+				clickFunction: (gagged) => {
+					KinkyDungeonSetFlag("refusedShopkeeperRescue", 100);
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
+	"ShopkeeperRescueChatter": {
+		response: "Default",
+		clickFunction: (gagged) => {
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"ShopkeeperTeleport": {
+		response: "Default",
+		clickFunction: (gagged) => {
+			return false;
+		},
+		options: {
+			"Pay": {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (gagged) => {
+					return KinkyDungeonGold >= KDDialogueParams.ShopkeeperFee;
+				},
+				clickFunction: (gagged) => {
+					KinkyDungeonGold -= KDDialogueParams.ShopkeeperFee;
+					KinkyDungeonRemoveRestraintsWithShrine("Rope", undefined, true, false, true);
+					KinkyDungeonRemoveRestraintsWithShrine("Leather", undefined, true, false, true);
+					KinkyDungeonRemoveRestraintsWithShrine("Metal", undefined, true, false, true);
+					KinkyDungeonRemoveRestraintsWithShrine("Latex", undefined, true, false, true);
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Tab": {
+				playertext: "Default", response: "Default", gag: true,
+				clickFunction: (gagged) => {
+					if (KinkyDungeonGold >= KDDialogueParams.ShopkeeperFee) {
+						KDGameData.CurrentDialogMsg = "ShopkeeperTeleportTabNo";
+						KDGameData.CurrentDialogStage = "";
+					} else if (KinkyDungeonPlayerTags.get("Metal") || KinkyDungeonPlayerTags.get("Leather") || KinkyDungeonPlayerTags.get("Rope") || KinkyDungeonPlayerTags.get("Latex")) {
+						KDGameData.CurrentDialogMsg = "ShopkeeperTeleportTabYesRestrained";
+					} else KDGameData.CurrentDialogMsg = "ShopkeeperTeleportTabYes";
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
+	"ShopkeeperStart": {
+		response: "Default",
+		clickFunction: (gagged) => {
+			return false;
+		},
+		options: {
+			"Danger": {
+				playertext: "Default", response: "Default",
+				gagDisabled: true,
+				options: {
+					"Return": {
+						playertext: "Return", response: "Default",
+						leadsToStage: "",
+					},
+				}
+			},
+			"Fee": {
+				playertext: "Default", response: "Default",
+				gagDisabled: true,
+				options: {
+					"Return": {
+						playertext: "Return", response: "Default",
+						leadsToStage: "",
+					},
+				}
+			},
+			"Shop": {
+				playertext: "Default", response: "Default",
+				gagDisabled: true,
+				options: {
+					"Return": {
+						playertext: "Return", response: "Default",
+						leadsToStage: "",
+					},
+				}
+			},
+			"Gag": {
+				playertext: "Default", response: "Default",
+				gagRequired: true,
+				options: {
+					"Return": {
+						playertext: "Return", response: "Default",
+						leadsToStage: "",
+					},
+				}
+			},
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
 
 	"BlacksmithShop": KDSaleShop("BlacksmithShop", ["Lockpick", "Knife", "Sword", "Axe", "Spear", "TrapCuffs"], [], ["blacksmith"], 0.4, 1.5),
 	"PrisonerBandit": {

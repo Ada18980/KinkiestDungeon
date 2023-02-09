@@ -1312,7 +1312,8 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	let actionBarXX = 1360;
 	let actionBarYY = 925;
 
-	DrawTextKD(TextGet("TurnCounter") + KinkyDungeonCurrentTick, 1995, 995, "#ffffff", "#333333", 10, "right");
+	if (KDToggles.TurnCounter)
+		DrawTextKD(TextGet("TurnCounter") + KinkyDungeonCurrentTick, 1995, 995, "#ffffff", "#333333", 12, "right");
 
 	DrawButtonKDEx("switchWeapon", (bdata) => {
 		if (!KinkyDungeonControlsEnabled()) return false;
@@ -1907,25 +1908,6 @@ function KinkyDungeonHandleHUD() {
 				KDGameData.PrisonerState = 'parole';
 				return true;
 			}
-		}
-
-		if (MouseIn(600, 420, 350, 64)) {
-			if (MouseX <= 600 + 350/2) KDVibeVolumeListIndex = (KDVibeVolumeList.length + KDVibeVolumeListIndex - 1) % KDVibeVolumeList.length;
-			else KDVibeVolumeListIndex = (KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length;
-			KDVibeVolume = KDVibeVolumeList[KDVibeVolumeListIndex];
-			localStorage.setItem("KDVibeVolume", "" + KDVibeVolumeListIndex);
-		}
-		if (MouseIn(600, 500, 350, 64)) {
-			if (MouseX <= 600 + 350/2) KDMusicVolumeListIndex = (KDMusicVolumeList.length + KDMusicVolumeListIndex - 1) % KDMusicVolumeList.length;
-			else KDMusicVolumeListIndex = (KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length;
-			KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
-			localStorage.setItem("KDMusicVolume", "" + KDMusicVolumeListIndex);
-		}
-		if (MouseIn(600, 580, 350, 64)) {
-			if (MouseX <= 600 + 350/2) KDAnimSpeedListIndex = (KDAnimSpeedList.length + KDAnimSpeedListIndex - 1) % KDAnimSpeedList.length;
-			else KDAnimSpeedListIndex = (KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length;
-			KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex];
-			localStorage.setItem("KDAnimSpeed", "" + KDAnimSpeedListIndex);
 		}
 
 		if (MouseIn(1650, 900, 300, 64)) {

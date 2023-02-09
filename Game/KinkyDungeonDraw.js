@@ -1324,11 +1324,11 @@ function KinkyDungeonDrawGame() {
 				Object.assign(KinkyDungeonKeybindingsTemp, KinkyDungeonKeybindings);
 			}
 			return true;
-		}, true, 975, 450, 250, 64, TextGet("GameConfigKeys"), "#ffffff", "");
+		}, true, 975, 450, 260, 64, TextGet("GameConfigKeys"), "#ffffff", "");
 		DrawButtonKDEx("GameToggles", () => {
 			KinkyDungeonState = "Toggles";
 			return true;
-		}, true, 1250, 450, 250, 64, TextGet("GameToggles"), "#ffffff", "");
+		}, true, 1265, 450, 260, 64, TextGet("GameToggles"), "#ffffff", "");
 
 	} else if (KinkyDungeonDrawState == "Perks2") {
 		KinkyDungeonDrawPerks(!KDDebugPerks);

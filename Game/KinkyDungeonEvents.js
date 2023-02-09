@@ -3061,6 +3061,51 @@ let KDEventMapEnemy = {
 		},
 	},
 	"afterEnemyTick": {
+		"ShopkeeperRescueAI": (e, enemy, data) => {
+			// We heal nearby allies and self
+			if (data.delta && !KDHelpless(enemy) && !KinkyDungeonIsDisabled(enemy) && KDEnemyHasFlag(enemy, "RescuingPlayer")
+				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
+				KinkyDungeonSetEnemyFlag(enemy, "failpath", 0);
+				KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+				KinkyDungeonSetEnemyFlag(enemy, "longPath", 3);
+				if (!e.chance || KDRandom() < e.chance) {
+					if (!KDIsPlayerTethered()) {
+						// Apply eager buff to make the shopkeeper fast
+						KinkyDungeonApplyBuffToEntity(enemy, KDEager);
+						// Go to leash the player
+						enemy.gx = KinkyDungeonPlayerEntity.x;
+						enemy.gy = KinkyDungeonPlayerEntity.y;
+						if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
+							// Attach leash
+							let newAdd = KinkyDungeonGetRestraint({tags: ["leashing"]}, 0, 'grv');
+							if (newAdd) {
+								KinkyDungeonAddRestraintIfWeaker(newAdd, 0, true, undefined, false, false, undefined, "Prisoner");
+							}
+							if (KinkyDungeonAttachTetherToEntity(2.5, enemy)) {
+								KinkyDungeonSendTextMessage(9, TextGet("KDShopkeeperLeash"), "#ffffff", 4);
+							}
+						}
+					} else {
+						KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 3);
+						// Drag the player to the start position
+						enemy.gx = KinkyDungeonStartPosition.x;
+						enemy.gy = KinkyDungeonStartPosition.y;
+						if (KDistChebyshev(enemy.x - KinkyDungeonStartPosition.x, enemy.y - KinkyDungeonStartPosition.y) < 1.5
+							&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 2.5) {
+							KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), "#ffffff", 4);
+							KDGameData.RoomType = "ShopStart"; // We do a tunnel every other room
+							KDGameData.MapMod = ""; // Reset the map mod
+							MiniGameKinkyDungeonLevel = 0;
+							MiniGameKinkyDungeonCheckpoint = 'grv';
+							let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+							KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
+							KDStartDialog("ShopkeeperTeleport", enemy.Enemy.name, true, "", enemy);
+						}
+					}
+				}
+			}
+		},
 		"nurseAura": (e, enemy, data) => {
 			// We heal nearby allies and self
 			if (data.delta && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
