@@ -7,7 +7,7 @@ KinkyDungeonPatronsList1,"|nuzzles|Rest|LoudestQuietPerson|Violet EverGardner|Bo
 KinkyDungeonPatronsList2,"|AlexisTheFlame|Chen Yu|Sinohisaki|nnm711|Ron lsrp|Miro|Anthony R.|John T.|Geng114514|塵狐|kamil|Iaysakuya|tsang|Somprad|Thatguu|damit damit|Victor|Hjake2|anton A.|Dakra|CuvyanTaylor|"
 KinkyDungeonPatronsList3,"|hanhan|The_rogue1|Tatsuya S.|James K.|Misa|eddy z.|theshrimpyone|Eislobo|OTKTamashii|Michael M.|Jose G.|Minescence|HanQing Z.|hanhan|Shakymunch|Crimson|Arentios|Vini J.|Treemen555|Lordfabricator|ML"
 KinkyDungeonPatronsList4,"Hannes|Isaiah L.|darklink11|Cerb|Diablo200|RNFRaptor|CMDR Salen|daniel C.|NDW|Sewdah N.|Sylicix|Wossa|ComradeArmtyom|逗比 徐|Null Fame|zipidyzap|Mister Mythe|Yagami Yami|Phoenix|Kritsanapong J.|Pyron|Tobi"
-KinkyDungeonPatronsList5,"Traynfreek|森 韩|Meekohi|GRASS|Heavy Blues|Girador|Sinohisaki|Nymjii|Linex|werty989898|John H."
+KinkyDungeonPatronsList5,"Traynfreek|森 韩|Meekohi|GRASS|Heavy Blues|Girador|Sinohisaki|Nymjii|Linex|werty989898|John H.|Hideki H.|Izzzzzz|Zhenyu G.|"
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
 KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|KR Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
@@ -1290,6 +1290,7 @@ NameAngel,Angel
 KillAngel,"You subdue the angel!"
 AttackAngel,"The angel decides to toy with you while you are trussed up. (DamageTaken)"
 AttackAngelBind,"The angel snaps her fingers and divine restraints appear on your body! (+RestraintAdded)"
+AttackAngelLock,"The angel snaps her fingers and glowing locks appear on your body!"
 
 NameHolyConstruct,Holy Construct
 KillHolyConstruct,"You banish the holy construct!"
@@ -1424,16 +1425,19 @@ NameElfRanger,Ranger of the Wild
 KillElfRanger,The ranger disappears into the environment.
 AttackElfRanger,"The ranger gropes your chest with a smile on her face! (DamageTaken)"
 AttackElfRangerBind,"The ranger surprises you and binds you! (+RestraintAdded)"
+AttackElfRangerLock,"The ranger slips a lock onto one of your restraints! (DamageTaken)"
 
 NameElf,Druid of the Wild
 KillElf,The druid calls forth vines to mask her retreat.
 KinkyDungeonSummonMultiBramble,The druid calls forth vines to mask her retreat.
 AttackElf,"The druid holds your face and kisses you! (DamageTaken)"
 AttackElfBind,"The druid binds you with mithril restraints! (+RestraintAdded)"
+AttackElfLock,"The druid tosses a lock from her cloak! It finds you and fastens with a click. (DamageTaken)"
 
 NameElementalWater,Water Elemental
 KillElementalWater,"The water elemental melts into a pool of water."
 AttackElementalWaterBind,"The water elemental's song compels you to be bound! (+RestraintAdded)"
+AttackElementalWaterBindLock,"The water elemental sings a song of helplessness. (DamageTaken)"
 AttackElementalWaterPull,"The water elemental's song compels you to step forward and receive a binding!"
 AttackElementalWater,"The water elemental sings an arousing song! (DamageTaken)"
 
@@ -1454,7 +1458,7 @@ NameElementalAir,Air Elemental
 KillElementalAir,"There is no more elemental. Must have been just the wind."
 AttackElementalAirBind,"The air elemental sneakily slips a restraint on! (+RestraintAdded)"
 AttackElementalAirDash,"The air elemental blinks to your position!"
-AttackElementalAirLock,"The air elemental slips a lock on!"
+AttackElementalAirLock,"The air elemental slips a lock on! (DamageTaken)"
 AttackElementalAir,"The air elemental spanks you playfully! (DamageTaken)"
 
 
@@ -1471,6 +1475,7 @@ AttackSummonedZombie,"The zombie gropes your body! (DamageTaken)"
 NameNawashiZombie,Artistic Zombie
 KillNawashiZombie,"The zombie smiles as it collapses to the ground."
 AttackNawashiZombieBind,"The zombie swiftly ties you! (+RestraintAdded)"
+AttackNawashiZombieLock,"The zombie is somehow dextrous enough to lock your restraint! (DamageTaken)"
 AttackNawashiZombie,"The zombie cuddles with your body! (DamageTaken)"
 
 
@@ -1478,39 +1483,46 @@ NameMageZombie,Mage Zombie
 KillMageZombie,"The zombie frowns and disappears in a puff of ice and ribbons."
 AttackMageZombieBind,"The zombie smiles as she wraps you in charms! (+RestraintAdded)"
 AttackMageZombie,"The zombie gropes your body! (DamageTaken)"
+AttackMageZombieLock,"The zombie's ribbons form magical locks on your body! (DamageTaken)"
 
 NameTalismanZombie,Talisman Zombie
 KillTalismanZombie,"The zombie pouts and puts up a shield to let her retreat."
 AttackTalismanZombieBind,"The zombie giggles as she wraps you in charms! (+RestraintAdded)"
 AttackTalismanZombie,"The zombie gropes your body! (DamageTaken)"
+AttackTalismanZombieLock,"The zombie uses a sealing spell to create magical locks! (DamageTaken)"
 
 NameSamuraiZombie,Warrior Zombie
-KillSamuraiZombie,"The Warrior zombie yells and falls cinematically."
-AttackSamuraiZombieBind,"The Warrior zombie uses a traditional binding technique (+RestraintAdded)"
-AttackSamuraiZombieStun,"The Warrior zombie strikes you with her wooden sword! (+STUN)"
-AttackSamuraiZombie,"The Warrior zombie runs its fingers along your body! (DamageTaken)"
+KillSamuraiZombie,"The warrior zombie yells and falls cinematically."
+AttackSamuraiZombieBind,"The warrior zombie uses a traditional binding technique (+RestraintAdded)"
+AttackSamuraiZombieStun,"The warrior zombie strikes you with her wooden sword! (+STUN)"
+AttackSamuraiZombie,"The warrior zombie runs its fingers along your body! (DamageTaken)"
+AttackSamuraiZombieLock,"The warrior zombie fights using the way of Sword and Lock. (DamageTaken)"
 
 NameNawashi,Rope Artist
 KillNawashi,"The rope artist frowns and walks away, looking defeated."
 AttackNawashiBind,"The rope artist performs an intricate technique! (+RestraintAdded)"
+AttackNawashiLock,"The rope artist sneaks a lock onto you while you weren't looking! (DamageTaken)"
 AttackNawashi,"The rope artist smiles and tickles your feet! (DamageTaken)"
 
 NameDeputy,Deputy
-KillDeputy,"The Deputy surrenders her donuts."
-AttackDeputyBind,"The Deputy slaps on some cuffs! (+RestraintAdded)"
-AttackDeputyStun,"The Deputy tases you! (Stunned!)"
-AttackDeputy,"The Deputy conducts a strip search! (DamageTaken)"
+KillDeputy,"The deputy surrenders her donuts."
+AttackDeputyBind,"The deputy slaps on some cuffs! (+RestraintAdded)"
+AttackDeputyStun,"The deputy tases you! (Stunned!)"
+AttackDeputy,"The deputy conducts a strip search! (DamageTaken)"
+AttackDeputyLock,"The deputy performs a security enhancement procedure! (DamageTaken)"
 
 NameNinja,Ninja Warrior
-KillNinja,"The warrior retreats into the shadows."
-AttackNinjaBind,"The warrior uses a traditional binding technique (+RestraintAdded)"
-AttackNinjaStun,"The warrior tosses a shuriken and hits you! (Stunned!)"
-AttackNinja,"The warrior uses a subduing technique! (DamageTaken)"
+KillNinja,"The ninja warrior retreats into the shadows."
+AttackNinjaBind,"The ninja warrior uses a traditional binding technique (+RestraintAdded)"
+AttackNinjaStun,"The ninja warrior tosses a shuriken and hits you! (Stunned!)"
+AttackNinjaLock,"The ninja warrior uses a lock to give herself the upper hand! (DamageTaken)"
+AttackNinja,"The ninja warrior uses a subduing technique! (DamageTaken)"
 
 NameNinjaStalker,Ninja Assassin
 KillNinjaStalker,"The assassin retreats into the shadows."
 AttackNinjaStalkerBind,"The assassin uses a traditional binding technique (+RestraintAdded)"
 AttackNinjaStalker,"The assassin uses a subduing technique! (DamageTaken)"
+AttackNinjaStalkerLock,"The assassin stealthily locks your restraint! (DamageTaken)"
 
 NameAnimatedArmor,Animated Armor
 KillAnimatedArmor,"The Animated Armor falls into pieces."
@@ -1531,28 +1543,33 @@ NameDragon,Dragonheart Initiate
 KillDragon,"The Dragonheart Initiate retreats hurriedly."
 AttackDragonBind,"The Dragonheart Initiate apprehends you! (+RestraintAdded)"
 AttackDragon,"The Dragonheart Initiate squeezes your body! (DamageTaken)"
+AttackDragonLock,"The Dragonheart locks your restraint! (DamageTaken)"
 
 NameDragonShield,Dragonheart Shield
 KillDragonShield,"The Dragonheart Shield makes a tactical retreat."
 AttackDragonShieldBind,"The Dragonheart Shield apprehends you! (+RestraintAdded)"
 AttackDragonShieldStun,"The Dragonheart Shield bonks you! (DamageTaken)"
 AttackDragonShield,"The Dragonheart Shield squeezes your body! (DamageTaken)"
+AttackDragonShieldLock,"The Dragonheart locks your restraint! (DamageTaken)"
 
 NameDragonIce,Ice Dragonheart
 KillDragonIce,"The Ice Dragonheart retreats in a blast of snow."
 AttackDragonIceBind,"The Ice Dragonheart apprehends you! (+RestraintAdded)"
 AttackDragonIce,"The Ice Dragonheart gives your body a cold touch! (DamageTaken)"
+AttackDragonIceLock,"The Dragonheart uses an icy lock on your restraint! (DamageTaken)"
 
 NameDragonPoison,Poison Dragonheart
 KillDragonPoison,"The Poison Dragonheart retreats in a green mist."
 AttackDragonPoisonBind,"The Poison Dragonheart apprehends you! (+RestraintAdded)"
 AttackDragonPoisonStun,"The Poison Dragonheart smacks you with her axe! (DamageTaken)"
 AttackDragonPoison,"The Poison Dragonheart thrums her claws across your figure! (DamageTaken)"
+AttackDragonPoisonLock,"The Dragonheart locks your restraint! (DamageTaken)"
 
 NameDragonCrystal,Crystal Dragonheart
 KillDragonCrystal,"The Crystal Dragonheart screams and falls to the ground dramatically."
 AttackDragonCrystalBind,"The Crystal Dragonheart apprehends you! (+RestraintAdded)"
 AttackDragonCrystal,"The Crystal Dragonheart squeezes you in a big hug! (DamageTaken)"
+AttackDragonCrystalLock,"The Dragonheart locks your restraint! (DamageTaken)"
 
 KinkyDungeonSummonMultiChaoticCrystal,Many crystals rise up out of the ground!
 KinkyDungeonSummonSingleChaoticCrystal,A crystal rises up out of the ground!
@@ -1596,6 +1613,7 @@ KillDragonLeader,"The Dragonheart Leader admits defeat."
 AttackDragonLeaderBind,"The Dragonheart Leader apprehends you! (+RestraintAdded)"
 AttackDragonLeaderDash,"The Dragonheart Leader dashes to you!"
 AttackDragonLeader,"The Dragonheart Leader squeezes your body! (DamageTaken)"
+AttackDragonLeaderLock,"The Dragonheart Leader uses a lock on you! (DamageTaken)"
 
 
 NameDragonLeaderDuelist,Rebel Scum!
@@ -1603,6 +1621,7 @@ KillDragonLeaderDuelist,"The Dragonheart Rebel admits defeat."
 AttackDragonLeaderDuelistBind,"The Dragonheart Rebel apprehends you! (+RestraintAdded)"
 AttackDragonLeaderDuelistDash,"'En garde!'"
 AttackDragonLeaderDuelist,"The Dragonheart Rebel squeezes your body! (DamageTaken)"
+AttackDragonLeaderDuelistLock,"The Dragonheart Leader uses a lock on you! (DamageTaken)"
 
 NameDryad,Dryad
 KillDryad,"The dryad sinks into the ground."
@@ -1621,6 +1640,7 @@ NameAlchemist,Alchemist
 KillAlchemist,"The alchemist screams and runs."
 AttackAlchemistBind,"The Alchemist restrains you! (+RestraintAdded)"
 AttackAlchemist,"The alchemist hugs you in a rubbery embrace! (DamageTaken)"
+AttackAlchemistLock,"The alchemist uses an ornate-looking lock! (DamageTaken)"
 
 NameAlchemistPet,Alchemist's Pet
 KillAlchemistPet,"The wolfgirl escapes!"
@@ -1698,18 +1718,21 @@ NameCaptureBot,Ancient Patrol Unit
 KillCaptureBot,"The patrol unit releases magic smoke and explodes."
 AttackCaptureBot,"The patrol unit uses a short-ranged electrocution attack! (DamageTaken)"
 AttackCaptureBotBind,"The patrol unit extends its appendages and wraps them around you!"
+AttackCaptureBotLock,"The enforcer releases small drones which clip to your restraints as locks! (DamageTaken)"
 
 NameEnforcerBot,Ancient Enforcer Unit
 KillEnforcerBot,"The enforcer unit releases magic smoke and explodes."
 AttackEnforcerBot,"The enforcer unit fires many cables that squeeze you! (DamageTaken)"
-AttackEnforcerBotBind,"The enforcer fires off restraints that wrap around your body and apprehend you!"
+AttackEnforcerBotBind,"The enforcer fires off restraints that wrap around your body and apprehend you! (+RestraintAdded)"
+AttackEnforcerBotLock,"The enforcer releases small drones which clip to your restraints as locks! (DamageTaken)"
 
 KinkyDungeonRobotShock,The energy bolt hits you and paralyzes you!
 KinkyDungeonSpellRobotBolt,Energy Bolt
 
 NameAlkahestor,Alkahestor
 KillAlkahestor,"The alkahestor resigns to her fate."
-AttackAlkahestorBind,"The Alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)"
+AttackAlkahestorBind,"The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)"
+AttackAlkahestorLock,"The alkahestor uses an ornate-looking lock! (DamageTaken)"
 AttackAlkahestor,"The alkahestor shoves you! (DamageTaken)"
 
 NameElementalLatex,Latex Elemental
@@ -1726,16 +1749,19 @@ NameElementalLeather,Leather Elemental
 KillElementalLeather,"The leather elemental sits down and sulks."
 AttackElementalLeatherBind,"The leather elemental wraps her long extremities around your body! (+RestraintAdded)"
 AttackElementalLeather,"The leather elemental strikes you with her leather belts! (DamageTaken)"
+AttackElementalLeatherLock,"The leather elemental clicks a lock onto your restraints! (DamageTaken)"
 
 NameSlimeEnthusiast,Slime Enthusiast
 KillSlimeEnthusiast,"The slime enthusiast screams and runs."
 AttackSlimeEnthusiastBind,"The slime enthusiast restrains you! (+RestraintAdded)"
-AttackSlimeEnthusiast,"The Slime Enthusiast hugs you in a rubbery embrace! (DamageTaken)"
+AttackSlimeEnthusiast,"The slime enthusiast hugs you in a rubbery embrace! (DamageTaken)"
+AttackSlimeEnthusiastLocks,"The slime enthusiast looks happy to make sure your restraints are secure! (DamageTaken)"
 
 NameMiner,Miner
 KillMiner,"The bandit tosses her pick to the ground and complains about her pay."
 AttackMinerBind,"The miner restrains you! (+RestraintAdded)"
 AttackMiner,"The miner pins you with the haft of her pickaxe! (DamageTaken)"
+AttackMinerLock,"The miner pins you with the haft of her pickaxe and adds a lock! (DamageTaken)"
 
 KinkyDungeonSpellCastMinerBomb,You hear a fuse going off...
 KinkyDungeonSpellMinerBomb,Miner Bomb
@@ -1746,12 +1772,14 @@ KillPrisonerBandit,"The bandit cries. You should feel bad."
 NameBandit,Bandit
 KillBandit,"The bandit collapses."
 AttackBanditBind,"The bandit restrains you! (+RestraintAdded)"
+AttackBanditLock,"The bandit smiles and applies a lock! (DamageTaken)"
 AttackBandit,"The bandit caresses your restrained body! (DamageTaken)"
 
 NameBanditMerchant,Shady Dealer
-KillBanditMerchant,"The bandit dealer flees, leaving her goods behind."
-AttackBanditMerchantBind,"The bandit dealer uses some high-quality restraints on you! (+RestraintAdded)"
-AttackBanditMerchant,"The bandit kisses and gropes your body! (DamageTaken)"
+KillBanditMerchant,"The dealer flees, leaving her goods behind."
+AttackBanditMerchantBind,"The dealer uses some high-quality restraints on you! (+RestraintAdded)"
+AttackBanditMerchantLock,"The dealer smiles and applies a lock! (DamageTaken)"
+AttackBanditMerchant,"The dealer kisses and gropes your body! (DamageTaken)"
 KDPoisonDagger,"That dagger was laced with something..."
 KinkyDungeonLustBomb,"You hear a shattering of glass, suddenly the air around you feels thick and moist..."
 KinkyDungeonSpellPoisonDagger,Poison Dagger
@@ -1761,11 +1789,13 @@ NameBanditGuard,Bandit Guard
 KillBanditGuard,"The bandit guard collapses and calls for help."
 AttackBanditGuardBind,"The bandit guard restrains you! (+RestraintAdded)"
 AttackBanditGuard,"The bandit rubs and caresses your restrained body! (DamageTaken)"
+AttackBanditGuardLock,"The bandit scoffs and applies a lock! (DamageTaken)"
 
 NameBanditChief,Bandit Chief
 KillBanditChief,"The bandit scoffs and retreats until next time."
 AttackBanditChiefBind,"The bandit restrains you tightly! (+RestraintAdded)"
 AttackBanditChief,"The bandit runs her hands all along your restrained body! (DamageTaken)"
+AttackBanditChiefLock,"The bandit chuckles and applies a lock! (DamageTaken)"
 
 NameBanditPet,Bandit Pet
 KillBanditPet,"The bandit blushes and runs away."
@@ -1776,11 +1806,13 @@ NameBanditHunter,Bandit Hunter
 KillBanditHunter,"The bandit hunter retreats."
 AttackBanditHunterBind,"The bandit hunter restrains you! (+RestraintAdded)"
 AttackBanditHunter,"The bandit hunter caresses your restrained body! (DamageTaken)"
+AttackBanditHunterLock,"The bandit hunter calls you an amateur and applies a lock! (DamageTaken)"
 
 NameBanditGrappler,Bandit Grappler
 KillBanditGrappler,"The bandit grappler retreats."
 AttackBanditGrapplerBind,"The bandit grappler loops her chains around you! (+RestraintAdded)"
 AttackBanditGrappler,"The bandit grappler caresses your restrained body! (DamageTaken)"
+AttackBanditGrapplerLock,"The bandit giggles and applies a lock! (DamageTaken)"
 AttackBanditGrapplerPull,"The bandit grappler hooks you closer!!!"
 
 NameMummy,Mummy
@@ -1807,13 +1839,15 @@ NameMeleeCleric,Bast Warrior
 KillMeleeCleric,"The Bast Warrior collapses and meows loudly."
 AttackMeleeClericBind,"The Bast Warrior restrains you! (+RestraintAdded)"
 AttackMeleeCleric,"The Bast Warrior tickles you with her claws! (DamageTaken)"
+AttackMeleeClericLock,"The Bast Warrior pulls out a lock and slips it on! (DamageTaken)"
 
 
 NameCleric,Bast Cleric
 KillCleric,"The Bast Cleric collapses and meows softly."
 AttackCleric,"A ray of light shoots out and paralyzes you! (DamageTaken)"
-AttackMeleeClericBind,"The Bast Cleric restrains you! (+RestraintAdded)"
+AttackClericBind,"The Bast Cleric restrains you! (+RestraintAdded)"
 AttackClericStun,"A ray of light shoots out and paralyzes you! (DamageTaken)"
+AttackClericLock,"The Bast Cleric pulls out a lock and slips it on! (DamageTaken)"
 
 NameSummonedSkeleton,Skeleton
 KillSummonedSkeleton,"The skeleton falls to pieces."
@@ -2020,27 +2054,32 @@ AttackMonsterRope,"The magic rope wriggles into your outfit! (DamageTaken)"
 NameWitchShock,Shock Witch
 KillWitchShock,"The shock witch vanishes into a cloud of thunder, leaving behind a keyring."
 AttackWitchShockBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchShockLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchShock,"The witch slaps you playfully! (DamageTaken)"
 
 NameWitchFlame,Flame Witch
 KillWitchFlame,"The flame witch vanishes into a pile of ash."
 AttackWitchFlameBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchFlameLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchFlame,"The witch slaps you playfully! (DamageTaken)"
 
 
 NameWitchEarth,Earth Witch
 KillWitchEarth,"The earth witch vanishes into a pile of ash."
 AttackWitchEarthBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchEarthLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchEarth,"The witch slaps you playfully! (DamageTaken)"
 
 NameWitchWater,Water Witch
 KillWitchWater,"The water witch vanishes into a pile of ash."
 AttackWitchWaterBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchWaterLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchWater,"The witch slaps you playfully! (DamageTaken)"
 
 NameWitchIce,Ice Witch
 KillWitchIce,"The ice witch vanishes into a pile of ash."
 AttackWitchIceBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchIceLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchIce,"The witch slaps you playfully! (DamageTaken)"
 
 
@@ -2052,26 +2091,31 @@ KinkyDungeonSpellWitchWaterBall,Waterblast
 NameWitchRope,Rope Witch
 KillWitchRope,"The rope witch retreats as her animated ropes chase her."
 AttackWitchRopeBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchRopeLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchRope,"The witch slaps you playfully! (DamageTaken)"
 
 NameWitchMagnet,Magnet Witch
 KillWitchMagnet,"The witch is pulled away by an unseen force."
 AttackWitchMagnetBind,"The witch's restraints fly out and attach themselves to you! (+RestraintAdded)"
+AttackWitchMagnetLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchMagnet,"The witch's lightning causes your body to tingle! (DamageTaken)"
 
 NameApprentice,Witch's Apprentice
 KillApprentice,"The apprentice runs off and cries in a corner."
 AttackApprenticeBind,"The apprentice animates restraints to wrap around you! (+RestraintAdded)"
+AttackApprenticeLock,"The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)"
 AttackApprentice,"The apprentice slaps you playfully! (DamageTaken)"
 
 NameApprentice2,Summoner's Apprentice
 KillApprentice2,"The apprentice runs off and cries in a corner."
 AttackApprentice2Bind,"The apprentice summons a restraint onto you! (+RestraintAdded)"
+AttackApprentice2Lock,"The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)"
 AttackApprentice2,"The apprentice tickles you playfully! (DamageTaken)"
 
 NameApprenticeSlime,Latex Apprentice
 KillApprenticeSlime,"The apprentice runs off and cries in a corner."
 AttackApprenticeSlimeBind,"The apprentice attaches a sticky restraint! (+RestraintAdded)"
+AttackApprenticeSlimeLock,"The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)"
 AttackApprenticeSlime,"The apprentice caresses you playfully! (DamageTaken)"
 
 NameWitchChain,Chain Witch
@@ -2089,17 +2133,20 @@ AttackWitchMetal,"The metal witch tugs sensually at your restraints! (DamageTake
 NameWitchSlime,Slime Witch
 KillWitchSlime,"The slime witch vanishes into a pool of pink slime, leaving behind a keyring."
 AttackWitchSlimeBind,"The witch touches her with her sticky grasp! (+RestraintAdded)"
+AttackWitchSlimeLock,"The witch creates a magical lock made of hardened latex! (DamageTaken)"
 AttackWitchSlime,"The witch squeezes your body playfully! (DamageTaken)"
 
 NameHighWizard,'High' Wizard
 KillHighWizard,"The wizard falls asleep."
-AttackHighWizardBind,"The wizard clips a restraint around your neck!"
-AttackHighWizard,"The wizard laughs maniacally as she tickles you!"
+AttackHighWizardBind,"The wizard clips a restraint around your neck! (+RestraintAdded)"
+AttackHighWizardLock,"The wizard clips a lock to your restraints! (DamageTaken)"
+AttackHighWizard,"The wizard laughs maniacally as she tickles you! (DamageTaken)"
 
 NameFungal,FunGal
 KillFungal,"The fun-gal retreats into the ground."
-AttackFungalBind,"The fun-gal clips a restraint around your neck!"
-AttackFungal,"The fun-gal rubs your chest with her long, slender fingers!"
+AttackFungalBind,"The fun-gal clips a restraint around your neck! (+RestraintAdded)"
+AttackFungalLock,"The fun-gal produces a magical lock on all your restraints! (DamageTaken)"
+AttackFungal,"The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)"
 KinkyDungeonSpellCrystalPuff,Crystal Glyph
 
 
@@ -2233,11 +2280,13 @@ AttackShadowGhast,"The shadowy ghast grips you in its chilling embrace! (DamageT
 NameChainBeing,Obsidian Construct
 KillChainBeing,"The obsidian construct stops moving, its spirit departed."
 AttackChainBeingBind,"The obsidian construct reaches out and touches you, forming metallic restraints! (+RestraintAdded)"
+AttackChainBeingLock,"The obsidian construct uses its chains to lock your restraints! (DamageTaken)"
 AttackChainBeing,"The obsidian construct grips you and drains your willpower! (DamageTaken)"
 
 NameDemonStar,Star Demon
 KillDemonStar,"The star demon is exorcised."
 AttackDemonStarBind,"The star demon places you in shining, starry restraints. (+RestraintAdded)"
+AttackDemonStarLock,"The demon giggles as it locks your restraints! (DamageTaken)"
 AttackDemonStar,"The star demon places you under its curse! (DamageTaken)"
 KinkyDungeonStarBondage,The strings of fate glisten and wrap around you!
 KinkyDungeonBoundByFate,Many shining strings surround you!
@@ -2249,16 +2298,19 @@ KillDemonMoon,"The moon demon is exorcised."
 AttackDemonMoonBind,"The moon demon places you in shining, starry restraints. (+RestraintAdded)"
 AttackDemonMoon,"The moon demon places you under its curse! (DamageTaken)"
 KinkyDungeonMoonBondage,The weight of inescapable bondage falls upon you! (DamageTaken)
+AttackDemonMoonLock,"The demon giggles as it locks your restraints! (DamageTaken)"
 KinkyDungeonSpellCrushingFate,Crushing Fate
 
 NameDemonVoid,Void Demon
 KillDemonVoid,"The void demon is exorcised."
 AttackDemonVoidBind,"The void demon places you in dark, glassy restraints. (+RestraintAdded)"
+AttackDemonVoidLock,"The demon giggles as it locks your restraints! (DamageTaken)"
 AttackDemonVoid,"The void demon places you under its curse! (DamageTaken)"
 
 NameDemon,Demon
 KillDemon,"The demon is exorcised."
 AttackDemonBind,"The demon places you in dark, glassy restraints. (+RestraintAdded)"
+AttackDemonLock,"The demon giggles as it locks your restraints! (DamageTaken)"
 AttackDemon,"The demon whacks you with its mace! (DamageTaken)"
 
 NameTickleHand,Tickle Hand
