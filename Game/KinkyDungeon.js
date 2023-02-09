@@ -605,7 +605,7 @@ function KinkyDungeonLoad() {
 				let parsed = parseInt(localStorage.getItem("KDAnimSpeed"));
 				if (parsed != undefined) {
 					KDAnimSpeedListIndex = parsed;
-					KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex];
+					KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex] || 0;
 				}
 			}
 
@@ -2226,7 +2226,7 @@ function KinkyDungeonHandleClick() {
 		if (MouseIn(450, YY, 350, 64)) {
 			if (MouseX <= 450 + 350/2) KDAnimSpeedListIndex = (KDAnimSpeedList.length + KDAnimSpeedListIndex - 1) % KDAnimSpeedList.length;
 			else KDAnimSpeedListIndex = (KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length;
-			KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex];
+			KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex] || 0;
 			localStorage.setItem("KDAnimSpeed", "" + KDAnimSpeedListIndex);
 		}
 		YY += YYd;
