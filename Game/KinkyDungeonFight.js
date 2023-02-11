@@ -420,9 +420,10 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		predata.dmg *= buffAmount;
 		predata.dmg *= buffresist;
 
-		if (predata.type == "electric" && KinkyDungeonMapGet(Enemy.x, Enemy.y) == 'w') {
-			predata.dmg *= 2;
+		if (predata.type == "fire" && Enemy.freeze > 0) {
+			predata.dmg *= 1.4;
 		}
+
 		if (damageAmp) predata.dmg *= damageAmp;
 
 		let time = predata.time ? predata.time : 0;

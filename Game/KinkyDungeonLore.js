@@ -12,9 +12,10 @@ let KinkyDungeonCurrentLoreTabs = [-1];
 let KinkyDungeonCurrentLoreItems = [];
 let KinkyDungeonCurrentLoreItemOffset = 0;
 let KinkyDungeonCurrentLoreTabOffset = 0;
-let KinkyDungeonLore = [0, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22];
+let KinkyDungeonLore = [0, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28];
 let KinkyDungeonCheckpointLore = {
-	"School": [20, 21, 22],
+	"Combat": [23, 24, 25, 26, 27],
+	"School": [20, 21, 22, 28],
 	"Enemy": [4, 5, 6, 19, 101, 102, 103, 104, 105, 106, 107, 108, 109, 111, 112, 1100, 1104, 201, 203],
 	/*0*/ "grv": [1, 19],
 	/*1*/ "cat": [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 9,],

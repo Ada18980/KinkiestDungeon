@@ -521,6 +521,10 @@ interface overrideDisplayItem {
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
 
 interface enemy extends KDHasTags {
+
+	/** This enemy will always kite the player even if player is harmless*/
+	alwaysKite?: boolean,
+
 	/** Restraint filters */
 	RestraintFilter?: {
 		/** This enemy can apply restraints without needing them in her pockets */
@@ -1052,8 +1056,6 @@ interface entity {
 	/** Determines if an enemy can be dommed or not */
 	domVariance?: number,
 	hideTimer?: boolean,
-	/** This enemy will always kite the player even if player is harmless*/
-	alwaysKite?: boolean,
 	Enemy: enemy,
 	/** List an enemy ID. Enemy will be bound to this one and dies if not found. BoundTo of -1 indicates bound to the player, and will expire if the player is jailed or passes out*/
 	boundTo?: number,
