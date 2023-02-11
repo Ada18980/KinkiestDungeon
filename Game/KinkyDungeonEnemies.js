@@ -2707,7 +2707,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 
 	AIData.ignoreRanged = AIData.canShootPlayer && KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).ignoreSpells;});
-	if (AIData.ignoreRanged && AIData.leashing) AIData.followRange = 1.5;
+	// Close the gap to leash
+	if ((AIData.ignoreRanged || (!enemy.Enemy.alwaysKite && AIData.harmless)) && AIData.leashing) AIData.followRange = 1.5;
 	if (enemy == KinkyDungeonJailGuard()) AIData.followRange = 1.5;
 
 	AIData.kite = false;

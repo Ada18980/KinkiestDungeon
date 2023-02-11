@@ -784,6 +784,7 @@ let KDDialogue = {
 			"Accept": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged) => {
+					KDGameData.PrisonerState = "";
 					KinkyDungeonInterruptSleep();
 					let door = KDGetJailDoor(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 					if (door) {
