@@ -1,9 +1,9 @@
 "use strict";
 
-let KDBasicArmorWeight = 0.6;
-let KDBasicArmorWeight_Cursed = 0.3;
-let KDAdvancedArmorWeight = 0.5;
-let KDAdvancedArmorWeight_Cursed = 0.3;
+let KDBasicArmorWeight = 1.0;
+let KDBasicArmorWeight_Cursed = 0.5;
+let KDAdvancedArmorWeight = 1.5;
+let KDAdvancedArmorWeight_Cursed = 1.0;
 
 let KDBasicArmor = [
 	{name: "Breastplate", minLevel: 0, weight: KDBasicArmorWeight,
@@ -93,19 +93,19 @@ let KDBasicArmor_Cursed = [
 		norestraintcursed: "LeatherBoots", message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 ];
 let KDAdvancedArmor_Cursed = [
-	{name: "SteelArmor_Cursed", minLevel: 0, weight: KDBasicArmorWeight_Cursed*0.5,
+	{name: "SteelArmor_Cursed", minLevel: 0, weight: KDAdvancedArmorWeight_Cursed,
 		armor: "SteelArmor",
 		//curses: [...KinkyDungeonGetCurses("SteelArmor")],
 		curselevelmin: 0, curselevelmax: 10,
 		unlockcurse: ["Basic"],
 		norestraintcursed: "SteelArmor", message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-	{name: "SteelSkirt_Cursed", minLevel: 0, weight: KDBasicArmorWeight_Cursed*0.5,
+	{name: "SteelSkirt_Cursed", minLevel: 0, weight: KDAdvancedArmorWeight_Cursed,
 		armor: "SteelSkirt",
 		//curses: [...KinkyDungeonGetCurses("SteelSkirt")],
 		curselevelmin: 0, curselevelmax: 10,
 		unlockcurse: ["Basic"],
 		norestraintcursed: "SteelSkirt", message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-	{name: "MageArmor_Cursed", minLevel: 0, weight: KDBasicArmorWeight_Cursed*0.5,
+	{name: "MageArmor_Cursed", minLevel: 0, weight: KDAdvancedArmorWeight_Cursed,
 		armor: "MageArmor",
 		//curses: [...KinkyDungeonGetCurses("MageArmor")],
 		curselevelmin: 0, curselevelmax: 10,
@@ -145,14 +145,13 @@ let KinkyDungeonLootTable = {
 	"shadow": [
 		{name: "slimeThrower", minLevel: 0, weapon: "Slimethrower", weight:2, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["Slimethrower"]},
 		{name: "StaffDoll", minLevel: 0, weapon: "StaffDoll", weight:2, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffDoll"]},
-		{name: "staff_incineration", minLevel: 0, weight:2.5, weapon: "StaffIncineration", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffIncineration"]},
-		{name: "staff_storms", minLevel: 0, weight:2.5, weapon: "StaffStorm", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffStorm"]},
-		{name: "staff_frostbite", minLevel: 0, weight:2.5, weapon: "StaffFrostbite", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffFrostbite"]},
-		{name: "staff_bind", minLevel: 0, weight:2.5, weapon: "StaffBind", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffBind"]},
+		{name: "staff_incineration", minLevel: 0, weight:.5, weapon: "StaffIncineration", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffIncineration"]},
+		{name: "staff_storms", minLevel: 0, weight:.5, weapon: "StaffStorm", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffStorm"]},
+		{name: "staff_frostbite", minLevel: 0, weight:.5, weapon: "StaffFrostbite", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffFrostbite"]},
+		{name: "staff_bind", minLevel: 0, weight:.5, weapon: "StaffBind", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffBind"]},
 		{name: "AncientCores", minLevel: 0, weight:0.5, message:"LootChestAncientCores", messageColor:"yellow", messageTime: 3, allFloors: true, max: 1},
-		{name: "magicknife", minLevel: 0, weight:7.0, weapon: "EnchKnife", message:"LootChestMagicKnife", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["EnchKnife"]},
 		{name: "bluekey", minLevel: 0, weight:0.5, message:"LootChestBlueKey", messageColor:"lightblue", messageTime: 3, allFloors: true},
-		{name: "spell_points", magic: true, minLevel: 0, weight:8, message:"LootChestSpellPoints", messageColor:"lightblue", messageTime: 3, allFloors: true, max: 1},
+		{name: "spell_points", magic: true, minLevel: 0, weight:5, message:"LootChestSpellPoints", messageColor:"lightblue", messageTime: 3, allFloors: true, max: 1},
 		...KDAdvancedArmor, ...KDAdvancedArmor_Cursed,
 	],
 	"storage": [
@@ -227,6 +226,8 @@ let KinkyDungeonLootTable = {
 		{name: "StaffBind", minLevel: 5, weight:1, weapon: "StaffBind", goddess: "Rope", goddessWeight: 2.75, noweapon: ["StaffBind"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 
 		{name: "Slimethrower", minLevel: 5, weight:1, weapon: "Slimethrower", goddess: "Latex", goddessWeight: 1.25, noweapon: ["Slimethrower"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+
+		...KDBasicArmor, ...KDBasicArmor_Cursed,
 	],
 	"gold": [
 		{name: "MistressKey", minLevel: 0, weight:6, message:"LootChestMistressKey", messageColor:"yellow", messageTime: 3, allFloors: true},
