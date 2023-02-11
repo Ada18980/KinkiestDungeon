@@ -1491,8 +1491,8 @@ interface spell {
 	nonVolatile?: boolean;
 	/** Cancels automove when cast */
 	cancelAutoMove?: boolean;
-	/** noTargetDark */
-	noTargetDark?: boolean;
+	/** requireLOS */
+	requireLOS?: boolean;
 	/** selfTargetOnly */
 	selfTargetOnly?: boolean;
 	/** AI will only target creatures with this tag */
