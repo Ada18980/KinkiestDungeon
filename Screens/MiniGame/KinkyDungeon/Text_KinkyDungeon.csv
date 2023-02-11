@@ -49,6 +49,7 @@ KDWallBump,You bump into a wall.
 
 KDVibeVolume,Toy Volume:
 KDMusicVolume,Music Volume:
+KDSfxVolume,SFX Volume:
 KDAnimSpeed,Animation Time:
 
 KinkyDungeonJourney,"Select a journey. This will determine the ordering of game areas."
@@ -2731,7 +2732,7 @@ KinkyDungeonShrineCursed,"Curses"
 KinkyDungeonShrineDetermination,"Willpower"
 
 KinkyDungeonObjectTablet,"A tablet inscribed with runes of TYPE."
-KinkyDungeonTabletTooltip,"Teachings of "
+KinkyDungeonTabletTooltip,"Teachings of SHRINETYPE"
 KinkyDungeonTabletRead,"Decypher"
 KinkyDungeonTabletReadSuccess,"You read the runes and they imbue you with power!"
 KinkyDungeonTabletReadFailure,"You try to read the runes but cannot understand them."
@@ -5727,6 +5728,15 @@ KinkyDungeonCurseUnlockGhostLock,"You channel ghastly energy into the lock and b
 KinkyDungeonCurseInfoShadowCurse,"The item seems to drain divine energy from shrines. Maybe that has something to do with it."
 KinkyDungeonCurseStruggleShadowCurse,"The collar is enchanted with multiple layers of magical seals."
 KinkyDungeonCurseUnlockShadowCurse,"The collar has absorbed enough energy and pops off!"
+
+KinkyDungeonCurseInfoTakeDamageFire,"The item is sealed with an icy lock. Perhaps you can melt it somehow?"
+KinkyDungeonCurseStruggleTakeDamageFire,"The cursed seal flashes brightly as you struggle fruitlessly against it."
+
+KinkyDungeonCurseInfoTakeDamageIce,"The item is sealed with a smoldering lock. Perhaps you just need to put out that fire..."
+KinkyDungeonCurseStruggleTakeDamageIce,"The cursed seal glows faintly as you struggle fruitlessly against it."
+
+KinkyDungeonCurseInfoTakeDamageElectric,"The item contains technological markings. Perhaps applying some electricity will affect it?"
+KinkyDungeonCurseStruggleTakeDamageElectric,"The cursed seal gives off sparks as you struggle fruitlessly against it."
 
 KinkyDungeonUnusable,"That item cant be used."
 KinkyDungeonMistressKeyFail,"You're not sure how to use this key."
@@ -9149,3 +9159,6 @@ KDMsgRemoteLinkCuffs,Your RestraintName suddenly snap together as the EnemyName 
 TurnCounter,"Turn Count: "
 
 KDShopkeeperLeash,"The Shopkeeper leashes you!"
+
+KDRemoveOnDmgTypePartial,"It seems to be working! The seal on your RESTRAINTNAME is weakened."
+KDRemoveOnDmgType,"The cursed seal on your RESTRAINTNAME disappears."

@@ -3209,3 +3209,54 @@ function KDGetItemGoddessBonus(item, data) {
 		bonus = bonus/avg;
 	return bonus;
 }
+
+/**
+ * Gets string data from an item
+ * @param {item} item
+ * @param {string} key
+ * @returns {string | undefined}
+ */
+function getItemDataString(item, key) {
+	if (item.dataString) return item.dataString[key];
+	return undefined;
+}
+/**
+ * Gets string data from an item
+ * @param {item} item
+ * @param {string} key
+ * @returns {number | undefined}
+ */
+function getItemDataNumber(item, key) {
+	if (item.dataNumber) return item.dataNumber[key];
+	return undefined;
+}
+
+
+/**
+ * Sets string data for
+ * @param {item} item
+ * @param {string} key
+ * @param {string | undefined} value
+ */
+function setItemDataString(item, key, value) {
+	if (key != undefined && !item.dataString) item.dataString = {};
+	if (key != undefined) {
+		item.dataString[key] = value;
+	} else if (item.dataString) {
+		delete item.dataString[key];
+	}
+}
+/**
+ * Sets string data for
+ * @param {item} item
+ * @param {string} key
+ * @param {number | undefined} value
+ */
+function setItemDataNumber(item, key, value) {
+	if (key != undefined && !item.dataNumber) item.dataNumber = {};
+	if (key != undefined) {
+		item.dataNumber[key] = value;
+	} else if (item.dataNumber) {
+		delete item.dataNumber[key];
+	}
+}

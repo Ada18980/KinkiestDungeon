@@ -1492,6 +1492,10 @@ function KinkyDungeonRun() {
 			() => KDMusicVolumeList[(KDMusicVolumeListIndex + KDMusicVolumeList.length - 1) % KDMusicVolumeList.length] * 100 + "%",
 			() => KDMusicVolumeList[(KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length] * 100 + "%");
 		YY += YYd;
+		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDSfxVolume") + " " + (KDSfxVolume * 100 + "%"), "#ffffff", "",
+			() => KDSfxVolumeList[(KDSfxVolumeListIndex + KDSfxVolumeList.length - 1) % KDSfxVolumeList.length] * 100 + "%",
+			() => KDSfxVolumeList[(KDSfxVolumeListIndex + 1) % KDSfxVolumeList.length] * 100 + "%");
+		YY += YYd;
 		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), "#ffffff", "",
 			() => KDAnimSpeedList[(KDAnimSpeedListIndex + KDAnimSpeedList.length - 1) % KDAnimSpeedList.length] * 100 + "%",
 			() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
@@ -1868,6 +1872,7 @@ function KDInitializeJourney(Journey) {
 		newIndex.jng = 'tmp';
 		newIndex.cry = 'tmb';
 		newIndex.cat = 'grv';
+		newIndex.ore = 'ore';
 	} else if (KDGameData.Journey == "Test") {
 		newIndex.grv = 'ore';
 		newIndex.tmb = 'tmp';
@@ -1928,7 +1933,29 @@ function KDCommitKeybindings() {
 	KinkyDungeonGameKey.KEY_SKIP = (KinkyDungeonKeybindings.Skip);
 }
 
+let afterLoaded = false;
+
+/**
+ * Dummy function. You can modify this function as part of your mod like so:
+ * function _KDModsAfterLoad = KDModsAfterLoad;
+ * KDModsAfterLoad = () => {
+ * [Your stuff here]
+ * _KDModsAfterLoad();
+ * }
+ */
+function KDModsAfterLoad() {
+	// Meep
+}
+
 function KinkyDungeonStartNewGame(Load) {
+	if (!afterLoaded) {
+		KDModsAfterLoad();
+
+		KinkyDungeonRefreshRestraintsCache();
+		KinkyDungeonRefreshEnemiesCache();
+		afterLoaded = true;
+	}
+
 	KinkyDungeonNewGame = 0;
 	KinkyDungeonInitialize(1, Load);
 	MiniGameKinkyDungeonCheckpoint = "grv";
@@ -2221,6 +2248,13 @@ function KinkyDungeonHandleClick() {
 			else KDMusicVolumeListIndex = (KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length;
 			KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
 			localStorage.setItem("KDMusicVolume", "" + KDMusicVolumeListIndex);
+		}
+		YY += YYd;
+		if (MouseIn(450, YY, 350, 64)) {
+			if (MouseX <= 450 + 350/2) KDSfxVolumeListIndex = (KDSfxVolumeList.length + KDSfxVolumeListIndex - 1) % KDSfxVolumeList.length;
+			else KDSfxVolumeListIndex = (KDSfxVolumeListIndex + 1) % KDSfxVolumeList.length;
+			KDSfxVolume = KDSfxVolumeList[KDSfxVolumeListIndex];
+			localStorage.setItem("KDSfxVolume", "" + KDSfxVolumeListIndex);
 		}
 		YY += YYd;
 		if (MouseIn(450, YY, 350, 64)) {
@@ -2787,7 +2821,7 @@ let kdSoundCache = new Map();
  * @param {number} [volume]
  */
 function AudioPlayInstantSoundKD(Path, volume) {
-	const vol = volume != null ? volume : Player.AudioSettings.Volume;
+	const vol = KDSfxVolume * (volume != null ? volume : Player.AudioSettings.Volume);
 	if (vol > 0) {
 		let src = KDModFiles[Path] || Path;
 		let audio = kdSoundCache.has(src) ? kdSoundCache.get(src) : new Audio();

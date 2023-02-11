@@ -727,8 +727,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 function KinkyDungeonClickSpellChoice(I, CurrentSpell) {
 	// Set spell choice
 	KDSendInput("spellChoice", {I:I, CurrentSpell: CurrentSpell});
-	if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessagePriority > 3)
-		KinkyDungeonDrawState = "Game";
+	//if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessagePriority > 3)
+	//KinkyDungeonDrawState = "Game";
 	if (KinkyDungeonSpellChoicesToggle[I] && KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].cancelAutoMove) {
 		KinkyDungeonFastMove = false;
 		KinkyDungeonFastMoveSuppress = false;

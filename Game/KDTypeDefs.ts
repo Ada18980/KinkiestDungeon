@@ -5,6 +5,11 @@ type Named = {
 /** Kinky Dungeon Typedefs*/
 interface item extends Named {
 	id: number,
+	/** Contains string data */
+	dataString?: Record<string, string>;
+	/** Contains numeric data */
+	dataNumber?: Record<string, number>;
+	/** Used in order to boost performance */
 	linkCache?: string[],
 	/** If the item has a different curse from the base curse */
 	curse?: string,

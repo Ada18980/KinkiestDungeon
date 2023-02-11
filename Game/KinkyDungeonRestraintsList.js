@@ -1453,268 +1453,277 @@ const KinkyDungeonRestraints = [
 	//endregion
 ];
 
+(() => {
+	let afterload = KDModsAfterLoad;
+	// @ts-ignore
+	KDModsAfterLoad = () => {
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "Breastplate",
+			Group: "ItemBreast",
+			Asset: "PolishedChastityBra",
+			OverridePriority: 27,
+			showInQuickInv: true,
+			alwaysKeep: true,
+			debris: "Belts",
+			escapeChance: {
+				"Struggle": 10,
+				"Cut": -0.5,
+				"Remove": 10
+			},
+			shrine: ["Armor", "ChestArmor", "MetalArmor"],
+			armor: true,
+			protection: 1,
+			events: [
+				{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
+				{trigger: "tick", type: "sneakBuff", power: -0.15, inheritLinked: true},
+			],
+		}, "Breastplate", "Rock-solid and form-fitting.", "Provides minor protection against enemy attacks. Decreases stealth.")
+		, [...KDCurseVariantList.Basic]);
 
-KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
-	name: "Breastplate",
-	Group: "ItemBreast",
-	Asset: "PolishedChastityBra",
-	OverridePriority: 27,
-	showInQuickInv: true,
-	alwaysKeep: true,
-	debris: "Belts",
-	escapeChance: {
-		"Struggle": 10,
-		"Cut": -0.5,
-		"Remove": 10
-	},
-	shrine: ["Armor", "ChestArmor", "MetalArmor"],
-	armor: true,
-	protection: 1,
-	events: [
-		{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
-		{trigger: "tick", type: "sneakBuff", power: -0.15, inheritLinked: true},
-	],
-}, "Breastplate", "Rock-solid and form-fitting.", "Provides minor protection against enemy attacks. Decreases stealth.")
-, [...KDBasicCurses]);
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "Bustier",
+			Group: "ItemTorso",
+			Asset: "LeatherCorsetTop1",
+			AssetGroup: "Corset",
+			debris: "Belts",
+			OverridePriority: 27,
+			showInQuickInv: true,
+			alwaysKeep: true,
+			escapeChance: {
+				"Struggle": 0.1,
+				"Cut": 0.1,
+				"Remove": 0.1,
+			},
+			shrine: ["Armor", "TorsoArmor"],
+			armor: true,
+			protection: 1,
+			strictness: 0.05,
+			protectionCursed: true,
+			events: [
+				{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
+			],
+		}, "Adventuring Corset", "Protects your organs and your sense of style.", "Provides minor protection against enemy attacks at the cost of flexibility.")
+		, [...KDCurseVariantList.Basic]);
 
-KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
-	name: "Bustier",
-	Group: "ItemTorso",
-	Asset: "LeatherCorsetTop1",
-	AssetGroup: "Corset",
-	debris: "Belts",
-	OverridePriority: 27,
-	showInQuickInv: true,
-	alwaysKeep: true,
-	escapeChance: {
-		"Struggle": 0.1,
-		"Cut": 0.1,
-		"Remove": 0.1,
-	},
-	shrine: ["Armor", "TorsoArmor"],
-	armor: true,
-	protection: 1,
-	strictness: 0.05,
-	protectionCursed: true,
-	events: [
-		{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
-	],
-}, "Adventuring Corset", "Protects your organs and your sense of style.", "Provides minor protection against enemy attacks at the cost of flexibility.")
-, [...KDBasicCurses]);
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "ChainTunic",
+			Group: "ItemTorso",
+			Asset: "Bodice1",
+			AssetGroup: "Cloth",
+			Color: ["#808080", "#808080", "#808080"],
+			OverridePriority: 27,
+			showInQuickInv: true,
+			alwaysKeep: true,
+			debris: "Chains",
+			escapeChance: {
+				"Struggle": -0.1,
+				"Cut": -0.35,
+				"Remove": 0.05,
+			},
+			protection: 2,
+			protectionCursed: true,
+			strictness: 0.25,
+			shrine: ["Armor", "TorsoArmor", "MetalArmor"],
+			armor: true,
+			events: [
+				{trigger: "tick", type: "armorBuff", power: 1.0, inheritLinked: true},
+				{trigger: "tick", type: "restraintBlock", power: 2.5, inheritLinked: true},
+				{trigger: "tick", type: "evasionBuff", power: -0.5, inheritLinked: true},
+				{trigger: "tick", type: "sneakBuff", power: -0.5, inheritLinked: true},
+			],
+		}, "Chainmail Tank Top", "Cumbersome, but effective!", "Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder.")
+		, [...KDCurseVariantList.Basic]);
 
-KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
-	name: "ChainTunic",
-	Group: "ItemTorso",
-	Asset: "Bodice1",
-	AssetGroup: "Cloth",
-	Color: ["#808080", "#808080", "#808080"],
-	OverridePriority: 27,
-	showInQuickInv: true,
-	alwaysKeep: true,
-	debris: "Chains",
-	escapeChance: {
-		"Struggle": -0.1,
-		"Cut": -0.35,
-		"Remove": 0.05,
-	},
-	protection: 2,
-	protectionCursed: true,
-	strictness: 0.25,
-	shrine: ["Armor", "TorsoArmor", "MetalArmor"],
-	armor: true,
-	events: [
-		{trigger: "tick", type: "armorBuff", power: 1.0, inheritLinked: true},
-		{trigger: "tick", type: "restraintBlock", power: 2.5, inheritLinked: true},
-		{trigger: "tick", type: "evasionBuff", power: -0.5, inheritLinked: true},
-		{trigger: "tick", type: "sneakBuff", power: -0.5, inheritLinked: true},
-	],
-}, "Chainmail Tank Top", "Cumbersome, but effective!", "Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder.")
-, [...KDBasicCurses]);
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "SteelArmor",
+			Group: "ItemTorso",
+			Asset: "MistressTop",
+			AssetGroup: "Cloth",
+			Color: ["Default"],
+			showInQuickInv: true,
+			alwaysKeep: true,
+			escapeChance: {
+				"Struggle": -0.5,
+				"Cut": -0.5,
+				"Remove": 0.01,
+			},
+			shrine: ["Armor", "TorsoArmor", "MetalArmor"],
+			armor: true,
+			debris: "Belts",
+			protection: 3,
+			protectionCursed: true,
+			strictness: 0.3,
+			displayPower: 10,
+			events: [
+				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
+				{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
+			],
+		}, "Light Plate Armor", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
+		, [...KDCurseVariantList.Basic]);
 
-KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
-	name: "SteelArmor",
-	Group: "ItemTorso",
-	Asset: "MistressTop",
-	AssetGroup: "Cloth",
-	Color: ["Default"],
-	showInQuickInv: true,
-	alwaysKeep: true,
-	escapeChance: {
-		"Struggle": -0.5,
-		"Cut": -0.5,
-		"Remove": 0.01,
-	},
-	shrine: ["Armor", "TorsoArmor", "MetalArmor"],
-	armor: true,
-	debris: "Belts",
-	protection: 3,
-	protectionCursed: true,
-	strictness: 0.3,
-	displayPower: 10,
-	events: [
-		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
-		{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
-	],
-}, "Light Plate Armor", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
-, [...KDBasicCurses]);
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "MageArmor",
+			Group: "ItemTorso",
+			Asset: "GrandMage",
+			AssetGroup: "Cloth",
+			Color: ["#5555ff"],
+			showInQuickInv: true,
+			alwaysKeep: true,
+			escapeChance: {
+				"Struggle": 0,
+				"Cut": -0.5,
+				"Remove": 0.25,
+			},
+			shrine: ["Armor", "Robe"],
+			armor: true,
+			debris: "Belts",
+			protection: 1,
+			displayPower: 10,
+			events: [
+				{trigger: "perksBonus", type: "spellDamage", power: 0.3, inheritLinked: true},
+				{trigger: "tick", type: "spellWardBuff", power: 1, inheritLinked: true},
+			],
+		}, "Wizard's Robe", "I have the power!", "+30% spell damage and +10 spell ward")
+		, [...KDCurseVariantList.Basic]);
 
-KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
-	name: "MageArmor",
-	Group: "ItemTorso",
-	Asset: "GrandMage",
-	AssetGroup: "Cloth",
-	Color: ["#5555ff"],
-	showInQuickInv: true,
-	alwaysKeep: true,
-	escapeChance: {
-		"Struggle": 0,
-		"Cut": -0.5,
-		"Remove": 0.25,
-	},
-	shrine: ["Armor", "Robe"],
-	armor: true,
-	debris: "Belts",
-	protection: 1,
-	displayPower: 10,
-	events: [
-		{trigger: "perksBonus", type: "spellDamage", power: 0.3, inheritLinked: true},
-		{trigger: "tick", type: "spellWardBuff", power: 1, inheritLinked: true},
-	],
-}, "Wizard's Robe", "I have the power!", "+30% spell damage and +10 spell ward")
-, [...KDBasicCurses]);
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "SteelSkirt",
+			Group: "ItemLegs",
+			Asset: "LatexSkirt2",
+			AssetGroup: "ClothLower",
+			Color: ["#ffffff"],
+			showInQuickInv: true,
+			alwaysKeep: true,
+			escapeChance: {
+				"Struggle": -0.5,
+				"Cut": -0.5,
+				"Remove": 0.04,
+			},
+			shrine: ["Armor", "PelvisArmor", "MetalArmor"],
+			armor: true,
+			protection: 2,
+			debris: "Belts",
+			protectionCursed: true,
+			displayPower: 8,
+			events: [
+				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
+				{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
+			],
+		}, "Armored Skirt", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
+		, [...KDCurseVariantList.Basic]);
 
-KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
-	name: "SteelSkirt",
-	Group: "ItemLegs",
-	Asset: "LatexSkirt2",
-	AssetGroup: "ClothLower",
-	Color: ["#ffffff"],
-	showInQuickInv: true,
-	alwaysKeep: true,
-	escapeChance: {
-		"Struggle": -0.5,
-		"Cut": -0.5,
-		"Remove": 0.04,
-	},
-	shrine: ["Armor", "PelvisArmor", "MetalArmor"],
-	armor: true,
-	protection: 2,
-	debris: "Belts",
-	protectionCursed: true,
-	displayPower: 8,
-	events: [
-		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
-		{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
-	],
-}, "Armored Skirt", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
-, [...KDBasicCurses]);
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "Gauntlets",
+			Group: "ItemHands",
+			Asset: "FingerlessGloves",
+			AssetGroup: "Gloves",
+			showInQuickInv: true,
+			alwaysKeep: true,
+			escapeChance: {
+				"Struggle": 10,
+				"Cut": -0.5,
+				"Remove": 10
+			},
+			shrine: ["Armor", "GlovesArmor", "MetalArmor"],
+			armor: true,
+			debris: "Belts",
+			protection: 1,
+			events: [
+				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
+				{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
+				{trigger: "playerAttack", type: "armorNoise", chance: 1, dist: 8, sfx: "Chain", msg: "KinkyDungeonPunishPlayerArmor", inheritLinked: true},
+				{trigger: "playerCast", type: "armorNoise", chance: 1, dist: 11, punishComponent: "Arms", sfx: "Chain", msg: "KinkyDungeonPunishPlayerArmor", inheritLinked: true},
+			],
+		}, "Gauntlets", "Gloves with an iron grip.", "Provides +5 armor and minor protection against enemy attacks. Makes noise when attacking.")
+		, [...KDCurseVariantList.Basic]);
 
-KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
-	name: "Gauntlets",
-	Group: "ItemHands",
-	Asset: "FingerlessGloves",
-	AssetGroup: "Gloves",
-	showInQuickInv: true,
-	alwaysKeep: true,
-	escapeChance: {
-		"Struggle": 10,
-		"Cut": -0.5,
-		"Remove": 10
-	},
-	shrine: ["Armor", "GlovesArmor", "MetalArmor"],
-	armor: true,
-	debris: "Belts",
-	protection: 1,
-	events: [
-		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
-		{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
-		{trigger: "playerAttack", type: "armorNoise", chance: 1, dist: 8, sfx: "Chain", msg: "KinkyDungeonPunishPlayerArmor", inheritLinked: true},
-		{trigger: "playerCast", type: "armorNoise", chance: 1, dist: 11, punishComponent: "Arms", sfx: "Chain", msg: "KinkyDungeonPunishPlayerArmor", inheritLinked: true},
-	],
-}, "Gauntlets", "Gloves with an iron grip.", "Provides +5 armor and minor protection against enemy attacks. Makes noise when attacking.")
-, [...KDBasicCurses]);
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "LeatherGloves",
+			Group: "ItemHands",
+			Asset: "BikerGloves",
+			AssetGroup: "Gloves",
+			showInQuickInv: true,
+			alwaysKeep: true,
+			escapeChance: {
+				"Struggle": 10,
+				"Cut": 0.1,
+				"Remove": 10
+			},
+			shrine: ["Armor", "GlovesArmor"],
+			armor: true,
+			debris: "Belts",
+			protection: 1,
+		}, "Leather Gloves", "Protecting you in style.", "Provides minor protection against enemy attacks.")
+		, [...KDCurseVariantList.Basic]);
 
-KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
-	name: "LeatherGloves",
-	Group: "ItemHands",
-	Asset: "BikerGloves",
-	AssetGroup: "Gloves",
-	showInQuickInv: true,
-	alwaysKeep: true,
-	escapeChance: {
-		"Struggle": 10,
-		"Cut": 0.1,
-		"Remove": 10
-	},
-	shrine: ["Armor", "GlovesArmor"],
-	armor: true,
-	debris: "Belts",
-	protection: 1,
-}, "Leather Gloves", "Protecting you in style.", "Provides minor protection against enemy attacks.")
-, [...KDBasicCurses]);
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "Bracers",
+			Group: "ItemArms",
+			Asset: "SteelCuffs",
+			showInQuickInv: true,
+			alwaysKeep: true,
+			escapeChance: {
+				"Struggle": 10,
+				"Cut": -0.5,
+				"Remove": 10
+			},
+			shrine: ["Armor", "ArmArmor", "MetalArmor"],
+			armor: true,
+			debris: "Belts",
+			protection: 1,
+		}, "Steel Bracers", "Dependable protection for the average adventurer.", "Provides minor protection against enemy attacks.")
+		, [...KDCurseVariantList.Basic]);
 
-KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
-	name: "Bracers",
-	Group: "ItemArms",
-	Asset: "SteelCuffs",
-	showInQuickInv: true,
-	alwaysKeep: true,
-	escapeChance: {
-		"Struggle": 10,
-		"Cut": -0.5,
-		"Remove": 10
-	},
-	shrine: ["Armor", "ArmArmor", "MetalArmor"],
-	armor: true,
-	debris: "Belts",
-	protection: 1,
-}, "Steel Bracers", "Dependable protection for the average adventurer.", "Provides minor protection against enemy attacks.")
-, [...KDBasicCurses]);
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "SteelBoots",
+			Group: "ItemBoots",
+			Asset: "Boots1",
+			AssetGroup: "Shoes",
+			Color: ["#444444", "#222222"],
+			showInQuickInv: true,
+			alwaysKeep: true,
+			escapeChance: {
+				"Struggle": 10,
+				"Cut": -0.5,
+				"Remove": 10
+			},
+			shrine: ["Armor", "BootsArmor", "MetalArmor"],
+			armor: true,
+			protection: 1,
+			debris: "Belts",
+			events: [
+				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
+				{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
+				{trigger: "tick", type: "sneakBuff", power: -0.35, inheritLinked: true},
+			],
+		}, "Armored Boots", "Noisy, but fashionable!", "Provides +5 armor and protection against enemy attacks. Decreases stealth.")
+		, [...KDCurseVariantList.Basic]);
 
-KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
-	name: "SteelBoots",
-	Group: "ItemBoots",
-	Asset: "Boots1",
-	AssetGroup: "Shoes",
-	Color: ["#444444", "#222222"],
-	showInQuickInv: true,
-	alwaysKeep: true,
-	escapeChance: {
-		"Struggle": 10,
-		"Cut": -0.5,
-		"Remove": 10
-	},
-	shrine: ["Armor", "BootsArmor", "MetalArmor"],
-	armor: true,
-	protection: 1,
-	debris: "Belts",
-	events: [
-		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
-		{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
-		{trigger: "tick", type: "sneakBuff", power: -0.35, inheritLinked: true},
-	],
-}, "Armored Boots", "Noisy, but fashionable!", "Provides +5 armor and protection against enemy attacks. Decreases stealth.")
-, [...KDBasicCurses]);
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "LeatherBoots",
+			Group: "ItemBoots",
+			Asset: "WoollyBootsTall",
+			AssetGroup: "Shoes",
+			Color: ["#808080"],
+			showInQuickInv: true,
+			alwaysKeep: true,
+			escapeChance: {
+				"Struggle": 10,
+				"Cut": 0.1,
+				"Remove": 10
+			},
+			shrine: ["Armor", "BootsArmor"],
+			armor: true,
+			debris: "Belts",
+			protection: 1,
+		}, "Hide Boots", "For stepping into all kinds of trouble!", "Provides minor protection against enemy attacks.")
+		, [...KDCurseVariantList.Basic]);
 
-KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
-	name: "LeatherBoots",
-	Group: "ItemBoots",
-	Asset: "WoollyBootsTall",
-	AssetGroup: "Shoes",
-	Color: ["#808080"],
-	showInQuickInv: true,
-	alwaysKeep: true,
-	escapeChance: {
-		"Struggle": 10,
-		"Cut": 0.1,
-		"Remove": 10
-	},
-	shrine: ["Armor", "BootsArmor"],
-	armor: true,
-	debris: "Belts",
-	protection: 1,
-}, "Hide Boots", "For stepping into all kinds of trouble!", "Provides minor protection against enemy attacks.")
-, [...KDBasicCurses]);
+
+
+		afterload();
+	};
+})();
 
 
 /**

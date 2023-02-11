@@ -612,6 +612,26 @@ let KDEventMapInventory = {
 		}
 	},
 	"beforePlayerDamage": {
+		"RemoveOnDmg": (e, item, data) => {
+			let t = data.type;
+			if (KDDamageEquivalencies[data.type]) t = KDDamageEquivalencies[data.type];
+			if (data.type && t == e.damage && data.dmg) {
+				if (!e.power || data.dmg >= e.power) {
+					// Increase damage count
+					let count = getItemDataNumber(item, e.kind) || 0;
+					count = count + Math.max(data.dmg || 1, 1);
+					setItemDataNumber(item, e.kind, count);
+					// Evaluate damage count
+					if (!e.count || count >= e.count) {
+						item.curse = "";
+						KinkyDungeonLock(item, "");
+						KinkyDungeonSendTextMessage(5, TextGet("KDRemoveOnDmgType").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+					} else {
+						KinkyDungeonSendTextMessage(5, TextGet("KDRemoveOnDmgTypePartial").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+					}
+				}
+			}
+		},
 		"linkItemOnDamageType": (e, item, data) => {
 			if (data.type && data.type == e.damage && data.dmg) {
 				let subMult = 1;

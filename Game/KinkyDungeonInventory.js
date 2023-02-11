@@ -561,6 +561,13 @@ function KinkyDungeonSendInventoryEvent(Event, data) {
 				}
 			}
 		}
+		if (item.curse && KDCurses[item.curse]?.events) {
+			for (let e of KDCurses[item.curse].events) {
+				if (e.trigger === Event && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+					KinkyDungeonHandleInventoryEvent(Event, e, item, data);
+				}
+			}
+		}
 	}
 }
 

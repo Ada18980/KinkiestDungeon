@@ -48,6 +48,10 @@ let KDMusicVolume = 1;
 let KDMusicVolumeListIndex = 0;
 let KDMusicVolumeList = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 0, 0.1, 0.2];
 
+let KDSfxVolume = 1;
+let KDSfxVolumeListIndex = 0;
+let KDSfxVolumeList = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 0, 0.1, 0.2];
+
 let KDAnimSpeed = 1;
 let KDAnimSpeedListIndex = 0;
 let KDAnimSpeedList = [1, 1.25, 1.5, 2.0, 0, 0.25, 0.5, 0.75,];

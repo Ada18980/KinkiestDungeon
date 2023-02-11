@@ -1,6 +1,11 @@
 "use strict";
 
-/** @type {Record<string, {onApply?: (item: item, host?: item) => void, condition: (item: item) => boolean, remove: (item: item, host: item) => void}>} */
+/**
+ * onApply: occurs when applied
+ * condition: required to remove it
+ * remove: happens when removing
+ * events: these events are added to the restraint
+ * @type {Record<string, {onApply?: (item: item, host?: item) => void, condition: (item: item) => boolean, remove: (item: item, host: item) => void, events?: KinkyDungeonEvent[]}>} */
 let KDCurses = {
 	"GhostLock" : {
 		condition: (item) => {
@@ -33,6 +38,44 @@ let KDCurses = {
 		remove: (item, host) => {
 			KinkyDungeonRedKeys -= 1;
 		}
+	},
+	"TakeDamageFire" : {
+		condition: (item) => {return false;},
+		remove: (item, host) => {},
+		events: [
+			{type: "RemoveOnDmg", power: 1, count: 3, damage: "fire", trigger: "beforePlayerDamage", kind: "CurseMelt"},
+			{type: "RemoveOnDmg", power: 1, count: 3, damage: "crush", trigger: "beforePlayerDamage", kind: "CurseMelt"},
+		],
+	},
+	"TakeDamageIce" : {
+		condition: (item) => {return false;},
+		remove: (item, host) => {},
+		events: [
+			{type: "RemoveOnDmg", power: 1, count: 4, damage: "ice", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
+			{type: "RemoveOnDmg", power: 1, count: 4, damage: "acid", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
+			{type: "RemoveOnDmg", power: 1, count: 4, damage: "stun", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
+		],
+	},
+	"TakeDamageElectric" : {
+		condition: (item) => {return false;},
+		remove: (item, host) => {},
+		events: [
+			{type: "RemoveOnDmg", power: 1, count: 2, damage: "electric", trigger: "beforePlayerDamage", kind: "CurseShock"}
+		],
+	},
+	"TakeDamageGlue" : {
+		condition: (item) => {return false;},
+		remove: (item, host) => {},
+		events: [
+			{type: "RemoveOnDmg", power: 1, count: 5, damage: "glue", trigger: "beforePlayerDamage", kind: "CurseGlue"}
+		],
+	},
+	"TakeDamageChain" : {
+		condition: (item) => {return false;},
+		remove: (item, host) => {},
+		events: [
+			{type: "RemoveOnDmg", power: 1, count: 5, damage: "chain", trigger: "beforePlayerDamage", kind: "CurseChain"}
+		],
 	},
 	"Will" : {
 		onApply: (item, host) => {
@@ -72,8 +115,19 @@ let KDCursedVars = {
 	},
 };
 
-let KDBasicCurseUnlock = ["Key", "Will"];
-let KDBasicCurses = ["Tickle", "Punish"];
+/**
+ * Contains a list of curse variant types
+ * Can be modified dynamically so mods can add basic curses
+ */
+let KDCurseVariantList = {
+	"Basic": ["Tickle", "Punish"],
+};
+/**
+ * Unlockcurse list. This is always referenced dynamically when the restraint is picked up
+ */
+let KDCurseUnlockList = {
+	"Basic": ["TakeDamageFire", "TakeDamageElectric", "TakeDamageIce", "TakeDamageGlue", "TakeDamageChain"],
+};
 
 /**
  *

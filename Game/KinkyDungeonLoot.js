@@ -35,6 +35,10 @@ function KinkyDungeonAddLostItems(list, excludeBound) {
 	}
 }
 
+let cursedRestraintCache = {
+
+};
+
 
 // Determines if you get a good loot from a blue locked chest
 let KinkyDungeonSpecialLoot = false;
@@ -110,6 +114,17 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap) {
 			}
 			if (loot.norestraint) {
 				for (let r of loot.norestraint) {
+					if (KinkyDungeonInventoryGet(r)) {
+						prereqs = false;
+						break;
+					}
+				}
+			}
+			// Check for cursed norestraint as well
+			if (loot.norestraintcursed) {
+				let id = loot.norestraintcursed + `${loot.curselevelmin || 0},${loot.curselevelmax || 0}`;
+				if (!cursedRestraintCache[id]) cursedRestraintCache[id] = [...KinkyDungeonGetCurses(loot.norestraintcursed, true, loot.curselevelmin, loot.curselevelmax)];
+				for (let r of cursedRestraintCache[id]) {
 					if (KinkyDungeonInventoryGet(r)) {
 						prereqs = false;
 						break;
@@ -211,9 +226,16 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	}
 	else if (Loot.armor) {
 		let armor = Loot.armor;
-		let unlockcurse = undefined;
-		if (Loot.curses) armor = CommonRandomItemFromList("", Loot.curses);
-		if (Loot.unlockcurse) unlockcurse = CommonRandomItemFromList("", Loot.unlockcurse);
+		let unlockcurse = null;
+		if (Loot.curselevelmin != undefined || Loot.curselevelmax != undefined)
+			armor = CommonRandomItemFromList("", KinkyDungeonGetCurses(Loot.armor, false, Loot.curselevelmin, Loot.curselevelmax));
+		if (Loot.unlockcurse) {
+			let curselist = [];
+			for (let c of Loot.unlockcurse) {
+				curselist.push(...KDCurseUnlockList[c]);
+			}
+			unlockcurse = CommonRandomItemFromList("", curselist);
+		}
 		KinkyDungeonInventoryAddLoose(armor, unlockcurse);
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + Loot.armor));

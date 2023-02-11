@@ -6,6 +6,8 @@ KinkyDungeonMainClick = () => {};
 ChatRoomChatLog = [];
 ChatRoomLastMessage = [];
 
+PreferenceMessage = "";
+
 ChatRoomCharacterUpdate = () => {};
 ChatRoomCharacterItemUpdate = () => {};
 
