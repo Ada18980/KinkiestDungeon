@@ -1222,6 +1222,7 @@ Major changes:
 - New, cleaner options menu with a few additional options
 - Improved leash pathfinding to hopefully involve less players bouncing around
 - Balancing around lock application and enemies with the ability to lock. Most restraints won't have default locks now, but many more enemies can clip a lock onto what you already have.
+- Added more curses and curse unlock methods
 Other changes:
 - Many spell point costs for active spells reduced
 - New enemy in Ancient Tombs: Animated Sarcophagus

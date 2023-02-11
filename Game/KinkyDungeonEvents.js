@@ -56,6 +56,56 @@ function KinkyDungeonResetEventVariablesTick(delta) {
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
  */
 let KDEventMapInventory = {
+	"calcOrgThresh": {
+		"CurseSensitivity": (e, item, data) => {
+			if (data.player == KinkyDungeonPlayerEntity) {
+				data.threshold *= e.power;
+			}
+		}
+	},
+	"orgasm": {
+		"CurseSubmission": (e, item, data) => {
+			if (data.player == KinkyDungeonPlayerEntity) {
+				KinkyDungeonChangeRep("Ghost", e.power);
+				KinkyDungeonSendTextMessage(3, TextGet("KDSubmissionCurseApply")
+					.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
+				, "#ceaaed", 10);
+			}
+		}
+	},
+	"calcPlayChance": {
+		"CurseAttraction": (e, item, data) => {
+			if (data.enemy) {
+				data.playChance += e.power;
+				if (!data.enemy.playWithPlayer && data.enemy.playWithPlayerCD > 5) {
+					data.enemy.playWithPlayerCD = 5;
+				}
+			}
+		}
+	},
+	"changeDistraction": {
+		"multDistractionPos": (e, item, data) => {
+			if (data.Amount > 0)
+				data.Amount *= e.power;
+		},
+	},
+	"changeWill": {
+		"multWillPos": (e, item, data) => {
+			if (data.Amount > 0)
+				data.Amount *= e.power;
+		},
+	},
+	"changeStamina": {
+		"multStaminaPos": (e, item, data) => {
+			if (data.Amount > 0)
+				data.Amount *= e.power;
+		},
+	},
+	"getLights": {
+		"ItemLight": (e, item, data) => {
+			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color)});
+		},
+	},
 	"onWear": {
 		"setSkinColor": (e, item, data) => {
 			if (item == data.item) {

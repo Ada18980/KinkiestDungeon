@@ -2242,7 +2242,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				if (!(enemy.hostile > 0) && tickAlertTimerFactions.length > 0 && !KinkyDungeonAggressive(enemy) && !enemy.Enemy.tags.peaceful && (enemy.vp > 0.5 || enemy.lifetime < 900 || (!KDHostile(enemy) && KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 7))) {
 					for (let f of tickAlertTimerFactions) {
 						if ((KDGetFaction(enemy) != "Player") && (
-							KDFactionRelation(f, KDGetFaction(enemy)) > 0 &&
+							KDFactionRelation(f, KDGetFaction(enemy)) > 0.15 &&
 							KDFactionRelation(f, KDGetFaction(enemy)) - KDFactionRelation("Player", KDGetFaction(enemy)) > 0.15)) {
 							KDMakeHostile(enemy, KDMaxAlertTimer);
 						}
@@ -2572,6 +2572,16 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		else AIData.playChance = 0.9;
 	}
 	let aware = (enemy.vp > sneakThreshold || enemy.aware);
+
+	let playData = {
+		playChance: AIData.playChance,
+		AIData: AIData,
+		enemy: enemy,
+		player: player,
+	};
+	KinkyDungeonSendEvent("calcPlayChance", playData);
+	AIData.playChance = playData.playChance;
+
 	if (KinkyDungeonCanPlay(enemy) && !KinkyDungeonFlags.get("NPCCombat") && !enemy.Enemy.alwaysHostile && !(enemy.rage > 0) && !(enemy.hostile > 0) && player.player && AIData.canSeePlayer && (aware) && KDEnemyCanTalk(enemy) && !KinkyDungeonInJail()) {
 		AIData.playAllowed = true;
 		if (!(enemy.playWithPlayerCD > 0) && !(enemy.playWithPlayer > 0) && KDRandom() < AIData.playChance && !KDAllied(enemy)) {
