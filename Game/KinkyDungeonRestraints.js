@@ -135,6 +135,36 @@ const KinkyDungeonStrictnessTable = new Map([
 	["ItemFeet", ["ItemBoots"]],
 ]);
 
+/** Enforces a sort of progression of restraining loosely based on strictness, useful for progressive stuff like applying curses to zones */
+let KDRestraintGroupProgressiveOrderStrict = [
+	"ItemPelvis", // Chastity for good girls!
+	"ItemBreast", // Goes well with belts
+	"ItemTorso", // Usually just makes other restraints harder
+	"ItemBoots", // Typically doesnt hobble completely
+	"ItemEars", //  Sensory
+	"ItemHead", // Blind, but does not stop from wielding anything
+	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemHands", // Blocks weapons but no spells
+	"ItemMouth", // Blocks spells and potions
+	"ItemFeet", // Makes you very slow
+	"ItemArms", // Blocks spells and escaping
+];
+
+/** A funner restraining order, starting with non-impactful then locking down spells and finally sealing in helplessness */
+let KDRestraintGroupProgressiveOrderFun = [
+	"ItemPelvis", // Chastity for good girls!
+	"ItemBreast", // Goes well with belts
+	"ItemTorso", // Usually just makes other restraints harder
+	"ItemBoots", // Typically doesnt hobble completely
+	"ItemMouth", // Blocks spells and potions
+	"ItemHands", // Blocks weapons but no spells
+	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemArms", // Blocks spells and escaping
+	"ItemFeet", // Makes you very slow
+	"ItemHead", // Blind, but does not stop from wielding anything
+	"ItemEars", //  Sensory
+];
+
 /**
  * @type {Map<string, {r: restraint, w:number}[]>}
  */

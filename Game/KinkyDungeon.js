@@ -1948,14 +1948,6 @@ function KDModsAfterLoad() {
 }
 
 function KinkyDungeonStartNewGame(Load) {
-	if (!afterLoaded) {
-		KDModsAfterLoad();
-
-		KinkyDungeonRefreshRestraintsCache();
-		KinkyDungeonRefreshEnemiesCache();
-		afterLoaded = true;
-	}
-
 	KinkyDungeonNewGame = 0;
 	KinkyDungeonInitialize(1, Load);
 	MiniGameKinkyDungeonCheckpoint = "grv";

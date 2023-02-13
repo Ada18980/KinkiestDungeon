@@ -153,7 +153,7 @@ let KDCursedVars = {
 		variant: (restraint, newRestraintName) => {
 			return KDAddEventVariant(restraint, newRestraintName, [
 				{type: "CurseSensitivity", trigger: "calcOrgThresh", power: 0.5, inheritLinked: true},
-				{trigger: "drawSGTooltip", type: "curseInfo", msg: "Attraction", color: "#ff5555", inheritLinked: true}
+				{trigger: "drawSGTooltip", type: "curseInfo", msg: "Sensitivity", color: "#ff5555", inheritLinked: true}
 			]);}},
 	"Submission": {
 		level: 1,
@@ -181,7 +181,7 @@ let KDCursedVars = {
 		variant: (restraint, newRestraintName) => {
 			return KDAddEventVariant(restraint, newRestraintName, [
 				{type: "multWillPos", trigger: "changeWill", power: 0.25, inheritLinked: true},
-				{trigger: "drawSGTooltip", type: "curseInfo", msg: "Futility", color: "#ff5555", inheritLinked: true}
+				{trigger: "drawSGTooltip", type: "curseInfo", msg: "Futile", color: "#ff5555", inheritLinked: true}
 			]);}},
 	"Tickle": {
 		level: 1,

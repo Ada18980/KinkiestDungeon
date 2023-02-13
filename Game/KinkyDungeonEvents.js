@@ -1267,7 +1267,10 @@ let KDEventMapBuff = {
 		"CounterattackSpell": (e, buff, entity, data) => {
 			if (data.attacker && data.target == entity
 				&& (!(e.prereq == "hit") || (!data.missed && data.hit))
-				&& (!(e.prereq == "hit-hostile") || (!data.missed && data.hit && (data.attacker.player || !data.target.player || KinkyDungeonAggressive(data.attacker))))) {
+				&& (!(e.prereq == "hit-hostile") || (!data.missed && data.hit && !data.attacker.playWithPlayer
+					// Player attacking = hostile?
+					// Enemy attacking enemy? hostile
+					&& (data.attacker.player || !data.target.player || KinkyDungeonAggressive(data.attacker))))) {
 				// @ts-ignore
 				KinkyDungeonCastSpell(data.attacker.x, data.attacker.y, KinkyDungeonFindSpell(e.spell, true), undefined, undefined, undefined, entity.player ? "Player" : KDGetFaction(entity));
 				if (e.requiredTag)
