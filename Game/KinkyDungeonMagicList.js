@@ -224,7 +224,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				duration: -6,
 			}
 		},
-		{name: "Rainstorm", prerequisite: "ApprenticeWater", tags: ["ice", "aoe", "dot", "offense", "utility", "denial"], noUniqueHits: true, noise: 3, sfx: "FireSpell", school: "Elements", manacost: 4.5,
+		{name: "Rainstorm", prerequisite: "ApprenticeWater", tags: ["water", "aoe", "dot", "offense", "utility", "denial"], noUniqueHits: true, noise: 3, sfx: "FireSpell", school: "Elements", manacost: 4.5,
 			components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 3, power: 3.5, time: 2, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "acid",
 			effectTileDurationMod: 8, effectTile: {
 				name: "Water",
