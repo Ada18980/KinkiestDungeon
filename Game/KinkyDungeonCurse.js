@@ -53,6 +53,7 @@ let KDCurses = {
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 3, damage: "fire", trigger: "beforePlayerDamage", kind: "CurseMelt"},
 			{type: "RemoveOnDmg", power: 1, count: 3, damage: "crush", trigger: "beforePlayerDamage", kind: "CurseMelt"},
+			{type: "RemoveOnBuffName", trigger: "tick", kind: "Drenched"},
 		],
 	},
 	"TakeDamageIce" : {
@@ -248,9 +249,10 @@ let KDCurseUnlockList = {
  * @param {KinkyDungeonEvent[]} ev
  * @param {number} power
  * @param {string} lock
+ * @param {Record<string, number>} enemyTags
  * @returns {any}
  */
-function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = "Purple") {
+function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = "Purple", enemyTags = {basicCurse: 10}) {
 	KinkyDungeonDupeRestraintText(restraint.name, newRestraintName);
 	/** @type {KinkyDungeonEvent[]} */
 	let events = ev.concat(restraint.events);
@@ -267,6 +269,7 @@ function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = "P
 		magic: true,
 		events: events,
 		power: power,
+		enemyTags: Object.assign({}, enemyTags),
 		shrine: restraint.shrine?.concat(["Cursed"]),
 		inventoryAsSelf: restraint.inventoryAsSelf || restraint.inventoryAs || restraint.name,
 		displayPower: restraint.displayPower || restraint.power,

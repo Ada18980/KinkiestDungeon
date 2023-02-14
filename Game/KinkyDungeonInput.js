@@ -565,8 +565,8 @@ function KDProcessInput(type, data) {
 							KinkyDungeonAdvanceTime(1);
 						if (KinkyDungeonIsPlayer()) {
 							KinkyDungeonPreviewSpell = undefined;
-							if (KinkyDungeonTextMessageTime > 0)
-								KinkyDungeonDrawState = "Game";
+							//if (KinkyDungeonTextMessageTime > 0)
+							//KinkyDungeonDrawState = "Game";
 						}
 					} else if (KinkyDungeonIsPlayer()) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellsNotEnoughMana"), "#b4dbfc", 1);
 				} else if (KinkyDungeonIsPlayer()) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellsNotEnoughPoints"), "#ffff00", 1);

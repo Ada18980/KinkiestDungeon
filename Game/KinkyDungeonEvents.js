@@ -188,6 +188,13 @@ let KDEventMapInventory = {
 		},
 	},
 	"tick": {
+		"RemoveOnBuffName": (e, item, data) => {
+			if (KinkyDungeonPlayerBuffs[e.kind] && (!e.chance || KDRandom() < e.chance)) {
+				item.curse = "";
+				KinkyDungeonLock(item, "");
+				KinkyDungeonSendTextMessage(5, TextGet("KDRemoveOnDmgType").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+			}
+		},
 		"armorBuff": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Armor", type: "Armor", power: e.power, duration: 2,});
 		},
