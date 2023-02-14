@@ -111,9 +111,10 @@ function KDLinkSize(restraint) {
  *
  * @param {item} item
  * @param {string} linkCategory
+ * @param {item} [ignoreItem]
  * @returns {number}
  */
-function KDLinkCategorySize(item, linkCategory) {
+function KDLinkCategorySize(item, linkCategory, ignoreItem) {
 	let total = 0;
 	// First we get the whole stack
 	let stack = [item];
@@ -126,7 +127,7 @@ function KDLinkCategorySize(item, linkCategory) {
 	}
 	// Now that we have the stack we sum things up
 	for (let inv of stack) {
-		if (KDRestraint(inv).linkCategory == linkCategory) {
+		if (KDRestraint(inv).linkCategory == linkCategory && ignoreItem?.id != inv.id) {
 			total += KDLinkSize(KDRestraint(inv));
 		}
 	}

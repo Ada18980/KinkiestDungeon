@@ -2433,8 +2433,8 @@ function KDGetLinkUnder(currentRestraint, restraint, bypass, NoStack, Deep, secu
 function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack, securityEnemy) {
 	let linkUnder = currentRestraint
 		&& (bypass || (KDRestraint(currentRestraint).accessible) || KDEnemyPassesSecurity(KDRestraint(currentRestraint).Group, securityEnemy))
-		&& KinkyDungeonIsLinkable(restraint, KDRestraint(currentRestraint), {name: restraint.name, id: -1}, currentRestraint)
-		&& (!currentRestraint.dynamicLink || KinkyDungeonIsLinkable(KDRestraint(currentRestraint.dynamicLink), restraint, currentRestraint.dynamicLink));
+		&& KinkyDungeonIsLinkable(restraint, KDRestraint(currentRestraint), {name: restraint.name, id: -1}, currentRestraint, currentRestraint)
+		&& (!currentRestraint.dynamicLink || KinkyDungeonIsLinkable(KDRestraint(currentRestraint.dynamicLink), restraint, currentRestraint.dynamicLink, currentRestraint));
 
 	if (!linkUnder) return false;
 	if (
@@ -2455,7 +2455,7 @@ function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack, securityEn
  * @returns {boolean}
  */
 function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityEnemy, ignoreItem) {
-	return (restraint.linkCategory && KDLinkCategorySize(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), restraint.linkCategory) + KDLinkSize(restraint) <= (NoStack ? 0.1 : 1.0))
+	return (restraint.linkCategory && KDLinkCategorySize(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), restraint.linkCategory, ignoreItem) + KDLinkSize(restraint) <= (NoStack ? 0.1 : 1.0))
 		|| (!restraint.linkCategory && !KDDynamicLinkList(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), true).some((item) => {return restraint.name == item.name && ignoreItem?.id != item.id;}));
 }
 
@@ -2515,16 +2515,17 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
  * @param {restraint} oldRestraint
  * @param {restraint} newRestraint
  * @param {item} [item]
- * @param {item} [ignoreItem]
+ * @param {item} [ignoreItem] - Item to ignore for purpose of calculating size
+ * @param {item} [linkUnderItem] - Item to ignore for total link chain calculation
  * @returns {boolean}
  */
-function KinkyDungeonIsLinkable(oldRestraint, newRestraint, item, ignoreItem) {
+function KinkyDungeonIsLinkable(oldRestraint, newRestraint, item, ignoreItem, linkUnderItem) {
 	if (!oldRestraint.nonbinding && newRestraint.nonbinding) return false;
 	if (oldRestraint && newRestraint && oldRestraint && oldRestraint.Link) {
 		if (newRestraint.name == oldRestraint.Link) return true;
 	}
 	if (item && !KDCheckLinkSize(item, newRestraint, false, false, undefined, ignoreItem)) return false;
-	if (item && !KDCheckLinkTotal(item, newRestraint)) return false;
+	if (item && !KDCheckLinkTotal(item, newRestraint, linkUnderItem)) return false;
 	if (oldRestraint && newRestraint && oldRestraint && oldRestraint.LinkableBy && newRestraint.shrine) {
 		for (let l of oldRestraint.LinkableBy) {
 			for (let s of newRestraint.shrine) {
@@ -2541,9 +2542,10 @@ function KinkyDungeonIsLinkable(oldRestraint, newRestraint, item, ignoreItem) {
  * Checks if all the items linked under allow this item
  * @param {item} oldRestraint
  * @param {restraint} newRestraint
+ * @param {item} [ignoreItem]
  * @returns {boolean}
  */
-function KDCheckLinkTotal(oldRestraint, newRestraint) {
+function KDCheckLinkTotal(oldRestraint, newRestraint, ignoreItem) {
 	if (KDRestraint(oldRestraint).Link && KDRestraint(oldRestraint).Link == newRestraint.name) {
 		return true;
 	}
@@ -2559,17 +2561,19 @@ function KDCheckLinkTotal(oldRestraint, newRestraint) {
 	while (link) {
 		let pass = false;
 		let r = KDRestraint(link);
-		if (r.LinkableBy && newRestraint.shrine) {
-			for (let l of r.LinkableBy) {
-				if (!pass)
-					for (let s of newRestraint.shrine) {
-						if (l == s) {
-							pass = true;
+		if (link != ignoreItem) {
+			if (r.LinkableBy && newRestraint.shrine) {
+				for (let l of r.LinkableBy) {
+					if (!pass)
+						for (let s of newRestraint.shrine) {
+							if (l == s) {
+								pass = true;
+							}
 						}
-					}
+				}
 			}
+			if (!pass) return false;
 		}
-		if (!pass) return false;
 		link = link.dynamicLink;
 	}
 	return true;
