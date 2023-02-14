@@ -171,14 +171,16 @@ function KDProcessInput(type, data) {
 			tile = KinkyDungeonTilesGet(data.targetTile);
 			KinkyDungeonTargetTile = tile;
 			KinkyDungeonTargetTileLocation = data.targetTile;
-			KinkyDungeonAdvanceTime(1, true);
-			if (KinkyDungeonPickAttempt()) {
-				KinkyDungeonTargetTile.Lock = undefined;
-				if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
-				KinkyDungeonTargetTile = null;
-				KinkyDungeonTargetTileLocation = "";
+			if (KinkyDungeonTargetTile?.Lock) {
+				KinkyDungeonAdvanceTime(1, true);
+				if (KinkyDungeonPickAttempt()) {
+					KinkyDungeonTargetTile.Lock = undefined;
+					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = "";
+				}
+				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			}
-			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			break;
 		case "unlock":
 			KDDelayedActionPrune(["Action", "Struggle"]);
@@ -186,44 +188,51 @@ function KDProcessInput(type, data) {
 			KinkyDungeonTargetTile = tile;
 			KinkyDungeonTargetTileLocation = data.targetTile;
 
-			KDUpdateDoorNavMap();
-			KinkyDungeonAdvanceTime(1, true);
-			if (KinkyDungeonUnlockAttempt(KinkyDungeonTargetTile.Lock)) {
-				KinkyDungeonTargetTile.Lock = undefined;
-				if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
-				KinkyDungeonTargetTile = null;
-				KinkyDungeonTargetTileLocation = "";
+			if (KinkyDungeonTargetTile?.Lock) {
+				KDUpdateDoorNavMap();
+				KinkyDungeonAdvanceTime(1, true);
+				if (KinkyDungeonUnlockAttempt(KinkyDungeonTargetTile.Lock)) {
+					KinkyDungeonTargetTile.Lock = undefined;
+					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = "";
+				}
+				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			}
-			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			break;
 		case "commandunlock": {
 			KDDelayedActionPrune(["Action", "Cast"]);
 			tile = KinkyDungeonTilesGet(data.targetTile);
 			KinkyDungeonTargetTile = tile;
 			KinkyDungeonTargetTileLocation = data.targetTile;
-			KinkyDungeonAdvanceTime(1, true);
-			let spell = KinkyDungeonFindSpell("CommandWord", true);
-			let miscast = KinkyDungeonMiscastChance;
-			let gagTotal = KinkyDungeonGagTotal();
-			if (!(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0)) {
-				miscast = miscast + Math.max(0, 1 - miscast) * Math.min(1, gagTotal);
-			}
-			if (KDRandom() > miscast) {
-				KinkyDungeonTargetTile.Lock = undefined;
-				if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
-				KDUpdateDoorNavMap();
-				KinkyDungeonTargetTile = null;
-				KinkyDungeonTargetTileLocation = "";
-				if (gagTotal) {
-					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGagged"), "#aa44ff", 1);
-				} else {
-					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUse"), "#aa44ff", 1);
+
+
+			if (KinkyDungeonTargetTile?.Lock) {
+				KinkyDungeonAdvanceTime(1, true);
+				let spell = KinkyDungeonFindSpell("CommandWord", true);
+				let miscast = KinkyDungeonMiscastChance;
+				let gagTotal = KinkyDungeonGagTotal();
+				if (!(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0)) {
+					miscast = miscast + Math.max(0, 1 - miscast) * Math.min(1, gagTotal);
 				}
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-			} else {
-				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGaggedFail"), "#ff0000", 1);
+				if (KDRandom() > miscast) {
+					KinkyDungeonTargetTile.Lock = undefined;
+					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
+					KDUpdateDoorNavMap();
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = "";
+					if (gagTotal) {
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGagged"), "#aa44ff", 1);
+					} else {
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUse"), "#aa44ff", 1);
+					}
+					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				} else {
+					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGaggedFail"), "#ff0000", 1);
+				}
+				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			}
-			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
+
 			break;
 		}
 		case "closeDoor":
