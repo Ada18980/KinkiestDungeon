@@ -181,6 +181,8 @@ interface KDRestraintProps {
 	accessible?: boolean,
 	/** This item lets you CANT access linked items under it */
 	inaccessible?: boolean,
+	/** This item lets you ignore its inaccessibility for the sake of trussing up the player */
+	deepAccessible?: boolean,
 	/** This item can be rendered when linked */
 	renderWhenLinked?: string[];
 	// Player must have one of these PlayerTags to equip

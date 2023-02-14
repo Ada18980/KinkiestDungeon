@@ -2432,7 +2432,7 @@ function KDGetLinkUnder(currentRestraint, restraint, bypass, NoStack, Deep, secu
  */
 function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack, securityEnemy) {
 	let linkUnder = currentRestraint
-		&& (bypass || (KDRestraint(currentRestraint).accessible) || KDEnemyPassesSecurity(KDRestraint(currentRestraint).Group, securityEnemy))
+		&& (bypass || (KDRestraint(currentRestraint).accessible) || (KDRestraint(currentRestraint).deepAccessible) || KDEnemyPassesSecurity(KDRestraint(currentRestraint).Group, securityEnemy))
 		&& KinkyDungeonIsLinkable(restraint, KDRestraint(currentRestraint), {name: restraint.name, id: -1}, currentRestraint, currentRestraint)
 		&& (!currentRestraint.dynamicLink || KinkyDungeonIsLinkable(KDRestraint(currentRestraint.dynamicLink), restraint, currentRestraint.dynamicLink, currentRestraint));
 
