@@ -9024,11 +9024,13 @@ dShopkeeperTeleportDebt_Armor,"(Help her test cursed armors)"
 dShopkeeperTeleportDebt_Restraint,"(Add cursed restraints as collateral)"
 dShopkeeperTeleportDebt_Collar,"(Wear a collar to help advertise her business)"
 dShopkeeperTeleportDebt_Catsuit,"(Wear a catsuit to help advertise her business)"
+dShopkeeperTeleportDebt_Pay,"(Actually... just pay her the RESCUECOST gold)"
 
 rShopkeeperTeleportDebt_Armor,"(The SPEAKER holds up a RESTRAINTNAME)|I've bought some armors from an adventurer lately,|but I don't know if they're safe to wear.|Why don't you try it on for me?|I'll postpone your debt for a later time."
 rShopkeeperTeleportDebt_Restraint,"(The SPEAKER holds up a RESTRAINTNAME)|I need to make sure you won't go running off again.|This RESTRAINTNAME here has a special seal on it.|I can get you out of it, of course, but you'll have to pay up first."
 rShopkeeperTeleportDebt_Collar,"(The SPEAKER holds up a RESTRAINTNAME)|Your captors are quite the market for high-security restraints.|If you get captured by them, maybe they'll see my logo on this collar!|It's quite comfy and secure,|you'll end up feeling more submissive the more your wear it."
 rShopkeeperTeleportDebt_Catsuit,"(The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!"
+rShopkeeperTeleportDebt_Pay,"(The SPEAKER folds her arms and nods)|Good girl! I knew you would come through~"
 
 dShopkeeperTeleportDebt_Yes,"Sure! I accept!"
 dShopkeeperTeleportDebt_YesGag,"(Nod in approval)"

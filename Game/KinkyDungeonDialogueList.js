@@ -917,6 +917,7 @@ let KDDialogue = {
 							|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint
 							|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar
 							|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit
+							|| KinkyDungeonGold > KDGameData.ShopkeeperFee
 						)) {
 							if (KinkyDungeonPlayerTags.get("Metal") || KinkyDungeonPlayerTags.get("Leather") || KinkyDungeonPlayerTags.get("Rope") || KinkyDungeonPlayerTags.get("Latex")) {
 								KDGameData.CurrentDialogMsg = "ShopkeeperTeleportTabYesRestrained";
@@ -952,6 +953,7 @@ let KDDialogue = {
 						|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint
 						|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar
 						|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit
+						|| KinkyDungeonGold > KDGameData.ShopkeeperFee
 					)) {
 						if (KinkyDungeonPlayerTags.get("Metal") || KinkyDungeonPlayerTags.get("Leather") || KinkyDungeonPlayerTags.get("Rope") || KinkyDungeonPlayerTags.get("Latex")) {
 							KDGameData.CurrentDialogMsg = "ShopkeeperTeleportTabRetryRestrained";
@@ -1119,6 +1121,27 @@ let KDDialogue = {
 									KDGameData.CurrentDialogMsg = "ShopkeeperTeleportDebt";
 									return true;
 								}
+							},
+						}
+					},
+					"Pay": {
+						playertext: "Default", response: "Default",
+						prerequisiteFunction: (gagged) => {
+							return KinkyDungeonGold >= KDGameData.ShopkeeperFee;
+						},
+						clickFunction: (gagged) => {
+							KinkyDungeonGold -= KDGameData.ShopkeeperFee;
+							KDGameData.ShopkeeperFee = 0;
+							KinkyDungeonRemoveRestraintsWithShrine("Rope", undefined, true, false, true);
+							KinkyDungeonRemoveRestraintsWithShrine("Leather", undefined, true, false, true);
+							KinkyDungeonRemoveRestraintsWithShrine("Metal", undefined, true, false, true);
+							KinkyDungeonRemoveRestraintsWithShrine("Latex", undefined, true, false, true);
+							return false;
+						},
+						options: {
+							"Leave": {
+								playertext: "Leave", response: "Default",
+								exitDialogue: true,
 							},
 						}
 					},
