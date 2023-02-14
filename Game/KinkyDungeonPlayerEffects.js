@@ -151,13 +151,14 @@ let KDPlayerEffects = {
  * @param {string[]} tags
  * @param {string} faction
  * @param {boolean} [noDeep]
+ * @param {boolean} [bypass] - Bypass inaccessible things
  * @returns {restraint[]}
  */
-function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep) {
+function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass) {
 	let added = [];
 	for (let i = 0; i < count; i++) {
 		let restraintAdd = KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel + (spell?.power || 0), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
-		if (restraintAdd && KinkyDungeonAddRestraintIfWeaker(restraintAdd, (spell?.power || 0), false, undefined, false, false, undefined, faction, !noDeep)) {
+		if (restraintAdd && KinkyDungeonAddRestraintIfWeaker(restraintAdd, (spell?.power || 0), bypass, undefined, false, false, undefined, faction, !noDeep)) {
 			KDSendStatus('bound', restraintAdd.name, "spell_" + spell?.name);
 			added.push(restraintAdd);
 		}
