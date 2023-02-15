@@ -908,7 +908,9 @@ let KDDialogue = {
 					} else {
 						if (!KDGameData.CurrentDialogMsgData) KDGameData.CurrentDialogMsgData = {};
 						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor = KinkyDungeonGetRestraint({tags: ['basicCurse', 'shopCurse']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
-						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint = KinkyDungeonGetRestraint({tags: ['trap', 'shopRestraint']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
+						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint = KDChooseRestraintFromListGroupPri(
+							KDGetRestraintsEligible({tags: ['trap', 'shopRestraint']}, 10, 'grv', true, undefined, undefined, undefined, false),
+							KDRestraintGroupProgressiveOrderFun)?.name;
 						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar = KinkyDungeonGetRestraint({tags: ['shopCollar']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit = KinkyDungeonGetRestraint({tags: ['shopCatsuit']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 
@@ -944,7 +946,9 @@ let KDDialogue = {
 				clickFunction: (gagged) => {
 					if (!KDGameData.CurrentDialogMsgData) KDGameData.CurrentDialogMsgData = {};
 					KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor = KinkyDungeonGetRestraint({tags: ['basicCurse', 'shopCurse']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
-					KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint = KinkyDungeonGetRestraint({tags: ['trap', 'shopRestraint']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
+					KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint = KDChooseRestraintFromListGroupPri(
+						KDGetRestraintsEligible({tags: ['trap', 'shopRestraint']}, 10, 'grv', true, undefined, undefined, undefined, false),
+						KDRestraintGroupProgressiveOrderFun)?.name;
 					KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar = KinkyDungeonGetRestraint({tags: ['shopCollar']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 					KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit = KinkyDungeonGetRestraint({tags: ['shopCatsuit']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 
