@@ -142,6 +142,27 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			if (KDGameData.RoomType == "Tunnel" || (altRoom && altRoom.skiptunnel)) {
 
 				MiniGameKinkyDungeonLevel += 1;
+				if (KDGameData.PriorJailbreaks > 0) KDGameData.PriorJailbreaksDecay = (KDGameData.PriorJailbreaksDecay + 1) || 1;
+
+				if (MiniGameKinkyDungeonLevel > 1) {
+					// Reduce security level when entering a new area
+					if (MiniGameKinkyDungeonCheckpoint != currCheckpoint)
+						KinkyDungeonChangeRep("Prisoner", -5);
+					else // Otherwise it's just a little bit
+						KinkyDungeonChangeRep("Prisoner", -1);
+
+					if (KinkyDungeonStatsChoice.get("Trespasser")) {
+						KinkyDungeonChangeRep("Rope", -1);
+						KinkyDungeonChangeRep("Metal", -1);
+						KinkyDungeonChangeRep("Leather", -1);
+						KinkyDungeonChangeRep("Latex", -1);
+						KinkyDungeonChangeRep("Will", -1);
+						KinkyDungeonChangeRep("Elements", -1);
+						KinkyDungeonChangeRep("Conjure", -1);
+						KinkyDungeonChangeRep("Illusion", -1);
+					}
+				}
+
 
 				if (KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
 					roomType = ""; // We let the boss spawn naturally
@@ -159,23 +180,6 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			} else {
 				roomType = "PerkRoom"; // We do a perk room, then a tunnel
 				KDGameData.MapMod = ""; // Reset the map mod
-
-				// Reduce security level when entering a new area
-				if (MiniGameKinkyDungeonCheckpoint != currCheckpoint)
-					KinkyDungeonChangeRep("Prisoner", -5);
-				else // Otherwise it's just a little bit
-					KinkyDungeonChangeRep("Prisoner", -1);
-
-				if (KinkyDungeonStatsChoice.get("Trespasser")) {
-					KinkyDungeonChangeRep("Rope", -1);
-					KinkyDungeonChangeRep("Metal", -1);
-					KinkyDungeonChangeRep("Leather", -1);
-					KinkyDungeonChangeRep("Latex", -1);
-					KinkyDungeonChangeRep("Will", -1);
-					KinkyDungeonChangeRep("Elements", -1);
-					KinkyDungeonChangeRep("Conjure", -1);
-					KinkyDungeonChangeRep("Illusion", -1);
-				}
 			}
 
 			KDGameData.RoomType = roomType;
@@ -333,6 +337,33 @@ function KDCreateAoEEffectTiles(x, y, tile, durationMod, rad, avoidPoint, densit
 }
 
 /**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {string[]} tagsToRemove
+ * @param {number} [rad]
+ * @param {{x: number, y: number}} [avoidPoint]
+ * @param {number} [density]
+ * @param {string} mod - explosion modifier
+ */
+function KDRemoveAoEEffectTiles(x, y, tagsToRemove, rad, avoidPoint, density, mod = "") {
+	for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
+		for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
+			if (AOECondition(x, y, x+X, y+Y, rad, mod) && (!avoidPoint || avoidPoint.x != X + x || avoidPoint.y != Y + y) && (density == undefined || KDRandom() < density)) {
+				let tiles = KDGetEffectTiles(x + X, y + Y);
+				for (let tile of Object.values(tiles)) {
+					for (let tag of tagsToRemove) {
+						if (tile.tags && tile.tags.includes(tag)) {
+							tile.duration = 0;
+							break;
+						}
+					}
+				}
+			}
+		}
+}
+
+/**
  * Current alpha vs fade type
  * @param {string} id
  * @param {number} alpha
@@ -408,7 +439,7 @@ function KDUpdateEffectTiles(delta) {
 			if (t[1].pauseDuration > 0) {
 				t[1].pauseDuration -= delta;
 			} else {
-				if (t[1].duration > 0) t[1].duration -= delta;
+				if (t[1].duration > 0 && t[1].duration < 9000) t[1].duration -= delta;
 			}
 			if (t[1].pauseDuration <= 0.001) t[1].pauseSprite = undefined;
 			if (t[1].duration <= 0.001) delete location[t[0]];
@@ -529,7 +560,7 @@ function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets) {
 	});
 	if (!cancel.cancelmove) {
 		KDCheckCollideableBullets(KinkyDungeonPlayerEntity, forceHitBullets);
-		KinkyDungeonHandleTraps(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTrapMoved);
+		KinkyDungeonHandleTraps(KinkyDungeonPlayerEntity, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTrapMoved);
 	}
 	return cancel.returnvalue;
 }
@@ -547,8 +578,8 @@ function KDSlip(dir) {
 			&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y))
 			&& !KinkyDungeonEnemyAt(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y)) {
 			KDMovePlayer(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y, false, true);
-			KinkyDungeonHandleStepOffTraps(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y);
-			KinkyDungeonHandleTraps(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true);
+			KinkyDungeonHandleStepOffTraps(KinkyDungeonPlayerEntity, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y);
+			KinkyDungeonHandleTraps(KinkyDungeonPlayerEntity, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true);
 			maxReached = i;
 		} else {
 			i = maxSlip;

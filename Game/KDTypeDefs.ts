@@ -1,5 +1,15 @@
+type Named = {
+	name: string,
+}
+
 /** Kinky Dungeon Typedefs*/
-type item = {
+interface item extends Named {
+	id: number,
+	/** Contains string data */
+	dataString?: Record<string, string>;
+	/** Contains numeric data */
+	dataNumber?: Record<string, number>;
+	/** Used in order to boost performance */
 	linkCache?: string[],
 	/** If the item has a different curse from the base curse */
 	curse?: string,
@@ -171,6 +181,8 @@ interface KDRestraintProps {
 	accessible?: boolean,
 	/** This item lets you CANT access linked items under it */
 	inaccessible?: boolean,
+	/** This item lets you ignore its inaccessibility for the sake of trussing up the player */
+	deepAccessible?: boolean,
 	/** This item can be rendered when linked */
 	renderWhenLinked?: string[];
 	// Player must have one of these PlayerTags to equip
@@ -472,7 +484,7 @@ interface floorParams {
 	shortcuts: {Level: number, checkpoint: string, chance:number}[	],
 	mainpath: {Level: number, checkpoint: string, chance?: number}[],
 
-	traps: {Name: string, Enemy?: string, Spell?: string, Level: number, Power: number, Weight: number, strict?: true}[],
+	traps: {Name: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true}[],
 
 	min_width : number,
 	max_width : number,
@@ -511,6 +523,10 @@ interface overrideDisplayItem {
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
 
 interface enemy extends KDHasTags {
+
+	/** This enemy will always kite the player even if player is harmless*/
+	alwaysKite?: boolean,
+
 	/** Restraint filters */
 	RestraintFilter?: {
 		/** This enemy can apply restraints without needing them in her pockets */
@@ -580,6 +596,16 @@ interface enemy extends KDHasTags {
 	hidetimerbar?: boolean,
 	Attack?: {
 		mustBindorFail?: boolean,
+	},
+	/** Contains data pertaining to the creature's awareness */
+	Awareness?: {
+		/** Optional tag to override chase radius */
+		chaseradius?: number,
+	}
+	/** Contains data pertaining to the creature's effect on reputation and its behaviors from it */
+	Reputation?: {
+		/** Optional tag to make an enemy not give up rep when killed */
+		noRepLoss?: boolean,
 	},
 	/** */
 	followRange?: number,
@@ -756,6 +782,11 @@ interface enemy extends KDHasTags {
 	attackLock?: string,
 	/** Minimum range for attack warning tiles, used to prevent high range enemies from attacking all around them*/
 	tilesMinRange?: number,
+	/** Minimum range to try attacking */
+	attackMinRange?: number,
+	/** Minimum range to try attacking */
+	specialMinRange?: number,
+
 	/** */
 	noKiteWhenHarmless?: boolean,
 	/** */
@@ -961,6 +992,7 @@ interface KinkyDungeonEvent {
 	restraint?: string;
 	sfx?: string;
 	power?: number;
+	count?: number;
 	player?: boolean;
 	bind?: number;
 	distract?: number;
@@ -1219,6 +1251,8 @@ type KDPerk = {
 }
 
 interface spell {
+	/** Marks a spell as non-magical, so traps dont leave a rune on the ground */
+	nonmagical?: boolean,
 	/** Marks the spell as a command word spell to enemies */
 	commandword?: boolean,
 	/** The spell is used to buff allies */
@@ -1463,8 +1497,8 @@ interface spell {
 	nonVolatile?: boolean;
 	/** Cancels automove when cast */
 	cancelAutoMove?: boolean;
-	/** noTargetDark */
-	noTargetDark?: boolean;
+	/** requireLOS */
+	requireLOS?: boolean;
 	/** selfTargetOnly */
 	selfTargetOnly?: boolean;
 	/** AI will only target creatures with this tag */
@@ -1707,6 +1741,8 @@ type AIType = {
 	strictwander?: boolean,
 	/** This enemy is stealthy until the ambush is triggered */
 	ambush?: boolean,
+	/** This is the tile for the AI which registers as tooltip */
+	ambushtile?: string,
 	/** Happens at the start immediately after AI is assigned*/
 	init: (enemy, player, aidata) => void,
 	/** Happens before movement. Return true to skip movement loop*/
@@ -1725,6 +1761,10 @@ type AIType = {
 	wander_near: (enemy, player, aidata) => boolean,
 	/** Whether enemy will randomly choose points on the map to wander to */
 	wander_far: (enemy, player, aidata) => boolean,
+	/** Function to replace wandernear. Return true to cancel stock func, false otherwise*/
+	wandernear_func?: (enemy, player, aidata) => boolean,
+	/** Function to replace wanderfar. Return true to cancel stock func, false otherwise*/
+	wanderfar_func?: (enemy, player, aidata) => boolean,
 	/** Whether it sets gx to gxx when idle, and gy to gyy */
 	resetguardposition: (enemy, player, aidata) => boolean,
 	/** Whether enemy attacks */

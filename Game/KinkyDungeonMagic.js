@@ -61,7 +61,7 @@ function KinkyDungeonDisableSpell(Name) {
 	for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
 		if (KinkyDungeonSpells[KinkyDungeonSpellChoices[i]] && KinkyDungeonSpells[KinkyDungeonSpellChoices[i]].name == Name) {
 			KinkyDungeonSpellChoicesToggle[i] = false;
-			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
 		}
 	}
 }
@@ -668,7 +668,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 	}
 
 	if (!enemy && !bullet && player) { // Costs for the player
-		KinkyDungeonSetFlag("PlayerCombat", 20);
+		KinkyDungeonSetFlag("PlayerCombat", 8);
 
 		if (data.targetingSpellItem) {
 			KinkyDungeonChangeConsumable(KinkyDungeonTargetingSpellItem, -(KinkyDungeonTargetingSpellItem.useQuantity ? KinkyDungeonTargetingSpellItem.useQuantity : 1));
@@ -727,8 +727,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 function KinkyDungeonClickSpellChoice(I, CurrentSpell) {
 	// Set spell choice
 	KDSendInput("spellChoice", {I:I, CurrentSpell: CurrentSpell});
-	if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessagePriority > 3)
-		KinkyDungeonDrawState = "Game";
+	//if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessagePriority > 3)
+	//KinkyDungeonDrawState = "Game";
 	if (KinkyDungeonSpellChoicesToggle[I] && KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].cancelAutoMove) {
 		KinkyDungeonFastMove = false;
 		KinkyDungeonFastMoveSuppress = false;
@@ -1193,13 +1193,13 @@ function KinkyDungeonListSpells(Mode) {
 				let xx = canvasOffsetX_ui + XX + (spell.upcastFrom ? 30 : 0);
 
 				if (Mode == "Draw") {
-					let color = KDSwapSpell == -1 ? "#bbbbbb" : "#777777";
+					let color = KDSwapSpell == -1 ? "#bcbcbc" : "#777777";
 					let index = KinkyDungeonSpellIndex(spell.name);
 					if (index >= 0 && (KDSwapSpell == -1 || !KinkyDungeonSpellChoices.includes(index))) {
 						color = "#ffffff";
 						suff = "";
 					} else if (!KinkyDungeonCheckSpellPrerequisite(spell)) {
-						color = "#777777";
+						color = "#555555";
 						//suff = "";
 					}
 					if (!spell.passive)
@@ -1208,6 +1208,11 @@ function KinkyDungeonListSpells(Mode) {
 							yy,
 							h,
 							h,
+							undefined,
+							{
+								zIndex: 110,
+								alpha: index >= 0 ? 1.0 : 0.5
+							},
 						);
 					if (index >= 0)
 						KDDraw(kdcanvas, kdpixisprites, "spIconTick" + spell.name, KinkyDungeonRootDirectory + "UI/" + "CheckSmall" + ".png",
@@ -1215,14 +1220,25 @@ function KinkyDungeonListSpells(Mode) {
 							yy + h/2-15,
 							30,
 							30,
+							undefined,
+							{
+								zIndex: 110,
+							},
 						);
 					DrawButtonVis(xx,
 						yy,
 						w,
 						h,
 						"", color,
-						"", "", false, true, (index >= 0) ? "rgba(7, 7, 7, 0.9)" : "rgba(4, 4, 4, 0.9)", // Image: KinkyDungeonSpellChoices.includes(index) ? (KinkyDungeonRootDirectory + "UI/Tick.png") : ""
-						(spell.upcastFrom ? 20 : 24));
+						"", "", false, true, (index >= 0) ? "#070707" : "#040404",
+						// Image: KinkyDungeonSpellChoices.includes(index) ? (KinkyDungeonRootDirectory + "UI/Tick.png") : ""
+						(spell.upcastFrom ? 20 : 24),
+						false,
+						false,
+						20,
+						{
+							alpha: index >= 0 ? 0.9 : 0.9
+						});
 					DrawTextFitKD(TextGet("KinkyDungeonSpell" + spell.name),
 						xx + h + 2 + (spell.upcastFrom ? 0 : 8),
 						yy + h/2,

@@ -794,6 +794,7 @@ function KinkyDungeonPassOut(noteleport) {
 	KinkyDungeonStatBlind = 10;
 	KinkyDungeonUpdateLightGrid = true;
 	KDGameData.AlertTimer = 0;
+	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["passout"]);
 	KinkyDungeonSendEvent("passout", {});
 
 	KinkyDungeonStripInventory(false);
@@ -809,7 +810,7 @@ function KinkyDungeonPassOut(noteleport) {
 	KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPassOut2"), "#ff0000", 5);
 
 
-	if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
+	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
 
 	KDGameData.JailKey = false;
 	KinkyDungeonSaveGame();
@@ -922,14 +923,14 @@ function KinkyDungeonDefeat(PutInJail) {
 	KinkyDungeonStripInventory(true);
 
 	if (defeat_outfit != params.defeat_outfit) {
-		if (!KinkyDungeonInventoryGet(defeat_outfit)) KinkyDungeonInventoryAdd({name: defeat_outfit, type: Outfit});
-	} else if (!KinkyDungeonInventoryGet("JailUniform")) KinkyDungeonInventoryAdd({name: "JailUniform", type: Outfit});
+		if (!KinkyDungeonInventoryGet(defeat_outfit)) KinkyDungeonInventoryAdd({name: defeat_outfit, type: Outfit, id: KinkyDungeonGetItemID()});
+	} else if (!KinkyDungeonInventoryGet("JailUniform")) KinkyDungeonInventoryAdd({name: "JailUniform", type: Outfit, id: KinkyDungeonGetItemID()});
 
 	//KinkyDungeonChangeRep("Ghost", 1 + Math.round(KinkyDungeonSpawnJailers/2));
 	//KinkyDungeonChangeRep("Prisoner", securityBoost); // Each time you get caught, security increases...
 
 	KinkyDungeonDressPlayer();
-	if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
+	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
 
 	KDGameData.JailKey = false;
 	KinkyDungeonSaveGame();
@@ -1016,6 +1017,10 @@ function KDResetAllIntents() {
 	}
 }
 
+/**
+ * Moves an enemy to a random position on the map
+ * @param {entity} e
+ */
 function KDKickEnemy(e) {
 	if (!e.Enemy.tags.temporary) {
 		if (!e.Enemy.tags.prisoner && !KDEnemyHasFlag(e, "imprisoned")) {

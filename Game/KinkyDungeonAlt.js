@@ -65,6 +65,7 @@ let alts = {
 		noShrineTypes: ["Commerce", "Will"],
 		tickFlags: true,
 		noMusic: true,
+		keepMainPath: true,
 	},
 	"PerkRoom": {
 		name: "PerkRoom",
@@ -93,6 +94,7 @@ let alts = {
 		noClutter: true,
 		noShrineTypes: ["Commerce", "Will"],
 		noMusic: true,
+		keepMainPath: true,
 	},
 	"Jail": {
 		name: "Jail",
@@ -155,6 +157,32 @@ let alts = {
 		noClutter: true,
 		skiptunnel: true, // Skip the ending tunnel
 	},
+	"ShopStart": {
+		name: "ShopStart",
+		bossroom: false,
+		width: 10,
+		height: 8,
+		setpieces: {
+		},
+		genType: "ShopStart",
+		spawns: false,
+		chests: false,
+		shrines: false,
+		orbs: 0,
+		chargers: false,
+		torches: true,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nolore: true,
+		nostairs: true,
+		notraps: true,
+		noClutter: true,
+		skiptunnel: true, // Skip the ending tunnel
+	},
 	"Tutorial": {
 		name: "Tutorial",
 		bossroom: false,
@@ -183,6 +211,7 @@ let alts = {
 };
 
 let KDJourneyList = ["Random", "Harder", "Explorer"];
+if (param_test) KDJourneyList.push("Test");
 
 function KinkyDungeonAltFloor(Type) {
 	return alts[Type];
@@ -195,6 +224,9 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"JourneyFloor": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
+	},
+	"ShopStart": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
 	"Tutorial": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateTutorial(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
@@ -901,6 +933,48 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 		i++;
 		x += 2;
 	}
+
+	KinkyDungeonEndPosition = {x: b1*2 + 5, y: VisitedRooms[0].y*2};
+}
+
+
+function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Variable setup
+
+	KinkyDungeonStartPosition = {x: 2, y: height};
+	VisitedRooms[0].x = 1;
+	VisitedRooms[0].y = Math.floor(height/2);
+
+	KinkyDungeonCreateRectangle(0, 0, width, height, true, true, false, false);
+
+	KinkyDungeonCreateRectangle(VisitedRooms[0].x, VisitedRooms[0].y - 1, 4, 2, false, false, false, false);
+	KinkyDungeonCreateRectangle(VisitedRooms[0].x, VisitedRooms[0].y, 6, 1, false, false, false, false);
+
+	let b1 = 4;
+
+
+	// Now we STRETCH the map
+	let KinkyDungeonOldGrid = KinkyDungeonGrid;
+	let w = KinkyDungeonGridWidth;
+	let h = KinkyDungeonGridHeight;
+	KinkyDungeonGridWidth = Math.floor(KinkyDungeonGridWidth*2);
+	KinkyDungeonGridHeight = Math.floor(KinkyDungeonGridHeight*2);
+	KinkyDungeonGrid = "";
+
+	// Generate the grid
+	for (let Y = 0; Y < KinkyDungeonGridHeight; Y++) {
+		for (let X = 0; X < KinkyDungeonGridWidth; X++)
+			KinkyDungeonGrid = KinkyDungeonGrid + KinkyDungeonOldGrid[Math.floor(X * w / KinkyDungeonGridWidth) + Math.floor(Y * h / KinkyDungeonGridHeight)*(w+1)];
+		KinkyDungeonGrid = KinkyDungeonGrid + '\n';
+	}
+
+	KD_PasteTile(KDMapTilesList.ShopStart, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y - 4, data);
+
+	DialogueCreateEnemy(KinkyDungeonStartPosition.x + 5, KinkyDungeonStartPosition.y, "ShopkeeperStart");
+
+	// Normal end stairs
+	KinkyDungeonMapSet(b1*2 + 7, VisitedRooms[0].y*2, 's');
+	KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: "JourneyFloor"});
 
 	KinkyDungeonEndPosition = {x: b1*2 + 5, y: VisitedRooms[0].y*2};
 }

@@ -85,6 +85,9 @@ async function KDExecuteMods() {
 		} else {
 			KDModFiles[KinkyDungeonRootDirectory + entry.filename] = URL.createObjectURL(blob);
 			KDModFiles[KinkyDungeonRootDirectory + "/" + entry.filename] = KDModFiles[KinkyDungeonRootDirectory + entry.filename];
+
+			if (entry.filename?.startsWith("Data/")) KDModFiles["Data/" + entry.filename] = URL.createObjectURL(blob);
+			if (entry.filename?.startsWith("Music/")) KDModFiles["Music/" + entry.filename] = URL.createObjectURL(blob);
 		}
 
 	}
@@ -95,6 +98,7 @@ async function KDExecuteMods() {
 	KinkyDungeonRefreshRestraintsCache();
 	KinkyDungeonRefreshEnemiesCache();
 }
+
 
 if (typeof TransformStream == "undefined") {
 	const script = document.createElement("script");

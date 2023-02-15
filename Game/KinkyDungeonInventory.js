@@ -127,12 +127,12 @@ function KinkyDungeonHandleInventory() {
 
 function KinkyDungeonInventoryAddWeapon(Name) {
 	if (!KinkyDungeonInventoryGetWeapon(Name) && KinkyDungeonWeapons[Name])
-		KinkyDungeonInventoryAdd({name:Name, type:Weapon, events: Object.assign([], KinkyDungeonWeapons[Name].events)});
+		KinkyDungeonInventoryAdd({name:Name, type:Weapon, events: Object.assign([], KinkyDungeonWeapons[Name].events), id: KinkyDungeonGetItemID()});
 }
 
 function KinkyDungeonInventoryAddLoose(Name, UnlockCurse) {
 	if (!KinkyDungeonInventoryGetLoose(Name) || UnlockCurse)
-		KinkyDungeonInventoryAdd({name: Name, type: LooseRestraint, curse: UnlockCurse, events:KDRestraint(KinkyDungeonGetRestraintByName(Name)).events, quantity: 1});
+		KinkyDungeonInventoryAdd({name: Name, type: LooseRestraint, curse: UnlockCurse, events:KDRestraint(KinkyDungeonGetRestraintByName(Name)).events, quantity: 1, id: KinkyDungeonGetItemID()});
 	else {
 		KinkyDungeonInventoryGetLoose(Name).quantity += 1;
 	}
@@ -140,7 +140,7 @@ function KinkyDungeonInventoryAddLoose(Name, UnlockCurse) {
 
 function KinkyDungeonInventoryAddOutfit(Name) {
 	if (!KinkyDungeonInventoryGetOutfit(Name) && KinkyDungeonOutfitCache.has(Name))
-		KinkyDungeonInventoryAdd({name:Name, type:Outfit});
+		KinkyDungeonInventoryAdd({name:Name, type:Outfit, id: KinkyDungeonGetItemID()});
 }
 /**
  *
@@ -561,6 +561,13 @@ function KinkyDungeonSendInventoryEvent(Event, data) {
 				}
 			}
 		}
+		if (item.curse && KDCurses[item.curse]?.events) {
+			for (let e of KDCurses[item.curse].events) {
+				if (e.trigger === Event && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+					KinkyDungeonHandleInventoryEvent(Event, e, item, data);
+				}
+			}
+		}
 	}
 }
 
@@ -623,6 +630,17 @@ function KinkyDungeonDrawQuickInv() {
 		DrawButtonVis(510, 455, 90, 40, "", "white", KinkyDungeonRootDirectory + "Up.png");
 		DrawButtonVis(510, 500, 90, 40, "", "white", KinkyDungeonRootDirectory + "Down.png");
 	}
+
+	FillRectKD(kdcanvas, kdpixisprites, "quickinvbg", {
+		Left: 5,
+		Top: 5,
+		Width: 490,
+		Height: 990,
+		Color: "#000000",
+		LineWidth: 1,
+		zIndex: 59,
+		alpha: 0.9
+	});
 
 	DrawButtonKDEx("inventoryhide", (bdata) => {
 		if (!KDGameData.HiddenItems)
@@ -748,31 +766,31 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 
 	if (fC.length > KDItemsPerScreen.Consumable) {
 		if (MouseIn(510, 5, 90, 40)) {
-			KDScrollOffset.Consumable = Math.min(Math.ceil((fC.length - KDItemsPerScreen.Consumable)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Consumable + KDScrollAmount);
+			KDScrollOffset.Consumable = Math.max(0, KDScrollOffset.Consumable - KDScrollAmount);
 			return true;
 		}
 		if (MouseIn(510, 50, 90, 40)) {
-			KDScrollOffset.Consumable = Math.max(0, KDScrollOffset.Consumable - KDScrollAmount);
+			KDScrollOffset.Consumable = Math.min(Math.ceil((fC.length - KDItemsPerScreen.Consumable)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Consumable + KDScrollAmount);
 			return true;
 		}
 	}
 	if (fW.length > KDItemsPerScreen.Weapon) {
 		if (MouseIn(510, 705, 90, 40)) {
-			KDScrollOffset.Weapon = Math.min(Math.ceil((fW.length - KDItemsPerScreen.Consumable)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Weapon + KDScrollAmount);
+			KDScrollOffset.Weapon = Math.max(0, KDScrollOffset.Weapon - KDScrollAmount);
 			return true;
 		}
 		if (MouseIn(510, 750, 90, 40)) {
-			KDScrollOffset.Weapon = Math.max(0, KDScrollOffset.Weapon - KDScrollAmount);
+			KDScrollOffset.Weapon = Math.min(Math.ceil((fW.length - KDItemsPerScreen.Consumable)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Weapon + KDScrollAmount);
 			return true;
 		}
 	}
 	if (fR.length > KDItemsPerScreen.Restraint) {
 		if (MouseIn(510, 455, 90, 40)) {
-			KDScrollOffset.Restraint = Math.min(Math.ceil((fR.length - KDItemsPerScreen.Consumable)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Restraint + KDScrollAmount);
+			KDScrollOffset.Restraint = Math.max(0, KDScrollOffset.Restraint - KDScrollAmount);
 			return true;
 		}
 		if (MouseIn(510, 500, 90, 40)) {
-			KDScrollOffset.Restraint = Math.max(0, KDScrollOffset.Restraint - KDScrollAmount);
+			KDScrollOffset.Restraint = Math.min(Math.ceil((fR.length - KDItemsPerScreen.Consumable)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Restraint + KDScrollAmount);
 			return true;
 		}
 	}

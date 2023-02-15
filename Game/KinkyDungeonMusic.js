@@ -63,7 +63,7 @@ function KDUpdateMusic() {
 
 
 
-		let globalVolume = KinkyDungeonSound ? KDMusicVolume * KDMusicVolumeMult : 0;
+		let globalVolume = KDToggles.Sound && KDToggles.Music ? KDMusicVolume * KDMusicVolumeMult : 0;
 		if (globalVolume > 0 && (!KDCurrentMusicSound || KDCurrentMusicSound.ended || KDCurrentMusicSound.paused || (!KDCurrentSong && KDCurrentFade == 0))) {
 			KDPlayMusic(KDNewSong, globalVolume);
 		}

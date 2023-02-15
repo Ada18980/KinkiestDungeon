@@ -35,6 +35,10 @@ function KinkyDungeonAddLostItems(list, excludeBound) {
 	}
 }
 
+let cursedRestraintCache = {
+
+};
+
 
 // Determines if you get a good loot from a blue locked chest
 let KinkyDungeonSpecialLoot = false;
@@ -110,6 +114,17 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap) {
 			}
 			if (loot.norestraint) {
 				for (let r of loot.norestraint) {
+					if (KinkyDungeonInventoryGet(r)) {
+						prereqs = false;
+						break;
+					}
+				}
+			}
+			// Check for cursed norestraint as well
+			if (loot.norestraintcursed) {
+				let id = loot.norestraintcursed + `${loot.curselevelmin || 0},${loot.curselevelmax || 0}`;
+				if (!cursedRestraintCache[id]) cursedRestraintCache[id] = [...KinkyDungeonGetCurses(loot.norestraintcursed, true, loot.curselevelmin, loot.curselevelmax)];
+				for (let r of cursedRestraintCache[id]) {
 					if (KinkyDungeonInventoryGet(r)) {
 						prereqs = false;
 						break;
@@ -211,9 +226,16 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	}
 	else if (Loot.armor) {
 		let armor = Loot.armor;
-		let unlockcurse = undefined;
-		if (Loot.curses) armor = CommonRandomItemFromList("", Loot.curses);
-		if (Loot.unlockcurse) unlockcurse = CommonRandomItemFromList("", Loot.unlockcurse);
+		let unlockcurse = null;
+		if (Loot.curselevelmin != undefined || Loot.curselevelmax != undefined)
+			armor = CommonRandomItemFromList("", KinkyDungeonGetCurses(Loot.armor, false, Loot.curselevelmin, Loot.curselevelmax));
+		if (Loot.unlockcurse) {
+			let curselist = [];
+			for (let c of Loot.unlockcurse) {
+				curselist.push(...KDCurseUnlockList[c]);
+			}
+			unlockcurse = CommonRandomItemFromList("", curselist);
+		}
 		KinkyDungeonInventoryAddLoose(armor, unlockcurse);
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + Loot.armor));
@@ -353,12 +375,12 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	}
 	else if (Loot.name == "EnchantedBelt"||Loot.name == "EnchantedBra"||Loot.name == "EnchantedHeels"||Loot.name == "EnchantedAnkleCuffs"||Loot.name == "EnchantedMuzzle"||Loot.name == "EnchantedBlindfold"||Loot.name == "EnchantedMittens"||Loot.name == "EnchantedBallGag"||Loot.name == "EnchantedArmbinder") {
 		let restraint = KinkyDungeonGetRestraintByName(Loot.name);
-		KinkyDungeonInventoryAdd({name: Loot.name, type: LooseRestraint, events: Object.assign([], restraint.events)});
+		KinkyDungeonInventoryAdd({name: Loot.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events: Object.assign([], restraint.events)});
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
 	}
 	else if (Loot.name == "PotionCollar") {
 		let restraint = KinkyDungeonGetRestraintByName("PotionCollar");
-		KinkyDungeonInventoryAdd({name: Loot.name, type: LooseRestraint, events: Object.assign([], restraint.events)});
+		KinkyDungeonInventoryAdd({name: Loot.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events: Object.assign([], restraint.events)});
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
 	}
 	else if (Loot.name == "weapon_boltcutters") {
@@ -573,13 +595,13 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		}
 		if (spell) {
 			KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell, undefined, undefined, undefined);
-			if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/MagicSlash.ogg");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/MagicSlash.ogg");
 		}
 	}
 
 	else if (Loot.name == "lost_items") {
 		if (!KinkyDungeonInventoryGet("Default")) {
-			KinkyDungeonInventoryAdd({name: "Default", type: Outfit});
+			KinkyDungeonInventoryAdd({name: "Default", id: KinkyDungeonGetItemID(), type: Outfit});
 		}
 		for (let I = 0; I < KinkyDungeonLostItems.length; I++) {
 			let lostitem = KinkyDungeonLostItems[I];
@@ -708,7 +730,7 @@ function KDSpawnLootTrap(x, y, trap, mult, duration) {
 	for (let tile of KDNearbyTiles(x, y, 2.5)) {
 		if (tile.tile.lootTrapEnemy) {
 			let etiles = Object.values(KDGetEffectTiles(tile.x, tile.y)).filter((etile) => {
-				return etile.tags && etile.tags.includes("rune");
+				return etile.tags && etile.tags.includes("runesummon");
 			});
 			if (etiles?.length > 0) {
 				let Enemy = KinkyDungeonGetEnemyByName(tile.tile.lootTrapEnemy);
@@ -725,7 +747,7 @@ function KDSpawnLootTrap(x, y, trap, mult, duration) {
 
 	}
 	if (spawned > 0) {
-		if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/MagicSlash.ogg");
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/MagicSlash.ogg");
 		KinkyDungeonMakeNoise(12, x, y);
 		KinkyDungeonSendTextMessage(10, TextGet("LootChestTrap"), "#ff8800", 2);
 	}

@@ -235,7 +235,7 @@ function KinkyDungeonDressPlayer() {
 
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if (KinkyDungeonCheckClothesLoss)
-				if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KinkyDungeonArmor)) {
+				if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
 					KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color);
 				}
 		}
@@ -262,12 +262,12 @@ function KinkyDungeonDressPlayer() {
 		let Mouth = "";
 		let Fluids = "";
 
-		if (KinkyDungeonDrool && !KinkyDungeonCanTalk()) {
+		if (KDToggles.Drool && !KinkyDungeonCanTalk()) {
 			if (SpeechGetTotalGagLevel(KinkyDungeonPlayer) > 8) Fluids = "DroolMessy";
 			else if (SpeechGetTotalGagLevel(KinkyDungeonPlayer) > 4) Fluids = "DroolMedium";
 			else Fluids = "DroolLow";
 		}
-		if (KinkyDungeonDrool && KDGameData.KinkyDungeonLeashedPlayer > 0) {
+		if (KDToggles.Drool && KDGameData.KinkyDungeonLeashedPlayer > 0) {
 			if (Fluids.includes("Drool")) Fluids = Fluids.replace("Drool", "DroolTears");
 			else Fluids = "TearsHigh";
 		}
@@ -519,7 +519,7 @@ function KDApplyItem(inv, tags) {
 		/** @type {Item} */
 		let placed = null;
 
-		if (!restraint.armor || KinkyDungeonArmor) {
+		if (!restraint.armor || KDToggles.DrawArmor) {
 			placed = KDAddAppearance(KinkyDungeonPlayer, AssetGroup, AssetGet("3DCGFemale", AssetGroup, restraint.Asset), color, undefined, undefined, undefined, inv);
 		}
 

@@ -14,6 +14,8 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Nekora", color: "#42a459", prisoner: true, free: true, customSprite: ""},
 		{name: "Emeia", color: "#00A7FF", prisoner: true, free: true, customSprite: ""},
 		{name: "Dana", color: "#4444ff", prisoner: true, free: true, customSprite: ""},
+		{name: "Yami", color: "#88ff88", prisoner: true, free: true, customSprite: ""},
+		{name: "Animi", color: "#ff9999", prisoner: true, free: false, customSprite: ""},
 	],
 	],
 	["WolfgirlPet", [
@@ -24,9 +26,21 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Rena", color: "#a452ff", prisoner: true, free: true, customSprite: ""},
 	],
 	],
+	["Dragon", [
+		{name: "Garss", color: "#ff8888", prisoner: true, free: false, customSprite: ""},
+	],
+	],
+	["DragonLeaderDuelist", [
+		{name: "Kaitlyn", color: "#ff5555", prisoner: true, free: true, customSprite: ""},
+	],
+	],
 	["SlimeAdv", [
 		{name: "Rena", color: "#C8C8FF", prisoner: true, free: true, customSprite: ""},
 		{name: "Rappy The Toy", color: "#C759FF", prisoner: true, free: false, customSprite: ""},
+	],
+	],
+	["SmallSlime", [
+		{name: "TY", color: "#ff5555", prisoner: false, free: true, customSprite: ""},
 	],
 	],
 	["WitchRope", [
@@ -43,6 +57,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["Alchemist", [
 		{name: "Morgan", color: "#6241e1", prisoner: true, free: true, customSprite: ""},
+		{name: "Myth", color: "#22ffff", prisoner: false, free: true, customSprite: ""},
 	],
 	],
 	["Dressmaker", [
@@ -70,3 +85,22 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 ]);
+
+/**
+ *
+ * @param {enemy} Enemy
+ * @param {entity} e
+ */
+function KDProcessCustomPatron(Enemy, e) {
+	if (KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < 0.05) {
+		let customs = KDPatronCustomEnemies.get(Enemy.name).filter((element) => {
+			return (element.prisoner && Enemy.specialdialogue && Enemy.specialdialogue.includes("Prisoner")) || (element.free && !Enemy.specialdialogue);
+		});
+		if (customs.length > 0) {
+			let custom = customs[Math.floor(customs.length * KDRandom())];
+			e.CustomName = custom.name;
+			e.CustomNameColor = custom.color;
+			e.CustomSprite = custom.customSprite;
+		}
+	}
+}

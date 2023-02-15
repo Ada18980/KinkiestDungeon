@@ -111,9 +111,10 @@ function KDLinkSize(restraint) {
  *
  * @param {item} item
  * @param {string} linkCategory
+ * @param {item} [ignoreItem]
  * @returns {number}
  */
-function KDLinkCategorySize(item, linkCategory) {
+function KDLinkCategorySize(item, linkCategory, ignoreItem) {
 	let total = 0;
 	// First we get the whole stack
 	let stack = [item];
@@ -126,7 +127,7 @@ function KDLinkCategorySize(item, linkCategory) {
 	}
 	// Now that we have the stack we sum things up
 	for (let inv of stack) {
-		if (KDRestraint(inv).linkCategory == linkCategory) {
+		if (KDRestraint(inv).linkCategory == linkCategory && ignoreItem?.id != inv.id) {
 			total += KDLinkSize(KDRestraint(inv));
 		}
 	}
@@ -172,6 +173,8 @@ let KDBuffSprites = {
 	"AvatarAir": true,
 
 	"DistractionCast": true,
+
+	"BoundByFate": true,
 
 	//KinkyDungeonBuffShrineElements,"Arcane Power: Deals bonus damage when you hit an enemy."
 	//KinkyDungeonBuffShrineConjure,"Arcane Protection: Reduces damage taken, and deals retaliation damage."
@@ -259,7 +262,10 @@ function KinkyDungeonDrawInputs() {
 	let evasion = KinkyDungeonPlayerEvasion();
 	//if (evasion != 1.0) {
 	statsDraw.evasion = {
-		text: TextGet("StatEvasion").replace("Percent", ("") + Math.round((1 - evasion) * 100)),
+		text: TextGet("StatEvasion")
+			.replace("Percent", ("") + Math.round((1 - evasion) * 100))
+			.replace("EVASIONSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion")) * 100))
+			.replace("EVASIONPENALTY", ("") + Math.round((KDPlayerEvasionPenalty()) * 100)),
 		count: ("") + Math.round((1 - evasion) * 100) + "%",
 		icon: "infoEvasion",
 		countcolor: evasion < 1 ? "#65d45d" : (evasion == 1 ? "#ffffff" : "#ff5555"),
@@ -1344,6 +1350,9 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	let actionBarXX = 1360;
 	let actionBarYY = 925;
 
+	if (KDToggles.TurnCounter)
+		DrawTextKD(TextGet("TurnCounter") + KinkyDungeonCurrentTick, 1995, 995, "#ffffff", "#333333", 12, "right");
+
 	DrawButtonKDEx("switchWeapon", (bdata) => {
 		if (!KinkyDungeonControlsEnabled()) return false;
 		KDSwitchWeapon();
@@ -1910,9 +1919,9 @@ function KinkyDungeonHandleHUD() {
 				else if (KinkyDungeonWeapons[ElementValue("DebugItem")]) KinkyDungeonInventoryAddWeapon(ElementValue("DebugItem"));
 				else if (KinkyDungeonGetRestraintByName(ElementValue("DebugItem"))) {
 					let restraint = KinkyDungeonGetRestraintByName(ElementValue("DebugItem"));
-					KinkyDungeonInventoryAdd({name: ElementValue("DebugItem"), type: LooseRestraint, events: restraint.events, quantity: 10});
+					KinkyDungeonInventoryAdd({name: ElementValue("DebugItem"), type: LooseRestraint, events: restraint.events, quantity: 10, id: KinkyDungeonGetItemID()});
 				} else if (KinkyDungeonOutfitsBase.filter((outfit) => {return outfit.name == ElementValue("DebugItem");}).length > 0) {
-					KinkyDungeonInventoryAdd({name: KinkyDungeonOutfitsBase.filter((outfit) => {return outfit.name == ElementValue("DebugItem");})[0].name, type: Outfit});
+					KinkyDungeonInventoryAdd({name: KinkyDungeonOutfitsBase.filter((outfit) => {return outfit.name == ElementValue("DebugItem");})[0].name, type: Outfit, id: KinkyDungeonGetItemID()});
 				}
 
 				if (item)
@@ -1939,68 +1948,11 @@ function KinkyDungeonHandleHUD() {
 			}
 		}
 
-		if (MouseIn(600, 420, 350, 64)) {
-			if (MouseX <= 600 + 350/2) KDVibeVolumeListIndex = (KDVibeVolumeList.length + KDVibeVolumeListIndex - 1) % KDVibeVolumeList.length;
-			else KDVibeVolumeListIndex = (KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length;
-			KDVibeVolume = KDVibeVolumeList[KDVibeVolumeListIndex];
-			localStorage.setItem("KDVibeVolume", "" + KDVibeVolumeListIndex);
-		}
-		if (MouseIn(600, 500, 350, 64)) {
-			if (MouseX <= 600 + 350/2) KDMusicVolumeListIndex = (KDMusicVolumeList.length + KDMusicVolumeListIndex - 1) % KDMusicVolumeList.length;
-			else KDMusicVolumeListIndex = (KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length;
-			KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
-			localStorage.setItem("KDMusicVolume", "" + KDMusicVolumeListIndex);
-		}
-		if (MouseIn(600, 580, 350, 64)) {
-			if (MouseX <= 600 + 350/2) KDAnimSpeedListIndex = (KDAnimSpeedList.length + KDAnimSpeedListIndex - 1) % KDAnimSpeedList.length;
-			else KDAnimSpeedListIndex = (KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length;
-			KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex];
-			localStorage.setItem("KDAnimSpeed", "" + KDAnimSpeedListIndex);
-		}
-
 		if (MouseIn(1650, 900, 300, 64)) {
 			KinkyDungeonDrawState = "Perks2";
 			return true;
 		}
 
-
-		if (MouseIn(600, 100, 64, 64)) {
-			KinkyDungeonSound = !KinkyDungeonSound;
-			localStorage.setItem("KinkyDungeonSound", KinkyDungeonSound ? "True" : "False");
-			return true;
-		}
-		if (MouseIn(600, 260, 64, 64)) {
-			KinkyDungeonFullscreen = !KinkyDungeonFullscreen;
-			if (pixirendererKD)
-				pixirendererKD.destroy();
-			pixirendererKD = null;
-			localStorage.setItem("KinkyDungeonFullscreen", KinkyDungeonFullscreen ? "True" : "False");
-			return true;
-		}
-		if (MouseIn(600, 180, 64, 64)) {
-			KinkyDungeonDrool = !KinkyDungeonDrool;
-			localStorage.setItem("KinkyDungeonDrool", KinkyDungeonDrool ? "True" : "False");
-			return true;
-		}
-		if (!KDDebug && MouseIn(1000, 180, 64, 64)) {
-			KinkyDungeonArmor = !KinkyDungeonArmor;
-			localStorage.setItem("KinkyDungeonArmor", KinkyDungeonArmor ? "True" : "False");
-			return true;
-		}
-		if (MouseIn(600, 340, 64, 64) && (ServerURL == "foobar")) {
-			KinkyDungeonGraphicsQuality = !KinkyDungeonGraphicsQuality;
-			localStorage.setItem("KinkyDungeonDrool", KinkyDungeonGraphicsQuality ? "True" : "False");
-			if (KinkyDungeonGraphicsQuality) {
-				// @ts-ignore
-				if (!Player.GraphicsSettings) Player.GraphicsSettings = {};
-				Player.GraphicsSettings.AnimationQuality = 0;
-			} else {
-				// @ts-ignore
-				if (!Player.GraphicsSettings) Player.GraphicsSettings = {};
-				Player.GraphicsSettings.AnimationQuality = 10000;
-			}
-			return true;
-		}
 		//if (MouseIn(600, 650, 64, 64)) {
 		//KinkyDungeonFastWait = !KinkyDungeonFastWait;
 		//return true;
@@ -2013,16 +1965,6 @@ function KinkyDungeonHandleHUD() {
 				KinkyDungeonDrawState = "Game";
 			} else {
 				KDConfirmDeleteSave = true;
-			}
-			return true;
-		}
-		if (MouseIn(1075, 450, 350, 64)) {
-			KinkyDungeonState = "Keybindings";
-			if (!KinkyDungeonKeybindings)
-				KDSetDefaultKeybindings();
-			else {
-				KinkyDungeonKeybindingsTemp = {};
-				Object.assign(KinkyDungeonKeybindingsTemp, KinkyDungeonKeybindings);
 			}
 			return true;
 		}

@@ -23,7 +23,7 @@ function KinkyDungeonCheckProjectileClearance(xx, yy, x2, y2) {
 	return true;
 }
 
-function KinkyDungeonCheckPath(x1, y1, x2, y2, allowBars, blockEnemies, maxFails) {
+function KinkyDungeonCheckPath(x1, y1, x2, y2, allowBars, blockEnemies, maxFails, blockOnlyLOSBlock) {
 	if (x1 == x2 && y1 == y2) return true;
 	let length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
 	// Allowbars = checking for vision only
@@ -39,13 +39,13 @@ function KinkyDungeonCheckPath(x1, y1, x2, y2, allowBars, blockEnemies, maxFails
 		if ((Math.round(xx) != x1 || Math.round(yy) != y1) && (Math.round(xx) != x2 || Math.round(yy) != y2)) {
 			let hits = 0;
 			if (!obj.includes(KinkyDungeonMapGet(Math.floor(xx), Math.floor(yy)))
-				|| ((xx != x1 || yy != y1) && (blockEnemies && KinkyDungeonEnemyAt(Math.floor(xx), Math.floor(yy))))
+				|| ((xx != x1 || yy != y1) && (blockEnemies && ((!blockOnlyLOSBlock && KinkyDungeonEnemyAt(Math.floor(xx), Math.floor(yy))) || (blockOnlyLOSBlock && KinkyDungeonEnemyAt(Math.floor(xx), Math.floor(yy))?.Enemy.blockVision))))
 				|| ((xx != x1 || yy != y1) && (allowBars && KDVisionBlockers.get(Math.floor(xx) + "," + Math.floor(yy))))) hits += 1;
 			if (!obj.includes(KinkyDungeonMapGet(Math.round(xx), Math.round(yy)))
-				|| ((xx != x1 || yy != y1) && (blockEnemies && KinkyDungeonEnemyAt(Math.round(xx), Math.round(yy))))
+				|| ((xx != x1 || yy != y1) && (blockEnemies && ((!blockOnlyLOSBlock && KinkyDungeonEnemyAt(Math.round(xx), Math.round(yy))) || (blockOnlyLOSBlock && KinkyDungeonEnemyAt(Math.round(xx), Math.round(yy))?.Enemy.blockVision))))
 				|| ((xx != x1 || yy != y1) && (allowBars && KDVisionBlockers.get(Math.round(xx) + "," + Math.round(yy))))) hits += 1;
 			if (hits < 2 && !obj.includes(KinkyDungeonMapGet(Math.ceil(xx), Math.ceil(yy)))
-				|| ((xx != x1 || yy != y1) && (blockEnemies && KinkyDungeonEnemyAt(Math.ceil(xx), Math.ceil(yy))))
+				|| ((xx != x1 || yy != y1) && (blockEnemies && ((!blockOnlyLOSBlock && KinkyDungeonEnemyAt(Math.ceil(xx), Math.ceil(yy))) || (blockOnlyLOSBlock && KinkyDungeonEnemyAt(Math.ceil(xx), Math.ceil(yy))?.Enemy.blockVision))))
 				|| ((xx != x1 || yy != y1) && (allowBars && KDVisionBlockers.get(Math.ceil(xx) + "," + Math.ceil(yy))))) hits += 1;
 
 

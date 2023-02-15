@@ -19,6 +19,8 @@ let KinkyDungeonShrineBaseCosts = {
 let KDWillShrineWill = 0.25;
 let KinkyDungeonOrbAmount = 0;
 let KDShrineRemoveCount = 30;
+let KDMaxGoddessBonus = 0.2;
+let KDMinGoddessBonus = 0.15;
 
 /**
  * Cost growth, overrides the default amount
@@ -236,7 +238,7 @@ function KinkyDungeonPayShrine(type) {
 				KinkyDungeonInventoryAddWeapon(item.name);
 			else if (item.shoptype == "Restraint") {
 				let restraint = KinkyDungeonGetRestraintByName(item.name);
-				KinkyDungeonInventoryAdd({name: item.name, type: LooseRestraint, events:restraint.events});
+				KinkyDungeonInventoryAdd({name: item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:restraint.events});
 			}
 			else if (item.shoptype == "Basic") {
 				KDAddBasic(item);
@@ -566,7 +568,7 @@ function KinkyDungeonDrawOrb() {
 			DrawButtonVis(canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), "white");
 			DrawProgressBar(canvasOffsetX_ui + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value, color, KDTextGray2);
 			if (KinkyDungeonShrineBaseCosts[shrine])
-				KDDrawRestraintBonus(shrine, canvasOffsetX_ui + 275 + XX - 50, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
+				KDDrawRestraintBonus(shrine, canvasOffsetX_ui + 275 + XX - 70, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
 
 			i++;
 		}
@@ -730,7 +732,7 @@ function KDGetPosNegColor(value) {
 
 function KDGetGoddessBonus(shrine) {
 	if (KinkyDungeonGoddessRep[shrine]) {
-		return KinkyDungeonGoddessRep[shrine] / 50 * 0.25;
+		return KinkyDungeonGoddessRep[shrine] / 50 * (KinkyDungeonGoddessRep[shrine] > 0 ? KDMaxGoddessBonus : KDMinGoddessBonus);
 	}
 	return 0;
 }
