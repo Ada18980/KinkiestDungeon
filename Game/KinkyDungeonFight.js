@@ -4,6 +4,12 @@ let KinkyDungeonAlert = 0;
 
 let KDBrawlerAmount = 1.0;
 let KDClumsyAmount = 0.7;
+let KDUnfocusedParams = {
+	AmountMin: 0.9,
+	AmountMax: 0.6,
+	ThreshMin: 0.1,
+	ThreshMax: 0.9,
+};
 let KDDodgeAmount = 0.75;
 let KinkyDungeonMissChancePerBlind = 0.1; // Max 3
 let KinkyDungeonMissChancePerSlow = 0.1; // Max 3
@@ -205,7 +211,17 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 		KinkyDungeonSendEvent("calcEvasion", data);
 	let hitChance = (Enemy && Enemy.buffs) ? KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(Enemy.buffs, "Evasion")) : 1.0;
 	hitChance *= data.hitmult;
+
 	if (KinkyDungeonStatsChoice.get("Clumsy")) hitChance *= KDClumsyAmount;
+	if (KinkyDungeonStatsChoice.get("Unfocused")) {
+		let amount = 1;
+		let dist = KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax;
+		if (dist >= KDUnfocusedParams.ThreshMin) {
+			amount = KDUnfocusedParams.AmountMin + (KDUnfocusedParams.AmountMax - KDUnfocusedParams.AmountMin) * (dist - KDUnfocusedParams.ThreshMin) / (KDUnfocusedParams.ThreshMax - KDUnfocusedParams.ThreshMin);
+		}
+		if (amount != 1) hitChance *= amount;
+	}
+
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.evasion && ((!(Enemy.stun > 0) && !(Enemy.freeze > 0)) || Enemy.Enemy.alwaysEvade || Enemy.Enemy.evasion < 0)) hitChance *= Math.max(0,
 		(Enemy.aware ? KinkyDungeonMultiplicativeStat(Enemy.Enemy.evasion) : Math.max(1, KinkyDungeonMultiplicativeStat(Enemy.Enemy.evasion))));
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.tags.ghost && (IsMagic || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.magic))) hitChance = Math.max(hitChance, 1.0);

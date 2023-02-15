@@ -1219,6 +1219,8 @@ Major changes:
 - New enemies in the Orrery: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced), Star Demon, Moon Demon
 - Added an easy mode, which has a shopkeeper that comes and rescues you if you get in trouble!
 - Added perks filter in the perks screen
+- New perks: Unfocused
+- New upgrades: Steadfast Guard, Willful Struggle
 - New, cleaner options menu with a few additional options
 - Improved leash pathfinding to hopefully involve less players bouncing around
 - Balancing around lock application and enemies with the ability to lock. Most restraints won't have default locks now, but many more enemies can clip a lock onto what you already have.

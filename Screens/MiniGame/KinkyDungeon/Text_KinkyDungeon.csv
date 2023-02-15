@@ -117,7 +117,9 @@ KinkyDungeonStatDesc19,"+15% miscast chance (at all times)"
 KinkyDungeonStat20,"Brawler"
 KinkyDungeonStatDesc20,"Unarmed attacks deal +10 damage."
 KinkyDungeonStat21,"Clumsy"
-KinkyDungeonStatDesc21,"0.7x melee hit chance"
+KinkyDungeonStatDesc21,"0.7x base accuracy"
+KinkyDungeonStatUnfocused,"Unfocused"
+KinkyDungeonStatDescUnfocused,"Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction."
 
 KinkyDungeonStat22,"Pristine"
 KinkyDungeonStatDesc22,"There are no shiny loot objects in the dungeon."
@@ -4790,7 +4792,12 @@ KinkyDungeonSpellSPUp1,Stamina Up I
 KinkyDungeonSpellDescriptionSPUp1,Increases maximum SP by 12
 
 KinkyDungeonSpellIronWill,Iron Will
-KinkyDungeonSpellDescriptionIronWill,"While you have 100 willpower or more, regain an additional 4 stamina per turn."
+KinkyDungeonSpellDescriptionIronWill,"While you have 100 current willpower or more, regain an additional 4 stamina per turn."
+KinkyDungeonSpellSteadfastGuard,Steadfast Guard
+KinkyDungeonSpellDescriptionSteadfastGuard,"For each 10 current willpower you have over 50, gain +5 Restraint Block."
+KinkyDungeonSpellWillStruggle,Willful Struggle
+KinkyDungeonSpellDescriptionWillStruggle,"For each 10 current willpower you have over 50, gain +1% struggle effectiveness."
+KinkyDungeonSpellWillStruggleMsg,Your willpower provides you with additional strength! (+AMOUNT%)
 KinkyDungeonSpellAthlete,Athlete
 KinkyDungeonSpellDescriptionAthlete,"Sprinting costs 40% less stamina."
 KinkyDungeonSpellSneaky,Sneaky

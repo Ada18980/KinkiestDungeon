@@ -197,6 +197,7 @@ let KinkyDungeonStatsPresets = {
 	"Disorganized": {category: "Combat", id: 57, cost: -2, block: ["QuickDraw", "QuickScribe"]},
 	"Brawler": {category: "Combat", id: 20, cost: 1},
 	"Clumsy": {category: "Combat", id: 21, cost: -1},
+	"Unfocused": {category: "Combat", id: "Unfocused", cost: -1},
 	"HeelWalker": {category: "Combat", id: 53, cost: 1},
 	"BondageLover": {category: "Kinky", id: 15, cost: -1},
 	"Undeniable": {category: "Kinky", id: "Undeniable", cost: -1},

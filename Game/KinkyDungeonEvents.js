@@ -1667,6 +1667,15 @@ let KDEventMapSpell = {
 			if (KinkyDungeonStatWill >= 9.999)
 				data.staminaRate += e.power;
 		},
+		"SteadfastGuard": (e, spell, data) => {
+			if (!e.power || KinkyDungeonStatWill >= e.power)
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+					id: "SteadfastGuard",
+					type: "RestraintBlock",
+					power: (KinkyDungeonStatWill - (e.power || 0)) * e.mult,
+					duration: 2
+				});
+		},
 		"IncreaseManaPool": (e, spell, data) => {
 			KinkyDungeonStatManaPoolMax += e.power;
 		},
@@ -1902,7 +1911,7 @@ let KDEventMapSpell = {
 		"CritBoost": (e, spell, data) => {
 			if (data.eva&& !data.miss && !data.disarm && data.targetX && data.targetY && data.enemy && KDHostile(data.enemy)) {
 				if (KDCheckPrereq(null, e.prereq, e, data)) {
-					let power = Math.max(0, Math.max(((KinkyDungeonPlayerDamage.chance || 0) - 1)*e.power));
+					let power = Math.max(0, Math.max((Math.max(KinkyDungeonPlayerDamage.chance || 0, KinkyDungeonGetEvasion()) - 1)*e.power));
 					data.buffdmg = Math.max(0, data.buffdmg + (KinkyDungeonPlayerDamage.dmg || 0) * power);
 				}
 			}
@@ -1994,7 +2003,17 @@ let KDEventMapSpell = {
 				if (e.power)
 					data.escapeChance += e.power;
 				if (e.msg) {
-					KinkyDungeonSendTextMessage(3, TextGet(e.msg), "yellow", 2);
+					KinkyDungeonSendTextMessage(10 * e.power, TextGet(e.msg), "lightgreen", 2);
+				}
+			}
+		},
+		"WillStruggle": (e, spell, data) => {
+			if (data.escapeChance != undefined && (!e.StruggleType || e.StruggleType == data.struggleType)) {
+				if (!e.power || KinkyDungeonStatWill > e.power) {
+					let boost = (KinkyDungeonStatWill - (e.power || 0)) * e.mult;
+					data.escapeChance += boost;
+					if (e.msg)
+						KinkyDungeonSendTextMessage(10 * boost, TextGet(e.msg).replace("AMOUNT", "" + Math.round(100*boost)), "lightgreen", 2);
 				}
 			}
 		},

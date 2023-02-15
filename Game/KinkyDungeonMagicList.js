@@ -107,7 +107,7 @@ let KinkyDungeonLearnableSpells = [
 	//Page 4: Upgrades
 	[
 		// Strength
-		["IronWill"],
+		["IronWill", "SteadfastGuard", "WillStruggle"],
 		// Dex
 		["Athlete", "Sneaky", "Evasive1", "Evasive2", "Evasive3"],
 		// Intellect
@@ -168,6 +168,12 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		]},
 		{name: "IronWill", tags: ["will", "defense"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "IronWill", trigger: "calcMaxStats", power: 0.4},
+		]},
+		{name: "SteadfastGuard", tags: ["will", "defense"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "SteadfastGuard", trigger: "calcMaxStats", mult: 0.5, power: 5, },
+		]},
+		{name: "WillStruggle", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "WillStruggle", mult: 0.01, power: 5, StruggleType: "Struggle", trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellWillStruggleMsg"},
 		]},
 		{name: "StaffUser1", tags: ["utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "StaffUser1", trigger: "afterCalcMana", power: 0.8},

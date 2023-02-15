@@ -1329,31 +1329,34 @@ function KinkyDungeonDrawGame() {
 		}, true, 1400, 930, 200, 54, TextGet("KinkyDungeonCopyPerks"), "#ffffff", "");
 	}
 
-	if (KinkyDungeonFlags.get("PlayerOrgasmFilter")) {
-		FillRectKD(kdcanvas, kdpixisprites, "screenoverlay", {
-			Left: 0,
-			Top: 0,
-			Width: 2000,
-			Height: 1000,
-			Color: "#ff5277",
-			LineWidth: 1,
-			zIndex: 100,
-			alpha: 0.2,
-		});
-	} else if (KinkyDungeonStatFreeze > 0) {
-		FillRectKD(kdcanvas, kdpixisprites, "screenoverlay", {
-			Left: 0,
-			Top: 0,
-			Width: 2000,
-			Height: 1000,
-			Color: "#92e8c0",
-			LineWidth: 1,
-			zIndex: 100,
-			alpha: 0.2,
-		});
-	} else if (KinkyDungeonStatDistraction > 1.0) {
-		KDDrawArousalScreenFilter(0, 1000, 2000, KinkyDungeonStatDistraction * 100 / KinkyDungeonStatDistractionMax);
+	if (KinkyDungeonDrawState == "Game") {
+		if (KinkyDungeonFlags.get("PlayerOrgasmFilter")) {
+			FillRectKD(kdcanvas, kdpixisprites, "screenoverlayor", {
+				Left: 0,
+				Top: 0,
+				Width: 2000,
+				Height: 1000,
+				Color: "#ff5277",
+				LineWidth: 1,
+				zIndex: 1,
+				alpha: 0.2,
+			});
+		} else if (KinkyDungeonStatFreeze > 0) {
+			FillRectKD(kdcanvas, kdpixisprites, "screenoverlayfr", {
+				Left: 0,
+				Top: 0,
+				Width: 2000,
+				Height: 1000,
+				Color: "#92e8c0",
+				LineWidth: 1,
+				zIndex: 1,
+				alpha: 0.2,
+			});
+		} else if (KinkyDungeonStatDistraction > 1.0) {
+			KDDrawArousalScreenFilter(0, 1000, 2000, KinkyDungeonStatDistraction * 100 / KinkyDungeonStatDistractionMax);
+		}
 	}
+
 
 	if (ServerURL != "foobar")
 		DrawButtonVis(1885, 25, 90, 90, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Exit.png");
