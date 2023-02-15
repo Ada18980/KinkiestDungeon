@@ -1382,13 +1382,15 @@ function KinkyDungeonDoTryOrgasm(Bonus) {
 	if (amount > KinkyDungeonPlaySelfOrgasmThreshold && KDRandom() < chance) {
 		// You finally shudder and tremble as a wave of pleasure washes over you...
 		KinkyDungeonStatBlind = 6;
-		KinkyDungeonOrgasmStunTime = 4;
+		//KinkyDungeonOrgasmStunTime = 4;
+		KinkyDungeonSetFlag("PlayerOrgasm", KinkyDungeonOrgasmStunTime);
+		KinkyDungeonSetFlag("PlayerOrgasmFilter", KinkyDungeonOrgasmStunTime + 1);
 		KDGameData.OrgasmStamina = KinkyDungeonStatDistraction;
 		KinkyDungeonChangeStamina(Math.min(KinkyDungeonOrgasmCost, -KinkyDungeonOrgasmCostPercent * KinkyDungeonStatStamina));
 		KinkyDungeonChangeWill(KinkyDungeonOrgasmWillpowerCost);
 		KinkyDungeonStatDistractionLower = 0;
 		KinkyDungeonAlert = 7; // Alerts nearby enemies because of your moaning~
-		KDGameData.PlaySelfTurns = 3;
+		KDGameData.PlaySelfTurns = KinkyDungeonOrgasmStunTime;
 		KinkyDungeonSendEvent("orgasm", {
 			player: KinkyDungeonPlayerEntity,
 		});
