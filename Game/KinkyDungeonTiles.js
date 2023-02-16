@@ -71,15 +71,12 @@ function KinkyDungeonUpdateTileEffects(delta) {
 	for (let X = 1; X < KinkyDungeonGridWidth-1; X++) {
 		for (let Y = 1; Y < KinkyDungeonGridHeight-1; Y++) {
 			let tt = KinkyDungeonMapGet(X, Y);
-			if (tt == "w") {
-				KDCreateEffectTile(X, Y, {
-					name: "Water",
-					duration: 2,
-				}, 0);
-			}
+			if (KDTileUpdateFunctionsLocal[tt]) KDTileUpdateFunctionsLocal[tt](delta, X, Y);
+
 		}
 	}
 }
+
 
 let KinkyDungeonChestConfirm = false;
 

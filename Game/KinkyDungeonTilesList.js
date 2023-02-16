@@ -1,9 +1,39 @@
 "use strict";
 
+/**
+ * Updates local tiles such as conveyors
+ * @type {Record<string, (delta: number, X?: number, Y?: number) => void>}
+ */
+let KDTileUpdateFunctionsLocal = {
+	"w": (delta, X, Y) => {
+		KDCreateEffectTile(X, Y, {
+			name: "Water",
+			duration: 2,
+		}, 0);
+	},
+	"V": (delta, X, Y) => {
+		let entity = KinkyDungeonEntityAt(X, Y);
+		let tile = KinkyDungeonTilesGet(X + "," + Y);
+		if (entity && KinkyDungeonNoEnemyExceptSub(X + (tile.DX || 0), Y + (tile.DY || 0), true, null)) {
+			if (entity.player) {
+				if (!KinkyDungeonFlags.get("conveyed")) {
+					KinkyDungeonSetFlag("conveyed", 1);
+					KDMovePlayer(X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
+					KinkyDungeonSendTextMessage(4, TextGet("KDConveyorPush"), "#ffff44", 2);
+				}
+			} else if (!KDIsImmobile(entity)) {
+				if (!KDEnemyHasFlag(entity, "conveyed")) {
+					KinkyDungeonSetEnemyFlag(entity, "conveyed");
+					KDMoveEntity(entity, X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
+				}
+			}
+		}
+	},
+};
 
 /**
  * Return value: whether or not to continue to allow peripheral tile updates
- * @type {Record<string, (delta) => boolean>}
+ * @type {Record<string, (delta: number) => boolean>}
  */
 let KDTileUpdateFunctions = {
 	"]": (delta) => { // Happy Gas!

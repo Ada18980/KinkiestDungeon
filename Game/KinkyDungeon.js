@@ -1827,8 +1827,8 @@ function KinkyDungeonLoadStats() {
 let KinkyDungeonReplaceConfirm = 0;
 let KinkyDungeonGameFlag = false;
 
-let KDDefaultJourney = ["grv", "cat", "jng", "tmp"];
-let KDDefaultAlt = ["tmb", "lib", "cry", "ore"];
+let KDDefaultJourney = ["grv", "cat", "jng", "tmp", "bel"];
+let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 
 function KDInitializeJourney(Journey) {
 	/**
@@ -1876,8 +1876,8 @@ function KDInitializeJourney(Journey) {
 		newIndex.cat = 'grv';
 		newIndex.ore = 'ore';
 	} else if (KDGameData.Journey == "Test") {
-		newIndex.grv = 'ore';
-		newIndex.tmb = 'tmp';
+		newIndex.grv = 'bel';
+		newIndex.tmb = 'bel';
 	}
 
 	KinkyDungeonMapIndex = newIndex;

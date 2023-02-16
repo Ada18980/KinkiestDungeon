@@ -62,7 +62,7 @@ let KinkyDungeonPOI = [];
 
 let KinkyDungeonMapBrightness = 5;
 
-let KinkyDungeonGroundTiles = "023w][?/";
+let KinkyDungeonGroundTiles = "023w][?/V";
 let KinkyDungeonWallTiles = "14";
 let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HBlSsRrdTgL"; // Objects which can be moved into: floors, debris, open doors, staircases
 let KinkyDungeonMovableTilesSmartEnemy = "D" + KinkyDungeonMovableTilesEnemy; //Smart enemies can open doors as well
@@ -188,6 +188,32 @@ function KinkyDungeonTilesGet(location) {
  */
 function KinkyDungeonTilesDelete(location) {
 	delete KinkyDungeonTiles[location];
+}
+
+
+/**
+ *
+ * @param {string} location
+ * @param {any} value
+ */
+function KinkyDungeonSkinSet(location, value) {
+	KinkyDungeonTilesSkin[location] = value;
+}
+/**
+ *
+ * @param {string} location
+ * @returns {any}
+ */
+function KinkyDungeonSkinGet(location) {
+	return KinkyDungeonTilesSkin[location];
+}
+
+/**
+ *
+ * @param {string} location
+ */
+function KinkyDungeonSkinDelete(location) {
+	delete KinkyDungeonTilesSkin[location];
 }
 
 function KDAlreadyOpened(x, y) {
@@ -1398,7 +1424,7 @@ function KinkyDungeonSkinArea(skin, X, Y, Radius, NoStairs) {
 			if (xx >= 0 && xx <= KinkyDungeonGridWidth - 1 && yy >= 0 && yy <= KinkyDungeonGridHeight - 1) {
 				if (KDistEuclidean(xx - X, yy - Y) <= Radius + 0.01 && (!NoStairs || KinkyDungeonMapGet(xx, yy) != 's')) {
 					if (!KinkyDungeonTilesSkin[xx + "," + yy]) {
-						KinkyDungeonTilesSkin[xx + "," + yy] =  skin;
+						KinkyDungeonTilesSkin[xx + "," + yy] = skin;
 					} else {
 						//
 					}
@@ -3396,7 +3422,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 			let quick = false;
 
 			if (KinkyDungeonTilesGet("" + moveX + "," + moveY) && KinkyDungeonTilesGet("" + moveX + "," + moveY).Type && ((KinkyDungeonToggleAutoDoor && moveObject == 'd' && KinkyDungeonTargetTile == null && KinkyDungeonNoEnemy(moveX, moveY, true))
-				|| (KinkyDungeonTilesGet("" + moveX + "," + moveY).Type != "Trap" && (KinkyDungeonTilesGet("" + moveX + "," + moveY).Type != "Door" || (KinkyDungeonTilesGet("" + moveX + "," + moveY).Lock && KinkyDungeonTilesGet("" + moveX + "," + moveY).Type == "Door"))))) {
+				|| (KDObjectDraw[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type] && (KinkyDungeonTilesGet("" + moveX + "," + moveY).Type != "Door" || (KinkyDungeonTilesGet("" + moveX + "," + moveY).Lock && KinkyDungeonTilesGet("" + moveX + "," + moveY).Type == "Door"))))) {
 				if (AllowInteract) {
 					KDDelayedActionPrune(["Action", "World"]);
 					KinkyDungeonTargetTileLocation = "" + moveX + "," + moveY;

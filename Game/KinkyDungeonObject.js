@@ -15,6 +15,7 @@ let KDObjectHandle = {
 	"Charger": () => KinkyDungeonHandleCharger(),
 };
 /**
+ * Determines if an object has an interface and also if it pauses the game when you click on it
  * @type {Record<string,() => void>}
  */
 let KDObjectDraw = {

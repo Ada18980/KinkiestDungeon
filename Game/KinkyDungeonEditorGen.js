@@ -641,6 +641,10 @@ let KDTileGen = {
 		data.chargerlist.push(({x: x, y: y}));
 		return null;
 	},
+	"Conveyor": (x, y, tile, tileGenerator, data) => {
+		KinkyDungeonMapSet(x, y, 'V');
+		return {Type: "Conveyor", Sprite: tileGenerator.Sprite, DX: tileGenerator.DX, DY: tileGenerator.DY};
+	},
 };
 
 /**

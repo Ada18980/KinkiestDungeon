@@ -249,15 +249,15 @@ let KDSprites = {
 	},
 	// @ts-ignore
 	"H": (x, y, Fog, noReplace) => {
-		return "StairsDown";
+		return "Floor";
 	},
 	// @ts-ignore
 	"s": (x, y, Fog, noReplace) => {
-		return "StairsDown";
+		return "Floor";
 	},
 	// @ts-ignore
 	"S": (x, y, Fog, noReplace) => {
-		return "StairsUp";
+		return "Floor";
 	},
 	// @ts-ignore
 	"g": (x, y, Fog, noReplace) => {
@@ -342,9 +342,25 @@ let KDSprites = {
 	"l": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
+	// @ts-ignore
+	"V": (x, y, Fog, noReplace) => {
+		return "Floor";
+	},
 };
 
 let KDOverlays = {
+	// @ts-ignore
+	"H": (x, y, Fog, noReplace) => {
+		return "StairsDown";
+	},
+	// @ts-ignore
+	"s": (x, y, Fog, noReplace) => {
+		return "StairsDown";
+	},
+	// @ts-ignore
+	"S": (x, y, Fog, noReplace) => {
+		return "StairsUp";
+	},
 	// @ts-ignore
 	"-": (x, y, Fog, noReplace) => {
 		return "ChargerSpent";
@@ -418,7 +434,11 @@ let KDOverlays = {
 	"B": (x, y, Fog, noReplace) => {
 		return "Bed";
 	},
-
+	// @ts-ignore
+	"V": (x, y, Fog, noReplace) => {
+		if (KinkyDungeonTilesGet(x + "," + y)?.Sprite) return KinkyDungeonTilesGet(x + "," + y)?.Sprite;
+		return "Conveyor";
+	},
 };
 
 function KinkyDungeonGetSprite(code, x, y, Fog, noReplace) {
@@ -2316,7 +2336,9 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 						}
 					}
 				}
-				let floor = KinkyDungeonTilesSkin[RX + "," + RY] ? KinkyDungeonMapIndex[KinkyDungeonTilesSkin[RX + "," + RY].skin] : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+				let floor = KinkyDungeonTilesSkin[RX + "," + RY] ?
+					(KinkyDungeonTilesSkin[RX + "," + RY].force ? KinkyDungeonTilesSkin[RX + "," + RY].skin : KinkyDungeonMapIndex[KinkyDungeonTilesSkin[RX + "," + RY].skin])
+					: KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
 				let vision = KinkyDungeonVisionGet(RX, RY);
 				let nR = KinkyDungeonTilesSkin[RX + "," + RY] ? noReplace : noReplace_skin[floor];
 				let sprite = KinkyDungeonGetSprite(rows[RY][RX], RX, RY, vision == 0, nR);

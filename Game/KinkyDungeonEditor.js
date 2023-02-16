@@ -106,7 +106,7 @@ let KDTilePalette = {
 	'Door_RedLock': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true, Lock: "Red"}},
 	'Door_PurpleLock': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true, Lock: "Purple"}},
 	'Door_BlueLock': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true, Lock: "Blue"}},
-	'----Useful----': {type: "none"},
+	'----Furniture----': {type: "none"},
 	'Table': {type: "tile", tile: 'F', special: {Type: "Table"}},
 	'TableFood': {type: "tile", tile: 'F', special: {Type: "Table", Food: "Plate"}},
 	'Rubble': {type: "tile", tile: 'R', special: {Type: "Rubble"}},
@@ -146,6 +146,11 @@ let KDTilePalette = {
 	'----Hazards----': {type: "none"},
 	'Trap': {type: "tile", tile: 'T', special: {Type: "Trap", Always: true,}},
 	'PotentialTrap': {type: "tile", tile: 'T', special: {Type: "Trap"}},
+	'----Machines----': {type: "none"},
+	'ConveyorUp': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "ConveyorUp", DX: 0, DY: -1,}},
+	'ConveyorDown': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "ConveyorDown", DX: 0, DY: 1,}},
+	'ConveyorLeft': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "ConveyorLeft", DX: -1, DY: 0,}},
+	'ConveyorRight': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "ConveyorRight", DX: 1, DY: 0,}},
 	'----Misc----': {type: "none"},
 	'POI': {type: "POI"},
 	'OffLimits': {type: "offlimits"},
@@ -809,6 +814,11 @@ function KDHandleTileEditor(noSwap) {
 		if (KDTE_Brush[brush.type]) {
 			KDTE_Brush[brush.type](brush, curr, noSwap);
 		}
+		if (ElementValue("MapTileSkin")) {
+			KinkyDungeonSkinSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {force: true, skin: ElementValue("MapTileSkin")});
+		} else {
+			KinkyDungeonSkinDelete(KinkyDungeonTargetX + "," + KinkyDungeonTargetY);
+		}
 
 		if (!noSwap) {
 			KDVisionUpdate = 1;
@@ -915,6 +925,10 @@ function KDTE_UpdateUI(Load) {
 
 	DrawTextFitKD("Tileset", 1000 - 400, 25, 200, "#ffffff");
 	ElementPosition("MapTileTileset", 1000 - 400, 70, 200);
+
+	DrawTextFitKD("Skin", 1000 - 400, 120, 200, "#ffffff");
+	KDTextField("MapTileSkin", 1000 - 400 - 100, 150, 200, 60,);
+
 	let propTileset = ElementValue("MapTileTileset");
 	if (KinkyDungeonMapParams[propTileset]) {
 		KinkyDungeonMapIndex.grv = propTileset;

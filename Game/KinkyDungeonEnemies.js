@@ -3884,7 +3884,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 	if (enemy.specialCD > 0) enemy.usingSpecial = false;
 
-	if (AIData.idle) KDAddThought(enemy.id, "Idle", 1, 3);
+	if (AIData.idle) KDAddThought(enemy.id, "Idle", 0.5, 3);
 	return {idle: AIData.idle, defeat: AIData.defeat};
 }
 

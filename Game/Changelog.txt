@@ -1213,7 +1213,7 @@ Features
 3.95
 - New minor enemies: Encased Adventurer and Bouncy Slime
 
-4.0 (Jan 2023)
+4.0 (Released Feb 2023)
 Major changes:
 - New tileset: Orrery
 - New enemies in the Orrery: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced), Star Demon, Moon Demon
@@ -1240,6 +1240,11 @@ Other changes:
 - Some tooltips still appear even without inspecting
 - Fixed a bug where selecting both Hogtied and Latex Doll would mistakenly not place a blindfold on the player character
 - Other general bugfixes and crash fixes
+
+4.1 (Started Feb 2023)
+Major changes:
+- New tileset: Bellows
+- Max floor is now 20 from 16
 
 TODO ValidationFindBlockCycles to prevent bugs
 

@@ -327,7 +327,7 @@ const KinkyDungeonMapParams = {
 			{Level: 13, checkpoint: "ore", chance: 1.0},
 		],
 		"mainpath": [
-			{Level: 17, checkpoint: "tmp"},
+			{Level: 17, checkpoint: "bel"},
 		],
 
 		"traps": [
@@ -700,7 +700,7 @@ const KinkyDungeonMapParams = {
 			{Level: 14, checkpoint: "tmp", chance: 1.0},
 		],
 		"mainpath": [
-			{Level: 17, checkpoint: "ore"},
+			{Level: 17, checkpoint: "bel"},
 		],
 
 		"traps": [
@@ -731,6 +731,94 @@ const KinkyDungeonMapParams = {
 			{Type: "Will", Weight: 7},],
 
 		"lockmult" : 1.6,
+	},
+
+	"bel":{//DungeonName8,-Orrery-
+		"background" : "SpookyForest",
+		"openness" : 3,
+		"density" : 5,
+		"crackchance" : 0.12,
+		"barchance" : 0.1,
+		"brightness" : 1,
+		"chestcount" : 7,
+		"chargerchance": 0.9,
+		"litchargerchance": 0.2,
+		"chargercount": 10,
+		"shrinecount" : 10,
+		"shrinechance" : 0.5,
+		"ghostchance" : 0.7,
+		"doorchance" : 0.9,
+		"nodoorchance" : 0.25,
+		"doorlockchance" : -0.05,
+		"trapchance" : 0.1,
+		"grateChance" : 0.8,
+		"rubblechance" : 0.35,
+		"brickchance" : 0.0,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 1.0,
+		"forbiddenGreaterChance" : 0.45,
+		torchlitchance: 0.45,
+		torchchance: 1.0,
+		torchchanceboring: -0.7,
+		torchreplace: {
+			sprite: "Lantern",
+			unlitsprite: "LanternUnlit",
+			brightness: 5,
+		},
+
+		music: {
+			"AREA9-BELLOWS.ogg": 30,
+		},
+
+		tagModifiers: {
+			"jungle": 0,
+			"cavern": 0,
+			"temple": 0.1,
+			"urban": 0.5,
+			"dungeon": 0,
+		},
+		globalTags: {
+			"bellows": true,
+			"industrial": true,
+		},
+
+		shadowColor: 0x000703,
+
+		"setpieces": [
+			{Type: "Bedroom", Weight: 1},
+			{Type: "LargeGuardedChest", Weight: 20},
+		],
+
+		"shortcuts": [
+		],
+		"mainpath": [
+			{Level: 21, checkpoint: "grv"},
+		],
+
+		"traps": [
+			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
+			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
+		],
+
+		"min_width" : 6,
+		"max_width" : 6,
+		"min_height" : 6,
+		"max_height" : 6,
+
+		enemyTags: ["blacksmith", "dollrare"],
+		"defeat_outfit": "LatexPrisoner",
+		"shrines": [
+			{Type: "Latex", Weight: 5},
+			{Type: "Commerce", Weight: 0},
+			{Type: "Elements", Weight: 5},
+			{Type: "Conjure", Weight: 5},
+			{Type: "Illusion", Weight: 5},
+			{Type: "Leather", Weight: 7},
+			{Type: "Metal", Weight: 10},
+			{Type: "Rope", Weight: 3},
+			{Type: "Will", Weight: 7},],
+
+		"lockmult" : 2.0,
 	},
 };
 
