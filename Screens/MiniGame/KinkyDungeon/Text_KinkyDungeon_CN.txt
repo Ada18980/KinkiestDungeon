@@ -549,7 +549,9 @@ You find a magic scroll, which you place in your spellbook. (+SpellLearned)
 You find an orb containing magical knowledge! (+AMOUNT spell points)
 你找到了一个包含魔法知识的球体！ （+AMOUNT 法术点数）
 You find a weapon! (+WeaponAcquired)
-你找到了武器！ （+武器获得）
+你找到了一个武器！ （+WeaponAcquired）
+You find a wearable item! (+ArmorAcquired)
+你找到了一个拘束具！ （+ArmorAcquired）
 You find gold and a magic trap! (+RestraintType) (+XXX gold)
 你找到了金币和一个魔法陷阱！ (+RestrainType) (+XXX gold)
 Swirling belts emerge from the chest and leave you bound! (+RestraintType)
