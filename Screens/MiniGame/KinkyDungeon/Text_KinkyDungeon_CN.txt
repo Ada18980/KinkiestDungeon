@@ -4672,25 +4672,25 @@ Heavy chains that serve as an anchor point around your waist.
 作为腰部锚点的重型链条。
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
-Arm Chains
+Arm Magic Chains
 臂链
 Magic chains keeping your arms securely behind your back.
 魔术链将您的手臂牢牢固定在背后。
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
-Leg Chains
+Leg Magic Chains
 腿链
 Magic chains keeping your legs firmly hobbled.
 让你的双腿牢牢踉跄的魔法锁链。
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
-Ankle Chains
+Ankle Magic Chains
 踝链
 Magic chains keeping your feet bound together.
 将双脚绑在一起的魔法锁链。
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
-Crotch Chain
+Crotch Magic Chain
 胯链
 Magic chains that serve as an anchor point around your waist.
 作为腰部锚点的魔法链。
