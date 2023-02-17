@@ -3195,8 +3195,7 @@ let KDEventMapEnemy = {
 							KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), "#ffffff", 4);
 							KDGameData.RoomType = "ShopStart"; // We do a tunnel every other room
 							KDGameData.MapMod = ""; // Reset the map mod
-							MiniGameKinkyDungeonLevel = 0;
-							MiniGameKinkyDungeonCheckpoint = 'grv';
+							MiniGameKinkyDungeonLevel = Math.max(0, MiniGameKinkyDungeonLevel - 1);
 							let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
 							KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
 							KDStartDialog("ShopkeeperTeleport", enemy.Enemy.name, true, "", enemy);

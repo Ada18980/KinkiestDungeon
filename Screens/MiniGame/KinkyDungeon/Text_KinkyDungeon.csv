@@ -9008,7 +9008,7 @@ rShopkeeperStartGag,"Daww! What a cutie!|(She smiles and pats your head gently)"
 dReturn,"(Return)"
 
 
-rShopkeeperTeleport,"(The SPEAKER brings you safely back to her shop on the surface)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!"
+rShopkeeperTeleport,"(The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!"
 
 dShopkeeperTeleport_Pay,"Right! Here's RESCUECOST gp."
 dShopkeeperTeleport_PayGag,"Mmmph. (Nod your head and pay RESCUECOST gp)"
