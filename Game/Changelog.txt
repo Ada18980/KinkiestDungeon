@@ -1248,6 +1248,7 @@ Major changes:
 - Max floor is now 20 from 16
 - Sprinting now costs 15 + 5 per slow level
 - Sleep is refreshed after 150 turns in jail if you have already slept before
+- Added a Hard setting, which removes faction rescue events in jail
 Minor Changes:
 
 

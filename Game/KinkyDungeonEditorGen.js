@@ -170,7 +170,9 @@ function KDGetTileWeight(mapTile, tags, tagCounts, tagModifiers) {
 	// Indextags are basically the index for tags that have special modifiers
 	for (let i = 0; i < mapTile.indexTags.length; i++) {
 		let not = mapTile.notTags && mapTile.notTags[i];
-		if ((!not && tags[mapTile.indexTags[i]]) || (not && !tags[mapTile.indexTags[i]])) {
+		if (
+			(!not && tags[mapTile.indexTags[i]])
+			|| (not && !tags[mapTile.indexTags[i]])) {
 			// We abord if we've reached the max of this many tag
 			if (mapTile.maxTags[i] >= 0) {
 				let count = tagCounts[mapTile.maxTags[i]];
@@ -179,7 +181,7 @@ function KDGetTileWeight(mapTile, tags, tagCounts, tagModifiers) {
 			// We add weight
 			if (mapTile.bonusTags[i]) weight += mapTile.bonusTags[i];
 			// We multiply weight, in sequence, AFTER bonus from the same tag
-			if (mapTile.multTags[i]) weight *= mapTile.multTags[i];
+			if (mapTile.multTags[i] != undefined) weight *= mapTile.multTags[i];
 
 		}
 	}

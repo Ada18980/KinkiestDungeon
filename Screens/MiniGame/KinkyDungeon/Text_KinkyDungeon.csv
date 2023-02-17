@@ -6302,10 +6302,10 @@ KinkyDungeonSaveModeDesc1,"No save codes, forced autosaves. You are in it to win
 
 KinkyDungeonEasyMode0,Normal
 KinkyDungeonEasyMode1,Easy
-KinkyDungeonEasyMode2,
-KinkyDungeonEasyModeDesc0,"If you get captured, you're on your own."
-KinkyDungeonEasyModeDesc1,"If you get captured, you will get rescued and pay a fee."
-KinkyDungeonEasyModeDesc2,""
+KinkyDungeonEasyMode2,Hard
+KinkyDungeonEasyModeDesc0,"If you get captured, you might get rescued if you have good relations."
+KinkyDungeonEasyModeDesc1,"If you get captured, you will always get rescued and pay a fee."
+KinkyDungeonEasyModeDesc2,"If you get captured, you are totally on your own."
 
 KinkyDungeonStartGame,Start Playing
 KinkyDungeonStartGameDesc,"Lock your settings in, nice and tight."

@@ -618,7 +618,7 @@ function KinkyDungeonLoad() {
 
 			KinkyDungeonSaveMode = localStorage.getItem("KinkyDungeonSaveMode") != undefined ? localStorage.getItem("KinkyDungeonSaveMode") == "True" : false;
 			KinkyDungeonRandomMode = localStorage.getItem("KinkyDungeonRandomMode") != undefined ? localStorage.getItem("KinkyDungeonRandomMode") == "True" : false;
-			KinkyDungeonEasyMode = localStorage.getItem("KinkyDungeonEasyMode") != undefined ? localStorage.getItem("KinkyDungeonEasyMode") == "True" : false;
+			KinkyDungeonEasyMode = localStorage.getItem("KinkyDungeonEasyMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonEasyMode")) || 0 : 0;
 
 			KinkyDungeonNewDress = true;
 			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance"));
@@ -722,7 +722,7 @@ let KinkyDungeonTempWait = false;
 let KinkyDungeonSexyMode = false;
 let KinkyDungeonClassMode = "Mage";
 let KinkyDungeonRandomMode = false;
-let KinkyDungeonEasyMode = false;
+let KinkyDungeonEasyMode = 0;
 let KinkyDungeonSaveMode = false;
 let KinkyDungeonSexyPiercing = false;
 let KinkyDungeonSexyPlug = false;
@@ -1107,20 +1107,28 @@ function KinkyDungeonRun() {
 
 
 		DrawButtonKDEx("KinkyDungeonEasyMode0", (bdata) => {
-			KinkyDungeonEasyMode = false;
+			KinkyDungeonEasyMode = 0;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode ? "True" : "False");
 			return true;
-		}, true, 875, 530, 275, 50, TextGet("KinkyDungeonEasyMode0"), !KinkyDungeonEasyMode ? "#ffffff" : "#888888", "");
+		}, true, 1075, 530, 175, 50, TextGet("KinkyDungeonEasyMode0"), KinkyDungeonEasyMode == 0 ? "#ffffff" : "#888888", "");
 		if (MouseInKD("KinkyDungeonEasyMode0")) {
 			DrawTextFitKD(TextGet("KinkyDungeonEasyModeDesc0"), 1250, 80, 1000, "#ffffff", KDTextGray0);
 		}
 		DrawButtonKDEx("KinkyDungeonEasyMode1", (bdata) => {
-			KinkyDungeonEasyMode = true;
+			KinkyDungeonEasyMode = 1;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode ? "True" : "False");
 			return true;
-		}, true, 1175, 530, 275, 50, TextGet("KinkyDungeonEasyMode1"), KinkyDungeonEasyMode ? "#ffffff" : "#888888", "");
+		}, true, 1275, 530, 175, 50, TextGet("KinkyDungeonEasyMode1"), KinkyDungeonEasyMode == 1 ? "#ffffff" : "#888888", "");
 		if (MouseInKD("KinkyDungeonEasyMode1")) {
 			DrawTextFitKD(TextGet("KinkyDungeonEasyModeDesc1"), 1250, 80, 1000, "#ffffff", KDTextGray0);
+		}
+		DrawButtonKDEx("KinkyDungeonEasyMode2", (bdata) => {
+			KinkyDungeonEasyMode = 2;
+			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode ? "True" : "False");
+			return true;
+		}, true, 875, 530, 175, 50, TextGet("KinkyDungeonEasyMode2"), KinkyDungeonEasyMode == 2 ? "#ffffff" : "#888888", "");
+		if (MouseInKD("KinkyDungeonEasyMode2")) {
+			DrawTextFitKD(TextGet("KinkyDungeonEasyModeDesc2"), 1250, 80, 1000, "#ffffff", KDTextGray0);
 		}
 
 		if (KinkyDungeonSexyMode) {
@@ -1980,7 +1988,8 @@ function KDUpdatePlugSettings() {
 
 	KinkyDungeonStatsChoice.set("randomMode", KinkyDungeonRandomMode ? true : undefined);
 	KinkyDungeonStatsChoice.set("saveMode", KinkyDungeonSaveMode ? true : undefined);
-	KinkyDungeonStatsChoice.set("easyMode", KinkyDungeonEasyMode ? true : undefined);
+	KinkyDungeonStatsChoice.set("easyMode", KinkyDungeonEasyMode == 1 ? true : undefined);
+	KinkyDungeonStatsChoice.set("norescueMode", KinkyDungeonEasyMode == 2 ? true : undefined);
 
 
 	for (let i = 0; i < KDClasses; i++) {

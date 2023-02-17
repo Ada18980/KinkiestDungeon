@@ -68,6 +68,7 @@ for (let rescue of Object.entries(KDPrisonRescues)) {
 		// Determines the weight
 		weight: (guard, xx, yy) => {
 			if (guard) return 0;
+			if (KinkyDungeonStatsChoice.get("norescueMode")) return 0;
 			if (KDGameData.JailTurns <= 70 || KDFactionRelation("Player", rescue[1].faction) < 0.09) return 0;
 			return 100 * Math.min(0.05, Math.max(0.1, 0.35 * KDFactionRelation("Player", rescue[1].faction)) - 0.005 * (KDGameData.PriorJailbreaks ? (KDGameData.PriorJailbreaks - (KDGameData.PriorJailbreaksDecay || 0)) : 0));
 		},
