@@ -62,12 +62,12 @@ let KinkyDungeonPOI = [];
 
 let KinkyDungeonMapBrightness = 5;
 
-let KinkyDungeonGroundTiles = "023w][?/V";
+let KinkyDungeonGroundTiles = "023w][?/Vt";
 let KinkyDungeonWallTiles = "14";
 let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HBlSsRrdTgL"; // Objects which can be moved into: floors, debris, open doors, staircases
 let KinkyDungeonMovableTilesSmartEnemy = "D" + KinkyDungeonMovableTilesEnemy; //Smart enemies can open doors as well
 let KinkyDungeonMovableTiles = "OPCAMG$Y+=-F" + KinkyDungeonMovableTilesSmartEnemy; // Player can open chests, orbs, shrines, chargers
-let KinkyDungeonTransparentObjects = KinkyDungeonMovableTiles.replace("D", "").replace("g", "").replace("Y", "") + "OoAaMmCcBlb+=-FX"; // Light does not pass thru doors or grates or shelves
+let KinkyDungeonTransparentObjects = KinkyDungeonMovableTiles.replace("D", "").replace("g", "").replace("Y", "") + "OoAaMmCcBlb+=-FXu"; // Light does not pass thru doors or grates or shelves
 let KinkyDungeonTransparentMovableObjects = KinkyDungeonMovableTiles.replace("D", "").replace("g", ""); // Light does not pass thru doors or grates
 
 let KDOpenDoorTiles = ["DoorOpen", "DoorVertContOpen", "DoorVertOpen"];
@@ -311,6 +311,7 @@ function KinkyDungeonInitialize(Level, Load) {
 	KinkyDungeonEntities = [];
 	KDUpdateEnemyCache = true;
 	KinkyDungeonBullets = [];
+	KinkyDungeonGroundItems = [];
 
 	KinkyDungeonTextMessage = "";
 	KinkyDungeonActionMessage = "";
@@ -2689,11 +2690,7 @@ function KinkyDungeonPlaceTorches(torchchance, torchlitchance, torchchanceboring
 					name: spr,
 					duration: 9999,
 				};
-				//if (torchreplace)
-				//Object.assign(torchref, torchreplace);
 				KDCreateEffectTile(X, Y + 1, torchref, 0);
-				//KinkyDungeonMapSet(X, Y, 't');
-				//KinkyDungeonTilesSet(X + "," + Y, {Type: "Torch", Light: torchreplace ? torchreplace.brightness : KDTorchLight, Offset: true, Skin: torchreplace ? torchreplace.sprite : undefined});
 			}
 		}
 }

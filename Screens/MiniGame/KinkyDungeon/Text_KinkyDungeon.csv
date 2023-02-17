@@ -1921,6 +1921,9 @@ KillSlimeMoldSpawner,"The slime mold nest erupts into a shower of black particle
 KinkyDungeonSummonMultiSlimeMold,Many small pieces of slime mold break off!
 KinkyDungeonSummonSingleSlimeMold,A mobile cyst emerges from the slime mold nest!
 
+NameFactoryDoll,Factory Doll
+KillFactoryDoll,"The doll is subdued."
+
 NameSlimeAdv,Encased Adventurer
 KillSlimeAdv,"The encased adventurer loses hope."
 AttackSlimeAdv,"The encased adventurer moans as she throws herself against you for help! (DamageTaken)"

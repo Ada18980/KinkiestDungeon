@@ -4,7 +4,7 @@ let KDRecentRepIndex = 0;
 
 let ShowBoringness = false;
 
-let KDWallReplacers = "14,dDbtg";
+let KDWallReplacers = "14,dDbg";
 
 let KinkyDungeonSuppressSprint = true;
 
@@ -275,10 +275,6 @@ let KDSprites = {
 		return "RubbleLooted";
 	},
 	// @ts-ignore
-	"t": (x, y, Fog, noReplace) => {
-		return "Wall";
-	},
-	// @ts-ignore
 	"T": (x, y, Fog, noReplace) => {
 		return (KinkyDungeonBlindLevel > 0) ?"Floor" : "Trap";
 	},
@@ -344,6 +340,14 @@ let KDSprites = {
 	},
 	// @ts-ignore
 	"V": (x, y, Fog, noReplace) => {
+		return "Floor";
+	},
+	// @ts-ignore
+	"t": (x, y, Fog, noReplace) => {
+		return "Floor";
+	},
+	// @ts-ignore
+	"u": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
 };
@@ -439,6 +443,14 @@ let KDOverlays = {
 		if (KinkyDungeonTilesGet(x + "," + y)?.Sprite) return KinkyDungeonTilesGet(x + "," + y)?.Sprite;
 		return "Conveyor";
 	},
+	// @ts-ignore
+	"t": (x, y, Fog, noReplace) => {
+		return "DollTerminal";
+	},
+	// @ts-ignore
+	"u": (x, y, Fog, noReplace) => {
+		return "DollSupply";
+	},
 };
 
 function KinkyDungeonGetSprite(code, x, y, Fog, noReplace) {
@@ -460,14 +472,6 @@ function KinkyDungeonGetSpriteOverlay(code, x, y, Fog, noReplace) {
 		}
 	}
 
-	else if (code == "t") {
-		sprite = "Torch";
-		if (KinkyDungeonTilesGet(x + "," + y)) {
-			if (KinkyDungeonTilesGet(x + "," + y).Skin) {
-				sprite = KinkyDungeonTilesGet(x + "," + y).Skin;
-			}
-		}
-	}
 	else if (code == "L") {
 		if (KinkyDungeonTilesGet(x + "," + y)) {
 			let furn = KinkyDungeonTilesGet(x + "," + y).Furniture ? KDFurniture[KinkyDungeonTilesGet(x + "," + y).Furniture] : "";

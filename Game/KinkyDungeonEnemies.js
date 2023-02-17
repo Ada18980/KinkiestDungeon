@@ -426,7 +426,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
  * @returns {boolean}
  */
 function KDEnemyHasFlag(enemy, flag) {
-	return (enemy.flags && enemy.flags[flag] != undefined);
+	return (enemy.flags && enemy.flags[flag] > 0);
 }
 
 function KinkyDungeonDrawEnemiesStatus(canvasOffsetX, canvasOffsetY, CamX, CamY) {
@@ -1797,8 +1797,8 @@ function KinkyDungeonTickFlagsEnemy(enemy, delta) {
 	if (enemy.flags) {
 		for (let f of Object.entries(enemy.flags)) {
 			if (f[1] == -1) continue;
+			if (f[1] <= delta) delete enemy.flags[f[0]];
 			if (f[1] > 0) enemy.flags[f[0]] = f[1] - delta;
-			if (f[1] <= 0) delete enemy.flags[f[0]];
 		}
 	}
 }

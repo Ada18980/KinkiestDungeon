@@ -24,10 +24,47 @@ let KDTileUpdateFunctionsLocal = {
 				}
 			} else if (!KDIsImmobile(entity)) {
 				if (!KDEnemyHasFlag(entity, "conveyed")) {
-					KinkyDungeonSetEnemyFlag(entity, "conveyed");
+					KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+					if (entity.Enemy.tags.prisoner) entity.movePoints = 0;
 					KDMoveEntity(entity, X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
 				}
 			}
+		}
+	},
+	"u": (delta, X, Y) => {
+		let tile = KinkyDungeonTilesGet(X + "," + Y);
+		if (!tile.cd) tile.cd = 0;
+		if (tile.cd <= 0) {
+			let start = true;
+			let ind = tile.index;
+			// Loop through and cycle if needed
+			while (start || ind != tile.index) {
+				start = false;
+				let tx = ind == 0 ? -1 : (ind == 2 ? 1 : 0);
+				let ty = ind == 1 ? -1 : (ind == 3 ? 1 : 0);
+
+				// Create a doll on a conveyor if needed
+				let entity = KinkyDungeonEntityAt(X + tx, Y + ty);
+				let tiletype = KinkyDungeonMapGet(X + tx, Y + ty);
+				if (tiletype == 'V' && !entity) {
+					tile.cd = tile.rate;
+					let e = DialogueCreateEnemy(X + tx, Y + ty, "FactoryDoll");
+					KinkyDungeonSetEnemyFlag(e, "conveyed", 1);
+					break;
+				}
+				ind += 1;
+				ind = ind % 4;
+			}
+			tile.index = ind;
+		} else {
+			tile.cd -= delta;
+		}
+	},
+	"t": (delta, X, Y) => {
+		// Consume prisoners on the tile
+		let entity = KinkyDungeonEntityAt(X, Y);
+		if (entity && entity.Enemy?.tags.prisoner && !KDEnemyHasFlag(entity, "conveyed")) {
+			entity.hp = 0;
 		}
 	},
 };

@@ -803,9 +803,9 @@ const KinkyDungeonMapParams = {
 		],
 
 		"min_width" : 6,
-		"max_width" : 6,
-		"min_height" : 6,
-		"max_height" : 6,
+		"max_width" : 8,
+		"min_height" : 4,
+		"max_height" : 4,
 
 		enemyTags: ["blacksmith", "dollrare"],
 		"defeat_outfit": "LatexPrisoner",

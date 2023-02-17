@@ -8,6 +8,12 @@ let KinkyDungeonEnemies = [
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "PrisonerBandit",
 		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
+	{name: "FactoryDoll", bound: "FactoryDoll", playLine: "Gagged", tags: KDMapInit(["prisoner", "doll", "human", "minor", "peaceful", "noshop"]), faction: "Prisoner", lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: 0.1,
+		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0,
+		Behavior: {noPlay: true},
+		terrainTags: {}, floors:KDMapInit([])},
+
+
 
 	// Easy mode rescuer
 	{name: "ShopkeeperRescue", tags: KDMapInit(["human", "peaceful", "alwayshelp", "noshop", "opendoors"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "guard",

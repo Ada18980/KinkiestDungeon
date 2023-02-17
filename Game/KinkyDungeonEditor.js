@@ -151,6 +151,8 @@ let KDTilePalette = {
 	'ConveyorDown': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "ConveyorDown", DX: 0, DY: 1,}},
 	'ConveyorLeft': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "ConveyorLeft", DX: -1, DY: 0,}},
 	'ConveyorRight': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "ConveyorRight", DX: 1, DY: 0,}},
+	'DollSupply': {type: "tile", tile: 'u', special: {Type: "DollSupply"}},
+	'DollTerminal': {type: "tile", tile: 't', special: {Type: "DollTerminal"}},
 	'----Misc----': {type: "none"},
 	'POI': {type: "POI"},
 	'OffLimits': {type: "offlimits"},

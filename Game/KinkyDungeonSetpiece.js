@@ -821,8 +821,6 @@ function KDTorch(X, Y, altType, MapParams) {
 		name: torchreplace ? torchreplace.sprite : "Torch",
 		duration: 9999,
 	}, 0);
-	//KinkyDungeonMapSet(X, Y, 't');
-	//KinkyDungeonTilesSet((X) + "," + (Y), {Type: "Torch", Light: torchreplace ? torchreplace.brightness : 6, Offset: true, Skin: torchreplace ? torchreplace.sprite : undefined});
 }
 
 function KDChest(X, Y, loot = "chest", faction = "") {
