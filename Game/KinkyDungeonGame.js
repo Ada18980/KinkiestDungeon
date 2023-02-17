@@ -3622,7 +3622,7 @@ function KinkyDungeonMoveTo(moveX, moveY, SuppressSprint) {
 			}
 			if (unblocked) {
 				let sprintCostMult = KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SprintEfficiency"));
-				KinkyDungeonChangeStamina((-KDSprintCost - KDSprintCostSlowLevel[Math.round(KinkyDungeonSlowLevel)]) * sprintCostMult, false, 1);
+				KinkyDungeonChangeStamina((-KDSprintCostBase - KDSprintCostSlowLevel[Math.round(KinkyDungeonSlowLevel)]) * sprintCostMult, false, 1);
 				KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
 				if (KinkyDungeonSlowLevel < 2) {
 					// Move faster
@@ -3640,7 +3640,7 @@ function KinkyDungeonMoveTo(moveX, moveY, SuppressSprint) {
 }
 
 function KDCanSprint() {
-	return KinkyDungeonSlowLevel < 4 && KinkyDungeonHasStamina(KDSprintCost + KDSprintCostSlowLevel[Math.round(KinkyDungeonSlowLevel)]) && KinkyDungeonCanStand();
+	return KinkyDungeonSlowLevel < 4 && KinkyDungeonHasStamina(KDSprintCostBase + KDSprintCostSlowLevel[Math.min(Math.round(KinkyDungeonSlowLevel), KDSprintCostSlowLevel.length)]) && KinkyDungeonCanStand();
 }
 
 let KinkyDungeonLastAction = "";

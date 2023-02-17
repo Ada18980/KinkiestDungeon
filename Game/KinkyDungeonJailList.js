@@ -11,6 +11,11 @@ let KDJailEvents = {
 		},
 		// Occurs when the jail event triggers
 		trigger: (g, xx, yy) => {
+			// Allow the player to sleep 150 turns after the guard shows up
+			if (KinkyDungeonFlags.get("slept") == -1) {
+				KinkyDungeonSetFlag("slept", 0);
+				KinkyDungeonSetFlag("slept", 150);
+			}
 			// Jail tag
 			let jt = KDGameData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDGameData.JailFaction[Math.floor(KDRandom() * KDGameData.JailFaction.length)]]] : "jailer";
 			let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], false, undefined, ["gagged"]);

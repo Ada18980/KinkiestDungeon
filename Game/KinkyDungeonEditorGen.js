@@ -1,5 +1,7 @@
 "use strict";
 
+/** If a tile's weight is higher than this, then any time without this much weight will get culled from the list */
+let KD_GENWEIGHTCUTOFF = 10000;
 
 /**
  *
@@ -192,6 +194,7 @@ function KDGetTileWeight(mapTile, tags, tagCounts, tagModifiers) {
 	return weight;
 }
 
+
 /**
  *
  * @param {string} index
@@ -215,6 +218,9 @@ function KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, r
 	let WeightTotal = 0;
 	let Weights = [];
 
+
+	let maxWeight = 0;
+
 	for (let mapTile of Object.values(KDMapTilesList)) {
 		if (mapTile.primInd == index || (mapTile.flexEdge && mapTile.flexEdge['0,0'])) {
 			if (!KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, indexFilled)) continue;
@@ -232,12 +238,22 @@ function KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, r
 
 			// Determine tile candidate weight and then commit to the array if it's positive
 			let weight = KDGetTileWeight(mapTile, tags, tagCounts, tagModifiers);
-			if (weight > 0) {
+			if (weight > 0 && (maxWeight < KD_GENWEIGHTCUTOFF || weight >= KD_GENWEIGHTCUTOFF)) {
+				maxWeight = weight;
 				Weights.push({tile: mapTile, weight: WeightTotal});
 				WeightTotal += mapTile.weight;
 			}
 		}
+	}
 
+	if (maxWeight >= KD_GENWEIGHTCUTOFF) {
+		// Cull all tiles under the cutoff
+		for (let L = Weights.length - 1; L >= 0; L--) {
+			if (Weights[L].weight < KD_GENWEIGHTCUTOFF) {
+				Weights[L].weight = 0;
+				break;
+			}
+		}
 	}
 
 	let selection = KDRandom() * WeightTotal;

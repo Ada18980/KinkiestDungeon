@@ -9193,7 +9193,7 @@ rPrisonerRescueElemental,"(A SPEAKER wakes you up by knocking on the bars)|Hey, 
 rPrisonerRescueAncientRobot,"(A SPEAKER flashes a bright light in your direction)|Prisoner 74121 located. Commence transfer to different location."
 rAllyRescue,"(A SPEAKER wakes you up)|We came to rescue you. Come on!"
 
-rBed,"(The bed looks comfy and inviting)|(Napping here will restore half of your willpower)|(You can only sleep once per floor)"
+rBed,"(The bed looks comfy and inviting)|(Napping here will restore up to half of your willpower)|(You can only sleep once per floor, unless jailed)"
 rBedSleep,"(You lay in the bed and doze off...)"
 dBed_Sleep,(Lie down and sleep)
 

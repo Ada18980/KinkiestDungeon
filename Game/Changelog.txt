@@ -1244,7 +1244,12 @@ Other changes:
 4.1 (Started Feb 2023)
 Major changes:
 - New tileset: Bellows
+- Added conveyor belts
 - Max floor is now 20 from 16
+- Sprinting now costs 15 + 5 per slow level
+- Sleep is refreshed after 150 turns in jail if you have already slept before
+Minor Changes:
+
 
 TODO ValidationFindBlockCycles to prevent bugs
 

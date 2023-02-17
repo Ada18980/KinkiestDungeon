@@ -523,9 +523,11 @@ interface overrideDisplayItem {
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
 
 interface enemy extends KDHasTags {
-
 	/** This enemy will always kite the player even if player is harmless*/
 	alwaysKite?: boolean,
+
+	/** These enemies always carry these items at the start */
+	startingItems?: string[]
 
 	/** Restraint filters */
 	RestraintFilter?: {
@@ -545,6 +547,8 @@ interface enemy extends KDHasTags {
 		noRestock?: boolean,
 		/** Enemy will restock to this percentage */
 		restockPercent?: number,
+		/** These enemies always restock these restraint items if they dont have them */
+		requiredItems?: string[]
 	},
 
 	/** Security levels for accessing chastity */

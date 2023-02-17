@@ -1532,6 +1532,9 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "Dressmaker", clusterWith: "construct", bound: "Dressmaker", playLine: "Dressmaker", faction: "Dressmaker", color: "#f135a4", tags: KDMapInit(["leashing", "dressmaker", "guardCall", "jail", "jailer", "conjurer", "acidweakness", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "dressRestraints"]),
+		RestraintFilter: {
+			requiredItems: ["BindingDress"],
+		},
 		followLeashedOnly: true, kite: 1.5, kiteChance: 0.3, followRange: 4, castWhileMoving: true, spells: ["Ribbons", "Ribbons", "Ribbons", "RibbonBurst", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, stopToCast: true, spellRdy: true, noKiteWhenHarmless: true, noSpellsWhenHarmless: true,
 		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 13, minLevel:0, weight:-6, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", projectileTargeting: true,
 		attackWidth: 1, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 3, focusPlayer: true, attackLock: "Purple",

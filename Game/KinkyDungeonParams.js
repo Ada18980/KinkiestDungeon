@@ -776,8 +776,10 @@ const KinkyDungeonMapParams = {
 			"temple": 0.1,
 			"urban": 0.5,
 			"dungeon": 0,
+			"factory": 2.0,
 		},
 		globalTags: {
+			"factory": true,
 			"bellows": true,
 			"industrial": true,
 		},

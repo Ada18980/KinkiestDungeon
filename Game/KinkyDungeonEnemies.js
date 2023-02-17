@@ -4671,6 +4671,12 @@ function KDRestockRestraints(enemy, restMult) {
 			KDStockRestraints(enemy, restMult, rCount - (enemy.items?.length || 0));
 			KinkyDungeonSetEnemyFlag(enemy, "restocked", 200);
 		}
+		if (enemy.Enemy.RestraintFilter?.requiredItems) {
+			if (!enemy.items) enemy.items = [];
+			for (let item of enemy.Enemy.RestraintFilter?.requiredItems) {
+				if (!enemy.items.includes(item)) enemy.items.unshift(item);
+			}
+		}
 	}
 }
 
@@ -4731,6 +4737,13 @@ function KDStockRestraints(enemy, restMult, count) {
 			}
 		}
 	}
+
+	if (enemy.Enemy.RestraintFilter?.requiredItems) {
+		if (!enemy.items) enemy.items = [];
+		for (let item of enemy.Enemy.RestraintFilter?.requiredItems) {
+			if (!enemy.items.includes(item)) enemy.items.unshift(item);
+		}
+	}
 }
 
 /**
@@ -4740,7 +4753,8 @@ function KDStockRestraints(enemy, restMult, count) {
  */
 function KDSetLoadout(enemy, loadout) {
 	if (loadout) {
-		enemy.items = Object.assign([], KDLoadouts[loadout].items);
+		let temp = enemy.Enemy.startingItems ? Object.assign([], enemy.Enemy.startingItems) : [];
+		enemy.items = Object.assign(temp, KDLoadouts[loadout].items);
 	}
 	if (!enemy.Enemy.RestraintFilter?.unlimitedRestraints) {
 		let restMult = KDLoadouts[loadout]?.restraintMult || 1;
