@@ -1162,7 +1162,7 @@ let KDDialogue = {
 				"RESCUECOST": KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * MiniGameKinkyDungeonLevel)),
 			};
 			KDGameData.CurrentDialogMsgData = {
-				"RESCUECOST": "" + (KDGameData.ShopkeeperFee || (KDDialogueParams.KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * MiniGameKinkyDungeonLevel))),
+				"RESCUECOST": "" + (KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * MiniGameKinkyDungeonLevel))),
 			};
 			return false;
 		},
