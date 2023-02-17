@@ -570,7 +570,6 @@ KinkyDungeonBuffKatanaCharge,"Katana: Patience is key..."
 KinkyDungeonBuffStormCharge,"Stormbreaker: You have the Power."
 
 KinkyDungeonDifficulty,Game Setup:
-KinkyDungeonDifficulty,Choose game mode:
 KinkyDungeonDifficulty0,Beginner: Get a save code every 3 levels, autosave after each floor
 KinkyDungeonDifficulty1,"Roguelike: No save codes, only autosave"
 KinkyDungeonDifficulty3,"Exciting: Orbs give random spells"
@@ -6273,6 +6272,8 @@ KinkyDungeonPlayCorner,You rub yourself on the corner...
 
 KinkyDungeonRemoveLowLevelRope,"Many ropes emerge around you, removing weaker ropes from your body and binding enemies!"
 
+KDSexyMode,"Distraction Mode:"
+
 KinkyDungeonSexyMode0,Distracted
 KinkyDungeonSexyMode1,Aroused
 KinkyDungeonSexyModeDesc0,"Removes all chastity belts, vibrating restraints, plugs, and removes the option to play with yourself."
@@ -6289,20 +6290,25 @@ KinkyDungeonClassModeDesc2,"Start with 200 mana and Magical Sight, good for cast
 KinkyDungeonClassMode3,Peasant
 KinkyDungeonClassModeDesc3,"Start with nothing to your name. For those who want a challenge."
 
+KDRandomMode,"Spell Choice:"
+
 KinkyDungeonRandomMode0,Choose Spells
 KinkyDungeonRandomMode1,Random Spells
 KinkyDungeonRandomModeDesc0,Break orbs. Get points. Buy spells. It's that simple.
 KinkyDungeonRandomModeDesc1,Break orbs and pray you get something good.
+
+KDSaveMode,"Save Mode:"
 
 KinkyDungeonSaveMode0,Save Codes
 KinkyDungeonSaveMode1,Roguelike
 KinkyDungeonSaveModeDesc0,"Grants a save code every floor you can write down. Autosaves only on floor start."
 KinkyDungeonSaveModeDesc1,"No save codes, forced autosaves. You are in it to win it."
 
+KDEasyMode,"Prison Strictness:"
 
 KinkyDungeonEasyMode0,Normal
 KinkyDungeonEasyMode1,Easy
-KinkyDungeonEasyMode2,Hard
+KinkyDungeonEasyMode2,Strict
 KinkyDungeonEasyModeDesc0,"If you get captured, you might get rescued if you have good relations."
 KinkyDungeonEasyModeDesc1,"If you get captured, you will always get rescued and pay a fee."
 KinkyDungeonEasyModeDesc2,"If you get captured, you are totally on your own."

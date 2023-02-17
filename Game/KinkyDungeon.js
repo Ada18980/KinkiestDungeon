@@ -1053,6 +1053,8 @@ function KinkyDungeonRun() {
 
 
 
+		DrawTextFitKD(TextGet("KDSexyMode"), 875 - 50, 350 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
+
 		DrawButtonKDEx("KinkyDungeonSexyMode0", (bdata) => {
 			KinkyDungeonSexyMode = false;
 			localStorage.setItem("KinkyDungeonSexyMode", KinkyDungeonSexyMode ? "True" : "False");
@@ -1070,6 +1072,8 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonSexyModeDesc1"), 1250, 80, 1000, "#ffffff", KDTextGray0);
 		}
 
+		DrawTextFitKD(TextGet("KDRandomMode"), 875 - 50, 410 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
+
 		DrawButtonKDEx("KinkyDungeonRandomMode0", (bdata) => {
 			KinkyDungeonRandomMode = false;
 			localStorage.setItem("KinkyDungeonRandomMode", KinkyDungeonRandomMode ? "True" : "False");
@@ -1086,6 +1090,8 @@ function KinkyDungeonRun() {
 		if (MouseInKD("KinkyDungeonRandomMode1")) {
 			DrawTextFitKD(TextGet("KinkyDungeonRandomModeDesc1"), 1250, 80, 1000, "#ffffff", KDTextGray0);
 		}
+
+		DrawTextFitKD(TextGet("KDSaveMode"), 875 - 50, 470 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 		DrawButtonKDEx("KinkyDungeonSaveMode0", (bdata) => {
 			KinkyDungeonSaveMode = false;
@@ -1105,6 +1111,7 @@ function KinkyDungeonRun() {
 		}
 
 
+		DrawTextFitKD(TextGet("KDEasyMode"), 875 - 50, 530 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 		DrawButtonKDEx("KinkyDungeonEasyMode0", (bdata) => {
 			KinkyDungeonEasyMode = 0;
