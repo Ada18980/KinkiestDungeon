@@ -174,6 +174,7 @@ AddModel({
 		},
 	])
 });
+
 AddModel({
 	Name: "ChainShirt",
 	Folder: "ArmorChain",
@@ -183,11 +184,20 @@ AddModel({
 			MorphPoses: {Hogtie: "Hogtie"},
 			Invariant: true,
 		},
-		{ Name: "Shirt", Layer: "TorsoUpper", Pri: 5,
+		{ Name: "Shirt", Layer: "CorsetLiner", Pri: 5,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
 			MorphPoses: {Hogtie: "Hogtie"},
 			Invariant: true,
 		},
+	])
+});
+
+AddModel({
+	Name: "HeavyArmor",
+	Folder: "ArmorPlate",
+	Layers: ToLayerMap([
+		...GetModelLayers("Breastplate"),
+		...GetModelLayers("Pauldrons"),
 	])
 });
 
@@ -223,6 +233,157 @@ AddModel({
 		...GetModelLayers("BanditBreastplate"),
 	])
 });
+
+
+
+AddModel({
+	Name: "MaidSkirt",
+	Folder: "Maid",
+	Layers: ToLayerMap([
+		{ Name: "Skirt", Layer: "Skirt", Pri: 14,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel"},
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "MaidApron",
+	Folder: "Maid",
+	Layers: ToLayerMap([
+		{ Name: "Apron", Layer: "SkirtDeco", Pri: 30,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			MorphPoses: {Kneel: "Kneel"},
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "MaidBlouse",
+	Folder: "Maid",
+	Layers: ToLayerMap([
+		{ Name: "Blouse", Layer: "CorsetLining", Pri: 3,
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+		{ Name: "BlouseBust", Layer: "Chest", Pri: 3,
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "MaidBow",
+	Folder: "Maid",
+	Layers: ToLayerMap([
+		{ Name: "Bow", Layer: "CollarAcc", Pri: 1,
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "MaidCorset",
+	Folder: "Maid",
+	Layers: ToLayerMap([
+		{ Name: "Corset", Layer: "Corset", Pri: 1,
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "MaidCorsetFull",
+	Folder: "Maid",
+	Layers: ToLayerMap([
+		...GetModelLayers("MaidCorset"),
+		{ Name: "CorsetStraps", Layer: "Straps", Pri: 1,
+			Poses: ToMap([...ARMPOSES]),
+			MorphPoses: {Boxtie: "Boxtie", Wristtie: "Boxtie"},
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "MaidSockLeft",
+	Folder: "Maid",
+	Layers: ToLayerMap([
+		{ Name: "SockLeft", Layer: "StockingLeft", Pri: 1,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+		},
+		{ Name: "FootSockLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
+			Poses: ToMap(["Hogtie"]),
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "MaidSockRight",
+	Folder: "Maid",
+	Layers: ToLayerMap([
+		{ Name: "SockRight", Layer: "StockingRight", Pri: 1,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+		},
+		{ Name: "FootSockRightKneel", Layer: "FootRightKneel", Pri: 1,
+			Poses: ToMap(["Kneel"]),
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "MaidShoes",
+	Folder: "Maid",
+	Layers: ToLayerMap([
+		{ Name: "ShoeLeft", Layer: "ShoeLeft", Pri: 1,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
+		},
+		{ Name: "ShoeRight", Layer: "ShoeRight", Pri: 1,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel"]),
+		},
+		{ Name: "ShoeRightKneel", Layer: "FootRightKneel", Pri: 1,
+			Poses: ToMap(["Kneel"]),
+			Invariant: true,
+		},
+		{ Name: "ShoeLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
+			Poses: ToMap(["Hogtie"]),
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "MaidSocks",
+	Folder: "Maid",
+	Layers: ToLayerMap([
+		...GetModelLayers("MaidSockRight"),
+		...GetModelLayers("MaidSockLeft"),
+	])
+});
+
+AddModel({
+	Name: "Maid",
+	Folder: "Maid",
+	Layers: ToLayerMap([
+		...GetModelLayers("MaidSkirt"),
+		...GetModelLayers("MaidBlouse"),
+		...GetModelLayers("MaidCorsetFull"),
+		...GetModelLayers("MaidSocks"),
+		...GetModelLayers("MaidShoes"),
+		...GetModelLayers("MaidBow"),
+	])
+});
+
+
 
 AddModel({
 	Name: "RopeArms",

@@ -11,6 +11,10 @@ let LAYERS_BASE = [
 	// Clothes that go over the chest and hang down
 	"Shoulders",
 
+	// Collar and collar accessories
+	"CollarAcc",
+	"Collar",
+
 
 	// This slot is for things like breastplates and things that go over
 	"ChestStraps",
@@ -20,12 +24,17 @@ let LAYERS_BASE = [
 	"Shirt",
 	"Harness",
 	// Chest is breasts, should only intersect on bottom and side edges, top is indeterminate
+	"Straps",
+	"Necklace",
 	"Chest",
 	// For things that go directly under the breasts
 	"Underbust",
 	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
 	"Underarms",
 	"Corset",
+
+	// For things that go under a corset rather than over
+	"CorsetLining",
 
 
 
@@ -39,6 +48,7 @@ let LAYERS_BASE = [
 
 
 	// Lower body clothes with a bit more bulk
+	"SkirtDeco",
 	"Skirt",
 	"PantLeft",
 	"PantRight",
