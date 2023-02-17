@@ -10,6 +10,8 @@ let KinkyDungeonSuppressSprint = true;
 
 let KDReturnButtonXX = 1450;
 
+let KDIntenseFilter = null;
+
 // PIXI experimental
 let pixiview = document.getElementById("MainCanvas");
 // @ts-ignore
@@ -1355,6 +1357,22 @@ function KinkyDungeonDrawGame() {
 
 	if (KinkyDungeonDrawState == "Game") {
 		if (KinkyDungeonFlags.get("PlayerOrgasmFilter")) {
+			/*if (KDToggles.IntenseOrgasm) {
+				if (!KDIntenseFilter) {
+					KDIntenseFilter = PIXI.Sprite.from(KinkyDungeonRootDirectory + 'displacement_map_repeat.jpg');
+					// Make sure the sprite is wrapping.
+					KDIntenseFilter.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
+					const displacementFilter = new PIXI.filters.DisplacementFilter(KDIntenseFilter);
+					displacementFilter.padding = 10;
+
+					kdgameboard.addChild(KDIntenseFilter);
+
+					kdgameboard.filters = [displacementFilter];
+
+					displacementFilter.scale.x = 30;
+					displacementFilter.scale.y = 60;
+				}
+			} else {*/
 			FillRectKD(kdcanvas, kdpixisprites, "screenoverlayor", {
 				Left: 0,
 				Top: 0,
@@ -1365,6 +1383,7 @@ function KinkyDungeonDrawGame() {
 				zIndex: 1,
 				alpha: 0.2,
 			});
+			//}
 		} else if (KinkyDungeonStatFreeze > 0) {
 			FillRectKD(kdcanvas, kdpixisprites, "screenoverlayfr", {
 				Left: 0,
@@ -1376,9 +1395,26 @@ function KinkyDungeonDrawGame() {
 				zIndex: 1,
 				alpha: 0.2,
 			});
+		} else if (KDToggles.StunFlash && (KinkyDungeonFlags.get("playerStun") || KinkyDungeonMovePoints < 0)) {
+			FillRectKD(kdcanvas, kdpixisprites, "screenoverlayst", {
+				Left: 0,
+				Top: 0,
+				Width: 2000,
+				Height: 1000,
+				Color: "#aaaaaa",
+				LineWidth: 1,
+				zIndex: 1,
+				alpha: 0.1,
+			});
 		} else if (KinkyDungeonStatDistraction > 1.0) {
 			KDDrawArousalScreenFilter(0, 1000, 2000, KinkyDungeonStatDistraction * 100 / KinkyDungeonStatDistractionMax);
 		}
+
+		/*if (!KinkyDungeonFlags.get("PlayerOrgasmFilter") && KDIntenseFilter) {
+			kdgameboard.removeChild(KDIntenseFilter);
+			kdgameboard.filters = kdgameboard.filters.filter((filter) => {return filter != KDIntenseFilter;});
+			KDIntenseFilter = null;
+		}*/
 	}
 
 

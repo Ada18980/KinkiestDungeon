@@ -3428,7 +3428,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												}
 											}
 											if (!KinkyDungeonHasWill(0.1)) {
-												KinkyDungeonSlowMoveTurns = (enemy.Enemy.movePoints + moveMult - 1) || 0;
+												KDStunTurns(enemy.Enemy.movePoints + moveMult - 1);
 												KinkyDungeonSleepTime = CommonTime() + 200;
 											}
 											KinkyDungeonSetFlag("nojailbreak", KDGameData.KinkyDungeonLeashedPlayer);

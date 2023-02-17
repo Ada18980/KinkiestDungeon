@@ -3932,8 +3932,18 @@ function KDTileDelete(x, y) {
  * @param {number} turns
  */
 function KDStunTurns(turns) {
+	KinkyDungeonSetFlag("playerStun", turns + 1);
 	KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, turns);
 	KinkyDungeonSleepTime = CommonTime() + 200;
+}
+
+/**
+ * Kneels the player for [turns] turns
+ * @param {number} turns
+ */
+function KDKneelTurns(turns) {
+	KinkyDungeonSetFlag("playerStun", turns + 1);
+	KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns || 0, turns);
 }
 
 /**

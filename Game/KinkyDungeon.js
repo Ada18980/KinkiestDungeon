@@ -83,6 +83,7 @@ let KDToggles = {
 	Drool: true,
 	DrawArmor: true,
 	TurnCounter: true,
+	StunFlash: true,
 };
 
 let KDDefaultKB = {
@@ -1037,6 +1038,9 @@ function KinkyDungeonRun() {
 		let buttonsstart = 875;
 		let X = 0;
 		let Y = 0;
+
+		DrawTextFitKD(TextGet("KDClasses"), 875 - 50, 210 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
+
 		for (let i = 0; i < KDClasses; i++) {
 			X = i % 4;
 			Y = Math.floor(i / 4);
@@ -1480,7 +1484,7 @@ function KinkyDungeonRun() {
 		let YYmax = 680;
 		let YY = YYstart;
 		let YYd = 70;
-		let XXd = 250;
+		let XXd = 400;
 		let toggles = Object.keys(KDToggles);
 		MainCanvas.textAlign = "left";
 		for (let toggle of toggles) {

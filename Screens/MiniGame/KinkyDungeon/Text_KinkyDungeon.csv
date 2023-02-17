@@ -35,6 +35,8 @@ KDToggleDrool,Enable Drool/Tears
 KDToggleDrawArmor,Draw Armor
 KDToggleMusic,Enable Music
 KDToggleTurnCounter,Turn Counter
+KDToggleStunFlash,Flash Screen on Stun
+KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
 KDToggleGraphicsQuality,High Quality Animations
@@ -6274,6 +6276,8 @@ KinkyDungeonCrack,The wall is cracked.
 KinkyDungeonPlayCorner,You rub yourself on the corner...
 
 KinkyDungeonRemoveLowLevelRope,"Many ropes emerge around you, removing weaker ropes from your body and binding enemies!"
+
+KDClasses,"Choose Class:"
 
 KDSexyMode,"Distraction Mode:"
 

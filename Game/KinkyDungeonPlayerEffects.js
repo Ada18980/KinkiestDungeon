@@ -724,7 +724,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			effect = true;
 		} else if (playerEffect.name == "TrapSleepDart") {
 			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrapSleepDart"), "#ff0000", 8);
-			KinkyDungeonSlowMoveTurns = 8;
+			KDStunTurns(8);
 			KinkyDungeonStatBlind = 8;
 			KinkyDungeonSleepiness = 8;
 			KinkyDungeonAlert = 5;
