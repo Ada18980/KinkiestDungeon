@@ -264,7 +264,6 @@ function KDStartDialog(Dialogue, Speaker, Click, Personality, enemy) {
 
 function KDDialogueGagged() {
 	let dialogue = KDGetDialogue();
-	if (!dialogue) return false;
 	let threshold = dialogue.gagThreshold ? dialogue.gagThreshold : 0.01;
 	if (KinkyDungeonGagTotal() >= threshold) return true;
 	return false;
