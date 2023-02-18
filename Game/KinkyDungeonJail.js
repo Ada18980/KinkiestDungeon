@@ -412,6 +412,13 @@ function KinkyDungeonHandleJailSpawns(delta) {
 	let yy = nearestJail.y;
 	let playerInCell = (Math.abs(KinkyDungeonPlayerEntity.x - nearestJail.x) < KinkyDungeonJailLeashX - 1 && Math.abs(KinkyDungeonPlayerEntity.y - nearestJail.y) <= KinkyDungeonJailLeash);
 
+	// This is an important piece to make it so guards don't clog up the jail space
+	for (let enemy of KinkyDungeonEntities) {
+		if (enemy.gxx == xx && enemy.gyy == yy && KDGetAI(enemy) == "guard") {
+			enemy.AI = "hunt";
+		}
+	}
+
 	// Start jail event, like spawning a guard, spawning rescues, etc
 	if (KinkyDungeonInJail() && KDGameData.PrisonerState == "jail" && (KDGameData.KinkyDungeonGuardSpawnTimer <= 1 || KDGameData.SleepTurns == 3) && !KinkyDungeonJailGuard() && playerInCell) {
 		KDGetJailEvent(KinkyDungeonJailGuard(), xx, yy)(KinkyDungeonJailGuard(), xx, yy);
