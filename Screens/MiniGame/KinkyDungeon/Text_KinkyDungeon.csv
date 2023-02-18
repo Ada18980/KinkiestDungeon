@@ -4369,6 +4369,10 @@ KinkyDungeonSpellAmpuleBlue,Latex Ampule
 KinkyDungeonSpellShadowStrike,Shadowy chains appear from a rift in space!
 KinkyDungeonInfernoBurn,The roaring inferno deals 10 damage to you!
 
+KinkyDungeonSpellDistractionCast,Mana Burst
+KinkyDungeonSpellDescriptionDistractionCast,"As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus..."
+
+
 KinkyDungeonSpellApprenticeFire,Flame Novice
 KinkyDungeonSpellDescriptionApprenticeFire,Unlocks fire spells. Learn Firebolt.
 KinkyDungeonSpellApprenticeLightning,Lightning Novice

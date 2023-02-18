@@ -1698,7 +1698,19 @@ let KDEventMapSpell = {
 				data.cost = Math.max(data.cost - e.power, Math.min(data.cost, 1));
 		},
 	},
+	"calcMiscast": {
+		"DistractionCast": (e, data) => {
+			if (KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax > 0.99 && KinkyDungeonStatsChoice.get("DistractionCast")) data.miscastChance -= 1.0;
+		},
+	},
 	"playerCast": {
+		"DistractionCast": (e, spell, data) => {
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.99) {
+				let tb = KinkyDungeonGetManaCost(data.spell) * 0.25;
+				KinkyDungeonTeaseLevelBypass += tb;
+				KDGameData.OrgasmStage = Math.max((KDGameData.OrgasmStage + Math.ceil(tb)) || tb, KinkyDungeonMaxOrgasmStage);
+			}
+		},
 		"LightningRod": (e, spell, data) => {
 			if (data.spell && data.spell.tags && data.spell.manacost > 0 && (data.spell.tags.includes("air") || data.spell.tags.includes("electric"))) {
 				let bb = Object.assign({}, KDConduction);
@@ -1732,6 +1744,12 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
+		"DistractionCast": (e, spell, data) => {
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99)
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+					id: "DistractionCast", type: "sfx", power: 1, duration: 1, sfxApply: "PowerMagic", aura: "#ff8888", aurasprite: "Heart"
+				});
+		},
 		"Buff": (e, spell, data) => {
 			if (KDCheckPrereq(null, e.prereq, e, data))
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
@@ -3636,23 +3654,7 @@ let KDEventMapGeneric = {
 			}
 		},
 	},
-	"calcMiscast": {
-		"DistractionCast": (e, data) => {
-			if (KinkyDungeonStatsChoice.get("DistractionCast")) {
-				if (KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax > 0.99 && KinkyDungeonStatsChoice.get("DistractionCast")) data.miscastChance -= 1.0;
-			}
-		},
-	},
 	"playerCast": {
-		"DistractionCast": (e, data) => {
-			if (KinkyDungeonStatsChoice.get("DistractionCast")) {
-				if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.99) {
-					let tb = KinkyDungeonGetManaCost(data.spell) * 0.25;
-					KinkyDungeonTeaseLevelBypass += tb;
-					KDGameData.OrgasmStage = Math.max((KDGameData.OrgasmStage + Math.ceil(tb)) || tb, KinkyDungeonMaxOrgasmStage);
-				}
-			}
-		},
 		"ArousingMagic": (e, data) => {
 			if (KinkyDungeonStatsChoice.get("ArousingMagic")) {
 				KinkyDungeonChangeDistraction(KinkyDungeonGetManaCost(data.spell), false, 0.1);

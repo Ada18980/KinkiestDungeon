@@ -83,12 +83,6 @@ let KDPerkUpdateStats = {
 			id: "PainTolerance", type: "glueDamageResist", power: -0.4, duration: 2
 		});
 	},
-	"DistractionCast": () => {
-		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99)
-			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-				id: "DistractionCast", type: "sfx", power: 1, duration: 1, sfxApply: "PowerMagic", aura: "#ff8888", aurasprite: "Heart"
-			});
-	},
 	"BoundPower": () => {
 		KDDamageAmpPerks += KDBoundPowerLevel *  KDBoundPowerMult;
 	},
@@ -224,7 +218,7 @@ let KinkyDungeonStatsPresets = {
 	"Studious": {category: "Magic", id: 12, cost: 1, tags: ["start"]},
 	//"Novice": {category: "Magic", id: 7, cost: -1},
 	//"Meditation": {category: "Magic", id: 13, cost: 2},
-	"DistractionCast":  {category: "Magic", id: "DistractionCast", cost: 2},
+	//"DistractionCast":  {category: "Magic", id: "DistractionCast", cost: 2},
 	"Clearheaded":  {category: "Magic", id: "Clearheaded", cost: 1, block: ["ArousingMagic"]},
 	"ArousingMagic":  {category: "Magic", id: "ArousingMagic", cost: -1, block: ["Clearheaded"]},
 	//"QuickScribe": {category: "Magic", id: 56, cost: 1, block: ["Disorganized"]},

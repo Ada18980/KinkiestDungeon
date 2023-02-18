@@ -236,6 +236,12 @@ let KDClassStart = {
 		KinkyDungeonSpells = [];
 		KinkyDungeonSpellChoices = [];
 		KinkyDungeonSpellPoints = 3;
+		KinkyDungeonGold = 100;
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("DistractionCast"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+		KinkyDungeonInventoryAddWeapon("Knife");
+		KDSetWeapon("Knife");
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 3);
 	},
 };
 
@@ -1175,7 +1181,6 @@ function KinkyDungeonCalculateMiscastChance() {
 		flags.miscastChance = Math.min(flags.miscastChance * 2, 1);
 	}
 	if (KinkyDungeonStatsChoice.get("Distracted")) flags.miscastChance += KDDistractedAmount;
-	if (KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax > 0.99 && KinkyDungeonStatsChoice.get("DistractionCast")) flags.miscastChance -= 1.0;
 	KinkyDungeonSendEvent("calcMiscast", {flags: flags});
 	KinkyDungeonMiscastChance = Math.max(0, flags.miscastChance || 0);
 }

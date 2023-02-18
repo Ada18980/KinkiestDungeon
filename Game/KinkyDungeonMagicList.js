@@ -66,6 +66,8 @@ let KinkyDungeonLearnableSpells = [
 		["ApprenticeRope", "ApprenticeLeather", "ApprenticeMetal", "ApprenticeLatex", "ApprenticePhysics", "ApprenticeSummon"],
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
+		// Perk exclusive
+		["DistractionCast"],
 	],
 
 	//Page 1: Elements
@@ -160,6 +162,12 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				duration: 100,
 			},
 		},
+
+		{name: "DistractionCast", tags: ["will", "defense"], school: "Elements", manacost: 0, components: [], hideUnlearned: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "DistractionCast", trigger: "calcMiscast"},
+			{type: "DistractionCast", trigger: "tick"},
+			{type: "DistractionCast", trigger: "playerCast"},
+		]},
 
 		{name: "SPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "WPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
