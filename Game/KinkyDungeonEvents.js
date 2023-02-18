@@ -3019,6 +3019,12 @@ let KDEventMapEnemy = {
 				enemy.hp = 0;
 		}
 	},
+	"defeat": {
+		"delete": (e, enemy, data) => {
+			if (!e.chance || KDRandom() < e.chance)
+				enemy.hp = 0;
+		}
+	},
 	"calcManaPool": {
 		"PetManaRegen": (e, enemy, data) => {
 			if (KDAllied(enemy) && KDistChebyshev(enemy.x - data.player.x, enemy.y - data.player.y) < e.dist) {

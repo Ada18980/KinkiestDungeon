@@ -1912,6 +1912,14 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 	// Loop 1
 	for (let enemy of KinkyDungeonEntities) {
 		if ((Allied && KDAllied(enemy)) || (!Allied && !KDAllied(enemy))) {
+
+			let tile = KinkyDungeonTilesGet(enemy.x + "," + enemy.y);
+			if (tile?.OffLimits) {
+				// We remove certain flags when enemies are in an 'offlimits' area so we can get them out
+				KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
+			}
+
+
 			let master = KinkyDungeonFindMaster(enemy).master;
 			if (master && enemy.aware) master.aware = true;
 			if (master && master.aware) enemy.aware = true;
