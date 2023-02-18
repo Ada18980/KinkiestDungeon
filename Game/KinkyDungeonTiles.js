@@ -531,6 +531,12 @@ function KDMoveEntity(enemy, x, y, willing, dash, forceHitBullets) {
 	return cancel.returnvalue;
 }
 
+function KDStaggerEnemy(enemy) {
+	enemy.fx = undefined;
+	enemy.fy = undefined;
+	enemy.movePoints = 0;
+}
+
 
 function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets) {
 	KinkyDungeonPlayerEntity.lastx = KinkyDungeonPlayerEntity.x;
@@ -636,14 +642,14 @@ function KDConveyor(delta, X, Y) {
 	if (entity && KinkyDungeonMovableTilesEnemy.includes(tiletype) && KinkyDungeonNoEnemyExceptSub(X + (tile.DX || 0), Y + (tile.DY || 0), true, null)) {
 		if (entity.player) {
 			if (!KinkyDungeonFlags.get("conveyed")) {
-				KinkyDungeonSetFlag("conveyed", 1);
+				KinkyDungeonSetFlag("conveyed", 2);
 				KDMovePlayer(X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
 				KinkyDungeonSendTextMessage(4, TextGet("KDConveyorPush"), "#ffff44", 2);
 			}
 		} else if (!KDIsImmobile(entity)) {
+			if (entity.Enemy.tags.prisoner) KDStaggerEnemy(entity);
 			if (!KDEnemyHasFlag(entity, "conveyed")) {
-				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
-				if (entity.Enemy.tags.prisoner) entity.movePoints = 0;
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 2);
 				KDMoveEntity(entity, X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
 			}
 		}

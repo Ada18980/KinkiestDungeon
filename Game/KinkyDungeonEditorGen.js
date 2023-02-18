@@ -673,7 +673,7 @@ let KDTileGen = {
 	},
 	"BondageMachine": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'N');
-		return {Type: "BondageMachine", OffLimits: true};
+		return {Type: "BondageMachine", OffLimits: true, Binding: tileGenerator.Binding};
 	},
 };
 

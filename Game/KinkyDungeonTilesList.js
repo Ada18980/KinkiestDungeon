@@ -26,6 +26,29 @@ let KDTileUpdateFunctionsLocal = {
 		else if (tL?.DX == 1) tile.DX = 1;
 		else if (tR?.DX == -1) tile.DX = -1;
 
+		let entity = KinkyDungeonEntityAt(X, Y);
+		let BMType = KDBondageMachineFunctions[tile.Binding];
+
+		if (entity) {
+			let eligible = false;
+			if (entity.player) {
+				if (!KinkyDungeonFlags.get("conveyed")) {
+					eligible = BMType.eligible_player(tile, X, Y, entity);
+					if (eligible) {
+						if (BMType.function_player(tile, delta, X, Y, entity)) return;
+					}
+				}
+			} else {
+				if (entity.Enemy.tags.prisoner) KDStaggerEnemy(entity);
+				if (!KDEnemyHasFlag(entity, "conveyed")) {
+					eligible = BMType.eligible_enemy(tile, X, Y, entity);
+					if (eligible) {
+						if (BMType.function_enemy(tile, delta, X, Y, entity)) return;
+					}
+				}
+			}
+		}
+
 		KDConveyor(delta, X, Y);
 	},
 	"u": (delta, X, Y) => {
@@ -63,10 +86,51 @@ let KDTileUpdateFunctionsLocal = {
 	"t": (delta, X, Y) => {
 		// Consume prisoners on the tile
 		let entity = KinkyDungeonEntityAt(X, Y);
-		if (entity && entity.Enemy?.tags.prisoner && !KDEnemyHasFlag(entity, "conveyed")) {
-			entity.hp = 0;
+		if (entity && entity.Enemy?.tags.prisoner) {
+			KDStaggerEnemy(entity);
+			if (!KDEnemyHasFlag(entity, "conveyed"))
+				entity.hp = 0;
 		}
 	},
+};
+
+/**
+ * Return value: whether or not to continue to allow peripheral tile updates
+ * @type {Record<string, KDBondageMachineFunc>}
+ */
+let KDBondageMachineFunctions = {
+	"Latex": {
+		eligible_player: (tile, x, y, entity) => {
+			return KDGetRestraintsEligible({tags: ['latexEncase']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+		},
+		function_player: (tile, delta, x, y, entity) => {
+			let restraint = KinkyDungeonGetRestraint({tags: ['latexEncase']}, 10, 'grv', false, undefined, undefined, undefined, false);
+			if (restraint) {
+				let succ = KinkyDungeonAddRestraintIfWeaker(restraint, MiniGameKinkyDungeonLevel, false, undefined, undefined, undefined, undefined, "AncientRobot", true);
+				if (succ) {
+					KinkyDungeonSetFlag("conveyed", 2);
+					KinkyDungeonSendTextMessage(8, TextGet("KDEncasement"), "#ffff44", 2);
+					return true;
+				}
+			}
+			return false;
+		},
+		eligible_enemy: (tile, x, y, entity) => {
+			return KDBoundEffects(entity) < 4 && !(entity.buffs && KinkyDungeonGetBuffedStat(entity.buffs, "SlimeProgress") >= 2);
+		},
+		function_enemy: (tile, delta, x, y, entity) => {
+			KDTieUpEnemy(entity, 3.0, "Slime", "glue");
+			entity.stun = Math.max(entity.stun || 0, 1);
+			if (KDBoundEffects(entity) > 3 ) {
+				KinkyDungeonApplyBuffToEntity(entity, KDEncased);
+			}
+			if (KDBoundEffects(entity) < 1 ) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				return true;
+			}
+			return false;
+		},
+	}
 };
 
 /**

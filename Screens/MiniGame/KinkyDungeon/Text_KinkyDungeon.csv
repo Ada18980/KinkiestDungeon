@@ -9252,3 +9252,4 @@ KDShopkeeperTeleportToStart,"You are brought into the Shopkeeper's establishment
 KDRemoveOnDmgTypePartial,"It seems to be working! The seal on your RESTRAINTNAME is weakened."
 KDRemoveOnDmgType,"The cursed seal on your RESTRAINTNAME disappears."
 KDConveyorPush,"You are moved along by the conveyor..."
+KDEncasement,Strange machinery begins sealing you in shiny latex!

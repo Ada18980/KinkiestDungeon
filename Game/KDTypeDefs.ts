@@ -1906,6 +1906,14 @@ interface KDDelayedAction {
 	tags: string[],
 }
 
+interface KDBondageMachineFunc {
+	eligible_player: (tile, x, y, entity) => boolean;
+	eligible_enemy: (tile, x, y, entity) => boolean;
+
+	function_player: (tile, delta, x, y, entity) => boolean;
+	function_enemy: (tile, delta, x, y, entity) => boolean;
+}
+
 
 declare const PIXI: any;
 declare const zip: any;

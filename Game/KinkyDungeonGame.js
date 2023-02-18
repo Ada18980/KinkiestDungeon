@@ -3930,9 +3930,11 @@ function KDTileDelete(x, y) {
 /**
  * Stuns the player for [turns] turns
  * @param {number} turns
+ * @param {boolean} [noFlag] - Doesn't add the 'stun' flag which makes the game think you are in trouble
  */
-function KDStunTurns(turns) {
-	KinkyDungeonSetFlag("playerStun", turns + 1);
+function KDStunTurns(turns, noFlag) {
+	if (!noFlag)
+		KinkyDungeonSetFlag("playerStun", turns + 1);
 	KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, turns);
 	KinkyDungeonSleepTime = CommonTime() + 200;
 }
