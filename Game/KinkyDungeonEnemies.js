@@ -2679,7 +2679,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (AIData.canSeePlayerClose) AIData.sneakMult += 0.25;
 	if (AIData.canSeePlayerVeryClose) AIData.sneakMult += 0.5;
 	if (KinkyDungeonAlert > 0) AIData.sneakMult += 1;
-	if ((AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer || AIData.canSeePlayerChase) && KinkyDungeonTrackSneak(enemy, delta * (AIData.sneakMult), player, (AIData.canSensePlayer && !AIData.canShootPlayer) ? 0 : (enemy.Enemy.tags.darkvision ? 0.5 : 1.5))) {
+	if ((AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer || AIData.canSeePlayerChase) && KinkyDungeonTrackSneak(enemy, delta * (AIData.sneakMult), player, (AIData.canSensePlayer) ? 0 : (enemy.Enemy.tags.darkvision ? 0.5 : 1.5))) {
 		if (!KDEnemyHasFlag(enemy, "StayHere")) {
 			if (KDEnemyHasFlag(enemy, "Defensive")) {
 				enemy.gx = KinkyDungeonPlayerEntity.x;

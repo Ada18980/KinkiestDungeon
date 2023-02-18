@@ -661,7 +661,7 @@ let KDTileGen = {
 	},
 	"Conveyor": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'V');
-		return {Type: "Conveyor", Sprite: tileGenerator.Sprite, DX: tileGenerator.DX, DY: tileGenerator.DY, OffLimits: true};
+		return {Type: "Conveyor", DX: tileGenerator.DX, DY: tileGenerator.DY, OffLimits: true};
 	},
 	"DollSupply": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'u');
@@ -670,6 +670,10 @@ let KDTileGen = {
 	"DollTerminal": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 't');
 		return {Type: "DollTerminal", OffLimits: true};
+	},
+	"BondageMachine": (x, y, tile, tileGenerator, data) => {
+		KinkyDungeonMapSet(x, y, 'N');
+		return {Type: "BondageMachine", OffLimits: true};
 	},
 };
 

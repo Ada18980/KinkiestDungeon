@@ -352,6 +352,10 @@ let KDSprites = {
 	"u": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
+	// @ts-ignore
+	"N": (x, y, Fog, noReplace) => {
+		return "Floor";
+	},
 };
 
 let KDOverlays = {
@@ -442,8 +446,43 @@ let KDOverlays = {
 	},
 	// @ts-ignore
 	"V": (x, y, Fog, noReplace) => {
-		if (KinkyDungeonTilesGet(x + "," + y)?.Sprite) return KinkyDungeonTilesGet(x + "," + y)?.Sprite;
-		return "Conveyor";
+		let tile = KinkyDungeonTilesGet(x + "," + y);
+		if (tile) {
+			let tU = KinkyDungeonTilesGet(x + "," + (y - 1));
+			let tD = KinkyDungeonTilesGet(x + "," + (y + 1));
+			let tR = KinkyDungeonTilesGet((x + 1) + "," + y);
+			let tL = KinkyDungeonTilesGet((x - 1) + "," + y);
+
+			let sprite = "";
+
+			if (tile.DY == -1) {
+				if (tU?.DY == -1) return "Conveyor/Up";
+				if (tL?.DX == 1 && tR?.DX == -1) sprite = sprite + "LeftRight";
+				else if (tL?.DX == 1) sprite = sprite + "Right";
+				else if (tR?.DX == -1) sprite = sprite + "Left";
+				sprite = sprite + "Up";
+			} else if (tile.DY == 1) {
+				if (tU?.DY == 1) return "Conveyor/Down";
+				if (tL?.DX == 1 && tR?.DX == -1) sprite = sprite + "LeftRight";
+				else if (tL?.DX == 1 && !(tR?.DX == -1)) sprite = sprite + "Right";
+				else if (tR?.DX == -1 && !(tL?.DX == 1)) sprite = sprite + "Left";
+				sprite = sprite + "Down";
+			} else if (tile.DX == 1) {
+				if (tU?.DY == 1 && tD?.DY == -1) sprite = sprite + "UpDown";
+				else if (tU?.DY == 1) sprite = sprite + "Down";
+				else if (tD?.DY == -1) sprite = sprite + "Up";
+				sprite = sprite + "Right";
+			} else if (tile.DX == -1) {
+				if (tU?.DY == 1 && tD?.DY == -1) sprite = sprite + "UpDown";
+				else if (tU?.DY == 1) sprite = sprite + "Down";
+				else if (tD?.DY == -1) sprite = sprite + "Up";
+				sprite = sprite + "Left";
+			}
+
+
+			return "Conveyor/" + sprite;
+		}
+		return "Conveyor/Conveyor";
 	},
 	// @ts-ignore
 	"t": (x, y, Fog, noReplace) => {
@@ -452,6 +491,20 @@ let KDOverlays = {
 	// @ts-ignore
 	"u": (x, y, Fog, noReplace) => {
 		return "DollSupply";
+	},
+	// @ts-ignore
+	"N": (x, y, Fog, noReplace) => {
+
+		let tileAbove = KinkyDungeonMapGet(x, y - 1);
+		let tileBelow = KinkyDungeonMapGet(x, y + 1);
+		if (tileAbove == 'V' && KinkyDungeonTilesGet(x + "," + (y-1))?.DY == 1) {
+			return "BondageMachine/LatexVert";
+		} else if (tileBelow == 'V' && KinkyDungeonTilesGet(x + "," + (y+1))?.DY == -1) {
+			return "BondageMachine/LatexVert";
+		}
+
+
+		return "BondageMachine/LatexHoriz";
 	},
 };
 

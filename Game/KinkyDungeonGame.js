@@ -64,7 +64,7 @@ let KinkyDungeonMapBrightness = 5;
 
 let KinkyDungeonGroundTiles = "023w][?/Vt";
 let KinkyDungeonWallTiles = "14";
-let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HBlSsRrdTgL"; // Objects which can be moved into: floors, debris, open doors, staircases
+let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HBlSsRrdTgLN"; // Objects which can be moved into: floors, debris, open doors, staircases
 let KinkyDungeonMovableTilesSmartEnemy = "D" + KinkyDungeonMovableTilesEnemy; //Smart enemies can open doors as well
 let KinkyDungeonMovableTiles = "OPCAMG$Y+=-F" + KinkyDungeonMovableTilesSmartEnemy; // Player can open chests, orbs, shrines, chargers
 let KinkyDungeonTransparentObjects = KinkyDungeonMovableTiles.replace("D", "").replace("g", "").replace("Y", "") + "OoAaMmCcBlb+=-FXu"; // Light does not pass thru doors or grates or shelves

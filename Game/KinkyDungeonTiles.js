@@ -622,3 +622,30 @@ function KDIgnition(b, tile, d) {
 		}
 	}
 }
+
+/**
+ * Code for a conveyor tile. DY and DX enable this functionality
+ * @param {number} delta
+ * @param {number} X
+ * @param {number} Y
+ */
+function KDConveyor(delta, X, Y) {
+	let entity = KinkyDungeonEntityAt(X, Y);
+	let tile = KinkyDungeonTilesGet(X + "," + Y);
+	let tiletype = KinkyDungeonMapGet(X + (tile.DX || 0), Y + (tile.DY || 0));
+	if (entity && KinkyDungeonMovableTilesEnemy.includes(tiletype) && KinkyDungeonNoEnemyExceptSub(X + (tile.DX || 0), Y + (tile.DY || 0), true, null)) {
+		if (entity.player) {
+			if (!KinkyDungeonFlags.get("conveyed")) {
+				KinkyDungeonSetFlag("conveyed", 1);
+				KDMovePlayer(X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
+				KinkyDungeonSendTextMessage(4, TextGet("KDConveyorPush"), "#ffff44", 2);
+			}
+		} else if (!KDIsImmobile(entity)) {
+			if (!KDEnemyHasFlag(entity, "conveyed")) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				if (entity.Enemy.tags.prisoner) entity.movePoints = 0;
+				KDMoveEntity(entity, X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
+			}
+		}
+	}
+}

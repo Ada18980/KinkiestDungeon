@@ -12,29 +12,29 @@ let KDTileUpdateFunctionsLocal = {
 		}, 0);
 	},
 	"V": (delta, X, Y) => {
-		let entity = KinkyDungeonEntityAt(X, Y);
+		KDConveyor(delta, X, Y);
+	},
+	"N": (delta, X, Y) => {
 		let tile = KinkyDungeonTilesGet(X + "," + Y);
-		let tiletype = KinkyDungeonMapGet(X + (tile.DX || 0), Y + (tile.DY || 0));
-		if (entity && KinkyDungeonMovableTilesEnemy.includes(tiletype) && KinkyDungeonNoEnemyExceptSub(X + (tile.DX || 0), Y + (tile.DY || 0), true, null)) {
-			if (entity.player) {
-				if (!KinkyDungeonFlags.get("conveyed")) {
-					KinkyDungeonSetFlag("conveyed", 1);
-					KDMovePlayer(X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
-					KinkyDungeonSendTextMessage(4, TextGet("KDConveyorPush"), "#ffff44", 2);
-				}
-			} else if (!KDIsImmobile(entity)) {
-				if (!KDEnemyHasFlag(entity, "conveyed")) {
-					KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
-					if (entity.Enemy.tags.prisoner) entity.movePoints = 0;
-					KDMoveEntity(entity, X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
-				}
-			}
-		}
+		let tU = KinkyDungeonTilesGet(X + "," + (Y - 1));
+		let tD = KinkyDungeonTilesGet(X + "," + (Y + 1));
+		let tR = KinkyDungeonTilesGet((X + 1) + "," + Y);
+		let tL = KinkyDungeonTilesGet((X - 1) + "," + Y);
+
+		if (tU?.DY == 1) tile.DY = 1;
+		else if (tD?.DY == -1) tile.DY = -1;
+		else if (tL?.DX == 1) tile.DX = 1;
+		else if (tR?.DX == -1) tile.DX = -1;
+
+		KDConveyor(delta, X, Y);
 	},
 	"u": (delta, X, Y) => {
 		let tile = KinkyDungeonTilesGet(X + "," + Y);
+
 		if (!tile.cd) tile.cd = 0;
 		if (tile.cd <= 0) {
+			let nearbyEnemyCount = KDNearbyEnemies(X, Y, 4.5);
+			if (nearbyEnemyCount.length > 6) return;
 			let start = true;
 			let ind = tile.index;
 			// Loop through and cycle if needed
