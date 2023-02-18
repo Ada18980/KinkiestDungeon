@@ -43,7 +43,7 @@ function KDDialogueApplyPersonality(allowed) {
 
 function KDGetDialogue() {
 	let dialogue = KDDialogue[KDGameData.CurrentDialog];
-	if (KDGameData.CurrentDialogStage && dialogue.options) {
+	if (KDGameData.CurrentDialogStage && dialogue?.options) {
 		let stages = KDGameData.CurrentDialogStage.split("_");
 		for (let i = 0; i < stages.length; i++) {
 			if (dialogue.options[stages[i]])
@@ -264,6 +264,7 @@ function KDStartDialog(Dialogue, Speaker, Click, Personality, enemy) {
 
 function KDDialogueGagged() {
 	let dialogue = KDGetDialogue();
+	if (!dialogue) return false;
 	let threshold = dialogue.gagThreshold ? dialogue.gagThreshold : 0.01;
 	if (KinkyDungeonGagTotal() >= threshold) return true;
 	return false;
