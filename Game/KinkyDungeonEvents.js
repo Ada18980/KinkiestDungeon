@@ -3019,6 +3019,12 @@ let KDEventMapEnemy = {
 				enemy.hp = 0;
 		}
 	},
+	"defeat": {
+		"delete": (e, enemy, data) => {
+			if (!e.chance || KDRandom() < e.chance)
+				enemy.hp = 0;
+		}
+	},
 	"calcManaPool": {
 		"PetManaRegen": (e, enemy, data) => {
 			if (KDAllied(enemy) && KDistChebyshev(enemy.x - data.player.x, enemy.y - data.player.y) < e.dist) {
@@ -3195,8 +3201,7 @@ let KDEventMapEnemy = {
 							KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), "#ffffff", 4);
 							KDGameData.RoomType = "ShopStart"; // We do a tunnel every other room
 							KDGameData.MapMod = ""; // Reset the map mod
-							MiniGameKinkyDungeonLevel = 0;
-							MiniGameKinkyDungeonCheckpoint = 'grv';
+							MiniGameKinkyDungeonLevel = Math.max(0, MiniGameKinkyDungeonLevel - 1);
 							let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
 							KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
 							KDStartDialog("ShopkeeperTeleport", enemy.Enemy.name, true, "", enemy);

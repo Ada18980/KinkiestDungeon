@@ -1608,6 +1608,9 @@ let KinkyDungeonEnemies = [
 			punishRemote: 3,
 			punishRemoteChance: 0.15,
 		},
+		events: [
+			{trigger: "defeat", type: "delete", chance: 1.0},
+		],
 		terrainTags: {"Guard": 1010}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}], rep: {"Prisoner": 10}},
 	{name: "GuardHeavy", faction: "Jail", bound: "GuardHeavy", tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "hunter", "guardCall", "miniboss", "shackleRestraints", "handcuffer", "jailRestraints"]), noDisplace: true, disarm: 0.5,
 		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 12, minLevel: 4, weight:-20, movePoints: 1, attackPoints: 2, evasion: -0.5, focusPlayer: true,
@@ -1616,6 +1619,9 @@ let KinkyDungeonEnemies = [
 			punishRemote: 4,
 			punishRemoteChance: 0.2,
 		},
+		events: [
+			{trigger: "defeat", type: "delete", chance: 1.0},
+		],
 		terrainTags: {"jailGuard": 22, "increasingWeight": 1, "jailbreak": 28}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}], rep: {"Prisoner": 10}},
 
 

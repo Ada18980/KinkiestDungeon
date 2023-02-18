@@ -974,7 +974,8 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 + 7, VisitedRooms[0].y*2, 's');
-	KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: "JourneyFloor"});
+	if (MiniGameKinkyDungeonLevel == 0)
+		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: "JourneyFloor"});
 
 	KinkyDungeonEndPosition = {x: b1*2 + 5, y: VisitedRooms[0].y*2};
 }

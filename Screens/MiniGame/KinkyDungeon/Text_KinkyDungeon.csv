@@ -9008,7 +9008,7 @@ rShopkeeperStartGag,"Daww! What a cutie!|(She smiles and pats your head gently)"
 dReturn,"(Return)"
 
 
-rShopkeeperTeleport,"(The SPEAKER brings you safely back to her shop on the surface)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!"
+rShopkeeperTeleport,"(The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!"
 
 dShopkeeperTeleport_Pay,"Right! Here's RESCUECOST gp."
 dShopkeeperTeleport_PayGag,"Mmmph. (Nod your head and pay RESCUECOST gp)"
@@ -9234,6 +9234,7 @@ KDMsgRemoteLinkCuffs,Your RestraintName suddenly snap together as the EnemyName 
 TurnCounter,"Turn Count: "
 
 KDShopkeeperLeash,"The Shopkeeper leashes you!"
+KDShopkeeperTeleportToStart,"You are brought into the Shopkeeper's establishment..."
 
 KDRemoveOnDmgTypePartial,"It seems to be working! The seal on your RESTRAINTNAME is weakened."
 KDRemoveOnDmgType,"The cursed seal on your RESTRAINTNAME disappears."
