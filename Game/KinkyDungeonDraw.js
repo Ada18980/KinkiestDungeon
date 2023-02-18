@@ -1434,7 +1434,7 @@ function KinkyDungeonDrawGame() {
 				Color: "#ff5277",
 				LineWidth: 1,
 				zIndex: 1,
-				alpha: 0.2,
+				alpha: 0.1,
 			});
 			//}
 		} else if (KinkyDungeonStatFreeze > 0) {
@@ -1446,7 +1446,7 @@ function KinkyDungeonDrawGame() {
 				Color: "#92e8c0",
 				LineWidth: 1,
 				zIndex: 1,
-				alpha: 0.2,
+				alpha: 0.1,
 			});
 		} else if (KDToggles.StunFlash && (KinkyDungeonFlags.get("playerStun") || KinkyDungeonMovePoints < 0)) {
 			FillRectKD(kdcanvas, kdpixisprites, "screenoverlayst", {

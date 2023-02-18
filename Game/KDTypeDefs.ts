@@ -395,6 +395,7 @@ interface KDRestraintProps {
 
 interface restraint extends KDRestraintProps {
 	power: number,
+	/** Base weight of the restraint, required */
 	weight: number,
 	minLevel: number,
 

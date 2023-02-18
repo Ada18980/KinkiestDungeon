@@ -26,8 +26,6 @@ let KDDebugGold = false;
 let KDAllModFiles = [];
 let KDModFiles = {};
 
-let KDClasses = 4;
-
 let KinkyDungeonPerksConfig = "1";
 
 let KDUnlockedPerks = [];
@@ -1041,7 +1039,8 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDClasses"), 875 - 50, 210 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-		for (let i = 0; i < KDClasses; i++) {
+		let classCount = Object.keys(KDClassStart).length;
+		for (let i = 0; i < classCount; i++) {
 			X = i % 4;
 			Y = Math.floor(i / 4);
 			// @ts-ignore
@@ -1049,7 +1048,11 @@ function KinkyDungeonRun() {
 				KinkyDungeonClassMode = Object.keys(KDClassStart)[i];
 				localStorage.setItem("KinkyDungeonClassMode", "" + KinkyDungeonClassMode);
 				return true;
-			}, true, buttonsstart + (buttonspad + buttonswidth) * X, 210 + Y*(buttonsheight + buttonsypad), buttonswidth, buttonsheight, TextGet("KinkyDungeonClassMode" + i), KinkyDungeonClassMode == Object.keys(KDClassStart)[i] ? "#ffffff" : "#888888", "");
+			}, (!KDClassReqs[Object.keys(KDClassStart)[i]]) || KDClassReqs[Object.keys(KDClassStart)[i]](),
+			buttonsstart + (buttonspad + buttonswidth) * X, 210 + Y*(buttonsheight + buttonsypad), buttonswidth, buttonsheight, TextGet("KinkyDungeonClassMode" + i),
+				((!KDClassReqs[Object.keys(KDClassStart)[i]]) || KDClassReqs[Object.keys(KDClassStart)[i]]()) ?
+				(KinkyDungeonClassMode == Object.keys(KDClassStart)[i] ? "#ffffff" : "#888888")
+				: "#ff5555", "");
 			if (MouseIn(buttonsstart + (buttonspad + buttonswidth) * X, 210 + Y*(buttonsheight + buttonsypad), buttonswidth, buttonsheight)) {
 				DrawTextFitKD(TextGet("KinkyDungeonClassModeDesc" + i), 1250, 80, 1000, "#ffffff", KDTextGray0);
 			}
@@ -1061,6 +1064,7 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("KinkyDungeonSexyMode0", (bdata) => {
 			KinkyDungeonSexyMode = false;
+			KDUpdatePlugSettings();
 			localStorage.setItem("KinkyDungeonSexyMode", KinkyDungeonSexyMode ? "True" : "False");
 			return true;
 		}, true, 875, 350, 275, 50, TextGet("KinkyDungeonSexyMode0"), !KinkyDungeonSexyMode ? "#ffffff" : "#888888", "");
@@ -1069,6 +1073,7 @@ function KinkyDungeonRun() {
 		}
 		DrawButtonKDEx("KinkyDungeonSexyMode1", (bdata) => {
 			KinkyDungeonSexyMode = true;
+			KDUpdatePlugSettings();
 			localStorage.setItem("KinkyDungeonSexyMode", KinkyDungeonSexyMode ? "True" : "False");
 			return true;
 		}, true, 1175, 350, 275, 50, TextGet("KinkyDungeonSexyMode1"), KinkyDungeonSexyMode ? "#ffffff" : "#888888", "");
@@ -2003,11 +2008,17 @@ function KDUpdatePlugSettings() {
 	KinkyDungeonStatsChoice.set("norescueMode", KinkyDungeonEasyMode == 2 ? true : undefined);
 
 
-	for (let i = 0; i < KDClasses; i++) {
+	if (KDClassReqs[KinkyDungeonClassMode] && !KDClassReqs[KinkyDungeonClassMode]()) {
+		// disable the class if we don't meet its requirements
+		KinkyDungeonClassMode = "Peasant";
+	}
+	let classCount = Object.keys(KDClassStart).length;
+	for (let i = 0; i < classCount; i++) {
 		KinkyDungeonStatsChoice.set("classMode", KinkyDungeonClassMode == Object.keys(KDClassStart)[i] ? true : undefined);
 	}
 	let points = KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice);
 	KinkyDungeonStatsChoice.set("hardMode", points >= KDHardModeThresh ? true : undefined);
+
 }
 
 let KDHardModeThresh = 10;

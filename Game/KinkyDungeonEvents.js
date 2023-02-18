@@ -3636,6 +3636,13 @@ let KDEventMapGeneric = {
 			}
 		},
 	},
+	"calcMiscast": {
+		"DistractionCast": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("DistractionCast")) {
+				if (KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax > 0.99 && KinkyDungeonStatsChoice.get("DistractionCast")) data.miscastChance -= 1.0;
+			}
+		},
+	},
 	"playerCast": {
 		"DistractionCast": (e, data) => {
 			if (KinkyDungeonStatsChoice.get("DistractionCast")) {

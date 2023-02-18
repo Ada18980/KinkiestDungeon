@@ -104,13 +104,14 @@ let KDBondageMachineFunctions = {
 			return KDGetRestraintsEligible({tags: ['latexEncase']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
 		function_player: (tile, delta, x, y, entity) => {
+
 			let restraint = KinkyDungeonGetRestraint({tags: ['latexEncase']}, 10, 'grv', false, undefined, undefined, undefined, false);
 			if (restraint) {
 				let succ = KinkyDungeonAddRestraintIfWeaker(restraint, MiniGameKinkyDungeonLevel, false, undefined, undefined, undefined, undefined, "AncientRobot", true);
 				if (succ) {
 					KinkyDungeonSetFlag("conveyed", 2);
 					KinkyDungeonSendTextMessage(8, TextGet("KDEncasement"), "#ffff44", 2);
-					return true;
+					return false;
 				}
 			}
 			return false;

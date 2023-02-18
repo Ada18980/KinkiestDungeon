@@ -170,6 +170,10 @@ let KinkyDungeonSubmissiveMult = 0;
 
 let KinkyDungeonSpellPoints = 3;
 
+let KDClassReqs = {
+	"Trainee": () => {return KinkyDungeonSexyMode;}
+};
+
 let KDClassStart = {
 	"Fighter": () => { // Fighter
 		KinkyDungeonInventoryAddWeapon("Knife");
@@ -226,8 +230,16 @@ let KDClassStart = {
 	"Peasant": () => { // Peasant
 		KinkyDungeonSpells = [];
 		KinkyDungeonSpellChoices = [];
+		KinkyDungeonSpellPoints = 3;
+	},
+	"Trainee": () => { // Trainee
+		KinkyDungeonSpells = [];
+		KinkyDungeonSpellChoices = [];
+		KinkyDungeonSpellPoints = 3;
 	},
 };
+
+
 
 function KinkyDungeonDefaultStats(Load) {
 	KinkyDungeonPenanceCosts = {};
@@ -1165,7 +1177,7 @@ function KinkyDungeonCalculateMiscastChance() {
 	if (KinkyDungeonStatsChoice.get("Distracted")) flags.miscastChance += KDDistractedAmount;
 	if (KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax > 0.99 && KinkyDungeonStatsChoice.get("DistractionCast")) flags.miscastChance -= 1.0;
 	KinkyDungeonSendEvent("calcMiscast", {flags: flags});
-	KinkyDungeonMiscastChance = flags.miscastChance;
+	KinkyDungeonMiscastChance = Math.max(0, flags.miscastChance || 0);
 }
 
 function KinkyDungeonGetBlindLevel() {
