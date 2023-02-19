@@ -1243,6 +1243,9 @@ Other changes:
 
 4.1 (Started Feb 2023)
 Major changes:
+- New class: Trainee, a novice magician who has nonetheless set out to adventure in the middle of her 'training'
+- New perks: Multiclass perks, allowing you to gain access to class-specific features such as the Trainee's Mana Burst ability
+(note: Mana Burst is removed and replaced with this)
 - New tileset: Bellows
 - Added conveyor belts
 - Max floor is now 20 from 16

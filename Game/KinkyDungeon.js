@@ -1240,7 +1240,7 @@ function KinkyDungeonRun() {
 							let lp = l.replace('\r','');// List processed
 							// Find the perk that matches the name
 							for (let perk of Object.entries(KinkyDungeonStatsPresets)) {
-								if (perk[0] == lp) {
+								if (perk[0] == lp && KDValidatePerk(perk[1])) {
 									KinkyDungeonStatsChoice.set(perk[0], true);
 									changed += 1;
 								}// else if (KinkyDungeonStatsChoice.get(perk[0])) KinkyDungeonStatsChoice.delete(perk[0])
@@ -1841,7 +1841,7 @@ function KinkyDungeonLoadStats() {
 		let statsArray = JSON.parse(statsChoice);
 		if (statsArray) {
 			for (let s of statsArray) {
-				if (!s.includes('arousalMode') && KinkyDungeonStatsPresets[s])
+				if (!s.includes('arousalMode') && KinkyDungeonStatsPresets[s] && KDValidatePerk(KinkyDungeonStatsPresets[s]))
 					KinkyDungeonStatsChoice.set(s, true);
 			}
 		}

@@ -1248,11 +1248,13 @@ type KDPerk = {
 	block?: string[],
 	tags?: string[],
 	blocktags?: string[],
+	blockclass?: string[],
 	locked?: boolean,
 	outfit?: string,
 	require?: string,
 	costGroup?: string,
 	startPriority?: number,
+	requireArousal?: boolean,
 }
 
 interface spell {

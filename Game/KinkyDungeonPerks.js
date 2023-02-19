@@ -7,6 +7,7 @@ let KDDoorAttractChanceArms = 0.1; // Chance to attract someone by rattling
 
 let KDCategoriesStart = [
 	{name: "Toggles", buffs: [], debuffs: [],},
+	{name: "Multiclass", buffs: [], debuffs: [],},
 	{name: "Restraints", buffs: [], debuffs: [],},
 	{name: "Kinky", buffs: [], debuffs: [],},
 	{name: "Damage", buffs: [], debuffs: [],},
@@ -156,6 +157,9 @@ let KDPerkCount = {
  * @type {Record<string, KDPerk>}
  */
 let KinkyDungeonStatsPresets = {
+	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 2, requireArousal: true, blockclass: ["Trainee"]},
+
+
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1, block: ["SecondWind"]},
 	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1, block: ["FutileStruggles"]},
 
@@ -336,11 +340,17 @@ function KinkyDungeonGetStatPoints(Stats) {
 	}
 	return total;
 }
-
+/**
+ * Determine if a perk can be picked with a certain number of points remaining
+ * @param {string} Stat
+ * @param {number} [points]
+ * @returns {boolean}
+ */
 function KinkyDungeonCanPickStat(Stat, points) {
 	let stat = KinkyDungeonStatsPresets[Stat];
 	if (!stat) return false;
 	if (KDGetPerkCost(stat) > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < KDGetPerkCost(stat)) return false;
+	if (!KDValidatePerk(stat)) return false;
 	for (let k of KinkyDungeonStatsChoice.keys()) {
 		if (KinkyDungeonStatsChoice.get(k)) {
 			if (KinkyDungeonStatsPresets[k] && KinkyDungeonStatsPresets[k].block && KinkyDungeonStatsPresets[k].block.includes(Stat)) {
@@ -355,8 +365,28 @@ function KinkyDungeonCanPickStat(Stat, points) {
 	return true;
 }
 
+/**
+ * General validation for a perk
+ * @param {KDPerk} stat
+ * @returns {boolean}
+ */
+function KDValidatePerk(stat) {
+	if (stat.requireArousal && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
+	if (stat.blockclass) {
+		for (let t of stat.blockclass)
+			if (KinkyDungeonClassMode == t) return false;
+	}
+	return true;
+}
+
+/**
+ * @param {string} perk1
+ * @param {string} perk2
+ * @returns {boolean}
+ * Determines if perk1 is blocked by another perk or in general */
 function KDPerkBlocked(perk1, perk2) {
 	if (KinkyDungeonStatsPresets[perk2] && KinkyDungeonStatsPresets[perk1]) {
+		if (!KDValidatePerk(KinkyDungeonStatsPresets[perk1])) return false;
 		if (KinkyDungeonStatsPresets[perk2].block && KinkyDungeonStatsPresets[perk2].block.includes(perk1)) {
 			return true;
 		}
@@ -526,6 +556,9 @@ let KDPerkStart = {
 	},
 	Cursed: () => {
 		KinkyDungeonChangeFactionRep("Angel", -100);
+	},
+	MC_Trainee: () => {
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("DistractionCast"));
 	},
 };
 

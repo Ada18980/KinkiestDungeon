@@ -377,6 +377,17 @@ KinkyDungeonStatDescNoBrats,"Submissive enemies won't run away from you."
 KinkyDungeonStatOnlyBrats,"Brats Only"
 KinkyDungeonStatDescOnlyBrats,"Submissive enemies will always be bratty and force you to catch them."
 
+
+KinkyDungeonStatMC_Trainee,"Trainee"
+KinkyDungeonStatDescMC_Trainee,"Your training has given you access to the spells of the Trainee class. (Aroused mode only)"
+KinkyDungeonStatMC_Fighter,"Warrior"
+KinkyDungeonStatDescMC_Fighter,"Your training has given you access to the spells of the Warrior class."
+KinkyDungeonStatMC_Rogue,"Rogue"
+KinkyDungeonStatDescMC_Rogue,"Your training has given you access to the spells of the Rogue class."
+KinkyDungeonStatMC_Mage,"Wizard"
+KinkyDungeonStatDescMC_Mage,"Your training has given you access to the spells of the Wizard class."
+
+
 KinkyDungeonStatPanic,"Panic!!!"
 KinkyDungeonStatDescPanic,"When you step on a trap, you are stunned for 2 turns."
 KDPanic,Panic sets in! (Stunned 2 turns)
@@ -6293,11 +6304,11 @@ KinkyDungeonSexyPlugs,Allow Rear Plugs
 KinkyDungeonSexyPiercings,Allow Piercings
 
 KinkyDungeonClassMode0,Fighter
-KinkyDungeonClassModeDesc0,"Start with 200 willpower and Iron Will, good for attacking often and taking blows."
+KinkyDungeonClassModeDesc0,"Start with 200 willpower and Iron Will, good at melee and blocking attacks."
 KinkyDungeonClassMode1,Rogue
-KinkyDungeonClassModeDesc1,"Start with 200 stamina and Sneaky, good for stealth and slippery gameplay."
-KinkyDungeonClassMode2,Mage
-KinkyDungeonClassModeDesc2,"Start with 200 mana and Magical Sight, good for casting spells."
+KinkyDungeonClassModeDesc1,"Start with 200 stamina and Sneaky, good at stealth and evasive gameplay."
+KinkyDungeonClassMode2,Wizard
+KinkyDungeonClassModeDesc2,"Start with 200 mana and Magical Sight, good at casting spells."
 KinkyDungeonClassMode3,Peasant
 KinkyDungeonClassModeDesc3,"Start with nothing to your name. For those who want a challenge."
 KinkyDungeonClassMode4,Trainee
@@ -7413,6 +7424,7 @@ KinkyDungeonSpecialStaffFlame,Ignite torches and nearby objects
 KinkyDungeonSpecialStaffIncineration,Ignite torches and nearby objects
 
 KDCategoryToggles,Toggles
+KDCategoryMulticlass,Multiclass
 KDCategoryRestraints,Locks and Restraints
 KDCategoryCombat,General Combat
 KDCategoryKinky,Kinks and Preferences
