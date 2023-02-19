@@ -1727,7 +1727,7 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 		Entity.visual_y = (Entity.yy != undefined) ? Entity.yy : Entity.y;
 		return -1;
 	} else {
-		let speed = 75 + KDAnimSpeed * 25;
+		let speed = 50 + KDAnimSpeed * 50;
 		if (Entity.player && KinkyDungeonSlowLevel > 0 && KDGameData.KinkyDungeonLeashedPlayer < 2 && (KinkyDungeonFastMovePath.length < 1 || KinkyDungeonSlowLevel > 1)) speed += KDAnimSpeed * 50 * KinkyDungeonSlowLevel;
 		if (KDGameData.SleepTurns > 0) speed = 100;
 		if (speed > 300) speed = 250;

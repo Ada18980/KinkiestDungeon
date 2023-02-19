@@ -1311,7 +1311,7 @@ function KinkyDungeonRun() {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					KDSendInput("tick", {delta: 1}, false, true);
 					KDGameData.PlaySelfTurns -= 1;
-					KinkyDungeonSleepTime = CommonTime() + (KinkyDungeonFlags.get("PlayerOrgasm") ? KinkyDungeonOrgasmTime : KinkyDungeonPlaySelfTime) * (0.5 + KDAnimSpeed * 0.5);
+					KinkyDungeonSleepTime = CommonTime() + (KinkyDungeonFlags.get("PlayerOrgasm") ? KinkyDungeonOrgasmTime : KinkyDungeonPlaySelfTime) * (0.25 + KDAnimSpeed * 0.75);
 				}
 				if (KDGameData.SleepTurns == 0) {
 					KinkyDungeonChangeStamina(0);
@@ -1320,13 +1320,13 @@ function KinkyDungeonRun() {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					KinkyDungeonStatFreeze -= 1;
 					KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
-					KinkyDungeonSleepTime = CommonTime() + KinkyDungeonFreezeTime * (0.5 + KDAnimSpeed * 0.5);
+					KinkyDungeonSleepTime = CommonTime() + KinkyDungeonFreezeTime * (0.25 + KDAnimSpeed * 0.75);
 				}
 			} else if (KinkyDungeonSlowMoveTurns > 0) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					KinkyDungeonSlowMoveTurns -= 1;
 					KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
-					KinkyDungeonSleepTime = CommonTime() + 100 * (0.5 + KDAnimSpeed * 0.5);
+					KinkyDungeonSleepTime = CommonTime() + 200 * (0.25 + KDAnimSpeed * 0.75);
 				}
 			} else if (KinkyDungeonFastMove && KinkyDungeonFastMovePath && KinkyDungeonFastMovePath.length > 0) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
@@ -1337,7 +1337,7 @@ function KinkyDungeonRun() {
 							KDSendInput("move", {dir: {x:next.x-KinkyDungeonPlayerEntity.x, y:next.y-KinkyDungeonPlayerEntity.y}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
 						else KinkyDungeonFastMovePath = [];
 					}
-					KinkyDungeonSleepTime = CommonTime() + 100 * (0.5 + KDAnimSpeed * 0.5);
+					KinkyDungeonSleepTime = CommonTime() + 100 * (0.25 + KDAnimSpeed * 0.75);
 				}
 			} else if (KinkyDungeonFastStruggle && KinkyDungeonFastStruggleType && KinkyDungeonFastStruggleGroup) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
@@ -1346,7 +1346,7 @@ function KinkyDungeonRun() {
 						KinkyDungeonFastStruggleType = "";
 						KinkyDungeonFastStruggleGroup = "";
 					}
-					KinkyDungeonSleepTime = CommonTime() + 250 * (0.5 + KDAnimSpeed * 0.5);
+					KinkyDungeonSleepTime = CommonTime() + 250 * (0.25 + KDAnimSpeed * 0.75);
 				}
 			} else if (KinkyDungeonAutoWait) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
