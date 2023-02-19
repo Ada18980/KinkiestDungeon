@@ -166,7 +166,7 @@ function KinkyDungeonGetPatrolPoint(index, radius, Tiles) {
 }
 
 function KDHelpless(enemy) {
-	return enemy && (enemy.hp <= enemy.Enemy.maxhp * 0.1 || enemy.hp <= 0.52 || enemy.boundLevel > 10 * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
+	return enemy && !enemy.player && (enemy.hp <= enemy.Enemy.maxhp * 0.1 || enemy.hp <= 0.52 || enemy.boundLevel > 10 * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
 }
 
 function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI_Data) {
@@ -1909,6 +1909,8 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 		KinkyDungeonUpdateFlags(delta);
 	}
 
+	KDGameData.DollCount = 0;
+
 	// Loop 1
 	for (let enemy of KinkyDungeonEntities) {
 		if ((Allied && KDAllied(enemy)) || (!Allied && !KDAllied(enemy))) {
@@ -1918,6 +1920,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				// We remove certain flags when enemies are in an 'offlimits' area so we can get them out
 				KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 			}
+			if (enemy.Enemy.tags.doll) KDGameData.DollCount += 1;
 
 
 			let master = KinkyDungeonFindMaster(enemy).master;
@@ -4845,5 +4848,19 @@ function KDPlayerDeservesPunishment(enemy, player) {
 		if (KinkyDungeonFlags.get("PlayerCombat")) return true;
 	} else {
 		return true;
+	}
+}
+
+/**
+ *
+ * @param {entity} enemy
+ */
+function KDPlugEnemy(enemy) {
+	let plugAmount = KDEntityBuffedStat(enemy, "Plug");
+	if (!plugAmount)
+		KDApplyGenBuffs(enemy, "Plugged", 9999);
+	else if (plugAmount == 1) {
+		KinkyDungeonExpireBuff(enemy.buffs, "Plugged");
+		KDApplyGenBuffs(enemy, "DoublePlugged", 9998);
 	}
 }

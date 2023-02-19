@@ -2784,13 +2784,7 @@ let KDEventMapBullet = {
 			if (b && data.enemy) {
 				if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
 					if (data.enemy.Enemy?.bound && (data.enemy.boundLevel > 0 || KDEntityGetBuff(data.enemy, "Chastity"))) {
-						let plugAmount = KDEntityBuffedStat(data.enemy, "Plug");
-						if (!plugAmount)
-							KDApplyGenBuffs(data.enemy, "Plugged", 9999);
-						else if (plugAmount == 1) {
-							KinkyDungeonExpireBuff(data.enemy.buffs, "Plugged");
-							KDApplyGenBuffs(data.enemy, "DoublePlugged", 9998);
-						}
+						KDPlugEnemy(data.enemy);
 					}
 				}
 			}

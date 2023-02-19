@@ -262,11 +262,13 @@ let KDOptOut = false;
 * ShortcutPath: string,
 * ItemID: number,
 * ShopkeeperFee: number,
+* DollCount: number,
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
 	MainPath: 'grv',
 	ShortcutPath: 'grv',
+	DollCount: 0,
 
 	CagedTime: 0,
 	HiddenItems: {},

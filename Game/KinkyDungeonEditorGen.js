@@ -63,6 +63,8 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 	 */
 	let globalTags = Object.assign({}, data.params.globalTags || {});
 
+	if (KinkyDungeonStatsChoice.get("arousalMode")) globalTags.arousalMode = true;
+
 	while (tileOrder.length > 0) {
 		let tileOrderInd = Math.floor(KDRandom() * tileOrder.length);
 		let tileSpot = tileOrder[tileOrderInd];
@@ -522,7 +524,7 @@ let KDTileGen = {
 	},
 	"Chest": (x, y, tile, tileGenerator, data) => {
 		if (tileGenerator.Loot) {
-			if (tileGenerator.Priority || KDRandom() < 0.5) {
+			if (tileGenerator.Priority || KDRandom() < (tileGenerator.Chance || 0.5)) {
 				KinkyDungeonMapSet(x, y, 'C');
 				return {
 					NoTrap: tileGenerator.NoTrap,
@@ -665,7 +667,7 @@ let KDTileGen = {
 	},
 	"DollSupply": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'u');
-		return {Type: "DollSupply", index: 0, cd: 0, rate: tileGenerator.rate || 5};
+		return {Type: "DollSupply", index: 0, cd: 0, rate: tileGenerator.rate || 10};
 	},
 	"DollTerminal": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 't');

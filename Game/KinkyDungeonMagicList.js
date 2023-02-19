@@ -1463,6 +1463,13 @@ let KDSpecialBondage = {
 		powerStruggleBoost: 2.0,
 		healthStruggleBoost: 0.75,
 	},
+	"Tape": {
+		priority: -5,
+		color: "#3454f4",
+		struggleRate: 1.35,
+		powerStruggleBoost: 0.75,
+		healthStruggleBoost: 1.5,
+	},
 	"Vine": {
 		priority: -7,
 		color: "#00ff00",

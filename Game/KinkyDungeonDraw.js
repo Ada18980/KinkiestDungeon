@@ -494,17 +494,17 @@ let KDOverlays = {
 	},
 	// @ts-ignore
 	"N": (x, y, Fog, noReplace) => {
-
+		let tile = KinkyDungeonTilesGet(x + ',' + y);
 		let tileAbove = KinkyDungeonMapGet(x, y - 1);
 		let tileBelow = KinkyDungeonMapGet(x, y + 1);
 		if (tileAbove == 'V' && KinkyDungeonTilesGet(x + "," + (y-1))?.DY == 1) {
-			return "BondageMachine/LatexVert";
+			return `BondageMachine/${tile.Binding || "Latex"}Vert`;
 		} else if (tileBelow == 'V' && KinkyDungeonTilesGet(x + "," + (y+1))?.DY == -1) {
-			return "BondageMachine/LatexVert";
+			return `BondageMachine/${tile.Binding || "Latex"}Vert`;
 		}
 
 
-		return "BondageMachine/LatexHoriz";
+		return `BondageMachine/${tile.Binding || "Latex"}Horiz`;
 	},
 };
 

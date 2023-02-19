@@ -9271,3 +9271,7 @@ KDRemoveOnDmgTypePartial,"It seems to be working! The seal on your RESTRAINTNAME
 KDRemoveOnDmgType,"The cursed seal on your RESTRAINTNAME disappears."
 KDConveyorPush,"You are moved along by the conveyor..."
 KDEncasement,Strange machinery begins sealing you in shiny latex!
+KDPlugMachine,Metallic arms insert something into you!
+KDChastityMachine,Metallic arms attach a chastity belt over your waist!
+KDTapeMachine,Metallic arms wrap you in tape!
+KDMetalMachine,Metallic arms wrap you in strict restraints!

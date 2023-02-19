@@ -773,10 +773,12 @@ const KinkyDungeonMapParams = {
 		tagModifiers: {
 			"jungle": 0,
 			"cavern": 0,
-			"temple": 0.01,
-			"urban": 0.5,
+			"temple": 0.0,
+			"urban": 0,
+			"industrial": 2.0,
 			"dungeon": 0,
 			"factory": 2.0,
+			"bellows": 3.0,
 		},
 		globalTags: {
 			"factory": true,

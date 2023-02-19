@@ -38,7 +38,7 @@ let KDTileUpdateFunctionsLocal = {
 						if (BMType.function_player(tile, delta, X, Y, entity)) return;
 					}
 				}
-			} else {
+			} else if (entity.Enemy?.bound) {
 				if (entity.Enemy.tags.prisoner) KDStaggerEnemy(entity);
 				if (!KDEnemyHasFlag(entity, "conveyed")) {
 					eligible = BMType.eligible_enemy(tile, X, Y, entity);
@@ -56,6 +56,8 @@ let KDTileUpdateFunctionsLocal = {
 
 		if (!tile.cd) tile.cd = 0;
 		if (tile.cd <= 0) {
+			// Too many dolls!!!
+			if (KDGameData.DollCount > 30) return;
 			let nearbyEnemyCount = KDNearbyEnemies(X, Y, 4.5);
 			if (nearbyEnemyCount.length > 6) return;
 			let start = true;
@@ -86,7 +88,7 @@ let KDTileUpdateFunctionsLocal = {
 	"t": (delta, X, Y) => {
 		// Consume prisoners on the tile
 		let entity = KinkyDungeonEntityAt(X, Y);
-		if (entity && entity.Enemy?.tags.prisoner) {
+		if (entity && (entity.Enemy?.tags.prisoner || KDHelpless(entity))) {
 			KDStaggerEnemy(entity);
 			if (!KDEnemyHasFlag(entity, "conveyed"))
 				entity.hp = 0;
@@ -101,28 +103,19 @@ let KDTileUpdateFunctionsLocal = {
 let KDBondageMachineFunctions = {
 	"Latex": {
 		eligible_player: (tile, x, y, entity) => {
-			return KDGetRestraintsEligible({tags: ['latexEncase']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+			return !KinkyDungeonFlags.get("processed") && KDGetRestraintsEligible({tags: ['latexEncase']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
 		function_player: (tile, delta, x, y, entity) => {
-
-			let restraint = KinkyDungeonGetRestraint({tags: ['latexEncase']}, 10, 'grv', false, undefined, undefined, undefined, false);
-			if (restraint) {
-				let succ = KinkyDungeonAddRestraintIfWeaker(restraint, MiniGameKinkyDungeonLevel, false, undefined, undefined, undefined, undefined, "AncientRobot", true);
-				if (succ) {
-					KinkyDungeonSetFlag("conveyed", 2);
-					KinkyDungeonSendTextMessage(8, TextGet("KDEncasement"), "#ffff44", 2);
-					return false;
-				}
-			}
+			KDBasicRestraintsMachine_Player(['latexEncase'], 2, "KDEncasement");
 			return false;
 		},
 		eligible_enemy: (tile, x, y, entity) => {
-			return KDBoundEffects(entity) < 4 && !(entity.buffs && KinkyDungeonGetBuffedStat(entity.buffs, "SlimeProgress") >= 2);
+			return true;
 		},
 		function_enemy: (tile, delta, x, y, entity) => {
-			KDTieUpEnemy(entity, 3.0, "Slime", "glue");
-			entity.stun = Math.max(entity.stun || 0, 1);
-			if (KDBoundEffects(entity) > 3 ) {
+			KDTieUpEnemy(entity, 4.0, "Slime", "glue");
+			if (KDBoundEffects(entity) > 2 ) {
+				KDTieUpEnemy(entity, 4.0, "Slime", "glue");
 				KinkyDungeonApplyBuffToEntity(entity, KDEncased);
 			}
 			if (KDBoundEffects(entity) < 1 ) {
@@ -131,8 +124,109 @@ let KDBondageMachineFunctions = {
 			}
 			return false;
 		},
-	}
+	},
+	"Metal": {
+		eligible_player: (tile, x, y, entity) => {
+			return !KinkyDungeonFlags.get("processed") && KDGetRestraintsEligible({tags: ["hitechCables", "cableGag", "controlHarness"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+		},
+		function_player: (tile, delta, x, y, entity) => {
+			KDBasicRestraintsMachine_Player(["hitechCables", "cableGag", "controlHarness"], 2, "KDMetalMachine");
+			return false;
+		},
+		eligible_enemy: (tile, x, y, entity) => {
+			return true;
+		},
+		function_enemy: (tile, delta, x, y, entity) => {
+			KDTieUpEnemy(entity, 4.0, "Metal", "chain");
+			if (KDBoundEffects(entity) < 1 ) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				return true;
+			}
+			return false;
+		},
+	},
+	"Tape": {
+		eligible_player: (tile, x, y, entity) => {
+			return !KinkyDungeonFlags.get("processed") && KDGetRestraintsEligible({tags: ["autoTape"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+		},
+		function_player: (tile, delta, x, y, entity) => {
+			KDBasicRestraintsMachine_Player(["autoTape"], 2, "KDTapeMachine");
+			return false;
+		},
+		eligible_enemy: (tile, x, y, entity) => {
+			return true;
+		},
+		function_enemy: (tile, delta, x, y, entity) => {
+			KDTieUpEnemy(entity, 4.0, "Tape", "glue");
+			if (KDBoundEffects(entity) < 1 ) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				return true;
+			}
+			return false;
+		},
+	},
+	"Plug": {
+		eligible_player: (tile, x, y, entity) => {
+			return KDGetRestraintsEligible({tags: ['machinePlug']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+		},
+		function_player: (tile, delta, x, y, entity) => {
+			return KDBasicRestraintsMachine_Player(['machinePlug'], 1, "KDPlugMachine") != 0;
+		},
+		eligible_enemy: (tile, x, y, entity) => {
+			return (entity.boundLevel > 0 || KDEntityGetBuff(entity, "Chastity")) && !(entity.buffs && KinkyDungeonGetBuffedStat(entity.buffs, "Plug") >= 2);
+		},
+		function_enemy: (tile, delta, x, y, entity) => {
+			KDPlugEnemy(entity);
+			if (KinkyDungeonGetBuffedStat(entity.buffs, "Plug") > 0) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				return true;
+			}
+			return false;
+		},
+	},
+	"Chastity": {
+		eligible_player: (tile, x, y, entity) => {
+			return KDGetRestraintsEligible({tags: ['machineChastity']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+		},
+		function_player: (tile, delta, x, y, entity) => {
+			return KDBasicRestraintsMachine_Player(['machineChastity'], 1, "KDChastityMachine") != 0;
+		},
+		eligible_enemy: (tile, x, y, entity) => {
+			return entity.boundLevel > 0 && !KDEntityGetBuff(entity, "Chastity");
+		},
+		function_enemy: (tile, delta, x, y, entity) => {
+			KDTieUpEnemy(entity, 2.0, "Metal", "chain");
+			KinkyDungeonApplyBuffToEntity(entity, KDChastity);
+			if (KDEntityGetBuff(entity, "Chastity")) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				return true;
+			}
+			return false;
+		},
+	},
 };
+
+/**
+ *
+ * @param {string[]} tags
+ * @param {number} count
+ * @param {string} msg
+ */
+function KDBasicRestraintsMachine_Player(tags, count, msg) {
+	let succ = 0;
+	for (let i = 0; i < count; i++) {
+		let restraint = KinkyDungeonGetRestraint({tags: tags}, 10, 'grv', false, undefined, undefined, undefined, false);
+		if (restraint) {
+			succ = KinkyDungeonAddRestraintIfWeaker(restraint, MiniGameKinkyDungeonLevel, false, undefined, undefined, undefined, undefined, "AncientRobot", true) || succ;
+		}
+	}
+	if (succ) {
+		KinkyDungeonSetFlag("conveyed", 2);
+		KinkyDungeonSetFlag("processed", 3);
+		KinkyDungeonSendTextMessage(8, TextGet(msg), "#ffff44", 2);
+	}
+	return succ;
+}
 
 /**
  * Return value: whether or not to continue to allow peripheral tile updates
