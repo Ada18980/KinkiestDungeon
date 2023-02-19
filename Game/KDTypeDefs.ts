@@ -114,6 +114,9 @@ type KDHasTags = {
 }
 
 interface KDRestraintProps {
+	/** This restraint always behaves as if it has the bypass property */
+	bypass?: boolean,
+
 	inventory?: boolean,
 	power?: number,
 	weight?: number,

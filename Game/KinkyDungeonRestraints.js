@@ -2356,6 +2356,7 @@ function KDGetLockVisual(item) {
  * @returns {boolean} - Restraint can be added
  */
 function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpower, securityEnemy) {
+	if (restraint.bypass) Bypass = true;
 	// Limits
 	if (restraint.shrine && restraint.shrine.includes("Vibes") && KinkyDungeonPlayerTags.get("NoVibes")) return false;
 	if (restraint.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
@@ -2438,6 +2439,7 @@ function KDEnemyPassesSecurity(Group, enemy) {
  */
 function KDGetLinkUnder(currentRestraint, restraint, bypass, NoStack, Deep, securityEnemy) {
 	let link = currentRestraint;
+	if (restraint.bypass) bypass = true;
 	while (link) {
 		if (KDCanLinkUnder(link, restraint, bypass, NoStack, securityEnemy)) {
 			return link;
@@ -2459,6 +2461,7 @@ function KDGetLinkUnder(currentRestraint, restraint, bypass, NoStack, Deep, secu
  * @returns {boolean}
  */
 function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack, securityEnemy) {
+	if (restraint.bypass) bypass = true;
 	let linkUnder = currentRestraint
 		&& (bypass || (KDRestraint(currentRestraint).accessible) || (KDRestraint(currentRestraint).deepAccessible) || KDEnemyPassesSecurity(KDRestraint(currentRestraint).Group, securityEnemy))
 		&& KinkyDungeonIsLinkable(restraint, KDRestraint(currentRestraint), {name: restraint.name, id: -1}, currentRestraint, currentRestraint)
@@ -2483,6 +2486,7 @@ function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack, securityEn
  * @returns {boolean}
  */
 function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityEnemy, ignoreItem) {
+	if (restraint.bypass) bypass = true;
 	return (restraint.linkCategory && KDLinkCategorySize(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), restraint.linkCategory, ignoreItem) + KDLinkSize(restraint) <= (NoStack ? 0.1 : 1.0))
 		|| (!restraint.linkCategory && !KDDynamicLinkList(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), true).some((item) => {return restraint.name == item.name && ignoreItem?.id != item.id;}));
 }
@@ -2503,6 +2507,7 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
  */
 function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy) {
 	if (typeof restraint === "string") restraint = KinkyDungeonGetRestraintByName(restraint);
+	if (restraint.bypass) Bypass = true;
 	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep, false, securityEnemy)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
 		let linkUnder = null;
@@ -2661,6 +2666,7 @@ let KinkyDungeonCancelFlag = false;
  */
 function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link, SwitchItems, events, faction, Unlink, dynamicLink, Curse, autoMessage = true, securityEnemy = undefined) {
 	KDDelayedActionPrune(["Restrain"]);
+	if (restraint.bypass) Bypass = true;
 	KDStruggleGroupLinkIndex = {};
 	let start = performance.now();
 	let tight = (Tightness) ? Tightness : 0;
