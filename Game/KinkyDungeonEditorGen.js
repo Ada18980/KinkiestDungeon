@@ -1,7 +1,7 @@
 "use strict";
 
 /** If a tile's weight is higher than this, then any time without this much weight will get culled from the list */
-let KD_GENWEIGHTCUTOFF = 10000;
+let KD_GENWEIGHTCUTOFF = 100000;
 
 /**
  *
@@ -133,6 +133,7 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 		ii += 1;
 	}
 
+	console.log(tagCounts);
 	console.log(globalTags);
 	console.log(tilesFilled);
 	console.log(indexFilled);
@@ -226,7 +227,7 @@ function KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, r
 	let maxWeight = 0;
 
 	for (let mapTile of Object.values(KDMapTilesList)) {
-		if (mapTile.primInd == index || (mapTile.flexEdge && mapTile.flexEdge['0,0'])) {
+		if (mapTile.primInd == index || (mapTile.flexEdge && mapTile.flexEdge['1,1'])) {
 			if (!KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, indexFilled)) continue;
 
 			if (!KDCheckMapTileAccess(mapTile, indX, indY, indexFilled, requiredAccess)) continue;
@@ -299,10 +300,13 @@ function KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, ind
 			// Skip this mapTile if it doesnt fit
 			if (ind != indices[(xx + indX - 1) + ',' + (yy + indY - 1)] && KDLooseIndexRankingSuspend(indices[(xx + indX - 1) + ',' + (yy + indY - 1)], ind, mapTile.w, mapTile.h, xx, yy)) {
 				if (mapTile.flexEdge && mapTile.flexEdge[xx + ',' + yy] && ((mapTile.flexEdgeSuper && mapTile.flexEdgeSuper[xx + ',' + yy]) || (
-					(!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('u') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)])
-					&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('d') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)])
-					&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('l') || indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)])
-					&& (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('r') || indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)])
+					// 1st condition: tile is inside this one
+					// 2nd condition: this tile doesn't need it
+					// 3rd condition: other index is already filled
+					(yy > 1 || !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('u') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)])
+					&& (yy < mapTile.h || !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('d') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)])
+					&& (xx < mapTile.w || !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('l') || indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)])
+					&& (xx > 1 || !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('r') || indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)])
 				))) fail = true;
 				else return false;
 			}
@@ -318,6 +322,7 @@ function KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, ind
 	return passCount > 0;
 }
 
+/** Suspends the inside of large tiles */
 function KDLooseIndexRankingSuspend(indexCheck, indexTile, w, h, xx, yy) {
 	if (w == 1 && h == 1) return true; // Tiles that are 1/1 dont get requirements suspended
 	if (xx > 1 && xx < w && yy > 1 && yy < h) return false; // Suspended tiles in the middle
@@ -511,7 +516,7 @@ let KDTileGen = {
 		return null;
 	},
 	"Spawn": (x, y, tile, tileGenerator, data) => {
-		data.spawnpoints.push({x:x, y:y, required: tileGenerator.required, tags: tileGenerator.tags, AI: tileGenerator.AI});
+		data.spawnpoints.push({x:x, y:y, required: tileGenerator.required, tags: tileGenerator.tags, AI: tileGenerator.AI, faction: tileGenerator.faction});
 		KinkyDungeonMapSet(x, y, '0');
 		return null;
 	},

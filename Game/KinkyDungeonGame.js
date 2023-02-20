@@ -1071,6 +1071,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		let required = [];
 		let spawnPoint = false;
 		let AI = undefined;
+		let faction = undefined;
 		let tags = [];
 
 		if (currentCluster && !(3 * KDRandom() < currentCluster.count)) {
@@ -1114,6 +1115,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				X = spawns[0].x;
 				Y = spawns[0].y;
 				AI = spawns[0].AI;
+				faction = spawns[0].faction;
 				spawns.splice(0, 1);
 			}
 		}
@@ -1201,7 +1203,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				box.currentCount += 0.05;
 			}
 			if (Enemy && (!InJail || (Enemy.tags.jailer || Enemy.tags.jail || Enemy.tags.leashing))) {
-				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, AI: AI};
+				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, AI: AI, faction: faction};
 				KDAddEntity(e);
 				// Give it a custom name, 5% chance
 				KDProcessCustomPatron(Enemy, e);
@@ -3455,8 +3457,18 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 			KDGameData.ConfirmAttack = false;
 			let quick = false;
 
-			if (KinkyDungeonTilesGet("" + moveX + "," + moveY) && KinkyDungeonTilesGet("" + moveX + "," + moveY).Type && ((KinkyDungeonToggleAutoDoor && moveObject == 'd' && KinkyDungeonTargetTile == null && KinkyDungeonNoEnemy(moveX, moveY, true))
-				|| (KDObjectDraw[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type] && (KinkyDungeonTilesGet("" + moveX + "," + moveY).Type != "Door" || (KinkyDungeonTilesGet("" + moveX + "," + moveY).Lock && KinkyDungeonTilesGet("" + moveX + "," + moveY).Type == "Door"))))) {
+			if (KinkyDungeonTilesGet("" + moveX + "," + moveY)
+				&& KinkyDungeonTilesGet("" + moveX + "," + moveY).Type
+				&& (
+					(KinkyDungeonToggleAutoDoor
+						&& moveObject == 'd'
+						&& KinkyDungeonTargetTile == null
+						&& KinkyDungeonNoEnemy(moveX, moveY, true))
+					|| (
+						KDObjectDraw[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type]
+						&& (KinkyDungeonTilesGet("" + moveX + "," + moveY).Type != "Door"
+							|| (KinkyDungeonTilesGet("" + moveX + "," + moveY).Lock
+							&& KinkyDungeonTilesGet("" + moveX + "," + moveY).Type == "Door"))))) {
 				if (AllowInteract) {
 					KDDelayedActionPrune(["Action", "World"]);
 					KinkyDungeonTargetTileLocation = "" + moveX + "," + moveY;

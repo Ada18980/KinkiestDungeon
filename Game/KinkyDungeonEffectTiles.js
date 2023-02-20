@@ -159,6 +159,12 @@ let KDEffectTiles = {
 		priority: 50,
 		tags: ["wire"],
 	},
+	"PressurePlateOneUse": {
+		name: "PressurePlateOneUse",
+		duration: 9999,
+		priority: 50,
+		tags: ["wire"],
+	},
 	"PressurePlateActive": {
 		name: "PressurePlateActive",
 		duration: 2,

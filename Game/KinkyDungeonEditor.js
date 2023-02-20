@@ -86,6 +86,7 @@ let KDTilePalette = {
 		Chance: {type: "number"},
 		AI: {type: "string"},
 		force: {type: "boolean"},
+		faction: {type: "string"},
 	}},
 	'----Tiles----': {type: "none"},
 	'Brick': {type: "tile", tile: '2'},

@@ -6,6 +6,7 @@ let KDJourneyMapMod = {
 
 let KDDefaultMaxFlags = {
 	goldchest: 1,
+	lessergold: 1,
 	silverchest: 2,
 	darkchest: 2,
 	redchest: 6,
