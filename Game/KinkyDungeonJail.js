@@ -859,6 +859,31 @@ function KDDefeatedPlayerTick() {
 	KinkyDungeonSetFlag("playerDefeated", 1);
 }
 
+function KDEnterDollTerminal(willing) {
+	KDGameData.RoomType = "DollRoom"; // We do a tunnel every other room
+	KDGameData.MapMod = ""; // Reset the map mod
+	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
+
+	if (!willing) {
+		let defeat_outfit = "SlimeSuit";
+		if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
+
+		KinkyDungeonSetDress(defeat_outfit, "SlimeSuit");
+	}
+
+	KinkyDungeonDressPlayer();
+	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
+
+	KDGameData.JailKey = false;
+
+	KDMovePlayer(Math.floor(KinkyDungeonGridWidth/2), Math.floor(KinkyDungeonGridHeight/2), false);
+
+	KinkyDungeonLoseJailKeys();
+
+	KinkyDungeonSaveGame();
+}
+
 function KinkyDungeonDefeat(PutInJail) {
 	KDDefeatedPlayerTick();
 	KDBreakTether();

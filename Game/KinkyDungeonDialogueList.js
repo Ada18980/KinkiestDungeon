@@ -739,6 +739,99 @@ let KDDialogue = {
 			},
 		}
 	},
+	"DollTerminal_Step": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("nodollterm", 4);
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+			"Enter": {
+				playertext: "Default", response: "Default",
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+					"Enter": {
+						playertext: "Default", response: "Default",
+						options: {
+							"Leave": {
+								playertext: "Leave", response: "Default",
+								clickFunction: (gagged, player) => {
+									KDEnterDollTerminal(true);
+									return false;
+								},
+								exitDialogue: true,
+							},
+						}
+					},
+				}
+			},
+		}
+	},
+	"DollTerminal_Forced": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("nodollterm", 4);
+			KDGameData.CurrentDialogMsgValue = {
+				Percent: Math.max(0, 0.25 * KinkyDungeonSlowLevel),
+			};
+			KDGameData.CurrentDialogMsgData = {
+				RESISTCHANCE: "" + Math.round(100 - KDGameData.CurrentDialogMsgValue.Percent * 100),
+			};
+			return false;
+		},
+		options: {
+			"Resist": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					if (KDRandom() < KDGameData.CurrentDialogMsgValue.Percent) {
+						KDGameData.CurrentDialogMsg = "DollTerminal_ForcedForced";
+						KDGameData.CurrentDialogStage = "Forced";
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Enter": {
+				playertext: "Default", response: "Default",
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						clickFunction: (gagged, player) => {
+							KDEnterDollTerminal(true);
+							return false;
+						},
+						exitDialogue: true,
+					},
+				}
+			},
+			"Forced": {
+				prerequisiteFunction: (gagged, player) => {return false;},
+				playertext: "Default", response: "Default",
+				options: {
+					"Leave": {
+						clickFunction: (gagged, player) => {
+							KDEnterDollTerminal(false);
+							return false;
+						},
+						playertext: "DollTerminal_Forced_Submit", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
 	"Leyline": {
 		response: "Default",
 		clickFunction: (gagged, player) => {

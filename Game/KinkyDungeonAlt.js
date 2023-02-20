@@ -52,7 +52,7 @@ let alts = {
 		setpieces: {
 		},
 		chargers: false,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: true,
 		shortcut: false,
@@ -82,7 +82,7 @@ let alts = {
 		shrines: false,
 		orbs: 0,
 		chargers: false,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: true,
 		shortcut: false,
@@ -119,7 +119,7 @@ let alts = {
 		shrines: true,
 		orbs: 0,
 		chargers: true,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: true,
 		shortcut: false,
@@ -131,6 +131,33 @@ let alts = {
 		noRelease: true,
 		releaseOnLowSec: true,
 		noShrineTypes: ["Commerce"],
+	},
+	"DollRoom": {
+		name: "DollRoom",
+		noWear: true, // Disables doodad wear
+		bossroom: false,
+		width: 15,
+		height: 10,
+		setpieces: {
+		},
+		genType: "DollRoom",
+		spawns: false,
+		chests: false,
+		shrines: false,
+		orbs: 0,
+		chargers: false,
+		notorches: true,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		nostartstairs: true,
+		notraps: false,
+		noClutter: true,
+		nolore: true,
 	},
 	"JourneyFloor": {
 		name: "JourneyFloor",
@@ -145,7 +172,7 @@ let alts = {
 		shrines: false,
 		orbs: 0,
 		chargers: false,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: false,
 		shortcut: false,
@@ -171,7 +198,7 @@ let alts = {
 		shrines: false,
 		orbs: 0,
 		chargers: false,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: false,
 		shortcut: false,
@@ -197,7 +224,7 @@ let alts = {
 		shrines: false,
 		orbs: 0,
 		chargers: false,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: false,
 		shortcut: false,
@@ -249,6 +276,9 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"NarrowMaze": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	},
+	"DollRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
 };
 
@@ -688,6 +718,53 @@ function KinkyDungeonCreateRoom(POI, VisitedRooms, width, height, openness, dens
 			KinkyDungeonGrid = KinkyDungeonGrid + KinkyDungeonOldGrid[Math.floor(X * w / KinkyDungeonGridWidth) + Math.floor(Y * h / KinkyDungeonGridHeight)*(w+1)];
 		KinkyDungeonGrid = KinkyDungeonGrid + '\n';
 	}
+}
+
+function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Variable setup
+
+
+	// Now we STRETCH the map
+	KinkyDungeonGridWidth = Math.floor(KinkyDungeonGridWidth*2);
+	KinkyDungeonGridHeight = Math.floor(KinkyDungeonGridHeight*2);
+	KinkyDungeonGrid = "";
+
+	width = KinkyDungeonGridWidth;
+	height = KinkyDungeonGridHeight;
+
+	// Generate the grid
+	for (let Y = 0; Y < KinkyDungeonGridHeight; Y++) {
+		for (let X = 0; X < KinkyDungeonGridWidth; X++)
+			KinkyDungeonGrid = KinkyDungeonGrid + '1';
+		KinkyDungeonGrid = KinkyDungeonGrid + '\n';
+	}
+
+
+	// Create the doll cell itself
+	let CellWidth = 10;
+	let CellHeight = 12;
+	let CellX = width / 2 - CellWidth / 2;
+	let CellY = height / 2 - CellHeight / 2;
+
+	// Hollow out a greater cell area
+	KinkyDungeonCreateRectangle(5, 0, CellX + CellWidth, height, false, false, false, false);
+
+	KinkyDungeonCreateRectangle(CellX, CellY, CellWidth, CellHeight, true, false, false, false);
+	// Create light posts
+	for (let xx = CellX + 2; xx < CellX + CellWidth; xx += 5) {
+		for (let yy = 2; yy < height; yy += 5) {
+			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(xx, yy))) {
+				KinkyDungeonMapSet(xx, yy, '0');
+				KinkyDungeonTilesSet((xx) + "," + (yy), {Light: 6, Skin: "LightRaysDoll"});
+			}
+
+		}
+	}
+
+	KinkyDungeonStartPosition = {x: 2, y: height/2};
+	KinkyDungeonEndPosition = {x: width - 2, y: height/2};
+
+	KinkyDungeonMapSet(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 's');
 }
 
 function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {

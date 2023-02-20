@@ -117,6 +117,12 @@ let KDTileUpdateFunctionsLocal = {
 			KDStaggerEnemy(entity);
 			if (!KDEnemyHasFlag(entity, "conveyed"))
 				entity.hp = 0;
+		} else if (entity?.player && !KinkyDungeonFlags.get("nodollterm")) {
+			if (KinkyDungeonFlags.get("conveyed")) {
+				KDStartDialog("DollTerminal_Forced", "", true, "");
+			} else {
+				KDStartDialog("DollTerminal_Step", "", true, "");
+			}
 		}
 	},
 };

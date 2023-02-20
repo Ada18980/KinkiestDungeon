@@ -9236,6 +9236,20 @@ rButton,"(There is a button on a control panel here.)"
 rButtonPress,"(You touch the button and it glows, releasing a pulse of energy!)"
 dButton_Press,(PUSH THE BUTTON)
 
+rDollTerminal_Step,"(You find a strange elevator with a control panel inside)|(You get the impression this will take you somewhere.)"
+rDollTerminal_StepEnter,"(Are you sure?)|(This seems like a bad idea!)"
+rDollTerminal_StepEnter_Enter,"(You activate the control panel and begin to descend...)"
+dDollTerminal_Step_Enter,(Take me down!)
+dDollTerminal_StepEnter_Enter,(I know what I'm doing!)
+
+rDollTerminal_Forced,"(The conveyor pulls you into a strange elevator)|(A whir of motors suggests this elevator is about to start...)"
+rDollTerminal_ForcedResist,"(You manage to scramble out the door!)|(It closes violently behind you...)"
+rDollTerminal_ForcedForced,"(The door slams in front of you before you are able to escape!)|(A purple light turns on, revealing a padded interior)|(You feel the elevator begin to descend...)"
+rDollTerminal_ForcedEnter,"(There's no point in fighting when you can't win)|(You wait patiently as the elevator descends)"
+dDollTerminal_Forced_Resist,(Try to get out! RESISTCHANCE% success chance)
+dDollTerminal_Forced_Enter,(Give up and let it take me)
+dDollTerminal_Forced_Submit,(Wait it out)
+
 
 rLeyline,"(Mystic energies spring forth from the ground)|(Standing here will fully replenish your passive mana pool)|(One use only)"
 rLeylineUse,"(You step on the magical fissue and its energies absorb into you)|(Afterward, the ground crackles and fizzles, but no energy is left.)"
