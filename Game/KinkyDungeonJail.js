@@ -865,6 +865,12 @@ function KDEnterDollTerminal(willing) {
 	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
 	KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
 
+	for (let inv of KinkyDungeonAllRestraint()) {
+		if (KDRestraint(inv).removePrison && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {
+			KinkyDungeonRemoveRestraint(KDRestraint(inv).Group, false);
+		}
+	}
+
 	if (!willing) {
 		let defeat_outfit = "SlimeSuit";
 		if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
@@ -885,6 +891,11 @@ function KDEnterDollTerminal(willing) {
 }
 
 function KinkyDungeonDefeat(PutInJail) {
+	KinkyDungeonInterruptSleep();
+
+	if (KinkyDungeonTempWait)
+		KinkyDungeonAutoWait = false;
+
 	KDDefeatedPlayerTick();
 	KDBreakTether();
 	KDGameData.CurrentDialog = "";
@@ -977,7 +988,15 @@ function KinkyDungeonDefeat(PutInJail) {
 
 	}
 
-	KDMovePlayer(nearestJail.x, nearestJail.y, false);
+	KDMovePlayer(nearestJail.x + (nearestJail.direction?.x || 0), nearestJail.y + (nearestJail.direction?.y || 0), false);
+	if (nearestJail.restraint) {
+		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(nearestJail.restraint), MiniGameKinkyDungeonLevel, false, undefined);
+	}
+	if (nearestJail.restrainttags) {
+		let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], false, undefined);
+		if (restraint)
+			KinkyDungeonAddRestraintIfWeaker(restraint, MiniGameKinkyDungeonLevel, false, undefined);
+	}
 
 	KinkyDungeonLoseJailKeys();
 

@@ -140,13 +140,47 @@ let KDIntentEvents = {
 		forceattack: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
-			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released")) ? 100 : 0;
+			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released")) ?
+				((KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]) && !KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"])) ? 0 : 100)
+			: 0;
 		},
 		trigger: (enemy, AIData) => {
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
 			enemy.playWithPlayer = 0;
 			enemy.IntentAction = 'CaptureJail';
 			enemy.IntentLeashPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]) ? KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]) : Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+		},
+		arrive: (enemy, AIData) => {
+			if (KDGameData.PrisonerState == 'parole') {
+				KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Mistake").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 6, 8);
+				KDBreakTether();
+				if (enemy.IntentLeashPoint)
+					KDMovePlayer(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y, false, false);
+				KDResetIntent(enemy, AIData);
+				enemy.playWithPlayer = 0;
+				enemy.playWithPlayerCD = 24;
+				return true;
+			}
+			AIData.defeat = true;
+			KDBreakTether();
+			return false;
+		},
+	},
+	"CaptureDoll": {
+		// Capture and bring to dropoff
+		aggressive: true,
+		nonaggressive: true,
+		noplay: true,
+		forceattack: true,
+		// This is the basic leash to jail mechanic
+		weight: (enemy, AIData, allied, hostile, aggressive) => {
+			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released") && KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])) ? 200 : 0;
+		},
+		trigger: (enemy, AIData) => {
+			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
+			enemy.playWithPlayer = 0;
+			enemy.IntentAction = 'CaptureDoll';
+			enemy.IntentLeashPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]);
 		},
 		arrive: (enemy, AIData) => {
 			if (KDGameData.PrisonerState == 'parole') {

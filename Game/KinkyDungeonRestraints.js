@@ -2281,6 +2281,9 @@ function KinkyDungeonUpdateRestraints(delta) {
 	if (KinkyDungeonStatsChoice.get("Unmasked")) playerTags.set("Unmasked", true);
 	if (KinkyDungeonStatsChoice.get("Unchained")) playerTags.set("Unchained", true);
 	if (KinkyDungeonStatsChoice.get("Damsel")) playerTags.set("Damsel", true);
+	if (KinkyDungeonStatsChoice.get("arousalMode")) playerTags.set("arousalMode", true);
+	if (KinkyDungeonStatsChoice.get("arousalModePlug")) playerTags.set("arousalModePlug", true);
+	if (KinkyDungeonStatsChoice.get("arousalModePiercing")) playerTags.set("arousalModePiercing", true);
 
 	let tags = [];
 	KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);

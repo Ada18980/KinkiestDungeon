@@ -1542,6 +1542,8 @@ interface spell {
 
 }
 
+interface KDJailPoint {x: number, y: number, type: string, radius: number, requireLeash?: boolean, requireFurniture?: boolean, direction?:{x: number, y: number}, restraint?:string, restrainttags?:string[]}
+
 interface KinkyDialogue {
 	/** REPLACETEXT -> Replacement */
 	data?: Record<string, string>;

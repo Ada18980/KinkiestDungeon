@@ -2859,6 +2859,14 @@ RestraintDisplayTrapDesc,"A display stand, fit for only the prettiest of trophie
 RestraintDisplayTrapDesc2,"Your arms are pinned behind your back and you can barely move!"
 KDCageTrap,"You hear a click as the door shuts behind you..."
 
+RestraintDollStand,Doll Stand
+RestraintDollStandDesc,"A mobile display stand for dolls to keep them in place."
+RestraintDollStandDesc2,"As long as it's... inserted, you won't be going anywhere!"
+
+RestraintDollStandSFW,Doll Stand
+RestraintDollStandSFWDesc,"A mobile display stand for dolls to keep them in place."
+RestraintDollStandSFWDesc2,"As long as it's attached, you won't be going anywhere!"
+
 KinkyDungeonCage0,You're not fooling anyone...
 KinkyDungeonCage1,You might be able to fool someone like this...
 KinkyDungeonCage2,You look like you're right at home!

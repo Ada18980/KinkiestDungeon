@@ -162,6 +162,12 @@ let KDChainablePillar = 'bdD';
 
 let KDSprites = {
 	// @ts-ignore
+	"5": (x, y, Fog, noReplace) => {
+		let tile = KinkyDungeonTilesGet(x + "," + y);
+		if (tile?.Sprite) return tile.Sprite;
+		return "Floor";
+	},
+	// @ts-ignore
 	"1": (x, y, Fog, noReplace) => {
 		if (KDWallVert(x, y, noReplace))
 			return "WallVert";
@@ -379,6 +385,12 @@ let KDSprites = {
 };
 
 let KDOverlays = {
+	// @ts-ignore
+	"5": (x, y, Fog, noReplace) => {
+		let tile = KinkyDungeonTilesGet(x + "," + y);
+		if (tile?.Overlay) return tile.Overlay;
+		return "";
+	},
 	// @ts-ignore
 	"Z": (x, y, Fog, noReplace) => {
 		return "Signal/AutoLock";
@@ -1476,7 +1488,7 @@ function KinkyDungeonDrawGame() {
 				zIndex: 1,
 				alpha: 0.1,
 			});
-		} else if (KDToggles.StunFlash && (KinkyDungeonFlags.get("playerStun") || KinkyDungeonMovePoints < 0)) {
+		} else if (KDToggles.StunFlash && (KinkyDungeonFlags.get("playerStun") || (KinkyDungeonMovePoints < 0 && KinkyDungeonSlowLevel < 9))) {
 			FillRectKD(kdcanvas, kdpixisprites, "screenoverlayst", {
 				Left: 0,
 				Top: 0,
@@ -1485,7 +1497,7 @@ function KinkyDungeonDrawGame() {
 				Color: "#aaaaaa",
 				LineWidth: 1,
 				zIndex: 1,
-				alpha: 0.1,
+				alpha: 0.07,
 			});
 		} else if (KinkyDungeonStatDistraction > 1.0) {
 			KDDrawArousalScreenFilter(0, 1000, 2000, KinkyDungeonStatDistraction * 100 / KinkyDungeonStatDistractionMax);
