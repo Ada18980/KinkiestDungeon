@@ -67,6 +67,11 @@ let KinkyDungeonWallTiles = "14";
 let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@lSsRrdzTgLNVt"; // Objects which can be moved into: floors, debris, open doors, staircases
 let KinkyDungeonMovableTilesSmartEnemy = "D" + KinkyDungeonMovableTilesEnemy; //Smart enemies can open doors as well
 let KinkyDungeonMovableTiles = "OPCAMG$Y+=-F" + KinkyDungeonMovableTilesSmartEnemy; // Player can open chests, orbs, shrines, chargers
+
+let KDRandomDisallowedNeighbors = ",?/RAasSHcCHDdOoPp+FZzgtuVN"; // tiles that can't be neighboring a randomly selected point
+let KDTrappableNeighbors = "DA+-F@"; // tiles that might have traps bordering them with a small chance
+let KDTrappableNeighborsLikely = "COP="; // tiles that might have traps bordering them with a big chance
+
 let KinkyDungeonTransparentObjects = KinkyDungeonMovableTiles
 	.replace("D", "")
 	.replace("g", "") // grate
@@ -78,10 +83,6 @@ let KinkyDungeonTransparentMovableObjects = KinkyDungeonMovableTiles
 	.replace("g", ""); // Light does not pass thru doors or grates
 
 let KDOpenDoorTiles = ["DoorOpen", "DoorVertContOpen", "DoorVertOpen"];
-
-let KDRandomDisallowedNeighbors = "AasSHcCHDdOoPp+F"; // tiles that can't be neighboring a randomly selected point
-let KDTrappableNeighbors = "DA+-F"; // tiles that might have traps bordering them with a small chance
-let KDTrappableNeighborsLikely = "COP="; // tiles that might have traps bordering them with a big chance
 
 /**
  * @type {Record<string, {x: number, y: number, tags?:string[]}>}
@@ -1912,8 +1913,8 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 					}
 
 
-				} else if (KinkyDungeonMapGet(X, Y) == "R" || KinkyDungeonMapGet(X, Y) == "r")
-					shrinelist.push({x:X, y:Y});
+				}// else if (KinkyDungeonMapGet(X, Y) == "R" || KinkyDungeonMapGet(X, Y) == "r")
+				//shrinelist.push({x:X, y:Y});
 
 	// Truncate down to max chest count in a location-neutral way
 	let count = 0;
@@ -2642,8 +2643,8 @@ function KinkyDungeonPlaceFood(foodChance, width, height, altType) {
 				}
 
 
-			} else if (KinkyDungeonMapGet(X, Y) == "R" || KinkyDungeonMapGet(X, Y) == "r")
-				foodList.push({x:X, y:Y});
+			}// else if (KinkyDungeonMapGet(X, Y) == "R" || KinkyDungeonMapGet(X, Y) == "r")
+			//foodList.push({x:X, y:Y});
 
 	// Truncate down to max chest count in a location-neutral way
 	let count = 0;
