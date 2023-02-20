@@ -4255,6 +4255,8 @@ KDTileTooltipT,Table
 KDTileTooltipA,Shrine
 KDTileTooltipD,Closed Door
 KDTileTooltipd,Open Door
+KDTileTooltipZ,Closed Door
+KDTileTooltipz,Open Door
 KDTileTooltipB,Bed
 KDTileTooltipb,Bars
 KDTileTooltipa,Ruined Shrine
@@ -4270,6 +4272,7 @@ KDTileTooltipS,Entrance
 KDTileTooltips,Exit Stairs
 KDTileTooltipH,Mysterious Stairs
 KDTileTooltipG,Ghostly Adventurer
+KDTileTooltip@,Button
 
 
 
@@ -9227,6 +9230,11 @@ rAllyRescue,"(A SPEAKER wakes you up)|We came to rescue you. Come on!"
 rBed,"(The bed looks comfy and inviting)|(Napping here will restore up to half of your willpower)|(You can only sleep once per floor, unless jailed)"
 rBedSleep,"(You lay in the bed and doze off...)"
 dBed_Sleep,(Lie down and sleep)
+
+rButton,"(There is a button on a control panel here.)"
+rButtonPress,"(You touch the button and it glows, releasing a pulse of energy!)"
+dButton_Press,(PUSH THE BUTTON)
+
 
 rLeyline,"(Mystic energies spring forth from the ground)|(Standing here will fully replenish your passive mana pool)|(One use only)"
 rLeylineUse,"(You step on the magical fissue and its energies absorb into you)|(Afterward, the ground crackles and fizzles, but no energy is left.)"

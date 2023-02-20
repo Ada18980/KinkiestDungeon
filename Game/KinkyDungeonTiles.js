@@ -409,7 +409,7 @@ function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
  * @returns {boolean}
  */
 function KDCanSeeEffectTile(tile) {
-	if (tile.tags?.includes("hiddenmagic")) {
+	if (KinkyDungeonState != "TileEditor" && tile.tags?.includes("hiddenmagic")) {
 		let rad = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "MagicalSight");
 		if (rad <= 0 || KDistEuclidean(tile.x - KinkyDungeonPlayerEntity.x, tile.y - KinkyDungeonPlayerEntity.y) > rad) return false;
 	}

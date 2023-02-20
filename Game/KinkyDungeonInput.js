@@ -714,9 +714,9 @@ function KDProcessInput(type, data) {
 			if (data.click) {
 				let gagged = KDDialogueGagged();
 				if (dialogue.gagFunction && gagged) {
-					abort = dialogue.gagFunction();
+					abort = dialogue.gagFunction(KinkyDungeonPlayerEntity);
 				} else if (dialogue.clickFunction) {
-					abort = dialogue.clickFunction(gagged);
+					abort = dialogue.clickFunction(gagged, KinkyDungeonPlayerEntity);
 				}
 			}
 			if (!abort) {

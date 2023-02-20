@@ -4,7 +4,7 @@ let KDRecentRepIndex = 0;
 
 let ShowBoringness = false;
 
-let KDWallReplacers = "14,dDbg";
+let KDWallReplacers = "14,dDzZbg";
 
 let KinkyDungeonSuppressSprint = true;
 
@@ -240,6 +240,26 @@ let KDSprites = {
 		return KinkyDungeonTilesMemory[x + "," + y];
 	},
 	// @ts-ignore
+	"Z": (x, y, Fog, noReplace) => {
+		if (Fog) {
+			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
+		}
+		if (KDWallVertBoth(x, y, noReplace))
+			KinkyDungeonTilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertCont" : "DoorVert";
+		else KinkyDungeonTilesMemory[x + "," + y] = "Door";
+		return KinkyDungeonTilesMemory[x + "," + y];
+	},
+	// @ts-ignore
+	"z": (x, y, Fog, noReplace) => {
+		if (Fog) {
+			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
+		}
+		if (KDWallVertBoth(x, y, noReplace))
+			KinkyDungeonTilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertOpenCont" : "DoorVertOpen";
+		else KinkyDungeonTilesMemory[x + "," + y] = "DoorOpen";
+		return KinkyDungeonTilesMemory[x + "," + y];
+	},
+	// @ts-ignore
 	"a": (x, y, Fog, noReplace) => {
 		return "ShrineBroken";
 	},
@@ -360,6 +380,10 @@ let KDSprites = {
 
 let KDOverlays = {
 	// @ts-ignore
+	"Z": (x, y, Fog, noReplace) => {
+		return "Signal/AutoLock";
+	},
+	// @ts-ignore
 	"H": (x, y, Fog, noReplace) => {
 		return "StairsDown";
 	},
@@ -443,6 +467,10 @@ let KDOverlays = {
 	// @ts-ignore
 	"B": (x, y, Fog, noReplace) => {
 		return "Bed";
+	},
+	// @ts-ignore
+	"@": (x, y, Fog, noReplace) => {
+		return "Signal/Button";
 	},
 	// @ts-ignore
 	"V": (x, y, Fog, noReplace) => {
@@ -2630,9 +2658,12 @@ let KDTileTooltips = {
 	'H': () => {return {color: "#ffffff", noInspect: true, text: "H"};},
 	'G': () => {return {color: "#ffffff", noInspect: true, text: "G"};},
 	'B': () => {return {color: "#ffffff", noInspect: true, text: "B"};},
+	'@': () => {return {color: "#ffffff", noInspect: true, text: "@"};},
 	'b': () => {return {color: "#ffffff", noInspect: true, text: "b"};},
 	'D': () => {return {color: "#ffffff", noInspect: true, text: "D"};},
 	'd': () => {return {color: "#ffffff", noInspect: true, text: "d"};},
+	'Z': () => {return {color: "#ffffff", noInspect: true, text: "Z"};},
+	'z': () => {return {color: "#ffffff", noInspect: true, text: "z"};},
 };
 
 

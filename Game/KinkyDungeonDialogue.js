@@ -94,7 +94,7 @@ function KDDrawDialogue() {
 			let II = 0;
 			let gagged = KDDialogueGagged();
 			for (let i = KDOptionOffset; i < entries.length && II < KDMaxDialogue; i++) {
-				if ((!entries[i][1].prerequisiteFunction || entries[i][1].prerequisiteFunction(gagged))
+				if ((!entries[i][1].prerequisiteFunction || entries[i][1].prerequisiteFunction(gagged, KinkyDungeonPlayerEntity))
 					&& (!entries[i][1].gagRequired || gagged)
 					&& (!entries[i][1].gagDisabled || !gagged)) {
 					let playertext = entries[i][1].playertext;
@@ -323,7 +323,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		options: {},
 	};
 	dialog.options.Leave = {playertext: "Leave", exitDialogue: true,
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "NoShop", 9999);
@@ -332,14 +332,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		},
 	};
 	dialog.options.Attack = {playertext: name + "Attack", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (!enemy || (enemy.aware && !enemy.playWithPlayer)) return true;
 			return false;
 		},
 		options: {
 			"Confirm": {playertext: name + "Attack_Confirm", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						if (!enemy.Enemy.allied) {
@@ -363,14 +363,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		}
 	};
 	dialog.options.AttackPlay = {playertext: name + "AttackPlay", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.playWithPlayer) return true;
 			return false;
 		},
 		options: {
 			"Confirm": {playertext: name + "Attack_Confirm", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						if (!enemy.Enemy.allied) {
@@ -393,14 +393,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		}
 	};
 	dialog.options.AttackUnaware = {playertext: name + "AttackUnaware", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && (enemy.aware || enemy.playWithPlayer)) return false;
 			return true;
 		},
 		options: {
 			"Confirm": {playertext: name + "AttackUnaware_Confirm", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						if (!enemy.Enemy.allied) {
@@ -421,14 +421,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		}
 	};
 	/*dialog.options.LetMePass = {playertext: name + "LetMePass", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				return !KinkyDungeonFlags.has("passthrough");
 			}
 			return false;
 		},
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				if (KinkyDungeonFlags.has("LetMePass")) {
@@ -442,7 +442,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		},
 		options: {
 			"Confirm": {playertext: name + "LetMePass_Confirm", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KinkyDungeonSetEnemyFlag(enemy, "passthrough", 8);
@@ -457,7 +457,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				exitDialogue: true,
 			},
 			"ConfirmAll": {playertext: name + "LetMePass_ConfirmAll", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KinkyDungeonSetFlag("Passthrough", 8);
@@ -472,14 +472,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		}
 	};*/
 	dialog.options.StopFollowingMe = {playertext: name + "StopFollowingMe", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				return KDAllied(enemy) && !KDEnemyHasFlag(enemy, "NoFollow");
 			}
 			return false;
 		},
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 9999);
@@ -489,14 +489,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		leadsToStage: "", dontTouchText: true,
 	};
 	dialog.options.FollowMe = {playertext: name + "FollowMe", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				return KDAllied(enemy) && KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "Shop");
 			}
 			return false;
 		},
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				if (!KDEnemyHasFlag(enemy, "NoStay")
@@ -513,14 +513,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		leadsToStage: "", dontTouchText: true,
 	};
 	dialog.options.DontStayHere = {playertext: name + "DontStayHere", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				return !KDHostile(enemy) && KDEnemyHasFlag(enemy, "StayHere");
 			}
 			return false;
 		},
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "StayHere", 0);
@@ -530,14 +530,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		leadsToStage: "", dontTouchText: true,
 	};
 	dialog.options.StayHere = {playertext: name + "StayHere", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				return !KDHostile(enemy) && !KDEnemyHasFlag(enemy, "StayHere") && !KDEnemyHasFlag(enemy, "Shop");
 			}
 			return false;
 		},
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				if (!KDEnemyHasFlag(enemy, "NoStay") && (KDRandom() < (50 - KinkyDungeonGoddessRep.Ghost + KDGetModifiedOpinion(enemy) + (KinkyDungeonStatsChoice.get("Dominant") ? 50 : 0))/100 * KDEnemyHelpfulness(enemy) * (KDAllied(enemy) ? 4.0 : 0.25) || enemy.Enemy.allied)) {
@@ -554,14 +554,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		leadsToStage: "", dontTouchText: true,
 	};
 	dialog.options.Aggressive = {playertext: name + "Aggressive", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				return !KDHostile(enemy) && KDEnemyHasFlag(enemy, "Defensive");
 			}
 			return false;
 		},
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
@@ -571,14 +571,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		leadsToStage: "", dontTouchText: true,
 	};
 	dialog.options.Defensive = {playertext: name + "Defensive", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				return !KDHostile(enemy) && !KDEnemyHasFlag(enemy, "Defensive") && !KDEnemyHasFlag(enemy, "Shop");
 			}
 			return false;
 		},
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "Defensive", -1);
@@ -588,7 +588,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		leadsToStage: "", dontTouchText: true,
 	};
 	dialog.options.HelpMe = {playertext: name + "HelpMe", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				return !KDHostile(enemy) && enemy.Enemy.bound && !enemy.Enemy.tags.nohelp && !KDHelpless(enemy)
@@ -598,7 +598,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		},
 		options: {
 			"Confirm": {playertext: name + "HelpMe_Confirm", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						if (!KDEnemyHasFlag(enemy, "NoHelp")
@@ -623,7 +623,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		}
 	};
 	dialog.options.HelpMeCommandWord = {playertext: name + "HelpMeCommandWord", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker && enemy.Enemy.unlockCommandLevel > 0) {
 				return !KDHostile(enemy) && enemy.Enemy.bound && !enemy.Enemy.tags.nohelp && !KDHelpless(enemy)
@@ -633,7 +633,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		},
 		options: {
 			"Confirm": {playertext: name + "HelpMeCommandWord_Confirm", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						if (!KDEnemyHasFlag(enemy, "NoHelpCommandWord")
@@ -667,7 +667,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		}
 	};
 	dialog.options.HelpMeKey = {playertext: name + "HelpMeKey", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				return !KDHostile(enemy) && enemy.Enemy.bound && !enemy.Enemy.tags.nohelp && !KDHelpless(enemy)
@@ -677,7 +677,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		},
 		options: {
 			"Confirm": {playertext: name + "HelpMeKey_Confirm", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						if (!KDEnemyHasFlag(enemy, "NoHelpKey")
@@ -704,7 +704,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		}
 	};
 	dialog.options.DontHelpMe = {playertext: name + "DontHelpMe", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				return enemy.Enemy.bound && !enemy.Enemy.tags.nohelp && !KDEnemyHasFlag(enemy, "NoHelp") && KDEnemyHasFlag(enemy, "HelpMe") && KinkyDungeonAllRestraint().length > 0;
@@ -713,7 +713,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		},
 		options: {
 			"Confirm": {playertext: name + "DontHelpMe_Confirm", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KinkyDungeonSetEnemyFlag(enemy, "HelpMe", 0);
@@ -728,14 +728,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		}
 	};
 	dialog.options.Shop = {playertext: name + "Shop", response: "Default",
-		prerequisiteFunction: (gagged) => {
+		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				return KDEnemyHasFlag(enemy, "Shop");
 			}
 			return false;
 		},
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				for (let shop of Object.values(KDShops)) {
@@ -772,7 +772,7 @@ function KDPrisonerRescue(name, faction, enemytypes) {
 	 */
 	let dialogue = {
 		response: "Default",
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			KinkyDungeonInterruptSleep();
 			let door = KDGetJailDoor(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			if (door) {
@@ -821,7 +821,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 	 */
 	let recruit = {
 		response: "Default",
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			KinkyDungeonSetFlag(name, -1, 1);
 			return false;
 		},
@@ -829,7 +829,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 			"Yes": {gag: true, playertext: "Default", response: "Default",
 				options: {
 					"Yes": {gag: true, playertext: "Default", response: "Default",
-						clickFunction: (gagged) => {
+						clickFunction: (gagged, player) => {
 							KDPleaseSpeaker(0.1);
 							KinkyDungeonChangeRep("Ghost", 2);
 							for (let i = 0; i < restraintscount; i++) {
@@ -852,7 +852,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},
 					},
 					"No": {gag: true, playertext: "Default", response: "Default",
-						clickFunction: (gagged) => {
+						clickFunction: (gagged, player) => {
 							let diff = KinkyDungeonStatsChoice.has("Dominant") ? 0 : 35;
 							if (KDBasicCheck([goddess], ["Ghost"]) <= diff) {
 								KDGameData.CurrentDialogStage = "Force";
@@ -869,7 +869,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 				},
 			},
 			"No": {gag: true, playertext: "Default", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let diff = KinkyDungeonStatsChoice.has("Dominant") ? 0 : 45;
 					if (KDBasicCheck(["Metal"], ["Ghost"]) <= diff) {
 						KDGameData.CurrentDialogStage = "Force";
@@ -884,10 +884,10 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 				options: {"Leave": {playertext: "Leave", exitDialogue: true}},
 			},
 			"Force": {gag: true, playertext: "Default", response: "Default",
-				prerequisiteFunction: (gagged) => {return false;},
+				prerequisiteFunction: (gagged, player) => {return false;},
 				options: {
 					"Yes": {gag: true, playertext: "Default", response: "Default",
-						clickFunction: (gagged) => {
+						clickFunction: (gagged, player) => {
 							KDPleaseSpeaker(0.08);
 							KinkyDungeonChangeRep("Ghost", 2);
 							for (let i = 0; i < restraintscount; i++) {
@@ -909,7 +909,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},},
 					"No": {gag: true, playertext: "Default", response: "Default",
-						clickFunction: (gagged) => {
+						clickFunction: (gagged, player) => {
 							let percent = KDGameData.CurrentDialogMsgValue.Percent;
 							KinkyDungeonChangeRep("Ghost", -1);
 							if (KDRandom() > percent) {
@@ -956,7 +956,7 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance) {
 	let shop = {
 		inventory: true,
 		response: "Default",
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			/*let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "Shop", 0);
@@ -980,7 +980,7 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance) {
 		options: {},
 	};
 	shop.options.Leave = {playertext: "Leave", exitDialogue: true,
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "NoShop", 9999);
@@ -992,7 +992,7 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance) {
 	shop.options.Attack = {gag: true, playertext: "ItemShopAttack", response: "Default",
 		options: {
 			"Confirm": {playertext: "ItemShopAttack_Confirm", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KDMakeHostile(enemy);
@@ -1013,10 +1013,10 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance) {
 	for (let i = 0; i < items.length; i++) {
 		let item = items[i];
 		shop.options["Item" + i] = {playertext: "ItemShop" + i, response: name + item,
-			prerequisiteFunction: (gagged) => {
+			prerequisiteFunction: (gagged, player) => {
 				return KinkyDungeonInventoryGet(item) != undefined;
 			},
-			clickFunction: (gagged) => {
+			clickFunction: (gagged, player) => {
 				let itemInv = KinkyDungeonInventoryGet(item);
 				if (itemInv.type == Consumable)
 					KinkyDungeonChangeConsumable(KDConsumable(itemInv), -1);
@@ -1054,33 +1054,33 @@ function KDYesNoTemplate(setupFunction, yesFunction, noFunction, domFunction) {
 	 */
 	let dialogue = {
 		response: "Default",
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			KinkyDungeonSetFlag("BondageOffer", KDOfferCooldown);
 			return false;
 		},
 		options: {
 			"Yes": {gag: true, playertext: "Default", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					return setupFunction(false);
 				},
 				options: {
 					"Yes": {gag: true, playertext: "Default", response: "Default",
-						clickFunction: (gagged) => {
+						clickFunction: (gagged, player) => {
 							return yesFunction(false);
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},
 					},
 					"No": {gag: true, playertext: "Default", response: "Default",
-						clickFunction: (gagged) => {
+						clickFunction: (gagged, player) => {
 							return noFunction(false);
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},
 					},
 					"Dominant": {gag: true, playertext: "OfferDominant", response: "OfferDominantSuccess",
-						clickFunction: (gagged) => {
+						clickFunction: (gagged, player) => {
 							return domFunction(false);
 						},
-						prerequisiteFunction: (gagged) => {
+						prerequisiteFunction: (gagged, player) => {
 							return KDGetSpeaker()?.Enemy?.bound != undefined;
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},
@@ -1088,30 +1088,30 @@ function KDYesNoTemplate(setupFunction, yesFunction, noFunction, domFunction) {
 				},
 			},
 			"No": {gag: true, playertext: "Default", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					return setupFunction(true);
 				},
 				options: {"Leave": {playertext: "Leave", exitDialogue: true}},
 			},
 			"Force": {gag: true, playertext: "Default", response: "Default",
-				prerequisiteFunction: (gagged) => {return false;},
+				prerequisiteFunction: (gagged, player) => {return false;},
 				options: {
 					"Yes": {gag: true, playertext: "Default", response: "Default",
-						clickFunction: (gagged) => {
+						clickFunction: (gagged, player) => {
 							return yesFunction(true);
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},},
 					"No": {gag: true, playertext: "Default", response: "Default",
-						clickFunction: (gagged) => {
+						clickFunction: (gagged, player) => {
 							return noFunction(true);
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},
 					},
 					"Dominant": {gag: true, playertext: "OfferDominant", response: "OfferDominantSuccess",
-						clickFunction: (gagged) => {
+						clickFunction: (gagged, player) => {
 							return domFunction(true);
 						},
-						prerequisiteFunction: (gagged) => {
+						prerequisiteFunction: (gagged, player) => {
 							return KDGetSpeaker()?.Enemy?.bound != undefined;
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},
@@ -1279,7 +1279,7 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup) 
 	let shop = {
 		shop: true,
 		response: "Default",
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			/*let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "Shop", 0);
@@ -1308,7 +1308,7 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup) 
 		options: {},
 	};
 	shop.options.Leave = {playertext: "Leave", exitDialogue: true,
-		clickFunction: (gagged) => {
+		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "NoShop", 9999);
@@ -1320,7 +1320,7 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup) 
 	shop.options.Attack = {gag: true, playertext: "ItemShopAttack", response: "Default",
 		options: {
 			"Confirm": {playertext: "ItemShopAttack_Confirm", response: "Default",
-				clickFunction: (gagged) => {
+				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KDMakeHostile(enemy);
@@ -1341,10 +1341,10 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup) 
 	for (let i = 0; i < items.length; i++) {
 		let item = items[i];
 		shop.options["Item" + i] = {playertext: "ItemShopBuy" + i, response: name + item,
-			prerequisiteFunction: (gagged) => {
+			prerequisiteFunction: (gagged, player) => {
 				return true;//KinkyDungeonInventoryGet(item) != undefined;
 			},
-			clickFunction: (gagged) => {
+			clickFunction: (gagged, player) => {
 				let buy = false;
 				if (KinkyDungeonGold >= KDGameData.CurrentDialogMsgValue["ItemCost"+i]) {
 					buy = true;
@@ -1396,9 +1396,9 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup) 
 /*
 
 					"Leave": {playertext: "Leave", exitDialogue: true}
-				clickFunction: (gagged) => {KinkyDungeonStartChase(undefined, "Refusal");},
+				clickFunction: (gagged, player) => {KinkyDungeonStartChase(undefined, "Refusal");},
 
-clickFunction: (gagged) => {
+clickFunction: (gagged, player) => {
 	KinkyDungeonChangeRep("Ghost", 3);
 },*/
 

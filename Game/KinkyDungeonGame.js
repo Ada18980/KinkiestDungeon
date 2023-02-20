@@ -62,13 +62,20 @@ let KinkyDungeonPOI = [];
 
 let KinkyDungeonMapBrightness = 5;
 
-let KinkyDungeonGroundTiles = "023w][?/Vt";
+let KinkyDungeonGroundTiles = "023w][?/";
 let KinkyDungeonWallTiles = "14";
-let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HBlSsRrdTgLN"; // Objects which can be moved into: floors, debris, open doors, staircases
+let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@lSsRrdzTgLNVt"; // Objects which can be moved into: floors, debris, open doors, staircases
 let KinkyDungeonMovableTilesSmartEnemy = "D" + KinkyDungeonMovableTilesEnemy; //Smart enemies can open doors as well
 let KinkyDungeonMovableTiles = "OPCAMG$Y+=-F" + KinkyDungeonMovableTilesSmartEnemy; // Player can open chests, orbs, shrines, chargers
-let KinkyDungeonTransparentObjects = KinkyDungeonMovableTiles.replace("D", "").replace("g", "").replace("Y", "") + "OoAaMmCcBlb+=-FXu"; // Light does not pass thru doors or grates or shelves
-let KinkyDungeonTransparentMovableObjects = KinkyDungeonMovableTiles.replace("D", "").replace("g", ""); // Light does not pass thru doors or grates
+let KinkyDungeonTransparentObjects = KinkyDungeonMovableTiles
+	.replace("D", "")
+	.replace("g", "") // grate
+	.replace("Y", "") // wall rubble
+	+ "OoAaMmCcB@lb+=-FXu";
+let KinkyDungeonTransparentMovableObjects = KinkyDungeonMovableTiles
+	.replace("Z", "") // AutoDoor
+	.replace("D", "") // Door
+	.replace("g", ""); // Light does not pass thru doors or grates
 
 let KDOpenDoorTiles = ["DoorOpen", "DoorVertContOpen", "DoorVertOpen"];
 
@@ -660,7 +667,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 				startTime = performance.now();
 			}
 			if (!altType || altType.chests)
-				KinkyDungeonPlaceChests(chestlist, treasurechance, treasurecount, rubblechance, Floor, width, height); // Place treasure chests inside dead ends
+				KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasurecount, rubblechance, Floor, width, height); // Place treasure chests inside dead ends
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for chest creation`);
 				startTime = performance.now();
@@ -682,7 +689,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 			let orbcount = 2;
 			if (altType && altType.orbs != undefined) orbcount = altType.orbs;
 			if (!altType || altType.shrines)
-				KinkyDungeonPlaceShrines(shrinelist, shrinechance, shrineTypes, shrinecount, shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [], Floor, width, height);
+				KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount, shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [], Floor, width, height);
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for shrine creation`);
 				startTime = performance.now();
@@ -1543,8 +1550,13 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 
 let KDMinBoringness = 0; // Minimum boringness for treasure spawn
 
-function KinkyDungeonPlaceChests(chestlist, treasurechance, treasurecount, rubblechance, Floor, width, height) {
+function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasurecount, rubblechance, Floor, width, height) {
 
+	let shrinePoints = new Map();
+
+	for (let s of shrinelist) {
+		shrinePoints.set(s.x + "," + s.y, true);
+	}
 	let chestPoints = new Map();
 
 	for (let s of chestlist) {
@@ -1597,6 +1609,15 @@ function KinkyDungeonPlaceChests(chestlist, treasurechance, treasurecount, rubbl
 							&& !chestPoints.get((X-1) + "," + (Y-1))
 							&& !chestPoints.get((X) + "," + (Y+1))
 							&& !chestPoints.get((X) + "," + (Y-1))
+							&& !shrinePoints.get((X) + "," + (Y))
+							&& !shrinePoints.get((X+1) + "," + (Y))
+							&& !shrinePoints.get((X-1) + "," + (Y))
+							&& !shrinePoints.get((X+1) + "," + (Y+1))
+							&& !shrinePoints.get((X+1) + "," + (Y-1))
+							&& !shrinePoints.get((X-1) + "," + (Y+1))
+							&& !shrinePoints.get((X-1) + "," + (Y-1))
+							&& !shrinePoints.get((X) + "," + (Y+1))
+							&& !shrinePoints.get((X) + "," + (Y-1))
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y-1))
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X, Y-1))
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X+1, Y-1))
@@ -1793,9 +1814,15 @@ function KinkyDungeonPlaceHeart(width, height, Floor) {
 // @ts-ignore
 // @ts-ignore
 // @ts-ignore
-function KinkyDungeonPlaceShrines(shrinelist, shrinechance, shrineTypes, shrinecount, shrinefilter, ghostchance, manaChance, orbcount, filterTypes, Floor, width, height) {
+function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount, shrinefilter, ghostchance, manaChance, orbcount, filterTypes, Floor, width, height) {
 	KinkyDungeonCommercePlaced = 0;
 
+
+	let chestPoints = new Map();
+
+	for (let s of chestlist) {
+		chestPoints.set(s.x + "," + s.y, true);
+	}
 
 	let shrinePoints = new Map();
 
@@ -1862,6 +1889,15 @@ function KinkyDungeonPlaceShrines(shrinelist, shrinechance, shrineTypes, shrinec
 							&& !shrinePoints.get((X-1) + "," + (Y-1))
 							&& !shrinePoints.get((X) + "," + (Y+1))
 							&& !shrinePoints.get((X) + "," + (Y-1))
+							&& !chestPoints.get((X+1) + "," + (Y))
+							&& !chestPoints.get((X-1) + "," + (Y))
+							&& !chestPoints.get((X+1) + "," + (Y+1))
+							&& !chestPoints.get((X+1) + "," + (Y-1))
+							&& !chestPoints.get((X-1) + "," + (Y+1))
+							&& !chestPoints.get((X-1) + "," + (Y-1))
+							&& !chestPoints.get((X) + "," + (Y+1))
+							&& !chestPoints.get((X) + "," + (Y-1))
+							&& !chestPoints.get((X) + "," + (Y))
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y-1))
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X, Y-1))
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X+1, Y-1))
@@ -3716,8 +3752,8 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	KinkyDungeonUpdateJailKeys();
 
-	KinkyDungeonUpdateTileEffects(delta);
 	KDUpdateEffectTiles(delta);
+	KinkyDungeonUpdateTileEffects(delta);
 	for (let E = 0; E < KinkyDungeonEntities.length; E++) {
 		let enemy = KinkyDungeonEntities[E];
 		if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1; continue;}
@@ -4041,7 +4077,7 @@ let KDKeyCheckers = {
 						let II = 0;
 						let gagged = KDDialogueGagged();
 						for (let i = KDOptionOffset; i < entries.length && II < KDMaxDialogue; i++) {
-							if ((!entries[i][1].prerequisiteFunction || entries[i][1].prerequisiteFunction(gagged))
+							if ((!entries[i][1].prerequisiteFunction || entries[i][1].prerequisiteFunction(gagged, KinkyDungeonPlayerEntity))
 								&& (!entries[i][1].gagRequired || gagged)
 								&& (!entries[i][1].gagDisabled || !gagged)) {
 								if (entries[i][0] == "Leave" || entries[i][0] == "Continue" || entries[i][1].skip) {

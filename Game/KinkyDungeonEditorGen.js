@@ -471,6 +471,13 @@ let KDEffectTileGen = {
 		}, 0);
 		return null;
 	},
+	"Wire": (x, y, tile, tileGenerator, data) => {
+		KDCreateEffectTile(x, y, {
+			name: "Wire",
+			duration: 9999,
+		}, 0);
+		return null;
+	},
 };
 
 /**
@@ -667,7 +674,7 @@ let KDTileGen = {
 	},
 	"DollSupply": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'u');
-		return {Type: "DollSupply", index: 0, cd: 0, rate: tileGenerator.rate || 10};
+		return {Type: "DollSupply", index: 0, cd: 0, rate: tileGenerator.rate || 10, count: tileGenerator.count, dollType: tileGenerator.dollType, wireType: tileGenerator.wireType};
 	},
 	"DollTerminal": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 't');
@@ -676,6 +683,15 @@ let KDTileGen = {
 	"BondageMachine": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'N');
 		return {Type: "BondageMachine", OffLimits: true, Binding: tileGenerator.Binding};
+	},
+	"EffectTile": (x, y, tile, tileGenerator, data) => {
+		KDCreateEffectTile(x, y, {
+			name: tileGenerator.Tile,
+		}, 0);
+		return null;
+	},
+	"AutoDoor": (x, y, tile, tileGenerator, data) => {
+		return {wireType: tileGenerator.wireType};
 	},
 };
 

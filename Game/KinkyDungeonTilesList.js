@@ -5,6 +5,28 @@
  * @type {Record<string, (delta: number, X?: number, Y?: number) => void>}
  */
 let KDTileUpdateFunctionsLocal = {
+	'z': (delta, X, Y) => {
+		let entity = KinkyDungeonEntityAt(X, Y);
+		if (entity) return;
+		let mapTile = KinkyDungeonTilesGet(X + "," + Y);
+		if (mapTile?.wireType == "AutoDoor_HoldOpen" || mapTile?.wireType == "AutoDoor_HoldClosed") {
+			let tags = KDEffectTileTags(X, Y);
+			if ((!tags.signal && mapTile.wireType == "AutoDoor_HoldOpen")
+				|| (tags.signal && mapTile.wireType == "AutoDoor_HoldClosed")) {
+				KinkyDungeonMapSet(X, Y, 'Z');
+			}
+		}
+	},
+	'Z': (delta, X, Y) => {
+		let mapTile = KinkyDungeonTilesGet(X + "," + Y);
+		if (mapTile?.wireType == "AutoDoor_HoldOpen" || mapTile?.wireType == "AutoDoor_HoldClosed") {
+			let tags = KDEffectTileTags(X, Y);
+			if ((tags.signal && mapTile.wireType == "AutoDoor_HoldOpen")
+				|| (!tags.signal && mapTile.wireType == "AutoDoor_HoldClosed")) {
+				KinkyDungeonMapSet(X, Y, 'z');
+			}
+		}
+	},
 	"w": (delta, X, Y) => {
 		KDCreateEffectTile(X, Y, {
 			name: "Water",
@@ -56,31 +78,34 @@ let KDTileUpdateFunctionsLocal = {
 
 		if (!tile.cd) tile.cd = 0;
 		if (tile.cd <= 0) {
-			// Too many dolls!!!
-			if (KDGameData.DollCount > 30) return;
-			let nearbyEnemyCount = KDNearbyEnemies(X, Y, 4.5);
-			if (nearbyEnemyCount.length > 6) return;
-			let start = true;
-			let ind = tile.index;
-			// Loop through and cycle if needed
-			while (start || ind != tile.index) {
-				start = false;
-				let tx = ind == 0 ? -1 : (ind == 2 ? 1 : 0);
-				let ty = ind == 1 ? -1 : (ind == 3 ? 1 : 0);
+			if (tile.count == undefined || tile.count > 0) {
+				// Too many dolls!!!
+				if (KDGameData.DollCount > 30) return;
+				let nearbyEnemyCount = KDNearbyEnemies(X, Y, 4.5);
+				if (nearbyEnemyCount.length > 6) return;
+				let start = true;
+				let ind = tile.index;
+				// Loop through and cycle if needed
+				while (start || ind != tile.index) {
+					start = false;
+					let tx = ind == 0 ? -1 : (ind == 2 ? 1 : 0);
+					let ty = ind == 1 ? -1 : (ind == 3 ? 1 : 0);
 
-				// Create a doll on a conveyor if needed
-				let entity = KinkyDungeonEntityAt(X + tx, Y + ty);
-				let tiletype = KinkyDungeonMapGet(X + tx, Y + ty);
-				if (tiletype == 'V' && !entity) {
-					tile.cd = tile.rate;
-					let e = DialogueCreateEnemy(X + tx, Y + ty, "FactoryDoll");
-					KinkyDungeonSetEnemyFlag(e, "conveyed", 1);
-					break;
+					// Create a doll on a conveyor if needed
+					let entity = KinkyDungeonEntityAt(X + tx, Y + ty);
+					let tiletype = KinkyDungeonMapGet(X + tx, Y + ty);
+					if (tiletype == 'V' && !entity) {
+						tile.cd = tile.rate;
+						let e = DialogueCreateEnemy(X + tx, Y + ty, tile.dollType || "FactoryDoll");
+						KinkyDungeonSetEnemyFlag(e, "conveyed", 1);
+						if (tile.count != undefined) tile.count -= 1;
+						break;
+					}
+					ind += 1;
+					ind = ind % 4;
 				}
-				ind += 1;
-				ind = ind % 4;
+				tile.index = ind;
 			}
-			tile.index = ind;
 		} else {
 			tile.cd -= delta;
 		}
@@ -278,6 +303,12 @@ let KDMoveObjectFunctions = {
 		}
 		return false;
 	},
+	'@': (moveX, moveY) => {
+		if (!KinkyDungeonFlags.get("nobutton")) {
+			KDStartDialog("Button", "", true);
+		}
+		return false;
+	},
 	'l': (moveX, moveY) => {
 		if (!KinkyDungeonFlags.get("noleyline") && KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax && KDTile(moveX, moveY) && KDTile(moveX, moveY).Leyline) {
 			KDStartDialog("Leyline", "", true);
@@ -466,6 +497,27 @@ function KDSlimeImmune(enemy) {
  * @type {Record<string, (delta, entity: entity, tile: effectTile) => boolean>}
  */
 let KDEffectTileFunctions = {
+	"PressurePlateHold": (delta, entity, tile) => {
+		KDCreateEffectTile(tile.x, tile.y, {
+			name: "WireSparks",
+			duration: 2,
+		}, 0);
+		return false;
+	},
+	"PressurePlate": (delta, entity, tile) => {
+		let tags = KDEffectTileTags(tile.x, tile.y);
+		if (!tags.ppactive) {
+			KDCreateEffectTile(tile.x, tile.y, {
+				name: "WireSparks",
+				duration: 2,
+			}, 0);
+		}
+		KDCreateEffectTile(tile.x, tile.y, {
+			name: "PressurePlateActive",
+			duration: 2,
+		}, 0);
+		return false;
+	},
 	"SlimeBurning": (delta, entity, tile) => {
 		if (!KDEntityHasBuff(entity, "Drenched")) {
 			let slimeWalker = KDSlimeWalker(entity);
@@ -685,6 +737,98 @@ let KDEffectTileCreateFunctionsCreator = {
 		}
 		return true;
 	},
+	"WireSparks": (newTile, existingTile) => {
+		if (existingTile.tags.includes("wire")) {
+			let mapTile = KinkyDungeonTilesGet(newTile.x + ',' + newTile.y);
+			if (mapTile?.wireType) {
+				if (KDActivateMapTile[mapTile.wireType](mapTile, newTile.x, newTile.y)) {
+					return true;
+				}
+			}
+
+			let rt = KDEffectTileTags(existingTile.x + 1, existingTile.y);
+			let lt = KDEffectTileTags(existingTile.x - 1, existingTile.y);
+			let ut = KDEffectTileTags(existingTile.x, existingTile.y - 1);
+			let dt = KDEffectTileTags(existingTile.x, existingTile.y + 1);
+			if (!rt.signalFrame && rt.wire) {
+				KDCreateEffectTile(existingTile.x + 1, existingTile.y, {
+					name: "WireSparksAct",
+					duration: 1,
+				}, 0);
+				KDCreateEffectTile(existingTile.x + 1, existingTile.y, {
+					name: "WireSparks",
+					duration: 2,
+				}, 0);
+			}
+			if (!lt.signalFrame && lt.wire) {
+				KDCreateEffectTile(existingTile.x - 1, existingTile.y, {
+					name: "WireSparksAct",
+					duration: 1,
+				}, 0);
+				KDCreateEffectTile(existingTile.x - 1, existingTile.y, {
+					name: "WireSparks",
+					duration: 2,
+				}, 0);
+			}
+			if (!dt.signalFrame && dt.wire) {
+				KDCreateEffectTile(existingTile.x, existingTile.y + 1, {
+					name: "WireSparksAct",
+					duration: 1,
+				}, 0);
+				KDCreateEffectTile(existingTile.x, existingTile.y + 1, {
+					name: "WireSparks",
+					duration: 2,
+				}, 0);
+			}
+			if (!ut.signalFrame && ut.wire) {
+				KDCreateEffectTile(existingTile.x, existingTile.y - 1, {
+					name: "WireSparksAct",
+					duration: 1,
+				}, 0);
+				KDCreateEffectTile(existingTile.x, existingTile.y - 1, {
+					name: "WireSparks",
+					duration: 2,
+				}, 0);
+			}
+		}
+		return true;
+
+	},
+};
+
+/**
+ * Return is whether or not something the player should know about happened
+ * Return type is whether or not the signal should stop (true) or pass (false)
+ * @type {Record<string, (tile: any, x: number, y: number) => boolean>}
+ */
+let KDActivateMapTile = {
+	"increment": (tile, x, y) => {
+		if (!tile.count) tile.count = 0;
+		tile.count += 1;
+		return false;
+	},
+	"AutoDoor_Toggle": (tile, x, y) => {
+		let entity = KinkyDungeonEntityAt(x, y);
+		if (entity) return true;
+
+		if (KinkyDungeonMapGet(x, y) == 'Z')
+			KinkyDungeonMapSet(x, y, 'z');
+		else
+			KinkyDungeonMapSet(x, y, 'Z');
+		return true;
+	},
+	"AutoDoor_HoldOpen": (tile, x, y) => {
+		KinkyDungeonMapSet(x, y, 'z');
+		return true;
+	},
+	"AutoDoor_HoldClosed": (tile, x, y) => {
+		let entity = KinkyDungeonEntityAt(x, y);
+		if (entity) return true;
+
+		KinkyDungeonMapSet(x, y, 'Z');
+		return true;
+	},
+
 };
 
 /**

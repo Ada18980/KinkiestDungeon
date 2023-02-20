@@ -114,8 +114,6 @@ type KDHasTags = {
 }
 
 interface KDRestraintProps {
-	/** This restraint always behaves as if it has the bypass property */
-	bypass?: boolean,
 
 	inventory?: boolean,
 	power?: number,
@@ -1550,13 +1548,13 @@ interface KinkyDialogue {
 	/** Shows the quick inventory */
 	inventory?: boolean;
 	/** Function to play when clicked. If not specified, nothing happens.  Bool is whether or not to abort current click*/
-	clickFunction?: (gagged: boolean) => boolean | undefined;
+	clickFunction?: (gagged: boolean, player: entity) => boolean | undefined;
 	/** Function to play when clicked, if considered gagged. If not specified, will use the default function. */
-	gagFunction?: () => boolean | undefined;
+	gagFunction?: (player: entity) => boolean | undefined;
 	/** Will not appear unless function returns true */
-	prerequisiteFunction?: (gagged: boolean) => boolean;
+	prerequisiteFunction?: (gagged: boolean, player: entity) => boolean;
 	/** Will appear greyed out unless true */
-	greyoutFunction?: (gagged: boolean) => boolean;
+	greyoutFunction?: (gagged: boolean, player: entity) => boolean;
 	greyoutTooltip?: string;
 	/** List of personalities supported by this dialogue */
 	personalities?: string[];
