@@ -9,9 +9,9 @@ let KinkyDungeonEnemies = [
 		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "FactoryDoll", bound: "FactoryDoll", playLine: "Gagged", tags: KDMapInit(["prisoner", "doll", "human", "minor", "peaceful", "noshop"]), faction: "Prisoner", lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: 0.1,
-		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0,
+		visionRadius: 0, maxhp: 12, minLevel:0, weight:-10, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0,
 		Behavior: {noPlay: true},
-		terrainTags: {}, floors:KDMapInit([])},
+		terrainTags: {"bellowsDoll": 20}, allFloors: true},
 
 
 
@@ -513,7 +513,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, followRange: 1, projectileAttack: true, useLock: "Red",
 		bindOnDisable: true, suicideOnAdd: true,
 		specialCD: 30, specialAttack: "Stun", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 3, specialRange: 7, specialWidth: 1.5, specialMinrange: 3, specialsfx: "Laser", stunTime: 8,
-		attack: "MeleeBindSuicide", attackPoints: 3, attackWidth: 1, attackRange: 1, power: 3, dmgType: "crush", multiBind: 2,
+		attack: "MeleeBindSuicide", attackPoints: 3, attackWidth: 1, attackRange: 1, power: 3, dmgType: "crush", multiBind: 2, fullBoundBonus: 6,
 		minLevel:0, weight:-4, terrainTags: {"secondhalf":0.5, "thirdhalf":0.5, "increasingWeight":0.25, "metalAnger": 4, "metalRage": 2, "metalPleased": 4, "metalFriendly": 4, "robot": 14}, shrines: ["Metal"], allFloors: true,
 		dropTable: []},
 	{name: "CaptureBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#aaaaaa",
@@ -535,7 +535,7 @@ let KinkyDungeonEnemies = [
 			punishRemote: 4,
 			punishRemoteChance: 0.25,
 		},
-		attack: "MeleeBind", attackPoints: 4, attackWidth: 3, tilesMinRange: 2, attackRange: 2, power: 3, dmgType: "crush", multiBind: 2,
+		attack: "MeleeBind", attackPoints: 4, attackWidth: 3, tilesMinRange: 2, attackRange: 2, power: 3, dmgType: "crush", multiBind: 2, fullBoundBonus: 2,
 		minLevel:3, weight:-6, terrainTags: {"secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 6, "metalRage": 4, "metalPleased": 6, "metalFriendly": 4, "robot": 10}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}]},
 	{name: "EnforcerBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#6E9FA3",
@@ -558,7 +558,7 @@ let KinkyDungeonEnemies = [
 			punishRemote: 6,
 			punishRemoteChance: 0.5,
 		},
-		attack: "SpellMeleeBind", attackPoints: 2, attackWidth: 1, attackRange: 3, power: 1, dmgType: "crush", multiBind: 1, fullBoundBonus: 2,
+		attack: "SpellMeleeBind", attackPoints: 2, attackWidth: 1, attackRange: 3, power: 1, dmgType: "crush", multiBind: 1, fullBoundBonus: 3,
 		minLevel:9, weight:-106, terrainTags: {"thirdhalf":1, "increasingWeight":0.5, "open": 100, "metalAnger": 44, "metalRage": 13, "metalPleased": 44, "metalFriendly": 13, "robot": 6}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 10, noSummon: true}]},
 

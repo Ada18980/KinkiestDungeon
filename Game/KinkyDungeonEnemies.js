@@ -48,7 +48,7 @@ function KinkyDungeonGetEnemyByName(Name) {
  * @returns {{x: number, y: number, type: string, radius: number}}
  */
 function KinkyDungeonNearestJailPoint(x, y, filter, any, qualified) {
-	let filt = filter ? filter : ["jail"];
+	let filt = filter ? filter : ["jail", "dropoff"];
 	let dist = 100000;
 	let point = null;
 	let leash = KinkyDungeonGetRestraintItem("ItemNeckRestraints");

@@ -781,7 +781,7 @@ function KinkyDungeonJailGetLeashPoint(xx, yy, enemy) {
  */
 function KinkyDungeonPlayerInCell(any, qualified) {
 	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, undefined, any, qualified);
-	if (!nearestJail) return false;
+	if (!nearestJail || nearestJail.type != "jail") return false;
 	return KDistChebyshev(KinkyDungeonPlayerEntity.x - nearestJail.x, KinkyDungeonPlayerEntity.y - nearestJail.y) < 2;
 	//return (Math.abs(KinkyDungeonPlayerEntity.x - KinkyDungeonStartPosition.x) < KinkyDungeonJailLeashX - 1 && Math.abs(KinkyDungeonPlayerEntity.y - KinkyDungeonStartPosition.y) <= KinkyDungeonJailLeash);
 }
@@ -1013,12 +1013,13 @@ function KDEnemyIsTemporary(enemy) {
 	return enemy.Enemy.tags.temporary || (enemy.lifetime > 0);
 }
 
+/** Kicks enemies away, and also out of offlimits zones if they are aware */
 function KDKickEnemies(nearestJail) {
 	let enemies = [];
 	for (let e of  KinkyDungeonEntities) {
 		if (!e.Enemy.tags.temporary) {
-			if (!e.Enemy.tags.prisoner && !KDEnemyHasFlag(e, "imprisoned")) {
-				if (KDistChebyshev(e.x - nearestJail.x, e.y - nearestJail.y) <= 4) {
+			if ((e.x == nearestJail.x && e.y == nearestJail.y) || (!e.Enemy.tags.prisoner && !e.Enemy.tags.peaceful && !KDEnemyHasFlag(e, "imprisoned"))) {
+				if (KDistChebyshev(e.x - nearestJail.x, e.y - nearestJail.y) <= 4 || (e.aware || e.vp > 0.01 || e.aggro > 0)) {
 					let p = KinkyDungeonGetRandomEnemyPoint(true);
 					if (p) {
 						e.x = p.x;

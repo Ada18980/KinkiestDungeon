@@ -701,7 +701,8 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 				console.log(`${performance.now() - startTime} ms for charger creation`);
 				startTime = performance.now();
 			}
-			KinkyDungeonPlaceBrickwork(brickchance, Floor, width, height);
+			if (!altType || altType.nobrick)
+				KinkyDungeonPlaceBrickwork(brickchance, Floor, width, height);
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for brickwork creation`);
 				startTime = performance.now();

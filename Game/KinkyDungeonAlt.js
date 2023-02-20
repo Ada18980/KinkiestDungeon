@@ -157,6 +157,7 @@ let alts = {
 		nostartstairs: true,
 		notraps: false,
 		noClutter: true,
+		nobrick: true,
 		nolore: true,
 	},
 	"JourneyFloor": {
@@ -745,11 +746,50 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 	let CellHeight = 12;
 	let CellX = width / 2 - CellWidth / 2;
 	let CellY = height / 2 - CellHeight / 2;
+	let cavityStart = 5;
+	let cavityEnd = 2;
 
 	// Hollow out a greater cell area
-	KinkyDungeonCreateRectangle(5, 0, CellX + CellWidth, height, false, false, false, false);
+	KinkyDungeonCreateRectangle(cavityStart, 0, CellX + CellWidth - cavityEnd, height, false, false, false, false);
 
-	KinkyDungeonCreateRectangle(CellX, CellY, CellWidth, CellHeight, true, false, false, false);
+	KinkyDungeonCreateRectangle(CellX, CellY, CellWidth, CellHeight, true, false, false, true);
+
+	// Create some protrustions in the walls
+	let leftPassages = [
+		Math.floor(KDRandom()*4),
+		Math.floor(KDRandom()*4),
+		Math.floor(KDRandom()*4),
+		Math.floor(KDRandom()*4),
+		Math.floor(KDRandom()*4),
+		Math.floor(KDRandom()*4),
+	];
+	let rightPassages = [
+		Math.floor(KDRandom()*6),
+		Math.floor(KDRandom()*6),
+		Math.floor(KDRandom()*6),
+		Math.floor(KDRandom()*6),
+		Math.floor(KDRandom()*6),
+		Math.floor(KDRandom()*6),
+	];
+	let ii = 0;
+	for (let l of leftPassages) {
+		KinkyDungeonCreateRectangle(cavityStart - l, 1 + 3 * ii, l, 2, false, false, false, false);
+		ii += 1;
+	}
+	ii = 0;
+	for (let l of rightPassages) {
+		KinkyDungeonCreateRectangle(cavityStart - cavityEnd + CellX + CellWidth, 1 + 3 * ii, l, 2, false, false, false, false);
+		ii += 1;
+	}
+
+	// Create grates
+	KinkyDungeonMapSet(CellX + 2 + Math.floor(KDRandom()*(CellWidth - 5)), KDRandom() < 0.5 ? CellY : (CellY+CellHeight - 1), 'g');
+	if (KDRandom() < 0.5)
+		KinkyDungeonMapSet(CellX + 2 + Math.floor(KDRandom()*(CellWidth - 5)), KDRandom() < 0.5 ? CellY : (CellY+CellHeight - 1), 'g');
+	if (KDRandom() < 0.5)
+		KinkyDungeonMapSet(CellX,CellY + 2 + Math.floor(KDRandom()*(CellHeight - 5)),  'g');
+	if (KDRandom() < 0.5)
+		KinkyDungeonMapSet((CellX+CellWidth - 1),CellY + 2 + Math.floor(KDRandom()*(CellHeight - 5)), 'g');
 	// Create light posts
 	for (let xx = CellX + 2; xx < CellX + CellWidth; xx += 5) {
 		for (let yy = 2; yy < height; yy += 5) {
@@ -761,8 +801,48 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		}
 	}
 
+	let dollCount = 10;
+	// Generate dolls in the inside
+	for (let i = 0; i < dollCount; i++) {
+		let XX = CellX + 1 + Math.round(KDRandom() * (CellWidth-3));
+		let YY = CellY + 1 + Math.round(KDRandom() * (CellHeight-3));
+		let entity = KinkyDungeonEntityAt(XX, YY);
+		if (entity || (XX == width/2 && YY == height/2)) continue;
+		let Enemy = KinkyDungeonGetEnemy(["bellowsDoll"], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["doll", "peaceful"]);
+		if (Enemy) {
+			DialogueCreateEnemy(XX, YY, Enemy.name);
+		}
+	}
+	let robotCount = 8 + Math.min(14, KinkyDungeonDifficulty/10 + MiniGameKinkyDungeonLevel/3);
+	// Generate robots in the outside
+	for (let i = 0; i < robotCount; i++) {
+		let XX = KDRandom() < 0.5 ?
+			(cavityStart + Math.round(KDRandom() * (CellX - cavityStart - 1)))
+			: (CellX + CellWidth + Math.round(KDRandom() * (cavityStart - 1 - cavityEnd)));
+		let YY = CellY + 1 + Math.round(KDRandom() * (CellHeight-2));
+		let entity = KinkyDungeonEntityAt(XX, YY);
+		if (entity || (XX == width/2 && YY == height/2)) continue;
+		let Enemy = KinkyDungeonGetEnemy(["robot"], MiniGameKinkyDungeonLevel + 4, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["robot"]);
+		if (Enemy) {
+			let e = DialogueCreateEnemy(XX, YY, Enemy.name);
+			e.faction = "Enemy";
+		}
+	}
+
+	KDGameData.JailPoints.push({x: width/2, y: height/2, type: "dropoff", radius: 1});
+
 	KinkyDungeonStartPosition = {x: 2, y: height/2};
-	KinkyDungeonEndPosition = {x: width - 2, y: height/2};
+
+	if (KDRandom() < 0.5) {
+		// Left side
+		let cavityNum = Math.floor(KDRandom()*leftPassages.length);
+		KinkyDungeonEndPosition = {x: cavityStart - leftPassages[cavityNum], y: 1 + 3 * cavityNum};
+	} else {
+		// Right side
+		let cavityNum = Math.floor(KDRandom()*rightPassages.length);
+
+		KinkyDungeonEndPosition = {x: cavityStart - cavityEnd + CellX + CellWidth + rightPassages[cavityNum] - 1, y: 1 + 3 * cavityNum};
+	}
 
 	KinkyDungeonMapSet(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 's');
 }
