@@ -493,6 +493,7 @@ function KDSlimeImmune(enemy) {
 }
 
 /**
+ * These happen when stepped on
  * Return is whether or not something the player should know about happened
  * @type {Record<string, (delta, entity: entity, tile: effectTile) => boolean>}
  */
@@ -516,6 +517,14 @@ let KDEffectTileFunctions = {
 			name: "PressurePlateActive",
 			duration: 2,
 		}, 0);
+		return false;
+	},
+	"PressurePlateOneUse": (delta, entity, tile) => {
+		KDCreateEffectTile(tile.x, tile.y, {
+			name: "WireSparks",
+			duration: 2,
+		}, 0);
+		tile.duration = 0;
 		return false;
 	},
 	"SlimeBurning": (delta, entity, tile) => {
@@ -822,6 +831,17 @@ let KDActivateMapTile = {
 		return true;
 	},
 	"AutoDoor_HoldClosed": (tile, x, y) => {
+		let entity = KinkyDungeonEntityAt(x, y);
+		if (entity) return true;
+
+		KinkyDungeonMapSet(x, y, 'Z');
+		return true;
+	},
+	"AutoDoor_Open": (tile, x, y) => {
+		KinkyDungeonMapSet(x, y, 'z');
+		return true;
+	},
+	"AutoDoor_Close": (tile, x, y) => {
 		let entity = KinkyDungeonEntityAt(x, y);
 		if (entity) return true;
 

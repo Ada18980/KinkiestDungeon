@@ -331,6 +331,7 @@ function KinkyDungeonHandleWanderingSpawns(delta) {
 		EntranceAdjust += KinkyDungeonSearchEntranceAdjustAmount - 30;
 		effLevel += 12;
 	}
+
 	let sleepTurnsSpeedMult = 100;
 	let sleepTurnsPerExtraSpawnLevel = 25;
 	let baseChance = ((KDGameData.SleepTurns > 0 && (KinkyDungeonStatStamina > KinkyDungeonStatStaminaMax - 10 * KinkyDungeonStatStaminaRegenSleep || KDGameData.SleepTurns < 11)) ? 0.05 : 0.0005) * Math.sqrt(Math.max(1, effLevel)) * (1 + KinkyDungeonTotalSleepTurns / sleepTurnsSpeedMult);

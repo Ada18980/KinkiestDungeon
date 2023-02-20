@@ -829,6 +829,7 @@ let KDDialogue = {
 						KinkyDungeonMapSet(door.x, door.y, 'd');
 					}
 					KinkyDungeonEntities = [];
+					KDGameData.RespawnQueue = [];
 					KDUpdateEnemyCache = true;
 					let e = DialogueCreateEnemy(door.x, door.y, "ShopkeeperRescue");
 					e.allied = 9999;
