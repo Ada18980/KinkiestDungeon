@@ -40,17 +40,24 @@ let KDPlayerEffects = {
 		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		return {sfx: "Evil", effect: true};
 	},
+	"RubberBolt": (target, damage, playerEffect, spell, faction, bullet) => {
+		KDPlayerEffectRestrain(spell, playerEffect.count, ["redLatexBasic"], "Dollsmith");
+
+		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRubberBolt"), "yellow", playerEffect.time);
+		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		return {sfx: "Evil", effect: true};
+	},
 	"ObsidianBolt": (target, damage, playerEffect, spell, faction, bullet) => {
 		KDPlayerEffectRestrain(spell, playerEffect.count, ["obsidianRestraints"], "Elemental");
 
-		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonObsidianBolt"), "yellow", playerEffect.time);
+		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonObsidianBolt"), "yellow", playerEffect.time);
 		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		return {sfx: "Evil", effect: true};
 	},
 	"CelestialBolt": (target, damage, playerEffect, spell, faction, bullet) => {
 		KDPlayerEffectRestrain(spell, playerEffect.count, ["celestialRopes"], "Angel");
 
-		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCelestialBolt"), "yellow", playerEffect.time);
+		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonCelestialBolt"), "yellow", playerEffect.time);
 		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		return {sfx: "Evil", effect: true};
 	},

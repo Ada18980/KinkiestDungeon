@@ -871,7 +871,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 	for (let i = 0; i < robotCount; i++) {
 		let XX = i % 2 == 0 ?
 			(cavityStart + Math.round(KDRandom() * (CellX - cavityStart - 1)))
-			: (CellX + CellWidth + Math.round(KDRandom() * (cavityStart - 1 - cavityEnd)));
+			: (CellX + CellWidth + 1 + Math.round(KDRandom() * (cavityStart - 2 - cavityEnd)));
 		let YY = CellY + 1 + Math.round(KDRandom() * (CellHeight-2));
 		let entity = KinkyDungeonEntityAt(XX, YY);
 		if (entity || (XX == width/2 && YY == height/2)) continue;

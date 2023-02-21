@@ -184,6 +184,8 @@ interface KDRestraintProps {
 	inaccessible?: boolean,
 	/** This item lets you ignore its inaccessibility for the sake of trussing up the player */
 	deepAccessible?: boolean,
+	/** WIP, does nothing yet. Should allow you to access the item under even inaccessible stuff */
+	alwaysAccessible?: boolean,
 	/** This item can be rendered when linked */
 	renderWhenLinked?: string[];
 	// Player must have one of these PlayerTags to equip
@@ -533,6 +535,8 @@ interface enemy extends KDHasTags {
 
 	/** Restraint filters */
 	RestraintFilter?: {
+		/** Starts with more restraints!! */
+		bonusRestraints?: number,
 		/** This enemy can apply restraints without needing them in her pockets */
 		unlimitedRestraints?: boolean,
 		/** Restraints applied must all be from inventory */

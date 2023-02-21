@@ -4700,9 +4700,10 @@ function KDRestockRestraints(enemy, restMult) {
 function KDDetermineBaseRestCount(enemy, restMult) {
 	let rCount = 1;
 	if (enemy.Enemy.tags.boss) rCount += 6;
-	else if (enemy.Enemy.tags.miniboss) rCount += 2;
+	else if (enemy.Enemy.tags.miniboss) rCount += 3;
 	else if (enemy.Enemy.tags.elite) rCount += 2;
 	else if (!enemy.Enemy.tags.minor) rCount += 1;
+	if (enemy.Enemy.RestraintFilter?.bonusRestraints) rCount += enemy.Enemy.RestraintFilter?.bonusRestraints;
 	if (KinkyDungeonStatsChoice.has("TightRestraints")) {
 		rCount *= 2;
 		rCount += 1;

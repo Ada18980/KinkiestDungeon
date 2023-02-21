@@ -1658,6 +1658,19 @@ AttackJungleDryadStun,"The dryad sings a song that mesmerizes you! (DamageTaken)
 AttackJungleDryad,"The dryad tickles you with a leaf! (DamageTaken)"
 
 
+NameDollsmithDoll,Highly-Motivated Doll
+KillDollsmithDoll,"The doll falls to the ground, moaning loudly."
+AttackDollsmithDoll,"The doll rubs her body against yours. You can feel the conduction. (DamageTaken)"
+AttackDollsmithDollSlow,"The doll tackles you and squeezes you with her trembling legs! (DamageTaken)"
+
+NameDollsmith,Dollsmith
+KillDollsmith,"The dollsmith's suit locks her wrists together and renders her helpless."
+AttackDollsmith,"The dollsmith runs a latex-covered finger across your vulnerable body! (DamageTaken)"
+AttackDollsmithBind,"The dollsmith grabs you and applies her favorite doll restraints! (+RestraintAdded)"
+AttackDollsmithLock,"The dollsmith slaps a lock onto your restraints! (DamageTaken)"
+
+
+
 NameAlchemist,Alchemist
 KillAlchemist,"The alchemist screams and runs."
 AttackAlchemistBind,"The Alchemist restrains you! (+RestraintAdded)"
@@ -2955,6 +2968,27 @@ RestraintLatexOTNGag,Latex Mask
 RestraintLatexOTNGagDesc,A slick layer of blue latex stretched over the mouth.
 RestraintLatexOTNGagDesc2,It's very tight and makes it hard to move your mouth.
 
+
+RestraintRedLatexHands,Rubberized Gloves
+RestraintRedLatexHandsDesc,"A mass of alchemical latex stretched over your arms, then hardened."
+RestraintRedLatexHandsDesc2,"Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!"
+
+RestraintRedLatexBoots,Rubberized Socks
+RestraintRedLatexBootsDesc,"A mass of alchemical latex stretched over your legs, then hardened."
+RestraintRedLatexBootsDesc2,"Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!"
+
+RestraintRedLatexMask,Rubberized Mask
+RestraintRedLatexMaskDesc,"A mass of alchemical latex stretched over your entire face, then hardened."
+RestraintRedLatexMaskDesc2,"Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!"
+
+RestraintRedLatexBallGag,Rubberized Ball Gag
+RestraintRedLatexBallGagDesc,"A mass of alchemical latex inflated to fill your mouth, then hardened."
+RestraintRedLatexBallGagDesc2,"Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!"
+
+RestraintRedLatexOTNGag,Rubberized OTN Mask
+RestraintRedLatexOTNGagDesc,"A mass of alchemical latex stretched over your mouth, then hardened."
+RestraintRedLatexOTNGagDesc2,"Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!"
+
 RestraintWolfPanties,Wolf Panties
 RestraintWolfPantiesDesc,"A set of vibrating panties designed to help subdue unruly wolfgirls."
 RestraintWolfPantiesDesc2,"It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber."
@@ -2968,19 +3002,47 @@ RestraintExpArmbinderHarness,Binder Straps Cincher
 RestraintExpArmbinderHarnessDesc,"A tight cincher attached to a binder used to ensure restraints will not come off."
 RestraintExpArmbinderHarnessDesc2,"It's tied in the back and reinforced with steel boning."
 RestraintExpAnkleCuffs,Blacksteel Ankle Cuffs
-RestraintExpAnkleCuffsDesc,"Highly durable cuffs that can withstand even powerful acid."
-RestraintExpAnkleCuffsDesc2,"They are not coming off without the key."
+RestraintExpAnkleCuffsDesc,"Highly durable cuffs made from top-quality ancient metal."
+RestraintExpAnkleCuffsDesc2,"They're made of Blacksteel, a metal used by the Old Civilization."
 KinkyDungeonLinkExpAnkleCuffs,"The enemy attaches your ankle cuffs together!"
-RestraintExpAnkleCuffs2,Cuffs Chain
-RestraintExpAnkleCuffs2Desc,"Highly durable cuffs that can withstand even powerful acid."
-RestraintExpAnkleCuffs2Desc2,"They are not coming off without the key."
+RestraintExpAnkleCuffs2,Blacksteel Cuffs Chain
+RestraintExpAnkleCuffs2Desc,"Highly durable cuffs made from top-quality ancient metal."
+RestraintExpAnkleCuffs2Desc2,"They're made of Blacksteel, a metal used by the Old Civilization."
 KinkyDungeonUnLinkExpAnkleCuffs2,"The ankle cuff chain detaches!"
 RestraintExpCollar,Latex Posture Collar
 RestraintExpCollarDesc,"A strict collar that makes it tougher to escape from other items."
 RestraintExpCollarDesc2,"It has steel boning but could be cut with enough care."
-RestraintExpBoots,Metal Ballet Heels
+RestraintExpBoots,Blacksteel Ballet Heels
 RestraintExpBootsDesc,"A pair of strict boots for making pets more manageable. A skilled person can still walk in these."
-RestraintExpBootsDesc2,"They are reinforced with metal and impossible to remove with a knife."
+RestraintExpBootsDesc2,"They are reinforced with top-quality ancient metal."
+
+RestraintBlacksteelLegCuffs,Blacksteel Leg Cuffs
+RestraintBlacksteelLegCuffsDesc,"A pair of chained cuffs made of Blacksteel, designed to slow the wearer."
+RestraintBlacksteelLegCuffsDesc2,"They're made of Blacksteel, a metal used by the Old Civilization."
+KinkyDungeonLinkBlacksteelLegCuffs,"The enemy attaches your ankle cuffs together!"
+
+RestraintBlacksteelArmCuffs,Blacksteel Cuffs
+RestraintBlacksteelArmCuffsDesc,"A pair of Blacksteel cuffs that make it easy to restrain you."
+RestraintBlacksteelArmCuffsDesc2,"They're made of Blacksteel, a metal used by the Old Civilization."
+KinkyDungeonLinkBlacksteelArmCuffs,"The enemy attaches your wrist cuffs together!"
+
+RestraintBlacksteelArmCuffs2,Blacksteel Wrist Chain
+RestraintBlacksteelArmCuffs2Desc,"A pair of Blacksteel cuffs keeping your arms behind your back."
+RestraintBlacksteelArmCuffs2Desc2,"They're made of Blacksteel, a metal used by the Old Civilization."
+KinkyDungeonUnLinkBlacksteelArmCuffs2,"Your cuffs detatch!"
+KinkyDungeonLinkBlacksteelArmCuffs2,"The enemy attaches your elbow cuffs together!"
+
+RestraintBlacksteelArmCuffs3,Blacksteel Wrist Chain
+RestraintBlacksteelArmCuffs3Desc,"A full set of Blacksteel cuffs keeping your arms in a strict elbow tie!"
+RestraintBlacksteelArmCuffs3Desc2,"They're made of Blacksteel, a metal used by the Old Civilization."
+KinkyDungeonUnLinkBlacksteelArmCuffs3,"Your wrists detatch, leaving your elbows still bound!"
+
+RestraintBlacksteelArmCuffs4,Blacksteel Elbow Chain
+RestraintBlacksteelArmCuffs4Desc,"A pair of Blacksteel cuffs keeping your elbows locked together!."
+RestraintBlacksteelArmCuffs4Desc2,"They're made of Blacksteel, a metal used by the Old Civilization."
+KinkyDungeonUnLinkBlacksteelArmCuffs4,"Your elbows detatch!"
+KinkyDungeonLinkBlacksteelArmCuffs4,"The enemy attaches your wrist cuffs back together!"
+
 
 RestraintHighsecArmbinder,High-Security Armbinder
 RestraintHighsecArmbinderDesc,"An mythril armbinder enclosing your hands and arms completely, making your hands useless."
@@ -3326,6 +3388,12 @@ RestraintMagicBeltDesc2,"The shields will open up to accept new toys, but won't 
 RestraintTrapBelt,Steel Chastity Belt
 RestraintTrapBeltDesc,"A cruel device used for locking magical vibrators in place."
 RestraintTrapBeltDesc2,"The shields will open up to accept new toys, but won't let them out..."
+RestraintBlacksteelBelt,Blacksteel Belt
+RestraintBlacksteelBeltDesc,"A cruel device used for locking magical vibrators in place."
+RestraintBlacksteelBeltDesc2,"Blacksteel is a metal used by the Old Civilization. It is very difficult to scratch, let alone cut."
+RestraintBlacksteelBra,Blacksteel Bra
+RestraintBlacksteelBraDesc,"A cruel device used for locking magical massagers in place."
+RestraintBlacksteelBraDesc2,"Blacksteel is a metal used by the Old Civilization. It is very difficult to scratch, let alone cut."
 RestraintTrapBeltProto,Prototype Belt
 RestraintTrapBeltProtoDesc,"A strange device built using unknown technology."
 RestraintTrapBeltProtoDesc2,"The lock is extremely advanced, and the ports at the bottom readily accept toys but won't let them out..."
@@ -4585,6 +4653,8 @@ KinkyDungeonSpellCelestialBolt,Celestial Orb
 KinkyDungeonCelestialBolt,You are snugly wrapped in glowing ropes!
 KinkyDungeonSpellObsidianBolt,Obsidian Orb
 KinkyDungeonObsidianBolt,Metallic restraints encircle your body!
+KinkyDungeonSpellRubberBolt,Rubber Bolt
+KinkyDungeonRubberBolt,"The latex spreads across your limbs and rubberizes, forming a tough barrier!"
 
 
 KinkyDungeonSpellPlayerBola,Bola
@@ -6296,6 +6366,7 @@ KinkyDungeonHeartDistraction,"+Distraction"
 KinkyDungeonHeartStamina,"+Stamina"
 KinkyDungeonHeartWill,"+Willpower"
 KinkyDungeonHeartMana,"+Mana"
+KinkyDungeonHeartDiscard,"Discard (destroys it permanently!)"
 
 KinkyDungeonVulnerable,The EnemyName is vulnerable and took an extra AMOUNT damage!
 KinkyDungeonUnseen,The EnemyName isn't aware of you and took an extra AMOUNT damage!

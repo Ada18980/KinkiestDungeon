@@ -171,6 +171,7 @@ function KinkyDungeonItemEvent(Item) {
 			KDGameData.HeartTaken = true;
 		} else if (KinkyDungeonIsPlayer()) {
 			KinkyDungeonDrawState = "Heart";
+			KinkyDungeonInterruptSleep();
 			KinkyDungeonSetFlag("NoDialogue", 3);
 		}
 	} else if (Item.name == "Keyring") {
@@ -178,7 +179,7 @@ function KinkyDungeonItemEvent(Item) {
 		KinkyDungeonAggroAction('key', {});
 	} else if (KinkyDungeonGetRestraintByName(Item.name)) {
 		if (!KinkyDungeonInventoryGetLoose(Item.name)) {
-			KinkyDungeonInventoryAdd({name: Item.name, type: LooseRestraint, events:Item.events, quantity: 1});
+			KinkyDungeonInventoryAdd({name: Item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:Item.events, quantity: 1});
 		} else {
 			if (!KinkyDungeonInventoryGetLoose(Item.name).quantity) KinkyDungeonInventoryGetLoose(Item.name).quantity = 0;
 			KinkyDungeonInventoryGetLoose(Item.name).quantity += 1;
@@ -234,6 +235,11 @@ function KinkyDungeonDrawHeart() {
 	DrawButtonVis(950, 700, 250, 60, TextGet("KinkyDungeonHeartStamina"), KinkyDungeonStatStaminaMax < KDMaxStat ? "#ffffff" : "#999999");
 	DrawButtonVis(1250, 700, 250, 60, TextGet("KinkyDungeonHeartMana"), KinkyDungeonStatManaMax < KDMaxStat ? "#ffffff" : "#999999");
 	DrawButtonVis(1550, 700, 250, 60, TextGet("KinkyDungeonHeartWill"), KinkyDungeonStatWillMax < KDMaxStat ? "#ffffff" : "#999999");
+
+	DrawButtonKDEx("discardheart", (bdata) => {
+		KinkyDungeonDrawState = "Game";
+		return true;
+	}, true, 1000, 850, 450, 60, TextGet("KinkyDungeonHeartDiscard"), KinkyDungeonStatWillMax < KDMaxStat ? "#ffffff" : "#999999");
 }
 
 function KinkyDungeonHandleHeart() {
