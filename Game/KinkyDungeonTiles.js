@@ -671,7 +671,7 @@ function KDConveyor(delta, X, Y) {
 				KDMovePlayer(X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
 				KinkyDungeonSendTextMessage(4, TextGet("KDConveyorPush"), "#ffff44", 2);
 			}
-		} else if (!KDIsImmobile(entity)) {
+		} else if (!KDIsImmobile(entity) && !entity.Enemy.tags.flying && !entity.Enemy.tags.ignoreconveyor && !entity.Enemy.ethereal) {
 			if (entity.Enemy.tags.prisoner) KDStaggerEnemy(entity);
 			if (!KDEnemyHasFlag(entity, "conveyed")) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 2);

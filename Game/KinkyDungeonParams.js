@@ -735,8 +735,8 @@ const KinkyDungeonMapParams = {
 
 	"bel":{//DungeonName8,-Orrery-
 		"background" : "SpookyForest",
-		"openness" : 3,
-		"density" : 5,
+		"openness" : 1,
+		"density" : 9,
 		"crackchance" : 0.12,
 		"barchance" : 0.1,
 		"brightness" : 1,

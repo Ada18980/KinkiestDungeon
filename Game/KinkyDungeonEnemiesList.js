@@ -504,7 +504,30 @@ let KinkyDungeonEnemies = [
 		visionRadius: 4.5, maxhp: 2, minLevel: 5, weight:10, movePoints: 2, attackPoints: 3, attack: "SpellMeleeSlowBindSuicide", suicideOnSpell: true, suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "crush",
 		terrainTags: {}, floors:KDMapInit(["tmp"]), shrines: ["Latex"]},
 
-	{name: "Drone", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true, color: "#ff3367", tags: KDMapInit(["ignoreharmless", "doortrap", "robot", "flying", "acidweakness", "soulresist", "minor", "ranged", "electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
+	{name: "OldDrone", faction: "Enemy", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
+		color: "#ff3367",
+		tags: KDMapInit(["ignoreharmless", "doortrap", "robot", "flying", "acidweakness", "soulresist", "minor", "ranged",
+			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
+		AI: "hunt", difficulty: 0.05,
+		events: [
+			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffff00"},
+		],
+		cueSfx: {
+			Block: "Clang",
+			Resist: "SoftShield",
+			Damage: "RobotHit",
+		},
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		armor: 1.5, maxhp: 5, movePoints: 1.1,
+		visionRadius: 7, followRange: 1, projectileAttack: true, useLock: "Red",
+		bindOnDisable: true, suicideOnAdd: true,
+		attack: "MeleeBindSuicideWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 2, dmgType: "electric", multiBind: 2, fullBoundBonus: 4,
+		minLevel:0, weight:15, terrainTags: {"oldrobot": 10}, shrines: ["Metal"], floors:KDMapInit(["bel"]),
+		dropTable: []},
+
+	{name: "Drone", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true, color: "#ff7755", tags: KDMapInit(["ignoreharmless", "doortrap", "robot", "flying", "acidweakness", "soulresist", "minor", "ranged", "electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
 		AI: "patrol", difficulty: 0.3,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ff0000"},
@@ -514,13 +537,16 @@ let KinkyDungeonEnemies = [
 			Resist: "SoftShield",
 			Damage: "RobotHit",
 		},
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
 		//summon: [
 		//{enemy: "Drone", range: 2, count: 2, chance: 0.7, strict: true},],
 		armor: 2, maxhp: 5, movePoints: 1.25,
 		visionRadius: 6, followRange: 1, projectileAttack: true, useLock: "Red",
 		bindOnDisable: true, suicideOnAdd: true,
 		specialCD: 30, specialAttack: "Stun", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 3, specialRange: 7, specialWidth: 1.5, specialMinrange: 3, specialsfx: "Laser", stunTime: 5,
-		attack: "MeleeBindSuicide", attackPoints: 3, attackWidth: 1, attackRange: 1, power: 3, dmgType: "crush", multiBind: 2, fullBoundBonus: 6,
+		attack: "MeleeBindSuicideWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 3, dmgType: "electric", multiBind: 2, fullBoundBonus: 6,
 		minLevel:0, weight:-4, terrainTags: {"secondhalf":0.5, "thirdhalf":0.5, "increasingWeight":0.25, "metalAnger": 4, "metalRage": 2, "metalPleased": 4, "metalFriendly": 4, "robot": 40}, shrines: ["Metal"], allFloors: true,
 		dropTable: []},
 	{name: "CaptureBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#aaaaaa",

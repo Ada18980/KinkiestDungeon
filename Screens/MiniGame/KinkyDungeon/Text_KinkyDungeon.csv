@@ -1743,6 +1743,12 @@ KinkyDungeonSummonSingleWolfShieldDrone,A Shield Drone takes off!
 KinkyDungeonSummonMultiWolfShieldDrone,"Several Shield Drones take flight, their shields interlinking."
 KinkyDungeonSpellDroneExplosion,Drone Explosion
 
+
+NameOldDrone,Rusty Drone
+KillOldDrone,"The drone's mechanisms grind to a halt."
+AttackOldDrone,"The drone uses a short-ranged electrocution attack! (DamageTaken)"
+AttackOldDroneBind,"The drone disassembles itself, revealing a set of restraining cables! (+RestraintAdded)"
+
 NameDrone,Drone
 KillDrone,"The drone fizzles and falls to the ground!"
 AttackDroneStun,"The drone zaps you with a restraining energy ray! (DamageTaken)"
