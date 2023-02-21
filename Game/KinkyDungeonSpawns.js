@@ -5,6 +5,8 @@
 function KinkyDungeonAddTags(tags, Floor) {
 	let security = (KinkyDungeonGoddessRep.Prisoner + 50);
 
+
+
 	if (Floor % KDLevelsPerCheckpoint >= 2 || Floor % KDLevelsPerCheckpoint == 0 || KinkyDungeonDifficulty >= 20) tags.push("secondhalf");
 	if (Floor % KDLevelsPerCheckpoint >= 3 || Floor % KDLevelsPerCheckpoint == 0 || KinkyDungeonDifficulty >= 40) tags.push("lastthird");
 
@@ -104,6 +106,7 @@ function KinkyDungeonAddTags(tags, Floor) {
 			}
 		}
 		tags.push("goddessPleased");
+
 	}
 
 
@@ -129,6 +132,11 @@ function KinkyDungeonAddTags(tags, Floor) {
 
 	if (security > 0) tags.push("jailbreak");
 	if (security > 40) tags.push("highsecurity");
+
+	let data = {
+		tags: tags,
+	};
+	KinkyDungeonSendEvent("calcEnemyTags", data);
 
 	return overrideTags;
 }

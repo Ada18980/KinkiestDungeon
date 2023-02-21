@@ -249,10 +249,13 @@ let KinkyDungeonStatsPresets = {
 
 	"Rusted": {category: "Map", id: "Rusted", cost: 1},
 	"Forgetful": {category: "Map", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
-	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0},
-	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0},
-	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, debuff: true, block: ["OnlyBrats"]},
-	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, debuff: true, block: ["NoBrats"]},
+	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
+	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"]},
+	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, tags: ["start"], debuff: true, block: ["OnlyBrats"]},
+	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], debuff: true, block: ["NoBrats"]},
+	"TapePref": {category: "Toggles", id: "TapePref", cost: 0, tags: ["start"], block: ["TapeOptout"]},
+	"TapeOptout": {category: "Toggles", id: "TapeOptout", cost: 0, tags: ["start"], debuff: true, block: ["TapePref"]},
+	"NoDoll": {category: "Toggles", id: "NoDoll", cost: 0, tags: ["start"], debuff: true},
 
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 

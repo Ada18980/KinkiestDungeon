@@ -3448,6 +3448,13 @@ function KinkyDungeonHandleEnemyEvent(Event, e, enemy, data) {
  * @type {Object.<string, Object.<string, function(string, *): void>>}
  */
 let KDEventMapGeneric = {
+	"calcEnemyTags": {
+		"perkTags": (e, data) => {
+			// This event adds tags to enemy tag determination based on perk prefs
+			if (KinkyDungeonStatsChoice.get("TapePref")) data.tags.push("tapePref");
+			else if (KinkyDungeonStatsChoice.get("TapeOptout")) data.tags.push("tapeOptout");
+		}
+	},
 	"postMapgen": {
 		"resetDollRoom": (e, data) => {
 			//if (!KDGameData.RoomType || !(alts[KDGameData.RoomType].data?.dollroom)) {
@@ -3458,10 +3465,10 @@ let KDEventMapGeneric = {
 	"beforeHandleStairs": {
 		"resetDollRoom": (e, data) => {
 			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
+				KDGameData.DollRoomCount += 1;
 				if (KDGameData.DollRoomCount >= 3) {
 					// Allow player to pass
 				} else {
-					KDGameData.DollRoomCount += 1;
 					data.overrideRoomType = true;
 					data.overrideProgression = true;
 					data.mapMod = "";

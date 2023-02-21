@@ -621,6 +621,10 @@ let KDTileGen = {
 		return null;
 	},
 	"DollDropoff": (x, y, tile, tileGenerator, data) => {
+		if (KinkyDungeonStatsChoice.get("NoDoll")) {
+			KinkyDungeonMapSet(x, y, '0');
+			return null;
+		}
 		KinkyDungeonMapSet(x, y, '5');
 		KDGameData.JailPoints.push({x: x, y: y, type: "dropoff", direction: tileGenerator.direction || {x: 0, y: -1}, radius: 1, restrainttags: ["dollstand"]});
 		//KinkyDungeonTilesSkinSet(x + "," + y, 'Bel');

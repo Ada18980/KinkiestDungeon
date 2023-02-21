@@ -370,7 +370,7 @@ KinkyDungeonStatBlackout,"Blackout"
 KinkyDungeonStatDescBlackout,"Blindfolds are stronger. While blindfolded you can only see enemies next to you."
 KinkyDungeonStatTotalBlackout,"Total Blackout"
 KinkyDungeonStatDescTotalBlackout,"Blindfolds are extremely punishing and you can't see explored areas while blindfolded."
-KinkyDungeonStatNoDoll,"No Forced Dollification"
+KinkyDungeonStatNoDoll,"Not a Doll"
 KinkyDungeonStatDescNoDoll,"You may still enter Doll Terminals, but enemies will not force you onto doll stands."
 KinkyDungeonStatNoNurse,"No Nurses"
 KinkyDungeonStatDescNoNurse,"Nurses will not appear in the game."
@@ -378,6 +378,11 @@ KinkyDungeonStatNoBrats,"No Brats"
 KinkyDungeonStatDescNoBrats,"Submissive enemies won't run away from you."
 KinkyDungeonStatOnlyBrats,"Brats Only"
 KinkyDungeonStatDescOnlyBrats,"Submissive enemies will always be bratty and force you to catch them."
+
+KinkyDungeonStatTapePref,"More Tape"
+KinkyDungeonStatDescTapePref,"Tape-wielding enemies (such as Tape Bots) occur more frequently."
+KinkyDungeonStatTapeOptout,"Less Tape"
+KinkyDungeonStatDescTapeOptout,"Fewer tape-related enemies will appear, although this does not remove tape entirely."
 
 
 KinkyDungeonStatMC_Trainee,"Trainee"
@@ -1725,23 +1730,40 @@ KinkyDungeonSummonSingleWolfShieldDrone,A Shield Drone takes off!
 KinkyDungeonSummonMultiWolfShieldDrone,"Several Shield Drones take flight, their shields interlinking."
 KinkyDungeonSpellDroneExplosion,Drone Explosion
 
-NameDrone,Ancient Drone
+NameDrone,Drone
 KillDrone,"The drone fizzles and falls to the ground!"
 AttackDroneStun,"The drone zaps you with a restraining energy ray! (DamageTaken)"
 AttackDrone,"The drone uses a short-ranged electrocution attack! (DamageTaken)"
-AttackDroneBind,"The drone deconstructs itself into a set of bindings!"
+AttackDroneBind,"The drone attaches to you! (+RestraintAdded)"
 
-NameCaptureBot,Ancient Patrol Unit
-KillCaptureBot,"The patrol unit releases magic smoke and explodes."
-AttackCaptureBot,"The patrol unit uses a short-ranged electrocution attack! (DamageTaken)"
-AttackCaptureBotBind,"The patrol unit extends its appendages and wraps them around you!"
-AttackCaptureBotLock,"The enforcer releases small drones which clip to your restraints as locks! (DamageTaken)"
+NameCaptureBot,Auto Capture Unit
+KillCaptureBot,"The capture unit releases magic smoke and explodes."
+AttackCaptureBot,"The capture unit grabs you securely! (DamageTaken)"
+AttackCaptureBotBind,"The capture unit extends its appendages and wraps them around you! (+RestraintAdded)"
+AttackCaptureBotLock,"The capture unit releases small drones which lock onto your restraints! (DamageTaken)"
 
-NameEnforcerBot,Ancient Enforcer Unit
+NameTapeBot,Auto Tape Unit
+KillTapeBot,"The tape unit releases magic smoke and explodes."
+AttackTapeBot,"The tape unit applies many layers of tape! (DamageTaken)"
+AttackTapeBotBind,"The tape unit fires off many layers of sticky tape! (+RestraintAdded)"
+AttackTapeBotLock,"The tape unit releases small drones which lock onto your restraints! (DamageTaken)"
+
+NameForcefieldBot,Force Field Unit
+KillForcefieldBot,"The forcefield unit releases magic smoke and explodes."
+AttackForcefieldBot,"The forcefield electrocutes you! (DamageTaken)"
+AttackForcefieldBotBind,"The forcefield unit extends its appendages and wraps them around you! (+RestraintAdded)"
+AttackForcefieldBotLock,"The forcefield unit releases small drones which lock onto your restraints! (DamageTaken)"
+
+NameForceField,Force Field Projector
+KillForceField,"The forcefield erupts into a shower of blue sparks!"
+KinkyDungeonSummonSingleForceField,"The robot deploys a forcefield!"
+KinkyDungeonSummonMultiForceField,"The robot deploys a set of forcefields!"
+
+NameEnforcerBot,Auto Enforcer Unit
 KillEnforcerBot,"The enforcer unit releases magic smoke and explodes."
 AttackEnforcerBot,"The enforcer unit fires many cables that squeeze you! (DamageTaken)"
 AttackEnforcerBotBind,"The enforcer fires off restraints that wrap around your body and apprehend you! (+RestraintAdded)"
-AttackEnforcerBotLock,"The enforcer releases small drones which clip to your restraints as locks! (DamageTaken)"
+AttackEnforcerBotLock,"The enforcer releases small drones which lock onto your restraints! (DamageTaken)"
 
 KinkyDungeonRobotShock,The energy bolt hits you and paralyzes you!
 KinkyDungeonSpellRobotBolt,Energy Bolt
