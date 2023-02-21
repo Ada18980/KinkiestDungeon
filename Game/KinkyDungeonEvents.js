@@ -3448,6 +3448,29 @@ function KinkyDungeonHandleEnemyEvent(Event, e, enemy, data) {
  * @type {Object.<string, Object.<string, function(string, *): void>>}
  */
 let KDEventMapGeneric = {
+	"postMapgen": {
+		"resetDollRoom": (e, data) => {
+			//if (!KDGameData.RoomType || !(alts[KDGameData.RoomType].data?.dollroom)) {
+			//KDGameData.DollRoomCount = 0;
+			//}
+		}
+	},
+	"beforeHandleStairs": {
+		"resetDollRoom": (e, data) => {
+			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
+				if (KDGameData.DollRoomCount >= 3) {
+					// Allow player to pass
+				} else {
+					KDGameData.DollRoomCount += 1;
+					data.overrideRoomType = true;
+					data.overrideProgression = true;
+					data.mapMod = "";
+					KDGameData.RoomType = "DollRoom";
+				}
+
+			}
+		}
+	},
 	"drawSGTooltip": {
 		"goddessBonus": (e, data) => {
 			if (data.item && KDRestraint(data.item)?.shrine) {

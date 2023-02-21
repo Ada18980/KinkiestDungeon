@@ -863,6 +863,7 @@ function KDEnterDollTerminal(willing) {
 	KDGameData.RoomType = "DollRoom"; // We do a tunnel every other room
 	KDGameData.MapMod = ""; // Reset the map mod
 	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	KDGameData.DollRoomCount = 0;
 	KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
 
 	for (let inv of KinkyDungeonAllRestraint()) {

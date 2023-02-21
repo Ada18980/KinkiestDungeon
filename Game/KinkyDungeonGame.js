@@ -62,10 +62,12 @@ let KinkyDungeonPOI = [];
 
 let KinkyDungeonMapBrightness = 5;
 
+let KDDefaultAvoidTiles = "gtVN@";
 let KinkyDungeonGroundTiles = "023w][?/";
 let KinkyDungeonWallTiles = "14";
 let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@lSsRrdzTgLNVt5"; // Objects which can be moved into: floors, debris, open doors, staircases
 // 5 is skinned floor, you can give it whatever sprite you want
+// 6 is skinned wall, you can give it whatever sprite you want
 let KinkyDungeonMovableTilesSmartEnemy = "D" + KinkyDungeonMovableTilesEnemy; //Smart enemies can open doors as well
 let KinkyDungeonMovableTiles = "OPCAMG$Y+=-F" + KinkyDungeonMovableTilesSmartEnemy; // Player can open chests, orbs, shrines, chargers
 
@@ -348,7 +350,7 @@ function KDInitCanvas() {
 	KinkyDungeonCanvasFow.height = KinkyDungeonCanvas.height;
 }
 
-function KDCreateBoringness() {
+function KDCreateBoringness(noBoring) {
 	let start = performance.now();
 	// Initialize boringness array
 	KinkyDungeonBoringness = [];
@@ -357,6 +359,7 @@ function KDCreateBoringness() {
 			KinkyDungeonBoringness.push(0); // 0 = no boringness
 	}
 
+	if (noBoring) return;
 	// First we find shortest path to exit
 	let path = KinkyDungeonFindPath(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
 
@@ -402,6 +405,7 @@ function KDGetMapSize() {
  */
 function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 	for (let iterations = 0; iterations < 100; iterations++) {
+		KDGameData.ChestsGenerated = [];
 		KDPathfindingCacheFails = 0;
 		KDPathfindingCacheHits = 0;
 		KDPathCache = new Map();
@@ -637,9 +641,10 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 			startTime = performance.now();
 		}
 
+		let noBoring = altType?.noboring;
 
 		// Now we create the boringness matrix
-		KDCreateBoringness();
+		KDCreateBoringness(noBoring);
 
 		KinkyDungeonPlaceSetPieces(POI, traps, chestlist, shrinelist, chargerlist, spawnPoints, false, width, height);
 
@@ -659,7 +664,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 			startTime = performance.now();
 		}
 		// Recreate boringness
-		KDCreateBoringness();
+		KDCreateBoringness(noBoring);
 
 		if (!testPlacement) {
 			if (!altType || altType.shortcut)
@@ -687,7 +692,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 				KinkyDungeonPlaceTorches(torchchance, torchlitchance, torchchanceboring, width, height, altType, torchreplace);
 
 			// Recreate boringness
-			KDCreateBoringness();
+			KDCreateBoringness(noBoring);
 			let orbcount = 2;
 			if (altType && altType.orbs != undefined) orbcount = altType.orbs;
 			if (!altType || altType.shrines)
@@ -805,6 +810,8 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 			if (!KinkyDungeonMapIndex[KDGameData.ShortcutPath] || !KinkyDungeonMapIndex[KDGameData.ShortcutPath])
 				KDInitializeJourney(KDGameData.Journey);
 
+			KinkyDungeonSendEvent("postMapgen", {});
+
 			KDQuestTick(KDGameData.Quests);
 			if (altType && altType.tickFlags)
 				KinkyDungeonSendEvent("tickFlags", {delta: 1});
@@ -817,6 +824,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 			}
 		}
 	}
+
 
 	KDPathCache = new Map();
 	KDPathCacheIgnoreLocks = new Map();
@@ -1681,10 +1689,12 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 			if (chest.Loot) lock = chest.Lock;
 			if (silverchest == 0 && !chest.Loot) {
 				silverchest += 1;
+				KDGameData.ChestsGenerated.push("silver");
 				KinkyDungeonTilesSet("" + chest.x + "," +chest.y, {
 					Loot: "silver", Roll: KDRandom(), NoTrap: chest.NoTrap, Faction: chest.Faction,
 					lootTrap: KDGenChestTrap(false, chest.x, chest.y, "silver", lock, chest.noTrap),});
 			} else if (lock) {
+				KDGameData.ChestsGenerated.push(lock == "Blue" ? "blue" : (chest.Loot ? chest.Loot : "chest"));
 				KinkyDungeonTilesSet("" + chest.x + "," +chest.y, {
 					NoTrap: chest.NoTrap, Type: "Lock", Lock: lock,
 					Loot: lock == "Blue" ? "blue" : (chest.Loot ? chest.Loot : "chest"),
@@ -1693,9 +1703,12 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 					Special: lock == "Blue",
 					RedSpecial: lock == "Red",
 					lootTrap: KDGenChestTrap(false, chest.x, chest.y, (chest.Loot ? chest.Loot : "chest"), lock, chest.noTrap),});
-			} else KinkyDungeonTilesSet("" + chest.x + "," +chest.y, {Loot: chest.Loot ? chest.Loot : "chest", Faction: chest.Faction, Roll: KDRandom(),
-				NoTrap: chest.NoTrap,
-				lootTrap: KDGenChestTrap(false, chest.x, chest.y, (chest.Loot ? chest.Loot : "chest"), lock, chest.noTrap),});
+			} else {
+				KDGameData.ChestsGenerated.push(chest.Loot ? chest.Loot : "chest");
+				KinkyDungeonTilesSet("" + chest.x + "," +chest.y, {Loot: chest.Loot ? chest.Loot : "chest", Faction: chest.Faction, Roll: KDRandom(),
+					NoTrap: chest.NoTrap,
+					lootTrap: KDGenChestTrap(false, chest.x, chest.y, (chest.Loot ? chest.Loot : "chest"), lock, chest.noTrap),});
+			}
 
 			if (KDAlreadyOpened(chest.x, chest.y)) {
 				KinkyDungeonMapSet(chest.x, chest.y, 'c');

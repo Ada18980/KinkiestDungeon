@@ -2676,6 +2676,10 @@ let KDTileTooltips = {
 	'd': () => {return {color: "#ffffff", noInspect: true, text: "d"};},
 	'Z': () => {return {color: "#ffffff", noInspect: true, text: "Z"};},
 	'z': () => {return {color: "#ffffff", noInspect: true, text: "z"};},
+	't': () => {return {color: "#aa55ff", noInspect: true, text: "t"};},
+	'u': () => {return {color: "#ffffff", noInspect: true, text: "u"};},
+	'V': () => {return {color: "#ffffff", noInspect: true, text: "V"};},
+	'N': () => {return {color: "#ffffff", noInspect: true, text: "N"};},
 };
 
 

@@ -37,7 +37,13 @@ function KinkyDungeonPlaceSetPieces(POI, trapLocations, chestlist, shrinelist, c
 	if (!alt) {
 		Object.assign(setpieces, Params.setpieces);
 		setpieces.push({Type: "GuaranteedCell", Weight: 100000});
-		setpieces.push({Type: "Cache", Weight: 100000});
+
+		for (let i of KDGameData.ChestsGenerated) {
+			console.log(i);
+		}
+
+		if (!KDGameData.ChestsGenerated.includes("cache"))
+			setpieces.push({Type: "Cache", Weight: 100000});
 		//setpieces.push({Type: "PearlChest", Weight: 100});
 		let forbiddenChance = Params.forbiddenChance != undefined ? Params.forbiddenChance : 1;
 		let greaterChance = Params.forbiddenGreaterChance != undefined ? Params.forbiddenGreaterChance : 0.5;
@@ -48,9 +54,11 @@ function KinkyDungeonPlaceSetPieces(POI, trapLocations, chestlist, shrinelist, c
 		}
 		if (KDRandom() < forbiddenChance) {
 			if (KDRandom() < greaterChance) {
-				setpieces.push({Type: "ForbiddenHall", Weight: 100000});
+				if (!KDGameData.ChestsGenerated.includes("gold"))
+					setpieces.push({Type: "ForbiddenHall", Weight: 100000});
 			} else {
-				setpieces.push({Type: "ForbiddenChest", Weight: 100000});
+				if (!KDGameData.ChestsGenerated.includes("lessergold"))
+					setpieces.push({Type: "ForbiddenChest", Weight: 100000});
 			}
 		}
 	} else {

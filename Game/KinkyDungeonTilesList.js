@@ -147,7 +147,7 @@ let KDBondageMachineFunctions = {
 			KDTieUpEnemy(entity, 4.0, "Slime", "glue");
 			if (KDBoundEffects(entity) > 2 ) {
 				KDTieUpEnemy(entity, 4.0, "Slime", "glue");
-				KinkyDungeonApplyBuffToEntity(entity, KDEncased);
+				KinkyDungeonApplyBuffToEntity(entity, KDEncasedDoll);
 			}
 			if (KDBoundEffects(entity) < 1 ) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);

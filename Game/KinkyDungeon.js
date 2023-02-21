@@ -206,7 +206,7 @@ let KDOptOut = false;
 * Outfit: string,
 * Champion: string,
 * ChampionCurrent: number,
-* JailPoints: {x: number, y: number, type: string, radius: number, requireLeash?: boolean, requireFurniture?: boolean, direction?:{x: number, y: number}, restraint?:string}[],
+* JailPoints: KDJailPoint[],
 * LastMapSeed: string,
 * AlreadyOpened: {x: number, y:number}[],
 * Journey: string,
@@ -263,9 +263,13 @@ let KDOptOut = false;
 * ItemID: number,
 * ShopkeeperFee: number,
 * DollCount: number,
+* ChestsGenerated: string[],
+* DollRoomCount: number,
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	DollRoomCount: 0,
+	ChestsGenerated: [],
 	MainPath: 'grv',
 	ShortcutPath: 'grv',
 	DollCount: 0,
@@ -1896,11 +1900,13 @@ function KDInitializeJourney(Journey) {
 	} else if (KDGameData.Journey == "Explorer") {
 		newIndex.grv = 'jng';
 		newIndex.tmb = 'cry';
-		newIndex.tmp = 'lib';
-		newIndex.jng = 'tmp';
-		newIndex.cry = 'tmb';
 		newIndex.cat = 'grv';
-		newIndex.ore = 'ore';
+		newIndex.lib = 'cat';
+		newIndex.jng = 'tmp';
+		newIndex.cry = 'lib';
+		newIndex.tmp = 'ore';
+		newIndex.ore = 'tmb';
+		newIndex.bel = 'bel';
 	} else if (KDGameData.Journey == "Test") {
 		newIndex.grv = 'bel';
 		newIndex.tmb = 'bel';

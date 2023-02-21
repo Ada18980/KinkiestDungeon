@@ -140,6 +140,9 @@ let alts = {
 		height: 10,
 		setpieces: {
 		},
+		data: {
+			dollroom: true,
+		},
 		genType: "DollRoom",
 		spawns: false,
 		chests: false,
@@ -159,6 +162,7 @@ let alts = {
 		noClutter: true,
 		nobrick: true,
 		nolore: true,
+		noboring: true, // Skip generating boringness
 	},
 	"JourneyFloor": {
 		name: "JourneyFloor",
@@ -764,21 +768,32 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		Math.floor(KDRandom()*4),
 	];
 	let rightPassages = [
-		Math.floor(KDRandom()*6),
-		Math.floor(KDRandom()*6),
-		Math.floor(KDRandom()*6),
-		Math.floor(KDRandom()*6),
-		Math.floor(KDRandom()*6),
-		Math.floor(KDRandom()*6),
+		Math.ceil(KDRandom()*5),
+		Math.ceil(KDRandom()*5),
+		Math.ceil(KDRandom()*5),
+		Math.ceil(KDRandom()*5),
+		Math.ceil(KDRandom()*5),
+		Math.ceil(KDRandom()*5),
 	];
 	let ii = 0;
 	for (let l of leftPassages) {
 		KinkyDungeonCreateRectangle(cavityStart - l, 1 + 3 * ii, l, 2, false, false, false, false);
+
+		KinkyDungeonMapSet(cavityStart, 3 + 3 * ii, 'X');
+		//if (ii < leftPassages.length - 1) {
+		KinkyDungeonMapSet(cavityStart, 1 + 3 * ii, '2');
+		KinkyDungeonMapSet(cavityStart, 2 + 3 * ii, '2');
+		//}
 		ii += 1;
 	}
 	ii = 0;
 	for (let l of rightPassages) {
 		KinkyDungeonCreateRectangle(cavityStart - cavityEnd + CellX + CellWidth, 1 + 3 * ii, l, 2, false, false, false, false);
+		KinkyDungeonMapSet(cavityStart - cavityEnd + CellX + CellWidth, 3 + 3 * ii, 'X');
+		//if (ii < rightPassages.length - 1) {
+		KinkyDungeonMapSet(cavityStart - cavityEnd + CellX + CellWidth, 1 + 3 * ii, '2');
+		KinkyDungeonMapSet(cavityStart - cavityEnd + CellX + CellWidth, 2 + 3 * ii, '2');
+		//}
 		ii += 1;
 	}
 
@@ -810,7 +825,11 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		if (entity || (XX == width/2 && YY == height/2)) continue;
 		let Enemy = KinkyDungeonGetEnemy(["bellowsDoll"], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["doll", "peaceful"]);
 		if (Enemy) {
-			DialogueCreateEnemy(XX, YY, Enemy.name);
+			let e = DialogueCreateEnemy(XX, YY, Enemy.name);
+			if (KDRandom() < 0.33) KDTieUpEnemy(e, 15 + Math.floor(45 * KDRandom()), "Tape");
+			else if (KDRandom() < 0.32) KDTieUpEnemy(e, 15 + Math.floor(45 * KDRandom()), "Slime");
+			else if (KDRandom() < 0.34) KDTieUpEnemy(e, 15 + Math.floor(45 * KDRandom()), "Metal");
+			if (e.boundLevel > 0 && KDRandom() < 0.33) e.hp = 0.5;
 		}
 	}
 	let robotCount = 8 + Math.min(14, KinkyDungeonDifficulty/10 + MiniGameKinkyDungeonLevel/3);
@@ -831,20 +850,52 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 
 	KDGameData.JailPoints.push({x: width/2, y: height/2, type: "dropoff", radius: 1});
 
-	KinkyDungeonStartPosition = {x: 2, y: height/2};
-
+	let takenIndex = 0;
+	let takenRight = false;
 	if (KDRandom() < 0.5) {
 		// Left side
 		let cavityNum = Math.floor(KDRandom()*leftPassages.length);
+		takenIndex = cavityNum;
 		KinkyDungeonEndPosition = {x: cavityStart - leftPassages[cavityNum], y: 1 + 3 * cavityNum};
 	} else {
 		// Right side
 		let cavityNum = Math.floor(KDRandom()*rightPassages.length);
-
+		takenIndex = cavityNum;
+		takenRight = true;
 		KinkyDungeonEndPosition = {x: cavityStart - cavityEnd + CellX + CellWidth + rightPassages[cavityNum] - 1, y: 1 + 3 * cavityNum};
 	}
+	if (KDRandom() < 0.5) {
+		// Left side
+		let cavityNum = Math.floor(KDRandom()*leftPassages.length);
+		if (!takenRight && takenIndex == cavityNum) {
+			if (cavityNum > 0) cavityNum -= 1;
+			else cavityNum += 1;
+		}
+		KinkyDungeonStartPosition = {x: cavityStart - leftPassages[cavityNum], y: 1 + 3 * cavityNum};
+	} else {
+		// Right side
+		let cavityNum = Math.floor(KDRandom()*rightPassages.length);
+		if (takenRight && takenIndex == cavityNum) {
+			if (cavityNum > 0) cavityNum -= 1;
+			else cavityNum += 1;
+		}
+
+		KinkyDungeonStartPosition = {x: cavityStart - cavityEnd + CellX + CellWidth + rightPassages[cavityNum] - 1, y: 1 + 3 * cavityNum};
+	}
+
+	for (let i = 0; i < Math.ceil(robotCount * 0.1); i++) {
+		let Enemy = KinkyDungeonGetEnemy(["robot"], MiniGameKinkyDungeonLevel + 4, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["robot"], undefined, undefined, ["minor", "noguard"]);
+		if (Enemy) {
+			let e = DialogueCreateEnemy(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, Enemy.name);
+			e.faction = "Enemy";
+			e.AI = "looseguard";
+		}
+	}
+
 
 	KinkyDungeonMapSet(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 's');
+	if (KDGameData.DollRoomCount > 0)
+		KinkyDungeonMapSet(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, 'S');
 }
 
 function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {

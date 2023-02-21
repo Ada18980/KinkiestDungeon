@@ -370,6 +370,8 @@ KinkyDungeonStatBlackout,"Blackout"
 KinkyDungeonStatDescBlackout,"Blindfolds are stronger. While blindfolded you can only see enemies next to you."
 KinkyDungeonStatTotalBlackout,"Total Blackout"
 KinkyDungeonStatDescTotalBlackout,"Blindfolds are extremely punishing and you can't see explored areas while blindfolded."
+KinkyDungeonStatNoDoll,"No Forced Dollification"
+KinkyDungeonStatDescNoDoll,"You may still enter Doll Terminals, but enemies will not force you onto doll stands."
 KinkyDungeonStatNoNurse,"No Nurses"
 KinkyDungeonStatDescNoNurse,"Nurses will not appear in the game."
 KinkyDungeonStatNoBrats,"No Brats"
@@ -4281,6 +4283,10 @@ KDTileTooltips,Exit Stairs
 KDTileTooltipH,Mysterious Stairs
 KDTileTooltipG,Ghostly Adventurer
 KDTileTooltip@,Button
+KDTileTooltipV,Conveyor
+KDTileTooltipt,Doll Terminal
+KDTileTooltipu,Doll Supply
+KDTileTooltipN,Bondage Machine
 
 
 

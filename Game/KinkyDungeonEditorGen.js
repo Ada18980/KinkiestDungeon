@@ -538,6 +538,7 @@ let KDTileGen = {
 		if (tileGenerator.Loot) {
 			if (tileGenerator.Priority || KDRandom() < (tileGenerator.Chance || 0.5)) {
 				KinkyDungeonMapSet(x, y, 'C');
+				KDGameData.ChestsGenerated.push(tileGenerator.Loot);
 				return {
 					NoTrap: tileGenerator.NoTrap,
 					Type: tileGenerator.Lock ? "Lock" : undefined, Lock: tileGenerator.Lock == "Red" ? KDRandomizeRedLock() : tileGenerator.Lock,

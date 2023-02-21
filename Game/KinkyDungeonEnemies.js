@@ -45,7 +45,7 @@ function KinkyDungeonGetEnemyByName(Name) {
  * @param {string[]} [filter]
  * @param {boolean} [any]
  * @param {boolean} [qualified] - Exclude jails where the player doesnt meet conditions
- * @returns {{x: number, y: number, type: string, radius: number}}
+ * @returns {KDJailPoint}
  */
 function KinkyDungeonNearestJailPoint(x, y, filter, any, qualified) {
 	let filt = filter ? filter : ["jail", "dropoff"];
@@ -2439,7 +2439,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 
 	AIData.MovableTiles = KinkyDungeonMovableTilesEnemy;
-	AIData.AvoidTiles = "g";
+	AIData.AvoidTiles = "" + KDDefaultAvoidTiles;
 	if (enemy.Enemy.tags && enemy.Enemy.tags.opendoors) AIData.MovableTiles = KinkyDungeonMovableTilesSmartEnemy;
 	if (enemy.Enemy.ethereal) {
 		AIData.AvoidTiles = "";
