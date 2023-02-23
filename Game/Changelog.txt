@@ -1259,6 +1259,7 @@ Major changes:
 - Added a Hard setting, which removes faction rescue events in jail
 Minor Changes:
 - Shady Dealer now has a bear trap (damsel trap) spell, and her lust bomb attack now has a 3 turn delay
+- High-tech cables now have a weaker version (nylon) and use rope assets instead of ribbon
 
 
 TODO ValidationFindBlockCycles to prevent bugs

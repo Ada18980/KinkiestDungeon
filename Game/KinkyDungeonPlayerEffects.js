@@ -51,7 +51,14 @@ let KDPlayerEffects = {
 
 		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRubberBolt"), "yellow", 1);
 		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
-		return {sfx: "Evil", effect: true};
+		return {sfx: "Dollify", effect: true};
+	},
+	"EncaseBolt": (target, damage, playerEffect, spell, faction, bullet) => {
+		KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncase"], "Dollsmith");
+
+		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBolt"), "yellow", 1);
+		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		return {sfx: "Dollify", effect: true};
 	},
 	"ObsidianBolt": (target, damage, playerEffect, spell, faction, bullet) => {
 		KDPlayerEffectRestrain(spell, playerEffect.count, ["obsidianRestraints"], "Elemental");

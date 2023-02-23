@@ -1669,6 +1669,12 @@ AttackDollsmith,"The dollsmith runs a latex-covered finger across your vulnerabl
 AttackDollsmithBind,"The dollsmith grabs you and applies her favorite doll restraints! (+RestraintAdded)"
 AttackDollsmithLock,"The dollsmith slaps a lock onto your restraints! (DamageTaken)"
 
+NameDollmaker,Dollmaker's Apprentice
+KillDollmaker,"The dollmaker apprentice's suit becomes rigid and locks her limbs in place."
+AttackDollmaker,"The dollmaker's apprentice squeezes your body with her gloved hands! (DamageTaken)"
+AttackDollmakerBind,"The dollmaker's apprentice uses her staff to encase you in doll restraints! (+RestraintAdded)"
+AttackDollmakerLock,"The dollmaker's apprentice slips a lock onto your restraints! (DamageTaken)"
+
 
 
 NameAlchemist,Alchemist
@@ -1748,6 +1754,10 @@ NameOldDrone,Rusty Drone
 KillOldDrone,"The drone's mechanisms grind to a halt."
 AttackOldDrone,"The drone uses a short-ranged electrocution attack! (DamageTaken)"
 AttackOldDroneBind,"The drone disassembles itself, revealing a set of restraining cables! (+RestraintAdded)"
+
+NameRubberTurret,Rubber Turret
+KillRubberTurret,"The turret enters an unstable state, about to spread rubber all over!"
+AttackRubberTurret,"The turret defends itself with a close-range electrocution attack! (DamageTaken)"
 
 NameDrone,Drone
 KillDrone,"The drone fizzles and falls to the ground!"
@@ -4675,8 +4685,10 @@ KinkyDungeonSpellCelestialBolt,Celestial Orb
 KinkyDungeonCelestialBolt,You are snugly wrapped in glowing ropes!
 KinkyDungeonSpellObsidianBolt,Obsidian Orb
 KinkyDungeonObsidianBolt,Metallic restraints encircle your body!
-KinkyDungeonSpellRubberBolt,Rubber Bolt
+KinkyDungeonSpellRubberBolt,Rubberizing Bolt
+KinkyDungeonSpellEncaseBolt,Rubber Bolt
 KinkyDungeonRubberBolt,"The latex spreads across your limbs and rubberizes, forming a tough barrier!"
+KinkyDungeonEncaseBolt,"The latex spreads across your limbs and hardens, forming a stretchy layer!"
 
 
 KinkyDungeonSpellPlayerBola,Bola
@@ -5330,6 +5342,7 @@ KinkyDungeonSpellCastArmorUp,The EnemyName gains increased physical armor!
 KinkyDungeonSpellCastArmorUpArea,The EnemyName buffs the physical armor of her allies!
 KinkyDungeonSpellCastSpellArmorUpAreaNevermere,"The EnemyName deploys an energy shield to allies!"
 KinkyDungeonSpellCastNevermereBoost,"The EnemyName activates the vibrators of nearby wolfgirls, greatly motivating them!"
+KinkyDungeonSpellCastDollBoost,"The EnemyName activates the vibrators of nearby dolls, greatly motivating them!"
 KinkyDungeonSpellCastEarthfield,The EnemyName creates a zone of increased defense!
 KinkyDungeonSpellCastParasolBuff,"EnemyName uses a charm to buff an enemy's Magic Armor and Evasion!"
 KinkyDungeonSpellCastZombieBuff,"EnemyName uses a glowing talisman to buff an undead's physical armor and speed!"
@@ -5417,6 +5430,7 @@ KinkyDungeonSpellTargetElasticGrip,Select a target to pull
 KinkyDungeonSpellSlime,Slime Blast
 KinkyDungeonSpellSlimePuddle,Apprentice's Slime
 KinkyDungeonSpellWitchSlime,Witch's Slime
+KinkyDungeonSpellRubberSlime,Rubber Explosion
 KinkyDungeonSpellMiniSlime,Witch's Slime Ball
 KinkyDungeonSpellDescriptionSlime,A pool of slime deals DamageDealt glue damage to enemies on impact and covers the area in temporary slime.
 KinkyDungeonSpellCastSlime,You conjure a pool of slime!
@@ -9431,3 +9445,5 @@ KDMetalMachine,Metallic arms wrap you in strict restraints!
 KDBearTrapHit,"You've sprung a trap! You've been stunned."
 KinkyDungeonSpellCastBearTrap,"The bandit leaves behind a sneaky trap..."
 KinkyDungeonSpellBearTrap,Damsel Trap
+
+KinkyDungeonSpellCastDollConvert,"The ENEMYNAME transforms nearby dolls into her subjects!"
