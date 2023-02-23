@@ -664,7 +664,7 @@ function KDConveyor(delta, X, Y) {
 	let entity = KinkyDungeonEntityAt(X, Y);
 	let tile = KinkyDungeonTilesGet(X + "," + Y);
 	let tiletype = KinkyDungeonMapGet(X + (tile.DX || 0), Y + (tile.DY || 0));
-	if (entity && KinkyDungeonMovableTilesEnemy.includes(tiletype) && KinkyDungeonNoEnemyExceptSub(X + (tile.DX || 0), Y + (tile.DY || 0), true, null)) {
+	if (entity && KinkyDungeonMovableTilesEnemy.includes(tiletype) && !KinkyDungeonEntityAt(X + (tile.DX || 0), Y + (tile.DY || 0))) {
 		if (entity.player) {
 			if (!KinkyDungeonFlags.get("conveyed")) {
 				KinkyDungeonSetFlag("conveyed", 2);

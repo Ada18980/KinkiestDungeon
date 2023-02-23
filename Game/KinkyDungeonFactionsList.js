@@ -7,7 +7,7 @@ let KinkyDungeonFactionColors = {
 	"Alchemist": ["#4c6885", "#7bef41"],
 	"Elf": ["#63ab3f", "#F8BD01"],
 	"Bountyhunter": ["#252525", "#bfbfbf"],
-	"AncientRobot": ["#444444", "#3def9c"],
+	"AncientRobot": ["#444444", "#4fa4b8"],
 	"Dollsmith": ["#444444", "#b1062a", "#ff5277"],
 	"Mushy": ["#bfbfbf", "#92c1e8"],
 	"Apprentice": ["#686f99", "#ff5277"],

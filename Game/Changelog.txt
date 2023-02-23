@@ -1252,7 +1252,7 @@ Major changes:
 - New class: Trainee, a novice magician who has nonetheless set out to adventure in the middle of her 'training'
 - New perks: Multiclass perks, allowing you to gain access to class-specific features such as the Trainee's Mana Burst ability
 (note: Mana Burst is removed and replaced with this)
-- New enemies: Force Field Unit, Auto Tape Unit
+- New enemies: Force Field Unit, Auto Tape Unit, Dollsmith, Dollmaker's Apprentice, Highly-Motivated Doll, Rusty Drone, Rubber Turret, Rusty Auto Taper
 - New toggle perks to help define user preferences for tape and dollification
 - Sprinting now costs 15 + 5 per slow level
 - Sleep is refreshed after 150 turns in jail if you have already slept before

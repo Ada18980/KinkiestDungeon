@@ -506,7 +506,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "OldDrone", faction: "Enemy", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
 		color: "#ff3367",
-		tags: KDMapInit(["ignoreharmless", "doortrap", "robot", "flying", "acidweakness", "soulresist", "minor", "melee",
+		tags: KDMapInit(["oldrobot", "ignoreharmless", "doortrap", "robot", "flying", "acidweakness", "soulresist", "minor", "melee",
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
 		AI: "hunt", difficulty: 0.05,
 		events: [
@@ -526,16 +526,37 @@ let KinkyDungeonEnemies = [
 		attack: "MeleeBindSuicideWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 2, dmgType: "electric", multiBind: 2, fullBoundBonus: 4,
 		minLevel:0, weight:15, terrainTags: {"oldrobot": 10}, shrines: ["Metal"], floors:KDMapInit(["bel"]),
 		dropTable: [{name: "Nothing", weight: 19}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
+	{name: "OldTapeDrone", faction: "Enemy", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
+		color: "#ff3367",
+		tags: KDMapInit(["oldrobot", "leashing", "doortrap", "robot", "flying", "acidweakness", "soulresist", "melee",
+			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushweakness", "autoTape", "jail", "search"]),
+		AI: "patrol",
+		events: [
+			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffff00"},
+		],
+		cueSfx: {
+			Block: "Clang",
+			Resist: "SoftShield",
+			Damage: "RobotHit",
+		},
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		armor: 1.5, maxhp: 9, movePoints: 1.75,
+		visionRadius: 7, followRange: 1,
+		attack: "MeleeBind", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 2, dmgType: "glue", fullBoundBonus: 1,
+		minLevel:2, weight:15, terrainTags: {"oldrobot": 10, "tapePref": 10, "tapeOptout": -15}, shrines: ["Metal"], floors:KDMapInit(["bel"]),
+		dropTable: [{name: "Gold", amountMin: 7, amountMax: 15, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 
 	{name: "RubberTurret", faction: "Enemy", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
 		color: "#ff3367",
-		tags: KDMapInit(["ignoreharmless", "mimicBlock", "doortrap", "robot", "acidweakness", "soulresist", "minor", "ranged",
+		tags: KDMapInit(["oldrobot", "ignoreharmless", "mimicBlock", "doortrap", "robot", "acidweakness", "soulresist", "minor", "ranged",
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness"]),
 		AI: "hunt", difficulty: 0.2,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5555"},
 		],
-		spells: ["EncaseBolt"], spellCooldownMult: 1, spellCooldownMod: -1, projectileTargeting: true,
+		spells: ["EncaseBolt"], spellCooldownMult: 1, spellCooldownMod: 0, projectileTargeting: true,
 		cueSfx: {
 			Block: "Clang",
 			Resist: "SoftShield",
@@ -630,7 +651,7 @@ let KinkyDungeonEnemies = [
 			Damage: "RobotHit",
 		},
 		armor: 2, maxhp: 10, movePoints: 1.7,
-		visionRadius: 6, followRange: 1, projectileAttack: true, useLock: "Red",
+		visionRadius: 6, followRange: 3.5, projectileAttack: true, useLock: "Red",
 		RemoteControl: {
 			punishRemote: 4,
 			punishRemoteChance: 0.25,
@@ -644,7 +665,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff0000"},
 		],
-		spells: ["RobotBolt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
+		spells: ["RobotBolt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, followLeashedOnly: true,
 		cueSfx: {
 			Block: "Clang",
 			Resist: "SoftShield",
@@ -653,7 +674,7 @@ let KinkyDungeonEnemies = [
 		summon: [
 			{enemy: "Drone", range: 2, count: 2, chance: 0.25, strict: true},],
 		armor: 2, maxhp: 24, movePoints: 4,
-		visionRadius: 16, followRange: 1, projectileAttack: true, useLock: "Red",
+		visionRadius: 16, followRange: 3.5, projectileAttack: true, useLock: "Red",
 		RemoteControl: {
 			punishRemote: 6,
 			punishRemoteChance: 0.5,

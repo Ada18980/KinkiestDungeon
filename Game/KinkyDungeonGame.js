@@ -1130,8 +1130,8 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			}
 		}
 
-		let playerDist = 8;
-		let PlayerEntity = KinkyDungeonNearestPlayer({x:X, y:Y});
+		let playerDist = 6;
+		let PlayerEntity = KinkyDungeonStartPosition;
 
 		let spawnBox_filter = spawnBoxes.filter((bb) => {
 			return bb.currentCount < bb.maxCount * enemyCount && (!bb.bias

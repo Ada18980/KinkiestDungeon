@@ -1755,6 +1755,11 @@ KillOldDrone,"The drone's mechanisms grind to a halt."
 AttackOldDrone,"The drone uses a short-ranged electrocution attack! (DamageTaken)"
 AttackOldDroneBind,"The drone disassembles itself, revealing a set of restraining cables! (+RestraintAdded)"
 
+NameOldTapeDrone,Rusty Auto Taper
+KillOldTapeDrone,"The auto taper's mechanisms grind to a halt."
+AttackOldTapeDrone,"The auto taper wraps additional layers of sticky tape! (DamageTaken)"
+AttackOldTapeDroneBind,"The wraps you in many layers of tape! (+RestraintAdded)"
+
 NameRubberTurret,Rubber Turret
 KillRubberTurret,"The turret enters an unstable state, about to spread rubber all over!"
 AttackRubberTurret,"The turret defends itself with a close-range electrocution attack! (DamageTaken)"
