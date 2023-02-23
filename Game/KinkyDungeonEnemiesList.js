@@ -1747,7 +1747,7 @@ let KinkyDungeonEnemies = [
 			"boss", "melee", "ranged", "caster",
 			"ballGagRestraints", "banditMagicRestraints","leatherRestraints", "leatherRestraintsHeavy", "chainweakness", "glueweakness", "jailer", "hunter"
 		]), cohesion: 0.9, armor: 0, followRange: 1, AI: "hunt",
-		spells: ["PoisonDagger", "LustBomb"], spellCooldownMult: 1, spellCooldownMod: 0, noSpellLeashing: true,
+		spells: ["PoisonDagger", "BearTrap", "LustBomb"], spellCooldownMult: 1, spellCooldownMod: 0, noSpellLeashing: true,
 		summon: [
 			{enemy: "BanditPet", range: 3, count: 2, chance: 1.0, strict: true},],
 		visionRadius: 8, maxhp: 30, minLevel:3, weight:-20, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3.6, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 2,

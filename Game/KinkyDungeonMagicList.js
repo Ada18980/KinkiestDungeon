@@ -1070,6 +1070,17 @@ let KinkyDungeonSpellListEnemies = [
 		],
 	},
 
+
+	{enemySpell: true, name: "BearTrap", tags: ["fire", "offense", "defense"], noise: 0, sfx: "Miss", school: "Elements", spellPointCost: 1, manacost: 4,
+		components: ["Legs"], level:1, type:"inert",
+		selfcast: true,
+		onhit:"aoe", delay: 2, power: 2, range: 2.99, size: 1, lifetime: 1, damage: "inert",
+		spellcast: {spell: "BearTrapStrike", target: "onhit", directional:false, offset: false}},
+	{enemySpell: true, name: "BearTrapStrike", bulletColor: 0xaaaaaa, hideWarnings: true,
+		hitsfx: "Clang", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", delay: 20, power: 1, range: 2, bind: 4, size: 3, aoe: 1.5, lifetime: 1, damage: "chain",
+		playerEffect: {name: "BearTrapStun", count: 1, power: 2.0, damage: "chain", time: 3}},
+
+
 	{name: "CoronaBeam", sfx: "FireSpell",
 		trailColor: 0xffff77, trailLight: 3,
 		school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 12, delay: 0, range: 8, speed: 50, size: 1, damage: "fire",
@@ -1284,7 +1295,7 @@ let KinkyDungeonSpellListEnemies = [
 	// Bandit trader
 	{enemySpell: true, name: "PoisonDagger", color: "#ff00ff", minRange: 1.5, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, speed: 1,
 		type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "poison", playerEffect: {name: "PoisonDagger", power: 4, type: "poison", time: 8},},
-	{enemySpell: true, name: "LustBomb", color: "#ff5277", minRange: 0, sfx: "Miss", school: "Illusion", manacost: 2, specialCD: 12, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 4, size: 3, aoe: 1.5, lifetime: 1, damage: "charm", playerEffect: {name: "LustBomb", damage: "charm", power: 4 }},
+	{enemySpell: true, name: "LustBomb", color: "#ff5277", minRange: 0, sfx: "Miss", school: "Illusion", manacost: 2, specialCD: 12, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 2.5, range: 4, size: 3, aoe: 1.5, lifetime: 1, damage: "charm", playerEffect: {name: "LustBomb", damage: "charm", power: 3.5 }},
 
 	// Fungal spells
 	{enemySpell: true, name: "CrystalPuff", color: "#b37bdc", minRange: 0, landsfx: "MagicSlash", manacost: 4, components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 3.5, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "souldrain", playerEffect: {name: "CrystalBind", time: 1}},

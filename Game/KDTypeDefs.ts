@@ -1263,6 +1263,8 @@ type KDPerk = {
 }
 
 interface spell {
+	/** This spell does not leave a warning to the player */
+	hideWarnings?: boolean,
 	/** Marks a spell as non-magical, so traps dont leave a rune on the ground */
 	nonmagical?: boolean,
 	/** Marks the spell as a command word spell to enemies */
@@ -1678,6 +1680,7 @@ interface KinkyDungeonSave {
 	dress: string;
 	gold: number;
 	points: number;
+	grounditems: any;
 	perks: string[];
 	levels: {
 		Elements: number;
@@ -1922,6 +1925,11 @@ interface KDBondageMachineFunc {
 
 	function_player: (tile, delta, x, y, entity) => boolean;
 	function_enemy: (tile, delta, x, y, entity) => boolean;
+}
+
+interface KDDroppedItemProp {
+	/** When blindfolded, this item will be invisible if your blind level is equal to this or higher */
+	tinyness?: number,
 }
 
 

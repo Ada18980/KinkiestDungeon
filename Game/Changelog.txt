@@ -1258,6 +1258,7 @@ Major changes:
 - Sleep is refreshed after 150 turns in jail if you have already slept before
 - Added a Hard setting, which removes faction rescue events in jail
 Minor Changes:
+- Shady Dealer now has a bear trap (damsel trap) spell, and her lust bomb attack now has a 3 turn delay
 
 
 TODO ValidationFindBlockCycles to prevent bugs

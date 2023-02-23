@@ -3919,15 +3919,29 @@ RestraintCableGag,High-Tech Gag
 RestraintCableGagDesc,"A gag with a soft and filling mouthpiece, reinforced with a metallized strap."
 RestraintCableGagDesc2,"It will be impossible to force it out or cut it with just a knife."
 
+RestraintNylonCableGag,Nylon Plug Gag
+RestraintNylonCableGagDesc,"A gag with a soft and filling mouthpiece, kept in place by an adjustable nylon strap."
+RestraintNylonCableGagDesc2,"It will be impossible to force it out, but can be cut."
+
 RestraintCableArms,High-Tech Cables (Arms)
-RestraintCableArmsDesc,"Cables made from a high-tech metallized polyfiber. Impervious to steel edges!"
+RestraintCableArmsDesc,"Cables made from a self-tightening metallized polyfiber. Impervious to steel edges!"
 RestraintCableArmsDesc2,"They are wrapped methodically around your body!"
 RestraintCableLegs,High-Tech Cables (Legs)
-RestraintCableLegsDesc,"Cables made from a high-tech metallized polyfiber. Impervious to steel edges!"
+RestraintCableLegsDesc,"Cables made from a self-tightening metallized polyfiber. Impervious to steel edges!"
 RestraintCableLegsDesc2,"They are wrapped methodically around your body!"
 RestraintCableHarness,High-Tech Cables (Harness)
-RestraintCableHarnessDesc,"Cables made from a high-tech metallized polyfiber. Impervious to steel edges!"
+RestraintCableHarnessDesc,"Cables made from a self-tightening metallized polyfiber. Impervious to steel edges!"
 RestraintCableHarnessDesc2,"They are wrapped methodically around your body!"
+
+RestraintNylonCableArms,Nylon Cables (Arms)
+RestraintNylonCableArmsDesc,"Cables made from nylon polymer. Very strong and self-tightening, but vulnerable to sharp edges."
+RestraintNylonCableArmsDesc2,"They are wrapped methodically around your body!"
+RestraintNylonCableLegs,Nylon Cables (Legs)
+RestraintNylonCableLegsDesc,"Cables made from nylon polymer. Very strong and self-tightening, but vulnerable to sharp edges."
+RestraintNylonCableLegsDesc2,"They are wrapped methodically around your body!"
+RestraintNylonCableHarness,Nylon Cables (Harness)
+RestraintNylonCableHarnessDesc,"Cables made from nylon polymer. Very strong and self-tightening, but vulnerable to sharp edges."
+RestraintNylonCableHarnessDesc2,"They are wrapped methodically around your body!"
 
 RestraintRibbonArms,Magic Ribbons (Arms)
 RestraintRibbonArmsDesc,"Those ribbons will hold you tight~"
@@ -4221,6 +4235,8 @@ KinkyDungeonGroupItemLegs,Legs
 KinkyDungeonGroupItemFeet,Ankles
 KinkyDungeonGroupItemBoots,Feet
 KinkyDungeonGroupItemDevices,Device
+
+ItemFoundHidden,"You found an item that was too small to see!"
 
 ItemPickupGold,"You picked up XXX gold."
 ItemPickupAncientPowerSource,"You retrieve an ancient power crystal."
@@ -9411,3 +9427,7 @@ KDPlugMachine,Metallic arms insert something into you!
 KDChastityMachine,Metallic arms attach a chastity belt over your waist!
 KDTapeMachine,Metallic arms wrap you in tape!
 KDMetalMachine,Metallic arms wrap you in strict restraints!
+
+KDBearTrapHit,"You've sprung a trap! You've been stunned."
+KinkyDungeonSpellCastBearTrap,"The bandit leaves behind a sneaky trap..."
+KinkyDungeonSpellBearTrap,Damsel Trap

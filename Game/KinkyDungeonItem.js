@@ -1,6 +1,34 @@
 "use strict";
 let KinkyDungeonGroundItems = []; // Tracking all items on the ground
 
+/** Certain items, when dropped, have specific properties
+ * @type {Record<string, KDDroppedItemProp>}
+*/
+let KDDroppedItemProperties = {
+	"RedKey": {
+		tinyness: 2,
+	},
+	"Pick": {
+		tinyness: 1,
+	},
+	"BlueKey": {
+		tinyness: 2,
+	},
+	"Knife": {
+		tinyness: 3,
+	},
+	"EnchKnife": {
+		tinyness: 3,
+	},
+	"Dirk": {
+		tinyness: 3,
+	},
+	"Scissors": {
+		tinyness: 3,
+	},
+
+};
+
 function KinkyDungeonItemDrop(x, y, dropTable, summoned) {
 	if (dropTable) {
 		let dropWeightTotal = 0;
@@ -189,7 +217,9 @@ function KinkyDungeonItemEvent(Item) {
 		replace = TextGet("Restraint" + Item.name);
 	}
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/" + sfx + ".ogg");
-	KinkyDungeonSendActionMessage(priority, TextGet("ItemPickup" + name).replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 2);
+	KinkyDungeonSendActionMessage(priority, TextGet("ItemPickup" + name).replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1);
+	if (!KDCanSeeDroppedItem(Item))
+		KinkyDungeonSendActionMessage(priority + 1, TextGet("ItemFoundHidden").replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1);
 }
 
 
@@ -204,14 +234,20 @@ function KinkyDungeonItemCheck(x, y, Index) {
 	}
 }
 
+function KDCanSeeDroppedItem(item) {
+	if (KDDroppedItemProperties[item.name]?.tinyness <= KinkyDungeonBlindLevel) return false;
+	return true;
+}
+
 function KinkyDungeonDrawItems(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	for (let item of KinkyDungeonGroundItems) {
 		let sprite = item.name;
 		if (KinkyDungeonRestraintsCache.has(item.name)) sprite = "Restraint";
 		if (item.x >= CamX && item.y >= CamY && item.x < CamX + KinkyDungeonGridWidthDisplay && item.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(item.x, item.y) > 0) {
-			KDDraw(kdgameboard, kdpixisprites, item.x + "," + item.y + "_" + item.name, KinkyDungeonRootDirectory + "Items/" + sprite + ".png",
-				(item.x - CamX)*KinkyDungeonGridSizeDisplay, (item.y - CamY)*KinkyDungeonGridSizeDisplay,
-				KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
+			if (KDCanSeeDroppedItem(item))
+				KDDraw(kdgameboard, kdpixisprites, item.x + "," + item.y + "_" + item.name, KinkyDungeonRootDirectory + "Items/" + sprite + ".png",
+					(item.x - CamX)*KinkyDungeonGridSizeDisplay, (item.y - CamY)*KinkyDungeonGridSizeDisplay,
+					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 		}
 	}
 }

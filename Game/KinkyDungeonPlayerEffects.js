@@ -40,10 +40,16 @@ let KDPlayerEffects = {
 		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		return {sfx: "Evil", effect: true};
 	},
+	"BearTrapStun": (target, damage, playerEffect, spell, faction, bullet) => {
+		KDStunTurns(playerEffect.time);
+		KinkyDungeonSendTextMessage(4, TextGet("KDBearTrapHit"), "yellow", playerEffect.time+1);
+		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		return {sfx: "Clang", effect: true};
+	},
 	"RubberBolt": (target, damage, playerEffect, spell, faction, bullet) => {
 		KDPlayerEffectRestrain(spell, playerEffect.count, ["redLatexBasic"], "Dollsmith");
 
-		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRubberBolt"), "yellow", playerEffect.time);
+		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRubberBolt"), "yellow", 1);
 		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		return {sfx: "Evil", effect: true};
 	},

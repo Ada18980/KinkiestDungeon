@@ -2553,6 +2553,7 @@ function KinkyDungeonGenerateSaveData() {
 	save.choices2 = KinkyDungeonSpellChoicesToggle;
 	save.buffs = KinkyDungeonPlayerBuffs;
 	save.lostitems = KinkyDungeonLostItems;
+	save.grounditems = KinkyDungeonGroundItems;
 	save.rescued = KinkyDungeonRescued;
 	save.aid = KinkyDungeonAid;
 	save.seed = KinkyDungeonSeed;
@@ -2670,6 +2671,7 @@ function KinkyDungeonLoadGame(String) {
 			if (saveData.lostitems != undefined) KinkyDungeonLostItems = saveData.lostitems;
 			if (saveData.rescued != undefined) KinkyDungeonRescued = saveData.rescued;
 			if (saveData.aid != undefined) KinkyDungeonAid = saveData.aid;
+			if (saveData.grounditems) KinkyDungeonGroundItems = saveData.grounditems;
 			if (saveData.stats) {
 				if (saveData.stats.picks != undefined) KinkyDungeonLockpicks = saveData.stats.picks;
 				if (saveData.stats.keys != undefined) KinkyDungeonRedKeys = saveData.stats.keys;
