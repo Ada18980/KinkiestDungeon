@@ -757,7 +757,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 	// Hollow out a greater cell area
 	KinkyDungeonCreateRectangle(cavityStart, 0, CellX + CellWidth - cavityEnd, height, false, false, false, false);
 
-	KinkyDungeonCreateRectangle(CellX, CellY, CellWidth, CellHeight, true, false, false, true, true);
+	KinkyDungeonCreateRectangle(CellX, CellY, CellWidth, CellHeight, true, false, false, true, true, false, true);
 
 	// Create some protrustions in the walls
 	let leftPassages = [
@@ -804,7 +804,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		for (let yy = 2; yy < height; yy += 5) {
 			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(xx, yy))) {
 				KinkyDungeonMapSet(xx, yy, '0');
-				KinkyDungeonTilesSet((xx) + "," + (yy), {Light: 6, Skin: "LightRaysDoll"});
+				KinkyDungeonTilesSet((xx) + "," + (yy), Object.assign(KinkyDungeonTilesGet((xx) + "," + (yy)) || {}, {Light: 6, Skin: "LightRaysDoll"}));
 			}
 
 		}

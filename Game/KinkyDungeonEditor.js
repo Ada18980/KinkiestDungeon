@@ -179,6 +179,7 @@ let KDTilePalette = {
 	'----Misc----': {type: "none"},
 	'POI': {type: "POI"},
 	'OffLimits': {type: "offlimits"},
+	'Jail': {type: "jail"},
 	'Keyring': {type: "Keyring"},
 };
 
@@ -707,12 +708,13 @@ let KDTE_Brush = {
 	},
 	"tile": (brush, curr, noSwap) => {
 		let OL = KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY) ? KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits : undefined;
+		let Jail = KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY) ? KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail : undefined;
 		let tile = (curr == brush.tile && !noSwap) ? '0' : brush.tile;
 		if (tile == '0') {
 			if (!noSwap) {
 				KDTE_Clear(KinkyDungeonTargetX, KinkyDungeonTargetY, true);
-				if (OL)
-					KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
+				if (OL || Jail)
+					KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: OL, Jail: Jail});
 			}
 		} else if (curr != tile) {
 			KinkyDungeonMapSetForce(KinkyDungeonTargetX, KinkyDungeonTargetY, tile);
@@ -724,7 +726,8 @@ let KDTE_Brush = {
 				KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, Object.assign({}, brush.special));
 				if (OL)
 					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
-
+				if (Jail)
+					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail = true;
 				if (brush.customfields) {
 					for (let field of Object.entries(brush.customfields)) {
 						if (KDTE_GetField(field))
@@ -748,6 +751,17 @@ let KDTE_Brush = {
 				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
 		} else {
 			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
+		}
+	},
+	'jail': (brush, curr, noSwap) => {
+		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
+			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail) {
+				if (!noSwap)
+					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail = false;
+			} else
+				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail = true;
+		} else {
+			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {Jail: true});
 		}
 	},
 	'Keyring': (brush, curr, noSwap) => {

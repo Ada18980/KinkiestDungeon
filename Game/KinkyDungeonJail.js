@@ -780,6 +780,9 @@ function KinkyDungeonJailGetLeashPoint(xx, yy, enemy) {
  * @returns {boolean} - Returns if the player is inside the nearest jail cell
  */
 function KinkyDungeonPlayerInCell(any, qualified) {
+	if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.Jail) {
+		return true;
+	}
 	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, undefined, any, qualified);
 	if (!nearestJail || nearestJail.type != "jail") return false;
 	return KDistChebyshev(KinkyDungeonPlayerEntity.x - nearestJail.x, KinkyDungeonPlayerEntity.y - nearestJail.y) < 2;
@@ -860,6 +863,7 @@ function KDDefeatedPlayerTick() {
 }
 
 function KDEnterDollTerminal(willing, cancelDialogue = true) {
+	KDGameData.PrisonerState = 'jail';
 	KDGameData.RoomType = "DollRoom"; // We do a tunnel every other room
 	KDGameData.MapMod = ""; // Reset the map mod
 	if (cancelDialogue) KDGameData.CurrentDialog = "";
