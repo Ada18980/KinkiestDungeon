@@ -28,7 +28,7 @@ let KDFactionGoddess = {
 		"Witch": 0.003,
 		"Apprentice": 0.0015,
 		"Elemental": 0.01,
-		"Mushy": 0.001,
+		//"Mushy": 0.001,
 		"AncientRobot": -0.001,
 	},
 	"Leather": {
@@ -52,7 +52,7 @@ let KDFactionGoddess = {
 		"Angel": 0.007,
 		"Demon": -0.005,
 		"Elf": 0.005,
-		"Mushy": 0.0035,
+		//"Mushy": 0.0035,
 		"Bast": 0.005,
 		"Apprentice": 0.001,
 		"AncientRobot": -0.001,
@@ -499,7 +499,7 @@ function KinkyDungeonDrawFactionRep() {
 				case 'Maidforce': tcolor ="white"; break;
 				case "Bast": tcolor ="#ff0000"; break;
 				case "Elf": tcolor ="#42a459"; break;
-				case 'Mushy': tcolor ="cyan"; break;
+				//case 'Mushy': tcolor ="cyan"; break;
 				case 'AncientRobot': tcolor ="grey"; break;
 			}
 

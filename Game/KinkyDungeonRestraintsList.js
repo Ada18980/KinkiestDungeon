@@ -383,7 +383,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.5, enemyTags: {"wolfRestraints":3, "wolfGear":3, "wolfLeash": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Collars", "HighCollars"],
 		events: [
 			{trigger: "playerAttack", type: "PunishPlayer", chance: 0.25, stun: 2, warningchance: 1.0, damage: "electric", power: 2, sfx: "Shock", inheritLinked: true,},
-			{trigger: "beforeStruggleCalc", type: "ShockForStruggle", chance: 0.75, stun: 2, warningchance: 1.0, damage: "electric", power: 2, sfx: "Shock", bind: 0.2, inheritLinked: true,},
+			{trigger: "beforeStruggleCalc", type: "ShockForStruggle", chance: 0.75, stun: 2, warningchance: 0.6, damage: "electric", power: 2, sfx: "Shock", bind: 0.2, inheritLinked: true,},
 			{trigger: "playerCast", type: "PunishPlayer", chance: 1.0, punishComponent: "Verbal", damage: "electric", power: 2, sfx: "Shock", inheritLinked: true,},
 			{trigger: "remotePunish", type: "RemoteActivatedShock", chance: 0.1, stun: 2, damage: "electric", power: 1, sfx: "Shock", noLeash: true, inheritLinked: true,}
 		]},

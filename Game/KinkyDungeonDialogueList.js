@@ -899,7 +899,7 @@ let KDDialogue = {
 	"PrisonerRescueMaid": KDPrisonerRescue("PrisonerRescueMaid", "Maidforce", ["MaidforceStalker", "Maidforce"]),
 	"PrisonerRescueBast": KDPrisonerRescue("PrisonerRescueBast", "Bast", ["Cleric", "MeleeCleric"]),
 	"PrisonerRescueElf": KDPrisonerRescue("PrisonerRescueElf", "Elf", ["Elf", "ElfRanger"]),
-	"PrisonerRescueMushy": KDPrisonerRescue("PrisonerRescueMushy", "Mushy", ["Fungal", "Mushy"]),
+	//"PrisonerRescueMushy": KDPrisonerRescue("PrisonerRescueMushy", "Mushy", ["Fungal", "Mushy"]),
 	"PrisonerRescueAncientRobot": KDPrisonerRescue("PrisonerRescueAncientRobot", "AncientRobot", ["CaptureBot", "Drone"]),
 
 	"ShopkeeperRescue": {

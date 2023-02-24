@@ -36,6 +36,7 @@ let KinkyDungeonHiddenFactions = [
 	"Delinquent",
 	"Wolfhunter",
 	"Chase",
+	"Mushy",
 ];
 
 
@@ -121,7 +122,7 @@ let KinkyDungeonFactionTag = {
 	Maidforce: "maid",
 	Bast: "mummy",
 	Elf: "elf",
-	Mushy: "mushy",
+	//Mushy: "mushy",
 	AncientRobot: "robot",
 };
 
