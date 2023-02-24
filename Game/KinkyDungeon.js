@@ -1907,6 +1907,16 @@ function KDInitializeJourney(Journey) {
 		newIndex.tmp = 'ore';
 		newIndex.ore = 'tmb';
 		newIndex.bel = 'bel';
+	} else if (KDGameData.Journey == "Doll") {
+		newIndex.grv = 'tmp';
+		newIndex.tmb = 'bel';
+		newIndex.cat = 'bel';
+		newIndex.lib = 'ore';
+		newIndex.jng = 'bel';
+		newIndex.cry = 'lib';
+		newIndex.tmp = 'cry';
+		newIndex.ore = 'tmb';
+		newIndex.bel = 'cat';
 	} else if (KDGameData.Journey == "Test") {
 		newIndex.grv = 'bel';
 		newIndex.tmb = 'bel';

@@ -243,7 +243,7 @@ let alts = {
 	},
 };
 
-let KDJourneyList = ["Random", "Harder", "Explorer"];
+let KDJourneyList = ["Random", "Harder", "Explorer", "Doll"];
 if (param_test) KDJourneyList.push("Test");
 
 function KinkyDungeonAltFloor(Type) {
