@@ -426,7 +426,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
  * @returns {boolean}
  */
 function KDEnemyHasFlag(enemy, flag) {
-	return (enemy.flags && enemy.flags[flag] > 0);
+	return (enemy.flags && (enemy.flags[flag] > 0 || enemy.flags[flag] == -1));
 }
 
 function KinkyDungeonDrawEnemiesStatus(canvasOffsetX, canvasOffsetY, CamX, CamY) {

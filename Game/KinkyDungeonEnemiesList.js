@@ -660,7 +660,7 @@ let KinkyDungeonEnemies = [
 			punishRemote: 4,
 			punishRemoteChance: 0.25,
 		},
-		attack: "SpellMeleeBind", attackPoints: 3, attackWidth: 1, attackRange: 1, power: 3, dmgType: "electric", multiBind: 1, fullBoundBonus: 4,
+		attack: "SpellMeleeBind", attackPoints: 4, attackWidth: 1, attackRange: 1, power: 3, dmgType: "electric", multiBind: 1, fullBoundBonus: 4,
 		minLevel:6, weight:-6,
 		terrainTags: {"secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 5, "metalRage": 3, "metalPleased": 5, "metalFriendly": 3, "robot": 17}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
