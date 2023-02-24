@@ -807,7 +807,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 
 		if (iterations == 100000) {
-			if (!KinkyDungeonMapIndex[KDGameData.ShortcutPath] || !KinkyDungeonMapIndex[KDGameData.ShortcutPath])
+			if (!KinkyDungeonMapIndex[KDGameData.MainPath] || !KinkyDungeonMapIndex[KDGameData.ShortcutPath])
 				KDInitializeJourney(KDGameData.Journey);
 
 			KinkyDungeonSendEvent("postMapgen", {});

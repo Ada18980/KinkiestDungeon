@@ -2778,6 +2778,9 @@ function KinkyDungeonLoadGame(String) {
 
 			if (saveData.KDGameData && saveData.KDGameData.LastMapSeed) KDsetSeed(saveData.KDGameData.LastMapSeed);
 
+			if (!KinkyDungeonMapIndex[KDGameData.MainPath] || !KinkyDungeonMapIndex[KDGameData.ShortcutPath])
+				KDInitializeJourney(KDGameData.Journey);
+
 			if (saveData.KinkyDungeonGrid) {
 				KDUpdateVision();
 			}
