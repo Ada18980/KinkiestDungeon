@@ -2969,7 +2969,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											for (let e of KinkyDungeonEntities) {
 												if (e == enemy) continue;
 												if (['guard', 'ambush'].includes(KDGetAI(enemy))) continue;
-												if (enemy.Enemy.clusterWith && !e.Enemy.tags[enemy.Enemy.clusterWith]) continue;
+												if (!(
+													(enemy.Enemy.clusterWith && !e.Enemy.tags[enemy.Enemy.clusterWith])
+													|| e.Enemy.clusterWith && !enemy.Enemy.tags[enemy.Enemy.clusterWith]
+												)) continue;
+												if (KDGetFaction(e) != KDGetFaction(enemy)) continue;
 												if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits) continue;
 												let dist = KDistEuclidean(e.x - enemy.x, e.y - enemy.y);
 												if (dist < minDist) {

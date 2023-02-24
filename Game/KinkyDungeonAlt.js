@@ -138,6 +138,7 @@ let alts = {
 		bossroom: false,
 		width: 15,
 		height: 10,
+		nopatrols: true,
 		setpieces: {
 		},
 		data: {
@@ -756,7 +757,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 	// Hollow out a greater cell area
 	KinkyDungeonCreateRectangle(cavityStart, 0, CellX + CellWidth - cavityEnd, height, false, false, false, false);
 
-	KinkyDungeonCreateRectangle(CellX, CellY, CellWidth, CellHeight, true, false, false, true);
+	KinkyDungeonCreateRectangle(CellX, CellY, CellWidth, CellHeight, true, false, false, true, true);
 
 	// Create some protrustions in the walls
 	let leftPassages = [
@@ -901,6 +902,11 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		e.faction = "Enemy";
 		e.AI = "verylooseguard";
 	}
+
+	KinkyDungeonPatrolPoints.push({x: CellX - 2, y: CellY - 2});
+	KinkyDungeonPatrolPoints.push({x: CellX - 2, y: CellY + 2 + CellHeight});
+	KinkyDungeonPatrolPoints.push({x: CellX + 2 + CellWidth, y: CellY + 2 + CellHeight});
+	KinkyDungeonPatrolPoints.push({x: CellX + 2 + CellWidth, y: CellY - 2});
 
 
 

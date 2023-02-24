@@ -719,7 +719,9 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 				console.log(`${performance.now() - startTime} ms for trap creation`);
 				startTime = performance.now();
 			}
-			KinkyDungeonPlacePatrols(4, width, height);if (KDDebug) {
+			if (!altType || !altType.nopatrols)
+				KinkyDungeonPlacePatrols(4, width, height);
+			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for patrol point creation`);
 				startTime = performance.now();
 			}
