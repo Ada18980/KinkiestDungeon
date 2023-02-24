@@ -54,11 +54,18 @@ let KDPlayerEffects = {
 		return {sfx: "Dollify", effect: true};
 	},
 	"EncaseBolt": (target, damage, playerEffect, spell, faction, bullet) => {
-		KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncase"], "Dollsmith");
+		KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncaseRandom"], "Dollsmith");
 
 		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBolt"), "yellow", 1);
 		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		return {sfx: "Dollify", effect: true};
+	},
+	"RubberMissile": (target, damage, playerEffect, spell, faction, bullet) => {
+		KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncaseRandom"], "Dollsmith");
+
+		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRubberMissile"), "yellow", 1);
+		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		return {sfx: "Lightning", effect: true};
 	},
 	"ObsidianBolt": (target, damage, playerEffect, spell, faction, bullet) => {
 		KDPlayerEffectRestrain(spell, playerEffect.count, ["obsidianRestraints"], "Elemental");

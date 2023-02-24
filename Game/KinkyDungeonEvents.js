@@ -3002,6 +3002,74 @@ let KDEventMapBullet = {
 				}
 			}
 		},
+	},
+	"bulletAfterTick": {
+		"RubberMissileHoming": (e, b, data) => {
+			if (data.delta > 0 && b.bullet.targetX != undefined && b.bullet.targetY != undefined) {
+				// Scan for targets near the target location
+				if (b.bullet.faction) {
+					let minDist = 1000;
+					let entity = null;
+					let playerDist = 1000;
+					if (KDFactionHostile(b.bullet.faction, "Player")) {
+						playerDist = KDistEuclidean(KinkyDungeonPlayerEntity.x - b.bullet.targetX, KinkyDungeonPlayerEntity.y - b.bullet.targetY);
+						if (playerDist <= e.dist) {
+							entity = KinkyDungeonPlayerEntity;
+							minDist = playerDist;
+						}
+					}
+
+					let enemies = KDNearbyEnemies(b.bullet.targetX, b.bullet.targetY, e.dist);
+					for (let en of enemies) {
+						if (!KDHelpless(en) && KDFactionHostile(b.bullet.faction, en)) {
+							playerDist = KDistEuclidean(en.x - b.bullet.targetX, en.y - b.bullet.targetY);
+							if (playerDist < minDist) {
+								entity = en;
+								minDist = playerDist;
+							}
+						}
+					}
+					if (entity) {
+						// Move the missile's target location toward it
+						if (b.bullet.targetX > entity.x) {
+							b.bullet.targetX = Math.max(entity.x, b.bullet.targetX - data.delta * e.power);
+						} else if (b.bullet.targetX < entity.x) {
+							b.bullet.targetX = Math.min(entity.x, b.bullet.targetX + data.delta * e.power);
+						}
+						if (b.bullet.targetY > entity.y) {
+							b.bullet.targetY = Math.max(entity.y, b.bullet.targetY - data.delta * e.power);
+						} else if (b.bullet.targetX < entity.y) {
+							b.bullet.targetY = Math.min(entity.y, b.bullet.targetY + data.delta * e.power);
+						}
+					}
+				}
+				let speed = KDistEuclidean(b.vx, b.vy);
+
+				// Missile tracking
+				let direction = Math.atan2(b.bullet.targetY - b.y, b.bullet.targetX - b.x);
+				let vx = Math.cos(direction) * speed;
+				let vy = Math.sin(direction) * speed;
+				let vxx = b.vx;
+				let vyy = b.vy;
+				if (b.vx > vx) vxx = Math.max(vx, b.vx - data.delta * e.power);
+				else if (b.vx < vx) vxx = Math.min(vx, b.vx + data.delta * e.power);
+				if (b.vy > vy) vyy = Math.max(vy, b.vy - data.delta * e.power);
+				else if (b.vy < vy) vyy = Math.min(vy, b.vy + data.delta * e.power);
+
+				if (!e.limit || KDistEuclidean(vxx, vyy) >= e.limit) {
+					b.vx = vxx;
+					b.vy = vyy;
+				}
+
+				// Accelerate the missile
+				if (e.count) {
+					speed += e.count;
+				}
+				direction = Math.atan2(b.vy, b.vx);
+				b.vx = Math.cos(direction) * speed;
+				b.vy = Math.sin(direction) * speed;
+			}
+		},
 	}
 };
 
@@ -3462,6 +3530,20 @@ let KDEventMapGeneric = {
 			//}
 		}
 	},
+	"defeat": {
+		"dollRoomRemove": (e, enemy, data) => {
+			// Removes the excess dollsmiths that are spawned when you escape the dollroom
+			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
+				for (let en of KinkyDungeonEntities) {
+					if (en.Enemy.tags.dollsmith) {
+						en.noDrop = true;
+						en.hp = 0;
+						KDClearItems(en);
+					}
+				}
+			}
+		}
+	},
 	"beforeHandleStairs": {
 		"resetDollRoom": (e, data) => {
 			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
@@ -3586,6 +3668,32 @@ let KDEventMapGeneric = {
 		},
 	},
 	"tick": {
+		"DollRoomReinforce": (e, data) => {
+			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
+				let spawn = true;
+				let eligible = false;
+				for (let player of [KinkyDungeonPlayerEntity]) {
+					if (spawn && KDistEuclidean(player.x - KinkyDungeonStartPosition.x, player.y - KinkyDungeonStartPosition.y) < 10) {
+						spawn = false;
+					}
+					if (spawn && !eligible && !KinkyDungeonTilesGet(player.x + "," + player.y)?.OffLimits) {
+						eligible = true;
+					}
+				}
+				if (eligible && spawn && !KinkyDungeonFlags.get("spawnDollsmith")) {
+					let count = 0;
+					for (let en of KinkyDungeonEntities) {
+						if (en.Enemy.tags.dollsmith) count += 1;
+					}
+					if (count < 5) {
+						KinkyDungeonSetFlag("spawnDollsmith", 15);
+						let en = DialogueCreateEnemy(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, "Dollsmith");
+						en.summoned = true;
+						en.noDrop = true;
+					}
+				}
+			}
+		},
 		"BurningDesire": (e, data) => {
 			if (KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax * 0.7 && KinkyDungeonStatsChoice.has("BurningDesire")) {
 				let px = KinkyDungeonPlayerEntity.x - 1 + Math.round(2 * KDRandom());

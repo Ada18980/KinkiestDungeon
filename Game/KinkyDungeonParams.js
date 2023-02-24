@@ -812,7 +812,7 @@ const KinkyDungeonMapParams = {
 		"max_height" : 4,
 
 		enemyTags: ["dollsmith", "dollrare", "oldrobot", "oldrobotturret"],
-		"defeat_outfit": "SlimeSuit",
+		"defeat_outfit": "DollSuit",
 		"shrines": [
 			{Type: "Latex", Weight: 5},
 			{Type: "Commerce", Weight: 0},

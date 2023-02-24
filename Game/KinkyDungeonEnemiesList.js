@@ -573,6 +573,31 @@ let KinkyDungeonEnemies = [
 		ondeath: [{type: "spellOnSelf", spell: "RubberSlime"}],
 		dropTable: [{name: "AncientPowerSourceSpent", weight: 9, noSummon: true}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
 
+	{name: "RubberSilo", faction: "Enemy", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
+		color: "#ff3367",
+		tags: KDMapInit(["oldrobot", "ignoreharmless", "mimicBlock", "doortrap", "robot", "acidweakness", "soulresist", "minor", "ranged",
+			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness"]),
+		AI: "hunt", difficulty: 0.2,
+		events: [
+			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5555"},
+		],
+		spells: ["RubberMissile"], spellCooldownMult: 1, spellCooldownMod: 0, projectileTargeting: true,
+		cueSfx: {
+			Block: "Clang",
+			Resist: "SoftShield",
+			Damage: "RobotHit",
+		},
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		armor: 2.0, maxhp: 20, movePoints: 9999, immobile: true,
+		visionRadius: 8.5, followRange: 999,
+		sneakThreshold: 1,
+		attack: "SpellMeleeWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 2, dmgType: "electric",
+		minLevel: 7, weight:-50, terrainTags: {"oldrobot": 7, "oldrobotturret": 30, open: 50, "latexOptout": -24}, shrines: ["Latex"], floors:KDMapInit(["bel"]),
+		ondeath: [{type: "spellOnSelf", spell: "RubberSlime"}],
+		dropTable: [{name: "AncientPowerSourceSpent", weight: 8, noSummon: true}, {name: "AncientPowerSource", weight: 2, noSummon: true}]},
+
 	{name: "Drone", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true, color: "#ff7755",
 		tags: KDMapInit(["ignoreharmless", "doortrap", "robot", "flying", "acidweakness", "soulresist", "minor", "melee", "electricsevereweakness", "coldresist", "iceresist",
 			"slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
@@ -659,6 +684,28 @@ let KinkyDungeonEnemies = [
 		attack: "MeleeBind", attackPoints: 3, attackWidth: 1, attackRange: 3.5, power: 3, dmgType: "glue", multiBind: 1, fullBoundBonus: 2,
 		minLevel:2, weight:-8, terrainTags: {"secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 6, "metalRage": 4, "metalPleased": 6, "metalFriendly": 4, "robot": 20, "tapePref": 6, "tapeOptout": -30}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
+	{name: "BotMissile", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#bbbbbb",
+		tags: KDMapInit(["leashing", "robot", "ranged", "miniboss", "acidweakness", "electricsevereweakness",
+			"unflinching", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search", "dollRoomBoss"]),
+		AI: "guard", spellRdy: true, bypass: true,
+		events: [
+			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff0000"},
+		],
+		spells: ["RubberMissile"], spellCooldownMult: 0.7, spellCooldownMod: 0, castWhileMoving: true, followLeashedOnly: true,
+		cueSfx: {
+			Block: "Clang",
+			Resist: "SoftShield",
+			Damage: "RobotHit",
+		},
+		armor: 2, maxhp: 20, movePoints: 4,
+		visionRadius: 9, followRange: 3.5, projectileAttack: true, useLock: "Red",
+		RemoteControl: {
+			punishRemote: 6,
+			punishRemoteChance: 0.5,
+		},
+		attack: "SpellMeleeBind", attackPoints: 2, attackWidth: 1, attackRange: 3.5, power: 1, dmgType: "crush", multiBind: 1, fullBoundBonus: 3,
+		minLevel:7, weight:-106, terrainTags: {"thirdhalf":1, "increasingWeight":0.5, "open": 100, "metalAnger": 44, "metalRage": 13, "metalPleased": 44, "metalFriendly": 13, "robot": 7}, shrines: ["Metal"], allFloors: true,
+		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 5, noSummon: true}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
 	{name: "EnforcerBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#bbbbbb",
 		tags: KDMapInit(["leashing", "robot", "ranged", "miniboss", "acidweakness", "electricsevereweakness", "unflinching", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
 		AI: "guard", spellRdy: true, bypass: true,
@@ -674,7 +721,7 @@ let KinkyDungeonEnemies = [
 		summon: [
 			{enemy: "Drone", range: 2, count: 2, chance: 0.25, strict: true},],
 		armor: 2, maxhp: 24, movePoints: 4,
-		visionRadius: 16, followRange: 3.5, projectileAttack: true, useLock: "Red",
+		visionRadius: 9, followRange: 3.5, projectileAttack: true, useLock: "Red",
 		RemoteControl: {
 			punishRemote: 6,
 			punishRemoteChance: 0.5,
@@ -1533,7 +1580,7 @@ let KinkyDungeonEnemies = [
 		tags: KDMapInit(["leashing", "dollsmith", "doll", "opendoors", "closedoors", "jail", "jailer", "melee", "elite", "glueresist", "crushresist", "iceweakness", "blacksteelrestraints", "blacksteelcuffs", "teasetoys"]),
 		spellResist: 1.0,
 		followLeashedOnly: true, followRange: 1,
-		spells: ["RubberBolt"],
+		spells: ["RubberBolt"], spellCooldownMult: 2, spellCooldownMod: 0,
 		Security: {
 			level_key: 3,
 			level_tech: 1,
@@ -1543,10 +1590,11 @@ let KinkyDungeonEnemies = [
 			requiredItems: ["BlacksteelBelt", "BlacksteelBra"],
 		},
 		summon: [{enemy: "DollsmithDoll", range: 2.5, count: 1, strict: true}, {enemy: "DollsmithDoll", range: 2.5, count: 1, chance: 0.5, strict: true}],
-		specialCD: 3, specialAttack: "BindLock", spellCooldownMult: 2, spellCooldownMod: 0, specialAttackPoints: 2, specialWidth: 3, spellRdy: true,
+		specialCD: 6, specialAttack: "WillBind", specialRemove: "Lock", specialExtraTags: ["redLatexBasic"], specialRemoveTags: ["blacksteelrestraints", "blacksteelcuffs", "leashing", "teasetoys"],
+		specialAttackPoints: 2, specialWidth: 3, specialMsg: true, specialCondition: "canRestrainWithExtra", specialCDonAttack: true, specialIgnoreStam: true,
 		attackLock: "Red",
 		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 14, minLevel:3, weight:15, movePoints: 2,
-		attackPoints: 1, attack: "SpellMeleeWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope",
+		attackPoints: 2, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1.5,
 		terrainTags: {"increasingWeight":1, "dollsmith": 5}, floors:KDMapInit(["bel"]), shrines: ["Metal", "Latex"],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]},
 
@@ -1563,7 +1611,9 @@ let KinkyDungeonEnemies = [
 			bonusRestraints: 2,
 			requiredItems: ["BlacksteelBelt", "BlacksteelBra"],
 		},
-		attackLock: "Purple",
+		useLock: "Purple",
+		specialAttack: "WillBind", specialCD: 5, specialExtraTags: ["redLatexBasic"], specialRemoveTags: ["blacksteelchastity", "latexEncase", "leashing", "teasetoys"],
+		specialAttackPoints: 2, specialWidth: 3, specialMsg: true, specialCondition: "canRestrainWithExtra", specialCDonAttack: true, specialIgnoreStam: true,
 		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 14, minLevel:5, weight:10, movePoints: 2.4,
 		attackPoints: 3, attack: "SpellMeleeBindWill", attackWidth: 1, attackRange: 1, power: 4, dmgType: "glue",
 		terrainTags: {"increasingWeight":1, "dollsmith": 5, "latexOptout": -9}, floors:KDMapInit(["bel"]), shrines: ["Metal", "Latex"],
@@ -2410,4 +2460,31 @@ let KDLoadouts = {
 		chance: 1.0,
 		items: ["RedKey", "Keyring"],
 	},
+};
+
+/** @type {Record<string, SpecialCondition>} */
+let KDSpecialConditions = {
+	"canRestrainWithExtra": {
+		resetCD: false,
+		criteria: (enemy, AIData) => {
+			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || KDDefaultRestraintThresh;
+			return KDGetRestraintsEligible(
+				{tags: KDGetTags(enemy, true)}, MiniGameKinkyDungeonLevel,
+				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				enemy.Enemy.bypass,
+					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
+					!(enemy.Enemy.ignoreStaminaForBinds || (true && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
+					false,
+					!(KinkyDungeonStatsChoice.has("TightRestraints") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss),
+					KDGetExtraTags(enemy, true),
+					false,
+					{
+						maxPower: rThresh + 0.01,
+						looseLimit: true,
+						onlyUnlimited: true,
+						ignore: enemy.items,
+					}, enemy
+			).length > 0;
+		}
+	}
 };

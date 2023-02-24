@@ -912,6 +912,10 @@ KinkyDungeonInventoryItemBlueSuit,Latex Catsuit
 KinkyDungeonInventoryItemBlueSuitDesc,An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
 KinkyDungeonInventoryItemBlueSuitDesc2,"No bonuses, no penalties."
 
+KinkyDungeonInventoryItemDollSuit,Doll Catsuit
+KinkyDungeonInventoryItemDollSuitDesc,An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
+KinkyDungeonInventoryItemDollSuitDesc2,"No bonuses, no penalties."
+
 KinkyDungeonInventoryItemObsidian,Shadow Latex Dress
 KinkyDungeonInventoryItemObsidianDesc,"A minidress made from shadow latex, a favorite of otherwordly patrons."
 KinkyDungeonInventoryItemObsidianDesc2,"No bonuses, no penalties."
@@ -1668,12 +1672,14 @@ KillDollsmith,"The dollsmith's suit locks her wrists together and renders her he
 AttackDollsmith,"The dollsmith runs a latex-covered finger across your vulnerable body! (DamageTaken)"
 AttackDollsmithBind,"The dollsmith grabs you and applies her favorite doll restraints! (+RestraintAdded)"
 AttackDollsmithLock,"The dollsmith slaps a lock onto your restraints! (DamageTaken)"
+AttackDollsmithSpecial,"The dollsmith splashes a red latex concoction onto you! (+RestraintAdded)"
 
 NameDollmaker,Dollmaker's Apprentice
 KillDollmaker,"The dollmaker apprentice's suit becomes rigid and locks her limbs in place."
 AttackDollmaker,"The dollmaker's apprentice squeezes your body with her gloved hands! (DamageTaken)"
 AttackDollmakerBind,"The dollmaker's apprentice uses her staff to encase you in doll restraints! (+RestraintAdded)"
 AttackDollmakerLock,"The dollmaker's apprentice slips a lock onto your restraints! (DamageTaken)"
+AttackDollmakerSpecial,"The dollmaker's apprentice unleashes a powerful latex blast! (+RestraintAdded)"
 
 
 
@@ -1760,9 +1766,12 @@ KillOldTapeDrone,"The auto taper's mechanisms grind to a halt."
 AttackOldTapeDrone,"The auto taper wraps additional layers of sticky tape! (DamageTaken)"
 AttackOldTapeDroneBind,"The wraps you in many layers of tape! (+RestraintAdded)"
 
-NameRubberTurret,Rubber Turret
+NameRubberTurret,Rubber Blaster
 KillRubberTurret,"The turret enters an unstable state, about to spread rubber all over!"
 AttackRubberTurret,"The turret defends itself with a close-range electrocution attack! (DamageTaken)"
+NameRubberSilo,Rubber Launcher
+KillRubberSilo,"The turret enters an unstable state, about to spread rubber all over!"
+AttackRubberSilo,"The turret defends itself with a close-range electrocution attack! (DamageTaken)"
 
 NameDrone,Drone
 KillDrone,"The drone fizzles and falls to the ground!"
@@ -1798,6 +1807,12 @@ KillEnforcerBot,"The enforcer unit releases magic smoke and explodes."
 AttackEnforcerBot,"The enforcer unit fires many cables that squeeze you! (DamageTaken)"
 AttackEnforcerBotBind,"The enforcer fires off restraints that wrap around your body and apprehend you! (+RestraintAdded)"
 AttackEnforcerBotLock,"The enforcer releases small drones which lock onto your restraints! (DamageTaken)"
+
+NameBotMissile,Artillery Unit
+KillBotMissile,"The artillery unit releases magic smoke and explodes."
+AttackBotMissile,"The artillery unit fires many cables that squeeze you! (DamageTaken)"
+AttackBotMissileBind,"The artillery fires off restraints that wrap around your body and apprehend you! (+RestraintAdded)"
+AttackBotMissileLock,"The artillery releases small drones which lock onto your restraints! (DamageTaken)"
 
 KinkyDungeonRobotShock,The energy bolt hits you and paralyzes you!
 KinkyDungeonSpellRobotBolt,Energy Bolt

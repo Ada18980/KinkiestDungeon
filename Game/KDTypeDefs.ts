@@ -744,8 +744,18 @@ interface enemy extends KDHasTags {
 	specialCD?: number,
 	/** Special attack property. Added to the special attack in addition to the enemy's default attack*/
 	specialAttack?: string,
+	/** Special attacks ignore stamina requirements */
+	specialIgnoreStam?: boolean,
 	/** Special attack property. Removed these types from the main attack when special attacking.*/
 	specialRemove?: string,
+	/** Adds additional restraint tags when special attacking*/
+	specialExtraTags?: string[],
+	/** removes the specified restraint tags when special attacking*/
+	specialRemoveTags?: string[],
+	/** Uses a special message for Special attacks */
+	specialMsg?: boolean,
+	/** specifies a condition for using a special attack*/
+	specialCondition?: string,
 	/** Special attack property*/
 	specialPower?: number,
 	/** Special attack property*/
@@ -1932,6 +1942,11 @@ interface KDDroppedItemProp {
 	tinyness?: number,
 }
 
+
+type SpecialCondition = {
+	resetCD: boolean,
+	criteria: (enemy: entity, AIData: any) => boolean,
+}
 
 declare const PIXI: any;
 declare const zip: any;

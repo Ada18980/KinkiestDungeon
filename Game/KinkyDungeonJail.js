@@ -873,10 +873,10 @@ function KDEnterDollTerminal(willing) {
 	}
 
 	if (!willing) {
-		let defeat_outfit = "SlimeSuit";
+		let defeat_outfit = "DollSuit";
 		if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
 
-		KinkyDungeonSetDress(defeat_outfit, "SlimeSuit");
+		KinkyDungeonSetDress(defeat_outfit, "DollSuit");
 	}
 
 	KinkyDungeonDressPlayer();
