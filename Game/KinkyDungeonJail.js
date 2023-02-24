@@ -859,9 +859,10 @@ function KDDefeatedPlayerTick() {
 	KinkyDungeonSetFlag("playerDefeated", 1);
 }
 
-function KDEnterDollTerminal(willing) {
+function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	KDGameData.RoomType = "DollRoom"; // We do a tunnel every other room
 	KDGameData.MapMod = ""; // Reset the map mod
+	if (cancelDialogue) KDGameData.CurrentDialog = "";
 	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
 	KDGameData.DollRoomCount = 0;
 	KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);

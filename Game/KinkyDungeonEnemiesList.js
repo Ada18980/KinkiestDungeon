@@ -521,7 +521,7 @@ let KinkyDungeonEnemies = [
 			unlimitedRestraints: true,
 		},
 		armor: 1.5, maxhp: 5, movePoints: 1.1,
-		visionRadius: 7, followRange: 1, projectileAttack: true, useLock: "Red",
+		visionRadius: 7, followRange: 1, projectileAttack: true, useLock: "Red", followLeashedOnly: true,
 		bindOnDisable: true, suicideOnAdd: true,
 		attack: "MeleeBindSuicideWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 2, dmgType: "electric", multiBind: 2, fullBoundBonus: 4,
 		minLevel:0, weight:15, terrainTags: {"oldrobot": 10}, shrines: ["Metal"], floors:KDMapInit(["bel"]),
