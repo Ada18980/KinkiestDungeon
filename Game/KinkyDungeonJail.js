@@ -3,6 +3,9 @@
 /** Time spent in cage before guards start getting teleported */
 let KDMaxCageTime = 100;
 
+/** Only these have jail events */
+let KDJailFilters = ['jail'];
+
 function KDAssignGuardAction(guard, xx, yy) {
 	let eventWeightTotal = 0;
 	let eventWeights = [];
@@ -364,8 +367,13 @@ function KinkyDungeonGetJailRestraintLevelFor(Name) {
 	return -1;
 }
 
-function KinkyDungeonInJail() {
-	return KinkyDungeonPlayerInCell();//KDGameData.KinkyDungeonSpawnJailers > 0 && KDGameData.KinkyDungeonSpawnJailers + 1 >= KDGameData.KinkyDungeonSpawnJailersMax;
+/**
+ *
+ * @param {string[]} [filter] - Have to be in a jail, not a dropoff
+ * @returns {boolean}
+ */
+function KinkyDungeonInJail(filter) {
+	return KinkyDungeonPlayerInCell(false, false, filter);//KDGameData.KinkyDungeonSpawnJailers > 0 && KDGameData.KinkyDungeonSpawnJailers + 1 >= KDGameData.KinkyDungeonSpawnJailersMax;
 }
 
 
@@ -402,7 +410,7 @@ function KinkyDungeonPlaceJailKeys() {
 function KinkyDungeonHandleJailSpawns(delta) {
 	if (KDGameData.JailTurns) KDGameData.JailTurns += delta;
 	else KDGameData.JailTurns = 1;
-	if (KinkyDungeonInJail()) KDGameData.JailRemoveRestraintsTimer += delta;
+	if (KinkyDungeonInJail(KDJailFilters)) KDGameData.JailRemoveRestraintsTimer += delta;
 
 	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 
@@ -420,7 +428,7 @@ function KinkyDungeonHandleJailSpawns(delta) {
 	}
 
 	// Start jail event, like spawning a guard, spawning rescues, etc
-	if (KinkyDungeonInJail() && KDGameData.PrisonerState == "jail" && (KDGameData.KinkyDungeonGuardSpawnTimer <= 1 || KDGameData.SleepTurns == 3) && !KinkyDungeonJailGuard() && playerInCell) {
+	if (KinkyDungeonInJail(KDJailFilters) && KDGameData.PrisonerState == "jail" && (KDGameData.KinkyDungeonGuardSpawnTimer <= 1 || KDGameData.SleepTurns == 3) && !KinkyDungeonJailGuard() && playerInCell) {
 		KDGetJailEvent(KinkyDungeonJailGuard(), xx, yy)(KinkyDungeonJailGuard(), xx, yy);
 	} else if (KDGameData.KinkyDungeonGuardSpawnTimer > 0 && KDGameData.SleepTurns < 1 && !KinkyDungeonAngel()) KDGameData.KinkyDungeonGuardSpawnTimer -= delta;
 
@@ -777,13 +785,14 @@ function KinkyDungeonJailGetLeashPoint(xx, yy, enemy) {
 /**
  * @param {boolean} [any]
  * @param {boolean} [qualified] - Makes sure the player is qualified
+ * @param {string[]} [filter]
  * @returns {boolean} - Returns if the player is inside the nearest jail cell
  */
-function KinkyDungeonPlayerInCell(any, qualified) {
+function KinkyDungeonPlayerInCell(any, qualified, filter) {
 	if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.Jail) {
 		return true;
 	}
-	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, undefined, any, qualified);
+	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, filter, any, qualified);
 	if (!nearestJail || nearestJail.type != "jail") return false;
 	return KDistChebyshev(KinkyDungeonPlayerEntity.x - nearestJail.x, KinkyDungeonPlayerEntity.y - nearestJail.y) < 2;
 	//return (Math.abs(KinkyDungeonPlayerEntity.x - KinkyDungeonStartPosition.x) < KinkyDungeonJailLeashX - 1 && Math.abs(KinkyDungeonPlayerEntity.y - KinkyDungeonStartPosition.y) <= KinkyDungeonJailLeash);
@@ -863,6 +872,7 @@ function KDDefeatedPlayerTick() {
 }
 
 function KDEnterDollTerminal(willing, cancelDialogue = true) {
+	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
 	KDGameData.PrisonerState = 'jail';
 	KDGameData.RoomType = "DollRoom"; // We do a tunnel every other room
 	KDGameData.MapMod = ""; // Reset the map mod

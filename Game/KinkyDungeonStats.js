@@ -867,7 +867,8 @@ function KinkyDungeonUpdateStats(delta) {
 	KDBoundPowerLevel = 0;
 	KDBoundPowerLevel += 0.1 * Math.max(0, Math.min(1, KinkyDungeonBlindLevel / 3));
 	if (KinkyDungeonIsArmsBound(false, false)) KDBoundPowerLevel += 0.2;
-	if (KinkyDungeonIsHandsBound(false, false)) KDBoundPowerLevel += 0.2;
+	if (KinkyDungeonIsHandsBound(false, false, 0.65)) KDBoundPowerLevel += 0.1;
+	if (KinkyDungeonIsHandsBound(false, false, 0.99)) KDBoundPowerLevel += 0.1;
 	KDBoundPowerLevel += 0.1 * KinkyDungeonChastityMult();
 	KDBoundPowerLevel += 0.2 * KinkyDungeonGagTotal();
 	KDBoundPowerLevel += 0.2 * Math.max(0, Math.min(1, KinkyDungeonSlowLevel / 2));

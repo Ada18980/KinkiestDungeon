@@ -131,7 +131,7 @@ function KinkyDungeonWeaponCanCut(RequireInteract, MagicOnly) {
 	if (KinkyDungeonPlayerWeapon
 		&& KinkyDungeonWeapons[KinkyDungeonPlayerWeapon].cutBonus != undefined
 		&& (!MagicOnly || KinkyDungeonWeapons[KinkyDungeonPlayerWeapon].magic != undefined)
-		&& (!RequireInteract || !KinkyDungeonIsHandsBound())) return true;
+		&& (!RequireInteract || !KinkyDungeonIsHandsBound(false, false, 0.55))) return true;
 	if (KinkyDungeonPlayerBuffs) {
 		for (let b of Object.values(KinkyDungeonPlayerBuffs)) {
 			if (b && b.tags && (b.tags.includes("allowCutMagic") || (!MagicOnly && b.tags.includes("allowCut")))) return true;
@@ -171,8 +171,9 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 
 	Object.assign(KinkyDungeonPlayerDamage, damage);
 
-	if (!KinkyDungeonPlayer.CanInteract() && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
-		KinkyDungeonPlayerDamage.chance /= 2;
+	let handBondage = KDHandBondageTotal();
+	if (handBondage && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
+		KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, handBondage));
 	}
 	if (KinkyDungeonStatsChoice.get("Brawler") && !KinkyDungeonPlayerDamage.name) {
 		KinkyDungeonPlayerDamage.dmg += KDBrawlerAmount;

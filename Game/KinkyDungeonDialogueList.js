@@ -913,13 +913,19 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					KDGameData.PrisonerState = "";
 					KinkyDungeonInterruptSleep();
-					let door = KDGetJailDoor(player.x, player.y);
+					// Type shenanigans unintended
+					let doorTile = KDGetJailDoor(player.x, player.y);
+					/** @type {KDPoint} */
+					let door = doorTile;
 					if (door) {
-						if (door.tile) {
-							door.tile.Lock = undefined;
+						if (doorTile.tile) {
+							doorTile.tile.Lock = undefined;
 							KDUpdateDoorNavMap();
 						}
 						KinkyDungeonMapSet(door.x, door.y, 'd');
+					} else door = KinkyDungeonGetNearbyPoint(player.x, player.y, true);
+					if (!door) {
+						door = {x: player.x, y: player.y}; // Better glitch than break game
 					}
 					KinkyDungeonEntities = [];
 					KDGameData.RespawnQueue = [];
@@ -1430,7 +1436,7 @@ let KDDialogue = {
 										KinkyDungeonChangeFactionRep(faction, 0.0025);
 								}
 								KinkyDungeonRedKeys -= 1;
-								if (KinkyDungeonIsHandsBound(false, true)) {
+								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
 									DialogueBringNearbyEnemy(player.x, player.y, 8);
 									KDGameData.CurrentDialogMsg = "PrisonerJailUnlockSlow";
 								} else {
@@ -1461,7 +1467,7 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
 					if (KinkyDungeonLockpicks > 0) {
-						if (!KinkyDungeonIsHandsBound(false, true)) {
+						if (!KinkyDungeonIsHandsBound(false, true, 0.45)) {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
 								e.boundLevel = 0;

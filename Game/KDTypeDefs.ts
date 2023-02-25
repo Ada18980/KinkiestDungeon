@@ -299,7 +299,7 @@ interface KDRestraintProps {
 	/** Binding arms hurts a lot of things but isn't as punishing as hands */
 	bindarms?: boolean,
 	/** Binding hands prevents use of weapons and picks */
-	bindhands?: boolean,
+	bindhands?: number,
 	/** harnesses allow enemies to grab you and slow you */
 	harness?: boolean,
 	/** hobble is the simplest kind of slowing restraint, increasing slow by 1*/
@@ -1558,7 +1558,8 @@ interface spell {
 
 }
 
-interface KDJailPoint {x: number, y: number, type: string, radius: number, requireLeash?: boolean, requireFurniture?: boolean, direction?:{x: number, y: number}, restraint?:string, restrainttags?:string[]}
+interface KDPoint {x: number, y: number}
+interface KDJailPoint extends KDPoint {type: string, radius: number, requireLeash?: boolean, requireFurniture?: boolean, direction?:{x: number, y: number}, restraint?:string, restrainttags?:string[]}
 
 interface KinkyDialogue {
 	/** REPLACETEXT -> Replacement */

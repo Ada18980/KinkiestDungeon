@@ -896,7 +896,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"vibeStruggle": (e, item, data) => {
-			if (KinkyDungeonHasCrotchRope && !KinkyDungeonPlayerTags.get("ChastityLower") && data.restraint && item == data.restraint && !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && (KinkyDungeonIsHandsBound() || KinkyDungeonIsArmsBound())) {
+			if (KinkyDungeonHasCrotchRope && !KinkyDungeonPlayerTags.get("ChastityLower") && data.restraint && item == data.restraint && !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && (KinkyDungeonIsHandsBound(false, false, 0.45) || KinkyDungeonIsArmsBound())) {
 				data.escapePenalty += data.escapeChance;
 				KinkyDungeonSendTextMessage(10, TextGet("KDCrotchRopeBlock" + Math.floor(KDRandom() * 3)), "#ff0000", 2);
 			}
@@ -1765,7 +1765,7 @@ let KDEventMapSpell = {
 		"SlimeMimic": (e, spell, data) => {
 			if (KinkyDungeonLastAction == "Wait"
 				&& (KinkyDungeonPlayerTags.get("Slime") || KinkyDungeonPlayerTags.get("SlimeHard"))
-				&& KinkyDungeonIsHandsBound(false, false)
+				&& KinkyDungeonIsHandsBound(false, false, 0.15)
 				&& KinkyDungeonIsArmsBound(false, false)
 				&& KinkyDungeonSlowLevel > 0
 				&& KinkyDungeonGagTotal() > 0.25) {
@@ -3668,8 +3668,14 @@ let KDEventMapGeneric = {
 		},
 	},
 	"tick": {
-		"DollRoomReinforce": (e, data) => {
+		"DollRoomUpdate": (e, data) => {
 			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
+				// Spawn shopkeeper
+
+				if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.OffLimits
+					&& KDCanSpawnShopkeeper(true)
+					&& KDRandom() < 0.1) KDStartDialog("ShopkeeperRescue", "ShopkeeperRescue", true, "", undefined);
+
 				let spawn = true;
 				let eligible = false;
 				for (let player of [KinkyDungeonPlayerEntity]) {

@@ -266,10 +266,12 @@ let KDOptOut = false;
 * ChestsGenerated: string[],
 * DollRoomCount: number,
 * CollectedHearts: number,
+* CollectedOrbs: number,
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	CollectedOrbs: 0,
 	CollectedHearts: 0,
 	DollRoomCount: 0,
 	ChestsGenerated: [],
@@ -1808,7 +1810,7 @@ function KDSendEvent(type) {
 			window.dataLayer.push({
 				'event':type,
 				'currentLevel':MiniGameKinkyDungeonLevel,
-				'alreadyInJail':KinkyDungeonInJail() ? 'true' : 'false',
+				'alreadyInJail':KinkyDungeonInJail(KDJailFilters) ? 'true' : 'false',
 				'currentCheckpoint':MiniGameKinkyDungeonCheckpoint,
 				'difficulty':KinkyDungeonStatsChoice.get("randomMode"),
 				'newgameplus':KinkyDungeonNewGame,

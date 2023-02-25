@@ -54,7 +54,7 @@ let KDJailEvents = {
 	"spawnRescue": {
 		// Determines the weight
 		weight: (guard, xx, yy) => {
-			return (KinkyDungeonStatsChoice.get("easyMode") && KinkyDungeonFlags.get("JailIntro") && !KinkyDungeonFlags.get("JailRepeat") && !KinkyDungeonFlags.get("refusedShopkeeperRescue") && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) ? 100 : 0;
+			return KDCanSpawnShopkeeper() ? 100 : 0;
 		},
 		// Occurs when the jail event triggers
 		trigger: (g, xx, yy) => {
@@ -62,6 +62,7 @@ let KDJailEvents = {
 		},
 	},
 };
+
 
 for (let rescue of Object.entries(KDPrisonRescues)) {
 	KDJailEvents[rescue[0]] = {
@@ -77,6 +78,15 @@ for (let rescue of Object.entries(KDPrisonRescues)) {
 			KDStartDialog(rescue[0], rescue[1].speaker, true, "", undefined);
 		},
 	};
+}
+
+/**
+ *
+ * @param {boolean} [override] - Override jailing requirement
+ * @returns {boolean}
+ */
+function KDCanSpawnShopkeeper(override) {
+	return (KinkyDungeonStatsChoice.get("easyMode") && (override || (KinkyDungeonFlags.get("JailIntro") && !KinkyDungeonFlags.get("JailRepeat"))) && !KinkyDungeonFlags.get("refusedShopkeeperRescue") && !KDIsPlayerTethered(KinkyDungeonPlayerEntity));
 }
 
 // if (KinkyDungeonGoddessRep.Prisoner) securityLevel = Math.max(0, KinkyDungeonGoddessRep.Prisoner + 50);

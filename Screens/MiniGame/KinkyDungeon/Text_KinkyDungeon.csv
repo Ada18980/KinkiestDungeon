@@ -508,6 +508,7 @@ KDStatStun,"Stunned! You can't move!"
 KDStatBlind,"Your vision is impaired!"
 KDStatArms,"Arms are bound!"
 KDStatHands,"Hands are useless!"
+KDStatHandsPartial,"Hands are impaired! Some tasks will be harder..."
 KDStatSpeedSlow,"Movement significantly impaired!"
 KDStatSpeedSlightlySlow,"Movement slightly impaired."
 KDStatSpeedVerySlow,"Movement severely impaired!"
@@ -3006,7 +3007,7 @@ RestraintLatexOTNGagDesc2,It's very tight and makes it hard to move your mouth.
 
 
 RestraintRedLatexHands,Rubberized Gloves
-RestraintRedLatexHandsDesc,"A mass of alchemical latex stretched over your arms, then hardened."
+RestraintRedLatexHandsDesc,"A mass of alchemical latex stretched over your arms, then hardened to the point that you can barely move your fingers!"
 RestraintRedLatexHandsDesc2,"Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!"
 
 RestraintRedLatexBoots,Rubberized Socks
@@ -6115,7 +6116,7 @@ KinkyDungeonJailerStartRemoving,The EnemyName starts to remove your RestraintNam
 KinkyDungeonJailerStartLocking,The EnemyName starts to lock your RestraintName!
 KinkyDungeonJailerFinishLocking,The EnemyName locks your RestraintName with a LockType!
 KinkyDungeonJailerRemove,"I am going to change your restraints. Hold still!"
-KinkyDungeonJailerLock,"Looks like somebody forgot to lock those~"
+KinkyDungeonJailerLock,"Just need to add a little security~"
 
 KinkyDungeonJailerMistake,"Got yourself in trouble, eh?"
 KinkyDungeonJailerDomMistake,"Looks like you're shaping up to be a good girl~"

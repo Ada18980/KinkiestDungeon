@@ -23,6 +23,15 @@ let KDMinEscapeRate = 0.2;
 let KDMinPickRate = 0.2;
 let KDStruggleTime = 3;
 
+/** Thresholds for hand bondage */
+let StruggleTypeHandThresh = {
+	Struggle: 0.01, // Any hand bondage will affect struggling
+	Unlock: 0.85, // Keys are easy
+	Pick: 0.45, // Picking requires dexterity
+	Cut: 0.7, // Cutting requires a bit of dexterity
+	Remove: 0.99, // Removing only requires a solid corner
+};
+
 /**
  *
  * @returns {number}
@@ -929,27 +938,42 @@ function KDGetBlockingSecurity(Group, External) {
 }
 
 function KinkyDungeonCanUseKey() {
-	return !KinkyDungeonIsHandsBound(true) || KinkyDungeonStatsChoice.has("Psychic");
+	return !KinkyDungeonIsHandsBound(true, false, 0.7) || KinkyDungeonStatsChoice.has("Psychic");
 }
 
 /**
  *
  * @param {boolean} [ApplyGhost] - Can you receive help in this context?
  * @param {boolean} [Other] - Is this on yourself or another?
+ * @param {number} Threshold - Threshold
  * @returns {boolean}
  */
-function KinkyDungeonIsHandsBound(ApplyGhost, Other) {
-	let blocked = InventoryItemHasEffect(InventoryGet(KinkyDungeonPlayer, "ItemHands"), "Block", true) || KDGroupBlocked("ItemHands");
+function KinkyDungeonIsHandsBound(ApplyGhost, Other, Threshold = 0.99) {
+	/*let blocked = InventoryItemHasEffect(InventoryGet(KinkyDungeonPlayer, "ItemHands"), "Block", true) || KDGroupBlocked("ItemHands");
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).bindhands) {
 			blocked = true;
 			break;
 		}
-	}
+	}*/
+	let blocked = KDHandBondageTotal() > Threshold;
 	let help = ApplyGhost && (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp());
 	if (!Other && (!ApplyGhost || !(help)) && KinkyDungeonStatsChoice.get("Butterfingers") && KinkyDungeonIsArmsBound(ApplyGhost, Other)) return true;
 	return (!ApplyGhost || !(help)) &&
 		blocked;
+}
+
+/**
+ * Returns the total level of hands bondage, 1.0 or higher meaning unable to use hands
+ * @return  {number} - The bindhands level, sum of all bindhands properties of worn restraints
+ */
+function KDHandBondageTotal() {
+	let total = 0;
+	for (let rest of KinkyDungeonAllRestraintDynamic()) {
+		let inv = rest.item;
+		if (KDRestraint(inv).bindhands) total += KDRestraint(inv).bindhands;
+	}
+	return total;
 }
 
 /**
@@ -1074,7 +1098,7 @@ function KinkyDungeonPickAttempt() {
 		Pass = "Fail";
 	}
 
-	let handsBound = KinkyDungeonIsHandsBound(false, true) && !KinkyDungeonCanUseFeet();
+	let handsBound = KinkyDungeonIsHandsBound(false, true, 0.55) && !KinkyDungeonCanUseFeet();
 	let armsBound = KinkyDungeonIsArmsBound();
 	let strict = KinkyDungeonStrictness(false, "ItemHands");
 	if (!strict) strict = 0;
@@ -1127,7 +1151,7 @@ function KinkyDungeonUnlockAttempt(lock) {
 
 	KinkyDungeonInterruptSleep();
 
-	let handsBound = KinkyDungeonIsHandsBound(false, true) && !KinkyDungeonCanUseFeet();
+	let handsBound = KinkyDungeonIsHandsBound(false, true, 0.85) && !KinkyDungeonCanUseFeet();
 	let armsBound = KinkyDungeonIsArmsBound();
 	let strict = KinkyDungeonStrictness(false, "ItemHands");
 	if (!strict) strict = 0;
@@ -1415,7 +1439,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	let increasedAttempts = false;
 
-	let handsBound = KinkyDungeonIsHandsBound(true) && !KinkyDungeonCanUseFeet();
+	let handsBound = KinkyDungeonIsHandsBound(true, false, StruggleTypeHandThresh[StruggleType]) && !KinkyDungeonCanUseFeet();
 
 	// Bonuses go here. Buffs dont get added to orig escape chance, but
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle")) data.escapeChance += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle");

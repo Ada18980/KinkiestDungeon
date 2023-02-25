@@ -664,6 +664,7 @@ let KinkyDungeonSpellSpecials = {
 					if (KinkyDungeonVisionGet(en.x, en.y) > 0)
 						seen += 1;
 				}
+				if (count >= 3) break;
 			}
 			if (count > 0) {
 				if (KinkyDungeonVisionGet(entity?.x||0, entity?.y||0) > 0 || seen > 0)

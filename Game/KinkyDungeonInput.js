@@ -420,6 +420,7 @@ function KDProcessInput(type, data) {
 				if (KinkyDungeonStatWillMax < KDMaxStat) KinkyDungeonSpells.push(KinkyDungeonFindSpell("WPUp1"));
 				KinkyDungeonUpdateStats(0);
 			}
+			KDGameData.CollectedHearts = (KDGameData.CollectedHearts || 0) + 1;
 			break;
 		case "champion":
 			KDGameData.Champion = data.rep;

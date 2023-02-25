@@ -443,7 +443,7 @@ function KDSummonRevengeMobs(x, y, Goddess, mult = 1.0, LevelBoost = 2) {
  * @returns {boolean}
  */
 function KDCanDrinkShrine(Bottle) {
-	if (Bottle && KinkyDungeonIsHandsBound(true, true)) return false;
+	if (Bottle && KinkyDungeonIsHandsBound(true, true, 0.9)) return false;
 	return !KinkyDungeonTargetTile.drunk && (Bottle || KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax || KinkyDungeonPlayerTags.get("slime"));
 }
 
