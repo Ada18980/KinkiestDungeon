@@ -30,7 +30,13 @@ function KDAllied(enemy) {
  */
 function KDHostile(enemy, enemy2) {
 	if (enemy == enemy2) return false;
-	return (enemy.rage > 0) || (!(!enemy2 && enemy.ceasefire > 0) && ((!enemy2 && (KDFactionHostile("Player", enemy) || enemy.hostile > 0) || (enemy2 && ((KDGetFaction(enemy2) == "Player" && enemy.hostile > 0) || KDFactionHostile(KDGetFaction(enemy), enemy2))))));
+	return (enemy.rage > 0) ||
+		(
+			!(!enemy2 && enemy.ceasefire > 0)
+			&& (
+				(!enemy2
+					&& (KDFactionHostile("Player", enemy) || enemy.hostile > 0)
+					|| (enemy2 && ((KDGetFaction(enemy2) == "Player" && enemy.hostile > 0) || KDFactionHostile(KDGetFaction(enemy), enemy2))))));
 }
 
 /**
