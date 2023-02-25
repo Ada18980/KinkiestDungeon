@@ -4784,7 +4784,7 @@ function KDSetLoadout(enemy, loadout) {
 		let temp = enemy.Enemy.startingItems ? Object.assign([], enemy.Enemy.startingItems) : [];
 		enemy.items = Object.assign(temp, KDLoadouts[loadout].items);
 	}
-	if (!enemy.Enemy.RestraintFilter?.unlimitedRestraints) {
+	if (!enemy.Enemy.RestraintFilter?.unlimitedRestraints && (enemy.Enemy.attack?.includes("Bind") || enemy.Enemy.specialAttack?.includes("Bind"))) {
 		let restMult = KDLoadouts[loadout]?.restraintMult || 1;
 		KDStockRestraints(enemy, restMult);
 	}

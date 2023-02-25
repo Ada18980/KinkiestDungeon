@@ -115,8 +115,10 @@ let KDTileUpdateFunctionsLocal = {
 		let entity = KinkyDungeonEntityAt(X, Y);
 		if (entity && (entity.Enemy?.tags.prisoner || KDHelpless(entity))) {
 			KDStaggerEnemy(entity);
-			if (!KDEnemyHasFlag(entity, "conveyed"))
+			if (!KDEnemyHasFlag(entity, "conveyed")) {
+				KDClearItems(entity);
 				entity.hp = 0;
+			}
 		} else if (entity?.player && !KinkyDungeonFlags.get("nodollterm")) {
 			if (KinkyDungeonFlags.get("conveyed")) {
 				KDStartDialog("DollTerminal_Forced", "", true, "");
