@@ -265,9 +265,12 @@ let KDOptOut = false;
 * DollCount: number,
 * ChestsGenerated: string[],
 * DollRoomCount: number,
+* CollectedHearts: number,
+
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	CollectedHearts: 0,
 	DollRoomCount: 0,
 	ChestsGenerated: [],
 	MainPath: 'grv',
