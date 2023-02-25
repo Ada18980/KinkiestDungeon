@@ -1196,12 +1196,13 @@ let KinkyDungeonEnemies = [
 
 	{name: "Pixie", clusterWith: "nature", tags: KDMapInit(["ignorenoSP", "fairy", "soulresist", "chaos", "melee", "minor", "magicweakness", "flying"]), followRange: 1, AI: "hunt",  squeeze: true, ethereal: true, cohesion: 1.0,
 		summon: [
-			{enemy: "Pixie", range: 3, count: 2, chance: 1.0, strict: true},],
+			{enemy: "Pixie", range: 3, count: 2, chance: 0.2, strict: true},],
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ffffff"}
 		],
+		difficulty: 0.2,
 		spells: ["EnemyFlash"],  spellCooldownMult: 1, spellCooldownMod: 14, castWhileMoving: true,
-		visionRadius: 6, blindSight: 7, maxhp: 1, evasion: 1.0, minLevel:0, weight:0.1, movePoints: 1.25, attackPoints: 2, attack: "MeleeWillSpell", attackWidth: 1, attackRange: 1, power: 2, dmgType: "charm",
+		visionRadius: 6, blindSight: 4, maxhp: 1, evasion: 1.0, minLevel:0, weight:0.1, movePoints: 1.25, attackPoints: 2, attack: "MeleeWillSpell", attackWidth: 1, attackRange: 1, power: 2, dmgType: "charm",
 		terrainTags: {"willAnger": 2, "willRage": 3, "elf": 0.4}, shrines: ["Will"], allFloors: true},
 
 	{name: "ChaoticCrystal", faction: "Natural", clusterWith: "chaos", color: "#ff00aa", immobile: true, hitsfx: "Evil", tags: KDMapInit(["crystal", "chaos", "minor", "inactive", "melee", "crushweakness", "soulimmune"]),
