@@ -1708,7 +1708,7 @@ function KDBulletID(bullet, enemy) {
 function KinkyDungeonLaunchBullet(x, y, targetx, targety, speed, bullet, miscast) {
 	let direction = (!targetx && !targety) ? 0 : Math.atan2(targety, targetx);
 	let vx = (targetx != 0 && targetx != undefined) ? Math.cos(direction) * speed : 0;
-	let vy = (targety != 0 && targetx != undefined) ? Math.sin(direction) * speed : 0;
+	let vy = (targety != 0 && targety != undefined) ? Math.sin(direction) * speed : 0;
 	let lifetime = bullet.lifetime;
 	if (miscast) {
 		vx = 0;
@@ -1781,7 +1781,7 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					(ty - CamY + 0.5)*KinkyDungeonGridSizeDisplay,
 					bullet.size*scale*KinkyDungeonGridSizeDisplay,
 					bullet.size*scale*KinkyDungeonGridSizeDisplay,
-					!(bullet.vy && bullet.vx) ? bullet.spinAngle : bullet.spinAngle + Math.atan2(bullet.vy, bullet.vx), alpha != 1 ? {
+					(!bullet.vy && !bullet.vx) ? bullet.spinAngle : bullet.spinAngle + Math.atan2(bullet.vy, bullet.vx), alpha != 1 ? {
 						alpha : alpha,
 						zIndex: -0.01,
 					} : undefined, true);
