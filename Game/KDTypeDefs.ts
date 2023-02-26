@@ -73,12 +73,18 @@ interface consumable {
 	spell?: string,
 	potion?: boolean,
 	noHands?: boolean,
+	/** Data var */
+	data?: Record<string, string|number>,
 	/** Requirement that overrides all other requirements */
 	prereq?: string,
 	/** Requirement in addition to all other requirements such as not being gagged for potions, bound, etc */
 	postreq?: string,
 	/** Minimum effectiveness when gagged */
 	gagFloor?: number,
+	/** Max gag amount to use */
+	gagMax?: number,
+	/** delay before use */
+	delay?: number,
 	needMouth?: boolean,
 	/** Max strictness allowed before the item cant be used */
 	maxStrictness?: number,
@@ -107,6 +113,8 @@ interface consumable {
 	sfx?: string,
 	noConsumeOnUse?: boolean,
 	useQuantity?: number,
+	/** Support for multiple effects */
+	sideEffects?: string[],
 }
 
 type KDHasTags = {

@@ -24,7 +24,7 @@ RestartNeededEN,"Restart required!"
 RestartNeededCN,"需要重启！"
 RestartNeededKR,"재시작 필요！"
 
-KinkyDungeon,"Kinky Dungeon v4.1"
+KinkyDungeon,"Kinky Dungeon v4.11"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
@@ -1041,6 +1041,25 @@ KinkyDungeonInventoryItemIceRune,Ice Rune
 KinkyDungeonInventoryItemIceRuneUse,"You smash the rune in front of you, and icicles pierce through the floor!"
 KinkyDungeonInventoryItemIceRuneDesc,"It feels cold to the touch."
 KinkyDungeonInventoryItemIceRuneDesc2,"Creates icicles around you for 5-8 turns. They deal 40 damage and freeze for 3 turns."
+
+
+ItemPickupDonut,"You found a donut with sprinkles!"
+KinkyDungeonInventoryItemDonut,Donut (Sprinkles)
+KinkyDungeonInventoryItemDonutUse,"You enjoy the donut and relish in its sweet delights."
+KinkyDungeonInventoryItemDonutDesc,"A delicious fried snack, covered in a sugary glaze and topped with sprinkles."
+KinkyDungeonInventoryItemDonutDesc2,"Restores 10% willpower. Takes a few turns to eat."
+
+ItemPickupCookieJailer,"You picked up a sugar cookie slathered in pink frosting!"
+KinkyDungeonInventoryItemCookieJailer,Good-Girl Gift
+KinkyDungeonInventoryItemCookieJailerUse,"You slowly eat the cookie, savoring its fluffy texture."
+KinkyDungeonInventoryItemCookieJailerDesc,"It tempts you with sweet promises, but the fact remains that it was given to you for good behavior..."
+KinkyDungeonInventoryItemCookieJailerDesc2,"Restores 10% willpower and adds +4 submissiveness. Takes a few turns to eat."
+
+ItemPickupCookie,"You found a chocolate-chip cookie!"
+KinkyDungeonInventoryItemCookie,Cookie (Chocolate Chip)
+KinkyDungeonInventoryItemCookieUse,"You enjoy the cookie one chocolatey bite at a time."
+KinkyDungeonInventoryItemCookieDesc,"A delicious baked good made with butter, sugar, and chocolate chips, baked until golden brown."
+KinkyDungeonInventoryItemCookieDesc2,"Restores 10% willpower. Takes a few turns to eat."
 
 KinkyDungeonConsumableLessEffective,The potion was less effective due to your gag!
 
@@ -2750,7 +2769,7 @@ KinkyPurpleLockAbr,"(P)"
 KinkyBlindLockAbr,"(?)"
 KinkyYellowLockAbr,"(Y)"
 
-KinkyDungeonPotionGagged,"You can't drink that while gagged!"
+KinkyDungeonPotionGagged,"You can't use that while gagged!"
 KinkyDungeonCantUsePotions,"You can't use that without your fingers!"
 KinkyDungeonCantUsePotionsStrict,"You struggle against your bindings but it's too strict!."
 KinkyDungeonDropPick,"You drop the pick due to your bound hands!"
@@ -3542,7 +3561,7 @@ RestraintCelestialRopeCuffsDesc2,"They are aware of your movements..."
 RestraintCelestialRopeCuffsAdv,Holy Ropework
 RestraintCelestialRopeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles and fasteners."
 RestraintCelestialRopeCuffsAdvDesc2,"They are aware of your movements..."
-RestraintCelestialRopeTorso,Holy Rope Belt
+RestraintCelestialRopeTorso,Holy Rope Harness
 RestraintCelestialRopeTorsoDesc,"A harness acting as a handle to pull you around"
 RestraintCelestialRopeTorsoDesc2,"They are aware of your movements..."
 RestraintCelestialRopeCrotch,Holy Crotch Rope
@@ -8938,7 +8957,7 @@ dGenericAllyAttack_Leave,"(Never mind...)"
 rGenericAllyAttack_Leave,"(You decide not to)"
 
 dGenericAllyAttackPlay,"(Retaliate)"
-rGenericAllyAttackPlay,"(Really attack? You will be justified and won't take a rep penalty.)"
+rGenericAllyAttackPlay,"(Really attack? You will be justified and won't take a rep penalty)|(You will still lose rep if you capture her)"
 dGenericAllyAttackPlay_Confirm,"(Attack her)"
 dGenericAllyAttackPlay_Leave,"(Never mind...)"
 rGenericAllyAttackPlay_Leave,"(You decide not to)"
@@ -9397,6 +9416,18 @@ rBed,"(The bed looks comfy and inviting)|(Napping here will restore up to half o
 rBedSleep,"(You lay in the bed and doze off...)"
 dBed_Sleep,(Lie down and sleep)
 
+rTableFood,"FOODMSG|(It invites you to partake in its culinary delights)"
+rTableFoodEat,"(You eat the food and feel your willpower rising)"
+rTableFoodEatFail,"(Being gagged as you are you cannot enjoy the food)"
+rTableFoodTake,"(You steal the food, hoping nobody will notice...)"
+dTableFood_Eat,(Eat it to restore AMOUNT WP)
+dTableFood_Take,(Take it!)
+
+KinkyDungeonFoodCookies,"(Someone left their cookies unattended)"
+KinkyDungeonFoodPizza,"(You smell delicious pizza)"
+KDFoodNameCookie,Cookie
+KDFoodNamePizza,Pizza
+
 rButton,"(There is a button on a control panel here.)"
 rButtonPress,"(You touch the button and it glows, releasing a pulse of energy!)"
 dButton_Press,(PUSH THE BUTTON)
@@ -9433,8 +9464,7 @@ KinkyDungeonFoodEaten,You eat the delicious food and feel your will restored.
 KinkyDungeonFoodEatenGag,Your gag prevents you from eating...
 KinkyDungeonFood,It's a table.
 KinkyDungeonFoodPlate,"It's a table, with evidence of a grisly deed."
-KinkyDungeonFoodCookies,"Someone left their cookies unattended."
-KinkyDungeonFoodPizza,"You smell delicious pizza."
+
 
 KDShoutHelp0,You call for help!
 KDShoutHelp1,You let out a garbled cry!

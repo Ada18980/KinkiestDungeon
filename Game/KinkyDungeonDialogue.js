@@ -259,6 +259,87 @@ function KDStartDialog(Dialogue, Speaker, Click, Personality, enemy) {
 	KinkyDungeonFastMovePath = [];
 	KinkyDungeonDrawState = "Game";
 	KDDialogueData.CurrentDialogueIndex = 0;
+
+
+	KDDoDialogue({dialogue: Dialogue, dialogueStage: "", click: Click, speaker: Speaker, personality: Personality, enemy: enemy ? enemy.id : undefined});
+}
+
+
+function KDDoDialogue(data) {
+	KDDelayedActionPrune(["Action", "Dialogue"]);
+	if (!KDGameData.CurrentDialogMsgData) KDGameData.CurrentDialogMsgData = {};
+	if (!KDGameData.CurrentDialogMsgValue) KDGameData.CurrentDialogMsgValue = {};
+
+	KDGameData.CurrentDialog = data.dialogue;
+	KDGameData.CurrentDialogStage = data.dialogueStage;
+	if (data.speaker) {
+		let oldSpeaker = KDGameData.CurrentDialogMsgSpeaker;
+		KDGameData.CurrentDialogMsgSpeaker = data.speaker;
+		if (KDGameData.CurrentDialogMsgSpeaker != oldSpeaker)
+			KDGameData.CurrentDialogMsgPersonality = ""; // Reset when speaker changes
+	}
+	if (data.enemy) {
+		KDGameData.CurrentDialogMsgID = data.enemy;
+	}
+	if (data.personality)
+		KDGameData.CurrentDialogMsgPersonality = data.personality;
+
+	let dialogue = KDGetDialogue();
+	if (dialogue.data) KDGameData.CurrentDialogMsgData = dialogue.data;
+	if (dialogue.response) KDGameData.CurrentDialogMsg = dialogue.response;
+	if (dialogue.response == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
+	if (dialogue.personalities) {
+		KDDialogueApplyPersonality(dialogue.personalities);
+	}
+	let abort = false;
+	if (data.click) {
+		let gagged = KDDialogueGagged();
+		if (dialogue.gagFunction && gagged) {
+			abort = dialogue.gagFunction(KinkyDungeonPlayerEntity);
+		} else if (dialogue.clickFunction) {
+			abort = dialogue.clickFunction(gagged, KinkyDungeonPlayerEntity);
+		}
+	}
+	if (!abort) {
+		if (dialogue.exitDialogue) {
+			KDGameData.CurrentDialog = "";
+			KDGameData.CurrentDialogStage = "";
+		} else {
+			let modded = false;
+			if (dialogue.leadsTo != undefined) {
+				KDGameData.CurrentDialog = dialogue.leadsTo;
+				KDGameData.CurrentDialogStage = "";
+				modded = true;
+			}
+			if (dialogue.leadsToStage != undefined) {
+				KDGameData.CurrentDialogStage = dialogue.leadsToStage;
+				modded = true;
+			}
+			if (modded && !dialogue.dontTouchText) {
+				dialogue = KDGetDialogue();
+				if (dialogue.response) KDGameData.CurrentDialogMsg = dialogue.response;
+				if (dialogue.response == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
+			}
+		}
+	}
+}
+
+/**
+ *
+ * @param {string} Dialogue
+ * @param {string} [Speaker]
+ * @param {boolean} [Click]
+ * @param {string} [Personality]
+ * @param {entity} [enemy]
+ */
+function KDStartDialogInput(Dialogue, Speaker, Click, Personality, enemy) {
+	KinkyDungeonInterruptSleep();
+	KinkyDungeonAutoWait = false;
+	KinkyDungeonDialogueTimer = CommonTime() + 700 + KinkyDungeonSlowMoveTurns * 200;
+	KDOptionOffset = 0;
+	KinkyDungeonFastMovePath = [];
+	KinkyDungeonDrawState = "Game";
+	KDDialogueData.CurrentDialogueIndex = 0;
 	KDSendInput("dialogue", {dialogue: Dialogue, dialogueStage: "", click: Click, speaker: Speaker, personality: Personality, enemy: enemy ? enemy.id : undefined});
 }
 

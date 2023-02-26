@@ -1284,7 +1284,7 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 10,
 		},}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
 	{enemySpell: true, name: "RubberSlime",  bindType: "Slime", color: "#ff00ff", minRange: 0, landsfx: "MagicSlash", manacost: 7, components: ["Legs"], level:1, type:"inert", onhit:"lingering",
-		time: 2, delay: 1, range: 4, power: 2, size: 3, aoe: 1, lifetime: 1, lifetimeHitBonus: 9, damage: "glue", playerEffect: {name: "EncaseBolt", time: 3},
+		time: 2, delay: 1, range: 4, power: 2, size: 3, aoe: 1, lifetime: 1, lifetimeHitBonus: 9, damage: "glue", playerEffect: {name: "EncaseBolt", count: 1, time: 4, power: 5, damage: "glue"},
 		effectTileDurationModLinger: 8, effectTileLinger: {
 			name: "Slime",
 			duration: 10,

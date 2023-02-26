@@ -707,6 +707,72 @@ let KDDialogue = {
 			},
 		}
 	},
+	"TableFood": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			if (KinkyDungeonTargetTile) {
+				let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+				if (tile) {
+					KDGameData.CurrentDialogMsgData = {
+						AMOUNT: "" + 10 * (tile.Amount || 1),
+						ARTICLE: "a",
+						FOODNAME: TextGet(KinkyDungeonTargetTile.Food),
+						FOODMSG: TextGet("KinkyDungeonFood" + KinkyDungeonTargetTile.Food),
+					};
+				}
+			}
+			return false;
+		},
+		options: {
+			"Eat": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+					if (tile && tile.Type == "Food") {
+						let gagTotal = KinkyDungeonGagTotal();
+						if (gagTotal > 0) {
+							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEatenGag"), "#ff8800", 1);
+							KDGameData.CurrentDialogMsg = "TableEatFail";
+						} else {
+							// Perform the deed
+							let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
+							let amount = tile.Amount ? tile.Amount : 1.0;
+							KinkyDungeonChangeWill(amount * Willmulti);
+
+							// Send the message and advance time
+							KinkyDungeonAdvanceTime(1);
+							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEaten"), "lightgreen", 1);
+
+							// Remove the food
+							tile.Food = "Plate";
+							tile.Eaten = true;
+						}
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						clickFunction: (gagged, player) => {
+							KinkyDungeonTargetTile = null;
+							KinkyDungeonTargetTileLocation = "";
+							return false;
+						},
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				clickFunction: (gagged, player) => {
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = "";
+					return false;
+				},
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
 	"Button": {
 		response: "Default",
 		clickFunction: (gagged, player) => {

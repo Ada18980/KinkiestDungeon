@@ -624,6 +624,7 @@ function KDProcessInput(type, data) {
 						let amount = tile.Amount ? tile.Amount : 1.0;
 						KinkyDungeonChangeWill(amount * Willmulti);
 
+
 						// Send the message and advance time
 						KinkyDungeonAdvanceTime(1);
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEaten"), "lightgreen", 1);
@@ -686,63 +687,9 @@ function KDProcessInput(type, data) {
 			}
 			break;
 		case "dialogue": {
-			KDDelayedActionPrune(["Action", "Dialogue"]);
-			if (!KDGameData.CurrentDialogMsgData) KDGameData.CurrentDialogMsgData = {};
-			if (!KDGameData.CurrentDialogMsgValue) KDGameData.CurrentDialogMsgValue = {};
-
-			KDGameData.CurrentDialog = data.dialogue;
-			KDGameData.CurrentDialogStage = data.dialogueStage;
-			if (data.speaker) {
-				let oldSpeaker = KDGameData.CurrentDialogMsgSpeaker;
-				KDGameData.CurrentDialogMsgSpeaker = data.speaker;
-				if (KDGameData.CurrentDialogMsgSpeaker != oldSpeaker)
-					KDGameData.CurrentDialogMsgPersonality = ""; // Reset when speaker changes
-			}
-			if (data.enemy) {
-				KDGameData.CurrentDialogMsgID = data.enemy;
-			}
-			if (data.personality)
-				KDGameData.CurrentDialogMsgPersonality = data.personality;
-
-			let dialogue = KDGetDialogue();
-			if (dialogue.data) KDGameData.CurrentDialogMsgData = dialogue.data;
-			if (dialogue.response) KDGameData.CurrentDialogMsg = dialogue.response;
-			if (dialogue.response == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
-			if (dialogue.personalities) {
-				KDDialogueApplyPersonality(dialogue.personalities);
-			}
-			let abort = false;
-			if (data.click) {
-				let gagged = KDDialogueGagged();
-				if (dialogue.gagFunction && gagged) {
-					abort = dialogue.gagFunction(KinkyDungeonPlayerEntity);
-				} else if (dialogue.clickFunction) {
-					abort = dialogue.clickFunction(gagged, KinkyDungeonPlayerEntity);
-				}
-			}
-			if (!abort) {
-				if (dialogue.exitDialogue) {
-					KDGameData.CurrentDialog = "";
-					KDGameData.CurrentDialogStage = "";
-				} else {
-					let modded = false;
-					if (dialogue.leadsTo != undefined) {
-						KDGameData.CurrentDialog = dialogue.leadsTo;
-						KDGameData.CurrentDialogStage = "";
-						modded = true;
-					}
-					if (dialogue.leadsToStage != undefined) {
-						KDGameData.CurrentDialogStage = dialogue.leadsToStage;
-						modded = true;
-					}
-					if (modded && !dialogue.dontTouchText) {
-						dialogue = KDGetDialogue();
-						if (dialogue.response) KDGameData.CurrentDialogMsg = dialogue.response;
-						if (dialogue.response == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
-					}
-				}
-			}
+			KDDoDialogue(data);
 			break;
+
 		}
 	}
 	return "";

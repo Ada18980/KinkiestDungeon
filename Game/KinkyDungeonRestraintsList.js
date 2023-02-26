@@ -1413,7 +1413,7 @@ const KinkyDungeonRestraints = [
 		affinity: {Remove: ["Hook"],},
 		maxwill: 0.6, enemyTags: {"celestialRopes":4}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Holy", "Will"],
 		failSuffix: {"Remove": "MagicRope"}, events: [{trigger: "struggle", type: "celestialRopePunish"}]},
-	{unlimited: true, inventory: true, name: "CelestialRopeTorso", debris: "Steam", accessible: true, Asset: "NylonRopeHarness", Color: ["#aaaa67", "#aaaa67"], Group: "ItemTorso", power: 1, weight: 0, harness: true, escapeChance: {"Struggle": 0.1, "Cut": 0.3, "Remove": 0.1},
+	{unlimited: true, inventory: true, name: "CelestialRopeTorso", debris: "Steam", accessible: true, OverridePriority: 27, Asset: "NylonRopeHarness", Type: "Harness", Color: ["#aaaa67", "#aaaa67"], Group: "ItemTorso", power: 1, weight: 0, harness: true, escapeChance: {"Struggle": 0.1, "Cut": 0.3, "Remove": 0.1},
 		affinity: {Remove: ["Hook"],},
 		maxwill: 0.9, enemyTags: {"celestialRopes":4}, playerTags: {"ItemTorsoFull":-3}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Holy", "Will"],
 		failSuffix: {"Remove": "MagicRope"}, events: [{trigger: "struggle", type: "celestialRopePunish"}]},
@@ -1639,7 +1639,7 @@ const KinkyDungeonRestraints = [
 			escapeChance: {
 				"Struggle": 0.1,
 				"Cut": 0.1,
-				"Remove": 0.1,
+				"Remove": 0.4,
 			},
 			shrine: ["Armor", "TorsoArmor"],
 			armor: true,
@@ -1665,11 +1665,11 @@ const KinkyDungeonRestraints = [
 			escapeChance: {
 				"Struggle": -0.1,
 				"Cut": -0.35,
-				"Remove": 0.05,
+				"Remove": 0.35,
 			},
 			protection: 2,
 			protectionCursed: true,
-			strictness: 0.25,
+			strictness: 0.08,
 			shrine: ["Armor", "TorsoArmor", "MetalArmor"],
 			armor: true,
 			events: [
@@ -1692,14 +1692,14 @@ const KinkyDungeonRestraints = [
 			escapeChance: {
 				"Struggle": -0.5,
 				"Cut": -0.5,
-				"Remove": 0.01,
+				"Remove": 0.15,
 			},
 			shrine: ["Armor", "TorsoArmor", "MetalArmor"],
 			armor: true,
 			debris: "Belts",
 			protection: 3,
 			protectionCursed: true,
-			strictness: 0.3,
+			strictness: 0.15,
 			displayPower: 10,
 			events: [
 				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
@@ -1744,7 +1744,7 @@ const KinkyDungeonRestraints = [
 			escapeChance: {
 				"Struggle": -0.5,
 				"Cut": -0.5,
-				"Remove": 0.04,
+				"Remove": 0.35,
 			},
 			shrine: ["Armor", "PelvisArmor", "MetalArmor"],
 			armor: true,

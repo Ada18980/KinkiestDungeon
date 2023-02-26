@@ -82,6 +82,7 @@ let KDTilePalette = {
 	'SpawnCustom': {type: "tile", tile: '3', special: {Type: "Spawn", required: [], Label: "Custom"}, customfields: {
 		required: {type: "array"},
 		tags: {type: "array"},
+		filterTags: {type: "array"},
 		Label: {type: "string"},
 		Chance: {type: "number"},
 		AI: {type: "string"},

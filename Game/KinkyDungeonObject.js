@@ -1,6 +1,7 @@
 "use strict";
 
 /**
+ * Script happens when you display an object message
  * @type {Record<string,() => void>}
  */
 let KDObjectMessages = {
@@ -9,6 +10,25 @@ let KDObjectMessages = {
 	"Food": () => KinkyDungeonFoodMessage(),
 };
 /**
+ * Script happens when you move to an object
+ * MUTUALLY exclusive with KDObjectDraw, as this
+ * overrides the default behavior of clicking on the object and bringing up a modal
+ * @type {Record<string,(x: number, y: number) => void>}
+ */
+let KDObjectClick = {
+	"Food": (x, y) => {
+		let tile = KinkyDungeonTilesGet(x + "," + y);
+		if (tile.Food && !tile.Eaten) {
+			KinkyDungeonTargetTileLocation = x + "," + y;
+			KinkyDungeonTargetTile = tile;
+			KDStartDialog("TableFood", "", true, "");
+		} else
+			KinkyDungeonFoodMessage(tile);
+	},
+};
+/**
+ * Script to handle click in an object's modal
+ * tbh should remove this soon
  * @type {Record<string,() => boolean>}
  */
 let KDObjectHandle = {
@@ -16,6 +36,8 @@ let KDObjectHandle = {
 };
 /**
  * Determines if an object has an interface and also if it pauses the game when you click on it
+ * You dont need an interface (for example the updated food table) but then you need
+ * an entry in KDObjectClick instead.
  * @type {Record<string,() => void>}
  */
 let KDObjectDraw = {
@@ -165,9 +187,10 @@ function KinkyDungeonAngelMessage() {
 	}
 }
 
-function KinkyDungeonFoodMessage() {
-	if (KinkyDungeonTargetTile) {
-		let msg = TextGet("KinkyDungeonFood" + (KinkyDungeonTargetTile.Food ? KinkyDungeonTargetTile.Food : ""));
+function KinkyDungeonFoodMessage(Tile) {
+	let tile = Tile || KinkyDungeonTargetTile;
+	if (tile) {
+		let msg = TextGet("KinkyDungeonFood" + (tile.Food ? tile.Food : ""));
 
 		if (msg) {
 			KinkyDungeonSendActionMessage(3, msg, "#ffffff", 1, true);

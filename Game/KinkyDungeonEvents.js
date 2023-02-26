@@ -2604,7 +2604,7 @@ let KDEventMapWeapon = {
 		},
 		"Knockback": (e, weapon, data) => {
 			if (e.dist && data.enemy && data.targetX && data.targetY && !data.miss && !data.disarm && !KDHelpless(data.enemy)) {
-				if (data.enemy.Enemy && !data.enemy.Enemy.tags.unflinching && !data.enemy.Enemy.tags.stunresist && !data.enemy.Enemy.tags.unstoppable && !data.enemy.Enemy.tags.noknockback) {
+				if (data.enemy.Enemy && !data.enemy.Enemy.tags.unflinching && !data.enemy.Enemy.tags.stunresist && !data.enemy.Enemy.tags.unstoppable && !data.enemy.Enemy.tags.noknockback && !KDIsImmobile(data.enemy)) {
 					let newX = data.targetX + Math.round(e.dist * (data.targetX - KinkyDungeonPlayerEntity.x));
 					let newY = data.targetY + Math.round(e.dist * (data.targetY - KinkyDungeonPlayerEntity.y));
 					if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
@@ -3573,6 +3573,13 @@ let KDEventMapGeneric = {
 		},
 	},
 	"playerMove": {
+		"Conveyor": (e, data) => {
+			for (let player of [KinkyDungeonPlayerEntity]) {
+				if (KinkyDungeonMapGet(player.x, player.y) == 'V')
+					KDConveyor(1, player.x, player.y);
+			}
+
+		},
 		"noisyTerrain": (e, data) => {
 			if (data.sprint && !data.cancelmove) {
 				let moves = [

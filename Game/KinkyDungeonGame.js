@@ -3484,20 +3484,26 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 						&& KinkyDungeonTargetTile == null
 						&& KinkyDungeonNoEnemy(moveX, moveY, true))
 					|| (
-						KDObjectDraw[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type]
+						(
+							KDObjectDraw[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type]
+							|| KDObjectClick[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type]
+						)
 						&& (KinkyDungeonTilesGet("" + moveX + "," + moveY).Type != "Door"
 							|| (KinkyDungeonTilesGet("" + moveX + "," + moveY).Lock
 							&& KinkyDungeonTilesGet("" + moveX + "," + moveY).Type == "Door"))))) {
 				if (AllowInteract) {
-					KDDelayedActionPrune(["Action", "World"]);
-					KinkyDungeonTargetTileLocation = "" + moveX + "," + moveY;
-					KinkyDungeonTargetTile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
-					if (moveObject == 'd') {
-						KinkyDungeonCloseDoor({targetTile: KinkyDungeonTargetTileLocation});
+					if (KDObjectClick[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type]) {
+						KDObjectClick[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type](moveX, moveY);
 					} else {
-						KinkyDungeonTargetTileMsg();
+						KDDelayedActionPrune(["Action", "World"]);
+						KinkyDungeonTargetTileLocation = "" + moveX + "," + moveY;
+						KinkyDungeonTargetTile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+						if (moveObject == 'd') {
+							KinkyDungeonCloseDoor({targetTile: KinkyDungeonTargetTileLocation});
+						} else {
+							KinkyDungeonTargetTileMsg();
+						}
 					}
-
 				}
 			} else if (moveX != KinkyDungeonPlayerEntity.x || moveY != KinkyDungeonPlayerEntity.y) {
 				KDDelayedActionPrune(["Action", "Move"]);

@@ -1111,6 +1111,17 @@ function KDKickEnemy(e) {
 	KDClearItems(e);
 }
 
+/**
+ * Moves an enemy to a random position on the map
+ * @param {entity} e
+ */
+function KDKickEnemyLocal(e) {
+	let point = KinkyDungeonGetNearbyPoint(e.x, e.y, true, undefined, true, true);
+	if (point) {
+		KDMoveEntity(e, point.x, point.y, false);
+	}
+}
+
 function KinkyDungeonStripInventory(KeepPicks) {
 	KinkyDungeonRedKeys = 0;
 	KinkyDungeonBlueKeys = 0;

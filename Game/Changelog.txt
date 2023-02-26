@@ -1261,6 +1261,16 @@ Minor Changes:
 - Shady Dealer now has a bear trap (damsel trap) spell, and her lust bomb attack now has a 3 turn delay
 - High-tech cables now have a weaker version (nylon) and use rope assets instead of ribbon
 
+4.11 (Feb 2023)
+- Added a new Donut item dropped by Deputies
+- You can now use conveyors to dodge attacks
+- Tables now use a dialogue instead of a modal popup
+- Fixed a number of bugs with the new tileset
+- For modders: Added support for multiple additional effects in consumables, e.g. the "CookieJailer" item
+- Made the bellows trap tile easier to see
+- Turrets no longer spawn in the ambush hallways within the Bellows
+
+
 
 TODO ValidationFindBlockCycles to prevent bugs
 

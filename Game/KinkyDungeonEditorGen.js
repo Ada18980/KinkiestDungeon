@@ -516,7 +516,7 @@ let KDTileGen = {
 		return null;
 	},
 	"Spawn": (x, y, tile, tileGenerator, data) => {
-		data.spawnpoints.push({x:x, y:y, required: tileGenerator.required, tags: tileGenerator.tags, AI: tileGenerator.AI, faction: tileGenerator.faction});
+		data.spawnpoints.push({x:x, y:y, required: tileGenerator.required, ftags: tileGenerator.filterTags, tags: tileGenerator.tags, AI: tileGenerator.AI, faction: tileGenerator.faction});
 		KinkyDungeonMapSet(x, y, '0');
 		return null;
 	},

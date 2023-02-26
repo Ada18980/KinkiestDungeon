@@ -54,7 +54,7 @@ let KDTileUpdateFunctionsLocal = {
 		if (entity) {
 			let eligible = false;
 			if (entity.player) {
-				if (!KinkyDungeonFlags.get("conveyed")) {
+				if (!KinkyDungeonFlags.get("processed")) {
 					eligible = BMType.eligible_player(tile, X, Y, entity);
 					if (eligible) {
 						if (BMType.function_player(tile, delta, X, Y, entity)) return;
@@ -62,7 +62,7 @@ let KDTileUpdateFunctionsLocal = {
 				}
 			} else if (entity.Enemy?.bound) {
 				if (entity.Enemy.tags.prisoner) KDStaggerEnemy(entity);
-				if (!KDEnemyHasFlag(entity, "conveyed")) {
+				if (!KDEnemyHasFlag(entity, "processed")) {
 					eligible = BMType.eligible_enemy(tile, X, Y, entity);
 					if (eligible) {
 						if (BMType.function_enemy(tile, delta, X, Y, entity)) return;
@@ -113,12 +113,18 @@ let KDTileUpdateFunctionsLocal = {
 	"t": (delta, X, Y) => {
 		// Consume prisoners on the tile
 		let entity = KinkyDungeonEntityAt(X, Y);
-		if (entity && (entity.Enemy?.tags.prisoner || KDHelpless(entity))) {
-			KDStaggerEnemy(entity);
-			if (!KDEnemyHasFlag(entity, "conveyed")) {
-				KDClearItems(entity);
-				entity.hp = 0;
+		if (entity && !entity.player) {
+			if (entity.Enemy?.tags.prisoner || KDHelpless(entity)) {
+				KDStaggerEnemy(entity);
+				if (!KDEnemyHasFlag(entity, "conveyed")) {
+					KDClearItems(entity);
+					entity.hp = 0;
+				}
+			} else {
+				// kick them out...
+				KDKickEnemyLocal(entity);
 			}
+
 		} else if (entity?.player && !KinkyDungeonFlags.get("nodollterm")) {
 			if (KinkyDungeonFlags.get("conveyed")) {
 				KDStartDialog("DollTerminal_Forced", "", true, "");
@@ -136,7 +142,7 @@ let KDTileUpdateFunctionsLocal = {
 let KDBondageMachineFunctions = {
 	"Latex": {
 		eligible_player: (tile, x, y, entity) => {
-			return !KinkyDungeonFlags.get("processed") && KDGetRestraintsEligible({tags: ['latexEncase']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+			return KDGetRestraintsEligible({tags: ['latexEncase']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
 		function_player: (tile, delta, x, y, entity) => {
 			KDBasicRestraintsMachine_Player(['latexEncase'], 2, "KDEncasement");
@@ -153,6 +159,7 @@ let KDBondageMachineFunctions = {
 			}
 			if (KDBoundEffects(entity) < 1 ) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
 				return true;
 			}
 			return false;
@@ -160,7 +167,7 @@ let KDBondageMachineFunctions = {
 	},
 	"Metal": {
 		eligible_player: (tile, x, y, entity) => {
-			return !KinkyDungeonFlags.get("processed") && KDGetRestraintsEligible({tags: ["hitechCables", "cableGag", "controlHarness"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+			return KDGetRestraintsEligible({tags: ["hitechCables", "cableGag", "controlHarness"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
 		function_player: (tile, delta, x, y, entity) => {
 			KDBasicRestraintsMachine_Player(["hitechCables", "cableGag", "controlHarness"], 2, "KDMetalMachine");
@@ -173,6 +180,7 @@ let KDBondageMachineFunctions = {
 			KDTieUpEnemy(entity, 4.0, "Metal", "chain");
 			if (KDBoundEffects(entity) < 1 ) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
 				return true;
 			}
 			return false;
@@ -180,7 +188,7 @@ let KDBondageMachineFunctions = {
 	},
 	"Tape": {
 		eligible_player: (tile, x, y, entity) => {
-			return !KinkyDungeonFlags.get("processed") && KDGetRestraintsEligible({tags: ["autoTape"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+			return KDGetRestraintsEligible({tags: ["autoTape"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
 		function_player: (tile, delta, x, y, entity) => {
 			KDBasicRestraintsMachine_Player(["autoTape"], 2, "KDTapeMachine");
@@ -193,6 +201,7 @@ let KDBondageMachineFunctions = {
 			KDTieUpEnemy(entity, 4.0, "Tape", "glue");
 			if (KDBoundEffects(entity) < 1 ) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
 				return true;
 			}
 			return false;
@@ -212,6 +221,7 @@ let KDBondageMachineFunctions = {
 			KDPlugEnemy(entity);
 			if (KinkyDungeonGetBuffedStat(entity.buffs, "Plug") > 0) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
 				return true;
 			}
 			return false;
@@ -232,6 +242,7 @@ let KDBondageMachineFunctions = {
 			KinkyDungeonApplyBuffToEntity(entity, KDChastity);
 			if (KDEntityGetBuff(entity, "Chastity")) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
 				return true;
 			}
 			return false;
