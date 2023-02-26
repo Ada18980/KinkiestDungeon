@@ -580,7 +580,7 @@ function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0
 		Amount = 0;
 	}
 	let minLevel = Math.min(KinkyDungeonStatDistractionMax * minimum, KinkyDungeonStatDistraction); // Cannot go below this or current
-	if (Amount > 1) {
+	if (Amount > 0) {
 		KDNoRegenFlag = true;
 	}
 	KinkyDungeonStatDistraction += Amount;
@@ -807,7 +807,6 @@ function KinkyDungeonSetMaxStats(delta) {
 		delta: delta,
 	};
 
-
 	for (let s of KinkyDungeonSpells) {
 		if (s.name == "SPUp1") {
 			KinkyDungeonStatStaminaMax += 5;
@@ -815,7 +814,8 @@ function KinkyDungeonSetMaxStats(delta) {
 		}
 		if (s.name == "APUp1") {
 			KinkyDungeonStatDistractionMax += 5;
-			data.distractionRate += KinkyDungeonStatDistractionRegenPerUpgrade;
+			if (KinkyDungeonVibeLevel == 0 && !(KDGameData.DistractionCooldown > 0))
+				data.distractionRate += KinkyDungeonStatDistractionRegenPerUpgrade;
 		}
 		if (s.name == "WPUp1") {
 			KinkyDungeonStatWillMax += 5;
@@ -921,9 +921,16 @@ function KinkyDungeonUpdateStats(delta) {
 	}
 
 	let distractionRate = KDGetDistractionRate(delta);
+
+	if (delta > 0 && KinkyDungeonVibeLevel > 0) {
+		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonVibing" + Math.max(0, Math.min(5, Math.round(KinkyDungeonVibeLevel)))), "#ff88ff", 2, true, true);
+	}
 	let arousalPercent = distractionRate > 0 ? 0.04 : 0;
 
-	if (KDGameData.OrgasmStage > 0 && KDRandom() < 0.25 && KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.75) KDGameData.OrgasmStage = Math.max(0, KDGameData.OrgasmStage - delta);
+	if (KDGameData.OrgasmStage > 0 && !KinkyDungeonFlags.get("orgasmStageTimer") && KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.75) {
+		KDGameData.OrgasmStage = Math.max(0, KDGameData.OrgasmStage - delta);
+		KinkyDungeonSetFlag("orgasmStageTimer", 20 + Math.round(KDRandom() * 20));
+	}
 	if (KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax * 0.99) KDGameData.OrgasmTurns = Math.min(KDGameData.OrgasmTurns + delta, KinkyDungeonOrgasmTurnsMax);
 	else KDGameData.OrgasmTurns = Math.max(KDGameData.OrgasmTurns - delta, 0);
 

@@ -82,6 +82,7 @@ let KDToggles = {
 	DrawArmor: true,
 	TurnCounter: true,
 	StunFlash: true,
+	ArousalHearts: true,
 };
 
 let KDDefaultKB = {
@@ -772,12 +773,6 @@ function KinkyDungeonRun() {
 			}
 		});
 
-	fpscounter++;
-	if (fpscounter > 10) {
-		fpscounter = 0;
-		dispfps = Math.round(10 * 1000 / Math.max(performance.now() - lastfps, 1));
-		lastfps = performance.now();
-	}
 	// Reset the sprites drawn cache
 	kdSpritesDrawn = new Map();
 
@@ -1582,6 +1577,16 @@ function KinkyDungeonRun() {
 			});
 		}
 	}
+
+	let delta = performance.now() - lastfps;
+	fpscounter++;
+	if (fpscounter > 10) {
+		fpscounter = 0;
+		dispfps = Math.round(10 * 1000 / Math.max(delta, 1));
+
+	}
+	lastfps = performance.now();
+	KDUpdateParticles(delta);
 
 	// Draw the context layer even if we haven't updated it
 	if (pixirenderer) {

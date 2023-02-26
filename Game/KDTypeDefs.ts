@@ -1963,6 +1963,27 @@ interface KDDroppedItemProp {
 	tinyness?: number,
 }
 
+type KDParticleData = {
+	zIndex: number,
+	fadeEase?: string,
+	time: number,
+	phase?: number,
+
+	vy?: number,
+	vy_spread?: number,
+	vx?: number,
+	vx_spread?: number,
+	sin_period?: number,
+	sin_period_spread?: number,
+	sin_x?: number,
+	sin_x_spread?: number,
+	sin_y?: number,
+	sin_y_spread?: number,
+	/** Lifetime in ms */
+	lifetime: number,
+	lifetime_spread?: number,
+}
+
 
 type SpecialCondition = {
 	resetCD: boolean,

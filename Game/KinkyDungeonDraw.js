@@ -29,6 +29,12 @@ let kdui = new PIXI.Graphics();
 let kdcanvas = new PIXI.Container();
 kdcanvas.sortableChildren = true;
 
+
+// @ts-ignore
+let kdparticles = new PIXI.Container();
+kdparticles.sortableChildren = true;
+kdgameboard.addChild(kdparticles);
+
 let KDTextWhite = "#ffffff";
 let KDTextGray3 = "#aaaaaa";
 let KDTextTan = "#d6cbc5";
@@ -1514,6 +1520,10 @@ function KinkyDungeonDrawGame() {
 				zIndex: 1,
 				alpha: 0.07,
 			});
+		} else if (KDToggles.ArousalHearts) {
+			KDDrawArousalParticles(KDGameData.OrgasmTurns/KinkyDungeonOrgasmTurnsMax, KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax,
+				(KDGameData.OrgasmStage / KinkyDungeonMaxOrgasmStage)
+			);
 		} else if (KinkyDungeonStatDistraction > 1.0) {
 			KDDrawArousalScreenFilter(0, 1000, 2000, KinkyDungeonStatDistraction * 100 / KinkyDungeonStatDistractionMax);
 		}
@@ -1832,7 +1842,7 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 				if ((Entity.vx || Entity.vy) || Entity.time > 1) {
 					alphamult = 0;
 				}
-				Entity.alpha = Math.max(0.0, Entity.alpha - KDTimescale*amount*alphamult);
+				Entity.alpha = Math.min(1, Math.max(0.0, Entity.alpha - KDTimescale*amount*alphamult));
 			}
 		}
 

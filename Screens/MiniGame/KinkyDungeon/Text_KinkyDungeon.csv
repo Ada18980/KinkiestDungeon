@@ -36,6 +36,7 @@ KDToggleDrawArmor,Draw Armor
 KDToggleMusic,Enable Music
 KDToggleTurnCounter,Turn Counter
 KDToggleStunFlash,Flash Screen on Stun
+KDToggleArousalHearts,Advanced Distraction VFX
 KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
@@ -5626,10 +5627,10 @@ KinkyDungeonStartVibeRemote,The EnemyName remotely causes your toys to to buzz!!
 KinkyDungeonPlugged,You feel the plugs inside you while walking.
 KinkyDungeonVibing0,You feel a gentle buzz...
 KinkyDungeonVibing1,Your toys tease you gently...
-KinkyDungeonVibing2,Your toys are vibrating.
-KinkyDungeonVibing3,Your toys are buzzing strongly!
-KinkyDungeonVibing4,Your toys vibrate intensely!
-KinkyDungeonVibing5,The vibration is torturous!
+KinkyDungeonVibing2,"Your toys vibrate noticeably, feeling quite good..."
+KinkyDungeonVibing3,"Your toys buzz strongly, making it difficult to concentrate!"
+KinkyDungeonVibing4,"You tremble as the toys give off intense vibrations!"
+KinkyDungeonVibing5,"Your toys torture you with intense vibrations!"
 KinkyDungeonEndVibe,Your toys stop vibrating.
 KinkyDungeonPlugWalk0,You feel slightly full as you move...
 KinkyDungeonPlugWalk1,Your movement disturbs the plugs inside of you...

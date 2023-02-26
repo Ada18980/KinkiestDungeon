@@ -397,7 +397,7 @@ function KDApplyAlpha(id, alpha, fade, delta) {
 	switch (fade) {
 		case "random": {
 			if (alpha >= 1 || alpha <= 0) KDTileModes[id] = !KDTileModes[id];
-			return alpha + (KDTileModes[id] ? -delta*0.001 : delta*0.001);
+			return Math.max(0, Math.min(1, alpha + (KDTileModes[id] ? -delta*0.001 : delta*0.001)));
 		}
 	}
 }
