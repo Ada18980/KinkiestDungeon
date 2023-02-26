@@ -1264,6 +1264,7 @@ Minor Changes:
 4.11 (Feb 2023)
 - Added some new lore, one history entry for every floor and a few extra sheets in the orrery
 - Added some more lore-centric dialogue to Fuuka
+- Removed the witch faction. Witches still occur, but they are generic enemies now. Also less will appear in the bellows
 - Added a new Donut item dropped by Deputies
 - You can now use conveyors to dodge attacks
 - Tables now use a dialogue instead of a modal popup
