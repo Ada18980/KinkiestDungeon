@@ -579,8 +579,18 @@ interface enemy extends KDHasTags {
 
 	/** Behavior tags */
 	Behavior?: {
+		/** This enemy will always want to add more restraints~ */
+		thorough?: number,
 		/** Can't play */
 		noPlay?: boolean,
+		/** Wont stop tying you until these groups are bound */
+		ensureGroupTied?: string[],
+		/** Wont stop tying you until these playertags are fulfilled */
+		ensurePlayerTag?: string[],
+		/** Wont stop tying you until these groups are bound (arousal mode only)*/
+		ensureGroupTiedArousal?: string[],
+		/** Wont stop tying you until these playertags are fulfilled (arousal mode only)*/
+		ensurePlayerTagArousal?: string[],
 	}
 
 	/** This enemy wont appear outside of its designated floors even if it shares the tag */

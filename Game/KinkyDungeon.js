@@ -2790,6 +2790,7 @@ function KinkyDungeonLoadGame(String) {
 				KDUpdateVision();
 			}
 			KinkyDungeonFloaters = [];
+			KinkyDungeonAdvanceTime(0, true, true);
 			return true;
 		}
 	}

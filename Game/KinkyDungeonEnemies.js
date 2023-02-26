@@ -2464,6 +2464,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.targetRestraintLevel = 0.25 + (enemy.aggro && !enemy.playWithPlayer ? enemy.aggro : 0) + 0.004 * (KinkyDungeonGoddessRep.Prisoner + 50);
 	if (enemy.aggro > 0 && delta > 0) enemy.aggro = enemy.aggro * 0.95;
 	if (KinkyDungeonStatsChoice.has("NoWayOut") || KinkyDungeonCanPlay(enemy) || enemy.hp < enemy.Enemy.maxhp * 0.5) AIData.targetRestraintLevel = 999;
+	if (enemy.Enemy.Behavior?.thorough) AIData.targetRestraintLevel = Math.max(AIData.targetRestraintLevel, enemy.Enemy.Behavior?.thorough);
 	AIData.addLeash = AIData.leashing && KDBoundPowerLevel >= AIData.targetRestraintLevel && (!KinkyDungeonGetRestraintItem("ItemNeck") || !KinkyDungeonGetRestraintItem("ItemNeckRestraints"));
 	if (!AIData.addLeash && AIData.leashing && enemy.IntentLeashPoint && (!KinkyDungeonGetRestraintItem("ItemNeck") || !KinkyDungeonGetRestraintItem("ItemNeckRestraints"))) AIData.addLeash = true;
 
@@ -2513,7 +2514,19 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		if (KDSpecialConditions[enemy.Enemy.specialCondition].resetCD) enemy.specialCD = enemy.Enemy.specialCD;
 	}
 
-	AIData.addMoreRestraints = KinkyDungeonStatsChoice.has("NoWayOut") || !AIData.leashing || (AIData.attack.includes("Bind") && (KDBoundPowerLevel < AIData.targetRestraintLevel || !KinkyDungeonIsArmsBound()));
+	AIData.addMoreRestraints = KinkyDungeonStatsChoice.has("NoWayOut") || !AIData.leashing || (AIData.attack.includes("Bind")
+		&& (
+			KDBoundPowerLevel < AIData.targetRestraintLevel // General restraint level
+			|| (enemy.Enemy.Behavior && (
+				enemy.Enemy.Behavior.ensureGroupTied?.some((group) => {return KinkyDungeonGetRestraintItem(group) != undefined;}) // Some enemies won't stop until these groups are filled
+				|| enemy.Enemy.Behavior.ensurePlayerTag?.some((tag) => {return KinkyDungeonPlayerTags.has(tag);}) // Some enemies won't stop until these tags are had
+				|| (KinkyDungeonStatsChoice.get("arousalMode") &&
+					(enemy.Enemy.Behavior.ensureGroupTied?.some((group) => {return KinkyDungeonGetRestraintItem(group) != undefined;}) // Some enemies won't stop until these groups are filled
+					|| enemy.Enemy.Behavior.ensurePlayerTag?.some((tag) => {return KinkyDungeonPlayerTags.has(tag);})))) // Some enemies won't stop until these tags are had
+			)
+			|| !KinkyDungeonIsArmsBound() // All enemies should bind arms or have ignore tag
+		)
+	);
 
 	if (!enemy.Enemy.attackWhileMoving && AIData.range > AIData.followRange) {
 		AIData.followRange = AIData.range;

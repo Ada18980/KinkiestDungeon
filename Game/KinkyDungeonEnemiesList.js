@@ -1586,6 +1586,10 @@ let KinkyDungeonEnemies = [
 			level_key: 3,
 			level_tech: 1,
 		},
+		Behavior: {
+			thorough: 0.6,
+			ensurePlayerTagArousal: ["ChastityUpper", "ChastityLower"],
+		},
 		RestraintFilter: {
 			bonusRestraints: 2,
 			requiredItems: ["BlacksteelBelt", "BlacksteelBra"],
@@ -1607,6 +1611,10 @@ let KinkyDungeonEnemies = [
 		Security: {
 			level_key: 3,
 			level_tech: 1,
+		},
+		Behavior: {
+			thorough: 0.6,
+			ensurePlayerTagArousal: ["ChastityUpper", "ChastityLower"],
 		},
 		RestraintFilter: {
 			bonusRestraints: 2,
