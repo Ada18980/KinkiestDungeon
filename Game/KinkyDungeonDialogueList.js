@@ -849,7 +849,7 @@ let KDDialogue = {
 				Percent: Math.max(0, 0.25 * KinkyDungeonSlowLevel),
 			};
 			KDGameData.CurrentDialogMsgData = {
-				RESISTCHANCE: "" + Math.round(100 - KDGameData.CurrentDialogMsgValue.Percent * 100),
+				RESISTCHANCE: "" + Math.max(0, Math.round(100 - KDGameData.CurrentDialogMsgValue.Percent * 100)),
 			};
 			return false;
 		},

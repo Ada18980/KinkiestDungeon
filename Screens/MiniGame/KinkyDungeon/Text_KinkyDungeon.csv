@@ -2095,11 +2095,13 @@ NameGag,Gravitating Gag
 KillGag,"The gag buckles itself in place and falls."
 AttackGagBind,"The gravitating gag wedges itself firmly in your mouth and buckles itself! (+RestraintAdded)"
 AttackGag,"The gravitating gag rubs itself against your gagged lips! (DamageTaken)"
+AttackGagDash,"The gag dashes to you!"
 
 NameCuffs,Seductive Shackles
 KillCuffs,"The shackles' chain breaks as they fall to the floor."
 AttackCuffsBind,"The shackles force themselves around your limbs and click tightly! (+RestraintAdded)"
 AttackCuffs,"The shackles click seductively in your face... (DamageTaken)"
+AttackCuffsDash,"The shackles dash to you!"
 
 NameAnimLegbinder,Lurid Legbinder
 KillAnimLegbinder,"The legbinder unravels."
@@ -2110,6 +2112,7 @@ NameAnimBlindfold,Bratty Blindfold
 KillAnimBlindfold,"The blindfold floats to the floor."
 AttackAnimBlindfoldBind,"The blindfold buckles itself tightly around your head! (+RestraintAdded)"
 AttackAnimBlindfold,"The blindfold crawls over your helpless face! (DamageTaken)"
+AttackAnimBlindfoldDash,"The blindfold dashes to you!"
 
 NameAnimArmbinder,Amorous Armbinder
 KillAnimArmbinder,"The armbinder flops to the floor."
@@ -2134,12 +2137,14 @@ AttackAnimYoke,"The yoke makes alluring clicking noises! (DamageTaken)"
 NameAnimHarness,Haughty Harness
 KillAnimHarness,"The harness unravels."
 AttackAnimHarnessBind,"The harness buckles itself tightly around your body! (+RestraintAdded)"
+AttackAnimHarnessDash,"The harness dashes to you!"
 AttackAnimHarness,"The harness wraps itself around your body and squeezes! (DamageTaken)"
 
 NameLock,Levitating Locks
 KillLock,"The locks and chains fall to the floor in a loud crash."
 AttackLockLock,"A lock clicks itself onto one of your restraints! (+RestraintAdded)"
 AttackLockBind,"A chain locks itself in place on your body! (DamageTaken)"
+AttackLockDash,"The lock dashes to you!"
 AttackLock,"The floating locks and chains rub themselves across your body! (DamageTaken)"
 
 NamePlayerGag,Conjured Gag
@@ -2150,6 +2155,7 @@ AttackPlayerGag,"The gag rubs itself against you! (DamageTaken)"
 NameLearnedRope,Learned Rope
 KillLearnedRope,"The learned rope untangles into a mess of rope."
 AttackLearnedRopeBind,"The magic rope wraps itself intricately around your body! (+RestraintAdded)"
+AttackLearnedRopeDash,"The rope dashes to you!"
 AttackLearnedRope,"The magic rope wriggles into your outfit! (DamageTaken)"
 
 NameUnforseenRope,Unforseen Rope
