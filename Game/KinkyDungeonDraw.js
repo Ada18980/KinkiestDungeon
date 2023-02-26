@@ -1407,6 +1407,21 @@ function KinkyDungeonDrawGame() {
 				DrawButtonVis(1500, 320, 300, 64, "Get save code", "#ffffff", "");
 				DrawButtonVis(1100, 320, 300, 64, "Enter parole mode", "#ffffff", "");
 
+				DrawButtonKDEx("debugAddKey", (bdata) => {
+					KinkyDungeonRedKeys += 1;
+					KinkyDungeonBlueKeys += 1;
+					KinkyDungeonLockpicks += 1;
+					return true;
+				}, true, 700, 160, 300, 64, "Add keys and lockpicks", "#ffffff", "");
+				DrawButtonKDEx("debugAddVision", (bdata) => {
+					KinkyDungeonSeeAll = !KinkyDungeonSeeAll;
+					return true;
+				}, true, 700, 240, 300, 64, "Toggle OmniVision™", "#ffffff", "");
+				DrawButtonKDEx("debugAddSP", (bdata) => {
+					KinkyDungeonSpellPoints += 1;
+					return true;
+				}, true, 700, 320, 300, 64, "Add spell point", "#ffffff", "");
+
 			}
 		}
 
