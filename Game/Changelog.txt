@@ -1268,10 +1268,11 @@ Minor Changes:
 - Added a new Donut item dropped by Deputies
 - You can now use conveyors to dodge attacks
 - Tables now use a dialogue instead of a modal popup
-- Fixed a number of bugs with the new tileset
+- Some animated restraints can now dash
 - For modders: Added support for multiple additional effects in consumables, e.g. the "CookieJailer" item
 - Made the bellows trap tile easier to see
 - Turrets no longer spawn in the ambush hallways within the Bellows
+- Fixed a number of other bugs with the new tileset
 
 
 

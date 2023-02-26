@@ -1971,7 +1971,7 @@ function KinkyDungeonUpdateStruggleGroups() {
 					name:(KDRestraint(restraint)) ? KDRestraint(restraint).name : "",
 					lock:restraint.lock,
 					magic:KDRestraint(restraint) ? KDRestraint(restraint).magic : undefined,
-					noCut:KDRestraint(restraint) && KDRestraint(restraint).escapeChance && !KDRestraint(restraint).escapeChance.Cut,
+					noCut:KDRestraint(restraint) && KDRestraint(restraint).escapeChance && KDRestraint(restraint).escapeChance.Cut == undefined,
 					curse:KDRestraint(restraint)? (restraint.curse || KDRestraint(restraint).curse) : undefined,
 					blocked: !KDRestraint(restraint).alwaysStruggleable && KDGroupBlocked(Group)});
 		}
