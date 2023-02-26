@@ -424,6 +424,8 @@ type outfitKey = string
 type mapKey = string
 
 interface floorParams {
+	/** List of factions allowed to be primary or secondary here */
+	factionList?: string[];
 	/** This code is run after a worldgen */
 	worldGenCode?: () => void;
 	tagModifiers?: Record<string, number>;

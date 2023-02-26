@@ -69,6 +69,8 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 1, Weight: 10},
 		],
 
+		factionList: ["Bandit", "Apprentice", "Bountyhunter", "Elemental", "Dragon", "Maidforce"],
+
 		"min_width" : 5,
 		"max_width" : 7,
 		"min_height" : 5,
@@ -166,6 +168,8 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 6,
 
+		factionList: ["AncientRobot", "Bandit", "Apprentice", "Bountyhunter", "Bast", "Dragon", "Maidforce", "Alchemist"],
+
 		enemyTags: ["skeleton"],
 		"defeat_outfit": "Dungeon",
 		"shrines": [
@@ -247,6 +251,8 @@ const KinkyDungeonMapParams = {
 		"max_width" : 6,
 		"min_height" : 5,
 		"max_height" : 5,
+
+		factionList: ["AncientRobot", "Nevermere", "Bandit", "Bountyhunter", "Elf", "Bast", "Dragon", "Maidforce", "Alchemist"],
 
 		enemyTags: ["plant", "jungle"],
 		"defeat_outfit": "LatexPrisoner",
@@ -345,6 +351,8 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 5,
 
+		factionList: ["Apprentice", "Bandit", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
+
 		enemyTags: ["skeleton", "temple", "ghost"],
 		"defeat_outfit": "LatexPrisoner",
 		"shrines": [
@@ -442,6 +450,8 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 7,
 
+		factionList: ["Bast", "Bandit", "AncientRobot", "Elemental", "Dragon"],
+
 		enemyTags: ["mummy", "ghost"],
 		"defeat_outfit": "Bast",
 		"shrines": [
@@ -527,6 +537,8 @@ const KinkyDungeonMapParams = {
 		"max_width" : 5,
 		"min_height" : 5,
 		"max_height" : 5,
+
+		factionList: ["Elf", "Bandit", "Apprentice", "Elemental", "Dragon", "Maidforce", "Alchemist"],
 
 		enemyTags: ["book", "witch", "dressmaker"],
 		"defeat_outfit": "Prisoner",
@@ -623,6 +635,8 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 7,
 
+		factionList: ["Nevermere", "Elf", "Bandit", "Apprentice", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
+
 		enemyTags: ["mushroom", "slimeBonus", "crystalline"],
 		"defeat_outfit": "Prisoner",
 		"shrines": [
@@ -673,6 +687,8 @@ const KinkyDungeonMapParams = {
 		music: {
 			"AREA8-ORRERY.ogg": 30,
 		},
+
+		factionList: ["Apprentice", "Elf", "Bandit", "Dressmaker", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
 
 		tagModifiers: {
 			"jungle": 0,
@@ -811,7 +827,9 @@ const KinkyDungeonMapParams = {
 		"min_height" : 4,
 		"max_height" : 4,
 
-		enemyTags: ["dollsmith", "dollrare", "oldrobot", "oldrobotturret"],
+		factionList: ["Nevermere", "AncientRobot", "Bandit", "Dressmaker", "Bountyhunter", "Maidforce", "Alchemist"],
+
+		enemyTags: ["dollsmith", "dollrare", "oldrobot", "oldrobotturret", "tech"],
 		"defeat_outfit": "DollSuit",
 		"shrines": [
 			{Type: "Latex", Weight: 5},

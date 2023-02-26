@@ -1212,7 +1212,7 @@ function KinkyDungeonDrawGame() {
 			KinkyDungeonDrawMessages();
 
 			// Draw the quick inventory
-			if (KinkyDungeonShowInventory || (KDGameData.CurrentDialog && KDDialogue[KDGameData.CurrentDialog] && KDDialogue[KDGameData.CurrentDialog].inventory)) {
+			if (KDShowQuickInv()) {
 				KinkyDungeonDrawQuickInv();
 			}
 		} else {
@@ -2963,4 +2963,11 @@ function KDElementPosition(ElementID, X, Y, W, H) {
 		height: Height + "px",
 		display: "inline"
 	});
+}
+
+/** Whether or not to show the quick inv
+ * @returns {boolean}
+*/
+function KDShowQuickInv() {
+	return KinkyDungeonShowInventory || (KDGameData.CurrentDialog && KDDialogue[KDGameData.CurrentDialog] && KDDialogue[KDGameData.CurrentDialog].inventory);
 }

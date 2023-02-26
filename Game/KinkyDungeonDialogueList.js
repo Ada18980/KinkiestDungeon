@@ -355,10 +355,11 @@ let KDDialogue = {
 	"OfferAncientRobot": KDRecruitDialogue("OfferAncientRobot", "AncientRobot", "Wolfgirl", "Metal", ["roboPrisoner"], 5, ["roboPrisoner", "roboAngry", "hitechCables"], 13, ["robot"], undefined, ["submissive"], 0.5),
 	"OfferElf": KDRecruitDialogue("OfferElf", "Elf", "Elven", "Will", ["mithrilRestraints"], 5, ["mithrilRestraints", "mithrilRope"], 13, ["elf"], undefined, ["submissive"], 0.5),
 	"OfferAlchemist": KDRecruitDialogue("OfferAlchemist", "Alchemist", "BlueSuit", "Latex", ["latexUniform"], 5, ["latexUniform", "latexRestraints"], 13, ["alchemist"], undefined, ["submissive"], 0.5),
-	"OfferWitch": KDRecruitDialogue("OfferWitch", "Witch", "Default", "Conjure", [], 5, ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist", "ropeAuxiliary"], 13, ["witch"], undefined, ["submissive"], 0.5),
+	//"OfferWitch": KDRecruitDialogue("OfferWitch", "Witch", "Default", "Conjure", [], 5, ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist", "ropeAuxiliary"], 13, ["witch"], undefined, ["submissive"], 0.5),
 	"OfferElemental": KDRecruitDialogue("OfferElemental", "Elemental", "Obsidian", "Elements", ["obsidianCuffs"], 5, ["obsidianRestraints"], 13, ["elemental"], undefined, ["submissive"], 0.5),
 	"OfferDragonheart": KDRecruitDialogue("OfferDragonheart", "Dragon", "Default", "Leather", [], 5, ["dragonRestraints"], 13, ["dragon"], undefined, ["submissive"], 0.5),
-	"OfferApprentice": KDRecruitDialogue("OfferApprentice", "Apprentice", "Default", "Conjure", [], 5, ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist", "ropeAuxiliary"], 13, ["apprentice"], undefined, ["submissive"], 0.5),
+	"OfferApprentice": KDRecruitDialogue("OfferApprentice", "Apprentice", "Default", "Conjure", [], 5, ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist", "ropeAuxiliary"], 13, ["apprentice"], undefined, ["submissive", "wizard"], 0.5),
+	//"OfferApprentice2": KDRecruitDialogue("OfferApprentice2", "Apprentice", "Default", "Conjure", [], 5, ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist", "ropeAuxiliary"], 13, ["apprentice"], undefined, ["submissive", "student"], 0.5),
 	"OfferBandit": KDRecruitDialogue("OfferBandit", "Bandit", "Default", "Leather", [], 5, ["leatherRestraints", "leatherRestraintsHeavy"], 13, ["bandit"], undefined, ["submissive"], 0.5),
 	//"OfferFungal": KDRecruitDialogue("OfferFungal", "Mushy", "BlueSuit", "Will", ["crystalBelt"], 5, ["crystalBelt", "crystalRestraints"], 13, ["fungal"], undefined, ["submissive"], 0.5),
 
@@ -1646,14 +1647,59 @@ let KDDialogue = {
 							"Question": {
 								playertext: "Default", response: "Default",
 								options: {
-									"Proceed": {
+									"Question": {
 										playertext: "Default", response: "Default",
+										options: {
+											"Question": {
+												playertext: "Default", response: "Default",
+												options: {
+													"Question": {
+														playertext: "Default", response: "Default",
+														options: {
+															"Question": {
+																playertext: "Default", response: "Default",
+																options: {
+																	"Proceed": {
+																		playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
+																		leadsToStage: "PostIntro",
+																	}
+																}
+															},
+															"Question2": {
+																playertext: "Default", response: "Default",
+																options: {
+																	"Proceed": {
+																		playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
+																		leadsToStage: "PostIntro",
+																	}
+																}
+															},
+															"Proceed": {
+																playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
+																leadsToStage: "PostIntro",
+															}
+														}
+													},
+													"Proceed": {
+														playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
+														leadsToStage: "PostIntro",
+													}
+												}
+											},
+											"Proceed": {
+												playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
+												leadsToStage: "PostIntro",
+											}
+										}
+									},
+									"Proceed": {
+										playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
 										leadsToStage: "PostIntro",
 									}
 								}
 							},
 							"Proceed": {
-								playertext: "Default", response: "Default",
+								playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
 								leadsToStage: "PostIntro",
 							},
 						}
@@ -1847,6 +1893,11 @@ let KDDialogue = {
 				prerequisiteFunction: (gagged, player) => {return false;},
 				playertext: "Default", response: "Default",
 				options: {
+					"Zombie": {
+						gagDisabled: true,
+						playertext: "Default", response: "Default",
+						leadsToStage: "Defensive_Question",
+					},
 					"Brat": {gag: true,
 						playertext: "Default", response: "FuukaPostIntro_Brat",
 						leadsToStage: "Fight",

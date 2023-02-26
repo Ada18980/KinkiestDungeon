@@ -666,6 +666,10 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 
 	KinkyDungeonStartPosition = {x: 1, y: 4 + (starty) * KDTE_Scale};
 	KinkyDungeonEndPosition = {x: KinkyDungeonGridWidth - 2, y: 4 + (endy) * KDTE_Scale};
+	if (KDRandom() < 0.5)
+		KinkyDungeonShortcutPosition = {x: 4 + (botx) * KDTE_Scale, y: KinkyDungeonGridHeight - 2};
+	else
+		KinkyDungeonShortcutPosition = {x: 4 + (topx) * KDTE_Scale, y: 1};
 
 	KinkyDungeonGrid = "";
 

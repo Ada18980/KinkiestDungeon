@@ -635,7 +635,7 @@ function KinkyDungeonDrawInputs() {
 
 	// Draw the struggle buttons if applicable
 	KinkyDungeonDrawStruggleHover = false;
-	if (!KinkyDungeonShowInventory && ((KinkyDungeonDrawStruggle > 0 || MouseIn(0, 0, 500, 1000)) && KinkyDungeonStruggleGroups))
+	if (!KDShowQuickInv() && ((KinkyDungeonDrawStruggle > 0 || MouseIn(0, 0, 500, 1000)) && KinkyDungeonStruggleGroups))
 		for (let sg of KinkyDungeonStruggleGroups) {
 			let ButtonWidth = 60;
 			let x = 5 + ((!sg.left) ? (490 - ButtonWidth) : 0);

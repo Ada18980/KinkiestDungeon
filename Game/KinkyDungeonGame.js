@@ -150,7 +150,7 @@ let KinkyDungeonLastMoveTimerCooldownStart = 50;
 let KinkyDungeonPatrolPoints = [];
 let KinkyDungeonStartPosition = {x: 1, y: 1};
 let KinkyDungeonEndPosition = {x: 1, y: 1};
-let KinkyDungeonShortcutPosition = null;
+let KinkyDungeonShortcutPosition = {x: 1, y: 1};
 let KinkyDungeonJailLeash = 3;
 let KinkyDungeonJailLeashX = 3;
 
@@ -411,7 +411,6 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		KDPathCache = new Map();
 		KDThoughtBubbles = new Map();
 		KinkyDungeonSpecialAreas = [];
-		KinkyDungeonShortcutPosition = null;
 		KinkyDungeonRescued = {};
 		KDGameData.ChampionCurrent = 0;
 		KinkyDungeonAid = {};
@@ -431,6 +430,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		KDGameData.KeyringLocations = [];
 
 		KinkyDungeonEndPosition = null;
+		KinkyDungeonShortcutPosition = null;
 
 		KinkyDungeonPatrolPoints = [];
 
@@ -573,6 +573,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		let torchlitchance = MapParams.torchlitchance ? MapParams.torchlitchance : 0.75;
 		let torchchanceboring = MapParams.torchchanceboring ? MapParams.torchchanceboring : 0.85;
 		let torchreplace = (altType && altType.torchreplace) ? altType.torchreplace : (MapParams.torchreplace ? MapParams.torchreplace : null);
+		let factionList = MapParams.factionList;
 
 		//console.log(KDRandom());
 		let shrineTypes = [];
@@ -773,7 +774,8 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 					if (!bonus) bonus = altType.bonusTags;
 					else bonus = Object.assign(Object.assign(Object.assign({}, bonus)), altType.bonusTags);
 				}
-				KinkyDungeonPlaceEnemies(spawnPoints, false, tags, bonus, Floor, width, height, altRoom);
+				KinkyDungeonPlaceEnemies(spawnPoints, false, tags, bonus, Floor, width, height, altRoom,
+					factionList);
 			}
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for enemy creation`);
@@ -941,7 +943,7 @@ function KinkyDungeonGetAllies() {
 
 // @ts-ignore
 // @ts-ignore
-function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, width, height, altRoom) {
+function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, width, height, altRoom, factionList) {
 	KinkyDungeonHuntDownPlayer = false;
 	KinkyDungeonFirstSpawn = true;
 	KinkyDungeonSearchTimer = 0;
@@ -965,7 +967,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 	}
 
 	// Determine factions to spawn
-	let factions = Object.keys(KinkyDungeonFactionTag);
+	let factions = factionList || Object.keys(KinkyDungeonFactionTag);
 	let primaryFaction = factions[Math.floor(KDRandom() * factions.length)];
 	let randomFactions = [
 		primaryFaction
@@ -1514,32 +1516,33 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 
 		// Ending stairs are not.
 		let placed = false;
-		let xx = 0;
-		let yy = 0;
 
-		for (let L = 1000; L > 0; L -= 1) { // Try up to 1000 times
-			let X = Math.floor(width * 0.75) - 2 - Math.floor(KDRandom() * width/2);
-			let Y = 1 + 2*Math.floor(KDRandom()*0.5 * (height - 2));
-			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
-				// Check the 3x3 area
-				let wallcount = 0;
-				for (let XX = X-1; XX <= X+1; XX += 1)
-					for (let YY = Y-1; YY <= Y+1; YY += 1)
-						if (!(XX == X && YY == Y) && (KinkyDungeonMapGet(XX, YY) == '1' || KinkyDungeonMapGet(XX, YY) == 'X'))
-							wallcount += 1;
-				if (wallcount == 7
-					|| (wallcount >= 5
-						&& (KinkyDungeonMapGet(X+1, Y) == '1' || KinkyDungeonMapGet(X-1, Y) == '1')
-						&& (KinkyDungeonMapGet(X, Y+1) == '1' || KinkyDungeonMapGet(X, Y-1) == '1'))) {
-					placed = true;
-					KinkyDungeonMapSet(X, Y, 'H');
-					KinkyDungeonShortcutPosition = {x:X, y:Y};
-					xx = X;
-					yy = Y;
-					L = 0;
-					break;
+		// Place along the top and bottom of the map
+
+		if (!KinkyDungeonShortcutPosition) {
+			for (let L = 1000; L > 0; L -= 1) { // Try up to 1000 times
+				let X = Math.floor(width * 0.75) - 2 - Math.floor(KDRandom() * width/2);
+				let Y = 1 + 2*Math.floor(KDRandom()*0.5 * (height - 2));
+				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
+					// Check the 3x3 area
+					let wallcount = 0;
+					for (let XX = X-1; XX <= X+1; XX += 1)
+						for (let YY = Y-1; YY <= Y+1; YY += 1)
+							if (!(XX == X && YY == Y) && (KinkyDungeonMapGet(XX, YY) == '1' || KinkyDungeonMapGet(XX, YY) == 'X'))
+								wallcount += 1;
+					if (wallcount == 7
+						|| (wallcount >= 5
+							&& (KinkyDungeonMapGet(X+1, Y) == '1' || KinkyDungeonMapGet(X-1, Y) == '1')
+							&& (KinkyDungeonMapGet(X, Y+1) == '1' || KinkyDungeonMapGet(X, Y-1) == '1'))) {
+						placed = true;
+						KinkyDungeonShortcutPosition = {x:X, y:Y};
+						L = 0;
+						break;
+					}
 				}
 			}
+		} else {
+			placed = true;
 		}
 
 		if (!placed) // Loosen the constraints
@@ -1548,18 +1551,19 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 				let Y = 1 + Math.floor(KDRandom() * (height - 2));
 				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
 					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
-					KinkyDungeonMapSet(X, Y, 'H');
 					L = 0;
 					placed = true;
-					xx = X;
-					yy = Y;
 					KinkyDungeonShortcutPosition = {x:X, y:Y};
 				}
 			}
 
+		if (KinkyDungeonShortcutPosition) {
+			KinkyDungeonMapSet(KinkyDungeonShortcutPosition.x, KinkyDungeonShortcutPosition.y, 'H');
+		}
+
 		if (placed) {
 			KDGameData.ShortcutPath = checkpoint;
-			if (KDGameData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.ShortcutPath}, xx, yy, 2.99, true);
+			if (KDGameData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.ShortcutPath}, KinkyDungeonShortcutPosition.x, KinkyDungeonShortcutPosition.y, 2.99, true);
 		}
 	}
 }

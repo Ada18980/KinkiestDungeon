@@ -5822,29 +5822,28 @@ KinkyDungeonSpellChoice6, "Current Spell 7: "
 KinkyDungeonCheckpointLoreUnknown,???
 KinkyDungeonCheckpointLore-1,Unfiled
 KinkyDungeonCheckpointLoreCombat,Adventuring 101
+KinkyDungeonCheckpointLoreHistory,History
 KinkyDungeonCheckpointLoreSchool,Bondage Witchery
 KinkyDungeonCheckpointLoreEnemy,Enemy Notes
 KinkyDungeonCheckpointLoregrv,Graveyard
 KinkyDungeonCheckpointLorecat,Catacombs
 KinkyDungeonCheckpointLorejng,Jungle
-KinkyDungeonCheckpointLoretmmp,Temple
-KinkyDungeonCheckpointLore4,Graveyard
-KinkyDungeonCheckpointLore5,Graveyard
-KinkyDungeonCheckpointLore6,Graveyard
-KinkyDungeonCheckpointLore7,Graveyard
-KinkyDungeonCheckpointLore8,Graveyard
-KinkyDungeonCheckpointLore9,Graveyard
-KinkyDungeonCheckpointLore10,Mansion
+KinkyDungeonCheckpointLoretmp,Temple
 KinkyDungeonCheckpointLoretmb,Tombs
 KinkyDungeonCheckpointLorelib,Library
 KinkyDungeonCheckpointLorecry,Crystal Cave
-KinkyDungeonCheckpointLore14,Graveyard
-KinkyDungeonCheckpointLore15,Graveyard
-KinkyDungeonCheckpointLore16,Graveyard
-KinkyDungeonCheckpointLore17,Graveyard
-KinkyDungeonCheckpointLore18,Graveyard
-KinkyDungeonCheckpointLore19,Graveyard
-KinkyDungeonCheckpointLore20,Graveyard
+KinkyDungeonCheckpointLoreore,Orrery
+KinkyDungeonCheckpointLorebel,Bellows
+
+KinkyDungeonLore29,"(A page from the Book of Aeons)|The 'Graveyard' is a peculiar place. Long ago, human beings lived and died just like the animals. When the Old Civilization existed, they would come to bury their dead in the Graveyard. It remains a mystery why so many of the former dead seem to be alive. Some say that when the Old Civilization cast the spell that spell which overcame Death, even those buried in their graves would rise again. Others simply say that there is a powerful necromancer who lives here, toying with the dead as if they were pets..."
+KinkyDungeonLore30,"(A page from the Book of Aeons)|Beneath the Graveyard lies a relic of a former age, a network of tombs inhabited by the immortal followers of Bast. Very few were graced with this gift of immortality before the great archmagus, Sariel Vinlaga, stole this power from the gods and granted all humans with the power of immortality. The Bast followers are still set in their ways, hoping for a time when their Goddess will return and rebuild their glorious civilization."
+KinkyDungeonLore31,"(A page from the Book of Aeons)|Some say the 'Catacombs' are older than time itself. When the Old Civilization began to study immortality, no one knew if it would be possible to bring back those who already died. The Catacombs therefore were used to store all of the remains of former humans, so that they too could be revived when the archmagus would finally make her breakthrough."
+KinkyDungeonLore32,"(A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today."
+KinkyDungeonLore33,"(A page from the Book of Aeons)|The Underground Jungle remains a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the jungle teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? "
+KinkyDungeonLore34,"(A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before."
+KinkyDungeonLore35,"(A page from the Book of Aeons)|"
+KinkyDungeonLore36,"(A page from the Book of Aeons)|The Stars have been a mystery to scholars since the beginning of time. At one point, humans believed that every star was a god, and they made offerings by throwing sugar into the night, thinking that as the stars were innumerable, so were the grains of sugar that pleased humans so much. Religion has moved past that, but the Orrery remains a relic from a time when humanity worshipped the stars rather than the Eight."
+KinkyDungeonLore37,"(A page from the Book of Aeons)|"
 
 KinkyDungeonLore0,"(Preface from the journal of Catherine Willows, well-known explorer who vanished in the dungeon 30 years ago) I am writing this journal in the off chance that I do not come back in my search for the Mistress' staff. If you find this, please make an effort to deliver it back to the surface for the good of all the young women lured by its secrets."
 KinkyDungeonLore1,"(Pg. 24 from Catherine Willows' journal) Many who trowel the upper levels of the Mistress' tomb often ask rhetorically: 'Why are there weird kinky traps guarding treasure chests? Why not have real, deadly traps if the purpose is to dissuade intruders?'"
@@ -5906,9 +5905,16 @@ KinkyDungeonLore1110,"(It's a record of an interview)|ME: Which goddess are you 
 KinkyDungeonLore1111,"(It's a record of an interview)|ME: What of the elves? Don't they talk about a 'kingdom' too?|MUMMY: Who are the elves?|ME: You know, pointy ears, green hair, a heck of an attitude... they seem in tune with nature.|MUMMY: They sound arrogant.|ME: They are.|MUMMY: Perhaps they know nothing of the promise between our goddess and theirs."
 KinkyDungeonLore1112,"(It's a medical record) Patient seems stable... application of the enchanted cloth seems to have stopped the bleeding. It appears that the ancient magic suppresses all forms of injury, even in humans, until it is taken off."
 
+KinkyDungeonLore1400,"(A record of an ancient... transaction)||The elemental offered us the following from her personal estate:|-one magical lantern that requires no fuel, and can light up the night as if it were day|-one crystal that burns red-hot when kept near metal, providing heat to warm a house|-three enchanted swords imbued with flame|-a hollow glass crystal, used for communication||In exchange, we gave her three wolfgirls we had captured on the surface."
+KinkyDungeonLore1401,"I had heard that ancient humans prayed to the stars here, in an effort to find favor when the Eight had forsaken them. So I went and prayed... and let me tell you, it was a lie, an absolute lie. There are only monsters out there."
+KinkyDungeonLore1402,"(It is a set of instructions for creating a magic circle to unlock a sealed portal. There are markings in many languages that give conflicting descriptions, claiming that the circle will transmute material to gold, or bring good fortune...)"
+
+KinkyDungeonLore400,"(Two schematic diagrams of ancient drones taken from records. The first is unmodified, and the second has several annotations written in what looks like pink lipstick...)"
+
+
 KinkyDungeonLore201,"Those damn slimes! They're so sticky and gross... fortunately, I washed myself in the fountain the last time I got caught by one. It came right off!"
 KinkyDungeonLore202,"The dragonhearts were a group of dragonslayers, named for their ritual that imbues them with the fiery power and resistance of dragons they've slain. Now they work as mercenaries, and some of them serve a certain Leather goddess."
-KinkyDungeonLore203,"Yes! I've done it! I have created another red slime! I shall call him Fred, yes, Fred... after the slime I lost in a Shield-related accident a while back... poor Fred... I miss him."
+KinkyDungeonLore203,"Yes! I've done it! I have created another red slime! I shall call him Fred, yes, Fred. After the red slime I lost in a shield-related accident a while back... |Poor Fred... I miss him."
 KinkyDungeonLore204,"(Pg. 70 from Catherine Willows' journal): The underground jungle is a curious phenomenon. The level of light pouring through cracks in the ceiling is nonetheless too sparse to sustain plantlife. And yet the restoration goddess, in her ancient wisdom, has decided to preserve this place. How many of her dryads must I pierce or burn until she realizes I am merely passing through?"
 KinkyDungeonLore205,"The unseen maid is the deadliest."
 
@@ -9074,9 +9080,19 @@ dFuuka_DefensiveGag,"Mmmmm... (Blush)"
 rFuukaDefensive,"(She grins)|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though."
 dFuukaDefensive_Question,Reincarnated ones?
 rFuukaDefensive_Question,"(SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue."
-rFuukaDefensive_Question_Question,"(SPEAKER enjoys the discussion)|Normally, spirits pass on to the next life.|But with the right tricks, one can keep them here.|I plan to make them all proper bodies...|Eventually."
-dFuukaDefensive_Question_Question,"But... reincarnated?"
+rFuukaDefensive_Question_Question,"(SPEAKER enjoys the discussion)|When people die, their spirits pass on to the next life.|But with the right tricks, one can grant them a second chance.|I plan to give them all proper bodies...|Eventually."
+dFuukaDefensive_Question_Question,"But... 'reincarnated'?"
+rFuukaDefensive_Question_Question_Question,"(SPEAKER tilts her head)|...They don't?"
+dFuukaDefensive_Question_Question_Question,"But people don't die anymore."
 dFuukaDefensive_Question_Question_Proceed,"(...)"
+rFuukaDefensive_Question_Question_Question_Question,"(SPEAKER scratches her chin)|So they managed it... after all this time..."
+dFuukaDefensive_Question_Question_Question_Question,"People don't die anymore."
+rFuukaDefensive_Question_Question_Question_Question_Question,"(SPEAKER folds her arms)|You don't know? They call it... the Old Civilization, in your tongue.|Long ago they were trying some experiments... many experiments.|Immortality was their goal."
+dFuukaDefensive_Question_Question_Question_Question_Question,"Who is 'they'?"
+rFuukaDefensive_Question_Question_Question_Question_Question_Question,"(SPEAKER shrugs)|Well, I don't know what they've accomplished.|But if the human race is immortal now,|that means you get to be my pet for a long time!"
+dFuukaDefensive_Question_Question_Question_Question_Question_Question,"They're just a bunch of old robots now."
+rFuukaDefensive_Question_Question_Question_Question_Question_Question2,"(SPEAKER frowns)|Hey, it's not my fault!|People who come here are usually not as talkative as you are...|Plus, I'm really busy these days.|I can't be bothered to keep track of recent developments!"
+dFuukaDefensive_Question_Question_Question_Question_Question_Question2,"...Am I really the first to tell you this?"
 dFuukaDefensive_Question_Proceed,"(...)"
 dFuukaDefensive_Proceed,I am an adventurer.
 dFuukaDefensive_ProceedGag,Mmmmph.
@@ -9145,10 +9161,11 @@ dFuukaSub_Brat_ProceedGag,"(Shake your head)"
 dFuukaSub_Brat_Proceed2,"(Sigh and shrug)"
 dFuuka_Attack,(Attack her without saying anything)
 
-rFuukaPostIntro,"(SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|All who roam this place do so under my express permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?"
+rFuukaPostIntro,"(SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?"
 dFuukaPostIntro_Brat,"I do what I want."
 dFuukaPostIntro_BratGag,"(Glare at her and scoff)"
 rFuukaPostIntro_Brat,"(SPEAKER makes a big grin)|I take that you wish to challenge me?|Very well!|Come at me!"
+dFuukaPostIntro_Zombie,"About those 'reincarnated ones'..."
 dFuukaPostIntro_Dom,"You have no power over me"
 dFuukaPostIntro_DomGag,"Hmmph. (Stand proudly)"
 rFuukaPostIntro_Dom,"(SPEAKER smiles)|Then let us fight!|If I win, I will make you my pet.|If you win, I will let you pass."

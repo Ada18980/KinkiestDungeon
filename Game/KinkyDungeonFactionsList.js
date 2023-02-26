@@ -37,6 +37,7 @@ let KinkyDungeonHiddenFactions = [
 	"Wolfhunter",
 	"Chase",
 	"Mushy",
+	"Witch",
 ];
 
 
@@ -344,7 +345,6 @@ let KinkyDungeonFactionRelationsBase = {
 		"Bast": -0.55,
 		"Mushy": -0.4,
 		"Bandit": 0.3,
-		"Witch": 0.15,
 		"Apprentice": 0.15,
 		"AncientRobot": -0.51,
 	},
@@ -377,7 +377,7 @@ let KinkyDungeonFactionRelationsBase = {
 	"Elemental": {
 		"KinkyConstruct": 0.55,
 		"Dressmaker": 0.35,
-		"Witch": 0.8,
+		"Witch": 0.15,
 		"Bandit": -0.15,
 		"Elf": 0.5,
 		"Bast": -0.35,
@@ -406,12 +406,10 @@ let KinkyDungeonFactionRelationsBase = {
 		"Elemental": 0.25,
 	},
 	"Witch": {
-		"Apprentice": 0.55,
-		"Dressmaker": 0.4,
 		"Elf": -1.0,
 	},
 	"Dressmaker": {
-		"Witch": 0.6,
+		"Witch": 0.15,
 		"Nevermere": 0.8,
 		"Bandit": -0.5,
 		"Dragon": -0.5,
