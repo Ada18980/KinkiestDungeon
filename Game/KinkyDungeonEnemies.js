@@ -3662,14 +3662,15 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							restraintsAdded: restraintAdd,
 							attacker: enemy,
 							target: player,
+							happened: happened,
 						};
 						KinkyDungeonSendEvent("beforeDamage", data);
 						KDDelayedActionPrune(["Hit"]);
 						let dmg = KinkyDungeonDealDamage({damage: data.damage, type: data.damagetype});
-						happened += dmg.happened;
+						data.happened += dmg.happened;
 						if (!enemy.playWithPlayer)
 							KinkyDungeonSetFlag("NPCCombat",  3);
-
+						happened = data.happened;
 						replace.push({keyword:"DamageTaken", value: dmg.string});
 					} else { // if (KDRandom() <= playerEvasion)
 						if (AIData.attack.includes("Slow")) {

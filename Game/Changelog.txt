@@ -1264,12 +1264,14 @@ Minor Changes:
 4.11 (Feb 2023)
 - Added some new lore, one history entry for every floor and a few extra sheets in the orrery
 - Added some more lore-centric dialogue to Fuuka
+- Added some new graphics for arousal, toggleable in the game settings
 - Removed the witch faction. Witches still occur, but they are generic enemies now. Also less will appear in the bellows
 - Added a new Donut item dropped by Deputies
 - You can now use conveyors to dodge attacks
 - Tables now use a dialogue instead of a modal popup
 - Some animated restraints can now dash
 - For modders: Added support for multiple additional effects in consumables, e.g. the "CookieJailer" item
+- For tile editors: Added a 'test tile' feature to very quickly generate a map with nothing but the desired tile
 - Made the bellows trap tile easier to see
 - Turrets no longer spawn in the ambush hallways within the Bellows
 - Fixed a number of other bugs with the new tileset

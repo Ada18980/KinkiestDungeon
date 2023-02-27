@@ -3,6 +3,8 @@
 
 let KDMapTilesListEditor = localStorage.getItem("KDMapTilesListEditor") ? JSON.parse(localStorage.getItem("KDMapTilesListEditor")) : Object.assign({}, KDMapTilesList);
 
+let KDTileToTest = null;
+
 // localStorage.setItem("KDMapTilesListEditor", JSON.stringify(KDMapTilesList))
 
 function KDInitTileEditor() {
@@ -508,6 +510,13 @@ function KDDrawEditorUI() {
 			KDTE_Create(x, y);
 		return true;
 	}, true, 1600, 130, 350, 64, "Resize (Clears all)", "#ffffff", "");
+
+	DrawButtonKDEx("TileTest", () => {
+		KDTE_CloseUI();
+		KDTileToTest = KDTE_ExportTile();
+		KinkyDungeonStartNewGame();
+		return true;
+	}, true, 1910, 10, 80, 40, "Test Tile", "#ffffff", "");
 
 	DrawButtonKDEx("CopyClip", () => {
 		var text = JSON.stringify(KDMapTilesListEditor);

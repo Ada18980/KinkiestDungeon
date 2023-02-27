@@ -493,6 +493,14 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		height = Math.max(2, height + mapSizeBonus);
 		width = Math.max(2, width + mapSizeBonus);
 
+		if (KDTileToTest) {
+			altType = alts.TestTile;
+			width = Math.ceil(KDTileToTest.w /2) + 7;
+			height = Math.ceil(KDTileToTest.h /2) + 7;
+
+		}
+
+
 		// They have to be odd for the maze generator to work
 		height += 1 - height % 2;
 		width += 1 - width % 2;
@@ -808,7 +816,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		// Place the jail keys AFTER making the map!
 		KinkyDungeonLoseJailKeys(false, bossRules); // if (!KDGameData.JailKey || (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail') || boss)
 
-		if ((KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)) iterations = 100000;
+		if (KDTileToTest || (KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)) iterations = 100000;
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 
 		if (iterations == 100000) {
@@ -830,7 +838,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		}
 	}
 
-
+	KDTileToTest = null;
 	KDPathCache = new Map();
 	KDPathCacheIgnoreLocks = new Map();
 }
@@ -951,6 +959,9 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 	let enemyCount = 8 + Math.floor(Math.sqrt(Floor) + width/16 + height/16 + KinkyDungeonDifficulty/7);
 	if (KinkyDungeonStatsChoice.get("Stealthy")) enemyCount = Math.round(enemyCount * KDStealthyEnemyCountMult);
 	let neutralCount = 0.4 * enemyCount;
+	if (KDTileToTest) {
+		enemyCount = 1;
+	}
 	let count = 0;
 	let ncount = 0;
 	let tries = 0;

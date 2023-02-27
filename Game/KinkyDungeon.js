@@ -2003,6 +2003,7 @@ function KDModsAfterLoad() {
 
 function KinkyDungeonStartNewGame(Load) {
 	KinkyDungeonNewGame = 0;
+	let cp = KinkyDungeonMapIndex.grv;
 	KinkyDungeonInitialize(1, Load);
 	MiniGameKinkyDungeonCheckpoint = "grv";
 	KinkyDungeonGrid = "";
@@ -2014,6 +2015,9 @@ function KinkyDungeonStartNewGame(Load) {
 		KDGameData.RoomType = KinkyDungeonStatsChoice.get("easyMode") ? "ShopStart" : "JourneyFloor";
 		MiniGameKinkyDungeonLevel = 0;
 		KDInitializeJourney("");
+		if (KDTileToTest) {
+			KinkyDungeonMapIndex.grv = cp;
+		}
 	}
 	if (!KinkyDungeonGrid)
 		KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], MiniGameKinkyDungeonLevel, false, Load);

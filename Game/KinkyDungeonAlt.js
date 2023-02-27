@@ -165,6 +165,37 @@ let alts = {
 		nolore: true,
 		noboring: true, // Skip generating boringness
 	},
+
+	"TestTile": {
+		name: "TestTile",
+		noWear: true, // Disables doodad wear
+		bossroom: false,
+		width: 15,
+		height: 10,
+		//nopatrols: true,
+		setpieces: {
+		},
+		genType: "TestTile",
+		spawns: true,
+		chests: false,
+		shrines: false,
+		orbs: 0,
+		chargers: false,
+		notorches: true,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: true,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		nostartstairs: true,
+		notraps: false,
+		noClutter: true,
+		nobrick: true,
+		nolore: true,
+		noboring: true, // Skip generating boringness
+	},
 	"JourneyFloor": {
 		name: "JourneyFloor",
 		bossroom: false,
@@ -261,6 +292,9 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"ShopStart": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
+	},
+	"TestTile": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateTestTile(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
 	"Tutorial": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateTutorial(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
@@ -1206,6 +1240,40 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	KinkyDungeonMapSet(b1*2 + 7, VisitedRooms[0].y*2, 's');
 	if (MiniGameKinkyDungeonLevel == 0)
 		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: "JourneyFloor"});
+
+	KinkyDungeonEndPosition = {x: b1*2 + 5, y: VisitedRooms[0].y*2};
+}
+
+
+function KinkyDungeonCreateTestTile(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Variable setup
+
+	KinkyDungeonStartPosition = {x: 2, y: height};
+	VisitedRooms[0].x = 1;
+	VisitedRooms[0].y = Math.floor(height/2);
+
+	KinkyDungeonCreateRectangle(0, 0, width, height, false, false, false, false);
+
+	let b1 = 4;
+
+
+	// Now we STRETCH the map
+	let KinkyDungeonOldGrid = KinkyDungeonGrid;
+	let w = KinkyDungeonGridWidth;
+	let h = KinkyDungeonGridHeight;
+	KinkyDungeonGridWidth = Math.floor(KinkyDungeonGridWidth*2);
+	KinkyDungeonGridHeight = Math.floor(KinkyDungeonGridHeight*2);
+	KinkyDungeonGrid = "";
+
+	// Generate the grid
+	for (let Y = 0; Y < KinkyDungeonGridHeight; Y++) {
+		for (let X = 0; X < KinkyDungeonGridWidth; X++)
+			KinkyDungeonGrid = KinkyDungeonGrid + KinkyDungeonOldGrid[Math.floor(X * w / KinkyDungeonGridWidth) + Math.floor(Y * h / KinkyDungeonGridHeight)*(w+1)];
+		KinkyDungeonGrid = KinkyDungeonGrid + '\n';
+	}
+
+	KD_PasteTile(KDTileToTest, KinkyDungeonStartPosition.x + 4, 3, data);
+
 
 	KinkyDungeonEndPosition = {x: b1*2 + 5, y: VisitedRooms[0].y*2};
 }
