@@ -13,6 +13,7 @@ let KDParticleid = 0;
  * @param {KDParticleData} data
  */
 function KDAddParticle(x, y, img, type, data) {
+	if (KDParticles.size > 1000) return;
 	let tex = KDTex(img);
 
 	if (tex && data) {
@@ -35,6 +36,12 @@ function KDAddParticle(x, y, img, type, data) {
 		sprite.position.x = x;
 		sprite.position.y = y;
 		sprite.zIndex = info.zIndex;
+
+		if (info.fadeEase) {
+			switch (info.fadeEase) {
+				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * info.time / info.lifetime)));}
+			}
+		}
 
 		KDParticles.set(KDParticleid, {info: info, sprite: sprite});
 		kdparticles.addChild(sprite);
@@ -97,31 +104,40 @@ function KDDrawArousalParticles(pinkChance, density, purpleChance) {
 	let arousalRate = 100 / density;
 
 	if (CommonTime() > lastArousalParticle + arousalRate) {
-		let lifetime = 2000 + Math.random() * 1000;
-		let y = 200 + Math.random() * 700;
-		let xval = Math.random() < 0.5 ? 0.3 * Math.random() : (1 - 0.3 * Math.random());
-		let x = xval * 500;
-		let vy = -0.3 * Math.min(500, y) / lifetime;
-		KDAddParticle(
-			x,
-			y,
-			KinkyDungeonRootDirectory + `Particles/${
-				Math.random() < purpleChance ? "HeartPurple" :
-				(Math.random() < pinkChance ? "HeartPink" : "Heart")
-			}.png`,
-			undefined, {
-				time: 0,
-				lifetime: lifetime,
-				vy: vy,
-				zIndex: -1,
-				sin_x: .04,
-				sin_x_spread: .01,
-				sin_period: 1.4,
-				phase: 6 * Math.random(),
-				fadeEase: "invcos",
-			});
+		KDCreateArousalParticle(pinkChance, purpleChance);
 
 		lastArousalParticle = CommonTime();
 	}
 
+}
+
+/**
+ *
+ * @param {number} pinkChance - 0 to 1
+ * @param {number} purpleChance - 0 to 1
+ */
+function KDCreateArousalParticle(pinkChance, purpleChance) {
+	let lifetime = 2000 + Math.random() * 1000;
+	let y = 200 + Math.random() * 700;
+	let xval = Math.random() < 0.5 ? 0.3 * Math.random() : (1 - 0.3 * Math.random());
+	let x = xval * 500;
+	let vy = -0.3 * Math.min(500, y) / lifetime;
+	KDAddParticle(
+		x,
+		y,
+		KinkyDungeonRootDirectory + `Particles/${
+			Math.random() < purpleChance ? "HeartPurple" :
+			(Math.random() < pinkChance ? "HeartPink" : "Heart")
+		}.png`,
+		undefined, {
+			time: 0,
+			lifetime: lifetime,
+			vy: vy,
+			zIndex: -1,
+			sin_x: .04,
+			sin_x_spread: .01,
+			sin_period: 1.4,
+			phase: 6 * Math.random(),
+			fadeEase: "invcos",
+		});
 }

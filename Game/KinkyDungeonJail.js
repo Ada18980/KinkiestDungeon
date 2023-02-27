@@ -910,7 +910,7 @@ function KinkyDungeonDefeat(PutInJail) {
 	KinkyDungeonInterruptSleep();
 
 	if (KinkyDungeonTempWait)
-		KinkyDungeonAutoWait = false;
+		KDDisableAutoWait();
 
 	KDDefeatedPlayerTick();
 	KDBreakTether();
@@ -1005,6 +1005,9 @@ function KinkyDungeonDefeat(PutInJail) {
 	}
 
 	KDMovePlayer(nearestJail.x + (nearestJail.direction?.x || 0), nearestJail.y + (nearestJail.direction?.y || 0), false);
+	if (nearestJail.direction) {
+		KinkyDungeonSetFlag("conveyed", 1);
+	}
 	if (nearestJail.restraint) {
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(nearestJail.restraint), MiniGameKinkyDungeonLevel, false, undefined);
 	}

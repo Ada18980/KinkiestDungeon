@@ -1347,6 +1347,12 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60, "", "",
 	KinkyDungeonRootDirectory + (KDGameData.KinkyDungeonLeashedPlayer ? "UI/WaitJail.png" : "UI/Wait.png"), undefined, undefined, !KinkyDungeonAutoWait);
+	DrawButtonKDEx("AutoStruggle", (bdata) => {
+		if (!KinkyDungeonControlsEnabled()) return false;
+		KDAutoStruggleClick();
+		return true;
+	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60, "", "",
+	KinkyDungeonRootDirectory + ("UI/AutoStruggle.png"), undefined, undefined, !KinkyDungeonAutoWaitStruggle);
 	DrawButtonKDEx("HelpButton", (bdata) => {
 		if (!KinkyDungeonControlsEnabled()) return false;
 		KDSendInput("noise", {});
@@ -1371,7 +1377,7 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60,
 	"", "", KinkyDungeonRootDirectory + (KinkyDungeonToggleAutoDoor ? "UI/DoorClose.png" : "UI/Door.png"), undefined, undefined, !KinkyDungeonToggleAutoDoor);
 
-	DrawButtonKDEx("toggleAutoStruggle", (bdata) => {
+	/*DrawButtonKDEx("toggleAutoStruggle", (bdata) => {
 		if (!KinkyDungeonFastStruggleSuppress)
 			KinkyDungeonFastStruggle = !KinkyDungeonFastStruggle;
 		KinkyDungeonFastStruggleSuppress = false;
@@ -1379,7 +1385,7 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 		KinkyDungeonFastStruggleType = "";
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60,
-	"", "", KinkyDungeonRootDirectory + (KinkyDungeonFastStruggle ? "AutoStruggle" : "AutoStruggleOff") + ".png", undefined, undefined, !KinkyDungeonFastStruggle);
+	"", "", KinkyDungeonRootDirectory + (KinkyDungeonFastStruggle ? "AutoStruggle" : "AutoStruggleOff") + ".png", undefined, undefined, !KinkyDungeonFastStruggle);*/
 	DrawButtonKDEx("toggleFastMove", (bdata) => {
 		if (!KinkyDungeonFastMoveSuppress)
 			KinkyDungeonFastMove = !KinkyDungeonFastMove;
@@ -1404,6 +1410,8 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDWait";}
 	// eslint-disable-next-line no-dupe-else-if
+	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDAutoStruggle";}
+	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDHelp";}
 	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDPass";}
@@ -1412,7 +1420,7 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDDoor";}
 	// eslint-disable-next-line no-dupe-else-if
-	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDAutoStruggle";}
+	//else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDAutoStruggle";}
 	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDAutoPath";}
 	// eslint-disable-next-line no-dupe-else-if
@@ -1430,6 +1438,17 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	}
 
 	//}
+}
+
+function KDAutoStruggleClick() {
+	if (KinkyDungeonAutoWaitStruggle) {
+		KDDisableAutoWait();
+		KinkyDungeonTempWait = false;
+		KinkyDungeonAutoWaitSuppress = false;
+	} else {
+		KinkyDungeonAutoWaitStruggle = true;
+		KinkyDungeonSleepTime = CommonTime() + 100;
+	}
 }
 
 function KinkyDungeonActivateWeaponSpell(instant) {

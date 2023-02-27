@@ -2,7 +2,7 @@
 
 let KinkyDungeonFactionColors = {
 	"Jail": ["#8A120C"],
-	"Slime": ["#9B49BD"],
+	"Slime": ["#9B49BD", "#9B49BD"],
 	"Dressmaker": ["#6B48E0", "#F8BD01"],
 	"Alchemist": ["#4c6885", "#7bef41"],
 	"Elf": ["#63ab3f", "#F8BD01"],

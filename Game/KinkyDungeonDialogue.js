@@ -253,7 +253,7 @@ let KinkyDungeonDialogueTimer = 0;
  */
 function KDStartDialog(Dialogue, Speaker, Click, Personality, enemy) {
 	KinkyDungeonInterruptSleep();
-	KinkyDungeonAutoWait = false;
+	KDDisableAutoWait();
 	KinkyDungeonDialogueTimer = CommonTime() + 700 + KinkyDungeonSlowMoveTurns * 200;
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
@@ -334,7 +334,7 @@ function KDDoDialogue(data) {
  */
 function KDStartDialogInput(Dialogue, Speaker, Click, Personality, enemy) {
 	KinkyDungeonInterruptSleep();
-	KinkyDungeonAutoWait = false;
+	KDDisableAutoWait();
 	KinkyDungeonDialogueTimer = CommonTime() + 700 + KinkyDungeonSlowMoveTurns * 200;
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];

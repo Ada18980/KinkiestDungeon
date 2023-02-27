@@ -279,11 +279,27 @@ function KinkyDungeonGetVisionRadius() {
 	return (KDGameData.SleepTurns > 2) ? 1 : (Math.max((data.noperipheral) ? 1 : 2, Math.round(KDMaxVisionDist-data.blindlevel * data.blindMult)));
 }
 
+/** Returns if the player is automatically doing stuff
+ * @returns {boolean}
+ */
+function KDIsAutoAction() {
+	return KinkyDungeonAutoWait || KinkyDungeonAutoWaitStruggle;
+}
+
+/**
+ * Disables all automatic actions
+ */
+function KDDisableAutoWait() {
+	KinkyDungeonAutoWait = false;
+	KinkyDungeonAutoWaitStruggle = false;
+}
+
 function KinkyDungeonInterruptSleep() {
 	KDGameData.SleepTurns = 0;
 	KDGameData.PlaySelfTurns = 0;
 	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer)
 		KinkyDungeonAutoWait = false;
+	KinkyDungeonAutoWaitStruggle = false;
 }
 
 let KDBaseDamageTypes = {
@@ -591,6 +607,11 @@ function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0
 	if (Amount > 0) {
 		let cdBonus = KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax ? Math.min(4, Math.max(1, Math.ceil(Amount/1.5))) : 0;
 		KDGameData.DistractionCooldown = Math.max(KDGameData.DistractionCooldown, 3 + cdBonus, KinkyDungeonSlowMoveTurns + 1 + cdBonus);
+
+		if (KDToggles.ArousalHearts)
+			for (let i = 0; i < Amount * 10 && i < 100; i++) {
+				KDCreateArousalParticle(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax, 0);
+			}
 	}
 
 	if (lowerPerc) {
@@ -603,9 +624,11 @@ function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0
 		amount *= amount;
 		amount = Math.max(amount, amount * 0.5 + 0.5 * KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax);
 		amount = Math.round(10 * amount);
+
 		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet("KinkyDungeonChangeDistraction" + amount), "#ff00ff", 2, 1);
 		KDOrigDistraction = Math.max(0, Math.floor(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * 100));
 	}
+
 
 	if (isNaN(KinkyDungeonStatDistraction)) {
 		console.trace();

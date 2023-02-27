@@ -1424,7 +1424,6 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	else if (StruggleType == "Pick") data.wcost = KinkyDungeonStatWillCostPick;
 	else if (StruggleType == "Remove") data.wcost = KinkyDungeonStatWillCostRemove;
 	else if (StruggleType == "Unlock") data.wcost = KinkyDungeonStatWillCostUnlock;
-	KinkyDungeonInterruptSleep();
 	if (StruggleType == "Unlock") data.cost = 0;
 	KinkyDungeonSendEvent("beforeStruggleCalc", data);
 	if (!restraint.pickProgress) restraint.pickProgress = 0;
@@ -1499,7 +1498,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	if (StruggleType == "Struggle" && data.hasAffinity) data.escapeChance += edgeBonus;
 
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown")) {
-		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonBuffLockdownTry"), "#ff0000", 1);
+		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonBuffLockdownTry")
+			.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 1);
 		data.escapeChance -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown") * 0.1;
 	}
 
@@ -1508,7 +1508,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Struggle.ogg");
 		if (affinity && !KinkyDungeonGetAffinity(false, affinity, struggleGroup)) typesuff = "Wrong" + affinity;
 		if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
-		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "NeedEdge" + typesuff), "#ff0000", 2, true);
+		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "NeedEdge" + typesuff)
+			.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 		KinkyDungeonLastAction = "Struggle";
 		KinkyDungeonSendEvent("struggle", {
 			restraint: restraint,
@@ -1537,9 +1538,11 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Struggle.ogg");
 			if (typesuff == "" && failSuffix) typesuff = failSuffix;
 			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "Impossible" + typesuff), "#ff0000", 2, true);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "Impossible" + typesuff)
+				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 			if (EC.escapeChanceData.GoddessBonus < 0 && EC.escapeChanceData.escapeChance < 0 && EC.escapeChance - EC.escapeChanceData.GoddessBonus > 0) {
-				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleGoddess"), "#ff0000", 2, true);
+				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleGoddess")
+					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 			}
 			KinkyDungeonLastAction = "Struggle";
 			KinkyDungeonSendEvent("struggle", {
@@ -1573,7 +1576,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Struggle.ogg");
 		if (affinity && !KinkyDungeonGetAffinity(false, affinity, struggleGroup)) typesuff = "Wrong" + affinity;
 		if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
-		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "NeedEdge" + typesuff), "#ff0000", 2, true);
+		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "NeedEdge" + typesuff)
+			.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 		KinkyDungeonLastAction = "Struggle";
 		KinkyDungeonSendEvent("struggle", {
 			restraint: restraint,
@@ -1594,7 +1598,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		let typesuff = "";
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Struggle.ogg");
 		if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
-		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "Strict" + typesuff), "#ff0000", 2, true);
+		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "Strict" + typesuff)
+			.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 		KinkyDungeonLastAction = "Struggle";
 		KinkyDungeonSendEvent("struggle", {
 			restraint: restraint,
@@ -1676,7 +1681,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			let suff = "";
 			if (suff == "" && failSuffix) suff = failSuffix;
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleBound" + suff), "#ff0000", 2, true);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleBound" + suff)
+				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 			KinkyDungeonLastAction = "Struggle";
 			KinkyDungeonSendEvent("struggle", {
 				restraint: restraint,
@@ -1710,9 +1716,11 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	if (lockType && (StruggleType == "Unlock" && !lockType.canUnlock(data))
 		|| (StruggleType == "Pick" && lockType && !lockType.pickable)) {
 		if (StruggleType == "Unlock")
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleUnlockNo" + restraint.lock + "Key"), "orange", 2, true);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleUnlockNo" + restraint.lock + "Key")
+				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "orange", 2, true);
 		else
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleCantPick" + restraint.lock + "Lock"), "orange", 2, true);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleCantPick" + restraint.lock + "Lock")
+				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "orange", 2, true);
 	} else {
 
 		// Limit of what you can struggle to given current limit chance
@@ -1724,7 +1732,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/"
 				+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.NoWill) ? KDRestraint(restraint).sfxEscape.NoWill : "Struggle")
 				+ ".ogg");
-			KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle"), "#ff0000", 2, true);
+			KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
+				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 			KinkyDungeonLastAction = "Struggle";
 			KinkyDungeonSendEvent("struggle", {
 				restraint: restraint,
@@ -1773,7 +1782,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					if (data.escapeChance <= 0) {
 						// Replace with frustrated moan later~
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Struggle.ogg");
-						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit"), "#ff0000", 2, true);
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
+							.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 						KinkyDungeonLastAction = "Struggle";
 						KinkyDungeonSendEvent("struggle", {
 							restraint: restraint,
@@ -1788,7 +1798,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					if (data.escapeChance <= 0) {
 						// Replace with frustrated moan later~
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Struggle.ogg");
-						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit"), "#ff0000", 2, true);
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
+							.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 						KinkyDungeonLastAction = "Struggle";
 						KinkyDungeonSendEvent("struggle", {
 							restraint: restraint,
@@ -1808,7 +1819,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/"
 						+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.NoWill) ? KDRestraint(restraint).sfxEscape.NoWill : "Struggle")
 						+ ".ogg");
-					KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle"), "#ff0000", 2, true);
+					KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
+						.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 					KinkyDungeonLastAction = "Struggle";
 					KinkyDungeonSendEvent("struggle", {
 						restraint: restraint,
@@ -1823,7 +1835,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			if (data.escapeChance <= 0) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Struggle.ogg");
 				// Replace with frustrated moan later~
-				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Barely"), "#ff0000", 2, true);
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Barely")
+					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 				KinkyDungeonLastAction = "Struggle";
 				KinkyDungeonSendEvent("struggle", {
 					restraint: restraint,
@@ -1996,7 +2009,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			if (suff == "" && failSuffix) suff = failSuffix;
 		}
 		if ((suff == "" || (Pass == "Fail" && suff == failSuffix)) && (Pass == "Fail" || Pass == "Success") && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
-		KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + Pass + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), (Pass == "Success") ? "lightgreen" : "#ff0000", 2);
+
+		if (Pass != "Success")
+			KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + Pass + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), (Pass == "Success") ? "lightgreen" : "#ff0000", 2);
 
 		KinkyDungeonChangeStamina(data.cost, 1);
 		KinkyDungeonChangeWill(data.wcost);
@@ -2052,11 +2067,22 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 /**
  * "Return the first restraint item in the game that belongs to the given group."
  * @param {string} group - The group of the restraint item you want to get.
+ * @param {number} [index] - The index of the restraint item you want to get.
  * @returns {item} The item that matches the group.
  */
-function KinkyDungeonGetRestraintItem(group) {
+function KinkyDungeonGetRestraintItem(group, index) {
 	for (let item of KinkyDungeonAllRestraint()) {
 		if (item.type == Restraint && KDRestraint(item).Group == group) {
+			if (index) {
+				let link = item;
+				let count = 0;
+				while (count < index && link) {
+					count += 1;
+					link = link.dynamicLink;
+				}
+				if (count == index) return link;
+				return null;
+			}
 			return item;
 		}
 	}
@@ -3260,6 +3286,10 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 			}
 		}
 	}
+	let suff = "";
+	if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = "Aroused";
+	KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + "Success" + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), "lightgreen", 2);
+
 	return destroy;
 }
 

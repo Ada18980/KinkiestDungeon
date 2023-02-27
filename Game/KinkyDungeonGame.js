@@ -3010,8 +3010,8 @@ function KinkyDungeonClickGame(Level) {
 				false,
 			];
 			if (KinkyDungeonAutoWaitSuppress) KinkyDungeonAutoWaitSuppress = false;
-			else if (KinkyDungeonAutoWait) {
-				KinkyDungeonAutoWait = false;
+			else if (KDIsAutoAction()) {
+				KDDisableAutoWait();
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Damage.ogg");
 			}
 		} finally {
@@ -3023,8 +3023,8 @@ function KinkyDungeonClickGame(Level) {
 		return;
 	}
 	// beep
-	else if (KinkyDungeonAutoWait && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)) {
-		KinkyDungeonAutoWait = false;
+	else if (KDIsAutoAction() && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)) {
+		KDDisableAutoWait();
 
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Damage.ogg");
 	}
@@ -3325,7 +3325,7 @@ function KinkyDungeonGameKeyUp(lastPress) {
 				case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
 				case KinkyDungeonKeyToggle[1]: KinkyDungeonToggleAutoPass = !KinkyDungeonToggleAutoPass; break;
 				case KinkyDungeonKeyToggle[2]: KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor; break;
-				case KinkyDungeonKeyToggle[3]: KinkyDungeonFastStruggle = !KinkyDungeonFastStruggle; break;
+				case KinkyDungeonKeyToggle[3]: KDAutoStruggleClick(); break;
 				case KinkyDungeonKeyToggle[4]: KinkyDungeonFastMove = !KinkyDungeonFastMove; break;
 				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; break;
 			}
@@ -3652,7 +3652,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 }
 
 function KinkyDungeonWaitMessage(NoTime) {
-	if (!KinkyDungeonAutoWait) {
+	if (!KDIsAutoAction()) {
 		if (KinkyDungeonStatWillpowerExhaustion > 1) KinkyDungeonSendActionMessage(3, TextGet("WaitSpellExhaustion"), "orange", 2);
 		else if (!KinkyDungeonHasStamina(2.5, false)) KinkyDungeonSendActionMessage(1, TextGet("WaitExhaustion"
 			+ (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.33 ?
@@ -4071,7 +4071,7 @@ let KDKeyCheckers = {
 				case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
 				case KinkyDungeonKeyToggle[1]: KinkyDungeonToggleAutoPass = !KinkyDungeonToggleAutoPass; break;
 				case KinkyDungeonKeyToggle[2]: KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor; break;
-				case KinkyDungeonKeyToggle[3]: KinkyDungeonFastStruggle = !KinkyDungeonFastStruggle; break;
+				case KinkyDungeonKeyToggle[3]: KDAutoStruggleClick(); break;
 				case KinkyDungeonKeyToggle[4]: KinkyDungeonFastMove = !KinkyDungeonFastMove; break;
 				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; break;
 			}

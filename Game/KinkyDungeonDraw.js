@@ -898,7 +898,7 @@ function KinkyDungeonDrawGame() {
 
 
 				// Draw targeting reticule
-				if (!KinkyDungeonMessageToggle && !KinkyDungeonAutoWait && !KinkyDungeonShowInventory
+				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !KinkyDungeonShowInventory
 					&& MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height) && KinkyDungeonIsPlayer()
 					&& !MouseIn(0, 0, 500, 1000) && !MouseIn(1750, 0, 250, 1000)
 					&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))

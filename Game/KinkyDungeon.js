@@ -143,6 +143,7 @@ let KinkyDungeonFreezeTime = 1000;
 let KinkyDungeonPlaySelfTime = 300;
 let KinkyDungeonOrgasmTime = 1000;
 let KinkyDungeonAutoWait = false;
+let KinkyDungeonAutoWaitStruggle = false;
 
 let KinkyDungeonConfigAppearance = false;
 
@@ -1358,9 +1359,17 @@ function KinkyDungeonRun() {
 					KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
 					if (KinkyDungeonFastStruggle && KinkyDungeonStatStamina == KinkyDungeonStatStaminaMax && lastStamina < KinkyDungeonStatStamina) {
 						if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonInDanger())
-							KinkyDungeonAutoWait = false;
+							KDDisableAutoWait();
 					}
 					KinkyDungeonSleepTime = CommonTime() + (KinkyDungeonFastWait ? 100 : 300);
+				}
+			} else if (KinkyDungeonAutoWaitStruggle) {
+				if (CommonTime() > KinkyDungeonSleepTime) {
+					//KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
+					KDHandleAutoStruggle(KinkyDungeonPlayerEntity);
+					if (KinkyDungeonInDanger())
+						KDDisableAutoWait();
+					KinkyDungeonSleepTime = CommonTime() + 500 * (0.5 + KDAnimSpeed * 0.5);
 				}
 			} else KinkyDungeonSleepTime = CommonTime() + 100;
 			// @ts-ignore
