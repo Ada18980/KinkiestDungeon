@@ -705,6 +705,8 @@ function KinkyDungeonIsWearingLeash() {
 	return false;
 }
 
+let KDAffinityList = ["Hook", "Edge", "Sticky", "Sharp"];
+
 /**
  *
  * @param {boolean} Message - Show a message?
@@ -752,7 +754,7 @@ function KinkyDungeonGetAffinity(Message, affinity, group) {
 					|| tile == 'B') {
 					return true;
 				} else if (tile == 'C' && Message) {
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedOpenChest"), "#ff0000", 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedOpenChest"), "#ff0000", 2, true);
 				}
 			}
 		}
@@ -793,13 +795,13 @@ function KinkyDungeonWallCrackAndKnife(Message) {
 					if (!KinkyDungeonIsArmsBound(true) || KinkyDungeonCanStand()) {
 						if (Message) {
 							if (!KinkyDungeonIsArmsBound(true))
-								KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonUseCrack"), "lightgreen", 2);
-							else KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonUseCrackLegs"), "lightgreen", 2);
+								KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonUseCrack"), "lightgreen", 2, true);
+							else KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonUseCrackLegs"), "lightgreen", 2, true);
 						}
 						return true;
 					} else {
 						if (Message) {
-							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedCrack"), "#ff0000", 2);
+							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedCrack"), "#ff0000", 2, true);
 						}
 						return false;
 					}
@@ -1436,6 +1438,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	data.origEscapeChance = data.escapeChance;
 
+	KinkyDungeonInterruptSleep();
+
 	let increasedAttempts = false;
 
 	let handsBound = KinkyDungeonIsHandsBound(true, false, StruggleTypeHandThresh[StruggleType]) && !KinkyDungeonCanUseFeet();
@@ -1544,16 +1548,19 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleGoddess")
 					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 			}
-			KinkyDungeonLastAction = "Struggle";
-			KinkyDungeonSendEvent("struggle", {
-				restraint: restraint,
-				group: struggleGroup,
-				struggleType: StruggleType,
-				result: "Impossible",
-			});
-			KinkyDungeonChangeStamina(data.cost, 1);
-			KinkyDungeonChangeWill(data.wcost);
-			if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+
+			if (KinkyDungeonHasStamina(-data.cost)) {
+				KinkyDungeonLastAction = "Struggle";
+				KinkyDungeonSendEvent("struggle", {
+					restraint: restraint,
+					group: struggleGroup,
+					struggleType: StruggleType,
+					result: "Impossible",
+				});
+				KinkyDungeonChangeStamina(data.cost, true, 1);
+				KinkyDungeonChangeWill(data.wcost);
+				if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+			}
 			KinkyDungeonAdvanceTime(1);
 			return "Impossible";
 		}
@@ -1622,7 +1629,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			} else if (data.hasAffinity) {
 				data.escapeChance *= 0.4;
 			} else {
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedGrip"), "#ff0000", 2);
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedGrip"), "#ff0000", 2, true);
 				data.escapeChance *= 0.0;
 			}
 		} else if (data.hasAffinity) data.escapeChance *= 0.4;
@@ -1683,16 +1690,20 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleBound" + suff)
 				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
-			KinkyDungeonLastAction = "Struggle";
-			KinkyDungeonSendEvent("struggle", {
-				restraint: restraint,
-				group: struggleGroup,
-				struggleType: StruggleType,
-				result: "Impossible",
-			});
-			KinkyDungeonChangeStamina(data.cost, 1);
-			KinkyDungeonChangeWill(data.wcost);
-			if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+
+
+			if (KinkyDungeonHasStamina(-data.cost)) {
+				KinkyDungeonLastAction = "Struggle";
+				KinkyDungeonSendEvent("struggle", {
+					restraint: restraint,
+					group: struggleGroup,
+					struggleType: StruggleType,
+					result: "Impossible",
+				});
+				KinkyDungeonChangeStamina(data.cost, true, 1);
+				KinkyDungeonChangeWill(data.wcost);
+				if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+			}
 			KinkyDungeonAdvanceTime(1);
 			return "Impossible";
 		}
@@ -2013,50 +2024,53 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		if (Pass != "Success")
 			KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + Pass + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), (Pass == "Success") ? "lightgreen" : "#ff0000", 2);
 
-		KinkyDungeonChangeStamina(data.cost, 1);
-		KinkyDungeonChangeWill(data.wcost);
-		if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+		if (KinkyDungeonHasStamina(-data.cost)) {
+			KinkyDungeonChangeStamina(data.cost, true, 1);
+			KinkyDungeonChangeWill(data.wcost);
+			if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
 
-		if (Pass != "Success") {
-			// Reduce the progress
-			if (StruggleType == "Struggle") {
-				restraint.pickProgress = Math.max(0, restraint.pickProgress * 0.5 - 0.01);
-				restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
-			} else if (StruggleType == "Pick") {
-				restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
-			} else if (StruggleType == "Unlock") {
-				restraint.pickProgress = Math.max(0, restraint.pickProgress* 0.5 - 0.01);
-			} if (StruggleType == "Remove") {
-				restraint.pickProgress = Math.max(0, restraint.pickProgress* 0.5 - 0.01);
-				restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
-			}
-
-			// reduces the tightness of the restraint slightly
-			if (StruggleType == "Struggle") {
-				let tightness_reduction = 1;
-
-				// eslint-disable-next-line no-unused-vars
-				for (let _item of KinkyDungeonAllRestraint()) {
-					tightness_reduction *= 0.8; // Reduced tightness reduction for each restraint currently worn
+			if (Pass != "Success") {
+				// Reduce the progress
+				if (StruggleType == "Struggle") {
+					restraint.pickProgress = Math.max(0, restraint.pickProgress * 0.5 - 0.01);
+					restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
+				} else if (StruggleType == "Pick") {
+					restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
+				} else if (StruggleType == "Unlock") {
+					restraint.pickProgress = Math.max(0, restraint.pickProgress* 0.5 - 0.01);
+				} if (StruggleType == "Remove") {
+					restraint.pickProgress = Math.max(0, restraint.pickProgress* 0.5 - 0.01);
+					restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
 				}
 
-				restraint.tightness = Math.max(0, restraint.tightness - tightness_reduction);
+				// reduces the tightness of the restraint slightly
+				if (StruggleType == "Struggle") {
+					let tightness_reduction = 1;
+
+					// eslint-disable-next-line no-unused-vars
+					for (let _item of KinkyDungeonAllRestraint()) {
+						tightness_reduction *= 0.8; // Reduced tightness reduction for each restraint currently worn
+					}
+
+					restraint.tightness = Math.max(0, restraint.tightness - tightness_reduction);
+				}
+			} else if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())
+				KinkyDungeonChangeRep("Ghost", 1);
+
+
+			KinkyDungeonSendEvent("struggle", {
+				restraint: restraint,
+				group: struggleGroup,
+				struggleType: StruggleType,
+				result: Pass,
+			});
+			KinkyDungeonLastAction = "Struggle";
+			if (StruggleType == "Struggle") {
+				KinkyDungeonMakeNoise(4, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+				KinkyDungeonAlert = 3;
 			}
-		} else if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())
-			KinkyDungeonChangeRep("Ghost", 1);
-
-
-		KinkyDungeonSendEvent("struggle", {
-			restraint: restraint,
-			group: struggleGroup,
-			struggleType: StruggleType,
-			result: Pass,
-		});
-		KinkyDungeonLastAction = "Struggle";
-		if (StruggleType == "Struggle") {
-			KinkyDungeonMakeNoise(4, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
-			KinkyDungeonAlert = 3;
 		}
+
 		KinkyDungeonAdvanceTime(1);
 		if (Pass == "Success") KinkyDungeonCurrentEscapingItem = null;
 		return Pass;

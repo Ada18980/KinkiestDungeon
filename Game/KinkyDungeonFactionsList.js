@@ -117,7 +117,7 @@ let KinkyDungeonFactionTag = {
 	Nevermere: "nevermere",
 	Apprentice: "apprentice",
 	Dressmaker: "dressmaker",
-	Witch: "witch",
+	//Witch: "witch",
 	Elemental: "elemental",
 	Dragon: "dragon",
 	Maidforce: "maid",

@@ -1418,15 +1418,24 @@ function KinkyDungeonDrawGame() {
 					KinkyDungeonBlueKeys += 1;
 					KinkyDungeonLockpicks += 1;
 					return true;
-				}, true, 700, 160, 300, 64, "Add keys and lockpicks", "#ffffff", "");
+				}, true, 600, 160, 300, 64, "Add keys and lockpicks", "#ffffff", "");
 				DrawButtonKDEx("debugAddVision", (bdata) => {
 					KinkyDungeonSeeAll = !KinkyDungeonSeeAll;
 					return true;
-				}, true, 700, 240, 300, 64, "Toggle OmniVision™", "#ffffff", "");
+				}, true, 600, 240, 300, 64, "Toggle OmniVision™", "#ffffff", "");
 				DrawButtonKDEx("debugAddSP", (bdata) => {
 					KinkyDungeonSpellPoints += 1;
 					return true;
-				}, true, 700, 320, 300, 64, "Add spell point", "#ffffff", "");
+				}, true, 600, 320, 300, 64, "Add spell point", "#ffffff", "");
+				DrawButtonKDEx("debugClearQuickInv", (bdata) => {
+					KinkyDungeonInventory.get('looserestraint').clear();
+					return true;
+				}, true, 600, 400, 300, 64, "Clear loose restraints", "#ffffff", "");
+				DrawButtonKDEx("debugClearPlayerInv", (bdata) => {
+					KinkyDungeonInventory.get('restraint').clear();
+					return true;
+				}, true, 600, 480, 300, 64, "Clear worn restraints", "#ffffff", "");
+
 
 			}
 		}

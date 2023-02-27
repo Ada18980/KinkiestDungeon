@@ -299,7 +299,7 @@ function KinkyDungeonInterruptSleep() {
 	KDGameData.PlaySelfTurns = 0;
 	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer)
 		KinkyDungeonAutoWait = false;
-	KinkyDungeonAutoWaitStruggle = false;
+	if (KinkyDungeonInDanger()) KinkyDungeonAutoWaitStruggle = false;
 }
 
 let KDBaseDamageTypes = {

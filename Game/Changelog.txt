@@ -1276,6 +1276,9 @@ Minor Changes:
 - Turrets no longer spawn in the ambush hallways within the Bellows
 - Fixed a number of other bugs with the new tileset
 
+4.12 (Feb 2023)
+- Added auto-struggle feature
+
 
 
 TODO ValidationFindBlockCycles to prevent bugs

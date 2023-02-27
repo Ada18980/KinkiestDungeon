@@ -81,7 +81,7 @@ let KDPerkUpdateStats = {
 	},
 	"Sticky": () => {
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-			id: "PainTolerance", type: "glueDamageResist", power: -0.4, duration: 2
+			id: "StickySituation", type: "glueDamageResist", power: -0.4, duration: 2
 		});
 	},
 	"BoundPower": () => {

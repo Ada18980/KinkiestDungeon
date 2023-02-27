@@ -1292,6 +1292,7 @@ function KinkyDungeonRun() {
 			// @ts-ignore
 			CharacterAppearanceBuildCanvas = () => {};
 
+
 			if (KDGameData.SleepTurns > 0) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					KDGameData.SleepTurns -= 1;
@@ -1366,10 +1367,13 @@ function KinkyDungeonRun() {
 			} else if (KinkyDungeonAutoWaitStruggle) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					//KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
-					KDHandleAutoStruggle(KinkyDungeonPlayerEntity);
+
+					if (!(KDGameData.DelayedActions?.length > 0)) {
+						KDHandleAutoStruggle(KinkyDungeonPlayerEntity);
+					}
 					if (KinkyDungeonInDanger())
 						KDDisableAutoWait();
-					KinkyDungeonSleepTime = CommonTime() + 500 * (0.5 + KDAnimSpeed * 0.5);
+					KinkyDungeonSleepTime = CommonTime() + (300 + Math.min(1200, KDAutoStruggleData.lastDelay * 270)) * (0.5 + KDAnimSpeed * 0.5);
 				}
 			} else KinkyDungeonSleepTime = CommonTime() + 100;
 			// @ts-ignore
