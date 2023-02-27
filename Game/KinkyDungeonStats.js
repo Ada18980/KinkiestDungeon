@@ -1284,7 +1284,7 @@ let KinkyDungeonOrgasmChanceScaling = 1.1;
 let KinkyDungeonMaxOrgasmStage = 7;
 let KinkyDungeonOrgasmStageVariation = 4; // determines the text message variation
 
-let KinkyDungeonDistractionSleepDeprivationThreshold = 0.25;
+let KinkyDungeonDistractionSleepDeprivationThreshold = 0.01;
 let KinkyDungeonPlaySelfOrgasmThreshold = 3; // Note that it is impossible if you have a belt on, but possible if you only have a bra on
 
 let KinkyDungeonOrgasmTurnsMax = 10;
