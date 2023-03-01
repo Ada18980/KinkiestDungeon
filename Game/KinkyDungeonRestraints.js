@@ -2355,6 +2355,8 @@ function KinkyDungeonUpdateRestraints(delta) {
 	for (let t of tags) {
 		playerTags.set(t, true);
 	}
+
+	KinkyDungeonSendEvent("updatePlayerTags", {tags: playerTags, player:KinkyDungeonPlayerEntity});
 	return playerTags;
 }
 
