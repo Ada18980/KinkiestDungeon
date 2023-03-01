@@ -54,7 +54,6 @@ let KDCurses = {
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 3, damage: "fire", trigger: "beforePlayerDamage", kind: "CurseMelt"},
 			{type: "RemoveOnDmg", power: 1, count: 3, damage: "crush", trigger: "beforePlayerDamage", kind: "CurseMelt"},
-			{type: "RemoveOnBuffName", trigger: "tick", kind: "Drenched"},
 		],
 	},
 	"TakeDamageIce" : {
@@ -64,6 +63,7 @@ let KDCurses = {
 			{type: "RemoveOnDmg", power: 1, count: 4, damage: "ice", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
 			{type: "RemoveOnDmg", power: 1, count: 4, damage: "acid", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
 			{type: "RemoveOnDmg", power: 1, count: 4, damage: "stun", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
+			{type: "RemoveOnBuffName", trigger: "tick", kind: "Drenched"},
 		],
 	},
 	"TakeDamageElectric" : {
