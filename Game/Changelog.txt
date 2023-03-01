@@ -1278,6 +1278,9 @@ Minor Changes:
 
 4.12 (Feb 2023)
 - Added auto-struggle feature
+- Added advanced fog of war option
+- More latex-wearing enemies like nevermere, alchemists, and dollsmiths have electric resistance.
+- Doll dropoff platforms now have a cosmetic doll stand on them
 
 
 
