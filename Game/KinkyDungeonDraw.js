@@ -33,7 +33,7 @@ kdcanvas.sortableChildren = true;
 // @ts-ignore
 let kdparticles = new PIXI.Container();
 kdparticles.sortableChildren = true;
-kdgameboard.addChild(kdparticles);
+//kdgameboard.addChild(kdparticles);
 
 let KDTextWhite = "#ffffff";
 let KDTextGray3 = "#aaaaaa";
@@ -1085,6 +1085,13 @@ function KinkyDungeonDrawGame() {
 				// Draw the context layer even if we haven't updated it
 				if (pixirendererKD) {
 					pixirendererKD.render(kdgamefog, {
+						clear: false,
+					});
+				}
+
+				// Draw the context layer even if we haven't updated it
+				if (pixirendererKD) {
+					pixirendererKD.render(kdparticles, {
 						clear: false,
 					});
 				}

@@ -446,7 +446,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset) {
 				RY = R+CamY;
 				RX = X+CamX;
 				allowFog = KDAllowFog();
-				if (RY >= 0 && RY <= KinkyDungeonGridHeight && RX >= 0 && RX <= KinkyDungeonGridWidth) {
+				if (RY >= 0 && RY < KinkyDungeonGridHeight && RX >= 0 && RX < KinkyDungeonGridWidth) {
 					visible = (KinkyDungeonVisionGet(RX, RY) > 0 || (allowFog && KinkyDungeonFogGet(RX, RY) > 0));
 					if (visible) {
 						fog = KinkyDungeonStatBlind > 0 ? 0 : Math.min(0.5, KinkyDungeonFogGet(RX, RY)/10);
