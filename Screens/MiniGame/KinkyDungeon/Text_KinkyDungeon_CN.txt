@@ -549,7 +549,9 @@ You find a magic scroll, which you place in your spellbook. (+SpellLearned)
 You find an orb containing magical knowledge! (+AMOUNT spell points)
 你找到了一个包含魔法知识的球体！ （+AMOUNT 法术点数）
 You find a weapon! (+WeaponAcquired)
-你找到了武器！ （+武器获得）
+你找到了一个武器！ （+WeaponAcquired）
+You find a wearable item! (+ArmorAcquired)
+你找到了一个拘束具！ （+ArmorAcquired）
 You find gold and a magic trap! (+RestraintType) (+XXX gold)
 你找到了金币和一个魔法陷阱！ (+RestrainType) (+XXX gold)
 Swirling belts emerge from the chest and leave you bound! (+RestraintType)
@@ -2894,7 +2896,7 @@ Purple
 紫色
 Gold
 金色
-Gold 
+Gold
 金币
 Yellow
 黄色
@@ -4670,25 +4672,25 @@ Heavy chains that serve as an anchor point around your waist.
 作为腰部锚点的重型链条。
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
-Arm Chains
+Magic Arm Chains
 臂链
 Magic chains keeping your arms securely behind your back.
 魔术链将您的手臂牢牢固定在背后。
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
-Leg Chains
+Magic Leg Chains
 腿链
 Magic chains keeping your legs firmly hobbled.
 让你的双腿牢牢踉跄的魔法锁链。
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
-Ankle Chains
+Magic Ankle Chains
 踝链
 Magic chains keeping your feet bound together.
 将双脚绑在一起的魔法锁链。
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
-Crotch Chain
+Magic Crotch Chain
 胯链
 Magic chains that serve as an anchor point around your waist.
 作为腰部锚点的魔法链。
@@ -8484,14 +8486,14 @@ attack
 攻击
 damage
 伤害
-damage 
+damage
 攻击
 Damage
 攻击
 
 
 ###法术###
-Spell Points: 
+Spell Points:
 技能点：
 Spell Points: SPELLPOINTS
 技能点：SPELLPOINTS
@@ -10067,7 +10069,7 @@ Bound Power
 Your damage and evasion increases based on the number of restraints worn, up to +40% when thoroughly bound.
 你的伤害和闪避会根据佩戴的束缚数量增加，完全束缚时最多 +40%。
 Berserker Rage
-狂暴之怒 
+狂暴之怒
 Melee attacks distract you, but melee (including chain) damage increases by up to 30% at max distraction.
 近战攻击会提高你的干扰值，但在干扰值达到最大值时，近战（包括锁链）伤害最多增加 30%。
 Quickness

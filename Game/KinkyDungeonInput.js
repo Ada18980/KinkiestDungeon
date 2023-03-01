@@ -171,14 +171,16 @@ function KDProcessInput(type, data) {
 			tile = KinkyDungeonTilesGet(data.targetTile);
 			KinkyDungeonTargetTile = tile;
 			KinkyDungeonTargetTileLocation = data.targetTile;
-			KinkyDungeonAdvanceTime(1, true);
-			if (KinkyDungeonPickAttempt()) {
-				KinkyDungeonTargetTile.Lock = undefined;
-				if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
-				KinkyDungeonTargetTile = null;
-				KinkyDungeonTargetTileLocation = "";
+			if (KinkyDungeonTargetTile?.Lock) {
+				KinkyDungeonAdvanceTime(1, true);
+				if (KinkyDungeonPickAttempt()) {
+					KinkyDungeonTargetTile.Lock = undefined;
+					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = "";
+				}
+				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			}
-			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			break;
 		case "unlock":
 			KDDelayedActionPrune(["Action", "Struggle"]);
@@ -186,44 +188,51 @@ function KDProcessInput(type, data) {
 			KinkyDungeonTargetTile = tile;
 			KinkyDungeonTargetTileLocation = data.targetTile;
 
-			KDUpdateDoorNavMap();
-			KinkyDungeonAdvanceTime(1, true);
-			if (KinkyDungeonUnlockAttempt(KinkyDungeonTargetTile.Lock)) {
-				KinkyDungeonTargetTile.Lock = undefined;
-				if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
-				KinkyDungeonTargetTile = null;
-				KinkyDungeonTargetTileLocation = "";
+			if (KinkyDungeonTargetTile?.Lock) {
+				KDUpdateDoorNavMap();
+				KinkyDungeonAdvanceTime(1, true);
+				if (KinkyDungeonUnlockAttempt(KinkyDungeonTargetTile.Lock)) {
+					KinkyDungeonTargetTile.Lock = undefined;
+					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = "";
+				}
+				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			}
-			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			break;
 		case "commandunlock": {
 			KDDelayedActionPrune(["Action", "Cast"]);
 			tile = KinkyDungeonTilesGet(data.targetTile);
 			KinkyDungeonTargetTile = tile;
 			KinkyDungeonTargetTileLocation = data.targetTile;
-			KinkyDungeonAdvanceTime(1, true);
-			let spell = KinkyDungeonFindSpell("CommandWord", true);
-			let miscast = KinkyDungeonMiscastChance;
-			let gagTotal = KinkyDungeonGagTotal();
-			if (!(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0)) {
-				miscast = miscast + Math.max(0, 1 - miscast) * Math.min(1, gagTotal);
-			}
-			if (KDRandom() > miscast) {
-				KinkyDungeonTargetTile.Lock = undefined;
-				if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
-				KDUpdateDoorNavMap();
-				KinkyDungeonTargetTile = null;
-				KinkyDungeonTargetTileLocation = "";
-				if (gagTotal) {
-					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGagged"), "#aa44ff", 1);
-				} else {
-					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUse"), "#aa44ff", 1);
+
+
+			if (KinkyDungeonTargetTile?.Lock) {
+				KinkyDungeonAdvanceTime(1, true);
+				let spell = KinkyDungeonFindSpell("CommandWord", true);
+				let miscast = KinkyDungeonMiscastChance;
+				let gagTotal = KinkyDungeonGagTotal();
+				if (!(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0)) {
+					miscast = miscast + Math.max(0, 1 - miscast) * Math.min(1, gagTotal);
 				}
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-			} else {
-				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGaggedFail"), "#ff0000", 1);
+				if (KDRandom() > miscast) {
+					KinkyDungeonTargetTile.Lock = undefined;
+					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
+					KDUpdateDoorNavMap();
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = "";
+					if (gagTotal) {
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGagged"), "#aa44ff", 1);
+					} else {
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUse"), "#aa44ff", 1);
+					}
+					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				} else {
+					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGaggedFail"), "#ff0000", 1);
+				}
+				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			}
-			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
+
 			break;
 		}
 		case "closeDoor":
@@ -411,6 +420,7 @@ function KDProcessInput(type, data) {
 				if (KinkyDungeonStatWillMax < KDMaxStat) KinkyDungeonSpells.push(KinkyDungeonFindSpell("WPUp1"));
 				KinkyDungeonUpdateStats(0);
 			}
+			KDGameData.CollectedHearts = (KDGameData.CollectedHearts || 0) + 1;
 			break;
 		case "champion":
 			KDGameData.Champion = data.rep;
@@ -556,8 +566,8 @@ function KDProcessInput(type, data) {
 							KinkyDungeonAdvanceTime(1);
 						if (KinkyDungeonIsPlayer()) {
 							KinkyDungeonPreviewSpell = undefined;
-							if (KinkyDungeonTextMessageTime > 0)
-								KinkyDungeonDrawState = "Game";
+							//if (KinkyDungeonTextMessageTime > 0)
+							//KinkyDungeonDrawState = "Game";
 						}
 					} else if (KinkyDungeonIsPlayer()) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellsNotEnoughMana"), "#b4dbfc", 1);
 				} else if (KinkyDungeonIsPlayer()) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellsNotEnoughPoints"), "#ffff00", 1);
@@ -613,6 +623,7 @@ function KDProcessInput(type, data) {
 						let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
 						let amount = tile.Amount ? tile.Amount : 1.0;
 						KinkyDungeonChangeWill(amount * Willmulti);
+
 
 						// Send the message and advance time
 						KinkyDungeonAdvanceTime(1);
@@ -676,63 +687,9 @@ function KDProcessInput(type, data) {
 			}
 			break;
 		case "dialogue": {
-			KDDelayedActionPrune(["Action", "Dialogue"]);
-			if (!KDGameData.CurrentDialogMsgData) KDGameData.CurrentDialogMsgData = {};
-			if (!KDGameData.CurrentDialogMsgValue) KDGameData.CurrentDialogMsgValue = {};
-
-			KDGameData.CurrentDialog = data.dialogue;
-			KDGameData.CurrentDialogStage = data.dialogueStage;
-			if (data.speaker) {
-				let oldSpeaker = KDGameData.CurrentDialogMsgSpeaker;
-				KDGameData.CurrentDialogMsgSpeaker = data.speaker;
-				if (KDGameData.CurrentDialogMsgSpeaker != oldSpeaker)
-					KDGameData.CurrentDialogMsgPersonality = ""; // Reset when speaker changes
-			}
-			if (data.enemy) {
-				KDGameData.CurrentDialogMsgID = data.enemy;
-			}
-			if (data.personality)
-				KDGameData.CurrentDialogMsgPersonality = data.personality;
-
-			let dialogue = KDGetDialogue();
-			if (dialogue.data) KDGameData.CurrentDialogMsgData = dialogue.data;
-			if (dialogue.response) KDGameData.CurrentDialogMsg = dialogue.response;
-			if (dialogue.response == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
-			if (dialogue.personalities) {
-				KDDialogueApplyPersonality(dialogue.personalities);
-			}
-			let abort = false;
-			if (data.click) {
-				let gagged = KDDialogueGagged();
-				if (dialogue.gagFunction && gagged) {
-					abort = dialogue.gagFunction();
-				} else if (dialogue.clickFunction) {
-					abort = dialogue.clickFunction(gagged);
-				}
-			}
-			if (!abort) {
-				if (dialogue.exitDialogue) {
-					KDGameData.CurrentDialog = "";
-					KDGameData.CurrentDialogStage = "";
-				} else {
-					let modded = false;
-					if (dialogue.leadsTo != undefined) {
-						KDGameData.CurrentDialog = dialogue.leadsTo;
-						KDGameData.CurrentDialogStage = "";
-						modded = true;
-					}
-					if (dialogue.leadsToStage != undefined) {
-						KDGameData.CurrentDialogStage = dialogue.leadsToStage;
-						modded = true;
-					}
-					if (modded && !dialogue.dontTouchText) {
-						dialogue = KDGetDialogue();
-						if (dialogue.response) KDGameData.CurrentDialogMsg = dialogue.response;
-						if (dialogue.response == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
-					}
-				}
-			}
+			KDDoDialogue(data);
 			break;
+
 		}
 	}
 	return "";

@@ -1,9 +1,280 @@
 "use strict";
 
+/**
+ * Updates local tiles such as conveyors
+ * @type {Record<string, (delta: number, X?: number, Y?: number) => void>}
+ */
+let KDTileUpdateFunctionsLocal = {
+	'z': (delta, X, Y) => {
+		let entity = KinkyDungeonEntityAt(X, Y);
+		if (entity) return;
+		let mapTile = KinkyDungeonTilesGet(X + "," + Y);
+		if (mapTile?.wireType == "AutoDoor_HoldOpen" || mapTile?.wireType == "AutoDoor_HoldClosed") {
+			let tags = KDEffectTileTags(X, Y);
+			if ((!tags.signal && mapTile.wireType == "AutoDoor_HoldOpen")
+				|| (tags.signal && mapTile.wireType == "AutoDoor_HoldClosed")) {
+				KinkyDungeonMapSet(X, Y, 'Z');
+			}
+		}
+	},
+	'Z': (delta, X, Y) => {
+		let mapTile = KinkyDungeonTilesGet(X + "," + Y);
+		if (mapTile?.wireType == "AutoDoor_HoldOpen" || mapTile?.wireType == "AutoDoor_HoldClosed") {
+			let tags = KDEffectTileTags(X, Y);
+			if ((tags.signal && mapTile.wireType == "AutoDoor_HoldOpen")
+				|| (!tags.signal && mapTile.wireType == "AutoDoor_HoldClosed")) {
+				KinkyDungeonMapSet(X, Y, 'z');
+			}
+		}
+	},
+	"w": (delta, X, Y) => {
+		KDCreateEffectTile(X, Y, {
+			name: "Water",
+			duration: 2,
+		}, 0);
+	},
+	"V": (delta, X, Y) => {
+		KDConveyor(delta, X, Y);
+	},
+	"N": (delta, X, Y) => {
+		let tile = KinkyDungeonTilesGet(X + "," + Y);
+		let tU = KinkyDungeonTilesGet(X + "," + (Y - 1));
+		let tD = KinkyDungeonTilesGet(X + "," + (Y + 1));
+		let tR = KinkyDungeonTilesGet((X + 1) + "," + Y);
+		let tL = KinkyDungeonTilesGet((X - 1) + "," + Y);
+
+		if (tU?.DY == 1) tile.DY = 1;
+		else if (tD?.DY == -1) tile.DY = -1;
+		else if (tL?.DX == 1) tile.DX = 1;
+		else if (tR?.DX == -1) tile.DX = -1;
+
+		let entity = KinkyDungeonEntityAt(X, Y);
+		let BMType = KDBondageMachineFunctions[tile.Binding];
+
+		if (entity) {
+			let eligible = false;
+			if (entity.player) {
+				if (!KinkyDungeonFlags.get("processed")) {
+					eligible = BMType.eligible_player(tile, X, Y, entity);
+					if (eligible) {
+						if (BMType.function_player(tile, delta, X, Y, entity)) return;
+					}
+				}
+			} else if (entity.Enemy?.bound) {
+				if (entity.Enemy.tags.prisoner) KDStaggerEnemy(entity);
+				if (!KDEnemyHasFlag(entity, "processed")) {
+					eligible = BMType.eligible_enemy(tile, X, Y, entity);
+					if (eligible) {
+						if (BMType.function_enemy(tile, delta, X, Y, entity)) return;
+					}
+				}
+			}
+		}
+
+		KDConveyor(delta, X, Y);
+	},
+	"u": (delta, X, Y) => {
+		let tile = KinkyDungeonTilesGet(X + "," + Y);
+
+		if (!tile.cd) tile.cd = 0;
+		if (tile.cd <= 0) {
+			if (tile.count == undefined || tile.count > 0) {
+				// Too many dolls!!!
+				if (KDGameData.DollCount > 30) return;
+				let nearbyEnemyCount = KDNearbyEnemies(X, Y, 4.5);
+				if (nearbyEnemyCount.length > 6) return;
+				let start = true;
+				let ind = tile.index;
+				// Loop through and cycle if needed
+				while (start || ind != tile.index) {
+					start = false;
+					let tx = ind == 0 ? -1 : (ind == 2 ? 1 : 0);
+					let ty = ind == 1 ? -1 : (ind == 3 ? 1 : 0);
+
+					// Create a doll on a conveyor if needed
+					let entity = KinkyDungeonEntityAt(X + tx, Y + ty);
+					let tiletype = KinkyDungeonMapGet(X + tx, Y + ty);
+					if (tiletype == 'V' && !entity) {
+						tile.cd = tile.rate;
+						let e = DialogueCreateEnemy(X + tx, Y + ty, tile.dollType || "FactoryDoll");
+						KinkyDungeonSetEnemyFlag(e, "conveyed", 1);
+						if (tile.count != undefined) tile.count -= 1;
+						break;
+					}
+					ind += 1;
+					ind = ind % 4;
+				}
+				tile.index = ind;
+			}
+		} else {
+			tile.cd -= delta;
+		}
+	},
+	"t": (delta, X, Y) => {
+		// Consume prisoners on the tile
+		let entity = KinkyDungeonEntityAt(X, Y);
+		if (entity && !entity.player) {
+			if (entity.Enemy?.tags.prisoner || KDHelpless(entity)) {
+				KDStaggerEnemy(entity);
+				if (!KDEnemyHasFlag(entity, "conveyed")) {
+					KDClearItems(entity);
+					entity.hp = 0;
+				}
+			} else {
+				// kick them out...
+				KDKickEnemyLocal(entity);
+			}
+
+		} else if (entity?.player && !KinkyDungeonFlags.get("nodollterm")) {
+			if (KinkyDungeonFlags.get("conveyed")) {
+				KDStartDialog("DollTerminal_Forced", "", true, "");
+			} else {
+				KDStartDialog("DollTerminal_Step", "", true, "");
+			}
+		}
+	},
+};
 
 /**
  * Return value: whether or not to continue to allow peripheral tile updates
- * @type {Record<string, (delta) => boolean>}
+ * @type {Record<string, KDBondageMachineFunc>}
+ */
+let KDBondageMachineFunctions = {
+	"Latex": {
+		eligible_player: (tile, x, y, entity) => {
+			return KDGetRestraintsEligible({tags: ['latexEncase']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+		},
+		function_player: (tile, delta, x, y, entity) => {
+			KDBasicRestraintsMachine_Player(['latexEncase'], 2, "KDEncasement");
+			return false;
+		},
+		eligible_enemy: (tile, x, y, entity) => {
+			return true;
+		},
+		function_enemy: (tile, delta, x, y, entity) => {
+			KDTieUpEnemy(entity, 4.0, "Slime", "glue");
+			if (KDBoundEffects(entity) > 2 ) {
+				KDTieUpEnemy(entity, 4.0, "Slime", "glue");
+				KinkyDungeonApplyBuffToEntity(entity, KDEncasedDoll);
+			}
+			if (KDBoundEffects(entity) < 1 ) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
+				return true;
+			}
+			return false;
+		},
+	},
+	"Metal": {
+		eligible_player: (tile, x, y, entity) => {
+			return KDGetRestraintsEligible({tags: ["hitechCables", "cableGag", "controlHarness"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+		},
+		function_player: (tile, delta, x, y, entity) => {
+			KDBasicRestraintsMachine_Player(["hitechCables", "cableGag", "controlHarness"], 2, "KDMetalMachine");
+			return false;
+		},
+		eligible_enemy: (tile, x, y, entity) => {
+			return true;
+		},
+		function_enemy: (tile, delta, x, y, entity) => {
+			KDTieUpEnemy(entity, 4.0, "Metal", "chain");
+			if (KDBoundEffects(entity) < 1 ) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
+				return true;
+			}
+			return false;
+		},
+	},
+	"Tape": {
+		eligible_player: (tile, x, y, entity) => {
+			return KDGetRestraintsEligible({tags: ["autoTape"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+		},
+		function_player: (tile, delta, x, y, entity) => {
+			KDBasicRestraintsMachine_Player(["autoTape"], 2, "KDTapeMachine");
+			return false;
+		},
+		eligible_enemy: (tile, x, y, entity) => {
+			return true;
+		},
+		function_enemy: (tile, delta, x, y, entity) => {
+			KDTieUpEnemy(entity, 4.0, "Tape", "glue");
+			if (KDBoundEffects(entity) < 1 ) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
+				return true;
+			}
+			return false;
+		},
+	},
+	"Plug": {
+		eligible_player: (tile, x, y, entity) => {
+			return KDGetRestraintsEligible({tags: ['machinePlug']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+		},
+		function_player: (tile, delta, x, y, entity) => {
+			return KDBasicRestraintsMachine_Player(['machinePlug'], 1, "KDPlugMachine") != 0;
+		},
+		eligible_enemy: (tile, x, y, entity) => {
+			return (entity.boundLevel > 0 || KDEntityGetBuff(entity, "Chastity")) && !(entity.buffs && KinkyDungeonGetBuffedStat(entity.buffs, "Plug") >= 2);
+		},
+		function_enemy: (tile, delta, x, y, entity) => {
+			KDPlugEnemy(entity);
+			if (KinkyDungeonGetBuffedStat(entity.buffs, "Plug") > 0) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
+				return true;
+			}
+			return false;
+		},
+	},
+	"Chastity": {
+		eligible_player: (tile, x, y, entity) => {
+			return KDGetRestraintsEligible({tags: ['machineChastity']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+		},
+		function_player: (tile, delta, x, y, entity) => {
+			return KDBasicRestraintsMachine_Player(['machineChastity'], 1, "KDChastityMachine") != 0;
+		},
+		eligible_enemy: (tile, x, y, entity) => {
+			return entity.boundLevel > 0 && !KDEntityGetBuff(entity, "Chastity");
+		},
+		function_enemy: (tile, delta, x, y, entity) => {
+			KDTieUpEnemy(entity, 2.0, "Metal", "chain");
+			KinkyDungeonApplyBuffToEntity(entity, KDChastity);
+			if (KDEntityGetBuff(entity, "Chastity")) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
+				return true;
+			}
+			return false;
+		},
+	},
+};
+
+/**
+ *
+ * @param {string[]} tags
+ * @param {number} count
+ * @param {string} msg
+ */
+function KDBasicRestraintsMachine_Player(tags, count, msg) {
+	let succ = 0;
+	for (let i = 0; i < count; i++) {
+		let restraint = KinkyDungeonGetRestraint({tags: tags}, 10, 'grv', false, undefined, undefined, undefined, false);
+		if (restraint) {
+			succ = KinkyDungeonAddRestraintIfWeaker(restraint, MiniGameKinkyDungeonLevel, false, undefined, undefined, undefined, undefined, "AncientRobot", true) || succ;
+		}
+	}
+	if (succ) {
+		KinkyDungeonSetFlag("conveyed", 2);
+		KinkyDungeonSetFlag("processed", 3);
+		KinkyDungeonSendTextMessage(8, TextGet(msg), "#ffff44", 2);
+	}
+	return succ;
+}
+
+/**
+ * Return value: whether or not to continue to allow peripheral tile updates
+ * @type {Record<string, (delta: number) => boolean>}
  */
 let KDTileUpdateFunctions = {
 	"]": (delta) => { // Happy Gas!
@@ -51,6 +322,12 @@ let KDMoveObjectFunctions = {
 		}
 		return false;
 	},
+	'@': (moveX, moveY) => {
+		if (!KinkyDungeonFlags.get("nobutton")) {
+			KDStartDialog("Button", "", true);
+		}
+		return false;
+	},
 	'l': (moveX, moveY) => {
 		if (!KinkyDungeonFlags.get("noleyline") && KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax && KDTile(moveX, moveY) && KDTile(moveX, moveY).Leyline) {
 			KDStartDialog("Leyline", "", true);
@@ -59,7 +336,7 @@ let KDMoveObjectFunctions = {
 	},
 	'D': (moveX, moveY) => { // Open the door
 		KinkyDungeonAdvanceTime(1, true);
-		let open = !KinkyDungeonStatsChoice.get("Doorknobs") || !KinkyDungeonIsHandsBound(true, true);
+		let open = !KinkyDungeonStatsChoice.get("Doorknobs") || !KinkyDungeonIsHandsBound(true, true, 0.45);
 		if (!open) {
 			if (KinkyDungeonCanUseFeet()) {
 				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFeet"), "#88ff88", 2);
@@ -111,7 +388,10 @@ let KDMoveObjectFunctions = {
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2, true);
 		} else {
 			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType, roll, KinkyDungeonTilesGet(moveX + "," +moveY), undefined, noTrap);
-			if (lootTrap) KDSpawnLootTrap(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, lootTrap.trap, lootTrap.mult, lootTrap.duration);
+			if (lootTrap) {
+				KDTrigPanic();
+				KDSpawnLootTrap(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, lootTrap.trap, lootTrap.mult, lootTrap.duration);
+			}
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/ChestOpen.ogg");
 			KinkyDungeonMapSet(moveX, moveY, 'c');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
@@ -232,10 +512,40 @@ function KDSlimeImmune(enemy) {
 }
 
 /**
+ * These happen when stepped on
  * Return is whether or not something the player should know about happened
  * @type {Record<string, (delta, entity: entity, tile: effectTile) => boolean>}
  */
 let KDEffectTileFunctions = {
+	"PressurePlateHold": (delta, entity, tile) => {
+		KDCreateEffectTile(tile.x, tile.y, {
+			name: "WireSparks",
+			duration: 2,
+		}, 0);
+		return false;
+	},
+	"PressurePlate": (delta, entity, tile) => {
+		let tags = KDEffectTileTags(tile.x, tile.y);
+		if (!tags.ppactive) {
+			KDCreateEffectTile(tile.x, tile.y, {
+				name: "WireSparks",
+				duration: 2,
+			}, 0);
+		}
+		KDCreateEffectTile(tile.x, tile.y, {
+			name: "PressurePlateActive",
+			duration: 2,
+		}, 0);
+		return false;
+	},
+	"PressurePlateOneUse": (delta, entity, tile) => {
+		KDCreateEffectTile(tile.x, tile.y, {
+			name: "WireSparks",
+			duration: 2,
+		}, 0);
+		tile.duration = 0;
+		return false;
+	},
 	"SlimeBurning": (delta, entity, tile) => {
 		if (!KDEntityHasBuff(entity, "Drenched")) {
 			let slimeWalker = KDSlimeWalker(entity);
@@ -455,6 +765,109 @@ let KDEffectTileCreateFunctionsCreator = {
 		}
 		return true;
 	},
+	"WireSparks": (newTile, existingTile) => {
+		if (existingTile.tags.includes("wire")) {
+			let mapTile = KinkyDungeonTilesGet(newTile.x + ',' + newTile.y);
+			if (mapTile?.wireType) {
+				if (KDActivateMapTile[mapTile.wireType](mapTile, newTile.x, newTile.y)) {
+					return true;
+				}
+			}
+
+			let rt = KDEffectTileTags(existingTile.x + 1, existingTile.y);
+			let lt = KDEffectTileTags(existingTile.x - 1, existingTile.y);
+			let ut = KDEffectTileTags(existingTile.x, existingTile.y - 1);
+			let dt = KDEffectTileTags(existingTile.x, existingTile.y + 1);
+			if (!rt.signalFrame && rt.wire) {
+				KDCreateEffectTile(existingTile.x + 1, existingTile.y, {
+					name: "WireSparksAct",
+					duration: 1,
+				}, 0);
+				KDCreateEffectTile(existingTile.x + 1, existingTile.y, {
+					name: "WireSparks",
+					duration: 2,
+				}, 0);
+			}
+			if (!lt.signalFrame && lt.wire) {
+				KDCreateEffectTile(existingTile.x - 1, existingTile.y, {
+					name: "WireSparksAct",
+					duration: 1,
+				}, 0);
+				KDCreateEffectTile(existingTile.x - 1, existingTile.y, {
+					name: "WireSparks",
+					duration: 2,
+				}, 0);
+			}
+			if (!dt.signalFrame && dt.wire) {
+				KDCreateEffectTile(existingTile.x, existingTile.y + 1, {
+					name: "WireSparksAct",
+					duration: 1,
+				}, 0);
+				KDCreateEffectTile(existingTile.x, existingTile.y + 1, {
+					name: "WireSparks",
+					duration: 2,
+				}, 0);
+			}
+			if (!ut.signalFrame && ut.wire) {
+				KDCreateEffectTile(existingTile.x, existingTile.y - 1, {
+					name: "WireSparksAct",
+					duration: 1,
+				}, 0);
+				KDCreateEffectTile(existingTile.x, existingTile.y - 1, {
+					name: "WireSparks",
+					duration: 2,
+				}, 0);
+			}
+		}
+		return true;
+
+	},
+};
+
+/**
+ * Return is whether or not something the player should know about happened
+ * Return type is whether or not the signal should stop (true) or pass (false)
+ * @type {Record<string, (tile: any, x: number, y: number) => boolean>}
+ */
+let KDActivateMapTile = {
+	"increment": (tile, x, y) => {
+		if (!tile.count) tile.count = 0;
+		tile.count += 1;
+		return false;
+	},
+	"AutoDoor_Toggle": (tile, x, y) => {
+		let entity = KinkyDungeonEntityAt(x, y);
+		if (entity) return true;
+
+		if (KinkyDungeonMapGet(x, y) == 'Z')
+			KinkyDungeonMapSet(x, y, 'z');
+		else
+			KinkyDungeonMapSet(x, y, 'Z');
+		return true;
+	},
+	"AutoDoor_HoldOpen": (tile, x, y) => {
+		KinkyDungeonMapSet(x, y, 'z');
+		return true;
+	},
+	"AutoDoor_HoldClosed": (tile, x, y) => {
+		let entity = KinkyDungeonEntityAt(x, y);
+		if (entity) return true;
+
+		KinkyDungeonMapSet(x, y, 'Z');
+		return true;
+	},
+	"AutoDoor_Open": (tile, x, y) => {
+		KinkyDungeonMapSet(x, y, 'z');
+		return true;
+	},
+	"AutoDoor_Close": (tile, x, y) => {
+		let entity = KinkyDungeonEntityAt(x, y);
+		if (entity) return true;
+
+		KinkyDungeonMapSet(x, y, 'Z');
+		return true;
+	},
+
 };
 
 /**

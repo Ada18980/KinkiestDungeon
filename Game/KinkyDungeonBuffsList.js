@@ -70,6 +70,20 @@ let KDEncased = {
 		{type: "ApplyGlueVuln", duration: 1, power: -0.5, trigger: "tickAfter"},
 	]
 };
+let KDEncasedDoll = {
+	id: "EncasedDoll", type: "SlimeProgress", power: 2.0, player: false, enemies: true, duration: 9999, range: 0.5, replaceSprite: "EncasedFactoryDoll", tags: ["encased"], events: [
+		{type: "RemoveSlimeWalk", duration: 1, trigger: "tick"},
+		{type: "RemoveFree", trigger: "tick"},
+		{type: "ApplySlowed", duration: 1, power: -2.0, trigger: "tick"},
+		{type: "ApplySlowed", duration: 1, power: -2.0, trigger: "tickAfter"},
+		{type: "ApplyAttackSlow", duration: 1, power: 1.0, trigger: "tick"},
+		{type: "ApplyAttackSlow", duration: 1, power: 1.0, trigger: "tickAfter"},
+		{type: "ApplySilence", duration: 2, power: 1.0, trigger: "tick"},
+		{type: "ApplySilence", duration: 2, power: 1.0, trigger: "tickAfter"},
+		{type: "ApplyGlueVuln", duration: 1, power: -0.5, trigger: "tick"},
+		{type: "ApplyGlueVuln", duration: 1, power: -0.5, trigger: "tickAfter"},
+	]
+};
 let KDChastity = {
 	id: "Chastity", type: "Chastity", power: 1.0, aura: "#dddddd", aurasprite: "Chastity", player: false, enemies: true, duration: 9999, range: 0.5, tags: ["chastity"], events: [
 		{type: "Distract", power: 0.1, trigger: "tick", prereq: "bound"},

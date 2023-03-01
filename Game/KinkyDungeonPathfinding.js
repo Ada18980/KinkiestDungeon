@@ -157,7 +157,7 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 							else if (KinkyDungeonMapGet(xx, yy) == "g") costBonus = 2;
 							else if (KinkyDungeonMapGet(xx, yy) == "L") costBonus = 2;
 							costBonus = (MapTile && MapTile.Lock) ? costBonus + 2 : costBonus;
-							costBonus = (MapTile && MapTile.OffLimits) ? costBonus + 3 : costBonus;
+							costBonus = (MapTile && MapTile.OffLimits) ? costBonus + 8 : costBonus;
 							succ.set(xx + "," + yy, {x: xx, y: yy,
 								g: moveCost + costBonus + lowest.g,
 								f: moveCost + costBonus + lowest.g + heuristic(xx, yy, endx, endy),

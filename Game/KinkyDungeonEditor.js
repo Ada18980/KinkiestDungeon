@@ -3,6 +3,8 @@
 
 let KDMapTilesListEditor = localStorage.getItem("KDMapTilesListEditor") ? JSON.parse(localStorage.getItem("KDMapTilesListEditor")) : Object.assign({}, KDMapTilesList);
 
+let KDTileToTest = null;
+
 // localStorage.setItem("KDMapTilesListEditor", JSON.stringify(KDMapTilesList))
 
 function KDInitTileEditor() {
@@ -82,10 +84,12 @@ let KDTilePalette = {
 	'SpawnCustom': {type: "tile", tile: '3', special: {Type: "Spawn", required: [], Label: "Custom"}, customfields: {
 		required: {type: "array"},
 		tags: {type: "array"},
+		filterTags: {type: "array"},
 		Label: {type: "string"},
 		Chance: {type: "number"},
 		AI: {type: "string"},
 		force: {type: "boolean"},
+		faction: {type: "string"},
 	}},
 	'----Tiles----': {type: "none"},
 	'Brick': {type: "tile", tile: '2'},
@@ -106,7 +110,13 @@ let KDTilePalette = {
 	'Door_RedLock': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true, Lock: "Red"}},
 	'Door_PurpleLock': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true, Lock: "Purple"}},
 	'Door_BlueLock': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true, Lock: "Blue"}},
-	'----Useful----': {type: "none"},
+	'AutoDoorToggle': {type: "tile", tile: 'Z', special: {Type: "AutoDoor", wireType: "AutoDoor_Toggle"}},
+	'AutoDoorOpenToggle': {type: "tile", tile: 'z', special: {Type: "AutoDoor", wireType: "AutoDoor_Toggle"}},
+	'AutoDoorHoldOpen': {type: "tile", tile: 'Z', special: {Type: "AutoDoor", wireType: "AutoDoor_HoldOpen", Label: "HoldOpen"}},
+	'AutoDoorHoldClosed': {type: "tile", tile: 'Z', special: {Type: "AutoDoor", wireType: "AutoDoor_HoldClosed", Label: "HoldClosed"}},
+	'AutoDoorOpen': {type: "tile", tile: 'Z', special: {Type: "AutoDoor", wireType: "AutoDoor_Open", Label: "Open"}},
+	'AutoDoorClose': {type: "tile", tile: 'z', special: {Type: "AutoDoor", wireType: "AutoDoor_Close", Label: "Open"}},
+	'----Furniture----': {type: "none"},
 	'Table': {type: "tile", tile: 'F', special: {Type: "Table"}},
 	'TableFood': {type: "tile", tile: 'F', special: {Type: "Table", Food: "Plate"}},
 	'Rubble': {type: "tile", tile: 'R', special: {Type: "Rubble"}},
@@ -126,7 +136,7 @@ let KDTilePalette = {
 	'ChestOrShrine': {type: "tile", tile: 'O', special: {Type: "ChestOrShrine"}},
 	'HighPriorityChest': {type: "tile", tile: 'C', special: {Priority: true}},
 	'SilverChest': {type: "tile", tile: 'C', special: {Type: "Chest", Loot: "silver", Priority: true}},
-	'StorageChest': {type: "tile", tile: 'C', special: {Type: "Chest", Loot: "storage"}},
+	'StorageChest': {type: "tile", tile: 'C', special: {Type: "Chest", Loot: "storage", Chance: 0.8}},
 	'ChestCustom': {type: "tile", tile: 'C', special: {Type: "Chest", Loot: "storage"}, customfields: {
 		Loot: {type: "string"},
 		Faction: {type: "string"},
@@ -146,9 +156,33 @@ let KDTilePalette = {
 	'----Hazards----': {type: "none"},
 	'Trap': {type: "tile", tile: 'T', special: {Type: "Trap", Always: true,}},
 	'PotentialTrap': {type: "tile", tile: 'T', special: {Type: "Trap"}},
+	'----Machines----': {type: "none"},
+	'ConveyorUp': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "Conveyor/Up", DX: 0, DY: -1,}},
+	'ConveyorDown': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "Conveyor/Down", DX: 0, DY: 1,}},
+	'ConveyorLeft': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "Conveyor/Left", DX: -1, DY: 0,}},
+	'ConveyorRight': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "Conveyor/Right", DX: 1, DY: 0,}},
+	'DollSupply': {type: "tile", tile: 'u', special: {Type: "DollSupply"}},
+	'DollSupplyManual': {type: "tile", tile: 'u', special: {Type: "DollSupply", count: 0, wireType: "increment", rate: 3}},
+	'DollTerminal': {type: "tile", tile: 't', special: {Type: "DollTerminal"}},
+	'BondageMachineLatex': {type: "tile", tile: 'N', special: {Type: "BondageMachine", Binding: "Latex"}},
+	'BondageMachinePlug': {type: "tile", tile: 'N', special: {Type: "BondageMachine", Binding: "Plug"}},
+	'BondageMachineChastity': {type: "tile", tile: 'N', special: {Type: "BondageMachine", Binding: "Chastity"}},
+	'BondageMachineTape': {type: "tile", tile: 'N', special: {Type: "BondageMachine", Binding: "Tape"}},
+	'BondageMachineMetal': {type: "tile", tile: 'N', special: {Type: "BondageMachine", Binding: "Metal"}},
+	'DollDropoffU': {type: "tile", tile: '5', special: {Type: "DollDropoff", Sprite: "Floor", Overlay: "DollDropoff", direction: {x: 0, y:-1}}},
+	'DollDropoffD': {type: "tile", tile: '5', special: {Type: "DollDropoff", Sprite: "Floor", Overlay: "DollDropoffD", direction: {x: 0, y:1}}},
+	'DollDropoffR': {type: "tile", tile: '5', special: {Type: "DollDropoff", Sprite: "Floor", Overlay: "DollDropoffR", direction: {x: 1, y:0}}},
+	'DollDropoffL': {type: "tile", tile: '5', special: {Type: "DollDropoff", Sprite: "Floor", Overlay: "DollDropoffL", direction: {x: -1, y:0}}},
+	'----Signals----': {type: "none"},
+	'Button': {type: "tile", tile: '@'},
+	'Wire':  {type: "effect", effectTile: "Wire"},
+	'PressurePlate':  {type: "effect", effectTile: "PressurePlate"},
+	'PressurePlateHold':  {type: "effect", effectTile: "PressurePlateHold"},
+	'PressurePlateOneUse':  {type: "effect", effectTile: "PressurePlateOneUse"},
 	'----Misc----': {type: "none"},
 	'POI': {type: "POI"},
 	'OffLimits': {type: "offlimits"},
+	'Jail': {type: "jail"},
 	'Keyring': {type: "Keyring"},
 };
 
@@ -477,6 +511,13 @@ function KDDrawEditorUI() {
 		return true;
 	}, true, 1600, 130, 350, 64, "Resize (Clears all)", "#ffffff", "");
 
+	DrawButtonKDEx("TileTest", () => {
+		KDTE_CloseUI();
+		KDTileToTest = KDTE_ExportTile();
+		KinkyDungeonStartNewGame();
+		return true;
+	}, true, 1910, 10, 80, 40, "Test Tile", "#ffffff", "");
+
 	DrawButtonKDEx("CopyClip", () => {
 		let text = JSON.stringify(KDMapTilesListEditor);
 		navigator.clipboard.writeText(text).then(function() {
@@ -677,12 +718,13 @@ let KDTE_Brush = {
 	},
 	"tile": (brush, curr, noSwap) => {
 		let OL = KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY) ? KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits : undefined;
+		let Jail = KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY) ? KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail : undefined;
 		let tile = (curr == brush.tile && !noSwap) ? '0' : brush.tile;
 		if (tile == '0') {
 			if (!noSwap) {
 				KDTE_Clear(KinkyDungeonTargetX, KinkyDungeonTargetY, true);
-				if (OL)
-					KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
+				if (OL || Jail)
+					KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: OL, Jail: Jail});
 			}
 		} else if (curr != tile) {
 			KinkyDungeonMapSetForce(KinkyDungeonTargetX, KinkyDungeonTargetY, tile);
@@ -694,7 +736,8 @@ let KDTE_Brush = {
 				KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, Object.assign({}, brush.special));
 				if (OL)
 					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
-
+				if (Jail)
+					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail = true;
 				if (brush.customfields) {
 					for (let field of Object.entries(brush.customfields)) {
 						if (KDTE_GetField(field))
@@ -718,6 +761,17 @@ let KDTE_Brush = {
 				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
 		} else {
 			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
+		}
+	},
+	'jail': (brush, curr, noSwap) => {
+		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
+			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail) {
+				if (!noSwap)
+					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail = false;
+			} else
+				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail = true;
+		} else {
+			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {Jail: true});
 		}
 	},
 	'Keyring': (brush, curr, noSwap) => {
@@ -808,6 +862,11 @@ function KDHandleTileEditor(noSwap) {
 		let brush = KDTilePalette[KDEditorTileBrush];
 		if (KDTE_Brush[brush.type]) {
 			KDTE_Brush[brush.type](brush, curr, noSwap);
+		}
+		if (ElementValue("MapTileSkin")) {
+			KinkyDungeonSkinSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {force: true, skin: ElementValue("MapTileSkin")});
+		} else {
+			KinkyDungeonSkinDelete(KinkyDungeonTargetX + "," + KinkyDungeonTargetY);
 		}
 
 		if (!noSwap) {
@@ -915,6 +974,10 @@ function KDTE_UpdateUI(Load) {
 
 	DrawTextFitKD("Tileset", 1000 - 400, 25, 200, "#ffffff");
 	ElementPosition("MapTileTileset", 1000 - 400, 70, 200);
+
+	DrawTextFitKD("Skin", 1000 - 400, 120, 200, "#ffffff");
+	KDTextField("MapTileSkin", 1000 - 400 - 100, 150, 200, 60,);
+
 	let propTileset = ElementValue("MapTileTileset");
 	if (KinkyDungeonMapParams[propTileset]) {
 		KinkyDungeonMapIndex.grv = propTileset;

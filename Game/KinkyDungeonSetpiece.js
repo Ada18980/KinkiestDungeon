@@ -8,17 +8,17 @@ let KDSetPieces = [
 	{Name: "Altar", tags: ["shrine", "temple"], Radius: 5},
 	{Name: "SmallAltar", tags: ["shrine", "temple", "endpoint"], Radius: 3, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
 	{Name: "FuukaAltar", tags: ["boss", "temple"], Radius: 7, Max: 1},
-	{Name: "Storage", tags: ["loot", "urban"], Radius: 7},
+	{Name: "Storage", tags: ["loot", "urban", "endpoint"], Radius: 7},
 	{Name: "GuardedChest", tags: ["loot", "endpoint"], Radius: 3, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
 	{Name: "BanditPrison", tags: ["rep", "endpoint"], Radius: 3, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
 	{Name: "QuadCell", tags: ["decorative", "urban"], Radius: 7},
 	{Name: "PearlChest", tags: ["loot", "pearl"], Radius: 3, Prereqs: ["PearlEligible"], Max: 1, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
 	{Name: "ShadowChest", tags: ["loot", "endpoint", "temple", "urban", "jungle", "cavern", "shadow"], Radius: 5, Max: 2},
-	{Name: "GuaranteedCell", tags: ["jail", "urban"], Radius: 5, Max: 1, xPad: 2},
+	{Name: "GuaranteedCell", tags: ["jail", "urban", "endpoint", "industrial", "temple", "factory", "cavern", "jungle"], Radius: 5, Max: 1, xPad: 2},
 	{Name: "ForbiddenChest", tags: ["loot", "temple", "urban", "endpoint"], Radius: 3, Max: 1, xPad: 1},
 	{Name: "ForbiddenHall", tags: ["loot", "temple", "open"], Radius: 7, Max: 1, xPad: 1},
 	{Name: "Cache", tags: ["loot", "urban", "endpoint"], Radius: 7, Max: 1, xPad: 2},
-	{Name: "ExtraCell", tags: ["jail", "urban"], Radius: 4, xPad: 2, yPad: 1, xPadEnd: 2, yPadEnd: 1},
+	{Name: "ExtraCell", tags: ["jail", "urban", "endpoint"], Radius: 4, xPad: 2, yPad: 1, xPadEnd: 2, yPadEnd: 1},
 	{Name: "JungleLight", tags: ["natural", "light"], noPOI: true, Radius: 1, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
 	{Name: "Fireflies", tags: ["natural", "light"], noPOI: true, Radius: 1, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
 	{Name: "Magicflies", tags: ["temple", "light"], noPOI: true, Radius: 1, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
@@ -37,7 +37,13 @@ function KinkyDungeonPlaceSetPieces(POI, trapLocations, chestlist, shrinelist, c
 	if (!alt) {
 		Object.assign(setpieces, Params.setpieces);
 		setpieces.push({Type: "GuaranteedCell", Weight: 100000});
-		setpieces.push({Type: "Cache", Weight: 100000});
+
+		for (let i of KDGameData.ChestsGenerated) {
+			console.log(i);
+		}
+
+		if (!KDGameData.ChestsGenerated.includes("cache"))
+			setpieces.push({Type: "Cache", Weight: 100000});
 		//setpieces.push({Type: "PearlChest", Weight: 100});
 		let forbiddenChance = Params.forbiddenChance != undefined ? Params.forbiddenChance : 1;
 		let greaterChance = Params.forbiddenGreaterChance != undefined ? Params.forbiddenGreaterChance : 0.5;
@@ -48,9 +54,11 @@ function KinkyDungeonPlaceSetPieces(POI, trapLocations, chestlist, shrinelist, c
 		}
 		if (KDRandom() < forbiddenChance) {
 			if (KDRandom() < greaterChance) {
-				setpieces.push({Type: "ForbiddenHall", Weight: 100000});
+				if (!KDGameData.ChestsGenerated.includes("gold"))
+					setpieces.push({Type: "ForbiddenHall", Weight: 100000});
 			} else {
-				setpieces.push({Type: "ForbiddenChest", Weight: 100000});
+				if (!KDGameData.ChestsGenerated.includes("lessergold"))
+					setpieces.push({Type: "ForbiddenChest", Weight: 100000});
 			}
 		}
 	} else {
@@ -821,8 +829,6 @@ function KDTorch(X, Y, altType, MapParams) {
 		name: torchreplace ? torchreplace.sprite : "Torch",
 		duration: 9999,
 	}, 0);
-	//KinkyDungeonMapSet(X, Y, 't');
-	//KinkyDungeonTilesSet((X) + "," + (Y), {Type: "Torch", Light: torchreplace ? torchreplace.brightness : 6, Offset: true, Skin: torchreplace ? torchreplace.sprite : undefined});
 }
 
 function KDChest(X, Y, loot = "chest", faction = "") {
@@ -896,7 +902,7 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 		{faction: "Dressmaker", tags: ["dressmaker"], rtags: ["dressmaker"], ftags: ["miniboss", "boss"]},
 		{faction: "Witch", tags: ["witch", "apprentice", "skeleton"], rtags: ["witch", "apprentice", "skeleton"], ftags: ["miniboss", "boss"]},
 		{faction: "Apprentice", tags: ["apprentice"], rtags: ["apprentice"], ftags: ["miniboss", "boss"]},
-		{faction: "Mushy", tags: ["mushroom"], rtags: ["mushy"], ftags: ["miniboss", "boss"]},
+		//{faction: "Mushy", tags: ["mushroom"], rtags: ["mushy"], ftags: ["miniboss", "boss"]},
 		{faction: "Nevermere", tags: ["nevermere"], rtags: ["nevermere"], ftags: ["miniboss", "boss"]},
 		{faction: "Bast", tags: ["mummy"], rtags: ["mummy"], ftags: ["miniboss", "boss"]},
 		{faction: "Elf", tags: ["elf"], rtags: ["elf"], ftags: ["miniboss", "boss"]},

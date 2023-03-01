@@ -111,9 +111,10 @@ function KDLinkSize(restraint) {
  *
  * @param {item} item
  * @param {string} linkCategory
+ * @param {item} [ignoreItem]
  * @returns {number}
  */
-function KDLinkCategorySize(item, linkCategory) {
+function KDLinkCategorySize(item, linkCategory, ignoreItem) {
 	let total = 0;
 	// First we get the whole stack
 	let stack = [item];
@@ -126,7 +127,7 @@ function KDLinkCategorySize(item, linkCategory) {
 	}
 	// Now that we have the stack we sum things up
 	for (let inv of stack) {
-		if (KDRestraint(inv).linkCategory == linkCategory) {
+		if (KDRestraint(inv).linkCategory == linkCategory && ignoreItem?.id != inv.id) {
 			total += KDLinkSize(KDRestraint(inv));
 		}
 	}
@@ -314,7 +315,10 @@ function KinkyDungeonDrawInputs() {
 	if (KinkyDungeonIsHandsBound(false, false)) {
 		statsDraw.b_hands = {text: TextGet("KDStatHands"), category: "status", icon: "boundHands", color: "#ff5555", bgcolor: "#333333", priority: 10};
 	} else {
-		statsDraw.b_hands = {text: TextGet("KDStatFreeHands"), category: "status", icon: "status/freeHands", color: "#55ff55", bgcolor: "#333333", priority: 10};
+		if (KDHandBondageTotal() > 0)
+			statsDraw.b_hands = {text: TextGet("KDStatHandsPartial"), category: "status", icon: "boundHandsPartial", color: "#ff5555", bgcolor: "#333333", priority: 10};
+		else
+			statsDraw.b_hands = {text: TextGet("KDStatFreeHands"), category: "status", icon: "status/freeHands", color: "#55ff55", bgcolor: "#333333", priority: 10};
 	}
 	if (KinkyDungeonIsArmsBound(false, false)) {
 		statsDraw.b_arms = {text: TextGet("KDStatArms"), category: "status", icon: "boundArms", color: "#ff5555", bgcolor: "#333333", priority: 11};
@@ -475,7 +479,7 @@ function KinkyDungeonDrawInputs() {
 					.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type).toLocaleLowerCase())
 					.replace("DAMAGECATEGORY", TextGet(melee ? "KinkyDungeonDamageTypemelee" : "KinkyDungeonDamageTypemagic").toLocaleLowerCase())
 					.replace("PERCENT1", Math.round(resist * (melee ? meleeResist : magicResist) * 100) + "%")
-					.replace("PERCENT2", Math.round(DR * 100) + "%")
+					.replace("PERCENT2", Math.round(DR * 100) + "")
 					.replace("PERCENT3", Math.round((melee ? meleeResist : magicResist) * 100) + "%"),
 				count: (resist > 1 ? '+' : "") + Math.round(resist * 100 - 100) + "%",
 				countcolor: resist < 1 ? "#c4efaa" : "#ff5555",
@@ -631,7 +635,7 @@ function KinkyDungeonDrawInputs() {
 
 	// Draw the struggle buttons if applicable
 	KinkyDungeonDrawStruggleHover = false;
-	if (!KinkyDungeonShowInventory && ((KinkyDungeonDrawStruggle > 0 || MouseIn(0, 0, 500, 1000)) && KinkyDungeonStruggleGroups))
+	if (!KDShowQuickInv() && ((KinkyDungeonDrawStruggle > 0 || MouseIn(0, 0, 500, 1000)) && KinkyDungeonStruggleGroups))
 		for (let sg of KinkyDungeonStruggleGroups) {
 			let ButtonWidth = 60;
 			let x = 5 + ((!sg.left) ? (490 - ButtonWidth) : 0);
@@ -804,80 +808,8 @@ function KinkyDungeonDrawInputs() {
 
 
 	if (KinkyDungeonTargetTile) {
-		if (KinkyDungeonTargetTile.Type == "Lock" && KinkyDungeonTargetTile.Lock) {
-			let action = false;
-			if (KinkyDungeonLockpicks > 0 && (KinkyDungeonTargetTile.Lock.includes("Red") || KinkyDungeonTargetTile.Lock.includes("Blue"))) {
-				DrawButtonVis(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonPickDoor"), "#ffffff", "", "");
-				action = true;
-				KDModalArea = true;
-			}
-
-			if (KinkyDungeonTargetTile.Lock.includes("Red") || KinkyDungeonTargetTile.Lock.includes("Blue")) {
-				DrawButtonVis(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonUnlockDoor"),
-				(KinkyDungeonTargetTile.Lock.includes("Red") && KinkyDungeonRedKeys > 0)
-				|| (KinkyDungeonTargetTile.Lock.includes("Blue") && KinkyDungeonBlueKeys > 0) ? "#ffffff" : "#ff0000", "", "");
-				action = true;
-				KDModalArea = true;
-			}
-			if ((KinkyDungeonTargetTile.Lock.includes("Purple"))) {
-				let spell = KinkyDungeonFindSpell("CommandWord", true);
-				DrawButtonVis(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonUnlockDoorPurple"),
-				(KinkyDungeonStatMana >= KinkyDungeonGetManaCost(spell)) ? "#ffffff" : "#ff0000",
-				"", "");
-				action = true;
-				KDModalArea = true;
-			}
-
-			if (!action) DrawTextKD(TextGet("KinkyDungeonLockedDoor"), KDModalArea_x + 300, KDModalArea_y + 50, "#ffffff", "#333333");
-
-			if (KinkyDungeonTargetTile.Lock.includes("Red"))
-				DrawTextKD(TextGet("KinkyRedLock"), KDModalArea_x + 50, KDModalArea_y + 50, "#ffffff", "#333333");
-			else if (KinkyDungeonTargetTile.Lock.includes("Blue"))
-				DrawTextKD(TextGet("KinkyBlueLock"), KDModalArea_x + 50, KDModalArea_y + 50, "#ffffff", "#333333");
-			else if (KinkyDungeonTargetTile.Lock.includes("Purple"))
-				DrawTextKD(TextGet("KinkyPurpleLock"), KDModalArea_x + 50, KDModalArea_y + 50, "#ffffff", "#333333");
-		} else if (KinkyDungeonTargetTile.Type == "Shrine") {
-			KinkyDungeonDrawShrine();
-		} else if (KDObjectDraw[KinkyDungeonTargetTile.Type]) {
+		if (KDObjectDraw[KinkyDungeonTargetTile.Type]) {
 			KDObjectDraw[KinkyDungeonTargetTile.Type]();
-		} else if (KinkyDungeonTargetTile.Type == "Door") {
-			if (KinkyDungeonTargetTile.Lock) {
-				let action = false;
-				if (KinkyDungeonLockpicks > 0 && (KinkyDungeonTargetTile.Lock.includes("Red") || KinkyDungeonTargetTile.Lock.includes("Blue"))) {
-					DrawButtonVis(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonPickDoor"), "#ffffff", "", "");
-					action = true;
-					KDModalArea = true;
-				}
-
-				if (KinkyDungeonTargetTile.Lock.includes("Red") || KinkyDungeonTargetTile.Lock.includes("Blue")) {
-					DrawButtonVis(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonUnlockDoor"),
-					(KinkyDungeonTargetTile.Lock.includes("Red") && KinkyDungeonRedKeys > 0)
-					|| (KinkyDungeonTargetTile.Lock.includes("Blue") && KinkyDungeonBlueKeys > 0) ? "#ffffff" : "#ff0000", "", "");
-					action = true;
-					KDModalArea = true;
-				}
-
-				if ((KinkyDungeonTargetTile.Lock.includes("Purple"))) {
-					let spell = KinkyDungeonFindSpell("CommandWord", true);
-					DrawButtonVis(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonUnlockDoorPurple"),
-					(KinkyDungeonStatMana >= KinkyDungeonGetManaCost(spell)) ? "#ffffff" : "#ff0000",
-					"", "");
-					action = true;
-					KDModalArea = true;
-				}
-
-				if (!action) DrawTextKD(TextGet("KinkyDungeonLockedDoor"), KDModalArea_x + 300, KDModalArea_y + 50, "#ffffff", "#333333");
-
-				if (KinkyDungeonTargetTile.Lock.includes("Red"))
-					DrawTextKD(TextGet("KinkyRedLock"), KDModalArea_x + 25, KDModalArea_y + 50, "#ffffff", "#333333");
-				else if (KinkyDungeonTargetTile.Lock.includes("Blue"))
-					DrawTextKD(TextGet("KinkyBlueLock"), KDModalArea_x + 25, KDModalArea_y + 50, "#ffffff", "#333333");
-				else if (KinkyDungeonTargetTile.Lock.includes("Purple"))
-					DrawTextKD(TextGet("KinkyPurpleLock"), KDModalArea_x + 50, KDModalArea_y + 50, "#ffffff", "#333333");
-			} else {
-				KDModalArea = true;
-				DrawButtonVis(KDModalArea_x + 25, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonCloseDoor"), "#ffffff");
-			}
 		}
 	}
 
@@ -1378,6 +1310,12 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60, "", "",
 	KinkyDungeonRootDirectory + (KDGameData.KinkyDungeonLeashedPlayer ? "UI/WaitJail.png" : "UI/Wait.png"), undefined, undefined, !KinkyDungeonAutoWait);
+	DrawButtonKDEx("AutoStruggle", (bdata) => {
+		if (!KinkyDungeonControlsEnabled()) return false;
+		KDAutoStruggleClick();
+		return true;
+	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60, "", "",
+	KinkyDungeonRootDirectory + ("UI/AutoStruggle.png"), undefined, undefined, !KinkyDungeonAutoWaitStruggle);
 	DrawButtonKDEx("HelpButton", (bdata) => {
 		if (!KinkyDungeonControlsEnabled()) return false;
 		KDSendInput("noise", {});
@@ -1402,7 +1340,7 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60,
 	"", "", KinkyDungeonRootDirectory + (KinkyDungeonToggleAutoDoor ? "UI/DoorClose.png" : "UI/Door.png"), undefined, undefined, !KinkyDungeonToggleAutoDoor);
 
-	DrawButtonKDEx("toggleAutoStruggle", (bdata) => {
+	/*DrawButtonKDEx("toggleAutoStruggle", (bdata) => {
 		if (!KinkyDungeonFastStruggleSuppress)
 			KinkyDungeonFastStruggle = !KinkyDungeonFastStruggle;
 		KinkyDungeonFastStruggleSuppress = false;
@@ -1410,7 +1348,7 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 		KinkyDungeonFastStruggleType = "";
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60,
-	"", "", KinkyDungeonRootDirectory + (KinkyDungeonFastStruggle ? "AutoStruggle" : "AutoStruggleOff") + ".png", undefined, undefined, !KinkyDungeonFastStruggle);
+	"", "", KinkyDungeonRootDirectory + (KinkyDungeonFastStruggle ? "AutoStruggle" : "AutoStruggleOff") + ".png", undefined, undefined, !KinkyDungeonFastStruggle);*/
 	DrawButtonKDEx("toggleFastMove", (bdata) => {
 		if (!KinkyDungeonFastMoveSuppress)
 			KinkyDungeonFastMove = !KinkyDungeonFastMove;
@@ -1435,6 +1373,8 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDWait";}
 	// eslint-disable-next-line no-dupe-else-if
+	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDAutoStruggle";}
+	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDHelp";}
 	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDPass";}
@@ -1443,7 +1383,7 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDDoor";}
 	// eslint-disable-next-line no-dupe-else-if
-	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDAutoStruggle";}
+	//else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDAutoStruggle";}
 	// eslint-disable-next-line no-dupe-else-if
 	else if (MouseIn(actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, 75, 64)) {str = "KDAutoPath";}
 	// eslint-disable-next-line no-dupe-else-if
@@ -1461,6 +1401,17 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	}
 
 	//}
+}
+
+function KDAutoStruggleClick() {
+	if (KinkyDungeonAutoWaitStruggle) {
+		KDDisableAutoWait();
+		KinkyDungeonTempWait = false;
+		KinkyDungeonAutoWaitSuppress = false;
+	} else {
+		KinkyDungeonAutoWaitStruggle = true;
+		KinkyDungeonSleepTime = CommonTime() + 100;
+	}
 }
 
 function KinkyDungeonActivateWeaponSpell(instant) {
@@ -2002,7 +1953,7 @@ function KinkyDungeonUpdateStruggleGroups() {
 					name:(KDRestraint(restraint)) ? KDRestraint(restraint).name : "",
 					lock:restraint.lock,
 					magic:KDRestraint(restraint) ? KDRestraint(restraint).magic : undefined,
-					noCut:KDRestraint(restraint) && KDRestraint(restraint).escapeChance && !KDRestraint(restraint).escapeChance.Cut,
+					noCut:KDRestraint(restraint) && KDRestraint(restraint).escapeChance && KDRestraint(restraint).escapeChance.Cut == undefined,
 					curse:KDRestraint(restraint)? (restraint.curse || KDRestraint(restraint).curse) : undefined,
 					blocked: !KDRestraint(restraint).alwaysStruggleable && KDGroupBlocked(Group)});
 		}

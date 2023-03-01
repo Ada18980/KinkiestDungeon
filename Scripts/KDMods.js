@@ -99,6 +99,7 @@ async function KDExecuteMods() {
 	KinkyDungeonRefreshEnemiesCache();
 }
 
+
 if (typeof TransformStream == "undefined") {
 	const script = document.createElement("script");
 	script.src = "lib/web-streams-polyfill.min.js";

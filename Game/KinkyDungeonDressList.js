@@ -13,6 +13,7 @@ let KinkyDungeonOutfitsBase = [
 	{name: "Elven", dress: "Elven", shop: false, rarity: 2},
 	{name: "Wolfgirl", dress: "Wolfgirl", shop: false, rarity: 2},
 	{name: "BlueSuitPrison", dress: "BlueSuitPrison", shop: false, rarity: 2},
+	{name: "DollSuit", dress: "DollSuit", shop: false, rarity: 2},
 	{name: "BlueSuit", dress: "BlueSuit", shop: false, rarity: 2},
 	{name: "Obsidian", dress: "Obsidian", shop: false, rarity: 2},
 ];
@@ -89,6 +90,11 @@ let KinkyDungeonDresses = {
 		{Item: "SeamlessCatsuit", Group: "Suit", Color: "#3873C3", Lost: false},
 		{Item: "SeamlessCatsuit", Group: "SuitLower", Color: "#3873C3", Lost: false},
 		{Item: "Catsuit", Group: "Gloves", Color: "#3873C3", Lost: false},
+	],
+	"DollSuit" : [
+		{Item: "SeamlessCatsuit", Group: "Suit", Color: "#840d26", Lost: false},
+		{Item: "SeamlessCatsuit", Group: "SuitLower", Color: "#840d26", Lost: false},
+		{Item: "Catsuit", Group: "Gloves", Color: "#840d26", Lost: false},
 	],
 	"Bountyhunter" : [
 		{Item: "SeamlessCatsuit", Group: "Suit", Color: "#222222", Lost: false},

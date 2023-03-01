@@ -7,6 +7,7 @@ let KDDoorAttractChanceArms = 0.1; // Chance to attract someone by rattling
 
 let KDCategoriesStart = [
 	{name: "Toggles", buffs: [], debuffs: [],},
+	{name: "Multiclass", buffs: [], debuffs: [],},
 	{name: "Restraints", buffs: [], debuffs: [],},
 	{name: "Kinky", buffs: [], debuffs: [],},
 	{name: "Damage", buffs: [], debuffs: [],},
@@ -80,14 +81,8 @@ let KDPerkUpdateStats = {
 	},
 	"Sticky": () => {
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-			id: "PainTolerance", type: "glueDamageResist", power: -0.4, duration: 2
+			id: "StickySituation", type: "glueDamageResist", power: -0.4, duration: 2
 		});
-	},
-	"DistractionCast": () => {
-		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99)
-			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-				id: "DistractionCast", type: "sfx", power: 1, duration: 1, sfxApply: "PowerMagic", aura: "#ff8888", aurasprite: "Heart"
-			});
 	},
 	"BoundPower": () => {
 		KDDamageAmpPerks += KDBoundPowerLevel *  KDBoundPowerMult;
@@ -162,6 +157,9 @@ let KDPerkCount = {
  * @type {Record<string, KDPerk>}
  */
 let KinkyDungeonStatsPresets = {
+	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 2, requireArousal: true, blockclass: ["Trainee"]},
+
+
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1, block: ["SecondWind"]},
 	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1, block: ["FutileStruggles"]},
 
@@ -197,6 +195,7 @@ let KinkyDungeonStatsPresets = {
 	"Disorganized": {category: "Combat", id: 57, cost: -2, block: ["QuickDraw", "QuickScribe"]},
 	"Brawler": {category: "Combat", id: 20, cost: 1},
 	"Clumsy": {category: "Combat", id: 21, cost: -1},
+	"Unfocused": {category: "Combat", id: "Unfocused", cost: -1},
 	"HeelWalker": {category: "Combat", id: 53, cost: 1},
 	"BondageLover": {category: "Kinky", id: 15, cost: -1},
 	"Undeniable": {category: "Kinky", id: "Undeniable", cost: -1},
@@ -223,7 +222,7 @@ let KinkyDungeonStatsPresets = {
 	"Studious": {category: "Magic", id: 12, cost: 1, tags: ["start"]},
 	//"Novice": {category: "Magic", id: 7, cost: -1},
 	//"Meditation": {category: "Magic", id: 13, cost: 2},
-	"DistractionCast":  {category: "Magic", id: "DistractionCast", cost: 2},
+	//"DistractionCast":  {category: "Magic", id: "DistractionCast", cost: 2},
 	"Clearheaded":  {category: "Magic", id: "Clearheaded", cost: 1, block: ["ArousingMagic"]},
 	"ArousingMagic":  {category: "Magic", id: "ArousingMagic", cost: -1, block: ["Clearheaded"]},
 	//"QuickScribe": {category: "Magic", id: 56, cost: 1, block: ["Disorganized"]},
@@ -250,10 +249,13 @@ let KinkyDungeonStatsPresets = {
 
 	"Rusted": {category: "Map", id: "Rusted", cost: 1},
 	"Forgetful": {category: "Map", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
-	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0},
-	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0},
-	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, debuff: true, block: ["OnlyBrats"]},
-	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, debuff: true, block: ["NoBrats"]},
+	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
+	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"]},
+	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, tags: ["start"], debuff: true, block: ["OnlyBrats"]},
+	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], debuff: true, block: ["NoBrats"]},
+	"TapePref": {category: "Toggles", id: "TapePref", cost: 0, tags: ["start"], block: ["TapeOptout"]},
+	"TapeOptout": {category: "Toggles", id: "TapeOptout", cost: 0, tags: ["start"], debuff: true, block: ["TapePref"]},
+	"NoDoll": {category: "Toggles", id: "NoDoll", cost: 0, tags: ["start"], debuff: true},
 
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 
@@ -341,11 +343,17 @@ function KinkyDungeonGetStatPoints(Stats) {
 	}
 	return total;
 }
-
+/**
+ * Determine if a perk can be picked with a certain number of points remaining
+ * @param {string} Stat
+ * @param {number} [points]
+ * @returns {boolean}
+ */
 function KinkyDungeonCanPickStat(Stat, points) {
 	let stat = KinkyDungeonStatsPresets[Stat];
 	if (!stat) return false;
 	if (KDGetPerkCost(stat) > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < KDGetPerkCost(stat)) return false;
+	if (!KDValidatePerk(stat)) return false;
 	for (let k of KinkyDungeonStatsChoice.keys()) {
 		if (KinkyDungeonStatsChoice.get(k)) {
 			if (KinkyDungeonStatsPresets[k] && KinkyDungeonStatsPresets[k].block && KinkyDungeonStatsPresets[k].block.includes(Stat)) {
@@ -360,8 +368,28 @@ function KinkyDungeonCanPickStat(Stat, points) {
 	return true;
 }
 
+/**
+ * General validation for a perk
+ * @param {KDPerk} stat
+ * @returns {boolean}
+ */
+function KDValidatePerk(stat) {
+	if (stat.requireArousal && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
+	if (stat.blockclass) {
+		for (let t of stat.blockclass)
+			if (KinkyDungeonClassMode == t) return false;
+	}
+	return true;
+}
+
+/**
+ * @param {string} perk1
+ * @param {string} perk2
+ * @returns {boolean}
+ * Determines if perk1 is blocked by another perk or in general */
 function KDPerkBlocked(perk1, perk2) {
 	if (KinkyDungeonStatsPresets[perk2] && KinkyDungeonStatsPresets[perk1]) {
+		if (!KDValidatePerk(KinkyDungeonStatsPresets[perk1])) return false;
 		if (KinkyDungeonStatsPresets[perk2].block && KinkyDungeonStatsPresets[perk2].block.includes(perk1)) {
 			return true;
 		}
@@ -531,6 +559,9 @@ let KDPerkStart = {
 	},
 	Cursed: () => {
 		KinkyDungeonChangeFactionRep("Angel", -100);
+	},
+	MC_Trainee: () => {
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("DistractionCast"));
 	},
 };
 

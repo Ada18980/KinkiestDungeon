@@ -31,7 +31,7 @@ let KinkyDungeonWeapons = {
 		]
 	},
 	"MagicSword": {name: "MagicSword", dmg: 3, chance: 2, staminacost: 2.3, type: "slash", unarmed: false, rarity: 4, shop: false, magic: true, cutBonus: 0.1, sfx: "LightSwing"},
-	"Flamberge": {name: "Flamberge", dmg: 2.0, chance: 1.0, staminacost: 2.8, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "FireSpell",
+	"Flamberge": {name: "Flamberge", dmg: 2.0, chance: 1.0, staminacost: 2.8, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "FireSpell", magic: true,
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, damage: "fire"}, {type: "WeaponLight", trigger: "getLights", power: 5}],
 		special: {type: "ignite"},},
 	"Foil": {name: "Foil", dmg: 0.8, chance: 1.5, staminacost: 1.5, type: "pierce", unarmed: false, rarity: 3, shop: true, sfx: "Miss",

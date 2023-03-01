@@ -1213,14 +1213,20 @@ Features
 3.95
 - New minor enemies: Encased Adventurer and Bouncy Slime
 
-4.0 (Jan 2023)
+4.0 (Released Feb 2023)
 Major changes:
 - New tileset: Orrery
 - New enemies in the Orrery: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced), Star Demon, Moon Demon
 - Added an easy mode, which has a shopkeeper that comes and rescues you if you get in trouble!
 - Added perks filter in the perks screen
+- New perks: Unfocused
+- New upgrades: Steadfast Guard, Willful Struggle
 - New, cleaner options menu with a few additional options
+- Improved leash pathfinding to hopefully involve less players bouncing around
+- Balancing around lock application and enemies with the ability to lock. Most restraints won't have default locks now, but many more enemies can clip a lock onto what you already have.
+- Added more curses and curse unlock methods
 Other changes:
+- Many spell point costs for active spells reduced
 - New enemy in Ancient Tombs: Animated Sarcophagus
 - Added indicator for enemies which disappear if caster gets stunned (a hexagon)
 - Jail rescues become rarer the more often you get rescued, penalty decays by 1 rescue per floor
@@ -1234,6 +1240,49 @@ Other changes:
 - Some tooltips still appear even without inspecting
 - Fixed a bug where selecting both Hogtied and Latex Doll would mistakenly not place a blindfold on the player character
 - Other general bugfixes and crash fixes
+
+4.1 (Feb 2023)
+Major changes:
+- New tileset: Bellows
+- Added conveyor belts and bondage machines
+- Added buttons which can control doors or operate machinery
+- Added a doll room you get sent to if you fall in the doll terminal
+- Enemies can drag you onto conveyor belts (unless you opt-out via perk)
+- Max floor is now 20 from 16
+- New class: Trainee, a novice magician who has nonetheless set out to adventure in the middle of her 'training'
+- New perks: Multiclass perks, allowing you to gain access to class-specific features such as the Trainee's Mana Burst ability
+(note: Mana Burst is removed and replaced with this)
+- New enemies: Force Field Unit, Auto Tape Unit, Dollsmith, Dollmaker's Apprentice, Highly-Motivated Doll, Rusty Drone, Rubber Blaster, Rubber Launcher, Rusty Auto Taper, Artillery Unit
+- New toggle perks to help define user preferences for tape and dollification
+- Sprinting now costs 15 + 5 per slow level
+- Sleep is refreshed after 150 turns in jail if you have already slept before
+- Added a Hard setting, which removes faction rescue events in jail
+Minor Changes:
+- Shady Dealer now has a bear trap (damsel trap) spell, and her lust bomb attack now has a 3 turn delay
+- High-tech cables now have a weaker version (nylon) and use rope assets instead of ribbon
+
+4.11 (Feb 2023)
+- Added some new lore, one history entry for every floor and a few extra sheets in the orrery
+- Added some more lore-centric dialogue to Fuuka
+- Added some new graphics for arousal, toggleable in the game settings
+- Removed the witch faction. Witches still occur, but they are generic enemies now. Also less will appear in the bellows
+- Added a new Donut item dropped by Deputies
+- You can now use conveyors to dodge attacks
+- Tables now use a dialogue instead of a modal popup
+- Some animated restraints can now dash
+- For modders: Added support for multiple additional effects in consumables, e.g. the "CookieJailer" item
+- For tile editors: Added a 'test tile' feature to very quickly generate a map with nothing but the desired tile
+- Made the bellows trap tile easier to see
+- Turrets no longer spawn in the ambush hallways within the Bellows
+- Fixed a number of other bugs with the new tileset
+
+4.12 (Feb 2023)
+- Added auto-struggle feature
+- Added advanced fog of war option
+- More latex-wearing enemies like nevermere, alchemists, and dollsmiths have electric resistance.
+- Doll dropoff platforms now have a cosmetic doll stand on them
+
+
 
 TODO ValidationFindBlockCycles to prevent bugs
 

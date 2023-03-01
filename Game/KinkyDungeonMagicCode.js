@@ -646,6 +646,37 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
+	"DollConvert": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let enList = KDNearbyEnemies(tX, tY, spell.aoe);
+
+		if (enList.length > 0) {
+			let count = 0;
+			let seen = 0;
+			for (let en of enList) {
+				if (!KDHelpless(en) && en.Enemy.tags?.dollmakerconvert) {
+					en.hp = 0;
+					DialogueCreateEnemy(en.x, en.y, "DollsmithDoll");
+					count += 1;
+					KDCreateEffectTile(en.x, en.y, {
+						name: "Latex",
+						duration: 4,
+					}, 0);
+					if (KinkyDungeonVisionGet(en.x, en.y) > 0)
+						seen += 1;
+				}
+				if (count >= 3) break;
+			}
+			if (count > 0) {
+				if (KinkyDungeonVisionGet(entity?.x||0, entity?.y||0) > 0 || seen > 0)
+					KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSpellCast"+spell.name).replace("ENEMYNAME", TextGet("Name" + entity?.Enemy?.name)), "#ff4488", 2);
+
+				return "Cast";
+			}
+
+		}
+		return "Fail";
+	},
+
 	"CommandVibrate": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, KinkyDungeonTargetingSpell.aoetype || "")
 			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull"))) {

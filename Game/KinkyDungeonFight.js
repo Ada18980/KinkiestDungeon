@@ -4,6 +4,12 @@ let KinkyDungeonAlert = 0;
 
 let KDBrawlerAmount = 1.0;
 let KDClumsyAmount = 0.7;
+let KDUnfocusedParams = {
+	AmountMin: 0.9,
+	AmountMax: 0.6,
+	ThreshMin: 0.1,
+	ThreshMax: 0.9,
+};
 let KDDodgeAmount = 0.75;
 let KinkyDungeonMissChancePerBlind = 0.1; // Max 3
 let KinkyDungeonMissChancePerSlow = 0.1; // Max 3
@@ -125,7 +131,7 @@ function KinkyDungeonWeaponCanCut(RequireInteract, MagicOnly) {
 	if (KinkyDungeonPlayerWeapon
 		&& KinkyDungeonWeapons[KinkyDungeonPlayerWeapon].cutBonus != undefined
 		&& (!MagicOnly || KinkyDungeonWeapons[KinkyDungeonPlayerWeapon].magic != undefined)
-		&& (!RequireInteract || !KinkyDungeonIsHandsBound())) return true;
+		&& (!RequireInteract || !KinkyDungeonIsHandsBound(false, false, 0.55))) return true;
 	if (KinkyDungeonPlayerBuffs) {
 		for (let b of Object.values(KinkyDungeonPlayerBuffs)) {
 			if (b && b.tags && (b.tags.includes("allowCutMagic") || (!MagicOnly && b.tags.includes("allowCut")))) return true;
@@ -165,8 +171,9 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 
 	Object.assign(KinkyDungeonPlayerDamage, damage);
 
-	if (KinkyDungeonIsArmsBound() && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
-		KinkyDungeonPlayerDamage.chance /= 2;
+	let handBondage = KDHandBondageTotal();
+	if (handBondage && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
+		KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, handBondage));
 	}
 	if (KinkyDungeonStatsChoice.get("Brawler") && !KinkyDungeonPlayerDamage.name) {
 		KinkyDungeonPlayerDamage.dmg += KDBrawlerAmount;
@@ -205,7 +212,17 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 		KinkyDungeonSendEvent("calcEvasion", data);
 	let hitChance = (Enemy && Enemy.buffs) ? KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(Enemy.buffs, "Evasion")) : 1.0;
 	hitChance *= data.hitmult;
+
 	if (KinkyDungeonStatsChoice.get("Clumsy")) hitChance *= KDClumsyAmount;
+	if (KinkyDungeonStatsChoice.get("Unfocused")) {
+		let amount = 1;
+		let dist = KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax;
+		if (dist >= KDUnfocusedParams.ThreshMin) {
+			amount = KDUnfocusedParams.AmountMin + (KDUnfocusedParams.AmountMax - KDUnfocusedParams.AmountMin) * (dist - KDUnfocusedParams.ThreshMin) / (KDUnfocusedParams.ThreshMax - KDUnfocusedParams.ThreshMin);
+		}
+		if (amount != 1) hitChance *= amount;
+	}
+
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.evasion && ((!(Enemy.stun > 0) && !(Enemy.freeze > 0)) || Enemy.Enemy.alwaysEvade || Enemy.Enemy.evasion < 0)) hitChance *= Math.max(0,
 		(Enemy.aware ? KinkyDungeonMultiplicativeStat(Enemy.Enemy.evasion) : Math.max(1, KinkyDungeonMultiplicativeStat(Enemy.Enemy.evasion))));
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.tags.ghost && (IsMagic || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.magic))) hitChance = Math.max(hitChance, 1.0);
@@ -419,9 +436,10 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		predata.dmg *= buffAmount;
 		predata.dmg *= buffresist;
 
-		if (predata.type == "electric" && KinkyDungeonMapGet(Enemy.x, Enemy.y) == 'w') {
-			predata.dmg *= 2;
+		if (predata.type == "fire" && Enemy.freeze > 0) {
+			predata.dmg *= 1.4;
 		}
+
 		if (damageAmp) predata.dmg *= damageAmp;
 
 		let time = predata.time ? predata.time : 0;
@@ -515,7 +533,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			KinkyDungeonSendEvent("duringDamageEnemy", predata);
 
 			if (Spell && Spell.hitsfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + Spell.hitsfx + ".ogg");
-			else if (predata.dmgDealt > 0 && bullet) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/DealDamage.ogg");
+			else if (!(Spell && Spell.hitsfx) && predata.dmgDealt > 0 && bullet) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/DealDamage.ogg");
 			if (Damage && Damage.damage) {
 				if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0)
 					KDDamageQueue.push({floater: Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), Entity: Enemy, Color: "#ff4444", Delay: Delay});
@@ -1032,10 +1050,16 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 				KinkyDungeonUpdateSingleBulletVisual(b, end);
 			}
 			if (!end) {
-				let show = (KDFactionRelation("Player", b.bullet.faction) < 0.5 || (b.bullet.spell && b.bullet.spell.playerEffect) || b.bullet.playerEffect) && (
-					(b.bullet.hit == "lingering" || (b.bullet.spell && b.bullet.name == b.bullet.spell.name && (b.bullet.spell.onhit == "aoe" || b.bullet.spell.onhit == "dot")))
-					|| ((b.lifetime > 0 || b.lifetime == undefined) && b.bullet.damage && b.bullet.damage.type && b.bullet.damage.type != "heal" && b.bullet.damage.type != "inert")
-				);
+				KinkyDungeonSendEvent("bulletAfterTick", {bullet: b, delta: delta, allied: Allied});
+				// Update the bullet's visual position
+				KinkyDungeonUpdateSingleBulletVisual(b, end);
+
+				let show = (KDFactionRelation("Player", b.bullet.faction) < 0.5 || (b.bullet.spell && b.bullet.spell.playerEffect) || b.bullet.playerEffect)
+					&& !(b.bullet.spell && b.bullet.spell.hideWarnings)
+					&& (
+						(b.bullet.hit == "lingering" || (b.bullet.spell && b.bullet.name == b.bullet.spell.name && (b.bullet.spell.onhit == "aoe" || b.bullet.spell.onhit == "dot")))
+						|| ((b.lifetime > 0 || b.lifetime == undefined) && b.bullet.damage && b.bullet.damage.type && b.bullet.damage.type != "heal" && b.bullet.damage.type != "inert")
+					);
 				let bxx = b.xx;
 				let byy = b.yy;
 				let bx = b.x;
@@ -1683,7 +1707,7 @@ function KDBulletID(bullet, enemy) {
 function KinkyDungeonLaunchBullet(x, y, targetx, targety, speed, bullet, miscast) {
 	let direction = (!targetx && !targety) ? 0 : Math.atan2(targety, targetx);
 	let vx = (targetx != 0 && targetx != undefined) ? Math.cos(direction) * speed : 0;
-	let vy = (targety != 0 && targetx != undefined) ? Math.sin(direction) * speed : 0;
+	let vy = (targety != 0 && targety != undefined) ? Math.sin(direction) * speed : 0;
 	let lifetime = bullet.lifetime;
 	if (miscast) {
 		vx = 0;

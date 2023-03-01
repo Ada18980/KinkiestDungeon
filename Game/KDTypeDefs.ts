@@ -5,6 +5,11 @@ type Named = {
 /** Kinky Dungeon Typedefs*/
 interface item extends Named {
 	id: number,
+	/** Contains string data */
+	dataString?: Record<string, string>;
+	/** Contains numeric data */
+	dataNumber?: Record<string, number>;
+	/** Used in order to boost performance */
 	linkCache?: string[],
 	/** If the item has a different curse from the base curse */
 	curse?: string,
@@ -68,12 +73,18 @@ interface consumable {
 	spell?: string,
 	potion?: boolean,
 	noHands?: boolean,
+	/** Data var */
+	data?: Record<string, string|number>,
 	/** Requirement that overrides all other requirements */
 	prereq?: string,
 	/** Requirement in addition to all other requirements such as not being gagged for potions, bound, etc */
 	postreq?: string,
 	/** Minimum effectiveness when gagged */
 	gagFloor?: number,
+	/** Max gag amount to use */
+	gagMax?: number,
+	/** delay before use */
+	delay?: number,
 	needMouth?: boolean,
 	/** Max strictness allowed before the item cant be used */
 	maxStrictness?: number,
@@ -102,6 +113,8 @@ interface consumable {
 	sfx?: string,
 	noConsumeOnUse?: boolean,
 	useQuantity?: number,
+	/** Support for multiple effects */
+	sideEffects?: string[],
 }
 
 type KDHasTags = {
@@ -109,6 +122,7 @@ type KDHasTags = {
 }
 
 interface KDRestraintProps {
+
 	inventory?: boolean,
 	power?: number,
 	weight?: number,
@@ -176,6 +190,10 @@ interface KDRestraintProps {
 	accessible?: boolean,
 	/** This item lets you CANT access linked items under it */
 	inaccessible?: boolean,
+	/** This item lets you ignore its inaccessibility for the sake of trussing up the player */
+	deepAccessible?: boolean,
+	/** WIP, does nothing yet. Should allow you to access the item under even inaccessible stuff */
+	alwaysAccessible?: boolean,
 	/** This item can be rendered when linked */
 	renderWhenLinked?: string[];
 	// Player must have one of these PlayerTags to equip
@@ -291,7 +309,7 @@ interface KDRestraintProps {
 	/** Binding arms hurts a lot of things but isn't as punishing as hands */
 	bindarms?: boolean,
 	/** Binding hands prevents use of weapons and picks */
-	bindhands?: boolean,
+	bindhands?: number,
 	/** harnesses allow enemies to grab you and slow you */
 	harness?: boolean,
 	/** hobble is the simplest kind of slowing restraint, increasing slow by 1*/
@@ -390,6 +408,7 @@ interface KDRestraintProps {
 
 interface restraint extends KDRestraintProps {
 	power: number,
+	/** Base weight of the restraint, required */
 	weight: number,
 	minLevel: number,
 
@@ -407,6 +426,8 @@ type outfitKey = string
 type mapKey = string
 
 interface floorParams {
+	/** List of factions allowed to be primary or secondary here */
+	factionList?: string[];
 	/** This code is run after a worldgen */
 	worldGenCode?: () => void;
 	tagModifiers?: Record<string, number>;
@@ -518,8 +539,16 @@ interface overrideDisplayItem {
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
 
 interface enemy extends KDHasTags {
+	/** This enemy will always kite the player even if player is harmless*/
+	alwaysKite?: boolean,
+
+	/** These enemies always carry these items at the start */
+	startingItems?: string[]
+
 	/** Restraint filters */
 	RestraintFilter?: {
+		/** Starts with more restraints!! */
+		bonusRestraints?: number,
 		/** This enemy can apply restraints without needing them in her pockets */
 		unlimitedRestraints?: boolean,
 		/** Restraints applied must all be from inventory */
@@ -536,6 +565,8 @@ interface enemy extends KDHasTags {
 		noRestock?: boolean,
 		/** Enemy will restock to this percentage */
 		restockPercent?: number,
+		/** These enemies always restock these restraint items if they dont have them */
+		requiredItems?: string[]
 	},
 
 	/** Security levels for accessing chastity */
@@ -550,8 +581,18 @@ interface enemy extends KDHasTags {
 
 	/** Behavior tags */
 	Behavior?: {
+		/** This enemy will always want to add more restraints~ */
+		thorough?: number,
 		/** Can't play */
 		noPlay?: boolean,
+		/** Wont stop tying you until these groups are bound */
+		ensureGroupTied?: string[],
+		/** Wont stop tying you until these playertags are fulfilled */
+		ensurePlayerTag?: string[],
+		/** Wont stop tying you until these groups are bound (arousal mode only)*/
+		ensureGroupTiedArousal?: string[],
+		/** Wont stop tying you until these playertags are fulfilled (arousal mode only)*/
+		ensurePlayerTagArousal?: string[],
 	}
 
 	/** This enemy wont appear outside of its designated floors even if it shares the tag */
@@ -725,8 +766,18 @@ interface enemy extends KDHasTags {
 	specialCD?: number,
 	/** Special attack property. Added to the special attack in addition to the enemy's default attack*/
 	specialAttack?: string,
+	/** Special attacks ignore stamina requirements */
+	specialIgnoreStam?: boolean,
 	/** Special attack property. Removed these types from the main attack when special attacking.*/
 	specialRemove?: string,
+	/** Adds additional restraint tags when special attacking*/
+	specialExtraTags?: string[],
+	/** removes the specified restraint tags when special attacking*/
+	specialRemoveTags?: string[],
+	/** Uses a special message for Special attacks */
+	specialMsg?: boolean,
+	/** specifies a condition for using a special attack*/
+	specialCondition?: string,
 	/** Special attack property*/
 	specialPower?: number,
 	/** Special attack property*/
@@ -1234,14 +1285,18 @@ type KDPerk = {
 	block?: string[],
 	tags?: string[],
 	blocktags?: string[],
+	blockclass?: string[],
 	locked?: boolean,
 	outfit?: string,
 	require?: string,
 	costGroup?: string,
 	startPriority?: number,
+	requireArousal?: boolean,
 }
 
 interface spell {
+	/** This spell does not leave a warning to the player */
+	hideWarnings?: boolean,
 	/** Marks a spell as non-magical, so traps dont leave a rune on the ground */
 	nonmagical?: boolean,
 	/** Marks the spell as a command word spell to enemies */
@@ -1488,8 +1543,8 @@ interface spell {
 	nonVolatile?: boolean;
 	/** Cancels automove when cast */
 	cancelAutoMove?: boolean;
-	/** noTargetDark */
-	noTargetDark?: boolean;
+	/** requireLOS */
+	requireLOS?: boolean;
 	/** selfTargetOnly */
 	selfTargetOnly?: boolean;
 	/** AI will only target creatures with this tag */
@@ -1525,19 +1580,22 @@ interface spell {
 
 }
 
+interface KDPoint {x: number, y: number}
+interface KDJailPoint extends KDPoint {type: string, radius: number, requireLeash?: boolean, requireFurniture?: boolean, direction?:{x: number, y: number}, restraint?:string, restrainttags?:string[]}
+
 interface KinkyDialogue {
 	/** REPLACETEXT -> Replacement */
 	data?: Record<string, string>;
 	/** Shows the quick inventory */
 	inventory?: boolean;
 	/** Function to play when clicked. If not specified, nothing happens.  Bool is whether or not to abort current click*/
-	clickFunction?: (gagged: boolean) => boolean | undefined;
+	clickFunction?: (gagged: boolean, player: entity) => boolean | undefined;
 	/** Function to play when clicked, if considered gagged. If not specified, will use the default function. */
-	gagFunction?: () => boolean | undefined;
+	gagFunction?: (player: entity) => boolean | undefined;
 	/** Will not appear unless function returns true */
-	prerequisiteFunction?: (gagged: boolean) => boolean;
+	prerequisiteFunction?: (gagged: boolean, player: entity) => boolean;
 	/** Will appear greyed out unless true */
-	greyoutFunction?: (gagged: boolean) => boolean;
+	greyoutFunction?: (gagged: boolean, player: entity) => boolean;
 	greyoutTooltip?: string;
 	/** List of personalities supported by this dialogue */
 	personalities?: string[];
@@ -1655,6 +1713,7 @@ interface KinkyDungeonSave {
 	dress: string;
 	gold: number;
 	points: number;
+	grounditems: any;
 	perks: string[];
 	levels: {
 		Elements: number;
@@ -1893,6 +1952,45 @@ interface KDDelayedAction {
 	tags: string[],
 }
 
+interface KDBondageMachineFunc {
+	eligible_player: (tile, x, y, entity) => boolean;
+	eligible_enemy: (tile, x, y, entity) => boolean;
+
+	function_player: (tile, delta, x, y, entity) => boolean;
+	function_enemy: (tile, delta, x, y, entity) => boolean;
+}
+
+interface KDDroppedItemProp {
+	/** When blindfolded, this item will be invisible if your blind level is equal to this or higher */
+	tinyness?: number,
+}
+
+type KDParticleData = {
+	zIndex: number,
+	fadeEase?: string,
+	time: number,
+	phase?: number,
+
+	vy?: number,
+	vy_spread?: number,
+	vx?: number,
+	vx_spread?: number,
+	sin_period?: number,
+	sin_period_spread?: number,
+	sin_x?: number,
+	sin_x_spread?: number,
+	sin_y?: number,
+	sin_y_spread?: number,
+	/** Lifetime in ms */
+	lifetime: number,
+	lifetime_spread?: number,
+}
+
+
+type SpecialCondition = {
+	resetCD: boolean,
+	criteria: (enemy: entity, AIData: any) => boolean,
+}
 
 declare const PIXI: any;
 declare const zip: any;
