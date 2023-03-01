@@ -748,6 +748,7 @@ function KinkyDungeonDrawGame() {
 
 				// Get lighting grid
 				if (KinkyDungeonUpdateLightGrid) {
+					KDUpdateFog = true;
 					KDUpdateVision();
 				}
 
