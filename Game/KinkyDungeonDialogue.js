@@ -686,10 +686,13 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 							&& KDRandom() < (KDPersonalitySpread(125, 85, 25) - KinkyDungeonGoddessRep.Ghost + KDGetModifiedOpinion(enemy) + (KinkyDungeonStatsChoice.get("Dominant") ? 25 : 0))/100 * (KDPersonalitySpread(0.0, -0.25, -0.5) + (KDAllied(enemy) ? 2.0 : 1.0))
 						) {
 							KinkyDungeonChangeRep("Ghost", 3);
-							KinkyDungeonSetEnemyFlag(enemy, "HelpMe", 20);
+							KinkyDungeonSetEnemyFlag(enemy, "HelpMe", 30);
+							KinkyDungeonSetEnemyFlag(enemy, "wander", 30);
 						} else {
 							KDGameData.CurrentDialogMsg = name + "HelpMe_Fail";
 							KinkyDungeonSetEnemyFlag(enemy, "NoHelp", 100);
+
+							KinkyDungeonSetEnemyFlag(enemy, "playLikely", 10);
 							KinkyDungeonChangeRep("Ghost", 1);
 						}
 					}
@@ -798,6 +801,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KinkyDungeonSetEnemyFlag(enemy, "HelpMe", 0);
+						KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 					}
 					return false;
 				},

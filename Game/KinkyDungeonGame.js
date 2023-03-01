@@ -3737,7 +3737,7 @@ let KDVisionUpdate = 0;
 let KDLastTick = 0;
 
 function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
-
+	KDUpdateFog = true;
 	KDLastTick = performance.now();
 
 	if (delta > 0 && CommonTime() > lastFloaterRefresh + 1000) {

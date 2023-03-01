@@ -20,6 +20,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["WolfgirlPet", [
 		{name: "Demetria", color: "#c9d4fd", prisoner: true, free: false, customSprite: ""},
+		{name: "Arii", color: "#ff88ff", prisoner: true, free: true, customSprite: ""},
 	],
 	],
 	["Nurse", [

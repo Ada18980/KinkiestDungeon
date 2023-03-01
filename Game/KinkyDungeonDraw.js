@@ -4,7 +4,7 @@ let KDRecentRepIndex = 0;
 
 let ShowBoringness = false;
 
-let KDWallReplacers = "14,dDzZbg";
+let KDWallReplacers = "14,dDzZbgS";
 
 let KinkyDungeonSuppressSprint = true;
 
@@ -76,10 +76,12 @@ function KDWallVert(x, y, noReplace) {
 	let tileBelow = KinkyDungeonMapGet(x, y + 1);
 	if (
 		// These are the tiles that trigger a replacement
-		KDWallReplacers.includes(tileBelow)
-		&& (!noReplace || !noReplace.includes(tileBelow))
+		(KDWallReplacers.includes(tileBelow)
+		&& (!noReplace || !noReplace.includes(tileBelow)))
 	)
 		return true;
+
+	if (!KinkyDungeonVisionGet(x, y + 1) && !(KinkyDungeonFogGet(x, y + 1) > 0)) return true;
 
 	return false;
 }
@@ -890,7 +892,12 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonDrawEnemiesStatus(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 
 				// Draw fog of war
-				KDDrawFog(CamX, CamY, CamX_offset, CamY_offset);
+				let CamPos = {x: CamX, y: CamY};
+				if (CamPos.x != KDLastCamPos.x || CamPos.y != KDLastCamPos.y) KDUpdateFog = true;
+				KDLastCamPos = CamPos;
+
+				if (KDUpdateFog)
+					KDDrawFog(CamX, CamY, CamX_offset, CamY_offset);
 
 				KinkyDungeonSendEvent("draw",{update: KDDrawUpdate, CamX:CamX, CamY:CamY, CamX_offset: CamX_offset, CamY_offset: CamY_offset});
 				KDDrawUpdate = 0;
@@ -3005,3 +3012,6 @@ function KDElementPosition(ElementID, X, Y, W, H) {
 function KDShowQuickInv() {
 	return KinkyDungeonShowInventory || (KDGameData.CurrentDialog && KDDialogue[KDGameData.CurrentDialog] && KDDialogue[KDGameData.CurrentDialog].inventory);
 }
+
+let KDUpdateFog = false;
+let KDLastCamPos = {x: 0, y: 0};

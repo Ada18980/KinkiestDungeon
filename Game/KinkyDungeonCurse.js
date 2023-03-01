@@ -97,6 +97,14 @@ let KDCurses = {
 			// For free!
 		}
 	},
+	"Mana" : {
+		condition: (item) => {
+			return KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 20;
+		},
+		remove: (item, host) => {
+			KinkyDungeonChangeMana(-20, false, 0, true, true);
+		}
+	},
 	"ShrineWill" : {
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
@@ -238,7 +246,8 @@ let KDCurseUnlockList = {
 		"TakeDamageElectric",
 		"TakeDamageIce",
 		"TakeDamageGlue",
-		"TakeDamageChain"
+		"TakeDamageChain",
+		"Mana",
 	],
 };
 

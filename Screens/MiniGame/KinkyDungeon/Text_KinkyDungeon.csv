@@ -38,6 +38,7 @@ KDToggleMusic,Enable Music
 KDToggleTurnCounter,Turn Counter
 KDToggleStunFlash,Flash Screen on Stun
 KDToggleArousalHearts,Advanced Distraction VFX
+KDToggleFancyWalls,Advanced Fog of War
 KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
@@ -5997,6 +5998,10 @@ KinkyDungeonCurseStruggleShrineElements,"The item is protected by powerful energ
 KinkyDungeonCurseUnlockBlueLock,"You hold the key to the item and it comes loose, draining the key's energy."
 KinkyDungeonCurseInfoBlueLock,"The item is incribed with mystical runes. Maybe you need a powerful key to unlock it."
 KinkyDungeonCurseStruggleBlueLock,"You tug on the item, but the runes glow brighter as you realize struggling is pointless."
+
+KinkyDungeonCurseUnlockMana,"You overload the magical seal, causing it to vanish and release the item."
+KinkyDungeonCurseInfoMana,"The item is magically sealed, requiring 200 mana to unlock it (includes mana from mana pool)."
+KinkyDungeonCurseStruggleMana,"You tug on the item, but the magic can't be broken with anything other than brute force."
 
 KinkyDungeonCurseUnlockTemplate,""
 KinkyDungeonCurseInfoTemplate,""

@@ -83,6 +83,7 @@ let KDToggles = {
 	TurnCounter: true,
 	StunFlash: true,
 	ArousalHearts: true,
+	FancyWalls: true,
 };
 
 let KDDefaultKB = {
