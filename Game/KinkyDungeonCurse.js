@@ -64,6 +64,7 @@ let KDCurses = {
 			{type: "RemoveOnDmg", power: 1, count: 4, damage: "acid", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
 			{type: "RemoveOnDmg", power: 1, count: 4, damage: "stun", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
 			{type: "RemoveOnBuffName", trigger: "tick", kind: "Drenched"},
+			{type: "RemoveOnBuffName", trigger: "tick", kind: "Chilled"},
 		],
 	},
 	"TakeDamageElectric" : {
