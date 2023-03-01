@@ -161,10 +161,11 @@ function KinkyDungeonPotionCollar() {
 	return false;
 }
 
-function KinkyDungeonCanDrink() {
+function KinkyDungeonCanDrink(byEnemy) {
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).allowPotions) return true;
 	}
+	if (KDGroupBlocked("ItemMouth", byEnemy)) return false;
 	return KinkyDungeonCanTalk(true);
 }
 
@@ -210,7 +211,8 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 	let strictness = KinkyDungeonStrictness(false, "ItemHands");
 	let maxStrictness = (item.item && KDConsumable(item.item) && KDConsumable(item.item).maxStrictness) ? KDConsumable(item.item).maxStrictness : 1000;
 
-	if (needMouth && ((!KDConsumable(item.item).potion && ((KDConsumable(item.item).gagMax && KinkyDungeonGagTotal() > KDConsumable(item.item).gagMax) || (!KDConsumable(item.item).gagMax && !KinkyDungeonCanTalk(true)))) || (KDConsumable(item.item).potion && !KinkyDungeonCanDrink()))) {
+	if (needMouth && ((!KDConsumable(item.item).potion && ((KDConsumable(item.item).gagMax && KinkyDungeonGagTotal() > KDConsumable(item.item).gagMax) || (!KDConsumable(item.item).gagMax && !KinkyDungeonCanTalk(true))))
+		|| (KDConsumable(item.item).potion && !KinkyDungeonCanDrink()))) {
 		let allowPotions = KinkyDungeonPotionCollar();
 		if (KDConsumable(item.item).potion && allowPotions) {
 			//KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - energyCost);

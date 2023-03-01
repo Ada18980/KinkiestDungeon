@@ -623,6 +623,17 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 				KDMovePlayer(point.x, point.y, false);
 			}
 		}
+
+		if (KinkyDungeonJailGuard()?.KinkyDungeonJailTourInfractions < 1) {
+			let item = "CookieJailer";
+			KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerReleaseGoodGirl").replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#ffff00", 4, 9);
+			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonJailerReleaseGoodGirlMsg")
+				.replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name))
+				.replace("ItemName", TextGet("KinkyDungeonInventoryItem" + item)),
+			"#88ff88", 1);
+			KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable(item), 1);
+		}
+
 		let enemy = KinkyDungeonEnemyAt(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (enemy) enemy.x += 1;
 		KinkyDungeonJailGuard().CurrentAction = "jailWander";
@@ -678,7 +689,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 					let index = "0";
 					if (KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions < 1) {
 						index = "" + Math.floor(KDRandom() * 6);
-						KinkyDungeonChangeRep("Ghost", 8);
+						//KinkyDungeonChangeRep("Ghost", 8);
 					}
 					KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#ffff00", 4, 9);
 				}

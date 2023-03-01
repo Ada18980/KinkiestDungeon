@@ -317,7 +317,7 @@ let KDTileUpdateFunctions = {
  */
 let KDMoveObjectFunctions = {
 	'B': (moveX, moveY) => {
-		if (!KinkyDungeonFlags.get("slept") && !KinkyDungeonFlags.get("nobed") && KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.95) {
+		if (!KinkyDungeonFlags.get("slept") && !KinkyDungeonFlags.get("nobed") && KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.49) {
 			KDStartDialog("Bed", "", true);
 		}
 		return false;
