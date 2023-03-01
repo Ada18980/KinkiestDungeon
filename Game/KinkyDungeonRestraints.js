@@ -490,6 +490,15 @@ function KinkyDungeonLock(item, lock) {
 }
 
 /**
+ * Gets the curse of an item, ither intrinsic or applied
+ * @param {item} item
+ * @returns {string}
+ */
+function KDGetCurse(item) {
+	return item.curse || KDRestraint(item)?.curse;
+}
+
+/**
  *
  * @param {string} shrine
  * @returns {item[]}
@@ -501,13 +510,13 @@ function KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, recursive) {
 	let ret = [];
 
 	for (let item of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(item).shrine && KDRestraint(item).shrine.includes(shrine) && (ignoreGold || item.lock != "Gold")) {
+		if (!KDRestraint(item).noShrine && (!KDGetCurse(item) || !KDCurses[KDGetCurse(item)].noShrine) && KDRestraint(item).shrine && KDRestraint(item).shrine.includes(shrine) && (ignoreGold || item.lock != "Gold")) {
 			ret.push(item);
 		}
 		if (recursive) {
 			let link = item.dynamicLink;
 			while (link) {
-				if (KDRestraint(link).shrine && KDRestraint(link).shrine.includes(shrine) && (ignoreGold || link.lock != "Gold")) {
+				if (!KDRestraint(item).noShrine && (!KDGetCurse(item) || !KDCurses[KDGetCurse(item)].noShrine) && KDRestraint(link).shrine && KDRestraint(link).shrine.includes(shrine) && (ignoreGold || link.lock != "Gold")) {
 					ret.push(link);
 				}
 				link = link.dynamicLink;
@@ -530,7 +539,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 		/**
 		 * @type {item[]}
 		 */
-		let items = KinkyDungeonAllRestraint().filter((r) => {return KDRestraint(r).shrine && KDRestraint(r).shrine.includes(shrine) && (ignoreGold || r.lock != "Gold");});
+		let items = KinkyDungeonAllRestraint().filter((r) => {return !KDRestraint(item).noShrine && (!KDGetCurse(item) || !KDCurses[KDGetCurse(item)].noShrine) && KDRestraint(r).shrine && KDRestraint(r).shrine.includes(shrine) && (ignoreGold || r.lock != "Gold");});
 		// Get the most powerful item
 		let item = items.length > 0 ? items.reduce((prev, current) => (KDRestraint(prev).power * KinkyDungeonGetLockMult(prev.lock) > KDRestraint(current).power * KinkyDungeonGetLockMult(current.lock)) ? prev : current) : null;
 		if (item) {
@@ -583,7 +592,7 @@ function KinkyDungeonUnlockRestraintsWithShrine(shrine) {
 	let count = 0;
 
 	for (let item of KinkyDungeonAllRestraint()) {
-		if (item.lock && KDRestraint(item).shrine && KDRestraint(item).shrine.includes(shrine) && KDLocks[item.lock] && !KDLocks[item.lock].shrineImmune) {
+		if (item.lock && !KDRestraint(item).noShrine && (!KDGetCurse(item) || !KDCurses[KDGetCurse(item)].noShrine) && KDRestraint(item).shrine && KDRestraint(item).shrine.includes(shrine) && KDLocks[item.lock] && !KDLocks[item.lock].shrineImmune) {
 
 			KinkyDungeonLock(item, "");
 			count++;
@@ -866,8 +875,10 @@ function KDGroupBlocked(Group, External) {
 	if (KinkyDungeonPlayerTags.get("ChastityUpper") && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) return true;
 	if (KinkyDungeonPlayerTags.get("Block_" + Group)) return true;
 
-	let arms = KinkyDungeonGetRestraintItem("ItemArms");
-	if (arms && !KDIsTreeAccessible(arms) && Group.includes("ItemHands")) return true;
+	if (Group.includes("ItemHands")) {
+		let arms = KinkyDungeonGetRestraintItem("ItemArms");
+		if (arms && !KDIsTreeAccessible(arms)) return true;
+	}
 
 	return false;
 	//let device = null;

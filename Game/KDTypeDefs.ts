@@ -122,6 +122,8 @@ type KDHasTags = {
 }
 
 interface KDRestraintProps {
+	/** This item is unaffected by shrines */
+	noShrine?:boolean,
 
 	inventory?: boolean,
 	power?: number,
@@ -1984,6 +1986,15 @@ type KDParticleData = {
 	lifetime_spread?: number,
 }
 
+interface KDCursedDef {
+	/** Restraints with this curse are unremovable via shrine */
+	noShrine?: boolean,
+	/** TODO NOT IMPLEMENTED for a future RemoveCursesWithShrine function */
+	shrineRemove?: string[],
+	onApply?: (item: item, host?: item) => void,
+	condition: (item: item) => boolean,
+	remove: (item: item, host: item) => void, events?: KinkyDungeonEvent[]
+}
 
 type SpecialCondition = {
 	resetCD: boolean,

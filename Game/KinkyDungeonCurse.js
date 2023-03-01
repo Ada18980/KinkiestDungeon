@@ -5,7 +5,7 @@
  * condition: required to remove it
  * remove: happens when removing
  * events: these events are added to the restraint
- * @type {Record<string, {onApply?: (item: item, host?: item) => void, condition: (item: item) => boolean, remove: (item: item, host: item) => void, events?: KinkyDungeonEvent[]}>} */
+ * @type {Record<string, KDCursedDef>} */
 let KDCurses = {
 	"GhostLock" : {
 		condition: (item) => {
@@ -16,6 +16,7 @@ let KDCurses = {
 		}
 	},
 	"MistressKey": {
+		noShrine: true,
 		condition: (item) => {
 			return KinkyDungeonItemCount("MistressKey") > 0;
 		},
