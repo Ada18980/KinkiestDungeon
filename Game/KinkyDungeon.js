@@ -81,6 +81,7 @@ let KDToggles = {
 	Drool: true,
 	DrawArmor: true,
 	TurnCounter: true,
+	ShowNPCStatuses: true,
 	StunFlash: true,
 	ArousalHearts: true,
 	FancyWalls: true,

@@ -38,6 +38,7 @@ KDToggleMusic,Enable Music
 KDToggleTurnCounter,Turn Counter
 KDToggleStunFlash,Flash Screen on Stun
 KDToggleArousalHearts,Advanced Distraction VFX
+KDToggleShowNPCStatuses,Show NPC Status
 KDToggleFancyWalls,Advanced Fog of War
 KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
@@ -6423,7 +6424,7 @@ KDStatusTooltipEnemyVulnerable,Vulnerable
 KDStatusTooltipEnemyStunned,Stunned
 KDStatusTooltipEnemyBind,Snared
 KDStatusTooltipEnemySlow,Slowed
-KDStatusTooltipEnemySilence,Silence
+KDStatusTooltipEnemySilence,Silenced
 KDStatusTooltipEnemyDisarm,Disarmed
 KDStatusTooltipEnemyBlind,Blinded
 KDStatusTooltipEnemyBound1,Restrained!
