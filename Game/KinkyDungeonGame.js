@@ -333,6 +333,8 @@ function KinkyDungeonInitialize(Level, Load) {
 
 	KinkyDungeonDefaultStats(Load);
 
+	KinkyDungeonAdvanceTime(0);
+
 	// Set up the first level
 	//KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[0]], 0);
 }

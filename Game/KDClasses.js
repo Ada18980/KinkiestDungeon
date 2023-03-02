@@ -79,7 +79,7 @@ let KDClassStart = {
 		KinkyDungeonInventoryAddWeapon("Knife");
 		KDSetWeapon("Knife");
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 3);
-		KinkyDungeonChangeFactionRep("Apprentice", 10);
+		KinkyDungeonChangeFactionRep("Apprentice", .2);
 
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapPlug2"), 100, true, "");
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapBelt"), 100, true, "Gold");
