@@ -1,7 +1,7 @@
 "use strict";
 
 
-let KDConduction = {id: "Conduction", type: "event", aura: "#ffff44", aurasprite: "Conduction", power: 7.0, player: true, duration: 5, enemies: true, range: 2.99, events: [
+let KDConduction = {id: "Conduction", type: "event", aura: "#ffff88", noAuraColor: true, aurasprite: "Conduction", power: 7.0, player: true, duration: 5, enemies: true, range: 2.99, events: [
 	{type: "RemoveConduction", duration: 1, trigger: "tick"},
 	{type: "Conduction", power: 0.5, duration: 5, damage: "electric", aoe: 3.99, trigger: "playerTakeDamage"},
 	{type: "Conduction", power: 0.5, duration: 5, damage: "electric", aoe: 3.99, trigger: "beforeDamageEnemy"},
@@ -9,8 +9,8 @@ let KDConduction = {id: "Conduction", type: "event", aura: "#ffff44", aurasprite
 
 let KDDrenched = {id: "Drenched", type: "fireDamageResist", aura: "#59a0d1", aurasprite: "Drenched", power: 0.425, player: true, duration: 20, enemies: true, events: [
 	{type: "RemoveDrench", duration: 1, trigger: "tick"},
-	{type: "ApplyConduction", duration: 1, trigger: "tick"},
-	{type: "ApplyConduction", duration: 1, trigger: "tickAfter"},
+	{type: "ApplyConduction", duration: 1, trigger: "tick", kind: "invis"},
+	{type: "ApplyConduction", duration: 1, trigger: "tickAfter", kind: "invis"},
 ]};
 
 let KDBurning = {id: "Burning", type: "event", aura: "#ff8933", aurasprite: "Flaming", noAuraColor: true, power: 0.5, player: true, duration: 6, enemies: true, events: [

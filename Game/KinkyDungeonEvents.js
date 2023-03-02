@@ -1365,7 +1365,7 @@ let KDEventMapBuff = {
 		},
 		"ApplyConduction": (e, buff, entity, data) => {
 			let bb = Object.assign({}, KDConduction);
-			if (e.power) bb.duration = e.duration;
+			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
 			// @ts-ignore
 			if (entity.player) {
@@ -1377,7 +1377,7 @@ let KDEventMapBuff = {
 		},
 		"ApplySlowed": (e, buff, entity, data) => {
 			let bb = Object.assign({}, KDSlowed);
-			if (e.power) bb.duration = e.duration;
+			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
 			// @ts-ignore
 			if (entity.player) {
@@ -1394,7 +1394,7 @@ let KDEventMapBuff = {
 		},
 		"ApplyAttackSlow": (e, buff, entity, data) => {
 			let bb = Object.assign({}, KDAttackSlow);
-			if (e.power) bb.duration = e.duration;
+			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
 			// @ts-ignore
 			if (entity.player) {
@@ -1413,7 +1413,7 @@ let KDEventMapBuff = {
 		},
 		"ApplyGlueVuln": (e, buff, entity, data) => {
 			let bb = Object.assign({}, KDGlueVulnLow);
-			if (e.power) bb.duration = e.duration;
+			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
 			// @ts-ignore
 			if (entity.player) {
@@ -1533,7 +1533,7 @@ let KDEventMapBuff = {
 		"ApplyConduction": (e, buff, entity, data) => {
 			if (!buff.duration) return;
 			let bb = Object.assign({}, KDConduction);
-			if (e.power) bb.duration = e.duration;
+			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
 			// @ts-ignore
 			if (entity.player) {
@@ -1546,7 +1546,7 @@ let KDEventMapBuff = {
 		"ApplySlowed": (e, buff, entity, data) => {
 			if (!buff.duration) return;
 			let bb = Object.assign({}, KDSlowed);
-			if (e.power) bb.duration = e.duration;
+			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
 			// @ts-ignore
 			if (entity.player) {
@@ -1564,7 +1564,7 @@ let KDEventMapBuff = {
 		"ApplyAttackSlow": (e, buff, entity, data) => {
 			if (!buff.duration) return;
 			let bb = Object.assign({}, KDAttackSlow);
-			if (e.power) bb.duration = e.duration;
+			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
 			// @ts-ignore
 			if (entity.player) {
@@ -1584,7 +1584,7 @@ let KDEventMapBuff = {
 		"ApplyGlueVuln": (e, buff, entity, data) => {
 			if (!buff.duration) return;
 			let bb = Object.assign({}, KDGlueVulnLow);
-			if (e.power) bb.duration = e.duration;
+			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
 			// @ts-ignore
 			if (entity.player) {
