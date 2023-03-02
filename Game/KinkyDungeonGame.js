@@ -333,8 +333,6 @@ function KinkyDungeonInitialize(Level, Load) {
 
 	KinkyDungeonDefaultStats(Load);
 
-	KinkyDungeonAdvanceTime(0);
-
 	// Set up the first level
 	//KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[0]], 0);
 }
@@ -837,6 +835,8 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 				e.visual_x = KinkyDungeonStartPosition.x;
 				e.visual_y = KinkyDungeonStartPosition.y;
 			}
+
+			KinkyDungeonAdvanceTime(0);
 		}
 	}
 
