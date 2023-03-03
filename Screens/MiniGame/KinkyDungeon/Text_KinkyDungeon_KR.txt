@@ -785,7 +785,7 @@ Invisible: You are very difficult to see.
 보이지 않음: 당신은 보기가 매우 어렵습니다.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 빠름: 다음 이동은 매우 신속해 턴을 소모하지 않습니다.
-All Damage Reduction:
+All Damage Reduction: 
 모든 피해 감소:
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 PERCENT2 DAMAGETYPE 저항과 PERCENT3 DAMAGECATEGORY 수정자를 기준으로 PERCENT1 DAMAGETYPE 피해를 받습니다.
