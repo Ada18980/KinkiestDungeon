@@ -677,7 +677,7 @@ let KDTileGen = {
 		return null;
 	},
 	"Charger": (x, y, tile, tileGenerator, data) => {
-		if (tileGenerator.priority) {
+		if (tileGenerator.Priority) {
 			return {Type: "Charger", NoRemove: KinkyDungeonMapGet(x, y) == '=', lightColor: KDChargerColor, Light: (KinkyDungeonMapGet(x, y) == '=' ? KDChargerLight : undefined)};
 		}
 		KinkyDungeonMapSet(x, y, '-');
@@ -686,11 +686,11 @@ let KDTileGen = {
 	},
 	"Conveyor": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'V');
-		return {Type: "Conveyor", DX: tileGenerator.DX, DY: tileGenerator.DY, OffLimits: true};
+		return {Type: "Conveyor", DX: tileGenerator.DX, DY: tileGenerator.DY, OffLimits: true, wireType: tileGenerator.wireType, SwitchMode: tileGenerator.SwitchMode};
 	},
 	"DollSupply": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'u');
-		return {Type: "DollSupply", index: 0, cd: 0, rate: tileGenerator.rate || 10, count: tileGenerator.count, dollType: tileGenerator.dollType, wireType: tileGenerator.wireType};
+		return {Type: "DollSupply", index: 0, cd: 0, rate: tileGenerator.rate || 10, count: tileGenerator.count, dollType: tileGenerator.dollType, SwitchMode: tileGenerator.SwitchMode, wireType: tileGenerator.wireType};
 	},
 	"DollTerminal": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 't');

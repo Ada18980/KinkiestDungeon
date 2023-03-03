@@ -1507,9 +1507,9 @@ const KinkyDungeonRestraints = [
 		unlimited: true, enemyTags: {"kittyRestraints":0.001, "kittyCollar": 10, "maidCollar":-1, "dragonRestraints":-1, "mithrilRestraints": -1}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars", "Will"],
 
 	},
-	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, name: "PotionCollar", accessible: true, Asset: "SlenderSteelCollar", Color: ["#6E5B38"], Group: "ItemNeck", power: 1, weight: 0, escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.5, "Pick": 0.15}, potionCollar: true, allowPotions: true,
+	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true, name: "PotionCollar", accessible: true, Asset: "SlenderSteelCollar", Color: ["#6E5B38"], Group: "ItemNeck", power: 1, weight: 0, escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.5, "Pick": 0.15}, potionCollar: true, allowPotions: true,
 		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: []},
-	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, name: "SlimeWalkers", debris: "Belts", inaccessible: true, Asset: "BalletHeels", Color: "#ff00ff", Group: "ItemBoots", hobble: true, power: 1, weight: 0, slimeWalk: true,
+	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true, name: "SlimeWalkers", debris: "Belts", inaccessible: true, Asset: "BalletHeels", Color: "#ff00ff", Group: "ItemBoots", hobble: true, power: 1, weight: 0, slimeWalk: true,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.4, "Pick": 0.9}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: []},
 	{inventory: true, removePrison: true, name: "BasicLeash", tether: 2.9, Asset: "CollarLeash", Color: "Default", Group: "ItemNeckRestraints", leash: true, power: 1, weight: -99, harness: true,
 		unlimited: true,
@@ -1619,7 +1619,7 @@ const KinkyDungeonRestraints = [
 			Group: "ItemBreast",
 			Asset: "PolishedChastityBra",
 			OverridePriority: 27,
-			showInQuickInv: true,
+			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			debris: "Belts",
 			escapeChance: {
@@ -1644,7 +1644,7 @@ const KinkyDungeonRestraints = [
 			AssetGroup: "Corset",
 			debris: "Belts",
 			OverridePriority: 27,
-			showInQuickInv: true,
+			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			escapeChance: {
 				"Struggle": 0.1,
@@ -1669,7 +1669,7 @@ const KinkyDungeonRestraints = [
 			AssetGroup: "Cloth",
 			Color: ["#808080", "#808080", "#808080"],
 			OverridePriority: 27,
-			showInQuickInv: true,
+			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			debris: "Chains",
 			escapeChance: {
@@ -1697,7 +1697,7 @@ const KinkyDungeonRestraints = [
 			Asset: "MistressTop",
 			AssetGroup: "Cloth",
 			Color: ["Default"],
-			showInQuickInv: true,
+			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			escapeChance: {
 				"Struggle": -0.5,
@@ -1724,7 +1724,7 @@ const KinkyDungeonRestraints = [
 			Asset: "GrandMage",
 			AssetGroup: "Cloth",
 			Color: ["#5555ff"],
-			showInQuickInv: true,
+			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			escapeChance: {
 				"Struggle": 0,
@@ -1749,7 +1749,7 @@ const KinkyDungeonRestraints = [
 			Asset: "LatexSkirt2",
 			AssetGroup: "ClothLower",
 			Color: ["#ffffff"],
-			showInQuickInv: true,
+			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			escapeChance: {
 				"Struggle": -0.5,
@@ -1774,7 +1774,7 @@ const KinkyDungeonRestraints = [
 			Group: "ItemHands",
 			Asset: "FingerlessGloves",
 			AssetGroup: "Gloves",
-			showInQuickInv: true,
+			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			escapeChance: {
 				"Struggle": 10,
@@ -1799,7 +1799,7 @@ const KinkyDungeonRestraints = [
 			Group: "ItemHands",
 			Asset: "BikerGloves",
 			AssetGroup: "Gloves",
-			showInQuickInv: true,
+			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			escapeChance: {
 				"Struggle": 10,
@@ -1817,7 +1817,7 @@ const KinkyDungeonRestraints = [
 			name: "Bracers",
 			Group: "ItemArms",
 			Asset: "SteelCuffs",
-			showInQuickInv: true,
+			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			escapeChance: {
 				"Struggle": 10,
@@ -1837,7 +1837,7 @@ const KinkyDungeonRestraints = [
 			Asset: "Boots1",
 			AssetGroup: "Shoes",
 			Color: ["#444444", "#222222"],
-			showInQuickInv: true,
+			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			escapeChance: {
 				"Struggle": 10,
@@ -1862,7 +1862,7 @@ const KinkyDungeonRestraints = [
 			Asset: "WoollyBootsTall",
 			AssetGroup: "Shoes",
 			Color: ["#808080"],
-			showInQuickInv: true,
+			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			escapeChance: {
 				"Struggle": 10,

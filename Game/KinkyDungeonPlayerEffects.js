@@ -60,6 +60,17 @@ let KDPlayerEffects = {
 		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		return {sfx: "Dollify", effect: true};
 	},
+	"EncaseBoltDrone": (target, damage, playerEffect, spell, faction, bullet) => {
+		if (KinkyDungeonMovePoints >= 0) {
+			KinkyDungeonMovePoints = -1;
+			KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBoltDroneSlow"), "yellow", 1);
+		} else {
+			KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncaseRandom"], "Dollsmith");
+			KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBoltDrone"), "yellow", 1);
+		}
+		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		return {sfx: "Dollify", effect: true};
+	},
 	"RubberMissile": (target, damage, playerEffect, spell, faction, bullet) => {
 		KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncaseRandom"], "Dollsmith");
 

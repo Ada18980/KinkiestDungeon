@@ -280,6 +280,7 @@ function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = "P
 		magic: true,
 		events: events,
 		power: power,
+		good: false,
 		enemyTags: Object.assign({}, enemyTags),
 		shrine: restraint.shrine?.concat(["Cursed"]),
 		inventoryAsSelf: restraint.inventoryAsSelf || restraint.inventoryAs || restraint.name,

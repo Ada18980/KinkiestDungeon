@@ -2568,8 +2568,12 @@ function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack, securityEn
  */
 function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityEnemy, ignoreItem) {
 	if (restraint.bypass) bypass = true;
-	return (restraint.linkCategory && KDLinkCategorySize(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), restraint.linkCategory, ignoreItem) + KDLinkSize(restraint) <= (NoStack ? 0.1 : 1.0))
-		|| (!restraint.linkCategory && !KDDynamicLinkList(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), true).some((item) => {return restraint.name == item.name && ignoreItem?.id != item.id;}));
+	return (restraint.linkCategory && KDLinkCategorySize(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group),
+		restraint.linkCategory, ignoreItem) + KDLinkSize(restraint) <= (NoStack ? 0.1 : 1.0))
+		|| (!restraint.linkCategory
+			&& !KDDynamicLinkList(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), true).some((item) => {
+				return restraint.name == item.name && ignoreItem?.id != item.id;
+			}));
 }
 
 /**

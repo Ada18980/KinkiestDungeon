@@ -111,7 +111,7 @@ let KinkyDungeonLearnableSpells = [
 		// Strength
 		["IronWill", "SteadfastGuard", "WillStruggle"],
 		// Dex
-		["Athlete", "Sneaky", "Evasive1", "Evasive2", "Evasive3"],
+		["Athlete", "Vault", "Sneaky", "Evasive1", "Evasive2", "Evasive3"],
 		// Intellect
 		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser2", "StaffUser3"],
 		// Misc
@@ -376,7 +376,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{trigger: "calcDisplayDamage", type: "BoostDamage", prereq: "damageType", kind: "melee", power: 2},
 			{type: "ModifyStruggle", mult: 1.5, power: 0.2, StruggleType: "Struggle", trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellStrengthStruggle"},
 		]},
-		{name: "Ignite", tags: ["fire", "aoe", "dot", "buff"], prerequisite: "ApprenticeFire", sfx: "FireSpell", school: "Elements", manacost: 2, spellPointCost: 1, components: ["Legs"], mustTarget: true, noTargetEnemies: true, level:1, type:"buff",
+		{name: "Ignite", tags: ["fire", "aoe", "dot", "buff"], prerequisite: "ApprenticeFire", sfx: "FireSpell", school: "Elements",
+			manacost: 2, spellPointCost: 1, components: ["Legs"], mustTarget: true, noTargetEnemies: true, exceptionFactions: ["Player", "Rock"], level:1, type:"buff",
 			buffs: [
 				{id: "Ignite", aura: "#ff8400", type: "SpellCastConstant", duration: 6, power: 10.0, player: true, enemies: true, spell: "Ignition", tags: ["offense"]},
 			],
@@ -737,6 +738,9 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
 			{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
 		]},
+		{name: "Vault", tags: ["damage", "utility", "buff"], school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{trigger: "canSprint", type: "Vault"},
+		]},
 
 		{name: "Analyze", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 2.5, defaultOff: true, cancelAutoMove: true, costOnToggle: true, components: [], level:1, type:"passive",
 			events: [{type: "Analyze", trigger: "toggleSpell", power: 5, time: 20}, {type: "Analyze", trigger: "tick", power: 5, time: 20}]},
@@ -820,6 +824,12 @@ let KinkyDungeonSpellListEnemies = [
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "inert",
 	},
 	{name: "EffectEnemyCM1", tags: [], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
+		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 3, lifetime: 1, aoe: 0.5, damage: "inert",
+	},
+	{name: "EffectEnemyCM2", tags: [], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
+		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 3, lifetime: 1, aoe: 0.5, damage: "inert",
+	},
+	{name: "EffectEnemyCM3", tags: [], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 0, time: 10, range: 1.5, size: 3, lifetime: 1, aoe: 0.5, damage: "inert",
 	},
 	{name: "EffectEnemyLock1", tags: [], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],
@@ -1115,7 +1125,8 @@ let KinkyDungeonSpellListEnemies = [
 		events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 3, power: 0},]},
 	{name: "Boulder", sfx: "Bones", hitsfx: "HeavySwing", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", block: 8, time: 4,  power: 4, delay: 0, range: 50, damage: "crush", speed: 2, playerEffect: {name: "Damage"}}, // Throws a blast of ice which stuns the target for 4 turns
 	{name: "BoulderKicked", sfx: "Bones", hitsfx: "HeavySwing", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 4,  power: 4, delay: 0, range: 50, damage: "crush", speed: 2, playerEffect: {name: "Damage"}}, // Throws a blast of ice which stuns the target for 4 turns
-	{name: "BigBoulder", sfx: "Bones", hitsfx: "HeavySwing", school: "Elements", manacost: 7, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, alwaysCollideTags: ["summonedRock"], onhit:"aoe", block: 20, time: 8,  power: 12, aoe: 1.5, size: 3, delay: 0, lifetime: 1, range: 50, damage: "crush", speed: 1, playerEffect: {name: "Damage"}}, // Throws a blast of ice which stuns the target for 4 turns
+	{name: "BigBoulder", sfx: "Bones", hitsfx: "HeavySwing", school: "Elements", manacost: 7, components: ["Arms"], level:1, type:"bolt", noDirectDamage: true,
+		projectileTargeting:true, alwaysCollideTags: ["summonedRock"], onhit:"aoe", block: 20, time: 8,  power: 12, aoe: 1.5, size: 3, delay: 0, lifetime: 1, range: 50, damage: "crush", speed: 1, playerEffect: {name: "Damage"}}, // Throws a blast of ice which stuns the target for 4 turns
 
 
 	{enemySpell: true, name: "Ribbons", color: "#6700ff", noise: 6, sfx: "Struggle", school: "Elements", manacost: 4, components: ["Arms"], level:1, type:"bolt", piercing: true, projectileTargeting:true, castRange: 3, nonVolatile: true, onhit:"", power: 3, delay: 0, range: 4, speed: 4, size: 1, damage: "inert",
@@ -1236,11 +1247,12 @@ let KinkyDungeonSpellListEnemies = [
 		duration: 20,
 	}, manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "chain", speed: 3, playerEffect: {name: "SingleRope"}},
 	{allySpell: true, name: "PlayerBola",  bindType: "Rope", fastStart: true, color: "#ff2200", noMiscast: true, sfx: "Miss", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 4, power: 3, bind: 9, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "BanditBola", time: 1}}, // Throws a chain which stuns the target for 1 turn
-	{enemySpell: true, name: "RestrainingDevice",  bindType: "Metal", color: "#19fac1", sfx: "Miss", manacost: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 6, delay: 0, range: 50, damage: "chain", speed: 1, playerEffect: {name: "RestrainingDevice", count: 3, time: 3, power: 5, damage: "crush"}},
+	{enemySpell: true, name: "RestrainingDevice",  bindType: "Metal", color: "#19fac1", sfx: "Miss", manacost: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 6, delay: 0, range: 4.99, damage: "chain", speed: 1, playerEffect: {name: "RestrainingDevice", count: 3, time: 3, power: 5, damage: "crush"}},
 	{enemySpell: true, name: "ShadowBolt",  bindType: "Slime", color: "#6a15fa", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ShadowBolt", count: 1, time: 3, power: 3, damage: "cold"}},
 	{enemySpell: true, name: "ObsidianBolt",  bindType: "Metal", color: "#ff5277", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ObsidianBolt", count: 1, time: 3, power: 3, damage: "cold"}},
 	{enemySpell: true, name: "RubberBolt",  bindType: "Slime", color: "#ff3388", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 4, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "RubberBolt", count: 1, time: 4, power: 4, damage: "glue"}},
 	{enemySpell: true, name: "EncaseBolt",  bindType: "Slime", color: "#a04abd", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "EncaseBolt", count: 1, time: 4, power: 2, damage: "glue"}},
+	{enemySpell: true, name: "EncaseBoltDrone",  bindType: "Slime", color: "#a04abd", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "EncaseBoltDrone", count: 1, time: 4, power: 1, damage: "glue"}},
 
 	{enemySpell: true, name: "RubberMissile", bindType: "Slime", color: "#ff3388", sfx: "FireSpell", manacost: 8, components: ["Arms"],
 		spellcast: {spell: "RubberMissileExplosion", target: "onhit", directional:true, offset: false},
@@ -1366,6 +1378,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "SummonSkeleton", landsfx: "Bones", minRange: 0, manacost: 8, components: ["Verbal"], level:3, type:"inert", onhit:"summon", summon: [{name: "SummonedSkeleton", count: 1, time: 12, strict: true, bound: true, weakBinding: true}], power: 0, time: 12, delay: 1, range: 4, size: 3, aoe: 2.1, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonSkeletons", landsfx: "Bones", minRange: 0, manacost: 18, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedSkeleton", count: 4, time: 16, strict: true, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 2.6, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonZombies", landsfx: "Bones", specialCD:16, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedZombie", count: 4, strict: true, minRange: 1.5, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
+	{enemySpell: true, name: "SummonDrones", landsfx: "Bones", specialCD:16, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedDrone", count: 4, strict: true, minRange: 1.5, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "RopeAttack", hitsfx: "Struggle", manacost: 6, components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
 		{name: "LearnedRope", count: 1, chance: 0.5, time: 20, strict: true, bound: true},
 		{name: "UnforseenRope", count: 1, chance: 0.5, time: 20, strict: true, bound: true}
@@ -1428,8 +1441,11 @@ let KinkyDungeonSpellListEnemies = [
 			{id: "NevermereBoost3", type: "AttackSpeed", duration: 6, power: 0.5, player: false, enemies: true, tags: ["offense", "attackspeed"]},
 		], onhit:"", time:6, power: 0, range: 4.9, aoe: 4.9, size: 1, damage: ""},
 
-	{name: "DollConvert", tags: ["dummy"], sfx: "Dollify", school: "Illusion", manacost: 0, components: [], level:1, type:"special", special: "DollConvert", noMiscast: true,
-		onhit:"", time:5, power: 0, range: 12, aoe: 12, size: 1, damage: ""},
+	{name: "DollConvert", tags: ["dummy"], sfx: "Dollify", school: "Illusion", manacost: 0, components: [], level:1, type:"special", special: "DollConvert", noMiscast: true, castCondition: "dollConvert",
+		onhit:"", time:5, power: 0, range: 8, aoe: 8, size: 1, damage: ""},
+
+	{name: "DollConvertMany", tags: ["dummy"], sfx: "Dollify", school: "Illusion", manacost: 0, components: [], level:1, type:"special", special: "DollConvert", noMiscast: true, castCondition: "dollConvert",
+		onhit:"", time:5, power: 0, range: 9, aoe: 9, size: 1, damage: ""},
 
 	{enemySpell: true, buff: true, name: "ParasolBuff", minRange: 0, sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Arms"], mustTarget: true, level:3, type:"buff",
 		buffs: [
@@ -1549,6 +1565,10 @@ let KDCastConditions = {
 	},
 	"dollConvert": (enemy, target, spell) => {
 		if (KDNearbyEnemies(enemy.x, enemy.y, spell.range).filter((en) => {return en.Enemy?.tags.smithdoll;}).length > 3 || KDNearbyEnemies(enemy.x, enemy.y, spell.aoe).filter((en) => {return !en.allied && en.Enemy?.tags.dollmakerconvert;}).length < 1) return false;
+		return true;
+	},
+	"dollConvertMany": (enemy, target, spell) => {
+		if (KDNearbyEnemies(enemy.x, enemy.y, spell.range).filter((en) => {return en.Enemy?.tags.smithdoll;}).length > 8 || KDNearbyEnemies(enemy.x, enemy.y, spell.aoe).filter((en) => {return !en.allied && en.Enemy?.tags.dollmakerconvert;}).length < 1) return false;
 		return true;
 	},
 	"wolfDrone": (enemy, target) => {

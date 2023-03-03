@@ -1488,7 +1488,7 @@ function KinkyDungeonRangedAttack() {
 	if (!KinkyDungeonPlayerDamage.special) return;
 	if (KinkyDungeonPlayerDamage.special.type) {
 		if (KinkyDungeonPlayerDamage.special.type == "hitorspell") {
-			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttackOrSpell", noMiscast: true,
+			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttackOrSpell", noMiscast: true, manacost: 0,
 				onhit:"", time:25, power: 0, range: KinkyDungeonPlayerDamage.special.range ? KinkyDungeonPlayerDamage.special.range : 1.5, size: 1, damage: ""};
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
 			KDModalArea = false;
@@ -1496,7 +1496,7 @@ function KinkyDungeonRangedAttack() {
 			KinkyDungeonTargetTileLocation = null;
 			return true;
 		} else if (KinkyDungeonPlayerDamage.special.type == "attack") {
-			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttack", noMiscast: true,
+			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttack", noMiscast: true, manacost: 0,
 				onhit:"", time:25, power: 0, range: KinkyDungeonPlayerDamage.special.range ? KinkyDungeonPlayerDamage.special.range : 1.5, size: 1, damage: ""};
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
 			KDModalArea = false;

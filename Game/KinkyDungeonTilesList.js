@@ -94,7 +94,8 @@ let KDTileUpdateFunctionsLocal = {
 					// Create a doll on a conveyor if needed
 					let entity = KinkyDungeonEntityAt(X + tx, Y + ty);
 					let tiletype = KinkyDungeonMapGet(X + tx, Y + ty);
-					if (tiletype == 'V' && !entity) {
+					let tiledest = KinkyDungeonTilesGet((X + tx) + ',' + (Y + ty));
+					if (tiletype == 'V' && tiledest?.SwitchMode != "Off" && !entity) {
 						tile.cd = tile.rate;
 						let e = DialogueCreateEnemy(X + tx, Y + ty, tile.dollType || "FactoryDoll");
 						KinkyDungeonSetEnemyFlag(e, "conveyed", 1);
@@ -843,6 +844,16 @@ let KDActivateMapTile = {
 			KinkyDungeonMapSet(x, y, 'z');
 		else
 			KinkyDungeonMapSet(x, y, 'Z');
+		return true;
+	},
+	"Conveyor_Toggle": (tile, x, y) => {
+		if (tile.SwitchMode == "Off") tile.SwitchMode = "On";
+		else tile.SwitchMode = "Off";
+		return true;
+	},
+	"Conveyor_Switch": (tile, x, y) => {
+		if (tile.DX) tile.DX *= -1;
+		else if (tile.DY) tile.DY *= -1;
 		return true;
 	},
 	"AutoDoor_HoldOpen": (tile, x, y) => {

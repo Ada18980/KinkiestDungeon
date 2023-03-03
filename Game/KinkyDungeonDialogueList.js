@@ -1584,7 +1584,7 @@ let KDDialogue = {
 				enemy.aware = true;
 				enemy.vp = 2;
 				enemy.AI = 'hunt';
-				KinkyDungeonSetFlag("BossDialogueFuuka", -1);
+				KinkyDungeonSetFlag("BossDialogueFuuka", -1, 1);
 			}
 			return false;
 		},
@@ -1941,6 +1941,72 @@ let KDDialogue = {
 			}
 		}
 	},
+	"Dollmaker": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				enemy.hostile = 9999;
+				enemy.aware = true;
+				enemy.vp = 2;
+				enemy.AI = 'hunt';
+				KinkyDungeonSetFlag("BossDialogueDollmaker", -1, 1);
+			}
+			return false;
+		},
+		options: {
+			"Fight": {
+				playertext: "Default", dontTouchText: true,
+				options: {
+					"Fight1": {gag: true,
+						playertext: "Default", exitDialogue: true,
+					},
+					"Fight2": {gag: true,
+						playertext: "Default", exitDialogue: true,
+					},
+					"Fight3": {gag: true,
+						playertext: "Default", exitDialogue: true,
+					},
+				}
+			}
+		}
+	},
+	"DollmakerStage2": { // Player defeats fuuka's first form
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonStartPosition.x + 10, KinkyDungeonStartPosition.y - 5, true);
+			if (!point) {
+				point = {x: KinkyDungeonStartPosition.x + 10, y: KinkyDungeonStartPosition.y - 7};
+			}
+			let e = DialogueCreateEnemy(point.x, point.y, "DollmakerBoss2");
+			e.hostile = 300;
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"DollmakerStage3": { // Player defeats fuuka's first form
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let point = KinkyDungeonGetNearbyPoint(player.x, player.y, true);
+			if (!point) {
+				point = KinkyDungeonGetRandomEnemyPoint(false, false, null);
+			}
+			let e = DialogueCreateEnemy(point.x, point.y, "DollmakerBoss3");
+			e.hostile = 300;
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
 	"FuukaLose": { // Player loses to Fuuka
 		response: "Default",
 		clickFunction: (gagged, player) => {
@@ -2025,6 +2091,15 @@ let KDDialogue = {
 	},
 	"FuukaStage2": { // Player defeats fuuka's first form
 		response: "Default",
+		clickFunction: (gagged, player) => {
+			let point = KinkyDungeonGetNearbyPoint(player.x, player.y, true);
+			if (!point) {
+				point = KinkyDungeonGetRandomEnemyPoint(false, false, null);
+			}
+			let e = DialogueCreateEnemy(point.x, point.y, "Fuuka2");
+			e.hostile = 300;
+			return false;
+		},
 		options: {
 			"Leave": {
 				playertext: "Leave", response: "Default",

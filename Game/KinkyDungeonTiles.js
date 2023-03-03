@@ -661,8 +661,9 @@ function KDIgnition(b, tile, d) {
  * @param {number} Y
  */
 function KDConveyor(delta, X, Y) {
-	let entity = KinkyDungeonEntityAt(X, Y);
 	let tile = KinkyDungeonTilesGet(X + "," + Y);
+	if (!tile || tile.SwitchMode == "Off") return;
+	let entity = KinkyDungeonEntityAt(X, Y);
 	let tiletype = KinkyDungeonMapGet(X + (tile.DX || 0), Y + (tile.DY || 0));
 	if (entity && KinkyDungeonMovableTilesEnemy.includes(tiletype) && !KinkyDungeonEntityAt(X + (tile.DX || 0), Y + (tile.DY || 0))) {
 		if (entity.player) {

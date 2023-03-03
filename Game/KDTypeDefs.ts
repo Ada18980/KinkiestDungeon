@@ -124,6 +124,8 @@ type KDHasTags = {
 interface KDRestraintProps {
 	/** This item is unaffected by shrines */
 	noShrine?:boolean,
+	/** This item is beneficial and player wont try to struggle from it */
+	good?: boolean,
 
 	inventory?: boolean,
 	power?: number,
@@ -1295,6 +1297,8 @@ type KDPerk = {
 }
 
 interface spell {
+	/** This spell doesnt hurt the target upon directly hitting, only the AoE */
+	noDirectDamage?: true,
 	/** This spell does not leave a warning to the player */
 	hideWarnings?: boolean,
 	/** Marks a spell as non-magical, so traps dont leave a rune on the ground */
@@ -1559,6 +1563,10 @@ interface spell {
 	CastInWalls?: boolean;
 	/** noTargetEnemies */
 	noTargetEnemies?: boolean;
+	/** Exception list for NoTargetEnemies */
+	exceptionFactions?: string[];
+	/** noTargetAllies */
+	noTargetAllies?: boolean;
 	/** Sets the enemy's specialCD shared between others */
 	specialCD?: number;
 	/** AI wont choose this as first choice */

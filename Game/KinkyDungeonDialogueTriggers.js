@@ -501,6 +501,7 @@ let KDDialogueTriggers = {
 	"WolfgirlSell": KDShopTrigger("WolfgirlSell"),
 	"Fuuka": KDBossTrigger("Fuuka", ["Fuuka1", "Fuuka2"]),
 	"FuukaLose": KDBossLose("FuukaLose", ["Fuuka1", "Fuuka2"], ["mikoRestraints"]),
+	"Dollmaker": KDBossTrigger("Dollmaker", ["DollmakerBoss1"]),
 
 };
 

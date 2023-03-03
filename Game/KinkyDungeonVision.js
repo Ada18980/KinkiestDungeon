@@ -255,7 +255,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 	KDVisionBlockers = new Map();
 	for (let EE of KinkyDungeonEntities) {
 		let Enemy = EE.Enemy;
-		if (Enemy && Enemy.blockVision || (Enemy.blockVisionWhileStationary && !EE.moved && EE.idle)) // Add
+		if (Enemy && (Enemy.blockVision || (Enemy.blockVisionWhileStationary && !EE.moved && EE.idle))) // Add
 			KDVisionBlockers.set(EE.x + "," + EE.y, true);
 	}
 	let LightsTemp = new Map();
@@ -298,7 +298,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 	let newL = 0;
 	for (let X = 1; X < KinkyDungeonGridWidth - 1; X++) {
 		for (let Y = 1; Y < KinkyDungeonGridHeight - 1; Y++)
-			if (KinkyDungeonCheckPath(X, Y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, false, flags.SeeThroughWalls ? flags.SeeThroughWalls + 1 : 1)
+			if (KinkyDungeonCheckPath(X, Y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, true, flags.SeeThroughWalls ? flags.SeeThroughWalls + 1 : 1, true)
 				&& KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(X, Y))) {
 				bb = KinkyDungeonBrightnessGet(X, Y);
 				d = KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y);
@@ -322,7 +322,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 		for (let X = 0; X < KinkyDungeonGridWidth; X++) {
 			for (let Y = 0; Y < KinkyDungeonGridHeight; Y++) {
 				let tile = KinkyDungeonMapGet(X, Y);
-				if (LightsTemp.get(X + "," + Y) || ((KinkyDungeonTransparentObjects.includes(tile) || (X == KinkyDungeonPlayerEntity.x && Y == KinkyDungeonPlayerEntity.y)) && !KDVisionBlockers.get(X + "," + Y))) {
+				if ((LightsTemp.get(X + "," + Y) || (KinkyDungeonTransparentObjects.includes(tile) || (X == KinkyDungeonPlayerEntity.x && Y == KinkyDungeonPlayerEntity.y))) && !KDVisionBlockers.get(X + "," + Y)) {
 					let brightness = KinkyDungeonVisionGet(X, Y);
 					if (brightness > 0) {
 						let decay = KinkyDungeonDeaf ? 5 : 2;
@@ -398,11 +398,11 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 						let distE = KDistEuclidean(KinkyDungeonPlayerEntity.x - X, KinkyDungeonPlayerEntity.y - Y);
 						if (fog && dist < 3
 							&& distE < 2.9
-							&& KinkyDungeonCheckPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, X, Y)) {
+							&& KinkyDungeonCheckPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, X, Y, true, true, flags.SeeThroughWalls ? flags.SeeThroughWalls + 1 : 1, true)) {
 							KinkyDungeonFogGrid[X + Y*(width)] = Math.max(KinkyDungeonFogGrid[X + Y*(width)], 3);
 						}
 						if (distE < (KinkyDungeonDeaf ? 1.5 : 2.3) && KinkyDungeonVisionGrid[X + Y*(width)] == 0
-							&& KinkyDungeonCheckPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, X, Y)) {
+							&& KinkyDungeonCheckPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, X, Y, true, true, flags.SeeThroughWalls ? flags.SeeThroughWalls + 1 : 1, true)) {
 							KinkyDungeonVisionGrid[X + Y*(width)] = 1;
 						}
 					}

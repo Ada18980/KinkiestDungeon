@@ -1653,6 +1653,16 @@ let KDEventMapSpell = {
 			}
 		},
 	},
+	"canSprint": {
+		"Vault": (e, spell, data) => {
+			if (!data.passThru) {
+				let enemy = KinkyDungeonEntityAt(data.nextPosx, data.nextPosy);
+				if (enemy && !enemy?.player && !KDIsImmobile(enemy)) {
+					data.passThru = true;
+				}
+			}
+		},
+	},
 	"perkOrb": {
 		"Cursed": (e, spell, data) => {
 			if (data.perks && data.perks.includes("Cursed")) {

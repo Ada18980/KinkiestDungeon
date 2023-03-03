@@ -655,7 +655,9 @@ let KinkyDungeonSpellSpecials = {
 			for (let en of enList) {
 				if (!KDHelpless(en) && en.Enemy.tags?.dollmakerconvert) {
 					en.hp = 0;
-					DialogueCreateEnemy(en.x, en.y, "DollsmithDoll");
+					let e = DialogueCreateEnemy(en.x, en.y, "DollsmithDoll");
+					if (entity)
+						e.faction = KDGetFaction(entity);
 					count += 1;
 					KDCreateEffectTile(en.x, en.y, {
 						name: "Latex",

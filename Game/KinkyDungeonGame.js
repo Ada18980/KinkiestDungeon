@@ -129,6 +129,7 @@ let KinkyDungeonNextDataLastTimeReceived = 0;
 let KinkyDungeonNextDataLastTimeReceivedTimeout = 15000; // Clear data if more than 15 seconds of no data received
 
 let KinkyDungeonLastMoveDirection = null;
+/** @type {spell} */
 let KinkyDungeonTargetingSpell = null;
 
 /**
@@ -140,7 +141,7 @@ let KinkyDungeonTargetingSpellWeapon = null;
 /**
  * Game stops when you reach this level
  */
-let KinkyDungeonMaxLevel = 20;
+let KinkyDungeonMaxLevel = 21;
 
 let KinkyDungeonLastMoveTimer = 0;
 let KinkyDungeonLastMoveTimerStart = 0;
@@ -3477,11 +3478,28 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 	let moveY = moveDirection.y + KinkyDungeonPlayerEntity.y;
 	let moved = false;
 	let Enemy = KinkyDungeonEnemyAt(moveX, moveY);
+	let passThroughSprint = false;
+	let nextPosX = moveX*2-KinkyDungeonPlayerEntity.x;
+	let nextPosY = moveY*2-KinkyDungeonPlayerEntity.y;
+	let nextTile = KinkyDungeonMapGet(nextPosX, nextPosY);
+	if (KinkyDungeonMovableTilesEnemy.includes(nextTile) && KinkyDungeonNoEnemy(nextPosX, nextPosY)) {
+		let data = {
+			canSprint: KDCanSprint(),
+			passThru: false,
+			nextPosx: moveX,
+			nextPosy: moveY,
+		};
+		KinkyDungeonSendEvent("canSprint", data);
+		if (data.canSprint && data.passThru) {
+			passThroughSprint = true;
+		}
+	}
+
 	let allowPass = Enemy
 		&& !KDIsImmobile(Enemy)
 		&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
 		&& (KinkyDungeonToggleAutoPass || KDEnemyHasFlag(Enemy, "passthrough") || (KinkyDungeonFlags.has("Passthrough")) || Enemy.Enemy.noblockplayer);
-	if (Enemy && !allowPass) {
+	if (Enemy && !allowPass && !passThroughSprint) {
 		if (AllowInteract) {
 			KDDelayedActionPrune(["Action", "Attack"]);
 			KinkyDungeonLaunchAttack(Enemy);
@@ -3489,7 +3507,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 	} else {
 		let MovableTiles = KinkyDungeonGetMovable();
 		let moveObject = KinkyDungeonMapGet(moveX, moveY);
-		if (MovableTiles.includes(moveObject) && (KinkyDungeonNoEnemy(moveX, moveY) || (Enemy && Enemy.allied) || allowPass)) { // If the player can move to an empy space or a door
+		if (MovableTiles.includes(moveObject) && (passThroughSprint || KinkyDungeonNoEnemy(moveX, moveY) || (Enemy && Enemy.allied) || allowPass)) { // If the player can move to an empy space or a door
 			KDGameData.ConfirmAttack = false;
 			let quick = false;
 
@@ -4148,3 +4166,13 @@ let KDKeyCheckers = {
 		}
 	},
 };
+
+function KDGetAltType(Floor) {
+	let mapMod = null;
+	if (KDGameData.MapMod) {
+		mapMod = KDMapMods[KDGameData.MapMod];
+	}
+	let altRoom = KDGameData.RoomType;
+	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
+	return altType;
+}

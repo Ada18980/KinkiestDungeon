@@ -1727,7 +1727,7 @@ function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlay
 			if (((!avoidPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) > minDist)
 				&& (!onlyPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) <= playerDist))
 				&& (!KinkyDungeonPointInCell(X, Y)) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))
-				&& KinkyDungeonNoEnemyExceptSub(X, Y, true, Enemy)
+				&& (!Enemy || KinkyDungeonNoEnemyExceptSub(X, Y, true, Enemy))
 				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)
 				&& (!criteria || criteria(X, Y))) {
 				return {x: X, y:Y};
@@ -2712,8 +2712,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				enemy.gx = KinkyDungeonPlayerEntity.x;
 				enemy.gy = KinkyDungeonPlayerEntity.y;
 			} else if (!AIData.ignore && (AIData.aggressive || enemy.playWithPlayer || !KDEnemyHasFlag(enemy, "NoFollow"))) {
-				enemy.gx = player.x;
-				enemy.gy = player.y;
+				let pp = KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, true);
+				if (pp) {
+					enemy.gx = pp.x;
+					enemy.gy = pp.y;
+				} else {
+					enemy.gx = player.x;
+					enemy.gy = player.y;
+				}
 			}
 		}
 		if (AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer) {
@@ -2727,8 +2733,15 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							if (!e.aware) {
 								KDAddThought(e.id, "Blind", 3, 3);
 								e.path = null;
-								e.gx = player.x;
-								e.gy = player.y;
+								let pp = KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, true);
+								if (pp) {
+									e.gx = pp.x;
+									e.gy = pp.y;
+								} else {
+									e.gx = player.x;
+									e.gy = player.y;
+								}
+
 							}
 						} else {
 							if (!e.aware) KDAddThought(e.id, "Confused", 3, 3);

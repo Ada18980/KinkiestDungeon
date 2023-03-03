@@ -1522,6 +1522,12 @@ KillSummonedZombie,"The zombie screams and tumbles to the floor."
 AttackSummonedZombieBind,"The zombie swiftly wraps you in charms! (+RestraintAdded)"
 AttackSummonedZombie,"The zombie gropes your body! (DamageTaken)"
 
+NameSummonedDrone,Capture Drone
+KillSummonedDrone,"The capture drone's latex core overloads!"
+AttackSummonedDrone,"The capture drone electrocutes you! (DamageTaken)"
+KinkyDungeonSummonSingleSummonedZombie,The Dollmaker commands a drone to capture you!
+KinkyDungeonSummonMultiSummonedZombie,The Dollmaker commands her drones to capture you!
+
 NameNawashiZombie,Artistic Zombie
 KillNawashiZombie,"The zombie smiles as it collapses to the ground."
 AttackNawashiZombieBind,"The zombie swiftly ties you! (+RestraintAdded)"
@@ -2310,8 +2316,10 @@ AttackLibrarian,"The librarian whispers seductively into your ear! (DamageTaken)
 
 NameStoneDoor,Stone Door
 KillStoneDoor,"The stone door crumbles!"
-NameSteelDoor,Stone Door
+NameSteelDoor,Steel Door
 KillSteelDoor,"The stone door crumples inward!"
+NameDollDoor,Control Room Door
+KillDollDoor,"The door flies open as the Dollmaker chuckles at you!"
 
 NameGiantMushroom,Giant Mushroom
 KillGiantMushroom,"The giant mushroom explodes into a cloud of spores!!!"
@@ -4752,8 +4760,11 @@ KinkyDungeonSpellObsidianBolt,Obsidian Orb
 KinkyDungeonObsidianBolt,Metallic restraints encircle your body!
 KinkyDungeonSpellRubberBolt,Rubberizing Bolt
 KinkyDungeonSpellEncaseBolt,Rubber Bolt
+KinkyDungeonSpellEncaseBoltDrone,Latex Bolt
 KinkyDungeonRubberBolt,"The latex spreads across your limbs and rubberizes, forming a tough barrier!"
 KinkyDungeonEncaseBolt,"The latex spreads across your limbs and hardens, forming a stretchy layer!"
+KinkyDungeonEncaseBoltDroneSlow,"The latex clings to you and slows you down, making you vulnerable to the barrage!"
+KinkyDungeonEncaseBoltDrone,"The latex expands rapidly and slows you down as it hardens into a stretchy layer!"
 
 
 KinkyDungeonSpellPlayerBola,Bola
@@ -5029,6 +5040,8 @@ KinkyDungeonSpellAthlete,Athlete
 KinkyDungeonSpellDescriptionAthlete,"Sprinting costs 40% less stamina."
 KinkyDungeonSpellSneaky,Sneaky
 KinkyDungeonSpellDescriptionSneaky,"You are harder to see when waiting."
+KinkyDungeonSpellVault,Vault
+KinkyDungeonSpellDescriptionVault,"You can dash through enemies that aren't immobile."
 KinkyDungeonSpellEvasive1,Dodge I
 KinkyDungeonSpellDescriptionEvasive1,"+10 Evasion"
 KinkyDungeonSpellEvasive2,Dodge II
@@ -6576,12 +6589,6 @@ KinkyDungeonRemoveJailKey,"Your key to the stairs is taken away!"
 ItemPickupKeyring,"You found a keyring to the stairs! Now you just need to get there."
 KinkyDungeonNeedJailKey,"There seems to be a locked high-security door. Looks like you need a key."
 
-KinkyDungeonRemindJailPlaySubFuuka0,"This is a bug. Bosses shouldn't submit"
-KinkyDungeonRemindJailPlaySubFuuka1,"This is a bug. Bosses shouldn't submit"
-KinkyDungeonRemindJailPlaySubFuuka2,"This is a bug. Bosses shouldn't submit"
-KinkyDungeonRemindJailPlayBratFuuka0,""
-KinkyDungeonRemindJailPlayBratFuuka1,""
-KinkyDungeonRemindJailPlayBratFuuka2,""
 KinkyDungeonRemindJailPlayFuuka0,"Well well, what have we got here?"
 KinkyDungeonRemindJailPlayFuuka1,"You're not here to take away my pets, are you?"
 KinkyDungeonRemindJailPlayFuuka2,"You'd make a lovely pet..."
@@ -6612,6 +6619,37 @@ KinkyDungeonRemindJailFuukaPull,"Get over here!"
 KinkyDungeonRemindJailFuukaStun,"Not so slippery now!"
 KinkyDungeonRemindJailFuukaPickpocket,"I'll be taking that~"
 KinkyDungeonRemindJailFuukaLock,"'Click!'"
+
+KinkyDungeonRemindJailPlayDollmaker0,"Look, another one of my dolls~"
+KinkyDungeonRemindJailPlayDollmaker1,"Come to me, my lovely thing~"
+KinkyDungeonRemindJailPlayDollmaker2,"I want to hear you moan~"
+KinkyDungeonRemindJailPlayDollmakerStruggle,"Perhaps we need to make things tighter?"
+KinkyDungeonRemindJailPlayDollmakerLeash,"Come with me, dear~"
+KinkyDungeonRemindJailPlayDollmakerFree,"You've had too much freedom."
+KinkyDungeonRemindJailPlayDollmakerLoot,"Leave that for the cleaning robots."
+KinkyDungeonRemindJailPlayDollmakerKey,"Skulking around, are we?"
+KinkyDungeonRemindJailChaseDollmakerAttack0,"There's no point in fighting."
+KinkyDungeonRemindJailChaseDollmakerAttack1,"How ineffectual."
+KinkyDungeonRemindJailChaseDollmakerAttack2,"That's cute."
+KinkyDungeonRemindJailChaseDollmakerSpell0,"Your magical potential is impressive~"
+KinkyDungeonRemindJailChaseDollmakerSpell1,"A magnificent display of magic!"
+KinkyDungeonRemindJailChaseDollmakerSpell2,"You would make a great mana source~"
+KinkyDungeonRemindJailChaseDollmakerSpellItem,"Did you think you could outsmart me?"
+KinkyDungeonRemindJailChaseDollmakerShrine,"I am the only goddess you need."
+KinkyDungeonRemindJailChaseDollmakerChest,"Dolls shouldn't mess with things they don't understand."
+KinkyDungeonRemindJailChaseDollmakerOrb,"Oh, that's not going to help~"
+KinkyDungeonRemindJailChaseDollmakerJailbreak,"Let's take you somewhere safe~"
+KinkyDungeonRemindJailDollmakerGrab,"You won't be getting away."
+KinkyDungeonRemindJailDollmakerDisarm,"Did you think that would work?"
+KinkyDungeonRemindJailDollmakerHit,"Let's put those hands of yours away~"
+KinkyDungeonRemindJailDollmakerHitPlayer,"You are mine."
+KinkyDungeonRemindJailDollmakerMiss,"You're a fast one."
+KinkyDungeonRemindJailDollmakerMissedMe,"Your antics amuse me~"
+KinkyDungeonRemindJailDollmakerLeash,"It's time for your makeover!"
+KinkyDungeonRemindJailDollmakerPull,"Come to me."
+KinkyDungeonRemindJailDollmakerStun,"A shame it ends here."
+KinkyDungeonRemindJailDollmakerPickpocket,"You won't be needing that."
+KinkyDungeonRemindJailDollmakerLock,"Tsk Tsk. I'll be keeping the keys."
 
 
 
@@ -9078,6 +9116,21 @@ rGenericAllyDontHelpMe_Leave,"(You sigh as you realize you really need her help.
 dGenericAllyShop,"(Sell items)"
 dGenericAllyShopBuy,"(Buy items)"
 
+NameDollmakerBoss1,"The Dollmaker"
+KillDollmakerBoss1,"The Dollmaker throws a device to the ground, teleporting her instantly!"
+AttackDollmakerBoss1Bind,"The Dollmaker's necklace flashes as you find yourself suddenly encased! (+RestraintAdded)"
+AttackDollmakerBoss1,"The Dollmaker's overbearing presence captivates you~ (DamageTaken)"
+
+NameDollmakerBoss2,"The Dollmaker"
+KillDollmakerBoss2,"The Dollmaker sinks into a pool of latex!"
+AttackDollmakerBoss2Bind,"The Dollmaker's necklace flashes as you find yourself suddenly encased! (+RestraintAdded)"
+AttackDollmakerBoss2,"The Dollmaker suggests that you surrender. (DamageTaken)"
+
+NameDollmakerBoss3,"THE Dollmaker"
+KillDollmakerBoss3,"The Dollmaker falls kneeling to the floor, admitting defeat!"
+AttackDollmakerBoss3Bind,"The Dollmaker snaps her fingers, and many robotic arms restrain you! (+RestraintAdded)"
+AttackDollmakerBoss3,"The Dollmaker orders you to KNEEL! (DamageTaken)"
+
 NameFuuka1,"Fuuka"
 KillFuuka1,"Fuuka surrounds herself in defensive talismans!"
 AttackFuuka1Bind,"Fuuka wraps you tightly in restraints! (+RestraintAdded)"
@@ -9548,5 +9601,6 @@ KinkyDungeonSpellCastBearTrap,"The bandit leaves behind a sneaky trap..."
 KinkyDungeonSpellBearTrap,Damsel Trap
 
 KinkyDungeonSpellCastDollConvert,"The ENEMYNAME transforms nearby dolls into her subjects!"
+KinkyDungeonSpellCastDollConvertMany,"The ENEMYNAME transforms nearby dolls into her subjects!"
 
 KDWiggle,"You wriggle around while struggling..."

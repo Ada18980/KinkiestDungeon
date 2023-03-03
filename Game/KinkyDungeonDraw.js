@@ -504,7 +504,7 @@ let KDOverlays = {
 			let sprite = "";
 
 			if (tile.DY == -1) {
-				if (tU?.DY == -1) return "Conveyor/Up";
+				if (tD?.DY == -1) return "Conveyor/Up";
 				if (tL?.DX == 1 && tR?.DX == -1) sprite = sprite + "LeftRight";
 				else if (tL?.DX == 1) sprite = sprite + "Right";
 				else if (tR?.DX == -1) sprite = sprite + "Left";
@@ -556,9 +556,42 @@ let KDOverlays = {
 	},
 };
 
+let KDOverlays2 = {
+	// @ts-ignore
+	"V": (x, y, Fog, noReplace) => {
+		let tile = KinkyDungeonTilesGet(x + "," + y);
+		if (tile && tile.SwitchMode != undefined) {
+			let sprite = "";
+
+			if (tile.DY == -1) {
+				sprite = sprite + "Up";
+			} else if (tile.DY == 1) {
+				sprite = sprite + "Down";
+			} else if (tile.DX == 1) {
+				sprite = sprite + "Right";
+			} else if (tile.DX == -1) {
+				sprite = sprite + "Left";
+			}
+			if (tile.SwitchMode) sprite = sprite + tile.SwitchMode;
+			return "Conveyor/" + sprite;
+		}
+		return "";
+	},
+};
+
 function KinkyDungeonGetSprite(code, x, y, Fog, noReplace) {
 	let sprite = "Floor";
 	if (KDSprites[code]) sprite = KDSprites[code](x, y, Fog, noReplace);
+	return sprite;
+}
+
+/** For multilayer sprites */
+function KinkyDungeonGetSpriteOverlay2(code, x, y, Fog, noReplace) {
+	let sprite = "";
+	if (KDOverlays2[code]) sprite = KDOverlays2[code](x, y, Fog, noReplace);
+	if (KinkyDungeonTilesGet(x + "," + y) && KinkyDungeonTilesGet(x + "," + y).Skin2) {
+		sprite = KinkyDungeonTilesGet(x + "," + y).Skin2;
+	}
 	return sprite;
 }
 
@@ -924,7 +957,12 @@ function KinkyDungeonDrawGame() {
 						KinkyDungeonSpellValid = (KinkyDungeonTargetingSpell.projectileTargeting || spellRange >= Math.sqrt((KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x) *(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x) + (KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) * (KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y))) &&
 							(KinkyDungeonTargetingSpell.projectileTargeting || KinkyDungeonTargetingSpell.CastInWalls || free) &&
 							(!KinkyDungeonTargetingSpell.WallsOnly || !KinkyDungeonOpenObjects.includes(KinkyDungeonMapGet(KinkyDungeonTargetX, KinkyDungeonTargetY)));
-						if (KinkyDungeonTargetingSpell.noTargetEnemies && KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY)) KinkyDungeonSpellValid = false;
+						if (KinkyDungeonTargetingSpell.noTargetEnemies) {
+							let enemy = KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY);
+							let faction = KDGetFaction(enemy);
+							if (enemy && (!KinkyDungeonTargetingSpell.exceptionFactions || !KinkyDungeonTargetingSpell.exceptionFactions.includes(faction)))
+								KinkyDungeonSpellValid = false;
+						}
 						if (KinkyDungeonTargetingSpell.noTargetAllies) {
 							let enemy = KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY);
 							if (enemy && KDAllied(enemy))
@@ -1444,12 +1482,18 @@ function KinkyDungeonDrawGame() {
 				}, true, 600, 320, 300, 64, "Add spell point", "#ffffff", "");
 				DrawButtonKDEx("debugClearQuickInv", (bdata) => {
 					KinkyDungeonInventory.get('looserestraint').clear();
+					KinkyDungeonAdvanceTime(0, true);
 					return true;
 				}, true, 600, 400, 300, 64, "Clear loose restraints", "#ffffff", "");
 				DrawButtonKDEx("debugClearPlayerInv", (bdata) => {
 					KinkyDungeonInventory.get('restraint').clear();
+					KinkyDungeonAdvanceTime(0, true);
 					return true;
 				}, true, 600, 480, 300, 64, "Clear worn restraints", "#ffffff", "");
+				DrawButtonKDEx("debugIncFloor", (bdata) => {
+					MiniGameKinkyDungeonLevel += 1;
+					return true;
+				}, true, 600, 560, 300, 64, "Increment Floor", "#ffffff", "");
 
 
 			}
@@ -2460,18 +2504,22 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 		}
 	}
 
+
+	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+	let drawFloor = altType?.skin ? altType.skin : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+
 	let noReplace = "";
 	let noReplace_skin = {};
 	for (let tile of Object.values(KinkyDungeonTilesSkin)) {
 		if (tile.skin && noReplace_skin[tile.skin] != undefined) {
-			let paramskin = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+			let paramskin = KinkyDungeonMapParams[drawFloor];
 			if (paramskin.noReplace)
 				noReplace_skin[tile.skin] = paramskin.noReplace;
 			else noReplace_skin[tile.skin] = "";
 		}
 	}
 
-	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	let params = KinkyDungeonMapParams[drawFloor];
 	if (params.noReplace)
 		noReplace = params.noReplace;
 	// Draw the grid and tiles
@@ -2520,14 +2568,16 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 				}
 				let floor = KinkyDungeonTilesSkin[RX + "," + RY] ?
 					(KinkyDungeonTilesSkin[RX + "," + RY].force ? KinkyDungeonTilesSkin[RX + "," + RY].skin : KinkyDungeonMapIndex[KinkyDungeonTilesSkin[RX + "," + RY].skin])
-					: KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+					: drawFloor;
 				let vision = KinkyDungeonVisionGet(RX, RY);
 				let nR = KinkyDungeonTilesSkin[RX + "," + RY] ? noReplace : noReplace_skin[floor];
 				let sprite = KinkyDungeonGetSprite(rows[RY][RX], RX, RY, vision == 0, nR);
 				let sprite2 = KinkyDungeonGetSpriteOverlay(rows[RY][RX], RX, RY, vision == 0, nR);
+				let sprite3 = KinkyDungeonGetSpriteOverlay2(rows[RY][RX], RX, RY, vision == 0, nR);
 				if (KinkyDungeonForceRender) {
 					sprite = KinkyDungeonGetSprite(KinkyDungeonForceRender, RX, RY, vision == 0, nR);
 					sprite2 = null;
+					sprite3 = null;
 				}
 				if (KinkyDungeonForceRenderFloor != "") floor = KinkyDungeonForceRenderFloor;
 				let light = KinkyDungeonBrightnessGet(RX, RY);
@@ -2541,6 +2591,13 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 					});
 				if (sprite2)
 					KDDraw(kdgameboard, kdpixisprites, RX + "," + RY + "_o", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite2 + ".png",
+						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+							zIndex: -1.1,
+							tint: lightColor,
+						});
+
+				if (sprite3)
+					KDDraw(kdgameboard, kdpixisprites, RX + "," + RY + "_o2", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite3 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1,
 							tint: lightColor,
