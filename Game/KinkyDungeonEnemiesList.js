@@ -504,11 +504,11 @@ let KinkyDungeonEnemies = [
 		visionRadius: 4.5, maxhp: 2, minLevel: 5, weight:10, movePoints: 2, attackPoints: 3, attack: "SpellMeleeSlowBindSuicide", suicideOnSpell: true, suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "crush",
 		terrainTags: {}, floors:KDMapInit(["tmp"]), shrines: ["Latex"]},
 
-	{name: "SummonedDrone", playLine: "Robot", regen: -0.25,
+	{name: "SummonedDrone", playLine: "Robot",
 		tags: KDMapInit(["oldrobot", "ignoreharmless", "doortrap", "robot", "flying", "acidweakness", "soulresist", "minor", "melee",
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "temporary"]),
 		evasion: 0.2, armor: 1, followRange: 3.5, AI: "hunt",
-		spells: ["EncaseBoltDrone"], spellCooldownMult: 0.5, spellCooldownMod: 0, projectileTargeting: true,
+		spells: ["EncaseBoltDrone"], spellCooldownMult: 2, spellCooldownMod: 0, projectileTargeting: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffff00"},
 		],
@@ -1961,11 +1961,11 @@ let KinkyDungeonEnemies = [
 
 	{name: "DollmakerBoss1", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged",
-			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "latexEncase", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
+			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
 		spellResist: 2.0, armor: 0.5, followRange: 1.5, AI: "guard", kite: 4.5, noKiteWhenHarmless: true, dontKiteWhenDisabled: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},
-			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 8, dist: 8, kind: "RubberMissile"},
+			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 8, dist: 10, kind: "RubberMissile"},
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,
@@ -1980,11 +1980,11 @@ let KinkyDungeonEnemies = [
 
 	{name: "DollmakerBoss2", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged",
-			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "latexEncase", "redLatexBasic", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
+			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "redLatexBasic", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
 		spellResist: 2.0, armor: 0.5, followRange: 5.5, AI: "guard",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},
-			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 15, dist: 8, kind: "RubberNuke"},
+			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 15, dist: 10, kind: "RubberNuke"},
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,
@@ -1998,11 +1998,11 @@ let KinkyDungeonEnemies = [
 
 	{name: "DollmakerBoss3", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged",
-			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "latexEncase", "redLatexBasic", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
+			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "redLatexBasic", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
 		spellResist: 2.0, armor: 0.5, followRange: 1.5, AI: "guard",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},
-			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 8, dist: 8, kind: "RubberNuke"},
+			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 9, dist: 10, kind: "RubberNuke"},
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,

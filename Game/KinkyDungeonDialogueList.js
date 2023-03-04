@@ -1955,9 +1955,89 @@ let KDDialogue = {
 			return false;
 		},
 		options: {
-			"Fight": {
-				playertext: "Default", dontTouchText: true,
+			"Ask": {
+				playertext: "Default", response: "Default", gag: true,
 				options: {
+					"Proceed": {
+						playertext: "Default", response: "Default", gag: true,
+						leadsToStage: "Fight",
+					},
+					"Staff": {
+						prerequisiteFunction: (gagged, player) => {
+							return KinkyDungeonPlayerDamage?.name == "StaffDoll";
+						},
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "Fight",
+							},
+						}
+					}
+				}
+			},
+			"Assume": {
+				playertext: "Default", response: "Default", gagDisabled: true,
+				options: {
+					"Happy": {
+						playertext: "Default", response: "Default",
+						leadsToStage: "Fight",
+					},
+					"Proceed": {
+						playertext: "Default", response: "Default",
+						leadsToStage: "Fight",
+					},
+					"Staff": {
+						prerequisiteFunction: (gagged, player) => {
+							return KinkyDungeonPlayerDamage?.name == "StaffDoll";
+						},
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "Fight",
+							},
+						}
+					}
+				}
+			},
+
+			"Fight": {
+				prerequisiteFunction: (gagged, player) => {return false;},
+				playertext: "Default", response: "Default",
+				options: {
+					"Wait": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Dismiss": {
+								playertext: "Default", response: "Default",
+								options: {
+									"Proceed": {
+										playertext: "Default", exitDialogue: true,
+									},
+								}
+							},
+							"Press": {
+								playertext: "Default", response: "Default",
+								options: {
+									"Proceed": {
+										playertext: "Default", exitDialogue: true,
+									},
+								}
+							},
+							"Press2": {
+								playertext: "Default", response: "Default",
+								options: {
+									"Proceed": {
+										playertext: "Default", exitDialogue: true,
+									},
+								}
+							},
+							"Proceed": {
+								playertext: "Default", exitDialogue: true,
+							},
+						}
+					},
 					"Fight1": {gag: true,
 						playertext: "Default", exitDialogue: true,
 					},
@@ -1968,7 +2048,8 @@ let KDDialogue = {
 						playertext: "Default", exitDialogue: true,
 					},
 				}
-			}
+			},
+			"Attack": {playertext: "Default", exitDialogue: true},
 		}
 	},
 	"DollmakerStage2": { // Player defeats fuuka's first form
@@ -2005,6 +2086,143 @@ let KDDialogue = {
 				playertext: "Leave", response: "Default",
 				exitDialogue: true,
 			},
+		}
+	},
+	"DollmakerWin": { // Player beats Fuuka
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("BossUnlocked", -1);
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				clickFunction: (gagged, player) => {
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("FuukaCollar");
+						KDUnlockPerk("CommonFuuka");
+					}
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"Accept": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+					KinkyDungeonAddGold(1000);
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("FuukaCollar");
+						KDUnlockPerk("CommonFuuka");
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Gag": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KinkyDungeonChangeRep("Ghost", -5);
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("FuukaCollar");
+						KDUnlockPerk("CommonFuuka");
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
+	"DollmakerLose": { // Player loses to Fuuka
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				enemy.hostile = 0;
+				enemy.ceasefire = 4;
+				KinkyDungeonSetFlag("BossUnlocked", -1);
+			}
+			return false;
+		},
+		options: {
+			"Accept": { gag: true,
+				playertext: "Default", response: "Default",
+				options: {
+					"Continue1": {
+						playertext: "FuukaLose_Continue1", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue2": {
+						playertext: "FuukaLose_Continue2", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue3": {
+						playertext: "FuukaLose_Continue3", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+				}
+			},
+			"Deny": { gag: true,
+				playertext: "Default", response: "Default",
+				options: {
+					"Continue1": {
+						playertext: "FuukaLose_Continue1", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue2": {
+						playertext: "FuukaLose_Continue2", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue3": {
+						playertext: "FuukaLose_Continue3", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+				}
+			},
+			"Finish": {
+				prerequisiteFunction: (gagged, player) => {return false;},
+				playertext: "Default", response: "FuukaLoseFinish",
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			}
 		}
 	},
 	"FuukaLose": { // Player loses to Fuuka

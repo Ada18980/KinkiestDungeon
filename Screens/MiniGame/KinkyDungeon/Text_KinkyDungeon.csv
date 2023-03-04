@@ -9119,12 +9119,12 @@ dGenericAllyShopBuy,"(Buy items)"
 
 NameDollmakerBoss1,"Dollmaker"
 KillDollmakerBoss1,"The Dollmaker throws a device to the ground, teleporting her instantly!"
-AttackDollmakerBoss1Bind,"The Dollmaker's necklace flashes as you find yourself suddenly encased! (+RestraintAdded)"
+AttackDollmakerBoss1Bind,"The Dollmaker's necklace flashes as you find yourself suddenly restrained! (+RestraintAdded)"
 AttackDollmakerBoss1,"The Dollmaker's overbearing presence captivates you~ (DamageTaken)"
 
 NameDollmakerBoss2,"Dollmaker"
 KillDollmakerBoss2,"The Dollmaker sinks into a pool of latex!"
-AttackDollmakerBoss2Bind,"The Dollmaker's necklace flashes as you find yourself suddenly encased! (+RestraintAdded)"
+AttackDollmakerBoss2Bind,"The Dollmaker's necklace flashes as you find yourself suddenly restrained! (+RestraintAdded)"
 AttackDollmakerBoss2,"The Dollmaker suggests that you surrender. (DamageTaken)"
 
 NameDollmakerBoss3,"DOLLMAKER"
@@ -9288,6 +9288,8 @@ rFuukaWinAccept,"(SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a
 dFuukaWin_Accept,"(Submit to her anyway)"
 rFuukaWinGag,"(SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!"
 dFuukaWin_Gag,"(Gag her)"
+
+
 
 
 rGhostInfo,"(This ghost had something to say,|but it appears you've run into a bug instead)|Please report this to Ada18980 on deviantart!"
@@ -9611,3 +9613,68 @@ KinkyDungeonSpellRubberMissile,"Rubber Missile Direct Hit"
 KinkyDungeonSpellRubberMissileExplosion,"Rubber Missile"
 KinkyDungeonSpellRubberNuke,"Rubber Nuke Direct Hit"
 KinkyDungeonSpellRubberNukeExplosion,"Rubber Nuke"
+
+
+rDollmaker,"(In the center of the room stands a woman wearing a latex dress)|(Around her are robotic servants, obeying her without a word)|(She has been watching you this entire time)"
+dDollmaker_Ask,"And who might you be?"
+dDollmaker_AskGag,"(Tilt your head)"
+rDollmakerAsk,"(The woman's mask reflects the harsh industrial light)|You don't know who I am?|Hmmph, and I suppose my servants haven't told you...|They call me the Dollmaker."
+dDollmakerAsk_Proceed,"So you're the one they talked about."
+dDollmakerAsk_ProceedGag,"(Nod and continue)"
+dDollmakerAsk_Staff,"(Tuck your staff behind your back...)"
+rDollmakerAsk_Staff,"(The Dollmaker points at you)|Is that--?"
+dDollmakerAsk_Staff_Proceed,"(Panic!)"
+dDollmaker_Assume,"You must be the Dollmaker."
+rDollmakerAssume,"(The woman chuckles)|Correct.|And you must be the adventurer causing the recent troubles."
+dDollmakerAssume_Happy,"I'm famous!"
+dDollmakerAssume_HappyGag,"(Nod happily)"
+dDollmakerAssume_Proceed,"Indeed. And I'm here to bring you down."
+dDollmakerAssume_ProceedGag,"(Scoff at her)"
+dDollmakerAssume_Staff,"(Tuck your staff behind your back...)"
+rDollmakerAssume_Staff,"(The Dollmaker points at you)|Is that--?"
+dDollmakerAssume_Staff_Proceed,"(Panic!)"
+
+dDollmaker_Attack,(Attack her without saying anything)
+
+rDollmakerFight,"(The Dollmaker folds her arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll."
+dDollmakerFight_Wait,"Do you have the Mistress' Staff?"
+rDollmakerFight_Wait,"(The Dollmaker chuckles)|That trinket?|So that's what you're after!|As a matter of fact, I do not have it.|It belongs to a certain Archmagus."
+dDollmakerFight_Wait_Dismiss,"Then you are of no use to me."
+rDollmakerFight_Wait_Dismiss,"(The Dollmaker summons a drone to her side)|Such arrogance! I'll have to teach you some manners!"
+dDollmakerFight_Wait_Dismiss_Proceed,"What a bother."
+dDollmakerFight_Wait_Press,"Who?"
+rDollmakerFight_Wait_Press,"(The Dollmaker explains)|Archmagus Sariel Vinlaga. I'm surprised you didn't know.|Not that it matters for a future doll like you."
+dDollmakerFight_Wait_Press_Proceed,"We'll see about that."
+dDollmakerFight_Wait_Press2,"...Sariel Vinlaga."
+rDollmakerFight_Wait_Press2,"(The Dollmaker nods)|Yes. She is down here.|But this information is irrelevant to your future as a doll."
+dDollmakerFight_Wait_Press2_Proceed,"The Staff will be mine."
+dDollmakerFight_Wait_Proceed,"Fair enough. Let's fight!"
+dDollmakerFight_Fight1,"We'll see about that!"
+dDollmakerFight_Fight1Gag,"Hmmmph!"
+dDollmakerFight_Fight2,"Feel free to try."
+dDollmakerFight_Fight2Gag,"Mmmmmghh!"
+dDollmakerFight_Fight3,"Sounds fun... but I really need to get going."
+dDollmakerFight_Fight3Gag,"Mmmmph..."
+
+rDollmakerLose,"(The Dollmaker smiles as she stands over you)|Well well. Look who won."
+rDollmakerLoseAccept,"(The Dollmaker nods)|Absolutely. Now allow me to make my conditions clear.|You will wear my collar from now on.|Then you will be allowed to go."
+rDollmakerLoseDeny,"(The Dollmaker giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go... but only wearing my collar."
+dDollmakerLose_Accept,"You beat me fair and square."
+dDollmakerLose_AcceptGag,"Mmmph. (Submit)"
+dDollmakerLose_Deny,"You cheated!"
+dDollmakerLose_DenyGag,"Mmmph! (Struggle weakly)"
+dDollmakerLose_Continue1,"(Sigh and accept your fate)"
+dDollmakerLose_Continue2,"(Accept the collar eagerly)"
+dDollmakerLose_Continue3,"(Accept the collar begrudgingly)"
+rDollmakerLoseFinish,"(The Dollmaker presents you with her collar...)|(She locks it around your neck)|You are free to go now, dear!"
+
+rDollmakerStage2,"(The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower."
+rDollmakerStage3,"(The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from her back as she storms toward you!)"
+
+rDollmakerWin,"(The Dollmaker concedes defeat)|You have defeated me.|Very well, I will let you pass.|(She gives you her keys)"
+rDollmakerWinGag,"(You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into her open mouth and she starts mumbling angrily)"
+dDollmakerWin_Gag,"(Gag her)"
+
+
+KinkyDungeonSpellCastSummonDrones,The Dollmaker calls in drone reinforcements!
+KinkyDungeonSpellCastSummonZombies,Zombies emerge from the ground!

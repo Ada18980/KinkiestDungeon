@@ -1254,23 +1254,23 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "EncaseBolt",  bindType: "Slime", color: "#a04abd", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "EncaseBolt", count: 1, time: 4, power: 2, damage: "glue"}},
 	{enemySpell: true, name: "EncaseBoltDrone",  bindType: "Slime", color: "#a04abd", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "EncaseBoltDrone", count: 1, time: 4, power: 1, damage: "glue"}},
 
-	{enemySpell: true, name: "RubberNuke", bindType: "Slime", color: "#ff3388", sfx: "FireSpell", manacost: 8, components: ["Arms"],
+	{enemySpell: true, name: "RubberNuke", bindType: "Slime", color: "#ff3388", sfx: "Missile", manacost: 8, components: ["Arms"],
 		spellcast: {spell: "RubberNukeExplosion", target: "onhit", directional:true, offset: false},
 		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 1.0, dist: 5.5, count: 0.25, limit: 0.7},],
-		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 10, delay: 0, range: 50, damage: "glue", speed: 0.5, playerEffect: {name: "RubberMissile", count: 4, time: 4, power: 8, damage: "glue"}},
+		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 12, delay: 0, range: 50, damage: "crush", speed: 0.5, playerEffect: {name: "RubberMissile", count: 4, time: 4, power: 8, damage: "glue"}},
 	{enemySpell: true, name: "RubberNukeExplosion", landsfx: "Lightning", bindType: "Slime", school: "Element", manacost: 0, components: [],
-		effectTileDurationMod: 20, effectTile: {
+		effectTileDurationMod: 3, effectTile: {
 			name: "Slime",
-			duration: 30,
+			duration: 12,
 		},
 		level:1, type:"hit", onhit:"instant", noTerrainHit: true, power: 20, delay: 1, range: 2.5, size: 5, aoe: 2.5, lifetime: 1, damage: "glue"},
 
-	{enemySpell: true, name: "RubberMissile", bindType: "Slime", color: "#ff3388", sfx: "FireSpell", manacost: 8, components: ["Arms"],
+	{enemySpell: true, name: "RubberMissile", bindType: "Slime", color: "#ff3388", sfx: "Missile", manacost: 8, components: ["Arms"],
 		spellcast: {spell: "RubberMissileExplosion", target: "onhit", directional:true, offset: false},
 		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 1.0, dist: 5.5, count: 0.5, limit: 0.7},],
-		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "glue", speed: 0.5, playerEffect: {name: "RubberMissile", count: 3, time: 4, power: 4, damage: "glue"}},
+		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 4, delay: 0, range: 50, damage: "crush", speed: 0.5, playerEffect: {name: "RubberMissile", count: 2, time: 4, power: 4, damage: "glue"}},
 	{enemySpell: true, name: "RubberMissileExplosion", landsfx: "Lightning", bindType: "Slime", school: "Element", manacost: 0, components: [],
-		effectTileDurationMod: 8, effectTile: {
+		effectTileDurationMod: 3, effectTile: {
 			name: "Slime",
 			duration: 12,
 		},
@@ -1389,7 +1389,8 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "SummonSkeleton", landsfx: "Bones", minRange: 0, manacost: 8, components: ["Verbal"], level:3, type:"inert", onhit:"summon", summon: [{name: "SummonedSkeleton", count: 1, time: 12, strict: true, bound: true, weakBinding: true}], power: 0, time: 12, delay: 1, range: 4, size: 3, aoe: 2.1, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonSkeletons", landsfx: "Bones", minRange: 0, manacost: 18, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedSkeleton", count: 4, time: 16, strict: true, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 2.6, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonZombies", landsfx: "Bones", specialCD:16, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedZombie", count: 4, strict: true, minRange: 1.5, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
-	{enemySpell: true, name: "SummonDrones", landsfx: "Bones", specialCD:16, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedDrone", count: 4, strict: true, minRange: 1.5, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
+	{enemySpell: true, name: "SummonDrones", landsfx: "Teleport", specialCD:12, selfcast: true, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon",
+		summon: [{name: "SummonedDrone", count: 2, strict: true, bound: true, time: 16}], power: 0, time: 15, delay: 3, range: 8, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "RopeAttack", hitsfx: "Struggle", manacost: 6, components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
 		{name: "LearnedRope", count: 1, chance: 0.5, time: 20, strict: true, bound: true},
 		{name: "UnforseenRope", count: 1, chance: 0.5, time: 20, strict: true, bound: true}
@@ -1453,10 +1454,10 @@ let KinkyDungeonSpellListEnemies = [
 		], onhit:"", time:6, power: 0, range: 4.9, aoe: 4.9, size: 1, damage: ""},
 
 	{name: "DollConvert", tags: ["dummy"], sfx: "Dollify", school: "Illusion", manacost: 0, components: [], level:1, type:"special", special: "DollConvert", noMiscast: true, castCondition: "dollConvert",
-		onhit:"", time:5, power: 0, range: 8, aoe: 8, size: 1, damage: ""},
+		onhit:"", time:5, power: 0, range: 5.5, aoe: 5.5, size: 1, damage: ""},
 
 	{name: "DollConvertMany", tags: ["dummy"], sfx: "Dollify", school: "Illusion", manacost: 0, components: [], level:1, type:"special", special: "DollConvert", noMiscast: true, castCondition: "dollConvert",
-		onhit:"", time:5, power: 0, range: 9, aoe: 9, size: 1, damage: ""},
+		onhit:"", time:5, power: 0, range: 5.5, aoe: 5.5, size: 1, damage: ""},
 
 	{enemySpell: true, buff: true, name: "ParasolBuff", minRange: 0, sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Arms"], mustTarget: true, level:3, type:"buff",
 		buffs: [

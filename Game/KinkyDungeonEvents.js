@@ -3301,11 +3301,10 @@ let KDEventMapEnemy = {
 			}
 		},
 		"dollmakerMissiles": (e, enemy, data) => {
-			// We heal nearby allies and self
 			if (data.delta && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 				if (!e.chance || KDRandom() < e.chance) {
 					let player = KinkyDungeonPlayerEntity;
-					if (!KDEnemyHasFlag(enemy, "dollmakerMissiles") && enemy.aware && KDHostile(enemy) && KDistEuclidean(enemy.x - player.x, enemy.y-player.y) > 2.5) {
+					if (!KDHelpless(enemy) && !KDEnemyHasFlag(enemy, "dollmakerMissiles") && enemy.aware && KDHostile(enemy) && KDistEuclidean(enemy.x - player.x, enemy.y-player.y) > 2.5) {
 						let origins = [
 							{x:player.x + e.dist, y: player.y},
 							{x:player.x - e.dist, y: player.y},
@@ -3326,7 +3325,11 @@ let KDEventMapEnemy = {
 						];
 
 
-						origins = origins.filter((origin) => {return KinkyDungeonNoEnemy(origin.x, origin.y) && KinkyDungeonCheckPath(origin.x, origin.y, player.x, player.y, true, false, 1);});
+						origins = origins.filter((origin) => {
+							return KinkyDungeonNoEnemy(origin.x, origin.y)
+							&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(origin.x, origin.y))
+							&& KinkyDungeonCheckPath(origin.x, origin.y, player.x, player.y, true, false, 1);
+						});
 						let finalorigin = [];
 						for (let i =0; i < e.count; i++) {
 							let index = Math.floor(KDRandom()*origins.length);
@@ -3357,7 +3360,12 @@ let KDEventMapEnemy = {
 							b.vx = 0.5 * (player.x - origin.x)/dist;
 						}
 
-						KinkyDungeonSetEnemyFlag(enemy, "dollmakerMissiles", e.time);
+						if (finalorigin.length > 0) {
+							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/Missile.ogg", enemy);
+							KinkyDungeonSetEnemyFlag(enemy, "dollmakerMissiles", e.time);
+						}
+
+
 					}
 				}
 			}
