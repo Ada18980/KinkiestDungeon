@@ -342,7 +342,9 @@ function KinkyDungeonDrawInputs() {
 		statsDraw.b_speed = {text: TextGet("KDStatStun"), category: "status", icon: "boundStun", color: "#ff5555", bgcolor: "#333333", priority: 9};
 	} else if (KinkyDungeonSlowLevel > 9) {
 		statsDraw.b_speed = {text: TextGet("KDStatSpeedImmobile"), category: "status", icon: "boundImmobile", color: "#ff5555", bgcolor: "#333333", priority: 9};
-	} else if (KinkyDungeonSlowLevel > 2) {
+	} else if (KinkyDungeonSlowLevel > 3) {
+		statsDraw.b_speed = {text: TextGet("KDStatSpeedNoSprint"), category: "status", icon: "boundSlow4", color: "#ff5555", bgcolor: "#333333", priority: 9};
+	}  else if (KinkyDungeonSlowLevel > 2) {
 		statsDraw.b_speed = {text: TextGet("KDStatSpeedVerySlow"), category: "status", icon: "boundSlow3", color: "#ff5555", bgcolor: "#333333", priority: 9};
 	} else if (KinkyDungeonSlowLevel == 2) {
 		statsDraw.b_speed = {text: TextGet("KDStatSpeedSlow"), category: "status", icon: "boundSlow2", color: "#ff5555", bgcolor: "#333333", priority: 9};

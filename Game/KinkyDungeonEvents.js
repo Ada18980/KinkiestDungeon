@@ -3300,6 +3300,68 @@ let KDEventMapEnemy = {
 				}
 			}
 		},
+		"dollmakerMissiles": (e, enemy, data) => {
+			// We heal nearby allies and self
+			if (data.delta && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				if (!e.chance || KDRandom() < e.chance) {
+					let player = KinkyDungeonPlayerEntity;
+					if (!KDEnemyHasFlag(enemy, "dollmakerMissiles") && enemy.aware && KDHostile(enemy) && KDistEuclidean(enemy.x - player.x, enemy.y-player.y) > 2.5) {
+						let origins = [
+							{x:player.x + e.dist, y: player.y},
+							{x:player.x - e.dist, y: player.y},
+							{x:player.x, y: player.y+e.dist},
+							{x:player.x, y: player.y-e.dist},
+							{x:player.x+e.dist, y: player.y+e.dist},
+							{x:player.x+e.dist, y: player.y-e.dist},
+							{x:player.x-e.dist, y: player.y+e.dist},
+							{x:player.x-e.dist, y: player.y-e.dist},
+							{x:player.x+e.dist, y: player.y+e.dist/2},
+							{x:player.x+e.dist, y: player.y-e.dist/2},
+							{x:player.x-e.dist, y: player.y+e.dist/2},
+							{x:player.x-e.dist, y: player.y-e.dist/2},
+							{x:player.x+e.dist/2, y: player.y+e.dist},
+							{x:player.x+e.dist/2, y: player.y-e.dist},
+							{x:player.x-e.dist/2, y: player.y+e.dist},
+							{x:player.x-e.dist/2, y: player.y-e.dist},
+						];
+
+
+						origins = origins.filter((origin) => {return KinkyDungeonNoEnemy(origin.x, origin.y) && KinkyDungeonCheckPath(origin.x, origin.y, player.x, player.y, true, false, 1);});
+						let finalorigin = [];
+						for (let i =0; i < e.count; i++) {
+							let index = Math.floor(KDRandom()*origins.length);
+							if (origins[index]) {
+								finalorigin.push(origins[index]);
+								origins.splice(index, 1);
+							}
+						}
+						for (let origin of finalorigin) {
+							let spell = KinkyDungeonFindSpell(e.kind, true);
+							let b = KinkyDungeonLaunchBullet(origin.x, origin.y,
+								player.x,player.y,
+								0.5, {noSprite: spell.noSprite, faction: "Ambush", name:spell.name, block: spell.block, width:spell.size, height:spell.size, summon:spell.summon,
+									targetX: player.x, targetY: player.y, cast: Object.assign({}, spell.spellcast),
+									source: enemy.id, dot: spell.dot,
+									bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
+									bulletSpin: spell.bulletSpin,
+									effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
+									effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
+									passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
+									pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
+									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+									damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, false);
+							b.visual_x = origin.x;
+							b.visual_y = origin.y;
+							let dist = KDistEuclidean(player.x - origin.x, player.y - origin.y);
+							b.vy = 0.5 * (player.y - origin.y)/dist;
+							b.vx = 0.5 * (player.x - origin.x)/dist;
+						}
+
+						KinkyDungeonSetEnemyFlag(enemy, "dollmakerMissiles", e.time);
+					}
+				}
+			}
+		},
 		"nurseAura": (e, enemy, data) => {
 			// We heal nearby allies and self
 			if (data.delta && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {

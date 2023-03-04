@@ -1965,13 +1965,14 @@ let KinkyDungeonEnemies = [
 		spellResist: 2.0, armor: 0.5, followRange: 1.5, AI: "guard", kite: 4.5, noKiteWhenHarmless: true, dontKiteWhenDisabled: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},
+			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 8, dist: 8, kind: "RubberMissile"},
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
 		unlockCommandLevel: 3, unlockCommandCD: 14,
 		spells: ["SummonDrones", "DollConvertMany", "DollBoost", "EnemyCM_self"],
-		spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 0.2, noChannel: true,
+		spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 0.7, noChannel: true,
 		visionRadius: 9, maxhp: 70, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "psychic", fullBoundBonus: 4,
 		terrainTags: {}, floors:KDMapInit([]),
 		ondeath: [{type: "dialogue", dialogue:"DollmakerStage2", click: true}]},
@@ -1983,13 +1984,14 @@ let KinkyDungeonEnemies = [
 		spellResist: 2.0, armor: 0.5, followRange: 5.5, AI: "guard",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},
+			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 15, dist: 8, kind: "RubberNuke"},
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
 		unlockCommandLevel: 3, unlockCommandCD: 14,
 		spells: ["DollConvertMany", "DollBoost", "EnemyCM_self"],
-		spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.2, noChannel: true,
+		spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.85, noChannel: true,
 		visionRadius: 20, blindSight: 8, maxhp: 60, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "psychic", fullBoundBonus: 4,
 		terrainTags: {}, floors:KDMapInit([]),
 		ondeath: [{type: "dialogue", dialogue:"DollmakerStage3", click: true}]},
@@ -2000,13 +2002,14 @@ let KinkyDungeonEnemies = [
 		spellResist: 2.0, armor: 0.5, followRange: 1.5, AI: "guard",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},
+			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 8, dist: 8, kind: "RubberNuke"},
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
 		unlockCommandLevel: 3, unlockCommandCD: 14,
 		spells: ["DollConvertMany", "DollBoost", "EnemyCM_self"],
-		spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 0.2, noChannel: true,
+		spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 1.15, noChannel: true,
 		visionRadius: 30, blindSight: 30, maxhp: 140, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "psychic", fullBoundBonus: 4,
 		terrainTags: {}, floors:KDMapInit([]),
 		ondeath: [{type: "dialogue", dialogue:"DollmakerWin", click: true}]},

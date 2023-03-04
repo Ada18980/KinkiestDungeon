@@ -516,6 +516,7 @@ KDStatHandsPartial,"Hands are impaired! Some tasks will be harder..."
 KDStatSpeedSlow,"Movement significantly impaired!"
 KDStatSpeedSlightlySlow,"Movement slightly impaired."
 KDStatSpeedVerySlow,"Movement severely impaired!"
+KDStatSpeedNoSprint,"Movement is almost impossible. Sprinting and hopping are disabled."
 KDStatSpeedImmobile,"Immobilized!"
 KDStatFreeMouth,"Your mouth is free for potion-drinking and spellcasting activities."
 KDStatFreeEyes,"Your vision is clear."
@@ -1525,8 +1526,8 @@ AttackSummonedZombie,"The zombie gropes your body! (DamageTaken)"
 NameSummonedDrone,Capture Drone
 KillSummonedDrone,"The capture drone's latex core overloads!"
 AttackSummonedDrone,"The capture drone electrocutes you! (DamageTaken)"
-KinkyDungeonSummonSingleSummonedZombie,The Dollmaker commands a drone to capture you!
-KinkyDungeonSummonMultiSummonedZombie,The Dollmaker commands her drones to capture you!
+KinkyDungeonSummonSingleSummonedDrone,The Dollmaker commands a drone to capture you!
+KinkyDungeonSummonMultiSummonedDrone,The Dollmaker commands her drones to capture you!
 
 NameNawashiZombie,Artistic Zombie
 KillNawashiZombie,"The zombie smiles as it collapses to the ground."
@@ -9116,17 +9117,17 @@ rGenericAllyDontHelpMe_Leave,"(You sigh as you realize you really need her help.
 dGenericAllyShop,"(Sell items)"
 dGenericAllyShopBuy,"(Buy items)"
 
-NameDollmakerBoss1,"The Dollmaker"
+NameDollmakerBoss1,"Dollmaker"
 KillDollmakerBoss1,"The Dollmaker throws a device to the ground, teleporting her instantly!"
 AttackDollmakerBoss1Bind,"The Dollmaker's necklace flashes as you find yourself suddenly encased! (+RestraintAdded)"
 AttackDollmakerBoss1,"The Dollmaker's overbearing presence captivates you~ (DamageTaken)"
 
-NameDollmakerBoss2,"The Dollmaker"
+NameDollmakerBoss2,"Dollmaker"
 KillDollmakerBoss2,"The Dollmaker sinks into a pool of latex!"
 AttackDollmakerBoss2Bind,"The Dollmaker's necklace flashes as you find yourself suddenly encased! (+RestraintAdded)"
 AttackDollmakerBoss2,"The Dollmaker suggests that you surrender. (DamageTaken)"
 
-NameDollmakerBoss3,"THE Dollmaker"
+NameDollmakerBoss3,"DOLLMAKER"
 KillDollmakerBoss3,"The Dollmaker falls kneeling to the floor, admitting defeat!"
 AttackDollmakerBoss3Bind,"The Dollmaker snaps her fingers, and many robotic arms restrain you! (+RestraintAdded)"
 AttackDollmakerBoss3,"The Dollmaker orders you to KNEEL! (DamageTaken)"
@@ -9604,3 +9605,9 @@ KinkyDungeonSpellCastDollConvert,"The ENEMYNAME transforms nearby dolls into her
 KinkyDungeonSpellCastDollConvertMany,"The ENEMYNAME transforms nearby dolls into her subjects!"
 
 KDWiggle,"You wriggle around while struggling..."
+
+KinkyDungeonRubberMissile,"The missile explodes into a shower of latex that covers you!"
+KinkyDungeonSpellRubberMissile,"Rubber Missile Direct Hit"
+KinkyDungeonSpellRubberMissileExplosion,"Rubber Missile"
+KinkyDungeonSpellRubberNuke,"Rubber Nuke Direct Hit"
+KinkyDungeonSpellRubberNukeExplosion,"Rubber Nuke"

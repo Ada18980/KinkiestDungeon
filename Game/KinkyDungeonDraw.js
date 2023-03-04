@@ -1024,7 +1024,7 @@ function KinkyDungeonDrawGame() {
 						if (KinkyDungeonSlowLevel < 2 && MouseIn(canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)) {
 							KinkyDungeonSuppressSprint = true;
 						}
-						if (!KinkyDungeonSuppressSprint && KinkyDungeonToggleAutoSprint && KDCanSprint()) {
+						if (!KinkyDungeonSuppressSprint && KinkyDungeonToggleAutoSprint && (KDCanSprint())) {
 							if (KinkyDungeonMoveDirection.x || KinkyDungeonMoveDirection.y) {
 								let newX = KinkyDungeonMoveDirection.x * (KinkyDungeonSlowLevel < 2 ? 2 : 1) + KinkyDungeonPlayerEntity.x;
 								let newY = KinkyDungeonMoveDirection.y * (KinkyDungeonSlowLevel < 2 ? 2 : 1) + KinkyDungeonPlayerEntity.y;

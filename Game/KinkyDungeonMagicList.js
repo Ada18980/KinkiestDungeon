@@ -1254,6 +1254,17 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "EncaseBolt",  bindType: "Slime", color: "#a04abd", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "EncaseBolt", count: 1, time: 4, power: 2, damage: "glue"}},
 	{enemySpell: true, name: "EncaseBoltDrone",  bindType: "Slime", color: "#a04abd", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "EncaseBoltDrone", count: 1, time: 4, power: 1, damage: "glue"}},
 
+	{enemySpell: true, name: "RubberNuke", bindType: "Slime", color: "#ff3388", sfx: "FireSpell", manacost: 8, components: ["Arms"],
+		spellcast: {spell: "RubberNukeExplosion", target: "onhit", directional:true, offset: false},
+		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 1.0, dist: 5.5, count: 0.25, limit: 0.7},],
+		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 10, delay: 0, range: 50, damage: "glue", speed: 0.5, playerEffect: {name: "RubberMissile", count: 4, time: 4, power: 8, damage: "glue"}},
+	{enemySpell: true, name: "RubberNukeExplosion", landsfx: "Lightning", bindType: "Slime", school: "Element", manacost: 0, components: [],
+		effectTileDurationMod: 20, effectTile: {
+			name: "Slime",
+			duration: 30,
+		},
+		level:1, type:"hit", onhit:"instant", noTerrainHit: true, power: 20, delay: 1, range: 2.5, size: 5, aoe: 2.5, lifetime: 1, damage: "glue"},
+
 	{enemySpell: true, name: "RubberMissile", bindType: "Slime", color: "#ff3388", sfx: "FireSpell", manacost: 8, components: ["Arms"],
 		spellcast: {spell: "RubberMissileExplosion", target: "onhit", directional:true, offset: false},
 		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 1.0, dist: 5.5, count: 0.5, limit: 0.7},],
