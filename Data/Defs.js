@@ -16,6 +16,17 @@ let LAYERS_BASE = [
 	"Collar",
 
 
+	// Forearms
+	"ForeSleeveLeft",
+	"GloveLeft",
+	"HandLeft",
+	"ForeArmLeft",
+
+	"ForeSleeveRight",
+	"GloveRight",
+	"HandRight",
+	"ForeArmRight",
+
 	// This slot is for things like breastplates and things that go over
 	"ChestStraps",
 	"Chestplate",
@@ -40,10 +51,8 @@ let LAYERS_BASE = [
 
 	// Left arm clothes
 	"SleeveLeft",
-	"GloveLeft",
 
 	// Left arm body - reserved for body and catsuits
-	"HandLeft",
 	"ArmLeft",
 
 
@@ -74,10 +83,8 @@ let LAYERS_BASE = [
 
 	// Right arm clothes
 	"SleeveRight",
-	"GloveRight",
 
 	// Right arm body - reserved for body and catsuits
-	"HandRight",
 	"ArmRight",
 
 	// Clothes that go behind

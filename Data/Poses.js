@@ -1,8 +1,9 @@
 "use strict";
 
-let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked"];
-let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked"];
-let HANDLEFTPOSES = ["Free", "Yoked"];
+let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked", "Front"];
+let FOREARMPOSES = ["Front"];
+let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked", "Front"];
+let HANDLEFTPOSES = ["Free", "Yoked", "Front"];
 let LEGPOSES = ["Spread", "Closed", "Kneel", "Hogtie"];
 let FOOTRIGHTPOSES = ["Spread", "Closed"];
 let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel"];
@@ -29,6 +30,9 @@ let PoseProperties = {
 			offset_x: 1190/MODELWIDTH,
 			offset_y: 690/MODELHEIGHT,
 		}],
+	},
+	Front: {
+		global_default: "Boxtie",
 	},
 	Kneel: {
 		offset_y: 0.15,
