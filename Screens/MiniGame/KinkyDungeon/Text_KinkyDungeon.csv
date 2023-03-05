@@ -1523,11 +1523,18 @@ KillSummonedZombie,"The zombie screams and tumbles to the floor."
 AttackSummonedZombieBind,"The zombie swiftly wraps you in charms! (+RestraintAdded)"
 AttackSummonedZombie,"The zombie gropes your body! (DamageTaken)"
 
-NameSummonedDrone,Capture Drone
-KillSummonedDrone,"The capture drone's latex core overloads!"
-AttackSummonedDrone,"The capture drone electrocutes you! (DamageTaken)"
-KinkyDungeonSummonSingleSummonedDrone,The Dollmaker commands a drone to capture you!
-KinkyDungeonSummonMultiSummonedDrone,The Dollmaker commands her drones to capture you!
+NameSummonedDrone,Support Drone
+KillSummonedDrone,"The support drone retreats to recharge its weapon!"
+AttackSummonedDrone,"The support drone electrocutes you! (DamageTaken)"
+KinkyDungeonSummonSingleSummonedDrone,The Dollmaker commands a drone to attack you!
+KinkyDungeonSummonMultiSummonedDrone,The Dollmaker commands her drones to attack you!
+
+NameSummonedCaptureDrone,Capture Drone
+KillSummonedCaptureDrone,"The capture drone's latex core overloads!"
+AttackSummonedCaptureDrone,"The capture drone grapples you! (DamageTaken)"
+AttackSummonedCaptureDroneBind,"The capture drone wraps you in advanced cables! (+RestraintAdded)"
+KinkyDungeonSummonSingleSummonedCaptureDrone,The Dollmaker commands a drone to capture you!
+KinkyDungeonSummonMultiSummonedCaptureDrone,The Dollmaker commands her drones to capture you!
 
 NameNawashiZombie,Artistic Zombie
 KillNawashiZombie,"The zombie smiles as it collapses to the ground."
@@ -9679,4 +9686,5 @@ dDollmakerWin_Gag,"(Gag her)"
 
 
 KinkyDungeonSpellCastSummonDrones,The Dollmaker calls in drone reinforcements!
+KinkyDungeonSpellCastSummonCaptureDrones,The Dollmaker releases many drones with robotic arms to capture you!
 KinkyDungeonSpellCastSummonZombies,Zombies emerge from the ground!

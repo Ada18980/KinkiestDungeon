@@ -1749,12 +1749,12 @@ function KinkyDungeonDrawMessages(NoLog) {
 			return true;
 		}, true, 1750, 82, 100, 50, TextGet("KinkyDungeonLog"), "#ffffff");
 	if (!KinkyDungeonMessageToggle || NoLog) {
-		if (!MouseIn(KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2, 62, KDMsgWidthMin, KDLogDist*(2 + KDMaxConsoleMsg))) {
+		let i = 0;
+		if (!MouseIn(KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2, 62, KDMsgWidthMin, KDLogDist*(2 + KDMaxConsoleMsg)) || KinkyDungeonDrawState != "Game") {
 
 
 			let msg2nd = [];
 			let ignoreMSG = [];
-			let i = 0;
 			let spacing = KDLogDist;
 			if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
 				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + KDMsgWidth/2, 82 + spacing * i, KDMsgWidthMin, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize);
@@ -1801,18 +1801,18 @@ function KinkyDungeonDrawMessages(NoLog) {
 				}
 			}
 
-			if (i > 0 || KinkyDungeonDrawState == "Game")
-				FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
-					Left: KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2,
-					Top: 0,
-					Width: KDMsgWidthMin,
-					Height: 62 + KDLogDist*(i + 1),
-					Color: "#000000",
-					LineWidth: 1,
-					zIndex: 100,
-					alpha: 0.45,
-				});
 		}
+		if (i > 0 || KinkyDungeonDrawState == "Game")
+			FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
+				Left: KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2,
+				Top: 0,
+				Width: KDMsgWidthMin,
+				Height: 62 + KDLogDist*(i + 1),
+				Color: "#000000",
+				LineWidth: 1,
+				zIndex: 100,
+				alpha: 0.45,
+			});
 
 
 	} else {

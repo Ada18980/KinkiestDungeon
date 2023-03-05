@@ -2055,7 +2055,7 @@ let KDDialogue = {
 	"DollmakerStage2": { // Player defeats fuuka's first form
 		response: "Default",
 		clickFunction: (gagged, player) => {
-			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonStartPosition.x + 10, KinkyDungeonStartPosition.y - 5, true);
+			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonStartPosition.x + 10, KinkyDungeonStartPosition.y - 5, true,undefined, true);
 			if (!point) {
 				point = {x: KinkyDungeonStartPosition.x + 10, y: KinkyDungeonStartPosition.y - 7};
 			}
