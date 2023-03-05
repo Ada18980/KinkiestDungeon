@@ -1823,7 +1823,8 @@ function KDSendEvent(type) {
 				'journey':KDJourney,
 			});
 			for (let s of KinkyDungeonStatsChoice.keys()) {
-				KDSendTrait(s);
+				if (KinkyDungeonStatsChoice.get(s))
+					KDSendTrait(s);
 			}
 		} else if (type == 'jail') {
 			// @ts-ignore

@@ -27,8 +27,8 @@ let KDVolcanism = {id: "Volcanism", type: "event", aura: "#ff0000", power: 0.5, 
 	{type: "Volcanism", power: 4.0, damage: "fire", trigger: "beforeDamageEnemy"},
 ]};
 
-let KDDrenched2 = {id: "Drenched2", type: "electricDamageResist", power: -0.35, player: true, duration: 20, enemies: true};
-let KDDrenched3 = {id: "Drenched2", type: "iceDamageResist", power: -0.35, player: true, duration: 20, enemies: true};
+let KDDrenched2 = {id: "Drenched2", type: "electricDamageResist", power: -0.2, player: true, duration: 20, enemies: true};
+let KDDrenched3 = {id: "Drenched3", type: "iceDamageResist", power: -0.35, player: true, duration: 20, enemies: true};
 
 let KDBoundByFate = {id: "BoundByFate", type: "Fate", power: 1, player: true, duration: 3, enemies: false, aura: "#dddddd", events: [
 	{type: "BoundByFate", kind: "mithrilRope", count: 2, trigger: "tick", power: 1},

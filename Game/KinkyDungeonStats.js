@@ -297,7 +297,7 @@ function KDDisableAutoWait() {
 function KinkyDungeonInterruptSleep() {
 	KDGameData.SleepTurns = 0;
 	KDGameData.PlaySelfTurns = 0;
-	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer)
+	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonGetRestraintItem("ItemDevices"))
 		KinkyDungeonAutoWait = false;
 	if (KinkyDungeonInDanger()) KinkyDungeonAutoWaitStruggle = false;
 }
@@ -309,7 +309,7 @@ let KDBaseDamageTypes = {
 	distractionTypesWeak:["soul"],
 	distractionTypesStrong:["tickle", "grope", "charm", "souldrain", "happygas"],
 	teaseTypes: ["grope", "charm"],
-	staminaTypesWeak:["drain", "stun", "fire", "glue", "chain", "tickle", "electric", "soul"],
+	staminaTypesWeak:["drain", "stun", "fire", "glue", "chain", "tickle", "electric"],
 	staminaTypesStrong:["ice", "frost", "poison", "crush", "souldrain"],
 	manaTypesWeak:["electric", "drain"],
 	manaTypesStrong:[],

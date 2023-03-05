@@ -150,7 +150,9 @@ let KDIntentEvents = {
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
 			enemy.playWithPlayer = 0;
 			enemy.IntentAction = 'CaptureJail';
-			enemy.IntentLeashPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]) ? KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]) : Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+			let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
+			enemy.IntentLeashPoint = nj ? nj : Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+			if (!nj) KinkyDungeonSetFlag("LeashToPrison", -1, 1);
 		},
 		arrive: (enemy, AIData) => {
 			if (KDGameData.PrisonerState == 'parole') {
@@ -298,6 +300,8 @@ function KDSettlePlayerInFurniture(enemy, AIData, tags, guardDelay = 24) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 			KinkyDungeonMakeNoise(10, nearestfurniture.x, nearestfurniture.y);
 		}
+
+		KDResetAllAggro();
 		KDResetAllIntents();
 		KDBreakTether();
 		return true;

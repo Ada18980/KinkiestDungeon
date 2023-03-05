@@ -25,7 +25,7 @@ RestartNeededEN,"Restart required!"
 RestartNeededCN,"需要重启！"
 RestartNeededKR,"재시작 필요！"
 
-KinkyDungeon,"Kinky Dungeon v4.12"
+KinkyDungeon,"Kinky Dungeon v4.2"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
@@ -545,7 +545,7 @@ KinkyDungeonBuffTabletIllusion,-50% MP Cost (Illusion)
 
 KinkyDungeonBuffConduction,"Conductive: When you or an enemy takes electric damage, the other takes half of it as well!"
 KinkyDungeonBuffLightningRod,"Lightning Rod: Gain significantly boosted electric resist."
-KinkyDungeonBuffDrenched,"Drenched: Grants fire resist, ice weakness, and makes you conductive."
+KinkyDungeonBuffDrenched,"Drenched: Grants fire resist, ice/electric weakness, and makes you conductive."
 
 KinkyDungeonBuffChilled,"Chilled: The cold makes it hard to move! You are slowed."
 KinkyDungeonBuffSlimed,"Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage."
@@ -4421,6 +4421,8 @@ KDEffectTileTooltipSlime,Slime
 KDEffectTileTooltipSlimeDesc,"Slows creatures"
 KDEffectTileTooltipIce,Ice
 KDEffectTileTooltipIceDesc,"Chilling and slippery"
+KDEffectTileTooltipWater,Water
+KDEffectTileTooltipWaterDesc,"A concentration of moisture."
 KDEffectTileTooltipRopes,Ropes
 KDEffectTileTooltipRopesDesc,"Looking for a new wearer"
 KDEffectTileTooltipChains,Chains
@@ -6469,9 +6471,9 @@ KinkyDungeonDamageTypegravity,"Gravity"
 KinkyDungeonDamageTypepierce,"Pierce"
 KinkyDungeonDamageTypeslash,"Slash"
 KinkyDungeonDamageTypepain,"Pain"
-KinkyDungeonDamageTypesouldrain,"Psychic"
+KinkyDungeonDamageTypesouldrain,"Spirit Drain"
 KinkyDungeonDamageTypesoul,"Psychic"
-KinkyDungeonDamageTypedrain,"Psychic"
+KinkyDungeonDamageTypedrain,"Mana Drain"
 KinkyDungeonDamageTypeelectric,"Electric"
 KinkyDungeonDamageTypestun,"Pressure"
 KinkyDungeonDamageTypechain,"Chain"

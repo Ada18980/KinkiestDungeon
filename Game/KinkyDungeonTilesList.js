@@ -509,7 +509,7 @@ function KDSlimeWalker(entity) {
 }
 
 function KDSlimeImmune(enemy) {
-	return enemy.Enemy?.tags.slime || enemy.Enemy?.tagsglueimmune || enemy.Enemy?.tagsglueresist || enemy.Enemy?.tagsslimewalk || KDEntityBuffedStat(enemy, "glueDamageResist") >= 0.45;
+	return enemy.Enemy?.tags.slime || enemy.Enemy?.tags.glueimmune || enemy.Enemy?.tags.glueresist || enemy.Enemy?.tags.slimewalk || KDEntityBuffedStat(enemy, "glueDamageResist") >= 0.45;
 }
 /**
  * These happen when stepped on

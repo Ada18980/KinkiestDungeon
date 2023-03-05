@@ -1151,7 +1151,7 @@ function KinkyDungeonUpdateBulletVisuals(delta) {
 		for (let b of KinkyDungeonBulletsVisual.entries()) {
 			if (b[1].updated) {
 				b[1].updated = false;
-			} else KinkyDungeonBulletsVisual.delete(b[0]);
+			} else if (!b[1].end || b[1].alpha <= 0.01) KinkyDungeonBulletsVisual.delete(b[0]);
 		}
 }
 

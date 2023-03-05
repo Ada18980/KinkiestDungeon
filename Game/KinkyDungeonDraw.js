@@ -1801,16 +1801,17 @@ function KinkyDungeonDrawMessages(NoLog) {
 				}
 			}
 
-			FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
-				Left: KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2,
-				Top: 0,
-				Width: KDMsgWidthMin,
-				Height: 62 + KDLogDist*(i + 1),
-				Color: "#000000",
-				LineWidth: 1,
-				zIndex: 100,
-				alpha: 0.45,
-			});
+			if (i > 0 || KinkyDungeonDrawState == "Game")
+				FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
+					Left: KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2,
+					Top: 0,
+					Width: KDMsgWidthMin,
+					Height: 62 + KDLogDist*(i + 1),
+					Color: "#000000",
+					LineWidth: 1,
+					zIndex: 100,
+					alpha: 0.45,
+				});
 		}
 
 
@@ -1908,15 +1909,12 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 		}
 		if (Entity.scale != undefined) {
 			let scalemult = 0.9;
-			if (dist > 0 || !Entity.end) {
+			if (dist > 0 || !Entity.end || !(Entity.vx || Entity.vy)) {
 				if (Entity.vx || Entity.vy) {
 					scalemult = KDistEuclidean(Entity.vx, Entity.vy);
 				}
 				Entity.scale = Math.min(1.0, Entity.scale + KDTimescale*amount*scalemult);
 			} else {
-				if (!(Entity.vx || Entity.vy)) {
-					scalemult = 0;
-				}
 				Entity.scale = Math.max(0.0, Entity.scale - KDTimescale*amount*scalemult);
 			}
 		}
@@ -2873,6 +2871,7 @@ let KDEffectTileTooltips = {
 	},
 	'Ember': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffaa88");},
 	'Ice': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#88ffff");},
+	'Water': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#8888ff");},
 	'Vines': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#44ff44", "KDEffectTileTooltipCMDBindings");},
 	'Ropes': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffae70", "KDEffectTileTooltipCMDBindings");},
 	'Chains': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#aaaaaa", "KDEffectTileTooltipCMDBindings");},

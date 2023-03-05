@@ -843,6 +843,7 @@ function KinkyDungeonPassOut(noteleport) {
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
 
 	KDGameData.JailKey = false;
+	KDResetAllAggro();
 	KinkyDungeonSaveGame();
 
 	//if (KinkyDungeonMapGet(nearestJail.x, nearestJail.y) != "B") {
@@ -913,6 +914,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	KDMovePlayer(Math.floor(KinkyDungeonGridWidth/2), Math.floor(KinkyDungeonGridHeight/2), false);
 
 	KinkyDungeonLoseJailKeys();
+	KDResetAllAggro();
 
 	KinkyDungeonSaveGame();
 }
@@ -1051,6 +1053,7 @@ function KinkyDungeonDefeat(PutInJail) {
 		}
 
 	KDKickEnemies(nearestJail);
+	KDResetAllAggro();
 }
 
 /**
@@ -1096,6 +1099,12 @@ function KDResetAllIntents() {
 	for (let e of  KinkyDungeonEntities) {
 		if (e.IntentAction && !KDIntentEvents[e.IntentAction].noMassReset)
 			KDResetIntent(e);
+	}
+}
+function KDResetAllAggro() {
+	for (let e of KinkyDungeonEntities) {
+		if (e.hostile && !KDIntentEvents[e.IntentAction]?.noMassReset)
+			e.hostile = 0;
 	}
 }
 

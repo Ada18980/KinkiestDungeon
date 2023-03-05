@@ -536,7 +536,7 @@ const KinkyDungeonRestraints = [
 	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "BlacksteelArmCuffs", debris: "Chains", DefaultLock: "Red", accessible: true,
 		Asset: "FuturisticCuffs", linkCategory: "Cuffs", linkSize: 0.55, LinkableBy: [...KDDevices, ...KDBindable], Link: "BlacksteelArmCuffs2",
 		Color: ["#333333", "#171222", "#92e8c0",], Group: "ItemArms", bindarms: false, power: 10, weight: 0,
-		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"blacksteelrestraints":24, "blacksteelcuffs":20}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cuffs", "ArmCuffsBase", "Blacksteel", "Elements"],
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"blacksteelrestraints":54, "blacksteelcuffs":20}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cuffs", "ArmCuffsBase", "Blacksteel", "Elements"],
 		maxwill: 0.8, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33}, {trigger: "defeat", type: "linkItem", chance: 1.0}]},
 	{name: "BlacksteelArmCuffs2", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "BlacksteelArmCuffs3", UnLink: "BlacksteelArmCuffs",
 		Color: ["#333333", "#171222", "#92e8c0",],
