@@ -1210,6 +1210,7 @@ type KinkyDungeonDress = {
 	Color: string | string[];
 	Lost: boolean;
 	NoLose?: boolean;
+	Property?: any,
 	OverridePriority?: number;
 	Skirt?: boolean;
 }[]
@@ -1301,6 +1302,8 @@ interface spell {
 	noDirectDamage?: true,
 	/** This spell does not leave a warning to the player */
 	hideWarnings?: boolean,
+	/** This spell does leave a warning to the player */
+	alwaysWarn?:boolean,
 	/** Marks a spell as non-magical, so traps dont leave a rune on the ground */
 	nonmagical?: boolean,
 	/** Marks the spell as a command word spell to enemies */

@@ -236,6 +236,7 @@ let KinkyDungeonStatsPresets = {
 	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -3, outfit: "Wolfgirl", tags: ["start"]},
 	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
 	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
+	"StartCyberDoll": {startPriority: 30, category: "Start", id: "StartCyberDoll", cost: -3, tags: ["start"]},
 
 	"FuukaCollar": {startPriority: 40, category: "Boss", id: "FuukaCollar", cost: -3, locked: true, tags: ["start"]},
 
@@ -469,6 +470,23 @@ let KDPerkStart = {
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, "Jail", true);
 		}
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("KiguMask"), 0, true, "Purple");
+	},
+	StartCyberDoll: () =>{
+		KinkyDungeonChangeRep("Metal", 10);
+		KinkyDungeonAddRestraintIfWeaker("ControlHarness", 5, true, "Blue", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("TrackingCollar", 5, true, "Blue", false, undefined, undefined, undefined, true);
+
+
+		KinkyDungeonAddRestraintIfWeaker("CyberBelt", 5, true, "Blue", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("CyberBra", 5, true, "Blue", false, undefined, undefined, undefined, true);
+
+		KinkyDungeonAddRestraintIfWeaker("CyberHeels", 5, true, "Blue", false, undefined, undefined, undefined, true);
+
+		KinkyDungeonAddRestraintIfWeaker("CyberArmCuffs", 5, true, "Blue", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("CyberLegCuffs", 5, true, "Blue", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("CyberAnkleCuffs", 5, true, "Blue", false, undefined, undefined, undefined, true);
+
+		KinkyDungeonSetDress("CyberDoll", "CyberDoll");
 	},
 	StartMaid: () =>{
 		KDChangeFactionRelation("Player", "Maidforce", 0.2 - KDFactionRelation("Player", "Maidforce"), true);

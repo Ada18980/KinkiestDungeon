@@ -1129,13 +1129,13 @@ function KDUpdatePerksBonus() {
 
 function KinkyDungeonCalculateMiscastChance() {
 	let flags = {
-		miscastChance: Math.max(0, KinkyDungeonStatDistractionMiscastChance * Math.min(1, KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax)),
+		miscastChance: Math.max(0, KinkyDungeonStatDistractionMiscastChance * Math.min(1, KinkyDungeonStatDistraction / (KinkyDungeonStatDistractionMax||1))),
 	};
 	if (KinkyDungeonStatsChoice.has("AbsoluteFocus")) {
 		flags.miscastChance = Math.min(flags.miscastChance * 2, 1);
 	}
 	if (KinkyDungeonStatsChoice.get("Distracted")) flags.miscastChance += KDDistractedAmount;
-	KinkyDungeonSendEvent("calcMiscast", {flags: flags});
+	KinkyDungeonSendEvent("calcMiscast", flags);
 	KinkyDungeonMiscastChance = Math.max(0, flags.miscastChance || 0);
 }
 
@@ -1355,7 +1355,7 @@ function KinkyDungeonDoTryOrgasm(Bonus) {
 	let amount = denied ? 0 : KinkyDungeonOrgasmVibeLevel * KinkyDungeonOrgasmVibeLevelPlayPowerMult;
 	let playSelfAmount = Bonus != undefined ? Bonus : KinkyDungeonDoPlayWithSelf();
 	//if (playSelfAmount > KinkyDungeonOrgasmVibeLevel) {
-	console.log(`${playSelfAmount} + ${amount}`);
+	//console.log(`${playSelfAmount} + ${amount}`);
 	amount += playSelfAmount;
 	//}
 	let msg = "KinkyDungeonOrgasm";

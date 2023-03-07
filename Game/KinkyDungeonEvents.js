@@ -612,6 +612,32 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"RequireBaseLegCuffs": (e, item, data) => {
+			if (data.item !== item && KDRestraint(item).Group) {
+				let cuffsbase = false;
+				for (let inv of KinkyDungeonAllRestraint()) {
+					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("LegCuffsBase"))) {
+						cuffsbase = true;
+						break;
+					} else if (inv.dynamicLink) {
+						let link = inv.dynamicLink;
+						// Recursion thru to make sure we have an armbinder buried in there... somewhere
+						for (let i = 0; i < 20; i++) {
+							if (link && KDRestraint(link).shrine && (KDRestraint(link).shrine.includes("LegCuffsBase"))) {
+								cuffsbase = true;
+								break;
+							}
+							if (link.dynamicLink) link = link.dynamicLink;
+							else i = 200;
+						}
+					}
+				}
+				if (!cuffsbase) {
+					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false);
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveCuffs"), "lightgreen", 2);
+				}
+			}
+		},
 		"armbinderHarness": (e, item, data) => {
 			if (data.item !== item && KDRestraint(item).Group) {
 				let armbinder = false;
@@ -658,6 +684,7 @@ let KDEventMapInventory = {
 						let rep = (KinkyDungeonGoddessRep.Ghost + 50) / 100;
 						subMult = 1.0 + e.subMult * rep;
 					}
+					if (e.tags?.includes("lowwill") && KinkyDungeonStatWill < 0.1) chance = 1.0;
 					if (item && KDRestraint(item).Link && (KDRandom() < chance * subMult) && (!e.noLeash || KDGameData.KinkyDungeonLeashedPlayer < 1)) {
 						let newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
 						//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
@@ -1709,13 +1736,13 @@ let KDEventMapSpell = {
 		},
 	},
 	"calcMiscast": {
-		"DistractionCast": (e, data) => {
-			if (KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax > 0.99 && KinkyDungeonStatsChoice.get("DistractionCast")) data.miscastChance -= 1.0;
+		"DistractionCast": (e, spell, data) => {
+			if (KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax > 0.99 || KinkyDungeonPlayerBuffs.DistractionCast) data.miscastChance -= 1.0;
 		},
 	},
 	"playerCast": {
 		"DistractionCast": (e, spell, data) => {
-			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.99) {
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.99 || KinkyDungeonPlayerBuffs.DistractionCast) {
 				let tb = KinkyDungeonGetManaCost(data.spell) * 0.25;
 				KinkyDungeonTeaseLevelBypass += tb;
 				KDGameData.OrgasmStage = Math.max((KDGameData.OrgasmStage + Math.ceil(tb)) || tb, KinkyDungeonMaxOrgasmStage);
@@ -1757,7 +1784,7 @@ let KDEventMapSpell = {
 		"DistractionCast": (e, spell, data) => {
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99)
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-					id: "DistractionCast", type: "sfx", power: 1, duration: 1, sfxApply: "PowerMagic", aura: "#ff8888", aurasprite: "Heart"
+					id: "DistractionCast", type: "sfx", power: 1, duration: 4, sfxApply: "PowerMagic", aura: "#ff8888", aurasprite: "Heart"
 				});
 		},
 		"Buff": (e, spell, data) => {

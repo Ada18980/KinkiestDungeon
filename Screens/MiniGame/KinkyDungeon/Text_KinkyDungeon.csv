@@ -5520,6 +5520,7 @@ KinkyDungeonSpellSlimePuddle,Apprentice's Slime
 KinkyDungeonSpellWitchSlime,Witch's Slime
 KinkyDungeonSpellRubberSlime,Rubber Explosion
 KinkyDungeonSpellMiniSlime,Witch's Slime Ball
+KinkyDungeonSpellMiniCable,Robotic Arm
 KinkyDungeonSpellDescriptionSlime,A pool of slime deals DamageDealt glue damage to enemies on impact and covers the area in temporary slime.
 KinkyDungeonSpellCastSlime,You conjure a pool of slime!
 KinkyDungeonSpellTargetSlime,Select where the slime will appear
@@ -6505,8 +6506,8 @@ KinkyDungeonHeartWill,"+Willpower"
 KinkyDungeonHeartMana,"+Mana"
 KinkyDungeonHeartDiscard,"Discard (destroys it permanently!)"
 
-KinkyDungeonVulnerable,The EnemyName is vulnerable and took an extra AMOUNT damage!
-KinkyDungeonUnseen,The EnemyName isn't aware of you and took an extra AMOUNT damage!
+KinkyDungeonVulnerable,The EnemyName is vulnerable and took an extra AMOUNT base damage!
+KinkyDungeonUnseen,The EnemyName isn't aware of you and took an extra AMOUNT base damage!
 KinkyDungeonStealPick,The enemy steals a pick from you!
 KinkyDungeonStealKnife,The enemy takes away your knife!
 KinkyDungeonStealRedKey,The enemy steals a key from your body!

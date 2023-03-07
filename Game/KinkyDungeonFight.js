@@ -973,6 +973,7 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 					}
 
 					KinkyDungeonCastSpell(xx, yy, castingSpell, undefined, undefined, b);
+					if (b.bullet.cast.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + b.bullet.cast.sfx + ".ogg");
 				}
 			}
 		}
@@ -1050,15 +1051,15 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 				// Update the bullet's visual position
 				KinkyDungeonUpdateSingleBulletVisual(b, end);
 			}
-			if (!end) {
+			if (!end || (b.bullet.spell && b.bullet.spell.alwaysWarn)) {
 				KinkyDungeonSendEvent("bulletAfterTick", {bullet: b, delta: delta, allied: Allied});
 				// Update the bullet's visual position
 				KinkyDungeonUpdateSingleBulletVisual(b, end);
 
-				let show = (KDFactionRelation("Player", b.bullet.faction) < 0.5 || (b.bullet.spell && b.bullet.spell.playerEffect) || b.bullet.playerEffect)
+				let show = (KDFactionRelation("Player", b.bullet.faction) < 0.5 || (b.bullet.spell && b.bullet.spell.playerEffect) || b.bullet.playerEffect || (b.bullet.spell && b.bullet.spell.alwaysWarn))
 					&& !(b.bullet.spell && b.bullet.spell.hideWarnings)
-					&& (
-						(b.bullet.hit == "lingering" || (b.bullet.spell && b.bullet.name == b.bullet.spell.name && (b.bullet.spell.onhit == "aoe" || b.bullet.spell.onhit == "dot")))
+					&& ((b.bullet.spell && b.bullet.spell.alwaysWarn)
+						|| (b.bullet.hit == "lingering" || (b.bullet.spell && b.bullet.name == b.bullet.spell.name && (b.bullet.spell.onhit == "aoe" || b.bullet.spell.onhit == "dot")))
 						|| ((b.lifetime > 0 || b.lifetime == undefined) && b.bullet.damage && b.bullet.damage.type && b.bullet.damage.type != "heal" && b.bullet.damage.type != "inert")
 					);
 				let bxx = b.xx;
@@ -1102,7 +1103,8 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 						|| (!b.vx && !b.vy) || (KDistEuclidean(b.vx, b.vy) < 0.9) || b.bullet.aoe; // Check collision for bullets only once they leave their square or if they are slower than one
 					if (outOfTime || outOfRange) {
 						d = 0;
-					} else if (checkCollision) {
+					}
+					if ((!(outOfTime || outOfRange) || (b.bullet.spell?.alwaysWarn)) && checkCollision) {
 						let rad = b.bullet.aoe ? b.bullet.aoe : ((b.bullet.spell && b.bullet.spell.aoe && b.bullet.name == b.bullet.spell.name) ? b.bullet.spell.aoe : 0);
 						for (let xx = bx - Math.floor(rad); xx <= bx + Math.ceil(rad); xx++) {
 							for (let yy = by - Math.floor(rad); yy <= by + Math.ceil(rad); yy++) {

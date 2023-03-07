@@ -75,6 +75,7 @@ function KinkyDungeonDressSet() {
 				KinkyDungeonDresses.Default.push({
 					Item: C.Appearance[A].Asset.Name,
 					Group: C.Appearance[A].Asset.Group.Name,
+					Property: C.Appearance[A].Property,
 					Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Asset.DefaultColor ? C.Appearance[A].Asset.DefaultColor : "Default"),
 					Lost: false,
 				},);
@@ -223,6 +224,7 @@ function KinkyDungeonDressPlayer() {
 						if (!item.Property) item.Property = {OverridePriority: KDClothOverrides[clothes.Group][clothes.Item]};
 						else item.Property.OverridePriority = KDClothOverrides[clothes.Group][clothes.Item];
 					}
+					if (clothes.Property) item.Property = clothes.Property;
 					// Ignored because BC uses string[] as a type!
 					// @ts-ignore
 					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, clothes.Color, clothes.Group);

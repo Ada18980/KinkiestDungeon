@@ -1285,6 +1285,7 @@ Minor Changes:
 4.2 (Feb 2023)
 - New boss: The Dollmaker (fight her on floor 20)
 - Some general bugfixes
+- Boulder now properly hits rocks, and doesnt deal double damage to the target hit
 
 
 TODO ValidationFindBlockCycles to prevent bugs

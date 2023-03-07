@@ -1543,9 +1543,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		if (!restraint.attempts) restraint.attempts = 0;
 		if (restraint.attempts < KinkyDungeonMaxImpossibleAttempts) {
 			increasedAttempts = true;
-			restraint.attempts += 0.5;
-			if (StruggleType == "Struggle") restraint.attempts += 0.5;
-			if (data.escapeChance <= -0.5) restraint.attempts += 0.5;
+			restraint.attempts += 1;
+			if (data.escapeChance <= -0.5) restraint.attempts += 1;
 		} else {
 			let typesuff = "";
 			if (removeFail || (data.origEscapeChance <= 0 && data.helpChance)) typesuff = "3";

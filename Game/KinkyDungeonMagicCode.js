@@ -29,6 +29,9 @@ let KinkyDungeonSpellSpecials = {
 		if (en) {
 			if (en.Enemy.tags.summonedRock) {
 				en.hp = 0;
+				en.faction = "Player";
+				en.rage = 0;
+				en.hostile = 0;
 				let spell2 = KinkyDungeonFindSpell("BoulderKicked", true);
 				let size = (spell2.size) ? spell2.size : 1;
 				let xx = entity.x;
