@@ -564,7 +564,7 @@ function KinkyDungeonLoad() {
 	for (let stat of Object.entries(KinkyDungeonStatsPresets)) {
 		for (let c of KDCategories) {
 			if (stat[1].category == c.name) {
-				if (stat[1].debuff || KDGetPerkCost(stat[1]) < 0)
+				if (!stat[1].buff && (stat[1].debuff || KDGetPerkCost(stat[1]) < 0))
 					c.debuffs.push(stat);
 				else
 					c.buffs.push(stat);

@@ -242,14 +242,14 @@ let KinkyDungeonStatsPresets = {
 	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
 	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
 
-	"StartCyberDoll": {startPriority: 30, category: "Start", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
+	"StartCyberDoll": {startPriority: 30, category: "Boss", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
 
 	"DollmakerVisor": {startPriority: 31, category: "Boss", id: "DollmakerVisor", cost: -1, locked: true, tags: ["start"]},
-	"FuukaCollar": {startPriority: 40, category: "Boss", id: "FuukaCollar", cost: -2, locked: true, tags: ["start"]},
+	"FuukaCollar": {startPriority: 40, category: "Boss", buff: true, id: "FuukaCollar", cost: -2, locked: true, tags: ["start"]},
 
 
 	"CommonCyber": {category: "Boss", id: "CommonCyber", cost: -1, locked: true},
-	"CommonFuuka": {category: "Boss", id: "CommonFuuka", cost: -1, locked: true},
+	"CommonFuuka": {category: "Boss", id: "CommonFuuka", buff: true, cost: -1, locked: true},
 
 	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},
 	"Prisoner": {category: "Start", id: "Prisoner", cost: 0},
@@ -681,8 +681,8 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 		for (let stat of c.buffs.concat(c.debuffs)) {
 			if ((!stat[1].locked || KDUnlockedPerks.includes(stat[0]))
 				&& (NonSelectable|| !KDPerksFilter || TextGet("KinkyDungeonStat" + ("" + stat[1].id)).toLocaleLowerCase().includes(KDPerksFilter.toLocaleLowerCase()))) {
-				let YY = (stat[1].cost < 0 || stat[1].debuff) ? Y_alt : Y;
-				let XX = (stat[1].cost < 0 || stat[1].debuff) ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
+				let YY = (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) ? Y_alt : Y;
+				let XX = (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
 
 				if (inView()) {
 					let colorAvailable = NonSelectable ?
@@ -729,7 +729,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 					});
 					filled_x[X] = X;
 				}
-				if (stat[1].cost < 0 || stat[1].debuff) Y_alt += KDPerksButtonHeight + KDPerksButtonHeightPad;
+				if (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) Y_alt += KDPerksButtonHeight + KDPerksButtonHeightPad;
 				else Y += KDPerksButtonHeight + KDPerksButtonHeightPad;
 			}
 		}

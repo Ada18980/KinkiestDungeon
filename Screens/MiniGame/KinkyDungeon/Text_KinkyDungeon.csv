@@ -243,6 +243,8 @@ KinkyDungeonStatDescSavourTheTaste,"Drinking a potion takes 2 turns"
 KinkyDungeonStatMagicHands,"Magic Hands"
 KinkyDungeonStatDescMagicHands,"Enemies can add restraints underneath existing restraints."
 
+KinkyDungeonStatStartCyberDoll,"Cyber Doll"
+KinkyDungeonStatDescStartCyberDoll,"Start in Cyber restraints."
 KinkyDungeonStatFuukaCollar,"Fuuka's Pet"
 KinkyDungeonStatDescFuukaCollar,"Start with Fuuka's collar and a few restraints."
 KinkyDungeonStatCommonFuuka,"Fuuka Fan Club"

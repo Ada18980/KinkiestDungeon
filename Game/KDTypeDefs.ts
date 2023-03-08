@@ -1282,6 +1282,8 @@ interface effectTileRef {
 type KDPerk = {
 	/** Determines if this one goes in the debuffs tree */
 	debuff?: boolean,
+	/** Determines if this one goes in the buffs tree */
+	buff?: boolean,
 	category: string,
 	id: string | number,
 	cost: number,
