@@ -243,6 +243,8 @@ let KinkyDungeonStatsPresets = {
 	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
 
 	"StartCyberDoll": {startPriority: 30, category: "Start", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
+
+	"DollmakerVisor": {startPriority: 31, category: "Boss", id: "DollmakerVisor", cost: -1, locked: true, tags: ["start"]},
 	"FuukaCollar": {startPriority: 40, category: "Boss", id: "FuukaCollar", cost: -2, locked: true, tags: ["start"]},
 
 
@@ -477,6 +479,9 @@ let KDPerkStart = {
 		}
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("KiguMask"), 0, true, "Purple");
 	},
+	DollmakerVisor: () =>{
+		KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
+	},
 	StartCyberDoll: () =>{
 		KinkyDungeonChangeRep("Metal", 10);
 		KinkyDungeonAddRestraintIfWeaker("ControlHarness", 5, true, "Blue", false, undefined, undefined, undefined, true);
@@ -490,7 +495,7 @@ let KDPerkStart = {
 		//KinkyDungeonAddRestraintIfWeaker("CyberBallGag", 5, true, "Red", false, undefined, undefined, undefined, true);
 		KinkyDungeonAddRestraintIfWeaker("CyberPlugGag", 5, true, "Red", false, undefined, undefined, undefined, true);
 		KinkyDungeonAddRestraintIfWeaker("CyberMuzzle", 5, true, "Red", false, undefined, undefined, undefined, true);
-		KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
+		//KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
 
 
 

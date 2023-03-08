@@ -2100,6 +2100,7 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("StartCyberDoll");
 						KDUnlockPerk("CommonCyber");
 					}
 					return false;
@@ -2113,6 +2114,7 @@ let KDDialogue = {
 					KinkyDungeonAddGold(1000);
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("StartCyberDoll");
 						KDUnlockPerk("CommonCyber");
 					}
 					return false;
@@ -2131,6 +2133,7 @@ let KDDialogue = {
 					KinkyDungeonAddGold(1000);
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("StartCyberDoll");
 						KDUnlockPerk("CommonCyber");
 					}
 					return false;
@@ -2148,6 +2151,7 @@ let KDDialogue = {
 					KinkyDungeonChangeRep("Ghost", -5);
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("StartCyberDoll");
 						KDUnlockPerk("CommonCyber");
 					}
 					return false;
