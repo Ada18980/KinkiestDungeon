@@ -157,7 +157,7 @@ let KDPerkCount = {
  * @type {Record<string, KDPerk>}
  */
 let KinkyDungeonStatsPresets = {
-	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 2, requireArousal: true, blockclass: ["Trainee"]},
+	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 2, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
 
 
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1, block: ["SecondWind"]},
@@ -233,12 +233,12 @@ let KinkyDungeonStatsPresets = {
 
 	"Hogtied": {startPriority: 50, category: "Start", id: "Hogtied", cost: -1, tags: ["start"]},
 	"StartObsidian": {startPriority: 5, category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
-	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -3, outfit: "Wolfgirl", tags: ["start"]},
+	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
 	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
 	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
-	"StartCyberDoll": {startPriority: 30, category: "Start", id: "StartCyberDoll", cost: -3, tags: ["start"]},
+	"StartCyberDoll": {startPriority: 30, category: "Start", id: "StartCyberDoll", cost: -2, tags: ["start"]},
 
-	"FuukaCollar": {startPriority: 40, category: "Boss", id: "FuukaCollar", cost: -3, locked: true, tags: ["start"]},
+	"FuukaCollar": {startPriority: 40, category: "Boss", id: "FuukaCollar", cost: -2, locked: true, tags: ["start"]},
 
 
 	"CommonFuuka": {category: "Boss", id: "CommonFuuka", cost: -1, locked: true},
@@ -481,10 +481,18 @@ let KDPerkStart = {
 		KinkyDungeonAddRestraintIfWeaker("CyberBra", 5, true, "Blue", false, undefined, undefined, undefined, true);
 
 		KinkyDungeonAddRestraintIfWeaker("CyberHeels", 5, true, "Blue", false, undefined, undefined, undefined, true);
+		//KinkyDungeonAddRestraintIfWeaker("CyberBallGag", 5, true, "Red", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("CyberPlugGag", 5, true, "Red", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("CyberMuzzle", 5, true, "Red", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
+
+
 
 		KinkyDungeonAddRestraintIfWeaker("CyberArmCuffs", 5, true, "Blue", false, undefined, undefined, undefined, true);
 		KinkyDungeonAddRestraintIfWeaker("CyberLegCuffs", 5, true, "Blue", false, undefined, undefined, undefined, true);
 		KinkyDungeonAddRestraintIfWeaker("CyberAnkleCuffs", 5, true, "Blue", false, undefined, undefined, undefined, true);
+
+		//KinkyDungeonAddRestraintIfWeaker("CyberDollJacket", 5, true, "Red", false, undefined, undefined, undefined, true);
 
 		KinkyDungeonSetDress("CyberDoll", "CyberDoll");
 	},

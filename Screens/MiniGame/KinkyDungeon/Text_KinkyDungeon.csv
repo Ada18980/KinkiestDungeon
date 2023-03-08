@@ -3524,7 +3524,15 @@ RestraintTrapPlug3Desc,"A sizeable plug that will make your life unbearably plea
 RestraintTrapPlug3Desc2,"It vibrates strongly periodically and has a denial setting."
 RestraintTrapPlug4,Thundering Plug
 RestraintTrapPlug4Desc,"A sizeable plug that will make your life unbearably pleasurable..."
-RestraintTrapPlug4Desc2,"You're going to have the time of your life."
+RestraintTrapPlug4Desc2,"Enjoy it while you can."
+RestraintTrapPlug5,Intense Training Plug
+RestraintTrapPlug5Desc,"An energetic plug that will make your life unbearably pleasurable..."
+RestraintTrapPlug5Desc2,"You're going to have the time of your life."
+
+RestraintRearVibe1,Rear Vibrating Plug
+RestraintRearVibe1Desc,"A device that attacks from multiple angles."
+RestraintRearVibe1Desc2,"An enjoyable experience."
+
 RestraintMaidVibe,Maid Egg
 RestraintMaidVibeDesc,"An energetic little friend that likes to tease you and takes orders from the head maid."
 RestraintMaidVibeDesc2,"It is charged by residual magic from your spells."
@@ -9689,3 +9697,105 @@ dDollmakerWin_Gag,"(Gag her)"
 KinkyDungeonSpellCastSummonDrones,The Dollmaker calls in drone reinforcements!
 KinkyDungeonSpellCastSummonCaptureDrones,The Dollmaker releases many drones with robotic arms to capture you!
 KinkyDungeonSpellCastSummonZombies,Zombies emerge from the ground!
+
+
+RestraintCyberAnkleCuffs,Cyber Ankle Cuffs
+RestraintCyberAnkleCuffsDesc,"Ankle cuffs of exquisite quality, bearing all the marks of Old Civilization technology."
+RestraintCyberAnkleCuffsDesc2,"Though made of ultra-tough metal, they feel light on your ankles..."
+KinkyDungeonLinkCyberAnkleCuffs,"An energy link appears, linking your ankles close together!"
+
+RestraintCyberAnkleCuffs2,Energy Link
+RestraintCyberAnkleCuffs2Desc,"An energy link connecting your ankle cuffs together."
+RestraintCyberAnkleCuffs2Desc2,"It's powered by a chaos-resonance matrix, which can be overloaded by cutting the field."
+KinkyDungeonUnLinkCyberAnkleCuffs2,"The energy link disappears, freeing your ankles!"
+KinkyDungeonLinkCyberAnkleCuffs2,"Your ankles snap together as the cuffs activate!"
+
+RestraintCyberAnkleCuffs3,Cyber Cuffs Chain
+RestraintCyberAnkleCuffs3Desc,"A magnetic link keeping your ankles tightly connected."
+RestraintCyberAnkleCuffs3Desc2,"The cuffs are closely attached, so you can't cut the link apart."
+KinkyDungeonUnLinkCyberAnkleCuffs3,"The ankle cuffs detach with a beep!"
+
+RestraintCyberLegCuffs,Cyber Leg Cuffs
+RestraintCyberLegCuffsDesc,"Thigh cuffs of exquisite quality, bearing all the marks of Old Civilization technology."
+RestraintCyberLegCuffsDesc2,"Though made of ultra-tough metal, they feel light on your legs..."
+KinkyDungeonLinkCyberLegCuffs,"An energy link appears, linking your thighs close together!"
+
+RestraintCyberLegCuffs2,Energy Link
+RestraintCyberLegCuffs2Desc,"An energy link connecting your leg cuffs together."
+RestraintCyberLegCuffs2Desc2,"It's powered by a chaos-resonance matrix, which can be overloaded by cutting the field."
+KinkyDungeonUnLinkCyberLegCuffs2,"The energy link disappears, freeing your legs!"
+
+RestraintCyberArmCuffs,Cyber Cuffs
+RestraintCyberArmCuffsDesc,"Wrist and elbow cuffs of exquisite quality, bearing all the marks of Old Civilization technology."
+RestraintCyberArmCuffsDesc2,"Though made of ultra-tough metal, they feel light on your wrists..."
+KinkyDungeonLinkCyberArmCuffs,"Your wrists are pulled together as the cuffs activate!"
+
+RestraintCyberArmCuffs2,Cyber Wrist Link
+RestraintCyberArmCuffs2Desc,"A magnetic link keeping your wrists secured together."
+RestraintCyberArmCuffs2Desc2,"The cuffs are closely attached, so you can't cut the link apart."
+KinkyDungeonUnLinkCyberArmCuffs2,"Your cuffs detatch with a beep!"
+KinkyDungeonLinkCyberArmCuffs2,"Your elbows snap together as the cuffs engage fully!"
+
+RestraintCyberArmCuffs3,Cyber Connection
+RestraintCyberArmCuffs3Desc,"A magnetic link keeping your wrists and elbows inescapably secured."
+RestraintCyberArmCuffs3Desc2,"The cuffs are closely attached, so you can't cut the link apart."
+KinkyDungeonUnLinkCyberArmCuffs3,"Your wrists detatch with a beep, leaving your elbows still bound!"
+KinkyDungeonLinkCyberArmCuffs3,"Your arms snap fully together as the cuffs activate!"
+
+RestraintCyberArmCuffs4,Cyber Elbow Link
+RestraintCyberArmCuffs4Desc,"A magnetic link keeping your elbows pressed tightly together!"
+RestraintCyberArmCuffs4Desc2,"The cuffs are closely attached, so you can't cut the link apart."
+KinkyDungeonUnLinkCyberArmCuffs4,"Your elbows detatch with a beep!"
+KinkyDungeonLinkCyberArmCuffs4,"Your arms snap fully together as the cuffs activate!"
+
+
+RestraintCyberBallGag,Doll Gag
+RestraintCyberBallGagDesc,"A soft ball pressed against your lips and held in place with metallic straps."
+RestraintCyberBallGagDesc2,"The straps are made of a flexible metal with no visible seams along the straps."
+
+RestraintCyberPlugGag,Doll Plug Gag
+RestraintCyberPlugGagDesc,"A soft, flexible plug pressed into your mouth and held in place with a metal shield."
+RestraintCyberPlugGagDesc2,"The straps are made of a flexible metal with no visible seams along the straps."
+
+RestraintCyberMuzzle,Doll Muzzle
+RestraintCyberMuzzleDesc,"A metallic shield preventing you from removing any gags underneath."
+RestraintCyberMuzzleDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage."
+
+RestraintCyberHeels,Doll Heels
+RestraintCyberHeelsDesc,"A pair of tall heels used to improve the aesthetics and controllability of dolls."
+RestraintCyberHeelsDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage."
+
+RestraintCyberBelt,Cyber Doll Belt
+RestraintCyberBeltDesc,"A chastity belt created by the Old Civilization. Truly a marvel of science!"
+RestraintCyberBeltDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with a advanced form of latex designed for permanent wear."
+RestraintCyberBra,Cyber Doll Bra
+RestraintCyberBraDesc,"A chastity bra created by the Old Civilization. Truly a marvel of science!"
+RestraintCyberBraDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with an advanced form of latex designed for permanent wear."
+
+
+RestraintCyberDollJacket,Doll Jacket
+RestraintCyberDollJacketDesc,"A jacket used to secure particularly unruly dolls."
+RestraintCyberDollJacketDesc2,"The material is somehow both stretchy yet hard enough to chip a knife on. The pinnacle of Old Civilization materials science."
+
+
+RestraintDollmakerVisor,Dollmaker's Visor
+RestraintDollmakerVisorDesc,"A visor used by the Dollmaker for assigning arbitrary tasks to her dolls."
+RestraintDollmakerVisorDesc2,"It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through."
+
+KDControlHarnessTest,"Detected new hardware."
+KDControlHarnessCuffsUpdate,"[Restriction Protocol] Detected new hardware: RESTRAINTNAME. Install progress: PERCENT%"
+KDControlHarnessCuffsActivate,"[Restriction Protocol] Installation complete. Engage mobility restrictions."
+
+KDControlHarnessChastityUpdate,"[Training Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%"
+KDControlHarnessChastityMode_Extra,"Supplemental Stimulation"
+KDControlHarnessChastityMode_Edge,"Endurance Training"
+KDControlHarnessChastityMode_Deny,"Frustration Tolerance"
+KDControlHarnessChastityMode_Fullpower,"Mental Resistance"
+KDControlHarnessChastityActivate,"[Training Protocol] Installation complete. Engage training protocol. Current mode: CHASTITYMODE"
+KDControlHarnessChastityActivate2,"You feel your belt insert new toys into your body..."
+
+KDControlHarnessHeadUpdate,"[Sensory Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%"
+KDControlHarnessHeadActivate,"[Sensory Protocol] Installation complete. Engage sensory restrictions."
+
+KDControlHarnessTrackingUpdate,"[Tracking Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%"
+KDControlHarnessTrackingActivate,"[Tracking Protocol] Installation complete. Engage tracing system."

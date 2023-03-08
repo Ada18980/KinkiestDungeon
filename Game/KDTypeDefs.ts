@@ -2012,5 +2012,7 @@ type SpecialCondition = {
 	criteria: (enemy: entity, AIData: any) => boolean,
 }
 
+type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
+
 declare const PIXI: any;
 declare const zip: any;

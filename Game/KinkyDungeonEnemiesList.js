@@ -1976,7 +1976,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DollmakerBoss1", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged",
-			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
+			"glueresist", "electricresist", "crushresist", "iceweakness", "dollmakerrestraints", "controlharness", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
 		spellResist: 2.0, armor: 0.5, followRange: 1.5, AI: "guard", kite: 4.5, noKiteWhenHarmless: true, dontKiteWhenDisabled: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},
@@ -1995,7 +1995,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DollmakerBoss2", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged",
-			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "redLatexBasic", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
+			"glueresist", "electricresist", "crushresist", "iceweakness", "dollmakerrestraints", "cyberdollchastity", "cyberdollrestraints", "controlharness", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
 		spellResist: 2.0, armor: 0.5, followRange: 5.5, AI: "guard",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},
@@ -2013,7 +2013,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DollmakerBoss3", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged",
-			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "redLatexBasic", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
+			"glueresist", "electricresist", "crushresist", "iceweakness", "dollmakerrestraints", "cyberdollchastity", "cyberdollrestraints", "cyberdollheavy", "controlharness", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
 		spellResist: 2.0, armor: 0.5, followRange: 1.5, AI: "guard",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},

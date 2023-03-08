@@ -56,6 +56,42 @@ function KinkyDungeonResetEventVariablesTick(delta) {
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
  */
 let KDEventMapInventory = {
+	"postApply": {
+		/**
+		 * @param {KDEventData_PostApply} data
+		*/
+		"ControlHarness": (e, item, data) => {
+			let itemAdded = data.item;
+			let itemtags = KDRestraint(itemAdded)?.shrine;
+			console.log(itemtags);
+			// Ignore anything that isnt futuristic
+			if (itemtags?.includes("Cyber")) {
+				/*KinkyDungeonSendTextMessage(4,
+					TextGet("KDControlHarnessTest"),
+					"#ffffff",
+					1,
+				);*/
+
+				for (let category of Object.values(KDControlHarnessCategories)) {
+					if (category.activateTags.some((tag) => {return itemtags.includes(tag);})) {
+						let restMap = new Map();
+						for (let tag of category.activateTags) {
+							for (let inv of KinkyDungeonGetRestraintsWithShrine(tag, false, true)) {
+								if (!restMap.has(inv)) {
+									restMap.set(inv, true);
+								}
+							}
+						}
+						category.updateFunction(e, item, data, [...restMap.keys()]);
+						if (restMap.size == category.activateCount) {
+							// ACTIVATE
+							category.activateFunction(e, item, data, [...restMap.keys()]);
+						}
+					}
+				}
+			}
+		}
+	},
 	"calcOrgThresh": {
 		"CurseSensitivity": (e, item, data) => {
 			if (data.player == KinkyDungeonPlayerEntity) {
