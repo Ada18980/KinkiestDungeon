@@ -73,7 +73,7 @@ let KinkyDungeonDamageTypesExtension = {
 
 let KinkyDungeonBindingDamageTypes = ["chain", "glue", "magicbind"];
 let KinkyDungeonDistractDamageTypes = ["tickle", "grope", "happygas", "charm"];
-let KinkyDungeonMasochistDamageTypes = ["crush", "pain", "unarmed", "electric", "fire", "magicbind", "glue", "chain", "souldrain", "drain"];
+let KinkyDungeonMasochistDamageTypes = ["crush", "pain", "unarmed", "electric", "shock", "fire", "magicbind", "glue", "chain", "souldrain", "drain"];
 
 // Weapons
 let KinkyDungeonPlayerWeapon = null;
@@ -320,6 +320,7 @@ let KDDamageEquivalencies = {
 	"happygas": "charm",
 	"souldrain": "soul",
 	"drain": "soul",
+	"shock": "electric",
 };
 
 /**

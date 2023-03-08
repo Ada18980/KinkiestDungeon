@@ -1662,19 +1662,19 @@ AttackStatueGag,"The statue kisses your gag! (DamageTaken)"
 
 NameChaoticCrystal,Chaotic Crystal
 KillChaoticCrystal,"The crystal shatters!"
-AttackChaoticCrystal,"The chaotic crystal leeches willpower from you! (DamageTaken)"
+AttackChaoticCrystal,"The chaotic crystal leeches energy from you! (DamageTaken)"
 
 NameChaoticCrystalActive,Grand Chaotic Crystal
 KillChaoticCrystalActive,"The grand crystal shatters!"
-AttackChaoticCrystalActive,"The grand crystal leeches willpower from you! (DamageTaken)"
+AttackChaoticCrystalActive,"The grand crystal leeches energy from you! (DamageTaken)"
 AttackChaoticCrystalActiveBind,"Crystals erupt from the ground and slowly grow around your limbs! (+RestraintAdded)"
 
 NameSoulCrystal,Soul Crystal
 KillSoulCrystal,"The crystal shatters into a puff of soul dust!"
-AttackSoulCrystal,"The soul crystal leeches willpower from you! (DamageTaken)"
+AttackSoulCrystal,"The soul crystal leeches strength from you! (DamageTaken)"
 NameSoulCrystalActive,Active Soul Crystal
 KillSoulCrystalActive,"The crystal shatters into a puff of soul dust!"
-AttackSoulCrystalActive,"The soul crystal leeches willpower from you! (DamageTaken)"
+AttackSoulCrystalActive,"The soul crystal leeches strength from you! (DamageTaken)"
 
 
 NameDragonShadow,Shadow Dragonheart
@@ -6502,10 +6502,11 @@ KinkyDungeonDamageTypegravity,"Gravity"
 KinkyDungeonDamageTypepierce,"Pierce"
 KinkyDungeonDamageTypeslash,"Slash"
 KinkyDungeonDamageTypepain,"Pain"
-KinkyDungeonDamageTypesouldrain,"Spirit Drain"
+KinkyDungeonDamageTypesouldrain,"Spirit Draining"
 KinkyDungeonDamageTypesoul,"Psychic"
-KinkyDungeonDamageTypedrain,"Mana Drain"
+KinkyDungeonDamageTypedrain,"Mana Draining"
 KinkyDungeonDamageTypeelectric,"Electric"
+KinkyDungeonDamageTypeshock,"Shock"
 KinkyDungeonDamageTypestun,"Pressure"
 KinkyDungeonDamageTypechain,"Chain"
 KinkyDungeonDamageTypehappygas,"Charm"

@@ -240,7 +240,7 @@ let KDEventMapInventory = {
 	"draw": {
 		"DollmakerMask": (e, item, data) => {
 			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
-			if (altType && altType.enemies === false) return;
+			if (altType && altType.spawns === false) return;
 			for (let enemy of KinkyDungeonEntities) {
 				if (enemy.Enemy.tags.escapeddoll
 					&& KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 12) {
