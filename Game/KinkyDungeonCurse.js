@@ -15,6 +15,14 @@ let KDCurses = {
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Ectoplasm, -25);
 		}
 	},
+	"DollLock" : {
+		condition: (item) => {
+			return KinkyDungeonItemCount("DollID") >= 8;
+		},
+		remove: (item, host) => {
+			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DollID, -8);
+		}
+	},
 	"MistressKey": {
 		noShrine: true,
 		condition: (item) => {

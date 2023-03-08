@@ -209,6 +209,10 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"DollmakerMask": (e, item, data) => {
+			// if (item.player == data.player)
+			if (data.enemy?.Enemy.tags.escapeddoll) KinkyDungeonSetFlag("DollmakerGrace", 70);
+		},
 	},
 	"drawSGTooltip": {
 		"curseInfo": (e, item, data) => {
@@ -223,7 +227,50 @@ let KDEventMapInventory = {
 			KDDamageAmpPerksSpell += e.power;
 		},
 	},
+	"calcBlind": {
+		"DollmakerMask": (e, item, data) => {
+			if (!KinkyDungeonFlags.get("DollmakerGrace")) {
+				// if item.player == data.player
+				data.blindness = Math.max(data.blindness, 5);
+				KinkyDungeonSendTextMessage(2, TextGet("KDDollmakerMaskDim"), "#ff5555", 2, true);
+			}
+		},
+	},
+
+	"draw": {
+		"DollmakerMask": (e, item, data) => {
+			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+			if (altType && altType.enemies === false) return;
+			for (let enemy of KinkyDungeonEntities) {
+				if (enemy.Enemy.tags.escapeddoll
+					&& KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 12) {
+					KDDraw(kdcanvas, kdpixisprites, enemy.id + "_dolltarg", KinkyDungeonRootDirectory + "UI/DollmakerTarget.png",
+						(enemy.visual_x - data.CamX - data.CamX_offset - 0.5) * KinkyDungeonGridSizeDisplay,
+						(enemy.visual_y - data.CamY - data.CamY_offset - 0.5) * KinkyDungeonGridSizeDisplay,
+						KinkyDungeonSpriteSize * 2, KinkyDungeonSpriteSize * 2, undefined, {
+							zIndex: 10,
+						});
+				}
+			}
+
+		},
+	},
 	"tick": {
+		"DollmakerMask": (e, item, data) => {
+			if (KDRandom() < 0.1) {
+				let count = 0;
+				for (let en of KinkyDungeonEntities) {
+					if (en.Enemy.tags.escapeddoll) count += 1;
+				}
+				if (count < 10) {
+					// Spawn a new doll
+					let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, 6, 10);
+					if (point) {
+						DialogueCreateEnemy(point.x, point.y, "DollmakerTarget");
+					}
+				}
+			}
+		},
 		"RemoveOnBuffName": (e, item, data) => {
 			if (KinkyDungeonPlayerBuffs[e.kind] && (!e.chance || KDRandom() < e.chance)) {
 				item.curse = "";
@@ -2133,7 +2180,7 @@ let KDEventMapSpell = {
 						let color = "#882222";
 						if (enemy.Enemy.stealth > 0 || KDAmbushAI(enemy)) color = "#441111";
 						if (color == "#882222" || Math.sqrt((KinkyDungeonPlayerEntity.x - enemy.x) * (KinkyDungeonPlayerEntity.x - enemy.x) + (KinkyDungeonPlayerEntity.y - enemy.y) * (KinkyDungeonPlayerEntity.y - enemy.y)) < e.distStealth)
-							KDDraw(kdgameboard, kdpixisprites, enemy.id + "_sense", KinkyDungeonRootDirectory + "Aura.png",
+							KDDraw(kdcanvas, kdpixisprites, enemy.id + "_sense", KinkyDungeonRootDirectory + "Aura.png",
 								(enemy.visual_x - data.CamX - data.CamX_offset) * KinkyDungeonGridSizeDisplay,
 								(enemy.visual_y - data.CamY - data.CamY_offset) * KinkyDungeonGridSizeDisplay,
 								KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {

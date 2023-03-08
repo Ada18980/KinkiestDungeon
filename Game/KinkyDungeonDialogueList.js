@@ -2099,8 +2099,8 @@ let KDDialogue = {
 				playertext: "Leave", response: "Default",
 				clickFunction: (gagged, player) => {
 					if (KinkyDungeonIsPlayer()) {
-						KDUnlockPerk("FuukaCollar");
-						KDUnlockPerk("CommonFuuka");
+						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("CommonCyber");
 					}
 					return false;
 				},
@@ -2109,11 +2109,29 @@ let KDDialogue = {
 			"Accept": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerVisor"), 0, true);
 					KinkyDungeonAddGold(1000);
 					if (KinkyDungeonIsPlayer()) {
-						KDUnlockPerk("FuukaCollar");
-						KDUnlockPerk("CommonFuuka");
+						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("CommonCyber");
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Accept2": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerMask"), 0, true);
+					KinkyDungeonAddGold(1000);
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("CommonCyber");
 					}
 					return false;
 				},
@@ -2129,8 +2147,8 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					KinkyDungeonChangeRep("Ghost", -5);
 					if (KinkyDungeonIsPlayer()) {
-						KDUnlockPerk("FuukaCollar");
-						KDUnlockPerk("CommonFuuka");
+						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("CommonCyber");
 					}
 					return false;
 				},
@@ -2159,26 +2177,26 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				options: {
 					"Continue1": {
-						playertext: "FuukaLose_Continue1", response: "Default",
+						playertext: "DollmakerLose_Continue1", response: "Default",
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
-							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerVisor"), 0, true);
 							return false;
 						},
 					},
 					"Continue2": {
-						playertext: "FuukaLose_Continue2", response: "Default",
+						playertext: "DollmakerLose_Continue2", response: "Default",
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
-							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerMask"), 0, true);
 							return false;
 						},
 					},
 					"Continue3": {
-						playertext: "FuukaLose_Continue3", response: "Default",
+						playertext: "DollmakerLose_Continue3", response: "Default",
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
-							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDRandom() < 0.5 ? "DollmakerVisor" : "DollmakerMask"), 0, true);
 							return false;
 						},
 					},
@@ -2188,26 +2206,26 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				options: {
 					"Continue1": {
-						playertext: "FuukaLose_Continue1", response: "Default",
+						playertext: "DollmakerLose_Continue1", response: "Default",
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
-							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerVisor"), 0, true);
 							return false;
 						},
 					},
 					"Continue2": {
-						playertext: "FuukaLose_Continue2", response: "Default",
+						playertext: "DollmakerLose_Continue2", response: "Default",
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
-							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerMask"), 0, true);
 							return false;
 						},
 					},
 					"Continue3": {
-						playertext: "FuukaLose_Continue3", response: "Default",
+						playertext: "DollmakerLose_Continue3", response: "Default",
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
-							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDRandom() < 0.5 ? "DollmakerVisor" : "DollmakerMask"), 0, true);
 							return false;
 						},
 					},
@@ -2215,7 +2233,7 @@ let KDDialogue = {
 			},
 			"Finish": {
 				prerequisiteFunction: (gagged, player) => {return false;},
-				playertext: "Default", response: "FuukaLoseFinish",
+				playertext: "Default", response: "DollmakerLoseFinish",
 				options: {
 					"Leave": {
 						playertext: "Leave", response: "Default",

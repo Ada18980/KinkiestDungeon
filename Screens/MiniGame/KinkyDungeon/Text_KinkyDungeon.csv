@@ -1047,6 +1047,11 @@ KinkyDungeonInventoryItemIceRuneUse,"You smash the rune in front of you, and ici
 KinkyDungeonInventoryItemIceRuneDesc,"It feels cold to the touch."
 KinkyDungeonInventoryItemIceRuneDesc2,"Creates icicles around you for 5-8 turns. They deal 40 damage and freeze for 3 turns."
 
+ItemPickupDollID,"You steal the doll's identification card."
+KinkyDungeonInventoryItemDollID,Doll ID
+KinkyDungeonInventoryItemDollIDUse,"You apply a clever trick to reset your visor cooldown."
+KinkyDungeonInventoryItemDollIDDesc,"A chip used to identify dolls. She must have dropped it. Either way it contains valuable tech..."
+KinkyDungeonInventoryItemDollIDDesc2,"It could be used to trick your visor into thinking you've performed your tasks for a while."
 
 ItemPickupDonut,"You found a donut with sprinkles!"
 KinkyDungeonInventoryItemDonut,Donut (Sprinkles)
@@ -6052,6 +6057,10 @@ KinkyDungeonCurseInfoGhostLock,"The lock is protected by a revanent seal. You'll
 KinkyDungeonCurseStruggleGhostLock,"Your fingers pass right through the collar. Pity your neck doesn't pass through it."
 KinkyDungeonCurseUnlockGhostLock,"You channel ghastly energy into the lock and break the seal!!!"
 
+KinkyDungeonCurseInfoDollLock,"It would take many lifetimes to crack the code. You'll have to find the data somehow."
+KinkyDungeonCurseStruggleDollLock,"You tug against the fastenings to no avail."
+KinkyDungeonCurseUnlockDollLock,"One of your Doll IDs seems to have had corrupted data on it, causing the program to crash."
+
 KinkyDungeonCurseInfoShadowCurse,"The item seems to drain divine energy from shrines. Maybe that has something to do with it."
 KinkyDungeonCurseStruggleShadowCurse,"The collar is enchanted with multiple layers of magical seals."
 KinkyDungeonCurseUnlockShadowCurse,"The collar has absorbed enough energy and pops off!"
@@ -9297,7 +9306,7 @@ dFuukaLose_DenyGag,"Mmmph! (Struggle weakly)"
 dFuukaLose_Continue1,"(Sigh and accept your fate)"
 dFuukaLose_Continue2,"(Accept the collar eagerly)"
 dFuukaLose_Continue3,"(Accept the collar begrudgingly)"
-rFuukaLoseFinish,"(SPEAKER presents you with her collar...)|(She locks it around your neck)|You are free to go now, dear!"
+rFuukaLoseFinish,"(SPEAKER presents you with your collar...)|(She locks it around your neck)|You are free to go now, dear!"
 
 rFuukaStage2,"(SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!"
 
@@ -9674,22 +9683,26 @@ dDollmakerFight_Fight2Gag,"Mmmmmghh!"
 dDollmakerFight_Fight3,"Sounds fun... but I really need to get going."
 dDollmakerFight_Fight3Gag,"Mmmmph..."
 
-rDollmakerLose,"(The Dollmaker smiles as she stands over you)|Well well. Look who won."
-rDollmakerLoseAccept,"(The Dollmaker nods)|Absolutely. Now allow me to make my conditions clear.|You will wear my collar from now on.|Then you will be allowed to go."
-rDollmakerLoseDeny,"(The Dollmaker giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go... but only wearing my collar."
-dDollmakerLose_Accept,"You beat me fair and square."
+rDollmakerLose,"(The Dollmaker folds her arms as she walks over)|All tight and shiny!|You'll be my prized possession~"
+rDollmakerLoseAccept,"(The Dollmaker nods)|Already eager to obey!|So beautiful..."
+rDollmakerLoseDeny,"(The Dollmaker chuckles)|Oh, but I already have~"
+dDollmakerLose_Accept,"I have no choice but to submit."
 dDollmakerLose_AcceptGag,"Mmmph. (Submit)"
-dDollmakerLose_Deny,"You cheated!"
+dDollmakerLose_Deny,"You will never get away with this!"
 dDollmakerLose_DenyGag,"Mmmph! (Struggle weakly)"
-dDollmakerLose_Continue1,"(Sigh and accept your fate)"
-dDollmakerLose_Continue2,"(Accept the collar eagerly)"
-dDollmakerLose_Continue3,"(Accept the collar begrudgingly)"
-rDollmakerLoseFinish,"(The Dollmaker presents you with her collar...)|(She locks it around your neck)|You are free to go now, dear!"
+dDollmakerLose_Continue1,"(Sigh and be forced to wear her visor)"
+dDollmakerLose_Continue2,"(Sigh and be forced to wear her mask)"
+dDollmakerLose_Continue3,"(Sigh and be forced to wear whatever she chooses)"
+rDollmakerLoseFinish,"(The Dollmaker places her visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them."
 
 rDollmakerStage2,"(The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower."
 rDollmakerStage3,"(The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from her back as she storms toward you!)"
 
-rDollmakerWin,"(The Dollmaker concedes defeat)|You have defeated me.|Very well, I will let you pass.|(She gives you her keys)"
+rDollmakerWin,"(The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The door exit door unlocks with an audible click)"
+rDollmakerWinAcceptVisor,"(SPEAKER looks confused)|What are you... Okay, you can have it..."
+dDollmakerWin_Accept,"(Wear a doll visor)"
+rDollmakerWinAccept2,"(SPEAKER looks confused)|What are you... Okay, you can have it..."
+dDollmakerWin_Accept2,"(Wear a doll mask)"
 rDollmakerWinGag,"(You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into her open mouth and she starts mumbling angrily)"
 dDollmakerWin_Gag,"(Gag her)"
 
@@ -9781,6 +9794,9 @@ RestraintCyberDollJacketDesc2,"The material is somehow both stretchy yet hard en
 RestraintDollmakerVisor,Dollmaker's Visor
 RestraintDollmakerVisorDesc,"A visor used by the Dollmaker for assigning arbitrary tasks to her dolls."
 RestraintDollmakerVisorDesc2,"It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through."
+RestraintDollmakerMask,Dollmaker's Mask
+RestraintDollmakerMaskDesc,"A mask used by the Dollmaker for assigning arbitrary tasks to her dolls."
+RestraintDollmakerMaskDesc2,"It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through."
 
 KDControlHarnessTest,"Detected new hardware."
 KDControlHarnessCuffsUpdate,"[Restriction Protocol] Detected new hardware: RESTRAINTNAME. Install progress: PERCENT%"
@@ -9791,7 +9807,7 @@ KDControlHarnessChastityMode_Extra,"Supplemental Stimulation"
 KDControlHarnessChastityMode_Edge,"Endurance Training"
 KDControlHarnessChastityMode_Deny,"Frustration Tolerance"
 KDControlHarnessChastityMode_Fullpower,"Mental Resistance"
-KDControlHarnessChastityActivate,"[Training Protocol] Installation complete. Engage training protocol. Current mode: CHASTITYMODE"
+KDControlHarnessChastityActivate,"[Training Protocol] Installation complete. Engage training mode: CHASTITYMODE"
 KDControlHarnessChastityActivate2,"You feel your belt insert new toys into your body..."
 
 KDControlHarnessHeadUpdate,"[Sensory Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%"
@@ -9799,3 +9815,8 @@ KDControlHarnessHeadActivate,"[Sensory Protocol] Installation complete. Engage s
 
 KDControlHarnessTrackingUpdate,"[Tracking Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%"
 KDControlHarnessTrackingActivate,"[Tracking Protocol] Installation complete. Engage tracing system."
+
+KDDollmakerMaskDim,Your visor dims to help you focus on your task.
+
+NameDollmakerTarget,Escaped Doll
+KillDollmakerTarget,You return the doll to her rightful owner.

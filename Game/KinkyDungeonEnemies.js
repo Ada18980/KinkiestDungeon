@@ -1422,9 +1422,9 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 			if (!KinkyDungeonCapture(enemy)) noRepHit = true;
 		} else {
 			KDDropStolenItems(enemy);
-			if (enemy == KinkyDungeonKilledEnemy && Math.max(3, enemy.Enemy.maxhp/4) >= KinkyDungeonActionMessagePriority) {
+			if (enemy == KinkyDungeonKilledEnemy) {
 				if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 10)
-					KinkyDungeonSendActionMessage(4, TextGet("Kill"+enemy.Enemy.name), "orange", 2, undefined, undefined, enemy);
+					KinkyDungeonSendActionMessage(4, TextGet("Kill"+enemy.Enemy.name), "orange", 2);
 				KinkyDungeonKilledEnemy = null;
 			}
 		}

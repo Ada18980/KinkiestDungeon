@@ -27,6 +27,7 @@ let KinkyDungeonConsumables = {
 	"ScrollLegs" : {name: "ScrollLegs", noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoLegsComp", duration: 12, power: 1, aura: "#ffaaaa", sfx: "FireSpell"},
 	"ScrollPurity" : {name: "ScrollPurity", noHands: true, rarity: 4, shop: true, type: "shrineRemove", shrine: "Vibes", sfx: "FireSpell"},
 
+	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock"},
 };
 
 // Separate for organizational purposes
@@ -67,6 +68,9 @@ let KDConsumableEffects = {
 	"subAdd": (Consumable) => {
 		let amount = Consumable.data?.subAdd || 5;
 		KinkyDungeonChangeRep("Ghost", amount);
+	},
+	"dollID": (Consumable) => {
+		KinkyDungeonSetFlag("DollmakerGrace", 300);
 	},
 	"restore": (Consumable) => {
 		let multi = 1.0;

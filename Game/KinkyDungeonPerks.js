@@ -103,11 +103,11 @@ let KDPerkUpdateStats = {
 
 	"CommonLatex": () => {
 		KDExtraEnemyTags.latexRestraints = 0;
-		KDExtraEnemyTags.latexRestraintsHeavy = 4;
+		KDExtraEnemyTags.latexRestraintsHeavy = 3;
 	},
 	"CommonLeather": () => {
 		KDExtraEnemyTags.leatherRestraints = 0;
-		KDExtraEnemyTags.leatherRestraintsHeavy = 4;
+		KDExtraEnemyTags.leatherRestraintsHeavy = 3;
 	},
 	"CommonMaid": () => {
 		KDExtraEnemyTags.maidRestraints = 0;
@@ -115,7 +115,7 @@ let KDPerkUpdateStats = {
 	},
 	"CommonWolf": () => {
 		KDExtraEnemyTags.wolfRestraints = 0;
-		KDExtraEnemyTags.wolfCuffs = 4;
+		KDExtraEnemyTags.wolfCuffs = 3;
 		KDExtraEnemyTags.wolfGear = 0;
 	},
 	"CommonDress": () => {
@@ -123,6 +123,11 @@ let KDPerkUpdateStats = {
 	},
 	"CommonFuuka": () => {
 		KDExtraEnemyTags.mikoRestraints = 0;
+	},
+	"CommonCyber": () => {
+		KDExtraEnemyTags.cyberdollrestraints = 0;
+		KDExtraEnemyTags.cyberdollchastity = 3;
+		KDExtraEnemyTags.cyberdollheavy = 7;
 	},
 	"CommonExp": () => {
 		KDExtraEnemyTags.expRestraints = 0;
@@ -236,11 +241,12 @@ let KinkyDungeonStatsPresets = {
 	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
 	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
 	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
-	"StartCyberDoll": {startPriority: 30, category: "Start", id: "StartCyberDoll", cost: -2, tags: ["start"]},
 
+	"StartCyberDoll": {startPriority: 30, category: "Start", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
 	"FuukaCollar": {startPriority: 40, category: "Boss", id: "FuukaCollar", cost: -2, locked: true, tags: ["start"]},
 
 
+	"CommonCyber": {category: "Boss", id: "CommonCyber", cost: -1, locked: true},
 	"CommonFuuka": {category: "Boss", id: "CommonFuuka", cost: -1, locked: true},
 
 	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},

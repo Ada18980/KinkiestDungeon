@@ -12,6 +12,12 @@ let KinkyDungeonEnemies = [
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-10, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0,
 		Behavior: {noPlay: true},
 		terrainTags: {"bellowsDoll": 20}, allFloors: true},
+	{name: "DollmakerTarget", bound: "FactoryDoll", playLine: "Gagged", tags: KDMapInit(["prisoner", "escapeddoll", "doll", "human", "minor", "peaceful", "noshop"]),
+		faction: "Prisoner", lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: 0.01,
+		visionRadius: 0, maxhp: 8, minLevel:0, weight:-10, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0,
+		Behavior: {noPlay: true},
+		ondeath: [{type: "dollID"}],
+		terrainTags: {}, allFloors: true},
 
 
 
@@ -2045,6 +2051,13 @@ let KDOndeath = {
 	},
 	"removeQuest": (enemy, o) => {
 		KDRemoveQuest(o.quest);
+	},
+	"dollID": (enemy, o) => {
+		if (!KinkyDungeonFlags.get("gotDollID")) {
+			let dropped = {x:enemy.x, y:enemy.y, name: "DollID"};
+			KinkyDungeonGroundItems.push(dropped);
+			KinkyDungeonSetFlag("gotDollID", -1, 1);
+		}
 	},
 	"addQuest": (enemy, o) => {
 		KDAddQuest(o.quest);

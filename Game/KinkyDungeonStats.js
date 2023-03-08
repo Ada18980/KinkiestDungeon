@@ -1145,7 +1145,12 @@ function KinkyDungeonGetBlindLevel() {
 		let inv = inv2.item;
 		if (KDRestraint(inv).blindfold) blindness = Math.max(Math.min(5, blindness + 1), KDRestraint(inv).blindfold);
 	}
-	return blindness ? blindness : 0;
+	let data = {
+		player: KinkyDungeonPlayerEntity,
+		blindness: blindness ? blindness : 0,
+	};
+	KinkyDungeonSendEvent("calcBlind", data);
+	return data.blindness;
 }
 
 function KinkyDungeonCapStats() {

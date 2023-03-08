@@ -350,13 +350,36 @@ const KinkyDungeonRestraints = [
 
 	{
 		inventory: true, sfx: "FutureLock", name: "DollmakerVisor", accessible: true, Asset: "InteractiveVisor",
+		curse: "DollLock",
 		Color: ['#91023a'],
 		Group: "ItemHead", LinkableBy: [...KDVisorLink],
-		power: 10, weight: 0, escapeChance: {"Struggle": -0.6, "Cut": -1.0, "Remove": 0.5, "Pick": -0.5},
+		power: 40, weight: 0, escapeChance: {"Struggle": -0.6, "Cut": -1.0, "Remove": 0.5, "Pick": -0.5},
 		maxwill: 0.1,
-		enemyTags: {"dollmakerRestraints":100},
+		enemyTags: {},
 		playerTags: {},
+		events: [
+			{trigger: "tick", type: "DollmakerMask", inheritLinked: true},
+			{trigger: "calcBlind", type: "DollmakerMask", inheritLinked: true},
+			{trigger: "kill", type: "DollmakerMask", inheritLinked: true},
+			{trigger: "draw", type: "DollmakerMask", inheritLinked: true},
+		],
 		minLevel: 0, allFloors: true, shrine: ["Visors", "Cyber"],
+	},
+	{
+		inventory: true, sfx: "FutureLock", name: "DollmakerMask", inaccessible: true,
+		curse: "DollLock",
+		factionColor: [[2]], Color: ["#ff5277"], Group: "ItemHead", Asset: "DroneMask", LinkableBy: [...KDMaskLink],
+		power: 50, weight: 0, escapeChance: {"Struggle": -0.6, "Cut": -1.0, "Remove": 0.5, "Pick": -0.5},
+		maxwill: 0.1,
+		enemyTags: {},
+		playerTags: {},
+		events: [
+			{trigger: "tick", type: "DollmakerMask", inheritLinked: true},
+			{trigger: "calcBlind", type: "DollmakerMask", inheritLinked: true},
+			{trigger: "kill", type: "DollmakerMask", inheritLinked: true},
+			{trigger: "draw", type: "DollmakerMask", inheritLinked: true},
+		],
+		minLevel: 0, allFloors: true, shrine: ["Masks", "Block_ItemMouth", "Cyber"],
 	},
 
 	{inventory: true, sfx: "FutureLock", name: "CyberBallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
