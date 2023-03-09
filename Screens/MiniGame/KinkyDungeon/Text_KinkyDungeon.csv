@@ -25,7 +25,7 @@ RestartNeededEN,"Restart required!"
 RestartNeededCN,"需要重启！"
 RestartNeededKR,"재시작 필요！"
 
-KinkyDungeon,"Kinky Dungeon v4.2"
+KinkyDungeon,"Kinky Dungeon v4.21"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
@@ -1217,10 +1217,10 @@ KinkyDungeonInventoryItemEscortDroneDesc,"A semi-autonomous drone with a persona
 KinkyDungeonInventoryItemEscortDroneDesc2,"Deals electric damage. 33% chance to stun for 4 turns."
 KinkyDungeonInventoryItemVibeWand,Magic Wand
 KinkyDungeonInventoryItemVibeWandDesc,"Its powers extend beyond the traditional schools of magic."
-KinkyDungeonInventoryItemVibeWandDesc2,"Deals charm damage (50% effectiveness vs. non-vulnerable enemies). 20% chance to stun the target for 2 turns."
+KinkyDungeonInventoryItemVibeWandDesc2,"Deals charm damage. 20% chance to stun the target for 2 turns."
 KinkyDungeonInventoryItemFeather,Feather
 KinkyDungeonInventoryItemFeatherDesc,"A feather useful for tickling."
-KinkyDungeonInventoryItemFeatherDesc2,"Deals tickle damage (50% effectiveness vs. non-vulnerable enemies). Distracts enemies."
+KinkyDungeonInventoryItemFeatherDesc2,"Deals tickle damage. Distracts enemies."
 KinkyDungeonInventoryItemIceCube,Ice Cube
 KinkyDungeonInventoryItemIceCubeDesc,"A magical cube of ice that never melts. Convenient!"
 KinkyDungeonInventoryItemIceCubeDesc2,"Deals 10 ice damage with a 10% chance to freeze for 3 turns."
@@ -4680,9 +4680,13 @@ KinkyDungeonSpellTargetFirebolt,Choose aim direction
 
 
 KinkyDungeonSpellWindBlast,Windblast
-KinkyDungeonSpellDescriptionWindBlast,"Three puffs of wind that do DamageDealt pressure damage, stun briefly, and push targets back."
+KinkyDungeonSpellDescriptionWindBlast,"Three scattered puffs of wind that do DamageDealt pressure damage at close range, stun briefly, and push targets back."
 KinkyDungeonSpellCastWindBlast,You press your wrists together and conjure a blast of wind!
 KinkyDungeonSpellTargetWindBlast,Choose aim direction
+KinkyDungeonSpellGust,Gust
+KinkyDungeonSpellDescriptionGust,"Three puffs of wind in a tight cone that deal DamageDealt pressure damage and push targets back."
+KinkyDungeonSpellCastGust,You exhale a mighty wind!
+KinkyDungeonSpellTargetGust,Choose aim direction
 
 
 KinkyDungeonSpellKnife,Knife

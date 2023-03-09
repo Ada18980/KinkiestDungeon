@@ -35,7 +35,6 @@ let KDUnstableAmp = 0.6;
 
 let KinkyDungeonOpenObjects = KinkyDungeonTransparentObjects; // Objects bullets can pass thru
 let KinkyDungeonMeleeDamageTypes = ["unarmed", "crush", "slash", "pierce", "grope", "pain", "chain", "tickle"];
-let KinkyDungeonHalfDamageTypes = ["tickle", "charm", "drain", "stun"];
 let KinkyDungeonTeaseDamageTypes = ["tickle", "charm", "grope", "pain", "happygas", "poison", "drain", "souldrain"];
 let KinkyDungeonStunDamageTypes = ["fire", "electric", "stun"];
 let KinkyDungeonBindDamageTypes = ["chain", "glue"];
@@ -465,7 +464,6 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 		}
 
-		if (KinkyDungeonHalfDamageTypes.includes(predata.type) && resistDamage >= 0 && !predata.vulnerable) predata.dmg *= 0.5;
 		if (Enemy.boundLevel > 0 && (KinkyDungeonTeaseDamageTypes.includes(predata.type) || Damage.tease)) {
 			let eff = KDBoundEffects(Enemy);
 			let mult = 1.0;
@@ -474,9 +472,6 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			}
 			if (eff > 3) {
 				mult += 0.5;
-			}
-			if (KinkyDungeonHalfDamageTypes.includes(predata.type)) {
-				mult *= 2.0;
 			}
 			predata.dmg *= mult;
 		}

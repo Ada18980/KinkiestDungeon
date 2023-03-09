@@ -73,7 +73,7 @@ let KinkyDungeonLearnableSpells = [
 	//Page 1: Elements
 	[
 		// Verbal
-		["Firecracker", "Incinerate", "Freeze", "FlashFreeze", "Hailstorm", "IceBreath", "Tremor", "Earthquake", "Shield", "GreaterShield", "IronBlood", "Electrify", "Thunderstorm", "StaticSphere", "Rainstorm"],
+		["Firecracker", "Incinerate", "Gust", "Freeze", "FlashFreeze", "Hailstorm", "IceBreath", "Tremor", "Earthquake", "Shield", "GreaterShield", "IronBlood", "Electrify", "Thunderstorm", "StaticSphere", "Rainstorm"],
 		// Arms
 		["Firebolt", "Fireball", "WindBlast", "Icebolt", "Snowball", "IceOrb", "Icicles", "IceLance", "StoneSkin", "Shock", "Crackle", "LightningBolt", "WaterBall", "TidalBall"],
 		// Legs
@@ -253,11 +253,18 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			name: "Ice",
 			duration: 20,
 		}, hitSpin: 0.5, bulletSpin: 0.25, noUniqueHits: true, noise: 8, sfx: "FireSpell", school: "Elements", manacost: 10, components: ["Legs"], level:1, type:"inert", onhit:"aoe", delay: 1, power: 1, range: 4.5, size: 5, aoe: 2.9, lifetime: 15, time: 2, damage: "frost"},
-		{name: "WindBlast", tags: ["air", "bolt", "offense", "utility"], prerequisite: "ApprenticeAir", sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt",
-			projectileTargeting:true, onhit:"", power: 2.0, time: 2, delay: 0, range: 5.99, damage: "stun", speed: 2, hitSpin: 1, bulletSpin: 1,
+		{name: "WindBlast", tags: ["air", "bolt", "offense", "utility"],
+			prerequisite: "ApprenticeAir", sfx: "FireSpell", school: "Elements", manacost: 2.5, components: ["Arms"], level:1, type:"bolt",
+			projectileTargeting:true, onhit:"", power: 1.0, time: 2, delay: 0, range: 2.99, damage: "stun", speed: 3, hitSpin: 1, bulletSpin: 1,
+			pierceEnemies: true,
 			shotgunCount: 3, shotgunDistance: 4, shotgunSpread: 3, shotgunSpeedBonus: 1,
 			events: [{type: "Knockback", trigger: "bulletHitEnemy", power: 1.0, dist: 1.0},]},
-
+		{name: "Gust", tags: ["air", "bolt", "offense", "utility"],
+			prerequisite: "ApprenticeAir", sfx: "FireSpell", school: "Elements", manacost: 4.5, components: ["Verbal"], level:1, type:"bolt",
+			projectileTargeting:true, onhit:"", power: 1.5, delay: 0, range: 7.99, damage: "stun", speed: 3, hitSpin: 1, bulletSpin: 1,
+			pierceEnemies: true,
+			shotgunCount: 3, shotgunDistance: 8, shotgunSpread: .25, shotgunSpeedBonus: 2,
+			events: [{type: "Knockback", trigger: "bulletHitEnemy", power: 0.8, dist: 1.0},]},
 
 		{name: "Firebolt", tags: ["fire", "bolt", "offense"], prerequisite: "ApprenticeFire", sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt",
 			bulletColor: 0xb83716, bulletLight: 4,
@@ -451,10 +458,10 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			}, type:"inert", onhit:"aoe", time: 3, delay: 5, power: 10, range: 3, size: 3, aoe: 1.5, lifetime: 1, damage: "fire", playerEffect: {name: "Damage"}, channel: 1},
 
 		{name: "FeatherCloud", color: "#ffffff", prerequisite: "TickleCloud", tags: ["tickle", "aoe", "dot", "offense", "utility", "denial"], noUniqueHits: true, noise: 1, landsfx: "Tickle", hitsfx: "Tickle", school: "Elements", manacost: 4,
-			components: ["Arms"], hitSpin: 0.7, bulletSpin: 0.4, level:1, type:"inert", onhit:"aoe", delay: 1, power: 3.0, distract: 6.0, range: 2.5, size: 3, aoe: 1, lifetime: 3, damage: "tickle", playerEffect: {name: "Damage"},
+			components: ["Arms"], hitSpin: 0.7, bulletSpin: 0.4, level:1, type:"inert", onhit:"aoe", delay: 1, power: 2.0, distract: 6.0, range: 2.5, size: 3, aoe: 1, lifetime: 3, damage: "tickle", playerEffect: {name: "Damage"},
 		},
 		{name: "TickleCloud", color: "#ffffff", prerequisite: "ApprenticeSummon", tags: ["tickle", "aoe", "dot", "offense", "utility", "denial"], piercing: true, noUniqueHits: true, noise: 1, landsfx: "Tickle", hitsfx: "Tickle", school: "Elements", manacost: 2,
-			components: ["Arms"], hitSpin: 1, bulletSpin: 0.4, level:1, type:"dot", onhit:"aoe", delay: 9, power: 0.8, range: 3.99, size: 1, aoe: 0.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"},
+			components: ["Arms"], hitSpin: 1, bulletSpin: 0.4, level:1, type:"dot", onhit:"aoe", delay: 9, power: 0.5, range: 3.99, size: 1, aoe: 0.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"},
 		},//, distractEff: 2.0
 		{name: "Snare", color: "#ff8899", prerequisite: "ApprenticeRope", tags: ["rope", "binding", "denial", "utility", "offense"], sfx: "FireSpell",
 			school: "Conjure", manacost: 2, components: ["Legs"], noTargetEnemies: true, level:1, type:"inert", onhit:"lingering", lifetime:90, bindType: "Rope",
@@ -1214,7 +1221,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "BoundByFate", color: "#dddddd", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
 		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 7, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "BoundByFate", time: 6}},
 
-	{enemySpell: true, name: "Feathers", color: "#ffffff", sfx: "Tickle", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 8, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"}},
+	{enemySpell: true, name: "Feathers", color: "#ffffff", sfx: "Tickle", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"}},
 	{enemySpell: true, name: "NurseBola", color: "#ff2200", sfx: "Miss", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "NurseBola"}}, // Throws a chain which stuns the target for 1 turn
 	{enemySpell: true, name: "NurseSyringe", color: "#ff00ff", minRange: 1.5, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, speed: 1,
 		type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "pain", playerEffect: {name: "NurseSyringe", power: 4, type: "chain", time: 8},},
