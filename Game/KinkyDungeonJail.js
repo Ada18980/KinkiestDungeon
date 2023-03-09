@@ -800,7 +800,7 @@ function KinkyDungeonJailGetLeashPoint(xx, yy, enemy) {
  * @returns {boolean} - Returns if the player is inside the nearest jail cell
  */
 function KinkyDungeonPlayerInCell(any, qualified, filter) {
-	if (!filter && !qualified && KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.Jail) {
+	if (!filter && KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.Jail) {
 		return true;
 	}
 	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, filter, any, qualified);
