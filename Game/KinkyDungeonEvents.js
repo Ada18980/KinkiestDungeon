@@ -1102,8 +1102,8 @@ let KDEventMapInventory = {
 	},
 	"calcMiscast": {
 		"ReduceMiscastFlat": (e, item, data) => {
-			if (data.flags.miscastChance > 0) {
-				data.flags.miscastChance -= e.power;
+			if (data.miscastChance > 0) {
+				data.miscastChance -= e.power;
 			}
 		}
 	},
