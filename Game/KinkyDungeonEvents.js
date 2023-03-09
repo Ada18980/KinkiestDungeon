@@ -3739,7 +3739,13 @@ let KDEventMapGeneric = {
 			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
 				KDGameData.DollRoomCount += 1;
 				if (KDGameData.DollRoomCount >= 3) {
-					// Allow player to pass
+					// Allow player to pass unless returning to previous
+					if (KinkyDungeonFlags.get("NoDollRoomBypass")) {
+						data.overrideProgression = true;
+						data.overrideRoomType = true;
+						data.mapMod = "";
+						KDGameData.RoomType = "";
+					}
 				} else {
 					data.overrideRoomType = true;
 					data.overrideProgression = true;

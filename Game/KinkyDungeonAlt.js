@@ -959,6 +959,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 
 function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
 	// Variable setup
+	KinkyDungeonSetFlag("NoDollRoomBypass", -1, 1);
 
 	// Now we STRETCH the map
 	KinkyDungeonGridWidth = Math.floor(KinkyDungeonGridWidth*2);

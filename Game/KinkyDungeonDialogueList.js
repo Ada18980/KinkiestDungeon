@@ -2177,6 +2177,7 @@ let KDDialogue = {
 				enemy.hostile = 0;
 				enemy.ceasefire = 4;
 				KinkyDungeonSetFlag("BossUnlocked", -1);
+				KinkyDungeonSetFlag("NoDollRoomBypass", 0);
 			}
 			return false;
 		},
