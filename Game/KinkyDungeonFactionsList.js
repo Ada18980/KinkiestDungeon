@@ -107,6 +107,7 @@ let KinkyDungeonTooltipFactions = [
 	"Delinquent",
 	"Wolfhunter",
 	"Rock",
+	"Rage",
 ];
 
 /** Tag for these factions, these also can have increased chances to appear on a map */

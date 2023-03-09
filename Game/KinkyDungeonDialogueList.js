@@ -2073,6 +2073,10 @@ let KDDialogue = {
 	"DollmakerStage3": { // Player defeats fuuka's first form
 		response: "Default",
 		clickFunction: (gagged, player) => {
+			// Remove the doors
+			for (let en of KinkyDungeonEntities) {
+				if (en.Enemy.tags.dolldoor) en.hp = 0;
+			}
 			let point = KinkyDungeonGetNearbyPoint(player.x, player.y, true);
 			if (!point) {
 				point = KinkyDungeonGetRandomEnemyPoint(false, false, null);

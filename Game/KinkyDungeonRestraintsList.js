@@ -2387,9 +2387,9 @@ let KDLocks = {
 			return "Fail";
 		},
 
-		// Start of level -- for gold locks
+		// Start of level -- for gold locks and others
 		levelStart: (item) => {
-			if ((MiniGameKinkyDungeonLevel >= item.lockTimer || !item.lockTimer)) {
+			if ((MiniGameKinkyDungeonLevel >= item.lockTimer || !item.lockTimer || item.lockTimer >= KinkyDungeonMaxLevel)) {
 				KinkyDungeonLock(item, "Blue");
 				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonGoldLockRemove"), "yellow", 2);
 			}

@@ -2078,7 +2078,7 @@ let KDEventMapSpell = {
 						let Enemy = KinkyDungeonGetEnemyByName("PetChastity");
 						let doll = {
 							summoned: true,
-							rage: Enemy.summonRage ? 9999 : undefined,
+							faction: "Rage",
 							Enemy: Enemy,
 							id: KinkyDungeonGetEnemyID(),
 							x: en.x,

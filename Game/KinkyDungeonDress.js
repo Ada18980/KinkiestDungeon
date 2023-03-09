@@ -415,7 +415,8 @@ function KinkyDungeonWearForcedClothes(restraints) {
 						if (dress.factionColor && faction && KinkyDungeonFactionColors[faction]) {
 							for (let ii = 0; ii < dress.factionColor.length; ii++) {
 								for (let n of dress.factionColor[ii]) {
-									color[n] = KinkyDungeonFactionColors[faction][ii]; // 0 is the primary color
+									if (KinkyDungeonFactionColors[faction][ii])
+										color[n] = KinkyDungeonFactionColors[faction][ii]; // 0 is the primary color
 								}
 							}
 						}
@@ -506,11 +507,12 @@ function KDApplyItem(inv, tags) {
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
 		let faction = inv.faction ? inv.faction : "";
 
-		let color = (typeof restraint.Color === "string") ? [restraint.Color] : restraint.Color;
+		let color = (typeof restraint.Color === "string") ? [restraint.Color] : Object.assign([], restraint.Color);
 		if (restraint.factionColor && faction && KinkyDungeonFactionColors[faction]) {
 			for (let i = 0; i < restraint.factionColor.length; i++) {
 				for (let n of restraint.factionColor[i]) {
-					color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
+					if (KinkyDungeonFactionColors[faction][i])
+						color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
 				}
 			}
 		}

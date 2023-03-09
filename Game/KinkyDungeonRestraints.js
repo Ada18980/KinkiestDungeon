@@ -472,7 +472,7 @@ function KinkyDungeonLock(item, lock) {
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
 			item.lock = lock;
-			if (lock == "Gold") item.lockTimer = Math.min(KinkyDungeonMaxLevel - 1, MiniGameKinkyDungeonLevel + 2);
+			if (lock == "Gold") item.lockTimer = MiniGameKinkyDungeonLevel + 2;
 			InventoryLock(KinkyDungeonPlayer, InventoryGet(KinkyDungeonPlayer, KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group), "IntricatePadlock", Player.MemberNumber, true);
 			item.pickProgress = 0;
 			if (ArcadeDeviousChallenge && InventoryGet(KinkyDungeonPlayer,  KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group) && !KinkyDungeonRestraintsLocked.includes(KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group)) {
@@ -2802,11 +2802,12 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 
 
 
-			let color = (typeof restraint.Color === "string") ? [restraint.Color] : restraint.Color;
+			let color = (typeof restraint.Color === "string") ? [restraint.Color] : Object.assign([], restraint.Color);
 			if (restraint.factionColor && faction && KinkyDungeonFactionColors[faction]) {
 				for (let i = 0; i < restraint.factionColor.length; i++) {
 					for (let n of restraint.factionColor[i]) {
-						color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
+						if (KinkyDungeonFactionColors[faction][i])
+							color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
 					}
 				}
 			}

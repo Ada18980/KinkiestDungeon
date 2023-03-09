@@ -2280,6 +2280,10 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 					Power: t.Power,
 					OffLimits: tile?.OffLimits,
 				});
+				if (KDRandom() < 0.05) {
+					let dropped = {x:trap.x, y:trap.y, name: "Gold", amount: 1};
+					KinkyDungeonGroundItems.push(dropped);
+				}
 				let spell = t.Spell ? KinkyDungeonFindSpell(t.Spell, true) : "";
 				if (spell && !spell.nonmagical) {
 					KDCreateEffectTile(trap.x, trap.y, {
