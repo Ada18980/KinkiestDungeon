@@ -242,7 +242,7 @@ let KinkyDungeonStatsPresets = {
 	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
 	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
 
-	"StartCyberDoll": {startPriority: 30, category: "Boss", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
+	"StartCyberDoll": {startPriority: 7, category: "Boss", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
 
 	"DollmakerVisor": {startPriority: 31, category: "Boss", id: "DollmakerVisor", cost: -1, locked: true, tags: ["start"]},
 	"FuukaCollar": {startPriority: 40, category: "Boss", buff: true, id: "FuukaCollar", cost: -2, locked: true, tags: ["start"]},
