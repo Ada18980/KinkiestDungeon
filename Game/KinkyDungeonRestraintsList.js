@@ -411,9 +411,9 @@ const KinkyDungeonRestraints = [
 		factionColor: [[0], [1], [3]],
 		Color: ["#222222", "#b927a8", "#000000", "#499ed6", "#222222", "#000000"],
 		Group: "ItemArms", bindarms: true, bindhands: 1.0, power: 12, weight: 0, strictness: 0.2,
-		escapeChance: {"Struggle": 0.1, "Cut": 0.15, "Remove": 0.1, "Pick": 0.35},
-		limitChance: {"Struggle": 0.25, "Cut": 0.14, "Remove": 0.08, "Unlock": 0.75}, // Hard to escape the arms box by struggling
-		maxwill: 0.25,
+		escapeChance: {"Struggle": -0.2, "Cut": -.3, "Remove": -0.3, "Pick": -0.1},
+		limitChance: {"Struggle": -0.2, "Cut": 0.3, "Remove": 0.1, "Unlock": 0.75}, // Hard to escape the arms box by struggling
+		maxwill: 0.1,
 		enemyTags: {"cyberdollheavy": 1},
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Straitjackets", "Cyber"]},
 
