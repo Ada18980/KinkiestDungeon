@@ -3482,7 +3482,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 	let nextPosX = moveX*2-KinkyDungeonPlayerEntity.x;
 	let nextPosY = moveY*2-KinkyDungeonPlayerEntity.y;
 	let nextTile = KinkyDungeonMapGet(nextPosX, nextPosY);
-	if (KinkyDungeonMovableTilesEnemy.includes(nextTile) && KinkyDungeonNoEnemy(nextPosX, nextPosY)) {
+	if (KinkyDungeonMovableTilesEnemy.includes(nextTile) && KinkyDungeonNoEnemy(nextPosX, nextPosY) && KinkyDungeonToggleAutoSprint) {
 		let data = {
 			canSprint: KDCanSprint(),
 			passThru: false,

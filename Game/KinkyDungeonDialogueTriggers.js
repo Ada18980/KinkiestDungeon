@@ -501,7 +501,8 @@ let KDDialogueTriggers = {
 	"WolfgirlSell": KDShopTrigger("WolfgirlSell"),
 	"Fuuka": KDBossTrigger("Fuuka", ["Fuuka1", "Fuuka2"]),
 	"FuukaLose": KDBossLose("FuukaLose", ["Fuuka1", "Fuuka2"], ["mikoRestraints"]),
-	"DollmakerLose": KDBossLose("DollmakerLose", ["DollmakerBoss1", "DollmakerBoss2", "DollmakerBoss3"], ["redLatexBasic"]),
+	"DollmakerLose1": KDBossLose("DollmakerLose", ["DollmakerBoss1"], ["controlharness", "dollmakerrestraints", "leashing"]),
+	"DollmakerLose2": KDBossLose("DollmakerLose", ["DollmakerBoss2", "DollmakerBoss3"], ["controlharness", "cyberdollrestraints", "dollmakerrestraints"]),
 	"Dollmaker": KDBossTrigger("Dollmaker", ["DollmakerBoss1", "DollmakerBoss2", "DollmakerBoss3"]),
 };
 
