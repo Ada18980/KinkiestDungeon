@@ -1290,6 +1290,7 @@ Minor Changes:
 4.21 (March 2023)
 - Many bugfixes
 - New Spell: Gust
+- Windblast now pierces
 
 TODO ValidationFindBlockCycles to prevent bugs
 

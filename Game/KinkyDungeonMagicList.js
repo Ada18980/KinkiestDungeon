@@ -261,7 +261,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			events: [{type: "Knockback", trigger: "bulletHitEnemy", power: 1.0, dist: 1.0},]},
 		{name: "Gust", tags: ["air", "bolt", "offense", "utility"],
 			prerequisite: "ApprenticeAir", sfx: "FireSpell", school: "Elements", manacost: 4.5, components: ["Verbal"], level:1, type:"bolt",
-			projectileTargeting:true, onhit:"", power: 1.5, delay: 0, range: 7.99, damage: "stun", speed: 3, hitSpin: 1, bulletSpin: 1,
+			projectileTargeting:true, onhit:"", power: 1.5, delay: 0, range: 7.99, damage: "stun", speed: 1, hitSpin: 1, bulletSpin: 1,
 			pierceEnemies: true,
 			shotgunCount: 3, shotgunDistance: 8, shotgunSpread: .25, shotgunSpeedBonus: 2,
 			events: [{type: "Knockback", trigger: "bulletHitEnemy", power: 0.8, dist: 1.0},]},
