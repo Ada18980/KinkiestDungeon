@@ -901,9 +901,10 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 
 	if (!willing) {
 		let defeat_outfit = "DollSuit";
+		if (KinkyDungeonPlayerTags.has("Cyber")) defeat_outfit = "CyberDoll";
 		if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
 
-		KinkyDungeonSetDress(defeat_outfit, "DollSuit");
+		KinkyDungeonSetDress(defeat_outfit, defeat_outfit);
 	}
 
 	KinkyDungeonDressPlayer();
