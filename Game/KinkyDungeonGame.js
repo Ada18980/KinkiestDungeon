@@ -817,7 +817,9 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		// Place the jail keys AFTER making the map!
 		KinkyDungeonLoseJailKeys(false, bossRules); // if (!KDGameData.JailKey || (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail') || boss)
 
-		if (KDTileToTest || (KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)) iterations = 100000;
+		if (KDTileToTest || (KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)
+			&& KinkyDungeonFindPath(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy,
+				false, false, false, undefined, false).length > 0) iterations = 100000;
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 
 		if (iterations == 100000) {
@@ -3777,12 +3779,6 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	// @ts-ignore
 	CharacterAppearanceBuildCanvas = () => {};
 	let start = performance.now();
-
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (inv.lock && KDLocks[inv.lock] && KDLocks[inv.lock].levelStart) {
-			KDLocks[inv.lock].levelStart(inv);
-		}
-	}
 
 	if (KinkyDungeonMovePoints < -1 && KDGameData.KinkyDungeonLeashedPlayer < 1) KinkyDungeonMovePoints += delta;
 	if (delta > 0) {

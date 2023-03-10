@@ -3819,6 +3819,7 @@ let KDEventMapGeneric = {
 			}
 		},
 	},
+	/** Stuff that occurs after the quest stuff is generated */
 	"postQuest": {
 		/**
 		 * Helper event to clear out flags that are meant to always be reset every floor
@@ -3826,7 +3827,15 @@ let KDEventMapGeneric = {
 		 */
 		"resetFlags": (e, data) => {
 			KinkyDungeonSetFlag("slept", 0);
-		}
+		},
+		/** Updates gold locks */
+		"lockStart": (e, data) => {
+			for (let inv of KinkyDungeonAllRestraint()) {
+				if (inv.lock && KDLocks[inv.lock] && KDLocks[inv.lock].levelStart) {
+					KDLocks[inv.lock].levelStart(inv);
+				}
+			}
+		},
 	},
 	"tickFlags": {
 		"TempFlagFloorTicks": (e, data) => {
