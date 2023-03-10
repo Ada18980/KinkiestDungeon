@@ -20,7 +20,6 @@ let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility"
  * These are starting spells
  */
 let KinkyDungeonSpellsStart = [
-	KDCommandWord,
 	//{name: "FleetFooted", sfx: "FireSpell", school: "Illusion", manacost: 0.5, components: [], level:1, type:"passive",
 	//events: [{type: "FleetFooted", trigger: "beforeMove", power: 1}, {type: "FleetFooted", trigger: "afterMove"}, {type: "FleetFooted", trigger: "beforeTrap", msg: "KinkyDungeonFleetFootedIgnoreTrapFail", chance: 0.35}]},
 ];

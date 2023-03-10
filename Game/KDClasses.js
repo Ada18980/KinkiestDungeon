@@ -12,6 +12,8 @@ let KDClassStart = {
 			KinkyDungeonInventoryAddLoose("Breastplate");
 		KDGameData.PreviousWeapon = "Knife";
 		KDSetWeapon("Sword");
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("WPUp1"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("WPUp1"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("IronWill"));
@@ -33,6 +35,8 @@ let KDClassStart = {
 			KinkyDungeonInventoryAddLoose("LeatherBoots");
 		KDGameData.PreviousWeapon = "Rope";
 		KDSetWeapon("Dirk");
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("SPUp1"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("SPUp1"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Sneaky"));
@@ -50,6 +54,9 @@ let KDClassStart = {
 		KinkyDungeonInventoryAddWeapon("ArcaneCrystal");
 		KDGameData.PreviousWeapon = "Knife";
 		KDSetWeapon("ArcaneCrystal");
+
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Analyze"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("MPUp1"));
@@ -63,12 +70,10 @@ let KDClassStart = {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 1);
 	},
 	"Peasant": () => { // Peasant
-		KinkyDungeonSpells = [];
 		KinkyDungeonSpellChoices = [];
 		KinkyDungeonSpellPoints = 3;
 	},
 	"Trainee": () => { // Trainee
-		KinkyDungeonSpells = [];
 		KinkyDungeonSpellChoices = [];
 		KinkyDungeonSpellPoints = 3;
 		KinkyDungeonGold = 100;

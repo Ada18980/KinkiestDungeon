@@ -652,6 +652,13 @@ function KinkyDungeonHandleOrb() {
 
 				if (spell) {
 					KinkyDungeonSpells.push(spell);
+					if (spell.autoLearn) {
+						for (let sp of spell.autoLearn) {
+							if (KinkyDungeonSpellIndex(sp) < 0) {
+								KinkyDungeonSpells.push(KinkyDungeonFindSpell(sp, true));
+							}
+						}
+					}
 					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonOrbSpell").replace("SPELL", TextGet("KinkyDungeonSpell" + spell.name)), "lightblue", 2);
 				}
 			} else {

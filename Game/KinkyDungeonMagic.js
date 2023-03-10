@@ -69,8 +69,8 @@ function KinkyDungeonDisableSpell(Name) {
 let KinkyDungeonSpellPress = "";
 
 function KinkyDungeonResetMagic() {
-	KinkyDungeonSpellChoices = [0];
-	KinkyDungeonSpellChoicesToggle = [true];
+	KinkyDungeonSpellChoices = [];
+	KinkyDungeonSpellChoicesToggle = [];
 	KinkyDungeonSpellChoiceCount = 21;
 	KinkyDungeonSpells = [];
 	Object.assign(KinkyDungeonSpells, KinkyDungeonSpellsStart); // Copy the dictionary
