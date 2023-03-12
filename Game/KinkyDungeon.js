@@ -922,8 +922,8 @@ function KinkyDungeonRun() {
 		DrawButtonVis(25, 942, 325, 50, TextGet("KinkyDungeonDressPlayer"), "#ffffff", "");
 		DrawButtonVis(360, 942, 220, 50, TextGet((KinkyDungeonReplaceConfirm > 0 ) ? "KinkyDungeonConfirm" : "KinkyDungeonDressPlayerReset"), "#ffffff", "");
 		DrawButtonVis(590, 942, 150, 50, TextGet("KinkyDungeonDressPlayerImport"), "#ffffff", "");
-		DrawButtonVis(1870, 942, 110, 50, TextGet("KinkyDungeonCredits"), "#ffffff", "");
-		DrawButtonVis(1700, 942, 150, 50, TextGet("KinkyDungeonPatrons"), "#ffffff", "");
+		DrawButtonVis(1850, 942, 135, 50, TextGet("KinkyDungeonCredits"), "#ffffff", "");
+		DrawButtonVis(1700, 942, 135, 50, TextGet("KinkyDungeonPatrons"), "#ffffff", "");
 		DrawButtonKDEx("Deviantart", (bdata) => {
 			let url = 'https://www.deviantart.com/ada18980';
 			window.open(url, '_blank');
@@ -937,7 +937,7 @@ function KinkyDungeonRun() {
 		}, true, 1700, 754, 280, 50, TextGet("KinkyDungeonPatreon"), "#ffeecc", "");
 
 
-
+		DrawTextKD(TextGet("Language") + " ->", 1675, 898, "#ffffff", KDTextGray2, undefined, "right");
 		DrawButtonVis(1700, 874, 280, 50, localStorage.getItem("BondageClubLanguage") || "EN", "#ffffff", "");
 
 		if (KDPatched) {
@@ -949,7 +949,7 @@ function KinkyDungeonRun() {
 		}
 
 		if (KDRestart)
-			DrawTextKD(TextGet("RestartNeeded"), 1840, 600, "#ffffff", KDTextGray2);
+			DrawTextKD(TextGet("RestartNeeded" + (localStorage.getItem("BondageClubLanguage") || "EN")), 1840, 600, "#ffffff", KDTextGray2);
 	} else if (KinkyDungeonState == "Consent") {
 		MainCanvas.textAlign = "center";
 		// Draw temp start screen
@@ -2281,11 +2281,11 @@ function KinkyDungeonHandleClick() {
 				KinkyDungeonReplaceConfirm = 2;
 				return true;
 			}
-		} else if (MouseIn(1870, 930, 110, 64)) {
+		} else if (MouseIn(1850, 930, 135, 64)) {
 			KinkyDungeonState = "Credits";
 			return true;
 		}
-		if (MouseIn(1700, 930, 150, 64)) {
+		if (MouseIn(1700, 930, 135, 64)) {
 			KinkyDungeonState = "Patrons";
 			return true;
 		}
