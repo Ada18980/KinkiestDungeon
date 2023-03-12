@@ -2762,11 +2762,11 @@ function KinkyDungeonLoadGame(String) {
 						let createdrestraint = KinkyDungeonGetRestraintItem(restraint.Group);
 						if (createdrestraint) createdrestraint.lock = item.lock; // Lock if applicable
 						if (createdrestraint) createdrestraint.events = item.events; // events if applicable
+						KinkyDungeonInventoryAdd(item);
 					}
+				} else {
+					KinkyDungeonInventoryAdd(item);
 				}
-			}
-			for (let item of saveData.inventory) {
-				KinkyDungeonInventoryAdd(item);
 			}
 
 			KinkyDungeonSpells = [];

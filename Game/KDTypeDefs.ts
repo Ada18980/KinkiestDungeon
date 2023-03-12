@@ -1984,6 +1984,8 @@ type KDParticleData = {
 	time: number,
 	phase?: number,
 
+	rotation?: number,
+
 	vy?: number,
 	vy_spread?: number,
 	vx?: number,

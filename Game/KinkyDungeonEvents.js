@@ -107,7 +107,18 @@ let KDEventMapInventory = {
 					.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
 				, "#ceaaed", 10);
 			}
-		}
+		},
+		"PunishEvent": (e, item, data) => {
+			if (!e.chance || KDRandom() < e.chance) {
+				KinkyDungeonSendEvent("punish", Object.assign({
+					item: item,
+					type: "orgasm",
+					kind: e.kind || "low",
+				}, data));
+
+				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+			}
+		},
 	},
 	"calcPlayChance": {
 		"CurseAttraction": (e, item, data) => {
@@ -927,11 +938,11 @@ let KDEventMapInventory = {
 		},
 		"VibeOnStruggle": (e, item, data) => {
 			if ((!e.chance || KDRandom() < e.chance) && data.struggleType === "Struggle") {
-				if (!KDGameData.CurrentVibration) {
-					KinkyDungeonStartVibration(item.name, "tease", KDGetVibeLocation(item), e.power, e.time, undefined, undefined, undefined, undefined, e.edgeOnly);
-				} else {
-					KinkyDungeonAddVibeModifier(item.name, "reinforce", KDRestraint(item).Group, 1, e.time);
-				}
+				KinkyDungeonSendEvent("punish", Object.assign({
+					item: item,
+					type: "struggle",
+					kind: e.kind || "low",
+				}, data));
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
 			}
 		},
@@ -1042,7 +1053,30 @@ let KDEventMapInventory = {
 			}
 		},
 	},
+	"sprint": {
+		"MotionSensitive": (e, item, data) => {
+			if (!e.chance || KDRandom() < e.chance) {
+				KinkyDungeonSendEvent("punish", Object.assign({
+					item: item,
+					type: "sprint",
+					kind: e.kind || "low",
+				}, data));
+				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+			}
+		},
+	},
 	"playerAttack": {
+		"MotionSensitive": (e, item, data) => {
+			if (!e.chance || KDRandom() < e.chance) {
+				KinkyDungeonSendEvent("punish", Object.assign({
+					item: item,
+					type: "attack",
+					kind: e.kind || "low",
+				}, data));
+
+				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+			}
+		},
 		"ShadowHeel": (e, item, data) => {
 			if (data.targetX && data.targetY && !(data.enemy && data.enemy.Enemy && KDAllied(data.enemy))) {
 				KinkyDungeonCastSpell(data.targetX, data.targetY, KinkyDungeonFindSpell("HeelShadowStrike", true), undefined, undefined, undefined);
@@ -1170,14 +1204,44 @@ let KDEventMapInventory = {
 			}
 		},
 	},
+	"punish": {
+		/** If this item is the one to do it it will vibe */
+		"PunishSelf": (e, item, data) => {
+			if (item == data.item && (!e.kind || data.kind == e.kind)) {
+				if (!e.chance || KDRandom() < e.chance) {
+					if (!KDGameData.CurrentVibration) {
+						KinkyDungeonStartVibration(item.name, "tease", KDGetVibeLocation(item), e.power, e.time, undefined, undefined, undefined, undefined, e.edgeOnly);
+					} else {
+						KinkyDungeonAddVibeModifier(item.name, "reinforce", KDRestraint(item).Group, 1, e.time);
+					}
+					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+				}
+			}
+		},
+	},
+
+	"playSelf": {
+		"PunishEvent": (e, item, data) => {
+			if (!e.chance || KDRandom() < e.chance) {
+				KinkyDungeonSendEvent("punish", Object.assign({
+					item: item,
+					type: "playSelf",
+					kind: e.kind || "low",
+				}, data));
+
+				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+			}
+		},
+	},
 	"playerCast": {
 		"MagicallySensitive": (e, item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {
-				if (!KDGameData.CurrentVibration) {
-					KinkyDungeonStartVibration(item.name, "tease", KDGetVibeLocation(item), e.power, e.time, undefined, undefined, undefined, undefined, e.edgeOnly);
-				} else {
-					KinkyDungeonAddVibeModifier(item.name, "reinforce", KDRestraint(item).Group, 1, e.time);
-				}
+				KinkyDungeonSendEvent("punish", Object.assign({
+					item: item,
+					type: "cast",
+					kind: e.kind || "low",
+				}, data));
+
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
 			}
 		},

@@ -1062,30 +1062,33 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.5, enemyTags: {"wolfRestraints" : 6, "wolfGear":6}, playerTags: {"ItemPelvisFull": -5, "NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Latex", "Panties", "Vibes"]},
 
 
-
+	// Nipple vibes - these generally trigger on attack
 	{inventory: true, arousalMode: true, name: "NippleClamps", unlimited: true, Asset: "HeartPasties", Color: "Default", Group: "ItemNipples", power: 3, weight: 0,
+		vibeLocation: "ItemNipples",
 		escapeChance: {"Struggle": -10, "Cut": -0.05, "Remove": 0.5, "Pick": 0.25}, failSuffix: {"Struggle": "Clamps"},
 		maxwill: 1.0, enemyTags: {"dressRestraints" : 4, "genericToys": 2, "maidRestraints": 1, "maidRestraintsLight": 1, "roboAngry": 10, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes"], linkedVibeTags: ["teaser", "piercings"],
 		allowRemote: true, events: [
-			{trigger:"playerCast",  type: "MagicallySensitive", chance: 0.5, power: 1, time: 24, edgeOnly: true},
-			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 1, time: 24, edgeOnly: true},
-			{trigger:"tick",  type: "PeriodicTeasing", power: 1, time: 24, edgeOnly: true, cooldown: {"normal": 80, "tease": 20}, chance: 0.02},
+			{trigger:"playerAttack",  type: "MotionSensitive", chance: 0.5},
+			{trigger:"struggle",  type: "VibeOnStruggle", chance: 1.0},
+			{trigger:"punish", type: "PunishSelf", power: 1, time: 24, edgeOnly: true},
 		]},
 
-
+	// Vibrators - These generally trigger on magic
 	{inventory: true, arousalMode: true, name: "TrapVibe", Asset: "TapedClitEgg", Color: "Default", Group: "ItemVulvaPiercings", power: 1, weight: 2,
 		failSuffix: {"Struggle": "Egg"},
 		escapeChance: {"Struggle": 0.15}, enemyTags: {"trap":100, "maidRestraintsLight": 5, "genericToys": 2, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes"], linkedVibeTags: ["teaser"], vibeLocation: "ItemVulvaPiercings",
 		allowRemote: true, events: [
-			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
-			{trigger:"playerCast",  type:"MagicallySensitive", chance: 0.5, power: 1, time: 12, edgeOnly: true},
-			{trigger:"remoteVibe",  type:"RemoteActivatedVibe", power: 1, time: 12, edgeOnly: true},
+			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true}, // Harder to remove by crotch rope
+			{trigger:"playerCast",  type: "MagicallySensitive"},
+			{trigger:"punish", type: "PunishSelf", power: 1, time: 24, edgeOnly: true},
 		]},
 	{inventory: true, arousalMode: true, name: "TrapVibeProto", Asset: "TapedClitEgg", Color: "Default", Group: "ItemVulvaPiercings", power: 1, weight: 2,
 		failSuffix: {"Struggle": "Egg"},
 		escapeChance: {"Struggle": 0.25}, enemyTags: {"protoToys": 2, "roboAngry": 10}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes"], linkedVibeTags: ["teaser", "piercings"], vibeLocation: "ItemVulvaPiercings",
 		allowRemote: true, events: [
-			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
+			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true}, // Harder to remove by crotch rope
+			{trigger:"playerCast",  type: "MagicallySensitive"},
+			{trigger:"punish", type: "PunishSelf", power: 3, time: 12, edgeOnly: true},
 			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 1, time: 48, edgeOnly: true},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 2, time: 20, edgeOnly: true, cooldown: {"normal": 90, "tease": 20}, chance: 0.02},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 3, time: 15, edgeOnly: false, cooldown: {"normal": 90, "tease": 20}, chance: 0.02},
@@ -1094,26 +1097,18 @@ const KinkyDungeonRestraints = [
 		failSuffix: {"Struggle": "Egg"},
 		enemyTags: {"maidVibeRestraints": 1000, "maidVibeRestraintsLimited": 100}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes"], linkedVibeTags: ["teaser"], vibeLocation: "ItemVulva",
 		allowRemote: true, events: [
-			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
-			{trigger:"playerCast",  type: "MagicallySensitive", chance: 0.5, power: 2, time: 12, edgeOnly: true},
-			{trigger:"struggle",  type: "VibeOnStruggle", chance: 1.0, power: 2, time: 12, edgeOnly: true},
-			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: true},
+			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true}, // Harder to remove by crotch rope
+			{trigger:"playerCast",  type: "MagicallySensitive", chance: 0.5},
+			{trigger:"punish", type: "PunishSelf", power: 2, time: 12, edgeOnly: true},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 2, time: 32, edgeOnly: true, cooldown: {"normal": 90, "tease": 20}, chance: 0.015},
 		]},
 
-	{inventory: true, arousalMode: true, name: "PrisonVibe", Asset: "VibratingDildo", Color: "Default", Group: "ItemVulva", plugSize: 1.0, power: 5, weight: 2, escapeChance: {"Struggle": 0.25}, enemyTags: {}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Plugs"],
-		failSuffix: {"Struggle": "Plug"},
-		linkedVibeTags: ["plugs"], allowRemote: true, events: [
-			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
-			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: true},
-			{trigger:"tick",  type: "PeriodicTeasing", power: 1, time: 48, edgeOnly: true, cooldown: {"normal": 120, "tease": 20}, chance: 0.02},
-			{trigger:"tick",  type: "PeriodicTeasing", power: 4, time: 14, edgeOnly: false, cooldown: {"normal": 120, "tease": 20}, chance: 0.02},
-		]},
 	{inventory: true, arousalMode: true, name: "TrapPlug", unlimited: true, Asset: "VibratingDildo", Color: "Default", Group: "ItemVulva", plugSize: 1.0, power: 3, weight: 2,
 		failSuffix: {"Struggle": "Plug"},
 		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":10, "maidRestraintsLight": 2, "genericToys": 2, 'machinePlug': 5}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Plugs"], linkedVibeTags: ["plugs"],
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
+			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: true},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 1, time: 12, edgeOnly: true, cooldown: {"normal": 60, "tease": 20}, chance: 0.02},
 			{trigger:"tick",  type: "PeriodicDenial", power: 1, time: 36, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.02},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 3, time: 16, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.02},
@@ -1123,6 +1118,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 5, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Plugs"], linkedVibeTags: ["plugs"],
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
+			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: true},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 1, time: 24, edgeOnly: true, cooldown: {"normal": 30, "tease": 8}, chance: 0.05},
 		]},
 	{inventory: true, arousalMode: true, name: "TrapPlug3", unlimited: true, Asset: "VibratingDildo", Color: "Default", Group: "ItemVulva", plugSize: 1.0, power: 5, weight: 2,
@@ -1130,6 +1126,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 5, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Plugs"], linkedVibeTags: ["plugs"],
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
+			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: true},
 			{trigger:"tick",  type: "PeriodicDenial", power: 2, time: 36, cooldown: {"normal": 150, "tease": 40}, chance: 0.05},
 		]},
 	{inventory: true, arousalMode: true, name: "TrapPlug4", unlimited: true, Asset: "VibratingDildo", Color: "Default", Group: "ItemVulva", plugSize: 1.0, power: 5, weight: 1,
@@ -1137,6 +1134,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Plugs"], linkedVibeTags: ["plugs"],
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
+			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: true},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 3, time: 20, edgeOnly: false, cooldown: {"normal": 40, "tease": 20}, chance: 0.01},
 			{trigger:"tick",  type: "PeriodicDenial", power: 2, time: 30, edgeOnly: true, cooldown: {"normal": 70, "tease": 20}, chance: 0.02},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 4, time: 10, edgeOnly: false, cooldown: {"normal": 90, "tease": 5}, chance: 0.03},
@@ -1147,6 +1145,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 2, "intensetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Plugs"], linkedVibeTags: ["plugs"],
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
+			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: true},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 2, time: 36, edgeOnly: false, cooldown: {"normal": 60, "tease": 30}, chance: 0.05},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 4, time: 24, edgeOnly: false, cooldown: {"normal": 90, "tease": 15}, chance: 0.03},
 		]},
@@ -1171,6 +1170,7 @@ const KinkyDungeonRestraints = [
 		playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Plugs"],
 		failSuffix: {"Struggle": "Plug"},
 		linkedVibeTags: ["plugs"], allowRemote: true, events: [
+			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
 			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: true},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 1, time: 30, edgeOnly: true, cooldown: {"normal": 120, "tease": 20}, chance: 0.02},
 		]},

@@ -1291,6 +1291,8 @@ Minor Changes:
 - Many bugfixes
 - New Spell: Gust
 - Windblast now pierces
+- New machine translated Spanish
+- New JP translation by Phantasm
 
 TODO ValidationFindBlockCycles to prevent bugs
 
