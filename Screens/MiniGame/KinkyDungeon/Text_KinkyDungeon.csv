@@ -18,12 +18,16 @@ Language,Language
 EN,English
 CN,Chinese
 KR,Korean
+JP,Japanese
+ES,Spanish
 KDMods,Mods
 KDModsLoaded,Mods Loaded.
 
 RestartNeededEN,"Restart required!"
 RestartNeededCN,"需要重启！"
 RestartNeededKR,"재시작 필요！"
+RestartNeededJP,"Restart please!"
+RestartNeededES,"¡Reinicio!"
 
 KinkyDungeon,"Kinky Dungeon v4.21"
 Intro,"You are an adventurer descending into an ancient underground city of magic."

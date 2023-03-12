@@ -827,7 +827,7 @@ function KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthE
 			// console.log('KinkyDungeonDetectLanguageForMaxWidth languageName', languageName);
 			if (languageName === "unknown") {
 				return maxWidthTranslate;
-			} else if (languageName === "Chinese" || languageName === "Korean") {
+			} else if (KDBigLanguages2.includes(languageName)) {
 				return maxWidthTranslate;
 			} else if (languageName === "English") {
 				return maxWidthEnglish;

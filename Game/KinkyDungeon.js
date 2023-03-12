@@ -4,9 +4,10 @@
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
 /** These languages have characters which are rendered bigger than English. */
-let KDBigLanguages = ["CN", "KR"];
+let KDBigLanguages = ["CN", "KR", "JP"];
+let KDBigLanguages2 = ["Chinese", "Korean", "Japanese"];
 /** Language List */
-let KDLanguages = ["", "CN", "KR"];
+let KDLanguages = ["", "CN", "KR", "JP", "ES"];
 
 let KinkyDungeonPlayerNeedsRefresh = false;
 let KinkyDungeonNextRefreshCheck = 0;
@@ -937,7 +938,7 @@ function KinkyDungeonRun() {
 
 
 
-		DrawButtonVis(1700, 874, 280, 50, TextGet(localStorage.getItem("BondageClubLanguage") || "EN"), "#ffffff", "");
+		DrawButtonVis(1700, 874, 280, 50, localStorage.getItem("BondageClubLanguage") || "EN", "#ffffff", "");
 
 		if (KDPatched) {
 			// @ts-ignore
@@ -948,7 +949,7 @@ function KinkyDungeonRun() {
 		}
 
 		if (KDRestart)
-			DrawTextKD(TextGet("RestartNeeded" + (localStorage.getItem("BondageClubLanguage") || "EN")), 1840, 800, "#ffffff", KDTextGray2);
+			DrawTextKD(TextGet("RestartNeeded"), 1840, 600, "#ffffff", KDTextGray2);
 	} else if (KinkyDungeonState == "Consent") {
 		MainCanvas.textAlign = "center";
 		// Draw temp start screen
@@ -1519,7 +1520,9 @@ function KinkyDungeonRun() {
 				KDToggles[toggle] = !KDToggles[toggle];
 				KDSaveToggles();
 				return true;
-			}, true, XX, YY, 64, 64, TextGet("KDToggle" + toggle), KDToggles[toggle], false, "#ffffff");
+			}, true, XX, YY, 64, 64, TextGet("KDToggle" + toggle), KDToggles[toggle], false, "#ffffff", undefined, {
+				maxWidth: 300,
+			});
 
 			YY += YYd;
 			if (YY > YYmax) {
