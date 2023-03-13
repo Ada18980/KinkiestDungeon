@@ -110,6 +110,8 @@ let KDEventMapInventory = {
 		},
 		"PunishEvent": (e, item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {
+				if (e.msg && (e.always || !KDGameData.CurrentVibration)) KinkyDungeonSendTextMessage(1, TextGet(e.msg).replace("[RESTRAINTNAME]", TextGet("Restraint" + item.name)), "#aaaaaa", 1);
+
 				KinkyDungeonSendEvent("punish", Object.assign({
 					item: item,
 					type: "orgasm",
@@ -938,6 +940,8 @@ let KDEventMapInventory = {
 		},
 		"VibeOnStruggle": (e, item, data) => {
 			if ((!e.chance || KDRandom() < e.chance) && data.struggleType === "Struggle") {
+				if (e.msg && (e.always || !KDGameData.CurrentVibration)) KinkyDungeonSendTextMessage(1, TextGet(e.msg).replace("[RESTRAINTNAME]", TextGet("Restraint" + item.name)), "#aaaaaa", 1);
+
 				KinkyDungeonSendEvent("punish", Object.assign({
 					item: item,
 					type: "struggle",
@@ -1056,6 +1060,8 @@ let KDEventMapInventory = {
 	"sprint": {
 		"MotionSensitive": (e, item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {
+				if (e.msg && (e.always || !KDGameData.CurrentVibration)) KinkyDungeonSendTextMessage(1, TextGet(e.msg).replace("[RESTRAINTNAME]", TextGet("Restraint" + item.name)), "#aaaaaa", 1);
+
 				KinkyDungeonSendEvent("punish", Object.assign({
 					item: item,
 					type: "sprint",
@@ -1068,6 +1074,8 @@ let KDEventMapInventory = {
 	"playerAttack": {
 		"MotionSensitive": (e, item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {
+				if (e.msg && (e.always || !KDGameData.CurrentVibration)) KinkyDungeonSendTextMessage(1, TextGet(e.msg).replace("[RESTRAINTNAME]", TextGet("Restraint" + item.name)), "#aaaaaa", 1);
+
 				KinkyDungeonSendEvent("punish", Object.assign({
 					item: item,
 					type: "attack",
@@ -1207,7 +1215,7 @@ let KDEventMapInventory = {
 	"punish": {
 		/** If this item is the one to do it it will vibe */
 		"PunishSelf": (e, item, data) => {
-			if (item == data.item && (!e.kind || data.kind == e.kind)) {
+			if (item == data.item && (!e.kind || data.kind == e.kind) && (!e.requireTags || e.requireTags.includes(data.kind)) && (!e.filterTags || !e.filterTags.includes(data.kind))) {
 				if (!e.chance || KDRandom() < e.chance) {
 					if (!KDGameData.CurrentVibration) {
 						KinkyDungeonStartVibration(item.name, "tease", KDGetVibeLocation(item), e.power, e.time, undefined, undefined, undefined, undefined, e.edgeOnly);
@@ -1218,11 +1226,22 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		/** If this item is the one to do it it will vibe */
+		"PunishShock": (e, item, data) => {
+			if (item == data.item && (!e.kind || data.kind == e.kind) && (!e.requireTags || e.requireTags.includes(data.kind)) && (!e.filterTags || !e.filterTags.includes(data.kind))) {
+				if (!e.chance || KDRandom() < e.chance) {
+					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
+					if (e.msg && (e.always || !KDGameData.CurrentVibration)) KinkyDungeonSendTextMessage(1, TextGet(e.msg).replace("[RESTRAINTNAME]", TextGet("Restraint" + item.name)), "#aaaaaa", 1);
+					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + e.sfx + ".ogg");
+				}
+			}
+		},
 	},
 
 	"playSelf": {
 		"PunishEvent": (e, item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {
+				if (e.msg && (e.always || !KDGameData.CurrentVibration)) KinkyDungeonSendTextMessage(1, TextGet(e.msg).replace("[RESTRAINTNAME]", TextGet("Restraint" + item.name)), "#aaaaaa", 1);
 				KinkyDungeonSendEvent("punish", Object.assign({
 					item: item,
 					type: "playSelf",
@@ -1236,6 +1255,8 @@ let KDEventMapInventory = {
 	"playerCast": {
 		"MagicallySensitive": (e, item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {
+				if (e.msg && (e.always || !KDGameData.CurrentVibration)) KinkyDungeonSendTextMessage(1, TextGet(e.msg).replace("[RESTRAINTNAME]", TextGet("Restraint" + item.name)), "#aaaaaa", 1);
+
 				KinkyDungeonSendEvent("punish", Object.assign({
 					item: item,
 					type: "cast",
@@ -3302,6 +3323,11 @@ let KDEventMapEnemy = {
 			for (let en of enemies) {
 				KinkyDungeonApplyBuffToEntity(en, KDDollDebuff);
 				KinkyDungeonApplyBuffToEntity(en, KDDollDebuff2);
+			}
+		},
+		"suicideWhenBound": (e, enemy, data) => {
+			if (KDHelpless(enemy)) {
+				enemy.hp = 0;
 			}
 		},
 	},

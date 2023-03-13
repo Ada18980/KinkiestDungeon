@@ -1063,6 +1063,10 @@ interface KinkyDungeonEvent {
 	cooldown?: Record<string, number>;
 	/** A required enemy tag */
 	requiredTag?: string;
+	/** Generic required tags */
+	requireTags?: string[];
+	/** Generic filtered tags */
+	filterTags?: string[];
 	/** Type of struggle that this event triggers on */
 	StruggleType?: string;
 	requireEnergy?: boolean;

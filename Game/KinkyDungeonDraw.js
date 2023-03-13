@@ -1596,6 +1596,10 @@ function KinkyDungeonDrawGame() {
 			KDDrawArousalScreenFilter(0, 1000, 2000, KinkyDungeonStatDistraction * 100 / KinkyDungeonStatDistractionMax);
 		}
 
+		if (KDToggles.VibeHearts) {
+			KDDrawVibeParticles(KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax);
+		}
+
 		/*if (!KinkyDungeonFlags.get("PlayerOrgasmFilter") && KDIntenseFilter) {
 			kdgameboard.removeChild(KDIntenseFilter);
 			kdgameboard.filters = kdgameboard.filters.filter((filter) => {return filter != KDIntenseFilter;});

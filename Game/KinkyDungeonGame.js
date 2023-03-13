@@ -834,7 +834,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 			KinkyDungeonSendEvent("postQuest", {});
 
 			for (let e of KinkyDungeonGetAllies()) {
-				KDMoveEntity(e, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false);
+				KDMoveEntity(e, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false,undefined, undefined, true);
 				e.visual_x = KinkyDungeonStartPosition.x;
 				e.visual_y = KinkyDungeonStartPosition.y;
 			}
@@ -944,7 +944,7 @@ function KinkyDungeonGetAllies() {
 	let temp = [];
 	for (let e of KinkyDungeonEntities) {
 		if (e.Enemy && e.Enemy.keepLevel) {
-			KDMoveEntity(e, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false);
+			KDMoveEntity(e, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false,undefined, undefined, true);
 			e.visual_x = KinkyDungeonStartPosition.x;
 			e.visual_y = KinkyDungeonStartPosition.y;
 			temp.push(e);
@@ -3570,7 +3570,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 
 						if (KinkyDungeonMovePoints >= 1) {// Math.max(1, KinkyDungeonSlowLevel) // You need more move points than your slow level, unless your slow level is 1
 							if (Enemy && allowPass) {
-								KDMoveEntity(Enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true);
+								KDMoveEntity(Enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true,undefined, undefined, true);
 								if (KinkyDungeonFlags.has("Passthrough"))
 									KinkyDungeonSetFlag("Passthrough", 2);
 							}

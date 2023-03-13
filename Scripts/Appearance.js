@@ -554,7 +554,7 @@ function AppearanceLoad() {
 	CharacterAppearanceBuildAssets(Player);
 	CharacterAppearanceBackup = CharacterAppearanceStringify(C);
 	AppearanceMenuBuild(C);
-	AppearanceUseCharacterInPreviewsSetting = Player.VisualSettings ? Player.VisualSettings.UseCharacterInPreviews : AppearanceUseCharacterInPreviewsSetting;
+	AppearanceUseCharacterInPreviewsSetting = true;
 }
 
 /**

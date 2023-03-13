@@ -85,6 +85,7 @@ let KDToggles = {
 	ShowNPCStatuses: true,
 	StunFlash: true,
 	ArousalHearts: true,
+	VibeHearts: true,
 	FancyWalls: true,
 };
 
@@ -272,6 +273,7 @@ let KDOptOut = false;
 * DollRoomCount: number,
 * CollectedHearts: number,
 * CollectedOrbs: number,
+* otherPlaying: number,
 
 *}} KDGameDataBase
 */
@@ -414,6 +416,7 @@ let KDGameDataBase = {
 
 	ItemID: 0,
 	ShopkeeperFee: 0,
+	otherPlaying: 0,
 };
 /**
  * @type {KDGameDataBase}
@@ -2261,6 +2264,7 @@ function KinkyDungeonHandleClick() {
 						InventoryAdd(Player, Asset[A].Name, Asset[A].Group.Name);
 			}
 			CharacterReleaseTotal(KinkyDungeonPlayer);
+			KinkyDungeonCheckClothesLoss = true;
 			KinkyDungeonDressPlayer();
 			// @ts-ignore
 			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: false, AllowFullWardrobeAccess: true};

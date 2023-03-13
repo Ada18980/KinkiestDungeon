@@ -355,7 +355,7 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 								let mindist2 = playerDist;
 								for (let X = enemy.x-1; X <= enemy.x+1; X++) {
 									for (let Y = enemy.y-1; Y <= enemy.y+1; Y++) {
-										if ((X !=  enemy.x || Y != enemy.y) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y)) && KDistEuclidean(X-Entity.x, Y-Entity.y) < mindist2) {
+										if ((X !=  enemy.x || Y != enemy.y) && !KinkyDungeonEntityAt(slot.x, slot.y) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y)) && KDistEuclidean(X-Entity.x, Y-Entity.y) < mindist2) {
 											mindist2 = KDistEuclidean(X-Entity.x, Y-Entity.y);
 											slot2 = {x:X, y:Y};
 										}
@@ -368,13 +368,13 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 									if (pointSwap)
 										KDMoveEntity(enemy, pointSwap.x, pointSwap.y, false);
 									else
-										KDMoveEntity(enemy, Entity.x, Entity.y, false);
+										KDMoveEntity(enemy, Entity.x, Entity.y, false,undefined, undefined, true);
 								}
 							}
 							// Force open door
 							if (KinkyDungeonMapGet(slot.x, slot.y) == 'D') KinkyDungeonMapSet(slot.x, slot.y, 'd');
 
-							KDMoveEntity(Entity, slot.x, slot.y, false);
+							KDMoveEntity(Entity, slot.x, slot.y, false, undefined, undefined, true);
 							if (Entity.player) KinkyDungeonSetFlag("pulled", 1);
 							else KinkyDungeonSetEnemyFlag(Entity, "pulled");
 							if (Entity.player) {

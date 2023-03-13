@@ -524,8 +524,9 @@ function KDEffectTileInteractions(x, y, b, d) {
  * @param {number} x
  * @param {number} y
  * @param {boolean} willing
+ * @param {boolean} [ignoreBlocked] - Ignore if the target is blocked--important if swapping
  */
-function KDMoveEntity(enemy, x, y, willing, dash, forceHitBullets) {
+function KDMoveEntity(enemy, x, y, willing, dash, forceHitBullets, ignoreBlocked) {
 	enemy.lastx = enemy.x;
 	enemy.lasty = enemy.y;
 	let cancel = {cancelmove: false, returnvalue: false};
@@ -534,25 +535,27 @@ function KDMoveEntity(enemy, x, y, willing, dash, forceHitBullets) {
 			cancel = KDEffectTileMoveOnFunctions[newTile.name](enemy, newTile, willing, {x: x - enemy.x, y: y - enemy.y}, dash);
 		}
 	}
+	if (!ignoreBlocked && KinkyDungeonEntityAt(x, y)) cancel.cancelmove = true;
 	if (!cancel.cancelmove) {
 		enemy.x = x;
 		enemy.y = y;
+
+		KinkyDungeonSendEvent("enemyMove", {
+			cancelmove: cancel.cancelmove,
+			returnvalue: cancel.returnvalue,
+			willing: willing,
+			sprint: dash,
+			lastX: enemy.lastx,
+			lastY: enemy.lasty,
+			moveX: x,
+			moveY: y,
+			enemy: enemy,
+		});
+		KDCheckCollideableBullets(enemy, forceHitBullets);
+		enemy.fx = undefined;
+		enemy.fy = undefined;
+		if (enemy.x != enemy.lastx || enemy.y != enemy.lasty) KDUpdateEnemyCache = true;
 	}
-	KinkyDungeonSendEvent("enemyMove", {
-		cancelmove: cancel.cancelmove,
-		returnvalue: cancel.returnvalue,
-		willing: willing,
-		sprint: dash,
-		lastX: enemy.lastx,
-		lastY: enemy.lasty,
-		moveX: x,
-		moveY: y,
-		enemy: enemy,
-	});
-	KDCheckCollideableBullets(enemy, forceHitBullets);
-	enemy.fx = undefined;
-	enemy.fy = undefined;
-	if (enemy.x != enemy.lastx || enemy.y != enemy.lasty) KDUpdateEnemyCache = true;
 	return cancel.returnvalue;
 }
 

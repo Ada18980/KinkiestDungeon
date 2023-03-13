@@ -732,7 +732,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 					}
 					let enemy = KinkyDungeonEnemyAt(guardPath[0].x, guardPath[0].y);
 					if (enemy) {
-						KDMoveEntity(enemy, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, true);
+						KDMoveEntity(enemy, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, true, undefined, undefined, true);
 						KinkyDungeonJailGuard().x = guardPath[0].x;
 						KinkyDungeonJailGuard().y = guardPath[0].y;
 					}

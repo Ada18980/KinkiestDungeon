@@ -42,6 +42,7 @@ KDToggleMusic,Enable Music
 KDToggleTurnCounter,Turn Counter
 KDToggleStunFlash,Flash Screen on Stun
 KDToggleArousalHearts,Advanced Distraction VFX
+KDToggleVibeHearts,Advanced Toy VFX
 KDToggleShowNPCStatuses,Show NPC Status
 KDToggleFancyWalls,Advanced Fog of War
 KDToggleIntenseOrgasm,Intense 'Let Go' VFX
@@ -2909,6 +2910,7 @@ KinkyDungeonTabletReadFailure,"You try to read the runes but cannot understand t
 
 KDAlliedWith,"Allies: "
 KDHostileWith,"Enemies: "
+KDFriendsWith,"Favorable: "
 
 KinkyDungeonFactionNevermere,Nevermere Trainers
 KinkyDungeonFactionDressmaker,DressUp Co.
@@ -3065,9 +3067,15 @@ RestraintDressBra,Dress Bustier
 RestraintDressBraDesc,"A deceptively cruel device, making it impossible to reach your nipples."
 RestraintDressBraDesc2,"Reinforced with steel plates, this will need bolt cutters to take off."
 
-RestraintNippleClamps,Nipple Massagers
-RestraintNippleClampsDesc,"A pair of little teasers."
+RestraintNippleClamps,Massagers
+RestraintNippleClampsDesc,"A pair of little motion-activated teasers."
 RestraintNippleClampsDesc2,"They will make for some great fun!"
+RestraintNippleClamps2,Advanced Massagers
+RestraintNippleClamps2Desc,"A pair of sensitive motion-activated teasers."
+RestraintNippleClamps2Desc2,"They will make for some great fun!"
+RestraintNippleClamps3,Hi-Tech Massagers
+RestraintNippleClamps3Desc,"A pair of highly-sensitive motion-activated teasers."
+RestraintNippleClamps3Desc2,"They will make for some great fun!"
 
 RestraintControlHarness,Control Harness
 RestraintControlHarnessDesc,"An advanced harness for controlling high-security prisoners."
@@ -9168,16 +9176,19 @@ NameDollmakerBoss1,"Dollmaker"
 KillDollmakerBoss1,"The Dollmaker throws a device to the ground, teleporting her instantly!"
 AttackDollmakerBoss1Bind,"The Dollmaker's necklace flashes as you find yourself suddenly restrained! (+RestraintAdded)"
 AttackDollmakerBoss1,"The Dollmaker's overbearing presence captivates you~ (DamageTaken)"
+AttackDollmakerBoss1Lock,"The Dollmaker snaps her fingers as you find yourself locked! (DamageTaken)"
 
 NameDollmakerBoss2,"Dollmaker"
 KillDollmakerBoss2,"The Dollmaker sinks into a pool of latex!"
 AttackDollmakerBoss2Bind,"The Dollmaker's necklace flashes as you find yourself suddenly restrained! (+RestraintAdded)"
 AttackDollmakerBoss2,"The Dollmaker suggests that you surrender. (DamageTaken)"
+AttackDollmakerBoss2Lock,"The Dollmaker snaps her fingers as you find yourself locked! (DamageTaken)"
 
 NameDollmakerBoss3,"DOLLMAKER"
 KillDollmakerBoss3,"The Dollmaker falls kneeling to the floor, admitting defeat!"
 AttackDollmakerBoss3Bind,"The Dollmaker snaps her fingers, and many robotic arms restrain you! (+RestraintAdded)"
 AttackDollmakerBoss3,"The Dollmaker orders you to KNEEL! (DamageTaken)"
+AttackDollmakerBoss3Lock,"The Dollmaker snaps her fingers as you find yourself locked! (DamageTaken)"
 
 NameFuuka1,"Fuuka"
 KillFuuka1,"Fuuka surrounds herself in defensive talismans!"
@@ -9840,3 +9851,7 @@ KDDollmakerMaskDim,Your visor dims to help you focus on your task.
 
 NameDollmakerTarget,Escaped Doll
 KillDollmakerTarget,You return the doll to her rightful owner.
+
+KDPunishSprint,Your movement sets off your [RESTRAINTNAME]
+KDPunishStruggle,Your struggling sets off your [RESTRAINTNAME]
+KDPunishAttack,Your attack sets off your [RESTRAINTNAME]

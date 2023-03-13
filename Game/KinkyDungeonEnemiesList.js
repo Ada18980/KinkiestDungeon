@@ -2004,6 +2004,7 @@ let KinkyDungeonEnemies = [
 			"glueresist", "electricresist", "crushresist", "iceweakness", "dollmakerrestraints", "cyberdollchastity", "cyberdollrestraints", "controlharness", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
 		spellResist: 2.0, armor: 0.5, followRange: 5.5, AI: "guard",
 		events: [
+			{trigger: "tick", type: "suicideWhenBound"},
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},
 			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 15, dist: 10, kind: "RubberNuke"},
 		],
