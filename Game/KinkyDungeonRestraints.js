@@ -76,9 +76,11 @@ let KinkyDungeonMaxImpossibleAttempts = 3; // base, more if the item is close to
 
 let KinkyDungeonEnchantedKnifeBonus = 0.1; // Bonus whenever you have an enchanted knife
 
-let KDLocksmithBonus = 0.15; // Locksmith background
-let KDLocksmithSpeedBonus = 1.1;
-let KDCluelessBonus = -0.2; // Clueless background
+let KDLocksmithPickBonus = 0.15; // Locksmith bonus to pick effectiveness
+let KDLocksmithBonus = 0.15; // Locksmith bonus to base escape chance
+let KDLocksmithSpeedBonus = 2.0;
+let KDCluelessPickBonus = -0.2; // Clueless background
+let KDCluelessBonus = -0.25; // Clueless background
 let KDCluelessSpeedBonus = 0.5;
 
 let KDFlexibleBonus = 0.1;
@@ -1084,10 +1086,22 @@ function KinkyDungeonGetStrictnessItems(Group, excludeItem) {
  */
 function KinkyDungeonGetPickBaseChance() {
 	let bonus = 0;
+	if (KinkyDungeonStatsChoice.get("Locksmith")) bonus += KDLocksmithPickBonus;
+	if (KinkyDungeonStatsChoice.get("Clueless")) bonus += KDCluelessPickBonus;
+	if (KinkyDungeonStatsChoice.get("LocksmithMaster")) bonus += 0.15;
+	return 0.33 / (1.0 + 0.02 * MiniGameKinkyDungeonLevel) + bonus;
+}
+
+/**
+ *
+ * @returns {number}
+ */
+function KinkyDungeonGetPickBonus() {
+	let bonus = 0;
 	if (KinkyDungeonStatsChoice.get("Locksmith")) bonus += KDLocksmithBonus;
 	if (KinkyDungeonStatsChoice.get("Clueless")) bonus += KDCluelessBonus;
 	if (KinkyDungeonStatsChoice.get("LocksmithMaster")) bonus += 0.15;
-	return 0.33 / (1.0 + 0.02 * MiniGameKinkyDungeonLevel) + bonus;
+	return bonus;
 }
 
 /**
@@ -1668,7 +1682,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		}
 	}
 
-	if (StruggleType == "Pick") data.escapeChance *= KinkyDungeonGetPickBaseChance();
+	if (StruggleType == "Pick") data.escapeChance += KinkyDungeonGetPickBonus();
 
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.15);
 
@@ -1981,7 +1995,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/"
 							+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.Pick) ? KDRestraint(restraint).sfxEscape.Pick : "Pick")
 							+ ".ogg");
-						let mult = 0.4 + 0.65 * (progress);
+						let mult = 0.2 + 1.8 * (progress);
 						if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
 						if (KinkyDungeonStatsChoice.get("Inflexible")) mult *= KDInflexibleSpeedBonus;
 						mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
@@ -1995,7 +2009,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/"
 						+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.Remove) ? KDRestraint(restraint).sfxEscape.Remove : "Struggle")
 						+ ".ogg");
-					let mult = 0.3 + 1.5 * (progress * progress);
+					let mult = 0.3 + 1.7 * (progress * progress);
 					if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
 					if (KinkyDungeonStatsChoice.get("Inflexible")) mult *= KDInflexibleSpeedBonus;
 					mult *= 0.75 + 0.25 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);

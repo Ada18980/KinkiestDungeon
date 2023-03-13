@@ -1293,6 +1293,7 @@ Minor Changes:
 - New Spell: Gust
 - Windblast now pierces
 - Tweaked enemy play aggressiveness in submissive mode and reduced chance of getting a mob of many NPCs
+- Locksmith and Clueless are now more impactful
 - New machine translated Spanish
 - New JP translation by Phantasm
 - Clarified faction aggro. Now if the first faction "Favors" the second faction and you aggro the second faction, the first faction will aggro unless you are "Favored" by the first faction. And factions you are "Allied" with will never aggro you for their alliances.
