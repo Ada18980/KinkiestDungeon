@@ -267,6 +267,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			if (dmg.happened) effect = true;
 		} else if (playerEffect.name == "WitchBoulder") {
 			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
+			KDGameData.KneelTurns = 2;
 			let dmg = KinkyDungeonDealDamage({damage: Math.max((spell.aoepower) ? spell.aoepower : 0, spell.power), type: spell.damage}, bullet);
 			KinkyDungeonSendTextMessage(Math.min(spell.power, 5), TextGet("KDEffectWitchBoulder").replace("DamageDealt", dmg.string), "#ff0000", 1);
 			if (dmg.happened) effect = true;

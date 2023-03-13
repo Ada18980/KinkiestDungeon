@@ -3502,9 +3502,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 	}
 
 	let allowPass = Enemy
-		&& !KDIsImmobile(Enemy)
-		&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
-		&& (KinkyDungeonToggleAutoPass || KDEnemyHasFlag(Enemy, "passthrough") || (KinkyDungeonFlags.has("Passthrough")) || Enemy.Enemy.noblockplayer);
+		&& KDCanPassEnemy(KinkyDungeonPlayerEntity, Enemy);
 	if (Enemy && !allowPass && !passThroughSprint) {
 		if (AllowInteract) {
 			KDDelayedActionPrune(["Action", "Attack"]);
@@ -4186,4 +4184,10 @@ function KDGetAltType(Floor) {
 	let altRoom = KDGameData.RoomType;
 	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
 	return altType;
+}
+
+function KDCanPassEnemy(player, Enemy) {
+	return !KDIsImmobile(Enemy)
+	&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
+	&& (KinkyDungeonToggleAutoPass || KDEnemyHasFlag(Enemy, "passthrough") || (KinkyDungeonFlags.has("Passthrough")) || Enemy.Enemy.noblockplayer);
 }

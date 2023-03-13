@@ -1017,6 +1017,11 @@ function KinkyDungeonDrawGame() {
 								(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 									zIndex: 100,
 								});
+							if (KinkyDungeonSlowLevel > 1 && KinkyDungeonSlowLevel < 10) {
+								if (!KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY) || KDCanPassEnemy(KinkyDungeonPlayerEntity, KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY))) {
+									DrawTextKD("x" + Math.round(KinkyDungeonSlowLevel), (KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
+								}
+							}
 						}
 					} else if ((KinkyDungeonMoveDirection.x != 0 || KinkyDungeonMoveDirection.y != 0)) {
 						let xx = KinkyDungeonMoveDirection.x + KinkyDungeonPlayerEntity.x;
