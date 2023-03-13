@@ -95,6 +95,7 @@ let KDQuests = {
 				if (point) {
 					KinkyDungeonSummonEnemy(point.x, point.y, "DragonLeaderDuelist", 1, 2.9);
 				}
+				KDRemoveQuest("DragonheartQuest"); // Only lasts 1 floor
 			}
 		},
 		prerequisite: (RoomType, MapMod, data) => {
