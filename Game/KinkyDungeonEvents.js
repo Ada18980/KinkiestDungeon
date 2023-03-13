@@ -270,6 +270,8 @@ let KDEventMapInventory = {
 	},
 	"tick": {
 		"DollmakerMask": (e, item, data) => {
+			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+			if (altType && altType.spawns === false) return;
 			if (KDRandom() < 0.1) {
 				let count = 0;
 				for (let en of KinkyDungeonEntities) {

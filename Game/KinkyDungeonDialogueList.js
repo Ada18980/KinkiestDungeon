@@ -424,7 +424,7 @@ let KDDialogue = {
 			"Help": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
-					KinkyDungeonSetFlag("DressmakerQuest", -1);
+					KDAddQuest("DressmakerQuest");
 					return false;
 				},
 				options: {
@@ -447,7 +447,7 @@ let KDDialogue = {
 						KinkyDungeonChangeFactionRep("Dressmaker", 0.002 * power);
 					else
 						KinkyDungeonChangeFactionRep("Dressmaker", 0.0007 * power);
-					KinkyDungeonSetFlag("DressmakerQuest", 0);
+					KDRemoveQuest("DressmakerQuest");
 					KDSpliceIndex(KinkyDungeonEntities.indexOf(KDDialogueEnemy()), 1);
 					return false;
 				},

@@ -43,11 +43,13 @@ let KDQuests = {
 		name: "ApprenticeQuest",
 		npc: "ApprenticeQuest",
 		worldgenstart: () => {
-			if (KDGameData.RoomType == "" && !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
+			if (KDGameData.RoomType == "" && !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel) && !KinkyDungeonFlags.get("ApprenticeQuestSpawn")) {
 				let point = KinkyDungeonGetRandomEnemyPoint(true);
 				if (point) {
 					KinkyDungeonSummonEnemy(point.x, point.y, "Librarian", 1, 2.9);
 				}
+				KinkyDungeonSetFlag("ApprenticeQuestSpawn", -1);
+
 			}
 		},
 		weight: (RoomType, MapMod, data) => {
@@ -64,6 +66,9 @@ let KDQuests = {
 				return weight;
 			}
 			return 0;
+		},
+		accept: (data) => {
+			KinkyDungeonSetFlag("ApprenticeQuestSpawn", 0);
 		},
 		prerequisite: (RoomType, MapMod, data) => {
 			if (KDHasQuest("ApprenticeQuest") && !(KinkyDungeonInventoryGet("ScrollLegs")
@@ -296,8 +301,12 @@ function KDRemoveQuest(quest) {
 }
 function KDAddQuest(quest) {
 	if (!KDGameData.Quests) KDGameData.Quests = [];
-	if (!KDGameData.Quests.includes(quest))
+	if (!KDGameData.Quests.includes(quest)) {
+		if (KDQuests[quest]?.accept) {
+			KDQuests[quest].accept();
+		}
 		KDGameData.Quests.push(quest);
+	}
 }
 
 function KDHasQuest(quest) {
