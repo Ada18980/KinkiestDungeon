@@ -2769,7 +2769,8 @@ function KinkyDungeonLoadGame(String) {
 						KinkyDungeonInventoryAdd(item);
 					}
 				} else {
-					KinkyDungeonInventoryAdd(item);
+					if (item.type != LooseRestraint || KinkyDungeonGetRestraintByName(item.name) != undefined)
+						KinkyDungeonInventoryAdd(item);
 				}
 			}
 
