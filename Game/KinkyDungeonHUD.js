@@ -670,6 +670,7 @@ function KinkyDungeonDrawInputs() {
 					surfaceItems: surfaceItems,
 					dynamicList: dynamicList,
 					item: item,
+					group: sg.group,
 					extraLines: [],
 					extraLineColor: [],
 				};

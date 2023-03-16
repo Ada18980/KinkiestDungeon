@@ -1299,7 +1299,9 @@ Minor Changes:
 - Clarified faction aggro. Now if the first faction "Favors" the second faction and you aggro the second faction, the first faction will aggro unless you are "Favored" by the first faction. And factions you are "Allied" with will never aggro you for their alliances.
 - Started work on some vibrator changes
 
-TODO ValidationFindBlockCycles to prevent bugs
+4.22 (March 2023)
+- Curse tooltips now show even while the item is overlaid
+- Each boss now gives a Leyline Map if you beat it, which lets you increase your mana pool up to +500 more
 
 TODO: Mushrooms in the jungle
 

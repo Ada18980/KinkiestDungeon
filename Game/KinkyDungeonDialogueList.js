@@ -806,6 +806,43 @@ let KDDialogue = {
 			},
 		}
 	},
+
+	"LeylineMap": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("nodollterm", 4);
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaPoolUp"));
+					KinkyDungeonUpdateStats(0);
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"Cancel": {
+				playertext: "Default", response: "Default",
+				options: {
+					"Leave": {
+						playertext: "Default", response: "Default",
+						exitDialogue: true,
+						clickFunction: (gagged, player) => {
+							KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaPoolUp"));
+							KinkyDungeonUpdateStats(0);
+							return false;
+						},
+					},
+					"Cancel": {
+						playertext: "Default", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
 	"DollTerminal_Step": {
 		response: "Default",
 		clickFunction: (gagged, player) => {
@@ -2096,6 +2133,7 @@ let KDDialogue = {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			KinkyDungeonSetFlag("BossUnlocked", -1);
+			KinkyDungeonSetFlag("SpawnMap", -1);
 			return false;
 		},
 		options: {
@@ -2356,6 +2394,7 @@ let KDDialogue = {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			KinkyDungeonSetFlag("BossUnlocked", -1);
+			KinkyDungeonSetFlag("SpawnMap", -1);
 			return false;
 		},
 		options: {

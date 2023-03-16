@@ -229,8 +229,9 @@ let KDEventMapInventory = {
 	},
 	"drawSGTooltip": {
 		"curseInfo": (e, item, data) => {
-			if (item == data.item) {
-				data.extraLines.push(TextGet("curseInfo" + e.msg));
+			if (item == data.item || KDRestraint(item)?.Group == data.group) {
+				let pre = item == data.item ? "" : TextGet("Restraint" + item.name) + ": ";
+				data.extraLines.push(pre + TextGet("curseInfo" + e.msg));
 				data.extraLineColor.push(e.color);
 			}
 		},
@@ -1026,6 +1027,13 @@ let KDEventMapInventory = {
 			if (KinkyDungeonHasCrotchRope && !KinkyDungeonPlayerTags.get("ChastityLower") && data.restraint && item == data.restraint && !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && (KinkyDungeonIsHandsBound(false, false, 0.45) || KinkyDungeonIsArmsBound())) {
 				data.escapePenalty += data.escapeChance;
 				KinkyDungeonSendTextMessage(10, TextGet("KDCrotchRopeBlock" + Math.floor(KDRandom() * 3)), "#ff0000", 2);
+			}
+		},
+		"struggleDebuff": (e, item, data) => {
+			if (e.StruggleType == data.struggleType && data.restraint && item != data.restraint && KDRestraint(data.restraint)?.shrine?.includes(e.requiredTag)) {
+				data.escapePenalty += e.power;
+				if (e.msg)
+					KinkyDungeonSendTextMessage(2, TextGet(e.msg), "#ff5555", 2);
 			}
 		},
 		"obsidianDebuff": (e, item, data) => {

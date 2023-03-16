@@ -29,7 +29,7 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 
-KinkyDungeon,"Kinky Dungeon v4.21"
+KinkyDungeon,"Kinky Dungeon v4.22"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
@@ -1068,19 +1068,19 @@ KinkyDungeonInventoryItemDollIDUse,"You apply a clever trick to reset your visor
 KinkyDungeonInventoryItemDollIDDesc,"A chip used to identify dolls. She must have dropped it. Either way it contains valuable tech..."
 KinkyDungeonInventoryItemDollIDDesc2,"It could be used to trick your visor into thinking you've performed your tasks for a while."
 
-ItemPickupDonut,"You found a donut with sprinkles!"
+ItemPickupDonut,"You find a donut with sprinkles!"
 KinkyDungeonInventoryItemDonut,Donut (Sprinkles)
 KinkyDungeonInventoryItemDonutUse,"You enjoy the donut and relish in its sweet delights."
 KinkyDungeonInventoryItemDonutDesc,"A delicious fried snack, covered in a sugary glaze and topped with sprinkles."
 KinkyDungeonInventoryItemDonutDesc2,"Restores 10% willpower. Takes a few turns to eat."
 
-ItemPickupCookieJailer,"You picked up a sugar cookie slathered in pink frosting!"
+ItemPickupCookieJailer,"You pick up a sugar cookie slathered in pink frosting!"
 KinkyDungeonInventoryItemCookieJailer,Good-Girl Gift
 KinkyDungeonInventoryItemCookieJailerUse,"You slowly eat the cookie, savoring its fluffy texture."
 KinkyDungeonInventoryItemCookieJailerDesc,"It tempts you with sweet promises, but something about it feels off..."
 KinkyDungeonInventoryItemCookieJailerDesc2,"Restores 15% willpower and adds +5 submissiveness. Takes a few turns to eat."
 
-ItemPickupCookie,"You found a chocolate-chip cookie!"
+ItemPickupCookie,"You find a chocolate-chip cookie!"
 KinkyDungeonInventoryItemCookie,Cookie (Chocolate Chip)
 KinkyDungeonInventoryItemCookieUse,"You enjoy the cookie one chocolatey bite at a time."
 KinkyDungeonInventoryItemCookieDesc,"A delicious baked good made with butter, sugar, and chocolate chips, baked until golden brown."
@@ -2743,7 +2743,7 @@ KinkyDungeonStruggleStruggleFailEggAroused,"You squirm around trying to dislodge
 KinkyDungeonStruggleStruggleImpossibleEgg,"The TargetRestraint won't come out."
 KinkyDungeonStruggleStruggleImpossibleEggAroused,"You feel the TargetRestraint slide around but it won't come out!"
 KinkyDungeonStruggleStruggleImpossibleBoundEgg,"Your bondage keeps the TargetRestraint secure in place."
-KinkyDungeonStruggleStruggleImpossibleBoundEggAroused,"Your struggling does nothing to disloghe the TargetRestraint."
+KinkyDungeonStruggleStruggleImpossibleBoundEggAroused,"Your struggling does nothing to dislodge the TargetRestraint."
 
 
 KinkyDungeonStruggleRemoveFailCorset,"You work to unlace the TargetRestraint..."
@@ -4365,26 +4365,27 @@ KinkyDungeonGroupItemDevices,Device
 
 ItemFoundHidden,"You found an item that was too small to see!"
 
-ItemPickupGold,"You picked up XXX gold."
+ItemPickupGold,"You pick up XXX gold."
 ItemPickupAncientPowerSource,"You retrieve an ancient power crystal."
 ItemPickupAncientPowerSourceSpent,"You retrieve a spent ancient power crystal."
 ItemPickupHeart,"You pick up a magical amulet and use it to boost your stats."
-ItemPickupKnife,"You picked up a knife."
-ItemPickupTorch,"You picked up a torch."
+ItemPickupLeylineMap,"You pick up a Leyline Map."
+ItemPickupKnife,"You pick up a knife."
+ItemPickupTorch,"You pick up a torch."
 ItemPickupKnives,"You found a bundle of discarded knives!"
-ItemPickupEnchKnife,"You picked up an enchanted knife."
-ItemPickupMagicKnife,"You picked up a magic knife."
-ItemPickupPick,"You picked up a lockpick."
-ItemPickupRedKey,"You picked up a normal key."
-ItemPickupGreenKey,"You picked up a green key."
-ItemPickupBlueKey,"You picked up a blue key."
-ItemPickupPotionWill,"You picked up a willpower potion."
-ItemPickupPotionMana,"You picked up a glowing blue mana potion."
-ItemPickupManaOrb,"You picked up a glowing blue orb."
-ItemPickupPotionInvisibility,"You picked up an invisibility potion."
-ItemPickupEctoplasm,"You picked up a handful of ectoplasm."
-ItemPickupPotionStamina,"You picked up a green stamina potion."
-ItemPickupPotionFrigid,"You picked up a frigid white potion."
+ItemPickupEnchKnife,"You pick up an enchanted knife."
+ItemPickupMagicKnife,"You pick up a magic knife."
+ItemPickupPick,"You pick up a lockpick."
+ItemPickupRedKey,"You pick up a normal key."
+ItemPickupGreenKey,"You pick up a green key."
+ItemPickupBlueKey,"You pick up a blue key."
+ItemPickupPotionWill,"You pick up a willpower potion."
+ItemPickupPotionMana,"You pick up a glowing blue mana potion."
+ItemPickupManaOrb,"You pick up a glowing blue orb."
+ItemPickupPotionInvisibility,"You pick up an invisibility potion."
+ItemPickupEctoplasm,"You pick up a handful of ectoplasm."
+ItemPickupPotionStamina,"You pick up a green stamina potion."
+ItemPickupPotionFrigid,"You pick up a frigid white potion."
 ItemPickupLore,"You found a peculiar note on the ground and keep it in your journal."
 ItemPickupLoreOld,"You found an uninteresting note on the ground."
 ItemPickupHammer,"You pick up a heavy hammer."
@@ -4407,12 +4408,12 @@ ItemPickupMagicSpear,"You pick up an enchanted spear."
 ItemPickupMagicFlail,"You pick up an enchanted flail."
 ItemPickupAxe,"You pick up a powerful axe."
 ItemPickupSmokeBomb,"You pick up a consumable smoke bomb."
-ItemPickupEarthRune,"You picked up a stone trinket with a glowing red sigil."
-ItemPickupWaterRune,"You picked up a wet rock with some kind of symbol on it."
-ItemPickupElfCrystal,"You picked up a crystal beautiful as the moon."
-ItemPickupEnchantedGrinder,"You picked up a strange device with a sharpened razor disc."
+ItemPickupEarthRune,"You pick up a stone trinket with a glowing red sigil."
+ItemPickupWaterRune,"You pick up a wet rock with some kind of symbol on it."
+ItemPickupElfCrystal,"You pick up a crystal beautiful as the moon."
+ItemPickupEnchantedGrinder,"You pick up a strange device with a sharpened razor disc."
 LootChestGrinder,"You find a strange ancient device with a sharp cutting blade."
-ItemPickupIceRune,"You picked up a stone trinket with a glowing blue sigil."
+ItemPickupIceRune,"You pick up a stone trinket with a glowing blue sigil."
 ItemPickupBola,You pick up a bola.
 ItemPickupBomb,You pick up a bomb!
 ItemPickupDragonslaver,"You pick up Dragonslaver."
@@ -9595,6 +9596,14 @@ rButton,"(There is a button on a control panel here.)"
 rButtonPress,"(You touch the button and it glows, releasing a pulse of energy!)"
 dButton_Press,(PUSH THE BUTTON)
 
+
+rLeylineMap,"(You find a map of the local leylines.)|(Committing these to memory will allow you to harness additional mana.)"
+rLeylineMapCancel,"(Are you sure?)|(This decision is permanent.)"
+dLeylineMap_Leave,(Gain +100 to Max Mana Pool)
+dLeylineMap_Cancel,(I don't want to.)
+dLeylineMapCancel_Leave,(Gain +100 to Max Mana Pool)
+dLeylineMapCancel_Cancel,(No really, I don't want it!)
+
 rDollTerminal_Step,"(You find a strange elevator with a control panel inside)|(You get the impression this will take you somewhere.)"
 rDollTerminal_StepEnter,"(Are you sure?)|(This seems like a bad idea!)"
 rDollTerminal_StepEnter_Enter,"(You activate the control panel and begin to descend...)"
@@ -9855,3 +9864,6 @@ KillDollmakerTarget,You return the doll to her rightful owner.
 KDPunishSprint,Your movement sets off your [RESTRAINTNAME]
 KDPunishStruggle,Your struggling sets off your [RESTRAINTNAME]
 KDPunishAttack,Your attack sets off your [RESTRAINTNAME]
+
+KDHarnessGagRemoveBlindfold,The straps on your gag prevent you from loosening the blindfold!
+KDHarnessGagStruggleBlindfold,The straps on your gag keep your blindfold securely in place!

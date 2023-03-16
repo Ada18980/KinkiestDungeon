@@ -1755,8 +1755,8 @@ let KDLogIndex = 0;
 let KDLogIndexInc = 3;
 
 let KDMsgWidth = 1200;
-let KDMsgWidthMin = 700;
-let KDMsgX = 450;
+let KDMsgWidthMin = 800;
+let KDMsgX = 400;
 let KDMsgFadeTime = 10;
 
 let KDMaxConsoleMsg = 6;

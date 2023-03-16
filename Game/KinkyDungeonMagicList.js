@@ -162,7 +162,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			},
 		},
 
-		{name: "DistractionCast", tags: ["will", "defense"], school: "Elements", manacost: 0, components: [], hideUnlearned: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+		{name: "DistractionCast", tags: ["will", "defense"], school: "Elements", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "DistractionCast", trigger: "calcMiscast"},
 			{type: "DistractionCast", trigger: "tick"},
 			{type: "DistractionCast", trigger: "playerCast"},
@@ -186,6 +186,9 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{type: "StaffUser1", trigger: "afterCalcMana", power: 0.8},
 		]},
 		{name: "StaffUser2", tags: ["utility"], prerequisite: "StaffUser1", school: "Elements", manacost: 0, components: [], level:2, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0.5, damage: "inert", events: [
+			{type: "IncreaseManaPool", trigger: "calcMaxStats", power: 10},
+		]},
+		{name: "ManaPoolUp", tags: ["utility"], hideUnlearnable: true, school: "Elements", manacost: 0, components: [], level:2, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0.5, damage: "inert", events: [
 			{type: "IncreaseManaPool", trigger: "calcMaxStats", power: 10},
 		]},
 		{name: "StaffUser3", tags: ["utility"], prerequisite: "StaffUser2", school: "Elements", manacost: 0, components: [], level:3, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
@@ -277,6 +280,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			upcastFrom: "Firebolt", upcastLevel: 2,
 			bulletColor: 0xb83716, bulletLight: 5.5,
 			hitColor: 0xe64539, hitLight: 8,
+			landsfx: "Lightning",
 			type:"bolt", projectileTargeting:true, onhit:"aoe", power: 6, delay: 0, range: 50, aoe: 1.5, size: 3, lifetime:1, damage: "fire", speed: 2, playerEffect: {name: "Damage"},
 			effectTileDurationModTrail: 8, effectTileTrail: {
 				name: "Smoke",

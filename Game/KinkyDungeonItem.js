@@ -117,7 +117,14 @@ function KinkyDungeonItemEvent(Item) {
 	let sfx = "Coins";
 	let name = Item.name;
 	let replace = "";
-	if (Item.name == "Gold") {
+	if (KDCustomItems[name]) {
+		let ret = KDCustomItems[name](Item);
+		if (ret.sfx != undefined) sfx = ret.sfx;
+		if (ret.replace != undefined) replace = ret.replace;
+		if (ret.priority != undefined) priority = ret.priority;
+		if (ret.color != undefined) color = ret.color;
+		if (ret.name != undefined) name = ret.name;
+	} else if (Item.name == "Gold") {
 		color = "yellow";
 		KinkyDungeonAddGold(Item.amount);
 	} else if (Item.name == "Lore") {
@@ -295,3 +302,15 @@ function KinkyDungeonHandleHeart() {
 
 	return true;
 }
+
+let KDCustomItems = {
+	"LeylineMap": () => {
+		KDStartDialog("LeylineMap", "", true, "");
+		return {
+			sfx: undefined,
+			replace: undefined,
+			priority: undefined,
+			color: undefined,
+		};
+	},
+};

@@ -158,7 +158,7 @@ let KDCursedVars = {
 			return KDAddEventVariant(restraint, newRestraintName, [
 				{type: "ItemLight", trigger: "getLights", power: 3.5, color: "#ffff55", inheritLinked: true},
 				{trigger: "tick", type: "sneakBuff", power: -1.0, inheritLinked: true},
-				{trigger: "drawSGTooltip", type: "curseInfo", msg: "Illumination", color: "#ff5555", inheritLinked: true}
+				{trigger: "drawSGTooltip", type: "curseInfo", msg: "Illumination", color: "#ff5555", inheritLinked: true},
 			]);}},
 	"Attraction": {
 		level: 1,

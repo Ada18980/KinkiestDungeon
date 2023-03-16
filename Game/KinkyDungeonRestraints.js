@@ -135,12 +135,11 @@ function KDItemIsMagic(item) {
 // Format: strict group => [list of groups the strictness applies to]
 const KinkyDungeonStrictnessTable = new Map([
 	["ItemHood", ["ItemHead", "ItemEars","ItemMouth","ItemMouth2","ItemMouth3"]],
-	["ItemHead", ["ItemEars"]],
-	["ItemMouth", ["ItemHead", "ItemEars"]],
-	["ItemMouth2", ["ItemHead", "ItemEars"]],
-	["ItemMouth3", ["ItemHead", "ItemEars"]],
+	["ItemHead", ["ItemEars","ItemMouth"]],
+	["ItemMouth", ["ItemMouth"]],
 	["ItemNeck", ["ItemMouth", "ItemArms"]],
 	["ItemArms", ["ItemHands"]],
+	["ItemHands", ["ItemHands"]],
 	["ItemTorso", ["ItemArms", "ItemLegs", "ItemPelvis", "ItemBreast"]],
 	["ItemLegs", ["ItemFeet", "ItemBoots"]],
 	["ItemFeet", ["ItemBoots"]],

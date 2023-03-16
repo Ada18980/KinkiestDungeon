@@ -1338,7 +1338,6 @@ interface spell {
 	aoetype?: string,
 	aoetypetrail?: string,
 	secondaryhit?: string,
-	hideUnlearned?: boolean,
 	upcastFrom?: string,
 	upcastLevel?: number,
 	hitColor?: number;
