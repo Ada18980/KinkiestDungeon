@@ -535,7 +535,7 @@ KDStatFreeHands,"Your hands are unobstructed."
 KDStatFreeArms,"Your arms are free to move as you please."
 KDStatFreeLegs,"Your legs are free and unimpeded."
 KDStatGag,"You are gagged! Verbal miscast chance is increased and your potions are less effective!"
-KDStatGagFull,"Your mouth is totally filled! You can't drink potions and have a high verbal miscast chance!"
+KDStatGagFull,"Your mouth is totally filled! You can't drink potions and cant cast verbal spells!"
 
 KinkyDungeonBuffEmpower,"Spell Empowerment!"
 
