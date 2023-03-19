@@ -1207,8 +1207,8 @@ function KinkyDungeonDrawGame() {
 			let mods = StandalonePatched ? [
 				{
 					Layer: "Head",
-					scale_x: 3,
-					scale_y: 3,
+					scale_x: 2.5,
+					scale_y: 2.5,
 					rotation_x_anchor: 1190/MODELWIDTH,
 					rotation_y_anchor: 690/MODELHEIGHT,
 					offset_x: 1100/MODELWIDTH,

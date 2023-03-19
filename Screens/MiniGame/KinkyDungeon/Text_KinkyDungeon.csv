@@ -616,7 +616,7 @@ KinkyDungeonLog,Log
 
 KinkyDungeonDressPlayer,"Change Outfit"
 KinkyDungeonDressPlayerReset,"Reset Outfit"
-KinkyDungeonDressPlayerImport,"Code"
+KinkyDungeonDressPlayerImport,"Load from Code"
 KinkyDungeonConfirm,Confirm Reset?
 
 KinkyDungeonSaveIntro0,"(Copy the code above and save it on your computer to load later)"
@@ -9867,3 +9867,10 @@ KDPunishAttack,Your attack sets off your [RESTRAINTNAME]
 
 KDHarnessGagRemoveBlindfold,The straps on your gag prevent you from loosening the blindfold!
 KDHarnessGagStruggleBlindfold,The straps on your gag keep your blindfold securely in place!
+
+KDWardrobeCancel,Revert Changes
+KDWardrobeCancelConfirm,Confirm Revert?
+KDWardrobeSaveOutfit,Save Changes
+KDWardrobeSaveOutfitConfirm,Save Changes?
+KDWardrobeSave,Confirm Changes
+KDWardrobeBackToWardrobe,Back to Wardrobe

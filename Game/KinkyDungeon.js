@@ -958,9 +958,36 @@ function KinkyDungeonRun() {
 		}
 
 
-		DrawButtonVis(25, 942, 325, 50, TextGet("KinkyDungeonDressPlayer"), "#ffffff", "");
-		DrawButtonVis(360, 942, 220, 50, TextGet((KinkyDungeonReplaceConfirm > 0 ) ? "KinkyDungeonConfirm" : "KinkyDungeonDressPlayerReset"), "#ffffff", "");
-		DrawButtonVis(590, 942, 150, 50, TextGet("KinkyDungeonDressPlayerImport"), "#ffffff", "");
+		DrawButtonKDEx("GoToWardrobe", (bdata) => {
+			KinkyDungeonState = "Wardrobe";
+			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance"));
+			if (appearance) {
+				CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
+				CharacterRefresh(KinkyDungeonPlayer);
+			}
+			//}
+			// @ts-ignore
+			KinkyDungeonPlayer.OnlineSharedSettings = {AllowFullWardrobeAccess: true};
+			KinkyDungeonNewDress = true;
+			if (ServerURL == "foobar" && !StandalonePatched) {
+				// Give all of the items
+				for (let A = 0; A < Asset.length; A++)
+					if ((Asset[A] != null) && (Asset[A].Group != null) && !InventoryAvailable(Player, Asset[A].Name, Asset[A].Group.Name))
+						InventoryAdd(Player, Asset[A].Name, Asset[A].Group.Name);
+			}
+			CharacterReleaseTotal(KinkyDungeonPlayer);
+			KinkyDungeonCheckClothesLoss = true;
+			KinkyDungeonDressPlayer();
+			// @ts-ignore
+			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: false, AllowFullWardrobeAccess: true};
+			if (!StandalonePatched)
+				// @ts-ignore
+				CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
+			KinkyDungeonConfigAppearance = true;
+			return true;
+		}, true, 25, 942, 450, 50, TextGet("KinkyDungeonDressPlayer"), "#ffffff", "");
+
+
 		DrawButtonVis(1850, 942, 135, 50, TextGet("KinkyDungeonCredits"), "#ffffff", "");
 		DrawButtonVis(1700, 942, 135, 50, TextGet("KinkyDungeonPatrons"), "#ffffff", "");
 		DrawButtonKDEx("Deviantart", (bdata) => {
@@ -1006,7 +1033,7 @@ function KinkyDungeonRun() {
 		ElementPosition("saveInputField", 1250, 550, 1000, 230);
 	} else if (KinkyDungeonState == "LoadOutfit") {
 		DrawButtonVis(875, 750, 350, 64, TextGet("LoadOutfit"), "#ffffff", "");
-		DrawButtonVis(1275, 750, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		DrawButtonVis(1275, 750, 350, 64, TextGet("KDWardrobeBackToWardrobe"), "#ffffff", "");
 
 		let newValue = ElementValue("saveInputField");
 		if (newValue != KDOldValue) {
@@ -1211,6 +1238,8 @@ function KinkyDungeonRun() {
 		}
 
 
+	} else if (KinkyDungeonState == "Wardrobe") {
+		KDDrawWardrobe("menu");
 	} else if (KinkyDungeonState == "Stats") {
 
 		let tooltip = KinkyDungeonDrawPerks(false);
@@ -1919,7 +1948,6 @@ function KinkyDungeonLoadStats() {
 	}
 }
 
-let KinkyDungeonReplaceConfirm = 0;
 let KinkyDungeonGameFlag = false;
 
 let KDDefaultJourney = ["grv", "cat", "jng", "tmp", "bel"];
@@ -2191,37 +2219,14 @@ function KinkyDungeonHandleClick() {
 		}
 	} else if (KinkyDungeonState == "LoadOutfit"){
 		if (MouseIn(875, 750, 350, 64)) {
-			// Save outfit
-			let appearance = LZString.decompressFromBase64(ElementValue("saveInputField"));
-			let origAppearance = KinkyDungeonPlayer.Appearance;
-			if (appearance) {
-				try {
-					CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
-					CharacterRefresh(KinkyDungeonPlayer);
-				} catch (e) {
-					// If we fail, it might be a BCX code. try it!
-					KinkyDungeonPlayer.Appearance = origAppearance;
-				}
-				KDInitProtectedGroups();
-				localStorage.setItem("kinkydungeonappearance", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
-
-				KinkyDungeonDressSet();
-			}
+			KDSaveCodeOutfit();
 			// Return to menu
-			KinkyDungeonState = "Menu";
-			KinkyDungeonNewDress = true;
+			KinkyDungeonState = "Wardrobe";
 			ElementRemove("saveInputField");
 			return true;
 		} else if (MouseIn(1275, 750, 350, 64)) {
-			// Restore the original outfit
-			if (KDOriginalValue) {
-				CharacterAppearanceRestore(KinkyDungeonPlayer, LZString.decompressFromBase64(KDOriginalValue));
-				CharacterRefresh(KinkyDungeonPlayer);
-				KDInitProtectedGroups();
-			}
-
-
-			KinkyDungeonState = "Menu";
+			KDRestoreOutfit();
+			KinkyDungeonState = "Wardrobe";
 			ElementRemove("saveInputField");
 			return true;
 		}
@@ -2270,57 +2275,7 @@ function KinkyDungeonHandleClick() {
 		}
 
 
-		if (MouseIn(590, 930, 150, 64)) {
-			KinkyDungeonState = "LoadOutfit";
-
-			KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
-			CharacterReleaseTotal(KinkyDungeonPlayer);
-			ElementCreateTextArea("saveInputField");
-			ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
-			return true;
-		} else if (MouseIn(25, 942, 325, 50)) {
-			//if (KinkyDungeonState == "Lose") {
-			KinkyDungeonState = "Menu";
-			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance"));
-			if (appearance) {
-				CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
-				CharacterRefresh(KinkyDungeonPlayer);
-			}
-			//}
-			// @ts-ignore
-			KinkyDungeonPlayer.OnlineSharedSettings = {AllowFullWardrobeAccess: true};
-			KinkyDungeonNewDress = true;
-			if (ServerURL == "foobar" && !StandalonePatched) {
-				// Give all of the items
-				for (let A = 0; A < Asset.length; A++)
-					if ((Asset[A] != null) && (Asset[A].Group != null) && !InventoryAvailable(Player, Asset[A].Name, Asset[A].Group.Name))
-						InventoryAdd(Player, Asset[A].Name, Asset[A].Group.Name);
-			}
-			CharacterReleaseTotal(KinkyDungeonPlayer);
-			KinkyDungeonCheckClothesLoss = true;
-			KinkyDungeonDressPlayer();
-			// @ts-ignore
-			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: false, AllowFullWardrobeAccess: true};
-			if (!StandalonePatched)
-				// @ts-ignore
-				CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
-			KinkyDungeonConfigAppearance = true;
-			return true;
-		} else if (MouseIn(360, 930, 220, 64)) {
-			if (KinkyDungeonReplaceConfirm > 0) {
-				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
-				CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
-				CharacterReleaseTotal(KinkyDungeonPlayer);
-				KinkyDungeonSetDress("Default", "Default");
-				KinkyDungeonDressPlayer();
-				KDInitProtectedGroups();
-				KinkyDungeonConfigAppearance = true;
-				return true;
-			} else {
-				KinkyDungeonReplaceConfirm = 2;
-				return true;
-			}
-		} else if (MouseIn(1850, 930, 135, 64)) {
+		if (MouseIn(1850, 930, 135, 64)) {
 			KinkyDungeonState = "Credits";
 			return true;
 		}
@@ -2400,9 +2355,9 @@ function KinkyDungeonHandleClick() {
  */
 function KinkyDungeonClick() {
 	if (KinkyDungeonHandleClick()) {
-		if (KinkyDungeonReplaceConfirm > 0) KinkyDungeonReplaceConfirm -= 1;
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
 	}
+	if (KinkyDungeonReplaceConfirm > 0) KinkyDungeonReplaceConfirm -= 1;
 }
 
 /**

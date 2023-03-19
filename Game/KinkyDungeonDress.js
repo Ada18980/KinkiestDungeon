@@ -90,7 +90,7 @@ function KinkyDungeonDressSet() {
 					KDGetDressList().Default.push({
 						Item: C.Appearance[A].Model?.Name || C.Appearance[A].Asset?.Name,
 						Group: C.Appearance[A].Model?.Group,
-					    Property: C.Appearance[A].Property,
+						Property: C.Appearance[A].Property,
 						Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Model.DefaultColor ? C.Appearance[A].Model.DefaultColor : "Default"),
 						Lost: false,
 					},);
@@ -103,7 +103,7 @@ function KinkyDungeonDressSet() {
 					KDGetDressList().Default.push({
 						Item: C.Appearance[A].Asset.Name,
 						Group: C.Appearance[A].Asset.Group.Name,
-					    Property: C.Appearance[A].Property,
+						Property: C.Appearance[A].Property,
 						Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Asset.DefaultColor ? C.Appearance[A].Asset.DefaultColor : "Default"),
 						Lost: false,
 					},);
