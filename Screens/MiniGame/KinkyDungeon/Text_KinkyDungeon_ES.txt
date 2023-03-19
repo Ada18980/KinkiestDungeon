@@ -832,7 +832,7 @@ Your legs are free and unimpeded.
 Tus piernas están libres y sin obstáculos.
 You are gagged! Verbal miscast chance is increased and your potions are less effective!
 ¡Estás amordazado! ¡La probabilidad de lanzamiento erróneo verbal aumenta y tus pociones son menos efectivas!
-Your mouth is totally filled! You can't drink potions and have a high verbal miscast chance!
+Your mouth is totally filled! You can't drink potions and cant cast verbal spells!
 ¡Tu boca está totalmente llena! ¡No puedes beber pociones y tienes una alta probabilidad de error verbal!
 Spell Empowerment!
 ¡Empoderamiento de hechizos!

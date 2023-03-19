@@ -812,7 +812,7 @@ Your legs are free and unimpeded.
 あなたの足は自由で妨げられていません。
 You are gagged! Verbal miscast chance is increased and your potions are less effective!
 あなたは猿轡かませられました! 言葉のミスキャストの可能性が増加し、ポーションの効果が低下します!
-Your mouth is totally filled! You can't drink potions and have a high verbal miscast chance!
+Your mouth is totally filled! You can't drink potions and cant cast verbal spells!
 お口いっぱいですよ！ ポーションも飲めないし、ミスキャスト率も高いですよ！
 Spell Empowerment!
 魔法強化！

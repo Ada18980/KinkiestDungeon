@@ -4169,7 +4169,7 @@ let KDKeyCheckers = {
 							}
 						}
 					}
-					return false;
+					return true;
 				}
 			}
 		}

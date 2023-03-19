@@ -763,18 +763,18 @@ Feet
 Feet
 Everywhere!
 Everywhere!
-Physical Armor: 
-Physical Armor: 
-Magic Armor: 
-Magic Armor: 
+Physical Armor:
+Physical Armor:
+Magic Armor:
+Magic Armor:
 In the Shadows: You are harder to see.
 In the Shadows: You are harder to see.
 Invisible: You are very difficult to see.
 Invisible: You are very difficult to see.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 Quickness: Your next movement is so fast it doesn't advance a turn.
-All Damage Reduction: 
-All Damage Reduction: 
+All Damage Reduction:
+All Damage Reduction:
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 You deal PERCENT more DAMAGETYPE damage.
@@ -829,8 +829,8 @@ Your legs are free and unimpeded.
 Your legs are free and unimpeded.
 You are gagged! Verbal miscast chance is increased and your potions are less effective!
 You are gagged! Verbal miscast chance is increased and your potions are less effective!
-Your mouth is totally filled! You can't drink potions and have a high verbal miscast chance!
-Your mouth is totally filled! You can't drink potions and have a high verbal miscast chance!
+Your mouth is totally filled! You can't drink potions and cant cast verbal spells!
+Your mouth is totally filled! You can't drink potions and cant cast verbal spells!
 Spell Empowerment!
 Spell Empowerment!
 Let there be light!
@@ -1017,8 +1017,8 @@ You haven't found the keys for this floor yet.
 You haven't found the keys for this floor yet.
 Missing key
 Missing key
-Chance for a spell to fizzle: 
-Chance for a spell to fizzle: 
+Chance for a spell to fizzle:
+Chance for a spell to fizzle:
 Dodge Chance: Percent%, based on EVASIONSUM Evasion, -EVASIONPENALTY penalty from bindings
 Dodge Chance: Percent%, based on EVASIONSUM Evasion, -EVASIONPENALTY penalty from bindings
 Chance to block a level 10 restraint: Percent%
@@ -1167,8 +1167,8 @@ Delete Mod
 Delete Mod
 Clear Perks
 Clear Perks
-Config 
-Config 
+Config
+Config
 Cancel
 Cancel
 Filter
@@ -1255,16 +1255,16 @@ Floor FLOORNUMBER: DUNGEONNAME
 Floor FLOORNUMBER: DUNGEONNAME
 
 
-Lockpicks: 
-Lockpicks: 
-Keys: 
-Keys: 
-Magic Keys: 
-Magic Keys: 
-Knife: 
-Knife: 
-Mag. Knife: 
-Mag. Knife: 
+Lockpicks:
+Lockpicks:
+Keys:
+Keys:
+Magic Keys:
+Magic Keys:
+Knife:
+Knife:
+Mag. Knife:
+Mag. Knife:
 You climb down to the next level
 You climb down to the next level
 You can't climb down until you get out of this leash...
@@ -1411,8 +1411,8 @@ You find a snow-like potion that's cold to the touch.
 You find a snow-like potion that's cold to the touch.
 You find a medley of potions.
 You find a medley of potions.
-Rarity: 
-Rarity: 
+Rarity:
+Rarity:
 Lesser
 Lesser
 Common
@@ -2081,8 +2081,8 @@ Dreamcatcher
 Dreamcatcher
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
-Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
-Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
+Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 Axe
 Axe
 Great for cutting trees that happen to be underground.
@@ -2093,8 +2093,8 @@ Knife
 Knife
 Unarmed
 Unarmed
-Accuracy: 
-Accuracy: 
+Accuracy:
+Accuracy:
 Find the keys..
 Find the keys..
 Find the exit!
@@ -2111,10 +2111,10 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 You found a crack and could maybe wedge a knife or tool into it to keep it still.
 You found something sticky and might be able to pull off fabrics.
 You found something sticky and might be able to pull off fabrics.
-Evasion: 
-Evasion: 
-Visibility: 
-Visibility: 
+Evasion:
+Evasion:
+Visibility:
+Visibility:
 Submissive: Enemies won't attack you, but they will try to play with you.
 Submissive: Enemies won't attack you, but they will try to play with you.
 On the Run! Enemies are hostile.
@@ -2151,12 +2151,12 @@ Edged!
 Edged!
 Satisfied~
 Satisfied~
-Damage: 
-Damage: 
-Accuracy: 
-Accuracy: 
-SP Cost: 
-SP Cost: 
+Damage:
+Damage:
+Accuracy:
+Accuracy:
+SP Cost:
+SP Cost:
 It appears to be a receptacle
 It appears to be a receptacle
 Place live crystal
@@ -4441,8 +4441,8 @@ Non-Lockable
 Non-Lockable
 Unlocked
 Unlocked
-Lock Type: 
-Lock Type: 
+Lock Type:
+Lock Type:
 Red
 Red
 Red
@@ -4623,10 +4623,10 @@ Shrine of SHRINETYPE
 Shrine of SHRINETYPE
 Teachings of SHRINETYPE
 Teachings of SHRINETYPE
-Goddess Blessing: 
-Goddess Blessing: 
-Goddess Curse: 
-Goddess Curse: 
+Goddess Blessing:
+Goddess Blessing:
+Goddess Curse:
+Goddess Curse:
 Curses
 Curses
 Willpower
@@ -4639,10 +4639,10 @@ You read the runes and they imbue you with power!
 You read the runes and they imbue you with power!
 You try to read the runes but cannot understand them.
 You try to read the runes but cannot understand them.
-Allies: 
-Allies: 
-Enemies: 
-Enemies: 
+Allies:
+Allies:
+Enemies:
+Enemies:
 Nevermere Trainers
 Nevermere Trainers
 DressUp Co.
@@ -5127,8 +5127,8 @@ Press RIGHT to confirm buy!
 
 
 
-You find 
-You find 
+You find
+You find
 Collar
 Collar
 A classy leather collar.
@@ -7403,8 +7403,8 @@ A book about conjuration
 A book about conjuration
 A book of manipulative spells
 A book of manipulative spells
-Components: 
-Components: 
+Components:
+Components:
 Verbal
 Verbal
 Arm Movements
@@ -9585,8 +9585,8 @@ You need more spell points.
 You need more spell points.
 You don't have enough maximum mana to cast this spell!
 You don't have enough maximum mana to cast this spell!
-School: 
-School: 
+School:
+School:
 Elements
 Elements
 Conjuration
@@ -9597,14 +9597,14 @@ Generic
 Generic
 Learn Spell
 Learn Spell
-Spell Points: 
-Spell Points: 
-Level: 
-Level: 
-Spell Point Cost: 
-Spell Point Cost: 
- Mana Cost: 
- Mana Cost: 
+Spell Points:
+Spell Points:
+Level:
+Level:
+Spell Point Cost:
+Spell Point Cost:
+ Mana Cost:
+ Mana Cost:
 
 
 Remove Spell 1
@@ -9635,20 +9635,20 @@ Replace Spell 6
 Replace Spell 6
 Replace Spell 7
 Replace Spell 7
- Current Spell 1: 
- Current Spell 1: 
- Current Spell 2: 
- Current Spell 2: 
- Current Spell 3: 
- Current Spell 3: 
- Current Spell 4: 
- Current Spell 4: 
- Current Spell 5: 
- Current Spell 5: 
- Current Spell 6: 
- Current Spell 6: 
- Current Spell 7: 
- Current Spell 7: 
+ Current Spell 1:
+ Current Spell 1:
+ Current Spell 2:
+ Current Spell 2:
+ Current Spell 3:
+ Current Spell 3:
+ Current Spell 4:
+ Current Spell 4:
+ Current Spell 5:
+ Current Spell 5:
+ Current Spell 6:
+ Current Spell 6:
+ Current Spell 7:
+ Current Spell 7:
 ???
 ???
 Unfiled
@@ -10243,8 +10243,8 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 For 3 rep the goddess will grant you a key.
 For 3 rep the goddess will grant you a key.
-For 3 rep the goddess will grant you 
-For 3 rep the goddess will grant you 
+For 3 rep the goddess will grant you
+For 3 rep the goddess will grant you
 For 3 rep the goddess
 For 3 rep the goddess
 For 3 rep the goddess
@@ -10253,8 +10253,8 @@ For 3 rep the goddess
 For 3 rep the goddess
 For 3 rep the goddess
 For 3 rep the goddess
-For 3 rep the goddess 
-For 3 rep the goddess 
+For 3 rep the goddess
+For 3 rep the goddess
 The goddess will fully restore your mana in exchange for AMOUNT rep
 The goddess will fully restore your mana in exchange for AMOUNT rep
 The goddess will enjoy seeing you struggle in her bonds (raises submissiveness)
@@ -10557,10 +10557,10 @@ Can disarm (chance: DISARMCHANCE%)
 Can disarm (chance: DISARMCHANCE%)
 Resistances:
 Resistances:
-HP: 
-HP: 
-Binding: 
-Binding: 
+HP:
+HP:
+Binding:
+Binding:
 Ambivalent
 Ambivalent
 Likes you
@@ -14589,8 +14589,8 @@ What? (PERCENT chance to avoid)
 (The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
-(The SPEAKER tilts her head and shrugs)|Ah well. 
-(The SPEAKER tilts her head and shrugs)|Ah well. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
+(The SPEAKER tilts her head and shrugs)|Ah well.
 (The SPEAKER nods)|Fair enough.
 (The SPEAKER nods)|Fair enough.
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
@@ -14633,8 +14633,8 @@ What are you going to do about it? (PERCENT chance to avoid)
 (The SPEAKER clears her throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us.
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
-(The SPEAKER tilts her head and shrugs)|Ah well. 
-(The SPEAKER tilts her head and shrugs)|Ah well. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
+(The SPEAKER tilts her head and shrugs)|Ah well.
 (The SPEAKER nods)|Fair enough.
 (The SPEAKER nods)|Fair enough.
 (The SPEAKER frowns)|Criminals? Girl, we ARE the law around these parts~
@@ -15805,8 +15805,8 @@ Upcast Level LEVEL
 Upcast Level LEVEL
 Prerequisite
 Prerequisite
-Unlocks: 
-Unlocks: 
+Unlocks:
+Unlocks:
 You need to learn REQUIREDSPELL before you can learn this one.
 You need to learn REQUIREDSPELL before you can learn this one.
 You no longer have the will to struggle.
@@ -15845,8 +15845,8 @@ Initiating prisoner lockdown protocol
 Initiating prisoner lockdown protocol
 Your RestraintName suddenly snap together as the EnemyName activates them
 Your RestraintName suddenly snap together as the EnemyName activates them
-Turn Count: 
-Turn Count: 
+Turn Count:
+Turn Count:
 The Shopkeeper leashes you!
 The Shopkeeper leashes you!
 You are brought into the Shopkeeper's establishment...
