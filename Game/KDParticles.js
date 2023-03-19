@@ -64,6 +64,8 @@ function KDUpdateParticles(delta) {
 
 		sprite.anchor.set(0.5);
 
+		if (info.rotation && !sprite.rotation) sprite.rotation = info.rotation;
+
 		if (info.vy) {sprite.position.y += info.vy * delta;}
 		if (info.vx) {sprite.position.x += info.vx * delta;}
 
@@ -92,6 +94,7 @@ function KDRemoveParticle(id) {
 }
 
 let lastArousalParticle = 0;
+let lastVibeParticle = 0;
 
 /**
  * Draws arousal heart particles
@@ -109,6 +112,59 @@ function KDDrawArousalParticles(pinkChance, density, purpleChance) {
 		lastArousalParticle = CommonTime();
 	}
 
+}
+
+function KDDrawVibeParticles(density) {
+
+	let arousalRate = 100 / density;
+	if (KinkyDungeonVibeLevel > 0 && CommonTime() > lastVibeParticle + 0.03 * arousalRate * (2/(2 + KinkyDungeonVibeLevel))) {
+		KDCreateVibeParticle();
+
+		lastVibeParticle = CommonTime();
+	}
+}
+
+/**
+ *
+ */
+function KDCreateVibeParticle() {
+	let lifetime = 500 + Math.random() * 250;
+	let x = 250;
+	let y = 520 + (KinkyDungeonPlayer.Pose.includes("Hogtied") ? 165 : (KinkyDungeonPlayer.IsKneeling() ? 78 : 0));
+	let locations = KDSumVibeLocations();
+	let vx = ((Math.random() > 0.5) ? -1 : 1) * 0.25;
+	let vy = -.15 + Math.random() * .3;
+	let breast = locations.includes("ItemBreast") || locations.includes("ItemNipples");
+	let cli = (locations.includes("ItemVulvaPiercings") || locations.includes("ItemPelvis"));
+	if (breast || cli) {
+		if (cli && (locations.length == 1 || Math.random() < 0.25)) {
+			vy = 0.25 + Math.random()*0.1;
+			vx = -.05 + Math.random() * .1;
+		}
+		else if (breast && !KinkyDungeonPlayer.Pose.includes("Hogtied") && (locations.length == 1 || Math.random() < 0.5)) y -= 155;
+
+	}
+
+	if (KinkyDungeonPlayer.HeightRatio) y += (100) * (1 - KinkyDungeonPlayer.HeightRatio);
+	if (KinkyDungeonPlayer.HeightModifier) y -= KinkyDungeonPlayer.HeightModifier;
+
+	KDAddParticle(
+		x,
+		y,
+		KinkyDungeonRootDirectory + `Particles/VibeHeart.png`,
+		undefined, {
+			time: 0,
+			lifetime: lifetime,
+			vx: vx,
+			vy: vy,
+			zIndex: 60,
+			sin_x: .04,
+			sin_x_spread: .01,
+			sin_period: 1.4,
+			phase: 6 * Math.random(),
+			fadeEase: "invcos",
+			rotation: Math.atan2(vy, vx),
+		});
 }
 
 /**

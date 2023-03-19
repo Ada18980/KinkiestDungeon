@@ -342,7 +342,9 @@ function KinkyDungeonDrawInputs() {
 		statsDraw.b_speed = {text: TextGet("KDStatStun"), category: "status", icon: "boundStun", color: "#ff5555", bgcolor: "#333333", priority: 9};
 	} else if (KinkyDungeonSlowLevel > 9) {
 		statsDraw.b_speed = {text: TextGet("KDStatSpeedImmobile"), category: "status", icon: "boundImmobile", color: "#ff5555", bgcolor: "#333333", priority: 9};
-	} else if (KinkyDungeonSlowLevel > 2) {
+	} else if (KinkyDungeonSlowLevel > 3) {
+		statsDraw.b_speed = {text: TextGet("KDStatSpeedNoSprint"), category: "status", icon: "boundSlow4", color: "#ff5555", bgcolor: "#333333", priority: 9};
+	}  else if (KinkyDungeonSlowLevel > 2) {
 		statsDraw.b_speed = {text: TextGet("KDStatSpeedVerySlow"), category: "status", icon: "boundSlow3", color: "#ff5555", bgcolor: "#333333", priority: 9};
 	} else if (KinkyDungeonSlowLevel == 2) {
 		statsDraw.b_speed = {text: TextGet("KDStatSpeedSlow"), category: "status", icon: "boundSlow2", color: "#ff5555", bgcolor: "#333333", priority: 9};
@@ -668,6 +670,7 @@ function KinkyDungeonDrawInputs() {
 					surfaceItems: surfaceItems,
 					dynamicList: dynamicList,
 					item: item,
+					group: sg.group,
 					extraLines: [],
 					extraLineColor: [],
 				};
@@ -1451,7 +1454,7 @@ function KinkyDungeonRangedAttack() {
 	if (!KinkyDungeonPlayerDamage.special) return;
 	if (KinkyDungeonPlayerDamage.special.type) {
 		if (KinkyDungeonPlayerDamage.special.type == "hitorspell") {
-			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttackOrSpell", noMiscast: true,
+			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttackOrSpell", noMiscast: true, manacost: 0,
 				onhit:"", time:25, power: 0, range: KinkyDungeonPlayerDamage.special.range ? KinkyDungeonPlayerDamage.special.range : 1.5, size: 1, damage: ""};
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
 			KDModalArea = false;
@@ -1459,7 +1462,7 @@ function KinkyDungeonRangedAttack() {
 			KinkyDungeonTargetTileLocation = null;
 			return true;
 		} else if (KinkyDungeonPlayerDamage.special.type == "attack") {
-			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttack", noMiscast: true,
+			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttack", noMiscast: true, manacost: 0,
 				onhit:"", time:25, power: 0, range: KinkyDungeonPlayerDamage.special.range ? KinkyDungeonPlayerDamage.special.range : 1.5, size: 1, damage: ""};
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
 			KDModalArea = false;

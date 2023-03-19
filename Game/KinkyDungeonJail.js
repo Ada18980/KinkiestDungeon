@@ -623,6 +623,17 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 				KDMovePlayer(point.x, point.y, false);
 			}
 		}
+
+		if (KinkyDungeonJailGuard()?.KinkyDungeonJailTourInfractions < 1) {
+			let item = "CookieJailer";
+			KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerReleaseGoodGirl").replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#ffff00", 4, 9);
+			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonJailerReleaseGoodGirlMsg")
+				.replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name))
+				.replace("ItemName", TextGet("KinkyDungeonInventoryItem" + item)),
+			"#88ff88", 1);
+			KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable(item), 1);
+		}
+
 		let enemy = KinkyDungeonEnemyAt(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (enemy) enemy.x += 1;
 		KinkyDungeonJailGuard().CurrentAction = "jailWander";
@@ -678,7 +689,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 					let index = "0";
 					if (KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions < 1) {
 						index = "" + Math.floor(KDRandom() * 6);
-						KinkyDungeonChangeRep("Ghost", 8);
+						//KinkyDungeonChangeRep("Ghost", 8);
 					}
 					KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#ffff00", 4, 9);
 				}
@@ -721,7 +732,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 					}
 					let enemy = KinkyDungeonEnemyAt(guardPath[0].x, guardPath[0].y);
 					if (enemy) {
-						KDMoveEntity(enemy, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, true);
+						KDMoveEntity(enemy, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, true, undefined, undefined, true);
 						KinkyDungeonJailGuard().x = guardPath[0].x;
 						KinkyDungeonJailGuard().y = guardPath[0].y;
 					}
@@ -789,7 +800,7 @@ function KinkyDungeonJailGetLeashPoint(xx, yy, enemy) {
  * @returns {boolean} - Returns if the player is inside the nearest jail cell
  */
 function KinkyDungeonPlayerInCell(any, qualified, filter) {
-	if (!filter && !qualified && KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.Jail) {
+	if (!filter && KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.Jail) {
 		return true;
 	}
 	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, filter, any, qualified);
@@ -832,6 +843,7 @@ function KinkyDungeonPassOut(noteleport) {
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
 
 	KDGameData.JailKey = false;
+	KDResetAllAggro();
 	KinkyDungeonSaveGame();
 
 	//if (KinkyDungeonMapGet(nearestJail.x, nearestJail.y) != "B") {
@@ -889,9 +901,10 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 
 	if (!willing) {
 		let defeat_outfit = "DollSuit";
+		if (KinkyDungeonPlayerTags.has("Cyber")) defeat_outfit = "CyberDoll";
 		if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
 
-		KinkyDungeonSetDress(defeat_outfit, "DollSuit");
+		KinkyDungeonSetDress(defeat_outfit, defeat_outfit);
 	}
 
 	KinkyDungeonDressPlayer();
@@ -902,6 +915,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	KDMovePlayer(Math.floor(KinkyDungeonGridWidth/2), Math.floor(KinkyDungeonGridHeight/2), false);
 
 	KinkyDungeonLoseJailKeys();
+	KDResetAllAggro();
 
 	KinkyDungeonSaveGame();
 }
@@ -1040,6 +1054,7 @@ function KinkyDungeonDefeat(PutInJail) {
 		}
 
 	KDKickEnemies(nearestJail);
+	KDResetAllAggro();
 }
 
 /**
@@ -1085,6 +1100,12 @@ function KDResetAllIntents() {
 	for (let e of  KinkyDungeonEntities) {
 		if (e.IntentAction && !KDIntentEvents[e.IntentAction].noMassReset)
 			KDResetIntent(e);
+	}
+}
+function KDResetAllAggro() {
+	for (let e of KinkyDungeonEntities) {
+		if (e.hostile && !KDIntentEvents[e.IntentAction]?.noMassReset)
+			e.hostile = 0;
 	}
 }
 

@@ -101,7 +101,7 @@ async function KDExportTranslationFile() {
 	let file = "";
 	for (let c of Object.values(TextScreenCache.cache)) {
 		file = file + '\n' + c;
-		//file = file + '\n' + c;
+		file = file + '\n';
 	}
 	navigator.clipboard.writeText(file);
 }

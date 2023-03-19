@@ -129,6 +129,7 @@ let KinkyDungeonNextDataLastTimeReceived = 0;
 let KinkyDungeonNextDataLastTimeReceivedTimeout = 15000; // Clear data if more than 15 seconds of no data received
 
 let KinkyDungeonLastMoveDirection = null;
+/** @type {spell} */
 let KinkyDungeonTargetingSpell = null;
 
 /**
@@ -140,7 +141,7 @@ let KinkyDungeonTargetingSpellWeapon = null;
 /**
  * Game stops when you reach this level
  */
-let KinkyDungeonMaxLevel = 20;
+let KinkyDungeonMaxLevel = 21;
 
 let KinkyDungeonLastMoveTimer = 0;
 let KinkyDungeonLastMoveTimerStart = 0;
@@ -816,7 +817,9 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		// Place the jail keys AFTER making the map!
 		KinkyDungeonLoseJailKeys(false, bossRules); // if (!KDGameData.JailKey || (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail') || boss)
 
-		if (KDTileToTest || (KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)) iterations = 100000;
+		if (KDTileToTest || (KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)
+			&& KinkyDungeonFindPath(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy,
+				false, false, false, undefined, false).length > 0) iterations = 100000;
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 
 		if (iterations == 100000) {
@@ -831,10 +834,12 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 			KinkyDungeonSendEvent("postQuest", {});
 
 			for (let e of KinkyDungeonGetAllies()) {
-				KDMoveEntity(e, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false);
+				KDMoveEntity(e, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false,undefined, undefined, true);
 				e.visual_x = KinkyDungeonStartPosition.x;
 				e.visual_y = KinkyDungeonStartPosition.y;
 			}
+
+			KinkyDungeonAdvanceTime(0);
 		}
 	}
 
@@ -939,7 +944,7 @@ function KinkyDungeonGetAllies() {
 	let temp = [];
 	for (let e of KinkyDungeonEntities) {
 		if (e.Enemy && e.Enemy.keepLevel) {
-			KDMoveEntity(e, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false);
+			KDMoveEntity(e, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false,undefined, undefined, true);
 			e.visual_x = KinkyDungeonStartPosition.x;
 			e.visual_y = KinkyDungeonStartPosition.y;
 			temp.push(e);
@@ -2277,6 +2282,10 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 					Power: t.Power,
 					OffLimits: tile?.OffLimits,
 				});
+				if (KDRandom() < 0.05) {
+					let dropped = {x:trap.x, y:trap.y, name: "Gold", amount: 1};
+					KinkyDungeonGroundItems.push(dropped);
+				}
 				let spell = t.Spell ? KinkyDungeonFindSpell(t.Spell, true) : "";
 				if (spell && !spell.nonmagical) {
 					KDCreateEffectTile(trap.x, trap.y, {
@@ -3475,11 +3484,26 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 	let moveY = moveDirection.y + KinkyDungeonPlayerEntity.y;
 	let moved = false;
 	let Enemy = KinkyDungeonEnemyAt(moveX, moveY);
+	let passThroughSprint = false;
+	let nextPosX = moveX*2-KinkyDungeonPlayerEntity.x;
+	let nextPosY = moveY*2-KinkyDungeonPlayerEntity.y;
+	let nextTile = KinkyDungeonMapGet(nextPosX, nextPosY);
+	if (KinkyDungeonMovableTilesEnemy.includes(nextTile) && KinkyDungeonNoEnemy(nextPosX, nextPosY) && KinkyDungeonToggleAutoSprint) {
+		let data = {
+			canSprint: KDCanSprint(),
+			passThru: false,
+			nextPosx: moveX,
+			nextPosy: moveY,
+		};
+		KinkyDungeonSendEvent("canSprint", data);
+		if (data.canSprint && data.passThru) {
+			passThroughSprint = true;
+		}
+	}
+
 	let allowPass = Enemy
-		&& !KDIsImmobile(Enemy)
-		&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
-		&& (KinkyDungeonToggleAutoPass || KDEnemyHasFlag(Enemy, "passthrough") || (KinkyDungeonFlags.has("Passthrough")) || Enemy.Enemy.noblockplayer);
-	if (Enemy && !allowPass) {
+		&& KDCanPassEnemy(KinkyDungeonPlayerEntity, Enemy);
+	if (Enemy && !allowPass && !passThroughSprint) {
 		if (AllowInteract) {
 			KDDelayedActionPrune(["Action", "Attack"]);
 			KinkyDungeonLaunchAttack(Enemy);
@@ -3487,7 +3511,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 	} else {
 		let MovableTiles = KinkyDungeonGetMovable();
 		let moveObject = KinkyDungeonMapGet(moveX, moveY);
-		if (MovableTiles.includes(moveObject) && (KinkyDungeonNoEnemy(moveX, moveY) || (Enemy && Enemy.allied) || allowPass)) { // If the player can move to an empy space or a door
+		if (MovableTiles.includes(moveObject) && (passThroughSprint || KinkyDungeonNoEnemy(moveX, moveY) || (Enemy && Enemy.allied) || allowPass)) { // If the player can move to an empy space or a door
 			KDGameData.ConfirmAttack = false;
 			let quick = false;
 
@@ -3544,7 +3568,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 
 						if (KinkyDungeonMovePoints >= 1) {// Math.max(1, KinkyDungeonSlowLevel) // You need more move points than your slow level, unless your slow level is 1
 							if (Enemy && allowPass) {
-								KDMoveEntity(Enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true);
+								KDMoveEntity(Enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true,undefined, undefined, true);
 								if (KinkyDungeonFlags.has("Passthrough"))
 									KinkyDungeonSetFlag("Passthrough", 2);
 							}
@@ -3707,13 +3731,24 @@ function KinkyDungeonMoveTo(moveX, moveY, SuppressSprint) {
 				}
 			}
 			if (unblocked) {
-				let sprintCostMult = KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SprintEfficiency"));
-				KinkyDungeonChangeStamina((-KDSprintCostBase - KDSprintCostSlowLevel[Math.round(KinkyDungeonSlowLevel)]) * sprintCostMult, false, 1);
-				KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
-				if (KinkyDungeonSlowLevel < 2) {
-					// Move faster
-					KinkyDungeonTrapMoved = true;
-					KDMovePlayer(moveX*2 - xx, moveY*2 - yy, true);
+				let data = {
+					player: KinkyDungeonPlayerEntity,
+					xTo: moveX*2 - xx,
+					yTo: moveY*2 - yy,
+					cancelSprint: false,
+					sprintCostMult: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SprintEfficiency")),
+				};
+
+				KinkyDungeonSendEvent("sprint", data);
+
+				if (!data.cancelSprint) {
+					KinkyDungeonChangeStamina((-KDSprintCostBase - KDSprintCostSlowLevel[Math.round(KinkyDungeonSlowLevel)]) * data.sprintCostMult, false, 1);
+					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
+					if (KinkyDungeonSlowLevel < 2) {
+						// Move faster
+						KinkyDungeonTrapMoved = true;
+						KDMovePlayer(moveX*2 - xx, moveY*2 - yy, true);
+					}
 				}
 			}
 
@@ -3753,12 +3788,6 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	// @ts-ignore
 	CharacterAppearanceBuildCanvas = () => {};
 	let start = performance.now();
-
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (inv.lock && KDLocks[inv.lock] && KDLocks[inv.lock].levelStart) {
-			KDLocks[inv.lock].levelStart(inv);
-		}
-	}
 
 	if (KinkyDungeonMovePoints < -1 && KDGameData.KinkyDungeonLeashedPlayer < 1) KinkyDungeonMovePoints += delta;
 	if (delta > 0) {
@@ -4181,9 +4210,25 @@ let KDKeyCheckers = {
 							}
 						}
 					}
-					return false;
+					return true;
 				}
 			}
 		}
 	},
 };
+
+function KDGetAltType(Floor) {
+	let mapMod = null;
+	if (KDGameData.MapMod) {
+		mapMod = KDMapMods[KDGameData.MapMod];
+	}
+	let altRoom = KDGameData.RoomType;
+	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
+	return altType;
+}
+
+function KDCanPassEnemy(player, Enemy) {
+	return !KDIsImmobile(Enemy)
+	&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
+	&& (KinkyDungeonToggleAutoPass || KDEnemyHasFlag(Enemy, "passthrough") || (KinkyDungeonFlags.has("Passthrough")) || Enemy.Enemy.noblockplayer);
+}

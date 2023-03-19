@@ -122,6 +122,10 @@ type KDHasTags = {
 }
 
 interface KDRestraintProps {
+	/** This item is unaffected by shrines */
+	noShrine?:boolean,
+	/** This item is beneficial and player wont try to struggle from it */
+	good?: boolean,
 
 	inventory?: boolean,
 	power?: number,
@@ -1061,6 +1065,10 @@ interface KinkyDungeonEvent {
 	cooldown?: Record<string, number>;
 	/** A required enemy tag */
 	requiredTag?: string;
+	/** Generic required tags */
+	requireTags?: string[];
+	/** Generic filtered tags */
+	filterTags?: string[];
 	/** Type of struggle that this event triggers on */
 	StruggleType?: string;
 	requireEnergy?: boolean;
@@ -1208,6 +1216,7 @@ type KinkyDungeonDress = {
 	Color: string | string[];
 	Lost: boolean;
 	NoLose?: boolean;
+	Property?: any,
 	OverridePriority?: number;
 	Skirt?: boolean;
 }[]
@@ -1279,6 +1288,8 @@ interface effectTileRef {
 type KDPerk = {
 	/** Determines if this one goes in the debuffs tree */
 	debuff?: boolean,
+	/** Determines if this one goes in the buffs tree */
+	buff?: boolean,
 	category: string,
 	id: string | number,
 	cost: number,
@@ -1295,8 +1306,12 @@ type KDPerk = {
 }
 
 interface spell {
+	/** This spell doesnt hurt the target upon directly hitting, only the AoE */
+	noDirectDamage?: true,
 	/** This spell does not leave a warning to the player */
 	hideWarnings?: boolean,
+	/** This spell does leave a warning to the player */
+	alwaysWarn?:boolean,
 	/** Marks a spell as non-magical, so traps dont leave a rune on the ground */
 	nonmagical?: boolean,
 	/** Marks the spell as a command word spell to enemies */
@@ -1325,7 +1340,6 @@ interface spell {
 	aoetype?: string,
 	aoetypetrail?: string,
 	secondaryhit?: string,
-	hideUnlearned?: boolean,
 	upcastFrom?: string,
 	upcastLevel?: number,
 	hitColor?: number;
@@ -1559,6 +1573,10 @@ interface spell {
 	CastInWalls?: boolean;
 	/** noTargetEnemies */
 	noTargetEnemies?: boolean;
+	/** Exception list for NoTargetEnemies */
+	exceptionFactions?: string[];
+	/** noTargetAllies */
+	noTargetAllies?: boolean;
 	/** Sets the enemy's specialCD shared between others */
 	specialCD?: number;
 	/** AI wont choose this as first choice */
@@ -1971,6 +1989,8 @@ type KDParticleData = {
 	time: number,
 	phase?: number,
 
+	rotation?: number,
+
 	vy?: number,
 	vy_spread?: number,
 	vx?: number,
@@ -1986,11 +2006,22 @@ type KDParticleData = {
 	lifetime_spread?: number,
 }
 
+interface KDCursedDef {
+	/** Restraints with this curse are unremovable via shrine */
+	noShrine?: boolean,
+	/** TODO NOT IMPLEMENTED for a future RemoveCursesWithShrine function */
+	shrineRemove?: string[],
+	onApply?: (item: item, host?: item) => void,
+	condition: (item: item) => boolean,
+	remove: (item: item, host: item) => void, events?: KinkyDungeonEvent[]
+}
 
 type SpecialCondition = {
 	resetCD: boolean,
 	criteria: (enemy: entity, AIData: any) => boolean,
 }
+
+type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
 
 declare const PIXI: any;
 declare const zip: any;

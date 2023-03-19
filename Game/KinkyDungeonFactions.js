@@ -46,6 +46,7 @@ function KDHostile(enemy, enemy2) {
  */
 function KDGetFaction(enemy) {
 	if (!enemy) return undefined;
+	if (enemy.player) return "Player";
 	let E = enemy.Enemy;
 	if (enemy.rage > 0) return "Rage";
 	if (enemy.faction) return enemy.faction;

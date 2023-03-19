@@ -212,7 +212,7 @@ function KDProcessInput(type, data) {
 				let spell = KinkyDungeonFindSpell("CommandWord", true);
 				let miscast = KinkyDungeonMiscastChance;
 				let gagTotal = KinkyDungeonGagTotal();
-				if (!(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0)) {
+				if (KinkyDungeoCheckComponents(KinkyDungeonFindSpell("CommandWord"), KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y).length > 0) {
 					miscast = miscast + Math.max(0, 1 - miscast) * Math.min(1, gagTotal);
 				}
 				if (KDRandom() > miscast) {

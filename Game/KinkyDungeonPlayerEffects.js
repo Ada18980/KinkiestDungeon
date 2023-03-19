@@ -60,6 +60,17 @@ let KDPlayerEffects = {
 		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		return {sfx: "Dollify", effect: true};
 	},
+	"EncaseBoltDrone": (target, damage, playerEffect, spell, faction, bullet) => {
+		if (KinkyDungeonMovePoints >= 0) {
+			KinkyDungeonMovePoints = -1;
+			KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBoltDroneSlow"), "yellow", 1);
+		} else {
+			KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncaseRandom"], "Dollsmith");
+			KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBoltDrone"), "yellow", 1);
+		}
+		KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		return {sfx: "Dollify", effect: true};
+	},
 	"RubberMissile": (target, damage, playerEffect, spell, faction, bullet) => {
 		KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncaseRandom"], "Dollsmith");
 
@@ -256,6 +267,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			if (dmg.happened) effect = true;
 		} else if (playerEffect.name == "WitchBoulder") {
 			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
+			KDGameData.KneelTurns = 2;
 			let dmg = KinkyDungeonDealDamage({damage: Math.max((spell.aoepower) ? spell.aoepower : 0, spell.power), type: spell.damage}, bullet);
 			KinkyDungeonSendTextMessage(Math.min(spell.power, 5), TextGet("KDEffectWitchBoulder").replace("DamageDealt", dmg.string), "#ff0000", 1);
 			if (dmg.happened) effect = true;

@@ -1282,9 +1282,26 @@ Minor Changes:
 - More latex-wearing enemies like nevermere, alchemists, and dollsmiths have electric resistance.
 - Doll dropoff platforms now have a cosmetic doll stand on them
 
+4.2 (March 2023)
+- New boss: The Dollmaker (fight her on floor 20)
+- Some general bugfixes
+- Boulder now properly hits rocks, and doesnt deal double damage to the target hit
 
+4.21 (March 2023)
+- Many bugfixes
+- New vibrator visual effects!
+- New Spell: Gust
+- Windblast now pierces
+- Tweaked enemy play aggressiveness in submissive mode and reduced chance of getting a mob of many NPCs
+- Locksmith and Clueless are now more impactful
+- New machine translated Spanish
+- New JP translation by Phantasm
+- Clarified faction aggro. Now if the first faction "Favors" the second faction and you aggro the second faction, the first faction will aggro unless you are "Favored" by the first faction. And factions you are "Allied" with will never aggro you for their alliances.
+- Started work on some vibrator changes
 
-TODO ValidationFindBlockCycles to prevent bugs
+4.22 (March 2023)
+- Curse tooltips now show even while the item is overlaid
+- Each boss now gives a Leyline Map if you beat it, which lets you increase your mana pool up to +500 more
 
 TODO: Mushrooms in the jungle
 

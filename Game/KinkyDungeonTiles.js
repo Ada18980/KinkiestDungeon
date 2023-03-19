@@ -524,8 +524,9 @@ function KDEffectTileInteractions(x, y, b, d) {
  * @param {number} x
  * @param {number} y
  * @param {boolean} willing
+ * @param {boolean} [ignoreBlocked] - Ignore if the target is blocked--important if swapping
  */
-function KDMoveEntity(enemy, x, y, willing, dash, forceHitBullets) {
+function KDMoveEntity(enemy, x, y, willing, dash, forceHitBullets, ignoreBlocked) {
 	enemy.lastx = enemy.x;
 	enemy.lasty = enemy.y;
 	let cancel = {cancelmove: false, returnvalue: false};
@@ -534,25 +535,27 @@ function KDMoveEntity(enemy, x, y, willing, dash, forceHitBullets) {
 			cancel = KDEffectTileMoveOnFunctions[newTile.name](enemy, newTile, willing, {x: x - enemy.x, y: y - enemy.y}, dash);
 		}
 	}
+	if (!ignoreBlocked && KinkyDungeonEntityAt(x, y)) cancel.cancelmove = true;
 	if (!cancel.cancelmove) {
 		enemy.x = x;
 		enemy.y = y;
+
+		KinkyDungeonSendEvent("enemyMove", {
+			cancelmove: cancel.cancelmove,
+			returnvalue: cancel.returnvalue,
+			willing: willing,
+			sprint: dash,
+			lastX: enemy.lastx,
+			lastY: enemy.lasty,
+			moveX: x,
+			moveY: y,
+			enemy: enemy,
+		});
+		KDCheckCollideableBullets(enemy, forceHitBullets);
+		enemy.fx = undefined;
+		enemy.fy = undefined;
+		if (enemy.x != enemy.lastx || enemy.y != enemy.lasty) KDUpdateEnemyCache = true;
 	}
-	KinkyDungeonSendEvent("enemyMove", {
-		cancelmove: cancel.cancelmove,
-		returnvalue: cancel.returnvalue,
-		willing: willing,
-		sprint: dash,
-		lastX: enemy.lastx,
-		lastY: enemy.lasty,
-		moveX: x,
-		moveY: y,
-		enemy: enemy,
-	});
-	KDCheckCollideableBullets(enemy, forceHitBullets);
-	enemy.fx = undefined;
-	enemy.fy = undefined;
-	if (enemy.x != enemy.lastx || enemy.y != enemy.lasty) KDUpdateEnemyCache = true;
 	return cancel.returnvalue;
 }
 
@@ -661,8 +664,9 @@ function KDIgnition(b, tile, d) {
  * @param {number} Y
  */
 function KDConveyor(delta, X, Y) {
-	let entity = KinkyDungeonEntityAt(X, Y);
 	let tile = KinkyDungeonTilesGet(X + "," + Y);
+	if (!tile || tile.SwitchMode == "Off") return;
+	let entity = KinkyDungeonEntityAt(X, Y);
 	let tiletype = KinkyDungeonMapGet(X + (tile.DX || 0), Y + (tile.DY || 0));
 	if (entity && KinkyDungeonMovableTilesEnemy.includes(tiletype) && !KinkyDungeonEntityAt(X + (tile.DX || 0), Y + (tile.DY || 0))) {
 		if (entity.player) {
@@ -671,7 +675,8 @@ function KDConveyor(delta, X, Y) {
 				KDMovePlayer(X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
 				KinkyDungeonSendTextMessage(4, TextGet("KDConveyorPush"), "#ffff44", 2);
 			}
-		} else if (!KDIsImmobile(entity) && !entity.Enemy.tags.flying && !entity.Enemy.tags.ignoreconveyor && !entity.Enemy.ethereal) {
+		} else if (!KDIsImmobile(entity) && !entity.Enemy.tags.flying && !entity.Enemy.tags.ignoreconveyor && !entity.Enemy.ethereal
+			&& !(entity.Enemy.tags.unstoppable || (entity.Enemy.tags.unflinching && !KinkyDungeonIsDisabled(entity)))) {
 			if (entity.Enemy.tags.prisoner) KDStaggerEnemy(entity);
 			if (!KDEnemyHasFlag(entity, "conveyed")) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 2);

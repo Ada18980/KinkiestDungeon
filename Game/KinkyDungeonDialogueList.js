@@ -424,7 +424,7 @@ let KDDialogue = {
 			"Help": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
-					KinkyDungeonSetFlag("DressmakerQuest", -1);
+					KDAddQuest("DressmakerQuest");
 					return false;
 				},
 				options: {
@@ -447,7 +447,7 @@ let KDDialogue = {
 						KinkyDungeonChangeFactionRep("Dressmaker", 0.002 * power);
 					else
 						KinkyDungeonChangeFactionRep("Dressmaker", 0.0007 * power);
-					KinkyDungeonSetFlag("DressmakerQuest", 0);
+					KDRemoveQuest("DressmakerQuest");
 					KDSpliceIndex(KinkyDungeonEntities.indexOf(KDDialogueEnemy()), 1);
 					return false;
 				},
@@ -733,7 +733,7 @@ let KDDialogue = {
 						let gagTotal = KinkyDungeonGagTotal();
 						if (gagTotal > 0) {
 							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEatenGag"), "#ff8800", 1);
-							KDGameData.CurrentDialogMsg = "TableEatFail";
+							KDGameData.CurrentDialogMsg = "TableFoodEatFail";
 						} else {
 							// Perform the deed
 							let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
@@ -803,6 +803,43 @@ let KDDialogue = {
 			"Leave": {
 				playertext: "Leave", response: "Default",
 				exitDialogue: true,
+			},
+		}
+	},
+
+	"LeylineMap": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("nodollterm", 4);
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaPoolUp"));
+					KinkyDungeonUpdateStats(0);
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"Cancel": {
+				playertext: "Default", response: "Default",
+				options: {
+					"Leave": {
+						playertext: "Default", response: "Default",
+						exitDialogue: true,
+						clickFunction: (gagged, player) => {
+							KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaPoolUp"));
+							KinkyDungeonUpdateStats(0);
+							return false;
+						},
+					},
+					"Cancel": {
+						playertext: "Default", response: "Default",
+						exitDialogue: true,
+					},
+				}
 			},
 		}
 	},
@@ -1584,7 +1621,7 @@ let KDDialogue = {
 				enemy.aware = true;
 				enemy.vp = 2;
 				enemy.AI = 'hunt';
-				KinkyDungeonSetFlag("BossDialogueFuuka", -1);
+				KinkyDungeonSetFlag("BossDialogueFuuka", -1, 1);
 			}
 			return false;
 		},
@@ -1941,6 +1978,318 @@ let KDDialogue = {
 			}
 		}
 	},
+	"Dollmaker": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				enemy.hostile = 9999;
+				enemy.aware = true;
+				enemy.vp = 2;
+				enemy.AI = 'hunt';
+				KinkyDungeonSetFlag("BossDialogueDollmaker", -1, 1);
+			}
+			return false;
+		},
+		options: {
+			"Ask": {
+				playertext: "Default", response: "Default", gag: true,
+				options: {
+					"Proceed": {
+						playertext: "Default", response: "Default", gag: true,
+						leadsToStage: "Fight",
+					},
+					"Staff": {
+						prerequisiteFunction: (gagged, player) => {
+							return KinkyDungeonPlayerDamage?.name == "StaffDoll";
+						},
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "Fight",
+							},
+						}
+					}
+				}
+			},
+			"Assume": {
+				playertext: "Default", response: "Default", gagDisabled: true,
+				options: {
+					"Happy": {
+						playertext: "Default", response: "Default",
+						leadsToStage: "Fight",
+					},
+					"Proceed": {
+						playertext: "Default", response: "Default",
+						leadsToStage: "Fight",
+					},
+					"Staff": {
+						prerequisiteFunction: (gagged, player) => {
+							return KinkyDungeonPlayerDamage?.name == "StaffDoll";
+						},
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "Fight",
+							},
+						}
+					}
+				}
+			},
+
+			"Fight": {
+				prerequisiteFunction: (gagged, player) => {return false;},
+				playertext: "Default", response: "Default",
+				options: {
+					"Wait": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Dismiss": {
+								playertext: "Default", response: "Default",
+								options: {
+									"Proceed": {
+										playertext: "Default", exitDialogue: true,
+									},
+								}
+							},
+							"Press": {
+								playertext: "Default", response: "Default",
+								options: {
+									"Proceed": {
+										playertext: "Default", exitDialogue: true,
+									},
+								}
+							},
+							"Press2": {
+								playertext: "Default", response: "Default",
+								options: {
+									"Proceed": {
+										playertext: "Default", exitDialogue: true,
+									},
+								}
+							},
+							"Proceed": {
+								playertext: "Default", exitDialogue: true,
+							},
+						}
+					},
+					"Fight1": {gag: true,
+						playertext: "Default", exitDialogue: true,
+					},
+					"Fight2": {gag: true,
+						playertext: "Default", exitDialogue: true,
+					},
+					"Fight3": {gag: true,
+						playertext: "Default", exitDialogue: true,
+					},
+				}
+			},
+			"Attack": {playertext: "Default", exitDialogue: true},
+		}
+	},
+	"DollmakerStage2": { // Player defeats fuuka's first form
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonStartPosition.x + 10, KinkyDungeonStartPosition.y - 5, true,undefined, true);
+			if (!point) {
+				point = {x: KinkyDungeonStartPosition.x + 10, y: KinkyDungeonStartPosition.y - 7};
+			}
+			let e = DialogueCreateEnemy(point.x, point.y, "DollmakerBoss2");
+			e.hostile = 300;
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"DollmakerStage3": { // Player defeats fuuka's first form
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			// Remove the doors
+			for (let en of KinkyDungeonEntities) {
+				if (en.Enemy.tags.dolldoor) en.hp = 0;
+			}
+			let point = KinkyDungeonGetNearbyPoint(player.x, player.y, true);
+			if (!point) {
+				point = KinkyDungeonGetRandomEnemyPoint(false, false, null);
+			}
+			let e = DialogueCreateEnemy(point.x, point.y, "DollmakerBoss3");
+			e.hostile = 300;
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"DollmakerWin": { // Player beats Fuuka
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("BossUnlocked", -1);
+			KinkyDungeonSetFlag("SpawnMap", -1);
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				clickFunction: (gagged, player) => {
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("StartCyberDoll");
+						KDUnlockPerk("CommonCyber");
+					}
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"Accept": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerVisor"), 0, true);
+					KinkyDungeonAddGold(1000);
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("StartCyberDoll");
+						KDUnlockPerk("CommonCyber");
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Accept2": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerMask"), 0, true);
+					KinkyDungeonAddGold(1000);
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("StartCyberDoll");
+						KDUnlockPerk("CommonCyber");
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Gag": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KinkyDungeonChangeRep("Ghost", -5);
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("StartCyberDoll");
+						KDUnlockPerk("CommonCyber");
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
+	"DollmakerLose": { // Player loses to Fuuka
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				enemy.hostile = 0;
+				enemy.ceasefire = 4;
+				KinkyDungeonSetFlag("BossUnlocked", -1);
+				KinkyDungeonSetFlag("NoDollRoomBypass", 0);
+			}
+			return false;
+		},
+		options: {
+			"Accept": { gag: true,
+				playertext: "Default", response: "Default",
+				options: {
+					"Continue1": {
+						playertext: "DollmakerLose_Continue1", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerVisor"), 0, true);
+							return false;
+						},
+					},
+					"Continue2": {
+						playertext: "DollmakerLose_Continue2", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerMask"), 0, true);
+							return false;
+						},
+					},
+					"Continue3": {
+						playertext: "DollmakerLose_Continue3", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDRandom() < 0.5 ? "DollmakerVisor" : "DollmakerMask"), 0, true);
+							return false;
+						},
+					},
+				}
+			},
+			"Deny": { gag: true,
+				playertext: "Default", response: "Default",
+				options: {
+					"Continue1": {
+						playertext: "DollmakerLose_Continue1", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerVisor"), 0, true);
+							return false;
+						},
+					},
+					"Continue2": {
+						playertext: "DollmakerLose_Continue2", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DollmakerMask"), 0, true);
+							return false;
+						},
+					},
+					"Continue3": {
+						playertext: "DollmakerLose_Continue3", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDRandom() < 0.5 ? "DollmakerVisor" : "DollmakerMask"), 0, true);
+							return false;
+						},
+					},
+				}
+			},
+			"Finish": {
+				prerequisiteFunction: (gagged, player) => {return false;},
+				playertext: "Default", response: "DollmakerLoseFinish",
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			}
+		}
+	},
 	"FuukaLose": { // Player loses to Fuuka
 		response: "Default",
 		clickFunction: (gagged, player) => {
@@ -2025,6 +2374,15 @@ let KDDialogue = {
 	},
 	"FuukaStage2": { // Player defeats fuuka's first form
 		response: "Default",
+		clickFunction: (gagged, player) => {
+			let point = KinkyDungeonGetNearbyPoint(player.x, player.y, true);
+			if (!point) {
+				point = KinkyDungeonGetRandomEnemyPoint(false, false, null);
+			}
+			let e = DialogueCreateEnemy(point.x, point.y, "Fuuka2");
+			e.hostile = 300;
+			return false;
+		},
 		options: {
 			"Leave": {
 				playertext: "Leave", response: "Default",
@@ -2036,6 +2394,7 @@ let KDDialogue = {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			KinkyDungeonSetFlag("BossUnlocked", -1);
+			KinkyDungeonSetFlag("SpawnMap", -1);
 			return false;
 		},
 		options: {

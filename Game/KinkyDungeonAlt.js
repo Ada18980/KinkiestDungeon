@@ -320,6 +320,9 @@ let KinkyDungeonCreateMapGenType = {
 	"DollRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
+	"Dollmaker": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	},
 };
 
 
@@ -953,6 +956,47 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		KinkyDungeonMapSet(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, 'S');
 }
 
+
+function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Variable setup
+	KinkyDungeonSetFlag("NoDollRoomBypass", -1, 1);
+
+	// Now we STRETCH the map
+	KinkyDungeonGridWidth = Math.floor(KinkyDungeonGridWidth*2);
+	KinkyDungeonGridHeight = Math.floor(KinkyDungeonGridHeight*2);
+	KinkyDungeonGrid = "";
+
+	width = KinkyDungeonGridWidth;
+	height = KinkyDungeonGridHeight;
+
+	// Generate the grid
+	for (let Y = 0; Y < KinkyDungeonGridHeight; Y++) {
+		for (let X = 0; X < KinkyDungeonGridWidth; X++)
+			KinkyDungeonGrid = KinkyDungeonGrid + '1';
+		KinkyDungeonGrid = KinkyDungeonGrid + '\n';
+	}
+
+
+	// Create the doll cell itself
+	let cavitywidth = 21;
+	let cavityheight = 21;
+	let cavityStart = 2;
+
+	KinkyDungeonStartPosition = {x: cavityStart, y: 1 + Math.floor(cavityheight/2)};
+
+	// Hollow out a greater cell area
+	KinkyDungeonCreateRectangle(cavityStart, 0, cavitywidth, cavityheight, false, false, false, false);
+
+	KD_PasteTile(KDMapTilesList.Arena_Dollmaker, cavityStart, 1, data);
+
+	DialogueCreateEnemy(KinkyDungeonStartPosition.x + Math.floor(cavityheight/2), KinkyDungeonStartPosition.y, "DollmakerBoss1");
+
+	KinkyDungeonEndPosition = {x: KinkyDungeonStartPosition.x + cavitywidth, y: KinkyDungeonStartPosition.y};
+
+	KinkyDungeonMapSet(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 's');
+	KinkyDungeonMapSet(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, 'S');
+}
+
 function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
 	// Variable setup
 
@@ -1094,6 +1138,12 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 	// Place a shop and a Leyline Tap
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 + 1, 'l');
 	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 + 1), {Leyline: true, Light: KDLeylineLight, lightColor: KDLeylineLightColor});
+
+	if (KinkyDungeonFlags.get("SpawnMap")) {
+		if (KinkyDungeonSpells.filter((spell) => {return spell.name == "ManaPoolUp";}).length < Math.ceil(MiniGameKinkyDungeonLevel/4))
+			KinkyDungeonGroundItems.push({x:VisitedRooms[0].x*2 + 3, y:(VisitedRooms[0].y*2), name: "LeylineMap"});
+		KinkyDungeonSetFlag("SpawnMap", -1);
+	}
 
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, 'A');
 	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 - 2), {Type: "Shrine", Name: "Commerce"});

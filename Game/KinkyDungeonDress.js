@@ -90,6 +90,7 @@ function KinkyDungeonDressSet() {
 					KDGetDressList().Default.push({
 						Item: C.Appearance[A].Model?.Name || C.Appearance[A].Asset?.Name,
 						Group: C.Appearance[A].Model?.Group,
+					    Property: C.Appearance[A].Property,
 						Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Model.DefaultColor ? C.Appearance[A].Model.DefaultColor : "Default"),
 						Lost: false,
 					},);
@@ -102,6 +103,7 @@ function KinkyDungeonDressSet() {
 					KDGetDressList().Default.push({
 						Item: C.Appearance[A].Asset.Name,
 						Group: C.Appearance[A].Asset.Group.Name,
+					    Property: C.Appearance[A].Property,
 						Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Asset.DefaultColor ? C.Appearance[A].Asset.DefaultColor : "Default"),
 						Lost: false,
 					},);
@@ -270,6 +272,7 @@ function KinkyDungeonDressPlayer(Character) {
 						if (!item.Property) item.Property = {OverridePriority: KDClothOverrides[clothes.Group][clothes.Item]};
 						else item.Property.OverridePriority = KDClothOverrides[clothes.Group][clothes.Item];
 					}
+					if (clothes.Property) item.Property = clothes.Property;
 					// Ignored because BC uses string[] as a type!
 					// @ts-ignore
 					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, clothes.Color, clothes.Group);
@@ -479,7 +482,8 @@ function KinkyDungeonWearForcedClothes(restraints) {
 						if (dress.factionColor && faction && KinkyDungeonFactionColors[faction]) {
 							for (let ii = 0; ii < dress.factionColor.length; ii++) {
 								for (let n of dress.factionColor[ii]) {
-									color[n] = KinkyDungeonFactionColors[faction][ii]; // 0 is the primary color
+									if (KinkyDungeonFactionColors[faction][ii])
+										color[n] = KinkyDungeonFactionColors[faction][ii]; // 0 is the primary color
 								}
 							}
 						}
@@ -641,11 +645,12 @@ function KDApplyItemLegacy(inv, tags) {
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
 		let faction = inv.faction ? inv.faction : "";
 
-		let color = (typeof restraint.Color === "string") ? [restraint.Color] : restraint.Color;
+		let color = (typeof restraint.Color === "string") ? [restraint.Color] : Object.assign([], restraint.Color);
 		if (restraint.factionColor && faction && KinkyDungeonFactionColors[faction]) {
 			for (let i = 0; i < restraint.factionColor.length; i++) {
 				for (let n of restraint.factionColor[i]) {
-					color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
+					if (KinkyDungeonFactionColors[faction][i])
+						color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
 				}
 			}
 		}

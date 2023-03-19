@@ -29,6 +29,9 @@ let KinkyDungeonSpellSpecials = {
 		if (en) {
 			if (en.Enemy.tags.summonedRock) {
 				en.hp = 0;
+				en.faction = "Player";
+				en.rage = 0;
+				en.hostile = 0;
 				let spell2 = KinkyDungeonFindSpell("BoulderKicked", true);
 				let size = (spell2.size) ? spell2.size : 1;
 				let xx = entity.x;
@@ -655,7 +658,9 @@ let KinkyDungeonSpellSpecials = {
 			for (let en of enList) {
 				if (!KDHelpless(en) && en.Enemy.tags?.dollmakerconvert) {
 					en.hp = 0;
-					DialogueCreateEnemy(en.x, en.y, "DollsmithDoll");
+					let e = DialogueCreateEnemy(en.x, en.y, "DollsmithDoll");
+					if (entity)
+						e.faction = KDGetFaction(entity);
 					count += 1;
 					KDCreateEffectTile(en.x, en.y, {
 						name: "Latex",

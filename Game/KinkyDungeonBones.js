@@ -16,6 +16,7 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Dana", color: "#4444ff", prisoner: true, free: true, customSprite: ""},
 		{name: "Yami", color: "#88ff88", prisoner: true, free: true, customSprite: ""},
 		{name: "Animi", color: "#ff9999", prisoner: true, free: false, customSprite: ""},
+		{name: "Ladica", color: "#44ff44", prisoner: false, free: true, customSprite: ""},
 	],
 	],
 	["WolfgirlPet", [
@@ -25,6 +26,11 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["Nurse", [
 		{name: "Rena", color: "#a452ff", prisoner: true, free: true, customSprite: ""},
+		{name: "Str Nurse", color: "#ffffff", prisoner: false, free: true, customSprite: ""},
+	],
+	],
+	["ElementalLatex", [
+		{name: "Samsy", color: "#2f847f", prisoner: false, free: true, customSprite: ""},
 	],
 	],
 	["Dragon", [
@@ -70,6 +76,7 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Rest", color: "#999999", prisoner: false, free: true, customSprite: ""},
 		{name: "Rika Mercury", color: "#92e8e5", prisoner: true, free: false, customSprite: ""},
 		{name: "Maidlinmo", color: "#ff5555", prisoner: true, free: true, customSprite: ""},
+		{name: "April", color: "#4444ff", prisoner: true, free: true, customSprite: ""},
 	],
 	],
 	["WitchFlame", [
@@ -84,6 +91,14 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["ElfRanger", [
 		{name: "Valeria", color: "#ebaaf4", prisoner: true, free: true, customSprite: ""},
+	],
+	],
+	["Elf", [
+		{name: "Ferahla", color: "#44ff44", prisoner: true, free: true, customSprite: ""},
+	],
+	],
+	["Dollsmith", [
+		{name: "Kiera", color: "#310051", prisoner: false, free: true, customSprite: ""},
 	],
 	],
 ]);
