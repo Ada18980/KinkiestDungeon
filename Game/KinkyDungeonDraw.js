@@ -2793,14 +2793,9 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
  */
 function KDTex(Image) {
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
-	let img = DrawGetImage(Image);
-	if (img) {
-		// @ts-ignore
-		let tex = PIXI.Texture.from(img);
-		kdpixitex.set(Image, tex);
-		return tex;
-	}
-	return null;
+	let tex = PIXI.Texture.from(Image);
+	kdpixitex.set(Image, tex);
+	return tex;
 }
 
 /**

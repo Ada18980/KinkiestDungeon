@@ -279,7 +279,7 @@ function ModelDrawLayer(MC, Model, Layer, Poses) {
  * @returns {string}
  */
 function ModelLayerString(Model, Layer, Poses) {
-	return `Data/Models/${Model.Folder}/${LayerSprite(Layer, Poses)}.png`;
+	return `Models/${Model.Folder}/${LayerSprite(Layer, Poses)}.png`;
 }
 
 /**

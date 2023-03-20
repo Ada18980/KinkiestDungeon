@@ -643,7 +643,8 @@ function KinkyDungeonLoad() {
 			KinkyDungeonEasyMode = localStorage.getItem("KinkyDungeonEasyMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonEasyMode")) || 0 : 0;
 
 			KinkyDungeonNewDress = true;
-			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance"));
+			KDCurrentOutfit = parseInt(localStorage.getItem("kdcurrentoutfit") || 0);
+			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
 			if (!appearance) {
 				KinkyDungeonNewDress = false;
 				appearance = CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player);
@@ -657,16 +658,25 @@ function KinkyDungeonLoad() {
 				suppressCanvasUpdate(() => CharacterReleaseTotal(KinkyDungeonPlayer));
 			else
 				CharacterReleaseTotal(KinkyDungeonPlayer);
+
+
+			CharacterRefresh(KinkyDungeonPlayer);
+
+
+			KinkyDungeonInitializeDresses();
 			KinkyDungeonDressSet();
+
 			if (KDPatched)
 				// @ts-ignore
 				suppressCanvasUpdate(() => CharacterNaked(KinkyDungeonPlayer));
 			else
 				CharacterNaked(KinkyDungeonPlayer);
-			KinkyDungeonInitializeDresses();
+
+			KinkyDungeonCheckClothesLoss = true;
 			KinkyDungeonDressPlayer();
+
 			KDInitProtectedGroups();
-			CharacterRefresh(KinkyDungeonPlayer);
+
 		}
 
 		if (localStorage.getItem("KinkyDungeonKeybindings") && JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"))) {
@@ -960,7 +970,10 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("GoToWardrobe", (bdata) => {
 			KinkyDungeonState = "Wardrobe";
-			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance"));
+			KinkyDungeonInitializeDresses();
+			KDUpdateModelList();
+			KDRefreshOutfitInfo();
+			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
 			if (appearance) {
 				CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
 				CharacterRefresh(KinkyDungeonPlayer);
@@ -976,7 +989,6 @@ function KinkyDungeonRun() {
 						InventoryAdd(Player, Asset[A].Name, Asset[A].Group.Name);
 			}
 			CharacterReleaseTotal(KinkyDungeonPlayer);
-			KinkyDungeonCheckClothesLoss = true;
 			KinkyDungeonDressPlayer();
 			// @ts-ignore
 			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: false, AllowFullWardrobeAccess: true};
@@ -2239,6 +2251,7 @@ function KinkyDungeonHandleClick() {
 			KinkyDungeonDressSet();
 			CharacterNaked(KinkyDungeonPlayer);
 			KinkyDungeonInitializeDresses();
+			KinkyDungeonCheckClothesLoss = true;
 			KinkyDungeonDressPlayer();
 			KDInitProtectedGroups();
 			CharacterRefresh(KinkyDungeonPlayer);
@@ -2253,6 +2266,7 @@ function KinkyDungeonHandleClick() {
 			KinkyDungeonDressSet();
 			CharacterNaked(KinkyDungeonPlayer);
 			KinkyDungeonInitializeDresses();
+			KinkyDungeonCheckClothesLoss = true;
 			KinkyDungeonDressPlayer();
 			KDInitProtectedGroups();
 			CharacterRefresh(KinkyDungeonPlayer);

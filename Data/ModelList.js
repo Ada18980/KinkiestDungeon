@@ -72,25 +72,39 @@ AddModel({
 });
 AddModel({
 	Name: "Catsuit",
+	TopLevel: true,
+	Categories: ["Suits"],
 	Folder: "Catsuit",
+	Group: "Catsuit",
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 1,
 			Poses: ToMap(ARMPOSES, "Hogtie"),
-			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "Front"]),
 			AppendPose: ToMap(["Hogtie"]),
 			AppendPoseRequire: ToMap(["Wristtie"]),
 		},
 		{ Name: "ArmLeft", Layer: "ArmLeft", Pri: 1,
 			Poses: ToMap(ARMPOSES, "Hogtie"),
-			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "Front"]),
 			AppendPose: ToMap(["Hogtie"]),
 			AppendPoseRequire: ToMap(["Wristtie"]),
 		},
+
+		{ Name: "ForeArmRight", Layer: "ForeArmRight", Pri: 1,
+			Poses: ToMap(FOREARMPOSES),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+		{ Name: "ForeArmLeft", Layer: "ForeArmLeft", Pri: 1,
+			Poses: ToMap(FOREARMPOSES),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
 		{ Name: "HandRight", Layer: "HandRight", Pri: 1,
 			Poses: ToMap(HANDRIGHTPOSES),
+			GlobalDefaultOverride: ToMap(["Front"]),
 		},
 		{ Name: "HandLeft", Layer: "HandLeft", Pri: 1,
 			Poses: ToMap(HANDLEFTPOSES),
+			GlobalDefaultOverride: ToMap(["Front"]),
 		},
 		{ Name: "LegLeft", Layer: "LegLeft", Pri: 1,
 			Poses: ToMap(LEGPOSES),
@@ -131,6 +145,8 @@ AddModel({
 AddModel({
 	Name: "Labcoat",
 	Folder: "Labcoat",
+	TopLevel: true,
+	Categories: ["Clothes"],
 	Layers: ToLayerMap([
 		// Duplicate yoked is to override Closed override
 		{ Name: "Shoulders", Layer: "Shoulders", Pri: 10,
@@ -166,6 +182,8 @@ AddModel({
 AddModel({
 	Name: "Pauldrons",
 	Folder: "ArmorPlate",
+	Parent: "HeavyArmor",
+	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		{ Name: "Pauldrons", Layer: "Shoulders", Pri: 8,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
@@ -177,6 +195,8 @@ AddModel({
 AddModel({
 	Name: "Breastplate",
 	Folder: "ArmorPlate",
+	Parent: "HeavyArmor",
+	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		{ Name: "Breastplate", Layer: "Chestplate", Pri: 25,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
@@ -190,6 +210,8 @@ AddModel({
 AddModel({
 	Name: "ChainShirt",
 	Folder: "ArmorChain",
+	Parent: "HeavyArmor",
+	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		{ Name: "ShirtChest", Layer: "Chest", Pri: 5,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
@@ -207,6 +229,8 @@ AddModel({
 AddModel({
 	Name: "HeavyArmor",
 	Folder: "ArmorPlate",
+	TopLevel: true,
+	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Breastplate"),
 		...GetModelLayers("Pauldrons"),
@@ -216,6 +240,8 @@ AddModel({
 AddModel({
 	Name: "BanditShorts",
 	Folder: "Bandit",
+	Parent: "Bandit",
+	Categories: ["Uniforms"],
 	Layers: ToLayerMap([
 		{ Name: "Shorts", Layer: "Pants", Pri: 7,
 			Poses: ToMap([...LEGPOSES]),
@@ -227,6 +253,8 @@ AddModel({
 AddModel({
 	Name: "BanditBreastplate",
 	Folder: "Bandit",
+	Parent: "Bandit",
+	Categories: ["Uniforms"],
 	Layers: ToLayerMap([
 		{ Name: "Breastplate", Layer: "Chestplate", Pri: 24,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
@@ -240,6 +268,8 @@ AddModel({
 AddModel({
 	Name: "Bandit",
 	Folder: "Bandit",
+	TopLevel: true,
+	Categories: ["Uniforms"],
 	Layers: ToLayerMap([
 		...GetModelLayers("BanditShorts"),
 		...GetModelLayers("BanditBreastplate"),
@@ -251,6 +281,9 @@ AddModel({
 AddModel({
 	Name: "MaidSkirt",
 	Folder: "Maid",
+	Parent: "Maid",
+	TopLevel: true,
+	Categories: ["Skirts"],
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 14,
 			Poses: ToMap([...LEGPOSES]),
@@ -264,6 +297,9 @@ AddModel({
 AddModel({
 	Name: "MaidApron",
 	Folder: "Maid",
+	Parent: "Maid",
+	TopLevel: true,
+	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		{ Name: "Apron", Layer: "SkirtDeco", Pri: 30,
 			Poses: ToMap([...LEGPOSES]),
@@ -276,6 +312,9 @@ AddModel({
 AddModel({
 	Name: "MaidBlouse",
 	Folder: "Maid",
+	Parent: "Maid",
+	TopLevel: true,
+	Categories: ["Tops"],
 	Layers: ToLayerMap([
 		{ Name: "Blouse", Layer: "CorsetLining", Pri: 3,
 			Poses: ToMap([...ARMPOSES]),
@@ -292,6 +331,9 @@ AddModel({
 AddModel({
 	Name: "MaidBow",
 	Folder: "Maid",
+	Parent: "Maid",
+	TopLevel: true,
+	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		{ Name: "Bow", Layer: "CollarAcc", Pri: 1,
 			Poses: ToMap([...ARMPOSES]),
@@ -303,6 +345,9 @@ AddModel({
 AddModel({
 	Name: "MaidCorset",
 	Folder: "Maid",
+	Parent: "Maid",
+	TopLevel: true,
+	Categories: ["Corsets"],
 	Layers: ToLayerMap([
 		{ Name: "Corset", Layer: "Corset", Pri: 1,
 			Poses: ToMap([...ARMPOSES]),
@@ -314,6 +359,9 @@ AddModel({
 AddModel({
 	Name: "MaidCorsetFull",
 	Folder: "Maid",
+	Parent: "Maid",
+	TopLevel: true,
+	Categories: ["Corsets"],
 	Layers: ToLayerMap([
 		...GetModelLayers("MaidCorset"),
 		{ Name: "CorsetStraps", Layer: "Straps", Pri: 1,
@@ -326,6 +374,7 @@ AddModel({
 AddModel({
 	Name: "MaidSockLeft",
 	Folder: "Maid",
+	Parent: "MaidSocks",
 	Layers: ToLayerMap([
 		{ Name: "SockLeft", Layer: "StockingLeft", Pri: 1,
 			Poses: ToMap([...LEGPOSES]),
@@ -340,6 +389,7 @@ AddModel({
 AddModel({
 	Name: "MaidSockRight",
 	Folder: "Maid",
+	Parent: "MaidSocks",
 	Layers: ToLayerMap([
 		{ Name: "SockRight", Layer: "StockingRight", Pri: 1,
 			Poses: ToMap([...LEGPOSES]),
@@ -355,6 +405,9 @@ AddModel({
 AddModel({
 	Name: "MaidShoes",
 	Folder: "Maid",
+	Parent: "Maid",
+	TopLevel: true,
+	Categories: ["Shoes"],
 	Layers: ToLayerMap([
 		{ Name: "ShoeLeft", Layer: "ShoeLeft", Pri: 1,
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
@@ -376,6 +429,9 @@ AddModel({
 AddModel({
 	Name: "MaidSocks",
 	Folder: "Maid",
+	Parent: "Maid",
+	TopLevel: true,
+	Categories: ["Socks"],
 	Layers: ToLayerMap([
 		...GetModelLayers("MaidSockRight"),
 		...GetModelLayers("MaidSockLeft"),
@@ -385,6 +441,8 @@ AddModel({
 AddModel({
 	Name: "Maid",
 	Folder: "Maid",
+	TopLevel: true,
+	Categories: ["Uniforms"],
 	Layers: ToLayerMap([
 		...GetModelLayers("MaidSkirt"),
 		...GetModelLayers("MaidBlouse"),
@@ -400,6 +458,9 @@ AddModel({
 AddModel({
 	Name: "RopeArms",
 	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Categories: ["Restraints"],
 	Layers: ToLayerMap([
 		{ Name: "ChestUpper", Layer: "ChestStraps", Pri: 0,
 			Poses: ToMap([...ARMPOSES]),

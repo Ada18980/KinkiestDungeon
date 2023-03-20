@@ -162,16 +162,16 @@ function KinkyDungeonDressPlayer(Character) {
 			// First we remove all restraints and clothes
 			let clothGroups = {};
 			for (let cloth of KDGetDressList()[KinkyDungeonCurrentDress]) {
-				clothGroups[cloth.Group] = true;
+				clothGroups[cloth.Group || cloth.Item] = true;
 			}
 			let newAppearance = {};
 			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
 				if (StandalonePatched) {
 					let model = KinkyDungeonPlayer.Appearance[A].Model;
-					if (!model.Group?.startsWith("Item") && !clothGroups[model.Group]) {
+					if (!model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name]) {
 						//KinkyDungeonPlayer.Appearance.splice(A, 1);
 						//A -= 1;
-						newAppearance[model.Group] = KinkyDungeonPlayer.Appearance[A];
+						newAppearance[model.Group || model.Name] = KinkyDungeonPlayer.Appearance[A];
 					}
 				} else {
 					// BC support

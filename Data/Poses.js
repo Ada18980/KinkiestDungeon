@@ -20,7 +20,7 @@ let PoseProperties = {
 		pri_rotation: 1,
 		offset_x: 0.32,
 		offset_y: 0.1,
-		pri_offset: 1,
+		pri_offset: 2,
 		global_default: "Closed",
 		mods: [{
 			Layer: "Head",
@@ -31,12 +31,12 @@ let PoseProperties = {
 			offset_y: 690/MODELHEIGHT,
 		}],
 	},
-	Front: {
-		global_default: "Boxtie",
-	},
 	Kneel: {
 		offset_y: 0.15,
-		pri_offset: 0,
+		pri_offset: 1,
+	},
+	Front: {
+		global_default: "Boxtie",
 	},
 };
 
@@ -49,7 +49,7 @@ let PoseProperties = {
 function ModelGetMaxPose(Poses, CheckVar, FilterVar) {
 	let maxPose = "";
 	for (let p of Object.keys(Poses)) {
-		if (PoseProperties[p]
+		if (PoseProperties[p] && PoseProperties[p][CheckVar] != undefined
 			&& (!FilterVar || PoseProperties[p][FilterVar])
 			&& (!maxPose || PoseProperties[p][CheckVar] > PoseProperties[maxPose][CheckVar])
 		) {

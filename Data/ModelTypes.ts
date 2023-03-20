@@ -53,6 +53,12 @@ interface Model extends Namable {
     Restraint?: boolean,
     /** Optional group, for items where there can should only be one (like panties or shoes)*/
     Group?: string,
+    /** Optional categories for a model to appear in wardrobe*/
+    Categories?: string[],
+    /** Optional, this appears as a top level item*/
+    TopLevel?: boolean,
+    /** Optional, this appears under a top level item*/
+    Parent?: string,
     /** Default string of colors*/
     DefaultColor?: string[],
 }
