@@ -30,10 +30,15 @@ let LAYERS_BASE = [
 	// This slot is for things like breastplates and things that go over
 	"ChestStraps",
 	"Chestplate",
+	// Certain pieces of armor go over the shirt
+	"Belt",
+	"BeltDeco",
+	"Greaves",
+
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
-	"Shirt",
 	"Harness",
+	"Shirt",
 	// Chest is breasts, should only intersect on bottom and side edges, top is indeterminate
 	"Straps",
 	"Necklace",
@@ -44,8 +49,6 @@ let LAYERS_BASE = [
 	"Underarms",
 	"Corset",
 
-	// For things that go under a corset rather than over
-	"CorsetLining",
 
 
 
@@ -57,17 +60,26 @@ let LAYERS_BASE = [
 
 
 	// Lower body clothes with a bit more bulk
-	"Belt",
-	"Greaves",
 	"SkirtDeco",
 	"Skirt",
 	"PantLeft",
 	"PantRight",
 	"Pants",
+
+
+	// Shoes
+
+	"ShoeLeft",
+	"ShoeRight",
+
 	// Lower body underwear
 	"StockingLeft",
 	"StockingRight",
 	"Panties",
+
+	// Upper body underwear and bodysuits
+	"CorsetLiner",
+	"Bodysuit",
 
 	// Lower body body - reserved for body and catsuits
 	// Note that the lower torso is complex, you should avoid internal overlaps as much as possible

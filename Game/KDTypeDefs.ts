@@ -2024,4 +2024,5 @@ type SpecialCondition = {
 type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
 
 declare const PIXI: any;
+declare const __filters: any;
 declare const zip: any;

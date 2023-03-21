@@ -227,7 +227,7 @@ function KinkyDungeonDressPlayer(Character) {
 		}
 
 		for (let clothes of KDGetDressList()[KinkyDungeonCurrentDress]) {
-			if (alreadyClothed[clothes.Group]) continue;
+			if (alreadyClothed[clothes.Group || clothes.Item]) continue;
 			data.updateDress = true;
 			if (!clothes.Lost && KinkyDungeonCheckClothesLoss) {
 				if (clothes.Group == "Necklace") {
@@ -262,15 +262,15 @@ function KinkyDungeonDressPlayer(Character) {
 			if (!clothes.Lost) {
 				if (KinkyDungeonCheckClothesLoss) {
 					let item = KDInventoryWear(clothes.Item, clothes.Group, undefined, clothes.Color);
-					alreadyClothed[clothes.Group] = true;
+					alreadyClothed[clothes.Group || clothes.Item] = true;
 					if (clothes.OverridePriority) {
 						if (item) {
 							if (!item.Property) item.Property = {OverridePriority: clothes.OverridePriority};
 							else item.Property.OverridePriority = clothes.OverridePriority;
 						}
-					} else if (KDClothOverrides[clothes.Group] && KDClothOverrides[clothes.Group][clothes.Item] != undefined) {
-						if (!item.Property) item.Property = {OverridePriority: KDClothOverrides[clothes.Group][clothes.Item]};
-						else item.Property.OverridePriority = KDClothOverrides[clothes.Group][clothes.Item];
+					} else if (KDClothOverrides[clothes.Group || clothes.Item] && KDClothOverrides[clothes.Group || clothes.Item][clothes.Item] != undefined) {
+						if (!item.Property) item.Property = {OverridePriority: KDClothOverrides[clothes.Group || clothes.Item][clothes.Item]};
+						else item.Property.OverridePriority = KDClothOverrides[clothes.Group || clothes.Item][clothes.Item];
 					}
 					if (clothes.Property) item.Property = clothes.Property;
 					// Ignored because BC uses string[] as a type!

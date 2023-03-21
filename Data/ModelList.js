@@ -182,7 +182,7 @@ AddModel({
 AddModel({
 	Name: "Pauldrons",
 	Folder: "ArmorPlate",
-	Parent: "HeavyArmor",
+	Parent: "PlateArmor",
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		{ Name: "Pauldrons", Layer: "Shoulders", Pri: 8,
@@ -195,7 +195,7 @@ AddModel({
 AddModel({
 	Name: "Breastplate",
 	Folder: "ArmorPlate",
-	Parent: "HeavyArmor",
+	Parent: "PlateArmor",
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		{ Name: "Breastplate", Layer: "Chestplate", Pri: 25,
@@ -210,24 +210,24 @@ AddModel({
 
 AddModel({
 	Name: "PlateBoots",
-	Folder: "HeavyArmor",
-	Parent: "HeavyArmor",
+	Folder: "ArmorPlate",
+	Parent: "PlateArmor",
 	Categories: ["Shoes"],
 	Layers: ToLayerMap([
-		{ Name: "BootLeft", Layer: "ShoeLeft", Pri: 10,
+		{ Name: "BootLeft", Layer: "ShoeLeft", Pri: 25,
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
 			HideWhenOverridden: true,
 		},
-		{ Name: "BootRight", Layer: "ShoeRight", Pri: 10,
+		{ Name: "BootRight", Layer: "ShoeRight", Pri: 25,
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel"]),
 			HideWhenOverridden: true,
 		},
-		{ Name: "BootRightKneel", Layer: "FootRightKneel", Pri: 10,
+		{ Name: "BootRightKneel", Layer: "FootRightKneel", Pri: 25,
 			Poses: ToMap(["Kneel"]),
 			HideWhenOverridden: true,
 			Invariant: true,
 		},
-		{ Name: "BootLeftHogtie", Layer: "FootLeftHogtie", Pri: 10,
+		{ Name: "BootLeftHogtie", Layer: "FootLeftHogtie", Pri: 25,
 			Poses: ToMap(["Hogtie"]),
 			HideWhenOverridden: true,
 			Invariant: true,
@@ -235,10 +235,41 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "Gauntlets",
+	Folder: "ArmorPlate",
+	Parent: "PlateArmor",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GauntletLeft", Layer: "GloveLeft", Pri: 15,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Boxtie"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "GauntletRight", Layer: "GloveRight", Pri: 15,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "PlateArmor",
+	Folder: "ArmorPlate",
+	TopLevel: true,
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Breastplate"),
+		...GetModelLayers("Pauldrons"),
+		...GetModelLayers("PlateBoots"),
+		...GetModelLayers("Gauntlets"),
+	])
+});
+
 AddModel({
 	Name: "ChainShirt",
 	Folder: "ArmorChain",
-	Parent: "MediumArmor",
+	Parent: "ChainArmor",
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		{ Name: "ShirtChest", Layer: "Chest", Pri: 5,
@@ -257,7 +288,7 @@ AddModel({
 AddModel({
 	Name: "ChainSkirt",
 	Folder: "ArmorChain",
-	Parent: "MediumArmor",
+	Parent: "ChainArmor",
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Greaves", Pri: 15,
@@ -268,20 +299,10 @@ AddModel({
 	])
 });
 
-AddModel({
-	Name: "HeavyArmor",
-	Folder: "ArmorPlate",
-	TopLevel: true,
-	Categories: ["Armor"],
-	Layers: ToLayerMap([
-		...GetModelLayers("Breastplate"),
-		...GetModelLayers("Pauldrons"),
-	])
-});
 
 AddModel({
-	Name: "MediumArmor",
-	Folder: "ChainArmor",
+	Name: "ChainArmor",
+	Folder: "ArmorChain",
 	TopLevel: true,
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
@@ -354,7 +375,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
-		{ Name: "Apron", Layer: "SkirtDeco", Pri: 30,
+		{ Name: "Apron", Layer: "BeltDeco", Pri: 30,
 			Poses: ToMap([...LEGPOSES]),
 			HideWhenOverridden: true,
 			MorphPoses: {Kneel: "Kneel"},
@@ -369,7 +390,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Tops"],
 	Layers: ToLayerMap([
-		{ Name: "Blouse", Layer: "CorsetLining", Pri: 3,
+		{ Name: "Blouse", Layer: "CorsetLiner", Pri: 3,
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
 			Invariant: true,
@@ -507,6 +528,47 @@ AddModel({
 		...GetModelLayers("MaidSocks"),
 		...GetModelLayers("MaidShoes"),
 		...GetModelLayers("MaidBow"),
+	])
+});
+
+
+
+
+AddModel({
+	Name: "WitchSkirt",
+	Folder: "Witch",
+	Parent: "Witch",
+	TopLevel: true,
+	Categories: ["Skirts"],
+	Layers: ToLayerMap([
+		{ Name: "Skirt", Layer: "Skirt", Pri: 14,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel"},
+			Invariant: true,
+		},
+		{ Name: "SkirtBelt", Layer: "Skirt", Pri: 14.1,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel"},
+			Invariant: true,
+		},
+		{ Name: "SkirtRuffle", Layer: "Skirt", Pri: 14.1,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel"},
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "Witch",
+	Folder: "Witch",
+	TopLevel: true,
+	Categories: ["Uniforms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("WitchSkirt"),
 	])
 });
 
