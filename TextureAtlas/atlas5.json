@@ -1,0 +1,149 @@
+{"frames": {
+
+"Models/ArmorChain/ShirtChestHogtie.png":
+{
+	"frame": {"x":363,"y":2325,"w":554,"h":413},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":890,"y":835,"w":554,"h":413},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Bandit/Breastplate.png":
+{
+	"frame": {"x":781,"y":2325,"w":555,"h":490},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":880,"y":840,"w":555,"h":490},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Body/ArmRightFree.png":
+{
+	"frame": {"x":781,"y":3207,"w":615,"h":1246},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":431,"y":183,"w":615,"h":1246},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Body/Chest.png":
+{
+	"frame": {"x":602,"y":2882,"w":529,"h":299},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":894,"y":951,"w":529,"h":299},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Body/Head.png":
+{
+	"frame": {"x":1275,"y":2080,"w":630,"h":1125},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":938,"y":198,"w":630,"h":1125},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Body/LegLeftKneel.png":
+{
+	"frame": {"x":1278,"y":408,"w":1039,"h":631},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":777,"y":1538,"w":1039,"h":631},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/ForeArmLeftFront.png":
+{
+	"frame": {"x":1,"y":1,"w":1072,"h":1275},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":431,"y":183,"w":1072,"h":1275},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/LegLeftHogtie.png":
+{
+	"frame": {"x":1,"y":2325,"w":360,"h":859},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1157,"y":1553,"w":360,"h":859},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/LegLeftKneel.png":
+{
+	"frame": {"x":1275,"y":1449,"w":771,"h":629},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":776,"y":1537,"w":771,"h":629},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Labcoat/CoatKneel.png":
+{
+	"frame": {"x":1,"y":1075,"w":1272,"h":1248},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":925,"y":814,"w":1272,"h":1248},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Labcoat/ShouldersYoked.png":
+{
+	"frame": {"x":1,"y":3207,"w":880,"h":303},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":825,"y":773,"w":880,"h":303},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Maid/BlouseBust.png":
+{
+	"frame": {"x":1049,"y":3824,"w":543,"h":265},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":885,"y":988,"w":543,"h":265},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Maid/ShoeRightClosed.png":
+{
+	"frame": {"x":781,"y":3824,"w":267,"h":266},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":912,"y":2980,"w":267,"h":266},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Maid/ShoeRightSpread.png":
+{
+	"frame": {"x":363,"y":2882,"w":237,"h":301},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":985,"y":2986,"w":237,"h":301},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Maid/SkirtClosed.png":
+{
+	"frame": {"x":1278,"y":1,"w":710,"h":405},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":830,"y":1483,"w":710,"h":405},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Maid/SkirtKneel.png":
+{
+	"frame": {"x":306,"y":3186,"w":905,"h":473},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":700,"y":1479,"w":905,"h":473},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Rope/ShoulderStraps.png":
+{
+	"frame": {"x":1594,"y":3824,"w":446,"h":216},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":973,"y":819,"w":446,"h":216},
+	"sourceSize": {"w":2480,"h":3508}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "atlas5.png",
+	"format": "RGBA8888",
+	"size": {"w":2047,"h":4092},
+	"scale": "1",
+	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas6.json", "atlas7.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:fc5d2d67d5e377ab50f92b3ace2caa91:8b01c9fa2feec5af5ba8671601b70963:96a134a413c1b62e00e666ca0c9fbefb$"
+}
+}

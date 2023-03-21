@@ -1,0 +1,181 @@
+{"frames": {
+
+"Models/ArmorPlate/BreastplateHogtie.png":
+{
+	"frame": {"x":1511,"y":3663,"w":533,"h":416},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":894,"y":932,"w":533,"h":416},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Bandit/Choker.png":
+{
+	"frame": {"x":1253,"y":3986,"w":154,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1180,"y":781,"w":154,"h":70},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Bandit/PouchClosed.png":
+{
+	"frame": {"x":463,"y":3747,"w":340,"h":344},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":827,"y":1879,"w":340,"h":344},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Bandit/ShortsHogtie.png":
+{
+	"frame": {"x":1511,"y":1130,"w":759,"h":536},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":798,"y":1446,"w":759,"h":536},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Bandit/WristFree.png":
+{
+	"frame": {"x":1912,"y":1058,"w":87,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1630,"y":1540,"w":87,"h":70},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Bandit/WristFront.png":
+{
+	"frame": {"x":1912,"y":520,"w":114,"h":78},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1245,"y":1086,"w":114,"h":78},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Bandit/WristYoked.png":
+{
+	"frame": {"x":1912,"y":982,"w":97,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1757,"y":786,"w":97,"h":74},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Body/FootRightClosed.png":
+{
+	"frame": {"x":179,"y":3747,"w":282,"h":342},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":919,"y":2898,"w":282,"h":342},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Body/HandLeftFront.png":
+{
+	"frame": {"x":1,"y":1105,"w":1508,"h":999},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":431,"y":183,"w":1508,"h":999},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/ArmLeftHogtie.png":
+{
+	"frame": {"x":809,"y":3747,"w":237,"h":698},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1320,"y":823,"w":237,"h":698},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/ArmRightBoxtie.png":
+{
+	"frame": {"x":1912,"y":1,"w":117,"h":517},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":924,"y":865,"w":117,"h":517},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/ArmRightHogtie.png":
+{
+	"frame": {"x":1912,"y":600,"w":100,"h":189},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":933,"y":866,"w":100,"h":189},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/ArmRightWristtie.png":
+{
+	"frame": {"x":1912,"y":791,"w":100,"h":189},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":933,"y":864,"w":100,"h":189},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/FootLeftKneel.png":
+{
+	"frame": {"x":1,"y":3747,"w":343,"h":176},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1445,"y":1864,"w":343,"h":176},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/HandLeftFront.png":
+{
+	"frame": {"x":1,"y":2106,"w":1508,"h":999},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":431,"y":183,"w":1508,"h":999},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/HandLeftYoked.png":
+{
+	"frame": {"x":1,"y":3107,"w":1508,"h":638},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":431,"y":185,"w":1508,"h":638},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/SleevelessTorsoUpper.png":
+{
+	"frame": {"x":1511,"y":3049,"w":533,"h":612},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":891,"y":765,"w":533,"h":612},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/TorsoLower.png":
+{
+	"frame": {"x":1511,"y":1891,"w":577,"h":534},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":897,"y":1312,"w":577,"h":534},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Catsuit/TorsoLowerHogtie.png":
+{
+	"frame": {"x":1511,"y":2470,"w":577,"h":534},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":897,"y":1314,"w":577,"h":534},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Labcoat/CoatYoked.png":
+{
+	"frame": {"x":1,"y":1,"w":1102,"h":1909},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":791,"y":1136,"w":1102,"h":1909},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Rope/ChestUpper.png":
+{
+	"frame": {"x":809,"y":3986,"w":442,"h":79},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":977,"y":959,"w":442,"h":79},
+	"sourceSize": {"w":2480,"h":3508}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "atlas0.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":4091},
+	"scale": "1",
+	"related_multi_packs": [ "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:fc5d2d67d5e377ab50f92b3ace2caa91:8b01c9fa2feec5af5ba8671601b70963:96a134a413c1b62e00e666ca0c9fbefb$"
+}
+}

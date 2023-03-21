@@ -207,10 +207,38 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "PlateBoots",
+	Folder: "HeavyArmor",
+	Parent: "HeavyArmor",
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		{ Name: "BootLeft", Layer: "ShoeLeft", Pri: 10,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "BootRight", Layer: "ShoeRight", Pri: 10,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "BootRightKneel", Layer: "FootRightKneel", Pri: 10,
+			Poses: ToMap(["Kneel"]),
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+		{ Name: "BootLeftHogtie", Layer: "FootLeftHogtie", Pri: 10,
+			Poses: ToMap(["Hogtie"]),
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+	])
+});
+
 AddModel({
 	Name: "ChainShirt",
 	Folder: "ArmorChain",
-	Parent: "HeavyArmor",
+	Parent: "MediumArmor",
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		{ Name: "ShirtChest", Layer: "Chest", Pri: 5,
@@ -227,6 +255,20 @@ AddModel({
 });
 
 AddModel({
+	Name: "ChainSkirt",
+	Folder: "ArmorChain",
+	Parent: "MediumArmor",
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "Skirt", Layer: "Greaves", Pri: 15,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Hogtie: "Hogtie", Kneel: "Kneel"},
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
 	Name: "HeavyArmor",
 	Folder: "ArmorPlate",
 	TopLevel: true,
@@ -234,6 +276,17 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("Breastplate"),
 		...GetModelLayers("Pauldrons"),
+	])
+});
+
+AddModel({
+	Name: "MediumArmor",
+	Folder: "ChainArmor",
+	TopLevel: true,
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		...GetModelLayers("ChainShirt"),
+		...GetModelLayers("ChainSkirt"),
 	])
 });
 
@@ -411,17 +464,21 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "ShoeLeft", Layer: "ShoeLeft", Pri: 1,
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
+			HideWhenOverridden: true,
 		},
 		{ Name: "ShoeRight", Layer: "ShoeRight", Pri: 1,
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel"]),
+			HideWhenOverridden: true,
 		},
 		{ Name: "ShoeRightKneel", Layer: "FootRightKneel", Pri: 1,
 			Poses: ToMap(["Kneel"]),
 			Invariant: true,
+			HideWhenOverridden: true,
 		},
 		{ Name: "ShoeLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
 			Poses: ToMap(["Hogtie"]),
 			Invariant: true,
+			HideWhenOverridden: true,
 		},
 	])
 });

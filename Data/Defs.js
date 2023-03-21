@@ -57,6 +57,8 @@ let LAYERS_BASE = [
 
 
 	// Lower body clothes with a bit more bulk
+	"Belt",
+	"Greaves",
 	"SkirtDeco",
 	"Skirt",
 	"PantLeft",

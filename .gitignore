@@ -12,6 +12,8 @@
 !/Mods/example_enemy.zip
 !/Mods/example_enemy/**/*
 !/Data/**/*
+!/Models/**/*
+!/TextureAtlas/**/*
 
 !/.editorconfig
 !/.eslintrc.json
