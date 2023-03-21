@@ -520,13 +520,10 @@ function KinkyDungeonLockableItems() {
 	for (let gr of KinkyDungeonStruggleGroupsBase) {
 		let g = gr;
 		if (gr == "ItemM") {
-			if (KinkyDungeonGetRestraintItem("ItemMouth2")) g = "ItemMouth3";
-			else if (KinkyDungeonGetRestraintItem("ItemMouth")) g = "ItemMouth2";
-			else g = "ItemMouth";
+			g = "ItemMouth";
 		}
 		if (gr == "ItemH") {
-			if (KinkyDungeonGetRestraintItem("ItemHood")) g = "ItemHood";
-			else g = "ItemHead";
+			g = "ItemHead";
 		}
 		let currentItem = KinkyDungeonGetRestraintItem(g);
 		if (currentItem && !currentItem.lock && KinkyDungeonIsLockable(KDRestraint(currentItem))) {
