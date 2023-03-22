@@ -61,6 +61,8 @@ interface Model extends Namable {
     Parent?: string,
     /** Default string of colors*/
     DefaultColor?: string[],
+	/** Color definition */
+	Filters?: Record<string, LayerFilter>,
 }
 
 interface ModelLayer extends Namable {
@@ -86,8 +88,27 @@ interface ModelLayer extends Namable {
 	AppendPoseRequire?: Record<string, boolean>,
 	/** This layer gets hidden if something else is higher on the priority list */
 	HideWhenOverridden?: boolean
+	/** This layer does not affect the max priority level */
+	NoOverride?: boolean,
+	/** Hide this layer if the other layer does not show */
+	TieToLayer?: string,
 	/** The name is as is */
-	Invariant?: boolean
+	Invariant?: boolean,
+	/** Disables color filters */
+	NoColorize?: boolean,
+	/** Inherits colorization from another layer */
+	InheritColor?: string,
+}
+
+type LayerFilter = {
+    gamma: number;
+    saturation: number;
+    contrast: number;
+    brightness: number;
+    red: number;
+    green: number;
+    blue: number;
+    alpha: number;
 }
 
 interface Namable {

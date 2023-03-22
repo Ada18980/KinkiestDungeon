@@ -90,6 +90,7 @@ function KinkyDungeonDressSet() {
 					KDGetDressList().Default.push({
 						Item: C.Appearance[A].Model?.Name || C.Appearance[A].Asset?.Name,
 						Group: C.Appearance[A].Model?.Group,
+						Filters: C.Appearance[A].Model?.Filters,
 						Property: C.Appearance[A].Property,
 						Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Model.DefaultColor ? C.Appearance[A].Model.DefaultColor : "Default"),
 						Lost: false,
@@ -261,7 +262,7 @@ function KinkyDungeonDressPlayer(Character) {
 
 			if (!clothes.Lost) {
 				if (KinkyDungeonCheckClothesLoss) {
-					let item = KDInventoryWear(clothes.Item, clothes.Group, undefined, clothes.Color);
+					let item = KDInventoryWear(clothes.Item, clothes.Group, undefined, clothes.Color, clothes.Filters);
 					alreadyClothed[clothes.Group || clothes.Item] = true;
 					if (clothes.OverridePriority) {
 						if (item) {
@@ -286,7 +287,7 @@ function KinkyDungeonDressPlayer(Character) {
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if (KinkyDungeonCheckClothesLoss)
 				if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
-					KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color);
+					KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color, KDRestraint(inv).Filters);
 				}
 		}
 		if (KinkyDungeonCheckClothesLoss)
@@ -476,6 +477,7 @@ function KinkyDungeonWearForcedClothes(restraints) {
 
 					if (!canReplace) {return;}
 					if (KDProtectedCosplay.includes(dress.Group)){return;}
+					let filters = dress.Filters;
 					let color = (typeof dress.Color === "string") ? [dress.Color] : dress.Color;
 					let faction = inv.faction;
 					if (inv.faction)
@@ -489,7 +491,7 @@ function KinkyDungeonWearForcedClothes(restraints) {
 						}
 					// @ts-ignore
 					if (dress.useHairColor && InventoryGet(KinkyDungeonPlayer, "HairFront")) color = InventoryGet(KinkyDungeonPlayer, "HairFront").Color;
-					let item = KDInventoryWear(dress.Item, dress.Group, inv.name, color);
+					let item = KDInventoryWear(dress.Item, dress.Group, inv.name, color, filters);
 
 					if (dress.OverridePriority) {
 						if (item) {
@@ -528,13 +530,14 @@ function KinkyDungeonGetOutfit(Name) {
  * @param {string} AssetGroup - The name of the asset group to wear
  * @param {string} par - parent item
  * @param {string | string[]} color - parent item
+ * @param {Record<string, LayerFilter>} filters - parent item
  */
-function KDInventoryWear(AssetName, AssetGroup, par, color) {
+function KDInventoryWear(AssetName, AssetGroup, par, color, filters) {
 	const M = StandalonePatched ? ModelDefs[AssetName] : undefined;
 	const A = StandalonePatched ? undefined : AssetGet(KinkyDungeonPlayer.AssetFamily, AssetGroup, AssetName);
 	if ((StandalonePatched && !M) || (!StandalonePatched && !A)) return;
 	let item = StandalonePatched ?
-		KDAddModel(KinkyDungeonPlayer, AssetGroup, M, color || "Default")
+		KDAddModel(KinkyDungeonPlayer, AssetGroup, M, color || "Default", filters)
 		: KDAddAppearance(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor);
 	//CharacterAppearanceSetItem(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor,0,-1, false);
 	CharacterRefresh(KinkyDungeonPlayer, true);
@@ -601,7 +604,7 @@ function KDApplyItem(inv, tags) {
 		let placed = null;
 
 		if (!restraint.armor || KDToggles.DrawArmor) {
-			placed = KDAddModel(KinkyDungeonPlayer, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], color, undefined, undefined, undefined, inv);
+			placed = KDAddModel(KinkyDungeonPlayer, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], color, restraint.Filters, inv);
 		}
 
 		if (placed) {

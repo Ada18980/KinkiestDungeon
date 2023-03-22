@@ -264,7 +264,7 @@ function KDDrawTileEditor() {
 		if (!pixirendererKD) {
 			if (KinkyDungeonContext && KinkyDungeonCanvas) {
 				// @ts-ignore
-				pixirendererKD = new PIXI.Renderer({
+				pixirendererKD = new PIXI.CanvasRenderer({
 					// @ts-ignore
 					width: KinkyDungeonCanvas.width,
 					// @ts-ignore
@@ -543,7 +543,7 @@ function KDDrawEditorUI() {
 	}, true, 1910, 10, 80, 40, "Test Tile", "#ffffff", "");
 
 	DrawButtonKDEx("CopyClip", () => {
-		let text = JSON.stringify(KDMapTilesListEditor);
+		var text = JSON.stringify(KDMapTilesListEditor);
 		navigator.clipboard.writeText(text).then(function() {
 			console.log('Async: Copying to clipboard was successful!');
 			console.log(KDMapTilesListEditor);
@@ -628,7 +628,7 @@ function KDDrawEditorUI() {
 	}, true, 1250, 950, 175, 45, "Load tile from Clipboard", "#ffffff", "");
 
 	DrawButtonKDEx("MakeTileCB", () => {
-		let text = JSON.stringify(KDTE_ExportTile());
+		var text = JSON.stringify(KDTE_ExportTile());
 		navigator.clipboard.writeText(text).then(function() {
 			console.log('Async: Copying to clipboard was successful!');
 		}, function(err) {

@@ -61,7 +61,7 @@ class ModelContainer {
 	 * @param {Model} Model
 	 */
 	addModel(Model) {
-		this.Models.set(Model.Name, Model);
+		this.Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
 	}
 	/**
 	 * Deletes a model to the modelcontainer
@@ -164,7 +164,8 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods, ContainerContainer) {
 	MC.HighestPriority = {};
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
-			MC.HighestPriority[l.Layer] = Math.max(MC.HighestPriority[l.Layer] || -500, l.Pri || -500);
+			if (!l.NoOverride)
+				MC.HighestPriority[l.Layer] = Math.max(MC.HighestPriority[l.Layer] || -500, l.Pri || -500);
 		}
 	}
 
@@ -184,11 +185,19 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods, ContainerContainer) {
 		mods[m.Layer].push(m);
 	}
 
+	/** @type {Record<string, boolean>} */
+	let drawLayers = {};
+
+	for (let m of Models.values()) {
+		for (let l of Object.values(m.Layers)) {
+			drawLayers[m.Name + "," + l.Name] = ModelDrawLayer(MC, m, l, MC.Poses);
+		}
+	}
 
 	// Now that we have the final list of models we do a KDDraw
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
-			if (ModelDrawLayer(MC, m, l, MC.Poses)) {
+			if (drawLayers[m.Name + "," + l.Name] && !ModelLayerHidden(drawLayers, MC, m, l, MC.Poses)) {
 				let ox = 0;
 				let oy = 0;
 				let ax = 0;
@@ -224,6 +233,7 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods, ContainerContainer) {
 						anchory: ay,
 						scalex: sx != 1 ? sx : undefined,
 						scaley: sy != 1 ? sy : undefined,
+						filters: m.Filters ? (m.Filters[l.InheritColor || l.Name] ? [new __filters.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])] : undefined) : undefined,
 					}, false,
 					ContainerContainer.SpritesDrawn,
 					Zoom
@@ -269,6 +279,23 @@ function ModelDrawLayer(MC, Model, Layer, Poses) {
 	}
 	// TODO filter hide
 	return true;
+}
+
+/**
+ * Determines if we should draw this layer or not
+ * @param {Record<string, boolean>} drawLayers
+ * @param {ModelContainer} MC
+ * @param {Model} Model
+ * @param {ModelLayer} Layer
+ * @param {Record<string, boolean>} Poses
+ * @returns {boolean}
+ */
+function ModelLayerHidden(drawLayers, MC, Model, Layer, Poses) {
+	// Hide if not highest
+	if (Layer.TieToLayer) {
+		if (!drawLayers[Model.Name + "," + Layer.Name]) return true;
+	}
+	return false;
 }
 
 /**
@@ -364,7 +391,7 @@ function UpdateModels(MC) {
 	let appearance = MC.Character.Appearance;
 	for (let A of appearance) {
 		if (A.Model) {
-			MC.addModel(ModelDefs[A.Model.Name]);
+			MC.addModel(A.Model);
 		}
 	}
 
@@ -375,4 +402,19 @@ function UpdateModels(MC) {
 	//MC.addModel(ModelDefs.Breastplate);
 	MC.addModel(ModelDefs.Bandit);
 	*/
+}
+
+/**
+ * Returns a list of colorable layer names
+ * @param {Model} Model
+ * @returns {string[]}
+ */
+function KDGetColorableLayers(Model) {
+	let ret = [];
+	for (let layer of Object.values(Model.Layers)) {
+		if (!layer.NoColorize && !layer.InheritColor) {
+			ret.push(layer.Name);
+		}
+	}
+	return ret;
 }

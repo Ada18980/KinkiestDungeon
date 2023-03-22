@@ -997,7 +997,7 @@ function KinkyDungeonRun() {
 				CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
 			KinkyDungeonConfigAppearance = true;
 			return true;
-		}, true, 25, 942, 450, 50, TextGet("KinkyDungeonDressPlayer"), "#ffffff", "");
+		}, true, 30, 942, 440, 50, TextGet("KinkyDungeonDressPlayer"), "#ffffff", "");
 
 
 		DrawButtonVis(1850, 942, 135, 50, TextGet("KinkyDungeonCredits"), "#ffffff", "");
@@ -1696,6 +1696,7 @@ function KinkyDungeonRun() {
 	//MainCanvas.textBaseline = "middle";
 
 	KDLastButtonsCache = {};
+	MouseClicked = false;
 }
 
 /**
@@ -2427,9 +2428,14 @@ function KinkyDungeonKeyDown() {
 
 
 let mouseDown = false;
+let MouseClicked = false;
 
 window.addEventListener('mousedown', function() {
 	mouseDown = true;
+	MouseClicked = true;
+});
+window.addEventListener('touchstart', function() {
+	MouseClicked = true;
 });
 window.addEventListener('mouseup', function() {
 	mouseDown = false;

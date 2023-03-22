@@ -3990,15 +3990,11 @@ function KDAddAppearance(C, Group, ItemAsset, NewColor, DifficultyFactor, ItemMe
  * @param {string} Group - The name of the corresponding groupr for the item
  * @param {Model} ItemModel - The asset collection of the item to be changed
  * @param {string|string[]} NewColor - The new color (as "#xxyyzz" hex value) for that item
- * @param {number} [DifficultyFactor=0] - The difficulty, on top of the base asset difficulty, that should be assigned
- * to the item
- * @param {number} [ItemMemberNumber=-1] - The member number of the player adding the item - defaults to -1
- * @param {boolean} [Refresh=true] - Determines, wether the character should be redrawn after the item change
  * @param {item} [item] - The item, to pass to the event
+ * @param {Record<string, LayerFilter>} filters - The item, to pass to the event
  * @returns {Item} - the item itself
  */
-function KDAddModel(C, Group, ItemModel, NewColor, DifficultyFactor, ItemMemberNumber, Refresh, item) {
-	DifficultyFactor = 0;
+function KDAddModel(C, Group, ItemModel, NewColor, filters, item) {
 
 	// Unlike the stock function, we do NOT remove the previous one
 	let data = {
@@ -4013,11 +4009,13 @@ function KDAddModel(C, Group, ItemModel, NewColor, DifficultyFactor, ItemMemberN
 		/** @type {Item} */
 		const NA = {
 			// @ts-ignore
-			Model: ItemModel,
+			Model: JSON.parse(JSON.stringify(ItemModel)),
 			Difficulty: 0,//parseInt((ItemModel.Difficulty == null) ? 0 : ItemModel.Difficulty) + parseInt(DifficultyFactor),
 			Color: data.color,
 			Property: undefined,
+			Filters: filters,
 		};
+		NA.Model.Filters = NA.Filters || NA.Model.Filters;
 		C.Appearance.push(NA);
 		return NA;
 	}

@@ -122,6 +122,8 @@ type KDHasTags = {
 }
 
 interface KDRestraintProps {
+	/** Used in standalone to replace Color */
+	Filters?: Record<string, LayerFilter>,
 	/** This item is unaffected by shrines */
 	noShrine?:boolean,
 	/** This item is beneficial and player wont try to struggle from it */
@@ -530,6 +532,8 @@ interface overrideDisplayItem {
 	Group: string,
 	/** Color */
 	Color: string[]|string,
+	/** Filters */
+	Filters?: Record<string, LayerFilter>,
 	/** Faction color index */
 	factionColor?: number[][],
 	/** Whether or not it overrides items already on */
@@ -1214,6 +1218,7 @@ type KinkyDungeonDress = {
 	Item: string;
 	Group: string;
 	Color: string | string[];
+	Filters?: Record<string, LayerFilter>;
 	Lost: boolean;
 	NoLose?: boolean;
 	Property?: any,

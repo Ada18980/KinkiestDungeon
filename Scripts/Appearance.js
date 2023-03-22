@@ -393,6 +393,9 @@ function CharacterAppearanceStringify(C) {
 }
 
 function AppearanceItemStringify(Item) {
+	for (let r of Item) {
+		if (r.Model?.Filters) r.Filters = r.Model.Filters;
+	}
 	return JSON.stringify(Item, (key, value) => {
 		if (key === "Asset") {
 			return value.Group.Family + "/" + value.Group.Name + "/" + value.Name;
@@ -415,10 +418,14 @@ function CharacterAppearanceRestore(C, backup) {
 }
 
 function AppearanceItemParse(stringified) {
-	return JSON.parse(stringified, (key, value) => {
+	let ret = JSON.parse(stringified, (key, value) => {
 		if (key === "Model") {
-			return ModelDefs[value];
+			return JSON.parse(JSON.stringify(ModelDefs[value]));
 		}
 		return value;
 	});
+	for (let r of ret) {
+		if (r.Filters && r.Model) r.Model.Filters = r.Filters;
+	}
+	return ret;
 }

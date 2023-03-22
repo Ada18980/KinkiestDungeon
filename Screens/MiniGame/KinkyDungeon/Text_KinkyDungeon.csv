@@ -9876,3 +9876,15 @@ KDWardrobeSave,Confirm Changes
 KDWardrobeBackToWardrobe,Back to Wardrobe
 KDConfirmStrip,Confirm Strip?
 KDDressStrip,Strip Outfit
+
+KDColorSlidergamma,gamma
+KDColorSlidersaturation,saturation
+KDColorSlidercontrast,contrast
+KDColorSliderbrightness,brightness
+KDColorSliderred,red
+KDColorSlidergreen,green
+KDColorSliderblue,blue
+KDColorSlideralpha,alpha
+KDResetLayer,Reset Layer!
+KDCopyLayer,Copy
+KDPasteLayer,Paste

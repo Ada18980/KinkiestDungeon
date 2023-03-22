@@ -684,6 +684,7 @@ interface Item {
 	Asset?: Asset;
 	Model?: Model;
 	Color?: ItemColor;
+	Filters?: Record<string, LayerFilter>;
 	Difficulty?: number;
 	Property?: ItemProperties;
 }
