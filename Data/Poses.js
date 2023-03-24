@@ -8,6 +8,12 @@ let LEGPOSES = ["Spread", "Closed", "Kneel", "Hogtie"];
 let FOOTRIGHTPOSES = ["Spread", "Closed"];
 let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel"];
 let KNEELPOSES = ["Kneel"];
+/** Expressions */
+
+let EYEPOSES = ["EyesNeutral", "EyesSurprised", "EyesDazed", "EyesClosed", "EyesAngry"];
+let BROWPOSES = ["BrowsNeutral", "BrowsAngry", "BrowsAnnoyed", "BrowsSad", "BrowsSurprised"];
+let MOUTHPOSES = ["MouthNeutral", "MouthDazed", "MouthDistracted", "MouthEmbarrassed", "MouthFrown", "MouthSmile", "MouthSurprised", "MouthPout"];
+let BLUSHPOSES = ["BlushLow", "BlushMedium", "BlushHigh", "BlushExtreme"];
 /** Standard GlobalDefaultOverrides, this should be for any pose that's meant to use mostly normal assets */
 let STANDARD_DEFAULTS = ["Hogtie"];
 

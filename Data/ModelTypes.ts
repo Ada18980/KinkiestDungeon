@@ -98,6 +98,14 @@ interface ModelLayer extends Namable {
 	NoColorize?: boolean,
 	/** Inherits colorization from another layer */
 	InheritColor?: string,
+	/** Offset X */
+	OffsetX?: number,
+	/** Offset Y */
+	OffsetY?: number,
+	/** Offset X scale */
+	AnchorModX?: number,
+	/** Offset Y scale */
+	AnchorModY?: number,
 }
 
 type LayerFilter = {

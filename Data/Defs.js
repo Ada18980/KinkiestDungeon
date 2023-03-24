@@ -5,11 +5,18 @@ let LAYERS_BASE = [
 	"Blindfold",
 	"Gag",
 	// Head
+	"Brows",
+	"Hair",
 	"Eyes",
+	"Mouth",
+	"Blush",
 	"Head",
 
 	// Clothes that go over the chest and hang down
 	"Shoulders",
+
+	// Hair mid
+	"HairMid",
 
 	// Collar and collar accessories
 	"CollarAcc",
@@ -104,6 +111,9 @@ let LAYERS_BASE = [
 	// Clothes that go behind
 	"Coat",
 	"Cape",
+
+	// Hair back
+	"HairBack",
 ];
 
 let LayerProperties = {

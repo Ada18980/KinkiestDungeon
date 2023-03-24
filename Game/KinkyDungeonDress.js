@@ -185,6 +185,15 @@ function KinkyDungeonDressPlayer(Character) {
 				}
 
 			}
+			if (StandalonePatched) {
+				if (!newAppearance.Body) newAppearance.Body = {Model: JSON.parse(JSON.stringify(ModelDefs.Body)), Group: "Body", Color: "Default"};
+				if (!newAppearance.Eyes) newAppearance.Eyes = {Model: JSON.parse(JSON.stringify(ModelDefs.KoiEyes)), Group: "Eyes", Color: "Default"};
+				if (!newAppearance.Brows) newAppearance.Brows = {Model: JSON.parse(JSON.stringify(ModelDefs.KoiBrows)), Group: "Brows", Color: "Default"};
+				if (!newAppearance.Mouth) newAppearance.Mouth = {Model: JSON.parse(JSON.stringify(ModelDefs.KoiMouth)), Group: "Mouth", Color: "Default"};
+				if (!newAppearance.Blush) newAppearance.Blush = {Model: JSON.parse(JSON.stringify(ModelDefs.KoiBlush)), Group: "Blush", Color: "Default"};
+				if (!newAppearance.Hair) newAppearance.Hair = {Model: JSON.parse(JSON.stringify(ModelDefs.Braid)), Group: "Hair", Color: "Default"};
+			}
+
 			KinkyDungeonPlayer.Appearance = Object.values(newAppearance);
 
 			//KinkyDungeonPlayer.Appearance = [];

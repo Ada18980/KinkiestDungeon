@@ -13,23 +13,27 @@ let KDOutfitStore = {};
 let KDOutfitOriginalStore = {};
 
 
-let KDModelListMax = 10;
+let KDModelListMax = 13;
 let KDModelListViewSkip = 7;
 
 
 let KDModelList_Categories_index = 0;
-let KDModelList_Categories_viewindex = 0;
+let KDModelList_Categories_viewindex = {index: 0};
 let KDModelList_Categories = [];
 let KDModelList_Toplevel_index = 0;
-let KDModelList_Toplevel_viewindex = 0;
+let KDModelList_Toplevel_viewindex = {index: 0};
 let KDModelList_Toplevel = [];
 let KDModelList_Sublevel_index = 0;
-let KDModelList_Sublevel_viewindex = 0;
+let KDModelList_Sublevel_viewindex = {index: 0};
 let KDModelList_Sublevel = [];
 
 let KDWardrobeCategories = [
 	"Uniforms",
 	"Hairstyles",
+	"Face",
+	"Eyes",
+	"Mouth",
+	"Body",
 	"Suits",
 	"Armor",
 	"Underwear",
@@ -62,7 +66,8 @@ let KDCurrentLayer = "";
 let KDSavedColors = [
 
 ];
-for (let i = 0; i < 8; i++) {
+if (localStorage.getItem("kdcolorfilters")) KDSavedColors = JSON.parse(localStorage.getItem("kdcolorfilters"));
+for (let i = 0; i < 6; i++) {
 	KDSavedColors.push(Object.assign({}, KDColorSliders));
 }
 
@@ -70,9 +75,47 @@ for (let i = 0; i < 8; i++) {
 
 let KDWardrobe_PoseArms = ["Free", "Boxtie", "Wristtie", "Yoked", "Front"];
 let KDWardrobe_PoseLegs = ["Spread", "Closed", "Kneel", "Hogtie"];
+let KDWardrobe_PoseEyes = EYEPOSES;
+let KDWardrobe_PoseBrows = BROWPOSES;
+let KDWardrobe_PoseMouth = MOUTHPOSES;
+let KDWardrobe_PoseBlush = ["BlushNeutral", ...BLUSHPOSES];
 let KDWardrobe_CurrentPoseArms = KDWardrobe_PoseArms[0];
 let KDWardrobe_CurrentPoseLegs = KDWardrobe_PoseLegs[0];
+let KDWardrobe_CurrentPoseEyes = KDWardrobe_PoseEyes[0];
+let KDWardrobe_CurrentPoseBrows = KDWardrobe_PoseBrows[0];
+let KDWardrobe_CurrentPoseMouth = KDWardrobe_PoseMouth[0];
+let KDWardrobe_CurrentPoseBlush = KDWardrobe_PoseBlush[0];
 
+
+function KDDrawSavedColors(X, Y, max, C) {
+	let spacing = 100;
+	let filters = (KDSelectedModel?.Filters ? KDSelectedModel.Filters[KDCurrentLayer] : undefined) || KDColorSliders;
+
+	for (let i = 0; i < max && i < KDSavedColors.length; i++) {
+		KDDraw(kdcanvas, kdpixisprites, "SavedColor" + i, KinkyDungeonRootDirectory + "UI/greyColor.png", X + spacing * i, Y, 64, 64, undefined, {
+			filters: [
+				new __filters.AdjustmentFilter(KDSavedColors[i]),
+			]
+		});
+		DrawButtonKDEx("SavedColorCopy" + i, (bdata) => {
+			if (filters && KDSelectedModel) {
+				KDSavedColors[i] = Object.assign({}, filters);
+				localStorage.setItem("kdcolorfilters", JSON.stringify(KDSavedColors));
+			}
+			return true;
+		}, true, X + spacing * i + 32 - 48, Y + 64, 48, 48, "", "#ffffff", KinkyDungeonRootDirectory + "UI/savedColor_copy.png", undefined, false, true);
+		DrawButtonKDEx("SavedColorPaste" + i, (bdata) => {
+			if (filters && KDSelectedModel) {
+				Object.assign(filters, KDSavedColors[i]);
+				KDChangeWardrobe();
+				if (!KDSelectedModel.Filters) KDSelectedModel.Filters = {};
+				KDSelectedModel.Filters[KDCurrentLayer] = Object.assign({}, filters);
+				KDCurrentModels.get(C).Models.set(KDSelectedModel.Name, JSON.parse(JSON.stringify(KDSelectedModel)));
+			}
+			return true;
+		}, true, X + spacing * i + 32 + 0, Y + 64, 48, 48, "", "#ffffff", KinkyDungeonRootDirectory + "UI/savedColor_paste.png", undefined, false, true);
+	}
+}
 
 /**
  *
@@ -162,25 +205,40 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		};
 	}
 	YY += 60;
+	YY = Y;
 
 	for (let l of layers) {
 		DrawButtonKDEx("SelectLayer" + l, (bdata) => {
 			KDCurrentLayer = l;
 			return true;
-		}, true, X, YY, width, 30, TextGet(`l_${Model.Name}_${l}`),
+		}, true, X - 220, YY, 200, 30, TextGet(`l_${Model.Name}_${l}`),
 		"#ffffff", undefined, undefined, undefined, KDCurrentLayer != l, KDButtonColor);
 		YY += 35;
 	}
 }
 
 function KDDrawPoseButtons(C) {
-	let buttonClick = (arms, legs) => {
+	let buttonClick = (arms, legs, eyes, brows, blush, mouth) => {
 		return (bdata) => {
-			KDWardrobe_CurrentPoseArms = arms;
-			KDWardrobe_CurrentPoseLegs = legs;
-			KDCurrentModels.get(C).Poses = {};
-			KDCurrentModels.get(C).Poses[KDWardrobe_CurrentPoseArms] = true;
-			KDCurrentModels.get(C).Poses[KDWardrobe_CurrentPoseLegs] = true;
+			KDWardrobe_CurrentPoseArms = arms || KDWardrobe_CurrentPoseArms;
+			KDWardrobe_CurrentPoseLegs = legs || KDWardrobe_CurrentPoseLegs;
+			KDWardrobe_CurrentPoseEyes = eyes || KDWardrobe_CurrentPoseEyes;
+			KDWardrobe_CurrentPoseBrows = brows || KDWardrobe_CurrentPoseBrows;
+			KDWardrobe_CurrentPoseBlush = blush || KDWardrobe_CurrentPoseBlush;
+			KDWardrobe_CurrentPoseMouth = mouth || KDWardrobe_CurrentPoseMouth;
+
+			KDCurrentModels.get(C).Poses = KDGeneratePoseArray(
+				KDWardrobe_CurrentPoseArms,
+				KDWardrobe_CurrentPoseLegs,
+				KDWardrobe_CurrentPoseEyes,
+				KDWardrobe_CurrentPoseBrows,
+				KDWardrobe_CurrentPoseBlush,
+				KDWardrobe_CurrentPoseMouth,
+				//KDGetPoseOfType(C, "Eyes"),
+				//KDGetPoseOfType(C, "Brows"),
+				//KDGetPoseOfType(C, "Blush"),
+				//KDGetPoseOfType(C, "Mouth"),
+			);
 			return true;
 		};
 	};
@@ -199,6 +257,30 @@ function KDDrawPoseButtons(C) {
 			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseLegs[i] + ".png",
 			undefined, undefined, KDWardrobe_CurrentPoseLegs != KDWardrobe_PoseLegs[i], KDButtonColor);
 	}
+	for (let i = 0; i < KDWardrobe_PoseEyes.length; i++) {
+		DrawButtonKDEx("PoseEyes" + i, buttonClick("", "", KDWardrobe_PoseEyes[i]), true, 1000 + i*buttonSpacing, 750, buttonWidth, buttonWidth,
+			"",
+			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseEyes[i] + ".png",
+			undefined, undefined, KDWardrobe_CurrentPoseEyes != KDWardrobe_PoseEyes[i], KDButtonColor);
+	}
+	for (let i = 0; i < KDWardrobe_PoseBrows.length; i++) {
+		DrawButtonKDEx("PoseBrows" + i, buttonClick("", "", "", KDWardrobe_PoseBrows[i]), true, 1000 + i*buttonSpacing, 810, buttonWidth, buttonWidth,
+			"",
+			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseBrows[i] + ".png",
+			undefined, undefined, KDWardrobe_CurrentPoseBrows != KDWardrobe_PoseBrows[i], KDButtonColor);
+	}
+	for (let i = 0; i < KDWardrobe_PoseBlush.length; i++) {
+		DrawButtonKDEx("PoseBlush" + i, buttonClick("", "", "", "", KDWardrobe_PoseBlush[i]), true, 1400 + i*buttonSpacing, 750, buttonWidth, buttonWidth,
+			"",
+			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseBlush[i] + ".png",
+			undefined, undefined, KDWardrobe_CurrentPoseBlush != KDWardrobe_PoseBlush[i], KDButtonColor);
+	}
+	for (let i = 0; i < KDWardrobe_PoseMouth.length; i++) {
+		DrawButtonKDEx("PoseMouth" + i, buttonClick("", "", "", "", "", KDWardrobe_PoseMouth[i]), true, 1400 + i*buttonSpacing, 810, buttonWidth, buttonWidth,
+			"",
+			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseMouth[i] + ".png",
+			undefined, undefined, KDWardrobe_CurrentPoseMouth != KDWardrobe_PoseMouth[i], KDButtonColor);
+	}
 }
 
 /**
@@ -209,7 +291,7 @@ function KDUpdateModelList(level = 0) {
 	if (level <= 0) {
 		KDModelList_Categories = [];
 		KDModelList_Categories_index = 0;
-		KDModelList_Categories_viewindex = 0;
+		KDModelList_Categories_viewindex.index = 0;
 		for (let cat of KDWardrobeCategories) {
 			KDModelList_Categories.push(cat);
 		}
@@ -219,7 +301,7 @@ function KDUpdateModelList(level = 0) {
 	if (level <= 1 && category) {
 		KDModelList_Toplevel = [];
 		KDModelList_Toplevel_index = 0;
-		KDModelList_Toplevel_viewindex = 0;
+		KDModelList_Toplevel_viewindex.index = 0;
 		for (let model of Object.entries(ModelDefs)) {
 			if (model[1].TopLevel && model[1].Categories?.includes(category)) {
 				KDModelList_Toplevel.push(model[0]);
@@ -229,21 +311,24 @@ function KDUpdateModelList(level = 0) {
 	}
 	let toplevel = KDModelList_Toplevel[KDModelList_Toplevel_index];
 
-	if (level <= 2 && toplevel) {
+	if (level <= 2) {
 		KDModelList_Sublevel = [];
 		KDModelList_Sublevel_index = 0;
-		KDModelList_Sublevel_viewindex = 0;
-		// Put these at the top of the list
-		for (let model of Object.entries(ModelDefs)) {
-			if (model[1].Parent != toplevel && model[0] == toplevel) {
-				KDModelList_Sublevel.push(model[0]);
+		KDModelList_Sublevel_viewindex.index = 0;
+		if (toplevel) {
+			// Put these at the top of the list
+			for (let model of Object.entries(ModelDefs)) {
+				if (model[1].Parent != toplevel && model[0] == toplevel) {
+					KDModelList_Sublevel.push(model[0]);
+				}
+			}
+			for (let model of Object.entries(ModelDefs)) {
+				if (model[1].Parent == toplevel) {
+					KDModelList_Sublevel.push(model[0]);
+				}
 			}
 		}
-		for (let model of Object.entries(ModelDefs)) {
-			if (model[1].Parent == toplevel) {
-				KDModelList_Sublevel.push(model[0]);
-			}
-		}
+
 
 	}
 }
@@ -262,7 +347,7 @@ function KDChangeWardrobe() {
  *
  * @param {Character} C
  */
-function KDDrawModelList(C) {
+function KDDrawModelList(X, C) {
 	let clickCategory = (index) => {
 		return (bdata) => {
 			KDModelList_Categories_index = index;
@@ -333,29 +418,29 @@ function KDDrawModelList(C) {
 	// Draw each row
 	for (let i = 0; i < KDModelListMax; i++) {
 
-		let index_cat = i + KDModelList_Categories_viewindex;
+		let index_cat = i + KDModelList_Categories_viewindex.index;
 		let category = KDModelList_Categories[index_cat];
 		if (category)
-			DrawButtonKDEx("ClickCategory" + i, clickCategory(index_cat), true, 900, 100 + buttonSpacing * i, 190, buttonHeight,
+			DrawButtonKDEx("ClickCategory" + i, clickCategory(index_cat), true, X+0, 100 + buttonSpacing * i, 190, buttonHeight,
 				category,
 				hasCategories[category] ? "#ffffff" : faded, "",
 				undefined, undefined, index_cat != KDModelList_Categories_index, KDButtonColor);
 
 
-		let index_top = i + KDModelList_Toplevel_viewindex;
+		let index_top = i + KDModelList_Toplevel_viewindex.index;
 		let toplevel = KDModelList_Toplevel[index_top];
 		if (toplevel)
-			DrawButtonKDEx("ClickToplevel" + i, clickToplevel(index_top), true, 1120, 100 + buttonSpacing * i, 190, buttonHeight,
+			DrawButtonKDEx("ClickToplevel" + i, clickToplevel(index_top), true, X+220, 100 + buttonSpacing * i, 190, buttonHeight,
 				toplevel,
 				(KDCurrentModels.get(C).Models.has(toplevel) || hasTopLevel[toplevel]) ? "#ffffff" : faded, "",
 				undefined, undefined, index_top != KDModelList_Toplevel_index, KDButtonColor);
 
 
 
-		let index_sub = i + KDModelList_Sublevel_viewindex;
+		let index_sub = i + KDModelList_Sublevel_viewindex.index;
 		let sublevel = KDModelList_Sublevel[index_sub];
 		if (sublevel) {
-			DrawButtonKDEx("ClickSublevel" + i, clickSublevel(index_sub, sublevel), true, 1340, 100 + buttonSpacing * i, 190, buttonHeight,
+			DrawButtonKDEx("ClickSublevel" + i, clickSublevel(index_sub, sublevel), true, X+440, 100 + buttonSpacing * i, 190, buttonHeight,
 				sublevel,
 				KDCurrentModels.get(C).Models.has(sublevel) ? "#ffffff" : faded, "",
 				undefined, undefined, index_sub != KDModelList_Sublevel_index, KDButtonColor);
@@ -368,14 +453,73 @@ function KDDrawModelList(C) {
 
 		// KDCurrentModels.get(KinkyDungeonPlayer).Models.has(model) ? "#ffffff" : "#888888", "");
 	}
+
+	let cullIndex = () => {
+		KDModelList_Toplevel_viewindex.index = Math.max(0, Math.min(KDModelList_Toplevel.length - 5, KDModelList_Toplevel_viewindex.index));
+		KDModelList_Sublevel_viewindex.index = Math.max(0, Math.min(KDModelList_Sublevel.length - 5, KDModelList_Sublevel_viewindex.index));
+		KDModelList_Categories_viewindex.index = Math.max(0, Math.min(KDModelList_Categories.length - 5, KDModelList_Categories_viewindex.index));
+	};
+
+	DrawButtonKDEx("KDModelList_Toplevel_V", (bdata) => {
+		KDModelList_Toplevel_viewindex.index += 5;
+		cullIndex();
+		return true;
+	}, true, X+220 + 20, 100 + buttonSpacing * KDModelListMax, 150, buttonHeight,
+	"v",
+	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", "");
+
+	DrawButtonKDEx("KDModelList_Toplevel_^", (bdata) => {
+		KDModelList_Toplevel_viewindex.index -= 5;
+		cullIndex();
+		return true;
+	}, true, X+220 + 20, 100 + buttonSpacing * -1, 150, buttonHeight,
+	"^",
+	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+
+	DrawButtonKDEx("KDModelList_Sublevel_V", (bdata) => {
+		KDModelList_Sublevel_viewindex.index += 5;
+		cullIndex();
+		return true;
+	}, true, X+440 + 20, 100 + buttonSpacing * KDModelListMax, 150, buttonHeight,
+	"v",
+	KDModelList_Sublevel_viewindex.index + KDModelListMax < KDModelList_Sublevel_viewindex.index ? "#ffffff" : "#888888", "");
+	DrawButtonKDEx("KDModelList_Sublevel_^", (bdata) => {
+		KDModelList_Sublevel_viewindex.index -= 5;
+		cullIndex();
+		return true;
+	}, true, X+440 + 20, 100 + buttonSpacing * -1, 150, buttonHeight,
+	"^",
+	KDModelList_Sublevel_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+
+
+
+	DrawButtonKDEx("KDModelList_Categories_V", (bdata) => {
+		KDModelList_Categories_viewindex.index += 5;
+		cullIndex();
+		return true;
+	}, true, X+0 + 20, 100 + buttonSpacing * KDModelListMax, 150, buttonHeight,
+	"v",
+	(KDModelList_Categories_viewindex.index + KDModelListMax < KDModelList_Categories_viewindex.index) ? "#ffffff" : "#888888", "");
+	DrawButtonKDEx("KDModelList_Categories_^", (bdata) => {
+		KDModelList_Categories_viewindex.index -= 5;
+		cullIndex();
+		return true;
+	}, true, X+0 + 20, 100 + buttonSpacing * -1, 150, buttonHeight,
+	"^",
+	KDModelList_Categories_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+
+
+	cullIndex();
+
 }
 
 function KDDrawWardrobe(screen, Character) {
 	if (KDOutfitInfo.length == 0) KDRefreshOutfitInfo();
 
 	let C = Character || KinkyDungeonPlayer;
-	KDDrawModelList(C);
+	KDDrawModelList(720, C);
 	KDDrawPoseButtons(C);
+	KDDrawSavedColors(1360, 870, 6, C);
 	if (KDSelectedModel) {
 		KDDrawColorSliders(1600, 100, C, KDSelectedModel);
 	} else {

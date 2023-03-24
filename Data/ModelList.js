@@ -6,13 +6,98 @@
  * 2) Generally you will want to avoid lower pri items on the same layer sticking out on seams if your object is skintight.
  * In general, this is accomplished by having higher priority items cover more of the original
  */
+AddModel({
+	Name: "KoiEyes",
+	Folder: "FaceKoi",
+	TopLevel: true,
+	Group: "Eyes",
+	Categories: ["Eyes","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
+			Sprite: "", // Because pose is called EyesNeutral lol
+			OffsetX: 942,
+			OffsetY: 200,
+			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
+			AnchorModY: MODELHEIGHT/664,
+			Poses: ToMap(EYEPOSES),
+		},
+	])
+});
+
+AddModel({
+	Name: "KoiBrows",
+	Folder: "FaceKoi",
+	TopLevel: true,
+	Group: "Brows",
+	Categories: ["Eyes","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Brows", Layer: "Brows", Pri: 0,
+			Sprite: "", // Because pose is called BrowsNeutral lol
+			OffsetX: 942,
+			OffsetY: 200,
+			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
+			AnchorModY: MODELHEIGHT/664,
+			Poses: ToMap(BROWPOSES),
+		},
+	])
+});
+
+AddModel({
+	Name: "KoiMouth",
+	Folder: "FaceKoi",
+	TopLevel: true,
+	Group: "Mouth",
+	Categories: ["Mouth","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Mouth", Layer: "Mouth", Pri: 0,
+			Sprite: "", // Because pose is called MouthNeutral lol
+			OffsetX: 942,
+			OffsetY: 200,
+			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
+			AnchorModY: MODELHEIGHT/664,
+			Poses: ToMap(MOUTHPOSES),
+		},
+	])
+});
+AddModel({
+	Name: "KoiBlush",
+	Folder: "FaceKoi",
+	TopLevel: true,
+	Group: "Blush",
+	Categories: ["Face"],
+	Layers: ToLayerMap([
+		{ Name: "Blush", Layer: "Blush", Pri: 0,
+			Sprite: "", // Because pose is called MouthNeutral lol
+			OffsetX: 942,
+			OffsetY: 200,
+			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
+			AnchorModY: MODELHEIGHT/664,
+			Poses: ToMap(BLUSHPOSES),
+		},
+	])
+});
+
+
+AddModel({
+	Name: "Braid",
+	Folder: "Hair",
+	TopLevel: true,
+	Group: "Hair",
+	Categories: ["Hairstyles"],
+	Layers: ToLayerMap([
+		{ Name: "Braid", Layer: "Hair", Pri: 0,
+		},
+		{ Name: "BraidBack", Layer: "HairBack", Pri: 0,
+		},
+	])
+});
 
 AddModel({
 	Name: "Body",
+	TopLevel: true,
+	Categories: ["Body"],
 	Folder: "Body",
 	Layers: ToLayerMap([
-		{ Name: "Eyes", Layer: "Eyes", Pri: 100,
-		},
 		{ Name: "Head", Layer: "Head", Pri: 0,
 		},
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 0,

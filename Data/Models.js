@@ -121,10 +121,7 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend =
 		new Map(),
 		new Map(),
 		new Map(),
-		{
-			Free: true,
-			Spread: true,
-		},
+		KDGeneratePoseArray(),
 	) : KDCurrentModels.get(C);
 
 	if (MC.Models.size == 0) UpdateModels(MC);
@@ -229,8 +226,8 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods, ContainerContainer) {
 					ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
 					rot * Math.PI / 180, {
 						zIndex: -ModelLayers[l.Layer] + (l.Pri || 0),
-						anchorx: ax,
-						anchory: ay,
+						anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
+						anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
 						scalex: sx != 1 ? sx : undefined,
 						scaley: sy != 1 ? sy : undefined,
 						filters: m.Filters ? (m.Filters[l.InheritColor || l.Name] ? [new __filters.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])] : undefined) : undefined,
@@ -375,7 +372,7 @@ function LayerSprite(Layer, Poses) {
 		}
 	}
 
-	return (Layer.Sprite ? Layer.Sprite : Layer.Name) + pose;
+	return (Layer.Sprite != undefined ? Layer.Sprite : Layer.Name) + pose;
 }
 
 /**
@@ -386,7 +383,8 @@ function UpdateModels(MC) {
 	MC.Models = new Map();
 
 	// Start with base body
-	MC.addModel(ModelDefs.Body);
+	if (!MC.Models.get("Body"))
+		MC.addModel(ModelDefs.Body);
 
 	let appearance = MC.Character.Appearance;
 	for (let A of appearance) {
@@ -417,4 +415,58 @@ function KDGetColorableLayers(Model) {
 		}
 	}
 	return ret;
+}
+
+/**
+ *
+ * @param {string} [ArmsPose ]
+ * @param {string} [LegsPose ]
+ * @param {string} [EyesPose ]
+ * @param {string} [BrowsPose ]
+ * @param {string} [BlushPose ]
+ * @param {string} [MouthPose ]
+ * @param {string[]} [ExtraPose]
+ * @returns {Record<string, boolean>}
+ */
+function KDGeneratePoseArray(ArmsPose, LegsPose, EyesPose, BrowsPose, BlushPose, MouthPose, ExtraPose) {
+	/** @type {Record<string, boolean>} */
+	let poses = {};
+	poses[ArmsPose || "Free"] = true;
+	poses[LegsPose || "Spread"] = true;
+	poses[EyesPose || "EyesNeutral"] = true;
+	poses[BrowsPose || "BrowsNeutral"] = true;
+	poses[BlushPose || "BlushNone"] = true;
+	poses[MouthPose || "MouthNeutral"] = true;
+	if (ExtraPose) {
+		for (let p of ExtraPose) {
+			poses[p] = true;
+		}
+	}
+	return poses;
+}
+
+
+/**
+ *
+ * @param {Character} C
+ * @param {string} Type
+ * @returns {string}
+ */
+function KDGetPoseOfType(C, Type) {
+	let checkArray = [];
+	switch (Type) {
+		case "Arms": checkArray = ARMPOSES; break;
+		case "Legs": checkArray = LEGPOSES; break;
+		case "Eyes": checkArray = EYEPOSES; break;
+		case "Brows": checkArray = BROWPOSES; break;
+		case "Blush": checkArray = BLUSHPOSES; break;
+		case "Mouth": checkArray = MOUTHPOSES; break;
+	}
+	if (KDCurrentModels.get(C)?.Poses)
+		for (let p of checkArray) {
+			if (KDCurrentModels.get(C).Poses[p]) {
+				return p;
+			}
+		}
+	return "";
 }
