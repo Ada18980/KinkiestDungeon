@@ -107,7 +107,7 @@ function KDDrawSavedColors(X, Y, max, C) {
 		DrawButtonKDEx("SavedColorPaste" + i, (bdata) => {
 			if (filters && KDSelectedModel) {
 				Object.assign(filters, KDSavedColors[i]);
-				KDChangeWardrobe();
+				KDChangeWardrobe(C);
 				if (!KDSelectedModel.Filters) KDSelectedModel.Filters = {};
 				KDSelectedModel.Filters[KDCurrentLayer] = Object.assign({}, filters);
 				KDCurrentModels.get(C).Models.set(KDSelectedModel.Name, JSON.parse(JSON.stringify(KDSelectedModel)));
@@ -150,7 +150,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 				let parsed = JSON.parse(text);
 				if (parsed?.red != undefined && parsed.green != undefined && parsed.blue != undefined) {
 					console.log(Object.assign({}, parsed));
-					KDChangeWardrobe();
+					KDChangeWardrobe(C);
 					if (!Model.Filters) Model.Filters = {};
 					Model.Filters[KDCurrentLayer] = Object.assign({}, parsed);
 					KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
@@ -166,7 +166,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round(filters[key]*10)/10), X + width/2, YY, width, "#ffffff", "#000000", 20);
 		KinkyDungeonBar(X, YY - 15, width, 30, filters[key]/5*100, KDColorSliderColor[key] || "#ffffff", "#000000");
 		if ((mouseDown || MouseClicked) && MouseIn(X, YY - 15, width, 30)) {
-			KDChangeWardrobe();
+			KDChangeWardrobe(C);
 			if (!Model.Filters) Model.Filters = {};
 			if (!Model.Filters[KDCurrentLayer])
 				Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
@@ -192,7 +192,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 					let r = 5.0 * (parseInt(hex.r, 16) / 255.0);
 					let g = 5.0 * (parseInt(hex.g, 16) / 255.0);
 					let b = 5.0 * (parseInt(hex.b, 16) / 255.0);
-					KDChangeWardrobe();
+					KDChangeWardrobe(C);
 					if (!Model.Filters) Model.Filters = {};
 					if (!Model.Filters[KDCurrentLayer])
 						Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
@@ -335,13 +335,14 @@ function KDUpdateModelList(level = 0) {
 }
 
 /** Call BEFORE making any changes */
-function KDChangeWardrobe() {
+function KDChangeWardrobe(C) {
 	try {
 		if (!KDOriginalValue)
 			KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
 	} catch (e) {
 		// Fail
 	}
+	UpdateModels(KDCurrentModels.get(C));
 }
 
 /**
@@ -371,7 +372,7 @@ function KDDrawModelList(X, C) {
 			for (let appIndex = 0; appIndex < C.Appearance.length; appIndex++) {
 				if (C.Appearance[appIndex]?.Model?.Name == name) {
 					if (KDModelList_Sublevel_index == index) {
-						KDChangeWardrobe();
+						KDChangeWardrobe(C);
 						C.Appearance.splice(appIndex, 1);
 						UpdateModels(KDCurrentModels.get(C));
 					}
@@ -382,7 +383,7 @@ function KDDrawModelList(X, C) {
 			if (!removed) {
 				let M = ModelDefs[name];
 				if (M) {
-					KDChangeWardrobe();
+					KDChangeWardrobe(C);
 					KDAddModel(C, M.Group || M.Name, M, "Default", undefined);
 					UpdateModels(KDCurrentModels.get(C));
 				}
@@ -565,7 +566,7 @@ function KDDrawWardrobe(screen, Character) {
 
 	DrawButtonKDEx("ResetOutfit", (bdata) => {
 		if (KDConfirmType == "reset" && KinkyDungeonReplaceConfirm > 0) {
-			KDChangeWardrobe();
+			KDChangeWardrobe(C);
 			KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
 			CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 			CharacterReleaseTotal(KinkyDungeonPlayer);
@@ -588,7 +589,7 @@ function KDDrawWardrobe(screen, Character) {
 	"#ffffff", "");
 	DrawButtonKDEx("StripOutfit", (bdata) => {
 		if (KDConfirmType == "strip" && KinkyDungeonReplaceConfirm > 0) {
-			KDChangeWardrobe();
+			KDChangeWardrobe(C);
 			CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 			CharacterReleaseTotal(KinkyDungeonPlayer);
 			KinkyDungeonSetDress("Bikini", "Bikini");
@@ -661,7 +662,7 @@ function KDDrawWardrobe(screen, Character) {
 
 function KDSaveCodeOutfit() {
 	// Save outfit
-	KDChangeWardrobe();
+	KDChangeWardrobe(KinkyDungeonPlayer);
 	let decompressed = LZString.decompressFromBase64(ElementValue("saveInputField"));
 	let stringified = "";
 	if (decompressed) {

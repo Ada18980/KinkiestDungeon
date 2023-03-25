@@ -240,11 +240,17 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods, ContainerContainer) {
 					layer = LayerProperties[layer]?.Parent;
 				}
 
+				let fh = m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name]) : "") : "";
+				let filter = m.Filters ? (m.Filters[l.InheritColor || l.Name] ?
+					(KDAdjustmentFilterCache.get(fh) || [new __filters.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])])
+					: undefined) : undefined;
+				if (filter && !KDAdjustmentFilterCache.get(fh)) KDAdjustmentFilterCache.set(FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
+				let img = ModelLayerString(m, l, MC.Poses);
 				KDDraw(
 					ContainerContainer.Container,
 					ContainerContainer.SpriteList,
-					`layer_${m.Name}_${l.Name}`,
-					ModelLayerString(m, l, MC.Poses),
+					`layer_${m.Name}_${l.Name}_${img}_${fh}`,
+					img,
 					ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
 					rot * Math.PI / 180, {
 						zIndex: -ModelLayers[l.Layer] + (l.Pri || 0),
@@ -252,7 +258,8 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods, ContainerContainer) {
 						anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
 						scalex: sx != 1 ? sx : undefined,
 						scaley: sy != 1 ? sy : undefined,
-						filters: m.Filters ? (m.Filters[l.InheritColor || l.Name] ? [new __filters.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])] : undefined) : undefined,
+						filters: filter,
+						cacheAsBitmap: filter != undefined,
 					}, false,
 					ContainerContainer.SpritesDrawn,
 					Zoom
@@ -261,6 +268,14 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods, ContainerContainer) {
 		}
 	}
 }
+
+function FilterHash(filter) {
+	let str = "";
+	for (let f of Object.values(filter)) str = str + "_" + Math.round(f*1000);
+	return str;
+}
+
+let KDAdjustmentFilterCache = new Map();
 
 /**
  * Determines if we should draw this layer or not

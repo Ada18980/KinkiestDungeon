@@ -771,6 +771,8 @@ async function sleep(msec) {
 	return new Promise(resolve => setTimeout(resolve, msec));
 }
 
+let KDMarkAsCache = [];
+
 function KinkyDungeonRun() {
 	if (KDCurrentModels)
 		for (let MC of KDCurrentModels.values()) {
@@ -1698,6 +1700,7 @@ function KinkyDungeonRun() {
 
 	KDLastButtonsCache = {};
 	MouseClicked = false;
+
 }
 
 let kdTrackGameBoard = false;

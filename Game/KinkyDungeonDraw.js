@@ -2764,21 +2764,26 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 		if (Rotation != undefined)
 			sprite.rotation = Rotation;
 		if (options) {
-			for (let o of Object.entries(options)) {
-				sprite[o[0]] = o[1];
+			if (options.filters && sprite.cacheAsBitmap) {
+				sprite.filters = null;
+			} else {
+				for (let o of Object.entries(options)) {
+					sprite[o[0]] = o[1];
+				}
+				if (options.scalex != undefined) {
+					sprite.scale.x = sprite.scale.x * options.scalex;
+				}
+				if (options.scaley != undefined) {
+					sprite.scale.y = sprite.scale.y * options.scaley;
+				}
+				if (options.anchorx != undefined) {
+					sprite.anchor.x = options.anchorx;
+				}
+				if (options.anchory != undefined) {
+					sprite.anchor.y = options.anchory;
+				}
 			}
-			if (options.scalex != undefined) {
-				sprite.scale.x = sprite.scale.x * options.scalex;
-			}
-			if (options.scaley != undefined) {
-				sprite.scale.y = sprite.scale.y * options.scaley;
-			}
-			if (options.anchorx != undefined) {
-				sprite.anchor.x = options.anchorx;
-			}
-			if (options.anchory != undefined) {
-				sprite.anchor.y = options.anchory;
-			}
+
 		}
 		if (SpritesDrawn)
 			SpritesDrawn.set(id, true);
