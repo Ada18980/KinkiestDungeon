@@ -37,6 +37,7 @@ kdcanvas.addChild(kdgameboard);
 // @ts-ignore
 let kdparticles = new PIXI.Container();
 kdparticles.sortableChildren = true;
+kdcanvas.addChild(kdparticles);
 //kdgameboard.addChild(kdparticles);
 
 let KDTextWhite = "#ffffff";
@@ -1138,43 +1139,44 @@ function KinkyDungeonDrawGame() {
 				}
 
 
-				// Draw the context layer even if we haven't updated it
-				if (pixirendererKD) {
-					pixirendererKD.render(kdgameboard, {
-						clear: false,
-					});
-				}
 
-				// Draw the context layer even if we haven't updated it
-				if (pixirendererKD) {
-					pixirendererKD.render(kdgamefog, {
-						clear: false,
-					});
-				}
-
-				// Draw the context layer even if we haven't updated it
-				if (pixirendererKD) {
-					pixirendererKD.render(kdparticles, {
-						clear: false,
-					});
-				}
-				if (!pixirendererKD) {
-					if (!StandalonePatched) {
-						if (KinkyDungeonContext && KinkyDungeonCanvas) {
-							// @ts-ignore
-							pixirendererKD = new PIXI.Renderer({
-								// @ts-ignore
-								width: KinkyDungeonCanvas.width,
-								// @ts-ignore
-								height: KinkyDungeonCanvas.height,
-								view: KinkyDungeonCanvas,
-								antialias: true,
-							});
-						}
+				if (!StandalonePatched) {
+					// Draw the context layer even if we haven't updated it
+					if (pixirendererKD) {
+						pixirendererKD.render(kdgameboard, {
+							clear: false,
+						});
 					}
 
-				}
-				if (!StandalonePatched) {
+					// Draw the context layer even if we haven't updated it
+					if (pixirendererKD) {
+						pixirendererKD.render(kdgamefog, {
+							clear: false,
+						});
+					}
+
+					// Draw the context layer even if we haven't updated it
+					if (pixirendererKD) {
+						pixirendererKD.render(kdparticles, {
+							clear: false,
+						});
+					}
+					if (!pixirendererKD) {
+						if (!StandalonePatched) {
+							if (KinkyDungeonContext && KinkyDungeonCanvas) {
+								// @ts-ignore
+								pixirendererKD = new PIXI.Renderer({
+									// @ts-ignore
+									width: KinkyDungeonCanvas.width,
+									// @ts-ignore
+									height: KinkyDungeonCanvas.height,
+									view: KinkyDungeonCanvas,
+									antialias: true,
+								});
+							}
+						}
+
+					}
 					MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
 				}
 
@@ -1215,10 +1217,11 @@ function KinkyDungeonDrawGame() {
 					offset_y: 620/MODELHEIGHT,
 				},
 			] : [];
-			DrawCharacter(KinkyDungeonPlayer,
-				canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/4: -KinkyDungeonGridSizeDisplay/2),
-				canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/6 : (KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0))),
-				zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods);
+			if (KDDrawPlayer)
+				DrawCharacter(KinkyDungeonPlayer,
+					canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/4: -KinkyDungeonGridSizeDisplay/2),
+					canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/6 : (KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0))),
+					zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods);
 
 			KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 			KinkyDungeonDrawFloaters(CamX+CamX_offset, CamY+CamY_offset);
@@ -2430,7 +2433,7 @@ function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = f
  */
 // @ts-ignore
 function DrawCheckboxKDEx(name, func, enabled, Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = KDTextGray0, CheckImage = "Icons/Checked.png", options) {
-	DrawTextFitKD(Text, Left + 100, Top + 33, options?.maxWidth || 1000, TextColor, "#333333",);
+	DrawTextFitKD(Text, Left + 100, Top + 33, options?.maxWidth || 1000, TextColor, "#333333", undefined, "left");
 	DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : "#ffffff", IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled,
 		undefined, undefined, undefined, undefined, options);
 }
@@ -3176,3 +3179,5 @@ function KDShowQuickInv() {
 
 let KDUpdateFog = false;
 let KDLastCamPos = {x: 0, y: 0};
+
+let KDDrawPlayer = true;

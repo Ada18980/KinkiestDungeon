@@ -8,6 +8,7 @@ let LEGPOSES = ["Spread", "Closed", "Kneel", "Hogtie"];
 let FOOTRIGHTPOSES = ["Spread", "Closed"];
 let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel"];
 let KNEELPOSES = ["Kneel"];
+let STANDPOSES = ["Spread", "Closed"];
 /** Expressions */
 
 let EYEPOSES = ["EyesNeutral", "EyesSurprised", "EyesDazed", "EyesClosed", "EyesAngry"];
@@ -99,3 +100,4 @@ function ModelGetPoseMods(Poses) {
 	}
 	return mods;
 }
+

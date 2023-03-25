@@ -53,6 +53,7 @@ class ModelContainer {
 		this.Models = Models;
 		this.Poses = Poses;
 		this.HighestPriority = {};
+		this.Update = new Map();
 	}
 
 
@@ -114,7 +115,7 @@ function DisposeCharacter(C) {
  * @param {PoseMod[]} [StartMods] - Mods applied
  * @returns {void} - Nothing
  */
-function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend = PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR, StartMods = []) {
+function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend = PIXI.SCALE_MODES.LINEAR, StartMods = []) {
 	/** @type {ModelContainer} */
 	let MC = !KDCurrentModels.get(C) ? new ModelContainer(
 		C,
@@ -137,9 +138,30 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend =
 		kdcanvas.addChild(Container.Container);
 		Container.Container.sortableChildren = true;
 	}
+	MC.ContainersDrawn.set(containerID, MC.Containers.get(containerID));
 
 	// Actual loop for drawing the models on the character
-	DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods, MC.Containers.get(containerID));
+
+	if (!MC.Update.get(containerID)) {
+		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
+		PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
+		DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
+			MC.Containers.get(containerID));
+		MC.Update.set(containerID, true);
+
+		let Container = MC.Containers.get(containerID);
+		// Cull sprites that weren't drawn yet
+		for (let sprite of Container.SpriteList.entries()) {
+			if ((!Container.SpritesDrawn.has(sprite[0]) && sprite[1])) {
+				sprite[1].parent.removeChild(sprite[1]);
+				Container.SpriteList.delete(sprite[0]);
+				sprite[1].destroy();
+			}
+		}
+		Container.SpritesDrawn.clear();
+		PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
+	}
+
 
 	// Store it in the map so we don't have to create it again
 	if (!KDCurrentModels.get(C)) {
@@ -381,6 +403,7 @@ function LayerSprite(Layer, Poses) {
  */
 function UpdateModels(MC) {
 	MC.Models = new Map();
+	MC.Update.clear();
 
 	// Start with base body
 	if (!MC.Models.get("Body"))

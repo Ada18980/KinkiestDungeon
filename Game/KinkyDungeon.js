@@ -778,16 +778,6 @@ function KinkyDungeonRun() {
 
 			// Cull containers that werent drawn this turn
 			for (let Container of MC.Containers.entries()) {
-				// Cull sprites that weren't drawn yet
-				for (let sprite of Container[1].SpriteList.entries()) {
-					if ((!Container[1].SpritesDrawn.has(sprite[0]) && sprite[1]) || !MC.ContainersDrawn.has(Container[0])) {
-						sprite[1].parent.removeChild(sprite[1]);
-						Container[1].SpriteList.delete(sprite[0]);
-						sprite[1].destroy();
-					}
-				}
-				Container[1].SpritesDrawn.clear();
-
 
 				if (!MC.ContainersDrawn.has(Container[0]) && Container[1]) {
 					Container[1].Container.parent.removeChild(Container[1]);
@@ -795,7 +785,6 @@ function KinkyDungeonRun() {
 					Container[1].Container.destroy();
 				}
 			}
-
 
 			MC.ContainersDrawn.clear();
 		}
@@ -854,7 +843,7 @@ function KinkyDungeonRun() {
 	KinkyDungeonCheckPlayerRefresh();
 
 	// Draw the characters
-	if ((KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats")
+	if (KinkyDungeonState != "Consent" && (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats")
 		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
 
 	if (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") {
@@ -1646,9 +1635,76 @@ function KinkyDungeonRun() {
 	KDCullTempElements();
 
 	//if (KDDebugMode) {
-	//DrawTextKD(dispfps, 20, 20, "#ffffff", undefined, undefined, "left");
+	DrawTextKD(dispfps, 20, 20, "#ffffff", undefined, undefined, "left");
 	//}
 	// Cull the sprites that werent rendered or updated this frame
+	KDCullSprites();
+
+	if (!StandalonePatched) {
+		if (!pixiview) pixiview = document.getElementById("MainCanvas");
+		if (!pixirenderer) {
+			if (pixiview) {
+				// @ts-ignore
+				pixirenderer = new PIXI.Renderer({
+					// @ts-ignore
+					width: pixiview.width,
+					// @ts-ignore
+					height: pixiview.height,
+					view: pixiview,
+					antialias: true,
+				});
+			}
+		}
+	}
+
+
+	let delta = performance.now() - lastfps;
+	fpscounter++;
+	if (fpscounter > 10) {
+		fpscounter = 0;
+		dispfps = Math.round(1000 / Math.max(delta, 1));
+	}
+
+	lastfps = performance.now();
+	KDUpdateParticles(delta);
+
+	if (StandalonePatched) {
+		/*if (KinkyDungeonState == "Game") {
+			if (!kdTrackGameParticles) {
+				kdcanvas.addChild(kdparticles);
+				kdTrackGameParticles = true;
+			}
+		} else {
+			if (kdTrackGameParticles) {
+				kdcanvas.removeChild(kdparticles);
+				kdTrackGameParticles = false;
+			}
+		}*/
+	} else {
+		// Draw the context layer even if we haven't updated it
+		if (pixirenderer) {
+			pixirenderer.render(kdcanvas, {
+				clear: false,
+			});
+			pixirenderer.render(kdui, {
+				clear: false,
+			});
+		}
+	}
+
+
+
+	//MainCanvas.textBaseline = "middle";
+
+	KDLastButtonsCache = {};
+	MouseClicked = false;
+}
+
+let kdTrackGameBoard = false;
+let kdTrackGameFog = false;
+let kdTrackGameParticles = false;
+
+function KDCullSprites() {
 	for (let sprite of kdpixisprites.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0])) {
 			sprite[1].parent.removeChild(sprite[1]);
@@ -1657,46 +1713,6 @@ function KinkyDungeonRun() {
 			sprite[1].destroy();
 		}
 	}
-
-	if (!pixiview) pixiview = document.getElementById("MainCanvas");
-	if (!pixirenderer) {
-		if (pixiview) {
-			// @ts-ignore
-			pixirenderer = new PIXI.Renderer({
-				// @ts-ignore
-				width: pixiview.width,
-				// @ts-ignore
-				height: pixiview.height,
-				view: pixiview,
-				antialias: true,
-			});
-		}
-	}
-
-	let delta = performance.now() - lastfps;
-	fpscounter++;
-	if (fpscounter > 10) {
-		fpscounter = 0;
-		dispfps = Math.round(10 * 1000 / Math.max(delta, 1));
-
-	}
-	lastfps = performance.now();
-	KDUpdateParticles(delta);
-
-	// Draw the context layer even if we haven't updated it
-	if (pixirenderer) {
-		pixirenderer.render(kdcanvas, {
-			clear: false,
-		});
-		pixirenderer.render(kdui, {
-			clear: false,
-		});
-	}
-
-	//MainCanvas.textBaseline = "middle";
-
-	KDLastButtonsCache = {};
-	MouseClicked = false;
 }
 
 /**

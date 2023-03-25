@@ -82,7 +82,7 @@
             <key>width</key>
             <int>2048</int>
             <key>height</key>
-            <int>4096</int>
+            <int>2048</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -151,7 +151,7 @@
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
-            <double>1</double>
+            <double>0.5</double>
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
@@ -177,8 +177,25 @@
             <key type="filename">../Models/ArmorChain/ShirtChest.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChestHogtie.png</key>
             <key type="filename">../Models/ArmorChain/ShirtHogtie.png</key>
+            <key type="filename">../Models/ArmorChain/Skirt.png</key>
+            <key type="filename">../Models/ArmorChain/SkirtHogtie.png</key>
+            <key type="filename">../Models/ArmorChain/SkirtKneel.png</key>
+            <key type="filename">../Models/ArmorPlate/BootLeftClosed.png</key>
+            <key type="filename">../Models/ArmorPlate/BootLeftHogtie.png</key>
+            <key type="filename">../Models/ArmorPlate/BootLeftKneel.png</key>
+            <key type="filename">../Models/ArmorPlate/BootLeftSpread.png</key>
+            <key type="filename">../Models/ArmorPlate/BootRightClosed.png</key>
+            <key type="filename">../Models/ArmorPlate/BootRightKneel.png</key>
+            <key type="filename">../Models/ArmorPlate/BootRightSpread.png</key>
             <key type="filename">../Models/ArmorPlate/Breastplate.png</key>
             <key type="filename">../Models/ArmorPlate/BreastplateHogtie.png</key>
+            <key type="filename">../Models/ArmorPlate/GauntletLeftFree.png</key>
+            <key type="filename">../Models/ArmorPlate/GauntletLeftFront.png</key>
+            <key type="filename">../Models/ArmorPlate/GauntletLeftYoked.png</key>
+            <key type="filename">../Models/ArmorPlate/GauntletRightBoxtie.png</key>
+            <key type="filename">../Models/ArmorPlate/GauntletRightFree.png</key>
+            <key type="filename">../Models/ArmorPlate/GauntletRightFront.png</key>
+            <key type="filename">../Models/ArmorPlate/GauntletRightYoked.png</key>
             <key type="filename">../Models/ArmorPlate/PauldronsFree.png</key>
             <key type="filename">../Models/ArmorPlate/PauldronsHogtie.png</key>
             <key type="filename">../Models/ArmorPlate/PauldronsYoked.png</key>
@@ -295,6 +312,8 @@
             <key type="filename">../Models/Catsuit/TorsoLowerHogtie.png</key>
             <key type="filename">../Models/Catsuit/TorsoUpper.png</key>
             <key type="filename">../Models/Catsuit/TorsoUpperHogtie.png</key>
+            <key type="filename">../Models/Hair/Braid.png</key>
+            <key type="filename">../Models/Hair/BraidBack.png</key>
             <key type="filename">../Models/Labcoat/CapeHogtie.png</key>
             <key type="filename">../Models/Labcoat/CapeKneel.png</key>
             <key type="filename">../Models/Labcoat/CapeSpread.png</key>
@@ -341,6 +360,15 @@
             <key type="filename">../Models/Rope/ChestLower.png</key>
             <key type="filename">../Models/Rope/ChestUpper.png</key>
             <key type="filename">../Models/Rope/ShoulderStraps.png</key>
+            <key type="filename">../Models/Witch/Skirt.png</key>
+            <key type="filename">../Models/Witch/SkirtBelt.png</key>
+            <key type="filename">../Models/Witch/SkirtBeltClosed.png</key>
+            <key type="filename">../Models/Witch/SkirtBeltKneel.png</key>
+            <key type="filename">../Models/Witch/SkirtClosed.png</key>
+            <key type="filename">../Models/Witch/SkirtKneel.png</key>
+            <key type="filename">../Models/Witch/SkirtRuffle.png</key>
+            <key type="filename">../Models/Witch/SkirtRuffleClosed.png</key>
+            <key type="filename">../Models/Witch/SkirtRuffleKneel.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -352,6 +380,42 @@
                 <rect>620,877,1240,1754</rect>
                 <key>scale9Paddings</key>
                 <rect>620,877,1240,1754</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/FaceKoi/BlushExtreme.png</key>
+            <key type="filename">../Models/FaceKoi/BlushHigh.png</key>
+            <key type="filename">../Models/FaceKoi/BlushLow.png</key>
+            <key type="filename">../Models/FaceKoi/BlushMedium.png</key>
+            <key type="filename">../Models/FaceKoi/BrowsAngry.png</key>
+            <key type="filename">../Models/FaceKoi/BrowsAnnoyed.png</key>
+            <key type="filename">../Models/FaceKoi/BrowsNeutral.png</key>
+            <key type="filename">../Models/FaceKoi/BrowsSad.png</key>
+            <key type="filename">../Models/FaceKoi/BrowsSurprised.png</key>
+            <key type="filename">../Models/FaceKoi/EyesAngry.png</key>
+            <key type="filename">../Models/FaceKoi/EyesClosed.png</key>
+            <key type="filename">../Models/FaceKoi/EyesDazed.png</key>
+            <key type="filename">../Models/FaceKoi/EyesNeutral.png</key>
+            <key type="filename">../Models/FaceKoi/EyesSurprised.png</key>
+            <key type="filename">../Models/FaceKoi/MouthDazed.png</key>
+            <key type="filename">../Models/FaceKoi/MouthDistracted.png</key>
+            <key type="filename">../Models/FaceKoi/MouthEmbarrassed.png</key>
+            <key type="filename">../Models/FaceKoi/MouthFrown.png</key>
+            <key type="filename">../Models/FaceKoi/MouthNeutral.png</key>
+            <key type="filename">../Models/FaceKoi/MouthPout.png</key>
+            <key type="filename">../Models/FaceKoi/MouthSmile.png</key>
+            <key type="filename">../Models/FaceKoi/MouthSurprised.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>160,166,321,332</rect>
+                <key>scale9Paddings</key>
+                <rect>160,166,321,332</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

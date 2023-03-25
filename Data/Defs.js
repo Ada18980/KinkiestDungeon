@@ -1,12 +1,13 @@
 "use strict";
 
 let LAYERS_BASE = [
+	"HairFront",
 	"Mask",
+	"Brows",
+	"Hair",
 	"Blindfold",
 	"Gag",
 	// Head
-	"Brows",
-	"Hair",
 	"Eyes",
 	"Mouth",
 	"Blush",
@@ -118,6 +119,9 @@ let LAYERS_BASE = [
 
 let LayerProperties = {
 	Eyes: {
+		Parent: "Head",
+	},
+	Hair: {
 		Parent: "Head",
 	},
 	HairFront: {

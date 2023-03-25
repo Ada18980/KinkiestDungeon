@@ -303,10 +303,14 @@ function KinkyDungeonDressPlayer(Character) {
 			KinkyDungeonWearForcedClothes(restraints);
 
 		KinkyDungeonCheckClothesLoss = false;
+		let AllowedArmPoses = KDGetAvailablePosesArms(KinkyDungeonPlayer);
+		let AllowedLegPoses = KDGetAvailablePosesLegs(KinkyDungeonPlayer);
 
 		if (KDGameData.KneelTurns > 0 || KDGameData.SleepTurns > 0) {
 			if (StandalonePatched) {
-				// TODO add code
+				// Force player into being on the ground
+				let newLegPoses = AllowedLegPoses.filter((element) => {return !STANDPOSES.includes(element);});
+				if (newLegPoses.length > 0) AllowedLegPoses = newLegPoses;
 			} else {
 				if (CharacterItemsHavePoseAvailable(KinkyDungeonPlayer, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(KinkyDungeonPlayer, "Kneel") && !KinkyDungeonPlayer.IsKneeling()) {
 					CharacterSetActivePose(KinkyDungeonPlayer, "Kneel", false);
@@ -315,7 +319,7 @@ function KinkyDungeonDressPlayer(Character) {
 
 		} else if (KDGameData.SleepTurns < 1) {
 			if (StandalonePatched) {
-				// TODO add code
+				// Nothing needed
 			} else {
 				if (CharacterItemsHavePoseAvailable(KinkyDungeonPlayer, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(KinkyDungeonPlayer, "Kneel") && KinkyDungeonPlayer.IsKneeling()) {
 					CharacterSetActivePose(KinkyDungeonPlayer, "BaseLower", false);
@@ -324,76 +328,107 @@ function KinkyDungeonDressPlayer(Character) {
 
 		}
 
-		let BlushCounter = 0;
-		let Blush = "";
-		let Eyes = "";
-		let Eyes2 = "";
-		let Eyebrows = "";
-		let Mouth = "";
-		let Fluids = "";
-
-		if (KDToggles.Drool && !KinkyDungeonCanTalk()) {
-			if (KinkyDungeonGagTotal() > 0.9) Fluids = "DroolMessy";
-			else if (KinkyDungeonGagTotal() > 0.5) Fluids = "DroolMedium";
-			else Fluids = "DroolLow";
-		}
-		if (KDToggles.Drool && KDGameData.KinkyDungeonLeashedPlayer > 0) {
-			if (Fluids.includes("Drool")) Fluids = Fluids.replace("Drool", "DroolTears");
-			else Fluids = "TearsHigh";
-		}
-
-		if (KinkyDungeonSleepiness) {
-			Eyes = "Dazed";
-		}
-
-		if (KinkyDungeonStatMana < KinkyDungeonStatManaMax*0.45) Eyes = "Sad";
-		if (KinkyDungeonStatWill <= KinkyDungeonStatWillMax*0.33 || KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax/2) Eyes = "Dazed";
-
-		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.167 || KinkyDungeonStatMana < KinkyDungeonStatManaMax*0.33 || KinkyDungeonStatWill < KinkyDungeonStatWillMax*0.33) Eyebrows = "Soft";
-
-		let chastityMult = KinkyDungeonChastityMult();
-		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.67 && KinkyDungeonStatWill > KinkyDungeonStatWillMax*0.5 && chastityMult > 0.9) Eyebrows = "Angry";
-
-		if (KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax * 0.8) Eyes = (Eyebrows != "Angry" && KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.99) ? "Lewd" : "Scared";
-
-		if (KinkyDungeonStatDistraction >= 0.01 && KinkyDungeonStatDistraction <= 3) Eyes2 = "Closed";
-
-		if (KDGameData.OrgasmTurns > 0) {
-			Eyebrows = "Soft";
-			Eyes2 = "";
-			Eyes = "LewdHeart";
-		} else if (KDGameData.OrgasmStamina > 0) {
-			Eyebrows = "Soft";
-		} else if (KDGameData.OrgasmStage > 5 && Math.random() < 0.33) {
-			Eyebrows = "Angry";
-		} else if (KDGameData.OrgasmStage > 3 && Math.random() < 0.33) {
-			Eyebrows = "Angry";
-		}
-
-		if (KinkyDungeonStatWill <= 2) {
-			Eyes = "Dazed";
-			Eyes2 = "";
-		}
-
-		if (KinkyDungeonStatDistraction > 0.01) BlushCounter += 1;
-		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.33) BlushCounter += 1;
-		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.65) BlushCounter += 1;
-
-		if (KinkyDungeonUndress > 0.4) BlushCounter += 1;
-		if (KinkyDungeonUndress > 0.8) BlushCounter += 1;
-
-		if (BlushCounter == 1) Blush = "Low";
-		else if (BlushCounter == 2) Blush = "Medium";
-		else if (BlushCounter == 3) Blush = "High";
-		else if (BlushCounter == 4) Blush = "VeryHigh";
-		else if (BlushCounter == 5) Blush = "Extreme";
-
-
 		if (StandalonePatched) {
+			// Pose set routine
+			let ArmPose = KDGetPoseOfType(KinkyDungeonPlayer, "Arms");
+			let LegPose = KDGetPoseOfType(KinkyDungeonPlayer, "Legs");
+			let EyesPose = KDGetPoseOfType(KinkyDungeonPlayer, "Eyes");
+			let BrowsPose = KDGetPoseOfType(KinkyDungeonPlayer, "Brows");
+			let BlushPose = KDGetPoseOfType(KinkyDungeonPlayer, "Blush");
+			let MouthPose = KDGetPoseOfType(KinkyDungeonPlayer, "Mouth");
+
+
+			let PreferredArm = "Free";
+			let PreferredLeg = "Spread";
+			// In the future, replace Free with the player's preferred pose
+			if (!AllowedArmPoses.includes(ArmPose) || (ArmPose != PreferredArm && AllowedArmPoses.includes(PreferredArm))) {
+				ArmPose = AllowedArmPoses[0];
+			}
+			if (!AllowedLegPoses.includes(LegPose) || (LegPose != PreferredLeg && AllowedLegPoses.includes(PreferredLeg))) {
+				LegPose = AllowedLegPoses[0];
+			}
+
+
 			// Expressions for standalone
 
-		} else {
+			if (KDCurrentModels.get(KinkyDungeonPlayer))
+				KDCurrentModels.get(KinkyDungeonPlayer).Poses = KDGeneratePoseArray(
+					ArmPose,
+					LegPose,
+					EyesPose,
+					BrowsPose,
+					BlushPose,
+					MouthPose,
+				);
+		}
+
+
+		if (!StandalonePatched) {
 			// Expressions for BC
+			let BlushCounter = 0;
+			let Blush = "";
+			let Eyes = "";
+			let Eyes2 = "";
+			let Eyebrows = "";
+			let Mouth = "";
+			let Fluids = "";
+
+			if (KDToggles.Drool && !KinkyDungeonCanTalk()) {
+				if (KinkyDungeonGagTotal() > 0.9) Fluids = "DroolMessy";
+				else if (KinkyDungeonGagTotal() > 0.5) Fluids = "DroolMedium";
+				else Fluids = "DroolLow";
+			}
+			if (KDToggles.Drool && KDGameData.KinkyDungeonLeashedPlayer > 0) {
+				if (Fluids.includes("Drool")) Fluids = Fluids.replace("Drool", "DroolTears");
+				else Fluids = "TearsHigh";
+			}
+
+			if (KinkyDungeonSleepiness) {
+				Eyes = "Dazed";
+			}
+
+			if (KinkyDungeonStatMana < KinkyDungeonStatManaMax*0.45) Eyes = "Sad";
+			if (KinkyDungeonStatWill <= KinkyDungeonStatWillMax*0.33 || KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax/2) Eyes = "Dazed";
+
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.167 || KinkyDungeonStatMana < KinkyDungeonStatManaMax*0.33 || KinkyDungeonStatWill < KinkyDungeonStatWillMax*0.33) Eyebrows = "Soft";
+
+			let chastityMult = KinkyDungeonChastityMult();
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.67 && KinkyDungeonStatWill > KinkyDungeonStatWillMax*0.5 && chastityMult > 0.9) Eyebrows = "Angry";
+
+			if (KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax * 0.8) Eyes = (Eyebrows != "Angry" && KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.99) ? "Lewd" : "Scared";
+
+			if (KinkyDungeonStatDistraction >= 0.01 && KinkyDungeonStatDistraction <= 3) Eyes2 = "Closed";
+
+			if (KDGameData.OrgasmTurns > 0) {
+				Eyebrows = "Soft";
+				Eyes2 = "";
+				Eyes = "LewdHeart";
+			} else if (KDGameData.OrgasmStamina > 0) {
+				Eyebrows = "Soft";
+			} else if (KDGameData.OrgasmStage > 5 && Math.random() < 0.33) {
+				Eyebrows = "Angry";
+			} else if (KDGameData.OrgasmStage > 3 && Math.random() < 0.33) {
+				Eyebrows = "Angry";
+			}
+
+			if (KinkyDungeonStatWill <= 2) {
+				Eyes = "Dazed";
+				Eyes2 = "";
+			}
+
+			if (KinkyDungeonStatDistraction > 0.01) BlushCounter += 1;
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.33) BlushCounter += 1;
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.65) BlushCounter += 1;
+
+			if (KinkyDungeonUndress > 0.4) BlushCounter += 1;
+			if (KinkyDungeonUndress > 0.8) BlushCounter += 1;
+
+			if (BlushCounter == 1) Blush = "Low";
+			else if (BlushCounter == 2) Blush = "Medium";
+			else if (BlushCounter == 3) Blush = "High";
+			else if (BlushCounter == 4) Blush = "VeryHigh";
+			else if (BlushCounter == 5) Blush = "Extreme";
+
 			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
 				if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Blush") {
 					let property = KinkyDungeonPlayer.Appearance[A].Property;
@@ -725,4 +760,91 @@ function KinkyDungeonSendOutfitEvent(Event, data) {
 			}
 		}
 	}
+}
+
+
+function KDGetExtraPoses(C) {
+	let poses = [];
+	if (C == KinkyDungeonPlayer) {
+		// For player
+		if (KinkyDungeonPlayerTags.get("LinkFeet")) {
+			poses.push("FeetLinked");
+		}
+	} else {
+		// For NPC
+		// ???
+	}
+	return poses;
+}
+
+function KDGetAvailablePosesLegs(C) {
+	/** @type {Record<string, boolean>} */
+	let poses = {};
+	for (let p of LEGPOSES) {
+		poses[p] = true;
+	}
+	if (C == KinkyDungeonPlayer) {
+		// Logic for the player
+		if (KinkyDungeonPlayerTags.get("FeetLinked")) {
+			delete poses.Spread;
+		} else if (KinkyDungeonPlayerTags.get("ForceKneel")) {
+			delete poses.Closed;
+		}
+		if (KinkyDungeonPlayerTags.get("ForceHogtie")) {
+			for (let p of STANDPOSES) {
+				delete poses[p];
+			}
+			for (let p of KNEELPOSES) {
+				delete poses[p];
+			}
+		} else if (KinkyDungeonPlayerTags.get("ForceKneel")) {
+			for (let p of STANDPOSES) {
+				delete poses[p];
+			}
+		}
+	} else {
+		// Logic for NPC
+		// ???
+	}
+
+	return Object.keys(poses);
+}
+
+
+function KDGetAvailablePosesArms(C) {
+	/** @type {Record<string, boolean>} */
+	let poses = {};
+	for (let p of ARMPOSES) {
+		poses[p] = true;
+	}
+	if (C == KinkyDungeonPlayer) {
+		// Logic for the player
+		if (KinkyDungeonPlayerTags.get("Yokes")) {
+			poses = {Yoked: true};
+		} else if (KinkyDungeonPlayerTags.get("Armbinders")) {
+			poses = {Wristtie: true};
+		} else if (KinkyDungeonPlayerTags.get("Boxbinders")) {
+			poses = {Boxtie: true};
+		} else if (KinkyDungeonPlayerTags.get("Straitjackets")) {
+			poses = {Boxtie: true};
+		} else if (KinkyDungeonPlayerTags.get("Boxties")) {
+			poses = {Boxtie: true};
+		} else if (KinkyDungeonPlayerTags.get("Wristties")) {
+			poses = {Wristtie: true};
+		}
+		if (KinkyDungeonIsArmsBound(false, false)) {
+			delete poses.Free;
+			if (!KinkyDungeonPlayerTags.get("HandsFront")) {
+				delete poses.HandsFront;
+			}
+			if (!KinkyDungeonPlayerTags.get("Yoked")) {
+				delete poses.Yoked;
+			}
+		}
+	} else {
+		// Logic for NPC
+		// ???
+	}
+
+	return Object.keys(poses);
 }

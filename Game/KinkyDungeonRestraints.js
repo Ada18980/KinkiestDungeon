@@ -2369,13 +2369,14 @@ function KinkyDungeonUpdateRestraints(delta) {
 			for (let tag of KDRestraint(inv).shrine) {
 				if (!playerTags.get(tag)) playerTags.set(tag, true);
 			}
-			let link = inv.dynamicLink;
+			// The following is redundant
+			/*let link = inv.dynamicLink;
 			while (link) {
 				for (let tag of KDRestraint(link).shrine) {
 					if (!playerTags.get(tag)) playerTags.set(tag, true);
 				}
 				link = link.dynamicLink;
-			}
+			}*/
 		}
 
 	}

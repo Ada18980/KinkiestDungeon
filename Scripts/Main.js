@@ -1,5 +1,15 @@
 'use strict';
 
+var PIXIapp = new PIXI.Application({
+	antialias: false,
+	width: 2000,
+	height: 1000,
+});
+
+document.body.appendChild(PIXIapp.view);
+
+PIXIapp.stage.addChild(kdcanvas);
+PIXIapp.stage.addChild(kdui);
 
 // While we want KD to be backwards compatible with BC, we want to avoid making modifications that are standalone specific to the KD code itself
 // These bootstraps must be loaded last, as they replace BC specific KD functionality
@@ -70,7 +80,22 @@ window.onload = function() {
 
 	KinkyDungeonLoad();
 
-	MainRun(0);
+	PIXIapp.ticker.add(() => {
+		let Timestamp = performance.now();
+		DrawProcess(Timestamp);
+
+		// Increments the time from the last frame
+		TimerRunInterval = Timestamp - TimerLastTime;
+		TimerLastTime = Timestamp;
+		CurrentTime = CurrentTime + TimerRunInterval;
+
+		// At each 1700 ms, we check for timed events (equivalent of 100 cycles at 60FPS)
+		if (TimerLastCycleCall + 1700 <= CommonTime()) {
+			TimerLastCycleCall = CommonTime();
+		}
+	});
+
+	//MainRun(0);
 };
 
 let TimerRunInterval = 0;

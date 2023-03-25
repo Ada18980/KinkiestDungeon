@@ -239,6 +239,7 @@ function KDDrawPoseButtons(C) {
 				//KDGetPoseOfType(C, "Blush"),
 				//KDGetPoseOfType(C, "Mouth"),
 			);
+			UpdateModels(KDCurrentModels.get(C));
 			return true;
 		};
 	};
