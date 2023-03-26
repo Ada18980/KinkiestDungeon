@@ -961,6 +961,8 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("GoToWardrobe", (bdata) => {
 			KinkyDungeonState = "Wardrobe";
+			KDPlayerSetPose = false;
+			KDInitCurrentPose();
 			KinkyDungeonInitializeDresses();
 			KDUpdateModelList();
 			KDRefreshOutfitInfo();

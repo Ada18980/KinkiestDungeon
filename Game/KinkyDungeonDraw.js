@@ -36,6 +36,7 @@ kdcanvas.addChild(kdgameboard);
 
 // @ts-ignore
 let kdparticles = new PIXI.Container();
+kdparticles.zIndex = 10;
 kdparticles.sortableChildren = true;
 kdcanvas.addChild(kdparticles);
 //kdgameboard.addChild(kdparticles);
@@ -2770,20 +2771,20 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 				for (let o of Object.entries(options)) {
 					sprite[o[0]] = o[1];
 				}
-				if (options.scalex != undefined) {
-					sprite.scale.x = sprite.scale.x * options.scalex;
-				}
-				if (options.scaley != undefined) {
-					sprite.scale.y = sprite.scale.y * options.scaley;
-				}
-				if (options.anchorx != undefined) {
-					sprite.anchor.x = options.anchorx;
-				}
-				if (options.anchory != undefined) {
-					sprite.anchor.y = options.anchory;
-				}
 			}
 
+			if (options.scalex != undefined) {
+				sprite.scale.x = sprite.scale.x * options.scalex;
+			}
+			if (options.scaley != undefined) {
+				sprite.scale.y = sprite.scale.y * options.scaley;
+			}
+			if (options.anchorx != undefined) {
+				sprite.anchor.x = options.anchorx;
+			}
+			if (options.anchory != undefined) {
+				sprite.anchor.y = options.anchory;
+			}
 		}
 		if (SpritesDrawn)
 			SpritesDrawn.set(id, true);
@@ -3186,3 +3187,22 @@ let KDUpdateFog = false;
 let KDLastCamPos = {x: 0, y: 0};
 
 let KDDrawPlayer = true;
+
+let KDDesiredPlayerPose = {};
+
+function KDPlayerDrawPoseButtons(C) {
+	KDModalArea = true;
+	KDModalArea_x = 650;
+	KDModalArea_y = 630;
+	KDModalArea_width = 1000;
+	KDModalArea_height = 370;
+	KDDrawPoseButtons(C, 700, 680, true);
+	KDDesiredPlayerPose = {
+		Arms: KDWardrobe_CurrentPoseArms,
+		Legs: KDWardrobe_CurrentPoseLegs,
+		Eyes: KDWardrobe_CurrentPoseEyes,
+		Brows: KDWardrobe_CurrentPoseBrows,
+		Blush: KDWardrobe_CurrentPoseBlush,
+		Mouth: KDWardrobe_CurrentPoseMouth,
+	};
+}

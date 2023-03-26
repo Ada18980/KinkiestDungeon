@@ -213,7 +213,10 @@ function KDGetVibeLocation(item) {
  */
 function KinkyDungeonStartVibration(source, name, locations, intensity, duration, numLoops, denyTime, denialsLeft, edgeTime, edgeOnly, alwaysDeny, denialChance, denialChanceLikely, tickEdgeAtMaxArousal, vibeMods) {
 	if (KDGameData.CurrentVibration) {
+		KinkyDungeonSetFlag("VibeContinued", 3);
 		if (!KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonStartVibeContinue"), "#FFaadd", 2)) KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonStartVibeContinue"), "#FFaadd", 2, true, true);
+	} else {
+		KinkyDungeonSetFlag("VibeStarted", 8);
 	}
 	KDGameData.CurrentVibration = {
 		source: source,

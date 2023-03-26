@@ -2028,6 +2028,20 @@ type SpecialCondition = {
 
 type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
 
+type KDExpression = {
+	priority: number;
+	stackable?: boolean,
+	criteria: (C: any) => boolean;
+	expression: (C: any) => {
+		EyesPose: string,
+		Eyes2Pose: string,
+		BrowsPose: string,
+		Brows2Pose: string,
+		BlushPose: string,
+		MouthPose: string,
+	};
+}
+
 declare const PIXI: any;
 declare const __filters: any;
 declare const zip: any;

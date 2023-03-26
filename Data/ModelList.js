@@ -21,6 +21,14 @@ AddModel({
 			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(EYEPOSES),
 		},
+		{ Name: "Eyes2", Layer: "Eyes", Pri: 0,
+			Sprite: "", // Because pose is called EyesNeutral lol
+			OffsetX: 942,
+			OffsetY: 200,
+			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
+			AnchorModY: MODELHEIGHT/664,
+			Poses: ToMap(EYE2POSES),
+		},
 	])
 });
 
@@ -38,6 +46,14 @@ AddModel({
 			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
 			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(BROWPOSES),
+		},
+		{ Name: "Brows2", Layer: "Brows", Pri: 0,
+			Sprite: "", // Because pose is called BrowsNeutral lol
+			OffsetX: 942,
+			OffsetY: 200,
+			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
+			AnchorModY: MODELHEIGHT/664,
+			Poses: ToMap(BROW2POSES),
 		},
 	])
 });

@@ -11,8 +11,12 @@ let KNEELPOSES = ["Kneel"];
 let STANDPOSES = ["Spread", "Closed"];
 /** Expressions */
 
-let EYEPOSES = ["EyesNeutral", "EyesSurprised", "EyesDazed", "EyesClosed", "EyesAngry"];
-let BROWPOSES = ["BrowsNeutral", "BrowsAngry", "BrowsAnnoyed", "BrowsSad", "BrowsSurprised"];
+let EYETYPES = ["Neutral", "Surprised", "Dazed", "Closed", "Angry"];
+let EYEPOSES = EYETYPES.map((pose) => {return "Eyes" + pose;});
+let EYE2POSES = EYETYPES.map((pose) => {return "Eyes2" + pose;});
+let BROWTYPES = ["Neutral", "Angry", "Annoyed", "Sad", "Surprised"];
+let BROWPOSES = BROWTYPES.map((pose) => {return "Brows" + pose;});
+let BROW2POSES = BROWTYPES.map((pose) => {return "Brows2" + pose;});
 let MOUTHPOSES = ["MouthNeutral", "MouthDazed", "MouthDistracted", "MouthEmbarrassed", "MouthFrown", "MouthSmile", "MouthSurprised", "MouthPout"];
 let BLUSHPOSES = ["BlushLow", "BlushMedium", "BlushHigh", "BlushExtreme"];
 /** Standard GlobalDefaultOverrides, this should be for any pose that's meant to use mostly normal assets */

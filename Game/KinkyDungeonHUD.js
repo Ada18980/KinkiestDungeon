@@ -21,6 +21,7 @@ let KinkyDungeonStruggleGroupsBase = [
 	"ItemBoots",
 ];
 let KinkyDungeonDrawStruggle = 1;
+let KDPlayerSetPose = false;
 let KinkyDungeonDrawStruggleHover = false;
 let KinkyDungeonDrawState = "Game";
 let KinkyDungeonDrawStatesModal = ["Heart", "Orb"];
@@ -800,8 +801,24 @@ function KinkyDungeonDrawInputs() {
 		}
 
 
-	if (KinkyDungeonDrawStruggle > 0) DrawButtonVis(510, 925, 120, 60, "", KinkyDungeonStruggleGroups.length > 0 ? "#ffffff" : "#333333", KinkyDungeonRootDirectory + "Hide" + (KinkyDungeonDrawStruggle > 1 ? "Full" : "True") + ".png", "");
-	else DrawButtonVis(510, 925, 120, 60, "", KinkyDungeonStruggleGroups.length > 0 ? "#ffffff" : "#333333", KinkyDungeonRootDirectory + "HideFalse.png", "");
+	DrawButtonKDEx("RestHide", (bdata) => {
+		KinkyDungeonDrawStruggle += 1;
+		if (KinkyDungeonDrawStruggle > 2) KinkyDungeonDrawStruggle = 0;
+		return true;
+	}, true, 510, 925, 60, 60, "", KinkyDungeonStruggleGroups.length > 0 ? "#ffffff" : "#333333", KinkyDungeonRootDirectory + "Hide" + (KinkyDungeonDrawStruggle > 1 ? "Full" : (KinkyDungeonDrawStruggle > 0 ? "True" : "False")) + ".png", "");
+	DrawButtonKDEx("SetPose", (bdata) => {
+		KDPlayerSetPose = !KDPlayerSetPose;
+
+		/*KDWardrobe_CurrentPoseArms = KDGetPoseOfType(KinkyDungeonPlayer, "Arms");
+		KDWardrobe_CurrentPoseLegs = KDGetPoseOfType(KinkyDungeonPlayer, "Legs");
+		KDWardrobe_CurrentPoseEyes = KDGetPoseOfType(KinkyDungeonPlayer, "Eyes");
+		KDWardrobe_CurrentPoseBrows = KDGetPoseOfType(KinkyDungeonPlayer, "Brows");
+		KDWardrobe_CurrentPoseBlush = KDGetPoseOfType(KinkyDungeonPlayer, "Blush") || "BlushNeutral";
+		KDWardrobe_CurrentPoseMouth = KDGetPoseOfType(KinkyDungeonPlayer, "Mouth");*/
+		return true;
+	}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "/Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
+
+	if (KDPlayerSetPose) KDPlayerDrawPoseButtons(KinkyDungeonPlayer);
 
 	DrawButtonVis(510, 825, 60, 90, "", "#ffffff", KinkyDungeonRootDirectory + (KinkyDungeonShowInventory ? "BackpackOpen.png" : "Backpack.png"), "");
 	if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.special) {
@@ -1549,11 +1566,7 @@ function KinkyDungeonHandleHUD() {
 			KinkyDungeonDrawState = "MagicSpells";
 			return true;}*/
 
-		if (MouseIn(510, 925, 120, 60)) {
-			KinkyDungeonDrawStruggle += 1;
-			if (KinkyDungeonDrawStruggle > 2) KinkyDungeonDrawStruggle = 0;
-			return true;
-		} else if (MouseIn(510, 825, 60, 90)) {
+		if (MouseIn(510, 825, 60, 90)) {
 			KinkyDungeonShowInventory = !KinkyDungeonShowInventory;
 			return true;
 		} else if (KinkyDungeonIsPlayer() && MouseIn(580, 825, 50, 90) && KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.special) {

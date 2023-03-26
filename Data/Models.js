@@ -463,10 +463,12 @@ function KDGetColorableLayers(Model) {
  * @param {string} [BrowsPose ]
  * @param {string} [BlushPose ]
  * @param {string} [MouthPose ]
+ * @param {string} [Eyes2Pose ]
+ * @param {string} [Brows2Pose ]
  * @param {string[]} [ExtraPose]
  * @returns {Record<string, boolean>}
  */
-function KDGeneratePoseArray(ArmsPose, LegsPose, EyesPose, BrowsPose, BlushPose, MouthPose, ExtraPose) {
+function KDGeneratePoseArray(ArmsPose, LegsPose, EyesPose, BrowsPose, BlushPose, MouthPose, Eyes2Pose, Brows2Pose, ExtraPose) {
 	/** @type {Record<string, boolean>} */
 	let poses = {};
 	poses[ArmsPose || "Free"] = true;
@@ -475,6 +477,8 @@ function KDGeneratePoseArray(ArmsPose, LegsPose, EyesPose, BrowsPose, BlushPose,
 	poses[BrowsPose || "BrowsNeutral"] = true;
 	poses[BlushPose || "BlushNone"] = true;
 	poses[MouthPose || "MouthNeutral"] = true;
+	poses[(Eyes2Pose || EYE2POSES[EYEPOSES.indexOf(EyesPose)] || "Eyes2Neutral")] = true;
+	poses[(Brows2Pose || BROW2POSES[BROWPOSES.indexOf(BrowsPose)] || "Brows2Neutral")] = true;
 	if (ExtraPose) {
 		for (let p of ExtraPose) {
 			poses[p] = true;
@@ -496,7 +500,9 @@ function KDGetPoseOfType(C, Type) {
 		case "Arms": checkArray = ARMPOSES; break;
 		case "Legs": checkArray = LEGPOSES; break;
 		case "Eyes": checkArray = EYEPOSES; break;
+		case "Eyes2": checkArray = EYE2POSES; break;
 		case "Brows": checkArray = BROWPOSES; break;
+		case "Brows2": checkArray = BROW2POSES; break;
 		case "Blush": checkArray = BLUSHPOSES; break;
 		case "Mouth": checkArray = MOUTHPOSES; break;
 	}

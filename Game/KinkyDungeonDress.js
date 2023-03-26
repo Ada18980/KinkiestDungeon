@@ -333,16 +333,19 @@ function KinkyDungeonDressPlayer(Character) {
 			let ArmPose = KDGetPoseOfType(KinkyDungeonPlayer, "Arms");
 			let LegPose = KDGetPoseOfType(KinkyDungeonPlayer, "Legs");
 			let EyesPose = KDGetPoseOfType(KinkyDungeonPlayer, "Eyes");
+			let Eyes2Pose = KDGetPoseOfType(KinkyDungeonPlayer, "Eyes2");
 			let BrowsPose = KDGetPoseOfType(KinkyDungeonPlayer, "Brows");
+			let Brows2Pose = KDGetPoseOfType(KinkyDungeonPlayer, "Brows2");
 			let BlushPose = KDGetPoseOfType(KinkyDungeonPlayer, "Blush");
 			let MouthPose = KDGetPoseOfType(KinkyDungeonPlayer, "Mouth");
 
+			let DefaultBound = "Front"; // Default bondage for arms
 
-			let PreferredArm = "Free";
-			let PreferredLeg = "Spread";
-			// In the future, replace Free with the player's preferred pose
+			// Hold to player's preferred pose
+			let PreferredArm = KDDesiredPlayerPose.Arms || "Free";
+			let PreferredLeg = KDDesiredPlayerPose.Legs || "Spread";
 			if (!AllowedArmPoses.includes(ArmPose) || (ArmPose != PreferredArm && AllowedArmPoses.includes(PreferredArm))) {
-				ArmPose = AllowedArmPoses[0];
+				ArmPose = (AllowedArmPoses.includes(DefaultBound) && KinkyDungeonIsArmsBound(false, false)) ? DefaultBound : AllowedArmPoses[0];
 			}
 			if (!AllowedLegPoses.includes(LegPose) || (LegPose != PreferredLeg && AllowedLegPoses.includes(PreferredLeg))) {
 				LegPose = AllowedLegPoses[0];
@@ -350,6 +353,72 @@ function KinkyDungeonDressPlayer(Character) {
 
 
 			// Expressions for standalone
+
+
+			/** @type {KDExpression} */
+			let expression = null;
+			let stackedPriorities = {};
+			for (let e of Object.entries(KDExpressions)) {
+				if (!expression || e[1].priority > expression.priority) {
+					if (e[1].criteria(Character)) {
+						expression = e[1];
+					}
+				}
+				if (e[1].stackable) {
+					let result = null;
+					if (e[1].priority > (stackedPriorities.EyesPose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.EyesPose) {
+							stackedPriorities.EyesPose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseEyes) EyesPose = result.EyesPose;
+						}
+					}
+					if (e[1].priority > (stackedPriorities.Eyes2Pose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.Eyes2Pose) {
+							stackedPriorities.Eyes2Pose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseEyes) Eyes2Pose = result.Eyes2Pose;
+						}
+					}
+					if (e[1].priority > (stackedPriorities.BrowsPose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.BrowsPose) {
+							stackedPriorities.BrowsPose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseEyes) BrowsPose = result.BrowsPose;
+						}
+					}
+					if (e[1].priority > (stackedPriorities.Brows2Pose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.Brows2Pose) {
+							stackedPriorities.Brows2Pose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseEyes) Brows2Pose = result.Brows2Pose;
+						}
+					}
+					if (e[1].priority > (stackedPriorities.BlushPose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.BlushPose) {
+							stackedPriorities.BlushPose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseEyes) BlushPose = result.BlushPose;
+						}
+					}
+					if (e[1].priority > (stackedPriorities.MouthPose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.MouthPose) {
+							stackedPriorities.MouthPose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseEyes) MouthPose = result.MouthPose;
+						}
+					}
+				}
+			}
+			if (expression) {
+				let result = expression.expression(Character);
+				if (!KDWardrobe_CurrentPoseEyes && result.EyesPose) EyesPose = result.EyesPose;
+				if (!KDWardrobe_CurrentPoseEyes2 && result.Eyes2Pose) Eyes2Pose = result.Eyes2Pose;
+				if (!KDWardrobe_CurrentPoseBrows && result.BrowsPose) BrowsPose = result.BrowsPose;
+				if (!KDWardrobe_CurrentPoseBrows2 && result.Brows2Pose) Brows2Pose = result.Brows2Pose;
+				if (!KDWardrobe_CurrentPoseBlush && result.BlushPose) BlushPose = result.BlushPose;
+				if (!KDWardrobe_CurrentPoseMouth && result.MouthPose) MouthPose = result.MouthPose;
+			}
 
 			if (KDCurrentModels.get(KinkyDungeonPlayer))
 				KDCurrentModels.get(KinkyDungeonPlayer).Poses = KDGeneratePoseArray(
@@ -359,6 +428,8 @@ function KinkyDungeonDressPlayer(Character) {
 					BrowsPose,
 					BlushPose,
 					MouthPose,
+					Eyes2Pose,
+					Brows2Pose,
 				);
 		}
 
@@ -848,3 +919,143 @@ function KDGetAvailablePosesArms(C) {
 
 	return Object.keys(poses);
 }
+
+/** @type {Record<string, KDExpression>} */
+let KDExpressions = {
+	"OrgSuccess": {
+		priority: 10,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("OrgSuccess")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesSurprised",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsSurprised",
+				Brows2Pose: "Brows2Surprised",
+				BlushPose: "BlushExtreme",
+				MouthPose: "MouthDazed",
+			};
+		},
+	},
+	"OrgEdged": {
+		priority: 8,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("OrgEdged")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesAngry",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsAnnoyed",
+				Brows2Pose: "Brows2Annoyed",
+				BlushPose: "BlushExtreme",
+				MouthPose: "MouthDazed",
+			};
+		},
+	},
+	"OrgDenied": {
+		priority: 8,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("OrgDenied")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesSurprised",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsAngry",
+				Brows2Pose: "Brows2Angry",
+				BlushPose: "BlushExtreme",
+				MouthPose: "MouthEmbarrassed",
+			};
+		},
+	},
+	"VibeStart": {
+		priority: 6,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && (KinkyDungeonFlags.get("VibeStarted") || KinkyDungeonFlags.get("VibeContinued"))) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: KinkyDungeonFlags.get("VibeContinued") ? "EyesDazed" : "EyesNeutral",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsSad",
+				Brows2Pose: "Brows2Sad",
+				BlushPose: "BlushHigh",
+				MouthPose: "MouthDazed",
+			};
+		},
+	},
+	"Vibing": {
+		stackable: true,
+		priority: 2,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonVibeLevel > 0) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.5) ? "EyesAngry" : "",
+				Eyes2Pose: (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.5) ? "Eyes2Angry" : "",
+				BrowsPose: "BrowsNeutral",
+				Brows2Pose: "Brows2Neutral",
+				BlushPose: (KinkyDungeonVibeLevel > 2 || KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.5) ? "BlushMedium" : "BlushHigh",
+				MouthPose: "MouthEmbarrassed",
+			};
+		},
+	},
+	"Distracted": {
+		stackable: true,
+		priority: 1,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonStatDistraction > 0) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.5) ? "BlushLow" : "BlushMedium",
+				MouthPose: "",
+			};
+		},
+	},
+	"Tired": {
+		stackable: true,
+		priority: 1,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax * 0.5) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax * 0.25) ? "EyesClosed" : "EyesDazed",
+				Eyes2Pose: "Eyes2Dazed",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "",
+			};
+		},
+	},
+};
