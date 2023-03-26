@@ -365,6 +365,7 @@ function KinkyDungeonDressPlayer(Character) {
 					}
 				}
 				if (e[1].stackable) {
+					if (!e[1].criteria(Character)) continue;
 					let result = null;
 					if (e[1].priority > (stackedPriorities.EyesPose || 0)) {
 						result = result || e[1].expression(Character);
@@ -1055,6 +1056,23 @@ let KDExpressions = {
 				Brows2Pose: "",
 				BlushPose: "",
 				MouthPose: "",
+			};
+		},
+	},
+	"Neutral": {
+		stackable: true,
+		priority: 0.1,
+		criteria: (C) => {
+			return true;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesNeutral",
+				Eyes2Pose: "Eyes2Neutral",
+				BrowsPose: "BrowsNeutral",
+				Brows2Pose: "Brows2Neutral",
+				BlushPose: "BlushNone",
+				MouthPose: "MouthNeutral",
 			};
 		},
 	},

@@ -2357,7 +2357,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 	// Draw the text or image
 	let textPush = 0;
 	if ((Image != null) && (Image != "")) {
-		let img = DrawGetImage(Image);
+		let img = KDTex(Image);//DrawGetImage
 		if (Stretch) {
 			KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 				Image, Left, Top, Width, Height, undefined, {
@@ -2368,10 +2368,10 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 				Height: Height,
 			});*/
 		} else KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-			Image, Left + 2, Top + Height/2 - img.height/2, img.width, img.height, undefined, {
+			Image, Left + 2, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, {
 				zIndex: zIndex + 0.001,
 			});
-		textPush = img.width;
+		textPush = img.orig.width;
 	}
 	DrawTextFitKD(Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
 		Color,

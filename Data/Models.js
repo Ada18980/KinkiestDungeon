@@ -138,7 +138,10 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend =
 		kdcanvas.addChild(Container.Container);
 		Container.Container.sortableChildren = true;
 	}
-	MC.ContainersDrawn.set(containerID, MC.Containers.get(containerID));
+	if (!MC.ContainersDrawn.get(containerID)) {
+		MC.ContainersDrawn.set(containerID, MC.Containers.get(containerID));
+		MC.Update.delete(containerID);
+	}
 
 	// Actual loop for drawing the models on the character
 

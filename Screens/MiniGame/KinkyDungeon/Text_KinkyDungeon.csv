@@ -9888,3 +9888,5 @@ KDColorSlideralpha,alpha
 KDResetLayer,Reset Layer!
 KDCopyLayer,Copy
 KDPasteLayer,Paste
+
+KDLoading,"Preloading Character Assets: "
