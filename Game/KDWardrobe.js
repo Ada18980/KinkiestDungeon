@@ -39,6 +39,7 @@ let KDWardrobeCategories = [
 	"Skirts",
 	"Pants",
 	"Accessories",
+	"Hats",
 	"Hairstyles",
 	"Face",
 	"Eyes",

@@ -130,7 +130,7 @@ function KDDrawVibeParticles(density) {
  */
 function KDCreateVibeParticle() {
 	let lifetime = 500 + Math.random() * 250;
-	let x = 250;
+	let x = 250 - (StandalonePatched ? 5 : 0);
 	let Hogtied = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer)?.Poses.Hogtie : KinkyDungeonPlayer.Pose.includes("Hogtied");
 	let Kneeling = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer)?.Poses.Kneel: KinkyDungeonPlayer.IsKneeling();
 	let y = 520 + (Hogtied ? 165 : (Kneeling ? 78 : 0));

@@ -625,6 +625,7 @@ AddModel({
 		},
 		{ Name: "FootSockLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
 			Poses: ToMap(["Hogtie"]),
+			InheritColor: "SockLeft",
 			Invariant: true,
 		},
 	])
@@ -641,6 +642,7 @@ AddModel({
 		{ Name: "FootSockRightKneel", Layer: "FootRightKneel", Pri: 1,
 			HidePoses: ToMap(["FeetLinked"]),
 			Poses: ToMap(["Kneel"]),
+			InheritColor: "SockRight",
 			Invariant: true,
 		},
 	])
@@ -1026,6 +1028,68 @@ AddModel({
 
 
 
+AddModel({
+	Name: "ZombieHat",
+	Folder: "Robes",
+	Parent: "Robes",
+	TopLevel: true,
+	Categories: ["Hats"],
+	Layers: ToLayerMap([
+		{ Name: "ZombieHat", Layer: "Hat", Pri: 40,
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+		{ Name: "ZombieHatBand", Layer: "Hat", Pri: 41,
+			HideWhenOverridden: true,
+			NoOverride: true,
+			Invariant: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "ZombieChestTalisman",
+	Folder: "Robes",
+	Parent: "Robes",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "ZombieChestTalisman", Layer: "ChestDeco", Pri: 70,
+			NoOverride: true,
+			Invariant: true,
+			MorphPoses: {Kneel: "Kneel"},
+		},
+	])
+});
+
+
+AddModel({
+	Name: "ZombieTalisman",
+	Folder: "Robes",
+	Parent: "Robes",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "ZombieTalisman", Layer: "Circlet", Pri: 90,
+			NoOverride: true,
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "ZombieTalismanBent",
+	Folder: "Robes",
+	Parent: "Robes",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "ZombieTalismanBent", Layer: "Circlet", Pri: 90,
+			NoOverride: true,
+			Invariant: true,
+		},
+	])
+});
 
 AddModel({
 	Name: "Sandals",

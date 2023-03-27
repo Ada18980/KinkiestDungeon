@@ -2,8 +2,10 @@
 
 let LAYERS_BASE = [
 	"Hat",
+	"Headband",
 	"HairFront",
 	"Mask",
+	"Circlet",
 	"Brows",
 	"Hair",
 	"Blindfold",
@@ -40,6 +42,7 @@ let LAYERS_BASE = [
 	"ForeArmRight",
 
 	// This slot is for things like breastplates and things that go over
+	"ChestDeco",
 	"ChestStraps",
 	"Chestplate",
 	// Certain pieces of armor go over the shirt
