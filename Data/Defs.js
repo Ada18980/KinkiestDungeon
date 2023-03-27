@@ -1,6 +1,7 @@
 "use strict";
 
 let LAYERS_BASE = [
+	"Hat",
 	"HairFront",
 	"Mask",
 	"Brows",
@@ -12,6 +13,7 @@ let LAYERS_BASE = [
 	"Mouth",
 	"Blush",
 	"Head",
+	"HatBack",
 
 	// Clothes that go over the chest and hang down
 	"Shoulders",
@@ -24,21 +26,24 @@ let LAYERS_BASE = [
 	"Collar",
 
 
-	// Forearms
+	// Forearms (only in HandsFront)
 	"ForeSleeveLeft",
+	"ForeSleeveDecoLeft",
 	"GloveLeft",
-	"HandLeft",
+	"ForeHandLeft",
 	"ForeArmLeft",
 
 	"ForeSleeveRight",
+	"ForeSleeveDecoRight",
 	"GloveRight",
-	"HandRight",
+	"ForeHandRight",
 	"ForeArmRight",
 
 	// This slot is for things like breastplates and things that go over
 	"ChestStraps",
 	"Chestplate",
 	// Certain pieces of armor go over the shirt
+	"BeltCharm",
 	"Belt",
 	"BeltDeco",
 	"Greaves",
@@ -49,7 +54,9 @@ let LAYERS_BASE = [
 	"Shirt",
 	// Chest is breasts, should only intersect on bottom and side edges, top is indeterminate
 	"Straps",
+	"NecklaceCharm",
 	"Necklace",
+	"Bra",
 	"Chest",
 	// For things that go directly under the breasts
 	"Underbust",
@@ -58,22 +65,21 @@ let LAYERS_BASE = [
 	"Corset",
 
 
-
-
-	// Left arm clothes
-	"SleeveLeft",
-
-	// Left arm body - reserved for body and catsuits
-	"ArmLeft",
-
-
 	// Lower body clothes with a bit more bulk
 	"SkirtDeco",
 	"Skirt",
 	"PantLeft",
 	"PantRight",
 	"Pants",
+	"BeltBack",
 
+	// Left arm clothes
+	"SleeveDecoLeft",
+	"SleeveLeft",
+
+	// Left arm body - reserved for body and catsuits
+	"HandLeft",
+	"ArmLeft",
 
 	// Shoes
 
@@ -104,12 +110,15 @@ let LAYERS_BASE = [
 	"Torso",
 
 	// Right arm clothes
+	"SleeveDecoRight",
 	"SleeveRight",
 
 	// Right arm body - reserved for body and catsuits
+	"HandRight",
 	"ArmRight",
 
 	// Clothes that go behind
+	"BeltFarBack",
 	"Coat",
 	"Cape",
 

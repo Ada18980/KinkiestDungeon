@@ -2,8 +2,10 @@
 
 let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked", "Front"];
 let FOREARMPOSES = ["Front"];
-let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked", "Front"];
-let HANDLEFTPOSES = ["Free", "Yoked", "Front"];
+let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked"];
+let HANDLEFTPOSES = ["Free", "Yoked"];
+let FOREHANDRIGHTPOSES = ["Front"];
+let FOREHANDLEFTPOSES = ["Front"];
 let LEGPOSES = ["Spread", "Closed", "Kneel", "Hogtie"];
 let FOOTRIGHTPOSES = ["Spread", "Closed"];
 let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel"];

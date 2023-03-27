@@ -291,8 +291,15 @@ let KDAdjustmentFilterCache = new Map();
 function ModelDrawLayer(MC, Model, Layer, Poses) {
 	// Hide if not highest
 	if (Layer.HideWhenOverridden) {
-		let priTest = MC.HighestPriority[Layer.Layer];
-		if (priTest > Layer.Pri) return false;
+		if (Layer.HideOverrideLayerMulti) {
+			for (let LL of Layer.HideOverrideLayerMulti) {
+				let priTest = MC.HighestPriority[LL];
+				if (priTest > Layer.Pri) return false;
+			}
+		} else {
+			let priTest = MC.HighestPriority[Layer.HideOverrideLayer || Layer.Layer];
+			if (priTest > Layer.Pri) return false;
+		}
 	}
 
 	// Hide poses

@@ -29,19 +29,21 @@ let KDModelList_Sublevel = [];
 
 let KDWardrobeCategories = [
 	"Uniforms",
-	"Hairstyles",
-	"Face",
-	"Eyes",
-	"Mouth",
-	"Body",
 	"Suits",
 	"Armor",
 	"Underwear",
 	"Socks",
 	"Shoes",
 	"Tops",
-	"Skirts",
 	"Corsets",
+	"Skirts",
+	"Pants",
+	"Accessories",
+	"Hairstyles",
+	"Face",
+	"Eyes",
+	"Mouth",
+	"Body",
 ];
 
 let KDSelectedModel = null;
@@ -571,15 +573,22 @@ function KDDrawWardrobe(screen, Character) {
 	if (KDOutfitInfo.length == 0) KDRefreshOutfitInfo();
 
 	let C = Character || KinkyDungeonPlayer;
+	KDTextField("KDOutfitName", 25, 5, 450, 30);
+	if (!ElementValue("KDOutfitName")) {
+		ElementValue("KDOutfitName", KDOutfitInfo[KDCurrentOutfit]);
+	}
 	KDDrawModelList(720, C);
 	if (KDPlayerSetPose)
 		KDDrawPoseButtons(C);
-	else
+	else {
 		KDDrawSavedColors(1060, 870, KDSavedColorCount, C);
+	}
 	DrawButtonKDEx("SetPose", (bdata) => {
 		KDPlayerSetPose = !KDPlayerSetPose;
+
 		return true;
 	}, true, 884, 790, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "/Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
+
 
 	if (KDSelectedModel) {
 		KDDrawColorSliders(1600, 100, C, KDSelectedModel);
@@ -592,6 +601,7 @@ function KDDrawWardrobe(screen, Character) {
 			KDOutfitStore[KDCurrentOutfit] = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
 			KDOutfitOriginalStore[KDCurrentOutfit] = KDOriginalValue;
 			KDCurrentOutfit = index;
+			ElementValue("KDOutfitName", "");
 			localStorage.setItem("kdcurrentoutfit", KDCurrentOutfit + "");
 			let NewOutfit = KDOutfitStore[KDCurrentOutfit] || localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
 
@@ -696,6 +706,10 @@ function KDDrawWardrobe(screen, Character) {
 		"KDWardrobeCancel"), KDOriginalValue ? "#ffffff" : "#888888", "");
 	DrawButtonKDEx("KDWardrobeSaveOutfit", (bdata) => {
 		if (KDConfirmType == "save" && KinkyDungeonReplaceConfirm > 0) {
+			if (ElementValue("KDOutfitName")) {
+				KDOutfitInfo[KDCurrentOutfit] = ElementValue("KDOutfitName");
+				KDSaveOutfitInfo();
+			}
 			KinkyDungeonReplaceConfirm = 0;
 			localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
 			KinkyDungeonDressSet();
@@ -775,12 +789,12 @@ function KDRestoreOutfit() {
 }
 
 function KDSaveOutfitInfo() {
-	localStorage.setItem("kdOutfitMeta", JSON.stringify("kdOutfitMeta"));
+	localStorage.setItem("kdOutfitMeta", JSON.stringify(KDOutfitInfo));
 }
 
 function KDRefreshOutfitInfo() {
 	let loaded = JSON.parse(localStorage.getItem("kdOutfitMeta"));
-	if (!(loaded?.length)) {
+	if (!(loaded?.length) || typeof loaded === 'string') {
 		loaded = [];
 	}
 	if (loaded?.length != undefined) {

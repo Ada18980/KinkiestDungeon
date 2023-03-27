@@ -16,8 +16,8 @@ function incrementProgress(amount) {
 	};
 }
 async function LoadTextureAtlas(list, preload = false) {
-	// @ts-ignore
 	for (let dataFile of list) {
+		console.log("Found atlas: " + dataFile);
 		let amount = 100;
 		KDLoadingMax += amount;
 	}

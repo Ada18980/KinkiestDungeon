@@ -87,7 +87,11 @@ interface ModelLayer extends Namable {
 	/** Lists the poses that can be affected by AppendPose*/
 	AppendPoseRequire?: Record<string, boolean>,
 	/** This layer gets hidden if something else is higher on the priority list */
-	HideWhenOverridden?: boolean
+	HideWhenOverridden?: boolean,
+	/** This is the layer used for HideWhenOverridden rather than the default layer */
+	HideOverrideLayer?: string,
+	/** This is the layer(s) used for HideWhenOverridden rather than the default layer */
+	HideOverrideLayerMulti?: string[],
 	/** This layer does not affect the max priority level */
 	NoOverride?: boolean,
 	/** Hide this layer if the other layer does not show */

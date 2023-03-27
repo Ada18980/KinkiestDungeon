@@ -107,6 +107,19 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "Ahoge",
+	Folder: "Hair",
+	TopLevel: true,
+	Group: "Hair",
+	Categories: ["Hairstyles"],
+	Layers: ToLayerMap([
+		{ Name: "Ahoge", Layer: "Hair", Pri: 0,
+			HideWhenOverridden: true,
+			HideOverrideLayer: "Hat",
+		},
+	])
+});
 
 AddModel({
 	Name: "Body",
@@ -144,6 +157,18 @@ AddModel({
 		{ Name: "HandLeft", Layer: "HandLeft", Pri: 0,
 			InheritColor: "Torso",
 			Poses: ToMap(HANDLEFTPOSES),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+		{ Name: "ForeHandRight", Layer: "ForeHandRight", Pri: 0,
+			Sprite: "HandRight",
+			InheritColor: "Torso",
+			Poses: ToMap(FOREHANDRIGHTPOSES),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+		{ Name: "ForeHandLeft", Layer: "ForeHandLeft", Pri: 0,
+			Sprite: "HandLeft",
+			InheritColor: "Torso",
+			Poses: ToMap(FOREHANDLEFTPOSES),
 			GlobalDefaultOverride: ToMap(["Front"]),
 		},
 		{ Name: "LegLeft", Layer: "LegLeft", Pri: 0,
@@ -226,6 +251,18 @@ AddModel({
 		{ Name: "HandLeft", Layer: "HandLeft", Pri: 1,
 			InheritColor: "TorsoUpper",
 			Poses: ToMap(HANDLEFTPOSES),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+		{ Name: "ForeHandRight", Layer: "ForeHandRight", Pri: 1,
+			Sprite: "HandRight",
+			InheritColor: "TorsoUpper",
+			Poses: ToMap(FOREHANDRIGHTPOSES),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+		{ Name: "ForeHandLeft", Layer: "ForeHandLeft", Pri: 1,
+			Sprite: "HandLeft",
+			InheritColor: "TorsoUpper",
+			Poses: ToMap(FOREHANDLEFTPOSES),
 			GlobalDefaultOverride: ToMap(["Front"]),
 		},
 		{ Name: "LegLeft", Layer: "LegLeft", Pri: 1,
@@ -666,6 +703,108 @@ AddModel({
 
 
 
+AddModel({
+	Name: "WitchBlouse",
+	Folder: "Witch",
+	Parent: "Witch",
+	TopLevel: true,
+	Categories: ["Tops"],
+	Layers: ToLayerMap([
+		{ Name: "Blouse", Layer: "Shirt", Pri: 4,
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "BlouseLiner", Layer: "CorsetLiner", Pri: 4,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "BlouseBust", Layer: "Chest", Pri: 4,
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "WitchCorset",
+	Folder: "Witch",
+	Parent: "Witch",
+	TopLevel: true,
+	Categories: ["Corsets"],
+	Layers: ToLayerMap([
+		{ Name: "Corset", Layer: "Corset", Pri: 1,
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "WitchHat",
+	Folder: "Witch",
+	Parent: "Witch",
+	TopLevel: true,
+	Categories: ["Hats"],
+	Layers: ToLayerMap([
+		{ Name: "WitchHat", Layer: "Hat", Pri: 70,
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+		{ Name: "WitchHatBack", Layer: "HatBack", Pri: 70,
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "ApprenticeHat",
+	Folder: "Witch",
+	Parent: "Witch",
+	TopLevel: true,
+	Categories: ["Hats"],
+	Layers: ToLayerMap([
+		{ Name: "ApprenticeHat", Layer: "Hat", Pri: 40,
+			HideWhenOverridden: true,
+			Invariant: true,
+		},
+		{ Name: "ApprenticeHatPuff", Layer: "Hat", Pri: 40.1,
+			HideWhenOverridden: true,
+			NoOverride: true,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "WitchShoes",
+	Folder: "Witch",
+	Parent: "Witch",
+	TopLevel: true,
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		{ Name: "ShoeLeft", Layer: "ShoeLeft", Pri: 1,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeRight", Layer: "ShoeRight", Pri: 1,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeRightKneel", Layer: "FootRightKneel", Pri: 1,
+			Poses: ToMap(["Kneel"]),
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
+			Poses: ToMap(["Hogtie"]),
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
 
 AddModel({
 	Name: "WitchSkirt",
@@ -702,10 +841,378 @@ AddModel({
 	Categories: ["Uniforms"],
 	Layers: ToLayerMap([
 		...GetModelLayers("WitchSkirt"),
+		...GetModelLayers("WitchCorset"),
+		...GetModelLayers("WitchBlouse"),
+		...GetModelLayers("WitchHat"),
+		...GetModelLayers("WitchShoes"),
 	])
 });
 
 
+
+
+AddModel({
+	Name: "WarriorBoots",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	TopLevel: true,
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		{ Name: "ShoeLeft", Layer: "ShoeLeft", Pri: 1,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeRight", Layer: "ShoeRight", Pri: 1,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeRightKneel", Layer: "FootRightKneel", Pri: 1,
+			Poses: ToMap(["Kneel"]),
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
+			Poses: ToMap(["Hogtie"]),
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "SportsBra",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	TopLevel: true,
+	Categories: ["Tops"],
+	Layers: ToLayerMap([
+		{ Name: "Bra", Layer: "Chest", Pri: 5,
+			Poses: ToMap([...ARMPOSES]),
+			MorphPoses: {Yoked: "Yoked"},
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "WarriorBustier",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	TopLevel: true,
+	Categories: ["Tops"],
+	Layers: ToLayerMap([
+		{ Name: "BustierChest", Layer: "Chest", Pri: 15,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "Bustier", Layer: "Bustier", Pri: 15,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "WarriorBelt",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	TopLevel: true,
+	Categories: ["Corsets"],
+	Layers: ToLayerMap([
+		{ Name: "Belt", Layer: "Belt", Pri: 15,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "DragonNecklace",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Necklace", Layer: "Necklace", Pri: 5,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "Necklace", Layer: "NecklaceCharm", Pri: 5,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+AddModel({
+	Name: "DragonArmband",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Armband", Layer: "Sleeves", Pri: 3,
+			Poses: ToMap(["Yoked", "Wristtie", "Free", "Boxtie", "Front"]),
+			MorphPoses: {Yoked: "Yoked", Boxtie: "Boxtie", Free: "Free", Wristtie: "Wristtie", Front: "Boxtie"},
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "DragonCollar",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Collar", Layer: "Collar", Pri: 5,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "WarriorSkirt",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	TopLevel: true,
+	Categories: ["Skirts"],
+	Layers: ToLayerMap([
+		{ Name: "Skirt", Layer: "Skirt", Pri: 7,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			MorphPoses: {Kneel: "Kneel"},
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "Dragonheart",
+	Folder: "Warrior",
+	TopLevel: true,
+	Categories: ["Uniforms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("WarriorSkirt"),
+		...GetModelLayers("WarriorBustier"),
+		...GetModelLayers("WarriorBelt"),
+		...GetModelLayers("SportsBra"),
+		...GetModelLayers("WarriorBoots"),
+		...GetModelLayers("DragonCollar"),
+		...GetModelLayers("DragonNecklace"),
+		...GetModelLayers("DragonArmband"),
+	])
+});
+
+
+AddModel({
+	Name: "Dragonheart",
+	Folder: "Warrior",
+	TopLevel: true,
+	Categories: ["Uniforms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("WarriorSkirt"),
+		...GetModelLayers("WarriorBustier"),
+		...GetModelLayers("WarriorBelt"),
+		...GetModelLayers("SportsBra"),
+		...GetModelLayers("WarriorBoots"),
+		...GetModelLayers("DragonCollar"),
+		...GetModelLayers("DragonNecklace"),
+		...GetModelLayers("DragonArmband"),
+	])
+});
+
+
+
+
+
+AddModel({
+	Name: "Sandals",
+	Folder: "Robes",
+	Parent: "Robes",
+	TopLevel: true,
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		{ Name: "ShoeLeft", Layer: "ShoeLeft", Pri: 1,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeRight", Layer: "ShoeRight", Pri: 1,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeRightKneel", Layer: "FootRightKneel", Pri: 1,
+			Poses: ToMap(["Kneel"]),
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
+			Poses: ToMap(["Hogtie"]),
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "RobeBra",
+	Folder: "Robes",
+	Parent: "Robes",
+	TopLevel: true,
+	Categories: ["Tops"],
+	Layers: ToLayerMap([
+		{ Name: "Bra", Layer: "Bra", Pri: 50,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "Bra", Layer: "Chest", Pri: 50,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "RobeSleeveLeft",
+	Folder: "Robes",
+	Parent: "RobeSleeves",
+	Categories: ["Tops"],
+	Layers: ToLayerMap([
+		{ Name: "SleeveLeft", Layer: "SleeveLeft", Pri: 40,
+			Poses: ToMap([...ARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+			HideWhenOverridden: true,
+		},
+	])
+});
+AddModel({
+	Name: "RobeSleeveRight",
+	Folder: "Robes",
+	Parent: "RobeSleeves",
+	Categories: ["Tops"],
+	Layers: ToLayerMap([
+		{ Name: "SleeveRight", Layer: "SleeveRight", Pri: 40,
+			Poses: ToMap([...ARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "RobeSleeves",
+	Folder: "Robes",
+	Parent: "Robes",
+	TopLevel: true,
+	Categories: ["Sleeves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("RobeSleeveLeft"),
+		...GetModelLayers("RobeSleeveRight"),
+	])
+});
+
+
+
+AddModel({
+	Name: "RobeSleeveDecoLeft",
+	Folder: "Robes",
+	Parent: "RobeSleevesDeco",
+	Categories: ["Tops"],
+	Layers: ToLayerMap([
+		{ Name: "SleeveDecoLeft", Layer: "SleeveDecoLeft", Pri: 40,
+			Poses: ToMap(["Free", "Yoked", "Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+			HideWhenOverridden: true,
+		},
+	])
+});
+AddModel({
+	Name: "RobeSleeveDecoRight",
+	Folder: "Robes",
+	Parent: "RobeSleevesDeco",
+	Categories: ["Tops"],
+	Layers: ToLayerMap([
+		{ Name: "SleeveDecoRight", Layer: "SleeveDecoRight", Pri: 40,
+			Poses: ToMap(["Free", "Yoked", "Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "RobeSleevesDeco",
+	Folder: "Robes",
+	Parent: "Robes",
+	TopLevel: true,
+	Categories: ["Sleeves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("RobeSleeveDecoLeft"),
+		...GetModelLayers("RobeSleeveDecoRight"),
+	])
+});
+
+AddModel({
+	Name: "Ribbon",
+	Folder: "Robes",
+	Parent: "Robes",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "RibbonBelt", Layer: "Belt", Pri: 30,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "RibbonBack", Layer: "BeltBack", Pri: 30,
+			Poses: ToMap(["Wristtie", "Boxtie"]),
+			Invariant: true,
+			MorphPoses: {Kneel: "Kneel", Hogtie: "Hogtie"},
+		},
+		{ Name: "RibbonFarBack", Layer: "BeltFarBack", Pri: 30,
+			Sprite: "RibbonBack",
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Boxtie"]),
+			Invariant: true,
+			MorphPoses: {Kneel: "Kneel", Hogtie: "Hogtie"},
+		},
+	])
+});
+
+
+AddModel({
+	Name: "RobeSkirt",
+	Folder: "Robes",
+	Parent: "Robes",
+	TopLevel: true,
+	Categories: ["Skirts"],
+	Layers: ToLayerMap([
+		{ Name: "Skirt", Layer: "Skirt", Pri: 7,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			MorphPoses: {Kneel: "Kneel"},
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "Robes",
+	Folder: "Robes",
+	TopLevel: true,
+	Categories: ["Uniforms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Sandals"),
+		...GetModelLayers("RobeSleeves"),
+		...GetModelLayers("RobeSleevesDeco"),
+		...GetModelLayers("RobeSkirt"),
+		...GetModelLayers("RobeBra"),
+		...GetModelLayers("Ribbon"),
+	])
+});
 
 AddModel({
 	Name: "RopeArms",

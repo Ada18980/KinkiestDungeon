@@ -756,6 +756,7 @@ interface Character {
 	FavoriteItems: any[];
 	LimitedItems: any[];
 	WhiteList: number[];
+	HeightRatio?: number;
 	HeightModifier: number;
 	MemberNumber?: number;
 

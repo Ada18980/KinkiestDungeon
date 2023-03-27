@@ -750,7 +750,7 @@ function KinkyDungeonDrawInputs() {
 
 			let GroupText = (sg.name && item) ? ("Restraint" + item.name) : ("KinkyDungeonGroup"+ sg.group); // The name of the group to draw.
 
-			DrawTextFitKD(TextGet(GroupText) + locktext, x + ((!sg.left) ? ButtonWidth - (drawLayers ? ButtonWidth : 0) : 0), y-24, 240 - (drawLayers ? ButtonWidth : 0), color, "#333333", undefined, sg.left ? "left" : undefined);
+			DrawTextFitKD(TextGet(GroupText) + locktext, x + ((!sg.left) ? ButtonWidth - (drawLayers ? ButtonWidth : 0) : 0), y-24, 240 - (drawLayers ? ButtonWidth : 0), color, "#333333", undefined, sg.left ? "left" : "right");
 
 			if (drawLayers) {
 				DrawButtonKDEx("surfaceItems"+sg.group, (bdata) => {
