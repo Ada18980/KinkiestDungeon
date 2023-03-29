@@ -1,41 +1,36 @@
 // While we want KD to be backwards compatible with BC, we want to avoid making modifications that are standalone specific to the KD code itself
 // These bootstraps must be loaded last, as they replace BC specific KD functionality
-window.KinkyDungeonMainRun = () => {};
-window.KinkyDungeonMainClick = () => {};
+///
+// There are a lot of `as any` hacks here, most of them are because we need to do global replacements, and typescript emits 'use strict' by default 
+(window as any).KinkyDungeonMainRun = () => {};
+(window as any).KinkyDungeonMainClick = () => {};
+(window as any).KinkyDungeonMultiplayerUpdate = () => {};
 
 let ChatRoomChatLog = [];
 let ChatRoomLastMessage = [];
-
 let PreferenceMessage = "";
-
-ChatRoomCharacterUpdate = () => {};
 let ChatRoomCharacterItemUpdate = () => {};
-
 let ArcadeKinkyDungeonEnd = () => {}
-KinkyDungeonMultiplayerUpdate = () => {};
-
-let ArcadeDeviousDungeonChallenge = false;
 
 const _CharacterAppearanceSetDefault = CharacterAppearanceSetDefault;
 const _CharacterAppearanceFullRandom = CharacterAppearanceFullRandom;
 const _CharacterLoadCanvas = CharacterLoadCanvas;
 const _CharacterRefresh = CharacterRefresh;
 
-function suppressCanvasUpdate(fn) {
-	CharacterAppearanceSetDefault = () => {};
-	CharacterAppearanceFullRandom = () => {};
-	CharacterLoadCanvas = () => {};
-	CharacterRefresh = () => {};
+function suppressCanvasUpdate<T>(fn: () => T): T {
+	(CharacterAppearanceSetDefault as any) = () => {};
+	(CharacterAppearanceFullRandom as any) = () => {};
+	(CharacterLoadCanvas as any) = () => {};
+	(CharacterRefresh as any) = () => {};
 	let ret = fn();
-	CharacterAppearanceSetDefault = _CharacterAppearanceSetDefault;
-	CharacterAppearanceFullRandom = _CharacterAppearanceFullRandom;
-	CharacterLoadCanvas = _CharacterLoadCanvas;
-	CharacterRefresh = _CharacterRefresh;
+	(CharacterAppearanceSetDefault as any) = _CharacterAppearanceSetDefault;
+	(CharacterAppearanceFullRandom as any) = _CharacterAppearanceFullRandom;
+	(CharacterLoadCanvas as any) = _CharacterLoadCanvas;
+	(CharacterRefresh as any) = _CharacterRefresh;
 	return ret;
 }
 
 window.onload = function() {
-	ArcadeDeviousDungeonChallenge = false;
 	KinkyDungeonRootDirectory = "Game/";
 
 	// window.onload in index.html
@@ -46,9 +41,9 @@ window.onload = function() {
 	AssetLoadAll();
 	ControllerActive = false;
 	let _TextLoad = TextLoad; // Avoid nonexistent text query
-	TextLoad = () => {};
+	(TextLoad as any) = () => {};
 	CommonSetScreen("KinkyDungeon", "KinkyDungeonMain");
-	TextLoad = _TextLoad;
+	(TextLoad as any) = _TextLoad;
 	MainRun(0);
 
 	// LoginLoad
@@ -56,13 +51,13 @@ window.onload = function() {
 	CharacterNextId = 1;
 	suppressCanvasUpdate(() => CharacterReset(0, "Female3DCG"));
 
-	Player.ArousalSettings = {};
+	Player.ArousalSettings = {} as any;
 	Player.ArousalSettings.VFXFilter = "VFXFilterHeavy";
-	Player.OnlineSharedSettings = {};
+	Player.OnlineSharedSettings = {} as any;
 	Player.OnlineSharedSettings.ItemsAffectExpressions = true
-	Player.AudioSettings = {};
+	Player.AudioSettings = {} as any;
 	Player.AudioSettings.Volume = 1;
-	Player.ImmersionSettings = {};
+	Player.ImmersionSettings = {} as any;
 
 	CharacterLoadCSVDialog(Player);
 
@@ -95,18 +90,16 @@ window.onload = function() {
 
 /**
  * Main game running state, runs the drawing
- * @param {number} Timestamp
  */
-function MainRun(Timestamp) {
+function MainRun(Timestamp: number): void {
 	DrawProcess(Timestamp);
 	TimerProcess(Timestamp);
 }
 
 /**
  * When the user presses a key, we send the KeyDown event to the current screen if it can accept it
- * @param {KeyboardEvent} event
  */
-function KeyDown(event) {
+function KeyDown(event: KeyboardEvent): void {
 	if (event.repeat) return;
 	KeyPress = event.keyCode || event.which;
 	CommonKeyDown(event);
@@ -114,18 +107,12 @@ function KeyDown(event) {
 
 /**
  * Handler for document-wide keydown event
- * @param {KeyboardEvent} event
  */
-function DocumentKeyDown(event) {
+function DocumentKeyDown(event: KeyboardEvent): void {
 	if (event.repeat) return;
 	if (event.key == "Escape") {
 		if (CurrentScreenFunctions.Exit) {
 			CurrentScreenFunctions.Exit();
-		} else if ((CurrentCharacter != null) && Array.isArray(DialogMenuButton) && (DialogMenuButton.indexOf("Exit") >= 0)) {
-			if (!DialogLeaveFocusItem())
-				DialogLeaveItemMenu();
-		} else if ((CurrentCharacter != null) && (CurrentScreen == "ChatRoom")) {
-			DialogLeave();
 		} else if ((CurrentCharacter == null) && (CurrentScreen == "ChatRoom") && (document.getElementById("TextAreaChatLog") != null)) {
 			ElementScrollToEnd("TextAreaChatLog");
 		}
@@ -136,9 +123,8 @@ function DocumentKeyDown(event) {
 
 /**
  * When the user clicks, we fire the click event for other screens
- * @param {MouseEvent} event
  */
-function Click(event) {
+function Click(event: MouseEvent): void {
 	if (!CommonIsMobile) {
 		MouseMove(event);
 		CommonClick(event);
@@ -147,9 +133,8 @@ function Click(event) {
 
 /**
  * When the user touches the screen (mobile only), we fire the click event for other screens
- * @param {TouchEvent} event
  */
-function TouchStart(event) {
+function TouchStart(event: TouchEvent): void {
 	if (CommonIsMobile && MainCanvas) {
 		TouchMove(event.touches[0]);
 		CommonClick(event);
@@ -159,18 +144,16 @@ function TouchStart(event) {
 
 /**
  * When the user touches the screen (mobile only), we fire the click event for other screens
- * @param {TouchEvent} event
  */
-function TouchEnd(event) {
+function TouchEnd(event: TouchEvent): void {
 	if (CommonIsMobile && MainCanvas)
 		CommonTouchList = event.touches;
 }
 
 /**
  * When touch moves, we keep it's position for other scripts
- * @param {Touch} touch
  */
-function TouchMove(touch) {
+function TouchMove(touch: Touch): void {
 	if (MainCanvas) {
 		MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
 		MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
@@ -179,9 +162,8 @@ function TouchMove(touch) {
 
 /**
  * When mouse move, we keep the mouse position for other scripts
- * @param {MouseEvent} event
  */
-function MouseMove(event) {
+function MouseMove(event: MouseEvent): void {
 	if (MainCanvas) {
 		MouseX = Math.round(event.offsetX * 2000 / MainCanvas.canvas.clientWidth);
 		MouseY = Math.round(event.offsetY * 1000 / MainCanvas.canvas.clientHeight);
@@ -191,10 +173,9 @@ function MouseMove(event) {
 /**
  * When the mouse is away from the control, we stop keeping the coordinates,
  * we also check for false positives with "relatedTarget"
- * @param {MouseEvent} event
  */
-function LoseFocus(event) {
-	if (event.relatedTarget || event.toElement) {
+function LoseFocus(event: MouseEvent): void {
+	if (event.relatedTarget || (event as any).toElement) { // `toElement` is for IE compatibility
 		MouseX = -1;
 		MouseY = -1;
 	}

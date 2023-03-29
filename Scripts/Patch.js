@@ -467,9 +467,7 @@ function remap(src) {
 	return src;
 }
 
-function ChatRoomCharacterUpdate(C) {
-	// Nothing.
-}
+function ChatRoomCharacterUpdate() {}
 
 
 let KDPatched = true;

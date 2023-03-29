@@ -193,7 +193,7 @@
         "Game/KinkyDungeonMusic.js",
         "Game/KDDelayedActions.js",
         "Scripts/KDMods.js",
-        "Scripts/Main.js",
+        "Scripts/Main.ts",
     ],
     "compilerOptions": {
         "target": "es2016",
