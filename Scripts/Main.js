@@ -1,20 +1,20 @@
 // While we want KD to be backwards compatible with BC, we want to avoid making modifications that are standalone specific to the KD code itself
 // These bootstraps must be loaded last, as they replace BC specific KD functionality
-KinkyDungeonMainRun = () => {};
-KinkyDungeonMainClick = () => {};
+window.KinkyDungeonMainRun = () => {};
+window.KinkyDungeonMainClick = () => {};
 
-ChatRoomChatLog = [];
-ChatRoomLastMessage = [];
+let ChatRoomChatLog = [];
+let ChatRoomLastMessage = [];
 
-PreferenceMessage = "";
+let PreferenceMessage = "";
 
 ChatRoomCharacterUpdate = () => {};
-ChatRoomCharacterItemUpdate = () => {};
+let ChatRoomCharacterItemUpdate = () => {};
 
-ArcadeKinkyDungeonEnd = () => {}
+let ArcadeKinkyDungeonEnd = () => {}
 KinkyDungeonMultiplayerUpdate = () => {};
 
-ArcadeDeviousDungeonChallenge = false;
+let ArcadeDeviousDungeonChallenge = false;
 
 const _CharacterAppearanceSetDefault = CharacterAppearanceSetDefault;
 const _CharacterAppearanceFullRandom = CharacterAppearanceFullRandom;
