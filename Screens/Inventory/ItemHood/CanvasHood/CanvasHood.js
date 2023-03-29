@@ -27,6 +27,7 @@ function InventoryItemHoodCanvasHoodLoad() {
 		ChatRoomCharacterItemUpdate(C, DialogFocusItem.Asset.Group.Name);
 	}
 
+	// @ts-ignore
 	ElementCreateInput(InventoryItemHoodCanvasHoodInputId, "text", Property.Text, InventoryItemHoodCanvasHoodMaxLength);
 }
 

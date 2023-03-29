@@ -38,6 +38,7 @@ var InventoryItemArmsPrisonLockdownSuitOptions = [
 var InventoryItemArmsPrisonLockdownSuitPage = "Base";
 
 function InventoryItemArmsPrisonLockdownSuitLoad() {
+	// @ts-ignore
 	ExtendedItemLoad(InventoryItemArmsPrisonLockdownSuitOptions, "ItemArmsPrisonLockdownSuitSelect");
 	InventoryItemNeckAccessoriesCollarShockUnitLoad();
 	InventoryItemArmsPrisonLockdownSuitSetPage("Base");
@@ -67,6 +68,7 @@ function InventoryItemArmsPrisonLockdownSuitDrawBase() {
 }
 
 function InventoryItemArmsPrisonLockdownSuitDrawStraps() {
+	// @ts-ignore
 	ExtendedItemDraw(InventoryItemArmsPrisonLockdownSuitOptions, "ItemArmsPrisonLockdownSuit");
 }
 
@@ -96,6 +98,7 @@ function InventoryItemArmsPrisonLockdownSuitClickStraps() {
 		return;
 	}
 
+	// @ts-ignore
 	ExtendedItemClick(InventoryItemArmsPrisonLockdownSuitOptions);
 }
 

@@ -1903,5 +1903,5 @@ interface KDDelayedAction {
 }
 
 
-declare const PIXI: any;
-declare const zip: any;
+declare const PIXI: any; // PIXI does not distribute a .d.ts; we can't use it's types without invoking imports
+declare const zip: any; // For some reason @types/zip.js is either for the wrong version or inaccurate.

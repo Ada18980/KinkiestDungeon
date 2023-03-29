@@ -45,6 +45,7 @@ function InventoryItemMiscCombinationPadlockLoad() {
 				combinationInput.setAttribute("placeholder", DialogFocusSourceItem.Property.CombinationNumber);
 			}
 		} else {
+			// @ts-ignore
 			document.getElementById('CombinationNumber').type = CombinationPadlockPlayerIsBlind ? "password" : "text";
 		}
 		if (newCombinationInput) {
@@ -53,6 +54,7 @@ function InventoryItemMiscCombinationPadlockLoad() {
 			newCombinationInput.type = CombinationPadlockPlayerIsBlind ? "password" : "text";
 			newCombinationInput.addEventListener("input", InventoryItemMiscCombinationPadlockModifyInput);
 		} else {
+			// @ts-ignore
 			document.getElementById('NewCombinationNumber').type = CombinationPadlockPlayerIsBlind ? "password" : "text";
 		}
 	}
@@ -146,6 +148,7 @@ function InventoryItemMiscCombinationPadlockUnlock(C, Item) {
 			C.Appearance[A] = Item;
 	}
 	InventoryUnlock(C, C.FocusGroup.Name);
+	// @ts-ignore
 	ChatRoomPublishAction(C, Item, null, true, "ActionUnlock");
 }
 

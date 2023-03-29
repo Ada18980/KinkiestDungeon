@@ -4,6 +4,7 @@ var InventoryItemNeckRestraintsPetPostAllowedChars = /^[a-zA-Z0-9 ~!'.,?!-*€$/
 function InventoryItemNeckRestraintsPetPostTxt0Load() {
 	ElementCreateInput("SignText", "text", DialogFocusItem.Property.Text || "", "14");
 	ElementCreateInput("SignText2", "text2", DialogFocusItem.Property.Text2 || "", "14");
+	// @ts-ignore
 	ElementCreateInput("SignText3", "text3", DialogFocusItem.Property.Text3 || "", "14");
 }
 
@@ -28,12 +29,14 @@ function InventoryItemNeckRestraintsPetPostTxt0Click() {
 		ElementValue("SignText").match(InventoryItemNeckRestraintsPetPostAllowedChars)||
 		DialogFocusItem.Property.Text2 !== ElementValue("SignText2") &&
 		ElementValue("SignText2").match(InventoryItemNeckRestraintsPetPostAllowedChars)||
+		// @ts-ignore
 		DialogFocusItem.Property.Text3 !== ElementValue("SignText3") &&
 		ElementValue("SignText3").match(InventoryItemNeckRestraintsPetPostAllowedChars)
 		)
 	) {
 		DialogFocusItem.Property.Text = ElementValue("SignText");
 		DialogFocusItem.Property.Text2 = ElementValue("SignText2");
+		// @ts-ignore
 		DialogFocusItem.Property.Text3 = ElementValue("SignText3");
 		InventoryItemNeckRestraintsPetPostChange();
 	}
@@ -72,6 +75,7 @@ function AssetsItemNeckRestraintsPetPostAfterDraw({
     if (L === "_Text") {
         // Determine the canvas position and size
         const Properties = Property || {};
+        // @ts-ignore
         const Type = Properties.Type || "t0";
 
         // We set up a canvas

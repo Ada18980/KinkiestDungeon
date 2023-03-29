@@ -1,8 +1,16 @@
 {
     "files": [
+        // Library .d.ts files
+        "Scripts/lib/LZString.d.ts",
+
+        // BC and KD .d.ts files
         "Scripts/Typedef.d.ts",
         "Assets/Female3DCG/Female3DCG_Types.d.ts",
+        "Game/KDTypeDefs.ts",
 
+        // Core js (or ts) files.
+        // We have to use a `files` declaration because order is important here
+        // (both due to BC design, and the fact KD monkey-patches parts of BC)
         "Scripts/Patch.js",
         "Scripts/GLDraw.js",
         "Scripts/Common.js",
@@ -196,11 +204,12 @@
         "Scripts/Main.ts",
     ],
     "compilerOptions": {
-        "target": "es2016",
+        "target": "es2017",
         "sourceMap": true,
         "inlineSources": true,
         "outFile": "./out/main.js",
         "allowJs": true,
+        "checkJs": true,
         "removeComments": true,
     }
 }

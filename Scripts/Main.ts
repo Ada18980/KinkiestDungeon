@@ -6,11 +6,36 @@
 (window as any).KinkyDungeonMainClick = () => {};
 (window as any).KinkyDungeonMultiplayerUpdate = () => {};
 
+function ActivityArousalItem(Source: any, Target: any, Asset: any): void {}
+function ActivityAllowedForGroup(C: any, Group: any, _: boolean = true): void {}
+function ChatRoomPublishAction(C: any, Action: any, PrevItem: any, NextItem: any): void {}
+function ChatRoomPublishCustomAction(msg: string, LeaveDialog: boolean, Dictionary: any): void {}
+function ChatRoomCharacterItemUpdate(C: any, Group: any): void {}
+function ChatRoomMessage(data: any): void {}
+function ChatRoomStimulationMessage(msg: string): void {}
+function DialogFind(C: any, KeyWord1: string, KeyWord2: string = null, ReturnPrevious: boolean = true): any {}
+function DialogLeave(): void {}
+function DialogClick(): void {}
+function DialogLeaveItemMenu(): void {}
+function InventoryItemPelvisMetalChastityBeltNpcDialog(C: any, option: any): void {}
+function PlatformDialogController(Buttons: any): any {}
+function PlatformController(Buttons: any): any {}
+function StruggleKeyDown(): void {}
+
+let ChatRoomData = null;
+let ChatRoomCharacter = null;
 let ChatRoomChatLog = [];
 let ChatRoomLastMessage = [];
+let ChatRoomSpace = ''; 
+let ChatRoomTargetMemberNumber = null;
 let PreferenceMessage = "";
-let ChatRoomCharacterItemUpdate = () => {};
 let ArcadeKinkyDungeonEnd = () => {}
+let StruggleLockPickProgressCurrentTries = 0;
+let StruggleProgressPrevItem = null;
+let StruggleProgressStruggleCount = 0;
+let ActivityOrgasmGameTimer = 0;
+let PreferenceCalibrationStage = 0;
+let MainHallStrongLocks = null;
 
 const _CharacterAppearanceSetDefault = CharacterAppearanceSetDefault;
 const _CharacterAppearanceFullRandom = CharacterAppearanceFullRandom;

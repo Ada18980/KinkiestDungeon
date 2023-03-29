@@ -118,12 +118,14 @@ function VariableHeightCreateLoadFunction({ defaultProperty, maxHeight, minHeigh
 		// Create the controls and listeners
 		const heightSlider = ElementCreateRangeInput(VariableHeightSliderId, currentHeight, 0, 1, 0.01, slider.Icon, true);
 		if (heightSlider) {
+			// @ts-ignore
 			heightSlider.addEventListener("input", (e) => changeHeight(Number(e.target.value), VariableHeightSliderId));
 		}
 		const heightNumber = ElementCreateInput(VariableHeightNumerId, "number", String(Math.round(currentHeight * 100)), "");
 		if (heightNumber) {
 			heightNumber.setAttribute("min", "0");
 			heightNumber.setAttribute("max", "100");
+			// @ts-ignore
 			heightNumber.addEventListener("change", (e) => changeHeight(Number(e.target.value) / 100, VariableHeightNumerId));
 		}
 		changeHeight(currentHeight, null);

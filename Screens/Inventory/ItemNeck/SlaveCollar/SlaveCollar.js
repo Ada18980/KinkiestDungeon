@@ -119,6 +119,7 @@ function InventoryItemNeckSlaveCollarDraw() {
 
 			// In color picking mode, we allow the user to change the collar color
 			ElementPosition("InputColor", 1450, 65, 300);
+			// @ts-ignore
 			ColorPickerDraw(1300, 145, 675, 830, document.getElementById("InputColor"), function (Color) { DialogChangeItemColor(C, Color); });
 			DrawButton(1665, 25, 90, 90, "", "White", "Icons/ColorSelect.png");
 			DrawButton(1775, 25, 90, 90, "", "White", "Icons/ColorCancel.png");
@@ -129,6 +130,7 @@ function InventoryItemNeckSlaveCollarDraw() {
 			ColorPickerHide();
 			DrawText(DialogFindPlayer("SlaveCollarSelectType"), 1500, 250, "white", "gray");
 			DrawButton(1665, 25, 90, 90, "", "White", "Icons/Next.png");
+			// @ts-ignore
 			DrawButton(1775, 25, 90, 90, "", (DialogFocusItem.Color != null && DialogFocusItem.Color != "Default" && DialogFocusItem.Color != "None") ? DialogFocusItem.Color : "White", "Icons/ColorPick.png");
 			for (let I = InventoryItemNeckSlaveCollarOffset; I < InventoryItemNeckSlaveCollarTypes.length && I < InventoryItemNeckSlaveCollarOffset + 8; I++) {
 				const A = DialogFocusItem.Asset;
@@ -193,6 +195,7 @@ function InventoryItemNeckSlaveCollarClick() {
 			}
 			if ((MouseX >= 1775) && (MouseX <= 1865) && (MouseY >= 25) && (MouseY <= 110)) {
 				InventoryItemNeckSlaveCollarColorMode = true;
+				// @ts-ignore
 				InventoryItemNeckSlaveCollarColor = DialogFocusItem.Color;
 				ElementCreateInput("InputColor", "text", (DialogColorSelect != null) ? DialogColorSelect.toString() : "");
 			}

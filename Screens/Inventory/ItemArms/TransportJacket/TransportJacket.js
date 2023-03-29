@@ -52,9 +52,11 @@ function InventoryItemArmsTransportJacketLoad() {
 	}
 
 	const input = ElementCreateInput(
+		// @ts-ignore
 		InventoryItemArmsTransportJacketInputId, "text", DialogFocusItem.Property.Text, InventoryItemArmsTransportJacketMaxLength);
 	if (input) {
 		input.pattern = DynamicDrawTextInputPattern;
+		// @ts-ignore
 		input.addEventListener("input", (e) => InventoryItemArmsTransportJacketTextChange(C, DialogFocusItem, e.target.value));
 	}
 }
@@ -123,6 +125,7 @@ function InventoryItemArmsTransportJacketExit() {
 }
 
 /** @type {DynamicAfterDrawCallback} */
+// @ts-ignore
 function AssetsItemArmsTransportJacketAfterDraw({ C, A, X, Y, L, Pose, Property, drawCanvas, drawCanvasBlink, AlphaMasks, Color }) {
 	if (L === "_Text") {
 		const width = 150;

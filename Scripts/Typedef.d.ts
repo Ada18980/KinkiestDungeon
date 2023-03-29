@@ -420,7 +420,7 @@ interface AssetLayer {
 	HideColoring: boolean;
 	/** A list of allowed extended item types that this layer permits - the layer will only be drawn if
 	the item type matches one of these types. If null, the layer is considered to permit all extended types. */
-	AllowTypes: string[] | null;
+	AllowTypes: string[] | null | boolean;
 	/** whether or not the layer has separate assets per type. If not, the extended type will not be included in
 	the URL when fetching the layer's image */
 	HasType: boolean;
@@ -460,6 +460,9 @@ interface AssetLayer {
 	GroupAlpha?: AlphaDefinition[];
 	/** A module for which the layer can have types. */
 	ModuleType: string[] | null;
+
+	ReverseAllowEmptyType: boolean;
+	ReverseAllowTypes: string[];
 }
 
 /** An object defining a group of alpha masks to be applied when drawing an asset layer */

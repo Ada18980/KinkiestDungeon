@@ -178,7 +178,7 @@ function KinkyDungeonItemEvent(Item) {
 		KinkyDungeonAggroAction('key', {});
 	} else if (KinkyDungeonGetRestraintByName(Item.name)) {
 		if (!KinkyDungeonInventoryGetLoose(Item.name)) {
-			KinkyDungeonInventoryAdd({name: Item.name, type: LooseRestraint, events:Item.events, quantity: 1});
+			KinkyDungeonInventoryAdd({name: Item.name, type: LooseRestraint, events:Item.events, quantity: 1, id: KinkyDungeonGetItemID()});
 		} else {
 			if (!KinkyDungeonInventoryGetLoose(Item.name).quantity) KinkyDungeonInventoryGetLoose(Item.name).quantity = 0;
 			KinkyDungeonInventoryGetLoose(Item.name).quantity += 1;

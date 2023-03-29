@@ -5,6 +5,7 @@ function InventoryItemButtAnalBeads2Load() {
 	if (DialogFocusItem.Property == null) DialogFocusItem.Property = { InsertedBeads: 1, ShowText: true, Type: "Base" };
 	if (DialogFocusItem.Property.InsertedBeads == null) {
 		DialogFocusItem.Property.Type = DialogFocusItem.Property.Type || "Base";
+		// @ts-ignore
 		DialogFocusItem.Property.InsertedBeads = DialogFocusItem.Property.Type == "Base" ? 1 : DialogFocusItem.Property.Type.split('')[1];
 	}
 	var beadsNum = DialogFocusItem.Property.InsertedBeads;
@@ -51,6 +52,7 @@ function InventoryItemButtAnalBeads2SetBeads(Modifier) {
 	var beadsNum = DialogFocusItem.Property.InsertedBeads;
 
 	// Loads the correct type/asset
+	// @ts-ignore
 	DialogFocusItem.Property.Type = beadsNum > 1 ? "_" + beadsNum + "in" : ["Base"];
 	CharacterRefresh(C);
 

@@ -58,14 +58,17 @@ function InventoryItemDevicesWoodenBoxLoad() {
 	}
 
 	const textInput = ElementCreateInput(
+		// @ts-ignore
 		InventoryItemDevicesWoodenBoxTextInputId, "text", Property.Text, InventoryItemDevicesWoodenBoxMaxLength);
 	if (textInput) {
 		textInput.pattern = DynamicDrawTextInputPattern;
+		// @ts-ignore
 		textInput.addEventListener("input", (e) => InventoryItemDevicesWoodenBoxTextChange(C, item, e.target.value));
 	}
 
 	const opacitySlider = ElementCreateRangeInput(InventoryItemDevicesWoodenBoxOpacityInputId, Property.Opacity, item.Asset.MinOpacity, item.Asset.MaxOpacity, 0.01, "blindfold");
 	if (opacitySlider) {
+		// @ts-ignore
 		opacitySlider.addEventListener("input", (e) => InventoryItemDevicesWoodenBoxOpacityChange(C, item, e.target.value));
 	}
 }
@@ -169,6 +172,7 @@ function InventoryItemDevicesWoodenBoxSetOpacity(property, opacity) {
 	const effectsToRemoves = transparent ? ["BlindNormal", "GagLight"] : [];
 	property.Effect = property.Effect.filter(e => !effectsToRemoves.includes(e));
 	effectsToApply.forEach(e => {
+		// @ts-ignore
 		if (!property.Effect.includes(e)) property.Effect.push(e);
 	});
 }

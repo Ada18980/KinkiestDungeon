@@ -623,11 +623,6 @@ function VibratorModeStateUpdateDeny(C, Arousal, TimeSinceLastChange, OldIntensi
 	var State = VibratorModeState.DENY;
 	var Intensity = OldIntensity;
 	if (Arousal >= 95 && TimeSinceLastChange > OneMinute && Math.random() < 0.2) {
-		if (Player.IsEdged()) {
-			// In deny mode, there's a small chance to change to give a fake orgasm and then go to rest mode after a minute
-			// Here we give the fake orgasm, passing a special parameter that indicates we bypass the usual restriction on Edge
-			ActivityOrgasmPrepare(C, true);
-		}
 
 		// Set the vibrator to rest
 		State = VibratorModeState.REST;
@@ -733,7 +728,5 @@ function VibratorModePublish(C, Item, OldIntensity, Intensity) {
 	if (CurrentScreen == "ChatRoom") {
 		ServerSend("ChatRoomChat", { Content: "Vibe" + Direction + "To" + Intensity, Type: "Action", Dictionary });
 		CharacterLoadEffect(C);
-		ChatRoomCharacterItemUpdate(C, Item.Asset.Group.Name);
-		ActivityChatRoomArousalSync(C);
 	}
 }

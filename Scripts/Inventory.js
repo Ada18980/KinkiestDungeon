@@ -296,6 +296,7 @@ function InventoryDoesItemHavePrerequisite(C, ItemGroup, Prerequisite) {
 function InventoryDoItemsBlockGroup(C, TargetGroup, GroupsToCheck) {
 	return GroupsToCheck.some((Group) => {
 		const Item = InventoryGet(C, Group);
+		// @ts-ignore
 		return Item && Item.Asset.Block && Item.Asset.Block.includes(TargetGroup);
 	});
 }
@@ -367,6 +368,7 @@ function InventoryPrerequisiteConflictingGags(C, BlockingPrereqs) {
  * @param {boolean} [setDialog=true] - If TRUE, set the screen dialog message at the same time
  * @returns {boolean} - TRUE if the item can be added to the character
  */
+// @ts-ignore
 function InventoryAllow(C, asset, prerequisites = asset.Prerequisite, setDialog = true) {
 	// Prerequisite can be a string
 	if (typeof prerequisites === "string") {
@@ -414,6 +416,7 @@ function InventoryGet(C, AssetGroup) {
 * @param {number} [MemberNumber] - The member number of the character putting the item on - defaults to -1
 * @param {Object} [Craft] - The crafting properties of the item
 */
+// @ts-ignore
 function InventoryWear(C, AssetName, AssetGroup, ItemColor, Difficulty, MemberNumber, Craft) {
 	const A = AssetGet(C.AssetFamily, AssetGroup, AssetName);
 	if (!A) return;
@@ -665,7 +668,9 @@ function InventoryGroupIsBlockedForCharacter(C, GroupName, Activity) {
 
 	// Items can block each other (hoods blocks gags, belts blocks eggs, etc.)
 	for (let E = 0; E < C.Appearance.length; E++) {
+		// @ts-ignore
 		if (!C.Appearance[E].Asset.Group.Clothing && (C.Appearance[E].Asset.Block != null) && (C.Appearance[E].Asset.Block.includes(GroupName)) && !Activity) return true;
+		// @ts-ignore
 		if (!C.Appearance[E].Asset.Group.Clothing && (C.Appearance[E].Property != null) && (C.Appearance[E].Property.Block != null) && Array.isArray(C.Appearance[E].Property.Block) && (C.Appearance[E].Property.Block.indexOf(GroupName) >= 0) && !Activity) return true;
 	}
 
@@ -689,6 +694,7 @@ function InventoryGroupIsBlockedForCharacter(C, GroupName, Activity) {
 * @returns {boolean} - TRUE if the group is blocked
 */
 function InventoryGroupIsBlocked(C, GroupName, Activity) {
+	// @ts-ignore
 	if (InventoryGroupIsBlockedForCharacter(C, GroupName, Activity)) return true;
 	// If the player is enclosed, all groups for another character are blocked
 	if ((C.ID != 0) && Player.IsEnclose()) return true;
@@ -854,6 +860,7 @@ function InventoryCharacterIsWearingLock(C, LockName) {
 * @returns {Boolean} - TRUE if one owner only restraint is found
 */
 function InventoryCharacterHasOwnerOnlyRestraint(C) {
+	// @ts-ignore
 	if ((C.Ownership == null) || (C.Ownership.MemberNumber == null) || (C.Ownership.MemberNumber == "")) return false;
 	if (C.Appearance != null)
 		for (let A = 0; A < C.Appearance.length; A++)
@@ -892,6 +899,7 @@ function InventoryHasLockableItems(C) {
  * @param {Item} item - The item to check
  * @returns {boolean} - TRUE if the asset's current type permits locks
  */
+// @ts-ignore
 function InventoryDoesItemAllowLock(item) {
 	return true;
 }

@@ -49,6 +49,7 @@ function InventoryItemVulvaClitAndDildoVibratorbeltIntensity(Modifier) {
 	if (DialogFocusItem.Property.Intensity >= 0) DialogFocusItem.Property.Effect = ["Egged", "Vibrating"];
 
 	// Adds the lock effect back if it was padlocked
+	// @ts-ignore
 	if ((DialogFocusItem.Property.LockedBy != null) && (DialogFocusItem.Property.LockedBy != "")) {
 		if (DialogFocusItem.Property.Effect == null) DialogFocusItem.Property.Effect = [];
 		DialogFocusItem.Property.Effect.push("Lock");
@@ -73,6 +74,7 @@ function InventoryItemVulvaClitAndDildoVibratorbeltSetIntensity(Modifier) {
 	if (DialogFocusItem.Property.Intensity == 3) DialogFocusItem.Property.Effect = ["Egged", "Vibrating"];
 
 	// Adds the lock effect back if it was padlocked
+	// @ts-ignore
 	if ((DialogFocusItem.Property.LockedBy != null) && (DialogFocusItem.Property.LockedBy != "")) {
 		if (DialogFocusItem.Property.Effect == null) DialogFocusItem.Property.Effect = [];
 		DialogFocusItem.Property.Effect.push("Lock");

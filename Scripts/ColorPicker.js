@@ -80,7 +80,9 @@ function ColorPickerRemoveEventListener() {
  */
 function ColorPickerStartPick(Event) {
 	// Only fires at first touch on mobile devices
+	// @ts-ignore
 	if (Event.changedTouches) {
+		// @ts-ignore
 		if (Event.changedTouches.length > 1) return;
 	}
 
@@ -141,12 +143,15 @@ function ColorPickerEndPick() {
  * @returns {{X: number, Y: number}} - Coordinates of the click/touch event on the canvas
  */
 function ColorPickerGetCoordinates(Event) {
+	// @ts-ignore
 	if (Event.changedTouches) {
 		// Mobile
+		// @ts-ignore
 		var Touch = Event.changedTouches[0];
 		TouchMove(Touch);
 	} else {
 		// PC
+		// @ts-ignore
 		MouseMove(Event);
 	}
 

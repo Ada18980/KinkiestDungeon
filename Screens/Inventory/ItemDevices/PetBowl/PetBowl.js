@@ -26,6 +26,7 @@ function InventoryItemDevicesPetBowlLoad() {
 		ChatRoomCharacterItemUpdate(C, DialogFocusItem.Asset.Group.Name);
 	}
 
+	// @ts-ignore
 	const input = ElementCreateInput(InventoryItemDevicesPetBowlInputId, "text", Property.Text, InventoryItemDevicesPetBowlMaxLength);
 	if (input) input.pattern = DynamicDrawTextInputPattern;
 }
