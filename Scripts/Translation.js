@@ -289,50 +289,6 @@ function TranslationText(Text) {
 }
 
 /**
- * Translates the asset group and asset descriptions based on the given dictionary
- * @param {string[]} T - The active translation dictionary
- * @returns {void} - Nothing
- */
-function TranslationAssetProcess(T) {
-	for (let A = 0; A < AssetGroup.length; A++)
-		AssetGroup[A].Description = TranslationString(AssetGroup[A].Description, T, "");
-	for (let A = 0; A < Asset.length; A++)
-		Asset[A].Description = TranslationString(Asset[A].Description, T, "");
-}
-
-/**
- * Translates the description of the assets and groups of an asset family
- * @param {string} Family - Name of the asset family to translate
- * @returns {void} - Nothing
- */
-function TranslationAsset(Family) {
-
-	// If we play in a foreign language
-	if ((TranslationLanguage != null) && (TranslationLanguage.trim() != "") && (TranslationLanguage.trim().toUpperCase() != "EN")) {
-
-		// Finds the full path of the translation file to use
-		let FullPath = "Assets/" + Family + "/" + Family + "_" + TranslationLanguage + ".txt";
-
-		// If the translation file is already loaded, we translate from it
-		if (TranslationCache[FullPath]) {
-			TranslationAssetProcess(TranslationCache[FullPath]);
-			return;
-		}
-
-		// If the translation is available, we open the txt file, parse it and returns the result to build the dialog
-		if (TranslationAvailable(FullPath))
-			CommonGet(FullPath, function() {
-				if (this.status == 200) {
-					TranslationCache[FullPath] = TranslationParseTXT(this.responseText);
-					TranslationAssetProcess(TranslationCache[FullPath]);
-				}
-			});
-
-	}
-
-}
-
-/**
  * Changes the current language and save the new selected language to local storage
  * @returns {void} - Nothing
  */

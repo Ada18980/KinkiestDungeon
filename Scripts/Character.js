@@ -76,7 +76,8 @@ function CharacterReset(CharacterID, CharacterAssetFamily, Type = CharacterType.
 		},
 		FavoriteItems: [],
 		WhiteList: [],
-		HeightModifier: 0
+		HeightModifier: 0,
+		IsEnclose: () => false,
 	};
 
 	// If the character doesn't exist, we create it

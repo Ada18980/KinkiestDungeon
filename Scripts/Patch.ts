@@ -81,7 +81,7 @@ function CheatFactor() {
  * @param {Character} C - The character whose expressions should be returned
  * @returns {object} Expression - The expresssion of a character
  */
-function WardrobeGetExpression(C) {
+function WardrobeGetExpression(C): any {
 	let characterExpression = {};
 	ServerAppearanceBundle(C.Appearance).filter(item => item.Property != null && item.Property.Expression != null).forEach(item => characterExpression[item.Group] = item.Property.Expression);
 	return characterExpression;
@@ -199,28 +199,6 @@ function DialogInventoryBuild(C, Offset, redrawPreviews = false) {
 }
 
 /**
- * Leaves the item menu of the focused item. Constructs a function name from the
- * item's asset group name and the item's name and tries to call that.
- * @returns {boolean} - Returns true, if an item specific exit function was called, false otherwise
- */
-function DialogLeaveFocusItem() {
-	if (DialogFocusItem != null) {
-		if (DialogFocusItem.Asset.Extended) {
-			ExtendedItemExit();
-		}
-
-		let funcName = "Inventory" + DialogFocusItem.Asset.Group.Name + DialogFocusItem.Asset.Name + "Exit";
-		if (typeof window[funcName] === "function") {
-			window[funcName]();
-			DialogFocusItem = null;
-			return true;
-		}
-		DialogFocusItem = null;
-	}
-	return false;
-}
-
-/**
  * Returns a specific reputation value for the player
  * @param {string} RepType - Type/name of the reputation to get the value of.
  * @returns {number} - Returns the value of the reputation. It can range from 100 to -100, and it defaults to 0 if the player never earned this type of reputation before.
@@ -239,6 +217,14 @@ function remap(src) {
 function ChatRoomCharacterUpdate(C) {
 	// Nothing.
 }
+
+const TypedItemDataLookup: {[_: string]: any} = {};
+const ModularItemDataLookup: {[_: string]: any} = {};
+
+function TypedItemSetOption(C, item, options, option, push = false) {}
+function TypedItemSetOptionByName(a, b, c, d) {}
+
+function ModularItemMergeModuleValues({ asset, modules }, moduleValues) {}
 
 
 let KDPatched = true;
