@@ -29,14 +29,17 @@ const InventoryItemDevicesKennelOptions = [
 ];
 
 function InventoryItemDevicesKennelLoad() {
+	// @ts-ignore
 	ExtendedItemLoad(InventoryItemDevicesKennelOptions, "SelectKennelType");
 }
 
 function InventoryItemDevicesKennelDraw() {
+	// @ts-ignore
 	ExtendedItemDraw(InventoryItemDevicesKennelOptions, "KennelType");
 }
 
 function InventoryItemDevicesKennelClick() {
+	// @ts-ignore
 	ExtendedItemClick(InventoryItemDevicesKennelOptions);
 }
 
@@ -59,6 +62,7 @@ function InventoryItemDevicesKennelNpcDialog(C, Option) {
 	C.CurrentDialog = DialogFind(C, "Kennel" + Option.Name, "ItemDevices");
 }
 
+// @ts-ignore
 function InventoryItemDevicesKennelValidate(C, Item, Option) {
 	var Allowed = "";
 	if (InventoryItemHasEffect(Item, "Lock", true)) {

@@ -664,6 +664,7 @@ function CommonMemoize(func) {
 				index.push(String(arguments[i]));
 			}
 		} // for
+		// @ts-ignore
 		if (!(index in memo)) {
 			memo[index] = func.apply(this, arguments);
 		}
@@ -791,6 +792,7 @@ function CommonUnpackItemArray(arr) {
 function CommonCompareVersion(Current, Other) {
 	const CurrentMatch = GameVersionFormat.exec(Current);
 	const OtherMatch = GameVersionFormat.exec(Other);
+	// @ts-ignore
 	if (CurrentMatch == null || OtherMatch == null || isNaN(CurrentMatch[1]) || isNaN(OtherMatch[1])) return -1;
 	const CurrentVer = [
 		Number.parseInt(CurrentMatch[1]),
@@ -884,6 +886,7 @@ function CommonPadlockUnlock(C, Item) {
 		}
 	}
 	InventoryUnlock(C, C.FocusGroup.Name);
+	// @ts-ignore
 	ChatRoomPublishAction(C, Item, null, true, "ActionUnlock");
 }
 

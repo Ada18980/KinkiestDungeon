@@ -12,6 +12,7 @@ function InventoryItemNeckAccessoriesCollarShockUnitLoad() {
 function InventoryItemNeckAccessoriesCollarShockUnitDraw() {
 	DrawAssetPreview(1387, 225, DialogFocusItem.Asset);
 	DrawText(DialogFindPlayer("Intensity" + DialogFocusItem.Property.Intensity.toString()).replace("Item", DialogFocusItem.Asset.Description), 1500, 550, "White", "Gray");
+	// @ts-ignore
 	DrawText(DialogFindPlayer("ShockCount").replace("ShockCount", DialogFocusItem.Property.TriggerCount), 1500, 600, "White", "Gray");
 	DrawButton(1200, 650, 200, 55, DialogFindPlayer("Low"), DialogFocusItem.Property.Intensity > 0 ? "White" : "Gray");
 	DrawButton(1550, 650, 200, 55, DialogFindPlayer("Medium"), (DialogFocusItem.Property.Intensity < 1 || DialogFocusItem.Property.Intensity > 1) ? "White" : "Gray");

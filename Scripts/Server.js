@@ -29,7 +29,7 @@ function ServerInit() {
 /** @readonly */
 var ServerAccountUpdate = {
 	SyncToServer: () => {},
-	QueueData: () => {}
+	QueueData: (data) => {}
 };
 
 /**

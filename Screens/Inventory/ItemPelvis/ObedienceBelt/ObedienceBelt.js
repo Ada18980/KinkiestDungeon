@@ -9,6 +9,7 @@ function InventoryItemPelvisObedienceBeltEngraving0Load() {
 
 	InventoryItemPelvisObedienceBeltInit(DialogFocusItem);
 
+	// @ts-ignore
 	const input = ElementCreateInput("EngraveText", "text", DialogFocusItem.Property.Text, InventoryItemPelvisObedienceBeltEngraveLength);
 	if (input) input.pattern = DynamicDrawTextInputPattern;
 }

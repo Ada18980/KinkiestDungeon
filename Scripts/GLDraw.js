@@ -42,6 +42,7 @@ function GLDrawLoad() {
 	GLDrawCanvas.height = CanvasDrawHeight;
 	GLVersion = "webgl2";
 	let gl = GLDrawCanvas.getContext(GLVersion, GLDrawGetOptions());
+	// @ts-ignore
 	if (!gl) { GLVersion = "webgl"; gl = GLDrawCanvas.getContext(GLVersion, GLDrawGetOptions()); }
 	if (!gl) { GLVersion = "No WebGL"; GLDrawCanvas.remove(); GLDrawCanvas = null; return; }
 
@@ -175,12 +176,14 @@ function GLDrawInitCharacterCanvas(canvas) {
 		canvas.height = CanvasDrawHeight;
 	}
 	if (canvas.GL == null) {
+		// @ts-ignore
 		canvas.GL = canvas.getContext(GLVersion);
 		if (canvas.GL == null) {
 			canvas.remove();
 			return GLDrawInitCharacterCanvas(null);
 		}
 	} else {
+		// @ts-ignore
 		GLDrawClearRect(canvas.GL, 0, 0, 1000, CanvasDrawHeight);
 	}
 	if (canvas.GL.program == null) {
@@ -336,22 +339,6 @@ function GLDrawCreateProgram(gl, vertexShader, fragmentShader) {
 }
 
 /**
- * Draws an image from a given url to a WebGLRenderingContext, used when the character is blinking
- * @param {string} url - URL of the image to render
- * @param {WebGL2RenderingContext} gl - WebGL context
- * @param {number} dstX - Position of the image on the X axis
- * @param {number} dstY - Position of the image on the Y axis
- * @param {string} color - Color of the image to draw
- * @param {boolean} fullAlpha - Whether or not the full alpha should be rendered
- * @param {RectTuple[]} alphaMasks - A list of alpha masks to apply to the asset
- * @param {number} opacity - The opacity at which to draw the image
- * @returns {void} - Nothing
- */
-function GLDrawImageBlink(url, gl, dstX, dstY, color, fullAlpha, alphaMasks, opacity, rotate) {
-	GLDrawImage(url, gl, dstX, dstY, GLDrawCanvasBlinkOffset, color, fullAlpha, alphaMasks, opacity, rotate);
-}
-
-/**
  * Draws an image from a given url to a WebGLRenderingContext
  * @param {string} url - URL of the image to render
  * @param {WebGL2RenderingContext} gl - WebGL context
@@ -387,8 +374,11 @@ function GLDrawImage(url, gl, dstX, dstY, offsetX, color, fullAlpha, alphaMasks,
 	gl.enableVertexAttribArray(program.a_texcoord);
 	gl.vertexAttribPointer(program.a_texcoord, 2, gl.FLOAT, false, 0, 0);
 
+	// @ts-ignore
 	let matrix = m4.orthographic(0, gl.canvas.width, gl.canvas.height, 0, -1, 1);
+	// @ts-ignore
 	matrix = m4.translate(matrix, dstX + offsetX, dstY, 0);
+	// @ts-ignore
 	matrix = m4.scale(matrix, sign * tex.width, sign * tex.height, 1);
 
 	gl.uniformMatrix4fv(program.u_matrix, false, matrix);
@@ -418,6 +408,7 @@ function GLDrawImage(url, gl, dstX, dstY, offsetX, color, fullAlpha, alphaMasks,
 function GLDraw2DCanvas(gl, Img, X, Y, blinkOffset, alphaMasks) {
 	const TempCanvasName = Img.getAttribute("name");
 	gl.textureCache.delete(TempCanvasName);
+	// @ts-ignore
 	GLDrawImageCache.set(TempCanvasName, Img);
 	GLDrawImage(TempCanvasName, gl, X, Y, blinkOffset, null, null, alphaMasks);
 }
@@ -552,6 +543,7 @@ function GLDrawClearRect(gl, x, y, width, height, blinkOffset) {
  */
 function GLDrawHexToRGBA(color, alpha = 1) {
 	const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+	// @ts-ignore
 	color = color.replace(shorthandRegex, function (m, r, g, b) { return r + r + g + g + b + b; });
 	const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color);
 	return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16), alpha] : [0, 0, 0, alpha];
@@ -564,6 +556,7 @@ function GLDrawHexToRGBA(color, alpha = 1) {
  */
 function GLDrawAppearanceBuild(C) {
 	const blinkOffset = 500;
+	// @ts-ignore
 	GLDrawClearRect(GLDrawCanvas.GL, 0, 0, 1000, CanvasDrawHeight);
 	CommonDrawCanvasPrepare(C);
 	CommonDrawAppearanceBuild(C, {

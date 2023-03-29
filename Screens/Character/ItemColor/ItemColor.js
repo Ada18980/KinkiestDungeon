@@ -145,6 +145,7 @@ function ItemColorDraw(c, group, x, y, width, height, includeResetButton) {
 				ItemColorConfig.colorInputHeight,
 			);
 			return ColorPickerDraw(
+				// @ts-ignore
 				x, contentY, width, y + height - contentY, document.getElementById("InputColor"), ItemColorOnPickerChange);
 		default:
 			return ItemColorDrawDefault(x, contentY);

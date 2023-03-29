@@ -198,6 +198,7 @@ function CommonDrawAppearanceBuild(C, {
 							break;
 						}
 						case "Color": {
+							// @ts-ignore
 							Color = OverriddenData[key];
 							break;
 						}

@@ -484,6 +484,7 @@ function AssetsItemPelvisFuturisticTrainingBeltScriptUpdatePlayer(data, LastTime
 		} else {
 			// @ts-ignore
 			punishment = InventoryFuturisticTrainingBeltCheckPunishSpeech(Item, LastTime);
+			// @ts-ignore
 			let Property = Item.Property;
 			if (punishment == "Speech") {
 				let NoShock = true;
@@ -536,6 +537,7 @@ function AssetsItemPelvisFuturisticTrainingBeltScriptUpdatePlayer(data, LastTime
 					InventoryItemPelvisFuturisticTrainingBeltUpdateVibeMode(C, PersistentData, Item);
 				}
 
+				// @ts-ignore
 				AssetsItemPelvisFuturisticChastityBeltScriptTrigger(C, Item, "ProhibitedSpeech", punishment.word, NoShock);
 			}
 		}
@@ -547,6 +549,7 @@ function AssetsItemPelvisFuturisticTrainingBeltScriptUpdatePlayer(data, LastTime
 function AssetsItemPelvisFuturisticTrainingBeltScriptStateMachine(data) {
 
 	// GGTS level 4 or more can short-cut the state machine
+	// @ts-ignore
 	if ((CurrentModule == "Online") && (CurrentScreen == "ChatRoom") && (ChatRoomGame == "GGTS") && (ChatRoomSpace === "Asylum") && (AsylumGGTSGetLevel(Player) >= 4)) return;
 
 	// We have a state machine
@@ -705,7 +708,6 @@ function AssetsItemPelvisFuturisticTrainingBeltScriptStateMachine(data) {
 	if (ArousalActive) {
 		if (EdgeMode && C.ArousalSettings.Progress > 96 && !((ActivityOrgasmGameTimer != null) && (ActivityOrgasmGameTimer > 0) && (CurrentTime < C.ArousalSettings.OrgasmTimer))) { // Manually trigger orgasm at this stage
 			DialogLeave();
-			ActivityOrgasmPrepare(C, true);
 			// Continuous edging~
 			if (Mode == "EdgeAndDeny")
 				C.ArousalSettings.Progress = 80;

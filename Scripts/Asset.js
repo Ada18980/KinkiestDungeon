@@ -301,6 +301,7 @@ function AssetBuildLayer(AssetDefinition, A) {
  */
 function AssetMapLayer(Layer, AssetDefinition, A, I) {
 	/** @type {AssetLayer} */
+	// @ts-ignore
 	const L = Object.assign({
 		Name: Layer.Name || null,
 		AllowColorize: AssetLayerAllowColorize(Layer, AssetDefinition, A.Group),

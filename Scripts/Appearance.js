@@ -145,6 +145,7 @@ function CharacterAppearanceRequired(C, GroupName) {
 function CharacterAppearanceMustHide(C, GroupName) {
 	for (let A = 0; A < C.Appearance.length; A++) {
 		if ((C.Appearance[A].Asset.Hide != null) && (C.Appearance[A].Asset.Hide.indexOf(GroupName) >= 0)) return true;
+		// @ts-ignore
 		if ((C.Appearance[A].Property != null) && (C.Appearance[A].Property.Hide != null) && (C.Appearance[A].Property.Hide.indexOf(GroupName) >= 0)) return true;
 	}
 	return false;
@@ -306,6 +307,7 @@ function CharacterAppearanceSortLayers(C) {
 				.filter(layer => !layer.AllowTypes || (
 					layer.ReverseAllowTypes ?
 						(type == '' ? layer.ReverseAllowEmptyType : layer.ReverseAllowTypes.some(t => type.includes(t))) :
+						// @ts-ignore
 						layer.AllowTypes.includes(type)))
 				// Hide the layer if its HideAs proxy asset should be hidden
 				.filter(layer => !layer.HideAs || CharacterAppearanceVisible(C, layer.HideAs.Asset, layer.HideAs.Group))
@@ -384,6 +386,7 @@ function CharacterAppearanceVisible(C, AssetName, GroupName, Recursive = true) {
 		else if (!Excluded && item.Asset.HideItemAttribute.length && assetToCheck && assetToCheck.Attribute.length) {
 			HidingItem = item.Asset.HideItemAttribute.some((val) => assetToCheck.Attribute.indexOf(val) !== -1);
 		}
+		// @ts-ignore
 		else if ((item.Property != null) && (item.Property.Hide != null) && (item.Property.Hide.indexOf(GroupName) >= 0) && !Excluded) HidingItem = true;
 		else if ((item.Asset.HideItem != null) && (item.Asset.HideItem.indexOf(GroupName + AssetName) >= 0)) HidingItem = true;
 		else if ((item.Property != null) && (item.Property.HideItem != null) && (item.Property.HideItem.indexOf(GroupName + AssetName) >= 0)) HidingItem = true;
@@ -521,6 +524,7 @@ function CharacterAppearanceGetCurrentValue(C, Group, Type) {
  * @param {number} HeightRatio - The character's height ratio
  * @returns {number} - The amount to move the character along the X co-ordinate
  */
+// @ts-ignore
 function CharacterAppearanceXOffset(C, HeightRatio) {
 	return 500 * (1 - HeightRatio) / 2;
 }
@@ -607,6 +611,7 @@ function AppearanceMenuBuild(C) {
  * @param {String} GroupName - The group name to validate, can be "ALL" to check all groups
  * @returns {boolean} - Return TRUE if the appearance group isn't blocked
  */
+// @ts-ignore
 function AppearanceGroupAllowed(C, GroupName) {
 	return true;
 }
@@ -911,6 +916,7 @@ function CharacterAppearanceNextItem(C, Group, Forward, Description) {
 		if (Description == true) return CAA[CAA.length - 1].Description;
 		CharacterAppearanceSetItem(C, Group, CAA[CAA.length - 1]);
 	}
+	// @ts-ignore
 	if (Description == true) return "None";
 }
 
@@ -949,6 +955,7 @@ function CharacterAppearanceNextColor(C, Group) {
  * @param {number} Move - The amount the next asset group should be moved before it is displayed
  * @returns {void} - Nothing
  */
+// @ts-ignore
 function CharacterAppearanceMoveOffset(C, Move) {
 
 	// Calculate the new offset

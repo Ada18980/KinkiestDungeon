@@ -31,6 +31,7 @@ function InventoryItemDevicesLockerLoad() {
 
 	const opacitySlider = ElementCreateRangeInput(InventoryItemDevicesLockerOpacityInputId, property.Opacity, item.Asset.MinOpacity, item.Asset.MaxOpacity, 0.01, "blindfold");
 	if (opacitySlider) {
+		// @ts-ignore
 		opacitySlider.addEventListener("input", (e) => InventoryItemDevicesLockerOpacityChange(C, item, Number(e.target.value)));
 	}
 }
@@ -75,6 +76,7 @@ function InventoryItemDevicesLockerClick() {
 		const y = ExtendedXY[ItemDevicesLockerOptions.length][i][1] + 80;
 
 		if (MouseIn(x, y, 225, 275)) {
+			// @ts-ignore
 			ExtendedItemHandleOptionClick(C, ItemDevicesLockerOptions, option);
 		}
 	});
@@ -114,6 +116,7 @@ function InventoryItemDevicesLockerExit() {
  * @param {ExtendedItemOption} Option - The currently selected Option
  * @returns {void} - Nothing
  */
+// @ts-ignore
 function InventoryItemDevicesLockerPublishAction(C, Option) {
 	var msg = "InventoryItemDevicesLockerChange";
 	var Dictionary = [];

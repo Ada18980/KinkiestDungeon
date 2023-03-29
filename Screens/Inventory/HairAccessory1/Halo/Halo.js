@@ -39,6 +39,7 @@ function InventoryHairAccessory1HaloLoad() {
 	if (brightnessInput) {
 		brightnessInput.addEventListener(
 			"input",
+			// @ts-ignore
 			(e) => InventoryHairAccessory1HaloBrightnessChange(C, item, Number(e.target.value)),
 		);
 	}

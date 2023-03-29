@@ -91,7 +91,7 @@ var DialogFavoriteStateDetails = [
 ];
 
 
-function DialogCanUnlock() {
+function DialogCanUnlock(C, item) {
 	return true;
 }
 
@@ -467,9 +467,7 @@ function remap(src) {
 	return src;
 }
 
-function ChatRoomCharacterUpdate(C) {
-	// Nothing.
-}
+function ChatRoomCharacterUpdate(C) {}
 
 
 let KDPatched = true;

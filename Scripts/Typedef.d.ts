@@ -180,59 +180,6 @@ type AssetLockType =
 
 //#endregion
 
-//#region index.html
-
-/**
- * Main game running state, runs the drawing
- * @param {number} Timestamp
- */
-declare function MainRun(Timestamp: number): void;
-
-/**
- * When the user presses a key, we send the KeyDown event to the current screen if it can accept it
- * @param {KeyboardEvent} event
- */
-declare function KeyDown(event: KeyboardEvent): void;
-
-/**
- * Handler for document-wide keydown event
- * @param {KeyboardEvent} event
- */
-declare function DocumentKeyDown(event: KeyboardEvent): void;
-
-/**
- * When the user clicks, we fire the click event for other screens
- * @param {MouseEvent} event
- */
-declare function Click(event: MouseEvent): void;
-
-/**
- * When the user touches the screen (mobile only), we fire the click event for other screens
- * @param {TouchEvent} event
- */
-declare function TouchStart(event: TouchEvent): void;
-
-/**
- * When touch moves, we keep it's position for other scripts
- * @param {Touch} touch
- */
-declare function TouchMove(touch: Touch): void;
-
-/**
- * When mouse move, we keep the mouse position for other scripts
- * @param {MouseEvent} event
- */
-declare function MouseMove(event: MouseEvent): void;
-
-/**
- * When the mouse is away from the control, we stop keeping the coordinates,
- * we also check for false positives with "relatedTarget"
- * @param {MouseEvent} event
- */
-declare function LoseFocus(event: MouseEvent): void;
-
-//#endregion
-
 //#region Server Messages
 
 interface IChatRoomGameResponse {
@@ -456,7 +403,7 @@ interface AssetGroup {
 
 	/** A dict mapping colors to custom filename suffices.
 	The "HEX_COLOR" key is special-cased to apply to all color hex codes. */
-	ColorSuffix?: { [string]: string };
+	ColorSuffix?: { [_: string]: string };
 }
 
 /** An object defining a drawable layer of an asset */
@@ -473,7 +420,7 @@ interface AssetLayer {
 	HideColoring: boolean;
 	/** A list of allowed extended item types that this layer permits - the layer will only be drawn if
 	the item type matches one of these types. If null, the layer is considered to permit all extended types. */
-	AllowTypes: string[] | null;
+	AllowTypes: string[] | null | boolean;
 	/** whether or not the layer has separate assets per type. If not, the extended type will not be included in
 	the URL when fetching the layer's image */
 	HasType: boolean;
@@ -513,6 +460,9 @@ interface AssetLayer {
 	GroupAlpha?: AlphaDefinition[];
 	/** A module for which the layer can have types. */
 	ModuleType: string[] | null;
+
+	ReverseAllowEmptyType: boolean;
+	ReverseAllowTypes: string[];
 }
 
 /** An object defining a group of alpha masks to be applied when drawing an asset layer */
@@ -654,7 +604,7 @@ interface Asset {
 	AllowTint: boolean;
 	DefaultTint?: string;
 	CraftGroup: string;
-	ColorSuffix: { [string]: string};
+	ColorSuffix: { [_: string]: string};
 }
 
 //#endregion

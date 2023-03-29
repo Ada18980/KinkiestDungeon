@@ -71,6 +71,7 @@ function InventoryItemMouthFuturisticHarnessBallGagDraw() {
 			DialogFindPlayer(type), 1350, 475, "White", "Gray");
 
 		MainCanvas.textAlign = "left";
+		// @ts-ignore
 		DrawCheckbox(1100, 890, 64, 64, "", DialogFocusItem.Property.ChatMessage, "White");
 		DrawText(DialogFindPlayer("FuturisticPanelGagMouthButtonChatMessage"), 1200, 923, "White", "Gray");
 		MainCanvas.textAlign = "center";

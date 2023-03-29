@@ -314,6 +314,7 @@ function InventorySpankingToysActivityAllowed(C) {
 	if (C.FocusGroup != null && A.AllowActivity) {
 		return A.AllowActivity.some(itemAct => {
 			return ActivityAllowedForGroup(C, C.FocusGroup.Name, true)
+				// @ts-ignore
 				.some(act => itemAct === act.Name);
 			});
 	}
