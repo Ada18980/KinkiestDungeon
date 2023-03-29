@@ -1,4 +1,3 @@
-'use strict';
 PIXI.Assets.init();
 
 let preloadList = [
