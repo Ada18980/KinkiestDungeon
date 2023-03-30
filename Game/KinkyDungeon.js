@@ -855,7 +855,7 @@ function KinkyDungeonRun() {
 
 	if ((KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "TileEditor") {
 		let BG = "BrickWall";
-		KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + ".jpg", 0, 0, CanvasWidth, CanvasHeight, undefined, {
+		KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + (StandalonePatched ? ".png" : ".jpg"), 0, 0, CanvasWidth, CanvasHeight, undefined, {
 			zIndex: -115,
 		});
 		kdgameboard.visible = false;
