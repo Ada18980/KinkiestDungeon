@@ -145,6 +145,10 @@ function KinkyDungeonDressPlayer(Character) {
 	CharacterAppearanceBuildCanvas = () => {};
 	let restraints = [];
 
+	if (StandalonePatched) {
+		AppearanceCleanup(Character);
+	}
+
 	try {
 		let data = {
 			updateRestraints: false,

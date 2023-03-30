@@ -856,6 +856,7 @@ function KinkyDungeonRun() {
 				zIndex: -115,
 			});
 		} else {
+			// @ts-ignore
 			DrawImage("Backgrounds/" + BG + ".jpg", 0, 0);
 		}
 		kdgameboard.visible = false;

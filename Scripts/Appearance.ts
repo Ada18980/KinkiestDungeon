@@ -125,3 +125,13 @@ function AppearanceItemParse(stringified: string): any[] {
 	}
 	return ret;
 }
+
+
+function AppearanceCleanup(C: Character) {
+	for (let A = 0; A < C.Appearance.length; A++) {
+		if (!C.Appearance[A].Model) {
+			C.Appearance.splice(A, 1);
+			A -= 1;
+		}
+	}
+}
