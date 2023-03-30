@@ -1,0 +1,32 @@
+name: Deploy to GH Pages
+
+on:
+  push:
+    branches: [ "master" ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout KinkyDungeon
+      uses: actions/checkout@v3
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14.x
+    - name: Build
+      run: |
+        npm install
+        npm run build
+        printf "\n!/out/**/*" >> .gitignore
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: .
+        clean: true
+        single-commit: true

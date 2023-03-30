@@ -1,16 +1,11 @@
-"use strict";
-
 let KDCanvasRenderMap = new Map();
 KDCanvasRenderMap.set(KinkyDungeonCanvasPlayer, "temp");
 
 /**
  * Returns a table with the priorities for each layer based on order of the array
- * @param {string[]} layers
- * @returns {Record<string, number>}
  */
-function InitLayers(layers) {
-	/** @type {Record<string, number>} */
-	let table = {};
+function InitLayers(layers: string[]): {[_: string]: number} {
+	let table: {[_: string]: number} = {};
 	let count = 0;
 	for (let l of layers) {
 		table[l] = count * LAYER_INCREMENT;
@@ -21,32 +16,26 @@ function InitLayers(layers) {
 let ModelLayers = InitLayers(LAYERS_BASE);
 
 
-/** @type {Record<string, Model>} */
-let ModelDefs = {};
-/**
- * @param {Model} Model
- */
-function AddModel(Model) {
+let ModelDefs: {[_: string]: Model} = {};
+
+function AddModel(Model: Model) {
 	ModelDefs[Model.Name] = Model;
 }
 
-/** @type {Map<Character, ModelContainer>} */
-let KDCurrentModels = new Map();
+let KDCurrentModels: Map<Character, ModelContainer> = new Map();
 
 class ModelContainer {
-	/**
-     * HighestPriority is used to store the highest priority in each layer
-     * @property {Record<string, number>} HighestPriority
-     * @public
-     */
-	/**
-	 * @param {Character} Character
-	 * @param {Map<string, Model>} Models
-	 * @param {Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: any}>} Containers
-	 * @param {Map<string, any>} ContainersDrawn
-	 * @param {Record<string, boolean>} Poses
-	 */
-	constructor(Character, Models, Containers, ContainersDrawn, Poses) {
+
+	public HighestPriority: {[_: string]: number};
+
+	Character: Character;
+	Models: Map<string, Model>;
+	Containers: Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: any}>;
+	ContainersDrawn: Map<string, any>;
+	Poses: Record<string, boolean>;
+	Update: Map<any, any>;
+
+	constructor(Character: Character, Models: Map<string, Model>, Containers: Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: any}>, ContainersDrawn: Map<string, any>, Poses: Record<string, boolean>) {
 		this.Character = Character;
 		this.Containers = Containers;
 		this.ContainersDrawn = ContainersDrawn;
@@ -56,36 +45,26 @@ class ModelContainer {
 		this.Update = new Map();
 	}
 
-
 	/**
 	 * Adds a model to the modelcontainer
-	 * @param {Model} Model
 	 */
-	addModel(Model) {
+	addModel(Model: Model) {
 		this.Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
 	}
+
 	/**
 	 * Deletes a model to the modelcontainer
-	 * @param {string} Model
 	 */
-	removeModel(Model) {
+	removeModel(Model: string) {
 		this.Models.delete(Model);
 	}
 }
 
-/**
- * @param {ModelLayer[]} Layers
- * @returns {Record<string, ModelLayer>}
- */
-function ToLayerMap(Layers) {
+function ToLayerMap(Layers: ModelLayer[]): {[_: string]: ModelLayer} {
 	return ToNamedMap(Layers);
 }
 
-/**
- * @param {string} ModelName
- * @returns {ModelLayer[]}
- */
-function GetModelLayers(ModelName) {
+function GetModelLayers(ModelName: string): ModelLayer[] {
 	if (ModelDefs[ModelName]) {
 		return Object.values(ModelDefs[ModelName].Layers);
 	}
@@ -105,17 +84,16 @@ function DisposeCharacter(C) {
 
 /**
  * Refreshes the character if not all images are loaded and draw the character canvas on the main game screen
- * @param {Character} C - Character to draw
- * @param {number} X - Position of the character on the X axis
- * @param {number} Y - Position of the character on the Y axis
- * @param {number} Zoom - Zoom factor
- * @param {boolean} [IsHeightResizeAllowed=true] - Whether or not the settings allow for the height modifier to be applied
- * @param {any} [DrawCanvas] - Pixi container to draw to
- * @param {any} [Blend] - The blend mode to use
- * @param {PoseMod[]} [StartMods] - Mods applied
- * @returns {void} - Nothing
+ * @param C - Character to draw
+ * @param X - Position of the character on the X axis
+ * @param Y - Position of the character on the Y axis
+ * @param Zoom - Zoom factor
+ * @param IsHeightResizeAllowed - Whether or not the settings allow for the height modifier to be applied
+ * @param DrawCanvas - Pixi container to draw to
+ * @param Blend - The blend mode to use
+ * @param StartMods - Mods applied
  */
-function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed, DrawCanvas, Blend = PIXI.SCALE_MODES.LINEAR, StartMods = []) {
+function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = []): void {
 	/** @type {ModelContainer} */
 	let MC = !KDCurrentModels.get(C) ? new ModelContainer(
 		C,
@@ -176,9 +154,8 @@ let DrawModel = DrawCharacter;
 
 /**
  * Setup sprites from the modelcontainer
- * @param {ModelContainer} MC
  */
-function DrawCharacterModels(MC, X, Y, Zoom, StartMods, ContainerContainer) {
+function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer) {
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
 
@@ -274,7 +251,7 @@ function DrawCharacterModels(MC, X, Y, Zoom, StartMods, ContainerContainer) {
 
 function FilterHash(filter) {
 	let str = "";
-	for (let f of Object.values(filter)) str = str + "_" + Math.round(f*1000);
+	for (let f of Object.values(filter)) str = str + "_" + Math.round((f as number) * 1000);
 	return str;
 }
 
@@ -327,14 +304,8 @@ function ModelDrawLayer(MC, Model, Layer, Poses) {
 
 /**
  * Determines if we should draw this layer or not
- * @param {Record<string, boolean>} drawLayers
- * @param {ModelContainer} MC
- * @param {Model} Model
- * @param {ModelLayer} Layer
- * @param {Record<string, boolean>} Poses
- * @returns {boolean}
  */
-function ModelLayerHidden(drawLayers, MC, Model, Layer, Poses) {
+function ModelLayerHidden(drawLayers: {[_: string]: boolean}, MC: ModelContainer, Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}): boolean {
 	// Hide if not highest
 	if (Layer.TieToLayer) {
 		if (!drawLayers[Model.Name + "," + Layer.Name]) return true;
@@ -342,24 +313,14 @@ function ModelLayerHidden(drawLayers, MC, Model, Layer, Poses) {
 	return false;
 }
 
-/**
- *
- * @param {Model} Model
- * @param {ModelLayer} Layer
- * @param {Record<string, boolean>} Poses
- * @returns {string}
- */
-function ModelLayerString(Model, Layer, Poses) {
+function ModelLayerString(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
 	return `Models/${Model.Folder}/${LayerSprite(Layer, Poses)}.png`;
 }
 
 /**
  * Gets the sprite name for a layer for a given pose
- * @param {ModelLayer} Layer
- * @param {Record<string, boolean>} Poses
- * @returns {string}
  */
-function LayerSprite(Layer, Poses) {
+function LayerSprite(Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
 	let pose = "";
 
 	let foundPose = false;
@@ -452,10 +413,8 @@ function UpdateModels(MC) {
 
 /**
  * Returns a list of colorable layer names
- * @param {Model} Model
- * @returns {string[]}
  */
-function KDGetColorableLayers(Model) {
+function KDGetColorableLayers(Model: Model): string[] {
 	let ret = [];
 	for (let layer of Object.values(Model.Layers)) {
 		if (!layer.NoColorize && !layer.InheritColor) {
@@ -465,22 +424,8 @@ function KDGetColorableLayers(Model) {
 	return ret;
 }
 
-/**
- *
- * @param {string} [ArmsPose ]
- * @param {string} [LegsPose ]
- * @param {string} [EyesPose ]
- * @param {string} [BrowsPose ]
- * @param {string} [BlushPose ]
- * @param {string} [MouthPose ]
- * @param {string} [Eyes2Pose ]
- * @param {string} [Brows2Pose ]
- * @param {string[]} [ExtraPose]
- * @returns {Record<string, boolean>}
- */
-function KDGeneratePoseArray(ArmsPose, LegsPose, EyesPose, BrowsPose, BlushPose, MouthPose, Eyes2Pose, Brows2Pose, ExtraPose) {
-	/** @type {Record<string, boolean>} */
-	let poses = {};
+function KDGeneratePoseArray(ArmsPose: string | undefined = undefined, LegsPose: string | undefined = undefined, EyesPose: string | undefined = undefined, BrowsPose: string | undefined = undefined, BlushPose: string | undefined = undefined, MouthPose: string | undefined = undefined, Eyes2Pose: string | undefined = undefined, Brows2Pose: string | undefined = undefined, ExtraPose: string | undefined = undefined): {[_: string]: boolean} {
+	let poses: {[_: string]: boolean} = {};
 	poses[ArmsPose || "Free"] = true;
 	poses[LegsPose || "Spread"] = true;
 	poses[EyesPose || "EyesNeutral"] = true;
@@ -498,13 +443,7 @@ function KDGeneratePoseArray(ArmsPose, LegsPose, EyesPose, BrowsPose, BlushPose,
 }
 
 
-/**
- *
- * @param {Character} C
- * @param {string} Type
- * @returns {string}
- */
-function KDGetPoseOfType(C, Type) {
+function KDGetPoseOfType(C: Character, Type: string): string {
 	let checkArray = [];
 	switch (Type) {
 		case "Arms": checkArray = ARMPOSES; break;

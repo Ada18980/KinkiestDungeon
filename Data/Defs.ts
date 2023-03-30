@@ -1,5 +1,3 @@
-"use strict";
-
 let LAYERS_BASE = [
 	"Hat",
 	"Headband",

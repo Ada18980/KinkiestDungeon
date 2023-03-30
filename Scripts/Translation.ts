@@ -1,4 +1,3 @@
-"use strict";
 let TranslationLanguage = "EN";
 let TranslationCache = {};
 
@@ -85,10 +84,10 @@ let TranslationDictionary = [
 
 /**
  * Checks if a file can be translated in the selected language
- * @param {string} FullPath - Full path of the file to check for a corresponding translation file
- * @returns {boolean} - Returns TRUE if a translation is available for the given file
+ * @param FullPath - Full path of the file to check for a corresponding translation file
+ * @returns Returns TRUE if a translation is available for the given file
  */
-function TranslationAvailable(FullPath) {
+function TranslationAvailable(FullPath: string): boolean {
 	let FileName = FullPath.trim().toUpperCase();
 	for (let L = 0; L < TranslationDictionary.length; L++)
 		if (TranslationDictionary[L].LanguageCode == TranslationLanguage)
@@ -100,10 +99,10 @@ function TranslationAvailable(FullPath) {
 
 /**
  * Parse a TXT translation file and returns it as an array
- * @param {string} str - Content of the translation text file
- * @returns {string[]} - Array of strings with each line divided. For each translated line, the english string precedes the translated one in the array.
+ * @param str - Content of the translation text file
+ * @returns Array of strings with each line divided. For each translated line, the english string precedes the translated one in the array.
  */
-function TranslationParseTXT(str) {
+function TranslationParseTXT(str: string): string[] {
 
 	const arr = [];
 	let c;
@@ -131,12 +130,12 @@ function TranslationParseTXT(str) {
 
 /**
  * Translates a string to another language from the array, the translation is always the one right after the english line
- * @param {string} S - The original english string to translate
- * @param {string[]} T - The active translation dictionary
- * @param {string} CharacterName - Name of the character if it is required to replace it within the string.
- * @returns {string} - The translated string
+ * @param S - The original english string to translate
+ * @param T - The active translation dictionary
+ * @param CharacterName - Name of the character if it is required to replace it within the string.
+ * @returns The translated string
  */
-function TranslationString(S, T, CharacterName) {
+function TranslationString(S: string, T: string[], CharacterName: string): string {
 	if ((S != null) && (S.trim() !== "")) {
 		S = S.trim();
 		for (let P = 0; P < T.length - 1; P++)
@@ -148,17 +147,13 @@ function TranslationString(S, T, CharacterName) {
 
 /**
  * build [translationsStringLineCache, translationsLineStringCache] for TranslationStringCache
- * @param {string[]} translations - An array of strings in translation file format (with EN and translated values on alternate lines)
- * @param {string} CharacterName - Name of the character if it is required to replace it within the string.
- * @returns {[Map<string, number>, Map<number, string>]} - The translated cache [translationsStringLineCache, translationsLineStringCache]
+ * @param translations - An array of strings in translation file format (with EN and translated values on alternate lines)
+ * @param CharacterName - Name of the character if it is required to replace it within the string.
+ * @returns The translated cache [translationsStringLineCache, translationsLineStringCache]
  */
-function TranslationStringCachePreBuild(translations, CharacterName) {
+function TranslationStringCachePreBuild(translations: string[], CharacterName: string): [Map<string, number>, Map<number, string>] {
 	let translationsStringLineCache = new Map();
 	let translationsLineStringCache = new Map();
-	// for (let P = 0; P < T.length - 1; P++) {
-	// if (S1 === T[P].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player)))
-	// return T[P + 1].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
-	// }
 	translations.forEach((T, i) => {
 		let S = T.replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
 		translationsStringLineCache.set(S, i);
@@ -171,12 +166,12 @@ function TranslationStringCachePreBuild(translations, CharacterName) {
  * Translates a string to another language from the array,
  * the translation is always the one right after the english line
  * this is the cache mode of TranslationString
- * @param {string} S - The original english string to translate
- * @param {Map<string, number>} translationsStringLineCache - The active translation dictionary <string, stringLine>
- * @param {Map<number, string>} translationsLineStringCache - The active translation dictionary <stringLine, string>
- * @returns {string} - The translated string
+ * @param S - The original english string to translate
+ * @param translationsStringLineCache - The active translation dictionary <string, stringLine>
+ * @param translationsLineStringCache - The active translation dictionary <stringLine, string>
+ * @returns The translated string
  */
-function TranslationStringCache(S, translationsStringLineCache, translationsLineStringCache) {
+function TranslationStringCache(S: string, translationsStringLineCache: Map<string, number>, translationsLineStringCache: Map<number, string>): string {
 	if (S != null) {
 		let S1 = S.trim();
 		if (S1 !== "") {
@@ -202,11 +197,10 @@ function TranslationStringCache(S, translationsStringLineCache, translationsLine
 
 /**
  * Translates a character dialog from the specified array
- * @param {Character} C - The character for which we need to translate the dialog array.
- * @param {string[]} T - The active translation dictionary
- * @returns {void} - Nothing
+ * @param C - The character for which we need to translate the dialog array.
+ * @param T - The active translation dictionary
  */
-function TranslationDialogArray(C, T) {
+function TranslationDialogArray(C: Character, T: string[]): void {
 	for (let D = 0; D < C.Dialog.length; D++) {
 		C.Dialog[D].Option = TranslationString(C.Dialog[D].Option, T, C.Name);
 		C.Dialog[D].Result = TranslationString(C.Dialog[D].Result, T, C.Name);
@@ -215,21 +209,19 @@ function TranslationDialogArray(C, T) {
 
 /**
  * Translates a set of tags. Rerenders the login message when on the login page.
- * @param {Array.<{Tag: string, Value: string}>} S - Array of current tag-value pairs
- * @param {string[]} T - The active translation dictionary
- * @returns {void} - Nothing
+ * @param S - Array of current tag-value pairs
+ * @param T - The active translation dictionary
  */
-function TranslationTextArray(S, T) {
+function TranslationTextArray(S: {Tag: string, Value: string}[], T: string[]): void {
 	for (let P = 0; P < S.length; P++)
 		S[P].Value = TranslationString(S[P].Value, T, "");
 }
 
 /**
  * Translate a character dialog if the file is in the dictionary
- * @param {Character} C - The character for which we want to translate the dialog
- * @returns {void} - Nothing
+ * @param C - The character for which we want to translate the dialog
  */
-function TranslationDialog(C) {
+function TranslationDialog(C: Character): void {
 
 	// If we play in a foreign language
 	if ((TranslationLanguage != null) && (TranslationLanguage.trim() != "") && (TranslationLanguage.trim().toUpperCase() != "EN")) {
@@ -259,10 +251,9 @@ function TranslationDialog(C) {
 
 /**
  * Translate an array of tags in the current selected language
- * @param {Array.<{Tag: string, Value: string}>} Text - Array of current tag-value pairs
- * @returns {void} - Nothing
+ * @param Text - Array of current tag-value pairs
  */
-function TranslationText(Text) {
+function TranslationText(Text: {Tag: string, Value: string}[]): void {
 	// If we play in a foreign language
 	if ((TranslationLanguage != null) && (TranslationLanguage.trim() != "") && (TranslationLanguage.trim().toUpperCase() != "EN")) {
 
@@ -289,54 +280,9 @@ function TranslationText(Text) {
 }
 
 /**
- * Translates the asset group and asset descriptions based on the given dictionary
- * @param {string[]} T - The active translation dictionary
- * @returns {void} - Nothing
- */
-function TranslationAssetProcess(T) {
-	for (let A = 0; A < AssetGroup.length; A++)
-		AssetGroup[A].Description = TranslationString(AssetGroup[A].Description, T, "");
-	for (let A = 0; A < Asset.length; A++)
-		Asset[A].Description = TranslationString(Asset[A].Description, T, "");
-}
-
-/**
- * Translates the description of the assets and groups of an asset family
- * @param {string} Family - Name of the asset family to translate
- * @returns {void} - Nothing
- */
-function TranslationAsset(Family) {
-
-	// If we play in a foreign language
-	if ((TranslationLanguage != null) && (TranslationLanguage.trim() != "") && (TranslationLanguage.trim().toUpperCase() != "EN")) {
-
-		// Finds the full path of the translation file to use
-		let FullPath = "Assets/" + Family + "/" + Family + "_" + TranslationLanguage + ".txt";
-
-		// If the translation file is already loaded, we translate from it
-		if (TranslationCache[FullPath]) {
-			TranslationAssetProcess(TranslationCache[FullPath]);
-			return;
-		}
-
-		// If the translation is available, we open the txt file, parse it and returns the result to build the dialog
-		if (TranslationAvailable(FullPath))
-			CommonGet(FullPath, function() {
-				if (this.status == 200) {
-					TranslationCache[FullPath] = TranslationParseTXT(this.responseText);
-					TranslationAssetProcess(TranslationCache[FullPath]);
-				}
-			});
-
-	}
-
-}
-
-/**
  * Changes the current language and save the new selected language to local storage
- * @returns {void} - Nothing
  */
-function TranslationNextLanguage() {
+function TranslationNextLanguage(): void {
 	for (let L = 0; L < TranslationDictionary.length; L++)
 		if (TranslationDictionary[L].LanguageCode == TranslationLanguage) {
 			if (L != TranslationDictionary.length - 1)
@@ -350,9 +296,8 @@ function TranslationNextLanguage() {
 
 /**
  * Loads the previous translation language from local storage if it exists
- * @returns {void} - Nothing
  */
-function TranslationLoad() {
+function TranslationLoad(): void {
 	let L = localStorage.getItem("BondageClubLanguage");
 	if (L != null) TranslationLanguage = L;
 }

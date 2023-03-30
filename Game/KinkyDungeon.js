@@ -991,12 +991,6 @@ function KinkyDungeonRun() {
 			// @ts-ignore
 			KinkyDungeonPlayer.OnlineSharedSettings = {AllowFullWardrobeAccess: true};
 			KinkyDungeonNewDress = true;
-			if (ServerURL == "foobar" && !StandalonePatched) {
-				// Give all of the items
-				for (let A = 0; A < Asset.length; A++)
-					if ((Asset[A] != null) && (Asset[A].Group != null) && !InventoryAvailable(Player, Asset[A].Name, Asset[A].Group.Name))
-						InventoryAdd(Player, Asset[A].Name, Asset[A].Group.Name);
-			}
 			CharacterReleaseTotal(KinkyDungeonPlayer);
 			KinkyDungeonDressPlayer();
 			// @ts-ignore

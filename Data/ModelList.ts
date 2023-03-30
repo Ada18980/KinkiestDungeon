@@ -1,5 +1,3 @@
-"use strict";
-
 /**
  * TIPS AND TRICKS FOR CONTRIBUTORS
  * 1) Memorize the layering of body parts. Hands are higher than arms, feet higher than legs

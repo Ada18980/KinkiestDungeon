@@ -1,5 +1,4 @@
-"use strict";
-var CharacterName = [
+const CharacterName: string[] = [
 	"Emma",
 	"Olivia",
 	"Ava",

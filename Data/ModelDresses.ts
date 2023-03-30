@@ -1,11 +1,7 @@
-"use strict";
-
-
 /**
  * List off all dresses items
- * @type {Record<string,KinkyDungeonDress>}
  */
-let KDModelDresses = {
+let KDModelDresses: {[_: string]: KinkyDungeonDress} = {
 	"Default" : KinkyDungeonDefaultDefaultDress,
 	"Prisoner" : [
 		{Item: "Catsuit", Group: "Suit", Color: "#8A120C", Lost: false},

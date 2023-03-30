@@ -80,6 +80,8 @@ type CharacterType = "online" | "npc" | "simple";
 
 type VibratorIntensity = -1 | 0 | 1 | 2 | 3;
 
+type VibratorMode = "Off" | "Low" | "Medium" | "High" | "Maximum" | "Random" | "Escalate" | "Tease" | "Deny" | "Edge";
+
 type VibratorModeSet = "Standard" | "Advanced";
 
 type VibratorModeState = "Default" | "Deny" | "Orgasm" | "Rest";
@@ -177,53 +179,6 @@ type AssetLockType =
 	"PasswordPadlock" | "SafewordPadlock" | "TimerPadlock" |
 	"TimerPasswordPadlock"
 	;
-
-//#endregion
-
-//#region index.html
-
-/**
- * Main game running state, runs the drawing
- * @param {number} Timestamp
- */
-declare function MainRun(Timestamp: number): void;
-
-/**
- * When the user presses a key, we send the KeyDown event to the current screen if it can accept it
- * @param {KeyboardEvent} event
- */
-declare function KeyDown(event: KeyboardEvent): void;
-
-/**
- * When the user clicks, we fire the click event for other screens
- * @param {MouseEvent} event
- */
-declare function Click(event: MouseEvent): void;
-
-/**
- * When the user touches the screen (mobile only), we fire the click event for other screens
- * @param {TouchEvent} event
- */
-declare function TouchStart(event: TouchEvent): void;
-
-/**
- * When touch moves, we keep it's position for other scripts
- * @param {Touch} touch
- */
-declare function TouchMove(touch: Touch): void;
-
-/**
- * When mouse move, we keep the mouse position for other scripts
- * @param {MouseEvent} event
- */
-declare function MouseMove(event: MouseEvent): void;
-
-/**
- * When the mouse is away from the control, we stop keeping the coordinates,
- * we also check for false positives with "relatedTarget"
- * @param {MouseEvent} event
- */
-declare function LoseFocus(event: MouseEvent): void;
 
 //#endregion
 
@@ -450,7 +405,7 @@ interface AssetGroup {
 
 	/** A dict mapping colors to custom filename suffices.
 	The "HEX_COLOR" key is special-cased to apply to all color hex codes. */
-	ColorSuffix?: { [string]: string };
+	ColorSuffix?: { [_: string]: string };
 }
 
 /** An object defining a drawable layer of an asset */
@@ -643,12 +598,12 @@ interface Asset {
 	ColorableLayerCount: number;
 	Archetype?: string;
 	Attribute: string[];
-	PreviewIcons: InventoryIcon[];
+	PreviewIcons: any[];
 	Tint: TintDefinition[];
 	AllowTint: boolean;
 	DefaultTint?: string;
 	CraftGroup: string;
-	ColorSuffix: { [string]: string};
+	ColorSuffix: { [_: string]: string};
 }
 
 //#endregion
@@ -660,7 +615,7 @@ interface ItemBundle {
 	Difficulty?: number;
 	Color?: ItemColor;
 	Property?: ItemProperties;
-	Craft?: CraftedItemProperties;
+	Craft?: any;
 }
 
 /** An AppearanceBundle is whole minified appearance of a character */
@@ -741,8 +696,8 @@ interface Character {
 	Stage: string;
 	CurrentDialog: string;
 	Dialog: any[];
-	Reputation: Reputation[];
-	Skill: Skill[];
+	Reputation: any[];
+	Skill: any[];
 	Pose: string[];
 	Effect: string[];
 	Tints: ResolvedTintDefinition[];
@@ -811,10 +766,11 @@ interface Character {
 	};
 	ArousalZoom?: boolean;
 	FixedImage?: string;
-	Rule?: LogRecord[];
+	Rule?: any[];
 	Status?: string | null;
 	StatusTimer?: number;
 	Crafting?: CraftingItem[];
+	IsEnclose: () => boolean;
 }
 
 type NPCArchetype =
@@ -2243,3 +2199,14 @@ interface CraftingItem {
 }
 
 //#endregion
+
+interface InventoryItem {
+	Group: string;
+	Name: string;
+	Asset: Asset;
+}
+
+interface NotificationSetting {
+	AlertType: number;
+	Audio: number;
+}

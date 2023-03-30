@@ -1,5 +1,3 @@
-"use strict";
-
 let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked", "Front"];
 let FOREARMPOSES = ["Front"];
 let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked"];
@@ -24,10 +22,7 @@ let BLUSHPOSES = ["BlushLow", "BlushMedium", "BlushHigh", "BlushExtreme"];
 /** Standard GlobalDefaultOverrides, this should be for any pose that's meant to use mostly normal assets */
 let STANDARD_DEFAULTS = ["Hogtie"];
 
-/**
- * @type {Record<string, PoseProperty>}
- * */
-let PoseProperties = {
+let PoseProperties: {[_: string]: PoseProperty} = {
 	Hogtie: {
 		rotation: -95,
 		pri_rotation: 1,
@@ -55,11 +50,8 @@ let PoseProperties = {
 
 /**
  * Get the pose from the pose array with the highest value of checkvar
- * @param {Record<string, boolean>} Poses
- * @param {string} CheckVar
- * @param {string} [FilterVar]
  */
-function ModelGetMaxPose(Poses, CheckVar, FilterVar) {
+function ModelGetMaxPose(Poses: {[_: string]: boolean}, CheckVar: string, FilterVar: string | null = null): string {
 	let maxPose = "";
 	for (let p of Object.keys(Poses)) {
 		if (PoseProperties[p] && PoseProperties[p][CheckVar] != undefined
@@ -92,10 +84,8 @@ function ModelGetPoseRotation(Poses) {
 	return {rotation: r, X_Anchor: x, Y_Anchor: y};
 }
 
-/** @returns {Record<string, PoseMod[]>} */
-function ModelGetPoseMods(Poses) {
-	/** @type {Record<string, PoseMod[]>} */
-	let mods = {};
+function ModelGetPoseMods(Poses): {[_: string]: PoseMod[]} {
+	let mods: {[_: string]: PoseMod[]} = {};
 	for (let p of Object.keys(Poses)) {
 		if (PoseProperties[p]?.mods) {
 			for (let mod of PoseProperties[p].mods) {

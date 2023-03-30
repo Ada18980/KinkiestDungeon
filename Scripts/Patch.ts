@@ -20,13 +20,10 @@ let DialogColorSelect = null;
 let DialogPreviousCharacterData = {};
 let DialogInventory = [];
 let DialogInventoryOffset = 0;
-/** @type {Item|null} */
-let DialogFocusItem = null;
-/** @type {Item|null} */
-let DialogFocusSourceItem = null;
+let DialogFocusItem: Item | null = null;
+let DialogFocusSourceItem: Item | null = null;
 let DialogFocusItemColorizationRedrawTimer = null;
-/** @type {string[]} */
-let DialogMenuButton = [];
+let DialogMenuButton: string[] = [];
 let DialogItemToLock = null;
 let DialogAllowBlush = false;
 let DialogAllowEyebrows = false;
@@ -35,12 +32,10 @@ let DialogFacialExpressions = [];
 let DialogFacialExpressionsSelected = -1;
 let DialogFacialExpressionsSelectedBlindnessLevel = 2;
 let DialogSavedExpressionPreviews = [];
-/** @type {Pose[][]} */
-let DialogActivePoses = [];
+let DialogActivePoses: Pose[][] = [];
 let DialogItemPermissionMode = false;
 let DialogExtendedMessage = "";
 let DialogActivityMode = false;
-/** @type {Record<"Enabled" | "Equipped" | "BothFavoriteUsable" | "TargetFavoriteUsable" | "PlayerFavoriteUsable" | "Usable" | "TargetFavoriteUnusable" | "PlayerFavoriteUnusable" | "Unusable" | "Blocked", DialogSortOrder>} */
 let DialogSortOrder = {
 	Enabled: 1,
 	Equipped: 2,
@@ -61,10 +56,11 @@ let DialogGamingPreviousRoom = "";
 let DialogGamingPreviousModule = "";
 let DialogButtonDisabledTester = /Disabled(For\w+)?$/u;
 
-/** @type {Map<string, string>} */
-let PlayerDialog = new Map();
+let PlayerDialog: Map<string, string> = new Map();
 
 let DialogFavoriteStateDetails = [];
+
+let MiniGameReturnFunction = "ArcadeKinkyDungeonEnd";
 
 
 function DialogCanUnlock() {
@@ -81,11 +77,33 @@ function CheatFactor() {
  * @param {Character} C - The character whose expressions should be returned
  * @returns {object} Expression - The expresssion of a character
  */
-function WardrobeGetExpression(C) {
+function WardrobeGetExpression(C): any {
 	let characterExpression = {};
 	ServerAppearanceBundle(C.Appearance).filter(item => item.Property != null && item.Property.Expression != null).forEach(item => characterExpression[item.Group] = item.Property.Expression);
 	return characterExpression;
 }
+
+/**
+ * Prepares an appearance bundle so we can push it to the server. It minimizes it by keeping only the necessary
+ * information. (Asset name, group name, color, properties and difficulty)
+ * @param Appearance - The appearance array to bundle
+ * @returns The appearance bundle created from the given appearance array
+ */
+function ServerAppearanceBundle(Appearance: Item[]): AppearanceBundle {
+	let Bundle: AppearanceBundle = [];
+	for (let A = 0; A < Appearance.length; A++) {
+		let N: any = {};
+		N.Group = Appearance[A].Asset.Group.Name;
+		N.Name = Appearance[A].Asset.Name;
+		if ((Appearance[A].Color != null) && (Appearance[A].Color != "Default")) N.Color = Appearance[A].Color;
+		if ((Appearance[A].Difficulty != null) && (Appearance[A].Difficulty != 0)) N.Difficulty = Appearance[A].Difficulty;
+		if (Appearance[A].Property != null) N.Property = Appearance[A].Property;
+		Bundle.push(N);
+	}
+	return Bundle;
+}
+
+
 /**
  * Draws the online game images/text needed on the characters
  * @param {Character} C - Character to draw the info for
@@ -199,28 +217,6 @@ function DialogInventoryBuild(C, Offset, redrawPreviews = false) {
 }
 
 /**
- * Leaves the item menu of the focused item. Constructs a function name from the
- * item's asset group name and the item's name and tries to call that.
- * @returns {boolean} - Returns true, if an item specific exit function was called, false otherwise
- */
-function DialogLeaveFocusItem() {
-	if (DialogFocusItem != null) {
-		if (DialogFocusItem.Asset.Extended) {
-			ExtendedItemExit();
-		}
-
-		let funcName = "Inventory" + DialogFocusItem.Asset.Group.Name + DialogFocusItem.Asset.Name + "Exit";
-		if (typeof window[funcName] === "function") {
-			window[funcName]();
-			DialogFocusItem = null;
-			return true;
-		}
-		DialogFocusItem = null;
-	}
-	return false;
-}
-
-/**
  * Returns a specific reputation value for the player
  * @param {string} RepType - Type/name of the reputation to get the value of.
  * @returns {number} - Returns the value of the reputation. It can range from 100 to -100, and it defaults to 0 if the player never earned this type of reputation before.
@@ -240,5 +236,34 @@ function ChatRoomCharacterUpdate(C) {
 	// Nothing.
 }
 
+const TypedItemDataLookup: {[_: string]: any} = {};
+const ModularItemDataLookup: {[_: string]: any} = {};
+
+function TypedItemSetOption(C, item, options, option, push = false) {}
+function TypedItemSetOptionByName(a, b, c, d) {}
+
+function ModularItemMergeModuleValues({ asset, modules }, moduleValues) {}
+
+function ExtendedItemSetType(C, Options, Option) {}
+function ExtendedItemExit() {}
+
+let MiniGameVictory = true;
+
+let CharacterRefresh = (...args) => {}
+
+function InventoryRemove(C, AssetGroup, Refresh = false) {}
+function InventoryGetLock(Lock): any {}
+function InventoryAllow(C, asset, prerequisites = asset.Prerequisite, setDialog = true) { return true; }
+function InventoryWear(C, AssetName, AssetGroup, ItemColor, Difficulty, MemberNumber, Craft, Refresh=true) {}
+function InventoryLock(C, Item, Lock, MemberNumber, Update = true) {}
+function InventoryUnlock(C, Item) {}
 
 let KDPatched = true;
+let ServerURL = "http://localhost:4288";
+
+function ServerSend(Message, Data) {}
+function ServerPlayerIsInChatRoom() { return false; }
+
+function suppressCanvasUpdate<T>(f: () => T): T {
+	return f();
+}

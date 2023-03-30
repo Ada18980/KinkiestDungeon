@@ -1,26 +1,21 @@
-"use strict";
-
-/** @type {TextCache | null} */
-let TextScreenCache = null;
-/** @type {Map<string, TextCache>} */
-const TextAllScreenCache = new Map;
+let TextScreenCache: TextCache | null = null;
+const TextAllScreenCache: Map<string, TextCache> = new Map();
 
 /**
  * Finds the text value linked to the tag in the buffer
- * @param {string} TextTag - Tag for the text to find
- * @returns {string} - Returns the text associated to the tag, will return a missing tag text if the tag was not found.
+ * @param TextTag - Tag for the text to find
+ * @returns Returns the text associated to the tag, will return a missing tag text if the tag was not found.
  */
-function TextGet(TextTag) {
+function TextGet(TextTag: string): string {
 	return TextScreenCache ? TextScreenCache.get(TextTag) : "";
 }
 
 /**
  * Loads the CSV text file of the current screen into the buffer. It will get the CSV from the cache if the file was already fetched from
  * the server
- * @param {string} [TextGroup] - Screen for which to load the CSV of
- * @returns {void} - Nothing
+ * @param TextGroup - Screen for which to load the CSV of
  */
-function TextLoad(TextGroup) {
+function TextLoad(TextGroup: string = null): void {
 
 	// Finds the full path of the CSV file to use cache
 	if ((TextGroup == null) || (TextGroup == "")) TextGroup = CurrentScreen;
@@ -35,10 +30,8 @@ function TextLoad(TextGroup) {
 
 /**
  * Cache the Module and TextGroup for later use, speeds up first use
- * @param {string} Module
- * @param {string} TextGroup
  */
-function TextPrefetch(Module, TextGroup) {
+function TextPrefetch(Module: string, TextGroup: string): void {
 	const FullPath = "Screens/" + Module + "/" + TextGroup + "/Text_" + TextGroup + ".csv";
 	if (TextAllScreenCache.has(FullPath)) {
 		TextAllScreenCache.set(FullPath, new TextCache(FullPath, "MISSING VALUE FOR TAG: "));
@@ -50,12 +43,20 @@ function TextPrefetch(Module, TextGroup) {
  * the game's current language, if a translation is available.
  */
 class TextCache {
+
+	private path: string;
+	private warn: string;
+	private language: string;
+	cache: any;
+	private rebuildListeners: any[];
+	private loaded: boolean;
+
 	/**
 	 * Creates a new TextCache from the provided CSV file path.
-	 * @param {string} path - The path to the CSV lookup file for this TextCache instance
-	 * @param {string} [warn] - prefix for warning when key is not found
+	 * @param path - The path to the CSV lookup file for this TextCache instance
+	 * @param warn - prefix for warning when key is not found
 	 */
-	constructor(path, warn = "") {
+	constructor(path: string, warn: string = "") {
 		this.path = path;
 		this.warn = warn;
 		this.language = TranslationLanguage;
@@ -69,10 +70,10 @@ class TextCache {
 	 * Looks up a string from this TextCache. If the cache contains a value for the provided key and a translation is available, the return
 	 * value will be automatically translated. Otherwise the EN string will be used. If the cache does not contain a value for the requested
 	 * key, the key will be returned.
-	 * @param {string} key - The text key to lookup
-	 * @returns {string} - The text value corresponding to the provided key, translated into the current language, if available
+	 * @param key - The text key to lookup
+	 * @returns The text value corresponding to the provided key, translated into the current language, if available
 	 */
-	get(key) {
+	get(key: string): string {
 		if (!this.loaded) return "";
 		if (TranslationLanguage !== this.language) {
 			this.buildCache();
@@ -85,11 +86,11 @@ class TextCache {
 	 * Adds a callback function as a rebuild listener. Rebuild listeners will
 	 * be called whenever the cache has completed a rebuild (either after
 	 * initial construction, or after a language change).
-	 * @param {Function} callback - The callback to register
-	 * @param {boolean} [immediate] - Whether or not the callback should be called on registration
-	 * @returns {Function} - A callback function which can be used to unsubscribe the added listener
+	 * @param callback - The callback to register
+	 * @param immediate - Whether or not the callback should be called on registration
+	 * @returns A callback function which can be used to unsubscribe the added listener
 	 */
-	onRebuild(callback, immediate = true) {
+	onRebuild(callback: Function, immediate: boolean = true): Function {
 		if (typeof callback === "function") {
 			this.rebuildListeners.push(callback);
 			if (immediate) {
@@ -104,9 +105,8 @@ class TextCache {
 
 	/**
 	 * Kicks off a build of the text lookup cache
-	 * @returns {void} - Nothing
 	 */
-	buildCache() {
+	buildCache(): void {
 		if (!this.path) return;
 		this.fetchCsv()
 			.then((lines) => {
@@ -122,10 +122,10 @@ class TextCache {
 
 	/**
 	 * Fetches and parses the CSV file for this TextCache
-	 * @returns {Promise<string[][]>} - A promise resolving to an array of string arrays, corresponding to lines of CSV values in the CSV
+	 * @returns A promise resolving to an array of string arrays, corresponding to lines of CSV values in the CSV
 	 * file.
 	 */
-	fetchCsv() {
+	fetchCsv(): Promise<string[][]> {
 		if (CommonCSVCache[this.path]) return Promise.resolve(CommonCSVCache[this.path]);
 		return new Promise((resolve) => {
 			CommonGet(this.path, (xhr) => {
@@ -140,21 +140,20 @@ class TextCache {
 
 	/**
 	 * Stores the contents of a CSV file in the TextCache's internal cache
-	 * @param {string[][]} lines - An array of string arrays corresponding to lines in the CSV file
-	 * @returns {void} - Nothing
+	 * @param lines - An array of string arrays corresponding to lines in the CSV file
 	 */
-	cacheLines(lines) {
+	cacheLines(lines: string[][]): void {
 		lines.forEach((line) => (this.cache[line[0]] = line[1]));
 		this.loaded = true;
 	}
 
 	/**
 	 * Translates the contents of a CSV file into the current game language
-	 * @param {string[][]} lines - An array of string arrays corresponding to lines in the CSV file
-	 * @returns {Promise<string[][]>} - A promise resolving to an array of string arrays corresponding to lines in the CSV file with the
+	 * @param lines - An array of string arrays corresponding to lines in the CSV file
+	 * @returns A promise resolving to an array of string arrays corresponding to lines in the CSV file with the
 	 * values translated to the current game language
 	 */
-	translate(lines) {
+	translate(lines: string[][]): Promise<string[][]> {
 		this.language = TranslationLanguage;
 		const lang = (TranslationLanguage || "").trim().toUpperCase();
 		if (!lang || lang === "EN") return Promise.resolve(lines);
@@ -181,12 +180,12 @@ class TextCache {
 
 	/**
 	 * Maps lines of a CSV to equivalent CSV lines with values translated according to the corresponding translation file
-	 * @param {string[][]} lines - An array of string arrays corresponding to lines in the CSV file
-	 * @param {string[]} translations - An array of strings in translation file format (with EN and translated values on alternate lines)
-	 * @returns {string[][]} - An array of string arrays corresponding to lines in the CSV file with the
+	 * @param lines - An array of string arrays corresponding to lines in the CSV file
+	 * @param translations - An array of strings in translation file format (with EN and translated values on alternate lines)
+	 * @returns An array of string arrays corresponding to lines in the CSV file with the
 	 * values translated to the current game language
 	 */
-	buildTranslations(lines, translations) {
+	buildTranslations(lines: string[][], translations: string[]): string[][] {
 		let [translationsStringLineCache, translationsLineStringCache] = TranslationStringCachePreBuild(translations, "");
 		return lines.map(line => ([line[0], TranslationStringCache(line[1], translationsStringLineCache, translationsLineStringCache)]));
 	}

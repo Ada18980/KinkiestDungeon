@@ -1,5 +1,3 @@
-"use strict";
-
 let KDModsLoaded = false;
 
 let KDMods = {};
@@ -24,13 +22,13 @@ function getFileInput() {
 	let input = document.createElement('input');
 	input.type = 'file';
 	input.onchange = _this => {
-		let files =   Array.from(input.files);
+		let files = Array.from(input.files);
 		KDLoadMod(files);
 	};
 	input.click();
 }
 
-function KDLoadMod(files) {
+function KDLoadMod(files: any[]) {
 	console.log(files);
 	for (let f of files) {
 		if (f && f.name) {

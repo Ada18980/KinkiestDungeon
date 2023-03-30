@@ -15,6 +15,7 @@
 !/Models/**/*
 !/TextureAtlas/**/*
 
+!/.github/workflows/*.yml
 !/.editorconfig
 !/.eslintrc.json
 !/.gitignore
@@ -22,7 +23,9 @@
 !/package-lock.json
 !/package.json
 !/jsconfig.json
+!/tsconfig.json
 !/README.md
 !/style.css
 
 *.wav
+

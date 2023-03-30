@@ -1,18 +1,14 @@
-"use strict";
-/** @type Character[] */
-let Character = [];
+let Character: Character[] = [];
 let CharacterNextId = 1;
 
-/** @type Map<EffectName, number> */
-const CharacterDeafLevels = new Map([
+const CharacterDeafLevels: Map<EffectName, number> = new Map([
 	["DeafTotal", 4],
 	["DeafHeavy", 3],
 	["DeafNormal", 2],
 	["DeafLight", 1],
 ]);
 
-/** @type Map<EffectName, number> */
-const CharacterBlurLevels = new Map([
+const CharacterBlurLevels: Map<EffectName, number> = new Map([
 	["BlurTotal", 50],
 	["BlurHeavy", 20],
 	["BlurNormal", 8],
@@ -24,9 +20,8 @@ const CharacterBlurLevels = new Map([
  * ONLINE: The player, or a character representing another online player
  * NPC: Any NPC
  * SIMPLE: Any simple character, generally used internally and not to represent an actual in-game character
- * @type {Record<"ONLINE"|"NPC"|"SIMPLE", CharacterType>}
  */
-let CharacterType = {
+let CharacterType: {[_: string]: CharacterType} = {
 	ONLINE: "online",
 	NPC: "npc",
 	SIMPLE: "simple",
@@ -34,16 +29,15 @@ let CharacterType = {
 
 /**
  * Loads a character into the buffer, creates it if it does not exist
- * @param {number} CharacterID - ID of the character
- * @param {string} CharacterAssetFamily - Name of the asset family of the character
- * @param {CharacterType} [Type=CharacterType.ONLINE] - The character type
- * @returns {Character} - The newly loaded character
+ * @param CharacterID - ID of the character
+ * @param CharacterAssetFamily - Name of the asset family of the character
+ * @param Type - The character type
+ * @returns The newly loaded character
  */
-function CharacterReset(CharacterID, CharacterAssetFamily, Type = CharacterType.ONLINE) {
+function CharacterReset(CharacterID: number, CharacterAssetFamily: string, Type: CharacterType = CharacterType.ONLINE): Character {
 
 	// Prepares the character sheet
-	/** @type {Character} */
-	let NewCharacter = {
+	let NewCharacter: Character = {
 		ID: CharacterID,
 		Name: "",
 		Type,
@@ -76,7 +70,8 @@ function CharacterReset(CharacterID, CharacterAssetFamily, Type = CharacterType.
 		},
 		FavoriteItems: [],
 		WhiteList: [],
-		HeightModifier: 0
+		HeightModifier: 0,
+		IsEnclose: () => false,
 	};
 
 	// If the character doesn't exist, we create it
@@ -101,11 +96,10 @@ function CharacterReset(CharacterID, CharacterAssetFamily, Type = CharacterType.
 
 /**
  * Loads the content of a CSV file to build the character dialog. Can override the current screen.
- * @param {Character} C - Character for which to build the dialog objects
- * @param {string} [Override] - Optional: Path to the specific CSV to build the character dialog with
- * @returns {void} - Nothing
+ * @param C - Character for which to build the dialog objects
+ * @param Override - Optional: Path to the specific CSV to build the character dialog with
  */
-function CharacterLoadCSVDialog(C, Override) {
+function CharacterLoadCSVDialog(C: Character, Override: string = null): void {
 
 	// Finds the full path of the CSV file to use cache
 	let FullPath = ((C.ID == 0) ? "Screens/Character/Player/Dialog_Player" : ((Override == null) ? "Screens/" + CurrentModule + "/" + CurrentScreen + "/Dialog_" + C.AccountName : Override)) + ".csv";
@@ -127,11 +121,10 @@ function CharacterLoadCSVDialog(C, Override) {
 
 /**
  * Builds the dialog objects from the character CSV file
- * @param {Character} C - Character for which to build the dialog
- * @param {string[][]} CSV - Content of the CSV file
- * @returns {void} - Nothing
+ * @param C - Character for which to build the dialog
+ * @param CSV - Content of the CSV file
  */
-function CharacterBuildDialog(C, CSV) {
+function CharacterBuildDialog(C: Character, CSV: string[][]): void {
 
 	const OnlinePlayer = C.AccountName.indexOf("Online-") >= 0;
 	C.Dialog = [];
@@ -140,7 +133,7 @@ function CharacterBuildDialog(C, CSV) {
 		if ((CSV[L][0] != null) && (CSV[L][0] != "")) {
 
 			// Creates a dialog object
-			const D = {};
+			const D: any = {};
 			D.Stage = CSV[L][0];
 			if ((CSV[L][1] != null) && (CSV[L][1].trim() != "")) D.NextStage = CSV[L][1];
 			if ((CSV[L][2] != null) && (CSV[L][2].trim() != "")) D.Option = CSV[L][2].replace("DialogCharacterName", C.Name).replace("DialogPlayerName", CharacterNickname(Player));
@@ -166,10 +159,9 @@ function CharacterBuildDialog(C, CSV) {
 
 /**
  * Attributes a random name for the character, does not select a name in use
- * @param {Character} C - Character for which to attribute a name
- * @returns {void} - Nothing
+ * @param C - Character for which to attribute a name
  */
-function CharacterRandomName(C) {
+function CharacterRandomName(C: Character): void {
 
 	// Generates a name from the name bank
 	let NewName = CharacterName[Math.floor(Math.random() * CharacterName.length)];
@@ -185,10 +177,10 @@ function CharacterRandomName(C) {
 
 /**
  * Create a minimal character object
- * @param {string} AccName - The account name to give to the character
- * @returns {Character} - The created character
+ * @param AccName - The account name to give to the character
+ * @returns  The created character
  */
-function CharacterLoadSimple(AccName) {
+function CharacterLoadSimple(AccName: string): Character {
 	// Checks if the character already exists and returns it if it's the case
 	for (let C = 0; C < Character.length; C++)
 		if (Character[C].AccountName === AccName)
@@ -204,10 +196,9 @@ function CharacterLoadSimple(AccName) {
 
 /**
  * Deletes an NPC from the buffer
- * @param {string} NPCType - Account name of the npc to delete
- * @returns {void} - Nothing
+ * @param NPCType - Account name of the npc to delete
  */
-function CharacterDelete(NPCType) {
+function CharacterDelete(NPCType: string): void {
 	for (let C = 0; C < Character.length; C++)
 		if (Character[C].AccountName == NPCType) {
 			Character.splice(C, 1);
@@ -217,11 +208,10 @@ function CharacterDelete(NPCType) {
 
 /**
  * Adds a pose to a character's pose list, does not add it if it's already there
- * @param {Character} C - Character for which to add a pose to its list
- * @param {string} NewPose - The name of the pose to add
- * @returns {void} - Nothing
+ * @param C - Character for which to add a pose to its list
+ * @param NewPose - The name of the pose to add
  */
-function CharacterAddPose(C, NewPose) {
+function CharacterAddPose(C: Character, NewPose: string): void {
 	for (let E = 0; E < NewPose.length; E++)
 		if (C.Pose.indexOf(NewPose[E]) < 0)
 			C.Pose.push(NewPose[E]);
@@ -230,87 +220,69 @@ function CharacterAddPose(C, NewPose) {
 
 /**
  * Checks if a certain pose is whitelisted and available for the pose menu
- * @param {Character} C - Character to check for the pose
- * @param {string|undefined} Type - Pose type to check for within items
- * @param {string} Pose - Pose to check for whitelist
- * @returns {boolean} - TRUE if the character has the pose available
+ * @param C - Character to check for the pose
+ * @param Type - Pose type to check for within items
+ * @param Pose - Pose to check for whitelist
+ * @returns TRUE if the character has the pose available
  */
-function CharacterItemsHavePoseAvailable(C, Type, Pose) {
+function CharacterItemsHavePoseAvailable(C: Character, Type: string | undefined, Pose: string): boolean {
 	return true;
 }
 
 /**
  * Checks whether the items on a character set a given pose on the character
- * @param {Character} C - The character to check
- * @param {string} pose - The name of the pose to check for
- * @param {boolean} [excludeClothes=false] - Ignore clothing items in the check
- * @returns {boolean} - Returns true if the character is wearing an item that sets the given pose, false otherwise
+ * @param C - The character to check
+ * @param pose - The name of the pose to check for
+ * @param excludeClothes - Ignore clothing items in the check
+ * @returns Returns true if the character is wearing an item that sets the given pose, false otherwise
  */
-function CharacterDoItemsSetPose(C, pose, excludeClothes = false) {
+function CharacterDoItemsSetPose(C: Character, pose: string, excludeClothes: boolean = false): boolean {
 	return false;
 }
 
 
 /**
  * Loads a character's canvas by sorting its appearance and drawing it.
- * @param {Character} C - Character to load the canvas for
- * @returns {void} - Nothing
+ * @param C - Character to load the canvas for
  */
-function CharacterLoadCanvas(C) {
+function CharacterLoadCanvas(C: Character): void {
 
 }
 
 /**
  * Reloads all character canvases in need of being redrawn.
- * @returns {void} - Nothing
  */
-function CharacterLoadCanvasAll() {
-}
-
-/**
- * Refreshes the character parameters (Effects, poses, canvas, settings, etc.)
- * @param {Character} C - Character to refresh
- * @param {boolean} [Push=true] - Pushes the data to the server if true or null
- * @param {boolean} [RefreshDialog=true] - Refreshes the character dialog
- * @returns {void} - Nothing
- */
-function CharacterRefresh(C, Push, RefreshDialog = true) {
+function CharacterLoadCanvasAll(): void {
 }
 
 
 
 /**
  * Removes all appearance items from the character
- * @param {Character} C - Character to undress
- * @returns {void} - Nothing
+ * @param C - Character to undress
  */
-function CharacterNaked(C) {
+function CharacterNaked(C: Character): void {
 	CharacterAppearanceNaked(C);
-	CharacterRefresh(C);
 }
 
 /**
  * Sets a new pose for the character
- * @param {Character} C - Character for which to set the pose
- * @param {string} NewPose - Name of the pose to set as active
- * @param {boolean} [ForceChange=false] - TRUE if the set pose(s) should overwrite current active pose(s)
- * @returns {void} - Nothing
+ * @param C - Character for which to set the pose
+ * @param NewPose - Name of the pose to set as active
+ * @param ForceChange - TRUE if the set pose(s) should overwrite current active pose(s)
  */
-function CharacterSetActivePose(C, NewPose, ForceChange = false) {
-	return;
-}
+function CharacterSetActivePose(C: Character, NewPose: string, ForceChange: boolean = false): void {}
 
 /**
  * Sets a specific facial expression for the character's specified AssetGroup, if there's a timer, the expression will expire after it, a
  * timed expression cannot override another one.
- * @param {Character} C - Character for which to set the expression of
- * @param {string} AssetGroup - Asset group for the expression
- * @param {string} Expression - Name of the expression to use
- * @param {number} [Timer] - Optional: time the expression will last
- * @param {string|string[]} [Color] - Optional: color of the expression to set
- * @returns {void} - Nothing
+ * @param C - Character for which to set the expression of
+ * @param AssetGroup - Asset group for the expression
+ * @param Expression - Name of the expression to use
+ * @param Timer - Optional: time the expression will last
+ * @param Color Optional: color of the expression to set
  */
-function CharacterSetFacialExpression(C, AssetGroup, Expression, Timer, Color) {
+function CharacterSetFacialExpression(C: Character, AssetGroup: string, Expression: string, Timer: number = null, Color: string | string[] = null): void {
 	if (StandalonePatched) {
 		// TODO add facial expression handling
 		return;
@@ -319,10 +291,9 @@ function CharacterSetFacialExpression(C, AssetGroup, Expression, Timer, Color) {
 
 /**
  * Resets the character's facial expression to the default
- * @param {Character} C - Character for which to reset the expression of
- * @returns {void} - Nothing
+ * @param C - Character for which to reset the expression of
  */
-function CharacterResetFacialExpression(C) {
+function CharacterResetFacialExpression(C: Character): void {
 	if (StandalonePatched) {
 		// TODO add facial expression handling
 		return;
@@ -331,19 +302,18 @@ function CharacterResetFacialExpression(C) {
 
 /**
  * Gets the currently selected character
- * @returns {Character|null} - Currently selected character
  */
-function CharacterGetCurrent() {
+function CharacterGetCurrent(): Character | null {
 	return Player;
 }
 
 /**
  * Returns the nickname of a character, or the name if the nickname isn't valid
  * Also validates if the character is a GGTS drone to alter her name
- * @param {Character} C - The character breaking from their owner
- * @returns {String} - The nickname to return
+ * @param C - The character breaking from their owner
+ * @returns The nickname to return
  */
-function CharacterNickname(C) {
+function CharacterNickname(C: Character): string {
 	return "";
 }
 
@@ -351,10 +321,10 @@ function CharacterNickname(C) {
 
 /**
  * Loads an NPC into the character array. The appearance is randomized, and a type can be provided to dress them in a given style.
- * @param {string} NPCType - Archetype of the NPC
- * @returns {NPCCharacter} - The randomly generated NPC
+ * @param NPCType - Archetype of the NPC
+ * @returns The randomly generated NPC
  */
-function CharacterLoadNPC(NPCType) {
+function CharacterLoadNPC(NPCType: string): NPCCharacter {
 
 	// Checks if the NPC already exists and returns it if it's the case
 	for (let C = 0; C < Character.length; C++)
@@ -376,14 +346,12 @@ function CharacterLoadNPC(NPCType) {
 
 /**
  * Removes all items except for clothing and slave collars from the character
- * @param {Character} C - Character to release
- * @returns {void} - Nothing
+ * @param C - Character to release
  */
-function CharacterReleaseTotal(C) {
+function CharacterReleaseTotal(C: Character): void {
 	for (let E = C.Appearance.length - 1; E >= 0; E--) {
 		if (!(C.Appearance[E].Model?.Restraint == undefined)) {
 			C.Appearance.splice(E, 1);
 		}
 	}
-	CharacterRefresh(C);
 }
