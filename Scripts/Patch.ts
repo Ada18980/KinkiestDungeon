@@ -247,6 +247,23 @@ function ModularItemMergeModuleValues({ asset, modules }, moduleValues) {}
 function ExtendedItemSetType(C, Options, Option) {}
 function ExtendedItemExit() {}
 
+let MiniGameVictory = true;
+
+let CharacterRefresh = (...args) => {}
+
+function InventoryRemove(C, AssetGroup, Refresh = false) {}
+function InventoryGetLock(Lock): any {}
+function InventoryAllow(C, asset, prerequisites = asset.Prerequisite, setDialog = true) { return true; }
+function InventoryWear(C, AssetName, AssetGroup, ItemColor, Difficulty, MemberNumber, Craft, Refresh=true) {}
+function InventoryLock(C, Item, Lock, MemberNumber, Update = true) {}
+function InventoryUnlock(C, Item) {}
 
 let KDPatched = true;
 let ServerURL = "http://localhost:4288";
+
+function ServerSend(Message, Data) {}
+function ServerPlayerIsInChatRoom() { return false; }
+
+function suppressCanvasUpdate<T>(f: () => T): T {
+	return f();
+}
