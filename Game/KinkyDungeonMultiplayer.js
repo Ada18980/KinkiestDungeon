@@ -234,7 +234,6 @@ function KinkyDungeonPackData(IncludeMap, IncludeItems, IncludeInventory, Includ
  * @returns {void}
  */
 function KinkyDungeonSendData(data) {
-	ServerSend("ChatRoomGame", { KinkyDungeon: data });
 }
 
 /**

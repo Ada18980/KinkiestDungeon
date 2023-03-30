@@ -140,7 +140,6 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				KinkyDungeonRep = Math.max(KinkyDungeonRep, MiniGameKinkyDungeonLevel);
 				DialogSetReputation("Gaming", KinkyDungeonRep);
 			}
-			MiniGameVictory = false;
 			let roomType = "";
 			let currCheckpoint = MiniGameKinkyDungeonCheckpoint;
 			let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
@@ -174,7 +173,6 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 						MiniGameKinkyDungeonLevel = 1;
 						KDGameData.MainPath = "grv";
 						KinkyDungeonState = "End";
-						MiniGameVictory = true;
 						suppressCheckPoint = true;
 					}
 				}

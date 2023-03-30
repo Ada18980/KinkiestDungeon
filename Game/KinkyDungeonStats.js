@@ -263,7 +263,6 @@ function KinkyDungeonDefaultStats(Load) {
 	}
 
 	KinkyDungeonDressPlayer();
-	CharacterRefresh(KinkyDungeonPlayer);
 }
 
 let KDMaxVisionDist = 8;

@@ -1,5 +1,3 @@
-'use strict';
-
 var PIXIapp = new PIXI.Application({
 	antialias: false,
 	width: 2000,
@@ -11,20 +9,8 @@ document.body.appendChild(PIXIapp.view);
 PIXIapp.stage.addChild(kdcanvas);
 PIXIapp.stage.addChild(kdui);
 
-// While we want KD to be backwards compatible with BC, we want to avoid making modifications that are standalone specific to the KD code itself
-// These bootstraps must be loaded last, as they replace BC specific KD functionality
-
-const _CharacterAppearanceSetDefault = CharacterAppearanceSetDefault;
-const _CharacterLoadCanvas = CharacterLoadCanvas;
-const _CharacterRefresh = CharacterRefresh;
-
 function AssetGet(arg1, arg2, arg3) {
 	return undefined;
-}
-
-function suppressCanvasUpdate(fn) {
-	let ret = fn();
-	return ret;
 }
 
 window.onload = function() {
@@ -35,7 +21,7 @@ window.onload = function() {
 	CommonIsMobile = CommonDetectMobile();
 	TranslationLoad();
 	DrawLoad();
-	MiniGameStart("KinkyDungeon", 1, "ArcadeKinkyDungeonEnd");
+	CommonSetScreen("MiniGame", "KinkyDungeon");
 
 	// LoginLoad
 	Character = [];
@@ -105,9 +91,9 @@ let TimerLastCycleCall = 0;
 
 /**
  * Main game running state, runs the drawing
- * @param {number} Timestamp
+ * @param Timestamp
  */
-function MainRun(Timestamp) {
+function MainRun(Timestamp: number): void {
 	DrawProcess(Timestamp);
 
 	// Increments the time from the last frame
@@ -126,9 +112,8 @@ function MainRun(Timestamp) {
 
 /**
  * When the user presses a key, we send the KeyDown event to the current screen if it can accept it
- * @param {KeyboardEvent} event
  */
-function KeyDown(event) {
+function KeyDown(event: KeyboardEvent): void {
 	if (event.repeat) return;
 	KeyPress = event.keyCode || event.which;
 	CommonKeyDown(event);
@@ -136,9 +121,8 @@ function KeyDown(event) {
 
 /**
  * When the user clicks, we fire the click event for other screens
- * @param {MouseEvent} event
  */
-function Click(event) {
+function Click(event: MouseEvent): void {
 	if (!CommonIsMobile) {
 		MouseMove(event);
 		CommonClick(event);
@@ -147,9 +131,8 @@ function Click(event) {
 
 /**
  * When the user touches the screen (mobile only), we fire the click event for other screens
- * @param {TouchEvent} event
  */
-function TouchStart(event) {
+function TouchStart(event: TouchEvent): void {
 	if (CommonIsMobile && PIXICanvas) {
 		TouchMove(event.touches[0]);
 		CommonClick(event);
@@ -159,18 +142,16 @@ function TouchStart(event) {
 
 /**
  * When the user touches the screen (mobile only), we fire the click event for other screens
- * @param {TouchEvent} event
  */
-function TouchEnd(event) {
+function TouchEnd(event: TouchEvent): void {
 	if (CommonIsMobile && PIXICanvas)
 		CommonTouchList = event.touches;
 }
 
 /**
  * When touch moves, we keep it's position for other scripts
- * @param {Touch} touch
  */
-function TouchMove(touch) {
+function TouchMove(touch: Touch): void {
 	if (PIXICanvas) {
 		MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
 		MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
@@ -179,9 +160,8 @@ function TouchMove(touch) {
 
 /**
  * When mouse move, we keep the mouse position for other scripts
- * @param {MouseEvent} event
  */
-function MouseMove(event) {
+function MouseMove(event: MouseEvent) {
 	if (PIXICanvas) {
 		MouseX = Math.round(event.offsetX * 2000 / PIXICanvas.clientWidth);
 		MouseY = Math.round(event.offsetY * 1000 / PIXICanvas.clientHeight);
@@ -191,11 +171,9 @@ function MouseMove(event) {
 /**
  * When the mouse is away from the control, we stop keeping the coordinates,
  * we also check for false positives with "relatedTarget"
- * @param {MouseEvent} event
  */
-function LoseFocus(event) {
-	// @ts-ignore
-	if (event.relatedTarget || event.toElement) {
+function LoseFocus(event: MouseEvent) {
+	if (event.relatedTarget || (event as any).toElement /* toElement is for IE browser compat */) {
 		MouseX = -1;
 		MouseY = -1;
 	}

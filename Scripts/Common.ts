@@ -1,19 +1,13 @@
 // Main variables
-"use strict";
-/** @type {PlayerCharacter} */
-let Player;
-/** @type {number|string} */
-let KeyPress = "";
-let CurrentModule;
-/** @type {string} */
-let CurrentScreen;
-/** @type {Character|NPCCharacter|null} */
-let CurrentCharacter = null;
+let Player: PlayerCharacter;
+let KeyPress: number | string = "";
+let CurrentModule: string;
+let CurrentScreen: string;
+let CurrentCharacter: Character | NPCCharacter | null = null;
 let CurrentOnlinePlayers = 0;
 let CurrentDarkFactor = 1.0;
 let CommonIsMobile = false;
-/** @type {Record<string, string[][]>} */
-let CommonCSVCache = {};
+let CommonCSVCache: {[_: string]: string[][]} = {};
 let CutsceneStage = 0;
 
 let CommonPhotoMode = false;
@@ -33,7 +27,6 @@ let CommonTouchList = null;
  * Additionally, sending the following tags will ensure that asset names in messages are correctly translated by
  * recipients:
  * ASSET_NAME: (substituted with the localized name of the asset, if available)
- * @type {Record<"SOURCE_CHAR"|"DEST_CHAR"|"DEST_CHAR_NAME"|"TARGET_CHAR"|"TARGET_CHAR_NAME"|"ASSET_NAME", CommonChatTags>}
  */
 const CommonChatTags = {
 	SOURCE_CHAR: "SourceCharacter",
@@ -53,8 +46,6 @@ String.prototype.replaceAt=function(index, character) {
  * two-item array whose first item is an ordered list of fonts, and whose
  * second item is the generic fallback font family (e.g. sans-serif, serif,
  * etc.)
- * @constant
- * @type {Object.<String, [String[], String]>}
  */
 const CommonFontStacks = {
 	Arial: [["Arial"], "sans-serif"],
@@ -72,18 +63,18 @@ const CommonFontStacks = {
 
 /**
  * Checks if a variable is a number
- * @param {*} n - Variable to check for
- * @returns {boolean} - Returns TRUE if the variable is a finite number
+ * @param n - Variable to check for
+ * @returns Returns TRUE if the variable is a finite number
  */
-function CommonIsNumeric(n) {
+function CommonIsNumeric(n: any): boolean {
 	return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 /**
  * Gets the current time as a string
- * @returns {string} - Returns the current date and time in a yyyy-mm-dd hh:mm:ss format
+ * @returns Returns the current date and time in a yyyy-mm-dd hh:mm:ss format
  */
-function CommonGetFormatDate() {
+function CommonGetFormatDate(): string {
 	let d = new Date();
 	let yyyy = d.getFullYear();
 	let mm = d.getMonth() < 9 ? "0" + (d.getMonth() + 1) : (d.getMonth() + 1); // getMonth() is zero-based
@@ -96,9 +87,9 @@ function CommonGetFormatDate() {
 
 /**
  * Detects if the user is on a mobile browser
- * @returns {boolean} - Returns TRUE if the user is on a mobile browser
+ * @returns Returns TRUE if the user is on a mobile browser
  */
-function CommonDetectMobile() {
+function CommonDetectMobile(): boolean {
 
 	// First check
 	let mobile = ['iphone', 'ipad', 'android', 'blackberry', 'nokia', 'opera mini', 'windows mobile', 'windows phone', 'iemobile', 'mobile/', 'webos', 'kindle'];
@@ -118,9 +109,9 @@ function CommonDetectMobile() {
 
 /**
  * Gets the current browser name and version
- * @returns {{Name: string, Version: string}} - Browser info
+ * @returns Browser info
  */
-function CommonGetBrowser() {
+function CommonGetBrowser(): {Name: string, Version: string} {
 	let ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
 	if (/trident/i.test(M[1])) {
 		tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
@@ -137,15 +128,14 @@ function CommonGetBrowser() {
 
 /**
  * Parse a CSV file content into an array
- * @param {string} str - Content of the CSV
- * @returns {string[][]} Array representing each line of the parsed content, each line itself is split by commands and stored within an array.
+ * @param str - Content of the CSV
+ * @returns Array representing each line of the parsed content, each line itself is split by commands and stored within an array.
  */
-function CommonParseCSV(str) {
-	/** @type {string[][]} */
-	let arr = [];
+function CommonParseCSV(str: string): string[][] {
+	let arr: string[][] = [];
 	let quote = false;  // true means we're inside a quoted field
-	let c;
-	let col;
+	let c: number;
+	let col: number;
 	// We remove whitespace on start and end
 	str = str.replace(/\r\n/g, '\n').trim();
 
@@ -178,13 +168,12 @@ function CommonParseCSV(str) {
 
 /**
  *  Read a CSV file from cache, or fetch it from the server
- * @param {string} Array - Name of where the cached text is stored
- * @param {string} Path - Path/Group in which the screen is located
- * @param {string} Screen - Screen for which the file is for
- * @param {string} File - Name of the file to get
- * @returns {void} - Nothing
+ * @param Array - Name of where the cached text is stored
+ * @param Path - Path/Group in which the screen is located
+ * @param Screen - Screen for which the file is for
+ * @param File - Name of the file to get
  */
-function CommonReadCSV(Array, Path, Screen, File) {
+function CommonReadCSV(Array: string, Path: string, Screen: string, File: string): void {
 
 	// Changed from a single path to various arguments and internally concatenate them
 	// This ternary operator is used to keep backward compatibility
@@ -213,12 +202,11 @@ function CommonReadCSV(Array, Path, Screen, File) {
 
 /**
  * AJAX utility to get a file and return its content. By default will retry requests 10 times
- * @param {string} Path - Path of the resource to request
- * @param {(this: XMLHttpRequest, xhr: XMLHttpRequest) => void} Callback - Callback to execute once the resource is received
- * @param {number} [RetriesLeft] - How many more times to retry if the request fails - after this hits zero, an error will be logged
- * @returns {void} - Nothing
+ * @param Path - Path of the resource to request
+ * @param Callback - Callback to execute once the resource is received
+ * @param RetriesLeft - How many more times to retry if the request fails - after this hits zero, an error will be logged
  */
-function CommonGet(Path, Callback, RetriesLeft) {
+function CommonGet(Path: string, Callback: (this: XMLHttpRequest, xhr: XMLHttpRequest) => void, RetriesLeft: number = 10): void {
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", Path);
 	xhr.onloadend = function() {
@@ -234,13 +222,11 @@ function CommonGet(Path, Callback, RetriesLeft) {
 /**
  * Retry handler for CommonGet requests. Exponentially backs off retry attempts up to a limit of 1 minute. By default,
  * retries up to a maximum of 10 times.
- * @param {string} Path - The path of the resource to request
- * @param {(this: XMLHttpRequest, xhr: XMLHttpRequest) => void} Callback - Callback to execute once the resource is received
- * @param {number} [RetriesLeft] - How many more times to retry - after this hits zero, an error will be logged
- * @returns {void} - Nothing
+ * @param Path - The path of the resource to request
+ * @param Callback - Callback to execute once the resource is received
+ * @param RetriesLeft - How many more times to retry - after this hits zero, an error will be logged
  */
-function CommonGetRetry(Path, Callback, RetriesLeft) {
-	if (typeof RetriesLeft !== "number") RetriesLeft = 10;
+function CommonGetRetry(Path: string, Callback: (this: XMLHttpRequest, xhr: XMLHttpRequest) => void, RetriesLeft: number = 10): void {
 	if (RetriesLeft <= 0) {
 		console.error(`GET request to ${Path} failed - no more retries`);
 	} else {
@@ -252,23 +238,21 @@ function CommonGetRetry(Path, Callback, RetriesLeft) {
 
 /**
  * Catches the clicks on the main screen and forwards it to the current screen click function if it exists, otherwise it sends it to the dialog click function
- * @param {MouseEvent | TouchEvent} event - The event that triggered this
- * @returns {void} - Nothing
+ * @param event - The event that triggered this
  */
-function CommonClick(event) {
+function CommonClick(event: MouseEvent | TouchEvent): void {
 	KinkyDungeonClick();
 }
 
 /**
  * Returns TRUE if a section of the screen is currently touched on a mobile device
- * @param {number} X - The X position
- * @param {number} Y - The Y position
- * @param {number} W - The width of the square
- * @param {number} H - The height of the square
- * @param {object} TL - Can give a specific touch event instead of the default one
- * @returns {boolean}
+ * @param X - The X position
+ * @param Y - The Y position
+ * @param W - The width of the square
+ * @param H - The height of the square
+ * @param TL - Can give a specific touch event instead of the default one
  */
-function CommonTouchActive(X, Y, W, H, TL) {
+function CommonTouchActive(X: number, Y: number, W: number, H: number, TL: any): boolean {
 	if (!CommonIsMobile) return false;
 	if (TL == null) TL = CommonTouchList;
 	if (TL != null)
@@ -282,19 +266,17 @@ function CommonTouchActive(X, Y, W, H, TL) {
 }
 
 /**
- * @param {KeyboardEvent} event - The event that triggered this
- * @returns {void} - Nothing
+ * @param event - The event that triggered this
  */
-function CommonKeyDown(event) {
+function CommonKeyDown(event: KeyboardEvent): void {
 	KinkyDungeonKeyDown();
 }
 
 /**
  * Calls a basic dynamic function if it exists, for complex functions, use: CommonDynamicFunctionParams
- * @param {string} FunctionName - Name of the function to call
- * @returns {void} - Nothing
+ * @param FunctionName - Name of the function to call
  */
-function CommonDynamicFunction(FunctionName) {
+function CommonDynamicFunction(FunctionName: string): void {
 	if (typeof window[FunctionName.substr(0, FunctionName.indexOf("("))] === "function")
 		window[FunctionName.replace("()", "")]();
 	else
@@ -304,10 +286,10 @@ function CommonDynamicFunction(FunctionName) {
 
 /**
  * Calls a dynamic function with parameters (if it exists), also allow ! in front to reverse the result. The dynamic function is the provided function name in the dialog option object and it is prefixed by the current screen.
- * @param {string} FunctionName - Function name to call dynamically
- * @returns {*} - Returns what the dynamic function returns or FALSE if the function does not exist
+ * @param FunctionName - Function name to call dynamically
+ * @returns Returns what the dynamic function returns or FALSE if the function does not exist
  */
-function CommonDynamicFunctionParams(FunctionName) {
+function CommonDynamicFunctionParams(FunctionName: string): any {
 
 	// Gets the reverse (!) sign
 	let Reverse = false;
@@ -354,11 +336,11 @@ function CommonDynamicFunctionParams(FunctionName) {
  *  CommonDynamicFunctionParams in that arguments are not parsed from the passed in FunctionName string, but
  *  passed directly into the function call, allowing for more complex JS objects to be passed in. This
  *  function will not log to console if the provided function name does not exist as a global function.
- * @param {string} FunctionName - The name of the global function to call
- * @param {any[]} [args] - zero or more arguments to be passed to the function (optional)
- * @returns {any} - returns the result of the function call, or undefined if the function name isn't valid
+ * @param FunctionName - The name of the global function to call
+ * @param args - zero or more arguments to be passed to the function (optional)
+ * @returns Returns the result of the function call, or undefined if the function name isn't valid
  */
-function CommonCallFunctionByName(FunctionName/*, ...args */) {
+function CommonCallFunctionByName(FunctionName: string, ...args: any) {
 	let Function = window[FunctionName];
 	if (typeof Function === "function") {
 		let args = Array.prototype.slice.call(arguments, 1);
@@ -368,11 +350,11 @@ function CommonCallFunctionByName(FunctionName/*, ...args */) {
 
 /**
  * Behaves exactly like CommonCallFunctionByName, but logs a warning if the function name is invalid.
- * @param {string} FunctionName - The name of the global function to call
- * @param {any[]} [args] - zero or more arguments to be passed to the function (optional)
- * @returns {any} - returns the result of the function call, or undefined if the function name isn't valid
+ * @param FunctionName - The name of the global function to call
+ * @param args - zero or more arguments to be passed to the function (optional)
+ * @returns Returns the result of the function call, or undefined if the function name isn't valid
  */
-function CommonCallFunctionByNameWarn(FunctionName/*, ...args */) {
+function CommonCallFunctionByNameWarn(FunctionName: string, ...args: any) {
 	let Function = window[FunctionName];
 	if (typeof Function === "function") {
 		let args = Array.prototype.slice.call(arguments, 1);
@@ -384,11 +366,10 @@ function CommonCallFunctionByNameWarn(FunctionName/*, ...args */) {
 
 /**
  * Sets the current screen and calls the loading script if needed
- * @param {string} NewModule - Module of the screen to display
- * @param {string} NewScreen - Screen to display
- * @returns {void} - Nothing
+ * @param NewModule - Module of the screen to display
+ * @param NewScreen - Screen to display
  */
-function CommonSetScreen(NewModule, NewScreen) {
+function CommonSetScreen(NewModule: string, NewScreen: string): void {
 
 	CurrentModule = NewModule;
 	CurrentScreen = NewScreen;
@@ -401,18 +382,17 @@ function CommonSetScreen(NewModule, NewScreen) {
 
 /**
  * Gets the current time in ms
- * @returns {number} - Date in ms
  */
-function CommonTime() {
+function CommonTime(): number {
 	return Date.now();
 }
 
 /**
  * Checks if a given value is a valid HEX color code
- * @param {string} Value - Potential HEX color code
- * @returns {boolean} - Returns TRUE if the string is a valid HEX color
+ * @param Value - Potential HEX color code
+ * @returns Returns TRUE if the string is a valid HEX color
  */
-function CommonIsColor(Value) {
+function CommonIsColor(Value: string): boolean {
 	if ((Value == null) || (Value.length < 3)) return false;
 	//convert short hand hex color to standard format
 	if (/^#[0-9A-F]{3}$/i.test(Value)) Value = "#" + Value[1] + Value[1] + Value[2] + Value[2] + Value[3] + Value[3];
@@ -423,10 +403,10 @@ function CommonIsColor(Value) {
  * Checks whether an item's color has a valid value that can be interpreted by the drawing
  * functions. Valid values are null, undefined, strings, and an array containing any of the
  * aforementioned types.
- * @param {*} Color - The Color value to check
- * @returns {boolean} - Returns TRUE if the color is a valid item color
+ * @param Color - The Color value to check
+ * @returns Returns TRUE if the color is a valid item color
  */
-function CommonColorIsValid(Color) {
+function CommonColorIsValid(Color: any): boolean {
 	if (Color == null || typeof Color === "string") return true;
 	if (Array.isArray(Color)) return Color.every(C => C == null || typeof C === "string");
 	return false;
@@ -434,12 +414,11 @@ function CommonColorIsValid(Color) {
 
 /**
  * Get a random item from a list while making sure not to pick the previous one.
- * @template T
- * @param {T} ItemPrevious - Previously selected item from the given list
- * @param {T[]} ItemList - List for which to pick a random item from
- * @returns {T} - The randomly selected item from the list
+ * @param ItemPrevious - Previously selected item from the given list
+ * @param ItemList - List for which to pick a random item from
+ * @returns The randomly selected item from the list
  */
-function CommonRandomItemFromList(ItemPrevious, ItemList) {
+function CommonRandomItemFromList<T>(ItemPrevious: T, ItemList: T[]): T {
 	let NewItem = ItemPrevious;
 	while (NewItem == ItemPrevious)
 		NewItem = ItemList[Math.floor(Math.random() * ItemList.length)];
@@ -450,11 +429,11 @@ function CommonRandomItemFromList(ItemPrevious, ItemList) {
 
 /**
  * Checks whether two item colors are equal. An item color may either be a string or an array of strings.
- * @param {string|string[]} C1 - The first color to check
- * @param {string|string[]} C2 - The second color to check
- * @returns {boolean} - TRUE if C1 and C2 represent the same item color, FALSE otherwise
+ * @param C1 - The first color to check
+ * @param C2 - The second color to check
+ * @returns TRUE if C1 and C2 represent the same item color, FALSE otherwise
  */
-function CommonColorsEqual(C1, C2) {
+function CommonColorsEqual(C1: string | string[], C2: string | string[]): boolean {
 	if (Array.isArray(C1) && Array.isArray(C2)) {
 		return CommonArraysEqual(C1, C2);
 	}
@@ -464,11 +443,11 @@ function CommonColorsEqual(C1, C2) {
 /**
  * Checks whether two arrays are equal. The arrays are considered equal if they have the same length and contain the same items in the same
  * order, as determined by === comparison
- * @param {*[]} a1 - The first array to compare
- * @param {*[]} a2 - The second array to compare
- * @returns {boolean} - TRUE if both arrays have the same length and contain the same items in the same order, FALSE otherwise
+ * @param a1 - The first array to compare
+ * @param a2 - The second array to compare
+ * @returns TRUE if both arrays have the same length and contain the same items in the same order, FALSE otherwise
  */
-function CommonArraysEqual(a1, a2) {
+function CommonArraysEqual(a1: any[], a2: any[]): boolean {
 	return a1.length === a2.length && a1.every((item, i) => item === a2[i]);
 }
 
@@ -477,17 +456,13 @@ function CommonArraysEqual(a1, a2) {
  * Creates a simple memoizer.
  * The memoized function does calculate its result exactly once and from that point on, uses
  * the result stored in a local cache to speed up things.
- * @template {Function} T
- * @param {T} func - The function to memoize
- * @returns {MemoizedFunction<T>} - The result of the memoized function
+ * @param func - The function to memoize
+ * @returns The result of the memoized function
  */
-function CommonMemoize(func) {
-	let memo = {};
-
-	/** @type {MemoizedFunction<T>} */
-	// @ts-ignore
-	let memoized = function () {
-		let index = [];
+function CommonMemoize<T extends Function>(func: T): MemoizedFunction<T> {
+	let memo: {[_: string]: any} = {};
+	let memoized: any = function () {
+		let index: any = [];
 		for (let i = 0; i < arguments.length; i++) {
 			if (typeof arguments[i] === "object") {
 				index.push(JSON.stringify(arguments[i]));
@@ -495,7 +470,6 @@ function CommonMemoize(func) {
 				index.push(String(arguments[i]));
 			}
 		} // for
-		// @ts-ignore
 		if (!(index in memo)) {
 			memo[index] = func.apply(this, arguments);
 		}
@@ -513,13 +487,13 @@ function CommonMemoize(func) {
  * Memoized getter function. Returns a font string specifying the player's
  * preferred font and the provided size. This is memoized as it is called on
  * every frame in many cases.
- * @param {number} size - The font size that should be specified in the
+ * @param size - The font size that should be specified in the
  * returned font string
- * @returns {string} - A font string specifying the requested font size and
+ * @returns A font string specifying the requested font size and
  * the player's preferred font stack. For example:
  * 12px "Courier New", "Courier", monospace
  */
-const CommonGetFont = CommonMemoize((size) => {
+const CommonGetFont: MemoizedFunction<(size: number) => string> = CommonMemoize((size: number) => {
 	return `${size}px ${CommonGetFontName()}`;
 });
 
@@ -527,11 +501,11 @@ const CommonGetFont = CommonMemoize((size) => {
  * Memoized getter function. Returns a font string specifying the player's
  * preferred font stack. This is memoized as it is called on every frame in
  * many cases.
- * @returns {string} - A font string specifying the player's preferred font
+ * @returns A font string specifying the player's preferred font
  * stack. For example:
  * "Courier New", "Courier", monospace
  */
-const CommonGetFontName = CommonMemoize(() => {
+const CommonGetFontName: MemoizedFunction<() => string> = CommonMemoize(() => {
 	const pref = Player && Player.GraphicsSettings && Player.GraphicsSettings.Font;
 	const fontStack = CommonFontStacks[pref] || CommonFontStacks.Arial;
 	const font = fontStack[0].map(fontName => `"${fontName}"`).join(", ");
@@ -541,11 +515,10 @@ const CommonGetFontName = CommonMemoize(() => {
 
 /**
  * Takes an array of items and converts it to record format
- * @param { { Group: string; Name: string; Type?: string|null }[] } arr The array of items
- * @returns { { [group: string]: { [name: string]: string[] } } } Output in object foramat
+ * @param arr The array of items
+ * @returns Output in object format
  */
-function CommonPackItemArray(arr) {
-	/** @type { Record<string, Record<string, string[]>> } */
+function CommonPackItemArray(arr: {Group: string; Name: string; Type?: string | null}[]): {[group: string]: {[name: string]: string[]}} {
 	const res = {};
 	for (const I of arr) {
 		let G = res[I.Group];
@@ -566,10 +539,10 @@ function CommonPackItemArray(arr) {
 
 /**
  * Takes an record format of items and converts it to array
- * @param { { [group: string]: { [name: string]: string[] } } } arr Object defining items
- * @return { { Group: string; Name: string; Type?: string }[] } The array of items
+ * @param arr Object defining items
+ * @return The array of items
  */
-function CommonUnpackItemArray(arr) {
+function CommonUnpackItemArray(arr: {[group: string]: {[name: string]: string[]}}): {Group: string; Name: string; Type?: string}[] {
 	const res = [];
 	for (const G of Object.keys(arr)) {
 		for (const A of Object.keys(arr[G])) {
@@ -585,12 +558,12 @@ function CommonUnpackItemArray(arr) {
 /**
  * A simple deep equality check function which checks whether two objects are equal. The function traverses recursively
  * into objects and arrays to check for equality. Primitives and simple types are considered equal as defined by `===`.
- * @param {*} obj1 - The first object to compare
- * @param {*} obj2 - The second object to compare
- * @returns {boolean} - TRUE if both objects are equal, up to arbitrarily deeply nested property values, FALSE
+ * @param obj1 - The first object to compare
+ * @param obj2 - The second object to compare
+ * @returns TRUE if both objects are equal, up to arbitrarily deeply nested property values, FALSE
  * otherwise.
  */
-function CommonDeepEqual(obj1, obj2) {
+function CommonDeepEqual(obj1: any, obj2: any): boolean {
 	if (obj1 === obj2) {
 		return true;
 	}
@@ -628,11 +601,11 @@ function CommonDeepEqual(obj1, obj2) {
 
 /**
  * Adds all items from the source array to the destination array if they aren't already included
- * @param {*[]} dest - The destination array
- * @param {*[]} src - The source array
- * @returns {*[]} - The destination array
+ * @param dest - The destination array
+ * @param src - The source array
+ * @returns The destination array
  */
-function CommonArrayConcatDedupe(dest, src) {
+function CommonArrayConcatDedupe<T>(dest: T[], src: T[]): T[] {
 	if (Array.isArray(src) && Array.isArray(dest)) {
 		for (const item of src) {
 			if (!dest.includes(item)) dest.push(item);
@@ -643,17 +616,16 @@ function CommonArrayConcatDedupe(dest, src) {
 
 /**
  * Common noop function
- * @returns {void} - Nothing
  */
-function CommonNoop() {
+function CommonNoop(): void {
 	// Noop function
 }
 
 /**
  * Redirects the address to HTTPS for all production environments, returns the proper heroku server
- * @returns {String} - Returns the proper server to use in production or test
+ * @returns Returns the proper server to use in production or test
  */
-function CommonGetServer() {
+function CommonGetServer(): string {
 	if ((location.href.indexOf("bondageprojects") < 0) && (location.href.indexOf("bondage-europe") < 0)) return "https://bc-server-test.herokuapp.com/";
 	if (location.protocol !== 'https:') location.replace(`https:${location.href.substring(location.protocol.length)}`);
 	return "https://bondage-club-server.herokuapp.com/";

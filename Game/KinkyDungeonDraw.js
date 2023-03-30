@@ -694,9 +694,6 @@ function KinkyDungeonDrawGame() {
 		KinkyDungeonSaveGame();
 	}
 
-	if (KDRefresh) {
-		CharacterRefresh(KinkyDungeonPlayer);
-	}
 	KDNaked = false;
 	KDRefresh = false;
 
@@ -1320,7 +1317,6 @@ function KinkyDungeonDrawGame() {
 		} else {
 			DrawTextKD(TextGet("KinkyDungeonLoading"), 1100, 500, "#ffffff", KDTextGray2);
 			if (CommonTime() > KinkyDungeonGameDataNullTimerTime + KinkyDungeonGameDataNullTimer) {
-				ServerSend("ChatRoomChat", { Content: "RequestFullKinkyDungeonData", Type: "Hidden", Target: KinkyDungeonPlayerCharacter.MemberNumber });
 				KinkyDungeonGameDataNullTimerTime = CommonTime();
 			}
 		}

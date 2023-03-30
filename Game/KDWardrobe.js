@@ -609,7 +609,6 @@ function KDDrawWardrobe(screen, Character) {
 			if (NewOutfit) {
 				KDOriginalValue = KDOutfitOriginalStore[KDCurrentOutfit] || "";
 				CharacterAppearanceRestore(KinkyDungeonPlayer, LZString.decompressFromBase64(NewOutfit));
-				CharacterRefresh(KinkyDungeonPlayer);
 				KDInitProtectedGroups();
 				KinkyDungeonDressPlayer();
 			} else {
@@ -743,7 +742,6 @@ function KDSaveCodeOutfit() {
 		let origAppearance = KinkyDungeonPlayer.Appearance;
 		try {
 			CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed);
-			CharacterRefresh(KinkyDungeonPlayer);
 			KDInitProtectedGroups();
 			stringified = CharacterAppearanceStringify(KinkyDungeonPlayer);
 		} catch (e) {
@@ -752,12 +750,6 @@ function KDSaveCodeOutfit() {
 			try {
 				let parsed = JSON.parse(decompressed);
 				if (parsed.length > 0) {
-					if (!StandalonePatched) {
-						for (let g of parsed) {
-							InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
-						}
-						CharacterRefresh(KinkyDungeonPlayer);
-					}
 					KDInitProtectedGroups();
 					stringified = CharacterAppearanceStringify(KinkyDungeonPlayer);
 				} else {
@@ -783,7 +775,6 @@ function KDRestoreOutfit() {
 	// Restore the original outfit
 	if (KDOriginalValue) {
 		CharacterAppearanceRestore(KinkyDungeonPlayer, LZString.decompressFromBase64(KDOriginalValue));
-		CharacterRefresh(KinkyDungeonPlayer);
 		KDInitProtectedGroups();
 		KinkyDungeonDressPlayer();
 	}

@@ -20,13 +20,10 @@ let DialogColorSelect = null;
 let DialogPreviousCharacterData = {};
 let DialogInventory = [];
 let DialogInventoryOffset = 0;
-/** @type {Item|null} */
-let DialogFocusItem = null;
-/** @type {Item|null} */
-let DialogFocusSourceItem = null;
+let DialogFocusItem: Item | null = null;
+let DialogFocusSourceItem: Item | null = null;
 let DialogFocusItemColorizationRedrawTimer = null;
-/** @type {string[]} */
-let DialogMenuButton = [];
+let DialogMenuButton: string[] = [];
 let DialogItemToLock = null;
 let DialogAllowBlush = false;
 let DialogAllowEyebrows = false;
@@ -35,12 +32,10 @@ let DialogFacialExpressions = [];
 let DialogFacialExpressionsSelected = -1;
 let DialogFacialExpressionsSelectedBlindnessLevel = 2;
 let DialogSavedExpressionPreviews = [];
-/** @type {Pose[][]} */
-let DialogActivePoses = [];
+let DialogActivePoses: Pose[][] = [];
 let DialogItemPermissionMode = false;
 let DialogExtendedMessage = "";
 let DialogActivityMode = false;
-/** @type {Record<"Enabled" | "Equipped" | "BothFavoriteUsable" | "TargetFavoriteUsable" | "PlayerFavoriteUsable" | "Usable" | "TargetFavoriteUnusable" | "PlayerFavoriteUnusable" | "Unusable" | "Blocked", DialogSortOrder>} */
 let DialogSortOrder = {
 	Enabled: 1,
 	Equipped: 2,
@@ -61,10 +56,11 @@ let DialogGamingPreviousRoom = "";
 let DialogGamingPreviousModule = "";
 let DialogButtonDisabledTester = /Disabled(For\w+)?$/u;
 
-/** @type {Map<string, string>} */
-let PlayerDialog = new Map();
+let PlayerDialog: Map<string, string> = new Map();
 
 let DialogFavoriteStateDetails = [];
+
+let MiniGameReturnFunction = "ArcadeKinkyDungeonEnd";
 
 
 function DialogCanUnlock() {
@@ -86,6 +82,28 @@ function WardrobeGetExpression(C): any {
 	ServerAppearanceBundle(C.Appearance).filter(item => item.Property != null && item.Property.Expression != null).forEach(item => characterExpression[item.Group] = item.Property.Expression);
 	return characterExpression;
 }
+
+/**
+ * Prepares an appearance bundle so we can push it to the server. It minimizes it by keeping only the necessary
+ * information. (Asset name, group name, color, properties and difficulty)
+ * @param Appearance - The appearance array to bundle
+ * @returns The appearance bundle created from the given appearance array
+ */
+function ServerAppearanceBundle(Appearance: Item[]): AppearanceBundle {
+	let Bundle: AppearanceBundle = [];
+	for (let A = 0; A < Appearance.length; A++) {
+		let N: any = {};
+		N.Group = Appearance[A].Asset.Group.Name;
+		N.Name = Appearance[A].Asset.Name;
+		if ((Appearance[A].Color != null) && (Appearance[A].Color != "Default")) N.Color = Appearance[A].Color;
+		if ((Appearance[A].Difficulty != null) && (Appearance[A].Difficulty != 0)) N.Difficulty = Appearance[A].Difficulty;
+		if (Appearance[A].Property != null) N.Property = Appearance[A].Property;
+		Bundle.push(N);
+	}
+	return Bundle;
+}
+
+
 /**
  * Draws the online game images/text needed on the characters
  * @param {Character} C - Character to draw the info for
@@ -226,5 +244,9 @@ function TypedItemSetOptionByName(a, b, c, d) {}
 
 function ModularItemMergeModuleValues({ asset, modules }, moduleValues) {}
 
+function ExtendedItemSetType(C, Options, Option) {}
+function ExtendedItemExit() {}
+
 
 let KDPatched = true;
+let ServerURL = "http://localhost:4288";

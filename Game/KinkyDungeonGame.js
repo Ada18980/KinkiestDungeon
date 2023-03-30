@@ -2975,60 +2975,34 @@ function KDStartSpellcast(tx, ty, SpellToCast, enemy, player, bullet, data) {
 }
 
 // Click function for the game portion
-// @ts-ignore
-// @ts-ignore
-// @ts-ignore
 function KinkyDungeonClickGame(Level) {
-	let _CharacterRefresh = CharacterRefresh;
-	let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
-	// @ts-ignore
-	CharacterRefresh = () => {KDRefresh = true;};
-	// @ts-ignore
-	CharacterAppearanceBuildCanvas = () => {};
 
 	// First we handle buttons
 	let prevSpell = KinkyDungeonTargetingSpell;
 	let prevInv = KinkyDungeonShowInventory;
 	if (KDGameData.CurrentDialog) {
-		let result = false;
-		try {
-			result = KDHandleDialogue();
-		} finally {
-			// @ts-ignore
-			CharacterRefresh = _CharacterRefresh;
-			// @ts-ignore
-			CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
-			// Done, converted to input
-		}
-		return result;
+		return KDHandleDialogue();
 	}
 	if (KinkyDungeonControlsEnabled() && KinkyDungeonHandleHUD()) {
-		try {
-			if (prevSpell) {
-				if (prevInv) KDCloseQuickInv();
-				else KinkyDungeonTargetingSpell = null;
-			}
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
-			KinkyDungeonGameKey.keyPressed = [
-				false,
-				false,
-				false,
-				false,
-				false,
-				false,
-				false,
-				false,
-			];
-			if (KinkyDungeonAutoWaitSuppress) KinkyDungeonAutoWaitSuppress = false;
-			else if (KDIsAutoAction()) {
-				KDDisableAutoWait();
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Damage.ogg");
-			}
-		} finally {
-			// @ts-ignore
-			CharacterRefresh = _CharacterRefresh;
-			// @ts-ignore
-			CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
+		if (prevSpell) {
+			if (prevInv) KDCloseQuickInv();
+			else KinkyDungeonTargetingSpell = null;
+		}
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+		KinkyDungeonGameKey.keyPressed = [
+			false,
+			false,
+			false,
+			false,
+			false,
+			false,
+			false,
+			false,
+		];
+		if (KinkyDungeonAutoWaitSuppress) KinkyDungeonAutoWaitSuppress = false;
+		else if (KDIsAutoAction()) {
+			KDDisableAutoWait();
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Damage.ogg");
 		}
 		return;
 	}
@@ -3040,55 +3014,43 @@ function KinkyDungeonClickGame(Level) {
 	}
 	// If no buttons are clicked then we handle move
 	else if (KinkyDungeonControlsEnabled() && KinkyDungeonDrawState == "Game") {
-		try {
+		
+		if (KDModalArea || KinkyDungeonTargetTile) {
+			KDModalArea = false;
+			KinkyDungeonTargetTile = null;
+			KinkyDungeonTargetTileLocation = "";
+		} else {
+			KinkyDungeonSetMoveDirection();
 
-			if (KDModalArea || KinkyDungeonTargetTile) {
-				KDModalArea = false;
-				KinkyDungeonTargetTile = null;
-				KinkyDungeonTargetTileLocation = "";
-			} else {
-				KinkyDungeonSetMoveDirection();
+			if (KinkyDungeonTargetingSpell) {
+				if (MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)) {
+					if (KinkyDungeoCheckComponents(KinkyDungeonTargetingSpell).length == 0 || (
+						(KinkyDungeonStatsChoice.get("Slayer") && KinkyDungeonTargetingSpell.school == "Elements")
+						|| (KinkyDungeonStatsChoice.get("Conjurer") && KinkyDungeonTargetingSpell.school == "Conjure")
+						|| (KinkyDungeonStatsChoice.get("Magician") && KinkyDungeonTargetingSpell.school == "Illusion"))) {
+						if (KinkyDungeonSpellValid) {
+							KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonTargetingSpell, undefined, KinkyDungeonPlayerEntity, undefined, {targetingSpellItem: KinkyDungeonTargetingSpellItem, targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon});
 
-				if (KinkyDungeonTargetingSpell) {
-					if (MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)) {
-						if (KinkyDungeoCheckComponents(KinkyDungeonTargetingSpell).length == 0 || (
-							(KinkyDungeonStatsChoice.get("Slayer") && KinkyDungeonTargetingSpell.school == "Elements")
-							|| (KinkyDungeonStatsChoice.get("Conjurer") && KinkyDungeonTargetingSpell.school == "Conjure")
-							|| (KinkyDungeonStatsChoice.get("Magician") && KinkyDungeonTargetingSpell.school == "Illusion"))) {
-							if (KinkyDungeonSpellValid) {
-								KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonTargetingSpell, undefined, KinkyDungeonPlayerEntity, undefined, {targetingSpellItem: KinkyDungeonTargetingSpellItem, targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon});
-
-								KinkyDungeonTargetingSpell = null;
-							}
-						} else KinkyDungeonTargetingSpell = null;
-					} else KinkyDungeonTargetingSpell = null;
-				} else if (KinkyDungeonIsPlayer() && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)) {
-					let fastMove = KinkyDungeonFastMove && !KinkyDungeonToggleAutoSprint;
-					if (fastMove && Math.max(Math.abs(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x), Math.abs(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)) > 1
-						&& (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5)) {
-						let requireLight = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0;
-						let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY, false, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true);
-						if (path) {
-							KinkyDungeonFastMovePath = path;
-							KinkyDungeonSleepTime = 100;
+							KinkyDungeonTargetingSpell = null;
 						}
-					} else if (!fastMove || Math.max(Math.abs(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x), Math.abs(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)) <= 1) {
-						KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
+					} else KinkyDungeonTargetingSpell = null;
+				} else KinkyDungeonTargetingSpell = null;
+			} else if (KinkyDungeonIsPlayer() && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)) {
+				let fastMove = KinkyDungeonFastMove && !KinkyDungeonToggleAutoSprint;
+				if (fastMove && Math.max(Math.abs(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x), Math.abs(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)) > 1
+					&& (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5)) {
+					let requireLight = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0;
+					let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY, false, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true);
+					if (path) {
+						KinkyDungeonFastMovePath = path;
+						KinkyDungeonSleepTime = 100;
 					}
+				} else if (!fastMove || Math.max(Math.abs(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x), Math.abs(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)) <= 1) {
+					KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
 				}
 			}
-		} finally {
-			// @ts-ignore
-			CharacterRefresh = _CharacterRefresh;
-			// @ts-ignore
-			CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
 		}
 	}
-
-	// @ts-ignore
-	CharacterRefresh = _CharacterRefresh;
-	// @ts-ignore
-	CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
 	return;
 }
 
@@ -3124,22 +3086,9 @@ function KinkyDungeonListenKeyMove() {
 		if (moveDirection) {
 			if (KinkyDungeonLastMoveTimerStart < performance.now() && KinkyDungeonLastMoveTimerStart > 0) {
 
-				let _CharacterRefresh = CharacterRefresh;
-				let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
-				// @ts-ignore
-				CharacterRefresh = () => {KDRefresh = true;};
-				// @ts-ignore
-				CharacterAppearanceBuildCanvas = () => {};
-
-				try {
-					KDSendInput("move", {dir: moveDirection, delta: 1, AllowInteract: KinkyDungeonLastMoveTimer == 0, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: false});
-					KinkyDungeonLastMoveTimer = performance.now() + KinkyDungeonLastMoveTimerCooldown;
-				} finally {
-					// @ts-ignore
-					CharacterRefresh = _CharacterRefresh;
-					// @ts-ignore
-					CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
-				}
+				KDSendInput("move", {dir: moveDirection, delta: 1, AllowInteract: KinkyDungeonLastMoveTimer == 0, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: false});
+				KinkyDungeonLastMoveTimer = performance.now() + KinkyDungeonLastMoveTimerCooldown;
+				
 			} else if (KinkyDungeonLastMoveTimerStart == 0) {
 				KinkyDungeonLastMoveTimerStart = performance.now()+ KinkyDungeonLastMoveTimerCooldownStart;
 			}
@@ -3781,13 +3730,6 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 		lastFloaterRefresh = CommonTime();
 	}
 
-
-	let _CharacterRefresh = CharacterRefresh;
-	let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
-	// @ts-ignore
-	CharacterRefresh = () => {KDRefresh = true;};
-	// @ts-ignore
-	CharacterAppearanceBuildCanvas = () => {};
 	let start = performance.now();
 
 	if (KinkyDungeonMovePoints < -1 && KDGameData.KinkyDungeonLeashedPlayer < 1) KinkyDungeonMovePoints += delta;
@@ -3905,11 +3847,6 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	if (KDGameData.AncientEnergyLevel > 1) KDGameData.AncientEnergyLevel = 1;
 
 	KinkyDungeonUpdateBulletVisuals(delta);
-
-	// @ts-ignore
-	CharacterRefresh = _CharacterRefresh;
-	// @ts-ignore
-	CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
 
 	if (KinkyDungeonInDanger()) KinkyDungeonSetFlag("DangerFlag",  3);
 	if (KinkyDungeonStatsChoice.has("Quickness") && !KinkyDungeonFlags.has("BlockQuicknessPerk")) {
