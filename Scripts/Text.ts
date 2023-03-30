@@ -47,7 +47,7 @@ class TextCache {
 	private path: string;
 	private warn: string;
 	private language: string;
-	private cache: any;
+	cache: any;
 	private rebuildListeners: any[];
 	private loaded: boolean;
 

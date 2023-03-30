@@ -23,6 +23,7 @@ jobs:
       run: |
         npm install
         npm run build
+        printf "\n!/out/**/*" >> .gitignore
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
