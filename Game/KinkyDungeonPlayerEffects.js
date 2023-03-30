@@ -827,7 +827,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 		}
 	}
 
-	if (sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + sfx + ".ogg");
+	if (sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 	if (effect) KinkyDungeonInterruptSleep();
 
 	return effect;

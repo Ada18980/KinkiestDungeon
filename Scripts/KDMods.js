@@ -84,7 +84,7 @@ async function KDExecuteMods() {
 			reader.readAsText(file);
 		} else {
 			KDModFiles[KinkyDungeonRootDirectory + entry.filename] = URL.createObjectURL(blob);
-			KDModFiles[KinkyDungeonRootDirectory + "/" + entry.filename] = KDModFiles[KinkyDungeonRootDirectory + entry.filename];
+			KDModFiles[KinkyDungeonRootDirectory + "" + entry.filename] = KDModFiles[KinkyDungeonRootDirectory + entry.filename];
 
 			if (entry.filename?.startsWith("Data/")) KDModFiles["Data/" + entry.filename] = URL.createObjectURL(blob);
 			if (entry.filename?.startsWith("Models/")) KDModFiles["Models/" + entry.filename] = URL.createObjectURL(blob);

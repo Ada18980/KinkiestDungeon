@@ -2357,7 +2357,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 	// Draw the text or image
 	let textPush = 0;
 	if ((Image != null) && (Image != "")) {
-		let img = KDTex(Image);//DrawGetImage
+		let img = KDTex(Image);
 		if (Stretch) {
 			KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 				Image, Left, Top, Width, Height, undefined, {

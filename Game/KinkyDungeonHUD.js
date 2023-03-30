@@ -816,7 +816,7 @@ function KinkyDungeonDrawInputs() {
 		KDWardrobe_CurrentPoseBlush = KDGetPoseOfType(KinkyDungeonPlayer, "Blush") || "BlushNeutral";
 		KDWardrobe_CurrentPoseMouth = KDGetPoseOfType(KinkyDungeonPlayer, "Mouth");*/
 		return true;
-	}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "/Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
+	}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
 
 	if (KDPlayerSetPose) KDPlayerDrawPoseButtons(KinkyDungeonPlayer);
 
@@ -896,7 +896,7 @@ function KinkyDungeonDrawInputs() {
 				return true;
 			}, true,
 			1700 - 80, empowerYY, 76, 76, "", "",
-			KinkyDungeonRootDirectory + "/Spells/" + KDEmpowerSprite + (hasUpcast ? "" : "Fail") + ".png", undefined, false, true,
+			KinkyDungeonRootDirectory + "Spells/" + KDEmpowerSprite + (hasUpcast ? "" : "Fail") + ".png", undefined, false, true,
 		);
 		if (KDUpcastLevel > 0)
 			DrawButtonKDEx("empowerSpellCancel",
@@ -905,7 +905,7 @@ function KinkyDungeonDrawInputs() {
 					return true;
 				}, true,
 				1700 - 80, empowerYY + KinkyDungeonSpellChoiceOffset, 76, 76, "", "",
-				KinkyDungeonRootDirectory + "/Spells/" + KDEmpowerSprite + "Cancel" + ".png", undefined, false, true,
+				KinkyDungeonRootDirectory + "Spells/" + KDEmpowerSprite + "Cancel" + ".png", undefined, false, true,
 			);
 		if (MouseIn(1700 - 80, empowerYY, 76, 76)) {
 			DrawTextFitKD(TextGet("KDSpellEmpower" + (hasUpcast ? "" : "Fail")), 1700 - 100, empowerYY + 40, 1000, "#ffffff", undefined, undefined, "right");
@@ -1274,10 +1274,10 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	}, KDGameData.PreviousWeapon != undefined, x, y+i*heightPerBar + switchAdj, width + 5, 60, "", "#ffffff", undefined, undefined, undefined, true);
 
 	if (KDGameData.PreviousWeapon)
-		KDDraw(kdcanvas, kdpixisprites, "previousweapon", KinkyDungeonRootDirectory + "/Items/" + KDGameData.PreviousWeapon + ".png", x + width - 40 + 10, y + switchAdj + 10 + i * heightPerBar, 40, 40);
+		KDDraw(kdcanvas, kdpixisprites, "previousweapon", KinkyDungeonRootDirectory + "Items/" + KDGameData.PreviousWeapon + ".png", x + width - 40 + 10, y + switchAdj + 10 + i * heightPerBar, 40, 40);
 	if (KinkyDungeonPlayerWeapon) {
 		DrawTextFitKD(TextGet("StatWeapon") + TextGet("KinkyDungeonInventoryItem" + KinkyDungeonPlayerWeapon), x + (width - 80)/2, y + switchAdj + 30 + i * heightPerBar, width - 80, "#ffffff", "#333333", 24);
-		KDDraw(kdcanvas, kdpixisprites, "currentweapon", KinkyDungeonRootDirectory + "/Items/" + KinkyDungeonPlayerWeapon + ".png", x + width - 100 + 20, y + switchAdj + i * heightPerBar, 60, 60);
+		KDDraw(kdcanvas, kdpixisprites, "currentweapon", KinkyDungeonRootDirectory + "Items/" + KinkyDungeonPlayerWeapon + ".png", x + width - 100 + 20, y + switchAdj + i * heightPerBar, 60, 60);
 	} //else  KinkyDungeonNoWeapon
 
 	let playColor = "#283540";
@@ -1618,7 +1618,7 @@ function KinkyDungeonHandleHUD() {
 				// Done, converted to input
 				if (KinkyDungeonHandleShrine()) {
 					return true;
-					// if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+					// if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 				}
 			} else if (KDObjectHandle[KinkyDungeonTargetTile.Type]) {
 				return KDObjectHandle[KinkyDungeonTargetTile.Type]();

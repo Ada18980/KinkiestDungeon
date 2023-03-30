@@ -289,7 +289,7 @@ function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false) {
 			true,
 			X + i*buttonSpacing, Y + 120, buttonWidth, buttonWidth,
 			"",
-			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseArms[i] + ".png",
+			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseArms[i] + ".png",
 			undefined, false, KDWardrobe_CurrentPoseArms != KDWardrobe_PoseArms[i], !AvailableArms.includes(KDWardrobe_PoseArms[i]) ? "#ff5555" : KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseLegs.length; i++) {
@@ -298,43 +298,43 @@ function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false) {
 			true,
 			X + xoff + i*buttonSpacing, Y + 180, buttonWidth, buttonWidth,
 			"",
-			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseLegs[i] + ".png",
+			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseLegs[i] + ".png",
 			undefined, false, KDWardrobe_CurrentPoseLegs != KDWardrobe_PoseLegs[i], !AvailableLegs.includes(KDWardrobe_PoseLegs[i]) ? "#ff5555" : KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseEyes.length; i++) {
 		DrawButtonKDEx("PoseEyes" + i, buttonClick("", "", KDWardrobe_PoseEyes[i]), true, X + i*buttonSpacing, Y, buttonWidth, buttonWidth,
 			"",
-			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseEyes[i] + ".png",
+			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseEyes[i] + ".png",
 			undefined, undefined, KDWardrobe_CurrentPoseEyes != KDWardrobe_PoseEyes[i], KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseEyes.length; i++) {
 		DrawButtonKDEx("PoseEyes2" + i, buttonClick("", "", "", KDWardrobe_PoseEyes2[i]), true, X + i*buttonSpacing, Y + 60, buttonWidth, buttonWidth,
 			"",
-			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseEyes2[i] + ".png",
+			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseEyes2[i] + ".png",
 			undefined, undefined, KDWardrobe_CurrentPoseEyes2 != KDWardrobe_PoseEyes2[i], KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseBrows.length; i++) {
 		DrawButtonKDEx("PoseBrows" + i, buttonClick("", "", "", "", KDWardrobe_PoseBrows[i]), true, X + 400 + i*buttonSpacing, Y, buttonWidth, buttonWidth,
 			"",
-			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseBrows[i] + ".png",
+			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseBrows[i] + ".png",
 			undefined, undefined, KDWardrobe_CurrentPoseBrows != KDWardrobe_PoseBrows[i], KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseBrows2.length; i++) {
 		DrawButtonKDEx("PoseBrows2" + i, buttonClick("", "", "", "", "", KDWardrobe_PoseBrows2[i]), true, X + 400 + i*buttonSpacing, Y + 60, buttonWidth, buttonWidth,
 			"",
-			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseBrows2[i] + ".png",
+			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseBrows2[i] + ".png",
 			undefined, undefined, KDWardrobe_CurrentPoseBrows2 != KDWardrobe_PoseBrows2[i], KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseBlush.length; i++) {
 		DrawButtonKDEx("PoseBlush" + i, buttonClick("", "", "", "", "", "", KDWardrobe_PoseBlush[i]), true, X + 400 + i*buttonSpacing, Y + 120, buttonWidth, buttonWidth,
 			"",
-			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseBlush[i] + ".png",
+			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseBlush[i] + ".png",
 			undefined, undefined, KDWardrobe_CurrentPoseBlush != KDWardrobe_PoseBlush[i], KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseMouth.length; i++) {
 		DrawButtonKDEx("PoseMouth" + i, buttonClick("", "", "", "", "", "", "", KDWardrobe_PoseMouth[i]), true, X + 400 + i*buttonSpacing, Y + 180, buttonWidth, buttonWidth,
 			"",
-			"#ffffff", KinkyDungeonRootDirectory + "/Poses/"+KDWardrobe_PoseMouth[i] + ".png",
+			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseMouth[i] + ".png",
 			undefined, undefined, KDWardrobe_CurrentPoseMouth != KDWardrobe_PoseMouth[i], KDButtonColor);
 	}
 }
@@ -588,7 +588,7 @@ function KDDrawWardrobe(screen, Character) {
 		KDPlayerSetPose = !KDPlayerSetPose;
 
 		return true;
-	}, true, 884, 790, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "/Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
+	}, true, 884, 790, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
 
 
 	if (KDSelectedModel) {
