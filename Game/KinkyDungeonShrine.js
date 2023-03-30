@@ -540,7 +540,6 @@ function KinkyDungeonTakeOrb(Amount, X, Y) {
 }
 function KinkyDungeonDrawOrb() {
 
-	MainCanvas.textAlign = "center";
 	DrawTextKD(TextGet("KinkyDungeonOrbIntro" + (KinkyDungeonStatsChoice.get("randomMode") ? "Kinky" : "")), 1250, 200, "#ffffff", KDTextGray2);
 	DrawTextKD(TextGet("KinkyDungeonOrbIntro2"), 1250, 250, "#ffffff", KDTextGray2);
 	let i = 0;
@@ -548,7 +547,6 @@ function KinkyDungeonDrawOrb() {
 	let XX = 500;
 	let spacing = 60;
 	let yPad = 150;
-	MainCanvas.textAlign = "center";
 	for (let shrine in KinkyDungeonShrineBaseCosts) {
 		let value = KinkyDungeonGoddessRep[shrine];
 
@@ -582,7 +580,6 @@ function KinkyDungeonDrawOrb() {
 		return true;
 	}, true, canvasOffsetX_ui + 525, yPad + canvasOffsetY_ui + spacing * i, 425, 55, TextGet("KinkyDungeonCancel"), "white");
 
-	MainCanvas.textAlign = "center";
 }
 
 let KDOrbX = 0;
@@ -730,7 +727,6 @@ function KinkyDungeonDrawPerkOrb() {
 		return true;
 	}, true, 1250 - bwidth/2, 750 + 80, bwidth, bheight, TextGet("KinkyDungeonPerkReject"), "#ffffff");
 
-	MainCanvas.textAlign = "center";
 }
 
 function KDGetPosNegColor(value) {

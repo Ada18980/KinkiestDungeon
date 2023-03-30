@@ -255,26 +255,30 @@ function KDDrawTileEditor() {
 			}
 		}
 
-		// Draw the context layer even if we haven't updated it
-		if (pixirendererKD) {
-			pixirendererKD.render(kdgameboard, {
-				clear: false,
-			});
-		}
-		if (!pixirendererKD) {
-			if (KinkyDungeonContext && KinkyDungeonCanvas) {
-				// @ts-ignore
-				pixirendererKD = new PIXI.CanvasRenderer({
-					// @ts-ignore
-					width: KinkyDungeonCanvas.width,
-					// @ts-ignore
-					height: KinkyDungeonCanvas.height,
-					view: KinkyDungeonCanvas,
-					antialias: true,
+		if (!StandalonePatched) {
+			// Draw the context layer even if we haven't updated it
+			if (pixirendererKD) {
+				pixirendererKD.render(kdgameboard, {
+					clear: false,
 				});
 			}
+			if (!pixirendererKD) {
+				if (KinkyDungeonContext && KinkyDungeonCanvas) {
+					// @ts-ignore
+					pixirendererKD = new PIXI.CanvasRenderer({
+						// @ts-ignore
+						width: KinkyDungeonCanvas.width,
+						// @ts-ignore
+						height: KinkyDungeonCanvas.height,
+						view: KinkyDungeonCanvas,
+						antialias: true,
+					});
+				}
+			}
 		}
-		MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
+
+		if (!StandalonePatched)
+			MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
 
 		KDTE_UpdateUI(false);
 

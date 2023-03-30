@@ -1,7 +1,7 @@
 "use strict";
 
 
-var KinkyDungeonFilters = [
+let KinkyDungeonFilters = [
 	Consumable,
 	Restraint,
 	Weapon,
@@ -10,8 +10,8 @@ var KinkyDungeonFilters = [
 	Misc,
 ];
 
-var KinkyDungeonCurrentFilter = KinkyDungeonFilters[0];
-var KinkyDungeonCurrentPageInventory = 0;
+let KinkyDungeonCurrentFilter = KinkyDungeonFilters[0];
+let KinkyDungeonCurrentPageInventory = 0;
 
 let KinkyDungeonShowInventory = false;
 let KinkyDungeonInventoryOffset = 0;
@@ -679,10 +679,8 @@ function KinkyDungeonDrawQuickInv() {
 			}
 			//DrawImageEx(item.preview, point.x, point.y + 30, {Width: 80, Height: 80});
 
-			MainCanvas.textAlign = "left";
-			DrawTextKD("" + item.item.quantity, point.x+1, point.y+1 + 30, "black");
-			DrawTextKD("" + item.item.quantity, point.x, point.y + 30, "white");
-			MainCanvas.textAlign = "center";
+			DrawTextKD("" + item.item.quantity, point.x+1, point.y+1 + 30, "black", undefined, "left");
+			DrawTextKD("" + item.item.quantity, point.x, point.y + 30, "white", undefined, "left");
 		}
 	}
 

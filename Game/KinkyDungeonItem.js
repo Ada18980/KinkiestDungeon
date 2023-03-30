@@ -223,7 +223,7 @@ function KinkyDungeonItemEvent(Item) {
 		name = "Generic";
 		replace = TextGet("Restraint" + Item.name);
 	}
-	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/" + sfx + ".ogg");
+	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 	KinkyDungeonSendActionMessage(priority, TextGet("ItemPickup" + name).replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1);
 	if (!KDCanSeeDroppedItem(Item))
 		KinkyDungeonSendActionMessage(priority + 1, TextGet("ItemFoundHidden").replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1);
@@ -273,6 +273,9 @@ function KinkyDungeonDrawHeart() {
 	DrawTextKD(TextGet("StatStamina").replace("CURRENT/MAX", "" + KinkyDungeonStatStaminaMax * KDMaxStatStart), 950 + 250/2, 650, "#ffffff", KDTextGray2);
 	DrawTextKD(TextGet("StatMana").replace("CURRENT/MAX", "" + KinkyDungeonStatManaMax * KDMaxStatStart), 1250 + 250/2, 650, "#ffffff", KDTextGray2);
 	DrawTextKD(TextGet("StatWill").replace("CURRENT/MAX", "" + KinkyDungeonStatWillMax * KDMaxStatStart), 1550 + 250/2, 650, "#ffffff", KDTextGray2);
+
+	// Fix softlock
+	if (!(KinkyDungeonStatDistractionMax < KDMaxStat && KinkyDungeonStatStaminaMax < KDMaxStat && KinkyDungeonStatManaMax < KDMaxStat && KinkyDungeonStatWillMax < KDMaxStat)) KinkyDungeonDrawState = "Game";
 
 	DrawButtonVis(650, 700, 250, 60, TextGet("KinkyDungeonHeartDistraction"), KinkyDungeonStatDistractionMax < KDMaxStat ? "#ffffff" : "#999999");
 	DrawButtonVis(950, 700, 250, 60, TextGet("KinkyDungeonHeartStamina"), KinkyDungeonStatStaminaMax < KDMaxStat ? "#ffffff" : "#999999");

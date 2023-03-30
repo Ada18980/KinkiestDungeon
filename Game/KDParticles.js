@@ -117,6 +117,7 @@ function KDDrawArousalParticles(pinkChance, density, purpleChance) {
 function KDDrawVibeParticles(density) {
 
 	let arousalRate = 100 / density;
+	if (StandalonePatched) arousalRate *= 2;
 	if (KinkyDungeonVibeLevel > 0 && CommonTime() > lastVibeParticle + 0.03 * arousalRate * (2/(2 + KinkyDungeonVibeLevel))) {
 		KDCreateVibeParticle();
 
@@ -129,8 +130,10 @@ function KDDrawVibeParticles(density) {
  */
 function KDCreateVibeParticle() {
 	let lifetime = 500 + Math.random() * 250;
-	let x = 250;
-	let y = 520 + (KinkyDungeonPlayer.Pose.includes("Hogtied") ? 165 : (KinkyDungeonPlayer.IsKneeling() ? 78 : 0));
+	let x = 250 - (StandalonePatched ? 5 : 0);
+	let Hogtied = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer)?.Poses.Hogtie : KinkyDungeonPlayer.Pose.includes("Hogtied");
+	let Kneeling = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer)?.Poses.Kneel: KinkyDungeonPlayer.IsKneeling();
+	let y = 520 + (Hogtied ? 165 : (Kneeling ? 78 : 0));
 	let locations = KDSumVibeLocations();
 	let vx = ((Math.random() > 0.5) ? -1 : 1) * 0.25;
 	let vy = -.15 + Math.random() * .3;

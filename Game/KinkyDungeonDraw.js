@@ -20,19 +20,28 @@ let pixirenderer = null;
 let pixirendererKD = null;
 // @ts-ignore
 let kdgamefog = new PIXI.Graphics();
+kdgamefog.zIndex = -49;
 // @ts-ignore
 let kdgameboard = new PIXI.Container();
 kdgameboard.sortableChildren = true;
+kdgameboard.zIndex = -50;
 // @ts-ignore
 let kdui = new PIXI.Graphics();
 // @ts-ignore
 let kdcanvas = new PIXI.Container();
 kdcanvas.sortableChildren = true;
+if (StandalonePatched) {
+	kdcanvas.addChild(kdgamefog);
+	kdcanvas.addChild(kdgameboard);
+
+}
 
 
 // @ts-ignore
 let kdparticles = new PIXI.Container();
+kdparticles.zIndex = 10;
 kdparticles.sortableChildren = true;
+kdcanvas.addChild(kdparticles);
 //kdgameboard.addChild(kdparticles);
 
 let KDTextWhite = "#ffffff";
@@ -669,6 +678,8 @@ let KDLastKeyTime = {
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
 
+
+
 	if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
 		if (KinkyDungeonKeybindingCurrentKey)
 			KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
@@ -693,9 +704,7 @@ function KinkyDungeonDrawGame() {
 	KDRefresh = false;
 
 	if (ServerURL == "foobar") {
-		MainCanvas.textAlign = "center";
 		DrawTextFitKD(TextGet("KinkyDungeon"), 1865, 50, 200, "#ffffff", KDTextGray2);
-		MainCanvas.textAlign = "center";
 	}
 
 
@@ -776,14 +785,24 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonContext.fillRect(0, 0, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height);
 				KinkyDungeonContext.fill();
 				let spriteRes = KDDrawMap(CamX, CamY, CamX_offset, CamY_offset);
-				tooltip = spriteRes.tooltip;
-				KinkyDungeonForceRender = spriteRes.KinkyDungeonForceRender;
 
 				// Get lighting grid
 				if (KinkyDungeonUpdateLightGrid) {
 					KDUpdateFog = true;
 					KDUpdateVision();
 				}
+				// Draw fog of war
+				let CamPos = {x: CamX, y: CamY};
+				if (CamPos.x != KDLastCamPos.x || CamPos.y != KDLastCamPos.y) KDUpdateFog = true;
+				KDLastCamPos = CamPos;
+
+				// Draw fog of war
+
+				KDDrawFog(CamX, CamY, CamX_offset, CamY_offset);
+
+				tooltip = spriteRes.tooltip;
+				KinkyDungeonForceRender = spriteRes.KinkyDungeonForceRender;
+
 
 				KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 
@@ -925,13 +944,6 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 				KinkyDungeonDrawEnemiesStatus(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 
-				// Draw fog of war
-				let CamPos = {x: CamX, y: CamY};
-				if (CamPos.x != KDLastCamPos.x || CamPos.y != KDLastCamPos.y) KDUpdateFog = true;
-				KDLastCamPos = CamPos;
-
-				if (KDUpdateFog)
-					KDDrawFog(CamX, CamY, CamX_offset, CamY_offset);
 
 				KinkyDungeonSendEvent("draw",{update: KDDrawUpdate, CamX:CamX, CamY:CamY, CamX_offset: CamX_offset, CamY_offset: CamY_offset});
 				KDDrawUpdate = 0;
@@ -1130,53 +1142,49 @@ function KinkyDungeonDrawGame() {
 					}
 				}
 
-				// Draw the context layer even if we haven't updated it
-				if (pixirendererKD) {
-					pixirendererKD.render(kdgameboard, {
-						clear: false,
-					});
-				}
 
-				// Draw the context layer even if we haven't updated it
-				if (pixirendererKD) {
-					pixirendererKD.render(kdgamefog, {
-						clear: false,
-					});
-				}
 
-				// Draw the context layer even if we haven't updated it
-				if (pixirendererKD) {
-					pixirendererKD.render(kdparticles, {
-						clear: false,
-					});
-				}
-				if (!pixirendererKD) {
-					if (KinkyDungeonContext && KinkyDungeonCanvas) {
-						// @ts-ignore
-						pixirendererKD = new PIXI.CanvasRenderer({
-							// @ts-ignore
-							width: KinkyDungeonCanvas.width,
-							// @ts-ignore
-							height: KinkyDungeonCanvas.height,
-							view: KinkyDungeonCanvas,
-							antialias: true,
+				if (!StandalonePatched) {
+					// Draw the context layer even if we haven't updated it
+					if (pixirendererKD) {
+						pixirendererKD.render(kdgameboard, {
+							clear: false,
 						});
 					}
+
+					// Draw the context layer even if we haven't updated it
+					if (pixirendererKD) {
+						pixirendererKD.render(kdgamefog, {
+							clear: false,
+						});
+					}
+
+					// Draw the context layer even if we haven't updated it
+					if (pixirendererKD) {
+						pixirendererKD.render(kdparticles, {
+							clear: false,
+						});
+					}
+					if (!pixirendererKD) {
+						if (!StandalonePatched) {
+							if (KinkyDungeonContext && KinkyDungeonCanvas) {
+								// @ts-ignore
+								pixirendererKD = new PIXI.CanvasRenderer({
+									// @ts-ignore
+									width: KinkyDungeonCanvas.width,
+									// @ts-ignore
+									height: KinkyDungeonCanvas.height,
+									view: KinkyDungeonCanvas,
+									antialias: true,
+								});
+							}
+						}
+
+					}
+					MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
 				}
-				MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
 
 			}
-
-			/*if (KDGameData && KDGameData.AncientEnergyLevel) {
-				let h = 1000 * KDGameData.AncientEnergyLevel;
-				const Grad = MainCanvas.createLinearGradient(0, 1000-h, 0, 1000);
-				Grad.addColorStop(0, `rgba(255,255,0,0)`);
-				Grad.addColorStop(0.5, `rgba(255,255,128,0.5)`);
-				Grad.addColorStop(0.75, `rgba(255,255,255,1.0)`);
-				Grad.addColorStop(1.0, `rgba(255,255,255,0.25)`);
-				MainCanvas.fillStyle = Grad;
-				MainCanvas.fillRect(0, 1000-h, 500, h);
-			}*/
 
 			DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
 
@@ -1195,8 +1203,32 @@ function KinkyDungeonDrawGame() {
 			} else CharacterSetFacialExpression(KinkyDungeonPlayer, "Emoticon", null);
 
 			// Draw the player no matter what
-			KinkyDungeonContextPlayer.clearRect(0, 0, KinkyDungeonCanvasPlayer.width, KinkyDungeonCanvasPlayer.height);
-			DrawCharacter(KinkyDungeonPlayer, -KinkyDungeonGridSizeDisplay/2, KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0), KinkyDungeonGridSizeDisplay/250, false, KinkyDungeonContextPlayer);
+			if (!StandalonePatched) {
+				KinkyDungeonContextPlayer.clearRect(0, 0, KinkyDungeonCanvasPlayer.width, KinkyDungeonCanvasPlayer.height);
+				DrawCharacter(KinkyDungeonPlayer, -KinkyDungeonGridSizeDisplay/2, KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0), KinkyDungeonGridSizeDisplay/250, false, KinkyDungeonContextPlayer);
+			} else {
+				let PlayerModel = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer) : null;
+				let zoom = PlayerModel ? KinkyDungeonGridSizeDisplay/1200
+					: KinkyDungeonGridSizeDisplay/250;
+				/** @type {PoseMod[]} */
+				let mods = StandalonePatched ? [
+					{
+						Layer: "Head",
+						scale_x: 2.5,
+						scale_y: 2.5,
+						rotation_x_anchor: 1190/MODELWIDTH,
+						rotation_y_anchor: 690/MODELHEIGHT,
+						offset_x: 1100/MODELWIDTH,
+						offset_y: 620/MODELHEIGHT,
+					},
+				] : [];
+				if (KDDrawPlayer)
+					DrawCharacter(KinkyDungeonPlayer,
+						canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/4: -KinkyDungeonGridSizeDisplay/2),
+						canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/6 : (KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0))),
+						zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods);
+			}
+
 
 			KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 			KinkyDungeonDrawFloaters(CamX+CamX_offset, CamY+CamY_offset);
@@ -1259,7 +1291,7 @@ function KinkyDungeonDrawGame() {
 					}
 				}
 
-				KinkyDungeonDrawTether(KinkyDungeonPlayerEntity, CamX+CamX_offset, CamY+CamY_offset);
+				KinkyDungeonDrawTethers(KinkyDungeonPlayerEntity, CamX+CamX_offset, CamY+CamY_offset);
 
 				if (tooltip) {
 					DrawTextFitKD(tooltip, MouseX, MouseY - KinkyDungeonGridSizeDisplay/2, 200, "#ffffff", KDTextGray2);
@@ -1428,7 +1460,6 @@ function KinkyDungeonDrawGame() {
 		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 250, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KinkyDungeonDrawLore();
 	} else if (KinkyDungeonDrawState == "Restart") {
-		MainCanvas.textAlign = "left";
 		if (TestMode) {
 			DrawCheckboxVis(600, 20, 64, 64, "Debug Mode", KDDebugMode, false, "#ffffff");
 			if (KDDebugMode) {
@@ -1436,14 +1467,14 @@ function KinkyDungeonDrawGame() {
 				let i = 0;
 				for (let r of KinkyDungeonRestraints) {
 					if (i * dd < 1200 && r.name.includes(ElementValue("DebugItem"))) {
-						DrawTextFitKD(r.name, 0, 15 + i * dd, 200, "#ffffff", KDTextGray0);
+						DrawTextFitKD(r.name, 0, 15 + i * dd, 200, "#ffffff", KDTextGray0, undefined, "left");
 						i++;
 					}
 				}
 				i = 0;
 				for (let r of Object.values(KinkyDungeonConsumables)) {
 					if (i * dd < 1200 && r.name.includes(ElementValue("DebugItem"))) {
-						DrawTextFitKD(r.name, 200, 15 + i * dd, 200, "lightblue", KDTextGray0);
+						DrawTextFitKD(r.name, 200, 15 + i * dd, 200, "lightblue", KDTextGray0, undefined, "left");
 						i++;
 					}
 				}
@@ -1472,7 +1503,6 @@ function KinkyDungeonDrawGame() {
 				DrawCheckboxVis(1100, 20, 64, 64, "Verbose Console", KDDebug, false, "#ffffff");
 				DrawCheckboxVis(1100, 100, 64, 64, "Changeable Perks", KDDebugPerks, false, "#ffffff");
 				DrawCheckboxVis(1100, 180, 64, 64, "Unlimited Gold", KDDebugGold, false, "#ffffff");
-				MainCanvas.textAlign = "center";
 				ElementPosition("DebugEnemy", 1650, 52, 300, 64);
 				DrawButtonVis(1500, 100, 100, 64, "Enemy", "#ffffff", "");
 				DrawButtonVis(1600, 100, 100, 64, "Ally", "#ffffff", "");
@@ -1516,7 +1546,7 @@ function KinkyDungeonDrawGame() {
 			}
 		}
 
-		MainCanvas.textAlign = "center";
+
 		DrawTextFitKD(TextGet("KinkyDungeonRestartConfirm"), 1250, 400, 1000, "#ffffff", "#333333");
 		DrawButtonVis(975, 550, 550, 64, TextGet("KinkyDungeonRestartNo"), "#ffffff", "");
 		DrawButtonVis(975, 650, 550, 64, TextGet("KinkyDungeonRestartQuitNoErase"), "#ffffff", "");
@@ -1644,7 +1674,7 @@ function KinkyDungeonDrawGame() {
  * @returns {void} - Nothing.
  */
 function KDDrawArousalScreenFilter(y1, h, Width, ArousalOverride, Color = '255, 100, 176', AlphaBonus = 0) {
-	let Progress = (ArousalOverride) ? ArousalOverride : Player.ArousalSettings.Progress;
+	/*let Progress = (ArousalOverride) ? ArousalOverride : Player.ArousalSettings.Progress;
 	let amplitude = 0.24 * Math.min(1, 2 - 1.5 * Progress/100); // Amplitude of the oscillation
 	let percent = Progress/100.0;
 	let level = Math.min(0.5, percent) + 0.5 * Math.pow(Math.max(0, percent*2 - 1), 4);
@@ -1667,7 +1697,7 @@ function KDDrawArousalScreenFilter(y1, h, Width, ArousalOverride, Color = '255, 
 		} else alpha /= 2;
 		if (alpha > 0)
 			DrawRect(0, y1, Width, h, `rgba(${Color}, ${alpha})`);
-	}
+	}*/
 }
 
 function KDCanAttack() {
@@ -1880,15 +1910,15 @@ function KDhexToRGB(h) {
 
 	// 3 digits
 	if (h.length == 4) {
-		r = "#" + h[1] + h[1];
-		g = "#" + h[2] + h[2];
-		b = "#" + h[3] + h[3];
+		r = h[1] + h[1];
+		g = h[2] + h[2];
+		b = h[3] + h[3];
 
 		// 6 digits
 	} else if (h.length == 7) {
-		r = "#" + h[1] + h[2];
-		g = "#" + h[3] + h[4];
-		b = "#" + h[5] + h[6];
+		r = h[1] + h[2];
+		g = h[3] + h[4];
+		b = h[5] + h[6];
 	}
 
 	return {r:r, g:g, b:b};
@@ -2017,19 +2047,6 @@ let KDBorderColor = '#f0b541';
  *  @returns {void} - Nothing
  */
 function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder, Alpha, zIndex = 90) {
-	/*// Draw the button rectangle (makes the background color cyan if the mouse is over it)
-	MainCanvas.beginPath();
-	MainCanvas.fillStyle = Color;
-	MainCanvas.fillRect(Left, Top, Width, Height);
-	MainCanvas.fill();
-	if (!NoBorder) {
-		MainCanvas.rect(Left, Top, Width, Height);
-		MainCanvas.lineWidth = 2;
-		MainCanvas.strokeStyle = KDBorderColor;
-		MainCanvas.stroke();
-	}
-
-	MainCanvas.closePath();*/
 	FillRectKD(kdcanvas, kdpixisprites, "box" + Left + "," + Top + "," + Width + "," + Height + Color + zIndex, {
 		Left: Left,
 		Top: Top,
@@ -2072,7 +2089,7 @@ let KDFont = 'Arial';
  */
 function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined) {
 	if (!Text) return;
-	let alignment = Align ? Align : MainCanvas.textAlign;
+	let alignment = Align ? Align : "center";
 
 	DrawTextVisKD(kdcanvas, kdpixisprites, Text + "," + X + "," + Y, {
 		Text: Text,
@@ -2103,7 +2120,7 @@ function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIn
  */
 function DrawTextKD(Text, X, Y, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined) {
 	if (!Text) return;
-	let alignment = Align ? Align : MainCanvas.textAlign;
+	let alignment = Align ? Align : "center";
 
 	DrawTextVisKD(kdcanvas, kdpixisprites, Text + "," + X + "," + Y, {
 		Text: Text,
@@ -2332,12 +2349,6 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 	if (hover) {
 		let pad = 4;
 		// Draw the button rectangle (makes the background color cyan if the mouse is over it)
-		/*MainCanvas.beginPath();
-		MainCanvas.rect(Left + pad, Top + pad, Width - 2 * pad, Height - 2 * pad);
-		MainCanvas.lineWidth = 2;
-		MainCanvas.strokeStyle = '#cccccc';
-		MainCanvas.stroke();
-		MainCanvas.closePath();*/
 		DrawRectKD(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height + "out", {
 			Left: Left + pad,
 			Top: Top + pad,
@@ -2352,7 +2363,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 	// Draw the text or image
 	let textPush = 0;
 	if ((Image != null) && (Image != "")) {
-		let img = DrawGetImage(Image);
+		let img = KDTex(Image);
 		if (Stretch) {
 			KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 				Image, Left, Top, Width, Height, undefined, {
@@ -2363,10 +2374,10 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 				Height: Height,
 			});*/
 		} else KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-			Image, Left + 2, Top + Height/2 - img.height/2, img.width, img.height, undefined, {
+			Image, Left + 2, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, {
 				zIndex: zIndex + 0.001,
 			});
-		textPush = img.width;
+		textPush = img.orig.width;
 	}
 	DrawTextFitKD(Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
 		Color,
@@ -2400,7 +2411,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  */
 // @ts-ignore
 function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = KDTextGray0, CheckImage = "Icons/Checked.png", options) {
-	DrawTextFitKD(Text, Left + 100, Top + 33, 1000, TextColor, "#333333");
+	DrawTextFitKD(Text, Left + 100, Top + 33, 1000, TextColor, "#333333", undefined, "left");
 	DrawButtonVis(Left, Top, Width, Height, "", Disabled ? "#ebebe4" : "#ffffff", IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled,
 		undefined, undefined, undefined, undefined, undefined, options?.zIndex, options);
 }
@@ -2429,7 +2440,7 @@ function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = f
  */
 // @ts-ignore
 function DrawCheckboxKDEx(name, func, enabled, Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = KDTextGray0, CheckImage = "Icons/Checked.png", options) {
-	DrawTextFitKD(Text, Left + 100, Top + 33, options?.maxWidth || 1000, TextColor, "#333333",);
+	DrawTextFitKD(Text, Left + 100, Top + 33, options?.maxWidth || 1000, TextColor, "#333333", undefined, "left");
 	DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : "#ffffff", IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled,
 		undefined, undefined, undefined, undefined, options);
 }
@@ -2456,53 +2467,92 @@ function DrawCheckboxKDEx(name, func, enabled, Left, Top, Width, Height, Text, I
  */
 // @ts-ignore
 function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, BackText, NextText, Disabled, ArrowWidth, NoBorder, options) {
+	let id = "BackNext" + Left + "," + Top + "," + Width + Color;
 	// Set the widths of the previous/next sections to be colored cyan when hovering over them
 	// By default each covers half the width, together covering the whole button
 	if (ArrowWidth == null || ArrowWidth > Width / 2) ArrowWidth = Width / 2;
 	const LeftSplit = Left + ArrowWidth;
 	const RightSplit = Left + Width - ArrowWidth;
 
-	if (ControllerActive == true) {
-		setButton(Left, Top);
-		setButton(Left + Width - ArrowWidth, Top);
-	}
-
 	DrawBoxKD(Left, Top, Width, Height,
 		KDButtonColor, undefined, options?.alpha || 0.5
 	);
 
 	// Draw the button rectangle
-	MainCanvas.beginPath();
-	MainCanvas.lineWidth = 1;
-	MainCanvas.strokeStyle = '#ffffff';
-	MainCanvas.stroke();
+
+
 	if (MouseIn(Left, Top, Width, Height) && !CommonIsMobile && !Disabled) {
 		if (MouseX > RightSplit) {
-			MainCanvas.rect(RightSplit + 4, Top + 4, ArrowWidth - 8, Height - 8);
+			DrawRectKD(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height + "a", {
+				Left: RightSplit + 4,
+				Top: Top + 4,
+				Width: ArrowWidth - 8,
+				Height: Height - 8,
+				Color: "#ffffff",
+				LineWidth: 1,
+				zIndex: 101,
+			});
+			//MainCanvas.rect(RightSplit + 4, Top + 4, ArrowWidth - 8, Height - 8);
 		}
 		else if (MouseX <= LeftSplit) {
-			MainCanvas.rect(Left + 4, Top + 4, ArrowWidth - 8, Height - 8);
+			DrawRectKD(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height + "a", {
+				Left: Left + 4,
+				Top: Top + 4,
+				Width: ArrowWidth - 8,
+				Height: Height - 8,
+				Color: "#ffffff",
+				LineWidth: 1,
+				zIndex: 101,
+			});
+			//MainCanvas.rect(Left + 4, Top + 4, ArrowWidth - 8, Height - 8);
 		} else {
-			MainCanvas.rect(Left + 4 + ArrowWidth, Top + 4, Width - ArrowWidth * 2 - 8, Height - 8);
+			DrawRectKD(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height + "a", {
+				Left: Left + ArrowWidth + 4,
+				Top: Top + 4,
+				Width: Width - ArrowWidth * 2 - 8,
+				Height: Height - 8,
+				Color: "#ffffff",
+				LineWidth: 1,
+				zIndex: 101,
+			});
+			//MainCanvas.rect(Left + 4 + ArrowWidth, Top + 4, Width - ArrowWidth * 2 - 8, Height - 8);
 		}
 	}
 	else if (CommonIsMobile && ArrowWidth < Width / 2 && !Disabled) {
 		// Fill in the arrow regions on mobile
-		MainCanvas.rect(Left + 4, Top + 4, ArrowWidth - 8, Height - 8);
-		MainCanvas.rect(RightSplit + 4, Top + 4, ArrowWidth - 8, Height - 8);
+
+		DrawRectKD(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height + "a1", {
+			Left: Left + 4,
+			Top: Top + 4,
+			Width: ArrowWidth - 8,
+			Height: Height - 8,
+			Color: "#ffffff",
+			LineWidth: 1,
+			zIndex: 101,
+		});
+		DrawRectKD(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height + "a2", {
+			Left: RightSplit + 4,
+			Top: Top + 4,
+			Width: ArrowWidth - 8,
+			Height: Height - 8,
+			Color: "#ffffff",
+			LineWidth: 1,
+			zIndex: 101,
+		});
 	}
+	/*MainCanvas.beginPath();
+	MainCanvas.lineWidth = 1;
+	MainCanvas.strokeStyle = '#ffffff';
 	MainCanvas.stroke();
-	MainCanvas.closePath();
+
+	MainCanvas.stroke();
+	MainCanvas.closePath();*/
 
 	// Draw the text or image
 	DrawTextFitKD(Label, Left + Width / 2, Top + (Height / 2) + 1, (CommonIsMobile) ? Width - 6 : Width - 36, "#ffffff");
-	if ((Image != null) && (Image != "")) DrawImage(Image, Left + 2, Top + 2);
-	if (ControllerActive == true) {
-		setButton(Left + Width / 2, Top);
-	}
 
 	// Draw the back arrow
-	MainCanvas.beginPath();
+	/*MainCanvas.beginPath();
 	MainCanvas.fillStyle = KDTextGray0;
 	MainCanvas.moveTo(Left + 15, Top + Height / 5);
 	MainCanvas.lineTo(Left + 5, Top + Height / 2);
@@ -2517,7 +2567,7 @@ function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, Ba
 	MainCanvas.lineTo(Left + Width - 5, Top + Height / 2);
 	MainCanvas.lineTo(Left + Width - 15, Top + Height - Height / 5);
 	MainCanvas.stroke();
-	MainCanvas.closePath();
+	MainCanvas.closePath();*/
 }
 
 
@@ -2680,9 +2730,11 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
  * @param {number} [Rotation]
  * @param {any} [options]
  * @param {boolean} [Centered]
+ * @param {Map<string, boolean>} [SpritesDrawn]
+ * @param {number} [Scale]
  * @returns {boolean}
  */
-function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered) {
+function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered, SpritesDrawn, Scale) {
 	let sprite = Map.get(id);
 	if (!sprite) {
 		// Load the texture
@@ -2698,6 +2750,7 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 		}
 	}
 	if (sprite) {
+		sprite.interactive = false;
 		// Modify the sprite according to the params
 		let tex = KDTex(Image);
 		if (tex) sprite.texture = tex;
@@ -2708,17 +2761,41 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 			sprite.width = Width;
 		if (Height)
 			sprite.height = Height;
+		if (Scale) {
+			sprite.scale.x = Scale;
+			sprite.scale.y = Scale;
+		}
 		if (Centered) {
 			sprite.anchor.set(0.5);
 		}
-		if (Rotation)
+		if (Rotation != undefined)
 			sprite.rotation = Rotation;
 		if (options) {
-			for (let o of Object.entries(options)) {
-				sprite[o[0]] = o[1];
+			if (options.filters && sprite.cacheAsBitmap) {
+				sprite.filters = null;
+			} else {
+				for (let o of Object.entries(options)) {
+					sprite[o[0]] = o[1];
+				}
+			}
+
+			if (options.scalex != undefined) {
+				sprite.scale.x = sprite.scale.x * options.scalex;
+			}
+			if (options.scaley != undefined) {
+				sprite.scale.y = sprite.scale.y * options.scaley;
+			}
+			if (options.anchorx != undefined) {
+				sprite.anchor.x = options.anchorx;
+			}
+			if (options.anchory != undefined) {
+				sprite.anchor.y = options.anchory;
 			}
 		}
-		kdSpritesDrawn.set(id, true);
+		if (SpritesDrawn)
+			SpritesDrawn.set(id, true);
+		else
+			kdSpritesDrawn.set(id, true);
 		return true;
 	}
 	return false;
@@ -2731,14 +2808,9 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
  */
 function KDTex(Image) {
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
-	let img = DrawGetImage(Image);
-	if (img) {
-		// @ts-ignore
-		let tex = PIXI.Texture.from(img);
-		kdpixitex.set(Image, tex);
-		return tex;
-	}
-	return null;
+	let tex = PIXI.Texture.from(KDModFiles[Image] || Image);
+	kdpixitex.set(Image, tex);
+	return tex;
 }
 
 /**
@@ -3074,7 +3146,7 @@ function KDCullTempElements() {
  * @returns {void} - Nothing
  */
 function KDElementPosition(ElementID, X, Y, W, H) {
-	var E = document.getElementById(ElementID);
+	let E = document.getElementById(ElementID);
 
 	if (!E) {
 		console.warn("A call to ElementPosition was made on non-existent element with ID '" + ElementID + "'");
@@ -3083,19 +3155,20 @@ function KDElementPosition(ElementID, X, Y, W, H) {
 
 	// For a vertical slider, swap the width and the height (the transformation is handled by CSS)
 	if (E.tagName.toLowerCase() === "input" && E.getAttribute("type") === "range" && E.classList.contains("Vertical")) {
-		var tmp = W;
+		let tmp = W;
 		W = H;
 		H = tmp;
 	}
 
 	// Different positions based on the width/height ratio
-	const HRatio = MainCanvas.canvas.clientHeight / 1000;
-	const WRatio = MainCanvas.canvas.clientWidth / 2000;
-	const Font = MainCanvas.canvas.clientWidth <= MainCanvas.canvas.clientHeight * 2 ? MainCanvas.canvas.clientWidth / 50 : MainCanvas.canvas.clientHeight / 25;
+	if (!PIXICanvas) PIXICanvas = MainCanvas;
+	const HRatio = (PIXICanvas.clientHeight || PIXICanvas.height) / 1000;
+	const WRatio = (PIXICanvas.clientWidth || PIXICanvas.width) / 2000;
+	const Font = (PIXICanvas.clientWidth || PIXICanvas.width) <= (PIXICanvas.clientHeight || PIXICanvas.height) * 2 ? (PIXICanvas.clientWidth || PIXICanvas.width) / 50 : (PIXICanvas.clientHeight || PIXICanvas.height) / 25;
 	const Height = H ? H * HRatio : Font * 1.1;
 	const Width = W * WRatio;
-	const Top = MainCanvas.canvas.offsetTop + Y * HRatio - 4;
-	const Left = MainCanvas.canvas.offsetLeft + (X) * WRatio + 4;
+	const Top = (PIXICanvas.offsetTop || 0) + Y * HRatio - 4;
+	const Left = (PIXICanvas.offsetLeft || 0) + (X) * WRatio + 4;
 
 	// Sets the element style
 	Object.assign(E.style, {
@@ -3119,3 +3192,24 @@ function KDShowQuickInv() {
 
 let KDUpdateFog = false;
 let KDLastCamPos = {x: 0, y: 0};
+
+let KDDrawPlayer = true;
+
+let KDDesiredPlayerPose = {};
+
+function KDPlayerDrawPoseButtons(C) {
+	KDModalArea = true;
+	KDModalArea_x = 650;
+	KDModalArea_y = 630;
+	KDModalArea_width = 1000;
+	KDModalArea_height = 370;
+	KDDrawPoseButtons(C, 700, 680, true);
+	KDDesiredPlayerPose = {
+		Arms: KDWardrobe_CurrentPoseArms,
+		Legs: KDWardrobe_CurrentPoseLegs,
+		Eyes: KDWardrobe_CurrentPoseEyes,
+		Brows: KDWardrobe_CurrentPoseBrows,
+		Blush: KDWardrobe_CurrentPoseBlush,
+		Mouth: KDWardrobe_CurrentPoseMouth,
+	};
+}

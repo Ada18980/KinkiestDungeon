@@ -122,6 +122,8 @@ type KDHasTags = {
 }
 
 interface KDRestraintProps {
+	/** Used in standalone to replace Color */
+	Filters?: Record<string, LayerFilter>,
 	/** This item is unaffected by shrines */
 	noShrine?:boolean,
 	/** This item is beneficial and player wont try to struggle from it */
@@ -218,6 +220,8 @@ interface KDRestraintProps {
 	alwaysStruggleable?: boolean,
 	name: string,
 	Group: string,
+	/** Model to use in standalone. Defaults to Asset */
+	Model?: string,
 	Asset: string,
 	/** Used for when the visual asset in BC is different from the actual group of the item*/
 	AssetGroup?: string,
@@ -528,6 +532,8 @@ interface overrideDisplayItem {
 	Group: string,
 	/** Color */
 	Color: string[]|string,
+	/** Filters */
+	Filters?: Record<string, LayerFilter>,
 	/** Faction color index */
 	factionColor?: number[][],
 	/** Whether or not it overrides items already on */
@@ -1212,6 +1218,7 @@ type KinkyDungeonDress = {
 	Item: string;
 	Group: string;
 	Color: string | string[];
+	Filters?: Record<string, LayerFilter>;
 	Lost: boolean;
 	NoLose?: boolean;
 	Property?: any,
@@ -2021,5 +2028,20 @@ type SpecialCondition = {
 
 type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
 
+type KDExpression = {
+	priority: number;
+	stackable?: boolean,
+	criteria: (C: any) => boolean;
+	expression: (C: any) => {
+		EyesPose: string,
+		Eyes2Pose: string,
+		BrowsPose: string,
+		Brows2Pose: string,
+		BlushPose: string,
+		MouthPose: string,
+	};
+}
+
 declare const PIXI: any;
+declare const __filters: any;
 declare const zip: any;

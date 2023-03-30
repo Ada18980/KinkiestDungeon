@@ -989,6 +989,7 @@ function DrawCheckbox(Left, Top, Width, Height, Text, IsChecked, Disabled = fals
  * @returns {void} - Nothing
  */
 function DrawBackNextButton(Left, Top, Width, Height, Label, Color, Image, BackText, NextText, Disabled, ArrowWidth) {
+	MainCanvas.textAlign = 'center';
 	// Set the widths of the previous/next sections to be colored cyan when hovering over them
 	// By default each covers half the width, together covering the whole button
 	if (ArrowWidth == null || ArrowWidth > Width / 2) ArrowWidth = Width / 2;
