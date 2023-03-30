@@ -6,6 +6,7 @@ let KDJourneyMapMod = {
 
 let KDDefaultMaxFlags = {
 	goldchest: 1,
+	lessergold: 1,
 	silverchest: 2,
 	darkchest: 2,
 	redchest: 6,
@@ -51,7 +52,7 @@ let alts = {
 		setpieces: {
 		},
 		chargers: false,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: true,
 		shortcut: false,
@@ -81,7 +82,7 @@ let alts = {
 		shrines: false,
 		orbs: 0,
 		chargers: false,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: true,
 		shortcut: false,
@@ -118,7 +119,7 @@ let alts = {
 		shrines: true,
 		orbs: 0,
 		chargers: true,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: true,
 		shortcut: false,
@@ -130,6 +131,70 @@ let alts = {
 		noRelease: true,
 		releaseOnLowSec: true,
 		noShrineTypes: ["Commerce"],
+	},
+	"DollRoom": {
+		name: "DollRoom",
+		noWear: true, // Disables doodad wear
+		bossroom: false,
+		width: 15,
+		height: 10,
+		nopatrols: true,
+		setpieces: {
+		},
+		data: {
+			dollroom: true,
+		},
+		genType: "DollRoom",
+		spawns: false,
+		chests: false,
+		shrines: false,
+		orbs: 0,
+		chargers: false,
+		notorches: true,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		nostartstairs: true,
+		notraps: false,
+		noClutter: true,
+		nobrick: true,
+		nolore: true,
+		noboring: true, // Skip generating boringness
+	},
+
+	"TestTile": {
+		name: "TestTile",
+		noWear: true, // Disables doodad wear
+		bossroom: false,
+		width: 15,
+		height: 10,
+		//nopatrols: true,
+		setpieces: {
+		},
+		genType: "TestTile",
+		spawns: true,
+		chests: false,
+		shrines: false,
+		orbs: 0,
+		chargers: false,
+		notorches: true,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: true,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		nostartstairs: true,
+		notraps: false,
+		noClutter: true,
+		nobrick: true,
+		nolore: true,
+		noboring: true, // Skip generating boringness
 	},
 	"JourneyFloor": {
 		name: "JourneyFloor",
@@ -144,7 +209,7 @@ let alts = {
 		shrines: false,
 		orbs: 0,
 		chargers: false,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: false,
 		shortcut: false,
@@ -170,7 +235,7 @@ let alts = {
 		shrines: false,
 		orbs: 0,
 		chargers: false,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: false,
 		shortcut: false,
@@ -196,7 +261,7 @@ let alts = {
 		shrines: false,
 		orbs: 0,
 		chargers: false,
-		torches: true,
+		notorches: false,
 		heart: false,
 		specialtiles: false,
 		shortcut: false,
@@ -210,7 +275,7 @@ let alts = {
 	},
 };
 
-let KDJourneyList = ["Random", "Harder", "Explorer"];
+let KDJourneyList = ["Random", "Harder", "Explorer", "Doll"];
 if (param_test) KDJourneyList.push("Test");
 
 function KinkyDungeonAltFloor(Type) {
@@ -227,6 +292,9 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"ShopStart": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
+	},
+	"TestTile": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateTestTile(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
 	"Tutorial": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateTutorial(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
@@ -248,6 +316,12 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"NarrowMaze": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	},
+	"DollRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	},
+	"Dollmaker": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
 };
 
@@ -629,6 +703,10 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 
 	KinkyDungeonStartPosition = {x: 1, y: 4 + (starty) * KDTE_Scale};
 	KinkyDungeonEndPosition = {x: KinkyDungeonGridWidth - 2, y: 4 + (endy) * KDTE_Scale};
+	if (KDRandom() < 0.5)
+		KinkyDungeonShortcutPosition = {x: 4 + (botx) * KDTE_Scale, y: KinkyDungeonGridHeight - 2};
+	else
+		KinkyDungeonShortcutPosition = {x: 4 + (topx) * KDTE_Scale, y: 1};
 
 	KinkyDungeonGrid = "";
 
@@ -687,6 +765,236 @@ function KinkyDungeonCreateRoom(POI, VisitedRooms, width, height, openness, dens
 			KinkyDungeonGrid = KinkyDungeonGrid + KinkyDungeonOldGrid[Math.floor(X * w / KinkyDungeonGridWidth) + Math.floor(Y * h / KinkyDungeonGridHeight)*(w+1)];
 		KinkyDungeonGrid = KinkyDungeonGrid + '\n';
 	}
+}
+
+function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Variable setup
+
+
+	// Now we STRETCH the map
+	KinkyDungeonGridWidth = Math.floor(KinkyDungeonGridWidth*2);
+	KinkyDungeonGridHeight = Math.floor(KinkyDungeonGridHeight*2);
+	KinkyDungeonGrid = "";
+
+	width = KinkyDungeonGridWidth;
+	height = KinkyDungeonGridHeight;
+
+	// Generate the grid
+	for (let Y = 0; Y < KinkyDungeonGridHeight; Y++) {
+		for (let X = 0; X < KinkyDungeonGridWidth; X++)
+			KinkyDungeonGrid = KinkyDungeonGrid + '1';
+		KinkyDungeonGrid = KinkyDungeonGrid + '\n';
+	}
+
+
+	// Create the doll cell itself
+	let CellWidth = 10;
+	let CellHeight = 12;
+	let CellX = width / 2 - CellWidth / 2;
+	let CellY = height / 2 - CellHeight / 2;
+	let cavityStart = 5;
+	let cavityEnd = 2;
+
+	// Hollow out a greater cell area
+	KinkyDungeonCreateRectangle(cavityStart, 0, CellX + CellWidth - cavityEnd, height, false, false, false, false);
+
+	KinkyDungeonCreateRectangle(CellX, CellY, CellWidth, CellHeight, true, false, false, true, true, false, true);
+
+	// Create some protrustions in the walls
+	let leftPassages = [
+	];
+	for (let i = 0; i < 6; i++) {
+		leftPassages.push(1 + Math.ceil(KDRandom()*2));
+	}
+	let rightPassages = [];
+	for (let i = 0; i < 6; i++) {
+		rightPassages.push(2 + Math.ceil(KDRandom()*3));
+	}
+	let ii = 0;
+	for (let l of leftPassages) {
+		KinkyDungeonCreateRectangle(cavityStart - l, 1 + 3 * ii, l, 2, false, false, false, false);
+
+		KinkyDungeonMapSet(cavityStart, 3 + 3 * ii, 'X');
+		//if (ii < leftPassages.length - 1) {
+		KinkyDungeonMapSet(cavityStart, 1 + 3 * ii, '2');
+		KinkyDungeonMapSet(cavityStart, 2 + 3 * ii, '2');
+		//}
+		ii += 1;
+	}
+	ii = 0;
+	for (let l of rightPassages) {
+		KinkyDungeonCreateRectangle(cavityStart - cavityEnd + CellX + CellWidth, 1 + 3 * ii, l, 2, false, false, false, false);
+		KinkyDungeonMapSet(cavityStart - cavityEnd + CellX + CellWidth, 3 + 3 * ii, 'X');
+		//if (ii < rightPassages.length - 1) {
+		KinkyDungeonMapSet(cavityStart - cavityEnd + CellX + CellWidth, 1 + 3 * ii, '2');
+		KinkyDungeonMapSet(cavityStart - cavityEnd + CellX + CellWidth, 2 + 3 * ii, '2');
+		//}
+		ii += 1;
+	}
+
+	// Create grates
+	KinkyDungeonMapSet(CellX + 2 + Math.floor(KDRandom()*(CellWidth - 5)), KDRandom() < 0.5 ? CellY : (CellY+CellHeight - 1), 'g');
+	if (KDRandom() < 0.5)
+		KinkyDungeonMapSet(CellX + 2 + Math.floor(KDRandom()*(CellWidth - 5)), KDRandom() < 0.5 ? CellY : (CellY+CellHeight - 1), 'g');
+	if (KDRandom() < 0.5)
+		KinkyDungeonMapSet(CellX,CellY + 2 + Math.floor(KDRandom()*(CellHeight - 5)),  'g');
+	if (KDRandom() < 0.5)
+		KinkyDungeonMapSet((CellX+CellWidth - 1),CellY + 2 + Math.floor(KDRandom()*(CellHeight - 5)), 'g');
+	// Create light posts
+	for (let xx = CellX + 2; xx < CellX + CellWidth; xx += 5) {
+		for (let yy = 2; yy < height; yy += 5) {
+			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(xx, yy))) {
+				KinkyDungeonMapSet(xx, yy, '0');
+				KinkyDungeonTilesSet((xx) + "," + (yy), Object.assign(KinkyDungeonTilesGet((xx) + "," + (yy)) || {}, {Light: 6, Skin: "LightRaysDoll"}));
+			}
+
+		}
+	}
+
+	let dollCount = 10;
+	// Generate dolls in the inside
+	for (let i = 0; i < dollCount; i++) {
+		let XX = CellX + 1 + Math.round(KDRandom() * (CellWidth-3));
+		let YY = CellY + 1 + Math.round(KDRandom() * (CellHeight-3));
+		let entity = KinkyDungeonEntityAt(XX, YY);
+		if (entity || (XX == width/2 && YY == height/2)) continue;
+		let Enemy = KinkyDungeonGetEnemy(["bellowsDoll"], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["doll", "peaceful"]);
+		if (Enemy) {
+			let e = DialogueCreateEnemy(XX, YY, Enemy.name);
+			if (KDRandom() < 0.33) KDTieUpEnemy(e, 15 + Math.floor(45 * KDRandom()), "Tape");
+			else if (KDRandom() < 0.32) KDTieUpEnemy(e, 15 + Math.floor(45 * KDRandom()), "Slime");
+			else if (KDRandom() < 0.34) KDTieUpEnemy(e, 15 + Math.floor(45 * KDRandom()), "Metal");
+			if (e.boundLevel > 0 && KDRandom() < 0.33) e.hp = 0.5;
+		}
+	}
+
+	KDGameData.JailPoints.push({x: width/2, y: height/2, type: "dropoff", radius: 1});
+
+	let takenIndex = 0;
+	let takenRight = false;
+	if (KDRandom() < 0.5) {
+		// Left side
+		let cavityNum = Math.floor(KDRandom()*leftPassages.length);
+		takenIndex = cavityNum;
+		KinkyDungeonEndPosition = {x: cavityStart - leftPassages[cavityNum], y: 1 + 3 * cavityNum};
+	} else {
+		// Right side
+		let cavityNum = Math.floor(KDRandom()*rightPassages.length);
+		takenIndex = cavityNum;
+		takenRight = true;
+		KinkyDungeonEndPosition = {x: cavityStart - cavityEnd + CellX + CellWidth + rightPassages[cavityNum] - 1, y: 1 + 3 * cavityNum};
+	}
+	if (KDRandom() < 0.5) {
+		// Left side
+		let cavityNum = Math.floor(KDRandom()*leftPassages.length);
+		if (!takenRight && takenIndex == cavityNum) {
+			if (cavityNum > 0) cavityNum -= 1;
+			else cavityNum += 1;
+		}
+		KinkyDungeonStartPosition = {x: cavityStart - leftPassages[cavityNum], y: 2 + 3 * cavityNum};
+	} else {
+		// Right side
+		let cavityNum = Math.floor(KDRandom()*rightPassages.length);
+		if (takenRight && takenIndex == cavityNum) {
+			if (cavityNum > 0) cavityNum -= 1;
+			else cavityNum += 1;
+		}
+
+		KinkyDungeonStartPosition = {x: cavityStart - cavityEnd + CellX + CellWidth + rightPassages[cavityNum] - 1, y: 2 + 3 * cavityNum};
+	}
+
+	let exitGuardTags = ["robot"]; KinkyDungeonAddTags(exitGuardTags, MiniGameKinkyDungeonLevel);
+	if (KDGameData.DollRoomCount > 0) exitGuardTags.push("open"); // Allow spawning an Enforcer unit
+	let robotTags = ["robot"]; KinkyDungeonAddTags(robotTags, MiniGameKinkyDungeonLevel);
+	let eliteTags = ["robot"]; KinkyDungeonAddTags(eliteTags, MiniGameKinkyDungeonLevel);
+
+	let robotCount = 5 + Math.min(10, KinkyDungeonDifficulty/10 + MiniGameKinkyDungeonLevel/3) + 5 * (KDGameData.DollRoomCount || 0);
+	// Generate robots in the outside
+	for (let i = 0; i < robotCount; i++) {
+		let XX = i % 2 == 0 ?
+			(cavityStart + Math.round(KDRandom() * (CellX - cavityStart - 1)))
+			: (CellX + CellWidth + 1 + Math.round(KDRandom() * (cavityStart - 2 - cavityEnd)));
+		let YY = CellY + 1 + Math.round(KDRandom() * (CellHeight-2));
+		let entity = KinkyDungeonEntityAt(XX, YY);
+		if (entity || (XX == width/2 && YY == height/2)) continue;
+		let Enemy = KinkyDungeonGetEnemy(robotTags, MiniGameKinkyDungeonLevel + 3, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["robot"], undefined, undefined);
+		if (Enemy) {
+			let e = DialogueCreateEnemy(XX, YY, Enemy.name);
+			e.faction = "Enemy";
+		}
+	}
+	if (KDGameData.DollRoomCount > 1) { // Spawn a group of AIs
+		for (let i = 0; i < 1 + Math.ceil(robotCount * 0.1); i++) {
+			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y);
+			let Enemy = KinkyDungeonGetEnemy(eliteTags, MiniGameKinkyDungeonLevel + 4, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["robot"],
+				undefined, undefined, ["minor", "miniboss", "noguard"]);
+			if (Enemy) {
+				let e = DialogueCreateEnemy(point.x, point.y, Enemy.name);
+				e.faction = "Enemy";
+				e.AI = "looseguard";
+			}
+		}
+	}
+
+	let ExitGuard = KinkyDungeonGetEnemy(exitGuardTags, MiniGameKinkyDungeonLevel + 10, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["robot", "dollRoomBoss"],
+		undefined, undefined, ["noguard"]);
+	if (ExitGuard) {
+		let e = DialogueCreateEnemy(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, ExitGuard.name);
+		e.faction = "Enemy";
+		e.AI = "verylooseguard";
+	}
+
+	KinkyDungeonPatrolPoints.push({x: CellX - 2, y: CellY - 2});
+	KinkyDungeonPatrolPoints.push({x: CellX - 2, y: CellY + 2 + CellHeight});
+	KinkyDungeonPatrolPoints.push({x: CellX + 2 + CellWidth, y: CellY + 2 + CellHeight});
+	KinkyDungeonPatrolPoints.push({x: CellX + 2 + CellWidth, y: CellY - 2});
+
+
+
+	KinkyDungeonMapSet(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 's');
+	if (KDGameData.DollRoomCount > 0)
+		KinkyDungeonMapSet(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, 'S');
+}
+
+
+function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Variable setup
+	KinkyDungeonSetFlag("NoDollRoomBypass", -1, 1);
+
+	// Now we STRETCH the map
+	KinkyDungeonGridWidth = Math.floor(KinkyDungeonGridWidth*2);
+	KinkyDungeonGridHeight = Math.floor(KinkyDungeonGridHeight*2);
+	KinkyDungeonGrid = "";
+
+	width = KinkyDungeonGridWidth;
+	height = KinkyDungeonGridHeight;
+
+	// Generate the grid
+	for (let Y = 0; Y < KinkyDungeonGridHeight; Y++) {
+		for (let X = 0; X < KinkyDungeonGridWidth; X++)
+			KinkyDungeonGrid = KinkyDungeonGrid + '1';
+		KinkyDungeonGrid = KinkyDungeonGrid + '\n';
+	}
+
+
+	// Create the doll cell itself
+	let cavitywidth = 21;
+	let cavityheight = 21;
+	let cavityStart = 2;
+
+	KinkyDungeonStartPosition = {x: cavityStart, y: 1 + Math.floor(cavityheight/2)};
+
+	// Hollow out a greater cell area
+	KinkyDungeonCreateRectangle(cavityStart, 0, cavitywidth, cavityheight, false, false, false, false);
+
+	KD_PasteTile(KDMapTilesList.Arena_Dollmaker, cavityStart, 1, data);
+
+	DialogueCreateEnemy(KinkyDungeonStartPosition.x + Math.floor(cavityheight/2), KinkyDungeonStartPosition.y, "DollmakerBoss1");
+
+	KinkyDungeonEndPosition = {x: KinkyDungeonStartPosition.x + cavitywidth, y: KinkyDungeonStartPosition.y};
+
+	KinkyDungeonMapSet(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 's');
+	KinkyDungeonMapSet(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, 'S');
 }
 
 function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
@@ -830,6 +1138,12 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 	// Place a shop and a Leyline Tap
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 + 1, 'l');
 	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 + 1), {Leyline: true, Light: KDLeylineLight, lightColor: KDLeylineLightColor});
+
+	if (KinkyDungeonFlags.get("SpawnMap")) {
+		if (KinkyDungeonSpells.filter((spell) => {return spell.name == "ManaPoolUp";}).length < Math.ceil(MiniGameKinkyDungeonLevel/4))
+			KinkyDungeonGroundItems.push({x:VisitedRooms[0].x*2 + 3, y:(VisitedRooms[0].y*2), name: "LeylineMap"});
+		KinkyDungeonSetFlag("SpawnMap", -1);
+	}
 
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, 'A');
 	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 - 2), {Type: "Shrine", Name: "Commerce"});
@@ -976,6 +1290,40 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	KinkyDungeonMapSet(b1*2 + 7, VisitedRooms[0].y*2, 's');
 	if (MiniGameKinkyDungeonLevel == 0)
 		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: "JourneyFloor"});
+
+	KinkyDungeonEndPosition = {x: b1*2 + 5, y: VisitedRooms[0].y*2};
+}
+
+
+function KinkyDungeonCreateTestTile(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Variable setup
+
+	KinkyDungeonStartPosition = {x: 2, y: height};
+	VisitedRooms[0].x = 1;
+	VisitedRooms[0].y = Math.floor(height/2);
+
+	KinkyDungeonCreateRectangle(0, 0, width, height, false, false, false, false);
+
+	let b1 = 4;
+
+
+	// Now we STRETCH the map
+	let KinkyDungeonOldGrid = KinkyDungeonGrid;
+	let w = KinkyDungeonGridWidth;
+	let h = KinkyDungeonGridHeight;
+	KinkyDungeonGridWidth = Math.floor(KinkyDungeonGridWidth*2);
+	KinkyDungeonGridHeight = Math.floor(KinkyDungeonGridHeight*2);
+	KinkyDungeonGrid = "";
+
+	// Generate the grid
+	for (let Y = 0; Y < KinkyDungeonGridHeight; Y++) {
+		for (let X = 0; X < KinkyDungeonGridWidth; X++)
+			KinkyDungeonGrid = KinkyDungeonGrid + KinkyDungeonOldGrid[Math.floor(X * w / KinkyDungeonGridWidth) + Math.floor(Y * h / KinkyDungeonGridHeight)*(w+1)];
+		KinkyDungeonGrid = KinkyDungeonGrid + '\n';
+	}
+
+	KD_PasteTile(KDTileToTest, KinkyDungeonStartPosition.x + 4, 3, data);
+
 
 	KinkyDungeonEndPosition = {x: b1*2 + 5, y: VisitedRooms[0].y*2};
 }

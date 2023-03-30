@@ -2,12 +2,13 @@
 
 let KinkyDungeonFactionColors = {
 	"Jail": ["#8A120C"],
-	"Slime": ["#9B49BD"],
+	"Slime": ["#9B49BD", "#9B49BD"],
 	"Dressmaker": ["#6B48E0", "#F8BD01"],
 	"Alchemist": ["#4c6885", "#7bef41"],
 	"Elf": ["#63ab3f", "#F8BD01"],
 	"Bountyhunter": ["#252525", "#bfbfbf"],
-	"AncientRobot": ["#444444", "#3def9c"],
+	"AncientRobot": ["#444444", "#4fa4b8"],
+	"Dollsmith": ["#444444", "#b1062a", "#ff5277"],
 	"Mushy": ["#bfbfbf", "#92c1e8"],
 	"Apprentice": ["#686f99", "#ff5277"],
 	"Witch": ["#222222", "#8359b3"],
@@ -35,6 +36,8 @@ let KinkyDungeonHiddenFactions = [
 	"Delinquent",
 	"Wolfhunter",
 	"Chase",
+	"Mushy",
+	"Witch",
 ];
 
 
@@ -104,6 +107,7 @@ let KinkyDungeonTooltipFactions = [
 	"Delinquent",
 	"Wolfhunter",
 	"Rock",
+	"Rage",
 ];
 
 /** Tag for these factions, these also can have increased chances to appear on a map */
@@ -114,13 +118,13 @@ let KinkyDungeonFactionTag = {
 	Nevermere: "nevermere",
 	Apprentice: "apprentice",
 	Dressmaker: "dressmaker",
-	Witch: "witch",
+	//Witch: "witch",
 	Elemental: "elemental",
 	Dragon: "dragon",
 	Maidforce: "maid",
 	Bast: "mummy",
 	Elf: "elf",
-	Mushy: "mushy",
+	//Mushy: "mushy",
 	AncientRobot: "robot",
 };
 
@@ -342,7 +346,6 @@ let KinkyDungeonFactionRelationsBase = {
 		"Bast": -0.55,
 		"Mushy": -0.4,
 		"Bandit": 0.3,
-		"Witch": 0.15,
 		"Apprentice": 0.15,
 		"AncientRobot": -0.51,
 	},
@@ -375,7 +378,7 @@ let KinkyDungeonFactionRelationsBase = {
 	"Elemental": {
 		"KinkyConstruct": 0.55,
 		"Dressmaker": 0.35,
-		"Witch": 0.8,
+		"Witch": 0.15,
 		"Bandit": -0.15,
 		"Elf": 0.5,
 		"Bast": -0.35,
@@ -404,12 +407,10 @@ let KinkyDungeonFactionRelationsBase = {
 		"Elemental": 0.25,
 	},
 	"Witch": {
-		"Apprentice": 0.55,
-		"Dressmaker": 0.4,
 		"Elf": -1.0,
 	},
 	"Dressmaker": {
-		"Witch": 0.6,
+		"Witch": 0.15,
 		"Nevermere": 0.8,
 		"Bandit": -0.5,
 		"Dragon": -0.5,

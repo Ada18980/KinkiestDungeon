@@ -443,7 +443,7 @@ function KDSummonRevengeMobs(x, y, Goddess, mult = 1.0, LevelBoost = 2) {
  * @returns {boolean}
  */
 function KDCanDrinkShrine(Bottle) {
-	if (Bottle && KinkyDungeonIsHandsBound(true, true)) return false;
+	if (Bottle && KinkyDungeonIsHandsBound(true, true, 0.9)) return false;
 	return !KinkyDungeonTargetTile.drunk && (Bottle || KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax || KinkyDungeonPlayerTags.get("slime"));
 }
 
@@ -652,6 +652,13 @@ function KinkyDungeonHandleOrb() {
 
 				if (spell) {
 					KinkyDungeonSpells.push(spell);
+					if (spell.autoLearn) {
+						for (let sp of spell.autoLearn) {
+							if (KinkyDungeonSpellIndex(sp) < 0) {
+								KinkyDungeonSpells.push(KinkyDungeonFindSpell(sp, true));
+							}
+						}
+					}
 					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonOrbSpell").replace("SPELL", TextGet("KinkyDungeonSpell" + spell.name)), "lightblue", 2);
 				}
 			} else {

@@ -11,6 +11,11 @@ let KDJailEvents = {
 		},
 		// Occurs when the jail event triggers
 		trigger: (g, xx, yy) => {
+			// Allow the player to sleep 150 turns after the guard shows up
+			if (KinkyDungeonFlags.get("slept") == -1) {
+				KinkyDungeonSetFlag("slept", 0);
+				KinkyDungeonSetFlag("slept", 150);
+			}
 			// Jail tag
 			let jt = KDGameData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDGameData.JailFaction[Math.floor(KDRandom() * KDGameData.JailFaction.length)]]] : "jailer";
 			let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], false, undefined, ["gagged"]);
@@ -49,7 +54,7 @@ let KDJailEvents = {
 	"spawnRescue": {
 		// Determines the weight
 		weight: (guard, xx, yy) => {
-			return (KinkyDungeonStatsChoice.get("easyMode") && KinkyDungeonFlags.get("JailIntro") && !KinkyDungeonFlags.get("JailRepeat") && !KinkyDungeonFlags.get("refusedShopkeeperRescue") && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) ? 100 : 0;
+			return KDCanSpawnShopkeeper() ? 100 : 0;
 		},
 		// Occurs when the jail event triggers
 		trigger: (g, xx, yy) => {
@@ -58,11 +63,13 @@ let KDJailEvents = {
 	},
 };
 
+
 for (let rescue of Object.entries(KDPrisonRescues)) {
 	KDJailEvents[rescue[0]] = {
 		// Determines the weight
 		weight: (guard, xx, yy) => {
 			if (guard) return 0;
+			if (KinkyDungeonStatsChoice.get("norescueMode")) return 0;
 			if (KDGameData.JailTurns <= 70 || KDFactionRelation("Player", rescue[1].faction) < 0.09) return 0;
 			return 100 * Math.min(0.05, Math.max(0.1, 0.35 * KDFactionRelation("Player", rescue[1].faction)) - 0.005 * (KDGameData.PriorJailbreaks ? (KDGameData.PriorJailbreaks - (KDGameData.PriorJailbreaksDecay || 0)) : 0));
 		},
@@ -71,6 +78,15 @@ for (let rescue of Object.entries(KDPrisonRescues)) {
 			KDStartDialog(rescue[0], rescue[1].speaker, true, "", undefined);
 		},
 	};
+}
+
+/**
+ *
+ * @param {boolean} [override] - Override jailing requirement
+ * @returns {boolean}
+ */
+function KDCanSpawnShopkeeper(override) {
+	return (KinkyDungeonStatsChoice.get("easyMode") && (override || (KinkyDungeonFlags.get("JailIntro") && !KinkyDungeonFlags.get("JailRepeat"))) && !KinkyDungeonFlags.get("refusedShopkeeperRescue") && !KDIsPlayerTethered(KinkyDungeonPlayerEntity));
 }
 
 // if (KinkyDungeonGoddessRep.Prisoner) securityLevel = Math.max(0, KinkyDungeonGoddessRep.Prisoner + 50);
@@ -438,7 +454,11 @@ let KDJailOutfits = {
 			{Name: "TrapArmbinder", Level: 40},
 			{Name: "HighsecArmbinder", Level: 70},
 			{Name: "PrisonBelt", Level: 30},
-			{Name: "PrisonVibe", Level: 30},
+			{Name: "TrapPlug", Level: 30},
+			{Name: "TrapPlug2", Level: 45},
+			{Name: "TrapPlug3", Level: 60},
+			{Name: "TrapPlug4", Level: 75},
+			{Name: "TrapPlug5", Level: 90},
 			{Name: "TrapBlindfold", Level: 90},
 			{Name: "TrapBoots", Level: 60},
 		],

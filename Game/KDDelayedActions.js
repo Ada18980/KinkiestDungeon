@@ -62,18 +62,18 @@ let KDDelayedActionCommit = {
 				let progress = (restraint.struggleProgress || 0) + (restraint.cutProgress || 0);
 				if (progress > 1)
 					KDSuccessRemove(struggleType, restraint, lockType, action.data.index, action.data.escapeData, host);
-				else KDStunTurns(1);
+				else KDStunTurns(1, true);
 
 			} else if (struggleType == "Unlock") {
 				restraint.unlockProgress += action.data.amount;
 				if (restraint.unlockProgress > 1)
 					KDSuccessRemove(struggleType, restraint, lockType, action.data.index, action.data.escapeData, host);
-				else KDStunTurns(1);
+				else KDStunTurns(1, true);
 			} else if (struggleType == "Pick") {
 				restraint.pickProgress += action.data.amount;
 				if (restraint.pickProgress > 1)
 					KDSuccessRemove(struggleType, restraint, lockType, action.data.index, action.data.escapeData, host);
-				else KDStunTurns(1);
+				else KDStunTurns(1, true);
 			}
 		}
 	},

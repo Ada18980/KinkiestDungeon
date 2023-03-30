@@ -501,7 +501,9 @@ let KDDialogueTriggers = {
 	"WolfgirlSell": KDShopTrigger("WolfgirlSell"),
 	"Fuuka": KDBossTrigger("Fuuka", ["Fuuka1", "Fuuka2"]),
 	"FuukaLose": KDBossLose("FuukaLose", ["Fuuka1", "Fuuka2"], ["mikoRestraints"]),
-
+	"DollmakerLose1": KDBossLose("DollmakerLose", ["DollmakerBoss1"], ["controlharness", "dollmakerrestraints", "leashing"]),
+	"DollmakerLose2": KDBossLose("DollmakerLose", ["DollmakerBoss2", "DollmakerBoss3"], ["controlharness", "cyberdollrestraints", "dollmakerrestraints"]),
+	"Dollmaker": KDBossTrigger("Dollmaker", ["DollmakerBoss1", "DollmakerBoss2", "DollmakerBoss3"]),
 };
 
 /**
@@ -590,7 +592,7 @@ function KDBossTrigger(name, enemyName) {
 		dialogue: name,
 		nonHostile: true,
 		prerequisite: (enemy, dist, AIData) => {
-			return (dist < 1.5
+			return (dist < 2.5
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& !(KDGameData.SleepTurns > 0)
 				&& enemyName.includes(enemy.Enemy.name)

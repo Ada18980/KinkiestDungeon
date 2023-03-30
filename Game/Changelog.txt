@@ -1213,7 +1213,7 @@ Features
 3.95
 - New minor enemies: Encased Adventurer and Bouncy Slime
 
-4.0 (Jan 2023)
+4.0 (Released Feb 2023)
 Major changes:
 - New tileset: Orrery
 - New enemies in the Orrery: Shadowy Ghast, Corrupted Adventurer, Obsidian Construct, Holy Construct, Angel (rebalanced), Star Demon, Moon Demon
@@ -1241,7 +1241,67 @@ Other changes:
 - Fixed a bug where selecting both Hogtied and Latex Doll would mistakenly not place a blindfold on the player character
 - Other general bugfixes and crash fixes
 
-TODO ValidationFindBlockCycles to prevent bugs
+4.1 (Feb 2023)
+Major changes:
+- New tileset: Bellows
+- Added conveyor belts and bondage machines
+- Added buttons which can control doors or operate machinery
+- Added a doll room you get sent to if you fall in the doll terminal
+- Enemies can drag you onto conveyor belts (unless you opt-out via perk)
+- Max floor is now 20 from 16
+- New class: Trainee, a novice magician who has nonetheless set out to adventure in the middle of her 'training'
+- New perks: Multiclass perks, allowing you to gain access to class-specific features such as the Trainee's Mana Burst ability
+(note: Mana Burst is removed and replaced with this)
+- New enemies: Force Field Unit, Auto Tape Unit, Dollsmith, Dollmaker's Apprentice, Highly-Motivated Doll, Rusty Drone, Rubber Blaster, Rubber Launcher, Rusty Auto Taper, Artillery Unit
+- New toggle perks to help define user preferences for tape and dollification
+- Sprinting now costs 15 + 5 per slow level
+- Sleep is refreshed after 150 turns in jail if you have already slept before
+- Added a Hard setting, which removes faction rescue events in jail
+Minor Changes:
+- Shady Dealer now has a bear trap (damsel trap) spell, and her lust bomb attack now has a 3 turn delay
+- High-tech cables now have a weaker version (nylon) and use rope assets instead of ribbon
+
+4.11 (Feb 2023)
+- Added some new lore, one history entry for every floor and a few extra sheets in the orrery
+- Added some more lore-centric dialogue to Fuuka
+- Added some new graphics for arousal, toggleable in the game settings
+- Removed the witch faction. Witches still occur, but they are generic enemies now. Also less will appear in the bellows
+- Added a new Donut item dropped by Deputies
+- You can now use conveyors to dodge attacks
+- Tables now use a dialogue instead of a modal popup
+- Some animated restraints can now dash
+- For modders: Added support for multiple additional effects in consumables, e.g. the "CookieJailer" item
+- For tile editors: Added a 'test tile' feature to very quickly generate a map with nothing but the desired tile
+- Made the bellows trap tile easier to see
+- Turrets no longer spawn in the ambush hallways within the Bellows
+- Fixed a number of other bugs with the new tileset
+
+4.12 (Feb 2023)
+- Added auto-struggle feature
+- Added advanced fog of war option
+- More latex-wearing enemies like nevermere, alchemists, and dollsmiths have electric resistance.
+- Doll dropoff platforms now have a cosmetic doll stand on them
+
+4.2 (March 2023)
+- New boss: The Dollmaker (fight her on floor 20)
+- Some general bugfixes
+- Boulder now properly hits rocks, and doesnt deal double damage to the target hit
+
+4.21 (March 2023)
+- Many bugfixes
+- New vibrator visual effects!
+- New Spell: Gust
+- Windblast now pierces
+- Tweaked enemy play aggressiveness in submissive mode and reduced chance of getting a mob of many NPCs
+- Locksmith and Clueless are now more impactful
+- New machine translated Spanish
+- New JP translation by Phantasm
+- Clarified faction aggro. Now if the first faction "Favors" the second faction and you aggro the second faction, the first faction will aggro unless you are "Favored" by the first faction. And factions you are "Allied" with will never aggro you for their alliances.
+- Started work on some vibrator changes
+
+4.22 (March 2023)
+- Curse tooltips now show even while the item is overlaid
+- Each boss now gives a Leyline Map if you beat it, which lets you increase your mana pool up to +500 more
 
 TODO: Mushrooms in the jungle
 

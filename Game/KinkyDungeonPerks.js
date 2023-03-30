@@ -7,6 +7,7 @@ let KDDoorAttractChanceArms = 0.1; // Chance to attract someone by rattling
 
 let KDCategoriesStart = [
 	{name: "Toggles", buffs: [], debuffs: [],},
+	{name: "Multiclass", buffs: [], debuffs: [],},
 	{name: "Restraints", buffs: [], debuffs: [],},
 	{name: "Kinky", buffs: [], debuffs: [],},
 	{name: "Damage", buffs: [], debuffs: [],},
@@ -80,14 +81,8 @@ let KDPerkUpdateStats = {
 	},
 	"Sticky": () => {
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-			id: "PainTolerance", type: "glueDamageResist", power: -0.4, duration: 2
+			id: "StickySituation", type: "glueDamageResist", power: -0.4, duration: 2
 		});
-	},
-	"DistractionCast": () => {
-		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99)
-			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
-				id: "DistractionCast", type: "sfx", power: 1, duration: 1, sfxApply: "PowerMagic", aura: "#ff8888", aurasprite: "Heart"
-			});
 	},
 	"BoundPower": () => {
 		KDDamageAmpPerks += KDBoundPowerLevel *  KDBoundPowerMult;
@@ -108,11 +103,11 @@ let KDPerkUpdateStats = {
 
 	"CommonLatex": () => {
 		KDExtraEnemyTags.latexRestraints = 0;
-		KDExtraEnemyTags.latexRestraintsHeavy = 4;
+		KDExtraEnemyTags.latexRestraintsHeavy = 3;
 	},
 	"CommonLeather": () => {
 		KDExtraEnemyTags.leatherRestraints = 0;
-		KDExtraEnemyTags.leatherRestraintsHeavy = 4;
+		KDExtraEnemyTags.leatherRestraintsHeavy = 3;
 	},
 	"CommonMaid": () => {
 		KDExtraEnemyTags.maidRestraints = 0;
@@ -120,7 +115,7 @@ let KDPerkUpdateStats = {
 	},
 	"CommonWolf": () => {
 		KDExtraEnemyTags.wolfRestraints = 0;
-		KDExtraEnemyTags.wolfCuffs = 4;
+		KDExtraEnemyTags.wolfCuffs = 3;
 		KDExtraEnemyTags.wolfGear = 0;
 	},
 	"CommonDress": () => {
@@ -128,6 +123,11 @@ let KDPerkUpdateStats = {
 	},
 	"CommonFuuka": () => {
 		KDExtraEnemyTags.mikoRestraints = 0;
+	},
+	"CommonCyber": () => {
+		KDExtraEnemyTags.cyberdollrestraints = 0;
+		KDExtraEnemyTags.cyberdollchastity = 3;
+		KDExtraEnemyTags.cyberdollheavy = 7;
 	},
 	"CommonExp": () => {
 		KDExtraEnemyTags.expRestraints = 0;
@@ -162,6 +162,9 @@ let KDPerkCount = {
  * @type {Record<string, KDPerk>}
  */
 let KinkyDungeonStatsPresets = {
+	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 2, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
+
+
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1, block: ["SecondWind"]},
 	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1, block: ["FutileStruggles"]},
 
@@ -224,7 +227,7 @@ let KinkyDungeonStatsPresets = {
 	"Studious": {category: "Magic", id: 12, cost: 1, tags: ["start"]},
 	//"Novice": {category: "Magic", id: 7, cost: -1},
 	//"Meditation": {category: "Magic", id: 13, cost: 2},
-	"DistractionCast":  {category: "Magic", id: "DistractionCast", cost: 2},
+	//"DistractionCast":  {category: "Magic", id: "DistractionCast", cost: 2},
 	"Clearheaded":  {category: "Magic", id: "Clearheaded", cost: 1, block: ["ArousingMagic"]},
 	"ArousingMagic":  {category: "Magic", id: "ArousingMagic", cost: -1, block: ["Clearheaded"]},
 	//"QuickScribe": {category: "Magic", id: 56, cost: 1, block: ["Disorganized"]},
@@ -235,14 +238,18 @@ let KinkyDungeonStatsPresets = {
 
 	"Hogtied": {startPriority: 50, category: "Start", id: "Hogtied", cost: -1, tags: ["start"]},
 	"StartObsidian": {startPriority: 5, category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
-	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -3, outfit: "Wolfgirl", tags: ["start"]},
+	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
 	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
 	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
 
-	"FuukaCollar": {startPriority: 40, category: "Boss", id: "FuukaCollar", cost: -3, locked: true, tags: ["start"]},
+	"StartCyberDoll": {startPriority: 7, category: "Boss", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
+
+	"DollmakerVisor": {startPriority: 31, category: "Boss", id: "DollmakerVisor", cost: -1, locked: true, tags: ["start"]},
+	"FuukaCollar": {startPriority: 40, category: "Boss", buff: true, id: "FuukaCollar", cost: -2, locked: true, tags: ["start"]},
 
 
-	"CommonFuuka": {category: "Boss", id: "CommonFuuka", cost: -1, locked: true},
+	"CommonCyber": {category: "Boss", id: "CommonCyber", cost: -1, locked: true},
+	"CommonFuuka": {category: "Boss", id: "CommonFuuka", buff: true, cost: -1, locked: true},
 
 	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},
 	"Prisoner": {category: "Start", id: "Prisoner", cost: 0},
@@ -251,10 +258,13 @@ let KinkyDungeonStatsPresets = {
 
 	"Rusted": {category: "Map", id: "Rusted", cost: 1},
 	"Forgetful": {category: "Map", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
-	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0},
-	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0},
-	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, debuff: true, block: ["OnlyBrats"]},
-	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, debuff: true, block: ["NoBrats"]},
+	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
+	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"]},
+	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, tags: ["start"], debuff: true, block: ["OnlyBrats"]},
+	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], debuff: true, block: ["NoBrats"]},
+	"TapePref": {category: "Toggles", id: "TapePref", cost: 0, tags: ["start"], block: ["TapeOptout"]},
+	"TapeOptout": {category: "Toggles", id: "TapeOptout", cost: 0, tags: ["start"], debuff: true, block: ["TapePref"]},
+	"NoDoll": {category: "Toggles", id: "NoDoll", cost: 0, tags: ["start"], debuff: true},
 
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 
@@ -342,11 +352,17 @@ function KinkyDungeonGetStatPoints(Stats) {
 	}
 	return total;
 }
-
+/**
+ * Determine if a perk can be picked with a certain number of points remaining
+ * @param {string} Stat
+ * @param {number} [points]
+ * @returns {boolean}
+ */
 function KinkyDungeonCanPickStat(Stat, points) {
 	let stat = KinkyDungeonStatsPresets[Stat];
 	if (!stat) return false;
 	if (KDGetPerkCost(stat) > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < KDGetPerkCost(stat)) return false;
+	if (!KDValidatePerk(stat)) return false;
 	for (let k of KinkyDungeonStatsChoice.keys()) {
 		if (KinkyDungeonStatsChoice.get(k)) {
 			if (KinkyDungeonStatsPresets[k] && KinkyDungeonStatsPresets[k].block && KinkyDungeonStatsPresets[k].block.includes(Stat)) {
@@ -361,8 +377,28 @@ function KinkyDungeonCanPickStat(Stat, points) {
 	return true;
 }
 
+/**
+ * General validation for a perk
+ * @param {KDPerk} stat
+ * @returns {boolean}
+ */
+function KDValidatePerk(stat) {
+	if (stat.requireArousal && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
+	if (stat.blockclass) {
+		for (let t of stat.blockclass)
+			if (KinkyDungeonClassMode == t) return false;
+	}
+	return true;
+}
+
+/**
+ * @param {string} perk1
+ * @param {string} perk2
+ * @returns {boolean}
+ * Determines if perk1 is blocked by another perk or in general */
 function KDPerkBlocked(perk1, perk2) {
 	if (KinkyDungeonStatsPresets[perk2] && KinkyDungeonStatsPresets[perk1]) {
+		if (!KDValidatePerk(KinkyDungeonStatsPresets[perk1])) return false;
 		if (KinkyDungeonStatsPresets[perk2].block && KinkyDungeonStatsPresets[perk2].block.includes(perk1)) {
 			return true;
 		}
@@ -442,6 +478,34 @@ let KDPerkStart = {
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, "Jail", true);
 		}
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("KiguMask"), 0, true, "Purple");
+	},
+	DollmakerVisor: () =>{
+		KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
+	},
+	StartCyberDoll: () =>{
+		KinkyDungeonChangeRep("Metal", 10);
+		KinkyDungeonAddRestraintIfWeaker("ControlHarness", 5, true, "Blue", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("TrackingCollar", 5, true, "Blue", false, undefined, undefined, undefined, true);
+
+
+		KinkyDungeonAddRestraintIfWeaker("CyberBelt", 5, true, "Blue", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("CyberBra", 5, true, "Blue", false, undefined, undefined, undefined, true);
+
+		KinkyDungeonAddRestraintIfWeaker("CyberHeels", 5, true, "Blue", false, undefined, undefined, undefined, true);
+		//KinkyDungeonAddRestraintIfWeaker("CyberBallGag", 5, true, "Red", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("CyberPlugGag", 5, true, "Red", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("CyberMuzzle", 5, true, "Red", false, undefined, undefined, undefined, true);
+		//KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
+
+
+
+		KinkyDungeonAddRestraintIfWeaker("CyberArmCuffs", 5, true, "Blue", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("CyberLegCuffs", 5, true, "Blue", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("CyberAnkleCuffs", 5, true, "Blue", false, undefined, undefined, undefined, true);
+
+		//KinkyDungeonAddRestraintIfWeaker("CyberDollJacket", 5, true, "Red", false, undefined, undefined, undefined, true);
+
+		KinkyDungeonSetDress("CyberDoll", "CyberDoll");
 	},
 	StartMaid: () =>{
 		KDChangeFactionRelation("Player", "Maidforce", 0.2 - KDFactionRelation("Player", "Maidforce"), true);
@@ -533,6 +597,9 @@ let KDPerkStart = {
 	Cursed: () => {
 		KinkyDungeonChangeFactionRep("Angel", -100);
 	},
+	MC_Trainee: () => {
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("DistractionCast"));
+	},
 };
 
 
@@ -614,8 +681,8 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 		for (let stat of c.buffs.concat(c.debuffs)) {
 			if ((!stat[1].locked || KDUnlockedPerks.includes(stat[0]))
 				&& (NonSelectable|| !KDPerksFilter || TextGet("KinkyDungeonStat" + ("" + stat[1].id)).toLocaleLowerCase().includes(KDPerksFilter.toLocaleLowerCase()))) {
-				let YY = (stat[1].cost < 0 || stat[1].debuff) ? Y_alt : Y;
-				let XX = (stat[1].cost < 0 || stat[1].debuff) ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
+				let YY = (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) ? Y_alt : Y;
+				let XX = (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
 
 				if (inView()) {
 					let colorAvailable = NonSelectable ?
@@ -662,7 +729,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 					});
 					filled_x[X] = X;
 				}
-				if (stat[1].cost < 0 || stat[1].debuff) Y_alt += KDPerksButtonHeight + KDPerksButtonHeightPad;
+				if (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) Y_alt += KDPerksButtonHeight + KDPerksButtonHeightPad;
 				else Y += KDPerksButtonHeight + KDPerksButtonHeightPad;
 			}
 		}
@@ -775,6 +842,7 @@ function KDGetRandomPerks(existing) {
 			singlepointcandidates = negcandidates.filter((p) => {
 				return (KinkyDungeonCanPickStat(p[0], 999)
 				&& p[0] != poscandidate[0]
+				&& p[0] != negperk[0]
 				&& !KDPerkBlocked(p[0], poscandidate[0])
 				&& !KDPerkBlocked(p[0], negperk[0]));
 			});

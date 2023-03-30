@@ -213,7 +213,7 @@ function KDGetVibeLocation(item) {
  */
 function KinkyDungeonStartVibration(source, name, locations, intensity, duration, numLoops, denyTime, denialsLeft, edgeTime, edgeOnly, alwaysDeny, denialChance, denialChanceLikely, tickEdgeAtMaxArousal, vibeMods) {
 	if (KDGameData.CurrentVibration) {
-		if (!KinkyDungeonSendTextMessage(2, TextGet("KinkyDungeonStartVibeContinue"), "#FFaadd", 2)) KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonStartVibeContinue"), "#FFaadd", 2, true, true);
+		if (!KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonStartVibeContinue"), "#FFaadd", 2)) KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonStartVibeContinue"), "#FFaadd", 2, true, true);
 	}
 	KDGameData.CurrentVibration = {
 		source: source,
@@ -425,10 +425,10 @@ function KinkyDungeonCalculateVibeLevel(delta) {
 	}
 
 	if (oldVibe > 0 && KinkyDungeonVibeLevel == 0) {
-		if (cease) if (!KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonEndVibeCease"), "#FFaadd", 2)) KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonEndVibeCease"), "#FFaadd", 2, true, true);
-		if (!KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonEndVibe"), "#FFaadd", 2)) KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonEndVibe"), "#FFaadd", 2, true, true);
+		if (cease) if (!KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonEndVibeCease"), "#FFaadd", 2)) KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonEndVibeCease"), "#FFaadd", 2, true, true);
+		if (!KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonEndVibe"), "#FFaadd", 2)) KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonEndVibe"), "#FFaadd", 2, true, true);
 	} else if (oldVibe == 0 && KinkyDungeonVibeLevel > 0) {
-		if (!KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonStartVibe"), "#FFaadd", 2)) KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonStartVibe"), "#FFaadd", 2, true, true);
+		if (!KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonStartVibe"), "#FFaadd", 2)) KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonStartVibe"), "#FFaadd", 2, true, true);
 	}
 }
 

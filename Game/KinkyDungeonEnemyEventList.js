@@ -70,7 +70,9 @@ let KDIntentEvents = {
 		nonaggressive: true,
 		// This is the basic 'it's time to play!' dialogue
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
-			return !enemy?.playWithPlayer ? (allied ? 10 : 110) : 0;
+			return (KDEnemyHasFlag(enemy, "HelpMe")) ?
+				0
+				: (!enemy?.playWithPlayer ? (allied ? 10 : 110) : 0);
 		},
 		trigger: (enemy, AIData) => {
 			KDResetIntent(enemy, AIData);
@@ -140,13 +142,49 @@ let KDIntentEvents = {
 		forceattack: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
-			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released")) ? 100 : 0;
+			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released")) ?
+				((KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]) && !KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"])) ? 0 : 100)
+			: 0;
 		},
 		trigger: (enemy, AIData) => {
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
 			enemy.playWithPlayer = 0;
 			enemy.IntentAction = 'CaptureJail';
-			enemy.IntentLeashPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]) ? KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]) : Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+			let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
+			enemy.IntentLeashPoint = nj ? nj : Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+			if (!nj) KinkyDungeonSetFlag("LeashToPrison", -1, 1);
+		},
+		arrive: (enemy, AIData) => {
+			if (KDGameData.PrisonerState == 'parole') {
+				KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Mistake").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 6, 8);
+				KDBreakTether();
+				if (enemy.IntentLeashPoint)
+					KDMovePlayer(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y, false, false);
+				KDResetIntent(enemy, AIData);
+				enemy.playWithPlayer = 0;
+				enemy.playWithPlayerCD = 24;
+				return true;
+			}
+			AIData.defeat = true;
+			KDBreakTether();
+			return false;
+		},
+	},
+	"CaptureDoll": {
+		// Capture and bring to dropoff
+		aggressive: true,
+		nonaggressive: true,
+		noplay: true,
+		forceattack: true,
+		// This is the basic leash to jail mechanic
+		weight: (enemy, AIData, allied, hostile, aggressive) => {
+			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released") && KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])) ? 200 : 0;
+		},
+		trigger: (enemy, AIData) => {
+			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
+			enemy.playWithPlayer = 0;
+			enemy.IntentAction = 'CaptureDoll';
+			enemy.IntentLeashPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]);
 		},
 		arrive: (enemy, AIData) => {
 			if (KDGameData.PrisonerState == 'parole') {
@@ -239,7 +277,7 @@ function KDSettlePlayerInFurniture(enemy, AIData, tags, guardDelay = 24) {
 		KDKickEnemy(ee);
 	}
 	if (enemy.x == nearestfurniture.x && enemy.y == nearestfurniture.y)
-		KDMoveEntity(enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, false);
+		KDMoveEntity(enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, undefined, true);
 	KDMovePlayer(nearestfurniture.x, nearestfurniture.y, false);
 	if (KinkyDungeonPlayerEntity.x == nearestfurniture.x && KinkyDungeonPlayerEntity.y == nearestfurniture.y) {
 		let furn = KDFurniture[type];
@@ -262,6 +300,8 @@ function KDSettlePlayerInFurniture(enemy, AIData, tags, guardDelay = 24) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Trap.ogg");
 			KinkyDungeonMakeNoise(10, nearestfurniture.x, nearestfurniture.y);
 		}
+
+		KDResetAllAggro();
 		KDResetAllIntents();
 		KDBreakTether();
 		return true;

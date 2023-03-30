@@ -38,7 +38,7 @@ const KinkyDungeonMapParams = {
 			"cavern": 0,
 		},
 
-		enemyTags: ["magical", "zombie"],
+		enemyTags: ["magical", "zombie", "leather", "tape", "ribbon"],
 
 		"setpieces": [
 			{Type: "Bedroom", Weight: 3},
@@ -68,6 +68,8 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "SummonedSkeleton", strict: true, Level: 0, Power: 4, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 1, Weight: 10},
 		],
+
+		factionList: ["Bandit", "Apprentice", "Bountyhunter", "Elemental", "Dragon", "Maidforce"],
 
 		"min_width" : 5,
 		"max_width" : 7,
@@ -166,7 +168,9 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 6,
 
-		enemyTags: ["skeleton"],
+		factionList: ["AncientRobot", "Bandit", "Apprentice", "Bountyhunter", "Bast", "Dragon", "Maidforce", "Alchemist"],
+
+		enemyTags: ["skeleton", "metal", "rope", "leather"],
 		"defeat_outfit": "Dungeon",
 		"shrines": [
 			{Type: "Latex", Weight: 3},
@@ -248,7 +252,9 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 5,
 
-		enemyTags: ["plant", "jungle"],
+		factionList: ["AncientRobot", "Nevermere", "Bandit", "Bountyhunter", "Elf", "Bast", "Dragon", "Maidforce", "Alchemist"],
+
+		enemyTags: ["plant", "jungle", "slime", "earth"],
 		"defeat_outfit": "LatexPrisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 5},
@@ -327,7 +333,7 @@ const KinkyDungeonMapParams = {
 			{Level: 13, checkpoint: "ore", chance: 1.0},
 		],
 		"mainpath": [
-			{Level: 17, checkpoint: "tmp"},
+			{Level: 17, checkpoint: "bel"},
 		],
 
 		"traps": [
@@ -345,7 +351,9 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 5,
 
-		enemyTags: ["skeleton", "temple", "ghost"],
+		factionList: ["Apprentice", "Bandit", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
+
+		enemyTags: ["skeleton", "temple", "ghost", "magical"],
 		"defeat_outfit": "LatexPrisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 5},
@@ -442,7 +450,9 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 7,
 
-		enemyTags: ["mummy", "ghost"],
+		factionList: ["Bast", "Bandit", "AncientRobot", "Elemental", "Dragon"],
+
+		enemyTags: ["mummy", "ghost", "tape", "ribbon", "nature"],
 		"defeat_outfit": "Bast",
 		"shrines": [
 			{Type: "Latex", Weight: 3},
@@ -528,7 +538,9 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 5,
 
-		enemyTags: ["book", "witch", "dressmaker"],
+		factionList: ["Elf", "Bandit", "Apprentice", "Elemental", "Dragon", "Maidforce", "Alchemist"],
+
+		enemyTags: ["book", "witch", "dressmaker", "magical"],
 		"defeat_outfit": "Prisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 3},
@@ -623,7 +635,9 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 7,
 
-		enemyTags: ["mushroom", "slimeBonus", "crystalline"],
+		factionList: ["Nevermere", "Elf", "Bandit", "Apprentice", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
+
+		enemyTags: ["mushroom", "slimeBonus", "crystalline", "earth", "slime", "shadow"],
 		"defeat_outfit": "Prisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 3},
@@ -674,6 +688,8 @@ const KinkyDungeonMapParams = {
 			"AREA8-ORRERY.ogg": 30,
 		},
 
+		factionList: ["Apprentice", "Elf", "Bandit", "Dressmaker", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
+
 		tagModifiers: {
 			"jungle": 0,
 			"cavern": 0,
@@ -700,7 +716,7 @@ const KinkyDungeonMapParams = {
 			{Level: 14, checkpoint: "tmp", chance: 1.0},
 		],
 		"mainpath": [
-			{Level: 17, checkpoint: "ore"},
+			{Level: 17, checkpoint: "bel"},
 		],
 
 		"traps": [
@@ -717,7 +733,7 @@ const KinkyDungeonMapParams = {
 		"min_height" : 5,
 		"max_height" : 7,
 
-		enemyTags: ["shadowcreature", "magical", "elemental", "angel"],
+		enemyTags: ["shadowcreature", "magical", "shadow", "elemental", "angel"],
 		"defeat_outfit": "LatexPrisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 5},
@@ -731,6 +747,102 @@ const KinkyDungeonMapParams = {
 			{Type: "Will", Weight: 7},],
 
 		"lockmult" : 1.6,
+	},
+
+	"bel":{//DungeonName8,-Orrery-
+		"background" : "SpookyForest",
+		"openness" : 1,
+		"density" : 9,
+		"crackchance" : 0.12,
+		"barchance" : 0.1,
+		"brightness" : 1,
+		"chestcount" : 7,
+		"chargerchance": 0.8,
+		"litchargerchance": 0.2,
+		"chargercount": 0,
+		"shrinecount" : 10,
+		"shrinechance" : 0.5,
+		"ghostchance" : 0.7,
+		"doorchance" : 0.9,
+		"nodoorchance" : 0.25,
+		"doorlockchance" : -0.05,
+		"trapchance" : 0.1,
+		"grateChance" : 0.8,
+		"rubblechance" : 0.35,
+		"brickchance" : 0.0,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 1.0,
+		"forbiddenGreaterChance" : 0.45,
+		torchlitchance: 0.45,
+		torchchance: 1.0,
+		torchchanceboring: -0.7,
+		torchreplace: {
+			sprite: "Lantern",
+			unlitsprite: "LanternUnlit",
+			brightness: 5,
+		},
+
+		music: {
+			"AREA9-BELLOWS.ogg": 30,
+		},
+
+		tagModifiers: {
+			"jungle": 0,
+			"cavern": 0,
+			"temple": 0.0,
+			"urban": 0,
+			"industrial": 2.0,
+			"dungeon": 0,
+			"factory": 2.0,
+			"bellows": 3.0,
+		},
+		globalTags: {
+			"factory": true,
+			"bellows": true,
+			"industrial": true,
+		},
+
+		shadowColor: 0x000703,
+
+		"setpieces": [
+			{Type: "Bedroom", Weight: 1},
+			{Type: "LargeGuardedChest", Weight: 20},
+		],
+
+		"shortcuts": [
+		],
+		"mainpath": [
+			{Level: 21, checkpoint: "grv"},
+		],
+
+		"traps": [
+			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
+			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpawnEnemies", strict: true, Enemy: "Drone", Level: 0, Power: 3, Weight: 100},
+			{Name: "SpawnEnemies", strict: true, Enemy: "CaptureBot", Level: 0, Power: 2, Weight: 100},
+		],
+
+		"min_width" : 6,
+		"max_width" : 8,
+		"min_height" : 4,
+		"max_height" : 4,
+
+		factionList: ["Nevermere", "AncientRobot", "Bandit", "Dressmaker", "Bountyhunter", "Maidforce", "Alchemist"],
+
+		enemyTags: ["dollsmith", "dollrare", "oldrobot", "oldrobotturret", "tech", "metal", "electric", "fire"],
+		"defeat_outfit": "DollSuit",
+		"shrines": [
+			{Type: "Latex", Weight: 5},
+			{Type: "Commerce", Weight: 0},
+			{Type: "Elements", Weight: 5},
+			{Type: "Conjure", Weight: 5},
+			{Type: "Illusion", Weight: 5},
+			{Type: "Leather", Weight: 7},
+			{Type: "Metal", Weight: 10},
+			{Type: "Rope", Weight: 3},
+			{Type: "Will", Weight: 7},],
+
+		"lockmult" : 2.0,
 	},
 };
 

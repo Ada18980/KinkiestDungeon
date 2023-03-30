@@ -5,7 +5,7 @@
  * condition: required to remove it
  * remove: happens when removing
  * events: these events are added to the restraint
- * @type {Record<string, {onApply?: (item: item, host?: item) => void, condition: (item: item) => boolean, remove: (item: item, host: item) => void, events?: KinkyDungeonEvent[]}>} */
+ * @type {Record<string, KDCursedDef>} */
 let KDCurses = {
 	"GhostLock" : {
 		condition: (item) => {
@@ -15,7 +15,16 @@ let KDCurses = {
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Ectoplasm, -25);
 		}
 	},
+	"DollLock" : {
+		condition: (item) => {
+			return KinkyDungeonItemCount("DollID") >= 8;
+		},
+		remove: (item, host) => {
+			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DollID, -8);
+		}
+	},
 	"MistressKey": {
+		noShrine: true,
 		condition: (item) => {
 			return KinkyDungeonItemCount("MistressKey") > 0;
 		},
@@ -53,7 +62,6 @@ let KDCurses = {
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 3, damage: "fire", trigger: "beforePlayerDamage", kind: "CurseMelt"},
 			{type: "RemoveOnDmg", power: 1, count: 3, damage: "crush", trigger: "beforePlayerDamage", kind: "CurseMelt"},
-			{type: "RemoveOnBuffName", trigger: "tick", kind: "Drenched"},
 		],
 	},
 	"TakeDamageIce" : {
@@ -63,6 +71,8 @@ let KDCurses = {
 			{type: "RemoveOnDmg", power: 1, count: 4, damage: "ice", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
 			{type: "RemoveOnDmg", power: 1, count: 4, damage: "acid", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
 			{type: "RemoveOnDmg", power: 1, count: 4, damage: "stun", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
+			{type: "RemoveOnBuffName", trigger: "tick", kind: "Drenched"},
+			{type: "RemoveOnBuffName", trigger: "tick", kind: "Chilled"},
 		],
 	},
 	"TakeDamageElectric" : {
@@ -95,6 +105,14 @@ let KDCurses = {
 		},
 		remove: (item, host) => {
 			// For free!
+		}
+	},
+	"Mana" : {
+		condition: (item) => {
+			return KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 20;
+		},
+		remove: (item, host) => {
+			KinkyDungeonChangeMana(-20, false, 0, true, true);
 		}
 	},
 	"ShrineWill" : {
@@ -140,7 +158,7 @@ let KDCursedVars = {
 			return KDAddEventVariant(restraint, newRestraintName, [
 				{type: "ItemLight", trigger: "getLights", power: 3.5, color: "#ffff55", inheritLinked: true},
 				{trigger: "tick", type: "sneakBuff", power: -1.0, inheritLinked: true},
-				{trigger: "drawSGTooltip", type: "curseInfo", msg: "Illumination", color: "#ff5555", inheritLinked: true}
+				{trigger: "drawSGTooltip", type: "curseInfo", msg: "Illumination", color: "#ff5555", inheritLinked: true},
 			]);}},
 	"Attraction": {
 		level: 1,
@@ -238,7 +256,8 @@ let KDCurseUnlockList = {
 		"TakeDamageElectric",
 		"TakeDamageIce",
 		"TakeDamageGlue",
-		"TakeDamageChain"
+		"TakeDamageChain",
+		"Mana",
 	],
 };
 
@@ -269,6 +288,7 @@ function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = "P
 		magic: true,
 		events: events,
 		power: power,
+		good: false,
 		enemyTags: Object.assign({}, enemyTags),
 		shrine: restraint.shrine?.concat(["Cursed"]),
 		inventoryAsSelf: restraint.inventoryAsSelf || restraint.inventoryAs || restraint.name,

@@ -95,3 +95,13 @@ function KDTestjailer(iter) {
 	}
 	console.log(totals);
 }
+
+async function KDExportTranslationFile() {
+	await sleep(1000);
+	let file = "";
+	for (let c of Object.values(TextScreenCache.cache)) {
+		file = file + '\n' + c;
+		file = file + '\n';
+	}
+	navigator.clipboard.writeText(file);
+}

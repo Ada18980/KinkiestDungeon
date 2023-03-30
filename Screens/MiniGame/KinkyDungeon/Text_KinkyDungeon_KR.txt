@@ -775,17 +775,17 @@ Feet
 Everywhere!
 모든 부위!
 
-Physical Armor: 
-물리적 갑옷: 
-Magic Armor: 
-매직 아머: 
+Physical Armor:
+물리적 갑옷:
+Magic Armor:
+매직 아머:
 In the Shadows: You are harder to see.
 그림자 속에서: 당신은 보기가 더 어렵습니다.
 Invisible: You are very difficult to see.
 보이지 않음: 당신은 보기가 매우 어렵습니다.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 빠름: 다음 이동은 매우 신속해 턴을 소모하지 않습니다.
-All Damage Reduction: 
+All Damage Reduction:
 모든 피해 감소:
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 PERCENT2 DAMAGETYPE 저항과 PERCENT3 DAMAGECATEGORY 수정자를 기준으로 PERCENT1 DAMAGETYPE 피해를 받습니다.
@@ -842,7 +842,7 @@ Your legs are free and unimpeded.
 당신의 다리는 자유롭고 방해받지 않습니다.
 You are gagged! Verbal miscast chance is increased and your potions are less effective!
 재갈이 물려졌습니다! 주문 영창 실패 확률이 증가하고 포션은 덜 효과적이게 됩니다!
-Your mouth is totally filled! You can't drink potions and have a high verbal miscast chance!
+Your mouth is totally filled! You can't drink potions and cant cast verbal spells!
 입이 꽉 찼습니다! 포션 섭취는 불가능하며 주문 영창 실패 확률이 매우 높아집니다!
 
 Spell Empowerment!
@@ -1052,7 +1052,7 @@ You haven't found the keys for this floor yet.
 아직 이 층의 열쇠를 찾지 못했습니다.
 Missing key
 열쇠 미발견
-Chance for a spell to fizzle: 
+Chance for a spell to fizzle:
 주문을 실패할 확률:
 Chance to dodge an attack: Percent%
 공격을 회피할 확률: Percent%
@@ -1190,7 +1190,7 @@ Delete Mod
 모드 삭제
 Clear Perks
 클리어 특전
-Config 
+Config
 설정
 Cancel
 취소
@@ -1282,16 +1282,16 @@ Floor FLOORNUMBER: DUNGEONNAME
 FLOORNUMBER 층 : DUNGEONNAME
 
 
-Lockpicks: 
-락픽: 
-Keys: 
-키: 
-Magic Keys: 
-마법 키: 
-Knife: 
-나이프: 
-Mag. Knife: 
-매기나이프: 
+Lockpicks:
+락픽:
+Keys:
+키:
+Magic Keys:
+마법 키:
+Knife:
+나이프:
+Mag. Knife:
+매기나이프:
 
 You climb down the stairs. The passage closes behind you.
 당신은 계단을 내려갔습니다. 뒤의 통로가 닫힙니다.
@@ -1445,8 +1445,8 @@ You find a snow-like potion that's cold to the touch.
 You find a medley of potions.
 당신은 여러종류의 물약을 찾았습니다.
 
-Rarity: 
-희소성: 
+Rarity:
+희소성:
 Lesser
 저급
 Common
@@ -2154,7 +2154,7 @@ Dreamcatcher
 드림캐쳐
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 악몽 속에서 벼려지고 강철로 짜여져 있습니다. 모르는 대상에게 그림자 전사를 소환하여 2%의 고대 에너지를 얻습니다.
-Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 암흑 피해를 입힙니다. 알지 못하거나(100%) 취약한(50%) 대상에게 최대 30의 추가 정신 피해를 입힙니다.
 Axe
 도끼
@@ -2166,8 +2166,8 @@ Knife
 칼
 Unarmed
 비무장
-Accuracy: 
-정확성: 
+Accuracy:
+정확성:
 Find the keys..
 열쇠를 찾아라..
 Find the exit!
@@ -2184,10 +2184,10 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 균열을 발견하고 칼이나 도구를 쐐기로 고정하여 고정시킬 수 있습니다.
 You found something sticky and might be able to pull off fabrics.
 끈적끈적한 무언가를 찾았고 천을 떼어낼 수 있을지도 모릅니다.
-Evasion: 
-회피: 
-Visibility: 
-가시성: 
+Evasion:
+회피:
+Visibility:
+가시성:
 
 
 Submissive: Enemies won't attack you, but they will try to play with you.
@@ -2230,12 +2230,12 @@ Satisfied~
 만족~
 
 
-Damage: 
-손상: 
-Accuracy: 
-정확성: 
-SP Cost: 
-SP 비용: 
+Damage:
+손상:
+Accuracy:
+정확성:
+SP Cost:
+SP 비용:
 
 It appears to be a receptacle
 수납장인것 같습니다
@@ -4472,8 +4472,8 @@ Non-Lockable
 
 Unlocked
 잠금 해제
-Lock Type: 
-잠금 유형: 
+Lock Type:
+잠금 유형:
 Red
 빨강
 Simple
@@ -4660,10 +4660,10 @@ You read the runes and they imbue you with power!
 You try to read the runes but cannot understand them.
 당신은 룬을 읽으려고 하지만 이해할 수 없습니다.
 
-Allies: 
-동맹: 
-Enemies: 
-적: 
+Allies:
+동맹:
+Enemies:
+적:
 
 Nevermere Trainers
 네버미어 트레이너
@@ -5086,7 +5086,7 @@ You find a pair of bracers that are transparent like water.
 
 
 
-You find 
+You find
 찾아
 
 
@@ -5101,7 +5101,7 @@ You find
 
 
 
-You find 
+You find
 찾아
 
 
@@ -5116,7 +5116,7 @@ You find
 
 
 
-You find 
+You find
 찾아
 
 Collar
@@ -6925,25 +6925,25 @@ Heavy chains that serve as an anchor point around your waist.
 It doesn't look like a knife is up to the task...
 나이프가 할 일이 아닌 것 같은데...
 
-Arm Chains
+Magic Arm Chains
 암 체인
 Magic chains keeping your arms securely behind your back.
 팔을 등 뒤로 단단히 고정시키는 마법의 사슬.
 It doesn't look like a knife is up to the task...
 나이프가 할 일이 아닌 것 같은데...
-Leg Chains
+Magic Leg Chains
 다리 사슬
 Magic chains keeping your legs firmly hobbled.
 당신의 다리를 절뚝거리게 만드는 마법의 사슬.
 It doesn't look like a knife is up to the task...
 나이프가 할 일이 아닌 것 같은데...
-Ankle Chains
+Magic Ankle Chains
 발목 체인
 Magic chains keeping your feet bound together.
 발을 묶는 마법의 사슬.
 It doesn't look like a knife is up to the task...
 나이프가 할 일이 아닌 것 같은데...
-Crotch Chain
+Magic Crotch Chain
 가랑이 체인
 Magic chains that serve as an anchor point around your waist.
 허리의 고정점 역할을 하는 마법의 사슬.
@@ -7484,8 +7484,8 @@ A book of manipulative spells
 조작 마법의 책
 
 
-Components: 
-구성 요소: 
+Components:
+구성 요소:
 Verbal
 언어 적
 Arm Movements
@@ -9827,8 +9827,8 @@ You need more spell points.
 주문 포인트가 더 필요합니다.
 You don't have enough maximum mana to cast this spell!
 이 주문을 시전하기에는 최대 마나가 부족합니다!
-School: 
-학교: 
+School:
+학교:
 Elements
 집단
 Conjuration
@@ -9839,16 +9839,16 @@ Generic
 일반적인
 Learn Spell
 마법 배우기
-Spell Points: 
+Spell Points:
 주문 포인트:
 
 
-Level: 
-수준: 
-Spell Point Cost: 
+Level:
+수준:
+Spell Point Cost:
 주문 포인트 비용:
- Mana Cost: 
- 마나 비용: 
+ Mana Cost:
+ 마나 비용:
 
 
 
@@ -9880,20 +9880,20 @@ Replace Spell 6
 교체 마법 6
 Replace Spell 7
 교체 마법 7
- Current Spell 1: 
- 현재 주문 1: 
- Current Spell 2: 
- 현재 주문 2: 
- Current Spell 3: 
- 현재 주문 3: 
- Current Spell 4: 
- 현재 주문 4: 
- Current Spell 5: 
- 현재 주문 5: 
- Current Spell 6: 
- 현재 주문 6: 
- Current Spell 7: 
- 현재 주문 7: 
+ Current Spell 1:
+ 현재 주문 1:
+ Current Spell 2:
+ 현재 주문 2:
+ Current Spell 3:
+ 현재 주문 3:
+ Current Spell 4:
+ 현재 주문 4:
+ Current Spell 5:
+ 현재 주문 5:
+ Current Spell 6:
+ 현재 주문 6:
+ Current Spell 7:
+ 현재 주문 7:
 
 ???
 ???
@@ -10034,7 +10034,7 @@ Ninjas aren't so tough to fight when their hands are tied behind their back. Goo
 (Pg. 12 from Catherine Willows' addendum): After studying the ancient race of catlike people, I have come to the conclusion that their race met a dual fate. All of them received eternal life in some form or another. To one half it manifested as a blessing, allowing them to walk the halls. To the other it became a curse to them, trapping them in runic wrappings for all eternity.
 (Catherine Willows의 부록에서 12페이지): 고양이 같은 고대 종족을 연구한 후, 나는 그들의 종족이 이중 운명을 만났다는 결론에 도달했습니다. 그들 모두는 어떤 형태로든 영생을 받았습니다. 그것은 축복으로 나타나 그들이 복도를 걸을 수 있게 했고, 다른 이들에게는 저주가 되어 그들을 영원히 룬문자에 가두었습니다.
 (Pg. 13 from Catherine Willows' addendum): I must issue a correction to the statements written in my journal. The ancients knew what they were doing. Those that were cursed, are blessed, and those who were blessed, are cursed.
-(Catherine Willows의 부록에서 13페이지): 내 일지에 적힌 진술을 정정해야 합니다. 고대인들은 자신이 무엇을 하고 있는지 알고 있었습니다. 
+(Catherine Willows의 부록에서 13페이지): 내 일지에 적힌 진술을 정정해야 합니다. 고대인들은 자신이 무엇을 하고 있는지 알고 있었습니다.
 (It's a copy of an ancient illustration, depicting a cat goddess, an elven goddess, and two groups of catgirls. One group is smiling and standing on pedestals. The other group is frowning and wearing armor meant for war. It looks unfinished, like the author was suddenly grabbed from behind while drawing it)
 (고양이 여신, 엘프 여신, 두 그룹의 고양이 소녀를 묘사한 고대 일러스트레이션의 사본입니다. 한 그룹은 미소를 지으며 받침대에 서 있습니다. 다른 그룹은 눈살을 찌푸리고 전쟁용 갑옷을 입고 있습니다. 미완성으로 보입니다. 작가님이 그리다가 갑자기 뒤에서 잡아당긴듯)
 (It's a interlinear translation of an ancient letter) Your highness, I have delivered to you the prisoners that you have asked. They are the worst of the worst--thieves, slanderers, sorcerers and seducers. But I must inquire, why is it that we must wrap them in silken scarves, worth twenty gold pieces each? Surely they are being handed over to be disciplined, not to be anointed?
@@ -10430,7 +10430,7 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 3렙 동안 여신이 당신에게 미끄러움을 부여하여 당신의 고군분투를 강화할 것입니다.
 For 3 rep the goddess will grant you a key.
 3렙이면 여신이 당신에게 열쇠를 줄 것입니다.
-For 3 rep the goddess will grant you 
+For 3 rep the goddess will grant you
 3렙이면 여신님이 허락해주실거에요
 For 3 rep the goddess
 3렙 여신님
@@ -10440,7 +10440,7 @@ For 3 rep the goddess
 3렙 여신님
 For 3 rep the goddess
 3렙 여신님
-For 3 rep the goddess 
+For 3 rep the goddess
 3렙 여신님
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
@@ -10781,10 +10781,10 @@ Can disarm (chance: DISARMCHANCE%)
 무장 해제 가능(확률: DISARMCHANCE%)
 Resistances:
 저항:
-HP: 
-HP: 
-Binding: 
-바인딩: 
+HP:
+HP:
+Binding:
+바인딩:
 Ambivalent
 양가적
 Likes you
@@ -14759,7 +14759,7 @@ Never! (PERCENT chance to avoid)
 (The SPEAKER smiles briefly)|You have an opportunity to model for me!|I need someone to wear all of my wonderful inventions!
 (SPEAKER 가 짧게 웃는다)|당신은 나를 위해 모델이 될 기회가 있습니다!|내 모든 멋진 발명품을 착용할 누군가가 필요합니다!
 (The SPEAKER laces you up in the tight fabric...)|(You hear the click of a few locks going on...)|Oh my goodness... So pretty!|You'll make a fine assistant!
-(SPEAKER 가 당신을 꽉 조이는 천으로 묶습니다...)|(자물쇠 몇 개가 딸깍하는 소리가 들립니다...)|맙소사... 너무 예뻐요!|당신은 훌륭한 조수가 될 것입니다! 
+(SPEAKER 가 당신을 꽉 조이는 천으로 묶습니다...)|(자물쇠 몇 개가 딸깍하는 소리가 들립니다...)|맙소사... 너무 예뻐요!|당신은 훌륭한 조수가 될 것입니다!
 (The SPEAKER frowns)|Aw...
 (SPEAKER 가 눈살을 찌푸린다)|아...
 (The SPEAKER clenches her fist to the ceiling)|Nooooo!!!
@@ -15080,7 +15080,7 @@ What? (PERCENT chance to avoid)
 (화자가 목을 가다듬는다)|음, 우리는 실제로 모집하고 있습니다!|정의를 위해 싸우는 데 동의한다면 우리와 함께 할 수 있습니다!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER 가 힘차게 악수를 건넸다)|자매 관계에 오신 것을 환영합니다, 모험가님!
-(The SPEAKER tilts her head and shrugs)|Ah well. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
 (SPEAKER 가 고개를 기울이고 어깨를 으쓱한다)|아 그렇군요.
 (The SPEAKER nods)|Fair enough.
 (SPEAKER 가 고개를 끄덕인다)|그만하면 됐어.
@@ -15131,7 +15131,7 @@ What are you going to do about it? (PERCENT chance to avoid)
 (SPEAKER 가 목을 가다듬는다)|음, 당신은 현재 우리 영역에 있습니다.|하지만 우리는 당신에게 약간의 여유를 줄 용의가 있습니다.|당신은 우리 중 누구도 공격하지 않기로 동의하기만 하면 됩니다.
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER 가 힘차게 악수를 건넸다)|자매 관계에 오신 것을 환영합니다, 모험가님!
-(The SPEAKER tilts her head and shrugs)|Ah well. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
 (SPEAKER 가 고개를 기울이고 어깨를 으쓱한다)|아 그렇군요.
 (The SPEAKER nods)|Fair enough.
 (SPEAKER 가 고개를 끄덕인다)|그만하면 됐어.
@@ -16026,7 +16026,7 @@ Mana potions restore your mana fully.
 마나 포션은 마나를 완전히 회복시킵니다.
 
 Your DP, or Distraction, is a measure of...|How much you are enjoying things.|These sorts of thoughts cloud your mind,|so spellcasting is more difficult when you are distracted.|Go grab the potion over there.
-당신의 DP, 즉 산만함은...|당신이 얼마나 즐기고 있는지에 대한 척도입니다.|이러한 종류의 생각은 당신의 마음을 흐리게 합니다|따라서 당신이 산만할 때 주문 시전이 더 어렵습니다.|가서 거기 물약을 가져오세요. 
+당신의 DP, 즉 산만함은...|당신이 얼마나 즐기고 있는지에 대한 척도입니다.|이러한 종류의 생각은 당신의 마음을 흐리게 합니다|따라서 당신이 산만할 때 주문 시전이 더 어렵습니다.|가서 거기 물약을 가져오세요.
 Did you like that?|Anyway, there's a zombie over there. You should drink that potion.|It will clear your mind so you can cast again.|Hurry, or it will get you!
 좋았어?|어쨌든 저쪽에 좀비가 있어. 그 물약을 마셔야지.|정신이 맑아져서 다시 시전할 수 있을거야.|서두르지 않으면 잡을거야!
 
@@ -16067,7 +16067,7 @@ Make sure she is tight and secure
 (A SPEAKER bumps into you while immersed in her thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?
 (생각에 잠긴 당신과 마주친 SPEAKER)|오! 여보세요!|말해, 당신은 사랑스러워 보인다...|내가 뭔가 찾는 것을 도와줄래?
 (The SPEAKER jumps up and down)|Ah, wonderful!|I've misplaced one of my dresses.|If you could find one, wear it, and bring it to me,|I'd greatly appreciate it! Thanks!
-(SPEAKER 가 위아래로 펄쩍펄쩍 뛰며)|아, 멋지군!|내 드레스 중 하나를 잃어버렸어.|찾을 수 있으면 입고, 가져다 줘,|정말 고맙겠어! 고마워! 
+(SPEAKER 가 위아래로 펄쩍펄쩍 뛰며)|아, 멋지군!|내 드레스 중 하나를 잃어버렸어.|찾을 수 있으면 입고, 가져다 줘,|정말 고맙겠어! 고마워!
 (The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(She snaps a photo of you using a magic crystal)
 (SPEAKER 가 광견병에 걸린 동물처럼 당신을 응시합니다)|와위! 당신 정말 멋져요!|정말 감사합니다!|(그녀는 마법 수정을 사용하여 당신의 사진을 찍습니다)
 (The SPEAKER giggles)|I never said I'd take it off, did I?
@@ -16226,8 +16226,8 @@ Upcast Level LEVEL
 업캐스트 레벨 LEVEL
 Prerequisite
 전제 조건
-Unlocks: 
-잠금 해제: 
+Unlocks:
+잠금 해제:
 You need to learn REQUIREDSPELL before you can learn this one.
 이것을 배우기 전에 REQUIREDSPELL을 배워야 합니다.
 

@@ -4,10 +4,10 @@
  * @type {Record<string, consumable>}
  */
 let KinkyDungeonConsumables = {
-	"PotionMana" : {name: "PotionMana", potion: true, rarity: 0, shop: true, type: "restore", mp_instant: 5, mpool_instant: 0, mp_gradual: 0, scaleWithMaxMP: true, duration: 0, sfx: "PotionDrink"},
+	"PotionMana" : {name: "PotionMana", potion: true, rarity: 0, shop: true, type: "restore", mp_instant: 5, mpool_instant: 0, mp_gradual: 0, scaleWithMaxMP: true, gagFloor: 0.5, duration: 0, sfx: "PotionDrink"},
 	"ManaOrb" : {name: "ManaOrb", noHands: true, rarity: 2, shop: true, type: "restore", mp_instant: 0, mpool_instant: 20, mp_gradual: 0, scaleWithMaxMP: false, duration: 0, sfx: "Invis"},
 	"PotionWill" : {name: "PotionWill", potion: true, rarity: 0, shop: true, type: "restore", wp_instant: 2.5, wp_gradual: 0, scaleWithMaxWP: true, duration: 0, gagFloor: 0.5, sfx: "PotionDrink"},
-	"PotionStamina" : {name: "PotionStamina", potion: true, rarity: 1, shop: true, type: "restore", sp_instant: 5, sp_gradual: 25, scaleWithMaxSP: true, duration: 25, sfx: "PotionDrink"},
+	"PotionStamina" : {name: "PotionStamina", potion: true, rarity: 1, shop: true, type: "restore", sp_instant: 5, sp_gradual: 25, scaleWithMaxSP: true, duration: 25, gagFloor: 0.5, sfx: "PotionDrink"},
 	"PotionFrigid" : {name: "PotionFrigid", potion: true, rarity: 1, shop: true, type: "restore", ap_instant: -10, ap_gradual: -20, duration: 50, arousalRatio: 1.0, gagFloor: 0.5, sfx: "PotionDrink"},
 	"SmokeBomb" : {name: "SmokeBomb", noHands: true, rarity: 2, costMod: -1, shop: true, type: "spell", spell: "Shroud", sfx: "FireSpell"},
 	"PotionInvisibility" : {name: "PotionInvisibility", potion: true, rarity: 3, costMod: -1, shop: true, type: "spell", spell: "Invisibility", sfx: "PotionDrink"},
@@ -26,7 +26,24 @@ let KinkyDungeonConsumables = {
 	"ScrollVerbal" : {name: "ScrollVerbal", noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoVerbalComp", duration: 12, power: 1, aura: "#aaaaff", sfx: "FireSpell"},
 	"ScrollLegs" : {name: "ScrollLegs", noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoLegsComp", duration: 12, power: 1, aura: "#ffaaaa", sfx: "FireSpell"},
 	"ScrollPurity" : {name: "ScrollPurity", noHands: true, rarity: 4, shop: true, type: "shrineRemove", shrine: "Vibes", sfx: "FireSpell"},
+
+	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock"},
 };
+
+// Separate for organizational purposes
+/**
+ * @type {Record<string, consumable>}
+ */
+let KDCookies = {
+	"Cookie" : {name: "Cookie", rarity: 0, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
+	"Donut" : {name: "Donut", rarity: 0, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
+	"CookieJailer" : {name: "CookieJailer", rarity: 0, shop: true, type: "restore", wp_instant: 1.5, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie",
+		sideEffects: ["subAdd"],
+		data: {
+			subAdd: 5,
+		}},
+};
+Object.assign(KinkyDungeonConsumables, KDCookies);
 
 let KDRechargeCost = 100;
 
@@ -48,6 +65,13 @@ let KinkyDungneonShopRestraints = {
 
 /** @type {Record<string, (consumable) => void>} */
 let KDConsumableEffects = {
+	"subAdd": (Consumable) => {
+		let amount = Consumable.data?.subAdd || 5;
+		KinkyDungeonChangeRep("Ghost", amount);
+	},
+	"dollID": (Consumable) => {
+		KinkyDungeonSetFlag("DollmakerGrace", 300);
+	},
 	"restore": (Consumable) => {
 		let multi = 1.0;
 		if (Consumable.scaleWithMaxSP) {
@@ -84,7 +108,7 @@ let KDConsumableEffects = {
 		if (Consumable.wp_gradual) KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "PotionWill", type: "restore_wp", power: Consumable.wp_gradual/Consumable.duration * gagMult * Willmulti, duration: Consumable.duration});
 		if (Consumable.sp_gradual) KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "PotionStamina", type: "restore_sp", power: Consumable.sp_gradual/Consumable.duration * gagMult * multi, duration: Consumable.duration});
 		if (Consumable.ap_gradual) KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "PotionFrigid", type: "restore_ap", power: Consumable.ap_gradual/Consumable.duration * gagMult * Distmulti, duration: Consumable.duration});
-	}
+	},
 };
 
 /** @type {Record<string, (item: item, Quantity: number) => boolean>} */
