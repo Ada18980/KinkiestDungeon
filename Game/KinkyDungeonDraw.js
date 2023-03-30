@@ -2802,7 +2802,7 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
  */
 function KDTex(Image) {
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
-	let tex = PIXI.Texture.from(Image);
+	let tex = PIXI.Texture.from(KDModFiles[Image] || Image);
 	kdpixitex.set(Image, tex);
 	return tex;
 }
