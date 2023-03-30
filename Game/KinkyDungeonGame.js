@@ -278,7 +278,8 @@ function KDResetEventData(Data) {
 }
 
 function KinkyDungeonInitialize(Level, Load) {
-	KDInitCurrentPose(true);
+	if (StandalonePatched)
+		KDInitCurrentPose(true);
 
 	if (!afterLoaded) {
 		KDModsAfterLoad();

@@ -30,8 +30,11 @@ let kdui = new PIXI.Graphics();
 // @ts-ignore
 let kdcanvas = new PIXI.Container();
 kdcanvas.sortableChildren = true;
-kdcanvas.addChild(kdgamefog);
-kdcanvas.addChild(kdgameboard);
+if (StandalonePatched) {
+	kdcanvas.addChild(kdgamefog);
+	kdcanvas.addChild(kdgameboard);
+
+}
 
 
 // @ts-ignore
@@ -1202,27 +1205,30 @@ function KinkyDungeonDrawGame() {
 			// Draw the player no matter what
 			if (!StandalonePatched) {
 				KinkyDungeonContextPlayer.clearRect(0, 0, KinkyDungeonCanvasPlayer.width, KinkyDungeonCanvasPlayer.height);
+				DrawCharacter(KinkyDungeonPlayer, -KinkyDungeonGridSizeDisplay/2, KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0), KinkyDungeonGridSizeDisplay/250, false, KinkyDungeonContextPlayer);
+			} else {
+				let PlayerModel = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer) : null;
+				let zoom = PlayerModel ? KinkyDungeonGridSizeDisplay/1200
+					: KinkyDungeonGridSizeDisplay/250;
+				/** @type {PoseMod[]} */
+				let mods = StandalonePatched ? [
+					{
+						Layer: "Head",
+						scale_x: 2.5,
+						scale_y: 2.5,
+						rotation_x_anchor: 1190/MODELWIDTH,
+						rotation_y_anchor: 690/MODELHEIGHT,
+						offset_x: 1100/MODELWIDTH,
+						offset_y: 620/MODELHEIGHT,
+					},
+				] : [];
+				if (KDDrawPlayer)
+					DrawCharacter(KinkyDungeonPlayer,
+						canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/4: -KinkyDungeonGridSizeDisplay/2),
+						canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/6 : (KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0))),
+						zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods);
 			}
-			let PlayerModel = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer) : null;
-			let zoom = PlayerModel ? KinkyDungeonGridSizeDisplay/1200
-				: KinkyDungeonGridSizeDisplay/250;
-			/** @type {PoseMod[]} */
-			let mods = StandalonePatched ? [
-				{
-					Layer: "Head",
-					scale_x: 2.5,
-					scale_y: 2.5,
-					rotation_x_anchor: 1190/MODELWIDTH,
-					rotation_y_anchor: 690/MODELHEIGHT,
-					offset_x: 1100/MODELWIDTH,
-					offset_y: 620/MODELHEIGHT,
-				},
-			] : [];
-			if (KDDrawPlayer)
-				DrawCharacter(KinkyDungeonPlayer,
-					canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/4: -KinkyDungeonGridSizeDisplay/2),
-					canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/6 : (KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0))),
-					zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods);
+
 
 			KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 			KinkyDungeonDrawFloaters(CamX+CamX_offset, CamY+CamY_offset);
@@ -3155,13 +3161,14 @@ function KDElementPosition(ElementID, X, Y, W, H) {
 	}
 
 	// Different positions based on the width/height ratio
-	const HRatio = PIXICanvas.clientHeight / 1000;
-	const WRatio = PIXICanvas.clientWidth / 2000;
-	const Font = PIXICanvas.clientWidth <= PIXICanvas.clientHeight * 2 ? PIXICanvas.clientWidth / 50 : PIXICanvas.clientHeight / 25;
+	if (!PIXICanvas) PIXICanvas = MainCanvas;
+	const HRatio = (PIXICanvas.clientHeight || PIXICanvas.height) / 1000;
+	const WRatio = (PIXICanvas.clientWidth || PIXICanvas.width) / 2000;
+	const Font = (PIXICanvas.clientWidth || PIXICanvas.width) <= (PIXICanvas.clientHeight || PIXICanvas.height) * 2 ? (PIXICanvas.clientWidth || PIXICanvas.width) / 50 : (PIXICanvas.clientHeight || PIXICanvas.height) / 25;
 	const Height = H ? H * HRatio : Font * 1.1;
 	const Width = W * WRatio;
-	const Top = PIXICanvas.offsetTop + Y * HRatio - 4;
-	const Left = PIXICanvas.offsetLeft + (X) * WRatio + 4;
+	const Top = (PIXICanvas.offsetTop || 0) + Y * HRatio - 4;
+	const Left = (PIXICanvas.offsetLeft || 0) + (X) * WRatio + 4;
 
 	// Sets the element style
 	Object.assign(E.style, {

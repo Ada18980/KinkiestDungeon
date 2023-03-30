@@ -562,7 +562,6 @@ function KDSaveToggles() {
  * @returns {void} - Nothing
  */
 function KinkyDungeonLoad() {
-	console.log(ModelDefs);
 	KinkyDungeonSetupCrashHandler();
 
 	for (let entry of Object.entries(KDLoadingTextKeys)) {
@@ -779,7 +778,7 @@ async function sleep(msec) {
 let KDMarkAsCache = [];
 
 function KinkyDungeonRun() {
-	if (KDCurrentModels)
+	if (StandalonePatched && KDCurrentModels)
 		for (let MC of KDCurrentModels.values()) {
 
 
@@ -849,21 +848,25 @@ function KinkyDungeonRun() {
 	// Check to see whether the player (outside of KD) needs a refresh
 	KinkyDungeonCheckPlayerRefresh();
 
-	// Draw the characters
-	if (KinkyDungeonState != "Consent" && (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats" && KinkyDungeonState != "TileEditor")
-		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
 
 	if ((KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "TileEditor") {
 		let BG = "BrickWall";
-		KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + (StandalonePatched ? ".png" : ".jpg"), 0, 0, CanvasWidth, CanvasHeight, undefined, {
-			zIndex: -115,
-		});
+		if (StandalonePatched) {
+			KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + (StandalonePatched ? ".png" : ".jpg"), 0, 0, CanvasWidth, CanvasHeight, undefined, {
+				zIndex: -115,
+			});
+		} else {
+			DrawImage("Backgrounds/" + BG + ".jpg", 0, 0);
+		}
 		kdgameboard.visible = false;
 		kdgamefog.visible = false;
 	} else {
 		kdgameboard.visible = true;
 		kdgamefog.visible = KinkyDungeonState != "TileEditor";
 	}
+	// Draw the characters
+	if (KinkyDungeonState != "Consent" && (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats" && KinkyDungeonState != "TileEditor")
+		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
 
 
 	if (KinkyDungeonState == "Mods") {
@@ -963,14 +966,22 @@ function KinkyDungeonRun() {
 			}, true, 1075, 860, 350, 64, "Tile Editor", "#ffffff", "");
 		}
 
+		if (!StandalonePatched) {
+
+			DrawButtonVis(460, 942, 220, 50, TextGet((KinkyDungeonReplaceConfirm > 0 ) ? "KinkyDungeonConfirm" : "KinkyDungeonDressPlayerReset"), "#ffffff", "");
+			DrawButtonVis(690, 942, 150, 50, TextGet("KinkyDungeonDressPlayerImport"), "#ffffff", "");
+		}
 
 		DrawButtonKDEx("GoToWardrobe", (bdata) => {
-			KinkyDungeonState = "Wardrobe";
-			KDPlayerSetPose = false;
-			KDInitCurrentPose();
-			KinkyDungeonInitializeDresses();
-			KDUpdateModelList();
-			KDRefreshOutfitInfo();
+
+			if (StandalonePatched) {
+				KinkyDungeonState = "Wardrobe";
+				KDPlayerSetPose = false;
+				KDInitCurrentPose();
+				KinkyDungeonInitializeDresses();
+				KDUpdateModelList();
+				KDRefreshOutfitInfo();
+			}
 			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
 			if (appearance) {
 				CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
@@ -2328,6 +2339,31 @@ function KinkyDungeonHandleClick() {
 			localStorage.setItem("BondageClubLanguage", KDLanguages[newIndex]);
 			KDRestart = true;
 			return true;
+		}
+		if (!StandalonePatched) {
+			if (MouseIn(690, 930, 150, 64)) {
+				KinkyDungeonState = "LoadOutfit";
+
+				KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
+				CharacterReleaseTotal(KinkyDungeonPlayer);
+				ElementCreateTextArea("saveInputField");
+				ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
+				return true;
+			} else if (MouseIn(460, 930, 220, 64)) {
+				if (KinkyDungeonReplaceConfirm > 0) {
+					KinkyDungeonDresses.Default = KinkyDungeonDefaultDefaultDress;
+					CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
+					CharacterReleaseTotal(KinkyDungeonPlayer);
+					KinkyDungeonSetDress("Default", "Default");
+					KinkyDungeonDressPlayer();
+					KDInitProtectedGroups();
+					KinkyDungeonConfigAppearance = true;
+					return true;
+				} else {
+					KinkyDungeonReplaceConfirm = 2;
+					return true;
+				}
+			}
 		}
 
 

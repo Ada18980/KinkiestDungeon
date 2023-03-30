@@ -303,8 +303,8 @@ function KinkyDungeonDressPlayer(Character) {
 			KinkyDungeonWearForcedClothes(restraints);
 
 		KinkyDungeonCheckClothesLoss = false;
-		let AllowedArmPoses = KDGetAvailablePosesArms(KinkyDungeonPlayer);
-		let AllowedLegPoses = KDGetAvailablePosesLegs(KinkyDungeonPlayer);
+		let AllowedArmPoses = StandalonePatched ? KDGetAvailablePosesArms(KinkyDungeonPlayer) : [];
+		let AllowedLegPoses = StandalonePatched ? KDGetAvailablePosesLegs(KinkyDungeonPlayer) : [];
 
 		if (KDGameData.KneelTurns > 0 || KDGameData.SleepTurns > 0) {
 			if (StandalonePatched) {
