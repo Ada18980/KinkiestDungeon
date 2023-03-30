@@ -15,6 +15,7 @@
 !/Models/**/*
 !/TextureAtlas/**/*
 
+!/.github/workflows/*.yml
 !/.editorconfig
 !/.eslintrc.json
 !/.gitignore
