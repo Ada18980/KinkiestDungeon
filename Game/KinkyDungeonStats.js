@@ -403,7 +403,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 		if (buffreduction && data.dmg > 0) {
 			data.dmg = Math.max(data.dmg - buffreduction, 0);
 			KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "damageTaken", 1);
-			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/Shield.ogg");
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Shield.ogg");
 		}
 	}
 
@@ -1315,7 +1315,7 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 	KinkyDungeonChangeDistraction(0.5 + Math.sqrt(Math.max(0, data.amount * KinkyDungeonPlayWithSelfMult)) * KinkyDungeonStatDistractionMax/KDMaxStatStart, false, 0.05);
 	KinkyDungeonChangeStamina(data.cost, true, 3);
 	if (data.playSound) {
-		if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + KinkyDungeonPlayerDamage.playSelfSound + ".ogg");
+		if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.playSelfSound + ".ogg");
 	}
 	if (data.playMsg) {
 		if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfMsg) {

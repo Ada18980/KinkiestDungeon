@@ -595,7 +595,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		}
 		if (spell) {
 			KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell, undefined, undefined, undefined);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/MagicSlash.ogg");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 		}
 	}
 
@@ -747,7 +747,7 @@ function KDSpawnLootTrap(x, y, trap, mult, duration) {
 
 	}
 	if (spawned > 0) {
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/MagicSlash.ogg");
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 		KinkyDungeonMakeNoise(12, x, y);
 		KinkyDungeonSendTextMessage(10, TextGet("LootChestTrap"), "#ff8800", 2);
 	}

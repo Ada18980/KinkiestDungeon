@@ -148,6 +148,7 @@ function DrawGetImageOnError(Img: HTMLImageElement & { errorcount?: number }, Is
 }
 
 
+
 /**
  * Draws a basic circle
  * @param CenterX - Position of the center of the circle on the X axis

@@ -26,6 +26,7 @@ async function LoadTextureAtlas(list, preload = false) {
 		let result = preload ? PIXI.Assets.backgroundLoad(dataFile) : PIXI.Assets.load(dataFile);
 
 		result.then(() => {
+			console.log(PIXI.Cache);
 			KDLoadingDone += amount;
 		});
 		//let atlas = await result;

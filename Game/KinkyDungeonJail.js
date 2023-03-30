@@ -837,7 +837,7 @@ function KinkyDungeonPassOut(noteleport) {
 	KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPassOut2"), "#ff0000", 5);
 
 
-	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
+	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
 	KDGameData.JailKey = false;
 	KDResetAllAggro();
@@ -905,7 +905,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	}
 
 	KinkyDungeonDressPlayer();
-	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
+	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
 	KDGameData.JailKey = false;
 
@@ -1000,7 +1000,7 @@ function KinkyDungeonDefeat(PutInJail) {
 	//KinkyDungeonChangeRep("Prisoner", securityBoost); // Each time you get caught, security increases...
 
 	KinkyDungeonDressPlayer();
-	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
+	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
 	KDGameData.JailKey = false;
 	KinkyDungeonSaveGame();

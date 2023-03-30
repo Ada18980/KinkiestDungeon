@@ -378,35 +378,35 @@ function KinkyDungeonDressPlayer(Character) {
 						result = result || e[1].expression(Character);
 						if (result.Eyes2Pose) {
 							stackedPriorities.Eyes2Pose = e[1].priority;
-							if (!KDWardrobe_CurrentPoseEyes) Eyes2Pose = result.Eyes2Pose;
+							if (!KDWardrobe_CurrentPoseEyes2) Eyes2Pose = result.Eyes2Pose;
 						}
 					}
 					if (e[1].priority > (stackedPriorities.BrowsPose || 0)) {
 						result = result || e[1].expression(Character);
 						if (result.BrowsPose) {
 							stackedPriorities.BrowsPose = e[1].priority;
-							if (!KDWardrobe_CurrentPoseEyes) BrowsPose = result.BrowsPose;
+							if (!KDWardrobe_CurrentPoseBrows) BrowsPose = result.BrowsPose;
 						}
 					}
 					if (e[1].priority > (stackedPriorities.Brows2Pose || 0)) {
 						result = result || e[1].expression(Character);
 						if (result.Brows2Pose) {
 							stackedPriorities.Brows2Pose = e[1].priority;
-							if (!KDWardrobe_CurrentPoseEyes) Brows2Pose = result.Brows2Pose;
+							if (!KDWardrobe_CurrentPoseBrows2) Brows2Pose = result.Brows2Pose;
 						}
 					}
 					if (e[1].priority > (stackedPriorities.BlushPose || 0)) {
 						result = result || e[1].expression(Character);
 						if (result.BlushPose) {
 							stackedPriorities.BlushPose = e[1].priority;
-							if (!KDWardrobe_CurrentPoseEyes) BlushPose = result.BlushPose;
+							if (!KDWardrobe_CurrentPoseBlush) BlushPose = result.BlushPose;
 						}
 					}
 					if (e[1].priority > (stackedPriorities.MouthPose || 0)) {
 						result = result || e[1].expression(Character);
 						if (result.MouthPose) {
 							stackedPriorities.MouthPose = e[1].priority;
-							if (!KDWardrobe_CurrentPoseEyes) MouthPose = result.MouthPose;
+							if (!KDWardrobe_CurrentPoseMouth) MouthPose = result.MouthPose;
 						}
 					}
 				}

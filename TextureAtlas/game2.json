@@ -6946,12 +6946,12 @@
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
-	"version": "1.0",
+	"version": "1.1",
 	"image": "game2.png",
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:f61a54631098bc7bc85398fbaadc5e1b:993f3addb7b70e1b65343a58ac732834:dbba87a4c8407164ed0b4d90cf0ac7ea$"
+	"smartupdate": "$TexturePacker:SmartUpdate:58ec57c0b84583d8ecfedf685baa09dd:993f3addb7b70e1b65343a58ac732834:dbba87a4c8407164ed0b4d90cf0ac7ea$"
 }
 }

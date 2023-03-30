@@ -61,7 +61,7 @@ function KinkyDungeonDisableSpell(Name) {
 	for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
 		if (KinkyDungeonSpells[KinkyDungeonSpellChoices[i]] && KinkyDungeonSpells[KinkyDungeonSpellChoices[i]].name == Name) {
 			KinkyDungeonSpellChoicesToggle[i] = false;
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 		}
 	}
 }

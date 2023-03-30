@@ -855,7 +855,7 @@ function KinkyDungeonRun() {
 
 	if ((KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "TileEditor") {
 		let BG = "BrickWall";
-		KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + ".jpg", 0, 0, CanvasWidth, CanvasHeight, undefined, {
+		KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + (StandalonePatched ? ".png" : ".jpg"), 0, 0, CanvasWidth, CanvasHeight, undefined, {
 			zIndex: -115,
 		});
 		kdgameboard.visible = false;
@@ -2154,7 +2154,7 @@ function KinkyDungeonStartNewGame(Load) {
 	if (KinkyDungeonKeybindings) {
 		KDCommitKeybindings();
 	}
-	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/StoneDoor_Close.ogg");
+	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 }
 
 function KDUpdatePlugSettings() {
@@ -2405,7 +2405,7 @@ function KinkyDungeonHandleClick() {
  */
 function KinkyDungeonClick() {
 	if (KinkyDungeonHandleClick()) {
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 	}
 	if (KinkyDungeonReplaceConfirm > 0) KinkyDungeonReplaceConfirm -= 1;
 }
