@@ -2281,9 +2281,45 @@ function KinkyDungeonHandleClick() {
 		}
 	} else if (KinkyDungeonState == "LoadOutfit"){
 		if (MouseIn(875, 750, 350, 64)) {
-			KDSaveCodeOutfit();
+			if (StandalonePatched) {
+				KDSaveCodeOutfit();
+				KinkyDungeonState = "Wardrobe";
+
+			} else {
+				let decompressed = LZString.decompressFromBase64(ElementValue("saveInputField"));
+				if (decompressed) {
+					let origAppearance = KinkyDungeonPlayer.Appearance;
+					try {
+						CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed);
+						CharacterRefresh(KinkyDungeonPlayer);
+						KDInitProtectedGroups();
+					} catch (e) {
+						// If we fail, it might be a BCX code. try it!
+						KinkyDungeonPlayer.Appearance = origAppearance;
+						try {
+							let parsed = JSON.parse(decompressed);
+							if (parsed.length > 0) {
+								if (!StandalonePatched) {
+									for (let g of parsed) {
+										InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
+									}
+									CharacterRefresh(KinkyDungeonPlayer);
+								}
+								KDInitProtectedGroups();
+							} else {
+								console.log("Invalid code. Maybe its corrupt?");
+							}
+						} catch (error) {
+							console.log("Invalid code.");
+						}
+					}
+				}
+
+				KinkyDungeonDressPlayer();
+				KinkyDungeonNewDress = true;
+				KinkyDungeonState = "Menu";
+			}
 			// Return to menu
-			KinkyDungeonState = "Wardrobe";
 			ElementRemove("saveInputField");
 			return true;
 		} else if (MouseIn(1275, 750, 350, 64)) {
