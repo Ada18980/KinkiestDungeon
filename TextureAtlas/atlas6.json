@@ -1,0 +1,117 @@
+{"frames": {
+
+"Models/Bandit/PouchKneel.png":
+{
+	"frame": {"x":329,"y":1,"w":123,"h":112},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":321,"y":855,"w":123,"h":112},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Body/ArmRightWristtie.png":
+{
+	"frame": {"x":1,"y":221,"w":135,"h":204},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":464,"y":430,"w":135,"h":204},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Body/ButtKneel.png":
+{
+	"frame": {"x":159,"y":393,"w":149,"h":155},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":627,"y":750,"w":149,"h":155},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Body/FootRightClosed.png":
+{
+	"frame": {"x":359,"y":252,"w":142,"h":165},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":459,"y":1448,"w":142,"h":165},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Catsuit/ArmRightFront.png":
+{
+	"frame": {"x":98,"y":1,"w":96,"h":229},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":428,"y":431,"w":96,"h":229},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Catsuit/ButtKneel.png":
+{
+	"frame": {"x":1,"y":358,"w":147,"h":156},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":627,"y":749,"w":147,"h":156},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Catsuit/ChestHogtie.png":
+{
+	"frame": {"x":316,"y":419,"w":268,"h":153},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":445,"y":475,"w":268,"h":153},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Catsuit/FootLeftClosed.png":
+{
+	"frame": {"x":207,"y":252,"w":139,"h":150},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":532,"y":1471,"w":139,"h":150},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Catsuit/FootLeftHogtie.png":
+{
+	"frame": {"x":1,"y":99,"w":118,"h":144},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":663,"y":798,"w":118,"h":144},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Maid/ShoeRightClosed.png":
+{
+	"frame": {"x":301,"y":115,"w":135,"h":135},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":455,"y":1489,"w":135,"h":135},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Maid/ShoeRightSpread.png":
+{
+	"frame": {"x":147,"y":99,"w":120,"h":152},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":492,"y":1492,"w":120,"h":152},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Robes/Chest.png":
+{
+	"frame": {"x":1,"y":544,"w":269,"h":154},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":446,"y":478,"w":269,"h":154},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Warrior/Necklace.png":
+{
+	"frame": {"x":1,"y":1,"w":94,"h":95},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":571,"y":405,"w":94,"h":95},
+	"sourceSize": {"w":1240,"h":1754}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "atlas6.png",
+	"format": "RGBA8888",
+	"size": {"w":502,"h":699},
+	"scale": "0.5",
+	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:5209e693a3d7894b157d233b857f02ff:f2de03a30846aea0f463d09fae2f88e9:36651420b06b823727fd4db07f23075f$"
+}
+}

@@ -480,7 +480,7 @@ function KDDrawModelList(X, C) {
 		let category = KDModelList_Categories[index_cat];
 		if (category)
 			DrawButtonKDEx("ClickCategory" + i, clickCategory(index_cat), true, X+0, 100 + buttonSpacing * i, 190, buttonHeight,
-				category,
+				TextGet("cat_" + category),
 				hasCategories[category] ? "#ffffff" : faded, "",
 				undefined, undefined, index_cat != KDModelList_Categories_index, KDButtonColor);
 
@@ -489,7 +489,7 @@ function KDDrawModelList(X, C) {
 		let toplevel = KDModelList_Toplevel[index_top];
 		if (toplevel)
 			DrawButtonKDEx("ClickToplevel" + i, clickToplevel(index_top), true, X+220, 100 + buttonSpacing * i, 190, buttonHeight,
-				toplevel,
+				TextGet("m_" + toplevel),
 				(KDCurrentModels.get(C).Models.has(toplevel) || hasTopLevel[toplevel]) ? "#ffffff" : faded, "",
 				undefined, undefined, index_top != KDModelList_Toplevel_index, KDButtonColor);
 
@@ -499,7 +499,7 @@ function KDDrawModelList(X, C) {
 		let sublevel = KDModelList_Sublevel[index_sub];
 		if (sublevel) {
 			DrawButtonKDEx("ClickSublevel" + i, clickSublevel(index_sub, sublevel), true, X+440, 100 + buttonSpacing * i, 190, buttonHeight,
-				sublevel,
+				TextGet("m_" + sublevel),
 				KDCurrentModels.get(C).Models.has(sublevel) ? "#ffffff" : faded, "",
 				undefined, undefined, index_sub != KDModelList_Sublevel_index, KDButtonColor);
 			if (index_sub == KDModelList_Sublevel_index && KDCurrentModels.get(C).Models.has(sublevel)) {

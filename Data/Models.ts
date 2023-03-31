@@ -18,8 +18,13 @@ let ModelLayers = InitLayers(LAYERS_BASE);
 
 let ModelDefs: {[_: string]: Model} = {};
 
-function AddModel(Model: Model) {
+function AddModel(Model: Model, Strings?: Record<string, string>) {
 	ModelDefs[Model.Name] = Model;
+	if (Strings) {
+		for (let str of Object.entries(Strings)) {
+			addTextKey("m" + str[0], str[1]);
+		}
+	}
 }
 
 let KDCurrentModels: Map<Character, ModelContainer> = new Map();
@@ -462,4 +467,23 @@ function KDGetPoseOfType(C: Character, Type: string): string {
 			}
 		}
 	return "";
+}
+
+function GetUnnamedModels() {
+	let keys: Record<string, string> = {};
+	for (let m of Object.values(ModelDefs)) {
+		keys[`m_${m.Name}`] = m.Name;
+		for (let l of Object.values(m.Layers)) {
+			if (!l.InheritColor && !l.NoColorize)
+				keys[`l_${m.Name}_${l.Name}`] = l.Name;
+		}
+	}
+	let st = "";
+	for (let s of Object.keys(keys)) {
+		if (TextGet(s) != s) // Failure condition
+		{ delete keys[s]; }
+		else st = st + "\n" + s + ",\"" + keys[s] + "\"";
+	}
+	console.log(st);
+	console.log(keys);
 }

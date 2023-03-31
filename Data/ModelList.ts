@@ -528,6 +528,36 @@ AddModel({
 	])
 });
 
+
+
+AddModel({
+	Name: "BanditBoots",
+	Folder: "Bandit",
+	Parent: "Bandit",
+	TopLevel: true,
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		{ Name: "ShoeLeft", Layer: "ShoeLeft", Pri: 1,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeRight", Layer: "ShoeRight", Pri: 1,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeRightKneel", Layer: "FootRightKneel", Pri: 1,
+			Poses: ToMap(["Kneel"]),
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShoeLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
+			Poses: ToMap(["Hogtie"]),
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
 AddModel({
 	Name: "BanditBreastplate",
 	Folder: "Bandit",
@@ -553,6 +583,7 @@ AddModel({
 		...GetModelLayers("BanditShorts"),
 		...GetModelLayers("BanditBreastplate"),
 		...GetModelLayers("BanditWrist"),
+		...GetModelLayers("BanditShoes"),
 	])
 });
 
@@ -1279,6 +1310,7 @@ AddModel({
 			Sprite: "RibbonBack",
 			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Boxtie"]),
 			Invariant: true,
+			InheritColor: "RibbonBack",
 			MorphPoses: {Kneel: "Kneel", Hogtie: "Hogtie"},
 		},
 	])

@@ -2494,6 +2494,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/Layers.png</key>
+            <key type="filename">../Game/UI/Floppy.png</key>
             <key type="filename">../Game/UI/UsePotionAncient.png</key>
             <key type="filename">../Game/UI/UsePotionAncientInject.png</key>
             <key type="filename">../Game/UI/UsePotionFrigid.png</key>
@@ -2534,21 +2535,6 @@
                 <rect>160,121,320,241</rect>
                 <key>scale9Paddings</key>
                 <rect>160,121,320,241</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Game/MushroomOverlay.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>305,163,610,325</rect>
-                <key>scale9Paddings</key>
-                <rect>305,163,610,325</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
