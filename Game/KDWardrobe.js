@@ -13,7 +13,7 @@ let KDOutfitStore = {};
 let KDOutfitOriginalStore = {};
 
 
-let KDModelListMax = 13;
+let KDModelListMax = 14;
 let KDModelListViewSkip = 7;
 
 
@@ -35,6 +35,7 @@ let KDWardrobeCategories = [
 	"Socks",
 	"Shoes",
 	"Tops",
+	"Sleeves",
 	"Corsets",
 	"Skirts",
 	"Pants",
@@ -453,8 +454,8 @@ function KDDrawModelList(X, C) {
 		};
 	};
 
-	let buttonHeight = 40;
-	let buttonSpacing = 45;
+	let buttonHeight = 38;
+	let buttonSpacing = 40;
 
 	let hasCategories = {};
 	let hasTopLevel = {};

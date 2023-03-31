@@ -1,4 +1,8 @@
 let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked", "Front"];
+/** List of poses where the left wrist is invisible */
+let WRISTHIDELEFT = ["Boxtie", "Wristtie"];
+/** List of poses where the right wrist is invisible */
+let WRISTHIDERIGHT = ["Boxtie", "Wristtie"];
 let FOREARMPOSES = ["Front"];
 let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked"];
 let HANDLEFTPOSES = ["Free", "Yoked"];

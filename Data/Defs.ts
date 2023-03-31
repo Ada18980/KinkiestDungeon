@@ -30,7 +30,9 @@ let LAYERS_BASE = [
 	"ForeSleeveLeft",
 	"ForeSleeveDecoLeft",
 	"GloveLeft",
+	"ForeWRISTLeft",
 	"ForeHandLeft",
+	"ForeWristLeft",
 	"ForeArmLeft",
 
 	"ForeSleeveRight",
@@ -79,6 +81,7 @@ let LAYERS_BASE = [
 	"SleeveLeft",
 
 	// Left arm body - reserved for body and catsuits
+	"WristLeft",
 	"HandLeft",
 	"ArmLeft",
 
@@ -115,6 +118,7 @@ let LAYERS_BASE = [
 	"SleeveRight",
 
 	// Right arm body - reserved for body and catsuits
+	"WristRight",
 	"HandRight",
 	"ArmRight",
 

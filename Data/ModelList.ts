@@ -482,7 +482,8 @@ AddModel({
 	Name: "BanditShorts",
 	Folder: "Bandit",
 	Parent: "Bandit",
-	Categories: ["Uniforms"],
+	TopLevel: true,
+	Categories: ["Pants"],
 	Layers: ToLayerMap([
 		{ Name: "Shorts", Layer: "Pants", Pri: 7,
 			Poses: ToMap([...LEGPOSES]),
@@ -492,10 +493,47 @@ AddModel({
 });
 
 AddModel({
+	Name: "BanditLeftWrist",
+	Folder: "Bandit",
+	Parent: "BanditWrist",
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "WristLeft", Layer: "WristLeft", Pri: 7,
+			Poses: ToMapSubtract([...ARMPOSES], [...WRISTHIDELEFT]),
+		},
+	])
+});
+
+AddModel({
+	Name: "BanditRightWrist",
+	Folder: "Bandit",
+	Parent: "BanditWrist",
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "WristRight", Layer: "WristRight", Pri: 7,
+			Poses: ToMapSubtract([...ARMPOSES], [...WRISTHIDERIGHT]),
+		},
+	])
+});
+
+AddModel({
+	Name: "BanditWrist",
+	Folder: "Bandit",
+	Parent: "Bandit",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		...GetModelLayers("BanditLeftWrist"),
+		...GetModelLayers("BanditRightWrist"),
+	])
+});
+
+AddModel({
 	Name: "BanditBreastplate",
 	Folder: "Bandit",
 	Parent: "Bandit",
-	Categories: ["Uniforms"],
+	Categories: ["Armor"],
+	TopLevel: true,
 	Layers: ToLayerMap([
 		{ Name: "Breastplate", Layer: "Chestplate", Pri: 24,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
@@ -514,6 +552,7 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("BanditShorts"),
 		...GetModelLayers("BanditBreastplate"),
+		...GetModelLayers("BanditWrist"),
 	])
 });
 
@@ -1141,7 +1180,8 @@ AddModel({
 	Name: "RobeSleeveLeft",
 	Folder: "Robes",
 	Parent: "RobeSleeves",
-	Categories: ["Tops"],
+	Categories: ["Sleeves"],
+	TopLevel: true,
 	Layers: ToLayerMap([
 		{ Name: "SleeveLeft", Layer: "SleeveLeft", Pri: 40,
 			Poses: ToMap([...ARMPOSES]),
