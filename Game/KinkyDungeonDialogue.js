@@ -285,6 +285,11 @@ function KDDoDialogue(data) {
 		KDGameData.CurrentDialogMsgPersonality = data.personality;
 
 	let dialogue = KDGetDialogue();
+	if (!dialogue) {// Means we exited {
+		KDGameData.CurrentDialog = "";
+		KDGameData.CurrentDialogStage = "";
+		return;
+	}
 	if (dialogue.data) KDGameData.CurrentDialogMsgData = dialogue.data;
 	if (dialogue.response) KDGameData.CurrentDialogMsg = dialogue.response;
 	if (dialogue.response == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
