@@ -189,14 +189,6 @@ function KinkyDungeonDressPlayer(Character) {
 				}
 
 			}
-			if (StandalonePatched) {
-				if (!newAppearance.Body) newAppearance.Body = {Model: JSON.parse(JSON.stringify(ModelDefs.Body)), Group: "Body", Color: "Default"};
-				if (!newAppearance.Eyes) newAppearance.Eyes = {Model: JSON.parse(JSON.stringify(ModelDefs.KoiEyes)), Group: "Eyes", Color: "Default"};
-				if (!newAppearance.Brows) newAppearance.Brows = {Model: JSON.parse(JSON.stringify(ModelDefs.KoiBrows)), Group: "Brows", Color: "Default"};
-				if (!newAppearance.Mouth) newAppearance.Mouth = {Model: JSON.parse(JSON.stringify(ModelDefs.KoiMouth)), Group: "Mouth", Color: "Default"};
-				if (!newAppearance.Blush) newAppearance.Blush = {Model: JSON.parse(JSON.stringify(ModelDefs.KoiBlush)), Group: "Blush", Color: "Default"};
-				if (!newAppearance.Hair) newAppearance.Hair = {Model: JSON.parse(JSON.stringify(ModelDefs.Braid)), Group: "Hair", Color: "Default"};
-			}
 
 			KinkyDungeonPlayer.Appearance = Object.values(newAppearance);
 
@@ -559,8 +551,18 @@ function KinkyDungeonDressPlayer(Character) {
 		CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
 	}
 
-	if (StandalonePatched && KDCurrentModels.get(Character))
+	if (StandalonePatched && KDCurrentModels.get(Character)) {
+
+		if (!InventoryGet(Character, "Body")) KDInventoryWear("Body", "Body");
+		if (!InventoryGet(Character, "Eyes")) KDInventoryWear("KoiEyes", "Eyes");
+		if (!InventoryGet(Character, "Brows")) KDInventoryWear("KoiBrows", "Brows");
+		if (!InventoryGet(Character, "Mouth")) KDInventoryWear("KoiMouth", "Mouth");
+		if (!InventoryGet(Character, "Blush")) KDInventoryWear("KoiBlush", "Blush");
+		if (!InventoryGet(Character, "Hair")) KDInventoryWear("Braid", "Hair");
+
+
 		UpdateModels(KDCurrentModels.get(Character));
+	}
 }
 
 /**
@@ -648,9 +650,9 @@ function KinkyDungeonGetOutfit(Name) {
  * Makes the KinkyDungeonPlayer wear an item on a body area
  * @param {string} AssetName - The name of the asset to wear
  * @param {string} AssetGroup - The name of the asset group to wear
- * @param {string} par - parent item
- * @param {string | string[]} color - parent item
- * @param {Record<string, LayerFilter>} filters - parent item
+ * @param {string} [par] - parent item
+ * @param {string | string[]} [color] - parent item
+ * @param {Record<string, LayerFilter>} [filters] - parent item
  */
 function KDInventoryWear(AssetName, AssetGroup, par, color, filters) {
 	const M = StandalonePatched ? ModelDefs[AssetName] : undefined;

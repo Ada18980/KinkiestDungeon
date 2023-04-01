@@ -36,6 +36,7 @@ class ModelContainer {
 	ContainersDrawn: Map<string, any>;
 	Poses: Record<string, boolean>;
 	Update: Map<any, any>;
+	Mods: Map<string, PoseMod[]>;
 
 	constructor(Character: Character, Models: Map<string, Model>, Containers: Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: any}>, ContainersDrawn: Map<string, any>, Poses: Record<string, boolean>) {
 		this.Character = Character;
@@ -44,6 +45,7 @@ class ModelContainer {
 		this.Models = Models;
 		this.Poses = Poses;
 		this.HighestPriority = {};
+		this.Mods = new Map();
 		this.Update = new Map();
 	}
 
@@ -130,6 +132,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
 		DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
 			MC.Containers.get(containerID));
+		MC.Mods.set(containerID, StartMods);
 		MC.Update.set(containerID, true);
 
 		let Container = MC.Containers.get(containerID);
@@ -231,7 +234,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				KDDraw(
 					ContainerContainer.Container,
 					ContainerContainer.SpriteList,
-					`layer_${m.Name}_${l.Name}_${img}_${fh}`,
+					`layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`,
 					img,
 					ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
 					rot * Math.PI / 180, {
@@ -393,9 +396,6 @@ function UpdateModels(MC) {
 	MC.Models = new Map();
 	MC.Update.clear();
 
-	// Start with base body
-	if (!MC.Models.get("Body"))
-		MC.addModel(ModelDefs.Body);
 
 	let appearance = MC.Character.Appearance;
 	for (let A of appearance) {
@@ -403,6 +403,10 @@ function UpdateModels(MC) {
 			MC.addModel(A.Model);
 		}
 	}
+
+	// base body
+	//if (!MC.Models.get("Body"))
+	//	MC.addModel(ModelDefs.Body);
 
 	/*
 	MC.addModel(ModelDefs.Catsuit);
@@ -483,4 +487,70 @@ function GetUnnamedModels() {
 	}
 	console.log(st);
 	console.log(keys);
+}
+
+function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number, Hardpoint: string) {
+	let Zoom = (ZoomInit * MODEL_SCALE) || MODEL_SCALE
+	let hp = Hardpoints[Hardpoint];
+	let pos = {x: hp?.X*Zoom || 0, y: hp?.Y*Zoom || 0, angle: hp.Angle};
+
+	let MC = KDCurrentModels.get(C);
+	let StartMods = MC.Mods.get(`${X},${Y},${ZoomInit}`);
+	let mods = ModelGetPoseMods(MC.Poses);
+
+	for (let m of StartMods) {
+		if (!mods[m.Layer]) mods[m.Layer] = [];
+		mods[m.Layer].push(m);
+	}
+	if (!mods) return pos;
+
+	let ox = 0;
+	let oy = 0;
+	let ax = 0;
+	let ay = 0;
+	let sx = 1;
+	let sy = 1;
+	let rot = 0;
+	let layer = hp.Parent;
+	while (layer) {
+		/** @type {PoseMod[]} */
+		let mod_selected = mods[layer] || [];
+		for (let mod of mod_selected) {
+			ox = mod.offset_x || ox;
+			oy = mod.offset_y || oy;
+			ax = mod.rotation_x_anchor || ax;
+			ay = mod.rotation_y_anchor || ay;
+			sx *= mod.scale_x || 1;
+			sy *= mod.scale_y || 1;
+			rot += mod.rotation || 0;
+		}
+		layer = LayerProperties[layer]?.Parent;
+	}
+
+	pos.x += ox * MODELWIDTH * Zoom;
+	pos.y += oy * MODELHEIGHT * Zoom;
+	pos.angle += rot * Math.PI / 180;
+	pos.x += ox * MODELWIDTH * Zoom;
+    pos.y += oy * MODELHEIGHT * Zoom;
+    pos.angle += rot * Math.PI / 180;
+    pos.x -= (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.cos(rot * Math.PI / 180);
+    pos.y += (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.sin(rot * Math.PI / 180);
+    pos.x -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.sin(rot * Math.PI / 180);
+    pos.y -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.cos(rot * Math.PI / 180);
+    let { X_Offset, Y_Offset } = ModelGetPoseOffsets(MC.Poses);
+    let { rotation, X_Anchor, Y_Anchor } = ModelGetPoseRotation(MC.Poses);
+    let pivotx = MODELWIDTH * Zoom * X_Anchor;
+    let pivoty = MODELHEIGHT * Zoom * Y_Anchor;
+    let lx = pos.x - pivotx;
+    let ly = pos.y - pivoty;
+    let angle = rotation * Math.PI / 180;
+    let xx = (MODEL_XOFFSET + MODELWIDTH * X_Offset) * Zoom;
+    let yy = (MODELHEIGHT * Y_Offset) * Zoom;
+    pos.x = pivotx + (lx) * Math.cos(angle) - (ly) * Math.sin(angle);
+    pos.y = pivoty + (ly) * Math.cos(angle) + (lx) * Math.sin(angle);
+
+	pos.x += xx;
+	pos.y += yy;
+
+	return pos;
 }

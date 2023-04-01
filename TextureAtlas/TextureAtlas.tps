@@ -525,6 +525,15 @@
             <key type="filename">../Models/FaceKoi/MouthPout.png</key>
             <key type="filename">../Models/FaceKoi/MouthSmile.png</key>
             <key type="filename">../Models/FaceKoi/MouthSurprised.png</key>
+            <key type="filename">../Models/FaceKoi/Whites2Angry.png</key>
+            <key type="filename">../Models/FaceKoi/Whites2Closed.png</key>
+            <key type="filename">../Models/FaceKoi/Whites2Dazed.png</key>
+            <key type="filename">../Models/FaceKoi/Whites2Neutral.png</key>
+            <key type="filename">../Models/FaceKoi/Whites2Surprised.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesAngry.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesClosed.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesDazed.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesNeutral.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

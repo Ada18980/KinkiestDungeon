@@ -24,14 +24,6 @@
 	"spriteSourceSize": {"x":763,"y":697,"w":154,"h":166},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/ArmorPlate/GauntletRightBoxtie.png":
-{
-	"frame": {"x":1746,"y":1904,"w":36,"h":40},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":680,"y":676,"w":36,"h":40},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/ArmorPlate/PauldronsFree.png":
 {
 	"frame": {"x":967,"y":1709,"w":338,"h":164},
@@ -102,14 +94,6 @@
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":878,"y":393,"w":49,"h":37},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Bandit/WristRightFree.png":
-{
-	"frame": {"x":899,"y":1989,"w":33,"h":55},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":355,"y":606,"w":33,"h":55},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Bandit/WristRightFront.png":
@@ -288,6 +272,14 @@
 	"spriteSourceSize": {"x":139,"y":130,"w":49,"h":16},
 	"sourceSize": {"w":321,"h":332}
 },
+"Models/FaceKoi/Brows2Surprised.png":
+{
+	"frame": {"x":667,"y":1098,"w":51,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":141,"y":136,"w":51,"h":11},
+	"sourceSize": {"w":321,"h":332}
+},
 "Models/FaceKoi/BrowsAngry.png":
 {
 	"frame": {"x":1910,"y":994,"w":45,"h":8},
@@ -306,8 +298,8 @@
 },
 "Models/FaceKoi/BrowsNeutral.png":
 {
-	"frame": {"x":934,"y":1999,"w":43,"h":19},
-	"rotated": true,
+	"frame": {"x":899,"y":2024,"w":43,"h":19},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":59,"y":149,"w":43,"h":19},
 	"sourceSize": {"w":321,"h":332}
@@ -328,28 +320,12 @@
 	"spriteSourceSize": {"x":59,"y":143,"w":42,"h":24},
 	"sourceSize": {"w":321,"h":332}
 },
-"Models/FaceKoi/Eyes2Angry.png":
-{
-	"frame": {"x":1746,"y":1775,"w":63,"h":46},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":146,"y":158,"w":63,"h":46},
-	"sourceSize": {"w":321,"h":332}
-},
 "Models/FaceKoi/Eyes2Closed.png":
 {
 	"frame": {"x":2014,"y":1945,"w":65,"h":33},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":146,"y":158,"w":65,"h":33},
-	"sourceSize": {"w":321,"h":332}
-},
-"Models/FaceKoi/Eyes2Dazed.png":
-{
-	"frame": {"x":1746,"y":1840,"w":62,"h":45},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":147,"y":158,"w":62,"h":45},
 	"sourceSize": {"w":321,"h":332}
 },
 "Models/FaceKoi/Eyes2Neutral.png":
@@ -410,8 +386,8 @@
 },
 "Models/FaceKoi/MouthFrown.png":
 {
-	"frame": {"x":2036,"y":2012,"w":32,"h":10},
-	"rotated": true,
+	"frame": {"x":2014,"y":2012,"w":32,"h":10},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":246,"w":32,"h":10},
 	"sourceSize": {"w":321,"h":332}
@@ -434,8 +410,8 @@
 },
 "Models/FaceKoi/MouthSmile.png":
 {
-	"frame": {"x":934,"y":1989,"w":31,"h":8},
-	"rotated": false,
+	"frame": {"x":1176,"y":1491,"w":31,"h":8},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":244,"w":31,"h":8},
 	"sourceSize": {"w":321,"h":332}
@@ -446,6 +422,38 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":243,"w":29,"h":11},
+	"sourceSize": {"w":321,"h":332}
+},
+"Models/FaceKoi/Whites2Closed.png":
+{
+	"frame": {"x":899,"y":1989,"w":65,"h":33},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":146,"y":158,"w":65,"h":33},
+	"sourceSize": {"w":321,"h":332}
+},
+"Models/FaceKoi/Whites2Neutral.png":
+{
+	"frame": {"x":1746,"y":1775,"w":65,"h":46},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":144,"y":158,"w":65,"h":46},
+	"sourceSize": {"w":321,"h":332}
+},
+"Models/FaceKoi/Whites2Surprised.png":
+{
+	"frame": {"x":1746,"y":1842,"w":65,"h":46},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":144,"y":158,"w":65,"h":46},
+	"sourceSize": {"w":321,"h":332}
+},
+"Models/FaceKoi/WhitesClosed.png":
+{
+	"frame": {"x":1,"y":1997,"w":50,"h":34},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":58,"y":168,"w":50,"h":34},
 	"sourceSize": {"w":321,"h":332}
 },
 "Models/Hair/Ahoge.png":
@@ -554,7 +562,7 @@
 },
 "Models/Warrior/ArmbandBoxtie.png":
 {
-	"frame": {"x":2014,"y":2012,"w":20,"h":34},
+	"frame": {"x":1746,"y":1909,"w":20,"h":34},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":454,"y":509,"w":20,"h":34},
@@ -562,15 +570,15 @@
 },
 "Models/Warrior/ArmbandFree.png":
 {
-	"frame": {"x":691,"y":1098,"w":20,"h":34},
-	"rotated": true,
+	"frame": {"x":1768,"y":1909,"w":20,"h":34},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":461,"y":506,"w":20,"h":34},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Warrior/ArmbandWristtie.png":
 {
-	"frame": {"x":667,"y":1098,"w":22,"h":22},
+	"frame": {"x":2014,"y":2024,"w":22,"h":22},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":467,"y":509,"w":22,"h":22},
@@ -624,6 +632,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:5209e693a3d7894b157d233b857f02ff:f2de03a30846aea0f463d09fae2f88e9:36651420b06b823727fd4db07f23075f$"
+	"smartupdate": "$TexturePacker:SmartUpdate:39e998090056ed78e353eb642fdce9fc:cee399575794b3732d70b018d7d5437c:36651420b06b823727fd4db07f23075f$"
 }
 }

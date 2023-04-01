@@ -682,7 +682,7 @@ function KDDrawWardrobe(screen, Character) {
 	DrawButtonKDEx("LoadFromCode", (bdata) => {
 		KinkyDungeonState = "LoadOutfit";
 
-		LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
+		//LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
 		CharacterReleaseTotal(KinkyDungeonPlayer);
 		ElementCreateTextArea("saveInputField");
 		ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
@@ -739,45 +739,21 @@ function KDSaveCodeOutfit() {
 	// Save outfit
 	KDChangeWardrobe(KinkyDungeonPlayer);
 	let decompressed = LZString.decompressFromBase64(ElementValue("saveInputField"));
-	let stringified = "";
 	if (decompressed) {
-		let origAppearance = KinkyDungeonPlayer.Appearance;
-		try {
-			CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed);
-			CharacterRefresh(KinkyDungeonPlayer);
-			KDInitProtectedGroups();
-			stringified = CharacterAppearanceStringify(KinkyDungeonPlayer);
-		} catch (e) {
-			// If we fail, it might be a BCX code. try it!
-			KinkyDungeonPlayer.Appearance = origAppearance;
-			try {
-				let parsed = JSON.parse(decompressed);
-				if (parsed.length > 0) {
-					if (!StandalonePatched) {
-						for (let g of parsed) {
-							InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
-						}
-						CharacterRefresh(KinkyDungeonPlayer);
-					}
-					KDInitProtectedGroups();
-					stringified = CharacterAppearanceStringify(KinkyDungeonPlayer);
-				} else {
-					console.log("Invalid code. Maybe its corrupt?");
-				}
-			} catch (error) {
-				console.log("Invalid code.");
-			}
-		}
+		CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed);
+		CharacterRefresh(KinkyDungeonPlayer);
+		KDInitProtectedGroups();
 	}
 
+	KinkyDungeonCheckClothesLoss = true;
 	KinkyDungeonDressPlayer();
-	if (stringified) {
+	/*if (stringified) {
 		localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, stringified);
 		KDSaveOutfitInfo();
 		KDRefreshOutfitInfo();
-	}
+	}*/
 
-	KinkyDungeonNewDress = true;
+	//KinkyDungeonNewDress = true;
 }
 
 function KDRestoreOutfit() {

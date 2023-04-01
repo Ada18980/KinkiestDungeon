@@ -27,6 +27,23 @@ AddModel({
 			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(EYE2POSES),
 		},
+		{ Name: "Whites", Layer: "Eyes", Pri: -1,
+			OffsetX: 942,
+			OffsetY: 200,
+			NoColorize: true,
+			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
+			AnchorModY: MODELHEIGHT/664,
+			Poses: ToMap(EYEPOSES),
+		},
+		{ Name: "Whites2", Layer: "Eyes", Pri: -1,
+			Sprite: "Whites",
+			OffsetX: 942,
+			OffsetY: 200,
+			NoColorize: true,
+			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
+			AnchorModY: MODELHEIGHT/664,
+			Poses: ToMap(EYE2POSES),
+		},
 	])
 });
 
@@ -121,6 +138,7 @@ AddModel({
 
 AddModel({
 	Name: "Body",
+	Group: "Body",
 	TopLevel: true,
 	Categories: ["Body"],
 	Folder: "Body",
@@ -492,6 +510,48 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "BanditPouch",
+	Folder: "Bandit",
+	Parent: "Bandit",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Pouch", Layer: "PantsAccRight", Pri: 14,
+			Poses: ToMap([...LEGPOSES]),
+		},
+	])
+});
+
+AddModel({
+	Name: "BanditKnee",
+	Folder: "Bandit",
+	Parent: "Bandit",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Knee", Layer: "KneeAccLeft", Pri: 15,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "BanditChoker",
+	Folder: "Bandit",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Choker", Layer: "Collar", Pri: 3,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
 AddModel({
 	Name: "BanditLeftWrist",
 	Folder: "Bandit",
@@ -584,6 +644,9 @@ AddModel({
 		...GetModelLayers("BanditBreastplate"),
 		...GetModelLayers("BanditWrist"),
 		...GetModelLayers("BanditShoes"),
+		...GetModelLayers("BanditPouch"),
+		...GetModelLayers("BanditKnee"),
+		...GetModelLayers("BanditChoker"),
 	])
 });
 

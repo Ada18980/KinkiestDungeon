@@ -1,8 +1,12 @@
+const PIXIWidth = 2000;
+const PIXIHeight = 1000;
+
 var PIXIapp = new PIXI.Application({
 	antialias: false,
-	width: 2000,
-	height: 1000,
+	width: PIXIWidth,
+	height: PIXIHeight,
 });
+
 
 document.body.appendChild(PIXIapp.view);
 

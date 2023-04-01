@@ -71,7 +71,11 @@ let LAYERS_BASE = [
 	// Lower body clothes with a bit more bulk
 	"SkirtDeco",
 	"Skirt",
+	"KneeAccLeft",
+	"PantsAccLeft",
 	"PantLeft",
+	"KneeAccRight",
+	"PantsAccRight",
 	"PantRight",
 	"Pants",
 	"BeltBack",
@@ -150,11 +154,38 @@ let LayerProperties = {
 	Mouth: {
 		Parent: "Head",
 	},
+	Blush: {
+		Parent: "Head",
+	},
+	Brows: {
+		Parent: "Head",
+	},
 	Ears: {
 		Parent: "Head",
 	},
 	Nose: {
 		Parent: "Head",
+	},
+};
+
+let Hardpoints = {
+	Front: {
+		Parent: "Torso",
+		X: 1162,
+		Y: 1790,
+		Angle: Math.PI*1.5,
+	},
+	Rear: {
+		Parent: "Torso",
+		X: 1127,
+		Y: 1799,
+		Angle: Math.PI*1.5,
+	},
+	Chest: {
+		Parent: "Torso",
+		X: 1144,
+		Y: 1127,
+		Angle: Math.PI*1.0,
 	},
 };
 
