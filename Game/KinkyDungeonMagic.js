@@ -1040,7 +1040,7 @@ function KinkyDungeonDrawMagic() {
 
 
 let selectedFilters = ["learnable"];
-let genericfilters = ['learnable', 'unlearned', 'noupgrade', 'yesupgrade', "upcast"];
+let genericfilters = ['learnable', 'unlearned', 'learned', 'noupgrade', 'yesupgrade', "upcast"];
 
 let KDSpellListIndex = 0;
 let KDSpellListIndexVis = 0;
@@ -1123,8 +1123,8 @@ function KinkyDungeonListSpells(Mode) {
 				else
 					selectedFilters.push(f);
 				return true;
-			}, true, canvasOffsetX_ui + x, y, buttonwidth, 36, TextGet("KinkyDungeonFilter" + f), selectedFilters.includes(f) ? "#ffffff" : "#999999", ticked ? (KinkyDungeonRootDirectory + "UI/Tick.png") : "", "", false, true);
-			y += 42;
+			}, true, canvasOffsetX_ui + x, y, buttonwidth, 32, TextGet("KinkyDungeonFilter" + f), selectedFilters.includes(f) ? "#ffffff" : "#999999", ticked ? (KinkyDungeonRootDirectory + "UI/Tick.png") : "", "", false, true, undefined, 22);
+			y += 38;
 		}
 	}
 
@@ -1178,6 +1178,7 @@ function KinkyDungeonListSpells(Mode) {
 				&& (selectedFilters.length == 0 || (selectedFilters.every((element) => {return genericfilters.includes(element) || (spell.tags && spell.tags.includes(element));})))
 				&& (!selectedFilters.includes("learnable") || (prereq || learned || prereqHost))
 				&& (!selectedFilters.includes("unlearned") || (!learned))
+				&& (!selectedFilters.includes("learned") || (learned))
 				&& (!selectedFilters.includes("noupgrade") || (!upgrade && !upcast))
 				&& (!selectedFilters.includes("yesupgrade") || (upgrade || passive))
 				&& (!selectedFilters.includes("upcast") || (upcast))) {
