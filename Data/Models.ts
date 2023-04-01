@@ -1,6 +1,3 @@
-let KDCanvasRenderMap = new Map();
-KDCanvasRenderMap.set(KinkyDungeonCanvasPlayer, "temp");
-
 /**
  * Returns a table with the priorities for each layer based on order of the array
  */

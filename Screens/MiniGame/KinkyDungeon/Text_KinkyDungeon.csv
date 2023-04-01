@@ -4570,6 +4570,7 @@ KinkyDungeonColumnMisc,"Misc"
 
 KinkyDungeonFilterlearnable,Learnable
 KinkyDungeonFilterunlearned,Unlearned
+KinkyDungeonFilterlearned,Learned
 KinkyDungeonFilternoupgrade,Excl. Upgrades
 KinkyDungeonFilteryesupgrade,Passive
 KinkyDungeonFilterupcast,Upcast
