@@ -176,7 +176,6 @@ function KDCanUpcast() {
 	return false;
 }
 
-// @ts-ignore
 function KDEmpower(data, entity) {
 	let Level = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellEmpower");
 	if (!KDCanUpcast()) {
@@ -820,9 +819,7 @@ function KinkyDungeonCheckSpellPrerequisite(spell) {
 // now only fix chinese
 function KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthEnglish) {
 	try {
-		// @ts-ignore
 		if (KDBigLanguages.includes(TranslationLanguage) && guessLanguage) {
-			// @ts-ignore
 			let languageName = guessLanguage.name(str);
 			// console.log('KinkyDungeonDetectLanguageForMaxWidth languageName', languageName);
 			if (languageName === "unknown") {
@@ -996,7 +993,6 @@ function KinkyDungeonDrawMagic() {
 					if (KinkyDungeonSpells[KinkyDungeonSpellChoices[I]])
 						KDDraw(kdcanvas, kdpixisprites, "kdspellPreview" + KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].name, KinkyDungeonRootDirectory + "Spells/" + KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].name + ".png", x - h, y, h, h);
 					DrawTextFitKD(`${1 + (I % KinkyDungeonSpellChoiceCountPerPage)}`, x - h, y + h*0.5, h*0.25, "#efefef", "#888888");
-					// @ts-ignore
 					DrawButtonKDEx("SpellSlotBook" + I, (bdata) => {
 						if (KinkyDungeonSpells[KinkyDungeonSpellChoices[I]] == spell) {
 							KDSendInput("spellRemove", {I:I});
@@ -1068,7 +1064,6 @@ function KDFilterSpellPageNames() {
 	return pages;
 }
 
-// @ts-ignore
 function KDCorrectCurrentSpellPage(pages) {
 	let ret = 0;
 	for (let i = 0; i < KinkyDungeonCurrentSpellsPage; i++) {
@@ -1116,7 +1111,6 @@ function KinkyDungeonListSpells(Mode) {
 		// Now we have our total filters, time to draw
 		for (let f of filterlist) {
 			let ticked = selectedFilters.includes(f);
-			// @ts-ignore
 			DrawButtonKDEx("filter" + f, (bdata) => {
 				if (selectedFilters.includes(f))
 					selectedFilters.splice(selectedFilters.indexOf(f), 1);
@@ -1143,12 +1137,10 @@ function KinkyDungeonListSpells(Mode) {
 	}
 	if (KDSpellListIndex > longestList) KDSpellListIndex = 0;
 
-	// @ts-ignore
 	DrawButtonKDEx("spellsUp", (bdata) => {
 		KDSpellListIndex = Math.max(0, KDSpellListIndex - 3);
 		return true;
 	}, KDSpellListIndex > 0, 910, 800, 90, 40, "", KDSpellListIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
-	// @ts-ignore
 	DrawButtonKDEx("spellsDown", (bdata) => {
 		KDSpellListIndex = Math.max(0, Math.min(longestList - KDMaxSpellPerColumn + 1, KDSpellListIndex + 3));
 		return true;
@@ -1272,14 +1264,12 @@ function KinkyDungeonListSpells(Mode) {
 	let right = adjLists.right;
 
 	drawVertList(left.reverse(), canvasOffsetX_ui + 200/2 + 100, 100, 200, 25, 5, 18, (data) => {
-		// @ts-ignore
 		return (bdata) => {
 			KinkyDungeonCurrentSpellsPage = procList.indexOf(data.name);
 			return true;
 		};
 	}, "KinkyDungeonSpellsPage");
 	drawVertList(right, canvasOffsetX_ui - 200/2 + 1050, 100, 200, 25, 5, 18, (data) => {
-		// @ts-ignore
 		return (bdata) => {
 			KinkyDungeonCurrentSpellsPage = procList.indexOf(data.name);
 			return true;

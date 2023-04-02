@@ -33,7 +33,7 @@ let lastKDMusicTick = 0;
 
 function KDUpdateMusic() {
 
-	if (KDPatched) {
+	if (StandalonePatched) {
 		KDCurrentMusicSoundUpdate = false;
 		let KDMusic = KinkyDungeonMapParams[KDGetCheckpoint()].music;
 
@@ -89,10 +89,9 @@ function KDPlayMusic(Sound, Volume) {
 	let vol = Player.AudioSettings.Volume * (Volume != undefined ? Volume : 1.0);
 	KDCurrentMusicSound = audio;
 	KDCurrentMusicSoundUpdate = true;
-	if (ServerURL == 'foobar') {
+	if (StandalonePatched) {
 		audio.crossOrigin = "Anonymous";
-		// @ts-ignore
-		audio.src = remap("Music/" + (KDModFiles[Sound] || Sound));
+		audio.src = "Music/" + (KDModFiles[Sound] || Sound);
 	} else
 		audio.src = "Music/" + (KDModFiles[Sound] || Sound);
 	audio.volume = Math.min(vol, 1);

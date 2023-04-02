@@ -716,25 +716,7 @@ interface Character {
 	MemberNumber?: number;
 
 	ArousalSettings?: {
-		Active: string;
-		Visible: string;
-		ShowOtherMeter: boolean;
-		AffectExpression: boolean;
-		AffectStutter: string;
-		VFX: string;
-		VFXVibrator: string;
 		VFXFilter: string;
-		Progress: number;
-		ProgressTimer: number;
-		VibratorLevel: number;
-		ChangeTime: number;
-		Activity: any[];
-		Zone: any[];
-		Fetish: any[];
-		OrgasmTimer?: number;
-		OrgasmStage?: number;
-		OrgasmCount?: number;
-		DisableAdvancedVibes: boolean;
 	};
 	AppearanceFull?: Item[];
 	// Online character properties
@@ -744,12 +726,9 @@ interface Character {
 	Creation?: any;
 	Description?: any;
 	OnlineSharedSettings?: {
-		AllowFullWardrobeAccess: boolean;
-		BlockBodyCosplay: boolean;
-		AllowPlayerLeashing: boolean;
-		DisablePickingLocksOnSelf: boolean;
-		GameVersion: string;
-		ItemsAffectExpressions: boolean;
+		AllowFullWardrobeAccess?: boolean;
+		BlockBodyCosplay?: boolean;
+		ItemsAffectExpressions?: boolean;
 	};
 	Game?: {
 		LARP?: GameLARPParameters,
@@ -900,12 +879,6 @@ interface PlayerCharacter extends Character {
 	};
 	AudioSettings?: {
 		Volume: number;
-		PlayBeeps: boolean;
-		/** Play items sounds in chatrooms */
-		PlayItem: boolean;
-		/** Play sounds only if the player is involved */
-		PlayItemPlayerOnly: boolean;
-		Notifications: boolean;
 	};
 	GameplaySettings?: {
 		SensDepChatLog: string;
@@ -915,16 +888,6 @@ interface PlayerCharacter extends Character {
 		EnableSafeword: boolean;
 		DisableAutoMaid: boolean;
 		OfflineLockedRestrained: boolean;
-	};
-	ImmersionSettings?: {
-		BlockGaggedOOC: boolean;
-		StimulationEvents: boolean;
-		ReturnToChatRoom: boolean;
-		ReturnToChatRoomAdmin: boolean;
-		SenseDepMessages: boolean;
-		ChatRoomMuffle: boolean;
-		BlindAdjacent: boolean;
-		AllowTints: boolean;
 	};
 	RestrictionSettings?: {
 		BypassStruggle: boolean;
@@ -942,15 +905,8 @@ interface PlayerCharacter extends Character {
 		EnableAfkTimer: boolean;
 	};
 	GraphicsSettings?: {
-		Font: string;
-		InvertRoom: boolean;
-		StimulationFlashes: boolean;
-		DoBlindFlash: boolean;
-		AnimationQuality: number;
-		StimulationFlash: boolean;
-		SmoothZoom: boolean;
-		CenterChatrooms: boolean;
-		AllowBlur: boolean;
+		Font?: string;
+		AnimationQuality?: number;
 	}
 	NotificationSettings?: {
 		/** @deprecated */
@@ -2209,4 +2165,13 @@ interface InventoryItem {
 interface NotificationSetting {
 	AlertType: number;
 	Audio: number;
+}
+
+// External globals, added by other libraries
+interface Window {
+	dataLayer?: {
+		push(data: object): void
+	} | undefined;
+
+	WebFontConfig: object;
 }

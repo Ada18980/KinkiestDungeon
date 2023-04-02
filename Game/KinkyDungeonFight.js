@@ -156,8 +156,6 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 		KinkyDungeonSendEvent("calcDamage", {flags: flags});
 
 	let damage = KinkyDungeonPlayerDamageDefault;
-	// @ts-ignore
-	KinkyDungeonPlayerDamage = {};
 	let weapon = KinkyDungeonWeapons[KinkyDungeonPlayerWeapon];
 	if (weapon && weapon.noHands) HandsFree = true;
 	if (!HandsFree || (KinkyDungeonStatsChoice.get("Brawler") && !KinkyDungeonPlayerWeapon)) {
@@ -168,7 +166,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 		damage = KinkyDungeonWeapons[KinkyDungeonPlayerWeapon];
 	}
 
-	Object.assign(KinkyDungeonPlayerDamage, damage);
+	KinkyDungeonPlayerDamage = Object.assign({}, damage);
 
 	let handBondage = KDHandBondageTotal();
 	if (handBondage && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {

@@ -13,15 +13,10 @@ document.body.appendChild(PIXIapp.view);
 PIXIapp.stage.addChild(kdcanvas);
 PIXIapp.stage.addChild(kdui);
 
-function AssetGet(arg1, arg2, arg3) {
-	return undefined;
-}
-
 window.onload = function() {
 	KinkyDungeonRootDirectory = "Game/";
 
 	// window.onload in index.html
-	ServerURL = "foobar";
 	CommonIsMobile = CommonDetectMobile();
 	TranslationLoad();
 	DrawLoad();
@@ -32,17 +27,9 @@ window.onload = function() {
 	CharacterNextId = 1;
 	CharacterReset(0, "Female3DCG");
 
-	// @ts-ignore
-	Player.ArousalSettings = {};
-	Player.ArousalSettings.VFXFilter = "VFXFilterHeavy";
-	// @ts-ignore
-	Player.OnlineSharedSettings = {};
-	Player.OnlineSharedSettings.ItemsAffectExpressions = true;
-	// @ts-ignore
-	Player.AudioSettings = {};
-	Player.AudioSettings.Volume = 1;
-	// @ts-ignore
-	Player.ImmersionSettings = {};
+	Player.ArousalSettings = { VFXFilter: "VFXFilterHeavy" };
+	Player.OnlineSharedSettings = { ItemsAffectExpressions: true };
+	Player.AudioSettings = { Volume: 1 };
 
 	CurrentCharacter = null;
 
@@ -88,14 +75,13 @@ window.onload = function() {
 	//MainRun(0);
 };
 
-let TimerRunInterval = 0;
-let TimerLastTime = 0;
-let CurrentTime = 0;
-let TimerLastCycleCall = 0;
+let TimerRunInterval: number = 0;
+let TimerLastTime: number = 0;
+let CurrentTime: number = 0;
+let TimerLastCycleCall: number = 0;
 
 /**
  * Main game running state, runs the drawing
- * @param Timestamp
  */
 function MainRun(Timestamp: number): void {
 	DrawProcess(Timestamp);
@@ -165,7 +151,7 @@ function TouchMove(touch: Touch): void {
 /**
  * When mouse move, we keep the mouse position for other scripts
  */
-function MouseMove(event: MouseEvent) {
+function MouseMove(event: MouseEvent): void {
 	if (PIXICanvas) {
 		MouseX = Math.round(event.offsetX * 2000 / PIXICanvas.clientWidth);
 		MouseY = Math.round(event.offsetY * 1000 / PIXICanvas.clientHeight);
@@ -176,7 +162,7 @@ function MouseMove(event: MouseEvent) {
  * When the mouse is away from the control, we stop keeping the coordinates,
  * we also check for false positives with "relatedTarget"
  */
-function LoseFocus(event: MouseEvent) {
+function LoseFocus(event: MouseEvent): void {
 	if (event.relatedTarget || (event as any).toElement /* toElement is for IE browser compat */) {
 		MouseX = -1;
 		MouseY = -1;

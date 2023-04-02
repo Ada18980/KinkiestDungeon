@@ -738,7 +738,6 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 
 
 	DrawButtonKDEx("perks>", (bdata) => {
-		// @ts-ignore
 		if (catsdrawn > 2 && !(document.activeElement?.id == 'PerksFilter')) {
 			KDPerksIndex += 1;
 		}
@@ -746,7 +745,6 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 	}, true, 1750, 50, 100, 50, ">>", KDTextWhite);
 
 	DrawButtonKDEx("perks<", (bdata) => {
-		// @ts-ignore
 		if (KDPerksIndex > 0 && !(document.activeElement?.id == 'PerksFilter')) {
 			KDPerksIndex -= 1;
 		}

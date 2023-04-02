@@ -1345,7 +1345,7 @@ function KinkyDungeonHandleInventoryEvent(Event, kinkyDungeonEvent, item, data) 
 /**
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, entity, *): void>>}
  */
-let KDEventMapBuff = {
+const KDEventMapBuff = {
 	"beforeDamageEnemy": {
 		"Conduction": (e, buff, entity, data) => {
 			if (data.enemy == entity && (!data.flags || !data.flags.includes("EchoDamage")) && data.dmg > 0 && (!e.damage || e.damage == data.type)) {
@@ -1483,7 +1483,6 @@ let KDEventMapBuff = {
 					// Player attacking = hostile?
 					// Enemy attacking enemy? hostile
 					&& (data.attacker.player || !data.target.player || KinkyDungeonAggressive(data.attacker))))) {
-				// @ts-ignore
 				KinkyDungeonCastSpell(data.attacker.x, data.attacker.y, KinkyDungeonFindSpell(e.spell, true), undefined, undefined, undefined, entity.player ? "Player" : KDGetFaction(entity));
 				if (e.requiredTag)
 					KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, e.requiredTag, 1);
@@ -1572,7 +1571,6 @@ let KDEventMapBuff = {
 			let bb = Object.assign({}, KDConduction);
 			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
-			// @ts-ignore
 			if (entity.player) {
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, bb);
 			} else {
@@ -1584,7 +1582,6 @@ let KDEventMapBuff = {
 			let bb = Object.assign({}, KDSlowed);
 			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
-			// @ts-ignore
 			if (entity.player) {
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, bb);
 			} else {
@@ -1601,7 +1598,6 @@ let KDEventMapBuff = {
 			let bb = Object.assign({}, KDAttackSlow);
 			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
-			// @ts-ignore
 			if (entity.player) {
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, bb);
 			} else {
@@ -1620,7 +1616,6 @@ let KDEventMapBuff = {
 			let bb = Object.assign({}, KDGlueVulnLow);
 			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
-			// @ts-ignore
 			if (entity.player) {
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, bb);
 			} else {
@@ -1740,7 +1735,6 @@ let KDEventMapBuff = {
 			let bb = Object.assign({}, KDConduction);
 			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
-			// @ts-ignore
 			if (entity.player) {
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, bb);
 			} else {
@@ -1753,7 +1747,6 @@ let KDEventMapBuff = {
 			let bb = Object.assign({}, KDSlowed);
 			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
-			// @ts-ignore
 			if (entity.player) {
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, bb);
 			} else {
@@ -1771,7 +1764,6 @@ let KDEventMapBuff = {
 			let bb = Object.assign({}, KDAttackSlow);
 			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
-			// @ts-ignore
 			if (entity.player) {
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, bb);
 			} else {
@@ -1791,7 +1783,6 @@ let KDEventMapBuff = {
 			let bb = Object.assign({}, KDGlueVulnLow);
 			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
-			// @ts-ignore
 			if (entity.player) {
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, bb);
 			} else {

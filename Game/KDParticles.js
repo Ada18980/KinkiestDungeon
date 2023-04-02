@@ -31,7 +31,6 @@ function KDAddParticle(x, y, img, type, data) {
 			phase: data.phase || 0,
 		});
 		// Create the sprite
-		// @ts-ignore
 		let sprite = PIXI.Sprite.from(tex);
 		sprite.position.x = x;
 		sprite.position.y = y;

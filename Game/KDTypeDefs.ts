@@ -2042,6 +2042,9 @@ type KDExpression = {
 	};
 }
 
+type KDSprites = {[_: string]: (x: number, y: number, fog: boolean, noReplace: string) => string}
+
 declare const PIXI: any;
 declare const __filters: any;
 declare const zip: any;
+declare const guessLanguage: any;

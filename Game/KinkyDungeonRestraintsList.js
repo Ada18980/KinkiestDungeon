@@ -1946,7 +1946,6 @@ const KinkyDungeonRestraints = [
 
 (() => {
 	let afterload = KDModsAfterLoad;
-	// @ts-ignore
 	KDModsAfterLoad = () => {
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "Breastplate",

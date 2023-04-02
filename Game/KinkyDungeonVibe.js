@@ -100,10 +100,9 @@ function KDUpdateVibeSound(Location, Sound, Volume) {
 			if (KDVibeSounds[Location].vol) vol *= KDVibeSounds[Location].vol;
 			KDVibeSounds[Location].Audio = audio;
 			KDVibeSounds[Location].update = true;
-			if (ServerURL == 'foobar') {
+			if (StandalonePatched) {
 				audio.crossOrigin = "Anonymous";
-				// @ts-ignore
-				audio.src = remap(Sound);
+				audio.src = Sound;
 			} else
 				audio.src = KDModFiles[Sound] || Sound;
 			audio.volume = Math.min(vol, 1);

@@ -264,11 +264,8 @@ function KDDrawTileEditor() {
 			}
 			if (!pixirendererKD) {
 				if (KinkyDungeonContext && KinkyDungeonCanvas) {
-					// @ts-ignore
 					pixirendererKD = new PIXI.CanvasRenderer({
-						// @ts-ignore
 						width: KinkyDungeonCanvas.width,
-						// @ts-ignore
 						height: KinkyDungeonCanvas.height,
 						view: KinkyDungeonCanvas,
 						antialias: true,
