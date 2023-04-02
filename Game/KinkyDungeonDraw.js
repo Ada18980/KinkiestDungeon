@@ -14,7 +14,7 @@ let KDIntenseFilter = null;
 
 // PIXI experimental
 /** @type HTMLCanvasElement */
-let pixiview = KinkyDungeonGetCanvas("MainCanvas");
+let pixiview = null;
 let pixirenderer = null;
 let pixirendererKD = null;
 let kdgamefog = new PIXI.Graphics();
@@ -2704,7 +2704,7 @@ function KDTex(Image) {
 
 /**
  *
- * @param {string|string[]} str
+ * @param {string} str
  * @returns
  */
 function string2hex(str) {

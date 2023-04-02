@@ -1,7 +1,7 @@
 const PIXIWidth = 2000;
 const PIXIHeight = 1000;
 
-var PIXIapp = new PIXI.Application({
+const PIXIapp = new PIXI.Application({
 	antialias: false,
 	width: PIXIWidth,
 	height: PIXIHeight,
@@ -15,6 +15,7 @@ PIXIapp.stage.addChild(kdui);
 
 window.onload = function() {
 	KinkyDungeonRootDirectory = "Game/";
+	pixiview = KinkyDungeonGetCanvas("MainCanvas");
 
 	// window.onload in index.html
 	CommonIsMobile = CommonDetectMobile();

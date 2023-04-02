@@ -74,9 +74,9 @@ function DrawLoad(): void {
 
 	PIXIApp = new PIXI.Application({
 		view: PIXICanvas,
-		background: '#1099bb'
+		backgroundColor: 0x1099bb
 	});
-	PIXICanvas = document.getElementById("MainCanvas");
+	PIXICanvas = KinkyDungeonGetCanvas("MainCanvas");
 	// OLD BC
 	// Creates the objects used in the game
 	//MainCanvas = /** @type {HTMLCanvasElement} */ (document.getElementById("MainCanvas")).getContext("2d");

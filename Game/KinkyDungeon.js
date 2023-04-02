@@ -779,7 +779,7 @@ function KinkyDungeonRun() {
 			for (let Container of MC.Containers.entries()) {
 
 				if (!MC.ContainersDrawn.has(Container[0]) && Container[1]) {
-					Container[1].Container.parent.removeChild(Container[1]);
+					Container[1].Container.parent.removeChild(Container[1].Container);
 					MC.Containers.delete(Container[0]);
 					Container[1].Container.destroy();
 				}

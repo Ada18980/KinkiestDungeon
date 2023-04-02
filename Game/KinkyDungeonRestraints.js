@@ -221,6 +221,7 @@ function KinkyDungeonDrawTethers(Entity, CamX, CamY) {
 			let dd = 0.1; // Increments
 			let color = KDRestraint(inv).Color[0]?.length > 3 ? KDRestraint(inv).Color[0] : KDRestraint(inv).Color;
 			if (!color || color == "Default") color = "#aaaaaa";
+			if (Array.isArray(color)) color = color[0];
 			KDTetherGraphics.lineStyle(4, string2hex(color), 1);
 			for (let d = 0; d < 1; d += dd) {
 				let yOffset = 30 * Math.sin(Math.PI * d);
