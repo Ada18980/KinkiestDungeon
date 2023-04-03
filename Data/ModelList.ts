@@ -350,13 +350,13 @@ AddModel({
 	Layers: ToLayerMap([
 		// Duplicate yoked is to override Closed override
 		{ Name: "Shoulders", Layer: "Shoulders", Pri: 10,
-			Poses: ToMap(["Yoked", "Spread", "Closed", "Kneel"]),
+			Poses: ToMap(["Yoked", "Up", "Spread", "Closed", "Kneel"]),
 			MorphPoses: {Yoked: "Yoked", Closed: "Spread"},
 		},
 		{ Name: "ShouldersHogtie", Layer: "Shoulders", Pri: 10,
-			Poses: ToMapSubtract([...ARMPOSES, "Hogtie"], ["Wristtie", "Yoked"]),
+			Poses: ToMapSubtract([...ARMPOSES, "Hogtie"], ["Wristtie", "Yoked", "Up"]),
 			GlobalDefaultOverride: ToMap(["Hogtie"]),
-			HidePoses: ToMap(["Spread", "Closed", "Yoked"]),
+			HidePoses: ToMap(["Spread", "Closed", "Yoked", "Up"]),
 			MorphPoses: {Boxtie: "Free", Free: "Free", Hogtie: ""},
 		},
 		{ Name: "Coat", Layer: "Coat", Pri: 0,

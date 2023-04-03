@@ -155,7 +155,7 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>1</uint>
+            <uint>0</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
@@ -182,7 +182,9 @@
             <key type="filename">../Models/ArmorChain/Shirt.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChest.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChestHogtie.png</key>
+            <key type="filename">../Models/ArmorChain/ShirtChestUp.png</key>
             <key type="filename">../Models/ArmorChain/ShirtHogtie.png</key>
+            <key type="filename">../Models/ArmorChain/ShirtUp.png</key>
             <key type="filename">../Models/ArmorChain/Skirt.png</key>
             <key type="filename">../Models/ArmorChain/SkirtHogtie.png</key>
             <key type="filename">../Models/ArmorChain/SkirtKneel.png</key>
@@ -210,11 +212,9 @@
             <key type="filename">../Models/Bandit/Choker.png</key>
             <key type="filename">../Models/Bandit/ChokerHogtie.png</key>
             <key type="filename">../Models/Bandit/KneeClosed.png</key>
-            <key type="filename">../Models/Bandit/KneeHogtie.png</key>
             <key type="filename">../Models/Bandit/KneeKneel.png</key>
             <key type="filename">../Models/Bandit/KneeSpread.png</key>
             <key type="filename">../Models/Bandit/PouchClosed.png</key>
-            <key type="filename">../Models/Bandit/PouchHogtie.png</key>
             <key type="filename">../Models/Bandit/PouchKneel.png</key>
             <key type="filename">../Models/Bandit/PouchSpread.png</key>
             <key type="filename">../Models/Bandit/ShoeLeftClosed.png</key>
@@ -239,11 +239,13 @@
             <key type="filename">../Models/Body/ArmLeftBoxtie.png</key>
             <key type="filename">../Models/Body/ArmLeftFree.png</key>
             <key type="filename">../Models/Body/ArmLeftFront.png</key>
+            <key type="filename">../Models/Body/ArmLeftUp.png</key>
             <key type="filename">../Models/Body/ArmLeftWristtie.png</key>
             <key type="filename">../Models/Body/ArmLeftYoked.png</key>
             <key type="filename">../Models/Body/ArmRightBoxtie.png</key>
             <key type="filename">../Models/Body/ArmRightFree.png</key>
             <key type="filename">../Models/Body/ArmRightFront.png</key>
+            <key type="filename">../Models/Body/ArmRightUp.png</key>
             <key type="filename">../Models/Body/ArmRightWristtie.png</key>
             <key type="filename">../Models/Body/ArmRightYoked.png</key>
             <key type="filename">../Models/Body/ButtKneel.png</key>
@@ -275,6 +277,8 @@
             <key type="filename">../Models/Body/LegRightHogtie.png</key>
             <key type="filename">../Models/Body/LegRightKneel.png</key>
             <key type="filename">../Models/Body/LegRightSpread.png</key>
+            <key type="filename">../Models/Body/ShoulderLeftUp.png</key>
+            <key type="filename">../Models/Body/ShoulderRightUp.png</key>
             <key type="filename">../Models/Body/Torso.png</key>
             <key type="filename">../Models/Bunny/ArmLeftBoxtie.png</key>
             <key type="filename">../Models/Bunny/ArmLeftFree.png</key>
@@ -293,12 +297,14 @@
             <key type="filename">../Models/Catsuit/ArmLeftFree.png</key>
             <key type="filename">../Models/Catsuit/ArmLeftFront.png</key>
             <key type="filename">../Models/Catsuit/ArmLeftHogtie.png</key>
+            <key type="filename">../Models/Catsuit/ArmLeftUp.png</key>
             <key type="filename">../Models/Catsuit/ArmLeftWristtie.png</key>
             <key type="filename">../Models/Catsuit/ArmLeftYoked.png</key>
             <key type="filename">../Models/Catsuit/ArmRightBoxtie.png</key>
             <key type="filename">../Models/Catsuit/ArmRightFree.png</key>
             <key type="filename">../Models/Catsuit/ArmRightFront.png</key>
             <key type="filename">../Models/Catsuit/ArmRightHogtie.png</key>
+            <key type="filename">../Models/Catsuit/ArmRightUp.png</key>
             <key type="filename">../Models/Catsuit/ArmRightWristtie.png</key>
             <key type="filename">../Models/Catsuit/ArmRightYoked.png</key>
             <key type="filename">../Models/Catsuit/ButtHogtie.png</key>
@@ -321,7 +327,6 @@
             <key type="filename">../Models/Catsuit/HandRightFree.png</key>
             <key type="filename">../Models/Catsuit/HandRightFront.png</key>
             <key type="filename">../Models/Catsuit/HandRightYoked.png</key>
-            <key type="filename">../Models/Catsuit/LatexHogtie.png</key>
             <key type="filename">../Models/Catsuit/LegLeftClosed.png</key>
             <key type="filename">../Models/Catsuit/LegLeftHogtie.png</key>
             <key type="filename">../Models/Catsuit/LegLeftKneel.png</key>
@@ -330,6 +335,8 @@
             <key type="filename">../Models/Catsuit/LegRightHogtie.png</key>
             <key type="filename">../Models/Catsuit/LegRightKneel.png</key>
             <key type="filename">../Models/Catsuit/LegRightSpread.png</key>
+            <key type="filename">../Models/Catsuit/ShoulderLeftUp.png</key>
+            <key type="filename">../Models/Catsuit/ShoulderRightUp.png</key>
             <key type="filename">../Models/Catsuit/SleevelessTorsoUpper.png</key>
             <key type="filename">../Models/Catsuit/SleevelessTorsoUpperHogtie.png</key>
             <key type="filename">../Models/Catsuit/TorsoBand.png</key>
@@ -352,6 +359,7 @@
             <key type="filename">../Models/Labcoat/ShouldersHogtieFree.png</key>
             <key type="filename">../Models/Labcoat/ShouldersKneel.png</key>
             <key type="filename">../Models/Labcoat/ShouldersSpread.png</key>
+            <key type="filename">../Models/Labcoat/ShouldersUp.png</key>
             <key type="filename">../Models/Labcoat/ShouldersYoked.png</key>
             <key type="filename">../Models/Maid/Apron.png</key>
             <key type="filename">../Models/Maid/ApronKneel.png</key>
@@ -525,15 +533,15 @@
             <key type="filename">../Models/FaceKoi/MouthPout.png</key>
             <key type="filename">../Models/FaceKoi/MouthSmile.png</key>
             <key type="filename">../Models/FaceKoi/MouthSurprised.png</key>
-            <key type="filename">../Models/FaceKoi/Whites2Angry.png</key>
-            <key type="filename">../Models/FaceKoi/Whites2Closed.png</key>
-            <key type="filename">../Models/FaceKoi/Whites2Dazed.png</key>
-            <key type="filename">../Models/FaceKoi/Whites2Neutral.png</key>
-            <key type="filename">../Models/FaceKoi/Whites2Surprised.png</key>
-            <key type="filename">../Models/FaceKoi/WhitesAngry.png</key>
-            <key type="filename">../Models/FaceKoi/WhitesClosed.png</key>
-            <key type="filename">../Models/FaceKoi/WhitesDazed.png</key>
-            <key type="filename">../Models/FaceKoi/WhitesNeutral.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesEyes2Angry.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesEyes2Closed.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesEyes2Dazed.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesEyes2Neutral.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesEyes2Surprised.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesEyesAngry.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesEyesClosed.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesEyesDazed.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesEyesNeutral.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
