@@ -200,13 +200,14 @@ function KinkyDungeonItemEvent(Item) {
 	} else if (Item.name == "Heart") {
 		if (KinkyDungeonStatDistractionMax >= KDMaxStat && KinkyDungeonStatStaminaMax >= KDMaxStat && KinkyDungeonStatManaMax >= KDMaxStat && KinkyDungeonStatWillMax >= KDMaxStat) {
 			KinkyDungeonDrawState = "Game";
-			KinkyDungeonChangeStamina(30);
+			KinkyDungeonChangeStamina(10);
 			KinkyDungeonChangeMana(5);
-			KinkyDungeonChangeWill(2.5);
+			KinkyDungeonChangeWill(5.0);
 			KDGameData.HeartTaken = true;
 		} else if (KinkyDungeonIsPlayer()) {
 			KinkyDungeonDrawState = "Heart";
 			KinkyDungeonInterruptSleep();
+			KinkyDungeonDialogueTimer = CommonTime() + 700;
 			KinkyDungeonSetFlag("NoDialogue", 3);
 		}
 	} else if (Item.name == "Keyring") {
@@ -285,23 +286,26 @@ function KinkyDungeonDrawHeart() {
 	DrawButtonKDEx("discardheart", (bdata) => {
 		KinkyDungeonDrawState = "Game";
 		return true;
-	}, true, 1000, 850, 450, 60, TextGet("KinkyDungeonHeartDiscard"), KinkyDungeonStatWillMax < KDMaxStat ? "#ffffff" : "#999999");
+	}, CommonTime() > KinkyDungeonDialogueTimer, 1000, 850, 450, 60, TextGet("KinkyDungeonHeartDiscard"), KinkyDungeonStatWillMax < KDMaxStat ? "#ffffff" : "#999999");
 }
 
 function KinkyDungeonHandleHeart() {
-	if (MouseIn(650, 700, 250, 60) && KinkyDungeonStatDistractionMax < KDMaxStat) {
-		KDSendInput("heart", {type: "AP"});
-		KinkyDungeonDrawState = "Game";
-	} else if (MouseIn(950, 700, 250, 60) && KinkyDungeonStatStaminaMax < KDMaxStat) {
-		KDSendInput("heart", {type: "SP"});
-		KinkyDungeonDrawState = "Game";
-	} else if (MouseIn(1250, 700, 250, 60) && KinkyDungeonStatManaMax < KDMaxStat) {
-		KDSendInput("heart", {type: "MP"});
-		KinkyDungeonDrawState = "Game";
-	} else if (MouseIn(1550, 700, 250, 60) && KinkyDungeonStatWillMax < KDMaxStat) {
-		KDSendInput("heart", {type: "WP"});
-		KinkyDungeonDrawState = "Game";
+	if (CommonTime() > KinkyDungeonDialogueTimer) {
+		if (MouseIn(650, 700, 250, 60) && KinkyDungeonStatDistractionMax < KDMaxStat) {
+			KDSendInput("heart", {type: "AP"});
+			KinkyDungeonDrawState = "Game";
+		} else if (MouseIn(950, 700, 250, 60) && KinkyDungeonStatStaminaMax < KDMaxStat) {
+			KDSendInput("heart", {type: "SP"});
+			KinkyDungeonDrawState = "Game";
+		} else if (MouseIn(1250, 700, 250, 60) && KinkyDungeonStatManaMax < KDMaxStat) {
+			KDSendInput("heart", {type: "MP"});
+			KinkyDungeonDrawState = "Game";
+		} else if (MouseIn(1550, 700, 250, 60) && KinkyDungeonStatWillMax < KDMaxStat) {
+			KDSendInput("heart", {type: "WP"});
+			KinkyDungeonDrawState = "Game";
+		}
 	}
+
 
 	return true;
 }

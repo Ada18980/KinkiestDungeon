@@ -1541,7 +1541,10 @@ function KinkyDungeonDrawGame() {
 					MiniGameKinkyDungeonLevel += 1;
 					return true;
 				}, true, 600, 560, 300, 64, "Increment Floor", "#ffffff", "");
-
+                DrawButtonKDEx("debugHeart", (bdata) => {
+                    KinkyDungeonGroundItems.push({x:KinkyDungeonPlayerEntity.x, y:KinkyDungeonPlayerEntity.y, name: "Heart"});
+                    return true;
+                }, true, 600, 640, 300, 64, "Spawn amulet", "#ffffff", "");
 
 			}
 		}
