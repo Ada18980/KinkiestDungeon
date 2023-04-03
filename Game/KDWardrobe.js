@@ -78,7 +78,7 @@ for (let i = 0; i < KDSavedColorCount; i++) {
 
 //KDTextField("MapTileSkin", 1000 - 400 - 100, 150, 200, 60,);
 
-let KDWardrobe_PoseArms = ["Free", "Boxtie", "Wristtie", "Yoked", "Front"];
+let KDWardrobe_PoseArms = ["Free", "Boxtie", "Wristtie", "Yoked", "Front", "Up"];
 let KDWardrobe_PoseLegs = ["Spread", "Closed", "Kneel", "Hogtie"];
 let KDWardrobe_PoseEyes = EYEPOSES;
 let KDWardrobe_PoseEyes2 = EYE2POSES;
@@ -238,7 +238,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 	}
 }
 
-function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false) {
+function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false, dress = false) {
 	let buttonClick = (arms, legs, eyes, eyes2, brows, brows2, blush, mouth, update = true) => {
 		return (bdata) => {
 			KDWardrobe_CurrentPoseArms = arms || KDWardrobe_CurrentPoseArms;
@@ -272,6 +272,10 @@ function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false) {
 					//KDGetPoseOfType(C, "Mouth"),
 				);
 				UpdateModels(KDCurrentModels.get(C));
+			}
+			if (dress) {
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer(C);
 			}
 
 			return true;

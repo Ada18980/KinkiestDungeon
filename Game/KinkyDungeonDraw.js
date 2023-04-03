@@ -3206,7 +3206,7 @@ function KDPlayerDrawPoseButtons(C) {
 	KDModalArea_y = 630;
 	KDModalArea_width = 1000;
 	KDModalArea_height = 370;
-	KDDrawPoseButtons(C, 700, 680, true);
+	KDDrawPoseButtons(C, 700, 680, true, true);
 	KDDesiredPlayerPose = {
 		Arms: KDWardrobe_CurrentPoseArms,
 		Legs: KDWardrobe_CurrentPoseLegs,

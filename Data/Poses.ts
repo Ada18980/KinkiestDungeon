@@ -1,8 +1,12 @@
-let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked", "Front"];
+let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked", "Front", "Up"];
 /** List of poses where the left wrist is invisible */
-let WRISTHIDELEFT = ["Boxtie", "Wristtie"];
+let WRISTHIDELEFT = ["Boxtie", "Wristtie", "Up"];
 /** List of poses where the right wrist is invisible */
-let WRISTHIDERIGHT = ["Boxtie", "Wristtie"];
+let WRISTHIDERIGHT = ["Boxtie", "Wristtie", "Up"];
+/** Poses where the torso needs a correction */
+let SHOULDERPOSES = ["Up"];
+/** Poses where the arms are hidden (usually b/c forearms are visible) */
+let HIDEARMPOSES = [];
 let FOREARMPOSES = ["Front"];
 let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked"];
 let HANDLEFTPOSES = ["Free", "Yoked"];
