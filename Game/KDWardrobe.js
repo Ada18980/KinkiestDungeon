@@ -79,7 +79,7 @@ for (let i = 0; i < KDSavedColorCount; i++) {
 //KDTextField("MapTileSkin", 1000 - 400 - 100, 150, 200, 60,);
 
 let KDWardrobe_PoseArms = ["Free", "Boxtie", "Wristtie", "Yoked", "Front", "Up"];
-let KDWardrobe_PoseLegs = ["Spread", "Closed", "Kneel", "Hogtie"];
+let KDWardrobe_PoseLegs = ["Spread", "Closed", "Kneel", "Hogtie", "KneelClosed",];
 let KDWardrobe_PoseEyes = EYEPOSES;
 let KDWardrobe_PoseEyes2 = EYE2POSES;
 let KDWardrobe_PoseBrows = BROWPOSES;

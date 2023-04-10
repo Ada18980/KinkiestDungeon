@@ -12,10 +12,10 @@ let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked"];
 let HANDLEFTPOSES = ["Free", "Yoked"];
 let FOREHANDRIGHTPOSES = ["Front"];
 let FOREHANDLEFTPOSES = ["Front"];
-let LEGPOSES = ["Spread", "Closed", "Kneel", "Hogtie"];
+let LEGPOSES = ["Spread", "Closed", "Kneel", "KneelClosed", "Hogtie"];
 let FOOTRIGHTPOSES = ["Spread", "Closed"];
-let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel"];
-let KNEELPOSES = ["Kneel"];
+let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel", "KneelClosed"];
+let KNEELPOSES = ["Kneel", "KneelClosed"];
 let STANDPOSES = ["Spread", "Closed"];
 /** Expressions */
 
@@ -50,6 +50,11 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 	Kneel: {
 		offset_y: 0.15,
 		pri_offset: 1,
+	},
+	KneelClosed: {
+		offset_y: 0.15,
+		pri_offset: 1,
+		global_default: "Kneel",
 	},
 	Front: {
 		global_default: "Boxtie",

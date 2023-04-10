@@ -193,18 +193,18 @@ function DrawProgressBar(x: number, y: number, w: number, h: number, value: numb
 		Height: h,
 		Color: "#ffffff",
 		LineWidth: 1,
-		zIndex: 100,
+		zIndex: 100.02,
 	});
-	DrawRectKD(kdcanvas, kdpixisprites, `progbar2,${x}_${y}_${w}_${h}_${value}`, {
+	FillRectKD(kdcanvas, kdpixisprites, `progbar2,${x}_${y}_${w}_${h}_${value}`, {
 		Left: x + 2,
 		Top: y + 2,
 		Width: Math.floor((w - 4) * value / 100),
 		Height: h - 4,
 		Color: foreground,
 		LineWidth: 1,
-		zIndex: 100,
+		zIndex: 100.01,
 	});
-	DrawRectKD(kdcanvas, kdpixisprites, `progbar3,${x}_${y}_${w}_${h}_${value}`, {
+	FillRectKD(kdcanvas, kdpixisprites, `progbar3,${x}_${y}_${w}_${h}_${value}`, {
 		Left:Math.floor(x + 2 + (w - 4) * value / 100),
 		Top: y + 2,
 		Width: Math.floor((w - 4) * (100 - value) / 100),
@@ -212,6 +212,7 @@ function DrawProgressBar(x: number, y: number, w: number, h: number, value: numb
 		Color: background,
 		LineWidth: 1,
 		zIndex: 100,
+		alpha: 0.8,
 	});
 }
 
