@@ -504,10 +504,12 @@ AddModel({
 	Name: "PlateBoots",
 	Folder: "ArmorPlate",
 	Parent: "PlateArmor",
+	TopLevel: true,
 	Categories: ["Shoes"],
 	Layers: ToLayerMap([
 		{ Name: "BootLeft", Layer: "ShoeLeft", Pri: 25,
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			HideWhenOverridden: true,
 		},
 		{ Name: "BootRight", Layer: "ShoeRight", Pri: 25,
@@ -1521,30 +1523,5 @@ AddModel({
 		...GetModelLayers("RobeSkirt"),
 		...GetModelLayers("RobeBra"),
 		...GetModelLayers("Ribbon"),
-	])
-});
-
-AddModel({
-	Name: "RopeArms",
-	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
-	Categories: ["Restraints"],
-	Layers: ToLayerMap([
-		{ Name: "ChestUpper", Layer: "ChestStraps", Pri: 0,
-			Poses: ToMap([...ARMPOSES]),
-			Invariant: true,
-		},
-		{ Name: "ShoulderStraps", Layer: "ChestStraps", Pri: 1,
-			Poses: ToMap([...ARMPOSES]),
-			Invariant: true,
-		},
-		{ Name: "ChestLower", Layer: "Underbust", Pri: 0,
-			Poses: ToMap([...ARMPOSES]),
-			Invariant: true,
-		},
-		{ Name: "Arms", Layer: "Underarms", Pri: 0,
-			Poses: ToMap(["Wristtie", "Boxtie"]),
-		},
 	])
 });
