@@ -173,7 +173,8 @@ function KinkyDungeonDressPlayer(Character) {
 			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
 				if (StandalonePatched) {
 					let model = KinkyDungeonPlayer.Appearance[A].Model;
-					if (!model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name]) {
+					if ((!model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name])
+						|| model.Protected || model.SuperProtected) {
 						//KinkyDungeonPlayer.Appearance.splice(A, 1);
 						//A -= 1;
 						newAppearance[model.Group || model.Name] = KinkyDungeonPlayer.Appearance[A];
@@ -681,8 +682,11 @@ function KDCharacterAppearanceNaked() {
 		if (StandalonePatched) {
 			if (!KinkyDungeonPlayer.Appearance[A].Model.Restraint){
 				// conditional filter
-				let f = !(KinkyDungeonPlayer.Appearance[A].Model.Group
-					&& (KDProtectedCosplay.includes(KinkyDungeonPlayer.Appearance[A].Model.Group)));
+				let f = !(KinkyDungeonPlayer.Appearance[A].Model
+					&& (
+						KDProtectedCosplay.includes(KinkyDungeonPlayer.Appearance[A].Model.Group)
+						|| KinkyDungeonPlayer.Appearance[A].Model.Protected
+						|| KinkyDungeonPlayer.Appearance[A].Model.SuperProtected));
 				if (!f){continue;}
 				KinkyDungeonPlayer.Appearance.splice(A, 1);
 			}
