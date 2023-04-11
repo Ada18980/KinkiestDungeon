@@ -2500,10 +2500,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 	let specialCondition = enemy.Enemy.specialAttack != undefined && (!enemy.specialCD || enemy.specialCD <= 0) && (!enemy.Enemy.specialMinrange || AIData.playerDist > enemy.Enemy.specialMinrange);
 	let specialConditionSpecial = (enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialCondition) ? KDSpecialConditions[enemy.Enemy.specialCondition].criteria(enemy, AIData) : true;
-	if (!enemy.attackPoints && specialCondition && specialConditionSpecial) {
+	if (specialCondition && specialConditionSpecial) {
 		AIData.attack = AIData.attack + enemy.Enemy.specialAttack;
-		AIData.refreshWarningTiles = !enemy.usingSpecial;
-		enemy.usingSpecial = true;
+		if (!enemy.attackPoints) {
+			AIData.refreshWarningTiles = !enemy.usingSpecial;
+			enemy.usingSpecial = true;
+		}
+
 		if (enemy.Enemy && enemy.Enemy.hitsfxSpecial) AIData.hitsfx = enemy.Enemy.hitsfxSpecial;
 
 		if (enemy.Enemy.specialRemove) AIData.attack = AIData.attack.replace(enemy.Enemy.specialRemove, "");
@@ -2794,6 +2797,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			AIData.kite = true;
 		} else
 			AIData.followRange = 1.5;
+	} else if (AIData.aggressive && enemy.attackPoints && !enemy.Enemy.attackWhileMoving && AIData.followRange < (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange) {
+		AIData.followRange = (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange;
 	}
 
 	if ((AIType.resetguardposition(enemy, player, AIData)) && (!enemy.gxx || !enemy.gyy)) {
