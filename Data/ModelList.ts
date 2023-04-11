@@ -478,8 +478,8 @@ AddModel({
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		{ Name: "Pauldrons", Layer: "Shoulders", Pri: 8,
-			Poses: ToMapSubtract([...ARMPOSES], [...HIDEARMPOSES], "Hogtie"),
-			MorphPoses: {Yoked: "Yoked", Hogtie: "Hogtie", Wristtie: "Free", Boxtie: "Free"},
+			Poses: ToMapSubtract([...ARMPOSES], [...HIDEARMPOSES, "Up"], "Hogtie"),
+			MorphPoses: {Yoked: "Yoked", Hogtie: "Hogtie", Wristtie: "Free", Boxtie: "Free", Front: "Free"},
 			HideWhenOverridden: true,
 		},
 	])

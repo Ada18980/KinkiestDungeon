@@ -350,7 +350,7 @@ function CharacterLoadNPC(NPCType: string): NPCCharacter {
  */
 function CharacterReleaseTotal(C: Character): void {
 	for (let E = C.Appearance.length - 1; E >= 0; E--) {
-		if (!(C.Appearance[E].Model?.Restraint == undefined)) {
+		if (C.Appearance[E].Model?.Restraint) {
 			C.Appearance.splice(E, 1);
 		}
 	}

@@ -4020,6 +4020,12 @@ function KDAddModel(C, Group, ItemModel, NewColor, filters, item) {
 			Filters: filters,
 		};
 		NA.Model.Filters = NA.Filters || NA.Model.Filters;
+		for (let i = 0; i < C.Appearance.length; i++) {
+			if (C.Appearance[i]?.Model?.Name == NA.Model.Name) {
+				C.Appearance[i] = NA;
+				return NA;
+			}
+		}
 		C.Appearance.push(NA);
 		return NA;
 	}

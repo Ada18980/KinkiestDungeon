@@ -982,6 +982,9 @@ function KinkyDungeonRun() {
 				KinkyDungeonInitializeDresses();
 				KDUpdateModelList();
 				KDRefreshOutfitInfo();
+				let orig = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
+				let current = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
+				if (orig != current) KDOriginalValue = orig;
 			}
 			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
 			if (appearance) {

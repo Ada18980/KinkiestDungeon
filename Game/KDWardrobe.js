@@ -665,8 +665,11 @@ function KDDrawWardrobe(screen, Character) {
 	DrawButtonKDEx("StripOutfit", (bdata) => {
 		if (KDConfirmType == "strip" && KinkyDungeonReplaceConfirm > 0) {
 			KDChangeWardrobe(C);
-			CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
-			CharacterReleaseTotal(KinkyDungeonPlayer);
+			//if (C == KinkyDungeonPlayer)
+			//CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
+			CharacterReleaseTotal(C);
+			CharacterNaked(C);
+			KinkyDungeonCheckClothesLoss = true;
 			KinkyDungeonSetDress("Bikini", "Bikini");
 			KinkyDungeonDressPlayer();
 			KDInitProtectedGroups();
