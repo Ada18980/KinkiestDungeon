@@ -572,8 +572,8 @@ function KDInitProtectedGroups() {
 	KDProtectedCosplay = [];
 	// init protected slots
 	for (let a of KinkyDungeonPlayer.Appearance) {
-		if (a.Asset?.Group?.BodyCosplay || a.Model?.Protected){
-			KDProtectedCosplay.push(a.Asset.Group.Name);
+		if (a.Asset?.Group?.BodyCosplay || (a.Model?.SuperProtected && a.Model.Group)){
+			KDProtectedCosplay.push(a.Asset.Group?.Name || a.Model.Group);
 		}
 	}
 }

@@ -8,6 +8,7 @@ AddModel({
 	Name: "KoiEyes",
 	Folder: "FaceKoi",
 	TopLevel: true,
+	Protected: true,
 	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
@@ -51,6 +52,7 @@ AddModel({
 	Name: "KoiBrows",
 	Folder: "FaceKoi",
 	TopLevel: true,
+	Protected: true,
 	Group: "Brows",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
@@ -77,6 +79,7 @@ AddModel({
 	Name: "KoiMouth",
 	Folder: "FaceKoi",
 	TopLevel: true,
+	Protected: true,
 	Group: "Mouth",
 	Categories: ["Mouth","Face"],
 	Layers: ToLayerMap([
@@ -94,6 +97,7 @@ AddModel({
 	Name: "KoiBlush",
 	Folder: "FaceKoi",
 	TopLevel: true,
+	Protected: true,
 	Group: "Blush",
 	Categories: ["Face"],
 	Layers: ToLayerMap([
@@ -113,6 +117,7 @@ AddModel({
 	Name: "Braid",
 	Folder: "Hair",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Hairstyles"],
 	Layers: ToLayerMap([
 		{ Name: "Braid", Layer: "Hair", Pri: 0,
@@ -125,6 +130,7 @@ AddModel({
 	Name: "BackStraight",
 	Folder: "Hair",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "BackStraight", Layer: "HairBack", Pri: 0,
@@ -135,6 +141,7 @@ AddModel({
 	Name: "Curly",
 	Folder: "Hair",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
 	Layers: ToLayerMap([
 		{ Name: "Curly", Layer: "Hair", Pri: 0,
@@ -145,6 +152,7 @@ AddModel({
 	Name: "FrontStraight",
 	Folder: "Hair",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
 	Layers: ToLayerMap([
 		{ Name: "FrontStraight", Layer: "Hair", Pri: 0,
@@ -165,6 +173,7 @@ AddModel({
 	Name: "MessyBack",
 	Folder: "Hair",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "Messy", Layer: "HairBack", Pri: 0,
@@ -175,6 +184,7 @@ AddModel({
 	Name: "Ponytail",
 	Folder: "Hair",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "Ponytail", Layer: "HairBack", Pri: 0,
@@ -185,6 +195,7 @@ AddModel({
 	Name: "TwintailLeft",
 	Folder: "Hair",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "TwintailLeft", Layer: "HairFront", Pri: 0,
@@ -195,6 +206,7 @@ AddModel({
 	Name: "TwintailRight",
 	Folder: "Hair",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "TwintailRight", Layer: "HairBack", Pri: 0,
@@ -205,6 +217,7 @@ AddModel({
 	Name: "Ahoge",
 	Folder: "Hair",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Hairstyles"],
 	Layers: ToLayerMap([
 		{ Name: "Ahoge", Layer: "Hair", Pri: 0,
@@ -218,6 +231,7 @@ AddModel({
 	Name: "Body",
 	Group: "Body",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Body"],
 	Folder: "Body",
 	Layers: ToLayerMap([
