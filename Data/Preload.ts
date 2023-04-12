@@ -2,7 +2,7 @@ PIXI.Assets.init();
 
 let preloadList = [
 	"TextureAtlas/game0.json",
-	//"TextureAtlas/atlas0.json",
+	"TextureAtlas/atlas0.json",
 ];
 
 let lastProgress = 0;
