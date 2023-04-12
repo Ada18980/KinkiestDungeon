@@ -31,7 +31,7 @@ let kdui = new PIXI.Graphics();
 let kdcanvas = new PIXI.Container();
 kdcanvas.sortableChildren = true;
 if (StandalonePatched) {
-	kdcanvas.addChild(kdgamefog);
+	kdgameboard.addChild(kdgamefog);
 	kdcanvas.addChild(kdgameboard);
 
 }
@@ -1060,18 +1060,18 @@ function KinkyDungeonDrawGame() {
 									yy = newY;
 								}
 							}
-						}
-						KDDraw(kdgameboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "TargetMove.png",
-							(xx - CamX)*KinkyDungeonGridSizeDisplay, (yy - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
-								zIndex: 100,
-							});
-						if (KinkyDungeonSlowLevel > 1 && KinkyDungeonSlowLevel < 10) {
+						} else if (KinkyDungeonSlowLevel > 1 && KinkyDungeonSlowLevel < 10) {
 							if (!KinkyDungeonEnemyAt(xx, yy) || KDCanPassEnemy(KinkyDungeonPlayerEntity, KinkyDungeonEnemyAt(xx, yy))) {
 								let dist = Math.round(KinkyDungeonSlowLevel);
 
 								DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
 							}
 						}
+						KDDraw(kdgameboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "TargetMove.png",
+							(xx - CamX)*KinkyDungeonGridSizeDisplay, (yy - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+								zIndex: 100,
+							});
+
 					}
 				}
 
