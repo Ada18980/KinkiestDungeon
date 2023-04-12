@@ -896,7 +896,7 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 	let factionList = [
 		{faction: "Bandit", tags: ["bandit"], rtags: ["bandit"], ftags: ["miniboss", "boss"]},
 		{faction: "Dragon", tags: ["dragon"], rtags: ["dragon"], ftags: ["miniboss", "boss"]},
-		{faction: "AncientRobot", tags: ["robot"], rtags: ["robot"], ftags: ["miniboss", "boss"]},
+		{faction: "AncientRobot", tags: ["robot"], rtags: ["robot"], ftags: ["miniboss", "boss", "oldrobot"]},
 		{faction: "Maidforce", tags: ["maid"], rtags: ["maid"], ftags: ["miniboss", "boss"]},
 		{faction: "Bountyhunter", tags: ["bountyhunter"], rtags: ["bountyhunter"], ftags: ["miniboss", "boss"]},
 		{faction: "Dressmaker", tags: ["dressmaker"], rtags: ["dressmaker"], ftags: ["miniboss", "boss"]},
@@ -909,6 +909,26 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 		{faction: "Elemental", tags: ["elemental", "witch"], rtags: ["elemental", "witch"], ftags: ["miniboss", "boss"]},
 		{faction: "Alchemist", tags: ["alchemist"], rtags: ["alchemist"], ftags: ["miniboss", "boss"]},
 	];
+	let factions = [];
+	if (KDGameData.MapFaction) {
+		factions.push(KDGameData.MapFaction);
+	}
+	if (KDGameData.JailFaction) {
+		factions.push(...KDGameData.JailFaction);
+	}
+	if (KDGameData.GuardFaction) {
+		factions.push(KDGameData.GuardFaction);
+	}
+	factions = factions.filter((faction) => {
+		return factionList.some((element) => {return element.faction == faction});
+	});
+	if (factions.length > 0) {
+		let chosenFaction = factions[Math.floor(KDRandom() * factions.length)];
+		factionList = factionList.filter((entry) => {
+			return chosenFaction == entry.faction || KDFactionRelation(chosenFaction, entry.faction) > .35 || KDFactionRelation(chosenFaction, entry.faction) <= -.1;
+		});
+	}
+	console.log(factionList);
 	let factionSelected = factionList[Math.floor(KDRandom() * factionList.length)];
 	// Place the chest
 	if (!NoAddToChestList) {
