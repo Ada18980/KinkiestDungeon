@@ -2380,6 +2380,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	//let allied = KDAllied(enemy);
 	//let hostile = KDHostile(enemy);
 
+	AIData.player = player;
 	AIData.defeat = false;
 	AIData.idle = true;
 	AIData.moved = false;
@@ -2725,8 +2726,12 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	AIData.wantsToAttack = (
 		!AIData.ignore
-		&& (enemy == KinkyDungeonLeashingEnemy() || !KDGameData.KinkyDungeonLeashedPlayer || KinkyDungeonFlags.has("PlayerCombat"))
-		) ? ((intentAction.decideAttack) ? (intentAction.decideAttack(enemy, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false;
+		&& (player.player && (enemy.id == KDGameData.KinkyDungeonLeashingEnemy || (!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player)) || KinkyDungeonFlags.has("PlayerCombat")))
+		) ? ((intentAction?.decideAttack) ? (intentAction.decideAttack(enemy, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false;
+	AIData.wantsToCast = (
+		!AIData.ignore
+		&& (player.player && ((!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player)) || KinkyDungeonFlags.has("PlayerCombat")))
+		) ? ((intentAction?.decideSpell) ? (intentAction.decideSpell(enemy, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false;
 
 	AIData.sneakMult = 0.25;
 	if (AIData.canSeePlayerMedium) AIData.sneakMult += 0.45;
@@ -2803,7 +2808,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		} else
 			AIData.followRange = 1.5;
 	} else if (AIData.aggressive && enemy.attackPoints && !enemy.Enemy.attackWhileMoving && AIData.followRange < (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange) {
-		AIData.followRange = (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange || AIData.followRange;
+		AIData.followRange = Math.max(1.5, (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange || AIData.followRange);
 	}
 
 	if ((AIType.resetguardposition(enemy, player, AIData)) && (!enemy.gxx || !enemy.gyy)) {
@@ -3849,7 +3854,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (!AIType.afteridle || !AIType.afteridle(enemy, player, AIData)) {
 		// Spell loop
-		if ((!enemy.Enemy.enemyCountSpellLimit || KinkyDungeonEntities.length < enemy.Enemy.enemyCountSpellLimit)
+		if (AIData.wantsToCast
+		&& (!enemy.Enemy.enemyCountSpellLimit || KinkyDungeonEntities.length < enemy.Enemy.enemyCountSpellLimit)
 		&& ((!player.player || (AIData.aggressive || (KDGameData.PrisonerState == 'parole' && enemy.Enemy.spellWhileParole))))
 		&& (!enemy.silence || enemy.silence < 0.01)
 		&& (!enemy.blind || enemy.blind < 0.01 || AIData.playerDist < 2.99)
@@ -4021,11 +4027,20 @@ function KDIsImmobile(enemy) {
 function KinkyDungeonCanSwapWith(e, Enemy) {
 	if (KDIsImmobile(e)) return false; // Definition of noSwap
 	if (e && KDEnemyHasFlag(e, "noswap")) return false; // Definition of noSwap
-	if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits && Enemy != KinkyDungeonJailGuard() && !KinkyDungeonAggressive(Enemy)) return false; // Only jailguard or aggressive enemy is allowed to swap into offlimits spaces unless hostile
+
+
+	if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits && Enemy != KinkyDungeonJailGuard() && !KinkyDungeonAggressive(Enemy)) return false;
+	// Only jailguard or aggressive enemy is allowed to swap into offlimits spaces unless hostile
+
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.ethereal && e && e.Enemy && !e.Enemy.ethereal) return false; // Ethereal enemies NEVER have seniority, this can teleport other enemies into walls
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.squeeze && e && e.Enemy && !e.Enemy.squeeze) return false; // Squeeze enemies NEVER have seniority, this can teleport other enemies into walls
+
+	// Should not swap or block the leasher
+	if (e == KinkyDungeonLeashingEnemy()) return false;
+	if (e == KinkyDungeonJailGuard()) return false;
 	if (Enemy == KinkyDungeonLeashingEnemy()) return true;
 	if (Enemy == KinkyDungeonJailGuard()) return true;
+
 	if (KDBoundEffects(e) > 3) return true;
 	if (!e.Enemy.tags || (e.Enemy.tags.minor && !Enemy.Enemy.tags.minor))
 		return true;
