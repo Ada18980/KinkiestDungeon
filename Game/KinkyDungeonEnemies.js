@@ -2719,9 +2719,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		}
 	}
 
-	let intentAction = enemy.IntentAction && KDIntentEvents[enemy.IntentAction] ? KDIntentEvents[enemy.IntentAction] : null;
+	let intentAction = (enemy.IntentAction && KDIntentEvents[enemy.IntentAction]) ? KDIntentEvents[enemy.IntentAction] : null;
 
 	if (!AIData.aggressive && player.player && (enemy.playWithPlayer || (intentAction && intentAction.forceattack))) AIData.ignore = false;
+
+	AIData.wantsToAttack = (
+		!AIData.ignore
+		&& (enemy == KinkyDungeonLeashingEnemy() || !KDGameData.KinkyDungeonLeashedPlayer || KinkyDungeonFlags.has("PlayerCombat"))
+		) ? ((intentAction.decideAttack) ? (intentAction.decideAttack(enemy, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false;
 
 	AIData.sneakMult = 0.25;
 	if (AIData.canSeePlayerMedium) AIData.sneakMult += 0.45;
@@ -3066,6 +3071,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	// Attack loop
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
 	let canAttack = !(enemy.disarm > 0)
+		&& AIData.wantsToAttack
 		&& (!enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id)
 		&& ((AIData.hostile || (enemy.playWithPlayer && player.player && !AIData.domMe)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage)))
 		&& ((enemy.aware && KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
