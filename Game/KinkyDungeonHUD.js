@@ -942,7 +942,8 @@ function KinkyDungeonDrawInputs() {
 			if (spell.components && spell.components.length > 0) comp = components;
 			// Render MP cost
 			let cost = Math.round(KinkyDungeonGetManaCost(spell) * 10) + "m";
-			DrawTextFitKD(cost, 1650 + (89 - buttonWidth/2), 140 + i*KinkyDungeonSpellChoiceOffset + buttonWidth*1.4, buttonWidth * 0.35 * Math.min(3, cost.length), "#ccddFF", "#333333", undefined, "left");
+			DrawTextFitKD(cost, 1650 + (89 - buttonWidth/2), 140 + i*KinkyDungeonSpellChoiceOffset + buttonWidth*1.4, buttonWidth * 0.35 * Math.min(3, cost.length),
+				"#ccddFF", "#333333", undefined, "center");
 
 
 
