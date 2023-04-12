@@ -354,7 +354,7 @@ function KinkyDungeonDrawShrine() {
 			i += 1;
 			for (let N = 0; N < textSplit2.length; N++) {
 				DrawTextFitKD(textSplit2[N],
-					KDModalArea_x+650, KDModalArea_y + 120 - shopHeight * 50 + i * descSpacing, 380 * (textSplit2[N].length / 40), "#ffffff", undefined, 20,);
+					KDModalArea_x+650, KDModalArea_y + 120 - shopHeight + i * descSpacing, 380 * (textSplit2[N].length / 40), "#ffffff", undefined, 20,);
 				i++;
 			}
 			// Next button
