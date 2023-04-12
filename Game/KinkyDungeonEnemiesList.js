@@ -1280,7 +1280,10 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"passage": -999, "temple": 82, "open": 10}, floors:KDMapInit(["tmp"]), shrines: []},
 	{name: "StatueGag", tags: KDMapInit(["ignoregagged", "mimicBlock", "statue", "minor", "melee", "unflinching", "ballGagRestraintsMagic", "crushweakness", "pierceweakness", "chainresist", "soulimmune"]), spellResist: 0.33, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "ambush", ambushRadius: 1.5, difficulty: 0.2,
-		visionRadius: 8, maxhp: 12, minLevel:0, weight:10, movePoints: 2, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope",
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		visionRadius: 8, maxhp: 12, minLevel:0, weight:10, movePoints: 2, attackPoints: 2, attack: "MeleeBindWill", attackWidth: 1, attackRange: 1, power: 4, dmgType: "grope",
 		terrainTags: {"passage": -999, "temple": 72, "open": 10}, floors:KDMapInit(["tmp"]), shrines: ["Latex"]},
 	{name: "StatueDart", tags: KDMapInit(["mimicBlock", "statue", "minor", "melee", "unflinching", "crushweakness", "pierceweakness", "chainresist", "soulimmune"]), immobile: true, spellResist: 0.33, sneakThreshold: 0.01,
 		spells: ["SleepDart"], spellCooldownMult: 1, spellCooldownMod: 20, stopToCast: true, castWhileMoving: true, projectileAttack: true,

@@ -2798,7 +2798,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		} else
 			AIData.followRange = 1.5;
 	} else if (AIData.aggressive && enemy.attackPoints && !enemy.Enemy.attackWhileMoving && AIData.followRange < (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange) {
-		AIData.followRange = (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange;
+		AIData.followRange = (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange || AIData.followRange;
 	}
 
 	if ((AIType.resetguardposition(enemy, player, AIData)) && (!enemy.gxx || !enemy.gyy)) {
