@@ -928,7 +928,6 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 			return chosenFaction == entry.faction || KDFactionRelation(chosenFaction, entry.faction) > .35 || KDFactionRelation(chosenFaction, entry.faction) <= -.1;
 		});
 	}
-	console.log(factionList);
 	let factionSelected = factionList[Math.floor(KDRandom() * factionList.length)];
 	// Place the chest
 	if (!NoAddToChestList) {
