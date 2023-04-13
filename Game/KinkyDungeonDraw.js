@@ -20,7 +20,7 @@ let pixirenderer = null;
 let pixirendererKD = null;
 // @ts-ignore
 let kdgamefog = new PIXI.Graphics();
-kdgamefog.zIndex = -49;
+kdgamefog.zIndex = 1;
 // @ts-ignore
 let kdgameboard = new PIXI.Container();
 kdgameboard.sortableChildren = true;
