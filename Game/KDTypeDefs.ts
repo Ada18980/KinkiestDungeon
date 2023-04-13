@@ -1107,6 +1107,10 @@ interface KinkyDungeonEvent {
 }
 
 interface entity {
+	/** Spawn location */
+	spawnX?: number,
+	/** Spawn location */
+	spawnY?: number,
 	/** Opinion of you. Positive is good. */
 	opinion?: number,
 	/** Determines if an enemy can be dommed or not */
