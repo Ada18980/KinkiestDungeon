@@ -276,7 +276,7 @@ function KinkyDungeonDrawHeart() {
 	DrawTextKD(TextGet("StatWill").replace("CURRENT/MAX", "" + KinkyDungeonStatWillMax * KDMaxStatStart), 1550 + 250/2, 650, "#ffffff", KDTextGray2);
 
 	// Fix softlock
-	if (!(KinkyDungeonStatDistractionMax < KDMaxStat && KinkyDungeonStatStaminaMax < KDMaxStat && KinkyDungeonStatManaMax < KDMaxStat && KinkyDungeonStatWillMax < KDMaxStat)) KinkyDungeonDrawState = "Game";
+	//if ((KinkyDungeonStatDistractionMax > KDMaxStat && KinkyDungeonStatStaminaMax > KDMaxStat && KinkyDungeonStatManaMax > KDMaxStat && KinkyDungeonStatWillMax > KDMaxStat)) KinkyDungeonDrawState = "Game";
 
 	DrawButtonVis(650, 700, 250, 60, TextGet("KinkyDungeonHeartDistraction"), KinkyDungeonStatDistractionMax < KDMaxStat ? "#ffffff" : "#999999");
 	DrawButtonVis(950, 700, 250, 60, TextGet("KinkyDungeonHeartStamina"), KinkyDungeonStatStaminaMax < KDMaxStat ? "#ffffff" : "#999999");
