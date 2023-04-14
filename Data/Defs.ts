@@ -7,6 +7,11 @@ let LAYERS_BASE = [
 	"Brows",
 	"Hair",
 	"Blindfold",
+	"GagMuzzleStraps",
+	"GagMuzzle",
+	"GagFlatStraps",
+	"GagFlat",
+	"GagStraps",
 	"Gag",
 	// Head
 	"Eyes",

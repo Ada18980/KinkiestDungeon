@@ -35,6 +35,7 @@ class ModelContainer {
 	Containers: Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: any}>;
 	ContainersDrawn: Map<string, any>;
 	Poses: Record<string, boolean>;
+	TempPoses: Record<string, boolean>;
 	Update: Map<any, any>;
 	Mods: Map<string, PoseMod[]>;
 
@@ -44,6 +45,7 @@ class ModelContainer {
 		this.ContainersDrawn = ContainersDrawn;
 		this.Models = Models;
 		this.Poses = Poses;
+		this.TempPoses = {};
 		this.HighestPriority = {};
 		this.Mods = new Map();
 		this.Update = new Map();
@@ -128,6 +130,14 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	// Actual loop for drawing the models on the character
 
 	if (!MC.Update.get(containerID)) {
+		for (let m of MC.Models.values()) {
+			if (m.AddPose) {
+				for (let pose of m.AddPose) {
+					MC.Poses[pose] = true;
+				}
+			}
+		}
+
 		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
 		DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,

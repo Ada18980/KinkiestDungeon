@@ -299,9 +299,26 @@ function KinkyDungeonDressPlayer(Character) {
 		if (KinkyDungeonCheckClothesLoss)
 			KinkyDungeonWearForcedClothes(restraints);
 
+		// Apply poses from restraints
+		if (StandalonePatched && KDCurrentModels.get(Character)) {
+			// Remove temp poses from poses
+			for (let pose of Object.keys(KDCurrentModels.get(Character).TempPoses))
+				delete KDCurrentModels.get(Character).Poses[pose];
+			KDCurrentModels.get(Character).TempPoses = {};
+
+			for (let rest of KinkyDungeonAllRestraintDynamic()) {
+				let inv = rest.item;
+				if (KDRestraint(inv).addPose)
+					for (let tag of KDRestraint(inv).addPose) {
+						if (!KDCurrentModels.get(Character).TempPoses[tag]) KDCurrentModels.get(Character).TempPoses[tag] = true;
+					}
+			}
+		}
+
+
 		KinkyDungeonCheckClothesLoss = false;
-		let AllowedArmPoses = StandalonePatched ? KDGetAvailablePosesArms(KinkyDungeonPlayer) : [];
-		let AllowedLegPoses = StandalonePatched ? KDGetAvailablePosesLegs(KinkyDungeonPlayer) : [];
+		let AllowedArmPoses = StandalonePatched ? KDGetAvailablePosesArms(Character) : [];
+		let AllowedLegPoses = StandalonePatched ? KDGetAvailablePosesLegs(Character) : [];
 
 		if (KDGameData.KneelTurns > 0 || KDGameData.SleepTurns > 0) {
 			if (StandalonePatched) {
@@ -309,8 +326,8 @@ function KinkyDungeonDressPlayer(Character) {
 				let newLegPoses = AllowedLegPoses.filter((element) => {return !STANDPOSES.includes(element);});
 				if (newLegPoses.length > 0) AllowedLegPoses = newLegPoses;
 			} else {
-				if (CharacterItemsHavePoseAvailable(KinkyDungeonPlayer, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(KinkyDungeonPlayer, "Kneel") && !KinkyDungeonPlayer.IsKneeling()) {
-					CharacterSetActivePose(KinkyDungeonPlayer, "Kneel", false);
+				if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(Character, "Kneel") && !Character.IsKneeling()) {
+					CharacterSetActivePose(Character, "Kneel", false);
 				}
 			}
 
@@ -318,8 +335,8 @@ function KinkyDungeonDressPlayer(Character) {
 			if (StandalonePatched) {
 				// Nothing needed
 			} else {
-				if (CharacterItemsHavePoseAvailable(KinkyDungeonPlayer, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(KinkyDungeonPlayer, "Kneel") && KinkyDungeonPlayer.IsKneeling()) {
-					CharacterSetActivePose(KinkyDungeonPlayer, "BaseLower", false);
+				if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(Character, "Kneel") && Character.IsKneeling()) {
+					CharacterSetActivePose(Character, "BaseLower", false);
 				}
 			}
 
@@ -327,14 +344,14 @@ function KinkyDungeonDressPlayer(Character) {
 
 		if (StandalonePatched) {
 			// Pose set routine
-			let ArmPose = KDGetPoseOfType(KinkyDungeonPlayer, "Arms");
-			let LegPose = KDGetPoseOfType(KinkyDungeonPlayer, "Legs");
-			let EyesPose = KDGetPoseOfType(KinkyDungeonPlayer, "Eyes");
-			let Eyes2Pose = KDGetPoseOfType(KinkyDungeonPlayer, "Eyes2");
-			let BrowsPose = KDGetPoseOfType(KinkyDungeonPlayer, "Brows");
-			let Brows2Pose = KDGetPoseOfType(KinkyDungeonPlayer, "Brows2");
-			let BlushPose = KDGetPoseOfType(KinkyDungeonPlayer, "Blush");
-			let MouthPose = KDGetPoseOfType(KinkyDungeonPlayer, "Mouth");
+			let ArmPose = KDGetPoseOfType(Character, "Arms");
+			let LegPose = KDGetPoseOfType(Character, "Legs");
+			let EyesPose = KDGetPoseOfType(Character, "Eyes");
+			let Eyes2Pose = KDGetPoseOfType(Character, "Eyes2");
+			let BrowsPose = KDGetPoseOfType(Character, "Brows");
+			let Brows2Pose = KDGetPoseOfType(Character, "Brows2");
+			let BlushPose = KDGetPoseOfType(Character, "Blush");
+			let MouthPose = KDGetPoseOfType(Character, "Mouth");
 
 			let DefaultBound = "Front"; // Default bondage for arms
 
@@ -418,7 +435,7 @@ function KinkyDungeonDressPlayer(Character) {
 				if (!KDWardrobe_CurrentPoseMouth && result.MouthPose) MouthPose = result.MouthPose;
 			}
 
-			if (KDCurrentModels.get(KinkyDungeonPlayer))
+			if (KDCurrentModels.get(KinkyDungeonPlayer)) {
 				KDCurrentModels.get(KinkyDungeonPlayer).Poses = KDGeneratePoseArray(
 					ArmPose,
 					LegPose,
@@ -429,6 +446,15 @@ function KinkyDungeonDressPlayer(Character) {
 					Eyes2Pose,
 					Brows2Pose,
 				);
+				// Append temp poses
+				for (let pose of Object.keys(KDCurrentModels.get(Character).TempPoses)) {
+					if (KDCurrentModels.get(Character).Poses[pose])
+						delete KDCurrentModels.get(Character).TempPoses[pose];
+					else
+						KDCurrentModels.get(Character).Poses[pose] = true;
+				}
+
+			}
 		}
 
 

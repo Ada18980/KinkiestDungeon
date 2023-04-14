@@ -90,6 +90,7 @@ AddModel({
 			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
 			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(MOUTHPOSES),
+			HidePoses: ToMap(["HideMouth"]),
 		},
 	])
 });

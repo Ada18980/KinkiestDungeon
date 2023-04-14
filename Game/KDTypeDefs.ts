@@ -341,6 +341,9 @@ interface KDRestraintProps {
 	removeShrine?: string[],
 	slimeLevel?: number,
 	addTag?: string[],
+	addPose?: string[],
+	forbidPose?: string[],
+	removePose?: string[],
 	OverridePriority?: number,
 	Modules?: number[],
 	/** When added to the inventory, is added as a different item instead. Good for multiple stages of the same item, like cuffs */

@@ -46,6 +46,7 @@ let KDWardrobeCategories = [
 	"Eyes",
 	"Mouth",
 	"Body",
+	"Restraints",
 ];
 
 let KDSelectedModel = null;

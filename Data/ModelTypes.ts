@@ -61,6 +61,8 @@ interface Model extends Namable {
     TopLevel?: boolean,
     /** Optional, this appears under a top level item*/
     Parent?: string,
+    /** Adds these as tempposes*/
+    AddPose?: string[],
     /** Default string of colors*/
     DefaultColor?: string[],
 	/** Color definition */
