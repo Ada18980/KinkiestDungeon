@@ -422,6 +422,11 @@ function KDDrawModelList(X, C) {
 		return (bdata) => {
 			KDModelList_Toplevel_index = index;
 			KDUpdateModelList(2);
+			let name = KDModelList_Sublevel[KDModelList_Sublevel_index] || "";
+			if (name) {
+				KDCurrentLayer = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
+			} else KDCurrentLayer = "";
+
 			return true;
 		};
 	};
@@ -454,6 +459,7 @@ function KDDrawModelList(X, C) {
 
 
 			KDModelList_Sublevel_index = index;
+			KDCurrentLayer = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
 			KDUpdateModelList(3);
 			return true;
 		};
