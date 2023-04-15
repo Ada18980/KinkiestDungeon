@@ -2739,7 +2739,6 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
  */
 function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered, SpritesDrawn, Scale) {
 	let sprite = Map.get(id);
-	let created = false;
 	if (!sprite) {
 		// Load the texture
 		let tex = KDTex(Image);
@@ -2748,7 +2747,6 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 			// Create the sprite
 			// @ts-ignore
 			sprite = PIXI.Sprite.from(KDTex(Image));
-			created = true;
 			Map.set(id, sprite);
 			// Add it to the container
 			Container.addChild(sprite);
@@ -2778,13 +2776,11 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 		if (options) {
 			if (options.filters && sprite.cacheAsBitmap) {
 				sprite.filters = null;
-			} else
+			} else {
 				for (let o of Object.entries(options)) {
 					sprite[o[0]] = o[1];
 				}
-
-			if (created) sprite.cacheAsBitmap = false;
-
+			}
 
 			if (options.scalex != undefined) {
 				sprite.scale.x = sprite.scale.x * options.scalex;

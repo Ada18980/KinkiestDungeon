@@ -140,6 +140,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		MC.Containers.set(containerID, Container);
 		kdcanvas.addChild(Container.Container);
 		Container.Container.sortableChildren = true;
+		Container.Container.cacheAsBitmap = true;
 	}
 	if (!MC.ContainersDrawn.get(containerID)) {
 		MC.ContainersDrawn.set(containerID, MC.Containers.get(containerID));
@@ -159,7 +160,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 
 		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
-		DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
+		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
 			MC.Containers.get(containerID));
 		MC.Mods.set(containerID, StartMods);
 		MC.Update.set(containerID, true);
@@ -170,11 +171,18 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			if ((!Container.SpritesDrawn.has(sprite[0]) && sprite[1])) {
 				sprite[1].parent.removeChild(sprite[1]);
 				Container.SpriteList.delete(sprite[0]);
+				modified = true;
 				sprite[1].destroy();
 			}
 		}
 		Container.SpritesDrawn.clear();
 		PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
+
+		if (modified)
+			MC.Containers.get(containerID).Container.cacheAsBitmap = false;
+	} else {
+		// Start caching again after
+		MC.Containers.get(containerID).Container.cacheAsBitmap = true;
 	}
 
 
@@ -189,9 +197,10 @@ let DrawModel = DrawCharacter;
 /**
  * Setup sprites from the modelcontainer
  */
-function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer) {
+function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer) : boolean {
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
+	let modified = false;
 
 	// Create the highestpriority matrix
 	MC.HighestPriority = {};
@@ -260,10 +269,12 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					: undefined) : undefined;
 				if (filter && !KDAdjustmentFilterCache.get(fh)) KDAdjustmentFilterCache.set(FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
 				let img = ModelLayerString(m, l, MC.Poses);
+				let id = `layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`;
+				if (!modified && !ContainerContainer.SpriteList.has(id)) modified = true;
 				KDDraw(
 					ContainerContainer.Container,
 					ContainerContainer.SpriteList,
-					`layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`,
+					id,
 					img,
 					ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
 					rot * Math.PI / 180, {
@@ -273,7 +284,6 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						scalex: sx != 1 ? sx : undefined,
 						scaley: sy != 1 ? sy : undefined,
 						filters: filter,
-						cacheAsBitmap: filter != undefined,
 					}, false,
 					ContainerContainer.SpritesDrawn,
 					Zoom
@@ -281,6 +291,8 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 			}
 		}
 	}
+	console.log(modified)
+	return modified;
 }
 
 function FilterHash(filter) {

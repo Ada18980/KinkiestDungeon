@@ -42,7 +42,7 @@ let KDVibeSound = {
 let KDResolutionConfirm = false;
 let KDResolution = 1;
 let KDResolutionListIndex = 0;
-let KDResolutionList = [1, 1.5, 2];
+let KDResolutionList = [1, 1.5];
 
 let KDVibeVolume = 1;
 let KDVibeVolumeListIndex = 0;
