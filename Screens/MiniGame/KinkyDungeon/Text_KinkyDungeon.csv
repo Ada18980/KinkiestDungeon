@@ -58,6 +58,8 @@ KDBlockedRestraint,Blocked restraint!
 
 KDWallBump,You bump into a wall.
 
+KDResolution,Game Resolution:
+KDResolutionConfirm,Resolution (needs reload):
 KDVibeVolume,Toy Volume:
 KDMusicVolume,Music Volume:
 KDSfxVolume,SFX Volume:

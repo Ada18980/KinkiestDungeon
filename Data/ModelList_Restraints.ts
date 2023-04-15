@@ -18,21 +18,41 @@ AddModel({
 			Sprite: "Ball",
 			OffsetX: 942,
 			OffsetY: 200,
-			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
+			AnchorModX: MODELWIDTH/641,
 			AnchorModY: MODELHEIGHT/664,
 			Invariant: true,
-			MorphPoses: {MouthFrown: "_Teeth", MouthPout: "_Teeth", MouthNormal: "_Teeth"},
+			MorphPoses: {MouthNeutral: "_TeethDeep", MouthSurprised: "_Teeth", MouthPout: "_TeethDeep", MouthDistracted: "_Teeth"},
 		},
-		{ Name: "Strap", Layer: "GagStraps", Pri: 1,
+		{ Name: "Strap", Layer: "GagStraps", Pri: 15,
 			Sprite: "BallStrap",
 			OffsetX: 942,
 			OffsetY: 200,
-			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
+			AnchorModX: MODELWIDTH/641,
 			AnchorModY: MODELHEIGHT/664,
 			Invariant: true,
 		},
 	])
 });
+AddModel(GetModelWithExtraLayers("BallGagHarness", "BallGag", [
+	{ Name: "Harness", Layer: "GagStraps", Pri: 10,
+		Sprite: "BallHarness",
+		OffsetX: 942,
+		OffsetY: 200,
+		AnchorModX: MODELWIDTH/641,
+		AnchorModY: MODELHEIGHT/664,
+		Invariant: true,
+	},
+]));
+AddModel(GetModelWithExtraLayers("BallGagHarnessSecure", "BallGagHarness", [
+	{ Name: "SideStrap", Layer: "GagStraps", Pri: 20,
+		Sprite: "BallSideStrap",
+		OffsetX: 942,
+		OffsetY: 200,
+		AnchorModX: MODELWIDTH/641,
+		AnchorModY: MODELHEIGHT/664,
+		Invariant: true,
+	},
+]));
 
 AddModel({
 	Name: "RopeArms",

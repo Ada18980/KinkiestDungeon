@@ -1630,6 +1630,10 @@ function KinkyDungeonRun() {
 
 		YY = YYstart;
 
+		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + (KDResolution * 100 + "%"), "#ffffff", "",
+			() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 100 + "%",
+			() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 100 + "%");
+		YY += YYd * 2;
 		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), "#ffffff", "",
 			() => KDVibeVolumeList[(KDVibeVolumeListIndex + KDVibeVolumeList.length - 1) % KDVibeVolumeList.length] * 100 + "%",
 			() => KDVibeVolumeList[(KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length] * 100 + "%");
@@ -2432,6 +2436,14 @@ function KinkyDungeonHandleClick() {
 		YY = YYstart;
 
 
+		if (MouseIn(450, YY, 350, 64)) {
+			if (MouseX <= 450 + 350/2) KDResolutionListIndex = (KDResolutionList.length + KDResolutionListIndex - 1) % KDResolutionList.length;
+			else KDResolutionListIndex = (KDResolutionListIndex + 1) % KDResolutionList.length;
+			KDResolution = KDResolutionList[KDResolutionListIndex];
+			KDResolutionConfirm = true;
+			localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
+		}
+		YY += YYd*2;
 		if (MouseIn(450, YY, 350, 64)) {
 			if (MouseX <= 450 + 350/2) KDVibeVolumeListIndex = (KDVibeVolumeList.length + KDVibeVolumeListIndex - 1) % KDVibeVolumeList.length;
 			else KDVibeVolumeListIndex = (KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length;

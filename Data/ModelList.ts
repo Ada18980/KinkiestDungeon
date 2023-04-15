@@ -123,6 +123,8 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Braid", Layer: "Hair", Pri: 0,
 		},
+		{ Name: "Braid_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "Braid",
+		},
 		{ Name: "BraidBack", Layer: "HairBack", Pri: 0,
 		},
 	])
@@ -147,6 +149,8 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Curly", Layer: "Hair", Pri: 0,
 		},
+		{ Name: "Curly_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "Curly",
+		},
 	])
 });
 AddModel({
@@ -158,15 +162,33 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "FrontStraight", Layer: "Hair", Pri: 0,
 		},
+		{ Name: "FrontStraight_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "FrontStraight",
+		},
 	])
 });
 AddModel({
-	Name: "Simple",
+	Name: "Straight",
 	Folder: "Hair",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
 	Layers: ToLayerMap([
 		{ Name: "Straight", Layer: "Hair", Pri: 0,
+		},
+		{ Name: "Straight_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "Straight",
+		},
+	])
+});
+AddModel({
+	Name: "StraightBangs",
+	Folder: "Hair",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "FrontHair"],
+	Layers: ToLayerMap([
+		{ Name: "StraightBangs", Layer: "Hair", Pri: 0,
+		},
+		{ Name: "StraightBangs_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "StraightBangs",
 		},
 	])
 });

@@ -239,11 +239,15 @@ function KDDrawColorSliders(X, Y, C, Model) {
 	}
 }
 
-function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false, dress = false) {
+function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false, dress = false, updateDesired = false) {
 	let buttonClick = (arms, legs, eyes, eyes2, brows, brows2, blush, mouth, update = true) => {
 		return (bdata) => {
-			KDWardrobe_CurrentPoseArms = arms || KDWardrobe_CurrentPoseArms;
-			KDWardrobe_CurrentPoseLegs = legs || KDWardrobe_CurrentPoseLegs;
+			if (allowRemove && arms == KDWardrobe_CurrentPoseArms) KDWardrobe_CurrentPoseArms = "";
+			else KDWardrobe_CurrentPoseArms = arms || KDWardrobe_CurrentPoseArms;
+			if (allowRemove && legs == KDWardrobe_CurrentPoseLegs) KDWardrobe_CurrentPoseLegs = "";
+			else KDWardrobe_CurrentPoseLegs = legs || KDWardrobe_CurrentPoseLegs;
+
+
 			if (allowRemove && eyes == KDWardrobe_CurrentPoseEyes) KDWardrobe_CurrentPoseEyes = "";
 			else KDWardrobe_CurrentPoseEyes = eyes || KDWardrobe_CurrentPoseEyes;
 			if (allowRemove && eyes2 == KDWardrobe_CurrentPoseEyes2) KDWardrobe_CurrentPoseEyes2 = "";
@@ -256,6 +260,17 @@ function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false, dress = fa
 			else KDWardrobe_CurrentPoseBlush = blush || KDWardrobe_CurrentPoseBlush;
 			if (allowRemove && mouth == KDWardrobe_CurrentPoseMouth) KDWardrobe_CurrentPoseMouth = "";
 			else KDWardrobe_CurrentPoseMouth = mouth || KDWardrobe_CurrentPoseMouth;
+
+			if (updateDesired) {
+				KDDesiredPlayerPose = {
+					Arms: KDWardrobe_CurrentPoseArms,
+					Legs: KDWardrobe_CurrentPoseLegs,
+					Eyes: KDWardrobe_CurrentPoseEyes,
+					Brows: KDWardrobe_CurrentPoseBrows,
+					Blush: KDWardrobe_CurrentPoseBlush,
+					Mouth: KDWardrobe_CurrentPoseMouth,
+				};
+			}
 
 			if (update) {
 				KDCurrentModels.get(C).Poses = KDGeneratePoseArray(
@@ -272,9 +287,11 @@ function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false, dress = fa
 					//KDGetPoseOfType(C, "Blush"),
 					//KDGetPoseOfType(C, "Mouth"),
 				);
+				KDUpdateTempPoses(C);
 				UpdateModels(KDCurrentModels.get(C));
 			}
 			if (dress) {
+
 				KinkyDungeonCheckClothesLoss = true;
 				KinkyDungeonDressPlayer(C);
 			}
@@ -291,7 +308,7 @@ function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false, dress = fa
 	let xoff = KDWardrobe_PoseLegs.length % 2 != KDWardrobe_PoseArms.length % 2 ? buttonWidth/2 : 0;
 	for (let i = 0; i < KDWardrobe_PoseArms.length; i++) {
 		DrawButtonKDEx("PoseArms" + i,
-			buttonClick(KDWardrobe_PoseArms[i], KDWardrobe_CurrentPoseLegs, "", "", "", "", "", "", AvailableArms.includes(KDWardrobe_PoseArms[i])),
+			buttonClick(KDWardrobe_PoseArms[i], "", "", "", "", "", "", "", AvailableArms.includes(KDWardrobe_PoseArms[i])),
 			true,
 			X + i*buttonSpacing, Y + 120, buttonWidth, buttonWidth,
 			"",
@@ -300,7 +317,7 @@ function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false, dress = fa
 	}
 	for (let i = 0; i < KDWardrobe_PoseLegs.length; i++) {
 		DrawButtonKDEx("PoseLegs" + i,
-			buttonClick(KDWardrobe_CurrentPoseArms, KDWardrobe_PoseLegs[i], "", "", "", "", "", "", AvailableLegs.includes(KDWardrobe_PoseLegs[i])),
+			buttonClick("", KDWardrobe_PoseLegs[i], "", "", "", "", "", "", AvailableLegs.includes(KDWardrobe_PoseLegs[i])),
 			true,
 			X + xoff + i*buttonSpacing, Y + 180, buttonWidth, buttonWidth,
 			"",

@@ -78,6 +78,21 @@ function GetModelLayers(ModelName: string): ModelLayer[] {
 }
 
 
+function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: ModelLayer[], Parent?: string, TopLevel?: boolean): Model {
+	if (ModelDefs[BaseModel]) {
+		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));
+		model.Name = NewModel;
+		if (Parent != undefined) model.Parent = Parent;
+		if (TopLevel != undefined) model.TopLevel = TopLevel;
+		for (let l of Layers) {
+			model.Layers[l.Name] = JSON.parse(JSON.stringify(l));
+		}
+		return model;
+	}
+	return null;
+}
+
+
 function DisposeCharacter(C) {
 	if (KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {

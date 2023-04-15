@@ -2,7 +2,7 @@ PIXI.Assets.init();
 
 let preloadList = [
 	"TextureAtlas/game0.json",
-	"TextureAtlas/atlas0.json",
+	//"TextureAtlas/atlas0.json",
 ];
 
 let lastProgress = 0;
@@ -34,5 +34,5 @@ async function LoadTextureAtlas(list, preload = false) {
 
 }
 
-
+PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 LoadTextureAtlas(preloadList);

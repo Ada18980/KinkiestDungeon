@@ -5,7 +5,7 @@ let LAYERS_BASE = [
 	"Mask",
 	"Circlet",
 	"Brows",
-	"Hair",
+	// Head items
 	"Blindfold",
 	"GagMuzzleStraps",
 	"GagMuzzle",
@@ -13,6 +13,8 @@ let LAYERS_BASE = [
 	"GagFlat",
 	"GagStraps",
 	"Gag",
+	// Hair mid
+	"Hair",
 	// Head
 	"Eyes",
 	"Mouth",

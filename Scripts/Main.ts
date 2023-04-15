@@ -2,7 +2,8 @@ const PIXIWidth = 2000;
 const PIXIHeight = 1000;
 
 var PIXIapp = new PIXI.Application({
-	antialias: false,
+	antialias: true,
+	resolution: parseFloat(localStorage.getItem("KDResolution")) || undefined,
 	width: PIXIWidth,
 	height: PIXIHeight,
 });

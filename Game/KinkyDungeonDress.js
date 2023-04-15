@@ -354,15 +354,22 @@ function KinkyDungeonDressPlayer(Character) {
 			let MouthPose = KDGetPoseOfType(Character, "Mouth");
 
 			let DefaultBound = "Front"; // Default bondage for arms
+			let DefaultHobbled = "Closed"; // Default bondage for legs
 
 			// Hold to player's preferred pose
 			let PreferredArm = KDDesiredPlayerPose.Arms || "Free";
 			let PreferredLeg = KDDesiredPlayerPose.Legs || "Spread";
-			if (!AllowedArmPoses.includes(ArmPose) || (ArmPose != PreferredArm && AllowedArmPoses.includes(PreferredArm))) {
+			if (!AllowedArmPoses.includes(ArmPose)) {
 				ArmPose = (AllowedArmPoses.includes(DefaultBound) && KinkyDungeonIsArmsBound(false, false)) ? DefaultBound : AllowedArmPoses[0];
 			}
-			if (!AllowedLegPoses.includes(LegPose) || (LegPose != PreferredLeg && AllowedLegPoses.includes(PreferredLeg))) {
-				LegPose = AllowedLegPoses[0];
+			if (!AllowedLegPoses.includes(LegPose)) {
+				LegPose = (AllowedLegPoses.includes(DefaultHobbled) && KinkyDungeonSlowLevel >= 3) ? DefaultHobbled : AllowedLegPoses[0];
+			}
+			if (ArmPose != PreferredArm && AllowedArmPoses.includes(PreferredArm)) {
+				ArmPose = PreferredArm;
+			}
+			if (LegPose != PreferredLeg && AllowedLegPoses.includes(PreferredLeg)) {
+				LegPose = PreferredLeg;
 			}
 
 
@@ -435,8 +442,8 @@ function KinkyDungeonDressPlayer(Character) {
 				if (!KDWardrobe_CurrentPoseMouth && result.MouthPose) MouthPose = result.MouthPose;
 			}
 
-			if (KDCurrentModels.get(KinkyDungeonPlayer)) {
-				KDCurrentModels.get(KinkyDungeonPlayer).Poses = KDGeneratePoseArray(
+			if (KDCurrentModels.get(Character)) {
+				KDCurrentModels.get(Character).Poses = KDGeneratePoseArray(
 					ArmPose,
 					LegPose,
 					EyesPose,
@@ -446,13 +453,7 @@ function KinkyDungeonDressPlayer(Character) {
 					Eyes2Pose,
 					Brows2Pose,
 				);
-				// Append temp poses
-				for (let pose of Object.keys(KDCurrentModels.get(Character).TempPoses)) {
-					if (KDCurrentModels.get(Character).Poses[pose])
-						delete KDCurrentModels.get(Character).TempPoses[pose];
-					else
-						KDCurrentModels.get(Character).Poses[pose] = true;
-				}
+				KDUpdateTempPoses(Character);
 
 			}
 		}
@@ -1113,3 +1114,13 @@ let KDExpressions = {
 		},
 	},
 };
+
+function KDUpdateTempPoses(Character) {
+	// Append temp poses
+	for (let pose of Object.keys(KDCurrentModels.get(Character).TempPoses)) {
+		if (KDCurrentModels.get(Character).Poses[pose])
+			delete KDCurrentModels.get(Character).TempPoses[pose];
+		else
+			KDCurrentModels.get(Character).Poses[pose] = true;
+	}
+}
