@@ -63,7 +63,7 @@ function DrawRGBToHex(color: number[]): string {
 	return '#' + (0x1000000 + rgb).toString(16).slice(1).toUpperCase();
 }
 
-let PIXIApp = null;
+//let PIXIApp = null;
 let PIXICanvas = null;
 
 /**
@@ -72,10 +72,10 @@ let PIXICanvas = null;
 function DrawLoad(): void {
 	//document.body.appendChild(PIXIApp.view);
 
-	PIXIApp = new PIXI.Application({
+	/*PIXIApp = new PIXI.Application({
 		view: PIXICanvas,
 		background: '#1099bb'
-	});
+	});*/
 	PIXICanvas = document.getElementById("MainCanvas");
 	// OLD BC
 	// Creates the objects used in the game

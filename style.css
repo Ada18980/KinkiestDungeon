@@ -34,15 +34,6 @@ textarea {
   display: none; /*hide original SELECT element:*/
 }
 
-.select-selected {
-  background-color: white;
-  color: black;
-  background-image: url('../Icons/Dropdown.png');
-  background-repeat: no-repeat, repeat;
-  background-position: right .7em top 50%, 0 0;
-  background-size: .65em auto, 100%;
-}
-
 /*style the items (options), including the selected item:*/
 .select-items div,.select-selected {
   color: black;

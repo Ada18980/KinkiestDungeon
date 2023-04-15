@@ -148,6 +148,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		kdcanvas.addChild(Container.Container);
 		Container.Container.sortableChildren = true;
 		Container.Container.cacheAsBitmap = true;
+		Container.Container.filterArea = new PIXI.Rectangle(0,0,MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE);
 	}
 	if (!MC.ContainersDrawn.get(containerID)) {
 		MC.ContainersDrawn.set(containerID, MC.Containers.get(containerID));
@@ -166,7 +167,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		}
 
 		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
-		PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
+		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
 		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
 			MC.Containers.get(containerID));
 		MC.Mods.set(containerID, StartMods);
@@ -183,7 +184,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			}
 		}
 		Container.SpritesDrawn.clear();
-		PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
+		if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
+			PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
 
 
 	}

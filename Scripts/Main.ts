@@ -1,22 +1,41 @@
+//import * as PIXI from "pixi.js"
+//import { Viewport } from "../node_modules/pixi-viewport/dist/Viewport";
+
 const PIXIWidth = 2000;
 const PIXIHeight = 1000;
 
+let resolution = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
 var PIXIapp = new PIXI.Application({
-	antialias: true,
-	resolution: parseFloat(localStorage.getItem("KDResolution")) || undefined,
+	//view: document.getElementById("MainCanvas"),
+	antialias: false,
+	powerPreference: 'high-performance',
+	resolution: resolution,//KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0],
 	width: PIXIWidth,
 	height: PIXIHeight,
 });
 
+/*
+const viewport = new Viewport({
+	worldWidth: 5000,
+	worldHeight: 5000,
+	screenWidth: window.innerWidth,
+	screenHeight: window.innerHeight,
+	events: PIXIapp.renderer.events,
+  });
+//PIXI.settings.RESOLUTION = resolution;*/
+
 
 document.body.appendChild(PIXIapp.view);
+
+/*kdcanvas.scale.x = resolution;
+kdcanvas.scale.y = resolution;
+kdui.scale.x = resolution;
+kdui.scale.y = resolution;*/
 
 PIXIapp.stage.addChild(kdcanvas);
 PIXIapp.stage.addChild(kdui);
 
-function AssetGet(arg1, arg2, arg3) {
-	return undefined;
-}
+let ticker = PIXI.Ticker.shared;
 
 window.onload = function() {
 	KinkyDungeonRootDirectory = "Game/";
@@ -71,7 +90,7 @@ window.onload = function() {
 
 	KinkyDungeonLoad();
 
-	PIXIapp.ticker.add(() => {
+	ticker.add(() => {
 		let Timestamp = performance.now();
 		DrawProcess(Timestamp);
 

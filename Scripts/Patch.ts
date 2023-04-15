@@ -3,6 +3,9 @@
 // This should be true only for standalone
 let StandalonePatched = true;
 
+function AssetGet(arg1, arg2, arg3) {
+	return undefined;
+}
 
 let ArcadeDeviousChallenge = false;
 

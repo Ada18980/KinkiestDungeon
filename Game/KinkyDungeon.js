@@ -615,6 +615,13 @@ function KinkyDungeonLoad() {
 
 			KinkyDungeonBones = localStorage.getItem("KinkyDungeonBones") != undefined ? localStorage.getItem("KinkyDungeonBones") : KinkyDungeonBones;
 
+			if (localStorage.getItem("KDResolution")) {
+				let parsed = parseInt(localStorage.getItem("KDResolution"));
+				if (parsed != undefined) {
+					KDResolutionListIndex = parsed;
+					KDResolution = KDResolutionList[KDResolutionListIndex];
+				}
+			}
 			if (localStorage.getItem("KDVibeVolume")) {
 				let parsed = parseInt(localStorage.getItem("KDVibeVolume"));
 				if (parsed != undefined) {
@@ -1640,7 +1647,7 @@ function KinkyDungeonRun() {
 
 		YY = YYstart;
 
-		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + (KDResolution * 100 + "%"), "#ffffff", "",
+		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 100) + "%", "#ffffff", "",
 			() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 100 + "%",
 			() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 100 + "%");
 		YY += YYd * 2;
