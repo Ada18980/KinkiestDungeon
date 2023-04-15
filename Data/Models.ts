@@ -131,6 +131,13 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	if (MC.Models.size == 0) UpdateModels(MC);
 
 	let containerID = `${X},${Y},${Zoom}`;
+
+	if (MC.Containers.get(containerID) && !MC.Update.get(containerID)) {
+		// Refresh the container!
+		kdcanvas.removeChild(MC.Containers.get(containerID).Container);
+		MC.Containers.get(containerID).Container.destroy();
+		MC.Containers.delete(containerID);
+	}
 	if (!MC.Containers.get(containerID)) {
 		let Container = {
 			Container: new PIXI.Container(),
@@ -178,11 +185,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		Container.SpritesDrawn.clear();
 		PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
 
-		if (modified)
-			MC.Containers.get(containerID).Container.cacheAsBitmap = false;
-	} else {
-		// Start caching again after
-		MC.Containers.get(containerID).Container.cacheAsBitmap = true;
+
 	}
 
 
@@ -291,7 +294,6 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 			}
 		}
 	}
-	console.log(modified)
 	return modified;
 }
 
