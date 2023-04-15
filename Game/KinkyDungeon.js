@@ -777,8 +777,17 @@ async function sleep(msec) {
 
 let KDMarkAsCache = [];
 
+let lastGlobalRefresh = 0;
+let GlobalRefreshInterval = 1000;
+let KDGlobalRefresh = false;
+
 function KinkyDungeonRun() {
-	if (StandalonePatched && KDCurrentModels)
+	if (StandalonePatched && KDCurrentModels) {
+		if (CommonTime() > lastGlobalRefresh + GlobalRefreshInterval) {
+			lastGlobalRefresh = CommonTime();
+			KDGlobalRefresh = !KDGlobalRefresh;
+		}
+
 		for (let MC of KDCurrentModels.values()) {
 
 
@@ -794,6 +803,7 @@ function KinkyDungeonRun() {
 
 			MC.ContainersDrawn.clear();
 		}
+	}
 
 
 	// Override right click and make it trigger the Skip key

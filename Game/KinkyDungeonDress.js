@@ -960,6 +960,44 @@ function KDGetAvailablePosesArms(C) {
 
 /** @type {Record<string, KDExpression>} */
 let KDExpressions = {
+	"RestrainedImmediate": {
+		priority: 7,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("restrained")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "BlushHigh",
+				MouthPose: "MouthSurprised",
+			};
+		},
+	},
+	"RestrainedRecent": {
+		priority: 1.5,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("restrained_recently")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "BlushMedium",
+				MouthPose: "MouthEmbarrassed",
+			};
+		},
+	},
 	"OrgSuccess": {
 		priority: 10,
 		criteria: (C) => {

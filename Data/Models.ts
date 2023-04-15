@@ -54,8 +54,12 @@ class ModelContainer {
 	/**
 	 * Adds a model to the modelcontainer
 	 */
-	addModel(Model: Model) {
-		this.Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+	addModel(Model: Model, Filters?: Record<string, LayerFilter>) {
+		let mod: Model = JSON.parse(JSON.stringify(Model));
+		if (Filters) {
+			mod.Filters = JSON.parse(JSON.stringify(Filters)) || mod.Filters;
+		}
+		this.Models.set(Model.Name, mod);
 	}
 
 	/**
@@ -422,10 +426,10 @@ function UpdateModels(MC) {
 	MC.Update.clear();
 
 
-	let appearance = MC.Character.Appearance;
+	let appearance: Item[] = MC.Character.Appearance;
 	for (let A of appearance) {
 		if (A.Model) {
-			MC.addModel(A.Model);
+			MC.addModel(A.Model, A.Filters);
 		}
 	}
 
