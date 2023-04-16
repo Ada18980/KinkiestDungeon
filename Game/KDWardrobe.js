@@ -288,7 +288,7 @@ function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false, dress = fa
 					//KDGetPoseOfType(C, "Mouth"),
 				);
 				KDUpdateTempPoses(C);
-				UpdateModels(KDCurrentModels.get(C));
+				UpdateModels(C);
 			}
 			if (dress) {
 
@@ -420,7 +420,7 @@ function KDChangeWardrobe(C) {
 	} catch (e) {
 		// Fail
 	}
-	UpdateModels(KDCurrentModels.get(C));
+	UpdateModels(C);
 }
 
 /**
@@ -457,7 +457,7 @@ function KDDrawModelList(X, C) {
 					if (KDModelList_Sublevel_index == index) {
 						KDChangeWardrobe(C);
 						C.Appearance.splice(appIndex, 1);
-						UpdateModels(KDCurrentModels.get(C));
+						UpdateModels(C);
 					}
 					removed = true;
 					break;
@@ -468,7 +468,7 @@ function KDDrawModelList(X, C) {
 				if (M) {
 					KDChangeWardrobe(C);
 					KDAddModel(C, M.Group || M.Name, M, "Default", undefined);
-					UpdateModels(KDCurrentModels.get(C));
+					UpdateModels(C);
 				}
 
 
@@ -672,7 +672,7 @@ function KDDrawWardrobe(screen, Character) {
 			KinkyDungeonSetDress("Default", "Default");
 			KinkyDungeonDressPlayer();
 			KDInitProtectedGroups();
-			UpdateModels(KDCurrentModels.get(KinkyDungeonPlayer));
+			UpdateModels(KinkyDungeonPlayer);
 			KinkyDungeonConfigAppearance = true;
 			KinkyDungeonReplaceConfirm = 0;
 			return true;

@@ -66,12 +66,14 @@ let LAYERS_BASE = [
 	"Straps",
 	"NecklaceCharm",
 	"Necklace",
-	"Bra",
+	"BraChest",
 	"Chest",
+	"StrapsUnderbust",
 	// For things that go directly under the breasts
 	"Underbust",
 	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
 	"Underarms",
+	"Bra",
 	"Corset",
 
 

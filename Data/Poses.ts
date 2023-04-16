@@ -118,3 +118,106 @@ function ModelGetPoseMods(Poses): {[_: string]: PoseMod[]} {
 	return mods;
 }
 
+
+function CheckPoseOrTags(C: Character, tag: string) {
+	if (C == KinkyDungeonPlayerEntity) {
+		if (KinkyDungeonPlayerTags.get(tag)) return true;
+	}
+	if (KDCurrentModels.get(C)?.Poses[tag]) {
+		return true;
+	}
+	return false;
+}
+
+function KDGetAvailablePosesLegs(C: Character): string[] {
+	let poses: Record<string, boolean> = {};
+	for (let p of LEGPOSES) {
+		poses[p] = true;
+	}
+	if (C == KinkyDungeonPlayer) {
+		// Logic for the player
+		if (CheckPoseOrTags(C, "FeetLinked")) {
+			delete poses.Spread;
+		} else if (CheckPoseOrTags(C, "ForceKneel")) {
+			delete poses.Closed;
+		}
+		if (CheckPoseOrTags(C, "ForceHogtie")) {
+			for (let p of STANDPOSES) {
+				delete poses[p];
+			}
+			for (let p of KNEELPOSES) {
+				delete poses[p];
+			}
+		} else if (CheckPoseOrTags(C, "ForceKneel")) {
+			for (let p of STANDPOSES) {
+				delete poses[p];
+			}
+		}
+	} else {
+		// Logic for NPC
+		// ???
+	}
+
+	return Object.keys(poses);
+}
+
+
+function KDGetAvailablePosesArms(C: Character): string[] {
+	let poses: Record<string, boolean> = {};
+	for (let p of ARMPOSES) {
+		poses[p] = true;
+	}
+	//if (C == KinkyDungeonPlayer) {
+	// Logic for the player
+	if (CheckPoseOrTags(C, "Yokes")) {
+		poses = {Yoked: true};
+	} else if (CheckPoseOrTags(C, "Armbinders")) {
+		poses = {Wristtie: true};
+	} else if (CheckPoseOrTags(C, "Boxbinders")) {
+		poses = {Boxtie: true};
+	} else if (CheckPoseOrTags(C, "Straitjackets")) {
+		poses = {Boxtie: true};
+	} else if (CheckPoseOrTags(C, "Boxties")) {
+		poses = {Boxtie: true};
+	} else if (CheckPoseOrTags(C, "Wristties")) {
+		poses = {Wristtie: true};
+	}
+	if (KinkyDungeonIsArmsBound(false, false)) {
+		delete poses.Free;
+		if (!CheckPoseOrTags(C, "HandsFront")) {
+			delete poses.HandsFront;
+		}
+		if (!CheckPoseOrTags(C, "Yoked")) {
+			delete poses.Yoked;
+		}
+	}
+	//} else {
+	// Logic for NPC
+	// ???
+	//}
+
+	return Object.keys(poses);
+}
+
+function RefreshTempPoses(Character: Character, Restraints: boolean) {
+	for (let pose of Object.keys(KDCurrentModels.get(Character).TempPoses))
+		delete KDCurrentModels.get(Character).Poses[pose];
+	KDCurrentModels.get(Character).TempPoses = {};
+
+	/*for (let m of KDCurrentModels.get(Character).Models.values()) {
+		if (m.AddPose) {
+			for (let pose of m.AddPose) {
+				KDCurrentModels.get(Character).Poses[pose] = true;
+			}
+		}
+	}*/
+
+	if (Restraints && Character == KinkyDungeonPlayer)
+		for (let rest of KinkyDungeonAllRestraintDynamic()) {
+			let inv = rest.item;
+			if (KDRestraint(inv).addPose)
+				for (let tag of KDRestraint(inv).addPose) {
+					if (!KDCurrentModels.get(Character).TempPoses[tag]) KDCurrentModels.get(Character).TempPoses[tag] = true;
+				}
+		}
+}

@@ -22,11 +22,20 @@ kdgamefog.zIndex = 1;
 
 let kdmapboard = new PIXI.Container();
 kdmapboard.zIndex = -2;
+let kdenemyboard = new PIXI.Container();
+kdenemyboard.zIndex = 0;
+let kdbulletboard = new PIXI.Container();
+kdbulletboard.zIndex = -0.01;
+let kdeffecttileboard = new PIXI.Container();
+kdeffecttileboard.zIndex = -0.1;
 // @ts-ignore
 let kdgameboard = new PIXI.Container();
 kdgameboard.sortableChildren = true;
 kdgameboard.zIndex = -50;
 kdgameboard.addChild(kdmapboard);
+kdgameboard.addChild(kdbulletboard);
+kdgameboard.addChild(kdenemyboard);
+kdgameboard.addChild(kdeffecttileboard);
 // @ts-ignore
 let kdui = new PIXI.Graphics();
 let kdcanvas = new PIXI.Container();

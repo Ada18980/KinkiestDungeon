@@ -55,26 +55,30 @@ AddModel(GetModelWithExtraLayers("BallGagHarnessSecure", "BallGagHarness", [
 ]));
 
 AddModel({
-	Name: "RopeArms",
+	Name: "RopeBoxtie1",
 	Folder: "Rope",
 	Parent: "Rope",
 	TopLevel: true,
-	Categories: ["Restraints"],
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["Boxties"],
 	Layers: ToLayerMap([
-		{ Name: "ChestUpper", Layer: "ChestStraps", Pri: 0,
+		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
 			Poses: ToMap([...ARMPOSES]),
-			Invariant: true,
-		},
-		{ Name: "ShoulderStraps", Layer: "ChestStraps", Pri: 1,
-			Poses: ToMap([...ARMPOSES]),
-			Invariant: true,
-		},
-		{ Name: "ChestLower", Layer: "Underbust", Pri: 0,
-			Poses: ToMap([...ARMPOSES]),
-			Invariant: true,
-		},
-		{ Name: "Arms", Layer: "Underarms", Pri: 0,
-			Poses: ToMap(["Wristtie", "Boxtie"]),
 		},
 	])
 });
+
+
+AddModel(GetModelWithExtraLayers("RopeBoxtie2", "RopeBoxtie1", [
+	{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
+		Poses: ToMap([...ARMPOSES]),
+	},
+]));
+
+
+AddModel(GetModelWithExtraLayers("RopeBoxtie3", "RopeBoxtie2", [
+	{ Name: "ArmHarness", Layer: "Underarms", Pri: 0,
+		Poses: ToMap([...ARMPOSES]),
+		Invariant: true,
+	},
+]));
