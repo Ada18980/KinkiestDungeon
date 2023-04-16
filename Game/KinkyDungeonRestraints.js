@@ -221,7 +221,7 @@ function KinkyDungeonDrawTethers(Entity, CamX, CamY) {
 			let dd = 0.1; // Increments
 			let color = KDRestraint(inv).Color[0]?.length > 3 ? KDRestraint(inv).Color[0] : KDRestraint(inv).Color;
 			if (!color || color == "Default") color = "#aaaaaa";
-			// @ts-ignore
+			if (Array.isArray(color)) color = color[0];
 			KDTetherGraphics.lineStyle(4, string2hex(color), 1);
 			for (let d = 0; d < 1; d += dd) {
 				let yOffset = 30 * Math.sin(Math.PI * d);
@@ -879,7 +879,6 @@ function KDIsTreeChastityBra(item) {
  * @param {boolean} [External] - By enemies or by player?
  * @returns {boolean}
  */
-// @ts-ignore
 function KDGroupBlocked(Group, External) {
 	if (KinkyDungeonPlayerTags.get("ChastityLower") && ["ItemVulva", "ItemVulvaPiercings", "ItemButt"].includes(Group)) return true;
 	if (KinkyDungeonPlayerTags.get("ChastityUpper") && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) return true;
@@ -2317,8 +2316,6 @@ function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill
 	}
 }
 
-// @ts-ignore
-// @ts-ignore
 function KinkyDungeonUpdateRestraints(delta) {
 	let playerTags = new Map();
 	for (let inv of KinkyDungeonAllRestraint()) {
@@ -2432,7 +2429,6 @@ function KinkyDungeonRestraintPower(item, NoLink, toLink) {
  * @param {string} [newLock]
  * @returns {boolean}
  */
-// @ts-ignore
 function KinkyDungeonLinkableAndStricter(oldRestraint, newRestraint, item, newLock) {
 	if (oldRestraint && newRestraint) {
 		return KinkyDungeonIsLinkable(oldRestraint, newRestraint, item);
@@ -2651,6 +2647,8 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 				rest.trap = KinkyDungeonGenerateRestraintTrap();
 			}
 		}
+		KinkyDungeonSetFlag("restrained", 2);
+		KinkyDungeonSetFlag("restrained_recently", 5);
 		return ret;
 	}
 	return 0;
@@ -2898,7 +2896,6 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 					let data = ModularItemDataLookup[AssetGroup + restraint.Asset];
 					let asset = data.asset;
 					let modules = data.modules;
-					// @ts-ignore
 					InventoryGet(Player, AssetGroup).Property = ModularItemMergeModuleValues({ asset, modules }, restraint.Modules);
 				}
 				/*if (restraint.OverridePriority) {
@@ -2906,7 +2903,6 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 					else InventoryGet(KinkyDungeonPlayer, AssetGroup).Property.OverridePriority = restraint.OverridePriority;
 				}*/
 				if (placedOnPlayer && color) {
-					// @ts-ignore
 					KDCharacterAppearanceSetColorForGroup(Player, color, AssetGroup);
 				}
 				let item = {name: restraint.name, id: KinkyDungeonGetItemID(), type: Restraint, curse: Curse, events:events ? events : Object.assign([], restraint.events), tightness: tight, lock: "", faction: faction, dynamicLink: dynamicLink };
@@ -3205,7 +3201,6 @@ function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, fact
  * @param {boolean} Keep
  * @returns
  */
-// @ts-ignore
 function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 	//if (!data.add && !data.shrine)
 	if (item.type == Restraint) {

@@ -31,7 +31,6 @@ function KDAddParticle(x, y, img, type, data) {
 			phase: data.phase || 0,
 		});
 		// Create the sprite
-		// @ts-ignore
 		let sprite = PIXI.Sprite.from(tex);
 		sprite.position.x = x;
 		sprite.position.y = y;
@@ -134,6 +133,13 @@ function KDCreateVibeParticle() {
 	let Hogtied = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer)?.Poses.Hogtie : KinkyDungeonPlayer.Pose.includes("Hogtied");
 	let Kneeling = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer)?.Poses.Kneel: KinkyDungeonPlayer.IsKneeling();
 	let y = 520 + (Hogtied ? 165 : (Kneeling ? 78 : 0));
+	if (StandalonePatched) {
+		// Throw out in favor of new system
+		let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Front");
+		x = pos.x;
+		y = pos.y;
+	}
+
 	let locations = KDSumVibeLocations();
 	let vx = ((Math.random() > 0.5) ? -1 : 1) * 0.25;
 	let vy = -.15 + Math.random() * .3;
@@ -144,7 +150,15 @@ function KDCreateVibeParticle() {
 			vy = 0.25 + Math.random()*0.1;
 			vx = -.05 + Math.random() * .1;
 		}
-		else if (breast && !KinkyDungeonPlayer.Pose.includes("Hogtied") && (locations.length == 1 || Math.random() < 0.5)) y -= 155;
+		else if (breast && !KinkyDungeonPlayer.Pose.includes("Hogtied") && (locations.length == 1 || Math.random() < 0.5)) {
+			if (StandalonePatched) {
+				let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Chest");
+				x = pos.x;
+				y = pos.y;
+			} else {
+				y -= 155;
+			}
+		}
 
 	}
 

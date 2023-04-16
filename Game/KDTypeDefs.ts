@@ -341,6 +341,9 @@ interface KDRestraintProps {
 	removeShrine?: string[],
 	slimeLevel?: number,
 	addTag?: string[],
+	addPose?: string[],
+	forbidPose?: string[],
+	removePose?: string[],
 	OverridePriority?: number,
 	Modules?: number[],
 	/** When added to the inventory, is added as a different item instead. Good for multiple stages of the same item, like cuffs */
@@ -2050,6 +2053,20 @@ type KDExpression = {
 	};
 }
 
-declare const PIXI: any;
+type KDSprites = {[_: string]: (x: number, y: number, fog: boolean, noReplace: string) => string}
+
 declare const __filters: any;
 declare const zip: any;
+declare const guessLanguage: any;
+
+declare const PIXI: typeof import('pixi.js') & {
+	// These are because they seem to be missing in pixi.js@6.4.2 as installed from npm, and I can't find where they exist
+	// It might require a version update and/or migration to get these all correct.
+	Assets: any,
+	Cache: any,
+	CanvasRenderer: any,
+	BaseTexture: any,
+};
+
+// We can't refer to a type as `PIXI.Container`, nor `typeof PIXI.Container`, but `import(pixi.js).Container` does work
+type PIXIContainer = import('pixi.js').Container;

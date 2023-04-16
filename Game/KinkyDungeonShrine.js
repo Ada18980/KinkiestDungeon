@@ -687,7 +687,8 @@ function KinkyDungeonDrawPerkOrb() {
 	let bheight = 64;
 	let Twidth = 1250;
 
-	MainCanvas.textAlign = "center";
+	if (!StandalonePatched)
+		MainCanvas.textAlign = "center";
 	DrawTextKD(TextGet("KinkyDungeonPerkIntro"), 1250, 200, "#ffffff", KDTextGray2);
 	DrawTextKD(TextGet("KinkyDungeonPerkIntro2"), 1250, 250, "#ffffff", KDTextGray2);
 

@@ -229,7 +229,7 @@ function KinkyDungeonDrawInputs() {
 	 */
 	let statsDraw = {};
 
-	if (ServerURL == "foobar") DrawButtonVis(1880, 82, 100, 50, TextGet("KinkyDungeonRestart"), "#ffffff");
+	if (KDPatched) DrawButtonVis(1880, 82, 100, 50, TextGet("KinkyDungeonRestart"), "#ffffff");
 	else DrawButtonVis(1750, 20, 100, 50, TextGet("KinkyDungeonRestart"), "#ffffff");
 
 	//let X1 = 1640;
@@ -806,19 +806,17 @@ function KinkyDungeonDrawInputs() {
 		if (KinkyDungeonDrawStruggle > 2) KinkyDungeonDrawStruggle = 0;
 		return true;
 	}, true, 510, 925, 60, 60, "", KinkyDungeonStruggleGroups.length > 0 ? "#ffffff" : "#333333", KinkyDungeonRootDirectory + "Hide" + (KinkyDungeonDrawStruggle > 1 ? "Full" : (KinkyDungeonDrawStruggle > 0 ? "True" : "False")) + ".png", "");
+	DrawButtonKDEx("SetPose", (bdata) => {
+		KDPlayerSetPose = !KDPlayerSetPose;
 
-	if (StandalonePatched)
-		DrawButtonKDEx("SetPose", (bdata) => {
-			KDPlayerSetPose = !KDPlayerSetPose;
-
-			/*KDWardrobe_CurrentPoseArms = KDGetPoseOfType(KinkyDungeonPlayer, "Arms");
-			KDWardrobe_CurrentPoseLegs = KDGetPoseOfType(KinkyDungeonPlayer, "Legs");
-			KDWardrobe_CurrentPoseEyes = KDGetPoseOfType(KinkyDungeonPlayer, "Eyes");
-			KDWardrobe_CurrentPoseBrows = KDGetPoseOfType(KinkyDungeonPlayer, "Brows");
-			KDWardrobe_CurrentPoseBlush = KDGetPoseOfType(KinkyDungeonPlayer, "Blush") || "BlushNeutral";
-			KDWardrobe_CurrentPoseMouth = KDGetPoseOfType(KinkyDungeonPlayer, "Mouth");*/
-			return true;
-		}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
+		/*KDWardrobe_CurrentPoseArms = KDGetPoseOfType(KinkyDungeonPlayer, "Arms");
+		KDWardrobe_CurrentPoseLegs = KDGetPoseOfType(KinkyDungeonPlayer, "Legs");
+		KDWardrobe_CurrentPoseEyes = KDGetPoseOfType(KinkyDungeonPlayer, "Eyes");
+		KDWardrobe_CurrentPoseBrows = KDGetPoseOfType(KinkyDungeonPlayer, "Brows");
+		KDWardrobe_CurrentPoseBlush = KDGetPoseOfType(KinkyDungeonPlayer, "Blush") || "BlushNeutral";
+		KDWardrobe_CurrentPoseMouth = KDGetPoseOfType(KinkyDungeonPlayer, "Mouth");*/
+		return true;
+	}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
 
 	if (KDPlayerSetPose) KDPlayerDrawPoseButtons(KinkyDungeonPlayer);
 
@@ -1577,7 +1575,7 @@ function KinkyDungeonHandleHUD() {
 			return KinkyDungeonRangedAttack();
 		}
 
-		if ((ServerURL == "foobar" && MouseIn(1880, 82, 100, 50)) || (ServerURL != "foobar" && MouseIn(1750, 20, 100, 50))) {
+		if ((KDPatched && MouseIn(1880, 82, 100, 50)) || (!KDPatched && MouseIn(1750, 20, 100, 50))) {
 			KinkyDungeonDrawState = "Restart";
 			KDConfirmDeleteSave = false;
 			if (KDDebugMode) {
