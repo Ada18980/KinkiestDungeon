@@ -105,7 +105,7 @@ function KDUpdateVibeSound(Location, Sound, Volume) {
 			if (KDVibeSounds[Location].vol) vol *= KDVibeSounds[Location].vol;
 			KDVibeSounds[Location].Audio = audio;
 			KDVibeSounds[Location].update = true;
-			if (ServerURL == 'foobar') {
+			if (KDPatched) {
 				audio.crossOrigin = "Anonymous";
 				audio.src = Sound;
 			} else

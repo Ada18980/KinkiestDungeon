@@ -42,7 +42,6 @@ window.onload = function() {
 	pixiview = KinkyDungeonGetCanvas("MainCanvas");
 
 	// window.onload in index.html
-	ServerURL = "foobar";
 	CommonIsMobile = CommonDetectMobile();
 	TranslationLoad();
 	DrawLoad();

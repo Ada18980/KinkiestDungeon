@@ -2065,6 +2065,7 @@ declare const PIXI: typeof import('pixi.js') & {
 	Assets: any,
 	Cache: any,
 	CanvasRenderer: any,
+	BaseTexture: any,
 };
 
 // We can't refer to a type as `PIXI.Container`, nor `typeof PIXI.Container`, but `import(pixi.js).Container` does work

@@ -168,8 +168,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
 		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
-		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 			MC.Containers.get(containerID));
+		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		MC.Mods.set(containerID, StartMods);
 		MC.Update.set(containerID, true);
 

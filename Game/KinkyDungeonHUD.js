@@ -229,7 +229,7 @@ function KinkyDungeonDrawInputs() {
 	 */
 	let statsDraw = {};
 
-	if (ServerURL == "foobar") DrawButtonVis(1880, 82, 100, 50, TextGet("KinkyDungeonRestart"), "#ffffff");
+	if (KDPatched) DrawButtonVis(1880, 82, 100, 50, TextGet("KinkyDungeonRestart"), "#ffffff");
 	else DrawButtonVis(1750, 20, 100, 50, TextGet("KinkyDungeonRestart"), "#ffffff");
 
 	//let X1 = 1640;
@@ -1575,7 +1575,7 @@ function KinkyDungeonHandleHUD() {
 			return KinkyDungeonRangedAttack();
 		}
 
-		if ((ServerURL == "foobar" && MouseIn(1880, 82, 100, 50)) || (ServerURL != "foobar" && MouseIn(1750, 20, 100, 50))) {
+		if ((KDPatched && MouseIn(1880, 82, 100, 50)) || (!KDPatched && MouseIn(1750, 20, 100, 50))) {
 			KinkyDungeonDrawState = "Restart";
 			KDConfirmDeleteSave = false;
 			if (KDDebugMode) {

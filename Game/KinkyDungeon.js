@@ -692,7 +692,7 @@ function KinkyDungeonLoad() {
 		else console.log("Failed to load keybindings");
 
 		if (KinkyDungeonIsPlayer()) {
-			if (ServerURL != 'foobar' && KinkyDungeonState == "Consent")
+			if (!KDPatched && KinkyDungeonState == "Consent")
 				KinkyDungeonState = "Menu";
 			KinkyDungeonGameData = null;
 
@@ -733,7 +733,7 @@ function KinkyDungeonLoad() {
  * @returns {boolean} - If the player is in the arcade
  */
 function KinkyDungeonDeviousDungeonAvailable() {
-	return KinkyDungeonIsPlayer() && (DialogGamingPreviousRoom == "Arcade" || MiniGameReturnFunction == "ArcadeKinkyDungeonEnd") && ServerURL != 'foobar';
+	return KinkyDungeonIsPlayer() && (DialogGamingPreviousRoom == "Arcade" || MiniGameReturnFunction == "ArcadeKinkyDungeonEnd") && !KDPatched;
 }
 
 /**
@@ -836,7 +836,7 @@ function KinkyDungeonRun() {
 	KDUpdateVibeSounds();
 	KDUpdateMusic();
 
-	if (ServerURL != "foobar")
+	if (!KDPatched)
 		DrawButtonVis(1885, 25, 90, 90, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Exit.png");
 
 	// eslint-disable-next-line no-constant-condition
@@ -931,10 +931,10 @@ function KinkyDungeonRun() {
 			DrawTextKD(TextGet("Intro"), 1250, 250, "#ffffff", KDTextGray2);
 			DrawTextKD(TextGet("Intro2"), 1250, 300, "#ffffff", KDTextGray2);
 			DrawTextKD(TextGet("Intro3"), 1250, 350, "#ffffff", KDTextGray2);
-			DrawTextKD(TextGet("Intro4" + (ServerURL == 'foobar' ? "" : "BC")), 1250, 400, "#ffffff", KDTextGray2);
+			DrawTextKD(TextGet("Intro4" + (KDPatched ? "" : "BC")), 1250, 400, "#ffffff", KDTextGray2);
 		}
 
-		if (ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable() && ServerURL != "foobar")
+		if (ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable() && !KDPatched)
 			DrawTextKD(TextGet("DeviousChallenge"), 1250, 925, "#ffffff", KDTextGray2);
 
 
@@ -2124,7 +2124,7 @@ let afterLoaded = false;
  * }
  * It is declared with `let` intentionally to allow the above, without suggesting a type error
  */
-let KDModsAfterLoad = () => {}
+let KDModsAfterLoad = () => {};
 
 function KinkyDungeonStartNewGame(Load) {
 	KinkyDungeonNewGame = 0;
@@ -2183,7 +2183,7 @@ let KDHardModeThresh = 10;
 function KinkyDungeonHandleClick() {
 	if (KDProcessButtons()) return true;
 
-	if (MouseIn(1885, 25, 90, 90) && (ServerURL != "foobar")) {
+	if (MouseIn(1885, 25, 90, 90) && (!KDPatched)) {
 		ElementRemove("saveDataField");
 		ElementRemove("saveInputField");
 		KinkyDungeonExit();

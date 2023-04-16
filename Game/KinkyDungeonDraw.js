@@ -634,7 +634,7 @@ function KinkyDungeonDrawGame() {
 	KDNaked = false;
 	KDRefresh = false;
 
-	if (ServerURL == "foobar") {
+	if (KDPatched) {
 		DrawTextFitKD(TextGet("KinkyDungeon"), 1865, 50, 200, "#ffffff", KDTextGray2);
 	}
 
@@ -1569,7 +1569,7 @@ function KinkyDungeonDrawGame() {
 	}
 
 
-	if (ServerURL != "foobar")
+	if (!KDPatched)
 		DrawButtonVis(1885, 25, 90, 90, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Exit.png");
 
 	if ((!KDDebugMode && KinkyDungeonDrawState == "Restart") || (KDDebugMode && KinkyDungeonDrawState != "Restart")) {

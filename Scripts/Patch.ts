@@ -1,10 +1,6 @@
 // This should be true only for standalone
 const StandalonePatched = true;
 
-function AssetGet(arg1, arg2, arg3) {
-	return undefined;
-}
-const ServerURL: string = "";
 const ArcadeDeviousChallenge = false;
 const ChatRoomCharacter: Character[] = [];
 const ChatRoomChatLog: {Garbled: string, Time: number, SenderName: string}[] = [];

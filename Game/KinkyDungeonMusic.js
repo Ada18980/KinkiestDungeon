@@ -89,7 +89,7 @@ function KDPlayMusic(Sound, Volume) {
 	let vol = Player.AudioSettings.Volume * (Volume != undefined ? Volume : 1.0);
 	KDCurrentMusicSound = audio;
 	KDCurrentMusicSoundUpdate = true;
-	if (ServerURL == 'foobar') {
+	if (KDPatched) {
 		audio.crossOrigin = "Anonymous";
 		audio.src = "Music/" + (KDModFiles[Sound] || Sound);
 	} else
