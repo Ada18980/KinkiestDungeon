@@ -321,3 +321,42 @@ let KDCustomItems = {
 		};
 	},
 };
+
+/**
+ *
+ * @param {any[]} items
+ * @param {number} offset
+ * @returns {number}
+ */
+function KDDrawItemsTooltip(items, offset) {
+	let TooltipList = [];
+	TooltipList.push({
+		str: TextGet("KDTooltipItems"),
+		fg: "#ffffff",
+		bg: "#000000",
+		size: 24,
+		center: true,
+	});
+	let str = "";
+	for (let item of items) {
+		str = str + (str ? ", " : "") + TextGet(KinkyDungeonRestraintsCache.has(item.name) ? ("Restraint" + item.name) : ("KinkyDungeonInventoryItem" + item.name));
+	}
+
+	let strSplit = KinkyDungeonWordWrap(str, 12, 28).split('\n');
+
+	let i = 1;
+	const imax = 5;
+	for (let line of strSplit) {
+		TooltipList.push({
+			str: (i == imax ? line.substring(0, line.length - 1) + "..." : line),
+			fg: "#dddddd",
+			bg: "#000000",
+			size: 18,
+			center: true,
+		});
+		if (i >= imax) break;
+		i++;
+	}
+
+	return KDDrawTooltip(TooltipList, offset);
+}

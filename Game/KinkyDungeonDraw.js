@@ -1014,6 +1014,7 @@ function KinkyDungeonDrawGame() {
 				let cursorY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
 				let tooltips = [];
 				if (KinkyDungeonVisionGet(cursorX, cursorY) > 0) {
+
 					let ambushTile = "";
 					let enemy = KinkyDungeonEnemyAt(cursorX, cursorY);
 					if (enemy && KDCanSeeEnemy(KinkyDungeonEnemyAt(cursorX, cursorY))) {
@@ -1025,6 +1026,11 @@ function KinkyDungeonDrawGame() {
 
 
 					}
+					let items = KinkyDungeonGroundItems.filter((item) => {return item.x == cursorX && item.y == cursorY;});
+					if (items.length > 0) {
+						tooltips.push((offset) => KDDrawItemsTooltip(items, offset));
+					}
+
 					let eTiles = KDGetEffectTiles(cursorX, cursorY);
 					for (let etile of Object.values(eTiles)) {
 						if (KDEffectTileTooltips[etile.name] && KDCanSeeEffectTile(etile)) {
@@ -2926,6 +2932,14 @@ function KDETileTooltipSimple(tile, TooltipList, color, extra, descColor = "#fff
 	}
 }
 
+/**
+ *
+ * @param {effectTile} tile
+ * @param {number} x
+ * @param {number} y
+ * @param {number} offset
+ * @returns {number}
+ */
 function KDDrawEffectTileTooltip(tile, x, y, offset) {
 	let TooltipList = [];
 	KDEffectTileTooltips[tile.name](tile, x, y, TooltipList);
@@ -2933,6 +2947,12 @@ function KDDrawEffectTileTooltip(tile, x, y, offset) {
 	return KDDrawTooltip(TooltipList, offset);
 }
 
+/**
+ *
+ * @param {any[]} TooltipList
+ * @param {number} offset
+ * @returns {number}
+ */
 function KDDrawTooltip(TooltipList, offset) {
 	let TooltipWidth = 300;
 	let TooltipHeight = 0;

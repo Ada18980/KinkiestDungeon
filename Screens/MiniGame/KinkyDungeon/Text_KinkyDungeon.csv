@@ -1068,6 +1068,9 @@ KinkyDungeonInventoryItemDollIDUse,"You apply a clever trick to reset your visor
 KinkyDungeonInventoryItemDollIDDesc,"A chip used to identify dolls. She must have dropped it. Either way it contains valuable tech..."
 KinkyDungeonInventoryItemDollIDDesc2,"It could be used to trick your visor into thinking you've performed your tasks for a while."
 
+
+KinkyDungeonInventoryItemHeart,Heart Amulet
+
 ItemPickupDonut,"You find a donut with sprinkles!"
 KinkyDungeonInventoryItemDonut,Donut (Sprinkles)
 KinkyDungeonInventoryItemDonutUse,"You enjoy the donut and relish in its sweet delights."
@@ -9868,3 +9871,4 @@ KDPunishAttack,Your attack sets off your [RESTRAINTNAME]
 
 KDHarnessGagRemoveBlindfold,The straps on your gag prevent you from loosening the blindfold!
 KDHarnessGagStruggleBlindfold,The straps on your gag keep your blindfold securely in place!
+KDTooltipItems,Items on Ground:
