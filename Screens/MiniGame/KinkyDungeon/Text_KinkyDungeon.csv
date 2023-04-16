@@ -1070,6 +1070,9 @@ KinkyDungeonInventoryItemDollIDUse,"You apply a clever trick to reset your visor
 KinkyDungeonInventoryItemDollIDDesc,"A chip used to identify dolls. She must have dropped it. Either way it contains valuable tech..."
 KinkyDungeonInventoryItemDollIDDesc2,"It could be used to trick your visor into thinking you've performed your tasks for a while."
 
+
+KinkyDungeonInventoryItemHeart,Heart Amulet
+
 ItemPickupDonut,"You find a donut with sprinkles!"
 KinkyDungeonInventoryItemDonut,Donut (Sprinkles)
 KinkyDungeonInventoryItemDonutUse,"You enjoy the donut and relish in its sweet delights."
@@ -9891,6 +9894,8 @@ KDColorSlideralpha,alpha
 KDResetLayer,Reset Layer!
 KDCopyLayer,Copy
 KDPasteLayer,Paste
+
+KDTooltipItems,Items on Ground:
 
 KDLoading,"Preloading Character Assets: "
 

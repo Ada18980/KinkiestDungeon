@@ -1871,9 +1871,9 @@ type EnemyEvent = {
 	/** This event wont get cleared by mass resets, like when you are deposited into a cage */
 	noMassReset?: boolean,
 	/** Determines if the enemy will attack you */
-	decideAttack?: (enemy: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
+	decideAttack?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
 	/** Determines if the enemy will cast spells */
-	decideSpell?: (enemy: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
+	decideSpell?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
 	/** Determines weight */
 	weight: (enemy: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
 	/** Run when triggered */
