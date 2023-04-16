@@ -295,19 +295,9 @@ function KinkyDungeonDressPlayer(Character) {
 
 		// Apply poses from restraints
 		if (StandalonePatched && KDCurrentModels.get(Character)) {
-			// Remove temp poses from poses
-			for (let pose of Object.keys(KDCurrentModels.get(Character).TempPoses))
-				delete KDCurrentModels.get(Character).Poses[pose];
-			KDCurrentModels.get(Character).TempPoses = {};
-
-			for (let rest of KinkyDungeonAllRestraintDynamic()) {
-				let inv = rest.item;
-				if (KDRestraint(inv).addPose)
-					for (let tag of KDRestraint(inv).addPose) {
-						if (!KDCurrentModels.get(Character).TempPoses[tag]) KDCurrentModels.get(Character).TempPoses[tag] = true;
-					}
-			}
+			RefreshTempPoses(Character, true);
 		}
+
 
 
 		KinkyDungeonCheckClothesLoss = false;
@@ -581,7 +571,7 @@ function KinkyDungeonDressPlayer(Character) {
 		//if (!InventoryGet(Character, "Hair")) KDInventoryWear("Braid", "Hair");
 
 
-		UpdateModels(KDCurrentModels.get(Character));
+		UpdateModels(Character);
 	}
 }
 
@@ -873,77 +863,6 @@ function KDGetExtraPoses(C) {
 	return poses;
 }
 
-function KDGetAvailablePosesLegs(C) {
-	/** @type {Record<string, boolean>} */
-	let poses = {};
-	for (let p of LEGPOSES) {
-		poses[p] = true;
-	}
-	if (C == KinkyDungeonPlayer) {
-		// Logic for the player
-		if (KinkyDungeonPlayerTags.get("FeetLinked")) {
-			delete poses.Spread;
-		} else if (KinkyDungeonPlayerTags.get("ForceKneel")) {
-			delete poses.Closed;
-		}
-		if (KinkyDungeonPlayerTags.get("ForceHogtie")) {
-			for (let p of STANDPOSES) {
-				delete poses[p];
-			}
-			for (let p of KNEELPOSES) {
-				delete poses[p];
-			}
-		} else if (KinkyDungeonPlayerTags.get("ForceKneel")) {
-			for (let p of STANDPOSES) {
-				delete poses[p];
-			}
-		}
-	} else {
-		// Logic for NPC
-		// ???
-	}
-
-	return Object.keys(poses);
-}
-
-
-function KDGetAvailablePosesArms(C) {
-	/** @type {Record<string, boolean>} */
-	let poses = {};
-	for (let p of ARMPOSES) {
-		poses[p] = true;
-	}
-	if (C == KinkyDungeonPlayer) {
-		// Logic for the player
-		if (KinkyDungeonPlayerTags.get("Yokes")) {
-			poses = {Yoked: true};
-		} else if (KinkyDungeonPlayerTags.get("Armbinders")) {
-			poses = {Wristtie: true};
-		} else if (KinkyDungeonPlayerTags.get("Boxbinders")) {
-			poses = {Boxtie: true};
-		} else if (KinkyDungeonPlayerTags.get("Straitjackets")) {
-			poses = {Boxtie: true};
-		} else if (KinkyDungeonPlayerTags.get("Boxties")) {
-			poses = {Boxtie: true};
-		} else if (KinkyDungeonPlayerTags.get("Wristties")) {
-			poses = {Wristtie: true};
-		}
-		if (KinkyDungeonIsArmsBound(false, false)) {
-			delete poses.Free;
-			if (!KinkyDungeonPlayerTags.get("HandsFront")) {
-				delete poses.HandsFront;
-			}
-			if (!KinkyDungeonPlayerTags.get("Yoked")) {
-				delete poses.Yoked;
-			}
-		}
-	} else {
-		// Logic for NPC
-		// ???
-	}
-
-	return Object.keys(poses);
-}
 
 /** @type {Record<string, KDExpression>} */
 let KDExpressions = {

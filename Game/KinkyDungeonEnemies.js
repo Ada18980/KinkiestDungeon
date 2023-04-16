@@ -395,7 +395,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				if (!enemy.Enemy.bound || (KDBoundEffects(enemy) < 4 && !KDHelpless(enemy))) {
 					let sp = sprite;
 					if (enemy.CustomSprite && !buffSprite) sp = "CustomSprite/" + enemy.CustomSprite;
-					KDDraw(kdgameboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + "Enemies/" + sp + ".png",
+					KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + "Enemies/" + sp + ".png",
 						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				} else {
@@ -405,7 +405,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 						dir = "Enemies/";
 						sp = "CustomSpriteBound/" + enemy.CustomSprite;
 					}
-					KDDraw(kdgameboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + dir + sp + ".png",
+					KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + dir + sp + ".png",
 						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}

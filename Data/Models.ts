@@ -133,7 +133,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		KDGeneratePoseArray(),
 	) : KDCurrentModels.get(C);
 
-	if (MC.Models.size == 0) UpdateModels(MC);
+	if (MC.Models.size == 0) UpdateModels(C);
 
 	let containerID = `${X},${Y},${Zoom}`;
 
@@ -436,11 +436,9 @@ function LayerSprite(Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
 	return (Layer.Sprite != undefined ? Layer.Sprite : Layer.Name) + pose;
 }
 
-/**
- * Updates models on a character
- * @param {ModelContainer} MC
- */
-function UpdateModels(MC: ModelContainer) {
+function UpdateModels(C: Character) {
+	let MC: ModelContainer = KDCurrentModels.get(C);
+	if (!MC) return;
 	MC.Models = new Map();
 	MC.Update.clear();
 
@@ -451,6 +449,15 @@ function UpdateModels(MC: ModelContainer) {
 			MC.addModel(A.Model, A.Filters);
 		}
 	}
+
+	for (let m of MC.Models.values()) {
+		if (m.AddPose) {
+			for (let pose of m.AddPose) {
+				MC.Poses[pose] = true;
+			}
+		}
+	}
+
 
 	// base body
 	//if (!MC.Models.get("Body"))

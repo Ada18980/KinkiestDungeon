@@ -417,7 +417,7 @@ function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			if (tile.x >= CamX && tile.y >= CamY && tile.x < CamX + KinkyDungeonGridWidthDisplay && tile.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(tile.x, tile.y) > 0) {
 				if (!KDCanSeeEffectTile(tile)) continue;
 				let tileid = tile.x + "," + tile.y + "_" + sprite;
-				KDDraw(kdgameboard, kdpixisprites, tileid, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",
+				KDDraw(kdeffecttileboard, kdpixisprites, tileid, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",
 					(tile.x + (tile.xoffset ? tile.xoffset : 0) - CamX)*KinkyDungeonGridSizeDisplay, (tile.y - CamY + (tile.yoffset ? tile.yoffset : 0))*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, 0, {
 						zIndex: -0.1 + 0.01 * tile.priority,
