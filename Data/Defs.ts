@@ -5,9 +5,16 @@ let LAYERS_BASE = [
 	"Mask",
 	"Circlet",
 	"Brows",
-	"Hair",
+	// Head items
 	"Blindfold",
+	"GagMuzzleStraps",
+	"GagMuzzle",
+	"GagFlatStraps",
+	"GagFlat",
+	"GagStraps",
 	"Gag",
+	// Hair mid
+	"Hair",
 	// Head
 	"Eyes",
 	"Mouth",
@@ -89,10 +96,12 @@ let LAYERS_BASE = [
 	"HandLeft",
 	"ArmLeft",
 
-	// Shoes
 
+	// Shoes
 	"ShoeLeft",
 	"ShoeRight",
+
+
 
 	// Lower body underwear
 	"StockingLeft",
@@ -103,6 +112,7 @@ let LAYERS_BASE = [
 	"CorsetLiner",
 	"Bodysuit",
 
+
 	// Lower body body - reserved for body and catsuits
 	// Note that the lower torso is complex, you should avoid internal overlaps as much as possible
 	// External overlaps are fine, e.g. right leg goes over
@@ -112,8 +122,10 @@ let LAYERS_BASE = [
 	"LegRight",
 	"FootLeftHogtie",
 	"FootRightKneel",
-	"Butt",
+	"ShoulderLeft",
+	"ShoulderRight",
 	"TorsoUpper",
+	"Butt",
 	"TorsoLower",
 	"Torso",
 

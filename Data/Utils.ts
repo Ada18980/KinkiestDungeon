@@ -20,7 +20,10 @@ function ToMap(Array: string[], ...Extra: string[]): {[_: string]: boolean} {
 	return list;
 }
 
-function ToMapSubtract(Array: string[], Subtract: string[]): {[_: string]: boolean} {
+function ToMapSubtract(Array: string[], Subtract: string[], ...Extra: string[]): {[_: string]: boolean} {
+	if (Extra) {
+		Array = [...Array, ...Extra];
+	}
 	let list: {[_: string]: boolean} = {};
 	for (let n of Array) {
 		list[n] = true;

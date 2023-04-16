@@ -525,15 +525,15 @@ function KinkyDungeonDrawFactionRep() {
 				if (!text) {
 					if (enemytext) {
 						text = true;
-						DrawTextFitKD(TextGet("KDFriendsWith") + friendstext, loc.x, loc.y, loc.fit, "white", KDTextGray1, 20);
+						DrawTextFitKD(TextGet("KDFriendsWith") + friendstext, loc.x, loc.y, loc.fit, "white", KDTextGray1, 20, "left");
 					}
 					if (allytext) {
 						text = true;
-						DrawTextFitKD(TextGet("KDAlliedWith") + allytext, loc.x, loc.y + 30, loc.fit, "white", KDTextGray1, 20);
+						DrawTextFitKD(TextGet("KDAlliedWith") + allytext, loc.x, loc.y + 30, loc.fit, "white", KDTextGray1, 20, "left");
 					}
 					if (enemytext) {
 						text = true;
-						DrawTextFitKD(TextGet("KDHostileWith") + enemytext, loc.x, loc.y + 60, loc.fit, "white", KDTextGray1, 20);
+						DrawTextFitKD(TextGet("KDHostileWith") + enemytext, loc.x, loc.y + 60, loc.fit, "white", KDTextGray1, 20, "left");
 					}
 				}
 

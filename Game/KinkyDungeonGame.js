@@ -1185,7 +1185,9 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			box = null;
 		}
 
-		if ((spawnPoint && KinkyDungeonNoEnemy(X, Y, true)) || ((!KinkyDungeonTilesGet("" + X + "," + Y) || !KinkyDungeonTilesGet("" + X + "," + Y).OffLimits)
+		if ((spawnPoint && KinkyDungeonNoEnemy(X, Y, true)) || (
+			KinkyDungeonRandomPathablePoints["" + X + "," + Y]
+			//(!KinkyDungeonTilesGet("" + X + "," + Y) || !KinkyDungeonTilesGet("" + X + "," + Y).OffLimits)
 			&& Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) > playerDist && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))
 			&& KinkyDungeonNoEnemy(X, Y, true) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits))) {
 
@@ -1235,6 +1237,10 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			}
 			if (Enemy && (!InJail || (Enemy.tags.jailer || Enemy.tags.jail || Enemy.tags.leashing))) {
 				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, AI: AI, faction: faction};
+				if (spawnPoint) {
+					e.spawnX = X;
+					e.spawnY = Y;
+				}
 				KDAddEntity(e);
 				// Give it a custom name, 5% chance
 				KDProcessCustomPatron(Enemy, e);
@@ -3979,6 +3985,12 @@ function KDAddModel(C, Group, ItemModel, NewColor, filters, item) {
 			Filters: filters,
 		};
 		NA.Model.Filters = NA.Filters || NA.Model.Filters;
+		for (let i = 0; i < C.Appearance.length; i++) {
+			if (C.Appearance[i]?.Model?.Name == NA.Model.Name) {
+				C.Appearance[i] = NA;
+				return NA;
+			}
+		}
 		C.Appearance.push(NA);
 		return NA;
 	}

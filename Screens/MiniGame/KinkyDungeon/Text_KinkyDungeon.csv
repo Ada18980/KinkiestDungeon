@@ -29,7 +29,7 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 
-KinkyDungeon,"Kinky Dungeon v4.22"
+KinkyDungeon,"Kinky Dungeon v4.23"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
@@ -58,6 +58,8 @@ KDBlockedRestraint,Blocked restraint!
 
 KDWallBump,You bump into a wall.
 
+KDResolution,Game Resolution:
+KDResolutionConfirm,Resolution (needs reload):
 KDVibeVolume,Toy Volume:
 KDMusicVolume,Music Volume:
 KDSfxVolume,SFX Volume:

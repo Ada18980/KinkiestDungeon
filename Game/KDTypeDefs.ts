@@ -341,6 +341,9 @@ interface KDRestraintProps {
 	removeShrine?: string[],
 	slimeLevel?: number,
 	addTag?: string[],
+	addPose?: string[],
+	forbidPose?: string[],
+	removePose?: string[],
 	OverridePriority?: number,
 	Modules?: number[],
 	/** When added to the inventory, is added as a different item instead. Good for multiple stages of the same item, like cuffs */
@@ -1107,6 +1110,10 @@ interface KinkyDungeonEvent {
 }
 
 interface entity {
+	/** Spawn location */
+	spawnX?: number,
+	/** Spawn location */
+	spawnY?: number,
 	/** Opinion of you. Positive is good. */
 	opinion?: number,
 	/** Determines if an enemy can be dommed or not */
@@ -1863,6 +1870,10 @@ type EnemyEvent = {
 	noplay?: boolean,
 	/** This event wont get cleared by mass resets, like when you are deposited into a cage */
 	noMassReset?: boolean,
+	/** Determines if the enemy will attack you */
+	decideAttack?: (enemy: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
+	/** Determines if the enemy will cast spells */
+	decideSpell?: (enemy: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
 	/** Determines weight */
 	weight: (enemy: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
 	/** Run when triggered */

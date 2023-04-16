@@ -35,6 +35,7 @@ class ModelContainer {
 	Containers: Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: PIXIContainer}>;
 	ContainersDrawn: Map<string, any>;
 	Poses: Record<string, boolean>;
+	TempPoses: Record<string, boolean>;
 	Update: Map<any, any>;
 	Mods: Map<string, PoseMod[]>;
 
@@ -44,6 +45,7 @@ class ModelContainer {
 		this.ContainersDrawn = ContainersDrawn;
 		this.Models = Models;
 		this.Poses = Poses;
+		this.TempPoses = {};
 		this.HighestPriority = {};
 		this.Mods = new Map();
 		this.Update = new Map();
@@ -52,8 +54,12 @@ class ModelContainer {
 	/**
 	 * Adds a model to the modelcontainer
 	 */
-	addModel(Model: Model) {
-		this.Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+	addModel(Model: Model, Filters?: Record<string, LayerFilter>) {
+		let mod: Model = JSON.parse(JSON.stringify(Model));
+		if (Filters) {
+			mod.Filters = JSON.parse(JSON.stringify(Filters)) || mod.Filters;
+		}
+		this.Models.set(Model.Name, mod);
 	}
 
 	/**
@@ -73,6 +79,21 @@ function GetModelLayers(ModelName: string): ModelLayer[] {
 		return Object.values(ModelDefs[ModelName].Layers);
 	}
 	return [];
+}
+
+
+function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: ModelLayer[], Parent?: string, TopLevel?: boolean): Model {
+	if (ModelDefs[BaseModel]) {
+		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));
+		model.Name = NewModel;
+		if (Parent != undefined) model.Parent = Parent;
+		if (TopLevel != undefined) model.TopLevel = TopLevel;
+		for (let l of Layers) {
+			model.Layers[l.Name] = JSON.parse(JSON.stringify(l));
+		}
+		return model;
+	}
+	return null;
 }
 
 
@@ -110,6 +131,13 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	if (MC.Models.size == 0) UpdateModels(MC);
 
 	let containerID = `${X},${Y},${Zoom}`;
+
+	if (MC.Containers.get(containerID) && !MC.Update.get(containerID)) {
+		// Refresh the container!
+		kdcanvas.removeChild(MC.Containers.get(containerID).Container);
+		MC.Containers.get(containerID).Container.destroy();
+		MC.Containers.delete(containerID);
+	}
 	if (!MC.Containers.get(containerID)) {
 		let Container = {
 			Container: new PIXI.Container(),
@@ -119,6 +147,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		MC.Containers.set(containerID, Container);
 		kdcanvas.addChild(Container.Container);
 		Container.Container.sortableChildren = true;
+		Container.Container.cacheAsBitmap = true;
+		Container.Container.filterArea = new PIXI.Rectangle(0,0,MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE);
 	}
 	if (!MC.ContainersDrawn.get(containerID)) {
 		MC.ContainersDrawn.set(containerID, MC.Containers.get(containerID));
@@ -128,9 +158,17 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	// Actual loop for drawing the models on the character
 
 	if (!MC.Update.get(containerID)) {
-		let oldBlend = (PIXI.BaseTexture as any).defaultOptions.scaleMode;
-		(PIXI.BaseTexture as any).scaleMode = Blend;
-		DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
+		for (let m of MC.Models.values()) {
+			if (m.AddPose) {
+				for (let pose of m.AddPose) {
+					MC.Poses[pose] = true;
+				}
+			}
+		}
+
+		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
+		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
+		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
 			MC.Containers.get(containerID));
 		MC.Mods.set(containerID, StartMods);
 		MC.Update.set(containerID, true);
@@ -141,11 +179,15 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			if ((!Container.SpritesDrawn.has(sprite[0]) && sprite[1])) {
 				sprite[1].parent.removeChild(sprite[1]);
 				Container.SpriteList.delete(sprite[0]);
+				modified = true;
 				sprite[1].destroy();
 			}
 		}
 		Container.SpritesDrawn.clear();
-		(PIXI.BaseTexture as any).defaultOptions.scaleMode = oldBlend;
+		if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
+			PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
+
+
 	}
 
 
@@ -160,9 +202,10 @@ let DrawModel = DrawCharacter;
 /**
  * Setup sprites from the modelcontainer
  */
-function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer) {
+function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer) : boolean {
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
+	let modified = false;
 
 	// Create the highestpriority matrix
 	MC.HighestPriority = {};
@@ -231,10 +274,12 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					: undefined) : undefined;
 				if (filter && !KDAdjustmentFilterCache.get(fh)) KDAdjustmentFilterCache.set(FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
 				let img = ModelLayerString(m, l, MC.Poses);
+				let id = `layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`;
+				if (!modified && !ContainerContainer.SpriteList.has(id)) modified = true;
 				KDDraw(
 					ContainerContainer.Container,
 					ContainerContainer.SpriteList,
-					`layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`,
+					id,
 					img,
 					ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
 					rot * Math.PI / 180, {
@@ -244,7 +289,6 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						scalex: sx != 1 ? sx : undefined,
 						scaley: sy != 1 ? sy : undefined,
 						filters: filter,
-						cacheAsBitmap: filter != undefined,
 					}, false,
 					ContainerContainer.SpritesDrawn,
 					Zoom
@@ -252,6 +296,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 			}
 		}
 	}
+	return modified;
 }
 
 function FilterHash(filter) {
@@ -397,10 +442,10 @@ function UpdateModels(MC) {
 	MC.Update.clear();
 
 
-	let appearance = MC.Character.Appearance;
+	let appearance: Item[] = MC.Character.Appearance;
 	for (let A of appearance) {
 		if (A.Model) {
-			MC.addModel(A.Model);
+			MC.addModel(A.Model, A.Filters);
 		}
 	}
 

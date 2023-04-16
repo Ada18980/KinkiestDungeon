@@ -18,15 +18,19 @@ let pixiview = null;
 let pixirenderer = null;
 let pixirendererKD = null;
 let kdgamefog = new PIXI.Graphics();
-kdgamefog.zIndex = -49;
+kdgamefog.zIndex = 1;
+
+let kdmapboard = new PIXI.Container();
+kdmapboard.zIndex = -2;
 let kdgameboard = new PIXI.Container();
 kdgameboard.sortableChildren = true;
 kdgameboard.zIndex = -50;
+kdgameboard.addChild(kdmapboard);
 let kdui = new PIXI.Graphics();
 let kdcanvas = new PIXI.Container();
 kdcanvas.sortableChildren = true;
 if (StandalonePatched) {
-	kdcanvas.addChild(kdgamefog);
+	kdgameboard.addChild(kdgamefog);
 	kdcanvas.addChild(kdgameboard);
 
 }
@@ -694,8 +698,13 @@ function KinkyDungeonDrawGame() {
 
 			let CamX = KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2);//Math.max(0, Math.min(KinkyDungeonGridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
 			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);// Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
-			let CamX_offset = KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KinkyDungeonGridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
-			let CamY_offset = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
+			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KinkyDungeonGridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
+			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
+			//kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSize;
+			//kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSize;
+
+			let CamX_offset = CamX_offsetVis;
+			let CamY_offset = CamY_offsetVis;
 
 			KinkyDungeonCamX = CamX;
 			KinkyDungeonCamY = CamY;
@@ -745,15 +754,15 @@ function KinkyDungeonDrawGame() {
 							let s = aura_scale;
 							if (b.noAuraColor) {
 								KDDraw(kdgameboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.aurasprite ? b.aurasprite : "Aura") + ".png",
-									(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
-									(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
+									(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
+									(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 									KinkyDungeonSpriteSize * (1 + s), KinkyDungeonSpriteSize * (1 + s), undefined, {
 										zIndex: 2.1,
 									});
 							} else {
 								KDDraw(kdgameboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.aurasprite ? b.aurasprite : "Aura") + ".png",
-									(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
-									(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
+									(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
+									(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 									KinkyDungeonSpriteSize * (1 + s), KinkyDungeonSpriteSize * (1 + s), undefined, {
 										tint: string2hex(b.aura),
 										zIndex: 2.1,
@@ -773,92 +782,92 @@ function KinkyDungeonDrawGame() {
 				let playertex = kdpixitex.get("playertex");
 				if (playertex) {
 					KDDraw(kdgameboard, kdpixisprites, "player", "playertex",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay, (KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay, (KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: 0.01,
 						});
 				}
 				if ((KinkyDungeonMovePoints < 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevel") > 0) && KinkyDungeonSlowLevel < 10) {
 					KDDraw(kdgameboard, kdpixisprites, "c_slow", KinkyDungeonRootDirectory + "Conditions/Slow.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				if (KinkyDungeonStatBlind > 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_stun", KinkyDungeonRootDirectory + "Conditions/Stun.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				if (KinkyDungeonStatFreeze > 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_freeze", KinkyDungeonRootDirectory + "Conditions/Freeze.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				if (KinkyDungeonStatBind > 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_bind", KinkyDungeonRootDirectory + "Conditions/Bind.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak") > 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowDetection") > 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_sneak", KinkyDungeonRootDirectory + "Conditions/Sneak.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay - 30,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 30,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg") > 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackAcc") > 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_buff", KinkyDungeonRootDirectory + "Conditions/Buff.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg") < 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackAcc") < 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_dbuff", KinkyDungeonRootDirectory + "Conditions/Debuff.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Armor") > 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_arm", KinkyDungeonRootDirectory + "Conditions/ArmorBuff.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				} else if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Armor") < 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_armd", KinkyDungeonRootDirectory + "Conditions/ArmorDebuff.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion") > 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_eva", KinkyDungeonRootDirectory + "Conditions/EvasionBuff.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellResist") > 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_shield", KinkyDungeonRootDirectory + "Conditions/ShieldBuff.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				else if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellResist") < 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_shield", KinkyDungeonRootDirectory + "Conditions/ShieldDeuff.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "DamageAmp") > 0) {
 					KDDraw(kdgameboard, kdpixisprites, "c_amp", KinkyDungeonRootDirectory + "Conditions/DamageAmp.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 				if (!KDCanAttack()) {
 					KDDraw(kdgameboard, kdpixisprites, "c_cantAttack", KinkyDungeonRootDirectory + "Conditions/Tired.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay * 0.5,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay * 0.5,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 
@@ -983,18 +992,18 @@ function KinkyDungeonDrawGame() {
 									yy = newY;
 								}
 							}
-						}
-						KDDraw(kdgameboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "TargetMove.png",
-							(xx - CamX)*KinkyDungeonGridSizeDisplay, (yy - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
-								zIndex: 100,
-							});
-						if (KinkyDungeonSlowLevel > 1 && KinkyDungeonSlowLevel < 10) {
+						} else if (KinkyDungeonSlowLevel > 1 && KinkyDungeonSlowLevel < 10) {
 							if (!KinkyDungeonEnemyAt(xx, yy) || KDCanPassEnemy(KinkyDungeonPlayerEntity, KinkyDungeonEnemyAt(xx, yy))) {
 								let dist = Math.round(KinkyDungeonSlowLevel);
 
 								DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
 							}
 						}
+						KDDraw(kdgameboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "TargetMove.png",
+							(xx - CamX)*KinkyDungeonGridSizeDisplay, (yy - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+								zIndex: 100,
+							});
+
 					}
 				}
 
@@ -1050,8 +1059,8 @@ function KinkyDungeonDrawGame() {
 
 				if (KinkyDungeonLastTurnAction == "Struggle" && KinkyDungeonCurrentEscapingItem && KinkyDungeonCurrentEscapingItem.lock) {
 					KDDraw(kdgameboard, kdpixisprites, "ui_lock", KinkyDungeonRootDirectory + "Lock.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offset)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offset)*KinkyDungeonGridSizeDisplay - 60,
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 60,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
 
@@ -1144,8 +1153,8 @@ function KinkyDungeonDrawGame() {
 				] : [];
 				if (KDDrawPlayer)
 					DrawCharacter(KinkyDungeonPlayer,
-						canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/4: -KinkyDungeonGridSizeDisplay/2),
-						canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/6 : (KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0))),
+						canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/4: -KinkyDungeonGridSizeDisplay/2),
+						canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay + (StandalonePatched ? KinkyDungeonGridSizeDisplay/6 : (KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0))),
 						zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods);
 			}
 
@@ -1156,14 +1165,14 @@ function KinkyDungeonDrawGame() {
 			if (KinkyDungeonCanvas) {
 				let barInt = 0;
 				if (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax*0.9) {
-					KinkyDungeonBar(canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay - 12 - 13 * barInt,
+					KinkyDungeonBar(canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 12 - 13 * barInt,
 						KinkyDungeonGridSizeDisplay, 8, 100 * KinkyDungeonStatStamina / KinkyDungeonStatStaminaMax, !KDCanAttack() ? "#ff5555" : "#44ff44", KDTextGray0);
 					barInt += 1;
 				}
 				/*for (let b of Object.values(KinkyDungeonPlayerBuffs)) {
 					if (b && b.aura && b.duration > 0 && b.duration < 999) {
 						if (!b.maxduration) b.maxduration = b.duration;
-						KinkyDungeonBar(canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay - 12 - 13 * barInt,
+						KinkyDungeonBar(canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 12 - 13 * barInt,
 							KinkyDungeonGridSizeDisplay, 12, 100 * b.duration / b.maxduration, b.aura, KDTextGray0);
 						barInt += 1;
 					}
@@ -1203,10 +1212,10 @@ function KinkyDungeonDrawGame() {
 						yAdd = Math.round(-1 + 2*Math.random());
 					}
 					if (value <= 1)
-						KinkyDungeonBar(canvasOffsetX + xAdd + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay, canvasOffsetY + yAdd + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay - 24,
+						KinkyDungeonBar(canvasOffsetX + xAdd + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay, canvasOffsetY + yAdd + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay - 24,
 							KinkyDungeonGridSizeDisplay, 12, Math.max(7, Math.min(100, 100 * (value + value2))), color, KDTextGray0);
 					if (value2 && value <= 1) {
-						KinkyDungeonBar(canvasOffsetX + xAdd + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay, canvasOffsetY + yAdd + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay - 24,
+						KinkyDungeonBar(canvasOffsetX + xAdd + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay, canvasOffsetY + yAdd + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay - 24,
 							KinkyDungeonGridSizeDisplay, 12, Math.max(7, 100 * value2), color2, "none");
 					}
 				}
@@ -1220,7 +1229,10 @@ function KinkyDungeonDrawGame() {
 
 			if (KinkyDungeonPlayerEntity.dialogue) {
 				let yboost = 0;//-1*KinkyDungeonGridSizeDisplay/7;
-				DrawTextFitKD(KinkyDungeonPlayerEntity.dialogue, canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offset)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5, 10 + KinkyDungeonPlayerEntity.dialogue.length * 8, KinkyDungeonPlayerEntity.dialogueColor, KDTextGray0);
+				DrawTextFitKD(KinkyDungeonPlayerEntity.dialogue,
+					canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
+					yboost + canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5,
+					10 + KinkyDungeonPlayerEntity.dialogue.length * 8, KinkyDungeonPlayerEntity.dialogueColor, KDTextGray0);
 			}
 
 
@@ -1439,7 +1451,10 @@ function KinkyDungeonDrawGame() {
 					MiniGameKinkyDungeonLevel += 1;
 					return true;
 				}, true, 600, 560, 300, 64, "Increment Floor", "#ffffff", "");
-
+                DrawButtonKDEx("debugHeart", (bdata) => {
+                    KinkyDungeonGroundItems.push({x:KinkyDungeonPlayerEntity.x, y:KinkyDungeonPlayerEntity.y, name: "Heart"});
+                    return true;
+                }, true, 600, 640, 300, 64, "Spawn amulet", "#ffffff", "");
 
 			}
 		}
@@ -2562,20 +2577,20 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 				let lightColor = KDAvgColor(KinkyDungeonColorGet(RX, RY), KinkyDungeonShadowGet(RX, RY), light, 1);
 				lightColor = KDAvgColor(lightColor, 0xffffff, 1, 1); // Brighten
 
-				KDDraw(kdgameboard, kdpixisprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
+				KDDraw(kdmapboard, kdpixisprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
 					(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: -2,
 						tint: lightColor,
 					});
 				if (sprite2)
-					KDDraw(kdgameboard, kdpixisprites, RX + "," + RY + "_o", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite2 + ".png",
+					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite2 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1.1,
 							tint: lightColor,
 						});
 
 				if (sprite3)
-					KDDraw(kdgameboard, kdpixisprites, RX + "," + RY + "_o2", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite3 + ".png",
+					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o2", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite3 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1,
 							tint: lightColor,
@@ -2587,7 +2602,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 						color = KDGoddessColor(KinkyDungeonTilesGet(RX + "," + RY).Name);
 					}
 					if (color)
-						KDDraw(kdgameboard, kdpixisprites, RX + "," + RY + "_a", KinkyDungeonRootDirectory + "ShrineAura.png",
+						KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_a", KinkyDungeonRootDirectory + "ShrineAura.png",
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								tint: string2hex(color),
@@ -2632,7 +2647,7 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 
 		if (tex) {
 			// Create the sprite
-			sprite = PIXI.Sprite.from(tex);
+			sprite = PIXI.Sprite.from(KDTex(Image));
 			Map.set(id, sprite);
 			// Add it to the container
 			Container.addChild(sprite);
@@ -3091,13 +3106,6 @@ function KDPlayerDrawPoseButtons(C) {
 	KDModalArea_y = 630;
 	KDModalArea_width = 1000;
 	KDModalArea_height = 370;
-	KDDrawPoseButtons(C, 700, 680, true);
-	KDDesiredPlayerPose = {
-		Arms: KDWardrobe_CurrentPoseArms,
-		Legs: KDWardrobe_CurrentPoseLegs,
-		Eyes: KDWardrobe_CurrentPoseEyes,
-		Brows: KDWardrobe_CurrentPoseBrows,
-		Blush: KDWardrobe_CurrentPoseBlush,
-		Mouth: KDWardrobe_CurrentPoseMouth,
-	};
+	KDDrawPoseButtons(C, 700, 680, true, true, true);
+
 }

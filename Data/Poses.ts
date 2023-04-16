@@ -1,17 +1,21 @@
-let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked", "Front"];
+let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked", "Front", "Up"];
 /** List of poses where the left wrist is invisible */
-let WRISTHIDELEFT = ["Boxtie", "Wristtie"];
+let WRISTHIDELEFT = ["Boxtie", "Wristtie", "Up"];
 /** List of poses where the right wrist is invisible */
-let WRISTHIDERIGHT = ["Boxtie", "Wristtie"];
+let WRISTHIDERIGHT = ["Boxtie", "Wristtie", "Up"];
+/** Poses where the torso needs a correction */
+let SHOULDERPOSES = ["Up"];
+/** Poses where the arms are hidden (usually b/c forearms are visible) */
+let HIDEARMPOSES = [];
 let FOREARMPOSES = ["Front"];
 let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked"];
 let HANDLEFTPOSES = ["Free", "Yoked"];
 let FOREHANDRIGHTPOSES = ["Front"];
 let FOREHANDLEFTPOSES = ["Front"];
-let LEGPOSES = ["Spread", "Closed", "Kneel", "Hogtie"];
+let LEGPOSES = ["Spread", "Closed", "Kneel", "KneelClosed", "Hogtie"];
 let FOOTRIGHTPOSES = ["Spread", "Closed"];
-let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel"];
-let KNEELPOSES = ["Kneel"];
+let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel", "KneelClosed"];
+let KNEELPOSES = ["Kneel", "KneelClosed"];
 let STANDPOSES = ["Spread", "Closed"];
 /** Expressions */
 
@@ -46,6 +50,19 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 	Kneel: {
 		offset_y: 0.15,
 		pri_offset: 1,
+	},
+	KneelClosed: {
+		offset_y: 0.15,
+		pri_offset: 1,
+		global_default: "Kneel",
+		mods: [{
+			Layer: "ShoeLeft",
+			rotation: -5.84,
+			rotation_x_anchor: 915/MODELWIDTH,
+			rotation_y_anchor: 2160/MODELHEIGHT,
+			offset_x: 915/MODELWIDTH,
+			offset_y: 2160/MODELHEIGHT,
+		}],
 	},
 	Front: {
 		global_default: "Boxtie",

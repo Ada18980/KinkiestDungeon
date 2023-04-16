@@ -56,7 +56,7 @@ function ElementCreateTextArea(ID: string): void {
 		TextArea.setAttribute("ID", ID);
 		TextArea.setAttribute("screen-generated", CurrentScreen);
 		TextArea.setAttribute("name", ID);
-		TextArea.addEventListener("keydown", KeyDown);
+		//TextArea.addEventListener("keydown", KeyDown);
 		TextArea.className = "HideOnPopup";
 		Object.assign(TextArea.style, KDTextBoxStyle);
 		document.body.appendChild(TextArea);
@@ -81,7 +81,7 @@ function ElementCreateInput(ID: string, Type: string, Value: string, MaxLength: 
 		Input.setAttribute("screen-generated", CurrentScreen);
 		Input.setAttribute("maxlength", MaxLength);
 		Input.setAttribute("onfocus", "this.removeAttribute('readonly');");
-		Input.addEventListener("keydown", KeyDown);
+		//Input.addEventListener("keydown", KeyDown);
 		Input.className = "HideOnPopup";
 		document.body.appendChild(Input);
 		Object.assign(Input.style, KDTextBoxStyle);
@@ -115,7 +115,7 @@ function ElementCreateRangeInput(id: string, value: number, min: number, max: nu
 		input.value = String(value);
 		if (thumbIcon) input.setAttribute("data-thumb", thumbIcon);
 		input.setAttribute("onfocus", "this.removeAttribute('readonly');");
-		input.addEventListener("keydown", KeyDown);
+		//input.addEventListener("keydown", KeyDown);
 		input.classList.add("HideOnPopup");
 		if (vertical) input.classList.add("Vertical");
 		document.body.appendChild(input);
@@ -239,7 +239,7 @@ function ElementCreateDiv(ID: string): void {
 		Div.setAttribute("ID", ID);
 		Div.setAttribute("name", ID);
 		Div.setAttribute("screen-generated", CurrentScreen);
-		Div.addEventListener("keydown", KeyDown);
+		//Div.addEventListener("keydown", KeyDown);
 		Div.className = "HideOnPopup";
 		document.body.appendChild(Div);
 	}

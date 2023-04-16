@@ -34,5 +34,5 @@ async function LoadTextureAtlas(list, preload = false) {
 
 }
 
-
+PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 LoadTextureAtlas(preloadList);

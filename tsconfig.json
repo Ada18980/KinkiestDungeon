@@ -101,6 +101,7 @@
         "Data/Poses.ts",
         "Data/Models.ts",
         "Data/ModelList.ts",
+        "Data/ModelList_Restraints.ts",
         "Data/ModelDresses.ts",
         "Game/KDWardrobe.js",
     ],
@@ -120,4 +121,3 @@
         "allowSyntheticDefaultImports": true,
     }
 }
-  

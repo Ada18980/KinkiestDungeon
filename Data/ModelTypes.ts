@@ -47,8 +47,10 @@ interface Model extends Namable {
     Folder: string,
     /** Layers themselves */
     Layers: Record<string, ModelLayer>,
-    /** Protects from stripping, for ears and tail and such */
+    /** Protects from stripping, for hair and such */
     Protected?: boolean,
+    /** Protects from stripping AND override, for ears, eyes, tail and such */
+    SuperProtected?: boolean,
     /** This is a restraint */
     Restraint?: boolean,
     /** Optional group, for items where there can should only be one (like panties or shoes)*/
@@ -59,6 +61,8 @@ interface Model extends Namable {
     TopLevel?: boolean,
     /** Optional, this appears under a top level item*/
     Parent?: string,
+    /** Adds these as tempposes*/
+    AddPose?: string[],
     /** Default string of colors*/
     DefaultColor?: string[],
 	/** Color definition */

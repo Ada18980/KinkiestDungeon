@@ -610,6 +610,13 @@ function KinkyDungeonLoad() {
 
 			KinkyDungeonBones = localStorage.getItem("KinkyDungeonBones") != undefined ? localStorage.getItem("KinkyDungeonBones") : KinkyDungeonBones;
 
+			if (localStorage.getItem("KDResolution")) {
+				let parsed = parseInt(localStorage.getItem("KDResolution"));
+				if (parsed != undefined) {
+					KDResolutionListIndex = parsed;
+					KDResolution = KDResolutionList[KDResolutionListIndex];
+				}
+			}
 			if (localStorage.getItem("KDVibeVolume")) {
 				let parsed = parseInt(localStorage.getItem("KDVibeVolume"));
 				if (parsed != undefined) {
@@ -770,8 +777,17 @@ async function sleep(msec) {
 
 let KDMarkAsCache = [];
 
+let lastGlobalRefresh = 0;
+let GlobalRefreshInterval = 1000;
+let KDGlobalRefresh = false;
+
 function KinkyDungeonRun() {
-	if (StandalonePatched && KDCurrentModels)
+	if (StandalonePatched && KDCurrentModels) {
+		if (CommonTime() > lastGlobalRefresh + GlobalRefreshInterval) {
+			lastGlobalRefresh = CommonTime();
+			KDGlobalRefresh = !KDGlobalRefresh;
+		}
+
 		for (let MC of KDCurrentModels.values()) {
 
 
@@ -787,6 +803,7 @@ function KinkyDungeonRun() {
 
 			MC.ContainersDrawn.clear();
 		}
+	}
 
 
 	// Override right click and make it trigger the Skip key
@@ -974,6 +991,9 @@ function KinkyDungeonRun() {
 				KinkyDungeonInitializeDresses();
 				KDUpdateModelList();
 				KDRefreshOutfitInfo();
+				let orig = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
+				let current = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
+				if (orig != current) KDOriginalValue = orig;
 			}
 			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
 			if (appearance) {
@@ -1608,6 +1628,10 @@ function KinkyDungeonRun() {
 
 		YY = YYstart;
 
+		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 100) + "%", "#ffffff", "",
+			() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 100 + "%",
+			() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 100 + "%");
+		YY += YYd * 2;
 		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), "#ffffff", "",
 			() => KDVibeVolumeList[(KDVibeVolumeListIndex + KDVibeVolumeList.length - 1) % KDVibeVolumeList.length] * 100 + "%",
 			() => KDVibeVolumeList[(KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length] * 100 + "%");
@@ -2390,6 +2414,14 @@ function KinkyDungeonHandleClick() {
 		YY = YYstart;
 
 
+		if (MouseIn(450, YY, 350, 64)) {
+			if (MouseX <= 450 + 350/2) KDResolutionListIndex = (KDResolutionList.length + KDResolutionListIndex - 1) % KDResolutionList.length;
+			else KDResolutionListIndex = (KDResolutionListIndex + 1) % KDResolutionList.length;
+			KDResolution = KDResolutionList[KDResolutionListIndex];
+			KDResolutionConfirm = true;
+			localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
+		}
+		YY += YYd*2;
 		if (MouseIn(450, YY, 350, 64)) {
 			if (MouseX <= 450 + 350/2) KDVibeVolumeListIndex = (KDVibeVolumeList.length + KDVibeVolumeListIndex - 1) % KDVibeVolumeList.length;
 			else KDVibeVolumeListIndex = (KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length;

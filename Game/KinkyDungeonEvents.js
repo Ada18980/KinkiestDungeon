@@ -3619,7 +3619,8 @@ let KDEventMapEnemy = {
 		},
 		"maidforceHeadAura": (e, enemy, data) => {
 			// We apply a buff to nearby allies, but not self
-			if (data.delta && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+			if (data.delta && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))
+				&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 2.5) {
 				if (!e.chance || KDRandom() < e.chance) {
 					if (enemy.aware && KinkyDungeonAggressive(enemy) && (KDPlayerIsStunned())) {
 						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "charm", {name: "MaidChastity", power: 2, damage: "charm"});
