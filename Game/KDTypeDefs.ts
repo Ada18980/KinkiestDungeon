@@ -2058,9 +2058,14 @@ type KDSprites = {[_: string]: (x: number, y: number, fog: boolean, noReplace: s
 declare const zip: any;
 declare const guessLanguage: any;
 
-declare const PIXI: typeof import('pixi.js')
-	& typeof import('pixi-filters')
-	& {CanvasRenderer: any};
+declare const PIXI: typeof import('pixi.js') & {
+	// Can't find a @pixi/canvas-renderer version which is compatible with the current setup + has correct types
+	CanvasRenderer: any,
+	// Filters says it's deprecated and should be referenced `PIXI.<filter>` rather than `PIXI.filters.<filter>`
+	// But that doesn't work, and this does.
+	filters: typeof import('pixi-filters'),
+};
 
 // We can't refer to a type as `PIXI.Container`, nor `typeof PIXI.Container`, but `import(pixi.js).Container` does work
 type PIXIContainer = import('pixi.js').Container;
+type PIXIAdjustmentFilter = import('pixi-filters').AdjustmentFilter;

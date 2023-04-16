@@ -273,7 +273,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 				let fh = m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name]) : "") : "";
 				let filter = m.Filters ? (m.Filters[l.InheritColor || l.Name] ?
-					(KDAdjustmentFilterCache.get(fh) || [new PIXI.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])])
+					(KDAdjustmentFilterCache.get(fh) || [new PIXI.filters.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])])
 					: undefined) : undefined;
 				if (filter && !KDAdjustmentFilterCache.get(fh)) KDAdjustmentFilterCache.set(FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
 				let img = ModelLayerString(m, l, MC.Poses);
@@ -308,7 +308,7 @@ function FilterHash(filter) {
 	return str;
 }
 
-const KDAdjustmentFilterCache: Map<string, any> = new Map();
+const KDAdjustmentFilterCache: Map<string, PIXIAdjustmentFilter | PIXIAdjustmentFilter[]> = new Map();
 
 /**
  * Determines if we should draw this layer or not
