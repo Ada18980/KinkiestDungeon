@@ -25,7 +25,7 @@ const viewport = new Viewport({
 //PIXI.settings.RESOLUTION = resolution;*/
 
 
-document.body.appendChild(PIXIapp.view);
+document.body.appendChild(PIXIapp.view as any);
 
 /*kdcanvas.scale.x = resolution;
 kdcanvas.scale.y = resolution;

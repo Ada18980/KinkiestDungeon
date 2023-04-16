@@ -54,26 +54,26 @@ function ChatRoomPublishCustomAction(msg: string, LeaveDialog: boolean, Dictiona
 const TypedItemDataLookup: {[_: string]: any} = {};
 const ModularItemDataLookup: {[_: string]: any} = {};
 
-function TypedItemSetOption(C, item, options, option, push = false) {}
-function TypedItemSetOptionByName(a, b, c, d) {}
+function TypedItemSetOption(C: PlayerCharacter, item: Item, options: any, option: any, push = false) {}
+function TypedItemSetOptionByName(a: Character, b: Item, c: string, d: boolean) {}
 
-function ModularItemMergeModuleValues({ asset, modules }, moduleValues): ItemProperties { return undefined; }
+function ModularItemMergeModuleValues({ asset, modules }: { asset: any; modules: any; }, moduleValues: number[]): ItemProperties { return undefined; }
 
-function ExtendedItemSetType(C, Options, Option) {}
+function ExtendedItemSetType(C: any, Options: any, Option: any) {}
 function ExtendedItemExit() {}
 
 let MiniGameVictory = true;
 
-function InventoryRemove(C, AssetGroup, Refresh = false) {}
-function InventoryGetLock(Lock): any {}
-function InventoryAllow(C, asset, prerequisites = asset.Prerequisite, setDialog = true) { return true; }
-function InventoryWear(C, AssetName, AssetGroup, ItemColor, Difficulty, MemberNumber, Craft, Refresh=true) {}
-function InventoryLock(C, Item, Lock, MemberNumber, Update = true) {}
-function InventoryUnlock(C, Item) {}
+function InventoryRemove(C: Character, AssetGroup: string, Refresh = false) {}
+function InventoryGetLock(Lock: Item): any {}
+function InventoryAllow(C: PlayerCharacter, asset: Asset, prerequisites = asset.Prerequisite, setDialog = true) { return true; }
+function InventoryWear(C: Character, AssetName: any, AssetGroup: any, ItemColor: any, Difficulty: undefined, MemberNumber: undefined, Craft: undefined, Refresh=true) {}
+function InventoryLock(C: Character, Item: Item, Lock: string, MemberNumber: number, Update = true) {}
+function InventoryUnlock(C: Character, Item: string) {}
 
 let KDPatched = true;
 let ServerURL = "http://localhost:4288";
-function ServerSend(Message, Data) {}
+function ServerSend(Message: string, Data: any) {}
 function ServerPlayerIsInChatRoom() { return false; }
 
 function CharacterAppearanceLoadCharacter(C: Character): void {}

@@ -115,7 +115,7 @@ function KDDrawSavedColors(X, Y, max, C) {
 	for (let i = 0; i < max && i < KDSavedColors.length; i++) {
 		KDDraw(kdcanvas, kdpixisprites, "SavedColor" + i, KinkyDungeonRootDirectory + "UI/greyColor.png", X + spacing * i, Y, 64, 64, undefined, {
 			filters: [
-				new __filters.AdjustmentFilter(KDSavedColors[i]),
+				new PIXI.AdjustmentFilter(KDSavedColors[i]),
 			]
 		});
 		DrawButtonKDEx("SavedColorCopy" + i, (bdata) => {
