@@ -11,9 +11,10 @@
     "license": "All Rights Reserved",
     "private": true,
     "devDependencies": {
-        "pixi.js": "^7.2.1",
+        "http-server": "^14.1.1",
         "pixi-filters": "^5.2.0",
-        "typescript": "~4.3.0",
-        "http-server": "^14.1.1"
+        "pixi.js": "^7.2.1",
+        "pixi.js-legacy": "^7.2.1",
+        "typescript": "~4.3.0"
     }
 }

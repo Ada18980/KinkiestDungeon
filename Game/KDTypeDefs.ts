@@ -2058,9 +2058,7 @@ type KDSprites = {[_: string]: (x: number, y: number, fog: boolean, noReplace: s
 declare const zip: any;
 declare const guessLanguage: any;
 
-declare const PIXI: typeof import('pixi.js') & {
-	// Can't find a @pixi/canvas-renderer version which is compatible with the current setup + has correct types
-	CanvasRenderer: any,
+declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') & {
 	// Filters says it's deprecated and should be referenced `PIXI.<filter>` rather than `PIXI.filters.<filter>`
 	// But that doesn't work, and this does.
 	filters: typeof import('pixi-filters'),
