@@ -2062,9 +2062,16 @@ declare const guessLanguage: any;
 declare const PIXI: typeof import('pixi.js') & {
 	// These are because they seem to be missing in pixi.js@6.4.2 as installed from npm, and I can't find where they exist
 	// It might require a version update and/or migration to get these all correct.
-	Assets: any,
-	Cache: any,
-	CanvasRenderer: any,
+	readonly Assets: any,
+	readonly Cache: any,
+	readonly CanvasRenderer: any,
+
+	// Additionally, for some reason this specific one does not exist - unsure why (specifically, `defaultOptions` does not exist on `BaseTexture`).
+	readonly BaseTexture: {
+		readonly defaultOptions: {
+			scaleMode: any
+		} 
+	}
 };
 
 // We can't refer to a type as `PIXI.Container`, nor `typeof PIXI.Container`, but `import(pixi.js).Container` does work
