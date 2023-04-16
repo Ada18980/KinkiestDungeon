@@ -139,9 +139,7 @@ function KinkyDungeonDressPlayer(Character) {
 
 	let _CharacterRefresh = CharacterRefresh;
 	let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
-	// @ts-ignore
 	CharacterRefresh = () => {KDRefresh = true;};
-	// @ts-ignore
 	CharacterAppearanceBuildCanvas = () => {};
 	let restraints = [];
 
@@ -156,7 +154,6 @@ function KinkyDungeonDressPlayer(Character) {
 			updateExpression: false,
 		};
 
-		// @ts-ignore
 		KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: true};
 		if (!KDNaked) KDCharacterNaked();
 
@@ -225,9 +222,7 @@ function KinkyDungeonDressPlayer(Character) {
 		for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
 			let asset = KinkyDungeonPlayer.Appearance[A].Asset;
 			if (StandalonePatched) {
-				// @ts-ignore
 				if (KinkyDungeonPlayer.Appearance[A].Model?.Group)
-					// @ts-ignore
 					alreadyClothed[KinkyDungeonPlayer.Appearance[A].Model?.Group] = true;
 			} else
 				alreadyClothed[asset.Group.Name] = true;
@@ -281,7 +276,6 @@ function KinkyDungeonDressPlayer(Character) {
 					}
 					if (clothes.Property) item.Property = clothes.Property;
 					// Ignored because BC uses string[] as a type!
-					// @ts-ignore
 					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, clothes.Color, clothes.Group);
 				}
 			}
@@ -573,9 +567,7 @@ function KinkyDungeonDressPlayer(Character) {
 
 		KinkyDungeonSendEvent("afterDress", data);
 	} finally {
-		// @ts-ignore
 		CharacterRefresh = _CharacterRefresh;
-		// @ts-ignore
 		CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
 	}
 
@@ -628,6 +620,7 @@ function KinkyDungeonWearForcedClothes(restraints) {
 					if (!canReplace) {return;}
 					if (KDProtectedCosplay.includes(dress.Group)){return;}
 					let filters = dress.Filters;
+					/** @type string|string[] */
 					let color = (typeof dress.Color === "string") ? [dress.Color] : dress.Color;
 					let faction = inv.faction;
 					if (inv.faction)
@@ -639,7 +632,6 @@ function KinkyDungeonWearForcedClothes(restraints) {
 								}
 							}
 						}
-					// @ts-ignore
 					if (dress.useHairColor && InventoryGet(KinkyDungeonPlayer, "HairFront")) color = InventoryGet(KinkyDungeonPlayer, "HairFront").Color;
 					let item = KDInventoryWear(dress.Item, dress.Group, inv.name, color, filters);
 
@@ -650,7 +642,6 @@ function KinkyDungeonWearForcedClothes(restraints) {
 						}
 					}
 
-					// @ts-ignore
 					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, dress.Group);
 				}
 			});
@@ -684,7 +675,7 @@ function KinkyDungeonGetOutfit(Name) {
  */
 function KDInventoryWear(AssetName, AssetGroup, par, color, filters) {
 	const M = StandalonePatched ? ModelDefs[AssetName] : undefined;
-	const A = StandalonePatched ? undefined : AssetGet(KinkyDungeonPlayer.AssetFamily, AssetGroup, AssetName);
+	const A = AssetGet(KinkyDungeonPlayer.AssetFamily, AssetGroup, AssetName);
 	if ((StandalonePatched && !M) || (!StandalonePatched && !A)) return;
 	let item = StandalonePatched ?
 		KDAddModel(KinkyDungeonPlayer, AssetGroup, M, color || "Default", filters)
@@ -792,9 +783,7 @@ function KDApplyItem(inv, tags) {
 
 /** Legacy */
 function KDApplyItemLegacy(inv, tags) {
-	// @ts-ignore
 	let _ChatRoomCharacterUpdate = ChatRoomCharacterUpdate;
-	// @ts-ignore
 	ChatRoomCharacterUpdate = () => {};
 	try {
 		let restraint = KDRestraint(inv);
@@ -844,7 +833,6 @@ function KDApplyItemLegacy(inv, tags) {
 				let data = ModularItemDataLookup[AssetGroup + restraint.Asset];
 				let asset = data.asset;
 				let modules = data.modules;
-				// @ts-ignore
 				placed.Property = ModularItemMergeModuleValues({ asset, modules }, restraint.Modules);
 				placed.Property.LockedBy = inv.lock ? "MetalPadlock" : undefined;
 			} else if (type) TypedItemSetOptionByName(KinkyDungeonPlayer, placed, type, false);
@@ -853,7 +841,6 @@ function KDApplyItemLegacy(inv, tags) {
 			}
 		}
 	} finally {
-		// @ts-ignore
 		ChatRoomCharacterUpdate = _ChatRoomCharacterUpdate;
 	}
 }

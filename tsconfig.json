@@ -113,5 +113,11 @@
         "allowJs": true,
         "checkJs": true,
         "removeComments": true,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./node_modules/@pixi",
+        ],
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
     }
 }

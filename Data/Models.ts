@@ -32,14 +32,14 @@ class ModelContainer {
 
 	Character: Character;
 	Models: Map<string, Model>;
-	Containers: Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: any}>;
+	Containers: Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: PIXIContainer}>;
 	ContainersDrawn: Map<string, any>;
 	Poses: Record<string, boolean>;
 	TempPoses: Record<string, boolean>;
 	Update: Map<any, any>;
 	Mods: Map<string, PoseMod[]>;
 
-	constructor(Character: Character, Models: Map<string, Model>, Containers: Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: any}>, ContainersDrawn: Map<string, any>, Poses: Record<string, boolean>) {
+	constructor(Character: Character, Models: Map<string, Model>, Containers: Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: PIXIContainer}>, ContainersDrawn: Map<string, any>, Poses: Record<string, boolean>) {
 		this.Character = Character;
 		this.Containers = Containers;
 		this.ContainersDrawn = ContainersDrawn;
@@ -101,7 +101,7 @@ function DisposeCharacter(C) {
 	if (KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {
 			Container.Container.destroy();
-			kdcanvas.removeChild(Container);
+			kdcanvas.removeChild(Container.Container);
 		}
 
 	}
@@ -166,9 +166,9 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			}
 		}
 
-		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
 		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
+		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 			MC.Containers.get(containerID));
 		MC.Mods.set(containerID, StartMods);
 		MC.Update.set(containerID, true);

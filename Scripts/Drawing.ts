@@ -76,7 +76,7 @@ function DrawLoad(): void {
 		view: PIXICanvas,
 		background: '#1099bb'
 	});*/
-	PIXICanvas = document.getElementById("MainCanvas");
+	PIXICanvas = KinkyDungeonGetCanvas("MainCanvas");
 	// OLD BC
 	// Creates the objects used in the game
 	//MainCanvas = /** @type {HTMLCanvasElement} */ (document.getElementById("MainCanvas")).getContext("2d");

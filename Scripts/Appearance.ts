@@ -18,55 +18,6 @@ function CharacterAppearanceNaked(C: Character): void {
 }
 
 /**
- * Draws the character canvas
- */
-function CharacterAppearanceBuildCanvas(C: Character): void {}
-
-/**
- * Returns a value from the character current appearance
- * @param C - The character to get values from
- * @param Group - The name of the group, whose values we want to get
- * @param Type - The name of the value, we want to get
- */
-function CharacterAppearanceGetCurrentValue(C: Character, Group: string, Type: string): any {
-
-	// Finds the value
-	for (let A = 0; A < C.Appearance.length; A++)
-		if ((C.Appearance[A].Asset.Group.Family == C.AssetFamily) && (C.Appearance[A].Asset.Group.Name == Group)) {
-			if (Type == "Name") return C.Appearance[A].Asset.Name;
-			if (Type == "Description") return C.Appearance[A].Asset.Description;
-			if (Type == "Color") return CommonColorsEqual(C.Appearance[A].Color, C.Appearance[A].Asset.DefaultColor) ? "Default" : C.Appearance[A].Color;
-			if (Type == "ID") return A;
-			if (Type == "Effect") return C.Appearance[A].Asset.Effect;
-			if (Type == "Asset") return C.Appearance[A].Asset;
-			if (Type == "Full") return C.Appearance[A];
-			if (Type == "Zoom") return ((C.Appearance[A].Asset.ZoomModifier == null) || (C.Appearance[A].Asset.ZoomModifier > 1) || (C.Appearance[A].Asset.ZoomModifier < 0.9)) ? 1 : C.Appearance[A].Asset.ZoomModifier;
-		}
-	return "None";
-
-}
-
-/**
- * Repositions the character horizonally to centre them, since shorter characters will shrink towards the left
- * @param C - The character to reposition
- * @param HeightRatio - The character's height ratio
- * @returns The amount to move the character along the X co-ordinate
- */
-function CharacterAppearanceXOffset(C: Character, HeightRatio: number): number {
-	return 500 * (1 - HeightRatio) / 2;
-}
-
-/**
- * Checks if the appearance is locked for the current player
- * @param C - The character to validate
- * @param GroupName - The group name to validate, can be "ALL" to check all groups
- * @returns Return TRUE if the appearance group isn't blocked
- */
-function AppearanceGroupAllowed(C: Character, GroupName: string): boolean {
-	return true;
-}
-
-/**
  * Sets an item in the character appearance
  * @param C - The character whose appearance should be changed
  * @param Group - The name of the corresponding groupr for the item

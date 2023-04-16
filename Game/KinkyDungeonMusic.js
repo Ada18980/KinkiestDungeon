@@ -91,8 +91,7 @@ function KDPlayMusic(Sound, Volume) {
 	KDCurrentMusicSoundUpdate = true;
 	if (ServerURL == 'foobar') {
 		audio.crossOrigin = "Anonymous";
-		// @ts-ignore
-		audio.src = remap("Music/" + (KDModFiles[Sound] || Sound));
+		audio.src = "Music/" + (KDModFiles[Sound] || Sound);
 	} else
 		audio.src = "Music/" + (KDModFiles[Sound] || Sound);
 	audio.volume = Math.min(vol, 1);

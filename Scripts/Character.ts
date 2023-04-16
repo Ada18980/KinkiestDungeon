@@ -95,69 +95,6 @@ function CharacterReset(CharacterID: number, CharacterAssetFamily: string, Type:
 
 
 /**
- * Loads the content of a CSV file to build the character dialog. Can override the current screen.
- * @param C - Character for which to build the dialog objects
- * @param Override - Optional: Path to the specific CSV to build the character dialog with
- */
-function CharacterLoadCSVDialog(C: Character, Override: string = null): void {
-
-	// Finds the full path of the CSV file to use cache
-	let FullPath = ((C.ID == 0) ? "Screens/Character/Player/Dialog_Player" : ((Override == null) ? "Screens/" + CurrentModule + "/" + CurrentScreen + "/Dialog_" + C.AccountName : Override)) + ".csv";
-	if (CommonCSVCache[FullPath]) {
-		CharacterBuildDialog(C, CommonCSVCache[FullPath]);
-		return;
-	}
-
-	// Opens the file, parse it and returns the result it to build the dialog
-	CommonGet(FullPath, function () {
-		if (this.status == 200) {
-			CommonCSVCache[FullPath] = CommonParseCSV(this.responseText);
-			CharacterBuildDialog(C, CommonCSVCache[FullPath]);
-		}
-	});
-
-}
-
-
-/**
- * Builds the dialog objects from the character CSV file
- * @param C - Character for which to build the dialog
- * @param CSV - Content of the CSV file
- */
-function CharacterBuildDialog(C: Character, CSV: string[][]): void {
-
-	const OnlinePlayer = C.AccountName.indexOf("Online-") >= 0;
-	C.Dialog = [];
-	// For each lines in the file
-	for (let L = 0; L < CSV.length; L++)
-		if ((CSV[L][0] != null) && (CSV[L][0] != "")) {
-
-			// Creates a dialog object
-			const D: any = {};
-			D.Stage = CSV[L][0];
-			if ((CSV[L][1] != null) && (CSV[L][1].trim() != "")) D.NextStage = CSV[L][1];
-			if ((CSV[L][2] != null) && (CSV[L][2].trim() != "")) D.Option = CSV[L][2].replace("DialogCharacterName", C.Name).replace("DialogPlayerName", CharacterNickname(Player));
-			if ((CSV[L][3] != null) && (CSV[L][3].trim() != "")) D.Result = CSV[L][3].replace("DialogCharacterName", C.Name).replace("DialogPlayerName", CharacterNickname(Player));
-			if ((CSV[L][4] != null) && (CSV[L][4].trim() != "")) D.Function = ((CSV[L][4].trim().substring(0, 6) == "Dialog") ? "" : OnlinePlayer ? "ChatRoom" : CurrentScreen) + CSV[L][4];
-			if ((CSV[L][5] != null) && (CSV[L][5].trim() != "")) D.Prerequisite = CSV[L][5];
-			if ((CSV[L][6] != null) && (CSV[L][6].trim() != "")) D.Group = CSV[L][6];
-			if ((CSV[L][7] != null) && (CSV[L][7].trim() != "")) D.Trait = CSV[L][7];
-			C.Dialog.push(D);
-
-		}
-
-	// Translate the dialog if needed
-	TranslationDialog(C);
-
-	if (C === Player) {
-		for (const D of C.Dialog) {
-			if (typeof D.Result === "string")
-				PlayerDialog.set(D.Stage, D.Result);
-		}
-	}
-}
-
-/**
  * Attributes a random name for the character, does not select a name in use
  * @param C - Character for which to attribute a name
  */

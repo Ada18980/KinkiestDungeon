@@ -107,8 +107,7 @@ function KDUpdateVibeSound(Location, Sound, Volume) {
 			KDVibeSounds[Location].update = true;
 			if (ServerURL == 'foobar') {
 				audio.crossOrigin = "Anonymous";
-				// @ts-ignore
-				audio.src = remap(Sound);
+				audio.src = Sound;
 			} else
 				audio.src = KDModFiles[Sound] || Sound;
 			audio.volume = Math.min(vol, 1);
