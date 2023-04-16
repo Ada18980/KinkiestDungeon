@@ -3466,7 +3466,7 @@ let KDEventMapEnemy = {
 				KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 				KinkyDungeonSetEnemyFlag(enemy, "longPath", 3);
 				if (!e.chance || KDRandom() < e.chance) {
-					if (!KDIsPlayerTethered()) {
+					if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
 						// Apply eager buff to make the shopkeeper fast
 						KinkyDungeonApplyBuffToEntity(enemy, KDEager);
 						// Go to leash the player
