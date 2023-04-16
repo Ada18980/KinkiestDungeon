@@ -2724,12 +2724,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (!AIData.aggressive && player.player && (enemy.playWithPlayer || (intentAction && intentAction.forceattack))) AIData.ignore = false;
 
-	AIData.wantsToAttack = (
-		!AIData.ignore
+	AIData.wantsToAttack = (player &&
+		!player.player
+		&& !AIData.ignore
 		&& (player.player && (enemy.id == KDGameData.KinkyDungeonLeashingEnemy || (!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player)) || KinkyDungeonFlags.has("PlayerCombat")))
 		) ? ((intentAction?.decideAttack) ? (intentAction.decideAttack(enemy, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false;
-	AIData.wantsToCast = (
-		!AIData.ignore
+	AIData.wantsToCast = (player &&
+		!player.player
+		&& !AIData.ignore
 		&& (player.player && ((!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player)) || KinkyDungeonFlags.has("PlayerCombat")))
 		) ? ((intentAction?.decideSpell) ? (intentAction.decideSpell(enemy, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false;
 
