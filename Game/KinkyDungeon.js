@@ -1676,7 +1676,7 @@ function KinkyDungeonRun() {
 		if (!pixiview) pixiview = KinkyDungeonGetCanvas("MainCanvas");
 		if (!pixirenderer) {
 			if (pixiview) {
-				pixirenderer = new PIXI.Renderer({
+				pixirenderer = new PIXI.CanvasRenderer({
 					width: pixiview.width,
 					height: pixiview.height,
 					view: pixiview,
