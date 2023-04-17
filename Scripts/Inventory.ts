@@ -14,3 +14,7 @@ function InventoryGet(C: Character, AssetGroup: string): Item | null {
 	}
 	return null;
 }
+
+let Asset = [];
+let InventoryAdd = (a, b, c) => {};
+let InventoryAvailable = (a, b, c) : boolean => {return false;};
