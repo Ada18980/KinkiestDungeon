@@ -58,10 +58,6 @@ let LAYERS_BASE = [
 	"BeltDeco",
 	"Greaves",
 
-	// For form-fitting stuff that nonetheless goes over a shirt
-	"Bustier",
-	"Harness",
-	"Shirt",
 	// Chest is breasts, should only intersect on bottom and side edges, top is indeterminate
 	"Straps",
 	"NecklaceCharm",
@@ -69,6 +65,10 @@ let LAYERS_BASE = [
 	"BraChest",
 	"Chest",
 	"StrapsUnderbust",
+	// For form-fitting stuff that nonetheless goes over a shirt
+	"Bustier",
+	"Harness",
+	"Shirt",
 	// For things that go directly under the breasts
 	"Underbust",
 	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
