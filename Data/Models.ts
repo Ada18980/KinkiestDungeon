@@ -26,20 +26,26 @@ function AddModel(Model: Model, Strings?: Record<string, string>) {
 
 let KDCurrentModels: Map<Character, ModelContainer> = new Map();
 
+interface ContainerInfo {
+	readonly SpriteList: Map<string, any>;
+	readonly SpritesDrawn: Map<string, any>;
+	readonly Container: PIXIContainer;
+}
+
 class ModelContainer {
 
 	public HighestPriority: {[_: string]: number};
 
 	Character: Character;
 	Models: Map<string, Model>;
-	Containers: Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: PIXIContainer}>;
-	ContainersDrawn: Map<string, any>;
+	Containers: Map<string, ContainerInfo>;
+	ContainersDrawn: Map<string, ContainerInfo>;
 	Poses: Record<string, boolean>;
 	TempPoses: Record<string, boolean>;
-	Update: Map<any, any>;
-	Mods: Map<string, PoseMod[]>;
+	readonly Update: Set<string>;
+	readonly Mods: Map<string, PoseMod[]>;
 
-	constructor(Character: Character, Models: Map<string, Model>, Containers: Map<string, {SpriteList: Map<string, any>, SpritesDrawn: Map<string, any>, Container: PIXIContainer}>, ContainersDrawn: Map<string, any>, Poses: Record<string, boolean>) {
+	constructor(Character: Character, Models: Map<string, Model>, Containers: Map<string, ContainerInfo>, ContainersDrawn: Map<string, ContainerInfo>, Poses: Record<string, boolean>) {
 		this.Character = Character;
 		this.Containers = Containers;
 		this.ContainersDrawn = ContainersDrawn;
@@ -48,7 +54,7 @@ class ModelContainer {
 		this.TempPoses = {};
 		this.HighestPriority = {};
 		this.Mods = new Map();
-		this.Update = new Map();
+		this.Update = new Set();
 	}
 
 	/**
@@ -97,7 +103,7 @@ function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: Mo
 }
 
 
-function DisposeCharacter(C) {
+function DisposeCharacter(C: Character): void {
 	if (KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {
 			Container.Container.destroy();
@@ -119,8 +125,7 @@ function DisposeCharacter(C) {
  * @param StartMods - Mods applied
  */
 function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = []): void {
-	/** @type {ModelContainer} */
-	let MC = !KDCurrentModels.get(C) ? new ModelContainer(
+	let MC: ModelContainer = !KDCurrentModels.get(C) ? new ModelContainer(
 		C,
 		new Map(),
 		new Map(),
@@ -132,7 +137,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 
 	let containerID = `${X},${Y},${Zoom}`;
 
-	if (MC.Containers.get(containerID) && !MC.Update.get(containerID)) {
+	if (MC.Containers.get(containerID) && !MC.Update.has(containerID)) {
 		// Refresh the container!
 		kdcanvas.removeChild(MC.Containers.get(containerID).Container);
 		MC.Containers.get(containerID).Container.destroy();
@@ -157,7 +162,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 
 	// Actual loop for drawing the models on the character
 
-	if (!MC.Update.get(containerID)) {
+	if (!MC.Update.has(containerID)) {
 		for (let m of MC.Models.values()) {
 			if (m.AddPose) {
 				for (let pose of m.AddPose) {
@@ -171,7 +176,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			MC.Containers.get(containerID));
 		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		MC.Mods.set(containerID, StartMods);
-		MC.Update.set(containerID, true);
+		MC.Update.add(containerID);
 
 		let Container = MC.Containers.get(containerID);
 		// Cull sprites that weren't drawn yet
@@ -232,8 +237,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 		mods[m.Layer].push(m);
 	}
 
-	/** @type {Record<string, boolean>} */
-	let drawLayers = {};
+	let drawLayers: Record<string, boolean> = {};
 
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
@@ -254,8 +258,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				let rot = 0;
 				let layer = l.Layer;
 				while (layer) {
-					/** @type {PoseMod[]} */
-					let mod_selected = mods[layer] || [];
+					let mod_selected: PoseMod[] = mods[layer] || [];
 					for (let mod of mod_selected) {
 						ox = mod.offset_x || ox;
 						oy = mod.offset_y || oy;
@@ -270,7 +273,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 				let fh = m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name]) : "") : "";
 				let filter = m.Filters ? (m.Filters[l.InheritColor || l.Name] ?
-					(KDAdjustmentFilterCache.get(fh) || [new __filters.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])])
+					(KDAdjustmentFilterCache.get(fh) || [new PIXI.filters.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])])
 					: undefined) : undefined;
 				if (filter && !KDAdjustmentFilterCache.get(fh)) KDAdjustmentFilterCache.set(FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
 				let img = ModelLayerString(m, l, MC.Poses);
@@ -305,7 +308,7 @@ function FilterHash(filter) {
 	return str;
 }
 
-let KDAdjustmentFilterCache = new Map();
+const KDAdjustmentFilterCache: Map<string, PIXIAdjustmentFilter | PIXIAdjustmentFilter[]> = new Map();
 
 /**
  * Determines if we should draw this layer or not
@@ -315,7 +318,7 @@ let KDAdjustmentFilterCache = new Map();
  * @param {Record<string, boolean>} Poses
  * @returns {boolean}
  */
-function ModelDrawLayer(MC, Model, Layer, Poses) {
+function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Poses: Record<string, boolean>): boolean {
 	// Hide if not highest
 	if (Layer.HideWhenOverridden) {
 		if (Layer.HideOverrideLayerMulti) {
@@ -565,8 +568,7 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number, H
 	let rot = 0;
 	let layer = hp.Parent;
 	while (layer) {
-		/** @type {PoseMod[]} */
-		let mod_selected = mods[layer] || [];
+		let mod_selected: PoseMod[] = mods[layer] || [];
 		for (let mod of mod_selected) {
 			ox = mod.offset_x || ox;
 			oy = mod.offset_y || oy;

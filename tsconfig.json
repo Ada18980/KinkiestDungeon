@@ -119,5 +119,6 @@
         ],
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
+        "lib": ["DOM", "ES2017"]
     }
 }
