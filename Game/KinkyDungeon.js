@@ -2341,8 +2341,12 @@ function KinkyDungeonHandleClick() {
 			ElementRemove("saveInputField");
 			return true;
 		} else if (MouseIn(1275, 750, 350, 64)) {
-			KDRestoreOutfit();
-			KinkyDungeonState = "Wardrobe";
+			if (StandalonePatched) {
+				KDRestoreOutfit();
+				KinkyDungeonState = "Wardrobe";
+			} else {
+				KinkyDungeonState = "Menu";
+			}
 			ElementRemove("saveInputField");
 			return true;
 		}
