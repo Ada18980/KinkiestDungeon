@@ -130,7 +130,7 @@ function KDProcessInput(type, data) {
 					loose.quantity -= 1;
 				}
 
-				KDStunTurns(2);
+				KDStunTurns(2, true);
 
 				msg = "KinkyDungeonSelfBondage";
 				if (KDRestraint(loose).Group == "ItemVulvaPiercings" || KDRestraint(loose).Group == "ItemVulva" || KDRestraint(loose).Group == "ItemButt") {

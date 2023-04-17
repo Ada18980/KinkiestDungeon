@@ -77,7 +77,7 @@ AddModel(GetModelWithExtraLayers("RopeBoxtie2", "RopeBoxtie1", [
 
 
 AddModel(GetModelWithExtraLayers("RopeBoxtie3", "RopeBoxtie2", [
-	{ Name: "ArmHarness", Layer: "Underarms", Pri: 0,
+	{ Name: "ArmHarness", Layer: "ChestStraps", Pri: -1,
 		Poses: ToMap([...ARMPOSES]),
 		Invariant: true,
 	},
