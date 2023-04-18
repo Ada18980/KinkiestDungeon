@@ -592,7 +592,7 @@ function KinkyDungeonLoad() {
 	KinkyDungeonGameKey.load();
 
 	if (!KinkyDungeonIsPlayer()) KinkyDungeonGameRunning = false;
-	if (!StandalonePatched && KinkyDungeonState == 'Consent') KinkyDungeonState = "Menu";
+	if (!KDPatched && KinkyDungeonState == 'Consent') KinkyDungeonState = "Menu";
 	//if (!Player.KinkyDungeonSave) Player.KinkyDungeonSave = {};
 
 	if (!KinkyDungeonGameRunning) {
