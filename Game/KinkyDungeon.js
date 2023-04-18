@@ -848,7 +848,7 @@ function KinkyDungeonRun() {
 		KinkyDungeonCanvas.width = 2000;
 		KinkyDungeonCanvas.height = 1000;
 	} else {
-		// @ts-ignore
+
 		KinkyDungeonGridWidthDisplay = 16;
 		KinkyDungeonGridHeightDisplay = 9;
 		canvasOffsetX = canvasOffsetX_ui;
@@ -881,13 +881,13 @@ function KinkyDungeonRun() {
 
 
 	if (KinkyDungeonState == "Mods") {
-		// @ts-ignore
+
 		DrawButtonKDEx("mods_back", (bdata) => {
 			KinkyDungeonState = "Menu";
 			KDExecuteMods();
 			return true;
 		}, true, 975, 850, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
-		// @ts-ignore
+
 		DrawButtonKDEx("mods_load", (bdata) => {
 			getFileInput();
 			return true;
@@ -985,7 +985,7 @@ function KinkyDungeonRun() {
 			DrawButtonVis(690, 942, 150, 50, TextGet("KinkyDungeonDressPlayerImport"), "#ffffff", "");
 		}
 
-		// @ts-ignore
+
 		DrawButtonKDEx("GoToWardrobe", (bdata) => {
 
 			if (StandalonePatched) {
@@ -1006,13 +1006,13 @@ function KinkyDungeonRun() {
 			}
 			KinkyDungeonPlayer.OnlineSharedSettings = {AllowFullWardrobeAccess: true};
 			KinkyDungeonNewDress = true;
-			if (ServerURL == "foobar" && !StandalonePatched) {
+			if (KDPatched && !StandalonePatched) {
 				// Give all of the items
-				// @ts-ignore
+
 				for (let A = 0; A < Asset.length; A++)
-					// @ts-ignore
+
 					if ((Asset[A] != null) && (Asset[A].Group != null) && !InventoryAvailable(Player, Asset[A].Name, Asset[A].Group.Name))
-						// @ts-ignore
+
 						InventoryAdd(Player, Asset[A].Name, Asset[A].Group.Name);
 			}
 
@@ -1028,13 +1028,13 @@ function KinkyDungeonRun() {
 
 		DrawButtonVis(1850, 942, 135, 50, TextGet("KinkyDungeonCredits"), "#ffffff", "");
 		DrawButtonVis(1700, 942, 135, 50, TextGet("KinkyDungeonPatrons"), "#ffffff", "");
-		// @ts-ignore
+
 		DrawButtonKDEx("Deviantart", (bdata) => {
 			let url = 'https://www.deviantart.com/ada18980';
 			window.open(url, '_blank');
 			return true;
 		}, true, 1700, 694, 280, 50, TextGet("KinkyDungeonDeviantart"), "#ffffff", "");
-		// @ts-ignore
+
 		DrawButtonKDEx("Patreon", (bdata) => {
 			let url = 'https://www.patreon.com/ada18980';
 			KDSendEvent('patreon');
@@ -1047,7 +1047,7 @@ function KinkyDungeonRun() {
 		DrawButtonVis(1700, 874, 280, 50, localStorage.getItem("BondageClubLanguage") || "EN", "#ffffff", "");
 
 		if (KDPatched) {
-			// @ts-ignore
+
 			DrawButtonKDEx("mods_button", (bdata) => {
 				KinkyDungeonState = "Mods";
 				return true;
@@ -1172,7 +1172,7 @@ function KinkyDungeonRun() {
 		for (let i = 0; i < classCount; i++) {
 			X = i % 4;
 			Y = Math.floor(i / 4);
-			// @ts-ignore
+
 			DrawButtonKDEx("Class" + i, (bdata) => {
 				KinkyDungeonClassMode = Object.keys(KDClassStart)[i];
 				localStorage.setItem("KinkyDungeonClassMode", "" + KinkyDungeonClassMode);
@@ -1191,7 +1191,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDSexyMode"), 875 - 50, 350 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-		// @ts-ignore
+
 		DrawButtonKDEx("KinkyDungeonSexyMode0", (bdata) => {
 			KinkyDungeonSexyMode = false;
 			KDUpdatePlugSettings();
@@ -1201,7 +1201,7 @@ function KinkyDungeonRun() {
 		if (MouseInKD("KinkyDungeonSexyMode0")) {
 			DrawTextFitKD(TextGet("KinkyDungeonSexyModeDesc0"), 1250, 80, 1000, "#ffffff", KDTextGray0);
 		}
-		// @ts-ignore
+
 		DrawButtonKDEx("KinkyDungeonSexyMode1", (bdata) => {
 			KinkyDungeonSexyMode = true;
 			KDUpdatePlugSettings();
@@ -1214,7 +1214,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDRandomMode"), 875 - 50, 410 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-		// @ts-ignore
+
 		DrawButtonKDEx("KinkyDungeonRandomMode0", (bdata) => {
 			KinkyDungeonRandomMode = false;
 			localStorage.setItem("KinkyDungeonRandomMode", KinkyDungeonRandomMode ? "True" : "False");
@@ -1223,7 +1223,7 @@ function KinkyDungeonRun() {
 		if (MouseInKD("KinkyDungeonRandomMode0")) {
 			DrawTextFitKD(TextGet("KinkyDungeonRandomModeDesc0"), 1250, 80, 1000, "#ffffff", KDTextGray0);
 		}
-		// @ts-ignore
+
 		DrawButtonKDEx("KinkyDungeonRandomMode1", (bdata) => {
 			KinkyDungeonRandomMode = true;
 			localStorage.setItem("KinkyDungeonRandomMode", KinkyDungeonRandomMode ? "True" : "False");
@@ -1235,7 +1235,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDSaveMode"), 875 - 50, 470 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-		// @ts-ignore
+
 		DrawButtonKDEx("KinkyDungeonSaveMode0", (bdata) => {
 			KinkyDungeonSaveMode = false;
 			localStorage.setItem("KinkyDungeonSaveMode", KinkyDungeonSaveMode ? "True" : "False");
@@ -1244,7 +1244,7 @@ function KinkyDungeonRun() {
 		if (MouseInKD("KinkyDungeonSaveMode0")) {
 			DrawTextFitKD(TextGet("KinkyDungeonSaveModeDesc0"), 1250, 80, 1000, "#ffffff", KDTextGray0);
 		}
-		// @ts-ignore
+
 		DrawButtonKDEx("KinkyDungeonSaveMode1", (bdata) => {
 			KinkyDungeonSaveMode = true;
 			localStorage.setItem("KinkyDungeonSaveMode", KinkyDungeonSaveMode ? "True" : "False");
@@ -1257,7 +1257,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDEasyMode"), 875 - 50, 530 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-		// @ts-ignore
+
 		DrawButtonKDEx("KinkyDungeonEasyMode0", (bdata) => {
 			KinkyDungeonEasyMode = 0;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode ? "True" : "False");
@@ -1266,7 +1266,7 @@ function KinkyDungeonRun() {
 		if (MouseInKD("KinkyDungeonEasyMode0")) {
 			DrawTextFitKD(TextGet("KinkyDungeonEasyModeDesc0"), 1250, 80, 1000, "#ffffff", KDTextGray0);
 		}
-		// @ts-ignore
+
 		DrawButtonKDEx("KinkyDungeonEasyMode1", (bdata) => {
 			KinkyDungeonEasyMode = 1;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode ? "True" : "False");
@@ -1275,7 +1275,7 @@ function KinkyDungeonRun() {
 		if (MouseInKD("KinkyDungeonEasyMode1")) {
 			DrawTextFitKD(TextGet("KinkyDungeonEasyModeDesc1"), 1250, 80, 1000, "#ffffff", KDTextGray0);
 		}
-		// @ts-ignore
+
 		DrawButtonKDEx("KinkyDungeonEasyMode2", (bdata) => {
 			KinkyDungeonEasyMode = 2;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode ? "True" : "False");
@@ -1286,13 +1286,13 @@ function KinkyDungeonRun() {
 		}
 
 		if (KinkyDungeonSexyMode) {
-			// @ts-ignore
+
 			DrawCheckboxKDEx("KinkyDungeonSexyPlugs", (bdata) => {
 				KinkyDungeonSexyPlug = !KinkyDungeonSexyPlug;
 				localStorage.setItem("KinkyDungeonSexyPlug", KinkyDungeonSexyPlug ? "True" : "False");
 				return true;
 			}, true, 1500, 350, 64, 64, TextGet("KinkyDungeonSexyPlugs"), KinkyDungeonSexyPlug, false, "#ffffff");
-			// @ts-ignore
+
 			DrawCheckboxKDEx("KinkyDungeonSexyPiercings", (bdata) => {
 				KinkyDungeonSexyPiercing = !KinkyDungeonSexyPiercing;
 				localStorage.setItem("KinkyDungeonSexyPiercing", KinkyDungeonSexyPiercing ? "True" : "False");
@@ -1313,7 +1313,7 @@ function KinkyDungeonRun() {
 			let hardmode = points >= KDHardModeThresh ? TextGet("KDHardMode") : "";
 			DrawTextKD(TextGet("KinkyDungeonStatPoints").replace("AMOUNT", "" + points) + hardmode, 1000, 150, "#ffffff", KDTextGray2);
 		}
-		// @ts-ignore
+
 		DrawButtonKDEx("KDPerksStart", (bdata) => {
 			if (KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0) {
 				//KinkyDungeonState = "Diff";
@@ -1322,32 +1322,32 @@ function KinkyDungeonRun() {
 			}
 			return true;
 		}, true, 875, 920, 350, 64, TextGet("KinkyDungeonStartGame"), KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= 0 ? "#ffffff" : "pink", "");
-		// @ts-ignore
+
 		DrawButtonKDEx("KDPerksBack", (bdata) => {
 			KinkyDungeonState = "Menu";
 			return true;
 		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
-		// @ts-ignore
+
 		DrawButtonKDEx("KDPerksClear", (bdata) => {
 			KinkyDungeonStatsChoice = new Map();
 			KDUpdatePlugSettings();
 			return true;
 		}, true, 40, 920, 190, 64, TextGet("KinkyDungeonClearAll"), "#ffffff", "");
-		// @ts-ignore
+
 		DrawButtonKDEx("KDPerkConfig1", (bdata) => {
 			KinkyDungeonPerksConfig = "1";
 			KinkyDungeonLoadStats();
 			KDUpdatePlugSettings();
 			return true;
 		}, true, 270, 930, 100, 54, TextGet("KinkyDungeonConfig") + "1", KinkyDungeonPerksConfig == "1" ? "#ffffff" : "#888888", "");
-		// @ts-ignore
+
 		DrawButtonKDEx("KDPerkConfig2", (bdata) => {
 			KinkyDungeonPerksConfig = "2";
 			KinkyDungeonLoadStats();
 			KDUpdatePlugSettings();
 			return true;
 		}, true, 380, 930, 100, 54, TextGet("KinkyDungeonConfig") + "2", KinkyDungeonPerksConfig == "2" ? "#ffffff" : "#888888", "");
-		// @ts-ignore
+
 		DrawButtonKDEx("KDPerkConfig3", (bdata) => {
 			KinkyDungeonPerksConfig = "3";
 			KinkyDungeonLoadStats();
@@ -1358,14 +1358,14 @@ function KinkyDungeonRun() {
 
 		let TF = KDTextField("PerksFilter", 600, 930, 210, 54, "text", "", "45");
 		if (TF.Created) {
-			// @ts-ignore
+
 			TF.Element.oninput = (event) => {
 				KDPerksFilter = ElementValue("PerksFilter");
 			};
 		}
 		DrawTextFitKD(TextGet("KinkyDungeonFilter"), 600 + 210/2, 930 + 54/2, 210, "#aaaaaa");
 
-		// @ts-ignore
+
 		DrawButtonKDEx("copyperks", (bdata) => {
 			let txt = "";
 			for (let k of KinkyDungeonStatsChoice.keys()) {
@@ -1375,7 +1375,7 @@ function KinkyDungeonRun() {
 			return true;
 		}, true, 1850, 930, 140, 54, TextGet("KinkyDungeonCopyPerks"), "#ffffff", "");
 
-		// @ts-ignore
+
 		DrawButtonKDEx("pasteperks", (bdata) => {
 			navigator.clipboard.readText()
 				.then(text => {
@@ -1666,10 +1666,13 @@ function KinkyDungeonRun() {
 
 		YY = YYstart;
 
-		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 100) + "%", "#ffffff", "",
-			() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 100 + "%",
-			() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 100 + "%");
-		YY += YYd * 2;
+		if (StandalonePatched) {
+			DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 100) + "%", "#ffffff", "",
+				() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 100 + "%",
+				() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 100 + "%");
+			YY += YYd * 2;
+		}
+
 		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), "#ffffff", "",
 			() => KDVibeVolumeList[(KDVibeVolumeListIndex + KDVibeVolumeList.length - 1) % KDVibeVolumeList.length] * 100 + "%",
 			() => KDVibeVolumeList[(KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length] * 100 + "%");
@@ -1851,6 +1854,45 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
  */
 function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	KDButtonsCache[name] = {
+		Left,
+		Top,
+		Width,
+		Height,
+		enabled,
+		func,
+	};
+}
+
+
+/**
+ * Draws a button component
+ * @param {any} Container - Container to draw to
+ * @param {string} name - Name of the button element
+ * @param {(bdata: any) => boolean} func - Whether or not you can click on it
+ * @param {boolean} enabled - Whether or not you can click on it
+ * @param {number} Left - Position of the component from the left of the canvas
+ * @param {number} Top - Position of the component from the top of the canvas
+ * @param {number} Width - Width of the component
+ * @param {number} Height - Height of the component
+ * @param {string} Label - Text to display in the button
+ * @param {string} Color - Color of the component
+ * @param {string} [Image] - URL of the image to draw inside the button, if applicable
+ * @param {string} [HoveringText] - Text of the tooltip, if applicable
+ * @param {boolean} [Disabled] - Disables the hovering options if set to true
+ * @param {boolean} [NoBorder] - Disables border
+ * @param {string} [FillColor] - BG color
+ * @param {number} [FontSize] - Font size
+ * @param {boolean} [ShiftText] - Shift text to make room for the button
+ * @param {object} [options] - Additional options
+ * @param {boolean} [options.noTextBG] - Dont show text backgrounds
+ * @param {number} [options.alpha] - Dont show text backgrounds
+ * @param {number} [options.zIndex] - zIndex
+ * @param {boolean} [options.unique] - This button is unique, so X and Y are not differentiators
+ * @returns {void} - Nothing
+ */
+function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
+	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
 	KDButtonsCache[name] = {
 		Left,
 		Top,
@@ -2456,14 +2498,17 @@ function KinkyDungeonHandleClick() {
 		YY = YYstart;
 
 
-		if (MouseIn(450, YY, 350, 64)) {
-			if (MouseX <= 450 + 350/2) KDResolutionListIndex = (KDResolutionList.length + KDResolutionListIndex - 1) % KDResolutionList.length;
-			else KDResolutionListIndex = (KDResolutionListIndex + 1) % KDResolutionList.length;
-			KDResolution = KDResolutionList[KDResolutionListIndex];
-			KDResolutionConfirm = true;
-			localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
+		if (StandalonePatched) {
+			if (MouseIn(450, YY, 350, 64)) {
+				if (MouseX <= 450 + 350/2) KDResolutionListIndex = (KDResolutionList.length + KDResolutionListIndex - 1) % KDResolutionList.length;
+				else KDResolutionListIndex = (KDResolutionListIndex + 1) % KDResolutionList.length;
+				KDResolution = KDResolutionList[KDResolutionListIndex];
+				KDResolutionConfirm = true;
+				localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
+			}
+			YY += YYd*2;
 		}
-		YY += YYd*2;
+
 		if (MouseIn(450, YY, 350, 64)) {
 			if (MouseX <= 450 + 350/2) KDVibeVolumeListIndex = (KDVibeVolumeList.length + KDVibeVolumeListIndex - 1) % KDVibeVolumeList.length;
 			else KDVibeVolumeListIndex = (KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length;
