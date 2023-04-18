@@ -1864,6 +1864,45 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
 	};
 }
 
+
+/**
+ * Draws a button component
+ * @param {any} Container - Container to draw to
+ * @param {string} name - Name of the button element
+ * @param {(bdata: any) => boolean} func - Whether or not you can click on it
+ * @param {boolean} enabled - Whether or not you can click on it
+ * @param {number} Left - Position of the component from the left of the canvas
+ * @param {number} Top - Position of the component from the top of the canvas
+ * @param {number} Width - Width of the component
+ * @param {number} Height - Height of the component
+ * @param {string} Label - Text to display in the button
+ * @param {string} Color - Color of the component
+ * @param {string} [Image] - URL of the image to draw inside the button, if applicable
+ * @param {string} [HoveringText] - Text of the tooltip, if applicable
+ * @param {boolean} [Disabled] - Disables the hovering options if set to true
+ * @param {boolean} [NoBorder] - Disables border
+ * @param {string} [FillColor] - BG color
+ * @param {number} [FontSize] - Font size
+ * @param {boolean} [ShiftText] - Shift text to make room for the button
+ * @param {object} [options] - Additional options
+ * @param {boolean} [options.noTextBG] - Dont show text backgrounds
+ * @param {number} [options.alpha] - Dont show text backgrounds
+ * @param {number} [options.zIndex] - zIndex
+ * @param {boolean} [options.unique] - This button is unique, so X and Y are not differentiators
+ * @returns {void} - Nothing
+ */
+function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
+	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	KDButtonsCache[name] = {
+		Left,
+		Top,
+		Width,
+		Height,
+		enabled,
+		func,
+	};
+}
+
 function KDProcessButtons() {
 	for (let button of Object.entries(KDButtonsCache)) {
 		if (button[1].enabled && button[1].func) {

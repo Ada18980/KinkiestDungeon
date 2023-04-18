@@ -669,7 +669,8 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 		Y += KDPerksYPad;
 		Y_alt = Y;
 		//MainCanvas.textAlign = "left";
-		DrawTextFitKD(TextGet("KDCategory" + c.name), X + KDPerksButtonWidth + KDPerksButtonWidthPad/2, Y - KDPerksButtonHeight/2 - 5, KDPerksButtonWidth*2, "#ffffff");
+		DrawTextFitKDTo(kdUItext, TextGet("KDCategory" + c.name), X + KDPerksButtonWidth + KDPerksButtonWidthPad/2, Y - KDPerksButtonHeight/2 - 5, KDPerksButtonWidth*2, "#ffffff",
+			undefined, undefined, undefined, undefined, undefined, undefined, true);
 		//MainCanvas.textAlign = "center";
 		if (inView()) {
 			catsdrawn += 1;
@@ -695,7 +696,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 					let colorSelected = KDGetPerkCost(stat[1]) > 0 ? "#eeeeff" : KDGetPerkCost(stat[1]) < 0 ? "#ffeeee" : "#eeeeff";
 					let colorExpensive = KDGetPerkCost(stat[1]) > 0 ? "#555588" : KDGetPerkCost(stat[1]) < 0 ? "#885555" : "#555588";
 
-					DrawButtonKDEx(stat[0], (bdata) => {
+					DrawButtonKDExTo(kdUItext, stat[0], (bdata) => {
 						if (!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) {
 							KinkyDungeonStatsChoice.set(stat[0], true);
 							localStorage.setItem('KinkyDungeonStatsChoice' + KinkyDungeonPerksConfig, JSON.stringify(Array.from(KinkyDungeonStatsChoice.keys())));
@@ -708,7 +709,8 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 						(!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) ? colorAvailable : (KinkyDungeonStatsChoice.get(stat[0]) ? colorSelected : (NonSelectable ? colorAvailable : colorExpensive)),
 						KinkyDungeonStatsChoice.get(stat[0]) ? (KinkyDungeonRootDirectory + "UI/TickPerk.png") : "", undefined, false, true,
 						KinkyDungeonStatsChoice.get(stat[0]) ? "rgba(140, 140, 140, 0.5)" : KDButtonColor, undefined, undefined, {
-							noTextBG: true
+							noTextBG: true,
+							unique: true,
 						});
 					if (MouseIn(XX, YY, KDPerksButtonWidth, KDPerksButtonHeight)) {
 						DrawTextFitKD(TextGet("KinkyDungeonStatDesc" + (stat[1].id)), 1000, 150, 1500, KDTextWhite, KDTextGray1);
@@ -717,7 +719,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 					}
 				}
 				if (!filled_x[X]) {
-					FillRectKD(kdcanvas, kdpixisprites, c.name, {
+					FillRectKD(kdUItext, kdpixisprites, c.name, {
 						Left: X - KDPerksButtonWidthPad,
 						Top: KDPerksYStart,
 						Width: 2 * KDPerksButtonWidth + 3 * KDPerksButtonWidthPad,

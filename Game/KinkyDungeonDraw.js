@@ -18,7 +18,7 @@ let pixiview = null;
 let pixirenderer = null;
 let pixirendererKD = null;
 let kdgamefog = new PIXI.Graphics();
-kdgamefog.zIndex = 1;
+kdgamefog.zIndex = -1;
 
 let kdmapboard = new PIXI.Container();
 kdmapboard.zIndex = -2;
@@ -28,6 +28,9 @@ let kdbulletboard = new PIXI.Container();
 kdbulletboard.zIndex = -0.01;
 let kdeffecttileboard = new PIXI.Container();
 kdeffecttileboard.zIndex = -0.1;
+let kdUItext = new PIXI.Container();
+kdUItext.zIndex = 60;
+kdUItext.sortableChildren = true;
 // @ts-ignore
 let kdgameboard = new PIXI.Container();
 kdgameboard.sortableChildren = true;
@@ -40,6 +43,7 @@ kdgameboard.addChild(kdeffecttileboard);
 let kdui = new PIXI.Graphics();
 let kdcanvas = new PIXI.Container();
 kdcanvas.sortableChildren = true;
+kdcanvas.addChild(kdUItext);
 if (StandalonePatched) {
 	kdgameboard.addChild(kdgamefog);
 	kdcanvas.addChild(kdgameboard);
@@ -1973,7 +1977,24 @@ let KDBorderColor = '#f0b541';
  *  @returns {void} - Nothing
  */
 function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder, Alpha, zIndex = 90) {
-	FillRectKD(kdcanvas, kdpixisprites, "box" + Left + "," + Top + "," + Width + "," + Height + Color + zIndex, {
+	DrawBoxKDTo(kdcanvas, Left, Top, Width, Height, Color, NoBorder, Alpha, zIndex);
+}
+
+/**
+ * Draws a box component
+ * @param {any} Container - Container to draw to
+ * @param {number} Left - Position of the component from the left of the canvas
+ * @param {number} Top - Position of the component from the top of the canvas
+ * @param {number} Width - Width of the component
+ * @param {number} Height - Height of the component
+ * @param {string} Color - Color of the component
+ * @param {boolean} [NoBorder] - Color of the component
+ * @param {number} [Alpha] - Transparency of the box
+ * @param {number} [zIndex] - z Index
+ *  @returns {void} - Nothing
+ */
+function DrawBoxKDTo(Container, Left, Top, Width, Height, Color, NoBorder, Alpha, zIndex = 90) {
+	FillRectKD(Container || kdcanvas, kdpixisprites, "box" + Left + "," + Top + "," + Width + "," + Height + Color + zIndex, {
 		Left: Left,
 		Top: Top,
 		Width: Width,
@@ -1985,7 +2006,7 @@ function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder, Alpha, zIndex = 90
 	});
 
 	if (!NoBorder) {
-		DrawRectKD(kdcanvas, kdpixisprites, "boxBorder" + Left + "," + Top + "," + Width + "," + Height + zIndex, {
+		DrawRectKD(Container || kdcanvas, kdpixisprites, "boxBorder" + Left + "," + Top + "," + Width + "," + Height + zIndex, {
 			Left: Left,
 			Top: Top,
 			Width: Width,
@@ -2012,12 +2033,33 @@ let KDFont = 'Arial';
  * @param {*} [zIndex]
  * @param {*} [alpha]
  * @param {*} [border]
+ * @param {boolean} [unique] - This button is not differentiated by position
  */
-function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined) {
+function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined) {
+	DrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex, alpha, border, unique);
+}
+
+/**
+ *
+ * @param {any} Container
+ * @param {*} Text
+ * @param {*} X
+ * @param {*} Y
+ * @param {*} Width
+ * @param {*} Color
+ * @param {*} [BackColor]
+ * @param {*} [FontSize]
+ * @param {*} [Align]
+ * @param {*} [zIndex]
+ * @param {*} [alpha]
+ * @param {*} [border]
+ * @param {boolean} [unique] - This button is not differentiated by position
+ */
+function DrawTextFitKDTo(Container, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined) {
 	if (!Text) return;
 	let alignment = Align ? Align : "center";
 
-	DrawTextVisKD(kdcanvas, kdpixisprites, Text + "," + X + "," + Y, {
+	DrawTextVisKD(Container || kdcanvas, kdpixisprites, Text + (!unique ? "," + X + "," + Y : "_unique"), {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -2029,6 +2071,7 @@ function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIn
 		zIndex: zIndex,
 		alpha: alpha,
 		border: border,
+		unique: unique,
 	});
 }
 
@@ -2093,7 +2136,7 @@ let KDAllowText = true;
 
 /**
  *
- * @param {{Text: string, X: number, Y: number, Width?: number, Color: string, BackColor: string, FontSize?: number, align?: string, zIndex?: number, alpha?: number, border?: number}} Params
+ * @param {{Text: string, X: number, Y: number, Width?: number, Color: string, BackColor: string, FontSize?: number, align?: string, zIndex?: number, alpha?: number, border?: number, unique?: boolean}} Params
  * @returns {boolean} - If it worked
  */
 function DrawTextVisKD(Container, Map, id, Params) {
@@ -2103,14 +2146,18 @@ function DrawTextVisKD(Container, Map, id, Params) {
 	let par = kdprimitiveparams.get(id);
 	if (sprite && par) {
 		for (let p of Object.entries(kdprimitiveparams.get(id))) {
-			if (Params[p[0]] != p[1]) {
+			if (Params[p[0]] != p[1] && ((p[0] != 'X' && p[0] != 'Y') || !Params.unique)) {
 				same = false;
+				//if (!Params.unique)
+				//console.log(p)
 				break;
 			}
 		}
 		for (let p of Object.entries(Params)) {
-			if (par[p[0]] != p[1]) {
+			if (par[p[0]] != p[1] && ((p[0] != 'X' && p[0] != 'Y') || !Params.unique)) {
 				same = false;
+				//if (!Params.unique)
+				//console.log(p)
 				break;
 			}
 		}
@@ -2128,6 +2175,8 @@ function DrawTextVisKD(Container, Map, id, Params) {
 				miterLimit: 4,
 			}
 		);
+
+		console.log(Params)
 		if (Params.Width) {
 			sprite.scale.x = Math.min(1, Params.Width / Math.max(1, sprite.width));
 			sprite.scale.y = sprite.scale.x;
@@ -2141,6 +2190,7 @@ function DrawTextVisKD(Container, Map, id, Params) {
 	if (sprite) {
 		// Modify the sprite according to the params
 		sprite.name = id;
+		sprite.cacheAsBitmap = true;
 		sprite.position.x = Params.X + (Params.align == 'center' ? -sprite.width/2 : (Params.align == 'right' ? -sprite.width : 0));
 		sprite.position.y = Params.Y - sprite.height/2 - 2;
 		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
@@ -2265,16 +2315,46 @@ function FillRectKD(Container, Map, id, Params) {
  * @returns {void} - Nothing
  */
 function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
+	DrawButtonVisTo(kdcanvas, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex, options);
+}
+
+
+/**
+ * Draws a button component
+ * @param {any} Container - Container to draw to
+ * @param {number} Left - Position of the component from the left of the canvas
+ * @param {number} Top - Position of the component from the top of the canvas
+ * @param {number} Width - Width of the component
+ * @param {number} Height - Height of the component
+ * @param {string} Label - Text to display in the button
+ * @param {string} Color - Color of the component
+ * @param {string} [Image] - URL of the image to draw inside the button, if applicable
+ * @param {string} [HoveringText] - Text of the tooltip, if applicable
+ * @param {boolean} [Disabled] - Disables the hovering options if set to true
+ * @param {boolean} [NoBorder] - Disables the button border and only draws the image and selection halo
+ * @param {string} [FillColor] - Color of the background
+ * @param {number} [FontSize] - Color of the background
+ * @param {boolean} [ShiftText] - Shift text to make room for the button
+ * @param {boolean} [Stretch] - Stretch the image to fit
+ * @param {number} [zIndex] - Stretch the image to fit
+ * @param {object} [options] - Additional options
+ * @param {boolean} [options.noTextBG] - Dont show text backgrounds
+ * @param {number} [options.alpha]
+ * @param {number} [options.zIndex] - zIndex
+ * @param {boolean} [options.unique] - This button is not differentiated by position
+ * @returns {void} - Nothing
+ */
+function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (!NoBorder || FillColor)
-		DrawBoxKD(Left, Top, Width, Height,
+		DrawBoxKDTo(Container, Left, Top, Width, Height,
 			FillColor ? FillColor : (hover ? (KDTextGray2) : KDButtonColor),
-			NoBorder, options?.alpha || 0.5, zIndex
+			NoBorder, options?.alpha || 0.5, zIndex,
 		);
 	if (hover) {
 		let pad = 4;
 		// Draw the button rectangle (makes the background color cyan if the mouse is over it)
-		DrawRectKD(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height + "out", {
+		DrawRectKD(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height + "out", {
 			Left: Left + pad,
 			Top: Top + pad,
 			Width: Width - 2 * pad + 1,
@@ -2290,7 +2370,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 	if ((Image != null) && (Image != "")) {
 		let img = KDTex(Image);
 		if (Stretch) {
-			KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
+			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 				Image, Left, Top, Width, Height, undefined, {
 					zIndex: zIndex + 0.001,
 				});
@@ -2298,20 +2378,20 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
 				Width: Width,
 				Height: Height,
 			});*/
-		} else KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
+		} else KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 			Image, Left + 2, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, {
 				zIndex: zIndex + 0.001,
 			});
 		textPush = img.orig.width;
 	}
-	DrawTextFitKD(Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
+	DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
 		Color,
 		(options && options.noTextBG) ? "none" : undefined,
-		FontSize, undefined, zIndex + 0.001);
+		FontSize, undefined, zIndex + 0.001, undefined, undefined, options?.unique);
 
 	// Draw the tooltip
 	if ((HoveringText != null) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
-		DrawTextFitKD(HoveringText, 1000, MouseY, 1500, "#ffffff");
+		DrawTextFitKDTo(Container || kdcanvas, HoveringText, 1000, MouseY, 1500, "#ffffff");
 		//DrawHoverElements.push(() => DrawButtonHover(Left, Top, Width, Height, HoveringText));
 	}
 }

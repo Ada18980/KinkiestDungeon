@@ -17,6 +17,9 @@ let FOOTRIGHTPOSES = ["Spread", "Closed"];
 let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel", "KneelClosed"];
 let KNEELPOSES = ["Kneel", "KneelClosed"];
 let STANDPOSES = ["Spread", "Closed"];
+let CLOSEDPOSES = ["KneelClosed", "Closed"];
+let SPREADPOSES = ["Spread", "Kneel"];
+let SPREADCLOSEDPOSES = ["Hogtie"];
 /** Expressions */
 
 let EYETYPES = ["Neutral", "Surprised", "Dazed", "Closed", "Angry"];
@@ -135,11 +138,18 @@ function KDGetAvailablePosesLegs(C: Character): string[] {
 		poses[p] = true;
 	}
 	if (C == KinkyDungeonPlayer) {
+		let closed = false;
+		let spread = false;
 		// Logic for the player
 		if (CheckPoseOrTags(C, "FeetLinked")) {
 			delete poses.Spread;
+			closed = true;
 		} else if (CheckPoseOrTags(C, "ForceKneel")) {
 			delete poses.Closed;
+		}
+		if (!closed && CheckPoseOrTags(C, "FeetSpreader")) {
+			delete poses.Closed;
+			spread = true;
 		}
 		if (CheckPoseOrTags(C, "ForceHogtie")) {
 			for (let p of STANDPOSES) {
@@ -150,6 +160,16 @@ function KDGetAvailablePosesLegs(C: Character): string[] {
 			}
 		} else if (CheckPoseOrTags(C, "ForceKneel")) {
 			for (let p of STANDPOSES) {
+				delete poses[p];
+			}
+		}
+
+		if (closed) {
+			for (let p of SPREADPOSES) {
+				delete poses[p];
+			}
+		} else if (spread) {
+			for (let p of CLOSEDPOSES) {
 				delete poses[p];
 			}
 		}

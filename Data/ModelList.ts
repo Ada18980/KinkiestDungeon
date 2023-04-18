@@ -1400,7 +1400,7 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 		},
-		{ Name: "Bra", Layer: "Chest", Pri: 50,
+		{ Name: "Chest", Layer: "Chest", Pri: 50,
 			Invariant: true,
 			HideWhenOverridden: true,
 		},
