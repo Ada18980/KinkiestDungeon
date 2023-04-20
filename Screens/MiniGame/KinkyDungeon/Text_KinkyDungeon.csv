@@ -3603,9 +3603,9 @@ RestraintShadowHandCrotch,Shadow Hands...
 RestraintShadowHandCrotchDesc,"They are holding your... uh..."
 RestraintShadowHandCrotchDesc2,"You have no choice but to struggle."
 
-RestraintRopeSnakeArms,Wrist Rope
-RestraintRopeSnakeArmsDesc,"A box tie keeping your arms secured behind your back."
-RestraintRopeSnakeArmsDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeArmsBoxtie,Wrist Rope
+RestraintRopeSnakeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
+RestraintRopeSnakeArmsBoxtieDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeCuffs,Rope Cuffs
 RestraintRopeSnakeCuffsDesc,"A quick tie for apprehending prisoners."
 RestraintRopeSnakeCuffsDesc2,"It's not very secure."
@@ -3615,9 +3615,9 @@ RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
 RestraintRopeSnakeHogtie,Rope Hogtie
 RestraintRopeSnakeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintRopeSnakeHogtieDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
-RestraintRopeSnakeTorso,Rope Belt
-RestraintRopeSnakeTorsoDesc,"A harness acting as a handle to pull you around"
-RestraintRopeSnakeTorsoDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeBelt,Rope Belt
+RestraintRopeSnakeBeltDesc,"A harness acting as a handle to pull you around"
+RestraintRopeSnakeBeltDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeHarness,Rope Harness
 RestraintRopeSnakeHarnessDesc,"A harness that secures your other restraints and makes them tighter."
 RestraintRopeSnakeHarnessDesc2,"The ropes squeeze you gently."

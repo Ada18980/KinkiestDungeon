@@ -3,7 +3,6 @@ let LAYERS_BASE = [
 	"Headband",
 	"HairFront",
 	"Mask",
-	"Circlet",
 	"Brows",
 	// Head items
 	"Blindfold",
@@ -15,6 +14,7 @@ let LAYERS_BASE = [
 	"Gag",
 	// Hair mid
 	"Hair",
+	"Circlet",
 	// Head
 	"Eyes",
 	"Mouth",

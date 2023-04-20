@@ -14,6 +14,8 @@ var PIXIapp = new PIXI.Application({
 	height: PIXIHeight,
 });
 
+//PIXI.settings.RESOLUTION = resolution;
+PIXI.settings.FILTER_RESOLUTION = resolution;
 /*
 const viewport = new Viewport({
 	worldWidth: 5000,
@@ -21,8 +23,7 @@ const viewport = new Viewport({
 	screenWidth: window.innerWidth,
 	screenHeight: window.innerHeight,
 	events: PIXIapp.renderer.events,
-  });
-//PIXI.settings.RESOLUTION = resolution;*/
+  });*/
 
 
 document.body.appendChild(PIXIapp.view as any);

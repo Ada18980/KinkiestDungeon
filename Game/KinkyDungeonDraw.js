@@ -2176,7 +2176,7 @@ function DrawTextVisKD(Container, Map, id, Params) {
 			}
 		);
 
-		console.log(Params)
+		//console.log(Params)
 		if (Params.Width) {
 			sprite.scale.x = Math.min(1, Params.Width / Math.max(1, sprite.width));
 			sprite.scale.y = sprite.scale.x;

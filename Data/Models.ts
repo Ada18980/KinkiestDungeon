@@ -43,6 +43,7 @@ class ModelContainer {
 	Poses: Record<string, boolean>;
 	TempPoses: Record<string, boolean>;
 	readonly Update: Set<string>;
+	readonly Refresh: Set<string>;
 	readonly Mods: Map<string, PoseMod[]>;
 
 	constructor(Character: Character, Models: Map<string, Model>, Containers: Map<string, ContainerInfo>, ContainersDrawn: Map<string, ContainerInfo>, Poses: Record<string, boolean>) {
@@ -55,6 +56,7 @@ class ModelContainer {
 		this.HighestPriority = {};
 		this.Mods = new Map();
 		this.Update = new Set();
+		this.Refresh = new Set();
 	}
 
 	/**
@@ -137,18 +139,24 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 
 	let containerID = `${X},${Y},${Zoom}`;
 
-	if (MC.Containers.get(containerID) && !MC.Update.has(containerID)) {
+	if (MC.Containers.get(containerID) && !MC.Update.has(containerID) && MC.Refresh.has(containerID)) {
+		MC.Update.delete(containerID);
+		MC.Refresh.delete(containerID);
+		console.log("Refreshed!")
 		// Refresh the container!
 		kdcanvas.removeChild(MC.Containers.get(containerID).Container);
 		MC.Containers.get(containerID).Container.destroy();
 		MC.Containers.delete(containerID);
+		MC.ContainersDrawn.delete(containerID);
 	}
+	let created = false;
 	if (!MC.Containers.get(containerID)) {
 		let Container = {
 			Container: new PIXI.Container(),
 			SpritesDrawn: new Map(),
 			SpriteList: new Map(),
 		};
+		created = true;
 		MC.Containers.set(containerID, Container);
 		kdcanvas.addChild(Container.Container);
 		Container.Container.sortableChildren = true;
@@ -187,6 +195,12 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 				modified = true;
 				sprite[1].destroy();
 			}
+		}
+
+		// We only refresh if it actually needs to be updated
+		if (modified && !created) {
+			MC.Refresh.add(containerID);
+			MC.Update.delete(containerID);
 		}
 		Container.SpritesDrawn.clear();
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
@@ -275,7 +289,9 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				let filter = m.Filters ? (m.Filters[l.InheritColor || l.Name] ?
 					(KDAdjustmentFilterCache.get(fh) || [new PIXI.filters.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])])
 					: undefined) : undefined;
-				if (filter && !KDAdjustmentFilterCache.get(fh)) KDAdjustmentFilterCache.set(FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
+				if (filter && !KDAdjustmentFilterCache.get(fh)) {
+					KDAdjustmentFilterCache.set(FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
+				}
 				let img = ModelLayerString(m, l, MC.Poses);
 				let id = `layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`;
 				if (!modified && !ContainerContainer.SpriteList.has(id)) modified = true;

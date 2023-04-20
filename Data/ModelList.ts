@@ -1339,7 +1339,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
-		{ Name: "ZombieTalisman", Layer: "Circlet", Pri: 90,
+		{ Name: "ZombieTalisman", Layer: "Headband", Pri: 90,
 			NoOverride: true,
 			Invariant: true,
 		},

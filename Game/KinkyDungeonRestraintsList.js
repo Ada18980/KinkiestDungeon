@@ -1705,7 +1705,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.6, enemyTags: {"cableGag":3}, playerTags: {}, minLevel: 0, maxLevel: 6, allFloors: true, shrine: ["Metal", "Gags", "PlugGags"]},
 
 	//region RopeSnake
-	{unlimited: true, renderWhenLinked: ["Boxbinders"], changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, inventory: true, name: "RopeSnakeArms", debris: "Ropes", accessible: true, factionColor: [[], [0]],
+	{unlimited: true, renderWhenLinked: ["Boxbinders"], changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, inventory: true, name: "RopeSnakeArmBoxtie", debris: "Ropes", accessible: true, factionColor: [[], [0]],
 		Model: "RopeBoxtie1",
 		Asset: "HempRope", Color: "Default", LinkableBy: ["Boxbinders", "Wrapping"], Group: "ItemArms", bindarms: true, power: 1.5, weight: 0, escapeChance: {"Struggle": 0.25, "Cut": 0.45, "Remove": 0.1},
 		affinity: {Remove: ["Hook"],},
@@ -1734,7 +1734,7 @@ const KinkyDungeonRestraints = [
 	{unlimited: true, renderWhenLinked: [...KDLegRopesRender], inventory: true, name: "RopeSnakeLegs", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "FullBinding", LinkableBy: [...KDLegRopesBind], Color: "Default", Group: "ItemLegs", hobble: true, addTag: ["FeetLinked"], power: 1, weight: 0, escapeChance: {"Struggle": 0.25, "Cut": 0.45, "Remove": 0.15},
 		affinity: {Remove: ["Hook"],},
 		maxwill: 0.6, enemyTags: {"ropeRestraints":4}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties"]},
-	{unlimited: true, renderWhenLinked: ["Harnesses", "HeavyCorsets"], inventory: true, name: "RopeSnakeTorso", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRopeHarness", Type: "Waist", Color: "Default", Group: "ItemTorso", power: 1, weight: 0, harness: true, escapeChance: {"Struggle": 0.1, "Cut": 0.67, "Remove": 0.3},
+	{unlimited: true, renderWhenLinked: ["Harnesses", "HeavyCorsets"], inventory: true, name: "RopeSnakeBelt", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRopeHarness", Type: "Waist", Color: "Default", Group: "ItemTorso", power: 1, weight: 0, harness: true, escapeChance: {"Struggle": 0.1, "Cut": 0.67, "Remove": 0.3},
 		affinity: {Remove: ["Hook"],},
 		maxwill: 0.9, enemyTags: {"ropeRestraints2":4}, playerTags: {"ItemTorsoFull":-3}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties"]},
 	{unlimited: true, renderWhenLinked: ["Harnesses", "HeavyCorsets"], inventory: true, name: "RopeSnakeHarness", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRopeHarness", Type: "Star", strictness: 0.1, OverridePriority: 26, Color: "Default", Group: "ItemTorso", power: 2, weight: 0, harness: true, escapeChance: {"Struggle": 0.1, "Cut": 0.67, "Remove": 0.3},
@@ -1961,6 +1961,28 @@ const KinkyDungeonRestraints = [
 (() => {
 	let afterload = KDModsAfterLoad;
 	KDModsAfterLoad = () => {
+		KDAddRopeVariants(
+			"RopeSnake",
+			"CelRope",
+			"",
+			"rest_rope_cel",
+			"celestialRopes",
+			{
+
+			},
+			[],
+			{
+				Struggle: 0.2,
+				Cut: 0.25,
+				Remove: 0.1,
+			},
+			{
+				name: "Holy Ropes",
+				description: "Brightly glowing ropes made of a glistening material.",
+			}
+		);
+
+
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "Breastplate",
 			Group: "ItemBreast",
@@ -2644,5 +2666,49 @@ let KDControlHarnessCategories = {
 				);
 			}
 		},
+	},
+};
+
+/** A record of the different types of generic rope items */
+let KDRopeItems = {
+	"ArmsBoxtie": {
+		/** @type {KDEscapeChanceList} */
+		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
+	},
+	"Cuffs": {
+		/** @type {KDEscapeChanceList} */
+		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
+	},
+	"CuffsAdv": {
+		/** @type {KDEscapeChanceList} */
+		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
+	},
+	"ArmsWrist": {
+		/** @type {KDEscapeChanceList} */
+		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
+	},
+	"Hogtie": {
+		/** @type {KDEscapeChanceList} */
+		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
+	},
+	"Feet": {
+		/** @type {KDEscapeChanceList} */
+		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
+	},
+	"Legs": {
+		/** @type {KDEscapeChanceList} */
+		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
+	},
+	"Belt": {
+		/** @type {KDEscapeChanceList} */
+		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
+	},
+	"Harness": {
+		/** @type {KDEscapeChanceList} */
+		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
+	},
+	"Pelvis": {
+		/** @type {KDEscapeChanceList} */
+		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
 	},
 };
