@@ -108,6 +108,7 @@ let LAYERS_BASE = [
 	// Lower body underwear
 	"StockingLeft",
 	"StockingRight",
+
 	"Panties",
 
 	// Upper body underwear and bodysuits

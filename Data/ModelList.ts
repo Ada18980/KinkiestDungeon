@@ -466,12 +466,14 @@ AddModel({
 		// Duplicate yoked is to override Closed override
 		{ Name: "Shoulders", Layer: "Shoulders", Pri: 10,
 			Poses: ToMap(["Yoked", "Up", "Spread", "Closed", "Kneel", "KneelClosed"]),
+			InheritColor: "Coat",
 			MorphPoses: {Yoked: "Yoked", Closed: "Spread"},
 		},
 		{ Name: "ShouldersHogtie", Layer: "Shoulders", Pri: 10,
 			Poses: ToMapSubtract([...ARMPOSES, "Hogtie"], ["Wristtie", "Yoked", "Up"]),
 			GlobalDefaultOverride: ToMap(["Hogtie"]),
 			HidePoses: ToMap(["Spread", "Closed", "Yoked", "Up"]),
+			InheritColor: "Coat",
 			MorphPoses: {Boxtie: "Free", Free: "Free", Hogtie: ""},
 		},
 		{ Name: "Coat", Layer: "Coat", Pri: 0,
@@ -483,6 +485,7 @@ AddModel({
 		{ Name: "CoatHogtieFree", Layer: "Cape", Pri: 0,
 			Poses: ToMap(["Hogtie"]),
 			HidePoses: ToMap(["Wristtie"]),
+			InheritColor: "Coat",
 			MorphPoses: {Hogtie: ""},
 		},
 		{ Name: "Cape", Layer: "Cape", Pri: 0,
@@ -543,11 +546,13 @@ AddModel({
 			Poses: ToMap(["Kneel"]),
 			HidePoses: ToMap(["FeetLinked"]),
 			HideWhenOverridden: true,
+			InheritColor: "BootRight",
 			Invariant: true,
 		},
 		{ Name: "BootLeftHogtie", Layer: "FootLeftHogtie", Pri: 25,
 			Poses: ToMap(["Hogtie"]),
 			HideWhenOverridden: true,
+			InheritColor: "BootLeft",
 			Invariant: true,
 		},
 	])
@@ -555,19 +560,43 @@ AddModel({
 
 
 AddModel({
-	Name: "Gauntlets",
+	Name: "GauntletLeft",
 	Folder: "ArmorPlate",
 	Parent: "PlateArmor",
 	Categories: ["Gloves"],
 	Layers: ToLayerMap([
 		{ Name: "GauntletLeft", Layer: "GloveLeft", Pri: 15,
-			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Boxtie"]),
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Boxtie", "Up"]),
 			HideWhenOverridden: true,
+			GlobalDefaultOverride: ToMap(["Front"]),
 		},
+	])
+});
+
+
+AddModel({
+	Name: "GauntletRight",
+	Folder: "ArmorPlate",
+	Parent: "PlateArmor",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
 		{ Name: "GauntletRight", Layer: "GloveRight", Pri: 15,
-			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Up"]),
 			HideWhenOverridden: true,
+			GlobalDefaultOverride: ToMap(["Front"]),
 		},
+	])
+});
+
+AddModel({
+	Name: "Gauntlets",
+	Folder: "ArmorPlate",
+	Parent: "PlateArmor",
+	TopLevel: true,
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("GauntletRight"),
+		...GetModelLayers("GauntletLeft"),
 	])
 });
 
@@ -590,14 +619,15 @@ AddModel({
 	Parent: "ChainArmor",
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
-		{ Name: "ShirtChest", Layer: "Chest", Pri: 5,
+		{ Name: "Shirt", Layer: "CorsetLiner", Pri: 5,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
 			MorphPoses: {Hogtie: "Hogtie"},
 			Invariant: true,
 		},
-		{ Name: "Shirt", Layer: "CorsetLiner", Pri: 5,
+		{ Name: "ShirtChest", Layer: "Chest", Pri: 5,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
 			MorphPoses: {Hogtie: "Hogtie"},
+			InheritColor: "Shirt",
 			Invariant: true,
 		},
 	])
@@ -742,11 +772,13 @@ AddModel({
 		{ Name: "ShoeRightKneel", Layer: "FootRightKneel", Pri: 1,
 			Poses: ToMap(["Kneel"]),
 			Invariant: true,
+			InheritColor: "ShoeRight",
 			HideWhenOverridden: true,
 		},
 		{ Name: "ShoeLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
 			Poses: ToMap(["Hogtie"]),
 			Invariant: true,
+			InheritColor: "ShoeLeft",
 			HideWhenOverridden: true,
 		},
 	])
@@ -832,6 +864,7 @@ AddModel({
 		{ Name: "BlouseBust", Layer: "Chest", Pri: 3,
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
+			InheritColor: "Blouse",
 			Invariant: true,
 		},
 	])
@@ -932,11 +965,13 @@ AddModel({
 		{ Name: "ShoeRightKneel", Layer: "FootRightKneel", Pri: 1,
 			Poses: ToMap(["Kneel"]),
 			Invariant: true,
+			InheritColor: "ShoeRight",
 			HideWhenOverridden: true,
 		},
 		{ Name: "ShoeLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
 			Poses: ToMap(["Hogtie"]),
 			Invariant: true,
+			InheritColor: "ShoeLeft",
 			HideWhenOverridden: true,
 		},
 	])
@@ -989,6 +1024,7 @@ AddModel({
 		{ Name: "BlouseBust", Layer: "Chest", Pri: 4,
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
+			InheritColor: "Blouse",
 			Invariant: true,
 		},
 	])
@@ -1064,11 +1100,13 @@ AddModel({
 		{ Name: "ShoeRightKneel", Layer: "FootRightKneel", Pri: 1,
 			Poses: ToMap(["Kneel"]),
 			Invariant: true,
+			InheritColor: "ShoeRight",
 			HideWhenOverridden: true,
 		},
 		{ Name: "ShoeLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
 			Poses: ToMap(["Hogtie"]),
 			Invariant: true,
+			InheritColor: "ShoeLeft",
 			HideWhenOverridden: true,
 		},
 	])
@@ -1139,11 +1177,13 @@ AddModel({
 		{ Name: "ShoeRightKneel", Layer: "FootRightKneel", Pri: 1,
 			Poses: ToMap(["Kneel"]),
 			Invariant: true,
+			InheritColor: "ShoeRight",
 			HideWhenOverridden: true,
 		},
 		{ Name: "ShoeLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
 			Poses: ToMap(["Hogtie"]),
 			Invariant: true,
+			InheritColor: "ShoeLeft",
 			HideWhenOverridden: true,
 		},
 	])
@@ -1172,12 +1212,13 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Tops"],
 	Layers: ToLayerMap([
-		{ Name: "BustierChest", Layer: "Chest", Pri: 15,
+		{ Name: "Bustier", Layer: "Bustier", Pri: 15,
 			Invariant: true,
 			HideWhenOverridden: true,
 		},
-		{ Name: "Bustier", Layer: "Bustier", Pri: 15,
+		{ Name: "BustierChest", Layer: "Chest", Pri: 15,
 			Invariant: true,
+			InheritColor: "Bustier",
 			HideWhenOverridden: true,
 		},
 	])
@@ -1378,11 +1419,13 @@ AddModel({
 		{ Name: "ShoeRightKneel", Layer: "FootRightKneel", Pri: 1,
 			Poses: ToMap(["Kneel"]),
 			Invariant: true,
+			InheritColor: "ShoeRight",
 			HideWhenOverridden: true,
 		},
 		{ Name: "ShoeLeftHogtie", Layer: "FootLeftHogtie", Pri: 1,
 			Poses: ToMap(["Hogtie"]),
 			Invariant: true,
+			InheritColor: "ShoeLeft",
 			HideWhenOverridden: true,
 		},
 	])
@@ -1402,6 +1445,7 @@ AddModel({
 		},
 		{ Name: "Chest", Layer: "Chest", Pri: 50,
 			Invariant: true,
+			InheritColor: "Bra",
 			HideWhenOverridden: true,
 		},
 	])
@@ -1546,5 +1590,122 @@ AddModel({
 		...GetModelLayers("RobeSkirt"),
 		...GetModelLayers("RobeBra"),
 		...GetModelLayers("Ribbon"),
+	])
+});
+
+
+
+AddModel({
+	Name: "BunnySockLeft",
+	Folder: "Bunny",
+	Parent: "BunnySocks",
+	Layers: ToLayerMap([
+		{ Name: "SockLeft", Layer: "StockingLeft", Pri: -1,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+		},
+		{ Name: "FootSockLeftHogtie", Layer: "FootLeftHogtie", Pri: -1,
+			Poses: ToMap(["Hogtie"]),
+			InheritColor: "SockLeft",
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "BunnySockRight",
+	Folder: "Bunny",
+	Parent: "BunnySocks",
+	Layers: ToLayerMap([
+		{ Name: "SockRight", Layer: "StockingRight", Pri: -1,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+		},
+		{ Name: "FootSockRightKneel", Layer: "FootRightKneel", Pri: 1.5,
+			HidePoses: ToMap(["FeetLinked"]),
+			Poses: ToMap(["Kneel"]),
+			InheritColor: "SockRight",
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "BunnySocks",
+	Folder: "Bunny",
+	Parent: "Bunny",
+	TopLevel: true,
+	Categories: ["Socks"],
+	Layers: ToLayerMap([
+		...GetModelLayers("BunnySockRight"),
+		...GetModelLayers("BunnySockLeft"),
+	])
+});
+
+
+
+AddModel({
+	Name: "BunnyGloveLeft",
+	Folder: "Bunny",
+	Parent: "Bunny",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveLeft", Layer: "GloveLeft", Pri: -1,
+			Poses: ToMap([...ARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "BunnyGloveRight",
+	Folder: "Bunny",
+	Parent: "Bunny",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveRight", Layer: "GloveRight", Pri: -1,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "BunnyGloves",
+	Folder: "Bunny",
+	Parent: "Bunny",
+	TopLevel: true,
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("BunnyGloveLeft"),
+		...GetModelLayers("BunnyGloveRight"),
+	])
+});
+
+AddModel({
+	Name: "BunnyLeotard",
+	Folder: "Bunny",
+	Parent: "Bunny",
+	TopLevel: true,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		{ Name: "Leotard", Layer: "Bodysuit", Pri: -1,
+			Poses: ToMap([...LEGPOSES]),
+		},
+		{ Name: "LeotardChest", Layer: "Chest", Pri: 1.5,
+			Invariant: true,
+			InheritColor: "Leotard",
+		},
+	])
+});
+
+AddModel({
+	Name: "Bunny",
+	Folder: "Bunny",
+	TopLevel: true,
+	Categories: ["Uniforms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("BunnyLeotard"),
+		...GetModelLayers("BunnyGloves"),
+		...GetModelLayers("BunnySocks"),
 	])
 });
