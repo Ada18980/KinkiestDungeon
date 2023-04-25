@@ -2211,32 +2211,32 @@ AttackMonsterRope,"The magic rope wriggles into your outfit! (DamageTaken)"
 
 NameWitchShock,Shock Witch
 KillWitchShock,"The shock witch vanishes into a cloud of thunder, leaving behind a keyring."
-AttackWitchShockBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchShockBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchShockLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchShock,"The witch slaps you playfully! (DamageTaken)"
 
 NameWitchFlame,Flame Witch
 KillWitchFlame,"The flame witch vanishes into a pile of ash."
-AttackWitchFlameBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchFlameBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchFlameLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchFlame,"The witch slaps you playfully! (DamageTaken)"
 
 
 NameWitchEarth,Earth Witch
 KillWitchEarth,"The earth witch vanishes into a pile of ash."
-AttackWitchEarthBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchEarthBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchEarthLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchEarth,"The witch slaps you playfully! (DamageTaken)"
 
 NameWitchWater,Water Witch
 KillWitchWater,"The water witch vanishes into a pile of ash."
-AttackWitchWaterBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchWaterBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchWaterLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchWater,"The witch slaps you playfully! (DamageTaken)"
 
 NameWitchIce,Ice Witch
 KillWitchIce,"The ice witch vanishes into a pile of ash."
-AttackWitchIceBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchIceBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchIceLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchIce,"The witch slaps you playfully! (DamageTaken)"
 
@@ -2248,7 +2248,7 @@ KinkyDungeonSpellWitchWaterBall,Waterblast
 
 NameWitchRope,Rope Witch
 KillWitchRope,"The rope witch retreats as her animated ropes chase her."
-AttackWitchRopeBind,"The witch restraints you! (+RestraintAdded)"
+AttackWitchRopeBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchRopeLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchRope,"The witch slaps you playfully! (DamageTaken)"
 
@@ -8427,7 +8427,7 @@ rOfferLatexForce,"(The SPEAKER grins and reaches for a RESTRAINT)|Well, too bad-
 rOfferLatexForceYes,"(The SPEAKER grins)|I wasn't offering you a choice...|I was asking if you would LIKE it, hehe~"
 rOfferLatexForce_No,"(The SPEAKER frowns)|...You're fast!"
 rOfferLatexForce_Yes,"(The SPEAKER smiles)|That's right~"
-rOfferLatexForce_Failure,"(The SPEAKER restraints you and clicks a lock on)|There! Nice and tight!"
+rOfferLatexForce_Failure,"(The SPEAKER restrains you and clicks a lock on)|There! Nice and tight!"
 
 dOfferLatex_Yes,"Why of course!"
 dOfferLatex_YesGag,"(Nod happily)"
@@ -8486,7 +8486,7 @@ rOfferLeatherForce,"(The SPEAKER grins and reaches toward you!)|Well, I think it
 rOfferLeatherForceYes,"(The SPEAKER grins)|You don't have a choice, dear~"
 rOfferLeatherForce_No,"(The SPEAKER frowns)|Darn it! Missed my chance."
 rOfferLeatherForce_Yes,"(The SPEAKER smiles)|Good, good~"
-rOfferLeatherForce_Failure,"(The SPEAKER restraints you and clicks a lock on)|There! Nice and tight!"
+rOfferLeatherForce_Failure,"(The SPEAKER restrains you and clicks a lock on)|There! Nice and tight!"
 
 dOfferLeather_Yes,"Why of course!"
 dOfferLeather_YesGag,"(Nod happily)"
