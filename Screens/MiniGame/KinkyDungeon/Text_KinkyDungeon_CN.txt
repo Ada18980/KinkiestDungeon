@@ -477,7 +477,7 @@ Training Center
 Rubber Facility
 橡胶设施
 Wizards' Den
-巫师的基地
+法师的基地
 Marble Halls
 大理石大厅
 Doll Storage
@@ -621,7 +621,7 @@ Use Item (Consumes 1)
 Knife
 刀
 Wizard's Outfit
-巫师装束
+法师装束
 Your favorite outfit for adventuring.
 你最喜欢的冒险服装。
 Your original outfit. No bonuses
@@ -2205,13 +2205,13 @@ The witch clips a restraint around your neck!
 The witch squeezes your body playfully!
 女巫玩弄地地压迫你的身体！
 'High' Wizard
-“高阶”巫师
+“高阶”法师
 The wizard falls asleep.
-巫师睡着了。
+法师睡着了。
 The wizard clips a restraint around your neck!
-巫师在你的脖子上装上了一个拘束具！
+法师在你的脖子上装上了一个拘束具！
 The wizard laughs maniacally as she tickles you!
-巫师一边狂笑一边对你挠痒！
+法师一边狂笑一边对你挠痒！
 FunGal
 真菌
 The fun-gal retreats into the ground.
@@ -4975,7 +4975,7 @@ You pick up a heavy flail.
 You pick up a shortspear.
 你拿起短矛。
 You pick up a staff of binding. You remember these from wizard school...
-你拿起一根捆绑法杖。你你记得在巫师学校见过这些……
+你拿起一根捆绑法杖。你你记得在法师学校见过这些……
 You pick up a staff of the storm. It tingles.
 你拿起风暴之杖。它刺痛了你。
 You pick up a staff of flames. It feels warm.
@@ -5829,7 +5829,7 @@ Graveyard
 (From an essay titled 'On Celestial Supply Chains') It is known that the heavens seek gold. We do not know why it is that the heavens seek it, but we do know that the Goddesses grant us fragments of their limitless power in exchange for this otherwise-useless metal we dredge up from the earth. They care about it so much that shrines are commonplace, each hosting an angelic courier lying in wait for any adventurer willing to part with hers.
 （摘自一篇题为《论天上供应链》的文章）众所周知，天上求金。我们不知道为什么上天会寻找它，但我们知道女神赐予我们无限力量的碎片，以换取我们从地球上挖出的这种原本无用的金属。他们非常关心它，以至于神社司空见惯，每个神社都有一个天使信使，等待任何愿意与她分手的冒险者。
 They thought they stripped me down and checked everywhere. They didn't know about one of the first tricks we learned in wizard school: how to make an enchanted knife disappear!
-他们以为他们剥了我的衣服，到处检查。他们不知道我们在巫师学校学到的第一个技巧：如何让附魔刀消失！
+他们以为他们剥了我的衣服，到处检查。他们不知道我们在法师学校学到的第一个技巧：如何让附魔刀消失！
 They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Blink out of jail and into the bandit's cache where they kept all of my things!
 他们以为他们可以拥有我的传奇之剑……但是傻瓜忘记了绑我的腿！我能够闪现出监狱，进入强盗的藏匿处，他们把我所有的东西都放在那里！
 I am writing this from inside prison. Who would have known they cared so much about me using a shrine? Sheesh.
@@ -6789,7 +6789,7 @@ Never should have come here.
 I used to be an adventurer like you.
 我曾经和你一样是冒险者。
 You must be one of those wizards.
-你一定是那些巫师之一。
+你一定是那些法师之一。
 The mages sell real well...
 法师卖得真好……
 Mage! Stop her!
@@ -9844,6 +9844,18 @@ No Brats
 安静宝宝
 Submissive enemies won't run away from you.
 顺从的敌人不会从你身边逃跑。
+More Tape
+更多胶带
+Tape-wielding enemies (such as Tape Bots) occur more frequently.
+胶带系敌人（例如胶带机器人）会更频繁地出现。
+Less Tape
+更少胶带
+Fewer tape-related enemies will appear, although this does not remove tape entirely.
+较少的与胶带有关的敌人将出现，尽管这并不能完全去除胶带。
+Not a Doll
+非玩偶状态
+You may still enter Doll Terminals, but enemies will not force you onto doll stands.
+你仍然可以进入玩偶终端，但敌人不会强迫你站在玩偶架上。
 
 Locks and Restraints
 锁具和拘束具
@@ -10296,3 +10308,20 @@ Iron Slave
 钢铁奴隶
 Start in a full set of magically locked obsidian cuffs.
 开局时穿戴被魔法锁住的全套黑曜石铐。
+
+Trainee
+练习生
+Your training has given you access to the spells of the Trainee class. (Aroused mode only)
+你的训练使你能够访问练习生类的法术。（仅在兴奋模式下）
+Warrior
+战士
+Your training has given you access to the spells of the Warrior class.
+你的训练使你能够访问战士类的法术。
+Rogue
+盗贼
+Your training has given you access to the spells of the Rogue class.
+你的训练使你能够访问盗贼类的法术。
+Wizard
+法师
+Your training has given you access to the spells of the Wizard class.
+你的训练使你能够访问法师类的法术。
