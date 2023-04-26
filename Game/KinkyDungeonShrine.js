@@ -563,7 +563,7 @@ function KinkyDungeonDrawOrb() {
 				if (value > 30) color = "#00ff00";
 				else color = "#88ff00";
 			}
-			DrawButtonVis(canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), "white");
+			DrawButtonVis(canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), "white");
 			DrawProgressBar(canvasOffsetX_ui + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value, color, KDTextGray2);
 			if (KinkyDungeonShrineBaseCosts[shrine])
 				KDDrawRestraintBonus(shrine, canvasOffsetX_ui + 275 + XX - 70, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
@@ -600,7 +600,7 @@ function KinkyDungeonHandleOrb() {
 				if (XX == 0) i = 0;
 				XX = 600;
 			}
-			if (MouseIn(canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55)) {
+			if (MouseIn(canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55)) {
 				KDSendInput("orb", {shrine: shrine, Amount: Amount, x: KDOrbX, y: KDOrbY});
 				KinkyDungeonDrawState = "Game";
 				return true;

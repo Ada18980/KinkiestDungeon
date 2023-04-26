@@ -117,7 +117,7 @@ function KDDrawVibeParticles(density) {
 
 	let arousalRate = 100 / density;
 	if (StandalonePatched) arousalRate *= 2;
-	if (KinkyDungeonVibeLevel > 0 && CommonTime() > lastVibeParticle + 0.03 * arousalRate * (2/(2 + KinkyDungeonVibeLevel))) {
+	if (KinkyDungeonVibeLevel > 0 && CommonTime() > lastVibeParticle + 0.03 * arousalRate * (3/(3 + KinkyDungeonVibeLevel))) {
 		KDCreateVibeParticle();
 
 		lastVibeParticle = CommonTime();

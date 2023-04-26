@@ -1121,6 +1121,10 @@ interface KinkyDungeonEvent {
 }
 
 interface entity {
+	visual_hp?: number,
+	visual_boundlevel?: number,
+	visual_distraction?: number,
+	visual_lifetime?: number,
 	/** Spawn location */
 	spawnX?: number,
 	/** Spawn location */

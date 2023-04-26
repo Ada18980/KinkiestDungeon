@@ -814,9 +814,48 @@ function KDGetEnemyDistractionDamage(enemy, vibe) {
 
 let KDMaxBindingBars = 3;
 
-function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
+/**
+ *
+ * @param {number} currentval
+ * @param {number} targetval
+ * @param {number} rate
+ * @param {number} minrate - Minimum rate
+ * @param {number} delta
+ * @param {number} eps -epsilon, threshold for making the value eqyal exactly
+ * @returns {number}
+ */
+function KDEaseValue(delta, currentval, targetval, rate, minrate, eps = 0.1) {
+	let val = currentval;
+	let diff = Math.abs(targetval - currentval);
+	let amount = diff * rate * delta;
+	let effamount = Math.max(minrate * delta, amount);
+	let eps_real = Math.max(eps, effamount);
+	if (val > targetval + eps_real || val < targetval - eps_real) {
+		val = val + (targetval - currentval) * effamount;
+	} else val = targetval;
+	return val;
+}
+
+let KDBarAdvanceRate = 1.9/1000;
+let KDBarAdvanceRateMin = 1.0/1000;
+
+function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, CamY, CamXoffset, CamYoffset) {
 	let tooltip = false;
 	for (let enemy of KinkyDungeonEntities) {
+		// Handle enemy bars
+		if (enemy.boundLevel != undefined && !(enemy.visual_boundlevel == enemy.boundLevel)) {
+			enemy.visual_boundlevel = KDEaseValue(delta, enemy.visual_boundlevel || 0, enemy.boundLevel, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.Enemy.maxhp);
+		}
+		if (enemy.hp != undefined && !(enemy.visual_hp == enemy.hp)) {
+			enemy.visual_hp = KDEaseValue(delta, enemy.visual_hp != undefined ? enemy.visual_hp : enemy.Enemy.maxhp, enemy.hp, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.Enemy.maxhp);
+		}
+		if (enemy.distraction != undefined && !(enemy.visual_distraction == enemy.distraction)) {
+			enemy.visual_distraction = KDEaseValue(delta, enemy.visual_distraction || 0, enemy.distraction, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.Enemy.maxhp);
+		}
+		if (enemy.lifetime != undefined && !(enemy.visual_lifetime == enemy.lifetime)) {
+			enemy.visual_lifetime = KDEaseValue(delta, enemy.visual_lifetime || 0, enemy.lifetime, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.maxlifetime);
+		}
+
 		let playerDist = Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y));
 		if (enemy.x >= CamX && enemy.y >= CamY && enemy.x < CamX + KinkyDungeonGridWidthDisplay && enemy.y < CamY + KinkyDungeonGridHeightDisplay
 			&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
@@ -831,18 +870,18 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					let helpless = KDHelpless(enemy);
 					if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
 						if (!helpless) {
-							let bindingBars = Math.ceil(enemy.boundLevel / enemy.Enemy.maxhp);
+							let bindingBars = Math.ceil(enemy.visual_boundlevel / enemy.Enemy.maxhp);
 							let SM = KDGetEnemyStruggleMod(enemy);
 							let futureBound = KDPredictStruggle(enemy, SM, 1);
 							for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
 								if (i > 0) II++;
-								let mod = enemy.boundLevel - futureBound.boundLevel;
+								let mod = enemy.visual_boundlevel - futureBound.boundLevel;
 								// Part that will be struggled out of
-								KinkyDungeonBar(canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
-									KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (enemy.boundLevel - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
+								KinkyDungeonBar(canvasOffsetX + (xx - CamX + 0.1 - CamXoffset)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
+									KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (enemy.visual_boundlevel - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
 								// Separator between part that will be struggled and not
-								KinkyDungeonBar(1 + canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
-									KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (enemy.boundLevel - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
+								KinkyDungeonBar(1 + canvasOffsetX + (xx - CamX + 0.1 - CamXoffset)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
+									KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (enemy.visual_boundlevel - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
 
 							}
 							II -= Math.max(0, Math.min(bindingBars-1, KDMaxBindingBars-1));
@@ -877,7 +916,7 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 									if (b.level > i * enemy.Enemy.maxhp) {
 										bcolor = KDSpecialBondage[b.name] ? KDSpecialBondage[b.name].color : "#ffae70";
 										// Struggle bars themselves
-										KinkyDungeonBar(canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
+										KinkyDungeonBar(canvasOffsetX + (xx - CamX + 0.1 - CamXoffset)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
 											KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (Math.max(0, b.level - i * enemy.Enemy.maxhp)) / enemy.Enemy.maxhp) * 100, bcolor, "none",
 											undefined, undefined, bars ? [0.25, 0.5, 0.75] : undefined, bars ? "#85522c" : undefined, bars ? "#85522c" : undefined, 57.5 + b.pri*0.01);
 										bars = true;
@@ -897,17 +936,17 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 							// Draw hp bar
 							let fg = enemy.boundTo ? (KDAllied(enemy) ? "#77aaff" : "#dd88ff") : (KDAllied(enemy) ? "#00ff88" : "#ff5555");
 							let bg = KDAllied(enemy) ? "#aa0000" : "#000000";
-							KinkyDungeonBar(canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
-								KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), enemy.boundTo? 7 : 9, enemy.hp / enemy.Enemy.maxhp * 100, fg, bg); II++;
+							KinkyDungeonBar(canvasOffsetX + (xx - CamX - CamXoffset + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
+								KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), enemy.boundTo? 7 : 9, enemy.visual_hp / enemy.Enemy.maxhp * 100, fg, bg); II++;
 						}
 
 						if (enemy.distraction > 0) {
 							// Draw distraction bar
-							KinkyDungeonBar(canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
+							KinkyDungeonBar(canvasOffsetX + (xx - CamX - CamXoffset + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
 								KinkyDungeonGridSizeDisplay * 0.8, 6, enemy.distraction / enemy.Enemy.maxhp * 100, "#fda1ff", "#9300ff");
 							KDDraw(kdcanvas, kdpixisprites, enemy.id + "_ar_heart", KinkyDungeonRootDirectory + (enemy.distraction >= 0.9 * enemy.Enemy.maxhp ? "UI/HeartExtreme.png" : "UI/Heart.png"),
-								-7 + canvasOffsetX + (xx - CamX + enemy.distraction / enemy.Enemy.maxhp * 0.8 + 0.1)*KinkyDungeonGridSizeDisplay,
-								-4 + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
+								-7 + canvasOffsetX + (xx - CamX - CamXoffset + enemy.visual_distraction / enemy.Enemy.maxhp * 0.8 + 0.1)*KinkyDungeonGridSizeDisplay,
+								-4 + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
 								14, 14 , undefined, {
 									zIndex: 63,
 								});
@@ -916,8 +955,8 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 
 						if (enemy.lifetime != undefined && enemy.maxlifetime > 0 && enemy.maxlifetime < 999 && ((!enemy.Enemy.hidetimerbar && !enemy.hideTimer) || KDAllied(enemy))) {
 							// Draw lifetime bar
-							KinkyDungeonBar(canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
-								KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 8, enemy.lifetime / enemy.maxlifetime * 100, "#cccccc", "#000000"); II++;
+							KinkyDungeonBar(canvasOffsetX + (xx - CamX - CamXoffset + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
+								KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 8, enemy.visual_lifetime / enemy.maxlifetime * 100, "#cccccc", "#000000"); II++;
 						}
 					}
 				}
@@ -929,7 +968,7 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				// Draw thought bubbles
 				let yboost = II * -20;
 				if (enemy.Enemy.specialdialogue || enemy.specialdialogue) {
-					KDDraw(kdcanvas, kdpixisprites, enemy.id + "_th", KinkyDungeonRootDirectory + "Conditions/Dialogue.png",
+					KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_th", KinkyDungeonRootDirectory + "Conditions/Dialogue.png",
 						canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 							zIndex: 23,
@@ -942,7 +981,7 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 						bb = true;
 						let name = CommonTime() % 1000 < 500 ? "Thought" : bubble.name;
 						if (name != "Thought" || !((enemy.lifetime != undefined || enemy.hp < enemy.Enemy.maxhp || enemy.boundLevel)))
-							KDDraw(kdcanvas, kdpixisprites, enemy.id + "_th", KinkyDungeonRootDirectory + `Conditions/Thought/${name}.png`,
+							KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_th", KinkyDungeonRootDirectory + `Conditions/Thought/${name}.png`,
 								canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 								KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 									zIndex: 4,
@@ -951,13 +990,13 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				}
 				if (!KDHelpless(enemy)) {
 					if (!KinkyDungeonAggressive(enemy) && ((!KDAllied(enemy) && !enemy.Enemy.specialdialogue && !bb) || KDEnemyHasFlag(enemy, "Shop")) && !enemy.playWithPlayer && enemy.Enemy.movePoints < 90 && !KDAmbushAI(enemy)) {
-						KDDraw(kdcanvas, kdpixisprites, enemy.id + "_shop", KinkyDungeonRootDirectory + ((KDEnemyHasFlag(enemy, "Shop")) ? "Conditions/Shop.png" : (KDAllied(enemy) ? "Conditions/Heart.png" : "Conditions/Peace.png")),
+						KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_shop", KinkyDungeonRootDirectory + ((KDEnemyHasFlag(enemy, "Shop")) ? "Conditions/Shop.png" : (KDAllied(enemy) ? "Conditions/Heart.png" : "Conditions/Peace.png")),
 							canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 							KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 								zIndex: 22,
 							});
 					} else if (!bb && enemy.aware && KDHostile(enemy) && enemy.vp > 0 && enemy.Enemy && !enemy.Enemy.noAlert && enemy.Enemy.movePoints < 90 && !KDAmbushAI(enemy)) {
-						KDDraw(kdcanvas, kdpixisprites, enemy.id + "_aw", KinkyDungeonRootDirectory + "Conditions/Aware.png",
+						KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_aw", KinkyDungeonRootDirectory + "Conditions/Aware.png",
 							canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 							KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 								zIndex: 22,
@@ -966,14 +1005,14 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 						let sneakThreshold = enemy.Enemy.sneakThreshold ? enemy.Enemy.sneakThreshold : 2;
 						if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak")) sneakThreshold = Math.max(0.1, sneakThreshold + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak"));
 						if (enemy.vp > sneakThreshold/2)
-							KDDraw(kdcanvas, kdpixisprites, enemy.id + "_vp", KinkyDungeonRootDirectory + "Conditions/vp.png",
+							KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_vp", KinkyDungeonRootDirectory + "Conditions/vp.png",
 								canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 								KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 									zIndex: 22,
 								});
 					}
 					if (enemy.vulnerable > 0)
-						KDDraw(kdcanvas, kdpixisprites, enemy.id + "_vuln", KinkyDungeonRootDirectory + "Conditions/Vulnerable.png",
+						KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_vuln", KinkyDungeonRootDirectory + "Conditions/Vulnerable.png",
 							canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 							KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 								zIndex: 22,
@@ -1036,7 +1075,9 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				if (enemy.dialogue && !tooltip) {
 					let dialougelenth = 10;
 					if (CJKcheck(enemy.dialogue,2)){
-						DrawTextFitKD(enemy.dialogue, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5, 10 + enemy.dialogue.length * 8, enemy.dialogueColor, "#000000", 18, undefined, 20);
+						DrawTextFitKD(enemy.dialogue,
+							canvasOffsetX + (xx - CamX - CamXoffset)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
+							yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5, 10 + enemy.dialogue.length * 8, enemy.dialogueColor, "#000000", 18, undefined, 20);
 					} else {
 						let dialougeCJKcheck1 = CJKcheck(enemy.dialogue,1);
 						let dialougeCJKcheck2 = CJKcheck(enemy.dialogue);
@@ -1049,7 +1090,9 @@ function KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 							let i;
 							for (i in dialougeCJKcheck2){dialougelenth += dialougeCJKcheck2[i].length * 16;}
 						}
-						DrawTextFitKD(enemy.dialogue, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5, dialougelenth, enemy.dialogueColor, "#000000", 18, undefined, 20);
+						DrawTextFitKD(enemy.dialogue,
+							canvasOffsetX + (xx - CamX - CamXoffset)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
+							yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5, dialougelenth, enemy.dialogueColor, "#000000", 18, undefined, 20);
 					}
 				}
 			}
