@@ -55,7 +55,7 @@ kdcanvas.addChild(kdUItext);
 let statusOffset = 0;
 
 if (StandalonePatched) {
-	
+
 	statusOffset -= 20;
 	kdgameboard.addChild(kdgamefog);
 	kdcanvas.addChild(kdgameboard);
@@ -1196,14 +1196,17 @@ function KinkyDungeonDrawGame() {
 			}
 
 
-			KinkyDungeonDrawEnemiesHP(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
-			KinkyDungeonDrawFloaters(CamX+CamX_offset, CamY+CamY_offset);
+			KinkyDungeonDrawEnemiesHP(KDDrawDelta || 0, canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset, CamX_offsetVis, CamY_offsetVis);
+			KinkyDungeonDrawFloaters(CamX+CamX_offsetVis, CamY+CamY_offsetVis);
 
 			if (KinkyDungeonCanvas) {
 				let barInt = 0;
 				if (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax*0.9) {
+					if (KinkyDungeonStatStamina != undefined && !(KinkyDungeonPlayerEntity.visual_stamina == KinkyDungeonStatStamina)) {
+						KinkyDungeonPlayerEntity.visual_stamina = KDEaseValue(KDDrawDelta || 0, KinkyDungeonPlayerEntity.visual_stamina || 0, KinkyDungeonStatStamina, KDBarAdvanceRate, KDBarAdvanceRateMin * KinkyDungeonStatStaminaMax);
+					}
 					KinkyDungeonBar(canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 12 - 13 * barInt,
-						KinkyDungeonGridSizeDisplay, 8, 100 * KinkyDungeonStatStamina / KinkyDungeonStatStaminaMax, !KDCanAttack() ? "#ff5555" : "#44ff44", KDTextGray0);
+						KinkyDungeonGridSizeDisplay, 8, 100 * KinkyDungeonPlayerEntity.visual_stamina / KinkyDungeonStatStaminaMax, !KDCanAttack() ? "#ff5555" : "#44ff44", KDTextGray0);
 					barInt += 1;
 				}
 				/*for (let b of Object.values(KinkyDungeonPlayerBuffs)) {
@@ -2206,7 +2209,7 @@ function DrawTextVisKD(Container, Map, id, Params) {
 	if (sprite) {
 		// Modify the sprite according to the params
 		sprite.name = id;
-		sprite.cacheAsBitmap = true;
+		//sprite.cacheAsBitmap = true;
 		sprite.position.x = Params.X + (Params.align == 'center' ? -sprite.width/2 : (Params.align == 'right' ? -sprite.width : 0));
 		sprite.position.y = Params.Y - sprite.height/2 - 2;
 		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;

@@ -695,7 +695,7 @@ function KinkyDungeonLoad() {
 
 		if (KinkyDungeonIsPlayer()) {
 			//if (!KDPatched && KinkyDungeonState == "Consent")
-			//	KinkyDungeonState = "Menu";
+			//KinkyDungeonState = "Menu";
 			KinkyDungeonGameData = null;
 
 			CharacterAppearancePreviousEmoticon = WardrobeGetExpression(Player).Emoticon;
@@ -1070,18 +1070,18 @@ function KinkyDungeonRun() {
 		if (!KDLoadingFinished) {
 			DrawTextKD(TextGet("KDLoading") + Math.round(100 * KDLoadingDone / KDLoadingMax) + "%", 1000, 950, "#ffffff", KDTextGray2);
 		} else {
-			
+
 			if (KDPatched) {
 				DrawButtonVis(1000-450/2, 720, 450, 64, TextGet("KDOptIn"), KDLoadingFinished ? "#ffffff" : "#888888", "");
 				DrawButtonVis(1000-450/2, 820, 450, 64, TextGet("KDOptOut"), KDLoadingFinished ? "#ffffff" : "#888888", "");
-	
+
 				DrawTextKD(TextGet("KinkyDungeonConsent"), 1000, 450, "#ffffff", KDTextGray2);
 				DrawTextKD(TextGet("KinkyDungeonConsent2"), 1000, 500, "#ffffff", KDTextGray2);
 				DrawTextKD(TextGet("KinkyDungeonConsent3"), 1000, 550, "#ffffff", KDTextGray2);
 			} else {
 				DrawButtonVis(1000-450/2, 820, 450, 64, TextGet("KDStartGame"), KDLoadingFinished ? "#ffffff" : "#888888", "");
 			}
-			
+
 		}
 		if (KDLoadingDone >= KDLoadingMax) {
 
@@ -1743,15 +1743,15 @@ function KinkyDungeonRun() {
 	}
 
 
-	let delta = performance.now() - lastfps;
+	KDDrawDelta = performance.now() - lastfps;
 	fpscounter++;
 	if (fpscounter > 10) {
 		fpscounter = 0;
-		dispfps = Math.round(1000 / Math.max(delta, 1));
+		dispfps = Math.round(1000 / Math.max(KDDrawDelta, 1));
 	}
 
 	lastfps = performance.now();
-	KDUpdateParticles(delta);
+	KDUpdateParticles(KDDrawDelta);
 
 	if (StandalonePatched) {
 		/*if (KinkyDungeonState == "Game") {
@@ -1785,6 +1785,8 @@ function KinkyDungeonRun() {
 	MouseClicked = false;
 
 }
+
+let KDDrawDelta = 0;
 
 let kdTrackGameBoard = false;
 let kdTrackGameFog = false;
