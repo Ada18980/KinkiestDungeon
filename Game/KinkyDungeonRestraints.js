@@ -3479,3 +3479,24 @@ function KDChooseRestraintFromListGroupPri(RestraintList, GroupOrder) {
 	}
 	return null;
 }
+
+
+
+
+/**
+ *
+ * @param {string} CopyOf - The rope family to copy
+ * @param {string} idSuffix - The suffix to add to the rope family
+ * @param {string} ModelSuffix - The suffix for the rope model to use
+ * @param {string} tagBase - The base for the enemy tags
+ * @param {string} allTag - adds a tag to all of the ropes if specified
+ * @param {KDRestraintPropsBase} properties - Restraint properties to override
+ * @param {KinkyDungeonEvent[]} extraEvents - Extra events to add on
+ * @param {KDEscapeChanceList} baseStruggle - Restraint properties to override
+ * @param {{name: string, description: string}} strings - Generic strings for the rope type
+ */
+function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, properties, extraEvents, baseStruggle, strings) {
+	for (let category of Object.entries(KDRopeItems)) {
+		// For each category of rope items we dupe the original item and apply modifications based on the category parameters
+	}
+}

@@ -121,7 +121,13 @@ type KDHasTags = {
 	tags: any
 }
 
-interface KDRestraintProps {
+interface KDRestraintProps extends KDRestraintPropsBase {
+	name: string,
+	Group: string,
+	Asset: string,
+}
+
+interface KDRestraintPropsBase {
 	/** Used in standalone to replace Color */
 	Filters?: Record<string, LayerFilter>,
 	/** This item is unaffected by shrines */
@@ -218,11 +224,8 @@ interface KDRestraintProps {
 	ignoreSpells?: boolean,
 	/** Can always struggle even if it's blocked */
 	alwaysStruggleable?: boolean,
-	name: string,
-	Group: string,
 	/** Model to use in standalone. Defaults to Asset */
 	Model?: string,
-	Asset: string,
 	/** Used for when the visual asset in BC is different from the actual group of the item*/
 	AssetGroup?: string,
 	Color?: string[] | string,
@@ -428,6 +431,14 @@ interface restraint extends KDRestraintProps {
 	enemyTags: Record<string, number>,
 	playerTags: Record<string, number>,
 	shrine: string[],
+}
+
+interface KDEscapeChanceList {
+	Struggle?: number,
+	Cut?: number,
+	Remove?: number,
+	Pick?: number,
+	Unlock?: number,
 }
 
 type outfitKey = string

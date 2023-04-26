@@ -18,7 +18,7 @@ let pixiview = null;
 let pixirenderer = null;
 let pixirendererKD = null;
 let kdgamefog = new PIXI.Graphics();
-kdgamefog.zIndex = 1;
+kdgamefog.zIndex = -1;
 
 let kdmapboard = new PIXI.Container();
 kdmapboard.zIndex = -2;
@@ -727,8 +727,8 @@ function KinkyDungeonDrawGame() {
 			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);// Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
 			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KinkyDungeonGridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
 			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
-			kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSize;
-			kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSize;
+			kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
+			kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
 
 			let CamX_offset = 0;
 			let CamY_offset = 0;
@@ -861,7 +861,6 @@ function KinkyDungeonDrawGame() {
 						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
-					console.log(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)
 				} else if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Armor") < 0) {
 					KDDraw(kdstatusboard, kdpixisprites, "c_armd", KinkyDungeonRootDirectory + "Conditions/ArmorDebuff.png",
 						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
@@ -2189,7 +2188,7 @@ function DrawTextVisKD(Container, Map, id, Params) {
 			}
 		);
 
-		console.log(Params)
+		//console.log(Params)
 		if (Params.Width) {
 			sprite.scale.x = Math.min(1, Params.Width / Math.max(1, sprite.width));
 			sprite.scale.y = sprite.scale.x;
