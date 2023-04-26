@@ -727,8 +727,8 @@ function KinkyDungeonDrawGame() {
 			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);// Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
 			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KinkyDungeonGridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
 			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
-			kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSize;
-			kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSize;
+			kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
+			kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
 
 			let CamX_offset = 0;
 			let CamY_offset = 0;
