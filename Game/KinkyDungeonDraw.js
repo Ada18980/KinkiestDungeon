@@ -729,6 +729,10 @@ function KinkyDungeonDrawGame() {
 			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
 			kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
 			kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
+			if (!StandalonePatched) {
+				kdgamefog.x = kdgameboard.x;
+				kdgamefog.y = kdgameboard.y;
+			}
 
 			let CamX_offset = 0;
 			let CamY_offset = 0;
