@@ -9873,3 +9873,28 @@ KDPunishAttack,Your attack sets off your [RESTRAINTNAME]
 KDHarnessGagRemoveBlindfold,The straps on your gag prevent you from loosening the blindfold!
 KDHarnessGagStruggleBlindfold,The straps on your gag keep your blindfold securely in place!
 KDTooltipItems,Items on Ground:
+KDHideItems,Hide Items
+KDSortItems,Sort Items
+KDDropItems,Drop Items
+KDFilterItems,Filter Items
+KDItemFilterRarity,Rarity
+KDItemFilter_Restraint_Latex,Latex
+KDItemFilter_Restraint_Slime,Slime
+KDItemFilter_Restraint_Rope,Rope
+KDItemFilter_Restraint_Ribbon,Ribbon
+KDItemFilter_Restraint_Leather,Leather
+KDItemFilter_Restraint_Cloth,Cloth
+KDItemFilter_Restraint_Metal,Metal
+KDItemFilter_Restraint_Cyber,Cyber
+KDItemFilter_Restraint_Armor,Armor
+KDItemFilter_Restraint_Ancient,Ancient
+KDItemFilter_Restraint_Special,Special
+KDItemFilter_Weapon_Physical,Physical
+KDItemFilter_Weapon_Magic,Magical
+KDItemFilter_Weapon_Knives,Knives
+KDItemFilter_Weapon_Utility,Utility
+KDItemFilter_Consumable_Potion,Potions
+KDItemFilter_Consumable_Restoration,Restoration
+KDItemFilter_Consumable_Power,Power
+KDFindInInventory,Find In Inventory
+KDLoading,"Preloading Character Assets: "
