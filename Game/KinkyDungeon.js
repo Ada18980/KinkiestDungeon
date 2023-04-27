@@ -267,6 +267,7 @@ let KDOptOut = false;
 * HiddenSpellPages : Record<string, boolean>,
 * KeyringLocations : {x: number, y: number}[],
 * HiddenItems : Record<string, boolean>,
+* ItemPriority : Record<string, number>,
 * CagedTime : number,
 * ShopItems: shopItem[],
 * DelayedActions: KDDelayedAction[],
@@ -297,6 +298,7 @@ let KDGameDataBase = {
 
 	CagedTime: 0,
 	HiddenItems: {},
+	ItemPriority: {},
 	KeyringLocations: [],
 	HiddenSpellPages: {},
 	PriorJailbreaks: 0,
