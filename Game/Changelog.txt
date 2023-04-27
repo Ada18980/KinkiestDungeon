@@ -1303,6 +1303,12 @@ Minor Changes:
 - Curse tooltips now show even while the item is overlaid
 - Each boss now gives a Leyline Map if you beat it, which lets you increase your mana pool up to +500 more
 
+4.23 (April 2023)
+- Lots of optimization. The game should run silky smooth!
+
+4.24 (April 2023)
+- Added Quick inventory sorting and ability to drop items
+
 TODO: Mushrooms in the jungle
 
 TODO
