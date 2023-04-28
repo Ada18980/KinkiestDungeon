@@ -2468,6 +2468,10 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug")) return false;
 	if (restraint.Group == "ItemNipplesPiercing" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
 
+	function bypasses() {
+		return (Bypass || restraint.bypass || !KDGroupBlocked(restraint.Group, true) || KDEnemyPassesSecurity(restraint.Group, securityEnemy));
+	}
+
 	if (restraint.requireSingleTagToEquip) {
 		let pass = false;
 		for (let tag of restraint.requireSingleTagToEquip) {
@@ -2484,7 +2488,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 
 	let linkableCurrent = r && KDRestraint(r) && KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
 
-	if (linkUnder) return true;
+	if (linkUnder && bypasses()) return true;
 
 	// We raise the power if the current item cannot be linked, but the item underneath also cannot be linked
 	let link = r?.dynamicLink;
@@ -2508,7 +2512,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 		|| (!KDRestraint(r).enchanted
 			&& (!noOverpower && power < restraint.power * KinkyDungeonGetLockMult(newLock)))
 	) {
-		if (Bypass || restraint.bypass || !KDGroupBlocked(restraint.Group, true) || KDEnemyPassesSecurity(restraint.Group, securityEnemy))
+		if (bypasses())
 			return true; // Recursion!!
 	}
 	return false;
