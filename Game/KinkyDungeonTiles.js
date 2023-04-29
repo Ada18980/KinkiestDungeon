@@ -325,13 +325,13 @@ function KDCreateEffectTile(x, y, tile, durationMod) {
 }
 
 function KDInteractNewTile(newTile) {
-	let Creator = KDEffectTileCreateFunctionsCreator[newTile.name];
+	let Creator = KDEffectTileCreateFunctionsCreator[newTile.functionName || newTile.name];
 	let Existing = null;
 	for (let tile of Object.values(KDGetEffectTiles(newTile.x, newTile.y))) {
 		if (tile != newTile) {
 			if (Creator) Creator(newTile, tile);
 			if (tile.duration > 0) {
-				Existing = KDEffectTileCreateFunctionsExisting[tile.name];
+				Existing = KDEffectTileCreateFunctionsExisting[tile.functionName || tile.name];
 				if (Existing) Existing(newTile, tile);
 			}
 		}
@@ -482,8 +482,8 @@ function KDUpdateEffectTiles(delta) {
  * @param {effectTile} tile
  */
 function KinkyDungeonUpdateSingleEffectTile(delta, entity, tile,) {
-	if (tile.duration > 0 && KDEffectTileFunctions[tile.name]) {
-		KDEffectTileFunctions[tile.name](delta, entity, tile);
+	if (tile.duration > 0 && KDEffectTileFunctions[tile.functionName || tile.name]) {
+		KDEffectTileFunctions[tile.functionName || tile.name](delta, entity, tile);
 	}
 }
 /**
@@ -492,8 +492,8 @@ function KinkyDungeonUpdateSingleEffectTile(delta, entity, tile,) {
  * @param {effectTile} tile
  */
 function KinkyDungeonUpdateSingleEffectTileStandalone(delta, tile,) {
-	if (tile.duration > 0 && KDEffectTileFunctionsStandalone[tile.name]) {
-		KDEffectTileFunctionsStandalone[tile.name](delta, tile);
+	if (tile.duration > 0 && KDEffectTileFunctionsStandalone[tile.functionName || tile.name]) {
+		KDEffectTileFunctionsStandalone[tile.functionName || tile.name](delta, tile);
 	}
 }
 
@@ -506,8 +506,8 @@ function KinkyDungeonUpdateSingleEffectTileStandalone(delta, tile,) {
  * @param {number} d
  */
 function KinkyDungeonBulletInteractionSingleEffectTile(b, tile, d) {
-	if (tile.duration > 0 && KDEffectTileBulletFunctions[tile.name]) {
-		KDEffectTileBulletFunctions[tile.name](b, tile, d);
+	if (tile.duration > 0 && KDEffectTileBulletFunctions[tile.functionName]) {
+		KDEffectTileBulletFunctions[tile.functionName](b, tile, d);
 	}
 }
 

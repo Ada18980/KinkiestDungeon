@@ -115,7 +115,7 @@ function KinkyDungeonDressSet() {
 	KinkyDungeonNewDress = false;
 }
 
-function KinkyDungeonSetDress(Dress, Outfit) {
+function KinkyDungeonSetDress(Dress, Outfit, Character, NoRestraints) {
 	if (Outfit) KDGameData.Outfit = Outfit;
 	KinkyDungeonCurrentDress = Dress;
 	if (KDGetDressList()) {
@@ -123,7 +123,7 @@ function KinkyDungeonSetDress(Dress, Outfit) {
 			clothes.Lost = false;
 		}
 		KinkyDungeonCheckClothesLoss = true;
-		KinkyDungeonDressPlayer();
+		KinkyDungeonDressPlayer(Character, NoRestraints);
 		KDRefresh = true;
 	}
 }
@@ -134,7 +134,7 @@ let KDRefresh = false;
 /**
  * It sets the player's appearance based on their stats.
  */
-function KinkyDungeonDressPlayer(Character) {
+function KinkyDungeonDressPlayer(Character, NoRestraints) {
 	if (!Character) Character = KinkyDungeonPlayer;
 
 	let _CharacterRefresh = CharacterRefresh;
@@ -194,20 +194,22 @@ function KinkyDungeonDressPlayer(Character) {
 
 
 			// Next we revisit all the player's restraints
-			for (let inv of KinkyDungeonAllRestraint()) {
-				let renderTypes = KDRestraint(inv).shrine;
-				KDApplyItem(inv, KinkyDungeonPlayerTags);
-				restraints.push(inv);
-				if (inv.dynamicLink) {
-					let link = inv.dynamicLink;
-					for (let I = 0; I < 30; I++) {
-						if (KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
-							KDApplyItem(link, KinkyDungeonPlayerTags);
-							restraints.push(link);
+			if (!NoRestraints) {
+				for (let inv of KinkyDungeonAllRestraint()) {
+					let renderTypes = KDRestraint(inv).shrine;
+					KDApplyItem(inv, KinkyDungeonPlayerTags);
+					restraints.push(inv);
+					if (inv.dynamicLink) {
+						let link = inv.dynamicLink;
+						for (let I = 0; I < 30; I++) {
+							if (KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
+								KDApplyItem(link, KinkyDungeonPlayerTags);
+								restraints.push(link);
+							}
+							if (link.dynamicLink) {
+								link = link.dynamicLink;
+							} else I = 1000;
 						}
-						if (link.dynamicLink) {
-							link = link.dynamicLink;
-						} else I = 1000;
 					}
 				}
 			}
@@ -250,10 +252,12 @@ function KinkyDungeonDressPlayer(Character) {
 				if (clothes.Group == "Shoes") {
 					if (KinkyDungeonGetRestraintItem("ItemBoots")) clothes.Lost = true;
 				}
-				for (let inv of KinkyDungeonAllRestraint()) {
-					if (KDRestraint(inv).remove) {
-						for (let remove of KDRestraint(inv).remove) {
-							if (remove == clothes.Group) clothes.Lost = true;
+				if (!NoRestraints) {
+					for (let inv of KinkyDungeonAllRestraint()) {
+						if (KDRestraint(inv).remove) {
+							for (let remove of KDRestraint(inv).remove) {
+								if (remove == clothes.Group) clothes.Lost = true;
+							}
 						}
 					}
 				}
@@ -284,14 +288,16 @@ function KinkyDungeonDressPlayer(Character) {
 			if (clothes.Group == "Bra" && !KinkyDungeonGetRestraintItem("ItemBreast")) clothes.Lost = false; // A girl's best friend never leaves her
 		}
 
-		for (let inv of KinkyDungeonAllRestraint()) {
+		if (!NoRestraints) {
+			for (let inv of KinkyDungeonAllRestraint()) {
+				if (KinkyDungeonCheckClothesLoss)
+					if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
+						KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color, KDRestraint(inv).Filters);
+					}
+			}
 			if (KinkyDungeonCheckClothesLoss)
-				if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
-					KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color, KDRestraint(inv).Filters);
-				}
+				KinkyDungeonWearForcedClothes(restraints);
 		}
-		if (KinkyDungeonCheckClothesLoss)
-			KinkyDungeonWearForcedClothes(restraints);
 
 		// Apply poses from restraints
 		if (StandalonePatched && KDCurrentModels.get(Character)) {

@@ -645,7 +645,7 @@ function KDDrawWardrobe(screen, Character) {
 				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
 				CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 				CharacterReleaseTotal(KinkyDungeonPlayer);
-				KinkyDungeonSetDress("Default", "Default");
+				KinkyDungeonSetDress("Default", "Default", C, true);
 				KinkyDungeonDressPlayer();
 				KDInitProtectedGroups();
 			}
@@ -669,7 +669,7 @@ function KDDrawWardrobe(screen, Character) {
 			KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
 			CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 			CharacterReleaseTotal(KinkyDungeonPlayer);
-			KinkyDungeonSetDress("Default", "Default");
+			KinkyDungeonSetDress("Default", "Default", C, true);
 			KinkyDungeonDressPlayer();
 			KDInitProtectedGroups();
 			UpdateModels(KinkyDungeonPlayer);
@@ -694,8 +694,8 @@ function KDDrawWardrobe(screen, Character) {
 			CharacterReleaseTotal(C);
 			CharacterNaked(C);
 			KinkyDungeonCheckClothesLoss = true;
-			KinkyDungeonSetDress("Bikini", "Bikini");
-			KinkyDungeonDressPlayer();
+			KinkyDungeonSetDress("Bikini", "Bikini", C, true);
+			KinkyDungeonDressPlayer(C, true);
 			KDInitProtectedGroups();
 			KinkyDungeonConfigAppearance = true;
 			KinkyDungeonReplaceConfirm = 0;

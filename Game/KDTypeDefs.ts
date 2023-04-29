@@ -601,6 +601,12 @@ interface enemy extends KDHasTags {
 		level_magic?: number,
 	},
 
+	/** Graphical peculiarities */
+	GFX?: {
+		/** Custom sprite while lying in wait */
+		AmbushSprite?: string,
+	},
+
 	/** Behavior tags */
 	Behavior?: {
 		/** This enemy will always want to add more restraints~ */
@@ -1283,6 +1289,8 @@ interface effectTile {
 	yoffset?: number,
 	xoffset?: number,
     name: string,
+	/** Has all the functions of this one */
+	functionName?: string,
     duration: number,
     priority: number,
 	data?: any,

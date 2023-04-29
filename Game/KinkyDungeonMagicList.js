@@ -1448,6 +1448,12 @@ let KinkyDungeonSpellListEnemies = [
 		projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "SarcoMinion", count: 1, bound: true}],
 		power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {},
 	},
+	{enemySpell: true, name: "SummonSlimeMinion", noSprite: true, sfx: "Evil", castCondition: "slimeKraken", manacost: 2, specialCD: 4, components: ["Verbal"], level:1,
+		projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "SmallSlimeLeaper", count: 1, bound: true}],
+		power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {},
+	},
+	{enemySpell: true, name: "SummonSlime", noSprite: true, minRange: 0, sfx: "Bones", manacost: 3, components: ["Verbal"], level:4, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "SmallSlimeLeaper", count: 1, strict: true}], power: 0, damage: "inert", time: 12, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {}},
+
 	{enemySpell: true, name: "SummonTapeDrone", noSprite: true, sfx: "MagicSlash", castCondition: "wolfTapeDrone", manacost: 3, specialCD: 10, components: ["Verbal"], level:1, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "WolfDrone", count: 1, time: 40, bound: true}], power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {}},
 	{enemySpell: true, name: "MirrorImage", noSprite: true, minRange: 0, selfcast: true, sfx: "FireSpell", manacost: 12, components: ["Verbal"], level:4, castRange: 50, type:"inert", onhit:"summon", summon: [{name: "MaidforceStalkerImage", count: 1, time: 12}], power: 0, time: 12, delay: 1, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "inert",
 		spellcast: {spell: "DarkShroud", target: "origin", directional:false, offset: false}},
@@ -1598,6 +1604,10 @@ let KDMagicDefs = {
 	SarcoKraken_TentacleCountMin: 1,
 	SarcoKraken_TentacleCountMax: 3,
 	SarcoKraken_TentacleCountShare: 0.2, //1 tentacle max per this much hp
+	SlimeKraken_TentacleCost:0.08,
+	SlimeKraken_TentacleThreshold: 0.1,
+	SlimeKraken_TentacleCountMin: 4,
+	SlimeKraken_TentacleCountShare: 0.1, //1 slime max per this much hp
 };
 
 /** @type {Record<string, (enemy: entity, target: entity, spell?: spell) => boolean>} */
@@ -1630,6 +1640,12 @@ let KDCastConditions = {
 		if (enemy.hp <= KDMagicDefs?.RopeKraken_TentacleThreshold) return false;
 		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.tags.krakententacle;}).length
 			> KDMagicDefs?.RopeKraken_TentacleCountMin + Math.floor(enemy.hp/enemy.Enemy.maxhp/KDMagicDefs?.RopeKraken_TentacleCountShare)) return false;
+		return true;
+	},
+	"slimeKraken": (enemy, target) => {
+		if (enemy.hp <= KDMagicDefs?.SlimeKraken_TentacleThreshold) return false;
+		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.tags.latexTrap;}).length
+			> KDMagicDefs?.SlimeKraken_TentacleCountMin + Math.floor(enemy.hp/enemy.Enemy.maxhp/KDMagicDefs?.SlimeKraken_TentacleCountShare)) return false;
 		return true;
 	},
 	"sarcoKraken": (enemy, target) => {
