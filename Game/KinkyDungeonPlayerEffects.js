@@ -120,6 +120,40 @@ let KDPlayerEffects = {
 		KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Demon");
 		return {sfx: "Evil", effect: true};
 	},
+	"SlimeEngulf": (target, damage, playerEffect, spell, faction, bullet) => {
+		let restraintAdd = KinkyDungeonGetRestraint({tags: ["slimeRestraintsRandom"]}, MiniGameKinkyDungeonLevel + playerEffect.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+		if (!restraintAdd) {
+			KDTripleBuffKill("SlimeEngulfEnd", KinkyDungeonPlayerEntity, 6, (tt) => {
+				// Remove the nearby slime kraken
+				let kraken = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 10);
+
+				// Put the player somewhere and harden all slime
+				KinkyDungeonPassOut();
+				for (let i = 0; i < 30; i++) {
+					KDAdvanceSlime(false, "");
+				}
+
+				let master = null;
+				for (let enemy of kraken) {
+					if (enemy.Enemy.name == "SlimeKraken") {
+						KDKickEnemy(enemy);
+						master = enemy;
+					}
+				}
+				// Recombine
+				if (master)
+					for (let enemy of kraken) {
+						if (enemy.boundTo == master.id) {
+							enemy.hp = 0;
+							master.hp = Math.min(master.Enemy.maxhp, master.hp + KDMagicDefs.SlimeKraken_TentacleCost);
+						}
+					}
+
+			}, "Blindness");
+			return {sfx: "Evil", effect: true};
+		}
+		return {sfx: "RubberBolt", effect: false};
+	},
 	"SarcoEngulf": (target, damage, playerEffect, spell, faction, bullet) => {
 		let added = [];
 		let effect = false;
@@ -860,4 +894,92 @@ function KDTripleBuffKill(Name, Target, time, FinalEffect = (target) => KinkyDun
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "1"), "#ff5555", time);
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 	}
+}
+
+/**
+ *
+ * @param {boolean} resetSlimeLevel
+ * @param {string} restraint
+ */
+function KDAdvanceSlime(resetSlimeLevel, restraint = "") {
+	let slimedParts = [];
+	let potentialSlimeParts = [];
+	for (let inv of KinkyDungeonAllRestraint()) {
+		if (KDRestraint(inv).slimeLevel > 0) {
+			slimedParts.push({
+				name: KDRestraint(inv).name,
+				group: KDRestraint(inv).Group,
+				level: KDRestraint(inv).slimeLevel
+			});
+		}
+	}
+	for (let slime of slimedParts) {
+		let index = -1;
+		for (let i = 0; i < KinkyDungeonSlimeParts.length; i++) if (KinkyDungeonSlimeParts[i].group === slime.group) {
+			index = i;
+			break;
+		}
+		if (index >= 0) {
+			let slime2 = undefined;
+			let slime3 = undefined;
+			if (index > 0) {
+				for (let s of potentialSlimeParts) if (s.group === KinkyDungeonSlimeParts[index - 1].group && !(s.level > slime.level)) {
+					slime2 = s;
+					break;
+				}
+				if (!slime2 && (!KinkyDungeonStatsChoice.has("Unmasked") || !KinkyDungeonSlimeParts[index - 1].noUnmasked)) potentialSlimeParts.push({
+					group: KinkyDungeonSlimeParts[index - 1].group,
+					restraint: (restraint ? restraint : "") + KinkyDungeonSlimeParts[index - 1].restraint,
+					level: slime.level
+				});
+			}
+			if (index < KinkyDungeonSlimeParts.length - 1) {
+				for (let s of potentialSlimeParts) if (s.group === KinkyDungeonSlimeParts[index + 1].group && !(s.level > slime.level)) {
+					slime3 = s;
+					break;
+				}
+				if (!slime3 && (!KinkyDungeonStatsChoice.has("Unmasked") || !KinkyDungeonSlimeParts[index + 1].noUnmasked)) potentialSlimeParts.push({
+					group: KinkyDungeonSlimeParts[index + 1].group,
+					restraint: (restraint ? restraint : "") + KinkyDungeonSlimeParts[index + 1].restraint,
+					level: slime.level
+				});
+			}
+		}
+	}
+	let slimed = false;
+	let advance = false;
+	if (potentialSlimeParts.length === 0) {
+		advance = true;
+	}
+	else while (potentialSlimeParts.length > 0) {
+		let newSlime = potentialSlimeParts[Math.floor(KDRandom() * potentialSlimeParts.length)];
+		if (newSlime) {
+			let added = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(newSlime.restraint), 0, true);
+			if (added) {
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSlimeSpread"), "#ff44ff", 3);
+				potentialSlimeParts = [];
+				if (resetSlimeLevel)
+					KDEventData.SlimeLevel = -100;
+				slimed = true;
+			}
+		}
+		potentialSlimeParts.splice(potentialSlimeParts.indexOf(newSlime), 1);
+	}
+	if (!slimed && potentialSlimeParts.length === 0) {
+		let slime = slimedParts[Math.floor(KDRandom() * slimedParts.length)];
+		if (!slime) return false;
+		if (KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Hard" + slime.name), 0, true)) {
+			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSlimeHarden"), "#ff44ff", 3);
+			let slimesuit = (restraint ? restraint : "") + "SlimeSuit";
+
+			if (KinkyDungeonCurrentDress !== slimesuit) {
+				KinkyDungeonSetDress(slimesuit, "");
+				KinkyDungeonDressPlayer();
+				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSlimeSpread"), "#ff44ff", 3);
+			}
+		}
+		if (resetSlimeLevel)
+			KDEventData.SlimeLevel = -100;
+	}
+	return advance;
 }

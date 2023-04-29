@@ -826,7 +826,8 @@ function KinkyDungeonPassOut(noteleport) {
 
 	KinkyDungeonStripInventory(false);
 
-	KinkyDungeonSetDress("Bikini", "Bikini");
+	if (KinkyDungeonCurrentDress == "Default")
+		KinkyDungeonSetDress("Bikini", "Bikini");
 	KinkyDungeonDressPlayer();
 
 	KinkyDungeonChangeStamina(-100);

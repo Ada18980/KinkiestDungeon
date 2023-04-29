@@ -1628,14 +1628,17 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, allFloors: true, shrines: ["Rope"]},
 
 
-	{name: "SlimeKraken", faction: "Slime", clusterWith: "slime", tags: KDMapInit(["slime", "boss", "unflinching", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness", "hunter"]),
+	{name: "SlimeKraken", faction: "Slime", clusterWith: "slime", color: "#aa0088", tags: KDMapInit(["slime", "boss", "unflinching", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness", "hunter"]),
 		Awareness: {
 			chaseradius: 15,
+		},
+		effect: {
+			effect: {name: "SlimeEngulf", power: 4},
 		},
 		regen: 0.1,
 		ignorechance: 0.75, followRange: 1, AI: "hunt",
 		spells: ["SummonSlimeMinion"], spellCooldownMult: 1, spellCooldownMod: 0, ignoreflag: ["kraken"], disarm: 0.25,
-		visionRadius: 9, maxhp: 30, minLevel: 3, weight:-31, movePoints: 4, attackPoints: 2, attack: "Spell", attackWidth: 1, attackRange: 1, power: 6, dmgType: "chain",
+		visionRadius: 7.5, maxhp: 30, minLevel: 3, weight:-31, movePoints: 4, attackPoints: 3, attack: "MeleeWillBindEffectSpell", attackWidth: 3, attackRange: 1.5, power: 6, dmgType: "glue",
 		terrainTags: {"secondhalf":12, "lastthird":5, "boss": -40, "open": 20, "passage": -60, "alchemist": 20, "latexAnger": 20, "latexRage": 40, "increasingWeight":0.5}, allFloors: true, shrines: ["Rope"],
 		events: [
 			{trigger: "spellCast", type: "slimeKrakenSummonMinion"}, // Drain HP when casting
