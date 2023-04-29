@@ -1,4 +1,5 @@
 let LAYERS_BASE = [
+	"HatDeco",
 	"Hat",
 	"Headband",
 	"HairFront",
