@@ -985,20 +985,20 @@ let KinkyDungeonEnemies = [
 		],},
 	{name: "BigSlime", clusterWith: "slime", faction: "Slime", color: "#FF00FF", tags: KDMapInit(["ignoretiedup", "slime", "latexTrap", "elite", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness"]),
 		squeeze: true, evasion: -0.3, followRange: 1, AI: "hunt",  sneakThreshold: 1,
-		visionRadius: 4.5, blindSight: 2.5, maxhp: 12, minLevel: 9, weight:2, movePoints: 3, attackPoints: 3, attack: "MeleeBind", attackWidth: 8, attackRange: 1, power: 4, dmgType: "acid", fullBoundBonus: 2, disarm: 0.5,
+		visionRadius: 4.5, blindSight: 2.5, maxhp: 12, minLevel: 9, weight:2, movePoints: 3, attackPoints: 3, attack: "MeleeBind", attackWidth: 3, attackRange: 1, power: 4, dmgType: "acid", fullBoundBonus: 2, disarm: 0.5,
 		terrainTags: {"slime": 1.5, "alchemist": 3}, allFloors: true, shrines: ["Latex"], ondeath: [{type: "summon", enemy: "SmallSlime", range: 2.5, count: 4, strict: true, lifetime: 50}],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Slime", time: 25, power: 2, chance: 0.3, aoe: 0.5}
 		],
 	},
-	{name: "LatexCube", faction: "Slime", color: "#aa00cc", tags: KDMapInit(["ignoretiedup", "unstoppable", "slime", "latex", "latexTrap", "miniboss", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness"]),
+	{name: "LatexCube", faction: "Slime", color: "#aa00cc", tags: KDMapInit(["ignoretiedup", "unstoppable", "slime", "latex", "latexTrap", "elite", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness"]),
 		GFX: {
 			AmbushSprite: "LatexCubeHidden",
 		},
-		squeeze: true, evasion: -1, followRange: 1, AI: "ambush",  sneakThreshold: 3, ambushRadius: 1.5,
-		visionRadius: 7.0, blindSight: 2.5, maxhp: 18, minLevel: 6, weight:1, movePoints: 4, attackPoints: 3, attack: "MeleeBind", attackWidth: 8, attackRange: 1, power: 4, dmgType: "glue", fullBoundBonus: 2, disarm: 0.7,
-		terrainTags: {"slime": 1.5, "alchemist": 3}, allFloors: true, shrines: ["Latex"],
+		squeeze: true, evasion: -1, followRange: 1, AI: "ambush", sneakThreshold: 3, ambushRadius: 1.5,
+		visionRadius: 7.0, blindSight: 2.5, maxhp: 18, minLevel: 3, weight:1, movePoints: 4, attackPoints: 3, attack: "MeleeBind", attackWidth: 3, attackRange: 1, power: 4, dmgType: "glue", fullBoundBonus: 2, disarm: 0.7,
+		terrainTags: {"slime": 1.5, "alchemist": 3, "passage": 10}, allFloors: true, shrines: ["Latex"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThin", time: 25, power: 2, chance: 0.5, aoe: 0.5},
