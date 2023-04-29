@@ -3375,7 +3375,7 @@ let KDEventMapEnemy = {
 	},
 	"death": {
 		"createEffectTile": (e, enemy, data) => {
-			if (!e.chance || KDRandom() < e.chance) {
+			if ((!e.chance || KDRandom() < e.chance) && (!e.prereq || KDPrereqs[e.prereq](enemy, e, data))) {
 				let count = e.power ? e.power : 1;
 				let rad = e.aoe ? e.aoe : 1.5;
 				let minrad = e.dist;
@@ -3408,6 +3408,11 @@ let KDEventMapEnemy = {
 		"ropeKrakenSummonTentacle": (e, enemy, data) => {
 			if (enemy == data.enemy && data.spell?.name == "SummonRopeTentacle") {
 				enemy.hp = Math.max(enemy.hp - enemy.Enemy.maxhp * KDMagicDefs.RopeKraken_TentacleCost, Math.min(enemy.hp, enemy.Enemy.maxhp * KDMagicDefs.RopeKraken_TentacleThreshold));
+			}
+		},
+		"slimeKrakenSummonMinion": (e, enemy, data) => {
+			if (enemy == data.enemy && data.spell?.name == "SummonSlimeMinion") {
+				enemy.hp = Math.max(enemy.hp - enemy.Enemy.maxhp * KDMagicDefs.SlimeKraken_TentacleCost, Math.min(enemy.hp, enemy.Enemy.maxhp * KDMagicDefs.SlimeKraken_TentacleThreshold));
 			}
 		},
 		"sarcoKrakenSummonTentacle": (e, enemy, data) => {

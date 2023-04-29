@@ -1290,7 +1290,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Skirts"],
 	Layers: ToLayerMap([
-		{ Name: "Skirt", Layer: "Skirt", Pri: 7,
+		{ Name: "Skirt", Layer: "SkirtPoofy", Pri: 7,
 			Poses: ToMap([...LEGPOSES]),
 			HideWhenOverridden: true,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},

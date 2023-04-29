@@ -2651,8 +2651,10 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 				rest.trap = KinkyDungeonGenerateRestraintTrap();
 			}
 		}
-		KinkyDungeonSetFlag("restrained", 2);
-		KinkyDungeonSetFlag("restrained_recently", 5);
+		if (!restraint.good && !restraint.armor) {
+			KinkyDungeonSetFlag("restrained", 2);
+			KinkyDungeonSetFlag("restrained_recently", 5);
+		}
 		return ret;
 	}
 	return 0;

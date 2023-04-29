@@ -4469,6 +4469,8 @@ KDEffectTileTooltipIllusOrbDead,Broken Wall Sconce
 KDEffectTileTooltipIllusOrbDeadDesc,"It is beyond repair."
 KDEffectTileTooltipLatex,Liquid Latex
 KDEffectTileTooltipLatexDesc,"Engulfs creatures"
+KDEffectTileTooltipLatexThin,Liquid Latex
+KDEffectTileTooltipLatexThinDesc,"Engulfs creatures"
 KDEffectTileTooltipSlime,Slime
 KDEffectTileTooltipSlimeDesc,"Slows creatures"
 KDEffectTileTooltipIce,Ice
@@ -10185,3 +10187,18 @@ KDItemFilter_Consumable_Potion,Potions
 KDItemFilter_Consumable_Restoration,Restoration
 KDItemFilter_Consumable_Power,Power
 KDFindInInventory,Find In Inventory
+
+KinkyDungeonTrapSpawnLatexCube,"A huge rubber cube rises up out of the floor!"
+NameLatexCube,Latex Cube
+KillLatexCube,"The latex cube hardens into a solid, harmless entity."
+AttackLatexCube,"The latex cube slowly engulfs you! (DamageTaken)"
+AttackLatexCubeBind,"The latex cube touches you, spreading its latex across your body! (+RestraintAdded)"
+
+NameSlimeKraken,Gigantic Slime
+KillSlimeKraken,"The gigantic slime fizzles as its body becomes unstable!"
+AttackSlimeKrakenBind,"The gigantic slime stretches a pseudopod and engulfs you! (+RestraintAdded)"
+AttackSlimeKraken,"The gigantic slime slowly engulfs you! (DamageTaken)"
+KinkyDungeonSummonMultiSmallSlime,A group of slimes jump out!
+KinkyDungeonSummonSingleSmallSlime,A slime jumps out!
+KinkyDungeonSummonMultiSmallSlimeLeaper,A group of speedy slimes jump out!
+KinkyDungeonSummonSingleSmallSlimeLeaper,A speedy slime jumps out!

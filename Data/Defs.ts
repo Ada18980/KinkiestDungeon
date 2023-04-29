@@ -20,13 +20,13 @@ let LAYERS_BASE = [
 	"Mouth",
 	"Blush",
 	"Head",
-	"HatBack",
 
 	// Clothes that go over the chest and hang down
 	"Shoulders",
 
 	// Hair mid
 	"HairMid",
+
 
 	// Collar and collar accessories
 	"CollarAcc",
@@ -74,6 +74,11 @@ let LAYERS_BASE = [
 	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
 	"Underarms",
 	"Bra",
+
+	// Skirts that dont follow shilhouette
+	"SkirtPoofyDeco",
+	"SkirtPoofy",
+
 	"Corset",
 
 
@@ -146,8 +151,9 @@ let LAYERS_BASE = [
 	"Coat",
 	"Cape",
 
-	// Hair back
+	// Hair and hat back
 	"HairBack",
+	"HatBack",
 ];
 
 let LayerProperties = {
@@ -181,6 +187,18 @@ let LayerProperties = {
 	Nose: {
 		Parent: "Head",
 	},
+	Hat: {Parent: "Head",},
+	Headband: {Parent: "Head"},
+	Mask: {Parent: "Head"},
+	Blindfold: {Parent: "Head"},
+	GagMuzzleStraps: {Parent: "Head"},
+	GagMuzzle: {Parent: "Head"},
+	GagFlatStraps: {Parent: "Head"},
+	GagFlat: {Parent: "Head"},
+	GagStraps: {Parent: "Head"},
+	Gag: {Parent: "Head"},
+	Circlet: {Parent: "Head"},
+	HatBack: {Parent: "Head"},
 };
 
 let Hardpoints = {

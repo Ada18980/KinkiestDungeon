@@ -1882,6 +1882,9 @@ let KDPrereqs = {
 		}
 		return data.Damage?.type == 'e.kind';
 	},
+	"afterAmbush": (enemy, e, data) => {
+		return !enemy?.ambushtrigger;
+	},
 };
 function KDCheckPrereq(enemy, prereq, e, data) {
 	if (!prereq) return true;

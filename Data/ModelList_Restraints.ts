@@ -11,6 +11,7 @@ AddModel({
 	Folder: "GagLeather",
 	TopLevel: true,
 	Group: "Mouth",
+	Restraint: true,
 	Categories: ["Restraints","Gags"],
 	AddPose: ["HideMouth"],
 	Layers: ToLayerMap([
@@ -59,6 +60,7 @@ AddModel({
 	Folder: "Rope",
 	Parent: "Rope",
 	TopLevel: true,
+	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["Boxties"],
 	Layers: ToLayerMap([
