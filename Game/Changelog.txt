@@ -1308,6 +1308,7 @@ Minor Changes:
 
 4.24 (April 2023)
 - Added Quick inventory sorting and ability to drop items
+- Added Gigantic Slime and Latex Cube enemies
 
 TODO: Mushrooms in the jungle
 
