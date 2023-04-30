@@ -3,6 +3,7 @@
 let KinkyDungeonFactionColors = {
 	"Jail": ["#8A120C"],
 	"Slime": ["#9B49BD", "#9B49BD"],
+	"Latex": ["#9B49BD", "#9B49BD"],
 	"Dressmaker": ["#6B48E0", "#F8BD01"],
 	"Alchemist": ["#4c6885", "#7bef41"],
 	"Elf": ["#63ab3f", "#F8BD01"],
@@ -24,6 +25,7 @@ let KinkyDungeonHiddenFactions = [
 	"Prisoner",
 	"Beast",
 	"Slime",
+	"Latex",
 	"Mold",
 	"KinkyConstruct",
 	"Boss",
@@ -138,6 +140,7 @@ let KinkyDungeonFactionRelationsBase = {
 		KinkyConstruct: -0.9,
 		Plant: -0.9,
 		Slime: -1.0,
+		Latex: -1.0,
 		Mold: -1.0,
 		Beast: -0.6,
 
@@ -294,7 +297,11 @@ let KinkyDungeonFactionRelationsBase = {
 		Bast: -0.1,
 		Elf: -0.1,
 		Mushy: 0.1,
-		AncientRobot: -1.0,
+	},
+	"Latex": {
+		Jail: -0.25,
+
+		Maidforce: -1.0,
 	},
 	"Mold": {
 		Jail: -0.25,
