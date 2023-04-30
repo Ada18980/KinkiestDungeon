@@ -450,6 +450,7 @@ function KD_PasteTile(tile, x, y, data) {
 let KDEffectTileGen = {
 	"TorchUnlit": (x, y, tile, tileGenerator, data) => {
 		let torchlitchance = data.params.torchlitchance || 0.6;
+		/*
 		let torchreplace = data.params.torchreplace;
 
 		let spr = torchreplace ? torchreplace.sprite : "Torch";
@@ -459,11 +460,21 @@ let KDEffectTileGen = {
 		KDCreateEffectTile(x, y, {
 			name: spr,
 			duration: 9999,
-		}, 0);
+		}, 0);*/
+		let mapMod = null;
+		if (KDGameData.MapMod) {
+			mapMod = KDMapMods[KDGameData.MapMod];
+		}
+		let altRoom = KDGameData.RoomType;
+		let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(data.Floor);
+		if (KDRandom() < torchlitchance)
+			KDTorch(x, y-1, altType, data.params);
+		else
+			KDTorchUnlit(x, y-1, altType, data.params);
 		return null;
 	},
 	"Torch": (x, y, tile, tileGenerator, data) => {
-		let torchlitchance = 1.0;
+		/*let torchlitchance = 1.0;
 		let torchreplace = data.params.torchreplace;
 
 		let spr = torchreplace ? torchreplace.sprite : "Torch";
@@ -473,7 +484,15 @@ let KDEffectTileGen = {
 		KDCreateEffectTile(x, y, {
 			name: spr,
 			duration: 9999,
-		}, 0);
+		}, 0);*/
+
+		let mapMod = null;
+		if (KDGameData.MapMod) {
+			mapMod = KDMapMods[KDGameData.MapMod];
+		}
+		let altRoom = KDGameData.RoomType;
+		let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(data.Floor);
+		KDTorch(x, y-1, altType, data.params);
 		return null;
 	},
 	"Wire": (x, y, tile, tileGenerator, data) => {

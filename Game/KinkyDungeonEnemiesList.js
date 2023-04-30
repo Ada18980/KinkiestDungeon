@@ -992,13 +992,35 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Slime", time: 25, power: 2, chance: 0.3, aoe: 0.5}
 		],
 	},
-	{name: "LatexCube", faction: "Slime", color: "#aa00cc", tags: KDMapInit(["ignoretiedup", "unstoppable", "slime", "latex", "latexTrap", "elite", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness"]),
+	{name: "LatexCube", color: "#aa00cc",
+		tags: KDMapInit(["ignoretiedup", "unstoppable", "slime", "latex", "latexTrap", "elite", "slashweakness", "melee", "glueimmune", "coldweakness", "electricresist", "pierceweakness", "acidweakness", "latexRestraints", "latexEncaseRandom"]),
 		GFX: {
 			AmbushSprite: "LatexCubeHidden",
 		},
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
 		squeeze: true, evasion: -1, followRange: 1, AI: "ambush", sneakThreshold: 3, ambushRadius: 1.5,
-		visionRadius: 7.0, blindSight: 2.5, maxhp: 18, minLevel: 3, weight:1, movePoints: 4, attackPoints: 3, attack: "MeleeBind", attackWidth: 3, attackRange: 1, power: 4, dmgType: "glue", fullBoundBonus: 2, disarm: 0.7,
+		visionRadius: 7.0, blindSight: 2.5, maxhp: 18, minLevel: 6, weight:1, movePoints: 4, attackPoints: 3, attack: "MeleeBind", attackWidth: 3, attackRange: 1, power: 4, dmgType: "glue", fullBoundBonus: 2, disarm: 0.7,
 		terrainTags: {"slime": 5.5, "plant": 3, "passage": 30, "open": -10}, allFloors: true, shrines: ["Latex"],
+		events: [
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThin", time: 25, power: 2, chance: 0.5, aoe: 0.5},
+		],
+	},
+	{name: "LatexCubeSmall", color: "#aa00cc",
+		tags: KDMapInit(["ignoretiedup", "unstoppable", "slime", "latex", "latexTrap", "minor", "melee", "glueimmune", "coldweakness", "electricresist", "pierceweakness", "acidweakness", "latexRestraints", "latexEncaseRandom"]),
+		GFX: {
+			AmbushSprite: "LatexCubeSmallHidden",
+		},
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		difficulty: 0.3,
+		squeeze: true, evasion: -0.5, followRange: 1, AI: "ambush", sneakThreshold: 3, ambushRadius: 1.5,
+		visionRadius: 7.0, blindSight: 2.5, maxhp: 7, minLevel: 0, weight:1, movePoints: 2, attackPoints: 3, attack: "MeleeBindSuicide", attackWidth: 1, attackRange: 1, power: 2, dmgType: "glue", fullBoundBonus: 1, disarm: 0.2,
+		suicideOnAdd: true, focusPlayer: true, multiBind: 3,
+		terrainTags: {"slime": 7.5, "plant": 4, "passage": 40, "open": -10}, allFloors: true, shrines: ["Latex"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThin", time: 25, power: 2, chance: 0.5, aoe: 0.5},

@@ -616,6 +616,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 
 		let data = {
 			params: MapParams,
+			Floor: Floor,
 			chestlist: chestlist,
 			traps: traps,
 			shrinelist: shrinelist,

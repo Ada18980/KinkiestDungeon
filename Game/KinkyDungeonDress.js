@@ -42,15 +42,6 @@ let KinkyDungeonDefaultDefaultDress = [
 	{Item: "Necklace4", Group: "Necklace", Color: "#222222", Lost: false},
 ];
 
-if (StandalonePatched) {
-	KinkyDungeonDefaultDefaultDress = [
-		//{Item: "RopeArms", Group: "ItemArms", Color: "Default", Lost: false},
-		{Item: "Maid", Group: "Costume", Color: "Default", Lost: false},
-		{Item: "MaidApron", Group: "Apron", Color: "Default", Lost: false},
-		{Item: "Catsuit", Group: "Catsuit", Color: "Default", Lost: false},
-	];
-}
-
 // This is a flag that checks if the script should check for clothes loss
 let KinkyDungeonCheckClothesLoss = false;
 
