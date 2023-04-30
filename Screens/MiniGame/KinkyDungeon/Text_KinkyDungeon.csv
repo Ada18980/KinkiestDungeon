@@ -10195,13 +10195,13 @@ KinkyDungeonTrapSpawnLatexCube,"A huge rubber cube rises up out of the floor!"
 NameLatexCube,Latex Cube
 KillLatexCube,"The latex cube hardens into a solid, harmless entity."
 AttackLatexCube,"The latex cube slowly engulfs you! (DamageTaken)"
-AttackLatexCubeBind,"The latex cube touches you, spreading its latex across your body! (+RestraintAdded)"
+AttackLatexCubeBind,"The latex cube touches you, spreading latex restraints across your body! (+RestraintAdded)"
 
 KinkyDungeonTrapSpawnLatexCubeSmall,"A small rubber cube rises up out of the floor!"
 NameLatexCubeSmall,Mini Latex Cube
 KillLatexCubeSmall,"The mini latex cube hardens into a solid, harmless entity."
 AttackLatexCubeSmall,"The mini latex cube sticks to you! (DamageTaken)"
-AttackLatexCubeSmallBind,"The mini latex cube touches you and expands across your body! (+RestraintAdded)"
+AttackLatexCubeSmallBind,"The mini latex cube expands across your body, taking the form of restraints! (+RestraintAdded)"
 
 NameSlimeKraken,Gigantic Slime
 KillSlimeKraken,"The gigantic slime fizzles as its body becomes unstable!"
