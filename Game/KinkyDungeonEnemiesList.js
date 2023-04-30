@@ -992,7 +992,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Slime", time: 25, power: 2, chance: 0.3, aoe: 0.5}
 		],
 	},
-	{name: "LatexCube", color: "#aa00cc",
+	{name: "LatexCube", faction: "Latex", color: "#aa00cc",
 		tags: KDMapInit(["ignoretiedup", "unstoppable", "slime", "latex", "latexTrap", "elite", "slashweakness", "melee", "glueimmune", "coldweakness", "electricresist", "pierceweakness", "acidweakness", "latexRestraints", "latexEncaseRandom"]),
 		GFX: {
 			AmbushSprite: "LatexCubeHidden",
@@ -1007,8 +1007,9 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThin", time: 25, power: 2, chance: 0.5, aoe: 0.5},
 		],
+		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 1}, {name: "StaffGlue", weight: 130, ignoreInInventory: true}],
 	},
-	{name: "LatexCubeSmall", color: "#aa00cc",
+	{name: "LatexCubeSmall", faction: "Latex", color: "#aa00cc",
 		tags: KDMapInit(["ignoretiedup", "unstoppable", "slime", "latex", "latexTrap", "minor", "melee", "glueimmune", "coldweakness", "electricresist", "pierceweakness", "acidweakness", "latexRestraints", "latexEncaseRandom"]),
 		GFX: {
 			AmbushSprite: "LatexCubeSmallHidden",
@@ -1025,6 +1026,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThin", time: 25, power: 2, chance: 0.5, aoe: 0.5},
 		],
+		dropTable: [{name: "Nothing", weight: 10}, {name: "StaffGlue", weight: 3, ignoreInInventory: true}],
 	},
 
 	{name: "StoneDoor", faction: "Natural", blockVision: true,

@@ -1706,7 +1706,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.6, enemyTags: {"cableGag":3}, playerTags: {}, minLevel: 0, maxLevel: 6, allFloors: true, shrine: ["Metal", "Gags", "PlugGags"]},
 
 	//region RopeSnake
-	{unlimited: true, renderWhenLinked: ["Boxbinders"], changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, inventory: true, name: "RopeSnakeArmBoxtie", debris: "Ropes", accessible: true, factionColor: [[], [0]],
+	{unlimited: true, renderWhenLinked: ["Boxbinders"], changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, inventory: true, name: "RopeSnakeArmsBoxtie", debris: "Ropes", accessible: true, factionColor: [[], [0]],
 		Model: "RopeBoxtie1",
 		Asset: "HempRope", Color: "Default", LinkableBy: ["Boxbinders", "Wrapping"], Group: "ItemArms", bindarms: true, power: 1.5, weight: 0, escapeChance: {"Struggle": 0.25, "Cut": 0.45, "Remove": 0.1},
 		affinity: {Remove: ["Hook"],},
