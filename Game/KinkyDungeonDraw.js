@@ -1113,46 +1113,10 @@ function KinkyDungeonDrawGame() {
 
 
 
-				if (!StandalonePatched) {
-					// Draw the context layer even if we haven't updated it
-					if (pixirendererKD) {
-						pixirendererKD.render(kdgameboard, {
-							clear: false,
-						});
-					}
-
-					// Draw the context layer even if we haven't updated it
-					if (pixirendererKD) {
-						pixirendererKD.render(kdgamefog, {
-							clear: false,
-						});
-					}
-
-					// Draw the context layer even if we haven't updated it
-					if (pixirendererKD) {
-						pixirendererKD.render(kdparticles, {
-							clear: false,
-						});
-					}
-					if (!pixirendererKD) {
-						if (!StandalonePatched) {
-							if (KinkyDungeonContext && KinkyDungeonCanvas) {
-								pixirendererKD = new PIXI.CanvasRenderer({
-									width: KinkyDungeonCanvas.width,
-									height: KinkyDungeonCanvas.height,
-									view: KinkyDungeonCanvas,
-									antialias: true,
-								});
-							}
-						}
-
-					}
-					MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
-				}
-
 			}
 
-			DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
+			if (StandalonePatched)
+				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
 
 
 			DrawTextFitKD(
@@ -1217,6 +1181,48 @@ function KinkyDungeonDrawGame() {
 						barInt += 1;
 					}
 				}*/
+
+
+
+
+				if (!StandalonePatched) {
+					// Draw the context layer even if we haven't updated it
+					if (pixirendererKD) {
+						pixirendererKD.render(kdgameboard, {
+							clear: false,
+						});
+					}
+
+					// Draw the context layer even if we haven't updated it
+					if (pixirendererKD) {
+						pixirendererKD.render(kdgamefog, {
+							clear: false,
+						});
+					}
+
+					// Draw the context layer even if we haven't updated it
+					if (pixirendererKD) {
+						pixirendererKD.render(kdparticles, {
+							clear: false,
+						});
+					}
+					if (!pixirendererKD) {
+						if (!StandalonePatched) {
+							if (KinkyDungeonContext && KinkyDungeonCanvas) {
+								pixirendererKD = new PIXI.CanvasRenderer({
+									width: KinkyDungeonCanvas.width,
+									height: KinkyDungeonCanvas.height,
+									view: KinkyDungeonCanvas,
+									antialias: true,
+								});
+							}
+						}
+
+					}
+					MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
+					DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
+				}
+
 				if (KinkyDungeonCurrentEscapingItem && KinkyDungeonFlags.get("escaping")) {
 					let item = KinkyDungeonCurrentEscapingItem;
 					let value = 0;
@@ -1610,10 +1616,6 @@ function KinkyDungeonDrawGame() {
 	if (!KDPatched)
 		DrawButtonVis(1885, 25, 90, 90, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Exit.png");
 
-	if ((!KDDebugMode && KinkyDungeonDrawState == "Restart") || (KDDebugMode && KinkyDungeonDrawState != "Restart")) {
-		ElementRemove("DebugEnemy");
-		ElementRemove("DebugItem");
-	}
 }
 
 
