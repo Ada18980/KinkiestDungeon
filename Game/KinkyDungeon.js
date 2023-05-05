@@ -2479,6 +2479,8 @@ function KinkyDungeonHandleClick() {
 				CharacterReleaseTotal(KinkyDungeonPlayer);
 				ElementCreateTextArea("saveInputField");
 				ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
+
+				KinkyDungeonConfigAppearance = true;
 				return true;
 			} else if (MouseIn(460, 930, 220, 64)) {
 				if (KinkyDungeonReplaceConfirm > 0) {
