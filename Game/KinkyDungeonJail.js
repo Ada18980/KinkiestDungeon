@@ -1126,10 +1126,13 @@ function KDResetAllAggro() {
  * Moves an enemy to a random position on the map
  * @param {entity} e
  */
-function KDKickEnemy(e) {
+function KDKickEnemy(e, minDist = 10) {
 	if (!e.Enemy.tags.temporary) {
 		if (!e.Enemy.tags.prisoner && !KDEnemyHasFlag(e, "imprisoned")) {
-			let p = KinkyDungeonGetRandomEnemyPoint(true);
+			let p = (e.spawnX != undefined && e.spawnY != undefined) ? {x: e.spawnX, y: e.spawnY} : undefined;
+			if (!p || KDistEuclidean(e.x - (e.spawnX != undefined ? e.spawnX : e.x), e.y - (e.spawnY != undefined ? e.spawnY : e.y) < minDist)) {
+				p = KinkyDungeonGetRandomEnemyPoint(true);
+			}
 			if (p) {
 				e.x = p.x;
 				e.y = p.y;
@@ -1149,7 +1152,7 @@ function KDKickEnemy(e) {
 }
 
 /**
- * Moves an enemy to a random position on the map
+ * Moves an enemy to a random position nearby
  * @param {entity} e
  */
 function KDKickEnemyLocal(e) {

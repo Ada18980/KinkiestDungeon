@@ -1754,9 +1754,29 @@ function KDNearbyNeutrals(x, y, dist, neutralEnemy) {
 	return list;
 }
 
+/**
+ *
+ * @param {*} avoidPlayer
+ * @param {*} onlyPlayer
+ * @param {*} Enemy
+ * @param {*} playerDist
+ * @param {*} minDist
+ * @returns {{x: number, y: number}}
+ */
 function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6) {
 	return KinkyDungeonGetRandomEnemyPointCriteria(undefined, avoidPlayer, onlyPlayer, Enemy, playerDist, minDist);
 }
+
+/**
+ *
+ * @param {*} criteria
+ * @param {*} avoidPlayer
+ * @param {*} onlyPlayer
+ * @param {*} Enemy
+ * @param {*} playerDist
+ * @param {*} minDist
+ * @returns {{x: number, y: number}}
+ */
 function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6) {
 	let tries = 0;
 
