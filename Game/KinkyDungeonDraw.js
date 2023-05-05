@@ -727,15 +727,16 @@ function KinkyDungeonDrawGame() {
 			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);// Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
 			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KinkyDungeonGridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
 			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
-			kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
-			kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
-			if (!StandalonePatched) {
+
+			if (StandalonePatched) {
+				kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
+				kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
 				kdgamefog.x = kdgameboard.x;
 				kdgamefog.y = kdgameboard.y;
 			}
 
-			let CamX_offset = 0;
-			let CamY_offset = 0;
+			let CamX_offset = CamX_offsetVis;
+			let CamY_offset = CamY_offsetVis;
 
 			KinkyDungeonCamX = CamX;
 			KinkyDungeonCamY = CamY;
@@ -1160,7 +1161,8 @@ function KinkyDungeonDrawGame() {
 			}
 
 
-			KinkyDungeonDrawEnemiesHP(KDDrawDelta || 0, canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset, CamX_offsetVis, CamY_offsetVis);
+			KinkyDungeonDrawEnemiesHP(KDDrawDelta || 0, canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset,
+				StandalonePatched ? CamX_offsetVis : 0, StandalonePatched ? CamY_offsetVis : 0);
 			KinkyDungeonDrawFloaters(CamX+CamX_offsetVis, CamY+CamY_offsetVis);
 
 			if (KinkyDungeonCanvas) {
