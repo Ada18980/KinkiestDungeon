@@ -1788,6 +1788,10 @@ function KinkyDungeonRun() {
 	KDLastButtonsCache = {};
 	MouseClicked = false;
 
+	if ((!KDDebugMode && KinkyDungeonDrawState == "Restart") || (KDDebugMode && KinkyDungeonDrawState != "Restart")) {
+		ElementRemove("DebugEnemy");
+		ElementRemove("DebugItem");
+	}
 }
 
 let KDDrawDelta = 0;
