@@ -3605,9 +3605,9 @@ RestraintShadowHandCrotch,Shadow Hands...
 RestraintShadowHandCrotchDesc,"They are holding your... uh..."
 RestraintShadowHandCrotchDesc2,"You have no choice but to struggle."
 
-RestraintRopeSnakeArms,Wrist Rope
-RestraintRopeSnakeArmsDesc,"A box tie keeping your arms secured behind your back."
-RestraintRopeSnakeArmsDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeArmsBoxtie,Wrist Rope
+RestraintRopeSnakeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
+RestraintRopeSnakeArmsBoxtieDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeCuffs,Rope Cuffs
 RestraintRopeSnakeCuffsDesc,"A quick tie for apprehending prisoners."
 RestraintRopeSnakeCuffsDesc2,"It's not very secure."
