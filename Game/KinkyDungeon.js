@@ -787,9 +787,10 @@ let KDGlobalRefresh = false;
 
 function KinkyDungeonRun() {
 	if (StandalonePatched && KDCurrentModels) {
+		let refresh = false;
 		if (CommonTime() > lastGlobalRefresh + GlobalRefreshInterval) {
 			lastGlobalRefresh = CommonTime();
-			KDGlobalRefresh = !KDGlobalRefresh;
+			refresh = true;
 		}
 
 		for (let MC of KDCurrentModels.values()) {
@@ -802,7 +803,8 @@ function KinkyDungeonRun() {
 					Container[1].Container.parent.removeChild(Container[1].Container);
 					MC.Containers.delete(Container[0]);
 					Container[1].Container.destroy();
-				}
+				} else if (refresh)
+					MC.Update.delete(Container[0]);
 			}
 
 			MC.ContainersDrawn.clear();

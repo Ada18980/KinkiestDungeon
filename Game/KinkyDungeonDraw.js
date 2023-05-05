@@ -633,8 +633,8 @@ let KDLastKeyTime = {
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
-
-
+	if (StandalonePatched)
+		PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
 
 	if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
 		if (KinkyDungeonKeybindingCurrentKey)
@@ -1650,6 +1650,9 @@ function KDDrawArousalScreenFilter(y1, h, Width, ArousalOverride, Color = '255, 
 		if (alpha > 0)
 			DrawRect(0, y1, Width, h, `rgba(${Color}, ${alpha})`);
 	}*/
+
+	if (StandalonePatched)
+		PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 }
 
 function KDCanAttack() {
@@ -2200,6 +2203,8 @@ function DrawTextVisKD(Container, Map, id, Params) {
 			sprite.scale.x = Math.min(1, Params.Width / Math.max(1, sprite.width));
 			sprite.scale.y = sprite.scale.x;
 		}
+
+		sprite.roundPixels = true;
 		// Add it to the container
 		Map.set(id, sprite);
 		Container.addChild(sprite);
@@ -2771,6 +2776,7 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 		}
 	}
 	if (sprite) {
+		//sprite.roundPixels = true;
 		sprite.interactive = false;
 		// Modify the sprite according to the params
 		let tex = KDTex(Image);

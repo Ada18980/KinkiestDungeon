@@ -1142,7 +1142,7 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 	if (KinkyDungeonFlags.get("SpawnMap")) {
 		if (KinkyDungeonSpells.filter((spell) => {return spell.name == "ManaPoolUp";}).length < Math.ceil(MiniGameKinkyDungeonLevel/4))
 			KinkyDungeonGroundItems.push({x:VisitedRooms[0].x*2 + 3, y:(VisitedRooms[0].y*2), name: "LeylineMap"});
-		KinkyDungeonSetFlag("SpawnMap", -1);
+		KinkyDungeonSetFlag("SpawnMap", 0);
 	}
 
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, 'A');

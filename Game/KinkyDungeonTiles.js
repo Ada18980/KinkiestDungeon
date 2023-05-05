@@ -301,7 +301,7 @@ function KDGetSpecificEffectTile(x, y, tile) {
  * @returns {effectTile}
  */
 function KDCreateEffectTile(x, y, tile, durationMod) {
-	if (x < 1 || y < 1 || x >= KinkyDungeonGridWidth || y >= KinkyDungeonGridHeight) return null;
+	if (x < 0 || y < 0 || x >= KinkyDungeonGridWidth || y >= KinkyDungeonGridHeight) return null;
 	let existingTile = KDGetSpecificEffectTile(x, y);
 	let duration = (tile.duration ? tile.duration : KDEffectTiles[tile.name].duration) + KDRandom() * (durationMod ? durationMod : 0);
 	let createdTile = existingTile;

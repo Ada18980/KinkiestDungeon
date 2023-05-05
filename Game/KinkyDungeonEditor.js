@@ -1112,7 +1112,7 @@ function KDTE_LoadTile(name, loadedTile) {
 	KDEditorTileFlexSuperStore = nt.flexEdgeSuper || {};
 	if (nt.category)
 		ElementValue("MapTileCategory", nt.category);
-	if (nt.weight)
+	if (nt.weight != undefined)
 		ElementValue("MapTileWeight", "" + nt.weight);
 	KinkyDungeonGrid = nt.grid;
 	KinkyDungeonPOI = [];
@@ -1181,7 +1181,7 @@ function KDTE_ExportTile() {
 		flexEdgeSuper: KDEditorTileFlexSuperStore || {},
 		scale: KDTE_Scale,
 		category: ElementValue("MapTileCategory"),
-		weight: parseInt(ElementValue("MapTileWeight")) ? parseInt(ElementValue("MapTileWeight")) : 10,
+		weight: parseInt(ElementValue("MapTileWeight")) ? parseInt(ElementValue("MapTileWeight")) : 0,
 		grid: KinkyDungeonGrid,
 		POI: KinkyDungeonPOI,
 		Keyring: KDGameData.KeyringLocations,
