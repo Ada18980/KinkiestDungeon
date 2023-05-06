@@ -655,7 +655,7 @@ function KinkyDungeonLoad() {
 			KinkyDungeonNewDress = true;
 			KDCurrentOutfit = parseInt(localStorage.getItem("kdcurrentoutfit") || 0);
 			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
-			if (!appearance) {
+			if (!appearance || (StandalonePatched && JSON.parse(appearance).length && JSON.parse(appearance)[0]?.Asset)) {
 				KinkyDungeonNewDress = false;
 				appearance = CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player);
 			}
@@ -1788,7 +1788,7 @@ function KinkyDungeonRun() {
 	KDLastButtonsCache = {};
 	MouseClicked = false;
 
-	if ((!KDDebugMode && KinkyDungeonDrawState == "Restart") || (KDDebugMode && KinkyDungeonDrawState != "Restart")) {
+	if ((!KDDebugMode && KinkyDungeonDrawState == "Restart") || (KDDebugMode && (KinkyDungeonDrawState != "Restart" || KinkyDungeonState != "Game"))) {
 		ElementRemove("DebugEnemy");
 		ElementRemove("DebugItem");
 	}

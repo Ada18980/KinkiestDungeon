@@ -535,13 +535,22 @@ let KDTileGen = {
 		return null;
 	},
 	"Spawn": (x, y, tile, tileGenerator, data) => {
-		data.spawnpoints.push({x:x, y:y, required: tileGenerator.required, ftags: tileGenerator.filterTags, tags: tileGenerator.tags, AI: tileGenerator.AI, faction: tileGenerator.faction});
+		data.spawnpoints.push({
+			x:x,
+			y:y,
+			required: tileGenerator.required,
+			ftags: tileGenerator.filterTags,
+			tags: tileGenerator.tags,
+			AI: tileGenerator.AI,faction: tileGenerator.faction,
+			levelBoost: tileGenerator.levelBoost,
+			forceIndex: tileGenerator.forceIndex,
+		});
 		KinkyDungeonMapSet(x, y, '0');
 		return null;
 	},
 	"ForceSpawn": (x, y, tile, tileGenerator, data) => {
 		if (!tileGenerator.Chance || KDRandom() < tileGenerator.Chance) {
-			let enemy = KinkyDungeonGetEnemy(tileGenerator.tags, MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+			let enemy = KinkyDungeonGetEnemy(tileGenerator.tags, MiniGameKinkyDungeonLevel + (tileGenerator.levelBoost || 0), tileGenerator.forceIndex || KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 				'0', tileGenerator.required, tileGenerator.requireHostile, tileGenerator.bonusTags, tileGenerator.filterTags, tileGenerator.requireSingleTag);
 			DialogueCreateEnemy(x, y, enemy.name);
 		}

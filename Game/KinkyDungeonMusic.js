@@ -14,7 +14,7 @@ let KDMusicLoopTracksChance = {
 };
 
 let KDCurrentSong = "";
-let KDNewSong = "AREA1-GRAVEYARD.ogg";
+let KDNewSong = "GENERIC-DOLLRACK.ogg";
 let KDLastSong = "";
 let KDCurrentLoops = 0;
 let KDCurrentFade = 1;

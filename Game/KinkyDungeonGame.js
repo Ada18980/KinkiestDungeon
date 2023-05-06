@@ -1105,6 +1105,8 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		let AI = undefined;
 		let faction = undefined;
 		let tags = [];
+		let levelBoost = 0;
+		let forceIndex = undefined;
 
 		if (currentCluster && !(3 * KDRandom() < currentCluster.count)) {
 			required.push(currentCluster.required);
@@ -1147,6 +1149,8 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				X = spawns[0].x;
 				Y = spawns[0].y;
 				AI = spawns[0].AI;
+				levelBoost = spawns[0].levelBoost || 0;
+				forceIndex = spawns[0].forceIndex;
 				faction = spawns[0].faction;
 				spawns.splice(0, 1);
 			}
@@ -1226,8 +1230,8 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			if (required.length == 0) required = undefined;
 			let Enemy = KinkyDungeonGetEnemy(
 				tags,
-				Floor + KinkyDungeonDifficulty/5,
-				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				Floor + KinkyDungeonDifficulty/5 + levelBoost,
+				forceIndex || KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 				KinkyDungeonMapGet(X, Y),
 				required,
 				ncount > neutralCount && (!box || !box.ignoreAllyCount),

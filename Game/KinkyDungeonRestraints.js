@@ -2097,7 +2097,6 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			KinkyDungeonLastAction = "Struggle";
 			if (StruggleType == "Struggle") {
 				KinkyDungeonMakeNoise(4, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
-				KinkyDungeonAlert = 3;
 			}
 		}
 

@@ -39,7 +39,7 @@ let KDAutoStruggleData = {
 let KDAutoStruggleActions = {
 	"Struggle": {
 		itemweight: (player, item) => {
-			if (KDGetCurse(item) || KDRestraint(item).good) return 0;
+			if (KDGetCurse(item) || KDRestraint(item).good || KDRestraint(item).armor) return 0;
 			return 10 / Math.max(1, KDRestraint(item).power);
 		},
 		action: (player) => {
@@ -59,7 +59,7 @@ let KDAutoStruggleActions = {
 	"Remove": {
 		itemweight: (player, item) => {
 			if (item.lock) return 0;
-			if (KDGetCurse(item) || KDRestraint(item).good) return 0;
+			if (KDGetCurse(item) || KDRestraint(item).good || KDRestraint(item).armor) return 0;
 			if (!KDRestraint(item).alwaysStruggleable && KDGroupBlocked(KDRestraint(item).Group)) return 0;
 			return 10 / Math.max(1, KDRestraint(item).power);
 		},
@@ -80,7 +80,7 @@ let KDAutoStruggleActions = {
 	"Cut": {
 		itemweight: (player, item) => {
 			if (!KDAS_InWigglePoint(player) && !KinkyDungeonWallCrackAndKnife(false)) return 0;
-			if (KDGetCurse(item) || KDRestraint(item).good) return 0;
+			if (KDGetCurse(item) || KDRestraint(item).good || KDRestraint(item).armor) return 0;
 			if (!KDRestraint(item).alwaysStruggleable && KDGroupBlocked(KDRestraint(item).Group)) return 0;
 			if (!((KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;}) || KinkyDungeonGetAffinity(false, "Sharp"))
 				&& !(KDRestraint(item) && KDRestraint(item).escapeChance && KDRestraint(item).escapeChance.Cut == undefined))) return 0;
