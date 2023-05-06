@@ -3206,7 +3206,8 @@ function KDElementPosition(ElementID, X, Y, W, H) {
 	}
 
 	// Different positions based on the width/height ratio
-	if (!PIXICanvas) PIXICanvas = MainCanvas;
+
+	if (!PIXICanvas) PIXICanvas = MainCanvas.canvas;
 	const HRatio = (PIXICanvas.clientHeight || PIXICanvas.height || 1000) / 1000;
 	const WRatio = (PIXICanvas.clientWidth || PIXICanvas.width || 2000) / 2000;
 	const Font = (PIXICanvas.clientWidth || PIXICanvas.width || 1000) <= (PIXICanvas.clientHeight || PIXICanvas.height || 2000) * 2 ?
