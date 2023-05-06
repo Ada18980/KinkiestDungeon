@@ -10219,7 +10219,7 @@ ItemPickupChainSword,"You pick up sword with a bunch of chains attached."
 
 KinkyDungeonInventoryItemSlimeSword,Slime Sword
 KinkyDungeonInventoryItemSlimeSwordDesc,"It wiggles as you move it around."
-KinkyDungeonInventoryItemSlimeSwordDesc2,"Deals glue damage. Adds 19 slime binding."
+KinkyDungeonInventoryItemSlimeSwordDesc2,"Deals glue damage. Adds 25 slime binding."
 ItemPickupSlimeSword,"You pick up slime-covered sword."
 
 KinkyDungeonInventoryItemFrostSword,Frost Blade
