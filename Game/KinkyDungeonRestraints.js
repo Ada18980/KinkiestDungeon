@@ -593,6 +593,29 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 	return count;
 }
 
+
+/**
+ *
+ * @param {string} name
+ * @returns {number}
+ */
+function KinkyDungeonRemoveRestraintsWithName(name) {
+	let count = 0;
+
+	for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		if (inv.item.name == name) {
+			if (inv.host)
+				KinkyDungeonRemoveDynamicRestraint(inv.host, false, false, undefined);
+			else
+				KinkyDungeonRemoveRestraint(KDRestraint(inv.item).Group, false, false);
+			KDSendStatus('escape', inv.item.name, "special");
+			count++;
+		}
+	}
+
+	return count;
+}
+
 /**
  *
  * @param {string} shrine

@@ -9945,3 +9945,5 @@ KinkyDungeonSpellGreaterInvisibility,Vanish
 KinkyDungeonSpellTargetGreaterInvisibility,Select which creature to buff
 KinkyDungeonSpellDescriptionGreaterInvisibility,"Make the targeted creature invisible, making you totally invisible for Duration turns. Attacking and casting spells reveals your presence but you are still harder to see."
 KinkyDungeonSpellCastGreaterInvisibility,You snap your fingers!
+
+KinkyDungeonSlimeHardenSuit,"The slime dissolves your clothing, leaving nothing but rubber against your skin..."
