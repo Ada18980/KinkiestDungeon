@@ -10211,3 +10211,13 @@ KinkyDungeonSummonMultiSmallSlime,A group of slimes jump out!
 KinkyDungeonSummonSingleSmallSlime,A slime jumps out!
 KinkyDungeonSummonMultiSmallSlimeLeaper,A group of speedy slimes jump out!
 KinkyDungeonSummonSingleSmallSlimeLeaper,A speedy slime jumps out!
+
+KinkyDungeonInventoryItemChainSword,Chain Sword
+KinkyDungeonInventoryItemChainSwordDesc,"Cut through their defenses and tie them up in the process!"
+KinkyDungeonInventoryItemChainSwordDesc2,"Deals slash damage. Adds 10 metal binding."
+ItemPickupChainSword,"You pick up sword with a bunch of chains attached."
+
+KinkyDungeonInventoryItemSlimeSword,Slime Sword
+KinkyDungeonInventoryItemSlimeSwordDesc,"It jiggles as you wave it around."
+KinkyDungeonInventoryItemSlimeSwordDesc2,"Deals glue damage. Adds 24 slime binding."
+ItemPickupSlimeSword,"You pick up slime-covered sword."
