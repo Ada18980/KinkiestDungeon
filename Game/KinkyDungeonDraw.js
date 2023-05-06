@@ -1169,7 +1169,7 @@ function KinkyDungeonDrawGame() {
 				let barInt = 0;
 				if (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax*0.9) {
 					if (KinkyDungeonStatStamina != undefined && !(KinkyDungeonPlayerEntity.visual_stamina == KinkyDungeonStatStamina)) {
-						KinkyDungeonPlayerEntity.visual_stamina = KDEaseValue(KDDrawDelta || 0, KinkyDungeonPlayerEntity.visual_stamina || 0, KinkyDungeonStatStamina, KDBarAdvanceRate, KDBarAdvanceRateMin * KinkyDungeonStatStaminaMax);
+						KinkyDungeonPlayerEntity.visual_stamina = KDEaseValue(KDDrawDelta || 0, (KinkyDungeonPlayerEntity.visual_stamina != undefined ? KinkyDungeonPlayerEntity.visual_stamina : KinkyDungeonStatStaminaMax), KinkyDungeonStatStamina, KDBarAdvanceRate, KDBarAdvanceRateMin * KinkyDungeonStatStaminaMax);
 					}
 					KinkyDungeonBar(canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 12 - 13 * barInt,
 						KinkyDungeonGridSizeDisplay, 8, 100 * KinkyDungeonPlayerEntity.visual_stamina / KinkyDungeonStatStaminaMax, !KDCanAttack() ? "#ff5555" : "#44ff44", KDTextGray0);
