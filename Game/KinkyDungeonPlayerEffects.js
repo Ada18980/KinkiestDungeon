@@ -968,14 +968,15 @@ function KDAdvanceSlime(resetSlimeLevel, restraint = "") {
 	if (!slimed && potentialSlimeParts.length === 0) {
 		let slime = slimedParts[Math.floor(KDRandom() * slimedParts.length)];
 		if (!slime) return false;
-		if (KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Hard" + slime.name), 0, true)) {
+		KinkyDungeonRemoveRestraintsWithName(slime.name);
+		if (KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Hard" + slime.name), 0, true, undefined,  undefined,  undefined,  undefined,  undefined,  true)) {
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSlimeHarden"), "#ff44ff", 3);
 			let slimesuit = (restraint ? restraint : "") + "SlimeSuit";
 
 			if (KinkyDungeonCurrentDress !== slimesuit) {
 				KinkyDungeonSetDress(slimesuit, "");
 				KinkyDungeonDressPlayer();
-				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSlimeSpread"), "#ff44ff", 3);
+				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSlimeSpreadSuit"), "#ff44ff", 3);
 			}
 		}
 		if (resetSlimeLevel)
