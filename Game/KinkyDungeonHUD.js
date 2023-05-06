@@ -176,6 +176,8 @@ let KDBuffSprites = {
 	"DistractionCast": true,
 
 	"BoundByFate": true,
+	"GreaterInvisibility": true,
+	"Invisibility": true,
 
 	//KinkyDungeonBuffShrineElements,"Arcane Power: Deals bonus damage when you hit an enemy."
 	//KinkyDungeonBuffShrineConjure,"Arcane Protection: Reduces damage taken, and deals retaliation damage."

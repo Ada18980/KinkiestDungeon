@@ -4955,7 +4955,8 @@ function KDClearItems(enemy) {
  * @returns {boolean}
  */
 function KDCanDetect(enemy, player, allowBlind = false) {
-	return (KinkyDungeonTrackSneak(enemy, 0, player) || (AIData.playerDist < Math.max(1.5, allowBlind ? AIData.blindSight : 0) && enemy.aware));
+	let invisibility = KDEntityBuffedStat(player, "Invisible");
+	return (KinkyDungeonTrackSneak(enemy, 0, player) || (AIData.playerDist < Math.max(1.5 - invisibility, allowBlind ? AIData.blindSight : 0) && enemy.aware));
 }
 
 /**
