@@ -883,8 +883,17 @@ interface enemy extends KDHasTags {
 	noLeashUnlessExhausted?: boolean,
 	/** */
 	ethereal?: boolean,
-	/** */
+	/** This enemy always dodges regular attacks */
 	alwaysEvade?: boolean,
+	/** This enemy always blocks regular attacks */
+	alwaysBlock?: boolean,
+	/** Info for enemy resistance */
+	Resistance?: {
+		/** This enemy cannot dodge if the attacking weapon is magical */
+		alwaysHitByMagic?: boolean,
+		/** This enemy cannot BLOCK if the attacking weapon is magical */
+		alwaysBypassedByMagic?: boolean,
+	},
 	/** */
 	summonRage?: boolean,
 	/** */
@@ -977,6 +986,8 @@ interface enemy extends KDHasTags {
 	hitsfxSpecial?: string,
 	/** Effect when the enemy misses */
 	misssfx?: string,
+	/** Effect when the enemy blocks */
+	blocksfx?: string,
 	/** SFX on certain cues */
 	cueSfx?: {
 		/** When the enemy takes no damage from a melee attack */
@@ -1026,6 +1037,7 @@ interface weapon {
 	bindEff?: number;
 	distractEff?: number;
 	light?: boolean;
+	heavy?: boolean;
 	boundBonus?: number;
 	tease?: boolean;
 	rarity: number;

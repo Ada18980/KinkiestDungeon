@@ -17,6 +17,13 @@ let KinkyDungeonWeapons = {
 		],
 	},
 
+	// Shields
+	"Shield": {name: "Shield", dmg: 2.0, chance: 0.6, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "HeavySwing",
+		events: [
+			{type: "blockBuff", trigger: "tick", power: 0.6},
+			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 4}
+		]},
+
 	// Swords
 	"Sword": {name: "Sword", dmg: 3, chance: 1.5, staminacost: 2.4, type: "slash", unarmed: false, rarity: 2, shop: false, cutBonus: 0.01, sfx: "LightSwing"},
 	"ChainSword": {name: "ChainSword", dmg: 2.5, bind: 0.5, bindType: "Metal", chance: 1.6, staminacost: 2.4, type: "slash", unarmed: false, rarity: 2, shop: true, cutBonus: 0.01, sfx: "Chain"},

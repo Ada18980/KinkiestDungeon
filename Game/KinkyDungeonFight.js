@@ -12,6 +12,7 @@ let KDUnfocusedParams = {
 };
 let KDDodgeAmount = 0.75;
 let KinkyDungeonMissChancePerBlind = 0.1; // Max 3
+let KinkyDungeonBlockMissChancePerBlind = 0.1; // Max 3
 let KinkyDungeonMissChancePerSlow = 0.1; // Max 3
 let KinkyDungeonBullets = []; // Bullets on the game board
 /**
@@ -22,6 +23,7 @@ let KinkyDungeonBulletsID = {}; // Bullets on the game board
 let KDVulnerableDmg = 1.0;
 let KDVulnerableDmgMult = 0.33;
 let KDVulnerableHitMult = 1.33;
+let KDVulnerableBlockHitMult = 2.0;
 let KDPacifistReduction = 0.1;
 let KDRiggerDmgBoost = 0.2;
 let KDRiggerBindBoost = 0.3;
@@ -227,6 +229,7 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.evasion && ((!(Enemy.stun > 0) && !(Enemy.freeze > 0)) || Enemy.Enemy.alwaysEvade || Enemy.Enemy.evasion < 0)) hitChance *= Math.max(0,
 		(Enemy.aware ? KinkyDungeonMultiplicativeStat(Enemy.Enemy.evasion) : Math.max(1, KinkyDungeonMultiplicativeStat(Enemy.Enemy.evasion))));
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.tags.ghost && (IsMagic || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.magic))) hitChance = Math.max(hitChance, 1.0);
+	if (Enemy && Enemy.Enemy && Enemy.Enemy.Resistance?.alwaysHitByMagic && (IsMagic || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.magic))) hitChance = Math.max(hitChance, 1.0);
 
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Accuracy")) {
 		hitChance *= KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Accuracy"));
@@ -246,6 +249,63 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 		if (flags.KDEvasionSight)
 			hitChance = Math.min(hitChance, Math.max(0.1, hitChance - Math.min(3, KinkyDungeonBlindLevel) * KinkyDungeonMissChancePerBlind));
 		if (flags.KDEvasionSlow && KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.name && KinkyDungeonSlowLevel > 0) hitChance *= 1.0 - Math.max(0.5, KinkyDungeonMissChancePerSlow * KinkyDungeonSlowLevel);
+	}
+	return hitChance;
+}
+
+function KinkyDungeonDoEnemyBlock(Enemy, NoOverride, IsSpell, IsMagic, cost) {
+	let flags = {
+		KDBlockHands: true,
+		KDBlockArms: true,
+		KDBlockSight: true,
+		KDBlockDeaf: true,
+		KDBlockSlow: true,
+	};
+	let data = {enemy: Enemy,
+		isSpell: IsSpell,
+		isMagic: IsMagic,
+		flags: flags,
+		cost: cost,
+		hitmult: 1.0,
+	};
+
+	if (!NoOverride)
+		KinkyDungeonSendEvent("calcBlock", data);
+	let hitChance = (Enemy && Enemy.buffs) ? KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(Enemy.buffs, "Block")) : 1.0;
+	hitChance *= data.hitmult;
+
+	if (KinkyDungeonStatsChoice.get("Clumsy")) hitChance *= KDClumsyAmount;
+	if (KinkyDungeonStatsChoice.get("Unfocused")) {
+		let amount = 1;
+		let dist = KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax;
+		if (dist >= KDUnfocusedParams.ThreshMin) {
+			amount = KDUnfocusedParams.AmountMin + (KDUnfocusedParams.AmountMax - KDUnfocusedParams.AmountMin) * (dist - KDUnfocusedParams.ThreshMin) / (KDUnfocusedParams.ThreshMax - KDUnfocusedParams.ThreshMin);
+		}
+		if (amount != 1) hitChance *= amount;
+	}
+
+	if (Enemy && Enemy.Enemy && Enemy.Enemy.block && ((!(Enemy.stun > 0) && !(Enemy.freeze > 0)) || Enemy.Enemy.alwaysBlock || Enemy.Enemy.block < 0)) hitChance *= Math.max(0,
+		(Enemy.aware ? KinkyDungeonMultiplicativeStat(Enemy.Enemy.block) : Math.max(1, KinkyDungeonMultiplicativeStat(Enemy.Enemy.block))));
+	if (Enemy && Enemy.Enemy && Enemy.Enemy.Resistance?.alwaysBypassedByMagic && (IsMagic || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.magic))) hitChance = Math.max(hitChance, 1.0);
+
+	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Accuracy")) {
+		hitChance *= KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Accuracy"));
+	}
+
+	if (!IsSpell) hitChance *= KinkyDungeonPlayerDamage.chance;
+	if (Enemy && Enemy.bind > 0) hitChance *= 3;
+	else if (Enemy && Enemy.slow > 0) hitChance *= 2;
+	if (Enemy && (Enemy.stun > 0 || Enemy.freeze > 0)) hitChance *= 5;
+	else {
+		if (Enemy && Enemy.distraction > 0) hitChance *= 1 + Math.min(1, Enemy.distraction / Enemy.Enemy.maxhp);
+		if (Enemy) hitChance *= 1 + 0.25 * KDBoundEffects(Enemy);
+	}
+	if (Enemy && Enemy.vulnerable) hitChance *= KDVulnerableBlockHitMult;
+
+	if (!IsSpell) {
+		if (flags.KDBlockSight)
+			hitChance = Math.min(hitChance, Math.max(0.1, hitChance - Math.min(3, KinkyDungeonBlindLevel) * KinkyDungeonBlockMissChancePerBlind));
+		if (flags.KDBlockArms && KinkyDungeonIsArmsBound(false, true) && (!KinkyDungeonPlayerDamage?.noHands)) hitChance *= 0.5;
 	}
 	return hitChance;
 }
@@ -270,11 +330,25 @@ function KDPlayerEvasionPenalty() {
 
 	return evasionPenalty;
 }
+function KDPlayerBlockPenalty() {
+	let blockPenalty = 0;
+	if (!KinkyDungeonCanUseWeapon()) blockPenalty += 0.5;
+
+	return blockPenalty;
+}
 
 function KinkyDungeonPlayerEvasion() {
 	let playerEvasionMult = 1.0;
 	let playerEvasionPenalty = KDPlayerEvasionPenalty();
 	let val = playerEvasionMult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion") - playerEvasionPenalty);
+
+	return val;
+}
+
+function KinkyDungeonPlayerBlock() {
+	let playerBlockMult = 1.0;
+	let playerBlockPenalty = KDPlayerBlockPenalty();
+	let val = playerBlockMult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block") - playerBlockPenalty);
 
 	return val;
 }
@@ -677,7 +751,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		if ((resistDamage < 2) && (KinkyDungeonVulnerableDamageTypes.includes(predata.type))) { // Being immune to the damage stops the stun as well
 			effect = true;
 			if (!Enemy.vulnerable) KDAddThought(Enemy.id, "Status", 4, 1);
-			if (!Enemy.vulnerable) Enemy.vulnerable = 0;
+			if (!Enemy.vulnerable && predata.dmg > 0) Enemy.vulnerable = 0;
 			if (resistDamage == 1)
 				Enemy.vulnerable = Math.max(Enemy.vulnerable, Math.min(Math.floor(time/2), time-1)); // Enemies with stun resistance have stuns reduced to 1/2, and anything that stuns them for one turn doesn't affect them
 			else Enemy.vulnerable = Math.max(Enemy.vulnerable, time);
@@ -685,7 +759,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	}
 
 	if (KDBoundEffects(Enemy) > 3) {
-		if (!Enemy.vulnerable) Enemy.vulnerable = 0;
+		if (!Enemy.vulnerable && predata.dmg > 0) Enemy.vulnerable = 0;
 		Enemy.vulnerable = Math.max(Enemy.vulnerable, 1);
 	}
 
@@ -843,12 +917,15 @@ function KinkyDungeonAttackEnemy(Enemy, Damage) {
 	if (predata.buffdmg) dmg.damage = Math.max(0, dmg.damage + predata.buffdmg);
 
 	if (predata.vulnerable && (predata.eva)) {
-		predata.vulnConsumed = true;
 		let dmgBonus = Math.max(Math.min(2 * dmg.damage, KDVulnerableDmg), dmg.damage * KDVulnerableDmgMult);
 		dmg.damage = Math.max(0, dmg.damage + dmgBonus);
 		KinkyDungeonSendTextMessage(4, TextGet((Enemy.vulnerable || Enemy.distraction > Enemy.Enemy.maxhp) ? "KinkyDungeonVulnerable" : "KinkyDungeonUnseen")
 			.replace("AMOUNT", "" + Math.round(10 * dmgBonus))
 			.replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), "lightgreen", 2);
+
+
+		if (dmg.damage > 0 || dmg.bind > 0)
+			predata.vulnConsumed = true;
 	}
 
 

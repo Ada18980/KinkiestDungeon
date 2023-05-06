@@ -6,11 +6,11 @@ let KDClassReqs = {
 
 let KDClassStart = {
 	"Fighter": () => { // Fighter
-		KinkyDungeonInventoryAddWeapon("Knife");
+		KinkyDungeonInventoryAddWeapon("Shield");
 		KinkyDungeonInventoryAddWeapon("Sword");
 		if (!KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Breastplate"), 0, true, ""))
 			KinkyDungeonInventoryAddLoose("Breastplate");
-		KDGameData.PreviousWeapon = "Knife";
+		KDGameData.PreviousWeapon = "Shield";
 		KDSetWeapon("Sword");
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
