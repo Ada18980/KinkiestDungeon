@@ -9930,7 +9930,12 @@ KinkyDungeonInventoryItemChainSwordDesc2,"Deals slash damage. Adds 10 metal bind
 ItemPickupChainSword,"You pick up sword with a bunch of chains attached."
 
 KinkyDungeonInventoryItemSlimeSword,Slime Sword
-KinkyDungeonInventoryItemSlimeSwordDesc,"It jiggles as you wave it around."
+KinkyDungeonInventoryItemSlimeSwordDesc,"It wiggles as you move it around."
 KinkyDungeonInventoryItemSlimeSwordDesc2,"Deals glue damage. Adds 24 slime binding."
 ItemPickupSlimeSword,"You pick up slime-covered sword."
 KDLoading,"Preloading Character Assets: "
+
+KinkyDungeonInventoryItemFrostSword,Frost Blade
+KinkyDungeonInventoryItemFrostSwordDesc,"As cold as its creator."
+KinkyDungeonInventoryItemFrostSwordDesc2,"Deals 20 bonus ice damage and briefly slows the target."
+ItemPickupFrostSword,"You pick up an icy sword."
