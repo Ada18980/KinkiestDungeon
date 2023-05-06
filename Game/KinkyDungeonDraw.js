@@ -3209,7 +3209,8 @@ function KDElementPosition(ElementID, X, Y, W, H) {
 	if (!PIXICanvas) PIXICanvas = MainCanvas;
 	const HRatio = (PIXICanvas.clientHeight || PIXICanvas.height || 1000) / 1000;
 	const WRatio = (PIXICanvas.clientWidth || PIXICanvas.width || 2000) / 2000;
-	const Font = (PIXICanvas.clientWidth || PIXICanvas.width) <= (PIXICanvas.clientHeight || PIXICanvas.height) * 2 ? (PIXICanvas.clientWidth || PIXICanvas.width) / 50 : (PIXICanvas.clientHeight || PIXICanvas.height) / 25;
+	const Font = (PIXICanvas.clientWidth || PIXICanvas.width || 1000) <= (PIXICanvas.clientHeight || PIXICanvas.height || 2000) * 2 ?
+		(PIXICanvas.clientWidth || PIXICanvas.width || 1000) / 50 : (PIXICanvas.clientHeight || PIXICanvas.height || 2000) / 25;
 	const Height = H ? H * HRatio : Font * 1.1;
 	const Width = W * WRatio;
 	const Top = (PIXICanvas.offsetTop || 0) + Y * HRatio - 4;
