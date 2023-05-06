@@ -108,9 +108,9 @@ let KinkyDungeonLearnableSpells = [
 	//Page 4: Upgrades
 	[
 		// Strength
-		["IronWill", "SteadfastGuard", "WillStruggle"],
+		["IronWill", "SteadfastGuard", "WillStruggle", "Parry", "WillParry", "SteelParry", "GuardBoost", "DaggerParry", "Riposte"],
 		// Dex
-		["Athlete", "Vault", "Sneaky", "Evasive1", "Evasive2", "Evasive3"],
+		["Athlete", "Sneaky", "Evasive1", "Evasive2", "Evasive3", "Vault", "VaultAdv"],
 		// Intellect
 		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser2", "StaffUser3"],
 		// Misc
@@ -181,6 +181,24 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		]},
 		{name: "WillStruggle", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "WillStruggle", mult: 0.01, power: 5, StruggleType: "Struggle", trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellWillStruggleMsg"},
+		]},
+		{name: "Riposte", tags: ["will", "offense"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Riposte", trigger: "blockPlayer"},
+		]},
+		{name: "Parry", tags: ["will", "defense"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Parry", power: 0.15, trigger: "tick"},
+		]},
+		{name: "GuardBoost", tags: ["defense"], prerequisite: "WillParry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "GuardBoost", trigger: "tick"},
+		]},
+		{name: "WillParry", tags: ["defense"], prerequisite: "Parry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "WillParry", mult: 0.01, trigger: "tick"},
+		]},
+		{name: "SteelParry", tags: ["defense"], prerequisite: "WillParry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "SteelParry", mult: 0.01, trigger: "tick"},
+		]},
+		{name: "DaggerParry", tags: ["defense"], prerequisite: "Parry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "DaggerParry", power: 0.15, trigger: "tick"},
 		]},
 		{name: "StaffUser1", tags: ["utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "StaffUser1", trigger: "afterCalcMana", power: 0.8},
@@ -748,7 +766,10 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
 			{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
 		]},
-		{name: "Vault", tags: ["damage", "utility", "buff"], school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+		{name: "Vault", tags: ["damage", "utility", "buff"], prerequisite: "Evasive1", school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{trigger: "canSprint", type: "VaultBasic"},
+		]},
+		{name: "VaultAdv", tags: ["damage", "utility", "buff"], prerequisite: "Vault", school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{trigger: "canSprint", type: "Vault"},
 		]},
 

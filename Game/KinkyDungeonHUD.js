@@ -263,6 +263,7 @@ function KinkyDungeonDrawInputs() {
 	};
 	//}
 	let evasion = KinkyDungeonPlayerEvasion();
+	let block = KinkyDungeonPlayerBlock();
 	//if (evasion != 1.0) {
 	statsDraw.evasion = {
 		text: TextGet("StatEvasion")
@@ -272,6 +273,16 @@ function KinkyDungeonDrawInputs() {
 		count: ("") + Math.round((1 - evasion) * 100) + "%",
 		icon: "infoEvasion",
 		countcolor: evasion < 1 ? "#65d45d" : (evasion == 1 ? "#ffffff" : "#ff5555"),
+		category: "info", color: "#ffffff", bgcolor: "#000000", priority: 8
+	};
+	statsDraw.block = {
+		text: TextGet("StatBlock")
+			.replace("Percent", ("") + Math.round((1 - block) * 100))
+			.replace("BLOCKSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block")) * 100))
+			.replace("BLOCKPENALTY", ("") + Math.round((KDPlayerBlockPenalty()) * 100)),
+		count: ("") + Math.round((1 - block) * 100) + "%",
+		icon: "infoBlock",
+		countcolor: block < 1 ? "#65d45d" : (block == 1 ? "#ffffff" : "#ff5555"),
 		category: "info", color: "#ffffff", bgcolor: "#000000", priority: 8
 	};
 	//}
@@ -310,7 +321,7 @@ function KinkyDungeonDrawInputs() {
 	statsDraw.key = {
 		text: TextGet(escape ? "StatKeyEscapeKey" : "StatKeyEscapeNoKey"),
 		icon: escape ? "infoKey" : "infoNoKey",
-		category: "info", color: "#ffffff", bgcolor: "#000000", priority: 5
+		category: "help", color: "#ffffff", bgcolor: "#000000", priority: 5
 	};
 
 
@@ -427,7 +438,7 @@ function KinkyDungeonDrawInputs() {
 			count: ("") + Math.round((1 - restraintblock) * 100) + "%",
 			icon: "restraintblock",
 			countcolor: "#65d45d",
-			category: "buffs", color: "#ffffff", bgcolor: "#000000", priority: 20
+			category: "status", color: "#ffffff", bgcolor: "#000000", priority: 0
 		};
 	let damageReduction = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "DamageReduction");
 	if (damageReduction > 0) {

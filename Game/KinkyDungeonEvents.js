@@ -306,6 +306,9 @@ let KDEventMapInventory = {
 		"evasionBuff": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Evasion", type: "Evasion", power: e.power, duration: 2,});
 		},
+		"blockBuff": (e, item, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Block", type: "Block", power: e.power, duration: 2,});
+		},
 		"buff": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + e.buff, type: e.buff, power: e.power, duration: 2,
 				tags: e.tags,
@@ -771,7 +774,12 @@ let KDEventMapInventory = {
 			}
 		},
 	},
-	"miss": {
+	"missPlayer": {
+		"EnergyCost": (e, item, data) => {
+			if (e.energyCost && KinkyDungeonStatMana < KinkyDungeonStatManaMax - 0.01) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
+		}
+	},
+	"missEnemy": {
 		"EnergyCost": (e, item, data) => {
 			if (e.energyCost && KinkyDungeonStatMana < KinkyDungeonStatManaMax - 0.01) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
 		}
@@ -1764,6 +1772,18 @@ function KinkyDungeonHandleOutfitEvent(Event, e, outfit, data) {
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
  */
 let KDEventMapSpell = {
+	"blockPlayer": {
+		"Riposte": (e, item, data) => {
+			KinkyDungeonDamageEnemy(data.enemy, {
+				type: "stun",
+				damage: 0,
+				time: 3,
+			}, false, true, undefined, undefined, undefined);
+			if (!data.enemy?.vulnerable) {
+				data.enemy.vulnerable = 1;
+			}
+		}
+	},
 	"calcComp": {
 		"OneWithSlime": (e, spell, data) => {
 			if (data.spell && data.spell.tags && data.failed.length > 0 && (data.spell.tags.includes("slime") || data.spell.tags.includes("latex"))) {
@@ -1778,6 +1798,14 @@ let KDEventMapSpell = {
 		},
 	},
 	"canSprint": {
+		"VaultBasic": (e, spell, data) => {
+			if (!data.passThru) {
+				let enemy = KinkyDungeonEntityAt(data.nextPosx, data.nextPosy);
+				if (enemy && !enemy?.player && !KDIsImmobile(enemy) && enemy.vulnerable) {
+					data.passThru = true;
+				}
+			}
+		},
 		"Vault": (e, spell, data) => {
 			if (!data.passThru) {
 				let enemy = KinkyDungeonEntityAt(data.nextPosx, data.nextPosy);
@@ -1878,6 +1906,34 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
+		"Parry": (e, spell, data) => {
+			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: spell.name + "Block", type: "Block", power: e.power, duration: 2,});
+			}
+		},
+		"WillParry": (e, spell, data) => {
+			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && !KinkyDungeonPlayerDamage.light) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: spell.name + "Block", type: "Block", power: e.mult * KinkyDungeonStatWillMax, duration: 2,});
+			}
+		},
+		"SteelParry": (e, spell, data) => {
+			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && KinkyDungeonMeleeDamageTypes.includes(KinkyDungeonPlayerDamage.type)) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: spell.name + "Block", type: "Block", power: e.mult * KinkyDungeonStatWillMax, duration: 2,});
+			}
+		},
+		"GuardBoost": (e, spell, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: spell.name + "Block", type: "Block", power: .1 + 0.5 * KinkyDungeonStatWill/KinkyDungeonStatWillMax, duration: 2,});
+		},
+		"DaggerParry": (e, spell, data) => {
+			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && KinkyDungeonPlayerDamage.light) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: spell.name + "Block", type: "Block", power: e.power, duration: 2,});
+			}
+		},
+		"ClaymoreParry": (e, spell, data) => {
+			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && KinkyDungeonPlayerDamage.heavy) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: spell.name + "Block", type: "Block", power: e.power, duration: 2,});
+			}
+		},
 		"DistractionCast": (e, spell, data) => {
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99)
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
@@ -2346,6 +2402,9 @@ let KDEventMapWeapon = {
 		},
 	},
 	"tick": {
+		"blockBuff": (e, weapon, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: weapon.name + "Block", type: "Block", power: e.power, duration: 2,});
+		},
 		"Charge": (e, weapon, data) => {
 			if (KDGameData.AncientEnergyLevel > 0 && KinkyDungeonSlowMoveTurns < 1) {
 				let currentCharge = KinkyDungeonPlayerBuffs[weapon.name + "Charge"] ? KinkyDungeonPlayerBuffs[weapon.name + "Charge"].duration : 0;

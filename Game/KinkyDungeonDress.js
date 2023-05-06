@@ -154,7 +154,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 
 			// First we remove all restraints and clothes
 			let clothGroups = {};
-			for (let cloth of KDGetDressList()[KinkyDungeonCurrentDress]) {
+			for (let cloth of Object.values(KDGetDressList()[KinkyDungeonCurrentDress])) {
 				clothGroups[cloth.Group || cloth.Item] = true;
 			}
 			let newAppearance = {};
