@@ -91,6 +91,7 @@ let KDTilePalette = {
 		force: {type: "boolean"},
 		faction: {type: "string"},
 		levelBoost: {type: "number"},
+		forceIndex: {type: "string"},
 	}},
 	'ForceSpawnCustom': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: [], Label: "Custom"}, customfields: {
 		required: {type: "array"},
@@ -102,6 +103,7 @@ let KDTilePalette = {
 		force: {type: "boolean"},
 		faction: {type: "string"},
 		levelBoost: {type: "number"},
+		forceIndex: {type: "string"},
 	}},
 	'----Tiles----': {type: "none"},
 	'Brick': {type: "tile", tile: '2'},
