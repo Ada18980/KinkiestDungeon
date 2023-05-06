@@ -5216,7 +5216,7 @@ KinkyDungeonSpellSummonBlindfold,Conjure Blindfold
 KinkyDungeonSpellBlindfoldBolt,Conjured Blindfold
 KinkyDungeonSpellBlindfoldBoltBind,The blindfold wraps around your head and buckles tightly!
 KinkyDungeonSpellBlindfoldBoltDamage,The blindfold hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonBlindfold,"Summons a blindfold which deals DamageDealt chain damage and blinds for 20 turns. +40 binding if target is not silenced."
+KinkyDungeonSpellDescriptionSummonBlindfold,"Summons a blindfold which deals DamageDealt chain damage and blinds for 20 turns. +40 binding if target is not blinded."
 KinkyDungeonSpellCastSummonBlindfold,You conjure a blindfold!
 KinkyDungeonSpellTargetSummonBlindfold,The blindfold will appear next to you and fly toward the target point.
 
@@ -10214,12 +10214,12 @@ KinkyDungeonSummonSingleSmallSlimeLeaper,A speedy slime jumps out!
 
 KinkyDungeonInventoryItemChainSword,Chain Sword
 KinkyDungeonInventoryItemChainSwordDesc,"Cut through their defenses and tie them up in the process!"
-KinkyDungeonInventoryItemChainSwordDesc2,"Deals slash damage. Adds 10 metal binding."
+KinkyDungeonInventoryItemChainSwordDesc2,"Deals slash damage. Adds 5 metal binding."
 ItemPickupChainSword,"You pick up sword with a bunch of chains attached."
 
 KinkyDungeonInventoryItemSlimeSword,Slime Sword
 KinkyDungeonInventoryItemSlimeSwordDesc,"It wiggles as you move it around."
-KinkyDungeonInventoryItemSlimeSwordDesc2,"Deals glue damage. Adds 24 slime binding."
+KinkyDungeonInventoryItemSlimeSwordDesc2,"Deals glue damage. Adds 19 slime binding."
 ItemPickupSlimeSword,"You pick up slime-covered sword."
 
 KinkyDungeonInventoryItemFrostSword,Frost Blade

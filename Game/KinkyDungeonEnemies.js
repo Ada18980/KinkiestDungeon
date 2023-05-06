@@ -2552,7 +2552,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.refreshWarningTiles = false;
 
 	AIData.hitsfx = (enemy.Enemy && enemy.Enemy.hitsfx) ? enemy.Enemy.hitsfx : "";
-	if (KinkyDungeonAlert && AIData.playerDist < KinkyDungeonAlert) {
+	// Only target the player for alerts
+	if (KinkyDungeonAlert && player.player && AIData.playerDist < KinkyDungeonAlert) {
 		if (KDPlayerLight < 1.5 && AIData.playerDist < KinkyDungeonAlert*0.5) {
 			if (!enemy.aware && AIData.aggressive) KDAddThought(enemy.id, "Blind", 3, 3);
 		} else {
