@@ -997,18 +997,6 @@ function KDHandBondageTotal() {
 	}
 	return total;
 }
-/**
- * Returns the total level of hands bondage, 1.0 or higher meaning unable to use hands
- * @return  {number} - The bindhands level, sum of all bindhands properties of worn restraints
- */
-function KDArmBondageTotal() {
-	let total = 0;
-	for (let rest of KinkyDungeonAllRestraintDynamic()) {
-		let inv = rest.item;
-		if (KDRestraint(inv).bindarms) total += KDRestraint(inv).bindarms;
-	}
-	return total;
-}
 
 /**
  *

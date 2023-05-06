@@ -3314,6 +3314,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					let Blind = false;
 					let priorityBonus = 0;
 					let addedRestraint = false;
+					let tryBind = true;
 
 					let happened = 0;
 					let bound = 0;
@@ -3467,63 +3468,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							}
 						}
 					}
-					if (AIData.attack.includes("Bind") && KDGameData.KinkyDungeonLeashedPlayer < 1 && !enemy.Enemy.nopickpocket && player.player && enemy.Enemy.bound && !KDGameData.JailKey && KDCanPickpocket(enemy)) {
-						let item = playerItems.length > 0 ? playerItems[Math.floor(KDRandom() * playerItems.length)] : undefined;
-						let picked = false;
-						if (item && playerItems.length > 0
-							&& KinkyDungeonIsArmsBound() && ((!KinkyDungeonPlayerDamage || item.name != KinkyDungeonPlayerDamage.name) || KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax * 0.05) && KDRandom() < 0.5) {
-							if (item.type == Weapon) {
-								KinkyDungeonInventoryRemove(item);
-								//KinkyDungeonAddLostItems([item], false);
-								if (!enemy.items) enemy.items = [item.name];
-								else if (!enemy.items.includes(item.name))
-									enemy.items.push(item.name);
-							} else if (item.type == Consumable) {
-								KinkyDungeonChangeConsumable(KinkyDungeonConsumables[item.name], -1);
-								/** @type {item} */
-								let item2 = Object.assign({}, item);
-								//KinkyDungeonAddLostItems([item2], false);
-								item2.quantity = 1;
-								if (!enemy.items) enemy.items = [item.name];
-								enemy.items.push(item.name);
-							}
-							if (item) {
-								KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStealItem").replace("ITEMSTOLEN", TextGet("KinkyDungeonInventoryItem" + item.name)), "yellow", 2);
-								picked = true;
-							}
-						} else if (KinkyDungeonLockpicks > 0 && KDRandom() < 0.5) {
-							KinkyDungeonLockpicks -= 1;
-							KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealPick"), "yellow", 2);
-							if (!enemy.items) enemy.items = ["Pick"];
-							enemy.items.push("Pick");
-							picked = true;
-						} else if (KinkyDungeonRedKeys > 0) {
-							KinkyDungeonRedKeys -= 1;
-							KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealRedKey"), "yellow", 2);
-							if (!enemy.items) enemy.items = ["RedKey"];
-							enemy.items.push("RedKey");
-							picked = true;
-						} else if (KinkyDungeonBlueKeys > 0) {
-							KinkyDungeonBlueKeys -= 1;
-							KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealBlueKey"), "yellow", 2);
-							if (!enemy.items) enemy.items = ["BlueKey"];
-							enemy.items.push("BlueKey");
-							picked = true;
-						}
-						/*else if (KinkyDungeonEnchantedBlades > 0 && KDRandom() < 0.5) {
-							KinkyDungeonEnchantedBlades -= 1;
-							KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealEnchKnife"), "yellow", 2);
-							if (!enemy.items) enemy.items = ["EnchKnife"];
-							enemy.items.push("knife");
-						}*/
-						if (picked) {
-							KinkyDungeonSetFlag("pickpocket", 4);
-							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg", enemy);
-							if (KDRandom() < actionDialogueChanceIntense)
-								KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (enemy.Enemy.playLine ? enemy.Enemy.playLine : "") + "Pickpocket").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 1);
 
-						}
-					}
 
 					if (AIData.attack.includes("Suicide")) {
 						if ((!enemy.Enemy.suicideOnAdd && !enemy.Enemy.suicideOnLock)
@@ -3636,6 +3581,66 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						}
 					}
 					let Dash = false;
+					let attackBlocked = false;
+
+					if (player.player && AIData.attack.includes("Bind") && !attackBlocked && KDCanPickpocketPlayer(player)
+						&& KDGameData.KinkyDungeonLeashedPlayer < 1 && !enemy.Enemy.nopickpocket && enemy.Enemy.bound && !KDGameData.JailKey && KDCanPickpocket(enemy)) {
+						let item = playerItems.length > 0 ? playerItems[Math.floor(KDRandom() * playerItems.length)] : undefined;
+						let picked = false;
+						if (item && playerItems.length > 0
+							&& KinkyDungeonIsArmsBound() && ((!KinkyDungeonPlayerDamage || item.name != KinkyDungeonPlayerDamage.name) || KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax * 0.05) && KDRandom() < 0.5) {
+							if (item.type == Weapon) {
+								KinkyDungeonInventoryRemove(item);
+								//KinkyDungeonAddLostItems([item], false);
+								if (!enemy.items) enemy.items = [item.name];
+								else if (!enemy.items.includes(item.name))
+									enemy.items.push(item.name);
+							} else if (item.type == Consumable) {
+								KinkyDungeonChangeConsumable(KinkyDungeonConsumables[item.name], -1);
+								/** @type {item} */
+								let item2 = Object.assign({}, item);
+								//KinkyDungeonAddLostItems([item2], false);
+								item2.quantity = 1;
+								if (!enemy.items) enemy.items = [item.name];
+								enemy.items.push(item.name);
+							}
+							if (item) {
+								KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStealItem").replace("ITEMSTOLEN", TextGet("KinkyDungeonInventoryItem" + item.name)), "yellow", 2);
+								picked = true;
+							}
+						} else if (KinkyDungeonLockpicks > 0 && KDRandom() < 0.5) {
+							KinkyDungeonLockpicks -= 1;
+							KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealPick"), "yellow", 2);
+							if (!enemy.items) enemy.items = ["Pick"];
+							enemy.items.push("Pick");
+							picked = true;
+						} else if (KinkyDungeonRedKeys > 0) {
+							KinkyDungeonRedKeys -= 1;
+							KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealRedKey"), "yellow", 2);
+							if (!enemy.items) enemy.items = ["RedKey"];
+							enemy.items.push("RedKey");
+							picked = true;
+						} else if (KinkyDungeonBlueKeys > 0) {
+							KinkyDungeonBlueKeys -= 1;
+							KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealBlueKey"), "yellow", 2);
+							if (!enemy.items) enemy.items = ["BlueKey"];
+							enemy.items.push("BlueKey");
+							picked = true;
+						}
+						/*else if (KinkyDungeonEnchantedBlades > 0 && KDRandom() < 0.5) {
+							KinkyDungeonEnchantedBlades -= 1;
+							KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealEnchKnife"), "yellow", 2);
+							if (!enemy.items) enemy.items = ["EnchKnife"];
+							enemy.items.push("knife");
+						}*/
+						if (picked) {
+							KinkyDungeonSetFlag("pickpocket", 4);
+							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg", enemy);
+							if (KDRandom() < actionDialogueChanceIntense)
+								KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (enemy.Enemy.playLine ? enemy.Enemy.playLine : "") + "Pickpocket").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 1);
+
+						}
+					}
 					let data = {};
 					if (AIData.attack.includes("Dash") && (enemy.Enemy.dashThruWalls || AIData.canSeePlayer)) {
 						let d = KDDash(enemy, player, AIData.MovableTiles);
@@ -3667,6 +3672,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									if (rep.keyword == "RestraintAdded") rep.value = TextGet("KDRestraintBlockedItem");
 								}
 								msgColor = "#ff8800";
+								attackBlocked = true;
 								bound += 1;
 								if (willpowerDamage == 0)
 									willpowerDamage += AIData.power;
@@ -4283,6 +4289,18 @@ function KinkyDungeonGetWarningTilesAdj() {
 	arr.push({x:0, y:-1});
 
 	return arr;
+}
+
+
+/**
+ * Returns whether or not the player can be pickpocketed
+ * Current conditions are:
+ *  - Player has less than 50 willpower
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDCanPickpocketPlayer(player) {
+	return !KinkyDungeonHasWill(5);
 }
 
 function KDCanPickpocket(enemy) {
