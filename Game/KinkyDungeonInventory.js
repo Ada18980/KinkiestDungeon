@@ -675,7 +675,7 @@ function KinkyDungeonDrawQuickInv() {
 		}
 		KDSortInventory(KinkyDungeonPlayerEntity);
 		return true;
-	}, true, 510, 545, 120, 60, "", KDButtonColor, KinkyDungeonRootDirectory + "InvSort.png", undefined, false, !KDInventoryStatus.SortQuickInv);
+	}, true, 630, 545, 120, 60, "", KDButtonColor, KinkyDungeonRootDirectory + "InvSort.png", undefined, false, !KDInventoryStatus.SortQuickInv);
 
 	DrawButtonKDEx("inventoryhide", (bdata) => {
 		if (!KDGameData.HiddenItems)
@@ -686,7 +686,7 @@ function KinkyDungeonDrawQuickInv() {
 		}
 		KDSortInventory(KinkyDungeonPlayerEntity);
 		return true;
-	}, true, 510, 625, 120, 60, "", KDButtonColor, KinkyDungeonRootDirectory + "InvHide.png", undefined, false, !KDInventoryStatus.HideQuickInv);
+	}, true, 630, 625, 120, 60, "", KDButtonColor, KinkyDungeonRootDirectory + "InvHide.png", undefined, false, !KDInventoryStatus.HideQuickInv);
 
 	DrawButtonKDEx("inventorydrop", (bdata) => {
 		for (let invStat of Object.keys(KDInventoryStatus)) {
@@ -695,7 +695,7 @@ function KinkyDungeonDrawQuickInv() {
 		}
 		KDSortInventory(KinkyDungeonPlayerEntity);
 		return true;
-	}, true, 510, 705, 120, 60, "", KDButtonColor, KinkyDungeonRootDirectory + "InvDrop.png", undefined, false, !KDInventoryStatus.DropQuickInv);
+	}, true, 630, 705, 120, 60, "", KDButtonColor, KinkyDungeonRootDirectory + "InvDrop.png", undefined, false, !KDInventoryStatus.DropQuickInv);
 
 
 	for (let c = 0; c < consumables.length; c++) {

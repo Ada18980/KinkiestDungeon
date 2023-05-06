@@ -19,8 +19,8 @@ let KinkyDungeonWeapons = {
 
 	// Swords
 	"Sword": {name: "Sword", dmg: 3, chance: 1.5, staminacost: 2.4, type: "slash", unarmed: false, rarity: 2, shop: false, cutBonus: 0.01, sfx: "LightSwing"},
-	"ChainSword": {name: "ChainSword", dmg: 2.0, bind: 1.0, bindType: "Metal", chance: 1.6, staminacost: 2.4, type: "slash", unarmed: false, rarity: 2, shop: true, cutBonus: 0.01, sfx: "Chain"},
-	"SlimeSword": {name: "SlimeSword", dmg: 2.2, bind: 2.4, bindType: "Slime", chance: 1.3, staminacost: 2.6, type: "glue", unarmed: false, rarity: 2, shop: true, sfx: "RubberBolt"},
+	"ChainSword": {name: "ChainSword", dmg: 2.5, bind: 0.5, bindType: "Metal", chance: 1.6, staminacost: 2.4, type: "slash", unarmed: false, rarity: 2, shop: true, cutBonus: 0.01, sfx: "Chain"},
+	"SlimeSword": {name: "SlimeSword", dmg: 2.4, bind: 1.9, bindType: "Slime", chance: 1.3, staminacost: 2.6, type: "glue", unarmed: false, rarity: 2, shop: true, sfx: "RubberBolt"},
 	"Katana": {name: "Katana", dmg: 3, chance: 1.5, staminacost: 3.0, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.01, sfx: "LightSwing",
 		events: [
 			{type: "Patience", trigger: "tick", power: 11, buffType: "KatanaCharge", color: "#ffffff"},
