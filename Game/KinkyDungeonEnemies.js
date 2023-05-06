@@ -3614,7 +3614,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							enemy.items.push("knife");
 						}*/
 						if (picked) {
-							KinkyDungeonSetFlag("pickpocket", 4);
+							KinkyDungeonSetFlag("pickpocket", 1);
 							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg", enemy);
 							if (KDRandom() < actionDialogueChanceIntense)
 								KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (enemy.Enemy.playLine ? enemy.Enemy.playLine : "") + "Pickpocket").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 1);
