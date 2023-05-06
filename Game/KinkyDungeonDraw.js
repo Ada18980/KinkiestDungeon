@@ -731,12 +731,12 @@ function KinkyDungeonDrawGame() {
 			if (StandalonePatched) {
 				kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
 				kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
-				kdgamefog.x = kdgameboard.x;
-				kdgamefog.y = kdgameboard.y;
+				//kdgamefog.x = kdgameboard.x;
+				//kdgamefog.y = kdgameboard.y;
 			}
 
-			let CamX_offset = CamX_offsetVis;
-			let CamY_offset = CamY_offsetVis;
+			let CamX_offset = StandalonePatched ? 0 : CamX_offsetVis;
+			let CamY_offset = StandalonePatched ? 0 : CamY_offsetVis;
 
 			KinkyDungeonCamX = CamX;
 			KinkyDungeonCamY = CamY;

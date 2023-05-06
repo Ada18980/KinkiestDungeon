@@ -90,6 +90,7 @@ let KDTilePalette = {
 		AI: {type: "string"},
 		force: {type: "boolean"},
 		faction: {type: "string"},
+		levelBoost: {type: "number"},
 	}},
 	'ForceSpawnCustom': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: [], Label: "Custom"}, customfields: {
 		required: {type: "array"},
@@ -100,6 +101,7 @@ let KDTilePalette = {
 		AI: {type: "string"},
 		force: {type: "boolean"},
 		faction: {type: "string"},
+		levelBoost: {type: "number"},
 	}},
 	'----Tiles----': {type: "none"},
 	'Brick': {type: "tile", tile: '2'},
@@ -1041,6 +1043,10 @@ function KDTE_CloseUI() {
 
 	ElementRemove("MapTileX");
 	ElementRemove("MapTileY");
+	for (let element of customfieldsElements) {
+		ElementRemove("KDTECustomField" + element);
+		customfieldsElements.splice(customfieldsElements.indexOf(element), 1);
+	}
 }
 
 
