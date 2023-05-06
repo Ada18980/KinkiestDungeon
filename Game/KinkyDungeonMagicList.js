@@ -96,7 +96,7 @@ let KinkyDungeonLearnableSpells = [
 	//Page 3: Illusion
 	[
 		// Verbal
-		["Flash", "GreaterFlash", "FocusedFlash", "ShadowWarrior", "Shroud", "Invisibility"],
+		["Flash", "GreaterFlash", "FocusedFlash", "ShadowWarrior", "Shroud", "Invisibility", "GreaterInvisibility"],
 		// Arms
 		["ShadowBlade", "ShadowSlash", "Dagger", "TrueSteel", "Ring", "Light", "Corona"],
 		// Legs
@@ -779,11 +779,18 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			name: "Smoke",
 			duration: 8,
 		}}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
-		{name: "Invisibility", prerequisite: "ApprenticeMystery", tags: ["buff", "utility", "stealth", "defense"], sfx: "Invis", school: "Illusion", manacost: 8, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
+		{name: "Invisibility", prerequisite: "ApprenticeMystery", tags: ["buff", "utility", "stealth", "defense"], sfx: "Invis", school: "Illusion", manacost: 6, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
 			buffs: [
-				{id: "Invisibility", aura: "#888888", type: "Sneak", duration: 10, power: 10.0, player: true, enemies: true, tags: ["invisibility"]},
-				{id: "Invisibility2", type: "SlowDetection", duration: 14, power: 0.5, player: true, enemies: false, tags: ["invisibility"]},
-			], onhit:"", time:14, power: 0, range: 2, size: 1, damage: ""},
+				{id: "Invisibility", aura: "#888888", type: "Sneak", duration: 12, power: 15.0, player: true, enemies: true, tags: ["invisibility"]},
+				{id: "Invisibility2", type: "SlowDetection", duration: 12, power: 0.5, player: true, enemies: false, tags: ["invisibility"]},
+			], onhit:"", time:12, power: 0, range: 2, size: 1, damage: ""},
+		{name: "GreaterInvisibility", prerequisite: "Invisibility", tags: ["buff", "utility", "stealth", "defense"], sfx: "Invis", school: "Illusion", manacost: 10, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
+			upcastFrom: "Invisibility", upcastLevel: 1,
+			buffs: [
+				{id: "Invisibility", aura: "#888888", type: "Sneak", duration: 15, power: 20.0, player: true, enemies: true, tags: ["invisibility"]},
+				{id: "Invisibility2", type: "SlowDetection", duration: 15, power: 0.5, player: true, enemies: false, tags: ["invisibility"]},
+				{id: "GreaterInvisibility", aura: "#a45fd7", type: "Invisible", duration: 15, power: 1.5, player: true, currentCount: -1, maxCount: 1, tags: ["invisibility", "attack", "cast"]}
+			], onhit:"", time:15, power: 0, range: 2, size: 1, damage: ""},
 		{name: "TrueSteel", prerequisite: "ApprenticeKnowledge", tags: ["offense", "stealth", "knowledge"], sfx: "MagicSlash", school: "Illusion", manacost: 2, components: ["Arms"], noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, time:1, power: 4, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "slash",
 			events: [{trigger: "beforeDamageEnemy", type: "MultiplyDamageStealth", power: 2.5, humanOnly: true}]
 		},

@@ -590,6 +590,7 @@ KinkyDungeonBuffCamo,"Camoflage: While holding still, you are very hard to see."
 KinkyDungeonBuffStoneSkin,"Stone Skin: Increased armor."
 KinkyDungeonBuffShadowBlade,"Darkblade: Increased damage."
 KinkyDungeonBuffShield,"Runic Ward: Increased Magic Armor."
+KinkyDungeonBuffGreaterInvisibility,"Great Invisibility: It is impossible for enemies to see you."
 KinkyDungeonBuffInvisibility,"Invisibility: It is very difficult for enemies to see you."
 KinkyDungeonBuffLesserInvisibility,"Lesser Invisibility: It is harder for enemies to see you."
 KinkyDungeonBuffCutting,"FULL POWER: Cutting power increased."
@@ -1052,7 +1053,7 @@ KinkyDungeonInventoryItemSmokeBombDesc2,"Creates a smoke screen lasting 8 turns.
 KinkyDungeonInventoryItemPotionInvisibility,Invisibility Potion
 KinkyDungeonInventoryItemPotionInvisibilityUse,You chug the concoction and see your body fading away.
 KinkyDungeonInventoryItemPotionInvisibilityDesc,"You feel liquid inside, but you can't see it!"
-KinkyDungeonInventoryItemPotionInvisibilityDesc2,"Casts Invisibility on yourself."
+KinkyDungeonInventoryItemPotionInvisibilityDesc2,"Casts Vanish on yourself."
 KinkyDungeonInventoryItemEctoplasm,Ectoplasm
 KinkyDungeonInventoryItemEctoplasmUse,"Like a moisturizing cream, except it's made from coagulated souls."
 KinkyDungeonInventoryItemEctoplasmDesc,"Can be used without hands. Just apply directly to the forehead!"
@@ -5325,7 +5326,7 @@ KinkyDungeonSpellCastShroud,You exhale a misty shroud
 
 KinkyDungeonSpellInvisibility,Invisibility
 KinkyDungeonSpellTargetInvisibility,Select which creature to buff
-KinkyDungeonSpellDescriptionInvisibility,Make the targeted creature invisible, increasing stealth for Duration turns
+KinkyDungeonSpellDescriptionInvisibility,"Make the targeted creature invisible, increasing stealth for Duration turns"
 KinkyDungeonSpellCastInvisibility,You snap your fingers!
 
 KinkyDungeonSpellLockdown,CMD: Lock
@@ -5419,7 +5420,7 @@ KDCommandWordFail_NoTarget,"You must target yourself, an enemy, or a locked obje
 
 KinkyDungeonSpellLesserInvisibility,Lesser Invisibility
 KinkyDungeonSpellTargetLesserInvisibility,Select which creature to buff
-KinkyDungeonSpellDescriptionLesserInvisibility,Make the targeted creature invisible, increasing stealth for Duration turns
+KinkyDungeonSpellDescriptionLesserInvisibility,"Make the targeted creature invisible, increasing stealth for Duration turns"
 KinkyDungeonSpellCastLesserInvisibility,You become semitransparent!
 
 KinkyDungeonSpellCamo,Camouflage
@@ -10226,3 +10227,8 @@ KinkyDungeonInventoryItemFrostSword,Frost Blade
 KinkyDungeonInventoryItemFrostSwordDesc,"As cold as its creator."
 KinkyDungeonInventoryItemFrostSwordDesc2,"Deals 20 bonus ice damage and briefly slows the target."
 ItemPickupFrostSword,"You pick up an icy sword."
+
+KinkyDungeonSpellGreaterInvisibility,Vanish
+KinkyDungeonSpellTargetGreaterInvisibility,Select which creature to buff
+KinkyDungeonSpellDescriptionGreaterInvisibility,"Make the targeted creature invisible, making you totally invisible for Duration turns. Attacking and casting spells reveals your presence but you are still harder to see."
+KinkyDungeonSpellCastGreaterInvisibility,You snap your fingers!
