@@ -205,10 +205,10 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 						else dist = Math.max(1.01 + dist/4, dist/3);
 					}
 					if (dist <= nearestDistance && (pdist_enemy <= 0 ||
-						((KinkyDungeonVisionGet(e.x, e.y) > 0 || pdist_enemy < 5) && (pdist_enemy < 8 || enemy.Enemy.followRange > 1))
+						((KinkyDungeonVisionGet(e.x, e.y) > 0 || pdist_enemy < 5 || e == KinkyDungeonJailGuard() || enemy == KinkyDungeonJailGuard()) && (pdist_enemy < 8 || enemy.Enemy.followRange > 1))
 					)) {
 						if (KinkyDungeonCheckLOS(enemy, e, dist, visionRadius, true, true)
-							&& (KinkyDungeonVisionGet(e.x, e.y) > 0 || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 || e.aware || enemy.aware)) {
+							&& (KinkyDungeonVisionGet(e.x, e.y) > 0 || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 || e.aware || enemy.aware || e == KinkyDungeonJailGuard() || enemy == KinkyDungeonJailGuard())) {
 							if (enemy.rage || !e.Enemy.lowpriority
 									|| (!KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, pdist, visionRadius, true, true) || !KinkyDungeonCheckPath(enemy.x, enemy.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true))) {
 								nearestVisible = e;
@@ -2479,7 +2479,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.harmless = (KinkyDungeonPlayerDamage.dmg <= enemy.Enemy.armor || !KinkyDungeonHasWill(0.1)) && !KinkyDungeonFlags.has("PlayerCombat") && !KinkyDungeonCanTalk() && !KinkyDungeonCanUseWeapon() && KinkyDungeonSlowLevel > 1;
 
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
-	AIData.hostile = KDHostile(enemy);
+	AIData.hostile = KDHostile(enemy, player);
 	AIData.aggressive = KinkyDungeonAggressive(enemy);
 	AIData.domMe = (player.player && AIData.aggressive) ? false : KDCanDom(enemy);
 
