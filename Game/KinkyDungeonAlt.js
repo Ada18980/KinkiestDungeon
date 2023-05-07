@@ -199,7 +199,7 @@ let alts = {
 	"JourneyFloor": {
 		name: "JourneyFloor",
 		bossroom: false,
-		width: 10,
+		width: 12,
 		height: 8,
 		setpieces: {
 		},
@@ -275,7 +275,7 @@ let alts = {
 	},
 };
 
-let KDJourneyList = ["Random", "Harder", "Explorer", "Doll"];
+let KDJourneyList = ["Random", "Harder", "Temple", "Explorer", "Doll"];
 if (param_test) KDJourneyList.push("Test");
 
 function KinkyDungeonAltFloor(Type) {
