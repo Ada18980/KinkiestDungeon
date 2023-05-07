@@ -3026,13 +3026,19 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				}
 			} else if (!KDIsImmobile(enemy) && AIType.move(enemy, player, AIData) && (Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0))  {
 				if (AIData.focusOnLeash && AIData.moveTowardPlayer) {
+					// Only break awareness if the AI cant chase player
 					if (!enemy.IntentLeashPoint) {
 						KDAssignLeashPoint(enemy);
-						enemy.IntentLeashPoint = AIData.nearestJail;
+						enemy.gx = AIData.nearestJail.x;
+						enemy.gy = AIData.nearestJail.y;
+					} else {
+						enemy.gx = enemy.IntentLeashPoint.x;
+						enemy.gy = enemy.IntentLeashPoint.y;
 					}
-					// Only break awareness if the AI cant chase player
-					enemy.gx = enemy.IntentLeashPoint.x;
-					enemy.gy = enemy.IntentLeashPoint.y;
+					if (enemy.x == enemy.gx && enemy.y == enemy.gy) {
+						enemy.gx = player.x;
+						enemy.gy = player.y;
+					}
 				} else {
 					if (enemy.aware) {
 						enemy.path = undefined;
@@ -3414,9 +3420,6 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								}
 
 								if (enemy.IntentLeashPoint) leashPos = enemy.IntentLeashPoint;
-								else if (leashPos == AIData.nearestJail) {
-									enemy.IntentLeashPoint = leashPos;
-								}
 
 								if (AIData.playerDist < 1.5 || !KinkyDungeonGetRestraintItem("ItemDevices"))
 									AIData.leashPos = leashPos;
