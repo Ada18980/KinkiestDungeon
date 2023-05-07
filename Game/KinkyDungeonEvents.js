@@ -2405,6 +2405,9 @@ let KDEventMapWeapon = {
 		"blockBuff": (e, weapon, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: weapon.name + "Block", type: "Block", power: e.power, duration: 2,});
 		},
+		"slowLevel": (e, weapon, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: weapon.name + "SlowLevel", type: "SlowLevel", power: e.power, duration: 2,});
+		},
 		"Charge": (e, weapon, data) => {
 			if (KDGameData.AncientEnergyLevel > 0 && KinkyDungeonSlowMoveTurns < 1) {
 				let currentCharge = KinkyDungeonPlayerBuffs[weapon.name + "Charge"] ? KinkyDungeonPlayerBuffs[weapon.name + "Charge"].duration : 0;

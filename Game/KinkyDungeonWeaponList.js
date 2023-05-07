@@ -18,10 +18,16 @@ let KinkyDungeonWeapons = {
 	},
 
 	// Shields
-	"Shield": {name: "Shield", dmg: 2.0, chance: 0.6, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "HeavySwing",
+	"Shield": {name: "Shield", dmg: 2.0, chance: 0.6, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 2, shop: false, sfx: "HeavySwing",
 		events: [
 			{type: "blockBuff", trigger: "tick", power: 0.6},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 4}
+		]},
+	"ShieldTower": {name: "ShieldTower", dmg: 4.0, chance: 0.25, staminacost: 6.0,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
+		events: [
+			{type: "blockBuff", trigger: "tick", power: 1.2},
+			{type: "slowLevel", trigger: "tick", power: 1},
+			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 7}
 		]},
 
 	// Swords
