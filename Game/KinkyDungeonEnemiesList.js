@@ -1373,7 +1373,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
 
 	{name: "CorruptedAdventurer", faction: "Ghost", clusterWith: "ghost", bound: "CorruptedAdventurer", playLine: "Elemental", color: "#880044",
-		tags: KDMapInit(["shadowHandEnemy", "ghost", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainresist", "shadowHands"]),
+		tags: KDMapInit(["shadowHandEnemy", "ghost", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainresist", "shadowHands", "opendoors"]),
 		followRange: 1, ignoreflag: ["ShadowDommed"], failAttackflag: ["ShadowDommed"],
 		spells: ["ShadowBolt"], spellCooldownMult: 1, spellCooldownMod: 0,
 		AI: "huntshadow",  visionRadius: 10, maxhp: 20, minLevel: 3, weight:-1, movePoints: 4, disarm: 0.33,

@@ -2779,7 +2779,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.wantsToAttack = (player &&
 		(!player.player || (
 			!AIData.ignore
-			&& (player.player && (enemy.id == KDGameData.KinkyDungeonLeashingEnemy || (!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player)) || KinkyDungeonFlags.has("PlayerCombat")))
+			&& (player.player && (
+				KDIsPlayerTetheredToLocation(player, enemy.x, enemy.y, enemy)
+				|| enemy.id == KDGameData.KinkyDungeonLeashingEnemy
+				|| (!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player))
+				|| KinkyDungeonFlags.has("PlayerCombat")))
 		)) ? ((intentAction?.decideAttack) ? (intentAction.decideAttack(enemy, player, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false);
 	AIData.wantsToCast = (player &&
 		(!player.player || (
@@ -2921,15 +2925,21 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				}
 			}
 
-			// try 12 times to find a moveable tile, with some random variance
-			if (
+			AIData.focusOnLeash = (enemy == KinkyDungeonLeashingEnemy() && !AIData.addMoreRestraints && !AIData.addLeash);
+			AIData.moveTowardPlayer =
 				!KDIsImmobile(enemy) &&
 				AIType.chase(enemy, player, AIData)
 				&& !AIData.ignore
 				&& !AIData.dontFollow
+
 				&& (enemy.aware || AIData.followPlayer)
 				&& AIData.playerDist <= AIData.chaseRadius
-				&& (enemy.gx != enemy.x || enemy.gy != enemy.y || enemy.path || enemy.fx || enemy.fy)) {
+				&& (enemy.gx != enemy.x || enemy.gy != enemy.y || enemy.path || enemy.fx || enemy.fy);
+
+			// try 12 times to find a moveable tile, with some random variance
+			// First part is player chasing behavior
+			if (!AIData.focusOnLeash
+				&& AIData.moveTowardPlayer) {
 				//enemy.aware = true;
 
 				for (let T = 0; T < 12; T++) {
@@ -2995,10 +3005,20 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					}
 				}
 			} else if (!KDIsImmobile(enemy) && AIType.move(enemy, player, AIData) && (Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0))  {
-				if (enemy.aware) {
-					enemy.path = undefined;
+				if (AIData.focusOnLeash && AIData.moveTowardPlayer) {
+					if (!enemy.IntentLeashPoint) {
+						KDAssignLeashPoint(enemy);
+						enemy.IntentLeashPoint = AIData.nearestJail;
+					}
+					// Only break awareness if the AI cant chase player
+					enemy.gx = enemy.IntentLeashPoint.x;
+					enemy.gy = enemy.IntentLeashPoint.y;
+				} else {
+					if (enemy.aware) {
+						enemy.path = undefined;
+					}
+					enemy.aware = false;
 				}
-				enemy.aware = false;
 				for (let T = 0; T < 8; T++) {
 					let dir = KDGetDir(enemy, {x: enemy.gx, y: enemy.gy});
 					let splice = false;
@@ -3348,8 +3368,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 								let leashToExit = AIData.leashing && !KinkyDungeonHasWill(0.1) && AIData.playerDist < 1.5;
 
-								AIData.nearestJail = KinkyDungeonNearestJailPoint(enemy.x, enemy.y);
-								if (KinkyDungeonFlags.has("LeashToPrison")) AIData.nearestJail = Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+								KDAssignLeashPoint(enemy);
+
 								let leashPos = AIData.nearestJail;
 								let findMaster = undefined;
 								if (!leashToExit && enemy.Enemy.pullTowardSelf && (Math.abs(player.x - enemy.x) > 1.5 || Math.abs(player.y - enemy.y) > 1.5)) {
@@ -3374,6 +3394,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								}
 
 								if (enemy.IntentLeashPoint) leashPos = enemy.IntentLeashPoint;
+								else if (leashPos == AIData.nearestJail) {
+									enemy.IntentLeashPoint = leashPos;
+								}
 
 								if (AIData.playerDist < 1.5 || !KinkyDungeonGetRestraintItem("ItemDevices"))
 									AIData.leashPos = leashPos;
@@ -5108,4 +5131,13 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 	}
 
 	return added;
+}
+
+/**
+ * Assigns the point an enemy leashes the player to
+ * @param {entity} enemy
+ */
+function KDAssignLeashPoint(enemy) {
+	AIData.nearestJail = KinkyDungeonNearestJailPoint(enemy.x, enemy.y);
+	if (KinkyDungeonFlags.has("LeashToPrison")) AIData.nearestJail = Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
 }
