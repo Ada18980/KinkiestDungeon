@@ -1807,7 +1807,7 @@ let KDEventMapSpell = {
 		"VaultBasic": (e, spell, data) => {
 			if (!data.passThru) {
 				let enemy = KinkyDungeonEntityAt(data.nextPosx, data.nextPosy);
-				if (enemy && !enemy?.player && !KDIsImmobile(enemy) && enemy.vulnerable) {
+				if (enemy && !enemy?.player && !KDIsImmobile(enemy) && (enemy.vulnerable || KinkyDungeonIsSlowed(enemy) || KinkyDungeonIsDisabled(enemy))) {
 					data.passThru = true;
 				}
 			}
