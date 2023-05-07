@@ -3697,81 +3697,20 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						KinkyDungeonTickBuffTag(enemy.buffs, "hit", 1);
 						if (restraintAdd && restraintAdd.length > 0) {
 							msgColor = "#ff5555";
-							let restraintblock = KinkyDungeonGetPlayerStat("RestraintBlock");
-							let restraintpower = 0;
-							for (let r of restraintAdd) {
-								restraintpower += r.power;
-							}
-							let blocked = () => {
+							bound += KDRunBondageResist(enemy, KDGetFaction(enemy), restraintAdd,(r) => {
 								KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: enemy.x - 0.5, y: enemy.y - 0.5}, Color: "white", Time: 2, Delay: 0});
 								for (let rep of replace) {
 									if (rep.keyword == "RestraintAdded") rep.value = TextGet("KDRestraintBlockedItem");
 								}
+								if (!r)
+									KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#88ff88", 1);
 								msgColor = "#ff8800";
 								attackBlocked = true;
 								bound += 1;
 								if (willpowerDamage == 0)
 									willpowerDamage += AIData.power;
-							};
-							restraintblock = KDRestraintBlockPower(restraintblock, restraintpower + (enemy.Enemy.power || 0));
-							if (!restraintblock || KDRandom() < restraintblock) {
-								let protection = 0;
-								let multiPower = restraintAdd.length;
-								let targetGroups = {};
-								for (let r of restraintAdd) {
-									targetGroups[r.Group] = true;
-								}
-								// Calculate power of an attack vs protection
-								let protectRestraints = KinkyDungeonAllRestraint().filter((r) => {return KDRestraint(r).protection > 0;});
-								for (let r of protectRestraints) {
-									if (r && KDRestraint(r).protection && (!KDRestraint(r).protectionCursed || targetGroups[KDRestraint(r).Group])) {
-										protection += KDRestraint(r).protection;
-									}
-								}
-
-								let count = 0;
-								if (protection >= multiPower) {
-									for (let r of protectRestraints) {
-										if (count < multiPower) {
-											KinkyDungeonRemoveRestraint(KDRestraint(r).Group, true);
-											KinkyDungeonSendTextMessage(
-												5, TextGet("KDArmorBlock")
-													.replace("ArmorName", TextGet("Restraint" + r.name))
-													.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
-												"#ffff00", 1);
-										}
-										count += KDRestraint(r).protection;
-									}
-									blocked();
-								} else {
-									for (let r of restraintAdd) {
-										let bb = 0;
-										if (count >= protection) {
-											bb = KinkyDungeonAddRestraintIfWeaker(r, AIData.power, KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy.Enemy.bypass, enemy.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, KDGetFaction(enemy), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, enemy) * 2;
-											if (bb) {
-												if (KDGroupBlocked(r.Group) && !enemy.Enemy.bypass) {
-													KinkyDungeonSendTextMessage(
-														5, TextGet("KDBypasses")
-															.replace("RestraintName", TextGet("Restraint" + r.name))
-															.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
-														"#ffff00", 1);
-												}
-												if (restraintFromInventory.includes(r.name)) {
-													restraintFromInventory.splice(restraintFromInventory.indexOf(r.name), 1);
-													if (enemy.items?.includes(r.name)) {
-														enemy.items.splice(enemy.items.indexOf(r.name), 1);
-													}
-												}
-												KDSendStatus('bound', r.name, "enemy_" + enemy.Enemy.name);
-											}
-										}
-										bound += bb;
-										count += 1;
-									}
-								}
-							} else {
-								blocked();
-							}
+							},
+							restraintFromInventory).length*2;
 						}
 
 
@@ -5102,4 +5041,86 @@ function KDGetExtraTags(enemy, useSpecial) {
 	}
 
 	return tags;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {string} faction
+ * @param {restraint[]} restraintsToAdd
+ * @param {(item) => void} blockFunction
+ * @param {string[]} [restraintFromInventory]
+ * @param {spell} [spell]
+ * @returns {restraint[]}
+ */
+function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, restraintFromInventory, spell) {
+	let restraintblock = KinkyDungeonGetPlayerStat("RestraintBlock");
+	let restraintpower = 0;
+	for (let r of restraintsToAdd) {
+		restraintpower += r.power;
+	}
+	let added = [];
+	let name = enemy ? TextGet("Name" + enemy.Enemy.name) : (spell ? TextGet("KinkyDungeonSpell" + spell.name) : "");
+
+	restraintblock = KDRestraintBlockPower(restraintblock, restraintpower + (enemy?.Enemy.power || spell.power || 0));
+	if (!restraintblock || KDRandom() < restraintblock) {
+		let protection = 0;
+		let multiPower = restraintsToAdd.length;
+		let targetGroups = {};
+		for (let r of restraintsToAdd) {
+			targetGroups[r.Group] = true;
+		}
+		// Calculate power of an attack vs protection
+		let protectRestraints = KinkyDungeonAllRestraint().filter((r) => {return KDRestraint(r).protection > 0;});
+		for (let r of protectRestraints) {
+			if (r && KDRestraint(r).protection && (!KDRestraint(r).protectionCursed || targetGroups[KDRestraint(r).Group])) {
+				protection += KDRestraint(r).protection;
+			}
+		}
+
+		let count = 0;
+		if (protection >= multiPower) {
+			for (let r of protectRestraints) {
+				if (count < multiPower) {
+					KinkyDungeonRemoveRestraint(KDRestraint(r).Group, true);
+					KinkyDungeonSendTextMessage(
+						5, TextGet("KDArmorBlock")
+							.replace("ArmorName", TextGet("Restraint" + r.name))
+							.replace("EnemyName", name),
+						"#ffff00", 1);
+				}
+				count += KDRestraint(r).protection;
+			}
+			blockFunction();
+		} else {
+			for (let r of restraintsToAdd) {
+				let bb = 0;
+				if (count >= protection) {
+					bb = KinkyDungeonAddRestraintIfWeaker(r, AIData.power, KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, enemy?.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, faction, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, enemy) * 2;
+					if (bb) {
+						if (KDGroupBlocked(r.Group) && !enemy?.Enemy.bypass) {
+							KinkyDungeonSendTextMessage(
+								5, TextGet("KDBypasses")
+									.replace("RestraintName", TextGet("Restraint" + r.name))
+									.replace("EnemyName", name),
+								"#ffff00", 1);
+						}
+						if (restraintFromInventory && enemy && restraintFromInventory.includes(r.name)) {
+							restraintFromInventory.splice(restraintFromInventory.indexOf(r.name), 1);
+							if (enemy.items?.includes(r.name)) {
+								enemy.items.splice(enemy.items.indexOf(r.name), 1);
+							}
+						}
+						added.push(r);
+						KDSendStatus('bound', r.name, "enemy_" + name);
+					}
+				}
+				count += 1;
+			}
+		}
+	} else {
+		blockFunction();
+	}
+
+	return added;
 }

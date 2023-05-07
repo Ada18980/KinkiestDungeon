@@ -239,21 +239,18 @@ let KDPlayerEffects = {
  * @param {boolean} [bypass] - Bypass inaccessible things
  * @returns {restraint[]}
  */
-function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, allowEvade = false, allowBlock = true) {
-	let added = [];
+function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, allowEvade = false, allowBlock = false, allowBondageResist = true) {
+	let restraintsToAdd = [];
+	let player = KinkyDungeonPlayerEntity;
 	for (let i = 0; i < count; i++) {
 		let restraintAdd = KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel + (spell?.power || 0), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 
-		let player = KinkyDungeonPlayerEntity;
 		let playerEvasion = allowEvade ? KinkyDungeonPlayerEvasion() : 0;
 		let playerBlock = allowBlock ? KinkyDungeonPlayerBlock() : 0;
 		let missed = allowEvade && KDRandom() * AIData.accuracy < 1 - playerEvasion;
 		let blockedAtk = allowBlock && KDRandom() * AIData.accuracy < 1 - playerBlock;
 		if (!missed && !blockedAtk) {
-			if (restraintAdd && KinkyDungeonAddRestraintIfWeaker(restraintAdd, (spell?.power || 0), bypass, undefined, false, false, undefined, faction, !noDeep)) {
-				KDSendStatus('bound', restraintAdd.name, "spell_" + spell?.name);
-				added.push(restraintAdd);
-			}
+			restraintsToAdd.push(restraintAdd);
 		} else {
 			if (missed) {
 				KinkyDungeonSendEvent("missPlayerSpell", {spell: spell, player: player});
@@ -267,7 +264,15 @@ function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, all
 
 		}
 	}
-	return added;
+	if (restraintsToAdd.length > 0) {
+		return KDRunBondageResist(undefined, faction, restraintsToAdd,(r) => {
+			KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: player.x - 0.5, y: player.y - 0.5}, Color: "white", Time: 2, Delay: 0});
+
+			if (!r)
+				KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#88ff88", 1);
+		}, undefined, spell);
+	}
+	return [];
 }
 
 
