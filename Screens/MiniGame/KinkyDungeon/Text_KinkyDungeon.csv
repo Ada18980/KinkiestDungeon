@@ -55,7 +55,7 @@ KinkyDungeonFastWait,Wait Quickly
 KDHelpless,Helpless!
 KDMissed,Evaded!
 KDBlocked,Blocked!
-KDBlockedRestraint,Resisted restraint!
+KDBlockedRestraint,Resisted Bondage!
 
 KDWallBump,You bump into a wall.
 
@@ -10051,3 +10051,5 @@ KinkyDungeonSpellBlock,You block the EnemyName!
 KinkyDungeonSpellMiss,You dodge the EnemyName!
 
 KinkyDungeonSpell,Spell
+
+KDBondageResistBlockTotal,"You resist being bound!"
