@@ -284,10 +284,12 @@ let KDOptOut = false;
 * CollectedHearts: number,
 * CollectedOrbs: number,
 * otherPlaying: number,
+* Training: Record<string, KDTrainingRecord>,
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	Training: {},
 	CollectedOrbs: 0,
 	CollectedHearts: 0,
 	DollRoomCount: 0,

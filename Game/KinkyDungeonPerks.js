@@ -236,6 +236,8 @@ let KinkyDungeonStatsPresets = {
 	"Vengeance": {category: "Enemies", id: "Vengeance", cost: -1},
 	"AbsoluteFocus": {category: "Magic", id: "AbsoluteFocus", cost: -1},
 
+	"SelfBondage": {category: "Start", id: "SelfBondage", cost: 0, tags: ["start"]},
+
 	"Hogtied": {startPriority: 50, category: "Start", id: "Hogtied", cost: -1, tags: ["start"]},
 	"StartObsidian": {startPriority: 5, category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
 	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
@@ -468,6 +470,27 @@ let KDPerkStart = {
 		KinkyDungeonInventoryAddWeapon("Knife");
 		KDSetWeapon("Knife");
 		KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
+	},
+	SelfBondage: () =>{
+		if (KinkyDungeonStatsChoice.get("arousalMode")) {
+			KinkyDungeonInventoryAddLoose("TrapBelt");
+			KinkyDungeonInventoryAddLoose("TrapVibe");
+			KinkyDungeonInventoryAddLoose("TrapPlug");
+		}
+		if (KinkyDungeonStatsChoice.get("arousalModePlug")) {
+			KinkyDungeonInventoryAddLoose("RearVibe1");
+		}
+		KinkyDungeonInventoryAddLoose("TrapCuffs");
+		KinkyDungeonInventoryAddLoose("TrapGag");
+		KinkyDungeonInventoryAddLoose("TrapBlindfold");
+		KinkyDungeonInventoryAddLoose("TrapArmbinder");
+		KinkyDungeonInventoryAddLoose("RopeSnakeArmsBoxtie");
+		KinkyDungeonInventoryAddLoose("RopeSnakeArmsWrist");
+		KinkyDungeonInventoryAddLoose("RopeSnakeLegs");
+		KinkyDungeonInventoryAddLoose("RopeSnakeFeet");
+		KinkyDungeonInventoryAddLoose("SturdyLeatherBeltsArms");
+		KinkyDungeonInventoryAddLoose("SturdyLeatherBeltsLegs");
+		KinkyDungeonInventoryAddLoose("SturdyLeatherBeltsFeet");
 	},
 	StartLatex: () =>{
 		KinkyDungeonChangeRep("Latex", 10);

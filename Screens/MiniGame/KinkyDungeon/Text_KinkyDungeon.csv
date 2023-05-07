@@ -4447,6 +4447,7 @@ ItemPickupScrollVerbal,"You pick up a Scroll of Speech."
 ItemPickupScrollLegs,"You pick up a Scroll of Sauntering."
 
 KinkyDungeonDisarm,"As you strike again, your weapon is pulled out of your grasp!"
+KinkyDungeonDisarmLeash,"Your weapon is pulled out of your hand and tossed away by your captor!"
 KinkyDungeonDisarmCut,"Your weapon slips out of your hand as you try to cut with it..."
 
 KinkyDungeonUnEquipWeapon,"You put away the WEAPONNAME"
@@ -10340,3 +10341,6 @@ KinkyDungeonSpellMiss,You dodge the EnemyName!
 KinkyDungeonSpell,Spell
 
 KDBondageResistBlockTotal,"You resist being bound!"
+
+KinkyDungeonStatSelfBondage,"Self Bondage Enthusiast"
+KinkyDungeonStatDescSelfBondage,"Start with a basic self-bondage kit."
