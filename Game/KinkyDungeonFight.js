@@ -331,24 +331,28 @@ function KDPlayerEvasionPenalty() {
 	return evasionPenalty;
 }
 function KDPlayerBlockPenalty() {
-	let blockPenalty = 0;
-	if (!KinkyDungeonCanUseWeapon()) blockPenalty += 0.5;
+	let blockPenalty = Math.min(0.5, .1 * KinkyDungeonBlindLevel);
+	if (KinkyDungeonIsArmsBound(false, true)) blockPenalty = blockPenalty + (1 - blockPenalty) * 0.7;
 
-	return blockPenalty;
+	return Math.min(1, blockPenalty);
 }
 
 function KinkyDungeonPlayerEvasion() {
 	let playerEvasionMult = 1.0;
-	let playerEvasionPenalty = KDPlayerEvasionPenalty();
-	let val = playerEvasionMult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion") - playerEvasionPenalty);
+	let eva = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion");
+	let playerEvasionPenalty = eva > 0 ? Math.min(eva, KDPlayerEvasionPenalty()) : 0;
+	let val = playerEvasionMult * KinkyDungeonMultiplicativeStat(eva - playerEvasionPenalty
+		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "EvasionProtected"));
 
 	return val;
 }
 
 function KinkyDungeonPlayerBlock() {
 	let playerBlockMult = 1.0;
-	let playerBlockPenalty = KDPlayerBlockPenalty();
-	let val = playerBlockMult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block") - playerBlockPenalty);
+	let blk = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block");
+	let playerBlockPenalty = blk > 0 ? Math.min(blk, KDPlayerBlockPenalty()) : 0;
+	let val = playerBlockMult * KinkyDungeonMultiplicativeStat(blk - playerBlockPenalty
+		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BlockProtected"));
 
 	return val;
 }

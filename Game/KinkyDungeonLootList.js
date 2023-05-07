@@ -179,6 +179,8 @@ let KinkyDungeonLootTable = {
 		{name: "axe", minLevel: 0, weight:1, weapon: "Axe", noweapon: ["Axe"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "spear", minLevel: 0, weight:1, weapon: "Spear", noweapon: ["Spear"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "ShieldTower", minLevel: 0, weight:1.5, weapon: "ShieldTower", noweapon: ["ShieldTower"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "ShieldReinforced", minLevel: 0, weight:1.0, weapon: "ShieldReinforced", noweapon: ["ShieldReinforced"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "ShieldMagic", minLevel: 0, weight:1.0, weapon: "ShieldMagic", noweapon: ["ShieldMagic"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		//{name: "sword", minLevel: 0, weight:1, weapon: "Sword", noweapon: ["Sword"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "SlimeSword", minLevel: 0, weight:1, weapon: "SlimeSword", noweapon: ["SlimeSword"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "ChainSword", minLevel: 0, weight:1, weapon: "ChainSword", noweapon: ["ChainSword"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
