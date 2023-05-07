@@ -3649,7 +3649,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						&& !enemy.Enemy.nopickpocket && enemy.Enemy.bound && !KDGameData.JailKey && KDCanPickpocket(enemy)) {
 						let item = playerItems.length > 0 ? playerItems[Math.floor(KDRandom() * playerItems.length)] : undefined;
 						let picked = false;
-						if (KDIsPlayerTethered(KinkyDungeonPlayerEntity) && KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed
+						// If the player's location is trapped she will get disarmed
+						if ((KDIsPlayerTethered(KinkyDungeonPlayerEntity) || KinkyDungeonSlowLevel > 9) && KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed
 							&& KinkyDungeonIsArmsBound() && KDRandom() < 0.5) {
 							// Disarm the player
 							KinkyDungeonDisarm(enemy, "Leash");

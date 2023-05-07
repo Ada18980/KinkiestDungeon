@@ -527,12 +527,18 @@ let KDEventMapInventory = {
 							ee.y = point.y;
 						}
 					}
-					if (ee && (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail')) {
-						ee.IntentAction = 'freeFurniture';
-						ee.playWithPlayer = 12;
-						//if (KDGameData.CagedTime > KDMaxCageTime * 10) {
-						//}
-					}
+					//if (ee && (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail')) {
+					ee.IntentAction = 'freeFurniture';
+					ee.playWithPlayer = 12;
+					//if (KDGameData.CagedTime > KDMaxCageTime * 10) {
+					//}
+					/*} else {
+						ee.gx = KinkyDungeonPlayerEntity.x;
+						ee.gy = KinkyDungeonPlayerEntity.y;
+						ee.gxx = KinkyDungeonPlayerEntity.x;
+						ee.gyy = KinkyDungeonPlayerEntity.y;
+					}*/
+
 				}
 			}
 			let guard = KinkyDungeonJailGuard();

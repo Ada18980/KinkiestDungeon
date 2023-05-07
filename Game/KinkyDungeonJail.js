@@ -412,7 +412,7 @@ function KinkyDungeonHandleJailSpawns(delta) {
 	else KDGameData.JailTurns = 1;
 	if (KinkyDungeonInJail(KDJailFilters)) KDGameData.JailRemoveRestraintsTimer += delta;
 
-	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, ["jail"]);
 
 	if (!nearestJail) return;
 
@@ -472,6 +472,7 @@ function KinkyDungeonHandleJailSpawns(delta) {
 				&& !KinkyDungeonFlags.has("notickguardtimer")
 				&& !KinkyDungeonFlags.has("nojailbreak")) {
 				let g = KinkyDungeonJailGuard();
+				console.log("Despawned guard");
 				KDClearItems(g);
 				KDSpliceIndex(KinkyDungeonEntities.indexOf(KinkyDungeonJailGuard()), 1);
 				if (KinkyDungeonTilesGet((xx-1) + "," + yy) && KinkyDungeonTilesGet((xx-1) + "," + yy).Type == "Door") {
