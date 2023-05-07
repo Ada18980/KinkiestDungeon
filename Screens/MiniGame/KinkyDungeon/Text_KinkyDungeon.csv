@@ -5109,9 +5109,9 @@ KinkyDungeonSpellDescriptionAthlete,"Sprinting costs 40% less stamina."
 KinkyDungeonSpellSneaky,Sneaky
 KinkyDungeonSpellDescriptionSneaky,"You are harder to see when waiting."
 KinkyDungeonSpellVault,Vault
-KinkyDungeonSpellDescriptionVault,"You can dash through vulnerble enemies."
+KinkyDungeonSpellDescriptionVault,"You can dash through vulnerble enemies that aren't immobile."
 KinkyDungeonSpellVaultAdv,Improved Vault
-KinkyDungeonSpellDescriptionVault,"You can dash through enemies that aren't immobile."
+KinkyDungeonSpellDescriptionVaultAdv,"You can dash through enemies that aren't immobile."
 KinkyDungeonSpellEvasive1,Dodge I
 KinkyDungeonSpellDescriptionEvasive1,"+10 Evasion"
 KinkyDungeonSpellEvasive2,Dodge II
@@ -9074,7 +9074,8 @@ rBlacksmithShopSword,"(The SPEAKER nods)|A versatile weapon. One of my favorites
 rBlacksmithShopSpear,"(The SPEAKER nods)|Keep your friends close, and your enemies far away."
 rBlacksmithShopKnife,"(The SPEAKER nods)|Handy to have one of these around."
 rBlacksmithShopAxe,"(The SPEAKER nods)|The best defense is a good offense."
-rBlacksmithShopTrapCuffs,"(The SPEAKER looks puzzled)|Don't know why you want 'em, but sure."
+rBlacksmithShopShield,"(The SPEAKER nods)|You can never be too careful."
+rBlacksmithShopTrapCuffs,"(The SPEAKER smiles)|Can never be too prepared~"
 
 
 rPotionSell,"(The SPEAKER approaches you with an offer)|Greetings! I am a potion trader.|Give me your strongest potions!|I pay cash!"
@@ -10292,8 +10293,13 @@ ItemPickupFrostSword,"You pick up an icy sword."
 
 KinkyDungeonInventoryItemShield,Targe
 KinkyDungeonInventoryItemShieldDesc,"Hide behind it while you still can."
-KinkyDungeonInventoryItemShieldDesc2,"Deals crush damage. Increases Block by 60 after being held for one turn. On hit, stuns enemy for 4 turns."
+KinkyDungeonInventoryItemShieldDesc2,"+60 Block. Deals crush damage and stuns for 4 turns."
 ItemPickupShield,"You pick up a wooden shield."
+
+KinkyDungeonInventoryItemShieldTower,Tower Shield
+KinkyDungeonInventoryItemShieldTowerDesc,""
+KinkyDungeonInventoryItemShieldTowerDesc2,"+120 Block. Increases slow level by 1. Deals crush damage and stuns for 6 turns."
+ItemPickupShieldTower,"You pick up a metal tower shield."
 
 KinkyDungeonSpellGreaterInvisibility,Vanish
 KinkyDungeonSpellTargetGreaterInvisibility,Select which creature to buff

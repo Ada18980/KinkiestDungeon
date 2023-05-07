@@ -1310,7 +1310,7 @@ Minor Changes:
 - Added Quick inventory sorting and ability to drop items
 - Added Gigantic Slime and Latex Cube enemies
 - New spell: Vanish, tweaked Invisibility
-- New weapon: Targe
+- New weapons: Targe, Tower Shield
 - Steadfast Guard renamed to Defiance so I can reuse the name
 - New upgrades: Parry, Dagger Parry, Riposte, Steadfast Guard, The Power of Steel
 
