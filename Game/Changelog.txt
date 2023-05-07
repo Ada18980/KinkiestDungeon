@@ -1314,6 +1314,7 @@ Minor Changes:
 - Steadfast Guard renamed to Defiance so I can reuse the name
 - New upgrades: Parry, Dagger Parry, Riposte, Steadfast Guard, The Power of Steel
 - Many projectile spells are now blockable. A few (rubber bullets and earth witch boulder) can also be evaded, as it doesn't make much sense to block these
+- Leashing enemies will disarm the player
 
 TODO: Mushrooms in the jungle
 

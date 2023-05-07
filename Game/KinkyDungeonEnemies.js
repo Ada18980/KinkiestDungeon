@@ -3600,11 +3600,16 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					let attackBlocked = false;
 
 					if (player.player && AIData.attack.includes("Bind") && !attackBlocked && KDCanPickpocketPlayer(player)
-						&& KDGameData.KinkyDungeonLeashedPlayer < 1 && !enemy.Enemy.nopickpocket && enemy.Enemy.bound && !KDGameData.JailKey && KDCanPickpocket(enemy)) {
+						&& !enemy.Enemy.nopickpocket && enemy.Enemy.bound && !KDGameData.JailKey && KDCanPickpocket(enemy)) {
 						let item = playerItems.length > 0 ? playerItems[Math.floor(KDRandom() * playerItems.length)] : undefined;
 						let picked = false;
-						if (item && playerItems.length > 0
-							&& KinkyDungeonIsArmsBound() && ((!KinkyDungeonPlayerDamage || item.name != KinkyDungeonPlayerDamage.name) || KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax * 0.05) && KDRandom() < 0.5) {
+						if (KDIsPlayerTethered(KinkyDungeonPlayerEntity) && KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed
+							&& KinkyDungeonIsArmsBound() && KDRandom() < 0.5) {
+							// Disarm the player
+							KinkyDungeonDisarm(enemy, "Leash");
+							picked = true;
+						} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && item && playerItems.length > 0
+							&& KinkyDungeonIsArmsBound() && ((!KinkyDungeonPlayerDamage || item.name != KinkyDungeonPlayerDamage.name) || KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.05) && KDRandom() < 0.5) {
 							if (item.type == Weapon) {
 								KinkyDungeonInventoryRemove(item);
 								//KinkyDungeonAddLostItems([item], false);
@@ -3624,19 +3629,19 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStealItem").replace("ITEMSTOLEN", TextGet("KinkyDungeonInventoryItem" + item.name)), "yellow", 2);
 								picked = true;
 							}
-						} else if (KinkyDungeonLockpicks > 0 && KDRandom() < 0.5) {
+						} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonLockpicks > 0 && KDRandom() < 0.5) {
 							KinkyDungeonLockpicks -= 1;
 							KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealPick"), "yellow", 2);
 							if (!enemy.items) enemy.items = ["Pick"];
 							enemy.items.push("Pick");
 							picked = true;
-						} else if (KinkyDungeonRedKeys > 0) {
+						} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonRedKeys > 0) {
 							KinkyDungeonRedKeys -= 1;
 							KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealRedKey"), "yellow", 2);
 							if (!enemy.items) enemy.items = ["RedKey"];
 							enemy.items.push("RedKey");
 							picked = true;
-						} else if (KinkyDungeonBlueKeys > 0) {
+						} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonBlueKeys > 0) {
 							KinkyDungeonBlueKeys -= 1;
 							KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealBlueKey"), "yellow", 2);
 							if (!enemy.items) enemy.items = ["BlueKey"];
@@ -3678,7 +3683,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (restraintAdd && restraintAdd.length > 0) {
 							msgColor = "#ff5555";
 							bound += KDRunBondageResist(enemy, KDGetFaction(enemy), restraintAdd,(r) => {
-								KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: enemy.x - 0.5, y: enemy.y - 0.5}, Color: "white", Time: 2, Delay: 0});
+								KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: enemy.x - 0.5, y: enemy.y - 0.5}, Color: "#88ff88", Time: 2, Delay: 0});
 								for (let rep of replace) {
 									if (rep.keyword == "RestraintAdded") rep.value = TextGet("KDRestraintBlockedItem");
 								}
@@ -4238,7 +4243,7 @@ function KinkyDungeonGetWarningTilesAdj() {
  * @returns {boolean}
  */
 function KDCanPickpocketPlayer(player) {
-	return !KinkyDungeonHasWill(5);
+	return !KinkyDungeonHasWill(5) || KDIsPlayerTethered(KinkyDungeonPlayerEntity);
 }
 
 function KDCanPickpocket(enemy) {

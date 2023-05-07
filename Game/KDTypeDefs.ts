@@ -2088,6 +2088,14 @@ type KDExpression = {
 	};
 }
 
+interface KDTrainingRecord {
+	turns_trained: number,
+	turns_skipped: number,
+	turns_total: number,
+	training_points: number,
+	training_stage: number,
+}
+
 type KDSprites = {[_: string]: (x: number, y: number, fog: boolean, noReplace: string) => string}
 
 declare const zip: any;
