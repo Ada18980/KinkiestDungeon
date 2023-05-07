@@ -926,8 +926,19 @@ interface enemy extends KDHasTags {
 	specialsfx?: string,
 	/** Stuns the enemy when the special attack goes on CD without a hit */
 	stunOnSpecialCD?: number,
-	/** Dashes to the player even when a dash misses*/
-	dashOnMiss?: boolean,
+	/** Dash info */
+	Dash?: {
+		/** Does not dash to the player if the dash is stepped out of the way of*/
+		noDashOnSidestep?: boolean,
+		/** Does not dash to the player if the dash is dodged*/
+		noDashOnMiss?: boolean,
+		/** Does not dash to the player if the dash is blocked*/
+		noDashOnBlock?: boolean,
+		/** Forces the event to play when a dash misses, even if there are no eventable attack types*/
+		EventOnDashMiss?: boolean,
+		/** Forces the event to play when a dash is blocked, even if there are no eventable attack types*/
+		EventOnDashBlock?: boolean,
+	},
 	/** */
 	cohesion?: number,
 	/** */

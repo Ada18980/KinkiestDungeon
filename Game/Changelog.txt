@@ -1317,6 +1317,7 @@ Minor Changes:
 - Leashing enemies will disarm the player
 - New perk: Self bondage enthusiast
 - Enemies will try to be much more aggressive when leashing you
+- Vault is now more limited although you can purchase the full version which is just as good as before. Requires Evasion I now.
 
 TODO: Mushrooms in the jungle
 
