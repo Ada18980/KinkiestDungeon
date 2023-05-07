@@ -1908,7 +1908,7 @@ function KinkyDungeonIsDisabled(enemy) {
  * @returns {boolean}
  */
 function KinkyDungeonIsSlowed(enemy) {
-	return enemy && ((KDBoundEffects(enemy) > 0 && KDBoundEffects(enemy) < 4) || enemy.slow > 0 || KinkyDungeonGetBuffedStat(enemy.buffs, "MoveSpeed") < 0);
+	return enemy && ((KDBoundEffects(enemy) > 0 && KDBoundEffects(enemy) < 4) || enemy.slow > 0 || enemy.bind > 0 || KinkyDungeonGetBuffedStat(enemy.buffs, "MoveSpeed") < 0);
 }
 
 

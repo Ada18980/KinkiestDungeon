@@ -5109,7 +5109,7 @@ KinkyDungeonSpellDescriptionAthlete,"Sprinting costs 40% less stamina."
 KinkyDungeonSpellSneaky,Sneaky
 KinkyDungeonSpellDescriptionSneaky,"You are harder to see when waiting."
 KinkyDungeonSpellVault,Vault
-KinkyDungeonSpellDescriptionVault,"You can dash through vulnerble enemies that aren't immobile."
+KinkyDungeonSpellDescriptionVault,"You can dash through vulnerable, slowed, or disabled enemies that aren't immobile."
 KinkyDungeonSpellVaultAdv,Improved Vault
 KinkyDungeonSpellDescriptionVaultAdv,"You can dash through enemies that aren't immobile."
 KinkyDungeonSpellEvasive1,Dodge I
