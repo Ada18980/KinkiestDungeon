@@ -665,8 +665,8 @@ StatKeyEscapeKey,Got the keys! Find the stairs to go to the next floor.
 StatKeyEscapeNoKey,You haven't found the keys for this floor yet.
 StatKey,Missing key
 StatMiscastChance,"Chance for a spell to fizzle: "
-StatEvasion,"Dodge Chance: Percent%, based on EVASIONSUM Evasion, -EVASIONPENALTY penalty from bindings"
-StatBlock,"Block Chance: Percent%, based on BLOCKSUM Block, -BLOCKPENALTY penalty from bindings"
+StatEvasion,"Dodge Chance: Percent%, based on EVASIONSUM Evasion, -EVASIONPENALTY% penalty from bindings"
+StatBlock,"Block Chance: Percent%, based on BLOCKSUM Block, -BLOCKPENALTY% penalty from bindings"
 StatRestraintBlock,"Chance to resist a level 10 restraint: Percent%"
 StatVision,"Sight Range: RADIUS"
 StatSpeed,"Speed: SPD"
@@ -1359,7 +1359,6 @@ KinkyDungeonChargerChargeFailure,Nothing seems to happen
 KinkyDungeonTorsoGrab,The EnemyName grabs you by the RestraintName and keeps you in place!
 KinkyDungeonLeashGrab,The EnemyName grabs you and pulls you!!!
 KinkyDungeonAttackMiss,The EnemyName misses you!
-KinkyDungeonAttackBlock,You block the EnemyName attack!
 
 KinkyDungeonHearDoorOpenNear,You hear a door creak open nearby!
 KinkyDungeonHearDoorOpenFar,You hear the faint sound of a door opening.
@@ -10297,9 +10296,19 @@ KinkyDungeonInventoryItemShieldDesc2,"+60 Block. Deals crush damage and stuns fo
 ItemPickupShield,"You pick up a wooden shield."
 
 KinkyDungeonInventoryItemShieldTower,Tower Shield
-KinkyDungeonInventoryItemShieldTowerDesc,""
-KinkyDungeonInventoryItemShieldTowerDesc2,"+120 Block. Increases slow level by 1. Deals crush damage and stuns for 6 turns."
+KinkyDungeonInventoryItemShieldTowerDesc,"Now with more leg room."
+KinkyDungeonInventoryItemShieldTowerDesc2,"+120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns."
 ItemPickupShieldTower,"You pick up a metal tower shield."
+
+KinkyDungeonInventoryItemShieldReinforced,Reinforced Shield
+KinkyDungeonInventoryItemShieldReinforcedDesc,"New and improved, but also clumsier."
+KinkyDungeonInventoryItemShieldReinforcedDesc2,"+80 Block, +15 Physical Armor. Deals crush damage and stuns for 5 turns."
+ItemPickupShieldReinforced,"You pick up a reinforced shield."
+
+KinkyDungeonInventoryItemShieldMagic,Runic Shield
+KinkyDungeonInventoryItemShieldMagicDesc,"For when you've been tied up one too many times..."
+KinkyDungeonInventoryItemShieldMagicDesc2,"+80 Block, +20 Magic Armor. Deals crush damage and stuns for 5 turns."
+ItemPickupShieldMagic,"You pick up a runic shield."
 
 KinkyDungeonSpellGreaterInvisibility,Vanish
 KinkyDungeonSpellTargetGreaterInvisibility,Select which creature to buff
@@ -10322,3 +10331,10 @@ KinkyDungeonSpellDescriptionSteelParry,"+5 Block for each 50 max willpower you h
 KinkyDungeonSpellGuardBoost,Secure Defense
 KinkyDungeonSpellDescriptionGuardBoost,"+10-60 Block, based on your percentage of Willpower."
 
+KinkyDungeonAttackBlock,You block the EnemyName attack!
+KinkyDungeonSpellBindBlock,You block a binding from EnemyName!
+KinkyDungeonSpellBindMiss,You dodge a binding from EnemyName!
+KinkyDungeonSpellBlock,You block the EnemyName!
+KinkyDungeonSpellMiss,You dodge the EnemyName!
+
+KinkyDungeonSpell,Spell
