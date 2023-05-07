@@ -5074,7 +5074,7 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 	let added = [];
 	let name = enemy ? TextGet("Name" + enemy.Enemy.name) : (spell ? TextGet("KinkyDungeonSpell" + spell.name) : "");
 
-	restraintblock = KDRestraintBlockPower(restraintblock, restraintpower + (enemy?.Enemy.power || spell.power || 0));
+	restraintblock = KDRestraintBlockPower(restraintblock, restraintpower + (enemy?.Enemy.power || spell?.power || 0));
 	if (!restraintblock || KDRandom() < restraintblock) {
 		let protection = 0;
 		let multiPower = restraintsToAdd.length;
