@@ -11,6 +11,16 @@ let commentChance = 0.03;
 let actionDialogueChance = 0.1;
 let actionDialogueChanceIntense = 0.4;
 
+let KDEventableAttackTypes = [
+	"Lock",
+	"Will",
+	"Bind",
+	"Effect",
+	"Stun",
+	"Blind",
+	"Slow",
+];
+
 
 
 /**
@@ -3229,14 +3239,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (enemy.Enemy.specialRange && enemy.usingSpecial && enemy.Enemy.specialCDonAttack) {
 							enemy.specialCD = enemy.Enemy.specialCD;
 							if (enemy.Enemy.stunOnSpecialCD) enemy.stun = enemy.Enemy.stunOnSpecialCD;
-							if (AIData.attack.includes("Dash") && enemy.Enemy.dashOnMiss) {
+							if (AIData.attack.includes("Dash") && !enemy.Enemy.Dash?.noDashOnSidestep) {
 								KDDash(enemy, player, AIData.MovableTiles);
 							}
 						}
 						if (enemy.Enemy.specialWidth && enemy.usingSpecial && enemy.Enemy.specialCDonAttack) {
 							enemy.specialCD = enemy.Enemy.specialCD;
 							if (enemy.Enemy.stunOnSpecialCD) enemy.stun = enemy.Enemy.stunOnSpecialCD;
-							if (AIData.attack.includes("Dash") && enemy.Enemy.dashOnMiss) {
+							if (AIData.attack.includes("Dash") && !enemy.Enemy.Dash?.noDashOnSidestep) {
 								KDDash(enemy, player, AIData.MovableTiles);
 							}
 						}
@@ -3314,9 +3324,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					} else
 						KinkyDungeonTickBuffTag(player.buffs, "incomingHit", 1);
 				}
+				let eventable = KDEventableAttackTypes.some((type) => {return AIData.attack.includes(type);});
+				let dash = AIData.attack.includes("Dash");
 
-				let missed = KDRandom() * AIData.accuracy < 1 - playerEvasion;
-				let blockedAtk = KDRandom() * AIData.accuracy < 1 - playerBlock;
+				let missed = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashMiss)) && KDRandom() * AIData.accuracy < 1 - playerEvasion;
+				let blockedAtk = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashBlock)) && KDRandom() * AIData.accuracy < 1 - playerBlock;
 				let preData = {
 					attack: AIData.attack,
 					enemy: enemy,
@@ -3344,7 +3356,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					KDAddThought(enemy.id, "Annoyed", 4, 1);
 
 					enemy.vulnerable = Math.max(enemy.vulnerable, 1);
-					if (AIData.attack.includes("Dash") && enemy.Enemy.dashOnMiss) {
+					if (dash && !enemy.Enemy.Dash?.noDashOnMiss) {
 						KDDash(enemy, player, AIData.MovableTiles);
 					}
 					hit = false;
@@ -3362,6 +3374,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						KinkyDungeonSendEvent("blockEnemy", {enemy: enemy, player: player, preData: preData});
 					}
 					KDAddThought(enemy.id, "Annoyed", 4, 1);
+
+					if (AIData.attack.includes("Dash") && !enemy.Enemy.Dash?.noDashOnBlock) {
+						KDDash(enemy, player, AIData.MovableTiles);
+					}
 					hit = false;
 				}
 				if (hit) {
@@ -4236,7 +4252,7 @@ function KinkyDungeonEnemyTryAttack(enemy, player, Tiles, delta, x, y, points, r
 				enemy.warningTiles = [];
 				enemy.usingSpecial = false;
 				if (enemy.Enemy.stunOnSpecialCD) enemy.stun = enemy.Enemy.stunOnSpecialCD;
-				if (attack.includes("Dash") && enemy.Enemy.dashOnMiss) {
+				if (attack.includes("Dash") && !enemy.Enemy.Dash?.noDashOnSidestep) {
 					KDDash(enemy, player, MovableTiles);
 				}
 				return false;
@@ -4247,7 +4263,7 @@ function KinkyDungeonEnemyTryAttack(enemy, player, Tiles, delta, x, y, points, r
 				enemy.warningTiles = [];
 				enemy.usingSpecial = false;
 				if (enemy.Enemy.stunOnSpecialCD) enemy.stun = enemy.Enemy.stunOnSpecialCD;
-				if (attack.includes("Dash") && enemy.Enemy.dashOnMiss) {
+				if (attack.includes("Dash") && !enemy.Enemy.Dash?.noDashOnSidestep) {
 					KDDash(enemy, player, MovableTiles);
 				}
 				return false;

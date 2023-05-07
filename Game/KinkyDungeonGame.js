@@ -2765,6 +2765,7 @@ function KinkyDungeonPlaceTorches(torchchance, torchlitchance, torchchanceboring
 				&& !KinkyDungeonTilesGet((X - 1) + "," + (Y+1))
 				&& !KinkyDungeonTilesGet((X) + "," + (Y+1))
 				&& !KinkyDungeonTilesGet((X + 1) + "," + (Y+1))
+				&& !KinkyDungeonTilesGet((X) + "," + (Y))
 				&& KDRandom() < torchchance + KinkyDungeonBoringGet(X, Y) * torchchanceboring) {
 				let spr = torchreplace ? torchreplace.sprite : "Torch";
 				if ((!torchreplace || torchreplace.unlitsprite) && KDRandom() > torchlitchance) {
