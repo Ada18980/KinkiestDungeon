@@ -1315,6 +1315,8 @@ Minor Changes:
 - New upgrades: Parry, Dagger Parry, Riposte, Steadfast Guard, The Power of Steel
 - Many projectile spells are now blockable. A few (rubber bullets and earth witch boulder) can also be evaded, as it doesn't make much sense to block these
 - Leashing enemies will disarm the player
+- New perk: Self bondage enthusiast
+- Enemies will try to be much more aggressive when leashing you
 
 TODO: Mushrooms in the jungle
 
