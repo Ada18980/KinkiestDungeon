@@ -2160,6 +2160,16 @@ function KDInitializeJourney(Journey) {
 		newIndex.tmp = 'cry';
 		newIndex.ore = 'tmb';
 		newIndex.bel = 'cat';
+	} else if (KDGameData.Journey == "Temple") {
+		newIndex.grv = 'tmp';
+		newIndex.tmb = 'ore';
+		newIndex.cat = 'lib';
+		newIndex.lib = 'ore';
+		newIndex.jng = 'tmb';
+		newIndex.cry = 'bel';
+		newIndex.tmp = 'cat';
+		newIndex.ore = 'cry';
+		newIndex.bel = 'jng';
 	} else if (KDGameData.Journey == "Test") {
 		newIndex.grv = 'bel';
 		newIndex.tmb = 'bel';
