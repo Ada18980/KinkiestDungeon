@@ -9091,12 +9091,31 @@ rElfCrystalSellEarthRune,"(The SPEAKER thanks you)|A fine trinket!|I will enjoy 
 rElfCrystalSellWaterRune,"(The SPEAKER thanks you)|I sense its flowing essence.|You have my thanks."
 rElfCrystalSellIceRune,"(The SPEAKER thanks you)|I can feel a great sadness emanating from it.|It calls for warmth."
 
+
+rFoodSell,"(The SPEAKER munches on a donut)|Gee I'm starving!|You wouldn't have something to eat, would you?"
+rFoodSellAttack,"(The SPEAKER throws a donut in your face)|Ha! Take that!"
+rFoodSellDonut,"(The SPEAKER smiles)|Yum! Thank you!"
+rFoodSellCookie,"(The SPEAKER smiles)|Crunchy! My favorite!"
+rFoodSellCookie,"(The SPEAKER tilts her head)|It smells funny...|Still, it'd be a shame for it to go to waste!"
+
 rScrollSell,"(The SPEAKER approaches you with an offer)|Hello!|I am searching for magical scrolls.|Would you happen to have any?"
 rScrollSellAttack,"(The SPEAKER doesn't look surprised)|Rude!"
 rScrollSellScrollArms,"(The SPEAKER smiles)|Thank you!"
 rScrollSellScrollLegs,"(The SPEAKER smiles)|Thank you!"
 rScrollSellScrollVerbal,"(The SPEAKER smiles)|Thank you!"
 rScrollSellScrollPurity,"(The SPEAKER raises a brow)|Thank you! This one is rare!"
+
+rScrollPlusSell,"(The SPEAKER invites you to a friendly chat)|Back in my day I used to go visit dungeons all the time|But these days I get so lost in my studies...|Say, you don't happen to have some magic supplies on you?"
+rScrollPlusSellAttack,"(The SPEAKER shrugs)|I guess that's how it is."
+rScrollPlusSellPotionMana,"(The SPEAKER smiles)|Always nice to have some of these!"
+rScrollPlusSellManaOrb,"(The SPEAKER smiles)|I can never get enough of these."
+rScrollPlusSellEarthRune,"(The SPEAKER smiles)|Elemental magic, interesting stuff."
+rScrollPlusSellWaterRune,"(The SPEAKER tilts her head)|Why is it wet?"
+rScrollPlusSellIceRune,"(The SPEAKER smiles)|Elemental magic, interesting stuff."
+rScrollPlusSellScrollArms,"(The SPEAKER smiles)|Gladly, this will be useful to my studies."
+rScrollPlusSellScrollLegs,"(The SPEAKER smiles)|My legs don't carry me like they used to~"
+rScrollPlusSellScrollVerbal,"(The SPEAKER smiles)|Always good to have somebody to talk to."
+rScrollPlusSellScrollPurity,"(The SPEAKER giggles)|Living dangerously, I see~"
 
 rWolfgirlSell,"(The SPEAKER approaches you with an offer)|Hey girl~|You seem like the explorer type.|Happen to have any good finds?"
 rWolfgirlSellAttack,"(The SPEAKER frowns)|Well then."

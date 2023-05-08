@@ -3093,11 +3093,14 @@ function KinkyDungeonListenKeyMove() {
 		let moveDirectionDiag = null;
 
 		let MovableTiles = KinkyDungeonGetMovable();
+		let itemsAtTile = (x, y) => {
+			return KinkyDungeonGroundItems.some((item) => {return item.x == KinkyDungeonPlayerEntity.x + x && item.y == KinkyDungeonPlayerEntity.y + y;});
+		};
 
-		if ((KinkyDungeonGameKey.keyPressed[0]) && MovableTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x,  KinkyDungeonPlayerEntity.y - 1))) moveDirection = KinkyDungeonGetDirection(0, -1);
-		else if ((KinkyDungeonGameKey.keyPressed[1]) && MovableTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x,  KinkyDungeonPlayerEntity.y + 1))) moveDirection = KinkyDungeonGetDirection(0, 1);
-		else if ((KinkyDungeonGameKey.keyPressed[2]) && MovableTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x - 1,  KinkyDungeonPlayerEntity.y))) moveDirection = KinkyDungeonGetDirection(-1, 0);
-		else if ((KinkyDungeonGameKey.keyPressed[3]) && MovableTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x + 1,  KinkyDungeonPlayerEntity.y))) moveDirection = KinkyDungeonGetDirection(1, 0);
+		if ((KinkyDungeonGameKey.keyPressed[0]) && (itemsAtTile(0, -1) || MovableTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x,  KinkyDungeonPlayerEntity.y - 1)))) moveDirection = KinkyDungeonGetDirection(0, -1);
+		else if ((KinkyDungeonGameKey.keyPressed[1]) && (itemsAtTile(0, +1) || MovableTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x,  KinkyDungeonPlayerEntity.y + 1)))) moveDirection = KinkyDungeonGetDirection(0, 1);
+		else if ((KinkyDungeonGameKey.keyPressed[2]) && (itemsAtTile(-1, 0) || MovableTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x - 1,  KinkyDungeonPlayerEntity.y)))) moveDirection = KinkyDungeonGetDirection(-1, 0);
+		else if ((KinkyDungeonGameKey.keyPressed[3]) && (itemsAtTile(+1, 0) || MovableTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x + 1,  KinkyDungeonPlayerEntity.y)))) moveDirection = KinkyDungeonGetDirection(1, 0);
 		// Diagonal moves
 		if ((KinkyDungeonGameKey.keyPressed[4]) || (KinkyDungeonGameKey.keyPressed[2] && KinkyDungeonGameKey.keyPressed[0])) moveDirectionDiag = KinkyDungeonGetDirection(-1, -1);
 		else if ((KinkyDungeonGameKey.keyPressed[5]) || (KinkyDungeonGameKey.keyPressed[3] && KinkyDungeonGameKey.keyPressed[0])) moveDirectionDiag = KinkyDungeonGetDirection(1, -1);
@@ -3106,7 +3109,7 @@ function KinkyDungeonListenKeyMove() {
 
 		if ((KinkyDungeonGameKey.keyPressed[8])) {moveDirection = KinkyDungeonGetDirection(0, 0); moveDirectionDiag = null;}
 
-		if (moveDirectionDiag && MovableTiles.includes(KinkyDungeonMapGet(moveDirectionDiag.x + KinkyDungeonPlayerEntity.x,  moveDirectionDiag.y + KinkyDungeonPlayerEntity.y))) {
+		if (moveDirectionDiag && (itemsAtTile(moveDirectionDiag.x, moveDirectionDiag.y) || MovableTiles.includes(KinkyDungeonMapGet(moveDirectionDiag.x + KinkyDungeonPlayerEntity.x,  moveDirectionDiag.y + KinkyDungeonPlayerEntity.y)))) {
 			moveDirection = moveDirectionDiag;
 		}
 
