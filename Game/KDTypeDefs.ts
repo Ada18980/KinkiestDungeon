@@ -2099,6 +2099,12 @@ type KDExpression = {
 	};
 }
 
+interface KDPresetLoadout {
+	weapon_current: string,
+	weapon_other: string,
+	armor: string[],
+}
+
 interface KDTrainingRecord {
 	turns_trained: number,
 	turns_skipped: number,

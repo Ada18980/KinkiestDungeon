@@ -5085,7 +5085,8 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 	let restraintblock = KinkyDungeonGetPlayerStat("RestraintBlock");
 	let restraintpower = 0;
 	for (let r of restraintsToAdd) {
-		restraintpower += r.power;
+		if (r)
+			restraintpower += r.power;
 	}
 	let added = [];
 	let name = enemy ? TextGet("Name" + enemy.Enemy.name) : (spell ? TextGet("KinkyDungeonSpell" + spell.name) : "");
@@ -5124,7 +5125,7 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 			for (let r of restraintsToAdd) {
 				let bb = 0;
 				if (count >= protection) {
-					bb = KinkyDungeonAddRestraintIfWeaker(r, AIData.power, KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, enemy?.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, faction, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, enemy) * 2;
+					bb = KinkyDungeonAddRestraintIfWeaker(r, (enemy?.Enemy.power || spell?.power || 0), KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, enemy?.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, faction, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, enemy) * 2;
 					if (bb) {
 						if (KDGroupBlocked(r.Group) && !enemy?.Enemy.bypass) {
 							KinkyDungeonSendTextMessage(
