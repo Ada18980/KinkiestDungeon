@@ -285,6 +285,7 @@ let KDOptOut = false;
 * CollectedOrbs: number,
 * otherPlaying: number,
 * Training: Record<string, KDTrainingRecord>,
+* QuickLoadout: KDPresetLoadout[],
 
 *}} KDGameDataBase
 */
@@ -415,6 +416,7 @@ let KDGameDataBase = {
 
 	Favors: {},
 	PreviousWeapon: null,
+	QuickLoadout: [],
 
 	StaminaPause: 0,
 	StaminaSlow: 0,
