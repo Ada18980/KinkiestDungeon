@@ -246,7 +246,8 @@ let KinkyDungeonStatsPresets = {
 
 	"StartCyberDoll": {startPriority: 7, category: "Boss", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
 
-	"DollmakerVisor": {startPriority: 31, category: "Boss", id: "DollmakerVisor", cost: -1, locked: true, tags: ["start"]},
+	"DollmakerVisor": {startPriority: 31, category: "Boss", id: "DollmakerVisor", cost: -1, block: ["DollmakerMask"], locked: true, tags: ["start"]},
+	"DollmakerMask": {startPriority: 31, category: "Boss", id: "DollmakerMask", cost: -1, block: ["DollmakerVisor"], locked: true, tags: ["start"]},
 	"FuukaCollar": {startPriority: 40, category: "Boss", buff: true, id: "FuukaCollar", cost: -2, locked: true, tags: ["start"]},
 
 
@@ -504,6 +505,9 @@ let KDPerkStart = {
 	},
 	DollmakerVisor: () =>{
 		KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
+	},
+	DollmakerMask: () =>{
+		KinkyDungeonAddRestraintIfWeaker("DollmakerMask", 5, true, "Gold", false, undefined, undefined, undefined, true);
 	},
 	StartCyberDoll: () =>{
 		KinkyDungeonChangeRep("Metal", 10);
