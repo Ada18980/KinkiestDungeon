@@ -17,11 +17,13 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Yami", color: "#88ff88", prisoner: true, free: true, customSprite: ""},
 		{name: "Animi", color: "#ff9999", prisoner: true, free: false, customSprite: ""},
 		{name: "Ladica", color: "#44ff44", prisoner: false, free: true, customSprite: ""},
+		{name: "FlameTail", color: "#ff5555", prisoner: false, free: true, customSprite: ""},
 	],
 	],
 	["WolfgirlPet", [
 		{name: "Demetria", color: "#c9d4fd", prisoner: true, free: false, customSprite: ""},
 		{name: "Arii", color: "#ff88ff", prisoner: true, free: true, customSprite: ""},
+		{name: "Aleiza", color: "#32d8ff", prisoner: true, free: false, customSprite: ""},
 	],
 	],
 	["Nurse", [
@@ -77,10 +79,23 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Rika Mercury", color: "#92e8e5", prisoner: true, free: false, customSprite: ""},
 		{name: "Maidlinmo", color: "#ff5555", prisoner: true, free: true, customSprite: ""},
 		{name: "April", color: "#4444ff", prisoner: true, free: true, customSprite: ""},
+		{name: "Aika", color: "#be52e6", prisoner: true, free: true, customSprite: ""},
 	],
 	],
 	["WitchFlame", [
 		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customSprite: "Myrtrice"},
+	],
+	],
+	["WitchSlime", [
+		{name: "Kathy Narlato", color: "#4e3da9", prisoner: true, free: true, customSprite: ""},
+	],
+	],
+	["WitchWater", [
+		{name: "Marine", color: "#4fa4b8", prisoner: false, free: true, customSprite: ""},
+	],
+	],
+	["ElementalEarth", [
+		{name: "Entombment", color: "#ffae70", prisoner: true, free: true, customSprite: ""},
 	],
 	],
 	["BanditPet", [
@@ -109,7 +124,7 @@ let KDPatronCustomEnemies = new Map([
  * @param {entity} e
  */
 function KDProcessCustomPatron(Enemy, e) {
-	if (KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < 0.05) {
+	if (KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < 0.14) {
 		let customs = KDPatronCustomEnemies.get(Enemy.name).filter((element) => {
 			return (element.prisoner && Enemy.specialdialogue && Enemy.specialdialogue.includes("Prisoner")) || (element.free && !Enemy.specialdialogue);
 		});
