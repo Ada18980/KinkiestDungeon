@@ -3942,6 +3942,20 @@ let KDEventMapGeneric = {
 			}
 		},
 	},
+	"hit": {
+		"StunBondage": (e, data) => {
+			if (data.player == KinkyDungeonPlayerEntity && data.restraintsAdded?.length > 0 && KinkyDungeonStatsChoice.has("StunBondage")) {
+				KDStunTurns(data.restraintsAdded.length, false);
+			}
+		},
+	},
+	"boundBySpell": {
+		"StunBondage": (e, data) => {
+			if (data.player == KinkyDungeonPlayerEntity && data.restraintsAdded?.length > 0 && KinkyDungeonStatsChoice.has("StunBondage")) {
+				KDStunTurns(data.restraintsAdded.length, false);
+			}
+		},
+	},
 	"tickFlags": {
 		"TempFlagFloorTicks": (e, data) => {
 			if (KDGameData.TempFlagFloorTicks)
