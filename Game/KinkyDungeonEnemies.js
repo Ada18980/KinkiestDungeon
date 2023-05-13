@@ -2935,7 +2935,24 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				}
 			}
 
-			AIData.focusOnLeash = (enemy == KinkyDungeonLeashingEnemy() && !AIData.addMoreRestraints && !AIData.addLeash);
+
+			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || KDDefaultRestraintThresh;
+			AIData.focusOnLeash = (enemy == KinkyDungeonLeashingEnemy() && !AIData.addLeash && (!AIData.addMoreRestraints || !KinkyDungeonGetRestraint(
+				{tags: KDGetTags(enemy, enemy.usingSpecial)}, MiniGameKinkyDungeonLevel,
+				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				enemy.Enemy.bypass,
+					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
+					!(enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
+					!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
+					!(KinkyDungeonStatsChoice.has("TightRestraints") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss),
+					KDGetExtraTags(enemy, enemy.usingSpecial),
+					false,
+					{
+						maxPower: rThresh + 0.01,
+						looseLimit: true,
+						onlyUnlimited: true,
+						ignore: enemy.items,
+					}, enemy)));
 			AIData.moveTowardPlayer =
 				!KDIsImmobile(enemy) &&
 				AIType.chase(enemy, player, AIData)
