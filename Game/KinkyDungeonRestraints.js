@@ -32,6 +32,44 @@ let StruggleTypeHandThresh = {
 	Remove: 0.99, // Removing only requires a solid corner
 };
 
+
+let KDRestraintArchetypes = ["Rope", "Latex", "Ribbon", "Leather", "Cyber", "Metal"];
+
+/**
+ * Returns the multiplier of a restraint based on the player's current restraint counts
+ * @param {entity} player
+ * @param {restraint} restraint
+ * @returns {number} - multiplier for apparent power
+ */
+function KDRestraintPowerMult(player, restraint) {
+	if (player != KinkyDungeonPlayerEntity) return 1;
+	if (!restraint) return 1;
+	let keyProperties = restraint.shrine.filter((element) => {return KDRestraintArchetypes.includes(element);});
+	let relatedRestraints = [];
+	let opposedRestraints = [];
+	let mult = 1.0;
+	for (let r of KinkyDungeonAllRestraint()) {
+		if (keyProperties.some((element) => {
+			return KDRestraint(r).shrine.includes(element);
+		})) {
+			relatedRestraints.push(r);
+		} else {
+			opposedRestraints.push(r);
+		}
+	}
+	let maxMult = 2;
+	for (let r of relatedRestraints) {
+		// Increase up to 10x restraint power
+		mult += Math.max(0,(maxMult - mult) * (Math.max(1, KDRestraint(r).power) + Math.max(1, restraint.power)) / Math.max(1, restraint.power));
+	}
+	for (let r of opposedRestraints) {
+		// Increase up to 10x restraint power
+		mult *= 1 - Math.min(0.15, Math.max(1, restraint.power) / (Math.max(1, KDRestraint(r).power) + Math.max(1, restraint.power)));
+	}
+
+	return Math.min(2, Math.max(0.5, mult || 0));
+}
+
 /**
  *
  * @returns {number}
@@ -2513,9 +2551,10 @@ function KDGetLockVisual(item) {
  * @param {boolean} [Deep]
  * @param {boolean} [noOverpower]
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
+ * @param {boolean} [useAugmentedPower] - Bypass is treated separately for these groups
  * @returns {boolean} - Restraint can be added
  */
-function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpower, securityEnemy) {
+function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpower, securityEnemy, useAugmentedPower) {
 	if (restraint.bypass) Bypass = true;
 	// Limits
 	if (restraint.shrine && restraint.shrine.includes("Vibes") && KinkyDungeonPlayerTags.get("NoVibes")) return false;
@@ -2565,13 +2604,14 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 		|| linkableCurrent
 		// We are weak enough to override
 		|| (!KDRestraint(r).enchanted
-			&& (!noOverpower && power < restraint.power * KinkyDungeonGetLockMult(newLock)))
+			&& (!noOverpower && power < restraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint) : 1) * KinkyDungeonGetLockMult(newLock)))
 	) {
 		if (bypasses())
 			return true; // Recursion!!
 	}
 	return false;
 }
+
 
 /**
  *
@@ -2671,12 +2711,13 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
  * @param {boolean} [Deep] - whether or not it can go deeply in the stack
  * @param {string} [Curse] - Curse to apply
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
+ * @param {boolean} [useAugmentedPower] - Augment power to keep consistency
  * @returns {number}
  */
-function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy) {
+function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower) {
 	if (typeof restraint === "string") restraint = KinkyDungeonGetRestraintByName(restraint);
 	if (restraint.bypass) Bypass = true;
-	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep, false, securityEnemy)) {
+	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep, false, securityEnemy, (useAugmentedPower == undefined && securityEnemy != undefined) || useAugmentedPower)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
 		let linkUnder = null;
 		linkUnder = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy);
