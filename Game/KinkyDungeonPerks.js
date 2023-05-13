@@ -14,6 +14,7 @@ let KDCategoriesStart = [
 	{name: "Combat", buffs: [], debuffs: [],},
 	{name: "Magic", buffs: [], debuffs: [],},
 	{name: "Enemies", buffs: [], debuffs: [],},
+	{name: "Common", buffs: [], debuffs: [],},
 	{name: "Map", buffs: [], debuffs: [],},
 	{name: "Start", buffs: [], debuffs: [],},
 	{name: "Boss", buffs: [], debuffs: [],},
@@ -255,6 +256,7 @@ let KinkyDungeonStatsPresets = {
 	"CommonFuuka": {category: "Boss", id: "CommonFuuka", buff: true, cost: -1, locked: true},
 
 	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},
+	"StunBondage": {category: "Enemies", id: "StunBondage", cost: -2},
 	"Prisoner": {category: "Start", id: "Prisoner", cost: 0},
 
 	"Panic": {category: "Map", id: "Panic", cost: -1},
@@ -302,13 +304,13 @@ let KinkyDungeonStatsPresets = {
 	"Sticky":  {category: "Damage", id: "Sticky", cost: -1},
 	"Breathless":  {category: "Damage", id: "Breathless", cost: -1},
 
-	"CommonMaid": {category: "Enemies", id: "CommonMaid", cost: -1, costGroup: "common"},
-	"CommonLatex": {category: "Enemies", id: "CommonLatex", cost: -1, costGroup: "common"},
-	"CommonLeather": {category: "Enemies", id: "CommonLeather", cost: -1, costGroup: "common"},
-	"CommonExp": {category: "Enemies", id: "CommonExp", cost: -1, costGroup: "common"},
-	"CommonDress": {category: "Enemies", id: "CommonDress", cost: -1, costGroup: "common"},
-	"CommonWolf": {category: "Enemies", id: "CommonWolf", cost: -1, costGroup: "common"},
-	"CommonKitty": {category: "Enemies", id: "CommonKitty", cost: -1, costGroup: "common"},
+	"CommonMaid": {category: "Common", id: "CommonMaid", cost: -1, costGroup: "common"},
+	"CommonLatex": {category: "Common", id: "CommonLatex", cost: -1, costGroup: "common"},
+	"CommonLeather": {category: "Common", id: "CommonLeather", cost: -1, costGroup: "common"},
+	"CommonExp": {category: "Common", id: "CommonExp", cost: -1, costGroup: "common"},
+	"CommonDress": {category: "Common", id: "CommonDress", cost: -1, costGroup: "common"},
+	"CommonWolf": {category: "Common", id: "CommonWolf", cost: -1, costGroup: "common"},
+	"CommonKitty": {category: "Common", id: "CommonKitty", cost: -1, costGroup: "common"},
 
 	"KeepOutfit":  {category: "Kinky", id: "KeepOutfit", cost: 0},
 

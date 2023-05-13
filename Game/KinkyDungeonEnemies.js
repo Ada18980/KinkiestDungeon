@@ -3829,6 +3829,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							attacker: enemy,
 							target: player,
 							happened: happened,
+							player: player,
 						};
 						KinkyDungeonSendEvent("beforeDamage", data);
 						KDDelayedActionPrune(["Hit"]);
