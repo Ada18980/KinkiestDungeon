@@ -4,6 +4,7 @@ let KDDialogueParams = {
 	ShopkeeperFee: 900,
 	ShopkeeperFeePerLevel: 100,
 	ShopkeeperFeePunishThresh: 2500,
+	ChefChance: 0.1,
 };
 
 /**
@@ -742,12 +743,45 @@ let KDDialogue = {
 
 							// Send the message and advance time
 							KinkyDungeonAdvanceTime(1);
+
+							KDRunChefChance(KinkyDungeonPlayerEntity);
 							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEaten"), "lightgreen", 1);
 
 							// Remove the food
 							tile.Food = "Plate";
 							tile.Eaten = true;
 						}
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						clickFunction: (gagged, player) => {
+							KinkyDungeonTargetTile = null;
+							KinkyDungeonTargetTileLocation = "";
+							return false;
+						},
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Take": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+					if (tile && tile.Type == "Food" && KDFood[tile.Food]?.Theft) {
+						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable(KDFood[tile.Food].Theft), 1);
+
+						// Send the message and advance time
+						KinkyDungeonAdvanceTime(1);
+						//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEaten"), "lightgreen", 1);
+
+						KDRunChefChance(KinkyDungeonPlayerEntity);
+
+						// Remove the food
+						tile.Food = "Plate";
+						tile.Eaten = true;
 					}
 					return false;
 				},

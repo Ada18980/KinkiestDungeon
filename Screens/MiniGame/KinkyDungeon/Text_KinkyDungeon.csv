@@ -2143,7 +2143,7 @@ AttackRibbons,"The ribbons wrap themselves around you! (DamageTaken)"
 NameGag,Gravitating Gag
 KillGag,"The gag buckles itself in place and falls."
 AttackGagBind,"The gravitating gag wedges itself firmly in your mouth and buckles itself! (+RestraintAdded)"
-AttackGag,"The gravitating gag rubs itself against your gagged lips! (DamageTaken)"
+AttackGag,"The gravitating gag rubs itself against your lips! (DamageTaken)"
 AttackGagDash,"The gag dashes to you!"
 
 NameCuffs,Seductive Shackles
@@ -10089,3 +10089,11 @@ KinkyDungeonStatDescEnemyDamage,"The effects of you taking damage are increased 
 KinkyDungeonStatEnemyResist,"The Wand is Mightier"
 KinkyDungeonStatDescEnemyResist,"Enemies take 50% less damage BEFORE armor calculation; Tease damage multiplier to bound targets is increased by 75%."
 KDCategoryCommon,Kinky Armory
+
+NameChef,Chef
+KillChef,"You defeat the chef and claim her prize."
+AttackChefLock,"The chef makes sure you'll never steal again! (DamageTaken)"
+AttackChefBind,"The chef makes sure you'll never steal again! (+RestraintAdded)"
+AttackChef,"The chef spanks you with her frying pan! (DamageTaken)"
+
+KDSpawnChef,"As you finish, you look up and notice that someone is not very happy with you."
