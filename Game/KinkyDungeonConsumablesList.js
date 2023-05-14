@@ -36,7 +36,7 @@ let KinkyDungeonConsumables = {
  */
 let KDCookies = {
 	"Cookie" : {name: "Cookie", rarity: 0, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
-	"Brownies" : {name: "Brownies", rarity: 4, shop: true, type: "restore", wp_instant: 3.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
+	"Brownies" : {name: "Brownies", rarity: 2, shop: true, type: "restore", wp_instant: 4.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 4, gagMax: 0.59, duration: 0, sfx: "Cookie"},
 	"Donut" : {name: "Donut", rarity: 0, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
 	"CookieJailer" : {name: "CookieJailer", rarity: 0, shop: true, type: "restore", wp_instant: 1.5, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie",
 		sideEffects: ["subAdd"],
