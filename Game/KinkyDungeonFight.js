@@ -507,7 +507,10 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			if (KinkyDungeonStatsChoice.get("Pacifist") && Enemy.Enemy.bound && !KinkyDungeonTeaseDamageTypes.includes(predata.type) && predata.type != "glue" && predata.type != "chain") {
 				predata.dmg *= KDPacifistReduction;
 			}
-			if (KinkyDungeonStatsChoice.get("EnemyArmor")) armor += KDPerkParams.KDEnemyArmorBoost;
+			if (KinkyDungeonStatsChoice.get("EnemyArmor")) {
+				armor += KDPerkParams.KDEnemyArmorBoost;
+				spellResist += KDPerkParams.KDEnemyArmorBoost;
+			}
 			if (KinkyDungeonStatsChoice.get("EnemyResist")) {
 				predata.dmg *= KDEnemyResistReduction;
 			}
