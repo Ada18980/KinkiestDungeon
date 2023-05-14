@@ -1318,6 +1318,7 @@ Minor Changes:
 - New perks: Self bondage enthusiast, Apprehended, The Wand is Mightier, Feeble Attacks, Glass Cannon
 - Enemies will try to be much more aggressive when leashing you
 - Vault is now more limited although you can purchase the full version which is just as good as before. Requires Evasion I now.
+- Added some latex items in map editor, tiles section
 
 TODO: Mushrooms in the jungle
 
