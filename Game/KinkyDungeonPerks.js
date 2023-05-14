@@ -5,6 +5,12 @@ let KDDoorKnobChanceArms = 0.5; // Chance to open door with mitts but no arm bin
 let KDDoorAttractChance = 0.25; // Chance to attract someone by banging
 let KDDoorAttractChanceArms = 0.1; // Chance to attract someone by rattling
 
+let KDPerkParams = {
+	KDEnemyDamageMult: 2.5,
+	KDEnemyResistBuff: 0.5,
+	KDEnemyArmorBoost: 2.0,
+};
+
 let KDCategoriesStart = [
 	{name: "Toggles", buffs: [], debuffs: [],},
 	{name: "Multiclass", buffs: [], debuffs: [],},
@@ -84,6 +90,26 @@ let KDPerkUpdateStats = {
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
 			id: "StickySituation", type: "glueDamageResist", power: -0.4, duration: 2
 		});
+	},
+	"EnemyResist": () => {
+		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+			id: "EnemyResist", type: "TeaseBuff", power: KDPerkParams.KDEnemyResistBuff, duration: 2
+		});
+		/*KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+			id: "EnemyResist1", type: "soulDamageBuff", power: KDEnemyResistBuff, duration: 2
+		});
+		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+			id: "EnemyResist2", type: "tickleDamageBuff", power: KDEnemyResistBuff, duration: 2
+		});
+		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+			id: "EnemyResist3", type: "painDamageBuff", power: KDEnemyResistBuff, duration: 2
+		});
+		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+			id: "EnemyResist4", type: "gropeDamageBuff", power: KDEnemyResistBuff, duration: 2
+		});
+		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+			id: "EnemyResist5", type: "charmDamageBuff", power: KDEnemyResistBuff, duration: 2
+		});*/
 	},
 	"BoundPower": () => {
 		KDDamageAmpPerks += KDBoundPowerLevel *  KDBoundPowerMult;
@@ -294,6 +320,9 @@ let KinkyDungeonStatsPresets = {
 
 	"Rigger": {category: "Damage", id: 24, cost: 2},
 	"Pacifist": {category: "Damage", id: 25, cost: -2},
+	"EnemyResist": {category: "Enemies", id: "EnemyResist", cost: 0},
+	"EnemyArmor": {category: "Enemies", id: "EnemyArmor", cost: -1},
+	"EnemyDamage": {category: "Enemies", id: "EnemyDamage", cost: -1},
 	"BurningDesire":  {category: "Damage", id: "BurningDesire", cost: 1},
 	"FrigidPersonality":  {category: "Damage", id: "FrigidPersonality", cost: 2},
 	"GroundedInReality":  {category: "Damage", id: "GroundedInReality", cost: 2},

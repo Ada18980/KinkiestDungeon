@@ -10369,4 +10369,10 @@ KinkyDungeonStatDescSelfBondage,"Start with a basic self-bondage kit."
 
 KinkyDungeonStatStunBondage,"Apprehended"
 KinkyDungeonStatDescStunBondage,"When you are bound by an enemy attack or spell, you are stunned 1 turn per restraint added."
+KinkyDungeonStatEnemyArmor,"Feeble Attacks"
+KinkyDungeonStatDescEnemyArmor,"All enemies gain 20 physical and magic armor."
+KinkyDungeonStatEnemyDamage,"Glass Cannon"
+KinkyDungeonStatDescEnemyDamage,"The effects of you taking damage are increased by 150%."
+KinkyDungeonStatEnemyResist,"The Wand is Mightier"
+KinkyDungeonStatDescEnemyResist,"Enemies take 50% less damage BEFORE armor calculation; Tease damage multiplier to bound targets is increased by 50%."
 KDCategoryCommon,Kinky Armory

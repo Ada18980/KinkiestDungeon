@@ -393,6 +393,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 
 	data.dmg *= data.buffresist;
 
+
 	if (data.armorbreak > 0) data.armor -= Math.min(Math.max(0, data.armor), data.armorbreak);
 
 	if (data.armor && KinkyDungeonMeleeDamageTypes.includes(data.type)) data.dmg = Math.max(0, data.dmg * KDArmorFormula(data.dmg, data.armor));
@@ -418,6 +419,10 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 			KinkyDungeonStatWill,
 			KinkyDungeonStatStamina,
 		];
+
+	if (KinkyDungeonStatsChoice.get("EnemyDamage")) {
+		data.dmg *= KDPerkParams.KDEnemyDamageMult;
+	}
 
 	if (data.teaseTypes.includes(data.type)) {
 		let amt = data.dmg;
