@@ -4,6 +4,7 @@ let KDDialogueData = {
 	CurrentDialogueIndex: 0,
 };
 
+
 /**
  *
  * @param {number} Min
@@ -1573,4 +1574,27 @@ function KDAddOffer(Amount) {
  */
 function KDGetOfferLevelMod() {
 	return Math.round(0.25 * (KDGameData.OfferCount || 0));
+}
+
+/**
+ *
+ * @param {entity} player
+ */
+function KDRunChefChance(player) {
+	if (!KinkyDungeonFlags.get("SpawnedChef")) {
+		let x = player.x;
+		let y = player.y;
+		if (KDRandom() < KDDialogueParams.ChefChance && KinkyDungeonGagTotal() == 0) {
+			let point = KinkyDungeonGetNearbyPoint(x, y, true);
+			if (point) {
+				KinkyDungeonSetFlag("SpawnedChef", -1, 1);
+				let e = DialogueCreateEnemy(point.x, point.y, "Chef");
+				if (e) {
+					KinkyDungeonSendTextMessage(10, TextGet("KDSpawnChef"), "#ff0000", 1);
+					e.aware = true;
+					e.faction = "Ambush";
+				}
+			}
+		}
+	}
 }

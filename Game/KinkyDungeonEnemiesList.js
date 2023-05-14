@@ -1967,6 +1967,15 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, maxhp: 12, minLevel: -1, weight:0, movePoints: 1, attackPoints: 3, attack: "MeleeBindLockWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"jailGuard": 15, "Guard": 1}, allFloors: true, disarm: 0.5, evasion: -0.5, focusPlayer: true,
 		dropTable: [{name: "Pick", weight: 15}, {name: "RedKey", weight: 5}], rep: {"Prisoner": 5}},
+	{name: "Chef", faction: "Jail", bound: "Jailer", tags: KDMapInit(["leashing", "ignoregagged", "opendoors", "closedoors", "melee", "ballGagRestraintsMagic"]), followRange: 1, AI: "hunt",
+		visionRadius: 6, maxhp: 24, minLevel: -1, weight:-1000, movePoints: 1,
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 2,
+		terrainTags: {}, allFloors: true, disarm: 0.33, evasion: -0.5, focusPlayer: true,
+		useLock: "Blue",
+		dropTable: [{name: "Pick", weight: 15}]},
 	{name: "Guard", faction: "Jail", bound: "Guard", tags: KDMapInit(["leashing", "opendoors", "closedoors", "miniboss", "jail", "jailer", "melee", "shackleRestraints", "jailRestraints", "guardCall"]), noDisplace: true, keys: true, followRange: 1, AI: "guard", visionRadius: 6, disarm: 0.5,
 		maxhp: 12, minLevel: -1, weight:-1000, movePoints: 1, attackPoints: 3, attack: "MeleeBindLockWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2, evasion: -0.5, focusPlayer: true, attackLock: "Red",
 		RemoteControl: {

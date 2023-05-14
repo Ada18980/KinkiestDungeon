@@ -2609,24 +2609,25 @@ function KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, alt
 			}
 }
 
-let KDFood = [
-	{
+let KDFood = {
+	"": {
 		Food: "",
 		Weight: 10,
 	},
-	{
+	Plate: {
 		Food: "Plate",
 		Weight: 1,
 	},
-	{
+	Cookies: {
 		Food: "Cookies",
+		Theft: "Cookie",
 		Weight: 8,
 	},
-	{
+	Pizza: {
 		Food: "Pizza",
 		Weight: 4,
 	},
-];
+};
 
 function KinkyDungeonPlaceFood(foodChance, width, height, altType) {
 
