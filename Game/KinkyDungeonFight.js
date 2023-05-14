@@ -25,6 +25,7 @@ let KDVulnerableDmgMult = 0.33;
 let KDVulnerableHitMult = 1.33;
 let KDVulnerableBlockHitMult = 2.0;
 let KDPacifistReduction = 0.1;
+let KDEnemyResistReduction = 0.7;
 let KDRiggerDmgBoost = 0.2;
 let KDRiggerBindBoost = 0.3;
 let KDStealthyDamageMult = 0.7;
@@ -34,6 +35,10 @@ let KDStealthyEnemyCountMult = 1.7;
 let KDBoundPowerMult = 0.4;
 let KDBerserkerAmp = 0.3;
 let KDUnstableAmp = 0.6;
+
+let KDFightParams = {
+	KDFreezeMeleeMult: 2.0,
+};
 
 let KinkyDungeonOpenObjects = KinkyDungeonTransparentObjects; // Objects bullets can pass thru
 let KinkyDungeonMeleeDamageTypes = ["unarmed", "crush", "slash", "pierce", "grope", "pain", "chain", "tickle"];
@@ -493,13 +498,19 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	if (KinkyDungeonGetBuffedStat(Enemy.buffs, "ArmorBreak")) armor -= Math.min(Math.max(0, armor), KinkyDungeonGetBuffedStat(Enemy.buffs, "ArmorBreak"));
 
 	if (Enemy.freeze > 0 && Damage && KinkyDungeonMeleeDamageTypes.includes(predata.type)) {
-		predata.dmg *= 2;
+		predata.dmg *= KDFightParams.KDFreezeMeleeMult;
 	}
 
 	let miss = !(!Damage || !Damage.evadeable || KinkyDungeonEvasion(Enemy, (true && Spell), !KinkyDungeonMeleeDamageTypes.includes(predata.type), attacker));
 	if (Damage && !miss) {
-		if (KinkyDungeonStatsChoice.get("Pacifist") && KDHostile(Enemy) && Enemy.Enemy.bound && !KinkyDungeonTeaseDamageTypes.includes(predata.type) && predata.type != "glue" && predata.type != "chain") {
-			predata.dmg *= KDPacifistReduction;
+		if (KDHostile(Enemy)) {
+			if (KinkyDungeonStatsChoice.get("Pacifist") && Enemy.Enemy.bound && !KinkyDungeonTeaseDamageTypes.includes(predata.type) && predata.type != "glue" && predata.type != "chain") {
+				predata.dmg *= KDPacifistReduction;
+			}
+			if (KinkyDungeonStatsChoice.get("EnemyArmor")) armor += KDPerkParams.KDEnemyArmorBoost;
+			if (KinkyDungeonStatsChoice.get("EnemyResist")) {
+				predata.dmg *= KDEnemyResistReduction;
+			}
 		}
 		KDUpdatePerksBonus();
 		let DamageAmpBonusPerks = KDDamageAmpPerks
@@ -552,6 +563,9 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			if (eff > 3) {
 				mult += 0.5;
 			}
+
+			if (KinkyDungeonGetBuffedStat(Enemy.buffs, "TeaseVuln")) mult += KinkyDungeonGetBuffedStat(Enemy.buffs, "TeaseVuln");
+			if (attacker?.player && KDEntityBuffedStat(attacker, "TeaseBuff")) mult += KDEntityBuffedStat(attacker, "TeaseBuff");
 			predata.dmg *= mult;
 		}
 		if (Enemy.boundLevel > 0 && Damage && Damage.boundBonus) {
