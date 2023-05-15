@@ -245,23 +245,25 @@ function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, all
 	for (let i = 0; i < count; i++) {
 		let restraintAdd = KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel + (spell?.power || 0), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 
-		let playerEvasion = allowEvade ? KinkyDungeonPlayerEvasion() : 0;
-		let playerBlock = allowBlock ? KinkyDungeonPlayerBlock() : 0;
-		let missed = allowEvade && KDRandom() * AIData.accuracy < 1 - playerEvasion;
-		let blockedAtk = allowBlock && KDRandom() * AIData.accuracy < 1 - playerBlock;
-		if (!missed && !blockedAtk) {
-			restraintsToAdd.push(restraintAdd);
-		} else {
-			if (missed) {
-				KinkyDungeonSendEvent("missPlayerSpell", {spell: spell, player: player});
-				KinkyDungeonSendTextMessage(2, TextGet("KinkyDungeonSpellBindMiss").replace("EnemyName", TextGet("KinkyDungeonSpell" + (spell.name || ""))), "lightgreen", 1);
-				KDDamageQueue.push({floater: TextGet("KDMissed"), Entity: {x: player.x - 0.5, y: player.y - 0.5}, Color: "#88ff88", Time: 2, Delay: 0});
-			} else if (blockedAtk) {
-				KinkyDungeonSendEvent("blockPlayerSpell", {spell: spell, player: player});
-				KinkyDungeonSendTextMessage(2, TextGet("KinkyDungeonSpellBindBlock").replace("EnemyName", TextGet("KinkyDungeonSpell" + (spell.name || ""))), "lightgreen", 1);
-				KDDamageQueue.push({floater: TextGet("KDBlocked"), Entity: {x: player.x - 0.5, y: player.y - 0.5}, Color: "#88ff88", Time: 2, Delay: 0});
-			}
+		if (restraintAdd) {
+			let playerEvasion = allowEvade ? KinkyDungeonPlayerEvasion() : 0;
+			let playerBlock = allowBlock ? KinkyDungeonPlayerBlock() : 0;
+			let missed = allowEvade && KDRandom() * AIData.accuracy < 1 - playerEvasion;
+			let blockedAtk = allowBlock && KDRandom() * AIData.accuracy < 1 - playerBlock;
+			if (!missed && !blockedAtk) {
+				restraintsToAdd.push(restraintAdd);
+			} else {
+				if (missed) {
+					KinkyDungeonSendEvent("missPlayerSpell", {spell: spell, player: player});
+					KinkyDungeonSendTextMessage(2, TextGet("KinkyDungeonSpellBindMiss").replace("EnemyName", TextGet("KinkyDungeonSpell" + (spell.name || ""))), "lightgreen", 1);
+					KDDamageQueue.push({floater: TextGet("KDMissed"), Entity: {x: player.x - 0.5, y: player.y - 0.5}, Color: "#88ff88", Time: 2, Delay: 0});
+				} else if (blockedAtk) {
+					KinkyDungeonSendEvent("blockPlayerSpell", {spell: spell, player: player});
+					KinkyDungeonSendTextMessage(2, TextGet("KinkyDungeonSpellBindBlock").replace("EnemyName", TextGet("KinkyDungeonSpell" + (spell.name || ""))), "lightgreen", 1);
+					KDDamageQueue.push({floater: TextGet("KDBlocked"), Entity: {x: player.x - 0.5, y: player.y - 0.5}, Color: "#88ff88", Time: 2, Delay: 0});
+				}
 
+			}
 		}
 	}
 	if (restraintsToAdd.length > 0) {
