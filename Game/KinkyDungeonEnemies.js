@@ -4688,6 +4688,7 @@ function KDCanDom(enemy) {
 	if (KDEnemyHasFlag(enemy, "isSubbing")) return true;
 	if (KDEnemyHasFlag(enemy, "isDomming")) return false;
 	if (enemy.Enemy.tags.nosub) return false;
+	if (KinkyDungeonIsArmsBound(false, true) || KinkyDungeonIsHandsBound(false, true, 0.1) || KinkyDungeonGagTotal() > 0.1) return false;
 	// Very bad pseudo RNG based on enemy.id as seed
 	// TODO replace with better prng with variable seed
 	if (enemy.domVariance == undefined) enemy.domVariance = (KDEnemyPersonalities[enemy.personality]?.domVariance || KDDomThresh_Variance) * (2 * KDRandom() - 1);
