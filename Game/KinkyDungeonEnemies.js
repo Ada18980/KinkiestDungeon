@@ -2875,7 +2875,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			AIData.kite = true;
 		} else
 			AIData.followRange = 1.5;
-	} else if (AIData.aggressive && enemy.attackPoints && !enemy.Enemy.attackWhileMoving && AIData.followRange < (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange) {
+	} else if (AIData.aggressive && enemy.attackPoints && !enemy.Enemy.attackWhileMoving && AIData.followRange < ((enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange)
+		&& enemy.Enemy.attack?.includes("Melee")) {
 		AIData.followRange = Math.max(1.5, (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange || AIData.followRange);
 	}
 
