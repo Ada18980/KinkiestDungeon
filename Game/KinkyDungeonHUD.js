@@ -736,7 +736,7 @@ function KinkyDungeonDrawInputs() {
 					lastO = O;
 					O = OInit;
 					if (drawn) {
-						DrawTextKD(TextGet("KinkyDungeonItemsUnderneath"), 530, MY + O * 45, "#ffffff", "#333333", undefined, "left");
+						DrawTextKD(TextGet("KinkyDungeonItemsUnderneath" + (KDStruggleGroupLinkIndex[sg.group] > 0 ? "2" : "")), 530, MY + O * 45, "#ffffff", "#333333", undefined, "left");
 					}
 					O = lastO + 1;
 				}
