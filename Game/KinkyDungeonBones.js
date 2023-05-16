@@ -122,9 +122,11 @@ let KDPatronCustomEnemies = new Map([
  *
  * @param {enemy} Enemy
  * @param {entity} e
+ * @param {number} chanceBoost
  */
-function KDProcessCustomPatron(Enemy, e) {
-	if (KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < 0.14) {
+function KDProcessCustomPatron(Enemy, e, chanceBoost) {
+	let chance = 0.05 + (chanceBoost || 0); // Lower chance if 'subordinate'
+	if (KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < chance) {
 		let customs = KDPatronCustomEnemies.get(Enemy.name).filter((element) => {
 			return (element.prisoner && Enemy.specialdialogue && Enemy.specialdialogue.includes("Prisoner")) || (element.free && !Enemy.specialdialogue);
 		});

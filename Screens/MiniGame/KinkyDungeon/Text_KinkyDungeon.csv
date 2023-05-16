@@ -3609,37 +3609,6 @@ RestraintShadowHandCrotch,Shadow Hands...
 RestraintShadowHandCrotchDesc,"They are holding your... uh..."
 RestraintShadowHandCrotchDesc2,"You have no choice but to struggle."
 
-RestraintRopeSnakeArmsBoxtie,Wrist Rope
-RestraintRopeSnakeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
-RestraintRopeSnakeArmsBoxtieDesc2,"The ropes squeeze you gently."
-RestraintRopeSnakeCuffs,Rope Cuffs
-RestraintRopeSnakeCuffsDesc,"A quick tie for apprehending prisoners."
-RestraintRopeSnakeCuffsDesc2,"It's not very secure."
-RestraintRopeSnakeCuffsAdv,Intricate Ropework
-RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
-RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
-RestraintRopeSnakeHogtie,Rope Hogtie
-RestraintRopeSnakeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
-RestraintRopeSnakeHogtieDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
-RestraintRopeSnakeTorso,Rope Belt
-RestraintRopeSnakeTorsoDesc,"A harness acting as a handle to pull you around"
-RestraintRopeSnakeTorsoDesc2,"The ropes squeeze you gently."
-RestraintRopeSnakeHarness,Rope Harness
-RestraintRopeSnakeHarnessDesc,"A harness that secures your other restraints and makes them tighter."
-RestraintRopeSnakeHarnessDesc2,"The ropes squeeze you gently."
-RestraintRopeSnakeCrotch,Crotch Rope
-RestraintRopeSnakeCrotchDesc,"A tight rope impressing upon your most private areas..."
-RestraintRopeSnakeCrotchDesc2,"The ropes squeeze you gently."
-RestraintRopeSnakeArmsWrist,Wrist Rope
-RestraintRopeSnakeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
-RestraintRopeSnakeArmsWristDesc2,"The ropes squeeze you gently."
-RestraintRopeSnakeLegs,Leg Ropes
-RestraintRopeSnakeLegsDesc,"A tie that hobbles your legs together.."
-RestraintRopeSnakeLegsDesc2,"The ropes squeeze you gently."
-RestraintRopeSnakeFeet,Ankle Ropes
-RestraintRopeSnakeFeetDesc,"A tie keeping your feet secured together."
-RestraintRopeSnakeFeetDesc2,"The ropes squeeze you gently."
-
 RestraintCelestialRopeArms,Holy Wrist Rope
 RestraintCelestialRopeArmsDesc,"A box tie keeping your arms secured behind your back."
 RestraintCelestialRopeArmsDesc2,"They are aware of your movements..."
@@ -5584,7 +5553,7 @@ KinkyDungeonSpellCastSlime,You conjure a pool of slime!
 KinkyDungeonSpellTargetSlime,Select where the slime will appear
 
 KinkyDungeonSpellSlimeEruption,Slime Eruption
-KinkyDungeonSpellDescriptionSlimeEruption,A huge blast of slime deals DamageDealt glue damage to enemies that enter and binds them friefly.
+KinkyDungeonSpellDescriptionSlimeEruption,A huge blast of slime deals DamageDealt glue damage to enemies that enter and binds them briefly.
 KinkyDungeonSpellCastSlimeEruption,You conjure an explosion of slime!
 KinkyDungeonSpellTargetSlimeEruption,Select where the slime will appear
 
@@ -10107,3 +10076,36 @@ KinkyDungeonInventoryItemBrowniesDesc2,"Restores 30% willpower. Takes a few turn
 
 KinkyDungeonBuffHaunted,A playful ghost now accompanies you on your journey.
 KDHaunting,"The ghost haunting you decides to have a little fun! (+RestraintAdded)"
+
+RestraintRopeSnakeArmsBoxtie,Wrist Rope
+RestraintRopeSnakeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
+RestraintRopeSnakeArmsBoxtieDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeCuffs,Rope Cuffs
+RestraintRopeSnakeCuffsDesc,"A quick tie for apprehending prisoners."
+RestraintRopeSnakeCuffsDesc2,"It's not very secure."
+RestraintRopeSnakeCuffsAdv,Intricate Ropework
+RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
+RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
+RestraintRopeSnakeHogtie,Rope Hogtie
+RestraintRopeSnakeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintRopeSnakeHogtieDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
+RestraintRopeSnakeBelt,Rope Belt
+RestraintRopeSnakeBeltDesc,"A harness acting as a handle to pull you around"
+RestraintRopeSnakeBeltDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeHarness,Rope Harness
+RestraintRopeSnakeHarnessDesc,"A harness that secures your other restraints and makes them tighter."
+RestraintRopeSnakeHarnessDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeCrotch,Crotch Rope
+RestraintRopeSnakeCrotchDesc,"A tight rope impressing upon your most private areas..."
+RestraintRopeSnakeCrotchDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeArmsWrist,Wrist Rope
+RestraintRopeSnakeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
+RestraintRopeSnakeArmsWristDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeLegs,Leg Ropes
+RestraintRopeSnakeLegsDesc,"A tie that hobbles your legs together.."
+RestraintRopeSnakeLegsDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeFeet,Ankle Ropes
+RestraintRopeSnakeFeetDesc,"A tie keeping your feet secured together."
+RestraintRopeSnakeFeetDesc2,"The ropes squeeze you gently."
+
+KinkyDungeonInventoryItemLore,"Notebook Page"

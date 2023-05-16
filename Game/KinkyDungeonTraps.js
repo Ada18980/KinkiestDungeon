@@ -1,5 +1,199 @@
 "use strict";
 
+
+/** @type {Record<string, KDTrapType>} */
+let KDTrapTypes = {
+	CustomSleepDart: (tile, entity, x, y) => {
+		let spell = KinkyDungeonFindSpell("TrapSleepDart", true);
+		if (spell) {
+			// Search any tile 4 tiles up or down that have Line of Sight to the player
+			let startX = x;
+			let startY = y;
+			let possible_coords = [
+				{x: -4, y: 0}, {x: 4, y: 0}, {x: 0, y: -4}, {x: 0, y: 4},
+				{x: -3, y: 0}, {x: 3, y: 0}, {x: 0, y: -3}, {x: 0, y: 3},
+				{x: -2, y: 0}, {x: 2, y: 0}, {x: 0, y: -2}, {x: 0, y: 2},
+			];
+			let success = false;
+			for (let coord of possible_coords) {
+				if (KinkyDungeonCheckProjectileClearance(startX + coord.x, startY + coord.y, startX, startY)) {
+					startX += coord.x;
+					startY += coord.y;
+					success = true;
+					break;
+				}
+			}
+			if (success) {
+				// We fire the dart
+				let player = KinkyDungeonEnemyAt(x, y) ? KinkyDungeonEnemyAt(x, y) : KinkyDungeonPlayerEntity;
+				KinkyDungeonCastSpell(x, y, spell, { x: startX, y: startY }, player, undefined);
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+				KinkyDungeonTilesDelete(x + "," + y);
+				return {
+					triggered: true,
+					msg: "",
+				};
+			} else {
+				// We do sleep gas instead
+				spell = KinkyDungeonFindSpell("SleepGas", true);
+				if (spell) {
+					KinkyDungeonCastSpell(x, y, spell, undefined, undefined, undefined);
+					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+					KinkyDungeonTilesDelete(x + "," + y);
+					return {
+						triggered: true,
+						msg: TextGet("KinkyDungeonSpellCast" + spell.name),
+					};
+				}
+			}
+		}
+		return {
+			triggered: false,
+			msg: "",
+		};
+	},
+	BedTrap: (tile, entity, x, y) => {
+		if (entity.player)
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BedTrap"), 0, true);
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		tile.Trap = undefined;
+		tile.Type = undefined;
+		KinkyDungeonMakeNoise(10, x, y);
+		return {
+			triggered: true,
+			msg: TextGet("KDBedTrap"),
+		};
+	},
+	CageTrap: (tile, entity, x, y) => {
+		if (entity.player)
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("CageTrap"), 0, true);
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		tile.Trap = undefined;
+		tile.Type = undefined;
+		return {
+			triggered: true,
+			msg: TextGet("KDCageTrap"),
+		};
+	},
+	BarrelTrap: (tile, entity, x, y) => {
+		if (entity.player)
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BarrelTrap"), 0, true);
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		tile.Trap = undefined;
+		tile.Type = undefined;
+		return {
+			triggered: true,
+			msg: TextGet("KDBarrelTrap"),
+		};
+	},
+	CustomVine: (tile, entity, x, y) => {
+		let restraint = KinkyDungeonGetRestraintByName("VinePlantFeet");
+		if (restraint) {
+			KDSendStatus('bound', tile.Trap, "trap");
+
+			if (entity.player)
+				KinkyDungeonAddRestraintIfWeaker(restraint, tile.Power, false);
+		}
+		let created = KinkyDungeonSummonEnemy(x, y, "VinePlant", tile.Power, 1);
+		if (created > 0) {
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+			KinkyDungeonTilesDelete(x + "," + y);
+		}
+		return {
+			triggered: true,
+			msg: created > 0 ? "Default" : "",
+		};
+	},
+	SpawnEnemies: (tile, entity, x, y) => {
+		let radius = tile.Power > 4 ? 4 : 2;
+		let created = KinkyDungeonSummonEnemy(x, y, tile.Enemy, tile.Power, radius, true, undefined, undefined, true, "Ambush", true, 1.5, true);
+		if (created > 0) {
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+			KinkyDungeonTilesDelete(x + "," + y);
+		}
+		return {
+			triggered: created > 0,
+			msg: created > 0 ? TextGet("KinkyDungeonTrapSpawn" + tile.Enemy) : "",
+		};
+	},
+	SpecificSpell: (tile, entity, x, y) => {
+		let spell = KinkyDungeonFindSpell(tile.Spell, true);
+		if (spell) {
+			let xx = 0;
+			let yy = 0;
+			if (!tile.noVary) {
+				for (let i = 0; i < 10; i++) {
+					xx = Math.floor(KDRandom() * 3 - 1);
+					yy = Math.floor(KDRandom() * 3 - 1);
+					if (xx != 0 || yy != 0) i = 1000;
+				}
+			}
+			KinkyDungeonCastSpell(x + xx, y + yy, spell, undefined, undefined, undefined, "Trap");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+			KinkyDungeonTilesDelete(x + "," + y);
+			let etiles = Object.values(KDGetEffectTiles(x, y)).filter((etile) => {
+				return etile.tags && etile.tags.includes("runetrap");
+			});
+			if (etiles?.length > 0) {
+				for (let et of etiles) {
+					et.duration = 0;
+				}
+			}
+		}
+		return {
+			triggered: spell != undefined,
+			msg: "",
+		};
+	},
+
+
+};
+
+let KDTrapTypesStepOff = {
+	DoorLock: (tile, entity, x, y) => {
+		let created = 0;
+		if (KinkyDungeonNoEnemy(x, y)) {
+			let lifetime = tile.Lifetime ? tile.Lifetime : undefined;
+			KinkyDungeonMapSet(x, y, 'D');
+			let spawned = 0;
+			let maxspawn = 1 + Math.round(Math.min(2 + KDRandom() * 2, KinkyDungeonDifficulty/25) + Math.min(2 + KDRandom() * 2, 0.5*MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint));
+			if (tile.SpawnMult) maxspawn *= tile.SpawnMult;
+			let requireTags = ["doortrap"];
+
+			let tags = ["doortrap"];
+			KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
+
+			for (let i = 0; i < 30; i++) {
+				if (spawned < maxspawn) {
+					let Enemy = KinkyDungeonGetEnemy(
+						tags, MiniGameKinkyDungeonLevel,
+						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+						'0', requireTags, true);
+					if (Enemy) {
+						KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, Enemy.tags.construct ? 23 : undefined, undefined, true, "Ambush", true, 1.5, true, undefined, true);
+						if (Enemy.tags.minor) spawned += 0.4;
+						else spawned += 1;
+					}
+				}
+			}
+			if (spawned > 0) {
+				KinkyDungeonMapSet(x, y, 'd');
+				created = KinkyDungeonSummonEnemy(x, y, "DoorLock", 1, 0, false, lifetime);
+				if (created > 0) {
+					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
+					KinkyDungeonMakeNoise(12, x, y);
+					KinkyDungeonTilesDelete(x + "," + y);
+					KinkyDungeonMapSet(x, y, 'D');
+				}
+			} else
+				KinkyDungeonMapSet(x, y, 'd');
+		}
+		return {
+			msg: created > 0 ? "Default" : "",
+		};
+	}
+};
+
 let KinkyDungeonTrapMoved = false;
 
 function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
@@ -12,43 +206,10 @@ function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 			KinkyDungeonSendEvent("beforeStepOffTrap", {x:x, y:y, tile: tile, flags: flags});
 			let msg = "";
 			let color = "#ff0000";
-			let lifetime = tile.Lifetime ? tile.Lifetime : undefined;
 
-			if (tile.StepOffTrap == "DoorLock" && KinkyDungeonNoEnemy(x, y)) {
-				KinkyDungeonMapSet(x, y, 'D');
-				let spawned = 0;
-				let maxspawn = 1 + Math.round(Math.min(2 + KDRandom() * 2, KinkyDungeonDifficulty/25) + Math.min(2 + KDRandom() * 2, 0.5*MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint));
-				if (tile.SpawnMult) maxspawn *= tile.SpawnMult;
-				let requireTags = ["doortrap"];
-
-				let tags = ["doortrap"];
-				KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
-
-				for (let i = 0; i < 30; i++) {
-					if (spawned < maxspawn) {
-						let Enemy = KinkyDungeonGetEnemy(
-							tags, MiniGameKinkyDungeonLevel,
-							KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
-							'0', requireTags, true);
-						if (Enemy) {
-							KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, Enemy.tags.construct ? 23 : undefined, undefined, true, "Ambush", true, 1.5, true, undefined, true);
-							if (Enemy.tags.minor) spawned += 0.4;
-							else spawned += 1;
-						}
-					}
-				}
-				if (spawned > 0) {
-					KinkyDungeonMapSet(x, y, 'd');
-					let created = KinkyDungeonSummonEnemy(x, y, "DoorLock", 1, 0, false, lifetime);
-					if (created > 0) {
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
-						msg = "Default";
-						KinkyDungeonMakeNoise(12, x, y);
-						KinkyDungeonTilesDelete(x + "," + y);
-						KinkyDungeonMapSet(x, y, 'D');
-					}
-				} else
-					KinkyDungeonMapSet(x, y, 'd');
+			if (KDTrapTypes[tile.Trap]) {
+				let res = KDTrapTypes[tile.Trap](tile, entity, x, y);
+				msg = res.msg;
 			}
 
 			if (msg) {
@@ -78,133 +239,10 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 			if (KinkyDungeonStatsChoice.has("Rusted") && KDRandom() < 0.25) {
 				msg = TextGet("KDTrapMisfire");
 			} else {
-				if (tile.Trap === "SpawnEnemies") {
-					let radius = tile.Power > 4 ? 4 : 2;
-					let created = KinkyDungeonSummonEnemy(x, y, tile.Enemy, tile.Power, radius, true, undefined, undefined, true, "Ambush", true, 1.5, true);
-					if (created > 0) {
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-						msg = TextGet("KinkyDungeonTrapSpawn" + tile.Enemy);
-						KinkyDungeonTilesDelete(x + "," + y);
-						//if (!tile.noSmoke) {
-						//KDSmokePuff(x, y, 1.9, 0.5);
-						//}
-						triggered = true;
-					}
-				}
-				if (tile.Trap == "SpecificSpell") {
-					let spell = KinkyDungeonFindSpell(tile.Spell, true);
-					if (spell) {
-						let xx = 0;
-						let yy = 0;
-						if (!tile.noVary) {
-							for (let i = 0; i < 10; i++) {
-								xx = Math.floor(KDRandom() * 3 - 1);
-								yy = Math.floor(KDRandom() * 3 - 1);
-								if (xx != 0 || yy != 0) i = 1000;
-							}
-						}
-						KinkyDungeonCastSpell(x + xx, y + yy, spell, undefined, undefined, undefined, "Trap");
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-						msg = ""; // The spell will show a message on its own
-						triggered = true;
-						KinkyDungeonTilesDelete(x + "," + y);
-						let etiles = Object.values(KDGetEffectTiles(x, y)).filter((etile) => {
-							return etile.tags && etile.tags.includes("runetrap");
-						});
-						if (etiles?.length > 0) {
-							for (let et of etiles) {
-								et.duration = 0;
-							}
-						}
-						//if (!tile.noSmoke) {
-						//KDSmokePuff(x, y, 1.9, 0.5);
-						//}
-					}
-				}
-				if (tile.Trap == "BarrelTrap") {
-					if (entity.player)
-						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BarrelTrap"), 0, true);
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-					msg = TextGet("KDBarrelTrap");
-					triggered = true;
-					tile.Trap = undefined;
-					tile.Type = undefined;
-				}
-				if (tile.Trap == "CageTrap") {
-					if (entity.player)
-						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("CageTrap"), 0, true);
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-					msg = TextGet("KDCageTrap");
-					triggered = true;
-					tile.Trap = undefined;
-					tile.Type = undefined;
-				}
-				if (tile.Trap == "BedTrap") {
-					if (entity.player)
-						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BedTrap"), 0, true);
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-					msg = TextGet("KDBedTrap");
-					triggered = true;
-					tile.Trap = undefined;
-					tile.Type = undefined;
-					KinkyDungeonMakeNoise(10, x, y);
-				}
-				if (tile.Trap === "CustomSleepDart") {
-					let spell = KinkyDungeonFindSpell("TrapSleepDart", true);
-					if (spell) {
-						// Search any tile 4 tiles up or down that have Line of Sight to the player
-						let startX = x;
-						let startY = y;
-						let possible_coords = [
-							{x: -4, y: 0}, {x: 4, y: 0}, {x: 0, y: -4}, {x: 0, y: 4},
-							{x: -3, y: 0}, {x: 3, y: 0}, {x: 0, y: -3}, {x: 0, y: 3},
-							{x: -2, y: 0}, {x: 2, y: 0}, {x: 0, y: -2}, {x: 0, y: 2},
-						];
-						let success = false;
-						for (let coord of possible_coords) {
-							if (KinkyDungeonCheckProjectileClearance(startX + coord.x, startY + coord.y, startX, startY)) {
-								startX += coord.x;
-								startY += coord.y;
-								success = true;
-								break;
-							}
-						}
-						if (success) {
-							triggered = true;
-							// We fire the dart
-							let player = KinkyDungeonEnemyAt(x, y) ? KinkyDungeonEnemyAt(x, y) : KinkyDungeonPlayerEntity;
-							KinkyDungeonCastSpell(x, y, spell, { x: startX, y: startY }, player, undefined);
-							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-							msg = ""; // We don't want to warn the player about what just happened
-							KinkyDungeonTilesDelete(x + "," + y);
-						} else {
-							triggered = true;
-							// We do sleep gas instead
-							spell = KinkyDungeonFindSpell("SleepGas", true);
-							if (spell) {
-								KinkyDungeonCastSpell(x, y, spell, undefined, undefined, undefined);
-								if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-								msg = "KinkyDungeonSpellCast" + spell.name;
-								KinkyDungeonTilesDelete(x + "," + y);
-							}
-						}
-					}
-				}
-				if (tile.Trap === "CustomVine") {
-					let restraint = KinkyDungeonGetRestraintByName("VinePlantFeet");
-					if (restraint) {
-						KDSendStatus('bound', tile.Trap, "trap");
-
-						if (entity.player)
-							KinkyDungeonAddRestraintIfWeaker(restraint, tile.Power, false);
-					}
-					triggered = true;
-					let created = KinkyDungeonSummonEnemy(x, y, "VinePlant", tile.Power, 1);
-					if (created > 0) {
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-						msg = "Default";
-						KinkyDungeonTilesDelete(x + "," + y);
-					}
+				if (KDTrapTypes[tile.Trap]) {
+					let res = KDTrapTypes[tile.Trap](tile, entity, x, y);
+					msg = res.msg;
+					triggered = res.triggered;
 				}
 			}
 			if (entity.player && (msg || triggered)) {

@@ -1247,8 +1247,10 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 					e.spawnY = Y;
 				}
 				KDAddEntity(e);
-				// Give it a custom name, 5% chance
-				KDProcessCustomPatron(Enemy, e);
+				let clusterChance = 0.5; //1.1 + 0.9 * MiniGameKinkyDungeonLevel/KinkyDungeonMaxLevel;
+				let clusterLeader = !spawnPoint && !currentCluster && Enemy.clusterWith && KDRandom() < clusterChance;
+				// Give it a custom name, higher chance if cluster
+				KDProcessCustomPatron(Enemy, e, clusterLeader ? 0.5 : (!currentCluster ? 0.1 : 0.0));
 				let incrementCount = 1;
 				KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
 				let shop = KinkyDungeonGetShopForEnemy(e, false);
@@ -1260,12 +1262,11 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				KDSetLoadout(e, loadout);
 
 				if (!spawnPoint && !currentCluster && Enemy.clusterWith) {
-					let clusterChance = 0.5; //1.1 + 0.9 * MiniGameKinkyDungeonLevel/KinkyDungeonMaxLevel;
 					if (Enemy.tags.boss) clusterChance = 0;
 					else if (Enemy.tags.miniboss) clusterChance = 0;
 					else if (Enemy.tags.elite) clusterChance = 0.15;
 					//else if (Enemy.tags.elite || Enemy.tags.miniboss) clusterChance *= 0.6;
-					if (KDRandom() < clusterChance)
+					if (clusterLeader)
 						currentCluster = {
 							x : X,
 							y : Y,

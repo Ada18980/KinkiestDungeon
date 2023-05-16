@@ -386,7 +386,6 @@ let KinkyDungeonFactionRelationsBase = {
 	"Elemental": {
 		"KinkyConstruct": 0.55,
 		"Dressmaker": 0.35,
-		"Witch": 0.15,
 		"Bandit": -0.15,
 		"Elf": 0.5,
 		"Bast": -0.35,

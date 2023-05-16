@@ -2115,6 +2115,10 @@ interface KDTrainingRecord {
 	training_stage: number,
 }
 
+type KDTile = any;
+
+type KDTrapType = (tile: KDTile, entity: entity, x: number, y: number) => {msg: string, triggered: boolean}
+
 type KDSprites = {[_: string]: (x: number, y: number, fog: boolean, noReplace: string) => string}
 
 declare const zip: any;
@@ -2129,3 +2133,4 @@ declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') &
 // We can't refer to a type as `PIXI.Container`, nor `typeof PIXI.Container`, but `import(pixi.js).Container` does work
 type PIXIContainer = import('pixi.js').Container;
 type PIXIAdjustmentFilter = import('pixi-filters').AdjustmentFilter;
+

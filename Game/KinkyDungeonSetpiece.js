@@ -818,7 +818,7 @@ function SetpieceSpawnPrisoner(x, y) {
 		e.items = [];
 		KinkyDungeonSetEnemyFlag(e, "noswap", -1);
 		KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
-		KDProcessCustomPatron(Enemy, e);
+		KDProcessCustomPatron(Enemy, e, 0.1);
 	}
 }
 
@@ -959,7 +959,13 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 function KDAddPipes(pipechance, pipelatexchance, thinlatexchance, heavylatexspreadchance) {
 	for (let x = 1; x < KinkyDungeonGridWidth - 2; x++)
 		for (let y = 1; y < KinkyDungeonGridHeight - 2; y++) {
-			if (KinkyDungeonMapGet(x, y) == '1' && KinkyDungeonMapGet(x, y+1) == '0' && !KinkyDungeonTilesGet(x + "," + y) && KDRandom() < pipechance) {
+			if (
+				KinkyDungeonMapGet(x, y) == '1'
+				&& KinkyDungeonMapGet(x, y+1) == '0'
+				&& !KinkyDungeonTilesGet(x + "," + y)
+				&& !KinkyDungeonEnemyAt(x, y+1)
+				&& !(Object.entries(KDGetEffectTiles(x, y+1)).length > 0)
+				&& KDRandom() < pipechance) {
 				KinkyDungeonTilesSet(x + "," + y, {Skin: "EmptyPipe"});
 				if (KDRandom() < pipelatexchance) {
 					KinkyDungeonTilesSet(x + "," + y, {Skin: "LatexPipe"});
