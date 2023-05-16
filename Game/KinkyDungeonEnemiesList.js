@@ -323,7 +323,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":1, "lastthird":4, "increasingWeight":1}, floors:KDMapInit(["cat", "tmb", "tmp"]),
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Axe", weight: 50, ignoreInInventory: true}]},
 
-	{name: "Ghost", color: "#FFFFFF", faction: "Ghost", clusterWith: "ghost", tags: KDMapInit(["ignorenoSP", "ghost", "flying", "spooky", "melee", "glueimmune", "chainimmune"]),
+	{name: "Ghost", color: "#FFFFFF", faction: "Ghost", clusterWith: "ghost", tags: KDMapInit(["ghost", "flying", "spooky", "melee", "glueimmune", "chainimmune"]),
 		ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt", guardChance: 0.6, hitsfx: "Tickle",
 		visionRadius: 6, blindSight: 3, evasion: 9.0, alwaysEvade: true, maxhp: 1, minLevel:0, weight:0.1, movePoints: 1.5,
 		attackPoints: 2, attack: "MeleeSuicideEffectWill", attackWidth: 1, attackRange: 1, power: 1, dmgType: "tickle", suicideOnEffect: true, fullBoundBonus: 1,
