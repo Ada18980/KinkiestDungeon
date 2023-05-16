@@ -789,7 +789,7 @@ let KDChestTrapWeights = {
 let KDTrapChestType = {
 	"default" : (guaranteed, x, y, chestType, lock, noTrap) => {
 		let obj = KDGetWeightedString(KDChestTrapWeights) || "metalTrap";
-		return {trap: obj, mult: KDChestTrapWeights[obj].weight};
+		return {trap: obj, mult: KDChestTrapWeights[obj].mult};
 	},
 	"shadow" : (guaranteed, x, y, chestType, lock, noTrap) => {
 		return {trap: "shadowTrap", mult: 2.5, duration: 300};
