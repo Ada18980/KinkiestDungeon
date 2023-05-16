@@ -1964,12 +1964,13 @@ const KinkyDungeonRestraints = [
 	KDModsAfterLoad = () => {
 		KDAddRopeVariants(
 			"RopeSnake",
-			"CelRope",
+			"WeakMagicRope",
 			"",
-			"rest_rope_cel",
-			"celestialRopes",
+			"rest_rope_weakmagic",
+			["weakMagicRopes"],
+			4,
 			{
-
+				magic: true,
 			},
 			[],
 			{
@@ -1977,10 +1978,6 @@ const KinkyDungeonRestraints = [
 				Cut: 0.25,
 				Remove: 0.1,
 			},
-			{
-				name: "Holy Ropes",
-				description: "Brightly glowing ropes made of a glistening material.",
-			}
 		);
 
 

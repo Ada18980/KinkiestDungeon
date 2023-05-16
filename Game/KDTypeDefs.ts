@@ -1929,7 +1929,7 @@ type EnemyEvent = {
 	/** Run when leashes to the leash point */
 	arrive?: (enemy: entity, AIData: any) => boolean,
 	/** Run each turn at the end */
-	maintain?: (enemy: entity, delta: number) => boolean,
+	maintain?: (enemy: entity, delta: number, AIData?: any) => boolean,
 	/** Run before the move loop */
 	beforeMove?: (enemy: entity, AIData: any, delta: number) => boolean,
 	/** Run before the attack loop */
@@ -2113,6 +2113,10 @@ interface KDTrainingRecord {
 	turns_total: number,
 	training_points: number,
 	training_stage: number,
+}
+
+interface KDRopeType {
+	tags: string[],
 }
 
 type KDTile = any;
