@@ -2018,7 +2018,7 @@ AttackSummonedSkeleton,"The Skeleton tackles you! (DamageTaken)"
 NameGhost,Ghost
 KillGhost,"The ghost vanishes."
 AttackGhostBind,"The Ghost restrains you! (+RestraintAdded)"
-AttackGhost,"The Ghost tickles you! (DamageTaken)"
+AttackGhost,"The Ghost enters your clothing and vanishes!"
 
 NameMikoGhost,Revenant
 KillMikoGhost,"The revenant pouts as it vanishes."
@@ -10390,3 +10390,6 @@ KinkyDungeonInventoryItemBrownies,Double Fudge Brownies
 KinkyDungeonInventoryItemBrowniesUse,"You enjoy the brownies one soft, delicious bite at a time."
 KinkyDungeonInventoryItemBrowniesDesc,"A decadent blend of butter and chocolate topped with fudge and baked to perfection."
 KinkyDungeonInventoryItemBrowniesDesc2,"Restores 30% willpower. Takes a few turns to eat."
+
+KinkyDungeonBuffHaunted,A playful ghost has decided to accompany you on your journey.
+KDHaunting,"The ghost haunting you decides to have a little fun! (+RestraintAdded)"

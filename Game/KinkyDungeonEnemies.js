@@ -3406,6 +3406,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					let willpowerDamage = 0;
 					let msgColor = "#ffff00";
 					let Locked = false;
+					let Effected = false;
 					let Stun = false;
 					let Blind = false;
 					let priorityBonus = 0;
@@ -3565,16 +3566,6 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					}
 
 
-					if (AIData.attack.includes("Suicide")) {
-						if ((!enemy.Enemy.suicideOnAdd && !enemy.Enemy.suicideOnLock)
-							|| (enemy.Enemy.suicideOnAdd && addedRestraint) || (enemy.Enemy.suicideOnLock && Locked) || (!player.player && AIData.attack.includes("Bind") && enemy.Enemy.suicideOnAdd)) {
-							enemy.hp = 0;
-						} else if ((!KinkyDungeonHasWill(0.1) || (enemy.Enemy.Attack?.mustBindorFail)) && enemy.Enemy.failAttackflag) {
-							for (let f of enemy.Enemy.failAttackflag) {
-								KinkyDungeonSetFlag(f, enemy.Enemy.failAttackflagDuration || 12);
-							}
-						}
-					}
 					if (AIData.attack.includes("Vibe")) {
 						AIData.vibe = true;
 					}
@@ -3791,6 +3782,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							if (affected && enemy.usingSpecial && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Effect")) {
 								enemy.specialCD = enemy.Enemy.specialCD;
 							}
+							Effected = true;
 							happened += 1;
 						}
 						if (AIData.attack.includes("Stun")) {
@@ -3894,6 +3886,20 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							}
 							let sfx = (AIData.hitsfx) ? AIData.hitsfx : "DealDamage";
 							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg", enemy);
+						}
+					}
+
+					if (AIData.attack.includes("Suicide")) {
+						if ((!enemy.Enemy.suicideOnAdd && !enemy.Enemy.suicideOnLock && !enemy.Enemy.suicideOnEffect)
+							|| (enemy.Enemy.suicideOnAdd && addedRestraint)
+							|| (enemy.Enemy.suicideOnLock && Locked)
+							|| (enemy.Enemy.suicideOnEffect && Effected)
+							|| (!player.player && AIData.attack.includes("Bind") && enemy.Enemy.suicideOnAdd)) {
+							enemy.hp = 0;
+						} else if ((!KinkyDungeonHasWill(0.1) || (enemy.Enemy.Attack?.mustBindorFail)) && enemy.Enemy.failAttackflag) {
+							for (let f of enemy.Enemy.failAttackflag) {
+								KinkyDungeonSetFlag(f, enemy.Enemy.failAttackflagDuration || 12);
+							}
 						}
 					}
 

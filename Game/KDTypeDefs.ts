@@ -919,6 +919,8 @@ interface enemy extends KDHasTags {
 	/** */
 	suicideOnAdd?: boolean,
 	/** */
+	suicideOnEffect?: boolean,
+	/** */
 	suicideOnLock?: boolean,
 	/** Hostile even on parole */
 	alwaysHostile?: boolean,
