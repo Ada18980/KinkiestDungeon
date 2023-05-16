@@ -58,7 +58,7 @@ function KinkyDungeonTickBuffTag(list, tag, Amount = 1) {
 	if (list)
 		for (const [key, value] of Object.entries(list)) {
 			if (value) {
-				if (value.maxCount && value.tags.includes(tag)) {
+				if (value.maxCount && value.tags?.includes(tag)) {
 					if (!value.currentCount) value.currentCount = 0;
 					value.currentCount += Amount;
 					if (value.currentCount >= value.maxCount) KinkyDungeonExpireBuff(list, key);

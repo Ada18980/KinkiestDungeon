@@ -9,6 +9,24 @@ let KDPlayerEffects = {
 		KinkyDungeonSendTextMessage(Math.min(playerEffect.power, 5), TextGet("KinkyDungeonDamageSelf").replace("DamageDealt", dmg.string), "#ff0000", 1);
 		if (dmg.happened) return {sfx: undefined, effect: true}; return {sfx: undefined, effect: false};
 	},
+	"GhostHaunt": (target, damage, playerEffect, spell, faction, bullet) => {
+		let count = 1;
+		if (target?.player && KDEntityBuffedStat(target, "Haunting")) {
+			count = KDEntityBuffedStat(target, "Haunting") + 1;
+		}
+		KinkyDungeonApplyBuffToEntity(target,
+			{
+				id: "Haunted",
+				type: "Haunting",
+				power: count,
+				events: [
+					{type: "Haunting", trigger: "tick", dist: 4.5, count: 1},
+				],
+				aura: "#ffffff",
+				aurasprite: "Null",
+				duration: 9999,});
+		return {sfx: "Evil", effect: true};
+	},
 	"MaidChastity": (target, damage, playerEffect, spell, faction, bullet) => {
 		if (KinkyDungeonFlags.get("ChastityBelts")) {
 			// Tease the player
