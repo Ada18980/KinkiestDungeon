@@ -781,7 +781,7 @@ let KDChestTrapWeights = {
 		mult: 1.4,
 	},
 	illusionTrap: {
-		weight: () => {return Math.max(0, -2*(KinkyDungeonGoddessRep.Illusion))},
+		weight: () => {return Math.max(0, -2*(KinkyDungeonGoddessRep.Illusion));},
 		mult: 1,
 	},
 };
