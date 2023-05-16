@@ -323,7 +323,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":1, "lastthird":4, "increasingWeight":1}, floors:KDMapInit(["cat", "tmb", "tmp"]),
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Axe", weight: 50, ignoreInInventory: true}]},
 
-	{name: "Ghost", color: "#FFFFFF", faction: "Ghost", clusterWith: "ghost", tags: KDMapInit(["ghost", "flying", "spooky", "melee", "glueimmune", "chainimmune"]),
+	{name: "Ghost", color: "#FFFFFF", faction: "Ghost", clusterWith: "ghost", tags: KDMapInit(["illusionTrap", "ghost", "flying", "spooky", "melee", "minor", "glueimmune", "chainimmune"]),
 		ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt", guardChance: 0.6, hitsfx: "Tickle",
 		visionRadius: 6, blindSight: 3, evasion: 9.0, alwaysEvade: true, maxhp: 1, minLevel:0, weight:0.1, movePoints: 1.5,
 		attackPoints: 2, attack: "MeleeSuicideEffectWill", attackWidth: 1, attackRange: 1, power: 1, dmgType: "tickle", suicideOnEffect: true, fullBoundBonus: 1,
@@ -335,21 +335,21 @@ let KinkyDungeonEnemies = [
 		],
 		terrainTags: {"ghost" : 4.9}, shrines: ["Illusion"], allFloors: true,
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
-	{name: "TickleTerror", faction: "Ghost", color: "#FFFFFF", tags: KDMapInit(["chestTrap", "ignorenoSP", "comfyRestraints", "spooky", "ghost", "flying", "melee", "glueimmune", "chainimmune", "meleeresist"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  noAlert: true, hitsfx: "Tickle",
+	{name: "TickleTerror", faction: "Ghost", color: "#FFFFFF", tags: KDMapInit(["illusionTrap", "chestTrap", "ignorenoSP", "comfyRestraints", "spooky", "ghost", "flying", "melee", "glueimmune", "chainimmune", "meleeresist"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  noAlert: true, hitsfx: "Tickle",
 		visionRadius: 8, blindSight: 8, evasion: 0.5, maxhp: 12, minLevel:4, weight:0.1, movePoints: 2, attackPoints: 2, attack: "MeleeWillBind", attackWidth: 3, attackRange: 1, power: 3, dmgType: "tickle", fullBoundBonus: 3,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
 		],
 		terrainTags: {"ghost" : 1.9, "increasingWeight": 0.2, "chestTrap": 50, "goddessRage": 4}, shrines: ["Illusion"], allFloors: true,
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
-	{name: "HugHorror", faction: "Ghost", color: "#FFFFFF", tags: KDMapInit(["chestTrap", "ignorenoSP", "ghostRestraints", "spooky", "ghost", "flying", "melee", "glueimmune", "chainimmune", "meleeresist"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  noAlert: true,
+	{name: "HugHorror", faction: "Ghost", color: "#FFFFFF", tags: KDMapInit(["illusionTrap", "chestTrap", "ignorenoSP", "ghostRestraints", "spooky", "ghost", "flying", "melee", "glueimmune", "chainimmune", "meleeresist"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  noAlert: true,
 		visionRadius: 8, blindSight: 8, evasion: 0.2, maxhp: 20, minLevel:4, weight:0.1, movePoints: 3, attackPoints: 2, attack: "MeleeWillBindSlow", attackWidth: 3, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 2,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
 		],
 		terrainTags: {"ghost" : 1.9, "increasingWeight": 0.2, "chestTrap": 50, "goddessRage": 4}, shrines: ["Illusion"], allFloors: true,
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
-	{name: "GreedyGhast", faction: "Ghost", color: "#FFFFFF", tags: KDMapInit(["chestTrap", "ignorenoSP", "ghost", "flying", "melee", "spooky", "glueimmune", "chainimmune", "meleeresist"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  noAlert: true,
+	{name: "GreedyGhast", faction: "Ghost", color: "#FFFFFF", tags: KDMapInit(["illusionTrap", "chestTrap", "ignorenoSP", "ghost", "flying", "melee", "spooky", "glueimmune", "chainimmune", "meleeresist"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  noAlert: true,
 		visionRadius: 6, blindSight: 4, evasion: 0.5, maxhp: 7, minLevel:2, weight:0.1, movePoints: 2, attackPoints: 2, attack: "MeleeWill", attackWidth: 3, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 3,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
