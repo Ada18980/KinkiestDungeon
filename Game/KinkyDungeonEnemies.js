@@ -1002,7 +1002,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 							KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_th", KinkyDungeonRootDirectory + `Conditions/Thought/${name}.png`,
 								canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 								KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
-									zIndex: 4,
+									zIndex: 23,
 								});
 					}
 				}
@@ -2146,7 +2146,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 			if (enemy.playWithPlayer > 0) {
 				enemy.playWithPlayer -= delta;
 				if (enemy.playWithPlayer <= 0) {
-					if (!KinkyDungeonAggressive(enemy)) {
+					if (!KinkyDungeonAggressive(enemy) && !KinkyDungeonFlags.get("noResetIntentFull")) {
 						KDResetIntent(enemy, AIData);
 						KDAddThought(enemy.id, "Happy", 5, 1);
 					}
@@ -2810,7 +2810,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		(!player.player || (
 			!AIData.ignore
 			&& (player.player && (
-				KDIsPlayerTetheredToLocation(player, enemy.x, enemy.y, enemy)
+				KinkyDungeonFlags.get("overrideleashprotection")
+				|| KDIsPlayerTetheredToLocation(player, enemy.x, enemy.y, enemy)
 				|| enemy.id == KDGameData.KinkyDungeonLeashingEnemy
 				|| (!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player))
 				|| KinkyDungeonFlags.has("PlayerCombat")))
@@ -3205,7 +3206,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
 	let canAttack = !(enemy.disarm > 0)
 		&& AIData.wantsToAttack
-		&& (!enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id)
+		&& (!enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id || KinkyDungeonFlags.get("overrideleashprotection"))
 		&& ((AIData.hostile || (enemy.playWithPlayer && player.player && !AIData.domMe)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage)))
 		&& ((enemy.aware && KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
 		&& !AIData.ignore
@@ -3883,7 +3884,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							if (enemy.playWithPlayer) {
 								KDAddOpinion(enemy, 10);
 								enemy.playWithPlayer = Math.max(0, enemy.playWithPlayer - (!KinkyDungeonPlayerTags.has("Furniture") ? 2 : 1) * Math.max(1, ((enemy.usingSpecial && enemy.Enemy.specialAttackPoints) ? enemy.Enemy.specialAttackPoints : enemy.Enemy.attackPoints))); // Decrement each attack....
-								if (enemy.playWithPlayer == 0) KDResetIntent(enemy, AIData);
+								if (enemy.playWithPlayer == 0 && !KinkyDungeonFlags.get("noResetIntentFull")) KDResetIntent(enemy, AIData);
 							}
 							let sfx = (AIData.hitsfx) ? AIData.hitsfx : "DealDamage";
 							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg", enemy);
@@ -4069,7 +4070,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 
 	if (enemy.IntentAction && KDIntentEvents[enemy.IntentAction] && KDIntentEvents[enemy.IntentAction].maintain) {
-		KDIntentEvents[enemy.IntentAction].maintain(enemy, delta);
+		KDIntentEvents[enemy.IntentAction].maintain(enemy, delta, AIData);
 	}
 
 	if (enemy.playWithPlayer > 0 && !AIData.aggressive) {
