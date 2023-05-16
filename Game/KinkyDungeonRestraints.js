@@ -1131,7 +1131,7 @@ function KinkyDungeonStrictness(ApplyGhost, Group, excludeItem) {
 	let strictness = 0;
 	for (let invItem of KinkyDungeonAllRestraint()) {
 		let inv = invItem;
-		while (inv) {
+		while (inv && (!excludeItem || KDRestraint(inv).Group != Group)) {
 			if (inv != excludeItem && ((KDRestraint(inv).strictness && KDRestraint(inv).strictness > strictness)))  {
 				let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
 				if (strictGroups) {
@@ -1147,6 +1147,40 @@ function KinkyDungeonStrictness(ApplyGhost, Group, excludeItem) {
 			inv = inv.dynamicLink;
 		}
 	}
+	// Slightly different behavior with layering, go from bottom up
+	if (excludeItem) {
+		let inv = KinkyDungeonGetRestraintItem(Group);
+		let i = 0;
+		let stack = [];
+		while (inv) {
+			stack.push(inv);
+			inv = inv.dynamicLink;
+		}
+		i = stack.length - 1;
+		inv = stack[i];
+
+		while (i >= 0) {
+			if (inv == excludeItem) {
+				break;
+			} else {
+				if (inv != excludeItem && ((KDRestraint(inv).strictness && KDRestraint(inv).strictness > strictness)))  {
+					let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
+					if (strictGroups) {
+						for (let s of strictGroups) {
+							if (s == Group) {
+								if (KDRestraint(inv).strictness > strictness)
+									strictness = KDRestraint(inv).strictness;
+								break;
+							}
+						}
+					}
+				}
+			}
+			i--;
+			inv = i >= 0 ? stack[i] : undefined;
+		}
+	}
+
 	return strictness;
 }
 

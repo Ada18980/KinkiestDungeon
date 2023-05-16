@@ -3062,11 +3062,11 @@ RestraintMikoDressDesc,"A devious dress that forces the arms into an elbows-touc
 RestraintMikoDressDesc2,"It is extremely strict but it is only fabric. The lacing is intricate and will take a long time to remove."
 
 RestraintMikoGag,Ornamental Gag
-RestraintMikoGagDesc,"A gag meant to keep servants of the Resurrection Temple quiet by forcing a dildo into their mouth."
+RestraintMikoGagDesc,"A gag meant to keep servants of the Resurrection Temple quiet by forcing a plug into their mouth."
 RestraintMikoGagDesc2,"It is difficult to pull off and though it is made from white leather, a magic enchantment protects it from cutting."
 
 RestraintPanelPlugGag,Panel Plug Gag
-RestraintPanelPlugGagDesc,"A gag meant to keep people quiet by forcing a dildo into their mouth."
+RestraintPanelPlugGagDesc,"A gag meant to keep people quiet by forcing a plug into their mouth."
 RestraintPanelPlugGagDesc2,"It is difficult to pull off and though it is made from supple, heavy duty leather."
 
 RestraintMikoCollar,Fuuka's Collar
@@ -6271,6 +6271,7 @@ KinkyDungeonGuardAppear,A EnemyName appears to check on you.
 KinkyDungeonGuardDisappear,The EnemyName leaves and locks the cell behind her.
 
 KinkyDungeonItemsUnderneath,"Layered underneath:"
+KinkyDungeonItemsUnderneath2,"Layered with:"
 KinkyDungeonItemsStrictness,"Increased strictness due to:"
 
 KinkyDungeonAidMana,Mana
