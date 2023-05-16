@@ -392,7 +392,7 @@ let KDGoddessRevengeMobTypes = {
 	Elements: {require: ["elemental"], requireSingle: ["fire", "water", "earth", "air"], filter: ["human", "immobile"]},
 	Will: {requireSingle: ["nature", "beast"], require: undefined, filter: ["human", "immobile"]},
 	Conjure: {require: [], requireSingle: ["book", "ribbon", "familiar"], filter: ["human", "immobile"]},
-	Illusion: {require: ["ghost"], requireSingle: ["spooky"], filter: ["immobile"]},
+	Illusion: {require: undefined, requireSingle: ["illusionTrap"], filter: ["immobile"]},
 };
 
 /**
