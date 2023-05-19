@@ -3559,8 +3559,8 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 								if (KinkyDungeonFlags.has("Passthrough"))
 									KinkyDungeonSetFlag("Passthrough", 2);
 							}
-							newDelta = Math.max(newDelta, KinkyDungeonMoveTo(moveX, moveY, SuppressSprint));
 							KinkyDungeonLastAction = "Move";
+							newDelta = Math.max(newDelta, KinkyDungeonMoveTo(moveX, moveY, SuppressSprint));
 							moved = true;
 							if (KDToggles.Sound) {
 								if (quick) {

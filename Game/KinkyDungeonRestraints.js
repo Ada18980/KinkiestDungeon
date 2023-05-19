@@ -26,10 +26,10 @@ let KDStruggleTime = 3;
 /** Thresholds for hand bondage */
 let StruggleTypeHandThresh = {
 	Struggle: 0.01, // Any hand bondage will affect struggling
-	Unlock: 0.85, // Keys are easy
+	Unlock: 0.7, // Unlocking requires a bit of dexterity
 	Pick: 0.45, // Picking requires dexterity
 	Cut: 0.7, // Cutting requires a bit of dexterity
-	Remove: 0.99, // Removing only requires a solid corner
+	Remove: 0.8, // Removing only requires a solid corner
 };
 
 
@@ -840,16 +840,21 @@ function KinkyDungeonGetAffinity(Message, affinity, group) {
 		|| group == "ItemNeckRestraints"
 	);
 	let canStand = KinkyDungeonCanStand();
+	let msgedStand = false;
 	if (effectTiles)
 		for (let t of Object.values(effectTiles)) {
 			if (t.affinities && t.affinities.includes(affinity)) return true;
 			else if (canStand && groupIsHigh && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) return true;
+			else if (Message && !msgedStand && (!canStand || !groupIsHigh) && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) {
+				msgedStand = true;
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff0000", 2);
+			}
 		}
 	if (affinity == "Hook") {
 		let tile = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (tile == '?') {
 			if (canStand && groupIsHigh) return true;
-			else KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff0000", 2);
+			else if (!msgedStand) KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff0000", 2);
 		} else if (KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y - 1) == ',') return true;
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
 	} else if (affinity == "Edge") {
@@ -1053,8 +1058,13 @@ function KDGetBlockingSecurity(Group, External) {
 	return items;
 }
 
-function KinkyDungeonCanUseKey() {
-	return !KinkyDungeonIsHandsBound(true, false, 0.7) || KinkyDungeonStatsChoice.has("Psychic");
+/**
+ *
+ * @param {boolean} Other - false = self, true = other prisoner door etc
+ * @returns {boolean} - Can you use keys on target
+ */
+function KinkyDungeonCanUseKey(Other = true) {
+	return !KinkyDungeonIsHandsBound(true, Other, 0.7) || KinkyDungeonStatsChoice.has("Psychic");
 }
 
 /**
@@ -1072,7 +1082,7 @@ function KinkyDungeonIsHandsBound(ApplyGhost, Other, Threshold = 0.99) {
 			break;
 		}
 	}*/
-	let blocked = KDHandBondageTotal() > Threshold;
+	let blocked = KDHandBondageTotal(Other) > Threshold;
 	let help = ApplyGhost && (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp());
 	if (!Other && (!ApplyGhost || !(help)) && KinkyDungeonStatsChoice.get("Butterfingers") && KinkyDungeonIsArmsBound(ApplyGhost, Other)) return true;
 	return (!ApplyGhost || !(help)) &&
@@ -1081,13 +1091,15 @@ function KinkyDungeonIsHandsBound(ApplyGhost, Other, Threshold = 0.99) {
 
 /**
  * Returns the total level of hands bondage, 1.0 or higher meaning unable to use hands
+ * @param {boolean} Other - on other or self
  * @return  {number} - The bindhands level, sum of all bindhands properties of worn restraints
  */
-function KDHandBondageTotal() {
+function KDHandBondageTotal(Other = false) {
 	let total = 0;
 	for (let rest of KinkyDungeonAllRestraintDynamic()) {
 		let inv = rest.item;
 		if (KDRestraint(inv).bindhands) total += KDRestraint(inv).bindhands;
+		if (!Other && KDRestraint(inv).restricthands) total += KDRestraint(inv).restricthands;
 	}
 	return total;
 }
@@ -1554,6 +1566,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	 * wcost: number,
 	 * escapePenalty: number,
 	 * willEscapePenalty: number,
+	 * canCut: boolean,
 	 * canCutMagic: boolean,
 	 * }}
 	 */
@@ -1574,6 +1587,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		wcost: KinkyDungeonStatWillCostStruggle,
 		escapePenalty: 0,
 		willEscapePenalty: KDGetWillPenalty(),
+		canCut: KinkyDungeonWeaponCanCut(true, false),
 		canCutMagic: KinkyDungeonWeaponCanCut(true, true),
 	};
 
@@ -1602,6 +1616,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	let increasedAttempts = false;
 
 	let handsBound = KinkyDungeonIsHandsBound(true, false, StruggleTypeHandThresh[StruggleType]) && !KinkyDungeonCanUseFeet();
+	let handBondage = handsBound ? 1.0 : Math.min(1, Math.max(0, KDHandBondageTotal(false)));
+	let cancut = false;
 
 	// Bonuses go here. Buffs dont get added to orig escape chance, but
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle")) data.escapeChance += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle");
@@ -1617,9 +1633,11 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				}
 				data.escapeChance += maxBonus;
 				data.origEscapeChance += maxBonus;
+				if (maxBonus > 0) cancut = true;
 			} else if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.cutBonus) {
 				data.escapeChance += KinkyDungeonPlayerDamage.cutBonus;
 				data.origEscapeChance += KinkyDungeonPlayerDamage.cutBonus;
+				cancut = true;
 			}
 		}
 		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum")) data.escapeChance = Math.max(data.escapeChance, KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum"));
@@ -1638,21 +1656,13 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	if (KDUnboundAffinityOverride[affinity] && (!handsBound || handsBoundOverride) && (!armsBound || armsBoundOverride)) data.hasAffinity = true;
 
+	// Bonus for using lockpick or knife
 	if (StruggleType == "Remove" &&
 		(!handsBound && (KinkyDungeonWeaponCanCut(true) || KinkyDungeonLockpicks > 0)
 		|| (struggleGroup == "ItemHands" && KinkyDungeonCanTalk() && !armsBound))) {
 		data.escapeChance = Math.max(data.escapeChance, Math.min(1, data.escapeChance + 0.15));
 		data.origEscapeChance = Math.max(data.origEscapeChance, Math.min(1, data.origEscapeChance + 0.15));
 	}
-
-	// You can tug using unbound hands
-	// REMOVED due to same thing as Unbound Affinity Override
-	/*if (StruggleType == "Struggle" &&
-		(!handsBound && !armsBound && struggleGroup != "ItemHands" && struggleGroup != "ItemArms")) {
-		escapeSpeed *= 1.4;
-		data.escapeChance = Math.max(data.escapeChance, Math.min(1, data.escapeChance + 0.05));
-		data.origEscapeChance = Math.max(data.origEscapeChance, Math.min(1, data.origEscapeChance + 0.05));
-	}*/
 
 	// Psychic doesnt modify original chance, so that you understand its the perk helping you
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.25);
@@ -1727,12 +1737,16 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	// Struggling is unaffected by having arms bound
 	let minAmount = 0.1 - Math.max(0, 0.01*KDRestraint(restraint).power);
 	if (StruggleType == "Remove" && !data.hasAffinity) minAmount = 0;
-	if (!(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && StruggleType != "Struggle" && (struggleGroup != "ItemArms" && struggleGroup != "ItemHands" ) && (handsBound || armsBound)) data.escapeChance /= 1.5;
-	if (StruggleType != "Struggle" && struggleGroup != "ItemArms" && armsBound) data.escapeChance = Math.max(minAmount, data.escapeChance - 0.3);
+	// Bound arms make fine motor skill escaping more difficult in general
+	if (!(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && StruggleType != "Struggle" && (struggleGroup != "ItemArms" && struggleGroup != "ItemHands" ) && armsBound) data.escapeChance *= 0.6;
 
-	// Covered hands makes it harder to unlock, and twice as hard to remove
+	// Bound arms make escaping more difficult, and impossible if the chance is already slim
+	if (StruggleType != "Struggle" && struggleGroup != "ItemArms" && armsBound) data.escapeChance = Math.max(minAmount, data.escapeChance - 0.25);
+
+	// Covered hands makes it harder to unlock. If you have the right removal type it makes it harder but wont make it go to 0
 	if (((StruggleType == "Pick" && !KinkyDungeonStatsChoice.get("Psychic")) || StruggleType == "Unlock" || StruggleType == "Remove") && struggleGroup != "ItemHands" && handsBound)
-		data.escapeChance = (StruggleType == "Remove" && data.hasAffinity) ? data.escapeChance / 2 : Math.max(0, data.escapeChance - 0.5);
+		data.escapeChance = Math.max((StruggleType == "Remove" && data.hasAffinity) ?
+		Math.max(0, data.escapeChance / 2) : 0, data.escapeChance - 0.1 - 0.4 * handBondage);
 
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.2);
 
@@ -1754,8 +1768,11 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	}
 
 	let possible = data.escapeChance > 0;
-	// Strict bindings make it harder to escape
-	if (data.strict) data.escapeChance = Math.max(0, data.escapeChance - data.strict);
+	// Strict bindings make it harder to escape unless you have help or are cutting with affinity
+	if (data.strict
+		&& (StruggleType == "Struggle" || !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()))
+		&& !(StruggleType == "Cut" && cancut)
+	) data.escapeChance = Math.max(0, data.escapeChance - data.strict);
 
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.2);
 
