@@ -1307,6 +1307,8 @@ Minor Changes:
 - Lots of optimization. The game should run silky smooth!
 
 4.24 (April 2023)
+- Balance:
+	Earth mote: hp 80 -> 120
 - Added Quick inventory sorting and ability to drop items
 - Added Gigantic Slime and Latex Cube enemies
 - New spell: Vanish, tweaked Invisibility
