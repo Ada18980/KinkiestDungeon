@@ -328,7 +328,7 @@ function KinkyDungeonDrawInputs() {
 
 
 
-	if (KinkyDungeonIsHandsBound(false, false)) {
+	if (KinkyDungeonIsHandsBound(false, true)) {
 		statsDraw.b_hands = {text: TextGet("KDStatHands"), category: "status", icon: "boundHands", color: "#ff5555", bgcolor: "#333333", priority: 10};
 	} else {
 		if (KDHandBondageTotal() > 0)
@@ -965,21 +965,21 @@ function KinkyDungeonDrawInputs() {
 
 			// Draw the main spell icon
 			if (spell.type == "passive" && KinkyDungeonSpellChoicesToggle[index]) {
-				FillRectKD(kdcanvas, kdpixisprites, "rectspell" + i, {
-					Left: 1700 - buttonPad - 4,
-					Top: 140 - 4 + i*KinkyDungeonSpellChoiceOffset,
-					Width: 84,
-					Height: 84,
+				FillRectKD(kdcanvas, kdpixisprites, "rectspella" + i, {
+					Left: buttonDim.x-2,
+					Top: buttonDim.y-2,
+					Width: buttonDim.w+4,
+					Height: buttonDim.h+4,
 					Color: "#dbdbdb",
 					zIndex: 70,
 				});
-				FillRectKD(kdcanvas, kdpixisprites, "rectspell2" + i, {
-					Left: 1700 - buttonPad - 4 + 5,
-					Top: 140 - 4 + i*KinkyDungeonSpellChoiceOffset + 5,
-					Width: 74,
-					Height: 74,
+				FillRectKD(kdcanvas, kdpixisprites, "rectspellb" + i, {
+					Left: buttonDim.x,
+					Top: buttonDim.y,
+					Width: buttonDim.w,
+					Height: buttonDim.h,
 					Color: "#101010",
-					zIndex: 70,
+					zIndex: 70.1,
 				});
 			}
 			DrawButtonKD("SpellCast" + index, true, buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, "", "rgba(0, 0, 0, 0)", KinkyDungeonRootDirectory + "Spells/" + spell.name + ".png", "", false, true);
@@ -1026,20 +1026,20 @@ function KinkyDungeonDrawInputs() {
 					// Draw the main spell icon
 					if (spellPaged.type == "passive" && KinkyDungeonSpellChoicesToggle[indexPaged]) {
 						FillRectKD(kdcanvas, kdpixisprites, page + "pgspell" + i, {
-							Left: 1700 - buttonPad - 4 - buttonDim.wsmall * page,
-							Top: 140 - 4 + i*KinkyDungeonSpellChoiceOffset,
-							Width: 54,
-							Height: 54,
-							Color: "#333333",
+							Left: buttonDim.x-1 - buttonDim.wsmall * page,
+							Top: buttonDim.y-1,
+							Width: buttonDim.wsmall+2,
+							Height: buttonDim.hsmall+2,
+							Color: "#dbdbdb",
 							zIndex: 70,
 						});
 						FillRectKD(kdcanvas, kdpixisprites, page + "pgspell2" + i, {
-							Left: 1700 - buttonPad - 4 - buttonDim.wsmall * page + 5,
-							Top: 140 - 4 + i*KinkyDungeonSpellChoiceOffset + 5,
-							Width: 44,
-							Height: 44,
-							Color: KDTextGray0,
-							zIndex: 70,
+							Left: buttonDim.x - buttonDim.wsmall * page,
+							Top: buttonDim.y,
+							Width: buttonDim.wsmall,
+							Height: buttonDim.hsmall,
+							Color: "#101010",
+							zIndex: 70.1,
 						});
 					}
 					icon += 1;
@@ -1059,7 +1059,7 @@ function KinkyDungeonDrawInputs() {
 							sp = "SpellFailPartial";
 						}
 						KDDraw(kdcanvas, kdpixisprites, "spellFail" + icon + "," + page + "," + indexPaged, KinkyDungeonRootDirectory + "Spells/" + sp + ".png",
-							buttonDim.x + 2 - buttonDim.wsmall * page, buttonDim.y + 2, buttonDim.wsmall, buttonDim.hsmall, undefined, {
+							buttonDim.x - buttonDim.wsmall * page, buttonDim.y, buttonDim.wsmall, buttonDim.hsmall, undefined, {
 								zIndex: 115,
 							});
 

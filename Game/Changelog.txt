@@ -1319,6 +1319,8 @@ Minor Changes:
 - Enemies will try to be much more aggressive when leashing you
 - Vault is now more limited although you can purchase the full version which is just as good as before. Requires Evasion I now.
 - Added some latex items in map editor, tiles section
+- Dominant-type enemies will now sometimes leash you for a bit when you are in the Released state
+- Tweaks to struggling algorithm
 
 TODO: Mushrooms in the jungle
 

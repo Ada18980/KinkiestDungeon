@@ -1160,7 +1160,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 			center: true,
 		});
 		let caster = KinkyDungeonFindID(enemy.boundTo);
-		if (caster)
+		if (caster || caster.player)
 			TooltipList.push({
 				str: TextGet("KDTooltipBoundTo").replace("ENEMYNAME", TextGet("Name" + caster.Enemy.name)),
 				fg: KDHostile(enemy) ? "#88ff88" : "#ff5555",
