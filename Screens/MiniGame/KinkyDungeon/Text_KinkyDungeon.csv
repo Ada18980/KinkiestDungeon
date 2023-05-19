@@ -2685,7 +2685,7 @@ KinkyDungeonStrugglePickImpossibleGoddess,"You are distracted from the TargetRes
 KinkyDungeonStruggleRemoveNeedEdge,"You wiggle uselessly in the TargetRestraint. Maybe you need some kind of tool..."
 KinkyDungeonStruggleRemoveNeedEdgeAroused,"You rub your body against the floor to no avail, and sigh as the TargetRestraint stays secure."
 KinkyDungeonStruggleStruggleNeedEdge,"You contort your body but you don't have leverage on the TargetRestraint. Maybe you need some kind of tool..."
-KinkyDungeonStruggleStruggleNeedEdgeAroused,"You wiggle madly, trying to push against the TargetRestraint. You need more leverage..."
+KinkyDungeonStruggleStruggleNeedEdgeAroused,"You struggle madly, trying to push against the TargetRestraint. You need more leverage..."
 
 KinkyDungeonStruggleRemoveNeedEdgeWrong,"That doesn't seem to work. Maybe something else will help with the TargetRestraint."
 KinkyDungeonStruggleRemoveNeedEdgeWrongAroused,"You squirm helplessly against the furniture. Maybe something else will help with the TargetRestraint."
@@ -2693,24 +2693,24 @@ KinkyDungeonStruggleStruggleNeedEdgeWrong,"You twist your body trying to use the
 KinkyDungeonStruggleStruggleNeedEdgeWrongAroused,"You wiggle and squirm, trying to use the furniture to no avail. The TargetRestraint remains tight."
 
 KinkyDungeonStruggleRemoveNeedEdgeWrongSharp,"You need something sharp to loosen the fasteners on the TargetRestraint."
-KinkyDungeonStruggleRemoveNeedEdgeWrongSharpAroused,"This is not a job for your fingers right now. You need something sharp to remove the TargetRestraint."
-KinkyDungeonStruggleStruggleNeedEdgeWrongSharp,"There's no way to loosen the TargetRestraint without some kind of sharp tool..."
+KinkyDungeonStruggleRemoveNeedEdgeWrongSharpAroused,"This is not a job for your trembling fingers right now."
+KinkyDungeonStruggleStruggleNeedEdgeWrongSharp,"Tugging on the TargetRestraint is useless. Maybe if you had something sharp..."
 KinkyDungeonStruggleStruggleNeedEdgeWrongSharpAroused,"You sigh as the TargetRestraint resists all your attempts at breaking through."
 
-KinkyDungeonStruggleRemoveNeedEdgeWrongEdge,"You need some kind of corner for leverage on the TargetRestraint."
-KinkyDungeonStruggleRemoveNeedEdgeWrongEdgeAroused,"You flail about but cant get any leverage on the TargetRestraint without an edge or corner."
-KinkyDungeonStruggleStruggleNeedEdgeWrongEdge,"You need something rough to get the TargetRestraint loose."
-KinkyDungeonStruggleStruggleNeedEdgeWrongEdgeAroused,"You squirm against the smooth floor to no avail. If you had some kind of corner to undo the TargetRestraint..."
+KinkyDungeonStruggleRemoveNeedEdgeWrongEdge,"You fidget with the TargetRestraint but can't quite grip the clasps without some kind of edge."
+KinkyDungeonStruggleRemoveNeedEdgeWrongEdgeAroused,"You flail about but cant get any grip on the TargetRestraint."
+KinkyDungeonStruggleStruggleNeedEdgeWrongEdge,"The TargetRestraint is secured too tightly. If only you had some kind of edge..."
+KinkyDungeonStruggleStruggleNeedEdgeWrongEdgeAroused,"You squirm around, rubbing the TargetRestraint against the smooth floor to no avail..."
 
-KinkyDungeonStruggleRemoveNeedEdgeWrongHook,"You need some kind of tool to pull at the knots on the TargetRestraint."
+KinkyDungeonStruggleRemoveNeedEdgeWrongHook,"The knots on the TargetRestraint are too tight to pull apart without a hook."
 KinkyDungeonStruggleRemoveNeedEdgeWrongHookAroused,"You struggle fruitlessly against the knots on the TargetRestraint, but they're too tight."
-KinkyDungeonStruggleStruggleNeedEdgeWrongHook,"You don't have any grip or hook to tug on the TargetRestraint with."
-KinkyDungeonStruggleStruggleNeedEdgeWrongHookAroused,"You cant tug on the TargetRestraint without some kind of hook, it's too tight against your body."
+KinkyDungeonStruggleStruggleNeedEdgeWrongHook,"The TargetRestraint is too tight against your body. You'll need more leverage to pull it off."
+KinkyDungeonStruggleStruggleNeedEdgeWrongHookAroused,"You shake yourself around trying to rub off the TargetRestraint, but it's hopeless."
 
-KinkyDungeonStruggleRemoveNeedEdgeWrongSticky,"You need a way to stick the tool in place to undo the TargetRestraint..."
+KinkyDungeonStruggleRemoveNeedEdgeWrongSticky,"You need more grip to peel off the TargetRestraint..."
 KinkyDungeonStruggleRemoveNeedEdgeWrongStickyAroused,"Your trembling hands cant grip anything as they are, let alone undo the TargetRestraint."
-KinkyDungeonStruggleStruggleNeedEdgeWrongSticky,"You need something grippy to hold the TargetRestraint..."
-KinkyDungeonStruggleStruggleNeedEdgeWrongStickyAroused,"You rub yourself against the floor to no avail. If you had something adhesive to stick the TargetRestraint to..."
+KinkyDungeonStruggleStruggleNeedEdgeWrongSticky,"You need more grip to peel off the TargetRestraint..."
+KinkyDungeonStruggleStruggleNeedEdgeWrongStickyAroused,"You rub yourself against the floor to no avail..."
 
 
 KinkyDungeonStruggleRemoveImpossible,"The fastenings are too tight and secure on the TargetRestraint!"
@@ -3742,19 +3742,19 @@ RestraintComfyStraitjacketDesc2,It feels tight but is actually made of an ethere
 
 RestraintLatexStraitjacket,Latex Jacket
 RestraintLatexStraitjacketDesc,A tight jacket that holds your arms completely useless.
-RestraintLatexStraitjacketDesc2,It has too much grip to struggle out of, but is made of a fragile material.
+RestraintLatexStraitjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexArmbinder,Latex Armbinder
 RestraintLatexArmbinderDesc,A tight armbinder that pins your arms tightly behind your back, enclosed completely.
-RestraintLatexArmbinderDesc2,It has too much grip to struggle out of, but is made of a fragile material.
+RestraintLatexArmbinderDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexLegbinder,Latex Legbinder
 RestraintLatexLegbinderDesc,A tight legbinder that keeps your legs together!
-RestraintLatexLegbinderDesc2,It has too much grip to struggle out of, but is made of a fragile material.
+RestraintLatexLegbinderDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexBoots,Latex Boots
 RestraintLatexBootsDesc,A tight pair of boots that makes it difficult to walk!
-RestraintLatexBootsDesc2,It has too much grip to struggle out of, but is made of a fragile material.
+RestraintLatexBootsDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexCorset,Heavy Latex Corset
-RestraintLatexCorsetDesc,An excruciatingly tight corset that hugs your body, with straps securing your other restraints.
-RestraintLatexCorsetDesc2,It has too much grip to struggle out of, but is made of a fragile material.
+RestraintLatexCorsetDesc,"An excruciatingly tight corset that hugs your body, with straps securing your other restraints."
+RestraintLatexCorsetDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexCatsuit,Latex Catsuit
 RestraintLatexCatsuitDesc,"A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult."
 RestraintLatexCatsuitDesc2,"Blue latex is silky smooth, very stretchy, and very good at adhering to itself."
@@ -5073,7 +5073,7 @@ KinkyDungeonSpellDescriptionIronWill,"While you have 100 current willpower or mo
 KinkyDungeonSpellSteadfastGuard,Defiance
 KinkyDungeonSpellDescriptionSteadfastGuard,"For each 10 current willpower you have over 50, gain +5 Bondage Resist."
 KinkyDungeonSpellWillStruggle,Willful Struggle
-KinkyDungeonSpellDescriptionWillStruggle,"For each 10 current willpower you have over 50, gain +1% struggle effectiveness."
+KinkyDungeonSpellDescriptionWillStruggle,"For each 10 current willpower you have over 50, gain +1% struggle power."
 KinkyDungeonSpellWillStruggleMsg,Your willpower provides you with additional strength! (+AMOUNT%)
 KinkyDungeonSpellAthlete,Athlete
 KinkyDungeonSpellDescriptionAthlete,"Sprinting costs 40% less stamina."
@@ -6571,7 +6571,7 @@ KinkyDungeonScrap,It's a crumpled piece of scrap metal with a sharp edge.
 KinkyDungeonScrapUse,You use the scrap to try and cut the item.
 KinkyDungeonScrapObjectUse,You rub the item against the broken object's sharp edges...
 KinkyDungeonHookHigh,A hook hangs at shoulder height.
-KinkyDungeonHookHighFail,You can't reach that with the hook!
+KinkyDungeonHookHighFail,The hook is too high up! You can't reach it...
 KinkyDungeonHookLow,There's a hook on the wall.
 KinkyDungeonCrack,The wall is cracked.
 KinkyDungeonPlayCorner,You rub yourself on the corner...
@@ -9191,8 +9191,8 @@ rGenericAllyFollowMe,"(The SPEAKER starts following you)"
 rGenericAllyFollowMe_Leave,"(You decide you don't need the help)"
 rGenericAllyFollowMe_Fail,"(The SPEAKER refuses to follow your orders)"
 
-dGenericAllyStayHere,"(Stay here)"
-dGenericAllyStayHere_Confirm,"(Stay here)"
+dGenericAllyStayHere,"(Hold still)"
+dGenericAllyStayHere_Confirm,"(Hold still)"
 dGenericAllyStayHere_Leave,"(Never mind...)"
 rGenericAllyStayHere,"(The SPEAKER follows your orders)"
 rGenericAllyStayHere_Leave,"(...)"
@@ -9640,7 +9640,7 @@ rPrisonerRescueMushy,"(You sense a presence nearby and look up to see a SPEAKER)
 rPrisonerRescueDressmaker,"(A SPEAKER wakes you up with the sound of copious fabric rustling)|Oh why hello there!|Would you be interested in a trial run of my latest product?|Of course, we'll have to get you out of here first..."
 rPrisonerRescueWitch,"(A SPEAKER wakes you up by banging on the bars)|Hello my pretty~|I thought to myself I'd rather have you than these folk.|Now why don't you come along and follow me..."
 rPrisonerRescueApprentice,"(A SPEAKER wakes you up by banging on the bars)|Um... hello!|I received a quest to help you out of here!|Now, where do we go..."
-rPrisonerRescueMaidforce,"(You wake up to find a SPEAKER whispering to you)|Greetings.|We've been sent to free you.|Let's get moving."
+rPrisonerRescueMaid,"(You wake up to find a SPEAKER whispering to you)|Greetings.|We've been sent to free you.|Let's get moving."
 rPrisonerRescueDragon,"(A SPEAKER wakes you up by banging loudly)|Hey! Good news!|My friends and I came to rescue you!"
 rPrisonerRescueElemental,"(A SPEAKER wakes you up by knocking on the bars)|Hey, wake up.|I happen to like you, so we're going to get you out of here."
 rPrisonerRescueAncientRobot,"(A SPEAKER flashes a bright light in your direction)|Prisoner 74121 located. Commence transfer to different location."
@@ -10118,3 +10118,9 @@ KinkyDungeonJailerDomLeashTime,"You're going to stay with me for a while~"
 KinkyDungeonJailerDomLeashed,"That's better! Now stay close to me~"
 KinkyDungeonJailerDomLeashEndSoon,"Looks like our time is coming to an end..."
 KinkyDungeonJailerDomLeashEndNow,"You've been quite adorable! Until next time~"
+
+NameMimicLatex,Latex Mimic
+KillMimicLatex,"The latex mimic melts into a shiny puddle."
+AttackMimicLatexBind,"The latex mimic spits out a glob of rubber at you! (+RestraintAdded)"
+AttackMimicLatexPull,"The latex mimic stretches out an appendage and pulls you toward it! (DamageTaken)"
+AttackMimicLatex,"The latex mimic engulfs you in sticky rubber! (DamageTaken)"

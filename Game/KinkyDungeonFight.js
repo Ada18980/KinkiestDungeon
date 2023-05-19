@@ -176,7 +176,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 
 	KinkyDungeonPlayerDamage = Object.assign({}, damage);
 
-	let handBondage = KDHandBondageTotal();
+	let handBondage = KDHandBondageTotal(true);
 	let armBondage = KinkyDungeonIsArmsBound(false, true);
 	if (armBondage && (flags.KDDamageArms || weapon.unarmed) && (!weapon?.noHands)) {
 		KinkyDungeonPlayerDamage.chance *= 0.5;

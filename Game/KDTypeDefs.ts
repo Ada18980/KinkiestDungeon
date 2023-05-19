@@ -317,6 +317,8 @@ interface KDRestraintPropsBase {
 	plugSize?: number,
 	/** Binding arms hurts a lot of things but isn't as punishing as hands */
 	bindarms?: boolean,
+	/** Hands count as bound for struggling purposes */
+	restricthands?: number,
 	/** Binding hands prevents use of weapons and picks */
 	bindhands?: number,
 	/** harnesses allow enemies to grab you and slow you */

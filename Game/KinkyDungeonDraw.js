@@ -3101,7 +3101,7 @@ function KDDrawTooltip(TooltipList, offset) {
 		Height: TooltipHeight + 20,
 		Color: "#000000",
 		LineWidth: 1,
-		zIndex: 60,
+		zIndex: 75,
 		alpha: 0.4,
 	});
 
@@ -3111,7 +3111,7 @@ function KDDrawTooltip(TooltipList, offset) {
 		DrawTextFitKD(listItem.str,
 			tooltipX + (listItem.center ? TooltipWidth/2 : pad),
 			tooltipY + YY, TooltipWidth - 2 * pad, listItem.fg, listItem.bg,
-			listItem.size, listItem.center ? "center" : "left", 61);
+			listItem.size, listItem.center ? "center" : "left", 76);
 		YY += extra + listItem.size;
 	}
 	return offset + TooltipHeight + 30;
