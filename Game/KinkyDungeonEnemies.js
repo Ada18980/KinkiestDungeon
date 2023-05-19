@@ -189,9 +189,13 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 			+ (KinkyDungeonPlayerEntity.y - enemy.y)*(KinkyDungeonPlayerEntity.y - enemy.y));
 		let nearestVisible = undefined;
 
-		if (enemy.Enemy.focusPlayer && KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, pdist, visionRadius, false, false) && !KinkyDungeonCheckPath(enemy.x, enemy.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true)) return KinkyDungeonPlayerEntity;
+		if (enemy.Enemy.focusPlayer && KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, pdist, visionRadius, false, false) && !KinkyDungeonCheckPath(enemy.x, enemy.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true)) pdist = 1.5;
 
 		let nearestDistance = (AI_Data && AI_Data.hostile) ? pdist - 0.1 : 100000;
+		if (KDGetFaction(enemy) == "Player"
+			&& (KDEnemyHasFlag(enemy, "NoFollow")
+			|| KDEnemyHasFlag(enemy, "StayHere")))
+			nearestDistance = 100000;
 
 		if ((enemy.Enemy.visionRadius || enemy.Enemy.blindSight) && !(enemy.Enemy.noAttack && !enemy.Enemy.spells))
 			for (let e of KinkyDungeonEntities) {
@@ -1160,7 +1164,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 			center: true,
 		});
 		let caster = KinkyDungeonFindID(enemy.boundTo);
-		if (caster || caster.player)
+		if (caster || caster?.player)
 			TooltipList.push({
 				str: TextGet("KDTooltipBoundTo").replace("ENEMYNAME", TextGet("Name" + caster.Enemy.name)),
 				fg: KDHostile(enemy) ? "#88ff88" : "#ff5555",
@@ -2212,13 +2216,16 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					let start = performance.now();
 
 					let playerItems = [];
-					for (let inv of KinkyDungeonAllWeapon()) {
-						if (inv.name != "Unarmed")
+					if (player.player) {
+						for (let inv of KinkyDungeonAllWeapon()) {
+							if (inv.name != "Unarmed")
+								playerItems.push(inv);
+						}
+						for (let inv of KinkyDungeonAllConsumable()) {
 							playerItems.push(inv);
+						}
 					}
-					for (let inv of KinkyDungeonAllConsumable()) {
-						playerItems.push(inv);
-					}
+
 					let ret = KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems);
 					if (enemy.playWithPlayer) KDGameData.otherPlaying += 1;
 					idle = ret.idle;

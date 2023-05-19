@@ -159,7 +159,7 @@ let KinkyDungeonEnemies = [
 		events: [{trigger: "afterEnemyTick", type: "createWater", power: 1, chance: 0.5, aoe: 0.5}],},
 	{name: "EarthMote", color: "#e64539", tags: KDMapInit(["elemental", "flying", "earth", "player", "melee", "charmimmune", "fireresist", "electricresist", "tickleresist", "nohelp"]), keepLevel: true, allied: true, followRange: 1, playerFollowRange: 1, AI: "hunt",
 		evasion: -0.4, armor: 2.0, spellResist: 0.5, CountLimit: true,
-		visionRadius: 20, playerBlindSight: 100, maxhp: 8, minLevel:0, weight:-1000, movePoints: 1, attackPoints: 4, attack: "MeleeWillSlow", attackRange: 1, attackWidth: 1, power: 6, dmgType: "crush",
+		visionRadius: 20, playerBlindSight: 100, maxhp: 12, minLevel:0, weight:-1000, movePoints: 1, attackPoints: 4, attack: "MeleeWillSlow", attackRange: 1, attackWidth: 1, power: 6, dmgType: "crush",
 		terrainTags: {}, floors:KDMapInit([]),
 		events: [{trigger: "death", type: "createEffectTile", kind: "Cracked", power: 1, chance: 1, aoe: 0.5, time: 40, variance: 10}],},
 	{name: "AirMote", color: "#ffffff", tags: KDMapInit(["elemental", "flying", "air", "nowet", "player", "ranged", "charmimmune", "fireweakness", "electricresist", "stunimmune", "painresist", "tickleweakness", "groperesist", "nohelp"]), keepLevel: true, allied: true, followRange: 3, kite: 1.5, playerFollowRange: 1, AI: "hunt",
