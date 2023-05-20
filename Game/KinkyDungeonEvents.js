@@ -1786,7 +1786,12 @@ let KDEventMapOutfit = {
 				data.hitmult *= e.power;
 			}
 		},
-	}
+	},
+	"tick": {
+		"sneakBuff": (e, outfit, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: outfit.name + "Sneak", type: "SlowDetection", power: e.power, duration: 2,});
+		},
+	},
 };
 
 /**

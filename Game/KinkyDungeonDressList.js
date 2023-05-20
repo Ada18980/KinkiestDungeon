@@ -6,7 +6,7 @@ let KinkyDungeonOutfitsBase = [
 	{name: "Default", dress: "Default", shop: false, rarity: 1},
 	{name: "JailUniform", dress: "JailUniform", shop: false, rarity: 1},
 	{name: "Bast", dress: "Bast", shop: false, rarity: 1},
-	{name: "Bountyhunter", dress: "Bountyhunter", shop: false, rarity: 1},
+	{name: "Bountyhunter", dress: "Bountyhunter", shop: false, rarity: 1, events: [{trigger: "tick", type: "sneakBuff", power: 0.1}]},
 	{name: "Bikini", dress: "Bikini", shop: false, rarity: 1},
 	{name: "Maid", dress: "Maid", shop: false, rarity: 2, events: [{trigger: "calcEvasion", type: "AccuracyBuff", requiredTag: "mold", power: 10.0}]},
 	{name: "Dragon", dress: "Dragon", shop: false, rarity: 2},
