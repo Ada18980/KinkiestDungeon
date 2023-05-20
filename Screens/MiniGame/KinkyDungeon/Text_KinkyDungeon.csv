@@ -349,12 +349,12 @@ KinkyDungeonStatDescStoic,"You gain 82% tickle resist."
 KinkyDungeonStatLascivious,"Lascivious"
 KinkyDungeonStatDescLascivious,"You take 50% more grope damage."
 KinkyDungeonStatUnperturbed,"Unperturbed"
-KinkyDungeonStatDescUnperturbed,"You gain 82% grope resist."
+KinkyDungeonStatDescUnperturbed,"You gain 82 grope resist."
 
 KinkyDungeonStatMasochist,"Masochist"
 KinkyDungeonStatDescMasochist,"Pain is strongly arousing."
 KinkyDungeonStatPainTolerance,"Pain Tolerance"
-KinkyDungeonStatDescPainTolerance,"You gain 200% pain resist."
+KinkyDungeonStatDescPainTolerance,"You gain 200 pain resist."
 
 KinkyDungeonStatKeepOutfit,"Fashionable"
 KinkyDungeonStatDescKeepOutfit,"When you are jailed, you keep your outfit."
@@ -907,6 +907,10 @@ KinkyDungeonInventoryItemKeyring,Exit Keys
 KinkyDungeonInventoryItemDefault,Wizard's Outfit
 KinkyDungeonInventoryItemDefaultDesc,Your favorite outfit for adventuring.
 KinkyDungeonInventoryItemDefaultDesc2,Your original outfit. No bonuses, no penalties.
+
+KinkyDungeonInventoryItemBountyhunter,Tactical Catsuit
+KinkyDungeonInventoryItemBountyhunterDesc,A sleek catsuit worn by stealth operatives.
+KinkyDungeonInventoryItemBountyhunterDesc2,Increases stealth by 10% in the dark.
 
 KinkyDungeonInventoryItemJailUniform,Jail Uniform
 KinkyDungeonInventoryItemJailUniformDesc,The prisoners are kept in revealing outfits to keep them from hiding things.
