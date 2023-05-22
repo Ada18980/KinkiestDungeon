@@ -4129,6 +4129,7 @@ function KinkyDungeonCanSwapWith(e, Enemy) {
 
 	// Should not swap or block the leasher
 	if (e == KinkyDungeonLeashingEnemy()) return false;
+	//if (e == KinkyDungeonLeashingEnemy()) return false; // KD Tethered to entity
 	if (e == KinkyDungeonJailGuard()) return false;
 	if (Enemy == KinkyDungeonLeashingEnemy()) return true;
 	if (Enemy == KinkyDungeonJailGuard()) return true;
