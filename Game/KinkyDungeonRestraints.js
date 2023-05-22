@@ -359,7 +359,7 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 		if (KDRestraint(inv).tether && (inv.tx && inv.ty || inv.tetherToLeasher || inv.tetherToGuard || inv.tetherEntity)) {
 			let tether = inv.tetherLength ? inv.tetherLength : KDRestraint(inv).tether;
 
-			if (inv.tetherToLeasher && KinkyDungeonLeashingEnemy()) {
+			if (inv.tetherToLeasher && KinkyDungeonLeashingEnemy() && !KinkyDungeonIsDisabled(KinkyDungeonLeashingEnemy())) {
 				inv.tx = KinkyDungeonLeashingEnemy().x;
 				inv.ty = KinkyDungeonLeashingEnemy().y;
 			} else if (inv.tetherToLeasher && !KinkyDungeonLeashingEnemy()) {
@@ -367,7 +367,7 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 				inv.tx = undefined;
 				inv.ty = undefined;
 			}
-			if (inv.tetherToGuard && KinkyDungeonJailGuard()) {
+			if (inv.tetherToGuard && KinkyDungeonJailGuard() && !KinkyDungeonIsDisabled(KinkyDungeonJailGuard())) {
 				inv.tx = KinkyDungeonJailGuard().x;
 				inv.ty = KinkyDungeonJailGuard().y;
 			} else if (inv.tetherToGuard && !KinkyDungeonJailGuard()) {
