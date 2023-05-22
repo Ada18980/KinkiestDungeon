@@ -8,6 +8,14 @@
 	"spriteSourceSize": {"x":15,"y":98,"w":21,"h":33},
 	"sourceSize": {"w":144,"h":144}
 },
+"Game/Aura/Null.png":
+{
+	"frame": {"x":1472,"y":2044,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":144,"h":144}
+},
 "Game/Bullets/ArcaneStrikeHit.png":
 {
 	"frame": {"x":1,"y":1812,"w":216,"h":216},
@@ -1331,6 +1339,6 @@
 	"size": {"w":2046,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:ca07f67d391f6a972954508f2819134b:deae2ba6a5769a04af89c079ccc24b86:dbba87a4c8407164ed0b4d90cf0ac7ea$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ab1cfa0a6db69e5e462838f1b6318fd8:d6c119c19eed1aea43796c2e8ebdcb08:dbba87a4c8407164ed0b4d90cf0ac7ea$"
 }
 }
