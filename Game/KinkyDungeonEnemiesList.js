@@ -666,8 +666,9 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "Cyborg", faction: "AncientRobot",
+		playLine: "Cyborg",
 		bound: "Cyborg", color: "#2a319c",
-		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "elite", "robot", "cyberdollrestraints", "controlharness", "handcuffer",
+		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "elite", "robot", "cyborg", "cyberdollrestraints", "controlharness", "handcuffer",
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
 		noDisplace: true, disarm: 0.5,
 		armor: 2,
