@@ -664,7 +664,7 @@ let KinkyDungeonEnemies = [
 		minLevel:0, weight:-4, terrainTags: {"secondhalf":0.5, "thirdhalf":0.5, "increasingWeight":0.25, "metalAnger": 4, "metalRage": 2, "metalPleased": 4, "metalFriendly": 4, "robot": 40}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Nothing", weight: 19}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 	{name: "CaptureBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#aaaaaa",
-		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "jail", "jailer", "search"]),
+		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "opendoors", "closedoors", "jail", "jailer", "search"]),
 		AI: "patrol",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff0000"},
@@ -684,7 +684,7 @@ let KinkyDungeonEnemies = [
 		minLevel:3, weight:-6, terrainTags: {"secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 6, "metalRage": 4, "metalPleased": 6, "metalFriendly": 4, "robot": 20, "tapePref": -4, "tapeOptout": 3}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 	{name: "ForcefieldBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#aaaaaa",
-		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "elite", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "jail", "jailer", "search"]),
+		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "elite", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "opendoors", "closedoors", "jail", "jailer", "search"]),
 		AI: "patrol",
 		spells: ["SummonForceFields"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
 		events: [
@@ -706,7 +706,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 5, "metalRage": 3, "metalPleased": 5, "metalFriendly": 3, "robot": 17}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 	{name: "TapeBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#00eeee",
-		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "autoTape", "jail", "jailer", "search"]),
+		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "autoTape", "opendoors", "closedoors", "jail", "jailer", "search"]),
 		AI: "patrol",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4, color: "#00eeee"},

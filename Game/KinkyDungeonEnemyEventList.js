@@ -47,7 +47,8 @@ let KDIntentEvents = {
 			return KDSettlePlayerInFurniture(enemy, AIData);
 		},
 		maintain: (enemy, delta) => {
-			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && (KDEnemyHasFlag(enemy, "motivated") || KDHostile(enemy))) {
+			if ((KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && (KDEnemyHasFlag(enemy, "motivated") || KDHostile(enemy)))
+				|| KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, enemy.x, enemy.y, enemy)) {
 				if (enemy.playWithPlayer < 10) {
 					enemy.playWithPlayer = 10;
 					KDSetPlayCD(enemy, 2.5);
@@ -316,7 +317,8 @@ let KDIntentEvents = {
 			return res;
 		},
 		maintain: (enemy, delta) => {
-			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
+			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5
+				|| KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, enemy.x, enemy.y, enemy)) {
 				if (enemy.playWithPlayer < 10) {
 					enemy.playWithPlayer = 10;
 				}// else enemy.playWithPlayer += delta;
