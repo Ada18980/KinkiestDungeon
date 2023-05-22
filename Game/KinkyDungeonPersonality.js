@@ -29,6 +29,7 @@ let KDEnemyPersonalities = {
 		brat: false,
 		tags: {
 			"robot": 200,
+			"cyborg": -200,
 		},
 	},
 	"Dom": {weight: 1,
@@ -41,6 +42,7 @@ let KDEnemyPersonalities = {
 			"elite": 3,
 			"boss": 3,
 			"robot": -100,
+			"cyborg": 100,
 		},
 	},
 	"Sub": {weight: 0,
@@ -53,6 +55,7 @@ let KDEnemyPersonalities = {
 			"elite": -2,
 			"boss": -10,
 			"robot": -100,
+			"cyborg": 100,
 		},
 	},
 	"Brat": {weight: 0,
@@ -65,6 +68,7 @@ let KDEnemyPersonalities = {
 			"human": 1,
 			"boss": -3,
 			"robot": -100,
+			"cyborg": 100,
 		},
 	},
 };
