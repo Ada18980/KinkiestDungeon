@@ -46,6 +46,7 @@ let KDModelDresses: {[_: string]: KinkyDungeonDress} = {
 	],
 	"Bountyhunter" : [
 		{Item: "Catsuit", Group: "Suit", Color: "#444444", Lost: false},
+		{Item: "BanditBoots", Group: "Shoes", Color: "#444444", Lost: false},
 	],
 	"BlueSuitPrison" : [
 		{Item: "Catsuit", Group: "Suit", Color: "#444444", Lost: false},
