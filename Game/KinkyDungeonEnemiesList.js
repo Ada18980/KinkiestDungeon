@@ -663,8 +663,28 @@ let KinkyDungeonEnemies = [
 		attack: "MeleeBindSuicideWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 3, dmgType: "electric", multiBind: 2, fullBoundBonus: 6,
 		minLevel:0, weight:-4, terrainTags: {"secondhalf":0.5, "thirdhalf":0.5, "increasingWeight":0.25, "metalAnger": 4, "metalRage": 2, "metalPleased": 4, "metalFriendly": 4, "robot": 40}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Nothing", weight: 19}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
-	{name: "CaptureBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#aaaaaa",
-		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "opendoors", "closedoors", "jail", "jailer", "search"]),
+
+
+	{name: "Cyborg", faction: "AncientRobot",
+		bound: "Cyborg", color: "#2a319c",
+		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "elite", "robot", "cyberdollrestraints", "controlharness", "handcuffer",
+			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
+		noDisplace: true, disarm: 0.5,
+		armor: 2,
+		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 10, minLevel: 0, weight:-100, movePoints: 1, attackPoints: 2, evasion: -0.4, focusPlayer: true,
+		attack: "MeleeBindLockWillStun", attackWidth: 3, attackRange: 1, power: 4, dmgType: "electric", stunTime: 1, attackLock: "Red",
+		RemoteControl: {
+			punishRemote: 4,
+			punishRemoteChance: 0.2,
+		},
+		events: [
+			{trigger: "defeat", type: "delete", chance: 1.0},
+		],
+		terrainTags: {"jailGuard": 100, "robot": 50,}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
+
+
+	{name: "CaptureBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
+		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "opendoors", "closedoors", "search"]),
 		AI: "patrol",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff0000"},
@@ -683,8 +703,8 @@ let KinkyDungeonEnemies = [
 		attack: "MeleeBind", attackPoints: 4, attackWidth: 3, attackRange: 1, power: 3, dmgType: "crush", multiBind: 2, fullBoundBonus: 2,
 		minLevel:3, weight:-6, terrainTags: {"secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 6, "metalRage": 4, "metalPleased": 6, "metalFriendly": 4, "robot": 20, "tapePref": -4, "tapeOptout": 3}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
-	{name: "ForcefieldBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#aaaaaa",
-		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "elite", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "opendoors", "closedoors", "jail", "jailer", "search"]),
+	{name: "ForcefieldBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
+		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "elite", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "opendoors", "closedoors", "search"]),
 		AI: "patrol",
 		spells: ["SummonForceFields"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
 		events: [
@@ -706,7 +726,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 5, "metalRage": 3, "metalPleased": 5, "metalFriendly": 3, "robot": 17}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 	{name: "TapeBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#00eeee",
-		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "autoTape", "opendoors", "closedoors", "jail", "jailer", "search"]),
+		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "melee", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "autoTape", "opendoors", "closedoors", "search"]),
 		AI: "patrol",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4, color: "#00eeee"},
@@ -725,7 +745,7 @@ let KinkyDungeonEnemies = [
 		attack: "MeleeBind", attackPoints: 3, attackWidth: 1, attackRange: 3.5, power: 3, dmgType: "glue", multiBind: 1, fullBoundBonus: 2,
 		minLevel:2, weight:-8, terrainTags: {"secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 6, "metalRage": 4, "metalPleased": 6, "metalFriendly": 4, "robot": 20, "tape": 5, "tapePref": 6, "tapeOptout": -30}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
-	{name: "BotMissile", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#bbbbbb",
+	{name: "BotMissile", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
 		tags: KDMapInit(["leashing", "robot", "ranged", "miniboss", "acidweakness", "electricsevereweakness",
 			"unflinching", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search", "dollRoomBoss"]),
 		AI: "guard", spellRdy: true, bypass: true,
@@ -747,7 +767,7 @@ let KinkyDungeonEnemies = [
 		attack: "SpellMeleeBind", attackPoints: 2, attackWidth: 1, attackRange: 3.5, power: 1, dmgType: "crush", multiBind: 1, fullBoundBonus: 3,
 		minLevel:7, weight:-106, terrainTags: {"thirdhalf":1, "increasingWeight":0.5, "open": 100, "metalAnger": 44, "metalRage": 13, "metalPleased": 44, "latex": 5, "metalFriendly": 13, "robot": 7}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 5, noSummon: true}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
-	{name: "EnforcerBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#bbbbbb",
+	{name: "EnforcerBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
 		tags: KDMapInit(["leashing", "robot", "ranged", "miniboss", "acidweakness", "electricsevereweakness", "unflinching", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
 		AI: "guard", spellRdy: true, bypass: true,
 		events: [

@@ -649,7 +649,7 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 					(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, enemy.Enemy.color ? {
 						tint: string2hex(enemy.Enemy.color),
-						zIndex: -0.1,
+						zIndex: -1,
 					} : undefined);
 			}
 		}
@@ -665,7 +665,7 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 					(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, binder.Enemy.color ? {
 						tint: string2hex(binder.Enemy.color),
-						zIndex: -0.1,
+						zIndex: -1,
 					} : undefined);
 			}
 		}
@@ -4129,10 +4129,11 @@ function KinkyDungeonCanSwapWith(e, Enemy) {
 
 	// Should not swap or block the leasher
 	if (e == KinkyDungeonLeashingEnemy()) return false;
-	//if (e == KinkyDungeonLeashingEnemy()) return false; // KD Tethered to entity
+	if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, e.x, e.y, e)) return false; // KD Tethered to entity
 	if (e == KinkyDungeonJailGuard()) return false;
 	if (Enemy == KinkyDungeonLeashingEnemy()) return true;
 	if (Enemy == KinkyDungeonJailGuard()) return true;
+	if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, Enemy.x, Enemy.y, Enemy)) return true; // KD Tethered to entity
 
 	if (KDBoundEffects(e) > 3) return true;
 	if (!e.Enemy.tags || (e.Enemy.tags.minor && !Enemy.Enemy.tags.minor))
