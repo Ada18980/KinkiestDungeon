@@ -32,6 +32,9 @@ let KDModelDresses: {[_: string]: KinkyDungeonDress} = {
 	"Dragon" : [
 		{Item: "Catsuit", Group: "Suit", Color: "#444444", Lost: false},
 	],
+	"DollSuit" : [
+		{Item: "Catsuit", Group: "Suit", Color: "#444444", Lost: false},
+	],
 	"SlimeSuit" : [
 		{Item: "Catsuit", Group: "Catsuit", Color: "#7F3C9B", Lost: false, Filters: {
 			TorsoUpper: {"gamma":0.8333333333333333,"saturation":1,"contrast":0.75,"brightness":1.2333333333333334,"red":3.7166666666666663,"green":1,"blue":3.283333333333333,"alpha":1},
