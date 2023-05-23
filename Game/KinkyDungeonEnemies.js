@@ -3601,8 +3601,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												if (KDRestraint(inv).removeOnLeash) {
 													KinkyDungeonRemoveRestraint(KDRestraint(inv).Group, false);
 													if (KDRestraint(inv).Group == "ItemDevices") {
-														KinkyDungeonSetFlag("Released", 24);
-														KinkyDungeonSetFlag("nojailbreak", 10);
+														KinkyDungeonSetFlag("Released", 15);
+														KinkyDungeonSetFlag("nojailbreak", 15);
 													}
 												}
 											}

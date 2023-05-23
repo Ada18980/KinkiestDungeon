@@ -111,8 +111,8 @@ let KDIntentEvents = {
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", -1);
 					if (enemy.playWithPlayer > 0)
 						enemy.playWithPlayerCD = Math.max(enemy.playWithPlayer, 30);
-					KinkyDungeonSetFlag("Released", 24);
-					KinkyDungeonSetFlag("nojailbreak", 12);
+					KinkyDungeonSetFlag("Released", 15);
+					KinkyDungeonSetFlag("nojailbreak", 15);
 				} else {
 					enemy.gx = KinkyDungeonPlayerEntity.x;
 					enemy.gy = KinkyDungeonPlayerEntity.y;
@@ -138,7 +138,7 @@ let KDIntentEvents = {
 	"CaptureJail": {
 		// Capture and bring to jail
 		aggressive: true,
-		nonaggressive: false,
+		nonaggressive: true,
 		noplay: true,
 		forceattack: true,
 		// This is the basic leash to jail mechanic
