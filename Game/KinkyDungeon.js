@@ -1116,11 +1116,16 @@ function KinkyDungeonRun() {
 			if (decompressed) {
 				let origAppearance = KinkyDungeonPlayer.Appearance;
 				try {
+					console.log("Trying BC code...");
 					CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed);
 					CharacterRefresh(KinkyDungeonPlayer);
 					KDOldValue = newValue;
 					KDInitProtectedGroups();
+
+					if (KinkyDungeonPlayer.Appearance.length == 0)
+						throw new DOMException();
 				} catch (e) {
+					console.log("Trying BCX code...");
 					// If we fail, it might be a BCX code. try it!
 					KinkyDungeonPlayer.Appearance = origAppearance;
 					try {
