@@ -17,8 +17,36 @@ let KinkyDungeonWeapons = {
 		],
 	},
 
+	// Shields
+	"Shield": {name: "Shield", dmg: 2.0, chance: 0.6, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 2, shop: false, sfx: "HeavySwing",
+		events: [
+			{type: "blockBuff", trigger: "tick", power: 0.6},
+			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 4}
+		]},
+	"ShieldTower": {name: "ShieldTower", dmg: 4.0, chance: 0.25, staminacost: 6.0,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
+		events: [
+			{type: "armorBuff", trigger: "tick", power: 3.0},
+			{type: "blockBuff", trigger: "tick", power: 1.2},
+			{type: "slowLevel", trigger: "tick", power: 1},
+			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 7}
+		]},
+	"ShieldReinforced": {name: "ShieldReinforced", dmg: 3.0, chance: 0.4, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
+		events: [
+			{type: "armorBuff", trigger: "tick", power: 1.5},
+			{type: "blockBuff", trigger: "tick", power: 0.8},
+			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 5}
+		]},
+	"ShieldMagic": {name: "ShieldMagic", dmg: 3.0, chance: 0.4, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
+		events: [
+			{type: "spellWardBuff", trigger: "tick", power: 2.0},
+			{type: "blockBuff", trigger: "tick", power: 0.8},
+			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 5}
+		]},
+
 	// Swords
 	"Sword": {name: "Sword", dmg: 3, chance: 1.5, staminacost: 2.4, type: "slash", unarmed: false, rarity: 2, shop: false, cutBonus: 0.01, sfx: "LightSwing"},
+	"ChainSword": {name: "ChainSword", dmg: 2.5, bind: 0.5, bindType: "Metal", chance: 1.6, staminacost: 2.4, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.01, sfx: "Chain"},
+	"SlimeSword": {name: "SlimeSword", dmg: 2.4, bind: 2.5, bindEff: 0, bindType: "Slime", chance: 1.3, staminacost: 2.6, type: "glue", unarmed: false, rarity: 3, shop: true, sfx: "RubberBolt"},
 	"Katana": {name: "Katana", dmg: 3, chance: 1.5, staminacost: 3.0, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.01, sfx: "LightSwing",
 		events: [
 			{type: "Patience", trigger: "tick", power: 11, buffType: "KatanaCharge", color: "#ffffff"},
@@ -34,6 +62,9 @@ let KinkyDungeonWeapons = {
 	"Flamberge": {name: "Flamberge", dmg: 2.0, chance: 1.0, staminacost: 2.8, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "FireSpell", magic: true,
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, damage: "fire"}, {type: "WeaponLight", trigger: "getLights", power: 5}],
 		special: {type: "ignite"},},
+	"FrostSword": {name: "FrostSword", dmg: 1.5, chance: 1.0, staminacost: 2.5, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "LesserFreeze", magic: true,
+		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, time: 5, damage: "frost"}, {type: "WeaponLight", trigger: "getLights", power: 3, color: "#92e8c0"}]
+	},
 	"Foil": {name: "Foil", dmg: 0.8, chance: 1.5, staminacost: 1.5, type: "pierce", unarmed: false, rarity: 3, shop: true, sfx: "Miss",
 		events: [
 			{type: "ChangeDamageVulnerable", trigger: "beforePlayerAttack", power: 3.0, damage: "pierce"},

@@ -121,7 +121,15 @@ type KDHasTags = {
 	tags: any
 }
 
-interface KDRestraintProps {
+interface KDRestraintProps extends KDRestraintPropsBase {
+	name: string,
+	Group: string,
+	Asset: string,
+}
+
+interface KDRestraintPropsBase {
+	/** Used in standalone to replace Color */
+	Filters?: Record<string, LayerFilter>,
 	/** This item is unaffected by shrines */
 	noShrine?:boolean,
 	/** This item is beneficial and player wont try to struggle from it */
@@ -216,9 +224,8 @@ interface KDRestraintProps {
 	ignoreSpells?: boolean,
 	/** Can always struggle even if it's blocked */
 	alwaysStruggleable?: boolean,
-	name: string,
-	Group: string,
-	Asset: string,
+	/** Model to use in standalone. Defaults to Asset */
+	Model?: string,
 	/** Used for when the visual asset in BC is different from the actual group of the item*/
 	AssetGroup?: string,
 	Color?: string[] | string,
@@ -310,6 +317,8 @@ interface KDRestraintProps {
 	plugSize?: number,
 	/** Binding arms hurts a lot of things but isn't as punishing as hands */
 	bindarms?: boolean,
+	/** Hands count as bound for struggling purposes */
+	restricthands?: number,
 	/** Binding hands prevents use of weapons and picks */
 	bindhands?: number,
 	/** harnesses allow enemies to grab you and slow you */
@@ -337,6 +346,9 @@ interface KDRestraintProps {
 	removeShrine?: string[],
 	slimeLevel?: number,
 	addTag?: string[],
+	addPose?: string[],
+	forbidPose?: string[],
+	removePose?: string[],
 	OverridePriority?: number,
 	Modules?: number[],
 	/** When added to the inventory, is added as a different item instead. Good for multiple stages of the same item, like cuffs */
@@ -421,6 +433,14 @@ interface restraint extends KDRestraintProps {
 	enemyTags: Record<string, number>,
 	playerTags: Record<string, number>,
 	shrine: string[],
+}
+
+interface KDEscapeChanceList {
+	Struggle?: number,
+	Cut?: number,
+	Remove?: number,
+	Pick?: number,
+	Unlock?: number,
 }
 
 type outfitKey = string
@@ -528,6 +548,8 @@ interface overrideDisplayItem {
 	Group: string,
 	/** Color */
 	Color: string[]|string,
+	/** Filters */
+	Filters?: Record<string, LayerFilter>,
 	/** Faction color index */
 	factionColor?: number[][],
 	/** Whether or not it overrides items already on */
@@ -579,6 +601,12 @@ interface enemy extends KDHasTags {
 		level_tech?: number,
 		/** Magic security level, for mage factions */
 		level_magic?: number,
+	},
+
+	/** Graphical peculiarities */
+	GFX?: {
+		/** Custom sprite while lying in wait */
+		AmbushSprite?: string,
 	},
 
 	/** Behavior tags */
@@ -857,8 +885,17 @@ interface enemy extends KDHasTags {
 	noLeashUnlessExhausted?: boolean,
 	/** */
 	ethereal?: boolean,
-	/** */
+	/** This enemy always dodges regular attacks */
 	alwaysEvade?: boolean,
+	/** This enemy always blocks regular attacks */
+	alwaysBlock?: boolean,
+	/** Info for enemy resistance */
+	Resistance?: {
+		/** This enemy cannot dodge if the attacking weapon is magical */
+		alwaysHitByMagic?: boolean,
+		/** This enemy cannot BLOCK if the attacking weapon is magical */
+		alwaysBypassedByMagic?: boolean,
+	},
 	/** */
 	summonRage?: boolean,
 	/** */
@@ -884,6 +921,8 @@ interface enemy extends KDHasTags {
 	/** */
 	suicideOnAdd?: boolean,
 	/** */
+	suicideOnEffect?: boolean,
+	/** */
 	suicideOnLock?: boolean,
 	/** Hostile even on parole */
 	alwaysHostile?: boolean,
@@ -891,8 +930,19 @@ interface enemy extends KDHasTags {
 	specialsfx?: string,
 	/** Stuns the enemy when the special attack goes on CD without a hit */
 	stunOnSpecialCD?: number,
-	/** Dashes to the player even when a dash misses*/
-	dashOnMiss?: boolean,
+	/** Dash info */
+	Dash?: {
+		/** Does not dash to the player if the dash is stepped out of the way of*/
+		noDashOnSidestep?: boolean,
+		/** Does not dash to the player if the dash is dodged*/
+		noDashOnMiss?: boolean,
+		/** Does not dash to the player if the dash is blocked*/
+		noDashOnBlock?: boolean,
+		/** Forces the event to play when a dash misses, even if there are no eventable attack types*/
+		EventOnDashMiss?: boolean,
+		/** Forces the event to play when a dash is blocked, even if there are no eventable attack types*/
+		EventOnDashBlock?: boolean,
+	},
 	/** */
 	cohesion?: number,
 	/** */
@@ -951,6 +1001,8 @@ interface enemy extends KDHasTags {
 	hitsfxSpecial?: string,
 	/** Effect when the enemy misses */
 	misssfx?: string,
+	/** Effect when the enemy blocks */
+	blocksfx?: string,
 	/** SFX on certain cues */
 	cueSfx?: {
 		/** When the enemy takes no damage from a melee attack */
@@ -1000,6 +1052,7 @@ interface weapon {
 	bindEff?: number;
 	distractEff?: number;
 	light?: boolean;
+	heavy?: boolean;
 	boundBonus?: number;
 	tease?: boolean;
 	rarity: number;
@@ -1101,6 +1154,14 @@ interface KinkyDungeonEvent {
 }
 
 interface entity {
+	visual_hp?: number,
+	visual_boundlevel?: number,
+	visual_distraction?: number,
+	visual_lifetime?: number,
+	/** Spawn location */
+	spawnX?: number,
+	/** Spawn location */
+	spawnY?: number,
 	/** Opinion of you. Positive is good. */
 	opinion?: number,
 	/** Determines if an enemy can be dommed or not */
@@ -1212,6 +1273,7 @@ type KinkyDungeonDress = {
 	Item: string;
 	Group: string;
 	Color: string | string[];
+	Filters?: Record<string, LayerFilter>;
 	Lost: boolean;
 	NoLose?: boolean;
 	Property?: any,
@@ -1254,6 +1316,8 @@ interface effectTile {
 	yoffset?: number,
 	xoffset?: number,
     name: string,
+	/** Has all the functions of this one */
+	functionName?: string,
     duration: number,
     priority: number,
 	data?: any,
@@ -1856,6 +1920,10 @@ type EnemyEvent = {
 	noplay?: boolean,
 	/** This event wont get cleared by mass resets, like when you are deposited into a cage */
 	noMassReset?: boolean,
+	/** Determines if the enemy will attack you */
+	decideAttack?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
+	/** Determines if the enemy will cast spells */
+	decideSpell?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
 	/** Determines weight */
 	weight: (enemy: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
 	/** Run when triggered */
@@ -1863,7 +1931,7 @@ type EnemyEvent = {
 	/** Run when leashes to the leash point */
 	arrive?: (enemy: entity, AIData: any) => boolean,
 	/** Run each turn at the end */
-	maintain?: (enemy: entity, delta: number) => boolean,
+	maintain?: (enemy: entity, delta: number, AIData?: any) => boolean,
 	/** Run before the move loop */
 	beforeMove?: (enemy: entity, AIData: any, delta: number) => boolean,
 	/** Run before the attack loop */
@@ -2021,5 +2089,54 @@ type SpecialCondition = {
 
 type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
 
-declare const PIXI: any;
+type KDExpression = {
+	priority: number;
+	stackable?: boolean,
+	criteria: (C: any) => boolean;
+	expression: (C: any) => {
+		EyesPose: string,
+		Eyes2Pose: string,
+		BrowsPose: string,
+		Brows2Pose: string,
+		BlushPose: string,
+		MouthPose: string,
+	};
+}
+
+interface KDPresetLoadout {
+	weapon_current: string,
+	weapon_other: string,
+	armor: string[],
+}
+
+interface KDTrainingRecord {
+	turns_trained: number,
+	turns_skipped: number,
+	turns_total: number,
+	training_points: number,
+	training_stage: number,
+}
+
+interface KDRopeType {
+	tags: string[],
+}
+
+type KDTile = any;
+
+type KDTrapType = (tile: KDTile, entity: entity, x: number, y: number) => {msg: string, triggered: boolean}
+
+type KDSprites = {[_: string]: (x: number, y: number, fog: boolean, noReplace: string) => string}
+
 declare const zip: any;
+declare const guessLanguage: any;
+
+declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') & {
+	// Filters says it's deprecated and should be referenced `PIXI.<filter>` rather than `PIXI.filters.<filter>`
+	// But that doesn't work, and this does.
+	filters: typeof import('pixi-filters'),
+};
+
+// We can't refer to a type as `PIXI.Container`, nor `typeof PIXI.Container`, but `import(pixi.js).Container` does work
+type PIXIContainer = import('pixi.js').Container;
+type PIXIAdjustmentFilter = import('pixi-filters').AdjustmentFilter;
+

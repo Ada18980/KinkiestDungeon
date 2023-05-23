@@ -162,9 +162,9 @@ function KinkyDungeonGhostMessage() {
 		} else {
 			let BoundType = "Generic";
 			if (!KinkyDungeonCanTalk() && Math.random() < 0.33) BoundType = "Gag";
-			if (!KinkyDungeonPlayer.CanInteract() && Math.random() < 0.33) BoundType = "Arms";
-			if (!KinkyDungeonPlayer.CanWalk() && Math.random() < 0.33) BoundType = "Feet";
-			if (KinkyDungeonPlayer.IsChaste() && Math.random() < 0.33) BoundType = "Chaste";
+			if ((KinkyDungeonIsHandsBound() || KinkyDungeonIsArmsBound()) && Math.random() < 0.33) BoundType = "Arms";
+			if (KinkyDungeonSlowLevel > 0 && Math.random() < 0.33) BoundType = "Feet";
+			if (KinkyDungeonChastityMult() > 0 && Math.random() < 0.33) BoundType = "Chaste";
 
 			msg = TextGet("KinkyDungeonGhostUnhelpful" + BoundType + KinkyDungeonTargetTile.GhostDecision);
 		}

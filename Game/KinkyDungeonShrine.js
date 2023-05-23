@@ -354,7 +354,7 @@ function KinkyDungeonDrawShrine() {
 			i += 1;
 			for (let N = 0; N < textSplit2.length; N++) {
 				DrawTextFitKD(textSplit2[N],
-					KDModalArea_x+650, KDModalArea_y + 120 - shopHeight * 50 + i * descSpacing, 380 * (textSplit2[N].length / 40), "#ffffff", undefined, 20,);
+					KDModalArea_x+650, KDModalArea_y + 120 - shopHeight + i * descSpacing, 380 * (textSplit2[N].length / 40), "#ffffff", undefined, 20,);
 				i++;
 			}
 			// Next button
@@ -392,7 +392,7 @@ let KDGoddessRevengeMobTypes = {
 	Elements: {require: ["elemental"], requireSingle: ["fire", "water", "earth", "air"], filter: ["human", "immobile"]},
 	Will: {requireSingle: ["nature", "beast"], require: undefined, filter: ["human", "immobile"]},
 	Conjure: {require: [], requireSingle: ["book", "ribbon", "familiar"], filter: ["human", "immobile"]},
-	Illusion: {require: ["ghost"], requireSingle: ["spooky"], filter: ["immobile"]},
+	Illusion: {require: undefined, requireSingle: ["illusionTrap"], filter: ["immobile"]},
 };
 
 /**
@@ -540,7 +540,6 @@ function KinkyDungeonTakeOrb(Amount, X, Y) {
 }
 function KinkyDungeonDrawOrb() {
 
-	MainCanvas.textAlign = "center";
 	DrawTextKD(TextGet("KinkyDungeonOrbIntro" + (KinkyDungeonStatsChoice.get("randomMode") ? "Kinky" : "")), 1250, 200, "#ffffff", KDTextGray2);
 	DrawTextKD(TextGet("KinkyDungeonOrbIntro2"), 1250, 250, "#ffffff", KDTextGray2);
 	let i = 0;
@@ -548,7 +547,6 @@ function KinkyDungeonDrawOrb() {
 	let XX = 500;
 	let spacing = 60;
 	let yPad = 150;
-	MainCanvas.textAlign = "center";
 	for (let shrine in KinkyDungeonShrineBaseCosts) {
 		let value = KinkyDungeonGoddessRep[shrine];
 
@@ -565,7 +563,7 @@ function KinkyDungeonDrawOrb() {
 				if (value > 30) color = "#00ff00";
 				else color = "#88ff00";
 			}
-			DrawButtonVis(canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), "white");
+			DrawButtonVis(canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), "white");
 			DrawProgressBar(canvasOffsetX_ui + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value, color, KDTextGray2);
 			if (KinkyDungeonShrineBaseCosts[shrine])
 				KDDrawRestraintBonus(shrine, canvasOffsetX_ui + 275 + XX - 70, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
@@ -582,7 +580,6 @@ function KinkyDungeonDrawOrb() {
 		return true;
 	}, true, canvasOffsetX_ui + 525, yPad + canvasOffsetY_ui + spacing * i, 425, 55, TextGet("KinkyDungeonCancel"), "white");
 
-	MainCanvas.textAlign = "center";
 }
 
 let KDOrbX = 0;
@@ -603,7 +600,7 @@ function KinkyDungeonHandleOrb() {
 				if (XX == 0) i = 0;
 				XX = 600;
 			}
-			if (MouseIn(canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55)) {
+			if (MouseIn(canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55)) {
 				KDSendInput("orb", {shrine: shrine, Amount: Amount, x: KDOrbX, y: KDOrbY});
 				KinkyDungeonDrawState = "Game";
 				return true;
@@ -690,7 +687,8 @@ function KinkyDungeonDrawPerkOrb() {
 	let bheight = 64;
 	let Twidth = 1250;
 
-	MainCanvas.textAlign = "center";
+	if (!StandalonePatched)
+		MainCanvas.textAlign = "center";
 	DrawTextKD(TextGet("KinkyDungeonPerkIntro"), 1250, 200, "#ffffff", KDTextGray2);
 	DrawTextKD(TextGet("KinkyDungeonPerkIntro2"), 1250, 250, "#ffffff", KDTextGray2);
 
@@ -730,7 +728,6 @@ function KinkyDungeonDrawPerkOrb() {
 		return true;
 	}, true, 1250 - bwidth/2, 750 + 80, bwidth, bheight, TextGet("KinkyDungeonPerkReject"), "#ffffff");
 
-	MainCanvas.textAlign = "center";
 }
 
 function KDGetPosNegColor(value) {

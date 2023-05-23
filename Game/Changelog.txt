@@ -1303,6 +1303,27 @@ Minor Changes:
 - Curse tooltips now show even while the item is overlaid
 - Each boss now gives a Leyline Map if you beat it, which lets you increase your mana pool up to +500 more
 
+4.23 (April 2023)
+- Lots of optimization. The game should run silky smooth!
+
+4.24 (April 2023)
+- Balance:
+	Earth mote: hp 80 -> 120
+- Added Quick inventory sorting and ability to drop items
+- Added Gigantic Slime and Latex Cube enemies
+- New spell: Vanish, tweaked Invisibility
+- New weapons: Targe, Tower Shield, Reinforced Shield
+- Steadfast Guard renamed to Defiance so I can reuse the name
+- New upgrades: Parry, Dagger Parry, Riposte, Steadfast Guard, The Power of Steel
+- Many projectile spells are now blockable. A few (rubber bullets and earth witch boulder) can also be evaded, as it doesn't make much sense to block these
+- Leashing enemies will disarm the player
+- New perks: Self bondage enthusiast, Apprehended, The Wand is Mightier, Feeble Attacks, Glass Cannon
+- Enemies will try to be much more aggressive when leashing you
+- Vault is now more limited although you can purchase the full version which is just as good as before. Requires Evasion I now.
+- Added some latex items in map editor, tiles section
+- Dominant-type enemies will now sometimes leash you for a bit when you are in the Released state
+- Tweaks to struggling algorithm
+
 TODO: Mushrooms in the jungle
 
 TODO

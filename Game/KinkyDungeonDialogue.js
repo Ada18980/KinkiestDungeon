@@ -4,6 +4,7 @@ let KDDialogueData = {
 	CurrentDialogueIndex: 0,
 };
 
+
 /**
  *
  * @param {number} Min
@@ -285,6 +286,11 @@ function KDDoDialogue(data) {
 		KDGameData.CurrentDialogMsgPersonality = data.personality;
 
 	let dialogue = KDGetDialogue();
+	if (!dialogue) {// Means we exited {
+		KDGameData.CurrentDialog = "";
+		KDGameData.CurrentDialogStage = "";
+		return;
+	}
 	if (dialogue.data) KDGameData.CurrentDialogMsgData = dialogue.data;
 	if (dialogue.response) KDGameData.CurrentDialogMsg = dialogue.response;
 	if (dialogue.response == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
@@ -732,7 +738,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 							const unlockSpell = KinkyDungeonFindSpell("EffectEnemyCM" + (enemy?.Enemy?.unlockCommandLevel || 1), true) || KinkyDungeonFindSpell("EffectEnemyCM1", true);
 							KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, unlockSpell, undefined, undefined, undefined);
 
-							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Magic.ogg");
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 							KinkyDungeonSetEnemyFlag(enemy, "commandword", enemy.Enemy.unlockCommandCD || 90);
 						} else {
 							KDGameData.CurrentDialogMsg = name + "HelpMeCommandWord_Fail";
@@ -769,7 +775,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 						) {
 							KinkyDungeonChangeRep("Ghost", 3);
 							KinkyDungeonRedKeys += 1;
-							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Coins.ogg");
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 							enemy.items.splice(enemy.items.indexOf("RedKey"), 1);
 						} else {
 							KDGameData.CurrentDialogMsg = name + "HelpMeKey_Fail";
@@ -1568,4 +1574,27 @@ function KDAddOffer(Amount) {
  */
 function KDGetOfferLevelMod() {
 	return Math.round(0.25 * (KDGameData.OfferCount || 0));
+}
+
+/**
+ *
+ * @param {entity} player
+ */
+function KDRunChefChance(player) {
+	if (!KinkyDungeonFlags.get("SpawnedChef")) {
+		let x = player.x;
+		let y = player.y;
+		if (KDRandom() < KDDialogueParams.ChefChance && KinkyDungeonGagTotal() == 0) {
+			let point = KinkyDungeonGetNearbyPoint(x, y, true);
+			if (point) {
+				KinkyDungeonSetFlag("SpawnedChef", -1, 1);
+				let e = DialogueCreateEnemy(point.x, point.y, "Chef");
+				if (e) {
+					KinkyDungeonSendTextMessage(10, TextGet("KDSpawnChef"), "#ff0000", 1);
+					e.aware = true;
+					e.faction = "Ambush";
+				}
+			}
+		}
+	}
 }

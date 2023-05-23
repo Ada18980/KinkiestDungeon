@@ -6,7 +6,7 @@ let KinkyDungeonOutfitsBase = [
 	{name: "Default", dress: "Default", shop: false, rarity: 1},
 	{name: "JailUniform", dress: "JailUniform", shop: false, rarity: 1},
 	{name: "Bast", dress: "Bast", shop: false, rarity: 1},
-	{name: "Bountyhunter", dress: "Bountyhunter", shop: false, rarity: 1},
+	{name: "Bountyhunter", dress: "Bountyhunter", shop: false, rarity: 1, events: [{trigger: "tick", type: "sneakBuff", power: 0.1}]},
 	{name: "Bikini", dress: "Bikini", shop: false, rarity: 1},
 	{name: "Maid", dress: "Maid", shop: false, rarity: 2, events: [{trigger: "calcEvasion", type: "AccuracyBuff", requiredTag: "mold", power: 10.0}]},
 	{name: "Dragon", dress: "Dragon", shop: false, rarity: 2},
@@ -129,6 +129,7 @@ let KinkyDungeonDresses = {
 		{Item: "Band1", Group: "Hat", Color: "#767676", Lost: false},
 		{Item: "Shoes5", Group: "Shoes", Color: "#575757", Lost: false},
 		{Item: "Socks6", Group: "Socks", Color: ['#080808', 'Default'], Lost: false},
+		{Item: "FloralPanties2", Group: "Panties", Color: ['#303030', '#F0F0F0'], Lost: false},
 	],
 	"Elven" : [
 		{Item: "Swimsuit1", Group: "Bra", Color: ['#E2E2E2'], Lost: false, NoLose: true},
@@ -150,3 +151,15 @@ let KinkyDungeonDresses = {
 		{Item: "LatexSkirt2", Group: "ClothLower", Color: ['#2C4A95'], OverridePriority: 27, Lost: false},
 	],
 };
+
+
+
+
+if (StandalonePatched) {
+	KinkyDungeonDefaultDefaultDress = [
+		//{Item: "RopeArms", Group: "ItemArms", Color: "Default", Lost: false},
+		{Item: "Maid", Group: "Costume", Color: "Default", Lost: false},
+		{Item: "MaidApron", Group: "Apron", Color: "Default", Lost: false},
+		{Item: "Catsuit", Group: "Catsuit", Color: "Default", Lost: false},
+	];
+}

@@ -96,7 +96,7 @@ let KinkyDungeonLearnableSpells = [
 	//Page 3: Illusion
 	[
 		// Verbal
-		["Flash", "GreaterFlash", "FocusedFlash", "ShadowWarrior", "Shroud", "Invisibility"],
+		["Flash", "GreaterFlash", "FocusedFlash", "ShadowWarrior", "Shroud", "Invisibility", "GreaterInvisibility"],
 		// Arms
 		["ShadowBlade", "ShadowSlash", "Dagger", "TrueSteel", "Ring", "Light", "Corona"],
 		// Legs
@@ -108,9 +108,9 @@ let KinkyDungeonLearnableSpells = [
 	//Page 4: Upgrades
 	[
 		// Strength
-		["IronWill", "SteadfastGuard", "WillStruggle"],
+		["IronWill", "SteadfastGuard", "WillStruggle", "Parry", "WillParry", "SteelParry", "GuardBoost", "DaggerParry", "Riposte"],
 		// Dex
-		["Athlete", "Vault", "Sneaky", "Evasive1", "Evasive2", "Evasive3"],
+		["Athlete", "Sneaky", "Evasive1", "Evasive2", "Evasive3", "Vault", "VaultAdv"],
 		// Intellect
 		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser2", "StaffUser3"],
 		// Misc
@@ -181,6 +181,24 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		]},
 		{name: "WillStruggle", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "WillStruggle", mult: 0.01, power: 5, StruggleType: "Struggle", trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellWillStruggleMsg"},
+		]},
+		{name: "Riposte", tags: ["will", "offense"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Riposte", trigger: "blockPlayer"},
+		]},
+		{name: "Parry", tags: ["will", "defense"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Parry", power: 0.15, trigger: "tick"},
+		]},
+		{name: "GuardBoost", tags: ["defense"], prerequisite: "WillParry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "GuardBoost", trigger: "tick"},
+		]},
+		{name: "WillParry", tags: ["defense"], prerequisite: "Parry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "WillParry", mult: 0.01, trigger: "tick"},
+		]},
+		{name: "SteelParry", tags: ["defense"], prerequisite: "WillParry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "SteelParry", mult: 0.01, trigger: "tick"},
+		]},
+		{name: "DaggerParry", tags: ["defense"], prerequisite: "Parry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "DaggerParry", power: 0.15, trigger: "tick"},
 		]},
 		{name: "StaffUser1", tags: ["utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "StaffUser1", trigger: "afterCalcMana", power: 0.8},
@@ -748,7 +766,10 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
 			{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
 		]},
-		{name: "Vault", tags: ["damage", "utility", "buff"], school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+		{name: "Vault", tags: ["damage", "utility", "buff"], prerequisite: "Evasive1", school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{trigger: "canSprint", type: "VaultBasic"},
+		]},
+		{name: "VaultAdv", tags: ["damage", "utility", "buff"], prerequisite: "Vault", school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{trigger: "canSprint", type: "Vault"},
 		]},
 
@@ -779,11 +800,18 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			name: "Smoke",
 			duration: 8,
 		}}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
-		{name: "Invisibility", prerequisite: "ApprenticeMystery", tags: ["buff", "utility", "stealth", "defense"], sfx: "Invis", school: "Illusion", manacost: 8, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
+		{name: "Invisibility", prerequisite: "ApprenticeMystery", tags: ["buff", "utility", "stealth", "defense"], sfx: "Invis", school: "Illusion", manacost: 6, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
 			buffs: [
-				{id: "Invisibility", aura: "#888888", type: "Sneak", duration: 10, power: 10.0, player: true, enemies: true, tags: ["invisibility"]},
-				{id: "Invisibility2", type: "SlowDetection", duration: 14, power: 0.5, player: true, enemies: false, tags: ["invisibility"]},
-			], onhit:"", time:14, power: 0, range: 2, size: 1, damage: ""},
+				{id: "Invisibility", aura: "#888888", type: "Sneak", duration: 12, power: 15.0, player: true, enemies: true, tags: ["invisibility"]},
+				{id: "Invisibility2", type: "SlowDetection", duration: 12, power: 0.5, player: true, enemies: false, tags: ["invisibility"]},
+			], onhit:"", time:12, power: 0, range: 2, size: 1, damage: ""},
+		{name: "GreaterInvisibility", prerequisite: "Invisibility", tags: ["buff", "utility", "stealth", "defense"], sfx: "Invis", school: "Illusion", manacost: 10, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
+			upcastFrom: "Invisibility", upcastLevel: 1,
+			buffs: [
+				{id: "Invisibility", aura: "#888888", type: "Sneak", duration: 15, power: 20.0, player: true, enemies: true, tags: ["invisibility"]},
+				{id: "Invisibility2", type: "SlowDetection", duration: 15, power: 0.5, player: true, enemies: false, tags: ["invisibility"]},
+				{id: "GreaterInvisibility", aura: "#a45fd7", type: "Invisible", duration: 15, power: 1.5, player: true, currentCount: -1, maxCount: 1, tags: ["invisibility", "attack", "cast"]}
+			], onhit:"", time:15, power: 0, range: 2, size: 1, damage: ""},
 		{name: "TrueSteel", prerequisite: "ApprenticeKnowledge", tags: ["offense", "stealth", "knowledge"], sfx: "MagicSlash", school: "Illusion", manacost: 2, components: ["Arms"], noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, time:1, power: 4, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "slash",
 			events: [{trigger: "beforeDamageEnemy", type: "MultiplyDamageStealth", power: 2.5, humanOnly: true}]
 		},
@@ -1448,6 +1476,12 @@ let KinkyDungeonSpellListEnemies = [
 		projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "SarcoMinion", count: 1, bound: true}],
 		power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {},
 	},
+	{enemySpell: true, name: "SummonSlimeMinion", noSprite: true, sfx: "Evil", castCondition: "slimeKraken", manacost: 2, specialCD: 4, components: ["Verbal"], level:1,
+		projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "SmallSlimeLeaper", count: 1, bound: true}],
+		power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {},
+	},
+	{enemySpell: true, name: "SummonSlime", noSprite: true, minRange: 0, sfx: "Bones", manacost: 3, components: ["Verbal"], level:4, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "SmallSlimeLeaper", count: 1, strict: true}], power: 0, damage: "inert", time: 12, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {}},
+
 	{enemySpell: true, name: "SummonTapeDrone", noSprite: true, sfx: "MagicSlash", castCondition: "wolfTapeDrone", manacost: 3, specialCD: 10, components: ["Verbal"], level:1, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "WolfDrone", count: 1, time: 40, bound: true}], power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {}},
 	{enemySpell: true, name: "MirrorImage", noSprite: true, minRange: 0, selfcast: true, sfx: "FireSpell", manacost: 12, components: ["Verbal"], level:4, castRange: 50, type:"inert", onhit:"summon", summon: [{name: "MaidforceStalkerImage", count: 1, time: 12}], power: 0, time: 12, delay: 1, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "inert",
 		spellcast: {spell: "DarkShroud", target: "origin", directional:false, offset: false}},
@@ -1598,6 +1632,10 @@ let KDMagicDefs = {
 	SarcoKraken_TentacleCountMin: 1,
 	SarcoKraken_TentacleCountMax: 3,
 	SarcoKraken_TentacleCountShare: 0.2, //1 tentacle max per this much hp
+	SlimeKraken_TentacleCost:0.08,
+	SlimeKraken_TentacleThreshold: 0.1,
+	SlimeKraken_TentacleCountMin: 4,
+	SlimeKraken_TentacleCountShare: 0.1, //1 slime max per this much hp
 };
 
 /** @type {Record<string, (enemy: entity, target: entity, spell?: spell) => boolean>} */
@@ -1630,6 +1668,12 @@ let KDCastConditions = {
 		if (enemy.hp <= KDMagicDefs?.RopeKraken_TentacleThreshold) return false;
 		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.tags.krakententacle;}).length
 			> KDMagicDefs?.RopeKraken_TentacleCountMin + Math.floor(enemy.hp/enemy.Enemy.maxhp/KDMagicDefs?.RopeKraken_TentacleCountShare)) return false;
+		return true;
+	},
+	"slimeKraken": (enemy, target) => {
+		if (enemy.hp <= KDMagicDefs?.SlimeKraken_TentacleThreshold) return false;
+		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.tags.latexTrap;}).length
+			> KDMagicDefs?.SlimeKraken_TentacleCountMin + Math.floor(enemy.hp/enemy.Enemy.maxhp/KDMagicDefs?.SlimeKraken_TentacleCountShare)) return false;
 		return true;
 	},
 	"sarcoKraken": (enemy, target) => {

@@ -138,7 +138,7 @@ function AnimationPurge(C, IncludeAll) {
 	}
 
 	// Checks if any character specific info is worth being kept
-	if (IncludeAll || !C.Appearance.find(CA => CA.Asset.DynamicScriptDraw || CA.Asset.DynamicAfterDraw || CA.Asset.DynamicBeforeDraw)) {
+	if (IncludeAll || !C.Appearance.find(CA => CA.Asset && (CA.Asset.DynamicScriptDraw || CA.Asset.DynamicAfterDraw || CA.Asset.DynamicBeforeDraw))) {
 		delete AnimationPersistentStorage[AnimationGetDynamicDataName(C, AnimationDataTypes.RefreshTime)];
 		delete AnimationPersistentStorage[AnimationGetDynamicDataName(C, AnimationDataTypes.Rebuild)];
 		delete AnimationPersistentStorage[AnimationGetDynamicDataName(C, AnimationDataTypes.AssetGroup)];

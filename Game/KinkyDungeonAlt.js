@@ -199,7 +199,7 @@ let alts = {
 	"JourneyFloor": {
 		name: "JourneyFloor",
 		bossroom: false,
-		width: 10,
+		width: 12,
 		height: 8,
 		setpieces: {
 		},
@@ -275,7 +275,7 @@ let alts = {
 	},
 };
 
-let KDJourneyList = ["Random", "Harder", "Explorer", "Doll"];
+let KDJourneyList = ["Random", "Harder", "Temple", "Explorer", "Doll"];
 if (param_test) KDJourneyList.push("Test");
 
 function KinkyDungeonAltFloor(Type) {
@@ -1142,7 +1142,7 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 	if (KinkyDungeonFlags.get("SpawnMap")) {
 		if (KinkyDungeonSpells.filter((spell) => {return spell.name == "ManaPoolUp";}).length < Math.ceil(MiniGameKinkyDungeonLevel/4))
 			KinkyDungeonGroundItems.push({x:VisitedRooms[0].x*2 + 3, y:(VisitedRooms[0].y*2), name: "LeylineMap"});
-		KinkyDungeonSetFlag("SpawnMap", -1);
+		KinkyDungeonSetFlag("SpawnMap", 0);
 	}
 
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, 'A');

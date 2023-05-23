@@ -90,6 +90,8 @@ let KDTilePalette = {
 		AI: {type: "string"},
 		force: {type: "boolean"},
 		faction: {type: "string"},
+		levelBoost: {type: "number"},
+		forceIndex: {type: "string"},
 	}},
 	'ForceSpawnCustom': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: [], Label: "Custom"}, customfields: {
 		required: {type: "array"},
@@ -100,6 +102,8 @@ let KDTilePalette = {
 		AI: {type: "string"},
 		force: {type: "boolean"},
 		faction: {type: "string"},
+		levelBoost: {type: "number"},
+		forceIndex: {type: "string"},
 	}},
 	'----Tiles----': {type: "none"},
 	'Brick': {type: "tile", tile: '2'},
@@ -108,6 +112,10 @@ let KDTilePalette = {
 	'Bars': {type: "tile", tile: 'b'},
 	'Bed': {type: "tile", tile: 'B'},
 	'Crack': {type: "tile", tile: '4'},
+	'Pipe': {type: "tile", tile: '1', special: {Type: "Skin", Skin: "EmptyPipe"}},
+	'LatexPipe': {type: "tile", tile: '1', special: {Type: "Skin", Skin: "LatexPipe"}},
+	'LatexThin':  {type: "effect", effectTile: "LatexThin"},
+	'Latex':  {type: "effect", effectTile: "Latex"},
 	'WallHook': {type: "tile", tile: ','},
 	'CeilingHook': {type: "tile", tile: '?'},
 	'InactiveTablet': {type: "tile", tile: 'm'},
@@ -255,26 +263,27 @@ function KDDrawTileEditor() {
 			}
 		}
 
-		// Draw the context layer even if we haven't updated it
-		if (pixirendererKD) {
-			pixirendererKD.render(kdgameboard, {
-				clear: false,
-			});
-		}
-		if (!pixirendererKD) {
-			if (KinkyDungeonContext && KinkyDungeonCanvas) {
-				// @ts-ignore
-				pixirendererKD = new PIXI.CanvasRenderer({
-					// @ts-ignore
-					width: KinkyDungeonCanvas.width,
-					// @ts-ignore
-					height: KinkyDungeonCanvas.height,
-					view: KinkyDungeonCanvas,
-					antialias: true,
+		if (!StandalonePatched) {
+			// Draw the context layer even if we haven't updated it
+			if (pixirendererKD) {
+				pixirendererKD.render(kdgameboard, {
+					clear: false,
 				});
 			}
+			if (!pixirendererKD) {
+				if (KinkyDungeonContext && KinkyDungeonCanvas) {
+					pixirendererKD = new PIXI.CanvasRenderer({
+						width: KinkyDungeonCanvas.width,
+						height: KinkyDungeonCanvas.height,
+						view: KinkyDungeonCanvas,
+						antialias: true,
+					});
+				}
+			}
 		}
-		MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
+
+		if (!StandalonePatched)
+			MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
 
 		KDTE_UpdateUI(false);
 
@@ -1040,6 +1049,10 @@ function KDTE_CloseUI() {
 
 	ElementRemove("MapTileX");
 	ElementRemove("MapTileY");
+	for (let element of customfieldsElements) {
+		ElementRemove("KDTECustomField" + element);
+		customfieldsElements.splice(customfieldsElements.indexOf(element), 1);
+	}
 }
 
 
@@ -1111,7 +1124,7 @@ function KDTE_LoadTile(name, loadedTile) {
 	KDEditorTileFlexSuperStore = nt.flexEdgeSuper || {};
 	if (nt.category)
 		ElementValue("MapTileCategory", nt.category);
-	if (nt.weight)
+	if (nt.weight != undefined)
 		ElementValue("MapTileWeight", "" + nt.weight);
 	KinkyDungeonGrid = nt.grid;
 	KinkyDungeonPOI = [];
@@ -1180,7 +1193,7 @@ function KDTE_ExportTile() {
 		flexEdgeSuper: KDEditorTileFlexSuperStore || {},
 		scale: KDTE_Scale,
 		category: ElementValue("MapTileCategory"),
-		weight: parseInt(ElementValue("MapTileWeight")) ? parseInt(ElementValue("MapTileWeight")) : 10,
+		weight: parseInt(ElementValue("MapTileWeight")) ? parseInt(ElementValue("MapTileWeight")) : 0,
 		grid: KinkyDungeonGrid,
 		POI: KinkyDungeonPOI,
 		Keyring: KDGameData.KeyringLocations,

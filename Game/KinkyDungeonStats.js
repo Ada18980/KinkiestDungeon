@@ -393,6 +393,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 
 	data.dmg *= data.buffresist;
 
+
 	if (data.armorbreak > 0) data.armor -= Math.min(Math.max(0, data.armor), data.armorbreak);
 
 	if (data.armor && KinkyDungeonMeleeDamageTypes.includes(data.type)) data.dmg = Math.max(0, data.dmg * KDArmorFormula(data.dmg, data.armor));
@@ -403,7 +404,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 		if (buffreduction && data.dmg > 0) {
 			data.dmg = Math.max(data.dmg - buffreduction, 0);
 			KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "damageTaken", 1);
-			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/Shield.ogg");
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Shield.ogg");
 		}
 	}
 
@@ -418,6 +419,10 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 			KinkyDungeonStatWill,
 			KinkyDungeonStatStamina,
 		];
+
+	if (KinkyDungeonStatsChoice.get("EnemyDamage")) {
+		data.dmg *= KDPerkParams.KDEnemyDamageMult;
+	}
 
 	if (data.teaseTypes.includes(data.type)) {
 		let amt = data.dmg;
@@ -994,7 +999,7 @@ function KinkyDungeonUpdateStats(delta) {
 	if (KinkyDungeonBlindLevel > 0 && KinkyDungeonStatsChoice.has("Unmasked")) KinkyDungeonBlindLevel += 1;
 	if (KinkyDungeonStatBlind > 0) KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel, 6);
 	//if (KinkyDungeonStatStamina < 2) KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel, Math.round(6 - 3*KinkyDungeonStatStamina));
-	KinkyDungeonDeaf = KinkyDungeonPlayer.IsDeaf();
+	KinkyDungeonDeaf = false;//KinkyDungeonPlayer.IsDeaf();
 
 	// Unarmed damage calc
 	KinkyDungeonPlayerDamage = KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
@@ -1315,7 +1320,7 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 	KinkyDungeonChangeDistraction(0.5 + Math.sqrt(Math.max(0, data.amount * KinkyDungeonPlayWithSelfMult)) * KinkyDungeonStatDistractionMax/KDMaxStatStart, false, 0.05);
 	KinkyDungeonChangeStamina(data.cost, true, 3);
 	if (data.playSound) {
-		if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "/Audio/" + KinkyDungeonPlayerDamage.playSelfSound + ".ogg");
+		if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.playSelfSound + ".ogg");
 	}
 	if (data.playMsg) {
 		if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfMsg) {
@@ -1416,6 +1421,7 @@ function KinkyDungeonDoTryOrgasm(Bonus) {
 		// You finally shudder and tremble as a wave of pleasure washes over you...
 		KinkyDungeonStatBlind = data.stunTime + 2;
 		//KinkyDungeonOrgasmStunTime = 4;
+		KinkyDungeonSetFlag("OrgSuccess", 3);
 		KinkyDungeonSetFlag("PlayerOrgasm", data.stunTime);
 		KinkyDungeonSetFlag("PlayerOrgasmFilter", data.stunTime + 1);
 		KDGameData.OrgasmStamina = data.satisfaction;
@@ -1449,9 +1455,11 @@ function KinkyDungeonDoTryOrgasm(Bonus) {
 		}
 		if (denied && KinkyDungeonVibeLevel > 0) {
 			msg = "KinkyDungeonDeny";
+			KinkyDungeonSetFlag("OrgDenied", 3);
 			KinkyDungeonSendEvent("deny", data);
 		} else {
 			msg = "KinkyDungeonEdge";
+			KinkyDungeonSetFlag("OrgEdged", 3);
 			KinkyDungeonSendEvent("edge", data);
 		}
 	}

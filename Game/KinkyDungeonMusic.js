@@ -14,7 +14,7 @@ let KDMusicLoopTracksChance = {
 };
 
 let KDCurrentSong = "";
-let KDNewSong = "AREA1-GRAVEYARD.ogg";
+let KDNewSong = "GENERIC-DOLLRACK.ogg";
 let KDLastSong = "";
 let KDCurrentLoops = 0;
 let KDCurrentFade = 1;
@@ -89,10 +89,9 @@ function KDPlayMusic(Sound, Volume) {
 	let vol = Player.AudioSettings.Volume * (Volume != undefined ? Volume : 1.0);
 	KDCurrentMusicSound = audio;
 	KDCurrentMusicSoundUpdate = true;
-	if (ServerURL == 'foobar') {
+	if (KDPatched) {
 		audio.crossOrigin = "Anonymous";
-		// @ts-ignore
-		audio.src = remap("Music/" + (KDModFiles[Sound] || Sound));
+		audio.src = "Music/" + (KDModFiles[Sound] || Sound);
 	} else
 		audio.src = "Music/" + (KDModFiles[Sound] || Sound);
 	audio.volume = Math.min(vol, 1);

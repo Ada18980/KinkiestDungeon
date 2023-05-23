@@ -65,7 +65,6 @@ function KinkyDungeonGetShopItem(Level, Rarity, Shop) {
 		s.shoptype = "Consumable";
 		Table.push(s);
 	}
-	// @ts-ignore
 	Shopable = Object.entries(KinkyDungneonBasic).filter(([k, v]) => (v.shop));
 	for (let S = 0; S < Shopable.length; S++) {
 		let s = Shopable[S][1];
@@ -73,7 +72,6 @@ function KinkyDungeonGetShopItem(Level, Rarity, Shop) {
 		if (!s.ignoreInventory || !KinkyDungeonInventoryGet(s.ignoreInventory))
 			Table.push(s);
 	}
-	// @ts-ignore
 	Shopable = Object.entries(KinkyDungneonShopRestraints).filter(([k, v]) => (v.shop));
 	for (let S = 0; S < Shopable.length; S++) {
 		let s = Shopable[S][1];
@@ -81,7 +79,6 @@ function KinkyDungeonGetShopItem(Level, Rarity, Shop) {
 		if (!KinkyDungeonInventoryGet(s.name))
 			Table.push(s);
 	}
-	// @ts-ignore
 	Shopable = Object.entries(KinkyDungeonWeapons).filter(([k, v]) => (v.shop));
 	for (let S = 0; S < Shopable.length; S++) {
 		let s = Shopable[S][1];
@@ -312,7 +309,7 @@ function KinkyDungeonUseConsumable(Name, Quantity) {
 
 	KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonInventoryItem" + Name + "Use"), "#88FF88", 1);
 	if (KDConsumable(item.item).sfx) {
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/" + KDConsumable(item.item).sfx + ".ogg");
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + KDConsumable(item.item).sfx + ".ogg");
 	}
 	return true;
 }

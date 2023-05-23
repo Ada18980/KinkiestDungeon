@@ -45,12 +45,17 @@ let KinkyDungeonDefaultDefaultDress = [
 // This is a flag that checks if the script should check for clothes loss
 let KinkyDungeonCheckClothesLoss = false;
 
+function KDGetDressList() {
+	if (StandalonePatched) return KDModelDresses;
+	return KinkyDungeonDresses;
+}
+
 // Return all dresses so theres no longer any Lost items
 function KinkyDungeonInitializeDresses() {
 	KinkyDungeonCheckClothesLoss = true;
 	KinkyDungeonUndress = 0;
-	if (Object.values(KinkyDungeonDresses).length > 0) {
-		for (let d of Object.values(KinkyDungeonDresses)) {
+	if (Object.values(KDGetDressList()).length > 0) {
+		for (let d of Object.values(KDGetDressList())) {
 			for (let dd of d) {
 				if (dd.Lost) dd.Lost = false;
 			}
@@ -64,36 +69,52 @@ let KinkyDungeonNewDress = false;
 // Sets the player's dress to whatever she is wearing
 function KinkyDungeonDressSet() {
 	if (KinkyDungeonNewDress) {
-		KinkyDungeonDresses.Default = [];
+		KDGetDressList().Default = [];
 		let C = KinkyDungeonPlayer;
+
 		for (let A = 0; A < C.Appearance.length; A++) {
 			let save = false;
-			if (C.Appearance[A].Asset.Group.BodyCosplay || C.Appearance[A].Asset.BodyCosplay) save = true;
-			else if (C.Appearance[A].Asset.Group.Underwear) save = true;
-			else if (C.Appearance[A].Asset.Group.Clothing) save = true;
-			if (save) {
-				KinkyDungeonDresses.Default.push({
-					Item: C.Appearance[A].Asset.Name,
-					Group: C.Appearance[A].Asset.Group.Name,
-					Property: C.Appearance[A].Property,
-					Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Asset.DefaultColor ? C.Appearance[A].Asset.DefaultColor : "Default"),
-					Lost: false,
-				},);
+			if (StandalonePatched) {
+				if (C.Appearance[A].Model?.Protected) save = true;
+				if (!C.Appearance[A].Model?.Restraint) save = true;
+				if (save) {
+					KDGetDressList().Default.push({
+						Item: C.Appearance[A].Model?.Name || C.Appearance[A].Asset?.Name,
+						Group: C.Appearance[A].Model?.Group,
+						Filters: C.Appearance[A].Model?.Filters,
+						Property: C.Appearance[A].Property,
+						Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Model.DefaultColor ? C.Appearance[A].Model.DefaultColor : "Default"),
+						Lost: false,
+					},);
+				}
+			} else {
+				if (C.Appearance[A].Asset.Group.BodyCosplay || C.Appearance[A].Asset.BodyCosplay) save = true;
+				else if (C.Appearance[A].Asset.Group.Underwear) save = true;
+				else if (C.Appearance[A].Asset.Group.Clothing) save = true;
+				if (save) {
+					KDGetDressList().Default.push({
+						Item: C.Appearance[A].Asset.Name,
+						Group: C.Appearance[A].Asset.Group.Name,
+						Property: C.Appearance[A].Property,
+						Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Asset.DefaultColor ? C.Appearance[A].Asset.DefaultColor : "Default"),
+						Lost: false,
+					},);
+				}
 			}
 		}
 	}
 	KinkyDungeonNewDress = false;
 }
 
-function KinkyDungeonSetDress(Dress, Outfit) {
+function KinkyDungeonSetDress(Dress, Outfit, Character, NoRestraints) {
 	if (Outfit) KDGameData.Outfit = Outfit;
 	KinkyDungeonCurrentDress = Dress;
-	if (KinkyDungeonDresses) {
-		for (let clothes of KinkyDungeonDresses[KinkyDungeonCurrentDress]) {
+	if (KDGetDressList()) {
+		for (let clothes of KDGetDressList()[KinkyDungeonCurrentDress]) {
 			clothes.Lost = false;
 		}
 		KinkyDungeonCheckClothesLoss = true;
-		KinkyDungeonDressPlayer();
+		KinkyDungeonDressPlayer(Character, NoRestraints);
 		KDRefresh = true;
 	}
 }
@@ -104,14 +125,18 @@ let KDRefresh = false;
 /**
  * It sets the player's appearance based on their stats.
  */
-function KinkyDungeonDressPlayer() {
+function KinkyDungeonDressPlayer(Character, NoRestraints) {
+	if (!Character) Character = KinkyDungeonPlayer;
+
 	let _CharacterRefresh = CharacterRefresh;
 	let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
-	// @ts-ignore
 	CharacterRefresh = () => {KDRefresh = true;};
-	// @ts-ignore
 	CharacterAppearanceBuildCanvas = () => {};
 	let restraints = [];
+
+	if (StandalonePatched) {
+		AppearanceCleanup(Character);
+	}
 
 	try {
 		let data = {
@@ -120,7 +145,6 @@ function KinkyDungeonDressPlayer() {
 			updateExpression: false,
 		};
 
-		// @ts-ignore
 		KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: true};
 		if (!KDNaked) KDCharacterNaked();
 
@@ -130,38 +154,53 @@ function KinkyDungeonDressPlayer() {
 
 			// First we remove all restraints and clothes
 			let clothGroups = {};
-			for (let cloth of KinkyDungeonDresses[KinkyDungeonCurrentDress]) {
-				clothGroups[cloth.Group] = true;
+			for (let cloth of Object.values(KDGetDressList()[KinkyDungeonCurrentDress])) {
+				clothGroups[cloth.Group || cloth.Item] = true;
 			}
 			let newAppearance = {};
 			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
-				let asset = KinkyDungeonPlayer.Appearance[A].Asset;
-				if (!asset.Group.Name.startsWith("Item") && !clothGroups[asset.Group.Name]) {
-					//KinkyDungeonPlayer.Appearance.splice(A, 1);
-					//A -= 1;
-					newAppearance[asset.Group.Name] = KinkyDungeonPlayer.Appearance[A];
+				if (StandalonePatched) {
+					let model = KinkyDungeonPlayer.Appearance[A].Model;
+					if ((!model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name])
+						|| model.Protected || model.SuperProtected) {
+						//KinkyDungeonPlayer.Appearance.splice(A, 1);
+						//A -= 1;
+						newAppearance[model.Group || model.Name] = KinkyDungeonPlayer.Appearance[A];
+					}
+				} else {
+					// BC support
+					let asset = KinkyDungeonPlayer.Appearance[A].Asset;
+					if (!asset.Group.Name.startsWith("Item") && !clothGroups[asset.Group.Name]) {
+						//KinkyDungeonPlayer.Appearance.splice(A, 1);
+						//A -= 1;
+						newAppearance[asset.Group.Name] = KinkyDungeonPlayer.Appearance[A];
+					}
 				}
+
 			}
+
 			KinkyDungeonPlayer.Appearance = Object.values(newAppearance);
 
 			//KinkyDungeonPlayer.Appearance = [];
 
 
 			// Next we revisit all the player's restraints
-			for (let inv of KinkyDungeonAllRestraint()) {
-				let renderTypes = KDRestraint(inv).shrine;
-				KDApplyItem(inv, KinkyDungeonPlayerTags);
-				restraints.push(inv);
-				if (inv.dynamicLink) {
-					let link = inv.dynamicLink;
-					for (let I = 0; I < 30; I++) {
-						if (KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
-							KDApplyItem(link, KinkyDungeonPlayerTags);
-							restraints.push(link);
+			if (!NoRestraints) {
+				for (let inv of KinkyDungeonAllRestraint()) {
+					let renderTypes = KDRestraint(inv).shrine;
+					KDApplyItem(inv, KinkyDungeonPlayerTags);
+					restraints.push(inv);
+					if (inv.dynamicLink) {
+						let link = inv.dynamicLink;
+						for (let I = 0; I < 30; I++) {
+							if (KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
+								KDApplyItem(link, KinkyDungeonPlayerTags);
+								restraints.push(link);
+							}
+							if (link.dynamicLink) {
+								link = link.dynamicLink;
+							} else I = 1000;
 						}
-						if (link.dynamicLink) {
-							link = link.dynamicLink;
-						} else I = 1000;
 					}
 				}
 			}
@@ -175,16 +214,20 @@ function KinkyDungeonDressPlayer() {
 
 		for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
 			let asset = KinkyDungeonPlayer.Appearance[A].Asset;
-			alreadyClothed[asset.Group.Name] = true;
+			if (StandalonePatched) {
+				if (KinkyDungeonPlayer.Appearance[A].Model?.Group)
+					alreadyClothed[KinkyDungeonPlayer.Appearance[A].Model?.Group] = true;
+			} else
+				alreadyClothed[asset.Group.Name] = true;
 		}
 
-		for (let clothes of KinkyDungeonDresses[KinkyDungeonCurrentDress]) {
-			if (alreadyClothed[clothes.Group]) continue;
+		for (let clothes of KDGetDressList()[KinkyDungeonCurrentDress]) {
+			if (alreadyClothed[clothes.Group || clothes.Item]) continue;
 			data.updateDress = true;
 			if (!clothes.Lost && KinkyDungeonCheckClothesLoss) {
 				if (clothes.Group == "Necklace") {
 					if (KinkyDungeonGetRestraintItem("ItemTorso") && KDRestraint(KinkyDungeonGetRestraintItem("ItemTorso")).harness) clothes.Lost = true;
-					if (KinkyDungeonGetRestraintItem("ItemArms") && InventoryGroupIsBlockedForCharacter(KinkyDungeonPlayer, "ItemBreast")) clothes.Lost = true;
+					if (KinkyDungeonGetRestraintItem("ItemArms") && KDGroupBlocked("ItemBreast")) clothes.Lost = true;
 				}
 				//if (clothes.Group == "Bra" && !clothes.NoLose) {
 				//if (KinkyDungeonGetRestraintItem("ItemBreast")) clothes.Lost = true;
@@ -194,39 +237,40 @@ function KinkyDungeonDressPlayer() {
 				}
 				if (clothes.Group == "ClothLower" && clothes.Skirt) {
 					if (KinkyDungeonGetRestraintItem("ItemPelvis")) clothes.Lost = true;
-					if (InventoryGroupIsBlockedForCharacter(KinkyDungeonPlayer, "ItemLegs")) clothes.Lost = true;
-					if (InventoryGroupIsBlockedForCharacter(KinkyDungeonPlayer, "ClothLower")) clothes.Lost = true;
+					if (KDGroupBlocked("ItemLegs")) clothes.Lost = true;
+					if (KDGroupBlocked("ClothLower")) clothes.Lost = true;
 				}
 				if (clothes.Group == "Shoes") {
 					if (KinkyDungeonGetRestraintItem("ItemBoots")) clothes.Lost = true;
 				}
-				for (let inv of KinkyDungeonAllRestraint()) {
-					if (KDRestraint(inv).remove) {
-						for (let remove of KDRestraint(inv).remove) {
-							if (remove == clothes.Group) clothes.Lost = true;
+				if (!NoRestraints) {
+					for (let inv of KinkyDungeonAllRestraint()) {
+						if (KDRestraint(inv).remove) {
+							for (let remove of KDRestraint(inv).remove) {
+								if (remove == clothes.Group) clothes.Lost = true;
+							}
 						}
 					}
 				}
 
-				if (clothes.Lost) KinkyDungeonUndress += 1/KinkyDungeonDresses[KinkyDungeonCurrentDress].length;
+				if (clothes.Lost) KinkyDungeonUndress += 1/KDGetDressList()[KinkyDungeonCurrentDress].length;
 			}
 
 			if (!clothes.Lost) {
 				if (KinkyDungeonCheckClothesLoss) {
-					let item = KDInventoryWear(clothes.Item, clothes.Group, undefined, clothes.Color);
-					alreadyClothed[clothes.Group] = true;
+					let item = KDInventoryWear(clothes.Item, clothes.Group, undefined, clothes.Color, clothes.Filters);
+					alreadyClothed[clothes.Group || clothes.Item] = true;
 					if (clothes.OverridePriority) {
 						if (item) {
 							if (!item.Property) item.Property = {OverridePriority: clothes.OverridePriority};
 							else item.Property.OverridePriority = clothes.OverridePriority;
 						}
-					} else if (KDClothOverrides[clothes.Group] && KDClothOverrides[clothes.Group][clothes.Item] != undefined) {
-						if (!item.Property) item.Property = {OverridePriority: KDClothOverrides[clothes.Group][clothes.Item]};
-						else item.Property.OverridePriority = KDClothOverrides[clothes.Group][clothes.Item];
+					} else if (KDClothOverrides[clothes.Group || clothes.Item] && KDClothOverrides[clothes.Group || clothes.Item][clothes.Item] != undefined) {
+						if (!item.Property) item.Property = {OverridePriority: KDClothOverrides[clothes.Group || clothes.Item][clothes.Item]};
+						else item.Property.OverridePriority = KDClothOverrides[clothes.Group || clothes.Item][clothes.Item];
 					}
 					if (clothes.Property) item.Property = clothes.Property;
 					// Ignored because BC uses string[] as a type!
-					// @ts-ignore
 					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, clothes.Color, clothes.Group);
 				}
 			}
@@ -235,143 +279,296 @@ function KinkyDungeonDressPlayer() {
 			if (clothes.Group == "Bra" && !KinkyDungeonGetRestraintItem("ItemBreast")) clothes.Lost = false; // A girl's best friend never leaves her
 		}
 
-		for (let inv of KinkyDungeonAllRestraint()) {
+		if (!NoRestraints) {
+			for (let inv of KinkyDungeonAllRestraint()) {
+				if (KinkyDungeonCheckClothesLoss)
+					if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
+						KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color, KDRestraint(inv).Filters);
+					}
+			}
 			if (KinkyDungeonCheckClothesLoss)
-				if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
-					KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color);
-				}
+				KinkyDungeonWearForcedClothes(restraints);
 		}
-		if (KinkyDungeonCheckClothesLoss)
-			KinkyDungeonWearForcedClothes(restraints);
+
+		// Apply poses from restraints
+		if (StandalonePatched && KDCurrentModels.get(Character)) {
+			RefreshTempPoses(Character, true);
+		}
+
+
 
 		KinkyDungeonCheckClothesLoss = false;
+		let AllowedArmPoses = StandalonePatched ? KDGetAvailablePosesArms(Character) : [];
+		let AllowedLegPoses = StandalonePatched ? KDGetAvailablePosesLegs(Character) : [];
 
 		if (KDGameData.KneelTurns > 0 || KDGameData.SleepTurns > 0) {
-			if (CharacterItemsHavePoseAvailable(KinkyDungeonPlayer, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(KinkyDungeonPlayer, "Kneel") && !KinkyDungeonPlayer.IsKneeling()) {
-				CharacterSetActivePose(KinkyDungeonPlayer, "Kneel", false);
+			if (StandalonePatched) {
+				// Force player into being on the ground
+				let newLegPoses = AllowedLegPoses.filter((element) => {return !STANDPOSES.includes(element);});
+				if (newLegPoses.length > 0) AllowedLegPoses = newLegPoses;
+			} else {
+				if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(Character, "Kneel") && !Character.IsKneeling()) {
+					CharacterSetActivePose(Character, "Kneel", false);
+				}
 			}
+
 		} else if (KDGameData.SleepTurns < 1) {
-			if (CharacterItemsHavePoseAvailable(KinkyDungeonPlayer, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(KinkyDungeonPlayer, "Kneel") && KinkyDungeonPlayer.IsKneeling()) {
-				CharacterSetActivePose(KinkyDungeonPlayer, "BaseLower", false);
-			}
-		}
-
-		let BlushCounter = 0;
-		let Blush = "";
-		let Eyes = "";
-		let Eyes2 = "";
-		let Eyebrows = "";
-		let Mouth = "";
-		let Fluids = "";
-
-		if (KDToggles.Drool && !KinkyDungeonCanTalk()) {
-			if (SpeechGetTotalGagLevel(KinkyDungeonPlayer) > 8) Fluids = "DroolMessy";
-			else if (SpeechGetTotalGagLevel(KinkyDungeonPlayer) > 4) Fluids = "DroolMedium";
-			else Fluids = "DroolLow";
-		}
-		if (KDToggles.Drool && KDGameData.KinkyDungeonLeashedPlayer > 0) {
-			if (Fluids.includes("Drool")) Fluids = Fluids.replace("Drool", "DroolTears");
-			else Fluids = "TearsHigh";
-		}
-
-		if (KinkyDungeonSleepiness) {
-			Eyes = "Dazed";
-		}
-
-		if (KinkyDungeonStatMana < KinkyDungeonStatManaMax*0.45) Eyes = "Sad";
-		if (KinkyDungeonStatWill <= KinkyDungeonStatWillMax*0.33 || KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax/2) Eyes = "Dazed";
-
-		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.167 || KinkyDungeonStatMana < KinkyDungeonStatManaMax*0.33 || KinkyDungeonStatWill < KinkyDungeonStatWillMax*0.33) Eyebrows = "Soft";
-
-		let chastityMult = KinkyDungeonChastityMult();
-		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.67 && KinkyDungeonStatWill > KinkyDungeonStatWillMax*0.5 && chastityMult > 0.9) Eyebrows = "Angry";
-
-		if (KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax * 0.8) Eyes = (Eyebrows != "Angry" && KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.99) ? "Lewd" : "Scared";
-
-		if (KinkyDungeonStatDistraction >= 0.01 && KinkyDungeonStatDistraction <= 3) Eyes2 = "Closed";
-
-		if (KDGameData.OrgasmTurns > 0) {
-			Eyebrows = "Soft";
-			Eyes2 = "";
-			Eyes = "LewdHeart";
-		} else if (KDGameData.OrgasmStamina > 0) {
-			Eyebrows = "Soft";
-		} else if (KDGameData.OrgasmStage > 5 && Math.random() < 0.33) {
-			Eyebrows = "Angry";
-		} else if (KDGameData.OrgasmStage > 3 && Math.random() < 0.33) {
-			Eyebrows = "Angry";
-		}
-
-		if (KinkyDungeonStatWill <= 2) {
-			Eyes = "Dazed";
-			Eyes2 = "";
-		}
-
-		if (KinkyDungeonStatDistraction > 0.01) BlushCounter += 1;
-		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.33) BlushCounter += 1;
-		if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.65) BlushCounter += 1;
-
-		if (KinkyDungeonUndress > 0.4) BlushCounter += 1;
-		if (KinkyDungeonUndress > 0.8) BlushCounter += 1;
-
-		if (BlushCounter == 1) Blush = "Low";
-		else if (BlushCounter == 2) Blush = "Medium";
-		else if (BlushCounter == 3) Blush = "High";
-		else if (BlushCounter == 4) Blush = "VeryHigh";
-		else if (BlushCounter == 5) Blush = "Extreme";
-
-
-		for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
-			if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Blush") {
-				let property = KinkyDungeonPlayer.Appearance[A].Property;
-				if (!property || property.Expression != Blush) {
-					KinkyDungeonPlayer.Appearance[A].Property = { Expression: Blush };
-					KDRefresh = true;
-					data.updateExpression = true;
-				}
-			}
-			if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Eyebrows") {
-				let property = KinkyDungeonPlayer.Appearance[A].Property;
-				if (!property || property.Expression != Eyebrows) {
-					KinkyDungeonPlayer.Appearance[A].Property = { Expression: Eyebrows };
-					KDRefresh = true;
-					data.updateExpression = true;
-				}
-			}
-			if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Mouth") {
-				let property = KinkyDungeonPlayer.Appearance[A].Property;
-				if (!property || property.Expression != Mouth) {
-					KinkyDungeonPlayer.Appearance[A].Property = { Expression: Mouth };
-					KDRefresh = true;
-					data.updateExpression = true;
-				}
-			}
-			if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Fluids") {
-				let property = KinkyDungeonPlayer.Appearance[A].Property;
-				if (!property || property.Expression != Fluids) {
-					KinkyDungeonPlayer.Appearance[A].Property = { Expression: Fluids };
-					KDRefresh = true;
-					data.updateExpression = true;
-				}
-			}
-			if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Eyes" || KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Eyes2") {
-				let property = KinkyDungeonPlayer.Appearance[A].Property;
-				if (!property || property.Expression != ((KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Eyes2" && Eyes2) ? Eyes2 : Eyes)) {
-					KinkyDungeonPlayer.Appearance[A].Property = { Expression: ((KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Eyes2" && Eyes2) ? Eyes2 : Eyes) };
-					KDRefresh = true;
-					data.updateExpression = true;
+			if (StandalonePatched) {
+				// Nothing needed
+			} else {
+				if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(Character, "Kneel") && Character.IsKneeling()) {
+					CharacterSetActivePose(Character, "BaseLower", false);
 				}
 			}
 
+		}
 
+		if (StandalonePatched) {
+			// Pose set routine
+			let ArmPose = KDGetPoseOfType(Character, "Arms");
+			let LegPose = KDGetPoseOfType(Character, "Legs");
+			let EyesPose = KDGetPoseOfType(Character, "Eyes");
+			let Eyes2Pose = KDGetPoseOfType(Character, "Eyes2");
+			let BrowsPose = KDGetPoseOfType(Character, "Brows");
+			let Brows2Pose = KDGetPoseOfType(Character, "Brows2");
+			let BlushPose = KDGetPoseOfType(Character, "Blush");
+			let MouthPose = KDGetPoseOfType(Character, "Mouth");
+
+			let DefaultBound = "Front"; // Default bondage for arms
+			let DefaultHobbled = "Closed"; // Default bondage for legs
+
+			// Hold to player's preferred pose
+			let PreferredArm = KDDesiredPlayerPose.Arms || "Free";
+			let PreferredLeg = KDDesiredPlayerPose.Legs || "Spread";
+			if (!AllowedArmPoses.includes(ArmPose)) {
+				ArmPose = (AllowedArmPoses.includes(DefaultBound) && KinkyDungeonIsArmsBound(false, false)) ? DefaultBound : AllowedArmPoses[0];
+			}
+			if (!AllowedLegPoses.includes(LegPose)) {
+				LegPose = (AllowedLegPoses.includes(DefaultHobbled) && KinkyDungeonSlowLevel >= 3) ? DefaultHobbled : AllowedLegPoses[0];
+			}
+			if (ArmPose != PreferredArm && AllowedArmPoses.includes(PreferredArm)) {
+				ArmPose = PreferredArm;
+			}
+			if (LegPose != PreferredLeg && AllowedLegPoses.includes(PreferredLeg)) {
+				LegPose = PreferredLeg;
+			}
+
+
+			// Expressions for standalone
+
+
+			/** @type {KDExpression} */
+			let expression = null;
+			let stackedPriorities = {};
+			for (let e of Object.entries(KDExpressions)) {
+				if (!expression || e[1].priority > expression.priority) {
+					if (e[1].criteria(Character)) {
+						expression = e[1];
+					}
+				}
+				if (e[1].stackable) {
+					if (!e[1].criteria(Character)) continue;
+					let result = null;
+					if (e[1].priority > (stackedPriorities.EyesPose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.EyesPose) {
+							stackedPriorities.EyesPose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseEyes) EyesPose = result.EyesPose;
+						}
+					}
+					if (e[1].priority > (stackedPriorities.Eyes2Pose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.Eyes2Pose) {
+							stackedPriorities.Eyes2Pose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseEyes2) Eyes2Pose = result.Eyes2Pose;
+						}
+					}
+					if (e[1].priority > (stackedPriorities.BrowsPose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.BrowsPose) {
+							stackedPriorities.BrowsPose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseBrows) BrowsPose = result.BrowsPose;
+						}
+					}
+					if (e[1].priority > (stackedPriorities.Brows2Pose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.Brows2Pose) {
+							stackedPriorities.Brows2Pose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseBrows2) Brows2Pose = result.Brows2Pose;
+						}
+					}
+					if (e[1].priority > (stackedPriorities.BlushPose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.BlushPose) {
+							stackedPriorities.BlushPose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseBlush) BlushPose = result.BlushPose;
+						}
+					}
+					if (e[1].priority > (stackedPriorities.MouthPose || 0)) {
+						result = result || e[1].expression(Character);
+						if (result.MouthPose) {
+							stackedPriorities.MouthPose = e[1].priority;
+							if (!KDWardrobe_CurrentPoseMouth) MouthPose = result.MouthPose;
+						}
+					}
+				}
+			}
+			if (expression) {
+				let result = expression.expression(Character);
+				if (!KDWardrobe_CurrentPoseEyes && result.EyesPose) EyesPose = result.EyesPose;
+				if (!KDWardrobe_CurrentPoseEyes2 && result.Eyes2Pose) Eyes2Pose = result.Eyes2Pose;
+				if (!KDWardrobe_CurrentPoseBrows && result.BrowsPose) BrowsPose = result.BrowsPose;
+				if (!KDWardrobe_CurrentPoseBrows2 && result.Brows2Pose) Brows2Pose = result.Brows2Pose;
+				if (!KDWardrobe_CurrentPoseBlush && result.BlushPose) BlushPose = result.BlushPose;
+				if (!KDWardrobe_CurrentPoseMouth && result.MouthPose) MouthPose = result.MouthPose;
+			}
+
+			if (KDCurrentModels.get(Character)) {
+				KDCurrentModels.get(Character).Poses = KDGeneratePoseArray(
+					ArmPose,
+					LegPose,
+					EyesPose,
+					BrowsPose,
+					BlushPose,
+					MouthPose,
+					Eyes2Pose,
+					Brows2Pose,
+				);
+				KDUpdateTempPoses(Character);
+
+			}
+		}
+
+
+		if (!StandalonePatched) {
+			// Expressions for BC
+			let BlushCounter = 0;
+			let Blush = "";
+			let Eyes = "";
+			let Eyes2 = "";
+			let Eyebrows = "";
+			let Mouth = "";
+			let Fluids = "";
+
+			if (KDToggles.Drool && !KinkyDungeonCanTalk()) {
+				if (KinkyDungeonGagTotal() > 0.9) Fluids = "DroolMessy";
+				else if (KinkyDungeonGagTotal() > 0.5) Fluids = "DroolMedium";
+				else Fluids = "DroolLow";
+			}
+			if (KDToggles.Drool && KDGameData.KinkyDungeonLeashedPlayer > 0) {
+				if (Fluids.includes("Drool")) Fluids = Fluids.replace("Drool", "DroolTears");
+				else Fluids = "TearsHigh";
+			}
+
+			if (KinkyDungeonSleepiness) {
+				Eyes = "Dazed";
+			}
+
+			if (KinkyDungeonStatMana < KinkyDungeonStatManaMax*0.45) Eyes = "Sad";
+			if (KinkyDungeonStatWill <= KinkyDungeonStatWillMax*0.33 || KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax/2) Eyes = "Dazed";
+
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.167 || KinkyDungeonStatMana < KinkyDungeonStatManaMax*0.33 || KinkyDungeonStatWill < KinkyDungeonStatWillMax*0.33) Eyebrows = "Soft";
+
+			let chastityMult = KinkyDungeonChastityMult();
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.67 && KinkyDungeonStatWill > KinkyDungeonStatWillMax*0.5 && chastityMult > 0.9) Eyebrows = "Angry";
+
+			if (KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax * 0.8) Eyes = (Eyebrows != "Angry" && KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.99) ? "Lewd" : "Scared";
+
+			if (KinkyDungeonStatDistraction >= 0.01 && KinkyDungeonStatDistraction <= 3) Eyes2 = "Closed";
+
+			if (KDGameData.OrgasmTurns > 0) {
+				Eyebrows = "Soft";
+				Eyes2 = "";
+				Eyes = "LewdHeart";
+			} else if (KDGameData.OrgasmStamina > 0) {
+				Eyebrows = "Soft";
+			} else if (KDGameData.OrgasmStage > 5 && Math.random() < 0.33) {
+				Eyebrows = "Angry";
+			} else if (KDGameData.OrgasmStage > 3 && Math.random() < 0.33) {
+				Eyebrows = "Angry";
+			}
+
+			if (KinkyDungeonStatWill <= 2) {
+				Eyes = "Dazed";
+				Eyes2 = "";
+			}
+
+			if (KinkyDungeonStatDistraction > 0.01) BlushCounter += 1;
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.33) BlushCounter += 1;
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.65) BlushCounter += 1;
+
+			if (KinkyDungeonUndress > 0.4) BlushCounter += 1;
+			if (KinkyDungeonUndress > 0.8) BlushCounter += 1;
+
+			if (BlushCounter == 1) Blush = "Low";
+			else if (BlushCounter == 2) Blush = "Medium";
+			else if (BlushCounter == 3) Blush = "High";
+			else if (BlushCounter == 4) Blush = "VeryHigh";
+			else if (BlushCounter == 5) Blush = "Extreme";
+
+			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
+				if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Blush") {
+					let property = KinkyDungeonPlayer.Appearance[A].Property;
+					if (!property || property.Expression != Blush) {
+						KinkyDungeonPlayer.Appearance[A].Property = { Expression: Blush };
+						KDRefresh = true;
+						data.updateExpression = true;
+					}
+				}
+				if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Eyebrows") {
+					let property = KinkyDungeonPlayer.Appearance[A].Property;
+					if (!property || property.Expression != Eyebrows) {
+						KinkyDungeonPlayer.Appearance[A].Property = { Expression: Eyebrows };
+						KDRefresh = true;
+						data.updateExpression = true;
+					}
+				}
+				if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Mouth") {
+					let property = KinkyDungeonPlayer.Appearance[A].Property;
+					if (!property || property.Expression != Mouth) {
+						KinkyDungeonPlayer.Appearance[A].Property = { Expression: Mouth };
+						KDRefresh = true;
+						data.updateExpression = true;
+					}
+				}
+				if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Fluids") {
+					let property = KinkyDungeonPlayer.Appearance[A].Property;
+					if (!property || property.Expression != Fluids) {
+						KinkyDungeonPlayer.Appearance[A].Property = { Expression: Fluids };
+						KDRefresh = true;
+						data.updateExpression = true;
+					}
+				}
+				if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Eyes" || KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Eyes2") {
+					let property = KinkyDungeonPlayer.Appearance[A].Property;
+					if (!property || property.Expression != ((KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Eyes2" && Eyes2) ? Eyes2 : Eyes)) {
+						KinkyDungeonPlayer.Appearance[A].Property = { Expression: ((KinkyDungeonPlayer.Appearance[A].Asset.Group.Name == "Eyes2" && Eyes2) ? Eyes2 : Eyes) };
+						KDRefresh = true;
+						data.updateExpression = true;
+					}
+				}
+
+
+			}
 		}
 
 		KinkyDungeonSendEvent("afterDress", data);
 	} finally {
-		// @ts-ignore
 		CharacterRefresh = _CharacterRefresh;
-		// @ts-ignore
 		CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
+	}
+
+	if (StandalonePatched && KDCurrentModels.get(Character)) {
+
+		if (!InventoryGet(Character, "Body")) KDInventoryWear("Body", "Body");
+		if (!InventoryGet(Character, "Eyes")) KDInventoryWear("KoiEyes", "Eyes");
+		if (!InventoryGet(Character, "Brows")) KDInventoryWear("KoiBrows", "Brows");
+		if (!InventoryGet(Character, "Mouth")) KDInventoryWear("KoiMouth", "Mouth");
+		if (!InventoryGet(Character, "Blush")) KDInventoryWear("KoiBlush", "Blush");
+		//if (!InventoryGet(Character, "Hair")) KDInventoryWear("Braid", "Hair");
+
+
+		UpdateModels(Character);
 	}
 }
 
@@ -382,8 +579,8 @@ function KDInitProtectedGroups() {
 	KDProtectedCosplay = [];
 	// init protected slots
 	for (let a of KinkyDungeonPlayer.Appearance) {
-		if (a.Asset.Group.BodyCosplay){
-			KDProtectedCosplay.push(a.Asset.Group.Name);
+		if (a.Asset?.Group?.BodyCosplay || (a.Model?.SuperProtected && a.Model.Group)){
+			KDProtectedCosplay.push(a.Asset.Group?.Name || a.Model.Group);
 		}
 	}
 }
@@ -409,6 +606,8 @@ function KinkyDungeonWearForcedClothes(restraints) {
 
 					if (!canReplace) {return;}
 					if (KDProtectedCosplay.includes(dress.Group)){return;}
+					let filters = dress.Filters;
+					/** @type string|string[] */
 					let color = (typeof dress.Color === "string") ? [dress.Color] : dress.Color;
 					let faction = inv.faction;
 					if (inv.faction)
@@ -420,9 +619,8 @@ function KinkyDungeonWearForcedClothes(restraints) {
 								}
 							}
 						}
-					// @ts-ignore
 					if (dress.useHairColor && InventoryGet(KinkyDungeonPlayer, "HairFront")) color = InventoryGet(KinkyDungeonPlayer, "HairFront").Color;
-					let item = KDInventoryWear(dress.Item, dress.Group, inv.name, color);
+					let item = KDInventoryWear(dress.Item, dress.Group, inv.name, color, filters);
 
 					if (dress.OverridePriority) {
 						if (item) {
@@ -431,7 +629,6 @@ function KinkyDungeonWearForcedClothes(restraints) {
 						}
 					}
 
-					// @ts-ignore
 					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, dress.Group);
 				}
 			});
@@ -459,13 +656,17 @@ function KinkyDungeonGetOutfit(Name) {
  * Makes the KinkyDungeonPlayer wear an item on a body area
  * @param {string} AssetName - The name of the asset to wear
  * @param {string} AssetGroup - The name of the asset group to wear
- * @param {string} par - parent item
- * @param {string | string[]} color - parent item
+ * @param {string} [par] - parent item
+ * @param {string | string[]} [color] - parent item
+ * @param {Record<string, LayerFilter>} [filters] - parent item
  */
-function KDInventoryWear(AssetName, AssetGroup, par, color) {
+function KDInventoryWear(AssetName, AssetGroup, par, color, filters) {
+	const M = StandalonePatched ? ModelDefs[AssetName] : undefined;
 	const A = AssetGet(KinkyDungeonPlayer.AssetFamily, AssetGroup, AssetName);
-	if (!A) return;
-	let item = KDAddAppearance(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor);
+	if ((StandalonePatched && !M) || (!StandalonePatched && !A)) return;
+	let item = StandalonePatched ?
+		KDAddModel(KinkyDungeonPlayer, AssetGroup, M, color || "Default", filters)
+		: KDAddAppearance(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor);
 	//CharacterAppearanceSetItem(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor,0,-1, false);
 	CharacterRefresh(KinkyDungeonPlayer, true);
 	return item;
@@ -482,15 +683,30 @@ function KDCharacterNaked() {
  */
 function KDCharacterAppearanceNaked() {
 	// For each item group (non default items only show at a 20% rate)
-	for (let A = KinkyDungeonPlayer.Appearance.length - 1; A >= 0; A--)
-		if (KinkyDungeonPlayer.Appearance[A].Asset.Group.AllowNone &&
-			(KinkyDungeonPlayer.Appearance[A].Asset.Group.Category === "Appearance")){
-			// conditional filter
-			let f = !(KinkyDungeonPlayer.Appearance[A].Asset.Group.BodyCosplay
-				&& (KDProtectedCosplay.includes(KinkyDungeonPlayer.Appearance[A].Asset.Group.Name)));
-			if (!f){continue;}
-			KinkyDungeonPlayer.Appearance.splice(A, 1);
+	for (let A = KinkyDungeonPlayer.Appearance.length - 1; A >= 0; A--) {
+		if (StandalonePatched) {
+			if (!KinkyDungeonPlayer.Appearance[A].Model.Restraint){
+				// conditional filter
+				let f = !(KinkyDungeonPlayer.Appearance[A].Model
+					&& (
+						KDProtectedCosplay.includes(KinkyDungeonPlayer.Appearance[A].Model.Group)
+						|| KinkyDungeonPlayer.Appearance[A].Model.Protected
+						|| KinkyDungeonPlayer.Appearance[A].Model.SuperProtected));
+				if (!f){continue;}
+				KinkyDungeonPlayer.Appearance.splice(A, 1);
+			}
+		} else {
+			if (KinkyDungeonPlayer.Appearance[A].Asset.Group.AllowNone &&
+				(KinkyDungeonPlayer.Appearance[A].Asset.Group.Category === "Appearance")){
+				// conditional filter
+				let f = !(KinkyDungeonPlayer.Appearance[A].Asset.Group.BodyCosplay
+					&& (KDProtectedCosplay.includes(KinkyDungeonPlayer.Appearance[A].Asset.Group.Name)));
+				if (!f){continue;}
+				KinkyDungeonPlayer.Appearance.splice(A, 1);
+			}
 		}
+	}
+
 
 	// Loads the new character canvas
 	CharacterLoadCanvas(KinkyDungeonPlayer);
@@ -498,9 +714,63 @@ function KDCharacterAppearanceNaked() {
 
 
 function KDApplyItem(inv, tags) {
-	// @ts-ignore
+	if (StandalonePatched) {
+		let restraint = KDRestraint(inv);
+		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
+		let faction = inv.faction ? inv.faction : "";
+
+		let color = (typeof restraint.Color === "string") ? [restraint.Color] : restraint.Color;
+		if (restraint.factionColor && faction && KinkyDungeonFactionColors[faction]) {
+			for (let i = 0; i < restraint.factionColor.length; i++) {
+				for (let n of restraint.factionColor[i]) {
+					color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
+				}
+			}
+		}
+
+		//let already = InventoryGet(KinkyDungeonPlayer, AssetGroup);
+		//let difficulty = already?.Property?.Difficulty || 0;
+
+		/** @type {Item} */
+		let placed = null;
+
+		if (!restraint.armor || KDToggles.DrawArmor) {
+			placed = KDAddModel(KinkyDungeonPlayer, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], color, restraint.Filters, inv);
+		}
+
+		if (placed) {
+			let type = restraint.Type;
+			if (restraint.changeRenderType && Object.keys(restraint.changeRenderType).some((k) => {return tags.has(k);})) {
+				let key = Object.keys(restraint.changeRenderType).filter((k) => {return tags.has(k);})[0];
+				if (key) {
+					type = restraint.changeRenderType[key];
+				}
+			}
+			placed.Property = {Type: type, Modules: restraint.Modules, Difficulty: restraint.power, LockedBy: inv.lock ? "MetalPadlock" : undefined};
+
+			/*if ((!already) && type) {
+				KinkyDungeonPlayer.FocusGroup = AssetGroupGet("Female3DCG", AssetGroup);
+				let options = window["Inventory" + ((AssetGroup.includes("ItemMouth")) ? "ItemMouth" : AssetGroup) + restraint.Asset + "Options"];
+				if (!options) options = TypedItemDataLookup[`${AssetGroup}${restraint.Asset}`].options; // Try again
+				const option = options.find(o => o.Name === type);
+				ExtendedItemSetType(KinkyDungeonPlayer, options, option);
+				KinkyDungeonPlayer.FocusGroup = null;
+			}*/
+
+			if (restraint.OverridePriority) {
+				placed.Property.OverridePriority = restraint.OverridePriority;
+			}
+		}
+		return;
+	}
+	KDApplyItemLegacy(inv, tags);
+
+
+}
+
+/** Legacy */
+function KDApplyItemLegacy(inv, tags) {
 	let _ChatRoomCharacterUpdate = ChatRoomCharacterUpdate;
-	// @ts-ignore
 	ChatRoomCharacterUpdate = () => {};
 	try {
 		let restraint = KDRestraint(inv);
@@ -550,7 +820,6 @@ function KDApplyItem(inv, tags) {
 				let data = ModularItemDataLookup[AssetGroup + restraint.Asset];
 				let asset = data.asset;
 				let modules = data.modules;
-				// @ts-ignore
 				placed.Property = ModularItemMergeModuleValues({ asset, modules }, restraint.Modules);
 				placed.Property.LockedBy = inv.lock ? "MetalPadlock" : undefined;
 			} else if (type) TypedItemSetOptionByName(KinkyDungeonPlayer, placed, type, false);
@@ -559,10 +828,8 @@ function KDApplyItem(inv, tags) {
 			}
 		}
 	} finally {
-		// @ts-ignore
 		ChatRoomCharacterUpdate = _ChatRoomCharacterUpdate;
 	}
-
 }
 
 
@@ -575,5 +842,226 @@ function KinkyDungeonSendOutfitEvent(Event, data) {
 				KinkyDungeonHandleOutfitEvent(Event, e, outfit, data);
 			}
 		}
+	}
+}
+
+
+function KDGetExtraPoses(C) {
+	let poses = [];
+	if (C == KinkyDungeonPlayer) {
+		// For player
+		if (KinkyDungeonPlayerTags.get("LinkFeet")) {
+			poses.push("FeetLinked");
+		}
+	} else {
+		// For NPC
+		// ???
+	}
+	return poses;
+}
+
+
+/** @type {Record<string, KDExpression>} */
+let KDExpressions = {
+	"RestrainedImmediate": {
+		priority: 7,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("restrained")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "BlushHigh",
+				MouthPose: "MouthSurprised",
+			};
+		},
+	},
+	"RestrainedRecent": {
+		priority: 1.5,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("restrained_recently")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "BlushMedium",
+				MouthPose: "MouthEmbarrassed",
+			};
+		},
+	},
+	"OrgSuccess": {
+		priority: 10,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("OrgSuccess")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesSurprised",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsSurprised",
+				Brows2Pose: "Brows2Surprised",
+				BlushPose: "BlushExtreme",
+				MouthPose: "MouthDazed",
+			};
+		},
+	},
+	"OrgEdged": {
+		priority: 8,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("OrgEdged")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesAngry",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsAnnoyed",
+				Brows2Pose: "Brows2Annoyed",
+				BlushPose: "BlushExtreme",
+				MouthPose: "MouthDazed",
+			};
+		},
+	},
+	"OrgDenied": {
+		priority: 8,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("OrgDenied")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesSurprised",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsAngry",
+				Brows2Pose: "Brows2Angry",
+				BlushPose: "BlushExtreme",
+				MouthPose: "MouthEmbarrassed",
+			};
+		},
+	},
+	"VibeStart": {
+		priority: 6,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && (KinkyDungeonFlags.get("VibeStarted") || KinkyDungeonFlags.get("VibeContinued"))) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: KinkyDungeonFlags.get("VibeContinued") ? "EyesDazed" : "EyesNeutral",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsSad",
+				Brows2Pose: "Brows2Sad",
+				BlushPose: "BlushHigh",
+				MouthPose: "MouthDazed",
+			};
+		},
+	},
+	"Vibing": {
+		stackable: true,
+		priority: 2,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonVibeLevel > 0) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.5) ? "EyesAngry" : "",
+				Eyes2Pose: (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.5) ? "Eyes2Angry" : "",
+				BrowsPose: "BrowsNeutral",
+				Brows2Pose: "Brows2Neutral",
+				BlushPose: (KinkyDungeonVibeLevel > 2 || KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.5) ? "BlushMedium" : "BlushHigh",
+				MouthPose: "MouthEmbarrassed",
+			};
+		},
+	},
+	"Distracted": {
+		stackable: true,
+		priority: 1,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonStatDistraction > 0) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.5) ? "BlushLow" : "BlushMedium",
+				MouthPose: "",
+			};
+		},
+	},
+	"Tired": {
+		stackable: true,
+		priority: 1,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax * 0.5) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax * 0.25) ? "EyesClosed" : "EyesDazed",
+				Eyes2Pose: "Eyes2Dazed",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "",
+			};
+		},
+	},
+	"Neutral": {
+		stackable: true,
+		priority: 0.1,
+		criteria: (C) => {
+			return true;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesNeutral",
+				Eyes2Pose: "Eyes2Neutral",
+				BrowsPose: "BrowsNeutral",
+				Brows2Pose: "Brows2Neutral",
+				BlushPose: "BlushNone",
+				MouthPose: "MouthNeutral",
+			};
+		},
+	},
+};
+
+function KDUpdateTempPoses(Character) {
+	// Append temp poses
+	for (let pose of Object.keys(KDCurrentModels.get(Character).TempPoses)) {
+		if (KDCurrentModels.get(Character).Poses[pose])
+			delete KDCurrentModels.get(Character).TempPoses[pose];
+		else
+			KDCurrentModels.get(Character).Poses[pose] = true;
 	}
 }

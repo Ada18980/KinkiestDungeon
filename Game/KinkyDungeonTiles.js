@@ -301,7 +301,7 @@ function KDGetSpecificEffectTile(x, y, tile) {
  * @returns {effectTile}
  */
 function KDCreateEffectTile(x, y, tile, durationMod) {
-	if (x < 1 || y < 1 || x >= KinkyDungeonGridWidth || y >= KinkyDungeonGridHeight) return null;
+	if (x < 0 || y < 0 || x >= KinkyDungeonGridWidth || y >= KinkyDungeonGridHeight) return null;
 	let existingTile = KDGetSpecificEffectTile(x, y);
 	let duration = (tile.duration ? tile.duration : KDEffectTiles[tile.name].duration) + KDRandom() * (durationMod ? durationMod : 0);
 	let createdTile = existingTile;
@@ -325,13 +325,13 @@ function KDCreateEffectTile(x, y, tile, durationMod) {
 }
 
 function KDInteractNewTile(newTile) {
-	let Creator = KDEffectTileCreateFunctionsCreator[newTile.name];
+	let Creator = KDEffectTileCreateFunctionsCreator[newTile.functionName || newTile.name];
 	let Existing = null;
 	for (let tile of Object.values(KDGetEffectTiles(newTile.x, newTile.y))) {
 		if (tile != newTile) {
 			if (Creator) Creator(newTile, tile);
 			if (tile.duration > 0) {
-				Existing = KDEffectTileCreateFunctionsExisting[tile.name];
+				Existing = KDEffectTileCreateFunctionsExisting[tile.functionName || tile.name];
 				if (Existing) Existing(newTile, tile);
 			}
 		}
@@ -417,7 +417,7 @@ function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			if (tile.x >= CamX && tile.y >= CamY && tile.x < CamX + KinkyDungeonGridWidthDisplay && tile.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(tile.x, tile.y) > 0) {
 				if (!KDCanSeeEffectTile(tile)) continue;
 				let tileid = tile.x + "," + tile.y + "_" + sprite;
-				KDDraw(kdgameboard, kdpixisprites, tileid, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",
+				KDDraw(kdeffecttileboard, kdpixisprites, tileid, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",
 					(tile.x + (tile.xoffset ? tile.xoffset : 0) - CamX)*KinkyDungeonGridSizeDisplay, (tile.y - CamY + (tile.yoffset ? tile.yoffset : 0))*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, 0, {
 						zIndex: -0.1 + 0.01 * tile.priority,
@@ -482,8 +482,8 @@ function KDUpdateEffectTiles(delta) {
  * @param {effectTile} tile
  */
 function KinkyDungeonUpdateSingleEffectTile(delta, entity, tile,) {
-	if (tile.duration > 0 && KDEffectTileFunctions[tile.name]) {
-		KDEffectTileFunctions[tile.name](delta, entity, tile);
+	if (tile.duration > 0 && KDEffectTileFunctions[tile.functionName || tile.name]) {
+		KDEffectTileFunctions[tile.functionName || tile.name](delta, entity, tile);
 	}
 }
 /**
@@ -492,8 +492,8 @@ function KinkyDungeonUpdateSingleEffectTile(delta, entity, tile,) {
  * @param {effectTile} tile
  */
 function KinkyDungeonUpdateSingleEffectTileStandalone(delta, tile,) {
-	if (tile.duration > 0 && KDEffectTileFunctionsStandalone[tile.name]) {
-		KDEffectTileFunctionsStandalone[tile.name](delta, tile);
+	if (tile.duration > 0 && KDEffectTileFunctionsStandalone[tile.functionName || tile.name]) {
+		KDEffectTileFunctionsStandalone[tile.functionName || tile.name](delta, tile);
 	}
 }
 
@@ -506,8 +506,8 @@ function KinkyDungeonUpdateSingleEffectTileStandalone(delta, tile,) {
  * @param {number} d
  */
 function KinkyDungeonBulletInteractionSingleEffectTile(b, tile, d) {
-	if (tile.duration > 0 && KDEffectTileBulletFunctions[tile.name]) {
-		KDEffectTileBulletFunctions[tile.name](b, tile, d);
+	if (tile.duration > 0 && KDEffectTileBulletFunctions[tile.functionName]) {
+		KDEffectTileBulletFunctions[tile.functionName](b, tile, d);
 	}
 }
 

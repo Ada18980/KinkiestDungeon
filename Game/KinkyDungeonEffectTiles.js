@@ -46,6 +46,14 @@ let KDEffectTiles = {
 		affinities: ["Latex"],
 		tags: ["latex", "insulator"],
 	},
+	"LatexThin": {
+		name: "LatexThin",
+		functionName: "Latex",
+		duration: 30,
+		priority: -2.01,
+		affinities: ["Latex"],
+		tags: ["latex", "insulator"],
+	},
 	"Ropes": {
 		name: "Ropes",
 		duration: 30,

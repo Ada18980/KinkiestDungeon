@@ -31,7 +31,6 @@ function KDAddParticle(x, y, img, type, data) {
 			phase: data.phase || 0,
 		});
 		// Create the sprite
-		// @ts-ignore
 		let sprite = PIXI.Sprite.from(tex);
 		sprite.position.x = x;
 		sprite.position.y = y;
@@ -117,7 +116,8 @@ function KDDrawArousalParticles(pinkChance, density, purpleChance) {
 function KDDrawVibeParticles(density) {
 
 	let arousalRate = 100 / density;
-	if (KinkyDungeonVibeLevel > 0 && CommonTime() > lastVibeParticle + 0.03 * arousalRate * (2/(2 + KinkyDungeonVibeLevel))) {
+	if (StandalonePatched) arousalRate *= 2;
+	if (KinkyDungeonVibeLevel > 0 && CommonTime() > lastVibeParticle + 0.03 * arousalRate * (3/(3 + KinkyDungeonVibeLevel))) {
 		KDCreateVibeParticle();
 
 		lastVibeParticle = CommonTime();
@@ -129,8 +129,17 @@ function KDDrawVibeParticles(density) {
  */
 function KDCreateVibeParticle() {
 	let lifetime = 500 + Math.random() * 250;
-	let x = 250;
-	let y = 520 + (KinkyDungeonPlayer.Pose.includes("Hogtied") ? 165 : (KinkyDungeonPlayer.IsKneeling() ? 78 : 0));
+	let x = 250 - (StandalonePatched ? 5 : 0);
+	let Hogtied = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer)?.Poses.Hogtie : KinkyDungeonPlayer.Pose.includes("Hogtied");
+	let Kneeling = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer)?.Poses.Kneel: KinkyDungeonPlayer.IsKneeling();
+	let y = 520 + (Hogtied ? 165 : (Kneeling ? 78 : 0));
+	if (StandalonePatched) {
+		// Throw out in favor of new system
+		let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Front");
+		x = pos.x;
+		y = pos.y;
+	}
+
 	let locations = KDSumVibeLocations();
 	let vx = ((Math.random() > 0.5) ? -1 : 1) * 0.25;
 	let vy = -.15 + Math.random() * .3;
@@ -141,7 +150,15 @@ function KDCreateVibeParticle() {
 			vy = 0.25 + Math.random()*0.1;
 			vx = -.05 + Math.random() * .1;
 		}
-		else if (breast && !KinkyDungeonPlayer.Pose.includes("Hogtied") && (locations.length == 1 || Math.random() < 0.5)) y -= 155;
+		else if (breast && !KinkyDungeonPlayer.Pose.includes("Hogtied") && (locations.length == 1 || Math.random() < 0.5)) {
+			if (StandalonePatched) {
+				let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Chest");
+				x = pos.x;
+				y = pos.y;
+			} else {
+				y -= 155;
+			}
+		}
 
 	}
 

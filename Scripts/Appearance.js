@@ -1358,6 +1358,12 @@ function AppearanceItemStringify(Item) {
  */
 function CharacterAppearanceRestore(C, backup) {
 	C.Appearance = AppearanceItemParse(backup);
+	for (let A = 0; A < C.Appearance.length; A++) {
+		if (!C.Appearance[A].Asset) {
+			C.Appearance.splice(A, 1);
+			A -= 1;
+		}
+	}
 }
 
 function AppearanceItemParse(stringified) {

@@ -61,7 +61,7 @@ function KinkyDungeonDisableSpell(Name) {
 	for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
 		if (KinkyDungeonSpells[KinkyDungeonSpellChoices[i]] && KinkyDungeonSpells[KinkyDungeonSpellChoices[i]].name == Name) {
 			KinkyDungeonSpellChoicesToggle[i] = false;
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "/Audio/Click.ogg");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 		}
 	}
 }
@@ -176,7 +176,6 @@ function KDCanUpcast() {
 	return false;
 }
 
-// @ts-ignore
 function KDEmpower(data, entity) {
 	let Level = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellEmpower");
 	if (!KDCanUpcast()) {
@@ -331,10 +330,10 @@ function KinkyDungeonGetCost(Spell) {
 
 function KinkyDungeonMakeNoise(radius, noiseX, noiseY) {
 	for (let e of KinkyDungeonEntities) {
-		if (!e.aware && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistChebyshev(e.x - noiseX, e.y - noiseY) <= radius) {
+		if (!e.aware && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistEuclidean(e.x - noiseX, e.y - noiseY) <= radius) {
 			e.gx = noiseX;
 			e.gy = noiseY;
-			KDAddThought(e.id, "Search", 2, 1 + KDistChebyshev(e.x - noiseX, e.y - noiseY));
+			KDAddThought(e.id, "Search", 2, 2 + 3*KDistEuclidean(e.x - noiseX, e.y - noiseY));
 		}
 	}
 }
@@ -820,9 +819,7 @@ function KinkyDungeonCheckSpellPrerequisite(spell) {
 // now only fix chinese
 function KinkyDungeonDetectLanguageForMaxWidth(str, maxWidthTranslate, maxWidthEnglish) {
 	try {
-		// @ts-ignore
 		if (KDBigLanguages.includes(TranslationLanguage) && guessLanguage) {
-			// @ts-ignore
 			let languageName = guessLanguage.name(str);
 			// console.log('KinkyDungeonDetectLanguageForMaxWidth languageName', languageName);
 			if (languageName === "unknown") {
@@ -941,7 +938,7 @@ function KDSchoolColor(school) {
 
 function KinkyDungeonDrawMagic() {
 	KinkyDungeonDrawMessages(true);
-	DrawImageZoomCanvas(KinkyDungeonRootDirectory + "MagicBook.png", MainCanvas, 0, 0, 640, 483, canvasOffsetX_ui, canvasOffsetY_ui, 640*KinkyDungeonBookScale, 483*KinkyDungeonBookScale, false);
+	KDDraw(kdcanvas, kdpixisprites, "magicbook", KinkyDungeonRootDirectory + "MagicBook.png", canvasOffsetX_ui, canvasOffsetY_ui, 640*KinkyDungeonBookScale, 483*KinkyDungeonBookScale);
 
 	if (KinkyDungeonSpells[KinkyDungeonCurrentPage] || KinkyDungeonPreviewSpell) {
 		let spell = KinkyDungeonPreviewSpell ? KinkyDungeonPreviewSpell : KinkyDungeonSpells[KinkyDungeonCurrentPage];
@@ -994,12 +991,8 @@ function KinkyDungeonDrawMagic() {
 					let y = y_start + h * (I % KinkyDungeonSpellChoiceCountPerPage);
 
 					if (KinkyDungeonSpells[KinkyDungeonSpellChoices[I]])
-						DrawImageEx(KinkyDungeonRootDirectory + "Spells/" + KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].name + ".png", x - h, y, {
-							Width: h,
-							Height: h,
-						});
+						KDDraw(kdcanvas, kdpixisprites, "kdspellPreview" + KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].name, KinkyDungeonRootDirectory + "Spells/" + KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].name + ".png", x - h, y, h, h);
 					DrawTextFitKD(`${1 + (I % KinkyDungeonSpellChoiceCountPerPage)}`, x - h, y + h*0.5, h*0.25, "#efefef", "#888888");
-					// @ts-ignore
 					DrawButtonKDEx("SpellSlotBook" + I, (bdata) => {
 						if (KinkyDungeonSpells[KinkyDungeonSpellChoices[I]] == spell) {
 							KDSendInput("spellRemove", {I:I});
@@ -1043,7 +1036,7 @@ function KinkyDungeonDrawMagic() {
 
 
 let selectedFilters = ["learnable"];
-let genericfilters = ['learnable', 'unlearned', 'noupgrade', 'yesupgrade', "upcast"];
+let genericfilters = ['learnable', 'unlearned', 'learned', 'noupgrade', 'yesupgrade', "upcast"];
 
 let KDSpellListIndex = 0;
 let KDSpellListIndexVis = 0;
@@ -1071,7 +1064,6 @@ function KDFilterSpellPageNames() {
 	return pages;
 }
 
-// @ts-ignore
 function KDCorrectCurrentSpellPage(pages) {
 	let ret = 0;
 	for (let i = 0; i < KinkyDungeonCurrentSpellsPage; i++) {
@@ -1119,15 +1111,14 @@ function KinkyDungeonListSpells(Mode) {
 		// Now we have our total filters, time to draw
 		for (let f of filterlist) {
 			let ticked = selectedFilters.includes(f);
-			// @ts-ignore
 			DrawButtonKDEx("filter" + f, (bdata) => {
 				if (selectedFilters.includes(f))
 					selectedFilters.splice(selectedFilters.indexOf(f), 1);
 				else
 					selectedFilters.push(f);
 				return true;
-			}, true, canvasOffsetX_ui + x, y, buttonwidth, 36, TextGet("KinkyDungeonFilter" + f), selectedFilters.includes(f) ? "#ffffff" : "#999999", ticked ? (KinkyDungeonRootDirectory + "UI/Tick.png") : "", "", false, true);
-			y += 42;
+			}, true, canvasOffsetX_ui + x, y, buttonwidth, 32, TextGet("KinkyDungeonFilter" + f), selectedFilters.includes(f) ? "#ffffff" : "#999999", ticked ? (KinkyDungeonRootDirectory + "UI/Tick.png") : "", "", false, true, undefined, 22);
+			y += 38;
 		}
 	}
 
@@ -1146,12 +1137,10 @@ function KinkyDungeonListSpells(Mode) {
 	}
 	if (KDSpellListIndex > longestList) KDSpellListIndex = 0;
 
-	// @ts-ignore
 	DrawButtonKDEx("spellsUp", (bdata) => {
 		KDSpellListIndex = Math.max(0, KDSpellListIndex - 3);
 		return true;
 	}, KDSpellListIndex > 0, 910, 800, 90, 40, "", KDSpellListIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
-	// @ts-ignore
 	DrawButtonKDEx("spellsDown", (bdata) => {
 		KDSpellListIndex = Math.max(0, Math.min(longestList - KDMaxSpellPerColumn + 1, KDSpellListIndex + 3));
 		return true;
@@ -1181,6 +1170,7 @@ function KinkyDungeonListSpells(Mode) {
 				&& (selectedFilters.length == 0 || (selectedFilters.every((element) => {return genericfilters.includes(element) || (spell.tags && spell.tags.includes(element));})))
 				&& (!selectedFilters.includes("learnable") || (prereq || learned || prereqHost))
 				&& (!selectedFilters.includes("unlearned") || (!learned))
+				&& (!selectedFilters.includes("learned") || (learned))
 				&& (!selectedFilters.includes("noupgrade") || (!upgrade && !upcast))
 				&& (!selectedFilters.includes("yesupgrade") || (upgrade || passive))
 				&& (!selectedFilters.includes("upcast") || (upcast))) {
@@ -1274,14 +1264,12 @@ function KinkyDungeonListSpells(Mode) {
 	let right = adjLists.right;
 
 	drawVertList(left.reverse(), canvasOffsetX_ui + 200/2 + 100, 100, 200, 25, 5, 18, (data) => {
-		// @ts-ignore
 		return (bdata) => {
 			KinkyDungeonCurrentSpellsPage = procList.indexOf(data.name);
 			return true;
 		};
 	}, "KinkyDungeonSpellsPage");
 	drawVertList(right, canvasOffsetX_ui - 200/2 + 1050, 100, 200, 25, 5, 18, (data) => {
-		// @ts-ignore
 		return (bdata) => {
 			KinkyDungeonCurrentSpellsPage = procList.indexOf(data.name);
 			return true;
@@ -1296,7 +1284,6 @@ let MagicSpellsUIShift = -80;
 function KinkyDungeonDrawMagicSpells() {
 
 	KinkyDungeonListSpells("Draw");
-	MainCanvas.textAlign = "center";
 
 
 	let pages = KDFilterSpellPages();
@@ -1308,7 +1295,7 @@ function KinkyDungeonDrawMagicSpells() {
 		canvasOffsetX_ui + 575, canvasOffsetY_ui + 25 + MagicSpellsUIShift, "white", KDTextGray0);
 	//DrawTextKD(TextGet("KinkyDungeonSpellsPoints") + KinkyDungeonSpellPoints, 650, 900, "white", KDTextGray0);
 
-	MainCanvas.beginPath();
+	/*MainCanvas.beginPath();
 	MainCanvas.lineWidth = 3;
 	MainCanvas.strokeStyle = KDBorderColor;
 	MainCanvas.moveTo(canvasOffsetX_ui, canvasOffsetY_ui + 70 + MagicSpellsUIShift);
@@ -1316,7 +1303,7 @@ function KinkyDungeonDrawMagicSpells() {
 	MainCanvas.stroke();
 	MainCanvas.closePath();
 
-	MainCanvas.textAlign = "center";
+	MainCanvas.textAlign = "center";*/
 	if (KDSwapSpell != -1) {
 		DrawTextKD(TextGet(
 			"KinkyDungeonMagicSpellsQuick").replace(
