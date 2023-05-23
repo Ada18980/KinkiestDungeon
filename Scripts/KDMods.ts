@@ -21,6 +21,7 @@ function KDDrawMods() {
 function getFileInput() {
 	let input = document.createElement('input');
 	input.type = 'file';
+	input.multiple = true;
 	input.onchange = _this => {
 		let files = Array.from(input.files);
 		KDLoadMod(files);

@@ -1326,7 +1326,7 @@ Minor Changes:
 
 
 4.25 (May 2023)
--
+- Enemy kill threshold expanded to attacks dealing 5 or more damage, down from 20
 
 TODO: Mushrooms in the jungle
 
