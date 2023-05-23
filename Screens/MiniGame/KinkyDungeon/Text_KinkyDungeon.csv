@@ -10458,3 +10458,5 @@ AttackCyborgLock,"The cyber warden applies an advanced locking technology!"
 AttackCyborgBind,"The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)"
 AttackCyborg,"The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)"
 AttackCyborgStun,"The cyber warden's touch applies a series of quick electrical shocks!"
+
+KDWardrobeBackToMenu,Back to Menu

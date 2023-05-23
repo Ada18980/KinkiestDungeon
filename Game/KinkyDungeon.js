@@ -1108,7 +1108,7 @@ function KinkyDungeonRun() {
 		ElementPosition("saveInputField", 1250, 550, 1000, 230);
 	} else if (KinkyDungeonState == "LoadOutfit") {
 		DrawButtonVis(875, 750, 350, 64, TextGet("LoadOutfit"), "#ffffff", "");
-		DrawButtonVis(1275, 750, 350, 64, TextGet("KDWardrobeBackToWardrobe"), "#ffffff", "");
+		DrawButtonVis(1275, 750, 350, 64, TextGet("KDWardrobeBackTo" + (StandalonePatched ? "Wardrobe" : "Menu")), "#ffffff", "");
 
 		let newValue = ElementValue("saveInputField");
 		if (newValue != KDOldValue) {
@@ -1136,6 +1136,7 @@ function KinkyDungeonRun() {
 									InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
 								}
 								CharacterRefresh(KinkyDungeonPlayer);
+								ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
 							}
 							KDOldValue = newValue;
 							KDInitProtectedGroups();
