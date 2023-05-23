@@ -1324,6 +1324,10 @@ Minor Changes:
 - Dominant-type enemies will now sometimes leash you for a bit when you are in the Released state
 - Tweaks to struggling algorithm
 
+
+4.25 (May 2023)
+-
+
 TODO: Mushrooms in the jungle
 
 TODO
