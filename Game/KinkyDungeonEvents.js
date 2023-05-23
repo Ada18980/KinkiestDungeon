@@ -1992,11 +1992,7 @@ let KDEventMapSpell = {
 		},
 		"SlimeMimic": (e, spell, data) => {
 			if (KinkyDungeonLastAction == "Wait"
-				&& (KinkyDungeonPlayerTags.get("Slime") || KinkyDungeonPlayerTags.get("SlimeHard"))
-				&& KinkyDungeonIsHandsBound(false, false, 0.15)
-				&& KinkyDungeonIsArmsBound(false, false)
-				&& KinkyDungeonSlowLevel > 0
-				&& KinkyDungeonGagTotal() > 0.25) {
+				&& KDEffectTileTags(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y).slime) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
 					{id: "SlimeMimic", aura: "#ff00ff", type: "SlowDetection", duration: 2, power: 24.0, player: true, enemies: true, endSleep: true, currentCount: -1, maxCount: 1, tags: ["SlowDetection", "move", "cast", "attack"]}
 				);
