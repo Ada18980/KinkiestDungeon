@@ -129,6 +129,7 @@ let KinkyDungeonDresses = {
 		{Item: "Band1", Group: "Hat", Color: "#767676", Lost: false},
 		{Item: "Shoes5", Group: "Shoes", Color: "#575757", Lost: false},
 		{Item: "Socks6", Group: "Socks", Color: ['#080808', 'Default'], Lost: false},
+		{Item: "FloralPanties2", Group: "Panties", Color: ['#303030', '#F0F0F0'], Lost: false},
 	],
 	"Elven" : [
 		{Item: "Swimsuit1", Group: "Bra", Color: ['#E2E2E2'], Lost: false, NoLose: true},
