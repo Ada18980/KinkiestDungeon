@@ -1854,7 +1854,11 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 					tint: string2hex(t.color || "#ff5555"),
 					zIndex: -0.2,
-					alpha: 0.6
+				});
+			KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_b_h", KinkyDungeonRootDirectory + "WarningBackingHighlight" + ".png",
+				(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
+				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+					zIndex: -0.21,
 				});
 		}
 	}
