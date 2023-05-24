@@ -820,6 +820,7 @@ function KinkyDungeonDrawGame() {
 						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay, (KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: 0.01,
+							alpha: KinkyDungeonGetPlayerTextureTransparency(),
 						});
 				}
 				if ((KinkyDungeonMovePoints < 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevel") > 0) && KinkyDungeonSlowLevel < 10) {
@@ -1633,6 +1634,18 @@ function KinkyDungeonDrawGame() {
 
 }
 
+/**
+ * Determines transparency of the player.
+ * 
+ * @returns {number} - alpha transparency of the player
+ */
+function KinkyDungeonGetPlayerTextureTransparency() {
+	if (KDToggles.PlayerTransparencyDuringBullets && KDBulletWarnings.length > 0) {
+		return 0.5;
+	} else {
+		return 1;
+	}
+}
 
 /**
  * Draws arousal screen filter

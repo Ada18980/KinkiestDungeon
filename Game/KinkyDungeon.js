@@ -96,6 +96,7 @@ let KDToggles = {
 	ArousalHearts: true,
 	VibeHearts: true,
 	FancyWalls: true,
+	PlayerTransparencyDuringBullets: true,
 };
 
 let KDDefaultKB = {
