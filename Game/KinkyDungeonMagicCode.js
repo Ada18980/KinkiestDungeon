@@ -969,7 +969,7 @@ let KDCommandBindBindings = {
 	"rope": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindRope", true), undefined, undefined, undefined, "Player");
 	},
-	"rofabricpe": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
+	"fabric": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindRope", true), undefined, undefined, undefined, "Player");
 	},
 	"chain": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
