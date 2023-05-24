@@ -46,6 +46,7 @@ KDToggleArousalHearts,Advanced Distraction VFX
 KDToggleVibeHearts,Advanced Toy VFX
 KDToggleShowNPCStatuses,Show NPC Status
 KDToggleFancyWalls,Advanced Fog of War
+KDTogglePlayerTransparencyDuringBullets,Projectiles Make Player Transparent
 KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
