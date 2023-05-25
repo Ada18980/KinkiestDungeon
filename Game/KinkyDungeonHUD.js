@@ -34,6 +34,9 @@ let KinkyDungeonLastDraw = 0;
 let KinkyDungeonLastDraw2 = 0;
 let KinkyDungeonDrawDelta = 0;
 
+let KD_HUD_RESTRAINTINFOFONTSIZE = 24;
+let KD_HUD_RESTRAINTINFOLINESIZE = 34;
+
 const KinkyDungeonLastChatTimeout = 10000;
 
 let KinkyDungeonStatBarHeight = 50;
@@ -693,6 +696,9 @@ function KinkyDungeonDrawInputs() {
 				KinkyDungeonSendEvent("drawSGTooltip", data);
 				let lastO = 0;
 
+				let fontSize = KD_HUD_RESTRAINTINFOFONTSIZE;
+				let lineSize = KD_HUD_RESTRAINTINFOLINESIZE;
+
 				let OInit = lastO;
 
 				// 0 = no draw
@@ -723,14 +729,14 @@ function KinkyDungeonDrawInputs() {
 						//{
 						drawn = true;
 						let msg = TextGet("Restraint" + d.name);
-						DrawTextKD(msg, 530, MY + O * 45, d == item ? "#ffffff" : (surfaceItems.includes(d) ? "#999999" : "#aa5555"), "#333333", undefined, "left");
+						DrawTextKD(msg, 530, MY + O * lineSize, d == item ? "#ffffff" : (surfaceItems.includes(d) ? "#999999" : "#aa5555"), "#333333", fontSize, "left");
 						O++;
 						//}
 					}
 					lastO = O;
 					O = OInit;
 					if (drawn) {
-						DrawTextKD(TextGet("KinkyDungeonItemsUnderneathTotal"), 530, MY + O * 45, "#ffffff", "#333333", undefined, "left");
+						DrawTextKD(TextGet("KinkyDungeonItemsUnderneathTotal"), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left");
 					}
 					O = lastO + 1;
 				}
@@ -738,7 +744,7 @@ function KinkyDungeonDrawInputs() {
 
 				if (data.extraLines.length > 0) {
 					for (let lineIndex = 0; lineIndex < data.extraLines.length; lineIndex++) {
-						DrawTextKD(data.extraLines[lineIndex], 530, MY + lastO * 45, data.extraLineColor[lineIndex] || "#ffffff", "#333333", undefined, "left");
+						DrawTextKD(data.extraLines[lineIndex], 530, MY + lastO * lineSize, data.extraLineColor[lineIndex] || "#ffffff", "#333333", fontSize, "left");
 						lastO += 1;
 					}
 				}
@@ -751,12 +757,12 @@ function KinkyDungeonDrawInputs() {
 					for (let s of strictItems) {
 						drawn = true;
 						let msg = TextGet("Restraint" + s);
-						DrawTextKD(msg, 530, MY + O * 45, "#ffffff", "#333333", undefined, "left");
+						DrawTextKD(msg, 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left");
 						O++;
 					}
 					O = lastO;
 					if (drawn) {
-						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * 45, "#ffffff", "#333333", undefined, "left");
+						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left");
 					}
 				}
 			}
