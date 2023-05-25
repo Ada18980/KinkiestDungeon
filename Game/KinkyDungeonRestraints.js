@@ -1495,9 +1495,16 @@ function KDGetDynamicItem(group, index) {
 	let host = restraint;
 	if (index) {
 		let surfaceItems = KDDynamicLinkListSurface(restraint);
+		let dynamicItems = KDDynamicLinkList(restraint, true);
 		if (surfaceItems[index]) {
-			host = surfaceItems[index - 1];
 			restraint = surfaceItems[index];
+			for (let h_item of dynamicItems) {
+				if (h_item.dynamicLink == restraint) {
+					host = h_item;
+					break;
+				}
+			}
+			//host = surfaceItems[index - 1];
 		}
 		else console.log("Error! Please report the item combination and screenshot to Ada!");
 	}
@@ -1517,9 +1524,16 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	let host = restraint;
 	if (index) {
 		let surfaceItems = KDDynamicLinkListSurface(restraint);
+		let dynamicItems = KDDynamicLinkList(restraint, true);
 		if (surfaceItems[index]) {
-			host = surfaceItems[index - 1];
 			restraint = surfaceItems[index];
+			for (let h_item of dynamicItems) {
+				if (h_item.dynamicLink == restraint) {
+					host = h_item;
+					break;
+				}
+			}
+			//host = surfaceItems[index - 1];
 		}
 		else console.log("Error! Please report the item combination and screenshot to Ada!");
 	}
@@ -3478,6 +3492,7 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 		}
 		if (index) {
 			//if (KDStruggleGroupLinkIndex[KDRestraint(restraint).Group]) KDStruggleGroupLinkIndex[KDRestraint(restraint).Group] = 0;
+			console.log(host)
 			KinkyDungeonRemoveDynamicRestraint(host, (StruggleType != "Cut") || !destroy, false, KinkyDungeonPlayerEntity);
 		} else {
 			KinkyDungeonRemoveRestraint(KDRestraint(restraint).Group, (StruggleType != "Cut") || !destroy, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity);
