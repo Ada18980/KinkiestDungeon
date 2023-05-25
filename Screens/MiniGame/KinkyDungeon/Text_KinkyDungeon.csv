@@ -10101,7 +10101,7 @@ KinkyDungeonStatDescEnemyArmor,"All enemies gain 20 physical and magic armor."
 KinkyDungeonStatEnemyDamage,"Glass Cannon"
 KinkyDungeonStatDescEnemyDamage,"The effects of you taking damage are increased by 150%."
 KinkyDungeonStatEnemyResist,"The Wand is Mightier"
-KinkyDungeonStatDescEnemyResist,"Enemies take 50% less damage BEFORE armor calculation; Tease damage multiplier to bound targets is increased by 75%."
+KinkyDungeonStatDescEnemyResist,"Enemies take 50% less damage BEFORE armor calculation; Tease damage multiplier to bound targets is increased by 100%."
 KDCategoryCommon,Kinky Armory
 
 NameChef,Chef
