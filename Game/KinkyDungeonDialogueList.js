@@ -768,6 +768,13 @@ let KDDialogue = {
 			},
 			"Take": {
 				playertext: "Default", response: "Default",
+				prerequisiteFunction: (gagged, player) => {
+					let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+					if (tile && tile.Type == "Food" && KDFood[tile.Food]?.Theft) {
+						return true;
+					}
+					return false;
+				},
 				clickFunction: (gagged, player) => {
 					let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
 					if (tile && tile.Type == "Food" && KDFood[tile.Food]?.Theft) {

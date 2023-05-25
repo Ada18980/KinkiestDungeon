@@ -693,12 +693,6 @@ function KinkyDungeonDrawInputs() {
 				KinkyDungeonSendEvent("drawSGTooltip", data);
 				let lastO = 0;
 
-				if (data.extraLines.length > 0) {
-					for (let lineIndex = 0; lineIndex < data.extraLines.length; lineIndex++) {
-						DrawTextKD(data.extraLines[lineIndex], 530, MY + lastO * 45, data.extraLineColor[lineIndex] || "#ffffff", "#333333", undefined, "left");
-						lastO += 1;
-					}
-				}
 				let OInit = lastO;
 
 				// 0 = no draw
@@ -725,21 +719,30 @@ function KinkyDungeonDrawInputs() {
 					let O = OInit + 1;
 					let drawn = false;
 					for (let d of dynamicList) {
-						if (d != item)//KDRestraint(item) && (!KDRestraint(item).UnLink || d.name != KDRestraint(item).UnLink))
-						{
-							drawn = true;
-							let msg = TextGet("Restraint" + d.name);
-							DrawTextKD(msg, 530, MY + O * 45, "#ffffff", "#333333", undefined, "left");
-							O++;
-						}
+						//if (d != item)//KDRestraint(item) && (!KDRestraint(item).UnLink || d.name != KDRestraint(item).UnLink))
+						//{
+						drawn = true;
+						let msg = TextGet("Restraint" + d.name);
+						DrawTextKD(msg, 530, MY + O * 45, d == item ? "#ffffff" : (surfaceItems.includes(d) ? "#999999" : "#aa5555"), "#333333", undefined, "left");
+						O++;
+						//}
 					}
 					lastO = O;
 					O = OInit;
 					if (drawn) {
-						DrawTextKD(TextGet("KinkyDungeonItemsUnderneath" + (KDStruggleGroupLinkIndex[sg.group] > 0 ? "2" : "")), 530, MY + O * 45, "#ffffff", "#333333", undefined, "left");
+						DrawTextKD(TextGet("KinkyDungeonItemsUnderneathTotal"), 530, MY + O * 45, "#ffffff", "#333333", undefined, "left");
 					}
 					O = lastO + 1;
 				}
+
+
+				if (data.extraLines.length > 0) {
+					for (let lineIndex = 0; lineIndex < data.extraLines.length; lineIndex++) {
+						DrawTextKD(data.extraLines[lineIndex], 530, MY + lastO * 45, data.extraLineColor[lineIndex] || "#ffffff", "#333333", undefined, "left");
+						lastO += 1;
+					}
+				}
+
 				if (lastO) lastO += 1;
 				if (item && KDRestraint(item) && KinkyDungeonStrictness(false, KDRestraint(item).Group, item)) {
 					let strictItems = KinkyDungeonGetStrictnessItems(KDRestraint(item).Group, item);

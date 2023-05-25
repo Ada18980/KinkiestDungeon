@@ -3208,6 +3208,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		}
 	}
 
+	if (enemy.aware && enemy.idle && !enemy.path && !AIData.canSensePlayer && !enemy.vp) {
+		if (enemy.aware) KDAddThought(enemy.id, "Lose", 1, 4);
+		enemy.aware = false;
+	}
+
 	if (enemy.usingSpecial && !enemy.specialCD) enemy.specialCD = 0;
 
 	let minRange = enemy.Enemy.attackMinRange || 0;
