@@ -3492,7 +3492,6 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 		}
 		if (index) {
 			//if (KDStruggleGroupLinkIndex[KDRestraint(restraint).Group]) KDStruggleGroupLinkIndex[KDRestraint(restraint).Group] = 0;
-			console.log(host)
 			KinkyDungeonRemoveDynamicRestraint(host, (StruggleType != "Cut") || !destroy, false, KinkyDungeonPlayerEntity);
 		} else {
 			KinkyDungeonRemoveRestraint(KDRestraint(restraint).Group, (StruggleType != "Cut") || !destroy, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity);
