@@ -6,8 +6,8 @@ let KDDoorAttractChance = 0.25; // Chance to attract someone by banging
 let KDDoorAttractChanceArms = 0.1; // Chance to attract someone by rattling
 
 let KDPerkParams = {
-	KDEnemyDamageMult: 2.5, // Increase in enemy dasmage effect
-	KDEnemyResistBuff: 0.75, // Buff to tease damage
+	KDEnemyDamageMult: 2.5, // Increase in enemy damage effect
+	KDEnemyResistBuff: 1.0, // Buff to tease damage
 	KDEnemyArmorBoost: 2.0, // Extra armor enemies get
 };
 
