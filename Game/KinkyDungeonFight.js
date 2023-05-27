@@ -183,7 +183,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 	} else if (handBondage && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
 		KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, handBondage));
 	}
-	if (KinkyDungeonStatsChoice.get("Brawler") && !KinkyDungeonPlayerDamage.name) {
+	if (KinkyDungeonStatsChoice.get("Brawler") && isUnarmed(KinkyDungeonPlayerDamage)) {
 		KinkyDungeonPlayerDamage.dmg += KDBrawlerAmount;
 	} else {
 		if (KinkyDungeonSlowLevel > 1 && (!KinkyDungeonPlayerDamage.name || weapon.unarmed)) {
@@ -195,6 +195,13 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 	}
 
 	return KinkyDungeonPlayerDamage;
+}
+/**
+ * @param {weapon} weapon 
+ * @returns true if the weapon represents Unarmed
+ */
+function isUnarmed(weapon) {
+	return !weapon || !weapon.name || weapon.name == "Unarmed";
 }
 
 
