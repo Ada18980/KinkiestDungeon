@@ -26,9 +26,8 @@ let kdenemyboard = new PIXI.Container();
 kdenemyboard.zIndex = 0;
 kdenemyboard.sortableChildren = true;
 let kdenemystatusboard = new PIXI.Container();
-kdenemystatusboard.zIndex = 100;
+kdenemystatusboard.zIndex = 4;
 kdenemystatusboard.sortableChildren = true;
-kdenemyboard.addChild(kdenemystatusboard);
 let kdbulletboard = new PIXI.Container();
 kdbulletboard.zIndex = -0.01;
 let kdeffecttileboard = new PIXI.Container();
@@ -53,6 +52,7 @@ let kdui = new PIXI.Graphics();
 let kdcanvas = new PIXI.Container();
 kdcanvas.sortableChildren = true;
 kdcanvas.addChild(kdstatusboard);
+kdcanvas.addChild(kdenemystatusboard);
 kdcanvas.addChild(kdUItext);
 
 let statusOffset = 0;
@@ -734,8 +734,8 @@ function KinkyDungeonDrawGame() {
 			if (StandalonePatched) {
 				kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
 				kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
-				//kdgamefog.x = kdgameboard.x;
-				//kdgamefog.y = kdgameboard.y;
+				kdenemystatusboard.x = kdgameboard.x;
+				kdenemystatusboard.y = kdgameboard.y;
 			}
 
 			let CamX_offset = StandalonePatched ? 0 : CamX_offsetVis;

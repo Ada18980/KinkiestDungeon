@@ -514,6 +514,25 @@ function KDUnlockPerk(Perk) {
 }
 
 function KDLoadPerks() {
+
+	KDCategories = Object.assign([], KDCategoriesStart);
+	for (let c of KDCategories) {
+		c.buffs = [];
+		c.debuffs = [];
+	}
+
+	for (let stat of Object.entries(KinkyDungeonStatsPresets)) {
+		for (let c of KDCategories) {
+			if (stat[1].category == c.name) {
+				if (!stat[1].buff && (stat[1].debuff || KDGetPerkCost(stat[1]) < 0))
+					c.debuffs.push(stat);
+				else
+					c.buffs.push(stat);
+			}
+		}
+	}
+
+
 	if (localStorage.getItem("KDUnlockedPerks")) {
 		let perks = JSON.parse(localStorage.getItem("KDUnlockedPerks"));
 		if (perks) {
@@ -572,22 +591,6 @@ function KinkyDungeonLoad() {
 
 	for (let entry of Object.entries(KDLoadingTextKeys)) {
 		addTextKey(entry[0], entry[1]);
-	}
-	KDCategories = Object.assign([], KDCategoriesStart);
-	for (let c of KDCategories) {
-		c.buffs = [];
-		c.debuffs = [];
-	}
-
-	for (let stat of Object.entries(KinkyDungeonStatsPresets)) {
-		for (let c of KDCategories) {
-			if (stat[1].category == c.name) {
-				if (!stat[1].buff && (stat[1].debuff || KDGetPerkCost(stat[1]) < 0))
-					c.debuffs.push(stat);
-				else
-					c.buffs.push(stat);
-			}
-		}
 	}
 
 	KDLoadPerks();
