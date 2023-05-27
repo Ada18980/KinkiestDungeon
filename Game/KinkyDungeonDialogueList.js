@@ -113,10 +113,9 @@ let KDDialogue = {
 			"Accept": {gag: true, playertext: "WeaponFoundAccept", response: "GoodGirl", personalities: ["Dom", "Sub", "Robot"],
 				clickFunction: (gagged, player) => {
 					KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), "#ff0000", 2);
-					let weapon = KinkyDungeonPlayerDamage.name;
-					if (weapon && weapon != "Unarmed") {
+					if (!isUnarmed(KinkyDungeonPlayerWeapon)) {
 						KinkyDungeonChangeRep("Ghost", 3);
-						let item = KinkyDungeonInventoryGetWeapon(weapon);
+						let item = KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerDamage.name);
 						KDSetWeapon(null);
 						KinkyDungeonAddLostItems([item], false);
 						KinkyDungeonInventoryRemove(item);
