@@ -126,7 +126,7 @@ function DisposeCharacter(C: Character): void {
  * @param Blend - The blend mode to use
  * @param StartMods - Mods applied
  */
-function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = []): void {
+function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = [], zIndex: number = 0): void {
 	let MC: ModelContainer = !KDCurrentModels.get(C) ? new ModelContainer(
 		C,
 		new Map(),
@@ -161,6 +161,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		kdcanvas.addChild(Container.Container);
 		Container.Container.sortableChildren = true;
 		Container.Container.cacheAsBitmap = true;
+		if (zIndex) Container.Container.zIndex = zIndex;
 		Container.Container.filterArea = new PIXI.Rectangle(0,0,MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE);
 	}
 	if (!MC.ContainersDrawn.get(containerID)) {
