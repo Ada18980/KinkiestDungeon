@@ -577,7 +577,7 @@ let KDPerkStart = {
 		}
 		let outfit = {name: "Maid", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Maid")) KinkyDungeonInventoryAdd(outfit);
-		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Maid", "Maid");
 	},
 	StartWolfgirl: () =>{
@@ -595,7 +595,7 @@ let KDPerkStart = {
 		KDAddQuest("WolfgirlHunters");
 		let outfit = {name: "Wolfgirl", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Wolfgirl")) KinkyDungeonInventoryAdd(outfit);
-		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Wolfgirl", "Wolfgirl");
 	},
 	StartObsidian: () =>{
@@ -616,7 +616,7 @@ let KDPerkStart = {
 		}
 		let outfit = {name: "Obsidian", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Obsidian")) KinkyDungeonInventoryAdd(outfit);
-		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Obsidian", "Obsidian");
 	},
 	Hogtied: () =>{
