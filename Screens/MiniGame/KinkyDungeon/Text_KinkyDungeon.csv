@@ -5381,7 +5381,7 @@ KinkyDungeonSpellAwaken,Awaken
 KinkyDungeonSpellAwakenStrike,Awaken
 KinkyDungeonSpellAwakenStrikeBind,The slime awakens and turns on you!!!
 KinkyDungeonSpellTargetAwaken,Select area to awaken
-KinkyDungeonSpellDescriptionAwaken,"Activates the slime in an area, causing it to deal DamageDealt glue damage. Encases fully bound targets."
+KinkyDungeonSpellDescriptionAwaken,"Activates the slime in an area, causing it to deal 25 glue damage. Encases fully bound targets."
 KinkyDungeonSpellCastAwaken,"You command the slime to draw in targets!"
 
 KinkyDungeonSpellCommandBind,CMD: Bind
