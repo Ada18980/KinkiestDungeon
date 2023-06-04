@@ -826,12 +826,6 @@ const KinkyDungeonRestraints = [
 		allFloors: true, shrine: ["Stuffing"]},
 
 	//region MagicRope
-	{unlimited: true, inventory: true, renderWhenLinked: ["Boxbinders"], changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, name: "WeakMagicRopeArms", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Color: "#ff88AA", LinkableBy: ["Boxbinders", "Wrapping"], Group: "ItemArms", bindarms: true, power: 0, weight: 1, escapeChance: {"Struggle": 0.3, "Cut": 0.67, "Remove": 0.2},
-		affinity: {Remove: ["Hook"],},
-		failSuffix: {"Remove": "MagicRope"}, maxwill: 0.65, enemyTags: {"ropeMagicWeak":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Conjure", "Boxties"]},
-	{unlimited: true, renderWhenLinked: [...KDLegRopesRender], inventory: true, name: "WeakMagicRopeLegs", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "FullBinding", LinkableBy: [...KDLegRopesBind], Color: "#ff88AA", Group: "ItemLegs", hobble: true, addTag: ["FeetLinked"], power: 0, weight: 1,
-		affinity: {Remove: ["Hook"],},
-		failSuffix: {"Remove": "MagicRope"}, escapeChance: {"Struggle": 0.3, "Cut": 0.67, "Remove": 0.15}, enemyTags: {"ropeMagicWeak":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Conjure"]},
 	{unlimited: true, inventory: true, name: "StrongMagicRopeCuffs", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Color: "#ff00dd", Type: "RopeCuffs", linkCategory: "Cuffs", linkSize: 0.33, LinkableBy: ["Boxbinders", "Armbinders", ...KDBindable, "Cuffs"], Group: "ItemArms", bindarms: true, power: 2, weight: 1, escapeChance: {"Struggle": 0.3, "Cut": 0.35, "Remove": -0.1}, specStruggleTypes: ["Remove", "Struggle"],
 		affinity: {Remove: ["Hook"],},
 		failSuffix: {"Remove": "MagicRope"}, maxwill: 1.0, enemyTags: {"ropeMagicStrong":5}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Cuffs", "Conjure"]},
@@ -1999,12 +1993,15 @@ const KinkyDungeonRestraints = [
 			4,
 			{
 				magic: true,
+				Color: "#ff88AA",
 			},
 			[],
 			{
 				Struggle: 0.2,
 				Cut: 0.25,
 				Remove: 0.1,
+			},
+			{
 			},
 		);
 
@@ -2692,49 +2689,5 @@ let KDControlHarnessCategories = {
 				);
 			}
 		},
-	},
-};
-
-/** A record of the different types of generic rope items */
-let KDRopeItems = {
-	"ArmsBoxtie": {
-		/** @type {KDEscapeChanceList} */
-		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
-	},
-	"Cuffs": {
-		/** @type {KDEscapeChanceList} */
-		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
-	},
-	"CuffsAdv": {
-		/** @type {KDEscapeChanceList} */
-		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
-	},
-	"ArmsWrist": {
-		/** @type {KDEscapeChanceList} */
-		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
-	},
-	"Hogtie": {
-		/** @type {KDEscapeChanceList} */
-		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
-	},
-	"Feet": {
-		/** @type {KDEscapeChanceList} */
-		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
-	},
-	"Legs": {
-		/** @type {KDEscapeChanceList} */
-		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
-	},
-	"Belt": {
-		/** @type {KDEscapeChanceList} */
-		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
-	},
-	"Harness": {
-		/** @type {KDEscapeChanceList} */
-		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
-	},
-	"Pelvis": {
-		/** @type {KDEscapeChanceList} */
-		escapeChanceBonus: {"Struggle": 0.15, "Remove": 0.1},
 	},
 };

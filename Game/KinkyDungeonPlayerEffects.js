@@ -421,9 +421,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				effect = true;
 			}
 		} else if (playerEffect.name == "MagicRope") {
-			let roped = false;
-			roped = roped || KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("WeakMagicRopeArms"), 0, false, undefined, false, false, undefined, faction) > 0;
-			roped = roped || KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("WeakMagicRopeLegs"), 0, false, undefined, false, false, undefined, faction) > 0;
+			let roped = KDPlayerEffectRestrain(spell, playerEffect.count || 2, ["rest_rope_weakmagic"], undefined, false, false, false, false);
 
 			if (roped) KDSendStatus('bound', "WeakMagicRopeArms", "spell_" + spell.name);
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonMagicRopeSelf"), "#ff0000", playerEffect.time);

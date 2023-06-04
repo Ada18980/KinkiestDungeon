@@ -10121,7 +10121,7 @@ KinkyDungeonInventoryItemBrowniesDesc2,"Restores 30% willpower. Takes a few turn
 KinkyDungeonBuffHaunted,A playful ghost now accompanies you on your journey.
 KDHaunting,"The ghost haunting you decides to have a little fun! (+RestraintAdded)"
 
-RestraintRopeSnakeArmsBoxtie,Wrist Rope
+RestraintRopeSnakeArmsBoxtie,Boxtie
 RestraintRopeSnakeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
 RestraintRopeSnakeArmsBoxtieDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeCuffs,Rope Cuffs
@@ -10175,3 +10175,50 @@ AttackCyborgStun,"The cyber warden's touch applies a series of quick electrical 
 KDWardrobeBackToMenu,Back to Menu
 
 KinkyDungeonItemsUnderneathTotal,"Item Stack:"
+
+KDFilterFiltersRope,Rope
+KDFilterFiltersMetal,Metal
+KDFilterFiltersLatex,Latex
+KDFilterFiltersLeather,Leather
+KDFilterFiltersArmbinders,Armbinders
+KDFilterFiltersStraitjackets,Straitjackets
+KDFilterFiltersBindingDress,Binding Dresses
+KDFilterFiltersTies,Ties
+KDFilterFiltersBelts,Belts
+KDFilterFiltersWrapping,Wrapping
+KDFilterFiltersCuffs,Cuffs
+KDFilterFiltersChains,Chains
+KDFilterFiltersGags,Gags
+KDFilterFiltersBoots,Boots
+
+
+RestraintWeakMagicRopeArmsBoxtie,Magic Boxtie
+RestraintWeakMagicRopeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
+RestraintWeakMagicRopeArmsBoxtieDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeCuffs,Magic Rope Cuffs
+RestraintWeakMagicRopeCuffsDesc,"A quick tie for apprehending prisoners."
+RestraintWeakMagicRopeCuffsDesc2,"It's not very secure."
+RestraintWeakMagicRopeCuffsAdv,Magic Ropework
+RestraintWeakMagicRopeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
+RestraintWeakMagicRopeCuffsAdvDesc2,"It's not very secure."
+RestraintWeakMagicRopeHogtie,Magic Hogtie
+RestraintWeakMagicRopeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintWeakMagicRopeHogtieDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
+RestraintWeakMagicRopeBelt,Magic Rope Belt
+RestraintWeakMagicRopeBeltDesc,"A harness acting as a handle to pull you around"
+RestraintWeakMagicRopeBeltDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeHarness,Magic Harness
+RestraintWeakMagicRopeHarnessDesc,"A harness that secures your other restraints and makes them tighter."
+RestraintWeakMagicRopeHarnessDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeCrotch,Magic Crotch Rope
+RestraintWeakMagicRopeCrotchDesc,"A tight rope impressing upon your most private areas..."
+RestraintWeakMagicRopeCrotchDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeArmsWrist,Magic Wrist Tie
+RestraintWeakMagicRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
+RestraintWeakMagicRopeArmsWristDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeLegs,Magic Leg Tie
+RestraintWeakMagicRopeLegsDesc,"A tie that hobbles your legs together.."
+RestraintWeakMagicRopeLegsDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeFeet,Magic Ankle Tie
+RestraintWeakMagicRopeFeetDesc,"A tie keeping your feet secured together."
+RestraintWeakMagicRopeFeetDesc2,"They glow with a trace of magic."

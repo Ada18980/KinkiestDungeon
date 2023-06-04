@@ -3691,18 +3691,18 @@ function KDChooseRestraintFromListGroupPri(RestraintList, GroupOrder) {
 		*/
 
 
-let KDRopeParts = [
-	"ArmsBoxtie",
-	"ArmsWrist",
-	"Cuffs",
-	"CuffsAdv",
-	"Hogtie",
-	"Feet",
-	"Legs",
-	"Belt",
-	"Harness",
-	"Crotch",
-];
+let KDRopeParts = {
+	"ArmsBoxtie": {},
+	"ArmsWrist": {},
+	"Cuffs": {},
+	"CuffsAdv": {},
+	"Hogtie": {enemyTagSuffix: "_hogtie"},
+	"Feet": {},
+	"Legs": {},
+	"Belt": {},
+	"Harness": {},
+	"Crotch": {},
+};
 
 /**
  *
@@ -3715,11 +3715,57 @@ let KDRopeParts = [
  * @param {KDRestraintPropsBase} properties - Restraint properties to override
  * @param {KinkyDungeonEvent[]} extraEvents - Extra events to add on
  * @param {KDEscapeChanceList} baseStruggle - Increase to base struggle amounts
+ * @param {KDEscapeChanceList} multStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {LayerFilter} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, basePower, properties, extraEvents, baseStruggle) {
-	for (let category of Object.entries(KDRopeItems)) {
-		// For each category of rope items we dupe the original item and apply modifications based on the category parameters
-
+function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, basePower, properties, extraEvents, baseStruggle, multStruggle, Filters) {
+	for (let part of Object.entries(KDRopeParts)) {
+		let ropePart = part[0];
+		// Only if we have something to copy
+		let origRestraint = KinkyDungeonGetRestraintByName(CopyOf + ropePart);
+		if (origRestraint) {
+			// For each category of rope items we dupe the original item and apply modifications based on the category parameters
+			/** @type {Record<string, number>} */
+			let enemyTags = {};
+			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = 10;
+			/** @type {KDRestraintPropsBase} */
+			let props = {
+				Model: origRestraint.Model + ModelSuffix,
+				power: origRestraint.power + basePower,
+				shrine: Object.assign(KDGetRestraintTags(origRestraint), ...allTag),
+				enemyTags: enemyTags,
+				events: Object.assign(Object.assign([], origRestraint.events), extraEvents),
+				escapeChance: Object.assign({}, origRestraint.escapeChance),
+				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : undefined,
+			};
+			if (Filters && props.Filters) {
+				for (let layer of Object.keys(props.Filters)) {
+					props.Filters[layer] = Object.assign({}, Filters);
+				}
+			}
+			if (baseStruggle) {
+				for (let type of Object.entries(baseStruggle)) {
+					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
+				}
+			}
+			if (multStruggle) {
+				for (let type of Object.entries(multStruggle)) {
+					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) * type[1]))/10000;
+				}
+			}
+			let newRestraint = KinkyDungeonCloneRestraint(CopyOf + ropePart, idSuffix + ropePart, Object.assign(props, properties));
+			console.log("Added " + newRestraint.name);
+			console.log(newRestraint);
+		}
 	}
+}
+
+/**
+ * Converts restraint tags to a copy that is also a list (in case data structure changes)
+ * @param {restraint} restraint
+ * @returns {string[]}
+ */
+function KDGetRestraintTags(restraint) {
+	return [...restraint.shrine];
 }
