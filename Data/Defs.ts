@@ -2,9 +2,9 @@ let LAYERS_BASE = [
 	"HatDeco",
 	"Hat",
 	"Headband",
+	"Brows",
 	"HairFront",
 	"Mask",
-	"Brows",
 	// Head items
 	"Blindfold",
 	"GagMuzzleStraps",
@@ -38,26 +38,40 @@ let LAYERS_BASE = [
 	"ForeSleeveLeft",
 	"ForeSleeveDecoLeft",
 	"GloveLeft",
-	"ForeWRISTLeft",
 	"ForeHandLeft",
-	"ForeWristLeft",
-	"ForeArmLeft",
 
 	"ForeSleeveRight",
 	"ForeSleeveDecoRight",
 	"GloveRight",
 	"ForeHandRight",
+
+	"ForeWrists",
+
+	"ForeWristLeft",
+	"ForeArmLeft",
+
+	"ForeWristRight",
 	"ForeArmRight",
 
 	// This slot is for things like breastplates and things that go over
+	"Jacket",
 	"ChestDeco",
 	"ChestStraps",
 	"Chestplate",
 	// Certain pieces of armor go over the shirt
+	"BeltBondage",
 	"BeltCharm",
 	"Belt",
 	"BeltDeco",
+
+	"BaggyShirt",
+
+	// Skirts that dont follow shilhouette
+	"OverSkirtDeco",
+	"OverSkirt",
 	"Greaves",
+
+
 
 	// Chest is breasts, should only intersect on bottom and side edges, top is indeterminate
 	"Straps",
@@ -66,9 +80,10 @@ let LAYERS_BASE = [
 	"BraChest",
 	"Chest",
 	"StrapsUnderbust",
+
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
-	"Harness",
+	"HarnessOver",
 	"Shirt",
 	// For things that go directly under the breasts
 	"Underbust",
@@ -80,15 +95,17 @@ let LAYERS_BASE = [
 	"SkirtPoofyDeco",
 	"SkirtPoofy",
 
+	// Corsets that go under harness and skirt
 	"Corset",
 
-
-	// Lower body clothes with a bit more bulk
+	// Skirts that are slim and follow the shilhouette
 	"SkirtDeco",
 	"Skirt",
+
 	"KneeAccLeft",
 	"PantsAccLeft",
 	"PantLeft",
+
 	"KneeAccRight",
 	"PantsAccRight",
 	"PantRight",
@@ -104,6 +121,17 @@ let LAYERS_BASE = [
 	"HandLeft",
 	"ArmLeft",
 
+	// Over feet
+	"Thighs",
+	"Thighs3",
+	"Thighs2",
+	"Thighs1",
+	"Ankles",
+	"Ankles3",
+	"Ankles2",
+	"Ankles1",
+	"AnkleLeft",
+	"AnkleRight",
 
 	// Shoes
 	"ShoeLeft",
@@ -112,6 +140,7 @@ let LAYERS_BASE = [
 
 
 	// Lower body underwear
+	"OverSocks",
 	"StockingLeft",
 	"StockingRight",
 
@@ -129,7 +158,11 @@ let LAYERS_BASE = [
 	"LegLeft",
 	"FootRight",
 	"LegRight",
+	"ShoeLeftHogtie",
+	"SockLeftHogtie",
 	"FootLeftHogtie",
+	"ShoeRightKneel",
+	"SockRightKneel",
 	"FootRightKneel",
 	"ShoulderLeft",
 	"ShoulderRight",

@@ -96,6 +96,10 @@ interface ModelLayer extends Namable {
 	HideOverrideLayer?: string,
 	/** This is the layer(s) used for HideWhenOverridden rather than the default layer */
 	HideOverrideLayerMulti?: string[],
+	/** This makes it so HideOverrideLayer is the layer for overriding purposes. Pair with NoOverride to complete the effect */
+	CrossHideOverride?: boolean,
+	/** TODO Only overrides if the layer is not hidden. NOT YET IMPLEMENTED */
+	DontAlwaysOverride?: boolean,
 	/** This layer does not affect the max priority level */
 	NoOverride?: boolean,
 	/** Hide this layer if the other layer does not show */

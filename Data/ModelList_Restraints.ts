@@ -65,7 +65,7 @@ AddModel({
 	AddPose: ["Boxties"],
 	Layers: ToLayerMap([
 		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
-			Poses: ToMap([...ARMPOSES]),
+			Poses: ToMap(["Boxtie"]),
 		},
 	])
 });
@@ -73,7 +73,7 @@ AddModel({
 
 AddModel(GetModelWithExtraLayers("RopeBoxtie2", "RopeBoxtie1", [
 	{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
-		Poses: ToMap([...ARMPOSES]),
+		Poses: ToMap(["Boxtie"]),
 	},
 ]));
 
@@ -82,5 +82,199 @@ AddModel(GetModelWithExtraLayers("RopeBoxtie3", "RopeBoxtie2", [
 	{ Name: "ArmHarness", Layer: "ChestStraps", Pri: -1,
 		Poses: ToMap([...ARMPOSES]),
 		Invariant: true,
+	},
+]));
+
+
+
+AddModel({
+	Name: "RopeWristtie1",
+	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["Wristties"],
+	Layers: ToLayerMap([
+		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
+			Poses: ToMap(["Wristtie"]),
+		},
+	])
+});
+
+
+AddModel(GetModelWithExtraLayers("RopeWristtie2", "RopeWristtie1", [
+	{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
+		Poses: ToMap(["Wristtie"]),
+	},
+]));
+
+
+AddModel(GetModelWithExtraLayers("RopeWristtie3", "RopeWristtie2", [
+	{ Name: "ArmHarness", Layer: "ChestStraps", Pri: -1,
+		Poses: ToMap([...ARMPOSES]),
+		Invariant: true,
+	},
+]));
+
+AddModel({
+	Name: "RopeCuffs",
+	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["Handcuffed"],
+	Layers: ToLayerMap([
+		{ Name: "Cuffs", Layer: "ForeWrists", Pri: 0,
+			Poses: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "RopeBelt",
+	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	Layers: ToLayerMap([
+		{ Name: "Belt", Layer: "BeltBondage", Pri: 0,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "RopeHarness",
+	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	//AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		{ Name: "Harness", Layer: "Harness", Pri: 0,
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "RopeCrotch",
+	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		{ Name: "Crotchrope", Layer: "HarnessLower", Pri: 1,
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "RopeToes",
+	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["FeetLinked"],
+	Layers: ToLayerMap([
+		{ Name: "Toe", Layer: "OverSocks", Pri: 10,
+			Poses: ToMap(["Closed"]),
+			CrossHideOverride: true,
+			HideOverrideLayerMulti: ["ShoeLeft", "ShoeRight", "ShoeLeftHogtie", "ShoeRightKneel"],
+		},
+	])
+});
+
+AddModel({
+	Name: "RopeFeet",
+	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["FeetLinked"],
+	Layers: ToLayerMap([
+		{ Name: "Ankles", Layer: "OverSocks", Pri: 1,
+			Poses: ToMap(["Closed", "KneelClosed"]),
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("RopeFeetHeavy", "RopeFeet", [
+	...GetModelLayers("RopeToes"),
+]));
+
+
+AddModel({
+	Name: "RopeAnkles1",
+	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["FeetLinked"],
+	Layers: ToLayerMap([
+		{ Name: "Calf1", Layer: "Ankles1", Pri: 1,
+			Poses: ToMap(["Closed", "KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("RopeAnkles2", "RopeAnkles1", [
+	{ Name: "Calf2", Layer: "Ankles2", Pri: 1,
+		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
+		GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+	},
+]));
+
+
+AddModel(GetModelWithExtraLayers("RopeAnkles3", "RopeAnkles2", [
+	{ Name: "Calf3", Layer: "Ankles3", Pri: 1,
+		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
+		GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+	},
+]));
+
+
+
+AddModel({
+	Name: "RopeLegs1",
+	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["FeetLinked"],
+	Layers: ToLayerMap([
+		{ Name: "Thigh1", Layer: "Thighs1", Pri: 1,
+			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("RopeLegs2", "RopeLegs1", [
+	{ Name: "Thigh2", Layer: "Thighs2", Pri: 1,
+		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
+		GlobalDefaultOverride: ToMap(["KneelClosed"]),
+	},
+]));
+
+
+AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
+	{ Name: "Thigh3", Layer: "Thighs3", Pri: 1,
+		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
+		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 	},
 ]));

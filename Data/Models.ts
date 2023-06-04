@@ -233,6 +233,15 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 		for (let l of Object.values(m.Layers)) {
 			if (!l.NoOverride)
 				MC.HighestPriority[l.Layer] = Math.max(MC.HighestPriority[l.Layer] || -500, l.Pri || -500);
+			if (l.CrossHideOverride) {
+				if (l.HideOverrideLayerMulti) {
+					for (let hideLayer of l.HideOverrideLayerMulti) {
+						MC.HighestPriority[hideLayer] = Math.max(MC.HighestPriority[hideLayer] || -500, l.Pri || -500);
+					}
+				}
+				if (l.HideOverrideLayer)
+					MC.HighestPriority[l.HideOverrideLayer] = Math.max(MC.HighestPriority[l.HideOverrideLayer] || -500, l.Pri || -500);
+			}
 		}
 	}
 
