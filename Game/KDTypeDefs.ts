@@ -1849,7 +1849,12 @@ interface KinkyDungeonSave {
 	KinkyDungeonEndPosition: {x: number, y: number};
 }
 
-type event = (e: KinkyDungeonEvent, item: item, data: any) =>  void
+/**
+ * e: calling event
+ * item: calling item
+ * data: data needed
+ */
+type event = (e: KinkyDungeonEvent, item: item, data: any) => void;
 
 type MapMod = {
 	name: string,
