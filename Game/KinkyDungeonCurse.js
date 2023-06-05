@@ -8,6 +8,7 @@
  * @type {Record<string, KDCursedDef>} */
 let KDCurses = {
 	"GhostLock" : {
+		lock: true,
 		condition: (item) => {
 			return KinkyDungeonItemCount("Ectoplasm") >= 25;
 		},
@@ -16,6 +17,7 @@ let KDCurses = {
 		}
 	},
 	"DollLock" : {
+		lock: true,
 		condition: (item) => {
 			return KinkyDungeonItemCount("DollID") >= 8;
 		},
@@ -24,7 +26,9 @@ let KDCurses = {
 		}
 	},
 	"MistressKey": {
+		lock: true,
 		noShrine: true,
+		customIcon_RemoveFailure: "Locks/Gold",
 		condition: (item) => {
 			return KinkyDungeonItemCount("MistressKey") > 0;
 		},
@@ -33,6 +37,7 @@ let KDCurses = {
 		}
 	},
 	"5Keys" : {
+		lock: true,
 		condition: (item) => {
 			return KinkyDungeonRedKeys >= 5;
 		},
@@ -41,6 +46,7 @@ let KDCurses = {
 		}
 	},
 	"Key" : {
+		lock: true,
 		condition: (item) => {
 			return KinkyDungeonRedKeys >= 1;
 		},
@@ -49,6 +55,7 @@ let KDCurses = {
 		}
 	},
 	"BlueLock" : {
+		lock: true,
 		condition: (item) => {
 			return KinkyDungeonBlueKeys >= 1;
 		},
