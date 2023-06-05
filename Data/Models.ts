@@ -62,10 +62,13 @@ class ModelContainer {
 	/**
 	 * Adds a model to the modelcontainer
 	 */
-	addModel(Model: Model, Filters?: Record<string, LayerFilter>) {
+	addModel(Model: Model, Filters?: Record<string, LayerFilter>, LockType?: string) {
 		let mod: Model = JSON.parse(JSON.stringify(Model));
 		if (Filters) {
 			mod.Filters = JSON.parse(JSON.stringify(Filters)) || mod.Filters;
+		}
+		if (LockType) {
+			mod.LockType = JSON.parse(JSON.stringify(LockType)) || mod.LockType;
 		}
 		this.Models.set(Model.Name, mod);
 	}
@@ -219,6 +222,11 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 /** Future function */
 let DrawModel = DrawCharacter;
 
+function LayerIsHidden(MC: ModelContainer, l: ModelLayer, m: Model, Mods) : boolean {
+	if (l.LockLayer && !m.LockType) return true;
+	return false;
+}
+
 /**
  * Setup sprites from the modelcontainer
  */
@@ -231,6 +239,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 	MC.HighestPriority = {};
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
+			if (!l.DontAlwaysOverride && LayerIsHidden(MC, l, m, StartMods)) continue;
 			if (!l.NoOverride)
 				MC.HighestPriority[l.Layer] = Math.max(MC.HighestPriority[l.Layer] || -500, l.Pri || -500);
 			if (l.CrossHideOverride) {
@@ -263,9 +272,11 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 	let drawLayers: Record<string, boolean> = {};
 
+	// Yes we draw these layers
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
-			drawLayers[m.Name + "," + l.Name] = ModelDrawLayer(MC, m, l, MC.Poses);
+			if (!LayerIsHidden(MC, l, m, mods))
+				drawLayers[m.Name + "," + l.Name] = ModelDrawLayer(MC, m, l, MC.Poses);
 		}
 	}
 
@@ -472,7 +483,7 @@ function UpdateModels(C: Character) {
 	let appearance: Item[] = MC.Character.Appearance;
 	for (let A of appearance) {
 		if (A.Model) {
-			MC.addModel(A.Model, A.Filters);
+			MC.addModel(A.Model, A.Filters, A.Property?.LockedBy);
 		}
 	}
 

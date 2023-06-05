@@ -67,6 +67,8 @@ interface Model extends Namable {
     DefaultColor?: string[],
 	/** Color definition */
 	Filters?: Record<string, LayerFilter>,
+	/** Hardcoded Lock Type */
+	LockType?: string,
 }
 
 interface ModelLayer extends Namable {
@@ -78,6 +80,8 @@ interface ModelLayer extends Namable {
     Pri?: number,
     /** Name of the sprite PNG, same as the name by default*/
     Sprite?: string,
+    /** This layer only appears if the item is locked */
+    LockLayer?: boolean,
     /** These layers are apended to the Sprite if the pose is met*/
     Poses?: Record<string, boolean>,
     /** This layer is hidden in this pose*/
@@ -98,7 +102,7 @@ interface ModelLayer extends Namable {
 	HideOverrideLayerMulti?: string[],
 	/** This makes it so HideOverrideLayer is the layer for overriding purposes. Pair with NoOverride to complete the effect */
 	CrossHideOverride?: boolean,
-	/** TODO Only overrides if the layer is not hidden. NOT YET IMPLEMENTED */
+	/** Only overrides if the layer is not hidden.*/
 	DontAlwaysOverride?: boolean,
 	/** This layer does not affect the max priority level */
 	NoOverride?: boolean,
