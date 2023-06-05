@@ -435,7 +435,7 @@ AddModel({
 			Poses: ToMap(["Kneel"]),
 			MorphPoses: {Kneel: ""},
 		},
-		{ Name: "FootLeft", Layer: "FootLeft", Pri: 0,
+		{ Name: "FootLeft", Layer: "FootLeft", Pri: 1,
 			InheritColor: "TorsoLower",
 			Poses: ToMap(FOOTLEFTPOSES),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
