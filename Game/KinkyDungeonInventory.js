@@ -10,6 +10,15 @@ let KinkyDungeonFilters = [
 	Misc,
 ];
 
+/**
+ * @type {Record<string, boolean>}
+ */
+let KDInventoryUseIconConfig = {};
+KDInventoryUseIconConfig[Weapon] = true;
+KDInventoryUseIconConfig[Consumable] = true;
+KDInventoryUseIconConfig[LooseRestraint] = true;
+KDInventoryUseIconConfig[Restraint] = true;
+
 /** List of current filters for each filter type */
 /**
  * @type {Record<string, Record<string, boolean>>}
@@ -74,17 +83,6 @@ function KinkyDungeonHandleInventory() {
 			return true;
 		}
 
-	if (filteredInventory.length > 0) {
-		if (MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 500, canvasOffsetY_ui, 90, 40) && KinkyDungeonInventoryOffset > 0) {
-			KinkyDungeonInventoryOffset -= 2;
-			return true;
-		}
-		if (MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 500, 480*KinkyDungeonBookScale + canvasOffsetY_ui - 15, 90, 40) && KinkyDungeonInventoryOffset + 24 < filteredInventory.length) {
-			KinkyDungeonInventoryOffset += 2;
-			return true;
-		}
-
-	}
 
 	if (KinkyDungeonDrawInventorySelected(filteredInventory[KinkyDungeonCurrentPageInventory])) {
 		if (KinkyDungeonCurrentFilter == Consumable && MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 60)) {
@@ -318,6 +316,11 @@ function KinkyDungeonAllWeapon() {
 }
 return null;*/
 
+/**
+ *
+ * @param {item} item
+ * @returns {{name: any; item: any; preview: string;}}
+ */
 function KDGetItemPreview(item) {
 	let ret = null;
 	let Group = "";
@@ -350,7 +353,7 @@ function KDGetItemPreview(item) {
  * @param {boolean} [enchanted]
  * @param {boolean} [ignoreHidden]
  * @param {boolean} [ignoreFilters]
- * @returns {any[]}
+ * @returns {{name: any; item: any; preview: string;}[]}
  */
 function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilters) {
 	let ret = [];
@@ -532,19 +535,41 @@ function KinkyDungeonDrawInventory() {
 
 
 	if (filteredInventory.length > 0) {
-		DrawButtonVis(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 500, canvasOffsetY_ui, 90, 40, "", KinkyDungeonInventoryOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
-		DrawButtonVis(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 500, 480*KinkyDungeonBookScale + canvasOffsetY_ui - 15, 90, 40, "", (KinkyDungeonInventoryOffset + 24 < filteredInventory.length) ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
-
-		let maxList = 24;
-		for (let i = 0; i < maxList; i++) {
-			let xx = i % 2;
-			let yy = Math.floor(i / 2);
-			/** If there are defined filters we use them instead of double stacking */
-			if (KDFilterFilters[KinkyDungeonCurrentFilter]) {
-				xx = 1;
-				yy = i;
-				maxList = 12;
+		DrawButtonKDEx("invScrollUp", (bdata) => {
+			if (filteredInventory.length > 0) {
+				if (KinkyDungeonInventoryOffset > 0) {
+					KinkyDungeonInventoryOffset -= 2;
+				}
 			}
+			return true;
+		}, true,
+		canvasOffsetX_ui + 640*KinkyDungeonBookScale + 526, canvasOffsetY_ui, 90, 44, "", KinkyDungeonInventoryOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
+		DrawButtonKDEx("invScrollDown", (bdata) => {
+			if (filteredInventory.length > 0) {
+				if (KinkyDungeonInventoryOffset + 24 < filteredInventory.length) {
+					KinkyDungeonInventoryOffset += 2;
+				}
+			}
+			return true;
+		}, true,
+		canvasOffsetX_ui + 640*KinkyDungeonBookScale + 526, 480*KinkyDungeonBookScale + canvasOffsetY_ui - 4, 90, 44, "", (KinkyDungeonInventoryOffset + 24 < filteredInventory.length) ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
+
+		let useIcons = KDInventoryUseIconConfig[KinkyDungeonCurrentFilter];
+		let numRows = useIcons ? 5 : 2;
+		let maxList = useIcons ? 7 : 12;
+		let b_width = useIcons ? 80 : 200;
+		let b_height = useIcons ? 80 : 45;
+		let padding = 4;
+		for (let i = 0; i < numRows*maxList; i++) {
+			let xx = 0;
+			if (KDFilterFilters[KinkyDungeonCurrentFilter]) {
+				numRows = useIcons ? 3 : 1;
+				xx += useIcons ? 2 : 1;
+			}
+			xx += i % numRows;
+			let yy = Math.floor(i / numRows);
+			/** If there are defined filters we use them instead of double stacking */
+
 			let index = i + KinkyDungeonInventoryOffset;
 			if (filteredInventory[index] && filteredInventory[index].item) {
 				let text = "KinkyDungeonInventoryItem" + filteredInventory[index].name;
@@ -557,7 +582,14 @@ function KinkyDungeonDrawInventory() {
 				DrawButtonKDEx("invchoice_" + i, (bdata) => {
 					KinkyDungeonCurrentPageInventory = index;
 					return true;
-				}, true, canvasOffsetX_ui + xx * 200 + 640*KinkyDungeonBookScale + 250, canvasOffsetY_ui + 50 + 45 * yy, 195, 40, TextGet(text) + suff, index == KinkyDungeonCurrentPageInventory ? "white" : "#888888");
+				}, true, canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 215, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+				useIcons ? ("") : (TextGet(text) + suff),
+				"#ffffff",//useIcons ? "#ffffff" : index == KinkyDungeonCurrentPageInventory ? "#ffffff" : "#888888",
+				useIcons ? filteredInventory[index].preview || "" : "",
+				undefined, undefined, index != KinkyDungeonCurrentPageInventory, KDTextGray0);
+				if (filteredInventory[index].item.quantity != undefined) {
+					DrawTextKD("" + filteredInventory[index].item.quantity, canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 220, canvasOffsetY_ui + 50 + b_height * yy + 18, "#ffffff", undefined, 18, "left");
+				}
 			} else {
 				if (i + KinkyDungeonInventoryOffset > filteredInventory.length + 2)
 					KinkyDungeonInventoryOffset = 0;
@@ -576,7 +608,7 @@ function KinkyDungeonDrawInventory() {
 				KDFilterFilters[KinkyDungeonCurrentFilter][filters[i][0]] = !KDFilterFilters[KinkyDungeonCurrentFilter][filters[i][0]];
 				KinkyDungeonInventoryOffset = 0;
 				return true;
-			}, true, canvasOffsetX_ui + xx * 200 + 640*KinkyDungeonBookScale + 250, canvasOffsetY_ui + 50 + 40 * yy + 1, 175, 38,
+			}, true, canvasOffsetX_ui + xx * 200 + 640*KinkyDungeonBookScale + 212, canvasOffsetY_ui + 50 + 40 * yy + 1, 159, 38,
 			TextGet("KDFilterFilters" + filters[i][0]), filters[i][1] ? "#ffffff" : "#aaaaaa", undefined, undefined, undefined, !filters[i][1], undefined, 20);
 
 		}
