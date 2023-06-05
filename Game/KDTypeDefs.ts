@@ -2075,6 +2075,12 @@ type KDParticleData = {
 interface KDCursedDef {
 	/** Restraints with this curse are unremovable via shrine */
 	noShrine?: boolean,
+	/** This curse is treated as a type of lock, for display purposes */
+	lock?: boolean,
+	/** custom icon for removing (failure) */
+	customIcon_RemoveFailure?: string,
+	/** custom icon for removing (success) */
+	customIcon_RemoveSuccess?: string,
 	/** TODO NOT IMPLEMENTED for a future RemoveCursesWithShrine function */
 	shrineRemove?: string[],
 	onApply?: (item: item, host?: item) => void,
