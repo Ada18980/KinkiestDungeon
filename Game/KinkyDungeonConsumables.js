@@ -172,8 +172,8 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 	if (!item) return false;
 
 
-	if (KDConsumable(item).prereq && KDConsumablePrereq[KDConsumable(item).prereq]) {
-		if (KDConsumablePrereq[KDConsumable(item).prereq](item, Quantity)) {
+	if (KDConsumable(item.item).prereq && KDConsumablePrereq[KDConsumable(item.item).prereq]) {
+		if (KDConsumablePrereq[KDConsumable(item.item).prereq](item.item, Quantity)) {
 			KinkyDungeonUseConsumable(Name, Quantity);
 			return true;
 		} else return false;
@@ -258,8 +258,8 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 		return false;
 	}
 
-	if (KDConsumable(item).postreq && KDConsumablePrereq[KDConsumable(item).postreq]) {
-		if (KDConsumablePrereq[KDConsumable(item).postreq](item, Quantity)) {
+	if (KDConsumable(item.item).postreq && KDConsumablePrereq[KDConsumable(item.item).postreq]) {
+		if (KDConsumablePrereq[KDConsumable(item.item).postreq](item.item, Quantity)) {
 			KDDelayedActionPrune(["Action", "Consume"]);
 			if (KDConsumable(item.item).delay || (KDConsumable(item.item).potion && KinkyDungeonStatsChoice.has("SavourTheTaste"))) {
 				KDAddDelayedAction({
