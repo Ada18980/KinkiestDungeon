@@ -2353,6 +2353,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {boolean} [options.noTextBG] - Dont show text backgrounds
  * @param {number} [options.alpha]
  * @param {number} [options.zIndex] - zIndex
+ * @param {boolean} [options.scaleImage] - zIndex
  * @returns {void} - Nothing
  */
 function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2383,6 +2384,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {number} [options.alpha]
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.unique] - This button is not differentiated by position
+ * @param {boolean} [options.scaleImage] - zIndex
  * @returns {void} - Nothing
  */
 function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2410,7 +2412,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 	let textPush = 0;
 	if ((Image != null) && (Image != "")) {
 		let img = KDTex(Image);
-		if (Stretch) {
+		if (Stretch || options?.scaleImage) {
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 				Image, Left, Top, Width, Height, undefined, {
 					zIndex: zIndex + 0.001,
