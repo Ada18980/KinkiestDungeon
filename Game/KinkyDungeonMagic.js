@@ -798,8 +798,13 @@ function KDGetPrerequisite(spell) {
 }
 
 function KinkyDungeonCheckSpellPrerequisite(spell) {
-	if (!spell || !spell.prerequisite) return true;
+	if (!spell) return true;
 	if (spell.upcastFrom && !KDHasSpell(spell.upcastFrom)) return false;
+	if (spell.blockedBy && spell.blockedBy.some((sp) => {return KDHasSpell(sp);})) return false;
+	if (spell.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
+
+	// Prerequisite
+	if (!spell.prerequisite) return true;
 	if (typeof spell.prerequisite === "string") {
 		let spell_prereq = KinkyDungeonSearchSpell(KinkyDungeonSpells, spell.prerequisite);
 		if (spell_prereq) return true;
@@ -1167,6 +1172,8 @@ function KinkyDungeonListSpells(Mode) {
 				&& YY < KDMaxSpellYY + spacing
 				&& (!spell.hideLearned || !learned)
 				&& (!spell.hideUnlearnable || prereq || learned)
+				&& (!spell.hideWithout || KDHasSpell(spell.hideWithout))
+				&& (!spell.arousalMode || KinkyDungeonStatsChoice.has("arousalMode"))
 				&& (selectedFilters.length == 0 || (selectedFilters.every((element) => {return genericfilters.includes(element) || (spell.tags && spell.tags.includes(element));})))
 				&& (!selectedFilters.includes("learnable") || (prereq || learned || prereqHost))
 				&& (!selectedFilters.includes("unlearned") || (!learned))

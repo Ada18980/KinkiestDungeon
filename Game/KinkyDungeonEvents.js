@@ -1862,6 +1862,12 @@ let KDEventMapSpell = {
 			}
 		},
 	},
+	"calcEdgeDrain": {
+		"ChangeEdgeDrain": (e, spell, data) => {
+			data.edgeDrain *= e.mult || 1;
+			data.edgeDrain += e.power || 0;
+		},
+	},
 	"calcMaxStats": {
 		"IronWill": (e, spell, data) => {
 			if (KinkyDungeonStatWill >= 9.999)
@@ -1878,6 +1884,53 @@ let KDEventMapSpell = {
 		},
 		"IncreaseManaPool": (e, spell, data) => {
 			KinkyDungeonStatManaPoolMax += e.power;
+		},
+	},
+	"calcInvolOrgasmChance": {
+		"OrgasmResist": (e, spell, data) => {
+			if (KinkyDungeonStatWill >= 0.1) {
+				data.invol_chance *= e.power;
+			}
+		},
+	},
+	"orgasm": {
+		"RestoreOrgasmMana": (e, spell, data) => {
+			if (KinkyDungeonStatWill > 0) {
+				let willPercentage = data.wpcost < 0 ? -KinkyDungeonStatWill/data.wpcost : 1.0;
+				if (willPercentage > 0)
+					KinkyDungeonChangeMana(e.power * willPercentage);
+			}
+		},
+		"OrgasmDamageBuff": (e, spell, data) => {
+			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+				id: spell.name + "DamageBuff",
+				type: "magicDamageBuff",
+				power: e.power,
+				duration: e.time + (data.stunTime || 0)
+			});
+		},
+		"ChangeOrgasmStamina": (e, spell, data) => {
+			KDGameData.OrgasmStamina *= e.mult || 1;
+			KDGameData.OrgasmStamina += e.power || 0;
+		},
+	},
+	"tryOrgasm": {
+		"ChangeWPCost": (e, spell, data) => {
+			data.wpcost *= e.mult || 1;
+			data.wpcost += e.power || 0;
+		},
+		"ChangeSPCost": (e, spell, data) => {
+			data.spcost *= e.mult || 1;
+			data.spcost += e.power || 0;
+		},
+	},
+	"deny": {
+		"RestoreDenyMana": (e, spell, data) => {
+			if (KinkyDungeonStatWill > 0) {
+				let willPercentage = data.edgewpCost < 0 ? -KinkyDungeonStatWill/data.edgewpCost : 1.0;
+				if (willPercentage > 0)
+					KinkyDungeonChangeMana(e.power * willPercentage);
+			}
 		},
 	},
 	"afterCalcMana": {
@@ -1943,7 +1996,19 @@ let KDEventMapSpell = {
 			}
 		},
 	},
+	"calcManaPool": {
+		"EdgeRegenBoost": (e, spell, data) => {
+			if (KDIsEdged(KinkyDungeonPlayerEntity)) {
+				data.manaPoolRegen += e.power;
+			}
+		},
+	},
 	"tick": {
+		"RestoreEdgeMana": (e, spell, data) => {
+			if (KinkyDungeonStatWill > 0 && KDIsEdged(KinkyDungeonPlayerEntity) && data.delta > 0) {
+				KinkyDungeonChangeMana(0.0, true, e.power);
+			}
+		},
 		"Parry": (e, spell, data) => {
 			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: spell.name + "Block", type: "Block", power: e.power, duration: 2,});

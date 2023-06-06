@@ -1527,7 +1527,7 @@ AttackElfLock,"The druid tosses a lock from her cloak! It finds you and fastens 
 NameElementalWater,Water Elemental
 KillElementalWater,"The water elemental melts into a pool of water."
 AttackElementalWaterBind,"The water elemental's song compels you to be bound! (+RestraintAdded)"
-AttackElementalWaterBindLock,"The water elemental sings a song of helplessness. (DamageTaken)"
+AttackElementalWaterLock,"The water elemental sings a song of helplessness. (DamageTaken)"
 AttackElementalWaterPull,"The water elemental's song compels you to step forward and receive a binding!"
 AttackElementalWater,"The water elemental sings an arousing song! (DamageTaken)"
 
@@ -4633,6 +4633,26 @@ KinkyDungeonInfernoBurn,The roaring inferno deals 10 damage to you!
 
 KinkyDungeonSpellDistractionCast,Mana Burst
 KinkyDungeonSpellDescriptionDistractionCast,"As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus..."
+
+KinkyDungeonSpellOrgasmMana1,Way of Pleasure
+KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 40 mana as long as you have willpower to spare. Blocks Way of Discipline."
+
+KinkyDungeonSpellOrgasmBuff,Intense Power
+KinkyDungeonSpellDescriptionOrgasmBuff,"After letting go of yourself, you feel an immense surge of power, increasing magic damage by 40% for 8 turns after you regain control."
+
+KinkyDungeonSpellOrgasmFrequency,Pleasure Training I
+KinkyDungeonSpellDescriptionOrgasmFrequency,"You remain satisfied for much less time after letting go. Letting go costs 50% less stamina."
+KinkyDungeonSpellOrgasmFrequency2,Pleasure Training II
+KinkyDungeonSpellDescriptionOrgasmFrequency2,"You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total) and 50% less willpower."
+KinkyDungeonSpellOrgasmResist,Mental Resistance
+KinkyDungeonSpellDescriptionOrgasmResist,"+100 Psychic and Charm Resist. You can no longer let go involuntarily unless your willpower is 0, and willpower drains 70% slower while edged."
+
+
+KinkyDungeonSpellEdgeMana1,Way of Discipline
+KinkyDungeonSpellDescriptionEdgeMana1,"You have chosen the path of absolute discipline. Being in an Edged state increases passive mana recovery, and if you have willpower to spare you regenerate 1 passive mana per 5 turns. Blocks Way of Discipline."
+
+KinkyDungeonSpellDenyMana,Way of Denial
+KinkyDungeonSpellDescriptionDenyMana,"Harnessing your mental discipline, you regenerate 50 mana each time you are denied, so long as you have willpower to spare."
 
 
 KinkyDungeonSpellApprenticeFire,Flame Novice
