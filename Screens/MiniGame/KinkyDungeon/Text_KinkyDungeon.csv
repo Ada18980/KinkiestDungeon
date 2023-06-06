@@ -4638,7 +4638,7 @@ KinkyDungeonSpellOrgasmMana1,Way of Pleasure
 KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 40 mana as long as you have willpower to spare. Blocks Way of Discipline."
 
 KinkyDungeonSpellOrgasmBuff,Intense Power
-KinkyDungeonSpellDescriptionOrgasmBuff,"After letting go of yourself, you feel an immense surge of power, increasing magic damage by 40% for 8 turns after you regain control."
+KinkyDungeonSpellDescriptionOrgasmBuff,"After letting go of yourself, you feel an immense surge of power, increasing magic damage by 40% for 8 turns after you regain control, and by 10% while you remain satisfied."
 
 KinkyDungeonSpellOrgasmFrequency,Pleasure Training I
 KinkyDungeonSpellDescriptionOrgasmFrequency,"You remain satisfied for much less time after letting go. Letting go costs 50% less stamina."

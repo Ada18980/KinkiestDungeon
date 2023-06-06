@@ -173,6 +173,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			]},
 		{name: "OrgasmBuff", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "OrgasmMana1", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
+				{type: "SatisfiedDamageBuff", trigger: "tick", power: 0.1},
 				{type: "OrgasmDamageBuff", trigger: "orgasm", power: 0.4, time: 8},
 			]},
 		{name: "OrgasmFrequency", tags: ["will", "utility"], arousalMode: true, school: "Elements", manacost: 0, components: [], level:1, hideLearned: true, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
