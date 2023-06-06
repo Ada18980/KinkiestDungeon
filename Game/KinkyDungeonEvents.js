@@ -2004,6 +2004,15 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
+		"SatisfiedDamageBuff": (e, spell, data) => {
+			if (KDGameData.OrgasmStamina > 0 && (!KinkyDungeonPlayerBuffs || !KinkyDungeonPlayerBuffs[spell.name + "DamageBuff"] || KinkyDungeonPlayerBuffs[spell.name + "DamageBuff"].duration == 0))
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+					id: spell.name + "DamageBuffMinor",
+					type: "magicDamageBuff",
+					power: e.power,
+					duration: 2
+				});
+		},
 		"RestoreEdgeMana": (e, spell, data) => {
 			if (KinkyDungeonStatWill > 0 && KDIsEdged(KinkyDungeonPlayerEntity) && data.delta > 0) {
 				KinkyDungeonChangeMana(0.0, true, e.power);
