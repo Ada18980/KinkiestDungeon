@@ -186,7 +186,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				{type: "ChangeSPCost", trigger: "tryOrgasm", mult: 0.5},
 				{type: "ChangeWPCost", trigger: "tryOrgasm", mult: 0.5},
 			]},
-		{name: "OrgasmResist", tags: ["will", "utility"], arousalMode: true, school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+		{name: "OrgasmResist", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "OrgasmResist", trigger: "calcInvolOrgasmChance", power: 0},
 				{type: "ChangeEdgeDrain", trigger: "calcEdgeDrain", mult: 0.3},
