@@ -891,6 +891,10 @@ function KDGetDistractionRate(delta) {
 	return distractionRate;
 }
 
+/**
+ *
+ * @param {number} delta
+ */
 function KinkyDungeonUpdateStats(delta) {
 	KDBoundPowerLevel = 0;
 	KDBoundPowerLevel += 0.1 * Math.max(0, Math.min(1, KinkyDungeonBlindLevel / 3));
@@ -925,8 +929,11 @@ function KinkyDungeonUpdateStats(delta) {
 	KinkyDungeonTeaseLevel = Math.max(KinkyDungeonTeaseLevel * (1 - KinkyDungeonChastityMult()) + (delta > 0 ? KinkyDungeonTeaseLevelBypass : 0), 0);
 	if (KinkyDungeonVibeLevel > 0 || KinkyDungeonTeaseLevel > 0) {
 		KDGameData.OrgasmNextStageTimer = Math.min(KDOrgasmStageTimerMax, KDGameData.OrgasmNextStageTimer + delta);
-		let Chance = (KDGameData.OrgasmStage >= KinkyDungeonMaxOrgasmStage) ? 1.0 : (KDOrgasmStageTimerMaxChance + (1 - KinkyDungeonStatWill/KinkyDungeonStatWillMax) * KinkyDungeonStatDistractionLower / KinkyDungeonStatDistractionMax);
-		if ((KinkyDungeonTeaseLevel > 0 || KDGameData.OrgasmNextStageTimer >= KDOrgasmStageTimerMax) && (KDRandom() < Chance && KinkyDungeonControlsEnabled())) {
+		let data = {
+			invol_chance: (KDGameData.OrgasmStage >= KinkyDungeonMaxOrgasmStage) ? 1.0 : (KDOrgasmStageTimerMaxChance + (1 - KinkyDungeonStatWill/KinkyDungeonStatWillMax) * KinkyDungeonStatDistractionLower / KinkyDungeonStatDistractionMax),
+		};
+		KinkyDungeonSendEvent("calcInvolOrgasmChance", data);
+		if ((KinkyDungeonTeaseLevel > 0 || KDGameData.OrgasmNextStageTimer >= KDOrgasmStageTimerMax) && (KDRandom() < data.invol_chance && KinkyDungeonControlsEnabled())) {
 			if (KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage) {
 				if (KinkyDungeonCanPlayWithSelf() && KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax > KinkyDungeonDistractionPlaySelfThreshold && !KinkyDungeonInDanger()) {
 					KinkyDungeonDoPlayWithSelf(KinkyDungeonTeaseLevel);
@@ -1035,9 +1042,13 @@ function KinkyDungeonUpdateStats(delta) {
 	KinkyDungeonStatMana += KinkyDungeonStatManaRate;
 	KinkyDungeonStatManaPool -= ManaPoolDrain;
 
-	if (KDGameData.OrgasmTurns > KinkyDungeonOrgasmTurnsCrave && !(KDGameData.OrgasmStamina > 0)) {
-		let EdgeDrainAmount = KinkyDungeonStatDistractionLower < KinkyDungeonStatDistractionLowerCap ? KinkyDungeonOrgasmExhaustionAmountWillful : KinkyDungeonOrgasmExhaustionAmount;
-		KinkyDungeonChangeWill(EdgeDrainAmount);
+	if (KDIsEdged(KinkyDungeonPlayerEntity)) {
+		let data = {
+			delta: delta,
+			edgeDrain: KinkyDungeonStatDistractionLower < KinkyDungeonStatDistractionLowerCap ? KinkyDungeonOrgasmExhaustionAmountWillful : KinkyDungeonOrgasmExhaustionAmount,
+		};
+		KinkyDungeonSendEvent("calcEdgeDrain", data);
+		KinkyDungeonChangeWill(data.edgeDrain);
 		let vibe = KinkyDungeonVibeLevel > 0 ? "Vibe" : "";
 		let suff = KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage ? (KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage / 2 ? "0" : "1") : "2";
 		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonOrgasmExhaustion" + vibe + suff), "#ff0000", 2, true);
@@ -1121,9 +1132,9 @@ function KDGetEnvironmentalDmg() {
 
 function KDUpdatePerksBonus() {
 	KDDamageAmpPerks = 0;
-	KDDamageAmpPerksMagic = 0;
-	KDDamageAmpPerksMelee = 0;
-	KDDamageAmpPerksSpell = 0;
+	KDDamageAmpPerksMagic = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "magicDamageBuff");
+	KDDamageAmpPerksMelee = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "meleeDamageBuff");
+	KDDamageAmpPerksSpell = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "spellDamageBuff");
 	KDDamageAmpEnvironmental = 0;
 	KDExtraEnemyTags = {};
 	for (let perk of KinkyDungeonStatsChoice.keys()) {
@@ -1371,6 +1382,7 @@ let KinkyDungeonOrgasmCost = -8;
 let KinkyDungeonOrgasmCostPercent = 0.7;
 let KinkyDungeonOrgasmWillpowerCost = -2;
 let KinkyDungeonEdgeCost = -1;
+let KinkyDungeonEdgeWillpowerCost = -0.5;
 let KinkyDungeonPlayCost = -0.1;
 
 let KinkyDungeonOrgasmStunTime = 4;
@@ -1401,7 +1413,7 @@ function KinkyDungeonDoTryOrgasm(Bonus) {
 		denied: denied,
 		Bonus: Bonus,
 		edgespcost: KinkyDungeonEdgeCost,
-		edgewpcost: 0,
+		edgewpcost: KinkyDungeonEdgeWillpowerCost,
 		spcost: KDGetOrgasmCost(),
 		wpcost: KinkyDungeonOrgasmWillpowerCost,
 		stunTime: KinkyDungeonOrgasmStunTime,
@@ -1425,15 +1437,15 @@ function KinkyDungeonDoTryOrgasm(Bonus) {
 		KinkyDungeonSetFlag("PlayerOrgasm", data.stunTime);
 		KinkyDungeonSetFlag("PlayerOrgasmFilter", data.stunTime + 1);
 		KDGameData.OrgasmStamina = data.satisfaction;
-		KinkyDungeonChangeStamina(data.spCost);
-		KinkyDungeonChangeWill(data.wpCost);
+		KinkyDungeonChangeStamina(data.spcost);
+		KinkyDungeonChangeWill(data.wpcost);
 		KinkyDungeonStatDistractionLower = data.lowerFloorTo;
 		KinkyDungeonAlert = Math.max(KinkyDungeonAlert || 0, data.alertRadius); // Alerts nearby enemies because of your moaning~
 		KDGameData.PlaySelfTurns = data.stunTime;
 		KinkyDungeonSendEvent("orgasm", data);
 	} else {
-		KinkyDungeonChangeStamina(data.edgespCost);
-		KinkyDungeonChangeWill(data.edgewpCost);
+		KinkyDungeonChangeStamina(data.edgespcost);
+		KinkyDungeonChangeWill(data.edgewpcost);
 		// You close your eyes and breath rapidly in anticipation...
 		// You feel frustrated as the stimulation isn't quite enough...
 		// You groan with pleasure as you keep close to the edge...
@@ -1498,4 +1510,13 @@ function KDBuffResist(buffs, type) {
 		* (KinkyDungeonMeleeDamageTypes.includes(type) ?
 		KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(buffs, "meleeDamageResist"))
 		: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(buffs, "magicDamageResist")));
+}
+
+/**
+ *
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDIsEdged(player) {
+	return KDGameData.OrgasmTurns > KinkyDungeonOrgasmTurnsCrave && !(KDGameData.OrgasmStamina > 0);
 }

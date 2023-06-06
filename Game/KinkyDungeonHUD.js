@@ -489,9 +489,9 @@ function KinkyDungeonDrawInputs() {
 		let boost = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, type + "DamageBuff");
 		let melee = KinkyDungeonMeleeDamageTypes.includes(type);
 		switch (type) {
-			case "melee": boost += KDDamageAmpPerks + KDDamageAmpPerksMelee; break;
-			case "magic": boost += KDDamageAmpPerks + KDDamageAmpPerksMagic; break;
-			case "spell": boost += KDDamageAmpPerksSpell; break;
+			case "melee": boost = KDDamageAmpPerks + KDDamageAmpPerksMelee; break;
+			case "magic": boost = KDDamageAmpPerks + KDDamageAmpPerksMagic; break;
+			case "spell": boost = KDDamageAmpPerksSpell; break;
 		}
 		if (resist != 1.0) {
 			statsDraw[type + "_resist"] = {

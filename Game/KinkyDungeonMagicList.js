@@ -66,7 +66,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["DistractionCast"],
+		["DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
 	],
 
 	//Page 1: Elements
@@ -114,7 +114,7 @@ let KinkyDungeonLearnableSpells = [
 		// Intellect
 		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser2", "StaffUser3"],
 		// Misc
-		["CriticalStrike"],
+		["CriticalStrike", "OrgasmFrequency", "OrgasmFrequency2", "OrgasmResist"],
 	],
 ];
 
@@ -162,11 +162,46 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			},
 		},
 
-		{name: "DistractionCast", tags: ["will", "defense"], school: "Elements", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+		{name: "DistractionCast", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "DistractionCast", trigger: "calcMiscast"},
 			{type: "DistractionCast", trigger: "tick"},
 			{type: "DistractionCast", trigger: "playerCast"},
 		]},
+		{name: "OrgasmMana1", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "DistractionCast", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			blockedBy: ["EdgeMana1"], events: [
+				{type: "RestoreOrgasmMana", trigger: "orgasm", power: 4.0},
+			]},
+		{name: "OrgasmBuff", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "OrgasmMana1", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "OrgasmDamageBuff", trigger: "orgasm", power: 0.4, time: 8},
+			]},
+		{name: "OrgasmFrequency", tags: ["will", "utility"], arousalMode: true, school: "Elements", manacost: 0, components: [], level:1, hideLearned: true, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "ChangeOrgasmStamina", trigger: "orgasm", mult: 0.3},
+				{type: "ChangeSPCost", trigger: "tryOrgasm", mult: 0.5},
+			]},
+		{name: "OrgasmFrequency2", tags: ["will", "utility"], arousalMode: true, school: "Elements", prerequisite: "OrgasmFrequency", hideUnlearnable: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "ChangeOrgasmStamina", trigger: "orgasm", mult: 0.1},
+				{type: "ChangeSPCost", trigger: "tryOrgasm", mult: 0.5},
+				{type: "ChangeWPCost", trigger: "tryOrgasm", mult: 0.5},
+			]},
+		{name: "OrgasmResist", tags: ["will", "utility"], arousalMode: true, school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "OrgasmResist", trigger: "calcInvolOrgasmChance", power: 0},
+				{type: "ChangeEdgeDrain", trigger: "calcEdgeDrain", mult: 0.3},
+				{type: "Buff", trigger: "tick", power: 1.0, buffType: "soulDamageResist"},
+				{type: "Buff", trigger: "tick", power: 1.0, buffType: "charmDamageResist"},
+			]},
+		{name: "EdgeMana1", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "DistractionCast", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			blockedBy: ["OrgasmMana1"], events: [
+				{type: "RestoreEdgeMana", trigger: "tick", power: 0.02},
+				{type: "EdgeRegenBoost", trigger: "calcManaPool", power: 0.04},
+			]},
+		{name: "DenyMana", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "EdgeMana1", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "RestoreDenyMana", trigger: "deny", power: 1.0},
+			]},
 
 		{name: "SPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "WPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},

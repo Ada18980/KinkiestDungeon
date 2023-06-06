@@ -841,7 +841,7 @@ let KinkyDungeonEnemies = [
 			punishRemote: 5,
 			punishRemoteChance: 0.35,
 		},
-		attackPoints: 4, attack: "MeleeBindLockAllSpell", multiBind: 2, attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, fullBoundBonus: 2, dmgType: "charm", attackLock: "Blue",
+		attackPoints: 4, attack: "MeleeWillBindLockAllSpell", multiBind: 2, attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, fullBoundBonus: 2, dmgType: "charm", attackLock: "Blue",
 		terrainTags: {"secondhalf":5, "lastthird":5, "boss": -30, "open": 10, "passage": -40, "metalAnger": 2, "metalRage": 2, "metalPleased": 5, "metalFriendly": 5, "increasingWeight":0.5, "nevermere": 30},
 		allFloors: true, shrines: ["Metal"],
 		dropTable: [{name: "Gold", amountMin: 35, amountMax: 50, weight: 10}, {name: "Blaster", weight: 100, ignoreInInventory: true},]
@@ -1231,7 +1231,7 @@ let KinkyDungeonEnemies = [
 		],
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}, {name: "IceRune", weight: 1}, {name: "IceBreaker", weight: 0.1, ignoreInInventory: true}]},
 	{name: "ElementalWater", faction: "Elemental", playLine: "Elemental", clusterWith: "ice", bound: "ElementalWater", color: "#57ff88", tags: KDMapInit(["opendoors", "water", "elemental", "ranged", "fireresist", "acidimmune", "electricsevereweakness", "latexRestraints", "ropeRestraints", "elite", "leashing", "jail", "jailer", "hunter"]), armor: 0, kite: 1.5, followRange: 3, AI: "hunt", guardChance: 0.6, evasion: 0.25, summon: [{enemy: "ElementalIce", range: 2.5, count: 1, chance: 0.6, strict: true}],
-		specialCD: 5, specialAttack: "Pull", specialCDonAttack: true, specialAttackPoints: 4, specialRange: 4, specialWidth: 3, specialMinrange: 1.5, specialsfx: "Song", hitsfx: "Song", tilesMinRangeSpecial: 2,
+		specialCD: 5, specialAttack: "PullWill", specialCDonAttack: true, specialAttackPoints: 4, specialRange: 4, specialWidth: 3, specialMinrange: 1.5, specialsfx: "Song", hitsfx: "Song", tilesMinRangeSpecial: 2,
 		visionRadius: 7, maxhp: 12, minLevel:3, weight:-2, movePoints: 1.5, followLeashedOnly: true, projectileTargeting: true,
 		attackPoints: 3, attack: "MeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 5, dmgType: "charm", pullTowardSelf: true, pullDist: 2, pullMsg: true,
 		attackLock: "Purple",
