@@ -5225,5 +5225,5 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
  */
 function KDAssignLeashPoint(enemy) {
 	AIData.nearestJail = KinkyDungeonNearestJailPoint(enemy.x, enemy.y);
-	if (KinkyDungeonFlags.has("LeashToPrison")) AIData.nearestJail = Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+	if (!AIData.nearestJail || KinkyDungeonFlags.has("LeashToPrison")) AIData.nearestJail = Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
 }
