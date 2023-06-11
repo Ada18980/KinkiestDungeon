@@ -1149,7 +1149,7 @@ function KinkyDungeonDrawGame() {
 			// Draw the player no matter what
 			if (!StandalonePatched) {
 				KinkyDungeonContextPlayer.clearRect(0, 0, KinkyDungeonCanvasPlayer.width, KinkyDungeonCanvasPlayer.height);
-				DrawCharacter(KinkyDungeonPlayer, -KinkyDungeonGridSizeDisplay/2, KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : (KinkyDungeonPlayer.Pose.includes("KneelSpread") ? -165 : 0)), KinkyDungeonGridSizeDisplay/250, false, KinkyDungeonContextPlayer);
+				DrawCharacter(KinkyDungeonPlayer, -KinkyDungeonGridSizeDisplay/2, (KinkyDungeonPlayer.HeightModifier || 0)/3.5, KinkyDungeonGridSizeDisplay/250, false, KinkyDungeonContextPlayer);
 			} else {
 				let PlayerModel = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer) : null;
 				let zoom = PlayerModel ? KinkyDungeonGridSizeDisplay/1200
