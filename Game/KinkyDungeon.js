@@ -800,6 +800,15 @@ function KinkyDungeonRun() {
 			refresh = true;
 		}
 
+		if (KinkyDungeonPlayer?.Appearance) {
+			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
+				if (KinkyDungeonPlayer.Appearance[A]?.Asset?.Name?.includes("Penis")) {
+					KinkyDungeonPlayer.Appearance.splice(A, 1);
+					A--;
+				}
+			}
+		}
+
 		for (let MC of KDCurrentModels.values()) {
 
 
