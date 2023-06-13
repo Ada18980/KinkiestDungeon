@@ -1045,8 +1045,11 @@ function KinkyDungeonRun() {
 			CharacterReleaseTotal(KinkyDungeonPlayer);
 			KinkyDungeonDressPlayer();
 			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: false, AllowFullWardrobeAccess: true};
-			if (!StandalonePatched)
+			if (!StandalonePatched) {
+				if (!KDPatched)
+					MainCanvas.textAlign = "center";
 				CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
+			}
 			KinkyDungeonConfigAppearance = true;
 			CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
 			CharacterRefresh(KinkyDungeonPlayer);
