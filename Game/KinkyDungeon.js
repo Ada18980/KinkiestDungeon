@@ -793,20 +793,20 @@ let GlobalRefreshInterval = 1000;
 let KDGlobalRefresh = false;
 
 function KinkyDungeonRun() {
+
+	if (KinkyDungeonPlayer?.Appearance) {
+		for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
+			if (KinkyDungeonPlayer.Appearance[A]?.Asset?.Name?.includes("Penis")) {
+				KinkyDungeonPlayer.Appearance.splice(A, 1);
+				A--;
+			}
+		}
+	}
 	if (StandalonePatched && KDCurrentModels) {
 		let refresh = false;
 		if (CommonTime() > lastGlobalRefresh + GlobalRefreshInterval) {
 			lastGlobalRefresh = CommonTime();
 			refresh = true;
-		}
-
-		if (KinkyDungeonPlayer?.Appearance) {
-			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
-				if (KinkyDungeonPlayer.Appearance[A]?.Asset?.Name?.includes("Penis")) {
-					KinkyDungeonPlayer.Appearance.splice(A, 1);
-					A--;
-				}
-			}
 		}
 
 		for (let MC of KDCurrentModels.values()) {
@@ -1048,6 +1048,8 @@ function KinkyDungeonRun() {
 			if (!StandalonePatched)
 				CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
 			KinkyDungeonConfigAppearance = true;
+			CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
+			CharacterRefresh(KinkyDungeonPlayer);
 			return true;
 		}, true, 30, 942, 440, 50, TextGet("KinkyDungeonDressPlayer"), "#ffffff", "");
 
