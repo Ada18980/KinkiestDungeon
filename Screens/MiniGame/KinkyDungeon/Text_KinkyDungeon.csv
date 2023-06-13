@@ -34,8 +34,8 @@ KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
-Intro4,"(This game does not contain spiders or any carnivorous creatures/plants)"
-Intro4BC,"(Check out the latest standalone version at the News and Updates link below!)"
+Intro4,"(This game does not contain spiders)"
+Intro4BC,""
 KDToggleSound,Enable Sound
 KDToggleDrool,Enable Drool/Tears
 KDToggleDrawArmor,Draw Armor
