@@ -3483,7 +3483,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 			nextPosy: moveY,
 		};
 		KinkyDungeonSendEvent("canSprint", data);
-		if (data.canSprint && data.passThru) {
+		if (data.canSprint && data.passThru && !SuppressSprint) {
 			passThroughSprint = true;
 		}
 	}
