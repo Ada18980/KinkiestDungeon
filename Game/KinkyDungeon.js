@@ -470,7 +470,7 @@ let KDGameData = Object.assign({}, KDGameDataBase);
 
 let KDLeashingEnemy = null;
 function KinkyDungeonLeashingEnemy() {
-	if (KDGameData.KinkyDungeonLeashingEnemy) {
+	if (KDGameData.KinkyDungeonLeashingEnemy || KDUpdateEnemyCache) {
 		if (!KDLeashingEnemy) {
 			KDLeashingEnemy = KinkyDungeonFindID(KDGameData.KinkyDungeonLeashingEnemy);
 		}
@@ -487,7 +487,7 @@ let KDJailGuard = null;
  */
 function KinkyDungeonJailGuard() {
 	if (KDGameData.KinkyDungeonJailGuard) {
-		if (!KDJailGuard) {
+		if (!KDJailGuard || KDUpdateEnemyCache) {
 			KDJailGuard = KinkyDungeonFindID(KDGameData.KinkyDungeonJailGuard);
 		}
 	} else {
@@ -498,7 +498,7 @@ function KinkyDungeonJailGuard() {
 let KDAngel = null;
 function KinkyDungeonAngel() {
 	if (KDGameData.KinkyDungeonAngel) {
-		if (!KDAngel) {
+		if (!KDAngel || KDUpdateEnemyCache) {
 			KDAngel = KinkyDungeonFindID(KDGameData.KinkyDungeonAngel);
 		}
 	} else {
@@ -2641,6 +2641,7 @@ function KinkyDungeonClick() {
  * @returns {void} - Nothing
  */
 function KinkyDungeonExit() {
+	KinkyDungeonGameKey.removeKeyListener();
 	CommonDynamicFunction(MiniGameReturnFunction + "()");
 
 	// Refresh the player character if needed
