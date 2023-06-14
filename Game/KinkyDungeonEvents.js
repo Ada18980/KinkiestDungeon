@@ -24,22 +24,10 @@ let KDEventDataBase = {
 };
 let KDEventData = Object.assign({}, KDEventDataBase);
 
-/**
- *
- * @param {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>} map
- * @param event
- * @returns {boolean} If map has event
- */
 function KDMapHasEvent(map, event) {
 	return map[event] != undefined;
 }
 
-/**
- *
- * @param {string} Event
- * @param {*} data
- * @param forceSpell
- */
 function KinkyDungeonSendEvent(Event, data, forceSpell) {
 	KinkyDungeonSendMagicEvent(Event, data, forceSpell);
 	KinkyDungeonSendWeaponEvent(Event, data);
@@ -64,11 +52,8 @@ function KinkyDungeonResetEventVariablesTick(delta) {
 
 /**
  * Function mapping
- * to expand, keep {@link event} as a constant API call
- *
- * Accessed from {@link KinkyDungeonSendInventoryEvent} and {@link KinkyDungeonHandleInventoryEvent}
- *
- * @type {Object.<string, Object.<string, event>>}
+ * to expand, keep (e, item, data) => {...} as a constant API call
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
  */
 let KDEventMapInventory = {
 	"postApply": {
@@ -1300,8 +1285,7 @@ function KinkyDungeonHandleInventoryEvent(Event, kinkyDungeonEvent, item, data) 
 
 
 /**
- * Accessed from {@link KinkyDungeonSendBuffEvent} and {@link KinkyDungeonHandleBuffEvent}
- * @type {Object.<string, Object.<string, event>>}
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, entity, *): void>>}
  */
 const KDEventMapBuff = {
 	"beforeDamageEnemy": {
@@ -1793,8 +1777,7 @@ function KinkyDungeonHandleBuffEvent(Event, e, buff, entity, data) {
 
 
 /**
- * Accessed from {@link KinkyDungeonSendOutfitEvent} and {@link KinkyDungeonHandleOutfitEvent}
- * @type {Object.<string, Object.<string, event>>}
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
  */
 let KDEventMapOutfit = {
 	"calcEvasion": {
@@ -1824,8 +1807,7 @@ function KinkyDungeonHandleOutfitEvent(Event, e, outfit, data) {
 }
 
 /**
- * Accessed from {@link KinkyDungeonSendMagicEvent} and {@link KinkyDungeonHandleMagicEvent}
- * @type {Object.<string, Object.<string, event>>}
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
  */
 let KDEventMapSpell = {
 	"blockPlayer": {
@@ -2458,8 +2440,7 @@ function KinkyDungeonHandleMagicEvent(Event, e, spell, data) {
 
 
 /**
- * Accessed from {@link KinkyDungeonSendWeaponEvent} and {@link KinkyDungeonHandleWeaponEvent}
- * @type {Object.<string, Object.<string, event>>}
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, weapon, *): void>>}
  */
 let KDEventMapWeapon = {
 	"beforePlayerDamage": {
@@ -3039,8 +3020,7 @@ function KinkyDungeonHandleWeaponEvent(Event, e, weapon, data) {
 
 
 /**
- * Accessed from {@link KinkyDungeonSendBulletEvent} and {@link KinkyDungeonHandleBulletEvent}
- * @type {Object.<string, Object.<string, event>>}
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
  */
 let KDEventMapBullet = {
 	"beforeBulletHit": {
@@ -3426,8 +3406,7 @@ function KinkyDungeonHandleBulletEvent(Event, e, b, data) {
 
 
 /**
- * Accessed from {@link KinkyDungeonSendEnemyEvent} and {@link KinkyDungeonHandleEnemyEvent}
- * @type {Object.<string, Object.<string, event>>}
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, entity, *): void>>}
  */
 let KDEventMapEnemy = {
 	"passout": {
@@ -3931,8 +3910,7 @@ function KinkyDungeonHandleEnemyEvent(Event, e, enemy, data) {
 
 
 /**
- * Accessed from {@link KinkyDungeonHandleGenericEvent}
- * @type {Object.<string, Object.<string, event>>}
+ * @type {Object.<string, Object.<string, function(string, *): void>>}
  */
 let KDEventMapGeneric = {
 	"calcEnemyTags": {
