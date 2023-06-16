@@ -1425,7 +1425,7 @@ function KinkyDungeonCapture(enemy) {
 				if (uniform.includes(KDGameData.Champion)) uniform = [KDGameData.Champion];
 				let restraints = [];
 				for (let u of uniform) {
-					for (let r of KinkyDungeonGetRestraintsWithShrine(u, true)) {
+					for (let r of KinkyDungeonGetRestraintsWithShrine(u, true, true)) {
 						restraints.push(r);
 					}
 				}
