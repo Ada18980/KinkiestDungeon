@@ -882,6 +882,34 @@ function KDDefeatedPlayerTick() {
 	KinkyDungeonSetFlag("playerDefeated", 1);
 }
 
+function KDEnterDemonTransition() {
+	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
+	KDGameData.PrisonerState = 'jail';
+	KDGameData.RoomType = "DemonTransition"; // We do a tunnel every other room
+	KDGameData.MapMod = ""; // Reset the map mod
+	KDGameData.CurrentDialog = "";
+	let params = KinkyDungeonMapParams.DemonTransition;
+	KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
+
+	for (let inv of KinkyDungeonAllRestraint()) {
+		if (KDRestraint(inv).removePrison && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {
+			KinkyDungeonRemoveRestraint(KDRestraint(inv).Group, false);
+		}
+	}
+
+	KinkyDungeonDressPlayer();
+	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Evil.ogg");
+
+	KDGameData.JailKey = false;
+
+	KDMovePlayer(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false);
+
+	KinkyDungeonLoseJailKeys();
+	KDResetAllAggro();
+
+	KinkyDungeonSaveGame();
+}
+
 function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
 	KDGameData.PrisonerState = 'jail';

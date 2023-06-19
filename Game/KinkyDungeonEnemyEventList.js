@@ -278,6 +278,54 @@ let KDIntentEvents = {
 			return false;
 		},
 	},
+	"CaptureDemon": {
+		aggressive: true,
+		nonaggressive: true,
+		noplay: true,
+		forceattack: true,
+		// This is the basic leash to jail mechanic
+		weight: (enemy, AIData, allied, hostile, aggressive) => {
+			return hostile && (enemy.Enemy.tags.leashing && enemy.Enemy.tags.demon) && KDPlayerLeashed(KinkyDungeonPlayerEntity) ? 2000 : 0;
+		},
+		trigger: (enemy, AIData) => {
+			let point = KinkyDungeonGetRandomEnemyPointCriteria((x,y) => {
+				return KDistEuclidean(x - enemy.x, y - enemy.y) < 10 && KDistEuclidean(x - KinkyDungeonPlayerEntity.x, y - KinkyDungeonPlayerEntity.y) > 4;
+			}, true, false, enemy);
+			if (point) {
+				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
+				/** Create the portal */
+				KDCreateEffectTile(point.x, point.y, {
+					name: "Portals/DarkPortal",
+				}, 0);
+
+				enemy.playWithPlayer = 0;
+				enemy.IntentAction = 'CaptureDemon';
+				enemy.IntentLeashPoint = {
+					x: point.x,
+					y: point.y,
+					type: "DemonPortal",
+					radius: 1.0,
+				};
+			}
+		},
+		maintain: (enemy, delta) => {
+			if (!enemy.IntentLeashPoint || !KDEffectTileTags(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y).demonportal || !KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
+				KDResetIntent(enemy, AIData);
+				return true;
+			}
+			return false;
+		},
+		arrive: (enemy, AIData) => {
+			if (!enemy.IntentLeashPoint || !KDEffectTileTags(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y).demonportal || !KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
+				return false;
+			}
+			KDResetIntent(enemy, AIData);
+			KDBreakTether();
+			AIData.defeat = true;
+			KDCustomDefeat = KDEnterDemonTransition;
+			return true;
+		},
+	},
 	"leashFurnitureAggressive": {
 		noplay: true,
 		aggressive: true,

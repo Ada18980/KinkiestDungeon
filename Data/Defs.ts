@@ -33,25 +33,26 @@ let LAYERS_BASE = [
 	"CollarAcc",
 	"Collar",
 
+	"ForeWrists",
 
 	// Forearms (only in HandsFront)
+	"ForeWristLeft",
+	"ForeArmLeft",
+
 	"ForeSleeveLeft",
 	"ForeSleeveDecoLeft",
 	"GloveLeft",
 	"ForeHandLeft",
+
+	"ForeWristRight",
+	"ForeArmRight",
 
 	"ForeSleeveRight",
 	"ForeSleeveDecoRight",
 	"GloveRight",
 	"ForeHandRight",
 
-	"ForeWrists",
 
-	"ForeWristLeft",
-	"ForeArmLeft",
-
-	"ForeWristRight",
-	"ForeArmRight",
 
 	// This slot is for things like breastplates and things that go over
 	"Jacket",

@@ -3769,3 +3769,29 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, baseP
 function KDGetRestraintTags(restraint) {
 	return [...restraint.shrine];
 }
+
+/**
+ *
+ * @param {item} item
+ * @param {string} name
+ * @returns {any}
+ */
+function KDItemDataQuery(item, name) {
+	if (item?.data) {
+		return item.data[name];
+	}
+	return undefined;
+}
+/**
+ *
+ * @param {item} item
+ * @param {string} name
+ * @param {number | string} value
+ * @returns {any}
+ */
+function KDItemDataSet(item, name, value) {
+	if (!item.data) {
+		item.data = {};
+	}
+	item.data[name] = value;
+}

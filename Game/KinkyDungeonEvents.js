@@ -270,6 +270,14 @@ let KDEventMapInventory = {
 		},
 	},
 	"tick": {
+		"AntiMagicGag": (e, item, data) => {
+			let alreadyDone = KDItemDataQuery(item, "manaDrained") || 0;
+			if (alreadyDone < e.count) {
+				KinkyDungeonChangeMana(-e.power);
+				alreadyDone += e.power;
+				KDItemDataSet(item, "manaDrained", alreadyDone);
+			} else {item.name = "MagicGag2";}
+		},
 		"DollmakerMask": (e, item, data) => {
 			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
 			if (altType && altType.spawns === false) return;
@@ -2288,7 +2296,7 @@ let KDEventMapSpell = {
 					time: e.time,
 					bind: e.bind,
 					bindType: e.bindType,
-				}, false, true, undefined, undefined, KinkyDungeonPlayerEntity);
+				}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity);
 			}
 		},
 		"EffectTile": (e, spell, data) => {
@@ -2703,7 +2711,7 @@ let KDEventMapWeapon = {
 						time: e.time,
 						bind: e.bind,
 						bindType: e.bindType,
-					}, false, true, undefined, undefined, KinkyDungeonPlayerEntity);
+					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity);
 				}
 			}
 		},

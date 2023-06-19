@@ -860,6 +860,93 @@ const KinkyDungeonMapParams = {
 
 		"lockmult" : 2.0,
 	},
+
+
+
+
+	// Extra
+	"DemonTransition":{// DungeonName1,-Catacombs-
+		shadowColor: 0x000000,
+		"background" : "Dungeon",
+		"openness" : 0,
+		"density" : 2,
+		"crackchance" : 0.09,
+		"barchance" : 0.2,
+		"brightness" : 4,
+		"chestcount" : 7,
+		"shrinecount" : 12,
+		"chargerchance": 0.5,
+		"litchargerchance": 0.5,
+		"chargercount": 7,
+		"shrinechance" : 0.6,
+		"ghostchance" : 0.5,
+		"doorchance" : 0.8,
+		"nodoorchance" : 0.05,
+		"doorlockchance" : -0.05,
+		"trapchance" : 0.65,
+		"grateChance" : 0.1,
+		"rubblechance" : 0.3,
+		"brickchance" : 0.4,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 0.72,
+		"forbiddenGreaterChance" : 0.33,
+		cageChance: 0.8,
+		torchlitchance: 0.2,
+		torchchance: 1.0,
+		torchchanceboring: -0.4,
+		torchreplace: {
+			sprite: "EdgeOrb",
+			unlitsprite: "EdgeOrbDead",
+			brightness: 5,
+		},
+
+		worldGenCode: () => {
+		},
+
+		music: {
+			"EDGEOFREALITY.ogg": 10,
+		},
+
+		tagModifiers: {
+			"narrow": 2,
+			"dungeon": 2,
+			"open": 0.5,
+			"jungle": 0,
+			"cavern": 0,
+		},
+
+		"setpieces": [
+		],
+
+		"shortcuts": [
+		],
+		"mainpath": [
+		],
+
+		"traps": [
+			{Name: "SpawnEnemies", Enemy: "ShadowHand", strict: true, Level: 0, Power: 3, Weight: 10},
+			{Name: "SpawnEnemies", Enemy: "TickleTerror", strict: true, Level: 0, Power: 1, Weight: 10},
+			{Name: "SpawnEnemies", Enemy: "HugHorror", strict: true, Level: 0, Power: 1, Weight: 10},
+		],
+
+		"min_width" : 5,
+		"max_width" : 7,
+		"min_height" : 5,
+		"max_height" : 6,
+
+		factionList: ["Demon"],
+
+		enemyTags: ["edgereality"],
+		"defeat_outfit": "Dungeon",
+		"shrines": [
+			{Type: "Latex", Weight: 3},
+			{Type: "Commerce", Weight: 0},
+			{Type: "Leather", Weight: 5},
+			{Type: "Metal", Weight: 3},
+			{Type: "Rope", Weight: 2},
+			{Type: "Will", Weight: 7},]
+
+	},
 };
 
 

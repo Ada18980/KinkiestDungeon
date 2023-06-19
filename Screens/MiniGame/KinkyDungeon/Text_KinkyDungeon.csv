@@ -31,7 +31,7 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 
-KinkyDungeon,"Kinky Dungeon v4.25"
+KinkyDungeon,"Kinky Dungeon v4.3"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -833,6 +833,10 @@ DungeonNamewiz,Wizards' Den
 DungeonNamemrb,Marble Halls
 DungeonNamedll,Doll Storage
 DungeonName20,
+DungeonNameDollRoom,Doll Processing
+DungeonNameDemonTransition,The Edge of Reality
+DungeonNameDemonEscape,The Edge of Reality
+DungeonNameDemonPrison,Dark Dimension
 
 LootRubbleFail,You search through the debris but find nothing of note
 LootRubbleSmallGold,You find some gold coins in a corner (+XXX gold)
@@ -3516,6 +3520,9 @@ RestraintMagicGagDesc2,"You can't seem to enunciate your spells properly with th
 RestraintMagicGag2,Magic Ball Gag
 RestraintMagicGag2Desc,"A gag enchanted with magic. It grows to fill your mouth so you can hardly speak."
 RestraintMagicGag2Desc2,"It's brimming with conjured energy. A normal knife won't work here!"
+RestraintAntiMagicGag,Anti-Magic Gag
+RestraintAntiMagicGagDesc,"A gag designed to cripple mages. It's made of a squishy rubbery material."
+RestraintAntiMagicGagDesc2,"It's sealed with a magical spell that rapidly absorbs mana! When it drains 40 mana it will transform into an ordinary gag and inflate."
 RestraintTrapBoots,Ballet Heels
 RestraintTrapBootsDesc,"A pair of shoes with heels so tall it forces you on your toes."
 RestraintTrapBootsDesc2,"These will take some getting used to."
@@ -4448,6 +4455,10 @@ KDEffectTileTooltipIllusOrb,Wall Sconce
 KDEffectTileTooltipIllusOrbDesc,"Provides light"
 KDEffectTileTooltipIllusOrbDead,Broken Wall Sconce
 KDEffectTileTooltipIllusOrbDeadDesc,"It is beyond repair."
+KDEffectTileTooltipEdgeOrb,Light Portal
+KDEffectTileTooltipEdgeOrbDesc,"Provides light"
+KDEffectTileTooltipEdgeOrbDead,Empty Portal
+KDEffectTileTooltipEdgeOrbDeadDesc,"Stare into the void..."
 KDEffectTileTooltipLatex,Liquid Latex
 KDEffectTileTooltipLatexDesc,"Engulfs creatures"
 KDEffectTileTooltipLatexThin,Liquid Latex
@@ -9711,7 +9722,7 @@ rPrisonerRescueElemental,"(A SPEAKER wakes you up by knocking on the bars)|Hey, 
 rPrisonerRescueAncientRobot,"(A SPEAKER flashes a bright light in your direction)|Prisoner 74121 located. Commence transfer to different location."
 rAllyRescue,"(A SPEAKER wakes you up)|We came to rescue you. Come on!"
 
-rBed,"(The bed looks comfy and inviting)|(Napping here will restore up to half of your willpower)|(You can only sleep once per floor, unless jailed)"
+rBed,"(The bed looks comfy and inviting)|(Napping here will restore up to half of your willpower and 100% of your max mana)|(You can only sleep once per floor, unless jailed)"
 rBedSleep,"(You lay in the bed and doze off...)"
 dBed_Sleep,(Lie down and sleep)
 
@@ -10529,3 +10540,16 @@ RestraintWeakMagicRopeLegsDesc2,"They glow with a trace of magic."
 RestraintWeakMagicRopeFeet,Magic Ankle Tie
 RestraintWeakMagicRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintWeakMagicRopeFeetDesc2,"They glow with a trace of magic."
+
+KDEffectTileTooltipPortals/DarkPortal,Dark Portal
+KDEffectTileTooltipPortals/DarkPortalDesc,"They are trying to take you somewhere!"
+
+NameDemonEye,The Observer
+KillDemonEye,"The Observer is exorcised... for now."
+AttackDemonEyeBind,"The Observer overwhelms you with its power... (+RestraintAdded)"
+AttackDemonEye,"The Observer welcomes you to your new future. (DamageTaken)"
+AttackDemonEyeLock,"The demon cackles as your restraints are sealed! (DamageTaken)"
+KDObserverVanishFail,"The Observer smiles and vanishes."
+KDObserverVanishSucceed,"The Observer smiles and vanishes, leaving you with a mysterious curse..."
+
+KinkyDungeonFactionObserver,From the Beyond

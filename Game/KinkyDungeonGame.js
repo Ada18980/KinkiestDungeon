@@ -570,7 +570,10 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		let doorlocktrapchance = MapParams.doorlocktrapchance ? MapParams.doorlocktrapchance : MapParams.trapchance;
 		let minortrapChance = MapParams.minortrapChance ? MapParams.minortrapChance : trapChance/3;
 		// Door algorithm is defunct
-		//let grateChance = MapParams.grateChance;
+		let grateChance = MapParams.grateChance;
+		let doorchance = MapParams.doorchance;
+		let nodoorchance = MapParams.nodoorchance;
+		let doorlockchance = MapParams.doorlockchance;
 		let gasChance = (MapParams.gaschance && KDRandom() < MapParams.gaschance) ? (MapParams.gasdensity ? MapParams.gasdensity : 0) : 0;
 		let gasType = MapParams.gastype ? MapParams.gastype : 0;
 		let brickchance = MapParams.brickchance; // Chance for brickwork to start being placed
@@ -692,7 +695,9 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 				console.log(`${performance.now() - startTime} ms for chest creation`);
 				startTime = performance.now();
 			}
-			let traps2 = [];//KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapChance, grateChance, Floor, width, height);
+			let traps2 = [];
+			if (altType && altType.placeDoors)
+				KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapChance, grateChance, Floor, width, height);
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for door creation`);
 				startTime = performance.now();
@@ -720,7 +725,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 				console.log(`${performance.now() - startTime} ms for charger creation`);
 				startTime = performance.now();
 			}
-			if (!altType || altType.nobrick)
+			if (!altType || !altType.nobrick)
 				KinkyDungeonPlaceBrickwork(brickchance, Floor, width, height);
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for brickwork creation`);
@@ -814,7 +819,10 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		if (KDGameData.KinkyDungeonSpawnJailers > 3 && KDGameData.KinkyDungeonSpawnJailers < KDGameData.KinkyDungeonSpawnJailersMax - 1) KDGameData.KinkyDungeonSpawnJailers -= 1; // Reduce twice as fast when you are in deep...
 
 		// Set map brightness
-		KinkyDungeonMapBrightness = MapParams.brightness;
+		let lightingParams = null;
+		if (altType?.lightParams) lightingParams = KinkyDungeonMapParams[altType.lightParams];
+		else if (altType?.skin) lightingParams = KinkyDungeonMapParams[altType.skin];
+		KinkyDungeonMapBrightness = lightingParams ? lightingParams.brightness : MapParams.brightness;
 		KinkyDungeonMakeGhostDecision();
 
 		// Place the jail keys AFTER making the map!
@@ -2412,12 +2420,12 @@ function KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapCh
 				for (let XX = X-1; XX <= X+1; XX += 1)
 					for (let YY = Y-1; YY <= Y+1; YY += 1) {
 						let get = KinkyDungeonMapGet(XX, YY);
-						if (!(XX == X && YY == Y) && (get == '1' || get == 'X' || get == 'C')) {
+						if (!(XX == X && YY == Y) && (!KinkyDungeonGroundTiles.includes(get))) {
 							wallcount += 1; // Get number of adjacent walls
-							if (XX == X+1 && YY == Y && get == '1') right = true;
-							else if (XX == X-1 && YY == Y && get == '1') left = true;
-							else if (XX == X && YY == Y+1 && get == '1') down = true;
-							else if (XX == X && YY == Y-1 && get == '1') up = true;
+							if (XX == X+1 && YY == Y && !KinkyDungeonGroundTiles.includes(get)) right = true;
+							else if (XX == X-1 && YY == Y && !KinkyDungeonGroundTiles.includes(get)) left = true;
+							else if (XX == X && YY == Y+1 && !KinkyDungeonGroundTiles.includes(get)) down = true;
+							else if (XX == X && YY == Y-1 && !KinkyDungeonGroundTiles.includes(get)) up = true;
 						} else if (get == 'D') // No adjacent doors
 							wallcount = 100;
 					}

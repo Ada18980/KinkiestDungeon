@@ -607,6 +607,11 @@ interface enemy extends KDHasTags {
 	GFX?: {
 		/** Custom sprite while lying in wait */
 		AmbushSprite?: string,
+		/** custom sprite width*/
+		spriteWidth?: number,
+		/** custom sprite height*/
+		spriteHeight?: number,
+
 	},
 
 	/** Behavior tags */
