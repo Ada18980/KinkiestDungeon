@@ -118,18 +118,7 @@ function KeyDown(event) {
  */
 function DocumentKeyDown(event) {
 	if (event.repeat) return;
-	if (event.key == "Escape") {
-		if (CurrentScreenFunctions.Exit) {
-			CurrentScreenFunctions.Exit();
-		} else if ((CurrentCharacter != null) && Array.isArray(DialogMenuButton) && (DialogMenuButton.indexOf("Exit") >= 0)) {
-			if (!DialogLeaveFocusItem())
-				DialogLeaveItemMenu();
-		} else if ((CurrentCharacter != null) && (CurrentScreen == "ChatRoom")) {
-			DialogLeave();
-		} else if ((CurrentCharacter == null) && (CurrentScreen == "ChatRoom") && (document.getElementById("TextAreaChatLog") != null)) {
-			ElementScrollToEnd("TextAreaChatLog");
-		}
-	} else if (event.key == "Tab") {
+	if (event.key == "Tab") {
 		KeyDown(event);
 	}
 }
