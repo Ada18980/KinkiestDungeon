@@ -410,9 +410,12 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					let sp = sprite;
 					if (!enemy.ambushtrigger && enemy.Enemy.GFX?.AmbushSprite && KDAmbushAI(enemy)) sp = enemy.Enemy.GFX.AmbushSprite;
 					else if (enemy.CustomSprite && !buffSprite) sp = "CustomSprite/" + enemy.CustomSprite;
+					let w = enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay;
+					let h = enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay;
+					let color = (enemy.Enemy.GFX?.lighting) ? KDGetLightColor(enemy.x, enemy.y) : undefined;
 					KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + "Enemies/" + sp + ".png",
-						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
-						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
+						(tx - CamX)*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2, (ty - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
+						w, h, undefined, color != undefined ? {tint: color} : undefined);
 				} else {
 					let sp = buffSprite || enemy.Enemy.bound;
 					let dir = "EnemiesBound/";
@@ -422,9 +425,10 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					}
 					let w = enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay;
 					let h = enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay;
+					let color = (enemy.Enemy.GFX?.lighting) ? KDGetLightColor(enemy.x, enemy.y) : undefined;
 					KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + dir + sp + ".png",
 						(tx - CamX)*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2, (ty - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
-						w, h);
+						w, h, undefined, color != undefined ? {tint: color} : undefined);
 				}
 			}
 		}
@@ -1804,7 +1808,7 @@ function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerD
  * @param {*} minDist
  * @returns {{x: number, y: number}}
  */
-function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6) {
+function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOffLimits = false) {
 	let tries = 0;
 
 	while (tries < 100) {
@@ -1819,7 +1823,7 @@ function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlay
 				&& (!onlyPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) <= playerDist))
 				&& (!KinkyDungeonPointInCell(X, Y)) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))
 				&& (!Enemy || KinkyDungeonNoEnemyExceptSub(X, Y, true, Enemy))
-				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)
+				&& (ignoreOffLimits || !KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)
 				&& (!criteria || criteria(X, Y))) {
 				return {x: X, y:Y};
 			}
@@ -4053,6 +4057,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					TextGet(enemy.Enemy.miscastmsg || "KDEnemyMiscast").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#88ff88", 2);
 				KinkyDungeonCastSpell(enemy.x, enemy.y, KinkyDungeonFindSpell("EnemyMiscast", true), enemy, player);
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + (enemy.Enemy.miscastsfx || "SoftShield") + ".ogg", enemy);
+				KinkyDungeonSendEvent("enemyMiscast", {spell: spell, enemy: enemy, player: player, AIData: AIData});
 			} else if (spell) {
 				if (spell.channel && !enemy.Enemy.noChannel) enemy.channel = spell.channel;
 				enemy.castCooldown = spell.manacost*enemy.Enemy.spellCooldownMult + enemy.Enemy.spellCooldownMod + 1;
@@ -4079,6 +4084,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					if (enemy.Enemy.suicideOnSpell) enemy.hp = 0;
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + spell.sfx + ".ogg", enemy);
 				}
+
+				KinkyDungeonSendEvent("enemyCast", {spell: spell, spelltarget: spelltarget, enemy: enemy, player: player, AIData: AIData});
 
 
 			//console.log("casted "+ spell.name);

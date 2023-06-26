@@ -124,6 +124,9 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 	if (!KDCanEscape()) {
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonNeedJailKey"), "#ffffff", 1);
 	}
+	else if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.AltStairAction) {
+		KDStairsAltAction[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction](toTile, suppressCheckPoint);
+	}
 	else {
 		if (!KinkyDungeonJailGuard() || !KinkyDungeonTetherLength() || (!(KDistEuclidean(KinkyDungeonJailGuard().x - KinkyDungeonPlayerEntity.x, KinkyDungeonJailGuard().y - KinkyDungeonPlayerEntity.y) <= KinkyDungeonTetherLength() + 2))) {
 
@@ -417,12 +420,18 @@ function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			if (tile.x >= CamX && tile.y >= CamY && tile.x < CamX + KinkyDungeonGridWidthDisplay && tile.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(tile.x, tile.y) > 0) {
 				if (!KDCanSeeEffectTile(tile)) continue;
 				let tileid = tile.x + "," + tile.y + "_" + sprite;
+				let color = undefined;
+				if (tile.tags?.includes("terrain")) {
+					color = KDGetLightColor(tile.x, tile.y);
+				}
+				let op = {
+					zIndex: -0.1 + 0.01 * tile.priority,
+					alpha: KDApplyAlpha(tileid, kdpixisprites.get(tileid)?.alpha, tile.fade, delta),
+				};
+				if (color != undefined) op.tint = color;
 				KDDraw(kdeffecttileboard, kdpixisprites, tileid, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",
 					(tile.x + (tile.xoffset ? tile.xoffset : 0) - CamX)*KinkyDungeonGridSizeDisplay, (tile.y - CamY + (tile.yoffset ? tile.yoffset : 0))*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, 0, {
-						zIndex: -0.1 + 0.01 * tile.priority,
-						alpha: KDApplyAlpha(tileid, kdpixisprites.get(tileid)?.alpha, tile.fade, delta),
-					});
+					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, 0, op);
 			}
 		}
 	}

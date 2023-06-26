@@ -406,6 +406,11 @@ KinkyDungeonStatDescTapePref,"Tape-wielding enemies (such as Tape Bots) occur mo
 KinkyDungeonStatTapeOptout,"Less Tape"
 KinkyDungeonStatDescTapeOptout,"Fewer tape-related enemies will appear, although this does not remove tape entirely."
 
+KinkyDungeonStatSlimePref,"More Encasement"
+KinkyDungeonStatDescSlimePref,"Enemies that encase you (e.g slimes, latex cubes) will appear more frequently."
+KinkyDungeonStatSlimeOptout,"Less Encasement"
+KinkyDungeonStatDescSlimeOptout,"Fewer encasement-related enemies will appear, although this does not remove it entirely."
+
 
 KinkyDungeonStatMC_Trainee,"Trainee"
 KinkyDungeonStatDescMC_Trainee,"Your training has given you access to the spells of the Trainee class. (Aroused mode only)"
@@ -10544,12 +10549,51 @@ RestraintWeakMagicRopeFeetDesc2,"They glow with a trace of magic."
 KDEffectTileTooltipPortals/DarkPortal,Dark Portal
 KDEffectTileTooltipPortals/DarkPortalDesc,"They are trying to take you somewhere!"
 
-NameDemonEye,The Observer
-KillDemonEye,"The Observer is exorcised... for now."
-AttackDemonEyeBind,"The Observer overwhelms you with its power... (+RestraintAdded)"
-AttackDemonEye,"The Observer welcomes you to your new future. (DamageTaken)"
-AttackDemonEyeLock,"The demon cackles as your restraints are sealed! (DamageTaken)"
-KDObserverVanishFail,"The Observer smiles and vanishes."
-KDObserverVanishSucceed,"The Observer smiles and vanishes, leaving you with a mysterious curse..."
+NameDemonEye,The Shadow
+KillDemonEye,"The Shadow is exorcised... for now."
+AttackDemonEyeBind,"The Shadow overwhelms you with its power... (+RestraintAdded)"
+AttackDemonEye,"The Shadow welcomes you to your new future. (DamageTaken)"
+AttackDemonEyeLock,"The Shadow cackles as your restraints are sealed! (DamageTaken)"
+KDObserverVanishFail,"The Shadow smiles and vanishes."
+KDObserverVanishSucceed,"The Shadow smiles and vanishes, leaving you with a mysterious curse..."
+
+NameObserver,Observer
+KillObserver,The observer is banished into the aether.
 
 KinkyDungeonFactionObserver,From the Beyond
+
+KinkyDungeonTrapSpawnLatexCubeMetal,"You briefly spot your reflection as a reflective cube appears!"
+NameLatexCubeMetal,Liquid Metal Cube
+KillLatexCubeMetal,"The liquid metal cube shatters into glittering dust."
+AttackLatexCubeMetal,"The liquid metal cube sticks to you and hardens! (DamageTaken)"
+AttackLatexCubeMetalBind,"The liquid metal cube expands across your body and hardens, taking the form of restraints! (+RestraintAdded)"
+
+
+RestraintLiquidMetalBoots,Liquid Metal (Feet)
+RestraintLiquidMetalBootsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalBootsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalFeet,Liquid Metal (Ankles)
+RestraintLiquidMetalFeetDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalFeetDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalLegs,Liquid Metal (Legs)
+RestraintLiquidMetalLegsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalLegsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalArms,Liquid Metal (Arms)
+RestraintLiquidMetalArmsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalArmsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalHands,Liquid Metal (Hands)
+RestraintLiquidMetalHandsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalHandsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalMouth,Liquid Metal (Mouth)
+RestraintLiquidMetalMouthDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalMouthDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalHead,Liquid Metal (Head)
+RestraintLiquidMetalHeadDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalHeadDesc2,"It will be quite difficult to escape this."
+
+KDRandomStairTeleportFail,"The stairs dissolve right before you!"
+KDRandomStairTeleport,"The stairs dissolve as you step onto them, pulling you with them to somewhere else."
+
+KDObserverCurseApply,"A dark energy enters your body... (DamageDealt)"
+KinkyDungeonBuffCursed,"A dark energy lurks within you."
+KDObserverCursed,"You succumb to a dark desire... (+RestraintAdded)"

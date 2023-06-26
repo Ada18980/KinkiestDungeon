@@ -183,7 +183,7 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Observer": {
 		Player: -1.0,
-		Jail: -0.25,
+		Jail: -1,
 	},
 	"Rock": {
 		Player: -1.0,

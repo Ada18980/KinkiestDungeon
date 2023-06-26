@@ -611,6 +611,8 @@ interface enemy extends KDHasTags {
 		spriteWidth?: number,
 		/** custom sprite height*/
 		spriteHeight?: number,
+		/** This enemy is affected by lighting */
+		lighting?: boolean,
 
 	},
 
@@ -1477,6 +1479,8 @@ interface spell {
 	faction?: string;
 	/** Whether the spell defaults to the Enemy faction */
 	enemySpell?: boolean;
+	/** Whether the spell has a direction offset when fired */
+	noDirectionOffset?: boolean,
 	/** Hide the spell if arousal mode is off */
 	arousalMode?: boolean;
 	/** Conjure, Illusion, Elements */
@@ -2136,6 +2140,30 @@ interface KDTrainingRecord {
 
 interface KDRopeType {
 	tags: string[],
+}
+
+interface KDSealGroup {
+	/** Whether the seal group is disabled based on the arousal mode */
+	arousalMode?: boolean,
+	/** Level of difficulty of the seal group */
+	level: number,
+	/** Prevents this seal group from being a greater seal */
+	disallowGreater?: boolean,
+	/** Prevents this seal group from being a lesser seal */
+	disallowLesser?: boolean,
+	/** The seals in this seal group */
+	seals: KDSeal[],
+}
+
+interface KDSeal {
+	/** Name of the seal buff */
+	name: string,
+	/** Color of the seal buff */
+	aura: string,
+	/** Sprite of the seal buff */
+	aurasprite: string,
+	/** Events of the seal buff */
+	events: KinkyDungeonEvent[],
 }
 
 type KDTile = any;

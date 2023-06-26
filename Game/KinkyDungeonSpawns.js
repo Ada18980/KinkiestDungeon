@@ -156,9 +156,11 @@ let KDPerkToggleTags = [
  * @param {Record<string, {bonus: number, mult: number}>} [bonusTags]
  * @param {string[]} [filterTags]
  * @param {string[]} [requireSingleTag]
+ * @param {number} minWeight - Cut off weights below this one
+ * @param {boolean} minWeightFallback - Fallback to 0 minweight
  * @returns {enemy}
  */
-function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, requireHostile, bonusTags, filterTags, requireSingleTag) {
+function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, requireHostile, bonusTags, filterTags, requireSingleTag, minWeight = 0.0, minWeightFallback = true) {
 	let enemyWeightTotal = 0;
 	let enemyWeights = [];
 	let tags = Object.assign([], enemytags);
@@ -241,7 +243,7 @@ function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, requir
 				for (let tag of tags)
 					if (enemy.terrainTags[tag]) weight += enemy.terrainTags[tag];
 
-				if (weight > 0)
+				if (weight > minWeight)
 					enemyWeightTotal += Math.max(0, weight*weightMulti);
 			}
 		}
@@ -255,6 +257,10 @@ function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, requir
 			return enemyWeights[L].enemy;
 		}
 	}
+
+	// Mild recursion
+	if (minWeight > 0 && minWeightFallback) return KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, requireHostile, bonusTags, filterTags, requireSingleTag, 0, false);
+	return undefined;
 }
 
 /**

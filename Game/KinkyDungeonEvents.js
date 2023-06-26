@@ -1533,6 +1533,31 @@ const KDEventMapBuff = {
 				buff.duration = 0;
 			}
 		},
+		"Cursed": (e, buff, entity, data) => {
+			if (buff.power > 0 && entity.player) {
+				if (KinkyDungeonStatDistraction > 0.99 * KinkyDungeonStatDistractionMax) {
+					let tags = ["obsidianRestraints", "obsidianRestraintsLatex"];
+					let restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "Purple");
+					if (restraintAdd) {
+						if (KDRandom() < 0.2) {
+							buff.power -= 1;
+							KinkyDungeonAddRestraintIfWeaker(restraintAdd, MiniGameKinkyDungeonLevel, true, "Purple", true);
+							KinkyDungeonSendTextMessage(5, TextGet("KDObserverCursed").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), "#ff5555", 1);
+							if (e.count > 1) {
+								for (let i = 1; i < e.count; i++) {
+									restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "Purple");
+									KinkyDungeonAddRestraintIfWeaker(restraintAdd, MiniGameKinkyDungeonLevel, true, "Purple", true);
+									KinkyDungeonSendTextMessage(5, TextGet("KDObserverCursed").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), "#ff5555", 1);
+								}
+							}
+							KinkyDungeonSetFlag("ObserverCursed", 2 + Math.round(KDRandom() * 3));
+						}
+					}
+				}
+			} else {
+				buff.duration = 0;
+			}
+		},
 		"BoundByFate": (e, buff, entity, data) => {
 			if (buff.duration > 0) {
 				if (entity.player) {
@@ -3428,6 +3453,17 @@ let KDEventMapEnemy = {
 			if (!e.chance || KDRandom() < e.chance)
 				enemy.hp = 0;
 		}
+	},
+	"enemyCast": {
+		"RandomRespawn": (e, enemy, data) => {
+			if (data.enemy == enemy && KinkyDungeonEntities.length < 300) {
+				let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, 10, 10);
+				if (point) {
+					let e = DialogueCreateEnemy(point.x, point.y, enemy.Enemy.name);
+					e.faction = enemy.faction;
+				}
+			}
+		},
 	},
 	"calcManaPool": {
 		"PetManaRegen": (e, enemy, data) => {

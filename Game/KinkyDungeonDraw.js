@@ -2714,9 +2714,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 					sprite3 = null;
 				}
 				if (KinkyDungeonForceRenderFloor != "") floor = KinkyDungeonForceRenderFloor;
-				let light = KinkyDungeonBrightnessGet(RX, RY);
-				let lightColor = KDAvgColor(KinkyDungeonColorGet(RX, RY), KinkyDungeonShadowGet(RX, RY), light, 1);
-				lightColor = KDAvgColor(lightColor, 0xffffff, 1, 0.5); // Brighten
+				let lightColor = KDGetLightColor(RX, RY);
 
 				KDDraw(kdmapboard, kdpixisprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
 					(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
@@ -3286,4 +3284,17 @@ function KDPlayerDrawPoseButtons(C) {
 	KDModalArea_height = 370;
 	KDDrawPoseButtons(C, 700, 680, true, true, true);
 
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @returns {number} - the color in hex
+ */
+function KDGetLightColor(x, y) {
+	let light = KinkyDungeonBrightnessGet(x, y);
+	let color = KDAvgColor(KinkyDungeonColorGet(x, y), KinkyDungeonShadowGet(x, y), light, 1);
+	color = KDAvgColor(color, 0xffffff, 1, 0.5); // Brighten
+	return color;
 }
