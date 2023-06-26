@@ -46,8 +46,9 @@ let KDWardrobeCategories = [
 	"Eyes",
 	"Mouth",
 	"Body",
-	"Restraints",
 ];
+
+if (TestMode) KDWardrobeCategories.push("Restraints");
 
 let KDSelectedModel = null;
 /** @type {LayerFilter} */
