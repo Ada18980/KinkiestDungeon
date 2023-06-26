@@ -484,7 +484,9 @@ let KinkyDungeonEnemies = [
 		ignorechance: 1.0, armor: 2, followRange: 1, AI: "ambush", specialCD: 99, specialAttack: "Stun", specialAttackPoints: 1, specialRemove: "Bind", difficulty: 0.05, guardChance: 0,
 		visionRadius: 3, ambushRadius: 1.9, blindSight: 5, maxhp: 10, minLevel:2, weight:25, movePoints: 1.5, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
-	{name: "Bramble", faction: "Plant", clusterWith: "plant", color: "#00FF00", hitsfx: "DealDamage", tags: KDMapInit(["removeDoorSpawn", "immobile", "nature", "plant", "minor", "melee", "slashsevereweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist"]),
+	{name: "Bramble", faction: "Plant", clusterWith: "plant", color: "#00FF00", hitsfx: "DealDamage",
+		sneakThreshold: 0.01,
+		tags: KDMapInit(["removeDoorSpawn", "immobile", "nature", "plant", "minor", "melee", "slashsevereweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist"]),
 		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "wander", specialCD: 2, specialAttack: "Slow", specialAttackPoints: 1,
 		visionRadius: 1.5, blindSight: 1.5, maxhp: 16, minLevel:0, weight:-80, movePoints: 99999, attackPoints: 1, attack: "MeleeWill", attackWidth: 8, attackRange: 1, power: 1, dmgType: "pain",
 		terrainTags: {"passage": -50, "adjChest": -50, "door": -50, "open": 140, "elf": 10}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
@@ -841,7 +843,7 @@ let KinkyDungeonEnemies = [
 			punishRemote: 5,
 			punishRemoteChance: 0.35,
 		},
-		attackPoints: 4, attack: "MeleeBindLockAllSpell", multiBind: 2, attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, fullBoundBonus: 2, dmgType: "charm", attackLock: "Blue",
+		attackPoints: 4, attack: "MeleeWillBindLockAllSpell", multiBind: 2, attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, fullBoundBonus: 2, dmgType: "charm", attackLock: "Blue",
 		terrainTags: {"secondhalf":5, "lastthird":5, "boss": -30, "open": 10, "passage": -40, "metalAnger": 2, "metalRage": 2, "metalPleased": 5, "metalFriendly": 5, "increasingWeight":0.5, "nevermere": 30},
 		allFloors: true, shrines: ["Metal"],
 		dropTable: [{name: "Gold", amountMin: 35, amountMax: 50, weight: 10}, {name: "Blaster", weight: 100, ignoreInInventory: true},]
@@ -1028,7 +1030,7 @@ let KinkyDungeonEnemies = [
 		},
 		squeeze: true, evasion: -1, followRange: 1, AI: "ambush", sneakThreshold: 3, ambushRadius: 1.5,
 		visionRadius: 7.0, blindSight: 2.5, maxhp: 18, minLevel: 6, weight:1, movePoints: 4, attackPoints: 3, attack: "MeleeBind", attackWidth: 3, attackRange: 1, power: 4, dmgType: "glue", fullBoundBonus: 2, disarm: 0.7,
-		terrainTags: {"slime": 5.5, "plant": 3, "passage": 30, "open": -10}, allFloors: true, shrines: ["Latex"],
+		terrainTags: {"slime": 2.5, "plant": 2, "passage": 20, "open": -10}, allFloors: true, shrines: ["Latex"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThin", time: 25, power: 2, chance: 0.5, aoe: 0.5},
@@ -1047,7 +1049,7 @@ let KinkyDungeonEnemies = [
 		squeeze: true, evasion: -0.5, followRange: 1, AI: "ambush", sneakThreshold: 3, ambushRadius: 1.5,
 		visionRadius: 7.0, blindSight: 2.5, maxhp: 7, minLevel: 0, weight:1, movePoints: 2, attackPoints: 3, attack: "MeleeBindSuicide", attackWidth: 1, attackRange: 1, power: 2, dmgType: "glue", fullBoundBonus: 1, disarm: 0.2,
 		suicideOnAdd: true, focusPlayer: true, multiBind: 3,
-		terrainTags: {"slime": 7.5, "plant": 4, "passage": 40, "open": -10}, allFloors: true, shrines: ["Latex"],
+		terrainTags: {"slime": 3.5, "plant": 3, "passage": 30, "open": -10}, allFloors: true, shrines: ["Latex"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThin", time: 25, power: 2, chance: 0.5, aoe: 0.5},
@@ -1231,7 +1233,7 @@ let KinkyDungeonEnemies = [
 		],
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}, {name: "IceRune", weight: 1}, {name: "IceBreaker", weight: 0.1, ignoreInInventory: true}]},
 	{name: "ElementalWater", faction: "Elemental", playLine: "Elemental", clusterWith: "ice", bound: "ElementalWater", color: "#57ff88", tags: KDMapInit(["opendoors", "water", "elemental", "ranged", "fireresist", "acidimmune", "electricsevereweakness", "latexRestraints", "ropeRestraints", "elite", "leashing", "jail", "jailer", "hunter"]), armor: 0, kite: 1.5, followRange: 3, AI: "hunt", guardChance: 0.6, evasion: 0.25, summon: [{enemy: "ElementalIce", range: 2.5, count: 1, chance: 0.6, strict: true}],
-		specialCD: 5, specialAttack: "Pull", specialCDonAttack: true, specialAttackPoints: 4, specialRange: 4, specialWidth: 3, specialMinrange: 1.5, specialsfx: "Song", hitsfx: "Song", tilesMinRangeSpecial: 2,
+		specialCD: 5, specialAttack: "PullWill", specialCDonAttack: true, specialAttackPoints: 4, specialRange: 4, specialWidth: 3, specialMinrange: 1.5, specialsfx: "Song", hitsfx: "Song", tilesMinRangeSpecial: 2,
 		visionRadius: 7, maxhp: 12, minLevel:3, weight:-2, movePoints: 1.5, followLeashedOnly: true, projectileTargeting: true,
 		attackPoints: 3, attack: "MeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 5, dmgType: "charm", pullTowardSelf: true, pullDist: 2, pullMsg: true,
 		attackLock: "Purple",
@@ -2309,7 +2311,12 @@ let KDAIType = {
 		init: (enemy, player, AIData) => {
 			AIData.visionMod *= 0.7;},
 		beforemove: (enemy, player, AIData) => {return false;},
-		chase: (enemy, player, AIData) => {return true;},
+		chase: (enemy, player, AIData) => {
+			if (enemy.x == enemy.gxx && enemy.y == enemy.gyy) {
+				if (KDistEuclidean(player.x-enemy.x, player.y-enemy.y) > 3.5) return false;
+			}
+			return true;
+		},
 		persist: (enemy, player, AIData) => {return false;},
 		move: (enemy, player, AIData) => {return true;},
 		follower: (enemy, player, AIData) => {return true;},

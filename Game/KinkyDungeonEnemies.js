@@ -609,14 +609,18 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 							tint: color,
-							zIndex: 0.2 + 0.001 * (enemy.Enemy.power ? enemy.Enemy.power : 0),
-							alpha: preHit ? 0.5 : 0.8,
+							zIndex: 0.21 + 0.001 * (enemy.Enemy.power ? enemy.Enemy.power : 0),
+						});
+
+					KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_b_h" + enemy.id, KinkyDungeonRootDirectory + "WarningBackingHighlight" + ".png",
+						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
+						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+							zIndex: 0.20,
 						});
 					KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_h" + enemy.id, KinkyDungeonRootDirectory + ((KDAllied(enemy)) ? "WarningHighlightAlly" : "WarningHighlight" + special) + ".png",
 						(tx - CamX)*KinkyDungeonGridSizeDisplay - 1, (ty - CamY)*KinkyDungeonGridSizeDisplay - 1,
 						KinkyDungeonSpriteSize + 2, KinkyDungeonSpriteSize + 2, undefined, {
-							zIndex: 3.21,
-							alpha: 0.2,
+							zIndex: 2.2,
 						});
 				}
 			}
@@ -2493,13 +2497,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			if ((KDGetFaction(enemy) == "Ambush" || enemy.Enemy.tags.ignoreharmless) && (!enemy.warningTiles || enemy.warningTiles.length == 0)
 				&& AIData.harmless && (!enemy.Enemy.ignorechance || KDRandom() < enemy.Enemy.ignorechance || !KinkyDungeonHasWill(0.1))) AIData.ignore = true;
 			if (enemy.Enemy.tags.ignoretiedup && (!enemy.warningTiles || enemy.warningTiles.length == 0) && enemy.lifetime == undefined
-				&& KinkyDungeonCanUseWeapon() && !KinkyDungeonCanTalk() && KinkyDungeonCanUseWeapon() && KinkyDungeonSlowLevel > 1
+				&& !KinkyDungeonCanUseWeapon() && !KinkyDungeonCanTalk() && KinkyDungeonSlowLevel > 1
 				&& (!enemy.Enemy.ignorechance || KDRandom() < enemy.Enemy.ignorechance || !KinkyDungeonHasWill(0.1))) AIData.ignore = true;
 			if (enemy.Enemy.tags.ignoregagged && (!enemy.warningTiles || enemy.warningTiles.length == 0) && enemy.lifetime == undefined
 				&& !KinkyDungeonCanTalk()
 				&& (!enemy.Enemy.ignorechance || KDRandom() < enemy.Enemy.ignorechance || !KinkyDungeonHasWill(0.1))) AIData.ignore = true;
 			if (enemy.Enemy.tags.ignoreboundhands && (!enemy.warningTiles || enemy.warningTiles.length == 0) && enemy.lifetime == undefined
-				&& (KinkyDungeonPlayerDamage.dmg <= enemy.Enemy.armor || !KinkyDungeonHasWill(0.1)) && KinkyDungeonCanUseWeapon()
+				&& (KinkyDungeonPlayerDamage.dmg <= enemy.Enemy.armor || !KinkyDungeonHasWill(0.1)) && !KinkyDungeonCanUseWeapon()
 				&& (!enemy.Enemy.ignorechance || KDRandom() < enemy.Enemy.ignorechance || !KinkyDungeonHasWill(0.1))) AIData.ignore = true;
 		}
 		if (enemy.Enemy.ignoreflag) {
@@ -2508,7 +2512,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			}
 		}
 		// Instead of leashing we ignore
-		if (enemy.Enemy.tags.leashing && !AIData.leashing && !KinkyDungeonHasWill(0.1) && KinkyDungeonCanUseWeapon()) {
+		if (enemy.Enemy.tags.leashing && !AIData.leashing && !KinkyDungeonHasWill(0.1) && !KinkyDungeonCanUseWeapon() && KDIsPlayerTethered(player)) {
 			AIData.ignore = true;
 		}
 		if (!AIData.aggressive && !(enemy.rage > 0) && !enemy.Enemy.alwaysHostile && (!enemy.playWithPlayer || !player.player)) AIData.ignore = true;
@@ -3182,6 +3186,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				}
 			}
 		}
+	}
+
+	if (enemy.aware && enemy.idle && !enemy.path && !AIData.canSensePlayer && !enemy.vp) {
+		if (enemy.aware) KDAddThought(enemy.id, "Lose", 1, 4);
+		enemy.aware = false;
 	}
 
 	if (enemy.usingSpecial && !enemy.specialCD) enemy.specialCD = 0;
@@ -5196,5 +5205,5 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
  */
 function KDAssignLeashPoint(enemy) {
 	AIData.nearestJail = KinkyDungeonNearestJailPoint(enemy.x, enemy.y);
-	if (KinkyDungeonFlags.has("LeashToPrison")) AIData.nearestJail = Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+	if (!AIData.nearestJail || KinkyDungeonFlags.has("LeashToPrison")) AIData.nearestJail = Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
 }

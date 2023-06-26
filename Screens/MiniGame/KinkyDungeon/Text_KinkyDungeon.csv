@@ -29,13 +29,13 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 
-KinkyDungeon,"Kinky Dungeon v4.24"
+KinkyDungeon,"Kinky Dungeon v4.25"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
-Intro4,"(This game does not contain spiders or any carnivorous creatures/plants)"
-Intro4BC,"(Check out the latest standalone version at the News and Updates link below!)"
+Intro4,"(This game does not contain spiders)"
+Intro4BC,""
 KDToggleSound,Enable Sound
 KDToggleDrool,Enable Drool/Tears
 KDToggleDrawArmor,Draw Armor
@@ -1523,7 +1523,7 @@ AttackElfLock,"The druid tosses a lock from her cloak! It finds you and fastens 
 NameElementalWater,Water Elemental
 KillElementalWater,"The water elemental melts into a pool of water."
 AttackElementalWaterBind,"The water elemental's song compels you to be bound! (+RestraintAdded)"
-AttackElementalWaterBindLock,"The water elemental sings a song of helplessness. (DamageTaken)"
+AttackElementalWaterLock,"The water elemental sings a song of helplessness. (DamageTaken)"
 AttackElementalWaterPull,"The water elemental's song compels you to step forward and receive a binding!"
 AttackElementalWater,"The water elemental sings an arousing song! (DamageTaken)"
 
@@ -4630,6 +4630,26 @@ KinkyDungeonInfernoBurn,The roaring inferno deals 10 damage to you!
 KinkyDungeonSpellDistractionCast,Mana Burst
 KinkyDungeonSpellDescriptionDistractionCast,"As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus..."
 
+KinkyDungeonSpellOrgasmMana1,Way of Pleasure
+KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 40 mana as long as you have willpower to spare. Blocks Way of Discipline."
+
+KinkyDungeonSpellOrgasmBuff,Intense Power
+KinkyDungeonSpellDescriptionOrgasmBuff,"After letting go of yourself, you feel an immense surge of power, increasing magic damage by 40% for 8 turns after you regain control, and by 10% while you remain satisfied."
+
+KinkyDungeonSpellOrgasmFrequency,Pleasure Training I
+KinkyDungeonSpellDescriptionOrgasmFrequency,"You remain satisfied for much less time after letting go. Letting go costs 50% less stamina."
+KinkyDungeonSpellOrgasmFrequency2,Pleasure Training II
+KinkyDungeonSpellDescriptionOrgasmFrequency2,"You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total) and 50% less willpower."
+KinkyDungeonSpellOrgasmResist,Mental Resistance
+KinkyDungeonSpellDescriptionOrgasmResist,"+100 Psychic and Charm Resist. You can no longer let go involuntarily unless your willpower is 0, and willpower drains 70% slower while edged."
+
+
+KinkyDungeonSpellEdgeMana1,Way of Discipline
+KinkyDungeonSpellDescriptionEdgeMana1,"You have chosen the path of absolute discipline. Being in an Edged state increases passive mana recovery, and if you have willpower to spare you regenerate 1 passive mana per 5 turns. Blocks Way of Pleasure."
+
+KinkyDungeonSpellDenyMana,Way of Denial
+KinkyDungeonSpellDescriptionDenyMana,"Harnessing your mental discipline, you regenerate 50 mana each time you are denied, so long as you have willpower to spare."
+
 
 KinkyDungeonSpellApprenticeFire,Flame Novice
 KinkyDungeonSpellDescriptionApprenticeFire,Unlocks fire spells. Learn Firebolt.
@@ -5100,7 +5120,7 @@ KinkyDungeonSpellOneWithSlime,One With Slime
 KinkyDungeonSpellDescriptionOneWithSlime,"While standing on slime/latex, you can cast rubber spells without components."
 
 KinkyDungeonSpellSlimeMimic,Convincing Disguise
-KinkyDungeonSpellDescriptionSlimeMimic,"While completely covered in slime and not moving, your visibility is reduced considerably."
+KinkyDungeonSpellDescriptionSlimeMimic,"While standing still on slime, your visibility is reduced considerably."
 
 KinkyDungeonSpellStaffUser1,Magical Implements
 KinkyDungeonSpellDescriptionStaffUser1,"While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%."
@@ -5377,7 +5397,7 @@ KinkyDungeonSpellAwaken,Awaken
 KinkyDungeonSpellAwakenStrike,Awaken
 KinkyDungeonSpellAwakenStrikeBind,The slime awakens and turns on you!!!
 KinkyDungeonSpellTargetAwaken,Select area to awaken
-KinkyDungeonSpellDescriptionAwaken,"Activates the slime in an area, causing it to deal DamageDealt glue damage. Encases fully bound targets."
+KinkyDungeonSpellDescriptionAwaken,"Activates the slime in an area, causing it to deal 25 glue damage. Encases fully bound targets."
 KinkyDungeonSpellCastAwaken,"You command the slime to draw in targets!"
 
 KinkyDungeonSpellCommandBind,CMD: Bind
@@ -10101,7 +10121,7 @@ KinkyDungeonStatDescEnemyArmor,"All enemies gain 20 physical and magic armor."
 KinkyDungeonStatEnemyDamage,"Glass Cannon"
 KinkyDungeonStatDescEnemyDamage,"The effects of you taking damage are increased by 150%."
 KinkyDungeonStatEnemyResist,"The Wand is Mightier"
-KinkyDungeonStatDescEnemyResist,"Enemies take 50% less damage BEFORE armor calculation; Tease damage multiplier to bound targets is increased by 75%."
+KinkyDungeonStatDescEnemyResist,"Enemies take 30% less damage BEFORE armor calculation; Tease damage multiplier to bound targets is increased by 85%."
 KDCategoryCommon,Kinky Armory
 
 NameChef,Chef
@@ -10121,7 +10141,7 @@ KinkyDungeonInventoryItemBrowniesDesc2,"Restores 30% willpower. Takes a few turn
 KinkyDungeonBuffHaunted,A playful ghost now accompanies you on your journey.
 KDHaunting,"The ghost haunting you decides to have a little fun! (+RestraintAdded)"
 
-RestraintRopeSnakeArmsBoxtie,Wrist Rope
+RestraintRopeSnakeArmsBoxtie,Boxtie
 RestraintRopeSnakeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
 RestraintRopeSnakeArmsBoxtieDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeCuffs,Rope Cuffs
@@ -10173,3 +10193,52 @@ AttackCyborg,"The cyber warden's touch applies a series of quick electrical shoc
 AttackCyborgStun,"The cyber warden's touch applies a series of quick electrical shocks!"
 
 KDWardrobeBackToMenu,Back to Menu
+
+KinkyDungeonItemsUnderneathTotal,"Item Stack:"
+
+KDFilterFiltersRope,Rope
+KDFilterFiltersMetal,Metal
+KDFilterFiltersLatex,Latex
+KDFilterFiltersLeather,Leather
+KDFilterFiltersArmbinders,Armbinders
+KDFilterFiltersStraitjackets,Straitjackets
+KDFilterFiltersBindingDress,Dresses
+KDFilterFiltersTies,Ties
+KDFilterFiltersBelts,Belts
+KDFilterFiltersWrapping,Wrapping
+KDFilterFiltersCuffs,Cuffs
+KDFilterFiltersChains,Chains
+KDFilterFiltersGags,Gags
+KDFilterFiltersBoots,Boots
+
+
+RestraintWeakMagicRopeArmsBoxtie,Magic Boxtie
+RestraintWeakMagicRopeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
+RestraintWeakMagicRopeArmsBoxtieDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeCuffs,Magic Rope Cuffs
+RestraintWeakMagicRopeCuffsDesc,"A quick tie for apprehending prisoners."
+RestraintWeakMagicRopeCuffsDesc2,"It's not very secure."
+RestraintWeakMagicRopeCuffsAdv,Magic Ropework
+RestraintWeakMagicRopeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
+RestraintWeakMagicRopeCuffsAdvDesc2,"It's not very secure."
+RestraintWeakMagicRopeHogtie,Magic Hogtie
+RestraintWeakMagicRopeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintWeakMagicRopeHogtieDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
+RestraintWeakMagicRopeBelt,Magic Rope Belt
+RestraintWeakMagicRopeBeltDesc,"A harness acting as a handle to pull you around"
+RestraintWeakMagicRopeBeltDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeHarness,Magic Harness
+RestraintWeakMagicRopeHarnessDesc,"A harness that secures your other restraints and makes them tighter."
+RestraintWeakMagicRopeHarnessDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeCrotch,Magic Crotch Rope
+RestraintWeakMagicRopeCrotchDesc,"A tight rope impressing upon your most private areas..."
+RestraintWeakMagicRopeCrotchDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeArmsWrist,Magic Wrist Tie
+RestraintWeakMagicRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
+RestraintWeakMagicRopeArmsWristDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeLegs,Magic Leg Tie
+RestraintWeakMagicRopeLegsDesc,"A tie that hobbles your legs together.."
+RestraintWeakMagicRopeLegsDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeFeet,Magic Ankle Tie
+RestraintWeakMagicRopeFeetDesc,"A tie keeping your feet secured together."
+RestraintWeakMagicRopeFeetDesc2,"They glow with a trace of magic."

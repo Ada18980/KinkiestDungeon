@@ -26,9 +26,8 @@ let kdenemyboard = new PIXI.Container();
 kdenemyboard.zIndex = 0;
 kdenemyboard.sortableChildren = true;
 let kdenemystatusboard = new PIXI.Container();
-kdenemystatusboard.zIndex = 100;
+kdenemystatusboard.zIndex = 4;
 kdenemystatusboard.sortableChildren = true;
-kdenemyboard.addChild(kdenemystatusboard);
 let kdbulletboard = new PIXI.Container();
 kdbulletboard.zIndex = -0.01;
 let kdeffecttileboard = new PIXI.Container();
@@ -53,6 +52,7 @@ let kdui = new PIXI.Graphics();
 let kdcanvas = new PIXI.Container();
 kdcanvas.sortableChildren = true;
 kdcanvas.addChild(kdstatusboard);
+kdcanvas.addChild(kdenemystatusboard);
 kdcanvas.addChild(kdUItext);
 
 let statusOffset = 0;
@@ -734,8 +734,8 @@ function KinkyDungeonDrawGame() {
 			if (StandalonePatched) {
 				kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
 				kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
-				//kdgamefog.x = kdgameboard.x;
-				//kdgamefog.y = kdgameboard.y;
+				kdenemystatusboard.x = kdgameboard.x;
+				kdenemystatusboard.y = kdgameboard.y;
 			}
 
 			let CamX_offset = StandalonePatched ? 0 : CamX_offsetVis;
@@ -1149,7 +1149,7 @@ function KinkyDungeonDrawGame() {
 			// Draw the player no matter what
 			if (!StandalonePatched) {
 				KinkyDungeonContextPlayer.clearRect(0, 0, KinkyDungeonCanvasPlayer.width, KinkyDungeonCanvasPlayer.height);
-				DrawCharacter(KinkyDungeonPlayer, -KinkyDungeonGridSizeDisplay/2, KinkyDungeonPlayer.Pose.includes("Hogtied") ? -165 : (KinkyDungeonPlayer.IsKneeling() ? -78 : 0), KinkyDungeonGridSizeDisplay/250, false, KinkyDungeonContextPlayer);
+				DrawCharacter(KinkyDungeonPlayer, -KinkyDungeonGridSizeDisplay/2, (KinkyDungeonPlayer.HeightModifier || 0)/3.5, KinkyDungeonGridSizeDisplay/250, false, KinkyDungeonContextPlayer);
 			} else {
 				let PlayerModel = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer) : null;
 				let zoom = PlayerModel ? KinkyDungeonGridSizeDisplay/1200
@@ -2353,6 +2353,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {boolean} [options.noTextBG] - Dont show text backgrounds
  * @param {number} [options.alpha]
  * @param {number} [options.zIndex] - zIndex
+ * @param {boolean} [options.scaleImage] - zIndex
  * @returns {void} - Nothing
  */
 function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2383,6 +2384,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {number} [options.alpha]
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.unique] - This button is not differentiated by position
+ * @param {boolean} [options.scaleImage] - zIndex
  * @returns {void} - Nothing
  */
 function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2410,7 +2412,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 	let textPush = 0;
 	if ((Image != null) && (Image != "")) {
 		let img = KDTex(Image);
-		if (Stretch) {
+		if (Stretch || options?.scaleImage) {
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 				Image, Left, Top, Width, Height, undefined, {
 					zIndex: zIndex + 0.001,

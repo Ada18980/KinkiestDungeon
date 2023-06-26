@@ -470,7 +470,7 @@ let KDGameData = Object.assign({}, KDGameDataBase);
 
 let KDLeashingEnemy = null;
 function KinkyDungeonLeashingEnemy() {
-	if (KDGameData.KinkyDungeonLeashingEnemy) {
+	if (KDGameData.KinkyDungeonLeashingEnemy || KDUpdateEnemyCache) {
 		if (!KDLeashingEnemy) {
 			KDLeashingEnemy = KinkyDungeonFindID(KDGameData.KinkyDungeonLeashingEnemy);
 		}
@@ -487,7 +487,7 @@ let KDJailGuard = null;
  */
 function KinkyDungeonJailGuard() {
 	if (KDGameData.KinkyDungeonJailGuard) {
-		if (!KDJailGuard) {
+		if (!KDJailGuard || KDUpdateEnemyCache) {
 			KDJailGuard = KinkyDungeonFindID(KDGameData.KinkyDungeonJailGuard);
 		}
 	} else {
@@ -498,7 +498,7 @@ function KinkyDungeonJailGuard() {
 let KDAngel = null;
 function KinkyDungeonAngel() {
 	if (KDGameData.KinkyDungeonAngel) {
-		if (!KDAngel) {
+		if (!KDAngel || KDUpdateEnemyCache) {
 			KDAngel = KinkyDungeonFindID(KDGameData.KinkyDungeonAngel);
 		}
 	} else {
@@ -514,6 +514,25 @@ function KDUnlockPerk(Perk) {
 }
 
 function KDLoadPerks() {
+
+	KDCategories = Object.assign([], KDCategoriesStart);
+	for (let c of KDCategories) {
+		c.buffs = [];
+		c.debuffs = [];
+	}
+
+	for (let stat of Object.entries(KinkyDungeonStatsPresets)) {
+		for (let c of KDCategories) {
+			if (stat[1].category == c.name) {
+				if (!stat[1].buff && (stat[1].debuff || KDGetPerkCost(stat[1]) < 0))
+					c.debuffs.push(stat);
+				else
+					c.buffs.push(stat);
+			}
+		}
+	}
+
+
 	if (localStorage.getItem("KDUnlockedPerks")) {
 		let perks = JSON.parse(localStorage.getItem("KDUnlockedPerks"));
 		if (perks) {
@@ -572,22 +591,6 @@ function KinkyDungeonLoad() {
 
 	for (let entry of Object.entries(KDLoadingTextKeys)) {
 		addTextKey(entry[0], entry[1]);
-	}
-	KDCategories = Object.assign([], KDCategoriesStart);
-	for (let c of KDCategories) {
-		c.buffs = [];
-		c.debuffs = [];
-	}
-
-	for (let stat of Object.entries(KinkyDungeonStatsPresets)) {
-		for (let c of KDCategories) {
-			if (stat[1].category == c.name) {
-				if (!stat[1].buff && (stat[1].debuff || KDGetPerkCost(stat[1]) < 0))
-					c.debuffs.push(stat);
-				else
-					c.buffs.push(stat);
-			}
-		}
 	}
 
 	KDLoadPerks();
@@ -790,6 +793,15 @@ let GlobalRefreshInterval = 1000;
 let KDGlobalRefresh = false;
 
 function KinkyDungeonRun() {
+
+	if (KinkyDungeonPlayer?.Appearance) {
+		for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
+			if (KinkyDungeonPlayer.Appearance[A]?.Asset?.Name?.includes("Penis")) {
+				KinkyDungeonPlayer.Appearance.splice(A, 1);
+				A--;
+			}
+		}
+	}
 	if (StandalonePatched && KDCurrentModels) {
 		let refresh = false;
 		if (CommonTime() > lastGlobalRefresh + GlobalRefreshInterval) {
@@ -1033,9 +1045,14 @@ function KinkyDungeonRun() {
 			CharacterReleaseTotal(KinkyDungeonPlayer);
 			KinkyDungeonDressPlayer();
 			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: false, AllowFullWardrobeAccess: true};
-			if (!StandalonePatched)
+			if (!StandalonePatched) {
+				if (!KDPatched)
+					MainCanvas.textAlign = "center";
 				CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
+			}
 			KinkyDungeonConfigAppearance = true;
+			CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
+			CharacterRefresh(KinkyDungeonPlayer);
 			return true;
 		}, true, 30, 942, 440, 50, TextGet("KinkyDungeonDressPlayer"), "#ffffff", "");
 
@@ -1057,8 +1074,10 @@ function KinkyDungeonRun() {
 		}, true, 1700, 754, 280, 50, TextGet("KinkyDungeonPatreon"), "#ffeecc", "");
 
 
-		DrawTextKD(TextGet("Language") + " ->", 1675, 898, "#ffffff", KDTextGray2, undefined, "right");
-		DrawButtonVis(1700, 874, 280, 50, localStorage.getItem("BondageClubLanguage") || "EN", "#ffffff", "");
+		if (KDPatched || StandalonePatched) {
+			DrawTextKD(TextGet("Language") + " ->", 1675, 898, "#ffffff", KDTextGray2, undefined, "right");
+			DrawButtonVis(1700, 874, 280, 50, localStorage.getItem("BondageClubLanguage") || "EN", "#ffffff", "");
+		}
 
 		if (KDPatched) {
 
@@ -1885,6 +1904,7 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
  * @param {boolean} [options.noTextBG] - Dont show text backgrounds
  * @param {number} [options.alpha] - Dont show text backgrounds
  * @param {number} [options.zIndex] - zIndex
+ * @param {boolean} [options.scaleImage] - zIndex
  * @returns {void} - Nothing
  */
 function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
@@ -2621,6 +2641,7 @@ function KinkyDungeonClick() {
  * @returns {void} - Nothing
  */
 function KinkyDungeonExit() {
+	KinkyDungeonGameKey.removeKeyListener();
 	CommonDynamicFunction(MiniGameReturnFunction + "()");
 
 	// Refresh the player character if needed

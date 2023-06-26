@@ -5,9 +5,12 @@ let KDDoorKnobChanceArms = 0.5; // Chance to open door with mitts but no arm bin
 let KDDoorAttractChance = 0.25; // Chance to attract someone by banging
 let KDDoorAttractChanceArms = 0.1; // Chance to attract someone by rattling
 
+/** These weapons can get removed if you start the game with them*/
+let kdStartWeapons = ["Knife", "Dirk", "Sword", "Shield"];
+
 let KDPerkParams = {
-	KDEnemyDamageMult: 2.5, // Increase in enemy dasmage effect
-	KDEnemyResistBuff: 0.75, // Buff to tease damage
+	KDEnemyDamageMult: 2.5, // Increase in enemy damage effect
+	KDEnemyResistBuff: 0.85, // Buff to tease damage
 	KDEnemyArmorBoost: 2.0, // Extra armor enemies get
 };
 
@@ -574,7 +577,7 @@ let KDPerkStart = {
 		}
 		let outfit = {name: "Maid", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Maid")) KinkyDungeonInventoryAdd(outfit);
-		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Maid", "Maid");
 	},
 	StartWolfgirl: () =>{
@@ -592,7 +595,7 @@ let KDPerkStart = {
 		KDAddQuest("WolfgirlHunters");
 		let outfit = {name: "Wolfgirl", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Wolfgirl")) KinkyDungeonInventoryAdd(outfit);
-		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Wolfgirl", "Wolfgirl");
 	},
 	StartObsidian: () =>{
@@ -613,7 +616,7 @@ let KDPerkStart = {
 		}
 		let outfit = {name: "Obsidian", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Obsidian")) KinkyDungeonInventoryAdd(outfit);
-		if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Obsidian", "Obsidian");
 	},
 	Hogtied: () =>{
@@ -636,8 +639,9 @@ let KDPerkStart = {
 		KinkyDungeonAddRestraintIfWeaker("PanelGag", 5, true, undefined, false, undefined, undefined, undefined, true);
 		KinkyDungeonAddRestraintIfWeaker("TrapBlindfold", 5, true, undefined, false, undefined, undefined, undefined, true);
 
-		if (KinkyDungeonInventoryGet("Knife")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Knife"));
-		if (KinkyDungeonInventoryGet("Dirk")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Dirk"));
+		for (let w of kdStartWeapons) {
+			if (KinkyDungeonInventoryGet(w)) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet(w));
+		}
 	},
 	Stranger: () => {
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {

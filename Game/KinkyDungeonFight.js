@@ -517,7 +517,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		}
 		KDUpdatePerksBonus();
 		let DamageAmpBonusPerks = KDDamageAmpPerks
-			+ (KinkyDungeonMeleeDamageTypes.includes(predata.type) ? KDDamageAmpPerksMelee : 0)
+			+ (KinkyDungeonMeleeDamageTypes.includes(predata.type) ? KDDamageAmpPerksMelee : KDDamageAmpPerksMagic)
 			+ (Spell && !Spell.allySpell && !Spell.enemySpell ? KDDamageAmpPerksSpell : 0);
 		let damageAmp = KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(Enemy.buffs, "DamageAmp") - (KDHostile(Enemy) && (!attacker || attacker.player) ? (DamageAmpBonusPerks) : 0));
 		let buffreduction = KinkyDungeonGetBuffedStat(Enemy.buffs, "DamageReduction");
@@ -635,7 +635,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			//forceKill = (Enemy.hp <= Enemy.Enemy.maxhp*0.1 || Enemy.hp <= 0.52) && KDistChebyshev(Enemy.x - KinkyDungeonPlayerEntity.x, Enemy.y - KinkyDungeonPlayerEntity.y) < 1.5;
 
 			Enemy.hp -= predata.dmgDealt;
-			if (Enemy.hp > 0 && Enemy.hp <= 0.51 && predata.dmgDealt > 2.01 && !forceKill && KDBoundEffects(Enemy) < 4) Enemy.hp = 0;
+			if (Enemy.hp > 0 && Enemy.hp <= 0.51 && predata.dmgDealt > 0.51 && !forceKill && KDBoundEffects(Enemy) < 4) Enemy.hp = 0;
 			if (predata.dmgDealt > 0) Enemy.revealed = true;
 		}
 
@@ -1854,7 +1854,11 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 					tint: string2hex(t.color || "#ff5555"),
 					zIndex: -0.2,
-					alpha: 0.6
+				});
+			KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_b_h", KinkyDungeonRootDirectory + "WarningBackingHighlight" + ".png",
+				(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
+				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+					zIndex: -0.21,
 				});
 		}
 	}
