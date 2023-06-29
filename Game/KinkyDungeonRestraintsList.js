@@ -2022,6 +2022,28 @@ const KinkyDungeonRestraints = [
 			{
 			},
 		);
+		KDAddHardSlimeVariants(
+			"HardSlime",
+			"LiquidMetal",
+			"",
+			"liquidMetalRestraints",
+			["liquidMetal"],
+			4,
+			{
+				magic: true,
+				Color: "#aaaaaa",
+			},
+			[
+				{trigger: "tick", type: "evasionBuff", power: -0.1, inheritLinked: true},
+			],
+			{
+				Struggle: -0.1,
+				Cut: -0.2,
+				Remove: -1,
+			},
+			{
+			},
+		);
 
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({

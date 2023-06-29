@@ -27,6 +27,28 @@ let KDPlayerEffects = {
 				duration: 9999,});
 		return {sfx: "Evil", effect: true};
 	},
+	"ObserverBeam": (target, damage, playerEffect, spell, faction, bullet) => {
+		let count = 1;
+		if (target?.player && KDEntityBuffedStat(target, "Cursed")) {
+			count = Math.min(10, KDEntityBuffedStat(target, "Cursed") + 1);
+		}
+		KinkyDungeonApplyBuffToEntity(target,
+			{
+				id: "Cursed",
+				type: "Cursed",
+				power: count,
+				events: [
+					{type: "Cursed", trigger: "tick", count: 1},
+				],
+				aura: "#4488ff",
+				aurasprite: "Null",
+				duration: 9999,});
+
+
+		let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		KinkyDungeonSendTextMessage(3, TextGet("KDObserverCurseApply").replace("DamageDealt", dmg.string), "#ff5555", 1);
+		return {sfx: "Evil", effect: true};
+	},
 	"MaidChastity": (target, damage, playerEffect, spell, faction, bullet) => {
 		if (KinkyDungeonFlags.get("ChastityBelts")) {
 			// Tease the player

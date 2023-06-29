@@ -1001,9 +1001,10 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
 	// Create the map
 	KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	KinkyDungeonGenNavMap(KinkyDungeonStartPosition);
 
 	KinkyDungeonEndPosition = KinkyDungeonGetRandomEnemyPoint(false, false);
-	KinkyDungeonStartPosition = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KDistChebyshev(x - KinkyDungeonEndPosition.x, y - KinkyDungeonEndPosition.y) > width/2;},false, false);
+	KinkyDungeonStartPosition = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KDistChebyshev(x - KinkyDungeonEndPosition.x, y - KinkyDungeonEndPosition.y) > width/4;},false, false);
 	//let playerPos = KinkyDungeonGetRandomEnemyPoint(false, false);
 
 	KinkyDungeonPlayerEntity.x = KinkyDungeonStartPosition.x;
@@ -1011,11 +1012,30 @@ function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, ope
 
 	KinkyDungeonMapSet(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 's');
 
-	// Create the Observer
+	// Create the Shadow on top of the end stairs
+	DialogueCreateEnemy(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, "DemonEye");
+	// Create observers
 
-	let point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KDistChebyshev(x - KinkyDungeonStartPosition.x, y - KinkyDungeonStartPosition.y) > width/2 && KDistChebyshev(x - KinkyDungeonEndPosition.x, y - KinkyDungeonEndPosition.y) < width/2;},false, false);
-	if (point)
-		DialogueCreateEnemy(point.x, point.y, "DemonEye");
+	// Create random stair pairs
+	let obscount = 20;
+	for (let i = 0; i < obscount; i++) {
+		let point1 = KinkyDungeonGetRandomEnemyPoint(true, false, 10, 10);
+		if (point1) {
+			DialogueCreateEnemy(point1.x, point1.y, "Observer");
+		}
+	}
+
+
+	// Create random stair pairs
+	let count = 20;
+	for (let i = 0; i < count; i++) {
+		let point1 = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KinkyDungeonMapGet(x, y) != 's' && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x, y));},true, false);
+		if (point1) {
+			KinkyDungeonMapSet(point1.x, point1.y, 's');
+			KinkyDungeonTilesSet(point1.x + "," + point1.y, {AltStairAction: "RandomTeleport"});
+		}
+	}
+
 	//KinkyDungeonMapSet(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, 'S');
 }
 

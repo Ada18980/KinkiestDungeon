@@ -183,6 +183,7 @@ let KDBuffSprites = {
 	"Invisibility": true,
 
 	"Haunted": true,
+	"Cursed": true,
 
 	//KinkyDungeonBuffShrineElements,"Arcane Power: Deals bonus damage when you hit an enemy."
 	//KinkyDungeonBuffShrineConjure,"Arcane Protection: Reduces damage taken, and deals retaliation damage."

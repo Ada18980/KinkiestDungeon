@@ -987,34 +987,34 @@ let KinkyDungeonEnemies = [
 		master: {type: "WitchSlime", range: 2, loose: true, aggressive: true},
 		visionRadius: 4.5, blindSight: 2.5, maxhp: 12, minLevel:2, weight:2, movePoints: 1.7,
 		attackPoints: 3, attack: "MeleeBindSlow", attackWidth: 1, attackRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 2,
-		terrainTags: {"latexAnger": 3, "latexRage": 3, "alchemist": 2, "slimeBonus": 2, "slime": 5, "jungle": 8}, shrines: ["Latex"], allFloors: true,
+		terrainTags: {"latexAnger": 3, "latexRage": 3, "alchemist": 2, "slimeBonus": 2, "slime": 5, "slimeOptOut": -2, "slimePref": 2, "jungle": 8}, shrines: ["Latex"], allFloors: true,
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],},
 
 	{name: "SmallSlime", clusterWith: "slime", faction: "Slime", color: "#FF00FF", tags: KDMapInit(["ignoretiedup", "latexTrap", "minor", "slime", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness"]), squeeze: true, ignorechance: 0.75, followRange: 1, AI: "hunt",  sneakThreshold: 1,
 		visionRadius: 3, blindSight: 2.5, maxhp: 3, minLevel: 0, maxLevel: 5, weight:8, movePoints: 1.5, attackPoints: 2, attack: "MeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "acid", fullBoundBonus: 2,
-		terrainTags: {"increasingWeight":-1, "slime": 4, "jungle": 20, "alchemist": 4}, allFloors: true, shrines: ["Latex"],
+		terrainTags: {"increasingWeight":-1, "slime": 4, "slimeOptOut": -2, "slimePref": 2, "jungle": 20, "alchemist": 4}, allFloors: true, shrines: ["Latex"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],},
 	{name: "SmallSlimeLeaper", clusterWith: "slime", faction: "Slime", color: "#FF00FF", tags: KDMapInit(["ignoretiedup", "latexTrap", "minor", "slime", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness"]), squeeze: true, ignorechance: 0.75, followRange: 1, AI: "hunt",  sneakThreshold: 1,
 		visionRadius: 4.5, blindSight: 2.5, maxhp: 3, minLevel: 5, weight:8, movePoints: 1.5, attackPoints: 2, attack: "MeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "acid", fullBoundBonus: 2,
 		specialCD: 5, specialAttack: "Dash", specialRemove: "BindSuicideWill", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, specialsfx: "Miss",
-		terrainTags: {"increasingWeight":-1, "slime": 4, "jungle": 20, "alchemist": 4}, allFloors: true, shrines: ["Latex"],
+		terrainTags: {"increasingWeight":-1, "slime": 4, "slimeOptOut": -2, "slimePref": 2, "jungle": 20, "alchemist": 4}, allFloors: true, shrines: ["Latex"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],},
 	{name: "FastSlime", clusterWith: "slime", faction: "Slime", color: "#FF00FF", tags: KDMapInit(["ignoretiedup", "latexTrap", "slime", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness"]), squeeze: true, evasion: 0.3, followRange: 1, AI: "hunt",  sneakThreshold: 1,
 		visionRadius: 4.5, blindSight: 2.5, maxhp: 3, minLevel: 9, weight:3, movePoints: 1, attackPoints: 3, attack: "MeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 1, attackRange: 3, power: 2, dmgType: "acid", fullBoundBonus: 2,
-		terrainTags: {"increasingWeight":1, "slime": 2.5, "jungle": 8, "alchemist": 4}, allFloors: true, shrines: ["Latex"],
+		terrainTags: {"increasingWeight":1, "slime": 2.5, "slimeOptOut": -1.2, "slimePref": 1.2, "jungle": 8, "alchemist": 4}, allFloors: true, shrines: ["Latex"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],},
 	{name: "BigSlime", clusterWith: "slime", faction: "Slime", color: "#FF00FF", tags: KDMapInit(["ignoretiedup", "slime", "latexTrap", "elite", "melee", "slimeRestraints", "meleeresist", "glueimmune", "electricweakness", "acidresist", "iceweakness"]),
 		squeeze: true, evasion: -0.3, followRange: 1, AI: "hunt",  sneakThreshold: 1,
 		visionRadius: 4.5, blindSight: 2.5, maxhp: 12, minLevel: 9, weight:2, movePoints: 3, attackPoints: 3, attack: "MeleeBind", attackWidth: 3, attackRange: 1, power: 4, dmgType: "acid", fullBoundBonus: 2, disarm: 0.5,
-		terrainTags: {"slime": 1.5, "alchemist": 3}, allFloors: true, shrines: ["Latex"], ondeath: [{type: "summon", enemy: "SmallSlime", range: 2.5, count: 4, strict: true, lifetime: 50}],
+		terrainTags: {"slime": 1.5, "alchemist": 3, "slimeOptOut": -1, "slimePref": 1}, allFloors: true, shrines: ["Latex"], ondeath: [{type: "summon", enemy: "SmallSlime", range: 2.5, count: 4, strict: true, lifetime: 50}],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Slime", time: 25, power: 2, chance: 0.3, aoe: 0.5}
@@ -1030,7 +1030,7 @@ let KinkyDungeonEnemies = [
 		},
 		squeeze: true, evasion: -1, followRange: 1, AI: "ambush", sneakThreshold: 3, ambushRadius: 1.5,
 		visionRadius: 7.0, blindSight: 2.5, maxhp: 18, minLevel: 6, weight:1, movePoints: 4, attackPoints: 3, attack: "MeleeBind", attackWidth: 3, attackRange: 1, power: 4, dmgType: "glue", fullBoundBonus: 2, disarm: 0.7,
-		terrainTags: {"slime": 2.5, "plant": 2, "passage": 20, "open": -10}, allFloors: true, shrines: ["Latex"],
+		terrainTags: {"slime": 2.5, "plant": 2, "passage": 20, "open": -10, "slimeOptOut": -0.9, "slimePref": 1}, allFloors: true, shrines: ["Latex"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThin", time: 25, power: 2, chance: 0.5, aoe: 0.5},
@@ -1049,14 +1049,32 @@ let KinkyDungeonEnemies = [
 		squeeze: true, evasion: -0.5, followRange: 1, AI: "ambush", sneakThreshold: 3, ambushRadius: 1.5,
 		visionRadius: 7.0, blindSight: 2.5, maxhp: 7, minLevel: 0, weight:1, movePoints: 2, attackPoints: 3, attack: "MeleeBindSuicide", attackWidth: 1, attackRange: 1, power: 2, dmgType: "glue", fullBoundBonus: 1, disarm: 0.2,
 		suicideOnAdd: true, focusPlayer: true, multiBind: 3,
-		terrainTags: {"slime": 3.5, "plant": 3, "passage": 30, "open": -10}, allFloors: true, shrines: ["Latex"],
+		terrainTags: {"slime": 3.5, "plant": 3, "passage": 30, "open": -10, "slimeOptOut": -1, "slimePref": 1}, allFloors: true, shrines: ["Latex"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThin", time: 25, power: 2, chance: 0.5, aoe: 0.5},
 		],
 		dropTable: [{name: "Nothing", weight: 10}, {name: "StaffGlue", weight: 3, ignoreInInventory: true}],
 	},
-
+	{name: "LatexCubeMetal", faction: "Latex", color: "#aa00cc",
+		tags: KDMapInit(["ignoretiedup", "unstoppable", "metal", "metalTrap", "minor", "melee", "construct", "poisonimmune", "soulimmune", "acidweakness", "metallatexRestraints", "mithrilRestraints", "liquidMetalRestraintsRandom"]),
+		GFX: {
+			AmbushSprite: "LatexCubeSmallHidden",
+		},
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		difficulty: 0.4,
+		squeeze: true, evasion: -0.5, followRange: 1, AI: "ambush", sneakThreshold: 3, ambushRadius: 1.5,
+		visionRadius: 7.0, blindSight: 2.5, maxhp: 8, armor: 1.5, minLevel: 0, weight:0.1, movePoints: 2.4, attackPoints: 3, attack: "MeleeBindSuicide", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 1, disarm: 0.35,
+		suicideOnAdd: true, focusPlayer: true, multiBind: 3,
+		terrainTags: {"metal": 3.5, "demon": 3, "magic": 3, "passage": 10, "open": -50, "slimeOptOut": -3, "slimePref": 0.1}, allFloors: true, shrines: ["Latex"],
+		events: [
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "StarryTrail", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "StarryTrail", time: 25, power: 2, chance: 0.5, aoe: 0.5},
+		],
+		dropTable: [{name: "Nothing", weight: 10}, {name: "StaffChain", weight: 3, ignoreInInventory: true}, {name: "StaffBind", weight: 0.5, ignoreInInventory: true}],
+	},
 	{name: "StoneDoor", faction: "Natural", blockVision: true,
 		cueSfx: {
 			Block: "Clang",
@@ -1440,9 +1458,18 @@ let KinkyDungeonEnemies = [
 		visionRadius: 15, blindSight: 4, maxhp: 30, minLevel: 0, weight:-10, movePoints: 4, regen: 0.04, keys: true,
 		attackPoints: 4, attack: "MeleeBindLockAllWill", attackWidth: 3, attackRange: 1, power: 5, dmgType: "cold", fullBoundBonus: 5, multiBind: 4,
 		attackLock: "Purple",
-		terrainTags: {}, shrines: [], allFloors: true,
+		terrainTags: {}, shrines: [], floors:KDMapInit([]),
 		dropTable: [{name: "ManaOrb", weight: 10}]
 	},
+	{name: "Observer", faction: "Observer", color: "#ff5577", clusterWith: "demon", tags: KDMapInit(["chaos", "melee", "minor", "soulimmune", "meleeresist"]),
+		squeeze: true, followRange: 1, AI: "hunt",  sneakThreshold: 1, hitsfx: "", ethereal: true,
+		spells: ["ObserverBeam"], spellCooldownMult: 1, spellCooldownMod: 1, evasion: 0.4, sneakthreshold: 3.5,
+		events: [
+			{trigger: "enemyCast", type: "RandomRespawn"},
+		],
+		visionRadius: 4.5, maxhp: 3, minLevel: 0, weight:-100, movePoints: 3, attackPoints: 3,
+		attack: "Spell", suicideOnSpell: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "soul",
+		terrainTags: {}, floors:KDMapInit([]), shrines: []},
 
 	{name: "DemonStar", clusterWith: "demon", bound: "Demon", playLine: "Elemental", color: "#9ea7de",
 		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "melee", "miniboss", "mithrilRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
@@ -1821,7 +1848,7 @@ let KinkyDungeonEnemies = [
 	{name: "ApprenticeSlime", faction: "Apprentice", color: "#FF00FF", bound: "ApprenticeSlime", playLine: "Apprentice", tags: KDMapInit(["leashing", "opendoors", "binding", "human", "imprisonable", "conjurer", "latexRestraints", "closedoors", "apprentice", "ranged", "glueweakness", "chainweakness", "tickleweakness", "search"]), followRange: 2,
 		castWhileMoving: true, spells: ["SlimePuddle", "ManySlimes", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, stopToCast: true, spellRdy: true, kite: 1.5, kiteChance: 0.9, cohesion: 1.0, followLeashedOnly: true,
 		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 5, maxhp: 8, minLevel:2, weight:8, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {"secondhalf":3, "lastthird":3, "increasingWeight": -1, "apprentice": 4, "slime": 4, "magical": 4}, allFloors: true, shrines: ["Latex"],
+		terrainTags: {"secondhalf":3, "lastthird":3, "increasingWeight": -1, "apprentice": 4, "slime": 4, "slimeOptOut": -2, "slimePref": 2, "magical": 4}, allFloors: true, shrines: ["Latex"],
 		dropTable: [{name: "RedKey", weight: 1}, {name: "Nothing", weight: 29}]},
 
 	{name: "WitchRope", faction: "Witch", clusterWith: "apprentice", bound: "Witch", playLine: "Witch", tags: KDMapInit(["leashing", "guardCall", "jail", "jailer", "imprisonable", "opendoors", "ropeRestraints", "closedoors", "human", "witch", "ranged", "elite", "hunter"]), followRange: 2,
@@ -1899,7 +1926,7 @@ let KinkyDungeonEnemies = [
 		spells: ["ManySlimes", "ManySlimes", "WitchSlimeBall", "WitchSlime", "ManySlimes", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 12, stopToCast: true, spellRdy: true,
 		spellCooldownMult: 2, spellCooldownMod: -7, AI: "hunt", guardChance: 0.6, visionRadius: 8, maxhp: 13, minLevel:3, weight:2, movePoints: 3, attackPoints: 3, attack: "Spell", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1,
 		attackLock: "Purple",
-		terrainTags: {"secondhalf":2, "lastthird":1, "open": 4, "tech": -8, "slime": 4}, allFloors: true, shrines: [],
+		terrainTags: {"secondhalf":2, "lastthird":1, "open": 4, "tech": -8, "slime": 4, "slimeOptOut": -2, "slimePref": 2}, allFloors: true, shrines: [],
 		events: [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Slime", time: 12, power: 1, chance: 0.5, aoe: 0.5},
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ff00ff"},

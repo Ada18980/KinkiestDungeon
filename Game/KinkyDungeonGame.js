@@ -864,9 +864,10 @@ let KDStageBossGenerated = false;
 /**
  * Creates a list of all tiles accessible and not hidden by doors
  */
-function KinkyDungeonGenNavMap() {
+function KinkyDungeonGenNavMap(fromPoint) {
+	if (!fromPoint) fromPoint = KinkyDungeonEndPosition;
 	KinkyDungeonRandomPathablePoints = {};
-	let accessible = KinkyDungeonGetAccessible(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y);
+	let accessible = KinkyDungeonGetAccessible(fromPoint.x, fromPoint.y);
 	for (let a of Object.entries(accessible)) {
 		let X = a[1].x;
 		let Y = a[1].y;

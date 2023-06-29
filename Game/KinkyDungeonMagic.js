@@ -564,10 +564,13 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			let yy = entity.y;
 			noiseX = entity.x;
 			noiseY = entity.y;
-			if (!bullet || (bullet.spell && bullet.spell.cast && bullet.spell.cast.offset)) {
-				xx += moveDirection.x;
-				yy += moveDirection.y;
+			if (!spell.noDirectionOffset) {
+				if (!bullet || (bullet.spell && bullet.spell.cast && bullet.spell.cast.offset)) {
+					xx += moveDirection.x;
+					yy += moveDirection.y;
+				}
 			}
+
 			if (spell.effectTilePre) {
 				KDCreateAoEEffectTiles(tX-entity.x,tY - entity.y, spell.effectTilePre, spell.effectTileDurationModPre, (spell.aoe) ? spell.aoe : 0.5);
 			}
@@ -591,8 +594,13 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			let sz = spell.size;
 			if (!sz) sz = 1;
 			if (spell.meleeOrigin) {
-				tX = entity.x + moveDirection.x;
-				tY = entity.y + moveDirection.y;
+				if (!spell.noDirectionOffset) {
+					tX = entity.x + moveDirection.x;
+					tY = entity.y + moveDirection.y;
+				} else {
+					tX = entity.x;
+					tY = entity.y;
+				}
 			}
 			let b = KinkyDungeonLaunchBullet(tX, tY,
 				moveDirection.x,moveDirection.y,
@@ -611,8 +619,13 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			let sz = spell.size;
 			if (!sz) sz = 1;
 			if (spell.meleeOrigin) {
-				tX = entity.x + moveDirection.x;
-				tY = entity.y + moveDirection.y;
+				if (!spell.noDirectionOffset) {
+					tX = entity.x + moveDirection.x;
+					tY = entity.y + moveDirection.y;
+				} else {
+					tX = entity.x;
+					tY = entity.y;
+				}
 			}
 			let b = {x: tX, y:tY,
 				vx: moveDirection.x,vy: moveDirection.y, born: 1,
