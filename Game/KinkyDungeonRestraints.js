@@ -576,7 +576,7 @@ function KinkyDungeonLock(item, lock) {
  * @returns {string}
  */
 function KDGetCurse(item) {
-	return item.curse || KDRestraint(item)?.curse;
+	return item?.curse || KDRestraint(item)?.curse;
 }
 
 /**
@@ -717,7 +717,7 @@ function KinkyDungeonPlayerGetLockableRestraints() {
 	let ret = [];
 
 	for (let item of KinkyDungeonAllRestraint()) {
-		if (!item.lock && KDRestraint(item).escapeChance && KDRestraint(item).escapeChance.Pick != undefined) {
+		if (!item.lock && !KDGetCurse(item) && KDRestraint(item).escapeChance && KDRestraint(item).escapeChance.Pick != undefined) {
 			ret.push(item);
 		}
 	}

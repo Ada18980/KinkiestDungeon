@@ -3459,8 +3459,8 @@ let KDEventMapEnemy = {
 			if (data.enemy == enemy && KinkyDungeonEntities.length < 300) {
 				let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, 10, 10);
 				if (point) {
-					let e = DialogueCreateEnemy(point.x, point.y, enemy.Enemy.name);
-					e.faction = enemy.faction;
+					let ee = DialogueCreateEnemy(point.x, point.y, enemy.Enemy.name);
+					ee.faction = enemy.faction;
 				}
 			}
 		},

@@ -1247,8 +1247,8 @@ KinkyDungeonInventoryItemSword,Sword
 KinkyDungeonInventoryItemSwordDesc,"The blade is strong, its edge sharp."
 KinkyDungeonInventoryItemSwordDesc2,"A fast and accurate weapon that deals slash damage."
 KinkyDungeonInventoryItemFlamberge,Flamberge
-KinkyDungeonInventoryItemFlambergeDesc,"A blade forged in a magical fire."
-KinkyDungeonInventoryItemFlambergeDesc2,"Deals 20 bonus fire damage on hit."
+KinkyDungeonInventoryItemFlambergeDesc,"A blade forged in magic fire."
+KinkyDungeonInventoryItemFlambergeDesc2,"Deals 20 bonus slash damage on hit."
 KinkyDungeonInventoryItemEscortDrone,Escort Drone
 KinkyDungeonInventoryItemEscortDroneDesc,"A semi-autonomous drone with a personal defense beam. Does not require hands to equip."
 KinkyDungeonInventoryItemEscortDroneDesc2,"Deals electric damage. 33% chance to stun for 4 turns."
@@ -10555,7 +10555,7 @@ AttackDemonEyeBind,"The Shadow overwhelms you with its power... (+RestraintAdded
 AttackDemonEye,"The Shadow welcomes you to your new future. (DamageTaken)"
 AttackDemonEyeLock,"The Shadow cackles as your restraints are sealed! (DamageTaken)"
 KDObserverVanishFail,"The Shadow smiles and vanishes."
-KDObserverVanishSucceed,"The Shadow smiles and vanishes, leaving you with a mysterious curse..."
+KDObserverVanishSucceed,"The Shadow smiles and vanishes, leaving you locked in a mysterious RNAME..."
 
 NameObserver,Observer
 KillObserver,The observer is banished into the aether.
@@ -10597,3 +10597,5 @@ KDRandomStairTeleport,"The stairs dissolve as you step onto them, pulling you wi
 KDObserverCurseApply,"A dark energy enters your body... (DamageDealt)"
 KinkyDungeonBuffCursed,"A dark energy lurks within you."
 KDObserverCursed,"You succumb to a dark desire... (+RestraintAdded)"
+
+KinkyDungeonSpellObserverBeamBeam,Observer's Gaze
