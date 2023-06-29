@@ -34,10 +34,8 @@ Beneath its depths lies the Mistress' Staff, an artifact of untold power.
 在它的深处隐藏着女主人的法杖，这是一件拥有无穷力量的神器。
 Will you prevail against forces unknown, or succumb to its dark secrets?
 你会战胜未知的力量，还是屈服于它的黑暗秘密？
-(This game does not contain spiders or any carnivorous creatures/plants)
-（本游戏不包含蜘蛛或任何食肉生物/植物）
-(Check out the latest standalone version at the News and Updates link below!)
-(在下面的新闻和更新链接处查看最新的独立版本！)
+(This game does not contain spiders)
+（本游戏不包含蜘蛛）
 Enable Sound
 启用音效
 Enable Drool/Tears
@@ -192,6 +190,10 @@ Clumsy
 笨手笨脚
 0.7x base accuracy
 基础准确度变为0.7倍。
+Unfocused
+目光分散
+Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction.
+当性奋值超过10%时，准确率将降低至0.9倍，随性奋值的升高准确率将持续降低，最高在90%性奋值时降低至0.6倍。
 Pristine
 质朴
 There are no shiny loot objects in the dungeon.
@@ -216,6 +218,8 @@ Cursed Locks
 禁锢诅咒
 Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle.
 没有钥匙的人将受到禁锢的诅咒，锁定的物品不能被切割，且更难挣扎。
+The magical warding from the lock protects the item.
+魔法锁保护着物品。
 Undeniable
 无可争辩
 Born with an intense submissive desire, you cannot refuse bondage from dialogues.
@@ -264,10 +268,14 @@ Magician
 幻术法师
 You can cast Illusion spells without having the components, at twice the cost. Start w/ Shadow Dagger.
 你可以以两倍魔力消耗为代价无视施法条件使用幻术。开局获得技能 暗影匕首。
+Narcoleptic
+嗜睡症
 You slowly lose stamina over time.
 随着时间的推移，你会慢慢失去体力。
 Stealth Mission
 隐匿任务
+You are harder to detect and there are more chests, but enemies take 30% less damage, are more evasive, and drop no gold.
+你将更难被敌人发现，且地图上的宝箱会更多。但敌人将不会再掉落金币，且受到的伤害将减少 30% ，拥有更高的闪避。
 Latex Lovers
 乳胶之恋
 All humanoids that can bind you also apply latex restraints.
@@ -372,8 +380,22 @@ Magic Hands
 魔法之手
 Enemies can add restraints underneath existing restraints.
 敌人可以在现有拘束具上添加额外拘束。
+Cyber Doll
+赛博娃娃
+Start in Cyber restraints.
+开局时穿戴赛博束缚。
 Fuuka's Pet
 Fuuka的宠物
+Start with Fuuka's collar and a few restraints.
+开局时穿戴Fuuka的项圈和一些别的束缚。
+Fuuka Fan Club
+Fuuka俱乐部粉丝
+All humanoids that can bind you also apply Fuuka's special restraints.
+所有可束缚你的人形生物可以使用Fuuka特制的拘束具。
+Dollmaker's Minions
+玩偶师的宠儿
+All humanoids that can bind you also apply Cyber Doll restraints.
+所有可束缚你的人形生物可以使用赛博拘束具。
 Vengeance
 复仇
 Defeating an enemy greatly distracts you.
@@ -381,11 +403,11 @@ Defeating an enemy greatly distracts you.
 Berserker Rage
 狂暴之怒
 Melee attacks distract you, but melee (including chain) damage increases by up to 30% at max distraction.
-近战攻击会提高你的干扰值，但在干扰值达到最大值时，近战（包括锁链）伤害最多增加 30%。
+近战攻击会提高你的性奋值，且性奋值达到最大时，近战（包括锁链）伤害可增加 30%。
 Unstable Magic
 混沌魔法
 Spells do up to 60% additional damage based on distraction or miscast chance, whichever is higher.
-根据干扰值或施法失败的几率，法术最多可造成 60% 的额外伤害，以较高者为准。
+根据性奋值或施法失败的几率，法术最多可造成 60% 的额外伤害，以最高者为准。
 Absolute Focus
 绝对专注
 Miscast chance is doubled.
@@ -429,11 +451,11 @@ All non-glue, non-chain, or non-teasing damage dealt to humanoid enemies is redu
 Burning Desire
 焚心望火
 While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
-当干扰值超过 70% 时，你会点燃附近的物体并提高 40% 火焰伤害。
+当性奋值超过 70% 时，你会点燃附近的物体并提高 40% 火焰伤害。
 Frigid Personality
 冰清玉洁
 While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
-当干扰值为 0% 时，提高 10% 寒冰伤害并且可以无惩罚的在冰上行走。
+当性奋值为 0% 时，提高 10% 寒冰伤害，并且你可以在冰上无惩罚的行走。
 Grounded in Reality
 现实之源
 While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
@@ -603,15 +625,15 @@ Start in a full set of magically locked obsidian cuffs.
 Mana Burst
 法力冲击
 While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge.
-当干扰值为 100% ，施法失败几率 -100%，但一次消耗过多的法力值可能会导致高潮。
+当性奋值为 100% ，施法失败几率 -100%，但一次消耗过多的法力值可能会导致高潮。
 Arousing Magic
 催化魔法
 Your magic is powered by otherworldly distracting energies. Casting spells increases distraction based on the mana spent.
-你的魔法由超凡脱俗的催情能量驱动，施法时会根据消耗的法力增加干扰值。
+你的魔法由超凡脱俗的催情能量驱动，施法时会根据消耗的法力增加性奋值。
 Clearheaded
 冷静之术
 Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction.
-魔法可以让你头脑清醒，成功施法时可以减少干扰值。
+魔法可以让你头脑清醒，成功施法时可以减少性奋值。
 Copy (clipboard)
 复制 (粘贴板)
 Paste (clipboard)
@@ -735,7 +757,7 @@ Willpower: CURRENT/MAX
 MP: CURRENT/MAX
 魔力值：CURRENT/MAX
 Your minimum distraction increases over time as you encounter distracting things.
-当你遇到分心的事情时，你的最小干扰值会随着时间的推移而增加。
+当你遇到性奋的事情时，你的最小性奋值会随着时间的推移而增加。
 Stamina recovers more quickly when you aren't spending it.
 当你休息时，耐力恢复得更快。
 Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape.
@@ -884,8 +906,6 @@ Keys:
 钥匙：
 Knife: 
 刀：
-You climb down the stairs. The passage closes behind you.
-你进入新的一层。
 You can't climb down until you get out of this leash...
 在你摆脱牵绳之前，你不能进入下一层......
 You climb down and find yourself in a strange new place.
@@ -1374,10 +1394,6 @@ A fast and accurate weapon that deals slash damage.
 一种快速而准确的武器，可造成斩击伤害。
 Flamberge
 炎剑
-A blade forged in a magical fire.
-用魔法之火锻造的刀刃。
-Deals 20 bonus fire damage on hit.
-击中时造成 20 点额外火焰伤害。
 Escort Drone
 护航无人机
 A semi-autonomous drone with a personal defense beam. Does not require hands to equip.
@@ -1496,14 +1512,6 @@ You feel a gentle buzz...
 你感觉到了轻轻的振动...
 Your toys tease you gently...
 玩具正在轻轻地逗弄你……
-Your toys are vibrating.
-你的玩具在振动。
-Your toys are buzzing strongly!
-你的玩具发出强烈的嗡嗡声！
-Your toys vibrate intensely!
-你的玩具剧烈振动！
-The vibration is torturous!
-震动令你感到痛苦！
 Edged!
 极限！
 Satisfied~
@@ -2190,8 +2198,6 @@ Fuuka uses a talisman to call forth the spirits of her pets!
 Fuuka使用丝带召唤她的宠物的灵魂！
 A pool of latex bubbles and a twisted elemental appears!
 一池乳胶冒出气泡，一个扭曲的元素出现了！
-The red liquid bubbles and a round slime pops out!
-红色史莱姆
 Latex Elemental
 乳胶元素
 Latex Elemental
@@ -2230,8 +2236,6 @@ The sticky slime splashes against you! (DamageTaken)
 粘稠的史莱姆泼到你身上！ (DamageTaken)
 The slime spreads to your body! (+RestraintAdded)
 史莱姆扩散到你的身体！ （+RestraintAdded）
-The slime splits into many smaller droplets!
-史莱姆分裂成许多更小的液滴！
 Skeleton
 骷髅
 The Skeleton falls into pieces.
@@ -3468,12 +3472,6 @@ You could spit it out easily, provided nothing's covering it.
 你可以很容易地把它吐出来，只要没有东西覆盖它。
 Arm Ropes
 手臂绳缚
-Faintly glowing ropes from a magic trap.
-来自魔法陷阱的微弱发光的绳索。
-I wonder who was responsible?
-我想知道谁负责？
-Leg Ropes
-腿部绳缚
 Faintly glowing ropes from a magic trap.
 来自魔法陷阱的微弱发光的绳索。
 I wonder who was responsible?
@@ -5814,8 +5812,6 @@ While standing on slime/latex, you can cast rubber spells without components.
 当你站在黏液/乳胶上时，你可以在施法部位被限制时释放橡胶法术。
 Convincing Disguise
 令人信服的伪装
-While completely covered in slime and not moving, your visibility is reduced considerably.
-当完全被粘液覆盖时你的能见度将大大降低。
 Magical Implements
 魔法武器精通
 While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%.
@@ -6041,7 +6037,7 @@ Choose AoE location
 Feather Burst
 羽毛破裂
 After a brief delay, a small cloud of feathers tickles enemies for DamageDealt damage and +60 distraction for 3 turns.
-短暂延迟后，一小团羽毛将使敌人发痒，给敌人造成 DamageDealt 点挠痒伤害和增加 60 点干扰值。
+短暂延迟后，一小团羽毛将使敌人发痒，给敌人造成 DamageDealt 点挠痒伤害和 60 点性奋值。
 Choose AoE location
 选择施放位置
 Tickle Cloud
@@ -6187,7 +6183,7 @@ Explosive Finish
 Select an area
 选择一个区域
 Target a large area. Consumes enemy distraction to deal up to DamageDealt charm damage, twice if at 90% distraction or more.
-消耗大范围内敌人的干扰值以造成高达 DamageDealt 的魅惑伤害，如果干扰值处于 90% 或以上则造成双倍伤害。
+消耗大范围内敌人的性奋值以造成高达 DamageDealt 魅惑伤害，如果敌人的性奋值处于 90% 或以上则造成双倍伤害。
 You say a command word, resulting in a surge of energy entering your targets!
 你念出咒语，一股奇妙能量涌入目标的身体！
 CMD: Release
@@ -6220,8 +6216,6 @@ The slime awakens and turns on you!!!
 粘液被激活并开始攻击你！！！
 Select area to awaken
 选择唤醒区域
-Activates the slime in an area, causing it to deal DamageDealt glue damage. Encases fully bound targets.
-激活目标区域的粘液，使其对站在粘液上方的个体造成 DamageDealt 点胶水伤害并包裹完全束缚的目标。
 You command the slime to draw in targets!
 你命令粘液包裹目标！
 CMD: Bind
@@ -6923,7 +6917,7 @@ Orrery
 (The note is from a famous escape artist) Many restraints are applied quite tightly by a skilled rigger. Even removing it will be tough without thrashing around a bit to loosen it.
 （笔记来自一位著名的逃生艺术家）许多束缚都是由熟练的装配工非常严格地施加的。即使将其移除也会很困难，而无需稍微扭动以松开它。
 (The note is from a famous escape artist) Anything can be unbuckled with enough patience. Having a finger extension such as a lockpick will help. Ultimately, though, what matters is that you have a calm state of mind, free from distraction and hopelessness.
-（笔记来自一位著名的逃脱艺术家）只要有足够的耐心，任何事情都可以解开。有一个手指延伸，如撬锁工具会有所帮助。但最终，重要的是你有一个平静的心态，没有干扰值和绝望。
+（笔记来自一位著名的逃脱艺术家）只要有足够的耐心，任何事情都可以解开。有一个手指延伸，如撬锁工具会有所帮助。但最终，重要的是你有一个平静的心态，没有性奋和绝望。
 (A letter between bandit leaders) One of my subordinates has been reporting a girl bound in heavy leather restraints running around. I told her that this is normal, people keep all kinds of servants around here. But definitely keep an eye out for intruders! Don't let them fool you!
 （土匪首领之间的一封信）我的一个下属报告了一个被沉重的皮革束缚束缚的女孩四处奔跑。我告诉她，这很正常，人们在这里养着各种各样的仆人。但一定要留意入侵者！不要让他们愚弄你！
 (The note is a letter from the school of conjuration) We really would like to know... why did you summon a frog in the laboratory? People are wondering, you know. One of the student's projects got eaten.
@@ -7397,7 +7391,7 @@ Ancient Chastity Belt
 You find a chastity belt, glowing magnificently, along with a strange crystal next to it.
 你发现了一条贞操带，闪闪发光，旁边还有一块奇怪的水晶。
 A chastity belt of sleek, ancient design. While powered, it gives -30% miscast chance due to distraction and slowly regenerates stamina.
-古老而简约的贞操带。充能时，基于干扰值，它会降低 30% 的施法失败几率，并缓慢恢复体力。
+古老而简约的贞操带。充能时，基于性奋值，它会降低 30% 的施法失败几率，并缓慢恢复体力。
 'Belt of the devoted'
 '忠诚的腰带'
 You tug at your chastity belt, but you can't even stick a finger inside because it's so tight...
@@ -9954,8 +9948,6 @@ Select which creature to buff
 选择要增益的个体
 You snap your fingers!
 你打了一个响指！
-Wrist Rope
-腕部绳缚
 A box tie keeping your arms secured behind your back.
 将您的手臂牢牢固定在背后。
 The ropes squeeze you gently.
