@@ -79,8 +79,11 @@ function KinkyDungeonMakeBrightnessMap(width, height, mapBrightness, Lights, del
 
 	KinkyDungeonSendEvent("brightness",{update: delta, flags: flags});
 
-	let ShadowColor = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].shadowColor ? KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].shadowColor : 0x00001f;
-	let LightColor = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].lightColor ? KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].lightColor : 0x000000;
+	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+	let params = altType?.lightParams ? KinkyDungeonMapParams[altType.lightParams] : KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+
+	let ShadowColor = params.shadowColor != undefined ? params.shadowColor : 0x00001f;
+	let LightColor = params.lightColor != undefined ? params.lightColor : 0x000000;
 
 	KinkyDungeonBlindLevelBase = 0; // Set to 0 when consumed. We only redraw lightmap once so this is safe.
 	KinkyDungeonColorGrid = [];

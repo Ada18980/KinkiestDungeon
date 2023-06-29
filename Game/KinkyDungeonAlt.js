@@ -134,6 +134,7 @@ let alts = {
 	},
 	"DollRoom": {
 		name: "DollRoom",
+		dungeonName: "DollRoom",
 		noWear: true, // Disables doodad wear
 		bossroom: false,
 		width: 15,
@@ -164,6 +165,44 @@ let alts = {
 		nobrick: true,
 		nolore: true,
 		noboring: true, // Skip generating boringness
+	},
+	"DemonTransition": {
+		name: "DemonTransition",
+		dungeonName: "DemonTransition",
+		noWear: false, // Disables doodad wear
+		bossroom: false,
+		width: 20,
+		height: 20,
+		nopatrols: false,
+		setpieces: {
+		},
+		data: {
+			DemonTransition: true,
+		},
+		genType: "DemonTransition",
+		skin: "DemonTransition",
+		musicParams: "DemonTransition",
+		lightParams: "DemonTransition",
+		spawns: false,
+		chests: true,
+		shrines: true,
+		orbs: 0,
+		chargers: true,
+		notorches: false,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		nostartstairs: true,
+		placeDoors: true,
+		notraps: false,
+		noClutter: true,
+		nobrick: false,
+		nolore: true,
+		noboring: false, // Skip generating boringness
 	},
 
 	"TestTile": {
@@ -319,6 +358,9 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"DollRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	},
+	"DemonTransition": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
 	"Dollmaker": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, 0, 10, 0, data);
@@ -956,6 +998,26 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		KinkyDungeonMapSet(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, 'S');
 }
 
+function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Create the map
+	KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 0, 10, 0, data);
+
+	KinkyDungeonEndPosition = KinkyDungeonGetRandomEnemyPoint(false, false);
+	KinkyDungeonStartPosition = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KDistChebyshev(x - KinkyDungeonEndPosition.x, y - KinkyDungeonEndPosition.y) > width/2;},false, false);
+	//let playerPos = KinkyDungeonGetRandomEnemyPoint(false, false);
+
+	KinkyDungeonPlayerEntity.x = KinkyDungeonStartPosition.x;
+	KinkyDungeonPlayerEntity.y = KinkyDungeonStartPosition.y;
+
+	KinkyDungeonMapSet(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 's');
+
+	// Create the Observer
+
+	let point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KDistChebyshev(x - KinkyDungeonStartPosition.x, y - KinkyDungeonStartPosition.y) > width/2 && KDistChebyshev(x - KinkyDungeonEndPosition.x, y - KinkyDungeonEndPosition.y) < width/2;},false, false);
+	if (point)
+		DialogueCreateEnemy(point.x, point.y, "DemonEye");
+	//KinkyDungeonMapSet(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, 'S');
+}
 
 function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
 	// Variable setup

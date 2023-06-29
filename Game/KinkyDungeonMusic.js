@@ -26,6 +26,9 @@ let KDCurrentMusicSound = null;
 let KDCurrentMusicSoundUpdate = null;
 
 function KDGetCheckpoint() {
+	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+	if (altType?.musicParams) return altType.musicParams;
+	if (altType?.skin && !altType.useDefaultMusic) return altType.skin;
 	return KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || 'grv';
 }
 

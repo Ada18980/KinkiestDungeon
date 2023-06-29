@@ -420,9 +420,11 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 						dir = "Enemies/";
 						sp = "CustomSpriteBound/" + enemy.CustomSprite;
 					}
+					let w = enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay;
+					let h = enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay;
 					KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + dir + sp + ".png",
-						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
-						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
+						(tx - CamX)*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2, (ty - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
+						w, h);
 				}
 			}
 		}
@@ -590,10 +592,10 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 				let special = enemy.usingSpecial ? "Special" : "";
 				let attackMult = KinkyDungeonGetBuffedStat(enemy.buffs, "AttackSlow", true);
 				let attackPoints = enemy.attackPoints - attackMult + 1.1;
-				let preHit = false;
+				//let preHit = false;
 				if (((enemy.usingSpecial && enemy.Enemy.specialAttackPoints) ? enemy.Enemy.specialAttackPoints : enemy.Enemy.attackPoints) > attackPoints) {
 					special = special + "Basic";
-					preHit = true;
+					//preHit = true;
 				}
 				//  && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(tx, ty))
 				if (tx >= CamX && ty >= CamY && tx < CamX + KinkyDungeonGridWidthDisplay && ty < CamY + KinkyDungeonGridHeightDisplay && !(tx == enemy.x && ty == enemy.y)) {
@@ -2366,10 +2368,15 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 	}
 
 	if (defeat) {
-		KinkyDungeonDefeat(KinkyDungeonFlags.has("LeashToPrison"));
+		if (KDCustomDefeat) KDCustomDefeat();
+		else if (!KinkyDungeonFlags.get("CustomDefeat"))
+			KinkyDungeonDefeat(KinkyDungeonFlags.has("LeashToPrison"));
 	}
-
+	KDCustomDefeat = null;
 }
+
+/** @type {() => void} */
+let KDCustomDefeat = null;
 
 function KDMakeHostile(enemy, timer) {
 	if (!timer) timer = KDMaxAlertTimerAggro;
@@ -5206,4 +5213,19 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 function KDAssignLeashPoint(enemy) {
 	AIData.nearestJail = KinkyDungeonNearestJailPoint(enemy.x, enemy.y);
 	if (!AIData.nearestJail || KinkyDungeonFlags.has("LeashToPrison")) AIData.nearestJail = Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+}
+
+/**
+ *
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDPlayerLeashed(player) {
+	if (player?.player) {
+		let r = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
+		if (r && KDRestraint(r)?.leash) {
+			return true;
+		}
+	}
+	return false;
 }

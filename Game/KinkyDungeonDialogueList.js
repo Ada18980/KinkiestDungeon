@@ -694,6 +694,7 @@ let KDDialogue = {
 					KinkyDungeonSetFlag("slept", -1);
 					//KinkyDungeonChangeWill(KinkyDungeonStatWillMax * KDSleepBedPercentage);
 					KDGameData.SleepTurns = KinkyDungeonSleepTurnsMax;
+					KinkyDungeonChangeMana(KinkyDungeonStatManaMax, false, 0, false, true);
 					return false;
 				},
 				options: {
