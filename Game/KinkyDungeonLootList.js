@@ -121,7 +121,6 @@ let KinkyDungeonLootTable = {
 	"rubble": [
 		//{name: "nothing", minLevel: 0, weight:9, message:"LootRubbleFail", messageColor:"#aaaaaa", messageTime: 2, allFloors: true},
 		{name: "smallgold", minLevel: 0, weight:12, message:"LootRubbleSmallGold", messageColor:"yellow", messageTime: 3, allFloors: true},
-		{name: "knife", minLevel: 0, weight:5.5, message:"LootRubbleKnife", messageColor:"lightgreen", messageTime: 3, allFloors: true, noweapon: ["Knife"]},
 		{name: "pick", minLevel: 0, weight:2.5, message:"LootRubbleLockpick", messageColor:"lightgreen", messageTime: 3, allFloors: true, prerequisites: ["fewpick"],},
 		{name: "redkey", key: true, minLevel: 0, weight:1, message:"LootRubbleRedKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		//{name: "greenkey", minLevel: 2, weight:2, message:"LootRubbleGreenKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
@@ -130,6 +129,11 @@ let KinkyDungeonLootTable = {
 		{name: "potion_will", minLevel: 0, weight:1, message:"LootPotionWill", messageColor:"#ff4444", messageTime: 3, allFloors: true},
 		{name: "potion_stamina", minLevel: 0, weight:4, message:"LootPotionStamina", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		{name: "potion_frigid", minLevel: 0, weight:2, message:"LootPotionFrigid", messageColor:"lightgreen", messageTime: 3, allFloors: true},
+
+		{name: "knife", minLevel: 0, weight:5.5, message:"LootRubbleKnife", messageColor:"lightgreen", messageTime: 3, allFloors: true, noweapon: ["Knife"]},
+		{name: "Torch", minLevel: 0, weight:10, weapon: "Torch", noweapon: ["Torch"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Rope", minLevel: 0, weight:10, weapon: "Rope", noweapon: ["Rope"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Scissors", minLevel: 0, weight:10, weapon: "Scissors", noweapon: ["Scissors"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	],
 	"shelf": [
 		{name: "redkey", key: true, minLevel: 1, weight:1, message:"LootBookshelfKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},

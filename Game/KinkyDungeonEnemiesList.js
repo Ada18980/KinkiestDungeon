@@ -1455,8 +1455,11 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4, color: "#ff5555"},
 		],
+		effect: {
+			effect: {name: "TheShadowCurse", power: 4, count: 1},
+		},
 		visionRadius: 15, blindSight: 4, maxhp: 30, minLevel: 0, weight:-10, movePoints: 4, regen: 0.04, keys: true,
-		attackPoints: 4, attack: "MeleeBindLockAllWill", attackWidth: 3, attackRange: 1, power: 5, dmgType: "cold", fullBoundBonus: 5, multiBind: 4,
+		attackPoints: 4, attack: "MeleeBindLockAllWillEffect", attackWidth: 3, attackRange: 1, power: 5, dmgType: "cold", fullBoundBonus: 5, multiBind: 4,
 		attackLock: "Purple",
 		terrainTags: {}, shrines: [], floors:KDMapInit([]),
 		dropTable: [{name: "ManaOrb", weight: 10}]

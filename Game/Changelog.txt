@@ -1335,7 +1335,9 @@ Minor Changes:
 
 
 4.3 (Jun 2023)
+- Buffs should no longer overflow as easily in the UI
 - New restraint: Anti Magic Gag
+- Can now find torches, scissors, and rope in rubble piles
 - New mechanic: When demons jail you they will try to summon a portal and take you to a special area instead.
 - Sleeping now restores 100% max mana
 

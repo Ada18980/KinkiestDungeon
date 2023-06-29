@@ -59,8 +59,8 @@ let KinkyDungeonWeapons = {
 		]
 	},
 	"MagicSword": {name: "MagicSword", dmg: 3, chance: 2, staminacost: 2.3, type: "slash", unarmed: false, rarity: 4, shop: false, magic: true, cutBonus: 0.1, sfx: "LightSwing"},
-	"Flamberge": {name: "Flamberge", dmg: 2.0, chance: 1.0, staminacost: 2.8, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "FireSpell", magic: true,
-		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, damage: "fire"}, {type: "WeaponLight", trigger: "getLights", power: 5}],
+	"Flamberge": {name: "Flamberge", dmg: 2.0, chance: 1.0, staminacost: 2.8, type: "fire", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "FireSpell", magic: true,
+		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, damage: "slash"}, {type: "WeaponLight", trigger: "getLights", power: 5}],
 		special: {type: "ignite"},},
 	"FrostSword": {name: "FrostSword", dmg: 1.5, chance: 1.0, staminacost: 2.5, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "LesserFreeze", magic: true,
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, time: 5, damage: "frost"}, {type: "WeaponLight", trigger: "getLights", power: 3, color: "#92e8c0"}]
