@@ -807,7 +807,7 @@ Torturous vibrations!!!
 Stunned! You can't move!
 你被晕眩，无法移动！
 Your vision is impaired!
-你的视觉受到影响！
+你的视野受到影响！
 Arms are bound!
 手臂被束缚！
 Hands are useless!
@@ -884,6 +884,72 @@ You are on fire and taking damage!
 你正在燃烧并受到伤害！
 Arcane Power: Deals bonus damage when you hit an enemy.
 奥术之力：当你击中敌人时，造成额外的伤害。
+Arcane Protection: Reduces damage taken, and deals retaliation damage.
+奥术保护：减少所受伤害，并反弹给造成伤害的敌人。
+Arcane Cunning: You turn invisible briefly after attacking.
+奥术之灵：你在攻击后短暂变得隐形。
+-MP Cost (Fire)
+减少火焰法术的 MP 消耗
+-MP Cost (Air)
+减少风法术的 MP 消耗
+-MP Cost (Water)
+减水法术的 MP 消耗
+-MP Cost (Earth)
+减少岩法术的 MP 消耗
+Slime Form: You gain bonuses and can slip through bars!
+粘液形态：你获得一些加成，并能穿过栅栏！
+Shroud: Visibility decreased, evasion increased.
+影雾：降低可见度，增加闪避。
+Camoflage: While holding still, you are very hard to see.
+伪装：静止不动时，你很难被其他生物察觉到。
+Stone Skin: Increased armor.
+石肤：增加护甲。
+Darkblade: Increased damage.
+暗影之刃：增加伤害。
+Runic Ward: Increased Magic Armor.
+符文盾：增加魔法护甲。
+Great Invisibility: It is impossible for enemies to see you.
+高级隐形：敌人无法看到你。
+Invisibility: It is very difficult for enemies to see you.
+隐形：敌人很难看到你。
+Lesser Invisibility: It is harder for enemies to see you.
+次级隐身：敌人较难看到你。
+FULL POWER: Cutting power increased.
+充满能量：切割能力提高。
+Graceful: Struggling power increased.
+优雅：挣扎能力提高。
+Iron Blood: Reduced melee cost, increased mana costs.
+铁血：减少近战体力消耗，但增加施放法术的法力消耗。
+Sleepy: You are sluggish and have a hard time keeping your eyes open.
+疲倦：你感到疲倦，难以保持清醒。
+Afterimage: Evasion greatly increased.
+残像：闪避大幅增加。
+We did it! We made outselves invisible--mmmmph!!!
+我们做到了！我们让自己隐形了——嗯↗↘↗ ！
+Your restraints are disenchanted, treating them as nonmagical for purposes of cutting.
+你的身上的拘束具被解除了，它们在解除时被视为非魔法物品。
+You can launch another leather restraint instantly!
+你可以立即发射另一个皮革束缚！
+Your motivation is powerful enough your spells cannot be stopped!
+你的动力足够强大，无法阻止你的法术！
+Locked Down: Struggling power is greatly reduced.
+锁定：挣扎能力大幅降低。
+Locked Down: Struggling power is greatly reduced.
+锁定：挣扎能力大幅降低。
+Verbose: You can cast verbal spells while gagged.
+言灵无碍：你可以在佩戴口球的情况下施放言语法术。
+Dextrous: You can cast arm spells while tied up.
+手法巧妙: 你可以在手臂被捆绑的情况下施放需要手臂的法术。
+Spell Dance: You can cast leg spells while tied up.
+舞步神通：你可以在双腿被捆绑的情况下施放需要腿部的法术。
+Bondage Buster: Lazor is charging...
+束缚破坏者：激光正在充能中...
+Katana: Patience is key...
+Katana：耐心是关键...
+Stormbreaker: You have the Power.
+风暴克星：你拥有力量。
+Game Setup:
+游戏设置
 Beginner: Get a save code every 3 levels
 初学者：每3层获得一个保存代码
 Roguelike: No save codes, only autosave
@@ -912,6 +978,8 @@ They may still prove useful to future adventurers should you get caught...
 如果你被抓住，它们可能仍然对未来的冒险者有用......
 (Your game has been saved automatically, but you can save the code for later)
 （您的游戏已自动保存，但您可以保存代码以备后用）
+Continue...
+继续
 Menu
 菜单
 I will simply wait to see what happens.
@@ -920,12 +988,18 @@ Save my current progress.
 保存当前进度
 Give up & delete save
 放弃并删除存档
+Yes, delete my save file!
+是的，删除我的存档文件
 Actually, I will let the enemy capture me instead.
 实际上，我要让敌人俘虏我
+Yes, jail me!
+是的，囚禁我
 No, I wish to press on
 不，我想继续
 See Perks
 查看技能
+This chest belongs to the FACTION
+这个箱子属于FACTION。
 Devious Dungeon Challenge is enabled.
 Devious Dungeon Challenge 已启用。
 Waiting for game data...
@@ -940,8 +1014,20 @@ You have reached the end of the playable portion.
 您已到达可游玩部分的末尾。
 Come back later for new dungeons!
 请以后再来游玩全新的地牢！
+Got the keys! Find the stairs to go to the next floor.
+找到了钥匙！找到楼梯前往下一层。
+You haven't found the keys for this floor yet.
+你还没有找到本层的钥匙。
 Missing key
 未找到钥匙
+Chance for a spell to fizzle: 
+施法失败几率：
+Dodge Chance: Percent%, based on EVASIONSUM Evasion, -EVASIONPENALTY% penalty from bindings
+闪避率：Percent%，基于 EVASIONSUM 闪避，扣除来自束缚的 EVASIONPENALTY% 惩罚
+Block Chance: Percent%, based on BLOCKSUM Block, -BLOCKPENALTY% penalty from bindings
+格挡率：Percent%，基于 BLOCKSUM 格挡，扣除来自束缚的 BLOCKPENALTY% 惩罚
+Chance to resist a level 10 restraint: Percent%
+对10级束缚的抗性：Percent%
 Sight Range: RADIUS
 视距: RADIUS
 Speed: SPD
@@ -964,6 +1050,8 @@ Willpower: CURRENT/MAX
 体力值: CURRENT/MAX
 MP: CURRENT/MAX
 魔力值：CURRENT/MAX
+Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool.
+法力从有着 POOLMANA 点储备法力的储备池中缓慢恢复，喝药水可以恢复储备池。
 Your minimum distraction increases over time as you encounter distracting things.
 当你遇到性奋的事情时，你的最小性奋值会随着时间的推移而增加。
 Stamina recovers more quickly when you aren't spending it.
@@ -982,6 +1070,8 @@ Use Potion
 魔力
 Go to sleep
 睡觉
+Call for help!
+呼救！
 Play with yourself
 自慰
 Let go...
@@ -1000,10 +1090,20 @@ Auto-struggle
 自动尝试挣脱
 Auto-path
 自动寻路
+Quick-Swap Weapon
+快速切换武器
+Inspect
+检查
 Pass NPCs
 通过 NPC
+Close a Door
+关门
 Sprint/Hop
 疾跑/跳跃
+Ahh!
+啊！
+Mmm...
+嗯...
 You wait.
 等待。
 You are exhausted from spellcasting.
