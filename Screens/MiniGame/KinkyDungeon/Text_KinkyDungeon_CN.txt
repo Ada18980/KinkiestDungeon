@@ -177,7 +177,7 @@ Attempting to escape arouses you.
 Focused Dodge
 集中闪避
 While your miscast chance is 0%, you gain +40 Evasion.
-施法失败率为 0% 时，+40 闪避。
+施法失败率为 0% 时，闪避 +40。
 Distracted
 干扰
 +15% miscast chance (at all times)
@@ -396,6 +396,14 @@ Dollmaker's Minions
 玩偶师的宠儿
 All humanoids that can bind you also apply Cyber Doll restraints.
 所有可束缚你的人形生物可以使用赛博拘束具。
+Doll Hunter V
+玩偶猎人V
+You start with the Dollmaker's Visor.
+开局时穿戴玩偶制造商的面罩
+Doll Hunter M
+玩偶猎人M
+You start with the Dollmaker's Mask.
+开局时穿戴玩偶制造商的面具
 Vengeance
 复仇
 Defeating an enemy greatly distracts you.
@@ -424,6 +432,10 @@ I have... needs
 我...想要...
 Distraction builds up over time.
 干扰值随时间累计。
+Hopeless
+绝望的
+Willpower decays over time.
+意志力会随着时间的推移而衰减。
 Quickness
 迅疾闪现
 Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock.
@@ -451,21 +463,27 @@ All non-glue, non-chain, or non-teasing damage dealt to humanoid enemies is redu
 Burning Desire
 焚心望火
 While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
-当性奋值超过 70% 时，你会点燃附近的物体并提高 40% 火焰伤害。
+当性奋值超过 70% 时，自身造成的火焰伤害提高 40%，并且你会点燃附近的物体。
 Frigid Personality
 冰清玉洁
 While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
-当性奋值为 0% 时，提高 10% 寒冰伤害，并且你可以在冰上无惩罚的行走。
+当性奋值为 0% 时，自身造成的寒冰伤害提高 10%，并且可以在冰上无惩罚的行走。
 Grounded in Reality
 现实之源
 While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
 当法力值最大时，攻击可造成额外 30% 基础伤害的电击伤害。
 Like the Wind
 风之旋律
+While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 1.
+当体力超过 95 %时，闪避 +30，并降低一级减速。
 Immovable Object
 坚不可摧
+While above 90% willpower, you gain +150 Bondage Resist and Earth buff spells cost half mana.
+当意志力超过 90% 时， 束缚抗性 +150，并且岩属性增益法术的魔力消耗减半。
 Path of Least Resistance
 腐蚀之盾
+While at 0 willpower, you gain +35 Evasion and deal 20% of your max willpower as acid damage when restrained.
+当意志力为 0 时，闪避 +35，并在被束缚时对敌人造成最大意志力 20% 的酸蚀伤害。
 Sticky Situation
 粘滞窘境
 You take 40% more glue damage.
@@ -482,6 +500,24 @@ Unfair Doors
 困难的门
 Doors are harder to open while your hands are bound.
 当你的手被束缚时，门更难打开。
+You rattle the doorknob uselessly and end up banging on the door.
+你无力地拨动着门把手，结果最终却只是敲打着门。
+You can't quite get a grip on the doorknob.
+你无法完全抓住门把手。
+Someone hears you banging and opens the door from the other side!
+有人听到你的敲门声，然后从另一边打开了门！
+Someone notices you fiddling with the door and opens it from the other side!
+有人注意到你在摆弄门，然后从另一边打开了门！
+The door squeaks open as the latch wasn't fully engaged.
+门因为没有完全锁上而吱嘎吱嘎地打开了。
+You grab the doorknob with your wrists and flex it open.
+你用手腕抓住门把手并用力扭动，成功将门打开。
+You use your flexible feet to open the door.
+你利用灵活的双脚打开了门。
+Poor Technique
+技巧欠佳
+Instead of fizzling, most miscasted projectiles and AoE spells will target you instead.
+大多数施法失败的投射物和AOE法术将不会失效，而是会改为以你为目标。
 Ticklish
 怕痒
 You take 50% more tickle damage.
@@ -496,12 +532,16 @@ You take 50% more grope damage.
 你受到的抚摸伤害增加 50%。
 Unperturbed
 冰洁
+You gain 82 grope resist.
+自身抚摸抗性 +82 点。
 Masochist
 受虐
 Pain is strongly arousing.
 疼痛会使你强烈地兴奋。
 Pain Tolerance
 坚韧
+You gain 200 pain resist.
+自身疼痛抗性 +200 点。
 Fashionable
 时尚之星
 When you are jailed, you keep your outfit.
@@ -512,6 +552,8 @@ Lose 2 WP every time you remove a non-trivial restraint.
 每次移除特殊拘束时消耗 2 WP。
 Second Wind
 再生之气
+Gain 2 WP every time you remove a non-trivial restraint. Destroys restraints on removal.
+每次解除特殊束缚时，获得2点意志力，但解除时会摧毁拘束具。
 Dominant
 支配者
 They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage.
@@ -602,10 +644,28 @@ Weak Grip
 弱式握杆
 Having arms bound prevents you from holding weapons or potions.
 被束缚的手臂无法持有武器或药剂。
+You kneel down so you can reach the potion with your mouth...
+你跪了下来，这样你就能用嘴巴够到药水了...
 Can't Hear You!
 听不见你说话！
 Being gagged blocks you from casting verbal spells regardless of gag power.
 堵嘴会阻止你施放言语咒语，无论堵嘴的等级如何。
+Ball Gag Lover
+口球爱好
+Increase occurrence of ball gags, decrease occurrence of muzzles.
+增加口球的出现频率，减少口套的出现频率。
+Muzzle Lover
+口套爱好
+Greatly increases the occurrence of muzzles.
+增加口套的出现频率。
+Armbinder Lover
+后手袋爱好
+More armbinders, less straitjackets.
+增加后手袋的出现频率，减少拘束衣的出现频率。
+Jacket Lover
+拘束衣爱好
+More straitjackets, less armbinders.
+增加拘束衣的出现频率，减少后手袋的出现频率。
 Maid Sweeper
 可爱女仆
 Start in a magically locked maid outfit.
@@ -638,20 +698,56 @@ Copy (clipboard)
 复制 (粘贴板)
 Paste (clipboard)
 粘贴 (粘贴板)
+DAMAGEDEALT electric damage conducts to you!!!
+DAMAGEDEALT 点电击伤害传导到你身上！
+The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!
+压力助长了你身上的火焰，你额外造成 DAMAGEDEALT 点火焰伤害！
+The RestraintName comes off more easily in the presence of water!
+在水的存在下，RestraintName更容易解开！
+You slip on the ice!
+你在冰上滑倒了！
 The air around you is ablaze! (-DamageDealt SP)
 你周围的空气在燃烧！ (-DamageDealt SP)
+The Goddess of Illusions shrouds you in shadows!
+幻术女神将你笼罩在阴影中！
+You struggle against your bonds, but a magical force resists!
+你努力挣扎着摆脱束缚，但有一股魔力阻碍着你！
 The ropes squeeze you tighter and tighter...
 绳索越来越紧……
 Your body sinks deeper into a sea of bindings...
 你的身体更深地沉入了束缚的海洋……
 You struggle to breath as you are buried alive in squirming ropes...
 当你被活埋在蠕动的绳索中时，你呼吸困难……
+The slime stretches out over your body...
+黏液慢慢伸展开来，覆盖着你的身体...
+The slime continues to engulf you, blocking out your vision...
+黏液继续包裹着你，遮挡了你的视野...
+The slime starts to harden, sealing you inside a rubbery prison...
+黏液开始变硬，将你封闭在一个橡胶般的牢笼中...
+You feel a force compelling you to stop resisting...
+你感受到一股力量驱使你停止抵抗...
+Your body struggles to move as you feel a power sealing you!
+你感到一股力量将你的身体束缚，使你难以移动！
+The sarcophagus' door slides open as you are slowly pulled inside...
+石棺的门滑开，你被缓慢地拉进去...
+The hands squeeze you tightly...
+那双手紧紧地握着你……
+More hands clasp over your body...
+更多的双手抱住你的身体…
+You struggle to breath as you are pulled into the mass of shadow hands...
+你被拉入一团阴影之手中，挣扎的呼吸着...
 The world goes dark...
 世界变暗了……
 You wake up in a different place...
 你在不同的地方醒来...
 Arcane Explosion
-神秘爆炸
+奥术爆发
+EnemyName says something incomprehensible! Her spell miscasts!
+EnemyName说了一些难以理解的话！她的法术施放失败了！
+EnemyName fumbles her next move!
+EnemyName在下一个动作中搞砸了！
+The EnemyName utters a command word on the TargetName!
+EnemyName对TargetName念出了一个口令！
 Nipples
 乳头
 Nipples
@@ -670,12 +766,124 @@ Feet
 脚
 Everywhere!
 任何位置！
+Physical Armor: 
+物理护甲：
+Magic Armor: 
+魔法护甲：
+In the Shadows: You are harder to see.
+处在阴影中：你更难被敌人察觉。
+Invisible: You are very difficult to see.
+隐形：你非常难以被敌人察觉。
+Quickness: Your next movement is so fast it doesn't advance a turn.
+迅捷：你的下一个动作极其迅速，使得其不消耗回合时间。
+All Damage Reduction: 
+所有伤害减免：
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 你受到 PERCENT1 DAMAGETYPE 伤害，基于 PERCENT2 DAMAGETYPE 抗性和 PERCENT3 DAMAGECATEGORY 修正
+You deal PERCENT more DAMAGETYPE damage.
+你造成的 DAMAGETYPE 伤害增加了 PERCENT。
+Your bindings are PERCENT more effective.
+你的束缚效果提高了 PERCENT。
 Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage.
 你的基础攻击可造成 DAMAGEDEALT 点 DAMAGETYPE 伤害
 Plugged!
 插上！
+Plugged up!!!
+完全插入！
+Denied! You won't be getting off that easy~
+你的提议被拒绝了！你不会那么轻易就脱身的~
+Teasing vibrations...
+诱惑的震动...
+Gentle vibrations...
+温柔的震动...
+Mild vibrations...
+轻微的震动...
+Strong vibrations!
+强烈的震动！
+Intense vibrations!!
+激烈的震动
+Torturous vibrations!!!
+折磨般的震动！
+Stunned! You can't move!
+你被晕眩，无法移动！
+Your vision is impaired!
+你的视觉受到影响！
+Arms are bound!
+手臂被束缚！
+Hands are useless!
+双手无法使用！
+Hands are impaired! Some tasks will be harder...
+双手受到束缚！一些操作会更加困难...
+Movement significantly impaired!
+移动明显受限！
+Movement slightly impaired.
+移动略有受限。
+Movement severely impaired!
+移动严重受限！
+Movement is almost impossible. Sprinting and hopping are disabled.
+移动几乎不可能，你无法奔跑和跳跃。
+Immobilized!
+被固定，你无法移动！
+Your mouth is free for potion-drinking and spellcasting activities.
+你的嘴巴可以自由饮用药剂和施放法术。
+Your vision is clear.
+你的视野十分清晰。
+Your hands are unobstructed.
+你的双手没有被阻碍。
+Your arms are free to move as you please.
+你的手臂可以自由伸展。
+Your legs are free and unimpeded.
+你的双腿自由而无阻。
+You are gagged! Verbal miscast chance is increased and your potions are less effective!
+你的嘴巴被口球堵住了，施放言语法术的失败几率增加，而且药剂的效果减弱！
+Your mouth is totally filled! You can't drink potions and cant cast verbal spells!
+你的嘴巴被死死的填满，无法施放言语法术和饮用药剂！
+Spell Empowerment!
+法术强化！
+Let there be light!
+让光明降临！
+You're seeing things...
+你看到一些东西...
+You've been poisoned!
+你中毒了！
+-50% MP Cost (Latex)
+乳胶法术的魔力消耗减少 50%。
+-50% MP Cost (Leather)
+皮革法术的魔力消耗减少 50%。
+-50% MP Cost (Metal)
+金属法术的魔力消耗减少 50%。
+-50% MP Cost (Rope)
+绳索法术的魔力消耗减少 50%。
+Regeneration
+再生能力
+-50% MP Cost (Elements)
+元素法术的魔力消耗减少 50%。
+-50% MP Cost (Conjuration)
+咒术的魔力消耗减少 50%。
+-50% MP Cost (Illusion)
+咒术的魔力消耗减少 50%。
+Conductive: When you or an enemy takes electric damage, the other takes half of it as well!
+导电：当你或敌人受到电击伤害时，双方都会承受被攻击个体的 50% 电击伤害！
+Lightning Rod: Gain significantly boosted electric resist.
+避雷针：大幅增加电击抗性。
+Drenched: Grants fire resist, ice/electric weakness, and makes you conductive.
+潮湿：提高火焰抗性，但降低对寒冰和电击的抗性，并获得导电。
+Chilled: The cold makes it hard to move! You are slowed.
+寒冷：寒冷使得移动变得困难！降低移动速度。
+Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
+粘液覆盖：浓稠而又黏糊糊粘液覆盖在你身上！降低粘液抗性 30% 和移动速度。
+Unsteady: You're on loose footing. You are easier to hit and are slowed.
+不稳定：你站在不牢固的地面上。你更容易被击中，并且降低移动速度。
+Unsteady: You're on loose footing. You are easier to hit and are slowed.
+不稳定：你站在不牢固的地面上。你更容易被击中，并且降低移动速度。
+Ignore Ice Tiles
+忽略寒冰效果
+Ignited: You are dealing fire damage to yourself and nearby enemies!
+燃烧：你对自己和附近的敌人造成火焰伤害！
+You are on fire and taking damage!
+你正在燃烧并受到伤害！
+Arcane Power: Deals bonus damage when you hit an enemy.
+奥术之力：当你击中敌人时，造成额外的伤害。
 Beginner: Get a save code every 3 levels
 初学者：每3层获得一个保存代码
 Roguelike: No save codes, only autosave
@@ -1337,7 +1545,7 @@ A magical weapon made to use on novices.
 +20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency.
 锁链伤害+20%并定身4回合。绑定效率为150%。
 Arcane Orb
-神秘球
+奥术法球
 Look into my eyes...
 看着我的眼睛。。。
 Deals shadow damage. Can be used without hands. Does not benefit from enemies being vulnerable.
@@ -3036,8 +3244,6 @@ Next Offer
 下一个交易
 Cost: ItemCostgp
 花费：ItemCostgp
-Level RestraintLevel (Rarity)
-等级 拘束等级（稀有度）
 Consumable
 消耗品
 Equipped
@@ -5199,7 +5405,7 @@ Projection Magic
 Unlocks illusory spells. Learn Summon Decoy.
 允许学习投影幻术 并习得幻术 “召唤诱饵”
 Arcane Knowledge
-秘密知识
+奥术知识
 Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies.
 允许学习知识和暴击幻术 解锁对敌人的高级工具提示 并习得幻术 “共析钢”
 Glue
@@ -5706,16 +5912,16 @@ Unlocks horizontal and vertical latex walls that encase enemies that walk throug
 解锁水平和垂直乳胶墙，包裹试图穿过的敌人。
 Wall of Latex (Vert)
 乳胶墙（垂直）
-Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased
- take DamageDealt glue damage if not encased
+Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded.
+创造一面垂直的乳胶墙，持续 20 回合。 穿过的敌人将被包裹住，如果没有被包裹则受到 DamageDealt 点胶水伤害，并且被致盲。
 You tap your foot and a wall of latex stretches out across the corridor.
 你轻踮脚尖，一堵乳胶墙慢慢地从地上升起。
 Choose vertical wall origin (5 tiles high)
 选择垂直墙原点（5 格高）
 Wall of Latex (Horiz)
 乳胶墙（水平）
-Creates a horizontal wall of latex for 20 turns. Enemies that pass through are encased
- take DamageDealt glue damage if not encased
+Creates a horizontal wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded.
+创造一面水平的乳胶墙，持续 20 回合。 穿过的敌人将被包裹住，如果没有被包裹则受到 DamageDealt 点胶水伤害，并且被致盲。
 You tap your foot and a wall of latex stretches out across the corridor.
 你轻踮脚尖，一堵乳胶墙慢慢地从地上升起。
 Choose horizontal wall origin (5 tiles wide)
@@ -7527,9 +7733,9 @@ The spores make you feel sleepy...
 DAMAGETYPE: MULTIPLIERx modifier
 DAMAGETYPE：MULTIPLIERx 修正
 Base Physical Armor: AMOUNT
-基础物理装甲：AMOUNT
+基础物理护甲：AMOUNT
 Base Magic Armor: AMOUNT
-基础魔术装甲：AMOUNT
+基础魔法装甲：AMOUNT
 Base Evasion: AMOUNT%
 基础逃避：AMOUNT%
 Deals DAMAGETYPE damage
