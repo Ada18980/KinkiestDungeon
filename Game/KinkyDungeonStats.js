@@ -1181,8 +1181,17 @@ function KinkyDungeonCapStats() {
 	if (KinkyDungeonStatWill > KinkyDungeonStatWillMax - 0.001) KinkyDungeonStatWill = KinkyDungeonStatWillMax;
 }
 
+function KDIsHogtied(C) {
+	if (!C) C = KinkyDungeonPlayer;
+	return StandalonePatched ? KDCurrentModels.get(C)?.Poses.Hogtie : C.Pose.includes("Hogtied");
+}
+function KDIsKneeling(C) {
+	if (!C) C = KinkyDungeonPlayer;
+	return StandalonePatched ? KDCurrentModels.get(C)?.Poses.Kneel: C.IsKneeling();
+}
+
 function KinkyDungeonLegsBlocked() {
-	if (KinkyDungeonPlayer.Pose.includes("Hogtie")) return true;
+	if (KDIsHogtied()) return true;
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv) && KDRestraint(inv).blockfeet) return true;
 	}
@@ -1190,7 +1199,7 @@ function KinkyDungeonLegsBlocked() {
 }
 
 function KinkyDungeonCanStand() {
-	return !KinkyDungeonPlayer.Pose.includes("Kneel") && !(KDGameData.KneelTurns > 0);
+	return !KDIsKneeling() && !KDIsHogtied() && !(KDGameData.KneelTurns > 0);
 }
 function KinkyDungeonCanKneel() {
 	return true;
@@ -1210,7 +1219,7 @@ function KinkyDungeonCalculateSlowLevel(delta) {
 			}
 		}
 		if (!KinkyDungeonCanStand()) KinkyDungeonSlowLevel = Math.max(3, KinkyDungeonSlowLevel + 1);
-		if (KinkyDungeonPlayer.Pose.includes("Hogtied")) KinkyDungeonSlowLevel = Math.max(4, KinkyDungeonSlowLevel + 1);
+		if (KDIsHogtied()) KinkyDungeonSlowLevel = Math.max(4, KinkyDungeonSlowLevel + 1);
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if (KDRestraint(inv).freeze) KinkyDungeonSlowLevel = Math.max(2, KinkyDungeonSlowLevel);
 		}
