@@ -19,4 +19,4 @@ e) Use the content in promotional material related to Kinky Dungeon such as vide
 
 2) You may release your own work under any license you choose, but that license shall not apply to Kinky Dungeon itself or any of its code
 
-3) You maintain copyright to all contributions you make
+3) You own the copyright to all contributions you make
