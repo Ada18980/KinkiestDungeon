@@ -1187,7 +1187,7 @@ function KDIsHogtied(C) {
 }
 function KDIsKneeling(C) {
 	if (!C) C = KinkyDungeonPlayer;
-	return StandalonePatched ? KDCurrentModels.get(C)?.Poses.Kneel: C.IsKneeling();
+	return StandalonePatched ? KDCurrentModels.get(C)?.Poses.Kneel || KDCurrentModels.get(C)?.Poses.KneelClosed : C.IsKneeling();
 }
 
 function KinkyDungeonLegsBlocked() {

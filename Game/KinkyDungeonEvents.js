@@ -230,7 +230,7 @@ let KDEventMapInventory = {
 	"drawSGTooltip": {
 		"curseInfo": (e, item, data) => {
 			if (item == data.item || KDRestraint(item)?.Group == data.group) {
-				let pre = item == data.item ? "" : TextGet("Restraint" + item.name) + ": ";
+				let pre = item == data.item ? "" : "[" + TextGet("Restraint" + item.name) + "]";
 				data.extraLines.push(pre + TextGet("curseInfo" + e.msg));
 				data.extraLineColor.push(e.color);
 			}
@@ -276,7 +276,7 @@ let KDEventMapInventory = {
 				KinkyDungeonChangeMana(-e.power);
 				alreadyDone += e.power;
 				KDItemDataSet(item, "manaDrained", alreadyDone);
-			} else {item.name = "MagicGag2";}
+			} else {KDChangeItemName(item, item.type, "MagicGag2");}
 		},
 		"DollmakerMask": (e, item, data) => {
 			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);

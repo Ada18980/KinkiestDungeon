@@ -3867,3 +3867,18 @@ function KDItemDataSet(item, name, value) {
 	}
 	item.data[name] = value;
 }
+
+/**
+ * Changes a restraint item's name
+ * @param {item} item
+ * @param {string} type
+ * @param {string} name
+ */
+function KDChangeItemName(item, type, name) {
+	if (item.name == name) return;
+	if (KinkyDungeonInventory.get(type).get(item.name)) {
+		KinkyDungeonInventory.get(type).set(name, item);
+		KinkyDungeonInventory.get(type).delete(item.name);
+	}
+	item.name = name;
+}
