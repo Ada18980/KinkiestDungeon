@@ -57,6 +57,7 @@ let KinkyDungeonFastStruggleGroup = "";
 
 let KDMinBuffX = 0;
 let KDMinBuffXTarget = 1000;
+let KDToggleShowAllBuffs = false;
 
 /**
  *
@@ -640,8 +641,11 @@ function KinkyDungeonDrawInputs() {
 	let XXspacing = spriteSize + 3;
 	let YYspacing = spriteSize + 3;
 	let currCategory = "";
-	let MaxHeight = 350 + spriteSize;
-	let ShowAll = (KDMinBuffX && MouseIn(KDMinBuffX, minYY - spriteSize, 2000, MaxHeight)) || MouseIn(minXX, minYY - spriteSize, 250, MaxHeight);
+	let MaxHeight = 300 + spriteSize;
+	let ShowAll = KDToggleShowAllBuffs;
+
+	// (KDMinBuffX && MouseIn(KDMinBuffX, minYY - spriteSize, 2000, MaxHeight)) || MouseIn(minXX, minYY - spriteSize, 250, MaxHeight);
+
 	let smoothSnap = 5;
 	if (!ShowAll) {
 		if (KDMinBuffX)
@@ -657,14 +661,26 @@ function KinkyDungeonDrawInputs() {
 			KDMinBuffX = (KDMinBuffXTarget + KDUISmoothness * KDMinBuffX)/(1 + KDUISmoothness);
 			if (KDMinBuffX < KDMinBuffXTarget + smoothSnap) KDMinBuffX = KDMinBuffXTarget;
 		}
-		FillRectKD(
+
+		/*FillRectKD(
 			kdcanvas, kdpixisprites, "buffBG", {
 				Left: KDMinBuffX - spriteSize/2, Top: minYY - spriteSize, Width: 2000 - 5 - KDMinBuffX + spriteSize/2,
 				Height: MaxHeight + spriteSize,
 				Color: "#000000", alpha: 0.4, zIndex: 100,
 			}
-		);
+		);*/
 	}
+	DrawButtonKDEx(
+		"KDToggleShowAllBuffs", (bdata) => {
+			KDToggleShowAllBuffs = !KDToggleShowAllBuffs;
+			return true;
+		},
+		true,
+		(KDMinBuffX || minXX) - spriteSize/4,
+		minYY - spriteSize*0.75,
+		2000 - 10 - (KDMinBuffX || minXX) + spriteSize/2,
+		MaxHeight + spriteSize,
+		"", "#000000", undefined, undefined, undefined, true, undefined, undefined, undefined, {alpha: 0.4});
 	let resetX = (stat) => {
 		if (!ShowAll && !KDMinBuffX)
 			XX = minXX;

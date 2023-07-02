@@ -190,7 +190,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 			KinkyDungeonPlayerDamage.dmg /= 2;
 		}
 	}
-	if ((KinkyDungeonPlayer.Pose.includes("Hogtied") || KinkyDungeonPlayer.Pose.includes("Kneel")) && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
+	if ((KDIsHogtied() || KDIsKneeling()) && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
 		KinkyDungeonPlayerDamage.chance /= 1.5;
 	}
 
