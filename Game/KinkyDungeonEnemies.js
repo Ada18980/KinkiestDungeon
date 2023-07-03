@@ -2935,13 +2935,25 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		enemy.stun = 1;
 	}
 
+	// Whether or not the enemy should hold when nearby
+	// Summons are mainly the ones who should behave like this
+	AIData.holdStillWhenNear = enemy.Enemy.Behavior?.holdStillWhenNear || (player.player && enemy.Enemy.allied && !enemy.Enemy.Behavior?.behaveAsEnemy
+		&& KDAllied(enemy) && !KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "StayHere"));
+
 	if (!AIData.startedDialogue) {
 		if (
 			!AIType.beforemove(enemy, player, AIData)
 			&& (
 				(enemy.Enemy.attackWhileMoving && enemy != KinkyDungeonLeashingEnemy())
 				|| AIData.ignore
-				|| !(KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.followRange, enemy.attackPoints < 1 || !(enemy.Enemy.projectileTargeting || enemy.Enemy.projectileAttack), false) && enemy.aware)
+				|| !(
+					KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.followRange, enemy.attackPoints < 1 || !(enemy.Enemy.projectileTargeting || enemy.Enemy.projectileAttack), false)
+					&& enemy.aware
+					&& (
+						(AIData.hostile&& AIData.wantsToAttack)
+						|| AIData.holdStillWhenNear
+					)
+				)
 				|| AIData.kite
 			)
 		) {
