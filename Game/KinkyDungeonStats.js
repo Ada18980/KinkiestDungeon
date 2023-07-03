@@ -336,12 +336,28 @@ function KDGetStamDamageThresh() {
 	return data.thresh;
 }
 
-function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
-	if (bullet && !noAlreadyHit) {
+/**
+ *
+ * @param {any} bullet
+ * @param {entity} entity
+ * @param {boolean} [suppressAdd]
+ * @returns {boolean}
+ */
+function KDBulletAlreadyHit(bullet, entity, suppressAdd) {
+	if (bullet) {
+		let name = entity.player ? "player" : entity.id;
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
-		if (bullet.alreadyHit.includes("player")) return {happened: 0, string: ""};
-		bullet.alreadyHit.push("player");
+		if (bullet.alreadyHit.includes(name)) return true;
+		if (!suppressAdd)
+			bullet.alreadyHit.push(name);
+	}
+	return false;
+}
+
+function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
+	if (bullet && !noAlreadyHit) {
+		if (KDBulletAlreadyHit(bullet, KinkyDungeonPlayerEntity)) return {happened: 0, string: ""};
 	}
 
 	let data = {
