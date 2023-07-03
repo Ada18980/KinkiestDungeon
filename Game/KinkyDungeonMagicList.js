@@ -1131,7 +1131,7 @@ let KinkyDungeonSpellListEnemies = [
 		minRange: 0, noise: 4, sfx: "MagicSlash", school: "Illusion", manacost: 7, components: ["Arms"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 6, range: 6, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false,
 		spellcast: {spell: "ObserverBeamBeam", target: "target", directional: false, offset: false}, channel: 2},
 	{enemySpell: true, name: "ObserverBeamBeam",
-		trailColor: 0xff5555, trailLight: 3, slowStart: true, color: "#bc4a9b",
+		trailColor: 0xff5555, trailLight: 3, slowStart: true, color: "#bc4a9b", noDoubleHit: true,
 		sfx: "Evil", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, piercing: true, nonVolatile: true, onhit:"", power: 6, delay: 0, range: 6, speed: 50, size: 1, damage: "soul",
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "ObserverBeam", count: 1}},
 

@@ -680,7 +680,8 @@ function KinkyDungeonDrawInputs() {
 		minYY - spriteSize*0.75,
 		2000 - 10 - (KDMinBuffX || minXX) + spriteSize/2,
 		MaxHeight + spriteSize,
-		"", "#000000", undefined, undefined, undefined, true, undefined, undefined, undefined, {alpha: 0.4});
+		"", "#000000", undefined, undefined, undefined, !KDToggleShowAllBuffs, KDToggleShowAllBuffs ? KDButtonColor : undefined, undefined, undefined,
+		{alpha: 0.8, zIndex: 100.5});
 	let resetX = (stat) => {
 		if (!ShowAll && !KDMinBuffX)
 			XX = minXX;
