@@ -57,7 +57,7 @@ let KDPlayerEffects = {
 				KDGetRestraintsEligible({tags: ['trap']}, 10, 'grv', true, undefined, undefined, undefined, false),
 				KDRestraintGroupProgressiveOrderFun)?.name;
 
-			if (KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(restraint), 0, true, "", true, false, false, undefined, "Observer", false, undefined,
+			if (restraint && KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(restraint), 0, true, "", true, false, false, undefined, "Observer", false, undefined,
 				CommonRandomItemFromList("", KDCurseUnlockList.Basic))) {
 				applied = restraint || applied;
 			}
