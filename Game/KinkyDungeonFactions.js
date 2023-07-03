@@ -3,14 +3,19 @@
 /**
  * Determines if the enemy (which can be hostile) is aggressive, i.e. will pursue the player or ignore
  * @param {entity} [enemy]
+ * @param {entity} [player]
  * @returns {boolean}
  */
-function KinkyDungeonAggressive(enemy) {
-	if (enemy && enemy.hostile > 0) return true;
-	if (!KDGameData.PrisonerState || KDGameData.PrisonerState == "chase") return KDHostile(enemy);
-	if (enemy && KDFactionRelation(KDGetFaction(enemy), "Jail") < -0.4) return KDHostile(enemy);
-	if (enemy && KDFactionRelation(KDGetFaction(enemy), "Jail") < -0.1 && KDGameData.PrisonerState != 'jail' && (KDGameData.PrisonerState != 'parole' || !KinkyDungeonPlayerInCell(true, true))) return KDHostile(enemy);
-	return false;
+function KinkyDungeonAggressive(enemy, player) {
+	if (!player || player.player) {
+		// Player mode
+		if (enemy && enemy.hostile > 0) return true;
+		if (!KDGameData.PrisonerState || KDGameData.PrisonerState == "chase") return KDHostile(enemy);
+		if (enemy && KDFactionRelation(KDGetFaction(enemy), "Jail") < -0.4) return KDHostile(enemy);
+		if (enemy && KDFactionRelation(KDGetFaction(enemy), "Jail") < -0.1 && KDGameData.PrisonerState != 'jail' && (KDGameData.PrisonerState != 'parole' || !KinkyDungeonPlayerInCell(true, true))) return KDHostile(enemy);
+	}
+	// Non player mode
+	return KDHostile(enemy, player);
 }
 
 /**
