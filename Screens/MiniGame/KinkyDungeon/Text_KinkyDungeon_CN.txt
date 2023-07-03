@@ -1104,8 +1104,36 @@ Ahh!
 啊！
 Mmm...
 嗯...
+Nnngh...
+嗯...
+Ooooh...
+噢...
+(Breaths heavily)
+（沉重喘息）
+(Moans softly)
+（轻声呻吟）
+(Incoherent mumbling)
+（含糊不清的咕哝）
+(Moans loudly)
+（大声呻吟）
+(Heavy breathing)
+（沉重喘息）
+(Moaning uncontrollably)
+（无法自控地呻吟）
+(Shudders with pleasure)
+（因快感而颤抖）
 You wait.
 等待。
+You wait, legs trembling with arousal.
+你等待着，双腿颤抖，脑中充满奇怪的想法。
+You wait, trembling and moaning.
+你等待着，颤抖着发出呻吟声。
+You wait to regain your strength.
+你等待着体力恢复。
+You wait to regain your composure, panting with frustration.
+你等待着恢复镇定，怒气冲冲地喘息着。
+You wait to regain your composure, shaking with frustration.
+你等待着恢复镇定，颤抖着表达沮丧之情。
 You are exhausted from spellcasting.
 你因施法而筋疲力尽。
 You are feeling tired.
@@ -1128,6 +1156,12 @@ Save Keybindings
 保存键位
 Cancel Changes
 取消修改
+Return
+返回
+Keybindings
+按键绑定
+Game Options
+游戏选项
 Load from code
 从代码加载
 Back to main menu
@@ -1140,6 +1174,10 @@ Clear Perks
 清除词条
 Config 
 配置
+Cancel
+取消
+Filter
+筛选
 DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
 【危险】：加载 Mod 将在你的计算机上肆意执行任意代码。
 Like connecting to a server, etc. Only load mods from a TRUSTED source.
@@ -1176,10 +1214,20 @@ Spell 7
 法术 7
 Cycle Spell Page
 循环法术页面
+Upcast Spells
+凝聚法力
+Cancel Upcast
+停止凝聚
+Swap Weapon
+切换武器
 Ranged Attack
 远程攻击
 Wait
 等待
+Cancel/Back
+取消/返回
+Enter
+进入
 Message Log
 消息日志
 Close Door
@@ -1192,6 +1240,8 @@ Auto-Pathfind
 自动寻路
 Sprint/Hop
 疾跑/跳跃
+Inspect
+检查
 Quick Inventory
 快速物品栏
 Inventory
@@ -1212,8 +1262,12 @@ Lockpicks:
 撬锁工具：
 Keys: 
 钥匙：
+Magic Keys: 
+法术按键：
 Knife: 
 刀：
+You climb down to the next level
+你进入新的一层。
 You can't climb down until you get out of this leash...
 在你摆脱牵绳之前，你不能进入下一层......
 You climb down and find yourself in a strange new place.
@@ -1292,6 +1346,8 @@ You find a glowing scroll of purity.
 您发现纯净的卷轴。
 The chest contains gold! (+XXX gold)
 箱子内有金币！ (+XXX 金币)
+The chest contains a glowing magical knife!
+这个箱子里有一把发光的魔法刀！
 The chest contains a keyring with a glowing magic key!
 箱子里有一个带有发光魔法钥匙的钥匙圈！
 Someone left their keys here...
@@ -1320,6 +1376,8 @@ You find gold, plus a filling and tormenting magical trap! (+RestraintType) (+XX
 你找到了金币，外加一个充满且折磨人的魔法陷阱！ (+RestrainType) (+XXX gold)
 You find gold, plus a devious magical trap! (+RestraintType) (+XXX gold)
 你找到了黄金，外加一个狡猾的魔法陷阱！ (+RestrainType) (+XXX gold)
+Magical runes glow as a trap activates inside the chest!
+魔法符文在箱子里闪烁，一个陷阱被触发了！
 You find a special collar that lets you absorb energy from potions.
 你会发现一个特殊的项圈，可以让你从药水中直接吸收能量。
 You find a pair of garish pink high heels with a slippery surface.
@@ -1334,6 +1392,12 @@ You find a red potion with a sweet scent.
 你找到了一种带有甜味的红色药水。
 You find a blue potion that glows with magical essence.
 你找到了一种散发着魔力的蓝色药水。
+You find a glowing orb, filled with untapped mana.
+你发现一个发光的球体，里面充满了未使用的魔力。
+You find three mana orbs strung together!
+你找到了三个连接在一起的魔力宝珠！
+You find several willpower potions.
+你找到了几瓶意志力药水。
 You find several mana potions.
 你找到了几种魔力药水。
 You find a green potion, glowing warm with energy.
@@ -1370,6 +1434,8 @@ Quantity:
 数量：
 Use Item (Consumes 1)
 使用物品（消耗 1 个）
+way of the fist
+拳法之道
 Lockpick
 撬锁工具
 Exit Keys
@@ -1380,6 +1446,12 @@ Your favorite outfit for adventuring.
 你最喜欢的冒险服装。
 Your original outfit. No bonuses
 你原来的衣服。没有额外效果。
+Tactical Catsuit
+战术紧身服
+A sleek catsuit worn by stealth operatives. No frills, no nonsense.
+一种由秘密特工穿着的时尚紧身服。简洁无华，毫无累赘。
+Increases stealth by 10% in the dark.
+处在黑暗中时，隐藏能力增加 10%。
 Jail Uniform
 监狱制服
 The prisoners are kept in revealing outfits to keep them from hiding things.
@@ -1392,10 +1464,18 @@ An advanced suit designed for sport
 专为运动而设计的高级套装
 No bonuses, no penalties.
 没有奖励，没有惩罚。
+Maid Uniform
+女仆制服
 An elegant dress meant to denote a maid's status.
 象征女仆身份的优雅礼服。
+Massively increases accuracy against slime mold.
+攻击黏菌时，准确性大幅提高。
+Maid Uniform
+女仆制服
 An elegant dress meant to denote a maid's status.
 象征女仆身份的优雅礼服。
+Massively increases accuracy against slime mold.
+攻击黏菌时，准确性大幅提高。
 Prisoner Uniform
 囚服
 The uniform of choice for girls captured by the dragonhearts.
@@ -1408,10 +1488,22 @@ An outfit designed to leave little to the imagination.
 一套设计成几乎没有想象空间的服装。
 No bonuses, no penalties.
 没有奖励，没有惩罚。
+Latex Catsuit
+乳胶紧身服
+An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
+由经过高度加工的粘液制成的服装。天然丝滑，触感顺滑。
 No bonuses, no penalties.
 没有奖励，没有惩罚。
+Doll Catsuit
+玩偶紧身服
+An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
+由经过高度加工的粘液制成的服装。天然丝滑，触感顺滑。
 No bonuses, no penalties.
 没有奖励，没有惩罚。
+Cyber Doll Suit
+赛博玩偶制服
+A technologically advanced suit designed for long term wear. Despite being watertight and skintight it has cleaning and ventilation ports that plug directly into doll storage fixtures.
+这是一套专为长时间穿着而设计的先进技术服装。不仅紧密贴合和防水，而且它具有直接连接到玩偶存储装置的清洁和通风插口。
 No bonuses, no penalties.
 没有奖励，没有惩罚。
 Shadow Latex Dress
@@ -1464,6 +1556,10 @@ Perhaps it has something to do with ancient restraints?
 也许这与远古的拘束具有关？
 An ancient key plated in gold. It doesnt look like it can open anything...
 一把古老的镀金钥匙。好像什么都打不开……
+You pick up a shining golden key.
+你拿起了一把闪亮的金色钥匙。
+You pick up a ReplaceValue.
+你拿起了ReplaceValue。
 Power Crystal
 能量水晶
 You hold the crystal and the power flows into you.
@@ -1506,6 +1602,8 @@ Blue locks can't be otherwise picked.
 蓝色锁不能被撬开。
 Magic Knife
 魔刀
+A magical blade, suitable against ghosts.
+一把适用于对抗鬼魂的魔法之剑。
 Bola
 投石索
 A pair of weights attached to a rope. Can be thrown.
@@ -1658,14 +1756,100 @@ A magical weapon made for novices to use.
 供新手使用的魔法武器。
 Staff of Permafrost
 冻土法杖
++10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration)
+造成寒冰伤害，将敌人的冰冻效果持续时间乘以 1.5 倍（最低增加一回合），且寒冰伤害增加 10%。 
+Staff of Chains
+锁链法杖
+A magical weapon made for novices in the art of bondage.
+一把用于束缚艺术的专为初学者设计的魔法武器。
++10% chain damage. Deals chain damage. 150% binding efficiency.
+造成锁链伤害，绑缚效率变为 150% ，且锁链伤害增加 10%。
 You pick up a staff of binding. You remember these from wizard school...
 你拿起一根捆绑法杖。你你记得在法师学校见过这些……
+You pick up a staff of the storm. Your hair stands on end.
+你拿起一把风暴法杖。你的头发竖了起来。
+You pick up a staff of incineration. It rumbles with molten fury.
+你拿起一把火焰法杖。它隆隆作响，充满了炽热的愤怒。
 You pick up a staff with a name on it: DOLLMAKER
 你拿起一个上面有名字的工作人员：人偶师
+You pick up a staff of frostbite. Your hand feels numb just reaching for it.
+你拿起一把寒冰法杖。你的手在触碰它时感到麻木。
+You pick up a staff of chains. You have fond memories...
+你拿起一把锁链法杖。你回想起了美好的记忆...
 You pick up a staff of the storm. It tingles.
 你拿起风暴之杖。它刺痛了你。
 You pick up a staff of flames. It feels warm.
 你拿起一根火焰法杖。感觉很温暖。
+You find a purple crystal. You feel your mystic powers flood into it.
+你找到了一个紫色水晶。你感受到自己的神秘力量涌入其中。
+You pick up a staff of slime.
+你拿起一把粘液法杖。
+You pick up a staff of permafrost. It feels icy to the touch.
+你拿起一把永冻法杖。触感冰冷。
+Crop
+鞭子
+For those unruly subs.
+专为那些反抗的人而设计
+Deals pain damage. Highly distracting.
+对目标造成疼痛伤害，并使其极具性奋。
+You pick up a riding crop.
+你拾起一根鞭子。
+Scissors
+剪刀
+Safety first!
+安全第一！
+Deals slash damage. Better than a knife for cutting restraints.
+造成斩击伤害。剪断拘束具比刀更好用。
+You pick up a pair of scissors.
+你拾起一把剪刀。
+Dagger
+匕首
+Designed with subterfuge in mind.
+设计用于秘密行动。
+Deals slash damage. Deals 55 pierce damage instead on unaware targets.
+造成斩击伤害。对于没有发现你的目标造成55点穿刺伤害。
+You pick up a dagger.
+你拾起一把匕首。
+Katana
+武士刀
+She who strikes first, hits second.
+先发制人，后发制于人。
+Deals slash damage. Deals up to 50 bonus damage by waiting 10 turns between attacks.
+造成斩击伤害。在攻击之间等待最多10回合可额外造成最高50点伤害。
+You pick up a katana.
+你捡起一把武士刀。
+Shadow's Edge
+暗影之刃
+For those who truly devote themselves to the cause.
+为那些真正献身于事业的人而用。
+Deals shadow damage. Damage is doubled against enemies that are in shadow.
+造成暗影伤害。对处于阴影中的敌人伤害翻倍。
+You pick up Shadow's Edge.
+你拾起了暗影之刃。
+Stormbreaker
+风暴之锤
+I have the power! Taking electric damage charges you (1 turn/10dmg).
+我拥有了力量！受到电击伤害会充能（每10点伤害充能1回合）。
+Deals crush damage. Deals bonus electric damage in an area when charged, up to +40.
+造成碾压伤害。充能后，在范围内造成额外最高 40 点电击伤害。
+You pick up Stormbreaker.
+你拿起了风暴之锤。
+Rapier
+长剑
+For the ostentatious and flashy duelist.
+给那些张扬浮夸的决斗者。
+Deals slash damage. Deals 50 pierce damage instead on vulnerable targets.
+造成斩击伤害。对易受伤害的目标造成 50 点穿刺伤害。
+You pick up some kind of pretentious sword.
+你拾起了某种自负的剑。
+Foil
+花剑
+En garde!
+准备好了！
+Deals pierce damage. Deals 30 damage instead on vulnerable targets.
+造成穿刺伤害。对易受伤害的目标造成 30 点伤害。
+You pick up a fencing sword.
+你拾起了一把花剑。
 Hammer
 锤子
 A rather simplistic bludgeoning weapon.
@@ -1692,8 +1876,20 @@ Also assists in cutting restraints when equipped.
 配备时还有助于切割拘束。
 A go-to for travelers and adventurers.
 旅行者和冒险家的首选。
+Deals slash damage.
+造成斩击伤害。
+Torch
+火把
+Second only to the mighty towel in usefulness.
+在实用性上仅次于强大的毛巾。
+Deals fire damage. Provides light.
+造成火焰伤害。可以提供光亮。
 Unarmed
 徒手
+Fight with your hands and feet.
+用你的手和脚战斗。
+Deals unarmed damage.
+造成徒手伤害。
 Sword
 剑
 The blade is strong, its edge sharp.
@@ -1702,6 +1898,8 @@ A fast and accurate weapon that deals slash damage.
 一种快速而准确的武器，可造成斩击伤害。
 Flamberge
 炎剑
+A blade forged in magic fire.
+用魔法之火锻造的刀刃。
 Escort Drone
 护航无人机
 A semi-autonomous drone with a personal defense beam. Does not require hands to equip.
@@ -1747,9 +1945,9 @@ Moirai的剪刀
 Latex Projector
 乳胶投射器
 Deals crush damage. Can be used to spray a '+' shaped pool of slime.
-造成碾压伤害。可用于喷洒“+”形史莱姆池。
+造成碾压伤害。可用于喷洒“+”形粘液池。
 Drains 1.5% ancient energy to create a pool of slime that deals 35 glue damage per tile and slows enemies.
-消耗 1.5% 的远古能量来制造一个史莱姆池，每格造成 35 点胶水伤害并减速敌人。
+消耗 1.5% 的远古能量来制造一个粘液池，每格造成 35 点胶水伤害并减速敌人。
 Enchanted Axe
 魔法斧
 Sick and vile, like the hearts of your enemies.
@@ -1859,9 +2057,9 @@ You hear a door slam shut nearby!
 You hear a door being shut in the distance.
 你听到远处有一扇门被关上了。
 The slime is spreading over your body!!!
-史莱姆在你的身体上蔓延！！！
+粘液在你的身体上蔓延！！！
 The slime starts to harden over your skin...
-史莱姆开始在你的皮肤上变硬......
+粘液开始在你的皮肤上变硬......
 You subdue the angel!
 你捕获了天使！
 Be not afraid! I am the courier of a local shrine, and I have come to take your offering.
@@ -2355,11 +2553,11 @@ The leather elemental wraps her long extremities around your body! (+RestraintAd
 The leather elemental strikes you with her leather belts! (DamageTaken)
 皮革元素用她的皮带打动你！ (DamageTaken)
 Slime Enthusiast
-史莱姆爱好者
+粘液爱好者
 The slime enthusiast screams and runs.
-史莱姆爱好者尖叫着奔跑。
+粘液爱好者尖叫着奔跑。
 The slime enthusiast restrains you! (+RestraintAdded)
-史莱姆爱好者拘束了你！ （+RestraintAdded）
+粘液爱好者拘束了你！ （+RestraintAdded）
 Miner
 矿工
 The bandit tosses her pick to the ground and complains about her pay.
@@ -2497,53 +2695,57 @@ The brambles are hacked away.
 The bramble snares you! (DamageTaken)
 荆棘缠住了你！ (DamageTaken)
 The red liquid bubbles and several round slimes pop out!
-红色的液体开始冒泡，几个圆形的史莱姆跳了出来！
+红色的液体开始冒泡，几团圆形的粘液团跳了出来！
 The red liquid bubbles and a round slime pops out!
-红色的液体开始冒泡，一个史莱姆跳了出来！
+红色的液体开始冒泡，一团粘液团跳了出来！
 A revenant appears!
 一个亡灵出现了！
 Fuuka uses a talisman to call forth the spirits of her pets!
 Fuuka使用丝带召唤她的宠物的灵魂！
 A pool of latex bubbles and a twisted elemental appears!
 一池乳胶冒出气泡，一个扭曲的元素出现了！
+Red Slime
+红粘液团
 Latex Elemental
 乳胶元素
 Latex Elemental
 乳胶元素
 Red Slime
-红色史莱姆
+红粘液团
 The red slime bounces away.
-红色史莱姆弹走了。
+红色粘液团弹跳着离开了。
 The red slime bounces off you! (DamageTaken)
-红色史莱姆撞在你身上！ (DamageTaken)
+红色粘液团撞到了你身上！ (DamageTaken)
 The slime shoves itself into your mouth! (+RestraintAdded)
-史莱姆自己塞进了你的嘴里！ （+RestraintAdded）
+粘液自己塞进了你的嘴里！ （+RestraintAdded）
 Slime
-史莱姆
+粘液
 The slime melts into a puddle.
-史莱姆融化成了一摊水。
+粘液融化成了一摊水。
 The sticky slime splashes against you! (DamageTaken)
-粘稠的史莱姆泼到你身上！ (DamageTaken)
+粘稠的粘液泼到你身上！ (DamageTaken)
 The slime attaches itself to your body! (+RestraintAdded)
-史莱姆附着在你的身体上！ （+RestraintAdded）
+粘液附着在你的身体上！ （+RestraintAdded）
 The slime melts into a puddle.
-史莱姆融化成了一摊水。
+粘液融化成了一摊水。
 Fast Slime
-快速史莱姆
+疾速粘液团
 The slime melts into a puddle.
-史莱姆融化成了一摊水。
+粘液融化成了一摊水。
 The sticky slime leaps and splashes against you! (DamageTaken)
-粘稠的史莱姆跳跃并溅到你身上！ (DamageTaken)
+粘稠的粘液跳跃并溅到你身上！ (DamageTaken)
 The slime leaps and attaches itself to your body! (+RestraintAdded)
-史莱姆跳跃并附着在你的身体上！ （+RestraintAdded）
+粘液跳跃并附着在你的身体上！ （+RestraintAdded）
 Large Slime
-大史莱姆
+大粘液团
 The large slime splits apart!
-巨大的史莱姆裂开了！
+巨大的粘液团裂开了！
 The sticky slime splashes against you! (DamageTaken)
-粘稠的史莱姆泼到你身上！ (DamageTaken)
+粘稠的粘液泼到你身上！ (DamageTaken)
 The slime spreads to your body! (+RestraintAdded)
-史莱姆扩散到你的身体！ （+RestraintAdded）
+粘液扩散到你的身体！ （+RestraintAdded）
+A group of slimes jump out!
+粘液团分裂成许多更小的液滴！
 Skeleton
 骷髅
 The Skeleton falls into pieces.
@@ -2719,9 +2921,9 @@ The chain witch vanishes into a pile of metal dust, leaving behind a keyring.
 The chain witch locks all of your restraints!
 锁链女巫锁住了你所有的拘束具！
 Slime Witch
-史莱姆女巫
+粘液女巫
 The slime witch vanishes into a pool of pink slime, leaving behind a keyring.
-史莱姆女巫消失在粉红色的史莱姆池中，留下一个钥匙圈。
+粘液女巫消失在粉红色的粘液池中，留下一个钥匙圈。
 'High' Wizard
 “高阶”法师
 The wizard falls asleep.
@@ -3337,7 +3539,7 @@ You drink again, knowing the risk this may entail...
 You have angered the goddess of TYPE!!!
 你惹怒了TYPE女神！！！
 The slime washes off in the fountain!!!
-史莱姆在喷泉中被冲洗掉了！！！
+粘液在喷泉中被冲洗掉了！！！
 The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)
 女神提供了一个 ItemTraded for ItemCost (NumCurrent/NumMax)
 Next Offer
@@ -3535,17 +3737,17 @@ Also allows fitting of a leash.
 Also allows fitting of a leash.
 还允许安装牵绳。
 Slime Walkers
-史莱姆靴子
+粘液靴子
 A pair of heels coated in a nonstick material.
 一双涂有不粘材料的高跟鞋。
 They will slow you down, but you can walk on slime without getting stuck!
-它们会减慢您的速度，但您可以在史莱姆上行走而不会被困住！
+它们会减慢您的速度，但您可以在粘液上行走而不会被困住！
 Slime Walkers
-史莱姆靴子
+粘液靴子
 A pair of heels coated in a nonstick material.
 一双涂有不粘材料的高跟鞋。
 They will slow you down, but you can walk on slime without getting stuck!
-它们会减慢您的速度，但您可以在史莱姆上行走而不会被困住！
+它们会减慢您的速度，但您可以在粘液上行走而不会被困住！
 Collar
 项圈
 A classy leather collar.
@@ -3929,9 +4131,9 @@ They feel like they aren't even there, but the material is rigid and unyielding.
 The ankle cuff chain detaches!
 脚铐链脱落！
 Sticky Slime
-粘性史莱姆
+粘性粘液
 A sticky layer of slime keeping you anchored to the ground.
-一层粘稠的史莱姆让你固定在地面上。
+一层粘稠的粘液将你固定在地面上。
 It will slow you for a single turn.
 它会让你延迟一轮行动。
 Leather Mittens
@@ -4747,45 +4949,45 @@ A latex-derived glue that attaches you to the floor! It's very stretchy.
 Just touching it makes it stick all over...
 随便摸一下，就浑身黏糊糊的了……
 Slime (Feet)
-史莱姆（脚）
+粘液（脚）
 Sticky slime that adheres to your body. It reacts negatively to mana...
-粘在身上的史莱姆。它对法力产生负面反应...
+粘在身上的粘液。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Ankles)
-史莱姆（脚踝）
+粘液（脚踝）
 Sticky slime that adheres to your body. It reacts negatively to mana...
-粘在身上的史莱姆。它对法力产生负面反应...
+粘在身上的粘液。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Legs)
-史莱姆（腿）
+粘液（腿）
 Sticky slime that adheres to your body. It reacts negatively to mana...
-粘在身上的史莱姆。它对法力产生负面反应...
+粘在身上的粘液。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Arms)
-史莱姆（手臂）
+粘液（手臂）
 Sticky slime that adheres to your body. It reacts negatively to mana...
-粘在身上的史莱姆。它对法力产生负面反应...
+粘在身上的粘液。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Hands)
-史莱姆（手）
+粘液（手）
 Sticky slime that adheres to your body. It reacts negatively to mana...
-粘在身上的史莱姆。它对法力产生负面反应...
+粘在身上的粘液。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Mouth)
-史莱姆（嘴）
+粘液（嘴）
 Sticky slime that adheres to your body. It reacts negatively to mana...
-粘在身上的史莱姆。它对法力产生负面反应...
+粘在身上的粘液。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Slime (Head)
-史莱姆（头）
+粘液（头）
 Sticky slime that adheres to your body. It reacts negatively to mana...
-粘在身上的史莱姆。它对法力产生负面反应...
+粘在身上的粘液。它对法力产生负面反应...
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Rubber (Feet)
@@ -4831,45 +5033,45 @@ Sticky rubber that has fused itself into a shell around your body.
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Proto-Slime (Feet)
-黏菌史莱姆（脚）
+黏菌（脚）
 It seems to be a precursor to the slimes everyone is familiar with?
-这似乎是每个人熟悉的史莱姆的先驱？
+这似乎是每个人都熟悉的粘液团的前身？
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Proto-Slime (Ankles)
-黏菌史莱姆（脚踝）
+黏菌（脚踝）
 It seems to be a precursor to the slimes everyone is familiar with?
-这似乎是每个人熟悉的史莱姆的先驱？
+这似乎是每个人都熟悉的粘液团的前身？
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Proto-Slime (Legs)
-黏菌史莱姆（腿）
+黏菌（腿）
 It seems to be a precursor to the slimes everyone is familiar with?
-这似乎是每个人熟悉的史莱姆的先驱？
+这似乎是每个人都熟悉的粘液团的前身？
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Proto-Slime (Arms)
-黏菌史莱姆（手臂）
+黏菌（手臂）
 It seems to be a precursor to the slimes everyone is familiar with?
-这似乎是每个人熟悉的史莱姆的先驱？
+这似乎是每个人都熟悉的粘液团的前身？
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Proto-Slime (Hands)
-黏菌史莱姆（手）
+黏菌（手）
 It seems to be a precursor to the slimes everyone is familiar with?
-这似乎是每个人熟悉的史莱姆的先驱？
+这似乎是每个人都熟悉的粘液团的前身？
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Proto-Slime (Mouth)
-黏菌史莱姆（嘴）
+黏菌（嘴）
 It seems to be a precursor to the slimes everyone is familiar with?
-这似乎是每个人熟悉的史莱姆的先驱？
+这似乎是每个人都熟悉的粘液团的前身？
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Proto-Slime (Head)
-黏菌史莱姆（头）
+黏菌（头）
 It seems to be a precursor to the slimes everyone is familiar with?
-这似乎是每个人熟悉的史莱姆的先驱？
+这似乎是每个人都熟悉的粘液团的前身？
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对您所做的每一次切割行为进行变化！
 Proto-Rubber (Feet)
@@ -5259,7 +5461,7 @@ Equip
 Equipped
 已装备
 Slime
-史莱姆
+粘液
 Ice
 寒冰
 Water
@@ -5467,7 +5669,7 @@ Unlocks air spells. Learn Wind Blast.
 Latex 101
 乳胶 101
 Unlocks latex spells. Learn Slime Ball.
-允许学习乳胶咒术 并习得咒术 “史莱姆球”
+允许学习乳胶咒术 并习得咒术 “粘液球”
 Metal 101
 金属 101
 Unlocks metal spells. Learn Conjure Cuffs.
@@ -5947,15 +6149,15 @@ You command the slime to draw enemies in!
 Choose area containing slime
 选择含有粘液的区域
 Animate Slime
-史莱姆
+粘液团
 Summons up to 3 slimes on slime tiles in an AoE. The slimes are friendly to you.
-在目标区域的粘液上召唤最多 3 个友好史莱姆。
+在目标区域的粘液上召唤最多 3 个友好粘液团。
 Choose area containing slime
 选择含有粘液的区域
 Animate Large Slime
-大型史莱姆
+大型粘液团
 Target an area with at least 3 slime tiles. Summons a large slime that is friendly to you.
-在目标区域的粘液上召唤 1 个大型友好史莱姆（至少 3 格粘液瓷砖）。
+在目标区域的粘液上召唤 1 个大型友好粘液团（至少 3 格粘液瓷砖）。
 Choose area containing slime
 选择含有粘液的区域
 Latex Puppet
@@ -6759,11 +6961,11 @@ Select a target to pull
 Slime Blast
 粘液爆炸
 Apprentice's Slime
-学徒的史莱姆
+学徒的粘液团
 Witch's Slime
-女巫的史莱姆
+女巫的粘液团
 Witch's Slime Ball
-女巫的史莱姆球
+女巫的粘液球
 A pool of slime deals DamageDealt glue damage to enemies on impact and covers the area in temporary slime.
 召唤一滩在撞击时造成 DamageDealt 点胶水伤害的粘液，并用粘液覆盖该区域。
 You conjure a pool of slime!
@@ -6831,11 +7033,11 @@ Magic Ribbons
 Magic Belts
 魔术束带
 Slime
-史莱姆
+粘液
 Slime
-史莱姆
+粘液
 You project a pool of sticky slime!
-你投射出一滩粘稠的史莱姆！
+你投射出一滩粘稠的粘液！
 Bondage Buster
 束缚破坏者
 You charge up a beam and fire it!
@@ -6843,7 +7045,7 @@ You charge up a beam and fire it!
 You swing Dragonslaver and it lashes out in a whip-like fashion!
 你挥动驯龙者，它像鞭子一样猛烈攻击！
 The slime from your staff coats your body, granting you strange powers!
-法杖上的史莱姆覆盖在你的身体上，赋予你奇怪的力量！
+法杖上的粘液覆盖在你的身体上，赋予你奇怪的力量！
 Firebolt
 火焰弹
 An explosion knocks you to the ground!
@@ -6877,13 +7079,13 @@ Icy Aura
 Icy Aura
 冰霜之环
 Slime Ball
-史莱姆球
+粘液球
 Witch's Slime Ball
-女巫的史莱姆球
+女巫的粘液球
 A ball of slime leaves a trail of sticky slime (40 damage when stepped on). It deals DamageDealt glue damage on a hit.
-一团史莱姆会留下粘糊糊的痕迹（踩到时造成 40 伤害）。它在击中时造成 DamageDealt 点胶水伤害。
+一团粘液会留下粘糊糊的痕迹（踩到时造成 40 伤害）。它在击中时造成 DamageDealt 点胶水伤害。
 You hurl a ball of slime!
-你扔出一个史莱姆球！
+你扔出一个粘液球！
 Choose aim direction
 选择发射方向
 Summon Skeleton
@@ -6993,11 +7195,11 @@ You took DamageDealt damage!
 Your own rope trap springs upon you!
 你自己的绳索陷阱涌现到你身上！
 You get caught in sticky slime!
-你陷入粘稠的史莱姆中！
+你陷入粘稠的粘液中！
 The slime ball sticks to you!
-史莱姆球粘在你身上！
+粘液球粘在你身上！
 The slime ball sticks to you and slows you!
-史莱姆球粘在你身上并减慢你的速度！
+粘液球粘在你身上并减慢你的速度！
 You feel a powerful sensation run through your body!
 你会感觉到一种强烈的感觉贯穿你的身体！
 Beams of light wrap around your body and feel warm on your skin!
@@ -7055,7 +7257,7 @@ Belt Trap
 Cable Trap
 钢索陷阱
 Slime Trap
-史莱姆陷阱
+粘液陷阱
 Chain Trap
 锁链陷阱
 Gas Trap
@@ -7083,7 +7285,7 @@ Leather restraints start appearing around you!
 high-tech cables come out from the floor!
 高科技钢缆从地板上出来！
 Slimes pours out from the walls and ceiling!
-史莱姆从墙壁和天花板上倾泻而出！
+粘液从墙壁和天花板上倾泻而出！
 Ethereal chains appear all around you!
 灵界锁链出现在你身边！
 You hear the sound of glass breaking, and a cloud of pink gas rises around you!
@@ -7105,7 +7307,7 @@ The leather restraints attach themselves to your body!
 The high-tech cables wrap themselves over your body!
 高科技钢缆将自己包裹在您的身体上！
 The slime pours all over you!
-史莱姆洒在你身上！
+粘液洒在你身上！
 The magic chains wrap themselves around your body!
 魔链缠绕在你的身体上！
 Your clothes are getting ripped away!
@@ -7219,7 +7421,7 @@ Orrery
 (The note starts with a drawing of a witch with lightning crackling from her fingertips) Water will cause her to short-circuit. I can't seem to hit her with lightning, though. She always redirects it.
 （纸条的开头是一幅指尖发出闪电劈啪作响的女巫）水会使她短路。不过，我似乎无法用闪电击中她。她总是重定向它。
 (The note starts with a drawing of a witch whose body is partly gelatinous) The slime is non-flammable and my attacks pass right through her body... Lightning and ice seem to be effective!
-（笔记开头画的是一个身体部分呈凝胶状的女巫）史莱姆是不易燃的，我的攻击直接穿过她的身体……闪电和冰似乎很有效！
+（笔记开头画的是一个身体部分呈凝胶状的女巫）粘液是不易燃的，我的攻击直接穿过她的身体……闪电和冰似乎很有效！
 (The note is from a famous escape artist) Many restraints are applied quite tightly by a skilled rigger. Even removing it will be tough without thrashing around a bit to loosen it.
 （笔记来自一位著名的逃生艺术家）许多束缚都是由熟练的装配工非常严格地施加的。即使将其移除也会很困难，而无需稍微扭动以松开它。
 (The note is from a famous escape artist) Anything can be unbuckled with enough patience. Having a finger extension such as a lockpick will help. Ultimately, though, what matters is that you have a calm state of mind, free from distraction and hopelessness.
@@ -7269,9 +7471,9 @@ They say a ninja can catch a sword in her hands, but can she stop a spear? Ha, t
 (Pg. 54 from Catherine Willows' journal): The post-collapse civilization sought immortality, but they knew that the technologies of the old civilization were a danger to them. So they turned to another school of thought: Magic.
 （Catherine Willows 杂志第 54 页）：崩溃后的文明寻求永生，但他们知道旧文明的技术对他们来说是危险的。所以他们转向了另一种思想流派：魔法。
 Ninjas aren't so tough to fight when their hands are tied behind their back. Good thing I had my pet slime with me~
-当他们的双手被绑在背后时，忍者并不那么难以战斗。还好我有我的宠物史莱姆~
+当他们的双手被绑在背后时，忍者并不那么难以战斗。还好我有我的宠物粘液团
 Those damn slimes! They're so sticky and gross... fortunately, I washed myself in the fountain the last time I got caught by one. It came right off!
-那些该死的史莱姆！它们又粘又恶心……幸运的是，上次我被一个人抓住时，我在喷泉里洗了自己。它马上就来了！
+那些该死的粘液团！它们又粘又恶心……幸运的是，上次我被一个人抓住时，我在喷泉里洗了自己。它马上就来了！
 The dragonhearts were a group of dragonslayers, named for their ritual that imbues them with the fiery power and resistance of dragons they've slain. Now they work as mercenaries, and some of them serve a certain Leather goddess.
 龙心是一群屠龙者，以他们的仪式命名，这种仪式赋予他们所杀死的龙的炽热力量和抵抗力。现在他们以雇佣兵的身份工作，其中一些人服务于某个皮革女神。
 (Pg. 70 from Catherine Willows' journal): The underground jungle is a curious phenomenon. The level of light pouring through cracks in the ceiling is nonetheless too sparse to sustain plantlife. And yet the restoration goddess, in her ancient wisdom, has decided to preserve this place. How many of her dryads must I pierce or burn until she realizes I am merely passing through?
@@ -7401,11 +7603,11 @@ You are ambushed by wolfgirls!
 You are ambushed by an alkahestor!
 你被一个宗师炼金师伏击了！
 Small blobs of slime fall from the ceiling!
-一小块史莱姆从天花板上掉下来！
+一小块粘液团从天花板上掉下来！
 You are ambushed by slime researchers!
-你被史莱姆研究人员伏击了！
+你被粘液研究人员伏击了！
 A large blob of slime falls from the ceiling!
-一大块史莱姆从天花板上掉下来！
+一大块粘液团从天花板上掉下来！
 In a puff of smoke, a group of fire elementals appear around you!
 在一阵烟雾中，一群火元素出现在你身边！
 In a flash of fog a group of ice elementals appear around you!
@@ -8751,7 +8953,7 @@ Give... Hug...
 The weapon requires power from an Ancient Crystal to function.
 该武器需要来自远古水晶的能量才能发挥作用。
 Create a '+' shaped pool of slime that deals 35 glue damage per hit
-创建一个十字史莱姆池，每一击造成 35 点胶水伤害
+创建一个十字粘液池，每一击造成 35 点胶水伤害
 Toggles
 切换
 Locks and Restraints
@@ -10239,7 +10441,7 @@ Mmmph! (Struggle weakly)
 Latex
 乳胶
 Slime
-史莱姆
+粘液
 Rope
 绳索
 Leather
