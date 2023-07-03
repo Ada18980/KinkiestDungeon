@@ -13,6 +13,7 @@ function KinkyDungeonAggressive(enemy, player) {
 		if (!KDGameData.PrisonerState || KDGameData.PrisonerState == "chase") return KDHostile(enemy);
 		if (enemy && KDFactionRelation(KDGetFaction(enemy), "Jail") < -0.4) return KDHostile(enemy);
 		if (enemy && KDFactionRelation(KDGetFaction(enemy), "Jail") < -0.1 && KDGameData.PrisonerState != 'jail' && (KDGameData.PrisonerState != 'parole' || !KinkyDungeonPlayerInCell(true, true))) return KDHostile(enemy);
+		return false;
 	}
 	// Non player mode
 	return KDHostile(enemy, player);
