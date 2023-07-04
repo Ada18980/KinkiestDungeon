@@ -597,6 +597,7 @@ function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets) {
 		lastY: KinkyDungeonPlayerEntity.lasty,
 		moveX: moveX,
 		moveY: moveY,
+		dist: KDistChebyshev(KinkyDungeonPlayerEntity.lastx - moveX, KinkyDungeonPlayerEntity.lasty - moveY),
 	});
 	if (!cancel.cancelmove) {
 		KDCheckCollideableBullets(KinkyDungeonPlayerEntity, forceHitBullets);

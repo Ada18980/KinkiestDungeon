@@ -1004,6 +1004,11 @@ function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, ope
 	KinkyDungeonGenNavMap(KinkyDungeonStartPosition);
 
 	KinkyDungeonEndPosition = KinkyDungeonGetRandomEnemyPoint(false, false);
+
+	if (!KinkyDungeonEndPosition) {
+		KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 0, 10, 0, data);
+		KinkyDungeonGenNavMap(KinkyDungeonStartPosition);
+	}
 	KinkyDungeonStartPosition = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KDistChebyshev(x - KinkyDungeonEndPosition.x, y - KinkyDungeonEndPosition.y) > width/4;},false, false);
 	//let playerPos = KinkyDungeonGetRandomEnemyPoint(false, false);
 

@@ -1097,6 +1097,7 @@ interface KinkyDungeonEvent {
 	tags?: string[],
 	duration?: number,
 	always?: boolean,
+	bindEff?: number,
 	type: string;
 	trigger: string;
 	restraint?: string;
