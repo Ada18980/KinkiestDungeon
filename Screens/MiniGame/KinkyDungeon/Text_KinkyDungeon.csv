@@ -14,7 +14,7 @@ KinkyDungeonPatronsList6,"DemonQueenSera|John1304|Masaki H|Eric R.|Rei H.|hSXZM|
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
 KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
-KinkyDungeonCreditsList1,"Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators"
+KinkyDungeonCreditsList1,"Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators"
 
 Language,Language
 EN,English
@@ -31,7 +31,7 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 
-KinkyDungeon,"Kinky Dungeon v4.3"
+KinkyDungeon,"Kinky Dungeon v4.31"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -1165,7 +1165,6 @@ KinkyDungeonInventoryItemStaffPermafrostDesc2,"+10% ice damage. Deals ice damage
 KinkyDungeonInventoryItemStaffChain,Staff of Chains
 KinkyDungeonInventoryItemStaffChainDesc,"A magical weapon made for novices in the art of bondage."
 KinkyDungeonInventoryItemStaffChainDesc2,"+10% chain damage. Deals chain damage. 150% binding efficiency."
-
 
 ItemPickupStaffBind,"You pick up a staff of binding. You remember these from wizard school..."
 ItemPickupStaffStorm,"You pick up a staff of the storm. Your hair stands on end."
@@ -6054,6 +6053,8 @@ KinkyDungeonCurseInfo5Keys,"The item requires 5 keys and free hands to remove"
 KinkyDungeonCurseStruggle5Keys,"The item is extremely secure with five separate keyholes."
 KinkyDungeonCurseUnlock5Keys,"You insert your 5 keys into the lock and the item finally comes off."
 
+curseFrom,"[RNAME]"
+
 curseInfoTickle,"Curse of Tickling: This item is tickling you without end!"
 curseInfoPunish,"Curse of Punishment: Inflicts psychic damage when you attack or cast a spell."
 curseInfoIllumination,"Curse of Illumination: Produces light and makes you easier to see."
@@ -10599,3 +10600,8 @@ KinkyDungeonBuffCursed,"A dark energy lurks within you."
 KDObserverCursed,"You succumb to a dark desire... (+RestraintAdded)"
 
 KinkyDungeonSpellObserverBeamBeam,Observer's Gaze
+
+KinkyDungeonInventoryItemStaffTape,Industrial Tape Wand
+KinkyDungeonInventoryItemStaffTapeDesc,"A non-magical tape wand used for creating tight little packages."
+KinkyDungeonInventoryItemStaffTapeDesc2,"Deals chain damage. 200% binding efficiency. Hitting an enemy applies the Taped debuff for 20 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving."
+ItemPickupStaffTape,"You pick up a staff of chains. You have fond memories..."

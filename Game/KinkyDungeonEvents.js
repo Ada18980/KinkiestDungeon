@@ -1665,6 +1665,16 @@ const KDEventMapBuff = {
 				}
 			}
 		},
+		"ExtendHelpless": (e, buff, entity, data) => {
+			if (!entity.player && KDHelpless(entity) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
+				buff.duration += data.delta;
+			}
+		},
+		"RemoveAuraHelpless": (e, buff, entity, data) => {
+			if (!entity.player && KDHelpless(entity) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
+				delete buff.aura;
+			}
+		},
 		"RemoveFree": (e, buff, entity, data) => {
 			if (!(entity.boundLevel > 0) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
 				if (entity.player) {
@@ -2726,7 +2736,38 @@ let KDEventMapWeapon = {
 			}
 		},
 	},
+	"playerMove": {
+		"DealDamageToTaped": (e, weapon, data) => {
+			let enemies = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, e.dist || 1.5);
+			for (let enemy of enemies) {
+				if ((!e.chance || KDRandom() < e.chance) && enemy.hp > 0 && !KDHelpless(enemy) && KDHostile(enemy) && KDEntityHasBuffTags(enemy, "taped")) {
+					KinkyDungeonDamageEnemy(enemy, {
+						type: e.damage,
+						// Double damage if sprinting!!
+						damage: e.power * Math.min(Math.max(1, data.dist || 1), 2),
+						time: e.time,
+						bind: e.bind,
+						bindEff: e.bindEff,
+						bindType: e.bindType,
+					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity);
+					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+				}
+			}
+		},
+	},
 	"playerAttack": {
+		"ApplyTaped": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm) {
+				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					let bb = Object.assign({}, KDTaped);
+					if (e.duration) bb.duration = e.duration;
+					if (e.power) bb.power = e.power;
+
+					if (!data.enemy.buffs) data.enemy.buffs = {};
+					KinkyDungeonApplyBuff(data.enemy.buffs, bb);
+				}
+			}
+		},
 		"ElementalEffect": (e, weapon, data) => {
 			if (data.enemy && !data.miss && !data.disarm) {
 				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {

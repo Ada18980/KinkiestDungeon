@@ -397,8 +397,8 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				let buffSpritePower = 0;
 				if (enemy.buffs) {
 					for (let b of Object.values(enemy.buffs)) {
-						if (b.replaceSprite && b.power > buffSpritePower) {
-							buffSpritePower = b.power;
+						if (b.replaceSprite && b.replacePower || b.power > buffSpritePower) {
+							buffSpritePower = b.replacePower || b.power;
 							buffSprite = b.replaceSprite;
 						}
 					}
