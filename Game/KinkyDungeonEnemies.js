@@ -397,8 +397,8 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				let buffSpritePower = 0;
 				if (enemy.buffs) {
 					for (let b of Object.values(enemy.buffs)) {
-						if (b.replaceSprite && b.power > buffSpritePower) {
-							buffSpritePower = b.power;
+						if (b.replaceSprite && b.replacePower || b.power > buffSpritePower) {
+							buffSpritePower = b.replacePower || b.power;
 							buffSprite = b.replaceSprite;
 						}
 					}
@@ -2503,7 +2503,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
 	AIData.hostile = KDHostile(enemy, player);
-	AIData.aggressive = KinkyDungeonAggressive(enemy);
+	AIData.aggressive = KinkyDungeonAggressive(enemy, player);
 	AIData.domMe = (player.player && AIData.aggressive) ? false : KDCanDom(enemy);
 
 	AIData.leashing = enemy.Enemy.tags.leashing && KDFactionRelation(KDGetFaction(enemy), "Jail") > -0.1;
@@ -2819,6 +2819,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (!AIData.aggressive && player.player && (enemy.playWithPlayer || (intentAction && intentAction.forceattack))) AIData.ignore = false;
 
+	AIData.aggroTarget = (AIData.hostile || (enemy.playWithPlayer && player.player && !AIData.domMe)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage));
 	AIData.wantsToAttack = (player &&
 		(!player.player || (
 			!AIData.ignore
@@ -2828,7 +2829,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				|| enemy.id == KDGameData.KinkyDungeonLeashingEnemy
 				|| (!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player))
 				|| KinkyDungeonFlags.has("PlayerCombat")))
-		)) ? ((intentAction?.decideAttack) ? (intentAction.decideAttack(enemy, player, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false);
+		)) ? ((intentAction?.decideAttack) ? (intentAction.decideAttack(enemy, player, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false)
+		// A combination of being willing and also being aggressive
+		&& AIData.aggroTarget;
 	AIData.wantsToCast = (player &&
 		(!player.player || (
 			!AIData.ignore
@@ -2926,13 +2929,25 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		enemy.stun = 1;
 	}
 
+	// Whether or not the enemy should hold when nearby
+	// Summons are mainly the ones who should behave like this
+	AIData.holdStillWhenNear = AIData.aggressive || enemy.Enemy.Behavior?.holdStillWhenNear || (player.player && enemy.Enemy.allied && !enemy.Enemy.Behavior?.behaveAsEnemy
+		&& KDAllied(enemy) && !KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "StayHere"));
+
 	if (!AIData.startedDialogue) {
 		if (
 			!AIType.beforemove(enemy, player, AIData)
 			&& (
 				(enemy.Enemy.attackWhileMoving && enemy != KinkyDungeonLeashingEnemy())
 				|| AIData.ignore
-				|| !(KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.followRange, enemy.attackPoints < 1 || !(enemy.Enemy.projectileTargeting || enemy.Enemy.projectileAttack), false) && enemy.aware)
+				|| !(
+					KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.followRange, enemy.attackPoints < 1 || !(enemy.Enemy.projectileTargeting || enemy.Enemy.projectileAttack), false)
+					&& enemy.aware
+					&& (
+						AIData.wantsToAttack
+						|| AIData.holdStillWhenNear
+					)
+				)
 				|| AIData.kite
 			)
 		) {
@@ -3225,7 +3240,6 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	let canAttack = !(enemy.disarm > 0)
 		&& AIData.wantsToAttack
 		&& (!enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id || KinkyDungeonFlags.get("overrideleashprotection"))
-		&& ((AIData.hostile || (enemy.playWithPlayer && player.player && !AIData.domMe)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage)))
 		&& ((enemy.aware && KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
 		&& !AIData.ignore
 		&& (!minRange || (AIData.playerDist > minRange))
@@ -3501,7 +3515,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (enemy.Enemy.playLine ? enemy.Enemy.playLine : "") + "Lock").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 4);
 
 						} else if (AIData.attack.includes("Bind")
-							&& ((!enemy.usingSpecial && !enemy.Enemy.bindOnDisable) || (enemy.usingSpecial && !enemy.Enemy.bindOnDisableSpecial) || !KinkyDungeonHasWill(0.01) || !KinkyDungeonHasStamina(2.5) || KinkyDungeonPlayer.Pose.includes("Kneel") || KinkyDungeonPlayer.Pose.includes("Hogtie"))) {
+							&& ((!enemy.usingSpecial && !enemy.Enemy.bindOnDisable) || (enemy.usingSpecial && !enemy.Enemy.bindOnDisableSpecial) || !KinkyDungeonHasWill(0.01) || !KinkyDungeonHasStamina(2.5) || KDIsKneeling() || KDIsHogtied())) {
 
 							if (AIData.addMoreRestraints || AIData.addLeash || enemy.usingSpecial) {
 								if (!AIData.intentToLeash && !KinkyDungeonFlags.get("Released") && enemy.Enemy.bound

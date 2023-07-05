@@ -1004,6 +1004,11 @@ function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, ope
 	KinkyDungeonGenNavMap(KinkyDungeonStartPosition);
 
 	KinkyDungeonEndPosition = KinkyDungeonGetRandomEnemyPoint(false, false);
+
+	if (!KinkyDungeonEndPosition) {
+		KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 0, 10, 0, data);
+		KinkyDungeonGenNavMap(KinkyDungeonStartPosition);
+	}
 	KinkyDungeonStartPosition = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KDistChebyshev(x - KinkyDungeonEndPosition.x, y - KinkyDungeonEndPosition.y) > width/4;},false, false);
 	//let playerPos = KinkyDungeonGetRandomEnemyPoint(false, false);
 
@@ -1019,7 +1024,7 @@ function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, ope
 	// Create random stair pairs
 	let obscount = 20;
 	for (let i = 0; i < obscount; i++) {
-		let point1 = KinkyDungeonGetRandomEnemyPoint(true, false, 10, 10);
+		let point1 = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, 10, 10);
 		if (point1) {
 			DialogueCreateEnemy(point1.x, point1.y, "Observer");
 		}

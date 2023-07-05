@@ -119,6 +119,15 @@ let KDDoublePlugged = {
 		{type: "RemoveFree", trigger: "tick", prereq: "NoChastity"},
 	]
 };
+
+let KDTaped = {
+	id: "Taped", type: "chainDamageResist", power: -0.15, duration: 1, replaceSprite: "TapedDoll", tags: ["taped"], aura: "#4fa4b8", replacePower: 1.0,
+	events: [
+		{type: "ExtendHelpless", trigger: "tick"},
+		{type: "RemoveAuraHelpless", trigger: "tick"},
+	]
+};
+
 let KDGlueVulnLow = {
 	id: "GlueVuln", type: "glueDamageResist", power: -0.3, player: true, enemies: true, duration: 1
 };

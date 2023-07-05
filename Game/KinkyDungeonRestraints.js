@@ -446,7 +446,7 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 								} else {
 									let pointSwap = KinkyDungeonGetNearbyPoint(slot.x, slot.y, true, undefined, true, true);
 									if (pointSwap)
-										KDMoveEntity(enemy, pointSwap.x, pointSwap.y, false);
+										KDMoveEntity(enemy, pointSwap.x, pointSwap.y, false, undefined, undefined, true);
 									else
 										KDMoveEntity(enemy, Entity.x, Entity.y, false,undefined, undefined, true);
 								}
@@ -2345,15 +2345,15 @@ let KDNoOverrideTags = [
  * @param {*} LeashingOnly
  * @param {*} NoStack
  * @param {*} extraTags
+ * @param {boolean} minWeightFallback
  * @param {*} agnostic - Determines if playertags and current bondage are ignored
  * @param {number} filterEps - Anything under this is filtered unless nothing is above it
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[]}} [filter] - Filters for items
  * @returns {{restraint: restraint, weight: number}[]}
  */
-function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, filterEps = 0.9) {
+function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, filterEps = 0.9, minWeightFallback = true) {
 	let RestraintsList = [];
-	let maxWeight = 0;
 
 	if (KinkyDungeonStatsChoice.has("NoWayOut")) RequireWill = false;
 	let willPercent = (KinkyDungeonStatWill / KinkyDungeonStatWillMax - 0.15 * KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax)
@@ -2402,7 +2402,6 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 					}
 				if (enabled) {
 					cache.push({r: restraint, w:weight});
-					if (maxWeight < filterEps && weight > maxWeight) maxWeight = weight;
 				}
 			}
 		}
@@ -2427,12 +2426,18 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 					for (let tag in restraint.playerTags)
 						if ((!agnostic || !KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) r.w += restraint.playerTags[tag];
 
-				if (r.w > 0 && (maxWeight <= filterEps || r.w > filterEps))
+				if (r.w > 0 && (r.w > filterEps))
 					RestraintsList.push({
 						restraint: restraint,
 						weight: r.w,
 					});
 			}
+	}
+
+	if (minWeightFallback && RestraintsList.length == 0) {
+		return KDGetRestraintsEligible(
+			enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack,
+			extraTags, agnostic, filter, securityEnemy, 0, false);
 	}
 
 	return RestraintsList;
@@ -2464,7 +2469,7 @@ function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill
 		let restraint = rest.restraint;
 		let weight = rest.weight;
 		restraintWeights.push({restraint: restraint, weight: restraintWeightTotal});
-		weight += restraint.weight;
+		weight += rest.weight;
 		restraintWeightTotal += Math.max(0, weight);
 	}
 
@@ -3384,7 +3389,7 @@ function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 		if (UnLink) {
 			let newRestraint = KinkyDungeonGetRestraintByName(UnLink.name);
 			if (newRestraint) {
-				KinkyDungeonAddRestraint(newRestraint, UnLink.tightness, true, UnLink.lock, Keep, undefined, undefined, undefined, UnLink.faction, true, UnLink.dynamicLink);
+				KinkyDungeonAddRestraint(newRestraint, UnLink.tightness, true, UnLink.lock, Keep, undefined, undefined, UnLink?.events, UnLink.faction, true, UnLink.dynamicLink);
 
 				KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true});
 				if (KDRestraint(item).UnLink) {
@@ -3866,4 +3871,19 @@ function KDItemDataSet(item, name, value) {
 		item.data = {};
 	}
 	item.data[name] = value;
+}
+
+/**
+ * Changes a restraint item's name
+ * @param {item} item
+ * @param {string} type
+ * @param {string} name
+ */
+function KDChangeItemName(item, type, name) {
+	if (item.name == name) return;
+	if (KinkyDungeonInventory.get(type).get(item.name)) {
+		KinkyDungeonInventory.get(type).set(name, item);
+		KinkyDungeonInventory.get(type).delete(item.name);
+	}
+	item.name = name;
 }

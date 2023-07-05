@@ -618,6 +618,10 @@ interface enemy extends KDHasTags {
 
 	/** Behavior tags */
 	Behavior?: {
+		/** This enemy will hold still when near the player */
+		holdStillWhenNear?: boolean,
+		/** If this is true, the intent is that it behaves more as an allied enemy rather than a summon */
+		behaveAsEnemy?: boolean,
 		/** This enemy will always want to add more restraints~ */
 		thorough?: number,
 		/** Can't play */
@@ -1088,9 +1092,12 @@ interface weapon {
 
 interface KinkyDungeonEvent {
 	cost?: number,
+	/** This is from a temporary event curse */
+	curse?: boolean,
 	tags?: string[],
 	duration?: number,
 	always?: boolean,
+	bindEff?: number,
 	type: string;
 	trigger: string;
 	restraint?: string;

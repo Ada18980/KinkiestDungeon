@@ -190,7 +190,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 			KinkyDungeonPlayerDamage.dmg /= 2;
 		}
 	}
-	if ((KinkyDungeonPlayer.Pose.includes("Hogtied") || KinkyDungeonPlayer.Pose.includes("Kneel")) && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
+	if ((KDIsHogtied() || KDIsKneeling()) && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
 		KinkyDungeonPlayerDamage.chance /= 1.5;
 	}
 
@@ -1103,6 +1103,9 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 						b.xx += b.vx * dt;
 						b.yy += b.vy * dt;
 						b.time -= dt;
+					} else if (mod <= 0) {
+						d = 0;
+						b.born = 0;
 					}
 
 					if (b.bullet.spell && (b.trail || b.trailEffectTile) && (b.x != Math.round(b.xx) || b.y != Math.round(b.yy) || (b.bullet.spell && b.bullet.spell.trailOnSelf))

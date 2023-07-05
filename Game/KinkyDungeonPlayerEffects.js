@@ -28,26 +28,28 @@ let KDPlayerEffects = {
 		return {sfx: "Evil", effect: true};
 	},
 	"ObserverBeam": (target, damage, playerEffect, spell, faction, bullet, entity) => {
-		let count = 1;
-		if (target?.player && KDEntityBuffedStat(target, "Cursed")) {
-			count = Math.min(10, KDEntityBuffedStat(target, "Cursed") + 1);
+		if (!KDBulletAlreadyHit(bullet, target, true)) {
+			let count = 1;
+			if (target?.player && KDEntityBuffedStat(target, "Cursed")) {
+				count = Math.min(10, KDEntityBuffedStat(target, "Cursed") + 1);
+			}
+			KinkyDungeonApplyBuffToEntity(target,
+				{
+					id: "Cursed",
+					type: "Cursed",
+					power: count,
+					events: [
+						{type: "Cursed", trigger: "tick", count: 1},
+					],
+					aura: "#4488ff",
+					aurasprite: "Null",
+					duration: 9999,});
+
+			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+			KinkyDungeonSendTextMessage(3, TextGet("KDObserverCurseApply").replace("DamageDealt", dmg.string), "#ff5555", 1);
+			return {sfx: "Evil", effect: true};
 		}
-		KinkyDungeonApplyBuffToEntity(target,
-			{
-				id: "Cursed",
-				type: "Cursed",
-				power: count,
-				events: [
-					{type: "Cursed", trigger: "tick", count: 1},
-				],
-				aura: "#4488ff",
-				aurasprite: "Null",
-				duration: 9999,});
-
-
-		let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
-		KinkyDungeonSendTextMessage(3, TextGet("KDObserverCurseApply").replace("DamageDealt", dmg.string), "#ff5555", 1);
-		return {sfx: "Evil", effect: true};
+		return {sfx: "", effect: false};
 	},
 	"TheShadowCurse": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let applied = "";
@@ -57,7 +59,7 @@ let KDPlayerEffects = {
 				KDGetRestraintsEligible({tags: ['trap']}, 10, 'grv', true, undefined, undefined, undefined, false),
 				KDRestraintGroupProgressiveOrderFun)?.name;
 
-			if (KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(restraint), 0, true, "", true, false, false, undefined, "Observer", false, undefined,
+			if (restraint && KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(restraint), 0, true, "", true, false, false, undefined, "Observer", false, undefined,
 				CommonRandomItemFromList("", KDCurseUnlockList.Basic))) {
 				applied = restraint || applied;
 			}
@@ -377,7 +379,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 	if (!playerEffect.chance || KDRandom() < playerEffect.chance) {
 		if (KDPlayerEffects[playerEffect.name]) {
 			let ret = KDPlayerEffects[playerEffect.name](target, damage, playerEffect, spell, faction, bullet, entity);
-			if (ret.sfx) sfx = ret.sfx;
+			if (ret.sfx != undefined) sfx = ret.sfx;
 			effect = ret.effect;
 		} else if (playerEffect.name == "Ampule") {
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSpellShatter" + spell.name), "#ff0000", 1);
