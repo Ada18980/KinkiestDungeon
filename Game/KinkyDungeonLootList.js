@@ -130,10 +130,15 @@ let KinkyDungeonLootTable = {
 		{name: "potion_stamina", minLevel: 0, weight:4, message:"LootPotionStamina", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		{name: "potion_frigid", minLevel: 0, weight:2, message:"LootPotionFrigid", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 
-		{name: "knife", minLevel: 0, weight:5.5, message:"LootRubbleKnife", messageColor:"lightgreen", messageTime: 3, allFloors: true, noweapon: ["Knife"]},
-		{name: "Torch", minLevel: 0, weight:10, weapon: "Torch", noweapon: ["Torch"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+
+		{name: "AncientCoreSingle", minLevel: 0, weight:0.1, count: 1, message:"LootChestAncientCoreSingle", messageColor:"yellow", messageTime: 3, allFloors: true},
+		{name: "AncientCoreSingleSpent", minLevel: 0, weight:2, count: 1, message:"LootChestAncientCoreSingleSpent", messageColor:"yellow", messageTime: 3, allFloors: true},
+
+		{name: "knife", minLevel: 0, weight:3, message:"LootRubbleKnife", messageColor:"lightgreen", messageTime: 3, allFloors: true, noweapon: ["Knife"]},
+		{name: "Torch", minLevel: 0, weight:7, weapon: "Torch", noweapon: ["Torch"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Rope", minLevel: 0, weight:10, weapon: "Rope", noweapon: ["Rope"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
-		{name: "Scissors", minLevel: 0, weight:10, weapon: "Scissors", noweapon: ["Scissors"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Scissors", minLevel: 0, weight:3, weapon: "Scissors", noweapon: ["Scissors"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "BagOfGoodies", arousalMode: true, minLevel: 0, weight:1.0, weapon: "BagOfGoodies", noweapon: ["BagOfGoodies"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	],
 	"shelf": [
 		{name: "redkey", key: true, minLevel: 1, weight:1, message:"LootBookshelfKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
@@ -190,6 +195,7 @@ let KinkyDungeonLootTable = {
 		{name: "ChainSword", minLevel: 0, weight:1, weapon: "ChainSword", noweapon: ["ChainSword"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Dirk", minLevel: 0, weight:1, weapon: "Dirk", noweapon: ["Dirk"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Foil", minLevel: 0, weight:0.5, weapon: "Foil", noweapon: ["Foil"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "BagOfGoodies", arousalMode: true, minLevel: 0, weight:0.5, weapon: "BagOfGoodies", noweapon: ["BagOfGoodies"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		...KDBasicArmor, ...KDBasicArmor_Cursed,
 		/*{name: "trap_armbinder", trap: true, minLevel: 1, weight:2, message:"LootChestTrapMagic", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms", "ModerateRestraint"], power: 6},
 		{name: "trap_armbinderHeavy", minLevel: 1, weight:2, message:"LootChestTrapMagicHarness", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms", "ModerateRestraint"], submissive: 15, power: 8},
@@ -222,6 +228,8 @@ let KinkyDungeonLootTable = {
 		{name: "FrostSword", minLevel: 3, weight:0.8, weapon: "FrostSword", noweapon: ["FrostSword"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Rapier", minLevel: 3, weight:0.8, weapon: "Rapier", noweapon: ["Rapier"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Katana", minLevel: 3, weight:0.8, weapon: "Katana", noweapon: ["Katana"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+
+		{name: "StaffTape", minLevel: 0, weight:1, weapon: "StaffTape", noweapon: ["StaffTape"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 
 		{name: "StaffFlame", minLevel: 0, weight:1, weapon: "StaffFlame", noweapon: ["StaffFlame"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "StaffChain", minLevel: 0, weight:1, weapon: "StaffChain", noweapon: ["StaffChain"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},

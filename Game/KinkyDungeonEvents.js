@@ -2768,6 +2768,18 @@ let KDEventMapWeapon = {
 				}
 			}
 		},
+		"ApplyToy": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm) {
+				if (data.enemy && KDCanBind(data.enemy) && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0) {
+					let bb = Object.assign({}, KDToy);
+					if (e.duration) bb.duration = e.duration;
+					if (e.power) bb.power = e.power;
+
+					if (!data.enemy.buffs) data.enemy.buffs = {};
+					KinkyDungeonApplyBuff(data.enemy.buffs, bb);
+				}
+			}
+		},
 		"ElementalEffect": (e, weapon, data) => {
 			if (data.enemy && !data.miss && !data.disarm) {
 				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
@@ -3397,7 +3409,7 @@ let KDEventMapBullet = {
 		"RubberMissileHoming": (e, b, data) => {
 			if (data.delta > 0 && b.bullet.targetX != undefined && b.bullet.targetY != undefined) {
 				// Scan for targets near the target location
-				if (b.bullet.faction) {
+				if (b.bullet.faction && !(e.kind == "dumb")) {
 					let minDist = 1000;
 					let entity = null;
 					let playerDist = 1000;

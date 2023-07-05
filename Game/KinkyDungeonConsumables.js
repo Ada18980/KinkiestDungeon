@@ -132,7 +132,8 @@ function KinkyDungeonConsumableEffect(Consumable, type) {
 		KinkyDungeonTargetingSpell = KinkyDungeonFindSpell(Consumable.spell, true);
 		KinkyDungeonTargetingSpellItem = Consumable;
 	} else if (type == "charge") {
-		KDGameData.AncientEnergyLevel = Math.min(Math.max(0, KDGameData.AncientEnergyLevel + Consumable.amount), 1.0);
+		KinkyDungeonChangeCharge(Consumable.amount);
+		//KDGameData.AncientEnergyLevel = Math.min(Math.max(0, KDGameData.AncientEnergyLevel + Consumable.amount), 1.0);
 		if (!KinkyDungeonStatsChoice.get("LostTechnology"))
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSourceSpent, 1);
 	} else if (type == "buff") {

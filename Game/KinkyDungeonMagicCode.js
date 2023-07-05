@@ -702,6 +702,7 @@ let KinkyDungeonSpellSpecials = {
 		}, tX, tY, spell);
 		if (cast) {
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			KinkyDungeonChangeCharge(-KinkyDungeonGetChargeCost(spell));
 			return "Cast";
 		} else return "Fail";
 	},
