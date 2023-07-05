@@ -1053,6 +1053,7 @@ interface shopItem {
 }
 
 interface weapon {
+	arousalMode?: boolean,
 	name: string;
 	dmg: number;
 	chance: number;
@@ -1517,6 +1518,7 @@ interface spell {
 	knifecost?: number;
 	staminacost?: number;
 	manacost: number;
+	chargecost?: number;
 	minRange?: number;
 	noSprite?: boolean;
 	/** Verbal, arms, or legs */

@@ -186,6 +186,15 @@ let KinkyDungeonWeapons = {
 		playSelfMsg: "KinkyDungeonPlaySelfVibeWand",
 		playSelfSound: "Vibe",
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 2, chance: 0.2}]},
+	"BagOfGoodies": {name: "BagOfGoodies", arousalMode: true, dmg: 0.1, chance: 1.0, staminacost: 0.5, type: "charm", unarmed: false, rarity: 2, shop: false, sfx: "Vibe",
+		playSelfBonus: 3,
+		playSelfMsg: "KinkyDungeonPlaySelfBagOfGoodies",
+		playSelfSound: "Vibe",
+		events: [
+			{type: "ApplyToy", trigger: "playerAttack", duration: 40},
+		],
+		special: {type: "spell", spell: "CommandVibrateBagOfGoodies", requiresEnergy: true, energyCost: 0.01, range: 4.5},
+	},
 
 	"Scissors": {name: "Scissors", dmg: 1.2, chance: 1.8, staminacost: 0.7, type: "slash", unarmed: false, rarity: 2, shop: true, light: true, cutBonus: 0.1, sfx: "Cut"},
 

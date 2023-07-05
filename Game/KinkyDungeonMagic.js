@@ -308,11 +308,31 @@ function KinkyDungeonGetManaCost(Spell) {
 		lvlcostscale: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ManaCostLevelMult"),
 	};
 	KinkyDungeonSendEvent("calcMana", data);
-	if (data.costscale) data.cost = Math.floor(data.cost * data.costscale);
+	if (data.costscale) data.cost = Math.floor(1000* data.cost * data.costscale)/1000;
 	//if (data.costscale > 0) data.cost = Math.max(0, data.cost); // Keep it from rounding to 0
 	if (data.lvlcostscale && Spell.level && Spell.manacost) data.cost += Spell.level * data.lvlcostscale;
 	KinkyDungeonSendEvent("beforeMultMana", data);
 	KinkyDungeonSendEvent("afterCalcMana", data);
+
+	if (KinkyDungeonStatsChoice.get("Slayer") && Spell.school == "Elements" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
+	if (KinkyDungeonStatsChoice.get("Conjurer") && Spell.school == "Conjure" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
+	if (KinkyDungeonStatsChoice.get("Magician") && Spell.school == "Illusion" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
+
+	return data.cost;
+}
+
+function KinkyDungeonGetChargeCost(Spell) {
+	let data = {
+		spell: Spell,
+		cost: Spell.chargecost || 0,
+		costscale: KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ChargeCostMult")),
+		lvlcostscale: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ChargeCostLevelMult"),
+	};
+	KinkyDungeonSendEvent("calcCharge", data);
+	if (data.costscale) data.cost = Math.floor(1000* data.cost * data.costscale)/1000;
+	if (data.lvlcostscale && Spell.level && Spell.manacost) data.cost += Spell.level * data.lvlcostscale;
+	KinkyDungeonSendEvent("beforeMultCharge", data);
+	KinkyDungeonSendEvent("afterCalcCharge", data);
 
 	if (KinkyDungeonStatsChoice.get("Slayer") && Spell.school == "Elements" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
 	if (KinkyDungeonStatsChoice.get("Conjurer") && Spell.school == "Conjure" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;

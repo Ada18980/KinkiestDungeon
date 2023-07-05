@@ -1344,7 +1344,7 @@ Minor Changes:
 
 4.31 (July 2023)
 - Added ability to add temporary curses onto items using console -- TODO test this to make sure the curse is persistent and gets filtered when the item is removed
-- New weapon: Industrial Tape Wand
+- New weapons: Industrial Tape Wand, Bag of Goodies
 
 TODO: Mushrooms in the jungle
 

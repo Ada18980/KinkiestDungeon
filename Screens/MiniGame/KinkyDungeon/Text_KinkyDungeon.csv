@@ -10318,3 +10318,18 @@ KinkyDungeonInventoryItemStaffTape,Industrial Tape Wand
 KinkyDungeonInventoryItemStaffTapeDesc,"A non-magical tape wand used for creating tight little packages."
 KinkyDungeonInventoryItemStaffTapeDesc2,"Deals chain damage. 200% binding efficiency. Hitting an enemy applies the Taped debuff for 20 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving."
 ItemPickupStaffTape,"You pick up a staff of chains. You have fond memories..."
+
+
+KinkyDungeonInventoryItemBagOfGoodies,Bag of Goodies
+KinkyDungeonInventoryItemBagOfGoodiesDesc,"Someone's secret stash."
+KinkyDungeonInventoryItemBagOfGoodiesDesc2,"Deals charm damage. Applies a toy to targets hit for 40 turns. "
+ItemPickupBagOfGoodies,"You find a bag filled with various toys and vibrators..."
+KinkyDungeonPlaySelfBagOfGoodies,"You play with yourself using some of the toys in the bag..."
+
+KinkyDungeonSpellCommandVibrateBagOfGoodies,Vibrator Remote
+KinkyDungeonSpellTargetCommandVibrateBagOfGoodies,Select an area
+KinkyDungeonSpellCastCommandVibrateBagOfGoodies,"You click the remote and hear a buzzing noise!"
+KinkyDungeonSpecialBagOfGoodies,"10 charge to activate vibrators in an area for 15 turns."
+
+LootChestAncientCoreSingle,"You find a golden crystal. It glows faintly."
+LootChestAncientCoreSingleSpent,"You find a dull, gold-tinted crystal."
