@@ -1665,8 +1665,8 @@ const KDEventMapBuff = {
 				}
 			}
 		},
-		"ExtendHelpless": (e, buff, entity, data) => {
-			if (!entity.player && KDHelpless(entity) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
+		"ExtendDisabledOrHelpless": (e, buff, entity, data) => {
+			if (!entity.player && (KinkyDungeonIsDisabled(entity) || KDHelpless(entity)) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
 				buff.duration += data.delta;
 			}
 		},

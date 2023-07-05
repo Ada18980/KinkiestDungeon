@@ -10603,7 +10603,7 @@ KinkyDungeonSpellObserverBeamBeam,Observer's Gaze
 
 KinkyDungeonInventoryItemStaffTape,Industrial Tape Wand
 KinkyDungeonInventoryItemStaffTapeDesc,"A non-magical tape wand used for creating tight little packages."
-KinkyDungeonInventoryItemStaffTapeDesc2,"Deals chain damage. 200% binding efficiency. Hitting an enemy applies the Taped debuff for 20 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving."
+KinkyDungeonInventoryItemStaffTapeDesc2,"Deals chain damage. 200% binding efficiency. Hitting an enemy applies the Taped debuff for 12 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving."
 ItemPickupStaffTape,"You pick up a staff of chains. You have fond memories..."
 
 

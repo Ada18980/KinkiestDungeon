@@ -110,7 +110,7 @@ let KinkyDungeonWeapons = {
 	// Specialty Weapons
 	"StaffTape": {name: "StaffTape", dmg: 1, bindEff: 2.0, bindType: "Tape", chance: 1.0, staminacost: 1.5, type: "chain", unarmed: false, rarity: 4, shop: true, sfx: "Tape", magic: false,
 		events: [
-			{type: "ApplyTaped", trigger: "playerAttack", power: -0.15, duration: 20},
+			{type: "ApplyTaped", trigger: "playerAttack", power: -0.15, duration: 12},
 			{type: "DealDamageToTaped", trigger: "playerMove", power: 1.0, dist: 1.5, damage: "chain", bindType: "Tape", bindEff: 2.0, sfx: "TapeStruggle"},
 		]
 	},
