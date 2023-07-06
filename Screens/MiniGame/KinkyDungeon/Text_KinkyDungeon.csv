@@ -5346,7 +5346,7 @@ KinkyDungeonSpellCastLockdown,"You say a command word, and magical locks bind yo
 
 KinkyDungeonSpellChastity,Chastity
 KinkyDungeonSpellTargetChastity,Select which creature to lock in a belt
-KinkyDungeonSpellDescriptionChastity,"Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs and distracts constantly."
+KinkyDungeonSpellDescriptionChastity,"Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly."
 KinkyDungeonSpellCastChastity,"You conjure a chastity belt, which latches onto your target!"
 KDZoneOfPuritySelf,"Your own spell locks you in chastity!"
 KDZoneOfExcitementSelf,"Something fun enters your body..."

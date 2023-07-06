@@ -19,7 +19,7 @@ let KDQuests = {
 				}
 			}
 		},
-		weight: (RoomType, MapMod, data) => {
+		weight: (RoomType, MapMod, data, currentQuestList) => {
 			if (RoomType == "Tunnel") {
 				let weight = 15;
 				if (KinkyDungeonPlayerTags.has("BindingDress")) {
@@ -29,7 +29,7 @@ let KDQuests = {
 			}
 			return 0;
 		},
-		prerequisite: (RoomType, MapMod, data) => {
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
 			//if (KinkyDungeonFlags.has("DressmakerQuest") && KinkyDungeonPlayerTags.has("BindingDress")) {
 			//return false;
 			//}
@@ -52,7 +52,7 @@ let KDQuests = {
 
 			}
 		},
-		weight: (RoomType, MapMod, data) => {
+		weight: (RoomType, MapMod, data, currentQuestList) => {
 			if (RoomType == "Tunnel") {
 				let weight = 30;
 				if (
@@ -70,7 +70,7 @@ let KDQuests = {
 		accept: (data) => {
 			KinkyDungeonSetFlag("ApprenticeQuestSpawn", 0);
 		},
-		prerequisite: (RoomType, MapMod, data) => {
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
 			if (KDHasQuest("ApprenticeQuest") && !(KinkyDungeonInventoryGet("ScrollLegs")
 				|| KinkyDungeonInventoryGet("ScrollArms")
 				|| KinkyDungeonInventoryGet("ScrollVerbal")
@@ -87,7 +87,7 @@ let KDQuests = {
 	"DragonheartQuest": {
 		name: "DragonheartQuest",
 		npc: "DragonheartQuest",
-		weight: (RoomType, MapMod, data) => {
+		weight: (RoomType, MapMod, data, currentQuestList) => {
 			if (RoomType == "Tunnel") {
 				let weight = 20;
 				return weight;
@@ -103,7 +103,7 @@ let KDQuests = {
 				KDRemoveQuest("DragonheartQuest"); // Only lasts 1 floor
 			}
 		},
-		prerequisite: (RoomType, MapMod, data) => {
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
 			if (KDHasQuest("DragonheartQuest")) {
 				return false;
 			}
@@ -117,7 +117,7 @@ let KDQuests = {
 	"MaidforceQuest": {
 		name: "MaidforceQuest",
 		npc: "MaidforceQuest",
-		weight: (RoomType, MapMod, data) => {
+		weight: (RoomType, MapMod, data, currentQuestList) => {
 			if (RoomType == "Tunnel") {
 				let weight = 20;
 				return weight;
@@ -157,7 +157,7 @@ let KDQuests = {
 				KDRemoveQuest("MaidforceQuest"); // Only lasts 1 floor
 			}
 		},
-		prerequisite: (RoomType, MapMod, data) => {
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
 			if (KDHasQuest("MaidforceQuest")) {
 				return false;
 			}
@@ -171,7 +171,7 @@ let KDQuests = {
 	"WolfgirlHunters": {
 		name: "WolfgirlHunters",
 		npc: "MaidforceQuest",
-		weight: (RoomType, MapMod, data) => {
+		weight: (RoomType, MapMod, data, currentQuestList) => {
 			return 0;
 		},
 		worldgenstart: () => {
@@ -204,14 +204,14 @@ let KDQuests = {
 				}
 			}
 		},
-		prerequisite: (RoomType, MapMod, data) => {
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
 			return false;
 		}
 	},
 	"BanditQuest": {
 		name: "BanditQuest",
 		npc: "BanditQuest",
-		weight: (RoomType, MapMod, data) => {
+		weight: (RoomType, MapMod, data, currentQuestList) => {
 			if (RoomType == "Tunnel") {
 				let weight = 20;
 				return weight;
@@ -230,7 +230,7 @@ let KDQuests = {
 				KDRemoveQuest("BanditPrisoner"); // Only lasts 1 floor
 			}
 		},
-		prerequisite: (RoomType, MapMod, data) => {
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
 			if (KDHasQuest("BanditPrisoner")) {
 				return false;
 			}
@@ -244,10 +244,10 @@ let KDQuests = {
 	"BlacksmithQuest": {
 		name: "BlacksmithQuest",
 		npc: "BlacksmithQuest",
-		weight: (RoomType, MapMod, data) => {
+		weight: (RoomType, MapMod, data, currentQuestList) => {
 			return 100;
 		},
-		prerequisite: (RoomType, MapMod, data) => {
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
 			if (RoomType == "Tunnel") {
 				return true;
 			}
@@ -265,9 +265,9 @@ function KDQuestList(count, mods, RoomType, MapMod, data) {
 		let genWeights = [];
 
 		for (let mod of Object.values(mods)) {
-			if (!ret.includes(mod) && mod.prerequisite(RoomType, MapMod, data)) {
+			if (!ret.includes(mod) && mod.prerequisite(RoomType, MapMod, data, ret)) {
 				genWeights.push({mod: mod, weight: genWeightTotal});
-				genWeightTotal += mod.weight(RoomType, MapMod, data);
+				genWeightTotal += mod.weight(RoomType, MapMod, data, ret);
 			}
 		}
 
