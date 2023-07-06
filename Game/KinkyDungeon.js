@@ -286,10 +286,14 @@ let KDOptOut = false;
 * otherPlaying: number,
 * Training: Record<string, KDTrainingRecord>,
 * QuickLoadout: KDPresetLoadout[],
+* CurrentLoadout: number,
+* QuickLoadouts: Record<string, string[]>,
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	QuickLoadouts: {},
+	CurrentLoadout: 0,
 	Training: {},
 	CollectedOrbs: 0,
 	CollectedHearts: 0,
