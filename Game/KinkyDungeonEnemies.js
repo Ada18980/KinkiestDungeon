@@ -365,7 +365,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 						let buffs = Object.values(enemy.buffs);
 						buffs = buffs.sort((a, b) => {return b.duration - a.duration;});
 						for (let b of buffs) {
-							if (b && b.aura && b.duration > 0 && (!b.hideHelpless || !KDHelpless(enemy))) {
+							if (b && b.aura && b.duration > 0 && !(b.aurasprite == "Null") && (!b.hideHelpless || !KDHelpless(enemy))) {
 								aura_scale += 1/aura_scale_max;
 								let s = aura_scale;
 								if (b.noAuraColor) {

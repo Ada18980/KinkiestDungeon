@@ -107,7 +107,7 @@ let KDVibrate3 = {
 let KDToy = {
 	id: "Toy", type: "Plug", power: 0.1, aura: "#dddddd", aurasprite: "Toy", player: false, enemies: true, duration: 30, range: 0.5, tags: ["toy"],
 	events: [
-		{type: "ExtendDisabledOrHelpless", trigger: "tick"},
+		{type: "ExtendDisabledOrHelplessOrChastity", trigger: "tick"},
 	]
 };
 let KDPlugged = {

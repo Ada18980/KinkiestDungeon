@@ -1670,6 +1670,11 @@ const KDEventMapBuff = {
 				buff.duration += data.delta;
 			}
 		},
+		"ExtendDisabledOrHelplessOrChastity": (e, buff, entity, data) => {
+			if (!entity.player && (KDEntityBuffedStat(entity, "Chastity") || KinkyDungeonIsDisabled(entity) || KDHelpless(entity)) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
+				buff.duration += data.delta;
+			}
+		},
 		"RemoveAuraHelpless": (e, buff, entity, data) => {
 			if (!entity.player && KDHelpless(entity) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
 				delete buff.aura;
