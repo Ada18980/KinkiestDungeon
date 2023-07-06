@@ -446,7 +446,7 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 								} else {
 									let pointSwap = KinkyDungeonGetNearbyPoint(slot.x, slot.y, true, undefined, true, true);
 									if (pointSwap)
-										KDMoveEntity(enemy, pointSwap.x, pointSwap.y, false);
+										KDMoveEntity(enemy, pointSwap.x, pointSwap.y, false, undefined, undefined, true);
 									else
 										KDMoveEntity(enemy, Entity.x, Entity.y, false,undefined, undefined, true);
 								}
@@ -576,7 +576,7 @@ function KinkyDungeonLock(item, lock) {
  * @returns {string}
  */
 function KDGetCurse(item) {
-	return item.curse || KDRestraint(item)?.curse;
+	return item?.curse || KDRestraint(item)?.curse;
 }
 
 /**
@@ -717,7 +717,7 @@ function KinkyDungeonPlayerGetLockableRestraints() {
 	let ret = [];
 
 	for (let item of KinkyDungeonAllRestraint()) {
-		if (!item.lock && KDRestraint(item).escapeChance && KDRestraint(item).escapeChance.Pick != undefined) {
+		if (!item.lock && !KDGetCurse(item) && KDRestraint(item).escapeChance && KDRestraint(item).escapeChance.Pick != undefined) {
 			ret.push(item);
 		}
 	}
@@ -2345,12 +2345,14 @@ let KDNoOverrideTags = [
  * @param {*} LeashingOnly
  * @param {*} NoStack
  * @param {*} extraTags
+ * @param {boolean} minWeightFallback
  * @param {*} agnostic - Determines if playertags and current bondage are ignored
+ * @param {number} filterEps - Anything under this is filtered unless nothing is above it
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[]}} [filter] - Filters for items
  * @returns {{restraint: restraint, weight: number}[]}
  */
-function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy) {
+function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, filterEps = 0.9, minWeightFallback = true) {
 	let RestraintsList = [];
 
 	if (KinkyDungeonStatsChoice.has("NoWayOut")) RequireWill = false;
@@ -2424,12 +2426,18 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 					for (let tag in restraint.playerTags)
 						if ((!agnostic || !KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) r.w += restraint.playerTags[tag];
 
-				if (r.w > 0)
+				if (r.w > 0 && (r.w > filterEps))
 					RestraintsList.push({
 						restraint: restraint,
 						weight: r.w,
 					});
 			}
+	}
+
+	if (minWeightFallback && RestraintsList.length == 0) {
+		return KDGetRestraintsEligible(
+			enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack,
+			extraTags, agnostic, filter, securityEnemy, 0, false);
 	}
 
 	return RestraintsList;
@@ -2461,7 +2469,7 @@ function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill
 		let restraint = rest.restraint;
 		let weight = rest.weight;
 		restraintWeights.push({restraint: restraint, weight: restraintWeightTotal});
-		weight += restraint.weight;
+		weight += rest.weight;
 		restraintWeightTotal += Math.max(0, weight);
 	}
 
@@ -3381,7 +3389,7 @@ function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 		if (UnLink) {
 			let newRestraint = KinkyDungeonGetRestraintByName(UnLink.name);
 			if (newRestraint) {
-				KinkyDungeonAddRestraint(newRestraint, UnLink.tightness, true, UnLink.lock, Keep, undefined, undefined, undefined, UnLink.faction, true, UnLink.dynamicLink);
+				KinkyDungeonAddRestraint(newRestraint, UnLink.tightness, true, UnLink.lock, Keep, undefined, undefined, UnLink?.events, UnLink.faction, true, UnLink.dynamicLink);
 
 				KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true});
 				if (KDRestraint(item).UnLink) {
@@ -3691,6 +3699,16 @@ function KDChooseRestraintFromListGroupPri(RestraintList, GroupOrder) {
 		*/
 
 
+let KDSlimeParts = {
+	"Boots": {},
+	"Feet": {},
+	"Legs": {},
+	"Arms": {},
+	"Head": {},
+	"Mouth": {},
+	"Hands": {},
+};
+
 let KDRopeParts = {
 	"ArmsBoxtie": {},
 	"ArmsWrist": {},
@@ -3719,7 +3737,7 @@ let KDRopeParts = {
  * @param {LayerFilter} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, basePower, properties, extraEvents, baseStruggle, multStruggle, Filters) {
+function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, basePower, properties, extraEvents, baseStruggle, multStruggle, Filters, baseWeight = 10) {
 	for (let part of Object.entries(KDRopeParts)) {
 		let ropePart = part[0];
 		// Only if we have something to copy
@@ -3728,7 +3746,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, baseP
 			// For each category of rope items we dupe the original item and apply modifications based on the category parameters
 			/** @type {Record<string, number>} */
 			let enemyTags = {};
-			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = 10;
+			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
 			/** @type {KDRestraintPropsBase} */
 			let props = {
 				Model: origRestraint.Model + ModelSuffix,
@@ -3761,6 +3779,65 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, baseP
 	}
 }
 
+
+/**
+ *
+ * @param {string} CopyOf - The rope family to copy
+ * @param {string} idSuffix - The suffix to add to the rope family
+ * @param {string} ModelSuffix - The suffix for the rope model to use
+ * @param {string} tagBase - The base for the enemy tags
+ * @param {string[]} allTag - adds a tag to all of the ropes if specified
+ * @param {number} basePower - Base opower level
+ * @param {KDRestraintPropsBase} properties - Restraint properties to override
+ * @param {KinkyDungeonEvent[]} extraEvents - Extra events to add on
+ * @param {KDEscapeChanceList} baseStruggle - Increase to base struggle amounts
+ * @param {KDEscapeChanceList} multStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {LayerFilter} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
+ * param {{name: string, description: string}} strings - Generic strings for the rope type
+ */
+function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, basePower, properties, extraEvents, baseStruggle, multStruggle, Filters, baseWeight = 100) {
+	for (let part of Object.entries(KDSlimeParts)) {
+		let restraintPart = part[0];
+		// Only if we have something to copy
+		let origRestraint = KinkyDungeonGetRestraintByName(CopyOf + restraintPart);
+		if (origRestraint) {
+			// For each category of rope items we dupe the original item and apply modifications based on the category parameters
+			/** @type {Record<string, number>} */
+			let enemyTags = {};
+			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
+			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Ranndom"] = baseWeight + 3;
+			/** @type {KDRestraintPropsBase} */
+			let props = {
+				Model: origRestraint.Model + ModelSuffix,
+				power: origRestraint.power + basePower,
+				shrine: Object.assign(KDGetRestraintTags(origRestraint), ...allTag),
+				enemyTags: enemyTags,
+				events: Object.assign(Object.assign([], origRestraint.events), extraEvents),
+				escapeChance: Object.assign({}, origRestraint.escapeChance),
+				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : undefined,
+			};
+			if (Filters && props.Filters) {
+				for (let layer of Object.keys(props.Filters)) {
+					props.Filters[layer] = Object.assign({}, Filters);
+				}
+			}
+			if (baseStruggle) {
+				for (let type of Object.entries(baseStruggle)) {
+					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
+				}
+			}
+			if (multStruggle) {
+				for (let type of Object.entries(multStruggle)) {
+					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) * type[1]))/10000;
+				}
+			}
+			let newRestraint = KinkyDungeonCloneRestraint(CopyOf + restraintPart, idSuffix + restraintPart, Object.assign(props, properties));
+			console.log("Added " + newRestraint.name);
+			console.log(newRestraint);
+		}
+	}
+}
+
 /**
  * Converts restraint tags to a copy that is also a list (in case data structure changes)
  * @param {restraint} restraint
@@ -3768,4 +3845,45 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, baseP
  */
 function KDGetRestraintTags(restraint) {
 	return [...restraint.shrine];
+}
+
+/**
+ *
+ * @param {item} item
+ * @param {string} name
+ * @returns {any}
+ */
+function KDItemDataQuery(item, name) {
+	if (item?.data) {
+		return item.data[name];
+	}
+	return undefined;
+}
+/**
+ *
+ * @param {item} item
+ * @param {string} name
+ * @param {number | string} value
+ * @returns {any}
+ */
+function KDItemDataSet(item, name, value) {
+	if (!item.data) {
+		item.data = {};
+	}
+	item.data[name] = value;
+}
+
+/**
+ * Changes a restraint item's name
+ * @param {item} item
+ * @param {string} type
+ * @param {string} name
+ */
+function KDChangeItemName(item, type, name) {
+	if (item.name == name) return;
+	if (KinkyDungeonInventory.get(type).get(item.name)) {
+		KinkyDungeonInventory.get(type).set(name, item);
+		KinkyDungeonInventory.get(type).delete(item.name);
+	}
+	item.name = name;
 }

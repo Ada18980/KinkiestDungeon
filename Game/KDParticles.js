@@ -130,8 +130,8 @@ function KDDrawVibeParticles(density) {
 function KDCreateVibeParticle() {
 	let lifetime = 500 + Math.random() * 250;
 	let x = 250 - (StandalonePatched ? 5 : 0);
-	let Hogtied = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer)?.Poses.Hogtie : KinkyDungeonPlayer.Pose.includes("Hogtied");
-	let Kneeling = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer)?.Poses.Kneel: KinkyDungeonPlayer.IsKneeling();
+	let Hogtied = KDIsHogtied(KinkyDungeonPlayer);
+	let Kneeling = KDIsKneeling(KinkyDungeonPlayer);
 	let y = 520 + (Hogtied ? 165 : (Kneeling ? 78 : 0));
 	if (StandalonePatched) {
 		// Throw out in favor of new system
@@ -150,7 +150,7 @@ function KDCreateVibeParticle() {
 			vy = 0.25 + Math.random()*0.1;
 			vx = -.05 + Math.random() * .1;
 		}
-		else if (breast && !KinkyDungeonPlayer.Pose.includes("Hogtied") && (locations.length == 1 || Math.random() < 0.5)) {
+		else if (breast && !Hogtied && (locations.length == 1 || Math.random() < 0.5)) {
 			if (StandalonePatched) {
 				let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Chest");
 				x = pos.x;

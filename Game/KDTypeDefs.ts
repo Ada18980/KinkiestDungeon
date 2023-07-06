@@ -607,10 +607,21 @@ interface enemy extends KDHasTags {
 	GFX?: {
 		/** Custom sprite while lying in wait */
 		AmbushSprite?: string,
+		/** custom sprite width*/
+		spriteWidth?: number,
+		/** custom sprite height*/
+		spriteHeight?: number,
+		/** This enemy is affected by lighting */
+		lighting?: boolean,
+
 	},
 
 	/** Behavior tags */
 	Behavior?: {
+		/** This enemy will hold still when near the player */
+		holdStillWhenNear?: boolean,
+		/** If this is true, the intent is that it behaves more as an allied enemy rather than a summon */
+		behaveAsEnemy?: boolean,
 		/** This enemy will always want to add more restraints~ */
 		thorough?: number,
 		/** Can't play */
@@ -1042,6 +1053,7 @@ interface shopItem {
 }
 
 interface weapon {
+	arousalMode?: boolean,
 	name: string;
 	dmg: number;
 	chance: number;
@@ -1081,9 +1093,12 @@ interface weapon {
 
 interface KinkyDungeonEvent {
 	cost?: number,
+	/** This is from a temporary event curse */
+	curse?: boolean,
 	tags?: string[],
 	duration?: number,
 	always?: boolean,
+	bindEff?: number,
 	type: string;
 	trigger: string;
 	restraint?: string;
@@ -1472,6 +1487,8 @@ interface spell {
 	faction?: string;
 	/** Whether the spell defaults to the Enemy faction */
 	enemySpell?: boolean;
+	/** Whether the spell has a direction offset when fired */
+	noDirectionOffset?: boolean,
 	/** Hide the spell if arousal mode is off */
 	arousalMode?: boolean;
 	/** Conjure, Illusion, Elements */
@@ -1501,6 +1518,7 @@ interface spell {
 	knifecost?: number;
 	staminacost?: number;
 	manacost: number;
+	chargecost?: number;
 	minRange?: number;
 	noSprite?: boolean;
 	/** Verbal, arms, or legs */
@@ -2131,6 +2149,30 @@ interface KDTrainingRecord {
 
 interface KDRopeType {
 	tags: string[],
+}
+
+interface KDSealGroup {
+	/** Whether the seal group is disabled based on the arousal mode */
+	arousalMode?: boolean,
+	/** Level of difficulty of the seal group */
+	level: number,
+	/** Prevents this seal group from being a greater seal */
+	disallowGreater?: boolean,
+	/** Prevents this seal group from being a lesser seal */
+	disallowLesser?: boolean,
+	/** The seals in this seal group */
+	seals: KDSeal[],
+}
+
+interface KDSeal {
+	/** Name of the seal buff */
+	name: string,
+	/** Color of the seal buff */
+	aura: string,
+	/** Sprite of the seal buff */
+	aurasprite: string,
+	/** Events of the seal buff */
+	events: KinkyDungeonEvent[],
 }
 
 type KDTile = any;

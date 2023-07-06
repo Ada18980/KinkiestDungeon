@@ -44,7 +44,7 @@ let cursedRestraintCache = {
 let KinkyDungeonSpecialLoot = false;
 let KinkyDungeonLockedLoot = false;
 
-function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap) {
+function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, minWeight = 0.9, minWeightFallback = true) {
 	let lootWeightTotal = 0;
 	let lootWeights = [];
 
@@ -160,8 +160,13 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap) {
 				if (loot.trap && noTrap)
 					weightMult = 0;
 
-				lootWeights.push({loot: loot, weight: lootWeightTotal});
-				lootWeightTotal += Math.max(0, (loot.weight + weightBonus) * weightMult);
+
+				let w = (loot.weight + weightBonus) * weightMult;
+				if (w > minWeight) {
+					lootWeights.push({loot: loot, weight: lootWeightTotal});
+					lootWeightTotal += Math.max(0, w);
+				}
+
 			}
 		}
 	}
@@ -176,9 +181,12 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap) {
 			if (!KinkyDungeonSendActionMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime || 2))
 				KinkyDungeonSendTextMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime || 2, true, true);
 
-			break;
+			return true;
 		}
 	}
+	// Go with it otherwise
+	if (minWeight > 0 && minWeightFallback) return KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, 0, false);
+	return false;
 }
 
 function KinkyDungeonGetUnlearnedSpells(minlevel, maxlevel, SpellList) {
@@ -372,6 +380,12 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	}
 	else if (Loot.name == "AncientCores") {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, Loot.count ? Loot.count : 2);
+	}
+	else if (Loot.name == "AncientCoreSingle") {
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, Loot.count ? Loot.count : 1);
+	}
+	else if (Loot.name == "AncientCoreSingleSpent") {
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSourceSpent, Loot.count ? Loot.count : 1);
 	}
 	else if (Loot.name == "EnchantedBelt"||Loot.name == "EnchantedBra"||Loot.name == "EnchantedHeels"||Loot.name == "EnchantedAnkleCuffs"||Loot.name == "EnchantedMuzzle"||Loot.name == "EnchantedBlindfold"||Loot.name == "EnchantedMittens"||Loot.name == "EnchantedBallGag"||Loot.name == "EnchantedArmbinder") {
 		let restraint = KinkyDungeonGetRestraintByName(Loot.name);

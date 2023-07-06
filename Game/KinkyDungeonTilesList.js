@@ -1136,3 +1136,27 @@ let KDEffectTileBulletFunctions = {
 		return true;
 	},
 };
+
+
+let KDStairsAltAction = {
+	"RandomTeleport": (toTile, suppressCheckPoint) => {
+		// Delete the stairs and teleport the player to a random location on another set of stairs
+		KinkyDungeonMapSet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, '2');
+		delete KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction;
+		let point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+			return KinkyDungeonMapGet(x, y) == 's'
+				&& KinkyDungeonTilesGet(x + "," + y)?.AltStairAction == "RandomTeleport";
+		}, false, false, undefined, undefined, undefined, true);
+		if (point) {
+			KDMovePlayer(point.x, point.y, false);
+			KinkyDungeonMapSet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, '2');
+			delete KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction;
+
+			KinkyDungeonSendTextMessage(10, TextGet("KDRandomStairTeleport"), "#ff5555", 5);
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
+		} else {
+			KinkyDungeonSendTextMessage(10, TextGet("KDRandomStairTeleportFail"), "#ff5555", 5);
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
+		}
+	},
+};

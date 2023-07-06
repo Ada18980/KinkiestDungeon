@@ -12,7 +12,7 @@ KinkyDungeonPatronsList6,"DemonQueenSera|John1304|Masaki H|Eric R.|Rei H.|hSXZM|
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
 KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
-KinkyDungeonCreditsList1,"Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators"
+KinkyDungeonCreditsList1,"Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators"
 
 Language,Language
 EN,English
@@ -29,7 +29,7 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 
-KinkyDungeon,"Kinky Dungeon v4.25"
+KinkyDungeon,"Kinky Dungeon v4.31"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -401,6 +401,11 @@ KinkyDungeonStatTapePref,"More Tape"
 KinkyDungeonStatDescTapePref,"Tape-wielding enemies (such as Tape Bots) occur more frequently."
 KinkyDungeonStatTapeOptout,"Less Tape"
 KinkyDungeonStatDescTapeOptout,"Fewer tape-related enemies will appear, although this does not remove tape entirely."
+
+KinkyDungeonStatSlimePref,"More Encasement"
+KinkyDungeonStatDescSlimePref,"Enemies that encase you (e.g slimes, latex cubes) will appear more frequently."
+KinkyDungeonStatSlimeOptout,"Less Encasement"
+KinkyDungeonStatDescSlimeOptout,"Fewer encasement-related enemies will appear, although this does not remove it entirely."
 
 
 KinkyDungeonStatMC_Trainee,"Trainee"
@@ -829,6 +834,10 @@ DungeonNamewiz,Wizards' Den
 DungeonNamemrb,Marble Halls
 DungeonNamedll,Doll Storage
 DungeonName20,
+DungeonNameDollRoom,Doll Processing
+DungeonNameDemonTransition,The Edge of Reality
+DungeonNameDemonEscape,The Edge of Reality
+DungeonNameDemonPrison,Dark Dimension
 
 LootRubbleFail,You search through the debris but find nothing of note
 LootRubbleSmallGold,You find some gold coins in a corner (+XXX gold)
@@ -1153,7 +1162,6 @@ KinkyDungeonInventoryItemStaffChain,Staff of Chains
 KinkyDungeonInventoryItemStaffChainDesc,"A magical weapon made for novices in the art of bondage."
 KinkyDungeonInventoryItemStaffChainDesc2,"+10% chain damage. Deals chain damage. 150% binding efficiency."
 
-
 ItemPickupStaffBind,"You pick up a staff of binding. You remember these from wizard school..."
 ItemPickupStaffStorm,"You pick up a staff of the storm. Your hair stands on end."
 ItemPickupStaffIncineration,"You pick up a staff of incineration. It rumbles with molten fury."
@@ -1234,8 +1242,8 @@ KinkyDungeonInventoryItemSword,Sword
 KinkyDungeonInventoryItemSwordDesc,"The blade is strong, its edge sharp."
 KinkyDungeonInventoryItemSwordDesc2,"A fast and accurate weapon that deals slash damage."
 KinkyDungeonInventoryItemFlamberge,Flamberge
-KinkyDungeonInventoryItemFlambergeDesc,"A blade forged in a magical fire."
-KinkyDungeonInventoryItemFlambergeDesc2,"Deals 20 bonus fire damage on hit."
+KinkyDungeonInventoryItemFlambergeDesc,"A blade forged in magic fire."
+KinkyDungeonInventoryItemFlambergeDesc2,"Deals 20 bonus slash damage on hit."
 KinkyDungeonInventoryItemEscortDrone,Escort Drone
 KinkyDungeonInventoryItemEscortDroneDesc,"A semi-autonomous drone with a personal defense beam. Does not require hands to equip."
 KinkyDungeonInventoryItemEscortDroneDesc2,"Deals electric damage. 33% chance to stun for 4 turns."
@@ -3512,6 +3520,9 @@ RestraintMagicGagDesc2,"You can't seem to enunciate your spells properly with th
 RestraintMagicGag2,Magic Ball Gag
 RestraintMagicGag2Desc,"A gag enchanted with magic. It grows to fill your mouth so you can hardly speak."
 RestraintMagicGag2Desc2,"It's brimming with conjured energy. A normal knife won't work here!"
+RestraintAntiMagicGag,Anti-Magic Gag
+RestraintAntiMagicGagDesc,"A gag designed to cripple mages. It's made of a squishy rubbery material."
+RestraintAntiMagicGagDesc2,"It's sealed with a magical spell that rapidly absorbs mana! When it drains 40 mana it will transform into an ordinary gag and inflate."
 RestraintTrapBoots,Ballet Heels
 RestraintTrapBootsDesc,"A pair of shoes with heels so tall it forces you on your toes."
 RestraintTrapBootsDesc2,"These will take some getting used to."
@@ -4444,6 +4455,10 @@ KDEffectTileTooltipIllusOrb,Wall Sconce
 KDEffectTileTooltipIllusOrbDesc,"Provides light"
 KDEffectTileTooltipIllusOrbDead,Broken Wall Sconce
 KDEffectTileTooltipIllusOrbDeadDesc,"It is beyond repair."
+KDEffectTileTooltipEdgeOrb,Light Portal
+KDEffectTileTooltipEdgeOrbDesc,"Provides light"
+KDEffectTileTooltipEdgeOrbDead,Empty Portal
+KDEffectTileTooltipEdgeOrbDeadDesc,"Stare into the void..."
 KDEffectTileTooltipLatex,Liquid Latex
 KDEffectTileTooltipLatexDesc,"Engulfs creatures"
 KDEffectTileTooltipLatexThin,Liquid Latex
@@ -5331,7 +5346,7 @@ KinkyDungeonSpellCastLockdown,"You say a command word, and magical locks bind yo
 
 KinkyDungeonSpellChastity,Chastity
 KinkyDungeonSpellTargetChastity,Select which creature to lock in a belt
-KinkyDungeonSpellDescriptionChastity,"Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs and distracts constantly."
+KinkyDungeonSpellDescriptionChastity,"Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly."
 KinkyDungeonSpellCastChastity,"You conjure a chastity belt, which latches onto your target!"
 KDZoneOfPuritySelf,"Your own spell locks you in chastity!"
 KDZoneOfExcitementSelf,"Something fun enters your body..."
@@ -6033,6 +6048,8 @@ KinkyDungeonLore-10,"(The note contains a magic spell you were taught never to c
 KinkyDungeonCurseInfo5Keys,"The item requires 5 keys and free hands to remove"
 KinkyDungeonCurseStruggle5Keys,"The item is extremely secure with five separate keyholes."
 KinkyDungeonCurseUnlock5Keys,"You insert your 5 keys into the lock and the item finally comes off."
+
+curseFrom,"[RNAME]"
 
 curseInfoTickle,"Curse of Tickling: This item is tickling you without end!"
 curseInfoPunish,"Curse of Punishment: Inflicts psychic damage when you attack or cast a spell."
@@ -9706,7 +9723,7 @@ rPrisonerRescueElemental,"(A SPEAKER wakes you up by knocking on the bars)|Hey, 
 rPrisonerRescueAncientRobot,"(A SPEAKER flashes a bright light in your direction)|Prisoner 74121 located. Commence transfer to different location."
 rAllyRescue,"(A SPEAKER wakes you up)|We came to rescue you. Come on!"
 
-rBed,"(The bed looks comfy and inviting)|(Napping here will restore up to half of your willpower)|(You can only sleep once per floor, unless jailed)"
+rBed,"(The bed looks comfy and inviting)|(Napping here will restore up to half of your willpower and 100% of your max mana)|(You can only sleep once per floor, unless jailed)"
 rBedSleep,"(You lay in the bed and doze off...)"
 dBed_Sleep,(Lie down and sleep)
 
@@ -10242,3 +10259,77 @@ RestraintWeakMagicRopeLegsDesc2,"They glow with a trace of magic."
 RestraintWeakMagicRopeFeet,Magic Ankle Tie
 RestraintWeakMagicRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintWeakMagicRopeFeetDesc2,"They glow with a trace of magic."
+
+KDEffectTileTooltipPortals/DarkPortal,Dark Portal
+KDEffectTileTooltipPortals/DarkPortalDesc,"They are trying to take you somewhere!"
+
+NameDemonEye,The Shadow
+KillDemonEye,"The Shadow is exorcised... for now."
+AttackDemonEyeBind,"The Shadow overwhelms you with its power... (+RestraintAdded)"
+AttackDemonEye,"The Shadow welcomes you to your new future. (DamageTaken)"
+AttackDemonEyeLock,"The Shadow cackles as your restraints are sealed! (DamageTaken)"
+KDObserverVanishFail,"The Shadow smiles and vanishes."
+KDObserverVanishSucceed,"The Shadow smiles and vanishes, leaving you locked in a mysterious RNAME..."
+
+NameObserver,Observer
+KillObserver,The observer is banished into the aether.
+
+KinkyDungeonFactionObserver,From the Beyond
+
+KinkyDungeonTrapSpawnLatexCubeMetal,"You briefly spot your reflection as a reflective cube appears!"
+NameLatexCubeMetal,Liquid Metal Cube
+KillLatexCubeMetal,"The liquid metal cube shatters into glittering dust."
+AttackLatexCubeMetal,"The liquid metal cube sticks to you and hardens! (DamageTaken)"
+AttackLatexCubeMetalBind,"The liquid metal cube expands across your body and hardens, taking the form of restraints! (+RestraintAdded)"
+
+
+RestraintLiquidMetalBoots,Liquid Metal (Feet)
+RestraintLiquidMetalBootsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalBootsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalFeet,Liquid Metal (Ankles)
+RestraintLiquidMetalFeetDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalFeetDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalLegs,Liquid Metal (Legs)
+RestraintLiquidMetalLegsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalLegsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalArms,Liquid Metal (Arms)
+RestraintLiquidMetalArmsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalArmsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalHands,Liquid Metal (Hands)
+RestraintLiquidMetalHandsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalHandsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalMouth,Liquid Metal (Mouth)
+RestraintLiquidMetalMouthDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalMouthDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalHead,Liquid Metal (Head)
+RestraintLiquidMetalHeadDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalHeadDesc2,"It will be quite difficult to escape this."
+
+KDRandomStairTeleportFail,"The stairs dissolve right before you!"
+KDRandomStairTeleport,"The stairs dissolve as you step onto them, pulling you with them to somewhere else."
+
+KDObserverCurseApply,"A dark energy enters your body... (DamageDealt)"
+KinkyDungeonBuffCursed,"A dark energy lurks within you."
+KDObserverCursed,"You succumb to a dark desire... (+RestraintAdded)"
+
+KinkyDungeonSpellObserverBeamBeam,Observer's Gaze
+
+KinkyDungeonInventoryItemStaffTape,Industrial Tape Wand
+KinkyDungeonInventoryItemStaffTapeDesc,"A non-magical tape wand used for creating tight little packages."
+KinkyDungeonInventoryItemStaffTapeDesc2,"Deals chain damage. 200% binding efficiency. Hitting an enemy applies the Taped debuff for 12 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving."
+ItemPickupStaffTape,"You pick up a staff of chains. You have fond memories..."
+
+
+KinkyDungeonInventoryItemBagOfGoodies,Bag of Goodies
+KinkyDungeonInventoryItemBagOfGoodiesDesc,"Someone's secret stash."
+KinkyDungeonInventoryItemBagOfGoodiesDesc2,"Deals charm damage. Applies a toy to targets hit for 40 turns. "
+ItemPickupBagOfGoodies,"You find a bag filled with various toys and vibrators..."
+KinkyDungeonPlaySelfBagOfGoodies,"You play with yourself using some of the toys in the bag..."
+
+KinkyDungeonSpellCommandVibrateBagOfGoodies,Vibrator Remote
+KinkyDungeonSpellTargetCommandVibrateBagOfGoodies,Select an area
+KinkyDungeonSpellCastCommandVibrateBagOfGoodies,"You click the remote and hear a buzzing noise!"
+KinkyDungeonSpecialBagOfGoodies,"10 charge to activate vibrators in an area for 15 turns."
+
+LootChestAncientCoreSingle,"You find a golden crystal. It glows faintly."
+LootChestAncientCoreSingleSpent,"You find a dull, gold-tinted crystal."
