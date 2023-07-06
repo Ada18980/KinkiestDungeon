@@ -308,11 +308,31 @@ function KinkyDungeonGetManaCost(Spell) {
 		lvlcostscale: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ManaCostLevelMult"),
 	};
 	KinkyDungeonSendEvent("calcMana", data);
-	if (data.costscale) data.cost = Math.floor(data.cost * data.costscale);
+	if (data.costscale) data.cost = Math.floor(1000* data.cost * data.costscale)/1000;
 	//if (data.costscale > 0) data.cost = Math.max(0, data.cost); // Keep it from rounding to 0
 	if (data.lvlcostscale && Spell.level && Spell.manacost) data.cost += Spell.level * data.lvlcostscale;
 	KinkyDungeonSendEvent("beforeMultMana", data);
 	KinkyDungeonSendEvent("afterCalcMana", data);
+
+	if (KinkyDungeonStatsChoice.get("Slayer") && Spell.school == "Elements" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
+	if (KinkyDungeonStatsChoice.get("Conjurer") && Spell.school == "Conjure" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
+	if (KinkyDungeonStatsChoice.get("Magician") && Spell.school == "Illusion" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
+
+	return data.cost;
+}
+
+function KinkyDungeonGetChargeCost(Spell) {
+	let data = {
+		spell: Spell,
+		cost: Spell.chargecost || 0,
+		costscale: KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ChargeCostMult")),
+		lvlcostscale: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ChargeCostLevelMult"),
+	};
+	KinkyDungeonSendEvent("calcCharge", data);
+	if (data.costscale) data.cost = Math.floor(1000* data.cost * data.costscale)/1000;
+	if (data.lvlcostscale && Spell.level && Spell.manacost) data.cost += Spell.level * data.lvlcostscale;
+	KinkyDungeonSendEvent("beforeMultCharge", data);
+	KinkyDungeonSendEvent("afterCalcCharge", data);
 
 	if (KinkyDungeonStatsChoice.get("Slayer") && Spell.school == "Elements" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
 	if (KinkyDungeonStatsChoice.get("Conjurer") && Spell.school == "Conjure" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
@@ -564,10 +584,13 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			let yy = entity.y;
 			noiseX = entity.x;
 			noiseY = entity.y;
-			if (!bullet || (bullet.spell && bullet.spell.cast && bullet.spell.cast.offset)) {
-				xx += moveDirection.x;
-				yy += moveDirection.y;
+			if (!spell.noDirectionOffset) {
+				if (!bullet || (bullet.spell && bullet.spell.cast && bullet.spell.cast.offset)) {
+					xx += moveDirection.x;
+					yy += moveDirection.y;
+				}
 			}
+
 			if (spell.effectTilePre) {
 				KDCreateAoEEffectTiles(tX-entity.x,tY - entity.y, spell.effectTilePre, spell.effectTileDurationModPre, (spell.aoe) ? spell.aoe : 0.5);
 			}
@@ -591,8 +614,13 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			let sz = spell.size;
 			if (!sz) sz = 1;
 			if (spell.meleeOrigin) {
-				tX = entity.x + moveDirection.x;
-				tY = entity.y + moveDirection.y;
+				if (!spell.noDirectionOffset) {
+					tX = entity.x + moveDirection.x;
+					tY = entity.y + moveDirection.y;
+				} else {
+					tX = entity.x;
+					tY = entity.y;
+				}
 			}
 			let b = KinkyDungeonLaunchBullet(tX, tY,
 				moveDirection.x,moveDirection.y,
@@ -611,8 +639,13 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			let sz = spell.size;
 			if (!sz) sz = 1;
 			if (spell.meleeOrigin) {
-				tX = entity.x + moveDirection.x;
-				tY = entity.y + moveDirection.y;
+				if (!spell.noDirectionOffset) {
+					tX = entity.x + moveDirection.x;
+					tY = entity.y + moveDirection.y;
+				} else {
+					tX = entity.x;
+					tY = entity.y;
+				}
 			}
 			let b = {x: tX, y:tY,
 				vx: moveDirection.x,vy: moveDirection.y, born: 1,

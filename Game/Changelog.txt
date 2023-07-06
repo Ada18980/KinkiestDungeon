@@ -1333,6 +1333,19 @@ Minor Changes:
 -- Buffed Convincing Disguise spell to have looser requirements
 - Added more weak magic rope types
 
+
+4.3 (Jun 2023)
+- Buffs should no longer overflow as easily in the UI
+- Added fire affinity type for modders
+- New restraint: Anti Magic Gag  (some maidforce have it)
+- Can now find torches, scissors, and rope in rubble piles
+- New mechanic: When demons jail you they will try to summon a portal and take you to a special area instead.
+- Sleeping now restores 100% max mana
+
+4.31 (July 2023)
+- Added ability to add temporary curses onto items using console -- TODO test this to make sure the curse is persistent and gets filtered when the item is removed
+- New weapons: Industrial Tape Wand, Bag of Goodies
+
 TODO: Mushrooms in the jungle
 
 TODO

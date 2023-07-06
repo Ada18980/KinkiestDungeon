@@ -784,7 +784,7 @@ function KinkyDungeonDrawGame() {
 					let buffs = Object.values(KinkyDungeonPlayerBuffs);
 					buffs = buffs.sort((a, b) => {return b.duration - a.duration;});
 					for (let b of buffs) {
-						if (b && b.aura && b.duration > 0) {
+						if (b && b.aura && b.duration > 0 && !(b.aurasprite == "Null")) {
 							aura_scale += 1/aura_scale_max;
 							let s = aura_scale;
 							if (b.noAuraColor) {
@@ -1132,9 +1132,10 @@ function KinkyDungeonDrawGame() {
 			if (StandalonePatched)
 				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
 
-
+			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+			let dungeonName = altType?.dungeonName ? altType.dungeonName : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
 			DrawTextFitKD(
-				TextGet("CurrentLevel").replace("FLOORNUMBER", "" + MiniGameKinkyDungeonLevel).replace("DUNGEONNAME", TextGet("DungeonName" + KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]))
+				TextGet("CurrentLevel").replace("FLOORNUMBER", "" + MiniGameKinkyDungeonLevel).replace("DUNGEONNAME", TextGet("DungeonName" + dungeonName))
 				+ (KinkyDungeonNewGame ? TextGet("KDNGPlus").replace("XXX", "" + KinkyDungeonNewGame) : ""),
 				KDMsgX + KDMsgWidth/2, 42, 1000, "#ffffff", "#333333");
 			//DrawTextKD(TextGet("DungeonName" + KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]), 1500, 42, "#ffffff", KDTextGray2);
@@ -2653,7 +2654,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 	}
 
 	let params = KinkyDungeonMapParams[drawFloor];
-	if (params.noReplace)
+	if (params?.noReplace)
 		noReplace = params.noReplace;
 	// Draw the grid and tiles
 	let rows = KinkyDungeonGrid.split('\n');
@@ -2713,9 +2714,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 					sprite3 = null;
 				}
 				if (KinkyDungeonForceRenderFloor != "") floor = KinkyDungeonForceRenderFloor;
-				let light = KinkyDungeonBrightnessGet(RX, RY);
-				let lightColor = KDAvgColor(KinkyDungeonColorGet(RX, RY), KinkyDungeonShadowGet(RX, RY), light, 1);
-				lightColor = KDAvgColor(lightColor, 0xffffff, 1, 1); // Brighten
+				let lightColor = KDGetLightColor(RX, RY);
 
 				KDDraw(kdmapboard, kdpixisprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
 					(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
@@ -2960,6 +2959,22 @@ function KDDrawTileTooltip(maptile, x, y, offset) {
 
 
 let KDEffectTileTooltips = {
+	'Portals/DarkPortal': (tile, x, y, TooltipList) => {
+		TooltipList.push({
+			str: TextGet("KDEffectTileTooltip" + tile.name),
+			fg: "#8b53e9",
+			bg: "#000000",
+			size: 24,
+			center: true,
+		});
+		TooltipList.push({
+			str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 16,
+			center: true,
+		});
+	},
 	'Runes': (tile, x, y, TooltipList) => {
 		TooltipList.push({
 			str: TextGet("KDEffectTileTooltip" + tile.name),
@@ -3028,6 +3043,8 @@ let KDEffectTileTooltips = {
 	'LanternUnlit': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
 	'IllusOrb': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
 	'IllusOrbDead': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
+	'EdgeOrb': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
+	'EdgeOrbDead': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
 	'TorchOrb': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
 	'Cracked': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");},
 };
@@ -3267,4 +3284,17 @@ function KDPlayerDrawPoseButtons(C) {
 	KDModalArea_height = 370;
 	KDDrawPoseButtons(C, 700, 680, true, true, true);
 
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @returns {number} - the color in hex
+ */
+function KDGetLightColor(x, y) {
+	let light = KinkyDungeonBrightnessGet(x, y);
+	let color = KDAvgColor(KinkyDungeonColorGet(x, y), KinkyDungeonShadowGet(x, y), light, 1);
+	color = KDAvgColor(color, 0xffffff, 1, 0.5); // Brighten
+	return color;
 }

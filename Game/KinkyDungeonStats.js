@@ -336,12 +336,28 @@ function KDGetStamDamageThresh() {
 	return data.thresh;
 }
 
-function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
-	if (bullet && !noAlreadyHit) {
+/**
+ *
+ * @param {any} bullet
+ * @param {entity} entity
+ * @param {boolean} [suppressAdd]
+ * @returns {boolean}
+ */
+function KDBulletAlreadyHit(bullet, entity, suppressAdd) {
+	if (bullet) {
+		let name = entity.player ? "player" : entity.id;
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
-		if (bullet.alreadyHit.includes("player")) return {happened: 0, string: ""};
-		bullet.alreadyHit.push("player");
+		if (bullet.alreadyHit.includes(name)) return true;
+		if (!suppressAdd)
+			bullet.alreadyHit.push(name);
+	}
+	return false;
+}
+
+function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
+	if (bullet && !noAlreadyHit) {
+		if (KDBulletAlreadyHit(bullet, KinkyDungeonPlayerEntity)) return {happened: 0, string: ""};
 	}
 
 	let data = {
@@ -789,9 +805,9 @@ function KinkyDungeonChangeCharge(Amount, NoFloater) {
 		Amount = 0;
 	}
 	if (!KDGameData.AncientEnergyLevel) KDGameData.AncientEnergyLevel = 0;
-	KDGameData.AncientEnergyLevel = Math.min(1, KDGameData.AncientEnergyLevel + Amount);
+	KDGameData.AncientEnergyLevel = Math.min(1, Math.max(0, KDGameData.AncientEnergyLevel + Amount));
 	if (!NoFloater && Math.abs(KDOrigCharge - Math.floor(KDGameData.AncientEnergyLevel * 1000)) >= 0.99) {
-		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.AncientEnergyLevel * 1000 * 10) - KDOrigCharge, "#ffff44", undefined, undefined, " charge");
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.AncientEnergyLevel * 1000) - KDOrigCharge, "#ffff44", undefined, undefined, " charge");
 		KDOrigCharge = Math.floor(KDGameData.AncientEnergyLevel * 1000);
 	}
 
@@ -1181,8 +1197,17 @@ function KinkyDungeonCapStats() {
 	if (KinkyDungeonStatWill > KinkyDungeonStatWillMax - 0.001) KinkyDungeonStatWill = KinkyDungeonStatWillMax;
 }
 
+function KDIsHogtied(C) {
+	if (!C) C = KinkyDungeonPlayer;
+	return StandalonePatched ? KDCurrentModels.get(C)?.Poses.Hogtie : C.Pose.includes("Hogtied");
+}
+function KDIsKneeling(C) {
+	if (!C) C = KinkyDungeonPlayer;
+	return StandalonePatched ? KDCurrentModels.get(C)?.Poses.Kneel || KDCurrentModels.get(C)?.Poses.KneelClosed : C.IsKneeling();
+}
+
 function KinkyDungeonLegsBlocked() {
-	if (KinkyDungeonPlayer.Pose.includes("Hogtie")) return true;
+	if (KDIsHogtied()) return true;
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv) && KDRestraint(inv).blockfeet) return true;
 	}
@@ -1190,7 +1215,7 @@ function KinkyDungeonLegsBlocked() {
 }
 
 function KinkyDungeonCanStand() {
-	return !KinkyDungeonPlayer.Pose.includes("Kneel") && !(KDGameData.KneelTurns > 0);
+	return !KDIsKneeling() && !KDIsHogtied() && !(KDGameData.KneelTurns > 0);
 }
 function KinkyDungeonCanKneel() {
 	return true;
@@ -1210,7 +1235,7 @@ function KinkyDungeonCalculateSlowLevel(delta) {
 			}
 		}
 		if (!KinkyDungeonCanStand()) KinkyDungeonSlowLevel = Math.max(3, KinkyDungeonSlowLevel + 1);
-		if (KinkyDungeonPlayer.Pose.includes("Hogtied")) KinkyDungeonSlowLevel = Math.max(4, KinkyDungeonSlowLevel + 1);
+		if (KDIsHogtied()) KinkyDungeonSlowLevel = Math.max(4, KinkyDungeonSlowLevel + 1);
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if (KDRestraint(inv).freeze) KinkyDungeonSlowLevel = Math.max(2, KinkyDungeonSlowLevel);
 		}

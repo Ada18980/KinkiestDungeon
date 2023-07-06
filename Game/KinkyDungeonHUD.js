@@ -1,4 +1,7 @@
 "use strict";
+
+let KDUISmoothness = 6;
+
 let KinkyDungeonStruggleGroups = [];
 let KinkyDungeonStruggleGroupsBase = [
 	"ItemH",
@@ -50,6 +53,11 @@ let KinkyDungeonFastMovePath = [];
 let KinkyDungeonFastStruggle = false;
 let KinkyDungeonFastStruggleType = "";
 let KinkyDungeonFastStruggleGroup = "";
+
+
+let KDMinBuffX = 0;
+let KDMinBuffXTarget = 1000;
+let KDToggleShowAllBuffs = false;
 
 /**
  *
@@ -183,6 +191,7 @@ let KDBuffSprites = {
 	"Invisibility": true,
 
 	"Haunted": true,
+	"Cursed": true,
 
 	//KinkyDungeonBuffShrineElements,"Arcane Power: Deals bonus damage when you hit an enemy."
 	//KinkyDungeonBuffShrineConjure,"Arcane Protection: Reduces damage taken, and deals retaliation damage."
@@ -617,6 +626,7 @@ function KinkyDungeonDrawInputs() {
 		}
 	}
 
+	// Draw the buff icons
 	let II = 0;
 	let spriteSize = 46;
 	let sorted = Object.values(statsDraw).sort((a, b) => {
@@ -631,24 +641,84 @@ function KinkyDungeonDrawInputs() {
 	let XXspacing = spriteSize + 3;
 	let YYspacing = spriteSize + 3;
 	let currCategory = "";
-	for (let stat of sorted) {
-		if (XX > minXX && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
+	let MaxHeight = 300 + spriteSize;
+	let ShowAll = KDToggleShowAllBuffs;
+
+	// (KDMinBuffX && MouseIn(KDMinBuffX, minYY - spriteSize, 2000, MaxHeight)) || MouseIn(minXX, minYY - spriteSize, 250, MaxHeight);
+
+	let smoothSnap = 5;
+	if (!ShowAll) {
+		if (KDMinBuffX)
+			KDMinBuffX = (minXX + KDUISmoothness * KDMinBuffX)/(1 + KDUISmoothness);
+		if (KDMinBuffX > minXX - smoothSnap)
+			KDMinBuffX = 0;
+	}
+	else {
+		if (!KDMinBuffX) {
+			// Determine KDMinBuffX
+			KDMinBuffX = minXX;
+		} else {
+			KDMinBuffX = (KDMinBuffXTarget + KDUISmoothness * KDMinBuffX)/(1 + KDUISmoothness);
+			if (KDMinBuffX < KDMinBuffXTarget + smoothSnap) KDMinBuffX = KDMinBuffXTarget;
+		}
+
+		/*FillRectKD(
+			kdcanvas, kdpixisprites, "buffBG", {
+				Left: KDMinBuffX - spriteSize/2, Top: minYY - spriteSize, Width: 2000 - 5 - KDMinBuffX + spriteSize/2,
+				Height: MaxHeight + spriteSize,
+				Color: "#000000", alpha: 0.4, zIndex: 100,
+			}
+		);*/
+	}
+	DrawButtonKDEx(
+		"KDToggleShowAllBuffs", (bdata) => {
+			KDToggleShowAllBuffs = !KDToggleShowAllBuffs;
+			return true;
+		},
+		true,
+		(KDMinBuffX || minXX) - spriteSize/4,
+		minYY - spriteSize*0.75,
+		2000 - 10 - (KDMinBuffX || minXX) + spriteSize/2,
+		MaxHeight + spriteSize,
+		"", "#000000", undefined, undefined, undefined, !KDToggleShowAllBuffs, KDToggleShowAllBuffs ? KDButtonColor : undefined, undefined, undefined,
+		{alpha: 0.8, zIndex: 100.5});
+	let resetX = (stat) => {
+		if (!ShowAll && !KDMinBuffX)
 			XX = minXX;
+		else {
+			XX = KDMinBuffX;
+		}
+	};
+	resetX();
+	for (let stat of sorted) {
+		if (((!KDMinBuffX && XX > minXX) || (KDMinBuffX && XX > KDMinBuffX)) && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
+			resetX(stat);
+
 			YY += YYspacing;
 		}
+		if (YY > minYY + MaxHeight) {
+			KDDraw(kdcanvas, kdpixisprites, "stat" + II, KinkyDungeonRootDirectory + "Buffs/BuffDots.png",
+				XX, YY - Math.ceil(spriteSize/2), undefined, undefined, undefined, {
+					zIndex: 101,
+				});
+			break;
+		}
+
 		currCategory = stat.category;
 
 		if (stat.count)
 			DrawTextFitKD(stat.count, XX + spriteSize/2, YY + spriteSize/2 - 10, textWidth, stat.countcolor || "#ffffff", "#000000", 16, undefined, 114, 0.8, 5);
 		KDDraw(kdcanvas, kdpixisprites, "stat" + II, KinkyDungeonRootDirectory + "Buffs/" + (stat.icon || "buff/buff") + ".png",
-			XX, YY - Math.ceil(spriteSize/2), undefined, undefined);
+			XX, YY - Math.ceil(spriteSize/2), undefined, undefined, undefined, {
+				zIndex: 101,
+			});
 
 		if (MouseIn(XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize)) {
 			DrawTextFitKD(stat.text, XX - 10, YY, 1250, stat.color, "#000000", 22, "right", 160, 1.0, 8);
 		}
 		XX += XXspacing;
 		if (XX > maxXX) {
-			XX = minXX;
+			resetX(stat);
 			YY += YYspacing;
 		}
 		II++;

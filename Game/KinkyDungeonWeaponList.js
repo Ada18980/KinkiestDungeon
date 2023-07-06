@@ -59,8 +59,8 @@ let KinkyDungeonWeapons = {
 		]
 	},
 	"MagicSword": {name: "MagicSword", dmg: 3, chance: 2, staminacost: 2.3, type: "slash", unarmed: false, rarity: 4, shop: false, magic: true, cutBonus: 0.1, sfx: "LightSwing"},
-	"Flamberge": {name: "Flamberge", dmg: 2.0, chance: 1.0, staminacost: 2.8, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "FireSpell", magic: true,
-		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, damage: "fire"}, {type: "WeaponLight", trigger: "getLights", power: 5}],
+	"Flamberge": {name: "Flamberge", dmg: 2.0, chance: 1.0, staminacost: 2.8, type: "fire", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "FireSpell", magic: true,
+		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, damage: "slash"}, {type: "WeaponLight", trigger: "getLights", power: 5}],
 		special: {type: "ignite"},},
 	"FrostSword": {name: "FrostSword", dmg: 1.5, chance: 1.0, staminacost: 2.5, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "LesserFreeze", magic: true,
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, time: 5, damage: "frost"}, {type: "WeaponLight", trigger: "getLights", power: 3, color: "#92e8c0"}]
@@ -106,6 +106,14 @@ let KinkyDungeonWeapons = {
 		events: [{type: "Pierce", trigger: "playerAttack", power: 4.0, damage: "pierce"}]},
 	"MagicSpear": {name: "MagicSpear", dmg: 4.0, chance: 1.5, staminacost: 3.3, type: "pierce", unarmed: false, rarity: 4, magic: true, shop: true, sfx: "LightSwing",
 		events: [{type: "Pierce", trigger: "playerAttack", power: 4.0, damage: "pierce", dist: 2}]},
+
+	// Specialty Weapons
+	"StaffTape": {name: "StaffTape", dmg: 1, bindEff: 2.0, bindType: "Tape", chance: 1.0, staminacost: 1.5, type: "chain", unarmed: false, rarity: 4, shop: true, sfx: "Tape", magic: false,
+		events: [
+			{type: "ApplyTaped", trigger: "playerAttack", power: -0.15, duration: 12},
+			{type: "DealDamageToTaped", trigger: "playerMove", power: 1.0, dist: 1.5, damage: "chain", bindType: "Tape", bindEff: 2.0, sfx: "TapeStruggle"},
+		]
+	},
 
 	// Tier 1 Staves
 	"StaffFlame": {name: "StaffFlame", dmg: 4, chance: 0.85, staminacost: 5.0, type: "fire", unarmed: false, rarity: 3, shop: true, sfx: "MagicSlash", magic: true,
@@ -178,6 +186,15 @@ let KinkyDungeonWeapons = {
 		playSelfMsg: "KinkyDungeonPlaySelfVibeWand",
 		playSelfSound: "Vibe",
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 2, chance: 0.2}]},
+	"BagOfGoodies": {name: "BagOfGoodies", arousalMode: true, dmg: 0.1, chance: 1.0, staminacost: 0.5, type: "charm", unarmed: false, rarity: 2, shop: false, sfx: "Vibe",
+		playSelfBonus: 3,
+		playSelfMsg: "KinkyDungeonPlaySelfBagOfGoodies",
+		playSelfSound: "Vibe",
+		events: [
+			{type: "ApplyToy", trigger: "playerAttack", duration: 40},
+		],
+		special: {type: "spell", spell: "CommandVibrateBagOfGoodies", requiresEnergy: true, energyCost: 0.01, range: 4.5},
+	},
 
 	"Scissors": {name: "Scissors", dmg: 1.2, chance: 1.8, staminacost: 0.7, type: "slash", unarmed: false, rarity: 2, shop: true, light: true, cutBonus: 0.1, sfx: "Cut"},
 

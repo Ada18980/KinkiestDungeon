@@ -134,6 +134,7 @@ let alts = {
 	},
 	"DollRoom": {
 		name: "DollRoom",
+		dungeonName: "DollRoom",
 		noWear: true, // Disables doodad wear
 		bossroom: false,
 		width: 15,
@@ -164,6 +165,44 @@ let alts = {
 		nobrick: true,
 		nolore: true,
 		noboring: true, // Skip generating boringness
+	},
+	"DemonTransition": {
+		name: "DemonTransition",
+		dungeonName: "DemonTransition",
+		noWear: false, // Disables doodad wear
+		bossroom: false,
+		width: 20,
+		height: 20,
+		nopatrols: false,
+		setpieces: {
+		},
+		data: {
+			DemonTransition: true,
+		},
+		genType: "DemonTransition",
+		skin: "DemonTransition",
+		musicParams: "DemonTransition",
+		lightParams: "DemonTransition",
+		spawns: false,
+		chests: true,
+		shrines: true,
+		orbs: 0,
+		chargers: true,
+		notorches: false,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		nostartstairs: true,
+		placeDoors: true,
+		notraps: false,
+		noClutter: true,
+		nobrick: false,
+		nolore: true,
+		noboring: false, // Skip generating boringness
 	},
 
 	"TestTile": {
@@ -319,6 +358,9 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"DollRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	},
+	"DemonTransition": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
 	"Dollmaker": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, 0, 10, 0, data);
@@ -956,6 +998,51 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		KinkyDungeonMapSet(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, 'S');
 }
 
+function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Create the map
+	KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	KinkyDungeonGenNavMap(KinkyDungeonStartPosition);
+
+	KinkyDungeonEndPosition = KinkyDungeonGetRandomEnemyPoint(false, false);
+
+	if (!KinkyDungeonEndPosition) {
+		KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 0, 10, 0, data);
+		KinkyDungeonGenNavMap(KinkyDungeonStartPosition);
+	}
+	KinkyDungeonStartPosition = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KDistChebyshev(x - KinkyDungeonEndPosition.x, y - KinkyDungeonEndPosition.y) > width/4;},false, false);
+	//let playerPos = KinkyDungeonGetRandomEnemyPoint(false, false);
+
+	KinkyDungeonPlayerEntity.x = KinkyDungeonStartPosition.x;
+	KinkyDungeonPlayerEntity.y = KinkyDungeonStartPosition.y;
+
+	KinkyDungeonMapSet(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 's');
+
+	// Create the Shadow on top of the end stairs
+	DialogueCreateEnemy(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, "DemonEye");
+	// Create observers
+
+	// Create random stair pairs
+	let obscount = 20;
+	for (let i = 0; i < obscount; i++) {
+		let point1 = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, 10, 10);
+		if (point1) {
+			DialogueCreateEnemy(point1.x, point1.y, "Observer");
+		}
+	}
+
+
+	// Create random stair pairs
+	let count = 20;
+	for (let i = 0; i < count; i++) {
+		let point1 = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KinkyDungeonMapGet(x, y) != 's' && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x, y));},true, false);
+		if (point1) {
+			KinkyDungeonMapSet(point1.x, point1.y, 's');
+			KinkyDungeonTilesSet(point1.x + "," + point1.y, {AltStairAction: "RandomTeleport"});
+		}
+	}
+
+	//KinkyDungeonMapSet(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, 'S');
+}
 
 function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
 	// Variable setup
@@ -1095,7 +1182,7 @@ function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, de
 	KinkyDungeonEndPosition = {x: width*2 - 2, y: VisitedRooms[0].y*2};
 
 	// Place quest NPCs
-	let quests = KDQuestList(2 + Math.round(KDRandom()), KDQuests, "Tunnel", "");
+	let quests = KDQuestList(3, KDQuests, "Tunnel", "", data);
 	for (let q of quests) {
 		if (q.npc)
 			KinkyDungeonSummonEnemy(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, q.npc, 1, 14, true);
