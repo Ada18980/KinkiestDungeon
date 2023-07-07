@@ -580,7 +580,7 @@ function KinkyDungeonTooMuchRestraint() {
 		let rest = KinkyDungeonGetJailRestraintForGroup(g);
 		let currentItem = KinkyDungeonGetRestraintItem(g);
 		let cutoffpower = KinkyDungeonStatsChoice.get("KinkyPrison") ? -50 : 4;
-		let lockMult = currentItem ? Math.max(1, KinkyDungeonGetLockMult(currentItem.lock) - 0.5) : (currentItem && KinkyDungeonIsLockable(KDRestraint(currentItem)) ? 0.4 : 1);
+		let lockMult = currentItem ? Math.max(1, KinkyDungeonGetLockMult(currentItem.lock, currentItem) - 0.5) : (currentItem && KinkyDungeonIsLockable(KDRestraint(currentItem)) ? 0.4 : 1);
 		if (
 			(!rest && currentItem && KDRestraint(currentItem).power * lockMult <= Math.max(cutoffpower + 0.1, rest ? rest.power : cutoffpower)) // There shouldnt be one here
 			|| (rest && currentItem && currentItem && rest.name != currentItem.name

@@ -441,7 +441,7 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					let items = KinkyDungeonGetRestraintsWithShrine("BindingDress", true, true);
 					// Get the most powerful item
-					let item = items.length > 0 ? items.reduce((prev, current) => (KDRestraint(prev).power * KinkyDungeonGetLockMult(prev.lock) > KDRestraint(current).power * KinkyDungeonGetLockMult(current.lock)) ? prev : current) : null;
+					let item = items.length > 0 ? items.reduce((prev, current) => (KDRestraint(prev).power * KinkyDungeonGetLockMult(prev.lock, prev) > KDRestraint(current).power * KinkyDungeonGetLockMult(current.lock, current)) ? prev : current) : null;
 
 					let power = item ? KDRestraint(item).power : 5;
 					if (KDFactionRelation("Player", "Dressmaker") < 0.25)
