@@ -622,6 +622,9 @@ function KinkyDungeonWearForcedClothes(restraints) {
 					if (dress.useHairColor && InventoryGet(KinkyDungeonPlayer, "HairFront")) color = InventoryGet(KinkyDungeonPlayer, "HairFront").Color;
 					let item = KDInventoryWear(dress.Item, dress.Group, inv.name, color, filters);
 
+					if (dress.Property) {
+						item.Property = Object.assign(item.Property || {}, dress.Property);
+					}
 					if (dress.OverridePriority) {
 						if (item) {
 							if (!item.Property) item.Property = {OverridePriority: dress.OverridePriority};
