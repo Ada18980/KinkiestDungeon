@@ -2325,7 +2325,7 @@ function KinkyDungeonGetRestraintByName(Name) {
  */
 function KinkyDungeonGetLockMult(Lock, item, curse) {
 	let mult = 1;
-	if (KDLocks[Lock]) mult = KDLocks[Lock].lockmult;
+	if (Lock && KDLocks[Lock]) mult = KDLocks[Lock].lockmult;
 	if (item && KDGetCurse(item)) mult = KDCursePower(KDGetCurse(item));
 	if (curse) mult = KDCursePower(curse);
 
@@ -2799,7 +2799,7 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
 function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower) {
 	if (typeof restraint === "string") restraint = KinkyDungeonGetRestraintByName(restraint);
 	if (restraint.bypass) Bypass = true;
-	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep, false, securityEnemy, (useAugmentedPower == undefined && securityEnemy != undefined) || useAugmentedPower), Curse) {
+	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep, false, securityEnemy, (useAugmentedPower == undefined && securityEnemy != undefined) || useAugmentedPower, Curse)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
 		let linkUnder = null;
 		linkUnder = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy);
