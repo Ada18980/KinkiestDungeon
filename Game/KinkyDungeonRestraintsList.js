@@ -2031,9 +2031,8 @@ const KinkyDungeonRestraints = [
 			"",
 			"liquidMetalRestraints",
 			["liquidMetal"],
-			4,
+			6,
 			{
-				magic: true,
 				Color: ["#aaaaaa", "#aaaaaa", "#aaaaaa"],
 			},
 			[
