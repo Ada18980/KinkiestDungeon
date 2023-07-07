@@ -3805,7 +3805,7 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 			/** @type {Record<string, number>} */
 			let enemyTags = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
-			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Ranndom"] = baseWeight + 3;
+			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Random"] = baseWeight + 3;
 			/** @type {KDRestraintPropsBase} */
 			let props = {
 				Model: origRestraint.Model + ModelSuffix,
