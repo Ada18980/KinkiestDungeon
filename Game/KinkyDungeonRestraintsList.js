@@ -2034,6 +2034,7 @@ const KinkyDungeonRestraints = [
 			6,
 			{
 				Color: ["#aaaaaa", "#aaaaaa", "#aaaaaa"],
+				factionColor: [],
 			},
 			[
 				{trigger: "tick", type: "evasionBuff", power: -0.1, inheritLinked: true},

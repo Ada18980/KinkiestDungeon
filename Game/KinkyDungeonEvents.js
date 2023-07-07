@@ -152,7 +152,7 @@ let KDEventMapInventory = {
 	},
 	"getLights": {
 		"ItemLight": (e, item, data) => {
-			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color)});
+			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color || "#ffffff")});
 		},
 	},
 	"onWear": {
@@ -776,7 +776,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"lockItemOnDamageType": (e, item, data) => {
-			if (data.type && data.type == e.damage && data.dmg) {
+			if (data.type && data.type == e.damage && data.dmg && !KDGetCurse(item)) {
 				let subMult = 1;
 				let chance = e.chance ? e.chance : 1.0;
 				if (item && KinkyDungeonGetLockMult(e.lock) > KinkyDungeonGetLockMult(item.lock) && KDRandom() < chance * subMult) {
@@ -2429,7 +2429,7 @@ let KDEventMapSpell = {
 				KinkyDungeonUpdateLightGrid = true;
 			}
 			if (KinkyDungeonPlayerBuffs.Light && KinkyDungeonPlayerBuffs.Light.duration > 1) {
-				data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color)});
+				data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color || "#ffffff")});
 			} else if (!activate) {
 				KinkyDungeonDisableSpell("Light");
 				KinkyDungeonExpireBuff(KinkyDungeonPlayerBuffs, "Light");
@@ -2554,7 +2554,7 @@ let KDEventMapWeapon = {
 	},
 	"getLights": {
 		"WeaponLight": (e, spell, data) => {
-			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color)});
+			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color || "#ffffff")});
 		},
 	},
 	"tick": {
@@ -3546,7 +3546,7 @@ let KDEventMapEnemy = {
 	},
 	"getLights": {
 		"enemyTorch": (e, enemy, data) => {
-			data.lights.push({brightness: e.power, x: enemy.x, y: enemy.y, color: string2hex(e.color)});
+			data.lights.push({brightness: e.power, x: enemy.x, y: enemy.y, color: string2hex(e.color || "#ffffff")});
 		},
 	},
 	"beforeDamage": {
