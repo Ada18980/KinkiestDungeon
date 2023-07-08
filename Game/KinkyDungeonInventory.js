@@ -556,25 +556,6 @@ function KinkyDungeonDrawInventory() {
 
 
 	if (filteredInventory.length > 0) {
-		DrawButtonKDEx("invScrollUp", (bdata) => {
-			if (filteredInventory.length > 0) {
-				if (KinkyDungeonInventoryOffset > 0) {
-					KinkyDungeonInventoryOffset -= 2;
-				}
-			}
-			return true;
-		}, true,
-		canvasOffsetX_ui + 640*KinkyDungeonBookScale + 526, canvasOffsetY_ui, 90, 44, "", KinkyDungeonInventoryOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
-		DrawButtonKDEx("invScrollDown", (bdata) => {
-			if (filteredInventory.length > 0) {
-				if (KinkyDungeonInventoryOffset + 24 < filteredInventory.length) {
-					KinkyDungeonInventoryOffset += 2;
-				}
-			}
-			return true;
-		}, true,
-		canvasOffsetX_ui + 640*KinkyDungeonBookScale + 526, 480*KinkyDungeonBookScale + canvasOffsetY_ui - 4, 90, 44, "", (KinkyDungeonInventoryOffset + 24 < filteredInventory.length) ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
-
 		let useIcons = KDInventoryUseIconConfig[KinkyDungeonCurrentFilter];
 		let numRows = useIcons ? 5 : 2;
 		let maxList = useIcons ? 7 : 12;
@@ -630,6 +611,26 @@ function KinkyDungeonDrawInventory() {
 				});
 			}
 		}
+
+
+		DrawButtonKDEx("invScrollUp", (bdata) => {
+			if (filteredInventory.length > 0) {
+				if (KinkyDungeonInventoryOffset > 0) {
+					KinkyDungeonInventoryOffset -= numRows;
+				}
+			}
+			return true;
+		}, true,
+		canvasOffsetX_ui + 640*KinkyDungeonBookScale + 526, canvasOffsetY_ui, 90, 44, "", KinkyDungeonInventoryOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
+		DrawButtonKDEx("invScrollDown", (bdata) => {
+			if (filteredInventory.length > 0) {
+				if (KinkyDungeonInventoryOffset + 24 < filteredInventory.length) {
+					KinkyDungeonInventoryOffset += numRows;
+				}
+			}
+			return true;
+		}, true,
+		canvasOffsetX_ui + 640*KinkyDungeonBookScale + 526, 480*KinkyDungeonBookScale + canvasOffsetY_ui - 4, 90, 44, "", (KinkyDungeonInventoryOffset + 24 < filteredInventory.length) ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
 
 
 	}

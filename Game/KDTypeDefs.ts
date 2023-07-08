@@ -552,6 +552,8 @@ interface overrideDisplayItem {
 	Filters?: Record<string, LayerFilter>,
 	/** Faction color index */
 	factionColor?: number[][],
+	/** Property for BC compat */
+	Property?: any,
 	/** Whether or not it overrides items already on */
 	override?: boolean,
 	/** Uses the player's hair color as the item color */
