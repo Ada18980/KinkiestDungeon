@@ -1222,16 +1222,16 @@ KinkyDungeonInventoryItemFoilDesc2,"Deals pierce damage. Deals 30 damage instead
 ItemPickupFoil,"You pick up a fencing sword."
 
 KinkyDungeonInventoryItemHammer,Hammer
-KinkyDungeonInventoryItemHammerDesc,"A rather simplistic bludgeoning weapon."
+KinkyDungeonInventoryItemHammerDesc,"A crude way of fixing your problems."
 KinkyDungeonInventoryItemHammerDesc2,"Deals crush damage and knocks the target back."
 KinkyDungeonInventoryItemFlail,Flail
-KinkyDungeonInventoryItemFlailDesc,"A ball on a chain. Very fast and hard to dodge."
+KinkyDungeonInventoryItemFlailDesc,"Very fast and hard to dodge as long as you know what you're doing."
 KinkyDungeonInventoryItemFlailDesc2,"Also deals 10 damage to targets next to you. Deals crush damage."
 KinkyDungeonInventoryItemSpear,Spear
 KinkyDungeonInventoryItemSpearDesc,"Speak softly and carry a pointy stick."
 KinkyDungeonInventoryItemSpearDesc2,"Deals pierce damage to the target and one square behind it."
 KinkyDungeonInventoryItemBoltCutters,Bolt Cutters
-KinkyDungeonInventoryItemBoltCuttersDesc,"A cutting tool useful as a bludgeon, and also for cutting locks and chains."
+KinkyDungeonInventoryItemBoltCuttersDesc,"The universal key."
 KinkyDungeonInventoryItemBoltCuttersDesc2,"Also assists in cutting restraints when equipped."
 KinkyDungeonInventoryItemKnife,Knife
 KinkyDungeonInventoryItemKnifeDesc,"A go-to for travelers and adventurers."
@@ -1255,7 +1255,7 @@ KinkyDungeonInventoryItemVibeWand,Magic Wand
 KinkyDungeonInventoryItemVibeWandDesc,"Its powers extend beyond the traditional schools of magic."
 KinkyDungeonInventoryItemVibeWandDesc2,"Deals charm damage. 20% chance to stun the target for 2 turns."
 KinkyDungeonInventoryItemFeather,Feather
-KinkyDungeonInventoryItemFeatherDesc,"A feather useful for tickling."
+KinkyDungeonInventoryItemFeatherDesc,"A feather taken from some large fluffy being."
 KinkyDungeonInventoryItemFeatherDesc2,"Deals tickle damage. Distracts enemies."
 KinkyDungeonInventoryItemIceCube,Ice Cube
 KinkyDungeonInventoryItemIceCubeDesc,"A magical cube of ice that never melts. Convenient!"
@@ -1290,7 +1290,7 @@ KinkyDungeonInventoryItemMessengerOfLove,Messenger of Love
 KinkyDungeonInventoryItemMessengerOfLoveDesc,"Love shines in many ways..."
 KinkyDungeonInventoryItemMessengerOfLoveDesc2,"Can fire an arrow that makes an enemy extremely lustful, causing them to attack others. Lasts forever on lesser enemies, 30 turns on high-level enemies, and 10 turns on bosses."
 KinkyDungeonInventoryItemMoiraiScissors,Moirai's Scissors
-KinkyDungeonInventoryItemMoiraiScissorsDesc,"Safety first!"
+KinkyDungeonInventoryItemMoiraiScissorsDesc,"Cutting the threads of fate."
 KinkyDungeonInventoryItemMoiraiScissorsDesc2,"Deals slash damage. Adds up to 30 bonus psychic damage her hit by converting binding into damage. Drains 5 charge to attack twice."
 KinkyDungeonInventoryItemSlimethrower,Latex Projector
 KinkyDungeonInventoryItemSlimethrowerDesc,"Deals crush damage. Can be used to spray a '+' shaped pool of slime."
@@ -1310,8 +1310,8 @@ KinkyDungeonInventoryItemMagicSpearDesc2,"Deals pierce damage to the target and 
 KinkyDungeonInventoryItemMagicHammer,Enchanted Hammer
 KinkyDungeonInventoryItemMagicHammerDesc,"Made of a magical, resonant material."
 KinkyDungeonInventoryItemMagicHammerDesc2,"Deals crush damage and knocks the target back. Helps to bash open restraints while cutting."
-KinkyDungeonInventoryItemIceBreaker,IceBreaker
-KinkyDungeonInventoryItemIceBreakerDesc,"A frigid lightweight hammer with a spike on the end."
+KinkyDungeonInventoryItemIceBreaker,Icebreaker
+KinkyDungeonInventoryItemIceBreakerDesc,"A frigid magical hammer useful for both climbing up and destroying ice."
 KinkyDungeonInventoryItemIceBreakerDesc2,"Deals crush damage. Deals 3x damage to frozen targets instead of 2x. Triggers Shatter."
 KinkyDungeonInventoryItemDreamcatcher,Dreamcatcher
 KinkyDungeonInventoryItemDreamcatcherDesc,"Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy."

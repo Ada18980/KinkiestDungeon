@@ -2011,6 +2011,7 @@ const KinkyDungeonRestraints = [
 			"",
 			"rest_rope_weakmagic",
 			["weakMagicRopes"],
+			[],
 			4,
 			{
 				magic: true,
@@ -2030,7 +2031,8 @@ const KinkyDungeonRestraints = [
 			"LiquidMetal",
 			"",
 			"liquidMetalRestraints",
-			["liquidMetal"],
+			["liquidMetal", "Metal", "Slime"],
+			["Latex"],
 			6,
 			{
 				Color: ["#aaaaaa", "#aaaaaa", "#aaaaaa"],
