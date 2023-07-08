@@ -197,7 +197,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 	return KinkyDungeonPlayerDamage;
 }
 /**
- * @param {weapon} weapon 
+ * @param {weapon} weapon
  * @returns true if the weapon represents Unarmed
  */
 function isUnarmed(weapon) {
