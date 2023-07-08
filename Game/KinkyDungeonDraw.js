@@ -784,7 +784,7 @@ function KinkyDungeonDrawGame() {
 					let buffs = Object.values(KinkyDungeonPlayerBuffs);
 					buffs = buffs.sort((a, b) => {return b.duration - a.duration;});
 					for (let b of buffs) {
-						if (b && b.aura && b.duration > 0) {
+						if (b && b.aura && b.duration > 0 && !(b.aurasprite == "Null")) {
 							aura_scale += 1/aura_scale_max;
 							let s = aura_scale;
 							if (b.noAuraColor) {

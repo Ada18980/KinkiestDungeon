@@ -4,6 +4,7 @@ let KDMagicLocks = ["Purple"]; // Magical locks
 let KDKeyedLocks = ["Red", "White", "Blue"];
 
 // LinkableBy array templates
+let KDFormFitting = ["Socks", "Gloves"];
 let KDHarnessLink = ["Wrapping", "HeavyCorsets", "Corsets", "ArmbinderHarness", "Ties", "Belts", "Harnesses"];
 let KDCorsetLink = ["Wrapping", "Harnesses", "ArmbinderHarness", "Ties", "Belts"];
 let KDBindable = ["Wrapping", "Belts", "Tape", "Ties", "Cuffs"]; // Things that can be wrapped in various restraints
@@ -15,7 +16,7 @@ let KDArmbinderLink = ["Wrapping", "Belts", "BindingDress", "Hogties"]; // Stand
 let KDDressLink = ["Armbinders", "Ties", "Wrapping", "Belts", "BindingDress", "Hogties", "Straitjackets"];
 let KDJacketLink = ["Wrapping", "Belts", "Hogties"]; // Standard link for an armbinder
 let KDJacketRender = ["Wrapping", "Belts", "BindingDress"]; // Standard link for an armbinder
-let KDLegbinderLink = ["Belts", "Tape", "Wrapping", "Hobbleskirts"];
+let KDLegbinderLink = ["Belts", "Tape", "Wrapping", "Hobbleskirts", "Socks"];
 let KDLegbinderRender = ["Belts", "Tape", "Wrapping"];
 let KDLegRopesBind = ["Legbinders", "Hobbleskirts", "Tape", "Belts", "Wrapping"];
 let KDLegRopesRender = ["Belts", "Ties"];
@@ -31,6 +32,8 @@ let KDBallGagLink = ["FlatGags", "Tape", "Wrapping"];
 let KDFlatGagLink = ["FlatGags", "Tape", "Wrapping"];
 let KDPlugGagLink = ["FlatGags", "Tape", "Wrapping"];
 let KDCollarLink = ["Collars", "HighCollars"];
+let KDGlovesLink = [...KDBindable, ...KDDevices, "Mittens"];
+let KDSocksLink = [...KDBindable, ...KDDevices, "Boots"];
 //let KDCorsetRender = ["Harnesses", "ArmbinderHarness", "Ties", "Belts"];
 
 /**
@@ -617,13 +620,13 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.8, enemyTags: {"redLatexBasic":6}, playerTags: {"ItemMouthFull": 6, "Unmasked": -1000}, minLevel: 0, allFloors: true, shrine: ["Latex", "RedLatex", "Masks", "Block_ItemMouth"]},
 
 	{inventory: true, unlimited: true, name: "RedLatexHands",
-		Asset: "LatexElbowGloves", Color: "#ff5277", LinkableBy: ["Mittens"], Group: "ItemHands", AssetGroup: "Gloves",
+		Asset: "LatexElbowGloves", Color: "#ff5277", LinkableBy: [...KDGlovesLink], Group: "ItemHands", AssetGroup: "Gloves",
 		bindhands: 0.5, power: 10, weight: 0,
 		affinity: {Remove: ["Hook"],}, struggleMinSpeed: {"Struggle": 0.1},
 		escapeChance: {"Struggle": -0.1, "Cut": -0.1, "Remove": -0.1},
-		maxwill: 0.4, enemyTags: {"redLatexBasic":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "RedLatex",]},
+		maxwill: 0.4, enemyTags: {"redLatexBasic":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "RedLatex", "Gloves"]},
 
-	{inventory: true, unlimited: true, name: "RedLatexBoots", LinkableBy: ["Boots"], renderWhenLinked: ["Boots"], deepAccessible: true, alwaysAccessible: true,
+	{inventory: true, unlimited: true, name: "RedLatexBoots", LinkableBy: [...KDSocksLink], renderWhenLinked: ["Boots"], deepAccessible: true, alwaysAccessible: true,
 		hobble: true, power: 5, weight: 0,
 		factionColor: [[2]], Color: ["#ff5277"], Group: "ItemBoots", AssetGroup: "Socks", Asset: "LatexSocks1",
 		escapeChance: {"Struggle": -0.1, "Cut": -0.1, "Remove": -0.1},
@@ -2028,10 +2031,10 @@ const KinkyDungeonRestraints = [
 			"",
 			"liquidMetalRestraints",
 			["liquidMetal"],
-			4,
+			6,
 			{
-				magic: true,
-				Color: "#aaaaaa",
+				Color: ["#aaaaaa", "#aaaaaa", "#aaaaaa"],
+				factionColor: [],
 			},
 			[
 				{trigger: "tick", type: "evasionBuff", power: -0.1, inheritLinked: true},

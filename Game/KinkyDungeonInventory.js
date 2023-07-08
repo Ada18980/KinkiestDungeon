@@ -751,6 +751,9 @@ let KDItemsPerScreen = {
 	"Weapon": 18,
 };
 
+let KDNumOfQuickLoadouts = 3;
+let KDQuickLoadoutSave = false;
+
 let KDScrollAmount = 6;
 let KDInventoryStatus = {
 	HideQuickInv: false,
@@ -839,6 +842,54 @@ function KinkyDungeonDrawQuickInv() {
 		KDSortInventory(KinkyDungeonPlayerEntity);
 		return true;
 	}, true, 630, 705, 120, 60, "", KDButtonColor, KinkyDungeonRootDirectory + "InvDrop.png", undefined, false, !KDInventoryStatus.DropQuickInv);
+
+
+	// Quick loadouts
+	let QL_y = 260;
+	DrawButtonKDEx("quickLoadout_save", (bdata) => {
+		KDQuickLoadoutSave = !KDQuickLoadoutSave;
+		return true;
+	}, true, 630, QL_y, 120, 60, TextGet("KDQuickLoadoutSave"), "#dddddd", "", undefined, false, !KDQuickLoadoutSave, KDButtonColor);
+
+	for (let i = 1; i <= KDNumOfQuickLoadouts; i++) {
+		DrawButtonKDEx("quickLoadout_num_" + i, (bdata) => {
+			if (KDQuickLoadoutSave) {
+				// Save the loadout
+				KDGameData.CurrentLoadout = i;
+				KDQuickLoadoutSave = false;
+				KDSaveQuickLoadout(i);
+			} else {
+				if (KDGameData.CurrentLoadout != i) {
+					// Load the loadout
+					KDGameData.CurrentLoadout = i;
+					KDLoadQuickLoadout(i, true);
+				} else KDGameData.CurrentLoadout = 0;
+			}
+
+			return true;
+		}, true, 630, QL_y + 70 * i, 120, 60, i + "", "#dddddd", "", undefined, false, KDGameData.CurrentLoadout != i, KDButtonColor);
+		if (MouseIn(630, QL_y + 70 * i, 120, 60)) {
+			for (let ii = 0; ii < 20 && ii < (KDGameData.QuickLoadouts ? (KDGameData.QuickLoadouts[i+""] ? KDGameData.QuickLoadouts[i+""].length : 0) : 0); ii++) {
+				let item = KDGameData.QuickLoadouts[i+""][ii];
+				let str = KDRestraint({name: item}) ? TextGet("Restraint" + item) : TextGet("KinkyDungeonInventoryItem" + item);
+				DrawTextKD(str, 770, QL_y + ii * 25, KinkyDungeonInventoryGet(item) ? "#ffffff" : "#ff5555", undefined, 22, "left");
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+	// Dummy button for BG
+	DrawButtonKDEx("quickinvbg2_button", (bdata) => {
+		return true;
+	}, true, 620, 250, 140, 520, "", KDButtonColor, undefined, undefined, false, true,
+	"#000000", undefined, undefined, {zIndex: -1, alpha: 0.9});
+
 
 
 	for (let c = 0; c < consumables.length; c++) {
@@ -1184,4 +1235,62 @@ function KDSortInventory(player) {
 		KDGameData.ItemPriority[b[1].name] || 0)
 		- (KDGameData.ItemPriority[a[1].name] || 0)
 	)));
+}
+
+function KDLoadQuickLoadout(num, clearFirst) {
+	if (clearFirst) {
+		// Remove all armor that can be removed
+		// TODO
+	}
+	let loadout = KDGameData.QuickLoadouts ? KDGameData.QuickLoadouts[num + ""] : undefined;
+	if (loadout) {
+		let alreadyEquipped = false;
+		for (let item of loadout) {
+			if (KinkyDungeonInventoryGetWeapon(item)) {
+				// Equip weapon
+				if (!alreadyEquipped) {
+					alreadyEquipped = true;
+					if (item != KinkyDungeonPlayerWeapon)
+						KDSendInput("switchWeapon", {weapon: item});
+				} else {
+					KDGameData.PreviousWeapon = item;
+				}
+			} else if (KinkyDungeonInventoryGetLoose(item)) {
+				// Equip armor
+				let restraintItem = KinkyDungeonInventoryGetLoose(item);
+				let newItem = restraintItem ? KDRestraint(restraintItem) : undefined;
+				if (newItem) {
+					let currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+					KDSendInput("equip", {
+						name: newItem.name,
+						group: newItem.Group,
+						curse: restraintItem.curse,
+						currentItem: currentItem ? currentItem.name : undefined,
+						events: Object.assign([], restraintItem.events)});
+				}
+			}
+		}
+	}
+}
+
+function KDSaveQuickLoadout(num) {
+	let loadout = [];
+
+	if (KinkyDungeonPlayerWeapon) {
+		loadout.push(KinkyDungeonPlayerWeapon);
+	}
+	if (KDGameData.PreviousWeapon) {
+		loadout.push(KDGameData.PreviousWeapon);
+	}
+
+	for (let item of KinkyDungeonAllRestraint()) {
+		if (KDRestraint(item)?.good || KDRestraint(item)?.armor) {
+			loadout.push(item.name);
+		}
+	}
+
+
+
+	if (!KDGameData.QuickLoadouts) KDGameData.QuickLoadouts = {};
+	KDGameData.QuickLoadouts[num + ""] = loadout;
 }

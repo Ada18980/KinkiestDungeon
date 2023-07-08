@@ -105,7 +105,10 @@ let KDVibrate3 = {
 	]
 };
 let KDToy = {
-	id: "Toy", type: "Plug", power: 0.1, aura: "#dddddd", aurasprite: "Toy", player: false, enemies: true, duration: 30, range: 0.5, tags: ["toy"]
+	id: "Toy", type: "Plug", power: 0.1, aura: "#dddddd", aurasprite: "Toy", player: false, enemies: true, duration: 30, range: 0.5, tags: ["toy"],
+	events: [
+		{type: "ExtendDisabledOrHelplessOrChastity", trigger: "tick"},
+	]
 };
 let KDPlugged = {
 	id: "Plugged", type: "Plug", power: 1.0, aura: "#dddddd", aurasprite: "Plugged", player: false, enemies: true, duration: 9999, range: 0.5, tags: ["plugged"], events: [
@@ -121,9 +124,9 @@ let KDDoublePlugged = {
 };
 
 let KDTaped = {
-	id: "Taped", type: "chainDamageResist", power: -0.15, duration: 1, replaceSprite: "TapedDoll", tags: ["taped"], aura: "#4fa4b8", replacePower: 1.0,
+	id: "Taped", type: "chainDamageResist", power: -0.15, duration: 1, replaceSpriteBound: "TapedDoll", tags: ["taped"], aura: "#4fa4b8", replacePower: 1.0,
 	events: [
-		{type: "ExtendHelpless", trigger: "tick"},
+		{type: "ExtendDisabledOrHelpless", trigger: "tick"},
 		{type: "RemoveAuraHelpless", trigger: "tick"},
 	]
 };

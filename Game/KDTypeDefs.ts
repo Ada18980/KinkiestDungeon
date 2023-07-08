@@ -1053,6 +1053,7 @@ interface shopItem {
 }
 
 interface weapon {
+	arousalMode?: boolean,
 	name: string;
 	dmg: number;
 	chance: number;
@@ -1517,6 +1518,7 @@ interface spell {
 	knifecost?: number;
 	staminacost?: number;
 	manacost: number;
+	chargecost?: number;
 	minRange?: number;
 	noSprite?: boolean;
 	/** Verbal, arms, or legs */
@@ -2099,6 +2101,8 @@ interface KDCursedDef {
 	noShrine?: boolean,
 	/** This curse is treated as a type of lock, for display purposes */
 	lock?: boolean,
+	/** Power multiplier of the curse, similar to a lock's lockmult */
+	powerMult?: number,
 	/** custom icon for removing (failure) */
 	customIcon_RemoveFailure?: string,
 	/** custom icon for removing (success) */

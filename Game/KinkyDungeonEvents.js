@@ -152,7 +152,7 @@ let KDEventMapInventory = {
 	},
 	"getLights": {
 		"ItemLight": (e, item, data) => {
-			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color)});
+			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color || "#ffffff")});
 		},
 	},
 	"onWear": {
@@ -776,7 +776,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"lockItemOnDamageType": (e, item, data) => {
-			if (data.type && data.type == e.damage && data.dmg) {
+			if (data.type && data.type == e.damage && data.dmg && !KDGetCurse(item)) {
 				let subMult = 1;
 				let chance = e.chance ? e.chance : 1.0;
 				if (item && KinkyDungeonGetLockMult(e.lock) > KinkyDungeonGetLockMult(item.lock) && KDRandom() < chance * subMult) {
@@ -1665,8 +1665,13 @@ const KDEventMapBuff = {
 				}
 			}
 		},
-		"ExtendHelpless": (e, buff, entity, data) => {
-			if (!entity.player && KDHelpless(entity) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
+		"ExtendDisabledOrHelpless": (e, buff, entity, data) => {
+			if (!entity.player && (KinkyDungeonIsDisabled(entity) || KDHelpless(entity)) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
+				buff.duration += data.delta;
+			}
+		},
+		"ExtendDisabledOrHelplessOrChastity": (e, buff, entity, data) => {
+			if (!entity.player && (KDEntityBuffedStat(entity, "Chastity") || KinkyDungeonIsDisabled(entity) || KDHelpless(entity)) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
 				buff.duration += data.delta;
 			}
 		},
@@ -2424,7 +2429,7 @@ let KDEventMapSpell = {
 				KinkyDungeonUpdateLightGrid = true;
 			}
 			if (KinkyDungeonPlayerBuffs.Light && KinkyDungeonPlayerBuffs.Light.duration > 1) {
-				data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color)});
+				data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color || "#ffffff")});
 			} else if (!activate) {
 				KinkyDungeonDisableSpell("Light");
 				KinkyDungeonExpireBuff(KinkyDungeonPlayerBuffs, "Light");
@@ -2549,7 +2554,7 @@ let KDEventMapWeapon = {
 	},
 	"getLights": {
 		"WeaponLight": (e, spell, data) => {
-			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color)});
+			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color || "#ffffff")});
 		},
 	},
 	"tick": {
@@ -2760,6 +2765,18 @@ let KDEventMapWeapon = {
 			if (data.enemy && !data.miss && !data.disarm) {
 				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
 					let bb = Object.assign({}, KDTaped);
+					if (e.duration) bb.duration = e.duration;
+					if (e.power) bb.power = e.power;
+
+					if (!data.enemy.buffs) data.enemy.buffs = {};
+					KinkyDungeonApplyBuff(data.enemy.buffs, bb);
+				}
+			}
+		},
+		"ApplyToy": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm) {
+				if (data.enemy && KDCanBind(data.enemy) && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0) {
+					let bb = Object.assign({}, KDToy);
 					if (e.duration) bb.duration = e.duration;
 					if (e.power) bb.power = e.power;
 
@@ -3397,7 +3414,7 @@ let KDEventMapBullet = {
 		"RubberMissileHoming": (e, b, data) => {
 			if (data.delta > 0 && b.bullet.targetX != undefined && b.bullet.targetY != undefined) {
 				// Scan for targets near the target location
-				if (b.bullet.faction) {
+				if (b.bullet.faction && !(e.kind == "dumb")) {
 					let minDist = 1000;
 					let entity = null;
 					let playerDist = 1000;
@@ -3529,7 +3546,7 @@ let KDEventMapEnemy = {
 	},
 	"getLights": {
 		"enemyTorch": (e, enemy, data) => {
-			data.lights.push({brightness: e.power, x: enemy.x, y: enemy.y, color: string2hex(e.color)});
+			data.lights.push({brightness: e.power, x: enemy.x, y: enemy.y, color: string2hex(e.color || "#ffffff")});
 		},
 	},
 	"beforeDamage": {

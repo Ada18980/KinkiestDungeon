@@ -805,9 +805,9 @@ function KinkyDungeonChangeCharge(Amount, NoFloater) {
 		Amount = 0;
 	}
 	if (!KDGameData.AncientEnergyLevel) KDGameData.AncientEnergyLevel = 0;
-	KDGameData.AncientEnergyLevel = Math.min(1, KDGameData.AncientEnergyLevel + Amount);
+	KDGameData.AncientEnergyLevel = Math.min(1, Math.max(0, KDGameData.AncientEnergyLevel + Amount));
 	if (!NoFloater && Math.abs(KDOrigCharge - Math.floor(KDGameData.AncientEnergyLevel * 1000)) >= 0.99) {
-		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.AncientEnergyLevel * 1000 * 10) - KDOrigCharge, "#ffff44", undefined, undefined, " charge");
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.AncientEnergyLevel * 1000) - KDOrigCharge, "#ffff44", undefined, undefined, " charge");
 		KDOrigCharge = Math.floor(KDGameData.AncientEnergyLevel * 1000);
 	}
 
@@ -1280,7 +1280,7 @@ function KinkyDungeonCalculateSubmissiveMult() {
 	let base = 0;
 	for (let item of KinkyDungeonAllRestraint()) {
 		if (item.type == Restraint) {
-			let power = Math.sqrt(Math.max(0, KinkyDungeonGetLockMult(item.lock) * KDRestraint(item).power));
+			let power = Math.sqrt(Math.max(0, KinkyDungeonGetLockMult(item.lock, item) * KDRestraint(item).power));
 			base = Math.max(power, base + power/5);
 		}
 	}
