@@ -683,20 +683,71 @@ let KinkyDungeonSpellSpecials = {
 	},
 
 	"CommandVibrate": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
-		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, KinkyDungeonTargetingSpell.aoetype || "")
-			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull"))) {
+		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
+			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipplesPiercings"))) {
 
 			let vibes = [];
 			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
+			if (KinkyDungeonPlayerTags.get("ItemNipplesPiercingsFull")) vibes.push("ItemNipplesPiercings");
 			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 0.5, 30, undefined, undefined, undefined, undefined, true);
 
 			cast = true;
 		}
 		cast = cast || KDCastSpellToEnemies((en) => {
-			if (en.Enemy.bound && KDEntityBuffedStat(en, "Plug") > 0) {
+			if (en.Enemy.bound && KDEnemyCanBeVibed(en)) {
 				KDApplyGenBuffs(en, "Vibrate1", spell.time);
+				return true;
+			}
+		}, tX, tY, spell);
+		if (cast) {
+			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			KinkyDungeonChangeCharge(-KinkyDungeonGetChargeCost(spell));
+			return "Cast";
+		} else return "Fail";
+	},
+	"CommandVibrateLV2": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
+			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipplesPiercings"))) {
+
+			let vibes = [];
+			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
+			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
+			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
+			if (KinkyDungeonPlayerTags.get("ItemNipplesPiercingsFull")) vibes.push("ItemNipplesPiercings");
+			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 2.0, 15, undefined, undefined, undefined, undefined, false);
+
+			cast = true;
+		}
+		cast = cast || KDCastSpellToEnemies((en) => {
+			if (en.Enemy.bound && KDEnemyCanBeVibed(en)) {
+				KDApplyGenBuffs(en, "Vibrate2", spell.time);
+				return true;
+			}
+		}, tX, tY, spell);
+		if (cast) {
+			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			KinkyDungeonChangeCharge(-KinkyDungeonGetChargeCost(spell));
+			return "Cast";
+		} else return "Fail";
+	},
+	"CommandVibrateLV3": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
+			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipplesPiercings"))) {
+
+			let vibes = [];
+			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
+			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
+			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
+			if (KinkyDungeonPlayerTags.get("ItemNipplesPiercingsFull")) vibes.push("ItemNipplesPiercings");
+			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 3.0, 10, undefined, undefined, undefined, undefined, false);
+
+			cast = true;
+		}
+		cast = cast || KDCastSpellToEnemies((en) => {
+			if (en.Enemy.bound && KDEntityBuffedStat(en, "Plug") > 0) {
+				KDApplyGenBuffs(en, "Vibrate3", spell.time);
 				return true;
 			}
 		}, tX, tY, spell);

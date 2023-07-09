@@ -90,19 +90,22 @@ let KDChastity = {
 	]
 };
 let KDVibrate1 = {
-	id: "Vibrate1", type: "Vibration", power: 1.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
+	id: "Vibrate", type: "Vibration", power: 1.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
 		{type: "RemoveNoPlug", trigger: "tick"},
 	]
 };
 let KDVibrate2 = {
-	id: "Vibrate2", type: "Vibration", power: 1.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
+	id: "Vibrate2", type: "Vibration", power: 2.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
 		{type: "RemoveNoPlug", trigger: "tick"},
 	]
 };
 let KDVibrate3 = {
-	id: "Vibrate3", type: "Vibration", power: 1.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
+	id: "Vibrate3", type: "Vibration", power: 3.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
 		{type: "RemoveNoPlug", trigger: "tick"},
 	]
+};
+let KDToySecret = {
+	id: "Toy", type: "Plug", power: 0.1, duration: 9999, range: 0.5, tags: ["toy"],
 };
 let KDToy = {
 	id: "Toy", type: "Plug", power: 0.1, aura: "#dddddd", aurasprite: "Toy", player: false, enemies: true, duration: 30, range: 0.5, tags: ["toy"],
