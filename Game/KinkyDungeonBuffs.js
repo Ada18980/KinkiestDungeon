@@ -168,6 +168,16 @@ function KinkyDungeonGetBuffedStat(list, Stat, onlyPositiveDuration) {
 		}
 	return stat;
 }
+function KinkyDungeonGetMaxBuffedStat(list, Stat, onlyPositiveDuration) {
+	let stat = 0;
+	if (list)
+		for (let buff of Object.values(list)) {
+			if (buff && buff.type == Stat && (!onlyPositiveDuration || buff.duration > 0)) {
+				stat = Math.max(stat, buff.power);
+			}
+		}
+	return stat;
+}
 
 function KinkyDungeonExpireBuff(list, key) {
 	delete list[key];
@@ -227,6 +237,11 @@ function KDEntityBuffedStat(entity, stat) {
 	if (entity.player) {
 		return KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, stat);
 	} else return KinkyDungeonGetBuffedStat(entity.buffs, stat);
+}
+function KDEntityMaxBuffedStat(entity, stat) {
+	if (entity.player) {
+		return KinkyDungeonGetMaxBuffedStat(KinkyDungeonPlayerBuffs, stat);
+	} else return KinkyDungeonGetMaxBuffedStat(entity.buffs, stat);
 }
 
 function KDEntityGetBuff(entity, buff) {

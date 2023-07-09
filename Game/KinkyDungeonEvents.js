@@ -2785,6 +2785,13 @@ let KDEventMapWeapon = {
 				}
 			}
 		},
+		"ActivateVibration": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm) {
+				if (data.enemy && data.enemy.Enemy.bound && KDEnemyCanBeVibed(data.enemy) && (!e.chance || KDRandom() < e.chance)) {
+					KDApplyGenBuffs(data.enemy, "Vibrate1", 90);
+				}
+			}
+		},
 		"ElementalEffect": (e, weapon, data) => {
 			if (data.enemy && !data.miss && !data.disarm) {
 				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
@@ -3541,6 +3548,11 @@ let KDEventMapEnemy = {
 		"suicideWhenBound": (e, enemy, data) => {
 			if (KDHelpless(enemy)) {
 				enemy.hp = 0;
+			}
+		},
+		"secretToy": (e, enemy, data) => {
+			if (enemy.hp > 0) {
+				KinkyDungeonApplyBuffToEntity(enemy, KDToySecret);
 			}
 		},
 	},

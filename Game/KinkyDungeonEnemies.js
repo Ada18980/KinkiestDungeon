@@ -2073,7 +2073,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "boundLevel"});
 				}
 			}
-			let vibe = KDEntityBuffedStat(enemy, "Vibration");
+			let vibe = KDEntityMaxBuffedStat(enemy, "Vibration");
 			if (enemy.distraction > 0 || vibe) {
 				let DD = KDGetEnemyDistractionDamage(enemy, vibe);
 				if (DD > 0) {
@@ -5263,4 +5263,13 @@ function KDPlayerLeashed(player) {
 		}
 	}
 	return false;
+}
+
+
+/**
+ * @param {entity} en
+ * @returns {boolean}
+ */
+function KDEnemyCanBeVibed(en) {
+	return KDEntityBuffedStat(en, "Plug") > 0 || KDEntityBuffedStat(en, "Toy") > 0;
 }

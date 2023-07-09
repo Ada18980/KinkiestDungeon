@@ -10327,6 +10327,16 @@ KinkyDungeonInventoryItemBagOfGoodiesDesc2,"Deals charm damage. Applies a toy to
 ItemPickupBagOfGoodies,"You find a bag filled with various toys and vibrators..."
 KinkyDungeonPlaySelfBagOfGoodies,"You play with yourself using some of the toys in the bag..."
 
+KinkyDungeonInventoryItemVibeRemote,Magic Remote
+KinkyDungeonInventoryItemVibeRemoteDesc,"The key to absolute power."
+KinkyDungeonInventoryItemVibeRemoteDesc2,"Deals (tiny) charm damage. Triggers long-duration edging on basic attack if the target has a toy."
+ItemPickupVibeRemote,"You find a bag filled with various toys and vibrators..."
+
+KinkyDungeonSpellCommandVibrateVibeRemote,Vibrator Remote
+KinkyDungeonSpellTargetCommandVibrateVibeRemote,Select an area
+KinkyDungeonSpellCastCommandVibrateVibeRemote,"You click the remote and hear a buzzing noise!"
+KinkyDungeonSpecialVibeRemote,"15 charge to powerfully activate vibrators in an area for 15 turns."
+
 KinkyDungeonSpellCommandVibrateBagOfGoodies,Vibrator Remote
 KinkyDungeonSpellTargetCommandVibrateBagOfGoodies,Select an area
 KinkyDungeonSpellCastCommandVibrateBagOfGoodies,"You click the remote and hear a buzzing noise!"
