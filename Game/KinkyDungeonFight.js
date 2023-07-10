@@ -2001,6 +2001,9 @@ let KDPrereqs = {
 	"afterAmbush": (enemy, e, data) => {
 		return !enemy?.ambushtrigger;
 	},
+	"HaveDildoBatPlus": (enemy, e, data) => {
+		return KinkyDungeonPlayerWeapon == "DildoBatPlus";
+	}
 };
 function KDCheckPrereq(enemy, prereq, e, data) {
 	if (!prereq) return true;

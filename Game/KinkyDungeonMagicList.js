@@ -1056,6 +1056,17 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "SlimeSuit", sfx: "MagicSlash", school: "Illusion", manacost: 5, components: [], level:1, type:"special", special: "dress", outfit: "SlimeSuit", noMiscast: true,
 		onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 
+	{name: "DildoBatBuff", sfx: "Vibe", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, level:1, type:"buff", noMiscast: true,
+		buffs: [
+			{
+				id: "DildoBatBuff", type: "DildoBatBuff", duration: 11, power: 3.0, player: true, enemies: false, tags: [],
+				aura: "#ffff55", events: [
+					{trigger: "playerAttack", type: "ElementalEffect", power: 3.0, damage: "charm", prereq: "HaveDildoBatPlus"},
+				]
+			},
+		], onhit:"", time:10, power: 3.0, range: 2, size: 1, damage: "",
+	},
+
 	{name: "SlimeForm", sfx: "MagicSlash", school: "Illusion", manacost: 8, components: ["Verbal"], mustTarget: true, level:1, type:"buff", noMiscast: true,
 		buffs: [
 			{id: "SlimeForm", type: "glueDamageResist", aura: "#ff00ff", duration: 25, power: 0.5, player: true, enemies: false, tags: ["defense"]},
@@ -1624,6 +1635,14 @@ let KinkyDungeonSpellListEnemies = [
 
 /** @type {Record<string, KDBondage>} */
 let KDSpecialBondage = {
+	"Magic": {
+		priority: -5,
+		color: "#92e8c0",
+		struggleRate: 0.7,
+		powerStruggleBoost: 1.0,
+		healthStruggleBoost: 1.0,
+		mageStruggleBoost: 2.0,
+	},
 	"Leather": {
 		priority: 0,
 		color: "#ad2f45",

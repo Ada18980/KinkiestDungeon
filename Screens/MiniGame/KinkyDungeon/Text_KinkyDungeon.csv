@@ -10346,3 +10346,23 @@ LootChestAncientCoreSingle,"You find a golden crystal. It glows faintly."
 LootChestAncientCoreSingleSpent,"You find a dull, gold-tinted crystal."
 
 KDQuickLoadoutSave,"Save Loadout"
+
+KinkyDungeonInventoryItemDildoBat,Rubber Stick
+KinkyDungeonInventoryItemDildoBatDesc,"A rubber cylinder without any lewd intentions whatsoever."
+KinkyDungeonInventoryItemDildoBatDesc2,"Deals grope damage. "
+ItemPickupDildoBat,"You retrieve the rubber stick."
+
+KinkyDungeonInventoryItemDildoBatPlus,"Blade of Fla'peh"
+KinkyDungeonInventoryItemDildoBatPlusDesc,"A piece of prized ancient equipment. Magical energy causes it to vibrate intensely--what could it have been used for?"
+KinkyDungeonInventoryItemDildoBatPlusDesc2,"Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns."
+ItemPickupDildoBatPlus,"You retrieve the Blade of Fla'peh."
+
+KinkyDungeonBuffDildoBatBuff,"Intense Vibrations: The Blade of Fla'peh deals bonus charm damage!!!"
+KinkyDungeonSpellCastDildoBatBuff,"The Blade of Fla-peh buzzes with great power!"
+KinkyDungeonSpecialDildoBatPlus,"40 charge to deal 30 charm damage per hit for 10 turns."
+
+KinkyDungeonInventoryItemMagicRope,Enchanted Rope
+KinkyDungeonInventoryItemMagicRopeDesc,"She who lives by the rope, is tied up by the rope."
+KinkyDungeonInventoryItemMagicRopeDesc2,"Deals chain damage and applies 50 points of rope binding. Draws 10 mana per hit to apply 30 extra points of magical binding. If you don't have mana, you fail to control the rope..."
+ItemPickupMagicRope,"You find some enchanted rope."
+KDMagicRopeBackfire,"Without mana to control it, the enchanted rope springs back upon you!"
