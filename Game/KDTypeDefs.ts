@@ -73,6 +73,7 @@ interface consumable {
 	spell?: string,
 	potion?: boolean,
 	noHands?: boolean,
+	arousalMode?: boolean,
 	/** Data var */
 	data?: Record<string, string|number>,
 	/** Requirement that overrides all other requirements */
@@ -530,6 +531,7 @@ interface floorParams {
 	max_height : number,
 
 	ShopExclusives? : string[],
+	ShopExclusivesArousal? : string[],
 
 	enemyTags: string[],
 	"defeat_outfit": outfitKey,
@@ -2046,6 +2048,8 @@ interface KDBondage {
 	healthStruggleBoost: number,
 	/** Multiplier for the power component of struggle */
 	powerStruggleBoost: number,
+	/** Multiplier for command level */
+	mageStruggleBoost?: number,
 }
 
 interface KDCursedVar {

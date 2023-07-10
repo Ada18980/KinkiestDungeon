@@ -181,8 +181,15 @@ let KinkyDungeonWeapons = {
 	"IceCube": {name: "IceCube", dmg: 1.5, chance: 1.0, staminacost: 1.0, distract: 1, type: "ice", tease: true, unarmed: false, rarity: 1, shop: true, sfx: "Freeze",
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "ice", time: 3, chance: 0.1}]},
 	"Rope": {name: "Rope", dmg: 1.0, bind: 5, chance: 1.0, staminacost: 1.0, type: "chain", unarmed: false, rarity: 1, shop: true, sfx: "Struggle", bindType: "Rope"},
+	"MagicRope": {name: "MagicRope", dmg: 1.0, bind: 5, chance: 1.0, staminacost: 1.0, type: "chain", unarmed: false, rarity: 3, magic: true, shop: true, sfx: "TapeStruggle", bindType: "Rope",
+		events: [
+			{type: "MagicRope", trigger: "playerAttack", power: 0, cost: 1, bindType: "Magic", bind: 3},
+			{type: "WeaponLight", trigger: "getLights", power: 3, color: "#92e8c0"}
+		],
+	},
 	"VibeWand": {name: "VibeWand", dmg: 2.0, chance: 1.0, staminacost: 1.5, type: "charm", unarmed: false, rarity: 1, shop: true, sfx: "Vibe",
 		playSelfBonus: 4,
+		arousalMode: true,
 		playSelfMsg: "KinkyDungeonPlaySelfVibeWand",
 		playSelfSound: "Vibe",
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 2, chance: 0.2}]},
@@ -196,8 +203,15 @@ let KinkyDungeonWeapons = {
 		special: {type: "spell", spell: "CommandVibrateBagOfGoodies", requiresEnergy: true, energyCost: 0.01, range: 4.5},
 	},
 	"VibeRemote": {name: "VibeRemote", dmg: 0.1, chance: 0.4, staminacost: 0.5, type: "charm", unarmed: false, rarity: 2, shop: true, magic: true, sfx: "Vibe",
+		arousalMode: true,
 		events: [{type: "ActivateVibration", trigger: "playerAttack", power: 1, time: 5}],
 		special: {type: "spell", spell: "CommandVibrateVibeRemote", requiresEnergy: true, energyCost: 0.015}},
+
+
+	"DildoBat": {name: "DildoBat", dmg: 2.0, chance: 2.0, staminacost: 3, type: "grope", unarmed: false, rarity: 2, shop: true, sfx: "RubberBolt"},
+	"DildoBatPlus": {name: "DildoBatPlus", dmg: 2.5, chance: 2.0, staminacost: 3, type: "grope", unarmed: false, rarity: 4, shop: false, sfx: "RubberBolt",
+		special: {type: "spell", selfCast: true, spell: "DildoBatBuff", requiresEnergy: true, energyCost: 0.04},
+	},
 
 	"Scissors": {name: "Scissors", dmg: 1.2, chance: 1.8, staminacost: 0.7, type: "slash", unarmed: false, rarity: 2, shop: true, light: true, cutBonus: 0.1, sfx: "Cut"},
 

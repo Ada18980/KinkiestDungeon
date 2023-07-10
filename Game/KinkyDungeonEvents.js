@@ -1450,6 +1450,19 @@ const KDEventMapBuff = {
 		},
 	},
 	"playerAttack": {
+		"ElementalEffect": (e, buff, entity, data) => {
+			if (buff.duration > 0 && data.enemy && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+				if (!e.prereq || KDCheckPrereq(entity, e.prereq)) {
+					KinkyDungeonDamageEnemy(data.enemy, {
+						type: e.damage,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						bindType: e.bindType,
+					}, false, e.power <= 0.5, undefined, undefined, undefined);
+				}
+			}
+		},
 		"ShadowStep": (e, buff, entity, data) => {
 			if (data.enemy && KDHostile(data.enemy) && !KinkyDungeonPlayerBuffs.ShadowStep) {
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "ShadowStep", type: "SlowDetection", duration: e.time * 2, power: 0.667, player: true, enemies: true, endSleep: true, currentCount: -1, maxCount: 1, tags: ["SlowDetection", "hit", "cast"]});
@@ -2795,6 +2808,26 @@ let KDEventMapWeapon = {
 		"ElementalEffect": (e, weapon, data) => {
 			if (data.enemy && !data.miss && !data.disarm) {
 				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					KinkyDungeonDamageEnemy(data.enemy, {
+						type: e.damage,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						bindType: e.bindType,
+					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity);
+				}
+			}
+		},
+		"MagicRope": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm) {
+				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					if (!KinkyDungeonHasMana(e.cost)) {
+						let restrained = KDPlayerEffectRestrain(undefined, 2, ["rest_rope_weakmagic"], "Player", true, false, false, false, false);
+						if (restrained.length > 0) {
+							KinkyDungeonSendTextMessage(8, TextGet("KDMagicRopeBackfire"), "#92e8c0", 2);
+						}
+					}
+					KinkyDungeonChangeMana(-e.cost);
 					KinkyDungeonDamageEnemy(data.enemy, {
 						type: e.damage,
 						damage: e.power,
