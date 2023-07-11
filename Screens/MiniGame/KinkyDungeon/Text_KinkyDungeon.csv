@@ -1013,7 +1013,7 @@ KinkyDungeonInventoryItemAncientPowerSourceSpentDesc2,"A mysterious device used 
 KinkyDungeonInventoryItemGold,Gold
 KinkyDungeonInventoryItemRedKey,Key
 KinkyDungeonInventoryItemRedKeyDesc,"A key with traces of magic that fades with one use."
-KinkyDungeonInventoryItemRedKeyDesc2,"Can be used to unlock a restraint, door, or chest."
+KinkyDungeonInventoryItemRedKeyDesc2,"Can be used to unlock a red-locked restraint, door, or chest."
 KinkyDungeonInventoryItemBlueKey,Magic Key
 KinkyDungeonInventoryItemBlueKeyDesc,"A glowing key enchanted with magic that fades with one use."
 KinkyDungeonInventoryItemBlueKeyDesc2,"Can be used to unlock a blue lock."
@@ -10636,10 +10636,10 @@ KDQuickLoadoutSave,"Save Loadout"
 KinkyDungeonInventoryItemDildoBat,Rubber Stick
 KinkyDungeonInventoryItemDildoBatDesc,"A rubber cylinder without any lewd intentions whatsoever."
 KinkyDungeonInventoryItemDildoBatDesc2,"Deals grope damage. "
-ItemPickupDildoBat,"You retrieve the rubber stick."
+ItemPickupDildoBat,"You pick up a flexible rubber stick."
 
 KinkyDungeonInventoryItemDildoBatPlus,"Blade of Fla'peh"
-KinkyDungeonInventoryItemDildoBatPlusDesc,"A piece of prized ancient equipment. Magical energy causes it to vibrate intensely--what could it have been used for?"
+KinkyDungeonInventoryItemDildoBatPlusDesc,"A piece of prized ancient equipment. Magical energy causes it to vibrate intensely. What could it have been used for?"
 KinkyDungeonInventoryItemDildoBatPlusDesc2,"Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns."
 ItemPickupDildoBatPlus,"You retrieve the Blade of Fla'peh."
 
