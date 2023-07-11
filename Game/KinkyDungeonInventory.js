@@ -616,7 +616,7 @@ function KinkyDungeonDrawInventory() {
 		canvasOffsetX_ui + 640*KinkyDungeonBookScale + 526, canvasOffsetY_ui, 90, 44, "", KinkyDungeonInventoryOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
 		DrawButtonKDEx("invScrollDown", (bdata) => {
 			if (filteredInventory.length > 0) {
-				if (KinkyDungeonInventoryOffset + 24 < filteredInventory.length) {
+				if (KinkyDungeonInventoryOffset + numRows*maxList < filteredInventory.length) {
 					KinkyDungeonInventoryOffset += numRows;
 				}
 			}
