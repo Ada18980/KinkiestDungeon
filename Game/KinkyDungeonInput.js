@@ -92,7 +92,7 @@ function KDProcessInput(type, data) {
 			let oldweapon = KinkyDungeonPlayerWeapon;
 			KDGameData.PreviousWeapon = oldweapon;
 			KDSetWeapon(data.weapon);
-			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
+			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon(undefined, undefined, KinkyDungeonWeapons[data.weapon]));
 			if (KinkyDungeonStatsChoice.has("Disorganized")) {
 				KinkyDungeonAdvanceTime(1);
 				KinkyDungeonSlowMoveTurns = 2;

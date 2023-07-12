@@ -179,6 +179,7 @@ let KinkyDungeonLootTable = {
 		{name: "trap_armbinder", minLevel: 1, weight:1, message:"LootChestTrapMagic", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms"], power: 6},
 	],
 	"chest": [
+		{name: "archerykit", minLevel: 0, weight: 4, noweapon: ["Bow"], message:"LootArcheryKit", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "gold", minLevel: 0, weight:10, message:"LootChestGold", messageColor:"#ffff00", messageTime: 3, allFloors: true},
 		{name: "magicknife", minLevel: 0, weight:1.5, weapon: "EnchKnife", message:"LootChestMagicKnife", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["EnchKnife"]},
 		{name: "bluekey", redspecial: 8.5, key: true, minLevel: 3, weight:0.65, message:"LootChestBlueKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
@@ -329,6 +330,14 @@ let KinkyDungeonLootTable = {
 
 let KDLootEvents = {
 	"Armor": (Loot, Floor, Replacemsg, Lock) => {
+		return {
+			value: 0,
+			Replacemsg: Replacemsg,
+		};
+	},
+	"archerykit": (Loot, Floor, Replacemsg, Lock) => {
+		KinkyDungeonInventoryAddWeapon("Bow");
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
 		return {
 			value: 0,
 			Replacemsg: Replacemsg,
