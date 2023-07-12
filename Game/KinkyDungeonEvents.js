@@ -2018,6 +2018,34 @@ let KDEventMapSpell = {
 		},
 	},
 	"playerCast": {
+		"ArrowFireSpell": (e, spell, data) => {
+			if (data.bulletfired && data.bulletfired.bullet?.spell?.tags?.some((t) => {return e.tags.includes(t);}) && KDGameData.AncientEnergyLevel > (e.energyCost || 0)) {
+				KinkyDungeonChangeCharge((-e.energyCost || 0));
+				data.bulletfired.bullet.spell = KinkyDungeonFindSpell(e.spell, true);
+				data.bulletfired.bullet.name = e.spell;
+				if (data.bulletfired.bullet.damage)
+				{
+					if (e.power != undefined)
+						data.bulletfired.bullet.damage.damage = e.power;
+					if (e.damage != undefined)
+						data.bulletfired.bullet.damage.type = e.damage;
+					data.bulletfired.bullet.damage.time = e.time;
+				}
+				// Unique to FireSpell
+				if (e.aoe != undefined) {
+					data.bulletfired.bullet.hit = "aoe";
+				}
+				data.bulletfired.bullet.height = 3;
+				data.bulletfired.bullet.width = 3;
+				data.bulletfired.bullet.pierceEnemies = undefined;
+				data.bulletfired.bullet.piercing = undefined;
+				data.bulletfired.bullet.bulletColor = 0xffaa44;
+				data.bulletfired.bullet.bulletLight = 5;
+				data.bulletfired.bullet.hitColor = 0xffaa44;
+				data.bulletfired.bullet.hitLight = 5;
+
+			}
+		},
 		"DistractionCast": (e, spell, data) => {
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.99 || KinkyDungeonPlayerBuffs.DistractionCast) {
 				let tb = KinkyDungeonGetManaCost(data.spell) * 0.25;
@@ -2364,8 +2392,9 @@ let KDEventMapSpell = {
 		"FloatingWeapon": (e, spell, data) => {
 			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.targetX && data.targetY && !(data.enemy && data.enemy.Enemy && KDAllied(data.enemy))) {
 				let chanceWith = KinkyDungeonPlayerDamage.chance;
-				let chanceWithout = KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon(true), true).chance;
-				KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
+				let weapon = KinkyDungeonPlayerDamage;
+				let chanceWithout = KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon(true,undefined, weapon), true).chance;
+				KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon(undefined, undefined, weapon));
 				if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && chanceWithout < chanceWith)
 					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 			}

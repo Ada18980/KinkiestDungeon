@@ -1085,6 +1085,8 @@ interface weapon {
 	events?: KinkyDungeonEvent[];
 	noHands?: boolean;
 	silent?: boolean;
+	/** Weapon cant be used with arm bondage */
+	clumsy?: boolean;
 	novulnerable?: boolean;
 	special?: {
 		type: string,
@@ -1501,6 +1503,8 @@ interface spell {
 	special?: string;
 	/** Damage of the spell */
 	power?: number;
+	/** Amount of aoe power */
+	aoedamage?: number;
 	/** Damage type */
 	damage?: string;
 	/** size of sprite */

@@ -7859,7 +7859,7 @@ KinkyDungeonSpecialTheEncaser,"25 charge to enter Slime Form for 25 turns, and c
 KinkyDungeonSpecialFourSeasons,"50 charge to reduce mana cost of next fire, earth, air, and water spell by 50 (once for each element)"
 KinkyDungeonSpecialArbiter,"25 charge to disarm a target for 8 turns, rendering them unable to attack."
 KinkyDungeonSpecialBondageBuster,"5 charge (+2.5 per charge) to channel and fire a beam that deals 30 + 3/charge electric damage, or 90 at max charge."
-KinkyDungeonSpecialBlaster,"5 charge to fire a blast that deals 25 electric damage."
+KinkyDungeonSpecialBlaster,"10 charge to fire a blast that deals 25 electric damage."
 KinkyDungeonSpecialMessengerOfLove,"50 charge to fire an arrow that enrages a target."
 KinkyDungeonSpecialMoiraiScissors,"50 charge to enter a frenzy for 10 turns, attacking twice per turn."
 KinkyDungeonSpecialSlimethrower,Create a '+' shaped pool of slime that deals 35 glue damage per hit
@@ -10646,3 +10646,24 @@ KinkyDungeonInventoryItemMagicRopeDesc,"She who lives by the rope, is tied up by
 KinkyDungeonInventoryItemMagicRopeDesc2,"Deals chain damage and applies 50 points of rope binding. Draws 10 mana per hit to apply 30 extra points of magical binding. If you don't have mana, you fail to control the rope..."
 ItemPickupMagicRope,"You find some enchanted rope."
 KDMagicRopeBackfire,"Without mana to control it, the enchanted rope springs back upon you!"
+
+KinkyDungeonInventoryItemBow,Wooden Bow
+KinkyDungeonInventoryItemBowDesc,"Pointy stick delivery system."
+KinkyDungeonInventoryItemBowDesc2,"Deals crush damage. Draws 10 charge to fire an ordinary arrow, dealing 20 pierce damage."
+ItemPickupBow,"You find a wooden bow."
+KinkyDungeonSpecialBow,"10 charge to fire an arrow. Deals 20 pierce damage."
+KinkyDungeonSpellTargetArrowNormal,Choose projectile path
+KinkyDungeonSpellArrowNormal,Arrow
+KinkyDungeonSpellCastArrowNormal,"You loose an arrow!"
+
+KinkyDungeonSpellArrowFireSpell,Fire Arrows
+KinkyDungeonSpellDescriptionArrowFireSpell,"Converts arrows to fire arrows for 30 extra charge, which deal 40 fire damage in a 3x3 area and stuns briefly."
+KDSwitchArrowFireSpell,"You switch to using fire arrows."
+KinkyDungeonSpellArrowFire,Fire Arrow
+
+KinkyDungeonSpellArrowVineSpell,Vine Arrows
+KinkyDungeonSpellDescriptionArrowVineSpell,"Converts arrows to all-natural organic versions for 20 extra charge, which apply 40 binding to the target."
+KDSwitchArrowVineSpell,"You switch to using vine arrows."
+KinkyDungeonSpellArrowVine,Vine Arrow
+
+LootArcheryKit,"You find a bow and a glowing crystal. The bow is scribed with runes of duplication."
