@@ -132,7 +132,7 @@ KinkyDungeonStatUnfocused,"Unfocused"
 KinkyDungeonStatDescUnfocused,"Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction."
 
 KinkyDungeonStat22,"Pristine"
-KinkyDungeonStatDesc22,"There are no shiny loot objects in the dungeon."
+KinkyDungeonStatDesc22,"There are significantly less shiny loot objects in the dungeon."
 KinkyDungeonStat23,"Lost Technology"
 KinkyDungeonStatDesc23,"Ancient power cores break with use, and cannot be recharged."
 
@@ -10450,7 +10450,10 @@ RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped t
 RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
 RestraintRopeSnakeHogtie,Rope Hogtie
 RestraintRopeSnakeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
-RestraintRopeSnakeHogtieDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
+RestraintRopeSnakeHogtieDesc2,"It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle."
+RestraintRopeSnakeHogtieWristtie,Rope Hogtie
+RestraintRopeSnakeHogtieWristtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintRopeSnakeHogtieWristtieDesc2,"It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle."
 RestraintRopeSnakeBelt,Rope Belt
 RestraintRopeSnakeBeltDesc,"A harness acting as a handle to pull you around"
 RestraintRopeSnakeBeltDesc2,"The ropes squeeze you gently."

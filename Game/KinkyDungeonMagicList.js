@@ -1171,7 +1171,9 @@ let KinkyDungeonSpellListEnemies = [
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "MysticShock", time: 3}},
 
 
-	{name: "ArrowNormal", tags: ["arrowreplace"], color: "#88ff88", sfx: "Miss", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true, onhit:"", power: 2, delay: 0, range: 7.5, damage: "pierce", speed: 2.5},
+	{name: "ArrowNormal", tags: ["arrowreplace"], color: "#88ff88", sfx: "Miss", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
+		staminacost: 1,
+		projectileTargeting:true, onhit:"", power: 2, delay: 0, range: 7.5, damage: "pierce", speed: 2.5},
 	{name: "ArrowFire", tags: ["arrowspecial"], color: "#ffff00", sfx: "FireSpell", landsfx: "Lightning", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
 		onhit:"aoe", power: 4, noDirectDamage: true, delay: 0, range: 7.5, aoe: 1.5, lifetime: 1, damage: "fire", speed: 2.5, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 4}},
 
@@ -1188,7 +1190,7 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "BondageBustBeam", hitsfx: "Shock", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 3, time: 3, delay: 0, range: 8, speed: 50, size: 1, damage: "electric",
 		trailColor: 0xffff00, trailLight: 3,
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "Shock", time: 3}},
-	{name: "HeartArrow", sfx: "MagicSlash", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "soul", speed: 2,
+	{name: "HeartArrow", sfx: "MagicSlash", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "soul", speed: 2,
 		events: [
 			{type: "GreaterRage", trigger: "bulletHitEnemy"},
 		],

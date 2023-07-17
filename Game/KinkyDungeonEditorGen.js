@@ -510,6 +510,7 @@ let KDEffectTileGen = {
 let KDTileGen = {
 	"Rubble": (x, y, tile, tileGenerator, data) => {
 		let rubblechance = data.params.rubblechance || 0.5;
+		if (KinkyDungeonStatsChoice.get("Pristine")) rubblechance *= 0.3;
 		if (KDRandom() < rubblechance)
 			KinkyDungeonMapSet(x, y, 'R');
 		else if (KDRandom() < rubblechance * rubblechance - 0.01)
