@@ -1071,8 +1071,10 @@ function KinkyDungeonRun() {
 				CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
 			}
 			KinkyDungeonConfigAppearance = true;
-			CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
-			CharacterRefresh(KinkyDungeonPlayer);
+			if (appearance) {
+				CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
+				CharacterRefresh(KinkyDungeonPlayer);
+			}
 			return true;
 		}, true, 30, 942, 440, 50, TextGet("KinkyDungeonDressPlayer"), "#ffffff", "");
 
