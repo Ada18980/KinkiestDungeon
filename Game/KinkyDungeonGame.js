@@ -85,7 +85,7 @@ let KinkyDungeonTransparentMovableObjects = KinkyDungeonMovableTiles
 	.replace("D", "") // Door
 	.replace("g", ""); // Light does not pass thru doors or grates
 
-let KDOpenDoorTiles = ["DoorOpen", "DoorVertContOpen", "DoorVertOpen"];
+let KDOpenDoorTiles = ["DoorOpen", "DoorVertOpenCont", "DoorVertOpen"];
 
 /**
  * @type {Record<string, {x: number, y: number, tags?:string[]}>}
