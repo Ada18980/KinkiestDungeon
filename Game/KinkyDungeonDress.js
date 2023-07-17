@@ -594,15 +594,17 @@ function KDInitProtectedGroups() {
 /**
  *
  * @param {item[]} [restraints]
+ * @param {Character} [C]
  */
-function KinkyDungeonWearForcedClothes(restraints) {
+function KinkyDungeonWearForcedClothes(restraints, C) {
+	if (!C) C = KinkyDungeonPlayer;
 	if (!restraints) restraints = KinkyDungeonAllRestraint();
 	for (let i = restraints.length - 1; i >= 0; i--) {
 		let inv = restraints[i];
 		if (KDRestraint(inv).alwaysDress) {
 			KDRestraint(inv).alwaysDress.forEach(dress=>{ // for .. of  loop has issues with iterations
-				if (dress.override || !dress.Group.includes("Item") || !InventoryGet(KinkyDungeonPlayer, dress.Group)) {
-					let canReplace = (dress.override!==null && dress.override===true) ? true : !InventoryGet(KinkyDungeonPlayer,dress.Group);
+				if (dress.override || !dress.Group.includes("Item") || !InventoryGet(C, dress.Group)) {
+					let canReplace = (dress.override!==null && dress.override===true) ? true : !InventoryGet(C,dress.Group);
 
 					if (!canReplace) {return;}
 					if (KDProtectedCosplay.includes(dress.Group)){return;}
@@ -619,7 +621,7 @@ function KinkyDungeonWearForcedClothes(restraints) {
 								}
 							}
 						}
-					if (dress.useHairColor && InventoryGet(KinkyDungeonPlayer, "HairFront")) color = InventoryGet(KinkyDungeonPlayer, "HairFront").Color;
+					if (dress.useHairColor && InventoryGet(C, "HairFront")) color = InventoryGet(C, "HairFront").Color;
 					let item = KDInventoryWear(dress.Item, dress.Group, inv.name, color, filters);
 
 					if (dress.Property) {
@@ -633,6 +635,15 @@ function KinkyDungeonWearForcedClothes(restraints) {
 					}
 
 					//KDCharacterAppearanceSetColorForGroup(KinkyDungeonPlayer, color, dress.Group);
+				}
+			});
+		}
+		if (KDRestraint(inv).alwaysDressModel) {
+			KDRestraint(inv).alwaysDressModel.forEach(dress=>{ // for .. of  loop has issues with iterations
+
+				let canReplace = true;
+				if (canReplace) {
+					KDInventoryWear(dress.Model, undefined, undefined, undefined, dress.Filters);
 				}
 			});
 		}

@@ -8,6 +8,7 @@
  * @type {Record<string, KDCursedDef>} */
 let KDCurses = {
 	"GhostLock" : {
+		powerMult: 5,
 		lock: true,
 		condition: (item) => {
 			return KinkyDungeonItemCount("Ectoplasm") >= 25;
@@ -17,6 +18,7 @@ let KDCurses = {
 		}
 	},
 	"DollLock" : {
+		powerMult: 4,
 		lock: true,
 		condition: (item) => {
 			return KinkyDungeonItemCount("DollID") >= 8;
@@ -26,6 +28,7 @@ let KDCurses = {
 		}
 	},
 	"MistressKey": {
+		powerMult: 4,
 		lock: true,
 		noShrine: true,
 		customIcon_RemoveFailure: "Locks/Gold",
@@ -46,6 +49,7 @@ let KDCurses = {
 		}
 	},
 	"Key" : {
+		powerMult: 2.1,
 		lock: true,
 		condition: (item) => {
 			return KinkyDungeonRedKeys >= 1;
@@ -64,6 +68,7 @@ let KDCurses = {
 		}
 	},
 	"TakeDamageFire" : {
+		powerMult: 2.2,
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
@@ -72,6 +77,7 @@ let KDCurses = {
 		],
 	},
 	"TakeDamageIce" : {
+		powerMult: 2.2,
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
@@ -83,6 +89,7 @@ let KDCurses = {
 		],
 	},
 	"TakeDamageElectric" : {
+		powerMult: 2.2,
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
@@ -90,6 +97,7 @@ let KDCurses = {
 		],
 	},
 	"TakeDamageGlue" : {
+		powerMult: 2.2,
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
@@ -97,6 +105,7 @@ let KDCurses = {
 		],
 	},
 	"TakeDamageChain" : {
+		powerMult: 2.2,
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
@@ -104,6 +113,7 @@ let KDCurses = {
 		],
 	},
 	"Will" : {
+		powerMult: 2,
 		onApply: (item, host) => {
 			KinkyDungeonChangeWill(-1);
 		},
@@ -115,6 +125,7 @@ let KDCurses = {
 		}
 	},
 	"Mana" : {
+		powerMult: 2,
 		condition: (item) => {
 			return KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 20;
 		},
@@ -123,24 +134,28 @@ let KDCurses = {
 		}
 	},
 	"ShrineWill" : {
+		powerMult: 2.5,
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Will";
 			});
 		}, remove: (item, host) => {/* For free! */}},
 	"ShrineElements" : {
+		powerMult: 2.5,
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Elements";
 			});
 		}, remove: (item, host) => {/* For free! */}},
 	"ShrineConjure" : {
+		powerMult: 2.5,
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Conjure";
 			});
 		}, remove: (item, host) => {/* For free! */}},
 	"ShrineIllusion" : {
+		powerMult: 2.5,
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Illusion";
@@ -407,3 +422,13 @@ function KinkyDungeonCurseUnlock(group, index, Curse) {
 	}
 }
 
+/**
+ * @param {string} curse
+ * @returns {number}
+ */
+function KDCursePower(curse) {
+	if (KDCurses[curse]) {
+		return KDCurses[curse].powerMult || 3;
+	}
+	return 1;
+}

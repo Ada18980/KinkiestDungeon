@@ -564,7 +564,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		let manaChance = MapParams.manaChance ? MapParams.manaChance : 0.3;
 		let shrinecount = MapParams.shrinecount; // Max treasure chest count
 		let rubblechance = MapParams.rubblechance; // Chance of lootable rubble
-		if (KinkyDungeonStatsChoice.get("Pristine")) rubblechance = 0;
+		if (KinkyDungeonStatsChoice.get("Pristine")) rubblechance *= 0.3;
 		//if (KinkyDungeonGoddessRep.Prisoner && KDGameData.KinkyDungeonSpawnJailers > 0) doorlockchance = doorlockchance + (KDGameData.KinkyDungeonSpawnJailers / KDGameData.KinkyDungeonSpawnJailersMax) * (1.0 - doorlockchance) * (KinkyDungeonGoddessRep.Prisoner + 50)/100;
 		let trapChance = MapParams.trapchance; // Chance of a pathway being split between a trap and a door
 		let doorlocktrapchance = MapParams.doorlocktrapchance ? MapParams.doorlocktrapchance : MapParams.trapchance;

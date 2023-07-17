@@ -113,10 +113,9 @@ let KDDialogue = {
 			"Accept": {gag: true, playertext: "WeaponFoundAccept", response: "GoodGirl", personalities: ["Dom", "Sub", "Robot"],
 				clickFunction: (gagged, player) => {
 					KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), "#ff0000", 2);
-					let weapon = KinkyDungeonPlayerDamage.name;
-					if (weapon && weapon != "Unarmed") {
+					if (!isUnarmed(KinkyDungeonPlayerDamage)) {
 						KinkyDungeonChangeRep("Ghost", 3);
-						let item = KinkyDungeonInventoryGetWeapon(weapon);
+						let item = KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerDamage.name);
 						KDSetWeapon(null);
 						KinkyDungeonAddLostItems([item], false);
 						KinkyDungeonInventoryRemove(item);
@@ -441,7 +440,7 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					let items = KinkyDungeonGetRestraintsWithShrine("BindingDress", true, true);
 					// Get the most powerful item
-					let item = items.length > 0 ? items.reduce((prev, current) => (KDRestraint(prev).power * KinkyDungeonGetLockMult(prev.lock) > KDRestraint(current).power * KinkyDungeonGetLockMult(current.lock)) ? prev : current) : null;
+					let item = items.length > 0 ? items.reduce((prev, current) => (KDRestraint(prev).power * KinkyDungeonGetLockMult(prev.lock, prev) > KDRestraint(current).power * KinkyDungeonGetLockMult(current.lock, current)) ? prev : current) : null;
 
 					let power = item ? KDRestraint(item).power : 5;
 					if (KDFactionRelation("Player", "Dressmaker") < 0.25)

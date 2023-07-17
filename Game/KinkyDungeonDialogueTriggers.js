@@ -8,7 +8,7 @@ let KDDialogueTriggers = {
 	"WeaponStop": {
 		dialogue: "WeaponFound",
 		allowedPrisonStates: ["parole"],
-		excludeTags: ["zombie", "skeleton"],
+		excludeTags: ["zombie", "skeleton", "gagged"],
 		playRequired: true,
 		noCombat: true,
 		noAlly: true,

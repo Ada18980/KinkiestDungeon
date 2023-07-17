@@ -875,13 +875,14 @@ function KinkyDungeonSetMaxStats(delta) {
 	return {distractionRate: data.distractionRate, staminaRate: data.staminaRate};
 }
 
-function KinkyDungeonCanUseWeapon(NoOverride, e) {
+function KinkyDungeonCanUseWeapon(NoOverride, e, weapon) {
 	let flags = {
 		HandsFree: false,
+		clumsy: weapon?.clumsy,
 	};
 	if (!NoOverride)
 		KinkyDungeonSendEvent("getWeapon", {event: e, flags: flags});
-	return flags.HandsFree || KinkyDungeonPlayerDamage.noHands || (!KinkyDungeonIsHandsBound(false, true) && (!KinkyDungeonStatsChoice.get("WeakGrip") || !KinkyDungeonIsArmsBound(false, true)));
+	return flags.HandsFree || KinkyDungeonPlayerDamage.noHands || (!KinkyDungeonIsHandsBound(false, true) && ((!KinkyDungeonStatsChoice.get("WeakGrip") && !flags.clumsy) || !KinkyDungeonIsArmsBound(false, true)));
 }
 
 let KDBlindnessCap = 0;
@@ -1025,7 +1026,7 @@ function KinkyDungeonUpdateStats(delta) {
 	KinkyDungeonDeaf = false;//KinkyDungeonPlayer.IsDeaf();
 
 	// Unarmed damage calc
-	KinkyDungeonPlayerDamage = KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
+	KinkyDungeonPlayerDamage = KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon(undefined, undefined, KinkyDungeonPlayerDamage));
 
 	KinkyDungeonUpdateStruggleGroups();
 	// Slowness calculation
@@ -1280,7 +1281,7 @@ function KinkyDungeonCalculateSubmissiveMult() {
 	let base = 0;
 	for (let item of KinkyDungeonAllRestraint()) {
 		if (item.type == Restraint) {
-			let power = Math.sqrt(Math.max(0, KinkyDungeonGetLockMult(item.lock) * KDRestraint(item).power));
+			let power = Math.sqrt(Math.max(0, KinkyDungeonGetLockMult(item.lock, item) * KDRestraint(item).power));
 			base = Math.max(power, base + power/5);
 		}
 	}

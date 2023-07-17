@@ -1438,7 +1438,7 @@ function KinkyDungeonCapture(enemy) {
 				if (uniform.includes(KDGameData.Champion)) uniform = [KDGameData.Champion];
 				let restraints = [];
 				for (let u of uniform) {
-					for (let r of KinkyDungeonGetRestraintsWithShrine(u, true)) {
+					for (let r of KinkyDungeonGetRestraintsWithShrine(u, true, true, true)) {
 						restraints.push(r);
 					}
 				}
@@ -2073,7 +2073,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "boundLevel"});
 				}
 			}
-			let vibe = KDEntityBuffedStat(enemy, "Vibration");
+			let vibe = KDEntityMaxBuffedStat(enemy, "Vibration");
 			if (enemy.distraction > 0 || vibe) {
 				let DD = KDGetEnemyDistractionDamage(enemy, vibe);
 				if (DD > 0) {
@@ -4650,6 +4650,13 @@ function KDTieUpEnemy(enemy, amount, type = "Leather", Damage) {
 	return data;
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} struggleMod
+ * @param {number} delta
+ * @returns {any}
+ */
 function KDPredictStruggle(enemy, struggleMod, delta) {
 	let data = {
 		enemy: enemy,
@@ -4682,6 +4689,7 @@ function KDPredictStruggle(enemy, struggleMod, delta) {
 			let type = KDSpecialBondage[layer[0]];
 			let hBoost = type.healthStruggleBoost;
 			let pBoost = type.powerStruggleBoost;
+			let mBoost = type.mageStruggleBoost;
 			let sr = type.struggleRate;
 
 			if (sr <= 0) {
@@ -4692,7 +4700,8 @@ function KDPredictStruggle(enemy, struggleMod, delta) {
 			let totalCost = layer[1] / sr;
 			if (enemy.hp > 1)
 				totalCost *= 10/(10 + hBoost * Math.pow(enemy.hp, 0.75));
-			totalCost *= 3/(3 + pBoost * enemy.Enemy.power || 0);
+			totalCost *= 3/(3 + (pBoost * enemy.Enemy.power || 0));
+			totalCost *= 2/(2 + (mBoost * enemy.Enemy.unlockCommandLevel || 0));
 
 			let effect = Math.min(data.struggleMod, totalCost);
 			let difference = layer[1] * (effect / totalCost);
@@ -5263,4 +5272,13 @@ function KDPlayerLeashed(player) {
 		}
 	}
 	return false;
+}
+
+
+/**
+ * @param {entity} en
+ * @returns {boolean}
+ */
+function KDEnemyCanBeVibed(en) {
+	return KDEntityBuffedStat(en, "Plug") > 0 || KDEntityBuffedStat(en, "Toy") > 0;
 }

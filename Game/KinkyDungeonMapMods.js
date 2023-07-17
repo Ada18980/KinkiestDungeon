@@ -150,8 +150,9 @@ let KDMapMods = {
 		jailType: "alchemist",
 		guardType: "alchemist",
 		bonusTags: {
-			"slime": {bonus: 4, mult: 3},
+			"slime": {bonus: 1.5, mult: 2},
 			"maid": {bonus: 4.5, mult: 1.5},
+			"alchemist": {bonus: 1.5, mult: 1.5},
 		},
 		altRoom: "",
 		spawnBoxes: [

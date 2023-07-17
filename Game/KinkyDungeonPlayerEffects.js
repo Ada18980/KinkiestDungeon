@@ -55,12 +55,13 @@ let KDPlayerEffects = {
 		let applied = "";
 
 		for (let i = 0; i < playerEffect.count; i++) {
+			let curse = CommonRandomItemFromList("", KDCurseUnlockList.Basic);
 			let restraint = KDChooseRestraintFromListGroupPri(
-				KDGetRestraintsEligible({tags: ['trap']}, 10, 'grv', true, undefined, undefined, undefined, false),
+				KDGetRestraintsEligible({tags: ['trap']}, 10, 'grv', true, undefined, undefined, undefined, false, undefined, undefined, undefined, undefined, curse),
 				KDRestraintGroupProgressiveOrderFun)?.name;
 
 			if (restraint && KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(restraint), 0, true, "", true, false, false, undefined, "Observer", false, undefined,
-				CommonRandomItemFromList("", KDCurseUnlockList.Basic))) {
+				curse)) {
 				applied = restraint || applied;
 			}
 		}

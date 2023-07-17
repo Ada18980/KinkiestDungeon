@@ -1344,8 +1344,12 @@ Minor Changes:
 
 4.31 (July 2023)
 - Added ability to add temporary curses onto items using console -- TODO test this to make sure the curse is persistent and gets filtered when the item is removed
-- New weapons: Industrial Tape Wand, Bag of Goodies
+- New weapons: Industrial Tape Wand, Bag of Goodies, Magic Remote, Rubber Stick, Blade of Fla'peh, Enchanted Rope, Wooden Bow
+- New series of spells which modify arrows fired by bows
+- Some enemies now come pre-equipped with a toy
 - Added quick inventory setups
+- Large, slow enemies have reduced evasion
+- Pristine is 70% reduction now instead of 100% and bug fixed so it works on regular levels
 
 TODO: Mushrooms in the jungle
 
