@@ -70,23 +70,6 @@ AddModel({
 	])
 });
 
-
-AddModel(GetModelWithExtraLayers("RopeBoxtie2", "RopeBoxtie1", [
-	{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
-		Poses: ToMap(["Boxtie"]),
-	},
-]));
-
-
-AddModel(GetModelWithExtraLayers("RopeBoxtie3", "RopeBoxtie2", [
-	{ Name: "ArmHarness", Layer: "ChestStraps", Pri: -1,
-		Poses: ToMap([...ARMPOSES]),
-		Invariant: true,
-	},
-]));
-
-
-
 AddModel({
 	Name: "RopeWristtie1",
 	Folder: "Rope",
@@ -102,20 +85,40 @@ AddModel({
 	])
 });
 
+// Cosmetic only
+AddModel({
+	Name: "RopeChestStraps1",
+	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["RopesLower"],
+	Layers: ToLayerMap([
+		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
+			Poses: ToMap(["Boxtie", "Wristtie"]),
+		},
+	])
+});
+AddModel({
+	Name: "RopeChestStraps2",
+	Folder: "Rope",
+	Parent: "Rope",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["RopesUpper"],
+	Layers: ToLayerMap([
+		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
+			Poses: ToMap(["Boxtie", "Wristtie"]),
+		},
+		{ Name: "ArmHarness", Layer: "ChestStraps", Pri: -1,
+			Poses: ToMap([...ARMPOSES]),
+			Invariant: true,
+		},
+	])
+});
 
-AddModel(GetModelWithExtraLayers("RopeWristtie2", "RopeWristtie1", [
-	{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
-		Poses: ToMap(["Wristtie"]),
-	},
-]));
-
-
-AddModel(GetModelWithExtraLayers("RopeWristtie3", "RopeWristtie2", [
-	{ Name: "ArmHarness", Layer: "ChestStraps", Pri: -1,
-		Poses: ToMap([...ARMPOSES]),
-		Invariant: true,
-	},
-]));
 
 AddModel({
 	Name: "RopeCuffs",

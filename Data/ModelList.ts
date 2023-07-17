@@ -1017,6 +1017,7 @@ AddModel({
 		{ Name: "Blouse", Layer: "Shirt", Pri: 4,
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
+			AppendPose: ToMap(["RopesUpper"]),
 		},
 		{ Name: "BlouseLiner", Layer: "CorsetLiner", Pri: 4,
 			Invariant: true,

@@ -92,6 +92,8 @@ let LAYERS_BASE = [
 	"Underarms",
 	"Bra",
 
+	"CorsetOver",
+
 	// Skirts that dont follow shilhouette
 	"SkirtPoofyDeco",
 	"SkirtPoofy",
