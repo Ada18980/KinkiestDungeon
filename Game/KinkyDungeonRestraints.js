@@ -2628,8 +2628,8 @@ function KDGetLockVisual(item) {
  * @param {boolean} NoStack
  * @param {string} Lock
  * @param {item} [r]
- * @param {boolean} [Deep]
- * @param {boolean} [noOverpower]
+ * @param {boolean} [Deep] - allow linking under
+ * @param {boolean} [noOverpower] - not allowed to replace items that currently exist
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {boolean} [useAugmentedPower] - Bypass is treated separately for these groups
  * @param {string} [curse] - Bypass is treated separately for these groups
@@ -2693,7 +2693,6 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	}
 	return false;
 }
-
 
 /**
  *
@@ -3724,6 +3723,7 @@ let KDRopeParts = {
 	"Cuffs": {},
 	"CuffsAdv": {},
 	"Hogtie": {enemyTagSuffix: "_hogtie"},
+	"HogtieWrist": {enemyTagSuffix: "_hogtie"},
 	"Feet": {},
 	"Legs": {},
 	"Belt": {},

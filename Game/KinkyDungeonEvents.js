@@ -273,9 +273,11 @@ let KDEventMapInventory = {
 		"AntiMagicGag": (e, item, data) => {
 			let alreadyDone = KDItemDataQuery(item, "manaDrained") || 0;
 			if (alreadyDone < e.count) {
-				KinkyDungeonChangeMana(-e.power);
-				alreadyDone += e.power;
-				KDItemDataSet(item, "manaDrained", alreadyDone);
+				if (KinkyDungeonStatMana + KinkyDungeonStatManaPool > 0) {
+					alreadyDone += Math.min(KinkyDungeonStatMana + KinkyDungeonStatManaPool, e.power);
+					KinkyDungeonChangeMana(-e.power);
+					KDItemDataSet(item, "manaDrained", alreadyDone);
+				}
 			} else {KDChangeItemName(item, item.type, "MagicGag2");}
 		},
 		"DollmakerMask": (e, item, data) => {

@@ -1349,6 +1349,7 @@ Minor Changes:
 - Some enemies now come pre-equipped with a toy
 - Added quick inventory setups
 - Large, slow enemies have reduced evasion
+- Pristine is 70% reduction now instead of 100% and bug fixed so it works on regular levels
 
 TODO: Mushrooms in the jungle
 

@@ -385,6 +385,8 @@ interface KDRestraintPropsBase {
 	escapeMult?: number,
 	/** Clothes for dressing */
 	alwaysDress?: overrideDisplayItem[],
+	/** Clothes for dressing */
+	alwaysDressModel?: alwaysDressModel[],
 	/** The item always bypasses covering items, such as dresses and chastity belts */
 	bypass?: boolean,
 	/** The item can only be cut with magical implements */
@@ -548,6 +550,8 @@ interface overrideDisplayItem {
 	Item: string,
 	/** Group */
 	Group: string,
+	/** Standalone model */
+	Model?: string,
 	/** Color */
 	Color: string[]|string,
 	/** Filters */
@@ -562,6 +566,14 @@ interface overrideDisplayItem {
 	useHairColor?: boolean,
 	/** Used for overriding BC priority */
 	OverridePriority?: number[]|number,
+}
+interface alwaysDressModel {
+	/** Standalone club asset */
+	Model: string,
+	/** Filters */
+	Filters?: Record<string, LayerFilter>,
+	/** Faction color index */
+	factionColor?: number[][],
 }
 
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
