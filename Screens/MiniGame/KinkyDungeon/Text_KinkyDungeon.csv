@@ -1320,7 +1320,7 @@ KinkyDungeonPlayerNoKeys,Find the keys..
 KinkyDungeonPlayerYesKeys,Find the exit!
 KinkyDungeonPlayerHelp,"You are receiving help from a friendly ally."
 KinkyDungeonPlayerHook,"You found a hook you can use to pull on straps and loops."
-KinkyDungeonPlayerSharp,"You have access to something sharp and can attempt to cut restraints."
+KinkyDungeonPlayerSharp,"You have access to something sharp and can attempt to Cut restraints, or Remove more effectively."
 KinkyDungeonPlayerEdge,"You found a corner to help manipulate buckles and snaps with."
 KinkyDungeonPlayerCrack,"You found a crack and could maybe wedge a knife or tool into it to keep it still."
 KinkyDungeonPlayerSticky,"You found something sticky and might be able to pull off fabrics."
@@ -10652,7 +10652,7 @@ KDMagicRopeBackfire,"Without mana to control it, the enchanted rope springs back
 
 KinkyDungeonInventoryItemBow,Wooden Bow
 KinkyDungeonInventoryItemBowDesc,"Pointy stick delivery system."
-KinkyDungeonInventoryItemBowDesc2,"Deals crush damage. Draws 10 charge to fire an ordinary arrow, dealing 20 pierce damage."
+KinkyDungeonInventoryItemBowDesc2,"Deals crush damage. Draws 10 charge and 1.5 stamina to fire an ordinary arrow, dealing 20 pierce damage."
 ItemPickupBow,"You find a wooden bow."
 KinkyDungeonSpecialBow,"10 charge to fire an arrow. Deals 20 pierce damage."
 KinkyDungeonSpellTargetArrowNormal,Choose projectile path
@@ -10660,13 +10660,23 @@ KinkyDungeonSpellArrowNormal,Arrow
 KinkyDungeonSpellCastArrowNormal,"You loose an arrow!"
 
 KinkyDungeonSpellArrowFireSpell,Fire Arrows
-KinkyDungeonSpellDescriptionArrowFireSpell,"Converts arrows to fire arrows for 30 extra charge, which deal 40 fire damage in a 3x3 area and stuns briefly."
+KinkyDungeonSpellDescriptionArrowFireSpell,"Converts arrows to fire arrows for 30 extra charge, which deal the arrow damage plus 20 as fire damage in a 3x3 area and stuns briefly."
 KDSwitchArrowFireSpell,"You switch to using fire arrows."
 KinkyDungeonSpellArrowFire,Fire Arrow
 
 KinkyDungeonSpellArrowVineSpell,Vine Arrows
-KinkyDungeonSpellDescriptionArrowVineSpell,"Converts arrows to all-natural organic versions for 20 extra charge, which apply 40 binding to the target."
+KinkyDungeonSpellDescriptionArrowVineSpell,"Converts arrows to all-natural organic versions for 20 extra charge, which apply 50 binding to the target and deal chain damage instead."
 KDSwitchArrowVineSpell,"You switch to using vine arrows."
 KinkyDungeonSpellArrowVine,Vine Arrow
 
 LootArcheryKit,"You find a bow and a glowing crystal. The bow is scribed with runes of duplication."
+
+
+KinkyDungeonInventoryItemCrossbow,Crossbow
+KinkyDungeonInventoryItemCrossbowDesc,"Pointy stick delivery system."
+KinkyDungeonInventoryItemCrossbowDesc2,"Deals crush damage, Skips a turn after firing. Draws 25 charge and no stamina to fire an ordinary arrow, dealing 50 pierce damage."
+ItemPickupCrossbow,"You find a crossbow."
+KinkyDungeonSpecialCrossbow,"25 charge to fire an arrow. Deals 50 pierce damage."
+KinkyDungeonSpellTargetArrowBolt,Choose projectile path
+KinkyDungeonSpellArrowBolt,Bolt
+KinkyDungeonSpellCastArrowBolt,"You pull the trigger!"

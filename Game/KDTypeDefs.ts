@@ -1099,6 +1099,8 @@ interface weapon {
 	silent?: boolean;
 	/** Weapon cant be used with arm bondage */
 	clumsy?: boolean;
+	/** Skip turns after attacking */
+	channel?: number;
 	novulnerable?: boolean;
 	special?: {
 		type: string,
