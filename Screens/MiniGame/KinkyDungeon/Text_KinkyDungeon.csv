@@ -10674,7 +10674,7 @@ LootArcheryKit,"You find a bow and a glowing crystal. The bow is scribed with ru
 
 KinkyDungeonInventoryItemCrossbow,Crossbow
 KinkyDungeonInventoryItemCrossbowDesc,"Pointy stick delivery system."
-KinkyDungeonInventoryItemCrossbowDesc2,"Deals crush damage, Skips a turn after firing. Draws 25 charge and no stamina to fire an ordinary arrow, dealing 50 pierce damage."
+KinkyDungeonInventoryItemCrossbowDesc2,"Deals crush damage, Skips a turn after firing. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 50 pierce damage."
 ItemPickupCrossbow,"You find a crossbow."
 KinkyDungeonSpecialCrossbow,"25 charge to fire an arrow. Deals 50 pierce damage."
 KinkyDungeonSpellTargetArrowBolt,Choose projectile path
