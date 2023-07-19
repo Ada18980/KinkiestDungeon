@@ -196,6 +196,7 @@ let KinkyDungeonLootTable = {
 		{name: "ChainSword", minLevel: 0, weight:1, weapon: "ChainSword", noweapon: ["ChainSword"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Dirk", minLevel: 0, weight:1, weapon: "Dirk", noweapon: ["Dirk"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Foil", minLevel: 0, weight:0.5, weapon: "Foil", noweapon: ["Foil"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Crossbow", minLevel: 0, weight:1.5, weapon: "Crossbow", noweapon: ["Crossbow"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "BagOfGoodies", arousalMode: true, minLevel: 0, weight:0.5, weapon: "BagOfGoodies", noweapon: ["BagOfGoodies"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "VibeRemote", arousalMode: true, minLevel: 0, weight:0.5, weapon: "VibeRemote", noweapon: ["VibeRemote"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		...KDBasicArmor, ...KDBasicArmor_Cursed,

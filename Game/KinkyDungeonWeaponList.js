@@ -219,9 +219,12 @@ let KinkyDungeonWeapons = {
 		special: {type: "spell", spell: "BlasterBlast", requiresEnergy: true, energyCost: 0.01, range: 8}},
 
 	// Bows
-	"Bow": {name: "Bow", dmg: 1.5, chance: 0.75, staminacost: 1, type: "crush", unarmed: false, rarity: 2, shop: false, sfx: "Miss",
+	"Bow": {name: "Bow", dmg: 1.2, chance: 0.75, staminacost: 1, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "Miss",
 		clumsy: true,
 		special: {type: "spell", spell: "ArrowNormal", requiresEnergy: true, energyCost: 0.01, range: 6}},
+	"Crossbow": {name: "Crossbow", dmg: 1.5, chance: 0.5, staminacost: 1, type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "Miss",
+		clumsy: true,
+		special: {type: "spell", spell: "ArrowBolt", requiresEnergy: true, energyCost: 0.02, range: 8}},
 
 	// Divine
 	"MoiraiScissors": {name: "MoiraiScissors", dmg: 1.5, chance: 1.1, staminacost: 1.5, type: "slash", unarmed: false, rarity: 10, shop: false, magic: true, cutBonus: 0.2, sfx: "Cut",

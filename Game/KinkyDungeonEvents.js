@@ -946,7 +946,7 @@ let KDEventMapInventory = {
 	},
 	"beforeStruggleCalc": {
 		"boostWater": (e, item, data) => {
-			if (KinkyDungeonPlayerBuffs.Drenched && KinkyDungeonPlayerBuffs.Drenched.duration > 0) {
+			if (item == data.restraint && KinkyDungeonPlayerBuffs.Drenched && KinkyDungeonPlayerBuffs.Drenched.duration > 0) {
 				data.escapeChance += e.power;
 				let msg = e.msg ? e.msg : "KinkyDungeonDrenchedSlimeBuff";
 				if (msg) {
@@ -2028,9 +2028,15 @@ let KDEventMapSpell = {
 				if (data.bulletfired.bullet.damage)
 				{
 					if (e.power != undefined)
-						data.bulletfired.bullet.damage.damage = e.power;
+						data.bulletfired.bullet.damage.damage += e.power;
 					if (e.damage != undefined)
 						data.bulletfired.bullet.damage.type = e.damage;
+					if (e.bind != undefined)
+						data.bulletfired.bullet.damage.bind = e.bind;
+					if (e.bindEff != undefined)
+						data.bulletfired.bullet.damage.bindEff = e.bindEff;
+					if (e.bindType != undefined)
+						data.bulletfired.bullet.damage.bindType = e.bindType;
 					data.bulletfired.bullet.damage.time = e.time;
 				}
 				// Unique to FireSpell
@@ -2044,6 +2050,34 @@ let KDEventMapSpell = {
 				data.bulletfired.bullet.bulletColor = 0xffaa44;
 				data.bulletfired.bullet.bulletLight = 5;
 				data.bulletfired.bullet.hitColor = 0xffaa44;
+				data.bulletfired.bullet.hitLight = 5;
+
+			}
+		},
+		"ArrowVineSpell": (e, spell, data) => {
+			if (data.bulletfired && data.bulletfired.bullet?.spell?.tags?.some((t) => {return e.tags.includes(t);}) && KDGameData.AncientEnergyLevel > (e.energyCost || 0)) {
+				KinkyDungeonChangeCharge((-e.energyCost || 0));
+				data.bulletfired.bullet.spell = KinkyDungeonFindSpell(e.spell, true);
+				data.bulletfired.bullet.name = e.spell;
+				if (data.bulletfired.bullet.damage)
+				{
+					if (e.power != undefined)
+						data.bulletfired.bullet.damage.damage += e.power;
+					if (e.damage != undefined)
+						data.bulletfired.bullet.damage.type = e.damage;
+					if (e.bind != undefined)
+						data.bulletfired.bullet.damage.bind = e.bind;
+					if (e.bindEff != undefined)
+						data.bulletfired.bullet.damage.bindEff = e.bindEff;
+					if (e.bindType != undefined)
+						data.bulletfired.bullet.damage.bindType = e.bindType;
+					data.bulletfired.bullet.damage.time = e.time;
+				}
+				// Unique to VineSpell
+				data.bulletfired.bullet.pierceEnemies = undefined;
+				data.bulletfired.bullet.piercing = undefined;
+				data.bulletfired.bullet.bulletColor = 0x55ff55;
+				data.bulletfired.bullet.hitColor = 0x55ff55;
 				data.bulletfired.bullet.hitLight = 5;
 
 			}

@@ -927,7 +927,9 @@ function KinkyDungeonAttackEnemy(Enemy, Damage) {
 	let evaded = KinkyDungeonEvasion(Enemy, undefined, undefined, KinkyDungeonPlayerEntity);
 	let dmg = Damage;
 	let buffdmg = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg");
+	let channel = KinkyDungeonPlayerDamage?.channel || 0;
 	let predata = {
+		channel: channel,
 		targetX: Enemy.x,
 		targetY: Enemy.y,
 		enemy: Enemy,
@@ -990,6 +992,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage) {
 		Enemy.disarmflag += Enemy.Enemy.disarm;
 	}
 	let data = {
+		channel: predata.channel,
 		targetX: Enemy.x,
 		targetY: Enemy.y,
 		enemy: Enemy,
@@ -999,6 +1002,12 @@ function KinkyDungeonAttackEnemy(Enemy, Damage) {
 		vulnConsumed: predata.vulnConsumed,
 	};
 	KinkyDungeonSendEvent("playerAttack", data);
+
+	if (data.channel) {
+		KinkyDungeonSetFlag("channeling", data.channel);
+		KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, data.channel);
+		KinkyDungeonSleepTime = CommonTime() + 200;
+	}
 
 	KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "damage", 1);
 	KinkyDungeonTickBuffTag(Enemy.buffs, "incomingHit", 1);
