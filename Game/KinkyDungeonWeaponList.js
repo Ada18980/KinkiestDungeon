@@ -221,9 +221,11 @@ let KinkyDungeonWeapons = {
 	// Bows
 	"Bow": {name: "Bow", dmg: 1.2, chance: 0.75, staminacost: 1, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "Miss",
 		clumsy: true,
+		tags: ["bow", "normalbow"],
 		special: {type: "spell", spell: "ArrowNormal", requiresEnergy: true, energyCost: 0.01, range: 6}},
 	"Crossbow": {name: "Crossbow", dmg: 1.5, chance: 0.5, staminacost: 1, type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "Miss",
 		clumsy: true,
+		tags: ["bow", "normalbow"],
 		special: {type: "spell", spell: "ArrowBolt", requiresEnergy: true, energyCost: 0.015, range: 8}},
 
 	// Divine
@@ -241,6 +243,7 @@ let KinkyDungeonWeapons = {
 	},
 	"MessengerOfLove": {name: "MessengerOfLove", dmg: 2, chance: 0.75, staminacost: 1, type: "crush", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "Unarmed",
 		special: {type: "spell", spell: "HeartArrow", requiresEnergy: true, energyCost: 0.05, range: 50},
+		tags: ["bow", "specialbow"],
 	},
 	"Dragonslaver": {name: "Dragonslaver", dmg: 3.5, chance: 1.25, staminacost: 2.5, type: "slash", unarmed: false, rarity: 10, shop: false, cutBonus: 0.1, sfx: "LightSwing",
 		events: [{type: "CastSpell", spell: "BeltStrike", trigger: "playerAttack", requireEnergy: true, energyCost: 0.008}],
@@ -281,3 +284,5 @@ let KinkyDungeonWeapons = {
 
 
 };
+
+
