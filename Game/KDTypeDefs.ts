@@ -1102,6 +1102,7 @@ interface weapon {
 	/** Skip turns after attacking */
 	channel?: number;
 	novulnerable?: boolean;
+	tags?: string[];
 	special?: {
 		type: string,
 		spell?: string,
