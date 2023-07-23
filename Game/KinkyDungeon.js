@@ -96,6 +96,7 @@ let KDToggles = {
 	ArousalHearts: true,
 	VibeHearts: true,
 	FancyWalls: true,
+	PlayerTransparencyDuringBullets: true,
 };
 
 let KDDefaultKB = {
@@ -934,18 +935,33 @@ function KinkyDungeonRun() {
 		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), "#ffffff", "");
 		DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 	} else if (KinkyDungeonState == "Patrons") {
-		for (let x = KinkyDungeonPatronPos * KDMaxPatronPerPage; x < KinkyDungeonPatronPos * KDMaxPatronPerPage + KDMaxPatronPerPage && x <= KDMaxPatron; x++) {
-			let credits = TextGet("KinkyDungeonPatronsList" + x).split('|');
-			let i = 0;
-			for (let c of credits) {
-				DrawTextKD(c, 550 + 350 * (x - KinkyDungeonPatronPos * KDMaxPatronPerPage), 25 + 40 * i, "#ffffff", KDTextGray2, undefined, "left");
-				i++;
+		let credits = KDPatrons;//TextGet("KinkyDungeonPatronsList" + x).split('|');
+		DrawTextKD(TextGet("KinkyDungeonPatronsList"), 550, 25, "#ffffff", KDTextGray2, undefined, "left");
+		let col = 0;
+		let iter = 1;
+		let height = 30;
+		let maxPatron = Math.floor(975/height);
+		let maxcolumn = 6;
+		let colwidth = 250;
+		for (let i = KinkyDungeonPatronPos * maxPatron; i < credits.length; i++) {
+			let c = credits[i];
+			let yy = 25 + height * iter;
+			DrawTextFitKD(c, 550 + colwidth * (col), yy, colwidth - 10, "#ffffff", KDTextGray2, 24, "left", 40);
+			iter++;
+			if (iter > maxPatron) {
+				iter = 1;
+				col += 1;
 			}
+			if (col > maxcolumn) break;
 		}
 
 
 		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), "#ffffff", "");
-		DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
+		DrawButtonKDEx("patronnext", (bdata) => {
+			if (KinkyDungeonPatronPos * maxPatron < credits.length - maxPatron * maxPatron) KinkyDungeonPatronPos += 1;
+			else KinkyDungeonPatronPos = 0;
+			return true;
+		}, true, 1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 		//DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 	} else if (KinkyDungeonState == "Menu") {
 		KinkyDungeonGameFlag = false;
@@ -1055,8 +1071,10 @@ function KinkyDungeonRun() {
 				CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
 			}
 			KinkyDungeonConfigAppearance = true;
-			CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
-			CharacterRefresh(KinkyDungeonPlayer);
+			if (appearance) {
+				CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
+				CharacterRefresh(KinkyDungeonPlayer);
+			}
 			return true;
 		}, true, 30, 942, 440, 50, TextGet("KinkyDungeonDressPlayer"), "#ffffff", "");
 
@@ -2351,10 +2369,6 @@ function KinkyDungeonHandleClick() {
 		if (MouseIn(1870, 930, 110, 64)) {
 			KinkyDungeonState = "Menu";
 			return true;
-		}
-		if (MouseIn(1730, 930, 110, 64)) {
-			if (KinkyDungeonPatronPos < 1) KinkyDungeonPatronPos += 1;
-			else KinkyDungeonPatronPos = 0;
 		}
 	} else if (KinkyDungeonState == "Journey") {
 		if (MouseIn(875, 350, 750, 64)) {

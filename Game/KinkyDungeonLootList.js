@@ -179,7 +179,11 @@ let KinkyDungeonLootTable = {
 		{name: "trap_armbinder", minLevel: 1, weight:1, message:"LootChestTrapMagic", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms"], power: 6},
 	],
 	"chest": [
-		{name: "gold", minLevel: 0, weight:10, message:"LootChestGold", messageColor:"#ffff00", messageTime: 3, allFloors: true},
+		{name: "ArrowFireSpell", spell: "ArrowFireSpell", nospell: ["ArrowFireSpell"], minLevel: 0, weight: 1.25, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisite: ["hasBow"]},
+		{name: "ArrowVineSpell", spell: "ArrowVineSpell", nospell: ["ArrowVineSpell"], minLevel: 0, weight: 1.25, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisite: ["hasBow"]},
+
+		{name: "archerykit", minLevel: 0, weight: 4, noweapon: ["Bow"], message:"LootArcheryKit", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "gold", minLevel: 0, weight:1, message:"LootChestGold", messageColor:"#ffff00", messageTime: 3, allFloors: true},
 		{name: "magicknife", minLevel: 0, weight:1.5, weapon: "EnchKnife", message:"LootChestMagicKnife", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["EnchKnife"]},
 		{name: "bluekey", redspecial: 8.5, key: true, minLevel: 3, weight:0.65, message:"LootChestBlueKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		{name: "weapon_boltcutters", minLevel: 5, weight:0.7, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["BoltCutters"]},
@@ -195,7 +199,9 @@ let KinkyDungeonLootTable = {
 		{name: "ChainSword", minLevel: 0, weight:1, weapon: "ChainSword", noweapon: ["ChainSword"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Dirk", minLevel: 0, weight:1, weapon: "Dirk", noweapon: ["Dirk"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Foil", minLevel: 0, weight:0.5, weapon: "Foil", noweapon: ["Foil"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Crossbow", minLevel: 0, weight:1.5, weapon: "Crossbow", noweapon: ["Crossbow"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "BagOfGoodies", arousalMode: true, minLevel: 0, weight:0.5, weapon: "BagOfGoodies", noweapon: ["BagOfGoodies"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "VibeRemote", arousalMode: true, minLevel: 0, weight:0.5, weapon: "VibeRemote", noweapon: ["VibeRemote"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		...KDBasicArmor, ...KDBasicArmor_Cursed,
 		/*{name: "trap_armbinder", trap: true, minLevel: 1, weight:2, message:"LootChestTrapMagic", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms", "ModerateRestraint"], power: 6},
 		{name: "trap_armbinderHeavy", minLevel: 1, weight:2, message:"LootChestTrapMagicHarness", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms", "ModerateRestraint"], submissive: 15, power: 8},
@@ -230,6 +236,7 @@ let KinkyDungeonLootTable = {
 		{name: "Katana", minLevel: 3, weight:0.8, weapon: "Katana", noweapon: ["Katana"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 
 		{name: "StaffTape", minLevel: 0, weight:1, weapon: "StaffTape", noweapon: ["StaffTape"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "DildoBatPlus", minLevel: 0, weight:1.0, weapon: "DildoBatPlus", noweapon: ["DildoBatPlus"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 
 		{name: "StaffFlame", minLevel: 0, weight:1, weapon: "StaffFlame", noweapon: ["StaffFlame"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "StaffChain", minLevel: 0, weight:1, weapon: "StaffChain", noweapon: ["StaffChain"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
@@ -295,6 +302,7 @@ let KinkyDungeonLootTable = {
 		{name: "manaorb", minLevel: 0, weight:4, message:"LootManaOrb", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "biggold", minLevel: 0, weight:10, message:"LootChestGold", messageColor:"#ffff00", messageTime: 3, allFloors: true},
 		{name: "magicknife", minLevel: 0, weight:2.5, weapon: "EnchKnife", message:"LootChestMagicKnife", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["EnchKnife"]},
+		{name: "MagicRope", arousalMode: true, minLevel: 0, weight:4, weapon: "MagicRope", noweapon: ["MagicRope"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "scrolls_basic", minLevel: 0, weight: 1.75, message:"LootChestScrollsBasic", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "scrolls_purity", minLevel: 0, weight: 0.75, message:"LootChestScrollsPurity", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "spell_illusion_low", magic: true, minLevel: 0, weight: 0.75, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["UnlearnedIllusion", "lowlevel"]}, // lowlevel is spell levels 1-2
@@ -318,6 +326,7 @@ let KinkyDungeonLootTable = {
 		{name: "potions_many", minLevel: 1, weight:2, message:"LootPotionsMedley", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["lowpotions"]},
 		{name: "grinder", minLevel: 1, weight:2, message:"LootChestGrinder", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "PotionCollar", minLevel: 1, weight:0.5, message:"LootPotionCollar", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["PotionCollar"]},
+		{name: "SlimeWalkers", minLevel: 1, weight:0.5, message:"LootSlimeWalkers", messageColor:"lightblue", messageTime: 3, allFloors: true, norestraint: ["SlimeWalkers"]},
 	],
 
 };
@@ -325,6 +334,14 @@ let KinkyDungeonLootTable = {
 
 let KDLootEvents = {
 	"Armor": (Loot, Floor, Replacemsg, Lock) => {
+		return {
+			value: 0,
+			Replacemsg: Replacemsg,
+		};
+	},
+	"archerykit": (Loot, Floor, Replacemsg, Lock) => {
+		KinkyDungeonInventoryAddWeapon("Bow");
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
 		return {
 			value: 0,
 			Replacemsg: Replacemsg,

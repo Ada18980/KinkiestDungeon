@@ -2628,8 +2628,8 @@ function KDGetLockVisual(item) {
  * @param {boolean} NoStack
  * @param {string} Lock
  * @param {item} [r]
- * @param {boolean} [Deep]
- * @param {boolean} [noOverpower]
+ * @param {boolean} [Deep] - allow linking under
+ * @param {boolean} [noOverpower] - not allowed to replace items that currently exist
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {boolean} [useAugmentedPower] - Bypass is treated separately for these groups
  * @param {string} [curse] - Bypass is treated separately for these groups
@@ -2642,7 +2642,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	if (restraint.shrine && restraint.shrine.includes("Vibes") && KinkyDungeonPlayerTags.get("NoVibes")) return false;
 	if (restraint.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
 	if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug")) return false;
-	if (restraint.Group == "ItemNipplesPiercing" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
+	//if (restraint.AssetGroup == "ItemNipplesPiercings" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
 
 	function bypasses() {
 		return (Bypass || restraint.bypass || !KDGroupBlocked(restraint.Group, true) || KDEnemyPassesSecurity(restraint.Group, securityEnemy));
@@ -2693,7 +2693,6 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	}
 	return false;
 }
-
 
 /**
  *
@@ -3724,6 +3723,7 @@ let KDRopeParts = {
 	"Cuffs": {},
 	"CuffsAdv": {},
 	"Hogtie": {enemyTagSuffix: "_hogtie"},
+	"HogtieWrist": {enemyTagSuffix: "_hogtie"},
 	"Feet": {},
 	"Legs": {},
 	"Belt": {},
@@ -3746,7 +3746,7 @@ let KDRopeParts = {
  * @param {LayerFilter} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, basePower, properties, extraEvents, baseStruggle, multStruggle, Filters, baseWeight = 10) {
+function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents, baseStruggle, multStruggle, Filters, baseWeight = 10) {
 	for (let part of Object.entries(KDRopeParts)) {
 		let ropePart = part[0];
 		// Only if we have something to copy
@@ -3756,11 +3756,15 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, baseP
 			/** @type {Record<string, number>} */
 			let enemyTags = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
+			let shrine = Object.assign(KDGetRestraintTags(origRestraint), allTag);
+			for (let t of removeTag) {
+				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);
+			}
 			/** @type {KDRestraintPropsBase} */
 			let props = {
 				Model: origRestraint.Model + ModelSuffix,
 				power: origRestraint.power + basePower,
-				shrine: Object.assign(KDGetRestraintTags(origRestraint), ...allTag),
+				shrine: shrine,
 				enemyTags: enemyTags,
 				events: Object.assign(Object.assign([], origRestraint.events), extraEvents),
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
@@ -3804,7 +3808,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, baseP
  * @param {LayerFilter} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, basePower, properties, extraEvents, baseStruggle, multStruggle, Filters, baseWeight = 100) {
+function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents, baseStruggle, multStruggle, Filters, baseWeight = 100) {
 	for (let part of Object.entries(KDSlimeParts)) {
 		let restraintPart = part[0];
 		// Only if we have something to copy
@@ -3815,11 +3819,15 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 			let enemyTags = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Random"] = baseWeight + 3;
+			let shrine = Object.assign(KDGetRestraintTags(origRestraint), allTag);
+			for (let t of removeTag) {
+				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);
+			}
 			/** @type {KDRestraintPropsBase} */
 			let props = {
 				Model: origRestraint.Model + ModelSuffix,
 				power: origRestraint.power + basePower,
-				shrine: Object.assign(KDGetRestraintTags(origRestraint), ...allTag),
+				shrine: shrine,
 				enemyTags: enemyTags,
 				events: Object.assign(Object.assign([], origRestraint.events), extraEvents),
 				escapeChance: Object.assign({}, origRestraint.escapeChance),

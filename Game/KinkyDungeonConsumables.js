@@ -58,32 +58,40 @@ function KinkyDungeonGetShopItem(Level, Rarity, Shop) {
 			Table.push(exc);
 		}
 	}
+	if (KinkyDungeonStatsChoice.get('arousalMode')) {
+		if (params.ShopExclusivesArousal) {
+			for (let exc of params.ShopExclusivesArousal) {
+				Table.push(exc);
+			}
+		}
+	}
 	/**@type {Record<string, any>} */
 	let Shopable = Object.entries(KinkyDungeonConsumables).filter(([k, v]) => (v.shop));
 	for (let S = 0; S < Shopable.length; S++) {
 		let s = Shopable[S][1];
 		s.shoptype = "Consumable";
-		Table.push(s);
+		if ((KinkyDungeonStatsChoice.get('arousalMode') || !KinkyDungeonConsumables[s.name].arousalMode))
+			Table.push(s);
 	}
 	Shopable = Object.entries(KinkyDungneonBasic).filter(([k, v]) => (v.shop));
 	for (let S = 0; S < Shopable.length; S++) {
 		let s = Shopable[S][1];
 		s.shoptype = "Basic";
-		if (!s.ignoreInventory || !KinkyDungeonInventoryGet(s.ignoreInventory))
+		if ((!s.ignoreInventory || !KinkyDungeonInventoryGet(s.ignoreInventory)) && (KinkyDungeonStatsChoice.get('arousalMode') || !s.arousalMode))
 			Table.push(s);
 	}
 	Shopable = Object.entries(KinkyDungneonShopRestraints).filter(([k, v]) => (v.shop));
 	for (let S = 0; S < Shopable.length; S++) {
 		let s = Shopable[S][1];
 		s.shoptype = "Restraint";
-		if (!KinkyDungeonInventoryGet(s.name))
+		if (!KinkyDungeonInventoryGet(s.name) && (KinkyDungeonStatsChoice.get('arousalMode') || !s.arousalMode))
 			Table.push(s);
 	}
 	Shopable = Object.entries(KinkyDungeonWeapons).filter(([k, v]) => (v.shop));
 	for (let S = 0; S < Shopable.length; S++) {
 		let s = Shopable[S][1];
 		s.shoptype = "Weapon";
-		if (!KinkyDungeonInventoryGet(s.name))
+		if (!KinkyDungeonInventoryGet(s.name) && (KinkyDungeonStatsChoice.get('arousalMode') || !KinkyDungeonWeapons[s.name].arousalMode))
 			Table.push(s);
 	}
 

@@ -183,7 +183,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 	} else if (handBondage && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
 		KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, handBondage));
 	}
-	if (KinkyDungeonStatsChoice.get("Brawler") && !KinkyDungeonPlayerDamage.name) {
+	if (KinkyDungeonStatsChoice.get("Brawler") && isUnarmed(KinkyDungeonPlayerDamage)) {
 		KinkyDungeonPlayerDamage.dmg += KDBrawlerAmount;
 	} else {
 		if (KinkyDungeonSlowLevel > 1 && (!KinkyDungeonPlayerDamage.name || weapon.unarmed)) {
@@ -195,6 +195,13 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 	}
 
 	return KinkyDungeonPlayerDamage;
+}
+/**
+ * @param {weapon} weapon
+ * @returns true if the weapon represents Unarmed
+ */
+function isUnarmed(weapon) {
+	return !weapon || !weapon.name || weapon.name == "Unarmed";
 }
 
 
@@ -920,7 +927,9 @@ function KinkyDungeonAttackEnemy(Enemy, Damage) {
 	let evaded = KinkyDungeonEvasion(Enemy, undefined, undefined, KinkyDungeonPlayerEntity);
 	let dmg = Damage;
 	let buffdmg = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg");
+	let channel = KinkyDungeonPlayerDamage?.channel || 0;
 	let predata = {
+		channel: channel,
 		targetX: Enemy.x,
 		targetY: Enemy.y,
 		enemy: Enemy,
@@ -983,6 +992,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage) {
 		Enemy.disarmflag += Enemy.Enemy.disarm;
 	}
 	let data = {
+		channel: predata.channel,
 		targetX: Enemy.x,
 		targetY: Enemy.y,
 		enemy: Enemy,
@@ -992,6 +1002,12 @@ function KinkyDungeonAttackEnemy(Enemy, Damage) {
 		vulnConsumed: predata.vulnConsumed,
 	};
 	KinkyDungeonSendEvent("playerAttack", data);
+
+	if (data.channel) {
+		KinkyDungeonSetFlag("channeling", data.channel);
+		KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, data.channel);
+		KinkyDungeonSleepTime = CommonTime() + 200;
+	}
 
 	KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "damage", 1);
 	KinkyDungeonTickBuffTag(Enemy.buffs, "incomingHit", 1);
@@ -1283,8 +1299,8 @@ function KDCheckCollideableBullets(entity, force) {
 				&& (b.time > 1 // Only bullets that arent instantly ending
 					&& (!entity.player || !(b.vx != 0 || b.vy != 0)))) {// Enemies can run into bullets as they move, but the player can walk into bullets that are moving without being hit
 			let pierce = b.bullet.spell && (b.bullet.spell.piercing || b.bullet.spell.pierceEnemies);
-			let noDirect = b.bullet.spell && (b.bullet.spell.noDirectDamage);
-			if (noDirect && b.bullet.damage.damage != 0) continue;
+			//let noDirect = b.bullet.spell && (b.bullet.spell.noDirectDamage);
+			//if (noDirect && b.bullet.damage.damage != 0) continue;
 			if (pierce && b.bullet.damage.damage != 0) continue;
 			if (!KDBulletCanHitEntity(b, entity) && !force) continue;
 
@@ -1681,8 +1697,8 @@ function KinkyDungeonBulletsCheckCollision(bullet, AoE, force, d, inWarningOnly,
 		if ((AoE || (bullet.vx != 0 || bullet.vy != 0))) { // Moving bullets always have a chance to hit, while AoE only has a chance to hit when AoE is explicitly being checked
 			if (bullet.bullet.aoe ? KDBulletAoECanHitEntity(bullet, KinkyDungeonPlayerEntity) : KDBulletCanHitEntity(bullet, KinkyDungeonPlayerEntity, inWarningOnly)) {
 				if (!bullet.bullet.spell || bullet.born < 1 || (bullet.vx == 0 && bullet.vy == 0) || bullet.bullet.spell.enemySpell) { // Projectiles just born cant hurt you, unless they're enemy projectiles
-					if (!(!bullet.secondary && bullet.bullet.spell && bullet.bullet.spell.noDirectDamage))
-						KDBulletHitPlayer(bullet, KinkyDungeonPlayerEntity);
+					//if (!(!bullet.secondary && bullet.bullet.spell && bullet.bullet.spell.noDirectDamage))
+					KDBulletHitPlayer(bullet, KinkyDungeonPlayerEntity);
 					hitEnemy = true;
 				}
 			}
@@ -1690,10 +1706,10 @@ function KinkyDungeonBulletsCheckCollision(bullet, AoE, force, d, inWarningOnly,
 			for (let enemy of KinkyDungeonEntities) {
 				let overrideCollide = !bullet.bullet.aoe ? false : (bullet.bullet.spell && bullet.bullet.alwaysCollideTags && bullet.bullet.alwaysCollideTags.some((tag) => {return enemy.Enemy.tags[tag];}));
 				if (bullet.bullet.aoe ? KDBulletAoECanHitEntity(bullet, enemy) : KDBulletCanHitEntity(bullet, enemy, inWarningOnly, overrideCollide)) {
-					if (!(!bullet.secondary && bullet.bullet.spell && bullet.bullet.spell.noDirectDamage)) {
-						KDBulletHitEnemy(bullet, enemy, d, nomsg);
-						nomsg = true;
-					}
+					//if (!(!bullet.secondary && bullet.bullet.spell && bullet.bullet.spell.noDirectDamage)) {
+					KDBulletHitEnemy(bullet, enemy, d, nomsg);
+					nomsg = true;
+					//}
 					hitEnemy = true;
 				}
 			}
@@ -1800,7 +1816,11 @@ function KDBulletHitEnemy(bullet, enemy, d, nomsg) {
 		if (bullet.bullet.faction == "Player")
 			KDHealRepChange(enemy, enemy.hp - origHP);
 	} else if (bullet.bullet.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
-		KinkyDungeonDamageEnemy(enemy, bullet.bullet.damage, true, nomsg, bullet.bullet.spell, bullet, undefined, d);
+	{
+		// Avoid damaging the enemy if its a no direct damage spell
+		if (!(!bullet.secondary && bullet.bullet.spell && bullet.bullet.spell.noDirectDamage))
+			KinkyDungeonDamageEnemy(enemy, bullet.bullet.damage, true, nomsg, bullet.bullet.spell, bullet, undefined, d);
+	}
 }
 
 // Gets ID for unique bullet hits
@@ -1994,6 +2014,9 @@ let KDPrereqs = {
 	"afterAmbush": (enemy, e, data) => {
 		return !enemy?.ambushtrigger;
 	},
+	"HaveDildoBatPlus": (enemy, e, data) => {
+		return KinkyDungeonPlayerWeapon == "DildoBatPlus";
+	}
 };
 function KDCheckPrereq(enemy, prereq, e, data) {
 	if (!prereq) return true;

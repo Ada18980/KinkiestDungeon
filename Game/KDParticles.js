@@ -141,10 +141,11 @@ function KDCreateVibeParticle() {
 	}
 
 	let locations = KDSumVibeLocations();
-	let vx = ((Math.random() > 0.5) ? -1 : 1) * 0.25;
+	let vx = ((Math.random() > 0.5) ? -1 : 1) * (0.1 + Math.random()*0.15);
 	let vy = -.15 + Math.random() * .3;
 	let breast = locations.includes("ItemBreast") || locations.includes("ItemNipples");
 	let cli = (locations.includes("ItemVulvaPiercings") || locations.includes("ItemPelvis"));
+	let forceSide = 0;
 	if (breast || cli) {
 		if (cli && (locations.length == 1 || Math.random() < 0.25)) {
 			vy = 0.25 + Math.random()*0.1;
@@ -152,9 +153,14 @@ function KDCreateVibeParticle() {
 		}
 		else if (breast && !Hogtied && (locations.length == 1 || Math.random() < 0.5)) {
 			if (StandalonePatched) {
-				let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Chest");
+				if (Math.random() > 0.5) forceSide = 1;
+				else forceSide = -1;
+				let pos = forceSide > 0 ? GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastRight") : GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastLeft");
 				x = pos.x;
 				y = pos.y;
+				vx = ((Math.random() > 0.5) ? -1 : 1) * (0.05 + Math.random()*0.12);
+				vy = -.1 + Math.random() * .3;
+				if ((forceSide > 0 && vx < 0) || (forceSide < 0 && vx > 0)) vx *= -1;
 			} else {
 				y -= 155;
 			}

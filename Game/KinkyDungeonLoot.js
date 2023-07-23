@@ -44,7 +44,7 @@ let cursedRestraintCache = {
 let KinkyDungeonSpecialLoot = false;
 let KinkyDungeonLockedLoot = false;
 
-function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, minWeight = 0.9, minWeightFallback = true) {
+function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, minWeight = 0.1, minWeightFallback = true) {
 	let lootWeightTotal = 0;
 	let lootWeights = [];
 
@@ -102,9 +102,19 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 				if (SpellList != null && KinkyDungeonGetUnlearnedSpells(minlevel, maxlevel, SpellList).length == 0) {
 					prereqs = false;
 				}
+
+				if (prereqs && loot.prerequisites.includes("hasBow")) {
+					prereqs = false;
+					for (let w of KinkyDungeonAllWeapon()) {
+						if (KinkyDungeonWeapons[w.name].tags?.includes("normalbow")) {
+							prereqs = true;
+							break;
+						}
+					}
+				}
 			}
 			if (KinkyDungeonGoddessRep.Ghost && loot.submissive && (KinkyDungeonGoddessRep.Ghost + 50 < loot.submissive)) prereqs = false;
-			if (loot.noweapon) {
+			if (prereqs && loot.noweapon) {
 				for (let w of loot.noweapon) {
 					if (KinkyDungeonInventoryGet(w)) {
 						prereqs = false;
@@ -112,7 +122,15 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 					}
 				}
 			}
-			if (loot.norestraint) {
+			if (prereqs && loot.nospell) {
+				for (let s of loot.nospell) {
+					if (KDHasSpell(s)) {
+						prereqs = false;
+						break;
+					}
+				}
+			}
+			if (prereqs && loot.norestraint) {
 				for (let r of loot.norestraint) {
 					if (KinkyDungeonInventoryGet(r)) {
 						prereqs = false;
@@ -121,7 +139,7 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 				}
 			}
 			// Check for cursed norestraint as well
-			if (loot.norestraintcursed) {
+			if (prereqs && loot.norestraintcursed) {
 				let id = loot.norestraintcursed + `${loot.curselevelmin || 0},${loot.curselevelmax || 0}`;
 				if (!cursedRestraintCache[id]) cursedRestraintCache[id] = [...KinkyDungeonGetCurses(loot.norestraintcursed, true, loot.curselevelmin, loot.curselevelmax)];
 				for (let r of cursedRestraintCache[id]) {
@@ -231,6 +249,11 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		KinkyDungeonInventoryAddWeapon(Loot.weapon);
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItem" + Loot.weapon));
+	}
+	if (Loot.spell) {
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell(Loot.spell, true));
+		if (Replacemsg)
+			Replacemsg = Replacemsg.replace("SpellLearned", TextGet("KinkyDungeonSpell" + Loot.spell));
 	}
 	else if (Loot.armor) {
 		let armor = Loot.armor;

@@ -73,6 +73,7 @@ interface consumable {
 	spell?: string,
 	potion?: boolean,
 	noHands?: boolean,
+	arousalMode?: boolean,
 	/** Data var */
 	data?: Record<string, string|number>,
 	/** Requirement that overrides all other requirements */
@@ -384,6 +385,8 @@ interface KDRestraintPropsBase {
 	escapeMult?: number,
 	/** Clothes for dressing */
 	alwaysDress?: overrideDisplayItem[],
+	/** Clothes for dressing */
+	alwaysDressModel?: alwaysDressModel[],
 	/** The item always bypasses covering items, such as dresses and chastity belts */
 	bypass?: boolean,
 	/** The item can only be cut with magical implements */
@@ -530,6 +533,7 @@ interface floorParams {
 	max_height : number,
 
 	ShopExclusives? : string[],
+	ShopExclusivesArousal? : string[],
 
 	enemyTags: string[],
 	"defeat_outfit": outfitKey,
@@ -546,18 +550,30 @@ interface overrideDisplayItem {
 	Item: string,
 	/** Group */
 	Group: string,
+	/** Standalone model */
+	Model?: string,
 	/** Color */
 	Color: string[]|string,
 	/** Filters */
 	Filters?: Record<string, LayerFilter>,
 	/** Faction color index */
 	factionColor?: number[][],
+	/** Property for BC compat */
+	Property?: any,
 	/** Whether or not it overrides items already on */
 	override?: boolean,
 	/** Uses the player's hair color as the item color */
 	useHairColor?: boolean,
 	/** Used for overriding BC priority */
 	OverridePriority?: number[]|number,
+}
+interface alwaysDressModel {
+	/** Standalone club asset */
+	Model: string,
+	/** Filters */
+	Filters?: Record<string, LayerFilter>,
+	/** Faction color index */
+	factionColor?: number[][],
 }
 
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
@@ -1081,7 +1097,12 @@ interface weapon {
 	events?: KinkyDungeonEvent[];
 	noHands?: boolean;
 	silent?: boolean;
+	/** Weapon cant be used with arm bondage */
+	clumsy?: boolean;
+	/** Skip turns after attacking */
+	channel?: number;
 	novulnerable?: boolean;
+	tags?: string[];
 	special?: {
 		type: string,
 		spell?: string,
@@ -1497,6 +1518,8 @@ interface spell {
 	special?: string;
 	/** Damage of the spell */
 	power?: number;
+	/** Amount of aoe power */
+	aoedamage?: number;
 	/** Damage type */
 	damage?: string;
 	/** size of sprite */
@@ -2044,6 +2067,8 @@ interface KDBondage {
 	healthStruggleBoost: number,
 	/** Multiplier for the power component of struggle */
 	powerStruggleBoost: number,
+	/** Multiplier for command level */
+	mageStruggleBoost?: number,
 }
 
 interface KDCursedVar {

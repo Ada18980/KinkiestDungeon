@@ -9,11 +9,15 @@ let KinkyDungeonEnemies = [
 		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "FactoryDoll", bound: "FactoryDoll", playLine: "Gagged", tags: KDMapInit(["prisoner", "dollmakerconvert", "doll", "human", "minor", "peaceful", "noshop"]), faction: "Prisoner", lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: 0.1,
-		visionRadius: 0, maxhp: 12, minLevel:0, weight:-10, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0,
+		visionRadius: 0, maxhp: 12, minLevel:0, weight:-10, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		Behavior: {noPlay: true},
 		terrainTags: {"bellowsDoll": 20}, allFloors: true},
 	{name: "DollmakerTarget", bound: "FactoryDoll", playLine: "Gagged", tags: KDMapInit(["prisoner", "escapeddoll", "doll", "human", "minor", "peaceful", "noshop"]),
-		faction: "Prisoner", lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: 0.01,
+		faction: "Prisoner", lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: 0.01, events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		visionRadius: 0, maxhp: 8, minLevel:0, weight:-10, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0,
 		Behavior: {noPlay: true},
 		ondeath: [{type: "dollID"}],
@@ -117,14 +121,19 @@ let KinkyDungeonEnemies = [
 		visionRadius: 20, playerBlindSight: 100, maxhp: 8, minLevel:0, weight:-1000, movePoints: 1, attackPoints: 1, attack: "MeleeWill", attackRange: 1, attackWidth: 3, power: 1, dmgType: "slash", CountLimit: true,
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "AllyDoll", bound: "AllyDoll", color: "#9c2a70", tags: KDMapInit(["human", "player", "gagged", "blindfold", "melee", "glueimmune", "tickleweakness", "nohelp"]), allied: true, armor: 0, followRange: 1, AI: "hunt",
-		visionRadius: 20, playerBlindSight: 100, maxhp: 8, regen: -0.1, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 2, attack: "MeleeWill", attackRange: 1, attackWidth: 1, power: 1.5, dmgType: "glue",
+		visionRadius: 20, playerBlindSight: 100, maxhp: 8, regen: -0.1, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 2, attack: "MeleeWill", attackRange: 1, attackWidth: 1, power: 1.5, dmgType: "glue", events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "PetChastity", bound: "AllyDoll", color: "#8888ff", tags: KDMapInit(["human", "player", "gagged", "blindfold", "melee", "charmresist", "soulweakness", "tickleweakness", "nohelp"]), armor: 1.0, followRange: 1, AI: "hunt",
-		visionRadius: 6, maxhp: 8, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 2, attack: "MeleeWill", attackRange: 1, attackWidth: 1, power: 2, dmgType: "charm",
+		visionRadius: 6, maxhp: 8, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 2, attack: "MeleeWill", attackRange: 1, attackWidth: 1, power: 2, dmgType: "charm", events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "Pet", color: "#8888ff", tags: KDMapInit(["human", "player", "gagged", "melee", "tickleweakness", "nohelp"]), allied: true, armor: 0, followRange: 4, AI: "hunt",
 		events: [
 			{trigger: "calcManaPool", type: "PetManaRegen", power: 0.01, dist: 1.5},
+			{trigger: "tick", type: "secretToy"},
 		],
 		visionRadius: 20, playerBlindSight: 100, maxhp: 10, minLevel:0, weight:-1000, movePoints: 1, attackPoints: 2, attack: "", attackRange: 0, power: 1.5, dmgType: "tickle", focusPlayer: true,
 		terrainTags: {}, floors:KDMapInit([])},
@@ -132,7 +141,9 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "calcManaPool", type: "PetManaRegen", power: 0.04, dist: 3.99},
 			{trigger: "tick", type: "DisplayAura", power: 0.5, dist: 3.99},
+			{trigger: "tick", type: "secretToy"},
 		],
+		evasion: -9,
 		visionRadius: 0, playerBlindSight: 100, maxhp: 15, minLevel:0, weight:-1000, movePoints: 9999, attackPoints: 2, attack: "", attackRange: 0, power: 1.5, dmgType: "tickle", focusPlayer: true,
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "PlayerGag", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "player", "melee", "temporary", "notalk"]), noblockplayer: true, allied: true, armor: 0, followRange: 1, AI: "guard", accuracy: 1.5, noTargetSilenced: true,
@@ -257,20 +268,26 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 10}, {name: "Scissors", ignoreInInventory: true, weight: 10}, {name: "EnchKnife", ignoreInInventory: true, weight: 1}, {name: "Rope", weight: 100, ignoreInInventory: true},]},
 
 	{name: "Maidforce", faction: "Maidforce", bound: "Maid", clusterWith: "maid", playLine: "SubMaid", color: "#814BB7", tags: KDMapInit(["leashing", "submissive", "tickleweakness", "imprisonable", "opendoors", "human", "maid", "melee", "ropeRestraints", "ropeRestraints2", "handcuffer", "maidVibeRestraintsLimited", "maidRestraintsLight", "jail", "search"]), blindSight: 3, followRange: 1, AI: "hunt",
-		stealth: 4, noReveal: true, bindOnDisableSpecial: true, bindOnDisable: true, hitsfx: "Tickle",
+		stealth: 4, noReveal: true, bindOnDisableSpecial: true, bindOnDisable: true, hitsfx: "Tickle", events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		specialCD: 3, specialAttack: "BindLock", specialCDonAttack: true,
 		visionRadius: 6, maxhp: 8, minLevel:0, weight:-2, movePoints: 2, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "tickle", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":1, "lastthird":1, "illusionAnger": 22, "illusionRage": 12, "increasingWeight":-1, "maid": 9}, shrines: ["Illusion"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}]},
 	{name: "MaidforcePara", faction: "Maidforce", bound: "MaidforcePara", clusterWith: "maid", playLine: "DomMaid", color: "#814BB7", tags: KDMapInit(["leashing", "antiMagic", "opendoors", "imprisonable", "tickleweakness", "guardCall", "human", "miniboss", "maid", "ranged", "ropeRestraints", "ropeRestraints2", "handcuffer", "maidVibeRestraintsLimited", "maidRestraintsLight", "hunter"]), followLeashedOnly: true, blindSight: 5, followRange: 4, AI: "hunt", guardChance: 0.6, projectileAttack: true,
-		spells: ["ParasolBuff", "Hairpin", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, spellCooldownMult: 1, spellCooldownMod: 0, buffallies: true, kite: 2.5,
+		spells: ["ParasolBuff", "Hairpin", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, spellCooldownMult: 1, spellCooldownMod: 0, buffallies: true, kite: 2.5, events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		stealth: 3, disarm: 0.5, spellRdy: true,
 		visionRadius: 8, maxhp: 10, minLevel:0, weight:-2, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope",
 		terrainTags: {"secondhalf":1, "lastthird":1, "illusionAnger": 17, "illusionRage": 11, "maid": 6}, shrines: ["Illusion"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, ]},
 	{name: "MaidforceStalker", faction: "Maidforce", bound: "MaidforceStalker", clusterWith: "maid", playLine: "DomMaid", color: "#814BB7",
 		tags: KDMapInit(["leashing", "opendoors", "human", "maid", "melee", "maidRestraints", "handcuffer", "maidVibeRestraintsLimited", "unarmedresist", "antiMagic", "tickleweakness", "slashresist", "glueweakness", "chainweakness", "jail", "jailer", "hunter"]),
-		followLeashedOnly: true, blindSight: 5, followRange: 1, AI: "hunt", guardChance: 0.6, projectileAttack: true, evasion: 0.33,
+		followLeashedOnly: true, blindSight: 5, followRange: 1, AI: "hunt", guardChance: 0.6, projectileAttack: true, evasion: 0.33, events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		spells: ["FlashBomb", "MirrorImage"], spellCooldownMult: 1, spellCooldownMod: 0, kite: 2, dontKiteWhenDisabled: true, castWhileMoving: true,
 		stealth: 1,
 		visionRadius: 7, maxhp: 12, minLevel:4, weight:-2, movePoints: 1, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 1,
@@ -284,6 +301,7 @@ let KinkyDungeonEnemies = [
 	{name: "MaidforceMafia", faction: "Maidforce", bound: "MaidforceMafia", clusterWith: "maid", color: "#814BB7", playLine: "DomMaid", tags: KDMapInit(["leashing", "opendoors", "imprisonable", "tickleweakness", "human", "elite", "maid", "ranged", "maidRestraints", "handcuffer", "maidVibeRestraintsLimited", "jail", "jailer", "hunter"]), followLeashedOnly: true, followRange: 4, AI: "hunt", guardChance: 0.6, projectileAttack: true, evasion: -0.25,
 		spells: ["RubberBullets"],  spellCooldownMult: 1, spellCooldownMod: 0, kite: 3, noKiteWhenHarmless: true, noSpellsWhenHarmless: true,
 		events: [
+			{trigger: "tick", type: "secretToy"},
 			// It's supposed to be the light of the cigar
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffaa00"},
 		],
@@ -308,18 +326,22 @@ let KinkyDungeonEnemies = [
 
 	{name: "Skeleton", bound: "Skeleton", playLine: "Skeleton", clusterWith: "skeleton", tags: KDMapInit(["nosub", "leashing", "skeleton", "gagged", "melee", "ropeRestraints", "leatherRestraints", "clothRestraints", "coldresist", "crushweakness", "search"]), ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",
 		visionRadius: 4, maxhp: 5, minLevel:1, weight:8, movePoints: 2, attackPoints: 3, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1.0,
+		evasion: -0.1,
 		terrainTags: {"secondhalf":4, "increasingWeight":-0.5}, shrines: ["Leather"], floors:KDMapInit(["cat", "tmb"]), dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}]},
 	{name: "SummonedSkeleton", bound: "Skeleton", playLine: "Skeleton", clusterWith: "skeleton", tags: KDMapInit(["nosub", "leashing", "skeleton", "gagged", "melee", "coldresist", "ropeRestraints", "leatherRestraints", "clothRestraints", "crushweakness"]), ignorechance: 0, armor: 0, followRange: 1, AI: "guard",
 		visionRadius: 5, maxhp: 5, minLevel:1, weight:8, movePoints: 2, attackPoints: 3, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 0.5, dmgType: "grope", fullBoundBonus: 0.5,
+		evasion: -0.1,
 		terrainTags: {"lastthird":-8}, shrines: [], floors:KDMapInit([])},
 	{name: "LesserSkeleton", bound: "Skeleton", playLine: "Skeleton", noChaseUnrestrained: true, clusterWith: "skeleton", tags: KDMapInit(["nosub", "leashing", "ignorenoSP", "skeleton", "gagged", "melee", "coldresist", "crushweakness"]), ignorechance: 0, armor: 0, followRange: 1, AI: "wander", evasion: -2,
 		visionRadius: 1, maxhp: 2.5, minLevel:0, weight:10, movePoints: 2, attackPoints: 3, attack: "MeleeWillSlow", attackWidth: 1, attackRange: 1, power: 0.5, dmgType: "grope", fullBoundBonus: 0.5,
 		terrainTags: {"secondhalf":-8, "lastthird":-8, "increasingWeight":-1}, floors:KDMapInit(["cat", "tmb"])},
 	{name: "GreaterSkeleton", bound: "GreaterSkeleton", playLine: "Skeleton", clusterWith: "skeleton", tags: KDMapInit(["nosub", "leashing", "skeleton", "gagged", "melee", "unflinching", "elite", "coldresist", "crushweakness", "hunter"]), ignorechance: 0, armor: 1, followRange: 1.5, AI: "hunt", guardChance: 0.6, disarm: 0.5,
 		visionRadius: 4, maxhp: 10, minLevel:9, weight:5, movePoints: 3, attackPoints: 3, attack: "MeleeWillSlow", attackWidth: 3, attackRange: 1, power: 5, dmgType: "crush", fullBoundBonus: 0,
+		evasion: -0.4,
 		terrainTags: {"secondhalf":4, "lastthird":6, "increasingWeight":0.5}, floors:KDMapInit(["cat", "tmb", "tmp"]), dropTable: [{name: "PotionStamina", weight: 3}, {name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Hammer", weight: 50, ignoreInInventory: true}]},
 	{name: "HeavySkeleton", bound: "HeavySkeleton", playLine: "Skeleton", clusterWith: "skeleton", color: "#aaaaaa", tags: KDMapInit(["nosub", "leashing", "skeleton", "gagged", "melee", "unflinching", "elite", "coldresist", "crushweakness", "hunter", "obsidianRestraints"]), ignorechance: 0, armor: 2, followRange: 1.5, AI: "hunt", guardChance: 0.6, disarm: 0.5,
 		visionRadius: 6, maxhp: 16, minLevel:15, weight:4, movePoints: 3, attackPoints: 3, attack: "MeleeWillSlowBind", attackWidth: 3.6, attackRange: 1, power: 5, dmgType: "crush", fullBoundBonus: 3,
+		evasion: -0.4,
 		terrainTags: {"secondhalf":1, "lastthird":4, "increasingWeight":1}, floors:KDMapInit(["cat", "tmb", "tmp"]),
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Axe", weight: 50, ignoreInInventory: true}]},
 
@@ -388,6 +410,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
 	{name: "Frog", faction: "Witch", clusterWith: "beast", color: "#00FF44", tags: KDMapInit(["summoned", "beast", "ranged", "pierceweakness", "electricsevereweakness", "acidresist"]), followLeashedOnly: true, armor: 1, followRange: 1, AI: "hunt",
 		pullTowardSelf: true, pullDist: 3, master: {type: "Conjurer", range: 3}, projectileAttack: true, projectileTargeting: true,
+		evasion: -0.4,
 		visionRadius: 8, maxhp: 19, minLevel:0, weight:0, movePoints: 1.5, attackPoints: 2, attack: "MeleePullWill", attackRange: 4, attackWidth: 1, power: 4, strictAttackLOS: true, dmgType: "tickle",
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "Conjurer", faction: "Witch", clusterWith: "construct", bound: "Conjurer", playLine: "Witch", tags: KDMapInit(["leashing", "opendoors", "antiMagic", "conjurer", "closedoors", "witch", "ranged", "boss", "elite", "unflinching", "dressRestraints", "latexRestraints", "handcuffer"]), followRange: 1, summon: [{enemy: "Frog", range: 2.5, count: 1, strict: true}],
@@ -482,6 +505,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "VinePlant", faction: "Plant", clusterWith: "plant", color: "#00FF00", blockVisionWhileStationary: true, tags: KDMapInit(["nature", "removeDoorSpawn", "ignorenoSP", "plant", "minor", "melee", "slashsevereweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 2, followRange: 1, AI: "ambush", specialCD: 99, specialAttack: "Stun", specialAttackPoints: 1, specialRemove: "Bind", difficulty: 0.05, guardChance: 0,
+		evasion: -0.5,
 		visionRadius: 3, ambushRadius: 1.9, blindSight: 5, maxhp: 10, minLevel:2, weight:25, movePoints: 1.5, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
 	{name: "Bramble", faction: "Plant", clusterWith: "plant", color: "#00FF00", hitsfx: "DealDamage",
@@ -587,6 +611,7 @@ let KinkyDungeonEnemies = [
 		},
 		armor: 1.5, maxhp: 9, movePoints: 1.75,
 		visionRadius: 7, followRange: 1,
+		evasion: -0.1,
 		attack: "MeleeBind", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 2, dmgType: "glue", fullBoundBonus: 1,
 		minLevel:2, weight:15, terrainTags: {"oldrobot": 10, "tapePref": 10, "tapeOptout": -15}, shrines: ["Metal"], floors:KDMapInit(["bel"]),
 		dropTable: [{name: "Gold", amountMin: 7, amountMax: 15, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
@@ -611,6 +636,7 @@ let KinkyDungeonEnemies = [
 		armor: 2.0, maxhp: 20, movePoints: 9999, immobile: true,
 		visionRadius: 6.5, followRange: 999,
 		sneakThreshold: 1,
+		evasion: -9,
 		attack: "SpellMeleeWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 2, dmgType: "electric",
 		minLevel:0, weight:-50, terrainTags: {"oldrobot": 7, "oldrobotturret": 50, open: 50, "latexOptout": -100}, shrines: ["Latex"], floors:KDMapInit(["bel"]),
 		ondeath: [{type: "spellOnSelf", spell: "RubberSlime"}],
@@ -636,6 +662,7 @@ let KinkyDungeonEnemies = [
 		armor: 2.0, maxhp: 20, movePoints: 9999, immobile: true,
 		visionRadius: 8.5, followRange: 999,
 		sneakThreshold: 1,
+		evasion: -9,
 		attack: "SpellMeleeWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 2, dmgType: "electric",
 		minLevel: 7, weight:-50, terrainTags: {"oldrobot": 7, "oldrobotturret": 30, open: 50, "latexOptout": -24}, shrines: ["Latex"], floors:KDMapInit(["bel"]),
 		ondeath: [{type: "spellOnSelf", spell: "RubberSlime"}],
@@ -661,6 +688,7 @@ let KinkyDungeonEnemies = [
 		armor: 2, maxhp: 5, movePoints: 1.25,
 		visionRadius: 6, followRange: 1, projectileAttack: true, useLock: "Red",
 		bindOnDisable: true, suicideOnAdd: true,
+		evasion: 0.15,
 		specialCD: 30, specialAttack: "Stun", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 3, specialRange: 7, specialWidth: 1.5, specialMinrange: 3, specialsfx: "Laser", stunTime: 5,
 		attack: "MeleeBindSuicideWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 3, dmgType: "electric", multiBind: 2, fullBoundBonus: 6,
 		minLevel:0, weight:-4, terrainTags: {"secondhalf":0.5, "thirdhalf":0.5, "increasingWeight":0.25, "metalAnger": 4, "metalRage": 2, "metalPleased": 4, "metalFriendly": 4, "robot": 40}, shrines: ["Metal"], allFloors: true,
@@ -674,7 +702,7 @@ let KinkyDungeonEnemies = [
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
 		noDisplace: true, disarm: 0.5,
 		armor: 2,
-		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 10, minLevel: 0, weight:-100, movePoints: 1, attackPoints: 2, evasion: -0.4, focusPlayer: true,
+		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 10, minLevel: 0, weight:-100, movePoints: 1, attackPoints: 2, evasion: -0.2, focusPlayer: true,
 		attack: "MeleeBindLockWillStun", attackWidth: 3, attackRange: 1, power: 4, dmgType: "electric", stunTime: 1, attackLock: "Red",
 		RemoteControl: {
 			punishRemote: 4,
@@ -682,6 +710,7 @@ let KinkyDungeonEnemies = [
 		},
 		events: [
 			{trigger: "defeat", type: "delete", chance: 1.0},
+			{trigger: "tick", type: "secretToy"},
 		],
 		terrainTags: {"jailGuard": 100, "robot": 50,}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
 
@@ -698,6 +727,7 @@ let KinkyDungeonEnemies = [
 			Damage: "RobotHit",
 		},
 		armor: 2, maxhp: 10, movePoints: 2,
+		evasion: -0.2,
 		visionRadius: 6, followRange: 1, projectileAttack: true, useLock: "Red",
 		RemoteControl: {
 			punishRemote: 4,
@@ -719,6 +749,7 @@ let KinkyDungeonEnemies = [
 			Damage: "RobotHit",
 		},
 		armor: 2, maxhp: 14, movePoints: 3,
+		evasion: -0.35,
 		visionRadius: 6, followRange: 1, projectileAttack: true, useLock: "Red",
 		RemoteControl: {
 			punishRemote: 4,
@@ -740,6 +771,7 @@ let KinkyDungeonEnemies = [
 			Damage: "RobotHit",
 		},
 		armor: 2, maxhp: 10, movePoints: 1.7,
+		evasion: -0.2,
 		visionRadius: 6, followRange: 3.5, projectileAttack: true, useLock: "Red",
 		RemoteControl: {
 			punishRemote: 4,
@@ -762,6 +794,7 @@ let KinkyDungeonEnemies = [
 			Damage: "RobotHit",
 		},
 		armor: 2, maxhp: 20, movePoints: 4,
+		evasion: -0.5,
 		visionRadius: 9, followRange: 3.5, projectileAttack: true, useLock: "Red",
 		RemoteControl: {
 			punishRemote: 6,
@@ -785,6 +818,7 @@ let KinkyDungeonEnemies = [
 		summon: [
 			{enemy: "Drone", range: 2, count: 2, chance: 0.25, strict: true},],
 		armor: 2, maxhp: 24, movePoints: 4,
+		evasion: -0.5,
 		visionRadius: 9, followRange: 3.5, projectileAttack: true, useLock: "Red",
 		RemoteControl: {
 			punishRemote: 6,
@@ -795,19 +829,25 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 5, noSummon: true}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
 
 	{name: "AlchemistPet", faction: "Alchemist", clusterWith: "alchemist", bound: "AlchemistPet", playLine: "Gagged", color: "#007C59", tags: KDMapInit(["opendoors", "submissive", "noshop", "gagged", "imprisonable", "ignorenoSP", "alchemist", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]), ignorechance: 0, armor: 0, followRange: 2, AI: "hunt",
-		master: {type: "Alchemist", range: 2, loose: true, aggressive: true}, sneakThreshold: 1, blindSight: 2, projectileAttack: true, strictAttackLOS: true,
+		master: {type: "Alchemist", range: 2, loose: true, aggressive: true}, sneakThreshold: 1, blindSight: 2, projectileAttack: true, strictAttackLOS: true, events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		specialCD: 11, specialAttack: "DashStun", specialRemove: "Will", specialCDonAttack: true, specialAttackPoints: 2, specialRange: 4, specialMinrange: 1.5, specialsfx: "HeavySwing", stunTime: 4, stunOnSpecialCD: 4,
 		visionRadius: 6, maxhp: 10, minLevel:3, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"latexAnger": 2, "latexRage": 2, "alchemist": 2}, shrines: ["Latex"], allFloors: true,
 		dropTable: []},
 	{name: "WolfgirlPet", faction: "Nevermere", clusterWith: "nevermere", bound: "WolfgirlPet", playLine: "Gagged", color: "#009C79", tags: KDMapInit(["opendoors", "wolfSub", "nevermere", "submissive", "noshop", "gagged", "wolfPet", "alwaysAlert", "imprisonable", "wolfgirl", "minor", "ignorenoSP", "alchemist", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]), ignorechance: 0, armor: 0, followRange: 2, AI: "hunt",  cohesion: 0.9,
-		master: {type: "Wolfgirl", range: 2, loose: true, aggressive: true}, sneakThreshold: 1, blindSight: 2, projectileAttack: true, strictAttackLOS: true, difficulty: 0.5,
+		master: {type: "Wolfgirl", range: 2, loose: true, aggressive: true}, sneakThreshold: 1, blindSight: 2, projectileAttack: true, strictAttackLOS: true, difficulty: 0.5, events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		specialCD: 11, specialAttack: "DashStun", specialRemove: "Will", specialCDonAttack: true, specialAttackPoints: 2, specialRange: 4, specialMinrange: 1.5, specialsfx: "HeavySwing", stunTime: 4, stunOnSpecialCD: 4,
 		visionRadius: 6, maxhp: 10, minLevel:0, weight:0.1, movePoints: 1, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"metalAnger": 3, "metalRage": 3, "metalPleased": 2, "metalFriendly": 2, "nevermere": 2}, shrines: ["Metal"], allFloors: true,
 		dropTable: []},
 	{name: "WolfGuard", faction: "Nevermere", clusterWith: "nevermere", bound: "WolfGuard", color: "#00dCa9", playLine: "Gagged", tags: KDMapInit(["opendoors", "wolfSub", "nevermere", "submissive", "noshop", "gagged", "wolfPet", "autoTape", "alwaysAlert", "leashing", "wolfLeash", "imprisonable", "wolfgirl", "ignorenoSP", "alchemist", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]),
-		ignorechance: 0, armor: 1, followRange: 2, AI: "hunt",  cohesion: 0.5,
+		ignorechance: 0, armor: 1, followRange: 2, AI: "hunt",  cohesion: 0.5, events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		master: {type: "Wolfgirl", range: 2, loose: true, aggressive: true}, sneakThreshold: 1, blindSight: 2, projectileAttack: true, strictAttackLOS: true,
 		specialCD: 9, specialAttack: "DashWill", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 2, specialRange: 4, specialMinrange: 1.5, specialsfx: "HeavySwing", stunTime: 4, stunOnSpecialCD: 4, specialDamage: "crush",
 		visionRadius: 6, maxhp: 16, minLevel:6, weight:0, movePoints: 1, attackPoints: 3, attack: "MeleeBind", attackWidth: 1, attackRange: 3, projectileTargeting: true, power: 2, dmgType: "electric", fullBoundBonus: 2,
@@ -877,7 +917,9 @@ let KinkyDungeonEnemies = [
 
 	{name: "WolfApprentice", faction: "Nevermere", clusterWith: "nevermere", bound: "Wolfgirl", color: "#00EFAB", playLine: "Wolfgirl",
 		tags: KDMapInit(["leashing", "imprisonable", "nevermere", "trainer", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "wolfRestraints", "melee", "elite", "unflinching", "glueweakness", "ticklesevereweakness", "iceresist", "electricresist", "charmweakness", "stunweakness", "unflinching", "jail", "jailer", "hunter"]),
-		spells: ["SummonWolfDrone"], spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt",  visionRadius: 10, maxhp: 9, minLevel:0, weight:1, movePoints: 2.5,
+		spells: ["SummonWolfDrone"], spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt",  visionRadius: 10, maxhp: 9, minLevel:0, weight:1, movePoints: 2.5, events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		RemoteControl: {
 			punishRemote: 3,
 			punishRemoteChance: 0.15,
@@ -897,6 +939,7 @@ let KinkyDungeonEnemies = [
 	{name: "WolfShieldDrone", faction: "Nevermere", clusterWith: "nevermere", color: "#00EFAB", playLine: "Robot",
 		tags: KDMapInit(["ignoreharmless", "robot", "wolfdrone", "nevermere", "flying", "acidweakness", "soulresist", "minor", "ranged", "electricsevereweakness", "wolfPet", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "search"]),
 		followRange: 3.9, kite: 2.5, difficulty: 0.2,
+		evasion: -0.2,
 		AI: "hunt",  visionRadius: 9, maxhp: 8, minLevel:0, weight:-4, movePoints: 1.5, cohesion: 1.0, armor: 1.5, spellResist: 1.5,
 		attackPoints: 3, attack: "", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "grope",
 		terrainTags: {"metalAnger": 4, "metalRage": 4, "nevermere": 8}, allFloors: true, shrines: ["Metal"],
@@ -941,7 +984,9 @@ let KinkyDungeonEnemies = [
 		factionrep: {"Maidforce": 0.005},
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 10}, {name: "Knife", ignoreInInventory: true, weight: 2}, {name: "Rope", weight: 100, ignoreInInventory: true},]},
 	{name: "BanditPet", faction: "Bandit", clusterWith: "human", playLine: "Gagged", bound: "BanditPet", tags: KDMapInit(["opendoors", "submissive", "noshop", "gagged", "imprisonable", "cacheguard", "closedoors", "leashing", "bandit", "melee", "minor", "ballGagRestraints", "ropeRestraints", "tickleweakness", "chainweakness", "glueweakness", "jail", "search"]), cohesion: 0.9, armor: 0, followRange: 1, AI: "hunt",
-		master: {type: "BanditChief", range: 2, loose: true, aggressive: true}, difficulty: 0.7,
+		master: {type: "BanditChief", range: 2, loose: true, aggressive: true}, difficulty: 0.7, events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		visionRadius: 6, maxhp: 8, minLevel:0, weight:13, movePoints: 1, attackPoints: 3, attack: "MeleeBindLockWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"thirdhalf":-1, "increasingWeight":-1}, shrines: ["Leather"], floors:KDMapInit(["jng", "cry"]),
 		dropTable: [{name: "Gold", amountMin: 1, amountMax: 5, weight: 10}, {name: "Feather", weight: 50, ignoreInInventory: true}]},
@@ -970,6 +1015,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "SlimeMoldSpawner", clusterWith: "mold", faction: "Mold", color: "#FF00FF", tags: KDMapInit(["mold", "immobile", "spawner", "melee", "moldRestraints", "meleeresist", "fireweakness", "glueresist", "acidweakness"]),
 		immobile: true, squeeze: true, followRange: 1, AI: "hunt",  sneakThreshold: 1, enemyCountSpellLimit: 40,
+		evasion: -9,
 		spells: ["SummonSlimeMold"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
 		visionRadius: 30, blindSight: 30, maxhp: 12, minLevel: 0, weight:-15, movePoints: 1000, attackPoints: 0, attack: "Spell", attackRange: 0, attackWidth: 1, power: 1, dmgType: "acid", fullBoundBonus: 5,
 		terrainTags: {"increasingWeight":0, "mold": 25, "maid": 15.25}, allFloors: true, shrines: ["Latex"], ondeath: [{type: "summon", enemy: "SlimeMold", range: 2.5, count: 4, strict: true}],
@@ -984,6 +1030,7 @@ let KinkyDungeonEnemies = [
 			"submissive", "noshop", "gagged", "imprisonable",
 		]),
 		ignorechance: 0, armor: 0, followRange: 2, AI: "hunt",  cohesion: 0.45, sneakThreshold: 1,
+		evasion: -0.25,
 		master: {type: "WitchSlime", range: 2, loose: true, aggressive: true},
 		visionRadius: 4.5, blindSight: 2.5, maxhp: 12, minLevel:2, weight:2, movePoints: 1.7,
 		attackPoints: 3, attack: "MeleeBindSlow", attackWidth: 1, attackRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 2,
@@ -1133,6 +1180,7 @@ let KinkyDungeonEnemies = [
 		],},
 	{name: "Toad", faction: "Beast", clusterWith: "beast", color: "#00FF44", tags: KDMapInit(["ignorenoSP", "beast", "soulresist", "ranged", "pierceweakness", "electricsevereweakness", "acidresist"]), followLeashedOnly: true, armor: 1, followRange: 1, AI: "hunt",
 		pullTowardSelf: true, pullDist: 3, master: {type: "GiantMushroom", range: 3}, projectileAttack: true, projectileTargeting: true,
+		evasion: -0.4,
 		visionRadius: 5, maxhp: 16, minLevel:0, weight:7, movePoints: 2, attackPoints: 3, attack: "MeleePullWill", attackRange: 5, attackWidth: 1, power: 2, strictAttackLOS: true, dmgType: "tickle",
 		terrainTags: {"increasingWeight":2, "secondhalf":3, }, floors:KDMapInit(["cry"]), dropTable: [{name: "Nothing", weight: 12}, {name: "WaterRune", weight: 3}]},
 	{name: "Mushy", faction: "Mushy", clusterWith: "mushroom", color: "#4fa4b8", difficulty: 0.2,
@@ -1314,6 +1362,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "OrbOfLight", clusterWith: "nature", color: "#ffff00", tags: KDMapInit(["opendoors", "ignorenoSP", "nature", "ghost", "ranged", "soulimmune", "unstoppable", "coldsevereweakness", "flying"]), cohesion: 1.0, cohesionRange: 10,
 		followLeashedOnly: true, ignorechance: 0, armor: 0, followRange: 3, AI: "hunt",  buffallies: true, spellRdy: true, sneakthreshold: 0.95,
+		evasion: -0.5,
 		spells: ["OrbHeal"], spellCooldownMult: 1, spellCooldownMod: 3, tilesMinRange: 1, stopToCast: true, kite: 1.5, kiteChance: 0.9,
 		visionRadius: 10, blindSight: 10, maxhp: 10, minLevel:3, weight:1.5, movePoints: 3, attackPoints: 4, attack: "SpellMeleeBlindWill", blindTime: 3, attackWidth: 8, attackRange: 1, power: 6, dmgType: "fire",
 		terrainTags: {"willAnger":4, "willRage":4, "magical": 4, "elf": 6}, shrines: ["Will"], allFloors: true, dropTable: [{name: "Ectoplasm", weight: 9}, {name: "ElfCrystal", weight: 3}],
@@ -1325,6 +1374,7 @@ let KinkyDungeonEnemies = [
 	{name: "Monolith", clusterWith: "chaos", color: "#ff5277",
 		tags: KDMapInit(["opendoors", "ignorenoSP", "construct", "poisonimmune", "soulimmune", "temple", "minor", "chaos", "ranged", "slashimmune", "unarmedresist", "pierceimmune", "fireresist", "unstoppable", "tickleresist", "groperesist", "electricresist", "flying"]),
 		cohesion: 0, cohesionRange: 10, difficulty: 0.3,
+		evasion: -2.0,
 		followLeashedOnly: true, ignorechance: 0, armor: 1, spellResist: 0.5, followRange: 2, AI: "guard", buffallies: true, spellRdy: false, sneakthreshold: 0.95,
 		spells: ["MonolithBeam"], spellCooldownMult: 1, spellCooldownMod: 0, stopToCast: true, kite: 1.5, kiteChance: 0.9,
 		visionRadius: 5, blindSight: 5, maxhp: 7, minLevel:10, weight:4, movePoints: 4, attackPoints: 4, attack: "Spell", attackWidth: 8, attackRange: 1, power: 3, dmgType: "fire",
@@ -1704,6 +1754,7 @@ let KinkyDungeonEnemies = [
 		Awareness: {
 			chaseradius: 15,
 		},
+		evasion: -1.4,
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  summon: [{enemy: "RopeMinion", range: 2.5, count: 4, strict: true}],
 		spells: ["RopeEngulf", "SummonRopeTentacle"], spellCooldownMult: 1, spellCooldownMod: 0, ignoreflag: ["kraken"], disarm: 0.25,
 		visionRadius: 9, maxhp: 60, minLevel: 3, weight:-31, movePoints: 4, attackPoints: 2, attack: "Spell", attackWidth: 1, attackRange: 1, power: 6, dmgType: "chain",
@@ -1730,6 +1781,7 @@ let KinkyDungeonEnemies = [
 			effect: {name: "SlimeEngulf", power: 4},
 		},
 		regen: 0.1,
+		evasion: -1.5,
 		ignorechance: 0.75, followRange: 1, AI: "hunt",
 		spells: ["SummonSlimeMinion"], spellCooldownMult: 1, spellCooldownMod: 0, ignoreflag: ["kraken"], disarm: 0.25,
 		visionRadius: 7.5, maxhp: 30, minLevel: 3, weight:-31, movePoints: 4, attackPoints: 3, attack: "MeleeWillBindEffectSpell", attackWidth: 3, attackRange: 1.5, power: 6, dmgType: "glue",
@@ -1744,6 +1796,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "SarcoKraken", faction: "KinkyConstruct", clusterWith: "construct", color: "#3b7d4f", tags: KDMapInit(["construct", "poisonresist", "soulimmune", "melee", "boss", "elite", "unflinching", "fireresist", "crushweakness", "chainweakness", "glueweakness", "hunter"]),
 		armor: 2.5, spellResist: 1.5,
+		evasion: -2.0,
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  summon: [{enemy: "SarcoMinion", range: 2.5, count: 3, strict: true}],
 		spells: ["SarcoHex", "SummonSarcoTentacle"], spellCooldownMult: 1, spellCooldownMod: 0, ignoreflag: ["kraken"],
 		events: [
@@ -1819,7 +1872,9 @@ let KinkyDungeonEnemies = [
 	{name: "DollsmithDoll", faction: "Enemy", clusterWith: "dollsmith", bound: "EncasedFactoryDoll", playLine: "Gagged", color: "#ff3388",
 		tags: KDMapInit(["opendoors", "doll", "smithdoll", "submissive", "noshop", "gagged", "alwaysAlert", "imprisonable", "minor", "ignorenoSP", "melee",
 			"glueresist", "electricresist", "ticklesevereweakness", "chainresist", "charmweakness", "crushresist"]),
-		ignorechance: 0, armor: 0, spellResist: 1.0, followRange: 2, AI: "hunt",  cohesion: 0.9,
+		ignorechance: 0, armor: 0, spellResist: 1.0, followRange: 2, AI: "hunt",  cohesion: 0.9, events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		master: {type: "Dollsmith", range: 2.5, loose: true, aggressive: true},
 		sneakThreshold: 1, difficulty: 0.05,
 		ignoreflag: ["dollSmithDoll"], failAttackflag: ["dollSmithDoll"],
@@ -1996,6 +2051,7 @@ let KinkyDungeonEnemies = [
 			"SummonBookCelestial",
 			"SummonBookElectric",
 			"EnemyCM1"], unlockCommandLevel: 2, unlockCommandCD: 12, stopToCast: true, spellRdy: true, noKiteWhenHarmless: true, noSpellsWhenHarmless: true,
+		evasion: -0.4,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffffff"},
 		],
@@ -2005,7 +2061,9 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "ScrollArms", weight: 2}, {name: "ScrollVerbal", weight: 2}, {name: "ScrollLegs", weight: 2}, {name: "ScrollPurity", weight: 1}]},
 
 	{name: "MummyCursed", bound: "MummyCursed", nopickpocket: true, color: "#55ff55", playLine: "GaggedMummy", faction: "Bast", tags: KDMapInit(["mimicBlock", "gagged", "removeDoorSpawn", "ignoreharmless", "darkvision", "mummy", "melee", "elite", "mummyRestraints", "coldresist", "fireweakness", "meleeweakness", "charmweakness"]),
-		evasion: -0.25, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", difficulty: 0.05, guardChance: 0,
+		evasion: -0.25, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", difficulty: 0.05, guardChance: 0, events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		visionRadius: 10, ambushRadius: 2.01, blindSight: 10, maxhp: 12, minLevel:0, weight:5, movePoints: 1, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "charm", fullBoundBonus: 1,
 		terrainTags: {"secondhalf":5, "lastthird":5, "door": 50}, floors:KDMapInit(["tmb"]), shrines: ["Will"],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 25}]},
@@ -2137,7 +2195,6 @@ let KinkyDungeonEnemies = [
 		visionRadius: 9, maxhp: 70, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "soul", fullBoundBonus: 4,
 		terrainTags: {}, floors:KDMapInit([]),
 		ondeath: [{type: "dialogue", dialogue:"DollmakerStage2", click: true}]},
-
 
 	{name: "DollmakerBoss2", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged",

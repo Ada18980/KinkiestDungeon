@@ -11,7 +11,7 @@
 // speed: speed of a "bolt" projectile
 // playerEffect: What happens when the effect hits a player
 // trail, trailchance, traildamage, traillifetime: for lingering projectiles left behind the projectile
-// onhit: What happens on AoE. Deals aoepower damage, or just power otherwise
+// onhit: What happens on AoE. Deals aoedamage damage, or just power otherwise
 
 let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 9, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
 	onhit:"", time:25, power: 0, range: 2.8, size: 1, damage: ""};
@@ -110,7 +110,7 @@ let KinkyDungeonLearnableSpells = [
 		// Strength
 		["IronWill", "SteadfastGuard", "WillStruggle", "Parry", "WillParry", "SteelParry", "GuardBoost", "DaggerParry", "Riposte"],
 		// Dex
-		["Athlete", "Sneaky", "Evasive1", "Evasive2", "Evasive3", "Vault", "VaultAdv"],
+		["Athlete", "Sneaky", "Evasive1", "Evasive2", "Evasive3", "Vault", "VaultAdv", "ArrowFireSpell", "ArrowVineSpell"],
 		// Intellect
 		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser2", "StaffUser3"],
 		// Misc
@@ -669,8 +669,11 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "CommandVibrate", prerequisite: "CommandWord", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], level:1,
 			type:"special", special: "CommandVibrate",
 			onhit:"", time:30, power: 5, range: 3.5, size: 1, aoe: 3.5, damage: "charm"},
+		{name: "CommandVibrateVibeRemote", prerequisite: "CommandWord", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: ["Verbal"], level:2,
+			type:"special", special: "CommandVibrateLV2",
+			onhit:"", time:30, power: 5, range: 3.5, size: 1, aoe: 3.5, damage: "charm"},
 		{name: "CommandVibrateBagOfGoodies", prerequisite: "CommandWord", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: ["Verbal"], level:1,
-			chargecost: 0.01,
+			chargecost: 0.015,
 			type:"special", special: "CommandVibrate",
 			onhit:"", time:15, power: 5, range: 3.5, size: 1, aoe: 2.5, damage: "charm"},
 		{name: "CommandOrgasm", prerequisite: "CommandVibrate", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], level:1,
@@ -882,6 +885,18 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			buffs: [
 				{id: "Evasion", type: "Evasion", labelcolor: "#a288b6", duration: 25, power: 3.0, player: true, enemies: true, maxCount: 5, tags: ["defense", "incomingHit"]},
 			], onhit:"", time:25, power: 0, range: 2, size: 1, damage: ""},
+
+
+		{name: "ArrowFireSpell", prerequisite: "ApprenticeFire", tags: ["offense", "aoe", "arrow"], school: "Elements", manacost: 0, defaultOff: true, cancelAutoMove: true, components: [], level:1, type:"passive",
+			events: [
+				{type: "ArrowFireSpell", trigger: "playerCast", tags: ["arrowreplace"], spell: "ArrowFire", power: 2, aoe: 1.5, time: 3, energyCost: .03, damage: "fire"},
+				{type: "ExclusiveTag", trigger: "toggleSpell", tags: ["arrow"]}
+			]},
+		{name: "ArrowVineSpell", prerequisite: "ApprenticeWater", tags: ["offense", "binding", "utility", "arrow"], school: "Elements", manacost: 0, defaultOff: true, cancelAutoMove: true, components: [], level:1, type:"passive",
+			events: [
+				{type: "ArrowVineSpell", trigger: "playerCast", tags: ["arrowreplace"], spell: "ArrowVine", bind: 5, time: 3, energyCost: .02, bindType: "Vine", damage: "chain"},
+				{type: "ExclusiveTag", trigger: "toggleSpell", tags: ["arrow"]}
+			]},
 	],
 };
 /**
@@ -930,7 +945,7 @@ let KinkyDungeonSpellListEnemies = [
 	},
 	{name: "BindVine", tags: ["offense", "nature", "binding"], sfx: "MagicSlash", school: "Conjure", manacost: 0.5, components: ["Verbal"],
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 3.0, time: 10, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "crush",
-		playerEffect: {name: "Bind", damage: "crush", power: 2, tag: "vineRestraints"},
+		playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "vineRestraints"},
 	},
 	{name: "BindChain", tags: ["offense", "metal", "binding"], sfx: "MagicSlash", school: "Conjure", manacost: 0.5, components: ["Verbal"],
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, power: 3.0, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "crush",
@@ -1053,6 +1068,17 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "SlimeSuit", sfx: "MagicSlash", school: "Illusion", manacost: 5, components: [], level:1, type:"special", special: "dress", outfit: "SlimeSuit", noMiscast: true,
 		onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 
+	{name: "DildoBatBuff", sfx: "Vibe", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, level:1, type:"buff", noMiscast: true,
+		buffs: [
+			{
+				id: "DildoBatBuff", type: "DildoBatBuff", duration: 11, power: 3.0, player: true, enemies: false, tags: [],
+				aura: "#ffff55", events: [
+					{trigger: "playerAttack", type: "ElementalEffect", power: 3.0, damage: "charm", prereq: "HaveDildoBatPlus"},
+				]
+			},
+		], onhit:"", time:10, power: 3.0, range: 2, size: 1, damage: "",
+	},
+
 	{name: "SlimeForm", sfx: "MagicSlash", school: "Illusion", manacost: 8, components: ["Verbal"], mustTarget: true, level:1, type:"buff", noMiscast: true,
 		buffs: [
 			{id: "SlimeForm", type: "glueDamageResist", aura: "#ff00ff", duration: 25, power: 0.5, player: true, enemies: false, tags: ["defense"]},
@@ -1149,6 +1175,27 @@ let KinkyDungeonSpellListEnemies = [
 		sfx: "MagicSlash", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 6, delay: 0, range: 8, speed: 50, size: 1, damage: "fire",
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "MysticShock", time: 3}},
 
+
+	{name: "ArrowBolt", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
+		channel: 1,
+		projectileTargeting:true, onhit:"", power: 5, delay: 0, range: 10, damage: "pierce", speed: 4},
+	{name: "ArrowNormal", tags: ["arrowreplace"], color: "#88ff88", sfx: "Arrow", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
+		staminacost: 1.5,
+		projectileTargeting:true, onhit:"", power: 2, delay: 0, range: 7.5, damage: "pierce", speed: 2.5},
+	{name: "ArrowFire", tags: ["arrowspecial"], color: "#ffff00", sfx: "FireSpell", landsfx: "Lightning", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
+		effectTileDurationMod: 12, effectTile: {
+			name: "Ember",
+			duration: -4,
+		},
+		onhit:"aoe", power: 4, noDirectDamage: true, delay: 0, range: 7.5, aoe: 1.5, lifetime: 1, damage: "fire", speed: 2.5, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 4}},
+	{name: "ArrowVine", tags: ["arrowspecial"], color: "#55ff55", sfx: "FireSpell", landsfx: "MagicSlash", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
+		bindType: "Vine",
+		effectTileDurationMod: 10, effectTile: {
+			name: "Vines",
+			duration: 20,
+		},
+		onhit:"", power: 4, delay: 0, range: 7.5, bind: 5, lifetime: 1, damage: "chain", speed: 2.5, playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "vineRestraints"}},
+
 	{name: "BlasterBlast", hitsfx: "Shock", sfx: "Laser", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 2.5, time: 1, delay: 0,
 		bulletColor: 0xffff00, bulletLight: 5, noMiscast: true,
 		range: 8, speed: 3, size: 1, damage: "electric", playerEffect: {name: "Shock", time: 3}},
@@ -1162,7 +1209,7 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "BondageBustBeam", hitsfx: "Shock", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 3, time: 3, delay: 0, range: 8, speed: 50, size: 1, damage: "electric",
 		trailColor: 0xffff00, trailLight: 3,
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "Shock", time: 3}},
-	{name: "HeartArrow", sfx: "MagicSlash", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "soul", speed: 2,
+	{name: "HeartArrow", sfx: "MagicSlash", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "soul", speed: 2,
 		events: [
 			{type: "GreaterRage", trigger: "bulletHitEnemy"},
 		],
@@ -1316,7 +1363,7 @@ let KinkyDungeonSpellListEnemies = [
 		effectTileDurationMod: 7, effectTile: {
 			name: "Smoke",
 			duration: -1,
-		}, type:"inert", onhit:"aoe", delay: 5, power: 6, range: 3, size: 3, aoe: 1.5, lifetime: 1, damage: "fire", playerEffect: {name: "HeatBlast", time: 3, damage: "pain", power: 6}},
+		}, type:"inert", onhit:"aoe", delay: 5, power: 6, range: 3, size: 3, aoe: 1.5, lifetime: 1, damage: "fire", playerEffect: {name: "HeatBlast", time: 3, damage: "fire", power: 6}},
 
 	{name: "ManyChains", sfx: "MagicSlash", minRange: 0, manacost: 3, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
 		spellcast: {spell: "WitchChainBolt", target: "target", directional:true, randomDirection: true, noTargetMoveDir: true, spread: 1, offset: false}, channel: 3},
@@ -1397,7 +1444,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "MummyBolt", color: "#88ff88", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "fire", speed: 3, playerEffect: {name: "MysticShock", time: 3}},
 	{enemySpell: true, name: "RobotBolt", color: "#ff5277", sfx: "Laser", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "electric", speed: 2, playerEffect: {name: "RobotShock", time: 2}},
 	{enemySpell: true, name: "RubberBullets",  bindType: "Slime", color: "#ffff00", minRange: 2.9, sfx: "Gunfire", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "glue", speed: 3, playerEffect: {name: "RubberBullets", power: 4, count: 1, damage: "glue"}},
-	{enemySpell: true, name: "HeatBolt", color: "#ffff00", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "fire", speed: 2, playerEffect: {name: "HeatBlast", time: 1, damage: "pain", power: 5}},
+	{enemySpell: true, name: "HeatBolt", color: "#ffff00", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "fire", speed: 2, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 5}},
 	{enemySpell: true, noFirstChoice: true, name: "Hairpin", color: "#ffffff", minRange: 2.9, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "pain", speed: 2, playerEffect: {name: "Hairpin", power: 2, damage: "pain", time: 1}},
 	{enemySpell: true, name: "PoisonDragonBlast",  bindType: "Vine", color: "#88ff88", sfx: "FireSpell", hitsfx: "Bones", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "grope", speed: 3, effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "Vines",
@@ -1621,6 +1668,14 @@ let KinkyDungeonSpellListEnemies = [
 
 /** @type {Record<string, KDBondage>} */
 let KDSpecialBondage = {
+	"Magic": {
+		priority: -5,
+		color: "#92e8c0",
+		struggleRate: 0.7,
+		powerStruggleBoost: 1.0,
+		healthStruggleBoost: 1.0,
+		mageStruggleBoost: 2.0,
+	},
 	"Leather": {
 		priority: 0,
 		color: "#ad2f45",

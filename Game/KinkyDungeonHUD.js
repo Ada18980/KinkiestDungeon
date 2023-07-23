@@ -192,6 +192,7 @@ let KDBuffSprites = {
 
 	"Haunted": true,
 	"Cursed": true,
+	"DildoBatBuff": true,
 
 	//KinkyDungeonBuffShrineElements,"Arcane Power: Deals bonus damage when you hit an enemy."
 	//KinkyDungeonBuffShrineConjure,"Arcane Protection: Reduces damage taken, and deals retaliation damage."
@@ -1069,14 +1070,14 @@ function KinkyDungeonDrawInputs() {
 				}
 				KDDraw(kdcanvas, kdpixisprites, "spellFail" + "SpellCast" + i, KinkyDungeonRootDirectory + "Spells/" + sp + ".png",
 					buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, undefined, {
-						zIndex: 115,
+						zIndex: 72,
 					});
 				//DrawImage(KinkyDungeonRootDirectory + "Spells/" + sp + ".png", buttonDim.x + 2, buttonDim.y + 2,);
 			}
 			if (KDHasUpcast(spell.name)) {
 				KDDraw(kdcanvas, kdpixisprites, "spellCanUpcast" + i, KinkyDungeonRootDirectory + "Spells/" + "CanUpcast" + ".png",
 					buttonDim.x, buttonDim.y, 72, 72, undefined, {
-						zIndex: 114,
+						zIndex: 71,
 					});
 			}
 
@@ -1126,7 +1127,7 @@ function KinkyDungeonDrawInputs() {
 						"rgba(0, 0, 0, 0)", "", "", false, true);
 					KDDraw(kdcanvas, kdpixisprites, "spellIcon" + icon + "," + indexPaged, KinkyDungeonRootDirectory + "Spells/" + spellPaged.name + ".png"
 						,buttonDim.x - buttonDim.wsmall * page, buttonDim.y, buttonDim.wsmall, buttonDim.hsmall, undefined, {
-							zIndex: 114,
+							zIndex: 71,
 						});
 					//DrawImageEx(KinkyDungeonRootDirectory + "Spells/" + spellPaged.name + ".png", buttonDim.x - buttonDim.wsmall * page, buttonDim.y, {
 					//Width: buttonDim.wsmall,
@@ -1139,7 +1140,7 @@ function KinkyDungeonDrawInputs() {
 						}
 						KDDraw(kdcanvas, kdpixisprites, "spellFail" + icon + "," + page + "," + indexPaged, KinkyDungeonRootDirectory + "Spells/" + sp + ".png",
 							buttonDim.x - buttonDim.wsmall * page, buttonDim.y, buttonDim.wsmall, buttonDim.hsmall, undefined, {
-								zIndex: 115,
+								zIndex: 72,
 							});
 
 						//DrawImageEx(KinkyDungeonRootDirectory + "Spells/" + sp + ".png", buttonDim.x + 2 - buttonDim.wsmall * page, buttonDim.y + 2, {

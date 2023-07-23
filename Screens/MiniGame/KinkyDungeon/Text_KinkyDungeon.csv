@@ -2,13 +2,7 @@ KinkyDungeonCredits,Credits
 KinkyDungeonPatrons,Patrons
 KinkyDungeonDeviantart,News and Updates
 KinkyDungeonPatreon,Support @ Patreon
-KinkyDungeonPatronsList0,"Thank you to the following awesome people for supporting me at patreon.com/ada18980|cyberjoel|Samantha Lear|Kara|The-Fisher-King|Laioken|Finn|selly-grim|Dex♪|Churro|Gamefan|Shogo|X27|Blox|Slacker|Nikos S.|Flame|Alexis Octavia|Dmitri S.|Noxgarm|Siegfried K.|Hellgete"
-KinkyDungeonPatronsList1,"|nuzzles|Rest|LoudestQuietPerson|Violet EverGardner|BoopleDoopleson|Dazman1234|WATA|linlizheng|Mechio|Vikingberserker|PWMRM|devan|LukeB|atetete|Aussie895|0xA4C1B842|Rika|Physicsphail|Loony|Jeremy P.|ItsYahboi9"
-KinkyDungeonPatronsList2,"|AlexisTheFlame|Chen Yu|Sinohisaki|nnm711|Ron lsrp|Miro|Anthony R.|John T.|Geng114514|塵狐|kamil|Iaysakuya|tsang|Somprad|Thatguu|damit damit|Victor|Hjake2|anton A.|Dakra|CuvyanTaylor|"
-KinkyDungeonPatronsList3,"|hanhan|The_rogue1|Tatsuya S.|James K.|Misa|eddy z.|theshrimpyone|Eislobo|OTKTamashii|Michael M.|Jose G.|Minescence|HanQing Z.|hanhan|Shakymunch|Crimson|Arentios|Vini J.|Treemen555|Lordfabricator|ML"
-KinkyDungeonPatronsList4,"Hannes|Isaiah L.|darklink11|Cerb|Diablo200|RNFRaptor|CMDR Salen|daniel C.|NDW|Sewdah N.|Sylicix|Wossa|ComradeArmtyom|逗比 徐|Null Fame|zipidyzap|Mister Mythe|Yagami Yami|Phoenix|Kritsanapong J.|Pyron|Tobi"
-KinkyDungeonPatronsList5,"Traynfreek|森 韩|Meekohi|GRASS|Heavy Blues|Girador|Sinohisaki|Nymjii|Linex|werty989898|John H.|Hideki H.|Izzzzzz|Zhenyu G.|Animi|Hungvipbcsok|uiy|Joecoolzx|Claire S.|koch|Snekus|Jeff C|"
-KinkyDungeonPatronsList6,"DemonQueenSera|John1304|Masaki H|Eric R.|Rei H.|hSXZM|Kieraakari|Pyros51"
+KinkyDungeonPatronsList,"Thank you to the following awesome people for supporting me at patreon.com/ada18980"
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
 
@@ -47,6 +41,7 @@ KDToggleArousalHearts,Advanced Distraction VFX
 KDToggleVibeHearts,Advanced Toy VFX
 KDToggleShowNPCStatuses,Show NPC Status
 KDToggleFancyWalls,Advanced Fog of War
+KDTogglePlayerTransparencyDuringBullets,Projectiles Make Player Transparent
 KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
@@ -135,7 +130,7 @@ KinkyDungeonStatUnfocused,"Unfocused"
 KinkyDungeonStatDescUnfocused,"Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction."
 
 KinkyDungeonStat22,"Pristine"
-KinkyDungeonStatDesc22,"There are no shiny loot objects in the dungeon."
+KinkyDungeonStatDesc22,"There are significantly less shiny loot objects in the dungeon."
 KinkyDungeonStat23,"Lost Technology"
 KinkyDungeonStatDesc23,"Ancient power cores break with use, and cannot be recharged."
 
@@ -1010,7 +1005,7 @@ KinkyDungeonInventoryItemAncientPowerSourceSpentDesc2,"A mysterious device used 
 KinkyDungeonInventoryItemGold,Gold
 KinkyDungeonInventoryItemRedKey,Key
 KinkyDungeonInventoryItemRedKeyDesc,"A key with traces of magic that fades with one use."
-KinkyDungeonInventoryItemRedKeyDesc2,"Can be used to unlock a restraint, door, or chest."
+KinkyDungeonInventoryItemRedKeyDesc2,"Can be used to unlock a red-locked restraint, door, or chest."
 KinkyDungeonInventoryItemBlueKey,Magic Key
 KinkyDungeonInventoryItemBlueKeyDesc,"A glowing key enchanted with magic that fades with one use."
 KinkyDungeonInventoryItemBlueKeyDesc2,"Can be used to unlock a blue lock."
@@ -1219,16 +1214,16 @@ KinkyDungeonInventoryItemFoilDesc2,"Deals pierce damage. Deals 30 damage instead
 ItemPickupFoil,"You pick up a fencing sword."
 
 KinkyDungeonInventoryItemHammer,Hammer
-KinkyDungeonInventoryItemHammerDesc,"A rather simplistic bludgeoning weapon."
+KinkyDungeonInventoryItemHammerDesc,"A crude way of fixing your problems."
 KinkyDungeonInventoryItemHammerDesc2,"Deals crush damage and knocks the target back."
 KinkyDungeonInventoryItemFlail,Flail
-KinkyDungeonInventoryItemFlailDesc,"A ball on a chain. Very fast and hard to dodge."
+KinkyDungeonInventoryItemFlailDesc,"Very fast and hard to dodge as long as you know what you're doing."
 KinkyDungeonInventoryItemFlailDesc2,"Also deals 10 damage to targets next to you. Deals crush damage."
 KinkyDungeonInventoryItemSpear,Spear
 KinkyDungeonInventoryItemSpearDesc,"Speak softly and carry a pointy stick."
 KinkyDungeonInventoryItemSpearDesc2,"Deals pierce damage to the target and one square behind it."
 KinkyDungeonInventoryItemBoltCutters,Bolt Cutters
-KinkyDungeonInventoryItemBoltCuttersDesc,"A cutting tool useful as a bludgeon, and also for cutting locks and chains."
+KinkyDungeonInventoryItemBoltCuttersDesc,"The universal key."
 KinkyDungeonInventoryItemBoltCuttersDesc2,"Also assists in cutting restraints when equipped."
 KinkyDungeonInventoryItemKnife,Knife
 KinkyDungeonInventoryItemKnifeDesc,"A go-to for travelers and adventurers."
@@ -1252,7 +1247,7 @@ KinkyDungeonInventoryItemVibeWand,Magic Wand
 KinkyDungeonInventoryItemVibeWandDesc,"Its powers extend beyond the traditional schools of magic."
 KinkyDungeonInventoryItemVibeWandDesc2,"Deals charm damage. 20% chance to stun the target for 2 turns."
 KinkyDungeonInventoryItemFeather,Feather
-KinkyDungeonInventoryItemFeatherDesc,"A feather useful for tickling."
+KinkyDungeonInventoryItemFeatherDesc,"A feather taken from some large fluffy being."
 KinkyDungeonInventoryItemFeatherDesc2,"Deals tickle damage. Distracts enemies."
 KinkyDungeonInventoryItemIceCube,Ice Cube
 KinkyDungeonInventoryItemIceCubeDesc,"A magical cube of ice that never melts. Convenient!"
@@ -1287,7 +1282,7 @@ KinkyDungeonInventoryItemMessengerOfLove,Messenger of Love
 KinkyDungeonInventoryItemMessengerOfLoveDesc,"Love shines in many ways..."
 KinkyDungeonInventoryItemMessengerOfLoveDesc2,"Can fire an arrow that makes an enemy extremely lustful, causing them to attack others. Lasts forever on lesser enemies, 30 turns on high-level enemies, and 10 turns on bosses."
 KinkyDungeonInventoryItemMoiraiScissors,Moirai's Scissors
-KinkyDungeonInventoryItemMoiraiScissorsDesc,"Safety first!"
+KinkyDungeonInventoryItemMoiraiScissorsDesc,"Cutting the threads of fate."
 KinkyDungeonInventoryItemMoiraiScissorsDesc2,"Deals slash damage. Adds up to 30 bonus psychic damage her hit by converting binding into damage. Drains 5 charge to attack twice."
 KinkyDungeonInventoryItemSlimethrower,Latex Projector
 KinkyDungeonInventoryItemSlimethrowerDesc,"Deals crush damage. Can be used to spray a '+' shaped pool of slime."
@@ -1307,8 +1302,8 @@ KinkyDungeonInventoryItemMagicSpearDesc2,"Deals pierce damage to the target and 
 KinkyDungeonInventoryItemMagicHammer,Enchanted Hammer
 KinkyDungeonInventoryItemMagicHammerDesc,"Made of a magical, resonant material."
 KinkyDungeonInventoryItemMagicHammerDesc2,"Deals crush damage and knocks the target back. Helps to bash open restraints while cutting."
-KinkyDungeonInventoryItemIceBreaker,IceBreaker
-KinkyDungeonInventoryItemIceBreakerDesc,"A frigid lightweight hammer with a spike on the end."
+KinkyDungeonInventoryItemIceBreaker,Icebreaker
+KinkyDungeonInventoryItemIceBreakerDesc,"A frigid magical hammer useful for both climbing up and destroying ice."
 KinkyDungeonInventoryItemIceBreakerDesc2,"Deals crush damage. Deals 3x damage to frozen targets instead of 2x. Triggers Shatter."
 KinkyDungeonInventoryItemDreamcatcher,Dreamcatcher
 KinkyDungeonInventoryItemDreamcatcherDesc,"Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy."
@@ -1323,7 +1318,7 @@ KinkyDungeonPlayerNoKeys,Find the keys..
 KinkyDungeonPlayerYesKeys,Find the exit!
 KinkyDungeonPlayerHelp,"You are receiving help from a friendly ally."
 KinkyDungeonPlayerHook,"You found a hook you can use to pull on straps and loops."
-KinkyDungeonPlayerSharp,"You have access to something sharp and can attempt to cut restraints."
+KinkyDungeonPlayerSharp,"You have access to something sharp and can attempt to Cut restraints, or Remove more effectively."
 KinkyDungeonPlayerEdge,"You found a corner to help manipulate buckles and snaps with."
 KinkyDungeonPlayerCrack,"You found a crack and could maybe wedge a knife or tool into it to keep it still."
 KinkyDungeonPlayerSticky,"You found something sticky and might be able to pull off fabrics."
@@ -7861,7 +7856,7 @@ KinkyDungeonSpecialTheEncaser,"25 charge to enter Slime Form for 25 turns, and c
 KinkyDungeonSpecialFourSeasons,"50 charge to reduce mana cost of next fire, earth, air, and water spell by 50 (once for each element)"
 KinkyDungeonSpecialArbiter,"25 charge to disarm a target for 8 turns, rendering them unable to attack."
 KinkyDungeonSpecialBondageBuster,"5 charge (+2.5 per charge) to channel and fire a beam that deals 30 + 3/charge electric damage, or 90 at max charge."
-KinkyDungeonSpecialBlaster,"5 charge to fire a blast that deals 25 electric damage."
+KinkyDungeonSpecialBlaster,"10 charge to fire a blast that deals 25 electric damage."
 KinkyDungeonSpecialMessengerOfLove,"50 charge to fire an arrow that enrages a target."
 KinkyDungeonSpecialMoiraiScissors,"50 charge to enter a frenzy for 10 turns, attacking twice per turn."
 KinkyDungeonSpecialSlimethrower,Create a '+' shaped pool of slime that deals 35 glue damage per hit
@@ -10170,7 +10165,10 @@ RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped t
 RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
 RestraintRopeSnakeHogtie,Rope Hogtie
 RestraintRopeSnakeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
-RestraintRopeSnakeHogtieDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
+RestraintRopeSnakeHogtieDesc2,"It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle."
+RestraintRopeSnakeHogtieWristtie,Rope Hogtie
+RestraintRopeSnakeHogtieWristtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintRopeSnakeHogtieWristtieDesc2,"It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle."
 RestraintRopeSnakeBelt,Rope Belt
 RestraintRopeSnakeBeltDesc,"A harness acting as a handle to pull you around"
 RestraintRopeSnakeBeltDesc2,"The ropes squeeze you gently."
@@ -10327,6 +10325,16 @@ KinkyDungeonInventoryItemBagOfGoodiesDesc2,"Deals charm damage. Applies a toy to
 ItemPickupBagOfGoodies,"You find a bag filled with various toys and vibrators..."
 KinkyDungeonPlaySelfBagOfGoodies,"You play with yourself using some of the toys in the bag..."
 
+KinkyDungeonInventoryItemVibeRemote,Magic Remote
+KinkyDungeonInventoryItemVibeRemoteDesc,"The key to absolute power."
+KinkyDungeonInventoryItemVibeRemoteDesc2,"Deals (tiny) charm damage. Triggers long-duration edging on basic attack if the target has a toy."
+ItemPickupVibeRemote,"You find a bag filled with various toys and vibrators..."
+
+KinkyDungeonSpellCommandVibrateVibeRemote,Vibrator Remote
+KinkyDungeonSpellTargetCommandVibrateVibeRemote,Select an area
+KinkyDungeonSpellCastCommandVibrateVibeRemote,"You click the remote and hear a buzzing noise!"
+KinkyDungeonSpecialVibeRemote,"15 charge to powerfully activate vibrators in an area for 15 turns."
+
 KinkyDungeonSpellCommandVibrateBagOfGoodies,Vibrator Remote
 KinkyDungeonSpellTargetCommandVibrateBagOfGoodies,Select an area
 KinkyDungeonSpellCastCommandVibrateBagOfGoodies,"You click the remote and hear a buzzing noise!"
@@ -10336,3 +10344,55 @@ LootChestAncientCoreSingle,"You find a golden crystal. It glows faintly."
 LootChestAncientCoreSingleSpent,"You find a dull, gold-tinted crystal."
 
 KDQuickLoadoutSave,"Save Loadout"
+
+KinkyDungeonInventoryItemDildoBat,Rubber Stick
+KinkyDungeonInventoryItemDildoBatDesc,"A rubber cylinder without any lewd intentions whatsoever."
+KinkyDungeonInventoryItemDildoBatDesc2,"Deals grope damage. "
+ItemPickupDildoBat,"You pick up a flexible rubber stick."
+
+KinkyDungeonInventoryItemDildoBatPlus,"Blade of Fla'peh"
+KinkyDungeonInventoryItemDildoBatPlusDesc,"A piece of prized ancient equipment. Magical energy causes it to vibrate intensely. What could it have been used for?"
+KinkyDungeonInventoryItemDildoBatPlusDesc2,"Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns."
+ItemPickupDildoBatPlus,"You retrieve the Blade of Fla'peh."
+
+KinkyDungeonBuffDildoBatBuff,"Intense Vibrations: The Blade of Fla'peh deals bonus charm damage!!!"
+KinkyDungeonSpellCastDildoBatBuff,"The Blade of Fla-peh buzzes with great power!"
+KinkyDungeonSpecialDildoBatPlus,"40 charge to deal 30 charm damage per hit for 10 turns."
+
+KinkyDungeonInventoryItemMagicRope,Enchanted Rope
+KinkyDungeonInventoryItemMagicRopeDesc,"She who lives by the rope, is tied up by the rope."
+KinkyDungeonInventoryItemMagicRopeDesc2,"Deals chain damage and applies 50 points of rope binding. Draws 10 mana per hit to apply 30 extra points of magical binding. If you don't have mana, you fail to control the rope..."
+ItemPickupMagicRope,"You find some enchanted rope."
+KDMagicRopeBackfire,"Without mana to control it, the enchanted rope springs back upon you!"
+
+KinkyDungeonInventoryItemBow,Wooden Bow
+KinkyDungeonInventoryItemBowDesc,"Pointy stick delivery system."
+KinkyDungeonInventoryItemBowDesc2,"Deals crush damage. Draws 10 charge and 1.5 stamina to fire an ordinary arrow, dealing 20 pierce damage."
+ItemPickupBow,"You find a wooden bow."
+KinkyDungeonSpecialBow,"10 charge to fire an arrow. Deals 20 pierce damage."
+KinkyDungeonSpellTargetArrowNormal,Choose projectile path
+KinkyDungeonSpellArrowNormal,Arrow
+KinkyDungeonSpellCastArrowNormal,"You loose an arrow!"
+
+KinkyDungeonSpellArrowFireSpell,Fire Arrows
+KinkyDungeonSpellDescriptionArrowFireSpell,"Converts arrows to fire arrows for 30 extra charge, which deal the arrow damage plus 20 as fire damage in a 3x3 area and stuns briefly."
+KDSwitchArrowFireSpell,"You switch to using fire arrows."
+KinkyDungeonSpellArrowFire,Fire Arrow
+
+KinkyDungeonSpellArrowVineSpell,Vine Arrows
+KinkyDungeonSpellDescriptionArrowVineSpell,"Converts arrows to all-natural organic versions for 20 extra charge, which apply 50 binding to the target and deal chain damage instead."
+KDSwitchArrowVineSpell,"You switch to using vine arrows."
+KinkyDungeonSpellArrowVine,Vine Arrow
+
+LootArcheryKit,"You find a bow and a glowing crystal. The bow is scribed with runes of duplication."
+
+
+KinkyDungeonInventoryItemCrossbow,Crossbow
+KinkyDungeonInventoryItemCrossbowDesc,"Pointy stick delivery system."
+KinkyDungeonInventoryItemCrossbowDesc2,"Deals crush damage, Skips a turn after firing. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 50 pierce damage."
+ItemPickupCrossbow,"You find a crossbow."
+KinkyDungeonSpecialCrossbow,"25 charge to fire an arrow. Deals 50 pierce damage."
+KinkyDungeonSpellTargetArrowBolt,Choose projectile path
+KinkyDungeonSpellArrowBolt,Bolt
+KinkyDungeonSpellCastArrowBolt,"You pull the trigger!"
+
