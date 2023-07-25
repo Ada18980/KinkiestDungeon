@@ -1244,7 +1244,7 @@ const KinkyDungeonRestraints = [
 		],
 		failSuffix: {"Struggle": "Plug"},
 	},
-	{inventory: true, arousalMode: true, name: "RearVibe1", Asset: "VibratingDildo", Color: "Default", Group: "ItemButt", plugSize: 1.0, power: 5, weight: 1, escapeChance: {"Struggle": 0.25},
+	{inventory: true, arousalMode: true, name: "RearVibe1", Asset: "VibratingDildoPlug", Color: "Default", Group: "ItemButt", plugSize: 1.0, power: 5, weight: 1, escapeChance: {"Struggle": 0.25},
 		enemyTags: {"genericToys": 1, "rearToys": 10},
 		playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Plugs"],
 		failSuffix: {"Struggle": "Plug"},
