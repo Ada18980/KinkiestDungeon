@@ -5,7 +5,8 @@ KinkyDungeonPatreon,Support @ Patreon
 KinkyDungeonPatronsList,"Thank you to the following awesome people for supporting me at patreon.com/ada18980"
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
-KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
+
+KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia, Mitki|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
 KinkyDungeonCreditsList1,"Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators"
 
 Language,Language
@@ -5047,12 +5048,12 @@ KinkyDungeonSpellLatexWall,Wall of Latex
 KinkyDungeonSpellDescriptionLatexWall,"Unlocks horizontal and vertical latex walls that encase enemies that walk through."
 
 KinkyDungeonSpellLatexWallVert,Wall of Latex (Vert)
-KinkyDungeonSpellDescriptionLatexWallVert,Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded.
+KinkyDungeonSpellDescriptionLatexWallVert,"Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded."
 KinkyDungeonSpellCastLatexWallVert,You tap your foot and a wall of latex stretches out across the corridor.
 KinkyDungeonSpellTargetLatexWallVert,Choose vertical wall origin (5 tiles high)
 
 KinkyDungeonSpellLatexWallHoriz,Wall of Latex (Horiz)
-KinkyDungeonSpellDescriptionLatexWallHoriz,Creates a horizontal wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded.
+KinkyDungeonSpellDescriptionLatexWallHoriz,"Creates a horizontal wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded."
 KinkyDungeonSpellCastLatexWallHoriz,You tap your foot and a wall of latex stretches out across the corridor.
 KinkyDungeonSpellTargetLatexWallHoriz,Choose horizontal wall origin (5 tiles wide)
 
@@ -5904,7 +5905,7 @@ KinkyDungeonSpellsPoints,"Spell Points: "
 
 KinkyDungeonMagicLevel,"Level: "
 KinkyDungeonMagicCost,"Spell Point Cost: "
-KinkyDungeonMagicManaCost, "Mana Cost: "
+KinkyDungeonMagicManaCost,"Mana Cost: "
 
 KinkyDungeonSpellEmpty,""
 KinkyDungeonSpellRemove0,"Remove Spell 1"
@@ -5921,13 +5922,13 @@ KinkyDungeonSpell3,"Replace Spell 4"
 KinkyDungeonSpell4,"Replace Spell 5"
 KinkyDungeonSpell5,"Replace Spell 6"
 KinkyDungeonSpell6,"Replace Spell 7"
-KinkyDungeonSpellChoice0, "Current Spell 1: "
-KinkyDungeonSpellChoice1, "Current Spell 2: "
-KinkyDungeonSpellChoice2, "Current Spell 3: "
-KinkyDungeonSpellChoice3, "Current Spell 4: "
-KinkyDungeonSpellChoice4, "Current Spell 5: "
-KinkyDungeonSpellChoice5, "Current Spell 6: "
-KinkyDungeonSpellChoice6, "Current Spell 7: "
+KinkyDungeonSpellChoice0,"Current Spell 1: "
+KinkyDungeonSpellChoice1,"Current Spell 2: "
+KinkyDungeonSpellChoice2,"Current Spell 3: "
+KinkyDungeonSpellChoice3,"Current Spell 4: "
+KinkyDungeonSpellChoice4,"Current Spell 5: "
+KinkyDungeonSpellChoice5,"Current Spell 6: "
+KinkyDungeonSpellChoice6,"Current Spell 7: "
 
 KinkyDungeonCheckpointLoreUnknown,???
 KinkyDungeonCheckpointLore-1,Unfiled
@@ -5958,7 +5959,7 @@ KinkyDungeonLore37,"(A page from the Book of Aeons)|The 'Bellows' is the nicknam
 KinkyDungeonLore0,"(Preface from the journal of Catherine Willows, well-known explorer who vanished in the dungeon 30 years ago) I am writing this journal in the off chance that I do not come back in my search for the Mistress' staff. If you find this, please make an effort to deliver it back to the surface for the good of all the young women lured by its secrets."
 KinkyDungeonLore1,"(Pg. 24 from Catherine Willows' journal) Many who trowel the upper levels of the Mistress' tomb often ask rhetorically: 'Why are there weird kinky traps guarding treasure chests? Why not have real, deadly traps if the purpose is to dissuade intruders?'"
 KinkyDungeonLore2,"(Pg. 25 from Catherine Willows' journal) ...They make a crucial mistake: The treasure chests aren't trapped. Rather, they are full of gold. And we know that gold is pleasing to the gods: our economy runs on it, and the gods only make interventions in our day-to-day affairs because we give them gold. Lesser gods, known as spirits, also love gold, but unlike the gods we know, these lesser spirits cannot consume gold on an altar in one fell swoop like the gods can. Therefore, they need to physically inhabit the place where the gold sits, slowly draining it of its pleasing essence."
-KinkyDungeonLore3,"(Pg. 26 from Catherine Willows' journal) So the question is not "why did somebody lay these traps." The answer is that they are not traps at all. I surmise that the upper floors were once a place of offering for the dead. And when the old civilization perished and the entire complex sank into the ground, there was no longer anyone to drive the spirits away and keep them from inhabiting the upstairs. As for why there are so many restraints in general rather than your typical sort of spirits... well we know what the Mistress surrounded herself with."
+KinkyDungeonLore3,"(Pg. 26 from Catherine Willows' journal) So the question is not ""why did somebody lay these traps."" The answer is that they are not traps at all. I surmise that the upper floors were once a place of offering for the dead. And when the old civilization perished and the entire complex sank into the ground, there was no longer anyone to drive the spirits away and keep them from inhabiting the upstairs. As for why there are so many restraints in general rather than your typical sort of spirits... well we know what the Mistress surrounded herself with."
 KinkyDungeonLore4,"(The note starts with a drawing of a witch with many chains hanging from her body) She can block melee attacks with her chains. However, they conduct lightning and heat directly to her body, and I was able to take out her chains with bolt cutters."
 KinkyDungeonLore5,"(The note starts with a drawing of a witch with lightning crackling from her fingertips) Water will cause her to short-circuit. I can't seem to hit her with lightning, though. She always redirects it."
 KinkyDungeonLore6,"(The note starts with a drawing of a witch whose body is partly gelatinous) The slime is non-flammable and my attacks pass right through her body... Lightning and ice seem to be effective!"
@@ -10394,3 +10395,4 @@ KinkyDungeonSpecialCrossbow,"25 charge to fire an arrow. Deals 50 pierce damage.
 KinkyDungeonSpellTargetArrowBolt,Choose projectile path
 KinkyDungeonSpellArrowBolt,Bolt
 KinkyDungeonSpellCastArrowBolt,"You pull the trigger!"
+
