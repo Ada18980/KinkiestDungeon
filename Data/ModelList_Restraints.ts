@@ -159,7 +159,7 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	//AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
-		{ Name: "Harness", Layer: "Harness", Pri: 0,
+		{ Name: "Harness", Layer: "HarnessOver", Pri: 0,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 		},
@@ -174,7 +174,7 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
-		{ Name: "Crotchrope", Layer: "HarnessLower", Pri: 1,
+		{ Name: "Crotchrope", Layer: "HarnessMid", Pri: 1,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 		},

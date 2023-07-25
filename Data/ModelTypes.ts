@@ -82,8 +82,10 @@ interface ModelLayer extends Namable {
     Sprite?: string,
     /** This layer only appears if the item is locked */
     LockLayer?: boolean,
-    /** These layers are apended to the Sprite if the pose is met*/
+    /** One of these layers is required*/
     Poses?: Record<string, boolean>,
+    /** These layers are ALL REQUIRED to make it appear*/
+    RequirePoses?: Record<string, boolean>,
     /** This layer is hidden in this pose*/
     HidePoses?: Record<string, boolean>,
 	/** If one of these poses is present then the layer will default to the relevant pose*/

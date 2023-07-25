@@ -1,6 +1,7 @@
 let LAYERS_BASE = [
 	"HatDeco",
 	"Hat",
+	"HeadbandDeco",
 	"Headband",
 	"Brows",
 	"HairFront",
@@ -78,13 +79,17 @@ let LAYERS_BASE = [
 	"Straps",
 	"NecklaceCharm",
 	"Necklace",
+
+	// Skirts that dont follow shilhouette and are puffy
+	"SkirtPoofyLeftLeg",
+
+	"HarnessOver",
 	"BraChest",
 	"Chest",
 	"StrapsUnderbust",
 
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
-	"HarnessOver",
 	"Shirt",
 	// For things that go directly under the breasts
 	"Underbust",
@@ -92,11 +97,13 @@ let LAYERS_BASE = [
 	"Underarms",
 	"Bra",
 
+	"HarnessMid",
 	"CorsetOver",
 
-	// Skirts that dont follow shilhouette
+	// Skirts that dont follow shilhouette and are puffy
 	"SkirtPoofyDeco",
 	"SkirtPoofy",
+
 
 	// Corsets that go under harness and skirt
 	"Corset",
@@ -113,6 +120,9 @@ let LAYERS_BASE = [
 	"PantsAccRight",
 	"PantRight",
 	"Pants",
+
+	"HarnessUnder",
+
 	"BeltBack",
 
 	// Left arm clothes
@@ -254,6 +264,18 @@ let Hardpoints = {
 	Chest: {
 		Parent: "Torso",
 		X: 1144,
+		Y: 1127,
+		Angle: Math.PI*1.0,
+	},
+	BreastLeft: {
+		Parent: "Chest",
+		X: 950,
+		Y: 1127,
+		Angle: Math.PI*1.0,
+	},
+	BreastRight: {
+		Parent: "Chest",
+		X: 1350,
 		Y: 1127,
 		Angle: Math.PI*1.0,
 	},

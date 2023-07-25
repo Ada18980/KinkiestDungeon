@@ -388,6 +388,14 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		}
 		if (!found) return false;
 	}
+	// Required poses
+	if (Layer.RequirePoses) {
+		for (let p of Object.keys(Layer.RequirePoses)) {
+			if (!Poses[p]) {
+				return false;
+			}
+		}
+	}
 	// TODO filter hide
 	return true;
 }
