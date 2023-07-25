@@ -6,8 +6,6 @@ News and Updates
 新闻和更新
 Support @ Patreon
 资助@Patreon
-Thank you to the following awesome people for supporting me at patreon.com/ada18980|cyberjoel|Samantha Lear|Kara|The-Fisher-King|Laioken|Finn|selly-grim|Dex♪|Churro|Gamefan|Shogo|X27|Blox|Slacker|Nikos S.|Flame|Alexis Octavia|Dmitri S.|Noxgarm|Siegfried K.|Hellgete
-感谢以下这些很棒的人在 patreon.com/ada18980 上支持我|cyberjoel|Samantha Lear|Kara|The-Fisher-King|Laioken|Finn|selly-grim|Dex♪|Churro|Gamefan|Shogo|X27|Blox|Slacker|Nikos S.|Flame|Alexis Octavia|Dmitri S.|Noxgarm|Siegfried K.|Hellgete
 Back
 后退
 Next
@@ -37,13 +35,13 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 (This game does not contain spiders)
 （本游戏不包含蜘蛛）
 Enable Sound
-启用音效
+音效
 Enable Drool/Tears
-启用流口水/眼泪
+流口水/眼泪
 Draw Armor
 绘制子弹
 Enable Music
-启用音乐
+音乐
 Turn Counter
 回合计数器
 Flash Screen on Stun
@@ -59,9 +57,9 @@ Advanced Fog of War
 Intense 'Let Go' VFX
 强烈高潮特效
 Enable Toy SFX
-启用玩具音效
+玩具音效
 Enable Fullscreen
-启用全屏
+全屏
 High Quality Animations
 高品质动画
 Wait Quickly
@@ -173,7 +171,7 @@ Willpower
 Bondage Lover
 束缚爱好
 Attempting to escape arouses you.
-试图挣脱会提高你的干扰值。
+试图挣脱会提高你的性奋值。
 Focused Dodge
 集中闪避
 While your miscast chance is 0%, you gain +40 Evasion.
@@ -196,8 +194,8 @@ Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distracti
 当性奋值超过10%时，准确率将降低至0.9倍，随性奋值的升高准确率将持续降低，最高在90%性奋值时降低至0.6倍。
 Pristine
 质朴
-There are no shiny loot objects in the dungeon.
-地牢中没有闪亮的战利品。
+There are significantly less shiny loot objects in the dungeon.
+地牢中的闪闪发光的战利品明显减少。
 Lost Technology
 遗落之术
 Ancient power cores break with use, and cannot be recharged.
@@ -407,7 +405,7 @@ You start with the Dollmaker's Mask.
 Vengeance
 复仇
 Defeating an enemy greatly distracts you.
-击败敌人会极大地提高你的干扰值。
+击败敌人会极大地提高你的性奋值。
 Berserker Rage
 狂暴之怒
 Melee attacks distract you, but melee (including chain) damage increases by up to 30% at max distraction.
@@ -431,7 +429,7 @@ Beds and furniture are often trapped.
 I have... needs
 我...想要...
 Distraction builds up over time.
-干扰值随时间累计。
+性奋值随时间累计。
 Hopeless
 绝望的
 Willpower decays over time.
@@ -617,7 +615,7 @@ Fewer tape-related enemies will appear, although this does not remove tape entir
 Trainee
 练习生
 Your training has given you access to the spells of the Trainee class. (Aroused mode only)
-你的训练使你能够访问练习生类的法术。（仅在兴奋模式下）
+你的“训练”使你能够访问练习生类的法术。（需要启用性欲模式）
 Warrior
 战士
 Your training has given you access to the spells of the Warrior class.
@@ -793,51 +791,51 @@ Plugged up!!!
 Denied! You won't be getting off that easy~
 你的提议被拒绝了！你不会那么轻易就脱身的~
 Teasing vibrations...
-诱惑的震动...
+诱惑的震动
 Gentle vibrations...
-温柔的震动...
+温柔的震动
 Mild vibrations...
-轻微的震动...
+轻微的震动
 Strong vibrations!
-强烈的震动！
+强烈的震动
 Intense vibrations!!
 激烈的震动
 Torturous vibrations!!!
-折磨般的震动！
+痛苦的震动
 Stunned! You can't move!
-你被晕眩，无法移动！
+你被晕眩，无法移动
 Your vision is impaired!
-你的视野受到影响！
+你的视野受到影响
 Arms are bound!
-手臂被束缚！
+手臂被束缚
 Hands are useless!
-双手无法使用！
+双手无法使用
 Hands are impaired! Some tasks will be harder...
-双手受到束缚！一些操作会更加困难...
+双手受到束缚，一些操作会更加困难
 Movement significantly impaired!
-移动明显受限！
+移动明显受限
 Movement slightly impaired.
-移动略有受限。
+移动略有受限
 Movement severely impaired!
-移动严重受限！
+移动严重受限
 Movement is almost impossible. Sprinting and hopping are disabled.
-移动几乎不可能，你无法奔跑和跳跃。
+移动几乎不可能，你无法奔跑和跳跃
 Immobilized!
-被固定，你无法移动！
+被固定，你无法移动
 Your mouth is free for potion-drinking and spellcasting activities.
-你的嘴巴可以自由饮用药剂和施放法术。
+你的嘴巴可以自由饮用药剂和施放法术
 Your vision is clear.
-你的视野十分清晰。
+你的视野十分清晰
 Your hands are unobstructed.
-你的双手没有被阻碍。
+你的双手没有被阻碍
 Your arms are free to move as you please.
-你的手臂可以自由伸展。
+你的手臂可以自由伸展
 Your legs are free and unimpeded.
-你的双腿自由而无阻。
+你的双腿自由而无阻
 You are gagged! Verbal miscast chance is increased and your potions are less effective!
-你的嘴巴被口球堵住了，施放言语法术的失败几率增加，而且药剂的效果减弱！
+你的嘴巴被口球堵住了，施放言语法术的失败几率增加，而且药剂的效果减弱
 Your mouth is totally filled! You can't drink potions and cant cast verbal spells!
-你的嘴巴被死死的填满，无法施放言语法术和饮用药剂！
+你的嘴巴被死死的填满，无法施放言语法术和饮用药剂
 Spell Empowerment!
 法术强化！
 Let there be light!
@@ -1043,7 +1041,7 @@ Very Slow
 Immobile
 无法移动
 DP: PERCENT%
-干扰值: PERCENT%
+性奋值: PERCENT%
 SP: CURRENT/MAX
 体力值: CURRENT/MAX
 Willpower: CURRENT/MAX
@@ -1057,7 +1055,7 @@ Your minimum distraction increases over time as you encounter distracting things
 Stamina recovers more quickly when you aren't spending it.
 当你休息时，耐力恢复得更快。
 Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape.
-意志力通过食物、睡眠和药剂恢复。没有意志力，就很难逃脱。
+意志力通过食物、睡眠和药剂恢复。没有意志力，就很难从束缚中逃脱。
 Charge is used to power various magic items and weapons.
 电荷用于为各种魔法物品和武器提供能量。
 WP: CURRENT/MAX
@@ -1083,7 +1081,7 @@ Play with yourself
 Go to sleep
 睡觉
 Make noise!
-制造噪音！
+制造噪音
 Wait until interrupted
 等待至被打断
 Auto-struggle
@@ -1266,8 +1264,8 @@ Magic Keys:
 法术按键：
 Knife: 
 刀：
-You climb down to the next level
-你进入新的一层。
+You climb down the stairs.
+你进入了新的一层。
 You can't climb down until you get out of this leash...
 在你摆脱牵绳之前，你不能进入下一层......
 You climb down and find yourself in a strange new place.
@@ -1586,8 +1584,6 @@ Key
 钥匙
 A key with traces of magic that fades with one use.
 一把带有魔法痕迹的钥匙，一次使用就会消失。
-Can be used to unlock a restraint, door, or chest.
-可用于解锁拘束具、门或箱子。
 Magic Key
 魔法钥匙
 A glowing key enchanted with magic that fades with one use.
@@ -1852,14 +1848,10 @@ You pick up a fencing sword.
 你拾起了一把花剑。
 Hammer
 锤子
-A rather simplistic bludgeoning weapon.
-一种相当简单的钝器。
 Deals crush damage and knocks the target back.
 造成碾压伤害并将目标击退。
 Flail
 流星锤
-A ball on a chain. Very fast and hard to dodge.
-一个球连接在所脸上。速度非常快，难以躲避。
 Also deals 10 damage to targets next to you. Deals crush damage.
 还会对你旁边的单位造成 10 点伤害。造成碾压伤害。
 Spear
@@ -1870,8 +1862,6 @@ Deals pierce damage to the target and one square behind it.
 对目标及其后方一格造成穿刺伤害。
 Bolt Cutters
 断线钳
-A cutting tool useful as a bludgeon, and also for cutting locks and chains.
-一种可以当做大棒用的切割工具，也可用于切割锁和链条。
 Also assists in cutting restraints when equipped.
 配备时还有助于切割拘束。
 A go-to for travelers and adventurers.
@@ -1912,8 +1902,6 @@ Its powers extend beyond the traditional schools of magic.
 它的力量超越了传统的魔法。
 Feather
 羽毛
-A feather useful for tickling.
-用于挠痒痒的羽毛。
 Ice Cube
 冰块
 A magical cube of ice that never melts. Convenient!
@@ -1978,10 +1966,6 @@ Made of a magical, resonant material.
 由神奇的共振材料制成。
 Deals crush damage and knocks the target back. Helps to bash open restraints while cutting.
 造成碾压伤害并将目标击退。有助于在切割时猛击打开的拘束。
-IceBreaker
-破冰锤
-A frigid lightweight hammer with a spike on the end.
-一把冰冷的轻锤，末端有钉子。
 Axe
 斧头
 Also deals 20 damage to enemies next to you. Deals slash damage.
@@ -2018,6 +2002,8 @@ You feel a gentle buzz...
 你感觉到了轻轻的振动...
 Your toys tease you gently...
 玩具正在轻轻地逗弄你……
+The vibration is torturous!
+痛苦的震动
 Edged!
 极限！
 Satisfied~
@@ -2063,7 +2049,7 @@ The slime starts to harden over your skin...
 You subdue the angel!
 你捕获了天使！
 Be not afraid! I am the courier of a local shrine, and I have come to take your offering.
-不要害怕！我是当地神社的信使，来接你的供品。
+不要害怕！我是当地神殿的信使，来接你的供品。
 Hold still and I will take the offering...
 保持不动，我会接受供品...
 (She takes the gold)
@@ -2704,8 +2690,6 @@ Fuuka uses a talisman to call forth the spirits of her pets!
 Fuuka使用丝带召唤她的宠物的灵魂！
 A pool of latex bubbles and a twisted elemental appears!
 一池乳胶冒出气泡，一个扭曲的元素出现了！
-Red Slime
-红粘液团
 Latex Elemental
 乳胶元素
 Latex Elemental
@@ -2744,8 +2728,6 @@ The sticky slime splashes against you! (DamageTaken)
 粘稠的粘液泼到你身上！ (DamageTaken)
 The slime spreads to your body! (+RestraintAdded)
 粘液扩散到你的身体！ （+RestraintAdded）
-A group of slimes jump out!
-粘液团分裂成许多更小的液滴！
 Skeleton
 骷髅
 The Skeleton falls into pieces.
@@ -3316,6 +3298,8 @@ Trembling, you free yourself from the TargetRestraint!
 你一边颤抖着一边将自己从 TargetRestraint 中解放出来！
 You damage the TargetRestraint enough to wiggle out!
 你对 TargetRestraint 造成的损坏足以让你挣扎出来！
+You fidget with the TargetRestraint but can't quite grip the clasps without some kind of edge.
+你试图摆弄 TargetRestraint ，但没有任何东西可以帮助你牢牢抓住扣环。
 That would really hurt...
 那真的会很痛...
 You realize that would really hurt...
@@ -5376,6 +5360,8 @@ Feet
 脚
 Device
 设备
+You pick up XXX gold.
+你获得了 XXX 金币
 You retrieve an ancient power crystal.
 你取回了一块远古能量水晶。
 You pick up a magical amulet and use it to boost your stats.
@@ -5460,6 +5446,20 @@ Equip
 装备
 Equipped
 已装备
+Unlit Torch
+未点燃的火把
+Can be lit
+可以被点燃
+Provides light
+提供了光明
+Provides light
+提供了光明
+Provides light
+提供了光明
+Can be lit
+可以被点燃
+Provides light
+提供了光明
 Slime
 粘液
 Ice
@@ -5468,8 +5468,48 @@ Water
 水
 Ropes
 绳索
+Floor
+地板
 Wall
 墙
+Brickwork
+砖块
+Doodad
+小东西
+Furniture
+家具
+Table
+桌子
+Shrine
+神殿
+Closed Door
+紧闭的门
+Open Door
+开放的门
+Closed Door
+紧闭的门
+Open Door
+开放的门
+Bed
+床
+Bars
+栅栏
+Ruined Shrine
+毁坏的神殿
+Chest
+箱子
+Cracked Wall
+墙上的裂缝
+Hook
+钩子
+Entrance
+入口
+Exit Stairs
+出口楼梯
+Ghostly Adventurer
+幽灵冒险家
+Bondage Machine
+束缚机器
 Codex Imaginus
 想像法典
 Clavicula Romantica
@@ -5875,7 +5915,7 @@ The plug directs itself between your legs!
 Fire 4 Steel Rain in quick succession toward the target point. Best in open spaces.
 向目标点快速连续发射 4 片“钢之雨”，最好在空旷的地方施放。
 Fires a steel plug that deals DamageDealt piercing damage. Bound targets are Plugged, which increases Distraction over time.
-发射一个造成 DamageDealt 点穿刺伤害的钢制插入物。被束缚的目标会被插入，随着时间的推移会增加干扰值。
+发射一个造成 DamageDealt 点穿刺伤害的钢制插入物。被束缚的目标会被插入，随着时间的推移会增加性奋值。
 You raise your hand and a steel projectile appears!
 你举起手，一枚钢弹出现了！
 You raise your hand and several steel projectiles appear!
@@ -6367,15 +6407,15 @@ Increases maximum MP by 12
 Strong Mind I
 意志坚定 I
 Increases maximum Distraction by 33% of base and Distraction regen by -0.1 per turn
-将最大干扰值提高基础值的 33% ，干扰值每回合降低0.1
+将最大性奋值提高至基础值的 33% ，且性奋值每回合降低0.1
 Strong Mind II
 意志坚定 II
 Increases maximum Distraction by 33% of base and Distraction regen by -0.1 per turn
-将最大干扰值提高基础值的 33% ，干扰值每回合降低0.1
+将最大性奋值提高至基础值的 33% ，且性奋值每回合降低0.1
 Strong Mind III
 意志坚定 III
 Increases maximum Distraction by 33% of base and Distraction regen by -0.1 per turn
-将最大干扰值提高基础值的 33% ，干扰值每回合降低0.1
+将最大性奋值提高至基础值的 33% ，且性奋值每回合降低0.1
 Expert Wizard
 专业法师
 Gives you an additional spell choice slot
@@ -6638,8 +6678,8 @@ Chastity
 贞操
 Select which creature to lock in a belt
 选择要锁定在贞操带中的个体
-Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs and distracts constantly.
-对无助的敌人释放，增加 DamageDealt 点束缚，并装备贞操带以阻止目标移除插入的物体和干扰值变化。
+Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly.
+对无助的敌人释放，增加 DamageDealt 点束缚伤害，并装备贞操带以阻止目标移除插入体内的物体，且不断增加性奋值。
 You conjure a chastity belt, which latches onto your target!
 你召唤出贞操带，它将佩戴在你的目标身上！
 Your own spell locks you in chastity!
@@ -7670,6 +7710,8 @@ Pleased
 愉快
 Blessed
 祝福
+Neutral
+中立
 Annoyed
 恼怒
 Hostile
@@ -8092,6 +8134,8 @@ Demise immanent
 灭亡
 Slowed
 缓慢
+Immobilized!
+被固定，你无法移动
 Helpless!
 无助！
 Shadow
@@ -8188,44 +8232,74 @@ The wall is cracked.
 墙裂了。
 Many ropes emerge around you, removing weaker ropes from your body and binding enemies!
 许多绳索出现在你周围，从你的身体上移除较弱的绳索并束缚敌人！
+Choose Class:
+选择职业：
+Distraction Mode:
+欲望模式：
 Distracted
 干扰
 Aroused
 性欲
 Removes all chastity belts, vibrating restraints, plugs, and removes the option to play with yourself.
-移除所有贞操带、振动拘束、塞子，并移除自慰的选项。
+移除所有关于贞操带、振动棒的内容，以及自慰的选项。
 Includes all that good stuff.
-包括所有的好东西。
+启用所有的奇妙内容。
 Allow Rear Plugs
 允许肛塞
 Allow Piercings
 允许穿孔
 Fighter
 战士
+Start with 200 willpower and Iron Will, good at melee and blocking attacks.
+开局时意志力上限为 200 点，获得技能“钢铁意志”，擅长近战和格挡攻击。
 Rogue
 流氓
+Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
+开局时体力上限为 200 点，获得技能“影于暗处”，擅长隐身和躲避。
 Wizard
 法师
+Start with 200 mana and Magical Sight, good at casting spells.
+开局时魔力上限为 200 点，获得技能“魔之眼”，擅长施放法术。
 Peasant
 普通人
 Start with nothing to your name. For those who want a challenge.
-从你的名字开始。对于那些想要挑战的人。
+从零开始，一无所有。对于那些想要挑战的人。
 Trainee
 练习生
+You are a mage, but haven't finished your formal 'training'. Requires Aroused mode.
+你是一名法师，但尚未完成正式的“训练”。需要启用“性欲”模式。
+Spell Choice:
+法术选择：
 Choose Spells
 选择法术
 Random Spells
 随机法术
 Break orbs. Get points. Buy spells. It's that simple.
-打破水晶。获得积分。购买法术。就是这么简单。
+打破水晶，获得点数，购买法术。就是这么简单。
 Break orbs and pray you get something good.
 打破水晶，祈祷你能得到好东西。
+Save Mode:
+存档模式：
 Save Codes
 存档码
-Roguelike
-单人
+Grants a save code every floor you can write down. Autosaves only on floor start.
+每当你到达一个新的楼层时，获得一个可以记录的存档码，并在楼层开始时自动保存。
+No save codes, forced autosaves. You are in it to win it.
+没有存档代码，强制自动保存。你的目标就是赢得胜利。
+Prison Strictness:
+囚禁：
 Normal
 正常
+Easy
+简单
+Strict
+严格
+If you get captured, you might get rescued if you have good relations.
+如果你被抓住，且与其他派系关系良好，可能会被他们救出。
+If you get captured, you will always get rescued and pay a fee.
+如果你被抓住，你将总是被救出来，不过需要支付一些费用。
+If you get captured, you are totally on your own.
+如果你被抓住，你只能靠自己。
 Start Playing
 开始游玩
 Lock your settings in, nice and tight.
@@ -8956,6 +9030,8 @@ Create a '+' shaped pool of slime that deals 35 glue damage per hit
 创建一个十字粘液池，每一击造成 35 点胶水伤害
 Toggles
 切换
+Multiclass
+多职业
 Locks and Restraints
 锁具和拘束具
 General Combat
@@ -10219,33 +10295,37 @@ Legend has it there is a secret temple within a vast jungle.|Put on your fedora 
 These are the stairs to the tutorial hall.
 这是通往新手教程的楼梯。
 Congratulations! You've completed the tutorial!|Now get in there and stay out of trouble~
-祝贺您已经完成了教程|现在进去，别惹麻烦~
+祝贺您已经完成了教程|现在进去吧，不要惹麻烦哟~
 Welcome to the dungeon!|Don't panic, this is a turn-based game,|and nothing will happen until you move.|On your left you'll see your character,|displayed with all of the bondage they don't have.|Don't worry, you'll find some soon!
-欢迎来到地牢|不要惊慌，这是一个回合制游戏，|除非你移动，否则什么都不会发生|在您的左侧，您将看到您的角色，显示了她们没有的所有束缚|别担心，你很快就会找到的！
+欢迎来到地牢|不要惊慌，这是一个回合制游戏，|除非你移动，否则什么都不会发生|在你的左边，你会看到你的角色，将会显示所有已装备的束缚|不过目前没有，但别担心，你很快就会找到的！
 You might be wondering what all these barrels are for.|Don't worry, they're, uh, totally safe!|When you are inside one you can click on yourself to wait.|Enemies have a hard time seeing you inside a barrel,|so you can wait until they pass by you.
-你可能想知道这些桶是干什么用的|别担心，他们完全安全|当你在里面时，你可以点击自己等待|敌人很难在桶里看到你，所以你可以等到他们从你身边经过。
+你可能想知道这些桶都是干什么用的。|别担心，它们，嗯，完全安全！|当你在桶里时，你可以点击自己来等待。|敌人很难在桶里看到你，所以你可以在桶里等着，直到他们离开。
+On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.|Below that, two icons allow you to toggle automatic escape and movement modes.
+在右边，你会看到你的属性和法术槽。|你的性奋值 DP、体力值 SP、魔力值 MP 和意志力 WP 会显示在那里，|我们会解释它们的作用。|在下方，你会看到当前的可消耗物品、你的金币和当前装备的武器。|还有两个图标可以切换自动挣扎和移动模式。
 Your WP, or willpower, is an important resource.|Without it, escaping from restraints is more difficult.|There is a willpower potion on the floor up there. Go get it!
-你的WP或意志力是一个重要的资源|没有它，摆脱束缚更加困难|前面的地板上有一种意志力药剂。去拿着吧！
+你的意志力是一个重要的资源|没有它，摆脱束缚将会更加困难|前面的地板上有一瓶意志力药剂，去拿着吧！
 Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack).
-哦，不！那个陷阱把你的意志力都消灭了|幸运的是你有药水|您可以通过单击意志力旁边的“+”图标来饮用|您还可以在底部栏中查看您的库存|还有一个快速库存图标（背包）。
+哦，不！那个陷阱把你的意志力都清空了|幸运的是你有药水|你可以通过点击意志力旁边的加号来饮用|当然，还可以在底部栏中检查背包饮用|或者使用快速库存图标（背包）。
+Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|
+又是一个陷阱！|你注意到陷阱大大耗费了你的体力，阻止你奔跑或攻击。|（提示：你可以通过底部工具栏上的“>”按钮切换移动方式）|在体力恢复期间，你可以移动到上面的房间保护自己。|通过点击底部工具栏上的“关门”按钮可以关门。
 Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
-你的MP，或法力，用来施法|为了施展法术，你需要学习一种|点击右下角的咒语按钮|然后点击火焰学徒，学习解锁火焰弹|然后，按空格键返回，然后按向右键切换页面|点击Firebolt，学习它，然后将其分配到法术1。
+你的法力可以用于施法|为了施展法术，你需要学习一种|点击下方的法术按钮|然后点击基础火法术，学习解锁火焰弹|然后返回法术书页面，点击法术页面上方的“>”按钮来切换页面|找到并点击火球，将其分配至右侧的法术槽。
 On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook.
 在右边，你会看到你的统计数据和法术插槽|你可以点击一个法术槽，或者点击键盘上的1-4来施放一个法术|然后在地图上点击你想要瞄准的地方|它们上面的小扳手图标可以让你|将它们换成法术书中的另一个法术。
 There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has a very long range,|so simply cast firebolt and click on the zombie.|Repeat until it is dead.
-那边有个僵尸|幸运的是，僵尸的火力很弱|火焰弹射程很长|所以只需施放火焰弹并点击僵尸即可|重复，直到它死去。
+那边有个僵尸|幸运的是，僵尸的火力很弱|你的火焰弹射程很长|所以只需施放火焰弹并点击僵尸即可|重复，直到它死去。
 Mana potions restore your mana fully.
 法力药剂完全恢复了你的法力。
 Your DP, or Distraction, is a measure of...|How much you are enjoying things.|These sorts of thoughts cloud your mind,|so spellcasting is more difficult when you are distracted.|Go grab the potion over there.
-你的DP，或干扰值，是标准…|你享受事物的程度|这些想法让你的头脑变得模糊，所以当你分心时，施法会更加困难|去那边拿药水。
+你的性奋值，是衡量…|你享受快乐的程度|这些想法会让你的头脑混乱，所以当你性奋时，施法会更加困难|去拿那边的药水吧。
 Did you like that?|Anyway, there's a zombie over there. You should drink that potion.|It will clear your mind so you can cast again.|Hurry, or it will get you!
 你喜欢吗|不管怎样，那边有个僵尸。你应该喝那种药水|它会让你头脑清醒，这样你就可以再次施展|快点，不然它会抓住你的！
 That wasn't so hard, was it?|Now then, there's a treasure chest over here. Why don't you open it?
-这并不难，是吗|现在，这里有一个宝箱。你为什么不打开它？
+这并不难，对吧？|现在，这里有一个宝箱。你为什么不打开它？
 Yikes, looks like you're in a bind!|No worries, though. There's a key to those cuffs over there.|Simply hover over the cuffs item test on the left side.|Then, click the lock icon to remove the lock.|Finally, click the buckle to remove the cuffs.
-哎呀，看来你陷入困境了|不过，别担心。那边有一把钥匙|只需将鼠标悬停在左侧的手铐上|然后，单击锁图标以移除锁|最后，单击带扣以卸下手铐。
+哎呀，看来你陷入困境了|不过，别担心。那边有一把钥匙|只需将鼠标悬停在左侧的手铐上。|然后，单击锁图标以移除锁|最后，单击带扣以卸下手铐。
 I think we all know what's in the next chest.|It's important to understand the different ways you can escape.|You can struggle, which costs the most stamina|but makes other struggle methods faster.|You can cut, which requires a knife in hand.|You can remove, which represents untying or unbuckling.
-我想我们都知道下一个箱子里有什么|重要的是要了解你可以逃避的不同方式|你可以挣扎，这会消耗最多的耐力|但使其他挣扎方法更快|你可以切割，这需要手里拿着刀|您可以语出，这表示松开或解除绑定。
+我想我们都知道下一个箱子里有什么。|重要的是要了解不同的逃脱方式。|你可以挣扎，不过这是体力消耗最多的方法|其他挣扎方法会更快|你可以切割，不过这需要手里拿着刀|你还可以移除，这表示松开或解除绑定。
 Ouch, that looked tight...|Sometimes you won't be able to struggle out of things.|You'll have to find some other way to take it off...
 哎哟，看起来很紧…|有时候你无法摆脱困境|你得想办法把它取下来...
 There's a few zombies up ahead.|Fight your way through and claim the treasure!
@@ -10438,6 +10518,8 @@ Mmmph! (Struggle weakly)
 嗯！ （弱弱地挣扎）
 (Gag her)
 （堵住她的嘴）
+Items on Ground:
+地面上的物品：
 Latex
 乳胶
 Slime
@@ -10456,6 +10538,28 @@ Select which creature to buff
 选择要增益的个体
 You snap your fingers!
 你打了一个响指！
+Self Bondage Enthusiast
+自缚爱好者
+Start with a basic self-bondage kit.
+开局时有一整套自缚装备。
+Apprehended
+易捕获
+When you are bound by an enemy attack or spell, you are stunned 1 turn per restraint added.
+当你被敌人的攻击或法术束缚时，每添加一个束缚，你会昏迷1回合。
+Feeble Attacks
+无力攻击
+All enemies gain 20 physical and magic armor.
+所有敌人获得 20 点物理和魔法护甲。
+Glass Cannon
+玻璃加农炮
+The effects of you taking damage are increased by 150%.
++150% 你受到的伤害效果。
+The Wand is Mightier
+强大魔杖
+Enemies take 30% less damage BEFORE armor calculation; Tease damage multiplier to bound targets is increased by 85%.
+敌人在计算护甲之前受到的伤害减少 30％ ，对被束缚目标的挑逗伤害增加 85％。
+Kinky Armory
+变态武装
 A box tie keeping your arms secured behind your back.
 将您的手臂牢牢固定在背后。
 The ropes squeeze you gently.
@@ -10472,8 +10576,6 @@ Rope Hogtie
 驷马
 A very strict and tight hogtie, good for subduing unruly captives.
 一种非常严苛和牢固的捆绑，适合制服不守规矩的俘虏。
-It's very secure. You tug on the rope connecting your feet and struggle.
-这是非常安全的。你需要首先挣扎开连接你腿的绳子。
 Rope Belt
 绳衣
 A harness acting as a handle to pull you around
@@ -10506,3 +10608,17 @@ A tie keeping your feet secured together.
 一条将双脚固定在一起的捆绑。
 The ropes squeeze you gently.
 绳索轻轻地压迫你。
+More Encasement
+更多包裹
+Enemies that encase you (e.g slimes, latex cubes) will appear more frequently.
+与包裹有关的敌人会更频繁地出现（例如粘液团、乳胶立方体）。
+Less Encasement
+更少包裹
+Fewer encasement-related enemies will appear, although this does not remove it entirely.
+与包裹有关的敌人会更稀少地出现，不过不会完全移除。
+Provides light
+提供了光明
+Thank you to the following awesome people for supporting me at patreon.com/ada18980
+感谢以下这些很棒的人在 patreon.com/ada18980 上支持我
+Projectiles Make Player Transparent
+投射物使玩家透明
