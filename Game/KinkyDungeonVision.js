@@ -441,6 +441,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset) {
 	let l = 0;
 	let pad = 0;
 
+
 	for (let R = -1; R <= KinkyDungeonGridHeightDisplay + 2; R++)  {
 		for (let X = -1; X <= KinkyDungeonGridWidthDisplay + 2; X++)  {
 
@@ -460,7 +461,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset) {
 					}
 					l = Math.max(0, Math.min(1, (1-light)));
 					//kdgamefog.beginFill(light > 0 ? (KDAvgColor(lightColor, shadowColor, light, Math.max(0, 1 - light))) : 0, l*l);
-					kdgamefog.beginFill(light > 0 ? shadowColor : 0x000000, (KinkyDungeonVisionGrid[RX + RY*KinkyDungeonGridWidth] > 0) ? (0.9*l*l) : l);
+					kdgamefog.beginFill(light > 0 ? shadowColor : 0x000000, (KinkyDungeonVisionGrid[RX + RY*KinkyDungeonGridWidth] > 0) ? (0.5*l*l) : l);
 					pad = light > 0 ? 0 : 1;
 					kdgamefog.drawRect((-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad, KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2);
 					kdgamefog.endFill();
@@ -539,6 +540,41 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset) {
 			}
 		}
 	}
+
+	if (!KDToggles.LightmapFilter && kdmapboard.filters.length > 0) {
+		kdmapboard.filters = [
+
+		];
+	} else if (KDToggles.LightmapFilter && kdmapboard.filters.length < 1) {
+		kdmapboard.filters = [
+			kdlightingfilter
+		];
+	}
+
+	/*if (StandalonePatched) {
+		kdlightmapGFX.clear();
+		for (let R = 0; R <= KinkyDungeonGridHeightDisplay; R++)  {
+			for (let X = 0; X <= KinkyDungeonGridWidthDisplay; X++)  {
+				RY = R+CamY;
+				RX = X+CamX;
+				lightDiv = (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(RX, RY))) ? KDLightCropValue : KDLightCropValue * 0.7;
+				light = KinkyDungeonBrightnessGrid[RX + RY*KinkyDungeonGridWidth] > 0 ? 1 : 0;
+				kdlightmapGFX.beginFill(0xffffff, Math.max(0, Math.min(1, 1 - 2*light)));
+				kdlightmapGFX.drawRect(
+					X,
+					R,
+					1,
+					1);
+				kdlightmapGFX.endFill();
+
+			}
+		}
+
+		PIXIapp.renderer.render(kdlightmapGFX, {
+			renderTexture: kdlightmap
+		});
+	}*/
+
 }
 
 /**
