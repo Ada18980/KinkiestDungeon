@@ -12,6 +12,12 @@ let KDReturnButtonXX = 1450;
 
 let KDIntenseFilter = null;
 
+
+
+
+
+
+
 // PIXI experimental
 /** @type HTMLCanvasElement */
 let pixiview = null;
@@ -20,8 +26,34 @@ let pixirendererKD = null;
 let kdgamefog = new PIXI.Graphics();
 kdgamefog.zIndex = -1;
 
+
 let kdmapboard = new PIXI.Container();
 kdmapboard.zIndex = -2;
+
+let kdlightmap = null
+let kdlightmapGFX = null;
+
+/*if (StandalonePatched) {
+	kdlightmapGFX = new PIXI.Graphics();
+	kdlightmap = PIXI.RenderTexture.create({ width: KinkyDungeonGridWidthDisplay, height: KinkyDungeonGridHeightDisplay});
+
+}*/
+let kdlightingfilter = new PIXI.Filter(null, KDShaders.Darkness.code, {
+	radius: .02*72/2000,
+	weight: 0.24,
+	mult: 1.1,
+	lum_cutoff: 0.65,
+	lum_cutoff_rate: 3.5,
+	brightness: 1,
+	brightness_rate: 0.7,
+	contrast: 1,
+	contrast_rate: 0.03,
+});
+kdmapboard.filters = [
+	kdlightingfilter
+];
+
+
 let kdenemyboard = new PIXI.Container();
 kdenemyboard.zIndex = 0;
 kdenemyboard.sortableChildren = true;
