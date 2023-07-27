@@ -96,7 +96,7 @@ let KDToggles = {
 	ArousalHearts: true,
 	VibeHearts: true,
 	FancyWalls: true,
-	LightmapFilter: true,
+	//LightmapFilter: true, # not on BC version
 	PlayerTransparencyDuringBullets: true,
 };
 
