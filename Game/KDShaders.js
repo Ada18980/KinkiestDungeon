@@ -2,8 +2,6 @@
 
 let KDShaders = {
 	Darkness: {
-		args: {
-		},
 		code: `
 varying vec2 vTextureCoord;
 uniform sampler2D uSampler;
@@ -49,5 +47,51 @@ void main(void)
 	gl_FragColor = c;
 }
 `
+	},
+	FogFilter: {
+		code: `
+varying vec2 vTextureCoord;
+uniform sampler2D uSampler;
+uniform sampler2D lightmap;
+uniform float saturation;
+uniform float brightness;
+uniform float brightness_rate;
+uniform float contrast;
+uniform float contrast_rate;
+
+void main(void)
+{
+	vec4 c = texture2D(uSampler, vTextureCoord);
+	vec4 l = texture2D(lightmap, vTextureCoord);
+
+	if (c.a > 0.0 && l.a > 0.0) {
+		vec3 rgb = c.rgb;
+		rgb = mix(vec3(.5), mix(vec3(dot(vec3(.2125, .7154, .0721), rgb)), rgb, min(1., saturation)), contrast + (1. - saturation) * contrast_rate);
+		c.rgb = rgb * ((brightness) + (1. - saturation) * brightness_rate);
+		c.rgb *= c.a;
 	}
+
+	gl_FragColor = c;
+}
+`
+	},
+	GammaFilter: {
+		code: `
+varying vec2 vTextureCoord;
+uniform sampler2D uSampler;
+uniform float gamma[1];
+
+void main(void)
+{
+vec4 c = texture2D(uSampler, vTextureCoord);
+
+if (c.a > 0.0) {
+	vec3 rgb = pow(c.rgb, vec3(1. / (gamma[0])));;
+	c.rgb = rgb;
+}
+
+gl_FragColor = c;
+}
+`
+	},
 };

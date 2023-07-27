@@ -419,7 +419,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 
 let KDLightCropValue = 6;
 
-function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset) {
+function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_offsetVis) {
 	kdgamefog.clear();
 
 	let v_td = false;
@@ -541,30 +541,30 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset) {
 		}
 	}
 
-	if (!KDToggles.LightmapFilter && kdmapboard.filters.length > 0) {
+	if (!KDToggles.LightmapFilter && kdmapboard.filters.length > 1) {
 		kdmapboard.filters = [
-
+			kdgammafilter,
 		];
-	} else if (KDToggles.LightmapFilter && kdmapboard.filters.length < 1) {
+	} else if (KDToggles.LightmapFilter && kdmapboard.filters.length < 2) {
 		kdmapboard.filters = [
-			kdlightingfilter
+			...KDBoardFilters,
+			kdgammafilter,
 		];
 	}
 
-	/*if (StandalonePatched) {
+	if (StandalonePatched) {
+		pad = 1;
 		kdlightmapGFX.clear();
 		for (let R = 0; R <= KinkyDungeonGridHeightDisplay; R++)  {
 			for (let X = 0; X <= KinkyDungeonGridWidthDisplay; X++)  {
 				RY = R+CamY;
 				RX = X+CamX;
-				lightDiv = (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(RX, RY))) ? KDLightCropValue : KDLightCropValue * 0.7;
-				light = KinkyDungeonBrightnessGrid[RX + RY*KinkyDungeonGridWidth] > 0 ? 1 : 0;
-				kdlightmapGFX.beginFill(0xffffff, Math.max(0, Math.min(1, 1 - 2*light)));
+				kdlightmapGFX.beginFill(0xffffff, KinkyDungeonVisionGrid[RX + RY*KinkyDungeonGridWidth] > 0 ? 0 : 1.);
 				kdlightmapGFX.drawRect(
-					X,
-					R,
-					1,
-					1);
+					(X - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - pad,
+					(R - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - pad,
+					KinkyDungeonGridSizeDisplay + pad*2,
+					KinkyDungeonGridSizeDisplay + pad*2);
 				kdlightmapGFX.endFill();
 
 			}
@@ -573,7 +573,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset) {
 		PIXIapp.renderer.render(kdlightmapGFX, {
 			renderTexture: kdlightmap
 		});
-	}*/
+	}
 
 }
 

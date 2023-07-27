@@ -46,7 +46,7 @@ KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
 KDToggleGraphicsQuality,High Quality Animations
-KDToggleLightmapFilter,Desaturate Dark Areas
+KDToggleLightmapFilter,Desaturate Unseen Areas
 KinkyDungeonFastWait,Wait Quickly
 
 KDHelpless,Helpless!
@@ -60,6 +60,7 @@ KDVibeVolume,Toy Volume:
 KDMusicVolume,Music Volume:
 KDSfxVolume,SFX Volume:
 KDAnimSpeed,Animation Time:
+KDGamma,Map Brightness:
 
 KinkyDungeonJourney,"Select a journey. This will determine the ordering of game areas."
 KinkyDungeonJourney0,"Standard: The intended experience"
