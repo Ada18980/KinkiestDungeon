@@ -10681,3 +10681,6 @@ KinkyDungeonSpecialCrossbow,"25 charge to fire an arrow. Deals 50 pierce damage.
 KinkyDungeonSpellTargetArrowBolt,Choose projectile path
 KinkyDungeonSpellArrowBolt,Bolt
 KinkyDungeonSpellCastArrowBolt,"You pull the trigger!"
+
+
+KDdmg,dmg
