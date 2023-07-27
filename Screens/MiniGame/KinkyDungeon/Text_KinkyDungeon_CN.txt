@@ -1,4 +1,4 @@
-Credits
+﻿Credits
 致谢（素材）
 Patrons
 致谢（资助者）
@@ -10,6 +10,10 @@ Back
 后退
 Next
 下一个
+Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia, Mitki|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
+Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
 Language
 语言
 English
@@ -75,9 +79,9 @@ Resisted Bondage!
 You bump into a wall.
 你撞到了一堵墙。
 Toy Volume:
-玩具音量：
+玩具音量:
 Music Volume:
-音乐音量：
+音乐音量:
 SFX Volume:
 音效大小:
 Animation Time:
@@ -1264,8 +1268,6 @@ Magic Keys:
 法术按键：
 Knife: 
 刀：
-You climb down the stairs.
-你进入了新的一层。
 You can't climb down until you get out of this leash...
 在你摆脱牵绳之前，你不能进入下一层......
 You climb down and find yourself in a strange new place.
@@ -1437,13 +1439,13 @@ way of the fist
 Lockpick
 撬锁工具
 Exit Keys
-[离开的钥匙]
+离开的钥匙
 Wizard's Outfit
 法师装束
 Your favorite outfit for adventuring.
 你最喜欢的冒险服装。
 Your original outfit. No bonuses
-你原来的衣服。没有额外效果。
+你原来的衣服，没有额外效果。
 Tactical Catsuit
 战术紧身服
 A sleek catsuit worn by stealth operatives. No frills, no nonsense.
@@ -1453,7 +1455,7 @@ Increases stealth by 10% in the dark.
 Jail Uniform
 监狱制服
 The prisoners are kept in revealing outfits to keep them from hiding things.
-囚犯们穿着暴露的衣服，以防止他们隐藏东西。
+囚犯们穿着的暴露的衣服，用来防止他们隐藏东西。
 A prisoner's 'outfit'. No bonuses, no penalties.
 囚徒的“装束”。没有奖励，没有惩罚。
 Wolfgirl Suit
@@ -1638,6 +1640,8 @@ You sip the mana potion and feel empowered.
 你啜饮着魔力药水，感到充满力量。
 A rare essence used by mages to recover their strength.
 法师用来恢复力量的稀有精华。
+Restores 50% max MP instantly. Excess mana goes into the mana pool.
+立即恢复 50% 最大魔力。多余的魔力将被存入储备池中。
 Stamina Potion
 体力药水
 You drink the stamina potion and feel invigorated.
@@ -1645,7 +1649,7 @@ You drink the stamina potion and feel invigorated.
 A potion brimming with heat and energy.
 充满热量和能量的药水。
 Restores 50% stamina and 250% more over 25 turns. Effect does not stack.
-立即恢复50%最大耐力，并在接下来12回合中恢复67%耐力。效果不能叠加。
+立刻恢复 50％ 的体力，并在 25 回合内额外恢复 250％ 的体力。效果不能叠加。
 Willpower Potion
 意志力药水
 You drink the willpower potion and feel motivated.
@@ -2001,9 +2005,7 @@ Enclosed!
 You feel a gentle buzz...
 你感觉到了轻轻的振动...
 Your toys tease you gently...
-玩具正在轻轻地逗弄你……
-The vibration is torturous!
-痛苦的震动
+玩具正在轻轻地挑逗你……
 Edged!
 极限！
 Satisfied~
@@ -2012,6 +2014,8 @@ Damage:
 伤害：
 Accuracy: 
 准确度：
+SP Cost: 
+体力消耗：
 It appears to be a receptacle
 它似乎是一个容器
 Place live crystal
@@ -3311,7 +3315,9 @@ Lockable
 Non-Lockable
 不可上锁
 Unlocked
-解锁的
+未锁定的
+Lock Type: 
+锁头:
 Red
 红色的
 Red
@@ -3464,6 +3470,8 @@ Allies:
 盟友：
 Enemies: 
 敌人：
+Favorable: 
+喜欢：
 Nevermere Trainers
 Nevermere 训练师
 DressUp Co.
@@ -4195,13 +4203,13 @@ A leather strap secured onto your face and blocking vision.
 You can still see through the gap around your nose.
 您仍然可以通过鼻子周围的缝隙看到。
 The shields will open up to accept new toys, but won't let them out...
-会打开并接受新玩具，但不会让它们出来......
+其可以打开并放入新的玩具，但不会让那些玩具们出来......
 Steel Chastity Belt
 钢制贞操带
 A cruel device used for locking magical vibrators in place.
 用于锁定魔法振动器的残忍装置。
 The shields will open up to accept new toys, but won't let them out...
-会打开并接受新玩具，但不会让它们出来......
+其可以打开并放入新的玩具，但不会让那些玩具们出来......
 A cruel device used for locking magical vibrators in place.
 用于锁定魔法振动器的残忍装置。
 A cruel device used for locking magical massagers in place.
@@ -4255,19 +4263,19 @@ A sizeable plug that makes you happy... a little too happy.
 It vibrates periodically and allows orgasms.
 它会定期振动并允许性高潮。
 Teaser Plug
-逗弄塞
+震动棒
 A sizeable plug that will tease you but never let you go...
-一个相当大的插头，会挑逗你，但永远不会让你高潮......
+一个相当大的插入物，会不断挑逗你，但永远不会让你高潮......
 It vibrates weakly periodically.
 它周期性地微弱振动。
 Torment Plug
 折磨塞
 A sizeable plug that will make your life unbearably pleasurable...
-一个相当大的插头，会让你的生活变得难以忍受......
+一个相当大的插入物，会让你的生活异常愉悦...
 It vibrates strongly periodically and has a denial setting.
 它周期性地强烈振动并具有拒绝设置。
 A sizeable plug that will make your life unbearably pleasurable...
-一个相当大的插头，会让你的生活变得难以忍受......
+一个相当大的插入物，会让你的生活异常愉悦...
 Maid Egg
 女仆跳蛋
 An energetic little friend that likes to tease you and takes orders from the head maid.
@@ -5506,6 +5514,8 @@ Entrance
 入口
 Exit Stairs
 出口楼梯
+Mysterious Stairs
+神秘的楼梯
 Ghostly Adventurer
 幽灵冒险家
 Bondage Machine
@@ -10622,7 +10632,9 @@ Thank you to the following awesome people for supporting me at patreon.com/ada18
 感谢以下这些很棒的人在 patreon.com/ada18980 上支持我
 Projectiles Make Player Transparent
 投射物使玩家透明
-Goddesses:
-材质:
+dmg
+伤害
 rep
 声望
+Goddesses:
+材质:
