@@ -654,6 +654,14 @@ function KinkyDungeonLoad() {
 					KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex] || 0;
 				}
 			}
+			if (localStorage.getItem("KDGamma")) {
+				let parsed = parseInt(localStorage.getItem("KDGamma"));
+				if (parsed != undefined) {
+					KDGammaListIndex = parsed;
+					KDGamma = KDGammaList[KDGammaListIndex] || 0;
+					kdgammafilterstore[0] = KDGamma;
+				}
+			}
 
 			KinkyDungeonSexyMode = localStorage.getItem("KinkyDungeonSexyMode") != undefined ? localStorage.getItem("KinkyDungeonSexyMode") == "True" : true;
 			KinkyDungeonClassMode = localStorage.getItem("KinkyDungeonClassMode") != undefined ? localStorage.getItem("KinkyDungeonClassMode") : "Mage";
@@ -1740,6 +1748,10 @@ function KinkyDungeonRun() {
 			DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 100) + "%", "#ffffff", "",
 				() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 100 + "%",
 				() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 100 + "%");
+			YY += YYd;
+			DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDGamma") + " " + (Math.round(KDGamma * 100) + "%"), "#ffffff", "",
+				() => KDGammaList[(KDGammaListIndex + KDGammaList.length - 1) % KDGammaList.length] * 100 + "%",
+				() => KDGammaList[(KDGammaListIndex + 1) % KDGammaList.length] * 100 + "%");
 			YY += YYd * 2;
 		}
 
@@ -2596,6 +2608,14 @@ function KinkyDungeonHandleClick() {
 				KDResolution = KDResolutionList[KDResolutionListIndex];
 				KDResolutionConfirm = true;
 				localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
+			}
+			YY += YYd;
+			if (MouseIn(450, YY, 350, 64)) {
+				if (MouseX <= 450 + 350/2) KDGammaListIndex = (KDGammaList.length + KDGammaListIndex - 1) % KDGammaList.length;
+				else KDGammaListIndex = (KDGammaListIndex + 1) % KDGammaList.length;
+				KDGamma = KDGammaList[KDGammaListIndex] || 0;
+				localStorage.setItem("KDGamma", "" + KDGammaListIndex);
+				kdgammafilterstore[0] = KDGamma;
 			}
 			YY += YYd*2;
 		}
