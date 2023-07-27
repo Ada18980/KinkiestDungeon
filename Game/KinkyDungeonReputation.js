@@ -204,7 +204,7 @@ function KinkyDungeonChangeFactionRep(Rep, Amount) {
 
 	if (curr != last) {
 		let amount = 0.5*Math.round((curr - last)*1000)/10; // 0.5% due to the fact that the scale is -1 to +1 but it gets mapped from 0 to 100%
-		KinkyDungeonSendFloater({x: 1100, y: 800 - KDRecentRepIndex * 40}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonFaction" + Rep)} rep`, "white", 5, true);
+		KinkyDungeonSendFloater({x: 1100, y: 800 - KDRecentRepIndex * 40}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonFaction" + Rep)} ${TextGet("KDrep")}`, "white", 5, true);
 		KDRecentRepIndex += 1;
 	}
 
@@ -234,7 +234,7 @@ function KinkyDungeonChangeRep(Rep, Amount) {
 		if (Math.abs(KinkyDungeonGoddessRep[Rep] - start) > 0.1) {
 			let value = KinkyDungeonGoddessRep[Rep] - start;
 			let amount = Math.round((value)*10)/10;
-			KinkyDungeonSendFloater({x: 1100, y: 800 - KDRecentRepIndex * 40}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonShrine" + Rep)} rep`, "white", 5, true);
+			KinkyDungeonSendFloater({x: 1100, y: 800 - KDRecentRepIndex * 40}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonShrine" + Rep)} ${TextGet("KDrep")}`, "white", 5, true);
 			KDRecentRepIndex += 1;
 		}
 

@@ -452,57 +452,57 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 	if (data.distractionTypesWeak.includes(data.type)) {
 		let amt = data.dmg/2 * data.arouseMod;
 		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}dp`;
+		str = str + `${Math.round(amt*10)}DP`;
 		KinkyDungeonChangeDistraction(amt, true, data.arouseAmount);
 	}
 	if (data.distractionTypesWeakNeg.includes(data.type)) {
 		let amt = -data.dmg/2 * data.arouseMod;
 		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}dp`;
+		str = str + `${Math.round(amt*10)}DP`;
 		KinkyDungeonChangeDistraction(amt, true);
 	}
 	if (data.distractionTypesStrong.includes(data.type)) {
 		let amt = data.dmg * data.arouseMod;
 		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}dp`;
+		str = str + `${Math.round(amt*10)}DP`;
 		KinkyDungeonChangeDistraction(amt, true, data.arouseAmount);
 	}
 	if (data.staminaTypesStrong.includes(data.type)) {
 		let amt = -data.dmg;
 		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}sp`;
+		str = str + `${Math.round(amt*10)}SP`;
 		KinkyDungeonChangeStamina(amt, false, false, false, KDGetStamDamageThresh());
 	} else if (data.staminaTypesWeak.includes(data.type)) {
 		let amt = -data.dmg/2;
 		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}sp`;
+		str = str + `${Math.round(amt*10)}SP`;
 		KinkyDungeonChangeStamina(amt, false, false, false, KDGetStamDamageThresh());
 	}
 	if (data.manaTypesStrong.includes(data.type)) {
 		let amt = -data.dmg;
 		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}mp`;
+		str = str + `${Math.round(amt*10)}MP`;
 		KinkyDungeonChangeMana(amt);
 	} else if (data.manaTypesWeak.includes(data.type)) {
 		let amt = -data.dmg/2;
 		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}mp`;
+		str = str + `${Math.round(amt*10)}MP`;
 		KinkyDungeonChangeMana(amt);
 	}
 	if (data.willTypesStrong.includes(data.type)) {
 		let amt = -data.dmg;
 		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}wp`;
+		str = str + `${Math.round(amt*10)}WP`;
 		KinkyDungeonChangeWill(amt, true);
 	} else if (data.willTypesWeak.includes(data.type)) {
 		let amt = -data.dmg/2;
 		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}wp`;
+		str = str + `${Math.round(amt*10)}WP`;
 		KinkyDungeonChangeWill(amt, true);
 	} else if (data.willTypesVeryWeak.includes(data.type)) {
 		let amt = -data.dmg/4;
 		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}wp`;
+		str = str + `${Math.round(amt*10)}WP`;
 		KinkyDungeonChangeWill(amt, true);
 	}
 	if (!noInterrupt)
@@ -687,7 +687,7 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
 	KinkyDungeonStatStamina += Amount;
 	KinkyDungeonStatStamina = Math.min(Math.max(minLevel, KinkyDungeonStatStamina), KinkyDungeonStatStaminaMax);
 	if (!NoFloater && Math.abs(KDOrigStamina - Math.floor(KinkyDungeonStatStamina * 10)) >= 0.99) {
-		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatStamina * 10) - KDOrigStamina, "#44ff66", undefined, undefined, " sp");
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatStamina * 10) - KDOrigStamina, "#44ff66", undefined, undefined, " SP");
 		KDOrigStamina = Math.floor(KinkyDungeonStatStamina * 10);
 	}
 	if (Pause) {
