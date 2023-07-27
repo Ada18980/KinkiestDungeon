@@ -12,6 +12,12 @@ let KDReturnButtonXX = 1450;
 
 let KDIntenseFilter = null;
 
+
+
+
+
+
+
 // PIXI experimental
 /** @type HTMLCanvasElement */
 let pixiview = null;
@@ -20,8 +26,49 @@ let pixirendererKD = null;
 let kdgamefog = new PIXI.Graphics();
 kdgamefog.zIndex = -1;
 
+
 let kdmapboard = new PIXI.Container();
 kdmapboard.zIndex = -2;
+kdmapboard.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
+
+let kdlightmap = null
+let kdlightmapGFX = null;
+
+if (StandalonePatched) {
+	kdlightmapGFX = new PIXI.Graphics();
+	kdlightmap = PIXI.RenderTexture.create({ width: 2000, height: 1000});
+}
+let kddarkdesaturatefilter = new PIXI.Filter(null, KDShaders.Darkness.code, {
+	radius: .02*72/2000,
+	weight: 0.24,
+	mult: 1.1,
+	lum_cutoff: 0.65,
+	lum_cutoff_rate: 3.5,
+	brightness: 1,
+	brightness_rate: 0.7,
+	contrast: 1,
+	contrast_rate: 0.03,
+});
+let kdfogfilter = new PIXI.Filter(null, KDShaders.FogFilter.code, {
+	lightmap: kdlightmap,
+	brightness: 1,
+	brightness_rate: 0.,
+	contrast: 1,
+	contrast_rate: 0.03,
+	saturation: 0,
+});
+let kdgammafilterstore = [1.0];
+let kdgammafilter = new PIXI.Filter(null, KDShaders.GammaFilter.code, {
+	gamma: kdgammafilterstore,
+});
+
+let KDBoardFilters = [kdfogfilter];
+
+kdmapboard.filters = [
+	...KDBoardFilters
+];
+
+
 let kdenemyboard = new PIXI.Container();
 kdenemyboard.zIndex = 0;
 kdenemyboard.sortableChildren = true;
@@ -765,7 +812,7 @@ function KinkyDungeonDrawGame() {
 
 				// Draw fog of war
 
-				KDDrawFog(CamX, CamY, CamX_offset, CamY_offset);
+				KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_offsetVis);
 
 				tooltip = spriteRes.tooltip;
 				KinkyDungeonForceRender = spriteRes.KinkyDungeonForceRender;
