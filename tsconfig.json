@@ -23,6 +23,7 @@
         "Scripts/Translation.ts",
         "Scripts/Appearance.ts",
         "Game/KDModUtils.js",
+        "Game/KDShaders.js",
         "Game/KDAutoStruggle.js",
         "Game/KDClasses.js",
         "Game/KDParticles.js",
