@@ -1,4 +1,4 @@
-﻿Credits
+Credits
 致谢（素材）
 Patrons
 致谢（资助者）
@@ -11,9 +11,7 @@ Back
 Next
 下一个
 Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia, Mitki|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia, Mitki|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
-Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
+Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
 Language
 语言
 English
@@ -155,7 +153,7 @@ Goddess reputations start at 0 and can never exceed 25.
 Submissive
 温顺小甜心
 Your submissiveness starts at 100 and cannot go below 70.
-开局服从度变为 100 ，且游戏中不能低于 70。
+开局顺从度变为 100 ，且游戏中顺从度不会低于 70。
 Wanted
 通缉犯
 Your security level starts at 100 and cannot go below 70.
@@ -1181,7 +1179,7 @@ Cancel
 Filter
 筛选
 DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
-【危险】：加载 Mod 将在你的计算机上肆意执行任意代码。
+【警告】加载 Mod 具有危险性，因为其可在你的计算机上肆意执行任何代码。
 Like connecting to a server, etc. Only load mods from a TRUSTED source.
 就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的 Mod 。
 Up
@@ -1586,6 +1584,8 @@ Key
 钥匙
 A key with traces of magic that fades with one use.
 一把带有魔法痕迹的钥匙，一次使用就会消失。
+Can be used to unlock a red-locked restraint, door, or chest.
+可用于解锁锁头为红锁的拘束具、门或箱子。
 Magic Key
 魔法钥匙
 A glowing key enchanted with magic that fades with one use.
@@ -1602,14 +1602,22 @@ Magic Knife
 魔刀
 A magical blade, suitable against ghosts.
 一把适用于对抗鬼魂的魔法之剑。
+Deals shadow damage. Can cut enchanted ropes.
+造成暗影伤害，可以切断魔法绳索。
 Bola
 投石索
 A pair of weights attached to a rope. Can be thrown.
 一对重物连接在绳索的两端。可以投掷。
+Deals 90 points of binding, 40 chain damage, and rooting a target for 4 turns.
+造成 90 点束缚伤害和 40 点锁链伤害，并固定被攻击目标 4 回合。
 A pair of weights attached to a rope. Can be thrown.
 一对重物连接在绳索的两端。可以投掷。
+Deals 90 points of binding, 40 chain damage, and rooting a target for 4 turns.
+造成 90 点束缚伤害和 40 点锁链伤害，并固定被攻击目标 4 回合。
 Bomb
 炸弹
+After a 5 turn fuse, deals 100 fire damage in a 3x3 area.
+5 回合后引爆，在 3x3 范围内照成 100 点火焰伤害。
 Not a toy!
 不是玩具！
 After a 6 turn fuse, deals 100 fire damage in a 3x3 area.
@@ -1642,6 +1650,14 @@ A rare essence used by mages to recover their strength.
 法师用来恢复力量的稀有精华。
 Restores 50% max MP instantly. Excess mana goes into the mana pool.
 立即恢复 50% 最大魔力。多余的魔力将被存入储备池中。
+Mana Orb
+魔力球
+You clutch the mana orb and feel its energy.
+你紧握着魔力球，感受着它蕴含的能量。
+Mystical energies swirl inside a glass form.
+神秘的能量在玻璃内旋转。
+Adds 200 MP to your mana pool. Requires no hands to use.
+增加 200 点魔力到你的储备池中，且无需手即可使用。
 Stamina Potion
 体力药水
 You drink the stamina potion and feel invigorated.
@@ -1656,12 +1672,16 @@ You drink the willpower potion and feel motivated.
 你喝了意志力药水，感觉到了动力。
 A sweet potion, brimming with determination.
 充满决心的甜蜜药水
+Restores 25% willpower instantly. Can be used while gagged.
+立刻回复 25% 意志力，可以在佩戴口塞的情况下使用。
 Frigid Potion
 寒冰药水
 You chug the concoction and your senses numb, helping you concentrate.
 你喝下混合物，感觉变得麻木，你的注意力开始集中。
 A freezing cold bottle with a bitter scent.
 一个冰冷的瓶子，带着苦涩的气味。
+Reduces distraction to 0 and grants additional decay for 50 turns. Can be used while gagged.
+将性奋值减少至 0，并对性奋值给予额外衰减 50 回合，可以在佩戴口塞的情况下使用。
 Smoke Bomb
 烟雾弹
 You toss the smoke bomb and it explodes in your location!
@@ -1676,6 +1696,8 @@ You chug the concoction and see your body fading away.
 你喝下混合物，看到你的身体逐渐消失。
 You feel liquid inside, but you can't see it!
 你感觉里面有液体，但你看不到它！
+Casts Vanish on yourself.
+对自己施放隐身术。
 Ectoplasm
 灵浆
 Like a moisturizing cream, except it's made from coagulated souls.
@@ -1690,12 +1712,16 @@ You smash the rune in front of you, and glowing rocks rise from the earth.
 你粉碎了你面前的符文，发光的岩石从大地升起。
 It feels unsettling to look at.
 看着就让人不安。
+Creates a 3x3 area of +20 armor centered on yourself for 9 turns.
+以你为中心创造一个 3x3 的 +20 护甲的区域，持续 9 回合
 Water Rune
 水符文
 You crush the rune in your hand, and it turns into water that coats the floor
 你捏碎手中的符文，它变成了覆盖在地板上的水
 It feels slimmy.
 感觉很滑。
+Creates a 3x3 area on you for 9 turns. Gives +30 Magic Armor to friendlies, halves enemy speed.
+在你的身上创造一个 3x3 的区域，友军在区域内 +30 魔法护甲，敌人速度减半，持续 9 回合。
 Ice Rune
 冰符文
 You smash the rune in front of you, and icicles pierce through the floor!
@@ -1704,14 +1730,60 @@ It feels cold to the touch.
 摸起来感觉很冷。
 Creates icicles around you for 5-8 turns. They deal 40 damage and freeze for 3 turns.
 在你周围制造冰柱，持续 5-8 回合。他们造成 40 点伤害并冻结 3 回合。
+You steal the doll's identification card.
+你偷了娃娃们的身份卡。
+Doll ID
+玩偶ID
+You apply a clever trick to reset your visor cooldown.
+你使用一个巧妙的技巧重置了你的面罩的冷却时间。
+A chip used to identify dolls. She must have dropped it. Either way it contains valuable tech...
+这是一个用于识别娃娃的芯片。有人可能遗失了它，无论如何，里面蕴含着有价值的技术……
+It could be used to trick your visor into thinking you've performed your tasks for a while.
+它可以用来欺骗你的面罩，让它认为你已经完成了一段时间的任务。
+Heart Amulet
+心形护身符
+You find a donut with sprinkles!
+你发现一个带有彩色糖粒的甜甜圈！
+Donut (Sprinkles)
+甜甜圈（彩色糖粒）
+You enjoy the donut and relish in its sweet delights.
+你享受着甜甜圈，陶醉在它甜蜜的美味中。
+A delicious fried snack, covered in a sugary glaze and topped with sprinkles.
+这是一种美味的小吃，覆盖着糖霜，并撒上彩色糖粒。
+Restores 10% willpower. Takes a few turns to eat.
+恢复 10% 意志力，需要几个回合的时间吃掉。
+You pick up a sugar cookie slathered in pink frosting!
+你拿起了一块涂满粉色糖霜的糖饼！
+Good-Girl Gift
+乖巧女孩的礼物
+You slowly eat the cookie, savoring its fluffy texture.
+你慢慢地品尝着这块饼干，享受着它蓬松的口感。
+It tempts you with sweet promises, but something about it feels off...
+它诱惑着你，带来甜蜜，但同时你感觉有些不对劲……
+Restores 15% willpower and adds +5 submissiveness. Takes a few turns to eat.
+恢复 15% 意志力并 +5 服从度，需要几个回合的时间吃掉。
+You find a chocolate-chip cookie!
+你发现一块巧克力曲奇饼！
+Cookie (Chocolate Chip)
+曲奇饼（巧克力豆）
+You enjoy the cookie one chocolatey bite at a time.
+你一口一口地享受着这个饼干，品味着其中的巧克力味道。
+A delicious baked good made with butter, sugar, and chocolate chips, baked until golden brown.
+这是一种美味的烘焙食品，用黄油、糖和巧克力豆制成，烘烤至金黄色。
+Restores 10% willpower. Takes a few turns to eat.
+恢复 10% 意志力，需要几个回合的时间吃掉。
 The potion was less effective due to your gag!
 由于你的嘴被堵住，药水没那么有效了！
+Elven Soap
+精灵肥皂
 You feel the restraints become loose on your skin!
 你觉得束缚在你的皮肤上变得松散了！
+The secret to elven cosmetics and blemish-free skin.
+精灵化妆和无瑕肌肤的秘密。
 Makes you slippery for 10 turns, boosting all forms of struggling.
-让您在 10 回合内更加柔滑，增强各种形式的挣扎。
+使你在接下来的 10 回合里变得顺滑，增强所有形式的挣扎能力。
 You feel the restraints become loose on your skin!
-你觉得束缚在你的皮肤上变得松散了！
+你觉得束缚在你的皮肤上变得更松了！
 Enchanted Grinder
 魔法切割机
 The grinder starts spinning for a short time! Its cutting power is immense!
@@ -1726,16 +1798,28 @@ Dollmaker's Staff
 玩偶师法杖
 You remember this being used on someone else.
 你记得这被用在别人身上。
++15% glue damage. Deals psychic damage. Fully bound enemies captured with this weapon become latex dolls which fight with you.
++15% 粘液伤害，并造成精神伤害。被这把武器完全束缚的敌人将变成与你一起战斗的乳胶娃娃。
+You are unable to control more than 3 dolls. The new doll is protesting and remains bound.
+你无法控制超过3个娃娃，新的娃娃正在挣扎并保持束缚状态。
+Staff of Incineration
+燃烧之杖
 A magical weapon made for intermediates to use.
 专供中级使用的魔法武器。
++25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn.
++25% 火焰伤害，造成火焰伤害。燃烧的敌人每回合受到额外 5 点火焰伤害。
 Staff of Storms
 风暴法杖
 A magical weapon made for intermediates to use.
 专供中级使用的魔法武器。
++20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area.
++20% 电击伤害，造成电击伤害。受到电击伤害的敌人会在 5x5 范围内受到额外 15点电击伤害。
 Staff of Frostbite
 冰冻法杖
 A magical weapon with a 33% chance to freeze the target for 4 turns.
 魔法武器，有 33% 的几率冻结目标 4 回合。
++20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn.
++20% 寒冰伤害，造成寒冰伤害。被冰冻的敌人每回合受到额外 5 点寒冰伤害。
 Staff of Binding
 束缚法杖
 A magical weapon made to use on novices.
@@ -1752,10 +1836,24 @@ Staff of Flame
 烈焰法杖
 A magical weapon made for novices to use.
 供新手使用的魔法武器。
++15% fire damage. Deals fire damage.
++15% 火焰伤害，造成火焰伤害
+Staff of Slime
+粘液法杖
+A slimy and magical implement..
+一把又黏又神奇的工具。
++10% glue damage. Deals glue damage.
++10% 粘液伤害，造成粘液伤害。
+Staff of Shocking
+电击法杖
 A magical weapon made for novices to use.
 供新手使用的魔法武器。
++10% electric damage. Deals electric damage. 10% chance to stun for 3 turns.
++10% 电击伤害，造成电击伤害。有 10% 的几率目标眩晕 3 回合。
 Staff of Permafrost
 冻土法杖
+A magical weapon with a 15% chance to freeze the target for 4 turns.
+一把有着 15% 冻结目标 4 回合的神奇武器。
 +10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration)
 造成寒冰伤害，将敌人的冰冻效果持续时间乘以 1.5 倍（最低增加一回合），且寒冰伤害增加 10%。 
 Staff of Chains
@@ -1852,10 +1950,14 @@ You pick up a fencing sword.
 你拾起了一把花剑。
 Hammer
 锤子
+A crude way of fixing your problems.
+这是解决问题的粗鲁方法。
 Deals crush damage and knocks the target back.
 造成碾压伤害并将目标击退。
 Flail
 流星锤
+Very fast and hard to dodge as long as you know what you're doing.
+攻速非常快且难以躲避，只要你知道该怎么做。
 Also deals 10 damage to targets next to you. Deals crush damage.
 还会对你旁边的单位造成 10 点伤害。造成碾压伤害。
 Spear
@@ -1866,6 +1968,8 @@ Deals pierce damage to the target and one square behind it.
 对目标及其后方一格造成穿刺伤害。
 Bolt Cutters
 断线钳
+The universal key.
+万能钥匙。
 Also assists in cutting restraints when equipped.
 配备时还有助于切割拘束。
 A go-to for travelers and adventurers.
@@ -1894,6 +1998,8 @@ Flamberge
 炎剑
 A blade forged in magic fire.
 用魔法之火锻造的刀刃。
+Deals 20 bonus slash damage on hit.
+击中时额外造成 20 点斩击伤害。
 Escort Drone
 护航无人机
 A semi-autonomous drone with a personal defense beam. Does not require hands to equip.
@@ -1904,8 +2010,14 @@ Magic Wand
 魔法棒
 Its powers extend beyond the traditional schools of magic.
 它的力量超越了传统的魔法。
+Deals charm damage. 20% chance to stun the target for 2 turns.
+造成绷带伤害，有 20% 的几率使目标眩晕 2 回合。
 Feather
 羽毛
+A feather taken from some large fluffy being.
+从一些毛茸茸的大动物上取下的羽毛。
+Deals tickle damage. Distracts enemies.
+造成挠痒伤害，使敌人性奋。
 Ice Cube
 冰块
 A magical cube of ice that never melts. Convenient!
@@ -1916,6 +2028,8 @@ Rope
 绳索
 A kidnapper's most versatile tool.
 绑匪最通用的工具。
+Deals chain damage and applies 50 points of binding.
+造成锁链伤害并增加 50 点束缚。
 Enchanted Sword
 附魔剑
 Slices through ghosts with ease!
@@ -1926,14 +2040,54 @@ Dragonslaver
 驯龙者
 A powerful weapon with an ancient mechanism that launches binding belts.
 一种强大的武器，具有发射捆绑带的古老机制。
+Deals slash damage. Can make ranged attacks.. Drains 0.75% ancient energy to fire a line of belts that deal 40 chain damage and 40 binding.
+造成斩击伤害，可以远程攻击。消耗 0.75% 远古能量来发射一连串的皮带，造成 40 点锁链伤害并增加 40 点束缚。
 Metamorphosis
 变形法杖
+You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked.
+你可以进入粘液形态，持续25回合。在粘液形态下，你可以穿过栅栏，增加 50 点闪避，并在受到攻击时对攻击你的目标造成 25 点粘液伤害。
 Deals glue damage. Roots targets for 2 turns on a hit.
-造成胶水伤害。定身目标 2 回合。
+造成胶水伤害。固定目标 2 回合。
+Four Seasons
+四季法杖
+Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
+激活后，下一次使用时 -50% 火/水/冰/风/雷/岩属性法术的消耗，但每个属性仅可使用一次。
+Deals shadow damage. +25% fire, ice, acid, crush, electric, pressure damage.
+造成暗影伤害，+25% 火/水/冰/风/雷/岩/压力伤害。
+The Arbiter
+仲裁者之杖
+I have altered the rules. Pray I do not alter them further.
+我已改变规则，祈祷我不会再进一步改变它们。
+Deals chain damage with 110% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm
+造成锁链伤害，束缚效率 x110%，对召唤物增加 40 点暗影伤害，+25% 的黏液和锁链伤害。远程攻击：解除武装。
 Bondage Buster
 束缚破坏者
+Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge.
+可以释放一束光束（1 回合持续时间），造成 30 点电击伤害，可在不发射时充能，在 10 回合充能后可总计造成 90 点伤害。
+Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns.
+近战模式造成挠痒伤害，并标记敌人为易受攻击状态，持续 4 回合。
+Nevermere Blaster
+永恒爆破者
+Can fire a blast that deals 25 electric damage.
+可以发射一道造成 25 点电击伤害的冲击波。
+Melee mode deals tickle damage.
+近战模式造成挠痒伤害。
+Blaster Shot
+爆破射击
+You set your blaster to stun and fire!
+你设置爆破枪为击晕状态，并开火射击！
+Messenger of Love
+爱的使者
+Love shines in many ways...
+爱以多种方式闪耀...
+Can fire an arrow that makes an enemy extremely lustful, causing them to attack others. Lasts forever on lesser enemies, 30 turns on high-level enemies, and 10 turns on bosses.
+可以发射一支箭，使敌人极度精虫上脑，导致他们攻击其他人。对较低级别的敌人持续时间永久，对高级敌人持续30回合，对首领持续10回合。
 Moirai's Scissors
 Moirai的剪刀
+Cutting the threads of fate.
+隔断命运的丝线。
+Deals slash damage. Adds up to 30 bonus psychic damage her hit by converting binding into damage. Drains 5 charge to attack twice.
+造成斩击伤害，通过将束缚转化为伤害，能实现每次攻击最多可额外增加30点精神伤害，可消耗5点能量进行双重攻击。
 Latex Projector
 乳胶投射器
 Deals crush damage. Can be used to spray a '+' shaped pool of slime.
@@ -1970,8 +2124,22 @@ Made of a magical, resonant material.
 由神奇的共振材料制成。
 Deals crush damage and knocks the target back. Helps to bash open restraints while cutting.
 造成碾压伤害并将目标击退。有助于在切割时猛击打开的拘束。
+Icebreaker
+破冰锤
+A frigid magical hammer useful for both climbing up and destroying ice.
+一把冰冷的魔法锤子，可以用来攀爬或破冰。
+Deals crush damage. Deals 3x damage to frozen targets instead of 2x. Triggers Shatter.
+造成碾压伤害，对冰冻的目标造成 3 倍而不是 2 倍伤害，触发粉碎。
+Dreamcatcher
+梦网
+Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
+在噩梦中铸造，用钢铁编织。召唤一个暗影武士，对于未察觉的目标，消耗2%的远古能量。
+Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+造成暗影伤害。对于未察觉（100%）或易受攻击（50%）的目标，额外造成最多 30 点精神伤害。
 Axe
 斧头
+Great for cutting trees that happen to be underground.
+对于地下的树木也非常有效。
 Also deals 20 damage to enemies next to you. Deals slash damage.
 同时对你旁边的敌人造成 20 点伤害。造成斩击伤害。
 Knife
@@ -1984,10 +2152,28 @@ Find the keys..
 寻找钥匙...
 Find the exit!
 寻找出口！
+You are receiving help from a friendly ally.
+你得到了友好盟友的帮助。
+You found a hook you can use to pull on straps and loops.
+你找到了一个钩子，可以用来拉动带子和环扣。
+You have access to something sharp and can attempt to Cut restraints, or Remove more effectively.
+你可以使用锋利的工具来尝试切断拘束具，其可更有效地解除束缚。
+You found a corner to help manipulate buckles and snaps with.
+你找到了一个角落，可以帮助你操纵带扣和卡扣。
+You found a crack and could maybe wedge a knife or tool into it to keep it still.
+你找到了一个缝隙，可以将刀或工具塞进去，让它保持稳定。
+You found something sticky and might be able to pull off fabrics.
+你找到了一些黏糊糊的东西，也许可以用它来撕掉布料。
 Evasion: 
 闪避：
 Visibility: 
 可见度：
+Submissive: Enemies won't attack you, but they will try to play with you.
+顺从者：敌人不会尝试攻击你，但他们会尝试对你做一些奇妙的互动。
+On the Run! Enemies are hostile.
+逃亡！敌人对你怀着敌意。
+Prisoner: Enemies won't attack you unless you are out of jail.
+囚犯：敌人不会攻击你，除非你越狱。
 Freedom
 自由
 Crawling slowly!
@@ -2006,6 +2192,14 @@ You feel a gentle buzz...
 你感觉到了轻轻的振动...
 Your toys tease you gently...
 玩具正在轻轻地挑逗你……
+Your toys are vibrating.
+你的玩具在振动。
+Your toys are buzzing strongly!
+你的玩具嗡嗡作响！
+Your toys vibrate intensely!
+你的玩具剧烈振动！
+The vibration is torturous!
+痛苦的震动
 Edged!
 极限！
 Satisfied~
@@ -2026,6 +2220,8 @@ You place the crystal into the receptacle and it lights up!
 您将水晶放入容器中，它亮起了！
 You take the crystal from the receptacle and all goes dark.
 你从容器中取出水晶，一切都变黑了。
+You try to take the crystal but the cage around it is secured with a purple lock.
+你试图拿走水晶，但水晶周围的笼子被一把紫色的锁锁住了。
 Place spent crystal
 放置用过的水晶
 VALUE gold vanishes from your satchel as the receptacle explodes and your crystal is recharged!
@@ -2050,6 +2246,8 @@ The slime is spreading over your body!!!
 粘液在你的身体上蔓延！！！
 The slime starts to harden over your skin...
 粘液开始在你的皮肤上变硬......
+Angel
+天使
 You subdue the angel!
 你捕获了天使！
 Be not afraid! I am the courier of a local shrine, and I have come to take your offering.
@@ -2105,9 +2303,9 @@ Storm Crystal
 The storm crystal shatters into many crackling pieces.
 风暴水晶破碎成许多噼啪作响的碎片。
 Shadow Warrior
-影子勇士
+暗影武士
 The shadow warrior screeches as it vanishes into mist.
-影子勇士尖叫着消失在雾中。
+暗影武士尖叫着消失在雾中。
 Allied Golem
 友方石魔像
 The words vanish from the golem's forehead as it crashes down.
@@ -2189,15 +2387,15 @@ The head maid suddenly whips out a restraint and locks it on! (+RestraintAdded)
 The head maid tickles you strategically! (DamageTaken)
 女仆长有策略地逗你！ (DamageTaken)
 Fire Elemental
-火元素
+火精灵
 The fire elemental dissolves into ash.
-火元素溶解成灰烬。
+火精灵化为灰烬。
 The fire elemental conjures forged restraints around your limbs! (+RestraintAdded)
-火元素在你的四肢周围召唤出锻造的束缚！ （+RestraintAdded）
+火精灵在你的四肢上固定了其锻造的束缚！ （+RestraintAdded）
 The fire elemental places a heavy lock on your restraint! (DamageTaken)
-火元素重重地锁住了你的拘束具！ (DamageTaken)
+火精灵将你的拘束具牢牢地锁住了！ (DamageTaken)
 The fire elemental touches you with her burning finger! (DamageTaken)
-火元素用她燃烧的手指触碰你！ (DamageTaken)
+火精灵用她燃烧的手指触碰你！ (DamageTaken)
 Ranger of the Wild
 荒野游侠
 The ranger disappears into the environment.
@@ -2217,47 +2415,47 @@ The druid holds your face and kisses you! (DamageTaken)
 The druid binds you with mithril restraints! (+RestraintAdded)
 德鲁伊用秘银拘束具束缚你！ （+RestraintAdded）
 Water Elemental
-水元素
+水精灵
 The water elemental melts into a pool of water.
-水元素融化成一滩水。
+水精灵化成一滩水。
 The water elemental's song compels you to be bound! (+RestraintAdded)
-水元素的歌声强迫你被束缚！ （+RestraintAdded）
+水精灵发出的歌声使你被束缚！ （+RestraintAdded）
 The water elemental's song compels you to step forward and receive a binding!
-水元素的歌声让你走过去被束缚！
+水精灵的歌声迫使你向前走去，接受其的束缚！
 The water elemental sings an arousing song! (DamageTaken)
-水元素唱起挑逗的歌！ (DamageTaken)
+水精灵唱起挑逗的歌曲！ (DamageTaken)
 Ice Elemental
-冰元素
+冰精灵
 The ice elemental melts into a pool of water.
-冰元素融化成一滩水。
+冰精灵融化成一滩水。
 The ice elemental touches you, forming tendrils of ice! (+RestraintAdded)
-冰元素接触到你，用冰拘束了你！ （+RestraintAdded）
+冰精灵触摸了你，你的身上形成了冰的束缚！(+RestraintAdded)
 The ice elemental creates icy locks on your restraints!
-冰元素在你的拘束具上形成冰锁！
+冰精灵用冰制成的锁将你的拘束具锁上了！
 The ice elemental gives a chilling touch to your body! (DamageTaken)
-冰元素给你的身体带来冰冷的触感！ (DamageTaken)
+冰精灵给你的身体带来了寒冷的触感！(DamageTaken)
 Earth Elemental
-土元素
+土精灵
 The earth elemental sinks into the ground.
-土元素沉入地下。
+土精灵沉入地下。
 The earth elemental pins you and slaps on some restraints! (+RestraintAdded)
-土元素抓住了你，并把你塞进拘束具中！ （+RestraintAdded）
+土精灵抓住了你，并用拘束具将你绑起来！ （+RestraintAdded）
 The earth elemental locks a restraint!
-土元素锁了一个拘束具！
+土精灵将一个束缚锁住了！
 The earth elemental dashes through the earth!
-土元素冲破大地！
+土精灵冲破大地！
 The earth elemental gives you a heavy massage! (DamageTaken)
-土元素重重地按压你！ (DamageTaken)
+土精灵狠狠地推囊你！ (DamageTaken)
 Air Elemental
-风元素
+风精灵
 There is no more elemental. Must have been just the wind.
-不再有元素的存在。应该只是风。
+不再有精灵的存在，也许只是风吧。
 The air elemental sneakily slips a restraint on! (+RestraintAdded)
-风元素鬼鬼祟祟地束缚了你！ （+RestraintAdded）
+风精灵偷偷地束缚了你！ （+RestraintAdded）
 The air elemental blinks to your position!
-气元素闪烁到你的位置！
+风精灵眨眼间出现在你的位置！
 The air elemental spanks you playfully! (DamageTaken)
-气元素玩弄地拍打你！ (DamageTaken)
+风精灵调皮地打了你一下屁股！(DamageTaken)
 Angry Zombie
 愤怒的僵尸
 The zombie screams and tumbles to the floor.
@@ -2519,29 +2717,29 @@ The alkahestor resigns to her fate.
 The alkahestor shoves you! (DamageTaken)
 宗师炼金师推了你！ (DamageTaken)
 Latex Elemental
-乳胶元素
+乳胶精灵
 The latex elemental melts into sticky rubber.
-乳胶元素融化成粘性橡胶。
+乳胶精灵融化成了黏糊糊的橡胶。
 The latex elemental molds itself into restraints! (+RestraintAdded)
-乳胶元素将自己塑造成拘束具！ （+RestraintAdded）
+乳胶精灵将自己塑造成拘束具！ （+RestraintAdded）
 The latex elemental slaps you with its appendages! (DamageTaken)
-乳胶元素用它的附肢拍打你！ (DamageTaken)
+乳胶精灵用它的肢体拍打你！ (DamageTaken)
 Rope Elemental
-绳元素
+绳索精灵
 The rope elemental gets knotted and falls to the floor, inert.
-绳元素打结并掉到地板上，失去了活性。
+绳索精灵的身体打结并倒在地板上，失去了活性。
 The rope elemental's limbs lash out at you, wrapping themselves around your body! (+RestraintAdded)
-绳元素的触手向你扑来，缠绕在你的身体上！ （+RestraintAdded）
+绳索精灵的触手向你扑来，缠绕在你的身体上！（+RestraintAdded）
 The rope elemental squeezes you tightly! (DamageTaken)
-绳元素紧紧地压迫着你！ (DamageTaken)
+绳索元素紧紧地绑着你！ (DamageTaken)
 Leather Elemental
-皮革元素
+皮革精灵
 The leather elemental sits down and sulks.
-皮革元素坐下来闷闷不乐。
+皮革精灵坐下来闷闷不乐。
 The leather elemental wraps her long extremities around your body! (+RestraintAdded)
-皮革元素将她修长的四肢包裹在你的身体周围！ （+RestraintAdded）
+皮革精灵使用她修长的四肢将你的身体捆绑起来！ （+RestraintAdded）
 The leather elemental strikes you with her leather belts! (DamageTaken)
-皮革元素用她的皮带打动你！ (DamageTaken)
+皮革精灵用她的皮带鞭打你！ (DamageTaken)
 Slime Enthusiast
 粘液爱好者
 The slime enthusiast screams and runs.
@@ -2693,11 +2891,11 @@ A revenant appears!
 Fuuka uses a talisman to call forth the spirits of her pets!
 Fuuka使用丝带召唤她的宠物的灵魂！
 A pool of latex bubbles and a twisted elemental appears!
-一池乳胶冒出气泡，一个扭曲的元素出现了！
+一池乳胶冒出气泡，一个扭曲的精灵出现了！
 Latex Elemental
-乳胶元素
+乳胶精灵
 Latex Elemental
-乳胶元素
+乳胶精灵
 Red Slime
 红粘液团
 The red slime bounces away.
@@ -5476,6 +5674,10 @@ Water
 水
 Ropes
 绳索
+Chains
+锁链
+Belts
+皮带
 Floor
 地板
 Wall
@@ -6967,9 +7169,9 @@ A watery spirit bubbles up from the ground!
 You call upon the plane of Water!
 你向水之位面呼唤！
 Summon Shadow Warrior
-召唤影子武士
+召唤暗影武士
 Select where to put the shadow warrior (cannot place on occupied squares)
-选择放置影子武士的位置（不能放置在已被占用的方格上）
+选择放置暗影武士的位置（不能放置在已被占用的方格上）
 Call forth a shadow warrior for 16 turns who deals DamageDealt damage every other turn.
 召唤一名持续 16 回合的暗影武士，每隔一回合造成 DamageDealt 点伤害。
 ...and the abyss answers!
@@ -10628,6 +10830,14 @@ Fewer encasement-related enemies will appear, although this does not remove it e
 与包裹有关的敌人会更稀少地出现，不过不会完全移除。
 Provides light
 提供了光明
+Ties
+绳缚
+Belts
+皮带
+Wrapping
+包裹
+Chains
+锁链
 Thank you to the following awesome people for supporting me at patreon.com/ada18980
 感谢以下这些很棒的人在 patreon.com/ada18980 上支持我
 Projectiles Make Player Transparent
