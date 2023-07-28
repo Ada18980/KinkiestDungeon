@@ -9696,13 +9696,14 @@ rBanditQuest,"(A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adven
 rBanditQuestHelp,"(The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out."
 dBanditQuest_Help,(Show interest)
 
-rPrisonerJail,"(The SPEAKER sits bound in high-security manacles)|You'll need to open the lock to get her out..."
+rPrisonerJail,"(The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get her out.)"
 rPrisonerJailNoKeys,"(You don't have any keys that work on the lock)"
 rPrisonerJailUnlockHandsBound,"(You can't help her, bound as tightly as you are...)"
 rPrisonerJailUnlockSlow,"(You unlock her, fumbling around for a while with your bound hands)"
 rPrisonerJailUnlock,"(You unlock the SPEAKER)|Thank you!|Let's get out of here!"
 rPrisonerJailUnlockGagged,"(You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)"
 rPrisonerJailNoPick,"(You don't have any lockpicks)"
+rPrisonerJailPickJam,"(You try to pick the lock...)|(Click! A safety shield locks securely into place!)|(Looks like the SPEAKER will be staying here for a while...)"
 rPrisonerJailPickHandsBound,"(You can't pick the lock with your hands bound)"
 rPrisonerJailPick,"(After a while, you free the SPEAKER)|Thank you!|Let's get moving!"
 rPrisonerJailPickGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)"
@@ -9710,10 +9711,12 @@ rPrisonerJailWordNoMana,"(You don't have enough mana for a command word)"
 rPrisonerJailWordNoSpeak,"(Try as you might, your mouth is sealed tight)"
 rPrisonerJailWord,"(You utter a command word to free the SPEAKER)|Many thanks!|Let's go!"
 rPrisonerJailWordGagged,"(You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)"
+rPrisonerJailJammed,"(The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)"
 
 dPrisonerJail_Unlock,Use a key to unlock her
-dPrisonerJail_Pick,Try to pick her restraints
+dPrisonerJail_Pick,"Try to pick her restraints (JAMPERCENT jam chance)"
 dPrisonerJail_Word,Use a command word
+dPrisonerJailJammedRecent_Apologize,Apologize profusely!
 
 KinkyDungeonDiscovered,An enemy found you while you were busy!
 
