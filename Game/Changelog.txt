@@ -1353,6 +1353,8 @@ Minor Changes:
 
 4.32 (July 2023)
 - New feature: Option to desaturate areas that are dark (and lighten them a bit) in order to make light vs. dark regions more apparent
+- Added two new upgrades for the wizard class
+- New perks: Wizard multiclass, No Police
 
 TODO: Mushrooms in the jungle
 

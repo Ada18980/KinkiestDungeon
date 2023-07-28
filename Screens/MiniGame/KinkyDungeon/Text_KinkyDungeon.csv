@@ -390,6 +390,8 @@ KinkyDungeonStatNoDoll,"Not a Doll"
 KinkyDungeonStatDescNoDoll,"You may still enter Doll Terminals, but enemies will not force you onto doll stands."
 KinkyDungeonStatNoNurse,"No Nurses"
 KinkyDungeonStatDescNoNurse,"Nurses will not appear in the game."
+KinkyDungeonStatNoPolice,"No Police"
+KinkyDungeonStatDescNoPolice,"Police-based bounty hunters will not appear in the game."
 KinkyDungeonStatNoBrats,"No Brats"
 KinkyDungeonStatDescNoBrats,"Submissive enemies won't run away from you."
 KinkyDungeonStatOnlyBrats,"Brats Only"
@@ -407,13 +409,13 @@ KinkyDungeonStatDescSlimeOptout,"Fewer encasement-related enemies will appear, a
 
 
 KinkyDungeonStatMC_Trainee,"Trainee"
-KinkyDungeonStatDescMC_Trainee,"Your training has given you access to the spells of the Trainee class. (Aroused mode only)"
+KinkyDungeonStatDescMC_Trainee,"Your training has given you access to the powers of the Trainee class. (Aroused mode only)"
 KinkyDungeonStatMC_Fighter,"Warrior"
-KinkyDungeonStatDescMC_Fighter,"Your training has given you access to the spells of the Warrior class."
+KinkyDungeonStatDescMC_Fighter,"Your training has given you access to the powers of the Warrior class."
 KinkyDungeonStatMC_Rogue,"Rogue"
-KinkyDungeonStatDescMC_Rogue,"Your training has given you access to the spells of the Rogue class."
-KinkyDungeonStatMC_Mage,"Wizard"
-KinkyDungeonStatDescMC_Mage,"Your training has given you access to the spells of the Wizard class."
+KinkyDungeonStatDescMC_Rogue,"Your training has given you access to the powers of the Rogue class."
+KinkyDungeonStatMC_Wizard,"Wizard"
+KinkyDungeonStatDescMC_Wizard,"Your training has given you access to the powers of the Wizard class."
 
 
 KinkyDungeonStatPanic,"Panic!!!"
@@ -4645,6 +4647,12 @@ KinkyDungeonInfernoBurn,The roaring inferno deals 10 damage to you!
 
 KinkyDungeonSpellDistractionCast,Mana Burst
 KinkyDungeonSpellDescriptionDistractionCast,"As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus..."
+
+KinkyDungeonSpellManaRegen,Inner Power
+KinkyDungeonSpellDescriptionManaRegen,"As a wizard, you are able to harness a power source to regenerate mana up to 20% of your maximum mana. This regeneration is paused for 6 turns after attacking or casting a spell."
+
+KinkyDungeonSpellManaRegenPlus,Battlemage
+KinkyDungeonSpellDescriptionManaRegenPlus,"Your innate mana regeneration is no longer paused after attacking or casting a spell."
 
 KinkyDungeonSpellOrgasmMana1,Way of Pleasure
 KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 40 mana as long as you have willpower to spare. Blocks Way of Discipline."

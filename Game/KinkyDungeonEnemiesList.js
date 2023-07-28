@@ -253,7 +253,7 @@ let KinkyDungeonEnemies = [
 	{name: "Deputy", playLine: "Officer", color: "#1451f1", faction: "Bountyhunter", bound: "Ninja", clusterWith: "human", tags: KDMapInit(["leashing", "antiMagic", "opendoors", "imprisonable", "human", "police", "guardCall", "bountyhunter", "handcuffer", "steelCuffs", "police", "melee", "search", "jail", "jailer"]), followLeashedOnly: true, blindSight: 5, followRange: 1, AI: "hunt", projectileAttack: true,
 		stunTime: 5, specialCD: 11, specialCharges: 4, specialAttack: "Stun", specialRemove: "BindLock", specialCDonAttack: true, strictAttackLOS: true, specialWidth: 2, specialAttackPoints: 4, specialRange: 5, specialMinrange: 1.5, //specialFollow: 3,
 		visionRadius: 8, maxhp: 12, minLevel:2, weight:1, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 3,
-		terrainTags: {"secondhalf":2, "lastthird":4, "leatherAnger": 2, "metalAnger": 2, "bountyhunter": 8, "metal": 2}, shrines: ["Leather", "Metal"], floors:KDMapInit(["grv", "jng", "lib", "cry"]),
+		terrainTags: {"secondhalf":2, "lastthird":4, "leatherAnger": 2, "metalAnger": 2, "bountyhunter": 8, "metal": 2, "NoPolice": -10000}, shrines: ["Leather", "Metal"], floors:KDMapInit(["grv", "jng", "lib", "cry"]),
 		dropTable: [{name: "Donut", weight: 1}]},
 	{name: "NinjaStalker", playLine: "Hunter", faction: "Bountyhunter", bound: "NinjaStalker", clusterWith: "human", color: "#814BB7", tags: KDMapInit(["leashing", "antiMagic", "opendoors", "ninja", "human", "bountyhunter", "melee", "ropeRestraints", "ropeRestraints2", "unarmedresist", "slashresist", "glueweakness", "chainweakness", "search"]), blindSight: 5, followRange: 1, AI: "ambush", stealth: 1, noReveal: true,
 		ambushRadius: 1.9, wanderTillSees: true, visionRadius: 7, maxhp: 12, minLevel:4, weight:4, movePoints: 1, attackPoints: 3, focusPlayer: true,
@@ -2105,7 +2105,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, allFloors: true, disarm: 0.33, evasion: -0.5, focusPlayer: true,
 		useLock: "Blue",
 		dropTable: [{name: "Brownies", weight: 15}]},
-	{name: "Guard", faction: "Jail", bound: "Guard", tags: KDMapInit(["leashing", "opendoors", "closedoors", "miniboss", "jail", "jailer", "melee", "shackleRestraints", "jailRestraints", "guardCall"]), noDisplace: true, keys: true, followRange: 1, AI: "guard", visionRadius: 6, disarm: 0.5,
+	{name: "Guard", bound: "Guard", tags: KDMapInit(["leashing", "opendoors", "closedoors", "antiMagic", "miniboss", "jail", "jailer", "melee", "shackleRestraints", "jailRestraints", "guardCall"]), noDisplace: true, keys: true, followRange: 1, AI: "guard", visionRadius: 6, disarm: 0.5,
 		maxhp: 12, minLevel: -1, weight:-1000, movePoints: 1, attackPoints: 3, attack: "MeleeBindLockWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2, evasion: -0.5, focusPlayer: true, attackLock: "Red",
 		RemoteControl: {
 			punishRemote: 3,
@@ -2115,7 +2115,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "defeat", type: "delete", chance: 1.0},
 		],
 		terrainTags: {"Guard": 1010}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}], rep: {"Prisoner": 10}},
-	{name: "GuardHeavy", faction: "Jail", bound: "GuardHeavy", tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "hunter", "guardCall", "miniboss", "shackleRestraints", "handcuffer", "jailRestraints"]), noDisplace: true, disarm: 0.5,
+	{name: "GuardHeavy", bound: "GuardHeavy", tags: KDMapInit(["leashing", "opendoors", "closedoors", "antiMagic", "jail", "jailer", "melee", "unflinching", "hunter", "guardCall", "miniboss", "shackleRestraints", "handcuffer", "jailRestraints"]), noDisplace: true, disarm: 0.5,
 		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 12, minLevel: 4, weight:-20, movePoints: 1, attackPoints: 2, evasion: -0.5, focusPlayer: true,
 		attack: "MeleeBindLockWillStun", attackWidth: 3, attackRange: 1, power: 5, dmgType: "electric", stunTime: 1, attackLock: "Red",
 		RemoteControl: {
