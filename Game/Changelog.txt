@@ -1352,9 +1352,10 @@ Minor Changes:
 - Pristine is 70% reduction now instead of 100% and bug fixed so it works on regular levels
 
 4.32 (July 2023)
-- New feature: Option to desaturate areas that are dark (and lighten them a bit) in order to make light vs. dark regions more apparent
+- New feature (standalone only, unreleased): Option to desaturate areas that are dark (and lighten them a bit) in order to make light vs. dark regions more apparent
 - Added two new upgrades for the wizard class
 - New perks: Wizard multiclass, No Police
+- Added a more powerful anti-magic gag, and also made it so enemies will use it on you in jail
 
 TODO: Mushrooms in the jungle
 
