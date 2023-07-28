@@ -492,6 +492,16 @@ let KDJailOutfits = {
 			{Name: "LatexCatsuit", Level: 100},
 		],
 	},
+	"antiMagic": {
+		overridelowerpriority: true,
+		priority: 5,
+		jail: true,
+		parole: true,
+		restraints: [
+			{Name: "AntiMagicGag2", Level: 10},
+			{Name: "AntiMagicGag", Level: 15},
+		],
+	},
 	"wolfRestraints": {
 		overridelowerpriority: true,
 		priority: 2,
