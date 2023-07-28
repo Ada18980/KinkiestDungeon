@@ -1275,7 +1275,18 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 4, power: 0.4},
 		],
-		enemyTags: {"ballGagRestraintsMagic" : 1, "antiMagic": 1}, playerTags: {}, minLevel: 3, allFloors: true, shrine: ["Illusion", "Leather", "Gags", "BallGags", "Conjure"]},
+		enemyTags: {"ballGagRestraintsMagic" : 2, "antiMagic": 6}, playerTags: {}, minLevel: 3, allFloors: true, shrine: ["Illusion", "Leather", "Gags", "BallGags", "Conjure"]},
+	{inventory: true, name: "AntiMagicGag", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
+		Model: "BallGag",
+		Filters: {
+			"Ball": {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":3.016666666666667,"blue":3.95,"alpha":1},
+		},
+		gag: 0.45, Type: "Tight", Color: ["Default", "#92e8c0"], Group: "ItemMouth", DefaultLock: "Purple", magic: true, power: 7, weight: 2,
+		escapeChance: {"Struggle": -0.4, "Cut": -0.02, "Remove": 0.4, "Pick": 0.12},
+		events: [
+			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 10, power: 0.4},
+		],
+		enemyTags: {"ballGagRestraintsMagic" : 0.3, "antiMagic": 2}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Illusion", "Latex", "Gags", "BallGags", "Conjure"]},
 
 	// Generic stronger gag
 	{inventory: true, trappable: true, name: "PanelGag", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Asset: "HarnessPanelGag", gag: 0.7,

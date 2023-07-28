@@ -3523,6 +3523,9 @@ RestraintMagicGag2Desc2,"It's brimming with conjured energy. A normal knife won'
 RestraintAntiMagicGag,Anti-Magic Gag
 RestraintAntiMagicGagDesc,"A gag designed to cripple mages. It's made of a squishy rubbery material."
 RestraintAntiMagicGagDesc2,"It's sealed with a magical spell that rapidly absorbs mana! When it drains 40 mana it will transform into an ordinary gag and inflate."
+RestraintAntiMagicGag2,Anti-Mage Gag
+RestraintAntiMagicGag2Desc,"A gag designed to cripple experienced spellcasters. It's made of a magic-absorbing rubber."
+RestraintAntiMagicGag2Desc2,"You feel the energy flowing out of you! When it drains 100 mana it will transform into an ordinary gag and inflate."
 RestraintTrapBoots,Ballet Heels
 RestraintTrapBootsDesc,"A pair of shoes with heels so tall it forces you on your toes."
 RestraintTrapBootsDesc2,"These will take some getting used to."
@@ -7719,7 +7722,7 @@ KinkyDungeonRemindJailChaseWitchAttack2,"I'll turn you into a newt!"
 KinkyDungeonRemindJailChaseWitchSpell0,"Oh, so you've got a spellbook. What's it written in, curse-ive?"
 KinkyDungeonRemindJailChaseWitchSpell1,"Snap, crackle, and pop!"
 KinkyDungeonRemindJailChaseWitchSpell2,"Looks like I need to seal that foul mouth of yours."
-KinkyDungeonRemindJailChaseWitchSpellItem,"I recognize that thing you're holding!"
+KinkyDungeonRemindJailChaseWitchSpellItem,"Put that toy away~"
 KinkyDungeonRemindJailChaseWitchShrine,"You'll be praying for freedom soon, my dear~"
 KinkyDungeonRemindJailChaseWitchChest,"Oh, breaking into my collection, are you?"
 KinkyDungeonRemindJailChaseWitchOrb,"Even I wouldn't do such a thing!"

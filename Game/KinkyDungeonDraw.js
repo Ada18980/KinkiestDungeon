@@ -31,7 +31,7 @@ let kdmapboard = new PIXI.Container();
 kdmapboard.zIndex = -2;
 kdmapboard.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 
-let kdlightmap = null
+let kdlightmap = null;
 let kdlightmapGFX = null;
 
 if (StandalonePatched) {
