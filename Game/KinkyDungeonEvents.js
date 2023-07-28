@@ -2082,6 +2082,13 @@ let KDEventMapSpell = {
 
 			}
 		},
+		"ManaRegenSuspend": (e, spell, data) => {
+			if (!KDHasSpell("ManaRegenPlus")) {
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: e.time,
+				});
+			}
+		},
 		"DistractionCast": (e, spell, data) => {
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.99 || KinkyDungeonPlayerBuffs.DistractionCast) {
 				let tb = KinkyDungeonGetManaCost(data.spell) * 0.25;
@@ -2129,6 +2136,11 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
+		"ManaRegen": (e, spell, data) => {
+			if (KinkyDungeonStatMana + KinkyDungeonStatManaPool < KinkyDungeonStatManaMax * e.mult && !KinkyDungeonPlayerBuffs.ManaRegenSuspend) {
+				KinkyDungeonChangeMana(e.power, false, 0, false, false);
+			}
+		},
 		"SatisfiedDamageBuff": (e, spell, data) => {
 			if (KDGameData.OrgasmStamina > 0 && (!KinkyDungeonPlayerBuffs || !KinkyDungeonPlayerBuffs[spell.name + "DamageBuff"] || KinkyDungeonPlayerBuffs[spell.name + "DamageBuff"].duration == 0))
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
@@ -2402,6 +2414,13 @@ let KDEventMapSpell = {
 			if (KinkyDungeonPlayerDamage && ((KinkyDungeonPlayerDamage.name && KinkyDungeonPlayerDamage.name != "Unarmed") || KinkyDungeonStatsChoice.get("Brawler")) && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.targetX && data.targetY && (data.enemy && KDHostile(data.enemy))) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 				KinkyDungeonCastSpell(data.targetX, data.targetY, KinkyDungeonFindSpell("FlameStrike", true), undefined, undefined, undefined);
+			}
+		},
+		"ManaRegenSuspend": (e, spell, data) => {
+			if (!KDHasSpell("ManaRegenPlus")) {
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: e.time,
+				});
 			}
 		},
 		"ElementalEffect": (e, spell, data) => {
