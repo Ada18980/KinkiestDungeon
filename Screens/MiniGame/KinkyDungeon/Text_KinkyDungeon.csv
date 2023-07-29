@@ -24,7 +24,7 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 
-KinkyDungeon,"Kinky Dungeon v4.31"
+KinkyDungeon,"Kinky Dungeon v4.32"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -10399,6 +10399,7 @@ KinkyDungeonSpellArrowVineSpell,Vine Arrows
 KinkyDungeonSpellDescriptionArrowVineSpell,"Converts arrows to all-natural organic versions for 20 extra charge, which apply 50 binding to the target and deal chain damage instead."
 KDSwitchArrowVineSpell,"You switch to using vine arrows."
 KinkyDungeonSpellArrowVine,Vine Arrow
+KinkyDungeonSpellArrowVineBind,"A sudden burst of vines overtakes you as you find yourself wrapped up tightly!"
 
 LootArcheryKit,"You find a bow and a glowing crystal. The bow is scribed with runes of duplication."
 

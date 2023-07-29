@@ -2535,10 +2535,10 @@ let KDEventMapSpell = {
 	},
 	"toggleSpell": {
 		"ExclusiveTag": (e, spell, data) => {
-			if (spell?.name == data.spell?.name && KinkyDungeonSpellChoicesToggle[data.index] && !data.recursion?.includes(spell.name))
+			if (spell && spell.name == data.spell?.name && KinkyDungeonSpellChoicesToggle[data.index] && !data.recursion?.includes(spell.name))
 				for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
 					let spellOther = KinkyDungeonSpells[KinkyDungeonSpellChoices[i]];
-					if (spellOther.name != spell.name)
+					if (spellOther?.name != spell.name)
 						for (let tag of e.tags) {
 							if (KinkyDungeonSpellChoicesToggle[i] && spellOther?.tags?.includes(tag)) {
 								KinkyDungeonSpellChoicesToggle[i] = false;
