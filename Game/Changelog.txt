@@ -1356,6 +1356,7 @@ Minor Changes:
 - Added two new upgrades for the wizard class
 - New perks: Wizard multiclass, No Police
 - Added a more powerful anti-magic gag, and also made it so enemies will use it on you in jail
+- Lockpicking on prisoner NPCs now has a chance to trigger a safety shield
 
 TODO: Mushrooms in the jungle
 
