@@ -48,7 +48,15 @@ let KinkyDungeonBindDamageTypes = ["chain", "glue"];
 let KinkyDungeonFreezeDamageTypes = ["ice"];
 let KinkyDungeonSlowDamageTypes = ["crush", "slash", "pierce", "frost", "cold", "poison"];
 let KinkyDungeonVulnerableDamageTypes = ["tickle", "acid", "magicbind"];
+let KinkyDungeonMeltDamageTypes = ["fire"];
 
+let KDDamageEquivalencies = {
+	"frost": "ice",
+	"happygas": "charm",
+	"souldrain": "soul",
+	"drain": "soul",
+	"shock": "electric",
+};
 
 let KDDamageBinds = {
 	"glue": "Slime",
@@ -405,13 +413,6 @@ function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker) {
 	return false;
 }
 
-let KDDamageEquivalencies = {
-	"frost": "ice",
-	"happygas": "charm",
-	"souldrain": "soul",
-	"drain": "soul",
-	"shock": "electric",
-};
 
 /**
  *
@@ -537,7 +538,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		predata.dmg *= buffAmount;
 		predata.dmg *= buffresist;
 
-		if (predata.type == "fire" && Enemy.freeze > 0) {
+		if (KinkyDungeonMeltDamageTypes.includes(predata.type) && Enemy.freeze > 0) {
 			predata.dmg *= 1.4;
 		}
 

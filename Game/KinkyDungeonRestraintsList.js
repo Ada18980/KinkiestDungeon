@@ -1699,13 +1699,29 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	{unlimited: true, removePrison: true, name: "IceArms", debris: "Ice", sfx: "Freeze", Asset: "Ribbons", LinkableBy: ["Armbinders", "Wrapping"], Type: "Heavy", Color: "#5DA9E5", Group: "ItemArms", bindarms: true, power: 4, weight: 0, magic: true, escapeChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0}, enemyTags: {"iceRestraints":4}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Ties", "Ice", "Elements"],
-		maxwill: 0.8, events: [{trigger: "tick", type: "iceDrain", power: -0.025, inheritLinked: true}]},
+		maxwill: 0.8, events: [
+			{trigger: "tick", type: "iceDrain", power: -0.025, inheritLinked: true},
+			{trigger: "tick", type: "iceMelt", power: 0.1, count: 13, inheritLinked: true},
+			{trigger: "afterPlayerDamage", type: "iceMelt", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
+		]},
 	{unlimited: true, removePrison: true, name: "IceLegs", debris: "Ice", sfx: "Freeze", Asset: "Ribbons", LinkableBy: ["Legbinders", "Hobbleskirts", "Wrapping"], Type: "MessyWrap", Color: "#5DA9E5", Group: "ItemLegs", hobble: true, addTag: ["FeetLinked"], power: 4, weight: 0, magic: true, escapeChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0}, enemyTags: {"iceRestraints":4}, playerTags: {"ItemLegsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Ties", "Ice", "Elements"],
-		events: [{trigger: "tick", type: "iceDrain", power: -0.025, inheritLinked: true}]},
+		events: [
+			{trigger: "tick", type: "iceDrain", power: -0.025, inheritLinked: true},
+			{trigger: "tick", type: "iceMelt", power: 0.1, count: 15, inheritLinked: true},
+			{trigger: "afterPlayerDamage", type: "iceMelt", mult: 1.5, subMult: 0.5, count: 15, inheritLinked: true},
+		]},
 	{unlimited: true, removePrison: true, name: "IceHarness", debris: "Ice", sfx: "Freeze", Asset: "Ribbons", Type: "Harness2", Color: "#5DA9E5", Group: "ItemTorso", power: 1, weight: 0, magic: true, escapeChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0}, enemyTags: {"iceRestraints":4}, playerTags: {"ItemTorsoFull":-2}, minLevel: 0, allFloors: true, shrine: ["Ties", "Ice", "Elements"],
-		events: [{trigger: "tick", type: "iceDrain", power: -0.025, inheritLinked: true}]},
+		events: [
+			{trigger: "tick", type: "iceDrain", power: -0.025, inheritLinked: true},
+			{trigger: "tick", type: "iceMelt", power: 0.1, count: 11, inheritLinked: true},
+			{trigger: "afterPlayerDamage", type: "iceMelt", mult: 1.5, subMult: 0.5, count: 11, inheritLinked: true},
+		]},
 	{unlimited: true, removePrison: true, name: "IceGag", debris: "Ice", gag: 0.35, sfx: "Freeze", Asset: "Ribbons", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: "#5DA9E5", Group: "ItemMouth", power: 4, weight: 0, magic: true, escapeChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0}, enemyTags: {"iceRestraints":4}, playerTags: {"ItemMouthFull":-2}, minLevel: 0, allFloors: true, shrine: ["Wrapping", "Ice", "Elements"],
-		maxwill: 0.7, events: [{trigger: "tick", type: "iceDrain", power: -0.025, inheritLinked: true}]},
+		maxwill: 0.7, events: [
+			{trigger: "tick", type: "iceDrain", power: -0.025, inheritLinked: true},
+			{trigger: "tick", type: "iceMelt", power: 0.1, count: 8, inheritLinked: true},
+			{trigger: "afterPlayerDamage", type: "iceMelt", mult: 1.2, subMult: 0.5, count: 8, inheritLinked: true},
+		]},
 
 	{removePrison: true, name: "CableArms", debris: "Chains", sfx: "FutureLock", Asset: "NylonRope", changeRenderType: {"ArmBind": "WristElbowHarnessTie"},
 		LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Color: ["#333333"], Group: "ItemArms", bindarms: true, power: 6, weight: 0, magic: false,

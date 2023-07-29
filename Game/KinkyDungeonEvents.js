@@ -269,7 +269,47 @@ let KDEventMapInventory = {
 
 		},
 	},
+	"afterPlayerDamage": {
+		"iceMelt": (e, item, data) => {
+			if (KinkyDungeonMeltDamageTypes.includes(KDDamageEquivalencies[data.type] || data.type) && data.dmg > 0) {
+				let alreadyDone = KDItemDataQuery(item, "iceMelt") || 0;
+				if (alreadyDone < e.count) {
+					alreadyDone += e.mult * data.dmg;
+					KDItemDataSet(item, "iceMelt", alreadyDone);
+					KinkyDungeonSendTextMessage(4, TextGet("KDIceMeltProgress").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				} else {
+					KDCreateEffectTile(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, {
+						name: "Water",
+						duration: 12,
+					}, 8);
+					KDRemoveThisItem(item);
+					KinkyDungeonSendTextMessage(4, TextGet("KDIceMelt").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				}
+			} else if (KinkyDungeonFreezeDamageTypes.includes(KDDamageEquivalencies[data.type] || data.type) && data.dmg > 0) {
+				let alreadyDone = KDItemDataQuery(item, "iceMelt") || 0;
+				if (alreadyDone > 0) {
+					alreadyDone = Math.max(0, alreadyDone - e.subMult * data.dmg);
+					KDItemDataSet(item, "iceMelt", alreadyDone);
+					KinkyDungeonSendTextMessage(4, TextGet("KDIceMeltCancelProgress").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				}
+			}
+		},
+	},
 	"tick": {
+		"iceMelt": (e, item, data) => {
+			let alreadyDone = KDItemDataQuery(item, "iceMelt") || 0;
+			if (alreadyDone < e.count) {
+				alreadyDone += e.power;
+				KDItemDataSet(item, "iceMelt", alreadyDone);
+			} else {
+				KDCreateEffectTile(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, {
+					name: "Water",
+					duration: 12,
+				}, 8);
+				KDRemoveThisItem(item);
+				KinkyDungeonSendTextMessage(4, TextGet("KDIceMelt").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+			}
+		},
 		"AntiMagicGag": (e, item, data) => {
 			let alreadyDone = KDItemDataQuery(item, "manaDrained") || 0;
 			if (alreadyDone < e.count) {

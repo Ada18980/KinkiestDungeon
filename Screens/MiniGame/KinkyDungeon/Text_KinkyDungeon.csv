@@ -10698,5 +10698,9 @@ KinkyDungeonSpellTargetArrowBolt,Choose projectile path
 KinkyDungeonSpellArrowBolt,Bolt
 KinkyDungeonSpellCastArrowBolt,"You pull the trigger!"
 
+KDIceMelt,"Your RestraintName melts off!"
+KDIceMeltProgress,"Your RestraintName melts faster with the application of fire!"
+KDIceMeltCancelProgress,"Your RestraintName hardens with the application of frost!"
+
 
 KDdmg,dmg
