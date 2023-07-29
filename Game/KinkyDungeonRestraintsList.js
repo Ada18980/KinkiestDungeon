@@ -1276,7 +1276,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 4, power: 0.4},
 		],
 		enemyTags: {"ballGagRestraintsMagic" : 2, "antiMagic": 6}, playerTags: {}, minLevel: 3, allFloors: true, shrine: ["Illusion", "Leather", "Gags", "BallGags", "Conjure"]},
-	{inventory: true, name: "AntiMagicGag", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
+	{inventory: true, name: "AntiMagicGag2", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
 		Model: "BallGag",
 		Filters: {
 			"Ball": {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":3.016666666666667,"blue":3.95,"alpha":1},
