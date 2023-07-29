@@ -18,7 +18,7 @@ let KDObjectMessages = {
 let KDObjectClick = {
 	"Food": (x, y) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
-		if (tile.Food && !tile.Eaten) {
+		if (tile.Food && KDFood[tile.Food] && !KDFood[tile.Food].inedible && !tile.Eaten) {
 			KinkyDungeonTargetTileLocation = x + "," + y;
 			KinkyDungeonTargetTile = tile;
 			KDStartDialog("TableFood", "", true, "");

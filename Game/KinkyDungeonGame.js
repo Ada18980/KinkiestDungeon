@@ -2626,6 +2626,7 @@ let KDFood = {
 	},
 	Plate: {
 		Food: "Plate",
+		inedible: true,
 		Weight: 1,
 	},
 	Cookies: {

@@ -454,7 +454,11 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 							// Force open door
 							if (KinkyDungeonMapGet(slot.x, slot.y) == 'D') KinkyDungeonMapSet(slot.x, slot.y, 'd');
 
-							KDMoveEntity(Entity, slot.x, slot.y, false, undefined, undefined, true);
+							if (Entity.player) {
+								KDMovePlayer(slot.x, slot.y, false, undefined, undefined);
+							} else {
+								KDMoveEntity(Entity, slot.x, slot.y, false, undefined, undefined, true);
+							}
 							if (Entity.player) KinkyDungeonSetFlag("pulled", 1);
 							else KinkyDungeonSetEnemyFlag(Entity, "pulled");
 							if (Entity.player) {
