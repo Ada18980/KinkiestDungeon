@@ -671,6 +671,28 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 
 /**
  *
+ * @param {item} item
+ */
+function KDRemoveThisItem(item, Keep, NoEvent, Shrine, Remover) {
+	let r = KinkyDungeonGetRestraintItem(KDRestraint(item).Group);
+	if (r == item) {
+		KinkyDungeonRemoveRestraint(KDRestraint(item).Group, Keep, false, NoEvent, Shrine, false, Remover);
+	} else {
+		let host = r;
+		r = r.dynamicLink;
+		while (r) {
+			if (r == item) {
+				KinkyDungeonRemoveDynamicRestraint(host, Keep, NoEvent, Remover);
+			}
+			host = r;
+			r = r.dynamicLink;
+		}
+
+	}
+}
+
+/**
+ *
  * @param {string} name
  * @returns {number}
  */
