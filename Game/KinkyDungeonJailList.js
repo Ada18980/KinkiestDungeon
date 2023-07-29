@@ -498,8 +498,8 @@ let KDJailOutfits = {
 		jail: true,
 		parole: true,
 		restraints: [
-			{Name: "AntiMagicGag2", Level: 10},
-			{Name: "AntiMagicGag", Level: 15},
+			{Name: "AntiMagicGag2", Level: 20},
+			{Name: "AntiMagicGag", Level: 50},
 		],
 	},
 	"wolfRestraints": {
