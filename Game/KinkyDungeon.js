@@ -2999,6 +2999,7 @@ function KinkyDungeonLoadGame(String) {
 			&& saveData.rep != undefined
 			&& saveData.dress != undefined) {
 
+
 			KDPathfindingCacheFails = 0;
 			KDPathfindingCacheHits = 0;
 			KDPathCache = new Map();
@@ -3053,6 +3054,14 @@ function KinkyDungeonLoadGame(String) {
 			if (saveData.KDEventData != undefined) KDEventData = Object.assign({}, saveData.KDEventData);
 
 			if (saveData.statchoice != undefined) KinkyDungeonStatsChoice = new Map(saveData.statchoice);
+
+			KinkyDungeonSexyMode = KinkyDungeonStatsChoice.get("arousalMode");
+			KinkyDungeonSexyPlug = KinkyDungeonStatsChoice.get("arousalModePlug");
+			KinkyDungeonSexyPiercing = KinkyDungeonStatsChoice.get("arousalModePiercing");
+			KinkyDungeonRandomMode = KinkyDungeonStatsChoice.get("randomMode");
+			KinkyDungeonSaveMode = KinkyDungeonStatsChoice.get("saveMode");
+			KinkyDungeonEasyMode = KinkyDungeonStatsChoice.get("norescueMode") ? 2 : (KinkyDungeonStatsChoice.get("easyMode") ? 1 : 0);
+
 			if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;
 			KDInitFactions();
 			if (typeof KDGameData.TimeSinceLastVibeStart === "number") KDGameData.TimeSinceLastVibeStart = {};
