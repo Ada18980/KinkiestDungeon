@@ -1359,6 +1359,17 @@ Minor Changes:
 - Lockpicking on prisoner NPCs now has a chance to trigger a safety shield
 - Ice restraints now eventually melt off
 
+4.33 (August 2023)
+Features
+- Added a new minimap in the top of the screen, hover over it to enlarge!
+Content
+- New enchantments applied to armor, giving random stat boosts. More common on cursed items--beware!
+Bugfix
+- Fix bug "Can't hear you" perk broken
+- Fix bug where floating weapon still took accuracy penalties from arms being bound (due to the way it was being calculated)
+Modding
+- New system for temporary variants of items, created dynamically using a helper function
+
 TODO: Mushrooms in the jungle
 
 TODO

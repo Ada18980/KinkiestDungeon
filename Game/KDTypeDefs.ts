@@ -19,6 +19,8 @@ interface item extends Named {
 	type?: string,
 	/** Faction of the applied item */
 	faction?: string,
+	/** When added to the inventory, is added as a different item instead. Good for cursed items! */
+	inventoryAs?: string,
 	/** Events associated with the item*/
 	//weapon?: KinkyDungeonWeapon, /** Item weapon data, if applicable*/
 	//consumable?: any, /** Item consumable data, if applicable*/
@@ -1146,6 +1148,7 @@ interface KinkyDungeonEvent {
 	msg?: string;
 	prereq?: string;
 	color?: string;
+	bgcolor?: string;
 	/** Vibe */
 	edgeOnly?: boolean;
 	/** Vibe */
@@ -1840,6 +1843,7 @@ interface KinkyDungeonSave {
 	dress: string;
 	gold: number;
 	points: number;
+	inventoryVariants: Record<string, KDInventoryVariant>;
 	grounditems: any;
 	perks: string[];
 	levels: {
@@ -2137,6 +2141,13 @@ interface KDCursedDef {
 	onApply?: (item: item, host?: item) => void,
 	condition: (item: item) => boolean,
 	remove: (item: item, host: item) => void, events?: KinkyDungeonEvent[]
+}
+
+type KDInventoryVariant = {
+	/** extra events added on */
+	events: KinkyDungeonEvent[],
+	/** The original restraint this is based on */
+	template: string,
 }
 
 type SpecialCondition = {

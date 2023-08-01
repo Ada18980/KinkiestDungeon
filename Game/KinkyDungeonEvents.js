@@ -31,6 +31,7 @@ function KDMapHasEvent(map, event) {
 function KinkyDungeonSendEvent(Event, data, forceSpell) {
 	KinkyDungeonSendMagicEvent(Event, data, forceSpell);
 	KinkyDungeonSendWeaponEvent(Event, data);
+	KinkyDungeonSendInventorySelectedEvent(Event, data);
 	KinkyDungeonSendInventoryEvent(Event, data);
 	KinkyDungeonSendBulletEvent(Event, data.bullet, data);
 	KinkyDungeonSendBuffEvent(Event, data);
@@ -49,6 +50,37 @@ function KinkyDungeonResetEventVariablesTick(delta) {
 
 	KinkyDungeonHandleGenericEvent("resetEventVarTick", {delta: delta});
 }
+
+
+/**
+ * Function mapping
+ * to expand, keep (e, item, data) => {...} as a constant API call
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
+ */
+let KDEventMapInventorySelected = {
+	"inventoryTooltip": {
+		"varModifier": (e, item, data) => {
+			if (item == data.item) {
+				data.extraLines.push(TextGet("KDVariableModifier_" + e.msg).replace("AMNT", `${e.power > 0 ? "+" : "-"}${Math.round(e.power)}`));
+				data.extraLineColor.push(e.color || "#ffffff");
+				data.extraLineColorBG.push(e.bgcolor || "#000000");
+			}
+		},
+	},
+};
+/**
+ *
+ * @param {string} Event
+ * @param {KinkyDungeonEvent} kinkyDungeonEvent
+ * @param {item} item
+ * @param {*} data
+ */
+function KinkyDungeonHandleInventorySelectedEvent(Event, kinkyDungeonEvent, item, data) {
+	if (Event === kinkyDungeonEvent.trigger && KDEventMapInventorySelected[Event] && KDEventMapInventorySelected[Event][kinkyDungeonEvent.type]) {
+		KDEventMapInventorySelected[Event][kinkyDungeonEvent.type](kinkyDungeonEvent, item, data);
+	}
+}
+
 
 /**
  * Function mapping
@@ -235,6 +267,7 @@ let KDEventMapInventory = {
 				data.extraLineColor.push(e.color);
 			}
 		},
+
 	},
 	"perksBonus": {
 		"spellDamage": (e, item, data) => {
@@ -844,6 +877,12 @@ let KDEventMapInventory = {
 		"HandsFree": (e, item, data) => {
 			if (data.flags.KDEvasionHands) {
 				data.flags.KDEvasionHands = false;
+				if (data.cost && e.energyCost && KinkyDungeonStatMana < KinkyDungeonStatManaMax - 0.01) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
+			}
+		},
+		"ArmsFree": (e, item, data) => {
+			if (data.flags.KDEvasionArms) {
+				data.flags.KDEvasionArms = false;
 				if (data.cost && e.energyCost && KinkyDungeonStatMana < KinkyDungeonStatManaMax - 0.01) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
 			}
 		},
@@ -2167,6 +2206,11 @@ let KDEventMapSpell = {
 				data.flags.KDEvasionHands = false;
 			}
 		},
+		"ArmsFree": (e, spell, data) => {
+			if (!data.IsSpell && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.flags.KDEvasionArms) {
+				data.flags.KDEvasionArms = false;
+			}
+		},
 	},
 	"calcManaPool": {
 		"EdgeRegenBoost": (e, spell, data) => {
@@ -2376,6 +2420,11 @@ let KDEventMapSpell = {
 		"HandsFree": (e, spell, data) => {
 			if (!data.IsSpell && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.flags.KDDamageHands) {
 				data.flags.KDDamageHands = false;
+			}
+		},
+		"ArmsFree": (e, spell, data) => {
+			if (!data.IsSpell && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.flags.KDDamageArms) {
+				data.flags.KDDamageArms = false;
 			}
 		},
 	},

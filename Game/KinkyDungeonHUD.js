@@ -465,7 +465,12 @@ function KinkyDungeonDrawInputs() {
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerReduction") + Math.round(damageReduction*10), X2, 900 - i * 25, 150, "#73efe8", "#333333"); i++; i++;
 	}
 	if (KinkyDungeonPlayerDamage) {
+		let flags = {
+			KDDamageHands: true.valueOf,
+			KDDamageArms: true.valueOf,
+		};
 		let data = {
+			flags: flags,
 			buffdmg: 0,
 			Damage: KinkyDungeonPlayerDamage,
 		};

@@ -3921,6 +3921,12 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	KDGetEnemyCache();
 
 	KDAllowDialogue = true;
+
+
+	// Prune when time advances
+	if (delta > 0) {
+		KDPruneInventoryVariants(true, true);
+	}
 }
 let KDAllowDialogue = true;
 
@@ -4229,4 +4235,16 @@ function KDCanPassEnemy(player, Enemy) {
 	return !KDIsImmobile(Enemy)
 	&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
 	&& (KinkyDungeonToggleAutoPass || KDEnemyHasFlag(Enemy, "passthrough") || (KinkyDungeonFlags.has("Passthrough")) || Enemy.Enemy.noblockplayer);
+}
+
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {number} pad
+ * @returns {boolean}
+ */
+function KDIsInBounds(x, y, pad = 1) {
+	return x >= pad && x <= KinkyDungeonGridWidth-pad-1 && y >= pad && y <= KinkyDungeonGridHeight-pad-1;
 }
