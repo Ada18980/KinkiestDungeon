@@ -907,8 +907,10 @@ function KinkyDungeonRun() {
 		}
 		kdgameboard.visible = false;
 		kdgamefog.visible = false;
+		kdminimap.visible = false;
 	} else {
 		kdgameboard.visible = true;
+		kdminimap.visible = KinkyDungeonState != "TileEditor";
 		kdgamefog.visible = KinkyDungeonState != "TileEditor";
 	}
 	// Draw the characters
@@ -2919,6 +2921,7 @@ function KinkyDungeonGenerateSaveData() {
 	save.flags = Array.from(KinkyDungeonFlags);
 	save.faction = KinkyDungeonFactionRelations;
 	save.perks = KDUnlockedPerks;
+	save.inventoryVariants = KinkyDungeonInventoryVariants;
 
 	let spells = [];
 	/**@type {item[]} */
@@ -3053,6 +3056,7 @@ function KinkyDungeonLoadGame(String) {
 			if (saveData.KDGameData != undefined) KDGameData = Object.assign({}, saveData.KDGameData);
 			KDEventData = JSON.parse(JSON.stringify(KDEventDataBase));
 			if (saveData.KDEventData != undefined) KDEventData = Object.assign({}, saveData.KDEventData);
+			if (saveData.inventoryVariants) KinkyDungeonInventoryVariants = saveData.inventoryVariants;
 
 			if (saveData.statchoice != undefined) KinkyDungeonStatsChoice = new Map(saveData.statchoice);
 

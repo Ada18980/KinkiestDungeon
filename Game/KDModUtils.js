@@ -9,6 +9,15 @@ function addTextKey(Name, Text) {
 	}
 	if (ct == 0) KDLoadingTextKeys[Name] = Text;
 }
+function deleteTextKey(Name) {
+	let ct = 0;
+	for (let screen of TextAllScreenCache.entries()) {
+		if (screen[0].includes("KinkyDungeon")) {
+			delete screen[1].cache[Name];
+		} else console.log("ERROR LOADING TEXT!!!");
+	}
+	if (ct == 0) delete KDLoadingTextKeys[Name];
+}
 
 const cloneDeep = (obj) =>
 	JSON.parse(JSON.stringify(obj));

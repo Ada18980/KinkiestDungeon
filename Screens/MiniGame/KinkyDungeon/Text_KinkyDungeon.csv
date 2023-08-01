@@ -10417,5 +10417,7 @@ KDIceMelt,"Your RestraintName melts off!"
 KDIceMeltProgress,"Your RestraintName melts faster with the application of fire!"
 KDIceMeltCancelProgress,"Your RestraintName hardens with the application of frost!"
 
-
+KinkyDungeonSpellNull,Unique
 KDdmg,dmg
+
+KDVariableModifier_Evasion,"AMNT Evasion"

@@ -10,6 +10,9 @@ let KinkyDungeonFilters = [
 	Misc,
 ];
 
+/** @type {Record<string, KDInventoryVariant>} */
+let KinkyDungeonInventoryVariants = {};
+
 /**
  * @type {Record<string, boolean>}
  */
@@ -121,7 +124,10 @@ function KinkyDungeonHandleInventory() {
 				}
 			}
 			if (!equipped && newItem) {
-				if (KDSendInput("equip", {name: newItem.name, group: newItem.Group, curse: filteredInventory[KinkyDungeonCurrentPageInventory].item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], filteredInventory[KinkyDungeonCurrentPageInventory].item.events)})) return true;
+				if (KDSendInput("equip", {name: filteredInventory[KinkyDungeonCurrentPageInventory].item.name,
+					inventoryAs: filteredInventory[KinkyDungeonCurrentPageInventory].item.name != newItem.name ?
+						filteredInventory[KinkyDungeonCurrentPageInventory].item.name : undefined,
+					group: newItem.Group, curse: filteredInventory[KinkyDungeonCurrentPageInventory].item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], filteredInventory[KinkyDungeonCurrentPageInventory].item.events)})) return true;
 
 			}
 		}
@@ -416,6 +422,17 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 	let textSplit = KinkyDungeonWordWrap(TextGet(prefix + name + "Desc"), 12, 28).split('\n');
 	let textSplit2 = KinkyDungeonWordWrap(TextGet(prefix + name + "Desc2"), 12, 28).split('\n');
 
+	let data = {
+		extraLines: [],
+		extraLineColor: [],
+		extraLineColorBG: [],
+		extraLinesPre: [],
+		extraLineColorPre: [],
+		extraLineColorBGPre: [],
+		SelectedItem: item.item,
+		item: item.item,
+	};
+	KinkyDungeonSendEvent("inventoryTooltip", data);
 
 	let showpreview = (item.preview && !MouseIn(xOffset + canvasOffsetX_ui, canvasOffsetY_ui, 840, 583));
 
@@ -473,9 +490,15 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 40, "#000000", KDTextTan, 24, undefined, 130); i++;}
 	}
 	i = 0;
+	for (let N = 0; N < data.extraLinesPre.length; N++) {
+		DrawTextKD(data.extraLinesPre[N],
+			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 40, data.extraLineColorPre[N], data.extraLineColorBGPre[N], 24, undefined, 130); i++;}
 	for (let N = 0; N < textSplit2.length; N++) {
 		DrawTextKD(textSplit2[N],
 			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 40, "#000000", KDTextTan, 24, undefined, 130); i++;}
+	for (let N = 0; N < data.extraLines.length; N++) {
+		DrawTextKD(data.extraLines[N],
+			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 40, data.extraLineColor[N], data.extraLineColorBG[N], 24, undefined, 130); i++;}
 
 	i = 0;
 
@@ -718,6 +741,18 @@ function KinkyDungeonSendInventoryEvent(Event, data) {
 				if (e.trigger === Event && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
 					KinkyDungeonHandleInventoryEvent(Event, e, item, data);
 				}
+			}
+		}
+	}
+}
+
+function KinkyDungeonSendInventorySelectedEvent(Event, data) {
+	if (!KDMapHasEvent(KDEventMapInventorySelected, Event)) return;
+	let item = data.SelectedItem;
+	if (item?.events) {
+		for (let e of item.events) {
+			if (e.trigger === Event) {
+				KinkyDungeonHandleInventorySelectedEvent(Event, e, item, data);
 			}
 		}
 	}
@@ -1179,7 +1214,10 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 						}
 					}
 					if (!equipped && newItem) {
-						if (KDSendInput("equip", {name: newItem.name, group: newItem.Group, curse: item.item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.item.events)})) return true;
+						if (KDSendInput("equip", {name: item.name,
+							inventoryAs: item.name != newItem.name ?
+								item.name : undefined,
+							group: newItem.Group, curse: item.item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.item.events)})) return true;
 					}
 				}
 
@@ -1262,7 +1300,9 @@ function KDLoadQuickLoadout(num, clearFirst) {
 				if (newItem) {
 					let currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 					KDSendInput("equip", {
-						name: newItem.name,
+						name: restraintItem.name,
+						inventoryAs: restraintItem.name != newItem.name ?
+							restraintItem.name : undefined,
 						group: newItem.Group,
 						curse: restraintItem.curse,
 						currentItem: currentItem ? currentItem.name : undefined,
@@ -1293,4 +1333,112 @@ function KDSaveQuickLoadout(num) {
 
 	if (!KDGameData.QuickLoadouts) KDGameData.QuickLoadouts = {};
 	KDGameData.QuickLoadouts[num + ""] = loadout;
+}
+
+/**
+ * @param {string} Name
+ * @param {KDInventoryVariant} Variant
+ * @param {string} Prefix
+ */
+function KDAddInventoryVariant(Name, Variant, Prefix="Restraint") {
+	KinkyDungeonInventoryVariants[Name] = JSON.parse(JSON.stringify(Variant));
+	// Create text keys too
+	KinkyDungeonDupeRestraintText(Variant.template, Name);
+}
+/**
+ * @param {string} Name
+ */
+function KDRemoveInventoryVariant(Name, Prefix="Restraint") {
+	delete KinkyDungeonInventoryVariants[Name];
+	// Create text keys too
+	deleteTextKey(Prefix + Name);
+	deleteTextKey(Prefix + Name + "Desc");
+	deleteTextKey(Prefix + Name + "Desc2");
+}
+
+/**
+ *
+ * @param {boolean} worn
+ * @param {boolean} loose
+ */
+function KDPruneInventoryVariants(worn = true, loose = true) {
+	let entries = Object.entries(KinkyDungeonInventoryVariants);
+	let found = {};
+	if (worn) {
+		let list = KinkyDungeonAllRestraintDynamic();
+		for (let inv of list) {
+			if ((inv.item.inventoryAs && KinkyDungeonInventoryVariants[inv.item.inventoryAs])) {
+				found[inv.item.inventoryAs] = true;
+			}
+			// The following is unneeded for now
+			/*else if (KinkyDungeonInventoryVariants[inv.item.name]) {
+				found[inv.item.name] = true;
+			}*/
+		}
+	}
+	if (loose) {
+		let list = KinkyDungeonAllLooseRestraint();
+		if (list.length < entries.length) {
+			for (let inv of list) {
+				if (KinkyDungeonInventoryVariants[inv.name]) {
+					found[inv.name] = true;
+				}
+			}
+		} else {
+			for (let type of entries) {
+				if (KinkyDungeonInventoryGetLoose(type[0])) {
+					found[type[0]] = true;
+				}
+			}
+		}
+	}
+	for (let type of entries) {
+		if (!found[type[0]]) {
+			KDRemoveInventoryVariant(type[0]);
+		}
+	}
+}
+
+/**
+ * Adds an inventory variant to the player's inventory
+ * @param {KDInventoryVariant} variant
+ * @param {string} prefix
+ */
+function KDGiveInventoryVariant(variant, prefix = "") {
+	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
+	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
+	let newname = prefix + variant.template + KinkyDungeonGetItemID();
+	if (!KinkyDungeonInventoryVariants[newname])
+		KinkyDungeonInventoryVariants[newname] = variant;
+	if (variant.events)
+		Object.assign(events, variant.events);
+	let q = 1;
+	if (KinkyDungeonInventoryGet(newname)) q = KinkyDungeonInventoryGet(newname).quantity + 1;
+	KinkyDungeonInventoryAdd({name: newname, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:events, quantity: q});
+}
+/**
+ * Adds an inventory variant to the player's inventory
+ * @param {KDInventoryVariant} variant
+ * @param {number} [Tightness]
+ * @param {boolean} [Bypass]
+ * @param {string} [Lock]
+ * @param {boolean} [Keep]
+ * @param {boolean} [Trapped]
+ * @param {string} [faction]
+ * @param {boolean} [Deep] - whether or not it can go deeply in the stack
+ * @param {string} [Curse] - Curse to apply
+ * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
+ * @param {boolean} [useAugmentedPower] - Augment power to keep consistency
+ * @param {string} [inventoryAs] - inventoryAs for the item
+ * @param {string} prefix
+ */
+function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, Keep, Trapped, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs) {
+	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
+	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
+	let newname = prefix + variant.template + KinkyDungeonGetItemID();
+	if (!KinkyDungeonInventoryVariants[newname])
+		KinkyDungeonInventoryVariants[newname] = variant;
+	if (variant.events)
+		Object.assign(events, variant.events);
+	KinkyDungeonAddRestraintIfWeaker(origRestraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower, newname);
 }

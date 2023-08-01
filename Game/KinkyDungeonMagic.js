@@ -201,7 +201,11 @@ function KDEmpower(data, entity) {
 
 function KinkyDungeoCheckComponents(spell, x, y) {
 	let failedcomp = [];
-	if (spell.components.includes("Verbal") && !KinkyDungeonCanTalk(true) && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0)) failedcomp.push("Verbal");
+	if (spell.components.includes("Verbal")) {
+		let gagTotal = (KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() > 0) ? 1.0 : KinkyDungeonGagTotal();
+		if (gagTotal >= 0.99 && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0)) failedcomp.push("Verbal");
+	}
+
 	if (spell.components.includes("Arms") && KinkyDungeonIsArmsBound() && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoArmsComp") > 0)) failedcomp.push("Arms");
 	if (spell.components.includes("Legs") && (KinkyDungeonSlowLevel > 1 || KinkyDungeonLegsBlocked()) && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoLegsComp") > 0)) failedcomp.push("Legs");
 
