@@ -1761,6 +1761,7 @@ function KinkyDungeonHandleHUD() {
 					}
 					item = surfaceItems[KDStruggleGroupLinkIndex[sg.group]];
 				}
+				if (!item) continue;
 				let r = KDRestraint(item);
 
 				if (KinkyDungeonControlsEnabled())

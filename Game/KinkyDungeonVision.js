@@ -595,25 +595,63 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 	let h = KDMinimapH;
 	let alpha = KDMinimapAlpha;
 	let borders = false;
-	if (!KinkyDungeonShowInventory && MouseIn(kdminimap.x, kdminimap.y, KDMinimapW*KDMinimapScale, KDMinimapH*KDMinimapScale)) {
-		scale = KDMinimapScaleBig;
-		w = KDMinimapWBig;
-		h = KDMinimapHBig;
+	let zoom = 1;
+	if (!KinkyDungeonShowInventory && (MouseIn(kdminimap.x, kdminimap.y, KDMinimapW*KDMinimapExpandedZoomTick, KDMinimapH*KDMinimapExpandedZoomTick) || KDExpandMinimap)) {
+		scale = KDMinimapExpandedZoom;
+		w = KDMinimapExpandedSize;
+		h = Math.floor(KDMinimapHBig/KDMinimapWBig*KDMinimapExpandedSize);
 		alpha = 1.;
+		zoom = (KDMinimapBaseSize/KDMinimapExpandedSize);
 		borders = true;
+	} else if (!KDExpandMinimap) {
+		//zoom = (KDMinimapBaseSize/KDMinimapExpandedSize);
 	}
+	KDMinimapWTarget = w*scale*zoom;
+	KDMinimapHTarget = h*scale*zoom;
+
 
 	KDRenderMinimap(KinkyDungeonPlayerEntity.x - w/2, KinkyDungeonPlayerEntity.y-h/2, w, h, scale, alpha, borders);
 
+	kdminimap.scale.x = KDMinimapWCurrent/KDMinimapWTarget*zoom;
+	kdminimap.scale.y = KDMinimapHCurrent/KDMinimapHTarget*zoom;
+
 }
 
+function KDMinimapWidth() {
+	return KDMinimapWCurrent;
+}
+function KDMinimapHeight() {
+	return KDMinimapHCurrent;
+}
+
+function KDUpdateMinimapTarget(force = false) {
+	KDMinimapWTarget = KDMinimapExpandedZoom*KDMinimapExpandedSize * (KDMinimapBaseSize/KDMinimapExpandedSize);
+	KDMinimapHTarget = KDMinimapExpandedZoom*Math.floor(KDMinimapHBig/KDMinimapWBig*KDMinimapExpandedSize) * (KDMinimapBaseSize/KDMinimapExpandedSize);
+	if (force) {
+		KDMinimapWCurrent = KDMinimapWTarget;
+		KDMinimapHCurrent = KDMinimapHTarget;
+	}
+}
+
+let KDExpandMinimap = false;
 let KDMinimapScale = 3;
-let KDMinimapScaleBig = 14;
+let KDMinimapScaleBig = 12;
 let KDMinimapW = 30;
 let KDMinimapH = 30;
-let KDMinimapWBig = 60;
-let KDMinimapHBig = 50;
+let KDMinimapBaseSize= 60;
+let KDMinimapExpandedSize = KDMinimapBaseSize;
+let KDMinimapExpandedSizeTick = 20;
+let KDMinimapWBig = 110;
+let KDMinimapHBig = 110;
 let KDMinimapAlpha = 0.7;
+
+let KDMinimapExpandedZoom = KDMinimapScaleBig;
+let KDMinimapExpandedZoomTick = 3;
+
+let KDMinimapWCurrent = KDMinimapW*KDMinimapScale;
+let KDMinimapHCurrent = KDMinimapH*KDMinimapScale;
+let KDMinimapWTarget = KDMinimapWCurrent;
+let KDMinimapHTarget = KDMinimapHCurrent;
 
 
 /**
@@ -638,7 +676,7 @@ function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders) {
 	kdminimap.endFill();
 	for (let xx = 0; xx <= w; xx++)  {
 		for (let yy = 0; yy <= h; yy++)  {
-			if (KDIsInBounds(x+xx, y+yy, 0) && (KinkyDungeonVisionGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0 || KinkyDungeonFogGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0)) {
+			if (KDIsInBounds(x+xx, y+yy, 1) && (KinkyDungeonVisionGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0 || KinkyDungeonFogGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0)) {
 				if (gridborders)
 					kdminimap.lineStyle(1, KinkyDungeonVisionGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0 ? 0xaaaaaa : 0, 0.5);
 				else
