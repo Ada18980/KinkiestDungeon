@@ -123,7 +123,7 @@ function ModelGetPoseMods(Poses): {[_: string]: PoseMod[]} {
 
 
 function CheckPoseOrTags(C: Character, tag: string) {
-	if (C == KinkyDungeonPlayerEntity) {
+	if (C == KinkyDungeonPlayer) {
 		if (KinkyDungeonPlayerTags.get(tag)) return true;
 	}
 	if (KDCurrentModels.get(C)?.Poses[tag]) {
@@ -187,8 +187,8 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 	for (let p of ARMPOSES) {
 		poses[p] = true;
 	}
-	//if (C == KinkyDungeonPlayer) {
-	// Logic for the player
+
+	// TODO make this extensible!!!!
 	if (CheckPoseOrTags(C, "Yokes")) {
 		poses = {Yoked: true};
 	} else if (CheckPoseOrTags(C, "Armbinders")) {
