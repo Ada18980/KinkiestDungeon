@@ -12,6 +12,7 @@ let KDReturnButtonXX = 1450;
 
 let KDIntenseFilter = null;
 
+let KDButtonHovering = false;
 
 
 
@@ -694,12 +695,53 @@ let KDLastKeyTime = {
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
+	KDButtonHovering = false;
 	if (kdminimap.visible) {
+		let zIndex = KDExpandMinimap ? 150 : 90;
+		if (KDExpandMinimap) {
+			let spacing = 40;
+			let starty = 15;
+			let ii = 0;
+			DrawButtonKDEx("minimapzoomin", (bdata) => {
+				KDMinimapExpandedSize = Math.max(KDMinimapW, KDMinimapExpandedSize - KDMinimapExpandedSizeTick);
+				KDUpdateMinimapTarget(true);
+				return true;
+			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/ZoomIn.png", undefined, false, true,
+			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+			DrawButtonKDEx("minimapzoomout", (bdata) => {
+				KDMinimapExpandedSize = Math.min(KDMinimapWBig, KDMinimapExpandedSize + KDMinimapExpandedSizeTick);
+				KDUpdateMinimapTarget(true);
+				return true;
+			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/ZoomOut.png", undefined, false, true,
+			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+			DrawButtonKDEx("minimapexpand", (bdata) => {
+				KDMinimapExpandedZoom = Math.min(KDMinimapScaleBig, KDMinimapExpandedZoom + KDMinimapExpandedZoomTick);
+				return true;
+			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Expand.png", undefined, false, true,
+			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+			DrawButtonKDEx("minimapshrink", (bdata) => {
+				KDMinimapExpandedZoom = Math.max(KDMinimapExpandedZoomTick, KDMinimapExpandedZoom - KDMinimapExpandedZoomTick);
+				return true;
+			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Shrink.png", undefined, false, true,
+			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+		}
+		kdminimap.zIndex = zIndex - 1;
+
 		// Dummy button to prevent clicks from moving the player inadvertently
 		DrawButtonKDEx("minimapdummy", (bdata) => {
+			KDExpandMinimap = !KDExpandMinimap;
 			return true;
-		}, true, 510, 10, 90, 90, "", KDButtonColor, undefined, undefined, true, true,
-		"#000000", undefined, undefined, {zIndex: -1, alpha: 0.});
+		}, true, 490, 0, KDMinimapWidth()+20, KDMinimapHeight()+20, "", KDButtonColor, undefined, undefined, false, true,
+		"#000000", undefined, undefined, {zIndex: zIndex-2, alpha: 0.});
+
+		KDMinimapWCurrent = (KDMinimapWTarget + KDUISmoothness * KDMinimapWCurrent)/(1 + KDUISmoothness);
+		KDMinimapHCurrent = (KDMinimapHTarget + KDUISmoothness * KDMinimapHCurrent)/(1 + KDUISmoothness);
+
+		// Snap when close or skipping smooth transition
+		if (Math.abs(KDMinimapWCurrent - KDMinimapWTarget) < 5) KDMinimapWCurrent = KDMinimapWTarget;
+		if (Math.abs(KDMinimapHCurrent - KDMinimapHTarget) < 5) KDMinimapHCurrent = KDMinimapHTarget;
+
+
 	}
 
 	if (StandalonePatched)
@@ -997,6 +1039,7 @@ function KinkyDungeonDrawGame() {
 				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !KinkyDungeonShowInventory
 					&& MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height) && KinkyDungeonIsPlayer()
 					&& !MouseIn(0, 0, 500, 1000) && !MouseIn(1750, 0, 250, 1000)
+					&& !KDButtonHovering
 					&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))
 				) {
 					if (KinkyDungeonTargetingSpell) {
@@ -2473,6 +2516,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			LineWidth: 2,
 			zIndex: zIndex,
 		});
+		KDButtonHovering = true;
 	}
 
 	// Draw the text or image
@@ -2982,7 +3026,7 @@ let KDTileTooltips = {
 	'R': () => {return {color: "#ffffff", noInspect: true, text: "R"};},
 	'Y': () => {return {color: "#ffffff", noInspect: true, text: "Y"};},
 	'L': () => {return {color: "#812913", noInspect: true, text: "L"};},
-	'A': () => {return {color: "#8888ff", noInspect: true, text: "A"};},
+	'A': () => {return {color: "#6d89d7", noInspect: true, text: "A"};},
 	'a': () => {return {color: "#ffffff", text: "a"};},
 	'O': () => {return {color: "#92e8c0", text: "O"};},
 	'o': () => {return {color: "#ffffff", text: "o"};},
@@ -2993,10 +3037,10 @@ let KDTileTooltips = {
 	'X': () => {return {color: "#aaaaaa", text: "X"};},
 	'?': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
 	',': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
-	'S': () => {return {color: "#ffffff", noInspect: true, text: "S"};},
-	's': () => {return {color: "#ffffff", noInspect: true, text: "s"};},
-	'H': () => {return {color: "#ffffff", noInspect: true, text: "H"};},
-	'G': () => {return {color: "#bbbbbb", noInspect: true, text: "G"};},
+	'S': () => {return {color: "#4c6885", noInspect: true, text: "S"};},
+	's': () => {return {color: "#4c6885", noInspect: true, text: "s"};},
+	'H': () => {return {color: "#4c6885", noInspect: true, text: "H"};},
+	'G': () => {return {color: "#69bf3e", noInspect: true, text: "G"};},
 	'B': () => {return {color: "#4444ff", noInspect: true, text: "B"};},
 	'@': () => {return {color: "#ffffff", noInspect: true, text: "@"};},
 	'b': () => {return {color: "#aaaaaa", noInspect: true, text: "b"};},
@@ -3007,7 +3051,7 @@ let KDTileTooltips = {
 	't': () => {return {color: "#aa55ff", noInspect: true, text: "t"};},
 	'u': () => {return {color: "#ffffff", noInspect: true, text: "u"};},
 	'V': () => {return {color: "#ffffff", noInspect: true, text: "V"};},
-	'N': () => {return {color: "#ffffff", noInspect: true, text: "N"};},
+	'N': () => {return {color: "#4c6885", noInspect: true, text: "N"};},
 };
 
 function KDGetTileColor(x, y) {
