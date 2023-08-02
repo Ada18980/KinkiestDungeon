@@ -50,6 +50,7 @@
         "Game/KinkyDungeonEnemiesList.js",
         "Game/KinkyDungeonEnemyEventList.js",
         "Game/KinkyDungeonCurse.js",
+        "Game/KinkyDungeonEnchantment.js",
         "Game/KinkyDungeonRestraints.js",
         "Game/KinkyDungeonRestraintsList.js",
         "Game/KinkyDungeonFight.js",
