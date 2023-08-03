@@ -116,6 +116,85 @@ function KinkyDungeonGetCurses(Restraint, includeOrig, minLevel, maxLevel) {
 }
 
 /**
+ * Gets a list of curses applied to the item
+ * @param {string} List
+ * @param {boolean} [includeOrig] - includes thje original item
+ * @param {number} [minLevel] - for gating curse severity
+ * @param {number} [maxLevel] - for gating curse severity
+ * @returns {string[]}
+ */
+function KinkyDungeonGetCursesByList(List, includeOrig, minLevel, maxLevel) {
+	if (KDCurseVariantList[List]) {
+		let keys = KDCurseVariantList[List].filter((key) => {
+			return (!minLevel || KDEventCurseModular[key].level >= minLevel)
+				&& (!maxLevel || KDEventCurseModular[key].level < maxLevel);
+		}).map((element) => {return element;});
+		if (includeOrig) keys.push("");
+		return keys;
+	}
+	return [];
+}
+
+/**
+ * Gets a list of curses applied to the item
+ * @param {string} List
+ * @param {string} item
+ * @param {boolean} [includeOrig] - includes thje original item
+ * @param {number} [minLevel] - for gating curse severity
+ * @param {number} [maxLevel] - for gating curse severity
+ * @returns {Record<string, number>}
+ */
+function KinkyDungeonGetCursesByListWeighted(List, item, includeOrig, minLevel, maxLevel) {
+	let list = KinkyDungeonGetCursesByList(List, includeOrig, minLevel, maxLevel);
+	/** @type {Record<string, number>} */
+	let ret = {};
+	for (let obj of list) {
+		ret[obj] = KDEventCurseModular[obj].weight(item);
+	}
+	return ret;
+}
+
+/**
+ * Gets a list of curses applied to the item
+ * @param {string} List
+ * @param {boolean} [includeOrig] - includes thje original item
+ * @param {number} [minLevel] - for gating curse severity
+ * @param {number} [maxLevel] - for gating curse severity
+ * @returns {string[]}
+ */
+function KinkyDungeonGetEnchantmentsByList(List, includeOrig, minLevel, maxLevel) {
+	if (KDEnchantVariantList[List]) {
+		let keys = KDEnchantVariantList[List].filter((key) => {
+			return (!minLevel || KDEventEnchantmentModular[key].level >= minLevel)
+				&& (!maxLevel || KDEventEnchantmentModular[key].level < maxLevel);
+		}).map((element) => {return element;});
+		if (includeOrig) keys.push("");
+		return keys;
+	}
+	return [];
+}
+
+/**
+ * Gets a list of curses applied to the item
+ * @param {string} List
+ * @param {string} item
+ * @param {boolean} [includeOrig] - includes thje original item
+ * @param {number} [minLevel] - for gating curse severity
+ * @param {number} [maxLevel] - for gating curse severity
+ * @returns {Record<string, number>}
+ */
+function KinkyDungeonGetEnchantmentsByListWeighted(List, item, includeOrig, minLevel, maxLevel) {
+	let list = KinkyDungeonGetEnchantmentsByList(List, includeOrig, minLevel, maxLevel);
+	/** @type {Record<string, number>} */
+	let ret = {};
+	for (let obj of list) {
+		ret[obj] = KDEventEnchantmentModular[obj].weight(item);
+	}
+	return ret;
+}
+
+
+/**
  * Creates a restraint using an existing restraint as a base and adds it to the list of restraints.
  *
  * @param {string} clonedName

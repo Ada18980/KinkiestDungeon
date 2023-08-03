@@ -64,7 +64,9 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 				let maxlevel = 999;
 				let minlevel = 0;
 				let SpellList = null;
-				if (prereqs && loot.prerequisites.includes("vibe") && KinkyDungeonPlayerTags.has("NoVibes")) prereqs = false;
+				if (prereqs && loot.hardmode && !KinkyDungeonStatsChoice.get("hardMode")) prereqs = false;
+				if (prereqs && loot.nohardmode && KinkyDungeonStatsChoice.get("hardMode")) prereqs = false;
+				if (prereqs && loot.prerequisites.includes("vibe") && KinkyDungeonPlayerTags.get("NoVibes")) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("alreadyBelted") && KinkyDungeonChastityMult() < 0.9) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("lowlevel")) maxlevel = 2;
 				if (prereqs && loot.prerequisites.includes("fewpick") && KinkyDungeonLockpicks > 3) prereqs = false;
@@ -141,7 +143,7 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 			// Check for cursed norestraint as well
 			if (prereqs && loot.norestraintcursed) {
 				let id = loot.norestraintcursed + `${loot.curselevelmin || 0},${loot.curselevelmax || 0}`;
-				if (!cursedRestraintCache[id]) cursedRestraintCache[id] = [...KinkyDungeonGetCurses(loot.norestraintcursed, true, loot.curselevelmin, loot.curselevelmax)];
+				if (!cursedRestraintCache[id]) cursedRestraintCache[id] = [...KinkyDungeonGetCursesByList(loot.norestraintcursed, true, loot.curselevelmin, loot.curselevelmax)];
 				for (let r of cursedRestraintCache[id]) {
 					if (KinkyDungeonInventoryGet(r)) {
 						prereqs = false;
@@ -258,16 +260,42 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	else if (Loot.armor) {
 		let armor = Loot.armor;
 		let unlockcurse = null;
-		if (Loot.curselevelmin != undefined || Loot.curselevelmax != undefined)
-			armor = CommonRandomItemFromList("", KinkyDungeonGetCurses(Loot.armor, false, Loot.curselevelmin, Loot.curselevelmax));
-		if (Loot.unlockcurse) {
+		let curseVariant = "";
+		let enchantVariant = "";
+		if (Loot.curselist && (Loot.cursechance == undefined || KDRandom() < Loot.cursechance) || (Loot.nouncursed && !Loot.enchantlist && KinkyDungeonInventoryGet(Loot.nouncursed))) {
+			curseVariant = KDGetByWeight(KinkyDungeonGetCursesByListWeighted(Loot.curselist, armor, false, Loot.curselevelmin, Loot.curselevelmax));
+			// Sets the armor to the cursed type
+			armor = armor+(Loot.cursesuffix != undefined ? Loot.cursesuffix : Loot.curselist);
+		}
+		if (Loot.enchantlist && (Loot.enchantchance == undefined || KDRandom() < Loot.enchantchance || (Loot.nouncursed && !curseVariant && KinkyDungeonInventoryGet(Loot.nouncursed)) || (curseVariant && Loot.alwaysenchantcurse))) {
+			enchantVariant = KDGetByWeight(
+				KinkyDungeonGetEnchantmentsByListWeighted(Loot.enchantlist, armor, false, Loot.enchantlevelmin, Loot.enchantlevelmax)
+			);
+		}
+		if (Loot.unlockcurse && (curseVariant || !Loot.curselist)) {
 			let curselist = [];
 			for (let c of Loot.unlockcurse) {
 				curselist.push(...KDCurseUnlockList[c]);
 			}
 			unlockcurse = CommonRandomItemFromList("", curselist);
 		}
-		KinkyDungeonInventoryAddLoose(armor, unlockcurse);
+		if (curseVariant || enchantVariant) {
+			let events = [];
+			if (curseVariant) {
+				events.push(...KDEventCurseModular[curseVariant].events);
+			}
+			if (enchantVariant) {
+				events.push(...KDEventEnchantmentModular[enchantVariant].events(armor));
+			}
+			/** @type {KDInventoryVariant} */
+			let variant = {
+				template: armor,
+				events: events,
+			};
+			KDGiveInventoryVariant(variant, "", unlockcurse);
+		} else {
+			KinkyDungeonInventoryAddLoose(armor, unlockcurse);
+		}
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + Loot.armor));
 	}

@@ -5302,13 +5302,13 @@ NamePetDisplay,Display Doll
 KillPetDisplay,The enemy steals your doll from you!
 
 KinkyDungeonSpellPetsuit,Conjure Petsuit
-KinkyDungeonSpellDescriptionPetsuit,"Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery."
+KinkyDungeonSpellDescriptionPetsuit,"Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool."
 KinkyDungeonSpellCastPetsuit,"You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!"
 KinkyDungeonSpellCastSelfPetsuit,"You watch in horror as your own creation lunges toward you, binding your hands and feet!"
 KinkyDungeonSpellTargetPetsuit,Choose a helpless target
 
 KinkyDungeonSpellDisplayStand,Conjure Display Stand
-KinkyDungeonSpellDescriptionDisplayStand,"Target only Helpless enemies. Creates a fixture that increases passive mana recovery, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage."
+KinkyDungeonSpellDescriptionDisplayStand,"Target only Helpless enemies. Creates a fixture that increases passive mana recovery from mana pool, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage."
 KinkyDungeonSpellCastDisplayStand,"You conjure a fixture to hold your helpless target in place!"
 KinkyDungeonSpellCastSelfDisplayStand,"You watch in horror as your own creation surrounds you, locking you in place with a hefty click!"
 KinkyDungeonSpellTargetDisplayStand,Choose a helpless target
@@ -10705,4 +10705,21 @@ KDIceMeltCancelProgress,"Your RestraintName hardens with the application of fros
 KinkyDungeonSpellNull,Unique
 KDdmg,dmg
 
-KDVariableModifier_Evasion,"AMNT Evasion"
+KDVariableModifier_Evasion,"Elven Grace: AMNT Evasion"
+KDVariableModifier_Accuracy,"Seeking: AMNT% Accuracy"
+KDVariableModifier_SpellWard,"Warding: AMNT Magic Armor"
+KDVariableModifier_Armor,"Sturdy: AMNT Physical Armor"
+KDVariableModifier_BondageResist,"Lubricated: AMNT Bondage Resist"
+KDVariableModifier_DamageResist,"Resistance: AMNT TYPE Resist"
+KDVariableModifier_DamageBuff,"Runic: AMNT% TYPE Damage"
+KDVariableModifier_BaseDamageBuff,"Might: AMNT% Base Damage"
+KDVariableModifier_ElementalEcho,"Infusion: AMNT% Base Damage echoed as TYPE damage on attacks"
+KDVariableModifier_ManaCost,"Efficient: AMNT% Mana Costs"
+KDVariableModifier_ManaRegen,"Empowering: AMNT% mana recovery from mana pool"
+KDVariableModifier_ManaRegenOnKill,"Draining: AMNT Mana when capturing an enemy"
+KDVariableModifier_Sneak,"Camouflage: AMNT% Visibility"
+KDVariableModifier_DPDecay,"Calming: AMNT Distraction Decay"
+KDVariableModifier_DPGain,"Distracting: AMNT Distraction Per Turn"
+KDVariableModifier_DPGainWhenAttacked,"Sensitivity: AMNT Distraction From Attacks"
+
+KDVariableModifier_,"AMNT Stat"

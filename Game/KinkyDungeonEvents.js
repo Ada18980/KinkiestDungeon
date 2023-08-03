@@ -32,6 +32,7 @@ function KinkyDungeonSendEvent(Event, data, forceSpell) {
 	KinkyDungeonSendMagicEvent(Event, data, forceSpell);
 	KinkyDungeonSendWeaponEvent(Event, data);
 	KinkyDungeonSendInventorySelectedEvent(Event, data);
+	KinkyDungeonSendInventoryIconEvent(Event, data);
 	KinkyDungeonSendInventoryEvent(Event, data);
 	KinkyDungeonSendBulletEvent(Event, data.bullet, data);
 	KinkyDungeonSendBuffEvent(Event, data);
@@ -57,11 +58,46 @@ function KinkyDungeonResetEventVariablesTick(delta) {
  * to expand, keep (e, item, data) => {...} as a constant API call
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
  */
+let KDEventMapInventoryIcon = {
+	"icon": {
+		"tintIcon": (e, item, data) => {
+			if (item == data.item) {
+				if (e.power > data.power) {
+					data.power = e.power;
+					if (e.color)
+						data.color = e.color;
+					if (e.bgcolor)
+						data.bgcolor = e.bgcolor;
+				}
+			}
+		},
+	},
+};
+/**
+ *
+ * @param {string} Event
+ * @param {KinkyDungeonEvent} kinkyDungeonEvent
+ * @param {item} item
+ * @param {*} data
+ */
+function KinkyDungeonHandleInventoryIconEvent(Event, kinkyDungeonEvent, item, data) {
+	if (Event === kinkyDungeonEvent.trigger && KDEventMapInventoryIcon[Event] && KDEventMapInventoryIcon[Event][kinkyDungeonEvent.type]) {
+		KDEventMapInventoryIcon[Event][kinkyDungeonEvent.type](kinkyDungeonEvent, item, data);
+	}
+}
+
+/**
+ * Function mapping
+ * to expand, keep (e, item, data) => {...} as a constant API call
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
+ */
 let KDEventMapInventorySelected = {
 	"inventoryTooltip": {
 		"varModifier": (e, item, data) => {
 			if (item == data.item) {
-				data.extraLines.push(TextGet("KDVariableModifier_" + e.msg).replace("AMNT", `${e.power > 0 ? "+" : "-"}${Math.round(e.power)}`));
+				data.extraLines.push(TextGet("KDVariableModifier_" + e.msg)
+					.replace("AMNT", `${e.power > 0 ? "+" : "-"}${Math.round(e.power)}`)
+					.replace("TYPE", `${e.kind}`));
 				data.extraLineColor.push(e.color || "#ffffff");
 				data.extraLineColorBG.push(e.bgcolor || "#000000");
 			}

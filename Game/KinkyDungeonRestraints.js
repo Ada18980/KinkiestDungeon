@@ -3227,7 +3227,10 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 						}
 
 						if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
-							KinkyDungeonInventoryAdd({name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:item.events || origRestraint.events, quantity: 1});
+							let loose = {name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:item.events || origRestraint.events, quantity: 1};
+							if (item.inventoryAs) loose.inventoryAs = item.inventoryAs;
+							if (KinkyDungeonInventoryVariants[inventoryAs]) loose.showInQuickInv = true;
+							KinkyDungeonInventoryAdd(loose);
 						} else {
 							if (!KinkyDungeonInventoryGetLoose(inventoryAs).quantity) KinkyDungeonInventoryGetLoose(inventoryAs).quantity = 0;
 							KinkyDungeonInventoryGetLoose(inventoryAs).quantity += 1;
@@ -3315,7 +3318,10 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover) {
 					if (origRestraint && rest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed"))
 						KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + rest.name)), "#aaffaa", 1);
 					if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
-						KinkyDungeonInventoryAdd({name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:item.events || origRestraint.events, quantity: 1});
+						let loose = {name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:item.events || origRestraint.events, quantity: 1};
+						if (item.inventoryAs) loose.inventoryAs = item.inventoryAs;
+						if (KinkyDungeonInventoryVariants[inventoryAs]) loose.showInQuickInv = true;
+						KinkyDungeonInventoryAdd(loose);
 					} else KinkyDungeonInventoryGetLoose(inventoryAs).quantity += 1;
 				} else KinkyDungeonInventoryAdd({name: rest.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:rest.events});
 			}
