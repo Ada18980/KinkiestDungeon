@@ -640,7 +640,7 @@ function KinkyDungeonDrawInventory() {
 						KinkyDungeonRootDirectory + "/UI/ItemAura.png", canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 215, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
 						undefined, {
 							zIndex: 100.003,
-							tint: filteredInventory[index].previewcolor,
+							tint: string2hex(filteredInventory[index].previewcolor),
 							alpha: 0.9,
 						});
 				}
@@ -649,7 +649,7 @@ function KinkyDungeonDrawInventory() {
 						KinkyDungeonRootDirectory + "/UI/ItemAuraBG.png", canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 215, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
 						undefined, {
 							zIndex: 100.002,
-							tint: filteredInventory[index].previewcolorbg,
+							tint: string2hex(filteredInventory[index].previewcolorbg),
 							alpha: 0.8,
 						});
 				}
@@ -1103,7 +1103,7 @@ function KinkyDungeonDrawQuickInv() {
 				KDDraw(kdcanvas, kdpixisprites, "restraintsiconhalo" + w,
 					KinkyDungeonRootDirectory + "/UI/ItemAura.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 						zIndex: 108.5,
-						tint: item.previewcolor,
+						tint: string2hex(item.previewcolor),
 						alpha: 0.9,
 					});
 			}
@@ -1111,7 +1111,7 @@ function KinkyDungeonDrawQuickInv() {
 				KDDraw(kdcanvas, kdpixisprites, "restraintsiconhalobg" + w,
 					KinkyDungeonRootDirectory + "/UI/ItemAuraBG.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 						zIndex: 108.4,
-						tint: item.previewcolorbg,
+						tint: string2hex(item.previewcolorbg),
 						alpha: 0.8,
 					});
 			}

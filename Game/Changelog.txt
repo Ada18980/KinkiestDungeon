@@ -1370,6 +1370,12 @@ Bugfix
 Modding
 - New system for temporary variants of items, created dynamically using a helper function
 
+4.34 (August 2023)
+Features
+- Added enchantments to armor
+Modding
+-Reworked curse system entirely
+
 TODO: Mushrooms in the jungle
 
 TODO
