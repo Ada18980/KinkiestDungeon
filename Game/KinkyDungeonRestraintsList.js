@@ -2119,7 +2119,7 @@ const KinkyDungeonRestraints = [
 				{trigger: "tick", type: "sneakBuff", power: -0.15, inheritLinked: true},
 			],
 		}, "Breastplate", "Rock-solid and form-fitting.", "Provides minor protection against enemy attacks. Decreases stealth.")
-		, [...KDCurseVariantList.Basic]);
+		, [...KDCurseVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "Bustier",
@@ -2144,7 +2144,7 @@ const KinkyDungeonRestraints = [
 				{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
 			],
 		}, "Adventuring Corset", "Protects your organs and your sense of style.", "Provides minor protection against enemy attacks at the cost of flexibility.")
-		, [...KDCurseVariantList.Basic]);
+		, [...KDCurseVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "ChainTunic",
@@ -2173,7 +2173,7 @@ const KinkyDungeonRestraints = [
 				{trigger: "tick", type: "sneakBuff", power: -0.5, inheritLinked: true},
 			],
 		}, "Chainmail Tank Top", "Cumbersome, but effective!", "Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder.")
-		, [...KDCurseVariantList.Basic]);
+		, [...KDCurseVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "SteelArmor",
@@ -2200,7 +2200,7 @@ const KinkyDungeonRestraints = [
 				{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
 			],
 		}, "Light Plate Armor", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
-		, [...KDCurseVariantList.Basic]);
+		, [...KDCurseVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "MageArmor",
@@ -2225,7 +2225,7 @@ const KinkyDungeonRestraints = [
 				{trigger: "tick", type: "spellWardBuff", power: 1, inheritLinked: true},
 			],
 		}, "Wizard's Robe", "I have the power!", "+30% spell damage and +10 spell ward")
-		, [...KDCurseVariantList.Basic]);
+		, [...KDCurseVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "SteelSkirt",
@@ -2251,7 +2251,7 @@ const KinkyDungeonRestraints = [
 				{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
 			],
 		}, "Armored Skirt", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
-		, [...KDCurseVariantList.Basic]);
+		, [...KDCurseVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "Gauntlets",
@@ -2276,7 +2276,7 @@ const KinkyDungeonRestraints = [
 				{trigger: "playerCast", type: "armorNoise", chance: 1, dist: 11, punishComponent: "Arms", sfx: "Chain", msg: "KinkyDungeonPunishPlayerArmor", inheritLinked: true},
 			],
 		}, "Gauntlets", "Gloves with an iron grip.", "Provides +5 armor and minor protection against enemy attacks. Makes noise when attacking.")
-		, [...KDCurseVariantList.Basic]);
+		, [...KDCurseVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "LeatherGloves",
@@ -2295,7 +2295,7 @@ const KinkyDungeonRestraints = [
 			debris: "Belts",
 			protection: 1,
 		}, "Leather Gloves", "Protecting you in style.", "Provides minor protection against enemy attacks.")
-		, [...KDCurseVariantList.Basic]);
+		, [...KDCurseVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "Bracers",
@@ -2313,7 +2313,7 @@ const KinkyDungeonRestraints = [
 			debris: "Belts",
 			protection: 1,
 		}, "Steel Bracers", "Dependable protection for the average adventurer.", "Provides minor protection against enemy attacks.")
-		, [...KDCurseVariantList.Basic]);
+		, [...KDCurseVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "SteelBoots",
@@ -2338,7 +2338,7 @@ const KinkyDungeonRestraints = [
 				{trigger: "tick", type: "sneakBuff", power: -0.35, inheritLinked: true},
 			],
 		}, "Armored Boots", "Noisy, but fashionable!", "Provides +5 armor and protection against enemy attacks. Decreases stealth.")
-		, [...KDCurseVariantList.Basic]);
+		, [...KDCurseVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "LeatherBoots",
@@ -2358,7 +2358,7 @@ const KinkyDungeonRestraints = [
 			debris: "Belts",
 			protection: 1,
 		}, "Hide Boots", "For stepping into all kinds of trouble!", "Provides minor protection against enemy attacks.")
-		, [...KDCurseVariantList.Basic]);
+		, [...KDCurseVariantList.Base]);
 
 
 

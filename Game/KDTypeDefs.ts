@@ -65,6 +65,8 @@ interface item extends Named {
 	tightness?: number,
 	/** Determines the current trap attached to the restraint*/
 	trap?: string,
+	/** Can make the item itself show in quick inv*/
+	showInQuickInv?: boolean,
 }
 
 interface consumable {

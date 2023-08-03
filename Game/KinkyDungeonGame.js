@@ -3925,7 +3925,7 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	// Prune when time advances
 	if (delta > 0) {
-		KDPruneInventoryVariants(true, true);
+		KDPruneInventoryVariants(true, true, true);
 	}
 }
 let KDAllowDialogue = true;

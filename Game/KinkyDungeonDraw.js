@@ -2175,7 +2175,7 @@ function DrawBoxKDTo(Container, Left, Top, Width, Height, Color, NoBorder, Alpha
 			Height: Height,
 			Color: KDBorderColor,
 			LineWidth: 2,
-			zIndex: zIndex + 0.001,
+			zIndex: zIndex + 0.004,
 		});
 	}
 }
@@ -2477,6 +2477,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {number} [options.alpha]
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {string} [options.tint] - tint
  * @returns {void} - Nothing
  */
 function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2508,6 +2509,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.unique] - This button is not differentiated by position
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {string} [options.tint] - tint
  * @returns {void} - Nothing
  */
 function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2527,7 +2529,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			Height: Height - 2 * pad + 1,
 			Color: "#ffffff",
 			LineWidth: 2,
-			zIndex: zIndex,
+			zIndex: zIndex + 0.005,
 		});
 		KDButtonHovering = true;
 	}
@@ -2537,18 +2539,24 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 	if ((Image != null) && (Image != "")) {
 		let img = KDTex(Image);
 		if (Stretch || options?.scaleImage) {
+			let o = {
+				zIndex: zIndex + 0.01,
+			};
+			if (options?.tint) o.tint = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-				Image, Left, Top, Width, Height, undefined, {
-					zIndex: zIndex + 0.001,
-				});
+				Image, Left, Top, Width, Height, undefined, o);
 			/*DrawImageEx(Image, Left, Top, {
 				Width: Width,
 				Height: Height,
 			});*/
-		} else KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-			Image, Left + 2, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, {
-				zIndex: zIndex + 0.001,
-			});
+		} else {
+			let o = {
+				zIndex: zIndex + 0.01,
+			};
+			if (options?.tint) o.tint = options.tint;
+			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
+			Image, Left + 2, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
+		}
 		textPush = img.orig.width;
 	}
 	DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
@@ -2943,6 +2951,7 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 				sprite.filters = null;
 			} else {
 				for (let o of Object.entries(options)) {
+					if (o[1] != undefined || o[0] != "tint")
 					sprite[o[0]] = o[1];
 				}
 			}
@@ -3338,7 +3347,7 @@ function KDDrawTooltip(TooltipList, offset) {
 		Color: "#000000",
 		LineWidth: 1,
 		zIndex: 75,
-		alpha: 0.4,
+		alpha: 0.7,
 	});
 
 	let pad = 10;

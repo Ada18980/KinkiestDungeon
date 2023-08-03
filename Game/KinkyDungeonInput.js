@@ -124,11 +124,14 @@ function KDProcessInput(type, data) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
 				KDSendStatus('bound', data.name, "self");
 				loose = KinkyDungeonInventoryGetLoose(data.name);
-				if (!(loose.quantity > 1)) {
-					KinkyDungeonInventoryRemove(loose);
-				} else {
-					loose.quantity -= 1;
+				if (loose) {
+					if (!(loose.quantity > 1)) {
+						KinkyDungeonInventoryRemove(loose);
+					} else {
+						loose.quantity -= 1;
+					}
 				}
+
 
 				KDStunTurns(2, true);
 
