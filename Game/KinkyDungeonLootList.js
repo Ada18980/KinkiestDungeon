@@ -4,9 +4,9 @@ let KDBasicArmorWeight = 0.2;
 let KDBasicArmorWeight_Cursed = 0.4;
 let KDBasicArmorWeight_Enchanted = 0.6;
 let KDEnchantedRestraintsWeight = 1.0;
-let KDAdvancedArmorWeight = 0.5;
-let KDAdvancedArmorWeight_Cursed = 1.0;
-let KDAdvancedArmorWeight_Enchanted = 1.5;
+let KDAdvancedArmorWeight = 1;
+let KDAdvancedArmorWeight_Cursed = 2.0;
+let KDAdvancedArmorWeight_Enchanted = 2.5;
 
 let KD_cursechance_Default = 0.35;
 let KD_enchantchance_Default = 0.8;

@@ -60,6 +60,7 @@ let KDCurses = {
 	},
 	"BlueLock" : {
 		lock: true,
+		activatecurse: true,
 		condition: (item) => {
 			return KinkyDungeonBlueKeys >= 1;
 		},
@@ -69,6 +70,7 @@ let KDCurses = {
 	},
 	"TakeDamageFire" : {
 		powerMult: 2.2,
+		activatecurse: true,
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
@@ -78,6 +80,7 @@ let KDCurses = {
 	},
 	"TakeDamageIce" : {
 		powerMult: 2.2,
+		activatecurse: true,
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
@@ -90,6 +93,7 @@ let KDCurses = {
 	},
 	"TakeDamageElectric" : {
 		powerMult: 2.2,
+		activatecurse: true,
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
@@ -98,6 +102,7 @@ let KDCurses = {
 	},
 	"TakeDamageGlue" : {
 		powerMult: 2.2,
+		activatecurse: true,
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
@@ -106,6 +111,7 @@ let KDCurses = {
 	},
 	"TakeDamageChain" : {
 		powerMult: 2.2,
+		activatecurse: true,
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
@@ -114,6 +120,7 @@ let KDCurses = {
 	},
 	"Will" : {
 		powerMult: 2,
+		activatecurse: true,
 		onApply: (item, host) => {
 			KinkyDungeonChangeWill(-1);
 		},
@@ -126,6 +133,7 @@ let KDCurses = {
 	},
 	"Mana" : {
 		powerMult: 2,
+		activatecurse: true,
 		condition: (item) => {
 			return KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 20;
 		},
@@ -135,6 +143,7 @@ let KDCurses = {
 	},
 	"ShrineWill" : {
 		powerMult: 2.5,
+		activatecurse: true,
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Will";
@@ -142,6 +151,7 @@ let KDCurses = {
 		}, remove: (item, host) => {/* For free! */}},
 	"ShrineElements" : {
 		powerMult: 2.5,
+		activatecurse: true,
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Elements";
@@ -149,6 +159,7 @@ let KDCurses = {
 		}, remove: (item, host) => {/* For free! */}},
 	"ShrineConjure" : {
 		powerMult: 2.5,
+		activatecurse: true,
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Conjure";
@@ -156,6 +167,7 @@ let KDCurses = {
 		}, remove: (item, host) => {/* For free! */}},
 	"ShrineIllusion" : {
 		powerMult: 2.5,
+		activatecurse: true,
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Illusion";
@@ -171,8 +183,8 @@ let KDEventCurseModular = {
 			return 8;
 		},
 		events: [
-			{type: "ItemLight", trigger: "getLights", power: 3.5, color: "#ffff55", inheritLinked: true},
-			{trigger: "tick", type: "sneakBuff", power: -1.0, inheritLinked: true},
+			{type: "ItemLight", trigger: "getLights", power: 3.5, color: "#ffff55", inheritLinked: true, curse: true},
+			{trigger: "tick", type: "sneakBuff", power: -1.0, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Illumination", color: "#ff5555", inheritLinked: true},
 		]},
 	"Attraction": {level: 1,
@@ -180,7 +192,7 @@ let KDEventCurseModular = {
 			return 8;
 		},
 		events: [
-			{type: "CurseAttraction", trigger: "calcPlayChance", power: 0.5, inheritLinked: true},
+			{type: "CurseAttraction", trigger: "calcPlayChance", power: 0.5, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Attraction", color: "#ff5555", inheritLinked: true}
 		]},
 	"Sensitivity": {level: 1,
@@ -188,7 +200,7 @@ let KDEventCurseModular = {
 			return 8;
 		},
 		events: [
-			{type: "CurseSensitivity", trigger: "calcOrgThresh", power: 0.5, inheritLinked: true},
+			{type: "CurseSensitivity", trigger: "calcOrgThresh", power: 0.5, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Sensitivity", color: "#ff5555", inheritLinked: true}
 		]},
 	"Submission": {level: 1,
@@ -196,7 +208,7 @@ let KDEventCurseModular = {
 			return 8;
 		},
 		events: [
-			{type: "CurseSubmission", trigger: "orgasm", power: 10, inheritLinked: true},
+			{type: "CurseSubmission", trigger: "orgasm", power: 10, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Submission", color: "#ff5555", inheritLinked: true}
 		]},
 	"Distraction": {level: 1,
@@ -204,7 +216,7 @@ let KDEventCurseModular = {
 			return 8;
 		},
 		events: [
-			{type: "multDistractionPos", trigger: "changeDistraction", power: 1.5, inheritLinked: true},
+			{type: "multDistractionPos", trigger: "changeDistraction", power: 1.5, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Distraction", color: "#ff5555", inheritLinked: true}
 		]},
 	"Breathlessness": {level: 1,
@@ -212,7 +224,7 @@ let KDEventCurseModular = {
 			return 8;
 		},
 		events: [
-			{type: "multStaminaPos", trigger: "changeStamina", power: 0.6, inheritLinked: true},
+			{type: "multStaminaPos", trigger: "changeStamina", power: 0.6, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Breathlessness", color: "#ff5555", inheritLinked: true}
 		]},
 	"Futility": {level: 1,
@@ -220,7 +232,7 @@ let KDEventCurseModular = {
 			return 8;
 		},
 		events: [
-			{type: "multWillPos", trigger: "changeWill", power: 0.25, inheritLinked: true},
+			{type: "multWillPos", trigger: "changeWill", power: 0.25, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Futile", color: "#ff5555", inheritLinked: true}
 		]},
 	"Tickle": {level: 1,
@@ -228,7 +240,7 @@ let KDEventCurseModular = {
 			return 8;
 		},
 		events: [
-			{trigger: "tick", type: "tickleDrain", power: -0.02, inheritLinked: true},
+			{trigger: "tick", type: "tickleDrain", power: -0.02, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Tickle", color: "#ff5555", inheritLinked: true}
 		]},
 	"Punish": {level: 1,
@@ -236,8 +248,8 @@ let KDEventCurseModular = {
 			return 8;
 		},
 		events: [
-			{trigger: "playerAttack", type: "cursePunish", chance: 1, damage: "souldrain", power: 1, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerCurse", inheritLinked: true},
-			{trigger: "playerCast", type: "cursePunish", chance: 1, damage: "souldrain", power: 1, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerCurse", inheritLinked: true},
+			{trigger: "playerAttack", type: "cursePunish", chance: 1, damage: "souldrain", power: 1, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerCurse", inheritLinked: true, curse: true},
+			{trigger: "playerCast", type: "cursePunish", chance: 1, damage: "souldrain", power: 1, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerCurse", inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Punish", color: "#ff5555", inheritLinked: true}
 		]},
 };
@@ -257,7 +269,7 @@ let KDCursedVars = {
 		variant: (restraint, newRestraintName) => {
 			return KDAddEventVariant(restraint, newRestraintName, [
 				// We dont add any events because this is just a standard power restraint
-			], 4, "Purple", {commonCurse: 10});
+			], 4, "", {commonCurse: 10});
 		}
 	},
 };
@@ -328,7 +340,7 @@ function KDBestowCurse(item, ev) {
  * @param {Record<string, number>} enemyTags
  * @returns {any}
  */
-function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = "Purple", enemyTags = {basicCurse: 10}) {
+function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = undefined, enemyTags = {basicCurse: 10}) {
 	// Sanitize to avoid duped pointer
 	ev = JSON.parse(JSON.stringify(ev));
 	KinkyDungeonDupeRestraintText(restraint.name, newRestraintName);

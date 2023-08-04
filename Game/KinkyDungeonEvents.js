@@ -298,8 +298,13 @@ let KDEventMapInventory = {
 	"drawSGTooltip": {
 		"curseInfo": (e, item, data) => {
 			if (item == data.item || KDRestraint(item)?.Group == data.group) {
+				let curse = KDGetCurse(item);
 				let pre = item == data.item ? "" : "[" + TextGet("Restraint" + item.name) + "] ";
-				data.extraLines.push(pre + TextGet("curseInfo" + e.msg));
+				if (curse && KDCurses[curse].activatecurse) {
+					data.extraLines.push(pre + TextGet("curseInfo" + e.msg));
+				} else {
+					data.extraLines.push(pre + TextGet("curseInfoDormant"));
+				}
 				data.extraLineColor.push(e.color);
 			}
 		},
@@ -995,8 +1000,8 @@ let KDEventMapInventory = {
 			KinkyDungeonRemoveRestraint("ItemArms",false,false,true,false);
 			KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("KittyPetSuit"), 15, undefined, undefined, undefined, undefined, undefined, undefined, item.faction);
 			// leash if collared
-			let collared = InventoryGet(KinkyDungeonPlayer, "ItemNeck");
-			if(collared != null){
+			let collared = KinkyDungeonGetRestraintItem("ItemNeck");
+			if(collared != undefined){
 				KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("BasicLeash"), 1, false, "Red", undefined, undefined, undefined, undefined, item.faction);
 			}
 		},
@@ -3845,7 +3850,7 @@ let KDEventMapEnemy = {
 					if (!KinkyDungeonGetRestraintItem("ItemNeck")) {
 						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("ObsidianCollar"), 0, true, "Purple");
 					}
-					if (!KinkyDungeonGetRestraintItem("ItemNeckRestraints")) {
+					if (!KinkyDungeonGetRestraintItem("ItemNeckRestraints") && KinkyDungeonGetRestraintItem("ItemNeck")) {
 						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 0, true, "Purple");
 					}
 

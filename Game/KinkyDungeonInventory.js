@@ -387,7 +387,7 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 	let category = KinkyDungeonInventory.get(Filter);
 	if (category)
 		for (let item of category.values()) {
-			if (ignoreHidden && KDGameData.HiddenItems && KDGameData.HiddenItems[item.name]) continue;
+			if (ignoreHidden && KDGameData.HiddenItems && KDGameData.HiddenItems[item.inventoryAs || item.name]) continue;
 			if (!ignoreFilters && KDFilterFilters[Filter]) {
 				let filters = [];
 				for (let filter of Object.entries(KDFilterFilters[Filter])) {
@@ -766,26 +766,27 @@ function KinkyDungeonDrawInventory() {
 function KinkyDungeonSendInventoryEvent(Event, data) {
 	if (!KDMapHasEvent(KDEventMapInventory, Event)) return;
 	for (let item of KinkyDungeonAllRestraint()) {
+		let curse = KDGetCurse(item);
 		if (item.dynamicLink)
 			for (let d_item of KDDynamicLinkList(item)) {
 				let oldEvents = d_item.events;
 				if (oldEvents)
 					for (let e of oldEvents) {
-						if (e.inheritLinked && e.trigger === Event && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+						if (e.inheritLinked && e.trigger === Event && (!e.curse || curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
 							KinkyDungeonHandleInventoryEvent(Event, e, d_item, data);
 						}
 					}
 			}
 		if (item.events) {
 			for (let e of item.events) {
-				if (e.trigger === Event && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+				if (e.trigger === Event && (!e.curse || curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
 					KinkyDungeonHandleInventoryEvent(Event, e, item, data);
 				}
 			}
 		}
-		if (item.curse && KDCurses[item.curse]?.events) {
-			for (let e of KDCurses[item.curse].events) {
-				if (e.trigger === Event && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+		if (curse && KDCurses[curse]?.events) {
+			for (let e of KDCurses[curse].events) {
+				if (e.trigger === Event && (!e.curse || curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
 					KinkyDungeonHandleInventoryEvent(Event, e, item, data);
 				}
 			}
@@ -869,8 +870,8 @@ function KinkyDungeonDrawQuickInv() {
 	let Rheight = 480;
 
 	KDScrollOffset.Consumable = Math.max(0, Math.min(Math.ceil((fC.length - KDItemsPerScreen.Consumable)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Consumable));
-	KDScrollOffset.Restraint = Math.max(0, Math.min(Math.ceil((fR.length - KDItemsPerScreen.Consumable)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Restraint));
-	KDScrollOffset.Weapon = Math.max(0, Math.min(Math.ceil((fW.length - KDItemsPerScreen.Consumable)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Weapon));
+	KDScrollOffset.Restraint = Math.max(0, Math.min(Math.ceil((fR.length - KDItemsPerScreen.Restraint)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Restraint));
+	KDScrollOffset.Weapon = Math.max(0, Math.min(Math.ceil((fW.length - KDItemsPerScreen.Weapon)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Weapon));
 
 	if (fC.length > KDItemsPerScreen.Consumable) {
 		DrawButtonVis(510, 105, 90, 40, "", "white", KinkyDungeonRootDirectory + "Up.png");
@@ -1115,9 +1116,9 @@ function KinkyDungeonDrawQuickInv() {
 						alpha: 0.8,
 					});
 			}
-			if ((KDGameData.HiddenItems && KDGameData.HiddenItems[item.name]) || KDInventoryStatus.HideQuickInv) {
+			if ((KDGameData.HiddenItems && KDGameData.HiddenItems[item.item.name]) || KDInventoryStatus.HideQuickInv) {
 				KDDraw(kdcanvas, kdpixisprites, "restraintsiconhid" + w,
-					KinkyDungeonRootDirectory + ((KDGameData.HiddenItems && KDGameData.HiddenItems[item.name]) ? "InvHidden.png" : "InvVisible.png"), point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
+					KinkyDungeonRootDirectory + ((KDGameData.HiddenItems && KDGameData.HiddenItems[item.item.name]) ? "InvHidden.png" : "InvVisible.png"), point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 						zIndex: 109,
 					});
 			}
@@ -1255,20 +1256,20 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 			let point = KinkyDungeonQuickGrid(w, H, V, 6);
 			if (MouseIn(point.x, 1000 - V - Rheight + point.y, H, V)) {
 				if (KDInventoryStatus.HideQuickInv) {
-					KDGameData.HiddenItems[item.name] = !KDGameData.HiddenItems[item.name];
+					KDGameData.HiddenItems[item.item.name] = !KDGameData.HiddenItems[item.item.name];
 				} else if (KDInventoryStatus.DropQuickInv) {
-					KDDropItemInv(item.name);
+					KDDropItemInv(item.item.name);
 				} else if (KDInventoryStatus.SortQuickInv) {
 					if (MouseIn(point.x + H/2, 1000 - V - Rheight + point.y, H/2, V)) {
 						// Sort left
 						if (!KDGameData.ItemPriority) KDGameData.ItemPriority = {};
-						if (KDGameData.ItemPriority[item.name] == undefined) KDGameData.ItemPriority[item.name] = -1;
-						else if (KDGameData.ItemPriority[item.name] > -9) KDGameData.ItemPriority[item.name] -= 1;
+						if (KDGameData.ItemPriority[item.item.name] == undefined) KDGameData.ItemPriority[item.item.name] = -1;
+						else if (KDGameData.ItemPriority[item.item.name] > -9) KDGameData.ItemPriority[item.item.name] -= 1;
 					} else {
 						// Sort right
 						if (!KDGameData.ItemPriority) KDGameData.ItemPriority = {};
-						if (KDGameData.ItemPriority[item.name] == undefined) KDGameData.ItemPriority[item.name] = 1;
-						else if (KDGameData.ItemPriority[item.name] < 9) KDGameData.ItemPriority[item.name] += 1;
+						if (KDGameData.ItemPriority[item.item.name] == undefined) KDGameData.ItemPriority[item.item.name] = 1;
+						else if (KDGameData.ItemPriority[item.item.name] < 9) KDGameData.ItemPriority[item.item.name] += 1;
 					}
 				} else {
 					let equipped = false;
@@ -1437,7 +1438,7 @@ function KDRemoveInventoryVariant(Name, Prefix="Restraint") {
  * @param {boolean} loose
  * @param {boolean} lost
  */
-function KDPruneInventoryVariants(worn = true, loose = true, lost = true) {
+function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground = true) {
 	let entries = Object.entries(KinkyDungeonInventoryVariants);
 	let found = {};
 	if (worn) {
@@ -1478,6 +1479,15 @@ function KDPruneInventoryVariants(worn = true, loose = true, lost = true) {
 		}
 
 	}
+	if (ground) {
+		let list = KinkyDungeonGroundItems;
+		for (let inv of list) {
+			if (KinkyDungeonInventoryVariants[inv.name]) {
+				found[inv.name] = true;
+			}
+		}
+
+	}
 	for (let type of entries) {
 		if (!found[type[0]]) {
 			KDRemoveInventoryVariant(type[0]);
@@ -1494,7 +1504,11 @@ function KDPruneInventoryVariants(worn = true, loose = true, lost = true) {
 function KDGiveInventoryVariant(variant, prefix = "", curse = undefined) {
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
-	let newname = prefix + variant.template + KinkyDungeonGetItemID();
+	let newname = prefix + variant.template + KinkyDungeonGetItemID() + (curse ? curse : "");
+	if (curse) {
+		variant = JSON.parse(JSON.stringify(variant));
+		variant.curse = curse;
+	}
 	if (!KinkyDungeonInventoryVariants[newname])
 		KinkyDungeonInventoryVariants[newname] = variant;
 	if (variant.events)
@@ -1513,19 +1527,23 @@ function KDGiveInventoryVariant(variant, prefix = "", curse = undefined) {
  * @param {boolean} [Trapped]
  * @param {string} [faction]
  * @param {boolean} [Deep] - whether or not it can go deeply in the stack
- * @param {string} [Curse] - Curse to apply
+ * @param {string} [curse] - Curse to apply
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {boolean} [useAugmentedPower] - Augment power to keep consistency
  * @param {string} [inventoryAs] - inventoryAs for the item
  * @param {string} prefix
  */
-function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, Keep, Trapped, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs) {
+function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, Keep, Trapped, faction, Deep, curse, securityEnemy, useAugmentedPower, inventoryAs) {
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
-	let newname = prefix + variant.template + KinkyDungeonGetItemID();
+	let newname = prefix + variant.template + KinkyDungeonGetItemID() + (curse ? curse : "");
+	if (curse) {
+		variant = JSON.parse(JSON.stringify(variant));
+		variant.curse = curse;
+	}
 	if (!KinkyDungeonInventoryVariants[newname])
 		KinkyDungeonInventoryVariants[newname] = variant;
 	if (variant.events)
 		Object.assign(events, variant.events);
-	KinkyDungeonAddRestraintIfWeaker(origRestraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower, newname);
+	KinkyDungeonAddRestraintIfWeaker(origRestraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, curse, securityEnemy, useAugmentedPower, newname);
 }

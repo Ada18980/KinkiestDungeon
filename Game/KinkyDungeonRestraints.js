@@ -2429,7 +2429,7 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 		if ((effLevel >= restraint.minLevel || KinkyDungeonNewGame > 0 || filter?.require?.includes(restraint.name)) && (!restraint.maxLevel || effLevel < restraint.maxLevel) && (restraint.allFloors || restraint.floors[Index])) {
 			if (!restraint.arousalMode || arousalMode) {
 				let enabled = false;
-				let weight = 0;
+				let weight = restraint.weight;
 				for (let t of tags.keys())
 					if (restraint.enemyTags[t] != undefined) {
 						weight += restraint.enemyTags[t];
