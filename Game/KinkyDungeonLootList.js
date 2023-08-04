@@ -72,6 +72,14 @@ let KDAdvancedArmor = [
 		unlockcurse: ["Common"], curselevelmin: 0, curselevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["MageArmor"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 ];
+let KDGoldArmor = [...JSON.parse(JSON.stringify(KDAdvancedArmor)), ...JSON.parse(JSON.stringify(KDBasicArmor))];
+for (let armor of KDGoldArmor) {
+	armor.enchantlist = "Gold";
+	armor.amtMult = 2;
+	armor.weight *= 0.4;
+}
+
+
 let KDEnchantedRestraints = [
 	{name: "TrapGag", minLevel: 0, weight: KDEnchantedRestraintsWeight,
 		armor: "TrapGag",
@@ -275,6 +283,7 @@ let KinkyDungeonLootTable = {
 		{name: "PotionCollar", minLevel: 1, weight:10, message:"LootPotionCollar", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["PotionCollar"]},
 	],
 	"lessergold": [
+		...KDGoldArmor,
 		{name: "scrolls_purity", minLevel: 0, weight: 1, message:"LootChestScrollsPurity", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "MistressKey", minLevel: 0, weight:1, message:"LootChestMistressKey", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "AncientCores", max: 1, minLevel: 0, weight:3, message:"LootChestAncientCores", messageColor:"yellow", messageTime: 3, allFloors: true},

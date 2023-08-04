@@ -167,6 +167,16 @@ let KDEventMapInventory = {
 			}
 		}
 	},
+	"afterCalcManaPool": {
+		"MultManaPoolRegen": (e, spell, data) => {
+			data.manaPoolRegen *= e.power;
+		},
+	},
+	"afterCalcMana": {
+		"ManaCost": (e, item, data) => {
+			data.cost = Math.max(data.cost * e.power, 0);
+		},
+	},
 	"orgasm": {
 		"CurseSubmission": (e, item, data) => {
 			if (data.player == KinkyDungeonPlayerEntity) {
@@ -189,6 +199,13 @@ let KDEventMapInventory = {
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 			}
 		},
+	},
+	"capture": {
+		"ManaBounty": (e, item, data) => {
+			if (data.attacker && data.attacker.player && data.enemy) {
+				KinkyDungeonChangeMana(0, false, e.power);
+			}
+		}
 	},
 	"calcPlayChance": {
 		"CurseAttraction": (e, item, data) => {
@@ -686,6 +703,18 @@ let KDEventMapInventory = {
 			}
 		}
 	},
+	"calcDisplayDamage": {
+		"BoostDamage": (e, item, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data)) {
+				data.buffdmg = Math.max(0, data.buffdmg + e.power);
+			}
+		},
+		"AmpDamage": (e, item, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data)) {
+				data.buffdmg = Math.max(0, data.buffdmg + (KinkyDungeonPlayerDamage.dmg || 0) * e.power);
+			}
+		},
+	},
 	"remove": {
 		"slimeStop": (e, item, data) => {
 			if (data.item === item) KDEventData.SlimeLevel = 0;
@@ -936,8 +965,16 @@ let KDEventMapInventory = {
 	},
 	"beforePlayerAttack": {
 		"BoostDamage": (e, item, data) => {
-			data.buffdmg = Math.max(0, data.buffdmg + e.power);
-			if (e.energyCost && KinkyDungeonStatMana < KinkyDungeonStatManaMax - 0.01) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
+			if (KDCheckPrereq(data.target, e.prereq, e, data)) {
+				data.buffdmg = Math.max(0, data.buffdmg + e.power);
+				if (e.energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
+			}
+		},
+		"AmpDamage": (e, item, data) => {
+			if (KDCheckPrereq(data.target, e.prereq, e, data)) {
+				data.buffdmg = Math.max(0, data.buffdmg + (KinkyDungeonPlayerDamage.dmg || 0) * e.power);
+				if (e.energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
+			}
 		},
 	},
 	"beforeDamage": {
@@ -1154,6 +1191,19 @@ let KDEventMapInventory = {
 		},
 	},
 	"playerAttack": {
+		"ElementalEffect": (e, item, data) => {
+			if (data.enemy && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+				if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
+					KinkyDungeonDamageEnemy(data.enemy, {
+						type: e.damage,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						bindType: e.bindType,
+					}, false, e.power <= 0.1, undefined, undefined, undefined);
+				}
+			}
+		},
 		"MotionSensitive": (e, item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {
 				if (e.msg && (e.always || !KDGameData.CurrentVibration)) KinkyDungeonSendTextMessage(1, TextGet(e.msg).replace("[RESTRAINTNAME]", TextGet("Restraint" + item.name)), "#aaaaaa", 1);

@@ -243,7 +243,7 @@ let KDEventCurseModular = {
 			{trigger: "tick", type: "tickleDrain", power: -0.02, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Tickle", color: "#ff5555", inheritLinked: true}
 		]},
-	"Punish": {level: 1,
+	"Punish": {level: 2,
 		weight: (item) => {
 			return 8;
 		},
