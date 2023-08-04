@@ -2134,6 +2134,8 @@ interface KDCursedDef {
 	lock?: boolean,
 	/** Power multiplier of the curse, similar to a lock's lockmult */
 	powerMult?: number,
+	/** This curse keeps events with the curse property from vanishing */
+	activatecurse?: boolean,
 	/** custom icon for removing (failure) */
 	customIcon_RemoveFailure?: string,
 	/** custom icon for removing (success) */
@@ -2146,6 +2148,8 @@ interface KDCursedDef {
 }
 
 type KDInventoryVariant = {
+	/** The curse to apply with this inventory variant */
+	curse?: string,
 	/** extra events added on */
 	events: KinkyDungeonEvent[],
 	/** The original restraint this is based on */

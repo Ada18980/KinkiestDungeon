@@ -214,15 +214,23 @@ function KinkyDungeonItemEvent(Item) {
 		KDGameData.JailKey = true;
 		KinkyDungeonAggroAction('key', {});
 	} else if (KinkyDungeonGetRestraintByName(Item.name)) {
-		if (!KinkyDungeonInventoryGetLoose(Item.name)) {
-			KinkyDungeonInventoryAdd({name: Item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:Item.events, quantity: 1});
+		if (KinkyDungeonInventoryVariants[Item.name]) {
+			KDGiveInventoryVariant(KinkyDungeonInventoryVariants[Item.name], undefined, KinkyDungeonInventoryVariants[Item.name].curse);
+			color = "#aaaaff";
+			name = "Generic";
+			replace = TextGet("Restraint" + KinkyDungeonInventoryVariants[Item.name].template);
 		} else {
-			if (!KinkyDungeonInventoryGetLoose(Item.name).quantity) KinkyDungeonInventoryGetLoose(Item.name).quantity = 0;
-			KinkyDungeonInventoryGetLoose(Item.name).quantity += 1;
+			if (!KinkyDungeonInventoryGetLoose(Item.name)) {
+				KinkyDungeonInventoryAdd({name: Item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:Item.events, quantity: 1});
+			} else {
+				if (!KinkyDungeonInventoryGetLoose(Item.name).quantity) KinkyDungeonInventoryGetLoose(Item.name).quantity = 0;
+				KinkyDungeonInventoryGetLoose(Item.name).quantity += 1;
+			}
+			color = "#ffffff";
+			name = "Generic";
+			replace = TextGet("Restraint" + Item.name);
 		}
-		color = "#ffffff";
-		name = "Generic";
-		replace = TextGet("Restraint" + Item.name);
+
 	}
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 	KinkyDungeonSendActionMessage(priority, TextGet("ItemPickup" + name).replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1);
