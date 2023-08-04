@@ -1001,6 +1001,7 @@ function KinkyDungeonUpdateStats(delta) {
 		player: KinkyDungeonPlayerEntity,
 	};
 	KinkyDungeonSendEvent("calcManaPool", statData);
+	KinkyDungeonSendEvent("afterCalcManaPool", statData);
 	KinkyDungeonStatManaRate = (KinkyDungeonStatMana < KinkyDungeonStatManaRegenLowThreshold && KinkyDungeonStatsChoice.get("Meditation")) ?
 		Math.max(KinkyDungeonStatManaPool > 0 ? (statData.manaPoolRegen * KinkyDungeonStatManaMax) : 0, KDMeditationRegen)
 		: 0;

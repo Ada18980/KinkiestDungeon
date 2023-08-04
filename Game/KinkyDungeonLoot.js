@@ -285,7 +285,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 				events.push(...KDEventCurseModular[curseVariant].events);
 			}
 			if (enchantVariant) {
-				events.push(...KDEventEnchantmentModular[enchantVariant].events(armor));
+				events.push(...KDEventEnchantmentModular[enchantVariant].events(armor, Loot, curseVariant));
 			}
 			/** @type {KDInventoryVariant} */
 			let variant = {
