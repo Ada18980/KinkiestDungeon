@@ -318,18 +318,24 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 			} else {
 				if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(Character, "Kneel") && Character.IsKneeling()) {
 					CharacterSetActivePose(Character, "BaseLower", false);
+				} else if (KinkyDungeonPlayerTags.get("BoundFeet")) {
+					if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "LegsClosed") && !CharacterDoItemsSetPose(Character, "LegsClosed") && !Character.IsKneeling()) {
+						CharacterSetActivePose(Character, "LegsClosed", false);
+					}
+				} else if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "") && !CharacterDoItemsSetPose(Character, "") && !Character.IsKneeling()) {
+					CharacterSetActivePose(Character, "", false);
+				}
+				if ((KinkyDungeonPlayerTags.get("BoundArms") || KinkyDungeonPlayerTags.get("BoundHands"))) {
+					if (CharacterItemsHavePoseAvailable(Character, "BodyUpper", "BackElbowTouch") && !CharacterDoItemsSetPose(Character, "BackElbowTouch")) {
+						CharacterSetActivePose(Character, "BackElbowTouch", false);
+					}
+				} else {
+					if (CharacterItemsHavePoseAvailable(Character, "BodyUpper", "") && !CharacterDoItemsSetPose(Character, "")) {
+						CharacterSetActivePose(Character, "", false);
+					}
 				}
 			}
-			if (!StandalonePatched && KinkyDungeonPlayerTags.get("BoundFeet")) {
-				if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "LegsClosed") && !CharacterDoItemsSetPose(Character, "LegsClosed") && !Character.IsKneeling()) {
-					CharacterSetActivePose(Character, "LegsClosed", false);
-				}
-			}
-			if (!StandalonePatched && (KinkyDungeonPlayerTags.get("BoundArms") || KinkyDungeonPlayerTags.get("BoundHands"))) {
-				if (CharacterItemsHavePoseAvailable(Character, "BodyUpper", "BackElbowTouch") && !CharacterDoItemsSetPose(Character, "BackElbowTouch")) {
-					CharacterSetActivePose(Character, "BackElbowTouch", false);
-				}
-			}
+
 		}
 
 		if (StandalonePatched) {
