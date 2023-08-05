@@ -909,7 +909,7 @@ KinkyDungeonRarity9,Angelic
 KinkyDungeonRarity10,Divine
 
 KinkyDungeonConsumableQuantity,Quantity:
-KinkyDungeonConsume,Use Item (Consumes 1)
+KinkyDungeonConsume,Use One
 
 KinkyDungeonInventoryItemnull,way of the fist
 KinkyDungeonInventoryItemPick,Lockpick
