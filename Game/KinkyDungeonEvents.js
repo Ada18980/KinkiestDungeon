@@ -96,7 +96,7 @@ let KDEventMapInventorySelected = {
 		"varModifier": (e, item, data) => {
 			if (item == data.item) {
 				data.extraLines.push(TextGet("KDVariableModifier_" + e.msg)
-					.replace("AMNT", `${e.power > 0 ? "+" : "-"}${Math.round(e.power)}`)
+					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
 					.replace("TYPE", `${e.kind}`));
 				data.extraLineColor.push(e.color || "#ffffff");
 				data.extraLineColorBG.push(e.bgcolor || "#000000");
@@ -124,6 +124,16 @@ function KinkyDungeonHandleInventorySelectedEvent(Event, kinkyDungeonEvent, item
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
  */
 let KDEventMapInventory = {
+	"curseCount": {
+		/**
+		 * @param {KDEventData_CurseCount} data
+		*/
+		"add": (e, item, data) => {
+			if (!data.activatedOnly || (KDGetCurse(item) && KDCurses[KDGetCurse(item)].activatecurse)) {
+				data.count += e.power;
+			}
+		}
+	},
 	"postApply": {
 		/**
 		 * @param {KDEventData_PostApply} data
@@ -1192,15 +1202,17 @@ let KDEventMapInventory = {
 	},
 	"playerAttack": {
 		"ElementalEffect": (e, item, data) => {
-			if (data.enemy && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
-				if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
-					KinkyDungeonDamageEnemy(data.enemy, {
-						type: e.damage,
-						damage: e.power,
-						time: e.time,
-						bind: e.bind,
-						bindType: e.bindType,
-					}, false, e.power <= 0.1, undefined, undefined, undefined);
+			if (data.enemy && !data.miss && !data.disarm) {
+				if ((!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
+						KinkyDungeonDamageEnemy(data.enemy, {
+							type: e.damage,
+							damage: e.power,
+							time: e.time,
+							bind: e.bind,
+							bindType: e.bindType,
+						}, false, e.power <= 0.1, undefined, undefined, undefined);
+					}
 				}
 			}
 		},

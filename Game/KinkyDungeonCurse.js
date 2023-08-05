@@ -268,7 +268,8 @@ let KDCursedVars = {
 		level: 1,
 		variant: (restraint, newRestraintName) => {
 			return KDAddEventVariant(restraint, newRestraintName, [
-				// We dont add any events because this is just a standard power restraint
+				// We add this to ALL cursed items (including dormant curses)
+				{trigger: "curseCount", type: "add", power: 1},
 			], 4, "", {commonCurse: 10});
 		}
 	},

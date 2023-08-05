@@ -671,8 +671,8 @@ function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders) {
 	kdminimap.drawRect(
 		0,
 		0,
-		w*scale,
-		h*scale);
+		(w+1)*scale,
+		(h+1)*scale);
 	kdminimap.endFill();
 	for (let xx = 0; xx <= w; xx++)  {
 		for (let yy = 0; yy <= h; yy++)  {

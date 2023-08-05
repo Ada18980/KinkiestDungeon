@@ -2095,7 +2095,7 @@ let KinkyDungeonEnemies = [
 	{name: "Jailer", bound: "Jailer", tags: KDMapInit(["leashing", "opendoors", "closedoors", "antiMagic", "jail", "jailer", "genericJailer", "melee", "shackleRestraints", "guardCall", "jailRestraints"]), keys: true, followRange: 1, AI: "patrol",
 		visionRadius: 6, maxhp: 12, minLevel: -1, weight:0, movePoints: 1, attackPoints: 3, attack: "MeleeBindLockWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"jailGuard": 15, "Guard": 1}, allFloors: true, disarm: 0.5, evasion: -0.5, focusPlayer: true,
-		dropTable: [{name: "Pick", weight: 15}, {name: "RedKey", weight: 5}], rep: {"Prisoner": 5}},
+		dropTable: [{name: "Pick", weight: 15}, {name: "RedKey", weight: 5}]},
 	{name: "Chef", faction: "Jail", bound: "Jailer", tags: KDMapInit(["leashing", "ignoregagged", "opendoors", "closedoors", "melee", "ballGagRestraintsMagic"]), followRange: 1, AI: "hunt",
 		visionRadius: 6, maxhp: 24, minLevel: -1, weight:-1000, movePoints: 1,
 		RestraintFilter: {
@@ -2114,7 +2114,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "defeat", type: "delete", chance: 1.0},
 		],
-		terrainTags: {"Guard": 1010}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}], rep: {"Prisoner": 10}},
+		terrainTags: {"Guard": 1010}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
 	{name: "GuardHeavy", bound: "GuardHeavy", tags: KDMapInit(["leashing", "opendoors", "closedoors", "antiMagic", "jail", "jailer", "melee", "unflinching", "hunter", "guardCall", "miniboss", "shackleRestraints", "handcuffer", "jailRestraints"]), noDisplace: true, disarm: 0.5,
 		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 12, minLevel: 4, weight:-20, movePoints: 1, attackPoints: 2, evasion: -0.5, focusPlayer: true,
 		attack: "MeleeBindLockWillStun", attackWidth: 3, attackRange: 1, power: 5, dmgType: "electric", stunTime: 1, attackLock: "Red",
@@ -2125,7 +2125,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "defeat", type: "delete", chance: 1.0},
 		],
-		terrainTags: {"jailGuard": 22, "increasingWeight": 1, "jailbreak": 28}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}], rep: {"Prisoner": 10}},
+		terrainTags: {"jailGuard": 22, "increasingWeight": 1, "jailbreak": 28}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
 
 
 	// Minibosses

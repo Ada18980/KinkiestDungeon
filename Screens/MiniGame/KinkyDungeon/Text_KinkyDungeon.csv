@@ -24,7 +24,7 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 
-KinkyDungeon,"Kinky Dungeon v4.34"
+KinkyDungeon,"Kinky Dungeon v4.35"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -2823,6 +2823,7 @@ KinkyDungeonNeedOpenChest,"The chest is too smooth to help. Maybe if you opened 
 KinkyLockable,Lockable
 KinkyNonLockable,Non-Lockable
 
+KinkyCursed,"Cursed"
 KinkyUnlocked,"Unlocked"
 KinkyLocked,"Lock Type: "
 KinkyRedLockType,"Red"
@@ -2990,8 +2991,9 @@ KinkyDungeonCategoryFilterconsumable,Consumable
 KinkyDungeonCategoryFilterrestraint,Equipped
 KinkyDungeonCategoryFilterweapon,Weapons
 KinkyDungeonCategoryFilteroutfit,Outfits
-KinkyDungeonCategoryFilterlooserestraint,Wearable
+KinkyDungeonCategoryFilterlooserestraint,Restraints
 KinkyDungeonCategoryFiltermisc,Miscellaneous
+KinkyDungeonCategoryFilterarmor,Armor
 
 KDNoisyTerrain,The terrain makes noise as you rush across it...
 
@@ -10229,6 +10231,17 @@ KDWardrobeBackToMenu,Back to Menu
 
 KinkyDungeonItemsUnderneathTotal,"Item Stack:"
 
+KDFilterFiltersAncient,Ancient
+KDFilterFiltersCursed,Cursed
+KDFilterFiltersHeavy,Heavy
+KDFilterFiltersMage,Mage
+KDFilterFiltersLight,Light
+KDFilterFiltersAccessory,Accessory
+KDFilterFiltersRestraint,Restraint
+KDFilterFiltersArmor,Armor
+KDFilterFiltersSpecial,Special
+KDFilterFiltersEnchanted,Enchanted
+KDFilterFiltersMundane,Mundane
 KDFilterFiltersRope,Rope
 KDFilterFiltersMetal,Metal
 KDFilterFiltersLatex,Latex
@@ -10425,15 +10438,15 @@ KDVariableModifier_Evasion,"Elven Grace: AMNT Evasion"
 KDVariableModifier_Accuracy,"Seeking: AMNT% Accuracy"
 KDVariableModifier_SpellWard,"Warding: AMNT Magic Armor"
 KDVariableModifier_Armor,"Sturdy: AMNT Physical Armor"
-KDVariableModifier_BondageResist,"Lubricated: AMNT Bondage Resist"
+KDVariableModifier_BondageResist,"Escape: AMNT Bondage Resist"
 KDVariableModifier_DamageResist,"Resistance: AMNT TYPE Resist"
 KDVariableModifier_DamageBuff,"Runic: AMNT% TYPE Damage"
-KDVariableModifier_BaseDamageBuffMelee,"Amp: AMNT% weapon phys. dmg"
-KDVariableModifier_BaseDamageBuffMagic,"Amp: AMNT% weapon magic dmg"
-KDVariableModifier_ElementalEcho,"Infuse weapon AMNT% TYPE"
-KDVariableModifier_ElementalDmg,"AMNT TYPE on attack"
+KDVariableModifier_BaseDamageBuffMelee,"Might: AMNT% weapon phys. dmg"
+KDVariableModifier_BaseDamageBuffMagic,"Amplify: AMNT% weapon magic dmg"
+KDVariableModifier_ElementalEcho,"Spellblade: Infuse weapon AMNT% TYPE"
+KDVariableModifier_ElementalDmg,"Infuse: AMNT TYPE on attack"
 KDVariableModifier_ManaCost,"Efficient: AMNT% Mana Costs"
-KDVariableModifier_ManaRegen,"Empowering: AMNT% mana regen from mana pool"
+KDVariableModifier_ManaRegen,"Empower: AMNT% regen from mana pool"
 KDVariableModifier_ManaRegenOnKill,"Drain: AMNT mana pool on capture"
 KDVariableModifier_Sneak,"Camouflage: AMNT% Visibility"
 KDVariableModifier_DPDecay,"Calming: AMNT Distraction Decay"
@@ -10441,3 +10454,9 @@ KDVariableModifier_DPGain,"Distracting: AMNT Distraction Per Turn"
 KDVariableModifier_DPGainWhenAttacked,"Sensitivity: AMNT AP from attacks"
 
 KDVariableModifier_,"AMNT Stat"
+
+KinkyDungeonDrop,Drop On Floor
+
+KinkyDungeonRemove,Remove
+KinkyDungeonUnlock,Unlock
+KinkyDungeonStruggle,Struggle

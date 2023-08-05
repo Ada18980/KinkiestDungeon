@@ -258,7 +258,7 @@ function KDCanSeeDroppedItem(item) {
 function KinkyDungeonDrawItems(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	for (let item of KinkyDungeonGroundItems) {
 		let sprite = item.name;
-		if (KinkyDungeonRestraintsCache.has(item.name)) sprite = "Restraint";
+		if (KinkyDungeonGetRestraintByName(item.name)) sprite = "Restraint";
 		if (item.x >= CamX && item.y >= CamY && item.x < CamX + KinkyDungeonGridWidthDisplay && item.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(item.x, item.y) > 0) {
 			if (KDCanSeeDroppedItem(item))
 				KDDraw(kdgameboard, kdpixisprites, item.x + "," + item.y + "_" + item.name, KinkyDungeonRootDirectory + "Items/" + sprite + ".png",
@@ -347,7 +347,7 @@ function KDDrawItemsTooltip(items, offset) {
 	});
 	let str = "";
 	for (let item of items) {
-		str = str + (str ? ", " : "") + TextGet(KinkyDungeonRestraintsCache.has(item.name) ? ("Restraint" + item.name) : ("KinkyDungeonInventoryItem" + item.name));
+		str = str + (str ? ", " : "") + TextGet(KinkyDungeonGetRestraintByName(item.name) ? ("Restraint" + item.name) : ("KinkyDungeonInventoryItem" + item.name));
 	}
 
 	let strSplit = KinkyDungeonWordWrap(str, 12, 28).split('\n');

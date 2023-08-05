@@ -117,6 +117,10 @@ function KDProcessInput(type, data) {
 			KinkyDungeonSleepTime = CommonTime() + 200;
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
 			break;
+		case "drop": {
+			KDDropItemInv(data.item);
+			break;
+		}
 		case "equip":
 			KDDelayedActionPrune(["Action", "Equip"]);
 			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0, true, "", KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem), KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, false, data.curse, undefined, undefined, data.inventoryAs);

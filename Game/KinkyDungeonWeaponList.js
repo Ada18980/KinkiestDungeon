@@ -172,7 +172,7 @@ let KinkyDungeonWeapons = {
 	"Pickaxe": {name: "Pickaxe", dmg: 3, chance: 1.0, staminacost: 3.0, type: "pierce", unarmed: false, rarity: 3, shop: true, sfx: "LightSwing",
 		events: [{type: "ApplyBuff", trigger: "playerAttack", buff: {id: "ArmorDown", type: "ArmorBreak", duration: 6, power: -1.5, player: true, enemies: true, tags: ["debuff", "armor"]}}]},
 	"Torch": {name: "Torch", dmg: 1.5, chance: 0.75, type: "fire", unarmed: false, rarity: 1, shop: true, sfx: "FireSpell",
-		events: [{type: "WeaponLight", trigger: "getLights", power: 6}],
+		events: [{type: "WeaponLight", trigger: "getLights", power: 6, color: "#ff8933"}],
 		special: {type: "ignite"},},
 
 	// BDSM Gear
