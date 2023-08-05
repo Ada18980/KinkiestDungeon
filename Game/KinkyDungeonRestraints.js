@@ -3944,3 +3944,21 @@ function KDChangeItemName(item, type, name) {
 	}
 	item.name = name;
 }
+
+/**
+ * Gets the total curse power rating of the player
+ * @param {boolean} activatedOnly
+ * @returns {number}
+ */
+function KDCurseCount(activatedOnly) {
+	let restraints = KinkyDungeonAllRestraintDynamic();
+	/** @type {KDEventData_CurseCount} */
+	let data = {
+		restraints: restraints,
+		activatedOnly: activatedOnly,
+		count: 0,
+	};
+	KinkyDungeonSendEvent("curseCount", data);
+
+	return data.count;
+}

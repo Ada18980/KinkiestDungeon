@@ -1376,6 +1376,39 @@ Features
 Modding
 -Reworked curse system entirely
 
+4.35 (August 2023)
+Features
+- Armor and restraints are now separate in inventory screen
+- Some armors now have multiple enchantments
+- Can now drop items from the inventory
+- Added special and mundane filters to armor and restraints screens
+- Allow removing and struggling in the inventory
+Tweaks
+- Inventory scrolls faster
+- There are more shadow chests in hard mode
+- Cursed items now display 'Cursed' instead of unlocked
+- Restoration shrines are more common
+- Enchanted restraints added to silver chests
+- Changed colors of slash, crush, and pierce damage types
+- Fixed double '-' in enchantment tooltip
+- Cursed items not only have more enchantments but also better enchantments
+- Curbed the enchantment strength of tougher restraints and higher level armors somewhat
+- Prevented long enchantment tooltips from overflowing the inventory background
+Bugfix
+- Enchanted armor names are displayed property when dropped
+- Torch weapon is now properly tinted a fire color
+- Minimap border expanded to reflect actual area the minimap occupies
+- Enchantments which add elemental damage to attacks no longer hit if the player misses
+Modding
+- Added a function to get the current number of cursed items
+- Added loot prerequisites to require a certain number of cursed items for the loot to appear
+- Added "specialChests" event to allow adding more special chest types to levels via event
+
+
+TODO
+- Negative enchantments?
+- CURSED LOOT (dialogue with a cursed collar that morphs your cursed restraints into their "true" form)
+
 TODO: Mushrooms in the jungle
 
 TODO

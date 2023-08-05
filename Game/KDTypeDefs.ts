@@ -2162,6 +2162,7 @@ type SpecialCondition = {
 }
 
 type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
+type KDEventData_CurseCount = {restraints: {item: item, host: item}[], count: number, activatedOnly: boolean}
 
 type KDExpression = {
 	priority: number;

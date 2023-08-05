@@ -168,6 +168,7 @@ const Outfit = "outfit";
 const Accessory = "accessory";
 const Weapon = "weapon";
 const Misc = "misc";
+const Armor = "armor";
 
 let KinkyDungeonStatsChoice = new Map();
 

@@ -2939,10 +2939,13 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 			} else {
 				for (let o of Object.entries(options)) {
 					if (o[1] != undefined || o[0] != "tint")
-					sprite[o[0]] = o[1];
+						sprite[o[0]] = o[1];
 				}
 			}
 
+			if (options.zIndex != undefined) {
+				sprite.zIndex = options.zIndex;
+			}
 			if (options.scalex != undefined) {
 				sprite.scale.x = sprite.scale.x * options.scalex;
 			}

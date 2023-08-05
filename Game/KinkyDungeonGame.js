@@ -1721,6 +1721,11 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 
 	});
 	let silverchest = 0;
+	let specialChests = {
+
+	};
+	if (KinkyDungeonStatsChoice.get("hardMode")) specialChests.shadow = 2;
+	KinkyDungeonSendEvent("specialChests", specialChests);
 	while (list.length > 0) {
 		let N = 0;
 		if (count < treasurecount) {
@@ -1734,8 +1739,23 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 				silverchest += 1;
 				KDGameData.ChestsGenerated.push("silver");
 				KinkyDungeonTilesSet("" + chest.x + "," +chest.y, {
-					Loot: "silver", Roll: KDRandom(), NoTrap: chest.NoTrap, Faction: chest.Faction,
+					Loot: "silver", Roll: KDRandom(), NoTrap: chest.noTrap, Faction: chest.Faction,
 					lootTrap: KDGenChestTrap(false, chest.x, chest.y, "silver", lock, chest.noTrap),});
+			} else if (Object.values(specialChests).some((num) => {return num > 0;})) {
+				let type = Object.keys(specialChests)[Math.floor(KDRandom() * Object.values(specialChests).length)];
+				specialChests[type] -= 1;
+				let data = {
+					lock: lock,
+					noTrap: chest.noTrap,
+					type: type,
+					faction: chest.Faction,
+					specialChests: specialChests,
+				};
+				KinkyDungeonSendEvent("genSpecialChest", data);
+				KDGameData.ChestsGenerated.push(type);
+				KinkyDungeonTilesSet("" + chest.x + "," +chest.y, {
+					Loot: data.type, Roll: KDRandom(), NoTrap: data.noTrap, Faction: data.faction,
+					lootTrap: KDGenChestTrap(false, chest.x, chest.y, data.type, data.lock, data.noTrap),});
 			} else if (lock) {
 				KDGameData.ChestsGenerated.push(lock == "Blue" ? "blue" : (chest.Loot ? chest.Loot : "chest"));
 				KinkyDungeonTilesSet("" + chest.x + "," +chest.y, {

@@ -63,7 +63,8 @@ let KDAdvancedArmor = [
 		nouncursed: ["SteelArmor"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "SteelSkirt", minLevel: 0, weight: KDAdvancedArmorWeight,
 		armor: "SteelSkirt",
-		curselist: "Common", enchantlist: "Common", cursechance: KD_cursechance_Default, enchantchance: KD_enchantchance_Default, alwaysenchantcurse: true,
+		curselist: "Common",
+		enchantlist: "Common", cursechance: KD_cursechance_Default, enchantchance: KD_enchantchance_Default, alwaysenchantcurse: true,
 		unlockcurse: ["Common"], curselevelmin: 0, curselevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["SteelSkirt"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "MageArmor", minLevel: 0, weight: KDAdvancedArmorWeight,
@@ -76,9 +77,21 @@ let KDGoldArmor = [...JSON.parse(JSON.stringify(KDAdvancedArmor)), ...JSON.parse
 for (let armor of KDGoldArmor) {
 	armor.enchantlist = "Gold";
 	armor.amtMult = 2;
-	armor.weight *= 0.4;
+	armor.weight *= 0.2;
 }
-
+let KDGoldArmor2 = [...JSON.parse(JSON.stringify(KDAdvancedArmor)), ...JSON.parse(JSON.stringify(KDBasicArmor))];
+for (let armor of KDGoldArmor2) {
+	armor.enchantlist = "Common";
+	armor.minEnchants = 2;
+	armor.maxEnchants = 3;
+	armor.amtMult = 1.5;
+	armor.weight *= 0.2;
+}
+let KDSilverArmor = [...JSON.parse(JSON.stringify(KDBasicArmor))];
+for (let armor of KDSilverArmor) {
+	armor.amtMult = 1.4;
+	armor.maxEnchants = 2;
+}
 
 let KDEnchantedRestraints = [
 	{name: "TrapGag", minLevel: 0, weight: KDEnchantedRestraintsWeight,
@@ -131,6 +144,12 @@ let KDEnchantedRestraints = [
 		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 ];
 
+let KDShadowRestraints = [...JSON.parse(JSON.stringify(KDEnchantedRestraints))];
+for (let armor of KDShadowRestraints) {
+	armor.amtMult = 1.5;
+	armor.maxEnchants = 3;
+}
+
 let KinkyDungeonLootTable = {
 	"rubble": [
 		//{name: "nothing", minLevel: 0, weight:9, message:"LootRubbleFail", messageColor:"#aaaaaa", messageTime: 2, allFloors: true},
@@ -175,7 +194,7 @@ let KinkyDungeonLootTable = {
 		{name: "AncientCores", minLevel: 0, weight:0.5, message:"LootChestAncientCores", messageColor:"yellow", messageTime: 3, allFloors: true, max: 1},
 		{name: "bluekey", minLevel: 0, weight:0.5, message:"LootChestBlueKey", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "spell_points", magic: true, minLevel: 0, weight:5, message:"LootChestSpellPoints", messageColor:"lightblue", messageTime: 3, allFloors: true, max: 1},
-		...KDEnchantedRestraints,
+		...KDShadowRestraints,
 	],
 	"storage": [
 		{name: "redkey", key: true, minLevel: 0, weight:1, message:"LootChestRedKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
@@ -283,7 +302,7 @@ let KinkyDungeonLootTable = {
 		{name: "PotionCollar", minLevel: 1, weight:10, message:"LootPotionCollar", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["PotionCollar"]},
 	],
 	"lessergold": [
-		...KDGoldArmor,
+		...KDGoldArmor, ...KDGoldArmor2,
 		{name: "scrolls_purity", minLevel: 0, weight: 1, message:"LootChestScrollsPurity", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "MistressKey", minLevel: 0, weight:1, message:"LootChestMistressKey", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "AncientCores", max: 1, minLevel: 0, weight:3, message:"LootChestAncientCores", messageColor:"yellow", messageTime: 3, allFloors: true},
@@ -342,7 +361,7 @@ let KinkyDungeonLootTable = {
 		{name: "grinder", minLevel: 1, weight:2, message:"LootChestGrinder", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "PotionCollar", minLevel: 1, weight:0.5, message:"LootPotionCollar", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["PotionCollar"]},
 		{name: "SlimeWalkers", minLevel: 1, weight:0.5, message:"LootSlimeWalkers", messageColor:"lightblue", messageTime: 3, allFloors: true, norestraint: ["SlimeWalkers"]},
-		...KDAdvancedArmor,
+		...KDAdvancedArmor, ...KDSilverArmor,
 	],
 
 };
