@@ -923,6 +923,8 @@ function KinkyDungeonDrawInputs() {
 
 	DrawButtonKDEx("ToggleXray", (bdata) => {
 		KDToggleXRay = !KDToggleXRay;
+		KinkyDungeonCheckClothesLoss = true;
+		KinkyDungeonDressPlayer(KinkyDungeonPlayer);
 		return true;
 	}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "UI/XRay.png", "", false, false, KDToggleXRay ? KDTextGray3 : KDButtonColor);
 
