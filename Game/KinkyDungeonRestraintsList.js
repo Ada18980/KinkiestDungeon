@@ -1953,6 +1953,19 @@ const KinkyDungeonRestraints = [
 		],
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.5, "Pick": 1.25}, enemyTags: {"leashing":1}, playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":99}, minLevel: 0, allFloors: true, shrine: []},
 
+	//region Cursed Set - Flames of Desire
+	//endregion
+
+	//region Cursed Set - Grace of the Clouds
+	//endregion
+
+	//region Cursed Set - Deluge of Passion
+	//endregion
+
+	//region Cursed Set - Iron Discipline
+	//endregion
+
+
 	//region Enchanted
 	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, arousalMode: true, enchanted: true, name: "EnchantedBelt", Asset: "PolishedChastityBelt", OverridePriority: 26, Color: "#AE915C", Group: "ItemPelvis", chastity: true, power: 25, weight: 0,
 		Security: {

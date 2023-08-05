@@ -25,6 +25,8 @@ let KinkyDungeonStruggleGroupsBase = [
 ];
 let KinkyDungeonDrawStruggle = 1;
 let KDPlayerSetPose = false;
+let KDToggleXRay = false;
+let KD_XRayHidden = ["Wrapping"];
 let KinkyDungeonDrawStruggleHover = false;
 let KinkyDungeonDrawState = "Game";
 let KinkyDungeonDrawStatesModal = ["Heart", "Orb"];
@@ -917,7 +919,12 @@ function KinkyDungeonDrawInputs() {
 			KDWardrobe_CurrentPoseBlush = KDGetPoseOfType(KinkyDungeonPlayer, "Blush") || "BlushNeutral";
 			KDWardrobe_CurrentPoseMouth = KDGetPoseOfType(KinkyDungeonPlayer, "Mouth");*/
 			return true;
-		}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
+		}, true, 650, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
+
+	DrawButtonKDEx("ToggleXray", (bdata) => {
+		KDToggleXRay = !KDToggleXRay;
+		return true;
+	}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "UI/XRay.png", "", false, false, KDToggleXRay ? KDTextGray3 : KDButtonColor);
 
 	if (KDPlayerSetPose) KDPlayerDrawPoseButtons(KinkyDungeonPlayer);
 
@@ -934,35 +941,7 @@ function KinkyDungeonDrawInputs() {
 		}
 	}
 
-	let bx = 650 + 15;
-	let bwidth = 165;
-	let bspacing = 5;
-	let bindex = 0;
-	DrawButtonKDEx("goInv", (bdata) => {
-		KinkyDungeonDrawState = "Inventory";
-		return true;
-	}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonInventory"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_inventory.png", undefined, undefined, false, "", 24, true); bindex++;
-	DrawButtonKDEx("goRep", (bdata) => {
-		KinkyDungeonDrawState = "Reputation";
-		return true;
-	}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonReputation"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_reputation.png", undefined, undefined, false, "", 24, true); bindex++;
-	DrawButtonKDEx("goSpells", (bdata) => {
-		KinkyDungeonDrawState = "MagicSpells";
-		return true;
-	}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonMagic"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_spells.png", undefined, undefined, false, "", 24, true); bindex++;
-
-	let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
-	DrawButtonKDEx("goLog", (bdata) => {
-		KinkyDungeonDrawState = "Logbook";
-		KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
-		return true;
-	}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, logtxt, "#ffffff", KinkyDungeonRootDirectory + "UI/button_logbook.png", undefined, undefined, false, "", 24, true); bindex++;
-
-
-	bx = 650 + bindex * (bwidth + bspacing) + 45;
-	bwidth = 145;
-	bspacing = 5;
-	bindex = 0;
+	KDDrawBottomBarButtons(-1);
 
 	if (KinkyDungeonSpellChoices.length > KinkyDungeonSpellChoiceCountPerPage) {
 		DrawButtonKDEx("CycleSpellButton", () => {
@@ -2112,4 +2091,35 @@ function KDGetItemLinkIndex(inv, allowInaccessible) {
 	let item = KinkyDungeonGetRestraintItem(KDRestraint(inv).Group);
 	let surfaceItems = KDDynamicLinkListSurface(item);
 	return surfaceItems.indexOf(inv);
+}
+
+/**
+ *
+ * @param {number} skip - Skips the button being drawn in this instance
+ */
+function KDDrawBottomBarButtons(skip) {
+	let bx = 750 + 15;
+	let bwidth = 140;
+	let bspacing = 5;
+	let bindex = 0;
+
+	if (skip != bindex) DrawButtonKDEx("goInv", (bdata) => {
+		KinkyDungeonDrawState = "Inventory";
+		return true;
+	}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonInventory"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_inventory.png", undefined, undefined, false, "", 24, true); bindex++;
+	if (skip != bindex) DrawButtonKDEx("goRep", (bdata) => {
+		KinkyDungeonDrawState = "Reputation";
+		return true;
+	}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonReputation"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_reputation.png", undefined, undefined, false, "", 24, true); bindex++;
+	if (skip != bindex) DrawButtonKDEx("goSpells", (bdata) => {
+		KinkyDungeonDrawState = "MagicSpells";
+		return true;
+	}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonMagic"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_spells.png", undefined, undefined, false, "", 24, true); bindex++;
+
+	let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
+	if (skip != bindex) DrawButtonKDEx("goLog", (bdata) => {
+		KinkyDungeonDrawState = "Logbook";
+		KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
+		return true;
+	}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, logtxt, "#ffffff", KinkyDungeonRootDirectory + "UI/button_logbook.png", undefined, undefined, false, "", 24, true); bindex++;
 }

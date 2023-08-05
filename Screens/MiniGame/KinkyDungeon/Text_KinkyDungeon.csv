@@ -2864,8 +2864,8 @@ KinkyDungeonDropRedKey,"You drop the key due to your bound hands!"
 KinkyDungeonDropBlueKey,"You drop the magic key due to your bound hands!"
 KinkyDungeonDropGreenKey,"You drop the magic key due to your bound hands!"
 
-KinkyDungeonLogbook,Logbook
-KinkyDungeonLogbookN,Logbook (N)
+KinkyDungeonLogbook,Log
+KinkyDungeonLogbookN,Log (N)
 KinkyDungeonAutoPassOn,"Passing..."
 KinkyDungeonAutoPassOff,"Pass NPCs"
 KinkyDungeonAutoDoorOn,"Closing..."
@@ -5881,8 +5881,8 @@ KinkyDungeonTrapSleepDart,"You feel a prick as a small dart hits you, and you st
 KinkyDungeonTrapLustCloud,"You breathe in the gas, and a wave of pleasure hits your whole body."
 KinkyDungeonTrapSPCloud,"You breathe in the gas, and feel lethargic..."
 
-KinkyDungeonInventory,"Inventory"
-KinkyDungeonReputation,"Reputation"
+KinkyDungeonInventory,"Items"
+KinkyDungeonReputation,"Rep"
 KinkyDungeonMagic,"Spells"
 KinkyDungeonMagicSpells,"Learn New Spells"
 KinkyDungeonMagicSpellsQuick,"Click a spell to replace SPELLNAME with."

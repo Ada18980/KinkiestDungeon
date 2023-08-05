@@ -1099,7 +1099,7 @@ function KinkyDungeonDrawQuickInv() {
 			}
 
 			return true;
-		}, true, 630, QL_y + 70 * i, 120, 60, i + "", "#dddddd", "", undefined, false, KDGameData.CurrentLoadout != i, KDButtonColor);
+		}, true, 630, QL_y + 70 * i, 120, 60, i + "", "#dddddd", "", undefined, false, KDGameData.CurrentLoadout != i || KDQuickLoadoutSave, KDButtonColor);
 		if (MouseIn(630, QL_y + 70 * i, 120, 60)) {
 			for (let ii = 0; ii < 20 && ii < (KDGameData.QuickLoadouts ? (KDGameData.QuickLoadouts[i+""] ? KDGameData.QuickLoadouts[i+""].length : 0) : 0); ii++) {
 				let item = KDGameData.QuickLoadouts[i+""][ii];
