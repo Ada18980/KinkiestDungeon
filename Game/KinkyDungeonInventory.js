@@ -152,17 +152,9 @@ function KinkyDungeonHandleInventory() {
 		return true;
 	}
 
-	for (let I = 0; I < KinkyDungeonFilters.length; I++)
-		//if (I == 1) // KinkyDungeonFilterInventory(KinkyDungeonFilters[I]).length > 0 ||
-		if (MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale - 20, canvasOffsetY_ui + 115 + I*65, 225, 60)) {
-			KinkyDungeonCurrentFilter = KinkyDungeonFilters[I];
-			KinkyDungeonCurrentPageInventory = 0;
-			return true;
-		}
-
 
 	if (KinkyDungeonDrawInventorySelected(filteredInventory[KinkyDungeonCurrentPageInventory])) {
-		if (filter == Consumable && MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 60)) {
+		if (filter == Consumable && MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 55)) {
 			let item = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter)[KinkyDungeonCurrentPageInventory];
 			if (!item || !item.name) return true;
 
@@ -630,9 +622,9 @@ function KinkyDungeonDrawInventory() {
 	KinkyDungeonDrawMessages(true);
 
 	FillRectKD(kdcanvas, kdpixisprites, "maininvbg", {
-		Left: canvasOffsetX_ui + 640*KinkyDungeonBookScale - 50,
+		Left: canvasOffsetX_ui + 40,
 		Top: canvasOffsetY_ui - 20,
-		Width: 1965 - (canvasOffsetX_ui + 640*KinkyDungeonBookScale - 50),
+		Width: 1965 - (canvasOffsetX_ui + 40),
 		Height: 775,
 		Color: "#000000",
 		LineWidth: 1,
@@ -640,9 +632,9 @@ function KinkyDungeonDrawInventory() {
 		alpha: 0.3
 	});
 	DrawRectKD(kdcanvas, kdpixisprites, "maininvbg2", {
-		Left: canvasOffsetX_ui + 640*KinkyDungeonBookScale - 50,
+		Left: canvasOffsetX_ui + 40,
 		Top: canvasOffsetY_ui - 20,
-		Width: 1965 - (canvasOffsetX_ui + 640*KinkyDungeonBookScale - 50),
+		Width: 1965 - (canvasOffsetX_ui + 40),
 		Height: 775,
 		Color: "#000000",
 		LineWidth: 1,
@@ -686,14 +678,21 @@ function KinkyDungeonDrawInventory() {
 		}
 		else if (KinkyDungeonFilters.indexOf(KinkyDungeonCurrentFilter) == I) KinkyDungeonCurrentFilter = KinkyDungeonFilters[defaultIndex];
 
-		DrawButtonVis(canvasOffsetX_ui + 640*KinkyDungeonBookScale - 20, canvasOffsetY_ui + 115 + I*65, 225, 60, TextGet("KinkyDungeonCategoryFilter" + KinkyDungeonFilters[I]),
+		DrawButtonKDEx("categoryfilter" + I, (bdata) => {
+			KinkyDungeonCurrentFilter = KinkyDungeonFilters[I];
+			KinkyDungeonCurrentPageInventory = 0;
+			return true;
+		}, true, canvasOffsetX_ui + 640*KinkyDungeonBookScale - 55, canvasOffsetY_ui + 115 + I*65, 180, 60, TextGet("KinkyDungeonCategoryFilter" + KinkyDungeonFilters[I]),
 			(KinkyDungeonCurrentFilter == KinkyDungeonFilters[I]) ? "White" : col, "", "");
 	}
 
 
 	if (filteredInventory.length > 0) {
 		let useIcons = KDInventoryUseIconConfig[filter];
-		let numRows = useIcons ? 5 : 2;
+		let rowsShort = useIcons ? 4 : 1;
+		let rowsLong = useIcons ? 6 : 2;
+		let xBonusShort = useIcons ? 2 : 1;
+		let numRows = rowsLong;
 		let maxList = useIcons ? 7 : 12;
 		let b_width = useIcons ? 80 : 200;
 		let b_height = useIcons ? 80 : 45;
@@ -701,9 +700,6 @@ function KinkyDungeonDrawInventory() {
 		let yy = 0;
 		let xx = -1;
 
-		let rowsShort = useIcons ? 3 : 1;
-		let rowsLong = useIcons ? 5 : 2;
-		let xBonusShort = useIcons ? 2 : 1;
 
 		for (let i = 0; i < numRows*maxList && yy < maxList; i++) {
 			let xBonus = 0;
@@ -734,7 +730,7 @@ function KinkyDungeonDrawInventory() {
 				DrawButtonKDEx("invchoice_" + i, (bdata) => {
 					KinkyDungeonCurrentPageInventory = index;
 					return true;
-				}, true, canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 215, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+				}, true, canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 135, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
 				useIcons ? ("") : (TextGet(text) + suff),
 				"#ffffff",//useIcons ? "#ffffff" : index == KinkyDungeonCurrentPageInventory ? "#ffffff" : "#888888",
 				useIcons ? filteredInventory[index].preview || "" : "",
@@ -743,7 +739,7 @@ function KinkyDungeonDrawInventory() {
 				});
 				if (filteredInventory[index].previewcolor) {
 					KDDraw(kdcanvas, kdpixisprites, "invchoice_halo" + i,
-						KinkyDungeonRootDirectory + "/UI/ItemAura.png", canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 215, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+						KinkyDungeonRootDirectory + "/UI/ItemAura.png", canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 135, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
 						undefined, {
 							zIndex: 100.003,
 							tint: string2hex(filteredInventory[index].previewcolor),
@@ -752,7 +748,7 @@ function KinkyDungeonDrawInventory() {
 				}
 				if (filteredInventory[index].previewcolorbg) {
 					KDDraw(kdcanvas, kdpixisprites, "invchoice_halobg" + i,
-						KinkyDungeonRootDirectory + "/UI/ItemAuraBG.png", canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 215, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+						KinkyDungeonRootDirectory + "/UI/ItemAuraBG.png", canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 135, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
 						undefined, {
 							zIndex: 100.002,
 							tint: string2hex(filteredInventory[index].previewcolorbg),
@@ -760,7 +756,7 @@ function KinkyDungeonDrawInventory() {
 						});
 				}
 				if (filteredInventory[index].item.quantity != undefined) {
-					DrawTextKD("" + filteredInventory[index].item.quantity, canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 220, canvasOffsetY_ui + 50 + b_height * yy + 18, "#ffffff", undefined, 18, "left");
+					DrawTextKD("" + filteredInventory[index].item.quantity, canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 140, canvasOffsetY_ui + 50 + b_height * yy + 18, "#ffffff", undefined, 18, "left");
 				}
 			} else {
 				if (i + KinkyDungeonInventoryOffset > filteredInventory.length + numRows*3)
@@ -768,7 +764,7 @@ function KinkyDungeonDrawInventory() {
 				//break;
 				// Instead of breaking, we fill in the missing squares
 				FillRectKD(kdcanvas, kdpixisprites, "kdInvEmptySpot" + i, {
-					Left: canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 215,
+					Left: canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 135,
 					Top: canvasOffsetY_ui + 50 + b_height * yy,
 					Width: b_width-padding,
 					Height: b_height-padding,
@@ -812,15 +808,21 @@ function KinkyDungeonDrawInventory() {
 				KinkyDungeonInventoryOffset = 0;
 				KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, filters[i][0]);
 				return true;
-			}, true, canvasOffsetX_ui + xx * 200 + 640*KinkyDungeonBookScale + 212, canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
+			}, true, canvasOffsetX_ui + xx * 200 + 640*KinkyDungeonBookScale + 132, canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
 			TextGet("KDFilterFilters" + filters[i][0]), filters[i][1] ? "#ffffff" : "#aaaaaa", undefined, undefined, undefined, !filters[i][1], KDTextGray1, 20);
 
 		}
 	}
 
 	if (KinkyDungeonDrawInventorySelected(filteredInventory[KinkyDungeonCurrentPageInventory])) {
-		if (filter == Consumable)
-			DrawButtonVis(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 60, TextGet("KinkyDungeonConsume"), "White", "", "");
+		if (filter == Consumable) {
+			DrawButtonVis(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 55, TextGet("KinkyDungeonConsume"), "White", "", "");
+			DrawButtonKDEx("dropitem", (bdata) => {
+				KDSendInput("drop", {item: filteredInventory[KinkyDungeonCurrentPageInventory].item.name});
+				return true;
+			}, true, canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale + 60, 350, 55, TextGet("KinkyDungeonDrop"), "White", "", "");
+
+		}
 		if (filter == Weapon && !isUnarmed(KinkyDungeonWeapons[filteredInventory[KinkyDungeonCurrentPageInventory].name])) {
 			let weapon = ((filteredInventory[KinkyDungeonCurrentPageInventory] != null) ? filteredInventory[KinkyDungeonCurrentPageInventory].name : null);
 			let equipped = filteredInventory[KinkyDungeonCurrentPageInventory] && filteredInventory[KinkyDungeonCurrentPageInventory].name == KinkyDungeonPlayerWeapon;

@@ -305,7 +305,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			unlockcurse = CommonRandomItemFromList("", curselist);
 		}
 		if (curseVariant || enchantVariant) {
-			let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events));
+			let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
 			if (curseVariant) {
 				events.push(...KDEventCurseModular[curseVariant].events);
 			}
