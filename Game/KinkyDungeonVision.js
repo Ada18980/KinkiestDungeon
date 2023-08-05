@@ -671,11 +671,11 @@ function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders) {
 	kdminimap.drawRect(
 		0,
 		0,
-		(w+1)*scale,
-		(h+1)*scale);
+		(w)*scale,
+		(h)*scale);
 	kdminimap.endFill();
-	for (let xx = 0; xx <= w; xx++)  {
-		for (let yy = 0; yy <= h; yy++)  {
+	for (let xx = 0; xx < w; xx++)  {
+		for (let yy = 0; yy < h; yy++)  {
 			if (KDIsInBounds(x+xx, y+yy, 1) && (KinkyDungeonVisionGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0 || KinkyDungeonFogGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0)) {
 				if (gridborders)
 					kdminimap.lineStyle(1, KinkyDungeonVisionGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0 ? 0xaaaaaa : 0, 0.5);

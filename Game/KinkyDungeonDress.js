@@ -728,6 +728,14 @@ function KDCharacterAppearanceNaked() {
 
 
 function KDApplyItem(inv, tags) {
+	if (KDToggleXRay) {
+		let itemTags = KDRestraint(inv)?.shrine;
+		if (itemTags && itemTags.some((t) => {
+			return KD_XRayHidden.includes(t);
+		})) {
+			return;
+		}
+	}
 	if (StandalonePatched) {
 		let restraint = KDRestraint(inv);
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
@@ -778,8 +786,6 @@ function KDApplyItem(inv, tags) {
 		return;
 	}
 	KDApplyItemLegacy(inv, tags);
-
-
 }
 
 /** Legacy */
