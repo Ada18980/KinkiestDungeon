@@ -320,7 +320,16 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 					CharacterSetActivePose(Character, "BaseLower", false);
 				}
 			}
-
+			if (!StandalonePatched && KinkyDungeonPlayerTags.get("BoundFeet")) {
+				if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "LegsClosed") && !CharacterDoItemsSetPose(Character, "LegsClosed") && !Character.IsKneeling()) {
+					CharacterSetActivePose(Character, "LegsClosed", false);
+				}
+			}
+			if (!StandalonePatched && (KinkyDungeonPlayerTags.get("BoundArms") || KinkyDungeonPlayerTags.get("BoundHands"))) {
+				if (CharacterItemsHavePoseAvailable(Character, "BodyUpper", "BackElbowTouch") && !CharacterDoItemsSetPose(Character, "BackElbowTouch")) {
+					CharacterSetActivePose(Character, "BackElbowTouch", false);
+				}
+			}
 		}
 
 		if (StandalonePatched) {
