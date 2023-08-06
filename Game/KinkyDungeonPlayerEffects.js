@@ -55,7 +55,7 @@ let KDPlayerEffects = {
 		let applied = "";
 
 		for (let i = 0; i < playerEffect.count; i++) {
-			let curse = CommonRandomItemFromList("", KDCurseUnlockList.Basic);
+			let curse = CommonRandomItemFromList("", KDCurseUnlockList.Common);
 			let restraint = KDChooseRestraintFromListGroupPri(
 				KDGetRestraintsEligible({tags: ['trap']}, 10, 'grv', true, undefined, undefined, undefined, false, undefined, undefined, undefined, undefined, curse),
 				KDRestraintGroupProgressiveOrderFun)?.name;

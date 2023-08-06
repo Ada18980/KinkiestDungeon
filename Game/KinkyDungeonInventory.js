@@ -1558,7 +1558,7 @@ function KDSaveQuickLoadout(num) {
 function KDAddInventoryVariant(Name, Variant, Prefix="Restraint") {
 	KinkyDungeonInventoryVariants[Name] = JSON.parse(JSON.stringify(Variant));
 	// Create text keys too
-	KinkyDungeonDupeRestraintText(Variant.template, Name);
+	//KinkyDungeonDupeRestraintText(Variant.template, Name);
 }
 /**
  * @param {string} Name
@@ -1566,9 +1566,9 @@ function KDAddInventoryVariant(Name, Variant, Prefix="Restraint") {
 function KDRemoveInventoryVariant(Name, Prefix="Restraint") {
 	delete KinkyDungeonInventoryVariants[Name];
 	// Create text keys too
-	deleteTextKey(Prefix + Name);
-	deleteTextKey(Prefix + Name + "Desc");
-	deleteTextKey(Prefix + Name + "Desc2");
+	//deleteTextKey(Prefix + Name);
+	//deleteTextKey(Prefix + Name + "Desc");
+	//deleteTextKey(Prefix + Name + "Desc2");
 }
 
 /**
