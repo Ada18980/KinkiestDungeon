@@ -2357,9 +2357,10 @@ function KDUpdatePlugSettings() {
 	for (let i = 0; i < classCount; i++) {
 		KinkyDungeonStatsChoice.set("classMode", KinkyDungeonClassMode == Object.keys(KDClassStart)[i] ? true : undefined);
 	}
-	let points = KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice);
-	KinkyDungeonStatsChoice.set("hardMode", points >= KDHardModeThresh ? true : undefined);
-
+	if (KinkyDungeonState == "Stats") {
+		let points = KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice);
+		KinkyDungeonStatsChoice.set("hardMode", points >= KDHardModeThresh ? true : undefined);
+	}
 }
 
 let KDHardModeThresh = 10;
