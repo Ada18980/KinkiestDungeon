@@ -407,7 +407,7 @@ function KinkyDungeonCalculateVibeLevel(delta) {
 					}
 				}
 				if (intensityMod > intensityModMax) intensityMod = intensityModMax;
-				if (intensityMod > intensityModMin) intensityMod = intensityModMin;
+				if (intensityMod < intensityModMin) intensityMod = intensityModMin;
 				if (intensityMod) {
 					KinkyDungeonVibeLevel = Math.max(1, KinkyDungeonVibeLevel + intensityMod);
 				}
