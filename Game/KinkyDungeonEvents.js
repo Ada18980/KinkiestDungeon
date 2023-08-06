@@ -254,12 +254,23 @@ let KDEventMapInventory = {
 		"setSkinColor": (e, item, data) => {
 			if (item == data.item) {
 				data.color[0] = "#9A7F76";
-				if (KinkyDungeonPlayer && KinkyDungeonPlayer.Appearance) {
-					let color = InventoryGet(KinkyDungeonPlayer, "BodyUpper").Color;
-					if (color == "Asian") {
-						data.color[0] = "#8B7B70";
-					} else if (color == "Black") {
-						data.color[0] = "#684832";
+				if (StandalonePatched) {
+					if (KinkyDungeonPlayer && KinkyDungeonPlayer.Appearance) {
+						let color = "#ff5555";//InventoryGet(KinkyDungeonPlayer, "BodyUpper").Color;
+						if (color == "Asian") {
+							data.color[0] = "#8B7B70";
+						} else if (color == "Black") {
+							data.color[0] = "#684832";
+						}
+					}
+				} else {
+					if (KinkyDungeonPlayer && KinkyDungeonPlayer.Appearance) {
+						let color = InventoryGet(KinkyDungeonPlayer, "BodyUpper").Color;
+						if (color == "Asian") {
+							data.color[0] = "#8B7B70";
+						} else if (color == "Black") {
+							data.color[0] = "#684832";
+						}
 					}
 				}
 			}
