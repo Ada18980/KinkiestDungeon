@@ -3251,7 +3251,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
 	let canAttack = !(enemy.disarm > 0)
 		&& AIData.wantsToAttack
-		&& (!enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id || KinkyDungeonFlags.get("overrideleashprotection"))
+		&& (!player?.player || !enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id || KinkyDungeonFlags.get("overrideleashprotection"))
 		&& ((enemy.aware && KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
 		&& !AIData.ignore
 		&& (!minRange || (AIData.playerDist > minRange))
