@@ -347,7 +347,7 @@ function KDDrawItemsTooltip(items, offset) {
 	});
 	let str = "";
 	for (let item of items) {
-		str = str + (str ? ", " : "") + TextGet(KinkyDungeonGetRestraintByName(item.name) ? ("Restraint" + item.name) : ("KinkyDungeonInventoryItem" + item.name));
+		str = str + (str ? ", " : "") + TextGet(KinkyDungeonGetRestraintByName(item.name) ? ("Restraint" + KDRestraint(item)?.name) : ("KinkyDungeonInventoryItem" + item.name));
 	}
 
 	let strSplit = KinkyDungeonWordWrap(str, 12, 28).split('\n');
