@@ -1,5 +1,47 @@
 "use strict";
 
+
+
+/**
+ * Contains a list of curse variant types
+ * Can be modified dynamically so mods can add basic curses
+ */
+let KDCurseVariantList = {
+	"Base": [
+		"Common",
+	],
+	"Common": [
+		"Tickle",
+		"Punish",
+		"Light",
+		"Attraction",
+		"Submission",
+		"Distraction",
+		"Breathlessness",
+		"Futility",
+		"Sensitivity",
+	],
+};
+/**
+ * Unlockcurse list. This is always referenced dynamically when the restraint is picked up
+ */
+let KDCurseUnlockList = {
+	"Common": [
+		"ShrineWill",
+		"ShrineIllusion",
+		"ShrineElements",
+		"ShrineConjure",
+		"BlueLock",
+		"Will",
+		"TakeDamageFire",
+		"TakeDamageElectric",
+		"TakeDamageIce",
+		"TakeDamageGlue",
+		"TakeDamageChain",
+		"Mana",
+	],
+};
+
 /**
  * onApply: occurs when applied
  * condition: required to remove it
@@ -275,45 +317,6 @@ let KDCursedVars = {
 	},
 };
 
-/**
- * Contains a list of curse variant types
- * Can be modified dynamically so mods can add basic curses
- */
-let KDCurseVariantList = {
-	"Base": [
-		"Common",
-	],
-	"Common": [
-		"Tickle",
-		"Punish",
-		"Light",
-		"Attraction",
-		"Submission",
-		"Distraction",
-		"Breathlessness",
-		"Futility",
-		"Sensitivity",
-	],
-};
-/**
- * Unlockcurse list. This is always referenced dynamically when the restraint is picked up
- */
-let KDCurseUnlockList = {
-	"Common": [
-		"ShrineWill",
-		"ShrineIllusion",
-		"ShrineElements",
-		"ShrineConjure",
-		"BlueLock",
-		"Will",
-		"TakeDamageFire",
-		"TakeDamageElectric",
-		"TakeDamageIce",
-		"TakeDamageGlue",
-		"TakeDamageChain",
-		"Mana",
-	],
-};
 
 /**
  * Bestows an event-type curse onto an item by adding events
