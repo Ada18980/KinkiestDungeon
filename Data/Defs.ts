@@ -126,6 +126,7 @@ let LAYERS_BASE = [
 	"BeltBack",
 
 	// Left arm clothes
+	"ForeArmBondageLeft",
 	"SleeveDecoLeft",
 	"SleeveLeft",
 

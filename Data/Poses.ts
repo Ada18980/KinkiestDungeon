@@ -151,7 +151,7 @@ function KDGetAvailablePosesLegs(C: Character): string[] {
 			delete poses.Closed;
 			spread = true;
 		}
-		if (CheckPoseOrTags(C, "ForceHogtie")) {
+		if (CheckPoseOrTags(C, "Hogties")) {
 			for (let p of STANDPOSES) {
 				delete poses[p];
 			}

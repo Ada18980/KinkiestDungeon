@@ -55,6 +55,139 @@ AddModel(GetModelWithExtraLayers("BallGagHarnessSecure", "BallGagHarness", [
 	},
 ]));
 
+
+
+AddModel({
+	Name: "PanelGag",
+	Folder: "GagLeather",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Panel", Layer: "GagFlat", Pri: 1,
+			Sprite: "Panel",
+			OffsetX: 942,
+			OffsetY: 200,
+			AnchorModX: MODELWIDTH/641,
+			AnchorModY: MODELHEIGHT/664,
+			Invariant: true,
+		},
+		{ Name: "Strap", Layer: "GagStraps", Pri: 15,
+			Sprite: "BallStrap",
+			OffsetX: 942,
+			OffsetY: 200,
+			AnchorModX: MODELWIDTH/641,
+			AnchorModY: MODELHEIGHT/664,
+			Invariant: true,
+		},
+	])
+});
+AddModel(GetModelWithExtraLayers("PanelGagHarness", "PanelGag", [
+	{ Name: "Harness", Layer: "GagStraps", Pri: 10,
+		Sprite: "PanelHarness",
+		OffsetX: 942,
+		OffsetY: 200,
+		AnchorModX: MODELWIDTH/641,
+		AnchorModY: MODELHEIGHT/664,
+		Invariant: true,
+	},
+]));
+AddModel(GetModelWithExtraLayers("PanelGagHarnessSecure", "PanelGagHarness", [
+	{ Name: "SideStrap", Layer: "GagStraps", Pri: 21,
+		Sprite: "PanelSideStrap",
+		OffsetX: 942,
+		OffsetY: 200,
+		AnchorModX: MODELWIDTH/641,
+		AnchorModY: MODELHEIGHT/664,
+		Invariant: true,
+	},
+]));
+
+
+
+AddModel({
+	Name: "MuzzleGag",
+	Folder: "GagLeather",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Muzzle", Layer: "GagFlat", Pri: 3,
+			Sprite: "Muzzle",
+			OffsetX: 942,
+			OffsetY: 200,
+			AnchorModX: MODELWIDTH/641,
+			AnchorModY: MODELHEIGHT/664,
+			Invariant: true,
+		},
+		{ Name: "Strap", Layer: "GagStraps", Pri: 15,
+			Sprite: "MuzzleStrap",
+			OffsetX: 942,
+			OffsetY: 200,
+			AnchorModX: MODELWIDTH/641,
+			AnchorModY: MODELHEIGHT/664,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("MuzzleGagHarness", "MuzzleGag", [
+	{ Name: "Harness", Layer: "GagStraps", Pri: 10,
+		Sprite: "MuzzleHarness",
+		OffsetX: 942,
+		OffsetY: 200,
+		AnchorModX: MODELWIDTH/641,
+		AnchorModY: MODELHEIGHT/664,
+		Invariant: true,
+	},
+]));
+AddModel(GetModelWithExtraLayers("MuzzleGagHarnessSecure", "MuzzleGagHarness", [
+	{ Name: "SideStrap", Layer: "GagStraps", Pri: 22,
+		Sprite: "MuzzleSideStrap",
+		OffsetX: 942,
+		OffsetY: 200,
+		AnchorModX: MODELWIDTH/641,
+		AnchorModY: MODELHEIGHT/664,
+		Invariant: true,
+	},
+]));
+
+
+
+AddModel({
+	Name: "PlugGagPlug",
+	Folder: "Dummy",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: [],
+	Layers: ToLayerMap([
+		{ Name: "Plug", Layer: "GagFlat", Pri: 4,
+			Sprite: "Plug",
+			OffsetX: 942,
+			OffsetY: 200,
+			AnchorModX: MODELWIDTH/641,
+			AnchorModY: MODELHEIGHT/664,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("PlugMuzzleGag", "MuzzleGag", [
+	...GetModelLayers("PlugGagPlug"),
+]));
+AddModel(GetModelWithExtraLayers("PlugMuzzleGagHarness", "MuzzleGagHarness", [
+	...GetModelLayers("PlugGagPlug"),
+]));
+AddModel(GetModelWithExtraLayers("PlugMuzzleGagHarnessSecure", "MuzzleGagHarnessSecure", [
+	...GetModelLayers("PlugGagPlug"),
+]));
+
+
 AddModel({
 	Name: "RopeBoxtie1",
 	Folder: "Rope",
@@ -82,6 +215,9 @@ AddModel({
 		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
 			Poses: ToMap(["Wristtie"]),
 		},
+		{ Name: "ForeArm1", Layer: "ForeArmBondageLeft", Pri: 0,
+			Poses: ToMap(["Wristtie"]),
+		},
 	])
 });
 
@@ -98,6 +234,9 @@ AddModel({
 		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie"]),
 		},
+		{ Name: "ForeArm2", Layer: "ForeArmBondageLeft", Pri: 0,
+			Poses: ToMap(["Wristtie"]),
+		},
 	])
 });
 AddModel({
@@ -111,6 +250,9 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie"]),
+		},
+		{ Name: "ForeArm2", Layer: "ForeArmBondageLeft", Pri: 0,
+			Poses: ToMap(["Wristtie"]),
 		},
 		{ Name: "ArmHarness", Layer: "ChestStraps", Pri: -1,
 			Poses: ToMap([...ARMPOSES]),
