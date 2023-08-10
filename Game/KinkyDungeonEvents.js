@@ -31,6 +31,8 @@ function KDMapHasEvent(map, event) {
 function KinkyDungeonSendEvent(Event, data, forceSpell) {
 	KinkyDungeonSendMagicEvent(Event, data, forceSpell);
 	KinkyDungeonSendWeaponEvent(Event, data);
+	KinkyDungeonSendInventorySelectedEvent(Event, data);
+	KinkyDungeonSendInventoryIconEvent(Event, data);
 	KinkyDungeonSendInventoryEvent(Event, data);
 	KinkyDungeonSendBulletEvent(Event, data.bullet, data);
 	KinkyDungeonSendBuffEvent(Event, data);
@@ -50,12 +52,88 @@ function KinkyDungeonResetEventVariablesTick(delta) {
 	KinkyDungeonHandleGenericEvent("resetEventVarTick", {delta: delta});
 }
 
+
+/**
+ * Function mapping
+ * to expand, keep (e, item, data) => {...} as a constant API call
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
+ */
+let KDEventMapInventoryIcon = {
+	"icon": {
+		"tintIcon": (e, item, data) => {
+			if (item == data.item) {
+				if (e.power > data.power) {
+					data.power = e.power;
+					if (e.color)
+						data.color = e.color;
+					if (e.bgcolor)
+						data.bgcolor = e.bgcolor;
+				}
+			}
+		},
+	},
+};
+/**
+ *
+ * @param {string} Event
+ * @param {KinkyDungeonEvent} kinkyDungeonEvent
+ * @param {item} item
+ * @param {*} data
+ */
+function KinkyDungeonHandleInventoryIconEvent(Event, kinkyDungeonEvent, item, data) {
+	if (Event === kinkyDungeonEvent.trigger && KDEventMapInventoryIcon[Event] && KDEventMapInventoryIcon[Event][kinkyDungeonEvent.type]) {
+		KDEventMapInventoryIcon[Event][kinkyDungeonEvent.type](kinkyDungeonEvent, item, data);
+	}
+}
+
+/**
+ * Function mapping
+ * to expand, keep (e, item, data) => {...} as a constant API call
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
+ */
+let KDEventMapInventorySelected = {
+	"inventoryTooltip": {
+		"varModifier": (e, item, data) => {
+			if (item == data.item) {
+				data.extraLines.push(TextGet("KDVariableModifier_" + e.msg)
+					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
+					.replace("TYPE", `${e.kind}`));
+				data.extraLineColor.push(e.color || "#ffffff");
+				data.extraLineColorBG.push(e.bgcolor || "#000000");
+			}
+		},
+	},
+};
+/**
+ *
+ * @param {string} Event
+ * @param {KinkyDungeonEvent} kinkyDungeonEvent
+ * @param {item} item
+ * @param {*} data
+ */
+function KinkyDungeonHandleInventorySelectedEvent(Event, kinkyDungeonEvent, item, data) {
+	if (Event === kinkyDungeonEvent.trigger && KDEventMapInventorySelected[Event] && KDEventMapInventorySelected[Event][kinkyDungeonEvent.type]) {
+		KDEventMapInventorySelected[Event][kinkyDungeonEvent.type](kinkyDungeonEvent, item, data);
+	}
+}
+
+
 /**
  * Function mapping
  * to expand, keep (e, item, data) => {...} as a constant API call
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
  */
 let KDEventMapInventory = {
+	"curseCount": {
+		/**
+		 * @param {KDEventData_CurseCount} data
+		*/
+		"add": (e, item, data) => {
+			if (!data.activatedOnly || (KDGetCurse(item) && KDCurses[KDGetCurse(item)].activatecurse)) {
+				data.count += e.power;
+			}
+		}
+	},
 	"postApply": {
 		/**
 		 * @param {KDEventData_PostApply} data
@@ -99,6 +177,16 @@ let KDEventMapInventory = {
 			}
 		}
 	},
+	"afterCalcManaPool": {
+		"MultManaPoolRegen": (e, spell, data) => {
+			data.manaPoolRegen *= e.power;
+		},
+	},
+	"afterCalcMana": {
+		"ManaCost": (e, item, data) => {
+			data.cost = Math.max(data.cost * e.power, 0);
+		},
+	},
 	"orgasm": {
 		"CurseSubmission": (e, item, data) => {
 			if (data.player == KinkyDungeonPlayerEntity) {
@@ -121,6 +209,13 @@ let KDEventMapInventory = {
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 			}
 		},
+	},
+	"capture": {
+		"ManaBounty": (e, item, data) => {
+			if (data.attacker && data.attacker.player && data.enemy) {
+				KinkyDungeonChangeMana(0, false, e.power);
+			}
+		}
 	},
 	"calcPlayChance": {
 		"CurseAttraction": (e, item, data) => {
@@ -159,12 +254,23 @@ let KDEventMapInventory = {
 		"setSkinColor": (e, item, data) => {
 			if (item == data.item) {
 				data.color[0] = "#9A7F76";
-				if (KinkyDungeonPlayer && KinkyDungeonPlayer.Appearance) {
-					let color = InventoryGet(KinkyDungeonPlayer, "BodyUpper").Color;
-					if (color == "Asian") {
-						data.color[0] = "#8B7B70";
-					} else if (color == "Black") {
-						data.color[0] = "#684832";
+				if (StandalonePatched) {
+					if (KinkyDungeonPlayer && KinkyDungeonPlayer.Appearance) {
+						let color = "#ff5555";//InventoryGet(KinkyDungeonPlayer, "BodyUpper").Color;
+						if (color == "Asian") {
+							data.color[0] = "#8B7B70";
+						} else if (color == "Black") {
+							data.color[0] = "#684832";
+						}
+					}
+				} else {
+					if (KinkyDungeonPlayer && KinkyDungeonPlayer.Appearance) {
+						let color = InventoryGet(KinkyDungeonPlayer, "BodyUpper").Color;
+						if (color == "Asian") {
+							data.color[0] = "#8B7B70";
+						} else if (color == "Black") {
+							data.color[0] = "#684832";
+						}
 					}
 				}
 			}
@@ -230,11 +336,17 @@ let KDEventMapInventory = {
 	"drawSGTooltip": {
 		"curseInfo": (e, item, data) => {
 			if (item == data.item || KDRestraint(item)?.Group == data.group) {
+				let curse = KDGetCurse(item);
 				let pre = item == data.item ? "" : "[" + TextGet("Restraint" + item.name) + "] ";
-				data.extraLines.push(pre + TextGet("curseInfo" + e.msg));
+				if (curse && KDCurses[curse].activatecurse) {
+					data.extraLines.push(pre + TextGet("curseInfo" + e.msg));
+				} else {
+					data.extraLines.push(pre + TextGet("curseInfoDormant"));
+				}
 				data.extraLineColor.push(e.color);
 			}
 		},
+
 	},
 	"perksBonus": {
 		"spellDamage": (e, item, data) => {
@@ -269,7 +381,47 @@ let KDEventMapInventory = {
 
 		},
 	},
+	"afterPlayerDamage": {
+		"iceMelt": (e, item, data) => {
+			if (KinkyDungeonMeltDamageTypes.includes(KDDamageEquivalencies[data.type] || data.type) && data.dmg > 0) {
+				let alreadyDone = KDItemDataQuery(item, "iceMelt") || 0;
+				if (alreadyDone < e.count) {
+					alreadyDone += e.mult * data.dmg;
+					KDItemDataSet(item, "iceMelt", alreadyDone);
+					KinkyDungeonSendTextMessage(4, TextGet("KDIceMeltProgress").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				} else {
+					KDCreateEffectTile(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, {
+						name: "Water",
+						duration: 12,
+					}, 8);
+					KDRemoveThisItem(item);
+					KinkyDungeonSendTextMessage(4, TextGet("KDIceMelt").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				}
+			} else if (KinkyDungeonFreezeDamageTypes.includes(KDDamageEquivalencies[data.type] || data.type) && data.dmg > 0) {
+				let alreadyDone = KDItemDataQuery(item, "iceMelt") || 0;
+				if (alreadyDone > 0) {
+					alreadyDone = Math.max(0, alreadyDone - e.subMult * data.dmg);
+					KDItemDataSet(item, "iceMelt", alreadyDone);
+					KinkyDungeonSendTextMessage(4, TextGet("KDIceMeltCancelProgress").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				}
+			}
+		},
+	},
 	"tick": {
+		"iceMelt": (e, item, data) => {
+			let alreadyDone = KDItemDataQuery(item, "iceMelt") || 0;
+			if (alreadyDone < e.count) {
+				alreadyDone += e.power;
+				KDItemDataSet(item, "iceMelt", alreadyDone);
+			} else {
+				KDCreateEffectTile(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, {
+					name: "Water",
+					duration: 12,
+				}, 8);
+				KDRemoveThisItem(item);
+				KinkyDungeonSendTextMessage(4, TextGet("KDIceMelt").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+			}
+		},
 		"AntiMagicGag": (e, item, data) => {
 			let alreadyDone = KDItemDataQuery(item, "manaDrained") || 0;
 			if (alreadyDone < e.count) {
@@ -572,6 +724,18 @@ let KDEventMapInventory = {
 			}
 		}
 	},
+	"calcDisplayDamage": {
+		"BoostDamage": (e, item, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data)) {
+				data.buffdmg = Math.max(0, data.buffdmg + e.power);
+			}
+		},
+		"AmpDamage": (e, item, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data)) {
+				data.buffdmg = Math.max(0, data.buffdmg + (KinkyDungeonPlayerDamage.dmg || 0) * e.power);
+			}
+		},
+	},
 	"remove": {
 		"slimeStop": (e, item, data) => {
 			if (data.item === item) KDEventData.SlimeLevel = 0;
@@ -807,6 +971,12 @@ let KDEventMapInventory = {
 				if (data.cost && e.energyCost && KinkyDungeonStatMana < KinkyDungeonStatManaMax - 0.01) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
 			}
 		},
+		"ArmsFree": (e, item, data) => {
+			if (data.flags.KDEvasionArms) {
+				data.flags.KDEvasionArms = false;
+				if (data.cost && e.energyCost && KinkyDungeonStatMana < KinkyDungeonStatManaMax - 0.01) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
+			}
+		},
 		"BlindFighting": (e, item, data) => {
 			if (data.flags.KDEvasionSight) {
 				data.flags.KDEvasionSight = false;
@@ -816,8 +986,16 @@ let KDEventMapInventory = {
 	},
 	"beforePlayerAttack": {
 		"BoostDamage": (e, item, data) => {
-			data.buffdmg = Math.max(0, data.buffdmg + e.power);
-			if (e.energyCost && KinkyDungeonStatMana < KinkyDungeonStatManaMax - 0.01) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
+			if (KDCheckPrereq(data.target, e.prereq, e, data)) {
+				data.buffdmg = Math.max(0, data.buffdmg + e.power);
+				if (e.energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
+			}
+		},
+		"AmpDamage": (e, item, data) => {
+			if (KDCheckPrereq(data.target, e.prereq, e, data)) {
+				data.buffdmg = Math.max(0, data.buffdmg + (KinkyDungeonPlayerDamage.dmg || 0) * e.power);
+				if (e.energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
+			}
 		},
 	},
 	"beforeDamage": {
@@ -880,8 +1058,8 @@ let KDEventMapInventory = {
 			KinkyDungeonRemoveRestraint("ItemArms",false,false,true,false);
 			KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("KittyPetSuit"), 15, undefined, undefined, undefined, undefined, undefined, undefined, item.faction);
 			// leash if collared
-			let collared = InventoryGet(KinkyDungeonPlayer, "ItemNeck");
-			if(collared != null){
+			let collared = KinkyDungeonGetRestraintItem("ItemNeck");
+			if(collared != undefined){
 				KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("BasicLeash"), 1, false, "Red", undefined, undefined, undefined, undefined, item.faction);
 			}
 		},
@@ -1034,6 +1212,21 @@ let KDEventMapInventory = {
 		},
 	},
 	"playerAttack": {
+		"ElementalEffect": (e, item, data) => {
+			if (data.enemy && !data.miss && !data.disarm) {
+				if ((!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
+						KinkyDungeonDamageEnemy(data.enemy, {
+							type: e.damage,
+							damage: e.power,
+							time: e.time,
+							bind: e.bind,
+							bindType: e.bindType,
+						}, false, e.power <= 0.1, undefined, undefined, undefined);
+					}
+				}
+			}
+		},
 		"MotionSensitive": (e, item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {
 				if (e.msg && (e.always || !KDGameData.CurrentVibration)) KinkyDungeonSendTextMessage(1, TextGet(e.msg).replace("[RESTRAINTNAME]", TextGet("Restraint" + item.name)), "#aaaaaa", 1);
@@ -1443,7 +1636,7 @@ const KDEventMapBuff = {
 	},
 	"afterDamageEnemy": {
 		"ShrineElements": (e, buff, entity, data) => {
-			if (data.enemy && data.enemy.hp > 0.52 && KDHostile(data.enemy) && data.faction == "Player" && !KDEventDataReset.ShrineElements && ["fire", "ice", "frost", "electric", "gravity"].includes(data.type)) {
+			if (data.enemy && data.enemy.hp > 0.52 && KDHostile(data.enemy) && data.faction == "Player" && !KDEventDataReset.ShrineElements && data.spell) {
 				KDEventDataReset.ShrineElements = true;
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "shrineElements", 1);
 				KinkyDungeonCastSpell(data.enemy.x, data.enemy.y, KinkyDungeonFindSpell(e.spell, true), undefined, undefined, undefined, "Player");
@@ -2082,6 +2275,13 @@ let KDEventMapSpell = {
 
 			}
 		},
+		"ManaRegenSuspend": (e, spell, data) => {
+			if (!KDHasSpell("ManaRegenPlus")) {
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: e.time,
+				});
+			}
+		},
 		"DistractionCast": (e, spell, data) => {
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.99 || KinkyDungeonPlayerBuffs.DistractionCast) {
 				let tb = KinkyDungeonGetManaCost(data.spell) * 0.25;
@@ -2120,6 +2320,11 @@ let KDEventMapSpell = {
 				data.flags.KDEvasionHands = false;
 			}
 		},
+		"ArmsFree": (e, spell, data) => {
+			if (!data.IsSpell && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.flags.KDEvasionArms) {
+				data.flags.KDEvasionArms = false;
+			}
+		},
 	},
 	"calcManaPool": {
 		"EdgeRegenBoost": (e, spell, data) => {
@@ -2129,6 +2334,11 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
+		"ManaRegen": (e, spell, data) => {
+			if (KinkyDungeonStatMana + KinkyDungeonStatManaPool < KinkyDungeonStatManaMax * e.mult && !KinkyDungeonPlayerBuffs.ManaRegenSuspend) {
+				KinkyDungeonChangeMana(e.power, false, 0, false, false);
+			}
+		},
 		"SatisfiedDamageBuff": (e, spell, data) => {
 			if (KDGameData.OrgasmStamina > 0 && (!KinkyDungeonPlayerBuffs || !KinkyDungeonPlayerBuffs[spell.name + "DamageBuff"] || KinkyDungeonPlayerBuffs[spell.name + "DamageBuff"].duration == 0))
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
@@ -2326,6 +2536,11 @@ let KDEventMapSpell = {
 				data.flags.KDDamageHands = false;
 			}
 		},
+		"ArmsFree": (e, spell, data) => {
+			if (!data.IsSpell && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.flags.KDDamageArms) {
+				data.flags.KDDamageArms = false;
+			}
+		},
 	},
 	"getWeapon": {
 		"HandsFree": (e, spell, data) => {
@@ -2402,6 +2617,13 @@ let KDEventMapSpell = {
 			if (KinkyDungeonPlayerDamage && ((KinkyDungeonPlayerDamage.name && KinkyDungeonPlayerDamage.name != "Unarmed") || KinkyDungeonStatsChoice.get("Brawler")) && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.targetX && data.targetY && (data.enemy && KDHostile(data.enemy))) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 				KinkyDungeonCastSpell(data.targetX, data.targetY, KinkyDungeonFindSpell("FlameStrike", true), undefined, undefined, undefined);
+			}
+		},
+		"ManaRegenSuspend": (e, spell, data) => {
+			if (!KDHasSpell("ManaRegenPlus")) {
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: e.time,
+				});
 			}
 		},
 		"ElementalEffect": (e, spell, data) => {
@@ -2516,10 +2738,10 @@ let KDEventMapSpell = {
 	},
 	"toggleSpell": {
 		"ExclusiveTag": (e, spell, data) => {
-			if (spell?.name == data.spell?.name && KinkyDungeonSpellChoicesToggle[data.index] && !data.recursion?.includes(spell.name))
+			if (spell && spell.name == data.spell?.name && KinkyDungeonSpellChoicesToggle[data.index] && !data.recursion?.includes(spell.name))
 				for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
 					let spellOther = KinkyDungeonSpells[KinkyDungeonSpellChoices[i]];
-					if (spellOther.name != spell.name)
+					if (spellOther?.name != spell.name)
 						for (let tag of e.tags) {
 							if (KinkyDungeonSpellChoicesToggle[i] && spellOther?.tags?.includes(tag)) {
 								KinkyDungeonSpellChoicesToggle[i] = false;
@@ -3701,7 +3923,7 @@ let KDEventMapEnemy = {
 					if (!KinkyDungeonGetRestraintItem("ItemNeck")) {
 						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("ObsidianCollar"), 0, true, "Purple");
 					}
-					if (!KinkyDungeonGetRestraintItem("ItemNeckRestraints")) {
+					if (!KinkyDungeonGetRestraintItem("ItemNeckRestraints") && KinkyDungeonGetRestraintItem("ItemNeck")) {
 						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 0, true, "Purple");
 					}
 

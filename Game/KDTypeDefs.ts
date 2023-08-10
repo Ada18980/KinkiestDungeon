@@ -19,6 +19,8 @@ interface item extends Named {
 	type?: string,
 	/** Faction of the applied item */
 	faction?: string,
+	/** When added to the inventory, is added as a different item instead. Good for cursed items! */
+	inventoryAs?: string,
 	/** Events associated with the item*/
 	//weapon?: KinkyDungeonWeapon, /** Item weapon data, if applicable*/
 	//consumable?: any, /** Item consumable data, if applicable*/
@@ -63,6 +65,8 @@ interface item extends Named {
 	tightness?: number,
 	/** Determines the current trap attached to the restraint*/
 	trap?: string,
+	/** Can make the item itself show in quick inv*/
+	showInQuickInv?: boolean,
 }
 
 interface consumable {
@@ -1146,6 +1150,7 @@ interface KinkyDungeonEvent {
 	msg?: string;
 	prereq?: string;
 	color?: string;
+	bgcolor?: string;
 	/** Vibe */
 	edgeOnly?: boolean;
 	/** Vibe */
@@ -1840,6 +1845,7 @@ interface KinkyDungeonSave {
 	dress: string;
 	gold: number;
 	points: number;
+	inventoryVariants: Record<string, KDInventoryVariant>;
 	grounditems: any;
 	perks: string[];
 	levels: {
@@ -2128,6 +2134,8 @@ interface KDCursedDef {
 	lock?: boolean,
 	/** Power multiplier of the curse, similar to a lock's lockmult */
 	powerMult?: number,
+	/** This curse keeps events with the curse property from vanishing */
+	activatecurse?: boolean,
 	/** custom icon for removing (failure) */
 	customIcon_RemoveFailure?: string,
 	/** custom icon for removing (success) */
@@ -2139,12 +2147,22 @@ interface KDCursedDef {
 	remove: (item: item, host: item) => void, events?: KinkyDungeonEvent[]
 }
 
+type KDInventoryVariant = {
+	/** The curse to apply with this inventory variant */
+	curse?: string,
+	/** extra events added on */
+	events: KinkyDungeonEvent[],
+	/** The original restraint this is based on */
+	template: string,
+}
+
 type SpecialCondition = {
 	resetCD: boolean,
 	criteria: (enemy: entity, AIData: any) => boolean,
 }
 
 type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
+type KDEventData_CurseCount = {restraints: {item: item, host: item}[], count: number, activatedOnly: boolean}
 
 type KDExpression = {
 	priority: number;

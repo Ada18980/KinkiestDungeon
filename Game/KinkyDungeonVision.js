@@ -552,20 +552,35 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 		];
 	}
 
+	// Slight correction...
+	let xMult = 1;//(Math.floor(KinkyDungeonGridWidthDisplay)/KinkyDungeonGridWidthDisplay);
+	let yMult = 1;//(Math.floor(KinkyDungeonGridHeightDisplay)/KinkyDungeonGridHeightDisplay);
+
 	if (StandalonePatched) {
-		pad = 1;
+		pad = 0;
 		kdlightmapGFX.clear();
 		for (let R = 0; R <= KinkyDungeonGridHeightDisplay; R++)  {
 			for (let X = 0; X <= KinkyDungeonGridWidthDisplay; X++)  {
 				RY = R+CamY;
 				RX = X+CamX;
-				kdlightmapGFX.beginFill(0xffffff, KinkyDungeonVisionGrid[RX + RY*KinkyDungeonGridWidth] > 0 ? 0 : 1.);
+
+				if (KinkyDungeonVisionGrid[RX + RY*KinkyDungeonGridWidth] == 0) {
+					kdlightmapGFX.beginFill(0xffffff, 1.);
+					kdlightmapGFX.drawRect(
+						xMult*(X - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - pad,
+						yMult*(R - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - pad,
+						xMult*KinkyDungeonGridSizeDisplay + pad*2,
+						yMult*KinkyDungeonGridSizeDisplay + pad*2);
+					kdlightmapGFX.endFill();
+				}
+
+				/*kdlightmapGFX.beginFill(0xffffff, 0.5);
 				kdlightmapGFX.drawRect(
-					(X - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - pad,
-					(R - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - pad,
-					KinkyDungeonGridSizeDisplay + pad*2,
-					KinkyDungeonGridSizeDisplay + pad*2);
-				kdlightmapGFX.endFill();
+					xMult*(X - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+					yMult*(R - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
+					KinkyDungeonGridSizeDisplay/2,
+					KinkyDungeonGridSizeDisplay/2);
+				kdlightmapGFX.endFill();*/
 
 			}
 		}
@@ -575,6 +590,114 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 		});
 	}
 
+	let scale = KDMinimapScale;
+	let w = KDMinimapW;
+	let h = KDMinimapH;
+	let alpha = KDMinimapAlpha;
+	let borders = false;
+	let zoom = 1;
+	if (!KinkyDungeonShowInventory && (MouseIn(kdminimap.x, kdminimap.y, KDMinimapW*KDMinimapExpandedZoomTick, KDMinimapH*KDMinimapExpandedZoomTick) || KDExpandMinimap)) {
+		scale = KDMinimapExpandedZoom;
+		w = KDMinimapExpandedSize;
+		h = Math.floor(KDMinimapHBig/KDMinimapWBig*KDMinimapExpandedSize);
+		alpha = 1.;
+		zoom = (KDMinimapBaseSize/KDMinimapExpandedSize);
+		borders = true;
+	} else if (!KDExpandMinimap) {
+		//zoom = (KDMinimapBaseSize/KDMinimapExpandedSize);
+	}
+	KDMinimapWTarget = w*scale*zoom;
+	KDMinimapHTarget = h*scale*zoom;
+
+
+	KDRenderMinimap(KinkyDungeonPlayerEntity.x - w/2, KinkyDungeonPlayerEntity.y-h/2, w, h, scale, alpha, borders);
+
+	kdminimap.scale.x = KDMinimapWCurrent/KDMinimapWTarget*zoom;
+	kdminimap.scale.y = KDMinimapHCurrent/KDMinimapHTarget*zoom;
+
+}
+
+function KDMinimapWidth() {
+	return KDMinimapWCurrent;
+}
+function KDMinimapHeight() {
+	return KDMinimapHCurrent;
+}
+
+function KDUpdateMinimapTarget(force = false) {
+	KDMinimapWTarget = KDMinimapExpandedZoom*KDMinimapExpandedSize * (KDMinimapBaseSize/KDMinimapExpandedSize);
+	KDMinimapHTarget = KDMinimapExpandedZoom*Math.floor(KDMinimapHBig/KDMinimapWBig*KDMinimapExpandedSize) * (KDMinimapBaseSize/KDMinimapExpandedSize);
+	if (force) {
+		KDMinimapWCurrent = KDMinimapWTarget;
+		KDMinimapHCurrent = KDMinimapHTarget;
+	}
+}
+
+let KDExpandMinimap = false;
+let KDMinimapScale = 3;
+let KDMinimapScaleBig = 12;
+let KDMinimapW = 30;
+let KDMinimapH = 30;
+let KDMinimapBaseSize= 60;
+let KDMinimapExpandedSize = KDMinimapBaseSize;
+let KDMinimapExpandedSizeTick = 20;
+let KDMinimapWBig = 110;
+let KDMinimapHBig = 110;
+let KDMinimapAlpha = 0.7;
+
+let KDMinimapExpandedZoom = KDMinimapScaleBig;
+let KDMinimapExpandedZoomTick = 3;
+
+let KDMinimapWCurrent = KDMinimapW*KDMinimapScale;
+let KDMinimapHCurrent = KDMinimapH*KDMinimapScale;
+let KDMinimapWTarget = KDMinimapWCurrent;
+let KDMinimapHTarget = KDMinimapHCurrent;
+
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {number} w
+ * @param {number} h
+ * @param {number} scale
+ * @param {number} alpha
+ * @param {boolean} gridborders
+ */
+function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders) {
+	kdminimap.clear();
+	kdminimap.lineStyle(1, 0xaaaaaa);
+	kdminimap.beginFill(0x000000, alpha);
+	kdminimap.drawRect(
+		0,
+		0,
+		(w)*scale,
+		(h)*scale);
+	kdminimap.endFill();
+	for (let xx = 0; xx < w; xx++)  {
+		for (let yy = 0; yy < h; yy++)  {
+			if (KDIsInBounds(x+xx, y+yy, 1) && (KinkyDungeonVisionGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0 || KinkyDungeonFogGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0)) {
+				if (gridborders)
+					kdminimap.lineStyle(1, KinkyDungeonVisionGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0 ? 0xaaaaaa : 0, 0.5);
+				else
+					kdminimap.lineStyle(0, 0);
+				kdminimap.beginFill(string2hex(KDGetTileColor(x + xx, y + yy)), KinkyDungeonVisionGrid[(x+xx) + (y+yy)*KinkyDungeonGridWidth] > 0 ? 1. : 0.5);
+				kdminimap.drawRect(
+					xx*scale,
+					yy*scale,
+					scale,
+					scale);
+				kdminimap.endFill();
+			}
+		}
+	}
+	kdminimap.lineStyle(4, 0);
+	kdminimap.beginFill(0xffffff, 1.);
+	kdminimap.drawCircle(
+		w/2*scale+scale/2,
+		h/2*scale+scale/2,
+		scale);
+	kdminimap.endFill();
 }
 
 /**

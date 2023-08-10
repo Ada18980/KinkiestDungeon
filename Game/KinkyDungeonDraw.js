@@ -12,6 +12,7 @@ let KDReturnButtonXX = 1450;
 
 let KDIntenseFilter = null;
 
+let KDButtonHovering = false;
 
 
 
@@ -26,17 +27,23 @@ let pixirendererKD = null;
 let kdgamefog = new PIXI.Graphics();
 kdgamefog.zIndex = -1;
 
+let kdminimap = new PIXI.Graphics();
+kdminimap.x = 500;
+kdminimap.y = 10;
+kdminimap.zIndex = 80;
 
 let kdmapboard = new PIXI.Container();
 kdmapboard.zIndex = -2;
 kdmapboard.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 
-let kdlightmap = null
+let kdlightmap = null;
 let kdlightmapGFX = null;
 
 if (StandalonePatched) {
+	let res = 1;//KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
 	kdlightmapGFX = new PIXI.Graphics();
-	kdlightmap = PIXI.RenderTexture.create({ width: 2000, height: 1000});
+	kdlightmap = PIXI.RenderTexture.create({ width: 2047*res, height: 1023*res,});
+	//kdlightmapGFX.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 }
 let kddarkdesaturatefilter = new PIXI.Filter(null, KDShaders.Darkness.code, {
 	radius: .02*72/2000,
@@ -57,6 +64,7 @@ let kdfogfilter = new PIXI.Filter(null, KDShaders.FogFilter.code, {
 	contrast_rate: 0.03,
 	saturation: 0,
 });
+//kdfogfilter.resolution = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
 let kdgammafilterstore = [1.0];
 let kdgammafilter = new PIXI.Filter(null, KDShaders.GammaFilter.code, {
 	gamma: kdgammafilterstore,
@@ -101,6 +109,10 @@ kdcanvas.sortableChildren = true;
 kdcanvas.addChild(kdstatusboard);
 kdcanvas.addChild(kdenemystatusboard);
 kdcanvas.addChild(kdUItext);
+kdcanvas.addChild(kdminimap);
+
+
+//kdcanvas.addChild(new PIXI.Sprite(kdlightmap));
 
 let statusOffset = 0;
 
@@ -683,6 +695,55 @@ let KDLastKeyTime = {
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
+	KDButtonHovering = false;
+	if (kdminimap.visible) {
+		let zIndex = KDExpandMinimap ? 150 : 90;
+		if (KDExpandMinimap) {
+			let spacing = 40;
+			let starty = 15;
+			let ii = 0;
+			DrawButtonKDEx("minimapzoomin", (bdata) => {
+				KDMinimapExpandedSize = Math.max(KDMinimapW, KDMinimapExpandedSize - KDMinimapExpandedSizeTick);
+				KDUpdateMinimapTarget(true);
+				return true;
+			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/ZoomIn.png", undefined, false, true,
+			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+			DrawButtonKDEx("minimapzoomout", (bdata) => {
+				KDMinimapExpandedSize = Math.min(KDMinimapWBig, KDMinimapExpandedSize + KDMinimapExpandedSizeTick);
+				KDUpdateMinimapTarget(true);
+				return true;
+			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/ZoomOut.png", undefined, false, true,
+			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+			DrawButtonKDEx("minimapexpand", (bdata) => {
+				KDMinimapExpandedZoom = Math.min(KDMinimapScaleBig, KDMinimapExpandedZoom + KDMinimapExpandedZoomTick);
+				return true;
+			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Expand.png", undefined, false, true,
+			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+			DrawButtonKDEx("minimapshrink", (bdata) => {
+				KDMinimapExpandedZoom = Math.max(KDMinimapExpandedZoomTick, KDMinimapExpandedZoom - KDMinimapExpandedZoomTick);
+				return true;
+			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Shrink.png", undefined, false, true,
+			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+		}
+		kdminimap.zIndex = zIndex - 1;
+
+		// Dummy button to prevent clicks from moving the player inadvertently
+		DrawButtonKDEx("minimapdummy", (bdata) => {
+			KDExpandMinimap = !KDExpandMinimap;
+			return true;
+		}, true, 490, 0, KDMinimapWidth()+21, KDMinimapHeight()+21, "", KDButtonColor, undefined, undefined, false, true,
+		"#000000", undefined, undefined, {zIndex: zIndex-2, alpha: 0.});
+
+		KDMinimapWCurrent = (KDMinimapWTarget + KDUISmoothness * KDMinimapWCurrent)/(1 + KDUISmoothness);
+		KDMinimapHCurrent = (KDMinimapHTarget + KDUISmoothness * KDMinimapHCurrent)/(1 + KDUISmoothness);
+
+		// Snap when close or skipping smooth transition
+		if (Math.abs(KDMinimapWCurrent - KDMinimapWTarget) < 5) KDMinimapWCurrent = KDMinimapWTarget;
+		if (Math.abs(KDMinimapHCurrent - KDMinimapHTarget) < 5) KDMinimapHCurrent = KDMinimapHTarget;
+
+
+	}
+
 	if (StandalonePatched)
 		PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
 
@@ -759,12 +820,6 @@ function KinkyDungeonDrawGame() {
 	if (!(KinkyDungeonDrawState == "MagicSpells")) {
 		KDSwapSpell = -1;
 	}
-
-	// For the lower buttons
-	let bx = 650 + 15;
-	let bwidth = 165;
-	let bspacing = 5;
-	let bindex = 0;
 
 	if (KinkyDungeonDrawState == "Game") {
 		let tooltip = "";
@@ -979,6 +1034,7 @@ function KinkyDungeonDrawGame() {
 				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !KinkyDungeonShowInventory
 					&& MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height) && KinkyDungeonIsPlayer()
 					&& !MouseIn(0, 0, 500, 1000) && !MouseIn(1750, 0, 250, 1000)
+					&& !KDButtonHovering
 					&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))
 				) {
 					if (KinkyDungeonTargetingSpell) {
@@ -1379,102 +1435,24 @@ function KinkyDungeonDrawGame() {
 	} else if (KinkyDungeonDrawState == "Heart") {
 		KinkyDungeonDrawHeart();
 	} else if (KinkyDungeonDrawState == "Magic") {
-		DrawButtonKDEx("goInv", (bdata) => {
-			KinkyDungeonDrawState = "Inventory";
-			return true;
-		}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonInventory"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_inventory.png", undefined, undefined, false, "", 24, true); bindex++;
-		DrawButtonKDEx("goRep", (bdata) => {
-			KinkyDungeonDrawState = "Reputation";
-			return true;
-		}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonReputation"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_reputation.png", undefined, undefined, false, "", 24, true); bindex++;
-		DrawButtonKDEx("goSpells", (bdata) => {
-			KinkyDungeonDrawState = "MagicSpells";
-			return true;
-		}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonMagic"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_spells.png", undefined, undefined, false, "", 24, true); bindex++;
-
-		let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
-		DrawButtonKDEx("goLog", (bdata) => {
-			KinkyDungeonDrawState = "Logbook";
-			KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, logtxt, "#ffffff", KinkyDungeonRootDirectory + "UI/button_logbook.png", undefined, undefined, false, "", 24, true); bindex++;
-		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, bwidth, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
-
+		KDDrawBottomBarButtons(-1);
+		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KinkyDungeonDrawMagic();
-
 	} else if (KinkyDungeonDrawState == "MagicSpells") {
-		DrawButtonKDEx("goInv", (bdata) => {
-			KinkyDungeonDrawState = "Inventory";
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonInventory"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_inventory.png", undefined, undefined, false, "", 24, true); bindex++;
-		DrawButtonKDEx("goRep", (bdata) => {
-			KinkyDungeonDrawState = "Reputation";
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonReputation"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_reputation.png", undefined, undefined, false, "", 24, true); bindex++;
-		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, bwidth, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", ""); bindex++;
-
-		let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
-		DrawButtonKDEx("goLog", (bdata) => {
-			KinkyDungeonDrawState = "Logbook";
-			KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, logtxt, "#ffffff", KinkyDungeonRootDirectory + "UI/button_logbook.png", undefined, undefined, false, "", 24, true); bindex++;
+		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
+		KDDrawBottomBarButtons(2);
 		KinkyDungeonDrawMagicSpells();
 	} else if (KinkyDungeonDrawState == "Inventory") {
-		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, bwidth, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", ""); bindex++;
-		DrawButtonKDEx("goRep", (bdata) => {
-			KinkyDungeonDrawState = "Reputation";
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonReputation"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_reputation.png", undefined, undefined, false, "", 24, true); bindex++;
-		DrawButtonKDEx("goSpells", (bdata) => {
-			KinkyDungeonDrawState = "MagicSpells";
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonMagic"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_spells.png", undefined, undefined, false, "", 24, true); bindex++;
-
-		let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
-		DrawButtonKDEx("goLog", (bdata) => {
-			KinkyDungeonDrawState = "Logbook";
-			KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, logtxt, "#ffffff", KinkyDungeonRootDirectory + "UI/button_logbook.png", undefined, undefined, false, "", 24, true); bindex++;
-
-
+		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
+		KDDrawBottomBarButtons(0);
 		KinkyDungeonDrawInventory();
 	} else if (KinkyDungeonDrawState == "Logbook") {
-		DrawButtonKDEx("goInv", (bdata) => {
-			KinkyDungeonDrawState = "Inventory";
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonInventory"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_inventory.png", undefined, undefined, false, "", 24, true); bindex++;
-		DrawButtonKDEx("goRep", (bdata) => {
-			KinkyDungeonDrawState = "Reputation";
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonReputation"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_reputation.png", undefined, undefined, false, "", 24, true); bindex++;
-		DrawButtonKDEx("goSpells", (bdata) => {
-			KinkyDungeonDrawState = "MagicSpells";
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonMagic"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_spells.png", undefined, undefined, false, "", 24, true); bindex++;
-		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, bwidth, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", ""); bindex++;
-
-
-
+		KDDrawBottomBarButtons(3);
+		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KinkyDungeonDrawLore();
 	} else if (KinkyDungeonDrawState == "Reputation") {
-		DrawButtonKDEx("goInv", (bdata) => {
-			KinkyDungeonDrawState = "Inventory";
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonInventory"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_inventory.png", undefined, undefined, false, "", 24, true); bindex++;
-		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", ""); bindex++;
-		DrawButtonKDEx("goSpells", (bdata) => {
-			KinkyDungeonDrawState = "MagicSpells";
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, TextGet("KinkyDungeonMagic"), "#ffffff", KinkyDungeonRootDirectory + "UI/button_spells.png", undefined, undefined, false, "", 24, true); bindex++;
-		let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
-		DrawButtonKDEx("goLog", (bdata) => {
-			KinkyDungeonDrawState = "Logbook";
-			KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
-			return true;
-		}, true, bx + bindex *(bwidth + bspacing), 925, bwidth, 60, logtxt, "#ffffff", KinkyDungeonRootDirectory + "UI/button_logbook.png", undefined, undefined, false, "", 24, true); bindex++;
-
+		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
+		KDDrawBottomBarButtons(1);
 		KinkyDungeonDrawReputation();
 	} else if (KinkyDungeonDrawState == "Lore") {
 		DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 250, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
@@ -2113,7 +2091,7 @@ function DrawBoxKDTo(Container, Left, Top, Width, Height, Color, NoBorder, Alpha
 			Height: Height,
 			Color: KDBorderColor,
 			LineWidth: 2,
-			zIndex: zIndex + 0.001,
+			zIndex: zIndex + 0.004,
 		});
 	}
 }
@@ -2415,6 +2393,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {number} [options.alpha]
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {string} [options.tint] - tint
  * @returns {void} - Nothing
  */
 function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2446,6 +2425,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.unique] - This button is not differentiated by position
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {string} [options.tint] - tint
  * @returns {void} - Nothing
  */
 function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2465,8 +2445,9 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			Height: Height - 2 * pad + 1,
 			Color: "#ffffff",
 			LineWidth: 2,
-			zIndex: zIndex,
+			zIndex: zIndex + 0.005,
 		});
+		KDButtonHovering = true;
 	}
 
 	// Draw the text or image
@@ -2474,18 +2455,24 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 	if ((Image != null) && (Image != "")) {
 		let img = KDTex(Image);
 		if (Stretch || options?.scaleImage) {
+			let o = {
+				zIndex: zIndex + 0.01,
+			};
+			if (options?.tint) o.tint = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-				Image, Left, Top, Width, Height, undefined, {
-					zIndex: zIndex + 0.001,
-				});
+				Image, Left, Top, Width, Height, undefined, o);
 			/*DrawImageEx(Image, Left, Top, {
 				Width: Width,
 				Height: Height,
 			});*/
-		} else KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-			Image, Left + 2, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, {
-				zIndex: zIndex + 0.001,
-			});
+		} else {
+			let o = {
+				zIndex: zIndex + 0.01,
+			};
+			if (options?.tint) o.tint = options.tint;
+			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
+			Image, Left + 2, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
+		}
 		textPush = img.orig.width;
 	}
 	DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
@@ -2880,10 +2867,14 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 				sprite.filters = null;
 			} else {
 				for (let o of Object.entries(options)) {
-					sprite[o[0]] = o[1];
+					if (o[1] != undefined || o[0] != "tint")
+						sprite[o[0]] = o[1];
 				}
 			}
 
+			if (options.zIndex != undefined) {
+				sprite.zIndex = options.zIndex;
+			}
 			if (options.scalex != undefined) {
 				sprite.scale.x = sprite.scale.x * options.scalex;
 			}
@@ -2966,41 +2957,69 @@ function KDUpdateVision() {
 	KDVisionUpdate = 0;
 }
 
-
+/**
+ * @type {Record<string, () => {color: string, text: string, noInspect?: boolean}>}
+ */
 let KDTileTooltips = {
-	'1': () => {return {color: "#ffffff", text: "1"};},
-	'0': () => {return {color: "#ffffff", text: "0"};},
-	'2': () => {return {color: "#ffffff", text: "2"};},
+	'1': () => {return {color: "#aaaaaa", text: "1"};},
+	'0': () => {return {color: "#444444", text: "0"};},
+	'2': () => {return {color: "#444444", text: "2"};},
 	'R': () => {return {color: "#ffffff", noInspect: true, text: "R"};},
 	'Y': () => {return {color: "#ffffff", noInspect: true, text: "Y"};},
-	'L': () => {return {color: "#ffffff", noInspect: true, text: "L"};},
-	'A': () => {return {color: "#ffffff", noInspect: true, text: "A"};},
+	'L': () => {return {color: "#812913", noInspect: true, text: "L"};},
+	'A': () => {return {color: "#6d89d7", noInspect: true, text: "A"};},
 	'a': () => {return {color: "#ffffff", text: "a"};},
-	'O': () => {return {color: "#ffffff", text: "O"};},
+	'O': () => {return {color: "#92e8c0", text: "O"};},
 	'o': () => {return {color: "#ffffff", text: "o"};},
-	'C': () => {return {color: "#ffffff", noInspect: true, text: "C"};},
+	'C': () => {return {color: "#ffee83", noInspect: true, text: "C"};},
 	'c': () => {return {color: "#ffffff", text: "c"};},
-	'T': () => {return {color: "#ffffff", text: "T"};},
+	'T': () => {return {color: "#444444", text: "T"};},
 	'4': () => {return {color: "#ffffff", noInspect: true, text: "4"};},
-	'X': () => {return {color: "#ffffff", text: "X"};},
+	'X': () => {return {color: "#aaaaaa", text: "X"};},
 	'?': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
 	',': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
-	'S': () => {return {color: "#ffffff", noInspect: true, text: "S"};},
-	's': () => {return {color: "#ffffff", noInspect: true, text: "s"};},
-	'H': () => {return {color: "#ffffff", noInspect: true, text: "H"};},
-	'G': () => {return {color: "#ffffff", noInspect: true, text: "G"};},
-	'B': () => {return {color: "#ffffff", noInspect: true, text: "B"};},
+	'S': () => {return {color: "#4c6885", noInspect: true, text: "S"};},
+	's': () => {return {color: "#4c6885", noInspect: true, text: "s"};},
+	'H': () => {return {color: "#4c6885", noInspect: true, text: "H"};},
+	'G': () => {return {color: "#69bf3e", noInspect: true, text: "G"};},
+	'B': () => {return {color: "#4444ff", noInspect: true, text: "B"};},
 	'@': () => {return {color: "#ffffff", noInspect: true, text: "@"};},
-	'b': () => {return {color: "#ffffff", noInspect: true, text: "b"};},
-	'D': () => {return {color: "#ffffff", noInspect: true, text: "D"};},
-	'd': () => {return {color: "#ffffff", noInspect: true, text: "d"};},
+	'b': () => {return {color: "#aaaaaa", noInspect: true, text: "b"};},
+	'D': () => {return {color: "#9c4f3e", noInspect: true, text: "D"};},
+	'd': () => {return {color: "#7e4336", noInspect: true, text: "d"};},
 	'Z': () => {return {color: "#ffffff", noInspect: true, text: "Z"};},
 	'z': () => {return {color: "#ffffff", noInspect: true, text: "z"};},
 	't': () => {return {color: "#aa55ff", noInspect: true, text: "t"};},
 	'u': () => {return {color: "#ffffff", noInspect: true, text: "u"};},
 	'V': () => {return {color: "#ffffff", noInspect: true, text: "V"};},
-	'N': () => {return {color: "#ffffff", noInspect: true, text: "N"};},
+	'N': () => {return {color: "#4c6885", noInspect: true, text: "N"};},
 };
+
+function KDGetTileColor(x, y) {
+	let color = "";
+
+	if (!KDIsInBounds(x, y, 0)) return "#000000";
+	let eTile = KDGetEffectTiles(x, y);
+	let maxPri = -1000;
+	let maxTile = null;
+	for (let tile of Object.entries(eTile)) {
+		if (tile[1].priority > maxPri && KDEffectTileTooltips[tile[0]] && KDCanSeeEffectTile(tile[1])) {
+			maxTile = tile[0];
+			maxPri = tile[1].priority;
+		}
+	}
+
+	if (maxTile) {
+		color = KDEffectTileTooltips[maxTile].color;
+	} else {
+		let tile = KinkyDungeonMapGet(x, y);
+		if (KDTileTooltips[tile]) {
+			color = KDTileTooltips[tile]().color;
+		}
+	}
+
+	return color || "#444444";
+}
 
 
 function KDDrawTileTooltip(maptile, x, y, offset) {
@@ -3018,95 +3037,158 @@ function KDDrawTileTooltip(maptile, x, y, offset) {
 }
 
 
+/**
+ * @type {Record<string, {color: string, code: (tile, x, y, TooltipList) => void}>}
+ */
 let KDEffectTileTooltips = {
-	'Portals/DarkPortal': (tile, x, y, TooltipList) => {
-		TooltipList.push({
-			str: TextGet("KDEffectTileTooltip" + tile.name),
-			fg: "#8b53e9",
-			bg: "#000000",
-			size: 24,
-			center: true,
-		});
-		TooltipList.push({
-			str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
-			fg: "#ffffff",
-			bg: "#000000",
-			size: 16,
-			center: true,
-		});
+	'Portals/DarkPortal': {
+		color: "#8b53e9",
+		code: (tile, x, y, TooltipList) => {
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name),
+				fg: "#8b53e9",
+				bg: "#000000",
+				size: 24,
+				center: true,
+			});
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 16,
+				center: true,
+			});
+		},
 	},
-	'Runes': (tile, x, y, TooltipList) => {
-		TooltipList.push({
-			str: TextGet("KDEffectTileTooltip" + tile.name),
-			fg: "#ff5555",
-			bg: "#000000",
-			size: 24,
-			center: true,
-		});
-		TooltipList.push({
-			str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
-			fg: "#ffffff",
-			bg: "#000000",
-			size: 16,
-			center: true,
-		});
+	'Runes': {
+		color: "#ff5555",
+		code: (tile, x, y, TooltipList) => {
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name),
+				fg: "#ff5555",
+				bg: "#000000",
+				size: 24,
+				center: true,
+			});
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 16,
+				center: true,
+			});
+		}
 	},
-	'RunesTrap': (tile, x, y, TooltipList) => {
-		TooltipList.push({
-			str: TextGet("KDEffectTileTooltip" + tile.name),
-			fg: "#92e8c0",
-			bg: "#000000",
-			size: 24,
-			center: true,
-		});
-		TooltipList.push({
-			str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
-			fg: "#ffffff",
-			bg: "#000000",
-			size: 16,
-			center: true,
-		});
+	'RunesTrap': {
+		color: "#92e8c0",
+		code: (tile, x, y, TooltipList) => {
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name),
+				fg: "#92e8c0",
+				bg: "#000000",
+				size: 24,
+				center: true,
+			});
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 16,
+				center: true,
+			});
+		}
 	},
-	'Inferno': (tile, x, y, TooltipList) => {
-		TooltipList.push({
-			str: TextGet("KDEffectTileTooltip" + tile.name),
-			fg: "#ff8855",
-			bg: "#000000",
-			size: 24,
-			center: true,
-		});
-		TooltipList.push({
-			str: TextGet("KDEffectTileTooltip" + tile.name + "Desc").replace("DAMAGEDEALT", "" + Math.round(10 * KDGetEnvironmentalDmg())),
-			fg: "#ffaa55",
-			bg: "#000000",
-			size: 16,
-			center: true,
-		});
+	'Inferno': {
+		color: "#ff8855",
+		code: (tile, x, y, TooltipList) => {
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name),
+				fg: "#ff8855",
+				bg: "#000000",
+				size: 24,
+				center: true,
+			});
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name + "Desc").replace("DAMAGEDEALT", "" + Math.round(10 * KDGetEnvironmentalDmg())),
+				fg: "#ffaa55",
+				bg: "#000000",
+				size: 16,
+				center: true,
+			});
+		}
 	},
-	'Ember': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffaa88");},
-	'Ice': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#88ffff");},
-	'Water': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#8888ff");},
-	'Vines': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#44ff44", "KDEffectTileTooltipCMDBindings");},
-	'Ropes': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffae70", "KDEffectTileTooltipCMDBindings");},
-	'Chains': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#aaaaaa", "KDEffectTileTooltipCMDBindings");},
-	'Belts': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#8f4d57", "KDEffectTileTooltipCMDBindings");},
-	'Fabric': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff5277", "KDEffectTileTooltipCMDBindings");},
-	'FabricGreen': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#63ab3f", "KDEffectTileTooltipCMDBindings");},
-	'Slime': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff", "KDEffectTileTooltipCMDSlime");},
-	'Latex': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");},
-	'LatexThin': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");},
-	'Steam': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
-	'Smoke': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#888888");},
-	'Torch': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
-	'TorchUnlit': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
-	'Lantern': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
-	'LanternUnlit': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
-	'IllusOrb': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
-	'IllusOrbDead': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
-	'EdgeOrb': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
-	'EdgeOrbDead': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
-	'TorchOrb': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");},
-	'Cracked': (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");},
+	'Ember': {
+		color: "#ffaa88",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffaa88");}},
+	'Ice': {
+		color: "#88ffff",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#88ffff");}},
+	'Water': {
+		color: "#8888ff",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#8888ff");}},
+	'Vines': {
+		color: "#44ff44",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#44ff44", "KDEffectTileTooltipCMDBindings");}},
+	'Ropes': {
+		color: "#ffae70",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffae70", "KDEffectTileTooltipCMDBindings");}},
+	'Chains': {
+		color: "#aaaaaa",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#aaaaaa", "KDEffectTileTooltipCMDBindings");}},
+	'Belts': {
+		color: "#8f4d57",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#8f4d57", "KDEffectTileTooltipCMDBindings");}},
+	'Fabric': {
+		color: "#ff5277",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff5277", "KDEffectTileTooltipCMDBindings");}},
+	'FabricGreen': {
+		color: "#63ab3f",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#63ab3f", "KDEffectTileTooltipCMDBindings");}},
+	'Slime': {
+		color: "#d952ff",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff", "KDEffectTileTooltipCMDSlime");}},
+	'Latex': {
+		color: "#d952ff",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
+	'LatexThin': {
+		color: "#d952ff",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
+	'Steam': {
+		color: "#ffffff",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'Smoke': {
+		color: "#000000",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#888888");}},
+	'Torch': {
+		color: "#ff8933",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'TorchUnlit': {
+		color: "#888888",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'Lantern': {
+		color: "#ff8933",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'LanternUnlit': {
+		color: "#888888",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'IllusOrb': {
+		color: "#ff8933",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'IllusOrbDead': {
+		color: "#555555",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'EdgeOrb': {
+		color: "#ff8933",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'EdgeOrbDead': {
+		color: "#555555",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'TorchOrb': {
+		color: "#ff8933",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'Cracked': {
+		color: "#ff8844",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},
 };
 /**
  *
@@ -3153,7 +3235,7 @@ function KDETileTooltipSimple(tile, TooltipList, color, extra, descColor = "#fff
  */
 function KDDrawEffectTileTooltip(tile, x, y, offset) {
 	let TooltipList = [];
-	KDEffectTileTooltips[tile.name](tile, x, y, TooltipList);
+	KDEffectTileTooltips[tile.name].code(tile, x, y, TooltipList);
 
 	return KDDrawTooltip(TooltipList, offset);
 }
@@ -3184,7 +3266,7 @@ function KDDrawTooltip(TooltipList, offset) {
 		Color: "#000000",
 		LineWidth: 1,
 		zIndex: 75,
-		alpha: 0.4,
+		alpha: 0.7,
 	});
 
 	let pad = 10;
