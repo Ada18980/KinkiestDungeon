@@ -117,18 +117,25 @@ function KDProcessInput(type, data) {
 			KinkyDungeonSleepTime = CommonTime() + 200;
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
 			break;
+		case "drop": {
+			KDDropItemInv(data.item);
+			break;
+		}
 		case "equip":
 			KDDelayedActionPrune(["Action", "Equip"]);
-			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonRestraintsCache.get(data.name), 0, true, "", KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonRestraintsCache.get(data.currentItem), KinkyDungeonRestraintsCache.get(data.name)), false, data.events, data.faction, false, data.curse);
+			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0, true, "", KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem), KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, false, data.curse, undefined, undefined, data.inventoryAs);
 			if (success != undefined) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
 				KDSendStatus('bound', data.name, "self");
 				loose = KinkyDungeonInventoryGetLoose(data.name);
-				if (!(loose.quantity > 1)) {
-					KinkyDungeonInventoryRemove(loose);
-				} else {
-					loose.quantity -= 1;
+				if (loose) {
+					if (!(loose.quantity > 1)) {
+						KinkyDungeonInventoryRemove(loose);
+					} else {
+						loose.quantity -= 1;
+					}
 				}
+
 
 				KDStunTurns(2, true);
 

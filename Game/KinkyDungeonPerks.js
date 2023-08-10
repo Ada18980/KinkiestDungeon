@@ -193,6 +193,7 @@ let KDPerkCount = {
  */
 let KinkyDungeonStatsPresets = {
 	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 2, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
+	"MC_Wizard":  {category: "Multiclass", id: "MC_Wizard", cost: 2, blockclass: ["Wizard"], tags: ["start", "mc"]},
 
 
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1, block: ["SecondWind"]},
@@ -294,6 +295,7 @@ let KinkyDungeonStatsPresets = {
 	"Forgetful": {category: "Map", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
 	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
 	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"]},
+	"NoPolice": {category: "Toggles", id: "NoPolice", cost: 0, tags: ["start"]},
 	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, tags: ["start"], debuff: true, block: ["OnlyBrats"]},
 	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], debuff: true, block: ["NoBrats"]},
 	"TapePref": {category: "Toggles", id: "TapePref", cost: 0, tags: ["start"], block: ["TapeOptout"]},
@@ -661,6 +663,9 @@ let KDPerkStart = {
 	},
 	MC_Trainee: () => {
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("DistractionCast"));
+	},
+	MC_Wizard: () => {
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaRegen"));
 	},
 };
 

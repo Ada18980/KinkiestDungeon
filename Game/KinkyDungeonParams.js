@@ -86,7 +86,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Leather", Weight: 5},
 			{Type: "Metal", Weight: 3},
 			{Type: "Rope", Weight: 2},
-			{Type: "Will", Weight: 7},]
+			{Type: "Will", Weight: 13},]
 
 
 	},
@@ -185,7 +185,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Leather", Weight: 5},
 			{Type: "Metal", Weight: 3},
 			{Type: "Rope", Weight: 2},
-			{Type: "Will", Weight: 7},]
+			{Type: "Will", Weight: 13},]
 
 	},
 	"jng":{//DungeonName2,-Underground Jungle-
@@ -273,7 +273,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Leather", Weight: 5},
 			{Type: "Metal", Weight: 3},
 			{Type: "Rope", Weight: 5},
-			{Type: "Will", Weight: 5},]
+			{Type: "Will", Weight: 13},]
 	},
 	"tmp":{//DungeonName3,-Lost Temple-
 		"background" : "SpookyForest",
@@ -376,7 +376,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Leather", Weight: 3},
 			{Type: "Metal", Weight: 5},
 			{Type: "Rope", Weight: 3},
-			{Type: "Will", Weight: 7},],
+			{Type: "Will", Weight: 13},],
 
 		"lockmult" : 1.5,
 	},
@@ -475,7 +475,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Metal", Weight: 3},
 			{Type: "Rope", Weight: 4},
 			{Type: "Leather", Weight: 6},
-			{Type: "Will", Weight: 7},]
+			{Type: "Will", Weight: 13},]
 	},
 	"lib":{//DungeonName12,-Magic Library-
 		"background" : "MagicSchoolLaboratory",
@@ -563,7 +563,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Metal", Weight: 3},
 			{Type: "Rope", Weight: 4},
 			{Type: "Leather", Weight: 6},
-			{Type: "Will", Weight: 7},]
+			{Type: "Will", Weight: 13},]
 	},
 	"cry":{//DungeonName13,-Crystal Cave-
 		"background" : "MagicSchoolEscape",
@@ -660,7 +660,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Metal", Weight: 3},
 			{Type: "Rope", Weight: 4},
 			{Type: "Leather", Weight: 6},
-			{Type: "Will", Weight: 7},]
+			{Type: "Will", Weight: 13},]
 	},
 
 	"ore":{//DungeonName8,-Orrery-
@@ -756,7 +756,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Leather", Weight: 5},
 			{Type: "Metal", Weight: 3},
 			{Type: "Rope", Weight: 5},
-			{Type: "Will", Weight: 7},],
+			{Type: "Will", Weight: 13},],
 
 		"lockmult" : 1.6,
 	},
@@ -856,7 +856,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Leather", Weight: 7},
 			{Type: "Metal", Weight: 10},
 			{Type: "Rope", Weight: 3},
-			{Type: "Will", Weight: 7},],
+			{Type: "Will", Weight: 13},],
 
 		"lockmult" : 2.0,
 	},
@@ -944,7 +944,7 @@ const KinkyDungeonMapParams = {
 			{Type: "Leather", Weight: 5},
 			{Type: "Metal", Weight: 3},
 			{Type: "Rope", Weight: 2},
-			{Type: "Will", Weight: 7},]
+			{Type: "Will", Weight: 13},]
 
 	},
 };

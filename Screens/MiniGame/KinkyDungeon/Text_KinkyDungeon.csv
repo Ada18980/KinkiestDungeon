@@ -24,7 +24,7 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 
-KinkyDungeon,"Kinky Dungeon v4.31"
+KinkyDungeon,"Kinky Dungeon v4.35"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -390,6 +390,8 @@ KinkyDungeonStatNoDoll,"Not a Doll"
 KinkyDungeonStatDescNoDoll,"You may still enter Doll Terminals, but enemies will not force you onto doll stands."
 KinkyDungeonStatNoNurse,"No Nurses"
 KinkyDungeonStatDescNoNurse,"Nurses will not appear in the game."
+KinkyDungeonStatNoPolice,"No Police"
+KinkyDungeonStatDescNoPolice,"Police-based bounty hunters will not appear in the game."
 KinkyDungeonStatNoBrats,"No Brats"
 KinkyDungeonStatDescNoBrats,"Submissive enemies won't run away from you."
 KinkyDungeonStatOnlyBrats,"Brats Only"
@@ -407,13 +409,13 @@ KinkyDungeonStatDescSlimeOptout,"Fewer encasement-related enemies will appear, a
 
 
 KinkyDungeonStatMC_Trainee,"Trainee"
-KinkyDungeonStatDescMC_Trainee,"Your training has given you access to the spells of the Trainee class. (Aroused mode only)"
+KinkyDungeonStatDescMC_Trainee,"Your training has given you access to the powers of the Trainee class. (Aroused mode only)"
 KinkyDungeonStatMC_Fighter,"Warrior"
-KinkyDungeonStatDescMC_Fighter,"Your training has given you access to the spells of the Warrior class."
+KinkyDungeonStatDescMC_Fighter,"Your training has given you access to the powers of the Warrior class."
 KinkyDungeonStatMC_Rogue,"Rogue"
-KinkyDungeonStatDescMC_Rogue,"Your training has given you access to the spells of the Rogue class."
-KinkyDungeonStatMC_Mage,"Wizard"
-KinkyDungeonStatDescMC_Mage,"Your training has given you access to the spells of the Wizard class."
+KinkyDungeonStatDescMC_Rogue,"Your training has given you access to the powers of the Rogue class."
+KinkyDungeonStatMC_Wizard,"Wizard"
+KinkyDungeonStatDescMC_Wizard,"Your training has given you access to the powers of the Wizard class."
 
 
 KinkyDungeonStatPanic,"Panic!!!"
@@ -905,7 +907,7 @@ KinkyDungeonRarity9,Angelic
 KinkyDungeonRarity10,Divine
 
 KinkyDungeonConsumableQuantity,Quantity:
-KinkyDungeonConsume,Use Item (Consumes 1)
+KinkyDungeonConsume,Use One
 
 KinkyDungeonInventoryItemnull,way of the fist
 KinkyDungeonInventoryItemPick,Lockpick
@@ -2821,6 +2823,7 @@ KinkyDungeonNeedOpenChest,"The chest is too smooth to help. Maybe if you opened 
 KinkyLockable,Lockable
 KinkyNonLockable,Non-Lockable
 
+KinkyCursed,"Cursed"
 KinkyUnlocked,"Unlocked"
 KinkyLocked,"Lock Type: "
 KinkyRedLockType,"Red"
@@ -2861,8 +2864,8 @@ KinkyDungeonDropRedKey,"You drop the key due to your bound hands!"
 KinkyDungeonDropBlueKey,"You drop the magic key due to your bound hands!"
 KinkyDungeonDropGreenKey,"You drop the magic key due to your bound hands!"
 
-KinkyDungeonLogbook,Logbook
-KinkyDungeonLogbookN,Logbook (N)
+KinkyDungeonLogbook,Log
+KinkyDungeonLogbookN,Log (N)
 KinkyDungeonAutoPassOn,"Passing..."
 KinkyDungeonAutoPassOff,"Pass NPCs"
 KinkyDungeonAutoDoorOn,"Closing..."
@@ -2988,8 +2991,9 @@ KinkyDungeonCategoryFilterconsumable,Consumable
 KinkyDungeonCategoryFilterrestraint,Equipped
 KinkyDungeonCategoryFilterweapon,Weapons
 KinkyDungeonCategoryFilteroutfit,Outfits
-KinkyDungeonCategoryFilterlooserestraint,Wearable
+KinkyDungeonCategoryFilterlooserestraint,Restraints
 KinkyDungeonCategoryFiltermisc,Miscellaneous
+KinkyDungeonCategoryFilterarmor,Armor
 
 KDNoisyTerrain,The terrain makes noise as you rush across it...
 
@@ -3521,6 +3525,9 @@ RestraintMagicGag2Desc2,"It's brimming with conjured energy. A normal knife won'
 RestraintAntiMagicGag,Anti-Magic Gag
 RestraintAntiMagicGagDesc,"A gag designed to cripple mages. It's made of a squishy rubbery material."
 RestraintAntiMagicGagDesc2,"It's sealed with a magical spell that rapidly absorbs mana! When it drains 40 mana it will transform into an ordinary gag and inflate."
+RestraintAntiMagicGag2,Anti-Mage Gag
+RestraintAntiMagicGag2Desc,"A gag designed to cripple experienced spellcasters. It's made of a magic-absorbing rubber."
+RestraintAntiMagicGag2Desc2,"You feel the energy flowing out of you! When it drains 100 mana it will transform into an ordinary gag and inflate."
 RestraintTrapBoots,Ballet Heels
 RestraintTrapBootsDesc,"A pair of shoes with heels so tall it forces you on your toes."
 RestraintTrapBootsDesc2,"These will take some getting used to."
@@ -4643,6 +4650,12 @@ KinkyDungeonInfernoBurn,The roaring inferno deals 10 damage to you!
 KinkyDungeonSpellDistractionCast,Mana Burst
 KinkyDungeonSpellDescriptionDistractionCast,"As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus..."
 
+KinkyDungeonSpellManaRegen,Inner Power
+KinkyDungeonSpellDescriptionManaRegen,"As a wizard, you are able to harness a power source to regenerate mana up to 20% of your maximum mana. This regeneration is paused for 6 turns after attacking or casting a spell."
+
+KinkyDungeonSpellManaRegenPlus,Battlemage
+KinkyDungeonSpellDescriptionManaRegenPlus,"Your innate mana regeneration is no longer paused after attacking or casting a spell."
+
 KinkyDungeonSpellOrgasmMana1,Way of Pleasure
 KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 40 mana as long as you have willpower to spare. Blocks Way of Discipline."
 
@@ -5289,13 +5302,13 @@ NamePetDisplay,Display Doll
 KillPetDisplay,The enemy steals your doll from you!
 
 KinkyDungeonSpellPetsuit,Conjure Petsuit
-KinkyDungeonSpellDescriptionPetsuit,"Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery."
+KinkyDungeonSpellDescriptionPetsuit,"Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool."
 KinkyDungeonSpellCastPetsuit,"You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!"
 KinkyDungeonSpellCastSelfPetsuit,"You watch in horror as your own creation lunges toward you, binding your hands and feet!"
 KinkyDungeonSpellTargetPetsuit,Choose a helpless target
 
 KinkyDungeonSpellDisplayStand,Conjure Display Stand
-KinkyDungeonSpellDescriptionDisplayStand,"Target only Helpless enemies. Creates a fixture that increases passive mana recovery, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage."
+KinkyDungeonSpellDescriptionDisplayStand,"Target only Helpless enemies. Creates a fixture that increases passive mana recovery from mana pool, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage."
 KinkyDungeonSpellCastDisplayStand,"You conjure a fixture to hold your helpless target in place!"
 KinkyDungeonSpellCastSelfDisplayStand,"You watch in horror as your own creation surrounds you, locking you in place with a hefty click!"
 KinkyDungeonSpellTargetDisplayStand,Choose a helpless target
@@ -5868,8 +5881,8 @@ KinkyDungeonTrapSleepDart,"You feel a prick as a small dart hits you, and you st
 KinkyDungeonTrapLustCloud,"You breathe in the gas, and a wave of pleasure hits your whole body."
 KinkyDungeonTrapSPCloud,"You breathe in the gas, and feel lethargic..."
 
-KinkyDungeonInventory,"Inventory"
-KinkyDungeonReputation,"Reputation"
+KinkyDungeonInventory,"Items"
+KinkyDungeonReputation,"Rep"
 KinkyDungeonMagic,"Spells"
 KinkyDungeonMagicSpells,"Learn New Spells"
 KinkyDungeonMagicSpellsQuick,"Click a spell to replace SPELLNAME with."
@@ -6059,6 +6072,7 @@ curseInfoDistraction,"Curse of Distraction: Multiplies DP gain by 1.5x."
 curseInfoBreathlessness,"Curse of Breathlessness: Multiplies SP gain by 0.6x."
 curseInfoFutile,"Curse of Futility: Multiplies WP gain by 0.25x."
 curseInfoSubmission,"Curse of Submission: Gain submissiveness when you lose control of yourself..."
+curseInfoDormant,"The curse is dormant, waiting for the time to strike..."
 KDSubmissionCurseApply,"Your RESTRAINTNAME glows pink as you feel your mind attacked by hypnotic forces!"
 
 KDcurseRestrain,"The item is cursed! Several restraints appear on your body!"
@@ -7716,7 +7730,7 @@ KinkyDungeonRemindJailChaseWitchAttack2,"I'll turn you into a newt!"
 KinkyDungeonRemindJailChaseWitchSpell0,"Oh, so you've got a spellbook. What's it written in, curse-ive?"
 KinkyDungeonRemindJailChaseWitchSpell1,"Snap, crackle, and pop!"
 KinkyDungeonRemindJailChaseWitchSpell2,"Looks like I need to seal that foul mouth of yours."
-KinkyDungeonRemindJailChaseWitchSpellItem,"I recognize that thing you're holding!"
+KinkyDungeonRemindJailChaseWitchSpellItem,"Put that toy away~"
 KinkyDungeonRemindJailChaseWitchShrine,"You'll be praying for freedom soon, my dear~"
 KinkyDungeonRemindJailChaseWitchChest,"Oh, breaking into my collection, are you?"
 KinkyDungeonRemindJailChaseWitchOrb,"Even I wouldn't do such a thing!"
@@ -9685,13 +9699,14 @@ rBanditQuest,"(A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adven
 rBanditQuestHelp,"(The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out."
 dBanditQuest_Help,(Show interest)
 
-rPrisonerJail,"(The SPEAKER sits bound in high-security manacles)|You'll need to open the lock to get her out..."
+rPrisonerJail,"(The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get her out.)"
 rPrisonerJailNoKeys,"(You don't have any keys that work on the lock)"
 rPrisonerJailUnlockHandsBound,"(You can't help her, bound as tightly as you are...)"
 rPrisonerJailUnlockSlow,"(You unlock her, fumbling around for a while with your bound hands)"
 rPrisonerJailUnlock,"(You unlock the SPEAKER)|Thank you!|Let's get out of here!"
 rPrisonerJailUnlockGagged,"(You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)"
 rPrisonerJailNoPick,"(You don't have any lockpicks)"
+rPrisonerJailPickJam,"(You try to pick the lock...)|(Click! A safety shield locks securely into place!)|(Looks like the SPEAKER will be staying here for a while...)"
 rPrisonerJailPickHandsBound,"(You can't pick the lock with your hands bound)"
 rPrisonerJailPick,"(After a while, you free the SPEAKER)|Thank you!|Let's get moving!"
 rPrisonerJailPickGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)"
@@ -9699,10 +9714,12 @@ rPrisonerJailWordNoMana,"(You don't have enough mana for a command word)"
 rPrisonerJailWordNoSpeak,"(Try as you might, your mouth is sealed tight)"
 rPrisonerJailWord,"(You utter a command word to free the SPEAKER)|Many thanks!|Let's go!"
 rPrisonerJailWordGagged,"(You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)"
+rPrisonerJailJammed,"(The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)"
 
 dPrisonerJail_Unlock,Use a key to unlock her
-dPrisonerJail_Pick,Try to pick her restraints
+dPrisonerJail_Pick,"Try to pick her restraints (JAMPERCENT jam chance)"
 dPrisonerJail_Word,Use a command word
+dPrisonerJailJammedRecent_Apologize,Apologize profusely!
 
 KinkyDungeonDiscovered,An enemy found you while you were busy!
 
@@ -10168,9 +10185,9 @@ RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
 RestraintRopeSnakeHogtie,Rope Hogtie
 RestraintRopeSnakeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintRopeSnakeHogtieDesc2,"It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle."
-RestraintRopeSnakeHogtieWristtie,Rope Hogtie
-RestraintRopeSnakeHogtieWristtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
-RestraintRopeSnakeHogtieWristtieDesc2,"It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle."
+RestraintRopeSnakeHogtieWrist,Rope Hogtie
+RestraintRopeSnakeHogtieWristDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintRopeSnakeHogtieWristDesc2,"It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle."
 RestraintRopeSnakeBelt,Rope Belt
 RestraintRopeSnakeBeltDesc,"A harness acting as a handle to pull you around"
 RestraintRopeSnakeBeltDesc2,"The ropes squeeze you gently."
@@ -10214,6 +10231,17 @@ KDWardrobeBackToMenu,Back to Menu
 
 KinkyDungeonItemsUnderneathTotal,"Item Stack:"
 
+KDFilterFiltersAncient,Ancient
+KDFilterFiltersCursed,Cursed
+KDFilterFiltersHeavy,Heavy
+KDFilterFiltersMage,Mage
+KDFilterFiltersLight,Light
+KDFilterFiltersAccessory,Accessory
+KDFilterFiltersRestraint,Restraint
+KDFilterFiltersArmor,Armor
+KDFilterFiltersSpecial,Special
+KDFilterFiltersEnchanted,Enchanted
+KDFilterFiltersMundane,Mundane
 KDFilterFiltersRope,Rope
 KDFilterFiltersMetal,Metal
 KDFilterFiltersLatex,Latex
@@ -10385,6 +10413,7 @@ KinkyDungeonSpellArrowVineSpell,Vine Arrows
 KinkyDungeonSpellDescriptionArrowVineSpell,"Converts arrows to all-natural organic versions for 20 extra charge, which apply 50 binding to the target and deal chain damage instead."
 KDSwitchArrowVineSpell,"You switch to using vine arrows."
 KinkyDungeonSpellArrowVine,Vine Arrow
+KinkyDungeonSpellArrowVineBind,"A sudden burst of vines overtakes you as you find yourself wrapped up tightly!"
 
 LootArcheryKit,"You find a bow and a glowing crystal. The bow is scribed with runes of duplication."
 
@@ -10398,7 +10427,40 @@ KinkyDungeonSpellTargetArrowBolt,Choose projectile path
 KinkyDungeonSpellArrowBolt,Bolt
 KinkyDungeonSpellCastArrowBolt,"You pull the trigger!"
 
+KDIceMelt,"Your RestraintName melts off!"
+KDIceMeltProgress,"Your RestraintName melts faster with the application of fire!"
+KDIceMeltCancelProgress,"Your RestraintName hardens with the application of frost!"
 
+KinkyDungeonSpellNull,Unique
 KDdmg,dmg
 KDrep,rep
 KDGoddesses,"Goddesses:"
+
+KDVariableModifier_Evasion,"Elven Grace: AMNT Evasion"
+KDVariableModifier_Accuracy,"Seeking: AMNT% Accuracy"
+KDVariableModifier_SpellWard,"Warding: AMNT Magic Armor"
+KDVariableModifier_Armor,"Sturdy: AMNT Physical Armor"
+KDVariableModifier_BondageResist,"Escape: AMNT Bondage Resist"
+KDVariableModifier_DamageResist,"Resistance: AMNT TYPE Resist"
+KDVariableModifier_DamageBuff,"Runic: AMNT% TYPE Damage"
+KDVariableModifier_BaseDamageBuffMelee,"Might: AMNT% weapon phys. dmg"
+KDVariableModifier_BaseDamageBuffMagic,"Amplify: AMNT% weapon magic dmg"
+KDVariableModifier_ElementalEcho,"Spellblade: Infuse weapon AMNT% TYPE"
+KDVariableModifier_ElementalDmg,"Infuse: AMNT TYPE on attack"
+KDVariableModifier_ManaCost,"Efficient: AMNT% Mana Costs"
+KDVariableModifier_ManaRegen,"Empower: AMNT% regen from mana pool"
+KDVariableModifier_ManaRegenOnKill,"Drain: AMNT mana pool on capture"
+KDVariableModifier_Sneak,"Camouflage: AMNT% Visibility"
+KDVariableModifier_DPDecay,"Calming: AMNT Distraction Decay"
+KDVariableModifier_DPGain,"Distracting: AMNT Distraction Per Turn"
+KDVariableModifier_DPGainWhenAttacked,"Sensitivity: AMNT AP from attacks"
+
+KDVariableModifier_,"AMNT Stat"
+
+KinkyDungeonDrop,Drop On Floor
+
+KinkyDungeonRemove,Remove
+KinkyDungeonUnlock,Unlock
+KinkyDungeonStruggle,Struggle
+
+KinkyDungeonInventoryItemLeylineMap,Leyline Map

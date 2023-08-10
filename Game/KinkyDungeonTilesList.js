@@ -219,11 +219,13 @@ let KDBondageMachineFunctions = {
 			return (entity.boundLevel > 0 || KDEntityGetBuff(entity, "Chastity")) && !(entity.buffs && KinkyDungeonGetBuffedStat(entity.buffs, "Plug") >= 2);
 		},
 		function_enemy: (tile, delta, x, y, entity) => {
-			KDPlugEnemy(entity);
-			if (KinkyDungeonGetBuffedStat(entity.buffs, "Plug") > 0) {
-				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
-				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
-				return true;
+			if (!KinkyDungeonGetBuffedStat(entity.buffs, "Plug")) {
+				KDPlugEnemy(entity);
+				if (KinkyDungeonGetBuffedStat(entity.buffs, "Plug") > 0) {
+					KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+					KinkyDungeonSetEnemyFlag(entity, "processed", 1);
+					return true;
+				}
 			}
 			return false;
 		},
@@ -240,11 +242,13 @@ let KDBondageMachineFunctions = {
 		},
 		function_enemy: (tile, delta, x, y, entity) => {
 			KDTieUpEnemy(entity, 2.0, "Metal", "chain");
-			KinkyDungeonApplyBuffToEntity(entity, KDChastity);
-			if (KDEntityGetBuff(entity, "Chastity")) {
-				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
-				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
-				return true;
+			if (!KDEntityGetBuff(entity, "Chastity")) {
+				KinkyDungeonApplyBuffToEntity(entity, KDChastity);
+				if (KDEntityGetBuff(entity, "Chastity")) {
+					KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+					KinkyDungeonSetEnemyFlag(entity, "processed", 1);
+					return true;
+				}
 			}
 			return false;
 		},

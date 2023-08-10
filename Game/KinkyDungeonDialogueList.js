@@ -347,7 +347,7 @@ let KDDialogue = {
 
 
 
-	"OfferWolfgirl": KDRecruitDialogue("OfferWolfgirl", "Nevermere", "Wolfgirl", "Metal", ["wolfGear"], 5, ["wolfGear", "wolfRestraints"], 8, ["wolfgirl", "trainer"], undefined, undefined, 0.5),
+	"OfferWolfgirl": KDRecruitDialogue("OfferWolfgirl", "Nevermere", "Wolfgirl", "Latex", ["wolfGear"], 5, ["wolfGear", "wolfRestraints"], 8, ["wolfgirl", "trainer"], undefined, undefined, 0.5),
 	"OfferMaid": KDRecruitDialogue("OfferMaid", "Maidforce", "Maid", "Illusion", ["maidVibeRestraints"], 5, ["maidVibeRestraints", "maidRestraints"], 13, ["maid"], undefined, ["submissive"], 0.5),
 	"OfferBast": KDRecruitDialogue("OfferBast", "Bast", "Bast", "Will", ["kittyCollar"], 5, ["kittyRestraints"], 13, ["mummy"], undefined, ["submissive"], 0.5),
 	"OfferDressmaker": KDRecruitDialogue("OfferDressmaker", "Dressmaker", "Bikini", "Rope", ["dressUniform"], 5, ["dressUniform", "dressRestraints"], 13, ["dressmaker"], undefined, ["submissive"], 0.5),
@@ -1280,7 +1280,7 @@ let KDDialogue = {
 
 									} else {
 										KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor), 0, true, "", true, false, false, undefined, "Shopkeeper", false, undefined,
-											CommonRandomItemFromList("", KDCurseUnlockList.Basic));
+											CommonRandomItemFromList("", KDCurseUnlockList.Common));
 										KDGameData.CurrentDialogMsg = "ShopkeeperTeleportDebt_Armor_YesCursed";
 
 									}
@@ -1318,7 +1318,7 @@ let KDDialogue = {
 								playertext: "ShopkeeperTeleportDebt_Yes", response: "Default", gag: true,
 								clickFunction: (gagged, player) => {
 									KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint), 0, true, "", true, false, false, undefined, "Shopkeeper", false, undefined,
-										CommonRandomItemFromList("", KDCurseUnlockList.Basic));
+										CommonRandomItemFromList("", KDCurseUnlockList.Common));
 									return false;
 								},
 								options: {
@@ -1352,7 +1352,7 @@ let KDDialogue = {
 								playertext: "ShopkeeperTeleportDebt_Yes", response: "Default", gag: true,
 								clickFunction: (gagged, player) => {
 									KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar), 0, true, "", true, false, false, undefined, "Shopkeeper", false, undefined,
-										CommonRandomItemFromList("", KDCurseUnlockList.Basic));
+										CommonRandomItemFromList("", KDCurseUnlockList.Common));
 									return false;
 								},
 								options: {
@@ -1386,7 +1386,7 @@ let KDDialogue = {
 								playertext: "ShopkeeperTeleportDebt_Yes", response: "Default", gag: true,
 								clickFunction: (gagged, player) => {
 									KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit), 0, true, "", true, false, false, undefined, "Shopkeeper", false, undefined,
-										CommonRandomItemFromList("", KDCurseUnlockList.Basic));
+										CommonRandomItemFromList("", KDCurseUnlockList.Common));
 									return false;
 								},
 								options: {
@@ -1553,12 +1553,57 @@ let KDDialogue = {
 	"PrisonerJail": { // For prisoners in the prison level. Doesnt increase rep much, but useful for jailbreak purposes
 		response: "Default",
 		clickFunction: (gagged, player) => {
+			let e = KDDialogueEnemy();
+			if (e && !KDEnemyHasFlag(e, "LockJammed")) {
+				KDGameData.CurrentDialogMsgData = {};
+				KDGameData.CurrentDialogMsgValue = {};
+				let bonus = KinkyDungeonGetPickBonus();
+				KDGameData.CurrentDialogMsgValue.JamPercent = 1/Math.max(1, (2 + ((bonus > 0) ? 5*bonus : 2*bonus)));
+				KDGameData.CurrentDialogMsgData.JAMPERCENT = `${Math.round(100 * KDGameData.CurrentDialogMsgValue.JamPercent)}%`;
+			} else {
+				KDGameData.CurrentDialogStage = "Jammed";
+				KDGameData.CurrentDialogMsg = "PrisonerJailJammed";
+			}
+
 			return false;
 		},
 		options: {
 			"Leave": {
 				playertext: "Leave", response: "Default",
 				exitDialogue: true,
+			},
+			"Jammed": {
+				prerequisiteFunction: (gagged, player) => {
+					return false;
+				},
+				playertext: "Default", response: "Default",
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"JammedRecent": {
+				prerequisiteFunction: (gagged, player) => {
+					return false;
+				},
+				playertext: "Default", response: "Default",
+				options: {
+					"Apologize": {
+						clickFunction: (gagged, player) => {
+							KinkyDungeonChangeRep("Ghost", 5);
+							return false;
+						},
+						playertext: "Default", response: "Default",
+						gagDisabled: true,
+						exitDialogue: true,
+					},
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
 			},
 			"Unlock": {
 				playertext: "Default", response: "Default",
@@ -1614,25 +1659,33 @@ let KDDialogue = {
 					if (KinkyDungeonLockpicks > 0) {
 						if (!KinkyDungeonIsHandsBound(false, true, 0.45)) {
 							if (KDDialogueEnemy()) {
-								let e = KDDialogueEnemy();
-								e.boundLevel = 0;
-								KinkyDungeonSetEnemyFlag(e, "imprisoned", 0);
-								e.allied = 9999;
-								e.specialdialogue = undefined;
-								KinkyDungeonAggroFaction("Jail");
-								let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
-								e.faction = "Player";
-								if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDGameData.MapFaction == faction)) {
-									if (KDFactionRelation("Player", faction) < 0.25)
-										KinkyDungeonChangeFactionRep(faction, 0.005);
-									else
-										KinkyDungeonChangeFactionRep(faction, 0.0025);
+								if (KDRandom() < KDGameData.CurrentDialogMsgValue.JamPercent) {
+									let e = KDDialogueEnemy();
+									KinkyDungeonSetEnemyFlag(e, "LockJammed", -1);
+									KDGameData.CurrentDialogStage = "JammedRecent";
+									KDGameData.CurrentDialogMsg = "PrisonerJailPickJam";
+								} else {
+									let e = KDDialogueEnemy();
+									e.boundLevel = 0;
+									KinkyDungeonSetEnemyFlag(e, "imprisoned", 0);
+									e.allied = 9999;
+									e.specialdialogue = undefined;
+									KinkyDungeonAggroFaction("Jail");
+									let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
+									e.faction = "Player";
+									if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDGameData.MapFaction == faction)) {
+										if (KDFactionRelation("Player", faction) < 0.25)
+											KinkyDungeonChangeFactionRep(faction, 0.005);
+										else
+											KinkyDungeonChangeFactionRep(faction, 0.0025);
+									}
+									KDGameData.CurrentDialogMsg = "PrisonerJailPick";
+									if (e.Enemy.tags.gagged) {
+										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
+									}
+									DialogueBringNearbyEnemy(player.x, player.y, 8);
 								}
-								KDGameData.CurrentDialogMsg = "PrisonerJailPick";
-								if (e.Enemy.tags.gagged) {
-									KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
-								}
-								DialogueBringNearbyEnemy(player.x, player.y, 8);
+
 							}
 						} else {
 							KDGameData.CurrentDialogStage = "";

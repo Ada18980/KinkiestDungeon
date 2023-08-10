@@ -56,6 +56,7 @@ let KDClassStart = {
 		KDGameData.PreviousWeapon = "Knife";
 		KDSetWeapon("ArcaneCrystal");
 
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaRegen"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Analyze"));

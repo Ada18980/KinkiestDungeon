@@ -13,5 +13,8 @@ let KDSealGroups = {
 	"LettingGo": {
 		arousalMode: true,
 		level: 1,
+		seals: [
+
+		],
 	}
 };

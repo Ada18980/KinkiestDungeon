@@ -48,7 +48,15 @@ let KinkyDungeonBindDamageTypes = ["chain", "glue"];
 let KinkyDungeonFreezeDamageTypes = ["ice"];
 let KinkyDungeonSlowDamageTypes = ["crush", "slash", "pierce", "frost", "cold", "poison"];
 let KinkyDungeonVulnerableDamageTypes = ["tickle", "acid", "magicbind"];
+let KinkyDungeonMeltDamageTypes = ["fire"];
 
+let KDDamageEquivalencies = {
+	"frost": "ice",
+	"happygas": "charm",
+	"souldrain": "soul",
+	"drain": "soul",
+	"shock": "electric",
+};
 
 let KDDamageBinds = {
 	"glue": "Slime",
@@ -103,15 +111,15 @@ let KinkyDungeonDamageTypes = {
 	souldrain: {name: "soul", color: "#E27CD0", bg: "black"},
 	electric: {name: "electric", color: "#FFD800", bg: "black"},
 	glue: {name: "glue", color: "#E200D0", bg: "black"},
-	stun: {name: "stun", color: "white", bg: "black"},
-	chain: {name: "chain", color: "white", bg: "black"},
-	tickle: {name: "tickle", color: "white", bg: "black"},
-	crush: {name: "crush", color: "white", bg: "black"},
-	grope: {name: "grope", color: "white", bg: "black"},
-	slash: {name: "slash", color: "white", bg: "black"},
-	pierce: {name: "pierce", color: "white", bg: "black"},
-	pain: {name: "pain", color: "white", bg: "black"},
-	unarmed: {name: "unarmed", color: "white", bg: "black"},
+	stun: {name: "stun", color: "#f4f390", bg: "black"},
+	chain: {name: "chain", color: "#ffffff", bg: "black"},
+	tickle: {name: "tickle", color: "#72a6b7", bg: "black"},
+	crush: {name: "crush", color: "#a16640", bg: "black"},
+	grope: {name: "grope", color: "#ffabe5", bg: "black"},
+	slash: {name: "slash", color: "#a14052", bg: "black"},
+	pierce: {name: "pierce", color: "#9c5f7b", bg: "black"},
+	pain: {name: "pain", color: "#aa80d1", bg: "black"},
+	unarmed: {name: "unarmed", color: "#dcc186", bg: "black"},
 	magic: {name: "magic", color: "#00FF90", bg: "black"},
 	melee: {name: "melee", color: "#aaaaaa", bg: "black"},
 	spell: {name: "spell", color: "#00FF90", bg: "black"},
@@ -405,13 +413,6 @@ function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker) {
 	return false;
 }
 
-let KDDamageEquivalencies = {
-	"frost": "ice",
-	"happygas": "charm",
-	"souldrain": "soul",
-	"drain": "soul",
-	"shock": "electric",
-};
 
 /**
  *
@@ -537,7 +538,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		predata.dmg *= buffAmount;
 		predata.dmg *= buffresist;
 
-		if (predata.type == "fire" && Enemy.freeze > 0) {
+		if (KinkyDungeonMeltDamageTypes.includes(predata.type) && Enemy.freeze > 0) {
 			predata.dmg *= 1.4;
 		}
 

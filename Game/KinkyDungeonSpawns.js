@@ -143,6 +143,7 @@ function KinkyDungeonAddTags(tags, Floor) {
 
 let KDPerkToggleTags = [
 	"NoNurse",
+	"NoPolice",
 ];
 
 /**

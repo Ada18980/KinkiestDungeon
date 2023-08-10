@@ -66,7 +66,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
+		["ManaRegen","ManaRegenPlus","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
 	],
 
 	//Page 1: Elements
@@ -161,6 +161,14 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				duration: 100,
 			},
 		},
+
+		{name: "ManaRegen", tags: ["mana", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "ManaRegenSuspend", trigger: "playerCast", time:6},
+			{type: "ManaRegenSuspend", trigger: "playerAttack", time:6},
+			{type: "ManaRegen", trigger: "tick", mult: 0.2, power: 0.5},
+		]},
+		{name: "ManaRegenPlus", tags: ["mana", "offense"], school: "Elements", manacost: 0, components: [], prerequisite: "ManaRegen", hideWithout: "ManaRegen", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",},
+
 
 		{name: "DistractionCast", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "DistractionCast", trigger: "calcMiscast"},
@@ -632,7 +640,12 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{noAggro: true, buff: true, heal: true, name: "Heal2", prerequisite: "ApprenticeSummon", sfx: "MagicSlash", school: "Conjure", manacost: 3, components: ["Verbal"], noTargetPlayer: true, mustTarget: true, level:1, type:"hit",
 			onhit:"heal", time:2, lifetime: 1, delay: 1, power: 4.5, aoe: 0.9, range: 7, size: 1, damage: "inert"},
 		{name: "FloatingWeapon", prerequisite: "ApprenticePhysics", tags: ["buff", "offense", "physics"], sfx: "MagicSlash", school: "Conjure", manacost: 2, components: [], level:3, type:"passive",
-			events: [{type: "FloatingWeapon", trigger: "playerAttack"}, {type: "HandsFree", trigger: "getWeapon"}, {type: "HandsFree", trigger: "calcDamage"}]},
+			events: [
+				{type: "FloatingWeapon", trigger: "playerAttack"},
+				{type: "HandsFree", trigger: "getWeapon"},
+				{type: "HandsFree", trigger: "calcDamage"},
+				{type: "ArmsFree", trigger: "calcDamage"},
+			]},
 		{name: "Lockdown", prerequisite: "ApprenticeMetal", tags: ["metal", "lock", "binding", "utility", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], mustTarget: true, level:1,
 			/*buffs: [
 				{id: "Lockdown", aura: "#a96ef5", type: "Locked", duration: 8, power: 1.0, player: true, enemies: true, tags: ["lock", "debuff"]},
