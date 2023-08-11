@@ -123,11 +123,11 @@ function KinkyDungeonGetCurses(Restraint, includeOrig, minLevel, maxLevel) {
  * @param {number} [maxLevel] - for gating curse severity
  * @returns {string[]}
  */
-function KinkyDungeonGetCursesByList(List, includeOrig, minLevel, maxLevel) {
+function KinkyDungeonGetHexByList(List, includeOrig, minLevel, maxLevel) {
 	if (KDCurseVariantList[List]) {
 		let keys = KDCurseVariantList[List].filter((key) => {
-			return (!minLevel || KDEventCurseModular[key].level >= minLevel)
-				&& (!maxLevel || KDEventCurseModular[key].level < maxLevel);
+			return (!minLevel || KDEventHexModular[key].level >= minLevel)
+				&& (!maxLevel || KDEventHexModular[key].level < maxLevel);
 		}).map((element) => {return element;});
 		if (includeOrig) keys.push("");
 		return keys;
@@ -144,12 +144,12 @@ function KinkyDungeonGetCursesByList(List, includeOrig, minLevel, maxLevel) {
  * @param {number} [maxLevel] - for gating curse severity
  * @returns {Record<string, number>}
  */
-function KinkyDungeonGetCursesByListWeighted(List, item, includeOrig, minLevel, maxLevel) {
-	let list = KinkyDungeonGetCursesByList(List, includeOrig, minLevel, maxLevel);
+function KinkyDungeonGetHexByListWeighted(List, item, includeOrig, minLevel, maxLevel) {
+	let list = KinkyDungeonGetHexByList(List, includeOrig, minLevel, maxLevel);
 	/** @type {Record<string, number>} */
 	let ret = {};
 	for (let obj of list) {
-		ret[obj] = KDEventCurseModular[obj].weight(item);
+		ret[obj] = KDEventHexModular[obj].weight(item);
 	}
 	return ret;
 }

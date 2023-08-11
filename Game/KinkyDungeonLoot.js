@@ -147,8 +147,8 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 			}
 			// Check for cursed norestraint as well
 			if (prereqs && loot.norestraintcursed) {
-				let id = loot.norestraintcursed + `${loot.curselevelmin || 0},${loot.curselevelmax || 0}`;
-				if (!cursedRestraintCache[id]) cursedRestraintCache[id] = [...KinkyDungeonGetCursesByList(loot.norestraintcursed, true, loot.curselevelmin, loot.curselevelmax)];
+				let id = loot.norestraintcursed + `${loot.hexlevelmin || 0},${loot.hexlevelmax || 0}`;
+				if (!cursedRestraintCache[id]) cursedRestraintCache[id] = [...KinkyDungeonGetHexByList(loot.norestraintcursed, true, loot.hexlevelmin, loot.hexlevelmax)];
 				for (let r of cursedRestraintCache[id]) {
 					if (KinkyDungeonInventoryGet(r)) {
 						prereqs = false;
@@ -265,26 +265,26 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	else if (Loot.armor) {
 		let armor = Loot.armor;
 		let unlockcurse = null;
-		let curseVariant = "";
+		let hexVariant = "";
 		let enchantVariant = "";
 		let enchant_extra = [];
-		let curse_extra = [];
+		let hex_extra = [];
 		let enchants = (Loot.minEnchants || 1) + Math.floor(KDRandom() * ((Loot.maxEnchants || 1) - (Loot.minEnchants || 1)));
-		let curses = (Loot.minCurses || 1) + Math.floor(KDRandom() * ((Loot.maxCurses || 1) - (Loot.minCurses || 1)));
-		if (Loot.curselist && (Loot.cursechance == undefined || KDRandom() < Loot.cursechance) || (Loot.nouncursed && !Loot.enchantlist && KinkyDungeonInventoryGet(Loot.nouncursed))) {
+		let curses = (Loot.minHex || 1) + Math.floor(KDRandom() * ((Loot.maxHex || 1) - (Loot.minHex || 1)));
+		if (Loot.hexlist && (Loot.hexchance == undefined || KDRandom() < Loot.hexchance) || (Loot.nouncursed && !Loot.enchantlist && KinkyDungeonInventoryGet(Loot.nouncursed))) {
 			while (curses > 0) {
-				let curs = KDGetByWeight(KinkyDungeonGetCursesByListWeighted(Loot.curselist, armor, false, Loot.curselevelmin, Loot.curselevelmax));
+				let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted(Loot.hexlist, armor, false, Loot.hexlevelmin, Loot.hexlevelmax));
 				if (!enchantVariant) {
-					curseVariant = curs;
+					hexVariant = curs;
 					// Sets the armor to the cursed type
-					armor = armor+(Loot.cursesuffix != undefined ? Loot.cursesuffix : Loot.curselist);
+					armor = armor+(Loot.cursesuffix != undefined ? Loot.cursesuffix : Loot.hexlist);
 				} else {
-					curse_extra.push(curs);
+					hex_extra.push(curs);
 				}
 				curses -= 1;
 			}
 		}
-		if (Loot.enchantlist && (Loot.enchantchance == undefined || KDRandom() < Loot.enchantchance || (Loot.nouncursed && !curseVariant && KinkyDungeonInventoryGet(Loot.nouncursed)) || (curseVariant && Loot.alwaysenchantcurse))) {
+		if (Loot.enchantlist && (Loot.enchantchance == undefined || KDRandom() < Loot.enchantchance || (Loot.nouncursed && !hexVariant && KinkyDungeonInventoryGet(Loot.nouncursed)) || (hexVariant && Loot.alwaysenchanthex))) {
 			while (enchants > 0) {
 				let ench = KDGetByWeight(
 					KinkyDungeonGetEnchantmentsByListWeighted(Loot.enchantlist, armor, false, Loot.enchantlevelmin, Loot.enchantlevelmax)
@@ -297,26 +297,26 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 				enchants -= 1;
 			}
 		}
-		if (Loot.unlockcurse && (curseVariant || !Loot.curselist)) {
-			let curselist = [];
+		if (Loot.unlockcurse && (hexVariant || !Loot.hexlist)) {
+			let hexlist = [];
 			for (let c of Loot.unlockcurse) {
-				curselist.push(...KDCurseUnlockList[c]);
+				hexlist.push(...KDCurseUnlockList[c]);
 			}
-			unlockcurse = CommonRandomItemFromList("", curselist);
+			unlockcurse = CommonRandomItemFromList("", hexlist);
 		}
-		if (curseVariant || enchantVariant) {
+		if (hexVariant || enchantVariant) {
 			let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
-			if (curseVariant) {
-				events.push(...KDEventCurseModular[curseVariant].events);
+			if (hexVariant) {
+				events.push(...KDEventHexModular[hexVariant].events);
 			}
-			for (let c of curse_extra) {
-				events.push(...KDEventCurseModular[c].events);
+			for (let c of hex_extra) {
+				events.push(...KDEventHexModular[c].events);
 			}
 			if (enchantVariant) {
-				events.push(...KDEventEnchantmentModular[enchantVariant].events(armor, Loot, curseVariant, ""));
+				events.push(...KDEventEnchantmentModular[enchantVariant].events(armor, Loot, hexVariant, ""));
 			}
 			for (let e of enchant_extra) {
-				events.push(...KDEventEnchantmentModular[e].events(armor, Loot, curseVariant, enchantVariant));
+				events.push(...KDEventEnchantmentModular[e].events(armor, Loot, hexVariant, enchantVariant));
 			}
 			/** @type {KDInventoryVariant} */
 			let variant = {

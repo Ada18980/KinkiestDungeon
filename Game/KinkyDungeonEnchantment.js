@@ -44,7 +44,7 @@ let KDEnchantVariantList = {
 function KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment) {
 	if (Loot?.amtMult) amt *= Loot.amtMult;
 	if (primaryEnchantment) amt *= 0.6; // Reduce the power if there are already enchantments
-	if (curse && KDEventCurseModular[curse]?.level > 0) amt *= 1 + 0.5 * Math.pow(KDEventCurseModular[curse].level, 0.5);
+	if (curse && KDEventHexModular[curse]?.level > 0) amt *= 1 + 0.5 * Math.pow(KDEventHexModular[curse].level, 0.5);
 	return Math.ceil(amt);
 }
 
