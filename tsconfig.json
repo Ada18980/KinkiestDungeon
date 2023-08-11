@@ -27,6 +27,7 @@
         "Game/KDAutoStruggle.js",
         "Game/KDClasses.js",
         "Game/KDParticles.js",
+        "Game/KDHex.js",
         "Game/KinkyDungeonStats.js",
         "Game/KinkyDungeonEditorTiles.js",
         "Game/KinkyDungeonEditor.js",
