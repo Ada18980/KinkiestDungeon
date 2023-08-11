@@ -721,7 +721,7 @@ let KDTEHoldDelay = 200;
 let KDTEmode = 0;
 
 let KDTE_Scale = 7;
-let KDTE_MAXDIM = 4;
+let KDTE_MAXDIM = 5;
 
 let KDTELoadConfirm = false;
 

@@ -2040,7 +2040,7 @@ let KinkyDungeonEnemies = [
 
 
 
-	{name: "Librarian", clusterWith: "construct", bound: "Dressmaker", playLine: "Librarian", faction: "Dressmaker", color: "#f135a4",
+	{name: "Librarian", clusterWith: "construct", bound: "Librarian", playLine: "Librarian", faction: "Dressmaker", color: "#f135a4",
 		tags: KDMapInit(["leashing", "dressmaker", "miniboss", "jailer", "acidweakness", "antiMagic", "conjurer", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "lowWeightRibbons", "magicRibbonsHarsh", "gagSpell", "mittensSpell"]),
 		followLeashedOnly: true, kite: 1.5, kiteChance: 0.3, followRange: 4, castWhileMoving: true, spells: [
 			"SummonBookChain",

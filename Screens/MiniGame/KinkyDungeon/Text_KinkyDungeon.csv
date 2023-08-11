@@ -25,7 +25,7 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 
-KinkyDungeon,"Kinky Dungeon v4.35"
+KinkyDungeon,"Kinky Dungeon v4.4"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -3324,7 +3324,10 @@ RestraintDuctTapeLegsMummyDesc2,"It clings, almost of its own accord, but seems 
 
 RestraintPanelGag,Leather Panel Gag
 RestraintPanelGagDesc,"A gag that seals your lips tightly and stuffs your mouth with a ball."
-RestraintPanelGagDesc2,"The harness is comprehensive and it's locked in place."
+RestraintPanelGagDesc2,"Keep your mouth to yourself!"
+RestraintHarnessPanelGag,Harness Panel Gag
+RestraintHarnessPanelGagDesc,"A gag that seals your lips tightly and stuffs your mouth with a ball."
+RestraintHarnessPanelGagDesc2,"The harness is comprehensive and it's locked in place."
 RestraintHarnessGag,Harness Ball Gag
 RestraintHarnessGagDesc,"A gag that stuffs your mouth with a large silicone ball."
 RestraintHarnessGagDesc2,"The harness is comprehensive and it's locked in place."
@@ -3759,7 +3762,7 @@ RestraintComfyStraitjacketDesc,A straitjacket that is padded on the inside.
 RestraintComfyStraitjacketDesc2,It feels tight but is actually made of an ethereal material...
 
 RestraintLatexStraitjacket,Latex Jacket
-RestraintLatexStraitjacketDesc,A tight jacket that holds your arms completely useless.
+RestraintLatexStraitjacketDesc,A tight jacket that keeps your arms completely useless.
 RestraintLatexStraitjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexArmbinder,Latex Armbinder
 RestraintLatexArmbinderDesc,A tight armbinder that pins your arms tightly behind your back, enclosed completely.
@@ -3928,6 +3931,22 @@ RestraintKiguMask,Suspicious Mask
 LootChestKiguMask,"You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it."
 RestraintKiguMaskDesc2,"A well-fitted mask, covering your entire head neatly and locking in place."
 RestraintKiguMaskDesc,"It has eyeholes for you to see out of, but blocks access to the face."
+
+RestraintShadowLatexStraitjacket,Shadow Jacket
+RestraintShadowLatexStraitjacketDesc,"A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
+RestraintShadowLatexStraitjacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexArmbinder,Shadow Armbinder
+RestraintShadowLatexArmbinderDesc,"A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
+RestraintShadowLatexArmbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexBoxbinder,Shadow Boxbinder
+RestraintShadowLatexBoxbinderDesc,"A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
+RestraintShadowLatexBoxbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexLegbinder,Shadow Legbinder
+RestraintShadowLatexLegbinderDesc,"A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
+RestraintShadowLatexLegbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintObsidianYoke,Obsidian Yoke
+RestraintObsidianYokeDesc,"A yoke made from shining obsidian, stars glittering in the darkness. It pins your arms uselessly at your sides."
+RestraintObsidianYokeDesc2,"It's made of a dark, glistening volcanic metal."
 
 RestraintObsidianGag,Obsidian Muzzle
 RestraintObsidianGagDesc,"A muzzle made from segmented metal pieces, fitting securely over your face."
@@ -9392,10 +9411,10 @@ rFuukaDefensive_Question_Question_Question,"(SPEAKER tilts her head)|...They don
 dFuukaDefensive_Question_Question_Question,"But people don't die anymore."
 dFuukaDefensive_Question_Question_Proceed,"(...)"
 rFuukaDefensive_Question_Question_Question_Question,"(SPEAKER scratches her chin)|So they managed it... after all this time..."
-dFuukaDefensive_Question_Question_Question_Question,"People don't die anymore."
+dFuukaDefensive_Question_Question_Question_Question,"People don't die anymore. They grow old, but don't die."
 rFuukaDefensive_Question_Question_Question_Question_Question,"(SPEAKER folds her arms)|You don't know? They call it... the Old Civilization, in your tongue.|Long ago they were trying some experiments... many experiments.|Immortality was their goal."
 dFuukaDefensive_Question_Question_Question_Question_Question,"Who is 'they'?"
-rFuukaDefensive_Question_Question_Question_Question_Question_Question,"(SPEAKER shrugs)|Well, I don't know what they've accomplished.|But if the human race is immortal now,|that means you get to be my pet for a long time!"
+rFuukaDefensive_Question_Question_Question_Question_Question_Question,"(SPEAKER shrugs)|Well, I don't know what they've accomplished.|But if the human race is immortal now,|that means you get to be my pet for quite a long time!"
 dFuukaDefensive_Question_Question_Question_Question_Question_Question,"They're just a bunch of old robots now."
 rFuukaDefensive_Question_Question_Question_Question_Question_Question2,"(SPEAKER frowns)|Hey, it's not my fault!|People who come here are usually not as talkative as you are...|Plus, I'm really busy these days.|I can't be bothered to keep track of recent developments!"
 dFuukaDefensive_Question_Question_Question_Question_Question_Question2,"...Am I really the first to tell you this?"
@@ -9726,7 +9745,9 @@ dPrisonerJailJammedRecent_Apologize,Apologize profusely!
 
 KinkyDungeonDiscovered,An enemy found you while you were busy!
 
+rPrisonerRescue,"(A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)"
 rPrisonerRescueBandit,"(A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)"
+rPrisonerRescueAlchemist,"(A SPEAKER wakes you up by melting the door with acid)|These guys were a piece of cake.|Now let's discover a way out of here!"
 rPrisonerRescueBountyhunter,"(You wake up to find a SPEAKER creeping up outside the door)|You've been marked as a person of interest.|We are here to escort you out of this place."
 rPrisonerRescueNevermere,"(A SPEAKER wakes you up by banging on the bars)|Hey wake up!|You should join me and my pals here~|Maybe you'll join them once we're out of here?"
 rPrisonerRescueElf,"(A SPEAKER wakes you up by banging on the bars)|I have been sent to inform you...|...that you are of good standing with the Council.|That being said, I'm only doing this because of procedure."
@@ -10747,3 +10768,55 @@ KinkyDungeonUnlock,Unlock
 KinkyDungeonStruggle,Struggle
 
 KinkyDungeonInventoryItemLeylineMap,Leyline Map
+
+RestraintPanelPlugGagHarness,Harness Plug Gag
+RestraintPanelPlugGagHarnessDesc,"A gag meant to keep people quiet by forcing a plug into their mouth and securing it in place with a strict harness."
+RestraintPanelPlugGagHarnessDesc2,"It is difficult to pull off and though it is made from supple, heavy duty leather."
+
+
+
+NameEpicenterCursed,Cursed Epicenter
+KillEpicenterCursed,"The cursed epicenter disperses into black stardust."
+KDEpicenterAbortNoCurse,"The cursed epicenter retreats as you remove the last of your cursed restraints!"
+KDEpicenterAbortInvalid,"The cursed epicenter retreats as you are claimed by something else!"
+KDEpicenterCurseDamage,"The cursed epicenter assaults your mind with its presence! (DamageDealt)"
+KDEpicenterCurseEffectStart,"You feel your cursed items turn cold to the touch!"
+KDEpicenterCurseEffectEnd,"An obsidian collar appears around your neck, feeling cold to the touch."
+
+RestraintCursedCollar,Stardust Collar
+RestraintCursedCollarDesc,"'You thought you could run forever, didn't you? Fate has a way of always catching up to you...'"
+RestraintCursedCollarDesc2,"Cannot be removed while you are wearing other Stardust Cursed items."
+
+KinkyDungeonCurseUnlockCursedDamage,"The cursed seal vanishes into a brief veil of stardust."
+KinkyDungeonCurseInfoCursedDamage,"The item is protected with by a Stardust Curse. Take damage to weaken the curse."
+KinkyDungeonCurseStruggleCursedDamage,"You struggle uselessly, sealed in your fate."
+
+KinkyDungeonCurseUnlockCursedCollar,"The cursed collar falls off and becomes inert."
+KinkyDungeonCurseInfoCursedCollar,"You must remove all other Stardust Cursed items before removing the collar."
+KinkyDungeonCurseStruggleCursedCollar,"You struggle uselessly, sealed in your fate."
+
+curseInfoCursedTransformation,"Cursed Transformation: Items with generic curses transform into Stardust Cursed items."
+KDCursedTransformation,"With a burst of dark energy, your R1 transforms into a R2!"
+
+curseInfoCursedHeal,"Cursed Restoration: While distracted, your Stardust Cursed restraints regain the strength on their seal."
+KDCursedHeal,"As you let go, you feel your cursed restraints tighten and strengthen!"
+
+curseInfoCursedCorruption,"Cursed Corruption: While in the shadows, you slowly gain corruption which decreases WP gain and struggle power."
+KDCursedCorruption,"Your willpower gain is AMNT% less effective due to your corruption."
+
+curseInfoCursedDistract,"Cursed Seduction: Gain distraction after taking damage."
+KDCursedDistractActivate,"Taking damage fills your minds with cursed thoughts..."
+KinkyDungeonBuffCursedDistract,"Having taken damage, your distraction is increasing..."
+
+curseInfoCursedPunishment,"Cursed Punishment: When you defeat an enemy, you are stunned briefly and enemies are attracted."
+KDCursedPunishment,"Dark Voice: You are supposed to be a slave!"
+
+curseInfoCursedSubmission,"Cursed Submission: While at 0 willpower, you are restrained if you leave the presence of a hostile enemy."
+KDCursedSubmission,"Dark Voice: Kneel before your mistress."
+
+curseInfoCursedDenial,"Cursed Denial: -25 WP when you Let Go. At 0 WP you cannot orgasm."
+KDCursedDenialDeny,"Dark Voice: Not yet."
+KDCursedDenialAllow,"Dark Voice: You may enjoy yourself, for now~"
+
+KDVariableModifier_CursedBarrier1,"Stardust: -20 Charm/Psychic Resist"
+KDVariableModifier_CursedBarrier2,"Stardust: +40 all other resists"

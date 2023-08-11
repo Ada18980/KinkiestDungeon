@@ -745,7 +745,7 @@ function KinkyDungeonDrawGame() {
 	}
 
 	if (StandalonePatched)
-		PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
+		PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 
 	if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
 		if (KinkyDungeonKeybindingCurrentKey)

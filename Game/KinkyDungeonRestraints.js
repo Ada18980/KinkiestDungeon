@@ -19,9 +19,10 @@ let KDWillEscapePenaltyStart = 0.0;
 let KDWillEscapePenaltyStartArms = 0.0;
 let KDWillEscapePenaltyEnd = 0.0;
 
-let KDMinEscapeRate = 0.2;
+let KDMinEscapeRate = 0.4;
 let KDMinPickRate = 0.2;
 let KDStruggleTime = 3;
+let KDBaseEscapeSpeed = 2.0;
 
 /** Thresholds for hand bondage */
 let StruggleTypeHandThresh = {
@@ -1687,7 +1688,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		data.escapeChance += KinkyDungeonEnchantedKnifeBonus;
 		data.origEscapeChance += KinkyDungeonEnchantedKnifeBonus;
 	}
-	let escapeSpeed = 2.0;
+	let escapeSpeed = KDBaseEscapeSpeed;
 
 	// Finger extensions will help if your hands are unbound. Some items cant be removed without them!
 	// Mouth counts as a finger extension on your hands if your arms aren't tied
@@ -3006,7 +3007,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 			let linked = false;
 			if (linkable) {
 				linked = true;
-				KinkyDungeonCancelFlag = KinkyDungeonLinkItem(restraint, r, Tightness, Lock, Keep, faction, Curse, autoMessage);
+				KinkyDungeonCancelFlag = KinkyDungeonLinkItem(restraint, r, Tightness, Lock, Keep, faction, Curse, autoMessage, inventoryAs, events);
 			}
 
 			let eventsAdd = false;
@@ -3141,7 +3142,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				if (SwitchItems) {
 					KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, false, undefined, faction, undefined, Curse, securityEnemy, undefined, inventoryAs);
 				} else if (r && KDRestraint(r) && KinkyDungeonIsLinkable(KDRestraint(r), restraint, r)) {
-					KinkyDungeonLinkItem(restraint, r, Tightness, Lock, Keep, faction, Curse);
+					KinkyDungeonLinkItem(restraint, r, Tightness, Lock, Keep, faction, Curse, undefined, inventoryAs, events);
 				}
 			}
 			// Run events AFTER the swappen
@@ -3393,12 +3394,13 @@ function KinkyDungeonRestraintTypes(ShrineFilter) {
  * @param {string} [Curse]
  * @param {boolean} [autoMessage] - Whether or not to automatically dispatch a message
  * @param {string} [inventoryAs] - inventoryAs for the item
+ * @param {KinkyDungeonEvent[]} [events] - inventoryAs for the item
  * @returns {boolean}
  */
-function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, faction, Curse, autoMessage = true, inventoryAs = null) {
+function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, faction, Curse, autoMessage = true, inventoryAs = null, events = undefined) {
 	if (newRestraint && oldItem && oldItem.type == Restraint) {
 		if (newRestraint) {
-			KinkyDungeonAddRestraint(newRestraint, tightness, true, Lock, Keep, true, undefined, undefined, faction, undefined, oldItem, Curse, undefined, undefined, inventoryAs);
+			KinkyDungeonAddRestraint(newRestraint, tightness, true, Lock, Keep, true, undefined, events, faction, undefined, oldItem, Curse, undefined, undefined, inventoryAs);
 			let newItem = KinkyDungeonGetRestraintItem(newRestraint.Group);
 			if (newItem)
 				newItem.dynamicLink = oldItem;

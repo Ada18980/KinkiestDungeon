@@ -1744,7 +1744,7 @@ const KDEventMapBuff = {
 		"Cursed": (e, buff, entity, data) => {
 			if (buff.power > 0 && entity.player) {
 				if (KinkyDungeonStatDistraction > 0.99 * KinkyDungeonStatDistractionMax) {
-					let tags = ["obsidianRestraints", "obsidianRestraintsLatex"];
+					let tags = ["obsidianRestraints", "shadowlatexRestraints", "shadowlatexRestraintsHeavy"];
 					let restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "Purple");
 					if (restraintAdd) {
 						if (KDRandom() < 0.2) {
