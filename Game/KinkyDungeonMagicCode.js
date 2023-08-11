@@ -772,7 +772,7 @@ let KinkyDungeonSpellSpecials = {
 		cast = cast || KDCastSpellToEnemies((en) => {
 			if (en.Enemy.bound && en.distraction > 0) {
 				let dist = en.distraction / en.Enemy.maxhp;
-				if (dist < 0.9) dist *= 2;
+				if (dist >= 0.9) dist *= 2;
 				KinkyDungeonDamageEnemy(en, {
 					type: "charm",
 					damage: spell.power * Math.max(0.1, dist),

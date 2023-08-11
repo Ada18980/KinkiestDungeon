@@ -1,6 +1,8 @@
 "use strict";
 
 
+let KDPreventAccidentalClickTime = 0;
+
 let KinkyDungeonFilters = [
 	Consumable,
 	Restraint,
@@ -152,11 +154,13 @@ function KinkyDungeonHandleInventory() {
 		return true;
 	}
 
+	if (CommonTime() < KDPreventAccidentalClickTime) return false;
 
 	if (KinkyDungeonDrawInventorySelected(filteredInventory[KinkyDungeonCurrentPageInventory])) {
 		if (filter == Consumable && MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 55)) {
 			let item = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter)[KinkyDungeonCurrentPageInventory];
 			if (!item || !item.name) return true;
+
 
 			KDSendInput("consumable", {item: item.name, quantity: 1});
 			//KinkyDungeonAttemptConsumable(item.name, 1);
@@ -676,7 +680,10 @@ function KinkyDungeonDrawInventory() {
 		if (KinkyDungeonFilterInventory(KinkyDungeonFilters[I], false, false, true).length > 0 || I == defaultIndex) {
 			col = "#888888";
 		}
-		else if (KinkyDungeonFilters.indexOf(KinkyDungeonCurrentFilter) == I) KinkyDungeonCurrentFilter = KinkyDungeonFilters[defaultIndex];
+		else if (KinkyDungeonFilters.indexOf(KinkyDungeonCurrentFilter) == I) {
+			KinkyDungeonCurrentFilter = KinkyDungeonFilters[defaultIndex];
+			KDPreventAccidentalClickTime = CommonTime() + 1200;
+		}
 
 		DrawButtonKDEx("categoryfilter" + I, (bdata) => {
 			KinkyDungeonCurrentFilter = KinkyDungeonFilters[I];
@@ -1451,9 +1458,9 @@ function KinkyDungeonhandleQuickInv(NoUse) {
  * @param {boolean} playerDropped
  */
 function KDDropItemInv(name, player, playerDropped = true) {
-	let item = KinkyDungeonInventoryGet(name);
+	let item = KinkyDungeonInventoryGetLoose(name) || KinkyDungeonInventoryGet(name);
 	if (!player) player = KinkyDungeonPlayerEntity;
-	if (item) {
+	if (item && item.type != Restraint) { // We cant drop equipped items
 		// Drop one of them
 		if (item.quantity > 1) {
 			item.quantity -= 1;

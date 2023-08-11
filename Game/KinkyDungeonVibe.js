@@ -341,15 +341,19 @@ function KinkyDungeonCalculateVibeLevel(delta) {
 	KinkyDungeonOrgasmVibeLevel = 0;
 	KinkyDungeonStatPlugLevel = 0;
 	KinkyDungeonPlugCount = 0;
+	let sumplug = 0;
 	for (let item of KinkyDungeonAllRestraint()) {
 		if (item && KDRestraint(item)) {
 			if (KDRestraint(item).plugSize) {
 				let size = KDRestraint(item).plugSize;
-				KinkyDungeonStatPlugLevel = Math.max(KinkyDungeonStatPlugLevel + size/2, size);
+				sumplug += size/2;
+				KinkyDungeonStatPlugLevel = Math.max(KinkyDungeonStatPlugLevel, size);
 				KinkyDungeonPlugCount += 1;
 			}
 		}
 	}
+	sumplug += KinkyDungeonStatPlugLevel/2;
+	if (sumplug > KinkyDungeonStatPlugLevel) KinkyDungeonStatPlugLevel = sumplug;
 
 	KDGameData.Edged = false;
 	let cease = true;

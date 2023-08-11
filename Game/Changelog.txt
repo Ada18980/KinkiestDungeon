@@ -1399,10 +1399,22 @@ Bugfix
 - Torch weapon is now properly tinted a fire color
 - Minimap border expanded to reflect actual area the minimap occupies
 - Enchantments which add elemental damage to attacks no longer hit if the player misses
+- Fix hard mode deactivating mid run
+- Fix bug where vibe modifiers didn't stack properly
 Modding
 - Added a function to get the current number of cursed items
 - Added loot prerequisites to require a certain number of cursed items for the loot to appear
 - Added "specialChests" event to allow adding more special chest types to levels via event
+
+4.4 (August 2023)
+Features
+- Added X-ray vision feature to view your character through wrappings (such as slime) and tape
+Content
+- Added some lower level versions of the plug gag and panel gag
+- Added Shadow Latex restraints
+Bugfix
+- Fix bug where the game drops an equipped restraint instead of the one in inventory
+- Fix bug where linking an enchanted restraint on top of an existing one would not carry over its special properties
 
 
 TODO

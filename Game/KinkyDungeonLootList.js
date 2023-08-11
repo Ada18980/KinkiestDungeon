@@ -360,10 +360,9 @@ let KinkyDungeonLootTable = {
 		{name: "potions_many", minLevel: 1, weight:2, message:"LootPotionsMedley", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["lowpotions"]},
 		{name: "grinder", minLevel: 1, weight:2, message:"LootChestGrinder", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "PotionCollar", minLevel: 1, weight:0.5, message:"LootPotionCollar", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["PotionCollar"]},
-		{name: "SlimeWalkers", minLevel: 1, weight:0.5, message:"LootSlimeWalkers", messageColor:"lightblue", messageTime: 3, allFloors: true, norestraint: ["SlimeWalkers"]},
+		{name: "SlimeWalkers", armor: "SlimeWalkers", minLevel: 1, weight:0.5, message:"LootSlimeWalkers", messageColor:"lightblue", messageTime: 3, allFloors: true, norestraint: ["SlimeWalkers"]},
 		...KDAdvancedArmor, ...KDSilverArmor,
 	],
-
 };
 
 
