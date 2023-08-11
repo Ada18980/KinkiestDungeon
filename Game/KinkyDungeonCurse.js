@@ -219,7 +219,7 @@ let KDCurses = {
 
 
 /** @type {Record<string, {level: number, weight: (item: string) => number, events: KinkyDungeonEvent[]}>} */
-let KDEventCurseModular = {
+let KDEventHexModular = {
 	"Light": {level: 1,
 		weight: (item) => {
 			return 8;
