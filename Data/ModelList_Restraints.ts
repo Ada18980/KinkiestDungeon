@@ -423,3 +423,19 @@ AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 	},
 ]));
+
+
+AddModel({
+	Name: "StardustCollar",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Collar", Layer: "Collar", Pri: 50,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
