@@ -1999,6 +1999,17 @@ function KDDisarmEnemy(enemy, time) {
 }
 
 let KDPrereqs = {
+	"AlreadyCursed": (enemy, e, data) => {
+		if (KinkyDungeonPlayerTags.get("Cursed")) return false;
+		if (e.tags && !KinkyDungeonGetRestraint({tags: [...e.tags],},
+			MiniGameKinkyDungeonLevel,
+			KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "")) return false;
+		for (let inv of KinkyDungeonAllRestraintDynamic()) {
+			let item = inv.item;
+			if (item.events.some((event) => {return event.trigger == "CurseTransform" && event.kind == "transform";})) return true;
+		}
+		return false;
+	},
 	"NoChastity": (enemy, e, data) => {return KDEntityBuffedStat(enemy, "Chastity") < 0.01;},
 	"blinded": (enemy, e, data) => {return enemy.blind > 0;},
 	"silenced": (enemy, e, data) => {return enemy.silence > 0;},

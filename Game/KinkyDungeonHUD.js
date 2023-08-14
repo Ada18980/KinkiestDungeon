@@ -199,6 +199,7 @@ let KDBuffSprites = {
 	"Corrupted": true,
 	"CursedDistract": true,
 	"ForcedSubmission": true,
+	"CursingCircle": true,
 
 	//KinkyDungeonBuffShrineElements,"Arcane Power: Deals bonus damage when you hit an enemy."
 	//KinkyDungeonBuffShrineConjure,"Arcane Protection: Reduces damage taken, and deals retaliation damage."
@@ -764,7 +765,7 @@ function KinkyDungeonDrawInputs() {
 			if (MouseIn(((!sg.left) ? (260) : 0), y-48, 230, (ButtonWidth + 45)) && sg) {
 
 				if (MouseY < y)
-					KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 500);
+					KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 700);
 
 				let data = {
 					struggleGroup: sg,
@@ -827,7 +828,7 @@ function KinkyDungeonDrawInputs() {
 
 				if (data.extraLines.length > 0) {
 					for (let lineIndex = 0; lineIndex < data.extraLines.length; lineIndex++) {
-						DrawTextKD(data.extraLines[lineIndex], 530, MY + lastO * lineSize, data.extraLineColor[lineIndex] || "#ffffff", "#000000", fontSize, "left", 150);
+						DrawTextFitKD(data.extraLines[lineIndex], 530, MY + lastO * lineSize, 700,data.extraLineColor[lineIndex] || "#ffffff", "#000000", fontSize, "left", 150);
 						lastO += 1;
 					}
 				}
@@ -847,7 +848,14 @@ function KinkyDungeonDrawInputs() {
 					if (drawn) {
 						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150);
 					}
+
+
 				}
+				FillRectKD(kdcanvas, kdpixisprites, "selectedBG", {
+					Left: 510, Top: MY - 20, Width: 740,
+					Height: lastO * lineSize + 40,
+					Color: "#000000", alpha: 0.7, zIndex: 110
+				});
 			}
 
 

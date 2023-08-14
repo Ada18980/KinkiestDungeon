@@ -76,6 +76,37 @@ let KDPlayerEffects = {
 
 		return {sfx: "Evil", effect: true};
 	},
+	"CursingCircle": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let applyCurse = KinkyDungeonStatWill < 0.1;
+
+		let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		KinkyDungeonSendTextMessage(3, TextGet("KDEpicenterCurseDamage").replace("DamageDealt", dmg.string), "#ff5555", 2);
+
+		if (applyCurse) {
+			if (!KinkyDungeonPlayerBuffs.CursingCircle) {
+				KinkyDungeonSendTextMessage(9, TextGet("KDEpicenterCurseEffectStart"), "#8E72AA", playerEffect.time);
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+					id: "CursingCircle",
+					aura: "#8E72AA",
+					type: "CursingCircle",
+					duration: playerEffect.time,
+				});
+			} else {
+				let happened = KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Curse", false, false, false, false);
+				for (let en of KinkyDungeonEntities) {
+					if (en.Enemy.tags?.epicenterCursed) {
+						en.hp = 0;
+						en.playerdmg = 0;
+					}
+				}
+				if (happened.length > 0) {
+					KinkyDungeonPlayerBuffs.CursingCircle.duration = 0;
+					KinkyDungeonSendTextMessage(9, TextGet("KDEpicenterCurseEffectEnd"), "#8E72AA", 5);
+				}
+			}
+		}
+		return {sfx: "Evil", effect: true};
+	},
 	"MaidChastity": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KinkyDungeonFlags.get("ChastityBelts")) {
 			// Tease the player
@@ -158,6 +189,15 @@ let KDPlayerEffects = {
 			KDPlayerEffectRestrain(spell, playerEffect.count, ["obsidianRestraints"], "Elemental", false, false, false, false);
 
 			KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonObsidianBolt"), "yellow", playerEffect.time);
+			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+		}
+		return {sfx: "Evil", effect: true};
+	},
+	"MithrilBolt": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+			KDPlayerEffectRestrain(spell, playerEffect.count, ["mithrilRope"], "Elemental", false, false, false, false);
+
+			KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonMithrilBolt"), "yellow", playerEffect.time);
 			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		}
 		return {sfx: "Evil", effect: true};

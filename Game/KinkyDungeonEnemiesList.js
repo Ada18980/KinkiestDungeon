@@ -2234,6 +2234,34 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, floors:KDMapInit([]),
 		ondeath: [{type: "dialogue", dialogue:"DollmakerWin", click: true}]},
 
+	//region curse
+
+	{name: "EpicenterCursed", faction: "Curse", color: "#880044",
+		tags: KDMapInit(["opendoors", "epicenterCursed", "epicenter", "curseTrap", "ghost", "cursed", "soulimmune", "melee", "fireweakness", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
+		ignorechance: 0, armor: 0, followRange: 1, AI: "huntshadow", noAlert: true, hitsfx: "Evil",
+		ethereal: true,
+		spells: ["ManyShadowHands", "ManyObsidianBolts", "CursingCircle", "CursingCircle"], spellCooldownMult: 0.6, spellCooldownMod: 0, castWhileMoving: true,
+		visionRadius: 15, blindSight: 8, evasion: -2, maxhp: 60, minLevel: 0, weight:0,
+		movePoints: 4, attackPoints: 2, attack: "Spell",
+		attackWidth: 1, attackRange: 1, power: 1.0, dmgType: "cold", fullBoundBonus: 4,
+		events: [
+			{trigger: "tick", type: "DeleteCurse", tags: ["cursedCollar"]},
+		],
+		terrainTags: {"curseTrap": 10}, shrines: [], allFloors: true},
+
+	{name: "EpicenterCursed2", faction: "Curse", color: "#a4affa",
+		tags: KDMapInit(["opendoors", "epicenterCursed", "epicenter", "curseTrap", "ghost", "cursed", "soulimmune", "melee", "fireweakness", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
+		ignorechance: 0, armor: 0, followRange: 1, AI: "huntshadow", noAlert: true, hitsfx: "Evil",
+		ethereal: true,
+		spells: ["ManyShadowHands", "ManyMithrilBolts", "CursingCircle2", "CursingCircle2"], spellCooldownMult: 0.6, spellCooldownMod: 0, castWhileMoving: true,
+		visionRadius: 15, blindSight: 8, evasion: -2, maxhp: 60, minLevel: 0, weight:0,
+		movePoints: 4, attackPoints: 2, attack: "Spell",
+		attackWidth: 1, attackRange: 1, power: 1.0, dmgType: "cold", fullBoundBonus: 4,
+		events: [
+			{trigger: "tick", type: "DeleteCurse", tags: ["cursedCollar2"]},
+		],
+		terrainTags: {"curseTrap": 10}, shrines: [], allFloors: true},
+	//endregion
 ];
 
 

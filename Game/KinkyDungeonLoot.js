@@ -251,6 +251,16 @@ As for why there are so many restraints in general rather than your typical sort
 
 
 function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
+	let data = {
+		loot: Loot,
+		replacemsg: Replacemsg,
+		lock: Lock,
+	};
+	KinkyDungeonSendEvent("loot", data);
+	Loot = data.loot;
+	Replacemsg = data.replacemsg;
+	Lock = data.lock;
+
 	let value = 0;
 	if (Loot.weapon) {
 		KinkyDungeonInventoryAddWeapon(Loot.weapon);
@@ -918,4 +928,28 @@ function KDGetWeightedString(WeightList, params) {
 		}
 	}
 	return null;
+}
+
+/**
+ * @param {string[]} tags - Type of restraint
+ * @returns {boolean}
+ */
+function KDCanCurse(tags) {
+	return KDCheckPrereq(undefined, "AlreadyCursed", {tags: [tags]}, {});
+}
+
+/**
+ * Helper function used to summon cursed epicenters
+ * @param {number} x
+ * @param {number} y
+ */
+function KDSummonCurseTrap(x, y) {
+	let enemy = KinkyDungeonGetEnemy(["curseTrap"], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["epicenter"]);
+	if (enemy) {
+		let point = KinkyDungeonGetNearbyPoint(x, y, true);
+		if (point) {
+			DialogueCreateEnemy(point.x, point.y, enemy.name);
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SummonCurse.ogg");
+		}
+	}
 }

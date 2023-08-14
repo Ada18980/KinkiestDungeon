@@ -1637,15 +1637,15 @@ const KinkyDungeonRestraints = [
 	//region Obsidian
 	{inventory: true, name: "ObsidianLegCuffs", debris: "Chains", accessible: true, Asset: "OrnateLegCuffs", LinkableBy: ["Legbinders", "Hobbleskirts", "Belts", "Ties"], Type: "Chained", Color: ["#675F50", "#171222", "#9B63C5"], Group: "ItemLegs", hobble: true, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.6, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
-		maxwill: 0.8, enemyTags: {"obsidianRestraints":6, "obsidianCuffs":6}, playerTags: {"ItemLegsFull":-2}, minLevel: 7, allFloors: true, shrine: ["Metal", "Cuffs", "Obsidian", "Elements"]},
+		maxwill: 0.8, enemyTags: {"obsidianRestraints":6, "obsidianNoCuffs": -1000, "obsidianCuffs":6, "obsidianLessCuffs": -5.9}, playerTags: {"ItemLegsFull":-2}, minLevel: 7, allFloors: true, shrine: ["Metal", "Cuffs", "Obsidian", "Elements"]},
 	{inventory: true, name: "ObsidianAnkleCuffs", debris: "Chains", accessible: true, Asset: "OrnateAnkleCuffs", LinkableBy: [...KDBindable], Link: "ObsidianAnkleCuffs2", Type: "Chained", Color: ["#675F50", "#171222", "#9B63C5"], Group: "ItemFeet", hobble: true, power: 9, weight: 0,
-		escapeChance: {"Struggle": -0.6, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25}, enemyTags: {"obsidianRestraints":6, "obsidianCuffs":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs", "AnkleCuffsBase", "Obsidian"],
+		escapeChance: {"Struggle": -0.6, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25}, enemyTags: {"obsidianRestraints":6, "obsidianNoCuffs": -1000, "obsidianLessCuffs": -5.9, "obsidianCuffs":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs", "AnkleCuffsBase", "Obsidian"],
 		maxwill: 1.0, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}]},
 	{name: "ObsidianAnkleCuffs2", debris: "Chains", accessible: true, Asset: "OrnateAnkleCuffs", LinkableBy: ["AnkleCuffsBase", ...KDBindable], UnLink: "ObsidianAnkleCuffs", Type: "Closed", Color: ["#675F50", "#171222", "#9B63C5"], Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.6, "Cut": -0.3, "Remove": 0.2, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs", "Obsidian", "Elements"],
 		events: [{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
 	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "ObsidianArmCuffs", debris: "Chains", DefaultLock: "Purple", accessible: true, Asset: "OrnateCuffs", linkCategory: "Cuffs", linkSize: 0.55, LinkableBy: [...KDDevices, ...KDBindable], Link: "ObsidianArmCuffs2", Color: ["#171222", "#9B63C5"], Group: "ItemArms", bindarms: false, power: 9, weight: 0,
-		escapeChance: {"Struggle": -0.6, "Cut": -0.2, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"obsidianRestraints":24, "obsidianCuffs":20}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cuffs", "ArmCuffsBase", "Obsidian", "Elements"],
+		escapeChance: {"Struggle": -0.6, "Cut": -0.2, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"obsidianRestraints":24, "obsidianNoCuffs": -1000, "obsidianLessCuffs": -23.9, "obsidianCuffs":20}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cuffs", "ArmCuffsBase", "Obsidian", "Elements"],
 		maxwill: 0.8, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "defeat", type: "linkItem", chance: 1.0}]},
 	{name: "ObsidianArmCuffs2", debris: "Chains", accessible: true, Asset: "OrnateCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "ObsidianArmCuffs3", UnLink: "ObsidianArmCuffs", Color: ["#171222", "#9B63C5"],
 		Group: "ItemArms", bindarms: true, power: 9, weight: 0,
@@ -1662,7 +1662,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "ObsidianGag", debris: "Chains", gag: 0.75, Asset: "MuzzleGag", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: ["#1C1847", "#1C1847"], Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 9, weight: -7, escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		maxwill: 0.7, enemyTags: {"obsidianRestraints":8}, playerTags: {"ItemMouth3Full":-2, "ItemMouth2Full":2, "ItemMouth1Full":2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Gags", "Obsidian", "Elements", "FlatGags"]},
 	{inventory: true, name: "ObsidianCollar", debris: "Chains", Asset: "OrnateCollar", Color: ["#171222", "#9B63C5"], Group: "ItemNeck", LinkableBy: [...KDCollarLink], power: 9, weight: -2, escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
-		maxwill: 0.25, enemyTags: {"obsidianRestraints":4, "obsidianCuffs":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Collars", "Obsidian", "Elements", "HighCollars"],
+		maxwill: 0.25, enemyTags: {"obsidianRestraints":4, "obsidianNoCuffs": -1000, "obsidianLessCuffs": -3.9, "obsidianCuffs":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Collars", "Obsidian", "Elements", "HighCollars"],
 		unlimited: true,
 		events: [
 			{trigger: "beforeStruggleCalc", type: "obsidianDebuff", power: 0.15, inheritLinked: true}
@@ -2026,13 +2026,28 @@ const KinkyDungeonRestraints = [
 		},
 		power: 50, weight: -100, escapeChance: {"Struggle": -50, "Cut": -50, "Remove": -50, "Pick": -50},
 		curse: "CursedCollar",
-		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true,
+		enemyTags: {"cursedCollar": 1000, "ChestCollar": 1000}, playerTags: {}, minLevel: 0, allFloors: true,
 		shrine: ["Collars", "Cursed", "Stardust"],
 		events: [
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedTransformation", color: "#9074ab", inheritLinked: true},
 			{trigger: "postApply", type: "EngageCurse", inheritLinked: true},
 			{trigger: "EngageCurse", type: "CursedCollar", inheritLinked: true, trim: true, curse: true, tags: ["obsidianRestraints", "shadowlatexRestraints", "shadowlatexRestraintsHeavy",], msg: "KDCursedTransformation"},
 			{trigger: "tick", type: "TriggerCurseTransform", chance: 0.25, inheritLinked: true, trim: true, curse: true, tags: ["obsidianRestraints", "shadowlatexRestraints", "shadowlatexRestraintsHeavy",], msg: "KDCursedTransformation"},
+		]},
+	{inventory: true, name: "CursedCollar2", alwaysKeep: true, debris: "Chains", Asset: "SlenderSteelCollar", Color: ["#8E72AA"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],
+		Model: "StardustCollar",
+		Filters: {
+			"Collar": {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1.0,"red":1.4,"green":1,"blue":1.9, "alpha":1},
+		},
+		power: 50, weight: -100, escapeChance: {"Struggle": -50, "Cut": -50, "Remove": -50, "Pick": -50},
+		curse: "CursedCollar",
+		enemyTags: {"cursedCollar2": 1000, "ChestCollar": 1000}, playerTags: {}, minLevel: 0, allFloors: true,
+		shrine: ["Collars", "Cursed", "Stardust"],
+		events: [
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedTransformation", color: "#9074ab", inheritLinked: true},
+			{trigger: "postApply", type: "EngageCurse", inheritLinked: true},
+			{trigger: "EngageCurse", type: "CursedCollar", inheritLinked: true, trim: true, curse: true, tags: ["mithrilRestraints", "liquidMetalRestraintsRandom"], msg: "KDCursedTransformation"},
+			{trigger: "tick", type: "TriggerCurseTransform", chance: 0.25, inheritLinked: true, trim: true, curse: true, tags: ["mithrilRestraints", "liquidMetalRestraintsRandom"], msg: "KDCursedTransformation"},
 		]},
 	//endregion
 
