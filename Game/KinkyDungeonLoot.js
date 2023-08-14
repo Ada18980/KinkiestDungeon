@@ -950,6 +950,7 @@ function KDSummonCurseTrap(x, y) {
 		if (point) {
 			DialogueCreateEnemy(point.x, point.y, enemy.name);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SummonCurse.ogg");
+			KinkyDungeonSendTextMessage(8, TextGet("KDSummonCurse"), "#9074ab", 5);
 		}
 	}
 }
