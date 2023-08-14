@@ -25,7 +25,7 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 
-KinkyDungeon,"Kinky Dungeon v4.4"
+KinkyDungeon,"Kinky Dungeon v4.5"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -312,7 +312,7 @@ KinkyDungeonStatDescLikeTheWind,"While above 95% stamina, you gain +30 Evasion a
 KinkyDungeonStatImmovableObject,"Immovable Object"
 KinkyDungeonStatDescImmovableObject,"While above 90% willpower, you gain +150 Bondage Resist and Earth buff spells cost half mana."
 KinkyDungeonStatLeastResistance,"Path of Least Resistance"
-KinkyDungeonStatDescLeastResistance,"While at 0 willpower, you gain +35 Evasion and deal 20% of your max willpower as acid damage when restrained."
+KinkyDungeonStatDescLeastResistance,"While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as acid damage when enemies restrain you."
 
 KinkyDungeonStatSticky,"Sticky Situation"
 KinkyDungeonStatDescSticky,"You take 40% more glue damage."
@@ -3932,6 +3932,9 @@ LootChestKiguMask,"You a padded metal blindfold, glowing magnificently, along wi
 RestraintKiguMaskDesc2,"A well-fitted mask, covering your entire head neatly and locking in place."
 RestraintKiguMaskDesc,"It has eyeholes for you to see out of, but blocks access to the face."
 
+RestraintShadowLatexHeels,Shadow Heels
+RestraintShadowLatexHeelsDesc,"A set of impractical heels that clasp around your ankles. They make it hard to walk."
+RestraintShadowLatexHeelsDesc2,"The material is stronger than leather, and flexes to make struggling difficult."
 RestraintShadowLatexStraitjacket,Shadow Jacket
 RestraintShadowLatexStraitjacketDesc,"A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexStraitjacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
@@ -4569,13 +4572,17 @@ KinkyDungeonBookConjureDescription,A book about conjuration
 KinkyDungeonBookIllusionDescription,A book of manipulative spells
 
 
+KDShortCompVerbal,"Verbal"
+KDShortCompArms,"Arms"
+KDShortCompLegs,"Legs"
+
 KinkyDungeonComponents,"Components: "
 KinkyDungeonComponentsVerbal,"Verbal"
 KinkyDungeonComponentsArms,"Arm Movements"
 KinkyDungeonComponentsLegs,"Leg Gestures"
-KinkyDungeonComponentsFailVerbal,"The incantation comes out as a garbled mess!"
-KinkyDungeonComponentsFailArms,"You can't raise your arms to cast the spell!"
-KinkyDungeonComponentsFailLegs,"Your feet are too clumsy to perform the magic gesture!"
+KinkyDungeonComponentsFailVerbal,"You mumble incoherently trying to cast the spell..."
+KinkyDungeonComponentsFailArms,"You wiggle uselessly trying to cast the spell..."
+KinkyDungeonComponentsFailLegs,"Your feet are too clumsy to perform the magic gesture..."
 
 KinkyDungeonBookNextPage,Next Page
 KinkyDungeonBookLastPage,Last Page
@@ -5459,6 +5466,7 @@ KinkyDungeonSpellCastCommandWord,You speak a command word!
 KDCommandWordFail_NoLocks,None of the locks you are wearing respond to your magic.
 KDCommandWordFail_NoEnemy,You can't help her with this.
 KDCommandWordFail_NoTarget,"You must target yourself, an enemy, or a locked object."
+KDCommandWordFail_Miscast,"The command is intricate and you are unable to enunciate it properly!"
 
 KinkyDungeonSpellLesserInvisibility,Lesser Invisibility
 KinkyDungeonSpellTargetLesserInvisibility,Select which creature to buff
@@ -10553,6 +10561,9 @@ KDFilterFiltersMetal,Metal
 KDFilterFiltersLatex,Latex
 KDFilterFiltersLeather,Leather
 KDFilterFiltersArmbinders,Armbinders
+KDFilterFiltersDevices,Devices
+KDFilterFiltersVibes,Toys
+KDFilterFiltersCollars,Collars
 KDFilterFiltersStraitjackets,Straitjackets
 KDFilterFiltersBindingDress,Dresses
 KDFilterFiltersTies,Ties
@@ -10562,6 +10573,7 @@ KDFilterFiltersCuffs,Cuffs
 KDFilterFiltersChains,Chains
 KDFilterFiltersGags,Gags
 KDFilterFiltersBoots,Boots
+KDFilterFiltersToys,Toys
 
 
 RestraintWeakMagicRopeArmsBoxtie,Magic Boxtie
@@ -10774,6 +10786,9 @@ RestraintPanelPlugGagHarnessDesc,"A gag meant to keep people quiet by forcing a 
 RestraintPanelPlugGagHarnessDesc2,"It is difficult to pull off and though it is made from supple, heavy duty leather."
 
 
+KDCurseTransformNew,"Your OLDITM transforms into NEWITM!"
+KDCurseTransform,"Your OLDITM gains new properties!"
+
 
 NameEpicenterCursed,Cursed Epicenter
 KillEpicenterCursed,"The cursed epicenter disperses into black stardust."
@@ -10787,36 +10802,44 @@ RestraintCursedCollar,Stardust Collar
 RestraintCursedCollarDesc,"'You thought you could run forever, didn't you? Fate has a way of always catching up to you...'"
 RestraintCursedCollarDesc2,"Cannot be removed while you are wearing other Stardust Cursed items."
 
-KinkyDungeonCurseUnlockCursedDamage,"The cursed seal vanishes into a brief veil of stardust."
-KinkyDungeonCurseInfoCursedDamage,"The item is protected with by a Stardust Curse. Take damage to weaken the curse."
+KinkyDungeonCurseUnlockCursedDamage,"The cursed seal on the RestraintName vanishes into a brief veil of stardust."
+KinkyDungeonCurseInfoCursedDamage,"The Stardust Curse protects the RestraintName. Take AMNT more damage to weaken the curse."
 KinkyDungeonCurseStruggleCursedDamage,"You struggle uselessly, sealed in your fate."
+KDcurseDamageDamage,"You feel your restraints starting to weaken..."
 
-KinkyDungeonCurseUnlockCursedCollar,"The cursed collar falls off and becomes inert."
+KinkyDungeonCurseUnlockCursedCollar,"The cursed collar falls off, awaiting its next victim..."
 KinkyDungeonCurseInfoCursedCollar,"You must remove all other Stardust Cursed items before removing the collar."
 KinkyDungeonCurseStruggleCursedCollar,"You struggle uselessly, sealed in your fate."
 
-curseInfoCursedTransformation,"Cursed Transformation: Items with generic curses transform into Stardust Cursed items."
-KDCursedTransformation,"With a burst of dark energy, your R1 transforms into a R2!"
+curseInfoCursedTransformation,"Transformation: Items with generic curses transform into Stardust Cursed items."
+KDCursedTransformation,"With a burst of dark energy, your OLDITM gains new properties!"
+KDCursedTransformationNew,"With a burst of dark energy, your OLDITM transforms into a NEWITM!"
 
-curseInfoCursedHeal,"Cursed Restoration: While distracted, your Stardust Cursed restraints regain the strength on their seal."
-KDCursedHeal,"As you let go, you feel your cursed restraints tighten and strengthen!"
+curseInfoCursedHeal,"Restoration: While distracted, your Stardust Cursed restraints regain strength."
+KDCursedHeal,"With the rush of pleasure, you feel your cursed restraints tighten and strengthen!"
 
-curseInfoCursedCorruption,"Cursed Corruption: While in the shadows, you slowly gain corruption which decreases WP gain and struggle power."
-KDCursedCorruption,"Your willpower gain is AMNT% less effective due to your corruption."
+curseInfoCursedCorruption,"Corruption: While in the shadows, you slowly gain corruption."
+KinkyDungeonBuffCorrupted,"Your willpower gain and struggle power is less effective due to your corruption."
 
-curseInfoCursedDistract,"Cursed Seduction: Gain distraction after taking damage."
+curseInfoCursedDistract,"Seduction: Gain distraction after taking damage."
 KDCursedDistractActivate,"Taking damage fills your minds with cursed thoughts..."
 KinkyDungeonBuffCursedDistract,"Having taken damage, your distraction is increasing..."
 
-curseInfoCursedPunishment,"Cursed Punishment: When you defeat an enemy, you are stunned briefly and enemies are attracted."
+curseInfoCursedPunishment,"Punishment: When you defeat an enemy, you are stunned briefly and enemies are attracted."
 KDCursedPunishment,"Dark Voice: You are supposed to be a slave!"
 
-curseInfoCursedSubmission,"Cursed Submission: While at 0 willpower, you are restrained if you leave the presence of a hostile enemy."
+curseInfoCursedSubmission,"Submission: At 0 WP, you are restrained if you leave the presence of a hostile."
 KDCursedSubmission,"Dark Voice: Kneel before your mistress."
+KinkyDungeonBuffForcedSubmission,"You must submit! Moving away from an enemy at 0 WP will bind you!"
 
-curseInfoCursedDenial,"Cursed Denial: -25 WP when you Let Go. At 0 WP you cannot orgasm."
-KDCursedDenialDeny,"Dark Voice: Not yet."
-KDCursedDenialAllow,"Dark Voice: You may enjoy yourself, for now~"
+curseInfoCursedDenial,"Denial: -10 WP when you try to Let Go. At 0 WP you cannot orgasm."
+KDCursedDenialDeny0,"Dark Voice: Not yet."
+KDCursedDenialDeny1,"Dark Voice: Your squirming pleases us."
+KDCursedDenialDeny2,"Dark Voice: It is not your choice to make~"
+KDCursedDenialAllow0,"Dark Voice: You may enjoy yourself, for now~"
+KDCursedDenialAllow1,"Dark Voice: Yes, take in the pleasure..."
+KDCursedDenialAllow2,"Dark Voice: Enjoy a gift, dear~"
 
 KDVariableModifier_CursedBarrier1,"Stardust: -20 Charm/Psychic Resist"
 KDVariableModifier_CursedBarrier2,"Stardust: +40 all other resists"
+

@@ -1494,7 +1494,7 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 		let noRepHit = false;
 		KinkyDungeonSendEvent("death", {});
 		KDSpliceIndex(E, 1);
-		KinkyDungeonSendEvent("kill", {enemy: enemy});
+		KinkyDungeonSendEvent("kill", {enemy: enemy, capture: KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture});
 		if (KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture && enemy.playerdmg) {
 			KDDropStolenItems(enemy);
 			if (!KinkyDungeonCapture(enemy)) noRepHit = true;

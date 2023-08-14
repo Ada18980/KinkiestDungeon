@@ -179,3 +179,7 @@ let KDBuffReference = {
 };
 
 let KDDisenchantSelf = {id: "DisenchantSelf", aura: "#8888ff", type: "Disenchant", power: 9.9, player: true, enemies: true, duration: 10,};
+
+/** @type {Record<string, (entity: entity, buff: any) => void>}>} */
+let KDCustomBuff = {
+};

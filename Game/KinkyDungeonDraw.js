@@ -833,6 +833,10 @@ function KinkyDungeonDrawGame() {
 			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KinkyDungeonGridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
 			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
 
+			if (CamX_offsetVis || CamY_offsetVis) {
+				KDRedrawFog = 2;
+			}
+
 			if (StandalonePatched) {
 				kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
 				kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
@@ -2912,8 +2916,10 @@ function GetAdjacentList(list, index, width) {
 	}
 }
 
+
 function KDUpdateVision() {
 	KinkyDungeonUpdateLightGrid = false;
+	KDRedrawFog = 2;
 
 	let viewpoints = [ {x: KinkyDungeonPlayerEntity.x, y:KinkyDungeonPlayerEntity.y, brightness: KinkyDungeonDeaf ? 2 : 4 }];
 

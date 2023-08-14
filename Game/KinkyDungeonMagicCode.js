@@ -73,6 +73,11 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonSetDress(spell.outfit);
 	},
 	"CommandWord": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		if (data.gaggedMiscastFlag || KinkyDungeonGagTotal() >= 0.25) {
+			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_Miscast"), "#ff5555", 1);
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/SoftShield.ogg");
+			return "Miscast";
+		}
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
 			if (en.boundLevel > 0) {
@@ -150,7 +155,7 @@ let KinkyDungeonSpellSpecials = {
 	},
 	"Chastity": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
-		if (en && en.Enemy.bound && KinkyDungeonIsDisabled(en)) {
+		if (en && en.Enemy.bound && KinkyDungeonIsDisabled(en) && !en.Enemy.nonHumanoid) {
 			KDTieUpEnemy(en, spell.power, "Metal");
 			KinkyDungeonApplyBuffToEntity(en, KDChastity);
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
@@ -180,7 +185,7 @@ let KinkyDungeonSpellSpecials = {
 			}
 
 
-		} else if (en && KDCanBind(en) && KDHelpless(en)) {
+		} else if (en && KDCanBind(en) && KDHelpless(en) && !en.Enemy.nonHumanoid) {
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 			// Summon a pet
 			let Enemy = KinkyDungeonGetEnemyByName("PetDisplay");
@@ -226,7 +231,7 @@ let KinkyDungeonSpellSpecials = {
 			}
 
 
-		} else if (en && KDCanBind(en) && KDHelpless(en)) {
+		} else if (en && KDCanBind(en) && KDHelpless(en) && !en.Enemy.nonHumanoid) {
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 			// Summon a pet
 			let Enemy = KinkyDungeonGetEnemyByName("Pet");

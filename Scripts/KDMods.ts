@@ -39,6 +39,7 @@ function KDLoadMod(files: any[]) {
 }
 
 async function KDExecuteMods() {
+	KDAwaitingModLoad = true;
 	KDAllModFiles = [];
 	for (let file of Object.values(KDMods)) {
 		let entries = await model.getEntries(file, {});
@@ -96,8 +97,10 @@ async function KDExecuteMods() {
 	if (KDAllModFiles.length > 0)
 		KDModsLoaded = true;
 
+	KDLoadPerks();
 	KinkyDungeonRefreshRestraintsCache();
 	KinkyDungeonRefreshEnemiesCache();
+	KDAwaitingModLoad = false;
 }
 
 

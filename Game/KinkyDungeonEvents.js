@@ -168,7 +168,11 @@ let KDEventMapInventory = {
 					}
 				}
 			}
-		}
+		},
+		"EngageCurse": (e, item, data) => {
+			if (item == data.item)
+				KinkyDungeonSendEvent("EngageCurse", {});
+		},
 	},
 	"calcOrgThresh": {
 		"CurseSensitivity": (e, item, data) => {
@@ -187,7 +191,26 @@ let KDEventMapInventory = {
 			data.cost = Math.max(data.cost * e.power, 0);
 		},
 	},
+	"edge": {
+		"CursedDenial": (e, item, data) => {
+			KinkyDungeonSendTextMessage(5, TextGet("KDCursedDenialDeny" + Math.floor(KDRandom() * e.count)), "#9074ab", 10);
+		},
+	},
 	"orgasm": {
+		"CursedDenial": (e, item, data) => {
+			KinkyDungeonSendTextMessage(5, TextGet("KDCursedDenialAllow" + Math.floor(KDRandom() * e.count)), "#9074ab", 10);
+		},
+		"CursedHeal": (e, item, data) => {
+			if (item && KDGetCurse(item) == "CursedDamage" && KDIsEdged(KinkyDungeonPlayerEntity)) {
+				let alreadyDone = KDItemDataQuery(item, "cursedDamage") || 0;
+				if (alreadyDone > 0) {
+					KinkyDungeonSendTextMessage(4, TextGet("KDCursedHeal"), "#9074ab", 2);
+					alreadyDone = Math.max(0, alreadyDone - e.power*data.delta);
+					KDItemDataSet(item, "cursedDamage", alreadyDone);
+					KDItemDataSet(item, "cursedDamageCheckpoint", Math.floor(1+alreadyDone/10)*10);
+				}
+			}
+		},
 		"CurseSubmission": (e, item, data) => {
 			if (data.player == KinkyDungeonPlayerEntity) {
 				KinkyDungeonChangeRep("Ghost", e.power);
@@ -332,6 +355,13 @@ let KDEventMapInventory = {
 			// if (item.player == data.player)
 			if (data.enemy?.Enemy.tags.escapeddoll) KinkyDungeonSetFlag("DollmakerGrace", 70);
 		},
+		"CursedPunishment": (e, item, data) => {
+			if (data.enemy && data.enemy.lifetime == undefined && data.enemy.playerdmg && data.enemy.Enemy.bound && !data.enemy.Enemy.nonHumanoid) {
+				KDStunTurns(e.time, false);
+				KinkyDungeonSendTextMessage(8, TextGet("KDCursedPunishment"), "#9074ab", e.time);
+				KinkyDungeonMakeNoise(e.dist, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+			}
+		},
 	},
 	"drawSGTooltip": {
 		"curseInfo": (e, item, data) => {
@@ -406,8 +436,168 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"cursedDamage": (e, item, data) => {
+			if (data.dmg > 0) {
+				/** @type {number} */
+				let alreadyDone = KDItemDataQuery(item, "cursedDamage") || 0;
+				let count = KDItemDataQuery(item, "cursedDamageHP") || Math.round(e.power + KDRandom() * e.limit);
+				KDItemDataSet(item, "cursedDamageHP", count);
+				if (alreadyDone < count) {
+					alreadyDone += e.mult * data.dmg;
+					KDItemDataSet(item, "cursedDamage", alreadyDone);
+					if (alreadyDone >= KDItemDataQuery(item, "cursedDamageCheckpoint") || 0) {
+						KinkyDungeonSendTextMessage(4, TextGet("KDcurseDamageDamage"), "#9074ab", 2, false, true);
+					}
+					KDItemDataSet(item, "cursedDamageCheckpoint", Math.floor(1+alreadyDone/10)*10);
+				} else {
+					KDCreateEffectTile(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, {
+						name: "Smoke",
+						duration: 3,
+					}, 3);
+					item.curse = undefined;
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonCurseUnlockCursedDamage").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				}
+			}
+		},
+		"CursedDistract": (e, item, data) => {
+			if (data.dmg > 0) {
+				if (data.dmg >= 3 || !KinkyDungeonPlayerBuffs.CursedDistract)
+					KinkyDungeonSendTextMessage(2, TextGet("KDCursedDistractActivate"), "#9074ab", e.time);
+				KinkyDungeonChangeDistraction(data.dmg * (e.mult || 0), false, 0.1);
+				KinkyDungeonApplyBuffToEntity(data.player || KinkyDungeonPlayerEntity,
+					{
+						id: "CursedDistract",
+						aura: "#9074ab",
+						duration: e.time,
+						power: e.power,
+						type: "restore_ap",
+					}
+				);
+			}
+		},
+	},
+	"CurseTransform": {
+		"transform": (e, item, data) => {
+			// You can call CurseTransform with a forceItems to force one or more item to transform regardless of chance
+			if (!e.chance || KDRandom() < e.chance || (data.forceItems && data.forceItems.includes(item))) {
+				// In this first section we get the various lists
+				let listname = e.kind || KDRestraint(data.curseditem)?.name || "Common";
+				if (data.noDupe) {
+					// TODO make it so no curses are duped
+				}
+				let selection = KDGetByWeight(KinkyDungeonGetHexByListWeighted(data.hexlist || listname, KDRestraint(item).name, false, data.hexlevelmin || 0, data.hexlevelmax || 10));
+				let curse = KDGetByWeight(KinkyDungeonGetCurseByListWeighted([data.curselist || listname], KDRestraint(item).name, false, 0, 1000));
+
+				// Load the current inventory variant
+				/** @type {KDInventoryVariant} */
+				let newvariant = JSON.parse(JSON.stringify(KinkyDungeonInventoryVariants[item.inventoryAs || item.name] || {}));
+				/** @type {restraint} - New restraint to transform to*/
+				let newRestraint = null;
+				if (data.newRestraintTags) {
+					newRestraint = KinkyDungeonGetRestraint({tags: [...data.newRestraintTags],},
+						MiniGameKinkyDungeonLevel,
+						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "",
+						false, false, false, undefined, undefined, {
+							allowedGroups: [KDRestraint(item).Group],
+						}, undefined,
+						curse || "");
+				}
+				// Add the new curse
+				if (newRestraint) {
+					newvariant.template = newRestraint.name;
+				}
+				newvariant.events = [...(newvariant.events || [])];
+				// Trim off the transformation...
+				if (!data.trimTrigger)
+					newvariant.events = newvariant.events.filter((event) => {return event.trigger != "CurseTransform";});
+				newvariant.events = [...newvariant.events, ...KDEventHexModular[selection].events];
+				if (data.trimTrigger)
+					newvariant.events = newvariant.events.filter((event) => {return event.trigger != "CurseTransform";});
+				if (curse) {
+					newvariant.curse = curse;
+				}
+				// Apply the item!
+				let msg = data.msg || "KDCurseTransform";
+				if (newRestraint) {
+					KinkyDungeonSendTextMessage(10, TextGet(msg + "New")
+						.replace("OLDITM", TextGet("Restraint" + KDRestraint(item).name))
+						.replace("NEWITM", TextGet("Restraint" + newvariant.template)),
+					"#ffffff", 2);
+				} else {
+					KinkyDungeonSendTextMessage(10, TextGet(msg)
+						.replace("OLDITM", TextGet("Restraint" + KDRestraint(item).name)),
+					"#ffffff", 2);
+				}
+				KDMorphToInventoryVariant(item, newvariant, "", curse);
+			}
+		},
+	},
+	"EngageCurse": {
+		"CursedCollar": (e, item, data) => {
+			let itemsEligible = [];
+			for (let inv of KinkyDungeonAllRestraintDynamic()) {
+				let it = inv.item;
+				if (it.events?.some((event) => {return event.trigger == "CurseTransform";})) {
+					itemsEligible.push(it);
+				}
+			}
+			KinkyDungeonSendEvent("CurseTransform", {curseditem: item, newRestraintTags: e.tags, forceItems: [itemsEligible[Math.floor(KDRandom()*itemsEligible.length)]], trimTrigger: e.trim, msg: e.msg, ...data});
+		},
 	},
 	"tick": {
+		"CursedHeal": (e, item, data) => {
+			if (item && KDGetCurse(item) == "CursedDamage" && KDIsEdged(KinkyDungeonPlayerEntity)) {
+				let alreadyDone = KDItemDataQuery(item, "cursedDamage") || 0;
+				if (alreadyDone > 0) {
+					alreadyDone = Math.max(0, alreadyDone - e.power*data.delta);
+					KDItemDataSet(item, "cursedDamage", alreadyDone);
+					KDItemDataSet(item, "cursedDamageCheckpoint", Math.floor(1+alreadyDone/10)*10);
+				}
+			}
+		},
+		"CursedCorruption": (e, item, data) => {
+			if (item && KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < KDShadowThreshold) {
+				let buff = KinkyDungeonPlayerBuffs.Corrupted;
+				let buff2 = KinkyDungeonPlayerBuffs.Corrupted2;
+				if (!buff || !buff2) {
+					buff = KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+						id: "Corrupted",
+						aura: "#9074ab",
+						type: "StatGainWill",
+						aurasprite: "Null",
+						power: -0.01,
+						duration: 9999,
+						text: "-1%",
+						events: [
+							{trigger: "tick", type: "Corrupted", power: 0.01},
+						],
+					});
+					buff2 = KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+						id: "Corrupted2",
+						type: "StrugglePower",
+						power: -0.01,
+						duration: 9999,
+						events: [
+							{trigger: "tick", type: "Corrupted", power: 0.01},
+						],
+					});
+				} else {
+					buff.power = Math.max(e.limit || -0.9, buff.power - 0.01* (e.power) * data.delta);
+					buff.text = Math.round(buff.power * 100) + "%";
+					buff.duration = 9999;
+
+					buff2.power = Math.max(e.limit || -0.9, buff.power - 0.01* (e.power) * data.delta);
+					buff2.text = Math.round(buff.power * 100) + "%";
+					buff2.duration = 9999;
+				}
+			}
+		},
+		"TriggerCurseTransform": (e, item, data) => {
+			if (!e.chance || KDRandom() < e.chance) {
+				// Trigger a transform event.
+				KinkyDungeonSendEvent("CurseTransform", {curseditem: item, newRestraintTags: e.tags, trimTrigger: e.trim, msg: e.msg, ...data});
+			}
+		},
 		"iceMelt": (e, item, data) => {
 			let alreadyDone = KDItemDataQuery(item, "iceMelt") || 0;
 			if (alreadyDone < e.count) {
@@ -724,6 +914,34 @@ let KDEventMapInventory = {
 			}
 		}
 	},
+	"tickAfter": {
+		"CursedSubmission": (e, item, data) => {
+			if (KinkyDungeonStatWill < 0.1) {
+				if (KinkyDungeonLastTurnAction == "Move"
+					&& KDEntityBuffedStat(KinkyDungeonPlayerEntity, "ForcedSubmission", true) > 0
+					&& KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, e.dist, KinkyDungeonPlayerEntity).length == 0) {
+					// Condition for if you are near an enemy
+					KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["CursedSubmission"]);
+					// Submit!!!
+					KinkyDungeonSendTextMessage(7, TextGet("KDCursedSubmission"), "#9074ab", 3);
+					KDPlayerEffectRestrain(undefined, e.count, e.tags, "Ghost", false, true, false, false);
+				} else if (KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
+					KDEntityBuffedStat(KinkyDungeonPlayerEntity, "ForcedSubmission") ? e.dist : 1.5,
+					KinkyDungeonPlayerEntity).length > 0) {
+					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+						id: "ForcedSubmission",
+						type: "ForcedSubmission",
+						aura: "#ff5555",
+						aurasprite: "Null",
+						power: 1,
+						duration: 2,
+						text: " ",
+						tags: ["CursedSubmission"],
+					});
+				}
+			}
+		},
+	},
 	"calcDisplayDamage": {
 		"BoostDamage": (e, item, data) => {
 			if (KDCheckPrereq(null, e.prereq, e, data)) {
@@ -875,6 +1093,16 @@ let KDEventMapInventory = {
 			}
 		}
 	},
+	"tryOrgasm": {
+		"CursedDenial": (e, item, data) => {
+			if (KinkyDungeonStatWill > 0.1) {
+				if (data.auto <= 1)
+					KinkyDungeonChangeWill(-e.power);
+			} else {
+				data.chance *= 0;
+			}
+		}
+	},
 	"hit": {
 		"linkItem": (e, item, data) => {
 			if ((data.attack && data.attack.includes("Bind") && (!data.enemy || data.enemy.Enemy.bound) && !data.attack.includes("Suicide"))) {
@@ -912,9 +1140,9 @@ let KDEventMapInventory = {
 			if (data.type && t == e.damage && data.dmg) {
 				if (!e.power || data.dmg >= e.power) {
 					// Increase damage count
-					let count = getItemDataNumber(item, e.kind) || 0;
+					let count = KDItemDataQuery(item, e.kind) || 0;
 					count = count + Math.max(data.dmg || 1, 1);
-					setItemDataNumber(item, e.kind, count);
+					KDItemDataSet(item, e.kind, count);
 					// Evaluate damage count
 					if (!e.count || count >= e.count) {
 						item.curse = "";
@@ -1704,6 +1932,21 @@ const KDEventMapBuff = {
 		},
 	},
 	"tick": {
+		"Corrupted": (e, buff, entity, data) => {
+			if (entity.player) {
+				if (KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) > KDShadowThreshold) {
+					buff.power = Math.min(0, buff.power + (e.power
+						* Math.min(10, KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) / KDShadowThreshold)
+					) * data.delta);
+					buff.text = Math.round(buff.power * 100) + "%";
+					if (buff.power < 0) {
+						buff.duration = 9999;
+					} else {
+						buff.duration = 0;
+					}
+				}
+			}
+		},
 		"ShadowDommed": (e, buff, entity, data) => {
 			if (buff.duration > 0) {
 				if (entity.player) {
@@ -2591,7 +2834,7 @@ let KDEventMapSpell = {
 	"tickAfter": {
 		"Frustration": (e, spell, data) => {
 			for (let en of KinkyDungeonEntities) {
-				if (en.Enemy.bound && en.buffs && KDEntityBuffedStat(en, "Chastity")) {
+				if (en.Enemy.bound && !en.Enemy.nonHumanoid && en.buffs && KDEntityBuffedStat(en, "Chastity")) {
 					if (KDHelpless(en)) {
 						let Enemy = KinkyDungeonGetEnemyByName("PetChastity");
 						let doll = {
@@ -4486,7 +4729,8 @@ let KDEventMapGeneric = {
 		},
 		/** Updates gold locks */
 		"lockStart": (e, data) => {
-			for (let inv of KinkyDungeonAllRestraint()) {
+			for (let tuple of KinkyDungeonAllRestraintDynamic()) {
+				let inv = tuple.item;
 				if (inv.lock && KDLocks[inv.lock] && KDLocks[inv.lock].levelStart) {
 					KDLocks[inv.lock].levelStart(inv);
 				}

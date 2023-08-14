@@ -82,10 +82,10 @@ function KDProcessInput(type, data) {
 			}
 			break;
 		case "consumable":
-			KDModalArea = false;
-			KinkyDungeonTargetTile = null;
-			KinkyDungeonTargetTileLocation = null;
+			//KDModalArea = false;
 			KinkyDungeonAttemptConsumable(data.item, data.quantity);
+			//KinkyDungeonTargetTile = null;
+			//KinkyDungeonTargetTileLocation = null;
 			break;
 		case "switchWeapon": {
 			KDDelayedActionPrune(["Action", "SwitchWeapon"]);
@@ -157,7 +157,7 @@ function KDProcessInput(type, data) {
 			} else return "KDCantEquip";
 		case "tryOrgasm":
 			KDDelayedActionPrune(["Action", "Sexy"]);
-			KinkyDungeonDoTryOrgasm(data.bonus);
+			KinkyDungeonDoTryOrgasm(data.bonus, 0);
 			break;
 		case "tryPlay":
 			KDDelayedActionPrune(["Action", "Sexy"]);

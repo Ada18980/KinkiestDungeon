@@ -298,11 +298,11 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			}
 		}
 		if (Loot.unlockcurse && (hexVariant || !Loot.hexlist)) {
-			let hexlist = [];
+			let curselist = [];
 			for (let c of Loot.unlockcurse) {
-				hexlist.push(...KDCurseUnlockList[c]);
+				curselist.push(c);
 			}
-			unlockcurse = CommonRandomItemFromList("", hexlist);
+			unlockcurse = KDGetByWeight(KinkyDungeonGetCurseByListWeighted(curselist, armor, false, Loot.hexlevelmin, Loot.hexlevelmax));
 		}
 		if (hexVariant || enchantVariant) {
 			let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
