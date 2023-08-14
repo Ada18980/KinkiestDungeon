@@ -2244,6 +2244,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 15, blindSight: 8, evasion: -2, maxhp: 60, minLevel: 0, weight:0,
 		movePoints: 4, attackPoints: 2, attack: "Spell",
 		attackWidth: 1, attackRange: 1, power: 1.0, dmgType: "cold", fullBoundBonus: 4,
+		regen: 0.02,
 		events: [
 			{trigger: "tick", type: "DeleteCurse", tags: ["cursedCollar"]},
 		],
@@ -2258,6 +2259,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 15, blindSight: 8, evasion: -2, maxhp: 60, minLevel: 0, weight:0,
 		movePoints: 4, attackPoints: 2, attack: "Spell",
 		attackWidth: 1, attackRange: 1, power: 1.0, dmgType: "cold", fullBoundBonus: 4,
+		regen: 0.02,
 		events: [
 			{trigger: "tick", type: "DeleteCurse", tags: ["cursedCollar2"]},
 		],
