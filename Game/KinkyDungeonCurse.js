@@ -23,6 +23,9 @@ let KDCurseUnlockList = {
 	"CursedCollar": [
 		"CursedDamage",
 	],
+	"CursedCollar2": [
+		"CursedDamage",
+	],
 };
 
 /**

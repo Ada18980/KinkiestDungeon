@@ -28,6 +28,14 @@ let KDHexVariantList = {
 		"CursedSubmission",
 		"CursedDenial",
 	],
+	"CursedCollar2": [
+		"CursedHeal",
+		"CursedCorruption",
+		"CursedDistract",
+		"CursedPunishment",
+		"CursedSubmission",
+		"CursedDenial",
+	],
 };
 
 /** @type {Record<string, {level: number, weight: (item: string) => number, events: KinkyDungeonEvent[]}>} */
@@ -38,7 +46,7 @@ let KDEventHexModular = {
 		},
 		events: [
 			// All hexes have this
-			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true},
+			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform"},
 			{type: "ItemLight", trigger: "getLights", power: 3.5, color: "#ffff55", inheritLinked: true, curse: true},
 			{trigger: "tick", type: "sneakBuff", power: -1.0, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Illumination", color: "#ff5555", inheritLinked: true},
@@ -49,7 +57,7 @@ let KDEventHexModular = {
 		},
 		events: [
 			// All hexes have this
-			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true},
+			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform"},
 			{type: "CurseAttraction", trigger: "calcPlayChance", power: 0.5, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Attraction", color: "#ff5555", inheritLinked: true}
 		]},
@@ -59,7 +67,7 @@ let KDEventHexModular = {
 		},
 		events: [
 			// All hexes have this
-			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true},
+			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform"},
 			{type: "CurseSensitivity", trigger: "calcOrgThresh", power: 0.5, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Sensitivity", color: "#ff5555", inheritLinked: true}
 		]},
@@ -69,7 +77,7 @@ let KDEventHexModular = {
 		},
 		events: [
 			// All hexes have this
-			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true},
+			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform"},
 			{type: "CurseSubmission", trigger: "orgasm", power: 10, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Submission", color: "#ff5555", inheritLinked: true}
 		]},
@@ -79,7 +87,7 @@ let KDEventHexModular = {
 		},
 		events: [
 			// All hexes have this
-			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true},
+			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform"},
 			{type: "multDistractionPos", trigger: "changeDistraction", power: 1.5, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Distraction", color: "#ff5555", inheritLinked: true}
 		]},
@@ -89,7 +97,7 @@ let KDEventHexModular = {
 		},
 		events: [
 			// All hexes have this
-			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true},
+			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform"},
 			{type: "multStaminaPos", trigger: "changeStamina", power: 0.6, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Breathlessness", color: "#ff5555", inheritLinked: true}
 		]},
@@ -99,7 +107,7 @@ let KDEventHexModular = {
 		},
 		events: [
 			// All hexes have this
-			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true},
+			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform"},
 			{type: "multWillPos", trigger: "changeWill", power: 0.25, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Futile", color: "#ff5555", inheritLinked: true}
 		]},
@@ -109,7 +117,7 @@ let KDEventHexModular = {
 		},
 		events: [
 			// All hexes have this
-			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true},
+			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform"},
 			{trigger: "tick", type: "tickleDrain", power: -0.02, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Tickle", color: "#ff5555", inheritLinked: true}
 		]},
@@ -119,7 +127,7 @@ let KDEventHexModular = {
 		},
 		events: [
 			// All hexes have this
-			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true},
+			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform"},
 			{trigger: "playerAttack", type: "cursePunish", chance: 1, damage: "souldrain", power: 1, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerCurse", inheritLinked: true, curse: true},
 			{trigger: "playerCast", type: "cursePunish", chance: 1, damage: "souldrain", power: 1, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerCurse", inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Punish", color: "#ff5555", inheritLinked: true}

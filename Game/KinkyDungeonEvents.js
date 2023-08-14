@@ -481,7 +481,7 @@ let KDEventMapInventory = {
 			// You can call CurseTransform with a forceItems to force one or more item to transform regardless of chance
 			if (!e.chance || KDRandom() < e.chance || (data.forceItems && data.forceItems.includes(item))) {
 				// In this first section we get the various lists
-				let listname = e.kind || KDRestraint(data.curseditem)?.name || "Common";
+				let listname = e.cursetype || KDRestraint(data.curseditem)?.name || "Common";
 				if (data.noDupe) {
 					// TODO make it so no curses are duped
 				}
@@ -4116,6 +4116,19 @@ let KDEventMapEnemy = {
 		},
 	},
 	"tick": {
+		"DeleteCurse": (e, enemy, data) => {
+			if (!KDCheckPrereq(undefined, "AlreadyCursed", e, data)) {
+				enemy.hp = 0;
+				let suff = "NoCurse";
+				if (KinkyDungeonPlayerTags.get("Cursed")
+					|| (e.tags && !KinkyDungeonGetRestraint({tags: [...e.tags],},
+						MiniGameKinkyDungeonLevel,
+						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, ""))
+				) suff = "Invalid";
+				KinkyDungeonSendTextMessage(5, TextGet("KDEpicenterAbort" + suff + "_" + enemy.Enemy.name), "#9074ab", 10);
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Fwoosh.ogg", enemy);
+			}
+		},
 		"DisplayAura": (e, enemy, data) => {
 			let enemies = KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy);
 			for (let en of enemies) {
@@ -4950,6 +4963,20 @@ let KDEventMapGeneric = {
 				if (data.Msg) {
 					KinkyDungeonSendTextMessage(10, TextGet("KDCursedLocks"), "#aa4488", 1.1);
 				}
+			}
+		},
+	},
+	"beforeChest": {
+		"shadowChest": (e, data) => {
+			if (data.chestType == "shadow" && KDCanCurse(["ChestCollar"])) {
+				// Shadow chests spawn cursed epicenter
+				KDSummonCurseTrap(data.x, data.y);
+			}
+		},
+		"lessergoldChest": (e, data) => {
+			if (data.chestType == "lessergold" && KDCanCurse(["ChestCollar"])) {
+				// Shadow chests spawn cursed epicenter
+				KDSummonCurseTrap(data.x, data.y);
 			}
 		},
 	},

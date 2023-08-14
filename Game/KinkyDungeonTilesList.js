@@ -392,7 +392,23 @@ let KDMoveObjectFunctions = {
 			KinkyDungeonChestConfirm = true;
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2, true);
 		} else {
-			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType, roll, KinkyDungeonTilesGet(moveX + "," +moveY), undefined, noTrap);
+			let data = {
+				chestType: chestType,
+				roll: roll,
+				x: moveX,
+				y: moveY,
+				tile: KinkyDungeonTilesGet(moveX + "," +moveY),
+				noTrap: noTrap,
+				level: MiniGameKinkyDungeonLevel,
+				index: KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				lootTrap: lootTrap,
+			};
+			KinkyDungeonSendEvent("beforeChest", data);
+			chestType = data.chestType;
+			roll = data.roll;
+			noTrap = data.noTrap;
+			lootTrap = data.lootTrap;
+			KinkyDungeonLoot(data.level, data.index, chestType, roll, data.tile, undefined, noTrap);
 			if (lootTrap) {
 				KDTrigPanic();
 				KDSpawnLootTrap(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, lootTrap.trap, lootTrap.mult, lootTrap.duration);

@@ -2952,6 +2952,7 @@ KinkyDungeonFactionDragon,Dragonheart Order
 KinkyDungeonFactionMaidforce,MaidForce
 KinkyDungeonFactionMushy,Fungal Kingdom
 
+KinkyDungeonFactionCurse,Cursed Spirit
 KinkyDungeonFactionRebel,Wanted
 KinkyDungeonFactionDelinquent,Delinquent
 KinkyDungeonFactionWolfhunter,Illegal Poacher
@@ -10505,32 +10506,45 @@ KDCurseTransformNew,"Your OLDITM transforms into NEWITM!"
 KDCurseTransform,"Your OLDITM gains new properties!"
 
 
-NameEpicenterCursed,Cursed Epicenter
+NameEpicenterCursed,Moon-Cursed Epicenter
 KillEpicenterCursed,"The cursed epicenter disperses into black stardust."
-KDEpicenterAbortNoCurse,"The cursed epicenter retreats as you remove the last of your cursed restraints!"
-KDEpicenterAbortInvalid,"The cursed epicenter retreats as you are claimed by something else!"
+KDEpicenterAbortNoCurse_EpicenterCursed,"The cursed epicenter retreats as you remove the last of your cursed restraints!"
+KDEpicenterAbortInvalid_EpicenterCursed,"The cursed epicenter retreats as you are claimed by something else!"
 KDEpicenterCurseDamage,"The cursed epicenter assaults your mind with its presence! (DamageDealt)"
 KDEpicenterCurseEffectStart,"You feel your cursed items turn cold to the touch!"
-KDEpicenterCurseEffectEnd,"An obsidian collar appears around your neck, feeling cold to the touch."
+KDEpicenterCurseEffectEnd,"An cursed collar appears around your neck, feeling cold to the touch."
+KinkyDungeonSpellCursingCircle,Cursing Sigil
+KinkyDungeonSpellCastCursingCircle,"A cursing sigil appears on the ground!"
+KinkyDungeonBuffCursingCircle,"You are being cursed!!!"
 
-RestraintCursedCollar,Stardust Collar
+NameEpicenterCursed2,Star-Cursed Epicenter
+KillEpicenterCursed2,"The cursed epicenter disperses into black stardust."
+KDEpicenterAbortNoCurse_EpicenterCursed2,"The cursed epicenter retreats as you remove the last of your cursed restraints!"
+KDEpicenterAbortInvalid_EpicenterCursed2,"The cursed epicenter retreats as you are claimed by something else!"
+KinkyDungeonSpellCursingCircle2,Cursing Sigil
+KinkyDungeonSpellCastCursingCircle2,"A cursing sigil appears on the ground!"
+
+RestraintCursedCollar,Moondust Collar
 RestraintCursedCollarDesc,"'You thought you could run forever, didn't you? Fate has a way of always catching up to you...'"
-RestraintCursedCollarDesc2,"Cannot be removed while you are wearing other Stardust Cursed items."
+RestraintCursedCollarDesc2,"Cannot be removed while you are wearing other Star Cursed items."
+RestraintCursedCollar2,Stardust Collar
+RestraintCursedCollar2Desc,"'You thought you could run forever, didn't you? Fate has a way of always catching up to you...'"
+RestraintCursedCollar2Desc2,"Cannot be removed while you are wearing other Star Cursed items."
 
 KinkyDungeonCurseUnlockCursedDamage,"The cursed seal on the RestraintName vanishes into a brief veil of stardust."
-KinkyDungeonCurseInfoCursedDamage,"The Stardust Curse protects the RestraintName. Take AMNT more damage to weaken the curse."
+KinkyDungeonCurseInfoCursedDamage,"The Star Curse protects the RestraintName. Take AMNT more damage to weaken the curse."
 KinkyDungeonCurseStruggleCursedDamage,"You struggle uselessly, sealed in your fate."
 KDcurseDamageDamage,"You feel your restraints starting to weaken..."
 
 KinkyDungeonCurseUnlockCursedCollar,"The cursed collar falls off, awaiting its next victim..."
-KinkyDungeonCurseInfoCursedCollar,"You must remove all other Stardust Cursed items before removing the collar."
+KinkyDungeonCurseInfoCursedCollar,"You must remove all other Star Cursed items before removing the collar."
 KinkyDungeonCurseStruggleCursedCollar,"You struggle uselessly, sealed in your fate."
 
-curseInfoCursedTransformation,"Transformation: Items with generic curses transform into Stardust Cursed items."
+curseInfoCursedTransformation,"Transformation: Items with generic curses transform into Star Cursed items."
 KDCursedTransformation,"With a burst of dark energy, your OLDITM gains new properties!"
 KDCursedTransformationNew,"With a burst of dark energy, your OLDITM transforms into a NEWITM!"
 
-curseInfoCursedHeal,"Restoration: While distracted, your Stardust Cursed restraints regain strength."
+curseInfoCursedHeal,"Restoration: While distracted, your Star Cursed restraints regain strength."
 KDCursedHeal,"With the rush of pleasure, you feel your cursed restraints tighten and strengthen!"
 
 curseInfoCursedCorruption,"Corruption: While in the shadows, you slowly gain corruption."
@@ -10555,6 +10569,8 @@ KDCursedDenialAllow0,"Dark Voice: You may enjoy yourself, for now~"
 KDCursedDenialAllow1,"Dark Voice: Yes, take in the pleasure..."
 KDCursedDenialAllow2,"Dark Voice: Enjoy a gift, dear~"
 
-KDVariableModifier_CursedBarrier1,"Stardust: -20 Charm/Psychic Resist"
-KDVariableModifier_CursedBarrier2,"Stardust: +40 all other resists"
+KDVariableModifier_CursedBarrier1,"Star: -20 Charm/Psychic Resist"
+KDVariableModifier_CursedBarrier2,"Star: +40 all other resists"
 
+KinkyDungeonSpellMithrilBolt,Mithril Orb
+KinkyDungeonMithrilBolt,Shining strings encircle your body!
