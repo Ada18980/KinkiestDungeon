@@ -1418,7 +1418,8 @@ Bugfix
 
 4.5 (August 2023)
 Features
-- Cursed Loot is here! Currently only cursed item is the Stardust Curse
+- Cursed Loot is here! Currently only cursed item set are the Stardust/Moondust Curse
+- Added Cursed Epicenters, powerful new enemies that spawn only from shadow/gold chests when you are wearing a cursed item
 - Added 6 new curses exclusive to the Stardust Curse
 - Optimize fog rendering while the player isn't moving
 Content

@@ -2247,8 +2247,9 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "tick", type: "DeleteCurse", tags: ["cursedCollar"]},
 		],
-		terrainTags: {"curseTrap": 10}, shrines: [], allFloors: true},
-
+		terrainTags: {"curseTrap": 10}, shrines: [], allFloors: true,
+		dropTable: [{name: "ManaOrb", weight: 1}, {name: "DarkKatana", weight: 100, ignoreInInventory: true}, {name: "StaffDoll", weight: 100, ignoreInInventory: true}, {name: "StaffBind", weight: 100, ignoreInInventory: true}, {name: "MagicAxe", weight: 100, ignoreInInventory: true}],
+	},
 	{name: "EpicenterCursed2", faction: "Curse", color: "#a4affa",
 		tags: KDMapInit(["opendoors", "epicenterCursed", "epicenter", "curseTrap", "ghost", "cursed", "soulimmune", "melee", "fireweakness", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
 		ignorechance: 0, armor: 0, followRange: 1, AI: "huntshadow", noAlert: true, hitsfx: "Evil",
@@ -2260,7 +2261,9 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "tick", type: "DeleteCurse", tags: ["cursedCollar2"]},
 		],
-		terrainTags: {"curseTrap": 10}, shrines: [], allFloors: true},
+		terrainTags: {"curseTrap": 10}, shrines: [], allFloors: true,
+		dropTable: [{name: "ManaOrb", weight: 1}, {name: "StaffStorm", weight: 100, ignoreInInventory: true}, {name: "StaffIncineration", weight: 100, ignoreInInventory: true}, {name: "StaffFrostbite", weight: 100, ignoreInInventory: true}, {name: "MagicSword", weight: 100, ignoreInInventory: true}],
+	},
 	//endregion
 ];
 
