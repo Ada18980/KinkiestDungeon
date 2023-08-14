@@ -2,6 +2,8 @@
 // Player entity
 let KinkyDungeonPlayerEntity = null; // The current player entity
 
+let KDShadowThreshold = 1.5;
+
 let KDSleepWillFraction = 0.5;
 let KDSleepWillFractionJail = 0.5;
 
@@ -606,9 +608,13 @@ function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0
 		NoFloater: NoFloater,
 		lowerPerc: lowerPerc,
 		minimum: minimum,
+		mult: Math.max(0,
+			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainDistraction"))
+			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossDistraction"))
+		),
 	};
 	KinkyDungeonSendEvent("changeDistraction", data);
-	Amount = data.Amount;
+	Amount = data.Amount * data.mult;
 	lowerPerc = data.lowerPerc;
 	minimum = data.minimum;
 	NoFloater = data.NoFloater;
@@ -670,10 +676,14 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
 		minimum: minimum,
 		Pause: Pause,
 		slowFloor: slowFloor,
+		mult: Math.max(0,
+			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainStamina"))
+			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossStamina"))
+		),
 	};
 	KinkyDungeonSendEvent("changeStamina", data);
 	NoFloater = data.NoFloater;
-	Amount = data.Amount;
+	Amount = data.Amount*data.mult;
 	NoSlow = data.NoSlow;
 	minimum = data.minimum;
 	slowFloor = data.slowFloor;
@@ -724,10 +734,14 @@ function KinkyDungeonChangeMana(Amount, NoFloater, PoolAmount, Pause, spill, min
 		minimum: minimum,
 		Pause: Pause,
 		spill: spill,
+		mult: Math.max(0,
+			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainMana"))
+			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossMana"))
+		),
 	};
 	KinkyDungeonSendEvent("changeMana", data);
 	NoFloater = data.NoFloater;
-	Amount = data.Amount;
+	Amount = data.Amount * data.mult;
 	PoolAmount = data.PoolAmount;
 	minimum = data.minimum;
 	Pause = data.pause;
@@ -774,10 +788,14 @@ function KinkyDungeonChangeWill(Amount, NoFloater, minimum = 0) {
 		NoFloater: NoFloater,
 		Amount: Amount,
 		minimum: minimum,
+		mult: Math.max(0,
+			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainWill"))
+			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossWill"))
+		),
 	};
 	KinkyDungeonSendEvent("changeWill", data);
 	NoFloater = data.NoFloater;
-	Amount = data.Amount;
+	Amount = data.Amount * data.mult;
 	minimum = data.minimum;
 
 	if (isNaN(Amount)) {
@@ -804,6 +822,19 @@ function KinkyDungeonChangeCharge(Amount, NoFloater) {
 		console.trace();
 		Amount = 0;
 	}
+
+	let data = {
+		NoFloater: NoFloater,
+		Amount: Amount,
+		mult: Math.max(0,
+			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainCharge"))
+			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossCharge"))
+		),
+	};
+	KinkyDungeonSendEvent("changeCharge", data);
+	NoFloater = data.NoFloater;
+	Amount = data.Amount * data.mult;
+
 	if (!KDGameData.AncientEnergyLevel) KDGameData.AncientEnergyLevel = 0;
 	KDGameData.AncientEnergyLevel = Math.min(1, Math.max(0, KDGameData.AncientEnergyLevel + Amount));
 	if (!NoFloater && Math.abs(KDOrigCharge - Math.floor(KDGameData.AncientEnergyLevel * 1000)) >= 0.99) {
@@ -962,7 +993,7 @@ function KinkyDungeonUpdateStats(delta) {
 				KDGameData.OrgasmNextStageTimer = 1;
 			} else {
 				if (KinkyDungeonCanOrgasm() && KDGameData.OrgasmStamina < 0.5 && KDGameData.PlaySelfTurns < 1) {
-					KinkyDungeonDoTryOrgasm(KinkyDungeonTeaseLevel);
+					KinkyDungeonDoTryOrgasm(KinkyDungeonTeaseLevel, KinkyDungeonTeaseLevel > 0 ? 1 : 2);
 					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonOrgasmAutomatic"), "#FF5BE9", KinkyDungeonOrgasmStunTime + 1, true);
 					KDGameData.OrgasmNextStageTimer = 1;
 				}
@@ -1418,8 +1449,9 @@ let KinkyDungeonPlayWithSelfMult = 0.25;
 /**
  * Try to let go...
  * @param {number} [Bonus]
+ * @param {number} [Auto] - whether this was automatically triggered or not. 0 = manual, 1 = forced by enemy/vibe, 2 - player character can't resist
  */
-function KinkyDungeonDoTryOrgasm(Bonus) {
+function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 	let chance = KinkyDungeonOrgasmChanceBase + KinkyDungeonOrgasmChanceScaling*(KDGameData.OrgasmTurns/KinkyDungeonOrgasmTurnsMax);
 	let denied = KinkyDungeonVibratorsDeny(chance);
 
@@ -1434,6 +1466,7 @@ function KinkyDungeonDoTryOrgasm(Bonus) {
 
 
 	let data = {
+		auto: Auto,
 		player: KinkyDungeonPlayerEntity,
 		amount: amount,
 		chance: chance,

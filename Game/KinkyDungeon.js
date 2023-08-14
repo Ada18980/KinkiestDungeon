@@ -81,6 +81,14 @@ let KinkyDungeonKeySwitchWeapon = ['ControlRight'];
 
 let KDLoadingTextKeys = {};
 
+let kdSpecialModePerks = [
+	"arousalMode",
+	"easyMode",
+	"norescueMode",
+	"arousalModePlug",
+	"arousalModePiercing",
+];
+
 
 let KinkyDungeonGraphicsQuality = true;
 
@@ -290,7 +298,7 @@ let KDOptOut = false;
 * Training: Record<string, KDTrainingRecord>,
 * QuickLoadout: KDPresetLoadout[],
 * CurrentLoadout: number,
-* QuickLoadouts: Record<string, string[]>,
+* QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
@@ -1342,7 +1350,7 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("KinkyDungeonEasyMode0", (bdata) => {
 			KinkyDungeonEasyMode = 0;
-			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode ? "True" : "False");
+			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode + "");
 			return true;
 		}, true, 1075, 530, 175, 50, TextGet("KinkyDungeonEasyMode0"), KinkyDungeonEasyMode == 0 ? "#ffffff" : "#888888", "");
 		if (MouseInKD("KinkyDungeonEasyMode0")) {
@@ -1351,7 +1359,7 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("KinkyDungeonEasyMode1", (bdata) => {
 			KinkyDungeonEasyMode = 1;
-			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode ? "True" : "False");
+			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode + "");
 			return true;
 		}, true, 1275, 530, 175, 50, TextGet("KinkyDungeonEasyMode1"), KinkyDungeonEasyMode == 1 ? "#ffffff" : "#888888", "");
 		if (MouseInKD("KinkyDungeonEasyMode1")) {
@@ -1360,7 +1368,7 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("KinkyDungeonEasyMode2", (bdata) => {
 			KinkyDungeonEasyMode = 2;
-			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode ? "True" : "False");
+			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode + "");
 			return true;
 		}, true, 875, 530, 175, 50, TextGet("KinkyDungeonEasyMode2"), KinkyDungeonEasyMode == 2 ? "#ffffff" : "#888888", "");
 		if (MouseInKD("KinkyDungeonEasyMode2")) {
@@ -1473,7 +1481,7 @@ function KinkyDungeonRun() {
 								if (perk[0] == lp && KDValidatePerk(perk[1])) {
 									KinkyDungeonStatsChoice.set(perk[0], true);
 									changed += 1;
-								}// else if (KinkyDungeonStatsChoice.get(perk[0])) KinkyDungeonStatsChoice.delete(perk[0])
+								}
 							}
 						}
 						iter += 1;
@@ -2158,7 +2166,7 @@ function KinkyDungeonLoadStats() {
 		let statsArray = JSON.parse(statsChoice);
 		if (statsArray) {
 			for (let s of statsArray) {
-				if (!s.includes('arousalMode') && KinkyDungeonStatsPresets[s] && KDValidatePerk(KinkyDungeonStatsPresets[s]))
+				if (!kdSpecialModePerks.includes(s) && KinkyDungeonStatsPresets[s] && KDValidatePerk(KinkyDungeonStatsPresets[s]))
 					KinkyDungeonStatsChoice.set(s, true);
 			}
 		}
@@ -2364,8 +2372,10 @@ function KDUpdatePlugSettings(evalHardMode) {
 }
 
 let KDHardModeThresh = 10;
+let KDAwaitingModLoad = false;
 
 function KinkyDungeonHandleClick() {
+	if (KDAwaitingModLoad) return true;
 	if (KDProcessButtons()) return true;
 
 	if (MouseIn(1885, 25, 90, 90) && (!KDPatched)) {

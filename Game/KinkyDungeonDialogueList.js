@@ -1280,7 +1280,7 @@ let KDDialogue = {
 
 									} else {
 										KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor), 0, true, "", true, false, false, undefined, "Shopkeeper", false, undefined,
-											CommonRandomItemFromList("", KDCurseUnlockList.Common));
+											KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 										KDGameData.CurrentDialogMsg = "ShopkeeperTeleportDebt_Armor_YesCursed";
 
 									}
@@ -1318,7 +1318,7 @@ let KDDialogue = {
 								playertext: "ShopkeeperTeleportDebt_Yes", response: "Default", gag: true,
 								clickFunction: (gagged, player) => {
 									KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint), 0, true, "", true, false, false, undefined, "Shopkeeper", false, undefined,
-										CommonRandomItemFromList("", KDCurseUnlockList.Common));
+										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 									return false;
 								},
 								options: {
@@ -1352,7 +1352,7 @@ let KDDialogue = {
 								playertext: "ShopkeeperTeleportDebt_Yes", response: "Default", gag: true,
 								clickFunction: (gagged, player) => {
 									KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar), 0, true, "", true, false, false, undefined, "Shopkeeper", false, undefined,
-										CommonRandomItemFromList("", KDCurseUnlockList.Common));
+										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 									return false;
 								},
 								options: {
@@ -1386,7 +1386,7 @@ let KDDialogue = {
 								playertext: "ShopkeeperTeleportDebt_Yes", response: "Default", gag: true,
 								clickFunction: (gagged, player) => {
 									KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit), 0, true, "", true, false, false, undefined, "Shopkeeper", false, undefined,
-										CommonRandomItemFromList("", KDCurseUnlockList.Common));
+										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 									return false;
 								},
 								options: {

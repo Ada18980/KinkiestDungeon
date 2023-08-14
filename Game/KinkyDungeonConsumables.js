@@ -231,7 +231,7 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 			return false;
 		}
 	}
-	if (!(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && needArms && !KinkyDungeonStatsChoice.get("Psychic") && !(item.item && KDConsumable(item.item).potion && !KinkyDungeonIsArmsBound() && (!KinkyDungeonStatsChoice.has("WeakGrip") || !KinkyDungeonIsHandsBound(false, false))) && (KinkyDungeonIsHandsBound(false, true) || (KinkyDungeonStatsChoice.has("WeakGrip") && item.item && KDConsumable(item.item).potion)) && !KinkyDungeonCanUseFeet()) {
+	if (!(KinkyDungeonHasHelp()) && needArms && !KinkyDungeonStatsChoice.get("Psychic") && !(item.item && KDConsumable(item.item).potion && !KinkyDungeonIsArmsBound() && (!KinkyDungeonStatsChoice.has("WeakGrip") || !KinkyDungeonIsHandsBound(false, false))) && (KinkyDungeonIsHandsBound(false, true) || (KinkyDungeonStatsChoice.has("WeakGrip") && item.item && KDConsumable(item.item).potion)) && !KinkyDungeonCanUseFeet()) {
 		let allowPotions = KinkyDungeonPotionCollar();
 		let nohands = KinkyDungeonIsHandsBound(false, true);
 		if (KDConsumable(item.item).potion && allowPotions) {

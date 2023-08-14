@@ -1416,10 +1416,19 @@ Bugfix
 - Fix bug where the game drops an equipped restraint instead of the one in inventory
 - Fix bug where linking an enchanted restraint on top of an existing one would not carry over its special properties
 
-
-TODO
-- Negative enchantments?
-- CURSED LOOT (dialogue with a cursed collar that morphs your cursed restraints into their "true" form)
+4.5 (August 2023)
+Features
+- Cursed Loot is here! Currently only cursed item is the Stardust Curse
+- Added 6 new curses exclusive to the Stardust Curse
+- Optimize fog rendering while the player isn't moving
+Content
+- Added Shadow Heels
+Bugfix
+- Fix bug where gold locks layered under something were not being updated
+- Fix jail mode setting not remembered after refreshing the page
+- hopefully fixed bug where removing an cursed enchanted restraint did not preserve in inventory
+- Fix glitches relating to item data not being preserved through links
+- Fixed issues where linked items were not triggering events properly
 
 TODO: Mushrooms in the jungle
 

@@ -5,10 +5,6 @@ type Named = {
 /** Kinky Dungeon Typedefs*/
 interface item extends Named {
 	id: number,
-	/** Contains string data */
-	dataString?: Record<string, string>;
-	/** Contains numeric data */
-	dataNumber?: Record<string, number>;
 	/** Used in order to boost performance */
 	linkCache?: string[],
 	/** If the item has a different curse from the base curse */
@@ -757,6 +753,8 @@ interface enemy extends KDHasTags {
 	dmgType?: string,
 	/** */
 	bound?: string,
+	/** Enemy is not a humanoid, used for skeletons */
+	nonHumanoid?: boolean,
 	/** */
 	color?: string,
 	/** counts toward the player's permanent summmon limit */
@@ -1117,6 +1115,7 @@ interface weapon {
 }
 
 interface KinkyDungeonEvent {
+	trim?: boolean,
 	cost?: number,
 	/** This is from a temporary event curse */
 	curse?: boolean,
@@ -1409,6 +1408,8 @@ type KDPerk = {
 }
 
 interface spell {
+	/** Sound efgfect that plays when you miscast */
+	miscastSfx?: string,
 	/** This spell doesnt hurt the target upon directly hitting, only the AoE */
 	noDirectDamage?: true,
 	/** This spell does not leave a warning to the player */
@@ -2142,6 +2143,10 @@ interface KDCursedDef {
 	customIcon_RemoveSuccess?: string,
 	/** TODO NOT IMPLEMENTED for a future RemoveCursesWithShrine function */
 	shrineRemove?: string[],
+	level: number,
+	weight: (item) => number,
+	customStruggle?: (item: item, Curse?: string) => void,
+	customInfo?: (item: item, Curse?: string) => void,
 	onApply?: (item: item, host?: item) => void,
 	condition: (item: item) => boolean,
 	remove: (item: item, host: item) => void, events?: KinkyDungeonEvent[]
@@ -2154,6 +2159,19 @@ type KDInventoryVariant = {
 	events: KinkyDungeonEvent[],
 	/** The original restraint this is based on */
 	template: string,
+	/** If true, this item will not be forcibly kept whenever being added or removed */
+	noKeep?: boolean,
+}
+
+interface KDSpellComponent {
+	/** Returns true if the spell can be cast, or false otherwise */
+	check: (spell: spell, x: number, y: number) => boolean,
+	/** Run when the spell is cast */
+	cast?: (spell: spell, data: any) => void,
+	/** Get the name of the component when hovering over spell icon */
+	stringShort: (ret: string) => string,
+	/** Get the name of the component in the spell description */
+	stringLong: (spell: spell) => string,
 }
 
 type SpecialCondition = {

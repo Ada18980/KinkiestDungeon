@@ -35,17 +35,21 @@ function KinkyDungeonTickBuffs(list, delta, endFloor, entity) {
 			else if (!value.duration || value.duration < 0) KinkyDungeonExpireBuff(list, key);
 			else {
 				if (value.type == "restore_mp") KinkyDungeonChangeMana(value.power);
-				if (value.type == "restore_wp") KinkyDungeonChangeWill(value.power);
-				if (value.type == "restore_sp") KinkyDungeonChangeStamina(value.power);
-				if (value.type == "restore_ap") KinkyDungeonChangeDistraction(value.power, true);
+				else if (value.type == "restore_wp") KinkyDungeonChangeWill(value.power);
+				else if (value.type == "restore_sp") KinkyDungeonChangeStamina(value.power);
+				else if (value.type == "restore_ap") KinkyDungeonChangeDistraction(value.power, true);
 
-				if (value.type == "SpellCastConstant" && value.spell && entity) {
+				else if (value.type == "SpellCastConstant" && value.spell && entity) {
 					KinkyDungeonCastSpell(entity.x, entity.y, KinkyDungeonFindSpell(value.spell, true), undefined, undefined, undefined);
 				}
 
-				if (value.type == "Flag") {
+				else if (value.type == "Flag") {
 					KinkyDungeonSetFlag(value.id, 1 + delta);
 				}
+				else if (KDCustomBuff[value.type]) {
+					KDCustomBuff[value.type](entity, value);
+				}
+
 
 				if (!(value.infinite))
 					value.duration -= delta;
@@ -233,15 +237,15 @@ function KDEntityHasBuff(entity, buff) {
 		return KinkyDungeonHasBuff(KinkyDungeonPlayerBuffs, buff);
 	} else return KinkyDungeonHasBuff(entity.buffs, buff);
 }
-function KDEntityBuffedStat(entity, stat) {
+function KDEntityBuffedStat(entity, stat, onlyPositiveDuration) {
 	if (entity.player) {
-		return KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, stat);
-	} else return KinkyDungeonGetBuffedStat(entity.buffs, stat);
+		return KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, stat, onlyPositiveDuration);
+	} else return KinkyDungeonGetBuffedStat(entity.buffs, stat, onlyPositiveDuration);
 }
-function KDEntityMaxBuffedStat(entity, stat) {
+function KDEntityMaxBuffedStat(entity, stat, onlyPositiveDuration) {
 	if (entity.player) {
-		return KinkyDungeonGetMaxBuffedStat(KinkyDungeonPlayerBuffs, stat);
-	} else return KinkyDungeonGetMaxBuffedStat(entity.buffs, stat);
+		return KinkyDungeonGetMaxBuffedStat(KinkyDungeonPlayerBuffs, stat, onlyPositiveDuration);
+	} else return KinkyDungeonGetMaxBuffedStat(entity.buffs, stat, onlyPositiveDuration);
 }
 
 function KDEntityGetBuff(entity, buff) {

@@ -46,8 +46,8 @@ KDFilterFilters[LooseRestraint] = {
 	Ties: false,
 	Belts: false,
 	Cuffs: false,
-	Armbinders: false,
-	Straitjackets: false,
+	Collars: false,
+	Toys: false,
 	Boots: false,
 };
 KDFilterFilters[Armor] = {
@@ -571,7 +571,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 			DrawTextKD(
 			restraint.escapeChance ? (item.item.lock ? (TextGet("KinkyLocked") + " " + TextGet("Kinky" + item.item.lock + "LockType")) :
 				(restraint.DefaultLock && !restraint.HideDefaultLock ? (TextGet("KinkyLocked") + " " + TextGet("Kinky" + restraint.DefaultLock + "LockType")) :
-				(KDGetCurse(item.item) ? TextGet("KinkyCursed") : TextGet("KinkyUnlocked"))))
+				((item.item.type == Restraint && KDGetCurse(item.item)) ? TextGet("KinkyCursed") : TextGet("KinkyUnlocked"))))
 			: (restraint.escapeChance.Pick != null ? TextGet("KinkyLockable") : TextGet("KinkyNonLockable")), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 370, "#000000", KDTextTan, undefined, undefined, 130);
 
 			let goddesses = "";
@@ -912,12 +912,20 @@ function KinkyDungeonSendInventoryEvent(Event, data) {
 		if (item.dynamicLink)
 			for (let d_item of KDDynamicLinkList(item)) {
 				let oldEvents = d_item.events;
+				let d_curse = KDGetCurse(d_item);
 				if (oldEvents)
 					for (let e of oldEvents) {
-						if (e.inheritLinked && e.trigger === Event && (!e.curse || curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+						if (e.inheritLinked && e.trigger === Event && (!e.curse || d_curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
 							KinkyDungeonHandleInventoryEvent(Event, e, d_item, data);
 						}
 					}
+				if (d_curse && KDCurses[d_curse]?.events) {
+					for (let e of KDCurses[d_curse].events) {
+						if (e.trigger === Event && (!e.curse || d_curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+							KinkyDungeonHandleInventoryEvent(Event, e, d_item, data);
+						}
+					}
+				}
 			}
 		if (item.events) {
 			for (let e of item.events) {
@@ -1642,6 +1650,39 @@ function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground
 }
 
 /**
+ * Changes an inventory variant of an item
+ * @param {item} item
+ * @param {KDInventoryVariant} variant
+ * @param {string} prefix
+ * @param {string} curse
+ */
+function KDMorphToInventoryVariant(item, variant, prefix = "", curse) {
+	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
+	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
+	let newname = prefix + variant.template + KinkyDungeonGetItemID() + (curse ? curse : "");
+	if (curse) {
+		variant = JSON.parse(JSON.stringify(variant));
+		variant.curse = curse;
+	}
+	if (!KinkyDungeonInventoryVariants[newname])
+		KinkyDungeonInventoryVariants[newname] = variant;
+	if (variant.events)
+		Object.assign(events, variant.events);
+	KDChangeItemName(item, item.type, variant.template);
+	if (item.type == LooseRestraint) {
+		item.name = newname;
+		item.curse = curse;
+		item.events = events;
+		item.showInQuickInv = true;
+	} else {
+		item.name = variant.template;
+		item.curse = curse;
+		item.events = events;
+		item.inventoryAs = newname;
+	}
+}
+
+/**
  * Adds an inventory variant to the player's inventory
  * @param {KDInventoryVariant} variant
  * @param {string} prefix
@@ -1693,3 +1734,4 @@ function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, 
 		Object.assign(events, variant.events);
 	KinkyDungeonAddRestraintIfWeaker(origRestraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, curse, securityEnemy, useAugmentedPower, newname);
 }
+

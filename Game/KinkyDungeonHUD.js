@@ -196,6 +196,10 @@ let KDBuffSprites = {
 	"Cursed": true,
 	"DildoBatBuff": true,
 
+	"Corrupted": true,
+	"CursedDistract": true,
+	"ForcedSubmission": true,
+
 	//KinkyDungeonBuffShrineElements,"Arcane Power: Deals bonus damage when you hit an enemy."
 	//KinkyDungeonBuffShrineConjure,"Arcane Protection: Reduces damage taken, and deals retaliation damage."
 	//KinkyDungeonBuffShrineIllusion,"Arcane Cunning: You turn invisible briefly after attacking."
@@ -384,7 +388,7 @@ function KinkyDungeonDrawInputs() {
 	} else {
 		statsDraw.b_speed = {text: TextGet("KDStatFreeLegs"), category: "status", icon: "status/freeLegs", color: "#55ff55", bgcolor: "#333333", priority: 9};
 	}
-	if (KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < 1.5) {
+	if (KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < KDShadowThreshold) {
 		statsDraw.shadow = {text: TextGet("KinkyDungeonPlayerShadow"), icon: "shadow", category: "status", color: "#a3a7c2", bgcolor: "#5e52ff", priority: 1};
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerShadow"), X1, 900 - i * 35, 200, KDTextGray0, "#5e52ff", ); i++;
 	}
@@ -611,7 +615,8 @@ function KinkyDungeonDrawInputs() {
 			if (count) pri += Math.min(10, count);
 			statsDraw[b.id] = {
 				text: TextGet("KinkyDungeonBuff" + b.id) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ` (${b.duration})` : ""),
-				count: (count ? `${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ((count ? " " : "") + `${b.duration}`) : ""),
+				count: b.text ? b.text :
+					((count ? `${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ((count ? " " : "") + `${b.duration}`) : "")),
 				icon: KDBuffSprites[b.id] ? "buff/buff" + b.id : undefined,
 				//countcolor: b.aura ? b.aura : b.labelcolor,
 				category: "buffs", color: b.aura ? b.aura : b.labelcolor, bgcolor: "#333333", priority: pri,
@@ -807,14 +812,14 @@ function KinkyDungeonDrawInputs() {
 						//{
 						drawn = true;
 						let msg = TextGet("Restraint" + d.name);
-						DrawTextKD(msg, 530, MY + O * lineSize, d == item ? "#ffffff" : (surfaceItems.includes(d) ? "#999999" : "#aa5555"), "#333333", fontSize, "left");
+						DrawTextKD(msg, 530, MY + O * lineSize, d == item ? "#ffffff" : (surfaceItems.includes(d) ? "#999999" : "#aa5555"), "#333333", fontSize, "left", 150);
 						O++;
 						//}
 					}
 					lastO = O;
 					O = OInit;
 					if (drawn) {
-						DrawTextKD(TextGet("KinkyDungeonItemsUnderneathTotal"), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left");
+						DrawTextKD(TextGet("KinkyDungeonItemsUnderneathTotal"), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150);
 					}
 					O = lastO + 1;
 				}
@@ -822,7 +827,7 @@ function KinkyDungeonDrawInputs() {
 
 				if (data.extraLines.length > 0) {
 					for (let lineIndex = 0; lineIndex < data.extraLines.length; lineIndex++) {
-						DrawTextKD(data.extraLines[lineIndex], 530, MY + lastO * lineSize, data.extraLineColor[lineIndex] || "#ffffff", "#333333", fontSize, "left");
+						DrawTextKD(data.extraLines[lineIndex], 530, MY + lastO * lineSize, data.extraLineColor[lineIndex] || "#ffffff", "#000000", fontSize, "left", 150);
 						lastO += 1;
 					}
 				}
@@ -840,7 +845,7 @@ function KinkyDungeonDrawInputs() {
 					}
 					O = lastO;
 					if (drawn) {
-						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left");
+						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150);
 					}
 				}
 			}

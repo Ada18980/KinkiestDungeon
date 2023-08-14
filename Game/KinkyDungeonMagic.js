@@ -35,6 +35,49 @@ let KDPlayerHitBy = [];
 let KinkyDungeonMiscastPityModifier = 0; // Current value
 let KinkyDungeonMiscastPityModifierIncrementPercentage = 0.5; // Percent of the base hit chance to add
 
+/** @type {Record<string, KDSpellComponent>} */
+let KDSpellComponentTypes = {
+	"Verbal": {
+		stringShort: (ret) => {
+			return TextGet("KDShortCompVerbal");
+		},
+		stringLong: (spell) => {
+			return TextGet("KinkyDungeonComponentsVerbal");
+		},
+		check: (spell, x, y) => {
+			let gagTotal = (KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() > 0) ? 1.0 : KinkyDungeonGagTotal();
+			if (gagTotal >= 0.99 && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0)) return false;
+
+			return true;
+		},
+	},
+	"Arms": {
+		stringShort: (ret) => {
+			return TextGet("KDShortCompArms");
+		},
+		stringLong: (spell) => {
+			return TextGet("KinkyDungeonComponentsArms");
+		},
+		check: (spell, x, y) => {
+			if (KinkyDungeonIsArmsBound() && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoArmsComp") > 0)) return false;
+			return true;
+		},
+	},
+	"Legs": {
+		stringShort: (ret) => {
+			return TextGet("KDShortCompLegs");
+		},
+		stringLong: (spell) => {
+			return TextGet("KinkyDungeonComponentsLegs");
+		},
+		check: (spell, x, y) => {
+			if ((KinkyDungeonSlowLevel > 1 || KinkyDungeonLegsBlocked()) && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoLegsComp") > 0)) return false;
+			return true;
+		},
+	},
+
+};
+
 function KinkyDungeonSearchSpell(list, name) {
 	for (let spell of list) {
 		if (spell.name == name) return spell;
@@ -201,13 +244,13 @@ function KDEmpower(data, entity) {
 
 function KinkyDungeoCheckComponents(spell, x, y) {
 	let failedcomp = [];
-	if (spell.components.includes("Verbal")) {
-		let gagTotal = (KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() > 0) ? 1.0 : KinkyDungeonGagTotal();
-		if (gagTotal >= 0.99 && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0)) failedcomp.push("Verbal");
-	}
 
-	if (spell.components.includes("Arms") && KinkyDungeonIsArmsBound() && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoArmsComp") > 0)) failedcomp.push("Arms");
-	if (spell.components.includes("Legs") && (KinkyDungeonSlowLevel > 1 || KinkyDungeonLegsBlocked()) && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoLegsComp") > 0)) failedcomp.push("Legs");
+	if (spell.components)
+		for (let comp of spell.components) {
+			if (!KDSpellComponentTypes[comp].check(spell, x, y)) {
+				failedcomp.push(comp);
+			}
+		}
 
 	let data = {
 		spell: spell,
@@ -417,6 +460,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		bullet: bullet,
 		player: player,
 		delta: 1,
+		gaggedMiscastFlag: gaggedMiscastFlag,
 	});
 
 
@@ -462,6 +506,10 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		tX = entity.x;
 		tY = entity.y;
 		miscast = true;
+
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ " + (spell.miscastSfx || "SoftShield") + ".ogg");
+		KinkyDungeonSendEvent("miscast", data);
+
 		return {result: "Miscast", data: data};
 	}
 
@@ -690,7 +738,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		} else if (spell.type == "special") {
 			let ret = KinkyDungeonSpellSpecials[spell.special](spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast);
 			if (ret) {
-				if (!enemy && !bullet && player) {
+				if (!enemy && !bullet && player && ret == "Cast") {
 					KinkyDungeonSendEvent("playerCast", data);
 				}
 				return {result: ret, data: data};
@@ -754,9 +802,11 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, spell.channel);
 			KinkyDungeonSleepTime = CommonTime() + 200;
 		}
-		if (spell.noise) {
-			if (spell.components && spell.components.includes("Verbal"))
-				KinkyDungeonAlert = 3;//Math.max(spell.noise, KinkyDungeonAlert);
+		if (spell.components) {
+			for (let comp of spell.components) {
+				if (KDSpellComponentTypes[comp].cast)
+					KDSpellComponentTypes[comp].cast(spell, data);
+			}
 		}
 		KinkyDungeonLastAction = "Spell";
 		KinkyDungeonMiscastPityModifier = 0;
@@ -1012,11 +1062,11 @@ function KinkyDungeonDrawMagic() {
 				canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1/3), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 36, KDTextGray0, KDTextTan, 24); i++;}
 
 		i = 0;
-		if (spell.components.length > 0) {
+		if (spell.components?.length > 0) {
 
-			if (spell.components.includes("Verbal")) {DrawTextKD(TextGet("KinkyDungeonComponentsVerbal"), canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1/3), canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 215 - 40*i, KDTextGray0, KDTextTan); i++;}
-			if (spell.components.includes("Arms")) {DrawTextKD(TextGet("KinkyDungeonComponentsArms"), canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1/3), canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 215  - 40*i, KDTextGray0, KDTextTan); i++;}
-			if (spell.components.includes("Legs")) {DrawTextKD(TextGet("KinkyDungeonComponentsLegs"), canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1/3), canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 215 - 40*i, KDTextGray0, KDTextTan); i++;}
+			for (let comp of spell.components) {
+				DrawTextKD(KDSpellComponentTypes[comp].stringLong(spell), canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1/3), canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 215 - 40*i, KDTextGray0, KDTextTan); i++;
+			}
 			DrawTextKD(TextGet("KinkyDungeonComponents"), canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1/3), canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 215 - 40*i, "#000000", KDTextTan); i = 1;
 
 		}
@@ -1447,9 +1497,7 @@ function KinkyDungeonGetCompList(spell) {
 	if (spell.components)
 		for (let c of spell.components) {
 			if (ret) ret = ret + "/";
-			if (c == "Verbal") ret = ret + (ret ? "V" : "Verbal");
-			else if (c == "Arms") ret = ret + (ret ? "A" : "Arms");
-			else if (c == "Legs") ret = ret + (ret ? "L" : "Legs");
+			ret = ret + (KDSpellComponentTypes[c].stringShort(ret));
 		}
 
 	//if (ret)
