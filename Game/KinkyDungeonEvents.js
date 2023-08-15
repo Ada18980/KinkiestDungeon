@@ -4159,7 +4159,8 @@ let KDEventMapEnemy = {
 			if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
 				if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
 					KDTripleBuffKill("ShadowEngulf", KinkyDungeonPlayerEntity, 9, (tt) => {
-						KDEnterDemonTransition();
+						if (KDGameData.RoomType != "DemonTransition")
+							KDEnterDemonTransition();
 					}, "Blindness",
 					(target) => {
 						// Create a portal
