@@ -4,6 +4,7 @@
 // -Ada
 
 let KDRedrawFog = 0;
+let KDRedrawMM = 0;
 
 let KinkyDungeonSeeAll = false;
 let KDVisionBlockers = new Map();
@@ -422,6 +423,7 @@ let KDLightCropValue = 6;
 
 function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_offsetVis) {
 	if (KDRedrawFog > 0) {
+		KDRedrawMM = 1;
 		kdgamefog.clear();
 
 		let v_td = false;
@@ -612,8 +614,14 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 	KDMinimapWTarget = w*scale*zoom;
 	KDMinimapHTarget = h*scale*zoom;
 
-	if (KDRedrawFog > 0)
+	if (KDMinimapWCurrent != KDMinimapWTarget || KDMinimapHCurrent != KDMinimapHTarget) {
+		KDRedrawMM = 2;
+	}
+
+	if (KDRedrawMM > 0) {
 		KDRenderMinimap(KinkyDungeonPlayerEntity.x - w/2, KinkyDungeonPlayerEntity.y-h/2, w, h, scale, alpha, borders);
+		if (KDRedrawMM > 0) KDRedrawMM -= 1;
+	}
 
 	kdminimap.scale.x = KDMinimapWCurrent/KDMinimapWTarget*zoom;
 	kdminimap.scale.y = KDMinimapHCurrent/KDMinimapHTarget*zoom;
