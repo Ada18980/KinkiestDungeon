@@ -289,6 +289,7 @@ function KinkyDungeonInitialize(Level, Load) {
 		afterLoaded = true;
 	}
 
+	KinkyDungeonMessageLog = [];
 	KDGameData.RespawnQueue = [];
 	KDInitFactions(true);
 	CharacterReleaseTotal(KinkyDungeonPlayer);
