@@ -360,8 +360,10 @@ KinkyDungeonStatDescKeepOutfit,"When you are jailed, you keep your outfit."
 KinkyDungeonStatFutileStruggles,"Futile Struggles"
 KinkyDungeonStatDescFutileStruggles,"Lose 2 WP every time you remove a non-trivial restraint."
 KinkyDungeonStatSecondWind,"Second Wind"
-KinkyDungeonStatDescSecondWind,"Gain 2 WP every time you remove a non-trivial restraint. Destroys restraints on removal."
-
+KinkyDungeonStatDescSecondWind,"Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage."
+KinkyDungeonSpellSecondWind0,Second Wind Perk
+KinkyDungeonSpellSecondWind1,Triumphant Wind
+KinkyDungeonSpellDescriptionSecondWind1,"Second Wind now regenerates up to 25% of your max WP"
 
 KinkyDungeonStatDominant,"Dominant"
 KinkyDungeonStatDescDominant,"They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage."

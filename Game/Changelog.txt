@@ -1435,6 +1435,8 @@ Bugfix
 Features
 - Shadow hands now take you to the Edge of Reality
 - Patron NPCs now tell your their name when they first become aware of you!
+Changes
+- Second Wind now restores WP when free
 Bugfix
 - CMD: Unlock now properly castable with Conjurer perk
 
