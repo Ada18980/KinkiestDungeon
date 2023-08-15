@@ -49,7 +49,7 @@ let KDEventHexModular = {
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform"},
 			{type: "ItemLight", trigger: "getLights", prereq: "noCorruption", power: 3.5, color: "#ffff55", inheritLinked: true, curse: true},
 			{trigger: "tick", type: "sneakBuff", power: -1.0, inheritLinked: true, curse: true},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Illumination", color: "#ff5555", inheritLinked: true},
+			{trigger: "drawSGTooltip", type: "curseInfo", prereq: "noCorruption", msg: "Illumination", color: "#ff5555", inheritLinked: true},
 		]},
 	"Attraction": {level: 1,
 		weight: (item) => {
