@@ -1431,6 +1431,12 @@ Bugfix
 - Fix glitches relating to item data not being preserved through links
 - Fixed issues where linked items were not triggering events properly
 
+4.51 (August 2023)
+Features
+- Shadow hands now take you to the Edge of Reality
+Bugfix
+- CMD: Unlock now properly castable with Conjurer perk
+
 TODO: Mushrooms in the jungle
 
 TODO
