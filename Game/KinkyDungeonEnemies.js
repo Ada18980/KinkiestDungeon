@@ -1405,10 +1405,11 @@ function KDDrawEnemyTooltip(enemy, offset) {
 }
 
 function KDGetColor(enemy) {
+	//return "#ffffff";
+	if (enemy?.CustomNameColor) return enemy.CustomNameColor;
+	if (enemy?.color) return enemy.color;
+	if (enemy?.Enemy.color) return enemy.Enemy.color;
 	return "#ffffff";
-	//if (enemy.color) return enemy.color;
-	//if (enemy.Enemy.color) return enemy.Enemy.color;
-	//return "#ffff44";
 }
 
 let KDChampionMax = 10;
@@ -2816,6 +2817,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				AIData.startedDialogue = true;
 			}
 		}
+	}
+
+	// Intro line
+	if (enemy.aware && enemy.Enemy.bound && player?.player && enemy.CustomName && !KDEnemyHasFlag(enemy, "PatronIntro")) {
+		KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (enemy.Enemy.playLine ? enemy.Enemy.playLine : "") + "Intro")
+			.replace("EnemyName", TextGet("Name" + enemy.Enemy.name))
+			.replace("PTRN", enemy.CustomName), KDGetColor(enemy), 12, 10);
+		KinkyDungeonSetEnemyFlag(enemy, "PatronIntro", 100);
 	}
 
 	let intentAction = (enemy.IntentAction && KDIntentEvents[enemy.IntentAction]) ? KDIntentEvents[enemy.IntentAction] : null;

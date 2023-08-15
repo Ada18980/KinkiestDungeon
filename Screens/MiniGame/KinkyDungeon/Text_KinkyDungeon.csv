@@ -295,7 +295,7 @@ KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 3 in each directi
 KinkyDungeonStat24,"Rigger"
 KinkyDungeonStatDesc24,"Chain and glue damage increased by 20%. Binding on enemies is 30% stronger."
 KinkyDungeonStat25,"Pacifist"
-KinkyDungeonStatDesc25,"All non-glue, non-chain, or non-teasing damage dealt to humanoid enemies is reduced by 90%."
+KinkyDungeonStatDesc25,"All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue."
 
 KinkyDungeonStatBurningDesire,"Burning Desire"
 KinkyDungeonStatDescBurningDesire,"While above 70% distraction, you ignite nearby objects and gain +40% fire damage."
@@ -6746,6 +6746,7 @@ KinkyDungeonRemindJailFuukaPull,"Get over here!"
 KinkyDungeonRemindJailFuukaStun,"Not so slippery now!"
 KinkyDungeonRemindJailFuukaPickpocket,"I'll be taking that~"
 KinkyDungeonRemindJailFuukaLock,"'Click!'"
+KinkyDungeonRemindJailFuukaIntro,"In the name of PTRN, I order you to kneel!"
 
 KinkyDungeonRemindJailPlayDollmaker0,"Look, another one of my dolls~"
 KinkyDungeonRemindJailPlayDollmaker1,"Come to me, my lovely thing~"
@@ -6779,6 +6780,7 @@ KinkyDungeonRemindJailDollmakerPull,"Come to me."
 KinkyDungeonRemindJailDollmakerStun,"A shame it ends here."
 KinkyDungeonRemindJailDollmakerPickpocket,"You won't be needing that."
 KinkyDungeonRemindJailDollmakerLock,"Tsk Tsk. I'll be keeping the keys."
+KinkyDungeonRemindJailDollmakerIntro,"I used to be an adventurer like you~ My name was PTRN..."
 
 
 
@@ -6821,6 +6823,7 @@ KinkyDungeonRemindJailPull,"Get over here!"
 KinkyDungeonRemindJailStun,"Not so slippery now!"
 KinkyDungeonRemindJailPickpocket,"Hand it over."
 KinkyDungeonRemindJailLock,"Nice and tight!"
+KinkyDungeonRemindJailIntro,"The name's PTRN."
 
 
 KinkyDungeonRemindJailPlayBratGagged0,"Mmmmph!!!"
@@ -6861,6 +6864,7 @@ KinkyDungeonRemindJailGaggedPull,"Nngghhh!"
 KinkyDungeonRemindJailGaggedStun,"Mmm-hmmm."
 KinkyDungeonRemindJailGaggedPickpocket,"Mmmmmmm~"
 KinkyDungeonRemindJailGaggedLock,"Mmmph~"
+KinkyDungeonRemindJailGaggedIntro,"*Her nametag says 'PTRN'*"
 
 
 
@@ -6903,6 +6907,7 @@ KinkyDungeonRemindJailGaggedMummyPull,"Nngghhh!"
 KinkyDungeonRemindJailGaggedMummyStun,"Mmm-hmmm."
 KinkyDungeonRemindJailGaggedMummyPickpocket,"Mmmmmmm~"
 KinkyDungeonRemindJailGaggedMummyLock,"Mmmph~"
+KinkyDungeonRemindJailGaggedMummyIntro,"*Her headpiece says 'PTRN'*"
 
 KinkyDungeonRemindJailPlayBratBandit0,"You'll never catch me!"
 KinkyDungeonRemindJailPlayBratBandit1,"Where'd you come from?"
@@ -6942,6 +6947,7 @@ KinkyDungeonRemindJailBanditPull,"Get over here!"
 KinkyDungeonRemindJailBanditStun,"Caught ya~"
 KinkyDungeonRemindJailBanditPickpocket,"Dibs on this one!"
 KinkyDungeonRemindJailBanditLock,"Gotta make sure no one gets to you~"
+KinkyDungeonRemindJailBanditIntro,"I'm PTRN. And who might you be?"
 
 KinkyDungeonRemindJailPlayBratSkeleton0,"This is a bug, please report"
 KinkyDungeonRemindJailPlayBratSkeleton1,"This is a bug, please report"
@@ -6981,6 +6987,7 @@ KinkyDungeonRemindJailSkeletonPull,"*rattles*"
 KinkyDungeonRemindJailSkeletonStun,"*rattles excitedly*"
 KinkyDungeonRemindJailSkeletonPickpocket,"*rattles excitedly*"
 KinkyDungeonRemindJailSkeletonLock,"*rattles*"
+KinkyDungeonRemindJailSkeletonIntro,"*Wears a sign saying 'PTRN'*"
 
 KinkyDungeonRemindJailPlayBratCyborg0,"This... this unit is doing a good job! I swear!"
 KinkyDungeonRemindJailPlayBratCyborg1,"It's just business as usual, nothing to see here..."
@@ -7020,6 +7027,7 @@ KinkyDungeonRemindJailCyborgPull,"Come back, doll!"
 KinkyDungeonRemindJailCyborgStun,"Deploying capture device."
 KinkyDungeonRemindJailCyborgPickpocket,"I'll be confiscating that!"
 KinkyDungeonRemindJailCyborgLock,"How'd you slip through security?"
+KinkyDungeonRemindJailCyborgIntro,"I'm PTRN, and today I shall be taking care of you~"
 
 
 KinkyDungeonRemindJailPlayBratRobot0,"Bug"
@@ -7060,6 +7068,7 @@ KinkyDungeonRemindJailRobotPull,"Apply takedown protocol."
 KinkyDungeonRemindJailRobotStun,"Aggressive target detected. Deploying countermeasures."
 KinkyDungeonRemindJailRobotPickpocket,"Contraband detected. Confiscating."
 KinkyDungeonRemindJailRobotLock,"Increasing strictness level."
+KinkyDungeonRemindJailRobotIntro,"Begin exchange protocol. ID: PRTN"
 
 KinkyDungeonRemindJailPlayBratAlchemist0,"Looks like I'm up to no good... better stop me!"
 KinkyDungeonRemindJailPlayBratAlchemist1,"Careful where you point that thing!"
@@ -7099,6 +7108,7 @@ KinkyDungeonRemindJailAlchemistPull,"Gotchya!"
 KinkyDungeonRemindJailAlchemistStun,"There we go!"
 KinkyDungeonRemindJailAlchemistPickpocket,"Ooh, you've got some useful stuff~"
 KinkyDungeonRemindJailAlchemistLock,"I won't let you go that easily!"
+KinkyDungeonRemindJailAlchemistIntro,"I am PTRN, the great scientist!"
 
 KinkyDungeonRemindJailPlayBratDressmaker0,"Oh my, looks like I'm in trouble!"
 KinkyDungeonRemindJailPlayBratDressmaker1,"What a shame it would be if I got caught~"
@@ -7138,6 +7148,7 @@ KinkyDungeonRemindJailDressmakerPull,"So nice of you to join me!"
 KinkyDungeonRemindJailDressmakerStun,"Now let's see, what kind of dress..."
 KinkyDungeonRemindJailDressmakerPickpocket,"A gift? Thank you so much!"
 KinkyDungeonRemindJailDressmakerLock,"You won't be getting out of that any time soon!"
+KinkyDungeonRemindJailDressmakerIntro,"Have you heard of my dresses? I'm PTRN~"
 
 
 KinkyDungeonRemindJailPlayBratLibrarian0,"No! I don't want to read your magazines!"
@@ -7178,6 +7189,7 @@ KinkyDungeonRemindJailLibrarianPull,"Come along."
 KinkyDungeonRemindJailLibrarianStun,"Stay put!"
 KinkyDungeonRemindJailLibrarianPickpocket,"I'll be taking that back."
 KinkyDungeonRemindJailLibrarianLock,"Click."
+KinkyDungeonRemindJailLibrarianIntro,"If you really want to know, my name is PTRN. I am the keeper of this place."
 
 KinkyDungeonRemindJailPlayBratNurse0,"No! I didn't do anything wrong..."
 KinkyDungeonRemindJailPlayBratNurse1,"Don't punish me! Please!"
@@ -7217,6 +7229,7 @@ KinkyDungeonRemindJailNursePull,"So nice of you to join me!"
 KinkyDungeonRemindJailNurseStun,"Now let's see, good patients should be still..."
 KinkyDungeonRemindJailNursePickpocket,"A gift? Thank you so much!"
 KinkyDungeonRemindJailNurseLock,"You won't be getting out of that any time soon!"
+KinkyDungeonRemindJailNurseIntro,"Nurse PTRN, reporting for duty!"
 
 
 KinkyDungeonRemindJailPlayBratTemplate0,""
@@ -7257,6 +7270,7 @@ KinkyDungeonRemindJailTemplatePull,""
 KinkyDungeonRemindJailTemplateStun,""
 KinkyDungeonRemindJailTemplatePickpocket,""
 KinkyDungeonRemindJailTemplateLock,""
+KinkyDungeonRemindJailTemplateIntro,"PTRN"
 
 
 KinkyDungeonRemindJailPlayBratOfficer0,"You'll have to try harder if you want to discipline me, ma'am."
@@ -7297,6 +7311,7 @@ KinkyDungeonRemindJailOfficerPull,"Got you!"
 KinkyDungeonRemindJailOfficerStun,"Hands behind your back."
 KinkyDungeonRemindJailOfficerPickpocket,"I will conduct a more thorough search later on."
 KinkyDungeonRemindJailOfficerLock,"Suspect is secure."
+KinkyDungeonRemindJailOfficerIntro,"Officer PTRN, reporting for duty!"
 
 
 KinkyDungeonRemindJailPlayBratHunter0,"I'm not in trouble, am I?"
@@ -7337,6 +7352,7 @@ KinkyDungeonRemindJailHunterPull,"Get over here!"
 KinkyDungeonRemindJailHunterStun,"Too slow!"
 KinkyDungeonRemindJailHunterPickpocket,"I'll be taking that."
 KinkyDungeonRemindJailHunterLock,"There's no way out."
+KinkyDungeonRemindJailHunterIntro,"The name's PTRN. Don't forget it."
 
 
 KinkyDungeonRemindJailPlayBratWolfgirl0,"I'm not in trouble, am I?"
@@ -7377,6 +7393,7 @@ KinkyDungeonRemindJailWolfgirlPull,"Get over here!"
 KinkyDungeonRemindJailWolfgirlStun,"Too slow!"
 KinkyDungeonRemindJailWolfgirlPickpocket,"I'll be taking that."
 KinkyDungeonRemindJailWolfgirlLock,"There's no way out."
+KinkyDungeonRemindJailWolfgirlIntro,"PTRN, Nevermere associate. Here's my card."
 
 
 KinkyDungeonRemindJailPlayBratElf0,"An outsider!"
@@ -7417,6 +7434,7 @@ KinkyDungeonRemindJailElfPull,"You will come with me."
 KinkyDungeonRemindJailElfStun,"I regret to inform you that your battle ends here."
 KinkyDungeonRemindJailElfPickpocket,"You won't be needing that."
 KinkyDungeonRemindJailElfLock,"There we go."
+KinkyDungeonRemindJailElfIntro,"You stand before PTRN, blessed by the Goddess Nirin."
 
 
 KinkyDungeonRemindJailPlayBratDryad0,"I don't like the way you're looking at me!"
@@ -7457,6 +7475,7 @@ KinkyDungeonRemindJailDryadPull,"You will come with me."
 KinkyDungeonRemindJailDryadStun,"I regret to inform you that your battle ends here."
 KinkyDungeonRemindJailDryadPickpocket,"You won't be needing that."
 KinkyDungeonRemindJailDryadLock,"There we go."
+KinkyDungeonRemindJailDryadIntro,"My name? Uh... let's go with PRTN."
 
 
 KinkyDungeonRemindJailPlayBratMushy0,"Bug"
@@ -7497,6 +7516,7 @@ KinkyDungeonRemindJailMushyPull,"Come here!"
 KinkyDungeonRemindJailMushyStun,"Got her!!!"
 KinkyDungeonRemindJailMushyPickpocket,"Take!"
 KinkyDungeonRemindJailMushyLock,"Secure!"
+KinkyDungeonRemindJailMushyIntro,"Greetings Madame, you may call me PRTN."
 
 
 KinkyDungeonRemindJailPlayBratFungal0,"So this is what it's like..."
@@ -7537,6 +7557,7 @@ KinkyDungeonRemindJailFungalPull,"Come."
 KinkyDungeonRemindJailFungalStun,"Stay down."
 KinkyDungeonRemindJailFungalPickpocket,"I will take this."
 KinkyDungeonRemindJailFungalLock,"You will not escape."
+KinkyDungeonRemindJailFungalIntro,"We are PTRN."
 
 
 KinkyDungeonRemindJailPlayBratMummy0,"Meow!!!"
@@ -7577,6 +7598,7 @@ KinkyDungeonRemindJailMummyPull,"Come along."
 KinkyDungeonRemindJailMummyStun,"*grins*"
 KinkyDungeonRemindJailMummyPickpocket,"You won't be needing this."
 KinkyDungeonRemindJailMummyLock,"Quit struggling~"
+KinkyDungeonRemindJailMummyIntro,"My name is ancient and sacred. But you may call me PRTN."
 
 
 KinkyDungeonRemindJailPlayBratElemental0,"Gasp! An adventurer!"
@@ -7617,6 +7639,7 @@ KinkyDungeonRemindJailElementalPull,"There is no escape."
 KinkyDungeonRemindJailElementalStun,"You are beneath me."
 KinkyDungeonRemindJailElementalPickpocket,"Nice gear. I'll take it."
 KinkyDungeonRemindJailElementalLock,"Try getting out of that!"
+KinkyDungeonRemindJailElementalIntro,"Who am I? You beings may call me PTRN."
 
 
 KinkyDungeonRemindJailPlayBratDomMaid0,"Not the edging training! Anything but that!"
@@ -7657,6 +7680,7 @@ KinkyDungeonRemindJailDomMaidPull,"Get over here!"
 KinkyDungeonRemindJailDomMaidStun,"Hmph. Stay down."
 KinkyDungeonRemindJailDomMaidPickpocket,"Give me that."
 KinkyDungeonRemindJailDomMaidLock,"'Click!'"
+KinkyDungeonRemindJailDomMaidIntro,"Mistress PRTN, reporting for duty."
 
 
 KinkyDungeonRemindJailPlayBratSubMaid0,"I'm sorry! I didn't mean to break that vase!"
@@ -7697,6 +7721,7 @@ KinkyDungeonRemindJailSubMaidPull,"Come on!"
 KinkyDungeonRemindJailSubMaidStun,"Got you!"
 KinkyDungeonRemindJailSubMaidPickpocket,"I need to take this..."
 KinkyDungeonRemindJailSubMaidLock,"I'm sorry..."
+KinkyDungeonRemindJailSubMaidIntro,"*Salutes* PTRN reporting for service!"
 
 
 KinkyDungeonRemindJailPlayBratHeadMaid0,"I'll be heading out..."
@@ -7737,6 +7762,7 @@ KinkyDungeonRemindJailHeadMaidPull,"Amateur."
 KinkyDungeonRemindJailHeadMaidStun,"Bad girl. You need discipline."
 KinkyDungeonRemindJailHeadMaidPickpocket,"Hand it over."
 KinkyDungeonRemindJailHeadMaidLock,"I'll be keeping the keys."
+KinkyDungeonRemindJailHeadMaidIntro,"Hmm. You may call me Head Maid PTRN."
 
 KinkyDungeonRemindJailPlayBratWitch0,"Looks like I've earned some punishment..."
 KinkyDungeonRemindJailPlayBratWitch1,"I'll turn you into a newt! If you don't stop me..."
@@ -7775,7 +7801,8 @@ KinkyDungeonRemindJailWitchLeash,"You'll be coming with me!"
 KinkyDungeonRemindJailWitchPull,"I'll be yanking your chain~"
 KinkyDungeonRemindJailWitchStun,"Not so fast~"
 KinkyDungeonRemindJailWitchPickpocket,"I'll be taking this~"
-KinkyDungeonRemindJailWitchLock,"EnemyName:There, nice and tight dear~"
+KinkyDungeonRemindJailWitchLock,"There, nice and tight dear~"
+KinkyDungeonRemindJailWitchIntro,"I am the great witch PTRN!"
 
 KinkyDungeonRemindJailPlayBratApprentice0,"I promise I'll be back later!"
 KinkyDungeonRemindJailPlayBratApprentice1,"I didn't do anything wrong!"
@@ -7815,6 +7842,7 @@ KinkyDungeonRemindJailApprenticePull,"Come here please!"
 KinkyDungeonRemindJailApprenticeStun,"Hah! I'm a genius!"
 KinkyDungeonRemindJailApprenticePickpocket,"I need to take this..."
 KinkyDungeonRemindJailApprenticeLock,"I'm sorry about this..."
+KinkyDungeonRemindJailApprenticeIntro,"Nice to meet you. I'm PTRN!"
 
 KinkyDungeonRemindJailPlayBratNecromancer0,"Sticks and stones may break my bones... but you'll never catch me!"
 KinkyDungeonRemindJailPlayBratNecromancer1,"Got a bone to pick with me?"
@@ -7854,6 +7882,7 @@ KinkyDungeonRemindJailNecromancerPull,"Get over here!"
 KinkyDungeonRemindJailNecromancerStun,"Not so slippery now!"
 KinkyDungeonRemindJailNecromancerPickpocket,"I'll be confiscating that."
 KinkyDungeonRemindJailNecromancerLock,"Make sure that's nice and tight..."
+KinkyDungeonRemindJailNecromancerIntro,"Spirits whisper my name in hushed tones as I, PTRN, make my appearance!"
 
 KinkyDungeonRemindJailPlayBratZombie0,"Scary..."
 KinkyDungeonRemindJailPlayBratZombie1,"Run... Away..."
@@ -7893,6 +7922,7 @@ KinkyDungeonRemindJailZombiePull,"...Get over here..."
 KinkyDungeonRemindJailZombieStun,"...Got you."
 KinkyDungeonRemindJailZombiePickpocket,"...Shiny..."
 KinkyDungeonRemindJailZombieLock,"...Secure..."
+KinkyDungeonRemindJailZombieIntro,"*Her burial cloth reads PTRN*"
 
 KinkyDungeonInsufficientEnergy,The weapon requires power from an Ancient Crystal to function.
 KinkyDungeonSpecialDragonslaver,Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to launch binding belts

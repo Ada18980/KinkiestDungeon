@@ -18,6 +18,7 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Animi", color: "#ff9999", prisoner: true, free: false, customSprite: ""},
 		{name: "Ladica", color: "#44ff44", prisoner: false, free: true, customSprite: ""},
 		{name: "FlameTail", color: "#ff5555", prisoner: false, free: true, customSprite: ""},
+		{name: "Nobu", color: "#00FFFF", prisoner: true, free: true, customSprite: ""},
 	],
 	],
 	["WolfgirlPet", [
@@ -41,6 +42,14 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["DragonLeaderDuelist", [
 		{name: "Kaitlyn", color: "#ff5555", prisoner: true, free: true, customSprite: ""},
+	],
+	],
+	["NinjaStalker", [
+		{name: "Alisa", color: "#575699", prisoner: false, free: true, customSprite: ""},
+	],
+	],
+	["Ninja", [
+		{name: "Alisa", color: "#575699", prisoner: false, free: true, customSprite: ""},
 	],
 	],
 	["SlimeAdv", [
@@ -72,6 +81,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["Dressmaker", [
 		{name: "A Lazy Dressmaker", color: "#fad6ff", prisoner: true, free: true, customSprite: ""},
+		{name: "Alice", color: "#ee99ee", prisoner: true, free: true, customSprite: ""},
 	],
 	],
 	["Maidforce", [
@@ -81,6 +91,11 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Maidlinmo", color: "#ff5555", prisoner: true, free: true, customSprite: ""},
 		{name: "April", color: "#4444ff", prisoner: true, free: true, customSprite: ""},
 		{name: "Aika", color: "#be52e6", prisoner: true, free: true, customSprite: ""},
+		{name: "Kiera", color: "#310051", prisoner: true, free: false, customSprite: ""},
+	],
+	],
+	["MaidforceHead", [
+		{name: "FrostLunar", color: "#0055ff", prisoner: true, free: true, customSprite: ""},
 	],
 	],
 	["WitchFlame", [
@@ -89,6 +104,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["WitchSlime", [
 		{name: "Kathy Narlato", color: "#4e3da9", prisoner: true, free: true, customSprite: ""},
+		{name: "Claire", color: "#55ff55", prisoner: true, free: true, customSprite: ""},
 	],
 	],
 	["WitchWater", [
