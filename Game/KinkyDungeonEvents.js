@@ -369,7 +369,7 @@ let KDEventMapInventory = {
 			if (item == data.item || KDRestraint(item)?.Group == data.group) {
 				let curse = KDGetCurse(item);
 				let pre = item == data.item ? "" : "[" + TextGet("Restraint" + item.name) + "] ";
-				if (curse && KDCurses[curse].activatecurse) {
+				if (curse && KDCurses[curse].activatecurse && (!e.prereq || KDCheckPrereq(undefined, e.prereq, e, data))) {
 					data.extraLines.push(pre + TextGet("curseInfo" + e.msg));
 				} else {
 					data.extraLines.push(pre + TextGet("curseInfoDormant"));
