@@ -1434,10 +1434,11 @@ Bugfix
 4.51 (August 2023)
 Features
 - Shadow hands now take you to the Edge of Reality
+- Patron NPCs now tell your their name when they first become aware of you!
 Bugfix
 - CMD: Unlock now properly castable with Conjurer perk
 
-TODO: Mushrooms in the jungle
+
 
 TODO
 Warden (more comprehensive cuffs)

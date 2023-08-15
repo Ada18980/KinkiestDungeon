@@ -818,7 +818,7 @@ function SetpieceSpawnPrisoner(x, y) {
 		e.items = [];
 		KinkyDungeonSetEnemyFlag(e, "noswap", -1);
 		KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
-		KDProcessCustomPatron(Enemy, e, 0.1);
+		KDProcessCustomPatron(Enemy, e, 1.0);
 	}
 }
 

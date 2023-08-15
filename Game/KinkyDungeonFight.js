@@ -42,7 +42,8 @@ let KDFightParams = {
 
 let KinkyDungeonOpenObjects = KinkyDungeonTransparentObjects; // Objects bullets can pass thru
 let KinkyDungeonMeleeDamageTypes = ["unarmed", "crush", "slash", "pierce", "grope", "pain", "chain", "tickle"];
-let KinkyDungeonTeaseDamageTypes = ["tickle", "charm", "grope", "pain", "happygas", "poison", "drain", "souldrain"];
+let KinkyDungeonTeaseDamageTypes = ["tickle", "charm", "grope", "pain"];
+let KinkyDungeonPacifistDamageTypes = ["tickle", "charm", "grope", "pain", "chain", "grope", "soul"];
 let KinkyDungeonStunDamageTypes = ["fire", "electric", "stun"];
 let KinkyDungeonBindDamageTypes = ["chain", "glue"];
 let KinkyDungeonFreezeDamageTypes = ["ice"];
@@ -512,7 +513,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	let miss = !(!Damage || !Damage.evadeable || KinkyDungeonEvasion(Enemy, (true && Spell), !KinkyDungeonMeleeDamageTypes.includes(predata.type), attacker));
 	if (Damage && !miss) {
 		if (KDHostile(Enemy)) {
-			if (KinkyDungeonStatsChoice.get("Pacifist") && Enemy.Enemy.bound && !KinkyDungeonTeaseDamageTypes.includes(predata.type) && predata.type != "glue" && predata.type != "chain") {
+			if (KinkyDungeonStatsChoice.get("Pacifist") && Enemy.Enemy.bound && !Enemy.Enemy.nonHumanoid && !KinkyDungeonPacifistDamageTypes.includes(predata.type)) {
 				predata.dmg *= KDPacifistReduction;
 			}
 			if (KinkyDungeonStatsChoice.get("EnemyArmor")) {
