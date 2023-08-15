@@ -270,7 +270,8 @@ let KDEventMapInventory = {
 	},
 	"getLights": {
 		"ItemLight": (e, item, data) => {
-			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color || "#ffffff")});
+			if (!e.prereq || KDCheckPrereq(undefined, e.prereq, e, data))
+				data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y, color: string2hex(e.color || "#ffffff")});
 		},
 	},
 	"onWear": {
@@ -556,6 +557,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"CursedCorruption": (e, item, data) => {
+			KinkyDungeonSetFlag("CurseTypeCorruption", 2);
 			if (item && KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < KDShadowThreshold) {
 				let buff = KinkyDungeonPlayerBuffs.Corrupted;
 				let buff2 = KinkyDungeonPlayerBuffs.Corrupted2;
