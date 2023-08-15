@@ -734,6 +734,9 @@ function KinkyDungeonDrawGame() {
 		}, true, 490, 0, KDMinimapWidth()+21, KDMinimapHeight()+21, "", KDButtonColor, undefined, undefined, false, true,
 		"#000000", undefined, undefined, {zIndex: zIndex-2, alpha: 0.});
 
+		if (KDMinimapWCurrent != KDMinimapWTarget || KDMinimapHCurrent != KDMinimapHTarget) {
+			KDRedrawMM = 2;
+		}
 		KDMinimapWCurrent = (KDMinimapWTarget + KDUISmoothness * KDMinimapWCurrent)/(1 + KDUISmoothness);
 		KDMinimapHCurrent = (KDMinimapHTarget + KDUISmoothness * KDMinimapHCurrent)/(1 + KDUISmoothness);
 
