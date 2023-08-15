@@ -1081,7 +1081,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
  * @param {(target: entity) => void} FinalEffect
  * @param {string} buffType - Buff effect
  */
-function KDTripleBuffKill(Name, Target, time, FinalEffect = (target) => KinkyDungeonPassOut(), buffType = "Blindness") {
+function KDTripleBuffKill(Name, Target, time, FinalEffect = (target) => KinkyDungeonPassOut(), buffType = "Blindness", FirstEffect = (target) => {}, SecondEffect = (target) => {}, ThirdEffect = (target) => {}) {
 	let buff1 = {id: Name + "1", type: buffType, duration: time + 3, power: 1.0, player: true, tags: ["passout"]};
 	let buff2 = {id: Name + "2", type: buffType, duration: time + 3, power: 2.0, player: true, tags: ["passout"]};
 	let buff3 = {id: Name + "3", type: buffType, duration: time + 3, power: 4.0, player: true, tags: ["passout"]};
@@ -1092,13 +1092,16 @@ function KDTripleBuffKill(Name, Target, time, FinalEffect = (target) => KinkyDun
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff3);
+		ThirdEffect(Target);
 	}  else if (KinkyDungeonPlayerBuffs[buff1.id]) {
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "2"), "#ff5555", time);
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
+		SecondEffect(Target);
 	} else {
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "1"), "#ff5555", time);
 		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
+		FirstEffect(Target);
 	}
 }
 
