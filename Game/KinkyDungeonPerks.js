@@ -196,8 +196,8 @@ let KinkyDungeonStatsPresets = {
 	"MC_Wizard":  {category: "Multiclass", id: "MC_Wizard", cost: 2, blockclass: ["Wizard"], tags: ["start", "mc"]},
 
 
-	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1, block: ["SecondWind"]},
-	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1, block: ["FutileStruggles"]},
+	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1},
+	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1},
 
 	"Stranger": {startPriority: 1000, category: "Enemies", id: "Stranger", cost: 0, block: ["WrongNeighborhood"], tags: ["start"]},
 	"WrongNeighborhood": {startPriority: 1000, category: "Enemies", id: "WrongNeighborhood", cost: -1, block: ["Stranger"], tags: ["start"]},

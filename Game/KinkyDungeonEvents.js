@@ -4852,6 +4852,32 @@ let KDEventMapGeneric = {
 				}
 			}
 		},
+		"SecondWind": (e, data) => {
+			if (KinkyDungeonStatsChoice.has("SecondWind")) {
+
+				let amount = 0.1;
+				if (KinkyDungeonFlags.get("SecondWind1")) amount += 0.15;
+
+				if (KinkyDungeonStatWill < KinkyDungeonStatWillMax * amount
+					&& !KinkyDungeonIsArmsBound(false, false)
+					&& !KinkyDungeonIsHandsBound(false, false, 0.01)
+					&& KinkyDungeonSlowLevel < 1
+					&& KinkyDungeonGagTotal(false) < 0.01
+					&& KinkyDungeonGetBlindLevel() < 1)
+				{
+					KinkyDungeonChangeWill(KinkyDungeonInDanger() ? 0.01 : 0.2, false);
+				}
+				if (!KinkyDungeonFlags.get("SecondWindSpell")) {
+					KinkyDungeonSetFlag("SecondWindSpell", -1);
+					KinkyDungeonSpells.push(KinkyDungeonFindSpell("SecondWind0"));
+				}
+				if (!KinkyDungeonFlags.get("SecondWind1")) {
+					if (KDHasSpell("SecondWind1")) {
+						KinkyDungeonSetFlag("SecondWind1", -1);
+					}
+				}
+			}
+		},
 		"BurningDesire": (e, data) => {
 			if (KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax * 0.7 && KinkyDungeonStatsChoice.has("BurningDesire")) {
 				let px = KinkyDungeonPlayerEntity.x - 1 + Math.round(2 * KDRandom());

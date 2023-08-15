@@ -66,7 +66,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["ManaRegen","ManaRegenPlus","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
+		["SecondWind1","ManaRegen","ManaRegenPlus","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
 	],
 
 	//Page 1: Elements
@@ -161,6 +161,9 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				duration: 100,
 			},
 		},
+
+		{name: "SecondWind0", tags: ["mana", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{name: "SecondWind1", tags: ["mana", "utility"], spellPointCost: 2, school: "Elements", manacost: 0, components: [], prerequisite: "SecondWind0", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
 		{name: "ManaRegen", tags: ["mana", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "ManaRegenSuspend", trigger: "playerCast", time:6},
