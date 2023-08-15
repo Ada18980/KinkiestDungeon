@@ -1999,6 +1999,11 @@ function KDDisarmEnemy(enemy, time) {
 }
 
 let KDPrereqs = {
+	"noCorruption": (enemy, e, data) => {
+		return !KinkyDungeonFlags.get("CurseTypeCorruption")
+		|| (KinkyDungeonFlags.get("CurseTypeLight") && KinkyDungeonFlags.get("CurseTypeCorruption")
+			&& KinkyDungeonFlags.get("CurseTypeLight") > KinkyDungeonFlags.get("CurseTypeCorruption"));
+	},
 	"AlreadyCursed": (enemy, e, data) => {
 		if (KinkyDungeonPlayerTags.get("Cursed")) return false;
 		if (e.tags && !KinkyDungeonGetRestraint({tags: [...e.tags],},
