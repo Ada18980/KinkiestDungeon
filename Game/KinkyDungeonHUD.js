@@ -846,9 +846,10 @@ function KinkyDungeonDrawInputs() {
 					}
 					O = lastO;
 					if (drawn) {
-						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150);
+						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
 					}
 
+					lastO = O;
 
 				}
 				FillRectKD(kdcanvas, kdpixisprites, "selectedBG", {
