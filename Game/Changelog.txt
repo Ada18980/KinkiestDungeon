@@ -1435,8 +1435,11 @@ Bugfix
 Features
 - Shadow hands now take you to the Edge of Reality
 - Patron NPCs now tell your their name when they first become aware of you!
+- Added lesser shadow chests to the Edge of Reality
+- Added much more variety to the enchanted restraints you get grom chests
 Changes
 - Second Wind now restores WP when free
+- Added more restraints to the loot tables
 Bugfix
 - CMD: Unlock now properly castable with Conjurer perk
 

@@ -5007,18 +5007,26 @@ let KDEventMapGeneric = {
 	},
 	"beforeChest": {
 		"shadowChest": (e, data) => {
-			if (data.chestType == "shadow" && KDCanCurse(["ChestCollar"])) {
+			if ((data.chestType == "shadow" || data.chestType == "lessershadow") && KDCanCurse(["ChestCollar"])) {
 				// Shadow chests spawn cursed epicenter
 				KDSummonCurseTrap(data.x, data.y);
 			}
 		},
 		"lessergoldChest": (e, data) => {
-			if (data.chestType == "lessergold" && KDCanCurse(["ChestCollar"])) {
+			if ((data.chestType == "lessergold" || data.chestType == "gold") && KDCanCurse(["ChestCollar"])) {
 				// Shadow chests spawn cursed epicenter
 				KDSummonCurseTrap(data.x, data.y);
 			}
 		},
 	},
+	"specialChests": {
+		"hardmode": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("hardMode")) data.shadow = 2;
+		},
+		"demontransition": (e, data) => {
+			if (data.altType?.name == "DemonTransition") data.specialChests.lessershadow = 4;
+		},
+	}
 };
 
 /**

@@ -684,6 +684,7 @@ function KinkyDungeonGetSpriteOverlay(code, x, y, Fog, noReplace) {
 let KDSpecialChests = {
 	"silver" : "ChestSilver",
 	"shadow" : "ChestShadow",
+	"lessershadow" : "ChestShadow",
 };
 
 /**
