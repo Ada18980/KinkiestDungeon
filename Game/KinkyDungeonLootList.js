@@ -206,6 +206,14 @@ let KinkyDungeonLootTable = {
 		{name: "spell_points", magic: true, minLevel: 0, weight:5, message:"LootChestSpellPoints", messageColor:"lightblue", messageTime: 3, allFloors: true, max: 1},
 		...KDShadowRestraints,
 	],
+	"lessershadow": [
+		{name: "AncientCores", minLevel: 0, weight:1.5, message:"LootChestAncientCores", messageColor:"yellow", messageTime: 3, allFloors: true, max: 1},
+		{name: "bluekey", minLevel: 0, weight:1.0, message:"LootChestBlueKey", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "pick", minLevel: 0, weight:2.5, message:"LootRubbleLockpick", messageColor:"lightgreen", messageTime: 3, allFloors: true, prerequisites: ["fewpick"],},
+		{name: "redkey", key: true, minLevel: 0, weight:1, message:"LootRubbleRedKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
+		{name: "potions_many", minLevel: 0, weight:3, message:"LootPotionsMedley", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		...KDShadowRestraints,
+	],
 	"storage": [
 		{name: "redkey", key: true, minLevel: 0, weight:1, message:"LootChestRedKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		{name: "bola", minLevel: 0, weight:3, message:"LootChestBola", messageColor:"lightgreen", messageTime: 3, allFloors: true},
