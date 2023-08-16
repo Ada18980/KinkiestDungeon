@@ -4161,6 +4161,8 @@ let KDEventMapEnemy = {
 					KDTripleBuffKill("ShadowEngulf", KinkyDungeonPlayerEntity, 9, (tt) => {
 						if (KDGameData.RoomType != "DemonTransition")
 							KDEnterDemonTransition();
+						else
+							KinkyDungeonPassOut();
 					}, "Blindness",
 					(target) => {
 						// Create a portal
