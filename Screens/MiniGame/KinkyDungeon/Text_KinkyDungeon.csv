@@ -6102,7 +6102,7 @@ curseInfoAnimation,"Curse of Animation: Causes loose restraints to animate and a
 curseInfoSensitivity,"Curse of Sensitivity: Makes it easier to lose control of yourself."
 curseInfoDistraction,"Curse of Distraction: Multiplies DP gain by 1.5x."
 curseInfoBreathlessness,"Curse of Breathlessness: Multiplies SP gain by 0.6x."
-curseInfoFutile,"Curse of Futility: Multiplies WP gain by 0.25x."
+curseInfoFutile,"Curse of Futility: Multiplies WP gain by 0.5x."
 curseInfoSubmission,"Curse of Submission: Gain submissiveness when you lose control of yourself..."
 curseInfoDormant,"The curse is dormant, waiting for the time to strike..."
 KDSubmissionCurseApply,"Your RESTRAINTNAME glows pink as you feel your mind attacked by hypnotic forces!"

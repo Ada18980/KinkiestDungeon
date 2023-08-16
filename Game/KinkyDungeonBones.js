@@ -45,11 +45,11 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["NinjaStalker", [
-		{name: "Alisa", color: "#575699", prisoner: false, free: true, customSprite: ""},
+		{name: "Alisa", color: "#575699", prisoner: false, free: true, customSprite: "Alisa"},
 	],
 	],
 	["Ninja", [
-		{name: "Alisa", color: "#575699", prisoner: false, free: true, customSprite: ""},
+		{name: "Alisa", color: "#575699", prisoner: false, free: true, customSprite: "Alisa"},
 	],
 	],
 	["SlimeAdv", [
