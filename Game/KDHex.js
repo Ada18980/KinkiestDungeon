@@ -108,7 +108,7 @@ let KDEventHexModular = {
 		events: [
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform"},
-			{type: "multWillPos", trigger: "changeWill", power: 0.25, inheritLinked: true, curse: true},
+			{type: "multWillPos", trigger: "changeWill", power: 0.5, inheritLinked: true, curse: true},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Futile", color: "#ff5555", inheritLinked: true}
 		]},
 	"Tickle": {level: 1,

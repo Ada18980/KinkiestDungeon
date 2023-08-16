@@ -272,8 +272,12 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("SpellLearned", TextGet("KinkyDungeonSpell" + Loot.spell));
 	}
-	else if (Loot.armor) {
+	else if (Loot.armor || Loot.armortags) {
 		let armor = Loot.armor;
+		if (Loot.armortags) {
+			let newarmor = KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "");
+			if (newarmor) armor = newarmor.name;
+		}
 		let unlockcurse = null;
 		let hexVariant = "";
 		let enchantVariant = "";
@@ -338,7 +342,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			KinkyDungeonInventoryAddLoose(armor, unlockcurse);
 		}
 		if (Replacemsg)
-			Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + Loot.armor));
+			Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + armor));
 	}
 	else if (Loot.name == "spell_points") {
 		let amount = 1;

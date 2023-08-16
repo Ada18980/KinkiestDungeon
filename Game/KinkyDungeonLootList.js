@@ -94,60 +94,70 @@ for (let armor of KDSilverArmor) {
 }
 
 let KDEnchantedRestraints = [
-	{name: "TrapGag", minLevel: 0, weight: KDEnchantedRestraintsWeight,
-		armor: "TrapGag",
+	{name: "TrapRestraints", minLevel: 0, weight: KDEnchantedRestraintsWeight*2,
+		armortags: ["trap"], armor: "TrapGag", // Backup to a gag
 		cursesuffix: "",
+		maxEnchants: 2,
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-	{name: "TrapArmbinder", minLevel: 0, weight: KDEnchantedRestraintsWeight,
-		armor: "TrapArmbinder",
+	{name: "LatexRestraints", minLevel: 0, weight: KDEnchantedRestraintsWeight*2.5,
+		armortags: ["latexRestraintsHeavy", "latexRestraints"], armor: "LatexBallGag",
 		cursesuffix: "",
+		amtMult: 1.5,
+		maxEnchants: 2,
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-	{name: "TrapHarness", minLevel: 0, weight: KDEnchantedRestraintsWeight,
-		armor: "TrapHarness",
+	{name: "LeatherRestraints", minLevel: 0, weight: KDEnchantedRestraintsWeight*3,
+		armortags: ["leatherRestraintsHeavy"], armor: "TrapGag",
 		cursesuffix: "",
+		amtMult: 1.5,
+		maxEnchants: 2,
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-	{name: "TrapBoots", minLevel: 0, weight: KDEnchantedRestraintsWeight,
-		armor: "TrapBoots",
+	{name: "MagicRopes", minLevel: 0, weight: KDEnchantedRestraintsWeight*0.25,
+		armortags: ["weakMagicRopes"], armor: "TrapGag",
 		cursesuffix: "",
-		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
-		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
-		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-	{name: "TrapCuffs", minLevel: 0, weight: KDEnchantedRestraintsWeight,
-		armor: "TrapCuffs",
-		cursesuffix: "",
-		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
-		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
-		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-	{name: "TrapBlindfold", minLevel: 0, weight: KDEnchantedRestraintsWeight,
-		armor: "TrapBlindfold",
-		cursesuffix: "",
-		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
-		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
-		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-	{name: "TrapBelt", minLevel: 0, weight: KDEnchantedRestraintsWeight,
-		armor: "TrapBelt",
-		cursesuffix: "",
-		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
-		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
-		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-	{name: "TrapBra", minLevel: 0, weight: KDEnchantedRestraintsWeight,
-		armor: "TrapBra",
-		cursesuffix: "",
-		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
+		amtMult: 2.5,
+		hexlist: "Common", enchantlist: "Common", hexchance: 1.0, enchantchance: 1, alwaysenchanthex: true,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 ];
 
-let KDShadowRestraints = [...JSON.parse(JSON.stringify(KDEnchantedRestraints))];
+let KDShadowRestraints = [...JSON.parse(JSON.stringify(KDEnchantedRestraints)),
+	{name: "CursedToys", minLevel: 0, weight: KDEnchantedRestraintsWeight*1,
+		armortags: ["genericToys", "plugSpell"], armor: "SteelPlugF",
+		arousalMode: true,
+		amtMult: 2,
+		cursesuffix: "",
+		hexlist: "Common", enchantlist: "Common", hexchance: 1.0, enchantchance: 1, alwaysenchanthex: true,
+		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
+		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+	{name: "Moon", minLevel: 0, weight: KDEnchantedRestraintsWeight*1,
+		armortags: ["shadowLatexRestraints", "shadowLatexRestraintsHeavy", "obsidianRestraints"], armor: "SteelPlugF",
+		arousalMode: true,
+		amtMult: 2,
+		maxEnchants: 3,
+		cursesuffix: "",
+		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
+		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
+		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+	{name: "Star", minLevel: 0, weight: KDEnchantedRestraintsWeight*1,
+		armortags: ["liquidMetalRestraintsRandom", "shadowLatexRestraintsHeavy", "mithrilRestraints"], armor: "SteelPlugF",
+		arousalMode: true,
+		amtMult: 2,
+		maxEnchants: 3,
+		cursesuffix: "",
+		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
+		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
+		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+
+];
 for (let armor of KDShadowRestraints) {
-	armor.amtMult = 1.5;
-	armor.maxEnchants = 3;
+	armor.amtMult = (armor.amtMult || 1) * 1.5;
+	armor.maxEnchants = (armor.maxEnchants || 1) + 1;
 }
 
 let KinkyDungeonLootTable = {
@@ -285,7 +295,11 @@ let KinkyDungeonLootTable = {
 
 		{name: "Slimethrower", minLevel: 5, weight:1, weapon: "Slimethrower", goddess: "Latex", goddessWeight: 1.25, noweapon: ["Slimethrower"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 
-		...KDBasicArmor,
+		...KDAdvancedArmor,
+		...KDEnchantedRestraints,
+	],
+	"magicrestraint": [
+		...KDEnchantedRestraints,
 	],
 	"gold": [
 		{name: "MistressKey", minLevel: 0, weight:6, message:"LootChestMistressKey", messageColor:"yellow", messageTime: 3, allFloors: true},
@@ -300,6 +314,7 @@ let KinkyDungeonLootTable = {
 		{name: "EnchantedArmbinder", minLevel: 5, weight:4, message:"LootChestEnchantedArmbinder", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["EnchantedArmbinder"], submissive: 5},
 		{name: "EnchantedBallGag", minLevel: 0, weight:4, message:"LootChestEnchantedBallGag", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["EnchantedBallGag"]},
 		{name: "PotionCollar", minLevel: 1, weight:10, message:"LootPotionCollar", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["PotionCollar"]},
+		...KDEnchantedRestraints,
 	],
 	"lessergold": [
 		...KDGoldArmor, ...KDGoldArmor2,
