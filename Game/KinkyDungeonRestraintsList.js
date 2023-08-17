@@ -2027,7 +2027,7 @@ const KinkyDungeonRestraints = [
 		power: 50, weight: -100, escapeChance: {"Struggle": -50, "Cut": -50, "Remove": -50, "Pick": -50},
 		curse: "CursedCollar",
 		enemyTags: {"cursedCollar": 1000, "ChestCollar": 1000}, playerTags: {}, minLevel: 0, allFloors: true,
-		shrine: ["Collars", "Cursed", "Stardust"],
+		shrine: ["Collars", "Cursed", "CursedSet", "Stardust"],
 		events: [
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedTransformation", color: "#9074ab", inheritLinked: true},
 			{trigger: "postApply", type: "EngageCurse", inheritLinked: true},
@@ -2042,7 +2042,7 @@ const KinkyDungeonRestraints = [
 		power: 50, weight: -100, escapeChance: {"Struggle": -50, "Cut": -50, "Remove": -50, "Pick": -50},
 		curse: "CursedCollar",
 		enemyTags: {"cursedCollar2": 1000, "ChestCollar": 1000}, playerTags: {}, minLevel: 0, allFloors: true,
-		shrine: ["Collars", "Cursed", "Stardust"],
+		shrine: ["Collars", "Cursed", "CursedSet", "Stardust"],
 		events: [
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedTransformation", color: "#9074ab", inheritLinked: true},
 			{trigger: "postApply", type: "EngageCurse", inheritLinked: true},
