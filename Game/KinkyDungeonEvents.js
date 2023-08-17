@@ -917,6 +917,23 @@ let KDEventMapInventory = {
 		}
 	},
 	"tickAfter": {
+		"RemoveOnETTag": (e, item, data) => {
+			let tiles = KDEffectTileTags(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+			if (e.tags.some((t) => {return tiles[t] != undefined;}) ) {
+				// Increase damage count
+				let count = KDItemDataQuery(item, e.kind) || 0;
+				count = count + e.power;
+				KDItemDataSet(item, e.kind, count);
+				// Evaluate damage count
+				if (!e.count || count >= e.count) {
+					item.curse = "";
+					KinkyDungeonLock(item, "");
+					KinkyDungeonSendTextMessage(5, TextGet("KDRemoveOnDmgType").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+				} else {
+					KinkyDungeonSendTextMessage(3, TextGet("KDRemoveOnDmgTypeChill").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2, true);
+				}
+			}
+		},
 		"CursedSubmission": (e, item, data) => {
 			if (KinkyDungeonStatWill < 0.1) {
 				if (KinkyDungeonLastTurnAction == "Move"
@@ -1143,7 +1160,7 @@ let KDEventMapInventory = {
 				if (!e.power || data.dmg >= e.power) {
 					// Increase damage count
 					let count = KDItemDataQuery(item, e.kind) || 0;
-					count = count + Math.max(data.dmg || 1, 1);
+					count = count + Math.max((data.dmg * (e.mult || 1)) || 1, 1);
 					KDItemDataSet(item, e.kind, count);
 					// Evaluate damage count
 					if (!e.count || count >= e.count) {
