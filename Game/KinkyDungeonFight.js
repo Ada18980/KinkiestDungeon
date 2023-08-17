@@ -74,6 +74,11 @@ let KDSpellTagBinds = {
 	"nature": "Vine",
 };
 
+let KDResistanceProfiles = {
+	rope: KDMapInit(["poisonresist", "fireweakness", "slashweakness", "acidweakness", "chainresist", ]),
+	construct: KDMapInit(["soulimmune", "charmimmune"]),
+};
+
 /**
  * These also are affected by resistances to the second damage type, but not weaknesses
  * Repeats up to 3 times
@@ -418,11 +423,12 @@ function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker) {
 /**
  *
  * @param {Record<string, boolean>} tags
+ * @param {string[] | undefined} profile
  * @param {string} type
  * @param {string} resist
  * @returns {boolean}
  */
-function KinkyDungeonGetImmunity(tags, type, resist) {
+function KinkyDungeonGetImmunity(tags, profile, type, resist) {
 	let t = type;
 	if (KDDamageEquivalencies[type]) t = KDDamageEquivalencies[type];
 
@@ -433,6 +439,15 @@ function KinkyDungeonGetImmunity(tags, type, resist) {
 		|| ((KinkyDungeonMeleeDamageTypes.includes(t) && (type != "unarmed" || !resist.includes("weakness"))) && tags["melee" + resist])
 		|| (!KinkyDungeonMeleeDamageTypes.includes(t) && tags["magic"+resist])))
 		return true;
+	if (profile) {
+		for (let pp of profile) {
+			let p = KDResistanceProfiles[pp];
+			if (p && (p[t + resist]
+				|| ((KinkyDungeonMeleeDamageTypes.includes(t) && (type != "unarmed" || !resist.includes("weakness"))) && p["melee" + resist])
+				|| (!KinkyDungeonMeleeDamageTypes.includes(t) && p["magic"+resist])))
+				return true;
+		}
+	}
 	return false;
 }
 
@@ -554,10 +569,10 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 
 		if (Enemy.Enemy.tags) {
-			if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, predata.type, "severeweakness")) resistDamage = -2;
-			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, predata.type, "weakness")) resistDamage = -1;
-			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, predata.type, "immune")) resistDamage = 2;
-			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, predata.type, "resist")) resistDamage = 1;
+			if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "severeweakness")) resistDamage = -2;
+			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "weakness")) resistDamage = -1;
+			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "immune")) resistDamage = 2;
+			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "resist")) resistDamage = 1;
 
 			if (Enemy.Enemy.tags.unstoppable) resistStun = 2;
 			else if (Enemy.Enemy.tags.unflinching) resistStun = 1;

@@ -1145,6 +1145,14 @@ function KDDrawEnemyTooltip(enemy, offset) {
 	let analyze = KDHasSpell("ApprenticeKnowledge");
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
 	let TooltipList = [];
+	if (enemy.CustomName)
+		TooltipList.push({
+			str: enemy.CustomName,
+			fg: enemy.CustomNameColor || "#ffffff",
+			bg: "#000000",
+			size: 28,
+			center: true,
+		});
 	TooltipList.push({
 		str: TextGet("Name" + enemy.Enemy.name),
 		fg: enemy.Enemy.color || "#ff5555",
@@ -1354,9 +1362,17 @@ function KDDrawEnemyTooltip(enemy, offset) {
 	}
 
 	if (analyze) {
-		let list = Array.from(Object.keys(enemy.Enemy.tags));
+		let map = Object.assign({}, enemy.Enemy.tags);
 		if (enemy.Enemy.spellResist)
-			list.push("magic");
+			map.magic = true;
+		if (enemy.Enemy.Resistance?.profile) {
+			for (let p of enemy.Enemy.Resistance?.profile) {
+				for (let dt of Object.keys(KDResistanceProfiles[p])) {
+					map[dt] = true;
+				}
+			}
+		}
+		let list = Array.from(Object.keys(map));
 		let magic = false;
 		let repeats = {};
 		for (let t of list) {
