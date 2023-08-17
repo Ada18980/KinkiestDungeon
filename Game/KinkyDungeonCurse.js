@@ -188,8 +188,8 @@ let KDCurses = {
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 4, damage: "ice", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
 			{type: "RemoveOnDmg", power: 1, mult: 0.5, count: 4, damage: "acid", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
-			{type: "RemoveOnETTag", power: 0.15, count: 4, tags: ["ice"], trigger: "tickAfter", kind: "CurseExtinguish"},
-			{type: "RemoveOnETTag", power: 0.1, count: 4, tags: ["water"], trigger: "tickAfter", kind: "CurseExtinguish"},
+			{type: "RemoveOnETTag", power: 0.1, count: 4, tags: ["ice"], trigger: "tickAfter", kind: "CurseExtinguish"},
+			{type: "RemoveOnETTag", power: 0.4, count: 4, tags: ["water"], trigger: "tickAfter", kind: "CurseExtinguish"},
 			//{type: "RemoveOnBuffName", trigger: "tick", kind: "Drenched"},
 			//{type: "RemoveOnBuffName", trigger: "tick", kind: "Chilled"},
 		],
