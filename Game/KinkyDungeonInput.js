@@ -220,7 +220,7 @@ function KDProcessInput(type, data) {
 				let miscast = KinkyDungeonMiscastChance;
 				let gagTotal = KinkyDungeonGagTotal();
 				if (KinkyDungeoCheckComponents(KinkyDungeonFindSpell("CommandWord"), KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y).length > 0) {
-					miscast = miscast + Math.max(0, 1 - miscast) * Math.min(1, gagTotal);
+					miscast = miscast + Math.max(0, 1 - miscast) * Math.min(1, !KDSpellIgnoreComp(spell) ? gagTotal : 0);
 				}
 				if (KDRandom() > miscast) {
 					KinkyDungeonTargetTile.Lock = undefined;

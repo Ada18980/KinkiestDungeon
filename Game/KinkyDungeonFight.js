@@ -2006,7 +2006,7 @@ let KDPrereqs = {
 			&& KinkyDungeonFlags.get("CurseTypeLight") > KinkyDungeonFlags.get("CurseTypeCorruption"));
 	},
 	"AlreadyCursed": (enemy, e, data) => {
-		if (KinkyDungeonPlayerTags.get("Cursed")) return false;
+		if (KinkyDungeonPlayerTags.get("CursedSet")) return false;
 		if (e.tags && !KinkyDungeonGetRestraint({tags: [...e.tags],},
 			MiniGameKinkyDungeonLevel,
 			KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "")) return false;
