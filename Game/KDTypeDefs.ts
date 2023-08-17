@@ -920,6 +920,8 @@ interface enemy extends KDHasTags {
 	alwaysBlock?: boolean,
 	/** Info for enemy resistance */
 	Resistance?: {
+		/** Applies a resistance profile to the enemy, which is a preset set of tags */
+		profile?: string[],
 		/** This enemy cannot dodge if the attacking weapon is magical */
 		alwaysHitByMagic?: boolean,
 		/** This enemy cannot BLOCK if the attacking weapon is magical */
