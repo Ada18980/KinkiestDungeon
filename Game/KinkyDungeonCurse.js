@@ -376,7 +376,8 @@ function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = un
 		Pick: Math.min(restraint.escapeChance.Pick || 1.0, 0.1),
 	};
 	return {
-		protectionCursed: true,
+		protection: 0,
+		//protectionCursed: true,
 		escapeChance: escapeChance,
 		DefaultLock: lock,
 		HideDefaultLock: true,
