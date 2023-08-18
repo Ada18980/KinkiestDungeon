@@ -5040,7 +5040,7 @@ let KDEventMapGeneric = {
 	},
 	"specialChests": {
 		"hardmode": (e, data) => {
-			if (KinkyDungeonStatsChoice.get("hardMode")) data.shadow = 2;
+			if (KinkyDungeonStatsChoice.get("hardMode")) data.specialChests.shadow = 2;
 		},
 		"demontransition": (e, data) => {
 			if (data.altType?.name == "DemonTransition") data.specialChests.lessershadow = 4;
