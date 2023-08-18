@@ -462,11 +462,6 @@ function KDAnimEnemy(Entity) {
 	if (Entity.fx && Entity.fy && (Entity.fx != Entity.x || Entity.fy != Entity.y) && Entity.Enemy && !KDIsImmobile(Entity)) {
 		if (Entity.fx != Entity.x) {
 			offX = offamount * Math.sign(Entity.fx - Entity.x);
-			if (Math.sign(Entity.fx - Entity.x) < 0) {
-				delete Entity.flip;
-			} else if (Math.sign(Entity.fx - Entity.x) > 0) {
-				Entity.flip = true;
-			}
 		}
 		if (Entity.fy != Entity.y) {
 			offY = offamount * Math.sign(Entity.fy - Entity.y);
@@ -2401,6 +2396,13 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 						if (enemy.weakBinding && KDPlayerIsStunned()) enemy.hp = Math.max(0, enemy.hp - enemy.Enemy.maxhp*0.2);
 					} else if (!KinkyDungeonFindID(enemy.boundTo) || KDHelpless(KinkyDungeonFindID(enemy.boundTo)) || (enemy.weakBinding && KinkyDungeonIsDisabled(KinkyDungeonFindID(enemy.boundTo)))) enemy.hp = 0;
 				}
+				if (enemy.fx && !enemy.Enemy.noFlip) {
+					if (Math.sign(enemy.fx - enemy.x) < 0) {
+						delete enemy.flip;
+					} else if (Math.sign(enemy.fx - enemy.x) > 0) {
+						enemy.flip = true;
+					}
+				}
 			}
 		}
 	}
@@ -2569,7 +2571,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.ignoreLocks = enemy.Enemy.keys || enemy.keys || enemy == KinkyDungeonJailGuard() || (KDEnemyHasFlag(enemy, "keys"));
 	AIData.harmless = (KinkyDungeonPlayerDamage.dmg <= enemy.Enemy.armor || !KinkyDungeonHasWill(0.1)) && !KinkyDungeonFlags.has("PlayerCombat") && !KinkyDungeonCanTalk() && !KinkyDungeonCanUseWeapon() && KinkyDungeonSlowLevel > 1;
 
-	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
+	AIData.directionOffset = enemy.Enemy.nonDirectional ? 0 : (enemy.flip ? AIData.visionRadius : -AIData.visionRadius);
+
+	AIData.playerDist = KDistEuclidean(enemy.x - player.x, enemy.y - player.y);
+	AIData.playerDistDirectional = KDistEuclidean(enemy.x + AIData.directionOffset - player.x, enemy.y - player.y);
+	if (AIData.playerDistDirectional < AIData.playerDist && AIData.playerDist < Math.abs(AIData.directionOffset)) AIData.playerDistDirectional = 0; // Within AIData.directionOffset
 	AIData.hostile = KDHostile(enemy, player);
 	AIData.aggressive = KinkyDungeonAggressive(enemy, player);
 	AIData.domMe = (player.player && AIData.aggressive) ? false : KDCanDom(enemy);
@@ -2713,9 +2719,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (!enemy.warningTiles) enemy.warningTiles = [];
 	AIData.canSensePlayer = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, true, true);
-	AIData.canSeePlayer = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, false, false);
+	AIData.canSeePlayer = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDistDirectional, AIData.visionRadius, false, false);
 	AIData.canSeePlayerChase = !AIData.distracted && (enemy.aware ? KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.chaseRadius, false, false) : false);
-	AIData.canSeePlayerMedium = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/1.4, false, true);
+	AIData.canSeePlayerMedium = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDistDirectional, AIData.visionRadius/2, false, true);
 	AIData.canSeePlayerClose = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/2, false, true);
 	AIData.canSeePlayerVeryClose = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/3, false, true);
 	AIData.canShootPlayer = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, false, true);
@@ -4162,6 +4168,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 
 				if (spell && KinkyDungeonCastSpell(xx, yy, spell, enemy, player).result == "Cast" && spell.sfx) {
+					if (!enemy.Enemy.noFlip) {
+						if (Math.sign(xx - enemy.x) < 0) {
+							delete enemy.flip;
+						} else if (Math.sign(xx - enemy.x) > 0) {
+							enemy.flip = true;
+						}
+					}
 					if (enemy.Enemy.suicideOnSpell) enemy.hp = 0;
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + spell.sfx + ".ogg", enemy);
 				}

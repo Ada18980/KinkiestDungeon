@@ -250,7 +250,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 7, maxhp: 12, minLevel:4, weight:5, movePoints: 1, attackPoints: 3, attack: "MeleeBindLock", attackWidth: 1, attackRange: 1, power: 1.5, dmgType: "crush", fullBoundBonus: 1.5, specialWidth: 1, specialAttackPoints: 3, specialRange: 4, specialMinrange: 1.5, //specialFollow: 3,
 		terrainTags: {"secondhalf":3, "lastthird":7, "ropeAnger": 2, "bountyhunter": 8, "rope": 5}, shrines: ["Illusion", "Rope"], floors:KDMapInit(["cat", "tmb", "tmp", "cry"]),
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}]},
-	{name: "Deputy", playLine: "Officer", color: "#1451f1", faction: "Bountyhunter", bound: "Ninja", clusterWith: "human", tags: KDMapInit(["leashing", "antiMagic", "opendoors", "imprisonable", "human", "police", "guardCall", "bountyhunter", "handcuffer", "steelCuffs", "police", "melee", "search", "jail", "jailer"]), followLeashedOnly: true, blindSight: 5, followRange: 1, AI: "hunt", projectileAttack: true,
+	{name: "Deputy", playLine: "Officer", color: "#1451f1", faction: "Bountyhunter", bound: "Deputy", clusterWith: "human", tags: KDMapInit(["leashing", "antiMagic", "opendoors", "imprisonable", "human", "police", "guardCall", "bountyhunter", "handcuffer", "steelCuffs", "police", "melee", "search", "jail", "jailer"]), followLeashedOnly: true, blindSight: 5, followRange: 1, AI: "hunt", projectileAttack: true,
 		stunTime: 5, specialCD: 11, specialCharges: 4, specialAttack: "Stun", specialRemove: "BindLock", specialCDonAttack: true, strictAttackLOS: true, specialWidth: 2, specialAttackPoints: 4, specialRange: 5, specialMinrange: 1.5, //specialFollow: 3,
 		visionRadius: 8, maxhp: 12, minLevel:2, weight:1, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 3,
 		terrainTags: {"secondhalf":2, "lastthird":4, "leatherAnger": 2, "metalAnger": 2, "bountyhunter": 8, "metal": 2, "NoPolice": -10000}, shrines: ["Leather", "Metal"], floors:KDMapInit(["grv", "jng", "lib", "cry"]),
@@ -617,6 +617,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 7, amountMax: 15, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 
 	{name: "RubberTurret", faction: "Enemy", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
+		nonDirectional: true,
 		color: "#ff3367",
 		tags: KDMapInit(["oldrobot", "turret", "basicturret", "immobile", "ignoreharmless", "mimicBlock", "doortrap", "robot", "acidweakness", "soulresist", "minor", "ranged",
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness"]),
@@ -644,6 +645,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "RubberSilo", faction: "Enemy", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
 		color: "#ff3367",
+		nonDirectional: true,
 		tags: KDMapInit(["oldrobot", "turret", "immobile", "ignoreharmless", "mimicBlock", "doortrap", "robot", "acidweakness", "soulresist", "minor", "ranged",
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness"]),
 		AI: "hunt", difficulty: 0.2,
@@ -1804,6 +1806,7 @@ let KinkyDungeonEnemies = [
 		effect: {
 			effect: {name: "SlimeEngulf", power: 4},
 		},
+		nonDirectional: true,
 		regen: 0.1,
 		evasion: -1.5,
 		ignorechance: 0.75, followRange: 1, AI: "hunt",

@@ -19,7 +19,7 @@ let KDAnimTick = 0;
 let KDAnimTickInterval = 2000;
 let KDAnimTime = 400;
 
-
+let KDFlipPlayer = false;
 
 // PIXI experimental
 /** @type HTMLCanvasElement */
@@ -1264,7 +1264,9 @@ function KinkyDungeonDrawGame() {
 			// Draw the player no matter what
 			if (!StandalonePatched) {
 				KinkyDungeonContextPlayer.clearRect(0, 0, KinkyDungeonCanvasPlayer.width, KinkyDungeonCanvasPlayer.height);
-				DrawCharacter(KinkyDungeonPlayer, -KinkyDungeonGridSizeDisplay/2, (KinkyDungeonPlayer.HeightModifier || 0)/3.5, KinkyDungeonGridSizeDisplay/250, false, KinkyDungeonContextPlayer);
+				DrawCharacter(KinkyDungeonPlayer, -KinkyDungeonGridSizeDisplay/2, (KinkyDungeonPlayer.HeightModifier || 0)/3.5,
+					KinkyDungeonGridSizeDisplay/250, false,
+					KinkyDungeonContextPlayer);
 			} else {
 				let PlayerModel = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer) : null;
 				let zoom = PlayerModel ? KinkyDungeonGridSizeDisplay/1200
@@ -1285,7 +1287,7 @@ function KinkyDungeonDrawGame() {
 					DrawCharacter(KinkyDungeonPlayer,
 						canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay + (KinkyDungeonGridSizeDisplay/4),
 						canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay + (KinkyDungeonGridSizeDisplay/6),
-						zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods);
+						zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods, undefined, KDFlipPlayer);
 			}
 
 

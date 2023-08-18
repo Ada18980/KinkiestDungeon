@@ -585,8 +585,16 @@ function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets) {
 		}
 	}
 	if (!cancel.cancelmove) {
+		if (willing) {
+			if (moveX > KinkyDungeonPlayerEntity.x) {
+				KDFlipPlayer = true;
+			} else if (moveX < KinkyDungeonPlayerEntity.x) {
+				KDFlipPlayer = false;
+			}
+		}
 		KinkyDungeonPlayerEntity.x = moveX;
 		KinkyDungeonPlayerEntity.y = moveY;
+
 	}
 	KinkyDungeonSendEvent("playerMove", {
 		cancelmove: cancel.cancelmove, // If true, cancels the move
