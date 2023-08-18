@@ -496,7 +496,7 @@ let KDEventMapInventory = {
 				let newRestraint = null;
 				if (data.newRestraintTags) {
 					newRestraint = KinkyDungeonGetRestraint({tags: [...data.newRestraintTags],},
-						MiniGameKinkyDungeonLevel,
+						KDGetEffLevel(),
 						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "",
 						false, false, false, undefined, undefined, {
 							allowedGroups: [KDRestraint(item).Group],
