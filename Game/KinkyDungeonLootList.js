@@ -1,6 +1,6 @@
 "use strict";
 
-let KDBasicArmorWeight = 0.2;
+let KDBasicArmorWeight = 0.8;
 let KDBasicArmorWeight_Cursed = 0.4;
 let KDBasicArmorWeight_Enchanted = 0.6;
 let KDEnchantedRestraintsWeight = 1.0;
