@@ -50,6 +50,9 @@ let KDSpellComponentTypes = {
 
 			return true;
 		},
+		ignore: (spell, x, y) => {
+			return (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0);
+		},
 	},
 	"Arms": {
 		stringShort: (ret) => {
@@ -62,6 +65,9 @@ let KDSpellComponentTypes = {
 			if (KinkyDungeonIsArmsBound() && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoArmsComp") > 0)) return false;
 			return true;
 		},
+		ignore: (spell, x, y) => {
+			return (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoArmsComp") > 0);
+		},
 	},
 	"Legs": {
 		stringShort: (ret) => {
@@ -73,6 +79,9 @@ let KDSpellComponentTypes = {
 		check: (spell, x, y) => {
 			if ((KinkyDungeonSlowLevel > 1 || KinkyDungeonLegsBlocked()) && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoLegsComp") > 0)) return false;
 			return true;
+		},
+		ignore: (spell, x, y) => {
+			return (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoLegsComp") > 0);
 		},
 	},
 
@@ -267,7 +276,20 @@ function KinkyDungeonHandleSpellChoice(SpellChoice) {
 	return spell;
 }
 
-function KDSpellIgnoreComp(spell) {
+/**
+ *
+ * @param {spell} spell
+ * @param {number} [x]
+ * @param {number} [y]
+ * @returns {boolean}
+ */
+function KDSpellIgnoreComp(spell, x, y) {
+	if (spell?.components) {
+		for (let c of spell.components) {
+			if (KDSpellComponentTypes[c]?.ignore && KDSpellComponentTypes[c].ignore(spell, x, y)) return true;
+		}
+	}
+
 	return (KinkyDungeonStatsChoice.get("Slayer") && spell.school == "Elements")
 	|| (KinkyDungeonStatsChoice.get("Conjurer") && spell.school == "Conjure")
 	|| (KinkyDungeonStatsChoice.get("Magician") && spell.school == "Illusion");
