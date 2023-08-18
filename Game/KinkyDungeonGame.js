@@ -3610,7 +3610,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 							if (moveObject == 'g') {
 								KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonGrateEnter"), "white", 3);
 								KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, 1);
-								KDGameData.SleepTurns = CommonTime() + 250;
+								//KDGameData.KneelTurns = CommonTime() + 250;
 							}
 						}
 
