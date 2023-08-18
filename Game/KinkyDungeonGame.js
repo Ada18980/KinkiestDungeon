@@ -489,8 +489,10 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 			KDGameData.KeysNeeded = false;
 		} else KDGameData.KeysNeeded = true;
 
-		let height = MapParams.min_height * 2 + 2*Math.floor(0.5*KDRandom() * (MapParams.max_height * 2 - MapParams.min_height * 2));
-		let width = MapParams.min_width * 2 + 2*Math.floor(0.5*KDRandom() * (MapParams.max_width * 2 - MapParams.min_width * 2));
+		// make it more consistent
+		let random = KDRandom();
+		let height = MapParams.min_height * 2 + 2*Math.floor(0.5*random * (MapParams.max_height * 2 - MapParams.min_height * 2));
+		let width = MapParams.min_width * 2 + 2*Math.floor(0.5*(1 - random) * (MapParams.max_width * 2 - MapParams.min_width * 2));
 
 		let mapSizeBonus = KDGetMapSize();
 
