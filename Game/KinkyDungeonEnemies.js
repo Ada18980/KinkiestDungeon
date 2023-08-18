@@ -472,7 +472,7 @@ function KDAnimEnemy(Entity) {
 			offY = offamount * Math.sign(Entity.fy - Entity.y);
 		}
 	} else {
-		if (KDToggles.EnemyAnimations && Entity.Enemy && (KDBoundEffects(Entity) > 3 || KDHelpless(Entity)) && !KinkyDungeonIsStunned(Entity)) {
+		if (KDToggles.EnemyAnimations && Entity.Enemy && (KDBoundEffects(Entity) > 3 || KDHelpless(Entity) || Entity.bind > 0) && !KinkyDungeonIsStunned(Entity)) {
 			if (!Entity.animTime) Entity.animTime = CommonTime();
 			Entity.offX = wiggleamount*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDAnimTime));
 		} else {

@@ -2031,7 +2031,7 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedTransformation", color: "#9074ab", inheritLinked: true},
 			{trigger: "postApply", type: "EngageCurse", inheritLinked: true},
-			{trigger: "EngageCurse", type: "CursedCollar", inheritLinked: true, trim: true, curse: true, tags: ["obsidianRestraints", "shadowlatexRestraints", "shadowlatexRestraintsHeavy",], msg: "KDCursedTransformation"},
+			{trigger: "EngageCurse", type: "CursedCollar", inheritLinked: true, trim: true, curse: true, tags: ["obsidianRestraints", "shadowlatexRestraints", "shadowlatexRestraintsHeavy", "shadowlatexRestraintsForced",], msg: "KDCursedTransformation"},
 			{trigger: "tick", type: "TriggerCurseTransform", chance: 0.25, inheritLinked: true, trim: true, curse: true, tags: ["obsidianRestraints", "shadowlatexRestraints", "shadowlatexRestraintsHeavy",], msg: "KDCursedTransformation"},
 		]},
 	{inventory: true, name: "CursedCollar2", alwaysKeep: true, debris: "Chains", Asset: "SlenderSteelCollar", Color: ["#8E72AA"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],
