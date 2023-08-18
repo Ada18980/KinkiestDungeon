@@ -128,8 +128,9 @@ function DisposeCharacter(C: Character): void {
  * @param DrawCanvas - Pixi container to draw to
  * @param Blend - The blend mode to use
  * @param StartMods - Mods applied
+ * @param flip - Mods applied
  */
-function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = [], zIndex: number = 0): void {
+function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = [], zIndex: number = 0, flip: boolean = false): void {
 	let MC: ModelContainer = !KDCurrentModels.get(C) ? new ModelContainer(
 		C,
 		new Map(),
@@ -210,9 +211,12 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
 			PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
 
+		if (flip && Container.Container?.scale.x > 0)
+			Container.Container.scale.x *= -1;
+		else if (!flip && Container.Container?.scale.x < 0)
+			Container.Container.scale.x *= -1;
 
 	}
-
 
 	// Store it in the map so we don't have to create it again
 	if (!KDCurrentModels.get(C)) {
