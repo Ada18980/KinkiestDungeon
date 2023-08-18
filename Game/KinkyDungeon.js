@@ -40,7 +40,7 @@ let KinkyDungeonBackground = "BrickWall";
  * @type {Character}
  */
 let KinkyDungeonPlayer = null;
-let KinkyDungeonState = "Consent";
+let KinkyDungeonState = "Logo";
 
 let KinkyDungeonRep = 0; // Variable to store max level to avoid losing it if the server doesnt take the rep update
 
@@ -815,7 +815,12 @@ let lastGlobalRefresh = 0;
 let GlobalRefreshInterval = 1000;
 let KDGlobalRefresh = false;
 
+let KDLogoStartTime = 0;
+let KDLogoEndTime = 2500;
+let KDLogoEndTime2 = 500;
+
 function KinkyDungeonRun() {
+	if (!KDLogoStartTime) KDLogoStartTime = CommonTime();
 
 	if (KinkyDungeonPlayer?.Appearance) {
 		for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
@@ -923,10 +928,22 @@ function KinkyDungeonRun() {
 		kdgamefog.visible = KinkyDungeonState != "TileEditor";
 	}
 	// Draw the characters
-	if (KinkyDungeonState != "Consent" && (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats" && KinkyDungeonState != "TileEditor")
+	if (KinkyDungeonState != "Consent" && KinkyDungeonState != "Logo" && (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats" && KinkyDungeonState != "TileEditor")
 		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
 
 
+	if (KinkyDungeonState == "Logo") {
+		if (CommonTime() > KDLogoStartTime + KDLogoEndTime) {
+			KinkyDungeonState = "Consent";
+			KDLogoStartTime = CommonTime();
+		} else {
+			// Draw the strait-laced logo
+			KDDraw(kdcanvas, kdpixisprites, "logo", KinkyDungeonRootDirectory + "Logo.png", 500, 0, 1000, 1000, undefined, {
+				zIndex: 0,
+				alpha: 0.5 - 0.5*Math.cos(Math.PI * 2 * (CommonTime() - KDLogoStartTime) / KDLogoEndTime),
+			});
+		}
+	} else
 	if (KinkyDungeonState == "Mods") {
 
 		DrawButtonKDEx("mods_back", (bdata) => {
@@ -1132,6 +1149,14 @@ function KinkyDungeonRun() {
 		if (KDRestart)
 			DrawTextKD(TextGet("RestartNeeded" + (localStorage.getItem("BondageClubLanguage") || "EN")), 1840, 600, "#ffffff", KDTextGray2);
 	} else if (KinkyDungeonState == "Consent") {
+		if (CommonTime() < KDLogoStartTime + KDLogoEndTime2) {
+			CommonTime(); // ...
+			FillRectKD(kdcanvas, kdpixisprites, "greyfade", {
+				Left: 0, Top: 0, Width: 2000,
+				Height: 1000,
+				Color: "#383F4F", alpha: Math.max(0, 1 - (CommonTime() - KDLogoStartTime) / KDLogoEndTime2), zIndex: 200
+			});
+		}
 		let str = TextGet("KinkyDungeon");
 		DrawTextKD(str.substring(0, Math.min(str.length, Math.round((CommonTime()-KDStartTime)/100))), 1000, 80, "#ffffff", KDTextGray2, 84);
 		DrawTextKD(TextGet("KDLogo2"), 1000, 180, "#ffffff", KDTextGray2);
@@ -2684,6 +2709,8 @@ function KinkyDungeonHandleClick() {
  * @returns {void} - Nothing
  */
 function KinkyDungeonClick() {
+	if (KinkyDungeonState == "Logo") KinkyDungeonState = "Consent";
+	else
 	if (KinkyDungeonHandleClick()) {
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 	}
