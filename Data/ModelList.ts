@@ -1496,6 +1496,7 @@ AddModel({
 			Poses: ToMap([...ARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Front"]),
 			HideWhenOverridden: true,
+			AppendPose: ToMap(["RopesUpper"]),
 		},
 	])
 });
@@ -1509,6 +1510,7 @@ AddModel({
 			Poses: ToMap([...ARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Front"]),
 			HideWhenOverridden: true,
+			AppendPose: ToMap(["RopesUpper"]),
 		},
 	])
 });
