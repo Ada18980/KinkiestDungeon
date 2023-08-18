@@ -948,10 +948,10 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 		chestlist.push({x: cornerX + 1, y: cornerY + 1, priority: true, Faction: factionSelected.faction, NoTrap: true});
 	}
 	// Place the guards
-	spawnPoints.push({x:cornerX, y:cornerY, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
-	spawnPoints.push({x:cornerX+2, y:cornerY, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
-	spawnPoints.push({x:cornerX, y:cornerY+2, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
-	spawnPoints.push({x:cornerX+2, y:cornerY+2, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
+	spawnPoints.push({priority: true, x:cornerX, y:cornerY, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
+	spawnPoints.push({priority: true, x:cornerX+2, y:cornerY, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
+	spawnPoints.push({priority: true, x:cornerX, y:cornerY+2, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
+	spawnPoints.push({priority: true, x:cornerX+2, y:cornerY+2, required:[factionSelected.rtags[Math.floor(KDRandom()*factionSelected.rtags.length)]], ftags: factionSelected.ftags, tags: factionSelected.tags, AI: "guard"});
 
 	return factionSelected.faction;
 }

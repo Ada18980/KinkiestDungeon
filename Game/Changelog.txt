@@ -1437,6 +1437,7 @@ Features
 - Patron NPCs now tell your their name when they first become aware of you!
 - Added lesser shadow chests to the Edge of Reality
 - Added much more variety to the enchanted restraints you get grom chests
+- Enemies now mumble helplessly if they can't speak
 Changes
 - Second Wind now restores WP when free
 - Added more restraints to the loot tables
