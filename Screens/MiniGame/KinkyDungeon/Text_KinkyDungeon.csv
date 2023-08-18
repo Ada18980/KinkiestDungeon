@@ -47,6 +47,7 @@ KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
 KDToggleGraphicsQuality,High Quality Animations
 KDToggleLightmapFilter,Desaturate Unseen Areas
+KDToggleEnemyAnimations,Enemy Animations
 KinkyDungeonFastWait,Wait Quickly
 
 KDHelpless,Helpless!

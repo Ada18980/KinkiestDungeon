@@ -416,9 +416,12 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					let w = enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay;
 					let h = enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay;
 					let color = (enemy.Enemy.GFX?.lighting) ? KDGetLightColor(enemy.x, enemy.y) : undefined;
-					KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + "Enemies/" + sp + ".png",
-						(tx - CamX)*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2, (ty - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
+					let spr = KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + "Enemies/" + sp + ".png",
+						(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2,
+						(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
 						w, h, undefined, color != undefined ? {tint: color} : undefined);
+					if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
+					else if (!enemy.flip && spr?.scale.x < 0) spr.scale.x = -spr.scale.x;
 				} else {
 					let sp = buffSprite || enemy.Enemy.bound;
 					let dir = "EnemiesBound/";
@@ -429,9 +432,12 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					let w = enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay;
 					let h = enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay;
 					let color = (enemy.Enemy.GFX?.lighting) ? KDGetLightColor(enemy.x, enemy.y) : undefined;
-					KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + dir + sp + ".png",
-						(tx - CamX)*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2, (ty - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
+					let spr = KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + dir + sp + ".png",
+						(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2,
+						(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
 						w, h, undefined, color != undefined ? {tint: color} : undefined);
+					if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
+					else if (!enemy.flip && spr?.scale.x < 0) spr.scale.x = -spr.scale.x;
 				}
 			}
 		}
@@ -441,6 +447,40 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	} else if (reenabled2 && KinkyDungeonFastStruggle) {
 		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 	}
+}
+
+/**
+ *
+ * @param {entity} Entity
+ *
+ */
+function KDAnimEnemy(Entity) {
+	let offX = 0;
+	let offY = 0;
+	let offamount = 0.25;
+	let wiggleamount = 0.07;
+	if (Entity.fx && Entity.fy && (Entity.fx != Entity.x || Entity.fy != Entity.y) && Entity.Enemy && !KDIsImmobile(Entity)) {
+		if (Entity.fx != Entity.x) {
+			offX = offamount * Math.sign(Entity.fx - Entity.x);
+			if (Math.sign(Entity.fx - Entity.x) < 0) {
+				delete Entity.flip;
+			} else if (Math.sign(Entity.fx - Entity.x) > 0) {
+				Entity.flip = true;
+			}
+		}
+		if (Entity.fy != Entity.y) {
+			offY = offamount * Math.sign(Entity.fy - Entity.y);
+		}
+	} else {
+		if (KDToggles.EnemyAnimations && Entity.Enemy && (KDBoundEffects(Entity) > 3 || KDHelpless(Entity)) && !KinkyDungeonIsStunned(Entity)) {
+			if (!Entity.animTime) Entity.animTime = CommonTime();
+			Entity.offX = wiggleamount*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDAnimTime));
+		} else {
+			delete Entity.offX;
+			delete Entity.animTime;
+		}
+	}
+	return {offX: offX, offY: offY};
 }
 
 /**
@@ -1926,6 +1966,14 @@ function KinkyDungeonHasStatus(enemy) {
 	return enemy && (enemy.bind > 0 || enemy.slow > 0 || enemy.stun > 0 || enemy.freeze > 0 || enemy.silence > 0 || KinkyDungeonIsSlowed(enemy) || KDBoundEffects(enemy) > 0);
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KinkyDungeonIsStunned(enemy) {
+	return enemy && (enemy.stun > 0 || enemy.freeze > 0);
+}
 
 /**
  *
@@ -1933,7 +1981,7 @@ function KinkyDungeonHasStatus(enemy) {
  * @returns {boolean}
  */
 function KinkyDungeonIsDisabled(enemy) {
-	return enemy && (enemy.stun > 0 || enemy.freeze > 0 || KDBoundEffects(enemy) > 3);
+	return enemy && (KinkyDungeonIsStunned(enemy) || KDBoundEffects(enemy) > 3);
 }
 
 
