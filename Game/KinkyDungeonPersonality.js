@@ -43,6 +43,7 @@ let KDEnemyPersonalities = {
 			"boss": 3,
 			"robot": -100,
 			"cyborg": 100,
+			"submissive": -10,
 		},
 	},
 	"Sub": {weight: 0,
@@ -56,6 +57,7 @@ let KDEnemyPersonalities = {
 			"boss": -10,
 			"robot": -100,
 			"cyborg": 100,
+			"submissive": 10,
 		},
 	},
 	"Brat": {weight: 0,
@@ -69,6 +71,7 @@ let KDEnemyPersonalities = {
 			"boss": -3,
 			"robot": -100,
 			"cyborg": 100,
+			"submissive": 1,
 		},
 	},
 };
