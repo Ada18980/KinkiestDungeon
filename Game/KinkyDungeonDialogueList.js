@@ -1805,11 +1805,56 @@ let KDDialogue = {
 																	}
 																}
 															},
+															"Question3": {
+																playertext: "Default", response: "Default",
+																prerequisiteFunction: (gagged, player) => {
+																	return KDUnlockedPerks.includes("StartCyberDoll");
+																},
+																options: {
+																	"Question": {
+																		playertext: "Default", response: "Default",
+																		options: {
+																			"Proceed": {
+																				playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
+																				leadsToStage: "PostIntro",
+																			}
+																		}
+																	},
+																	"Question2": {
+																		playertext: "Default", response: "Default",
+																		options: {
+																			"Proceed": {
+																				playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
+																				leadsToStage: "PostIntro",
+																			}
+																		}
+																	},
+																	"Question3": {
+																		playertext: "Default", response: "Default",
+																		options: {
+																			"Proceed": {
+																				playertext: "Default", response: "Default",
+																				leadsToStage: "PostIntro",
+																				dontTouchText: true,
+																			}
+																		}
+																	},
+																	"Proceed": {
+																		playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
+																		leadsToStage: "PostIntro",
+																	}
+																}
+															},
 															"Proceed": {
 																playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
 																leadsToStage: "PostIntro",
 															}
 														}
+													},
+													"Question2": {
+														playertext: "Default", response: "Default",
+														leadsToStage: "Defensive_Question_Question_Question_Question_Question",
+														dontTouchText: true,
 													},
 													"Proceed": {
 														playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
@@ -1817,17 +1862,37 @@ let KDDialogue = {
 													}
 												}
 											},
+											"Question2": {
+												playertext: "Default", response: "Default",
+												leadsToStage: "Defensive_Question_Question_Question_Question",
+												dontTouchText: true,
+											},
+											"Question3": {
+												playertext: "Default", response: "Default",
+												leadsToStage: "Defensive_Question_Question_Question_Question",
+												dontTouchText: true,
+											},
 											"Proceed": {
 												playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
 												leadsToStage: "PostIntro",
 											}
 										}
 									},
+									"Question2": {
+										playertext: "Default", response: "Default",
+										leadsToStage: "Defensive_Question_Question_Question",
+										dontTouchText: true,
+									},
 									"Proceed": {
 										playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
 										leadsToStage: "PostIntro",
 									}
 								}
+							},
+							"Question2": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "Defensive_Question_Question_Question",
+								dontTouchText: true,
 							},
 							"Proceed": {
 								playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
