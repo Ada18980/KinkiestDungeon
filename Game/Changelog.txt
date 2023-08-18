@@ -1438,6 +1438,7 @@ Features
 - Added lesser shadow chests to the Edge of Reality
 - Added much more variety to the enchanted restraints you get grom chests
 - Enemies now mumble helplessly if they can't speak
+- Optional enemy struggle animations (toggle off in game options)
 Changes
 - Second Wind now restores WP when free
 - Added more restraints to the loot tables

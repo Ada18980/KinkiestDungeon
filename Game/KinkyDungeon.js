@@ -105,6 +105,7 @@ let KDToggles = {
 	VibeHearts: true,
 	FancyWalls: true,
 	LightmapFilter: true,
+	EnemyAnimations: true,
 };
 
 let KDDefaultKB = {

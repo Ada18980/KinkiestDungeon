@@ -1201,6 +1201,12 @@ interface entity {
 	visual_boundlevel?: number,
 	visual_distraction?: number,
 	visual_lifetime?: number,
+	flip?: boolean,
+
+	// Animations
+	offX?: number,
+	offY?: number,
+	animTime?: number,
 	/** Spawn location */
 	spawnX?: number,
 	/** Spawn location */

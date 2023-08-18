@@ -15,7 +15,9 @@ let KDIntenseFilter = null;
 let KDButtonHovering = false;
 
 
-
+let KDAnimTick = 0;
+let KDAnimTickInterval = 2000;
+let KDAnimTime = 400;
 
 
 
@@ -1945,15 +1947,12 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 
 		let offX = 0;
 		let offY = 0;
-		let offamount = 0.25;
-		if (Entity.fx && Entity.fy && (Entity.fx != Entity.x || Entity.fy != Entity.y) && Entity.Enemy && !KDIsImmobile(Entity)) {
-			if (Entity.fx != Entity.x) {
-				offX = offamount * Math.sign(Entity.fx - Entity.x);
-			}
-			if (Entity.fy != Entity.y) {
-				offY = offamount * Math.sign(Entity.fy - Entity.y);
-			}
+		if (Entity.Enemy) {
+			let ret = KDAnimEnemy(Entity);
+			offX = ret.offX;
+			offY = ret.offY;
 		}
+
 		tx += offX;
 		ty += offY;
 
@@ -2818,7 +2817,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
  * @param {boolean} [Centered]
  * @param {Map<string, boolean>} [SpritesDrawn]
  * @param {number} [Scale]
- * @returns {boolean}
+ * @returns {any}
  */
 function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered, SpritesDrawn, Scale) {
 	let sprite = Map.get(id);
@@ -2887,9 +2886,9 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 			SpritesDrawn.set(id, true);
 		else
 			kdSpritesDrawn.set(id, true);
-		return true;
+		return sprite;
 	}
-	return false;
+	return null;
 }
 
 /**
