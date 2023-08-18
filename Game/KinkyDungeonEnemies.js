@@ -4763,26 +4763,35 @@ let KDDomThresh_PerkMod = -0.5;
 
 /**
  * @param {entity} enemy - the enemy to check if the player can domme
+ * @param {boolean} ignoreRelative - ignore the relative determinants
  * @returns {boolean}
  */
-function KDCanDom(enemy) {
-	if (enemy == KinkyDungeonJailGuard()) return false;
-	if (KDGameData.KinkyDungeonLeashedPlayer > 0) return false;
+function KDCanDom(enemy, ignoreRelative = false) {
+	if (!ignoreRelative) {
+		if (enemy == KinkyDungeonJailGuard()) return false;
+		if (KDGameData.KinkyDungeonLeashedPlayer > 0) return false;
+	}
 	if (!enemy.Enemy.bound) return false;
 	if (KDEnemyHasFlag(enemy, "isSubbing")) return true;
 	if (KDEnemyHasFlag(enemy, "isDomming")) return false;
 	if (enemy.Enemy.tags.nosub) return false;
-	if (KinkyDungeonIsArmsBound(false, true) || KinkyDungeonIsHandsBound(false, true, 0.1) || KinkyDungeonGagTotal() > 0.1) return false;
+	if (!ignoreRelative) {
+		if (KinkyDungeonIsArmsBound(false, true) || KinkyDungeonIsHandsBound(false, true, 0.1) || KinkyDungeonGagTotal() > 0.1) return false;
+	}
 	// Very bad pseudo RNG based on enemy.id as seed
 	// TODO replace with better prng with variable seed
 	if (enemy.domVariance == undefined) enemy.domVariance = (KDEnemyPersonalities[enemy.personality]?.domVariance || KDDomThresh_Variance) * (2 * KDRandom() - 1);
 	let modifier = (KinkyDungeonGoddessRep.Ghost + 50)/100 + enemy.domVariance;
-	if (KinkyDungeonStatsChoice.get("Dominant")) modifier += KDDomThresh_PerkMod;
+	if (!ignoreRelative) {
+		if (KinkyDungeonStatsChoice.get("Dominant")) modifier += KDDomThresh_PerkMod;
+	}
 	if (KDEnemyPersonalities[enemy.personality] && KDEnemyPersonalities[enemy.personality].domThresh) return modifier <= KDEnemyPersonalities[enemy.personality].domThresh;
 	if (KDLoosePersonalities.includes(enemy.personality)) return modifier <= KDDomThresh_Loose;
 	if (KDStrictPersonalities.includes(enemy.personality)) return modifier <= KDDomThresh_Strict;
 
-	if (KDPlayerIsNotDom()) return false;
+	if (!ignoreRelative) {
+		if (KDPlayerIsNotDom()) return false;
+	}
 	return modifier <= KDDomThresh_Normal;
 }
 
@@ -4801,7 +4810,34 @@ function KDPlayerIsTied() {
 	return KinkyDungeonSlowLevel > 1 || KinkyDungeonGagTotal() > 0.25 || KinkyDungeonIsArmsBound() || KinkyDungeonIsHandsBound() ;
 }
 
+
 /**
+ * is this entity objectively subby
+ * @param {entity} entity
+ * @returns {boolean}
+ */
+function KDIsSubbyPersonality(entity) {
+	if (entity && !entity.player) {
+		if (KDCanDom(entity, true)) return true;
+	}
+	return false;
+}
+
+/**
+ * is this entity objectively bratty
+ * @param {entity} entity
+ * @returns {boolean}
+ */
+function KDIsBrattyPersonality(entity) {
+	if (entity && !entity.player) {
+		if (KDIsSubbyPersonality(entity) && KinkyDungeonStatsChoice.get("OnlyBrats")) return true;
+		if (KDEnemyPersonalities[entity.personality]?.brat || KDEnemyHasFlag(entity, "forcebrat")) return true;
+	}
+	return false;
+}
+
+/**
+ * Is this entity bratty to the player
  * @param {entity} enemy
  * @returns {boolean}
  */
