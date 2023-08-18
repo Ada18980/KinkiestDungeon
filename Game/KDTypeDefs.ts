@@ -709,6 +709,10 @@ interface enemy extends KDHasTags {
 	regen?: number,
 	/** */
 	visionRadius?: number,
+	/** Enemy will not get a vision bonus in one direction*/
+	nonDirectional?: boolean,
+	/** Enemy will not flip based on the enemy direction*/
+	noFlip?: boolean,
 	/** Max enemy hp*/
 	maxhp?: number,
 	/** HP the enemy starts at */
@@ -1201,6 +1205,8 @@ interface entity {
 	visual_boundlevel?: number,
 	visual_distraction?: number,
 	visual_lifetime?: number,
+
+	// Direction
 	flip?: boolean,
 
 	// Animations

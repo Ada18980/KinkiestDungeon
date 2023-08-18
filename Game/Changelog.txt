@@ -1439,6 +1439,7 @@ Features
 - Added much more variety to the enchanted restraints you get grom chests
 - Enemies now mumble helplessly if they can't speak
 - Optional enemy struggle animations (toggle off in game options)
+- Enemies now have semi-directional vision (they can still see behind themselves, just not as clearly)
 Changes
 - Second Wind now restores WP when free
 - Added more restraints to the loot tables
