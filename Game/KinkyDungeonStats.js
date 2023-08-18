@@ -577,6 +577,15 @@ function KinkyDungeonUpdateDialogue(entity, delta) {
  */
 function KinkyDungeonSendDialogue(entity, dialogue, color, duration, priority, force, nooverride) {
 	if (!force && !KDEnemyCanTalk(entity)) {
+		if (!entity.player && !entity.Enemy.nonHumanoid && entity.Enemy.bound) {
+			let suff = "";
+			if (KDIsBrattyPersonality(entity)) suff = "Brat";
+			else if (KDIsSubbyPersonality(entity)) suff = "Sub";
+			entity.dialogue = TextGet("KinkyDungeonRemindJailPlay" + suff + "Gagged" + Math.floor(KDRandom() * 3));
+			entity.dialogueColor = color;
+			entity.dialogueDuration = 4;
+			entity.dialoguePriority = 1;
+		}
 		return;
 	}
 	if (!entity.dialogue || !entity.dialoguePriority || entity.dialoguePriority <= priority + (nooverride ? 1 : 0)) {
