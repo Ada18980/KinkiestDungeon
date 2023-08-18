@@ -137,7 +137,7 @@ function KDProcessInput(type, data) {
 				}
 
 
-				KDStunTurns(2, true);
+				KDStunTurns(KinkyDungeonGetRestraintByName(data.name)?.protection ? 4 : 2, true);
 
 				msg = "KinkyDungeonSelfBondage";
 				if (KDRestraint(loose).Group == "ItemVulvaPiercings" || KDRestraint(loose).Group == "ItemVulva" || KDRestraint(loose).Group == "ItemButt") {
