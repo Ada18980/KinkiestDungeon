@@ -1554,7 +1554,7 @@ interface spell {
 	minRange?: number;
 	noSprite?: boolean;
 	/** Verbal, arms, or legs */
-	components?: any[];
+	components?: string[];
 	/** Spell level */
 	level: number;
 	/** Whether the spell is passive (like the summon count up) or active like the bolt or toggle spells*/
@@ -2167,6 +2167,8 @@ type KDInventoryVariant = {
 }
 
 interface KDSpellComponent {
+	/** Returns true if the component is ignored in this case even for partial applications */
+	ignore: (spell: spell, x: number, y: number) => boolean,
 	/** Returns true if the spell can be cast, or false otherwise */
 	check: (spell: spell, x: number, y: number) => boolean,
 	/** Run when the spell is cast */
