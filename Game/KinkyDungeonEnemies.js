@@ -2350,7 +2350,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				if (enemy.boundTo) {
 					if (enemy.boundTo == -1) {
 						if (KDPlayerIsDefeated()) enemy.hp = 0;
-						if (enemy.weakBinding && KDPlayerIsStunned()) enemy.hp = 0;
+						if (enemy.weakBinding && KDPlayerIsStunned()) enemy.hp = Math.max(0, enemy.hp - enemy.Enemy.maxhp*0.2);
 					} else if (!KinkyDungeonFindID(enemy.boundTo) || KDHelpless(KinkyDungeonFindID(enemy.boundTo)) || (enemy.weakBinding && KinkyDungeonIsDisabled(KinkyDungeonFindID(enemy.boundTo)))) enemy.hp = 0;
 				}
 			}
