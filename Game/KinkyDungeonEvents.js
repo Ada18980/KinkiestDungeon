@@ -4135,6 +4135,18 @@ let KDEventMapEnemy = {
 		},
 	},
 	"tick": {
+		"AdventurerAssignFaction": (e, enemy, data) => {
+			if (!enemy.faction) {
+				let nearbyEnemies = KDNearbyEnemies(enemy.x, enemy.y, e.dist);
+				for (let en of nearbyEnemies) {
+					if (e.tags.includes(KDGetFaction(en))) {
+						enemy.faction = KDGetFaction(en);
+						break;
+					}
+				}
+				if (!enemy.faction) enemy.faction = "Adventurer";
+			}
+		},
 		"DeleteCurse": (e, enemy, data) => {
 			if (!KDCheckPrereq(undefined, "AlreadyCursed", e, data)) {
 				enemy.hp = 0;
@@ -4308,6 +4320,7 @@ let KDEventMapEnemy = {
 			}
 		},
 	},
+
 	"afterEnemyTick": {
 		"ShopkeeperRescueAI": (e, enemy, data) => {
 			// We heal nearby allies and self

@@ -1206,6 +1206,9 @@ interface entity {
 	visual_distraction?: number,
 	visual_lifetime?: number,
 
+	/** The enemy will follow enemies defined by this block*/
+	master?: {type: string, range: number, loose?: boolean, aggressive?: boolean, dependent?: boolean},
+
 	// Direction
 	flip?: boolean,
 

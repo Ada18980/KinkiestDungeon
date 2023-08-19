@@ -1242,7 +1242,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			if (required.length == 0) required = undefined;
 			let Enemy = KinkyDungeonGetEnemy(
 				tags,
-				Floor + KinkyDungeonDifficulty/5 + levelBoost,
+				KDGetEffLevel() + levelBoost,
 				forceIndex || KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 				KinkyDungeonMapGet(X, Y),
 				required,

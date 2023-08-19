@@ -191,6 +191,9 @@ let KinkyDungeonFactionRelationsBase = {
 	"Rebel": {
 		Jail: -0.1,
 	},
+	"Adventurer": {
+		Jail: -0.1,
+	},
 	"Demon": {
 		Elf: -1.0,
 		Bast: -1.0,
@@ -283,7 +286,7 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Curse": {
 		Player: -1.0,
-		Jail: -0.4,
+		Jail: -1,
 
 		Chase: -1,
 	},
