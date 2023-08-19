@@ -581,6 +581,9 @@ interface KDLoadout {name: string, tags?: string[], singletag: string[], singlet
 interface enemy extends KDHasTags {
 	/** This enemy will always kite the player even if player is harmless*/
 	alwaysKite?: boolean,
+	/** This enemy will give an intro when it first sees you*/
+	intro?: string,
+
 
 	/** These enemies always carry these items at the start */
 	startingItems?: string[]
@@ -1211,6 +1214,11 @@ interface entity {
 
 	// Direction
 	flip?: boolean,
+
+	// Custom play line
+	playLine?: string,
+	// Custom intro
+	intro?: string,
 
 	// Animations
 	offX?: number,

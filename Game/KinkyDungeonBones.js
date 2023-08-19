@@ -9,132 +9,139 @@ let KDPatronAdventurers = [
 
 let KDPatronCustomEnemies = new Map([
 	["Wolfgirl", [
-		{name: "Sivasa", color: "#9c2a70", prisoner: false, free: true, customSprite: ""},
-		{name: "Alexandra", color: "#6241e1", prisoner: true, free: true, customSprite: ""},
-		{name: "Nekora", color: "#42a459", prisoner: true, free: true, customSprite: ""},
-		{name: "Emeia", color: "#00A7FF", prisoner: true, free: true, customSprite: ""},
-		{name: "Dana", color: "#4444ff", prisoner: true, free: true, customSprite: ""},
-		{name: "Yami", color: "#88ff88", prisoner: true, free: true, customSprite: ""},
-		{name: "Animi", color: "#ff9999", prisoner: true, free: false, customSprite: ""},
-		{name: "Ladica", color: "#44ff44", prisoner: false, free: true, customSprite: ""},
-		{name: "FlameTail", color: "#ff5555", prisoner: false, free: true, customSprite: ""},
-		{name: "Nobu", color: "#00FFFF", prisoner: true, free: true, customSprite: ""},
+		{name: "Sivasa", color: "#9c2a70", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Alexandra", color: "#6241e1", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Nekora", color: "#42a459", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Emeia", color: "#00A7FF", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Dana", color: "#4444ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Yami", color: "#88ff88", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Animi", color: "#ff9999", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Ladica", color: "#44ff44", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "FlameTail", color: "#ff5555", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Nobu", color: "#00FFFF", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Moranql", color: "#ff5555", prisoner: true, free: false, customPlayLine: "", customIntro: "0x0", customSprite: ""},
 	],
 	],
 	["WolfgirlPet", [
-		{name: "Demetria", color: "#c9d4fd", prisoner: true, free: false, customSprite: ""},
-		{name: "Arii", color: "#ff88ff", prisoner: true, free: true, customSprite: ""},
-		{name: "Aleiza", color: "#32d8ff", prisoner: true, free: false, customSprite: ""},
+		{name: "Demetria", color: "#c9d4fd", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Arii", color: "#ff88ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Aleiza", color: "#32d8ff", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Dana", color: "#000B77", prisoner: true, free: true, customPlayLine: "", customIntro: "*stands there... MENACINGLY*", customSprite: ""},
 	],
 	],
 	["Nurse", [
-		{name: "Rena", color: "#a452ff", prisoner: true, free: true, customSprite: ""},
-		{name: "Str Nurse", color: "#ffffff", prisoner: false, free: true, customSprite: ""},
+		{name: "Rena", color: "#a452ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Str Nurse", color: "#ffffff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Fableite", color: "#999999", prisoner: false, free: true, customPlayLine: "", customIntro: "Care for an Examination?", customSprite: ""},
 	],
 	],
 	["ElementalLatex", [
-		{name: "Samsy", color: "#2f847f", prisoner: false, free: true, customSprite: ""},
+		{name: "Samsy", color: "#2f847f", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["Dragon", [
-		{name: "Garss", color: "#ff8888", prisoner: true, free: false, customSprite: ""},
+		{name: "Garss", color: "#ff8888", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
+	],
+	],
+	["DragonShadow", [
+		{name: "Gwen", color: "#7b43ef", prisoner: false, free: true, customPlayLine: "DragonShadowGwen", customIntro: "", customSprite: ""},
 	],
 	],
 	["Adventurer_Brat_Fighter", [
-		{name: "Rook", color: "#ff5555", prisoner: true, free: true, customSprite: "Rook"},
+		{name: "Rook", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Rook"},
 	],
 	],
 	["DragonLeaderDuelist", [
-		{name: "Kaitlyn", color: "#ff5555", prisoner: true, free: true, customSprite: ""},
+		{name: "Kaitlyn", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["NinjaStalker", [
-		{name: "Alisa", color: "#575699", prisoner: false, free: true, customSprite: "Alisa"},
+		{name: "Alisa", color: "#575699", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "Alisa"},
 	],
 	],
 	["Ninja", [
-		{name: "Alisa", color: "#575699", prisoner: false, free: true, customSprite: "Alisa"},
+		{name: "Alisa", color: "#575699", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "Alisa"},
 	],
 	],
 	["SlimeAdv", [
-		{name: "Rena", color: "#C8C8FF", prisoner: true, free: true, customSprite: ""},
-		{name: "Rappy The Toy", color: "#C759FF", prisoner: true, free: false, customSprite: ""},
-		{name: "Yolana", color: "#92e8c0", prisoner: true, free: true, customSprite: ""},
+		{name: "Rena", color: "#C8C8FF", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Rappy The Toy", color: "#C759FF", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Yolana", color: "#92e8c0", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["SmallSlime", [
-		{name: "TY", color: "#ff5555", prisoner: false, free: true, customSprite: ""},
+		{name: "TY", color: "#ff5555", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["WitchRope", [
-		{name: "Kamikaze roper", color: "#ffae70", prisoner: true, free: false, customSprite: ""},
+		{name: "Kamikaze roper", color: "#ffae70", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["MaidforceStalker", [
-		{name: "Chandra", color: "#340000", prisoner: true, free: true, customSprite: ""},
+		{name: "Chandra", color: "#340000", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["ApprenticeSlime", [
-		{name: "Gabrielle", color: "#ffff00", prisoner: true, free: true, customSprite: ""},
+		{name: "Gabrielle", color: "#ffff00", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["Alchemist", [
-		{name: "Morgan", color: "#6241e1", prisoner: true, free: true, customSprite: ""},
-		{name: "Myth", color: "#22ffff", prisoner: false, free: true, customSprite: ""},
+		{name: "Morgan", color: "#6241e1", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Myth", color: "#22ffff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["Dressmaker", [
-		{name: "A Lazy Dressmaker", color: "#fad6ff", prisoner: true, free: true, customSprite: ""},
-		{name: "Alice", color: "#ee99ee", prisoner: true, free: true, customSprite: ""},
+		{name: "A Lazy Dressmaker", color: "#fad6ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Alice", color: "#ee99ee", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["Maidforce", [
-		{name: "Ester", color: "#97edca", prisoner: true, free: false, customSprite: ""},
-		{name: "Rest", color: "#999999", prisoner: false, free: true, customSprite: ""},
-		{name: "Rika Mercury", color: "#92e8e5", prisoner: true, free: false, customSprite: ""},
-		{name: "Maidlinmo", color: "#ff5555", prisoner: true, free: true, customSprite: ""},
-		{name: "April", color: "#4444ff", prisoner: true, free: true, customSprite: ""},
-		{name: "Aika", color: "#be52e6", prisoner: true, free: true, customSprite: ""},
-		{name: "Kiera", color: "#310051", prisoner: true, free: false, customSprite: ""},
+		{name: "Ester", color: "#97edca", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Rest", color: "#999999", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Rika Mercury", color: "#92e8e5", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Maidlinmo", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "April", color: "#4444ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Aika", color: "#be52e6", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Kiera", color: "#310051", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["MaidforceHead", [
-		{name: "FrostLunar", color: "#0055ff", prisoner: true, free: true, customSprite: ""},
+		{name: "FrostLunar", color: "#0055ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["WitchFlame", [
-		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customSprite: "Myrtrice"},
+		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "Myrtrice"},
 	],
 	],
 	["WitchSlime", [
-		{name: "Kathy Narlato", color: "#4e3da9", prisoner: true, free: true, customSprite: ""},
-		{name: "Claire", color: "#55ff55", prisoner: true, free: true, customSprite: ""},
+		{name: "Kathy Narlato", color: "#4e3da9", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Claire", color: "#55ff55", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["WitchWater", [
-		{name: "Marine", color: "#4fa4b8", prisoner: false, free: true, customSprite: ""},
+		{name: "Marine", color: "#4fa4b8", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["ElementalEarth", [
-		{name: "Entombment", color: "#ffae70", prisoner: true, free: true, customSprite: ""},
+		{name: "Entombment", color: "#ffae70", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["BanditPet", [
-		{name: "Liz", color: "#d480bb", prisoner: true, free: true, customSprite: ""},
-		{name: "Jinxy", color: "#7d27a5", prisoner: true, free: true, customSprite: ""},
-		{name: "Genna", color: "#42bfe8", prisoner: true, free: true, customSprite: ""},
+		{name: "Liz", color: "#d480bb", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Jinxy", color: "#7d27a5", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Genna", color: "#42bfe8", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["ElfRanger", [
-		{name: "Valeria", color: "#ebaaf4", prisoner: true, free: true, customSprite: ""},
+		{name: "Valeria", color: "#ebaaf4", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["Elf", [
-		{name: "Ferahla", color: "#44ff44", prisoner: true, free: true, customSprite: ""},
+		{name: "Ferahla", color: "#44ff44", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["Dollsmith", [
-		{name: "Kiera", color: "#310051", prisoner: false, free: true, customSprite: ""},
+		{name: "Kiera", color: "#310051", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 ]);
@@ -579,6 +586,12 @@ function KDProcessCustomPatron(Enemy, e, chanceBoost) {
 			e.CustomName = custom.name;
 			e.CustomNameColor = custom.color;
 			e.CustomSprite = custom.customSprite;
+			if (custom.customPlayLine) {
+				e.playLine = custom.customPlayLine;
+			}
+			if (custom.customIntro) {
+				e.intro = custom.customIntro;
+			}
 		}
 	}
 }
