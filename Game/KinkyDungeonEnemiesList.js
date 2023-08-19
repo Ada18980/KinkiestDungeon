@@ -1250,7 +1250,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#00ff00"},
 		],},
 
-	{name: "Dragon", faction: "Dragon", clusterWith: "dragon", bound: "Dragon", color: "#F92900", tags: KDMapInit(["opendoors", "fire", "guardCall", "jailer", "leashing", "imprisonable", "minor", "dragon", "melee", "dragonRestraints", "handcuffer", "leatherRestraints", "fireresist", "jail", "jailer", "search"]), cohesion: 0.75,
+	{name: "Dragon", faction: "Dragon", playLine: "Adventurer_Brat_Fighter", clusterWith: "dragon", bound: "Dragon", color: "#F92900", tags: KDMapInit(["opendoors", "fire", "guardCall", "jailer", "leashing", "imprisonable", "minor", "dragon", "melee", "dragonRestraints", "handcuffer", "leatherRestraints", "fireresist", "jail", "jailer", "search"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonLeader", range: 4, loose: true, aggressive: true}, difficulty: 0.5,
 		visionRadius: 6, maxhp: 10, minLevel:1, weight:-1, movePoints: 2, attackPoints: 2, attack: "MeleeBindLock", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 1, maxLevel: 7,
 		terrainTags: {"secondhalf":2, "leatherAnger":3, "dragon": 10, "fire": 4}, shrines: ["Leather"], allFloors: true,
@@ -1312,6 +1312,20 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":2, "thirdhalf":4, "open": 10, "fire": 4, "leatherAnger":6, "leatherRage":30, "boss": -55, "increasingWeight":0.5, "dragon": 1}, shrines: ["Leather"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 30, amountMax: 40, weight: 10}, {name: "Sword", ignoreInInventory: true, weight: 100}, {name: "EnchKnife", ignoreInInventory: true, weight: 1}]},
 
+	{name: "Adventurer_Brat_Fighter", clusterWith: "adventurer", bound: "Adventurer_Brat", color: "#ffffff",
+		playLine: "Adventurer_Brat_Fighter",
+		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human", "melee", "ropeRestraints", "ropeRestraintsHogtie", "charmweakness", "jail", "jailer", "search"]), cohesion: 0.9,
+		stunTime: 2, specialCD: 5, specialAttack: "Stun", specialRemove: "BindLock", specialPower: 6, specialDamage: "pain",
+		evasion: -0.5, disarm: 0.2,
+		spells: ["RopeEngulfWeak", "WitchRope"], spellCooldownMult: 2, spellCooldownMod: 1, buffallies: true,
+		followLeashedOnly: true, ignorechance: 0, armor: 3, followRange: 1, AI: "hunt", guardChance: 0.0,
+		visionRadius: 8, maxhp: 20, minLevel:2, weight:1, movePoints: 2, attackPoints: 2, attack: "SpellMeleeWillBindLock",
+		attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "pain", fullBoundBonus: 1,
+		events: [
+			{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter"]},
+		],
+		terrainTags: {"adventurer": 10, "lair": -10, "brat": 50}, shrines: ["Rope"], allFloors: true, // Adventurers don't appear in lairs
+		dropTable: [{name: "Gold", amountMin: 20, amountMax: 40, weight: 15}, {name: "Axe", ignoreInInventory: true, weight: 100}, {name: "Dirk", ignoreInInventory: true, weight: 100}, {name: "Breastplate", ignoreInInventory: true, weight: 200}]},
 
 	{name: "ElementalFire", faction: "Elemental", playLine: "Elemental", clusterWith: "fire", bound: "ElementalFire", color: "#FF6200", tags: KDMapInit(["opendoors", "imprisonable", "fire", "guardCall", "elemental", "fireimmune", "ranged", "coldweakness", "icesevereweakness", "obsidianRestraints", "shackleRestraints", "leashing", "jail", "jailer", "search"]),
 		armor: 0, kite: 1.5, followRange: 3, AI: "hunt",

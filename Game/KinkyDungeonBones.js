@@ -40,6 +40,10 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Garss", color: "#ff8888", prisoner: true, free: false, customSprite: ""},
 	],
 	],
+	["Adventurer_Brat_Fighter", [
+		{name: "Rook", color: "#ff5555", prisoner: true, free: true, customSprite: "Rook"},
+	],
+	],
 	["DragonLeaderDuelist", [
 		{name: "Kaitlyn", color: "#ff5555", prisoner: true, free: true, customSprite: ""},
 	],

@@ -1441,6 +1441,7 @@ Features
 - Optional enemy struggle animations (toggle off in game options)
 - Enemies now have semi-directional vision (they can still see behind themselves, just not as clearly)
 - Added a lot more Fuuka dialogue (about those reincarnated ones...) for those interested in lore. Talk to her after defeating the Dollmaker for an extra branch!
+- Added Bratty Fighter
 Changes
 - Second Wind now restores WP when free
 - Added more restraints to the loot tables

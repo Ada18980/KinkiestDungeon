@@ -2076,11 +2076,11 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 			if (enemy.Enemy.tags.doll) KDGameData.DollCount += 1;
 
 
-			let master = KinkyDungeonFindMaster(enemy).master;
-			if (master && enemy.aware) master.aware = true;
-			if (master && master.aware) enemy.aware = true;
-			if (enemy.Enemy.master && enemy.Enemy.master.dependent && !master) enemy.hp = -10000;
-			else if (enemy.Enemy.master?.dependent) enemy.boundTo = master.id;
+			let master = KinkyDungeonFindMaster(enemy);
+			if (master.master && enemy.aware) master.aware = true;
+			if (master.master && master.master.aware) enemy.aware = true;
+			if (master.info && master.info.dependent && !master.master) enemy.hp = -10000;
+			else if (master.info?.dependent) enemy.boundTo = master.master.id;
 
 			if (!enemy.castCooldown) enemy.castCooldown = 0;
 			if (enemy.castCooldown > 0) {
@@ -3552,7 +3552,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									findMaster = enemy;
 									if (findMaster) leashPos = {x: findMaster.x, y: findMaster.y, type: "", radius: 1};
 								} else {
-									if (AIData.attack.includes("Pull") && enemy.Enemy.master) {
+									if (AIData.attack.includes("Pull") && (enemy.master || enemy.Enemy.master)) {
 										/*let masterDist = 1000;
 										for (let e of KinkyDungeonEntities) {
 											let dist = Math.sqrt((e.x - enemy.x) * (e.x - enemy.x) + (e.y - enemy.y)*(e.y - enemy.y));
@@ -4520,28 +4520,29 @@ function KinkyDungeonGetWarningTiles(dx, dy, range, width, forwardOffset = 1) {
 function KinkyDungeonFindMaster(enemy) {
 	let findMaster = undefined;
 	let masterDist = 1000;
-	if (enemy.Enemy.master) {
+	let masterInfo = enemy.master || enemy.Enemy.master;
+	if (masterInfo) {
 		for (let e of KinkyDungeonEntities) {
-			if (e.Enemy.name == enemy.Enemy.master.type) {
+			if (e.Enemy.name == masterInfo.type || (masterInfo.masterTag && e.Enemy.tags && e.Enemy.tags[masterInfo.masterTag])) {
 				let dist = Math.sqrt((e.x - enemy.x) * (e.x - enemy.x) + (e.y - enemy.y)*(e.y - enemy.y));
-				if ((!enemy.Enemy.master.maxDist || dist < enemy.Enemy.master.maxDist)
+				if ((!masterInfo.maxDist || dist < masterInfo.maxDist)
 					&& dist < masterDist
-					&& (!enemy.Enemy.master.loose || KinkyDungeonCheckLOS(enemy, e, dist, 100, false, false))) {
+					&& (!masterInfo.loose || KinkyDungeonCheckLOS(enemy, e, dist, 100, false, false))) {
 					masterDist = Math.sqrt((e.x - enemy.x) * (e.x - enemy.x) + (e.y - enemy.y)*(e.y - enemy.y));
 					findMaster = e;
 				}
 			}
 		}
 	}
-	return {master: findMaster, dist: masterDist};
+	return {master: findMaster, dist: masterDist, info: masterInfo};
 }
 
 function KinkyDungeonEnemyCanMove(enemy, dir, MovableTiles, AvoidTiles, ignoreLocks, Tries) {
 	if (!dir) return false;
-	let master = enemy.Enemy.master;
+	let master = enemy.master || enemy.Enemy.master;
 	let xx = enemy.x + dir.x;
 	let yy = enemy.y + dir.y;
-	if (master && (!enemy.Enemy.master.aggressive || !enemy.aware)) {
+	if (master && (!master.aggressive || !enemy.aware)) {
 		let fm = KinkyDungeonFindMaster(enemy);
 		let findMaster = fm.master;
 		let masterDist = fm.dist;

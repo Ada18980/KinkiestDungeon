@@ -2955,6 +2955,7 @@ KinkyDungeonFactionDragon,Dragonheart Order
 KinkyDungeonFactionMaidforce,MaidForce
 KinkyDungeonFactionMushy,Fungal Kingdom
 
+KinkyDungeonFactionAdventurer,Adventurer
 KinkyDungeonFactionCurse,Cursed Spirit
 KinkyDungeonFactionRebel,Wanted
 KinkyDungeonFactionDelinquent,Delinquent
@@ -7276,6 +7277,50 @@ KinkyDungeonRemindJailTemplateLock,""
 KinkyDungeonRemindJailTemplateIntro,"PTRN"
 
 
+
+
+KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter0,"Kya~ I have no mana, I'm so defenseless right now~"
+KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter1,"I have all this bondage gear on me, I sure hope nobody ties me up with it~!"
+KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter2,"Oh no, how will I ever find my way out of here~"
+KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter0,"If I focus really hard, I can make my blade go on fire! I'd show you, but I don't feel like drinking a mana potion."
+KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter1,"I ran out of mana, but I'm sure I can find the exit before long!"
+KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter2,"Hey, be careful with my enchanted rope! I don't have the mana right now to control it when it wakes up!"
+KinkyDungeonRemindJailPlayAdventurer_Brat_Fighter0,"Hey, you wouldn't happen to have a mana potion, would you?"
+KinkyDungeonRemindJailPlayAdventurer_Brat_Fighter1,"Say, I happen to know a thing or two about knots~"
+KinkyDungeonRemindJailPlayAdventurer_Brat_Fighter2,"I am an artist with rope... in more ways than one."
+KinkyDungeonRemindJailPlayAdventurer_Brat_FighterStruggle,"*blushes jealously*"
+KinkyDungeonRemindJailPlayAdventurer_Brat_FighterLeash,"Come along now~"
+KinkyDungeonRemindJailPlayAdventurer_Brat_FighterFree,"I'm out of practice... you wouldn't mind helping me, right?"
+KinkyDungeonRemindJailPlayAdventurer_Brat_FighterLoot,"Thank you for cleaning up! I can take that off your hands~"
+KinkyDungeonRemindJailPlayAdventurer_Brat_FighterKey,"Oooh, I wonder where that key leads!"
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterAttack0,"Kya~! I challenge you!"
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterAttack1,"What say you to a duel?"
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterAttack2,"Let's fight! For honor and cuddles!"
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterSpell0,"It's time for a battle between masters--wait, I'm low on mana..."
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterSpell1,"Give me a second to chug a mana potion..."
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterSpell2,"Why don't you try that again~"
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterSpellItem,"I'll get you for that!"
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterShrine,"Hey you can't do that! It's not like I do it too or anything..."
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterChest,"That was m- I mean... you can't steal things like that!"
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterOrb,"That was m- I mean... you can't steal sacred artifacts!"
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterJailbreak,"Kya~ What have we here?"
+KinkyDungeonRemindJailAdventurer_Brat_FighterGrab,"I got you!"
+KinkyDungeonRemindJailAdventurer_Brat_FighterDisarm,"Watch where you're pointing that thing~"
+KinkyDungeonRemindJailAdventurer_Brat_FighterHit,"Kya... I mean, ouch!!!"
+KinkyDungeonRemindJailAdventurer_Brat_FighterHitPlayer,"Take that!!!"
+KinkyDungeonRemindJailAdventurer_Brat_FighterMiss,"Whaaa-"
+KinkyDungeonRemindJailAdventurer_Brat_FighterBlock,"Hmmph!"
+KinkyDungeonRemindJailAdventurer_Brat_FighterMissedMe,"Hah! Can't hit me!"
+KinkyDungeonRemindJailAdventurer_Brat_FighterBlockedMe,"It'll take more than that to bring me down!"
+KinkyDungeonRemindJailAdventurer_Brat_FighterLeash,"What a shame. If only you weren't such a pushover..."
+KinkyDungeonRemindJailAdventurer_Brat_FighterPull,"*giggles*"
+KinkyDungeonRemindJailAdventurer_Brat_FighterStun,"Kya! Take that!"
+KinkyDungeonRemindJailAdventurer_Brat_FighterPickpocket,"Nice loot! I'll take it~"
+KinkyDungeonRemindJailAdventurer_Brat_FighterLock,"Can never be too sure!"
+KinkyDungeonRemindJailAdventurer_Brat_FighterIntro,"Nice to meet you! You wouldn't happen to have a mana potion or 3 would you?... Never mind."
+
+
+
 KinkyDungeonRemindJailPlayBratOfficer0,"You'll have to try harder if you want to discipline me, ma'am."
 KinkyDungeonRemindJailPlayBratOfficer1,"I... don't have time for training right now, ma'am..."
 KinkyDungeonRemindJailPlayBratOfficer2,"Did I do something wrong?"
@@ -10631,3 +10676,10 @@ KinkyDungeonMithrilBolt,Shining strings encircle your body!
 KDSummonCurse,"Your cursed items have attracted a powerful cursed spirit!"
 
 KDRemoveOnDmgTypeChill,"The seal on your RESTRAINTNAME is weakening."
+
+NameAdventurer_Brat_Fighter,Bratty Fighter
+KillAdventurer_Brat_Fighter,"The bratty fighter pouts and runs away!"
+AttackAdventurer_Brat_FighterBind,"The Fighter knocks you to the ground and binds you! (+RestraintAdded)"
+AttackAdventurer_Brat_Fighter,"The Fighter strikes you with her weapon! (DamageTaken)"
+AttackAdventurer_Brat_FighterStun,"The Fighter takes you down with the back of her weapon! (DamageTaken)"
+AttackAdventurer_Brat_FighterLock,"The Fighter puts you in a hold and manages to slip on a lock! (DamageTaken)"
