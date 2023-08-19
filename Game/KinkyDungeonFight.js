@@ -1241,7 +1241,7 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 							for (let yy = by - Math.floor(rad); yy <= by + Math.ceil(rad); yy++) {
 								if (AOECondition(bx, by, xx, yy, rad, KDBulletAoEMod(b))) {
 									if (show && !KDBulletWarnings.some((w) => {return w.x == xx && w.y == yy;}))
-										KDBulletWarnings.push({x: xx, y: yy, color:b.bullet.spell ? (b.bullet.spell.color ? b.bullet.spell.color : "#ff0000") : "#ff0000"});
+										KDBulletWarnings.push({x: xx, y: yy, x_orig: b.xx, y_orig: b.yy, scale: 0, color:b.bullet.spell ? (b.bullet.spell.color ? b.bullet.spell.color : "#ff0000") : "#ff0000"});
 									if (!b.warnings.includes(xx + "," + yy)) {
 										b.warnings.push(xx + "," + yy);
 									}
@@ -1864,7 +1864,12 @@ function KinkyDungeonLaunchBullet(x, y, targetx, targety, speed, bullet, miscast
 	return b;
 }
 
+let KDLastFightDelta = 0;
+
+
 function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
+	let delta = CommonTime() - KDLastFightDelta;
+	KDLastFightDelta = CommonTime();
 	for (let damage of KDDamageQueue) {
 		if (!damage.Delay || KDTimescale * (performance.now() - KDLastTick) > damage.Delay) {
 			if (damage.sfx && KDToggles.Sound) KinkyDungeonPlaySound(damage.sfx);
@@ -1878,26 +1883,32 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	}
 
 	for (let t of KDBulletWarnings) {
+		let scale = t.scale || 0.01;
+		if (scale < 1) t.scale = Math.max(0, Math.min(1, (t.scale || 0) + delta * 0.005/KDAnimSpeed));
+		else scale = 1;
 		let tx = t.x;
 		let ty = t.y;
-		//  && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(tx, ty))
+		let txvis = (t.x - t.x_orig)*scale + t.x_orig;
+		let tyvis = (t.y - t.y_orig)*scale + t.y_orig;
+
 		if (tx >= CamX && ty >= CamY && tx < CamX + KinkyDungeonGridWidthDisplay && ty < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(tx, ty) > 0) {
+
 			KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w" + t.color, KinkyDungeonRootDirectory + "WarningColorSpell.png",
-				(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
-				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+				(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
+				KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
 					tint: string2hex(t.color || "#ff5555"),
 					zIndex: 1.31,
 					alpha: 0.75,
 				});
 			KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_b" + t.color, KinkyDungeonRootDirectory + "WarningBacking.png",
-				(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
-				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+				(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
+				KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
 					tint: string2hex(t.color || "#ff5555"),
 					zIndex: -0.2,
 				});
 			KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_b_h", KinkyDungeonRootDirectory + "WarningBackingHighlight" + ".png",
-				(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
-				KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+				(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
+				KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
 					zIndex: -0.21,
 				});
 		}
