@@ -1314,7 +1314,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "Adventurer_Brat_Fighter", clusterWith: "adventurer", bound: "Adventurer_Brat", color: "#ffffff",
 		playLine: "Adventurer_Brat_Fighter",
-		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human", "melee", "ropeRestraints", "ropeRestraintsHogtie", "charmweakness", "jail", "jailer", "search"]), cohesion: 0.9,
+		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human", "melee", "ropeRestraints", "ropeRestraintsHogtie", "charmweakness", "jail", "jailer", "brat", "search"]), cohesion: 0.9,
 		stunTime: 2, specialCD: 5, specialAttack: "Stun", specialRemove: "BindLock", specialPower: 6, specialDamage: "pain",
 		evasion: -0.5, disarm: 0.2,
 		spells: ["RopeEngulfWeak", "WitchRope"], spellCooldownMult: 2, spellCooldownMod: 1, buffallies: true,
