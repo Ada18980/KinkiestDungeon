@@ -33,7 +33,7 @@ let KDIntentEvents = {
 
 			KDAddThought(enemy.id, "Jail", 5, enemy.playWithPlayer);
 
-			let suff = (enemy.Enemy.playLine ? enemy.Enemy.playLine : "");
+			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
 			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
 		},
 		arrive: (enemy, AIData) => {
@@ -84,7 +84,7 @@ let KDIntentEvents = {
 			KDAddThought(enemy.id, "Play", 4, enemy.playWithPlayer);
 
 			let index = Math.floor(Math.random() * 3);
-			let suff = (enemy.Enemy.playLine ? enemy.Enemy.playLine : "");
+			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
 			if (AIData.domMe) {
 				if (KDIsBrat(enemy))
 					suff = "Brat" + suff;
@@ -346,7 +346,7 @@ let KDIntentEvents = {
 
 			KDAddThought(enemy.id, "Jail", 5, 3);
 
-			let suff = (enemy.Enemy.playLine ? enemy.Enemy.playLine : "");
+			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
 			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
 		},
 		arrive: (enemy, AIData) => {

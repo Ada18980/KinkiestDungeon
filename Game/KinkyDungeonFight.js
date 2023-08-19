@@ -844,7 +844,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		KDAddThought(Enemy.id, "Laugh", 4, 1);
 		KDDamageQueue.push({floater: TextGet("KDMissed"), Entity: {x: Enemy.x - 0.5 + Math.random(), y: Enemy.y - 0.5 + Math.random()}, Color: "#ff5555", Time: 2, Delay: Delay});
 		if (KDRandom() < actionDialogueChanceIntense)
-			KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (Enemy.Enemy.playLine ? Enemy.Enemy.playLine : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
+			KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
 
 		if (KDToggles.Sound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx.Miss) {
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Enemy.Enemy.cueSfx.Miss + ".ogg");
@@ -854,7 +854,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
 			KDAddThought(Enemy.id, "Laugh", 5, 3);
 			if (KDRandom() < actionDialogueChanceIntense)
-				KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (Enemy.Enemy.playLine ? Enemy.Enemy.playLine : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
+				KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
 			KDDamageQueue.push({floater: TextGet("KDBlocked"), Entity: {x: Enemy.x - 0.5 + Math.random(), y: Enemy.y - 0.5 + Math.random()}, Color: "#ff5555", Time: 2, Delay: Delay});
 		}
 
@@ -866,7 +866,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	} else if (predata.dmgDealt > 0 && KDToggles.Sound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx.Damage) {
 		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Enemy.Enemy.cueSfx.Damage + ".ogg");
 		if (KDRandom() < actionDialogueChance)
-			KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (Enemy.Enemy.playLine ? Enemy.Enemy.playLine : "") + "Hit").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5);
+			KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "Hit").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5);
 	}
 
 	if (predata.aggro)

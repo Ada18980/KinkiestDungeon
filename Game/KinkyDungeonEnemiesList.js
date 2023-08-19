@@ -1316,16 +1316,64 @@ let KinkyDungeonEnemies = [
 		playLine: "Adventurer_Brat_Fighter",
 		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human", "melee", "ropeRestraints", "ropeRestraintsHogtie", "charmweakness", "jail", "jailer", "brat", "search"]), cohesion: 0.9,
 		stunTime: 2, specialCD: 5, specialAttack: "Stun", specialRemove: "BindLock", specialPower: 6, specialDamage: "pain",
-		evasion: -0.5, disarm: 0.2,
+		evasion: -0.5,
 		spells: ["RopeEngulfWeak", "WitchRope"], spellCooldownMult: 2, spellCooldownMod: 1, buffallies: true,
 		followLeashedOnly: true, ignorechance: 0, armor: 3, followRange: 1, AI: "hunt", guardChance: 0.0,
-		visionRadius: 8, maxhp: 20, minLevel:2, weight:1, movePoints: 2, attackPoints: 2, attack: "SpellMeleeWillBindLock",
+		visionRadius: 8, maxhp: 20, minLevel:2, weight:1, movePoints: 2.0, attackPoints: 2, attack: "SpellMeleeWillBindLock",
 		attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "pain", fullBoundBonus: 1,
 		events: [
-			{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter"]},
+			{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Dragon"]},
 		],
 		terrainTags: {"adventurer": 10, "lair": -10, "brat": 50}, shrines: ["Rope"], allFloors: true, // Adventurers don't appear in lairs
-		dropTable: [{name: "Gold", amountMin: 20, amountMax: 40, weight: 15}, {name: "Axe", ignoreInInventory: true, weight: 100}, {name: "Dirk", ignoreInInventory: true, weight: 100}, {name: "Breastplate", ignoreInInventory: true, weight: 200}]},
+		dropTable: [{name: "Gold", amountMin: 20, amountMax: 40, weight: 15}, {name: "Axe", ignoreInInventory: true, weight: 100}, {name: "MagicAxe", ignoreInInventory: true, weight: 1}, {name: "Breastplate", ignoreInInventory: true, weight: 200}]},
+
+	{name: "Adventurer_Dom_Fighter", clusterWith: "adventurer", bound: "Adventurer_Dom", color: "#ffffff",
+		playLine: "Adventurer_Dom_Fighter",
+		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human", "melee", "latexRestraints", "soulweakness", "jail", "jailer", "dom", "search"]), cohesion: 0.9,
+		stunTime: 2, specialCD: 7, specialAttack: "Dash", specialRemove: "WillBindLock", specialPower: 6, specialDamage: "pain",
+		specialAttackPoints: 1, specialRange: 3.5, specialMinrange: 2.4, specialsfx: "Miss", castWhileMoving: true, dashThruWalls: true, dashThrough: true,
+		bindOnDisable: true,
+		evasion: 0.4, disarm: 0.4,
+		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.0,
+		visionRadius: 8, maxhp: 17, minLevel:2, weight:1, movePoints: 1.4, attackPoints: 2, attack: "MeleeWillBindLock",
+		attackWidth: 1, attackRange: 2.5, tilesMinRange: 1, power: 2, dmgType: "pain", fullBoundBonus: 2,
+		events: [
+			{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Maidforce", "Bountyhunter", "Bast"]},
+		],
+		terrainTags: {"adventurer": 10, "lair": -10, "dom": 50}, shrines: ["Latex"], allFloors: true, // Adventurers don't appear in lairs
+		dropTable: [{name: "Gold", amountMin: 20, amountMax: 40, weight: 15}, {name: "Foil", ignoreInInventory: true, weight: 100}, {name: "Rapier", ignoreInInventory: true, weight: 100}, {name: "Dirk", ignoreInInventory: true, weight: 100}, {name: "Bracers", ignoreInInventory: true, weight: 200}]},
+
+	{name: "Adventurer_Switch_Fighter", clusterWith: "adventurer", bound: "Adventurer_Switch", color: "#ffffff",
+		playLine: "Adventurer_Switch_Fighter",
+		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human", "melee", "mithrilRestraints", "gropeweakness", "jail", "jailer", "switch", "search"]), cohesion: 0.9,
+		specialCD: 6, specialAttack: "Bind", specialRemove: "Lock", specialCDonAttack: true, strictAttackLOS: true, specialDamage: "chain",
+		specialRange: 4, projectileTargeting: true, specialWidth: 1, ignoreStaminaForBinds: true,
+		evasion: 0.2, kite: 1.5,
+		spells: ["ArmorUpArea"], spellCooldownMult: 2, spellCooldownMod: 1, buffallies: true,
+		followLeashedOnly: true, ignorechance: 0, spellResist: 1.5, followRange: 2.5, AI: "hunt", guardChance: 0.0,
+		visionRadius: 8, maxhp: 15, minLevel:2, weight:1, movePoints: 2.4, attackPoints: 3, attack: "SpellMeleeWillBindLock",
+		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "chain", fullBoundBonus: 1,
+		events: [
+			{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Alchemist"]},
+		],
+		terrainTags: {"adventurer": 10, "lair": -10, "switch": 50}, shrines: ["Metal"], allFloors: true, // Adventurers don't appear in lairs
+		dropTable: [{name: "Gold", amountMin: 20, amountMax: 40, weight: 15}, {name: "ManaOrb", weight: 30}, {name: "PotionStamina", weight: 10}, {name: "LeatherBoots", ignoreInInventory: true, weight: 200}]},
+
+	{name: "Adventurer_Sub_Fighter", clusterWith: "adventurer", bound: "Adventurer_Sub", color: "#ffffff",
+		playLine: "Adventurer_Sub_Fighter",
+		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human", "melee", "leatherRestraints", "leatherRestraintsHeavy", "painweakness", "jail", "jailer", "sub", "search"]), cohesion: 0.9,
+		stunTime: 2, specialCD: 10, specialAttack: "StunDash", specialRemove: "WillBindLock", specialPower: 6, specialDamage: "cold",
+		specialAttackPoints: 3, specialRange: 6,
+		evasion: -0.1, disarm: 0.2,
+		spells: ["ShadowOrb"], spellCooldownMult: 2, spellCooldownMod: 1,
+		followLeashedOnly: true, ignorechance: 0, spellResist: 2.0, followRange: 1, AI: "hunt", guardChance: 0.0,
+		visionRadius: 8, maxhp: 30, minLevel:2, weight:1, movePoints: 1.8, attackPoints: 2, attack: "SpellMeleeWillBindLock",
+		attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 1,
+		events: [
+			{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Elf"]},
+		],
+		terrainTags: {"adventurer": 10, "lair": -10, "sub": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
+		dropTable: [{name: "Gold", amountMin: 20, amountMax: 40, weight: 15}, {name: "Spear", ignoreInInventory: true, weight: 100}, {name: "MagicSpear", ignoreInInventory: true, weight: 1}, {name: "ElfCrystal", weight: 5}]},
 
 	{name: "ElementalFire", faction: "Elemental", playLine: "Elemental", clusterWith: "fire", bound: "ElementalFire", color: "#FF6200", tags: KDMapInit(["opendoors", "imprisonable", "fire", "guardCall", "elemental", "fireimmune", "ranged", "coldweakness", "icesevereweakness", "obsidianRestraints", "shackleRestraints", "leashing", "jail", "jailer", "search"]),
 		armor: 0, kite: 1.5, followRange: 3, AI: "hunt",

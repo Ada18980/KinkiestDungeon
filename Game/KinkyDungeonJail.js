@@ -118,7 +118,7 @@ function KinkyDungeonAggroFaction(faction, noAllyRepPenalty) {
 function KinkyDungeonPlayerIsVisibleToJailers() {
 	let list = [];
 	for (let enemy of KinkyDungeonEntities) {
-		if (KDHostile(enemy) && !(enemy.rage > 0) && (enemy.Enemy.tags.leashing || enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || enemy.Enemy.playLine)) {
+		if (KDHostile(enemy) && !(enemy.rage > 0) && (enemy.Enemy.tags.leashing || enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || KDGetEnemyPlayLine(enemy))) {
 			if (KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y), enemy.Enemy.visionRadius, false, true)) {
 				list.push(enemy);
 			}
@@ -285,8 +285,8 @@ function KinkyDungeonStartChase(enemy, Type, faction, force) {
 		}
 	}
 
-	if (Type && enemy && (enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || enemy.Enemy.playLine)) {
-		let suff = enemy.Enemy.playLine ? enemy.Enemy.playLine + Type : Type;
+	if (Type && enemy && (enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || KDGetEnemyPlayLine(enemy))) {
+		let suff = KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) + Type : Type;
 		let index = (Type == "Attack" || Type == "Spell") ? ("" + Math.floor(Math.random() * 3)) : "";
 
 		if (!enemy.dialogue || !enemy.dialogueDuration)
@@ -308,7 +308,7 @@ function KinkyDungeonPlayExcuse(enemy, Type) {
 	if (Type == "Free" && enemy && enemy.Enemy.noChaseUnrestrained) {
 		return;
 	}
-	if (KinkyDungeonCanPlay(enemy) && !(enemy.playWithPlayer > 0) && enemy.aware && !(enemy.playWithPlayerCD > 0) && (enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || enemy.Enemy.playLine)) {
+	if (KinkyDungeonCanPlay(enemy) && !(enemy.playWithPlayer > 0) && enemy.aware && !(enemy.playWithPlayerCD > 0) && (enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || KDGetEnemyPlayLine(enemy))) {
 		enemy.playWithPlayer = 17;
 		KinkyDungeonSetEnemyFlag(enemy, "playstart", 3);
 		if (Type == "Key") {
@@ -316,7 +316,7 @@ function KinkyDungeonPlayExcuse(enemy, Type) {
 			enemy.playWithPlayerCD = enemy.playWithPlayer;
 		}
 		KDSetPlayCD(enemy, 2.5);
-		let suff = enemy.Enemy.playLine ? enemy.Enemy.playLine + Type : Type;
+		let suff = KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) + Type : Type;
 		KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 4);
 	}
 }
