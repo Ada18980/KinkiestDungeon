@@ -269,7 +269,7 @@ function KinkyDungeonStartChase(enemy, Type, faction, force) {
 	if ((!enemy && !KDLocalChaseTypes.includes(Type))) {
 		if (KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'parole') {
 			KinkyDungeonChangeRep("Ghost", -10);
-			if (KinkyDungeonFlags.has("PlayerCombat") || !isUnarmed(KinkyDungeonPlayerDamage))
+			if (KinkyDungeonFlags.has("PlayerCombat") || (KinkyDungeonPlayerDamage && !isUnarmed(KinkyDungeonPlayerDamage)))
 				KinkyDungeonChangeRep("Prisoner", 20);
 			KDGameData.PrisonerState = "chase";
 			KinkyDungeonInterruptSleep();

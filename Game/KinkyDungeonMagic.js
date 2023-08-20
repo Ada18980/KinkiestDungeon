@@ -1365,7 +1365,10 @@ function KinkyDungeonListSpells(Mode) {
 						yy + h/2,
 						h, KinkyDungeonSpellPoints >= cost ? color : "#ff5555", undefined, 20, "right", undefined, undefined, false);
 				} else if (Mode == "Click") {
-					if (MouseIn(canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + YY, buttonwidth, spacing - ypadding)) return spell;
+					if (MouseIn(xx,
+						yy,
+						w,
+						h,)) return spell;
 				}
 				i++;
 				YY += h + ypadding_min;

@@ -1329,6 +1329,9 @@ let KinkyDungeonEnemies = [
 
 	{name: "Adventurer_Dom_Fighter", clusterWith: "adventurer", bound: "Adventurer_Dom", color: "#ffffff",
 		playLine: "Adventurer_Dom_Fighter",
+		Resistance: {
+			profile: ["catgirl"],
+		},
 		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human", "melee", "latexRestraints", "soulweakness", "jail", "jailer", "dom", "search"]), cohesion: 0.9,
 		stunTime: 2, specialCD: 7, specialAttack: "Dash", specialRemove: "WillBindLock", specialPower: 6, specialDamage: "pain",
 		specialAttackPoints: 1, specialRange: 3.5, specialMinrange: 2.4, specialsfx: "Miss", castWhileMoving: true, dashThruWalls: true, dashThrough: true,
@@ -2198,34 +2201,46 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":2, "lastthird":1, "open": 10, "miniboss": -5, "dressmaker": 12, "elementsAnger": 7, "elementsRage": 5}, allFloors: true, shrines: ["Conjure", "Elements"],
 		dropTable: [{name: "ScrollArms", weight: 2}, {name: "ScrollVerbal", weight: 2}, {name: "ScrollLegs", weight: 2}, {name: "ScrollPurity", weight: 1}]},
 
-	{name: "MummyCursed", bound: "MummyCursed", nopickpocket: true, color: "#55ff55", playLine: "GaggedMummy", faction: "Bast", tags: KDMapInit(["mimicBlock", "gagged", "removeDoorSpawn", "ignoreharmless", "darkvision", "mummy", "melee", "elite", "mummyRestraints", "coldresist", "fireweakness", "meleeweakness", "charmweakness"]),
+	{name: "MummyCursed", bound: "MummyCursed", nopickpocket: true, color: "#55ff55", playLine: "GaggedMummy", faction: "Bast", tags: KDMapInit(["mimicBlock", "gagged", "removeDoorSpawn", "ignoreharmless", "darkvision", "mummy", "melee", "elite", "mummyRestraints", "fireweakness", "meleeweakness", "charmweakness"]),
 		evasion: -0.25, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", difficulty: 0.05, guardChance: 0, events: [
 			{trigger: "tick", type: "secretToy"},
 		],
+		Resistance: {
+			profile: ["catgirl"],
+		},
 		visionRadius: 10, ambushRadius: 2.01, blindSight: 10, maxhp: 12, minLevel:0, weight:5, movePoints: 1, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "charm", fullBoundBonus: 1,
 		terrainTags: {"secondhalf":5, "lastthird":5, "door": 50}, floors:KDMapInit(["tmb"]), shrines: ["Will"],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 25}]},
 
 
-	{name: "Mummy", clusterWith: "mummy", nopickpocket: true, bound: "Mummy", faction: "Bast", color: "#55ff55", tags: KDMapInit(["leashing", "religious", "antiMagic", "darkvision", "opendoors", "closedoors", "jail", "jailer", "mummy", "melee", "elite", "mummyRestraints", "coldresist", "fireweakness", "meleeweakness", "hunter"]), followLeashedOnly: true, followRange: 1,
+	{name: "Mummy", clusterWith: "mummy", nopickpocket: true, bound: "Mummy", faction: "Bast", color: "#55ff55", tags: KDMapInit(["leashing", "religious", "antiMagic", "darkvision", "opendoors", "closedoors", "jail", "jailer", "mummy", "melee", "elite", "mummyRestraints", "fireweakness", "meleeweakness", "hunter"]), followLeashedOnly: true, followRange: 1,
 		spells: ["MummyBolt", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, specialCD: 3, specialAttack: "BindLock", playLine: "Mummy", spellCooldownMult: 1, spellCooldownMod: 5, specialAttackPoints: 2, specialWidth: 3, spellRdy: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#00ff00"},
 		],
+		Resistance: {
+			profile: ["catgirl"],
+		},
 		attackLock: "Purple",
 		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 8, minLevel:3, weight:18, movePoints: 2, attackPoints: 1, attack: "SpellMeleeWill", attackWidth: 1, attackRange: 1, power: 2, fullBoundBonus: 1, dmgType: "crush",
 		terrainTags: {"secondhalf":2, "lastthird":4, "open": 2, "increasingWeight":1, "mummy": 4}, floors:KDMapInit(["tmb"]), shrines: ["Will"], dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]},
-	{name: "Cleric", clusterWith: "mummy", bound: "Cleric", faction: "Bast", playLine: "Mummy", color: "#00FF00", tags: KDMapInit(["leashing", "religious", "opendoors", "closedoors", "mummy", "ranged", "search", "coldresist", "fireweakness"]),
+	{name: "Cleric", clusterWith: "mummy", bound: "Cleric", faction: "Bast", playLine: "Mummy", color: "#00FF00", tags: KDMapInit(["leashing", "religious", "opendoors", "closedoors", "mummy", "ranged", "search", "fireweakness"]),
 		followLeashedOnly: true, followRange: 4, attackThruBars: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#00ff00"},
 		],
+		Resistance: {
+			profile: ["catgirl"],
+		},
 		spells: ["ClericBeam", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, spellCooldownMult: 1, spellCooldownMod: 0, stopToCast: true, kite: 1.5, kiteChance: 0.9,
 		attackPoints: 3, attack: "Spell", attackWidth: 1, attackRange: 1, power: 3, dmgType: "fire",
 		AI: "guard", visionRadius: 7, maxhp: 8, minLevel:0, weight:13, movePoints: 1.5, fullBoundBonus: 1,
 		terrainTags: {"secondhalf":0, "lastthird":1, "passage": -99, "open": 4, "mummy": 5}, floors:KDMapInit(["tmb"]), shrines: ["Will"], dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 12}]},
-	{name: "MeleeCleric", clusterWith: "mummy", bound: "MeleeCleric", playLine: "Mummy", faction: "Bast", tags: KDMapInit(["leashing", "darkvision", "opendoors", "closedoors", "mummy", "imprisonable", "melee", "kittyRestraints", "jail", "jailer", "search", "coldresist", "fireweakness"]),
+	{name: "MeleeCleric", clusterWith: "mummy", bound: "MeleeCleric", playLine: "Mummy", faction: "Bast", tags: KDMapInit(["leashing", "darkvision", "opendoors", "closedoors", "mummy", "imprisonable", "melee", "kittyRestraints", "jail", "jailer", "search", "fireweakness"]),
 		followRange: 1, blindSight: 2.5, specialCD: 5, specialAttack: "BindLock",
+		Resistance: {
+			profile: ["catgirl"],
+		},
 		AI: "hunt", guardChance: 0.6, visionRadius: 6, maxhp: 8, minLevel:0, weight:15, movePoints: 1.5, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 2, fullBoundBonus: 2, dmgType: "grope",
 		terrainTags: {"secondhalf":0, "lastthird":-2, "mummy": 6}, floors:KDMapInit(["tmb"]), shrines: ["Will"], dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 12}]},
 
