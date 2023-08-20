@@ -227,7 +227,7 @@ function KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, r
 	let maxWeight = 0;
 
 	for (let mapTile of Object.values(KDMapTilesList)) {
-		if (mapTile.primInd == index || (mapTile.flexEdge && mapTile.flexEdge['1,1'])) {
+		if (mapTile.primInd == index || (mapTile.flexEdge && mapTile.flexEdge['1,1'] && (mapTile.primInd.includes(index) || (mapTile.flexEdgeSuper && mapTile.flexEdgeSuper['1,1'])))) {
 			if (!KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, indexFilled)) continue;
 
 			if (!KDCheckMapTileAccess(mapTile, indX, indY, indexFilled, requiredAccess)) continue;
