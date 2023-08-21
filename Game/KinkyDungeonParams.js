@@ -284,6 +284,7 @@ const KinkyDungeonMapParams = {
 
 						let chance = KinkyDungeonMapGet(x, y) == '1' ? wallchance : 0.3;
 						if (KinkyDungeonMapGet(x, y) == '4') chance = 0; // no cracks in plants
+						if (KinkyDungeonMapGet(x, y) == 'X') chance = 1; // plants have guaranteed spread chance if a bordering plant is natural
 						if (!naturalized[x + ',' + y]) {
 							if (naturalized[(x+1) + ',' + (y)] && KDRandom() < chance) {
 								if (KDRandom() < cavChance) cavernized[x + ',' + y] = true;
