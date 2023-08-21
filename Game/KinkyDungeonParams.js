@@ -260,6 +260,74 @@ const KinkyDungeonMapParams = {
 
 		worldGenCode: () => {
 			KDAddPipes(0.03, 0.6, 0.8, 0.1);
+			// List of coordinates that are naturalized
+			let naturalized = {};
+			let cavernized = {};
+			// Start nature near plants, mushrooms, etc
+			for (let x = 0; x < KinkyDungeonGridWidth-1; x++)
+				for (let y = 0; y < KinkyDungeonGridHeight-1; y++) {
+					let enemy = KinkyDungeonEnemyAt(x, y);
+					let tile = KinkyDungeonMapGet(x, y);
+					if ((enemy && (enemy.Enemy.faction == "Plant" || enemy.Enemy.faction == "Natural"))
+						|| (tile != '2' && KDRandom() < 0.001)
+						|| (tile == 'X' && KDRandom() < 0.04)) {
+						naturalized[x + ',' + y] = true;
+					}
+				}
+			// dilate a few times
+			let wallchance = 0.1;
+			let wallchanceCav = 0.01;
+			let cavChance = 0.04;
+			for (let i = 6 + 4*KDRandom(); i>0; i--) {
+				for (let x = 0; x < KinkyDungeonGridWidth-1; x++)
+					for (let y = 0; y < KinkyDungeonGridHeight-1; y++) {
+
+						let chance = KinkyDungeonMapGet(x, y) == '1' ? wallchance : 0.3;
+						if (KinkyDungeonMapGet(x, y) == '4') chance = 0; // no cracks in plants
+						if (!naturalized[x + ',' + y]) {
+							if (naturalized[(x+1) + ',' + (y)] && KDRandom() < chance) {
+								if (KDRandom() < cavChance) cavernized[x + ',' + y] = true;
+								else naturalized[x + ',' + y] = true;
+							} else if (naturalized[(x-1) + ',' + (y)] && KDRandom() < chance) {
+								if (KDRandom() < cavChance) cavernized[x + ',' + y] = true;
+								else naturalized[x + ',' + y] = true;
+							} else if (naturalized[(x) + ',' + (y+1)] && KDRandom() < chance) {
+								if (KDRandom() < cavChance) cavernized[x + ',' + y] = true;
+								else naturalized[x + ',' + y] = true;
+							} else if (naturalized[(x) + ',' + (y-1)] && KDRandom() < chance) {
+								if (KDRandom() < cavChance) cavernized[x + ',' + y] = true;
+								else naturalized[x + ',' + y] = true;
+							}
+						}
+					}
+			}
+			for (let i = 6 + 4*KDRandom(); i>0; i--) {
+				for (let x = 0; x < KinkyDungeonGridWidth-1; x++)
+					for (let y = 0; y < KinkyDungeonGridHeight-1; y++) {
+
+						let chance = KinkyDungeonMapGet(x, y) == '1' ? wallchanceCav : 0.3;
+						if (!cavernized[x + ',' + y]) {
+							if (cavernized[(x+1) + ',' + (y)] && KDRandom() < chance) {
+								cavernized[x + ',' + y] = true;
+							} else if (cavernized[(x-1) + ',' + (y)] && KDRandom() < chance) {
+								cavernized[x + ',' + y] = true;
+							} else if (cavernized[(x) + ',' + (y+1)] && KDRandom() < chance) {
+								cavernized[x + ',' + y] = true;
+							} else if (cavernized[(x) + ',' + (y-1)] && KDRandom() < chance) {
+								cavernized[x + ',' + y] = true;
+							}
+						}
+					}
+			}
+			// now we finalize
+			for (let x = 0; x < KinkyDungeonGridWidth-1; x++)
+				for (let y = 0; y < KinkyDungeonGridHeight-1; y++) {
+					if (cavernized[x + ',' + y] && !KinkyDungeonTilesSkin[x + ',' + y]) {
+						KinkyDungeonTilesSkin[x + ',' + y] = {skin: "cry", force: true};
+					} else if (naturalized[x + ',' + y] && !KinkyDungeonTilesSkin[x + ',' + y]) {
+						KinkyDungeonTilesSkin[x + ',' + y] = {skin: "jngWild", force: true};
+					}
+				}
 		},
 
 		tagModifiers: {

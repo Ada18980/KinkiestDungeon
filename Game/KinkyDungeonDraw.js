@@ -2757,7 +2757,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 					}
 				}
 				let floor = KinkyDungeonTilesSkin[RX + "," + RY] ?
-					(KinkyDungeonTilesSkin[RX + "," + RY].force ? KinkyDungeonTilesSkin[RX + "," + RY].skin : KinkyDungeonMapIndex[KinkyDungeonTilesSkin[RX + "," + RY].skin])
+					(KinkyDungeonTilesSkin[RX + "," + RY].force ? KinkyDungeonTilesSkin[RX + "," + RY].skin : KinkyDungeonMapIndex[KinkyDungeonTilesSkin[RX + "," + RY].skin] || KinkyDungeonTilesSkin[RX + "," + RY].skin)
 					: drawFloor;
 				let vision = KinkyDungeonVisionGet(RX, RY);
 				let nR = KinkyDungeonTilesSkin[RX + "," + RY] ? noReplace : noReplace_skin[floor];

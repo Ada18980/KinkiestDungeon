@@ -1157,7 +1157,7 @@ let KinkyDungeonEnemies = [
 		],
 		dropTable: [{name: "Nothing", weight: 10}, {name: "StaffChain", weight: 3, ignoreInInventory: true}, {name: "StaffBind", weight: 0.5, ignoreInInventory: true}],
 	},
-	{name: "StoneDoor", faction: "Natural", blockVision: true,
+	{name: "StoneDoor", faction: "Door", blockVision: true,
 		cueSfx: {
 			Block: "Clang",
 			Resist: "Clang",
@@ -1173,7 +1173,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "duringDamageEnemy", type: "damageThreshold", power: 1, chance: 1.0},
 		],
 	},
-	{name: "SteelDoor", faction: "Natural", blockVision: true,
+	{name: "SteelDoor", faction: "Door", blockVision: true,
 		cueSfx: {
 			Block: "Clang",
 			Resist: "Clang",
@@ -1189,7 +1189,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "duringDamageEnemy", type: "damageThreshold", power: 1, chance: 1.0},
 		],
 	},
-	{name: "DollDoor", faction: "Natural", blockVision: true,
+	{name: "DollDoor", faction: "Door", blockVision: true,
 		cueSfx: {
 			Block: "Clang",
 			Resist: "Clang",
@@ -1335,7 +1335,7 @@ let KinkyDungeonEnemies = [
 		bindOnDisable: true,
 		evasion: 0.4, disarm: 0.4,
 		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.0,
-		visionRadius: 8, maxhp: 17, minLevel:2, weight:1, movePoints: 1.4, attackPoints: 2, attack: "MeleeWillBindLock",
+		visionRadius: 8, maxhp: 17, minLevel:5, weight:1, movePoints: 1.4, attackPoints: 2, attack: "MeleeWillBindLock",
 		attackWidth: 1, attackRange: 2.5, tilesMinRange: 1, power: 2, dmgType: "pain", fullBoundBonus: 2,
 		events: [
 			{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Maidforce", "Bountyhunter", "Bast"]},
@@ -1351,7 +1351,7 @@ let KinkyDungeonEnemies = [
 		evasion: 0.2, kite: 1.5,
 		spells: ["ArmorUpArea"], spellCooldownMult: 2, spellCooldownMod: 1, buffallies: true,
 		followLeashedOnly: true, ignorechance: 0, spellResist: 1.5, followRange: 2.5, AI: "hunt", guardChance: 0.0,
-		visionRadius: 8, maxhp: 15, minLevel:2, weight:1, movePoints: 2.4, attackPoints: 3, attack: "SpellMeleeWillBindLock",
+		visionRadius: 8, maxhp: 15, minLevel:3, weight:1, movePoints: 2.4, attackPoints: 3, attack: "SpellMeleeWillBindLock",
 		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "chain", fullBoundBonus: 1,
 		events: [
 			{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Alchemist"]},
@@ -1367,7 +1367,7 @@ let KinkyDungeonEnemies = [
 		evasion: -0.1, disarm: 0.2,
 		spells: ["ShadowOrb"], spellCooldownMult: 2, spellCooldownMod: 1,
 		followLeashedOnly: true, ignorechance: 0, spellResist: 2.0, followRange: 1, AI: "hunt", guardChance: 0.0,
-		visionRadius: 8, maxhp: 30, minLevel:2, weight:1, movePoints: 1.8, attackPoints: 2, attack: "SpellMeleeWillBindLock",
+		visionRadius: 8, maxhp: 30, minLevel:6, weight:1, movePoints: 1.8, attackPoints: 2, attack: "SpellMeleeWillBindLock",
 		attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 1,
 		events: [
 			{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Elf"]},

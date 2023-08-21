@@ -19,6 +19,7 @@ let KinkyDungeonFactionColors = {
 let KinkyDungeonHiddenFactions = [
 	"Plant",
 	"Natural",
+	"Door",
 	"Player",
 	"Enemy",
 	"Jail",
@@ -174,6 +175,10 @@ let KinkyDungeonFactionRelationsBase = {
 		Enemy: 0.1,
 	},
 	"Natural": {
+		Player: -1,
+		Jail: -1,
+	},
+	"Door": {
 		Player: -1,
 		Jail: -1,
 	},
