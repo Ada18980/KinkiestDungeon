@@ -5179,7 +5179,7 @@ KinkyDungeonSpellOneWithSlime,One With Slime
 KinkyDungeonSpellDescriptionOneWithSlime,"While standing on slime/latex, you can cast rubber spells without components."
 
 KinkyDungeonSpellSlimeMimic,Convincing Disguise
-KinkyDungeonSpellDescriptionSlimeMimic,"While standing still on slime, your visibility is reduced considerably."
+KinkyDungeonSpellDescriptionSlimeMimic,"While standing still on slime or fully bound with at least one latex item, you are harder to notice. Each latex restraint you are wearing increases this amount."
 
 KinkyDungeonSpellStaffUser1,Magical Implements
 KinkyDungeonSpellDescriptionStaffUser1,"While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%."

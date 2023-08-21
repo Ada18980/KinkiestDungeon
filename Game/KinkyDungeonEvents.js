@@ -2662,10 +2662,20 @@ let KDEventMapSpell = {
 				});
 		},
 		"SlimeMimic": (e, spell, data) => {
-			if (KinkyDungeonLastAction == "Wait"
-				&& KDEffectTileTags(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y).slime) {
+			let condition = KinkyDungeonLastAction == "Wait" && KDEffectTileTags(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y).slime;
+			let altcondition = KinkyDungeonPlayerTags.get("Latex") || KinkyDungeonPlayerTags.get("Slime");
+			if (condition || altcondition) {
+				let power = 4;
+				let groups = {};
+				for (let inv of KinkyDungeonAllRestraintDynamic()) {
+					if (!groups[KDRestraint(inv.item).Group]
+						&& (KDRestraint(inv.item).shrine?.includes("Latex") || KDRestraint(inv.item).shrine?.includes("Slime"))) {
+						groups[KDRestraint(inv.item).Group] = true;
+						power += 4;
+					}
+				}
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
-					{id: "SlimeMimic", aura: "#ff00ff", type: "SlowDetection", duration: 2, power: 24.0, player: true, enemies: true, endSleep: true, currentCount: -1, maxCount: 1, tags: ["SlowDetection", "move", "cast", "attack"]}
+					{id: "SlimeMimic", aura: "#ff00ff", type: "SlowDetection", duration: 2, power: Math.min(24, power), player: true, enemies: true, endSleep: true, currentCount: -1, maxCount: 1, tags: ["SlowDetection", "move", "cast", "attack"]}
 				);
 			}
 		},
