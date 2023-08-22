@@ -5359,7 +5359,7 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 		// Calculate power of an attack vs protection
 		let protectRestraints = KinkyDungeonAllRestraint().filter((r) => {return KDRestraint(r).protection > 0;});
 		for (let r of protectRestraints) {
-			if (r && KDRestraint(r).protection && (!KDRestraint(r).protectionCursed || targetGroups[KDRestraint(r).Group])) {
+			if (r && KDRestraint(r).protection && (!KDRestraint(r).protectionCursed || !KDGetCurse(r) || !KDCurses[KDGetCurse(r)].activatecurse)) {
 				protection += KDRestraint(r).protection;
 			}
 		}
