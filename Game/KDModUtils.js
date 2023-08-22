@@ -148,14 +148,15 @@ function KinkyDungeonGetHexByList(List, includeOrig, minLevel, maxLevel) {
  * @param {boolean} [includeOrig] - includes thje original item
  * @param {number} [minLevel] - for gating curse severity
  * @param {number} [maxLevel] - for gating curse severity
+ * @param {string[]} [allHex] - for gating curse severity
  * @returns {Record<string, number>}
  */
-function KinkyDungeonGetHexByListWeighted(List, item, includeOrig, minLevel, maxLevel) {
+function KinkyDungeonGetHexByListWeighted(List, item, includeOrig, minLevel, maxLevel, allHex) {
 	let list = KinkyDungeonGetHexByList(List, includeOrig, minLevel, maxLevel);
 	/** @type {Record<string, number>} */
 	let ret = {};
 	for (let obj of list) {
-		ret[obj] = KDEventHexModular[obj].weight(item);
+		ret[obj] = KDEventHexModular[obj].weight(item, allHex);
 	}
 	return ret;
 }
@@ -193,14 +194,15 @@ function KinkyDungeonGetEnchantmentsByList(List, includeOrig, minLevel, maxLevel
  * @param {boolean} [includeOrig] - includes thje original item
  * @param {number} [minLevel] - for gating curse severity
  * @param {number} [maxLevel] - for gating curse severity
+ * @param {string[]} [allEnchant] - for gating curse severity
  * @returns {Record<string, number>}
  */
-function KinkyDungeonGetEnchantmentsByListWeighted(List, item, includeOrig, minLevel, maxLevel) {
+function KinkyDungeonGetEnchantmentsByListWeighted(List, item, includeOrig, minLevel, maxLevel, allEnchant) {
 	let list = KinkyDungeonGetEnchantmentsByList(List, includeOrig, minLevel, maxLevel);
 	/** @type {Record<string, number>} */
 	let ret = {};
 	for (let obj of list) {
-		ret[obj] = KDEventEnchantmentModular[obj].weight(item);
+		ret[obj] = KDEventEnchantmentModular[obj].weight(item, allEnchant);
 	}
 	return ret;
 }

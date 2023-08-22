@@ -630,6 +630,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 		// Get the most powerful item
 		let item = items.length > 0 ? items.reduce((prev, current) => (KDRestraint(prev).power * KinkyDungeonGetLockMult(prev.lock, prev) > KDRestraint(current).power * KinkyDungeonGetLockMult(current.lock, current)) ? prev : current) : null;
 		if (item) {
+			item.curse = undefined;
 			KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false, true, undefined, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
 			KDSendStatus('escape', item.name, "shrine_" + shrine);
 			count++;
@@ -644,6 +645,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 			if (item) {
 				let groupItem = KinkyDungeonGetRestraintItem(KDRestraint(item).Group);
 				if (groupItem == item) {
+					item.curse = undefined;
 					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false, true, undefined, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
 					KDSendStatus('escape', item.name, "shrine_" + shrine);
 					count++;
@@ -652,6 +654,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 					let link = host.dynamicLink;
 					while (link) {
 						if (link == item) {
+							item.curse = undefined;
 							KinkyDungeonRemoveDynamicRestraint(host, false, false, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
 							KDSendStatus('escape', item.name, "shrine_" + shrine);
 							count++;

@@ -38,10 +38,10 @@ let KDHexVariantList = {
 	],
 };
 
-/** @type {Record<string, {level: number, weight: (item: string) => number, events: KinkyDungeonEvent[]}>} */
+/** @type {Record<string, {level: number, weight: (item: string, allHex: string[]) => number, events: KinkyDungeonEvent[]}>} */
 let KDEventHexModular = {
 	"Light": {level: 1,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 8;
 		},
 		events: [
@@ -52,7 +52,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", prereq: "noCorruption", msg: "Illumination", color: "#ff5555", inheritLinked: true},
 		]},
 	"Attraction": {level: 1,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 8;
 		},
 		events: [
@@ -62,7 +62,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Attraction", color: "#ff5555", inheritLinked: true}
 		]},
 	"Sensitivity": {level: 1,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 8;
 		},
 		events: [
@@ -72,7 +72,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Sensitivity", color: "#ff5555", inheritLinked: true}
 		]},
 	"Submission": {level: 1,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 8;
 		},
 		events: [
@@ -82,7 +82,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Submission", color: "#ff5555", inheritLinked: true}
 		]},
 	"Distraction": {level: 1,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 8;
 		},
 		events: [
@@ -92,7 +92,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Distraction", color: "#ff5555", inheritLinked: true}
 		]},
 	"Breathlessness": {level: 1,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 8;
 		},
 		events: [
@@ -102,7 +102,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Breathlessness", color: "#ff5555", inheritLinked: true}
 		]},
 	"Futility": {level: 1,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 8;
 		},
 		events: [
@@ -112,7 +112,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Futile", color: "#ff5555", inheritLinked: true}
 		]},
 	"Tickle": {level: 1,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 8;
 		},
 		events: [
@@ -122,7 +122,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Tickle", color: "#ff5555", inheritLinked: true}
 		]},
 	"Punish": {level: 2,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 8;
 		},
 		events: [
@@ -135,7 +135,7 @@ let KDEventHexModular = {
 
 	//region Cursed
 	"CursedHeal": {level: 5,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 30;
 		},
 		events: [
@@ -144,7 +144,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedHeal", color: "#9074ab", inheritLinked: true}
 		]},
 	"CursedCorruption": {level: 6,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 40;
 		},
 		events: [
@@ -152,7 +152,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedCorruption", color: "#9074ab", inheritLinked: true}
 		]},
 	"CursedDistract": {level: 4,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 80;
 		},
 		events: [
@@ -160,7 +160,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedDistract", color: "#9074ab", inheritLinked: true}
 		]},
 	"CursedPunishment": {level: 8,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 80;
 		},
 		events: [
@@ -168,7 +168,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedPunishment", color: "#9074ab", inheritLinked: true}
 		]},
 	"CursedSubmission": {level: 8,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return 80;
 		},
 		events: [
@@ -176,7 +176,7 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedSubmission", color: "#9074ab", inheritLinked: true}
 		]},
 	"CursedDenial": {level: 8,
-		weight: (item) => {
+		weight: (item, allHex) => {
 			return KinkyDungeonStatsChoice.get("arousalMode") ? 35 : 0;
 		},
 		events: [

@@ -287,7 +287,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		let curses = (Loot.minHex || 1) + Math.floor(KDRandom() * ((Loot.maxHex || 1) - (Loot.minHex || 1)));
 		if (Loot.hexlist && (Loot.hexchance == undefined || KDRandom() < Loot.hexchance) || (Loot.nouncursed && !Loot.enchantlist && KinkyDungeonInventoryGet(Loot.nouncursed))) {
 			while (curses > 0) {
-				let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted(Loot.hexlist, armor, false, Loot.hexlevelmin, Loot.hexlevelmax));
+				let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted(Loot.hexlist, armor, false, Loot.hexlevelmin, Loot.hexlevelmax, [hexVariant, ...hex_extra]));
 				if (!enchantVariant) {
 					hexVariant = curs;
 					// Sets the armor to the cursed type
@@ -301,7 +301,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		if (Loot.enchantlist && (Loot.enchantchance == undefined || KDRandom() < Loot.enchantchance || (Loot.nouncursed && !hexVariant && KinkyDungeonInventoryGet(Loot.nouncursed)) || (hexVariant && Loot.alwaysenchanthex))) {
 			while (enchants > 0) {
 				let ench = KDGetByWeight(
-					KinkyDungeonGetEnchantmentsByListWeighted(Loot.enchantlist, armor, false, Loot.enchantlevelmin, Loot.enchantlevelmax)
+					KinkyDungeonGetEnchantmentsByListWeighted(Loot.enchantlist, armor, false, Loot.enchantlevelmin, Loot.enchantlevelmax, [enchantVariant, ...enchant_extra])
 				);
 				if (!enchantVariant) {
 					enchantVariant = ench;
@@ -327,10 +327,10 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 				events.push(...KDEventHexModular[c].events);
 			}
 			if (enchantVariant) {
-				events.push(...KDEventEnchantmentModular[enchantVariant].events(armor, Loot, hexVariant, ""));
+				events.push(...KDEventEnchantmentModular[enchantVariant].events(armor, Loot, hexVariant, enchantVariant, hex_extra));
 			}
 			for (let e of enchant_extra) {
-				events.push(...KDEventEnchantmentModular[e].events(armor, Loot, hexVariant, enchantVariant));
+				events.push(...KDEventEnchantmentModular[e].events(armor, Loot, hexVariant, enchantVariant, enchant_extra));
 			}
 			/** @type {KDInventoryVariant} */
 			let variant = {
