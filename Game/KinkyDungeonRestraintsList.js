@@ -1512,7 +1512,9 @@ const KinkyDungeonRestraints = [
 		limitChance: {"Struggle": 0.12, "Cut": 0.03, "Remove": 0.1, "Unlock": 0.75}, // Hard to escape the arms box by struggling
 		escapeChance: {"Struggle": -0.175, "Cut": 0.1, "Remove": 0.15, "Pick": 0.15},
 		maxwill: 0.3, enemyTags: {"maidRestraints":5, "maidRestraintsNonChastity": 10, "noMaidJacket":-5}, playerTags: {"ItemArmsEmpty": -9}, minLevel: 7, allFloors: true, shrine: ["Latex", "Straitjackets", "Block_ItemHands", "Illusion"]},
-	{inventory: true, name: "MaidDress", debris: "Fabric", inaccessible: true, Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#191919'], Group: "ItemArms", LinkableBy: [...KDDressLink], bindarms: true, bindhands: 1.0, power: 8.5, weight: 0,
+	{inventory: true, name: "MaidDress", debris: "Fabric", inaccessible: true, Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#191919'],
+		Group: "ItemArms", LinkableBy: [...KDDressLink], bindarms: true, bindhands: 1.0, power: 8.5, weight: 0,
+		remove: ["Suit", "Cloth", "Bra", "SuitLower", "ClothLower", "Hat", "Socks", "Shoes"],
 		escapeChance: {"Struggle": -0.175, "Cut": 0.1, "Remove": -0.2, "Pick": 0.15},
 		helpChance: {"Remove": 0.075},
 		limitChance: {"Struggle": 0.12, "Cut": 0.03, "Remove": 0.1, "Unlock": 0.75}, // Hard to escape the arms box by struggling

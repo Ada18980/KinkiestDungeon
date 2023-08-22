@@ -266,18 +266,21 @@ const KinkyDungeonMapParams = {
 			// Start nature near plants, mushrooms, etc
 			for (let x = 0; x < KinkyDungeonGridWidth-1; x++)
 				for (let y = 0; y < KinkyDungeonGridHeight-1; y++) {
-					let enemy = KinkyDungeonEnemyAt(x, y);
+					let category = KDGameData.CategoryIndex ? KDGetCategoryIndex(x, y)?.category : "";
+					/*let enemy = KinkyDungeonEnemyAt(x, y);
 					let tile = KinkyDungeonMapGet(x, y);
 					if ((enemy && (enemy.Enemy.faction == "Plant" || enemy.Enemy.faction == "Natural"))
 						|| (tile != '2' && KDRandom() < 0.001)
 						|| (tile == 'X' && KDRandom() < 0.04)) {
 						naturalized[x + ',' + y] = true;
-					}
+					}*/
+					if ((category == "jungle" || category == "natural" || category == "garden") && KDRandom() < 0.1) naturalized[x + ',' + y] = true;
+					if (category == "cavern" && KDRandom() < 0.1) cavernized[x + ',' + y] = true;
 				}
 			// dilate a few times
 			let wallchance = 0.1;
 			let wallchanceCav = 0.01;
-			let cavChance = 0.04;
+			let cavChance = 0.01;
 			for (let i = 6 + 4*KDRandom(); i>0; i--) {
 				for (let x = 0; x < KinkyDungeonGridWidth-1; x++)
 					for (let y = 0; y < KinkyDungeonGridHeight-1; y++) {

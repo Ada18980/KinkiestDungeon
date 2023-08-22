@@ -298,6 +298,7 @@ let KDOptOut = false;
 * Training: Record<string, KDTrainingRecord>,
 * QuickLoadout: KDPresetLoadout[],
 * CurrentLoadout: number,
+* CategoryIndex: Record<string, {category: string, tags: string[]}>
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
@@ -447,6 +448,7 @@ let KDGameDataBase = {
 	ItemID: 0,
 	ShopkeeperFee: 0,
 	otherPlaying: 0,
+	CategoryIndex: {},
 };
 /**
  * @type {KDGameDataBase}

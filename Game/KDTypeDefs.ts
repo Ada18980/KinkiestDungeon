@@ -2170,7 +2170,7 @@ interface KDCursedDef {
 	/** TODO NOT IMPLEMENTED for a future RemoveCursesWithShrine function */
 	shrineRemove?: string[],
 	level: number,
-	weight: (item) => number,
+	weight: (item, allHex?) => number,
 	customStruggle?: (item: item, Curse?: string) => void,
 	customInfo?: (item: item, Curse?: string) => void,
 	onApply?: (item: item, host?: item) => void,

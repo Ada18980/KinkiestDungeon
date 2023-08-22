@@ -119,6 +119,10 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 					for (let yy = 1; yy <= tile.h; yy++) {
 						tilesFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile;
 						indexFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile.index[xx + ',' + yy];
+						KDGameData.CategoryIndex[(indX + xx - 1) + "," + (indY + yy - 1)] = {
+							category: tile.category,
+							tags: tags,
+						};
 					}
 			}
 
@@ -822,4 +826,17 @@ function KDAggregateTileTags(x, y, w, h, tilesFilled, globalTags) {
 		}
 
 	return tags;
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @returns {{category: string, tags: string[]}}
+ */
+function KDGetCategoryIndex(x, y) {
+	if (KDGameData.CategoryIndex) {
+		return KDGameData.CategoryIndex[Math.ceil(x/KDTE_Scale) + ',' + Math.ceil(y/KDTE_Scale)];
+	}
+	return {category: "", tags: []};
 }

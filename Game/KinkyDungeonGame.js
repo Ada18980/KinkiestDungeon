@@ -631,6 +631,8 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 			notraps: altType?.notraps,
 		};
 
+		KDGameData.CategoryIndex = {};
+
 		KinkyDungeonCreateMapGenType[genType](POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 
 		//console.log(KDRandom());
