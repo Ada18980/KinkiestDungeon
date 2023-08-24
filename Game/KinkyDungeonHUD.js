@@ -169,6 +169,7 @@ let KDBuffSprites = {
 	"ScrollLegs": true,
 	"Empower": true,
 	"SlimeMimic": true,
+	"d_SlimeMimic": true,
 	"DisenchantSelf": true,
 	"LeatherBurst": true,
 
@@ -249,7 +250,7 @@ let KDStatsOrder = {
 
 function KinkyDungeonDrawInputs() {
 	/**
-	 * @type {Record<string, {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string}>}
+	 * @type {Record<string, {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, click?: string, buffid?: string}>}
 	 */
 	let statsDraw = {};
 
@@ -621,6 +622,8 @@ function KinkyDungeonDrawInputs() {
 				icon: KDBuffSprites[b.id] ? "buff/buff" + b.id : undefined,
 				//countcolor: b.aura ? b.aura : b.labelcolor,
 				category: "buffs", color: b.aura ? b.aura : b.labelcolor, bgcolor: "#333333", priority: pri,
+				buffid: b.id,
+				click: b.click,
 			};
 			//DrawTextFitKD(TextGet("KinkyDungeonBuff" + b.id) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ` (${b.duration})` : ""), 790, 900 - i * 35, 275, b.aura ? b.aura : b.labelcolor, "#333333"); i++;
 		}
@@ -722,14 +725,30 @@ function KinkyDungeonDrawInputs() {
 
 		if (stat.count)
 			DrawTextFitKD(stat.count, XX + spriteSize/2, YY + spriteSize/2 - 10, textWidth, stat.countcolor || "#ffffff", "#000000", 16, undefined, 114, 0.8, 5);
+
+		if (MouseIn(XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize)) {
+			DrawTextFitKD(stat.text, XX - 10, YY, 1250, stat.color, "#000000", 22, "right", 160, 1.0, 8);
+			if (stat.click) {
+				DrawButtonKDEx("statHighlight" + II, (bdata) => {
+					KDSendInput("buffclick", {
+						click: stat.click,
+						buff: stat.buffid,
+					});
+					return true;
+				}, true,
+				XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize, undefined, "#ffffff",
+				undefined, undefined, false, true, undefined, undefined, undefined,
+				{
+					zIndex: 102,
+				});
+			}
+		}
+
 		KDDraw(kdcanvas, kdpixisprites, "stat" + II, KinkyDungeonRootDirectory + "Buffs/" + (stat.icon || "buff/buff") + ".png",
 			XX, YY - Math.ceil(spriteSize/2), undefined, undefined, undefined, {
 				zIndex: 101,
 			});
 
-		if (MouseIn(XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize)) {
-			DrawTextFitKD(stat.text, XX - 10, YY, 1250, stat.color, "#000000", 22, "right", 160, 1.0, 8);
-		}
 		XX += XXspacing;
 		if (XX > maxXX) {
 			resetX(stat);

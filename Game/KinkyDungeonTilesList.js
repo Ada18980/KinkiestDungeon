@@ -1144,10 +1144,10 @@ let KDEffectTileBulletFunctions = {
 				if (type == "fire" && b.bullet.damage.damage > 0) {
 					tile.duration = 0;
 					KDSmokePuff(tile.x, tile.y, 1.5, 0.1, true);
-					KDCreateEffectTile(tile.x, tile.y, {
+					KDCreateAoEEffectTiles(tile.x, tile.y, {
 						name: "Steam",
 						duration: 6,
-					}, 2); // Create steam
+					}, 2, 2.5, undefined, 0.75);
 				}
 				if (type == "electric" && b.bullet.damage.damage > 0) {
 					KDCreateEffectTile(tile.x, tile.y, {

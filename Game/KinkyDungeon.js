@@ -1914,13 +1914,13 @@ function KDCullSprites() {
 }
 
 /**
- * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean}>}
+ * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number}>}
  */
 let KDButtonsCache = {
 
 };
 /**
- * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean}>}
+ * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number}>}
  */
 let KDLastButtonsCache = {
 
@@ -1951,6 +1951,7 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
 		Width,
 		Height,
 		enabled,
+		priority: 0,
 	};
 }
 
@@ -1990,6 +1991,7 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
 		Height,
 		enabled,
 		func,
+		priority: (options?.zIndex || 0),
 	};
 }
 
@@ -2029,17 +2031,24 @@ function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Heig
 		Height,
 		enabled,
 		func,
+		priority: (options?.zIndex || 0)
 	};
 }
 
 function KDProcessButtons() {
+	let buttons = [];
 	for (let button of Object.entries(KDButtonsCache)) {
 		if (button[1].enabled && button[1].func) {
 			if (MouseInKD(button[0])) {
-				return button[1].func();
+				buttons.push(button[1]);
 			}
 		}
 	}
+	if (buttons.length > 0) {
+		buttons = buttons.sort((a, b) => {return b.priority - a.priority;});
+		return buttons[0].func();
+	}
+
 	return false;
 }
 

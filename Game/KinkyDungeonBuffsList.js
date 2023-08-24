@@ -183,3 +183,20 @@ let KDDisenchantSelf = {id: "DisenchantSelf", aura: "#8888ff", type: "Disenchant
 /** @type {Record<string, (entity: entity, buff: any) => void>}>} */
 let KDCustomBuff = {
 };
+
+/**
+ * @type {Record<string, (buff, entity) => void>}}
+ */
+let KDBuffClick = {
+	"SlimeMimic": (buff, entity) => {
+		// Toggle SlimeMimic on/off
+		let b = KinkyDungeonPlayerBuffs.d_SlimeMimic;
+		if (b && b.duration > 0) {
+			b.duration = 0;
+		} else {
+			KinkyDungeonApplyBuffToEntity(entity,
+				{id: "d_SlimeMimic", click: "SlimeMimic", type: "d_SlimeMimic", aura: "#ffffff", aurasprite: "Null", duration: 9999, power: 1}
+			);
+		}
+	},
+};

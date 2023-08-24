@@ -1442,6 +1442,8 @@ Features
 - Enemies now have semi-directional vision (they can still see behind themselves, just not as clearly)
 - Added a lot more Fuuka dialogue (about those reincarnated ones...) for those interested in lore. Talk to her after defeating the Dollmaker for an extra branch!
 - Added 4 types of Fighter
+- Convincing Disguise can now be toggled
+- Mental Training can now be toggled
 Changes
 - Second Wind now restores WP when free
 - Added more restraints to the loot tables
