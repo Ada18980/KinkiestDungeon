@@ -1,3 +1,4 @@
+
 /**
  * Returns a table with the priorities for each layer based on order of the array
  */
@@ -280,6 +281,18 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 		}
 	}
 
+	// Create the layer extra filter matrix
+	let ExtraFilters: Record<string, LayerFilter[]> = {};
+	for (let m of Models.values()) {
+		for (let l of Object.values(m.Layers)) {
+			if (l.ApplyFilterToLayer) {
+				for (let ll of Object.entries(l.ApplyFilterToLayer)) {
+					if (!ExtraFilters[ll[0]]) ExtraFilters[ll[0]] = [];
+					ExtraFilters[ll[0]].push(m.Filters[l.InheritColor || l.Name]);
+				}
+			}
+		}
+	}
 
 	// TODO hide, filtering based on pose, etc etc
 	let {X_Offset, Y_Offset} = ModelGetPoseOffsets(MC.Poses);
@@ -318,6 +331,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				let sy = 1;
 				let rot = 0;
 				let layer = LayerLayer(MC, l, m, mods);
+				let origlayer = layer;
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
 					for (let mod of mod_selected) {
@@ -339,9 +353,24 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				if (filter && !KDAdjustmentFilterCache.get(fh)) {
 					KDAdjustmentFilterCache.set(FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
 				}
+
+				let extrafilter: PIXIAdjustmentFilter[] = [];
+				if (ExtraFilters[origlayer]) {
+					for (let ef of ExtraFilters[origlayer]) {
+						let efh = FilterHash(ef)
+						let efilter = (KDAdjustmentFilterCache.get(efh) || [new PIXI.filters.AdjustmentFilter(ef)]);
+						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
+							KDAdjustmentFilterCache.set(FilterHash(ef), efilter);
+						}
+						extrafilter.push(...efilter);
+					}
+				}
+
 				let img = ModelLayerString(m, l, MC.Poses);
 				let id = `layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`;
 				if (!modified && !ContainerContainer.SpriteList.has(id)) modified = true;
+				let filters = filter;
+				if (extrafilter) filters = [...(filter || []), ...extrafilter];
 				KDDraw(
 					ContainerContainer.Container,
 					ContainerContainer.SpriteList,
@@ -349,12 +378,12 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					img,
 					ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
 					rot * Math.PI / 180, {
-						zIndex: -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0),
+						zIndex: -ModelLayers[origlayer] + (LayerPri(MC, l, m, mods) || 0),
 						anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
 						anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
 						scalex: sx != 1 ? sx : undefined,
 						scaley: sy != 1 ? sy : undefined,
-						filters: filter,
+						filters: filters,
 					}, false,
 					ContainerContainer.SpritesDrawn,
 					Zoom
@@ -371,7 +400,7 @@ function FilterHash(filter) {
 	return str;
 }
 
-const KDAdjustmentFilterCache: Map<string, PIXIAdjustmentFilter | PIXIAdjustmentFilter[]> = new Map();
+const KDAdjustmentFilterCache: Map<string, PIXIAdjustmentFilter[]> = new Map();
 
 /**
  * Determines if we should draw this layer or not
@@ -511,9 +540,9 @@ function LayerSprite(Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
 	}
 
 	if (Layer.AppendPose) {
-		for (let p of Object.keys(Layer.AppendPose)) {
-			if (Poses[p] != undefined && (!Layer.AppendPoseRequire || Layer.AppendPoseRequire[p])) {
-				pose = pose + p;
+		for (let p of Object.entries(Layer.AppendPose)) {
+			if (Poses[p[0]] != undefined && (!Layer.AppendPoseRequire || Layer.AppendPoseRequire[p[0]])) {
+				pose = pose + (p[1] || p[0]);
 				break;
 			}
 		}

@@ -35,10 +35,19 @@ function ToMapSubtract(Array: string[], Subtract: string[], ...Extra: string[]):
 	return list;
 }
 
+
 function ToMapDefault(Array: string[], Default: string = ""): {[_: string]: string} {
 	let list: {[_: string]: string} = {};
 	for (let n of Array) {
 		list[n] = Default;
+	}
+	return list;
+}
+
+function ToMapDupe(Array: string[], ExtraMap?: Record<string, string>): {[_: string]: string} {
+	let list: {[_: string]: string} = Object.assign({}, ExtraMap || {});
+	for (let n of Array) {
+		list[n] = n;
 	}
 	return list;
 }

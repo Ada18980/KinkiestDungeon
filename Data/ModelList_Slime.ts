@@ -79,9 +79,13 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["TorsoLowerTight", "EncaseTorsoLower"],
+	Filters: {
+		"TorsoLower": {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":1.7000000000000002,"green":0.5166666666666666,"blue":2.3833333333333333,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "WrappingTorso", Pri: -6,
 			Invariant: true,
+			ApplyFilterToLayer: ToMap(["OverSkirt"]),
 		},
 	])
 });

@@ -97,7 +97,7 @@ interface ModelLayer extends Namable {
 	/** Overrides globaL_default of the listed poses */
 	GlobalDefaultOverride?: Record<string, boolean>,
 	/** When this pose is present it appends it to the name. Only one can be appended this way */
-	AppendPose?: Record<string, boolean>,
+	AppendPose?: Record<string, string>,
 	/** Lists the poses that can be affected by AppendPose*/
 	AppendPoseRequire?: Record<string, boolean>,
 	/** Hides when this pose plus the layer name is present. E.g. HidePrefixPose: ["Encase"] will hide EncaseShoeLeft if the layer is on ShoeLeft */
@@ -120,6 +120,8 @@ interface ModelLayer extends Namable {
 	TieToLayer?: string,
 	/** The name is as is */
 	Invariant?: boolean,
+	/** Applies this layer's filter to a layer when the filter isn't hidden */
+	ApplyFilterToLayer?: Record<string, boolean>,
 	/** Disables color filters */
 	NoColorize?: boolean,
 	/** Inherits colorization from another layer */
