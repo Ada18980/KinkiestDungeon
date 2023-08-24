@@ -671,9 +671,10 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				} else {
 					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
-					KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
-					effect = true;
+
 				}
+				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+				effect = true;
 			}
 		} else  if (playerEffect.name == "SingleMagicChain") {
 			if (KDTestSpellHits(spell, 0, 1.0)) {
@@ -684,6 +685,8 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleChain"), "#ff0000", playerEffect.time);
 					effect = true;
 				}
+				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+				effect = true;
 			}
 		} else if (playerEffect.name == "Spores") {
 			KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, 6);
@@ -731,9 +734,9 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				} else {
 					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
-					KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
-					effect = true;
 				}
+				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+				effect = true;
 			}
 		} else if (playerEffect.name == "RestrainingDevice") {
 			if (KDTestSpellHits(spell, 0, 1.0)) {
@@ -754,9 +757,9 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 					KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
 					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonRestrainingDeviceStun"), "yellow", playerEffect.time);
-					KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
-					effect = true;
 				}
+				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+				effect = true;
 			}
 
 		} else if (playerEffect.name == "Glue") {
@@ -777,13 +780,13 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			} else {
 				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonGlueSlow"), "yellow", playerEffect.time);
-				if (playerEffect.power) {
-					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonGlueSlowDamage").replace("DamageDealt", playerEffect.power), "yellow", 2);
-					KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
-				} else KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonGlueSlow"), "yellow", playerEffect.time);
 				effect = true;
 			}
-
+			if (playerEffect.power) {
+				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonGlueSlowDamage").replace("DamageDealt", playerEffect.power), "yellow", 2);
+				KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
+				effect = true;
+			}
 		} else if (playerEffect.name == "RopeEngulf") {
 			let added = [];
 			for (let i = 0; i < playerEffect.power; i++) {
@@ -861,9 +864,10 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				} else {
 					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
-					KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
-					effect = true;
+
 				}
+				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+				effect = true;
 			}
 		} else if (playerEffect.name == "VineEngulf") {
 			let added = [];
@@ -889,9 +893,10 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				} else {
 					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
-					KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
-					effect = true;
+
 				}
+				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+				effect = true;
 			}
 		}  else if (playerEffect.name == "ObsidianEngulf") {
 			let added = [];
@@ -910,9 +915,10 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			} else {
 				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
-				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
-				effect = true;
+
 			}
+			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+			effect = true;
 		} else if (playerEffect.name == "CharmWraps") {
 			let added = [];
 			for (let i = 0; i < playerEffect.power; i++) {
@@ -937,10 +943,11 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				} else {
 					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
-					KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
-					effect = true;
+
 				}
 			}
+			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+			effect = true;
 		} else if (playerEffect.name == "EnchantedArrow") {
 			let added = [];
 			for (let i = 0; i < playerEffect.count; i++) {
@@ -962,9 +969,10 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			} else {
 				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
-				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
-				effect = true;
+
 			}
+			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+			effect = true;
 
 		} else if (playerEffect.name == "TrapBindings") {
 			let added = [];
@@ -991,9 +999,11 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				// else if (!playerEffect.noGuard && KDGameData.PrisonerState != 'jail' && KDGameData.PrisonerState != 'parole') {
 				//KinkyDungeonCallGuard(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 				//}
-				if (playerEffect.power > 0 && playerEffect.damage) {
-					KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
-				}
+
+			}
+			if (playerEffect.power > 0 && playerEffect.damage) {
+				KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
+				effect = true;
 			}
 		} else if (playerEffect.name == "NurseSyringe") {
 			if (KDTestSpellHits(spell, 1.0, 1.0)) {
