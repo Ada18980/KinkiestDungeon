@@ -4689,7 +4689,7 @@ KinkyDungeonSpellManaRegenPlus,Battlemage
 KinkyDungeonSpellDescriptionManaRegenPlus,"Your innate mana regeneration is no longer paused after attacking or casting a spell."
 
 KinkyDungeonSpellOrgasmMana1,Way of Pleasure
-KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 40 mana as long as you have willpower to spare. Blocks Way of Discipline."
+KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 40 mana as long as you have willpower to spare. Does not restore Mana Pool. Blocks Way of Discipline."
 
 KinkyDungeonSpellOrgasmBuff,Intense Power
 KinkyDungeonSpellDescriptionOrgasmBuff,"After letting go of yourself, you feel an immense surge of power, increasing magic damage by 40% for 8 turns after you regain control, and by 10% while you remain satisfied."
@@ -4703,10 +4703,10 @@ KinkyDungeonSpellDescriptionOrgasmResist,"+100 Psychic and Charm Resist. You can
 
 
 KinkyDungeonSpellEdgeMana1,Way of Discipline
-KinkyDungeonSpellDescriptionEdgeMana1,"You have chosen the path of absolute discipline. Being in an Edged state increases passive mana recovery, and if you have willpower to spare you regenerate 1 passive mana per 5 turns. Blocks Way of Pleasure."
+KinkyDungeonSpellDescriptionEdgeMana1,"You have chosen the path of absolute discipline. Being in an Edged state increases passive mana recovery, and if you have willpower to spare you regenerate 1 mana per 5 turns. Does not restore Mana Pool. Blocks Way of Pleasure."
 
 KinkyDungeonSpellDenyMana,Way of Denial
-KinkyDungeonSpellDescriptionDenyMana,"Harnessing your mental discipline, you regenerate 50 mana each time you are denied, so long as you have willpower to spare."
+KinkyDungeonSpellDescriptionDenyMana,"Harnessing your mental discipline, you regenerate 50 mana each time you are denied, so long as you have willpower to spare. Does not restore Mana Pool."
 
 
 KinkyDungeonSpellApprenticeFire,Flame Novice
