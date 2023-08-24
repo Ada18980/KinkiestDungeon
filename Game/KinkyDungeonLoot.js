@@ -745,8 +745,9 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 							`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 7);
 						remove = true;
 					} else if (lostitem.type == LooseRestraint && KinkyDungeonGetRestraintByName(lostitem.name)) {
-						KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
-							`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);
+						if (KinkyDungeonGetRestraintByName(lostitem.name).armor || KinkyDungeonInventoryVariants[lostitem.name] != undefined)
+							KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
+								`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);
 						remove = true;
 					}
 				}

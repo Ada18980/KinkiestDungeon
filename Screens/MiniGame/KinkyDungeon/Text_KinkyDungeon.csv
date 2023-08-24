@@ -16,6 +16,7 @@ CN,Chinese
 KR,Korean
 JP,Japanese
 ES,Spanish
+FR,French
 KDMods,Mods
 KDModsLoaded,Mods Loaded.
 
@@ -24,6 +25,7 @@ RestartNeededCN,"需要重启！"
 RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
+RestartNeededFR,"Rechargement requis!"
 
 KinkyDungeon,"Kinky Dungeon v4.51"
 KDLogo2,"By Ada18980"
@@ -11195,3 +11197,4 @@ AttackAdventurer_Switch_Fighter,"The fighter throws her weapon at you! (DamageTa
 AttackAdventurer_Switch_FighterLock,"The fighter puts you in a hold and manages to slip on a lock! (DamageTaken)"
 AttackAdventurer_Switch_FighterDash,"The fighter vanishes and ends up behind you!"
 
+KDCasting,"Casting SPNME"
