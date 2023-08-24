@@ -34,11 +34,12 @@ let LAYERS_BASE = [
 	"CollarAcc",
 	"Collar",
 
+	// Bondage
+	"BindForeArmLeft",
+	"BindForeArmRight",
+
 	"ForeWrists",
 
-	// Bondage
-	"BindArmLeft",
-	"BindArmRight",
 
 	// Forearms (only in HandsFront)
 	"ForeWristLeft",
@@ -60,10 +61,17 @@ let LAYERS_BASE = [
 
 
 	// This slot is for things like breastplates and things that go over
+	"WrappingChest",
+
 	"Jacket",
 	"ChestDeco",
 	"ChestStraps",
 	"Chestplate",
+
+	// Bondage
+	"BindArmLeft",
+	"BindArmRight",
+
 	// Certain pieces of armor go over the shirt
 	"BeltBondage",
 	"BeltCharm",
@@ -90,6 +98,9 @@ let LAYERS_BASE = [
 	"HarnessOver",
 	"BraChest",
 	"Chest",
+
+	"WrappingTorso",
+
 	"StrapsUnderbust",
 
 	// For form-fitting stuff that nonetheless goes over a shirt

@@ -231,6 +231,25 @@ function LayerIsHidden(MC: ModelContainer, l: ModelLayer, m: Model, Mods) : bool
 	return false;
 }
 
+function LayerLayer(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : string {
+	if (l.SwapLayerPose) {
+		for (let p of Object.entries(l.SwapLayerPose)) {
+			if (MC.Poses[p[0]]) return p[1];
+		}
+	}
+	return l.Layer;
+}
+
+/** TODO Unused */
+function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
+	if (l.SwapPriorityPose) {
+		for (let p of Object.entries(l.SwapPriorityPose)) {
+			if (MC.Poses[p[0]]) return p[1];
+		}
+	}
+	return l.Pri;
+}
+
 /**
  * Setup sprites from the modelcontainer
  */
@@ -243,17 +262,20 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 	MC.HighestPriority = {};
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
+			let pri = LayerPri(MC, l, m, StartMods);
 			if (!l.DontAlwaysOverride && LayerIsHidden(MC, l, m, StartMods)) continue;
-			if (!l.NoOverride)
-				MC.HighestPriority[l.Layer] = Math.max(MC.HighestPriority[l.Layer] || -500, l.Pri || -500);
+			if (!l.NoOverride) {
+				let layer = LayerLayer(MC, l, m, StartMods);
+				MC.HighestPriority[layer] = Math.max(MC.HighestPriority[layer] || -500, pri || -500);
+			}
 			if (l.CrossHideOverride) {
 				if (l.HideOverrideLayerMulti) {
 					for (let hideLayer of l.HideOverrideLayerMulti) {
-						MC.HighestPriority[hideLayer] = Math.max(MC.HighestPriority[hideLayer] || -500, l.Pri || -500);
+						MC.HighestPriority[hideLayer] = Math.max(MC.HighestPriority[hideLayer] || -500, pri || -500);
 					}
 				}
 				if (l.HideOverrideLayer)
-					MC.HighestPriority[l.HideOverrideLayer] = Math.max(MC.HighestPriority[l.HideOverrideLayer] || -500, l.Pri || -500);
+					MC.HighestPriority[l.HideOverrideLayer] = Math.max(MC.HighestPriority[l.HideOverrideLayer] || -500, pri || -500);
 			}
 		}
 	}
@@ -295,7 +317,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				let sx = 1;
 				let sy = 1;
 				let rot = 0;
-				let layer = l.Layer;
+				let layer = LayerLayer(MC, l, m, mods);
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
 					for (let mod of mod_selected) {
@@ -327,7 +349,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					img,
 					ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
 					rot * Math.PI / 180, {
-						zIndex: -ModelLayers[l.Layer] + (l.Pri || 0),
+						zIndex: -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0),
 						anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
 						anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
 						scalex: sx != 1 ? sx : undefined,
@@ -365,11 +387,11 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		if (Layer.HideOverrideLayerMulti) {
 			for (let LL of Layer.HideOverrideLayerMulti) {
 				let priTest = MC.HighestPriority[LL];
-				if (priTest > Layer.Pri) return false;
+				if (priTest > LayerPri(MC, Layer, Model)) return false;
 			}
 		} else {
-			let priTest = MC.HighestPriority[Layer.HideOverrideLayer || Layer.Layer];
-			if (priTest > Layer.Pri) return false;
+			let priTest = MC.HighestPriority[Layer.HideOverrideLayer || LayerLayer(MC, Layer, Model)];
+			if (priTest > LayerPri(MC, Layer, Model)) return false;
 		}
 	}
 
@@ -381,6 +403,21 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 			}
 		}
 	}
+	if (Layer.HidePrefixPose) {
+		for (let p of Layer.HidePrefixPose) {
+			if (Poses[p + LayerPri(MC, Layer, Model)]) {
+				return false;
+			}
+			if (Layer.HidePrefixPoseSuffix) {
+				for (let suff of Layer.HidePrefixPoseSuffix) {
+					if (Poses[p + suff]) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+
 	// Filter poses
 	if (Layer.Poses) {
 		let found = false;

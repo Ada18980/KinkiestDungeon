@@ -82,6 +82,10 @@ interface ModelLayer extends Namable {
     Sprite?: string,
     /** This layer only appears if the item is locked */
     LockLayer?: boolean,
+	/** Changes the layer if a certain pose exists */
+	SwapLayerPose?: Record<string, string>,
+	/** Changes the priority if a certain pose exists */
+	SwapPriorityPose?: Record<string, number>,
     /** One of these layers is required*/
     Poses?: Record<string, boolean>,
     /** These layers are ALL REQUIRED to make it appear*/
@@ -96,6 +100,10 @@ interface ModelLayer extends Namable {
 	AppendPose?: Record<string, boolean>,
 	/** Lists the poses that can be affected by AppendPose*/
 	AppendPoseRequire?: Record<string, boolean>,
+	/** Hides when this pose plus the layer name is present. E.g. HidePrefixPose: ["Encase"] will hide EncaseShoeLeft if the layer is on ShoeLeft */
+	HidePrefixPose?: string[],
+	/** Additional suffixes for HidePrefixPose */
+	HidePrefixPoseSuffix?: string[],
 	/** This layer gets hidden if something else is higher on the priority list */
 	HideWhenOverridden?: boolean,
 	/** This is the layer used for HideWhenOverridden rather than the default layer */

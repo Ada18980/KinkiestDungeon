@@ -32,6 +32,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "ArmLeft", Layer: "BindArmLeft", Pri: -5,
 			Poses: ToMap(["Boxtie", "Front", "Up", "Wristtie"]),
+			SwapLayerPose: {Front: "BindForeArmLeft"},
 			GlobalDefaultOverride: ToMap(["Front"]),
 		},
 	])
@@ -47,10 +48,44 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "BindArmRight", Pri: -5,
 			Poses: ToMap(["Boxtie", "Front", "Up", "Wristtie"]),
+			SwapLayerPose: {Front: "BindForeArmRight"},
 			GlobalDefaultOverride: ToMap(["Front"]),
 		},
 	])
 });
+
+AddModel({
+	Name: "SlimeTorsoUpper",
+	Folder: "Slime",
+	Parent: "SlimeArms",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Slime"],
+	AddPose: ["TorsoUpperTight", "EncaseTorsoUpper"],
+	Layers: ToLayerMap([
+		{ Name: "TorsoUpper", Layer: "WrappingTorso", Pri: -5,
+			Invariant: true,
+		},
+		{ Name: "Chest", Layer: "WrappingChest", Pri: -5,
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "SlimeTorsoLower",
+	Folder: "Slime",
+	Parent: "SlimeArms",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Slime"],
+	AddPose: ["TorsoLowerTight", "EncaseTorsoLower"],
+	Layers: ToLayerMap([
+		{ Name: "TorsoLower", Layer: "WrappingTorso", Pri: -6,
+			Invariant: true,
+		},
+	])
+});
+
 
 AddModel({
 	Name: "SlimeArms",
@@ -59,9 +94,10 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Slime"],
-	AddPose: ["ArmsTight", "EncaseArms"],
+	AddPose: ["ArmLeftTight", "ArmRightTight", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SlimeArmLeft"),
 		...GetModelLayers("SlimeArmRight"),
+		...GetModelLayers("SlimeTorsoUpper"),
 	])
 });
