@@ -2445,7 +2445,7 @@ let KDEventMapSpell = {
 	"deny": {
 		"RestoreDenyMana": (e, spell, data) => {
 			if (KinkyDungeonStatWill > 0) {
-				let willPercentage = data.edgewpCost < 0 ? -KinkyDungeonStatWill/data.edgewpCost : 1.0;
+				let willPercentage = data.edgewpcost < 0 ? -KinkyDungeonStatWill/data.edgewpcost : 1.0;
 				if (willPercentage > 0)
 					KinkyDungeonChangeMana(e.power * willPercentage);
 			}
@@ -2612,7 +2612,7 @@ let KDEventMapSpell = {
 		},
 		"RestoreEdgeMana": (e, spell, data) => {
 			if (KinkyDungeonStatWill > 0 && KDIsEdged(KinkyDungeonPlayerEntity) && data.delta > 0) {
-				KinkyDungeonChangeMana(0.0, true, e.power);
+				KinkyDungeonChangeMana(e.power, true);
 			}
 		},
 		"Parry": (e, spell, data) => {
