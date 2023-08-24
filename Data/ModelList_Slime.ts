@@ -16,7 +16,52 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Legs", Layer: "OverSocks", Pri: 1,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
-			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 		},
+	])
+});
+
+AddModel({
+	Name: "SlimeArmLeft",
+	Folder: "Slime",
+	Parent: "SlimeArms",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Slime"],
+	AddPose: ["ArmLeftTight", "EncaseArmLeft"],
+	Layers: ToLayerMap([
+		{ Name: "ArmLeft", Layer: "BindArmLeft", Pri: -5,
+			Poses: ToMap(["Boxtie", "Front", "Up", "Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+	])
+});
+AddModel({
+	Name: "SlimeArmRight",
+	Folder: "Slime",
+	Parent: "SlimeArms",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Slime"],
+	AddPose: ["ArmRightTight", "EncaseArmRight"],
+	Layers: ToLayerMap([
+		{ Name: "ArmRight", Layer: "BindArmRight", Pri: -5,
+			Poses: ToMap(["Boxtie", "Front", "Up", "Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "SlimeArms",
+	Folder: "Slime",
+	Parent: "Slime",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Slime"],
+	AddPose: ["ArmsTight", "EncaseArms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("SlimeArmLeft"),
+		...GetModelLayers("SlimeArmRight"),
 	])
 });

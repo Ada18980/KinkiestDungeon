@@ -43,7 +43,7 @@ AddModel(GetModelWithExtraLayers("BallGagHarness", "BallGag", [
 		AnchorModY: MODELHEIGHT/664,
 		Invariant: true,
 	},
-]));
+], "BallGag", false));
 AddModel(GetModelWithExtraLayers("BallGagHarnessSecure", "BallGagHarness", [
 	{ Name: "SideStrap", Layer: "GagStraps", Pri: 20,
 		Sprite: "BallSideStrap",
@@ -53,7 +53,7 @@ AddModel(GetModelWithExtraLayers("BallGagHarnessSecure", "BallGagHarness", [
 		AnchorModY: MODELHEIGHT/664,
 		Invariant: true,
 	},
-]));
+], "BallGag", false));
 
 
 
@@ -93,7 +93,7 @@ AddModel(GetModelWithExtraLayers("PanelGagHarness", "PanelGag", [
 		AnchorModY: MODELHEIGHT/664,
 		Invariant: true,
 	},
-]));
+], "PanelGag", false));
 AddModel(GetModelWithExtraLayers("PanelGagHarnessSecure", "PanelGagHarness", [
 	{ Name: "SideStrap", Layer: "GagStraps", Pri: 21,
 		Sprite: "PanelSideStrap",
@@ -103,7 +103,7 @@ AddModel(GetModelWithExtraLayers("PanelGagHarnessSecure", "PanelGagHarness", [
 		AnchorModY: MODELHEIGHT/664,
 		Invariant: true,
 	},
-]));
+], "PanelGag", false));
 
 
 
@@ -144,7 +144,7 @@ AddModel(GetModelWithExtraLayers("MuzzleGagHarness", "MuzzleGag", [
 		AnchorModY: MODELHEIGHT/664,
 		Invariant: true,
 	},
-]));
+], "MuzzleGag", false));
 AddModel(GetModelWithExtraLayers("MuzzleGagHarnessSecure", "MuzzleGagHarness", [
 	{ Name: "SideStrap", Layer: "GagStraps", Pri: 22,
 		Sprite: "MuzzleSideStrap",
@@ -154,7 +154,7 @@ AddModel(GetModelWithExtraLayers("MuzzleGagHarnessSecure", "MuzzleGagHarness", [
 		AnchorModY: MODELHEIGHT/664,
 		Invariant: true,
 	},
-]));
+], "MuzzleGag", false));
 
 
 
@@ -179,20 +179,20 @@ AddModel({
 
 AddModel(GetModelWithExtraLayers("PlugMuzzleGag", "MuzzleGag", [
 	...GetModelLayers("PlugGagPlug"),
-]));
+], "MuzzleGag", false));
 AddModel(GetModelWithExtraLayers("PlugMuzzleGagHarness", "MuzzleGagHarness", [
 	...GetModelLayers("PlugGagPlug"),
-]));
+], "MuzzleGag", false));
 AddModel(GetModelWithExtraLayers("PlugMuzzleGagHarnessSecure", "MuzzleGagHarnessSecure", [
 	...GetModelLayers("PlugGagPlug"),
-]));
+], "MuzzleGag", false));
 
 
 AddModel({
 	Name: "RopeBoxtie1",
 	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
+	Parent: "RopeBoxtie1",
+	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["Boxties"],
@@ -206,8 +206,8 @@ AddModel({
 AddModel({
 	Name: "RopeWristtie1",
 	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
+	Parent: "RopeHarness",
+	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["Wristties"],
@@ -225,8 +225,8 @@ AddModel({
 AddModel({
 	Name: "RopeChestStraps1",
 	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
+	Parent: "RopeHarness",
+	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["RopesLower"],
@@ -242,8 +242,8 @@ AddModel({
 AddModel({
 	Name: "RopeChestStraps2",
 	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
+	Parent: "RopeHarness",
+	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["RopesUpper"],
@@ -265,8 +265,8 @@ AddModel({
 AddModel({
 	Name: "RopeCuffs",
 	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
+	Parent: "RopeHarness",
+	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["Handcuffed"],
@@ -281,8 +281,8 @@ AddModel({
 AddModel({
 	Name: "RopeBelt",
 	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
+	Parent: "RopeHarness",
+	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	Layers: ToLayerMap([
@@ -310,8 +310,8 @@ AddModel({
 AddModel({
 	Name: "RopeCrotch",
 	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
+	Parent: "RopeHarness",
+	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["CrotchStrap"],
@@ -326,8 +326,8 @@ AddModel({
 AddModel({
 	Name: "RopeToes",
 	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
+	Parent: "RopeHarness",
+	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["FeetLinked"],
@@ -343,8 +343,8 @@ AddModel({
 AddModel({
 	Name: "RopeFeet",
 	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
+	Parent: "RopeHarness",
+	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["FeetLinked", "RopesAnkle"],
@@ -357,14 +357,14 @@ AddModel({
 
 AddModel(GetModelWithExtraLayers("RopeFeetHeavy", "RopeFeet", [
 	...GetModelLayers("RopeToes"),
-]));
+], "RopeHarness", false));
 
 
 AddModel({
 	Name: "RopeAnkles1",
 	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
+	Parent: "RopeHarness",
+	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["FeetLinked", "RopesAnkle"],
@@ -381,7 +381,7 @@ AddModel(GetModelWithExtraLayers("RopeAnkles2", "RopeAnkles1", [
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 	},
-]));
+], "RopeHarness", false));
 
 
 AddModel(GetModelWithExtraLayers("RopeAnkles3", "RopeAnkles2", [
@@ -389,15 +389,15 @@ AddModel(GetModelWithExtraLayers("RopeAnkles3", "RopeAnkles2", [
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 	},
-]));
+], "RopeHarness", false));
 
 
 
 AddModel({
 	Name: "RopeLegs1",
 	Folder: "Rope",
-	Parent: "Rope",
-	TopLevel: true,
+	Parent: "RopeHarness",
+	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["FeetLinked"],
@@ -414,7 +414,7 @@ AddModel(GetModelWithExtraLayers("RopeLegs2", "RopeLegs1", [
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 	},
-]));
+], "RopeHarness", false));
 
 
 AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
@@ -422,7 +422,7 @@ AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 	},
-]));
+], "RopeHarness", false));
 
 
 AddModel({

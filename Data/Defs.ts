@@ -36,6 +36,10 @@ let LAYERS_BASE = [
 
 	"ForeWrists",
 
+	// Bondage
+	"BindArmLeft",
+	"BindArmRight",
+
 	// Forearms (only in HandsFront)
 	"ForeWristLeft",
 	"ForeArmLeft",
