@@ -605,6 +605,7 @@ KinkyDungeonBuffIronBlood,"Iron Blood: Reduced melee cost, increased mana costs.
 KinkyDungeonBuffSleepy,"Sleepy: You are sluggish and have a hard time keeping your eyes open."
 KinkyDungeonBuffEvasion,"Afterimage: Evasion greatly increased."
 KinkyDungeonBuffSlimeMimic,"We did it! We made outselves invisible--mmmmph!!!"
+KinkyDungeonBuffd_SlimeMimic,"You are not currently attempting to disguise yourself. Click to reenable."
 KinkyDungeonBuffDisenchantSelf,"Your restraints are disenchanted, treating them as nonmagical for purposes of cutting."
 KinkyDungeonBuffLeatherBurst,"You can launch another leather restraint instantly!"
 
@@ -5177,7 +5178,7 @@ KinkyDungeonSpellOneWithSlime,One With Slime
 KinkyDungeonSpellDescriptionOneWithSlime,"While standing on slime/latex, you can cast rubber spells without components."
 
 KinkyDungeonSpellSlimeMimic,Convincing Disguise
-KinkyDungeonSpellDescriptionSlimeMimic,"While standing still on slime or fully bound with at least one latex item, you are harder to notice. Each latex restraint you are wearing increases this amount."
+KinkyDungeonSpellDescriptionSlimeMimic,"While standing still on slime, or fully bound with at least one latex item, you are harder to notice. Each latex restraint you are wearing increases this amount. Can be toggled off by clicking the buff icon."
 
 KinkyDungeonSpellStaffUser1,Magical Implements
 KinkyDungeonSpellDescriptionStaffUser1,"While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%."

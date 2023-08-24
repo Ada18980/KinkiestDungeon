@@ -162,11 +162,20 @@ function KinkyDungeonUpdateBuffs(delta, endFloor) {
 	}
 }
 
+/**  */
+function KDBuffEnabled(list, buff, onlyPositiveDuration) {
+	return (!onlyPositiveDuration || buff.duration > 0)
+		&& (!buff.disabletypes || !buff.disabletypes.some((tag) => {
+			return list[tag] != undefined;
+		}));
+}
+
 function KinkyDungeonGetBuffedStat(list, Stat, onlyPositiveDuration) {
 	let stat = 0;
 	if (list)
 		for (let buff of Object.values(list)) {
-			if (buff && buff.type == Stat && (!onlyPositiveDuration || buff.duration > 0)) {
+			if (buff && buff.type == Stat
+				&& KDBuffEnabled(list, buff, onlyPositiveDuration)) {
 				stat += buff.power;
 			}
 		}
@@ -176,7 +185,8 @@ function KinkyDungeonGetMaxBuffedStat(list, Stat, onlyPositiveDuration) {
 	let stat = 0;
 	if (list)
 		for (let buff of Object.values(list)) {
-			if (buff && buff.type == Stat && (!onlyPositiveDuration || buff.duration > 0)) {
+			if (buff && buff.type == Stat
+				&& KDBuffEnabled(list, buff, onlyPositiveDuration)) {
 				stat = Math.max(stat, buff.power);
 			}
 		}

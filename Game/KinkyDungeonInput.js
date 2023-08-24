@@ -121,6 +121,12 @@ function KDProcessInput(type, data) {
 			KDDropItemInv(data.item);
 			break;
 		}
+		case "buffclick": {
+			if (KDBuffClick[data.click]) {
+				KDBuffClick[data.click](data.buff, data.id || KinkyDungeonPlayerEntity);
+			}
+			break;
+		}
 		case "equip":
 			KDDelayedActionPrune(["Action", "Equip"]);
 			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0, true, "", KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem), KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, false, data.curse, undefined, undefined, data.inventoryAs);

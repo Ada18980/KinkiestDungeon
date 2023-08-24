@@ -1764,19 +1764,27 @@ function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, 
 
 function KinkyDungeonDrawFloaters(CamX, CamY) {
 	let delta = CommonTime() - KinkyDungeonLastFloaterTime;
+	let max = 40;
+	let i = 0;
 	if (delta > 0) {
 		for (let floater of KinkyDungeonFloaters) {
 			floater.t += delta/1000;
+			if (i > max) break;
+			i += 1;
 		}
 	}
 	let newFloaters = [];
+	i = 0;
 	for (let floater of KinkyDungeonFloaters) {
-		let x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
-		let y = floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay;
-		DrawTextKD(floater.text,
-			x, y - floater.speed*floater.t,
-			floater.color, KDTextGray1, undefined, undefined, 120, KDEase(floater.t / floater.lifetime));
+		if (i <= max) {
+			let x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
+			let y = floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay;
+			DrawTextKD(floater.text,
+				x, y - floater.speed*floater.t,
+				floater.color, KDTextGray1, undefined, undefined, 120, KDEase(floater.t / floater.lifetime));
+		}
 		if (floater.t < floater.lifetime) newFloaters.push(floater);
+		i += 1;
 	}
 	KinkyDungeonFloaters = newFloaters;
 
