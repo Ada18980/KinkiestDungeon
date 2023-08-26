@@ -221,15 +221,55 @@ let LAYERS_BASE = [
 
 /** Layers displaced by rope */
 let DisplaceGroups = {
-	"Rope1": ToMap(["Shirt",
+	"Rope1": ToMap([
+		"Shirt",
 		"SleeveLeft",
 		"SleeveLeftDeco",
 		"SleeveRight",
 		"SleeveRightDeco",
 		"ArmLeft",
 		"ArmRight",
-		"TorsoUpper"]),
+		"TorsoUpper"
+	]),
+	"RopeTorso": ToMap([
+		"Shirt",
+		// Skirts that dont follow shilhouette and are puffy
+		"SkirtPoofyDeco",
+		"SkirtPoofy",
+		// Skirts that are slim and follow the shilhouette
+		"SkirtDeco",
+		"Skirt",
 
+		"PantLeft",
+		"PantRight",
+		"Pants",
+
+		"OverSocks",
+		"StockingLeft",
+		"StockingRight",
+
+		"Panties",
+
+		"TorsoUpper",
+		"Butt",
+		"TorsoLower",
+		"Torso",
+	]),
+
+	"RopeFore": ToMap([
+		"ForeSleeveLeft",
+		"ForeSleeveDecoLeft",
+		"GloveLeft",
+		"ForeHandLeft",
+
+		"ForeWristRight",
+		"ForeArmRight",
+
+		"ForeSleeveRight",
+		"ForeSleeveDecoRight",
+		"GloveRight",
+		"ForeHandRight",
+	])
 };
 
 

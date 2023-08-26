@@ -144,15 +144,23 @@
 	"spriteSourceSize": {"x":577,"y":952,"w":161,"h":559},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Robes/SleeveRightBoxtie.png":
+"Models/Robes/SleeveRightWristtie.png":
 {
-	"frame": {"x":1976,"y":1567,"w":54,"h":276},
+	"frame": {"x":1976,"y":1291,"w":55,"h":276},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":450,"y":491,"w":54,"h":276},
+	"spriteSourceSize": {"x":449,"y":491,"w":55,"h":276},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Robes/SleeveRightWristtie.png":
+"Models/Robes/SleeveRightWristtieRopesUpper.png":
+{
+	"frame": {"x":1976,"y":1567,"w":55,"h":276},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":449,"y":491,"w":55,"h":276},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Robes/SleeveRightWristtieTight.png":
 {
 	"frame": {"x":1976,"y":1291,"w":55,"h":276},
 	"rotated": false,
@@ -288,6 +296,6 @@
 	"size": {"w":2046,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:cf05a8eefeeee77cdb3ebc53ea519ec2:edc2f9cc04bfecbf544d93d03c69c618:4a649b7409b6bc09af7ee0cfc2195950$"
+	"smartupdate": "$TexturePacker:SmartUpdate:695499bbb22c0fa4a249f8a31f882434:09c6c1be09ad09ce2e9a0e808d884327:4a649b7409b6bc09af7ee0cfc2195950$"
 }
 }

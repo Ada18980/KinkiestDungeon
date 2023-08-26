@@ -327,7 +327,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 			// Apply displacement
 			if (l.DisplaceLayers) {
 				for (let ll of Object.entries(l.DisplaceLayers)) {
-					let id = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite);
+					let id = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite, "DisplacementMaps", false);
 					if (DisplaceFiltersInUse[id]) continue;
 					DisplaceFiltersInUse[id] = true;
 					// Generic location code
@@ -578,8 +578,11 @@ function ModelLayerHidden(drawLayers: {[_: string]: boolean}, MC: ModelContainer
 function ModelLayerString(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
 	return `Models/${Model.Folder}/${LayerSprite(Layer, Poses)}.png`;
 }
-function ModelLayerStringCustom(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}, Sprite: string): string {
-	return `Models/${Model.Folder}/${LayerSpriteCustom(Layer, Poses, Sprite)}.png`;
+function ModelLayerStringCustom(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}, Sprite: string, Path: string = "Models", useModelFolder: boolean = true): string {
+	if (useModelFolder)
+		return `${Path}/${Model.Folder}/${LayerSpriteCustom(Layer, Poses, Sprite)}.png`;
+	else
+		return `${Path}/${LayerSpriteCustom(Layer, Poses, Sprite)}.png`;
 }
 
 

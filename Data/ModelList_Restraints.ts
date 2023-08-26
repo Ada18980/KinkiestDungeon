@@ -294,6 +294,8 @@ AddModel({
 		{ Name: "Cuffs", Layer: "ForeWrists", Pri: 0,
 			Poses: ToMap(["Front"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
+			DisplacementSprite: "CuffsSquish",
+			DisplaceLayers: ToMap(["RopeFore"]),
 		},
 	])
 });
@@ -339,6 +341,8 @@ AddModel({
 		{ Name: "Crotchrope", Layer: "HarnessMid", Pri: 1,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
+			DisplacementSprite: "CrotchropeSquish",
+			DisplaceLayers: ToMap(["RopeTorso"]),
 		},
 	])
 });
