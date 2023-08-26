@@ -507,6 +507,31 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 			},
 		}
 	};
+	dialog.options.Flirt = {playertext: name + "Flirt", response: "Default",
+		prerequisiteFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				return KinkyDungeonCanPlay(enemy) && !enemy.playWithPlayer;
+			}
+			return false;
+		},
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				KinkyDungeonSetEnemyFlag(enemy, "forcePlay", 20);
+				enemy.aware = true;
+				enemy.gx = enemy.x;
+				enemy.gy = enemy.y;
+				enemy.path = undefined;
+				enemy.playWithPlayerCD = 0;
+				// Make the enemy see you
+				enemy.vp = Math.max(enemy.vp || 0, 2);
+			}
+			KDGameData.CurrentDialogMsg = name + "Flirt" + (enemy.personality || "");
+			return false;
+		},
+		leadsToStage: "", dontTouchText: true,
+	};
 	/*dialog.options.LetMePass = {playertext: name + "LetMePass", response: "Default",
 		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);

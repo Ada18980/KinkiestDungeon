@@ -39,6 +39,7 @@ let KinkyDungeonStatDistractionMiscastChance = 0.7; // Miscast chance at max dis
 let KinkyDungeonMiscastChance = 0;
 let KinkyDungeonVibeLevel = 0;
 let KinkyDungeonTeaseLevel = 0;
+/** This is super powerful teasing that bypasses chastity */
 let KinkyDungeonTeaseLevelBypass = 0;
 let KinkyDungeonOrgasmVibeLevel = 0;
 let KinkyDungeonDistractionPerVibe = 0.05; // How much distraction per turn per vibe energy cost
@@ -305,19 +306,19 @@ function KinkyDungeonInterruptSleep() {
 }
 
 let KDBaseDamageTypes = {
-	arouseTypes: ["grope", "charm", "happygas"],
+	arouseTypes: ["grope", "plush", "charm", "happygas"],
 	bypassTeaseTypes: ["charm", "happygas"],
 	distractionTypesWeakNeg: ["pain", "acid"],
-	distractionTypesWeak:["soul"],
+	distractionTypesWeak:["soul", "plush"],
 	distractionTypesStrong:["tickle", "grope", "charm", "souldrain", "happygas"],
-	teaseTypes: ["grope", "charm"],
+	teaseTypes: ["grope", "charm", "plush"],
 	staminaTypesWeak:["drain", "stun", "fire", "glue", "chain", "tickle", "electric", "shock"],
 	staminaTypesStrong:["ice", "frost", "poison", "crush", "souldrain"],
 	manaTypesWeak:["electric", "drain"],
 	manaTypesStrong:[],
 	willTypesVeryWeak:["tickle", "souldrain"],
 	willTypesWeak:["ice", "frost", "poison", "stun", "electric", "acid", "grope", "pierce", "slash", "crush", "unarmed", "glue", "chain"],
-	willTypesStrong:["cold", "fire", "charm", "soul", "pain", "shock"],
+	willTypesStrong:["cold", "fire", "charm", "soul", "pain", "shock", "plush"],
 };
 
 function KDGetStamDamageThresh() {

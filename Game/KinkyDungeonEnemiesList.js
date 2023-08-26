@@ -1783,7 +1783,7 @@ let KinkyDungeonEnemies = [
 		attackWidth: 3, tilesMinRange: 1, attackRange: 1, power: 1, dmgType: "tickle", ondeath: [{type: "spellOnSelf", spell: "Feathers"}],
 		terrainTags: {"secondhalf":2, "lastthird":-1, "increasingLevel": -1.5, "doortrap": 8}, allFloors: true, shrines: [], difficulty: 0.7, hitsfx: "Tickle",},
 	{name: "Scarves", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["ignoreharmless", "construct", "poisonresist", "soulimmune", "melee", "scarfRestraints", "minor", "firesevereweakness", "acidweakness", "slashweakness", "meleeresist", "doortrap"]), ignorechance: 0.75, armor: 0, followRange: 1, AI: "hunt",  ignoreflag: ["scarves"], failAttackflag: ["scarves"], squeeze: true,
-		visionRadius: 3, visionSummoned: 12, maxhp: 1, minLevel: 0, maxLevel: 3, weight:1, movePoints: 1.5, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "tickle", fullBoundBonus: 1,
+		visionRadius: 3, visionSummoned: 12, maxhp: 1, minLevel: 0, maxLevel: 3, weight:1, movePoints: 1.5, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "plush", fullBoundBonus: 1,
 		Attack: {
 			mustBindorFail: true,
 		},
