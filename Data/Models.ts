@@ -1,4 +1,3 @@
-
 /**
  * Returns a table with the priorities for each layer based on order of the array
  */
@@ -143,6 +142,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	if (MC.Models.size == 0) UpdateModels(C);
 
 	let containerID = `${X},${Y},${Zoom}`;
+	let refreshfilters = false;
 
 	if (MC.Containers.get(containerID) && !MC.Update.has(containerID) && MC.Refresh.has(containerID)) {
 		MC.Update.delete(containerID);
@@ -153,6 +153,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		MC.Containers.get(containerID).Container.destroy();
 		MC.Containers.delete(containerID);
 		MC.ContainersDrawn.delete(containerID);
+		refreshfilters = true;
 	}
 	let created = false;
 	if (!MC.Containers.get(containerID)) {
@@ -187,7 +188,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
 		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
-			MC.Containers.get(containerID));
+			MC.Containers.get(containerID), refreshfilters);
 		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		MC.Mods.set(containerID, StartMods);
 		MC.Update.add(containerID);
@@ -254,7 +255,7 @@ function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 /**
  * Setup sprites from the modelcontainer
  */
-function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer) : boolean {
+function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer, refreshfilters: boolean) : boolean {
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
 	let modified = false;
@@ -281,18 +282,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 		}
 	}
 
-	// Create the layer extra filter matrix
-	let ExtraFilters: Record<string, LayerFilter[]> = {};
-	for (let m of Models.values()) {
-		for (let l of Object.values(m.Layers)) {
-			if (l.ApplyFilterToLayer) {
-				for (let ll of Object.entries(l.ApplyFilterToLayer)) {
-					if (!ExtraFilters[ll[0]]) ExtraFilters[ll[0]] = [];
-					ExtraFilters[ll[0]].push(m.Filters[l.InheritColor || l.Name]);
-				}
-			}
-		}
-	}
+
 
 	// TODO hide, filtering based on pose, etc etc
 	let {X_Offset, Y_Offset} = ModelGetPoseOffsets(MC.Poses);
@@ -319,10 +309,89 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 		}
 	}
 
+
+	// Create the layer extra filter matrix
+	let ExtraFilters: Record<string, LayerFilter[]> = {};
+	let DisplaceFilters: Record<string, {sprite: any, hash: string, amount: number}[]> = {};
+	let DisplaceFiltersInUse = {};
+	for (let m of Models.values()) {
+		for (let l of Object.values(m.Layers)) {
+			if (!(drawLayers[m.Name + "," + l.Name] && !ModelLayerHidden(drawLayers, MC, m, l, MC.Poses))) continue;
+			// Apply filter
+			if (l.ApplyFilterToLayer) {
+				for (let ll of Object.entries(l.ApplyFilterToLayer)) {
+					if (!ExtraFilters[ll[0]]) ExtraFilters[ll[0]] = [];
+					ExtraFilters[ll[0]].push(m.Filters[l.InheritColor || l.Name]);
+				}
+			}
+			// Apply displacement
+			if (l.DisplaceLayers) {
+				for (let ll of Object.entries(l.DisplaceLayers)) {
+					let id = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite);
+					if (DisplaceFiltersInUse[id]) continue;
+					DisplaceFiltersInUse[id] = true;
+					// Generic location code
+					let ox = 0;
+					let oy = 0;
+					let ax = 0;
+					let ay = 0;
+					let sx = 1;
+					let sy = 1;
+					let rot = 0;
+					let layer = LayerLayer(MC, l, m, mods);
+					while (layer) {
+						let mod_selected: PoseMod[] = mods[layer] || [];
+						for (let mod of mod_selected) {
+							ox = mod.offset_x || ox;
+							oy = mod.offset_y || oy;
+							ax = mod.rotation_x_anchor || ax;
+							ay = mod.rotation_y_anchor || ay;
+							sx *= mod.scale_x || 1;
+							sy *= mod.scale_y || 1;
+							rot += mod.rotation || 0;
+						}
+						layer = LayerProperties[layer]?.Parent;
+					}
+
+					for (let dg of Object.keys(DisplaceGroups[ll[0]])) {
+						if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
+						DisplaceFilters[dg].push(
+							{
+								amount: l.DisplaceAmount || 100,
+								hash: id + m.Name + "," + l.Name,
+								sprite: KDDraw(
+									ContainerContainer.Container,
+									ContainerContainer.SpriteList,
+									id,
+									id,
+									ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
+									rot * Math.PI / 180, {
+										zIndex: -ModelLayers[ll[0]] + (LayerPri(MC, l, m, mods) || 0),
+										anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
+										anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
+										scalex: sx != 1 ? sx : undefined,
+										scaley: sy != 1 ? sy : undefined,
+										alpha: 0.0,
+									}, false,
+									ContainerContainer.SpritesDrawn,
+									Zoom
+								),
+							}
+						);
+					}
+
+				}
+			}
+		}
+	}
+
+
 	// Now that we have the final list of models we do a KDDraw
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
 			if (drawLayers[m.Name + "," + l.Name] && !ModelLayerHidden(drawLayers, MC, m, l, MC.Poses)) {
+
+				// Generic location code TODO wrap into a function
 				let ox = 0;
 				let oy = 0;
 				let ax = 0;
@@ -347,6 +416,9 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				}
 
 				let fh = m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name]) : "") : "";
+				if (refreshfilters) {
+					KDAdjustmentFilterCache.delete(fh);
+				}
 				let filter = m.Filters ? (m.Filters[l.InheritColor || l.Name] ?
 					(KDAdjustmentFilterCache.get(fh) || [new PIXI.filters.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])])
 					: undefined) : undefined;
@@ -354,13 +426,35 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					KDAdjustmentFilterCache.set(FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
 				}
 
-				let extrafilter: PIXIAdjustmentFilter[] = [];
+				let extrafilter: PIXIFilter[] = [];
+				// Add extrafilters
 				if (ExtraFilters[origlayer]) {
 					for (let ef of ExtraFilters[origlayer]) {
 						let efh = FilterHash(ef)
+						if (refreshfilters) {
+							KDAdjustmentFilterCache.delete(FilterHash(ef));
+						}
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [new PIXI.filters.AdjustmentFilter(ef)]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
 							KDAdjustmentFilterCache.set(FilterHash(ef), efilter);
+						}
+						extrafilter.push(...efilter);
+					}
+				}
+				// Add displacement filters
+				if (DisplaceFilters[origlayer]) {
+					for (let ef of DisplaceFilters[origlayer]) {
+						let efh = "disp_" + ef.hash;
+						let dsprite = ef.sprite;
+						if (refreshfilters) {
+							KDAdjustmentFilterCache.delete(efh);
+						}
+						let efilter = (KDAdjustmentFilterCache.get(efh) || [new PIXI.DisplacementFilter(
+							dsprite,
+							ef.amount,
+						)]);
+						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
+							KDAdjustmentFilterCache.set(efh, efilter);
 						}
 						extrafilter.push(...efilter);
 					}
@@ -400,7 +494,7 @@ function FilterHash(filter) {
 	return str;
 }
 
-const KDAdjustmentFilterCache: Map<string, PIXIAdjustmentFilter[]> = new Map();
+const KDAdjustmentFilterCache: Map<string, PIXIFilter[]> = new Map();
 
 /**
  * Determines if we should draw this layer or not
@@ -484,11 +578,23 @@ function ModelLayerHidden(drawLayers: {[_: string]: boolean}, MC: ModelContainer
 function ModelLayerString(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
 	return `Models/${Model.Folder}/${LayerSprite(Layer, Poses)}.png`;
 }
+function ModelLayerStringCustom(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}, Sprite: string): string {
+	return `Models/${Model.Folder}/${LayerSpriteCustom(Layer, Poses, Sprite)}.png`;
+}
+
+
 
 /**
  * Gets the sprite name for a layer for a given pose
  */
 function LayerSprite(Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
+	return LayerSpriteCustom(Layer, Poses, (Layer.Sprite != undefined ? Layer.Sprite : Layer.Name));
+}
+
+/**
+* Gets a sprite formatted for the restraint or object
+*/
+function LayerSpriteCustom(Layer: ModelLayer, Poses: {[_: string]: boolean}, Sprite: string): string {
 	let pose = "";
 
 	let foundPose = false;
@@ -548,7 +654,7 @@ function LayerSprite(Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
 		}
 	}
 
-	return (Layer.Sprite != undefined ? Layer.Sprite : Layer.Name) + pose;
+	return Sprite + pose;
 }
 
 function UpdateModels(C: Character) {

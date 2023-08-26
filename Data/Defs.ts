@@ -219,6 +219,21 @@ let LAYERS_BASE = [
 	"HatBack",
 ];
 
+/** Layers displaced by rope */
+let DisplaceGroups = {
+	"Rope1": ToMap(["Shirt",
+		"SleeveLeft",
+		"SleeveLeftDeco",
+		"SleeveRight",
+		"SleeveRightDeco",
+		"ArmLeft",
+		"ArmRight",
+		"TorsoUpper"]),
+
+};
+
+
+
 let LayerProperties = {
 	Eyes: {
 		Parent: "Head",

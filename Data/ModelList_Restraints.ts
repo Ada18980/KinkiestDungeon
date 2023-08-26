@@ -191,7 +191,7 @@ AddModel(GetModelWithExtraLayers("PlugMuzzleGagHarnessSecure", "MuzzleGagHarness
 AddModel({
 	Name: "RopeBoxtie1",
 	Folder: "Rope",
-	Parent: "RopeBoxtie1",
+	Parent: "RopeHarness",
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
@@ -199,6 +199,8 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
 			Poses: ToMap(["Boxtie"]),
+			DisplacementSprite: "Arm1Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
 		},
 	])
 });
@@ -214,9 +216,13 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
 			Poses: ToMap(["Wristtie"]),
+			DisplacementSprite: "Arm1Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
 		},
 		{ Name: "ForeArm1", Layer: "ForeArmBondageLeft", Pri: 0,
 			Poses: ToMap(["Wristtie"]),
+			DisplacementSprite: "ForeArm1Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
 		},
 	])
 });
@@ -233,9 +239,13 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie"]),
+			DisplacementSprite: "Arm2Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
 		},
 		{ Name: "ForeArm2", Layer: "ForeArmBondageLeft", Pri: 0,
 			Poses: ToMap(["Wristtie"]),
+			DisplacementSprite: "ForeArm2Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
 		},
 	])
 });
@@ -250,11 +260,21 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie"]),
+			DisplacementSprite: "Arm2Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
 		},
 		{ Name: "ForeArm2", Layer: "ForeArmBondageLeft", Pri: 0,
 			Poses: ToMap(["Wristtie"]),
+			DisplacementSprite: "ForeArm2Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
 		},
 		{ Name: "ArmHarness", Layer: "ChestStraps", Pri: -1,
+			Poses: ToMapSubtract([...ARMPOSES], ["Up"]),
+			DisplacementSprite: "ArmHarnessSquish",
+			DisplaceLayers: ToMap(["Rope1"]),
+			Invariant: true,
+		},
+		{ Name: "ArmHarnessUp", Sprite: "ArmHarness", Layer: "ChestStraps", Pri: -1,
 			Poses: ToMap([...ARMPOSES]),
 			Invariant: true,
 		},

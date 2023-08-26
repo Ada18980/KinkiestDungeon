@@ -88,6 +88,12 @@ interface ModelLayer extends Namable {
 	SwapPriorityPose?: Record<string, number>,
     /** One of these layers is required*/
     Poses?: Record<string, boolean>,
+	/** Adds a displacement map for rope squish and such. If the same sprite is in use it wont be duped*/
+	DisplacementSprite?: string,
+	/** Which layers to apply displacement to */
+	DisplaceLayers?: Record<string, boolean>,
+	/** Amount of displacement */
+	DisplaceAmount?: number,
     /** These layers are ALL REQUIRED to make it appear*/
     RequirePoses?: Record<string, boolean>,
     /** This layer is hidden in this pose*/
