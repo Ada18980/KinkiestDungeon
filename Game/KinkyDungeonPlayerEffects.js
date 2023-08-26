@@ -92,14 +92,15 @@ let KDPlayerEffects = {
 					duration: playerEffect.time,
 				});
 			} else {
-				let happened = KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Curse", false, false, false, false);
-				for (let en of KinkyDungeonEntities) {
-					if (en.Enemy.tags?.epicenterCursed) {
-						en.hp = 0;
-						en.playerdmg = 0;
-					}
-				}
+				let happened = KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Curse", false, false, false, false, false);
+
 				if (happened.length > 0) {
+					for (let en of KinkyDungeonEntities) {
+						if (en.Enemy.tags?.epicenterCursed) {
+							en.hp = 0;
+							en.playerdmg = 0;
+						}
+					}
 					KinkyDungeonPlayerBuffs.CursingCircle.duration = 0;
 					KinkyDungeonSendTextMessage(9, TextGet("KDEpicenterCurseEffectEnd"), "#8E72AA", 5);
 				}
