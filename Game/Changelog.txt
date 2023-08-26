@@ -1443,12 +1443,27 @@ Features
 - Added a lot more Fuuka dialogue (about those reincarnated ones...) for those interested in lore. Talk to her after defeating the Dollmaker for an extra branch!
 - Added 4 types of Fighter
 - Convincing Disguise can now be toggled
-- Mental Training can now be toggled
+- Added indication of which spell you are currently casting
+- Added some new map tiles with more guarded chests and vent puzzles. Take True Sight to see through walls!
 Changes
+- Security level only increases by 10% instead of 20% when escaping
+- Security level now only increases when escaping if you are unarmed or if you attacked an enemy on the way out
 - Second Wind now restores WP when free
 - Added more restraints to the loot tables
+- Cursed armor now no longer functions as armor while cursed but otherwise functions normally
+- Enchantments can no longer have duplicates
+- The Underground Jungle is now the Overgrown Ruins, with new graphical variation in the tileset
+- Catgirl enemies (Bast mummies + one of the new fighters) are now weak to water/acid damage
 Bugfix
 - CMD: Unlock now properly castable with Conjurer perk
+- Fix issue where kitty blindfold was treated as a gag in code
+- Fixed an issue with flexible map tiles creating unreachable zones
+- Removing cursed restraints with a shrine correctly deletes the curse
+- Fixed longstanding issue where clicking on an upcast spell in the spell list would sometimes choose the wrong spell
+Modding
+- Added tool to get the category and tag of a generated map tile (useful for post-worldgen tweaks like the Overgrown Ruins)
+- Enchantments and hexes (cursed item effects) can now see a list of other enchantments/curses (respectively) already applied to the item
+- New 'resistance profiles' which allows you to set specific sets of resistances that are shared between enemies and easy to apply/change across categories
 
 
 
