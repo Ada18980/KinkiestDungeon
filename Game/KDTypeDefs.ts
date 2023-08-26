@@ -2284,4 +2284,5 @@ declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') &
 // We can't refer to a type as `PIXI.Container`, nor `typeof PIXI.Container`, but `import(pixi.js).Container` does work
 type PIXIContainer = import('pixi.js').Container;
 type PIXIAdjustmentFilter = import('pixi-filters').AdjustmentFilter;
+type PIXIFilter = import('pixi.js').Filter;
 

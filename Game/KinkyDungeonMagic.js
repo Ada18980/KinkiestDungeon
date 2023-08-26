@@ -6,6 +6,8 @@ let KDMaxEmpower = 3; // Max upcast level
 
 let KinkyDungeonBookScale = 1.3;
 
+let KDFlashMana = 0;
+
 let KinkyDungeonMysticSeals = 0; // Mystic seals are used to unlock a spell from one of 3 books:
 // 0 Ars Pyrotecnica - Elemental magic such as fireballs, ice, wind, etc
 // 1 Codex Imaginus - Conjuring things such as weapons and restraints, and also enchanting (and disenchanting)
@@ -302,7 +304,10 @@ function KinkyDungeonHandleSpellCast(spell) {
 		if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell))
 			&& (!spell.staminacost || KinkyDungeonHasStamina(spell.staminacost)))
 			return spell;
-		else KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonNoMana"), "#ff0000", 1);
+		else {
+			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonNoMana"), "#ff0000", 1);
+			KDFlashMana = 1000;
+		}
 	} else {
 		KinkyDungeonTargetingSpell = null;
 		KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonComponentsFail" + KinkyDungeoCheckComponents(spell)[0]), "#ff0000", 1);
