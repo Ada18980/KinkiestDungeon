@@ -3579,33 +3579,33 @@ RestraintMaidCBeltDesc,"A chastity belt used to maintain control over initiate m
 RestraintMaidCBeltDesc2,"Made of hardened steel. The lock is high-security."
 RestraintTrapVibe,Magic Egg
 RestraintTrapVibeDesc,"An energetic little friend that likes to tease you."
-RestraintTrapVibeDesc2,"It is charged by residual magic from your spells."
+RestraintTrapVibeDesc2,"It is charged by residual magic from your spells. Type: Teasing"
 RestraintTrapVibeProto,Prototype Egg
 RestraintTrapVibeProtoDesc,"A teaser that periodically vibrates."
-RestraintTrapVibeProtoDesc2,"High efficiency mana conversion means longer tease duration."
+RestraintTrapVibeProtoDesc2,"High efficiency mana conversion means longer tease duration. Type: Teasing, Pleasure, Edging"
 RestraintTrapPlug,Vibrating Plug
 RestraintTrapPlugDesc,"A sizeable plug that makes you happy... a little too happy."
-RestraintTrapPlugDesc2,"It vibrates periodically and allows orgasms."
+RestraintTrapPlugDesc2,"It vibrates periodically and adds distraction when moving. Type: Pleasure"
 RestraintTrapPlug2,Teaser Plug
 RestraintTrapPlug2Desc,"A sizeable plug that will tease you but never let you go..."
-RestraintTrapPlug2Desc2,"It vibrates weakly periodically."
+RestraintTrapPlug2Desc2,"It vibrates weakly periodically. Type: Teasing, Edging"
 RestraintTrapPlug3,Torment Plug
 RestraintTrapPlug3Desc,"A sizeable plug that will make your life unbearably pleasurable..."
-RestraintTrapPlug3Desc2,"It vibrates strongly periodically and has a denial setting."
+RestraintTrapPlug3Desc2,"It vibrates strongly periodically and has a denial setting. Type: Denial"
 RestraintTrapPlug4,Thundering Plug
 RestraintTrapPlug4Desc,"A sizeable plug that will make your life unbearably pleasurable..."
-RestraintTrapPlug4Desc2,"Enjoy it while you can."
+RestraintTrapPlug4Desc2,"Enjoy it while you can. Type: Pleasure, Edging"
 RestraintTrapPlug5,Intense Training Plug
 RestraintTrapPlug5Desc,"An energetic plug that will make your life unbearably pleasurable..."
-RestraintTrapPlug5Desc2,"You're going to have the time of your life."
+RestraintTrapPlug5Desc2,"You're going to have the time of your life. Type: Pleasure, and lots of it"
 
 RestraintRearVibe1,Rear Vibrating Plug
 RestraintRearVibe1Desc,"A device that attacks from multiple angles."
-RestraintRearVibe1Desc2,"An enjoyable experience."
+RestraintRearVibe1Desc2,"An enjoyable experience. Type: Edging"
 
 RestraintMaidVibe,Maid Egg
 RestraintMaidVibeDesc,"An energetic little friend that likes to tease you and takes orders from the head maid."
-RestraintMaidVibeDesc2,"It is charged by residual magic from your spells."
+RestraintMaidVibeDesc2,"It is charged by residual magic from your spells. Type: Teasing, Edging"
 
 RestraintSteelPlugF,Stainless Plug
 RestraintSteelPlugFDesc,"A weighty plug that doesn't vibrate, but you'll certainly notice it walking around..."

@@ -41,6 +41,9 @@ let KinkyDungeonHiddenFactions = [
 	"Chase",
 	"Mushy",
 	"Witch",
+	"Curse",
+	"Observer",
+	"Door",
 ];
 
 
@@ -111,6 +114,8 @@ let KinkyDungeonTooltipFactions = [
 	"Wolfhunter",
 	"Rock",
 	"Rage",
+	"Curse",
+	"Observer",
 ];
 
 /** Tag for these factions, these also can have increased chances to appear on a map */
@@ -192,6 +197,7 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Rock": {
 		Player: -1.0,
+		Jail: -0.1,
 	},
 	"Rebel": {
 		Jail: -0.1,
@@ -203,6 +209,7 @@ let KinkyDungeonFactionRelationsBase = {
 		Elf: -1.0,
 		Bast: -1.0,
 		Witch: 0.25,
+		Jail: -0.25,
 
 		Bountyhunter: -0.5,
 		Bandit: -0.5,
@@ -237,11 +244,13 @@ let KinkyDungeonFactionRelationsBase = {
 		Player: -1,
 		Maidforce: -1,
 		Chase: -1,
+		Jail: -0.25,
 	},
 	"Wolfhunter": {
 		Player: -1,
 		Nevermere: -1,
 		Chase: -1,
+		Jail: -0.25,
 	},
 	"Trap": {
 		Enemy: 1.0,
@@ -291,7 +300,7 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Curse": {
 		Player: -1.0,
-		Jail: -1,
+		Jail: -0.25,
 
 		Chase: -1,
 	},
