@@ -519,6 +519,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "forcePlay", 20);
+				KinkyDungeonSetEnemyFlag(enemy, "allyPlay", 80);
 				enemy.aware = true;
 				enemy.gx = enemy.x;
 				enemy.gy = enemy.y;
