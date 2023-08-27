@@ -710,7 +710,8 @@ let KDLastKeyTime = {
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
 	// Breath the sound outlines
-	kdoutlinefilter.alpha = 0.5 + 0.1 * Math.sin(2 * Math.PI * (CommonTime() % 2000 / 2000) );
+	if (StandalonePatched)
+		kdoutlinefilter.alpha = 0.5 + 0.1 * Math.sin(2 * Math.PI * (CommonTime() % 2000 / 2000) );
 	KDButtonHovering = false;
 	if (kdminimap.visible) {
 		let zIndex = KDExpandMinimap ? 150 : 90;
