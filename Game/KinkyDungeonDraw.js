@@ -31,7 +31,7 @@ kdgamefog.zIndex = -1;
 let kdgamesound = new PIXI.Container();
 kdgamesound.zIndex = 1;
 let kdsolidcolorfilter = new PIXI.Filter(null, KDShaders.Solid.code, {});
-let kdoutlinefilter = PIXI.filters ? new PIXI.filters.OutlineFilter(2, 0xffffff, 0.1, 0.5, true) : undefined;
+let kdoutlinefilter = StandalonePatched ? new PIXI.filters.OutlineFilter(2, 0xffffff, 0.1, 0.5, true) : undefined;
 if (StandalonePatched) {
 	kdgamesound.filters = [kdoutlinefilter];
 } else {
