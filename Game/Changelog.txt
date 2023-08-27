@@ -1468,6 +1468,10 @@ Modding
 4.52 (August 2023)
 Features
 - Can now flirt with NPCs to trigger a play event
+QoL
+- Plugs and vibes now indicate the type of vibrations they do in their description
+- Item and spells show their images in their description always
+- Scarves now deal Plush damage (plush content will be expanded in future)
 
 
 TODO
