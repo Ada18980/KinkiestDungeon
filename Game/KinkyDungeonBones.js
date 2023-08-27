@@ -20,6 +20,7 @@ let KDPatronCustomEnemies = new Map([
 		{name: "FlameTail", color: "#ff5555", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Nobu", color: "#00FFFF", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Moranql", color: "#ff5555", prisoner: true, free: false, customPlayLine: "", customIntro: "0x0", customSprite: ""},
+		{name: "Harumi", color: "#F223D4", prisoner: true, free: false, customPlayLine: "", customIntro: "This is an uncivilized place, I have some things to give you...", customSprite: ""},
 	],
 	],
 	["WolfgirlPet", [
