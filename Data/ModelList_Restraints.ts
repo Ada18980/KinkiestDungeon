@@ -310,6 +310,8 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Belt", Layer: "BeltBondage", Pri: 0,
 			Invariant: true,
+			DisplacementSprite: "BeltSquish",
+			DisplaceLayers: ToMap(["RopeCalf"]),
 		},
 	])
 });
@@ -326,6 +328,9 @@ AddModel({
 		{ Name: "Harness", Layer: "HarnessOver", Pri: 0,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
+			DisplacementInvariant: true,
+			DisplacementSprite: "HarnessSquish",
+			DisplaceLayers: ToMap(["RopeTorso"]),
 		},
 	])
 });
@@ -341,8 +346,10 @@ AddModel({
 		{ Name: "Crotchrope", Layer: "HarnessMid", Pri: 1,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
+			DisplacementInvariant: true,
 			DisplacementSprite: "CrotchropeSquish",
 			DisplaceLayers: ToMap(["RopeTorso"]),
+
 		},
 	])
 });
@@ -373,8 +380,11 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["FeetLinked", "RopesAnkle"],
 	Layers: ToLayerMap([
-		{ Name: "Ankles", Layer: "OverSocks", Pri: 1,
+		{ Name: "Ankles", Layer: "OverShoes", Pri: 1,
 			Poses: ToMap(["Closed", "KneelClosed"]),
+			DisplacementSprite: "AnklesSquish",
+			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["RopeCalf"]),
 		},
 	])
 });
@@ -396,6 +406,9 @@ AddModel({
 		{ Name: "Calf1", Layer: "Ankles1", Pri: 1,
 			Poses: ToMap(["Closed", "KneelClosed"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			DisplacementSprite: "Calf1Squish",
+			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["RopeCalf"]),
 		},
 	])
 });
@@ -404,6 +417,9 @@ AddModel(GetModelWithExtraLayers("RopeAnkles2", "RopeAnkles1", [
 	{ Name: "Calf2", Layer: "Ankles2", Pri: 1,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+		DisplacementSprite: "Calf2Squish",
+		DisplaceAmount: 50,
+		DisplaceLayers: ToMap(["RopeCalf"]),
 	},
 ], "RopeHarness", false));
 
@@ -412,6 +428,9 @@ AddModel(GetModelWithExtraLayers("RopeAnkles3", "RopeAnkles2", [
 	{ Name: "Calf3", Layer: "Ankles3", Pri: 1,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+		DisplacementSprite: "Calf3Squish",
+		DisplaceAmount: 50,
+		DisplaceLayers: ToMap(["RopeCalf"]),
 	},
 ], "RopeHarness", false));
 
@@ -429,6 +448,10 @@ AddModel({
 		{ Name: "Thigh1", Layer: "Thighs1", Pri: 1,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			DisplacementMorph: {Hogtie: "Hogtie"},
+			DisplacementSprite: "Thigh1Squish",
+			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["RopeThighs"]),
 		},
 	])
 });
@@ -437,6 +460,10 @@ AddModel(GetModelWithExtraLayers("RopeLegs2", "RopeLegs1", [
 	{ Name: "Thigh2", Layer: "Thighs2", Pri: 1,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
+		DisplacementMorph: {Hogtie: "Hogtie"},
+		DisplacementSprite: "Thigh2Squish",
+		DisplaceAmount: 50,
+		DisplaceLayers: ToMap(["RopeThighs"]),
 	},
 ], "RopeHarness", false));
 
@@ -445,6 +472,10 @@ AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
 	{ Name: "Thigh3", Layer: "Thighs3", Pri: 1,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
+		DisplacementMorph: {Hogtie: "Hogtie"},
+		DisplacementSprite: "Thigh3Squish",
+		DisplaceAmount: 50,
+		DisplaceLayers: ToMap(["RopeThighs"]),
 	},
 ], "RopeHarness", false));
 

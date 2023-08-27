@@ -327,7 +327,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 			// Apply displacement
 			if (l.DisplaceLayers) {
 				for (let ll of Object.entries(l.DisplaceLayers)) {
-					let id = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite, "DisplacementMaps", false);
+					let id = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite, "DisplacementMaps", false, l.DisplacementInvariant, l.DisplacementMorph);
 					if (DisplaceFiltersInUse[id]) continue;
 					DisplaceFiltersInUse[id] = true;
 					// Generic location code
@@ -442,7 +442,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					}
 				}
 				// Add displacement filters
-				if (DisplaceFilters[origlayer]) {
+				if (!l.NoDisplace && DisplaceFilters[origlayer]) {
 					for (let ef of DisplaceFilters[origlayer]) {
 						let efh = "disp_" + ef.hash;
 						let dsprite = ef.sprite;
@@ -578,11 +578,11 @@ function ModelLayerHidden(drawLayers: {[_: string]: boolean}, MC: ModelContainer
 function ModelLayerString(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
 	return `Models/${Model.Folder}/${LayerSprite(Layer, Poses)}.png`;
 }
-function ModelLayerStringCustom(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}, Sprite: string, Path: string = "Models", useModelFolder: boolean = true): string {
+function ModelLayerStringCustom(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}, Sprite: string, Path: string = "Models", useModelFolder: boolean = true, forceInvariant: boolean = false, forceMorph?: Record<string, string>): string {
 	if (useModelFolder)
-		return `${Path}/${Model.Folder}/${LayerSpriteCustom(Layer, Poses, Sprite)}.png`;
+		return `${Path}/${Model.Folder}/${LayerSpriteCustom(Layer, Poses, Sprite, forceInvariant, forceMorph)}.png`;
 	else
-		return `${Path}/${LayerSpriteCustom(Layer, Poses, Sprite)}.png`;
+		return `${Path}/${LayerSpriteCustom(Layer, Poses, Sprite, forceInvariant, forceMorph)}.png`;
 }
 
 
@@ -597,15 +597,17 @@ function LayerSprite(Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
 /**
 * Gets a sprite formatted for the restraint or object
 */
-function LayerSpriteCustom(Layer: ModelLayer, Poses: {[_: string]: boolean}, Sprite: string): string {
+function LayerSpriteCustom(Layer: ModelLayer, Poses: {[_: string]: boolean}, Sprite: string, forceInvariant: boolean = false, forceMorph?: Record<string, string>): string {
 	let pose = "";
 
 	let foundPose = false;
+	let MorphPoses = forceMorph || Layer.MorphPoses;
+	if (forceInvariant && !forceMorph) MorphPoses = undefined;
 
 	// change the pose if its a morph pose, this helps to avoid duplication
 	let cancel = false;
-	if (Layer.MorphPoses) {
-		for (let dp of Object.entries(Layer.MorphPoses)) {
+	if (MorphPoses) {
+		for (let dp of Object.entries(MorphPoses)) {
 			if (Poses[dp[0]] != undefined) {
 				pose = dp[1];
 				cancel = true;
@@ -615,7 +617,7 @@ function LayerSpriteCustom(Layer: ModelLayer, Poses: {[_: string]: boolean}, Spr
 		}
 	}
 
-	if (!Layer.Invariant) {
+	if (!Layer.Invariant && !forceInvariant) {
 		// Handle the actual poses
 		if (Layer.Poses && !cancel) {
 			// Otherwise we append pose name to layer name
@@ -648,7 +650,7 @@ function LayerSpriteCustom(Layer: ModelLayer, Poses: {[_: string]: boolean}, Spr
 
 	}
 
-	if (Layer.AppendPose) {
+	if (Layer.AppendPose && !forceInvariant) {
 		for (let p of Object.entries(Layer.AppendPose)) {
 			if (Poses[p[0]] != undefined && (!Layer.AppendPoseRequire || Layer.AppendPoseRequire[p[0]])) {
 				pose = pose + (p[1] || p[0]);

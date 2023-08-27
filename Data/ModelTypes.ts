@@ -92,8 +92,12 @@ interface ModelLayer extends Namable {
 	DisplacementSprite?: string,
 	/** Which layers to apply displacement to */
 	DisplaceLayers?: Record<string, boolean>,
+	/** MorphPoses but displacement */
+	DisplacementMorph?: Record<string, string>,
 	/** Amount of displacement */
 	DisplaceAmount?: number,
+	/** Prevents displacement maps from applying to this item */
+	NoDisplace?: boolean,
     /** These layers are ALL REQUIRED to make it appear*/
     RequirePoses?: Record<string, boolean>,
     /** This layer is hidden in this pose*/
@@ -126,6 +130,8 @@ interface ModelLayer extends Namable {
 	TieToLayer?: string,
 	/** The name is as is */
 	Invariant?: boolean,
+	/** Displacement maps are treated as Invariant */
+	DisplacementInvariant?: boolean,
 	/** Applies this layer's filter to a layer when the filter isn't hidden */
 	ApplyFilterToLayer?: Record<string, boolean>,
 	/** Disables color filters */

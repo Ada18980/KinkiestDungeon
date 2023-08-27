@@ -128,10 +128,23 @@ let LAYERS_BASE = [
 	"Skirt",
 
 	"KneeAccLeft",
+	"KneeAccRight",
+	// Over feet Bondage
+	"Thighs",
+	"Thighs3",
+	"Thighs2",
+	"Thighs1",
+	"Ankles",
+	"Ankles3",
+	"Ankles2",
+	"Ankles1",
+	"AnkleLeft",
+	"AnkleRight",
+
+	// Pants
 	"PantsAccLeft",
 	"PantLeft",
 
-	"KneeAccRight",
 	"PantsAccRight",
 	"PantRight",
 	"Pants",
@@ -150,20 +163,13 @@ let LAYERS_BASE = [
 	"HandLeft",
 	"ArmLeft",
 
-	// Over feet
-	"Thighs",
-	"Thighs3",
-	"Thighs2",
-	"Thighs1",
-	"Ankles",
-	"Ankles3",
-	"Ankles2",
-	"Ankles1",
-	"AnkleLeft",
-	"AnkleRight",
-
 	// Shoes
+	"ShoeLeftOver",
+	"ShoeRightOver",
+	"OverShoes",
+	"ShoeLeftDeco",
 	"ShoeLeft",
+	"ShoeRightDeco",
 	"ShoeRight",
 
 
@@ -221,6 +227,14 @@ let LAYERS_BASE = [
 
 /** Layers displaced by rope */
 let DisplaceGroups = {
+	"Boots": ToMap([
+		"Ankles",
+		"Ankles3",
+		"Ankles2",
+		"Ankles1",
+		"AnkleLeft",
+		"AnkleRight",
+	]),
 	"Rope1": ToMap([
 		"Shirt",
 		"SleeveLeft",
@@ -269,7 +283,58 @@ let DisplaceGroups = {
 		"ForeSleeveDecoRight",
 		"GloveRight",
 		"ForeHandRight",
-	])
+	]),
+
+	"RopeThighs": ToMap([
+		"PantLeft",
+		"PantRight",
+		"Pants",
+
+		"OverSocks",
+		"StockingLeft",
+		"StockingRight",
+
+		"Panties",
+
+		"TorsoUpper",
+		"Butt",
+		"TorsoLower",
+		"Torso",
+		"LegLeft",
+		"LegRight",
+
+		"ShoeLeftHogtie",
+		"SockLeftHogtie",
+		"FootLeftHogtie",
+		"ShoeRightKneel",
+		"SockRightKneel",
+		"FootRightKneel",
+	]),
+	"RopeCalf": ToMap([
+		"PantLeft",
+		"PantRight",
+		"Pants",
+
+		// Shoes
+		"ShoeLeftDeco",
+		"ShoeLeft",
+		"ShoeRightDeco",
+		"ShoeRight",
+
+		"OverSocks",
+		"StockingLeft",
+		"StockingRight",
+
+		"LegLeft",
+		"LegRight",
+
+		"ShoeLeftHogtie",
+		"SockLeftHogtie",
+		"FootLeftHogtie",
+		"ShoeRightKneel",
+		"SockRightKneel",
+		"FootRightKneel",
+	]),
 };
 
 
