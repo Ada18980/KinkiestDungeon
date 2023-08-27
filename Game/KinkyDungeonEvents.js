@@ -2969,7 +2969,17 @@ let KDEventMapSpell = {
 			}
 		},
 	},
-	"draw": {
+	"calcVision": {
+		"Multiply": (e, spell, data) => {
+			data.visionMult *= e.mult;
+		},
+	},
+	"calcHearing": {
+		"Multiply": (e, spell, data) => {
+			data.hearingMult *= e.mult;
+		},
+	},
+	/*"draw": {
 		"EnemySense": (e, spell, data) => {
 			let activate = false;
 			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && !KinkyDungeonPlayerBuffs.EnemySense) {
@@ -2997,7 +3007,7 @@ let KDEventMapSpell = {
 				KinkyDungeonExpireBuff(KinkyDungeonPlayerBuffs, "EnemySense");
 			}
 		},
-	},
+	},*/
 	"getLights": {
 		"Light": (e, spell, data) => {
 			let activate = false;
@@ -3044,6 +3054,12 @@ let KDEventMapSpell = {
 					KinkyDungeonExpireBuff(KinkyDungeonPlayerBuffs, "Analyze");
 				}
 				KinkyDungeonAdvanceTime(0, true, true);
+
+			}
+		},
+		"PassTime": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonAdvanceTime(e.time, true, true);
 
 			}
 		},

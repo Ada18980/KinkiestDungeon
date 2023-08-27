@@ -277,9 +277,28 @@ function KinkyDungeonGetVisionRadius() {
 		blindlevel: KinkyDungeonBlindLevel,
 		noperipheral: KinkyDungeonDeaf || KinkyDungeonStatBlind > 0,
 		blindMult: (KinkyDungeonStatsChoice.get("Blackout") || KinkyDungeonStatsChoice.get("TotalBlackout")) ? 2 : 1,
+		visionMult: 1.0,
 	};
 	KinkyDungeonSendEvent("calcVision", data);
-	return (KDGameData.SleepTurns > 2) ? 1 : (Math.max((data.noperipheral) ? 1 : 2, Math.round(KDMaxVisionDist-data.blindlevel * data.blindMult)));
+	return (KDGameData.SleepTurns > 2) ? 1 : (Math.max((data.noperipheral) ? 1 : 2, Math.round(data.visionMult*(KDMaxVisionDist-data.blindlevel * data.blindMult))));
+}
+
+/**
+ *
+ * @returns {{radius: number, mult: number}}
+ */
+function KinkyDungeonGetHearingRadius() {
+	let data = {
+		noise: 0,
+		base: 8,
+		deaflevel: KinkyDungeonDeaf ? 4 : 0,
+		hearingMult: 1.0,
+	};
+	KinkyDungeonSendEvent("calcHearing", data);
+	return {
+		radius: Math.round((data.base-data.deaflevel) * data.hearingMult),
+		mult: data.hearingMult,
+	};
 }
 
 /** Returns if the player is automatically doing stuff
@@ -586,6 +605,7 @@ function KinkyDungeonSendDialogue(entity, dialogue, color, duration, priority, f
 			entity.dialogueColor = color;
 			entity.dialogueDuration = 4;
 			entity.dialoguePriority = 1;
+			KDEnemyAddSound(entity, 7);
 		}
 		return;
 	}
@@ -594,6 +614,7 @@ function KinkyDungeonSendDialogue(entity, dialogue, color, duration, priority, f
 		entity.dialogueColor = color;
 		entity.dialogueDuration = duration;
 		entity.dialoguePriority = priority;
+		KDEnemyAddSound(entity, 10);
 		if (!entity.player) {
 			KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, color, 0, true, false, entity);
 			KDAllowDialogue = false;

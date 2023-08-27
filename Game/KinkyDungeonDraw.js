@@ -28,6 +28,16 @@ let pixirenderer = null;
 let pixirendererKD = null;
 let kdgamefog = new PIXI.Graphics();
 kdgamefog.zIndex = -1;
+let kdgamesound = new PIXI.Container();
+kdgamesound.zIndex = 1;
+let kdsolidcolorfilter = new PIXI.Filter(null, KDShaders.Solid.code, {});
+let kdoutlinefilter = PIXI.filters ? new PIXI.filters.OutlineFilter(2, 0xffffff, 0.1, 0.5, true) : undefined;
+if (StandalonePatched) {
+	kdgamesound.filters = [kdoutlinefilter];
+} else {
+	kdgamesound.alpha = 0.5;
+}
+
 
 let kdminimap = new PIXI.Graphics();
 kdminimap.x = 500;
@@ -104,6 +114,7 @@ kdgameboard.addChild(kdmapboard);
 kdgameboard.addChild(kdbulletboard);
 kdgameboard.addChild(kdenemyboard);
 kdgameboard.addChild(kdeffecttileboard);
+kdgameboard.addChild(kdgamesound);
 // @ts-ignore
 let kdui = new PIXI.Graphics();
 let kdcanvas = new PIXI.Container();
@@ -698,6 +709,8 @@ let KDLastKeyTime = {
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
+	// Breath the sound outlines
+	kdoutlinefilter.alpha = 0.5 + 0.1 * Math.sin(2 * Math.PI * (CommonTime() % 2000 / 2000) );
 	KDButtonHovering = false;
 	if (kdminimap.visible) {
 		let zIndex = KDExpandMinimap ? 150 : 90;

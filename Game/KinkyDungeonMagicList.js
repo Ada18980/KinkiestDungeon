@@ -893,8 +893,12 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{type: "Blindness", trigger: "calcStats", power: -1},
 			{type: "AccuracyBuff", trigger: "tick", power: 0.4},
 		]},
-		{name: "EnemySense", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 2, defaultOff: true, cancelAutoMove: true, costOnToggle: true, components: [], level:1, type:"passive",
-			events: [{type: "EnemySense", trigger: "draw", dist: 12, distStealth: 6}]},
+		{name: "EnemySense", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge", "sound"], school: "Illusion", manacost: 0, defaultOff: true, cancelAutoMove: true, components: [], level:1, type:"passive",
+			events: [
+				{type: "Multiply", trigger: "calcHearing", mult: 3.0},
+				{type: "Multiply", trigger: "calcVision", mult: 0.1},
+				{type: "PassTime", trigger: "toggleSpell", time: 1}
+			]},
 		{name: "Light", prerequisite: "ApprenticeLight", tags: ["buff", "utility", "light"], school: "Illusion", manacost: 2, spellPointCost: 1, defaultOff: true, cancelAutoMove: true, costOnToggle: true, time: 12, components: [], level:1, type:"passive",
 			events: [{type: "Light", trigger: "getLights", power: 12, time: 12}, {type: "Light", trigger: "toggleSpell", power: 12, time: 12}]},
 		{name: "Evasion", prerequisite: "ApprenticeMystery", tags: ["buff", "utility", "defense"], sfx: "Fwoosh", school: "Illusion", manacost: 5, components: ["Legs"], mustTarget: true, level:1, type:"buff",

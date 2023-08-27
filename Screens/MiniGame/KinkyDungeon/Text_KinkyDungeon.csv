@@ -2381,16 +2381,16 @@ KillDollDoor,"The door flies open as the Dollmaker chuckles at you!"
 NameGiantMushroom,Giant Mushroom
 KillGiantMushroom,"The giant mushroom explodes into a cloud of spores!!!"
 
-NameMushy,Animated Mushroom
-KillMushy,"The animated mushroom explodes into a cloud of spores!!!"
-AttackMushyBind,"The animated mushroom spits spores into your face and ties you while you are distracted! (+RestraintAdded)"
-AttackMushyBlind,"The animated mushroom spits spores into your face and tries to tie you!"
-AttackMushy,"The animated mushroom emits soporific spores! (DamageTaken)"
+NameMushy,Army Mushroom
+KillMushy,"The army mushroom explodes into a cloud of spores!!!"
+AttackMushyBind,"The army mushroom spits spores into your face and ties you while you are distracted! (+RestraintAdded)"
+AttackMushyBlind,"The army mushroom spits spores into your face and tries to tie you!"
+AttackMushy,"The army mushroom emits soporific spores! (DamageTaken)"
 
-NameMushyHappy,Happy Mushroom
-KillMushyHappy,"The happy mushroom explodes into a cloud of spores!!!"
-AttackMushyHappyBlind,"The happy mushroom tickles you silly!"
-AttackMushHappy,"The happy mushroom tickles you silly! (DamageTaken)"
+NameMushyHappy,Delicious Mushroom
+KillMushyHappy,"The delicious mushroom explodes into a cloud of spores!!!"
+AttackMushyHappyBlind,"The delicious mushroom tickles you silly!"
+AttackMushHappy,"The delicious mushroom tickles you silly! (DamageTaken)"
 
 NameMushySick,Infected Mushroom
 KillMushySick,"The infected mushroom explodes into a cloud of spores!!!"
@@ -5512,8 +5512,8 @@ KinkyDungeonSpellStrengthWillpower,You focus intently!
 KinkyDungeonSpellTrueSight,Truesight
 KinkyDungeonSpellDescriptionTrueSight,When enabled: Drain mana every turn to see through walls and increase accuracy by 40%.
 
-KinkyDungeonSpellEnemySense,Heartsense
-KinkyDungeonSpellDescriptionEnemySense,Highlight the locations of enemies through walls on the map for 12 turns.
+KinkyDungeonSpellEnemySense,Echolocation
+KinkyDungeonSpellDescriptionEnemySense,"Close your eyes to dramatically improve your hearing and locate enemies through walls."
 
 KinkyDungeonSpellLight,Light
 KinkyDungeonSpellDescriptionLight,"Produce a bright light for Duration turns. Has no effect in dark rooms."

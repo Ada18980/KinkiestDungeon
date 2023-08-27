@@ -94,4 +94,23 @@ gl_FragColor = c;
 }
 `
 	},
+	Solid: {
+		code: `
+varying vec2 vTextureCoord;
+uniform sampler2D uSampler;
+
+void main(void)
+{
+vec4 c = texture2D(uSampler, vTextureCoord);
+
+if (c.a > 0.0) {
+	c.r = 1.;
+	c.g = 1.;
+	c.b = 1.;
+}
+
+gl_FragColor = c;
+}
+`
+	},
 };
