@@ -1183,4 +1183,7 @@ let KDStairsAltAction = {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
 		}
 	},
+	"Null": (toTile, suppressCheckPoint) => {
+		// Beep
+	}
 };

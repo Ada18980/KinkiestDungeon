@@ -18,7 +18,7 @@ let KDJailEvents = {
 			}
 			let mainFaction = KDGetMainFaction();
 			// Jail tag
-			let jt = KDGameData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDGameData.JailFaction[Math.floor(KDRandom() * KDGameData.JailFaction.length)]]] : "jailer";
+			let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]]] : "jailer";
 			let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], false, undefined, ["gagged"]);
 			if (!Enemy) {
 				Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], false, undefined, ["gagged"]);
@@ -122,7 +122,7 @@ let KDGuardActions = {
 		},
 		assign: (guard, xx, yy) => {
 			KinkyDungeonInterruptSleep();
-			if (KinkyDungeonGoddessRep.Prisoner >= KDSecurityLevelHiSec && KDGameData.RoomType != "Jail" && (!(KDGameData.JailFaction?.length > 0) || KDFactionRelation("Player", KDGameData.JailFaction[0]) < 0.4)) {
+			if (KinkyDungeonGoddessRep.Prisoner >= KDSecurityLevelHiSec && KDGameData.RoomType != "Jail" && (!(KDMapData.JailFaction?.length > 0) || KDFactionRelation("Player", KDMapData.JailFaction[0]) < 0.4)) {
 				KDStartDialog("JailerHiSec", guard.Enemy.name, true, "", guard);
 			} else {
 				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonRemindJailRelease" + KinkyDungeonCheckRelease()).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#ffff00", 4, 8);

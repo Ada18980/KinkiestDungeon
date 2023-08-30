@@ -4743,7 +4743,22 @@ let KDEventMapGeneric = {
 				}
 
 			}
-		}
+		},
+		"NoRepeatTunnels": (e, data) => {
+			// The player can never backtrack to a tunnel
+			if (data.toTile == 'S' && data.tile?.RoomType == "Tunnel") {
+				data.overrideRoomType = true;
+				KDGameData.RoomType = "";
+			}
+		},
+		"SkipOldPerkRooms": (e, data) => {
+			// The player can never backtrack to old perk rooms
+			if (data.toTile != 'S' && !data.tile?.RoomType && MiniGameKinkyDungeonLevel < KDGameData.HighestLevel) {
+				data.overrideRoomType = true;
+				KDGameData.RoomType = "";
+				data.AdvanceAmount = 1;
+			}
+		},
 	},
 	"drawSGTooltip": {
 		"goddessBonus": (e, data) => {
@@ -5088,7 +5103,7 @@ let KDEventMapGeneric = {
 			if (KinkyDungeonStatsChoice.get("hardMode")) data.specialChests.shadow = 2;
 		},
 		"demontransition": (e, data) => {
-			if (data.altType?.name == "DemonTransition") data.specialChests.lessershadow = 4;
+			if (data.altType?.name == "DemonTransition") data.specialChests.lessershadow = 10;
 		},
 	}
 };

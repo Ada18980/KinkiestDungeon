@@ -318,7 +318,7 @@ function KDProcessInput(type, data) {
 			let y =  data.targetTile.split(',')[1];
 			KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, slimed ? 1.5 : 1);
 
-			KDGameData.PoolUses += 1;
+			KDMapData.PoolUses += 1;
 			break;
 		}
 		case "shrineBottle": {
@@ -342,7 +342,7 @@ function KDProcessInput(type, data) {
 			KinkyDungeonAggroAction('shrine', {});
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/PotionDrink.ogg");
 
-			KDGameData.PoolUses += 1;
+			KDMapData.PoolUses += 1;
 			break;
 		}
 		case "defeat":

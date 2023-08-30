@@ -730,9 +730,9 @@ function KDTE_Clear(x, y, force = false) {
 		KinkyDungeonMapSetForce(x, y, '0');
 		KinkyDungeonTilesDelete(x + "," + y);
 		delete KDMapData.TilesSkin[x + "," + y];
-		for (let jail of KDGameData.JailPoints) {
+		for (let jail of KDMapData.JailPoints) {
 			if (jail.x == x && jail.y == y)
-				KDGameData.JailPoints.splice(KDGameData.JailPoints.indexOf(jail), 1);
+				KDMapData.JailPoints.splice(KDMapData.JailPoints.indexOf(jail), 1);
 		}
 		//KDMapData.EffectTiles.delete(x + "," + y);
 	}
@@ -763,7 +763,7 @@ let KDTE_Brush = {
 			KinkyDungeonMapSetForce(KinkyDungeonTargetX, KinkyDungeonTargetY, tile);
 
 			if (brush.jail) {
-				KDGameData.JailPoints.push({x: KinkyDungeonTargetX, y: KinkyDungeonTargetY, type: brush.jail.type, radius: brush.jail.radius});
+				KDMapData.JailPoints.push({x: KinkyDungeonTargetX, y: KinkyDungeonTargetY, type: brush.jail.type, radius: brush.jail.radius});
 			}
 			if (brush.special) {
 				KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, Object.assign({}, brush.special));
@@ -1140,9 +1140,9 @@ function KDTE_LoadTile(name, loadedTile) {
 
 	KDMapData.Tiles = KDObjFromMapArray(nt.Tiles);
 	KDMapData.TilesSkin = KDObjFromMapArray(nt.Skin);
-	KDGameData.JailPoints = [];
+	KDMapData.JailPoints = [];
 	for (let j of nt.Jail) {
-		KDGameData.JailPoints.push(Object.assign({}, j));
+		KDMapData.JailPoints.push(Object.assign({}, j));
 	}
 	let array = KDObjFromMapArray(nt.effectTiles);
 	for (let tile of Object.entries(array)) {
@@ -1197,7 +1197,7 @@ function KDTE_ExportTile() {
 		grid: KDMapData.Grid,
 		POI: KinkyDungeonPOI,
 		Keyring: KDGameData.KeyringLocations,
-		Jail: KDGameData.JailPoints,
+		Jail: KDMapData.JailPoints,
 		Tiles: KDMapData.Tiles,
 		effectTiles: KDMapData.EffectTiles,
 		Skin: KDMapData.TilesSkin,

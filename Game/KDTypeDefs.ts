@@ -1906,8 +1906,10 @@ interface KinkyDungeonSave {
 	spells: string[];
 	inventory: item[];
 	KDGameData: KDGameDataBase;
-	KDMapData: KDMapData;
+	KDMapData: KDMapDataType;
+	KDWorldMap: Record<string, KDWorldSlot>;
 	KDEventData: Object;
+	KDCurrentWorldSlot: {x: number, y: number};
 	flags: [string, number][];
 	stats: {
 		picks: number;
@@ -1926,12 +1928,23 @@ interface KinkyDungeonSave {
 	faction: Record<string, Record<string, number>>;
 }
 
+interface KDWorldSlot {
+	data: Record<string, KDMapDataType>;
+	x: number;
+	y: number;
+	color: string;
+	name: string;
+}
 
-interface KDMapData {
+interface KDMapDataType {
 	Grid: string;
 	GridWidth: number;
 	GridHeight: number;
 	FogGrid: any[];
+
+
+	MainPath: string,
+	ShortcutPath: string,
 
 	Tiles: Record<string, any>;
 	TilesSkin: Record<string, any>;
@@ -1947,6 +1960,24 @@ interface KDMapData {
 	PatrolPoints: {x: number, y: number}[];
 
 	MapBrightness: number;
+
+	ConstantX: boolean;
+
+	RoomType: string,
+	MapMod: string,
+
+
+	JailPoints: KDJailPoint[],
+
+	ShopItems: shopItem[],
+	PoolUses: number,
+	PoolUsesGrace: number,
+
+	CategoryIndex: Record<string, {category: string, tags: string[]}>,
+
+	JailFaction: string[],
+	GuardFaction: string[],
+	MapFaction: string,
 }
 
 

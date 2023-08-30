@@ -10,8 +10,10 @@ let MiniGameKinkyDungeonLevel = -1;
  */
 let KinkyDungeonMapIndex = {};
 
-
-
+/** @type {Record<string, KDWorldSlot>} */
+let KDWorldMap = {};
+let KDCurrentWorldSlot = {x: 0, y: 0};
+/** @type {KDMapDataType} */
 let KDMapData = {};
 /** This data can be regenerated as needed */
 let KDMapExtraData = {};
@@ -24,12 +26,8 @@ KDMapExtraData.VisionGrid = [];
 KDMapExtraData.ColorGrid = [];
 KDMapExtraData.ShadowGrid = [];
 KDMapExtraData.BrightnessGrid = [];
-KDMapData.FogGrid = [];
 let KinkyDungeonUpdateLightGrid = true;
-KDMapData.Grid = "";
 let KinkyDungeonGrid_Last = "";
-KDMapData.GridWidth = 31;
-KDMapData.GridHeight = 19;
 
 let KinkyDungeonGridSizeDisplay = 72;
 let KinkyDungeonGridWidthDisplay = 2000/KinkyDungeonGridSizeDisplay;//17;
@@ -58,9 +56,6 @@ let KinkyDungeonContextFow = null;
 let KinkyDungeonCanvasPlayer = document.createElement("canvas");
 let KinkyDungeonContextPlayer = null;
 
-/** @type {entity[]} */
-KDMapData.Entities = [];
-
 let KinkyDungeonPOI = [];
 
 let KDDefaultAvoidTiles = "gtVN@";
@@ -88,22 +83,6 @@ let KinkyDungeonTransparentMovableObjects = KinkyDungeonMovableTiles
 
 let KDOpenDoorTiles = ["DoorOpen", "DoorVertOpenCont", "DoorVertOpen"];
 
-/**
- * @type {Record<string, {x: number, y: number, tags?:string[]}>}
- */
-KDMapData.RandomPathablePoints = {};
-/** @type {Record<string, any>} */
-KDMapData.Tiles = {};
-/** @type {Record<string, Record<string, effectTile>>} */
-KDMapData.EffectTiles = {};
-/** @type {Record<string, any>} */
-KDMapData.TilesMemory = {};
-/** @type {Record<string, any>} */
-KDMapData.TilesSkin = {};
-
-
-
-KDMapData.MapBrightness = 5;
 
 
 let KinkyDungeonTargetTile = null;
@@ -152,16 +131,63 @@ let KinkyDungeonLastMoveTimerStart = 0;
 let KinkyDungeonLastMoveTimerCooldown = 175;
 let KinkyDungeonLastMoveTimerCooldownStart = 50;
 
-KDMapData.PatrolPoints = [];
-KDMapData.StartPosition = {x: 1, y: 1};
-KDMapData.EndPosition = {x: 1, y: 1};
-KDMapData.ShortcutPosition = {x: 1, y: 1};
+
+
 let KinkyDungeonJailLeash = 3;
 let KinkyDungeonJailLeashX = 3;
 
 let KinkyDungeonSaveInterval = 10;
 
 let KinkyDungeonSFX = [];
+
+/**
+ *
+ * @param {string} RoomType
+ * @param {string} MapMod
+ * @returns {KDMapDataType}
+ */
+function KDDefaultMapData(RoomType = "", MapMod = "") {
+	return {
+		RoomType: RoomType,
+		MapMod: MapMod,
+		RandomPathablePoints: {},
+		Tiles: {},
+		EffectTiles : {},
+		TilesMemory: {},
+		TilesSkin: {},
+
+		MainPath: 'grv',
+		ShortcutPath: 'grv',
+
+		Bullets: [],
+
+		ConstantX: false,
+
+		Entities : [],
+		FogGrid : [],
+		Grid : "",
+		GridWidth : 31,
+		GridHeight : 19,
+		MapBrightness : 5,
+		PatrolPoints : [],
+		StartPosition : {x: 1, y: 1},
+		EndPosition : {x: 1, y: 1},
+		ShortcutPosition : {x: 1, y: 1},
+		JailPoints : [],
+
+		ShopItems : [],
+		PoolUses : 0,
+		PoolUsesGrace : 3,
+		CategoryIndex: {},
+
+		JailFaction: [],
+		GuardFaction: [],
+		MapFaction: "",
+	};
+}
+
+KDMapData = KDDefaultMapData();
+
 
 /**
  *
@@ -282,6 +308,8 @@ function KDResetEventData(Data) {
 }
 
 function KinkyDungeonInitialize(Level, Load) {
+	KDCurrentWorldSlot = {x: 0, y: 0};
+
 	if (StandalonePatched)
 		KDInitCurrentPose(true);
 
@@ -403,7 +431,137 @@ function KDGetMapSize() {
 	return 0;
 }
 
+/**
+ * Creates a new world location at the specific area
+ * @param {number} x
+ * @param {number} y
+ */
+function KDCreateWorldLocation(x, y) {
+	KDWorldMap[x + ',' + y] = {
+		data: {},
+		x: x,
+		y: y,
+		name: "Tile" + x + ',' + y,
+		color: "#ffffff"
+	};
+}
+
+/**
+ * Loads a map from a world location
+ * @param {number} x
+ * @param {number} y
+ * @param {string} room
+ * @param {number} direction - 0 is default (start position), 1 is end, 2 is south shortcut, 3 is north shortcut
+ * @param {boolean} constantX
+ * @param {boolean} ignoreAware - Enemies will lock the door if this is true and they see you enter
+ */
+function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = true) {
+	let saveconstantX = KDMapData.ConstantX;
+	let origx = x;
+	if (constantX) x = 0;
+
+	if (!KDWorldMap[x + ',' + y]) return false;
+	if (!KDWorldMap[x + ',' + y].data[room]) return false;
+
+	// Load the room
+	let CurrentLocation = KDWorldMap[(saveconstantX ? 0 : KDCurrentWorldSlot.x) + "," + KDCurrentWorldSlot.y];
+	if (!CurrentLocation) KDCreateWorldLocation(0, KDCurrentWorldSlot.y);
+
+	let CurrentMapData = JSON.parse(JSON.stringify(KDMapData));
+	let NewMapData = JSON.parse(JSON.stringify(KDWorldMap[x + ',' + y].data[room]));
+
+	if (CurrentLocation) {
+		CurrentLocation.data[CurrentMapData.RoomType] = CurrentMapData;
+	}
+
+	KDMapData = NewMapData;
+	KDGameData.RoomType = KDMapData.RoomType;
+	KDGameData.MapMod = KDMapData.MapMod;
+
+	KDInitTempValues();
+
+	KDPlacePlayerBasedOnDirection(direction);
+
+	KDCurrentWorldSlot = {
+		x: origx,
+		y: y,
+	};
+	let aware = KDKickEnemies(undefined, ignoreAware); // Shuffle enemy locations
+	if (ignoreAware && aware) {
+		KinkyDungeonLoseJailKeys();
+		KinkyDungeonSendActionMessage(10, TextGet("KDClimbUpTrapped"), "#ff0000", 3);
+	}
+	return true;
+}
+
+function KDPlacePlayerBasedOnDirection(direction = 0) {
+	if (direction == 1) {
+		KinkyDungeonPlayerEntity = {MemberNumber:Player.MemberNumber, x: KDMapData.EndPosition.x, y:KDMapData.EndPosition.y, player:true};
+	} else if (direction == 2) {
+		KinkyDungeonPlayerEntity = {MemberNumber:Player.MemberNumber, x: KDMapData.ShortcutPosition.x, y:KDMapData.ShortcutPosition.y, player:true};
+	} else if (direction == 3) {
+		KinkyDungeonPlayerEntity = {MemberNumber:Player.MemberNumber, x: KDMapData.ShortcutPosition.x, y:KDMapData.ShortcutPosition.y, player:true};
+	} else {
+		KinkyDungeonPlayerEntity = {MemberNumber:Player.MemberNumber, x: KDMapData.StartPosition.x, y:KDMapData.StartPosition.y, player:true};
+	}
+}
+
+function KDInitTempValues(seed) {
+	KDGameData.ChestsGenerated = [];
+	KDPathfindingCacheFails = 0;
+	KDPathfindingCacheHits = 0;
+	KDPathCache = new Map();
+	KDThoughtBubbles = new Map();
+	KinkyDungeonSpecialAreas = [];
+	KinkyDungeonRescued = {};
+	KDGameData.ChampionCurrent = 0;
+	KinkyDungeonAid = {};
+	KDGameData.KinkyDungeonPenance = false;
+	KDRestraintsCache = new Map();
+	KDEnemiesCache = new Map();
+	KDEnemyCache = new Map();
+	KinkyDungeonTargetTile = null;
+	KinkyDungeonTargetTileLocation = "";
+	KinkyDungeonGroundItems = []; // Clear items on the ground
+
+	KDGameData.OfferFatigue = 0;
+	KDGameData.KeyringLocations = [];
+
+	if (KDGameData.JailKey == undefined) {
+		KDGameData.JailKey = false;
+	}
+
+	KDGameData.RescueFlag = false;
+	KinkyDungeonTotalSleepTurns = 0;
+	KinkyDungeonFastMovePath = [];
+
+	KinkyDungeonShopIndex = 0;
+
+	if (!seed) {
+		KDGameData.AlreadyOpened = [];
+		KDrandomizeSeed(true);
+		KDGameData.LastMapSeed = KinkyDungeonSeed;
+		// Reset the chase if this is a new floor
+		if (KDGameData.PrisonerState == "chase") {
+			KDGameData.PrisonerState = "";
+		}
+	}
+	console.log("Map Seed: " + KinkyDungeonSeed);
+	KDsetSeed(KinkyDungeonSeed);
+
+
+	KDStageBossGenerated = true;
+	KDUpdateEnemyCache = true;
+	KinkyDungeonUpdateLightGrid = true;
+
+	KDTileToTest = null;
+	KDPathCache = new Map();
+	KDPathCacheIgnoreLocks = new Map();
+}
+
 // Starts the the game at a specified level
+// Example usage:
+// KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, 1, false, undefined, "", undefined, true);
 /**
  *
  * @param {floorParams} MapParams
@@ -411,88 +569,74 @@ function KDGetMapSize() {
  * @param {boolean} [testPlacement]
  * @param {boolean} [seed]
  * @param {string} [forceFaction]
+ * @param {{x: number, y: number}} [worldLocation]
+ * @param {boolean} [useExisting]
+ * @param {string} [origMapType]
+ * @param {number} [direction]
  */
-function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFaction) {
+function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFaction, worldLocation, useExisting, origMapType = "", direction = 0) {
+	let mapMod = null;
+	if (KDGameData.MapMod) {
+		mapMod = KDMapMods[KDGameData.MapMod];
+	}
+
+	let altRoom = KDGameData.RoomType;
+	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
+
+	let constantX = altType?.constantX;
+
+	if (!worldLocation) worldLocation = {x: KDCurrentWorldSlot.x, y: KDCurrentWorldSlot.y};
+	if (!KDWorldMap[(constantX ? 0 : worldLocation.x) + "," + worldLocation.y]) {
+		KDCreateWorldLocation(constantX ? 0 : worldLocation.x, worldLocation.y);
+	}
+	let location = KDWorldMap[(constantX ? 0 : worldLocation.x) + "," + worldLocation.y];
+
+	if (useExisting && location.data[KDGameData.RoomType]) {
+		KDLoadMapFromWorld(worldLocation.x, worldLocation.y, KDGameData.RoomType, direction, constantX);
+		return;
+	}
+
+	// Else make a new one
+	/** @type {KDMapData} */
+	KDMapData = KDDefaultMapData(KDGameData.RoomType, KDGameData.MapMod);
+	KDCurrentWorldSlot = worldLocation;
 	for (let iterations = 0; iterations < 100; iterations++) {
-		KDGameData.ChestsGenerated = [];
-		KDPathfindingCacheFails = 0;
-		KDPathfindingCacheHits = 0;
-		KDPathCache = new Map();
-		KDThoughtBubbles = new Map();
-		KinkyDungeonSpecialAreas = [];
-		KinkyDungeonRescued = {};
-		KDGameData.ChampionCurrent = 0;
-		KinkyDungeonAid = {};
-		KDGameData.KinkyDungeonPenance = false;
-		KDRestraintsCache = new Map();
-		KDEnemiesCache = new Map();
-		KDEnemyCache = new Map();
+		KDInitTempValues(seed);
 		KDMapData.Grid = "";
 		KDMapData.Tiles = {};
 		KDMapData.TilesSkin = {};
 		KDMapData.EffectTiles = {};
-		KinkyDungeonTargetTile = null;
-		KinkyDungeonTargetTileLocation = "";
-		KinkyDungeonGroundItems = []; // Clear items on the ground
 		KDMapData.Bullets = []; // Clear all bullets
-		KDGameData.OfferFatigue = 0;
-		KDGameData.KeyringLocations = [];
-
 		KDMapData.EndPosition = null;
 		KDMapData.ShortcutPosition = null;
-
 		KDMapData.PatrolPoints = [];
+		KDMapData.JailPoints = [];
 
-		if (KDGameData.JailKey == undefined) {
-			KDGameData.JailKey = false;
-		}
-
-		KDGameData.JailPoints = [];
-
-		KDGameData.RescueFlag = false;
-
-		KinkyDungeonTotalSleepTurns = 0;
-
-		KinkyDungeonFastMovePath = [];
 
 		// These are generated before the seed as they depend on the player's restraints and rep
-		KinkyDungeonGenerateShop(MiniGameKinkyDungeonLevel);
+		KDMapData.PoolUses = Math.min(KDMapData.PoolUses, KinkyDungeonStatsChoice.get("Blessed") ? 0 : 1);
+		KDMapData.ShopItems = [];
+		KDMapData.ShopItems = KinkyDungeonGenerateShop(MiniGameKinkyDungeonLevel);
 		let shrinefilter = KinkyDungeonGetMapShrines(MapParams.shrines);
 		let traptypes = MapParams.traps.concat(KinkyDungeonGetGoddessTrapTypes());
 
-		if (iterations == 0) {
-			//console.log(seed);
-			if (!seed) {
-				KDGameData.AlreadyOpened = [];
-				KDrandomizeSeed(true);
-				KDGameData.LastMapSeed = KinkyDungeonSeed;
-				// Reset the chase if this is a new floor
-				if (KDGameData.PrisonerState == "chase") {
-					KDGameData.PrisonerState = "";
-				}
-			}
-			console.log("Map Seed: " + KinkyDungeonSeed);
-			KDsetSeed(KinkyDungeonSeed);
-			//console.log(KDRandom());
-		}
-
-		let mapMod = null;
+		mapMod = null;
 		if (KDGameData.MapMod) {
 			mapMod = KDMapMods[KDGameData.MapMod];
 		}
 
-
 		// Create enemies first so we can spawn them in the set pieces if needed
 		let allies = KinkyDungeonGetAllies();
 		KDMapData.Entities = allies;
-		KDUpdateEnemyCache = true;
 
-		let altRoom = KDGameData.RoomType;
-		let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
+		altRoom = KDGameData.RoomType;
+		altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
 
 		if (altType && altType.nokeys) {
 			KDGameData.KeysNeeded = false;
 		} else KDGameData.KeysNeeded = true;
+
+		if (altType?.constantX) KDMapData.ConstantX = true;
 
 		// make it more consistent
 		let random = KDRandom();
@@ -609,13 +753,13 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 			}
 		}
 
-		KDGameData.JailFaction = [];
-		if (mapMod?.jailType) KDGameData.JailFaction.push(mapMod.jailType);
-		else if (altType?.jailType) KDGameData.JailFaction.push(altType.jailType);
+		KDMapData.JailFaction = [];
+		if (mapMod?.jailType) KDMapData.JailFaction.push(mapMod.jailType);
+		else if (altType?.jailType) KDMapData.JailFaction.push(altType.jailType);
 
-		KDGameData.GuardFaction = [];
-		if (mapMod?.guardType) KDGameData.GuardFaction.push(mapMod.guardType);
-		else if (altType?.guardType) KDGameData.GuardFaction.push(mapMod.guardType);
+		KDMapData.GuardFaction = [];
+		if (mapMod?.guardType) KDMapData.GuardFaction.push(mapMod.guardType);
+		else if (altType?.guardType) KDMapData.GuardFaction.push(mapMod.guardType);
 		let bonus = (mapMod && mapMod.bonusTags) ? mapMod.bonusTags : undefined;
 		if (altType && altType.bonusTags) {
 			if (!bonus) bonus = altType.bonusTags;
@@ -625,9 +769,9 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 		let randomFactions = KDChooseFactions(factionList, Floor, tags, bonus, true);
 		let factionEnemy = randomFactions[2] || forceFaction || "Bandit";
 		if (forceFaction) {
-			KDGameData.MapFaction = forceFaction;
-			KDGameData.JailFaction = [forceFaction];
-			KDGameData.GuardFaction = [forceFaction];
+			KDMapData.MapFaction = forceFaction;
+			KDMapData.JailFaction = [forceFaction];
+			KDMapData.GuardFaction = [forceFaction];
 		}
 
 		//console.log(KDRandom());
@@ -669,7 +813,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 			notraps: altType?.notraps,
 		};
 
-		KDGameData.CategoryIndex = {};
+		KDMapData.CategoryIndex = {};
 
 		KinkyDungeonCreateMapGenType[genType](POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 
@@ -694,7 +838,10 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 			console.log(`${performance.now() - startTime} ms for doodad creation`);
 			startTime = performance.now();
 		}
-		KinkyDungeonPlaceStairs(KinkyDungeonGetMainPath(Floor, altType), KDMapData.StartPosition.y, width, height, altType && altType.nostairs, altType && altType.nostartstairs); // Place the start and end locations
+		KinkyDungeonPlaceStairs(KinkyDungeonGetMainPath(Floor, altType), KDMapData.StartPosition.y, width, height, altType && altType.nostairs, altType && altType.nostartstairs,
+			origMapType); // Place the start and end locations
+
+		KDPlacePlayerBasedOnDirection(direction);
 		if (KDDebug) {
 			console.log(`${performance.now() - startTime} ms for stair creation`);
 			startTime = performance.now();
@@ -850,7 +997,8 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 		KinkyDungeonMakeGhostDecision();
 
 		// Place the jail keys AFTER making the map!
-		KinkyDungeonLoseJailKeys(false, bossRules); // if (!KDGameData.JailKey || (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail') || boss)
+		KinkyDungeonLoseJailKeys(false, bossRules);
+
 
 		if (KDTileToTest || ((KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)
 			&& KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, KDMapData.EndPosition.x, KDMapData.EndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy,
@@ -858,7 +1006,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 
 		if (iterations == 100000) {
-			if (!KinkyDungeonMapIndex[KDGameData.MainPath] || !KinkyDungeonMapIndex[KDGameData.ShortcutPath])
+			if (!KinkyDungeonMapIndex[KDMapData.MainPath] || !KinkyDungeonMapIndex[KDMapData.ShortcutPath])
 				KDInitializeJourney(KDGameData.Journey);
 
 			KinkyDungeonSendEvent("postMapgen", {});
@@ -877,6 +1025,8 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 			KinkyDungeonAdvanceTime(0);
 		}
 	}
+
+	location.data[KDGameData.RoomType] = KDMapData;
 
 	KDTileToTest = null;
 	KDPathCache = new Map();
@@ -1015,10 +1165,10 @@ function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {
 	if (factionEnemy) randomFactions.push(factionEnemy);
 
 	if (Set) {
-		KDGameData.JailFaction.push(primaryFaction);
-		KDGameData.GuardFaction.push(primaryFaction);
+		KDMapData.JailFaction.push(primaryFaction);
+		KDMapData.GuardFaction.push(primaryFaction);
 		if (factionAllied) {
-			KDGameData.GuardFaction.push(factionAllied);
+			KDMapData.GuardFaction.push(factionAllied);
 		}
 	}
 	// Fill
@@ -1452,10 +1602,14 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 	}
 }
 
-function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, nostartstairs) {
+function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, nostartstairs, origMapType) {
 	// Starting stairs are predetermined and guaranteed to be open
-	if (!nostartstairs)
+	if (!nostartstairs) {
 		KinkyDungeonMapSet(1, startpos, 'S');
+		KinkyDungeonTilesSet(1 + ',' + startpos, {
+			RoomType: origMapType,
+		});
+	}
 	/*if (startpos > 1) KinkyDungeonMapSet(2, startpos - 1, '0');
 	KinkyDungeonMapSet(2, startpos, '0');
 	if (startpos < KDMapData.GridHeight-1) KinkyDungeonMapSet(2, startpos + 1, '0');
@@ -1511,8 +1665,8 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, 
 
 	}
 
-	KDGameData.MainPath = checkpoint;
-	if (KDGameData.MainPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.MainPath}, KDMapData.EndPosition.x, KDMapData.EndPosition.y, 4.99);
+	KDMapData.MainPath = checkpoint;
+	if (KDMapData.MainPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDMapData.MainPath}, KDMapData.EndPosition.x, KDMapData.EndPosition.y, 4.99);
 	KinkyDungeonSpecialAreas.push({x: KDMapData.EndPosition.x, y: KDMapData.EndPosition.y, radius: 2});
 }
 
@@ -1631,8 +1785,8 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 		}
 
 		if (placed) {
-			KDGameData.ShortcutPath = checkpoint;
-			if (KDGameData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.ShortcutPath}, KDMapData.ShortcutPosition.x, KDMapData.ShortcutPosition.y, 2.99, true);
+			KDMapData.ShortcutPath = checkpoint;
+			if (KDMapData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDMapData.ShortcutPath}, KDMapData.ShortcutPosition.x, KDMapData.ShortcutPosition.y, 2.99, true);
 		}
 	}
 }
@@ -1654,8 +1808,18 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 			chestPoints.set(s.x + "," + s.y, true);
 	}
 
+	let specialdata = {
+		altType: KDGetAltType(MiniGameKinkyDungeonLevel),
+		specialChests: {},
+	};
+
+	KinkyDungeonSendEvent("specialChests", specialdata);
+
 	let extra = KDRandom() < treasurechance;
 	treasurecount += (extra ? 1 : 0);
+	for (let c of Object.values(specialdata.specialChests)) {
+		treasurecount += c;
+	}
 
 	if (KinkyDungeonStatsChoice.get("Stealthy")) treasurecount *= 2;
 
@@ -1755,12 +1919,6 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 
 	});
 	let silverchest = 0;
-	let specialdata = {
-		altType: KDGetAltType(MiniGameKinkyDungeonLevel),
-		specialChests: {},
-	};
-
-	KinkyDungeonSendEvent("specialChests", specialdata);
 	while (list.length > 0) {
 		let N = 0;
 		if (count < treasurecount) {
@@ -1809,8 +1967,8 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 			}
 
 			if (KDAlreadyOpened(chest.x, chest.y)) {
-				KinkyDungeonMapSet(chest.x, chest.y, 'c');
-				KinkyDungeonTilesDelete("" + chest.x + "," +chest.y);
+				//KinkyDungeonMapSet(chest.x, chest.y, 'c');
+				//KinkyDungeonTilesDelete("" + chest.x + "," +chest.y);
 			}
 			count += 1;
 		} /*else {
@@ -2083,15 +2241,15 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 						orbs += 1;
 					} else tile = 'o';
 					if (KDAlreadyOpened(shrine.x, shrine.y)) {
-						tile = 'o';
+						//tile = 'o';
 					}
 					shrineTypes.push("Orb");
 				} else if (type) {
-					if (KDAlreadyOpened(shrine.x, shrine.y)) {
-						tile = 'a';
-					} else {
-						KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Shrine", Name: type, drunk: stype.drunk});
-					}
+					//if (KDAlreadyOpened(shrine.x, shrine.y)) {
+					//tile = 'a';
+					//} else {
+					KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Shrine", Name: type, drunk: stype.drunk});
+					//}
 					shrineTypes.push(type);
 				} else if (!shrineTypes.includes("Ghost") || KDRandom() < 0.5) {
 					shrineTypes.push("Ghost");
@@ -2598,7 +2756,7 @@ function KinkyDungeonReplaceDoodads(Chance, barchance, wallRubblechance, wallhoo
 			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < wallRubblechance && !KDMapData.TilesSkin[X + "," + Y]) {
 				KinkyDungeonMapSet(X, Y, 'Y');
 				if (KDAlreadyOpened(X, Y)) {
-					KinkyDungeonMapSet(X, Y, '1');
+					//KinkyDungeonMapSet(X, Y, '1');
 				}
 			}
 
@@ -2668,7 +2826,7 @@ function KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, alt
 					if (KDRandom() < cageChance) {
 						let furn = KDRandom() ? "Cage" : "DisplayStand";
 						KinkyDungeonTilesSet(X + "," + Y, {Furniture: furn});
-						KDGameData.JailPoints.push({x: X, y: Y, type: "furniture", radius: 1}); // , requireFurniture: true Standing in the cage alone will prevent jailbreak--good for stealth!
+						KDMapData.JailPoints.push({x: X, y: Y, type: "furniture", radius: 1}); // , requireFurniture: true Standing in the cage alone will prevent jailbreak--good for stealth!
 					}
 				}
 			}
@@ -4212,12 +4370,12 @@ let KDKeyCheckers = {
 	"Shop": () => {
 		if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KinkyDungeonTargetTile?.Type == "Shrine" && KinkyDungeonTargetTile.Name == "Commerce") {
 			if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
-				KinkyDungeonShopIndex = (KinkyDungeonShopIndex + 1) % KDGameData.ShopItems.length;
+				KinkyDungeonShopIndex = (KinkyDungeonShopIndex + 1) % KDMapData.ShopItems.length;
 				KDShopBuyConfirm = false;
 				return true;
 			} else if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonShopIndex = KinkyDungeonShopIndex - 1;
-				if (KinkyDungeonShopIndex < 0) KinkyDungeonShopIndex = KDGameData.ShopItems.length - 1;
+				if (KinkyDungeonShopIndex < 0) KinkyDungeonShopIndex = KDMapData.ShopItems.length - 1;
 				KDShopBuyConfirm = false;
 				return true;
 			} else if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey) {

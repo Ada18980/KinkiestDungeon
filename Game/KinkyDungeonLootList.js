@@ -207,11 +207,12 @@ let KinkyDungeonLootTable = {
 		...KDShadowRestraints,
 	],
 	"lessershadow": [
-		{name: "AncientCores", minLevel: 0, weight:1.5, message:"LootChestAncientCores", messageColor:"yellow", messageTime: 3, allFloors: true, max: 1},
-		{name: "bluekey", minLevel: 0, weight:1.0, message:"LootChestBlueKey", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		//{name: "AncientCores", minLevel: 0, weight:1.5, message:"LootChestAncientCores", messageColor:"yellow", messageTime: 3, allFloors: true, max: 1},
+		//{name: "bluekey", minLevel: 0, weight:1.0, message:"LootChestBlueKey", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "pick", minLevel: 0, weight:2.5, message:"LootRubbleLockpick", messageColor:"lightgreen", messageTime: 3, allFloors: true, prerequisites: ["fewpick"],},
-		{name: "redkey", key: true, minLevel: 0, weight:1, message:"LootRubbleRedKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
-		{name: "potions_many", minLevel: 0, weight:3, message:"LootPotionsMedley", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		//{name: "redkey", key: true, minLevel: 0, weight:1, message:"LootRubbleRedKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
+		{name: "potions_many", minLevel: 0, weight:3, message:"LootPotionsMedley", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["lowpotions"]},
+		{name: "magicknife", minLevel: 0, weight:1.5, weapon: "EnchKnife", message:"LootChestMagicKnife", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["EnchKnife"]},
 		...KDShadowRestraints,
 	],
 	"storage": [

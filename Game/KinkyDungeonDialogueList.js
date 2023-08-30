@@ -1619,7 +1619,7 @@ let KDDialogue = {
 								KinkyDungeonAggroFaction("Jail");
 								let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
 								e.faction = "Player";
-								if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDGameData.MapFaction == faction)) {
+								if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDMapData.MapFaction == faction)) {
 									if (KDFactionRelation("Player", faction) < 0.25)
 										KinkyDungeonChangeFactionRep(faction, 0.005);
 									else
@@ -1673,7 +1673,7 @@ let KDDialogue = {
 									KinkyDungeonAggroFaction("Jail");
 									let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
 									e.faction = "Player";
-									if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDGameData.MapFaction == faction)) {
+									if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDMapData.MapFaction == faction)) {
 										if (KDFactionRelation("Player", faction) < 0.25)
 											KinkyDungeonChangeFactionRep(faction, 0.005);
 										else

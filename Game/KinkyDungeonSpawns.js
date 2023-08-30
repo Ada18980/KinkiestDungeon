@@ -292,7 +292,7 @@ function KinkyDungeonCallGuard(x, y, noTransgress, normalDrops, requireTags) {
 			// Jail tag
 			let mainFaction = KDGetMainFaction();
 
-			let jt = KDGameData.GuardFaction?.length > 0 ? KinkyDungeonFactionTag[KDGameData.GuardFaction[Math.floor(KDRandom() * KDGameData.GuardFaction.length)]] : "guardCall";
+			let jt = KDMapData.GuardFaction?.length > 0 ? KinkyDungeonFactionTag[KDMapData.GuardFaction[Math.floor(KDRandom() * KDMapData.GuardFaction.length)]] : "guardCall";
 
 			let Enemy =  KinkyDungeonGetEnemy(["Guard", jt], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', requireTags ? requireTags : [jt, "jail"], true, undefined, ["gagged"]);
 			if (!Enemy) {

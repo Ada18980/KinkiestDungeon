@@ -1469,12 +1469,15 @@ Modding
 Features
 - Can now flirt with NPCs to trigger a play event
 - New sound feature that makes enemies more visible depending on situation
-Changes
-- Some changes to enemy behavior based on the map faction and whether or not you are hostile to them
 QoL
 - Plugs and vibes now indicate the type of vibrations they do in their description
 - Item and spells show their images in their description always
 - Scarves now deal Plush damage (plush content will be expanded in future)
+
+4.6 (August 2023)
+Changes
+- You can now backtrack to previous levels! This is a start toward a future system to make the map more sane and understandable....
+- Some changes to enemy behavior based on the map faction and whether or not you are hostile to them
 
 
 TODO
