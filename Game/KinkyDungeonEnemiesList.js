@@ -2649,7 +2649,7 @@ let KDAIType = {
 					ey = AIData.master.y;
 				} else if (KDRandom() < cohesion) {
 					let minDist = enemy.Enemy.cohesionRange ? enemy.Enemy.cohesionRange : AIData.visionRadius;
-					for (let e of KinkyDungeonEntities) {
+					for (let e of KDMapData.Entities) {
 						if (e == enemy) continue;
 						if (['guard', 'ambush'].includes(KDGetAI(enemy))) continue;
 						if (enemy.Enemy.clusterWith && !e.Enemy.tags[enemy.Enemy.clusterWith]) continue;
@@ -2712,9 +2712,9 @@ let KDAIType = {
 			if (!AIData.followPlayer && !KDEnemyHasFlag(enemy, "StayHere")) {
 				let patrolChance = AIData.patrolChange ? 0.13 : 0.02;
 				if (!enemy.patrolIndex) enemy.patrolIndex = KinkyDungeonNearestPatrolPoint(enemy.x, enemy.y);
-				if (KinkyDungeonPatrolPoints[enemy.patrolIndex] && KDRandom() < patrolChance) {
+				if (KDMapData.PatrolPoints[enemy.patrolIndex] && KDRandom() < patrolChance) {
 
-					if (enemy.patrolIndex < KinkyDungeonPatrolPoints.length - 1) enemy.patrolIndex += 1;
+					if (enemy.patrolIndex < KDMapData.PatrolPoints.length - 1) enemy.patrolIndex += 1;
 					else enemy.patrolIndex = 0;
 
 					let newPoint = KinkyDungeonGetPatrolPoint(enemy.patrolIndex, 1.4, AIData.MovableTiles);

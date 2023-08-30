@@ -411,7 +411,7 @@ function KDProcessInput(type, data) {
 				}
 
 				KinkyDungeonMapSet(data.x, data.y, 'p');
-				for (let x = 0; x < KinkyDungeonGridWidth; x++) {
+				for (let x = 0; x < KDMapData.GridWidth; x++) {
 					if (KinkyDungeonMapGet(x, data.y) == 'P') {
 						KinkyDungeonMapSet(x, data.y, 'p');
 					}
@@ -454,7 +454,7 @@ function KDProcessInput(type, data) {
 				KDDelayedActionPrune(["Action", "World"]);
 				/*let allies = KinkyDungeonGetAllies();
 				// Tie up all non-allies
-				for (let e of KinkyDungeonEntities) {
+				for (let e of KDMapData.Entities) {
 					if (e.Enemy.bound && !e.Enemy.tags.angel) {
 						allies.push(e);
 						if (!e.boundLevel) e.boundLevel = e.Enemy.maxhp;
@@ -463,11 +463,11 @@ function KDProcessInput(type, data) {
 						e.rescue = true;
 					}
 				}
-				KinkyDungeonEntities = allies;
+				KDMapData.Entities = allies;
 				KDGameData.PrisonerState = '';
 				KDGameData.KinkyDungeonJailGuard = 0;
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRescueMe"), "purple", 10);
-				for (let T of Object.values(KinkyDungeonTiles)) {
+				for (let T of Object.values(KDMapData.Tiles)) {
 					if (T.Lock) T.Lock = undefined;
 					if (T.Type == "Lock") T.Type = undefined;
 					if (T.Type == "Trap") T.Type = undefined;

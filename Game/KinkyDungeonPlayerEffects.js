@@ -95,7 +95,7 @@ let KDPlayerEffects = {
 				let happened = KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Curse", false, false, false, false, false);
 
 				if (happened.length > 0) {
-					for (let en of KinkyDungeonEntities) {
+					for (let en of KDMapData.Entities) {
 						if (en.Enemy.tags?.epicenterCursed) {
 							en.hp = 0;
 							en.playerdmg = 0;

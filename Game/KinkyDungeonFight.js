@@ -14,7 +14,7 @@ let KDDodgeAmount = 0.75;
 let KinkyDungeonMissChancePerBlind = 0.1; // Max 3
 let KinkyDungeonBlockMissChancePerBlind = 0.1; // Max 3
 let KinkyDungeonMissChancePerSlow = 0.1; // Max 3
-let KinkyDungeonBullets = []; // Bullets on the game board
+KDMapData.Bullets = []; // Bullets on the game board
 /**
  * @type {Map<string, {end: boolean, temporary: boolean, spin: number, spinAngle: number, name: string, size: number, spriteID: string, xx:number, yy:number, visual_x: number, visual_y: number, aoe?: boolean, updated: boolean, vx: number, vy: number, scale: number, alpha: number, delay: number}>}
  */
@@ -1060,7 +1060,7 @@ function KDUpdateBulletEffects(b, d) {
 function KinkyDungeonUpdateBullets(delta, Allied) {
 	if (Allied) KDUniqueBulletHits = new Map();
 	if (delta > 0)
-		for (let b of KinkyDungeonBullets) {
+		for (let b of KDMapData.Bullets) {
 			if ((Allied && b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell) || (!Allied && !(b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell))) {
 				KinkyDungeonSendEvent("bulletTick", {bullet: b, delta: delta, allied: Allied});
 				if (b.bullet && b.bullet.dot) {
@@ -1109,8 +1109,8 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 	if (Allied) {
 		KDBulletWarnings = [];
 	}
-	for (let E = 0; E < KinkyDungeonBullets.length; E++) {
-		let b = KinkyDungeonBullets[E];
+	for (let E = 0; E < KDMapData.Bullets.length; E++) {
+		let b = KDMapData.Bullets[E];
 
 		if ((Allied && b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell) || (!Allied && !(b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell))) {
 			let d = delta;
@@ -1171,7 +1171,7 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 						end = true;
 					if (end) {
 						d = 0;
-						KinkyDungeonBullets.splice(E, 1);
+						KDMapData.Bullets.splice(E, 1);
 						KinkyDungeonBulletsID[b.spriteID] = null;
 						KinkyDungeonSendEvent("bulletDestroy", {bullet: b, target: undefined, outOfRange:outOfRange, outOfTime: outOfTime});
 						E -= 1;
@@ -1292,12 +1292,12 @@ function KinkyDungeonUpdateBulletVisuals(delta) {
 let KinkyDungeonCurrentTick = 0;
 
 function KinkyDungeonUpdateBulletsCollisions(delta, Catchup) {
-	for (let E = 0; E < KinkyDungeonBullets.length; E++) {
-		let b = KinkyDungeonBullets[E];
+	for (let E = 0; E < KDMapData.Bullets.length; E++) {
+		let b = KDMapData.Bullets[E];
 		if ((!Catchup && !b.secondary) || (Catchup && b.secondary)) {
 			if (!KinkyDungeonBulletsCheckCollision(b, b.time >= 0, undefined, undefined, !(b.bullet.faction == "Player" || (!b.vx && !b.vy) || b.bullet.aoe || (KDistEuclidean(b.vx, b.vy) < 0.9)))) { // (b.bullet.faction == "Player" || (!b.vx && !b.vy) || b.bullet.aoe || (KDistEuclidean(b.vx, b.vy) < 0.9)) &&
 				if (!(b.bullet.spell && (b.bullet.spell.piercing || (b.bullet.spell.pierceEnemies && KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(b.x, b.y)))))) {
-					KinkyDungeonBullets.splice(E, 1);
+					KDMapData.Bullets.splice(E, 1);
 					KinkyDungeonBulletsID[b.spriteID] = null;
 					KinkyDungeonUpdateSingleBulletVisual(b, true);
 					KinkyDungeonSendEvent("bulletDestroy", {bullet: b, target: undefined, outOfRange:false, outOfTime: false});
@@ -1311,8 +1311,8 @@ function KinkyDungeonUpdateBulletsCollisions(delta, Catchup) {
 
 
 function KDCheckCollideableBullets(entity, force) {
-	for (let E = 0; E < KinkyDungeonBullets.length; E++) {
-		let b = KinkyDungeonBullets[E];
+	for (let E = 0; E < KDMapData.Bullets.length; E++) {
+		let b = KDMapData.Bullets[E];
 		if (b.x == entity.x && b.y == entity.y && b.bullet && b.bullet.damage
 				&& (b.time > 1 // Only bullets that arent instantly ending
 					&& (!entity.player || !(b.vx != 0 || b.vy != 0)))) {// Enemies can run into bullets as they move, but the player can walk into bullets that are moving without being hit
@@ -1325,7 +1325,7 @@ function KDCheckCollideableBullets(entity, force) {
 			if (entity.player) KDBulletHitPlayer(b, KinkyDungeonPlayerEntity);
 			else KDBulletHitEnemy(b, entity, 0, b.bullet.NoMsg);
 			if (!pierce) {
-				KinkyDungeonBullets.splice(E, 1);
+				KDMapData.Bullets.splice(E, 1);
 				KinkyDungeonBulletsID[b.spriteID] = null;
 				KinkyDungeonUpdateSingleBulletVisual(b, true);
 				KinkyDungeonSendEvent("bulletDestroy", {bullet: b, target: undefined, outOfRange:false, outOfTime: false});
@@ -1388,7 +1388,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 				hitevents: b.bullet.spell.hitevents,
 				faction: b.bullet.faction, lifetime: 1, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height
 			}};
-		KinkyDungeonBullets.push(newB);
+		KDMapData.Bullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false, d);
 		if (b.bullet.effectTile) {
 			KDCreateAoEEffectTiles(b.x, b.y, b.bullet.effectTile, b.bullet.effectTileDurationMod, (b.bullet.spell.effectTileAoE ? b.bullet.spell.effectTileAoE : ((b.bullet.spell.aoe) ? b.bullet.spell.aoe : 0.5)), undefined, b.bullet.spell.effectTileDensity, KDBulletAoEMod(b));
@@ -1401,7 +1401,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 					bulletSpin: b.bullet.spell?.hitSpin,
 					faction: b.bullet.faction, lifetime: 1, passthrough:true,
 					hitevents: b.bullet.spell.hitevents, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
-			KinkyDungeonBullets.push(newB);
+			KDMapData.Bullets.push(newB);
 			KinkyDungeonUpdateSingleBulletVisual(newB, false, d);
 		}
 		if (b.bullet.spell) {
@@ -1410,7 +1410,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 			if (b.bullet.spell && (b.bullet.spell.playerEffect || b.bullet.playerEffect) && AOECondition(b.x, b.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, aoe, KDBulletAoEMod(b))) {
 				KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, b.bullet.damage.type, b.bullet.playerEffect ? b.bullet.playerEffect : b.bullet.spell.playerEffect, b.bullet.spell, b.bullet.faction, b);
 			}
-			for (let enemy of KinkyDungeonEntities) {
+			for (let enemy of KDMapData.Entities) {
 				if (((enemy.x == b.x && enemy.y == b.y) || (b.bullet.spell && aoe && AOECondition(b.x, b.y, enemy.x, enemy.y, aoe, KDBulletAoEMod(b))))) {
 					for (let buff of b.bullet.spell.buffs) {
 						if (buff.enemies
@@ -1434,7 +1434,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 					hitevents: b.bullet.spell.hitevents,
 					distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
 					bind: b.bullet.spell.bind, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
-		KinkyDungeonBullets.push(newB);
+		KDMapData.Bullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false, d);
 
 		if (b.bullet.effectTile) {
@@ -1443,9 +1443,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 	} else if (b.bullet.hit == "instant") {
 		if (!KinkyDungeonBulletsCheckCollision(b, true, true, d)) {
 			if (!(b.bullet.spell && (b.bullet.spell.piercing || (b.bullet.spell.pierceEnemies && KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(b.x, b.y)))))) {
-				let ind = KinkyDungeonBullets.indexOf(b);
+				let ind = KDMapData.Bullets.indexOf(b);
 				if (ind > -1)
-					KinkyDungeonBullets.splice(ind, 1);
+					KDMapData.Bullets.splice(ind, 1);
 				KinkyDungeonBulletsID[b.spriteID] = null;
 				KinkyDungeonUpdateSingleBulletVisual(b, true, d);
 				KinkyDungeonSendEvent("bulletDestroy", {bullet: b, target: undefined, outOfRange:outOfRange, outOfTime: outOfTime});
@@ -1456,7 +1456,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 			bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight,
 			bulletSpin: b.bullet.spell?.hitSpin,
 			faction: b.bullet.faction, lifetime: 1, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
-		KinkyDungeonBullets.push(newB);
+		KDMapData.Bullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false);
 		if (b.bullet.effectTile) {
 			KDCreateAoEEffectTiles(b.x, b.y, b.bullet.effectTile, b.bullet.effectTileDurationMod, (b.bullet.spell.effectTileAoE ? b.bullet.spell.effectTileAoE : ((b.bullet.spell.aoe) ? b.bullet.spell.aoe : 0.5)), undefined, b.bullet.spell.effectTileDensity, KDBulletAoEMod(b));
@@ -1481,7 +1481,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 								damage:b.bullet.spell.power, type:b.bullet.spell.damage, bind: b.bullet.spell.bind, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time,
 								distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
 							}, lifetime: b.bullet.spell.lifetime + LifetimeBonus, name:b.bullet.name+"Hit", width:1, height:1}};
-					KinkyDungeonBullets.push(newB);
+					KDMapData.Bullets.push(newB);
 					KinkyDungeonUpdateSingleBulletVisual(newB, false, dd);
 				}
 			}
@@ -1496,13 +1496,13 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 					distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
 					bind: b.bullet.spell.bind, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time
 				}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
-		KinkyDungeonBullets.push(newB);
+		KDMapData.Bullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false);
 
 		if (b.bullet.spell && (b.bullet.spell.playerEffect || b.bullet.playerEffect) && AOECondition(b.x, b.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, b.spell.aoe, KDBulletAoEMod(b))) {
 			KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, b.bullet.damage.type, b.bullet.playerEffect ? b.bullet.playerEffect : b.bullet.spell.playerEffect, b.bullet.spell, b.bullet.faction, b);
 		}
-		for (let enemy of KinkyDungeonEntities) {
+		for (let enemy of KDMapData.Entities) {
 			if ((b.reflected
 				|| (!b.bullet.spell || !b.bullet.faction
 					|| (!KDFactionHostile(b.bullet.faction, enemy))
@@ -1558,7 +1558,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 						distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
 						bind: b.bullet.spell.bind, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height
 				}};
-			KinkyDungeonBullets.push(newB);
+			KDMapData.Bullets.push(newB);
 			KinkyDungeonUpdateSingleBulletVisual(newB, false);
 
 			KinkyDungeonMoveTo(b.x, b.y, true);
@@ -1606,7 +1606,7 @@ function KinkyDungeonSummonEnemy(x, y, summonType, count, rad, strict, lifetime,
 	for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
 		for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
 			if (AOECondition(x, y, x + X, y + Y, rad, mod) && (!minrad || Math.sqrt(X*X+Y*Y) >= minrad)) {
-				if ((x + X > 0 && y + Y > 0 && x + X < KinkyDungeonGridWidth && y + Y < KinkyDungeonGridHeight))
+				if ((x + X > 0 && y + Y > 0 && x + X < KDMapData.GridWidth && y + Y < KDMapData.GridHeight))
 					slots.push({x:X, y:Y});
 			}
 		}
@@ -1615,7 +1615,7 @@ function KinkyDungeonSummonEnemy(x, y, summonType, count, rad, strict, lifetime,
 	let created = 0;
 	let maxcounter = 0;
 	let Enemy = KinkyDungeonGetEnemyByName(summonType);
-	for (let C = 0; C < count && (KinkyDungeonEntities.length < 300 || faction == "Player" || faction == "Ambush" || faction == "Prisoner") && maxcounter < count * 30; C++) {
+	for (let C = 0; C < count && (KDMapData.Entities.length < 300 || faction == "Player" || faction == "Ambush" || faction == "Prisoner") && maxcounter < count * 30; C++) {
 		let slot = slots[Math.floor(KDRandom() * slots.length)];
 		if (Enemy && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x+slot.x, y+slot.y))
 			&& (KinkyDungeonNoEnemy(x+slot.x, y+slot.y, true) || (KinkyDungeonNoEnemy(x+slot.x, y+slot.y, false) && Enemy.noblockplayer && KDistChebyshev(x+slot.x - KinkyDungeonPlayerEntity.x, y+slot.y - KinkyDungeonPlayerEntity.y) < 1.5))
@@ -1674,7 +1674,7 @@ function KinkyDungeonBulletTrail(b) {
 									hitevents: b.bullet.spell.hitevents,
 									distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
 									bind: b.bullet.spell.trailBind, bindType: b.bullet.spell.bindType, time:b.bullet.spell.trailTime}, lifetime: b.bullet.spell.trailLifetime, name:b.bullet.name+"Trail", width:1, height:1}};
-						KinkyDungeonBullets.push(newB);
+						KDMapData.Bullets.push(newB);
 						KinkyDungeonUpdateSingleBulletVisual(newB, false);
 					}
 				}
@@ -1721,7 +1721,7 @@ function KinkyDungeonBulletsCheckCollision(bullet, AoE, force, d, inWarningOnly,
 				}
 			}
 			let nomsg = bullet.bullet && bullet.bullet.spell && bullet.bullet.spell.enemyspell && !bullet.reflected;
-			for (let enemy of KinkyDungeonEntities) {
+			for (let enemy of KDMapData.Entities) {
 				let overrideCollide = !bullet.bullet.aoe ? false : (bullet.bullet.spell && bullet.bullet.alwaysCollideTags && bullet.bullet.alwaysCollideTags.some((tag) => {return enemy.Enemy.tags[tag];}));
 				if (bullet.bullet.aoe ? KDBulletAoECanHitEntity(bullet, enemy) : KDBulletCanHitEntity(bullet, enemy, inWarningOnly, overrideCollide)) {
 					//if (!(!bullet.secondary && bullet.bullet.spell && bullet.bullet.spell.noDirectDamage)) {
@@ -1740,7 +1740,7 @@ function KinkyDungeonBulletsCheckCollision(bullet, AoE, force, d, inWarningOnly,
 
 	if (!(bullet.bullet.block > 0) && bullet.vx != 0 || bullet.vy != 0) {
 
-		for (let b2 of KinkyDungeonBullets) {
+		for (let b2 of KDMapData.Bullets) {
 			if (b2 != bullet && b2.bullet.block > 0 && b2.x == bullet.x && b2.y == bullet.y) {
 				b2.bullet.block -= bullet.bullet.damage.damage;
 				if (b2.bullet.block <= 0) b2.bullet.block = -1;
@@ -1860,7 +1860,7 @@ function KinkyDungeonLaunchBullet(x, y, targetx, targety, speed, bullet, miscast
 		//lifetime = 1;
 	}
 	let b = {born: 1, time:lifetime, x:x, y:y, vx:vx, vy:vy, xx:x, yy:y, spriteID: KinkyDungeonGetEnemyID() + bullet.name + CommonTime(), bullet:bullet, trail:bullet.spell.trail, trailEffectTile: bullet.spell.effectTileTrail};
-	KinkyDungeonBullets.push(b);
+	KDMapData.Bullets.push(b);
 	KinkyDungeonUpdateSingleBulletVisual(b, false);
 	return b;
 }
@@ -2111,7 +2111,7 @@ function AOECondition(bx, by, xx, yy, rad, modifier = "") {
 function KDCreateParticle(xx, yy, name) {
 	let newB = {born: 0, time:2, x:Math.round(xx), y:Math.round(yy), vx:0, vy:0, xx:xx, yy:yy, spriteID: KinkyDungeonGetEnemyID() + name + CommonTime(),
 		bullet:{faction: "Rage", spell:undefined, damage: undefined, lifetime: 2, passthrough:true, name:name, width:1, height:1}};
-	KinkyDungeonBullets.push(newB);
+	KDMapData.Bullets.push(newB);
 	KinkyDungeonUpdateSingleBulletVisual(newB, false);
 }
 

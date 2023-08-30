@@ -519,6 +519,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "forcePlay", 20);
+				KinkyDungeonSetEnemyFlag(enemy, "noHarshPlay", 20);
 				KinkyDungeonSetEnemyFlag(enemy, "allyPlay", 80);
 				enemy.aware = true;
 				enemy.gx = enemy.x;
@@ -1528,7 +1529,7 @@ clickFunction: (gagged, player) => {
  * @returns {entity}
  */
 function DialogueBringNearbyEnemy(x, y, radius) {
-	for (let e of KinkyDungeonEntities) {
+	for (let e of KDMapData.Entities) {
 		if (!KDHelpless(e) && KDistChebyshev(x - e.x, y - e.y) <= radius && KinkyDungeonAggressive(e) && !KDIsImmobile(e) && !e.Enemy.tags.temporary && (!KDAIType[KDGetAI(e)]?.ambush || e.ambushtrigger)) {
 			let point = KinkyDungeonNoEnemy(x, y, true) ? {x:x, y:y} : KinkyDungeonGetNearbyPoint(x, y, true);
 			if (point) {

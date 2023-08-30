@@ -57,7 +57,7 @@ let KinkyDungeonSpellSpecials = {
 	},
 	"Volcanism": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) =>  {
 		let rocks = [];
-		for (let e of KinkyDungeonEntities) {
+		for (let e of KDMapData.Entities) {
 			if (spell.filterTags.some((tag) => {return e.Enemy.tags[tag];}) && KDistEuclidean(targetX - e.x, targetY - e.y) <= spell.aoe
 				&& (!e.buffs || !KinkyDungeonHasBuff(e.buffs, KDVolcanism.id))) {
 				rocks.push(e);

@@ -34,6 +34,7 @@ Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
 Intro4,"(This game does not contain spiders)"
 Intro4BC,""
+KDToggleEnableMinimap,Always Show Minimap
 KDToggleSound,Enable Sound
 KDToggleDrool,Enable Drool/Tears
 KDToggleDrawArmor,Draw Armor

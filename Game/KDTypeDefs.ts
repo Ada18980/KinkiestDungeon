@@ -1906,6 +1906,7 @@ interface KinkyDungeonSave {
 	spells: string[];
 	inventory: item[];
 	KDGameData: KDGameDataBase;
+	KDMapData: KDMapData;
 	KDEventData: Object;
 	flags: [string, number][];
 	stats: {
@@ -1923,23 +1924,30 @@ interface KinkyDungeonSave {
 		diff: number;
 	};
 	faction: Record<string, Record<string, number>>;
-
-
-	KinkyDungeonTiles: Record<string, any>;
-	KinkyDungeonTilesSkin: Record<string, any>;
-	KinkyDungeonTilesMemory: Record<string, any>;
-	KinkyDungeonEffectTiles: Record<string, Record<string, effectTile>>;
-	KinkyDungeonRandomPathablePoints: Record<string, {x: number, y: number, tags?:string[]}>;
-	KinkyDungeonEntities: entity[];
-	KinkyDungeonBullets: any[];
-	KinkyDungeonGrid: string;
-	KinkyDungeonGridWidth: number;
-	KinkyDungeonGridHeight: number;
-	KinkyDungeonFogGrid: any[];
-	KinkyDungeonStartPosition: {x: number, y: number};
-	KinkyDungeonEndPosition: {x: number, y: number};
 }
 
+
+interface KDMapData {
+	Grid: string;
+	GridWidth: number;
+	GridHeight: number;
+	FogGrid: any[];
+
+	Tiles: Record<string, any>;
+	TilesSkin: Record<string, any>;
+	TilesMemory: Record<string, any>;
+	EffectTiles: Record<string, Record<string, effectTile>>;
+	RandomPathablePoints: Record<string, {x: number, y: number, tags?:string[]}>;
+	Entities: entity[];
+	Bullets: any[];
+	StartPosition: {x: number, y: number};
+	EndPosition: {x: number, y: number};
+	ShortcutPosition: {x: number, y: number};
+
+	PatrolPoints: {x: number, y: number}[];
+
+	MapBrightness: number;
+}
 
 
 type MapMod = {

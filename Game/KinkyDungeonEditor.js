@@ -245,8 +245,8 @@ function KDDrawTileEditor() {
 		KinkyDungeonTargetX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamX;
 		KinkyDungeonTargetY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
 
-		if (KinkyDungeonTargetX >= 0 && KinkyDungeonTargetX < KinkyDungeonGridWidth
-			&& KinkyDungeonTargetY >= 0 && KinkyDungeonTargetY < KinkyDungeonGridHeight) {
+		if (KinkyDungeonTargetX >= 0 && KinkyDungeonTargetX < KDMapData.GridWidth
+			&& KinkyDungeonTargetY >= 0 && KinkyDungeonTargetY < KDMapData.GridHeight) {
 			KDDraw(kdgameboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "TargetMove.png",
 				(KinkyDungeonTargetX - KinkyDungeonCamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - KinkyDungeonCamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 					zIndex: 100,
@@ -330,8 +330,8 @@ function KDDrawEditorUI() {
 		KDEditorTileNameIndexVisual = (KDEditorTileNameIndexVisual*4 + KDEditorTileNameIndex) / 5;
 
 
-	let indexX = (1 + Math.floor(Math.max(0, Math.min(KinkyDungeonGridWidth-1, KinkyDungeonPlayerEntity.x)) / KDTE_Scale));
-	let indexY = (1 + Math.floor(Math.max(0, Math.min(KinkyDungeonGridHeight-1,KinkyDungeonPlayerEntity.y)) / KDTE_Scale));
+	let indexX = (1 + Math.floor(Math.max(0, Math.min(KDMapData.GridWidth-1, KinkyDungeonPlayerEntity.x)) / KDTE_Scale));
+	let indexY = (1 + Math.floor(Math.max(0, Math.min(KDMapData.GridHeight-1,KinkyDungeonPlayerEntity.y)) / KDTE_Scale));
 
 	let yy = 160;
 	let xx = 100;
@@ -508,22 +508,22 @@ function KDDrawEditorUI() {
 
 
 	DrawButtonKDEx("maptileR", (bdata) => {
-		KinkyDungeonPlayerEntity.x = Math.max(0, Math.min(KinkyDungeonGridWidth - 1, KinkyDungeonPlayerEntity.x + 3));
+		KinkyDungeonPlayerEntity.x = Math.max(0, Math.min(KDMapData.GridWidth - 1, KinkyDungeonPlayerEntity.x + 3));
 		KDTELoadConfirm = false;
 		return true;
 	}, true, 1000 , 900, 50, 50, '>', "#ffffff");
 	DrawButtonKDEx("maptileL", (bdata) => {
-		KinkyDungeonPlayerEntity.x = Math.max(0, Math.min(KinkyDungeonGridWidth - 1, KinkyDungeonPlayerEntity.x - 3));
+		KinkyDungeonPlayerEntity.x = Math.max(0, Math.min(KDMapData.GridWidth - 1, KinkyDungeonPlayerEntity.x - 3));
 		KDTELoadConfirm = false;
 		return true;
 	}, true, 900 , 900, 50, 50, '<', "#ffffff");
 	DrawButtonKDEx("maptileD", (bdata) => {
-		KinkyDungeonPlayerEntity.y = Math.max(0, Math.min(KinkyDungeonGridHeight - 1, KinkyDungeonPlayerEntity.y + 3));
+		KinkyDungeonPlayerEntity.y = Math.max(0, Math.min(KDMapData.GridHeight - 1, KinkyDungeonPlayerEntity.y + 3));
 		KDTELoadConfirm = false;
 		return true;
 	}, true, 950 , 950, 50, 50, 'v', "#ffffff");
 	DrawButtonKDEx("maptileU", (bdata) => {
-		KinkyDungeonPlayerEntity.y = Math.max(0, Math.min(KinkyDungeonGridHeight - 1, KinkyDungeonPlayerEntity.y - 3));
+		KinkyDungeonPlayerEntity.y = Math.max(0, Math.min(KDMapData.GridHeight - 1, KinkyDungeonPlayerEntity.y - 3));
 		KDTELoadConfirm = false;
 		return true;
 	}, true, 950 , 850, 50, 50, '^', "#ffffff");
@@ -664,16 +664,16 @@ function KDDrawEditorUI() {
 		+ indexY;
 
 	// Enforce entrance/exits
-	for (let sim_x = 0; sim_x < KinkyDungeonGridWidth-1; sim_x += KDTE_Scale) {
-		for (let sim_y = 0; sim_y < KinkyDungeonGridHeight-1; sim_y += KDTE_Scale) {
-			let indexXX = (Math.floor(Math.max(0, Math.min(KinkyDungeonGridWidth-1, sim_x)) / KDTE_Scale));
-			let indexYY = (Math.floor(Math.max(0, Math.min(KinkyDungeonGridHeight-1,sim_y)) / KDTE_Scale));
+	for (let sim_x = 0; sim_x < KDMapData.GridWidth-1; sim_x += KDTE_Scale) {
+		for (let sim_y = 0; sim_y < KDMapData.GridHeight-1; sim_y += KDTE_Scale) {
+			let indexXX = (Math.floor(Math.max(0, Math.min(KDMapData.GridWidth-1, sim_x)) / KDTE_Scale));
+			let indexYY = (Math.floor(Math.max(0, Math.min(KDMapData.GridHeight-1,sim_y)) / KDTE_Scale));
 			let patt = KDGetTileIndexImg(KDEditorTileIndexStore[(indexXX + 1) + "," + (indexYY + 1)]);
 			if (patt) {
 				if (patt.u && indexYY == 0) KDTE_Clear(indexXX*KDTE_Scale + Math.floor(KDTE_Scale/2), indexYY*KDTE_Scale);
-				if (patt.d && indexYY == Math.floor((KinkyDungeonGridHeight-1)/KDTE_Scale)) KDTE_Clear(indexXX*KDTE_Scale + Math.floor(KDTE_Scale/2), indexYY*KDTE_Scale + KDTE_Scale - 1);
+				if (patt.d && indexYY == Math.floor((KDMapData.GridHeight-1)/KDTE_Scale)) KDTE_Clear(indexXX*KDTE_Scale + Math.floor(KDTE_Scale/2), indexYY*KDTE_Scale + KDTE_Scale - 1);
 				if (patt.l && indexXX == 0) KDTE_Clear(indexXX*KDTE_Scale, indexYY*KDTE_Scale + Math.floor(KDTE_Scale/2));
-				if (patt.r && indexXX == Math.floor((KinkyDungeonGridWidth-1)/KDTE_Scale)) KDTE_Clear(indexXX*KDTE_Scale + KDTE_Scale - 1, indexYY*KDTE_Scale + Math.floor(KDTE_Scale/2));
+				if (patt.r && indexXX == Math.floor((KDMapData.GridWidth-1)/KDTE_Scale)) KDTE_Clear(indexXX*KDTE_Scale + KDTE_Scale - 1, indexYY*KDTE_Scale + Math.floor(KDTE_Scale/2));
 			}
 		}
 	}
@@ -729,12 +729,12 @@ function KDTE_Clear(x, y, force = false) {
 	if (force || !KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(x, y))) {
 		KinkyDungeonMapSetForce(x, y, '0');
 		KinkyDungeonTilesDelete(x + "," + y);
-		delete KinkyDungeonTilesSkin[x + "," + y];
+		delete KDMapData.TilesSkin[x + "," + y];
 		for (let jail of KDGameData.JailPoints) {
 			if (jail.x == x && jail.y == y)
 				KDGameData.JailPoints.splice(KDGameData.JailPoints.indexOf(jail), 1);
 		}
-		//KinkyDungeonEffectTiles.delete(x + "," + y);
+		//KDMapData.EffectTiles.delete(x + "," + y);
 	}
 }
 
@@ -747,7 +747,7 @@ let KDTE_Brush = {
 				break;
 			}
 		}
-		delete KinkyDungeonEffectTiles[KinkyDungeonTargetX + "," + KinkyDungeonTargetY];
+		delete KDMapData.EffectTiles[KinkyDungeonTargetX + "," + KinkyDungeonTargetY];
 	},
 	"tile": (brush, curr, noSwap) => {
 		let OL = KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY) ? KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits : undefined;
@@ -823,7 +823,7 @@ let KDTE_Brush = {
 			|| (!brush.floor && !brush.wall)) {
 			if (KinkyDungeonEffectTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
 				if (!noSwap)
-					delete KinkyDungeonEffectTiles[KinkyDungeonTargetX + "," + KinkyDungeonTargetY];
+					delete KDMapData.EffectTiles[KinkyDungeonTargetX + "," + KinkyDungeonTargetY];
 			} else {
 				KDCreateEffectTile(KinkyDungeonTargetX, KinkyDungeonTargetY, {name: brush.effectTile}, 0);
 			}
@@ -855,8 +855,8 @@ let KDTE_Brush = {
 		if (!deleted) {
 			let tags = [];
 			let favor = [];
-			//let indexXX = (Math.floor(Math.max(0, Math.min(KinkyDungeonGridWidth-1, KinkyDungeonTargetX)) / KDTE_Scale));
-			//let indexYY = (Math.floor(Math.max(0, Math.min(KinkyDungeonGridHeight-1,KinkyDungeonTargetY)) / KDTE_Scale));
+			//let indexXX = (Math.floor(Math.max(0, Math.min(KDMapData.GridWidth-1, KinkyDungeonTargetX)) / KDTE_Scale));
+			//let indexYY = (Math.floor(Math.max(0, Math.min(KDMapData.GridHeight-1,KinkyDungeonTargetY)) / KDTE_Scale));
 			//let pat = KDEditorTileIndexStore[(indexXX + 1) + "," + (indexYY + 1)];
 			//if (pat) {
 			// if (pat.length == 1) tags.push("endpoint");
@@ -887,8 +887,8 @@ function KDHandleTileEditor(noSwap) {
 	KinkyDungeonTargetX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamX;
 	KinkyDungeonTargetY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
 
-	if (KinkyDungeonTargetX >= 0 && KinkyDungeonTargetX < KinkyDungeonGridWidth
-		&& KinkyDungeonTargetY >= 0 && KinkyDungeonTargetY < KinkyDungeonGridHeight) {
+	if (KinkyDungeonTargetX >= 0 && KinkyDungeonTargetX < KDMapData.GridWidth
+		&& KinkyDungeonTargetY >= 0 && KinkyDungeonTargetY < KDMapData.GridHeight) {
 		KDTELoadConfirm = false;
 		let curr = KinkyDungeonMapGet(KinkyDungeonTargetX, KinkyDungeonTargetY);
 
@@ -904,8 +904,8 @@ function KDHandleTileEditor(noSwap) {
 
 		if (!noSwap) {
 			KDVisionUpdate = 1;
-			KinkyDungeonMakeBrightnessMap(KinkyDungeonGridWidth, KinkyDungeonGridHeight, KinkyDungeonMapBrightness, [], KDVisionUpdate);
-			KinkyDungeonMakeVisionMap(KinkyDungeonGridWidth, KinkyDungeonGridHeight, [], [], KDVisionUpdate, KinkyDungeonMapBrightness);
+			KinkyDungeonMakeBrightnessMap(KDMapData.GridWidth, KDMapData.GridHeight, KDMapData.MapBrightness, [], KDVisionUpdate);
+			KinkyDungeonMakeVisionMap(KDMapData.GridWidth, KDMapData.GridHeight, [], [], KDVisionUpdate, KDMapData.MapBrightness);
 			KDVisionUpdate = 0;
 		}
 	}
@@ -1072,20 +1072,20 @@ function KDTE_Create(w, h, chkpoint = 'grv') {
 	KinkyDungeonSeeAll = true;
 
 
-	KinkyDungeonGrid = "";
-	KinkyDungeonGridWidth = KDTE_Scale * w;
-	KinkyDungeonGridHeight = KDTE_Scale * h;
-	for (let y = 0; y < KinkyDungeonGridHeight; y++) {
-		for (let x = 0; x < KinkyDungeonGridWidth; x++) {
-			KinkyDungeonGrid = KinkyDungeonGrid + "1";
+	KDMapData.Grid = "";
+	KDMapData.GridWidth = KDTE_Scale * w;
+	KDMapData.GridHeight = KDTE_Scale * h;
+	for (let y = 0; y < KDMapData.GridHeight; y++) {
+		for (let x = 0; x < KDMapData.GridWidth; x++) {
+			KDMapData.Grid = KDMapData.Grid + "1";
 		}
-		KinkyDungeonGrid = KinkyDungeonGrid + "\n";
+		KDMapData.Grid = KDMapData.Grid + "\n";
 	}
-	KinkyDungeonTiles = {};
-	KinkyDungeonEffectTiles = {};
-	KinkyDungeonTilesSkin = {};
-	KinkyDungeonEntities = [];
-	KinkyDungeonTilesMemory = {};
+	KDMapData.Tiles = {};
+	KDMapData.EffectTiles = {};
+	KDMapData.TilesSkin = {};
+	KDMapData.Entities = [];
+	KDMapData.TilesMemory = {};
 
 	KinkyDungeonPOI = [];
 	KDGameData.KeyringLocations = [];
@@ -1100,15 +1100,15 @@ function KDTE_Create(w, h, chkpoint = 'grv') {
 	KDEditorTileFlexSuperStore = {};
 
 	KinkyDungeonPlayerEntity = {
-		x: Math.floor(KinkyDungeonGridWidth/2),
-		y: Math.floor(KinkyDungeonGridHeight/2),
+		x: Math.floor(KDMapData.GridWidth/2),
+		y: Math.floor(KDMapData.GridHeight/2),
 		player: true,
 	};
 
 	KDInitCanvas();
 	KDVisionUpdate = 1;
-	KinkyDungeonMakeBrightnessMap(KinkyDungeonGridWidth, KinkyDungeonGridHeight, KinkyDungeonMapBrightness, [], KDVisionUpdate);
-	KinkyDungeonMakeVisionMap(KinkyDungeonGridWidth, KinkyDungeonGridHeight, [], [], KDVisionUpdate, KinkyDungeonMapBrightness);
+	KinkyDungeonMakeBrightnessMap(KDMapData.GridWidth, KDMapData.GridHeight, KDMapData.MapBrightness, [], KDVisionUpdate);
+	KinkyDungeonMakeVisionMap(KDMapData.GridWidth, KDMapData.GridHeight, [], [], KDVisionUpdate, KDMapData.MapBrightness);
 	KDVisionUpdate = 0;
 	KDTE_UpdateUI(true);
 }
@@ -1126,7 +1126,7 @@ function KDTE_LoadTile(name, loadedTile) {
 		ElementValue("MapTileCategory", nt.category);
 	if (nt.weight != undefined)
 		ElementValue("MapTileWeight", "" + nt.weight);
-	KinkyDungeonGrid = nt.grid;
+	KDMapData.Grid = nt.grid;
 	KinkyDungeonPOI = [];
 	for (let p of nt.POI) {
 		KinkyDungeonPOI.push(Object.assign({}, p));
@@ -1138,8 +1138,8 @@ function KDTE_LoadTile(name, loadedTile) {
 		}
 	}
 
-	KinkyDungeonTiles = KDObjFromMapArray(nt.Tiles);
-	KinkyDungeonTilesSkin = KDObjFromMapArray(nt.Skin);
+	KDMapData.Tiles = KDObjFromMapArray(nt.Tiles);
+	KDMapData.TilesSkin = KDObjFromMapArray(nt.Skin);
 	KDGameData.JailPoints = [];
 	for (let j of nt.Jail) {
 		KDGameData.JailPoints.push(Object.assign({}, j));
@@ -1150,8 +1150,8 @@ function KDTE_LoadTile(name, loadedTile) {
 	}
 
 	KDVisionUpdate = 1;
-	KinkyDungeonMakeBrightnessMap(KinkyDungeonGridWidth, KinkyDungeonGridHeight, KinkyDungeonMapBrightness, [], KDVisionUpdate);
-	KinkyDungeonMakeVisionMap(KinkyDungeonGridWidth, KinkyDungeonGridHeight, [], [], KDVisionUpdate, KinkyDungeonMapBrightness);
+	KinkyDungeonMakeBrightnessMap(KDMapData.GridWidth, KDMapData.GridHeight, KDMapData.MapBrightness, [], KDVisionUpdate);
+	KinkyDungeonMakeVisionMap(KDMapData.GridWidth, KDMapData.GridHeight, [], [], KDVisionUpdate, KDMapData.MapBrightness);
 	KDVisionUpdate = 0;
 
 	ElementValue("MapTags", nt.tags.toString());
@@ -1185,8 +1185,8 @@ function KDTE_ExportTile() {
 	 */
 	let saveTile = {
 		name: KDEditorCurrentMapTileName,
-		w: KinkyDungeonGridWidth / KDTE_Scale,
-		h: KinkyDungeonGridHeight / KDTE_Scale,
+		w: KDMapData.GridWidth / KDTE_Scale,
+		h: KDMapData.GridHeight / KDTE_Scale,
 		primInd: KDEditorTileIndexStore["1,1"],
 		index: KDEditorTileIndexStore,
 		flexEdge: KDEditorTileFlexStore || {},
@@ -1194,13 +1194,13 @@ function KDTE_ExportTile() {
 		scale: KDTE_Scale,
 		category: ElementValue("MapTileCategory"),
 		weight: parseInt(ElementValue("MapTileWeight")) ? parseInt(ElementValue("MapTileWeight")) : 0,
-		grid: KinkyDungeonGrid,
+		grid: KDMapData.Grid,
 		POI: KinkyDungeonPOI,
 		Keyring: KDGameData.KeyringLocations,
 		Jail: KDGameData.JailPoints,
-		Tiles: KinkyDungeonTiles,
-		effectTiles: KinkyDungeonEffectTiles,
-		Skin: KinkyDungeonTilesSkin,
+		Tiles: KDMapData.Tiles,
+		effectTiles: KDMapData.EffectTiles,
+		Skin: KDMapData.TilesSkin,
 		inaccessible: KDTEGetInaccessible(),
 		tags: ElementValue("MapTags") ? ElementValue("MapTags").split(',') : [ElementValue("MapTileCategory")],
 		forbidTags: ElementValue("MapForbidTags") ? ElementValue("MapForbidTags").split(',') : [],
@@ -1258,11 +1258,11 @@ function KDTEGetInaccessible() {
 		if (indX && indY) {
 			if (indX == 1 && ind[1].includes('l'))
 				listEntrances.push({indX: indX, indY: indY, dir: 'l'});
-			if (indX == 1 + Math.floor((KinkyDungeonGridWidth-1)/KDTE_Scale) && ind[1].includes('r'))
+			if (indX == 1 + Math.floor((KDMapData.GridWidth-1)/KDTE_Scale) && ind[1].includes('r'))
 				listEntrances.push({indX: indX, indY: indY, dir: 'r'});
 			if (indY == 1 && ind[1].includes('u'))
 				listEntrances.push({indX: indX, indY: indY, dir: 'u'});
-			if (indY == 1 + Math.floor((KinkyDungeonGridHeight-1)/KDTE_Scale) && ind[1].includes('d'))
+			if (indY == 1 + Math.floor((KDMapData.GridHeight-1)/KDTE_Scale) && ind[1].includes('d'))
 				listEntrances.push({indX: indX, indY: indY, dir: 'd'});
 		}
 	}

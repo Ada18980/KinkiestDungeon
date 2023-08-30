@@ -1982,7 +1982,7 @@ function KinkyDungeonHandleHUD() {
 			}
 			if (MouseIn(1100, 260, 300, 64)) {
 
-				KDMovePlayer(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, false);
+				KDMovePlayer(KDMapData.EndPosition.x, KDMapData.EndPosition.y, false);
 				KDGameData.JailKey = true;
 				KinkyDungeonUpdateLightGrid = true;
 				return true;

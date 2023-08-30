@@ -264,8 +264,8 @@ const KinkyDungeonMapParams = {
 			let naturalized = {};
 			let cavernized = {};
 			// Start nature near plants, mushrooms, etc
-			for (let x = 0; x < KinkyDungeonGridWidth-1; x++)
-				for (let y = 0; y < KinkyDungeonGridHeight-1; y++) {
+			for (let x = 0; x < KDMapData.GridWidth-1; x++)
+				for (let y = 0; y < KDMapData.GridHeight-1; y++) {
 					let category = KDGameData.CategoryIndex ? KDGetCategoryIndex(x, y)?.category : "";
 					/*let enemy = KinkyDungeonEnemyAt(x, y);
 					let tile = KinkyDungeonMapGet(x, y);
@@ -282,8 +282,8 @@ const KinkyDungeonMapParams = {
 			let wallchanceCav = 0.01;
 			let cavChance = 0.01;
 			for (let i = 6 + 4*KDRandom(); i>0; i--) {
-				for (let x = 0; x < KinkyDungeonGridWidth-1; x++)
-					for (let y = 0; y < KinkyDungeonGridHeight-1; y++) {
+				for (let x = 0; x < KDMapData.GridWidth-1; x++)
+					for (let y = 0; y < KDMapData.GridHeight-1; y++) {
 
 						let chance = KinkyDungeonMapGet(x, y) == '1' ? wallchance : 0.3;
 						if (KinkyDungeonMapGet(x, y) == '4') chance = 0; // no cracks in plants
@@ -306,8 +306,8 @@ const KinkyDungeonMapParams = {
 					}
 			}
 			for (let i = 6 + 4*KDRandom(); i>0; i--) {
-				for (let x = 0; x < KinkyDungeonGridWidth-1; x++)
-					for (let y = 0; y < KinkyDungeonGridHeight-1; y++) {
+				for (let x = 0; x < KDMapData.GridWidth-1; x++)
+					for (let y = 0; y < KDMapData.GridHeight-1; y++) {
 
 						let chance = KinkyDungeonMapGet(x, y) == '1' ? wallchanceCav : 0.3;
 						if (!cavernized[x + ',' + y]) {
@@ -324,12 +324,12 @@ const KinkyDungeonMapParams = {
 					}
 			}
 			// now we finalize
-			for (let x = 0; x < KinkyDungeonGridWidth-1; x++)
-				for (let y = 0; y < KinkyDungeonGridHeight-1; y++) {
-					if (cavernized[x + ',' + y] && !KinkyDungeonTilesSkin[x + ',' + y]) {
-						KinkyDungeonTilesSkin[x + ',' + y] = {skin: "cry", force: true};
-					} else if (naturalized[x + ',' + y] && !KinkyDungeonTilesSkin[x + ',' + y]) {
-						KinkyDungeonTilesSkin[x + ',' + y] = {skin: "jngWild", force: true};
+			for (let x = 0; x < KDMapData.GridWidth-1; x++)
+				for (let y = 0; y < KDMapData.GridHeight-1; y++) {
+					if (cavernized[x + ',' + y] && !KDMapData.TilesSkin[x + ',' + y]) {
+						KDMapData.TilesSkin[x + ',' + y] = {skin: "cry", force: true};
+					} else if (naturalized[x + ',' + y] && !KDMapData.TilesSkin[x + ',' + y]) {
+						KDMapData.TilesSkin[x + ',' + y] = {skin: "jngWild", force: true};
 					}
 				}
 		},
@@ -530,8 +530,8 @@ const KinkyDungeonMapParams = {
 		},
 
 		worldGenCode: () => {
-			for (let X = 1; X < KinkyDungeonGridWidth - 1; X++) {
-				for (let Y = 1; Y < KinkyDungeonGridHeight - 1; Y++) {
+			for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
+				for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
 					if (KinkyDungeonMapGet(X, Y) == 'X' && KDRandom() < 0.15 + 0.45 * Math.min(1, KinkyDungeonDifficulty/30)) {
 						KinkyDungeonMapSet(X, Y, '3');
 						DialogueCreateEnemy(X, Y, "MummyCursed");

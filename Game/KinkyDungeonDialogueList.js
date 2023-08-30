@@ -59,10 +59,10 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
-					let zombie = DialogueCreateEnemy(KinkyDungeonStartPosition.x + 7, 3, "FastZombie");
+					let zombie = DialogueCreateEnemy(KDMapData.StartPosition.x + 7, 3, "FastZombie");
 					zombie.AI = "guard";
-					zombie.gxx = KinkyDungeonStartPosition.x + 8;
-					zombie.gyy = KinkyDungeonGridHeight - 2;
+					zombie.gxx = KDMapData.StartPosition.x + 8;
+					zombie.gyy = KDMapData.GridHeight - 2;
 					return false;
 				},
 				playertext: "GhostInfo_Continue", exitDialogue: true,
@@ -79,7 +79,7 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
-					DialogueCreateEnemy(KinkyDungeonStartPosition.x + 22, 3, "FastZombie");
+					DialogueCreateEnemy(KDMapData.StartPosition.x + 22, 3, "FastZombie");
 					return false;
 				},
 				playertext: "GhostInfo_Continue", exitDialogue: true,
@@ -96,7 +96,7 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
-					DialogueCreateEnemy(KinkyDungeonStartPosition.x + 32, 4, "FastZombie");
+					DialogueCreateEnemy(KDMapData.StartPosition.x + 32, 4, "FastZombie");
 					return false;
 				},
 				playertext: "GhostInfo_Continue", exitDialogue: true,
@@ -448,7 +448,7 @@ let KDDialogue = {
 					else
 						KinkyDungeonChangeFactionRep("Dressmaker", 0.0007 * power);
 					KDRemoveQuest("DressmakerQuest");
-					KDSpliceIndex(KinkyDungeonEntities.indexOf(KDDialogueEnemy()), 1);
+					KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
 					return false;
 				},
 				prerequisiteFunction: (gagged, player) => {
@@ -511,7 +511,7 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
 					KDRemoveQuest("ApprenticeQuest");
-					KDSpliceIndex(KinkyDungeonEntities.indexOf(KDDialogueEnemy()), 1);
+					KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)
 						KinkyDungeonChangeFactionRep("Apprentice", 0.015);
@@ -533,7 +533,7 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
 					KDRemoveQuest("ApprenticeQuest");
-					KDSpliceIndex(KinkyDungeonEntities.indexOf(KDDialogueEnemy()), 1);
+					KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)
 						KinkyDungeonChangeFactionRep("Apprentice", 0.015);
@@ -555,7 +555,7 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
 					KDRemoveQuest("ApprenticeQuest");
-					KDSpliceIndex(KinkyDungeonEntities.indexOf(KDDialogueEnemy()), 1);
+					KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)
 						KinkyDungeonChangeFactionRep("Apprentice", 0.015);
@@ -577,7 +577,7 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
 					KDRemoveQuest("ApprenticeQuest");
-					KDSpliceIndex(KinkyDungeonEntities.indexOf(KDDialogueEnemy()), 1);
+					KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollPurity, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)
 						KinkyDungeonChangeFactionRep("Apprentice", 0.015);
@@ -1072,7 +1072,7 @@ let KDDialogue = {
 					if (!door) {
 						door = {x: player.x, y: player.y}; // Better glitch than break game
 					}
-					KinkyDungeonEntities = [];
+					KDMapData.Entities = [];
 					KDGameData.RespawnQueue = [];
 					KDUpdateEnemyCache = true;
 					let e = DialogueCreateEnemy(door.x, door.y, "ShopkeeperRescue");
@@ -1509,12 +1509,12 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					if (KDDialogueEnemy()) {
 						let e = KDDialogueEnemy();
-						KDSpliceIndex(KinkyDungeonEntities.indexOf(KDDialogueEnemy()), 1);
+						KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
 						let created = DialogueCreateEnemy(e.x, e.y, "Bandit");
 						created.allied = 9999;
 						created.personality = e.personality;
 						if (KDFactionRelation("Player", "Bandit") < -0.5) {
-							for (let enemy of KinkyDungeonEntities) {
+							for (let enemy of KDMapData.Entities) {
 								if (enemy.Enemy.tags.bandit) {
 									if (enemy.hostile && enemy.hostile < 9000) {
 										enemy.hostile = 0;
@@ -2251,9 +2251,9 @@ let KDDialogue = {
 	"DollmakerStage2": { // Player defeats fuuka's first form
 		response: "Default",
 		clickFunction: (gagged, player) => {
-			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonStartPosition.x + 10, KinkyDungeonStartPosition.y - 5, true,undefined, true);
+			let point = KinkyDungeonGetNearbyPoint(KDMapData.StartPosition.x + 10, KDMapData.StartPosition.y - 5, true,undefined, true);
 			if (!point) {
-				point = {x: KinkyDungeonStartPosition.x + 10, y: KinkyDungeonStartPosition.y - 7};
+				point = {x: KDMapData.StartPosition.x + 10, y: KDMapData.StartPosition.y - 7};
 			}
 			let e = DialogueCreateEnemy(point.x, point.y, "DollmakerBoss2");
 			e.hostile = 300;
@@ -2270,7 +2270,7 @@ let KDDialogue = {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			// Remove the doors
-			for (let en of KinkyDungeonEntities) {
+			for (let en of KDMapData.Entities) {
 				if (en.Enemy.tags.dolldoor) en.hp = 0;
 			}
 			let point = KinkyDungeonGetNearbyPoint(player.x, player.y, true);

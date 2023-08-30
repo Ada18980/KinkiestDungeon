@@ -273,7 +273,7 @@ let KDMaxVisionDist = 8;
 
 function KinkyDungeonGetVisionRadius() {
 	let data = {
-		brightness: KinkyDungeonMapBrightness,
+		brightness: KDMapData.MapBrightness,
 		blindlevel: KinkyDungeonBlindLevel,
 		noperipheral: KinkyDungeonDeaf || KinkyDungeonStatBlind > 0,
 		blindMult: (KinkyDungeonStatsChoice.get("Blackout") || KinkyDungeonStatsChoice.get("TotalBlackout")) ? 2 : 1,

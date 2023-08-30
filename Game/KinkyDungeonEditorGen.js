@@ -426,7 +426,7 @@ function KD_PasteTile(tile, x, y, data) {
 		let xx = parseInt(tileLoc[0].split(',')[0]);
 		let yy = parseInt(tileLoc[0].split(',')[1]);
 		if (xx != undefined && yy != undefined) {
-			KinkyDungeonTilesSkin[(xx + x) + "," + (yy + y)] = tileLoc[1];
+			KDMapData.TilesSkin[(xx + x) + "," + (yy + y)] = tileLoc[1];
 		}
 	}
 	/*for (let jail of tile.Jail) {

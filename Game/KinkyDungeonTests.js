@@ -22,7 +22,7 @@ function KDTestMapGen(count, Ranges, Checkpoints) {
 					if (i % (count/KDLevelsPerCheckpoint) == 0)
 						console.log(`Testing iteration ${i} on floor ${MiniGameKinkyDungeonLevel}`);
 					KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], f, true);
-					let accessible = KinkyDungeonIsAccessible(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y);
+					let accessible = KinkyDungeonIsAccessible(KDMapData.StartPosition.x, KDMapData.StartPosition.y);
 					if (!accessible) {
 						console.log(`Error, stairs are inaccessible on iteration ${i}`);
 						return false;
@@ -50,7 +50,7 @@ function KDTestFullRunthrough(GameLoops, Init, NGP) {
 		if (!EnemySpawnData["" + MiniGameKinkyDungeonCheckpoint]) {
 			EnemySpawnData["" + MiniGameKinkyDungeonCheckpoint] = {};
 		}
-		for (let e of KinkyDungeonEntities) {
+		for (let e of KDMapData.Entities) {
 			if (EnemySpawnData["" + MiniGameKinkyDungeonCheckpoint][e.Enemy.name] == undefined)
 				EnemySpawnData["" + MiniGameKinkyDungeonCheckpoint][e.Enemy.name] = 1;
 			else EnemySpawnData["" + MiniGameKinkyDungeonCheckpoint][e.Enemy.name] += 1;
@@ -90,7 +90,7 @@ function KDTestjailer(iter) {
 			if (!totals.null) totals.null = 1;
 			else totals.null = totals.null + 1;
 		}
-		KDSpliceIndex(KinkyDungeonEntities.indexOf(KinkyDungeonJailGuard()), 1);
+		KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonJailGuard()), 1);
 		KDGameData.KinkyDungeonJailGuard = 0;
 	}
 	console.log(totals);
