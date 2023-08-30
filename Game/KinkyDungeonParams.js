@@ -266,7 +266,7 @@ const KinkyDungeonMapParams = {
 			// Start nature near plants, mushrooms, etc
 			for (let x = 0; x < KDMapData.GridWidth-1; x++)
 				for (let y = 0; y < KDMapData.GridHeight-1; y++) {
-					let category = KDGameData.CategoryIndex ? KDGetCategoryIndex(x, y)?.category : "";
+					let category = KDMapData.CategoryIndex ? KDGetCategoryIndex(x, y)?.category : "";
 					/*let enemy = KinkyDungeonEnemyAt(x, y);
 					let tile = KinkyDungeonMapGet(x, y);
 					if ((enemy && (enemy.Enemy.faction == "Plant" || enemy.Enemy.faction == "Natural"))
@@ -990,7 +990,7 @@ const KinkyDungeonMapParams = {
 		"crackchance" : 0.09,
 		"barchance" : 0.2,
 		"brightness" : 4,
-		"chestcount" : 7,
+		"chestcount" : 0,
 		"shrinecount" : 12,
 		"chargerchance": 0.5,
 		"litchargerchance": 0.5,

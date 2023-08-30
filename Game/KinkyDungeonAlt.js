@@ -44,7 +44,9 @@ let alts = {
 		bossroom: false,
 		width: 8,
 		height: 8,
+		//constantX: true,
 		genType: "Tunnel",
+		skiptunnel: true, // Increments the floor counter
 		spawns: false,
 		chests: false,
 		shrines: false,
@@ -71,6 +73,7 @@ let alts = {
 	"PerkRoom": {
 		name: "PerkRoom",
 		bossroom: false,
+		//constantX: true,
 		width: 9,
 		height: 8,
 		genType: "PerkRoom",
@@ -103,6 +106,7 @@ let alts = {
 		width: 15,
 		height: 15,
 		enemyMult: 0.6,
+		alwaysRegen: true, // Always regenerate this room
 		setpieces: {
 			"GuaranteedCell": 100,
 			"ExtraCell": 20,
@@ -140,6 +144,7 @@ let alts = {
 		width: 15,
 		height: 10,
 		nopatrols: true,
+		alwaysRegen: true, // Always regenerate this room
 		setpieces: {
 		},
 		data: {
@@ -211,6 +216,7 @@ let alts = {
 		bossroom: false,
 		width: 15,
 		height: 10,
+		alwaysRegen: true, // Always regenerate this room
 		//nopatrols: true,
 		setpieces: {
 		},
@@ -910,7 +916,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		}
 	}
 
-	KDGameData.JailPoints.push({x: width/2, y: height/2, type: "dropoff", radius: 1});
+	KDMapData.JailPoints.push({x: width/2, y: height/2, type: "dropoff", radius: 1});
 
 	let takenIndex = 0;
 	let takenRight = false;

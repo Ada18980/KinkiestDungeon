@@ -67,7 +67,7 @@ function KinkyDungeonNearestJailPoint(x, y, filter, any, qualified) {
 	let point = null;
 	let leash = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
 	let furniture = KinkyDungeonGetRestraintItem("ItemDevices");
-	for (let p of KDGameData.JailPoints) {
+	for (let p of KDMapData.JailPoints) {
 		if (!any && p.type && !filt.includes(p.type)) continue;
 		if (qualified && p.requireLeash && !leash) continue;
 		if (qualified && p.requireFurniture && !furniture) continue;
@@ -104,7 +104,7 @@ function KDLockNearbyJailDoors(x, y) {
 function KinkyDungeonRandomJailPoint(filter, exclude) {
 	let filt = filter ? filter : ["jail"];
 	let points = [];
-	for (let p of KDGameData.JailPoints) {
+	for (let p of KDMapData.JailPoints) {
 		if (p.type && !filt.includes(p.type)) continue;
 		if (!exclude || exclude.includes(p)) continue;
 		points.push(p);
@@ -4536,6 +4536,7 @@ function KDCanPickpocketPlayer(player) {
 }
 
 function KDCanPickpocket(enemy) {
+	if (KDEnemyHasFlag(enemy, "allyPlay")) return false;
 	if (KinkyDungeonFlags.has("pickpocket")) return false;
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).enclose) return false;
@@ -5477,9 +5478,9 @@ function KDEnemyUnfriendlyToMainFaction(enemy) {
  * @returns {string}
  */
 function KDGetMainFaction() {
-	let mainFaction = KDGameData.MapFaction;
-	if (!mainFaction && KDGameData.JailFaction && KDGameData.JailFaction.length > 0) mainFaction = KDGameData.JailFaction[0];
-	if (!mainFaction && KDGameData.GuardFaction && KDGameData.GuardFaction.length > 0) mainFaction = KDGameData.GuardFaction[0];
+	let mainFaction = KDMapData.MapFaction;
+	if (!mainFaction && KDMapData.JailFaction && KDMapData.JailFaction.length > 0) mainFaction = KDMapData.JailFaction[0];
+	if (!mainFaction && KDMapData.GuardFaction && KDMapData.GuardFaction.length > 0) mainFaction = KDMapData.GuardFaction[0];
 	return mainFaction;
 }
 

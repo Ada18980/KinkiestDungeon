@@ -189,8 +189,6 @@ let KDOptOut = false;
 /**
 *  @typedef {{
 * KeysNeeded: boolean,
-* PoolUses: number,
-* PoolUsesGrace: number,
 * JailRemoveRestraintsTimer: number;
 * KinkyDungeonSpawnJailers: number;
 * KinkyDungeonSpawnJailersMax: number;
@@ -233,7 +231,6 @@ let KDOptOut = false;
 * Outfit: string,
 * Champion: string,
 * ChampionCurrent: number,
-* JailPoints: KDJailPoint[],
 * LastMapSeed: string,
 * AlreadyOpened: {x: number, y:number}[],
 * Journey: string,
@@ -267,7 +264,6 @@ let KDOptOut = false;
 * HunterTimer: number,
 * Hunters: number[],
 * Quests: string[],
-* MapFaction: string,
 * PriorJailbreaks: number,
 * PriorJailbreaksDecay: number,
 * PreviousWeapon: string,
@@ -281,13 +277,8 @@ let KDOptOut = false;
 * HiddenItems : Record<string, boolean>,
 * ItemPriority : Record<string, number>,
 * CagedTime : number,
-* ShopItems: shopItem[],
 * DelayedActions: KDDelayedAction[],
-* JailFaction: string[],
-* GuardFaction: string[],
 * OfferCount: number,
-* MainPath: string,
-* ShortcutPath: string,
 * ItemID: number,
 * ShopkeeperFee: number,
 * DollCount: number,
@@ -299,7 +290,8 @@ let KDOptOut = false;
 * Training: Record<string, KDTrainingRecord>,
 * QuickLoadout: KDPresetLoadout[],
 * CurrentLoadout: number,
-* CategoryIndex: Record<string, {category: string, tags: string[]}>
+* HighestLevel: number,
+* KDChasingEnemies: entity[],
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
@@ -312,8 +304,6 @@ let KDGameDataBase = {
 	CollectedHearts: 0,
 	DollRoomCount: 0,
 	ChestsGenerated: [],
-	MainPath: 'grv',
-	ShortcutPath: 'grv',
 	DollCount: 0,
 
 	CagedTime: 0,
@@ -323,7 +313,6 @@ let KDGameDataBase = {
 	HiddenSpellPages: {},
 	PriorJailbreaks: 0,
 	PriorJailbreaksDecay: 0,
-	MapFaction: "",
 	KeysNeeded: false,
 	RoomType: "",
 	MapMod: "",
@@ -337,8 +326,6 @@ let KDGameDataBase = {
 	OrgasmNextStageTimer: 0,
 	DistractionCooldown: 0,
 
-	PoolUses: 0,
-	PoolUsesGrace: 3,
 	JailRemoveRestraintsTimer: 0,
 	KinkyDungeonSpawnJailers: 0,
 	KinkyDungeonSpawnJailersMax: 5,
@@ -392,8 +379,6 @@ let KDGameDataBase = {
 	Champion: "",
 	ChampionCurrent: 0,
 
-	JailPoints: [],
-
 	WarningLevel: 0,
 	LastMapSeed: "",
 
@@ -439,17 +424,17 @@ let KDGameDataBase = {
 	StaminaSlow: 0,
 	ManaSlow: 0,
 	KneelTurns: 0,
-	ShopItems: [],
 	DelayedActions: [],
-	JailFaction: [],
-	GuardFaction: [],
 
 	OfferCount: 0,
+
+	KDChasingEnemies: [],
 
 	ItemID: 0,
 	ShopkeeperFee: 0,
 	otherPlaying: 0,
 	CategoryIndex: {},
+	HighestLevel: 1,
 };
 /**
  * @type {KDGameDataBase}
@@ -2186,6 +2171,8 @@ let KDDefaultJourney = ["grv", "cat", "jng", "tmp", "bel"];
 let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 
 function KDInitializeJourney(Journey) {
+	KDCurrentWorldSlot = {x: 0, y: 0};
+
 	/**
 	 * @type {Record<string, string>}
 	 */
@@ -2963,6 +2950,11 @@ function KinkyDungeonGenerateSaveData() {
 	save.KDGameData = KDGameData;
 	save.KDMapData = KDMapData;
 	save.KDEventData = KDEventData;
+	save.KDWorldMap = KDWorldMap;
+	save.KDCurrentWorldSlot = KDCurrentWorldSlot;
+	save.KinkyDungeonPlayerEntity = KinkyDungeonPlayerEntity;
+	save.KDCurrentWorldSlot = KDCurrentWorldSlot;
+
 
 	save.stats = {
 		picks: KinkyDungeonLockpicks,
@@ -3041,6 +3033,7 @@ function KinkyDungeonLoadGame(String) {
 			if (saveData.rescued != undefined) KinkyDungeonRescued = saveData.rescued;
 			if (saveData.aid != undefined) KinkyDungeonAid = saveData.aid;
 			if (saveData.grounditems) KinkyDungeonGroundItems = saveData.grounditems;
+			if (saveData.KDCurrentWorldSlot) KDCurrentWorldSlot = saveData.KDCurrentWorldSlot;
 			if (saveData.stats) {
 				if (saveData.stats.picks != undefined) KinkyDungeonLockpicks = saveData.stats.picks;
 				if (saveData.stats.keys != undefined) KinkyDungeonRedKeys = saveData.stats.keys;
@@ -3111,6 +3104,8 @@ function KinkyDungeonLoadGame(String) {
 				if (sp) KinkyDungeonSpells.push(sp);
 			}
 
+			if (saveData.KDWorldMap) KDWorldMap = JSON.parse(JSON.stringify(saveData.KDWorldMap));
+
 			if (saveData.KinkyDungeonPlayerEntity) KinkyDungeonPlayerEntity = saveData.KinkyDungeonPlayerEntity;
 			if (saveData.KDMapData) KDMapData = JSON.parse(JSON.stringify(saveData.KDMapData));
 			else {
@@ -3150,7 +3145,7 @@ function KinkyDungeonLoadGame(String) {
 
 			if (saveData.KDGameData && saveData.KDGameData.LastMapSeed) KDsetSeed(saveData.KDGameData.LastMapSeed);
 
-			if (!KinkyDungeonMapIndex[KDGameData.MainPath] || !KinkyDungeonMapIndex[KDGameData.ShortcutPath])
+			if (!KinkyDungeonMapIndex[KDMapData.MainPath] || !KinkyDungeonMapIndex[KDMapData.ShortcutPath])
 				KDInitializeJourney(KDGameData.Journey);
 
 			if (saveData.KDMapData || saveData.KinkyDungeonGrid) {

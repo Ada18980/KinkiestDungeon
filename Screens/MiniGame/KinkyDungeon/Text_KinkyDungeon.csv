@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.52"
+KinkyDungeon,"Kinky Dungeon v4.6"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -814,9 +814,10 @@ CurrentKeyBlue,"Magic Keys: "
 CurrentKnife,"Knife: "
 CurrentKnifeMagic,"Mag. Knife: "
 
-ClimbDown,"You climb down the stairs. The passage closes behind you."
+ClimbDowns,"You climb down the stairs. The passage closes behind you."
+ClimbDownS,"You climb back up the stairs."
 ClimbDownFail,"You can't climb down until you get out of this leash..."
-ClimbDownShortcut,"You climb down and find yourself in a strange new place."
+ClimbDownH,"You climb down and find yourself in a strange new place."
 
 KDNGPlus," plus XXX"
 
@@ -11206,3 +11207,4 @@ AttackAdventurer_Switch_FighterLock,"The fighter puts you in a hold and manages 
 AttackAdventurer_Switch_FighterDash,"The fighter vanishes and ends up behind you!"
 
 KDCasting,"Casting SPNME"
+KDClimbUpTrapped,"The door suddenly locks behind you!"

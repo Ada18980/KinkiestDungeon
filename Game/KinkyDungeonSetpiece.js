@@ -414,7 +414,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				if (KDRandom() < 0.5 + (KDGameData.RoomType == "Jail" ? 0.25 : 0)) {
 					SetpieceSpawnPrisoner(cornerX+1, cornerY+3);
 				}
-				KDGameData.JailPoints.push({x: cornerX+2, y: cornerY+2, type: "jail", radius: 1});
+				KDMapData.JailPoints.push({x: cornerX+2, y: cornerY+2, type: "jail", radius: 1});
 				KDTorch(cornerX + 2, cornerY, altType, MapParams);
 				break;
 			}
@@ -445,7 +445,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 
 				KinkyDungeonMapSet(cornerX+1, cornerY+1, 'B');
 				KDTorch(cornerX + 1, cornerY, altType, MapParams);
-				KDGameData.JailPoints.push({x: cornerX+1, y: cornerY+1, type: "jail", radius: 1});
+				KDMapData.JailPoints.push({x: cornerX+1, y: cornerY+1, type: "jail", radius: 1});
 				break;
 			}
 			case "JungleLight": {
@@ -924,14 +924,14 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 		{faction: "Alchemist", tags: ["alchemist"], rtags: ["alchemist"], ftags: ["miniboss", "boss"]},
 	];
 	let factions = [];
-	if (KDGameData.MapFaction) {
-		factions.push(KDGameData.MapFaction);
+	if (KDMapData.MapFaction) {
+		factions.push(KDMapData.MapFaction);
 	}
-	if (KDGameData.JailFaction) {
-		factions.push(...KDGameData.JailFaction);
+	if (KDMapData.JailFaction) {
+		factions.push(...KDMapData.JailFaction);
 	}
-	if (KDGameData.GuardFaction) {
-		factions.push(...KDGameData.GuardFaction);
+	if (KDMapData.GuardFaction) {
+		factions.push(...KDMapData.GuardFaction);
 	}
 	factions = factions.filter((faction) => {
 		return factionList.some((element) => {return element.faction == faction;});
