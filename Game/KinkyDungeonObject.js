@@ -200,7 +200,7 @@ function KinkyDungeonFoodMessage(Tile) {
 }
 
 function KinkyDungeonMakeGhostDecision() {
-	for (let tile of Object.values(KinkyDungeonTiles)) {
+	for (let tile of Object.values(KDMapData.Tiles)) {
 		if (tile.Type == "Ghost") {
 			tile.GhostDecision = 0;
 

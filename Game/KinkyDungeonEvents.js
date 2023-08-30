@@ -398,7 +398,7 @@ let KDEventMapInventory = {
 		"DollmakerMask": (e, item, data) => {
 			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
 			if (altType && altType.spawns === false) return;
-			for (let enemy of KinkyDungeonEntities) {
+			for (let enemy of KDMapData.Entities) {
 				if (enemy.Enemy.tags.escapeddoll
 					&& KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 12) {
 					KDDraw(kdcanvas, kdpixisprites, enemy.id + "_dolltarg", KinkyDungeonRootDirectory + "UI/DollmakerTarget.png",
@@ -629,7 +629,7 @@ let KDEventMapInventory = {
 			if (altType && altType.spawns === false) return;
 			if (KDRandom() < 0.1) {
 				let count = 0;
-				for (let en of KinkyDungeonEntities) {
+				for (let en of KDMapData.Entities) {
 					if (en.Enemy.tags.escapeddoll) count += 1;
 				}
 				if (count < 10) {
@@ -759,7 +759,7 @@ let KDEventMapInventory = {
 		"AllyHealingAura": (e, item, data) => {
 			if (!data.delta) return;
 			let healed = false;
-			for (let enemy of KinkyDungeonEntities) {
+			for (let enemy of KDMapData.Entities) {
 				if (KDAllied(enemy) && KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
 					let origHP = enemy.hp;
 					enemy.hp = Math.min(enemy.hp + e.power, enemy.Enemy.maxhp);
@@ -856,7 +856,7 @@ let KDEventMapInventory = {
 			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < 0.25) {
 				KinkyDungeonSetFlag("GuardCalled", 35);
 				console.log("Attempting to call guard");
-				if (KinkyDungeonEntities.length < 400) {
+				if (KDMapData.Entities.length < 400) {
 					console.log("Called guard");
 					KinkyDungeonCallGuard(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, true);
 				}
@@ -867,7 +867,7 @@ let KDEventMapInventory = {
 			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < (e.chance ? e.chance : 0.1)) {
 				KinkyDungeonSetFlag("GuardCalled", 35);
 				console.log("Attempting to call guard");
-				if (KinkyDungeonEntities.length < 400 || KDGameData.CagedTime > KDMaxCageTime) {
+				if (KDMapData.Entities.length < 400 || KDGameData.CagedTime > KDMaxCageTime) {
 					console.log("Called guard");
 					let requireTags = null;
 					if (KinkyDungeonFlags.has("callGuardJailerOnly")) {
@@ -1744,7 +1744,7 @@ const KDEventMapBuff = {
 				if (!e.chance || KDRandom() < e.chance) {
 					let maxSprites = 7;
 					let sprites = 0;
-					for (let enemy of KinkyDungeonEntities) {
+					for (let enemy of KDMapData.Entities) {
 						if (enemy.buffs && enemy.buffs.Conduction && enemy != data.enemy && enemy.hp > 0 && KDistEuclidean(enemy.x - data.enemy.x, enemy.y - data.enemy.y) <= e.aoe) {
 							KinkyDungeonDamageEnemy(enemy, {
 								type: e.damage,
@@ -1761,7 +1761,7 @@ const KDEventMapBuff = {
 									let yy = entity.y + d * (ty - entity.y);
 									let newB = {born: 0, time:1 + Math.round(KDRandom()*1), x:Math.round(xx), y:Math.round(yy), vx:0, vy:0, xx:xx, yy:yy, spriteID: KinkyDungeonGetEnemyID() + "ElectricEffect" + CommonTime(),
 										bullet:{faction: "Rage", spell:undefined, damage: undefined, lifetime: 2, passthrough:true, name:"ElectricEffect", width:1, height:1}};
-									KinkyDungeonBullets.push(newB);
+									KDMapData.Bullets.push(newB);
 									KinkyDungeonUpdateSingleBulletVisual(newB, false);
 									sprites += 1;
 								}
@@ -1784,7 +1784,7 @@ const KDEventMapBuff = {
 								let yy = entity.y + d * (ty - entity.y);
 								let newB = {born: 0, time:1 + Math.round(KDRandom()*1), x:Math.round(xx), y:Math.round(yy), vx:0, vy:0, xx:xx, yy:yy, spriteID: KinkyDungeonGetEnemyID() + "ElectricEffect" + CommonTime(),
 									bullet:{faction: "Rage", spell:undefined, damage: undefined, lifetime: 2, passthrough:true, name:"ElectricEffect", width:1, height:1}};
-								KinkyDungeonBullets.push(newB);
+								KDMapData.Bullets.push(newB);
 								KinkyDungeonUpdateSingleBulletVisual(newB, false);
 							}
 					}
@@ -1821,7 +1821,7 @@ const KDEventMapBuff = {
 		"Conduction": (e, buff, entity, data) => {
 			if ((!data.flags || !data.flags.includes("EchoDamage")) && data.dmg > 0 && (!e.damage || e.damage == data.type)) {
 				if (!e.chance || KDRandom() < e.chance) {
-					for (let enemy of KinkyDungeonEntities) {
+					for (let enemy of KDMapData.Entities) {
 						if (enemy.buffs && enemy.buffs.Conduction && enemy.hp > 0 && KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
 							KinkyDungeonDamageEnemy(enemy, {
 								type: e.damage,
@@ -1837,7 +1837,7 @@ const KDEventMapBuff = {
 									let yy = entity.y + d * (ty - entity.y);
 									let newB = {born: 0, time:1 + Math.round(KDRandom()*1), x:Math.round(xx), y:Math.round(yy), vx:0, vy:0, xx:xx, yy:yy, spriteID: KinkyDungeonGetEnemyID() + "ElectricEffect" + CommonTime(),
 										bullet:{faction: "Rage", spell:undefined, damage: undefined, lifetime: 2, passthrough:true, name:"ElectricEffect", width:1, height:1}};
-									KinkyDungeonBullets.push(newB);
+									KDMapData.Bullets.push(newB);
 									KinkyDungeonUpdateSingleBulletVisual(newB, false);
 								}
 						}
@@ -2868,7 +2868,7 @@ let KDEventMapSpell = {
 	},
 	"tickAfter": {
 		"Frustration": (e, spell, data) => {
-			for (let en of KinkyDungeonEntities) {
+			for (let en of KDMapData.Entities) {
 				if (en.Enemy.bound && !en.Enemy.nonHumanoid && en.buffs && KDEntityBuffedStat(en, "Chastity")) {
 					if (KDHelpless(en)) {
 						let Enemy = KinkyDungeonGetEnemyByName("PetChastity");
@@ -2988,7 +2988,7 @@ let KDEventMapSpell = {
 				activate = true;
 			}
 			if (KinkyDungeonPlayerBuffs.EnemySense && KinkyDungeonPlayerBuffs.EnemySense.duration > 1)
-				for (let enemy of KinkyDungeonEntities) {
+				for (let enemy of KDMapData.Entities) {
 					if (!KinkyDungeonVisionGet(enemy.x, enemy.y)
 						&& Math.sqrt((KinkyDungeonPlayerEntity.x - enemy.x) * (KinkyDungeonPlayerEntity.x - enemy.x) + (KinkyDungeonPlayerEntity.y - enemy.y) * (KinkyDungeonPlayerEntity.y - enemy.y)) < e.dist) {
 						let color = "#882222";
@@ -3247,7 +3247,7 @@ let KDEventMapWeapon = {
 
 		"AoEDamageFrozen": (e, weapon, data) => {
 			let trigger = false;
-			for (let enemy of KinkyDungeonEntities) {
+			for (let enemy of KDMapData.Entities) {
 				if (KDHostile(enemy) && enemy.freeze > 0 && (!e.chance || KDRandom() < e.chance) && enemy.hp > 0 && KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
 					KinkyDungeonDamageEnemy(enemy, {
 						type: e.damage,
@@ -3263,7 +3263,7 @@ let KDEventMapWeapon = {
 		},
 		"AoEDamageBurning": (e, weapon, data) => {
 			let trigger = false;
-			for (let enemy of KinkyDungeonEntities) {
+			for (let enemy of KDMapData.Entities) {
 				if (KDHostile(enemy) && KDEntityHasBuff(enemy, "Burning") && (!e.chance || KDRandom() < e.chance) && enemy.hp > 0 && KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
 					KinkyDungeonDamageEnemy(enemy, {
 						type: e.damage,
@@ -3280,7 +3280,7 @@ let KDEventMapWeapon = {
 		},
 		"AoEDamage": (e, weapon, data) => {
 			let trigger = false;
-			for (let enemy of KinkyDungeonEntities) {
+			for (let enemy of KDMapData.Entities) {
 				if (KDHostile(enemy) && (!e.chance || KDRandom() < e.chance) && enemy.hp > 0 && KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
 					KinkyDungeonDamageEnemy(enemy, {
 						type: e.damage,
@@ -3467,7 +3467,7 @@ let KDEventMapWeapon = {
 		},
 		"Cleave": (e, weapon, data) => {
 			if (data.enemy && !data.disarm) {
-				for (let enemy of KinkyDungeonEntities) {
+				for (let enemy of KDMapData.Entities) {
 					if (enemy != data.enemy && KDHostile(enemy) && !KDHelpless(data.enemy)) {
 						let dist = Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y));
 						if (dist < 1.5 && KinkyDungeonEvasion(enemy) && Math.max(Math.abs(enemy.x - data.enemy.x), Math.abs(enemy.y - data.enemy.y))) {
@@ -3497,7 +3497,7 @@ let KDEventMapWeapon = {
 				for (let i = 1; i <= dist; i++) {
 					let xx = data.enemy.x + i * (data.enemy.x - KinkyDungeonPlayerEntity.x);
 					let yy = data.enemy.y + i * (data.enemy.y - KinkyDungeonPlayerEntity.y);
-					for (let enemy of KinkyDungeonEntities) {
+					for (let enemy of KDMapData.Entities) {
 						if (enemy != data.enemy && KDHostile(enemy) && !KDHelpless(data.enemy)) {
 							if (KinkyDungeonEvasion(enemy) && enemy.x == xx && enemy.y == yy) {
 								KinkyDungeonDamageEnemy(enemy, {
@@ -3679,7 +3679,7 @@ let KDEventMapWeapon = {
 			if (data.enemy && (!data.flags || !data.flags.includes("EchoDamage")) && data.dmg > 0 && (!e.damage || e.damage == data.type)) {
 				if (!e.chance || KDRandom() < e.chance) {
 					let trigger = false;
-					for (let enemy of KinkyDungeonEntities) {
+					for (let enemy of KDMapData.Entities) {
 						if ((enemy.rage || (KDAllied(enemy) && KDAllied(data.enemy)) || (KDHostile(enemy) && KDHostile(data.enemy))) && enemy != data.enemy && !KDHelpless(enemy) && enemy.hp > 0 && KDistEuclidean(enemy.x - data.enemy.x, enemy.y - data.enemy.y) <= e.aoe) {
 							KinkyDungeonDamageEnemy(enemy, {
 								type: e.damage,
@@ -3713,7 +3713,7 @@ let KDEventMapWeapon = {
 						movePoints: 0,
 						attackPoints: 0
 					};
-					let dollCount = KinkyDungeonEntities.filter((entity) => {
+					let dollCount = KDMapData.Entities.filter((entity) => {
 						return entity.Enemy.name == "AllyDoll" && KDAllied(entity);
 					}).length;
 					if (dollCount > e.power) {
@@ -4150,7 +4150,7 @@ let KDEventMapEnemy = {
 	},
 	"enemyCast": {
 		"RandomRespawn": (e, enemy, data) => {
-			if (data.enemy == enemy && KinkyDungeonEntities.length < 300) {
+			if (data.enemy == enemy && KDMapData.Entities.length < 300) {
 				let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, 10, 10);
 				if (point) {
 					let ee = DialogueCreateEnemy(point.x, point.y, enemy.Enemy.name);
@@ -4275,7 +4275,7 @@ let KDEventMapEnemy = {
 					for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
 						for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
 							if (Math.sqrt(X*X+Y*Y) <= rad && (!minrad || Math.sqrt(X*X+Y*Y) >= minrad)) {
-								if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KinkyDungeonGridWidth && enemy.y + Y < KinkyDungeonGridHeight)
+								if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KDMapData.GridWidth && enemy.y + Y < KDMapData.GridHeight)
 									&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(enemy.x + X, enemy.y + Y)))
 									slots.push({x:X, y:Y});
 							}
@@ -4324,7 +4324,7 @@ let KDEventMapEnemy = {
 						for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
 							for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
 								if (Math.sqrt(X*X+Y*Y) <= rad && (!minrad || Math.sqrt(X*X+Y*Y) >= minrad)) {
-									if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KinkyDungeonGridWidth && enemy.y + Y < KinkyDungeonGridHeight)
+									if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KDMapData.GridWidth && enemy.y + Y < KDMapData.GridHeight)
 										&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(enemy.x + X, enemy.y + Y)))
 										slots.push({x:X, y:Y});
 								}
@@ -4382,9 +4382,9 @@ let KDEventMapEnemy = {
 					} else {
 						KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 3);
 						// Drag the player to the start position
-						enemy.gx = KinkyDungeonStartPosition.x;
-						enemy.gy = KinkyDungeonStartPosition.y;
-						if (KDistChebyshev(enemy.x - KinkyDungeonStartPosition.x, enemy.y - KinkyDungeonStartPosition.y) < 1.5
+						enemy.gx = KDMapData.StartPosition.x;
+						enemy.gy = KDMapData.StartPosition.y;
+						if (KDistChebyshev(enemy.x - KDMapData.StartPosition.x, enemy.y - KDMapData.StartPosition.y) < 1.5
 							&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 2.5) {
 							KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), "#ffffff", 4);
 							KDGameData.RoomType = "ShopStart"; // We do a tunnel every other room
@@ -4536,7 +4536,7 @@ let KDEventMapEnemy = {
 						for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
 							for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
 								if (Math.sqrt(X*X+Y*Y) <= rad && (!minrad || Math.sqrt(X*X+Y*Y) >= minrad)) {
-									if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KinkyDungeonGridWidth && enemy.y + Y < KinkyDungeonGridHeight)
+									if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KDMapData.GridWidth && enemy.y + Y < KDMapData.GridHeight)
 										&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(enemy.x + X, enemy.y + Y)))
 										slots.push({x:X, y:Y});
 								}
@@ -4564,7 +4564,7 @@ let KDEventMapEnemy = {
 						for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
 							for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
 								if (Math.sqrt(X*X+Y*Y) <= rad && (!minrad || Math.sqrt(X*X+Y*Y) >= minrad)) {
-									if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KinkyDungeonGridWidth && enemy.y + Y < KinkyDungeonGridHeight)
+									if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KDMapData.GridWidth && enemy.y + Y < KDMapData.GridHeight)
 										&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(enemy.x + X, enemy.y + Y)))
 										slots.push({x:X, y:Y});
 								}
@@ -4594,7 +4594,7 @@ let KDEventMapEnemy = {
 						for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
 							for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
 								if (Math.sqrt(X*X+Y*Y) <= rad && (!minrad || Math.sqrt(X*X+Y*Y) >= minrad)) {
-									if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KinkyDungeonGridWidth && enemy.y + Y < KinkyDungeonGridHeight)
+									if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KDMapData.GridWidth && enemy.y + Y < KDMapData.GridHeight)
 										&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(enemy.x + X, enemy.y + Y)))
 										slots.push({x:X, y:Y});
 								}
@@ -4625,7 +4625,7 @@ let KDEventMapEnemy = {
 						for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
 							for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
 								if (Math.sqrt(X*X+Y*Y) <= rad && (!minrad || Math.sqrt(X*X+Y*Y) >= minrad)) {
-									if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KinkyDungeonGridWidth && enemy.y + Y < KinkyDungeonGridHeight)
+									if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KDMapData.GridWidth && enemy.y + Y < KDMapData.GridHeight)
 										&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(enemy.x + X, enemy.y + Y)))
 										slots.push({x:X, y:Y});
 								}
@@ -4713,7 +4713,7 @@ let KDEventMapGeneric = {
 		"dollRoomRemove": (e, enemy, data) => {
 			// Removes the excess dollsmiths that are spawned when you escape the dollroom
 			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
-				for (let en of KinkyDungeonEntities) {
+				for (let en of KDMapData.Entities) {
 					if (en.Enemy.tags.dollsmith) {
 						en.noDrop = true;
 						en.hp = 0;
@@ -4895,7 +4895,7 @@ let KDEventMapGeneric = {
 				let spawn = true;
 				let eligible = false;
 				for (let player of [KinkyDungeonPlayerEntity]) {
-					if (spawn && KDistEuclidean(player.x - KinkyDungeonStartPosition.x, player.y - KinkyDungeonStartPosition.y) < 10) {
+					if (spawn && KDistEuclidean(player.x - KDMapData.StartPosition.x, player.y - KDMapData.StartPosition.y) < 10) {
 						spawn = false;
 					}
 					if (spawn && !eligible && !KinkyDungeonTilesGet(player.x + "," + player.y)?.OffLimits) {
@@ -4904,12 +4904,12 @@ let KDEventMapGeneric = {
 				}
 				if (eligible && spawn && !KinkyDungeonFlags.get("spawnDollsmith")) {
 					let count = 0;
-					for (let en of KinkyDungeonEntities) {
+					for (let en of KDMapData.Entities) {
 						if (en.Enemy.tags.dollsmith) count += 1;
 					}
 					if (count < 5) {
 						KinkyDungeonSetFlag("spawnDollsmith", 15);
-						let en = DialogueCreateEnemy(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, "Dollsmith");
+						let en = DialogueCreateEnemy(KDMapData.StartPosition.x, KDMapData.StartPosition.y, "Dollsmith");
 						en.summoned = true;
 						en.noDrop = true;
 					}

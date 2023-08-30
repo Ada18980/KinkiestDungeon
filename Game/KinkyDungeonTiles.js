@@ -68,8 +68,8 @@ function KinkyDungeonUpdateTileEffects(delta) {
 	} else {
 		KDPeripheralTileEffects(delta);
 	}
-	for (let X = 1; X < KinkyDungeonGridWidth-1; X++) {
-		for (let Y = 1; Y < KinkyDungeonGridHeight-1; Y++) {
+	for (let X = 1; X < KDMapData.GridWidth-1; X++) {
+		for (let Y = 1; Y < KDMapData.GridHeight-1; Y++) {
 			let tt = KinkyDungeonMapGet(X, Y);
 			if (KDTileUpdateFunctionsLocal[tt]) KDTileUpdateFunctionsLocal[tt](delta, X, Y);
 
@@ -304,7 +304,7 @@ function KDGetSpecificEffectTile(x, y, tile) {
  * @returns {effectTile}
  */
 function KDCreateEffectTile(x, y, tile, durationMod) {
-	if (x < 0 || y < 0 || x >= KinkyDungeonGridWidth || y >= KinkyDungeonGridHeight) return null;
+	if (x < 0 || y < 0 || x >= KDMapData.GridWidth || y >= KDMapData.GridHeight) return null;
 	let existingTile = KDGetSpecificEffectTile(x, y);
 	let duration = (tile.duration ? tile.duration : KDEffectTiles[tile.name].duration) + KDRandom() * (durationMod ? durationMod : 0);
 	let createdTile = existingTile;
@@ -414,7 +414,7 @@ let KDLastEffTileUpdate = 0;
 function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	let delta = CommonTime() - KDLastEffTileUpdate;
 	KDLastEffTileUpdate = CommonTime();
-	for (let tileLocation of Object.values(KinkyDungeonEffectTiles)) {
+	for (let tileLocation of Object.values(KDMapData.EffectTiles)) {
 		for (let tile of Object.values(tileLocation)) {
 			let sprite = (tile.pauseDuration > 0 && tile.pauseSprite) ? tile.pauseSprite : (tile.skin ? tile.skin : tile.name);
 			if (tile.x >= CamX && tile.y >= CamY && tile.x < CamX + KinkyDungeonGridWidthDisplay && tile.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(tile.x, tile.y) > 0) {
@@ -457,14 +457,14 @@ function KDUpdateEffectTiles(delta) {
 		if (examinedTile) KinkyDungeonUpdateSingleEffectTile(delta, KinkyDungeonPlayerEntity, examinedTile);
 	}
 
-	for (let enemy of KinkyDungeonEntities) {
+	for (let enemy of KDMapData.Entities) {
 		for (let examinedTile of Object.values(KDGetEffectTiles(enemy.x, enemy.y))) {
 			if (examinedTile) if (examinedTile) KinkyDungeonUpdateSingleEffectTile(delta, enemy, examinedTile);
 		}
 	}
 
 	// Tick them down
-	for (let loc of Object.entries(KinkyDungeonEffectTiles)) {
+	for (let loc of Object.entries(KDMapData.EffectTiles)) {
 		let location = loc[1];
 		for (let t of Object.entries(location)) {
 			if (t[1].pauseDuration > 0) {
@@ -479,7 +479,7 @@ function KDUpdateEffectTiles(delta) {
 			}
 		}
 		if (Object.values(loc[1]).length < 1) {
-			delete KinkyDungeonEffectTiles[loc[0]];
+			delete KDMapData.EffectTiles[loc[0]];
 		}
 	}
 }

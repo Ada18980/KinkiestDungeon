@@ -166,8 +166,8 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 	if (InJail) {
 		xPadStart = Math.max(xPadStart, KinkyDungeonJailLeashX + 2);
 	}
-	let cornerX =  Math.ceil(xPadStart) + Math.floor(KDRandom() * (KinkyDungeonGridWidth - xPadStart - xPadEnd - radius - 1));
-	let cornerY = Math.ceil(yPadStart) + Math.floor(KDRandom() * (KinkyDungeonGridHeight - yPadStart - yPadEnd - radius - 1));
+	let cornerX =  Math.ceil(xPadStart) + Math.floor(KDRandom() * (KDMapData.GridWidth - xPadStart - xPadEnd - radius - 1));
+	let cornerY = Math.ceil(yPadStart) + Math.floor(KDRandom() * (KDMapData.GridHeight - yPadStart - yPadEnd - radius - 1));
 
 	let favoringPOI = KDGetFavoringSetpieces(Piece.Name, Piece.tags ? Piece.tags : ["decorative"], POI);
 	if (favoringPOI) {
@@ -179,9 +179,9 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 	let POIBlacklist = new Map();
 	for (i = 0; i < 1000; i++) {
 		let specialDist = KinkyDungeonGetClosestSpecialAreaDist(cornerX + Math.floor(radius/2) - 1, cornerY + Math.floor(radius/2));
-		if (specialDist <= (forcePOI ? 0 : 1) + Math.ceil(radius/2) || !(cornerX > Math.ceil(xPadStart) && cornerX < KinkyDungeonGridWidth - radius - xPadEnd && cornerY > Math.ceil(yPadStart) && cornerY < KinkyDungeonGridHeight - radius - yPadEnd)) {
-			cornerY = Math.ceil(yPadStart) + Math.floor(KDRandom() * (KinkyDungeonGridHeight - yPadStart - yPadEnd - radius - 1));
-			cornerX = Math.ceil(xPadStart) + Math.floor(KDRandom() * (KinkyDungeonGridWidth - xPadStart - radius - 1));
+		if (specialDist <= (forcePOI ? 0 : 1) + Math.ceil(radius/2) || !(cornerX > Math.ceil(xPadStart) && cornerX < KDMapData.GridWidth - radius - xPadEnd && cornerY > Math.ceil(yPadStart) && cornerY < KDMapData.GridHeight - radius - yPadEnd)) {
+			cornerY = Math.ceil(yPadStart) + Math.floor(KDRandom() * (KDMapData.GridHeight - yPadStart - yPadEnd - radius - 1));
+			cornerX = Math.ceil(xPadStart) + Math.floor(KDRandom() * (KDMapData.GridWidth - xPadStart - radius - 1));
 
 			if (i < 100 || i % 3 == 0 || forcePOI) {
 				favoringPOI = KDGetFavoringSetpieces(Piece.Name, Piece.tags ? Piece.tags : ["decorative"], POI, POIBlacklist);
@@ -383,7 +383,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, true, false, 1, true, true, true);
 				KinkyDungeonMapSet(cornerX+4, cornerY+2, 'd');
 				KinkyDungeonTilesSet("" + (cornerX+4) + "," + (cornerY+2), {Type: "Door", NoTrap: true, Jail: true, ReLock: true, OffLimits: true});
-				KinkyDungeonPatrolPoints.push({x: cornerX + 5, y: cornerY + 2});
+				KDMapData.PatrolPoints.push({x: cornerX + 5, y: cornerY + 2});
 
 				let sidestyle = Math.floor(KDRandom() * 3);
 				if (sidestyle == 0) {
@@ -471,7 +471,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 			case "Storage": {
 				let rad = radius - 2;
 				KinkyDungeonCreateRectangle(cornerX + 1, cornerY + 1, rad, rad, true, false, 1, false);
-				KinkyDungeonPatrolPoints.push({x: cornerX + 1 + 2, y: cornerY + 1 + 2});
+				KDMapData.PatrolPoints.push({x: cornerX + 1 + 2, y: cornerY + 1 + 2});
 				KinkyDungeonMapSet(cornerX + 1+2, cornerY + 1 , KDRandom() < 0.5 ? 'D' : (KDRandom() < 0.5 ? 'g' : 'd'));
 				KinkyDungeonTilesSet("" + (cornerX + 1+2) + "," + (cornerY + 1), {Type: "Door"});
 				KinkyDungeonMapSet(cornerX + 1+2, cornerY + 1+4 , KDRandom() < 0.5 ? 'D' : (KDRandom() < 0.5 ? 'g' : 'd'));
@@ -551,7 +551,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 			}
 			case "QuadCell": {
 				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, false, false, 1, true);
-				KinkyDungeonPatrolPoints.push({x: cornerX + 3, y: cornerY + 3});
+				KDMapData.PatrolPoints.push({x: cornerX + 3, y: cornerY + 3});
 				for (let X = cornerX; X < cornerX + radius; X++) {
 					KinkyDungeonMapSet(X, cornerY , '1');
 					KinkyDungeonMapSet(X, cornerY+2 , '1');
@@ -633,7 +633,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 			case "Cache": {
 				let rad = radius - 2;
 				KinkyDungeonCreateRectangle(cornerX + 1, cornerY + 1, rad, rad, true, false, 1, true);
-				KinkyDungeonPatrolPoints.push({x: cornerX, y: cornerY + 3});
+				KDMapData.PatrolPoints.push({x: cornerX, y: cornerY + 3});
 				KinkyDungeonMapSet(cornerX + 1 + Math.floor(rad/2), cornerY + 1 + Math.floor(rad/2), 'C');
 				KinkyDungeonTilesSet((cornerX + 1 + Math.floor(rad/2)) + "," + (cornerY + 1 + Math.floor(rad/2)), {Loot: "cache", Faction: "Bandit", Roll: KDRandom()});
 				KDTorch(cornerX + 1 + Math.floor(rad/2), cornerY + 1, altType, MapParams);
@@ -691,7 +691,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				KinkyDungeonCreateRectangle(cornerX + radius, cornerY, 1, radius, false, false, 0, false);
 				// Place doors around pairs
 				KDCreateDoors(cornerX - 2, cornerY - 2, radius + 4, radius + 4);
-				KinkyDungeonPatrolPoints.push({x: cornerX + 2, y: cornerY + 2});
+				KDMapData.PatrolPoints.push({x: cornerX + 2, y: cornerY + 2});
 
 				for (let X = cornerX; X < cornerX + radius; X++) {
 					for (let Y = cornerY; Y < cornerY + radius; Y++) {
@@ -857,9 +857,9 @@ function KDCreateDoors(Left, Top, Width, Height, openChance = 0, convertDoodads 
 	let rows = [Top, Top + Height - 1];
 	for (let r of rows) {
 		// Ignore rows that are out of bounds
-		if (r > 0 && r < KinkyDungeonGridHeight - 1) {
+		if (r > 0 && r < KDMapData.GridHeight - 1) {
 			for (let x = Left; x < Left + Width - 3; x++) {
-				if (x > 0 && x < KinkyDungeonGridWidth - 4
+				if (x > 0 && x < KDMapData.GridWidth - 4
 					&& (KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(x, r)) || (convertDoodads && KinkyDungeonMapGet(x, r) == 'X'))
 					&& KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x+1, r))
 					&& KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x+2, r))
@@ -876,9 +876,9 @@ function KDCreateDoors(Left, Top, Width, Height, openChance = 0, convertDoodads 
 	let cols = [Left, Left + Width - 1];
 	for (let c of cols) {
 		// Ignore rows that are out of bounds
-		if (c > 0 && c < KinkyDungeonGridWidth - 1) {
+		if (c > 0 && c < KDMapData.GridWidth - 1) {
 			for (let y = Top; y < Top + Height - 3; y++) {
-				if (y > 0 && y < KinkyDungeonGridHeight - 4
+				if (y > 0 && y < KDMapData.GridHeight - 4
 					&& (KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(c, y)) || (convertDoodads && KinkyDungeonMapGet(c, y) == 'X'))
 					&& KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(c, y + 1))
 					&& KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(c, y + 2))
@@ -960,8 +960,8 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 }
 
 function KDAddPipes(pipechance, pipelatexchance, thinlatexchance, heavylatexspreadchance) {
-	for (let x = 1; x < KinkyDungeonGridWidth - 2; x++)
-		for (let y = 1; y < KinkyDungeonGridHeight - 2; y++) {
+	for (let x = 1; x < KDMapData.GridWidth - 2; x++)
+		for (let y = 1; y < KDMapData.GridHeight - 2; y++) {
 			if (
 				KinkyDungeonMapGet(x, y) == '1'
 				&& KinkyDungeonMapGet(x, y+1) == '0'
@@ -975,8 +975,8 @@ function KDAddPipes(pipechance, pipelatexchance, thinlatexchance, heavylatexspre
 					let name = "LatexThin";
 					if (KDRandom() > thinlatexchance) {
 						let rad = 2;
-						for (let XX = Math.max(1, x - rad); XX < Math.min(KinkyDungeonGridWidth - 2, x + rad); XX++)
-							for (let YY = Math.max(1, y - rad); YY < Math.min(KinkyDungeonGridHeight - 2, y + rad); YY++) {
+						for (let XX = Math.max(1, x - rad); XX < Math.min(KDMapData.GridWidth - 2, x + rad); XX++)
+							for (let YY = Math.max(1, y - rad); YY < Math.min(KDMapData.GridHeight - 2, y + rad); YY++) {
 								if (KinkyDungeonMapGet(XX, YY) == '0' && KDRandom() < heavylatexspreadchance) {
 									KDCreateEffectTile(x, y + 1, {
 										name: "LatexThin",

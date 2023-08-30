@@ -179,7 +179,7 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 				if (loot.trap || loot.magic) weightMult *= (1 + rep);
 				if (loot.trap && KinkyDungeonCurrentMaxEnemies > 0) {
 					let nonSumEnemies = 0;
-					for (let e of KinkyDungeonEntities) {if (!e.summoned) nonSumEnemies++;}
+					for (let e of KDMapData.Entities) {if (!e.summoned) nonSumEnemies++;}
 					weightMult *= Math.max(0, 1 - 0.5*nonSumEnemies/KinkyDungeonCurrentMaxEnemies);
 				}
 				if (loot.trap && noTrap)

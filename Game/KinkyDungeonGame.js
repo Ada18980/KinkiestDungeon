@@ -10,22 +10,26 @@ let MiniGameKinkyDungeonLevel = -1;
  */
 let KinkyDungeonMapIndex = {};
 
+
+
+let KDMapData = {};
+/** This data can be regenerated as needed */
+let KDMapExtraData = {};
+
 /**
  * @type {number[]}
  */
-let KinkyDungeonBoringness = [];
-
-let KinkyDungeonVisionGrid = [];
-let KinkyDungeonColorGrid = [];
-let KinkyDungeonShadowGrid = [];
-let KinkyDungeonBrightnessGrid = [];
-let KinkyDungeonFogGrid = [];
+KDMapExtraData.Boringness = [];
+KDMapExtraData.VisionGrid = [];
+KDMapExtraData.ColorGrid = [];
+KDMapExtraData.ShadowGrid = [];
+KDMapExtraData.BrightnessGrid = [];
+KDMapData.FogGrid = [];
 let KinkyDungeonUpdateLightGrid = true;
-let KinkyDungeonGrid = "";
+KDMapData.Grid = "";
 let KinkyDungeonGrid_Last = "";
-let KinkyDungeonGridSize = 50;
-let KinkyDungeonGridWidth = 31;
-let KinkyDungeonGridHeight = 19;
+KDMapData.GridWidth = 31;
+KDMapData.GridHeight = 19;
 
 let KinkyDungeonGridSizeDisplay = 72;
 let KinkyDungeonGridWidthDisplay = 2000/KinkyDungeonGridSizeDisplay;//17;
@@ -55,12 +59,9 @@ let KinkyDungeonCanvasPlayer = document.createElement("canvas");
 let KinkyDungeonContextPlayer = null;
 
 /** @type {entity[]} */
-let KinkyDungeonEntities = [];
-let KinkyDungeonTerrain = [];
+KDMapData.Entities = [];
 
 let KinkyDungeonPOI = [];
-
-let KinkyDungeonMapBrightness = 5;
 
 let KDDefaultAvoidTiles = "gtVN@";
 let KinkyDungeonGroundTiles = "023w][?/";
@@ -90,16 +91,19 @@ let KDOpenDoorTiles = ["DoorOpen", "DoorVertOpenCont", "DoorVertOpen"];
 /**
  * @type {Record<string, {x: number, y: number, tags?:string[]}>}
  */
-let KinkyDungeonRandomPathablePoints = {};
+KDMapData.RandomPathablePoints = {};
 /** @type {Record<string, any>} */
-let KinkyDungeonTiles = {};
+KDMapData.Tiles = {};
 /** @type {Record<string, Record<string, effectTile>>} */
-let KinkyDungeonEffectTiles = {};
+KDMapData.EffectTiles = {};
 /** @type {Record<string, any>} */
-let KinkyDungeonTilesMemory = {};
+KDMapData.TilesMemory = {};
 /** @type {Record<string, any>} */
-let KinkyDungeonTilesSkin = {};
+KDMapData.TilesSkin = {};
 
+
+
+KDMapData.MapBrightness = 5;
 
 
 let KinkyDungeonTargetTile = null;
@@ -148,10 +152,10 @@ let KinkyDungeonLastMoveTimerStart = 0;
 let KinkyDungeonLastMoveTimerCooldown = 175;
 let KinkyDungeonLastMoveTimerCooldownStart = 50;
 
-let KinkyDungeonPatrolPoints = [];
-let KinkyDungeonStartPosition = {x: 1, y: 1};
-let KinkyDungeonEndPosition = {x: 1, y: 1};
-let KinkyDungeonShortcutPosition = {x: 1, y: 1};
+KDMapData.PatrolPoints = [];
+KDMapData.StartPosition = {x: 1, y: 1};
+KDMapData.EndPosition = {x: 1, y: 1};
+KDMapData.ShortcutPosition = {x: 1, y: 1};
 let KinkyDungeonJailLeash = 3;
 let KinkyDungeonJailLeashX = 3;
 
@@ -165,7 +169,7 @@ let KinkyDungeonSFX = [];
  * @param {Record<string, effectTile>} value
  */
 function KinkyDungeonEffectTilesSet(location, value) {
-	KinkyDungeonEffectTiles[location] = value;
+	KDMapData.EffectTiles[location] = value;
 }
 /**
  *
@@ -173,7 +177,7 @@ function KinkyDungeonEffectTilesSet(location, value) {
  * @returns {Record<string, effectTile>}
  */
 function KinkyDungeonEffectTilesGet(location) {
-	return KinkyDungeonEffectTiles[location];
+	return KDMapData.EffectTiles[location];
 }
 
 
@@ -183,7 +187,7 @@ function KinkyDungeonEffectTilesGet(location) {
  * @param {any} value
  */
 function KinkyDungeonTilesSet(location, value) {
-	KinkyDungeonTiles[location] = value;
+	KDMapData.Tiles[location] = value;
 }
 /**
  *
@@ -191,7 +195,7 @@ function KinkyDungeonTilesSet(location, value) {
  * @returns {any}
  */
 function KinkyDungeonTilesGet(location) {
-	return KinkyDungeonTiles[location];
+	return KDMapData.Tiles[location];
 }
 
 /**
@@ -199,7 +203,7 @@ function KinkyDungeonTilesGet(location) {
  * @param {string} location
  */
 function KinkyDungeonTilesDelete(location) {
-	delete KinkyDungeonTiles[location];
+	delete KDMapData.Tiles[location];
 }
 
 
@@ -209,7 +213,7 @@ function KinkyDungeonTilesDelete(location) {
  * @param {any} value
  */
 function KinkyDungeonSkinSet(location, value) {
-	KinkyDungeonTilesSkin[location] = value;
+	KDMapData.TilesSkin[location] = value;
 }
 /**
  *
@@ -217,7 +221,7 @@ function KinkyDungeonSkinSet(location, value) {
  * @returns {any}
  */
 function KinkyDungeonSkinGet(location) {
-	return KinkyDungeonTilesSkin[location];
+	return KDMapData.TilesSkin[location];
 }
 
 /**
@@ -225,7 +229,7 @@ function KinkyDungeonSkinGet(location) {
  * @param {string} location
  */
 function KinkyDungeonSkinDelete(location) {
-	delete KinkyDungeonTilesSkin[location];
+	delete KDMapData.TilesSkin[location];
 }
 
 function KDAlreadyOpened(x, y) {
@@ -320,12 +324,12 @@ function KinkyDungeonInitialize(Level, Load) {
 		KinkyDungeonMapIndex[map] = map;
 	}
 
-	for (let e of KinkyDungeonEntities) {
+	for (let e of KDMapData.Entities) {
 		KDClearItems(e);
 	}
-	KinkyDungeonEntities = [];
+	KDMapData.Entities = [];
 	KDUpdateEnemyCache = true;
-	KinkyDungeonBullets = [];
+	KDMapData.Bullets = [];
 	KinkyDungeonGroundItems = [];
 
 	KinkyDungeonTextMessage = "";
@@ -357,26 +361,26 @@ function KDInitCanvas() {
 function KDCreateBoringness(noBoring) {
 	let start = performance.now();
 	// Initialize boringness array
-	KinkyDungeonBoringness = [];
-	for (let X = 0; X < KinkyDungeonGridWidth; X++) {
-		for (let Y = 0; Y < KinkyDungeonGridHeight; Y++)
-			KinkyDungeonBoringness.push(0); // 0 = no boringness
+	KDMapExtraData.Boringness = [];
+	for (let X = 0; X < KDMapData.GridWidth; X++) {
+		for (let Y = 0; Y < KDMapData.GridHeight; Y++)
+			KDMapExtraData.Boringness.push(0); // 0 = no boringness
 	}
 
 	if (noBoring) return;
 	// First we find shortest path to exit
-	let path = KinkyDungeonFindPath(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
+	let path = KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, KDMapData.EndPosition.x, KDMapData.EndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
 
 	let pathLength = path ? path.length : 100;
 
 	// Now we find the path to the start/end of every INDIVIDUAL tile
 	// Boringness = delta between (startLength + endLength) and (pathLength)
-	for (let X = 0; X < KinkyDungeonGridWidth; X++) {
-		for (let Y = 0; Y < KinkyDungeonGridHeight; Y++) {
+	for (let X = 0; X < KDMapData.GridWidth; X++) {
+		for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
 			if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))) {
-				let startLength = KinkyDungeonFindPath(X, Y, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
+				let startLength = KinkyDungeonFindPath(X, Y, KDMapData.StartPosition.x, KDMapData.StartPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
 				if (startLength) {
-					let endLength = KinkyDungeonFindPath(X, Y, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
+					let endLength = KinkyDungeonFindPath(X, Y, KDMapData.EndPosition.x, KDMapData.EndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
 					if (endLength) {
 						let delta = Math.abs((startLength.length + endLength.length) - pathLength);
 						KinkyDungeonBoringSet(X, Y, delta);
@@ -423,21 +427,21 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 		KDRestraintsCache = new Map();
 		KDEnemiesCache = new Map();
 		KDEnemyCache = new Map();
-		KinkyDungeonGrid = "";
-		KinkyDungeonTiles = {};
-		KinkyDungeonTilesSkin = {};
-		KinkyDungeonEffectTiles = {};
+		KDMapData.Grid = "";
+		KDMapData.Tiles = {};
+		KDMapData.TilesSkin = {};
+		KDMapData.EffectTiles = {};
 		KinkyDungeonTargetTile = null;
 		KinkyDungeonTargetTileLocation = "";
 		KinkyDungeonGroundItems = []; // Clear items on the ground
-		KinkyDungeonBullets = []; // Clear all bullets
+		KDMapData.Bullets = []; // Clear all bullets
 		KDGameData.OfferFatigue = 0;
 		KDGameData.KeyringLocations = [];
 
-		KinkyDungeonEndPosition = null;
-		KinkyDungeonShortcutPosition = null;
+		KDMapData.EndPosition = null;
+		KDMapData.ShortcutPosition = null;
 
-		KinkyDungeonPatrolPoints = [];
+		KDMapData.PatrolPoints = [];
 
 		if (KDGameData.JailKey == undefined) {
 			KDGameData.JailKey = false;
@@ -480,7 +484,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 
 		// Create enemies first so we can spawn them in the set pieces if needed
 		let allies = KinkyDungeonGetAllies();
-		KinkyDungeonEntities = allies;
+		KDMapData.Entities = allies;
 		KDUpdateEnemyCache = true;
 
 		let altRoom = KDGameData.RoomType;
@@ -529,15 +533,15 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 		}
 
 		KinkyDungeonCanvas.width = KinkyDungeonCanvasPlayer.width*KinkyDungeonGridWidthDisplay;
-		KinkyDungeonGridHeight = height;
-		KinkyDungeonGridWidth = width;
+		KDMapData.GridHeight = height;
+		KDMapData.GridWidth = width;
 
 
 		// Generate the grid
 		for (let X = 0; X < height; X++) {
 			for (let Y = 0; Y < width; Y++)
-				KinkyDungeonGrid = KinkyDungeonGrid + '1';
-			KinkyDungeonGrid = KinkyDungeonGrid + '\n';
+				KDMapData.Grid = KDMapData.Grid + '1';
+			KDMapData.Grid = KDMapData.Grid + '\n';
 		}
 
 		// We only rerender the map when the grid changes
@@ -638,7 +642,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 
 		let VisitedRooms = [];
 
-		KinkyDungeonStartPosition = {x: 1, y: startpos * 2};
+		KDMapData.StartPosition = {x: 1, y: startpos * 2};
 
 		KinkyDungeonMapSet(1, startpos, '0', VisitedRooms);
 
@@ -647,7 +651,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 
 
 		// Place the player!
-		KinkyDungeonPlayerEntity = {MemberNumber:Player.MemberNumber, x: KinkyDungeonStartPosition.x, y:KinkyDungeonStartPosition.y, player:true};
+		KinkyDungeonPlayerEntity = {MemberNumber:Player.MemberNumber, x: KDMapData.StartPosition.x, y:KDMapData.StartPosition.y, player:true};
 
 
 		let traps = [];
@@ -674,13 +678,13 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 			console.log(`${performance.now() - startTime} ms for maze creation`);
 			startTime = performance.now();
 		}
-		width = KinkyDungeonGridWidth;
-		height = KinkyDungeonGridHeight;
+		width = KDMapData.GridWidth;
+		height = KDMapData.GridHeight;
 
 		KinkyDungeonResetFog();
 
-		KinkyDungeonPlayerEntity.x = KinkyDungeonStartPosition.x;
-		KinkyDungeonPlayerEntity.y = KinkyDungeonStartPosition.y;
+		KinkyDungeonPlayerEntity.x = KDMapData.StartPosition.x;
+		KinkyDungeonPlayerEntity.y = KDMapData.StartPosition.y;
 
 
 		if (!altType || !altType.noWear)
@@ -690,7 +694,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 			console.log(`${performance.now() - startTime} ms for doodad creation`);
 			startTime = performance.now();
 		}
-		KinkyDungeonPlaceStairs(KinkyDungeonGetMainPath(Floor, altType), KinkyDungeonStartPosition.y, width, height, altType && altType.nostairs, altType && altType.nostartstairs); // Place the start and end locations
+		KinkyDungeonPlaceStairs(KinkyDungeonGetMainPath(Floor, altType), KDMapData.StartPosition.y, width, height, altType && altType.nostairs, altType && altType.nostartstairs); // Place the start and end locations
 		if (KDDebug) {
 			console.log(`${performance.now() - startTime} ms for stair creation`);
 			startTime = performance.now();
@@ -842,14 +846,14 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 		let lightingParams = null;
 		if (altType?.lightParams) lightingParams = KinkyDungeonMapParams[altType.lightParams];
 		else if (altType?.skin) lightingParams = KinkyDungeonMapParams[altType.skin];
-		KinkyDungeonMapBrightness = lightingParams ? lightingParams.brightness : MapParams.brightness;
+		KDMapData.MapBrightness = lightingParams ? lightingParams.brightness : MapParams.brightness;
 		KinkyDungeonMakeGhostDecision();
 
 		// Place the jail keys AFTER making the map!
 		KinkyDungeonLoseJailKeys(false, bossRules); // if (!KDGameData.JailKey || (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail') || boss)
 
 		if (KDTileToTest || ((KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)
-			&& KinkyDungeonFindPath(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy,
+			&& KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, KDMapData.EndPosition.x, KDMapData.EndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy,
 				false, false, false, undefined, false).length > 0)) iterations = 100000;
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 
@@ -865,9 +869,9 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 			KinkyDungeonSendEvent("postQuest", {});
 
 			for (let e of KinkyDungeonGetAllies()) {
-				KDMoveEntity(e, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false,undefined, undefined, true);
-				e.visual_x = KinkyDungeonStartPosition.x;
-				e.visual_y = KinkyDungeonStartPosition.y;
+				KDMoveEntity(e, KDMapData.StartPosition.x, KDMapData.StartPosition.y, false,undefined, undefined, true);
+				e.visual_x = KDMapData.StartPosition.x;
+				e.visual_y = KDMapData.StartPosition.y;
 			}
 
 			KinkyDungeonAdvanceTime(0);
@@ -885,15 +889,15 @@ let KDStageBossGenerated = false;
  * Creates a list of all tiles accessible and not hidden by doors
  */
 function KinkyDungeonGenNavMap(fromPoint) {
-	if (!fromPoint) fromPoint = KinkyDungeonEndPosition;
-	KinkyDungeonRandomPathablePoints = {};
+	if (!fromPoint) fromPoint = KDMapData.EndPosition;
+	KDMapData.RandomPathablePoints = {};
 	let accessible = KinkyDungeonGetAccessible(fromPoint.x, fromPoint.y);
 	for (let a of Object.entries(accessible)) {
 		let X = a[1].x;
 		let Y = a[1].y;
 		let tags = [];
 		if (!KinkyDungeonTilesGet(a[0]) || !KinkyDungeonTilesGet(a[0]).OffLimits)
-			KinkyDungeonRandomPathablePoints[a[0]] = {x: X, y:Y, tags:tags};
+			KDMapData.RandomPathablePoints[a[0]] = {x: X, y:Y, tags:tags};
 	}
 }
 
@@ -911,7 +915,7 @@ function KinkyDungeonGetAccessible(startX, startY, testX, testY) {
 					let testLoc = ((X+XX) + "," + (Y+YY));
 					let locked = (testX != undefined && testY != undefined && X+XX == testX && Y+YY == testY)
 						|| (KinkyDungeonTilesGet("" + (X+XX) + "," + (Y+YY)) && KinkyDungeonTilesGet("" + (X+XX) + "," + (Y+YY)).Lock);
-					if (!checkGrid[testLoc] && !tempGrid[testLoc] && X+XX > 0 && X+XX < KinkyDungeonGridWidth-1 && Y+YY > 0 && Y+YY < KinkyDungeonGridHeight-1
+					if (!checkGrid[testLoc] && !tempGrid[testLoc] && X+XX > 0 && X+XX < KDMapData.GridWidth-1 && Y+YY > 0 && Y+YY < KDMapData.GridHeight-1
 						&& KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(X+XX, Y+YY)) && !locked) {
 						checkGrid[testLoc] = {x:X+XX,y:Y+YY};
 						tempGrid[testLoc] = {x:X+XX,y:Y+YY};
@@ -974,11 +978,11 @@ function KinkyDungeonIsReachable(testX, testY, testLockX, testLockY) {
 
 function KinkyDungeonGetAllies() {
 	let temp = [];
-	for (let e of KinkyDungeonEntities) {
+	for (let e of KDMapData.Entities) {
 		if (e.Enemy && e.Enemy.keepLevel) {
-			KDMoveEntity(e, KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y, false,undefined, undefined, true);
-			e.visual_x = KinkyDungeonStartPosition.x;
-			e.visual_y = KinkyDungeonStartPosition.y;
+			KDMoveEntity(e, KDMapData.StartPosition.x, KDMapData.StartPosition.y, false,undefined, undefined, true);
+			e.visual_x = KDMapData.StartPosition.x;
+			e.visual_y = KDMapData.StartPosition.y;
 			temp.push(e);
 		}
 	}
@@ -1196,7 +1200,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		}
 
 		let playerDist = 6;
-		let PlayerEntity = KinkyDungeonStartPosition;
+		let PlayerEntity = KDMapData.StartPosition;
 
 		let spawnBox_filter = spawnBoxes.filter((bb) => {
 			return bb.currentCount < bb.maxCount * enemyCount && (!bb.bias
@@ -1230,7 +1234,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		}
 
 		if ((spawnPoint && KinkyDungeonNoEnemy(X, Y, true)) || (
-			KinkyDungeonRandomPathablePoints["" + X + "," + Y]
+			KDMapData.RandomPathablePoints["" + X + "," + Y]
 			//(!KinkyDungeonTilesGet("" + X + "," + Y) || !KinkyDungeonTilesGet("" + X + "," + Y).OffLimits)
 			&& Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) > playerDist && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))
 			&& KinkyDungeonNoEnemy(X, Y, true) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits))) {
@@ -1349,7 +1353,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 	}
 	console.log(EnemyNames);
 
-	KinkyDungeonCurrentMaxEnemies = KinkyDungeonEntities.length;
+	KinkyDungeonCurrentMaxEnemies = KDMapData.Entities.length;
 }
 
 let KinkyDungeonSpecialAreas = [];
@@ -1374,7 +1378,7 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 	let fillType = (Fill) ? '1' : '0';
 	for (let X = -pad; X < Width + pad; X++)
 		for (let Y = - pad; Y < Height + pad; Y++) {
-			if (X + Left < KinkyDungeonGridWidth-1 && Y + Top < KinkyDungeonGridHeight-1 && X + Left > 0 && Y + Top > 0) {
+			if (X + Left < KDMapData.GridWidth-1 && Y + Top < KDMapData.GridHeight-1 && X + Left > 0 && Y + Top > 0) {
 				let setTo = "";
 				let offlimit = true;
 				if (X < 0 || Y < 0 || X >= Width || Y >= Height) {
@@ -1387,7 +1391,7 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 				}
 				if (setTo != "" && KinkyDungeonMapGet(Left + X, Top + Y) != "s") {
 					KinkyDungeonMapSet(Left + X, Top + Y, setTo);
-					delete KinkyDungeonEffectTiles[(Left + X) + "," + (Top + Y)];
+					delete KDMapData.EffectTiles[(Left + X) + "," + (Top + Y)];
 					if (offlimit && (OffLimits || Jail || NoWander)) {
 						KinkyDungeonTilesSet((Left + X) + "," + (Top + Y), {OffLimits: OffLimits, Jail: Jail, NoWander: NoWander});
 					}
@@ -1396,15 +1400,15 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 
 
 			/*
-			if ((X == cellWidth || X == 0) && (Y > KinkyDungeonStartPosition.y - cellHeight && Y < KinkyDungeonStartPosition.y + cellHeight)) {
+			if ((X == cellWidth || X == 0) && (Y > KDMapData.StartPosition.y - cellHeight && Y < KDMapData.StartPosition.y + cellHeight)) {
 				wall = true;
 				if (KDRandom() < barchance) bar = true;
 			}
-			if (Y == KinkyDungeonStartPosition.y - cellHeight && X <= cellWidth || Y == KinkyDungeonStartPosition.y + cellHeight && X <= cellWidth) {
+			if (Y == KDMapData.StartPosition.y - cellHeight && X <= cellWidth || Y == KDMapData.StartPosition.y + cellHeight && X <= cellWidth) {
 				wall = true;
 				if (KDRandom() < grateChance/(grateCount*3) && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(X, Y+1)) && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(X, Y-1))) grate = true;
 			}
-			if (X == cellWidth && Y == KinkyDungeonStartPosition.y) {
+			if (X == cellWidth && Y == KDMapData.StartPosition.y) {
 				wall = false;
 				door = true;
 			}
@@ -1454,18 +1458,18 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, 
 		KinkyDungeonMapSet(1, startpos, 'S');
 	/*if (startpos > 1) KinkyDungeonMapSet(2, startpos - 1, '0');
 	KinkyDungeonMapSet(2, startpos, '0');
-	if (startpos < KinkyDungeonGridHeight-1) KinkyDungeonMapSet(2, startpos + 1, '0');
+	if (startpos < KDMapData.GridHeight-1) KinkyDungeonMapSet(2, startpos + 1, '0');
 	if (startpos > 1) KinkyDungeonMapSet(3, startpos - 1, '0');
 	KinkyDungeonMapSet(3, startpos, '0');
-	if (startpos < KinkyDungeonGridHeight-1) KinkyDungeonMapSet(3, startpos + 1, '0');*/
+	if (startpos < KDMapData.GridHeight-1) KinkyDungeonMapSet(3, startpos + 1, '0');*/
 
 	if (!noStairs) {
 		// Ending stairs are not.
 		let placed = false;
 
-		if (KinkyDungeonEndPosition) {
+		if (KDMapData.EndPosition) {
 			placed = true;
-			KinkyDungeonMapSet(KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 's');
+			KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, 's');
 		}
 
 		// shop around for space if that didn't work for some reason
@@ -1487,7 +1491,7 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, 
 								&& (KinkyDungeonMapGet(X, Y+1) == '1' || KinkyDungeonMapGet(X, Y-1) == '1'))) {
 							placed = true;
 							KinkyDungeonMapSet(X, Y, 's');
-							KinkyDungeonEndPosition = {x: X, y: Y};
+							KDMapData.EndPosition = {x: X, y: Y};
 							L = 0;
 							break;
 						}
@@ -1500,7 +1504,7 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, 
 				let Y = 1 + Math.floor(KDRandom() * (height - 2));
 				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))) {
 					KinkyDungeonMapSet(X, Y, 's');
-					KinkyDungeonEndPosition = {x: X, y: Y};
+					KDMapData.EndPosition = {x: X, y: Y};
 					L = 0;
 				}
 			}
@@ -1508,17 +1512,17 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, 
 	}
 
 	KDGameData.MainPath = checkpoint;
-	if (KDGameData.MainPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.MainPath}, KinkyDungeonEndPosition.x, KinkyDungeonEndPosition.y, 4.99);
-	KinkyDungeonSpecialAreas.push({x: KinkyDungeonEndPosition.x, y: KinkyDungeonEndPosition.y, radius: 2});
+	if (KDGameData.MainPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.MainPath}, KDMapData.EndPosition.x, KDMapData.EndPosition.y, 4.99);
+	KinkyDungeonSpecialAreas.push({x: KDMapData.EndPosition.x, y: KDMapData.EndPosition.y, radius: 2});
 }
 
 function KinkyDungeonSkinArea(skin, X, Y, Radius, NoStairs) {
 	for (let xx = Math.floor(X - Radius); xx <= Math.ceil(X + Radius); xx++) {
 		for (let yy = Math.floor(Y - Radius); yy <= Math.ceil(Y + Radius); yy++) {
-			if (xx >= 0 && xx <= KinkyDungeonGridWidth - 1 && yy >= 0 && yy <= KinkyDungeonGridHeight - 1) {
+			if (xx >= 0 && xx <= KDMapData.GridWidth - 1 && yy >= 0 && yy <= KDMapData.GridHeight - 1) {
 				if (KDistEuclidean(xx - X, yy - Y) <= Radius + 0.01 && (!NoStairs || KinkyDungeonMapGet(xx, yy) != 's')) {
-					if (!KinkyDungeonTilesSkin[xx + "," + yy]) {
-						KinkyDungeonTilesSkin[xx + "," + yy] = skin;
+					if (!KDMapData.TilesSkin[xx + "," + yy]) {
+						KDMapData.TilesSkin[xx + "," + yy] = skin;
 					} else {
 						//
 					}
@@ -1584,7 +1588,7 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 
 		// Place along the top and bottom of the map
 
-		if (!KinkyDungeonShortcutPosition) {
+		if (!KDMapData.ShortcutPosition) {
 			for (let L = 1000; L > 0; L -= 1) { // Try up to 1000 times
 				let X = Math.floor(width * 0.75) - 2 - Math.floor(KDRandom() * width/2);
 				let Y = 1 + 2*Math.floor(KDRandom()*0.5 * (height - 2));
@@ -1600,7 +1604,7 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 							&& (KinkyDungeonMapGet(X+1, Y) == '1' || KinkyDungeonMapGet(X-1, Y) == '1')
 							&& (KinkyDungeonMapGet(X, Y+1) == '1' || KinkyDungeonMapGet(X, Y-1) == '1'))) {
 						placed = true;
-						KinkyDungeonShortcutPosition = {x:X, y:Y};
+						KDMapData.ShortcutPosition = {x:X, y:Y};
 						L = 0;
 						break;
 					}
@@ -1618,17 +1622,17 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
 					L = 0;
 					placed = true;
-					KinkyDungeonShortcutPosition = {x:X, y:Y};
+					KDMapData.ShortcutPosition = {x:X, y:Y};
 				}
 			}
 
-		if (KinkyDungeonShortcutPosition) {
-			KinkyDungeonMapSet(KinkyDungeonShortcutPosition.x, KinkyDungeonShortcutPosition.y, 'H');
+		if (KDMapData.ShortcutPosition) {
+			KinkyDungeonMapSet(KDMapData.ShortcutPosition.x, KDMapData.ShortcutPosition.y, 'H');
 		}
 
 		if (placed) {
 			KDGameData.ShortcutPath = checkpoint;
-			if (KDGameData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.ShortcutPath}, KinkyDungeonShortcutPosition.x, KinkyDungeonShortcutPosition.y, 2.99, true);
+			if (KDGameData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDGameData.ShortcutPath}, KDMapData.ShortcutPosition.x, KDMapData.ShortcutPosition.y, 2.99, true);
 		}
 	}
 }
@@ -1659,7 +1663,7 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 		// Populate the chests
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1) {
-				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && KDistChebyshev(X - KinkyDungeonStartPosition.x, Y - KinkyDungeonStartPosition.y) > 10 &&
+				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && KDistChebyshev(X - KDMapData.StartPosition.x, Y - KDMapData.StartPosition.y) > 10 &&
 				(!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
 					// Check the 3x3 area
 					let wallcount = 0;
@@ -1727,7 +1731,7 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 	let alreadyOpened = 0;//(KinkyDungeonChestsOpened.length > Floor) ? KinkyDungeonChestsOpened[Floor] : 0;
 	if (KinkyDungeonNewGame < 1) treasurecount -= alreadyOpened;
 	let list = [];
-	let maxBoringness = Math.max(...KinkyDungeonBoringness);
+	let maxBoringness = Math.max(...KDMapExtraData.Boringness);
 	while (chestlist.length > 0) {
 		let N = Math.floor(KDRandom()*chestlist.length);
 		let chest = chestlist[N];
@@ -1823,7 +1827,7 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 	}
 
 
-	for (let tile of Object.entries(KinkyDungeonTiles)) {
+	for (let tile of Object.entries(KDMapData.Tiles)) {
 		if (tile[1].lootTrap) {
 			let x = parseInt(tile[0].split(',')[0]);
 			let y = parseInt(tile[0].split(',')[1]);
@@ -1909,7 +1913,7 @@ function KinkyDungeonPlaceHeart(width, height, Floor) {
 		for (let Y = 1; Y < height; Y += 1)
 			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
 				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)
-				&& KDistChebyshev(X - KinkyDungeonStartPosition.x, Y - KinkyDungeonStartPosition.y) > 8
+				&& KDistChebyshev(X - KDMapData.StartPosition.x, Y - KDMapData.StartPosition.y) > 8
 			) heartList.push({x:X, y:Y});
 
 	while (heartList.length > 0) {
@@ -1963,7 +1967,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 		// Populate the chests
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1)
-				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KinkyDungeonStartPosition.x), Math.abs(Y - KinkyDungeonStartPosition.y)) > KinkyDungeonJailLeash
+				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
 					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
 					// Check the 3x3 area
 					let wallcount = 0;
@@ -2031,7 +2035,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 
 	let orbs = 0;
 	let list = [];
-	let maxBoringness = Math.max(...KinkyDungeonBoringness);
+	let maxBoringness = Math.max(...KDMapExtraData.Boringness);
 	while (shrinelist.length > 0) {
 		let N = Math.floor(KDRandom()*shrinelist.length);
 		let chest = shrinelist[N];
@@ -2128,7 +2132,7 @@ function KinkyDungeonPlaceChargers(chargerlist, chargerchance, litchargerchance,
 		// Populate the chests
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1)
-				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KinkyDungeonStartPosition.x), Math.abs(Y - KinkyDungeonStartPosition.y)) > KinkyDungeonJailLeash
+				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
 					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
 					// Check the 3x3 area
 					let wallcount = 0;
@@ -2365,12 +2369,12 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 
 function KinkyDungeonPlacePatrols(Count, width, height) {
 	for (let i = 1; i <= Count; i++) {
-		if (KinkyDungeonPatrolPoints.length < Count)
+		if (KDMapData.PatrolPoints.length < Count)
 			for (let L = 1000; L > 0; L -= 1) { // Try up to 1000 times
 				let X = Math.floor(i * width / (Count + 1)) + Math.floor(KDRandom() * width/(Count + 1));
 				let Y = Math.floor(KDRandom()*height);
 				if (!KinkyDungeonPointInCell(X, Y) && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
-					KinkyDungeonPatrolPoints.push({x: X, y: Y});
+					KDMapData.PatrolPoints.push({x: X, y: Y});
 					break;
 				}
 			}
@@ -2565,7 +2569,7 @@ function KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapCh
 								lock = true;
 							} else if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(room.door.x, room.door.y+1)) && ((grate && (!room.room || room.room.length > minLockedRoomSize))
 									|| (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y+1)) && Math.max(Math.abs(room.door.x - KinkyDungeonPlayerEntity.x), Math.abs(room.door.y - KinkyDungeonPlayerEntity.y)) <= maxPlayerDist))
-									&& room.door.y != KinkyDungeonStartPosition.y) {
+									&& room.door.y != KDMapData.StartPosition.y) {
 								// Place a grate instead
 								KinkyDungeonMapSet(room.door.x, room.door.y, 'g');
 								lock = true;
@@ -2591,7 +2595,7 @@ function KinkyDungeonReplaceDoodads(Chance, barchance, wallRubblechance, wallhoo
 			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < Chance)
 				KinkyDungeonMapSet(X, Y, '4');
 			else
-			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < wallRubblechance && !KinkyDungeonTilesSkin[X + "," + Y]) {
+			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < wallRubblechance && !KDMapData.TilesSkin[X + "," + Y]) {
 				KinkyDungeonMapSet(X, Y, 'Y');
 				if (KDAlreadyOpened(X, Y)) {
 					KinkyDungeonMapSet(X, Y, '1');
@@ -2702,7 +2706,7 @@ function KinkyDungeonPlaceFood(foodChance, width, height, altType) {
 	// Populate the chests
 	for (let X = 1; X < width; X += 1)
 		for (let Y = 1; Y < height; Y += 1)
-			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KinkyDungeonStartPosition.x), Math.abs(Y - KinkyDungeonStartPosition.y)) > KinkyDungeonJailLeash
+			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
 				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
 				// Check the 3x3 area
 				let wallcount = 0;
@@ -2759,7 +2763,7 @@ function KinkyDungeonPlaceFood(foodChance, width, height, altType) {
 	// Truncate down to max chest count in a location-neutral way
 	let count = 0;
 	let list = [];
-	let maxBoringness = Math.max(...KinkyDungeonBoringness);
+	let maxBoringness = Math.max(...KDMapExtraData.Boringness);
 	while (foodList.length > 0) {
 		let N = Math.floor(KDRandom()*foodList.length);
 		let chest = foodList[N];
@@ -2882,11 +2886,11 @@ function KinkyDungeonMazeWalls(Cell, Walls, WallsList) {
 }
 
 function KinkyDungeonMapSet(X, Y, SetTo, VisitedRooms) {
-	let height = KinkyDungeonGridHeight;
-	let width = KinkyDungeonGridWidth;
+	let height = KDMapData.GridHeight;
+	let width = KDMapData.GridWidth;
 
 	if (X > 0 && X < width-1 && Y > 0 && Y < height-1) {
-		KinkyDungeonGrid = KinkyDungeonGrid.replaceAt(X + Y*(width+1), SetTo);
+		KDMapData.Grid = KDMapData.Grid.replaceAt(X + Y*(width+1), SetTo);
 		if (VisitedRooms)
 			VisitedRooms.push({x: X, y: Y});
 		return true;
@@ -2894,9 +2898,9 @@ function KinkyDungeonMapSet(X, Y, SetTo, VisitedRooms) {
 	return false;
 }
 function KinkyDungeonMapSetForce(X, Y, SetTo, VisitedRooms) {
-	let width = KinkyDungeonGridWidth;
+	let width = KDMapData.GridWidth;
 
-	KinkyDungeonGrid = KinkyDungeonGrid.replaceAt(X + Y*(width+1), SetTo);
+	KDMapData.Grid = KDMapData.Grid.replaceAt(X + Y*(width+1), SetTo);
 	if (VisitedRooms)
 		VisitedRooms.push({x: X, y: Y});
 	return true;
@@ -2905,74 +2909,74 @@ function KinkyDungeonMapSetForce(X, Y, SetTo, VisitedRooms) {
 
 
 function KinkyDungeonBoringGet(X, Y) {
-	return KinkyDungeonBoringness[X + Y*(KinkyDungeonGridWidth)];
+	return KDMapExtraData.Boringness[X + Y*(KDMapData.GridWidth)];
 }
 
 function KinkyDungeonBoringSet(X, Y, SetTo) {
-	if (X >= 0 && X <= KinkyDungeonGridWidth-1 && Y >= 0 && Y <= KinkyDungeonGridHeight-1) {
-		KinkyDungeonBoringness[X + Y*(KinkyDungeonGridWidth)] = SetTo;
+	if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1) {
+		KDMapExtraData.Boringness[X + Y*(KDMapData.GridWidth)] = SetTo;
 		return true;
 	}
 	return false;
 }
 
 function KinkyDungeonMapGet(X, Y) {
-	//let height = KinkyDungeonGrid.split('\n').length;
-	//let width = //KinkyDungeonGrid.split('\n')[0].length;
+	//let height = KDMapData.Grid.split('\n').length;
+	//let width = //KDMapData.Grid.split('\n')[0].length;
 
-	return KinkyDungeonGrid[X + Y*(KinkyDungeonGridWidth+1)];
+	return KDMapData.Grid[X + Y*(KDMapData.GridWidth+1)];
 }
 
 function KinkyDungeonVisionSet(X, Y, SetTo) {
-	if (X >= 0 && X <= KinkyDungeonGridWidth-1 && Y >= 0 && Y <= KinkyDungeonGridHeight-1) {
-		KinkyDungeonVisionGrid[X + Y*(KinkyDungeonGridWidth)] = SetTo;
+	if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1) {
+		KDMapExtraData.VisionGrid[X + Y*(KDMapData.GridWidth)] = SetTo;
 		return true;
 	}
 	return false;
 }
 
 function KinkyDungeonBrightnessSet(X, Y, SetTo, monotonic) {
-	if (X >= 0 && X <= KinkyDungeonGridWidth-1 && Y >= 0 && Y <= KinkyDungeonGridHeight-1) {
-		if (!monotonic || SetTo > KinkyDungeonBrightnessGrid[X + Y*(KinkyDungeonGridWidth)])
-			KinkyDungeonBrightnessGrid[X + Y*(KinkyDungeonGridWidth)] = SetTo;
+	if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1) {
+		if (!monotonic || SetTo > KDMapExtraData.BrightnessGrid[X + Y*(KDMapData.GridWidth)])
+			KDMapExtraData.BrightnessGrid[X + Y*(KDMapData.GridWidth)] = SetTo;
 		return true;
 	}
 	return false;
 }
 
 function KinkyDungeonColorSet(X, Y, SetTo, monotonic) {
-	if (X >= 0 && X <= KinkyDungeonGridWidth-1 && Y >= 0 && Y <= KinkyDungeonGridHeight-1) {
-		if (!monotonic || SetTo > KinkyDungeonColorGrid[X + Y*(KinkyDungeonGridWidth)])
-			KinkyDungeonColorGrid[X + Y*(KinkyDungeonGridWidth)] = SetTo;
+	if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1) {
+		if (!monotonic || SetTo > KDMapExtraData.ColorGrid[X + Y*(KDMapData.GridWidth)])
+			KDMapExtraData.ColorGrid[X + Y*(KDMapData.GridWidth)] = SetTo;
 		return true;
 	}
 	return false;
 }
 function KinkyDungeonShadowSet(X, Y, SetTo, monotonic) {
-	if (X >= 0 && X <= KinkyDungeonGridWidth-1 && Y >= 0 && Y <= KinkyDungeonGridHeight-1) {
-		if (!monotonic || SetTo > KinkyDungeonShadowGrid[X + Y*(KinkyDungeonGridWidth)])
-			KinkyDungeonShadowGrid[X + Y*(KinkyDungeonGridWidth)] = SetTo;
+	if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1) {
+		if (!monotonic || SetTo > KDMapExtraData.ShadowGrid[X + Y*(KDMapData.GridWidth)])
+			KDMapExtraData.ShadowGrid[X + Y*(KDMapData.GridWidth)] = SetTo;
 		return true;
 	}
 	return false;
 }
 
 function KinkyDungeonVisionGet(X, Y) {
-	return KinkyDungeonVisionGrid[X + Y*(KinkyDungeonGridWidth)];
+	return KDMapExtraData.VisionGrid[X + Y*(KDMapData.GridWidth)];
 }
 
 function KinkyDungeonBrightnessGet(X, Y) {
-	return KinkyDungeonBrightnessGrid[X + Y*(KinkyDungeonGridWidth)];
+	return KDMapExtraData.BrightnessGrid[X + Y*(KDMapData.GridWidth)];
 }
 function KinkyDungeonColorGet(X, Y) {
-	return KinkyDungeonColorGrid[X + Y*(KinkyDungeonGridWidth)];
+	return KDMapExtraData.ColorGrid[X + Y*(KDMapData.GridWidth)];
 }
 function KinkyDungeonShadowGet(X, Y) {
-	return KinkyDungeonShadowGrid[X + Y*(KinkyDungeonGridWidth)];
+	return KDMapExtraData.ShadowGrid[X + Y*(KDMapData.GridWidth)];
 }
 
 function KinkyDungeonFogGet(X, Y) {
-	return KinkyDungeonFogGrid[X + Y*(KinkyDungeonGridWidth)];
+	return KDMapData.FogGrid[X + Y*(KDMapData.GridWidth)];
 }
 
 let canvasOffsetX = 0;
@@ -3882,8 +3886,8 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	KDUpdateEffectTiles(delta);
 	KinkyDungeonUpdateTileEffects(delta);
-	for (let E = 0; E < KinkyDungeonEntities.length; E++) {
-		let enemy = KinkyDungeonEntities[E];
+	for (let E = 0; E < KDMapData.Entities.length; E++) {
+		let enemy = KDMapData.Entities[E];
 		if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1; continue;}
 	}
 
@@ -4102,7 +4106,7 @@ function KDGetEnemyCache() {
 	if (KDUpdateEnemyCache || !KDEnemyCache) {
 		KDUpdateEnemyCache = false;
 		KDEnemyCache = new Map();
-		for (let e of KinkyDungeonEntities) {
+		for (let e of KDMapData.Entities) {
 			KDEnemyCache.set(e.x + "," + e.y, e);
 		}
 	}
@@ -4297,5 +4301,5 @@ function KDCanPassEnemy(player, Enemy) {
  * @returns {boolean}
  */
 function KDIsInBounds(x, y, pad = 1) {
-	return x >= pad && x <= KinkyDungeonGridWidth-pad-1 && y >= pad && y <= KinkyDungeonGridHeight-pad-1;
+	return x >= pad && x <= KDMapData.GridWidth-pad-1 && y >= pad && y <= KDMapData.GridHeight-pad-1;
 }

@@ -11,7 +11,7 @@ function KinkyDungeonSendBuffEvent(Event, data) {
 			}
 		}
 	}
-	for (let ent of KinkyDungeonEntities) {
+	for (let ent of KDMapData.Entities) {
 		if (ent.buffs) {
 			for (let buff of Object.values(ent.buffs)) {
 				if (buff && buff.events) {
@@ -133,13 +133,13 @@ function KinkyDungeonUpdateBuffs(delta, endFloor) {
 	// Tick down buffs the buffs
 	KinkyDungeonSendEvent("tickBuffs", {delta: delta});
 	KinkyDungeonTickBuffs(KinkyDungeonPlayerBuffs, delta, endFloor, KinkyDungeonPlayerEntity);
-	for (let enemy of KinkyDungeonEntities) {
+	for (let enemy of KDMapData.Entities) {
 		if (!enemy.buffs) enemy.buffs = {};
 		KinkyDungeonTickBuffs(enemy.buffs, delta, endFloor, enemy);
 	}
 
 	// Apply the buffs from bullets
-	for (let b of KinkyDungeonBullets) {
+	for (let b of KDMapData.Bullets) {
 		if (b.bullet.spell && b.bullet.spell.buffs) { // Apply the buff
 			for (let buff of b.bullet.spell.buffs) {
 
@@ -147,7 +147,7 @@ function KinkyDungeonUpdateBuffs(delta, endFloor) {
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff);
 				}
 				if (buff.enemies) {
-					for (let enemy of KinkyDungeonEntities) {
+					for (let enemy of KDMapData.Entities) {
 						if ((KDHostile(enemy) || !buff.noAlly)
 							&& (KDAllied(enemy) || !buff.onlyAlly)
 							&& (!b.bullet.spell.filterTags || b.bullet.spell.filterTags.some((tag) => {return enemy.Enemy.tags[tag];}))

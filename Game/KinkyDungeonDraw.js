@@ -333,39 +333,39 @@ const KDSprites = {
 	},
 	"D": (x, y, Fog, noReplace) => {
 		if (Fog) {
-			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
+			if (KDMapData.TilesMemory[x + "," + y]) return KDMapData.TilesMemory[x + "," + y];
 		}
 		if (KDWallVertBoth(x, y, noReplace))
-			KinkyDungeonTilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertCont" : "DoorVert";
-		else KinkyDungeonTilesMemory[x + "," + y] = "Door";
-		return KinkyDungeonTilesMemory[x + "," + y];
+			KDMapData.TilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertCont" : "DoorVert";
+		else KDMapData.TilesMemory[x + "," + y] = "Door";
+		return KDMapData.TilesMemory[x + "," + y];
 	},
 	"d": (x, y, Fog, noReplace) => {
 		if (Fog) {
-			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
+			if (KDMapData.TilesMemory[x + "," + y]) return KDMapData.TilesMemory[x + "," + y];
 		}
 		if (KDWallVertBoth(x, y, noReplace))
-			KinkyDungeonTilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertOpenCont" : "DoorVertOpen";
-		else KinkyDungeonTilesMemory[x + "," + y] = "DoorOpen";
-		return KinkyDungeonTilesMemory[x + "," + y];
+			KDMapData.TilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertOpenCont" : "DoorVertOpen";
+		else KDMapData.TilesMemory[x + "," + y] = "DoorOpen";
+		return KDMapData.TilesMemory[x + "," + y];
 	},
 	"Z": (x, y, Fog, noReplace) => {
 		if (Fog) {
-			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
+			if (KDMapData.TilesMemory[x + "," + y]) return KDMapData.TilesMemory[x + "," + y];
 		}
 		if (KDWallVertBoth(x, y, noReplace))
-			KinkyDungeonTilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertCont" : "DoorVert";
-		else KinkyDungeonTilesMemory[x + "," + y] = "Door";
-		return KinkyDungeonTilesMemory[x + "," + y];
+			KDMapData.TilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertCont" : "DoorVert";
+		else KDMapData.TilesMemory[x + "," + y] = "Door";
+		return KDMapData.TilesMemory[x + "," + y];
 	},
 	"z": (x, y, Fog, noReplace) => {
 		if (Fog) {
-			if (KinkyDungeonTilesMemory[x + "," + y]) return KinkyDungeonTilesMemory[x + "," + y];
+			if (KDMapData.TilesMemory[x + "," + y]) return KDMapData.TilesMemory[x + "," + y];
 		}
 		if (KDWallVertBoth(x, y, noReplace))
-			KinkyDungeonTilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertOpenCont" : "DoorVertOpen";
-		else KinkyDungeonTilesMemory[x + "," + y] = "DoorOpen";
-		return KinkyDungeonTilesMemory[x + "," + y];
+			KDMapData.TilesMemory[x + "," + y] = KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertOpenCont" : "DoorVertOpen";
+		else KDMapData.TilesMemory[x + "," + y] = "DoorOpen";
+		return KDMapData.TilesMemory[x + "," + y];
 	},
 	"a": (x, y, Fog, noReplace) => {
 		return "ShrineBroken";
@@ -848,10 +848,10 @@ function KinkyDungeonDrawGame() {
 
 			KinkyDungeonUpdateVisualPosition(KinkyDungeonPlayerEntity, KinkyDungeonDrawDelta);
 
-			let CamX = KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2);//Math.max(0, Math.min(KinkyDungeonGridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
-			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);// Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
-			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KinkyDungeonGridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
-			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KinkyDungeonGridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
+			let CamX = KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2);//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
+			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);// Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
+			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
+			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
 
 			if (CamX_offsetVis || CamY_offsetVis) {
 				KDRedrawFog = 2;
@@ -2737,7 +2737,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 
 	let noReplace = "";
 	let noReplace_skin = {};
-	for (let tile of Object.values(KinkyDungeonTilesSkin)) {
+	for (let tile of Object.values(KDMapData.TilesSkin)) {
 		if (tile.skin && noReplace_skin[tile.skin] != undefined) {
 			let paramskin = KinkyDungeonMapParams[drawFloor];
 			if (paramskin.noReplace)
@@ -2750,13 +2750,13 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 	if (params?.noReplace)
 		noReplace = params.noReplace;
 	// Draw the grid and tiles
-	let rows = KinkyDungeonGrid.split('\n');
+	let rows = KDMapData.Grid.split('\n');
 	for (let R = -1; R <= KinkyDungeonGridHeightDisplay + 1; R++)  {
 		for (let X = -1; X <= KinkyDungeonGridWidthDisplay + 1; X++)  {
 			let RY = R+CamY;
 			let RX = X+CamX;
 			let allowFog = KDAllowFog();
-			if (RY >= 0 && RY < KinkyDungeonGridHeight && RX >= 0 && RX < KinkyDungeonGridWidth && (KinkyDungeonVisionGet(RX, RY) > 0 || (allowFog && KinkyDungeonFogGet(RX, RY) > 0))) {
+			if (RY >= 0 && RY < KDMapData.GridHeight && RX >= 0 && RX < KDMapData.GridWidth && (KinkyDungeonVisionGet(RX, RY) > 0 || (allowFog && KinkyDungeonFogGet(RX, RY) > 0))) {
 				if (Debug) {
 					if ( KinkyDungeonTilesGet(RX + "," + RY)) {
 						if (KinkyDungeonTilesGet(RX + "," + RY).Lock)
@@ -2793,11 +2793,11 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 						}
 					}
 				}
-				let floor = KinkyDungeonTilesSkin[RX + "," + RY] ?
-					(KinkyDungeonTilesSkin[RX + "," + RY].force ? KinkyDungeonTilesSkin[RX + "," + RY].skin : KinkyDungeonMapIndex[KinkyDungeonTilesSkin[RX + "," + RY].skin] || KinkyDungeonTilesSkin[RX + "," + RY].skin)
+				let floor = KDMapData.TilesSkin[RX + "," + RY] ?
+					(KDMapData.TilesSkin[RX + "," + RY].force ? KDMapData.TilesSkin[RX + "," + RY].skin : KinkyDungeonMapIndex[KDMapData.TilesSkin[RX + "," + RY].skin] || KDMapData.TilesSkin[RX + "," + RY].skin)
 					: drawFloor;
 				let vision = KinkyDungeonVisionGet(RX, RY);
-				let nR = KinkyDungeonTilesSkin[RX + "," + RY] ? noReplace : noReplace_skin[floor];
+				let nR = KDMapData.TilesSkin[RX + "," + RY] ? noReplace : noReplace_skin[floor];
 				let sprite = KinkyDungeonGetSprite(rows[RY][RX], RX, RY, vision == 0, nR);
 				let sprite2 = KinkyDungeonGetSpriteOverlay(rows[RY][RX], RX, RY, vision == 0, nR);
 				let sprite3 = KinkyDungeonGetSpriteOverlay2(rows[RY][RX], RX, RY, vision == 0, nR);
@@ -2983,7 +2983,7 @@ function KDUpdateVision() {
 		maplights: [],
 	};
 	let l = null;
-	for (let t of Object.keys(KinkyDungeonTiles)) {
+	for (let t of Object.keys(KDMapData.Tiles)) {
 		let tile = KinkyDungeonTilesGet(t);
 		let x = parseInt(t.split(',')[0]);
 		let y = parseInt(t.split(',')[1]);
@@ -2993,15 +2993,15 @@ function KDUpdateVision() {
 			data.maplights.push(l);
 		}
 	}
-	for (let b of KinkyDungeonBullets) {
+	for (let b of KDMapData.Bullets) {
 		if (b.bullet?.bulletColor) {
 			l = {x: b.x, y:b.y, y_orig: b.y, brightness: b.bullet.bulletLight, color: b.bullet.bulletColor};
 			data.lights.push(l);
 		}
 	}
 	KinkyDungeonSendEvent("getLights", data);
-	KinkyDungeonMakeBrightnessMap(KinkyDungeonGridWidth, KinkyDungeonGridHeight, KinkyDungeonMapBrightness, data.lights, KDVisionUpdate);
-	KinkyDungeonMakeVisionMap(KinkyDungeonGridWidth, KinkyDungeonGridHeight, viewpoints, data.lights, KDVisionUpdate, KinkyDungeonMapBrightness);
+	KinkyDungeonMakeBrightnessMap(KDMapData.GridWidth, KDMapData.GridHeight, KDMapData.MapBrightness, data.lights, KDVisionUpdate);
+	KinkyDungeonMakeVisionMap(KDMapData.GridWidth, KDMapData.GridHeight, viewpoints, data.lights, KDVisionUpdate, KDMapData.MapBrightness);
 	KDVisionUpdate = 0;
 }
 

@@ -17,6 +17,7 @@ let KDIntentEvents = {
 			if (KinkyDungeonGetRestraintItem("ItemDevices")) return 0;
 			if (enemy.playWithPlayer > 0) return 0;
 			if (KDEnemyUnfriendlyToMainFaction(enemy)) return 0;
+			if (KDEnemyHasFlag(enemy, "noHarshPlay")) return 0;
 			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]);
 			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) < 14 ? (hostile ? 120 : 40) : 0;
 		},
@@ -153,7 +154,7 @@ let KDIntentEvents = {
 			enemy.playWithPlayer = 0;
 			enemy.IntentAction = 'CaptureJail';
 			let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
-			enemy.IntentLeashPoint = nj ? nj : Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+			enemy.IntentLeashPoint = nj ? nj : Object.assign({type: "jail", radius: 1}, KDMapData.StartPosition);
 			if (!nj) KinkyDungeonSetFlag("LeashToPrison", -1, 1);
 		},
 		arrive: (enemy, AIData) => {
@@ -356,7 +357,7 @@ let KDIntentEvents = {
 			enemy.IntentLeashPoint = null;
 			let res = KDSettlePlayerInFurniture(enemy, AIData, ["callGuardJailerOnly"]);
 			if (res) {
-				for (let e of KinkyDungeonEntities) {
+				for (let e of KDMapData.Entities) {
 					if (e.hostile < 9000) e.hostile = 0;
 					if (e.attackPoints > 0) e.attackPoints = 0;
 					if (!e.ceasefire) e.ceasefire = 1;

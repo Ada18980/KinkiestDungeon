@@ -423,7 +423,7 @@ function KinkyDungeonGetCost(Spell) {
 }
 
 function KinkyDungeonMakeNoise(radius, noiseX, noiseY) {
-	for (let e of KinkyDungeonEntities) {
+	for (let e of KDMapData.Entities) {
 		if (!e.aware && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistEuclidean(e.x - noiseX, e.y - noiseY) <= radius) {
 			e.gx = noiseX;
 			e.gy = noiseY;
@@ -748,7 +748,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					}
 				}
 			}
-			for (let e of KinkyDungeonEntities) {
+			for (let e of KDMapData.Entities) {
 				if (Math.sqrt((e.x - targetX) * (e.x - targetX) + (e.y - targetY) * (e.y - targetY)) <= aoe) {
 					for (let buff of spell.buffs) {
 						if (!spell.filterTags || KDMatchTags(spell.filterTags, e)) {

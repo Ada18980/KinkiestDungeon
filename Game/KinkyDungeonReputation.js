@@ -601,7 +601,7 @@ function KinkyDungeonPenanceCost(rep) {
  * @returns {boolean}
  */
 function KinkyDungeonCanPenance(rep, value) {
-	return value < 40 && !KDGameData.KinkyDungeonPenance && KinkyDungeonBullets.length < 1;
+	return value < 40 && !KDGameData.KinkyDungeonPenance && KDMapData.Bullets.length < 1;
 }
 
 /**
@@ -664,7 +664,7 @@ function KinkyDungeonCanRescue(rep, value) {
 function KinkyDungeonUpdateAngel(delta) {
 	// Remove it
 	if (KinkyDungeonFlags.get("AngelHelp") > 0 && KinkyDungeonFlags.get("AngelHelp") < 5) {
-		for (let t of Object.entries(KinkyDungeonTiles)) {
+		for (let t of Object.entries(KDMapData.Tiles)) {
 			if (t[1].Type == "Angel") {
 				let x = parseInt(t[0].split(',')[0]);
 				let y = parseInt(t[0].split(',')[1]);
@@ -687,7 +687,7 @@ function KinkyDungeonUpdateAngel(delta) {
 			KinkyDungeonAngel().gx = KinkyDungeonPlayerEntity.x;
 			KinkyDungeonAngel().gy = KinkyDungeonPlayerEntity.y;
 			if (KDGameData.KDPenanceMode == "") {
-				KinkyDungeonBullets = [];
+				KDMapData.Bullets = [];
 				if (KDGameData.KDPenanceStage == 0) {
 					let divineRestraints = [];
 					for (let inv of KinkyDungeonAllRestraint()) {
@@ -745,11 +745,11 @@ function KinkyDungeonUpdateAngel(delta) {
 	if (!KDGameData.KinkyDungeonPenance || (KinkyDungeonAngel())) {
 		if (KDGameData.KinkyDungeonAngel) {
 			KDGameData.KDPenanceStageEnd += delta;
-			if (!KinkyDungeonEntities.includes(KinkyDungeonAngel())) {
+			if (!KDMapData.Entities.includes(KinkyDungeonAngel())) {
 				KDGameData.KinkyDungeonAngel = 0;
 			} else if (KDAllied(KinkyDungeonAngel()) && KinkyDungeonAngel() && (!KDGameData.KinkyDungeonPenance || KDHostile(KinkyDungeonAngel())) && (KDGameData.KDPenanceStageEnd > 10 && KDRandom() < 0.2)) {
 				KDClearItems(KinkyDungeonAngel());
-				KDSpliceIndex(KinkyDungeonEntities.indexOf(KinkyDungeonAngel()), 1);
+				KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonAngel()), 1);
 				KDGameData.KinkyDungeonAngel = 0;
 				KDGameData.KinkyDungeonPenance = false;
 			}

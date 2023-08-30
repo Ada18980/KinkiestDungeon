@@ -3495,7 +3495,7 @@ function KDCreateDebris(x, y, options) {
 		for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
 			for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
 				if (Math.sqrt(X*X+Y*Y) <= rad && (!minrad || Math.sqrt(X*X+Y*Y) >= minrad)) {
-					if ((x + X > 0 && y + Y > 0 && x + X < KinkyDungeonGridWidth && y + Y < KinkyDungeonGridHeight)
+					if ((x + X > 0 && y + Y > 0 && x + X < KDMapData.GridWidth && y + Y < KDMapData.GridHeight)
 						&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x + X, y + Y)))
 						slots.push({x:X, y:Y});
 				}
