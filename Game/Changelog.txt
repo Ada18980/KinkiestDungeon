@@ -1469,6 +1469,8 @@ Modding
 Features
 - Can now flirt with NPCs to trigger a play event
 - New sound feature that makes enemies more visible depending on situation
+Changes
+- Some changes to enemy behavior based on the map faction and whether or not you are hostile to them
 QoL
 - Plugs and vibes now indicate the type of vibrations they do in their description
 - Item and spells show their images in their description always
