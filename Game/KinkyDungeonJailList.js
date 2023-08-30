@@ -16,6 +16,7 @@ let KDJailEvents = {
 				KinkyDungeonSetFlag("slept", 0);
 				KinkyDungeonSetFlag("slept", 150);
 			}
+			let mainFaction = KDGetMainFaction();
 			// Jail tag
 			let jt = KDGameData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDGameData.JailFaction[Math.floor(KDRandom() * KDGameData.JailFaction.length)]]] : "jailer";
 			let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], false, undefined, ["gagged"]);
@@ -30,7 +31,7 @@ let KDJailEvents = {
 			let guard = {summoned: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
 				x:xx, y:yy, gx: xx - 2, gy: yy, CurrentAction: "jailWander", keys: true, AI: "guard",
 				hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
-
+			if (mainFaction) guard.faction = mainFaction;
 			if (!KinkyDungeonFlags.get("JailIntro")) {
 				KinkyDungeonSetFlag("JailIntro", -1);
 				KDStartDialog("PrisonIntro", guard.Enemy.name, true, "");

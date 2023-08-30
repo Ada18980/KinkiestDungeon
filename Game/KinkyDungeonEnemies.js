@@ -1911,7 +1911,7 @@ function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlay
 				&& (!onlyPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) <= playerDist))
 				&& (!KinkyDungeonPointInCell(X, Y)) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))
 				&& (!Enemy || KinkyDungeonNoEnemyExceptSub(X, Y, true, Enemy))
-				&& (ignoreOffLimits || !KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)
+				&& (ignoreOffLimits || !KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits || (Enemy && KinkyDungeonTilesGet(Enemy.x + "," + Enemy.x)?.Jail && KinkyDungeonTilesGet(X + "," + Y).Jail))
 				&& (!criteria || criteria(X, Y))) {
 				return {x: X, y:Y};
 			}
@@ -2302,6 +2302,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 	}
 
 	KDGameData.otherPlaying = 0;
+	let defeatEnemy = undefined;
 	// Loop 2
 	for (let E = 0; E < KinkyDungeonEntities.length; E++) {
 		let enemy = KinkyDungeonEntities[E];
@@ -2357,6 +2358,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					idle = ret.idle;
 					if (ret.defeat) {
 						defeat = true;
+						defeatEnemy = enemy;
 					}
 
 					//TODO pass items to more dominant nearby enemies
@@ -2502,7 +2504,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 	if (defeat) {
 		if (KDCustomDefeat) KDCustomDefeat();
 		else if (!KinkyDungeonFlags.get("CustomDefeat"))
-			KinkyDungeonDefeat(KinkyDungeonFlags.has("LeashToPrison"));
+			KinkyDungeonDefeat(KinkyDungeonFlags.has("LeashToPrison"), defeatEnemy);
 	}
 	KDCustomDefeat = null;
 }
@@ -2587,7 +2589,7 @@ let AIData = {};
  * @param {number} delta
  * @param {number} visionMod
  * @param {item[]} playerItems
- * @returns {{idle: boolean, defeat: boolean}}
+ * @returns {{idle: boolean, defeat: boolean, defeatEnemy: entity}}
  */
 function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData = {};
@@ -3766,6 +3768,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							}
 							else if (enemy.Enemy.tags.leashing && AIData.nearestJail && leashPos == AIData.nearestJail && Math.abs(enemy.x - leashPos.x) <= 1 && Math.abs(enemy.y - leashPos.y) <= 1) {
 								AIData.defeat = true;
+								if (leashPos && leashPos.x == KinkyDungeonStartPosition.x && leashPos.y == KinkyDungeonStartPosition.y) {
+									KinkyDungeonSetFlag("LeashToPrison", 1);
+								}
 								KDGameData.KinkyDungeonLeashedPlayer = 3 + ap * 2;
 								KDGameData.KinkyDungeonLeashingEnemy = enemy.id;
 								KDBreakTether();
@@ -4278,7 +4283,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (enemy.specialCD > 0) enemy.usingSpecial = false;
 
 	if (AIData.idle) KDAddThought(enemy.id, "Idle", 0.5, 3);
-	return {idle: AIData.idle, defeat: AIData.defeat};
+	return {idle: AIData.idle, defeat: AIData.defeat, defeatEnemy: enemy};
 }
 
 // Unique ID for enemies, to prevent bullets from hitting them
@@ -5448,7 +5453,34 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
  */
 function KDAssignLeashPoint(enemy) {
 	AIData.nearestJail = KinkyDungeonNearestJailPoint(enemy.x, enemy.y);
-	if (!AIData.nearestJail || KinkyDungeonFlags.has("LeashToPrison")) AIData.nearestJail = Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+
+	if (!AIData.nearestJail
+		|| KinkyDungeonFlags.has("LeashToPrison")
+		|| (
+			KDEnemyUnfriendlyToMainFaction(enemy)
+		)) AIData.nearestJail = Object.assign({type: "jail", radius: 1}, KinkyDungeonStartPosition);
+}
+
+/**
+ * Enemy is not friendly to the jail faction
+ * @param {entity} enemy
+ */
+function KDEnemyUnfriendlyToMainFaction(enemy) {
+	if (!enemy) return false;
+	let mainFaction = KDGetMainFaction();
+	return KDGetFaction(enemy) != mainFaction
+		&& KDFactionRelation(KDGetFaction(enemy), mainFaction) < -0.05;
+}
+
+/**
+ *
+ * @returns {string}
+ */
+function KDGetMainFaction() {
+	let mainFaction = KDGameData.MapFaction;
+	if (!mainFaction && KDGameData.JailFaction && KDGameData.JailFaction.length > 0) mainFaction = KDGameData.JailFaction[0];
+	if (!mainFaction && KDGameData.GuardFaction && KDGameData.GuardFaction.length > 0) mainFaction = KDGameData.GuardFaction[0];
+	return mainFaction;
 }
 
 /**

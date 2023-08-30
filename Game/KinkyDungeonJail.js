@@ -951,7 +951,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	KinkyDungeonSaveGame();
 }
 
-function KinkyDungeonDefeat(PutInJail) {
+function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KinkyDungeonInterruptSleep();
 
 	if (KinkyDungeonTempWait)
@@ -1042,7 +1042,12 @@ function KinkyDungeonDefeat(PutInJail) {
 	if (PutInJail) {
 		KDGameData.RoomType = "Jail"; // We do a tunnel every other room
 		KDGameData.MapMod = ""; // Reset the map mod
-		KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
+		let forceFaction = undefined;
+		if (leashEnemy && KDFactionProperties[KDGetFaction(leashEnemy)]) {
+			forceFaction = KDGetFaction(leashEnemy);
+		}
+		KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel, undefined, undefined, forceFaction);
+
 		KinkyDungeonSetFlag("LeashToPrison", 0);
 
 		nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);

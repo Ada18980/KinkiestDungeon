@@ -931,15 +931,18 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 		factions.push(...KDGameData.JailFaction);
 	}
 	if (KDGameData.GuardFaction) {
-		factions.push(KDGameData.GuardFaction);
+		factions.push(...KDGameData.GuardFaction);
 	}
 	factions = factions.filter((faction) => {
 		return factionList.some((element) => {return element.faction == faction;});
 	});
 	if (factions.length > 0) {
-		let chosenFaction = factions[Math.floor(KDRandom() * factions.length)];
+		let fl = factions;
+		let checkpoint = KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+		let chosenFaction = KDGetByWeight(KDGetFactionProps(fl, MiniGameKinkyDungeonLevel, checkpoint,
+			KinkyDungeonMapParams[checkpoint].enemyTags || [], {}));
 		factionList = factionList.filter((entry) => {
-			return chosenFaction == entry.faction || KDFactionRelation(chosenFaction, entry.faction) > .35 || KDFactionRelation(chosenFaction, entry.faction) <= -.1;
+			return chosenFaction == entry.faction || KDFactionRelation(chosenFaction, entry.faction) > .35;
 		});
 	}
 	let factionSelected = factionList[Math.floor(KDRandom() * factionList.length)];

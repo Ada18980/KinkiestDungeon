@@ -406,8 +406,9 @@ function KDGetMapSize() {
  * @param {number} Floor
  * @param {boolean} [testPlacement]
  * @param {boolean} [seed]
+ * @param {string} [forceFaction]
  */
-function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
+function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFaction) {
 	for (let iterations = 0; iterations < 100; iterations++) {
 		KDGameData.ChestsGenerated = [];
 		KDPathfindingCacheFails = 0;
@@ -592,6 +593,39 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 		let torchreplace = (altType && altType.torchreplace) ? altType.torchreplace : (MapParams.torchreplace ? MapParams.torchreplace : null);
 		let factionList = MapParams.factionList;
 
+		if (forceFaction) factionList = [forceFaction];
+
+		// Determine faction tags
+		let tags = Object.assign([], MapParams.enemyTags);
+		if (mapMod && mapMod.tags) {
+			// Add in any mapmod tags
+			for (let t of mapMod.tags) {
+				if (!tags.includes(t))
+					tags.push(t);
+			}
+		}
+
+		KDGameData.JailFaction = [];
+		if (mapMod?.jailType) KDGameData.JailFaction.push(mapMod.jailType);
+		else if (altType?.jailType) KDGameData.JailFaction.push(altType.jailType);
+
+		KDGameData.GuardFaction = [];
+		if (mapMod?.guardType) KDGameData.GuardFaction.push(mapMod.guardType);
+		else if (altType?.guardType) KDGameData.GuardFaction.push(mapMod.guardType);
+		let bonus = (mapMod && mapMod.bonusTags) ? mapMod.bonusTags : undefined;
+		if (altType && altType.bonusTags) {
+			if (!bonus) bonus = altType.bonusTags;
+			else bonus = Object.assign(Object.assign(Object.assign({}, bonus)), altType.bonusTags);
+		}
+
+		let randomFactions = KDChooseFactions(factionList, Floor, tags, bonus, true);
+		let factionEnemy = randomFactions[2] || forceFaction || "Bandit";
+		if (forceFaction) {
+			KDGameData.MapFaction = forceFaction;
+			KDGameData.JailFaction = [forceFaction];
+			KDGameData.GuardFaction = [forceFaction];
+		}
+
 		//console.log(KDRandom());
 		let shrineTypes = [];
 		let shrinelist = [];
@@ -772,32 +806,13 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed) {
 
 			KinkyDungeonUpdateStats(0);
 
-			let tags = Object.assign([], MapParams.enemyTags);
-			if (mapMod && mapMod.tags) {
-				// Add in any mapmod tags
-				for (let t of mapMod.tags) {
-					if (!tags.includes(t))
-						tags.push(t);
-				}
-			}
 
-			KDGameData.JailFaction = [];
-			if (mapMod?.jailType) KDGameData.JailFaction.push(mapMod.jailType);
-			else if (altType?.jailType) KDGameData.JailFaction.push(altType.jailType);
-
-			KDGameData.GuardFaction = [];
-			if (mapMod?.guardType) KDGameData.GuardFaction.push(mapMod.guardType);
-			else if (altType?.guardType) KDGameData.GuardFaction.push(mapMod.guardType);
 
 			// Place enemies after player
 			if (!altType || altType.enemies) {
-				let bonus = (mapMod && mapMod.bonusTags) ? mapMod.bonusTags : undefined;
-				if (altType && altType.bonusTags) {
-					if (!bonus) bonus = altType.bonusTags;
-					else bonus = Object.assign(Object.assign(Object.assign({}, bonus)), altType.bonusTags);
-				}
+
 				KinkyDungeonPlaceEnemies(spawnPoints, false, tags, bonus, Floor, width, height, altRoom,
-					factionList);
+					randomFactions, factionEnemy);
 			}
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for enemy creation`);
@@ -971,7 +986,46 @@ function KinkyDungeonGetAllies() {
 	return temp;
 }
 
-function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, width, height, altRoom, factionList) {
+function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {
+	// Determine factions to spawn
+	let factions = factionList || Object.keys(KinkyDungeonFactionTag);
+	let primaryFaction = KDGetByWeight(KDGetFactionProps(factions, Floor, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], Tags, BonusTags));
+	let randomFactions = [
+		primaryFaction
+	];
+
+	// Add up to one friend of the faction and one enemy
+	let allyCandidates = [];
+	for (let f of factions) {
+		if (KDFactionRelation(primaryFaction, f) > 0.2) allyCandidates.push(f);
+	}
+	let enemyCandidates = [];
+	for (let f of factions) {
+		if (KDFactionRelation(primaryFaction, f) < -0.2) enemyCandidates.push(f);
+	}
+
+	let factionAllied = allyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(allyCandidates, Floor, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], Tags, BonusTags)) : "";
+	let factionEnemy = enemyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(enemyCandidates, Floor, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], Tags, BonusTags)) : "";
+
+	if (factionAllied) randomFactions.push(factionAllied);
+	if (factionEnemy) randomFactions.push(factionEnemy);
+
+	if (Set) {
+		KDGameData.JailFaction.push(primaryFaction);
+		KDGameData.GuardFaction.push(primaryFaction);
+		if (factionAllied) {
+			KDGameData.GuardFaction.push(factionAllied);
+		}
+	}
+	// Fill
+	if (randomFactions.length == 1) randomFactions.push("Bandit", "Bandit");
+	else if (randomFactions.length == 2) randomFactions.push("Bandit");
+
+	console.log(randomFactions[0] + "," + randomFactions[1] + "," + randomFactions[2]);
+	return randomFactions;
+}
+
+function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, width, height, altRoom, randomFactions, factionEnemy) {
 	KinkyDungeonHuntDownPlayer = false;
 	KinkyDungeonFirstSpawn = true;
 	KinkyDungeonSearchTimer = 0;
@@ -997,37 +1051,6 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		}
 	}
 
-	// Determine factions to spawn
-	let factions = factionList || Object.keys(KinkyDungeonFactionTag);
-	let primaryFaction = factions[Math.floor(KDRandom() * factions.length)];
-	let randomFactions = [
-		primaryFaction
-	];
-
-	// Add up to one friend of the faction and one enemy
-	let allyCandidates = [];
-	for (let f of factions) {
-		if (KDFactionRelation(primaryFaction, f) > 0.2) allyCandidates.push(f);
-	}
-	let enemyCandidates = [];
-	for (let f of factions) {
-		if (KDFactionRelation(primaryFaction, f) < -0.2) enemyCandidates.push(f);
-	}
-
-	let factionAllied = allyCandidates.length > 0 ? allyCandidates[Math.floor(KDRandom() * allyCandidates.length)] : "";
-	let factionEnemy = enemyCandidates.length > 0 ? enemyCandidates[Math.floor(KDRandom() * enemyCandidates.length)] : "";
-
-	if (factionAllied) randomFactions.push(factionAllied);
-	if (factionEnemy) randomFactions.push(factionEnemy);
-
-	KDGameData.JailFaction.push(primaryFaction);
-	KDGameData.GuardFaction.push(primaryFaction);
-	if (factionAllied) {
-		KDGameData.GuardFaction.push(factionAllied);
-	}
-
-	console.log(randomFactions[0] + "," + randomFactions[1] + "," + randomFactions[2]);
-
 	// These tags are disallowed unless working in the specific box
 	let filterTags = ["boss", "miniboss", "elite", "minor"];
 	let filterTagsCluster = ["boss", "miniboss"];
@@ -1047,9 +1070,11 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		}
 	} else {
 		for (let rf of randomFactions) {
-			spawnBoxes.push({requiredTags: [KinkyDungeonFactionTag[rf]], filterTags: ["boss", "miniboss"], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.15, bias: rf == factionEnemy ? 2 : 1});
-			spawnBoxes.push({requiredTags: ["miniboss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.1, bias: rf == factionEnemy ? 2 : 1});
-			spawnBoxes.push({requiredTags: ["boss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.01, bias: rf == factionEnemy ? 2 : 1});
+			if (rf != undefined) {
+				spawnBoxes.push({ignoreAllyCount: true, requiredTags: [KinkyDungeonFactionTag[rf]], filterTags: ["boss", "miniboss"], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.15, bias: rf == factionEnemy ? 2 : 1});
+				spawnBoxes.push({ignoreAllyCount: true, requiredTags: ["miniboss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.1, bias: rf == factionEnemy ? 2 : 1});
+				spawnBoxes.push({ignoreAllyCount: true, requiredTags: ["boss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.01, bias: rf == factionEnemy ? 2 : 1});
+			}
 		}
 	}
 
@@ -1177,7 +1202,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			return bb.currentCount < bb.maxCount * enemyCount && (!bb.bias
 				// This part places allied faction toward the center of the map and enemy faction around the edges
 				|| (bb.bias == 1 && X > width * 0.25 && X < width * 0.75 && Y > height * 0.25 && Y < height * 0.75)
-				|| (bb.bias == 2 && (X < width * 0.25 || X > width * 0.75) && (Y < height * 0.25 || Y > height * 0.75))
+				|| (bb.bias == 2 && !(X > width * 0.25 && X < width * 0.75 && Y > height * 0.25 && Y < height * 0.75))
 			);
 		});
 		let box = null;
@@ -1315,7 +1340,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				if (!spawnPoint && box)
 					box.currentCount += incrementCount;
 				if (KDFactionRelation("Player", KDGetFaction(e)) > -0.5) {
-					ncount += 1;
+					ncount += incrementCount;
 				}
 				EnemyNames.push(Enemy.name + `_${box?`box-${box.requiredTags}, ${box.tags}`:""},${currentCluster?"cluster":""},${spawnPoint}`);
 			}
