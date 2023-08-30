@@ -494,3 +494,28 @@ AddModel({
 		},
 	])
 });
+
+
+AddModel({
+	Name: "SteelYoke",
+	Folder: "Yoke",
+	Parent: "Yoke",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Metal", "Yokes"],
+	AddPose: ["Yokes"],
+	Layers: ToLayerMap([
+		{ Name: "Steel", Layer: "Yoke", Pri: 10,
+			Invariant: true,
+			HideWhenOverridden: true,
+			DisplacementSprite: "Yoke",
+			DisplaceLayers: ToMap(["Yoke"]),
+			DisplaceAmount: 40,
+		},
+		{ Name: "SteelBar", Layer: "Yoke", Pri: 10.1,
+			Invariant: true,
+			HideWhenOverridden: true,
+			NoOverride: true,
+		},
+	])
+});

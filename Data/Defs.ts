@@ -23,6 +23,9 @@ let LAYERS_BASE = [
 	"Blush",
 	"Head",
 
+
+	"Yoke",
+
 	// Clothes that go over the chest and hang down
 	"Shoulders",
 
@@ -238,15 +241,27 @@ let DisplaceGroups = {
 	"Rope1": ToMap([
 		"Shirt",
 		"SleeveLeft",
-		"SleeveLeftDeco",
+		"SleeveDecoLeft",
 		"SleeveRight",
-		"SleeveRightDeco",
+		"SleeveDecoRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper"
 	]),
+	"Yoke": ToMap([
+		"Shirt",
+		"GloveLeft",
+		"GloveRight",
+		"SleeveLeft",
+		"SleeveDecoLeft",
+		"SleeveRight",
+		"SleeveDecoRight",
+		"ArmLeft",
+		"ArmRight",
+	]),
 	"RopeTorso": ToMap([
 		"Shirt",
+		"CorsetLiner",
 		// Skirts that dont follow shilhouette and are puffy
 		"SkirtPoofyDeco",
 		"SkirtPoofy",
