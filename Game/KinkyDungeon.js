@@ -2944,6 +2944,7 @@ function KinkyDungeonGenerateSaveData() {
 	save.faction = KinkyDungeonFactionRelations;
 	save.perks = KDUnlockedPerks;
 	save.inventoryVariants = KinkyDungeonInventoryVariants;
+	save.KinkyDungeonPlayerEntity = KinkyDungeonPlayerEntity;
 
 	let spells = [];
 	/**@type {item[]} */
