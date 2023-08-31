@@ -179,6 +179,17 @@ function KinkyDungeonGetPatrolPoint(index, radius, Tiles) {
 	return p;
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} [override]
+ * @returns {number}
+ */
+function KDGetBindAmp(enemy, override) {
+	if (!KDAllied(enemy)) return override != undefined ? override : KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
+	return 1;
+}
+
 function KDHelpless(enemy) {
 	return enemy && !enemy.player && (enemy.hp <= enemy.Enemy.maxhp * 0.1 || enemy.hp <= 0.52 || enemy.boundLevel > 10 * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
 }
@@ -941,6 +952,7 @@ let KDBarAdvanceRateMin = 1.0/1000;
 
 function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, CamY, CamXoffset, CamYoffset) {
 	let tooltip = false;
+	let bindAmpModBase = KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
 	for (let enemy of KDMapData.Entities) {
 		// Handle enemy bars
 		if (enemy.boundLevel != undefined && !(enemy.visual_boundlevel == enemy.boundLevel)) {
@@ -968,20 +980,22 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 					let spacing = 6;
 					// Draw binding bars
 					let helpless = KDHelpless(enemy);
+					let bindAmpMod = KDGetBindAmp(enemy, bindAmpModBase);
 					if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
 						if (!helpless) {
-							let bindingBars = Math.ceil(enemy.visual_boundlevel / enemy.Enemy.maxhp);
+							let visualbond = bindAmpMod * enemy.visual_boundlevel;
+							let bindingBars = Math.ceil( visualbond / enemy.Enemy.maxhp);
 							let SM = KDGetEnemyStruggleMod(enemy);
 							let futureBound = KDPredictStruggle(enemy, SM, 1);
 							for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
 								if (i > 0) II++;
-								let mod = enemy.visual_boundlevel - futureBound.boundLevel;
+								let mod = visualbond - bindAmpMod * futureBound.boundLevel;
 								// Part that will be struggled out of
 								KinkyDungeonBar(canvasOffsetX + (xx - CamX + 0.1 - CamXoffset)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
-									KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (enemy.visual_boundlevel - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
+									KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
 								// Separator between part that will be struggled and not
 								KinkyDungeonBar(1 + canvasOffsetX + (xx - CamX + 0.1 - CamXoffset)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
-									KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (enemy.visual_boundlevel - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
+									KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (visualbond - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
 
 							}
 							II -= Math.max(0, Math.min(bindingBars-1, KDMaxBindingBars-1));
@@ -991,7 +1005,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 							let bondage = [];
 							if (futureBound.specialBoundLevel) {
 								for (let b of Object.entries(futureBound.specialBoundLevel)) {
-									bondage.push({name: b[0], amount: b[1], level: 0, pri: KDSpecialBondage[b[0]].priority});
+									bondage.push({name: b[0], amount: b[1] * bindAmpMod, level: 0, pri: KDSpecialBondage[b[0]].priority});
 								}
 								bondage = bondage.sort((a, b) => {
 									return b.pri - a.pri;
@@ -2040,7 +2054,7 @@ function KDBoundEffects(enemy) {
 	if (!enemy.Enemy.bound) return 0;
 	if (!enemy.boundLevel) return 0;
 	let boundLevel = enemy.boundLevel ? enemy.boundLevel : 0;
-	let bindAmp = KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
+	let bindAmp = KDGetBindAmp(enemy); //KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
 	boundLevel *= bindAmp;
 	if (boundLevel > enemy.Enemy.maxhp || (enemy.hp <= 0.1*enemy.Enemy.maxhp && boundLevel > enemy.hp)) return 4; // Totally tied
 	if (boundLevel > enemy.Enemy.maxhp*0.75) return 3;
