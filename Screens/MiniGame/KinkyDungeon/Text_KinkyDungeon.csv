@@ -9872,8 +9872,12 @@ dShopkeeperRescue_Refuse,"Actually I was having fun..."
 
 rShopkeeperStart,"(The SPEAKER, your longtime friend, smiles)|Well well, if it isn't you again!|I see that you've decided to challenge the dungeon again.|Remember, if you get caught, I'll rescue you... for a fee~"
 
+dShopkeeperStart_Help,"Can you help with these restraints?"
+dShopkeeperStart_HelpGag,"Pfffmmm hhmmph mmph... (Please Help Me)"
+rShopkeeperStartHelp,"No can do! Even I can't get those off of you."
+
 dShopkeeperStart_Danger,"Caught by...?"
-rShopkeeperStartDanger,"Hah!|You've been here a million times!|You obviously know about the many factions vying for power~"
+rShopkeeperStartDanger,"Hah!|You've been here a million times!|You obviously know how dangerous it is, yes?"
 dShopkeeperStart_Fee,"F-fee? There's a fee?"
 rShopkeeperStartFee,"Yep! It'll cost ya!|RESCUECOST gold pieces. A bargain, if you ask me...|Unless you'd like to spend the rest of your life in chains!"
 dShopkeeperStart_Shop,"Will you buy my loot?"
@@ -9930,6 +9934,56 @@ rShopkeeperTeleportDebt_Armor_No,"No? That's alright.|I'm sure I'll find someone
 rShopkeeperTeleportDebt_Restraint_No,"Up to you!|You'll still have to pay me eventually~"
 rShopkeeperTeleportDebt_Collar_No,"Your choice~|I am open to further negotiations."
 rShopkeeperTeleportDebt_Catsuit_No,"Your choice~|Not everyone is up to putting themselves on display like that~"
+
+
+
+rShopkeeperOfferHelp,"(The SPEAKER pats you down and makes sure you're okay)|I can definitely help with those!|But as you know, I help a lot of adventurers just like you.|You know what, I'll give you a discount!|That'll be RESCUECOST gold pieces!"
+
+dShopkeeperOfferHelp_Pay,"Right! Here's RESCUECOST gp."
+dShopkeeperOfferHelp_PayGag,"Mmmph. (Nod your head and pay RESCUECOST gp)"
+rShopkeeperOfferHelpPay,"(The SPEAKER smiles)|Pleasure doing business with ya~"
+
+dShopkeeperOfferHelp_Tab,"Mind adding it to my tab?"
+dShopkeeperOfferHelp_TabGag,"(Shake your head regrettably.)"
+rShopkeeperOfferHelpTabYesRestrained,"(The SPEAKER rubs her chin)|Sorry miss!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~"
+rShopkeeperOfferHelpTabYes,"(The SPEAKER rubs her chin)|Sorry miss!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~"
+rShopkeeperOfferHelpTabNo,"(The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!"
+rShopkeeperOfferHelpTabNoPoor,"(The SPEAKER folds her arms)|Business is business, miss~"
+
+dShopkeeperOfferHelp_TabRetry,"Pretty please? I promise I'll pay you back."
+dShopkeeperOfferHelp_TabRetryGag,"(Be insistent)"
+rShopkeeperOfferHelpTabRetryRestrained,"(The SPEAKER rubs her chin)|No can do.|Rules are rules~"
+rShopkeeperOfferHelpTabRetry,"(The SPEAKER sighs)|Business is business, miss~"
+
+rShopkeeperOfferHelpDebt,"(The SPEAKER reluctantly frees you)|...Fine, I'll cut you a deal.|You help me, I help you. Fair?"
+
+dShopkeeperOfferHelpDebt_Armor,"(Help her test cursed armors)"
+dShopkeeperOfferHelpDebt_Restraint,"(Add cursed restraints )"
+dShopkeeperOfferHelpDebt_Collar,"(Wear a collar to help advertise her business)"
+dShopkeeperOfferHelpDebt_Catsuit,"(Wear a catsuit to help advertise her business)"
+dShopkeeperOfferHelpDebt_Pay,"(Actually... just pay her the RESCUECOST gold)"
+
+rShopkeeperOfferHelpDebt_Armor,"(The SPEAKER holds up a RESTRAINTNAME)|I've bought some armors from an adventurer lately,|but I don't know if they're safe to wear.|Why don't you try it on for me?|I'll postpone your debt for a later time."
+rShopkeeperOfferHelpDebt_Restraint,"(The SPEAKER holds up a RESTRAINTNAME)|I need to make sure you won't go running off again.|This RESTRAINTNAME here has a special seal on it.|I can get you out of it, of course, but you'll have to pay up first."
+rShopkeeperOfferHelpDebt_Collar,"(The SPEAKER holds up a RESTRAINTNAME)|Your captors are quite the market for high-security restraints.|If you get captured by them, maybe they'll see my logo on this collar!|It's quite comfy and secure,|you'll end up feeling more submissive the more your wear it."
+rShopkeeperOfferHelpDebt_Catsuit,"(The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!"
+rShopkeeperOfferHelpDebt_Pay,"(The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~"
+
+dShopkeeperOfferHelpDebt_Yes,"Sure! I accept!"
+dShopkeeperOfferHelpDebt_YesGag,"(Nod in approval)"
+dShopkeeperOfferHelpDebt_No,"How about something else?"
+dShopkeeperOfferHelpDebt_NoGag,"(Shake your head)"
+
+rShopkeeperOfferHelpDebt_Armor_YesCursed,"Excellent! Please hold still~|(She fits the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~"
+rShopkeeperOfferHelpDebt_Armor_YesUncursed,"Excellent! Please hold still~|(She fits the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~"
+rShopkeeperOfferHelpDebt_Restraint_Yes,"Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(She places the RESTRAINTNAME on you and the seal activates. There is no keyhole.)"
+rShopkeeperOfferHelpDebt_Collar_Yes,"Alright! Why don't you hold still~|(She lifts your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~"
+rShopkeeperOfferHelpDebt_Catsuit_Yes,"You're gonna like it, I guarantee it~|(She pulls out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!"
+
+rShopkeeperOfferHelpDebt_Armor_No,"No? That's alright.|I'm sure I'll find someone else to test these on, huehue."
+rShopkeeperOfferHelpDebt_Restraint_No,"Up to you!|You'll still have to pay me eventually~"
+rShopkeeperOfferHelpDebt_Collar_No,"Your choice~|I am open to further negotiations."
+rShopkeeperOfferHelpDebt_Catsuit_No,"Your choice~|Not everyone is up to putting themselves on display like that~"
 
 rMapModNone,"The next floor is a normal floor."
 rMapModMold,"This floor is suffering from a slime mold infestation.|Maids have been deployed to deal with the problem.|They could use a hand."
@@ -10934,3 +10988,9 @@ KinkyDungeonSpellBondage,"Truss em up!"
 KinkyDungeonSpellTargetBondage,"Choose target to bind"
 KinkyDungeonSpellCastBondage,"Target Acquired!"
 KinkyDungeonSpellDescriptionBondage,"Designates the target for bondage and allows you to apply items from the inventory. Items used this way cannot be recovered, and can only be applied to enemies that are stunned, fully bound, or otherwise incapacitated."
+
+DungeonNameShopStart,"The Shoppe"
+DungeonNameJourneyFloor,"Journey Selection"
+DungeonNamePerkRoom,"???"
+DungeonNameJail,"High-Security Prison"
+DungeonNameDollRoom,"Doll Sorting Station"

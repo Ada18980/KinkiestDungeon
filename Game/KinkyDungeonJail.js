@@ -890,7 +890,7 @@ function KDEnterDemonTransition() {
 	KDGameData.MapMod = ""; // Reset the map mod
 	KDGameData.CurrentDialog = "";
 	let params = KinkyDungeonMapParams.DemonTransition;
-	KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
+	KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, undefined, "");
 
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).removePrison && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {
@@ -919,7 +919,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	if (cancelDialogue) KDGameData.CurrentDialog = "";
 	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
 	KDGameData.DollRoomCount = 0;
-	KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
+	KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, undefined, "");
 
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).removePrison && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {
@@ -1043,7 +1043,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		if (leashEnemy && KDFactionProperties[KDGetFaction(leashEnemy)]) {
 			forceFaction = KDGetFaction(leashEnemy);
 		}
-		KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel, undefined, undefined, forceFaction);
+		KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel, undefined, undefined, forceFaction, undefined, undefined, "");
 
 		KinkyDungeonSetFlag("LeashToPrison", 0);
 

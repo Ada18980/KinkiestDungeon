@@ -46,7 +46,7 @@ const KinkyDungeonLastChatTimeout = 10000;
 
 let KinkyDungeonStatBarHeight = 50;
 let KinkyDungeonToggleAutoDoor = false;
-let KinkyDungeonToggleAutoPass = true;
+let KinkyDungeonToggleAutoPass = false;
 let KinkyDungeonToggleAutoSprint = false;
 let KinkyDungeonInspect = false;
 

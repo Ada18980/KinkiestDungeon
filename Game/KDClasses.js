@@ -30,13 +30,10 @@ let KDClassStart = {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 2);
 	},
 	"Rogue": () => { // Rogue
-		KinkyDungeonInventoryAddWeapon("Bow");
 		KinkyDungeonInventoryAddWeapon("Dirk");
-
-		if (!KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("LeatherBoots"), 0, true, ""))
-			KinkyDungeonInventoryAddLoose("LeatherBoots");
-		KDGameData.PreviousWeapon = "Dirk";
-		KDSetWeapon("Bow");
+		KinkyDungeonInventoryAddWeapon("Bow");
+		KDGameData.PreviousWeapon = "Bow";
+		KDSetWeapon("Dirk");
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Bondage"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));

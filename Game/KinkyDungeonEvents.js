@@ -4389,9 +4389,10 @@ let KDEventMapEnemy = {
 							KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), "#ffffff", 4);
 							KDGameData.RoomType = "ShopStart"; // We do a tunnel every other room
 							KDGameData.MapMod = ""; // Reset the map mod
-							MiniGameKinkyDungeonLevel = Math.max(0, MiniGameKinkyDungeonLevel - 1);
+							MiniGameKinkyDungeonLevel = 0;
+							KDCurrentWorldSlot = {x: 0, y: 0};
 							let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
-							KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel);
+							KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, true, undefined);
 							KDStartDialog("ShopkeeperTeleport", enemy.Enemy.name, true, "", enemy);
 						}
 					}
@@ -4749,6 +4750,13 @@ let KDEventMapGeneric = {
 			if (data.toTile == 'S' && data.tile?.RoomType == "Tunnel") {
 				data.overrideRoomType = true;
 				KDGameData.RoomType = "";
+			}
+		},
+		"Shop": (e, data) => {
+			// The player can never backtrack to a tunnel
+			if (data.toTile == 'S' && data.tile?.RoomType == "JourneyFloor") {
+				//data.overrideRoomType = true;
+				data.tile.RoomType = "ShopStart";
 			}
 		},
 		"SkipOldPerkRooms": (e, data) => {

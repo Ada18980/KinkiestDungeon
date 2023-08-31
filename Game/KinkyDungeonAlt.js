@@ -243,6 +243,7 @@ let alts = {
 	},
 	"JourneyFloor": {
 		name: "JourneyFloor",
+		Title: "JourneyFloor",
 		bossroom: false,
 		width: 12,
 		height: 8,
@@ -265,15 +266,17 @@ let alts = {
 		nostairs: true,
 		notraps: true,
 		noClutter: true,
-		skiptunnel: true, // Skip the ending tunnel
 	},
 	"ShopStart": {
 		name: "ShopStart",
+		Title: "ShopStart",
+		skiptunnel: true, // Skip the ending tunnel
 		bossroom: false,
 		width: 10,
 		height: 8,
 		setpieces: {
 		},
+		alwaysRegen: true,
 		genType: "ShopStart",
 		spawns: false,
 		chests: false,
@@ -291,7 +294,6 @@ let alts = {
 		nostairs: true,
 		notraps: true,
 		noClutter: true,
-		skiptunnel: true, // Skip the ending tunnel
 	},
 	"Tutorial": {
 		name: "Tutorial",
@@ -1318,7 +1320,7 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 + 5, VisitedRooms[0].y*2, 's');
 	KinkyDungeonMapSet(b1*2 + 5, VisitedRooms[0].y*2 + 1, 'G');
-	KinkyDungeonTilesSet("" + (b1*2 + 5) + "," + (VisitedRooms[0].y*2), {Journey: undefined});
+	KinkyDungeonTilesSet("" + (b1*2 + 5) + "," + (VisitedRooms[0].y*2), {RoomType: "ShopStart", Journey: undefined});
 	KinkyDungeonTilesSet("" + (b1*2 + 5) + "," + (VisitedRooms[0].y*2 + 1), {Type: "Ghost", Msg: "JourneyNone"});
 
 	// Tutorial end stairs
@@ -1334,7 +1336,7 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 		if (KDJourneyList[i]) {
 			KinkyDungeonMapSet(x, VisitedRooms[0].y*2 - 6, 's');
 			KinkyDungeonMapSet(x, VisitedRooms[0].y*2 - 5, 'G');
-			KinkyDungeonTilesSet("" + (x) + "," + (VisitedRooms[0].y*2 - 6), {Journey: KDJourneyList[i], MapMod: KDJourneyMapMod[KDJourneyList[i]] ? KDGetMapGenList(1, KDMapMods)[0].name : undefined});
+			KinkyDungeonTilesSet("" + (x) + "," + (VisitedRooms[0].y*2 - 6), {RoomType: "ShopStart", Journey: KDJourneyList[i], MapMod: KDJourneyMapMod[KDJourneyList[i]] ? KDGetMapGenList(1, KDMapMods)[0].name : undefined});
 			KinkyDungeonTilesSet("" + (x) + "," + (VisitedRooms[0].y*2 - 5), {Type: "Ghost", Msg: "Journey" + KDJourneyList[i]});
 		}
 		i++;
@@ -1382,7 +1384,7 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 + 7, VisitedRooms[0].y*2, 's');
 	if (MiniGameKinkyDungeonLevel == 0)
-		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: "JourneyFloor"});
+		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: KDGameData.HighestLevel > 0 ? "" : "JourneyFloor"});
 
 	KDMapData.EndPosition = {x: b1*2 + 5, y: VisitedRooms[0].y*2};
 }
@@ -1600,4 +1602,5 @@ function KinkyDungeonCreateTutorial(POI, VisitedRooms, width, height, openness, 
 	KinkyDungeonTilesSet("" + (width*2 - 6) + "," + (VisitedRooms[0].y*2), {Loot: "chest", Roll: KDRandom()});
 
 	KDMapData.EndPosition = {x: width*2 - 2, y: VisitedRooms[0].y*2};
+	KinkyDungeonTilesSet("" + (width*2 - 2) + "," + (VisitedRooms[0].y*2), {RoomType: "ShopStart"});
 }
