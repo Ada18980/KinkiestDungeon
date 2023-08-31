@@ -1145,8 +1145,7 @@ function KDKickEnemies(nearestJail, ignoreAware) {
 							}
 						}
 
-
-					if (e.boundLevel && e.boundLevel < 9000) e.boundLevel = 0;
+					if (!KDEnemyHasFlag(e, "imprisoned") && e.boundLevel && e.boundLevel < 9000) e.boundLevel = 0;
 				}
 			if (e.hostile < 9000) e.hostile = 0;
 			KDExpireFlags(e);
