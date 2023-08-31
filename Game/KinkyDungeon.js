@@ -544,6 +544,11 @@ function KDistChebyshev(x, y) {
 	return Math.max(Math.abs(x), Math.abs(y));
 }
 
+
+function KDistTaxicab(x, y) {
+	return Math.abs(x) + Math.abs(y);
+}
+
 function KDLoadToggles() {
 	let loaded = localStorage.getItem("KDToggles") ? JSON.parse(localStorage.getItem("KDToggles")) : {};
 	for (let t of Object.keys(KDToggles)) {

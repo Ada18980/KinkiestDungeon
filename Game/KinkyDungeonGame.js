@@ -944,9 +944,6 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 				console.log(`${performance.now() - startTime} ms for lore creation`);
 				startTime = performance.now();
 			}
-			if ((!altType || altType.heart) && KDGameData.CollectedHearts < (MiniGameKinkyDungeonLevel + KinkyDungeonMaxLevel*KinkyDungeonNewGame)) {
-				KinkyDungeonPlaceHeart(width, height, Floor);
-			}
 			if (!altType || altType.specialtiles)
 				KinkyDungeonPlaceSpecialTiles(gasChance, gasType, Floor, width, height);
 			if (KDDebug) {
@@ -954,6 +951,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 				startTime = performance.now();
 			}
 			KinkyDungeonGenNavMap();
+			KDLowPriorityNavMesh();
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for navmap creation`);
 				startTime = performance.now();
@@ -969,6 +967,11 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 				KinkyDungeonPlaceEnemies(spawnPoints, false, tags, bonus, Floor, width, height, altRoom,
 					randomFactions, factionEnemy);
 			}
+
+			if ((!altType || altType.heart) && KDGameData.CollectedHearts < (MiniGameKinkyDungeonLevel + KinkyDungeonMaxLevel*KinkyDungeonNewGame)) {
+				KinkyDungeonPlaceHeart(width, height, Floor);
+			}
+
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for enemy creation`);
 				startTime = performance.now();
@@ -1053,6 +1056,45 @@ function KinkyDungeonGenNavMap(fromPoint) {
 		if (!KinkyDungeonTilesGet(a[0]) || !KinkyDungeonTilesGet(a[0]).OffLimits)
 			KDMapData.RandomPathablePoints[a[0]] = {x: X, y:Y, tags:tags};
 	}
+}
+
+
+/**
+ * Create a web of low priority accessways
+ */
+function KDLowPriorityNavMesh() {
+	let NavMap = [];
+	for (let x = 4; x < KDMapData.GridWidth; x += KDTE_Scale) {
+		for (let y = 4; y < KDMapData.GridWidth; y += KDTE_Scale) {
+			if (KDMapData.RandomPathablePoints[(x) + ',' + (y)]) {
+				NavMap.push({x:x, y:y});
+			} else if (KDMapData.RandomPathablePoints[(x + 1) + ',' + (y)]) {
+				NavMap.push({x:x+1, y:y});
+			} else if (KDMapData.RandomPathablePoints[(x - 1) + ',' + (y)]) {
+				NavMap.push({x:x-1, y:y});
+			} else if (KDMapData.RandomPathablePoints[(x) + ',' + (y + 1)]) {
+				NavMap.push({x:x, y:y+1});
+			} else if (KDMapData.RandomPathablePoints[(x) + ',' + (y - 1)]) {
+				NavMap.push({x:x, y:y-1});
+			}
+		}
+	}
+	for (let a of NavMap) {
+		for (let b of NavMap) {
+			let path = KinkyDungeonFindPath(a.x, a.y, b.x, b.y, false, false, false, KinkyDungeonMovableTilesSmartEnemy,
+				false, false, false, undefined, false,
+				(x, y, xx, yy) => {
+					return KDistTaxicab(x - xx, y - yy);
+				}, true);
+			if (path)
+				for (let p of path) {
+					let tile = KinkyDungeonTilesGet(p.x + "," + p.y) || {};
+					tile.HighTraffic = true;
+					KinkyDungeonTilesSet(p.x + "," + p.y, tile);
+				}
+		}
+	}
+
 }
 
 // Checks everything that is accessible to the player
@@ -2074,6 +2116,7 @@ function KinkyDungeonPlaceHeart(width, height, Floor) {
 	for (let X = 1; X < width; X += 1)
 		for (let Y = 1; Y < height; Y += 1)
 			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
+				&& !KinkyDungeonEnemyAt(X, Y)
 				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)
 				&& KDistChebyshev(X - KDMapData.StartPosition.x, Y - KDMapData.StartPosition.y) > 8
 			) heartList.push({x:X, y:Y});
