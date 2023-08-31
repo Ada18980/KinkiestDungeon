@@ -3993,3 +3993,33 @@ function KDCurseCount(activatedOnly) {
 
 	return data.count;
 }
+
+/**
+ *
+ * @param {entity} player
+ * @param {string[]} requireSingleTag
+ * @param {string[]} requireAllTags
+ * @param {boolean} ignoregold
+ * @param {boolean} ignoreShrine
+ */
+function KDGetTotalRestraintPower(player, requireSingleTag, requireAllTags, ignoregold, ignoreShrine) {
+	let power = 0;
+	for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		let item = inv.item;
+		let restraint = KDRestraint(item);
+		if (requireSingleTag.length > 0) {
+			if (!restraint.shrine || !requireSingleTag.some((tag) => {return restraint.shrine.includes(tag);})) {
+				continue;
+			}
+		}
+		if (requireAllTags.length > 0) {
+			if (!restraint.shrine || requireAllTags.some((tag) => {return !restraint.shrine.includes(tag);})) {
+				continue;
+			}
+		}
+		if (ignoregold && item.lock == "Gold") continue;
+		if (!ignoreShrine && (KDGetCurse(item) && KDCurses[KDGetCurse(item)].noShrine)) continue;
+		power += KinkyDungeonRestraintPower(item);
+	}
+	return power;
+}
