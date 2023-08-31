@@ -169,6 +169,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				overrideJourney: false,
 				mapMod: KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.MapMod,
 			};
+			if (altRoom?.onExit) altRoom.onExit(data); // Handle any special contitions
 			KinkyDungeonSendEvent("beforeHandleStairs", data);
 
 			if (MiniGameKinkyDungeonLevel > Math.max(KinkyDungeonRep, ReputationGet("Gaming")) || Math.max(KinkyDungeonRep, ReputationGet("Gaming")) > KinkyDungeonMaxLevel) {
@@ -276,6 +277,8 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 					AdvanceAmount > 0
 						? (toTile == 'H' ? 2 : 0)
 						: (toTile == 'S' ? 1 : 0));
+
+				if (altRoom?.afterExit) altRoom.afterExit(data); // Handle any special contitions
 				KinkyDungeonSendEvent("AfterAdvance", data);
 				let saveData = KinkyDungeonSaveGame(true);
 				if (KDGameData.RoomType == "PerkRoom" && MiniGameKinkyDungeonLevel >= 1) { //  && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3

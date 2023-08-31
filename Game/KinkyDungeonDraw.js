@@ -1,5 +1,9 @@
 "use strict";
 
+let KDDebugOverlay = false;
+
+
+
 let KDRecentRepIndex = 0;
 
 let ShowBoringness = false;
@@ -877,7 +881,7 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonContext.fillStyle = "rgba(0,0,0.0,1.0)";
 				KinkyDungeonContext.fillRect(0, 0, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height);
 				KinkyDungeonContext.fill();
-				let spriteRes = KDDrawMap(CamX, CamY, CamX_offset, CamY_offset);
+				let spriteRes = KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, KDDebugOverlay);
 
 				// Get lighting grid
 				if (KinkyDungeonUpdateLightGrid) {
@@ -2760,6 +2764,8 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 
 						if (KinkyDungeonTilesGet(RX + "," + RY).Label && KinkyDungeonTilesGet(RX + "," + RY).required)
 							DrawTextFitKD(KinkyDungeonTilesGet(RX + "," + RY).required[0], (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/1.5, KinkyDungeonGridSizeDisplay, "#aaaaaA");
+						if (KinkyDungeonTilesGet(RX + "," + RY).HighTraffic)
+							DrawTextFitKD("HiTraffic", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#55ff55");
 
 						if (KinkyDungeonTilesGet(RX + "," + RY).OffLimits)
 							DrawTextFitKD("OffLimits", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#ff5555");
