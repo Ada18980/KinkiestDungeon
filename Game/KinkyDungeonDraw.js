@@ -1265,7 +1265,7 @@ function KinkyDungeonDrawGame() {
 				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
 
 			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
-			let dungeonName = altType?.dungeonName ? altType.dungeonName : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+			let dungeonName = altType?.Title ? altType.Title : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
 			DrawTextFitKD(
 				TextGet("CurrentLevel").replace("FLOORNUMBER", "" + MiniGameKinkyDungeonLevel).replace("DUNGEONNAME", TextGet("DungeonName" + dungeonName))
 				+ (KinkyDungeonNewGame ? TextGet("KDNGPlus").replace("XXX", "" + KinkyDungeonNewGame) : ""),

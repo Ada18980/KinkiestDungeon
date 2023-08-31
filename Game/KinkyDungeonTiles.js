@@ -93,7 +93,12 @@ function KinkyDungeonUpdateTileEffects(delta) {
 let KinkyDungeonChestConfirm = false;
 
 function KinkyDungeonHandleMoveToTile(toTile) {
-	if (toTile == 's' || toTile == 'H' || (toTile == 'S' && (MiniGameKinkyDungeonLevel > 1 || (MiniGameKinkyDungeonLevel == 1 && KDGameData.RoomType)))) { // Go down the next stairs
+	if (toTile == 's' || toTile == 'H' || (toTile == 'S' && (
+		MiniGameKinkyDungeonLevel > 0
+		//|| (MiniGameKinkyDungeonLevel == 1 && KDGameData.RoomType)
+		//|| KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.AltStairAction
+		//|| KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.RoomType
+	))) { // Go down the next stairs
 		if (KinkyDungeonConfirmStairs && KinkyDungeonLastAction == "Wait") {
 			KinkyDungeonConfirmStairs = false;
 			KinkyDungeonHandleStairs(toTile);
@@ -149,11 +154,12 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			let currCheckpoint = MiniGameKinkyDungeonCheckpoint;
 			let originalRoom = KDGameData.RoomType;
 			let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
-			let altRoomPrevious = (tile && tile.RoomType) ? KinkyDungeonAltFloor(tile.RoomType) : undefined;
-			let AdvanceAmount = KDAdvanceAmount[toTile](altRoom, altRoomPrevious);
+			let altRoomTarget = (tile && tile.RoomType) ? KinkyDungeonAltFloor(tile.RoomType) : undefined;
+			let AdvanceAmount = KDAdvanceAmount[toTile](altRoom, altRoomTarget);
 
 			let data = {
 				altRoom: altRoom,
+				altRoomTarget: altRoomTarget,
 				tile: tile,
 				AdvanceAmount: AdvanceAmount,
 				Xdelta: toTile != 'H' ? (tile?.Xdelta || 0) : (tile?.Xdelta || 0), // TODO allow maneuvering around the world map
@@ -266,7 +272,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				});
 				KDGameData.HeartTaken = false;
 				KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], MiniGameKinkyDungeonLevel, undefined, undefined,
-					undefined, newLocation, !altRoom || !altRoom.alwaysRegen, originalRoom,
+					undefined, newLocation, !altRoomTarget || !altRoomTarget.alwaysRegen, originalRoom,
 					AdvanceAmount > 0
 						? (toTile == 'H' ? 2 : 0)
 						: (toTile == 'S' ? 1 : 0));

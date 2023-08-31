@@ -1482,6 +1482,8 @@ Changes
 
 
 TODO
+The white bird that ties people up in Fate: Zero
+
 Warden (more comprehensive cuffs)
 Detective (Stealth, wanders around laying traps throughout the level)
 Nurse (applies straitjackets and stuff)

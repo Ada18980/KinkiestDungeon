@@ -1611,7 +1611,7 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, 
 	if (!nostartstairs) {
 		KinkyDungeonMapSet(1, startpos, 'S');
 		KinkyDungeonTilesSet(1 + ',' + startpos, {
-			RoomType: origMapType,
+			RoomType: origMapType == "JourneyFloor" ? "ShopStart" : origMapType,
 		});
 	}
 	/*if (startpos > 1) KinkyDungeonMapSet(2, startpos - 1, '0');

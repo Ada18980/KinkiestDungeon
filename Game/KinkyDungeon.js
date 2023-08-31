@@ -2329,7 +2329,7 @@ function KinkyDungeonStartNewGame(Load) {
 		KDSendEvent('loadGame');
 	} else {
 		KDSendEvent('newGame');
-		KDGameData.RoomType = KinkyDungeonStatsChoice.get("easyMode") ? "ShopStart" : "JourneyFloor";
+		KDGameData.RoomType = "JourneyFloor";//KinkyDungeonStatsChoice.get("easyMode") ? "ShopStart" : "JourneyFloor";
 		MiniGameKinkyDungeonLevel = 0;
 		KDInitializeJourney("");
 		if (KDTileToTest) {
