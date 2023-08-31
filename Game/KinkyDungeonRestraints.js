@@ -161,6 +161,63 @@ function KDRestraint(item) {
 
 /**
  * gets a restraint
+ * @param {Named} item
+ * @returns {string}
+ */
+function KDRestraintBondageType(item) {
+	let r = KDRestraint(item);
+	if (r) {
+		let data = {
+			item: item,
+			restraint: r,
+			type: "",
+			override: undefined,
+			overridePriority: 0,
+		};
+		// Stock methodology
+		if (r.shrine) {
+			for (let s of r.shrine) {
+				switch (s) {
+					case "Metal":
+						data.type = s;
+						data.overridePriority = 4;
+						break;
+					case "Latex":
+						data.type = "Slime";
+						data.overridePriority = 3;
+						break;
+					case "Rope":
+						data.type = s;
+						data.overridePriority = 1;
+						break;
+					case "Leather":
+						data.type = s;
+						data.overridePriority = 2;
+						break;
+					case "Vine":
+						data.type = s;
+						data.overridePriority = 5;
+						break;
+					case "Ice":
+						data.type = s;
+						data.overridePriority = 5;
+						break;
+				}
+			}
+			if (r.magic && data.overridePriority < 4) {
+				data.type = "Magic";
+				data.overridePriority = 4;
+			}
+		}
+
+		KinkyDungeonSendEvent("calcBondageType", data);
+		return data.override || data.type;
+	}
+	return "Vine";
+}
+
+/**
+ * gets a restraint
  * @param {item} item
  * @returns {boolean}
  */

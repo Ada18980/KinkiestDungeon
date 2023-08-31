@@ -44,7 +44,7 @@ function KDProcessInput(type, data) {
 				if (res.result == "Cast" && sp.sfx) {
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sp.sfx + ".ogg");
 				}
-				if (res.result != "Fail") {
+				if (res.result != "Fail" && !sp.quick) {
 					KinkyDungeonAdvanceTime(res.data.delta);
 				}
 				KinkyDungeonInterruptSleep();
@@ -124,6 +124,12 @@ function KDProcessInput(type, data) {
 		case "buffclick": {
 			if (KDBuffClick[data.click]) {
 				KDBuffClick[data.click](data.buff, data.id || KinkyDungeonPlayerEntity);
+			}
+			break;
+		}
+		case "inventoryAction": {
+			if (KDInventoryAction[KDGameData.InventoryAction] && KDInventoryAction[KDGameData.InventoryAction].valid(data.player, data.item)) {
+				KDInventoryAction[KDGameData.InventoryAction].click(data.player, data.item);
 			}
 			break;
 		}
@@ -529,11 +535,13 @@ function KDProcessInput(type, data) {
 			KDDelayedActionPrune(["Action", "Cast"]);
 			let spell = KinkyDungeonHandleSpellCast(KinkyDungeonSpells[data.CurrentSpell]);
 			if (spell && !(KinkyDungeonSpells[data.CurrentSpell].type == "passive") && !KinkyDungeonSpells[data.CurrentSpell].passive && !KinkyDungeonSpells[data.CurrentSpell].upcastFrom) {
-				if (KinkyDungeonStatsChoice.has("Disorganized")) {
-					KinkyDungeonAdvanceTime(1);
-					KinkyDungeonSlowMoveTurns = 2;
-				} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
-					KinkyDungeonAdvanceTime(1);
+				if (!spell.quick) {
+					if (KinkyDungeonStatsChoice.has("Disorganized")) {
+						KinkyDungeonAdvanceTime(1);
+						KinkyDungeonSlowMoveTurns = 2;
+					} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
+						KinkyDungeonAdvanceTime(1);
+				}
 				KinkyDungeonSendActionMessage(5, TextGet("KinkyDungeonSpellTarget" + spell.name).replace("SpellArea", "" + Math.floor(spell.aoe)), "white", 0.1, true);
 			}
 			break;

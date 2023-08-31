@@ -72,6 +72,24 @@ let KinkyDungeonSpellSpecials = {
 	"dress": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		KinkyDungeonSetDress(spell.outfit);
 	},
+	"Bondage": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let en = KinkyDungeonEnemyAt(targetX, targetY);
+		if (en) {
+			if (KDCanBind(en) && (KinkyDungeonIsDisabled(en) || (en.playWithPlayer && KDCanDom(en)))) {
+				KDGameData.InventoryAction = "Bondage";
+				KDGameData.BondageTarget = en.id;
+				KinkyDungeonDrawState = "Inventory";
+				KinkyDungeonCurrentFilter = LooseRestraint;
+				KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), "#ff5555", 1, true);
+				return "Cast";
+			} else {
+				KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"), "#ff5555", 1, true);
+				return "Fail";
+			}
+		}
+		KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoTarget"), "#ff5555", 1, true);
+		return "Fail";
+	},
 	"CommandWord": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		if (!KDSpellIgnoreComp(spell) && (data.gaggedMiscastFlag || KinkyDungeonGagTotal() >= 0.25)) {
 			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_Miscast"), "#ff5555", 1);

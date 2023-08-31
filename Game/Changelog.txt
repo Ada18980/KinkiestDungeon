@@ -1476,6 +1476,7 @@ QoL
 
 4.6 (August 2023)
 Changes
+- You can now apply non-special bindings from your inventory to enemies that are disabled, adding some points of binding
 - You can now backtrack to previous levels! This is a start toward a future system to make the map more sane and understandable....
 - Some changes to enemy behavior based on the map faction and whether or not you are hostile to them
 

@@ -1106,9 +1106,10 @@ function KDKickEnemies(nearestJail, ignoreAware) {
 	let already = new Map();
 	for (let e of  KDMapData.Entities) {
 		if (!e.Enemy.tags.temporary && !KDIsImmobile(e) && e.spawnX && e.spawnY) {
-			if (e.aware && KDHostile(e)) {
+			if (e.aware && KDHostile(e) && KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, KDistEuclidean(e.x - KinkyDungeonPlayerEntity.x, e.y - KinkyDungeonPlayerEntity.y),
+				10, true, false)) {
 				atLeastOneAware = true;
-			}
+			} else e.aware = false;
 			if (!ignoreAware || !e.aware)
 				if (!nearestJail || (e.x == nearestJail.x && e.y == nearestJail.y) || (!e.Enemy.tags.prisoner && !e.Enemy.tags.peaceful && !KDEnemyHasFlag(e, "imprisoned"))) {
 					if (!nearestJail || KDistChebyshev(e.x - nearestJail.x, e.y - nearestJail.y) <= 4 || (e.aware || e.vp > 0.01 || e.aggro > 0)) {
@@ -1125,9 +1126,10 @@ function KDKickEnemies(nearestJail, ignoreAware) {
 	}
 	for (let e of KDMapData.Entities) {
 		if (!e.Enemy.tags.temporary) {
-			if (e.aware && KDHostile(e)) {
+			if (e.aware && KDHostile(e) && KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, KDistEuclidean(e.x - KinkyDungeonPlayerEntity.x, e.y - KinkyDungeonPlayerEntity.y),
+				10, true, false)) {
 				atLeastOneAware = true;
-			}
+			} else e.aware = false;
 			if (!ignoreAware || !e.aware)
 				if (!nearestJail || (e.x == nearestJail.x && e.y == nearestJail.y) || (!e.Enemy.tags.prisoner && !e.Enemy.tags.peaceful && !KDEnemyHasFlag(e, "imprisoned"))) {
 					if (!KDIsImmobile(e))

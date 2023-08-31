@@ -1,5 +1,17 @@
 "use strict";
 
+let KDAdvanceAmount = {
+	'S': (altRoom, altRoomPrevious) => { // Stairs up
+		return (altRoomPrevious?.skiptunnel ? -1 : 0);
+	},
+	's': (altRoom, altRoomPrevious) => { // Stairs down
+		return (altRoom?.skiptunnel ? 1 : 0);
+	},
+	'H': (altRoom, altRoomPrevious) => { // Stairs down
+		return 0;
+	},
+};
+
 /**
  *
  * @param {entity} entity
@@ -120,6 +132,8 @@ function KDEffectTileTags(x, y) {
 	return ret;
 }
 
+
+
 function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 	if (!KDCanEscape()) {
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonNeedJailKey"), "#ffffff", 1);
@@ -136,15 +150,13 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			let originalRoom = KDGameData.RoomType;
 			let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
 			let altRoomPrevious = (tile && tile.RoomType) ? KinkyDungeonAltFloor(tile.RoomType) : undefined;
-			let AdvanceAmount = toTile == 'S'
-				? (altRoomPrevious?.skiptunnel ? -1 : 0)
-				: (altRoom?.skiptunnel ? 1 : 0);
+			let AdvanceAmount = KDAdvanceAmount[toTile](altRoom, altRoomPrevious);
 
 			let data = {
 				altRoom: altRoom,
 				tile: tile,
 				AdvanceAmount: AdvanceAmount,
-				Xdelta: toTile != 'H' ? (tile?.Xdelta || 0) : (tile?.Xdelta || 1),
+				Xdelta: toTile != 'H' ? (tile?.Xdelta || 0) : (tile?.Xdelta || 0), // TODO allow maneuvering around the world map
 				toTile: toTile,
 				overrideRoomType: false,
 				overrideProgression: false,
