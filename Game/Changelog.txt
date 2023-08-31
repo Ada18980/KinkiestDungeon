@@ -1475,9 +1475,11 @@ QoL
 - Scarves now deal Plush damage (plush content will be expanded in future)
 
 4.6 (August 2023)
-Changes
+Features
+- You can now backtrack to previous levels! This is a start toward a future system to make the map more sane and understandable
+- The shopkeeper is now in regular games! She basically functions as a very expensive shrine you can backtrack to the start of the game for
 - You can now apply non-special bindings from your inventory to enemies that are disabled, adding some points of binding
-- You can now backtrack to previous levels! This is a start toward a future system to make the map more sane and understandable....
+Changes
 - Some changes to enemy behavior based on the map faction and whether or not you are hostile to them
 
 
