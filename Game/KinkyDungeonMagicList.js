@@ -15,6 +15,8 @@
 
 let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 9, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
 	onhit:"", time:25, power: 0, range: 2.8, size: 1, damage: ""};
+let KDBondageSpell = {name: "Bondage", tags: ["binding", "utility", "offense"], quick: true, school: "Conjure", manacost: 0, components: ["Verbal"], level:1, spellPointCost: 0, type:"special", special: "Bondage", noMiscast: true,
+	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
 
 /**
  * These are starting spells
@@ -66,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["SecondWind1","ManaRegen","ManaRegenPlus","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
+		["Bondage", "SecondWind1","ManaRegen","ManaRegenPlus","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
 	],
 
 	//Page 1: Elements
@@ -699,6 +701,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			type:"special", special: "CommandRelease",
 			onhit:"", time:0, power: 10.0, range: 2.5, size: 1, aoe: 1.5, damage: "inert"},
 		KDCommandWord,
+		KDBondageSpell,
 
 		{name: "CommandSlime", prerequisite: "ApprenticeLatex", tags: ["command", "slime", "defense"], sfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Verbal"], level:1,
 			type:"special", special: "CommandSlime",
@@ -1707,10 +1710,11 @@ let KDSpecialBondage = {
 	"Magic": {
 		priority: -5,
 		color: "#92e8c0",
-		struggleRate: 0.7,
+		struggleRate: 0.6,
 		powerStruggleBoost: 1.0,
 		healthStruggleBoost: 1.0,
-		mageStruggleBoost: 2.0,
+		mageStruggleBoost: 1.75,
+		enemyBondageMult: 0.8,
 	},
 	"Leather": {
 		priority: 0,
@@ -1718,6 +1722,7 @@ let KDSpecialBondage = {
 		struggleRate: 1.0,
 		powerStruggleBoost: 1.0,
 		healthStruggleBoost: 1.0,
+		enemyBondageMult: 1.0,
 	},
 	"Rope": {
 		priority: -3,
@@ -1725,6 +1730,7 @@ let KDSpecialBondage = {
 		struggleRate: 2.0,
 		powerStruggleBoost: 1.0,
 		healthStruggleBoost: 1.0,
+		enemyBondageMult: 2.0,
 	},
 	"Metal": {
 		priority: 10,
@@ -1732,6 +1738,7 @@ let KDSpecialBondage = {
 		struggleRate: 0.5,
 		powerStruggleBoost: 0.25,
 		healthStruggleBoost: 1.5,
+		enemyBondageMult: 0.6,
 	},
 	"Slime": {
 		priority: -10,
@@ -1739,6 +1746,7 @@ let KDSpecialBondage = {
 		struggleRate: 1.5,
 		powerStruggleBoost: 2.0,
 		healthStruggleBoost: 0.75,
+		enemyBondageMult: 1.75,
 	},
 	"Tape": {
 		priority: -5,
@@ -1746,6 +1754,7 @@ let KDSpecialBondage = {
 		struggleRate: 1.35,
 		powerStruggleBoost: 0.75,
 		healthStruggleBoost: 1.5,
+		enemyBondageMult: 1.5,
 	},
 	"Vine": {
 		priority: -7,
@@ -1753,6 +1762,7 @@ let KDSpecialBondage = {
 		struggleRate: 1.25,
 		powerStruggleBoost: 2.0,
 		healthStruggleBoost: 1.0,
+		enemyBondageMult: 1.5,
 	},
 	"Ice": {
 		priority: -15,
@@ -1760,6 +1770,7 @@ let KDSpecialBondage = {
 		struggleRate: 0.6,
 		powerStruggleBoost: 3.0,
 		healthStruggleBoost: 0.7,
+		enemyBondageMult: 0.5,
 	},
 };
 

@@ -2028,6 +2028,7 @@ const KinkyDungeonRestraints = [
 
 	//region Cursed Set - Stardust Curse
 	{inventory: true, name: "CursedCollar", alwaysKeep: true, debris: "Chains", Asset: "SlenderSteelCollar", Color: ["#7842ad"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],
+		special: true,
 		Model: "StardustCollar",
 		Filters: {
 			"Collar": {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":0.3,"red":1.4,"green":1,"blue":3.95,"alpha":1},
@@ -2043,6 +2044,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "tick", type: "TriggerCurseTransform", chance: 0.25, inheritLinked: true, trim: true, curse: true, tags: ["obsidianRestraints", "shadowlatexRestraints", "shadowlatexRestraintsHeavy",], msg: "KDCursedTransformation"},
 		]},
 	{inventory: true, name: "CursedCollar2", alwaysKeep: true, debris: "Chains", Asset: "SlenderSteelCollar", Color: ["#8E72AA"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],
+		special: true,
 		Model: "StardustCollar",
 		Filters: {
 			"Collar": {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1.0,"red":1.4,"green":1,"blue":1.9, "alpha":1},

@@ -148,6 +148,9 @@ let KinkyDungeonSFX = [];
  */
 function KDDefaultMapData(RoomType = "", MapMod = "") {
 	return {
+		Checkpoint: MiniGameKinkyDungeonCheckpoint,
+		Title: "",
+
 		RoomType: RoomType,
 		MapMod: MapMod,
 		RandomPathablePoints: {},
@@ -477,6 +480,7 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	KDMapData = NewMapData;
 	KDGameData.RoomType = KDMapData.RoomType;
 	KDGameData.MapMod = KDMapData.MapMod;
+	MiniGameKinkyDungeonCheckpoint = KDMapData.Checkpoint || MiniGameKinkyDungeonCheckpoint;
 
 	KDInitTempValues();
 
@@ -4135,6 +4139,9 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	KDAllowDialogue = true;
 
+	if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction].cancel(KinkyDungeonPlayerEntity, delta)) {
+		KDGameData.InventoryAction = "";
+	}
 
 	// Prune when time advances
 	if (delta > 0) {

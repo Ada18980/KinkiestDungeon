@@ -12,6 +12,8 @@ let KDClassStart = {
 			KinkyDungeonInventoryAddLoose("Breastplate");
 		KDGameData.PreviousWeapon = "Shield";
 		KDSetWeapon("Sword");
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Bondage"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("WPUp1"));
@@ -35,6 +37,8 @@ let KDClassStart = {
 			KinkyDungeonInventoryAddLoose("LeatherBoots");
 		KDGameData.PreviousWeapon = "Dirk";
 		KDSetWeapon("Bow");
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Bondage"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("SPUp1"));
@@ -57,6 +61,8 @@ let KDClassStart = {
 		KDSetWeapon("ArcaneCrystal");
 
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaRegen"));
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Bondage"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Analyze"));
@@ -72,14 +78,15 @@ let KDClassStart = {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 1);
 	},
 	"Peasant": () => { // Peasant
-		KinkyDungeonSpellChoices = [];
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Bondage"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpellPoints = 3;
 	},
 	"Trainee": () => { // Trainee
-		KinkyDungeonSpellChoices = [];
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Bondage"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpellPoints = 3;
 		KinkyDungeonGold = 100;
-		KinkyDungeonSpellChoices = [];
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("DistractionCast"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("MPUp1"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("APUp1"));

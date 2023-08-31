@@ -10923,3 +10923,14 @@ AttackAdventurer_Switch_FighterDash,"The fighter vanishes and ends up behind you
 
 KDCasting,"Casting SPNME"
 KDClimbUpTrapped,"The door suddenly locks behind you!"
+
+KDInventoryActionBondage,"Apply To Target"
+
+
+KDBondageFailNoTarget,You need to target an NPC
+KDBondageFailInvalidTarget,Target must be bindable and disabled.
+KDBondageTarget,Target acquired!
+KinkyDungeonSpellBondage,"Truss em up!"
+KinkyDungeonSpellTargetBondage,"Choose target to bind"
+KinkyDungeonSpellCastBondage,"Target Acquired!"
+KinkyDungeonSpellDescriptionBondage,"Designates the target for bondage and allows you to apply items from the inventory. Items used this way cannot be recovered, and can only be applied to enemies that are stunned, fully bound, or otherwise incapacitated."

@@ -188,6 +188,8 @@ let KDOptOut = false;
 
 /**
 *  @typedef {{
+* InventoryAction: string,
+* BondageTarget: number,
 * KeysNeeded: boolean,
 * JailRemoveRestraintsTimer: number;
 * KinkyDungeonSpawnJailers: number;
@@ -297,6 +299,9 @@ let KDOptOut = false;
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	InventoryAction: "",
+	BondageTarget: -1,
+
 	QuickLoadouts: {},
 	CurrentLoadout: 0,
 	Training: {},
@@ -2172,6 +2177,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 
 function KDInitializeJourney(Journey) {
 	KDCurrentWorldSlot = {x: 0, y: 0};
+	KDWorldMap = {};
 
 	/**
 	 * @type {Record<string, string>}
@@ -3238,6 +3244,7 @@ let kdSoundCache = new Map();
  * @param {number} [volume]
  */
 function AudioPlayInstantSoundKD(Path, volume) {
+	if (!KDToggles.Sound) return false;
 	const vol = KDSfxVolume * (volume != null ? volume : Player.AudioSettings.Volume);
 	if (vol > 0) {
 		let src = KDModFiles[Path] || Path;

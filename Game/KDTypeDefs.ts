@@ -415,6 +415,8 @@ interface KDRestraintPropsBase {
 	enchantedDrain?: number,
 	/** Whether or not this is an Ancient item, prison respects it */
 	enchanted?: boolean,
+	/** Whether or not this is special in some way*/
+	special?: boolean,
 	/** Faction color index */
 	factionColor?: number[][],
 	/** Determines if it gets hidden by the 'Hide Armor' option */
@@ -1531,6 +1533,8 @@ interface spell {
 	/** Buffs applied by the hit will effect everyone */
 	buffAll?: boolean,
 	name: string;
+	/** Spell does not advance time */
+	quick?: boolean;
 	/** spell required to unlock this one */
 	prerequisite?: string | string[];
 	/** blocked if you have this spell */
@@ -1871,6 +1875,12 @@ interface VibeMod {
 	denyChanceLikelyMod?: number,
 }
 
+interface KDInventoryActionDef {
+	valid: (player: entity, item: item) => boolean;
+	click: (player: entity, item: item) => void;
+	cancel: (player: entity, delta: number) => boolean;
+}
+
 interface KinkyDungeonSave {
 	KinkyDungeonPlayerEntity: any;
 	level: number;
@@ -1937,6 +1947,9 @@ interface KDWorldSlot {
 }
 
 interface KDMapDataType {
+	Checkpoint: string,
+	Title: string,
+
 	Grid: string;
 	GridWidth: number;
 	GridHeight: number;
@@ -2142,6 +2155,8 @@ type KDMapTile = {
 
 interface KDBondage {
 	color: string,
+	/** Multiplier for enemy bondage */
+	enemyBondageMult: number,
 	/** Order in which enemies will struggle */
 	priority: number,
 	/** Multiplier for struggle rate */
