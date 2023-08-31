@@ -115,7 +115,7 @@ let KDMapMods = {
 		roomType: "",
 		weight: 35,
 		tags: ["robot"],
-		faction: "AncientRobots",
+		faction: "AncientRobot",
 		bonusTags: {
 			"robot": {bonus: 10, mult: 4},
 		},
