@@ -133,7 +133,7 @@ interface ModelLayer extends Namable {
 	/** Displacement maps are treated as Invariant */
 	DisplacementInvariant?: boolean,
 	/** Applies this layer's filter to a layer when the filter isn't hidden */
-	ApplyFilterToLayer?: Record<string, boolean>,
+	ApplyFilterToLayerGroup?: Record<string, boolean>,
 	/** Disables color filters */
 	NoColorize?: boolean,
 	/** Inherits colorization from another layer */

@@ -674,6 +674,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Shorts", Layer: "Pants", Pri: 7,
 			Poses: ToMap([...LEGPOSES]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//MorphPoses: {Hogtie: "Hogtie"},
 		},
 	])
@@ -1033,11 +1034,13 @@ AddModel({
 		{ Name: "Blouse", Layer: "Shirt", Pri: 4,
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
 			//AppendPose: ToMapDupe(["RopesUpper"], {TorsoUpperTight: "Tight"}),
 		},
 		{ Name: "BlouseLiner", Layer: "CorsetLiner", Pri: 4,
 			Invariant: true,
 			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 		},
 		{ Name: "BlouseBust", Layer: "Chest", Pri: 4,
 			Poses: ToMap([...ARMPOSES]),

@@ -318,10 +318,12 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 		for (let l of Object.values(m.Layers)) {
 			if (!(drawLayers[m.Name + "," + l.Name] && !ModelLayerHidden(drawLayers, MC, m, l, MC.Poses))) continue;
 			// Apply filter
-			if (l.ApplyFilterToLayer) {
-				for (let ll of Object.entries(l.ApplyFilterToLayer)) {
-					if (!ExtraFilters[ll[0]]) ExtraFilters[ll[0]] = [];
-					ExtraFilters[ll[0]].push(m.Filters[l.InheritColor || l.Name]);
+			if (l.ApplyFilterToLayerGroup) {
+				for (let lg of Object.entries(l.ApplyFilterToLayerGroup)) {
+					for (let ll of Object.entries(LayerGroups[lg[0]])) {
+						if (!ExtraFilters[ll[0]]) ExtraFilters[ll[0]] = [];
+						ExtraFilters[ll[0]].push(m.Filters[l.InheritColor || l.Name]);
+					}
 				}
 			}
 			// Apply displacement
@@ -353,7 +355,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						layer = LayerProperties[layer]?.Parent;
 					}
 
-					for (let dg of Object.keys(DisplaceGroups[ll[0]])) {
+					for (let dg of Object.keys(LayerGroups[ll[0]])) {
 						if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
 						DisplaceFilters[dg].push(
 							{

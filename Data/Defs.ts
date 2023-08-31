@@ -99,6 +99,7 @@ let LAYERS_BASE = [
 	"SkirtPoofyLeftLeg",
 
 	"HarnessOver",
+	"BindChest",
 	"BraChest",
 	"Chest",
 
@@ -228,8 +229,32 @@ let LAYERS_BASE = [
 	"HatBack",
 ];
 
-/** Layers displaced by rope */
-let DisplaceGroups = {
+/** Handy way of referencing multiple layers */
+let LayerGroups = {
+	// region slime
+	"SlimeLegs": ToMap([
+		"Thighs",
+		"Thighs3",
+		"Thighs2",
+		"Thighs1",
+		"PantLeft",
+		"PantRight",
+	]),
+	"SlimeAnkles": ToMap([
+		"Ankles",
+		"Ankles3",
+		"Ankles2",
+		"Ankles1",
+		"AnkleLeft",
+		"AnkleRight",
+	]),
+	"SlimeTorsoLower": ToMap([
+		"OverSkirt",
+		"Pants",
+	]),
+	// endregion
+
+	// region armor
 	"Boots": ToMap([
 		"Ankles",
 		"Ankles3",
@@ -238,6 +263,9 @@ let DisplaceGroups = {
 		"AnkleLeft",
 		"AnkleRight",
 	]),
+	// endregion
+
+	// Region rope
 	"Rope1": ToMap([
 		"Shirt",
 		"SleeveLeft",
@@ -247,17 +275,6 @@ let DisplaceGroups = {
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper"
-	]),
-	"Yoke": ToMap([
-		"Shirt",
-		"GloveLeft",
-		"GloveRight",
-		"SleeveLeft",
-		"SleeveDecoLeft",
-		"SleeveRight",
-		"SleeveDecoRight",
-		"ArmLeft",
-		"ArmRight",
 	]),
 	"RopeTorso": ToMap([
 		"Shirt",
@@ -350,6 +367,21 @@ let DisplaceGroups = {
 		"SockRightKneel",
 		"FootRightKneel",
 	]),
+	// endregion
+
+	// region metal
+	"Yoke": ToMap([
+		"Shirt",
+		"GloveLeft",
+		"GloveRight",
+		"SleeveLeft",
+		"SleeveDecoLeft",
+		"SleeveRight",
+		"SleeveDecoRight",
+		"ArmLeft",
+		"ArmRight",
+	]),
+	// endregion
 };
 
 

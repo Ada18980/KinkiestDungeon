@@ -5,6 +5,8 @@
  * In general, this is accomplished by having higher priority items cover more of the original
  */
 
+let slimefilter = {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":1.7000000000000002,"green":0.5166666666666666,"blue":2.3833333333333333,"alpha":1};
+
 AddModel({
 	Name: "SlimeLegs",
 	Folder: "Slime",
@@ -13,10 +15,14 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["FeetLinked"],
+	Filters: {
+		"Legs": slimefilter,
+	},
 	Layers: ToLayerMap([
 		{ Name: "Legs", Layer: "OverSocks", Pri: 1,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			ApplyFilterToLayerGroup: ToMap(["SlimeLegs"]),
 		},
 	])
 });
@@ -60,13 +66,16 @@ AddModel({
 	Parent: "SlimeArms",
 	TopLevel: false,
 	Restraint: true,
+	Filters: {
+		"TorsoUpper": slimefilter,
+	},
 	Categories: ["Restraints", "Slime"],
-	AddPose: ["TorsoUpperTight", "EncaseTorsoUpper"],
+	AddPose: ["TorsoUpperTight", "EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
 		{ Name: "TorsoUpper", Layer: "WrappingTorso", Pri: -5,
 			Invariant: true,
 		},
-		{ Name: "Chest", Layer: "WrappingChest", Pri: -5,
+		{ Name: "Chest", Layer: "BindChest", Pri: -5,
 			Invariant: true,
 		},
 	])
@@ -80,12 +89,12 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["TorsoLowerTight", "EncaseTorsoLower"],
 	Filters: {
-		"TorsoLower": {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":1.7000000000000002,"green":0.5166666666666666,"blue":2.3833333333333333,"alpha":1},
+		"TorsoLower": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "WrappingTorso", Pri: -6,
 			Invariant: true,
-			ApplyFilterToLayer: ToMap(["OverSkirt"]),
+			ApplyFilterToLayerGroup: ToMap(["SlimeTorsoLower"]),
 		},
 	])
 });
@@ -98,7 +107,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Slime"],
-	AddPose: ["ArmLeftTight", "ArmRightTight", "EncaseArmLeft", "EncaseArmRight"],
+	AddPose: ["ArmLeftTight", "ArmRightTight", "EncaseArmLeft", "EncaseArmRight", "TorsoUpperTight", "EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SlimeArmLeft"),
 		...GetModelLayers("SlimeArmRight"),
