@@ -134,7 +134,7 @@ let KinkyDungeonDamageTypes = {
 
 /**
  *
- * @param {item} item
+ * @param {Named} item
  * @returns {weapon}
  */
 function KDWeapon(item) {

@@ -231,15 +231,15 @@ function KinkyDungeonPayShrine(type) {
 	} else if (type == "Commerce") {
 		let item = KDMapData.ShopItems[KinkyDungeonShopIndex];
 		if (item) {
-			if (item.shoptype == "Consumable")
+			if (item.shoptype == Consumable)
 				KinkyDungeonChangeConsumable(KinkyDungeonConsumables[item.name], 1);
-			else if (item.shoptype == "Weapon")
+			else if (item.shoptype == Weapon)
 				KinkyDungeonInventoryAddWeapon(item.name);
-			else if (item.shoptype == "Restraint") {
+			else if (item.shoptype == LooseRestraint) {
 				let restraint = KinkyDungeonGetRestraintByName(item.name);
 				KinkyDungeonInventoryAdd({name: item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:restraint.events});
 			}
-			else if (item.shoptype == "Basic") {
+			else if (item.shoptype == "basic") {
 				KDAddBasic(item);
 			}
 			ShrineMsg = TextGet("KinkyDungeonPayShrineCommerce").replace("ItemBought", TextGet("KinkyDungeonInventoryItem" + item.name));
@@ -352,19 +352,49 @@ function KinkyDungeonDrawShrine() {
 				DrawTextFitKD(TextGet("KinkyDungeonCommerceCost").replace("ItemCost", "" + KinkyDungeonItemCost(l)), KDModalArea_x + 300, KDModalArea_y + 65 - ii * 50, 130, KDMapData.ShopItems[KinkyDungeonShopIndex].name == l.name ? "#ffffff" : KDTextGray3, KDTextGray2, 20, undefined, 70);
 				ii++;
 			}
+			let item = KDGetItemPreview({name: KDMapData.ShopItems[KinkyDungeonShopIndex].name, type: KDMapData.ShopItems[KinkyDungeonShopIndex].shoptype});
+			if (item?.preview)
+				KDDraw(kdcanvas, kdpixisprites, "preview",
+					item.preview, KDModalArea_x+650 - 50, KDModalArea_y + 80 - shopHeight, 100, 100, undefined,
+					{
+						zIndex: 129,
+					});
+
+			let data = {
+				extraLines: [],
+				extraLineColor: [],
+				extraLineColorBG: [],
+				extraLinesPre: [],
+				extraLineColorPre: [],
+				extraLineColorBGPre: [],
+				SelectedItem: item?.item,
+				item: item?.item,
+			};
+			KinkyDungeonSendEvent("inventoryTooltip", data);
+
 			let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name + "Desc"), 15, 40).split('\n');
 			let textSplit2 = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name +  "Desc2"), 15, 40).split('\n');
 			let i = 0;
-			let descSpacing = 30;
+			let descSpacing = 24;
 			for (let N = 0; N < textSplit.length; N++) {
 				DrawTextFitKD(textSplit[N],
-					KDModalArea_x+650, KDModalArea_y + 120 - shopHeight + i * descSpacing, 380 * (textSplit[N].length / 40), "#ffffff", undefined, 20, undefined, 70);
+					KDModalArea_x+650, KDModalArea_y + 200 - shopHeight + i * descSpacing, 380 * (textSplit[N].length / 40), "#ffffff", undefined, 20, undefined, 70);
 				i++;
 			}
 			i += 1;
+			for (let N = 0; N < data.extraLinesPre.length; N++) {
+				DrawTextFitKD(data.extraLinesPre[N],
+					KDModalArea_x+650, KDModalArea_y + 200 - shopHeight + i * descSpacing, 380 * (data.extraLinesPre[N].length / 40), data.extraLineColorPre[N], data.extraLineColorBGPre[N], 20, undefined, 70);
+				i++;
+			}
 			for (let N = 0; N < textSplit2.length; N++) {
 				DrawTextFitKD(textSplit2[N],
-					KDModalArea_x+650, KDModalArea_y + 120 - shopHeight + i * descSpacing, 380 * (textSplit2[N].length / 40), "#ffffff", undefined, 20, undefined, 70);
+					KDModalArea_x+650, KDModalArea_y + 200 - shopHeight + i * descSpacing, 380 * (textSplit2[N].length / 40), "#ffffff", undefined, 20, undefined, 70);
+				i++;
+			}
+			for (let N = 0; N < data.extraLines.length; N++) {
+				DrawTextFitKD(data.extraLines[N],
+					KDModalArea_x+650, KDModalArea_y + 200 - shopHeight + i * descSpacing, 380 * (data.extraLines[N].length / 40), data.extraLineColor[N], data.extraLineColorBG[N], 20, undefined, 70);
 				i++;
 			}
 			// Next button
@@ -724,6 +754,15 @@ function KinkyDungeonDrawPerkOrb() {
 		DrawTextFitKD(TextGet("KinkyDungeonPerkConfirm"), 1250, 720, 1300, "#ffffff", KDTextGray2, 30);
 	}
 
+	DrawButtonKDEx("reject", (bdata) => {
+		KinkyDungeonDrawState = "Game";
+		return true;
+	}, true, 1250-1300, 750 + 120 - 1000, 2600, 2000, TextGet("KinkyDungeonPerkReject"), "#ffffff", undefined, undefined, undefined, true, undefined, undefined, undefined,
+	{
+		zIndex: 1,
+		alpha: 0,
+	});
+
 	DrawButtonKDEx("accept", (bdata) => {
 		if (KDPerkConfirm) {
 			KDSendInput("perkorb", {shrine: "perk", perks: KDPerkOrbPerks, Amount: 1, x: KDOrbX, y: KDOrbY});
@@ -733,10 +772,6 @@ function KinkyDungeonDrawPerkOrb() {
 		return true;
 	}, true, 1250 - bwidth/2, 750, bwidth, bheight, TextGet("KinkyDungeonPerkAccept" + (KDPerkConfirm ? "Confirm" : "")), "#ffffff");
 
-	DrawButtonKDEx("reject", (bdata) => {
-		KinkyDungeonDrawState = "Game";
-		return true;
-	}, true, 1250 - bwidth/2, 750 + 80, bwidth, bheight, TextGet("KinkyDungeonPerkReject"), "#ffffff");
 
 }
 
