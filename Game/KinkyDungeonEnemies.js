@@ -951,6 +951,7 @@ let KDBarAdvanceRate = 1.9/1000;
 let KDBarAdvanceRateMin = 1.0/1000;
 
 function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, CamY, CamXoffset, CamYoffset) {
+	KDDialogueSlots = {};
 	let tooltip = false;
 	let bindAmpModBase = KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
 	for (let enemy of KDMapData.Entities) {
@@ -1190,11 +1191,17 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 				}
 
 				if (enemy.dialogue && !tooltip) {
+					let dialogueOffset = 0;
+					while (dialogueOffset < 300 && (KDDialogueSlots[yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset])) {
+						dialogueOffset += 18;
+					}
+					KDDialogueSlots[yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset] = true;
+
 					let dialougelenth = 10;
 					if (CJKcheck(enemy.dialogue,2)){
 						DrawTextFitKD(enemy.dialogue,
 							canvasOffsetX + (xx - CamX - CamXoffset)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
-							yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5, 10 + enemy.dialogue.length * 8, enemy.dialogueColor, "#000000", 18, undefined, 20);
+							yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset, 10 + enemy.dialogue.length * 8, enemy.dialogueColor, "#000000", 18, undefined, 20);
 					} else {
 						let dialougeCJKcheck1 = CJKcheck(enemy.dialogue,1);
 						let dialougeCJKcheck2 = CJKcheck(enemy.dialogue);
@@ -1209,13 +1216,15 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 						}
 						DrawTextFitKD(enemy.dialogue,
 							canvasOffsetX + (xx - CamX - CamXoffset)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
-							yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5, dialougelenth, enemy.dialogueColor, "#000000", 18, undefined, 20);
+							yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset, dialougelenth, enemy.dialogueColor, "#000000", 18, undefined, 20);
 					}
 				}
 			}
 		}
 	}
 }
+
+let KDDialogueSlots = {};
 
 /**
  *
