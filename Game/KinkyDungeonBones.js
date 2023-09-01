@@ -9,7 +9,8 @@ let KDPatronAdventurers = [
 
 let KDPatronCustomEnemies = new Map([
 	["Wolfgirl", [
-		{name: "Sivasa", color: "#9c2a70", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Miny", color: "#9c2a70", prisoner: false, free: true, customPlayLine: "", customIntro: "You should join my pack!", customSprite: ""},
+		{name: "Sivasa", color: "#8888ff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Alexandra", color: "#6241e1", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Nekora", color: "#42a459", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Emeia", color: "#00A7FF", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
@@ -20,7 +21,7 @@ let KDPatronCustomEnemies = new Map([
 		{name: "FlameTail", color: "#ff5555", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Nobu", color: "#00FFFF", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Moranql", color: "#ff5555", prisoner: true, free: false, customPlayLine: "", customIntro: "0x0", customSprite: ""},
-		{name: "Harumi", color: "#F223D4", prisoner: true, free: false, customPlayLine: "", customIntro: "This is an uncivilized place, I have some things to give you...", customSprite: ""},
+		{name: "Harumi", color: "#F223D4", prisoner: true, free: true, customPlayLine: "", customIntro: "This is an uncivilized place, I have some things to give you...", customSprite: ""},
 	],
 	],
 	["WolfgirlPet", [
