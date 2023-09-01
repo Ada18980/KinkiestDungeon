@@ -811,10 +811,10 @@ function KinkyDungeonPlayerInCell(any, qualified, filter) {
 	//return (Math.abs(KinkyDungeonPlayerEntity.x - KDMapData.StartPosition.x) < KinkyDungeonJailLeashX - 1 && Math.abs(KinkyDungeonPlayerEntity.y - KDMapData.StartPosition.y) <= KinkyDungeonJailLeash);
 }
 
-function KinkyDungeonPointInCell(x, y) {
+function KinkyDungeonPointInCell(x, y, radius = 2) {
 	let nearestJail = KinkyDungeonNearestJailPoint(x, y);
 	if (!nearestJail) return false;
-	return KDistChebyshev(x - nearestJail.x, y - nearestJail.y) < 2;
+	return KDistChebyshev(x - nearestJail.x, y - nearestJail.y) < radius;
 	//return (Math.abs(x - KDMapData.StartPosition.x) < KinkyDungeonJailLeashX - 1 && Math.abs(y - KDMapData.StartPosition.y) <= KinkyDungeonJailLeash);
 }
 
