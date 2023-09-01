@@ -3551,6 +3551,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				let missed = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashMiss)) && KDRandom() * AIData.accuracy < 1 - playerEvasion;
 				let blockedAtk = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashBlock)) && KDRandom() * AIData.accuracy < 1 - playerBlock;
 				let preData = {
+					eventable: eventable || (dash && enemy.Enemy.Dash?.EventOnDashMiss) || (dash && enemy.Enemy.Dash?.EventOnDashMiss),
 					attack: AIData.attack,
 					enemy: enemy,
 					damagetype: AIData.damage,

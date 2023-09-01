@@ -1108,7 +1108,7 @@ let KinkyDungeonSpellListEnemies = [
 			{id: "SlimeForm2", type: "Squeeze", duration: 25, power: 0.5, player: true, enemies: false, tags: ["mobility"]},
 			{id: "SlimeForm3", type: "Evasion", duration: 25, power: 0.5, player: true, enemies: false, tags: ["defense"]},
 			{id: "SlimeForm4", type: "Counterattack", duration: 25, power: 2.5, player: true, enemies: false, tags: ["counter"], events: [
-				{trigger: "beforeAttack", type: "CounterattackDamage", power: 2.5, damage: "glue"},
+				{trigger: "beforeAttack", type: "CounterattackDamage", power: 2.5, damage: "glue", prereq: "hit-hostile"},
 			]},
 		], onhit:"", time:10, power: 0, range: 2, size: 1, damage: "",
 		extraCast: [{spell: "Slimethrower2"}, {spell: "SlimeSuit"}]},
