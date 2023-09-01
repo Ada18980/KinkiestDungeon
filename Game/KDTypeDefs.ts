@@ -2,8 +2,13 @@ type Named = {
 	name: string,
 }
 
+interface NamedAndTyped extends Named {
+	/** Type of the item*/
+	type?: string,
+}
+
 /** Kinky Dungeon Typedefs*/
-interface item extends Named {
+interface item extends NamedAndTyped {
 	id: number,
 	/** Used in order to boost performance */
 	linkCache?: string[],

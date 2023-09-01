@@ -395,7 +395,7 @@ return null;*/
 
 /**
  *
- * @param {item} item
+ * @param {NamedAndTyped} item
  * @returns {{name: any; item: any; preview: string, previewcolor?: string; previewcolorbg?: string;}}
  */
 function KDGetItemPreview(item) {
@@ -449,6 +449,7 @@ function KDGetItemPreview(item) {
 	else if (item.type == Consumable) ret = {name: KDConsumable(item).name, item: item, preview: KinkyDungeonRootDirectory + `/Items/${KDConsumable(item).name}.png`};
 	else if (item.type == Weapon) ret = {name: KDWeapon(item).name, item: item, preview: KinkyDungeonRootDirectory + `/Items/${KDWeapon(item).name}.png`};
 	else if (item.type == Outfit) ret = {name: KDOutfit(item) ? KDOutfit(item).name : "Prisoner", item: item, preview: KinkyDungeonRootDirectory + `/Outfits/${KDOutfit(item).name}.png`};
+	else if (item.type == 'basic') ret = {name: item.name, item: item, preview: KinkyDungeonRootDirectory + `/ShopBasic/${item.name}.png`};
 	//else if (item && item.name) ret.push({name: item.name, item: item, preview: ``});
 	return ret;
 }
