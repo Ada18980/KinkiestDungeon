@@ -171,7 +171,7 @@ function KinkyDungeonGetPatrolPoint(index, radius, Tiles) {
 		for (let i = 0; i < 8; i++) {
 			let XX = p.x + Math.round(KDRandom() * 2 * radius - radius);
 			let YY = p.y + Math.round(KDRandom() * 2 * radius - radius);
-			if (t.includes(KinkyDungeonMapGet(XX, YY))) {
+			if (t.includes(KinkyDungeonMapGet(XX, YY)) && (KDPointWanderable(XX, YY))) {
 				return {x: XX, y: YY};
 			}
 		}
@@ -1896,8 +1896,8 @@ function KDNearbyNeutrals(x, y, dist, neutralEnemy) {
  * @param {*} minDist
  * @returns {{x: number, y: number}}
  */
-function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6) {
-	return KinkyDungeonGetRandomEnemyPointCriteria(undefined, avoidPlayer, onlyPlayer, Enemy, playerDist, minDist);
+function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOffLimits = false) {
+	return KinkyDungeonGetRandomEnemyPointCriteria(undefined, avoidPlayer, onlyPlayer, Enemy, playerDist, minDist, ignoreOffLimits = false);
 }
 
 /**
@@ -1965,7 +1965,7 @@ function KinkyDungeonGetNearbyPoint(x, y, allowNearPlayer=false, Enemy, Adjacent
 	let foundslot = undefined;
 	for (let C = 0; C < 100; C++) {
 		let slot = slots[Math.floor(KDRandom() * slots.length)];
-		if (slot && KinkyDungeonNoEnemyExceptSub(slot.x, slot.y, false, Enemy) && (ignoreOffLimits || !KinkyDungeonTilesGet(slot.x + "," + slot.y) || (!KinkyDungeonTilesGet(slot.x + "," + slot.y).NoWander && !KinkyDungeonTilesGet(slot.x + "," + slot.y).OffLimits))
+		if (slot && KinkyDungeonNoEnemyExceptSub(slot.x, slot.y, false, Enemy) && (ignoreOffLimits || KDPointWanderable(slot.x, slot.y))
 			&& (allowNearPlayer || Math.max(Math.abs(KinkyDungeonPlayerEntity.x - slot.x), Math.abs(KinkyDungeonPlayerEntity.y - slot.y)) > 1.5)
 			&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(slot.x, slot.y))
 			&& (!callback || callback(slot.x, slot.y))) {
@@ -3297,7 +3297,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						}
 					}
 					if (dir.delta > 1.5) {enemy.path = undefined;}
-					else if (KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
+					else if (
+						(T > 7 || AIData.moveTowardPlayer || !KDPointWanderable(enemy.gx, enemy.gy) || !KDPointWanderable(enemy.x, enemy.y) || KDPointWanderable(enemy.x + dir.x, enemy.y + dir.y))
+						&& KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
 						if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y)) AIData.moved = true;
 						if (AIData.moved && splice && enemy.path) enemy.path.splice(0, 1);
 						AIData.idle = false;// If we moved we will pick a candidate for next turns attempt
@@ -3331,7 +3333,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							if (!AIData.master && wanderfar) {
 								if (!AIType.wanderfar_func || !AIType.wanderfar_func(enemy, player, AIData)) {
 									// long distance hunt
-									let newPoint = KinkyDungeonGetRandomEnemyPoint(false, enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
+									let newPoint = KinkyDungeonGetRandomEnemyPoint(false,
+										enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
 									if (newPoint) {
 										enemy.gx = newPoint.x;
 										enemy.gy = newPoint.y;
@@ -5582,4 +5585,9 @@ function KDCanHearEnemy(entity, enemy) {
 		return false;// TODO allow enemies to hear each other
 	}
 	return false;
+}
+
+/** */
+function KDPointWanderable(x, y) {
+	return KDMapData.RandomPathablePoints[x + ',' + y];
 }
