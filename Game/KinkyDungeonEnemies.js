@@ -1897,7 +1897,7 @@ function KDNearbyNeutrals(x, y, dist, neutralEnemy) {
  * @returns {{x: number, y: number}}
  */
 function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOffLimits = false) {
-	return KinkyDungeonGetRandomEnemyPointCriteria(undefined, avoidPlayer, onlyPlayer, Enemy, playerDist, minDist, ignoreOffLimits = false);
+	return KinkyDungeonGetRandomEnemyPointCriteria(undefined, avoidPlayer, onlyPlayer, Enemy, playerDist, minDist, ignoreOffLimits);
 }
 
 /**
