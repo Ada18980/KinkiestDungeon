@@ -2578,7 +2578,9 @@ function KinkyDungeonPlacePatrols(Count, width, height) {
 			for (let L = 1000; L > 0; L -= 1) { // Try up to 1000 times
 				let X = Math.floor(i * width / (Count + 1)) + Math.floor(KDRandom() * width/(Count + 1));
 				let Y = Math.floor(KDRandom()*height);
-				if (!KinkyDungeonPointInCell(X, Y) && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
+				if (!KinkyDungeonPointInCell(X, Y)
+					&& KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
+					&& (!KinkyDungeonTilesGet(X + "," + Y) || (!KinkyDungeonTilesGet(X + "," + Y).OffLimits && !KinkyDungeonTilesGet(X + "," + Y).NoWander))) {
 					KDMapData.PatrolPoints.push({x: X, y: Y});
 					break;
 				}
