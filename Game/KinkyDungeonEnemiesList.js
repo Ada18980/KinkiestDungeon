@@ -1600,7 +1600,7 @@ let KinkyDungeonEnemies = [
 		followLeashedOnly: true, ignorechance: 0, armor: 0, followRange: 3, AI: "hunt",  buffallies: true, spellRdy: true, sneakthreshold: 0.95,
 		evasion: -0.5,
 		nonDirectional: true,
-		spells: ["OrbHeal"], spellCooldownMult: 1, spellCooldownMod: 3, tilesMinRange: 1, stopToCast: true, kite: 1.5, kiteChance: 0.9,
+		spells: ["OrbHeal"], spellCooldownMult: 1, spellCooldownMod: 0, tilesMinRange: 1, stopToCast: true, kite: 1.5, kiteChance: 0.9,
 		visionRadius: 10, blindSight: 10, maxhp: 10, minLevel:3, weight:1.5, movePoints: 3, attackPoints: 4, attack: "SpellMeleeBlindWill", blindTime: 3, attackWidth: 8, attackRange: 1, power: 6, dmgType: "fire",
 		terrainTags: {"willAnger":4, "willRage":4, "magical": 4, "elf": 6}, shrines: ["Will"], allFloors: true, dropTable: [{name: "Ectoplasm", weight: 9}, {name: "ElfCrystal", weight: 3}],
 		events: [
@@ -2576,7 +2576,7 @@ let KDOndeath = {
 		if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 9) {
 			if (!KinkyDungeonFlags.get("gotDollID")) {
 				let dropped = {x:enemy.x, y:enemy.y, name: "DollID"};
-				KinkyDungeonGroundItems.push(dropped);
+				KDMapData.GroundItems.push(dropped);
 				KinkyDungeonSetFlag("gotDollID", -1, 1);
 			}
 		}

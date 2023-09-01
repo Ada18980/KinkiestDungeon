@@ -924,7 +924,7 @@ function KinkyDungeonDisarm(Enemy, suff) {
 			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
 			KinkyDungeonInventoryRemove(KinkyDungeonInventoryGetWeapon(weapon));
 
-			KinkyDungeonGroundItems.push(dropped);
+			KDMapData.GroundItems.push(dropped);
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonDisarm" + (suff ? suff : "")), "#ff0000", 2);
 
 			return true;

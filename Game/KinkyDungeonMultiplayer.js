@@ -121,13 +121,13 @@ function KinkyDungeonUpdateFromData() {
 		}
 	}
 	if (KinkyDungeonGameData.items) {
-		KinkyDungeonGroundItems = [];
+		KDMapData.GroundItems = [];
 		let items = JSON.parse(KinkyDungeonGameData.items);
 
 		for (let N = 0; N < items.length; N++) {
 			let item = items[N].split('/');
 			let i = 1;
-			KinkyDungeonGroundItems.push({name:item[i++], x:item[i++], y:item[i++]});
+			KDMapData.GroundItems.push({name:item[i++], x:item[i++], y:item[i++]});
 		}
 	}
 
@@ -171,7 +171,7 @@ function KinkyDungeonPackData(IncludeMap, IncludeItems, IncludeInventory, Includ
 		return value;
 	});
 
-	let items = IncludeItems ? JSON.stringify(KinkyDungeonGroundItems, (key, value) => {
+	let items = IncludeItems ? JSON.stringify(KDMapData.GroundItems, (key, value) => {
 		if (CommonIsNumeric(key) && typeof value === "object") {
 			if (value.name) {
 				return "G/" + value.name + "/"+value.x+"/"+value.y;

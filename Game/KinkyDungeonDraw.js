@@ -1205,7 +1205,7 @@ function KinkyDungeonDrawGame() {
 
 
 					}
-					let items = KinkyDungeonGroundItems.filter((item) => {return item.x == cursorX && item.y == cursorY;});
+					let items = KDMapData.GroundItems.filter((item) => {return item.x == cursorX && item.y == cursorY;});
 					if (items.length > 0) {
 						tooltips.push((offset) => KDDrawItemsTooltip(items, offset));
 					}
@@ -1584,7 +1584,7 @@ function KinkyDungeonDrawGame() {
 					return true;
 				}, true, 600, 560, 300, 64, "Increment Floor", "#ffffff", "");
 				DrawButtonKDEx("debugHeart", (bdata) => {
-					KinkyDungeonGroundItems.push({x:KinkyDungeonPlayerEntity.x, y:KinkyDungeonPlayerEntity.y, name: "Heart"});
+					KDMapData.GroundItems.push({x:KinkyDungeonPlayerEntity.x, y:KinkyDungeonPlayerEntity.y, name: "Heart"});
 					return true;
 				}, true, 600, 640, 300, 64, "Spawn amulet", "#ffffff", "");
 

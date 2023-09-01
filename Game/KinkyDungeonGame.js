@@ -166,6 +166,8 @@ function KDDefaultMapData(RoomType = "", MapMod = "") {
 
 		ConstantX: false,
 
+		GroundItems: [],
+
 		Entities : [],
 		FogGrid : [],
 		Grid : "",
@@ -361,7 +363,7 @@ function KinkyDungeonInitialize(Level, Load) {
 	KDMapData.Entities = [];
 	KDUpdateEnemyCache = true;
 	KDMapData.Bullets = [];
-	KinkyDungeonGroundItems = [];
+	KDMapData.GroundItems = [];
 
 	KinkyDungeonTextMessage = "";
 	KinkyDungeonActionMessage = "";
@@ -495,6 +497,19 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 		KinkyDungeonLoseJailKeys();
 		KinkyDungeonSendActionMessage(10, TextGet("KDClimbUpTrapped"), "#ff0000", 3);
 	}
+
+	// Strip non-persistent items
+	let persistentItems = KDMapData.GroundItems.filter((item) => {
+		return KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent;
+	});
+	let lostItems = KDMapData.GroundItems.filter((item) => {
+		return !(KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent);
+	});
+
+	KDMapData.GroundItems = persistentItems;
+	for (let item of lostItems) {
+		KDAddLostItemSingle(item.name, item.amount || 1);
+	}
 	return true;
 }
 
@@ -526,7 +541,6 @@ function KDInitTempValues(seed) {
 	KDEnemyCache = new Map();
 	KinkyDungeonTargetTile = null;
 	KinkyDungeonTargetTileLocation = "";
-	KinkyDungeonGroundItems = []; // Clear items on the ground
 
 	KDGameData.OfferFatigue = 0;
 	KDGameData.KeyringLocations = [];
@@ -615,6 +629,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 		KDMapData.ShortcutPosition = null;
 		KDMapData.PatrolPoints = [];
 		KDMapData.JailPoints = [];
+		KDMapData.GroundItems = []; // Clear items on the ground
 
 
 		// These are generated before the seed as they depend on the player's restraints and rep
@@ -2101,7 +2116,7 @@ function KinkyDungeonPlaceLore(width, height) {
 	let maxcount = 2;
 	while (loreList.length > 0) {
 		let N = Math.floor(KDRandom()*loreList.length);
-		KinkyDungeonGroundItems.push({x:loreList[N].x, y:loreList[N].y, name: "Lore"});
+		KDMapData.GroundItems.push({x:loreList[N].x, y:loreList[N].y, name: "Lore"});
 		count += 1;
 		if (count >= maxcount)
 			return count;
@@ -2124,7 +2139,7 @@ function KinkyDungeonPlaceHeart(width, height, Floor) {
 	while (heartList.length > 0) {
 		let N = Math.floor(KDRandom()*heartList.length);
 		if (!KDGameData.HeartTaken) {
-			KinkyDungeonGroundItems.push({x:heartList[N].x, y:heartList[N].y, name: "Heart"});
+			KDMapData.GroundItems.push({x:heartList[N].x, y:heartList[N].y, name: "Heart"});
 		}
 		return true;
 	}
@@ -2534,9 +2549,9 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 				if (KinkyDungeonTilesGet(trap.x + "," + trap.y)) {
 					KinkyDungeonTilesGet(trap.x + "," + trap.y).StepOffTrap = "DoorLock";
 					KinkyDungeonTilesGet(trap.x + "," + trap.y).Lock = undefined;
-					for (let item of KinkyDungeonGroundItems) {
+					for (let item of KDMapData.GroundItems) {
 						if (item.x == trap.x && item.y == trap.y && item.name == "Gold") {
-							KinkyDungeonGroundItems.splice(KinkyDungeonGroundItems.indexOf(item), 1);
+							KDMapData.GroundItems.splice(KDMapData.GroundItems.indexOf(item), 1);
 						}
 					}
 				}
@@ -2556,7 +2571,7 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 				});
 				if (KDRandom() < 0.05) {
 					let dropped = {x:trap.x, y:trap.y, name: "Gold", amount: 1};
-					KinkyDungeonGroundItems.push(dropped);
+					KDMapData.GroundItems.push(dropped);
 				}
 				let spell = t.Spell ? KinkyDungeonFindSpell(t.Spell, true) : "";
 				if (spell && !spell.nonmagical) {
@@ -2771,7 +2786,7 @@ function KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapCh
 								trapLocations.push({x: room.door.x, y: room.door.y});
 								if (KDRandom() < 0.1) {
 									let dropped = {x:room.door.x, y:room.door.y, name: "Gold", amount: 1};
-									KinkyDungeonGroundItems.push(dropped);
+									KDMapData.GroundItems.push(dropped);
 								}
 								lock = true;
 							} else if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(room.door.x, room.door.y+1)) && ((grate && (!room.room || room.room.length > minLockedRoomSize))
@@ -3368,7 +3383,7 @@ function KinkyDungeonListenKeyMove() {
 
 		let MovableTiles = KinkyDungeonGetMovable();
 		let itemsAtTile = (x, y) => {
-			return KinkyDungeonGroundItems.some((item) => {return item.x == KinkyDungeonPlayerEntity.x + x && item.y == KinkyDungeonPlayerEntity.y + y;});
+			return KDMapData.GroundItems.some((item) => {return item.x == KinkyDungeonPlayerEntity.x + x && item.y == KinkyDungeonPlayerEntity.y + y;});
 		};
 
 		if ((KinkyDungeonGameKey.keyPressed[0]) && (itemsAtTile(0, -1) || MovableTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x,  KinkyDungeonPlayerEntity.y - 1)))) moveDirection = KinkyDungeonGetDirection(0, -1);
@@ -3914,7 +3929,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 				KinkyDungeonWaitMessage();
 				KinkyDungeonAdvanceTime(1); // was moveDirection.delta, but became too confusing
 			}
-		} else if (KinkyDungeonGroundItems.some((item) => {return item.x == moveX && item.y == moveY;})) {
+		} else if (KDMapData.GroundItems.some((item) => {return item.x == moveX && item.y == moveY;})) {
 			// We can pick up items inside walls, in case an enemy drops it into bars
 			KinkyDungeonItemCheck(moveX, moveY, MiniGameKinkyDungeonLevel);
 			KinkyDungeonInterruptSleep();

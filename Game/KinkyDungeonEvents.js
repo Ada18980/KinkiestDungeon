@@ -5079,7 +5079,7 @@ let KDEventMapGeneric = {
 	"beforeDamage": {
 		"LeastResistance": (e, data) => {
 			if (KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.01 && KinkyDungeonStatsChoice.has("LeastResistance")) {
-				if (data.attacker && data.target.player && data.bound && (data.attacker.player || !data.target.player || KinkyDungeonAggressive(data.attacker))) {
+				if (data.attacker && data.target.player && data.bound && data.eventable && (data.attacker.player || !data.target.player || KinkyDungeonAggressive(data.attacker))) {
 					if (data.attacker.player) {
 						KinkyDungeonDealDamage({damage: KinkyDungeonStatWillMax*0.1, type: "acid"});
 					} else {

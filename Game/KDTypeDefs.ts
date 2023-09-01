@@ -1373,6 +1373,8 @@ interface KinkyDialogueTrigger {
 	requireTags?: string[];
 	/** Require one of these tags */
 	requireTagsSingle?: string[];
+	/** Require one of these tags */
+	requireTagsSingle2?: string[];
 	/** Require play to be POSSIBLE */
 	playRequired?: boolean;
 	/** Require play to be ONGOING */
@@ -1950,6 +1952,9 @@ interface KDMapDataType {
 	Checkpoint: string,
 	Title: string,
 
+
+	GroundItems: {x: number, y: number, name: string, amount?: number} [];
+
 	Grid: string;
 	GridWidth: number;
 	GridHeight: number;
@@ -2194,6 +2199,8 @@ interface KDBondageMachineFunc {
 interface KDDroppedItemProp {
 	/** When blindfolded, this item will be invisible if your blind level is equal to this or higher */
 	tinyness?: number,
+	/** This item will be kept when moving between floors*/
+	persistent?: boolean,
 }
 
 type KDParticleData = {
