@@ -1258,7 +1258,7 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 
 	if (KinkyDungeonFlags.get("SpawnMap")) {
 		if (KinkyDungeonSpells.filter((spell) => {return spell.name == "ManaPoolUp";}).length < Math.ceil(MiniGameKinkyDungeonLevel/4))
-			KinkyDungeonGroundItems.push({x:VisitedRooms[0].x*2 + 3, y:(VisitedRooms[0].y*2), name: "LeylineMap"});
+			KDMapData.GroundItems.push({x:VisitedRooms[0].x*2 + 3, y:(VisitedRooms[0].y*2), name: "LeylineMap"});
 		KinkyDungeonSetFlag("SpawnMap", 0);
 	}
 
@@ -1510,11 +1510,11 @@ function KinkyDungeonCreateTutorial(POI, VisitedRooms, width, height, openness, 
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x + xx + 4) + "," + 5, {
 		Type: "Door",
 	});
-	KinkyDungeonGroundItems.push({x:KDMapData.StartPosition.x + xx + 4, y:4, name: "PotionWill"});
+	KDMapData.GroundItems.push({x:KDMapData.StartPosition.x + xx + 4, y:4, name: "PotionWill"});
 
 	KinkyDungeonCreateRectangle(KDMapData.StartPosition.x + xx, 3, 2, 2, false, false, false, false);
 	KinkyDungeonCreateRectangle(KDMapData.StartPosition.x + xx, 3, 1, 5, false, false, false, false);
-	KinkyDungeonGroundItems.push({x:KDMapData.StartPosition.x + xx, y:4, name: "PotionWill"});
+	KDMapData.GroundItems.push({x:KDMapData.StartPosition.x + xx, y:4, name: "PotionWill"});
 	KinkyDungeonMapSet(VisitedRooms[0].x + xx + 1, 5, 'T');
 	KinkyDungeonTilesSet((VisitedRooms[0].x + xx + 1) + "," + 5, {
 		Type: "Trap",
@@ -1548,7 +1548,7 @@ function KinkyDungeonCreateTutorial(POI, VisitedRooms, width, height, openness, 
 	xx = 22;
 	KinkyDungeonCreateRectangle(KDMapData.StartPosition.x + xx, 3, 2, 2, false, false, false, false);
 	KinkyDungeonCreateRectangle(KDMapData.StartPosition.x + xx, 3, 1, 5, false, false, false, false);
-	KinkyDungeonGroundItems.push({x:KDMapData.StartPosition.x + xx, y:4, name: "PotionMana"});
+	KDMapData.GroundItems.push({x:KDMapData.StartPosition.x + xx, y:4, name: "PotionMana"});
 	KinkyDungeonMapSet(VisitedRooms[0].x + xx + 1, 5, 'd');
 	KinkyDungeonTilesSet((VisitedRooms[0].x + xx + 1) + "," + 5, {
 		Type: "Door",
@@ -1567,7 +1567,7 @@ function KinkyDungeonCreateTutorial(POI, VisitedRooms, width, height, openness, 
 	xx = 28;
 	KinkyDungeonCreateRectangle(KDMapData.StartPosition.x + xx, 3, 7, 2, false, false, false, false);
 	KinkyDungeonCreateRectangle(KDMapData.StartPosition.x + xx, 3, 1, 5, false, false, false, false);
-	KinkyDungeonGroundItems.push({x:KDMapData.StartPosition.x + xx, y:4, name: "PotionFrigid"});
+	KDMapData.GroundItems.push({x:KDMapData.StartPosition.x + xx, y:4, name: "PotionFrigid"});
 	KinkyDungeonMapSet(VisitedRooms[0].x + xx + 1, 5, 'T');
 	KinkyDungeonTilesSet((VisitedRooms[0].x + xx + 1) + "," + 5, {
 		Type: "Trap",
@@ -1585,7 +1585,7 @@ function KinkyDungeonCreateTutorial(POI, VisitedRooms, width, height, openness, 
 	xx = 36;
 	KinkyDungeonCreateRectangle(KDMapData.StartPosition.x + xx, 3, 5, 2, false, false, false, false);
 	KinkyDungeonCreateRectangle(KDMapData.StartPosition.x + xx, 3, 1, 5, false, false, false, false);
-	KinkyDungeonGroundItems.push({x:KDMapData.StartPosition.x + xx + 4, y:4, name: "RedKey"});
+	KDMapData.GroundItems.push({x:KDMapData.StartPosition.x + xx + 4, y:4, name: "RedKey"});
 
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + xx - 1, VisitedRooms[0].y*2 + 1, 'G');
 	KinkyDungeonTilesSet("" + (KDMapData.StartPosition.x + xx - 1) + "," + (VisitedRooms[0].y*2 + 1), {Type: "Ghost", Msg: "Tutorial3_1"});

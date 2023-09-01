@@ -1574,7 +1574,7 @@ function KDDropStolenItems(enemy) {
 		for (let name of enemy.items) {
 			if (!enemy.tempitems || !enemy.tempitems.includes(name)) {
 				let item = {x:enemy.x, y:enemy.y, name: name};
-				KinkyDungeonGroundItems.push(item);
+				KDMapData.GroundItems.push(item);
 			}
 		}
 		enemy.items = [];
@@ -1725,13 +1725,13 @@ function KDDropItems(enemy) {
 			for (let i of KDShops[enemy.data.shop].items) {
 				if (!enemy.tempitems || !enemy.tempitems.includes(i)) {
 					dropped = {x:enemy.x, y:enemy.y, name: i};
-					KinkyDungeonGroundItems.push(dropped);
+					KDMapData.GroundItems.push(dropped);
 				}
 			}
 		}
 		if (KDEnemyHasFlag(enemy, "Shop")) {
 			dropped = {x:enemy.x, y:enemy.y, name: "Gold", amount: 100};
-			KinkyDungeonGroundItems.push(dropped);
+			KDMapData.GroundItems.push(dropped);
 		}
 	}
 }
@@ -2638,7 +2638,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.ignoreLocks = enemy.Enemy.keys || enemy.keys || enemy == KinkyDungeonJailGuard() || (KDEnemyHasFlag(enemy, "keys"));
 	AIData.harmless = (KinkyDungeonPlayerDamage.dmg <= enemy.Enemy.armor || !KinkyDungeonHasWill(0.1)) && !KinkyDungeonFlags.has("PlayerCombat") && !KinkyDungeonCanTalk() && !KinkyDungeonCanUseWeapon() && KinkyDungeonSlowLevel > 1;
 
-	AIData.directionOffset = enemy.Enemy.nonDirectional ? 0 : (enemy.flip ? AIData.visionRadius : -AIData.visionRadius);
+	AIData.directionOffset = enemy.Enemy.nonDirectional ? 0 : (enemy.flip ? Math.max(1, AIData.visionRadius - 2) : -Math.max(1, AIData.visionRadius - 2));
 
 	AIData.playerDist = KDistEuclidean(enemy.x - player.x, enemy.y - player.y);
 	AIData.playerDistDirectional = KDistEuclidean(enemy.x + AIData.directionOffset - player.x, enemy.y - player.y);
@@ -2945,6 +2945,15 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					}
 				}
 				if (!hastag) end = true;
+				hastag = !trigger.requireTagsSingle2;
+				if (!end && trigger.requireTagsSingle2) {
+					for (let tt of trigger.requireTagsSingle2) {
+						if (enemy.Enemy.tags[tt]) {
+							hastag = true;
+							break;
+						}
+					}
+				}
 				if (!end && (!trigger.prerequisite || trigger.prerequisite(enemy, AIData.playerDist, AIData))) {
 					weight =  trigger.weight(enemy, AIData.playerDist);
 				}
@@ -4349,7 +4358,6 @@ function KinkyDungeonCanSwapWith(e, Enemy) {
 	if (KDIsImmobile(e)) return false; // Definition of noSwap
 	if (e && KDEnemyHasFlag(e, "noswap")) return false; // Definition of noSwap
 
-
 	if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits && Enemy != KinkyDungeonJailGuard() && !KinkyDungeonAggressive(Enemy)) return false;
 	// Only jailguard or aggressive enemy is allowed to swap into offlimits spaces unless hostile
 
@@ -5254,16 +5262,30 @@ function KDSetLoadout(enemy, loadout) {
 function KDClearItems(enemy) {
 	if (enemy.items) {
 		for (let item of enemy.items) {
-			if (KinkyDungeonFindWeapon(item)) {
-				KinkyDungeonAddLostItems([{name: item, type: Weapon, id: KinkyDungeonGetItemID()}], false);
-			} else if (KinkyDungeonGetRestraintByName(item) && KinkyDungeonGetRestraintByName(item).showInQuickInv) {
-				KinkyDungeonAddLostItems([{name: item, type: LooseRestraint, quantity: 1, id: KinkyDungeonGetItemID()}], false);
-			} else if (KinkyDungeonFindConsumable(item)) {
-				KinkyDungeonAddLostItems([{name: item, type: Consumable, quantity: 1, id: KinkyDungeonGetItemID()}], false);
-			}
+			KDAddLostItemSingle(item);
 		}
 		enemy.items = undefined;
 	}
+}
+
+/**
+ *
+ * @param {string} item
+ * @param {number} quantity
+ * @returns {boolean}
+ */
+function KDAddLostItemSingle(item, quantity = 1) {
+	if (KinkyDungeonFindWeapon(item)) {
+		KinkyDungeonAddLostItems([{name: item, type: Weapon, id: KinkyDungeonGetItemID()}], false);
+		return true;
+	} else if (KinkyDungeonGetRestraintByName(item) && (KinkyDungeonGetRestraintByName(item).armor || KDRestraintSpecial(item))) {
+		KinkyDungeonAddLostItems([{name: item, type: LooseRestraint, quantity: 1, id: KinkyDungeonGetItemID()}], false);
+		return true;
+	} else if (KinkyDungeonFindConsumable(item)) {
+		KinkyDungeonAddLostItems([{name: item, type: Consumable, quantity: 1, id: KinkyDungeonGetItemID()}], false);
+		return true;
+	}
+	return false;
 }
 
 /**

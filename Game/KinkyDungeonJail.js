@@ -61,7 +61,7 @@ function KinkyDungeonLoseJailKeys(Taken, boss, enemy) {
 	}
 	if (boss) {
 		KDGameData.JailKey = false;
-		KinkyDungeonGroundItems = KinkyDungeonGroundItems.filter((item) => {return item.name != "Keyring";});
+		KDMapData.GroundItems = KDMapData.GroundItems.filter((item) => {return item.name != "Keyring";});
 	}
 }
 
@@ -69,7 +69,7 @@ function KinkyDungeonUpdateJailKeys() {
 	if (!KDGameData.JailKey) {
 		let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
 		if ((!altRoom || !altRoom.nokeys) && (!KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel) || !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel).nokeys)) {
-			let keyCount = KinkyDungeonGroundItems.filter((item) => {return item.name == "Keyring";}).length;
+			let keyCount = KDMapData.GroundItems.filter((item) => {return item.name == "Keyring";}).length;
 			for (let i = 0; i < 2 - keyCount; i++) {
 				KinkyDungeonPlaceJailKeys();
 			}
@@ -402,8 +402,8 @@ function KinkyDungeonPlaceJailKeys() {
 		if (KDGameData.KeyringLocations && i < KDGameData.KeyringLocations.length) {
 			slot = KDGameData.KeyringLocations[Math.floor(KDRandom() * KDGameData.KeyringLocations.length)];
 		}
-		if (i < 1000 && !KinkyDungeonGroundItems.some((item) => {return item.name == "Keyring" && KDistChebyshev(item.x - slot.x, item.y - slot.y) < KDMapData.GridHeight / 3;})) {
-			KinkyDungeonGroundItems.push({x:slot.x, y:slot.y, name: "Keyring"});
+		if (i < 1000 && !KDMapData.GroundItems.some((item) => {return item.name == "Keyring" && KDistChebyshev(item.x - slot.x, item.y - slot.y) < KDMapData.GridHeight / 3;})) {
+			KDMapData.GroundItems.push({x:slot.x, y:slot.y, name: "Keyring"});
 		}
 		i++;
 		return true;
@@ -1145,7 +1145,7 @@ function KDKickEnemies(nearestJail, ignoreAware) {
 							}
 						}
 
-					if (!KDEnemyHasFlag(e, "imprisoned") && e.boundLevel && e.boundLevel < 9000) e.boundLevel = 0;
+					if (!KDEnemyHasFlag(e, "imprisoned") && e.boundLevel && !KDHelpless(e)) e.boundLevel = 0;
 				}
 			if (e.hostile < 9000) e.hostile = 0;
 			KDExpireFlags(e);

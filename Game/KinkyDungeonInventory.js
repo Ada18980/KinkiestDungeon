@@ -135,7 +135,7 @@ function KDCloseQuickInv() {
 }
 
 function KDRestraintSpecial(item) {
-	return KDRestraint(item).enchanted || KDRestraint(item).special || KDRestraint(item).showInQuickInv || item.showInQuickInv;
+	return KDRestraint(item)?.enchanted || KDRestraint(item)?.special || KDRestraint(item)?.showInQuickInv || item.showInQuickInv;
 }
 
 function KDSwitchWeapon() {
@@ -1503,7 +1503,7 @@ function KDDropItemInv(name, player, playerDropped = true) {
 
 		let dropped = {x:player.x, y:player.y, name: name, amount: 1, playerDropped: playerDropped};
 
-		KinkyDungeonGroundItems.push(dropped);
+		KDMapData.GroundItems.push(dropped);
 
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 	}
@@ -1661,7 +1661,7 @@ function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground
 
 	}
 	if (ground) {
-		let list = KinkyDungeonGroundItems;
+		let list = KDMapData.GroundItems;
 		for (let inv of list) {
 			if (KinkyDungeonInventoryVariants[inv.name]) {
 				found[inv.name] = true;

@@ -1,5 +1,4 @@
 "use strict";
-let KinkyDungeonGroundItems = []; // Tracking all items on the ground
 
 /** Certain items, when dropped, have specific properties
  * @type {Record<string, KDDroppedItemProp>}
@@ -25,6 +24,13 @@ let KDDroppedItemProperties = {
 	},
 	"Scissors": {
 		tinyness: 3,
+	},
+	"Heart": {
+		persistent: true,
+	},
+	"Lore": {
+		tinyness: 3,
+		persistent: true,
 	},
 
 };
@@ -57,7 +63,7 @@ function KinkyDungeonItemDrop(x, y, dropTable, summoned) {
 							console.log("Failed to find point to drop " + TextGet("KinkyDungeonInventoryItem" + dropWeights[L].drop.name));
 						}
 					}
-					KinkyDungeonGroundItems.push(dropped);
+					KDMapData.GroundItems.push(dropped);
 					KinkyDungeonSetFlag("ItemDrop_" + dropped.name, Math.round(12 + KDRandom() * 8));
 					return dropped;
 				}
@@ -101,7 +107,7 @@ function KinkyDungeonDropItem(Item, Origin, AllowOrigin, noMsg, allowEnemies) {
 			dropped.amount = Item.amount;
 		}
 
-		KinkyDungeonGroundItems.push(dropped);
+		KDMapData.GroundItems.push(dropped);
 		if (!noMsg)
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonDrop" + Item.name), "#ff0000", 2);
 
@@ -240,10 +246,10 @@ function KinkyDungeonItemEvent(Item) {
 
 
 function KinkyDungeonItemCheck(x, y, Index) {
-	for (let I = 0; I < KinkyDungeonGroundItems.length; I++) {
-		let item = KinkyDungeonGroundItems[I];
+	for (let I = 0; I < KDMapData.GroundItems.length; I++) {
+		let item = KDMapData.GroundItems[I];
 		if (x == item.x && y == item.y) {
-			KinkyDungeonGroundItems.splice(I, 1);
+			KDMapData.GroundItems.splice(I, 1);
 			I -= 1;
 			KinkyDungeonItemEvent(item);
 		}
@@ -256,7 +262,7 @@ function KDCanSeeDroppedItem(item) {
 }
 
 function KinkyDungeonDrawItems(canvasOffsetX, canvasOffsetY, CamX, CamY) {
-	for (let item of KinkyDungeonGroundItems) {
+	for (let item of KDMapData.GroundItems) {
 		let sprite = item.name;
 		if (KinkyDungeonGetRestraintByName(item.name)) sprite = "Restraint";
 		if (item.x >= CamX && item.y >= CamY && item.x < CamX + KinkyDungeonGridWidthDisplay && item.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(item.x, item.y) > 0) {

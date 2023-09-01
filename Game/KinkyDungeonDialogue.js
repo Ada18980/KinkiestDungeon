@@ -1243,6 +1243,53 @@ function KDYesNoTemplate(setupFunction, yesFunction, noFunction, domFunction) {
 	return dialogue;
 }
 
+
+/**
+ *
+ * @param {string} name
+ * @param {string[]} goddess
+ * @param {string[]} allowedPrisonStates
+ * @param {string[]} allowedPersonalities
+ * @param {string[]} requireTagsSingle
+ * @param {string[]} requireTags
+ * @param {string[]} excludeTags
+ * @param {string[]} requireFlags
+ * @param {string[]} excludeFlags
+ * @param {string[]} restraintTags
+ * @returns {KinkyDialogueTrigger}
+ */
+function KDDialogueTriggerOffer(name, goddess, restraintTags, allowedPrisonStates, allowedPersonalities, requireTagsSingle, requireTagsSingle2, requireTags, excludeTags, requireFlags, excludeFlags) {
+	let trigger = {
+		dialogue: name,
+		allowedPrisonStates: allowedPrisonStates,
+		allowedPersonalities: allowedPersonalities,
+		requireTagsSingle: requireTagsSingle,
+		requireTagsSingle2: requireTagsSingle2,
+		requireTags: requireTags,
+		excludeTags: excludeTags,
+		playRequired: true,
+		nonHostile: true,
+		noCombat: true,
+		noAlly: true,
+		blockDuringPlaytime: false,
+		onlyDuringPlay: true,
+		allowPlayExceptionSub: true,
+		prerequisite: (enemy, dist, AIData) => {
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.1,restraintTags));
+		},
+		weight: (enemy, dist) => {
+			if (requireFlags && !requireFlags.some((element) => KinkyDungeonFlags.get(element))) {
+				return 0;
+			}
+			if (excludeFlags && excludeFlags.some((element) => KinkyDungeonFlags.get(element))) {
+				return 0;
+			}
+			return 1 + 0.4 * Math.max(...goddess.map((element) => {return (Math.abs(KinkyDungeonGoddessRep[element])/100);}));
+		},
+	};
+	return trigger;
+}
+
 /**
  *
  * @param {string} name
