@@ -112,7 +112,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["WitchFlame", [
-		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "Myrtrice"},
+		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customPlayLine: "", customIntro: "All creatures are made to bow to me.", customSprite: "Myrtrice"},
 	],
 	],
 	["WitchSlime", [

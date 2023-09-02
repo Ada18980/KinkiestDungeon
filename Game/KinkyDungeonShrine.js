@@ -778,7 +778,10 @@ function KinkyDungeonDrawPerkOrb() {
 		}
 		KDPerkConfirm = true;
 		return true;
-	}, true, 1250 - bwidth/2, 750, bwidth, bheight, TextGet("KinkyDungeonPerkAccept" + (KDPerkConfirm ? "Confirm" : "")), "#ffffff");
+	}, true, 1250 - bwidth/2, 750, bwidth, bheight, TextGet("KinkyDungeonPerkAccept" + (KDPerkConfirm ? "Confirm" : "")), "#ffffff",
+	undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
+		zIndex: 70,
+	});
 
 
 }
