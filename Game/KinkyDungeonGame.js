@@ -1055,6 +1055,8 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 	KDTileToTest = null;
 	KDPathCache = new Map();
 	KDPathCacheIgnoreLocks = new Map();
+
+	KinkyDungeonGenNavMap();
 }
 
 let KDStageBossGenerated = false;
