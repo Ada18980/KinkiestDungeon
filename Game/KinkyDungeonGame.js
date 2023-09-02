@@ -778,7 +778,7 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 
 		KDMapData.GuardFaction = [];
 		if (mapMod?.guardType) KDMapData.GuardFaction.push(mapMod.guardType);
-		else if (altType?.guardType) KDMapData.GuardFaction.push(mapMod.guardType);
+		else if (altType?.guardType) KDMapData.GuardFaction.push(altType.guardType);
 		let bonus = (mapMod && mapMod.bonusTags) ? mapMod.bonusTags : undefined;
 		if (altType && altType.bonusTags) {
 			if (!bonus) bonus = altType.bonusTags;
@@ -877,6 +877,8 @@ function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFacti
 			console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 			continue;
 		}
+
+		KinkyDungeonGenNavMap();
 
 		if (altType && !altType.noFurniture)
 			KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, altType); // Replace random internal walls with doodads
@@ -2068,7 +2070,7 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 						'0', requireTags, true);
 					if (Enemy) {
-						let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, undefined, false, (xx, yy) => {
+						let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, undefined, true, (xx, yy) => {
 							return !KDEffectTileTags(xx, yy).rune;
 						});
 
