@@ -45,6 +45,37 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Garss", color: "#ff8888", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
+	["Conjurer", [
+		{name: "Stela", color: "#9c2767", prisoner: false, free: true, customPlayLine: "Selly", customIntro: "I am Stela. But to you, sweetie? Call me Mistress.", customSprite: "Selly",
+			pets: {
+				"Frog": [
+					{name: "Parov", color: "#781d4f", prisoner: false, free: true, customPlayLine: "", customIntro: "Glorp glorpy glorp.", customSprite: "Parov"},
+				]
+			},
+		},
+		{name: "Sariel", color: "#aa88ff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "",
+			pets: {
+				"Frog": [
+					{name: "Fred", color: "#88ff88", prisoner: false, free: true, customPlayLine: "", customIntro: "Glorp glorpy glorp.", customSprite: ""},
+				]
+			},
+		},
+		{name: "Kathy", color: "#aaff88", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "",
+			pets: {
+				"Frog": [
+					{name: "Fred", color: "#88ff88", prisoner: false, free: true, customPlayLine: "", customIntro: "Glorp glorpy glorp.", customSprite: ""},
+				]
+			},
+		},
+		{name: "Luna", color: "#ffaa88", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "",
+			pets: {
+				"Frog": [
+					{name: "Fred", color: "#88ff88", prisoner: false, free: true, customPlayLine: "", customIntro: "Glorp glorpy glorp.", customSprite: ""},
+				]
+			},
+		},
+	],
+	],
 	["DragonShadow", [
 		{name: "Gwen", color: "#7b43ef", prisoner: false, free: true, customPlayLine: "DragonShadowGwen", customIntro: "", customSprite: ""},
 	],
@@ -576,12 +607,13 @@ let KDPatrons = [
  * @param {enemy} Enemy
  * @param {entity} e
  * @param {number} chanceBoost
+ * @returns {any}
  */
 function KDProcessCustomPatron(Enemy, e, chanceBoost) {
 	let chance = 0.05 + (chanceBoost || 0); // Lower chance if 'subordinate'
-	if (KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < chance) {
+	if (!e.CustomName && KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < chance) {
 		let customs = KDPatronCustomEnemies.get(Enemy.name).filter((element) => {
-			return (element.prisoner && Enemy.specialdialogue && Enemy.specialdialogue.includes("Prisoner")) || (element.free && !Enemy.specialdialogue);
+			return (element.prisoner && KDEnemyHasFlag(e, "imprisoned")) || (element.free && !KDEnemyHasFlag(e, "imprisoned"));
 		});
 		if (customs.length > 0) {
 			let custom = customs[Math.floor(customs.length * KDRandom())];
@@ -594,6 +626,36 @@ function KDProcessCustomPatron(Enemy, e, chanceBoost) {
 			if (custom.customIntro) {
 				e.intro = custom.customIntro;
 			}
+			return custom;
 		}
 	}
+	return undefined;
+}
+
+
+/**
+ *
+ * @param {any[]} pets
+ * @param {entity} e
+ * @param {number} index
+ * @returns {any}
+ */
+function KDProcessCustomPatronPet(pets, e, index) {
+	if (pets) {
+		let customs = pets[e.Enemy.name];
+		if (customs?.length > 0 && index < customs.length) {
+			let custom = customs[index];
+			e.CustomName = custom.name;
+			e.CustomNameColor = custom.color;
+			e.CustomSprite = custom.customSprite;
+			if (custom.customPlayLine) {
+				e.playLine = custom.customPlayLine;
+			}
+			if (custom.customIntro) {
+				e.intro = custom.customIntro;
+			}
+			return custom;
+		}
+	}
+	return undefined;
 }

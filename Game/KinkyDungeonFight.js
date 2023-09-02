@@ -1589,7 +1589,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 					if (b.bullet.faction) faction = b.bullet.faction;
 					if (sum.faction) faction = sum.faction;
 					let e = KinkyDungeonSummonEnemy(b.x, b.y, summonType, count, rad, sum.strict, sum.time ? sum.time : undefined, sum.hidden, sum.goToTarget, faction, faction && KDFactionRelation("Player", faction) <= -0.5, sum.minRange, undefined, undefined, sum.hideTimer, undefined, KDBulletAoEMod(b), sum.bound ? b.bullet.source : undefined, sum.weakBinding);
-					created += e;
+					created += e.length;
 				}
 			}
 		}
@@ -1601,6 +1601,29 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 }
 
 
+/**
+ *
+ * @param {*} x
+ * @param {*} y
+ * @param {*} summonType
+ * @param {*} count
+ * @param {*} rad
+ * @param {*} strict
+ * @param {*} lifetime
+ * @param {*} hidden
+ * @param {*} goToTarget
+ * @param {*} faction
+ * @param {*} hostile
+ * @param {*} minrad
+ * @param {*} startAware
+ * @param {*} noBullet
+ * @param {*} hideTimer
+ * @param {*} pathfind
+ * @param {*} mod
+ * @param {*} boundTo
+ * @param {*} weakBinding
+ * @returns {entity[]}
+ */
 function KinkyDungeonSummonEnemy(x, y, summonType, count, rad, strict, lifetime, hidden, goToTarget, faction, hostile, minrad, startAware, noBullet, hideTimer, pathfind, mod, boundTo, weakBinding) {
 	let slots = [];
 	for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
@@ -1611,8 +1634,8 @@ function KinkyDungeonSummonEnemy(x, y, summonType, count, rad, strict, lifetime,
 			}
 		}
 
-	if (slots.length == 0) return 0;
-	let created = 0;
+	if (slots.length == 0) return [];
+	let created = [];
 	let maxcounter = 0;
 	let Enemy = KinkyDungeonGetEnemyByName(summonType);
 	for (let C = 0; C < count && (KDMapData.Entities.length < 300 || faction == "Player" || faction == "Ambush" || faction == "Prisoner") && maxcounter < count * 30; C++) {
@@ -1629,7 +1652,8 @@ function KinkyDungeonSummonEnemy(x, y, summonType, count, rad, strict, lifetime,
 			) : null;
 
 			if ((!hidden && !pathfind) || path) {
-				let e = {summoned: true, boundTo: boundTo, weakBinding: weakBinding, faction: faction, hostile: hostile ? 100 : undefined, hideTimer: hideTimer, rage: Enemy.summonRage ? 9999 : undefined, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), gx: goToTarget ? KinkyDungeonTargetX : undefined, gy: goToTarget ? KinkyDungeonTargetY : undefined,
+				let e = {summoned: true, boundTo: boundTo, weakBinding: weakBinding, faction: faction, hostile: hostile ? 100 : undefined, hideTimer: hideTimer, rage: Enemy.summonRage ? 9999 : undefined, Enemy: Enemy,
+					id: KinkyDungeonGetEnemyID(), gx: goToTarget ? KinkyDungeonTargetX : undefined, gy: goToTarget ? KinkyDungeonTargetY : undefined,
 					x:x+slot.x, y:y+slot.y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, lifetime: lifetime, maxlifetime: lifetime, path: path};
 				KDProcessCustomPatron(Enemy, e, 0);
 				KDAddEntity(e);
@@ -1643,7 +1667,7 @@ function KinkyDungeonSummonEnemy(x, y, summonType, count, rad, strict, lifetime,
 					e.vp = 2;
 					e.aware = true;
 				}
-				created += 1;
+				created.push(e);
 			}
 		} else C -= 1;
 		maxcounter += 1;

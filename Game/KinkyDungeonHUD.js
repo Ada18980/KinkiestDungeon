@@ -1933,7 +1933,10 @@ function KinkyDungeonHandleHUD() {
 			if (MouseIn(1500, 100, 100, 64)) {
 				let enemy = KinkyDungeonEnemies.find((element) => {return element.name.toLowerCase() == ElementValue("DebugEnemy").toLowerCase();});
 				if (enemy) {
-					KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, enemy.name, 1, 1.5);
+					let en = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, enemy.name, 1, 1.5);
+					if (en[0]) {
+						KDProcessCustomPatron(en[0].Enemy, en[0], 0.2);
+					}
 				}
 				return true;
 			}else
