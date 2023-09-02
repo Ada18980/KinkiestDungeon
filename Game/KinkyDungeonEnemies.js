@@ -734,11 +734,11 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 			if (tx >= CamX && ty >= CamY && tx < CamX + KinkyDungeonGridWidthDisplay && ty < CamY + KinkyDungeonGridHeightDisplay
 				&& KDCanSeeEnemy(enemy, Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y)))
 				&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
-				KDDraw(kdenemyboard, kdpixisprites, enemy.id + "_spellR", KinkyDungeonRootDirectory + "SpellReady.png",
+				KDDraw(kdenemyboard, kdpixisprites, enemy.id + "_spellRdy", KinkyDungeonRootDirectory + "SpellReady.png",
 					(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, enemy.Enemy.color ? {
 						tint: string2hex(enemy.Enemy.color),
-						zIndex: -1,
+						zIndex: -2,
 					} : undefined);
 			}
 		}
@@ -754,7 +754,7 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 					(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, binder.Enemy.color ? {
 						tint: string2hex(binder.Enemy.color),
-						zIndex: -1,
+						zIndex: -2.1,
 					} : undefined);
 			}
 		}
@@ -1600,7 +1600,7 @@ function KDDropStolenItems(enemy) {
 function KinkyDungeonEnemyCheckHP(enemy, E) {
 	if (enemy.hp <= 0) {
 		let noRepHit = false;
-		KinkyDungeonSendEvent("death", {});
+		KinkyDungeonSendEvent("death", {enemy: enemy});
 		KDSpliceIndex(E, 1);
 		KinkyDungeonSendEvent("kill", {enemy: enemy, capture: KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture});
 		if (KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture && enemy.playerdmg) {
@@ -2984,9 +2984,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 
 	// Intro line
-	if (enemy.aware && enemy.Enemy.bound && player?.player && (enemy.CustomName || enemy.intro || enemy.Enemy.intro) && !KDEnemyHasFlag(enemy, "PatronIntro")) {
+	if (enemy.aware && (enemy.Enemy.bound || enemy.intro || enemy.Enemy.intro) && player?.player && (enemy.CustomName || enemy.intro || enemy.Enemy.intro) && !KDEnemyHasFlag(enemy, "PatronIntro")) {
 		KinkyDungeonSendDialogue(enemy, (
-			enemy.intro || enemy.Enemy.intro || TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Intro")
+			enemy.intro || TextGet("KinkyDungeonRemindJail" + (enemy.Enemy.intro || (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "")) + "Intro")
 		)
 			.replace("EnemyName", TextGet("Name" + enemy.Enemy.name))
 			.replace("PTRN", enemy.CustomName), KDGetColor(enemy), 12, 10);

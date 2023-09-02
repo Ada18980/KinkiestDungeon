@@ -94,7 +94,7 @@ let KDTrapTypes = {
 			if (entity.player)
 				KinkyDungeonAddRestraintIfWeaker(restraint, tile.Power, false);
 		}
-		let created = KinkyDungeonSummonEnemy(x, y, "VinePlant", tile.Power, 1);
+		let created = KinkyDungeonSummonEnemy(x, y, "VinePlant", tile.Power, 1).length;
 		if (created > 0) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 			KinkyDungeonTilesDelete(x + "," + y);
@@ -106,7 +106,7 @@ let KDTrapTypes = {
 	},
 	SpawnEnemies: (tile, entity, x, y) => {
 		let radius = tile.Power > 4 ? 4 : 2;
-		let created = KinkyDungeonSummonEnemy(x, y, tile.Enemy, tile.Power, radius, true, undefined, undefined, true, "Ambush", true, 1.5, true);
+		let created = KinkyDungeonSummonEnemy(x, y, tile.Enemy, tile.Power, radius, true, undefined, undefined, true, "Ambush", true, 1.5, true).length;
 		if (created > 0) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 			KinkyDungeonTilesDelete(x + "," + y);
@@ -178,7 +178,7 @@ let KDTrapTypesStepOff = {
 			}
 			if (spawned > 0) {
 				KinkyDungeonMapSet(x, y, 'd');
-				created = KinkyDungeonSummonEnemy(x, y, "DoorLock", 1, 0, false, lifetime);
+				created = KinkyDungeonSummonEnemy(x, y, "DoorLock", 1, 0, false, lifetime).length;
 				if (created > 0) {
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 					KinkyDungeonMakeNoise(12, x, y);

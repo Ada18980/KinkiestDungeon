@@ -1308,7 +1308,7 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 	KinkyDungeonCreateRectangle(0, 0, width, height, true, true, false, false);
 
 	KinkyDungeonCreateRectangle(VisitedRooms[0].x, VisitedRooms[0].y - 1, 2, 2, false, false, false, false);
-	KinkyDungeonCreateRectangle(VisitedRooms[0].x, VisitedRooms[0].y, 6, 1, false, false, false, false);
+	KinkyDungeonCreateRectangle(VisitedRooms[0].x, VisitedRooms[0].y, 4, 1, false, false, false, false);
 
 	// Create a branching room for journeys
 	let b1 = 4;
@@ -1340,10 +1340,10 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 	}
 
 	// Normal end stairs
-	KinkyDungeonMapSet(b1*2 + 5, VisitedRooms[0].y*2, 's');
-	KinkyDungeonMapSet(b1*2 + 5, VisitedRooms[0].y*2 + 1, 'G');
-	KinkyDungeonTilesSet("" + (b1*2 + 5) + "," + (VisitedRooms[0].y*2), {RoomType: "ShopStart", Journey: undefined});
-	KinkyDungeonTilesSet("" + (b1*2 + 5) + "," + (VisitedRooms[0].y*2 + 1), {Type: "Ghost", Msg: "JourneyNone"});
+	KinkyDungeonMapSet(b1*2 + 2, VisitedRooms[0].y*2, 's');
+	KinkyDungeonMapSet(b1*2 + 2, VisitedRooms[0].y*2 + 1, 'G');
+	KinkyDungeonTilesSet("" + (b1*2 + 2) + "," + (VisitedRooms[0].y*2), {RoomType: "ShopStart", Journey: undefined});
+	KinkyDungeonTilesSet("" + (b1*2 + 2) + "," + (VisitedRooms[0].y*2 + 1), {Type: "Ghost", Msg: "JourneyNone"});
 
 	// Tutorial end stairs
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, 's');
@@ -1365,7 +1365,7 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 		x += 2;
 	}
 
-	KDMapData.EndPosition = {x: b1*2 + 5, y: VisitedRooms[0].y*2};
+	KDMapData.EndPosition = {x: b1*2 + 2, y: VisitedRooms[0].y*2};
 }
 
 
@@ -1404,11 +1404,11 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 5, KDMapData.StartPosition.y, "ShopkeeperStart");
 
 	// Normal end stairs
-	KinkyDungeonMapSet(b1*2 + 7, VisitedRooms[0].y*2, 's');
+	KinkyDungeonMapSet(b1*2 - 1, VisitedRooms[0].y*2 - 4, 's');
 	if (MiniGameKinkyDungeonLevel == 0)
 		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: KDGameData.HighestLevel > 0 ? "" : "JourneyFloor"});
 
-	KDMapData.EndPosition = {x: b1*2 + 5, y: VisitedRooms[0].y*2};
+	KDMapData.EndPosition = {x: b1*2 - 1, y: VisitedRooms[0].y*2 - 4};
 }
 
 

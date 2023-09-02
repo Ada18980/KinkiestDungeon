@@ -4272,8 +4272,16 @@ let KDEventMapEnemy = {
 		},
 	},
 	"death": {
+		"frogDies": (e, enemy, data) => {
+			if (enemy.Enemy.name == "Conjurer" && data.enemy.Enemy.name == "Frog" && !KinkyDungeonFlags.get("frogDied")
+				&& KDistChebyshev(enemy.x - data.enemy.x, enemy.y - data.enemy.y) < 10
+				&& (!e.chance || KDRandom() < e.chance) && (!e.prereq || KDPrereqs[e.prereq](enemy, e, data))) {
+				KinkyDungeonSetFlag("frogDied", 1);
+				KinkyDungeonSendDialogue(enemy, TextGet("KDConjurerFrogDied_" + (enemy.playLine || "Witch")), KDGetColor(enemy), 6, 10);
+			}
+		},
 		"createEffectTile": (e, enemy, data) => {
-			if ((!e.chance || KDRandom() < e.chance) && (!e.prereq || KDPrereqs[e.prereq](enemy, e, data))) {
+			if (enemy == data.enemy && (!e.chance || KDRandom() < e.chance) && (!e.prereq || KDPrereqs[e.prereq](enemy, e, data))) {
 				let count = e.power ? e.power : 1;
 				let rad = e.aoe ? e.aoe : 1.5;
 				let minrad = e.dist;
