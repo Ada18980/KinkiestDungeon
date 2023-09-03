@@ -348,6 +348,7 @@ function KinkyDungeonAttachTetherToEntity(dist, entity) {
 	if (inv && KDRestraint(inv).tether) {
 		let newLeash = inv.tetherEntity != entity.id;
 		inv.tetherEntity = entity.id;
+		KDGameData.KinkyDungeonLeashingEnemy = entity.id;
 		if (dist) inv.tetherLength = dist;
 		return newLeash;
 	}

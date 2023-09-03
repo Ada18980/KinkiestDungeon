@@ -110,6 +110,9 @@ let KDIntentEvents = {
 				if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
 					KinkyDungeonRemoveRestraint("ItemDevices", false, false, false);
 					KDResetIntent(enemy, undefined);
+					if (KDGameData.PrisonerState == 'jail') {
+						KDIntentEvents.CaptureJail.trigger(enemy, {});
+					}
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", -1);
 					if (enemy.playWithPlayer > 0)
 						enemy.playWithPlayerCD = Math.max(enemy.playWithPlayer, 30);
@@ -143,6 +146,7 @@ let KDIntentEvents = {
 		nonaggressive: true,
 		noplay: true,
 		forceattack: true,
+		overrideIgnore: true, // Even friendly will do it...
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
 			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released")) ?
@@ -156,6 +160,37 @@ let KDIntentEvents = {
 			let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
 			enemy.IntentLeashPoint = nj ? nj : Object.assign({type: "jail", radius: 1}, KDMapData.StartPosition);
 			if (!nj) KinkyDungeonSetFlag("LeashToPrison", -1, 1);
+		},
+		maintain: (enemy, delta) => {
+			let tethered = KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy);
+			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && !tethered && KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
+				KinkyDungeonAttachTetherToEntity(2.5, enemy);
+				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
+				return true;
+			}
+			else if (KDPlayerLeashed(KinkyDungeonPlayerEntity) && !tethered) {
+				enemy.gx = KinkyDungeonPlayerEntity.x;
+				enemy.gy = KinkyDungeonPlayerEntity.y;
+				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+			} else if (tethered) {
+				enemy.aware = true;
+				if (enemy.playWithPlayer < 10) {
+					enemy.playWithPlayer = 10;
+				}// else enemy.playWithPlayer += delta;
+				if (!enemy.IntentLeashPoint) {
+					let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
+					enemy.IntentLeashPoint = nj ? nj : Object.assign({ type: "jail", radius: 1 }, KDMapData.StartPosition);
+					if (!nj)
+						KinkyDungeonSetFlag("LeashToPrison", -1, 1);
+				}
+
+				enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;
+				enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
+				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+
+				// TODO add release case based on alliance
+			}
+			return false;
 		},
 		arrive: (enemy, AIData) => {
 			if (KDGameData.PrisonerState == 'parole') {
@@ -174,7 +209,6 @@ let KDIntentEvents = {
 		},
 	},
 	"TempLeash": {
-		// Capture and bring to jail
 		aggressive: false,
 		nonaggressive: true,
 		noplay: true,
