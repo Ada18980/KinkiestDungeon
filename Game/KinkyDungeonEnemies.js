@@ -2490,7 +2490,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 			if (!KDAllied(enemy) && !(enemy.ceasefire > 0)) {
 				if (!(enemy.hostile > 0) && tickAlertTimerFactions.length > 0 && !KinkyDungeonAggressive(enemy) && !enemy.Enemy.tags.peaceful && (enemy.vp > 0.5 || enemy.lifetime < 900 || (!KDHostile(enemy) && KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 7))) {
 					for (let f of tickAlertTimerFactions) {
-						if ((KDGetFaction(enemy) != "Player") && (
+						if ((KDGetFaction(enemy) != "Player") && KDFactionRelation(f, "Chase") > -0.01 && KDFactionRelation(f, "Jail") > -0.01 && (
 							(KDFactionRelation(f, KDGetFaction(enemy)) > 0.15 && KDFactionRelation(f, KDGetFaction(enemy)) < 0.5 && // Favored
 							KDFactionRelation("Player", KDGetFaction(enemy)) < 0.2)
 							|| (KDFactionRelation(f, KDGetFaction(enemy)) >= 0.5 && // Allied
@@ -2656,7 +2656,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.aggressive = KinkyDungeonAggressive(enemy, player);
 	AIData.domMe = (player.player && AIData.aggressive) ? false : KDCanDom(enemy);
 
-	AIData.leashing = enemy.Enemy.tags.leashing && KDFactionRelation(KDGetFaction(enemy), "Jail") > -0.1;
+	AIData.leashing = enemy.Enemy.tags.leashing && (KDFactionRelation(KDGetFaction(enemy), "Jail")) > -0.5;
 	AIData.highdistraction = enemy.distraction > 0 && enemy.distraction >= enemy.Enemy.maxhp * 0.9;
 	AIData.distracted = AIData.highdistraction && KDLoosePersonalities.includes(enemy.personality);
 	// Check if the enemy ignores the player
@@ -5507,8 +5507,16 @@ function KDAssignLeashPoint(enemy) {
 	if (!AIData.nearestJail
 		|| KinkyDungeonFlags.has("LeashToPrison")
 		|| (
-			KDEnemyUnfriendlyToMainFaction(enemy)
+			KDSelfishLeash(enemy)
 		)) AIData.nearestJail = Object.assign({type: "jail", radius: 1}, KDMapData.StartPosition);
+}
+
+/**
+ * Assigns the point an enemy leashes the player to indirectly
+ * @param {entity} enemy
+ */
+function KDSelfishLeash(enemy) {
+	return KDEnemyUnfriendlyToMainFaction(enemy) || KDFactionRelation(KDGetFaction(enemy), "Jail") > -0.2;
 }
 
 /**

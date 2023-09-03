@@ -16,7 +16,7 @@ let KDIntentEvents = {
 			if (KDGameData.PrisonerState == 'jail') return 0;
 			if (KinkyDungeonGetRestraintItem("ItemDevices")) return 0;
 			if (enemy.playWithPlayer > 0) return 0;
-			if (KDEnemyUnfriendlyToMainFaction(enemy)) return 0;
+			if (KDSelfishLeash(enemy)) return 0;
 			if (KDEnemyHasFlag(enemy, "noHarshPlay")) return 0;
 			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]);
 			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) < 14 ? (hostile ? 120 : 40) : 0;
