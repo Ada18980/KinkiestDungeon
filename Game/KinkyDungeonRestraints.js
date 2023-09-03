@@ -375,29 +375,37 @@ function KDIsPlayerTetheredToLocation(player, x, y, entity) {
 /**
  *
  * @param {entity} player
- * @param {entity} entity
+ * @param {entity} [entity]
  */
 function KDIsPlayerTetheredToEntity(player, entity) {
 	if (!player.player) return false;
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).tether && (inv.tx && inv.ty || inv.tetherToLeasher || inv.tetherToGuard || inv.tetherEntity)) {
 			if (entity && inv.tetherEntity && inv.tetherEntity == entity.id) return true;
+			if (!entity && inv.tetherEntity && KinkyDungeonFindID(inv.tetherEntity)) return true;
 		}
 	}
 	return false;
 }
 
-function KDBreakTether() {
-	for (let pair of KinkyDungeonAllRestraintDynamic()) {
-		let inv = pair.item;
-		if (inv && KDRestraint(inv).tether) {
-			inv.tetherToLeasher = false;
-			inv.tetherToGuard = false;
-			inv.tetherEntity = undefined;
-			inv.tx = undefined;
-			inv.ty = undefined;
+/**
+ *
+ * @param {entity} [player]
+ */
+function KDBreakTether(player) {
+	if (player == KinkyDungeonPlayerEntity) {
+		for (let pair of KinkyDungeonAllRestraintDynamic()) {
+			let inv = pair.item;
+			if (inv && KDRestraint(inv).tether) {
+				inv.tetherToLeasher = false;
+				inv.tetherToGuard = false;
+				inv.tetherEntity = undefined;
+				inv.tx = undefined;
+				inv.ty = undefined;
+			}
 		}
 	}
+
 }
 
 let KDLeashPullCost = 0.5;

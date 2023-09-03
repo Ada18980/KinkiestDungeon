@@ -304,7 +304,7 @@ let KDEventMapInventory = {
 		"PrisonerJacket": (e, item, data) => {
 			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
 				let asset = KinkyDungeonPlayer.Appearance[A].Asset;
-				if (asset.Name == KDRestraint(item).Asset) {
+				if (asset?.Name == KDRestraint(item).Asset) {
 					KinkyDungeonPlayer.Appearance[A].Property = {
 						"Text": "PATIENT",
 						"Type": "ShortsAndStraps",
@@ -4250,7 +4250,7 @@ let KDEventMapEnemy = {
 				KDTripleBuffKill("ShadowEngulf", KinkyDungeonPlayerEntity, 9, (tt) => {
 					// Passes out the player, but does NOT teleport
 					KinkyDungeonPassOut(true);
-					KDBreakTether();
+					KDBreakTether(KinkyDungeonPlayerEntity);
 
 					// Instead it applies a debuff, and leash
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,

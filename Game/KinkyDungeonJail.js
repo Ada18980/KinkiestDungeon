@@ -820,7 +820,7 @@ function KinkyDungeonPointInCell(x, y, radius = 2) {
 
 function KinkyDungeonPassOut(noteleport) {
 	KDDefeatedPlayerTick();
-	KDBreakTether();
+	KDBreakTether(KinkyDungeonPlayerEntity);
 	KDGameData.KinkyDungeonLeashedPlayer = 0;
 	KinkyDungeonBlindLevel = 6;
 	KinkyDungeonStatBlind = 10;
@@ -955,7 +955,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		KDDisableAutoWait();
 
 	KDDefeatedPlayerTick();
-	KDBreakTether();
+	KDBreakTether(KinkyDungeonPlayerEntity);
 	KDGameData.CurrentDialog = "";
 	KDGameData.CurrentDialogStage = "";
 	KDGameData.KinkyDungeonLeashedPlayer = 0;

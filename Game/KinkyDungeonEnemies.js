@@ -2417,6 +2417,17 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					enemy.attackPoints = 0;
 					enemy.warningTiles = [];
 
+					// Also let go of leashes here
+					if (enemy == KinkyDungeonLeashingEnemy() && (
+						!enemy.playWithPlayer
+						&& !enemy.IntentAction
+						&& !enemy.IntentLeashPoint
+						&& !KinkyDungeonFlags.get("PlayerDommed")
+						&& !KinkyDungeonAggressive(enemy, KinkyDungeonPlayerEntity)
+					)) {
+						KDBreakTether(KinkyDungeonPlayerEntity);
+					}
+
 					KDEnemySoundDecay(enemy, delta);
 				} else {
 					KDEnemyAddSound(enemy, enemy.Enemy.Sound?.moveAmount != undefined ? enemy.Enemy.Sound?.moveAmount : KDDefaultEnemyMoveSound);
@@ -3818,7 +3829,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								}
 								KDGameData.KinkyDungeonLeashedPlayer = 3 + ap * 2;
 								KDGameData.KinkyDungeonLeashingEnemy = enemy.id;
-								KDBreakTether();
+								KDBreakTether(KinkyDungeonPlayerEntity);
 							}
 							else if (leashPos && ((AIData.attack.includes("Pull") && enemy.x == leashPos.x && enemy.y == leashPos.y) || Math.abs(enemy.x - leashPos.x) > 1.5 || Math.abs(enemy.y - leashPos.y) > 1.5)) {
 								if (!KinkyDungeonHasWill(0.1) && KDRandom() < 0.25) KinkyDungeonMovePoints = -1;
@@ -3836,7 +3847,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												enemySwap.y = KinkyDungeonPlayerEntity.y;
 												enemySwap.warningTiles = [];
 											}
-											if (AIData.leashing)
+											if (AIData.leashing && !KDPlayerIsImmobilized() && !KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity))
 												KinkyDungeonAttachTetherToEntity(2.5, enemy);
 											KDMovePlayer(enemy.x, enemy.y, false);
 											KinkyDungeonTargetTile = null;
@@ -5120,6 +5131,9 @@ function KDPlayerIsStunned() {
 	return KDPlayerIsDisabled() || KinkyDungeonFlags.get("playerStun")
 		|| (KinkyDungeonMovePoints < 0 || KDGameData.KneelTurns > 0 || KinkyDungeonSleepiness > 0);
 }
+function KDPlayerIsImmobilized() {
+	return KinkyDungeonSlowLevel > 9 || KinkyDungeonGetRestraintItem("ItemDevices");
+}
 
 /**
  *
@@ -5651,11 +5665,7 @@ function KDOverrideIgnore(enemy, player) {
 	if (player.player) {
 		if (enemy.IntentAction && (
 			KDIntentEvents[enemy.IntentAction]?.overrideIgnore
-			|| KDIntentEvents[enemy.IntentAction]?.nonaggressive
 		))
-			return true;
-
-		if (enemy == KinkyDungeonLeashingEnemy() && !KinkyDungeonFlags.get("PlayerDommed"))
 			return true;
 	}
 	return false;
