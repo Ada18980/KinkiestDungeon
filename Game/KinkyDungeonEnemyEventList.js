@@ -174,9 +174,7 @@ let KDIntentEvents = {
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
 			} else if (tethered) {
 				enemy.aware = true;
-				if (enemy.playWithPlayer < 10) {
-					enemy.playWithPlayer = 10;
-				}// else enemy.playWithPlayer += delta;
+
 				if (!enemy.IntentLeashPoint) {
 					let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
 					enemy.IntentLeashPoint = nj ? nj : Object.assign({ type: "jail", radius: 1 }, KDMapData.StartPosition);
@@ -189,6 +187,9 @@ let KDIntentEvents = {
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
 
 				// TODO add release case based on alliance
+			}
+			if (enemy.playWithPlayer < 10) {
+				enemy.playWithPlayer = 10;
 			}
 			return false;
 		},

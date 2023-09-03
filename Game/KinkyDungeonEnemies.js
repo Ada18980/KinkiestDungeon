@@ -4394,9 +4394,9 @@ function KinkyDungeonCanSwapWith(e, Enemy) {
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.squeeze && e && e.Enemy && !e.Enemy.squeeze) return false; // Squeeze enemies NEVER have seniority, this can teleport other enemies into walls
 
 	// Should not swap or block the leasher
-	if (e == KinkyDungeonLeashingEnemy()) return false;
+	if (e == KinkyDungeonLeashingEnemy() && Enemy) return false;
 	if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, e.x, e.y, e)) return false; // KD Tethered to entity
-	if (e == KinkyDungeonJailGuard()) return false;
+	if (e == KinkyDungeonJailGuard() && Enemy != KinkyDungeonLeashingEnemy()) return false;
 	if (Enemy == KinkyDungeonLeashingEnemy()) return true;
 	if (Enemy == KinkyDungeonJailGuard()) return true;
 	if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, Enemy.x, Enemy.y, Enemy)) return true; // KD Tethered to entity
