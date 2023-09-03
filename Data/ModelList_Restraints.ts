@@ -366,7 +366,7 @@ AddModel({
 		{ Name: "Toe", Layer: "OverSocks", Pri: 10,
 			Poses: ToMap(["Closed"]),
 			CrossHideOverride: true,
-			HideOverrideLayerMulti: ["ShoeLeft", "ShoeRight", "ShoeLeftHogtie", "ShoeRightKneel"],
+			HideOverrideLayerMulti: ["ToeTie"],
 		},
 	])
 });

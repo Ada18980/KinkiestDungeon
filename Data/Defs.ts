@@ -231,6 +231,11 @@ let LAYERS_BASE = [
 
 /** Handy way of referencing multiple layers */
 let LayerGroups = {
+	"ChestBinding": ToMap([
+		"Chest",
+		"Shirt",
+	]),
+
 	// region slime
 	"SlimeLegs": ToMap([
 		"Thighs",
@@ -366,6 +371,9 @@ let LayerGroups = {
 		"ShoeRightKneel",
 		"SockRightKneel",
 		"FootRightKneel",
+	]),
+	"ToeTie": ToMap([
+		"ShoeLeft", "ShoeRight", "ShoeLeftHogtie", "ShoeRightKneel"
 	]),
 	// endregion
 

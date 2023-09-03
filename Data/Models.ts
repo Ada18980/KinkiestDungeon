@@ -272,8 +272,10 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 			}
 			if (l.CrossHideOverride) {
 				if (l.HideOverrideLayerMulti) {
-					for (let hideLayer of l.HideOverrideLayerMulti) {
-						MC.HighestPriority[hideLayer] = Math.max(MC.HighestPriority[hideLayer] || -500, pri || -500);
+					for (let hideGroup of l.HideOverrideLayerMulti) {
+						for (let hideLayer of Object.keys(LayerGroups[hideGroup])) {
+							MC.HighestPriority[hideLayer] = Math.max(MC.HighestPriority[hideLayer] || -500, pri || -500);
+						}
 					}
 				}
 				if (l.HideOverrideLayer)
@@ -509,10 +511,12 @@ const KDAdjustmentFilterCache: Map<string, PIXIFilter[]> = new Map();
 function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Poses: Record<string, boolean>): boolean {
 	// Hide if not highest
 	if (Layer.HideWhenOverridden) {
-		if (Layer.HideOverrideLayerMulti) {
-			for (let LL of Layer.HideOverrideLayerMulti) {
-				let priTest = MC.HighestPriority[LL];
-				if (priTest > LayerPri(MC, Layer, Model)) return false;
+		if (Layer.HideOverrideLayerMulti && !Layer.ForceSingleOverride) {
+			for (let hideGroup of Layer.HideOverrideLayerMulti) {
+				for (let LL of Object.keys(LayerGroups[hideGroup])) {
+					let priTest = MC.HighestPriority[LL];
+					if (priTest > LayerPri(MC, Layer, Model)) return false;
+				}
 			}
 		} else {
 			let priTest = MC.HighestPriority[Layer.HideOverrideLayer || LayerLayer(MC, Layer, Model)];

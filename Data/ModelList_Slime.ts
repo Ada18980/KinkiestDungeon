@@ -75,8 +75,11 @@ AddModel({
 		{ Name: "TorsoUpper", Layer: "WrappingTorso", Pri: -5,
 			Invariant: true,
 		},
-		{ Name: "Chest", Layer: "BindChest", Pri: -5,
+		{ Name: "Chest", Layer: "BindChest", Pri: 101,
 			Invariant: true,
+			CrossHideOverride: true,
+			HideOverrideLayerMulti: ["ChestBinding"],
+			ForceSingleOverride: true,
 		},
 	])
 });
