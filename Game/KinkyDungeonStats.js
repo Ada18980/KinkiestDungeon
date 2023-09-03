@@ -575,7 +575,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 }
 
 function KinkyDungeonUpdateDialogue(entity, delta) {
-	if (!KinkyDungeonSlowMoveTurns && !KinkyDungeonStatFreeze && !KDGameData.PlaySelfTurns)
+	if (KinkyDungeonSlowMoveTurns < 1 && !KinkyDungeonStatFreeze && !KDGameData.PlaySelfTurns)
 		if (entity.dialogue) {
 			if (entity.dialogueDuration > delta) {
 				entity.dialogueDuration = Math.max(0, entity.dialogueDuration - delta);
