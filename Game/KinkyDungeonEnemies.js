@@ -2430,9 +2430,12 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					if (enemy.vp > sneakThreshold * 2 && !enemy.aware) {
 						let sneak = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak");
 						if (sneak > 0)
-							enemy.vp = Math.max(sneakThreshold + 1, Math.max(Math.min(enemy.vp, sneakThreshold), enemy.vp * 0.7 - 0.1));
+							enemy.vp = Math.max(sneakThreshold + 1, Math.max(Math.min(enemy.vp, sneakThreshold), enemy.vp * 0.7 - 0.1*delta));
 					}
-					enemy.vp = Math.max(0, enemy.vp - 0.1);
+					if (!player?.player || KDistChebyshev(enemy.x - player.x, enemy.y - player.y) > 2.5) {
+						enemy.vp = Math.max(0, enemy.vp - 0.01*delta);
+					}
+
 				}
 
 				// Delete the enemy
@@ -2693,6 +2696,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		// If the player is already being held by another NPC and is not resisting
 		if (KinkyDungeonFlags.get("PlayerDommed") && !KDPlayerDeservesPunishment(enemy, player)) AIData.ignore = true;
 	}
+
+	if (KDOverrideIgnore(enemy, player)) AIData.ignore = false;
 
 	AIData.MovableTiles = KinkyDungeonMovableTilesEnemy;
 	AIData.AvoidTiles = "" + KDDefaultAvoidTiles;
@@ -3079,7 +3084,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.ignoreRanged = AIData.canShootPlayer && KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).ignoreSpells;});
 	// Close the gap to leash
 	if ((AIData.ignoreRanged || (!enemy.Enemy.alwaysKite && AIData.harmless)) && AIData.leashing) AIData.followRange = 1.5;
-	if (enemy == KinkyDungeonJailGuard()) AIData.followRange = 1.5;
+	if (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) AIData.followRange = 1.5;
 
 	AIData.kite = false;
 	AIData.kiteChance = enemy.Enemy.kiteChance ? enemy.Enemy.kiteChance : 0.75;
@@ -3172,10 +3177,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 
 			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || KDDefaultRestraintThresh;
-			AIData.focusOnLeash = (enemy == KinkyDungeonLeashingEnemy() && !AIData.addLeash && (!AIData.addMoreRestraints || !KinkyDungeonGetRestraint(
-				{tags: KDGetTags(enemy, enemy.usingSpecial)}, MiniGameKinkyDungeonLevel,
-				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
-				enemy.Enemy.bypass,
+			AIData.focusOnLeash = (enemy == KinkyDungeonLeashingEnemy() && !AIData.addLeash && (
+				!AIData.addMoreRestraints
+                || !KinkyDungeonAggressive(enemy, KinkyDungeonPlayerEntity)
+				|| !AIData.wantsToAttack
+				|| !KinkyDungeonGetRestraint(
+					{tags: KDGetTags(enemy, enemy.usingSpecial)}, MiniGameKinkyDungeonLevel,
+					KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+					enemy.Enemy.bypass,
 					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 					!(enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 					!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
@@ -5516,7 +5525,7 @@ function KDAssignLeashPoint(enemy) {
  * @param {entity} enemy
  */
 function KDSelfishLeash(enemy) {
-	return KDEnemyUnfriendlyToMainFaction(enemy) || KDFactionRelation(KDGetFaction(enemy), "Jail") > -0.2;
+	return KDEnemyUnfriendlyToMainFaction(enemy) || KDFactionRelation(KDGetFaction(enemy), "Jail") < -0.2;
 }
 
 /**
@@ -5630,4 +5639,24 @@ function KDCanHearEnemy(entity, enemy) {
 /** */
 function KDPointWanderable(x, y) {
 	return KDMapData.RandomPathablePoints[x + ',' + y];
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDOverrideIgnore(enemy, player) {
+	if (player.player) {
+		if (enemy.IntentAction && (
+			KDIntentEvents[enemy.IntentAction]?.overrideIgnore
+			|| KDIntentEvents[enemy.IntentAction]?.nonaggressive
+		))
+			return true;
+
+		if (enemy == KinkyDungeonLeashingEnemy() && !KinkyDungeonFlags.get("PlayerDommed"))
+			return true;
+	}
+	return false;
 }

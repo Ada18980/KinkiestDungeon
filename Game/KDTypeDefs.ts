@@ -2066,6 +2066,8 @@ type AIType = {
 }
 
 type EnemyEvent = {
+	/** Extremely important for leash events */
+	overrideIgnore?: boolean,
 	forceattack?: boolean,
 	aggressive?: boolean,
 	nonaggressive?: boolean,
