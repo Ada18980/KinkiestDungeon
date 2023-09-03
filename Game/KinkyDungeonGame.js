@@ -499,6 +499,7 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	}
 
 	// Strip non-persistent items
+	if (!KDMapData.GroundItems) KDMapData.GroundItems = [];
 	let persistentItems = KDMapData.GroundItems.filter((item) => {
 		return KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent;
 	});

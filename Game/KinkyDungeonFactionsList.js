@@ -278,6 +278,7 @@ let KinkyDungeonFactionRelationsBase = {
 	"Player": {
 		Enemy: -1.0,
 		Jail: -1.0,
+		Chase: -1,
 		Prisoner: 0.1,
 
 		// Wild factions
@@ -320,34 +321,42 @@ let KinkyDungeonFactionRelationsBase = {
 	"Natural": {
 		Player: -1,
 		Jail: -1,
+		Chase: -1,
 	},
 	"Door": {
 		Player: -1,
 		Jail: -1,
+		Chase: -1,
 	},
 	"Ghost": {
 		Player: -1.0,
 		Jail: -0.25,
+		Chase: -1,
 	},
 	"Observer": {
 		Player: -1.0,
 		Jail: -1,
+		Chase: -1,
 	},
 	"Rock": {
 		Player: -1.0,
 		Jail: -0.1,
+		Chase: -1,
 	},
 	"Rebel": {
 		Jail: -0.1,
+		Chase: -1,
 	},
 	"Adventurer": {
 		Jail: -0.1,
+		Chase: -1,
 	},
 	"Demon": {
 		Elf: -1.0,
 		Bast: -1.0,
 		Witch: 0.25,
 		Jail: -0.25,
+		Chase: -1,
 
 		Bountyhunter: -0.5,
 		Bandit: -0.5,
@@ -445,9 +454,11 @@ let KinkyDungeonFactionRelationsBase = {
 	"Prisoner": {
 	},
 	"Jail": {
+		// Dummy faction, used for deciding if a faction will attack you as a prisoner
 	},
 	"Slime": {
-		Jail: -0.25,
+		Jail: -1,
+		Chase: -1,
 
 		Bountyhunter: -0.5,
 		Bandit: -0.6,
@@ -464,12 +475,14 @@ let KinkyDungeonFactionRelationsBase = {
 		Mushy: 0.1,
 	},
 	"Latex": {
-		Jail: -0.25,
+		Jail: -1,
+		Chase: -1,
 
 		Maidforce: -1.0,
 	},
 	"Mold": {
-		Jail: -0.25,
+		Jail: -1,
+		Chase: -1,
 
 		Enemy: -0.5,
 		Bountyhunter: -0.5,
@@ -488,7 +501,8 @@ let KinkyDungeonFactionRelationsBase = {
 		AncientRobot: -1.0,
 	},
 	"Beast": {
-		Jail: -0.25,
+		Jail: -1,
+		Chase: -1,
 
 		Bountyhunter: -0.4,
 		Bandit: -0.4,
@@ -505,13 +519,16 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"KinkyConstruct": {
 		Jail: -0.25,
+		Chase: -1,
+
 		Apprentice: -0.55,
 		Witch: 0.4,
 		Dressmaker: 0.4,
 		Dragon: -1.0,
 	},
 	"Plant": {
-		Jail: -0.25,
+		Jail: -1,
+		Chase: -1,
 	},
 	"Nevermere": {
 		"Alchemist": 1.0,

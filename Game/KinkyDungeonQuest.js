@@ -185,7 +185,7 @@ let KDQuests = {
 							let ee = DialogueCreateEnemy(point.x, point.y, e.name);
 							if (ee) {
 								ee.faction = "Wolfhunter";
-								ee.AI = "looseguard";
+								ee.AI = "patrol";
 							}
 						}
 					}
@@ -197,7 +197,7 @@ let KDQuests = {
 							let ee = DialogueCreateEnemy(point.x, point.y, e.name);
 							if (ee) {
 								ee.faction = "Wolfhunter";
-								ee.AI = "looseguard";
+								ee.AI = "patrol";
 							}
 						}
 					}
