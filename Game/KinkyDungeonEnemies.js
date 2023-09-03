@@ -3199,7 +3199,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 					!(enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 					!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
-					!(KinkyDungeonStatsChoice.has("TightRestraints") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss),
+					!KinkyDungeonStatsChoice.has("TightRestraints"),
 					KDGetExtraTags(enemy, enemy.usingSpecial),
 					false,
 					{
@@ -3759,7 +3759,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 											!(enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 											!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
-											!(KinkyDungeonStatsChoice.has("TightRestraints") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss),
+											!KinkyDungeonStatsChoice.has("TightRestraints"),
 											KDGetExtraTags(enemy, enemy.usingSpecial),
 											false,
 											{
@@ -3777,7 +3777,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 												!(enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 												!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
-												!(KinkyDungeonStatsChoice.has("TightRestraints") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss),
+												!KinkyDungeonStatsChoice.has("TightRestraints"),
 												KDGetExtraTags(enemy, enemy.usingSpecial),
 												false,
 												{
