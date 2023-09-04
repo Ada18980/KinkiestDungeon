@@ -294,7 +294,7 @@ function KinkyDungeonNewGamePlus() {
 
 	MiniGameKinkyDungeonLevel = 0;
 	KinkyDungeonSetCheckPoint("grv", true);
-	KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, 1);
+	KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, "ShopStart", "", 1);
 	KinkyDungeonNewGame += 1;
 
 	for (let t of KDResertNGTags) {
@@ -584,6 +584,8 @@ function KDInitTempValues(seed) {
 /**
  *
  * @param {floorParams} MapParams
+ * @param {string} RoomType
+ * @param {string} MapMod
  * @param {number} Floor
  * @param {boolean} [testPlacement]
  * @param {boolean} [seed]
@@ -593,7 +595,9 @@ function KDInitTempValues(seed) {
  * @param {string} [origMapType]
  * @param {number} [direction]
  */
-function KinkyDungeonCreateMap(MapParams, Floor, testPlacement, seed, forceFaction, worldLocation, useExisting, origMapType = "", direction = 0) {
+function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement, seed, forceFaction, worldLocation, useExisting, origMapType = "", direction = 0) {
+	KDGameData.RoomType = RoomType;
+	KDGameData.MapMod = MapMod;
 	let mapMod = null;
 	if (KDGameData.MapMod) {
 		mapMod = KDMapMods[KDGameData.MapMod];
