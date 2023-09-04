@@ -2065,6 +2065,94 @@ type AIType = {
 
 }
 
+/** Container for KD AI data
+ * Persistently stored as AIData variable for use in some
+ */
+type KDAIData = {
+	player?: entity,
+
+	defeat?: boolean,
+	idle?: boolean,
+	moved?: boolean,
+	refreshWarningTiles?: boolean,
+
+	ignore?: boolean,
+	harmless?: boolean,
+	hostile?: boolean,
+	allied?: boolean,
+	aggressive?: boolean,
+	domMe?: boolean,
+
+	leashing?: boolean,
+	highdistraction?: boolean,
+	distracted?: boolean,
+
+	ignoreLocks?: boolean,
+	MovableTiles?: string,
+	AvoidTiles?: string,
+
+	attack?: string,
+	range?: number,
+	width?: number,
+	bindLevel?: number,
+	accuracy?: number,
+	vibe?: boolean,
+	damage?: string,
+	power?: number,
+
+	addLeash?: boolean,
+	targetRestraintLevel?: number,
+	addMoreRestraints?: boolean,
+
+	aggroTarget?: boolean,
+	wantsToAttack?: boolean,
+	wantsToCast?: boolean,
+	wantsToLeash?: boolean,
+	focusOnLeash?: boolean,
+	moveTowardPlayer?: boolean,
+	intentToLeash?: boolean,
+	leashed?: boolean,
+
+	leashPos?: {x: number, y: number},
+	nearestJail?: {x: number, y: number, type: string, radius: number},
+	master?: entity,
+
+	kite?: boolean,
+	ignoreRanged?: boolean,
+	kiteChance?: number,
+
+
+	patrolChange?: boolean,
+	followPlayer?: boolean,
+	dontFollow?: boolean,
+	holdStillWhenNear?: boolean,
+
+	hitsfx?: string,
+
+	visionMod?: number,
+	followRange?: number,
+	visionRadius?: number,
+	chaseRadius?: number,
+	blindSight?: number,
+
+	sneakMult?: number,
+	directionOffset?: number,
+	playerDist?: number,
+	playerDistDirectional?: number,
+	canSensePlayer?: boolean,
+	canSeePlayer?: boolean,
+	canSeePlayerChase?: boolean,
+	canSeePlayerMedium?: boolean,
+	canSeePlayerClose?: boolean,
+	canSeePlayerVeryClose?: boolean,
+	canShootPlayer?: boolean,
+
+	playAllowed?: boolean,
+	startedDialogue?: boolean,
+	playChance?: number,
+	playEvent?: boolean,
+}
+
 type EnemyEvent = {
 	/** Extremely important for leash events */
 	overrideIgnore?: boolean,
@@ -2076,9 +2164,9 @@ type EnemyEvent = {
 	/** This event wont get cleared by mass resets, like when you are deposited into a cage */
 	noMassReset?: boolean,
 	/** Determines if the enemy will attack you */
-	decideAttack?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
+	decideAttack?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
 	/** Determines if the enemy will cast spells */
-	decideSpell?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
+	decideSpell?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
 	/** Determines weight */
 	weight: (enemy: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
 	/** Run when triggered */
