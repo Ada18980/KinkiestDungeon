@@ -2617,6 +2617,7 @@ function KDEnemyCanTalk(enemy) {
 	return enemy.Enemy && !enemy.Enemy.gagged && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || KDGetEnemyPlayLine(enemy)) && !(enemy.silence > 0);
 }
 
+/** @type {KDAIData} */
 let AIData = {};
 
 /**
@@ -2667,6 +2668,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.playerDistDirectional = KDistEuclidean(enemy.x + AIData.directionOffset - player.x, enemy.y - player.y);
 	if (AIData.playerDistDirectional < AIData.playerDist && AIData.playerDist < Math.abs(AIData.directionOffset)) AIData.playerDistDirectional = 0; // Within AIData.directionOffset
 	AIData.hostile = KDHostile(enemy, player);
+	AIData.allied = KDAllied(enemy);
 	AIData.aggressive = KinkyDungeonAggressive(enemy, player);
 	AIData.domMe = (player.player && AIData.aggressive) ? false : KDCanDom(enemy);
 
@@ -3013,7 +3015,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (!AIData.aggressive && player.player && (enemy.playWithPlayer || (intentAction && intentAction.forceattack))) AIData.ignore = false;
 
-	AIData.aggroTarget = (AIData.hostile || (enemy.playWithPlayer && player.player && !AIData.domMe)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage));
+	AIData.aggroTarget = (AIData.hostile || (enemy.playWithPlayer && player.player && !AIData.domMe)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage > 0));
 	AIData.wantsToAttack = (player &&
 		(!player.player || (
 			!AIData.ignore
@@ -3029,7 +3031,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.wantsToCast = (player &&
 		(!player.player || (
 			!AIData.ignore
-			&& (player.player && ((!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player)) || KinkyDungeonFlags.has("PlayerCombat")))
+			&& (player.player && ((!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player)) || KinkyDungeonFlags.get("PlayerCombat")))
 		)) ? ((intentAction?.decideSpell) ? (intentAction.decideSpell(enemy, player, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false);
 
 	AIData.sneakMult = 0.25;
@@ -3189,10 +3191,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || KDDefaultRestraintThresh;
 
+			AIData.wantsToLeash = !KinkyDungeonFlags.get("PlayerDommed");
 			AIData.focusOnLeash = (
 				enemy == KinkyDungeonLeashingEnemy()
-				&& !AIData.addLeash
-				&& !KinkyDungeonFlags.get("PlayerDommed") && (
+				&& !AIData.addLeash && (
 					!AIData.addMoreRestraints
                 || !KinkyDungeonAggressive(enemy, KinkyDungeonPlayerEntity)
 				|| !AIData.wantsToAttack
@@ -3220,7 +3222,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 				&& (enemy.aware || AIData.followPlayer)
 				&& AIData.playerDist <= AIData.chaseRadius
-				&& (enemy.gx != enemy.x || enemy.gy != enemy.y || enemy.path || enemy.fx || enemy.fy);
+				&& ((enemy.gx != enemy.x || enemy.gy != enemy.y || enemy.path || enemy.fx || enemy.fy) ? true : false);
 
 			// try 12 times to find a moveable tile, with some random variance
 			// First part is player chasing behavior
