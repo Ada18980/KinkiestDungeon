@@ -3188,8 +3188,12 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 
 			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || KDDefaultRestraintThresh;
-			AIData.focusOnLeash = (enemy == KinkyDungeonLeashingEnemy() && !AIData.addLeash && (
-				!AIData.addMoreRestraints
+
+			AIData.focusOnLeash = (
+				enemy == KinkyDungeonLeashingEnemy()
+				&& !AIData.addLeash
+				&& !KinkyDungeonFlags.get("PlayerDommed") && (
+					!AIData.addMoreRestraints
                 || !KinkyDungeonAggressive(enemy, KinkyDungeonPlayerEntity)
 				|| !AIData.wantsToAttack
 				|| !KinkyDungeonGetRestraint(
@@ -3287,7 +3291,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					}
 				}
 			} else if (!KDIsImmobile(enemy) && AIType.move(enemy, player, AIData) && (Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0))  {
-				if (AIData.focusOnLeash && AIData.moveTowardPlayer) {
+				if (AIData.focusOnLeash && AIData.moveTowardPlayer && AIData.wantsToLeash) {
 					// Only break awareness if the AI cant chase player
 					if (!enemy.IntentLeashPoint) {
 						KDAssignLeashPoint(enemy);

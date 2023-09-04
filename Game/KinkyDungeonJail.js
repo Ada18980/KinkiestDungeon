@@ -886,11 +886,11 @@ function KDDefeatedPlayerTick() {
 function KDEnterDemonTransition() {
 	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
 	KDGameData.PrisonerState = 'jail';
-	KDGameData.RoomType = "DemonTransition"; // We do a tunnel every other room
-	KDGameData.MapMod = ""; // Reset the map mod
+	//KDGameData.RoomType = "DemonTransition"; // We do a tunnel every other room
+	//KDGameData.MapMod = ""; // Reset the map mod
 	KDGameData.CurrentDialog = "";
 	let params = KinkyDungeonMapParams.DemonTransition;
-	KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, undefined, "");
+	KinkyDungeonCreateMap(params, "DemonTransition", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, undefined, "");
 
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).removePrison && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {
@@ -914,12 +914,12 @@ function KDEnterDemonTransition() {
 function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
 	KDGameData.PrisonerState = 'jail';
-	KDGameData.RoomType = "DollRoom"; // We do a tunnel every other room
-	KDGameData.MapMod = ""; // Reset the map mod
+	//KDGameData.RoomType = "DollRoom"; // We do a tunnel every other room
+	//KDGameData.MapMod = ""; // Reset the map mod
 	if (cancelDialogue) KDGameData.CurrentDialog = "";
 	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
 	KDGameData.DollRoomCount = 0;
-	KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, undefined, "");
+	KinkyDungeonCreateMap(params, "DollRoom", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, undefined, "");
 
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).removePrison && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {
@@ -1037,13 +1037,13 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KinkyDungeonSaveGame();
 
 	if (PutInJail) {
-		KDGameData.RoomType = "Jail"; // We do a tunnel every other room
-		KDGameData.MapMod = ""; // Reset the map mod
+		//KDGameData.RoomType = "Jail"; // We do a tunnel every other room
+		//KDGameData.MapMod = ""; // Reset the map mod
 		let forceFaction = undefined;
 		if (leashEnemy && KDFactionProperties[KDGetFaction(leashEnemy)]) {
 			forceFaction = KDGetFaction(leashEnemy);
 		}
-		KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel, undefined, undefined, forceFaction, undefined, undefined, "");
+		KinkyDungeonCreateMap(params, "Jail", "", MiniGameKinkyDungeonLevel, undefined, undefined, forceFaction, undefined, undefined, "");
 
 		KinkyDungeonSetFlag("LeashToPrison", 0);
 

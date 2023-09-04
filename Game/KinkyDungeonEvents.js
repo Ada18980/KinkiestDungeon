@@ -4402,12 +4402,12 @@ let KDEventMapEnemy = {
 						if (KDistChebyshev(enemy.x - KDMapData.StartPosition.x, enemy.y - KDMapData.StartPosition.y) < 1.5
 							&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 2.5) {
 							KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), "#ffffff", 4);
-							KDGameData.RoomType = "ShopStart"; // We do a tunnel every other room
-							KDGameData.MapMod = ""; // Reset the map mod
+							//KDGameData.RoomType = "ShopStart";
+							//KDGameData.MapMod = ""; // Reset the map mod
 							MiniGameKinkyDungeonLevel = 0;
 							KDCurrentWorldSlot = {x: 0, y: 0};
 							let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
-							KinkyDungeonCreateMap(params, MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, true, undefined);
+							KinkyDungeonCreateMap(params, "ShopStart", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, false, undefined);
 							KDStartDialog("ShopkeeperTeleport", enemy.Enemy.name, true, "", enemy);
 						}
 					}
