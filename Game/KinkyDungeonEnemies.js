@@ -509,7 +509,6 @@ function KDAnimEnemy(Entity) {
 	let offX = 0;
 	let offY = 0;
 	let offamount = 0.25;
-	let wiggleamount = 0.05;
 	let resetAnim = true;
 
 
@@ -528,8 +527,14 @@ function KDAnimEnemy(Entity) {
 	}
 
 	if (KDToggles.EnemyAnimations && Entity.Enemy && KDIsFlying(Entity) && !(KDBoundEffects(Entity) > 3 || KDHelpless(Entity))) {
+		if (resetAnim) {
+			Entity.offY = 0;
+			Entity.offX = 0;
+			Entity.scaleX = 1;
+			Entity.scaleY = 1;
+		}
 		if (!Entity.animTime) Entity.animTime = CommonTime() + Math.floor(KDRandom() * 1000);
-		Entity.offY = (Entity.offY || 0) + wiggleamount*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDFloatAnimTime));
+		Entity.offY += 0.05*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDFloatAnimTime));
 		resetAnim = false;
 	}
 
@@ -542,8 +547,14 @@ function KDAnimEnemy(Entity) {
 		}
 	} else {
 		if (KDToggles.EnemyAnimations && Entity.Enemy && (KDBoundEffects(Entity) > 3 || KDHelpless(Entity) || Entity.bind > 0) && !KinkyDungeonIsStunned(Entity)) {
+			if (resetAnim) {
+				Entity.offY = 0;
+				Entity.offX = 0;
+				Entity.scaleX = 1;
+				Entity.scaleY = 1;
+			}
 			if (!Entity.animTime) Entity.animTime = CommonTime();
-			Entity.offX = (Entity.offX || 0) + wiggleamount*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDAnimTime));
+			Entity.offX += 0.05*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDAnimTime));
 			resetAnim = false;
 		}
 	}
