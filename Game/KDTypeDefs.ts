@@ -1951,6 +1951,7 @@ interface KDWorldSlot {
 	y: number;
 	color: string;
 	name: string;
+	main: string;
 }
 
 interface KDMapDataType {
@@ -2030,8 +2031,13 @@ type AIType = {
 	init: (enemy, player, aidata) => void,
 	/** Happens before movement. Return true to skip movement loop*/
 	beforemove: (enemy, player, aidata) => boolean,
-	/** Whether the enemy chases the player if it sees them */
+	/** Whether the enemy chases the target if it sees them */
 	chase: (enemy, player, aidata) => boolean,
+	/** Similar to chase but not quite.
+	 * Will the enemy choose to go to the last seen target location?
+	 * If it sees the target
+	 * Can be false if you want an enemy to be more reserved about where it goes*/
+	trackvisibletarget: (enemy, player, aidata) => boolean,
 	/** Whether enemy will chase the player across a long distance */
 	persist: (enemy, player, aidata) => boolean,
 	/** Whether the enemy moves toward gx */
@@ -2069,72 +2075,121 @@ type AIType = {
  * Persistently stored as AIData variable for use in some
  */
 type KDAIData = {
+	/** The target of the AI, NOT the KinkyDungeonPlayerEntity but rather a target entity which CAN be the player */
 	player?: entity,
 
+	/** Whether to do a defeat or not */
 	defeat?: boolean,
+	/** Whether this enemy is idle or not. Gets set to true by default and false if the enemy does ANYTHING */
 	idle?: boolean,
+	/** Indicates that the enemy has moved, therefore cant attack or cast unless it has the necessary properties */
 	moved?: boolean,
+	/** Refresh the warning tiles due to whatever reason */
 	refreshWarningTiles?: boolean,
 
+	/** Enemy will ignore the player, i.e. will not attack the player or chase the player or do anything to the player */
 	ignore?: boolean,
+	/** Player is rather tied up and not considered a big threat generally */
 	harmless?: boolean,
+	/** Enemy belongs to a hostile faction */
 	hostile?: boolean,
-	allied?: boolean,
+	/** A SUBSET of hostile. In some cases an enemy will be hostile but not aggressive.
+	 * neutrals and allies cannot be aggressive */
 	aggressive?: boolean,
+	/** Enemy belongs to an allied faction */
+	allied?: boolean,
+	/** This enemy is feeling dominated by the player and will generally act submissive */
 	domMe?: boolean,
 
-	leashing?: boolean,
-	highdistraction?: boolean,
-	distracted?: boolean,
+	/** Hit SFX */
+	hitsfx?: string,
 
+	/** Enemy is pretty distracted */
+	highdistraction?: boolean,
+	/** Enemy is totally distracted */
+	distracted?: boolean,
+	/** Level of bondage on this enemy, 0-4 */
+	bindLevel?: number,
+
+	/** Enemy can ignore locks when opening doors */
 	ignoreLocks?: boolean,
+	/** Movable tiles for the enemy */
 	MovableTiles?: string,
+	/** Tiles that the enemy will try to avoid if possible but can still move into if needed */
 	AvoidTiles?: string,
 
+	// Enemy attack stats
+	/** Enemy attack type, changes based on special, etc */
 	attack?: string,
 	range?: number,
 	width?: number,
-	bindLevel?: number,
 	accuracy?: number,
-	vibe?: boolean,
 	damage?: string,
 	power?: number,
+	/** Enemy has a vibe remote and will vibe the player if it hits the player */
+	vibe?: boolean,
 
+	/** Enemy is CAPABLE of leashing, it is a leashing enemy */
+	leashing?: boolean,
+	/** Enemy would add a leash if it would be aggressive to the player */
 	addLeash?: boolean,
+	/** Desired restraining level of the player.
+	 * If the player is this restrained,
+	 * then the enemy will not add any new bindings and will focus on leashing */
 	targetRestraintLevel?: number,
+	/** What happens if the player is below the target restraint level */
 	addMoreRestraints?: boolean,
 
-	aggroTarget?: boolean,
+	/** The enemy is ABLE to aggro the target, either due to aggression or dominant play */
+	canAggro?: boolean,
+	/** The enemy actually aggros the target and will make attacks */
 	wantsToAttack?: boolean,
+	/** The enemy actually aggros the target and will cast spells */
 	wantsToCast?: boolean,
+	/** The enemy wants to pull the player instead of just attacking */
 	wantsToLeash?: boolean,
+	/** The enemy wants to leash the player, but prefers to pull instead of attack */
 	focusOnLeash?: boolean,
+	/** Enemy will move toward its target rather than its gx/gy position */
 	moveTowardPlayer?: boolean,
+
+	/** The enemy plans to leash the player,
+	 * important to declare b/c otherwise enemy can close cages, etc during play*/
 	intentToLeash?: boolean,
+	/** The player is wearing a leash restraint and can be leash pulled */
 	leashed?: boolean,
-
-	leashPos?: {x: number, y: number},
-	nearestJail?: {x: number, y: number, type: string, radius: number},
-	master?: entity,
-
-	kite?: boolean,
-	ignoreRanged?: boolean,
-	kiteChance?: number,
-
-
-	patrolChange?: boolean,
-	followPlayer?: boolean,
-	dontFollow?: boolean,
+	/** Enemy stops moving when in range of the player */
 	holdStillWhenNear?: boolean,
 
-	hitsfx?: string,
+	/** Position to leash/pull the player to */
+	leashPos?: {x: number, y: number},
+	/** nearest jail to take the player to */
+	nearestJail?: {x: number, y: number, type: string, radius: number},
 
+	/** Enemy to follow */
+	master?: entity,
+	/** Chance that the enemy will kite */
+	kiteChance?: number,
+	/** Enemy has decided to kite */
+	kite?: boolean,
+	/** This variable is supposed to make the enemy not take potshots at you while in furniture*/
+	ignoreRanged?: boolean,
+
+	/** It's time to change patrol points */
+	patrolChange?: boolean,
+	/** This enemy is an ALLY and will follow the player */
+	allyFollowPlayer?: boolean,
+	/** an override situation to not follow the player
+	 * Usually done by neutral enemies or allies that the player has told to hold still
+	 */
+	dontFollow?: boolean,
+
+	// Vision and awareness stuff
 	visionMod?: number,
 	followRange?: number,
 	visionRadius?: number,
 	chaseRadius?: number,
 	blindSight?: number,
-
 	sneakMult?: number,
 	directionOffset?: number,
 	playerDist?: number,
@@ -2147,9 +2202,13 @@ type KDAIData = {
 	canSeePlayerVeryClose?: boolean,
 	canShootPlayer?: boolean,
 
+	/** Determines that the AI can play with the player and initiate a play event */
 	playAllowed?: boolean,
-	startedDialogue?: boolean,
+	/** Chance of starting a play event */
 	playChance?: number,
+	/** Indicates that a play event has started */
+	startedDialogue?: boolean,
+	/** Play event that has started */
 	playEvent?: boolean,
 }
 

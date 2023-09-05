@@ -69,10 +69,12 @@ let alts = {
 		tickFlags: true,
 		noMusic: true,
 		keepMainPath: true,
+		persist: true,
 	},
 	"PerkRoom": {
 		name: "PerkRoom",
 		bossroom: false,
+		persist: true,
 		//constantX: true,
 		width: 9,
 		height: 8,
