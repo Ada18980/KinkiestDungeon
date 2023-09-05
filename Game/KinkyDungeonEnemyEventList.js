@@ -215,8 +215,13 @@ let KDIntentEvents = {
 		noplay: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
-			return (AIData?.playerDist > 2.99 && KinkyDungeonGetRestraintItem("ItemNeck") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")
-				&& !KinkyDungeonFlags.has("TempLeashCD") && KDGameData.PrisonerState == 'parole' && KDStrictPersonalities.includes(KDJailPersonality(enemy)) && KDEnemyCanTalk(enemy) && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) ?
+			return (AIData?.playerDist > 2.99
+				&& KinkyDungeonGetRestraintItem("ItemNeck") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")
+				&& !KinkyDungeonFlags.has("TempLeashCD")
+				&& KDGameData.PrisonerState == 'parole'
+				&& KDStrictPersonalities.includes(KDJailPersonality(enemy))
+				&& KDEnemyCanTalk(enemy)
+				&& !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) ?
 				100 // Very high just to test
 				: 0;
 		},
