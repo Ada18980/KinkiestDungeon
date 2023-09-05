@@ -733,7 +733,7 @@ function KDConveyor(delta, X, Y) {
 				KDMovePlayer(X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
 				KinkyDungeonSendTextMessage(4, TextGet("KDConveyorPush"), "#ffff44", 2);
 			}
-		} else if (!KDIsImmobile(entity) && !entity.Enemy.tags.flying && !entity.Enemy.tags.ignoreconveyor && !entity.Enemy.ethereal
+		} else if (!KDIsImmobile(entity) && !KDIsFlying(entity) && !entity.Enemy.tags.ignoreconveyor && !entity.Enemy.ethereal
 			&& !(entity.Enemy.tags.unstoppable || (entity.Enemy.tags.unflinching && !KinkyDungeonIsDisabled(entity)))) {
 			if (entity.Enemy.tags.prisoner) KDStaggerEnemy(entity);
 			if (!KDEnemyHasFlag(entity, "conveyed")) {

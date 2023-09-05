@@ -491,6 +491,14 @@ function KDAnimEnemy(Entity) {
 	let offY = 0;
 	let offamount = 0.25;
 	let wiggleamount = 0.05;
+	let resetAnim = true;
+
+	if (KDToggles.EnemyAnimations && Entity.Enemy && KDIsFlying(Entity) && !(KDBoundEffects(Entity) > 3 || KDHelpless(Entity))) {
+		if (!Entity.animTime) Entity.animTime = CommonTime() + Math.floor(KDRandom() * 1000);
+		Entity.offY = wiggleamount*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDFloatAnimTime));
+		resetAnim = false;
+	}
+
 	if (Entity.fx && Entity.fy && (Entity.fx != Entity.x || Entity.fy != Entity.y) && Entity.Enemy && !KDIsImmobile(Entity)) {
 		if (Entity.fx != Entity.x) {
 			offX = offamount * Math.sign(Entity.fx - Entity.x);
@@ -502,10 +510,13 @@ function KDAnimEnemy(Entity) {
 		if (KDToggles.EnemyAnimations && Entity.Enemy && (KDBoundEffects(Entity) > 3 || KDHelpless(Entity) || Entity.bind > 0) && !KinkyDungeonIsStunned(Entity)) {
 			if (!Entity.animTime) Entity.animTime = CommonTime();
 			Entity.offX = wiggleamount*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDAnimTime));
-		} else {
-			delete Entity.offX;
-			delete Entity.animTime;
+			resetAnim = false;
 		}
+	}
+	if (resetAnim)  {
+		delete Entity.offY;
+		delete Entity.offX;
+		delete Entity.animTime;
 	}
 	return {offX: offX, offY: offY};
 }
@@ -1296,6 +1307,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 	let statuses = [];
 
 	if (enemy.vulnerable) statuses.push({name: "Vulnerable", count: undefined});
+	if (KDIsFlying(enemy)) statuses.push({name: "Flying", count: undefined});
 	if (KDEntityBuffedStat(enemy, "Vibration")) statuses.push({name: "Vibed", count: undefined});
 	if (enemy.stun) statuses.push({name: "Stunned", count:  Math.round(enemy.stun)});
 	if (enemy.bind) statuses.push({name: "Bind", count:  Math.round(enemy.bind)});
@@ -5751,4 +5763,13 @@ function KDOverrideIgnore(enemy, player) {
 			return true;
 	}
 	return false;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDIsFlying(enemy) {
+	return enemy.Enemy.tags?.flying || KDEnemyHasFlag(enemy, "flying");
 }

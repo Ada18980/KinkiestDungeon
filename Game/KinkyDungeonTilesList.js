@@ -524,7 +524,7 @@ function KDSlimeImmuneEntity(entity) {
 
 function KDSlimeWalker(entity) {
 	if (KDSlimeImmuneEntity(entity)) return true;
-	else if (!entity.player && entity.Enemy?.tags.flying) return true;
+	else if (!entity.player && KDIsFlying(entity)) return true;
 	return false;
 }
 

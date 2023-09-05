@@ -23,6 +23,8 @@ let KDAnimTick = 0;
 let KDAnimTickInterval = 2000;
 let KDAnimTime = 400;
 
+let KDFloatAnimTime = 1500;
+
 let KDFlipPlayer = false;
 
 // PIXI experimental
