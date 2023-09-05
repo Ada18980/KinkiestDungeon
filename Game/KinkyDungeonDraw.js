@@ -24,6 +24,7 @@ let KDAnimTickInterval = 2000;
 let KDAnimTime = 400;
 
 let KDFloatAnimTime = 1500;
+let KDSquishyAnimTime = 1600;
 
 let KDFlipPlayer = false;
 

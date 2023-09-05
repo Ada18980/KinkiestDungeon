@@ -1082,6 +1082,8 @@ interface enemy extends KDHasTags {
 	immobile?: boolean;
 	/** Stops casting spells after there are this many enemies */
 	enemyCountSpellLimit?: number;
+	/** List of animations to be applied */
+	Animations?: string[];
 
 }
 
@@ -1239,6 +1241,8 @@ interface entity {
 	// Animations
 	offX?: number,
 	offY?: number,
+	scaleX?: number,
+	scaleY?: number,
 	animTime?: number,
 	/** Spawn location */
 	spawnX?: number,
