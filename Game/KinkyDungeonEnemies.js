@@ -26,6 +26,25 @@ let KDEventableAttackTypes = [
 ];
 
 
+/** @type {Record<string, (entity) => boolean>} */
+let KDAnims = {
+	squishy: (Entity) => {
+		if (!Entity.animTime) Entity.animTime = CommonTime() + Math.floor(KDRandom() * 1000);
+		Entity.scaleY *= (1 - 0.15*Math.sin(Math.PI + 2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
+		Entity.scaleX *= (1 - 0.1*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
+		Entity.offY += -0.05*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime));
+		return true;
+	},
+	squishyAmbush: (Entity) => {
+		if (!Entity.ambushtrigger) return false;
+		if (!Entity.animTime) Entity.animTime = CommonTime() + Math.floor(KDRandom() * 1000);
+		Entity.scaleY *= (1 - 0.15*Math.sin(Math.PI + 2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
+		Entity.scaleX *= (1 - 0.1*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
+		Entity.offY += -0.05*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime));
+		return true;
+	},
+};
+
 
 /**
  * Refreshes the enemies map
@@ -428,11 +447,11 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					let sp = sprite;
 					if (!enemy.ambushtrigger && enemy.Enemy.GFX?.AmbushSprite && KDAmbushAI(enemy)) sp = enemy.Enemy.GFX.AmbushSprite;
 					else if (enemy.CustomSprite && !buffSprite) sp = "CustomSprite/" + enemy.CustomSprite;
-					let w = enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay;
-					let h = enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay;
+					let w = (enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay) * (enemy.scaleX || 1);
+					let h = (enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay) * (enemy.scaleY || 1);
 					let color = (enemy.Enemy.GFX?.lighting) ? KDGetLightColor(enemy.x, enemy.y) : undefined;
 					let spr = KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + "Enemies/" + sp + ".png",
-						(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2,
+						(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (enemy.flip ? -1 : 1)*(w - KinkyDungeonGridSizeDisplay)/2,
 						(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
 						w, h, undefined, color != undefined ? {tint: color} : undefined);
 					if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
@@ -444,11 +463,11 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 						dir = "Enemies/";
 						sp = "CustomSpriteBound/" + enemy.CustomSprite;
 					}
-					let w = enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay;
-					let h = enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay;
+					let w = (enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay) * (enemy.scaleX || 1);
+					let h = (enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay) * (enemy.scaleY || 1);
 					let color = (enemy.Enemy.GFX?.lighting) ? KDGetLightColor(enemy.x, enemy.y) : undefined;
 					let spr = KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + dir + sp + ".png",
-						(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2,
+						(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (enemy.flip ? -1 : 1)*(w - KinkyDungeonGridSizeDisplay)/2,
 						(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
 						w, h, undefined, color != undefined ? {tint: color} : undefined);
 					if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
@@ -493,9 +512,24 @@ function KDAnimEnemy(Entity) {
 	let wiggleamount = 0.05;
 	let resetAnim = true;
 
+
+	if (KDToggles.EnemyAnimations && Entity.Enemy && Entity.Enemy.Animations) {
+		Entity.offY = 0;
+		Entity.offX = 0;
+		Entity.scaleX = 1;
+		Entity.scaleY = 1;
+
+		let anim = Entity.Enemy.Animations;
+		for (let a of anim) {
+			if (KDAnims[a] && KDAnims[a](Entity)) {
+				resetAnim = false;
+			}
+		}
+	}
+
 	if (KDToggles.EnemyAnimations && Entity.Enemy && KDIsFlying(Entity) && !(KDBoundEffects(Entity) > 3 || KDHelpless(Entity))) {
 		if (!Entity.animTime) Entity.animTime = CommonTime() + Math.floor(KDRandom() * 1000);
-		Entity.offY = wiggleamount*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDFloatAnimTime));
+		Entity.offY = (Entity.offY || 0) + wiggleamount*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDFloatAnimTime));
 		resetAnim = false;
 	}
 
@@ -509,13 +543,15 @@ function KDAnimEnemy(Entity) {
 	} else {
 		if (KDToggles.EnemyAnimations && Entity.Enemy && (KDBoundEffects(Entity) > 3 || KDHelpless(Entity) || Entity.bind > 0) && !KinkyDungeonIsStunned(Entity)) {
 			if (!Entity.animTime) Entity.animTime = CommonTime();
-			Entity.offX = wiggleamount*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDAnimTime));
+			Entity.offX = (Entity.offX || 0) + wiggleamount*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDAnimTime));
 			resetAnim = false;
 		}
 	}
 	if (resetAnim)  {
 		delete Entity.offY;
 		delete Entity.offX;
+		delete Entity.scaleX;
+		delete Entity.scaleY;
 		delete Entity.animTime;
 	}
 	return {offX: offX, offY: offY};
