@@ -2613,8 +2613,13 @@ function KDGetEnemyPlayLine(enemy) {
 	return enemy.playLine || enemy.Enemy.playLine || "";
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
 function KDEnemyCanTalk(enemy) {
-	return enemy.Enemy && !enemy.Enemy.gagged && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || KDGetEnemyPlayLine(enemy)) && !(enemy.silence > 0);
+	return enemy.Enemy && !enemy.Enemy.tags?.gagged && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || KDGetEnemyPlayLine(enemy)) && !(enemy.silence > 0);
 }
 
 /** @type {KDAIData} */
@@ -2680,7 +2685,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		if (AIData.playerDist < 1.5 && KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).ignoreNear;})) AIData.ignore = true;
 		if (!AIData.leashing && !KinkyDungeonHasWill(0.1) && KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).ignoreIfNotLeash;})) AIData.ignore = true;
 
-		if (!KinkyDungeonFlags.has("PlayerCombat") || enemy.Enemy.tags.ignorebrat) {
+		if (enemy != KinkyDungeonLeashingEnemy() && enemy != KinkyDungeonJailGuard() && (!KinkyDungeonFlags.has("PlayerCombat") || enemy.Enemy.tags.ignorebrat)) {
 			if (enemy.Enemy.tags.ignorenoSP && !KinkyDungeonHasWill(0.1)) AIData.ignore = true;
 			if ((KDGetFaction(enemy) == "Ambush" || enemy.Enemy.tags.ignoreharmless) && (!enemy.warningTiles || enemy.warningTiles.length == 0)
 				&& AIData.harmless && (!enemy.Enemy.ignorechance || KDRandom() < enemy.Enemy.ignorechance || !KinkyDungeonHasWill(0.1))) AIData.ignore = true;
@@ -3015,41 +3020,84 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (!AIData.aggressive && player.player && (enemy.playWithPlayer || (intentAction && intentAction.forceattack))) AIData.ignore = false;
 
-	AIData.aggroTarget = (AIData.hostile || (enemy.playWithPlayer && player.player && !AIData.domMe)) || (!player.player && (!player.Enemy || KDHostile(player) || enemy.rage > 0));
-	AIData.wantsToAttack = (player &&
-		(!player.player || (
+	AIData.canAggro = player && ((AIData.hostile
+		|| (player.player && enemy.playWithPlayer && !AIData.domMe))
+		|| (!player.player && (
+			!player.Enemy
+			|| KDHostile(player)
+			|| enemy.rage > 0)));
+	AIData.wantsToAttack = AIData.canAggro && (
+		(!player.player // NPCs will aggro NPCs no questions asked
+			|| ( // However there are situations where the player will not get attacked
+				!AIData.ignore // For example if the player is ignored
+				&& ( // In order to be attacked the player must fulfill one of these conditions
+					( // The most common is that the player is not currently leashed
+						!KDGameData.KinkyDungeonLeashedPlayer
+						|| !KDIsPlayerTethered(player))
+					|| KinkyDungeonFlags.get("overrideleashprotection") // The player is leashed but something allows her to be attacked anyway
+					|| KDIsPlayerTetheredToLocation(player, enemy.x, enemy.y, enemy) // The player is attached to this enemy
+					|| enemy.id == KDGameData.KinkyDungeonLeashingEnemy // The player is being leashed by this enemy
+					|| KinkyDungeonFlags.has("PlayerCombat") // If the player is fighting back
+				// Basically the result of all this is that only the leashing enemy will attack a leashed player
+				// Unless the player is resisting being leashed
+				)
+			)) ?
+			// If we meet the above conditions, we still have to consult whether or not the intent action gates it
+			((intentAction?.decideAttack) ?
+				(intentAction.decideAttack(enemy, player, AIData, AIData.allied, AIData.hostile, AIData.aggressive))
+				: true)
+			// Otherwise if we dont meet the conditions we dont want to attack
+			: false
+	);
+	AIData.wantsToCast = player && (
+		(!player.player || ( // We cast spells at NPCs since enemies dont want to capture NPCs (yet)
 			!AIData.ignore
 			&& (player.player && (
-				KinkyDungeonFlags.get("overrideleashprotection")
-				|| KDIsPlayerTetheredToLocation(player, enemy.x, enemy.y, enemy)
-				|| enemy.id == KDGameData.KinkyDungeonLeashingEnemy
-				|| (!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player))
-				|| KinkyDungeonFlags.has("PlayerCombat")))
-		)) ? ((intentAction?.decideAttack) ? (intentAction.decideAttack(enemy, player, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false)
-		// A combination of being willing and also being aggressive
-		&& AIData.aggroTarget;
-	AIData.wantsToCast = (player &&
-		(!player.player || (
-			!AIData.ignore
-			&& (player.player && ((!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player)) || KinkyDungeonFlags.get("PlayerCombat")))
-		)) ? ((intentAction?.decideSpell) ? (intentAction.decideSpell(enemy, player, AIData, AIData.allied, AIData.hostile, AIData.aggressive)) : true) : false);
+				// Unlike attacking, we only cast spells at a leashed player if they are resisting
+				(!KDGameData.KinkyDungeonLeashedPlayer || !KDIsPlayerTethered(player))
+				|| KinkyDungeonFlags.get("PlayerCombat")))
+		)) ?
+		// Same thing as attacking but for spells
+		((intentAction?.decideSpell) ?
+			(intentAction.decideSpell(enemy, player, AIData, AIData.allied, AIData.hostile, AIData.aggressive))
+			: true)
+		// Otherwise if we dont meet the conditions we dont want to cast
+		: false);
 
 	AIData.sneakMult = 0.25;
 	if (AIData.canSeePlayerMedium) AIData.sneakMult += 0.45;
 	if (AIData.canSeePlayerClose) AIData.sneakMult += 0.25;
 	if (AIData.canSeePlayerVeryClose) AIData.sneakMult += 0.5;
 	if (KinkyDungeonAlert > 0) AIData.sneakMult += 1;
-	if ((AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer || AIData.canSeePlayerChase) && KinkyDungeonTrackSneak(enemy, delta * (AIData.sneakMult), player, (AIData.canSensePlayer) ? 0 : (enemy.Enemy.tags.darkvision ? 0.5 : 1.5))) {
+	if (
+		// If the player is visible
+		(AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer || AIData.canSeePlayerChase)
+		// If we SEE the player as opposed to just being able to
+		&& KinkyDungeonTrackSneak(enemy, delta * (AIData.sneakMult), player, (AIData.canSensePlayer) ? 0 : (enemy.Enemy.tags.darkvision ? 0.5 : 1.5))) {
+
+
 		if (!KDEnemyHasFlag(enemy, "StayHere")) {
+			// Enemies that arent told to hold still will decide to follow their targets
 			if (KDEnemyHasFlag(enemy, "Defensive")) {
+				// Defensive AI will follow the player
 				enemy.gx = KinkyDungeonPlayerEntity.x;
 				enemy.gy = KinkyDungeonPlayerEntity.y;
-			} else if (!AIData.ignore && (AIData.aggressive || enemy.playWithPlayer || !KDEnemyHasFlag(enemy, "NoFollow"))) {
+			} else if (
+				// Dont chase the player if ignoring
+				!AIData.ignore
+				// We want to track the target
+				&& AIType.trackvisibletarget(enemy, player, AIData)
+				&& (
+					// We will follow the player if aggressive, playing, or not told to not follow
+					AIData.aggressive || enemy.playWithPlayer || !KDEnemyHasFlag(enemy, "NoFollow"))
+			) {
 				let pp = KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, true);
 				if (pp) {
+					// Go to a place near the target
 					enemy.gx = pp.x;
 					enemy.gy = pp.y;
 				} else {
+					// Go to the target directly
 					enemy.gx = player.x;
 					enemy.gy = player.y;
 				}
@@ -3159,13 +3207,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 			AIData.idle = true;
 			AIData.patrolChange = false;
-			AIData.followPlayer = false;
+			AIData.allyFollowPlayer = false;
 			AIData.dontFollow = false;
 
 			if (AIType.follower(enemy, player, AIData)) {
 				if (KDAllied(enemy) && player.player) {
 					if (!KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "StayHere")) {
-						AIData.followPlayer = true;
+						AIData.allyFollowPlayer = true;
 					} else {
 						AIData.dontFollow = true;
 						if (enemy.gx == player.x && enemy.gy == player.y && !KDEnemyHasFlag(enemy, "StayHere")) {
@@ -3178,7 +3226,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						enemy.gx = KinkyDungeonPlayerEntity.x;
 						enemy.gy = KinkyDungeonPlayerEntity.y;
 					}
-					if (KDEnemyHasFlag(enemy, "StayHere") || KDEnemyHasFlag(enemy, "Defensive")) AIData.dontFollow = true;
+					if (KDEnemyHasFlag(enemy, "StayHere") || KDEnemyHasFlag(enemy, "Defensive"))
+						AIData.dontFollow = true;
 					if (AIData.hostile) {
 						KinkyDungeonSetEnemyFlag(enemy, "StayHere", 0);
 						KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
@@ -3215,18 +3264,28 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						ignore: enemy.items,
 					}, enemy)));
 			AIData.moveTowardPlayer =
-				!KDIsImmobile(enemy) &&
-				AIType.chase(enemy, player, AIData)
+				// We can move
+				!KDIsImmobile(enemy)
+				// We want to move
+				&& AIType.chase(enemy, player, AIData)
+				// We are not ignoring the target
 				&& !AIData.ignore
+				// We aren't prevented from following the target
 				&& !AIData.dontFollow
-
-				&& (enemy.aware || AIData.followPlayer)
+				// We are aware of the target OR we are allied and are following
+				&& (enemy.aware || AIData.allyFollowPlayer)
+				// Player is within our max chase range
 				&& AIData.playerDist <= AIData.chaseRadius
+				// We aren't already following a path or stationed at our current point
+				// TODO evaluate whether we should check gxx and gyy instead of gx and gy (station point vs goto point)
 				&& ((enemy.gx != enemy.x || enemy.gy != enemy.y || enemy.path || enemy.fx || enemy.fy) ? true : false);
 
 			// try 12 times to find a moveable tile, with some random variance
 			// First part is player chasing behavior
-			if (!AIData.focusOnLeash
+
+			if (// We aren't focusing on pulling
+				!AIData.focusOnLeash
+				// We want to move toward the target instead of our goal
 				&& AIData.moveTowardPlayer) {
 				//enemy.aware = true;
 
@@ -3292,7 +3351,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						enemy.fy = undefined;
 					}
 				}
-			} else if (!KDIsImmobile(enemy) && AIType.move(enemy, player, AIData) && (Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0))  {
+			} else if (
+				// We can move
+				!KDIsImmobile(enemy)
+				// We want to move
+				&& AIType.move(enemy, player, AIData)
+				// We are not where we want to be
+				&& (Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0))  {
 				if (AIData.focusOnLeash && AIData.moveTowardPlayer && AIData.wantsToLeash) {
 					// Only break awareness if the AI cant chase player
 					if (!enemy.IntentLeashPoint) {
@@ -3364,13 +3429,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			} else if (Math.abs(enemy.x - enemy.gx) < 2 || Math.abs(enemy.y - enemy.gy) < 2) AIData.patrolChange = true;
 
 			if (!KDIsImmobile(enemy) && !AIType.aftermove(enemy, player, AIData)) {
-				if (AIType.resetguardposition(enemy, player, AIData) && !AIData.followPlayer && Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 1.5 && enemy.gxx && enemy.gyy) {
+				if (AIType.resetguardposition(enemy, player, AIData) && !AIData.allyFollowPlayer && Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 1.5 && enemy.gxx && enemy.gyy) {
 					enemy.gx = enemy.gxx;
 					enemy.gy = enemy.gyy;
 				}
 				let wanderfar = AIType.wander_far(enemy, player, AIData);
 				let wandernear = AIType.wander_near(enemy, player, AIData);
-				if ((wanderfar || wandernear) && !AIData.followPlayer && (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere")) && !KDEnemyHasFlag(enemy, "StayHere") && enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive)) {
+				if ((wanderfar || wandernear) && !AIData.allyFollowPlayer && (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere")) && !KDEnemyHasFlag(enemy, "StayHere") && enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive)) {
 					if ((Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 1.5 || (KDRandom() < 0.02 && KDEnemyHasFlag(enemy, "failpath"))) || (!(enemy.vp > 0.05) && (!enemy.path || KDRandom() < 0.1))) {
 						AIData.master = KinkyDungeonFindMaster(enemy).master;
 						if (!KDEnemyHasFlag(enemy, "wander")) {
@@ -3665,7 +3730,18 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					let bound = 0;
 
 					if (player.player) {
-						if (player.player && AIData.playerDist < AIData.range && (AIData.aggressive || AIData.attack.includes("Pull") || enemy.IntentLeashPoint) && (((!enemy.Enemy.noLeashUnlessExhausted || !KinkyDungeonHasWill(0.1)) && enemy.Enemy.tags && AIData.leashing && KDGetFaction(enemy) != "Ambush") || AIData.attack.includes("Pull") || enemy.IntentLeashPoint) && (KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id)) {
+						if (player.player
+							&& AIData.playerDist < AIData.range
+							&& (AIData.aggressive || AIData.attack.includes("Pull") || enemy.IntentLeashPoint)
+							&& ( // If we are already leashing or pulling or we are a leashing type that is able to leash
+								((!enemy.Enemy.noLeashUnlessExhausted || !KinkyDungeonHasWill(0.1))
+								&& enemy.Enemy.tags
+								&& AIData.leashing && KDGetFaction(enemy) != "Ambush")
+								|| AIData.attack.includes("Pull")
+								|| enemy.IntentLeashPoint
+							)
+							// Only attempt to leash if the player is not already being leashed
+							&& (KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id)) {
 							AIData.intentToLeash = true;
 
 							let wearingLeash = false;

@@ -437,15 +437,26 @@ function KDGetMapSize() {
 }
 
 /**
+ *
+ * @param {{x: number, y: number}} point
+ * @returns {KDWorldSlot}
+ */
+function KDGetWorldMapLocation(point) {
+	return KDWorldMap[point.x + ',' + point.y];
+}
+
+/**
  * Creates a new world location at the specific area
  * @param {number} x
  * @param {number} y
+ * @param {string} main - The main maptype which you return to
  */
-function KDCreateWorldLocation(x, y) {
+function KDCreateWorldLocation(x, y, main = "") {
 	KDWorldMap[x + ',' + y] = {
 		data: {},
 		x: x,
 		y: y,
+		main: "",
 		name: "Tile" + x + ',' + y,
 		color: "#ffffff"
 	};
@@ -610,7 +621,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 	if (!worldLocation) worldLocation = {x: KDCurrentWorldSlot.x, y: KDCurrentWorldSlot.y};
 	if (!KDWorldMap[(constantX ? 0 : worldLocation.x) + "," + worldLocation.y]) {
-		KDCreateWorldLocation(constantX ? 0 : worldLocation.x, worldLocation.y);
+		KDCreateWorldLocation(constantX ? 0 : worldLocation.x, worldLocation.y, altType?.makeMain ? altRoom : "");
 	}
 	let location = KDWorldMap[(constantX ? 0 : worldLocation.x) + "," + worldLocation.y];
 

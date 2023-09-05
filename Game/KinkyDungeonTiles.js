@@ -273,7 +273,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				});
 				KDGameData.HeartTaken = false;
 				KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], KDGameData.RoomType, KDGameData.MapMod, MiniGameKinkyDungeonLevel, undefined, undefined,
-					undefined, newLocation, !altRoomTarget || !altRoomTarget.alwaysRegen, originalRoom,
+					undefined, newLocation, !altRoomTarget || !altRoomTarget.alwaysRegen, altRoom?.persist ? originalRoom : (KDGetWorldMapLocation(newLocation)?.main || ""),
 					AdvanceAmount > 0
 						? (toTile == 'H' ? 2 : 0)
 						: (toTile == 'S' ? 1 : 0));
