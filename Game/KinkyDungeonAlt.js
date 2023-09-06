@@ -296,6 +296,7 @@ let alts = {
 		Title: "ShopStart",
 		skiptunnel: true, // Skip the ending tunnel
 		bossroom: false,
+		persist: true,
 		width: 10,
 		height: 8,
 		setpieces: {
