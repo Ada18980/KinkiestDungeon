@@ -4776,7 +4776,7 @@ let KDEventMapGeneric = {
 		},
 		"SkipOldPerkRooms": (e, data) => {
 			// The player can never backtrack to old perk rooms
-			if (data.toTile != 'S' && !data.tile?.RoomType && MiniGameKinkyDungeonLevel < KDGameData.HighestLevel) {
+			if (data.toTile != 'S' && !data.tile?.RoomType && MiniGameKinkyDungeonLevel < KDGameData.HighestLevelCurrent) {
 				data.overrideRoomType = true;
 				KDGameData.RoomType = "";
 				data.AdvanceAmount = 1;

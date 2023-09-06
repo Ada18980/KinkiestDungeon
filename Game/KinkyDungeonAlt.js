@@ -1409,7 +1409,7 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 - 1, VisitedRooms[0].y*2 - 4, 's');
 	if (MiniGameKinkyDungeonLevel == 0)
-		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: KDGameData.HighestLevel > 0 ? "" : "JourneyFloor"});
+		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: KDGameData.HighestLevelCurrent > 0 ? "" : "JourneyFloor"});
 
 	KDMapData.EndPosition = {x: b1*2 - 1, y: VisitedRooms[0].y*2 - 4};
 }

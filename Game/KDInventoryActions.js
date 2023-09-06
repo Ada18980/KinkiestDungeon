@@ -31,6 +31,7 @@ let KDInventoryAction = {
 
 					if (item.quantity > 1) item.quantity -= 1;
 					else KinkyDungeonInventoryRemove(item);
+					KinkyDungeonAdvanceTime(1, true, true);
 
 					break;
 				}

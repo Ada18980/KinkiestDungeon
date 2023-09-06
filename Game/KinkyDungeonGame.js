@@ -294,8 +294,10 @@ function KinkyDungeonNewGamePlus() {
 
 	MiniGameKinkyDungeonLevel = 0;
 	KinkyDungeonSetCheckPoint("grv", true);
+	KDGameData.HighestLevelCurrent = 1;
 	KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, "ShopStart", "", 1);
 	KinkyDungeonNewGame += 1;
+
 
 	for (let t of KDResertNGTags) {
 		if (KinkyDungeonFlags.has(t))
@@ -402,7 +404,9 @@ function KDCreateBoringness(noBoring) {
 
 	if (noBoring) return;
 	// First we find shortest path to exit
-	let path = KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, KDMapData.EndPosition.x, KDMapData.EndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
+	let path = KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, KDMapData.EndPosition.x, KDMapData.EndPosition.y,
+		false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
+		undefined, false, undefined, false, true);
 
 	let pathLength = path ? path.length : 100;
 
@@ -411,9 +415,13 @@ function KDCreateBoringness(noBoring) {
 	for (let X = 0; X < KDMapData.GridWidth; X++) {
 		for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
 			if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))) {
-				let startLength = KinkyDungeonFindPath(X, Y, KDMapData.StartPosition.x, KDMapData.StartPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
+				let startLength = KinkyDungeonFindPath(X, Y, KDMapData.StartPosition.x, KDMapData.StartPosition.y,
+					false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
+					undefined, false, undefined, false, true);
 				if (startLength) {
-					let endLength = KinkyDungeonFindPath(X, Y, KDMapData.EndPosition.x, KDMapData.EndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
+					let endLength = KinkyDungeonFindPath(X, Y, KDMapData.EndPosition.x, KDMapData.EndPosition.y,
+						false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
+						undefined, false, undefined, false, true);
 					if (endLength) {
 						let delta = Math.abs((startLength.length + endLength.length) - pathLength);
 						KinkyDungeonBoringSet(X, Y, delta);
@@ -1041,8 +1049,10 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 
 		if (KDTileToTest || ((KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)
-			&& KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, KDMapData.EndPosition.x, KDMapData.EndPosition.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy,
-				false, false, false, undefined, false).length > 0)) iterations = 100000;
+			&& KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, KDMapData.EndPosition.x, KDMapData.EndPosition.y,
+				false, false, true, KinkyDungeonMovableTilesSmartEnemy,
+				false, false, false, undefined, false,
+				undefined, false, true).length > 0)) iterations = 100000;
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 
 		if (iterations == 100000) {
@@ -1120,7 +1130,7 @@ function KDLowPriorityNavMesh() {
 				false, false, false, undefined, false,
 				(x, y, xx, yy) => {
 					return KDistTaxicab(x - xx, y - yy);
-				}, true);
+				}, true,true);
 			if (path)
 				for (let p of path) {
 					let tile = KinkyDungeonTilesGet(p.x + "," + p.y) || {};
@@ -3377,7 +3387,9 @@ function KinkyDungeonClickGame(Level) {
 					if (fastMove && Math.max(Math.abs(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x), Math.abs(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)) > 1
 						&& (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5)) {
 						let requireLight = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0;
-						let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY, false, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true);
+						let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY,
+							false, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true,
+							undefined, false, undefined, false, true);
 						if (path) {
 							KinkyDungeonFastMovePath = path;
 							KinkyDungeonSleepTime = 100;
