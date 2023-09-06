@@ -1221,6 +1221,7 @@ interface KinkyDungeonEvent {
 	prevSlowLevel?: number;
 }
 
+
 interface entity {
 	visual_hp?: number,
 	visual_boundlevel?: number,
@@ -2276,6 +2277,17 @@ type KDLockType = {
 
 	loot_special: boolean;
 	loot_locked: boolean;
+}
+
+type KDBondageStatus = {
+	silence: number,
+	bind: number,
+	slow: number,
+	blind: number,
+	disarm: number,
+	toy: number,
+	plug: number,
+	belt: number,
 }
 
 type KDMapTile = {
