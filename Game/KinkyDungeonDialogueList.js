@@ -1539,7 +1539,8 @@ let KDDialogue = {
 						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar = KinkyDungeonGetRestraint({tags: ['shopCollar']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit = KinkyDungeonGetRestraint({tags: ['shopCatsuit']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 
-						if (KDGameData.CurrentDialogMsgValue.RESCUECOST > KDDialogueParams.ShopkeeperHelpFeeFreebiePower
+						if (KDGetTotalRestraintPower(
+							KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false) > KDDialogueParams.ShopkeeperHelpFeeFreebiePower
 							|| KinkyDungeonFlags.get("Collateral") || !(
 							KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor
 							|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint
@@ -1576,7 +1577,8 @@ let KDDialogue = {
 					KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar = KinkyDungeonGetRestraint({tags: ['shopCollar']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 					KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit = KinkyDungeonGetRestraint({tags: ['shopCatsuit']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 
-					if (KDGameData.CurrentDialogMsgValue.RESCUECOST > KDDialogueParams.ShopkeeperHelpFeeFreebiePower
+					if (KDGetTotalRestraintPower(
+						KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false) > KDDialogueParams.ShopkeeperHelpFeeFreebiePower
 						|| KinkyDungeonFlags.get("Collateral") || !(
 						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor
 						|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint

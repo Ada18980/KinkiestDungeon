@@ -2105,7 +2105,7 @@ NameSlimeAdv,Encased Adventurer
 KillSlimeAdv,"The encased adventurer loses hope."
 AttackSlimeAdv,"The encased adventurer moans as she throws herself against you for help! (DamageTaken)"
 AttackSlimeAdvSlow,"The encased adventurer sticks to you as she mumbles incoherently! (DamageTaken)"
-AttackSlimeAdvBind,"The encased adventurer  (+RestraintAdded)"
+AttackSlimeAdvBind,"The encased adventurer pleads for help as her slime spreads to you! (+RestraintAdded)"
 
 NameSmallSlime,Slime
 KillSmallSlime,"The slime melts into a puddle."
