@@ -31,9 +31,10 @@ let KDPFTrim = 40;
  * @param {boolean} [trimLongDistance] - Give up after 1000 or so tiles checked
  * @param {(x: number, y: number, xx: number, yy: number) => number} [heuristicOverride]
  * @param {boolean} [taxicab]
+ * @param {boolean} [ignoreTrafficLaws]
  * @returns {any} - Returns an array of x, y points in order
  */
-function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlayer, ignoreLocks, Tiles, RequireLight, noDoors, needDoorMemory, Enemy, trimLongDistance, heuristicOverride, taxicab) {
+function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlayer, ignoreLocks, Tiles, RequireLight, noDoors, needDoorMemory, Enemy, trimLongDistance, heuristicOverride, taxicab, ignoreTrafficLaws) {
 	let tileShort = Tiles;
 	if (Tiles == KinkyDungeonMovableTilesSmartEnemy) tileShort = "TSE";
 	else if (Tiles == KinkyDungeonMovableTilesEnemy) tileShort = "TE";
@@ -155,15 +156,17 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 							&& (!blockPlayer || KinkyDungeonPlayerEntity.x != xx || KinkyDungeonPlayerEntity.y != yy)
 							&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KDMapData.TilesMemory[xx + "," + yy]))) {
 							costBonus = 0;
-							if (KinkyDungeonMapGet(xx, yy) == "D") costBonus = 2;
-							else if (KinkyDungeonMapGet(xx, yy) == "d") costBonus = -2;
-							else if (KinkyDungeonMapGet(xx, yy) == "g") costBonus = 2;
-							else if (KinkyDungeonMapGet(xx, yy) == "L") costBonus = 4;
-							else if (KinkyDungeonMapGet(xx, yy) == "T") costBonus = 2;
-							costBonus = (MapTile && MapTile.Lock) ? costBonus + 2 : costBonus;
-							costBonus = (MapTile && MapTile.OffLimits) ? costBonus + 8 : costBonus;
-							costBonus = (!MapTile || !MapTile.HighTraffic) ? costBonus + 3 : costBonus;
-							costBonus = Math.max(0, costBonus);
+							if (!ignoreTrafficLaws) {
+								if (KinkyDungeonMapGet(xx, yy) == "D") costBonus = 2;
+								else if (KinkyDungeonMapGet(xx, yy) == "d") costBonus = -2;
+								else if (KinkyDungeonMapGet(xx, yy) == "g") costBonus = 2;
+								else if (KinkyDungeonMapGet(xx, yy) == "L") costBonus = 4;
+								else if (KinkyDungeonMapGet(xx, yy) == "T") costBonus = 2;
+								costBonus = (MapTile && MapTile.Lock) ? costBonus + 2 : costBonus;
+								costBonus = (MapTile && MapTile.OffLimits) ? costBonus + 8 : costBonus;
+								costBonus = (!MapTile || !MapTile.HighTraffic) ? costBonus + 3 : costBonus;
+								costBonus = Math.max(0, costBonus);
+							}
 							succ.set(xx + "," + yy, {x: xx, y: yy,
 								g: moveCost + costBonus + lowest.g,
 								f: moveCost + costBonus + lowest.g + heur(xx, yy, endx, endy),

@@ -292,8 +292,10 @@ let KDOptOut = false;
 * Training: Record<string, KDTrainingRecord>,
 * QuickLoadout: KDPresetLoadout[],
 * CurrentLoadout: number,
+* HighestLevelCurrent: number,
 * HighestLevel: number,
 * KDChasingEnemies: entity[],
+* ShopRewardProgram: number,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
@@ -301,6 +303,7 @@ let KDOptOut = false;
 let KDGameDataBase = {
 	InventoryAction: "",
 	BondageTarget: -1,
+	ShopRewardProgram: 0,
 
 	QuickLoadouts: {},
 	CurrentLoadout: 0,
@@ -440,6 +443,7 @@ let KDGameDataBase = {
 	otherPlaying: 0,
 	CategoryIndex: {},
 	HighestLevel: 1,
+	HighestLevelCurrent: 1,
 };
 /**
  * @type {KDGameDataBase}

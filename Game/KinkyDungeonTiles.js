@@ -180,7 +180,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 
 			let newLocation = KDAdvanceLevel(data); // Advance anyway
 			// We increment the save, etc, after the tunnel
-			if (MiniGameKinkyDungeonLevel > KDGameData.HighestLevel) {
+			if (MiniGameKinkyDungeonLevel > KDGameData.HighestLevelCurrent) {
 				if (!data.overrideProgression) {
 					if (KDGameData.PriorJailbreaks > 0) KDGameData.PriorJailbreaksDecay = (KDGameData.PriorJailbreaksDecay + 1) || 1;
 
@@ -227,7 +227,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 					KDGameData.MapMod = ""; // Reset the map mod
 				}
 			}
-			KDGameData.HighestLevel = Math.max(KDGameData.HighestLevel || 1, MiniGameKinkyDungeonLevel);
+			KDGameData.HighestLevelCurrent = Math.max(KDGameData.HighestLevelCurrent || 1, MiniGameKinkyDungeonLevel);
 
 
 			if (!data.overrideRoomType) {
