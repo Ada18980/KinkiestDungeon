@@ -218,6 +218,73 @@ function KDRestraintBondageType(item) {
 
 /**
  * gets a restraint
+ * @param {Named} item
+ * @returns {KDBondageStatus}
+ */
+function KDRestraintBondageStatus(item) {
+	let r = KDRestraint(item);
+	if (r) {
+		let data = {
+			item: item,
+			restraint: r,
+			/** @type {KDBondageStatus} */
+			status: {
+				silence: 0,
+				bind: 0,
+				slow: 0,
+				blind: 0,
+				disarm: 0,
+				toy: 0,
+				plug: 0,
+				belt: 0,
+			},
+			override: undefined,
+			overridePriority: 0,
+		};
+		// Stock methodology
+		let powerMult = Math.max(1, r.power)**0.75;
+		if (r.gag) {
+			data.status.silence = Math.ceil(powerMult * r.gag * 1.3);
+		}
+		if (r.blindfold) {
+			data.status.blind = Math.ceil(powerMult * r.blindfold * 1.7);
+		}
+		if (r.freeze) {
+			data.status.bind = Math.ceil(powerMult);
+		}
+		if (r.hobble || r.blockfeet) {
+			data.status.slow = Math.ceil(powerMult * 4);
+		}
+		if (r.bindarms || r.bindhands) {
+			data.status.disarm = Math.ceil(powerMult * Math.max(r.bindarms ? 0.3 : 0, r.bindhands || 0.1));
+		}
+		if (r.chastity || r.chastitybra) {
+			data.status.belt = r.chastity ? 2 : 1;
+		}
+		if (r.plugSize) {
+			data.status.plug = r.plugSize;
+		}
+		if (r.vibeLocation) {
+			data.status.toy = 1;
+		}
+
+		KinkyDungeonSendEvent("calcBondageStatus", data);
+		return data.override || data.status;
+	}
+	return {
+		silence: 0,
+		bind: 0,
+		slow: 0,
+		blind: 0,
+		disarm: 0,
+		toy: 0,
+		plug: 0,
+		belt: 0,
+	};
+}
+
+/**
+ * gets a restraint
  * @param {item} item
  * @returns {boolean}
  */
