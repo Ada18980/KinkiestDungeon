@@ -55,6 +55,8 @@ interface Model extends Namable {
     Restraint?: boolean,
     /** Optional group, for items where there can should only be one (like panties or shoes)*/
     Group?: string,
+    /** Removes the model if these poses are present*/
+    RemovePoses?: string[],
     /** Optional categories for a model to appear in wardrobe*/
     Categories?: string[],
     /** Optional, this appears as a top level item*/

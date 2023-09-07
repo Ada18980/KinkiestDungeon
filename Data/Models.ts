@@ -668,6 +668,43 @@ function LayerSpriteCustom(Layer: ModelLayer, Poses: {[_: string]: boolean}, Spr
 	return Sprite + pose;
 }
 
+function GetTrimmedAppearance(C: Character) {
+	let MC: ModelContainer = KDCurrentModels.get(C);
+	if (!MC) return;
+	let appearance: Item[] = MC.Character.Appearance;
+	let appearance_new: Item[] = MC.Character.Appearance;
+	let poses = {};
+	for (let A of appearance) {
+		if (A.Model && A.Model.AddPose) {
+			for (let pose of A.Model.AddPose) {
+				poses[pose] = true;
+			}
+		}
+	}
+	for (let A of appearance) {
+		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
+			appearance_new.push(A);
+		} else {
+			console.log("lost " + A.Model.Name);
+		}
+	}
+	return appearance_new;
+}
+
+
+function IsModelLost(C: Character, Name: string) : boolean {
+	let MC: ModelContainer = KDCurrentModels.get(C);
+	if (!MC) return false;
+
+	let poses = MC.Poses;
+	let Model = MC.Models.get(Name);
+	if (Model) {
+		return Model.RemovePoses && Model.RemovePoses.some((removePose) => {return poses[removePose]});
+	}
+	return false;
+}
+
+
 function UpdateModels(C: Character) {
 	let MC: ModelContainer = KDCurrentModels.get(C);
 	if (!MC) return;
@@ -676,8 +713,16 @@ function UpdateModels(C: Character) {
 
 
 	let appearance: Item[] = MC.Character.Appearance;
+	let poses = {};
 	for (let A of appearance) {
-		if (A.Model) {
+		if (A.Model && A.Model.AddPose) {
+			for (let pose of A.Model.AddPose) {
+				poses[pose] = true;
+			}
+		}
+	}
+	for (let A of appearance) {
+		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
 			MC.addModel(A.Model, A.Filters, A.Property?.LockedBy);
 		}
 	}
@@ -689,7 +734,6 @@ function UpdateModels(C: Character) {
 			}
 		}
 	}
-
 
 	// base body
 	//if (!MC.Models.get("Body"))

@@ -38,8 +38,12 @@ let LAYERS_BASE = [
 	"Collar",
 
 	// Bondage
+	"BindForeWristLeft",
+	"BindForeWristRight",
 	"BindForeArmLeft",
 	"BindForeArmRight",
+	"BindForeHandLeft",
+	"BindForeHandRight",
 
 	"ForeWrists",
 
@@ -72,8 +76,12 @@ let LAYERS_BASE = [
 	"Chestplate",
 
 	// Bondage
+	"BindWristLeft",
+	"BindWristRight",
 	"BindArmLeft",
 	"BindArmRight",
+	"BindHandLeft",
+	"BindHandRight",
 
 	// Certain pieces of armor go over the shirt
 	"BeltBondage",
@@ -244,6 +252,24 @@ let LayerGroups = {
 		"Thighs1",
 		"PantLeft",
 		"PantRight",
+	]),
+	"SlimeFeet": ToMap([
+		"Ankles",
+		"Ankles3",
+		"Ankles2",
+		"Ankles1",
+		"AnkleLeft",
+		"AnkleRight",
+	]),
+	"Shoes": ToMap([
+		"ShoeLeft",
+		"ShoeRight",
+		"ShoeLeftOver",
+		"ShoeRightOver",
+		"SockLeft",
+		"SockRight",
+		"ShoeRightKneel",
+		"ShoeLeftHogtie",
 	]),
 	"SlimeAnkles": ToMap([
 		"Ankles",
