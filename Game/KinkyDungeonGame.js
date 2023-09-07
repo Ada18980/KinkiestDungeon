@@ -2060,7 +2060,9 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 				KinkyDungeonSendEvent("genSpecialChest", data);
 				KDGameData.ChestsGenerated.push(type);
 				KinkyDungeonTilesSet("" + chest.x + "," +chest.y, {
-					Loot: data.loot, Roll: KDRandom(), NoTrap: data.noTrap, Faction: data.faction,
+					Loot: data.loot, Roll: KDRandom(), NoTrap: data.noTrap, Faction: data.faction, Type: data.lock ? "Lock" : undefined, Lock: data.lock,
+					Special: data.lock == "Blue",
+					RedSpecial: data.lock == "Red",
 					lootTrap: KDGenChestTrap(data.guaranteedTrap || false, chest.x, chest.y, data.type, data.lock, data.noTrap),});
 			} else if (lock) {
 				KDGameData.ChestsGenerated.push(lock == "Blue" ? "blue" : (chest.Loot ? chest.Loot : "chest"));

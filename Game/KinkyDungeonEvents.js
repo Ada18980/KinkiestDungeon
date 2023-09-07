@@ -5139,6 +5139,12 @@ let KDEventMapGeneric = {
 				data.guaranteedTrap = true;
 			}
 		},
+		"shadow": (e, data) => {
+			if (data.type == "shadow") {
+				data.lock = undefined;
+				data.guaranteedTrap = true;
+			}
+		},
 	},
 	"addEntity": {
 		"EnemyResist": (e, data) => {
