@@ -225,6 +225,11 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 			if (alreadyClothed[clothes.Group || clothes.Item]) continue;
 			data.updateDress = true;
 			if (!clothes.Lost && KinkyDungeonCheckClothesLoss) {
+				if (StandalonePatched) {
+					if (IsModelLost(Character, clothes.Item))
+						clothes.Lost = true;
+				}
+
 				if (clothes.Group == "Necklace") {
 					if (KinkyDungeonGetRestraintItem("ItemTorso") && KDRestraint(KinkyDungeonGetRestraintItem("ItemTorso")).harness) clothes.Lost = true;
 					if (KinkyDungeonGetRestraintItem("ItemArms") && KDGroupBlocked("ItemBreast")) clothes.Lost = true;

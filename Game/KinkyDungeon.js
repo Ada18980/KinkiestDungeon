@@ -2331,6 +2331,7 @@ let KDModsAfterLoad = () => {};
 function KinkyDungeonStartNewGame(Load) {
 	KinkyDungeonNewGame = 0;
 	let cp = KinkyDungeonMapIndex.grv;
+	KDUpdateHardMode();
 	KinkyDungeonInitialize(1, Load);
 	MiniGameKinkyDungeonCheckpoint = "grv";
 	KDMapData.Grid = "";
@@ -2375,10 +2376,15 @@ function KDUpdatePlugSettings(evalHardMode) {
 	for (let i = 0; i < classCount; i++) {
 		KinkyDungeonStatsChoice.set("classMode", KinkyDungeonClassMode == Object.keys(KDClassStart)[i] ? true : undefined);
 	}
+
 	if (evalHardMode) {
-		let points = KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice);
-		KinkyDungeonStatsChoice.set("hardMode", points >= KDHardModeThresh ? true : undefined);
+		KDUpdateHardMode();
 	}
+}
+
+function KDUpdateHardMode() {
+	let points = KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice);
+	KinkyDungeonStatsChoice.set("hardMode", points >= KDHardModeThresh ? true : undefined);
 }
 
 let KDHardModeThresh = 10;
