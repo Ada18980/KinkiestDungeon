@@ -74,9 +74,18 @@ let alts = {
 	"PerkRoom": {
 		name: "PerkRoom",
 		Title: "PerkRoom",
-		skin: "tmp",
+		skin: "shrine", useDefaultMusic: true,
+		useGenParams: "tmp",
+		lightParams: "ore",
 		bossroom: false,
 		persist: true,
+
+		torchreplace: {
+			sprite: "Lantern",
+			unlitsprite: "LanternUnlit",
+			brightness: 6,
+		},
+
 		//constantX: true,
 		width: 9,
 		height: 8,
