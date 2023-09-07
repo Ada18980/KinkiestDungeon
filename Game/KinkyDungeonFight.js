@@ -25,12 +25,12 @@ let KDVulnerableDmgMult = 0.33;
 let KDVulnerableHitMult = 1.33;
 let KDVulnerableBlockHitMult = 2.0;
 let KDPacifistReduction = 0.1;
-let KDEnemyResistReduction = 0.7;
+let KDEnemyResistHPMult = 1.4;
 let KDRiggerDmgBoost = 0.2;
 let KDRiggerBindBoost = 0.3;
-let KDStealthyDamageMult = 0.7;
+let KDStealthyHPMult = 1.5;
 let KDStealthyEvaMult = 0.8;
-let KDResilientDamageMult = 0.7;
+let KDResilientHPMult = 1.3;
 let KDStealthyEnemyCountMult = 1.7;
 let KDBoundPowerMult = 0.4;
 let KDBerserkerAmp = 0.3;
@@ -43,7 +43,7 @@ let KDFightParams = {
 let KinkyDungeonOpenObjects = KinkyDungeonTransparentObjects; // Objects bullets can pass thru
 let KinkyDungeonMeleeDamageTypes = ["unarmed", "crush", "slash", "pierce", "grope", "pain", "chain", "tickle"];
 let KinkyDungeonTeaseDamageTypes = ["tickle", "charm", "grope", "pain"];
-let KinkyDungeonPacifistDamageTypes = ["tickle", "charm", "grope", "pain", "chain", "grope", "soul"];
+let KinkyDungeonPacifistDamageTypes = ["tickle", "charm", "grope", "pain", "chain", "glue", "grope", "soul"];
 let KinkyDungeonStunDamageTypes = ["fire", "electric", "stun"];
 let KinkyDungeonBindDamageTypes = ["chain", "glue"];
 let KinkyDungeonFreezeDamageTypes = ["ice"];
@@ -528,16 +528,13 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 	let miss = !(!Damage || !Damage.evadeable || KinkyDungeonEvasion(Enemy, (true && Spell), !KinkyDungeonMeleeDamageTypes.includes(predata.type), attacker));
 	if (Damage && !miss) {
-		if (KDHostile(Enemy)) {
+		if (predata.faction == "Player") {
 			if (KinkyDungeonStatsChoice.get("Pacifist") && Enemy.Enemy.bound && !Enemy.Enemy.nonHumanoid && !KinkyDungeonPacifistDamageTypes.includes(predata.type)) {
 				predata.dmg *= KDPacifistReduction;
 			}
 			if (KinkyDungeonStatsChoice.get("EnemyArmor")) {
 				armor += KDPerkParams.KDEnemyArmorBoost;
 				spellResist += KDPerkParams.KDEnemyArmorBoost;
-			}
-			if (KinkyDungeonStatsChoice.get("EnemyResist")) {
-				predata.dmg *= KDEnemyResistReduction;
 			}
 		}
 		KDUpdatePerksBonus();
@@ -638,14 +635,6 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				if (Enemy.freeze == 0) {
 					predata.freezebroke = true;
 				}
-			}
-
-			if (KDHostile(Enemy)) {
-				if (KinkyDungeonStatsChoice.get("Stealthy"))
-					predata.dmgDealt *= KDStealthyDamageMult;
-
-				if (KinkyDungeonStatsChoice.get("ResilientFoes"))
-					predata.dmgDealt *= KDResilientDamageMult;
 			}
 
 			KinkyDungeonSendEvent("duringDamageEnemy", predata);

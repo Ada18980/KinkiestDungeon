@@ -1860,3 +1860,8 @@ let KDCastConditions = {
 		return false;
 	},
 };
+
+/** @type {Record<string, (player: entity, x: number, y: number) => boolean>} */
+let KDPlayerCastConditions = {
+
+};

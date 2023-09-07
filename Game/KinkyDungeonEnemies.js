@@ -4924,9 +4924,23 @@ function KDGetIntentEvent(enemy, data, play, allied, hostile, aggressive) {
 }
 
 function KDAddEntity(entity) {
+	let data = {
+		enemy: entity,
+		x: entity.x,
+		y: entity.y,
+		type: entity.Enemy,
+		typeOverride: false,
+		data: undefined,
+		loadout: undefined,
+	};
+	KinkyDungeonSendEvent("addEntity", data);
 	KDMapData.Entities.push(entity);
-	KDSetLoadout(entity, null);
+	KDSetLoadout(entity, data.loadout);
 	if (!entity.data && entity.Enemy.data) entity.data = entity.Enemy.data;
+	if (data.data) {
+		if (!entity.data) entity.data = {};
+		Object.assign(entity.data, data.data);
+	}
 	KDUpdateEnemyCache = true;
 }
 function KDSpliceIndex(index, num = 1) {
