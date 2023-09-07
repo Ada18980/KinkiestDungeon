@@ -2503,7 +2503,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 							enemy.vp = Math.max(sneakThreshold + 1, Math.max(Math.min(enemy.vp, sneakThreshold), enemy.vp * 0.7 - 0.1*delta));
 					}
 					if (!player?.player || KDistChebyshev(enemy.x - player.x, enemy.y - player.y) > 2.5) {
-						enemy.vp = Math.max(0, enemy.vp - 0.01*delta);
+						enemy.vp = Math.max(0, enemy.vp - 0.10*delta);
 					}
 
 				}
