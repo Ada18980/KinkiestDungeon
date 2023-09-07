@@ -105,6 +105,21 @@ let KinkyDungeonEnemies = [
 	{name: "Wall", tags: KDMapInit(["construct", "poisonimmune", "soulimmune", "player", "playerinstakill", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "immobile", "nobrain"]), immobile: true, spellResist: 4, allied: true, lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander", regen: -1.0,
 		visionRadius: 0, maxhp: 25, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		terrainTags: {}, floors:KDMapInit([])},
+
+	{name: "Wall", tags: KDMapInit(["construct", "player", "playerinstakill", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "immobile", "nobrain"]),
+		immobile: true, spellResist: 4, allied: true, lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander", regen: -1.0,
+		Resistance: {
+			profile: ["construct"],
+		},
+		visionRadius: 0, maxhp: 15, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		terrainTags: {}, floors:KDMapInit([])},
+	{name: "WallDoor", tags: KDMapInit(["construct", "player", "playerinstakill", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "immobile", "nobrain"]),
+		immobile: true, spellResist: 4, allied: true, lowpriority: true, evasion: -100, armor: 2.5, followRange: 100, AI: "wander", regen: -0.8,
+		Resistance: {
+			profile: ["construct"],
+		},
+		visionRadius: 0, maxhp: 25, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		terrainTags: {}, floors:KDMapInit([])},
 	{name: "StaticSphere", tags: KDMapInit(["construct", "flying", "poisonimmune", "soulimmune", "player", "playerinstakill", "noknockback", "melee", "electricImmune", "nowet", "immobile", "temporary", "notalk", "nonvulnerable", "nobrain"]), immobile: true, spellResist: 4, allied: true, lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander",
 		visionRadius: 0, maxhp: 20, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		terrainTags: {}, floors:KDMapInit([]),

@@ -155,6 +155,23 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
+	"Wall": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let en = KinkyDungeonEnemyAt(targetX, targetY);
+		if (!en) {
+			let tile = KinkyDungeonMapGet(targetX, targetY);
+			let door = (tile == 'D' || tile == 'd');
+			let e = DialogueCreateEnemy(targetX, targetY, "Wall" + (door ? "Door" : ""));
+			if (e) {
+				if (door) {
+					KinkyDungeonMapSet(targetX, targetY, 'D');
+					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorClose.ogg");
+				}
+				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+				return "Cast";
+			}
+		} else return "Fail";
+	},
 	"Enemy_CM1": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {

@@ -1029,15 +1029,7 @@ function KinkyDungeonGetAffinity(Message, affinity, group) {
 		for (let X = KinkyDungeonPlayerEntity.x - 1; X <= KinkyDungeonPlayerEntity.x + 1; X++) {
 			for (let Y = KinkyDungeonPlayerEntity.y - 1; Y <= KinkyDungeonPlayerEntity.y + 1; Y++) {
 				let tile = KinkyDungeonMapGet(X, Y);
-				if (tile == 'A'
-					|| tile == 'a'
-					|| tile == 'c'
-					|| tile == 'O'
-					|| tile == '-'
-					|| tile == '='
-					|| tile == '+'
-					|| tile == 'o'
-					|| tile == 'B') {
+				if (KDCornerTiles[tile]) {
 					return true;
 				} else if (tile == 'C' && Message) {
 					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedOpenChest"), "#ff0000", 2, true);

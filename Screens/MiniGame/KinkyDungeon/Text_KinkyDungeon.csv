@@ -1436,6 +1436,8 @@ NameDecoy,Illusion
 KillDecoy,"The illusion vanishes into thin air."
 NameWall,Wall
 KillWall,"The wall shatters into pieces, which fade away slowly."
+NameWallDoor,Locked Door
+KillWallDoor,"The door lock shatters into pieces."
 NameEarthenMonolith,Earthen Monolith
 KillEarthenMonolith,"The monolith recedes into the ground."
 NameStaticSphere,Static Sphere
@@ -5556,7 +5558,7 @@ KinkyDungeonSpellCastIcerune,You create a fan of icicles!
 
 KinkyDungeonSpellWall,Wall
 KinkyDungeonSpellTargetWall,Select where to put the wall (cannot place on occupied squares)
-KinkyDungeonSpellDescriptionWall,Create a stationary wall for Duration turns. It takes 20% damage from spells.
+KinkyDungeonSpellDescriptionWall,Create a stationary wall for Duration turns. It takes 20% damage from spells. Cast on an open door to close it and give it additional armor.
 KinkyDungeonSummonSingleWall,A wall starts to form!
 KinkyDungeonSpellCastWall,You create a line on the ground.
 
