@@ -203,7 +203,7 @@ let KinkyDungeonLootTable = {
 		{name: "staff_bind", minLevel: 0, weight:.5, weapon: "StaffBind", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffBind"]},
 		{name: "AncientCores", minLevel: 0, weight:0.5, message:"LootChestAncientCores", messageColor:"yellow", messageTime: 3, allFloors: true, max: 1},
 		{name: "bluekey", minLevel: 0, weight:0.5, message:"LootChestBlueKey", messageColor:"lightblue", messageTime: 3, allFloors: true},
-		{name: "spell_points", magic: true, minLevel: 0, weight:5, message:"LootChestSpellPoints", messageColor:"lightblue", messageTime: 3, allFloors: true, max: 1},
+		//{name: "spell_points", magic: true, minLevel: 0, weight:5, message:"LootChestSpellPoints", messageColor:"lightblue", messageTime: 3, allFloors: true, max: 1},
 		...KDShadowRestraints,
 	],
 	"lessershadow": [
