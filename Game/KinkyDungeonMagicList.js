@@ -468,15 +468,15 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			components: ["Verbal"], noTargetEnemies: true, noTargetPlayer: true, level:1, type:"hit", noSprite: true, onhit:"summon",
 			summon: [{name: "StaticSphere", count: 1, time: 12, bound: true}], power: 1.5, time: 12, delay: -1, range: 6, size: 1, aoe: 0, lifetime: 1, damage: "inert"},
 
-		{name: "LightningRune", tags: ["electric", "offense", "defense", "utility"], prerequisite: "ApprenticeLightning", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 2,
+		{name: "LightningRune", castCondition: "noStationaryBullet", tags: ["electric", "offense", "defense", "utility"], prerequisite: "ApprenticeLightning", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 2,
 			components: ["Legs"], noTargetPlayer: true, CastInWalls: false, level:1, type:"inert",
 			onhit:"aoe", time: 5, delay: 3, power: 4.5, range: 2.99, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "LightningRuneStrike", target: "onhit", directional:false, offset: false}, channel: 5},
-		{name: "FlameRune", tags: ["fire", "offense", "defense"], prerequisite: "ApprenticeFire", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 2,
+		{name: "FlameRune", castCondition: "noStationaryBullet", tags: ["fire", "offense", "defense"], prerequisite: "ApprenticeFire", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 2,
 			components: ["Legs"], noTargetPlayer: true, CastInWalls: false, level:1, type:"inert",
 			onhit:"aoe", delay: 3, power: 5.5, range: 2.99, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "FlameRuneStrike", target: "onhit", directional:false, offset: false}, channel: 5},
-		{name: "FreezeRune", tags: ["ice", "offense", "defense", "utility"], prerequisite: "ApprenticeIce", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 5,
+		{name: "FreezeRune", castCondition: "noStationaryBullet", tags: ["ice", "offense", "defense", "utility"], prerequisite: "ApprenticeIce", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 5,
 			components: ["Legs"], noTargetPlayer: true, CastInWalls: false, level:1, type:"inert",
 			onhit:"aoe", time: 30, delay: 3, power: 3, range: 2.99, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "FreezeRuneStrike", target: "onhit", directional:false, offset: false}, channel: 5},
@@ -533,9 +533,9 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "TickleCloud", color: "#ffffff", prerequisite: "ApprenticeSummon", tags: ["tickle", "aoe", "dot", "offense", "utility", "denial"], piercing: true, noUniqueHits: true, noise: 1, landsfx: "Tickle", hitsfx: "Tickle", school: "Elements", manacost: 2,
 			components: ["Arms"], hitSpin: 1, bulletSpin: 0.4, level:1, type:"dot", onhit:"aoe", delay: 9, power: 0.5, range: 3.99, size: 1, aoe: 0.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"},
 		},//, distractEff: 2.0
-		{name: "Snare", color: "#ff8899", prerequisite: "ApprenticeRope", tags: ["rope", "binding", "denial", "utility", "offense"], sfx: "FireSpell",
+		{name: "Snare", color: "#ff8899", castCondition: "noStationaryBullet", prerequisite: "ApprenticeRope", tags: ["rope", "binding", "denial", "utility", "offense"], sfx: "FireSpell",
 			school: "Conjure", manacost: 2, components: ["Legs"], noTargetEnemies: true, level:1, type:"inert", onhit:"lingering", lifetime:90, bindType: "Rope",
-			time: 8, bind: 15, delay: 5, range: 1, damage: "stun", playerEffect: {name: "MagicRope", time: 3, count: 3}}, // Creates a magic rope trap that creates magic ropes on anything that steps on it. They are invisible once placed. Enemies get rooted, players get fully tied!
+			time: 8, bind: 15, delay: 5, range: 1.5, damage: "stun", playerEffect: {name: "MagicRope", time: 3, count: 3}}, // Creates a magic rope trap that creates magic ropes on anything that steps on it. They are invisible once placed. Enemies get rooted, players get fully tied!
 
 		{name: "LeatherBurst", prerequisite: "ApprenticeLeather", tags: ["buff", "offense", "binding"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: [], level:1, passive: true, type:"",
 			events: [{type: "LeatherBurst", trigger: "playerCast", power: 3}]},
@@ -1863,5 +1863,9 @@ let KDCastConditions = {
 
 /** @type {Record<string, (player: entity, x: number, y: number) => boolean>} */
 let KDPlayerCastConditions = {
-
+	"noStationaryBullet": (player, x, y) => {
+		return !KDMapData.Bullets.some((b) => {
+			return b.x == x && b.y == y;
+		});
+	},
 };
