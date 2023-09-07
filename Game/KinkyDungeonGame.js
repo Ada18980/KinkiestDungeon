@@ -471,6 +471,23 @@ function KDCreateWorldLocation(x, y, main = "") {
 }
 
 /**
+ *
+ * @param {{x: number; y: number;}} slot
+ * @param {boolean} saveconstantX
+ */
+function KDSaveRoom(slot, saveconstantX) {
+	slot = slot || KDCurrentWorldSlot;
+	let CurrentLocation = KDWorldMap[(saveconstantX ? 0 : slot.x) + "," + slot.y];
+	if (!CurrentLocation) KDCreateWorldLocation(0, slot.y);
+
+	let CurrentMapData = JSON.parse(JSON.stringify(KDMapData));
+
+	if (CurrentLocation) {
+		CurrentLocation.data[CurrentMapData.RoomType] = CurrentMapData;
+	}
+}
+
+/**
  * Loads a map from a world location
  * @param {number} x
  * @param {number} y
@@ -480,23 +497,16 @@ function KDCreateWorldLocation(x, y, main = "") {
  * @param {boolean} ignoreAware - Enemies will lock the door if this is true and they see you enter
  */
 function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = true) {
-	let saveconstantX = KDMapData.ConstantX;
 	let origx = x;
 	if (constantX) x = 0;
 
 	if (!KDWorldMap[x + ',' + y]) return false;
 	if (!KDWorldMap[x + ',' + y].data[room]) return false;
 
+	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
+
 	// Load the room
-	let CurrentLocation = KDWorldMap[(saveconstantX ? 0 : KDCurrentWorldSlot.x) + "," + KDCurrentWorldSlot.y];
-	if (!CurrentLocation) KDCreateWorldLocation(0, KDCurrentWorldSlot.y);
-
-	let CurrentMapData = JSON.parse(JSON.stringify(KDMapData));
 	let NewMapData = JSON.parse(JSON.stringify(KDWorldMap[x + ',' + y].data[room]));
-
-	if (CurrentLocation) {
-		CurrentLocation.data[CurrentMapData.RoomType] = CurrentMapData;
-	}
 
 	KDMapData = NewMapData;
 	KDGameData.RoomType = KDMapData.RoomType;
@@ -639,6 +649,8 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	}
 
 	// Else make a new one
+	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
+
 	/** @type {KDMapData} */
 	KDMapData = KDDefaultMapData(KDGameData.RoomType, KDGameData.MapMod);
 	KDCurrentWorldSlot = worldLocation;

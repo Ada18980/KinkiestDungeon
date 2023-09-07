@@ -2512,14 +2512,14 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1;} else {
 					if (enemy.aware && (enemy.lifetime == undefined || enemy.lifetime > 9000) && !enemy.Enemy.tags.temporary && !enemy.Enemy.tags.peaceful) {
 						if (enemy.hostile > 0 && enemy.hostile < 9000 && (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail')) {
-							if (!(enemy.silence > 0)) {
+							if (!(enemy.silence > 0) && KDEnemyCanSignal(enemy)) {
 								tickAlertTimer = true;
 								if (KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 9 && !tickAlertTimerFactions.includes(KDGetFaction(enemy))) {
 									tickAlertTimerFactions.push(KDGetFaction(enemy));
 								}
 							}
 						} else if (KinkyDungeonAggressive(enemy)) {
-							if (!(enemy.silence > 0)) {
+							if (!(enemy.silence > 0) && KDEnemyCanSignal(enemy)) {
 								tickAlertTimer = true;
 								if (KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 9 && !tickAlertTimerFactions.includes(KDGetFaction(enemy))) {
 									tickAlertTimerFactions.push(KDGetFaction(enemy));
@@ -3173,7 +3173,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			}
 			enemy.aware = true;
 			// Share aggro
-			if (AIData.hostile && AIData.aggressive && !enemy.rage && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
+			if (AIData.hostile && AIData.aggressive && !enemy.rage && KDEnemyCanSignal(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
 				for (let e of KDMapData.Entities) {
 					if (KDHostile(e) && KinkyDungeonAggressive(e) && !enemy.rage && e != enemy && KDistChebyshev(e.x - enemy.x, e.y - enemy.y) <= KinkyDungeonEnemyAlertRadius) {
 						if (player.player && KDPlayerLight < 1.5) {
@@ -5819,4 +5819,12 @@ function KDOverrideIgnore(enemy, player) {
  */
 function KDIsFlying(enemy) {
 	return enemy.Enemy.tags?.flying || KDEnemyHasFlag(enemy, "flying");
+}
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDEnemyCanSignal(enemy) {
+	return !enemy.Enemy.tags?.nosignal && !(enemy.silence > 0);
 }
