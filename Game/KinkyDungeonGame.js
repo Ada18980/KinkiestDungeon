@@ -2052,14 +2052,16 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 					lock: lock,
 					noTrap: chest.noTrap,
 					type: type,
+					loot: type,
 					faction: chest.Faction,
 					specialChests: specialdata.specialChests,
+					guaranteedTrap: false,
 				};
 				KinkyDungeonSendEvent("genSpecialChest", data);
 				KDGameData.ChestsGenerated.push(type);
 				KinkyDungeonTilesSet("" + chest.x + "," +chest.y, {
-					Loot: data.type, Roll: KDRandom(), NoTrap: data.noTrap, Faction: data.faction,
-					lootTrap: KDGenChestTrap(false, chest.x, chest.y, data.type, data.lock, data.noTrap),});
+					Loot: data.loot, Roll: KDRandom(), NoTrap: data.noTrap, Faction: data.faction,
+					lootTrap: KDGenChestTrap(data.guaranteedTrap || false, chest.x, chest.y, data.type, data.lock, data.noTrap),});
 			} else if (lock) {
 				KDGameData.ChestsGenerated.push(lock == "Blue" ? "blue" : (chest.Loot ? chest.Loot : "chest"));
 				KinkyDungeonTilesSet("" + chest.x + "," +chest.y, {

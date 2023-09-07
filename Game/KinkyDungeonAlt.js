@@ -73,6 +73,8 @@ let alts = {
 	},
 	"PerkRoom": {
 		name: "PerkRoom",
+		Title: "PerkRoom",
+		skin: "tmp",
 		bossroom: false,
 		persist: true,
 		//constantX: true,

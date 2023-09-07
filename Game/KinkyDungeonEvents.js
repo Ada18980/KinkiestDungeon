@@ -5123,10 +5123,21 @@ let KDEventMapGeneric = {
 	},
 	"specialChests": {
 		"hardmode": (e, data) => {
-			if (KinkyDungeonStatsChoice.get("hardMode")) data.specialChests.shadow = 2;
+			if (KinkyDungeonStatsChoice.get("hardMode")) {
+				data.specialChests.shadow = (data.specialChests.shadow || 0) + 2;
+				data.specialChests.blue = (data.specialChests.blue || 0) + 1;
+			}
 		},
 		"demontransition": (e, data) => {
 			if (data.altType?.name == "DemonTransition") data.specialChests.lessershadow = 10;
+		},
+	},
+	"genSpecialChest": {
+		"blue": (e, data) => {
+			if (data.type == "blue") {
+				data.lock = "Blue";
+				data.guaranteedTrap = true;
+			}
 		},
 	},
 	"addEntity": {

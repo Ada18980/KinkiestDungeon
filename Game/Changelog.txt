@@ -5,6 +5,7 @@ CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1
 - Truss em Up now applies status effects from restraints but also takes 1 turn
 - Wall can now be cast on doors to do a special effect
 - Perks which increase enemy resistance flatly now instead increase HP
+- You can no longer stack multiple trap type spells on the same tile
 
 4.6 (August 2023)
 Features
