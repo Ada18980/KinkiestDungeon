@@ -83,7 +83,7 @@ KinkyDungeonStatCost,"Point Cost: AMOUNT"
 KinkyDungeonStatPoints,"Points Available: AMOUNT"
 
 KinkyDungeonStatResilientFoes,"Resilient Foes"
-KinkyDungeonStatDescResilientFoes,"Enemies take 30% less damage."
+KinkyDungeonStatDescResilientFoes,"Enemies have 40% more hp."
 
 KinkyDungeonStat0,"Strong"
 KinkyDungeonStatDesc0,"Boosts the Struggle option when escaping."
@@ -190,7 +190,7 @@ KinkyDungeonStat37,"Narcoleptic"
 KinkyDungeonStatDesc37,"You slowly lose stamina over time."
 
 KinkyDungeonStat38,"Stealth Mission"
-KinkyDungeonStatDesc38,"You are harder to detect and there are more chests, but enemies take 30% less damage, are more evasive, and drop no gold."
+KinkyDungeonStatDesc38,"You are harder to detect and there are more chests, but enemies have 50% more HP, are more evasive, and drop no gold."
 KinkyDungeonStatCommonLatex,"Latex Lovers"
 KinkyDungeonStatDescCommonLatex,"All humanoids that can bind you also apply latex restraints."
 KinkyDungeonStatCommonLeather,"Leather Lovers"
@@ -10876,7 +10876,7 @@ KinkyDungeonStatDescEnemyArmor,"All enemies gain 20 physical and magic armor."
 KinkyDungeonStatEnemyDamage,"Glass Cannon"
 KinkyDungeonStatDescEnemyDamage,"The effects of you taking damage are increased by 150%."
 KinkyDungeonStatEnemyResist,"The Wand is Mightier"
-KinkyDungeonStatDescEnemyResist,"Enemies take 30% less damage BEFORE armor calculation; Tease damage multiplier to bound targets is increased by 85%."
+KinkyDungeonStatDescEnemyResist,"Enemies have 30% more hp; Tease damage multiplier to bound targets is increased by 85%."
 KDCategoryCommon,Kinky Armory
 
 NameChef,Chef

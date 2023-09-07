@@ -5128,7 +5128,33 @@ let KDEventMapGeneric = {
 		"demontransition": (e, data) => {
 			if (data.altType?.name == "DemonTransition") data.specialChests.lessershadow = 10;
 		},
-	}
+	},
+	"addEntity": {
+		"EnemyResist": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("EnemyResist") && KDGetFaction(data.enemy) != "Player") {
+				data.type = JSON.parse(JSON.stringify(data.enemy.Enemy));
+				data.type.maxhp *= KDEnemyResistHPMult;
+				data.enemy.hp *= KDEnemyResistHPMult;
+				data.enemy.Enemy = data.type;
+			}
+		},
+		"ResilientFoes": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("ResilientFoes") && KDGetFaction(data.enemy) != "Player") {
+				data.type = JSON.parse(JSON.stringify(data.enemy.Enemy));
+				data.type.maxhp *= KDResilientHPMult;
+				data.enemy.hp *= KDResilientHPMult;
+				data.enemy.Enemy = data.type;
+			}
+		},
+		"Stealthy": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("Stealthy") && KDGetFaction(data.enemy) != "Player") {
+				data.type = JSON.parse(JSON.stringify(data.enemy.Enemy));
+				data.type.maxhp *= KDStealthyHPMult;
+				data.enemy.hp *= KDStealthyHPMult;
+				data.enemy.Enemy = data.type;
+			}
+		},
+	},
 };
 
 /**
