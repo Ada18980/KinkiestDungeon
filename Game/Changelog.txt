@@ -3,6 +3,7 @@ CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1
 4.61 (August 2023)
 - Bugfix patch to hopefully fix a lot of the prison and map persistence bugs
 - Truss em Up now applies status effects from restraints but also takes 1 turn
+- Wall can now be cast on doors to do a special effect
 
 4.6 (August 2023)
 Features

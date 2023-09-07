@@ -1,5 +1,19 @@
 "use strict";
 
+let KDCornerTiles = {
+	'A': true,
+	'a': true,
+	'c': true,
+	'o': true,
+	'O': true,
+	'-': true,
+	'=': true,
+	'+': true,
+	'B': true,
+	'M': true,
+	'm': true,
+};
+
 /**
  * Updates local tiles such as conveyors
  * @type {Record<string, (delta: number, X?: number, Y?: number) => void>}
