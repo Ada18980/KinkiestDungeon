@@ -39,6 +39,7 @@ KDToggleSound,Enable Sound
 KDToggleDrool,Enable Drool/Tears
 KDToggleDrawArmor,Draw Armor
 KDToggleMusic,Enable Music
+KDToggleTransparentUI,Transparent UI
 KDToggleTurnCounter,Turn Counter
 KDToggleStunFlash,Flash Screen on Stun
 KDToggleArousalHearts,Advanced Distraction VFX
@@ -392,8 +393,18 @@ KinkyDungeonStatUnmasked,"Unmasked"
 KinkyDungeonStatDescUnmasked,"Hoods and full-face covering masks do not appear, but blindfolds are more powerful."
 KinkyDungeonStatBlackout,"Blackout"
 KinkyDungeonStatDescBlackout,"Blindfolds are stronger. While blindfolded you can only see enemies next to you."
+
 KinkyDungeonStatTotalBlackout,"Total Blackout"
 KinkyDungeonStatDescTotalBlackout,"Blindfolds are extremely punishing and you can't see explored areas while blindfolded."
+KinkyDungeonStatNearsighted,"Poor Vision"
+KinkyDungeonStatDescNearsighted,"Vision radius is significantly reduced."
+KinkyDungeonStatKeenHearing,"Keen Hearing"
+KinkyDungeonStatDescKeenHearing,"You can more easily hear enemies and their movements through walls."
+KinkyDungeonStatArchersEye,"Archer's Eye"
+KinkyDungeonStatDescArchersEye,"+2 vision radius."
+KinkyDungeonStatNightOwl,"Night Owl"
+KinkyDungeonStatDescNightOwl,"Your vision in dark areas is improved."
+
 KinkyDungeonStatNoDoll,"Not a Doll"
 KinkyDungeonStatDescNoDoll,"You may still enter Doll Terminals, but enemies will not force you onto doll stands."
 KinkyDungeonStatNoNurse,"No Nurses"
@@ -8243,11 +8254,12 @@ KinkyDungeonSpecialStaffIncineration,Ignite torches and nearby objects
 KDCategoryToggles,Toggles
 KDCategoryMulticlass,Multiclass
 KDCategoryRestraints,Locks and Restraints
-KDCategoryCombat,General Combat
-KDCategoryKinky,Kinks and Preferences
+KDCategoryCombat,Combat
+KDCategoryKinky,Kinks
+KDCategorySenses,Senses
 KDCategoryDamage,Damage and Resists
-KDCategoryMagic,Wizardry and Sorcery
-KDCategoryEnemies,Devious Threats
+KDCategoryMagic,Magic
+KDCategoryEnemies,Threats
 KDCategoryMap,World Generation
 KDCategoryStart,Starting Scenario
 KDCategoryBoss,Unlockable

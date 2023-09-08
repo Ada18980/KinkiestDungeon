@@ -248,6 +248,11 @@ let KDStatsOrder = {
 	"kinky": -1000,
 };
 
+let KDUIColor = "#111111";
+let KDUIAlpha = 0.5;
+let KDUIColorHighlight = "#ffee83";
+let KDUIAlphaHighlight = 0.7;
+
 function KinkyDungeonDrawInputs() {
 	/**
 	 * @type {Record<string, {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, click?: string, buffid?: string}>}
@@ -260,6 +265,47 @@ function KinkyDungeonDrawInputs() {
 	//let X1 = 1640;
 	//let X2 = 1360;
 	//let X3 = 1090;
+
+	let Rwidth = 270;
+	let Bheight = 80;
+
+
+	if (!KDToggles.TransparentUI) {
+		DrawRectKD(kdcanvas, kdpixisprites, "rightBarb", {
+			Left: 2000 - Rwidth, Top: -2, Width: Rwidth + 2,
+			Height: 1004,
+			Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -1,
+			LineWidth: 2
+		});
+		FillRectKD(kdcanvas, kdpixisprites, "rightBar", {
+			Left: 2000 - Rwidth, Top: 0, Width: Rwidth,
+			Height: 1000,
+			Color: KDUIColor, alpha: KDUIAlpha, zIndex: -2
+		});
+		DrawRectKD(kdcanvas, kdpixisprites, "leftBarb", {
+			Left: -2, Top: -2, Width: 502,
+			Height: 1004,
+			Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -1,
+			LineWidth: 2
+		});
+		FillRectKD(kdcanvas, kdpixisprites, "leftBar", {
+			Left: 0, Top: 0, Width: 500,
+			Height: 1000,
+			Color: KDUIColor, alpha: KDUIAlpha, zIndex: -2
+		});
+		DrawRectKD(kdcanvas, kdpixisprites, "botBarb", {
+			Left: 500, Top: 1000-Bheight,
+			Width: 2000 - 500 - Rwidth,
+			Height: Bheight + 2,
+			Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -1,
+			LineWidth: 2
+		});
+		FillRectKD(kdcanvas, kdpixisprites, "botBar", {
+			Left: 500, Top: 1000-Bheight, Width: 2000 - 500 - Rwidth,
+			Height: Bheight,
+			Color: KDUIColor, alpha: KDUIAlpha, zIndex: -2
+		});
+	}
 
 	let i = 0;
 
@@ -998,13 +1044,24 @@ function KinkyDungeonDrawInputs() {
 		let padY = 90 + (KinkyDungeonSpellChoices.length > KinkyDungeonSpellChoiceCountPerPage ? 0 : 40);
 		let pages = Math.floor(KinkyDungeonSpellChoices.length / KinkyDungeonSpellChoiceCountPerPage);
 		let pageExtra = 40;
-		FillRectKD(
-			kdcanvas, kdpixisprites, "spellbg", {
-				Left: 1600 - pages * pageExtra, Top: padY, Width: 145 + pages * pageExtra,
-				Height: empowerYY - padY + 80,
-				Color: "#000000", alpha: 0.4, zIndex: 70
-			}
-		);
+		if (!KDToggles.TransparentUI) {
+			DrawRectKD(
+				kdcanvas, kdpixisprites, "spellbgb", {
+					Left: 1600 - pages * pageExtra, Top: padY, Width: 130 + pages * pageExtra,
+					Height: empowerYY - padY + 80,
+					Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -2,
+					LineWidth: 2,
+				}
+			);
+			FillRectKD(
+				kdcanvas, kdpixisprites, "spellbg", {
+					Left: 1600 - pages * pageExtra, Top: padY, Width: 130 + pages * pageExtra + 2,
+					Height: empowerYY - padY + 80,
+					Color: KDUIColor, alpha: KDUIAlpha, zIndex: -1
+				}
+			);
+		}
+
 		DrawButtonKDEx("empowerSpell",
 			(bdata) => {
 				KDSendInput("upcast", {});

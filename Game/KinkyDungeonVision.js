@@ -242,6 +242,7 @@ function KDAvgColor(color1, color2, w1, w2) {
 function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapBrightness) {
 	let flags = {
 		SeeThroughWalls: 0,
+		nightVision: 1.0,
 	};
 
 	KinkyDungeonSendEvent("vision",{update: delta, flags: flags});
@@ -305,7 +306,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 		for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++)
 			if (KinkyDungeonCheckPath(X, Y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, true, flags.SeeThroughWalls ? flags.SeeThroughWalls + 1 : 1, true)
 				&& KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(X, Y))) {
-				bb = KinkyDungeonBrightnessGet(X, Y);
+				bb = Math.max( Math.min(10, 2 * (flags.nightVision - 1)), Math.min(flags.nightVision, 1) * KinkyDungeonBrightnessGet(X, Y));
 				d = KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y);
 				newL = bb + 2 - Math.min(1.5, d * 1.5);
 				if (newL > KinkyDungeonVisionGet(X, Y)) {
