@@ -940,7 +940,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				startTime = performance.now();
 			}
 			if (!altType || altType.chests)
-				KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasurecount, rubblechance, Floor, width, height); // Place treasure chests inside dead ends
+				KinkyDungeonPlaceChests(MapParams, chestlist, shrinelist, treasurechance, treasurecount, rubblechance, Floor, width, height); // Place treasure chests inside dead ends
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for chest creation`);
 				startTime = performance.now();
@@ -1908,7 +1908,7 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 
 let KDMinBoringness = 0; // Minimum boringness for treasure spawn
 
-function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasurecount, rubblechance, Floor, width, height) {
+function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, treasurecount, rubblechance, Floor, width, height) {
 
 	let shrinePoints = new Map();
 
@@ -1924,7 +1924,7 @@ function KinkyDungeonPlaceChests(chestlist, shrinelist, treasurechance, treasure
 
 	let specialdata = {
 		altType: KDGetAltType(MiniGameKinkyDungeonLevel),
-		specialChests: {},
+		specialChests: params.specialChests ? JSON.parse(JSON.stringify(params.specialChests)) : {},
 	};
 
 	KinkyDungeonSendEvent("specialChests", specialdata);

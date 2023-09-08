@@ -525,6 +525,10 @@ const KinkyDungeonMapParams = {
 		torchchance: 0.1,
 		torchchanceboring: 0.1,
 
+		specialChests: {
+			kitty: 3,
+		},
+
 		music: {
 			"AREA2-ANCIENTTOMBS.ogg": 10,
 		},

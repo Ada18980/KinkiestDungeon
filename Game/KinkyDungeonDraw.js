@@ -721,6 +721,7 @@ let KDSpecialChests = {
 	"silver" : "ChestSilver",
 	"shadow" : "ChestShadow",
 	"lessershadow" : "ChestShadow",
+	"kitty" : "Chests/Kitty",
 };
 
 /**
