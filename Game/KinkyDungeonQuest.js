@@ -296,7 +296,7 @@ function KDQuestTick(quests) {
 function KDRemoveQuest(quest) {
 	if (!KDGameData.Quests)
 		KDGameData.Quests = [];
-	else
+	else if (KDGameData.Quests.indexOf(quest) > -1)
 		KDGameData.Quests.splice(KDGameData.Quests.indexOf(quest), 1);
 }
 function KDAddQuest(quest) {

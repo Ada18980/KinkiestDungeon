@@ -275,7 +275,8 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	else if (Loot.armor || Loot.armortags) {
 		let armor = Loot.armor;
 		if (Loot.armortags) {
-			let newarmor = KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "");
+			let newarmor = KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "",
+				undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, true);
 			if (newarmor) armor = newarmor.name;
 		}
 		let unlockcurse = null;
