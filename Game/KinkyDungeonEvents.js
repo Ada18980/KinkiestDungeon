@@ -5143,7 +5143,7 @@ let KDEventMapGeneric = {
 			}
 		},
 		"shadow": (e, data) => {
-			if (data.type == "shadow") {
+			if (data.type == "shadow" || data.type == "lessershadow") {
 				data.lock = undefined;
 				data.guaranteedTrap = true;
 			}
