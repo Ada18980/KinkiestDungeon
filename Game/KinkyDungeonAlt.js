@@ -151,7 +151,7 @@ let alts = {
 	},
 	"DollRoom": {
 		name: "DollRoom",
-		dungeonName: "DollRoom",
+		Title: "DollRoom",
 		noWear: true, // Disables doodad wear
 		bossroom: false,
 		width: 15,
@@ -186,7 +186,7 @@ let alts = {
 	},
 	"DemonTransition": {
 		name: "DemonTransition",
-		dungeonName: "DemonTransition",
+		Title: "DemonTransition",
 		noWear: false, // Disables doodad wear
 		bossroom: false,
 		width: 20,
