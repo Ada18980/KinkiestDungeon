@@ -367,6 +367,9 @@ function KinkyDungeonInitialize(Level, Load) {
 	KDMapData.Bullets = [];
 	KDMapData.GroundItems = [];
 
+
+	KDGameData.Quests = [];
+
 	KinkyDungeonTextMessage = "";
 	KinkyDungeonActionMessage = "";
 	MiniGameKinkyDungeonLevel = Level;

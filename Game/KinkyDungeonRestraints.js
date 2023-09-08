@@ -2517,10 +2517,11 @@ let KDNoOverrideTags = [
  * @param {number} filterEps - Anything under this is filtered unless nothing is above it
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {string} [curse] - Going to add this curse
+ * @param {boolean} [useAugmented] - useAugmented
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns {{restraint: restraint, weight: number}[]}
  */
-function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, filterEps = 0.9, minWeightFallback = true) {
+function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, filterEps = 0.9, minWeightFallback = true, useAugmented = false) {
 	let RestraintsList = [];
 
 	if (KinkyDungeonStatsChoice.has("NoWayOut")) RequireWill = false;
@@ -2590,7 +2591,7 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 		}
 		if ((!LeashingOnly || (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints"))
 			&& (!RequireWill || !restraint.maxwill || willPercent <= restraint.maxwill || (LeashingOnly && (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints"))))
-			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, undefined, curse)) {
+			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse)) {
 				if (restraint.playerTags)
 					for (let tag in restraint.playerTags)
 						if ((!agnostic || !KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) r.w += restraint.playerTags[tag];
@@ -2626,14 +2627,15 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
  * @param {*} agnostic - Determines if playertags and current bondage are ignored
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {string} [curse] - Planning to add this curse
+ * @param {boolean} [useAugmented] - useAugmented
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns
  */
-function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse) {
+function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, useAugmented) {
 	let restraintWeightTotal = 0;
 	let restraintWeights = [];
 
-	let Restraints = KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse);
+	let Restraints = KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, undefined, undefined, useAugmented);
 
 	for (let rest of Restraints) {
 		let restraint = rest.restraint;
