@@ -25,6 +25,7 @@ let KDAnimTime = 400;
 
 let KDFloatAnimTime = 1500;
 let KDSquishyAnimTime = 1600;
+let KDBreathAnimTime = 3000;
 
 let KDFlipPlayer = false;
 

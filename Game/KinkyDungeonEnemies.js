@@ -28,6 +28,13 @@ let KDEventableAttackTypes = [
 
 /** @type {Record<string, (entity) => boolean>} */
 let KDAnims = {
+	breathing: (Entity) => {
+		if (!Entity.animTime) Entity.animTime = CommonTime() + Math.floor(KDRandom() * 1000);
+		Entity.scaleY *= (1 - 0.02*Math.sin(Math.PI + 2 * Math.PI * (CommonTime() - Entity.animTime)/(KDBreathAnimTime)));
+		Entity.scaleX *= (1 - 0.015*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDBreathAnimTime)));
+		Entity.offY += -0.007*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDBreathAnimTime));
+		return true;
+	},
 	squishy: (Entity) => {
 		if (!Entity.animTime) Entity.animTime = CommonTime() + Math.floor(KDRandom() * 1000);
 		Entity.scaleY *= (1 - 0.15*Math.sin(Math.PI + 2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
@@ -512,17 +519,21 @@ function KDAnimEnemy(Entity) {
 	let resetAnim = true;
 
 
-	if (KDToggles.EnemyAnimations && Entity.Enemy && Entity.Enemy.Animations) {
+	if (KDToggles.EnemyAnimations && Entity.Enemy && (Entity.Enemy.Animations || Entity.Enemy.bound)) {
 		Entity.offY = 0;
 		Entity.offX = 0;
 		Entity.scaleX = 1;
 		Entity.scaleY = 1;
 
 		let anim = Entity.Enemy.Animations;
-		for (let a of anim) {
-			if (KDAnims[a] && KDAnims[a](Entity)) {
-				resetAnim = false;
+		if (anim)
+			for (let a of anim) {
+				if (KDAnims[a] && KDAnims[a](Entity)) {
+					resetAnim = false;
+				}
 			}
+		if (!anim && Entity.Enemy.bound && KDAnims.breathing(Entity)) {
+			resetAnim = false;
 		}
 	}
 
