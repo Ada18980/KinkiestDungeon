@@ -423,13 +423,23 @@ function KinkyDungeonGetCost(Spell) {
 }
 
 function KinkyDungeonMakeNoise(radius, noiseX, noiseY) {
+	let data = {
+		radius: radius,
+		x: noiseX,
+		y: noiseY,
+		enemiesHeard: [],
+		particle: true,
+	};
+	KinkyDungeonSendEvent("beforeNoise", data);
 	for (let e of KDMapData.Entities) {
-		if (!e.aware && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistEuclidean(e.x - noiseX, e.y - noiseY) <= radius) {
-			e.gx = noiseX;
-			e.gy = noiseY;
-			KDAddThought(e.id, "Search", 2, 2 + 3*KDistEuclidean(e.x - noiseX, e.y - noiseY));
+		if (!e.aware && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistEuclidean(e.x - data.x, e.y - data.y) <= data.radius) {
+			e.gx = data.x;
+			e.gy = data.y;
+			KDAddThought(e.id, "Search", 2, 2 + 3*KDistEuclidean(e.x - data.x, e.y - data.y));
+			data.enemiesHeard.push(e);
 		}
 	}
+	KinkyDungeonSendEvent("afterNoise", data);
 }
 
 /**

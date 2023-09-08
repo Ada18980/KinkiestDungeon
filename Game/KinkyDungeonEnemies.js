@@ -13,7 +13,10 @@ let actionDialogueChanceIntense = 0.4;
 
 /** Default noisiness level of moving enemies */
 let KDDefaultEnemyMoveSound = 6;
+let KDDefaultEnemyAttackSound = 10;
+let KDDefaultEnemyCastSound = 8;
 let KDDefaultEnemyIdleSound = 2;
+let KDDefaultEnemyAlertSound = 5;
 
 let KDEventableAttackTypes = [
 	"Lock",
@@ -2212,8 +2215,18 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 
 
 			let master = KinkyDungeonFindMaster(enemy);
-			if (master.master && enemy.aware) master.aware = true;
-			if (master.master && master.master.aware) enemy.aware = true;
+			if (master.master && enemy.aware) {
+
+				if (!master.maser.aware) KDEnemyAddSound(master.maser, master.maser.Enemy.Sound?.alertAmount != undefined ? master.maser.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+
+				master.maser.aware = true;
+			}
+			if (master.master && master.master.aware) {
+
+				if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+
+				enemy.aware = true;
+			}
 			if (master.info && master.info.dependent && !master.master) enemy.hp = -10000;
 			else if (master.info?.dependent) enemy.boundTo = master.master.id;
 
@@ -2838,7 +2851,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 						4, 5, false, true);
 			}
+
+			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+
 			enemy.aware = true;
+
 			if (!enemy.aggro) enemy.aggro = 0;
 			enemy.aggro += 0.1;
 		}
@@ -3182,6 +3199,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 						4, 5, false, true);
 			}
+			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
 			enemy.aware = true;
 			// Share aggro
 			if (AIData.hostile && AIData.aggressive && !enemy.rage && KDEnemyCanSignal(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
@@ -3203,6 +3221,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							}
 						} else {
 							if (!e.aware) KDAddThought(e.id, "Confused", 3, 3);
+
+							if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+
 							e.aware = true;
 						}
 
@@ -3711,6 +3732,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						break;
 					}
 				}
+
+				KDEnemyAddSound(enemy, enemy.Enemy.Sound?.attackAmount != undefined ? enemy.Enemy.Sound?.attackAmount : KDDefaultEnemyAttackSound);
 
 				let playerEvasion = 1.01 * (player.player) ? KinkyDungeonPlayerEvasion()
 					: KinkyDungeonMultiplicativeStat(((player.Enemy && player.Enemy.evasion) ? player.Enemy.evasion : 0)) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(player.buffs, "Evasion"));
@@ -4427,6 +4450,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				KinkyDungeonCastSpell(enemy.x, enemy.y, KinkyDungeonFindSpell("EnemyMiscast", true), enemy, player);
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + (enemy.Enemy.miscastsfx || "SoftShield") + ".ogg", enemy);
 				KinkyDungeonSendEvent("enemyMiscast", {spell: spell, enemy: enemy, player: player, AIData: AIData});
+
+				KDEnemyAddSound(enemy, enemy.Enemy.Sound?.castAmount != undefined ? enemy.Enemy.Sound?.castAmount : KDDefaultEnemyCastSound);
 			} else if (spell) {
 				if (spell.channel && !enemy.Enemy.noChannel) enemy.channel = spell.channel;
 				enemy.castCooldown = spell.manacost*enemy.Enemy.spellCooldownMult + enemy.Enemy.spellCooldownMod + 1;
@@ -4463,6 +4488,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 				KinkyDungeonSendEvent("enemyCast", {spell: spell, spelltarget: spelltarget, enemy: enemy, player: player, AIData: AIData});
 
+				KDEnemyAddSound(enemy, enemy.Enemy.Sound?.castAmount != undefined ? enemy.Enemy.Sound?.castAmount : KDDefaultEnemyCastSound);
 
 			//console.log("casted "+ spell.name);
 			}
@@ -5776,8 +5802,10 @@ function KDEnemySoundDecay(enemy, delta) {
  * @param {entity} enemy
  * @param {number} amount
  */
-function KDEnemyAddSound(enemy, amount) {
+function KDEnemyAddSound(enemy, amount, novisual = false) {
 	if (enemy.sound == undefined) enemy.sound = 0;
+	let prevSound = enemy.sound || 0;
+
 	let data = {
 		enemy: enemy,
 		amount: amount,
@@ -5786,15 +5814,36 @@ function KDEnemyAddSound(enemy, amount) {
 	KinkyDungeonSendEvent("enemySoundAdd", data);
 
 	enemy.sound = Math.max(data.base, data.amount);
+
+	if (!novisual) {
+		let mult = 0.25;
+		// Draw a visual shockwave to help the player realize
+		if (enemy.sound == prevSound) {
+			let ret = KinkyDungeonGetHearingRadius();
+			mult = 0.4 * ret.mult;
+		}
+		if ((enemy.sound > prevSound || (enemy.sound == prevSound && KDRandom() < mult))
+			&& KDCanHearEnemy(KinkyDungeonPlayerEntity, enemy, 1.5)
+			&& (!KDCanSeeEnemy(enemy) && !(KinkyDungeonVisionGet(enemy.x, enemy.y) > 0))) {
+			if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
+			KDEventData.shockwaves.push({
+				x: enemy.x,
+				y: enemy.y,
+				radius: enemy.sound * 0.15 + 0.5,
+				sprite: "Particles/ShockwaveEnemy.png",
+			});
+		}
+	}
 }
 
 /**
  *
  * @param {entity} entity
  * @param {entity} enemy
+ * @param {number} mult
  * @returns {boolean}
  */
-function KDCanHearEnemy(entity, enemy) {
+function KDCanHearEnemy(entity, enemy, mult = 1.0) {
 	if (enemy) {
 		if (entity?.player) {
 			let ret = KinkyDungeonGetHearingRadius();
@@ -5807,8 +5856,8 @@ function KDCanHearEnemy(entity, enemy) {
 				dist: KDistChebyshev(entity.x - enemy.x, entity.y - enemy.y),
 			};
 			KinkyDungeonSendEvent("playerCanHear", data);
-			if (data.dist < data.hearingRadius && data.sound * data.hearingMult >= data.dist - 0.5)
-				return KinkyDungeonCheckPath(entity.x, entity.y, enemy.x, enemy.y, true, false, 0.5 + data.hearingMult, true);
+			if (data.dist < data.hearingRadius * mult && data.sound * data.hearingMult * mult >= data.dist - 0.5)
+				return KinkyDungeonCheckPath(entity.x, entity.y, enemy.x, enemy.y, true, false, mult * (0.5 + data.hearingMult), true);
 			return false;
 		}
 		return false;// TODO allow enemies to hear each other
