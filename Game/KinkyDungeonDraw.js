@@ -34,13 +34,21 @@ let pixiview = null;
 let pixirenderer = null;
 let pixirendererKD = null;
 let kdgamefog = new PIXI.Graphics();
+//let kdgamefogmask = new PIXI.Graphics();
+let kdgamefogsmoothDark = new PIXI.Container();
+kdgamefogsmoothDark.zIndex = -1.05;
+let kdgamefogsmooth = new PIXI.Container();
+kdgamefogsmooth.zIndex = -1.1;
+//kdgamefogsmooth.mask = kdgamefogmask;
 kdgamefog.zIndex = -1;
 let kdgamesound = new PIXI.Container();
 kdgamesound.zIndex = 1;
 let kdsolidcolorfilter = new PIXI.Filter(null, KDShaders.Solid.code, {});
 let kdoutlinefilter = StandalonePatched ? new PIXI.filters.OutlineFilter(2, 0xffffff, 0.1, 0.5, true) : undefined;
+//let kdVisionBlurfilter = StandalonePatched ? new PIXI.filters.KawaseBlurFilter(10, 1) : undefined;
 if (StandalonePatched) {
 	kdgamesound.filters = [kdoutlinefilter];
+	//kdgamefog.filters = [kdVisionBlurfilter];
 } else {
 	kdgamesound.alpha = 0.5;
 }
@@ -59,9 +67,9 @@ let kdlightmap = null;
 let kdlightmapGFX = null;
 
 if (StandalonePatched) {
-	let res = 1;//KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
+	let res = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
 	kdlightmapGFX = new PIXI.Graphics();
-	kdlightmap = PIXI.RenderTexture.create({ width: 2047*res, height: 1023*res,});
+	kdlightmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 2000,});
 	//kdlightmapGFX.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 }
 let kddarkdesaturatefilter = new PIXI.Filter(null, KDShaders.Darkness.code, {
@@ -136,10 +144,14 @@ kdcanvas.addChild(kdminimap);
 
 let statusOffset = 0;
 
+kdgameboard.addChild(kdgamefogsmooth);
+kdgameboard.addChild(kdgamefogsmoothDark);
+
 if (StandalonePatched) {
 
 	statusOffset -= 20;
 	kdgameboard.addChild(kdgamefog);
+	//kdgameboard.addChild(kdgamefogmask);
 	kdcanvas.addChild(kdgameboard);
 
 }
@@ -169,6 +181,10 @@ let kdSpritesDrawn = new Map();
  * @type {Map<string, any>}
  */
 let kdpixisprites = new Map();
+/**
+ * @type {Map<string, any>}
+ */
+let kdpixifogsprites = new Map();
 
 /**
  * @type {Map<string, any>}
