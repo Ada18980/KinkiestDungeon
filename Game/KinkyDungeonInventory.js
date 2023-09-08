@@ -1760,6 +1760,6 @@ function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, 
 		KinkyDungeonInventoryVariants[newname] = variant;
 	if (variant.events)
 		Object.assign(events, variant.events);
-	KinkyDungeonAddRestraintIfWeaker(origRestraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, curse, securityEnemy, useAugmentedPower, newname);
+	return KinkyDungeonAddRestraintIfWeaker(origRestraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, curse, securityEnemy, useAugmentedPower, newname);
 }
 

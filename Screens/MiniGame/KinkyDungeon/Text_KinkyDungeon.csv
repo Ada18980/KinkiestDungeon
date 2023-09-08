@@ -303,6 +303,8 @@ KinkyDungeonStat24,"Rigger"
 KinkyDungeonStatDesc24,"Chain and glue damage increased by 20%. Binding on enemies is 30% stronger."
 KinkyDungeonStat25,"Pacifist"
 KinkyDungeonStatDesc25,"All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue."
+KinkyDungeonStatCurseSeeker,"Curse Seeker"
+KinkyDungeonStatDescCurseSeeker,"When you pick up cursed armor or restraints from chests, they equip automatically if able."
 
 KinkyDungeonStatBurningDesire,"Burning Desire"
 KinkyDungeonStatDescBurningDesire,"While above 70% distraction, you ignite nearby objects and gain +40% fire damage."
@@ -8251,9 +8253,10 @@ KinkyDungeonSpecialFlamberge,Ignite torches and nearby objects
 KinkyDungeonSpecialStaffFlame,Ignite torches and nearby objects
 KinkyDungeonSpecialStaffIncineration,Ignite torches and nearby objects
 
-KDCategoryToggles,Toggles
+KDCategoryToggles,Preferences
 KDCategoryMulticlass,Multiclass
-KDCategoryRestraints,Locks and Restraints
+KDCategoryMajor,Game-Changing
+KDCategoryRestraints,Restraints
 KDCategoryCombat,Combat
 KDCategoryKinky,Kinks
 KDCategorySenses,Senses
@@ -11337,3 +11340,5 @@ DungeonNameJourneyFloor,"Journey Selection"
 DungeonNamePerkRoom,"Shrine"
 DungeonNameJail,"High-Security Prison"
 DungeonNameDollRoom,"Doll Sorting Station"
+
+KDCursedChestEquip,A cursed NEWITM flies out of the chest and latches tightly to you!

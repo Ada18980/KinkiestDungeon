@@ -337,7 +337,18 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 				template: armor,
 				events: events,
 			};
-			KDGiveInventoryVariant(variant, "", unlockcurse);
+			let equipped = 0;
+			if (Loot.forceEquip || KinkyDungeonStatsChoice.get("CurseSeeker")) {
+				equipped = KDEquipInventoryVariant(variant, "", 0, true, undefined, true, false, "Curse", true, unlockcurse, undefined, false);
+			}
+			if (!equipped) {
+				KDGiveInventoryVariant(variant, "", unlockcurse);
+			} else {
+				KinkyDungeonSendTextMessage(10, TextGet("KDCursedChestEquip")
+					.replace("NEWITM", TextGet("Restraint" + variant.template)),
+				"#aa88ff", 10);
+			}
+
 		} else {
 			KinkyDungeonInventoryAddLoose(armor, unlockcurse);
 		}

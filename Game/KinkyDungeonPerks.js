@@ -17,14 +17,15 @@ let KDPerkParams = {
 let KDCategoriesStart = [
 	{name: "Toggles", buffs: [], debuffs: [],},
 	{name: "Multiclass", buffs: [], debuffs: [],},
+	{name: "Major", buffs: [], debuffs: [],},
 	{name: "Restraints", buffs: [], debuffs: [],},
 	{name: "Kinky", buffs: [], debuffs: [],},
 	{name: "Damage", buffs: [], debuffs: [],},
+	{name: "Senses", buffs: [], debuffs: [],},
 	{name: "Combat", buffs: [], debuffs: [],},
 	{name: "Magic", buffs: [], debuffs: [],},
 	{name: "Enemies", buffs: [], debuffs: [],},
 	{name: "Common", buffs: [], debuffs: [],},
-	{name: "Senses", buffs: [], debuffs: [],},
 	{name: "Map", buffs: [], debuffs: [],},
 	{name: "Start", buffs: [], debuffs: [],},
 	{name: "Boss", buffs: [], debuffs: [],},
@@ -193,15 +194,15 @@ let KDPerkCount = {
  * @type {Record<string, KDPerk>}
  */
 let KinkyDungeonStatsPresets = {
-	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 2, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
 	"MC_Wizard":  {category: "Multiclass", id: "MC_Wizard", cost: 2, blockclass: ["Wizard"], tags: ["start", "mc"]},
+	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", debuff: true, cost: 2, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
 
-
+	"CurseSeeker":  {category: "Major", id: "CurseSeeker", cost: -3},
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1},
 	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1},
 
 	"Stranger": {startPriority: 1000, category: "Enemies", id: "Stranger", cost: 0, block: ["WrongNeighborhood"], tags: ["start"]},
-	"WrongNeighborhood": {startPriority: 1000, category: "Enemies", id: "WrongNeighborhood", cost: -1, block: ["Stranger"], tags: ["start"]},
+	"WrongNeighborhood": {startPriority: 1000, category: "Major", id: "WrongNeighborhood", cost: -1, block: ["Stranger"], tags: ["start"]},
 
 	"Strong": {category: "Restraints", id: 0, cost: 2, block: ["Weak"]},
 	"Weak": {category: "Restraints", id: 1, cost: -1, block: ["Strong"]},
@@ -240,8 +241,8 @@ let KinkyDungeonStatsPresets = {
 	"BoundPower": {category: "Combat", id: 40, cost: 3},
 	"SavourTheTaste": {category: "Combat", id: "SavourTheTaste", cost: -1},
 	"ResilientFoes": {category: "Enemies", id: "ResilientFoes", cost: -1},
-	"KillSquad": {category: "Enemies", id: 41, cost: -3, block: ["Conspicuous"]},
-	"Stealthy": {category: "Enemies", id: 38, cost: 0},
+	"KillSquad": {category: "Major", id: 41, cost: -3, block: ["Conspicuous"]},
+	"Stealthy": {category: "Major", id: 38, cost: 0},
 	"Conspicuous": {category: "Enemies", id: 39, cost: -1, block: ["KillSquad"]},
 	"Dominant": {category: "Map", id: "Dominant", cost: 2, block: ["Oppression"]},
 	"Oppression": {category: "Map", id: 50, cost: -1, block: ["Dominant"]},
@@ -253,9 +254,9 @@ let KinkyDungeonStatsPresets = {
 	"Magician": {category: "Magic", id: 36, cost: 3},
 	"Pristine": {category: "Map", id: 22, cost: -1},
 	"Conjurer": {category: "Magic", id: 35, cost: 3},
-	"LostTechnology": {category: "Map", id: 23, cost: -1},
+	"LostTechnology": {category: "Major", buff: true, id: 23, cost: -1},
 	//"Blessed": {category: "Map", id: 8, cost: 1},
-	"Cursed": {category: "Enemies", id: 9, cost: -3},
+	"Cursed": {category: "Major", id: 9, cost: -3},
 	"Studious": {category: "Magic", id: 12, cost: 1, tags: ["start"]},
 	//"Novice": {category: "Magic", id: 7, cost: -1},
 	//"Meditation": {category: "Magic", id: 13, cost: 2},
@@ -334,7 +335,7 @@ let KinkyDungeonStatsPresets = {
 	"PainTolerance":  {category: "Damage", id: "PainTolerance", cost: 1},
 
 	"Rigger": {category: "Damage", id: 24, cost: 2},
-	"Pacifist": {category: "Damage", id: 25, cost: -2},
+	"Pacifist": {category: "Major", buff: true, id: 25, cost: -2},
 	"EnemyResist": {category: "Enemies", id: "EnemyResist", cost: 0},
 	"EnemyArmor": {category: "Enemies", id: "EnemyArmor", cost: -1},
 	"EnemyDamage": {category: "Enemies", id: "EnemyDamage", cost: -1},
