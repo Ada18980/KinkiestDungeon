@@ -282,6 +282,15 @@ let alts = {
 		bossroom: false,
 		width: 12,
 		height: 8,
+		skin: "shrine", useDefaultMusic: true,
+		lightParams: "ore",
+
+		torchreplace: {
+			sprite: "Lantern",
+			unlitsprite: "LanternUnlit",
+			brightness: 6,
+		},
+
 		setpieces: {
 		},
 		genType: "JourneyFloor",
@@ -310,6 +319,16 @@ let alts = {
 		persist: true,
 		width: 10,
 		height: 8,
+
+		skin: "shoppe", useDefaultMusic: true,
+		lightParams: "grv",
+
+		torchreplace: {
+			sprite: "Lantern",
+			unlitsprite: "LanternUnlit",
+			brightness: 6,
+		},
+
 		setpieces: {
 		},
 		alwaysRegen: true,

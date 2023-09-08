@@ -2602,10 +2602,11 @@ function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = f
  * @param {number} [options.alpha]
  * @param {number} [options.zIndex] - zIndex
  * @param {number} [options.maxWidth] - Max width
+ * @param {number} [options.fontSize] - fontSize
  * @returns {void} - Nothing
  */
 function DrawCheckboxKDEx(name, func, enabled, Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = KDTextGray0, CheckImage = "Icons/Checked.png", options) {
-	DrawTextFitKD(Text, Left + 100, Top + 33, options?.maxWidth || 1000, TextColor, "#333333", undefined, "left");
+	DrawTextFitKD(Text, Left + 10 + Width, Top + 33, options?.maxWidth || 1000, TextColor, "#333333", options?.fontSize, "left");
 	DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : "#ffffff", IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled,
 		undefined, undefined, undefined, undefined, options);
 }

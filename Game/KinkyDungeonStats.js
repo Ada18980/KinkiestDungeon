@@ -278,8 +278,10 @@ function KinkyDungeonGetVisionRadius() {
 		noperipheral: KinkyDungeonDeaf || KinkyDungeonStatBlind > 0,
 		blindMult: (KinkyDungeonStatsChoice.get("Blackout") || KinkyDungeonStatsChoice.get("TotalBlackout")) ? 2 : 1,
 		visionMult: 1.0,
+		max: 8,
 	};
 	KinkyDungeonSendEvent("calcVision", data);
+	KDMaxVisionDist = data.max;
 	return (KDGameData.SleepTurns > 2) ? 1 : (Math.max((data.noperipheral) ? 1 : 2, Math.round(data.visionMult*(KDMaxVisionDist-data.blindlevel * data.blindMult))));
 }
 

@@ -24,6 +24,7 @@ let KDCategoriesStart = [
 	{name: "Magic", buffs: [], debuffs: [],},
 	{name: "Enemies", buffs: [], debuffs: [],},
 	{name: "Common", buffs: [], debuffs: [],},
+	{name: "Senses", buffs: [], debuffs: [],},
 	{name: "Map", buffs: [], debuffs: [],},
 	{name: "Start", buffs: [], debuffs: [],},
 	{name: "Boss", buffs: [], debuffs: [],},
@@ -292,7 +293,8 @@ let KinkyDungeonStatsPresets = {
 	"Panic": {category: "Map", id: "Panic", cost: -1},
 
 	"Rusted": {category: "Map", id: "Rusted", cost: 1},
-	"Forgetful": {category: "Map", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
+
+
 	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
 	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"]},
 	"NoPolice": {category: "Toggles", id: "NoPolice", cost: 0, tags: ["start"]},
@@ -311,8 +313,16 @@ let KinkyDungeonStatsPresets = {
 
 	"Butterfingers":  {category: "Restraints", id: "Butterfingers", cost: -1},
 	"WeakGrip":  {category: "Restraints", id: "WeakGrip", cost: -1},
-	"Blackout":  {category: "Combat", id: "Blackout", cost: -1, block: ["TotalBlackout"]},
-	"TotalBlackout":  {category: "Combat", id: "TotalBlackout", cost: -2, block: ["Blackout", "Forgetful"]},
+
+
+	"Blackout":  {category: "Senses", id: "Blackout", cost: -1, block: ["TotalBlackout"]},
+	"TotalBlackout":  {category: "Senses", id: "TotalBlackout", cost: -2, block: ["Blackout", "Forgetful"]},
+	"Forgetful": {category: "Senses", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
+	"NightOwl": {category: "Senses", id: "NightOwl", cost: 2},
+	"Nearsighted": {category: "Senses", id: "Nearsighted", cost: -1, block: ["ArchersEye"]},
+	"KeenHearing": {category: "Senses", id: "KeenHearing", cost: 1},
+	"ArchersEye": {category: "Senses", id: "ArchersEye", cost: 1, block: ["Nearsighted"]},
+
 	"Incantation":  {category: "Magic", id: "Incantation", cost: -1},
 
 
@@ -825,13 +835,13 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 	let left = adjLists.left;
 	let right = adjLists.right;
 
-	drawVertList(left.reverse(), 380, 85, 250, 25, 4, 18, (data) => {
+	drawVertList(left.reverse(), 380, tooltip ? 85 : 190, 250, 25, tooltip ? 4 : 8, 18, (data) => {
 		return (bdata) => {
 			KDPerksIndex = indexList[data.name];
 			return true;
 		};
 	}, "KDCategory");
-	drawVertList(right, 1620, 85, 250, 25, 4, 18, (data) => {
+	drawVertList(right, 1620, tooltip ? 85 : 190, 250, 25, tooltip ? 4 : 8, 18, (data) => {
 		return (bdata) => {
 			KDPerksIndex = Math.max(0, indexList[data.name] - 2);
 			return true;

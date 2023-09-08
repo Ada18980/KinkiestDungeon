@@ -2980,6 +2980,9 @@ let KDEventMapSpell = {
 		"Multiply": (e, spell, data) => {
 			data.visionMult *= e.mult;
 		},
+		"Add": (e, spell, data) => {
+			data.max += e.power;
+		},
 	},
 	"calcHearing": {
 		"Multiply": (e, spell, data) => {
@@ -5169,6 +5172,37 @@ let KDEventMapGeneric = {
 				data.type.maxhp *= KDStealthyHPMult;
 				data.enemy.hp *= KDStealthyHPMult;
 				data.enemy.Enemy = data.type;
+			}
+		},
+	},
+	"calcVision": {
+		"ArchersEye": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("ArchersEye")) {
+				data.max += 2;
+			}
+		},
+		"Nearsighted": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("Nearsighted")) {
+				data.max *= 0.5;
+			}
+		},
+	},
+	"vision": {
+		"NightOwl": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("NightOwl")) {
+				data.flags.nightVision *= 2.5;
+			}
+		},
+		"Nearsighted": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("Nearsighted")) {
+				data.flags.nightVision *= 0.7;
+			}
+		},
+	},
+	"calcHearing": {
+		"KeenHearing": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("KeenHearing")) {
+				data.hearingMult *= 2;
 			}
 		},
 	},

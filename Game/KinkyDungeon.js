@@ -106,6 +106,7 @@ let KDToggles = {
 	VibeHearts: true,
 	FancyWalls: true,
 	EnemyAnimations: true,
+	TransparentUI: false,
 	PlayerTransparencyDuringBullets: true,
 };
 
@@ -1741,7 +1742,8 @@ function KinkyDungeonRun() {
 				KDSaveToggles();
 				return true;
 			}, true, XX, YY, 64, 64, TextGet("KDToggle" + toggle), KDToggles[toggle], false, "#ffffff", undefined, {
-				maxWidth: 300,
+				maxWidth: 280,
+				fontSize: 26,
 			});
 
 			YY += YYd;
