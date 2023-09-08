@@ -2050,7 +2050,8 @@ function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, 
 					Loot: "silver", Roll: KDRandom(), NoTrap: chest.noTrap, Faction: chest.Faction,
 					lootTrap: KDGenChestTrap(false, chest.x, chest.y, "silver", lock, chest.noTrap),});
 			} else if (Object.values(specialdata.specialChests).some((num) => {return num > 0;})) {
-				let type = Object.keys(specialdata.specialChests)[Math.floor(KDRandom() * Object.values(specialdata.specialChests).length)];
+				let filtered = Object.keys(specialdata.specialChests).filter((stype) => {return specialdata.specialChests[stype] > 0;});
+				let type = filtered[Math.floor(KDRandom() * filtered.length)];
 				specialdata.specialChests[type] -= 1;
 				let data = {
 					lock: lock,
