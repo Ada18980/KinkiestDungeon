@@ -162,7 +162,7 @@ let KDIntentEvents = {
 			if (!nj) KinkyDungeonSetFlag("LeashToPrison", -1, 1);
 		},
 		maintain: (enemy, delta, AIData) => {
-			let tethered = KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy);
+			let tethered = KDIsPlayerTethered(KinkyDungeonPlayerEntity);
 			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && !tethered && KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
 				KinkyDungeonAttachTetherToEntity(2.5, enemy);
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
@@ -172,7 +172,7 @@ let KDIntentEvents = {
 				enemy.gx = KinkyDungeonPlayerEntity.x;
 				enemy.gy = KinkyDungeonPlayerEntity.y;
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
-			} else if (tethered) {
+			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 
 				if (!enemy.IntentLeashPoint) {

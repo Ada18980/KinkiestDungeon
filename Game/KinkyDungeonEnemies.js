@@ -2161,6 +2161,10 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 	let visionMod = 1.0;
 	let defeat = false;
 
+	if (KinkyDungeonLeashingEnemy() && !KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, KinkyDungeonLeashingEnemy())) {
+		KDGameData.KinkyDungeonLeashingEnemy = 0;
+	}
+
 	/*if (KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]) {
 		if (KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].brightness) {
 			visionMod = Math.min(1.0, Math.max(0.5, KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].brightness / 8));
@@ -2806,7 +2810,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (enemy.Enemy.ethereal) {
 		AIData.AvoidTiles = "";
 		AIData.MovableTiles = AIData.MovableTiles + "1X";
-	} else if (enemy.Enemy.squeeze && KDGameData.KinkyDungeonLeashingEnemy != enemy.id) {
+	} else if (enemy.Enemy.squeeze && KinkyDungeonLeashingEnemy()?.id != enemy.id) {
 		AIData.MovableTiles = AIData.MovableTiles + 'b';
 		AIData.AvoidTiles = "";
 	}
@@ -3123,7 +3127,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						|| !KDIsPlayerTethered(player))
 					|| KinkyDungeonFlags.get("overrideleashprotection") // The player is leashed but something allows her to be attacked anyway
 					|| KDIsPlayerTetheredToLocation(player, enemy.x, enemy.y, enemy) // The player is attached to this enemy
-					|| enemy.id == KDGameData.KinkyDungeonLeashingEnemy // The player is being leashed by this enemy
+					|| enemy.id == KinkyDungeonLeashingEnemy()?.id // The player is being leashed by this enemy
 					|| KinkyDungeonFlags.has("PlayerCombat") // If the player is fighting back
 				// Basically the result of all this is that only the leashing enemy will attack a leashed player
 				// Unless the player is resisting being leashed
@@ -3609,7 +3613,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
 	let canAttack = !(enemy.disarm > 0)
 		&& AIData.wantsToAttack
-		&& (!player?.player || !enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id || KinkyDungeonFlags.get("overrideleashprotection"))
+		&& (!player?.player || !enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KinkyDungeonLeashingEnemy()?.id == enemy.id || KinkyDungeonFlags.get("overrideleashprotection"))
 		&& ((enemy.aware && KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
 		&& !AIData.ignore
 		&& (!minRange || (AIData.playerDist > minRange))
@@ -3632,7 +3636,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			let moveMult = KDBoundEffects(enemy) * 0.5;
 			let attackMult = KinkyDungeonGetBuffedStat(enemy.buffs, "AttackSlow");
 			let attackTiles = enemy.warningTiles ? enemy.warningTiles : [dir];
-			let ap = (KinkyDungeonMovePoints < 0 && !KinkyDungeonHasWill(0.1) && KDGameData.KinkyDungeonLeashingEnemy == enemy.id) ? enemy.Enemy.movePoints+moveMult+1 : enemy.Enemy.attackPoints + attackMult;
+			let ap = (KinkyDungeonMovePoints < 0 && !KinkyDungeonHasWill(0.1) && KinkyDungeonLeashingEnemy()?.id == enemy.id) ? enemy.Enemy.movePoints+moveMult+1 : enemy.Enemy.attackPoints + attackMult;
 			if (!KinkyDungeonEnemyTryAttack(enemy, player, attackTiles, delta, enemy.x + dir.x, enemy.y + dir.y, (enemy.usingSpecial && enemy.Enemy.specialAttackPoints) ? enemy.Enemy.specialAttackPoints : ap, undefined, undefined, enemy.usingSpecial, AIData.refreshWarningTiles, AIData.attack, AIData.MovableTiles)) {
 				if (enemy.warningTiles.length == 0 || (AIData.refreshWarningTiles && enemy.usingSpecial)) {
 					let minrange = enemy.Enemy.tilesMinRange ? enemy.Enemy.tilesMinRange : 1;
@@ -3834,7 +3838,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								|| enemy.IntentLeashPoint
 							)
 							// Only attempt to leash if the player is not already being leashed
-							&& (KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id)) {
+							&& (KDGameData.KinkyDungeonLeashedPlayer < 1 || KinkyDungeonLeashingEnemy() == enemy)) {
 							AIData.intentToLeash = true;
 
 							let wearingLeash = false;
@@ -4386,8 +4390,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		&& (!enemy.Enemy.noSpellDuringAttack || enemy.attackPoints < 1)
 		&& (!enemy.Enemy.noSpellsWhenHarmless || !AIData.harmless)
 		&& (!enemy.Enemy.noSpellsLowSP || KinkyDungeonHasWill(0.1) || KinkyDungeonFlags.has("PlayerCombat"))
-		&& (!enemy.Enemy.noSpellLeashing || KDGameData.KinkyDungeonLeashingEnemy != enemy.id || KDGameData.KinkyDungeonLeashedPlayer < 1)
-		&& (!enemy.Enemy.followLeashedOnly || (KDGameData.KinkyDungeonLeashedPlayer < 1 || KDGameData.KinkyDungeonLeashingEnemy == enemy.id))
+		&& (!enemy.Enemy.noSpellLeashing || KinkyDungeonLeashingEnemy()?.id != enemy.id || KDGameData.KinkyDungeonLeashedPlayer < 1)
+		&& (!enemy.Enemy.followLeashedOnly || (KDGameData.KinkyDungeonLeashedPlayer < 1 || KinkyDungeonLeashingEnemy()?.id == enemy.id))
 		&& (AIData.hostile || (!player.player && (KDHostile(player) || enemy.rage)))
 		&& ((enemy.aware && (KDCanDetect(enemy, player))) || (!KDAllied(enemy) && !AIData.hostile))
 		&& !AIData.ignore && (!AIData.moved || enemy.Enemy.castWhileMoving) && enemy.Enemy.attack.includes("Spell")

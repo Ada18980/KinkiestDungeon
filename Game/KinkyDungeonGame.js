@@ -1928,6 +1928,8 @@ function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, 
 
 	KinkyDungeonSendEvent("specialChests", specialdata);
 
+	console.log(specialdata.specialChests);
+
 	let extra = KDRandom() < treasurechance;
 	treasurecount += (extra ? 1 : 0);
 	for (let c of Object.values(specialdata.specialChests)) {

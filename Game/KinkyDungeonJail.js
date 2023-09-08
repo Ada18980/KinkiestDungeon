@@ -718,6 +718,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 				KinkyDungeonJailGuard().gy = KinkyDungeonPlayerEntity.y;
 				KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
 			} else {
+
 				KDGameData.KinkyDungeonLeashedPlayer = 2;
 				KDGameData.KinkyDungeonLeashingEnemy = KinkyDungeonJailGuard().id;
 				KinkyDungeonJailGuard().gx = KinkyDungeonJailGuard().NextJailLeashTourWaypointX;
