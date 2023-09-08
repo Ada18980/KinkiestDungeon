@@ -605,7 +605,6 @@ function KDInitTempValues(seed) {
 	KDUpdateEnemyCache = true;
 	KinkyDungeonUpdateLightGrid = true;
 
-	KDTileToTest = null;
 	KDPathCache = new Map();
 	KDPathCacheIgnoreLocks = new Map();
 }
