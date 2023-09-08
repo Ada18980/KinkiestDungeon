@@ -8,6 +8,7 @@ CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1
 - You can no longer stack multiple trap type spells on the same tile
 - Added some lighting changes
 - Added a rudimentary UI background that can be toggled off in the game options
+- Added kitty chests in the Ancient Tombs
 - New sensory perks added
 - New game-changing perk: Curse Seeker
 

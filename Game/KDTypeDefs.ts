@@ -472,6 +472,7 @@ interface floorParams {
 	torchchance?: number,
 	torchlitchance?: number,
 	music: Record<string, number>,
+	specialChests?: Record<string, number>,
 	/** Will add more/less torches on the main path */
 	torchchanceboring?: number,
 	torchreplace?: {
