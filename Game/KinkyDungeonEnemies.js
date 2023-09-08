@@ -2217,9 +2217,9 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 			let master = KinkyDungeonFindMaster(enemy);
 			if (master.master && enemy.aware) {
 
-				if (!master.maser.aware) KDEnemyAddSound(master.maser, master.maser.Enemy.Sound?.alertAmount != undefined ? master.maser.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+				if (!master.master.aware) KDEnemyAddSound(master.master, master.master.Enemy.Sound?.alertAmount != undefined ? master.master.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
 
-				master.maser.aware = true;
+				master.master.aware = true;
 			}
 			if (master.master && master.master.aware) {
 
@@ -4825,6 +4825,11 @@ function KinkyDungeonGetWarningTiles(dx, dy, range, width, forwardOffset = 1, en
 	return arr;
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @returns {{master: entity; dist: number; info: any;}}
+ */
 function KinkyDungeonFindMaster(enemy) {
 	let findMaster = undefined;
 	let masterDist = 1000;

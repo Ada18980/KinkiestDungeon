@@ -962,7 +962,7 @@ interface enemy extends KDHasTags {
 	/** */
 	noAlert?: boolean,
 	/** The enemy will follow enemies defined by this block*/
-	master?: {type: string, range: number, loose?: boolean, aggressive?: boolean, dependent?: boolean},
+	master?: masterInfo,
 	/** */
 	pullTowardSelf?: boolean,
 	/** */
@@ -1229,6 +1229,16 @@ interface KinkyDungeonEvent {
 }
 
 
+type masterInfo = {
+	type: string,
+	range: number,
+	loose?: boolean,
+	aggressive?: boolean,
+	dependent?: boolean,
+	maxDist?: number,
+	masterTag?: string,
+}
+
 interface entity {
 	visual_hp?: number,
 	visual_boundlevel?: number,
@@ -1236,7 +1246,7 @@ interface entity {
 	visual_lifetime?: number,
 
 	/** The enemy will follow enemies defined by this block*/
-	master?: {type: string, range: number, loose?: boolean, aggressive?: boolean, dependent?: boolean},
+	master?: masterInfo,
 
 	// Direction
 	flip?: boolean,
