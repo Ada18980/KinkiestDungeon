@@ -25,6 +25,8 @@ function KDAddParticle(x, y, img, type, data) {
 			zIndex: data.zIndex || 100,
 			vy: data.vy + (data.vy_spread ? (Math.random()*data.vy_spread - data.vy_spread*0.5) : 0),
 			vx: data.vx + (data.vx_spread ? (Math.random()*data.vx_spread - data.vx_spread*0.5) : 0),
+			scale: data.scale || 1,
+			scale_delta: data.scale_delta || 0,
 			sin_y: data.sin_y + (data.sin_y_spread ? (Math.random()*data.sin_y_spread - data.sin_y_spread*0.5) : 0),
 			sin_x: data.sin_x + (data.sin_x_spread ? (Math.random()*data.sin_x_spread - data.sin_x_spread*0.5) : 0),
 			sin_period: data.sin_period + (data.sin_period_spread ? (Math.random()*data.sin_period_spread - data.sin_period_spread*0.5) : 0),
@@ -35,6 +37,11 @@ function KDAddParticle(x, y, img, type, data) {
 		sprite.position.x = x;
 		sprite.position.y = y;
 		sprite.zIndex = info.zIndex;
+
+		if (info.scale != 1 || info.scale_delta) {
+			sprite.scale.x = info.scale;
+			sprite.scale.y = info.scale;
+		}
 
 		if (info.fadeEase) {
 			switch (info.fadeEase) {
@@ -61,6 +68,15 @@ function KDUpdateParticles(delta) {
 		info = particle[1].info;
 		sprite = particle[1].sprite;
 
+		if (info.camX != undefined && KinkyDungeonCamXVis != info.camX) {
+			sprite.position.x -= (KinkyDungeonCamXVis - info.camX) * KinkyDungeonGridSizeDisplay;
+			info.camX = KinkyDungeonCamXVis;
+		}
+		if (info.camY != undefined && KinkyDungeonCamYVis != info.camY) {
+			sprite.position.y -= (KinkyDungeonCamYVis - info.camY) * KinkyDungeonGridSizeDisplay;
+			info.camY = KinkyDungeonCamYVis;
+		}
+
 		sprite.anchor.set(0.5);
 
 		if (info.rotation && !sprite.rotation) sprite.rotation = info.rotation;
@@ -75,6 +91,12 @@ function KDUpdateParticles(delta) {
 			switch (info.fadeEase) {
 				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * info.time / info.lifetime)));}
 			}
+		}
+
+		if (info.scale != 1 || info.scale_delta) {
+			sprite.scale.x = info.scale;
+			sprite.scale.y = info.scale;
+			info.scale += delta * info.scale_delta;
 		}
 
 		info.time += delta;
@@ -122,6 +144,31 @@ function KDDrawVibeParticles(density) {
 
 		lastVibeParticle = CommonTime();
 	}
+}
+
+function KDAddShockwave(x, y, size, spr = `Particles/Shockwave.png`, attachToCamera = true) {
+	let lifetime = 700 + size;
+	let data = {
+		time: 0,
+		lifetime: lifetime,
+		vx: 0,
+		vy: 0,
+		zIndex: 10,
+		phase: 0,
+		scale: 0.001,
+		scale_delta: size / 512 / lifetime,
+		fadeEase: "invcos",
+		rotation: 0,
+	};
+	if (attachToCamera) {
+		data.camX = KinkyDungeonCamX;
+		data.camY = KinkyDungeonCamY;
+	}
+	KDAddParticle(
+		x,
+		y,
+		KinkyDungeonRootDirectory + spr,
+		undefined, data);
 }
 
 /**

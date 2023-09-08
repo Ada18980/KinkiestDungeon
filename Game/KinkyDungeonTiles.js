@@ -636,7 +636,7 @@ function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets) {
 		KinkyDungeonPlayerEntity.y = moveY;
 
 	}
-	KinkyDungeonSendEvent("playerMove", {
+	let data = {
 		cancelmove: cancel.cancelmove, // If true, cancels the move
 		returnvalue: cancel.returnvalue, // Returns this
 		willing: willing, // True if the player triggers it, false if yoinked by tether
@@ -645,8 +645,13 @@ function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets) {
 		lastY: KinkyDungeonPlayerEntity.lasty,
 		moveX: moveX,
 		moveY: moveY,
+		sound: (sprint) ? (4): 0,
 		dist: KDistChebyshev(KinkyDungeonPlayerEntity.lastx - moveX, KinkyDungeonPlayerEntity.lasty - moveY),
-	});
+	};
+	KinkyDungeonSendEvent("playerMove", data);
+	if (data.sound > 0) {
+		KinkyDungeonMakeNoise(data.sound, data.moveX, data.moveY);
+	}
 	if (!cancel.cancelmove) {
 		KDCheckCollideableBullets(KinkyDungeonPlayerEntity, forceHitBullets);
 		KinkyDungeonHandleTraps(KinkyDungeonPlayerEntity, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTrapMoved);

@@ -878,6 +878,9 @@ function KinkyDungeonDrawGame() {
 			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
 			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
 
+			KinkyDungeonCamXVis = CamX + CamX_offsetVis;
+			KinkyDungeonCamYVis = CamY + CamY_offsetVis;
+
 			if (CamX_offsetVis || CamY_offsetVis) {
 				KDRedrawFog = 2;
 			}
@@ -895,6 +898,14 @@ function KinkyDungeonDrawGame() {
 			KinkyDungeonCamX = CamX;
 			KinkyDungeonCamY = CamY;
 			let KinkyDungeonForceRender = "";
+
+			let data = {
+				CamX: CamX,
+				CamY: CamY,
+				CamX_offsetVis: CamX_offsetVis,
+				CamY_offsetVis: CamY_offsetVis,
+				delta: KDDrawDelta,
+			};
 
 			KinkyDungeonSetMoveDirection();
 
@@ -1489,6 +1500,8 @@ function KinkyDungeonDrawGame() {
 			if (KDShowQuickInv()) {
 				KinkyDungeonDrawQuickInv();
 			}
+
+			KinkyDungeonSendEvent("afterDrawFrame", data);
 		} else {
 			DrawTextKD(TextGet("KinkyDungeonLoading"), 1100, 500, "#ffffff", KDTextGray2);
 			if (CommonTime() > KinkyDungeonGameDataNullTimerTime + KinkyDungeonGameDataNullTimer) {

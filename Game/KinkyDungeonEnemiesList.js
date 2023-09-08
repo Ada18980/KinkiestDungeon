@@ -642,6 +642,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 3.5,
 			moveAmount: 3.5,
+			alertAmount: 12,
 		},
 		visionRadius: 14, sneakThreshold: 0.5, maxhp: 5, minLevel:0, weight:-1000, kite: 1.5, movePoints: 1.5, attackPoints: 3, attack: "Spell", attackWidth: 1, attackRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 1,
 		terrainTags: {}, floors:KDMapInit([])},
@@ -655,6 +656,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 3.5,
 			moveAmount: 3.5,
+			alertAmount: 12,
 		},
 		cueSfx: {
 			Block: "Clang",
@@ -675,6 +677,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 5,
 			moveAmount: 5,
+			alertAmount: 12,
 		},
 		cueSfx: {
 			Block: "Clang",
@@ -709,6 +712,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 6,
 			moveAmount: 6,
+			alertAmount: 12,
 		},
 		armor: 1.5, maxhp: 9, movePoints: 1.75,
 		visionRadius: 7, followRange: 1,
@@ -735,6 +739,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 3,
 			moveAmount: 3,
+			alertAmount: 12,
 		},
 		RestraintFilter: {
 			unlimitedRestraints: true,
@@ -766,6 +771,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 3,
 			moveAmount: 3,
+			alertAmount: 12,
 		},
 		RestraintFilter: {
 			unlimitedRestraints: true,
@@ -794,6 +800,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 4,
 			moveAmount: 4,
+			alertAmount: 12,
 		},
 		RestraintFilter: {
 			unlimitedRestraints: true,
@@ -825,6 +832,7 @@ let KinkyDungeonEnemies = [
 		},
 		Sound: {
 			baseAmount: 3.5,
+			alertAmount: 8,
 		},
 		events: [
 			{trigger: "defeat", type: "delete", chance: 1.0},
@@ -847,6 +855,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 3,
 			moveAmount: 8,
+			alertAmount: 12,
 		},
 		armor: 2, maxhp: 10, movePoints: 2,
 		evasion: -0.2,
@@ -873,6 +882,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 4,
 			moveAmount: 8,
+			alertAmount: 12,
 		},
 		armor: 2, maxhp: 14, movePoints: 3,
 		evasion: -0.35,
@@ -899,6 +909,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 3,
 			moveAmount: 8,
+			alertAmount: 12,
 		},
 		armor: 2, maxhp: 10, movePoints: 1.7,
 		evasion: -0.2,
@@ -926,6 +937,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 5,
 			moveAmount: 10,
+			alertAmount: 12,
 		},
 		armor: 2, maxhp: 20, movePoints: 4,
 		evasion: -0.5,
@@ -952,6 +964,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 5,
 			moveAmount: 10,
+			alertAmount: 12,
 		},
 		summon: [
 			{enemy: "Drone", range: 2, count: 2, chance: 0.25, strict: true},],
@@ -1077,6 +1090,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 5,
 			moveAmount: 8,
+			alertAmount: 12,
 		},
 		spells: ["WolfCrackle"], spellCooldownMult: 1, spellCooldownMod: 1, AI: "hunt",  visionRadius: 9, maxhp: 6, minLevel:0, weight:-1000, movePoints: 1,
 		attackPoints: 3, attack: "Spell", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "grope",
@@ -1089,6 +1103,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 4.5,
 			moveAmount: 4.5,
+			alertAmount: 12,
 		},
 		AI: "hunt",  visionRadius: 9, maxhp: 8, minLevel:0, weight:-4, movePoints: 1.5, cohesion: 1.0, armor: 1.5, spellResist: 1.5,
 		attackPoints: 3, attack: "", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "grope",
@@ -1103,6 +1118,7 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 4,
 			moveAmount: 7,
+			alertAmount: 12,
 		},
 		AI: "hunt",  visionRadius: 9, maxhp: 10, minLevel:0, weight:-3, movePoints: 1, cohesion: 1.0, armor: 0.5, spellResist: -0.5, evasion: 0.5,
 		attackPoints: 2, attack: "MeleeBind", attackWidth: 2.5, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 1,

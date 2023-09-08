@@ -648,6 +648,12 @@ interface enemy extends KDHasTags {
 		moveAmount?: number,
 		/** Constant sound amount */
 		baseAmount?: number,
+		/** Cast sound amount */
+		castAmount?: number,
+		/** Attack sound amount */
+		attackAmount?: number,
+		/** alert sound amount */
+		alertAmount?: number,
 		/** Decay per turn */
 		decay?: number,
 	},
@@ -2375,10 +2381,16 @@ interface KDDroppedItemProp {
 }
 
 type KDParticleData = {
+	camX?: number,
+	camY?: number,
+
 	zIndex: number,
 	fadeEase?: string,
 	time: number,
 	phase?: number,
+
+	scale?: number,
+	scale_delta?: number,
 
 	rotation?: number,
 
