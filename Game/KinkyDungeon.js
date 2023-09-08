@@ -1883,6 +1883,15 @@ function KDCullSprites() {
 		}
 	}
 }
+function KDCullSpritesList(list) {
+	for (let sprite of list.entries()) {
+		if (!kdSpritesDrawn.has(sprite[0])) {
+			sprite[1].parent.removeChild(sprite[1]);
+			list.delete(sprite[0]);
+			sprite[1].destroy();
+		}
+	}
+}
 
 /**
  * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number}>}
