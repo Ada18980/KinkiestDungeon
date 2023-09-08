@@ -274,7 +274,8 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	}
 	else if (Loot.armor || Loot.armortags) {
 		let armor = Loot.armor;
-		let forceequip = Loot.forceEquip || KinkyDungeonStatsChoice.get("CurseSeeker");
+		let hexed = Loot.hexlist && (Loot.hexchance == undefined || KDRandom() < Loot.hexchance || (Loot.nouncursed && !Loot.enchantlist && KinkyDungeonInventoryGet(Loot.nouncursed)));
+		let forceequip = Loot.forceEquip || (hexed && (Loot.forceEquipCursed || KinkyDungeonStatsChoice.get("CurseSeeker"))) || (!hexed && (Loot.forceEquipUncursed));
 		if (Loot.armortags) {
 			let newarmor = KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "",
 				undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, forceequip);
@@ -291,7 +292,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		let hex_extra = [];
 		let enchants = (Loot.minEnchants || 1) + Math.floor(KDRandom() * ((Loot.maxEnchants || 1) - (Loot.minEnchants || 1)));
 		let curses = (Loot.minHex || 1) + Math.floor(KDRandom() * ((Loot.maxHex || 1) - (Loot.minHex || 1)));
-		if (Loot.hexlist && (Loot.hexchance == undefined || KDRandom() < Loot.hexchance) || (Loot.nouncursed && !Loot.enchantlist && KinkyDungeonInventoryGet(Loot.nouncursed))) {
+		if (hexed) {
 			while (curses > 0) {
 				let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted(Loot.hexlist, armor, false, Loot.hexlevelmin, Loot.hexlevelmax, [hexVariant, ...hex_extra]));
 				if (!enchantVariant) {
