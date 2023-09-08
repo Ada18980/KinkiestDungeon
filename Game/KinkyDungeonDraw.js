@@ -70,7 +70,7 @@ let kdlightmapGFX = null;
 if (StandalonePatched) {
 	let res = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
 	kdlightmapGFX = new PIXI.Graphics();
-	kdlightmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 2000,});
+	kdlightmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 1000,});
 	//kdlightmapGFX.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 }
 let kddarkdesaturatefilter = new PIXI.Filter(null, KDShaders.Darkness.code, {
