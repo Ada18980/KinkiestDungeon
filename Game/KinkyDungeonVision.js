@@ -726,9 +726,11 @@ function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders, blackMap) {
 		(h)*scale);
 	kdminimap.endFill();
 	if (KDToggles.EnableMinimap || !blackMap) {
+		let allowFog = KDAllowFog();
 		for (let xx = 0; xx < w; xx++)  {
 			for (let yy = 0; yy < h; yy++)  {
-				if (KDIsInBounds(x+xx, y+yy, 1) && (KDMapExtraData.VisionGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0 || KDMapData.FogGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0)) {
+
+				if (KDIsInBounds(x+xx, y+yy, 1) && (KDMapExtraData.VisionGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0 || (allowFog && KDMapData.FogGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0))) {
 					if (gridborders)
 						kdminimap.lineStyle(1, KDMapExtraData.VisionGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0 ? 0xaaaaaa : 0, 0.5);
 					else
