@@ -274,9 +274,14 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	}
 	else if (Loot.armor || Loot.armortags) {
 		let armor = Loot.armor;
+		let forceequip = Loot.forceEquip || KinkyDungeonStatsChoice.get("CurseSeeker");
 		if (Loot.armortags) {
 			let newarmor = KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "",
-				undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, true);
+				undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, forceequip);
+			if (!newarmor && forceequip) {
+				KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "",
+					undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, false);
+			}
 			if (newarmor) armor = newarmor.name;
 		}
 		let unlockcurse = null;
@@ -339,7 +344,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 				events: events,
 			};
 			let equipped = 0;
-			if (Loot.forceEquip || KinkyDungeonStatsChoice.get("CurseSeeker")) {
+			if (forceequip) {
 				equipped = KDEquipInventoryVariant(variant, "", 0, true, undefined, true, false, "Curse", true, unlockcurse, undefined, false);
 			}
 			if (!equipped) {
