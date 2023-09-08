@@ -161,6 +161,7 @@ let KDShadowRestraints = [...JSON.parse(JSON.stringify(KDEnchantedRestraints)),
 for (let armor of KDShadowRestraints) {
 	armor.amtMult = (armor.amtMult || 1) * 1.5;
 	armor.maxEnchants = (armor.maxEnchants || 1) + 1;
+	armor.forceEquip = true;
 }
 
 let KinkyDungeonLootTable = {
