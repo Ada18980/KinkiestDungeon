@@ -161,7 +161,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
 				if (StandalonePatched) {
 					let model = KinkyDungeonPlayer.Appearance[A].Model;
-					if ((!model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name])
+					if ((!model.Restraint && !model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name])
 						|| model.Protected || model.SuperProtected) {
 						//KinkyDungeonPlayer.Appearance.splice(A, 1);
 						//A -= 1;
