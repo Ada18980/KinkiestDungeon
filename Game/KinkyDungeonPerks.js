@@ -520,6 +520,9 @@ let KDPerkStart = {
 		KDSetWeapon("Knife");
 		KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
 	},
+	NovicePet: () =>{
+		KinkyDungeonInventoryAddLoose("MagicPetsuit");
+	},
 	SelfBondage: () =>{
 		if (KinkyDungeonStatsChoice.get("arousalMode")) {
 			KinkyDungeonInventoryAddLoose("TrapBelt");
