@@ -1293,7 +1293,10 @@ function KinkyDungeonCalculateSlowLevel(delta) {
 	if (KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).immobile;})) {KinkyDungeonSlowLevel += 100; KinkyDungeonMovePoints = -1;}
 	else {
 		for (let inv of KinkyDungeonAllRestraint()) {
-			if ((KDRestraint(inv).blockfeet || KDRestraint(inv).hobble)) KinkyDungeonSlowLevel = Math.min(3, KinkyDungeonSlowLevel + 1);
+			if ((KDRestraint(inv).blockfeet || KDRestraint(inv).hobble)) {
+				let hobbleAmount = KDRestraint(inv).hobble || 1;
+				KinkyDungeonSlowLevel = Math.min(Math.max(3, hobbleAmount), KinkyDungeonSlowLevel + hobbleAmount);
+			}
 		}
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if (KDRestraint(inv).blockfeet) {

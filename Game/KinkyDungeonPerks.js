@@ -197,6 +197,7 @@ let KinkyDungeonStatsPresets = {
 	"MC_Wizard":  {category: "Multiclass", id: "MC_Wizard", cost: 2, blockclass: ["Wizard"], tags: ["start", "mc"]},
 	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", debuff: true, cost: 2, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
 
+	"NovicePet":  {category: "Major", id: "NovicePet", cost: 1},
 	"CurseSeeker":  {category: "Major", id: "CurseSeeker", cost: -3},
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1},
 	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1},

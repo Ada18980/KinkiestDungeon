@@ -4924,6 +4924,17 @@ let KDEventMapGeneric = {
 			}
 		},
 	},
+	"canSprint": {
+		"NovicePet": (e, data) => {
+			if (KinkyDungeonStatsChoice.has("NovicePet")) {
+				if (KinkyDungeonPlayerTags.get("Petsuits")) {
+					data.mustStand = false;
+				} else if (KinkyDungeonFlags.get("NovicePet3")) {
+					data.canSprint = false;
+				}
+			}
+		}
+	},
 	"tick": {
 		"DollRoomUpdate": (e, data) => {
 			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
@@ -4979,6 +4990,96 @@ let KDEventMapGeneric = {
 				if (!KinkyDungeonFlags.get("SecondWind1")) {
 					if (KDHasSpell("SecondWind1")) {
 						KinkyDungeonSetFlag("SecondWind1", -1);
+					}
+				}
+			}
+		},
+		"NovicePet": (e, data) => {
+			if (KinkyDungeonStatsChoice.has("NovicePet")) {
+
+				let amount = 0;
+				if (KinkyDungeonFlags.get("NovicePet1")) amount += 1;
+				if (KinkyDungeonFlags.get("NovicePet2")) amount += 1;
+				if (KinkyDungeonFlags.get("NovicePet3")) amount += 1;
+
+				if (KinkyDungeonPlayerTags.get("Petsuits")) {
+					if (amount > 0)
+						KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+							id: "NovicePet",
+							type: "SlowLevel",
+							power: -amount,
+							duration: 2,
+							aura: "#ffffff",
+							aurasprite: "Null",
+							buffSprite: true,
+						});
+				} else if (KinkyDungeonFlags.get("NovicePet3")) {
+					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+						id: "NovicePetBad2",
+						type: "SlowLevel",
+						power: 2,
+						duration: 2,
+					});
+					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+						id: "NovicePetVeryBad",
+						type: "SprintEfficiency",
+						power: -1.0,
+						duration: 2,
+						aura: "#ffffff",
+						aurasprite: "Null",
+						buffSprite: true,
+					});
+				} else if (KinkyDungeonFlags.get("NovicePet2")) {
+					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+						id: "NovicePetBad2",
+						type: "SlowLevel",
+						power: 1,
+						duration: 2,
+					});
+					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+						id: "NovicePetBad",
+						type: "SprintEfficiency",
+						power: -1.0,
+						duration: 2,
+						aura: "#ffffff",
+						aurasprite: "Null",
+						buffSprite: true,
+					});
+				} else if (KinkyDungeonFlags.get("NovicePet1")) {
+					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+						id: "NovicePetBad",
+						type: "SprintEfficiency",
+						power: -0.3,
+						duration: 2,
+						aura: "#ffffff",
+						aurasprite: "Null",
+						buffSprite: true,
+					});
+				}
+
+				if (!KinkyDungeonFlags.get("NovicePetSpell")) {
+					KinkyDungeonSetFlag("NovicePetSpell", -1);
+					KinkyDungeonSpells.push(KinkyDungeonFindSpell("NovicePet0"));
+				}
+				if (!KinkyDungeonFlags.get("NovicePet1")) {
+					if (KDHasSpell("NovicePet1")) {
+						KinkyDungeonSetFlag("NovicePet1", -1);
+					}
+				}
+				if (!KinkyDungeonFlags.get("NovicePet2")) {
+					if (KDHasSpell("NovicePet2")) {
+						KinkyDungeonSetFlag("NovicePet2", -1);
+					}
+				}
+				if (!KinkyDungeonFlags.get("NovicePet3")) {
+					if (KDHasSpell("NovicePet3")) {
+						KinkyDungeonSetFlag("NovicePet3", -1);
+					}
+				}
+				if (!KinkyDungeonFlags.get("NovicePetX")) {
+					if (KDHasSpell("NovicePetX")) {
+						KinkyDungeonSetFlag("NovicePetX", -1);
+						KinkyDungeonStatsChoice.delete("NovicePet");
 					}
 				}
 			}
