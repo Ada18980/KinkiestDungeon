@@ -1,9 +1,12 @@
 PIXI.Assets.init();
 
-let preloadList = [
-	"TextureAtlas/game0.json",
+let linearList = [
 	"TextureAtlas/atlas0.json",
 ];
+
+let nearestList = [
+	"TextureAtlas/game0.json",
+]
 
 let lastProgress = 0;
 function incrementProgress(amount) {
@@ -14,7 +17,9 @@ function incrementProgress(amount) {
 		lastProgress = progress;
 	};
 }
-async function LoadTextureAtlas(list, preload = false) {
+async function LoadTextureAtlas(list, scale_mode, preload = false) {
+	PIXI.BaseTexture.defaultOptions.scaleMode = scale_mode;
+
 	for (let dataFile of list) {
 		console.log("Found atlas: " + dataFile);
 		let amount = 100;
@@ -33,6 +38,5 @@ async function LoadTextureAtlas(list, preload = false) {
 	}
 
 }
-
-PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
-LoadTextureAtlas(preloadList);
+LoadTextureAtlas(nearestList, PIXI.SCALE_MODES.NEAREST);
+LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
