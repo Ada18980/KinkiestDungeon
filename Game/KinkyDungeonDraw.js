@@ -67,8 +67,14 @@ kdmapboard.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 let kdlightmap = null;
 let kdlightmapGFX = null;
 
+let kdbrightnessmap = null;
+let kdbrightnessmapGFX = null;
+
 if (StandalonePatched) {
 	let res = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
+	kdbrightnessmapGFX = new PIXI.Container();
+	kdbrightnessmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 1000,});
+
 	kdlightmapGFX = new PIXI.Graphics();
 	kdlightmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 1000,});
 	//kdlightmapGFX.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
@@ -97,11 +103,15 @@ let kdgammafilterstore = [1.0];
 let kdgammafilter = new PIXI.Filter(null, KDShaders.GammaFilter.code, {
 	gamma: kdgammafilterstore,
 });
+let kdmultiplyfilter = new PIXI.Filter(null, KDShaders.MultiplyFilter.code, {
+	lightmap: kdbrightnessmap,
+});
 
-let KDBoardFilters = [kdfogfilter];
+let KDBoardFilters = [kdmultiplyfilter, kdfogfilter];
 
 kdmapboard.filters = [
-	...KDBoardFilters
+	...KDBoardFilters,
+	kdgammafilter,
 ];
 
 
@@ -186,6 +196,12 @@ let kdpixisprites = new Map();
  * @type {Map<string, any>}
  */
 let kdpixifogsprites = new Map();
+/**
+ * @type {Map<string, any>}
+ */
+let kdpixibrisprites = new Map();
+
+
 
 /**
  * @type {Map<string, any>}
@@ -913,7 +929,7 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonContext.fillStyle = "rgba(0,0,0.0,1.0)";
 				KinkyDungeonContext.fillRect(0, 0, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height);
 				KinkyDungeonContext.fill();
-				let spriteRes = KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, KDDebugOverlay);
+				let spriteRes = KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_offsetVis, KDDebugOverlay);
 
 				// Get lighting grid
 				if (KinkyDungeonUpdateLightGrid) {
@@ -2760,7 +2776,7 @@ function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, Ba
  * @param {boolean} [Debug]
  * @returns {any}
  */
-function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
+function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_offsetVis, Debug) {
 	let tooltip = "";
 	let KinkyDungeonForceRender = "";
 	let KinkyDungeonForceRenderFloor = "";
@@ -2850,25 +2866,25 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 					sprite3 = null;
 				}
 				if (KinkyDungeonForceRenderFloor != "") floor = KinkyDungeonForceRenderFloor;
-				let lightColor = KDGetLightColor(RX, RY);
+				let lightColor = (StandalonePatched && KDToggles.LightmapFilter) ? 0xffffff : KDGetLightColor(RX, RY);
 
 				KDDraw(kdmapboard, kdpixisprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
 					(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: -2,
-						tint: lightColor,
+						tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
 					});
 				if (sprite2)
 					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite2 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1.1,
-							tint: lightColor,
+							tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
 						});
 
 				if (sprite3)
 					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o2", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite3 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1,
-							tint: lightColor,
+							tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
 						});
 
 				if (rows[RY][RX] == "A") {
@@ -2891,6 +2907,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
 			}
 		}
 	}
+
 
 	return {
 		tooltip: tooltip,

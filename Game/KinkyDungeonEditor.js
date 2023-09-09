@@ -239,7 +239,7 @@ function KDDrawTileEditor() {
 		KinkyDungeonCamX = KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2);
 		KinkyDungeonCamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);
 
-		KDDrawMap(KinkyDungeonCamX, KinkyDungeonCamY, 0, 0, true);
+		KDDrawMap(KinkyDungeonCamX, KinkyDungeonCamY, 0, 0, KinkyDungeonCamX, KinkyDungeonCamY, true);
 		KDDrawEffectTiles(0, 0, KinkyDungeonCamX, KinkyDungeonCamY);
 
 		KinkyDungeonTargetX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamX;
