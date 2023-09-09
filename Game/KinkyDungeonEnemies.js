@@ -3877,7 +3877,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 								if (enemy.IntentLeashPoint) leashPos = enemy.IntentLeashPoint;
 
-								if (AIData.playerDist < 1.5 || !KinkyDungeonGetRestraintItem("ItemDevices"))
+								if (AIData.playerDist < 1.5 || (AIData.attack.includes("Pull")) || !KinkyDungeonGetRestraintItem("ItemDevices"))
 									AIData.leashPos = leashPos;
 							}
 						}
@@ -4010,7 +4010,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								KDGameData.KinkyDungeonLeashingEnemy = enemy.id;
 								KDBreakTether(KinkyDungeonPlayerEntity);
 							}
-							else if (leashPos && ((AIData.attack.includes("Pull") && enemy.x == leashPos.x && enemy.y == leashPos.y) || Math.abs(enemy.x - leashPos.x) > 1.5 || Math.abs(enemy.y - leashPos.y) > 1.5)) {
+							else if (leashPos && (
+								(AIData.attack.includes("Pull") && enemy.x == leashPos.x && enemy.y == leashPos.y)
+								|| Math.abs(enemy.x - leashPos.x) > 1.5
+								|| Math.abs(enemy.y - leashPos.y) > 1.5)
+							) {
 								if (!KinkyDungeonHasWill(0.1) && KDRandom() < 0.25) KinkyDungeonMovePoints = -1;
 								// Leash pullback
 								if (AIData.playerDist < 1.5) {
