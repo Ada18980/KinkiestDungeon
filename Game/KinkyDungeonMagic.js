@@ -1079,7 +1079,7 @@ function KinkyDungeonDrawMagic() {
 			KDDraw(kdcanvas, kdpixisprites, "kdspellPreview", KinkyDungeonRootDirectory + "Spells/" + spell.name + ".png",
 				canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - 100, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 45, 200, 200, undefined, {
 					zIndex: 129,
-				});
+				}, undefined, undefined, undefined, true);
 
 
 		DrawTextKD(TextGet("KinkyDungeonSpell"+ spell.name), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5, "#000000", SchoolColor);
