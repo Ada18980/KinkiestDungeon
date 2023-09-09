@@ -10,6 +10,64 @@ let slimefilter = {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"bri
 
 
 AddModel({
+	Name: "SlimeMouth",
+	Folder: "Slime",
+	Parent: "SlimeHead",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Slime"],
+	AddPose: ["EncaseMouth"],
+	Filters: {
+		"Mouth": slimefilter,
+	},
+	Layers: ToLayerMap([
+		{ Name: "FaceMouth", Layer: "GagWrap", Pri: 9,
+			Invariant: true,
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "SlimeEyes",
+	Folder: "Slime",
+	Parent: "SlimeHead",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Slime"],
+	AddPose: ["EncaseEyes"],
+	Filters: {
+		"Eyes": slimefilter,
+	},
+	Layers: ToLayerMap([
+		{ Name: "FaceEyes", Layer: "BlindfoldWrap", Pri: 9,
+			Invariant: true,
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "SlimeHead",
+	Folder: "Slime",
+	Parent: "Slime",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Slime"],
+	AddPose: ["EncaseEyes", "EncaseMouth", "EncaseHead"],
+	Filters: {
+		"Eyes": slimefilter,
+		"Mouth": slimefilter,
+	},
+	Layers: ToLayerMap([
+		{ Name: "FaceFull", Layer: "Mask", Pri: 9,
+			Invariant: true,
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
 	Name: "SlimeBoots",
 	Folder: "Slime",
 	Parent: "SlimeLegs",

@@ -56,14 +56,6 @@
 	"spriteSourceSize": {"x":398,"y":723,"w":381,"h":269},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Bandit/WristLeftYoked.png":
-{
-	"frame": {"x":796,"y":801,"w":49,"h":37},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":878,"y":393,"w":49,"h":37},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Bandit/WristRightFree.png":
 {
 	"frame": {"x":1647,"y":1320,"w":33,"h":55},
@@ -264,20 +256,12 @@
 	"spriteSourceSize": {"x":146,"y":158,"w":65,"h":33},
 	"sourceSize": {"w":321,"h":332}
 },
-"Models/FaceKoi/Eyes2Dazed.png":
+"Models/FaceKoi/EyesAngry.png":
 {
-	"frame": {"x":1384,"y":1678,"w":62,"h":45},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":147,"y":158,"w":62,"h":45},
-	"sourceSize": {"w":321,"h":332}
-},
-"Models/FaceKoi/EyesDazed.png":
-{
-	"frame": {"x":1302,"y":1678,"w":53,"h":41},
+	"frame": {"x":1343,"y":1678,"w":52,"h":43},
 	"rotated": true,
 	"trimmed": true,
-	"spriteSourceSize": {"x":57,"y":168,"w":53,"h":41},
+	"spriteSourceSize": {"x":57,"y":168,"w":52,"h":43},
 	"sourceSize": {"w":321,"h":332}
 },
 "Models/FaceKoi/WhitesEyes2Closed.png":
@@ -288,12 +272,28 @@
 	"spriteSourceSize": {"x":146,"y":158,"w":65,"h":33},
 	"sourceSize": {"w":321,"h":332}
 },
+"Models/FaceKoi/WhitesEyesAngry.png":
+{
+	"frame": {"x":1386,"y":1678,"w":52,"h":43},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":57,"y":168,"w":52,"h":43},
+	"sourceSize": {"w":321,"h":332}
+},
 "Models/FaceKoi/WhitesEyesDazed.png":
 {
-	"frame": {"x":1343,"y":1678,"w":53,"h":41},
+	"frame": {"x":1302,"y":1678,"w":53,"h":41},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":57,"y":168,"w":53,"h":41},
+	"sourceSize": {"w":321,"h":332}
+},
+"Models/GagLeather/MuzzleStrap.png":
+{
+	"frame": {"x":796,"y":801,"w":43,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":185,"y":214,"w":43,"h":36},
 	"sourceSize": {"w":321,"h":332}
 },
 "Models/GagLeather/Plug.png":
@@ -496,6 +496,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:52ebe440490d3dc60df4c60a90cf8059:10e67c7ed1dc79673d37eeb6b17a4bc9:4a649b7409b6bc09af7ee0cfc2195950$"
+	"smartupdate": "$TexturePacker:SmartUpdate:226c0d3c87397a15cb874979ac08d82e:c94f15c2e5a967e842ffa11fe94dccc0:4a649b7409b6bc09af7ee0cfc2195950$"
 }
 }

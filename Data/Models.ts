@@ -1,3 +1,5 @@
+let SHOWMESHPOINTS = false;
+
 /**
  * Returns a table with the priorities for each layer based on order of the array
  */
@@ -30,6 +32,9 @@ interface ContainerInfo {
 	readonly SpriteList: Map<string, any>;
 	readonly SpritesDrawn: Map<string, any>;
 	readonly Container: PIXIContainer;
+	readonly Mesh: PIXIMesh;
+	readonly RenderTexture: PIXIRenderTexture;
+	readonly Matrix: PIXIArray;
 }
 
 class ModelContainer {
@@ -144,27 +149,74 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	let containerID = `${X},${Y},${Zoom}`;
 	let refreshfilters = false;
 
+	if (MC.Containers.get(containerID)) {
+		let mesh = MC.Containers.get(containerID).Mesh;
+		let rt = MC.Containers.get(containerID).RenderTexture;
+		let buffer = mesh.geometry.getBuffer('aVertexPosition');
+		let matrix = MC.Containers.get(containerID).Matrix;
+
+		// Assign locations
+		let x = 0;
+		let y = 0;
+		let width = 100;
+		let height = 100;
+        for (let i = 0; i + 1 < buffer.data.length; i+= 2)
+        {
+			// x
+            buffer.data[i] = matrix[i] + MODELWIDTH*0.01*Math.sin(Math.max(0,Math.PI*(0.6*height-y)/(0.6*height)))*(Math.sin((CommonTime() % 2000)/2000 * 2*Math.PI))*Zoom;
+			// y
+            buffer.data[i+1] = matrix[i+1] + MODELWIDTH*0.003*Math.sin(Math.PI+Math.max(0,Math.PI*(0.6*height-y)/(0.6*height))) * Math.cos((CommonTime() % 2000)/2000 * 4*Math.PI)*Zoom;
+			if (SHOWMESHPOINTS && Zoom == 1 && x < width*.5 && y > height*.25 && y < height*.75) {
+				KDDraw(kdcanvas, kdpixisprites, "buffer" + i, KinkyDungeonRootDirectory + "ShrineAura.png",
+				-4+(buffer.data[i])-MODELWIDTH*MODEL_SCALE*0.25, -4+(buffer.data[i+1])-MODELHEIGHT*MODEL_SCALE*(0.25)-MODELWIDTH/10, 8, 8,
+				undefined, {
+					zIndex: 100,
+					tint: 0x00ff00,
+				});
+			}
+
+			x += 1;
+			if (x >= width) {
+				y += 1;
+				x = 0;
+			}
+        }
+		buffer.update();
+	}
+
 	if (MC.Containers.get(containerID) && !MC.Update.has(containerID) && MC.Refresh.has(containerID)) {
 		MC.Update.delete(containerID);
 		MC.Refresh.delete(containerID);
 		console.log("Refreshed!")
 		// Refresh the container!
-		kdcanvas.removeChild(MC.Containers.get(containerID).Container);
+		//kdcanvas.removeChild(MC.Containers.get(containerID).Container);
+		kdcanvas.removeChild(MC.Containers.get(containerID).Mesh);
 		MC.Containers.get(containerID).Container.destroy();
+		MC.Containers.get(containerID).Mesh.destroy();
+		MC.Containers.get(containerID).RenderTexture.destroy();
 		MC.Containers.delete(containerID);
 		MC.ContainersDrawn.delete(containerID);
 		refreshfilters = true;
 	}
 	let created = false;
 	if (!MC.Containers.get(containerID)) {
+		let RT = PIXI.RenderTexture.create({ width: MODELWIDTH*MODEL_SCALE * 2 * Zoom, height: MODELHEIGHT*MODEL_SCALE * 2 * Zoom, resolution: resolution});
+		let Mesh = new PIXI.SimplePlane(RT, 100, 100);
 		let Container = {
 			Container: new PIXI.Container(),
+			Mesh: Mesh,//Mesh(new PIXI.PlaneGeometry(MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE, 100, 100), new PIXI.MeshMaterial(PIXI.Texture.WHITE)),
 			SpritesDrawn: new Map(),
+			RenderTexture: RT,
 			SpriteList: new Map(),
+			Matrix: Object.assign([], Mesh.geometry.getBuffer('aVertexPosition').data),
 		};
+		console.log("Matrix: " + Container.Matrix);
+		Container.Mesh.zIndex = 1;
+		Container.Mesh.pivot.set(MODELWIDTH*MODEL_SCALE * 1 * Zoom, MODELHEIGHT*MODEL_SCALE * 1 * Zoom);
 		created = true;
 		MC.Containers.set(containerID, Container);
-		kdcanvas.addChild(Container.Container);
+		//kdcanvas.addChild(Container.Container);
+		kdcanvas.addChild(Container.Mesh);
 		Container.Container.sortableChildren = true;
 		Container.Container.cacheAsBitmap = true;
 		if (zIndex) Container.Container.zIndex = zIndex;
@@ -218,6 +270,15 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		else if (!flip && Container.Container?.scale.x < 0)
 			Container.Container.scale.x *= -1;
 
+
+		//Container.Container.pivot.set(-MODELWIDTH*MODEL_SCALE * Container.Container.scale.x * 0.25 * Zoom, -MODELHEIGHT*MODEL_SCALE * Container.Container.scale.y * 0.25 * Zoom);
+		//Container.Mesh.x += Container.Container.pivot.x;
+		//Container.Mesh.y += Container.Container.pivot.y;
+
+		PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
+			clear: true,
+			renderTexture: MC.Containers.get(containerID).RenderTexture,
+		});
 	}
 
 	// Store it in the map so we don't have to create it again
@@ -293,8 +354,10 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 	ContainerContainer.Container.angle = rotation;
 	ContainerContainer.Container.pivot.x = MODELWIDTH*Zoom * X_Anchor;
 	ContainerContainer.Container.pivot.y = MODELHEIGHT*Zoom * Y_Anchor;
-	ContainerContainer.Container.x = X + (MODEL_XOFFSET + MODELWIDTH * X_Offset) * Zoom;
-	ContainerContainer.Container.y = Y + (MODELHEIGHT * Y_Offset) * Zoom;
+	ContainerContainer.Container.x = (MODEL_XOFFSET + MODELWIDTH * (1 + X_Offset)) * Zoom;
+	ContainerContainer.Container.y = (MODELHEIGHT * (1 + Y_Offset)) * Zoom;
+	ContainerContainer.Mesh.x = X;
+	ContainerContainer.Mesh.y = Y;
 
 	for (let m of StartMods) {
 		if (!mods[m.Layer]) mods[m.Layer] = [];
