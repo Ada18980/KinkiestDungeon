@@ -2899,21 +2899,32 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, Debug) {
  * @param {boolean} [Centered]
  * @param {Map<string, boolean>} [SpritesDrawn]
  * @param {number} [Scale]
+ * @param {boolean} [Nearest]
  * @returns {any}
  */
-function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered, SpritesDrawn, Scale) {
+function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered, SpritesDrawn, Scale, Nearest) {
 	let sprite = Map.get(id);
 	if (!sprite) {
 		// Load the texture
-		let tex = KDTex(Image);
+		if (Nearest) {
+			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
+		}
+		let tex = KDTex(Image, Nearest);
 
 		if (tex) {
 			// Create the sprite
-			// @ts-ignore
-			sprite = PIXI.Sprite.from(KDTex(Image));
+			if (Nearest)
+				sprite = PIXI.Sprite.from(KDTex(Image, Nearest), {
+					scaleMode: PIXI.SCALE_MODES.NEAREST,
+				});
+			else
+				sprite = PIXI.Sprite.from(KDTex(Image));
 			Map.set(id, sprite);
 			// Add it to the container
 			Container.addChild(sprite);
+		}
+		if (Nearest) {
+			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 		}
 	}
 	if (sprite) {
@@ -2978,9 +2989,9 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
  * @param {string} Image
  * @returns {any}
  */
-function KDTex(Image) {
+function KDTex(Image, Nearest) {
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
-	let tex = PIXI.Texture.from(KDModFiles[Image] || Image);
+	let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, {scaleMode: PIXI.SCALE_MODES.NEAREST}) : PIXI.Texture.from(KDModFiles[Image] || Image);
 	kdpixitex.set(Image, tex);
 	return tex;
 }

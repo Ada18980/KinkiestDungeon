@@ -568,7 +568,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 		KDDraw(kdcanvas, kdpixisprites, "preview",
 			item.preview, xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 40, 100, 100, undefined, {
 				zIndex: 129,
-			});
+			}, undefined, undefined, undefined, true);
 		//} else {
 		// Draw desc2
 		for (let N = 0; N < textSplit.length; N++) {
