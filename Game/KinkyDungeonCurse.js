@@ -370,11 +370,11 @@ function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = un
 	KinkyDungeonDupeRestraintText(restraint.name, newRestraintName);
 	/** @type {KinkyDungeonEvent[]} */
 	let events = ev.concat(restraint.events);
-	let escapeChance = {
-		Struggle: Math.min(restraint.escapeChance.Struggle, 0-.2),
+	let escapeChance = Object.assign({}, restraint.escapeChance);
+	Object.assign(escapeChance, {
+		Struggle: Math.min(restraint.escapeChance.Struggle, -0.2),
 		Cut: Math.min(restraint.escapeChance.Cut || 1.0, -0.1),
-		Pick: Math.min(restraint.escapeChance.Pick || 1.0, 0.1),
-	};
+	});
 	return {
 		//protection: 0,
 		protectionCursed: true,
