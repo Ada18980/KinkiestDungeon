@@ -2156,8 +2156,8 @@ function KDBoundEffects(enemy) {
 
 
 function KinkyDungeonUpdateEnemies(delta, Allied) {
-	let tickAlertTimer = false;
-	let tickAlertTimerFactions = [];
+	KDGameData.tickAlertTimer = false;
+	KDGameData.HostileFactions = [];
 	let visionMod = 1.0;
 	let defeat = false;
 
@@ -2541,16 +2541,16 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					if (enemy.aware && (enemy.lifetime == undefined || enemy.lifetime > 9000) && !enemy.Enemy.tags.temporary && !enemy.Enemy.tags.peaceful) {
 						if (enemy.hostile > 0 && enemy.hostile < 9000 && (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail')) {
 							if (!(enemy.silence > 0) && KDEnemyCanSignal(enemy)) {
-								tickAlertTimer = true;
-								if (KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 9 && !tickAlertTimerFactions.includes(KDGetFaction(enemy))) {
-									tickAlertTimerFactions.push(KDGetFaction(enemy));
+								KDGameData.tickAlertTimer = true;
+								if (KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 9 && !KDGameData.HostileFactions.includes(KDGetFaction(enemy))) {
+									KDGameData.HostileFactions.push(KDGetFaction(enemy));
 								}
 							}
 						} else if (KinkyDungeonAggressive(enemy)) {
 							if (!(enemy.silence > 0) && KDEnemyCanSignal(enemy)) {
-								tickAlertTimer = true;
-								if (KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 9 && !tickAlertTimerFactions.includes(KDGetFaction(enemy))) {
-									tickAlertTimerFactions.push(KDGetFaction(enemy));
+								KDGameData.tickAlertTimer = true;
+								if (KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 9 && !KDGameData.HostileFactions.includes(KDGetFaction(enemy))) {
+									KDGameData.HostileFactions.push(KDGetFaction(enemy));
 								}
 							}
 						}
@@ -2589,8 +2589,8 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 			KDCheckVulnerableBackstab(enemy);
 			// Alert enemies if youve aggroed one
 			if (!KDAllied(enemy) && !(enemy.ceasefire > 0)) {
-				if (!(enemy.hostile > 0) && tickAlertTimerFactions.length > 0 && !KinkyDungeonAggressive(enemy) && !enemy.Enemy.tags.peaceful && (enemy.vp > 0.5 || enemy.lifetime < 900 || (!KDHostile(enemy) && KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 7))) {
-					for (let f of tickAlertTimerFactions) {
+				if (!(enemy.hostile > 0) && KDGameData.HostileFactions.length > 0 && !KinkyDungeonAggressive(enemy) && !enemy.Enemy.tags.peaceful && (enemy.vp > 0.5 || enemy.lifetime < 900 || (!KDHostile(enemy) && KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 7))) {
+					for (let f of KDGameData.HostileFactions) {
 						if ((KDGetFaction(enemy) != "Player") && KDFactionRelation(f, "Chase") > -0.01 && KDFactionRelation(f, "Jail") > -0.01 && (
 							(KDFactionRelation(f, KDGetFaction(enemy)) > 0.15 && KDFactionRelation(f, KDGetFaction(enemy)) < 0.5 && // Favored
 							KDFactionRelation("Player", KDGetFaction(enemy)) < 0.2)
@@ -2606,12 +2606,12 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 		}
 
 		let alertingFaction = false;
-		for (let f of tickAlertTimerFactions) {
+		for (let f of KDGameData.HostileFactions) {
 			if (KDFactionRelation("Jail", f) > -0.01 && KDFactionRelation("Chase", f) > -0.01) {
 				alertingFaction = true;
 			}
 		}
-		if (tickAlertTimer && (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail') && alertingFaction) {
+		if (KDGameData.tickAlertTimer && (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail') && alertingFaction) {
 			if (KDGameData.AlertTimer < 3*KDMaxAlertTimer) KDGameData.AlertTimer += delta;
 		} else if (KDGameData.AlertTimer > 0) {
 			KDGameData.AlertTimer -= delta * 3;

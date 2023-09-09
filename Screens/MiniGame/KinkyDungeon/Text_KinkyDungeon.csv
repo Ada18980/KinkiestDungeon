@@ -370,13 +370,13 @@ KinkyDungeonStatFutileStruggles,"Futile Struggles"
 KinkyDungeonStatDescFutileStruggles,"Lose 2 WP every time you remove a non-trivial restraint."
 
 KinkyDungeonStatSecondWind,"Second Wind"
-KinkyDungeonStatDescSecondWind,"Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage."
+KinkyDungeonStatDescSecondWind,"Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)"
 KinkyDungeonSpellSecondWind0,Second Wind Perk
 KinkyDungeonSpellSecondWind1,Triumphant Wind
 KinkyDungeonSpellDescriptionSecondWind1,"Second Wind now regenerates up to 25% of your max WP"
 
 KinkyDungeonStatNovicePet,"Novice Pet"
-KinkyDungeonStatDescNovicePet,"You can now sprint while wearing a petsuit."
+KinkyDungeonStatDescNovicePet,"You can now sprint while wearing a petsuit. (Upgrades available in spell tree)"
 KinkyDungeonSpellNovicePet0,Novice Pet Perk
 KinkyDungeonSpellNovicePet1,Eager Pet
 KinkyDungeonSpellDescriptionNovicePet1,"+1 slow reduction while wearing a petsuit, but sprint costs are increased by 30% when not wearing a petsuit."
