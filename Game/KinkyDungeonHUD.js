@@ -293,7 +293,7 @@ function KinkyDungeonDrawInputs() {
 		FillRectKD(kdcanvas, kdpixisprites, "leftBar", {
 			Left: 0, Top: 0, Width: 500,
 			Height: 1000,
-			Color: KDUIColor, alpha: KDUIAlpha, zIndex: -2
+			Color: KDUIColor, alpha: StandalonePatched ? KDUIAlpha : 0, zIndex: -2
 		});
 		DrawRectKD(kdcanvas, kdpixisprites, "botBarb", {
 			Left: 500, Top: 1000-Bheight,
