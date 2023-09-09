@@ -468,7 +468,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 						l = Math.max(0, Math.min(1, (1-light)));
 
 						if (KDToggles.FancyWalls) {
-							pad = 72;
+							pad = 36;
 							KDDraw(kdgamefogsmooth, kdpixifogsprites, `${RX},${RY},_@@`,
 								KinkyDungeonRootDirectory + "Vision.png",
 								(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
