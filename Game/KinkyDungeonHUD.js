@@ -667,7 +667,7 @@ function KinkyDungeonDrawInputs() {
 				text: TextGet("KinkyDungeonBuff" + b.id) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ` (${b.duration})` : ""),
 				count: b.text ? b.text :
 					((count ? `${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ((count ? " " : "") + `${b.duration}`) : "")),
-				icon: KDBuffSprites[b.id] ? "buff/buff" + b.id : undefined,
+				icon: (KDBuffSprites[b.id] || b.buffSprite) ? "buff/buff" + b.id : undefined,
 				//countcolor: b.aura ? b.aura : b.labelcolor,
 				category: "buffs", color: b.aura ? b.aura : b.labelcolor, bgcolor: "#333333", priority: pri,
 				buffid: b.id,

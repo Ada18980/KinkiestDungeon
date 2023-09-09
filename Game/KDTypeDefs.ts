@@ -329,8 +329,8 @@ interface KDRestraintPropsBase {
 	bindhands?: number,
 	/** harnesses allow enemies to grab you and slow you */
 	harness?: boolean,
-	/** hobble is the simplest kind of slowing restraint, increasing slow by 1*/
-	hobble?: boolean,
+	/** hobble is the simplest kind of slowing restraint, increasing slow by this amount*/
+	hobble?: number,
 	/** Blocking feet is for restraints that tie the legs together, forcing the player into SLow Level 2 or higher */
 	blockfeet?: boolean,
 	/** Your total gag level is the sum of the gag values of all your variables. Ball gags have 0.3-0.75 based on size and harness, muzzles are 1.0 */

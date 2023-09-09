@@ -4096,7 +4096,15 @@ function KinkyDungeonMoveTo(moveX, moveY, SuppressSprint) {
 }
 
 function KDCanSprint() {
-	return KinkyDungeonSlowLevel < 4 && KinkyDungeonHasStamina(KDSprintCostBase + KDSprintCostSlowLevel[Math.min(Math.round(KinkyDungeonSlowLevel), KDSprintCostSlowLevel.length)]) && KinkyDungeonCanStand();
+	let data = {
+		canSprint: true,
+		mustStand: true,
+		mustNotBeSlow: true,
+	};
+	KinkyDungeonSendEvent("canSprint", data);
+	return data.canSprint && (!data.mustNotBeSlow || KinkyDungeonSlowLevel < 4)
+		&& KinkyDungeonHasStamina(KDSprintCostBase + KDSprintCostSlowLevel[Math.min(Math.round(KinkyDungeonSlowLevel), KDSprintCostSlowLevel.length)])
+		&& (!data.mustStand || KinkyDungeonCanStand());
 }
 
 let KinkyDungeonLastAction = "";

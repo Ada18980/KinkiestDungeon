@@ -10,7 +10,7 @@ CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1
 - Added a rudimentary UI background that can be toggled off in the game options
 - Added kitty chests in the Ancient Tombs
 - New sensory perks added
-- New game-changing perk: Curse Seeker
+- New game-changing perk,: Curse Seeker, Novice Pet (and upgrades)
 
 4.6 (August 2023)
 Features
