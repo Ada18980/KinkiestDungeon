@@ -1095,6 +1095,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	KDTileToTest = null;
 	KDPathCache = new Map();
 	KDPathCacheIgnoreLocks = new Map();
+	KDRedrawFog = 2;
 
 	KinkyDungeonGenNavMap();
 }
