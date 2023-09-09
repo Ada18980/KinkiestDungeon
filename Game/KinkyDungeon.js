@@ -297,6 +297,8 @@ let KDOptOut = false;
 * HighestLevel: number,
 * KDChasingEnemies: entity[],
 * ShopRewardProgram: number,
+* tickAlertTimer: boolean,
+* HostileFactions: string[],
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
@@ -445,6 +447,8 @@ let KDGameDataBase = {
 	CategoryIndex: {},
 	HighestLevel: 1,
 	HighestLevelCurrent: 1,
+	tickAlertTimer: false,
+	HostileFactions: [],
 };
 /**
  * @type {KDGameDataBase}
