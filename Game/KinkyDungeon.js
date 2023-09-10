@@ -105,6 +105,7 @@ let KDToggles = {
 	ArousalHearts: true,
 	VibeHearts: true,
 	FancyWalls: true,
+	FancyShadows: true,
 	LightmapFilter: true,
 	EnemyAnimations: true,
 	TransparentUI: false,
