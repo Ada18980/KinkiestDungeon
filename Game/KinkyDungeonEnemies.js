@@ -2589,9 +2589,15 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 			KDCheckVulnerableBackstab(enemy);
 			// Alert enemies if youve aggroed one
 			if (!KDAllied(enemy) && !(enemy.ceasefire > 0)) {
-				if (!(enemy.hostile > 0) && KDGameData.HostileFactions.length > 0 && !KinkyDungeonAggressive(enemy) && !enemy.Enemy.tags.peaceful && (enemy.vp > 0.5 || enemy.lifetime < 900 || (!KDHostile(enemy) && KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 7))) {
+				if (!(enemy.hostile > 0)
+					&& KDGameData.HostileFactions.length > 0
+					&& !KinkyDungeonAggressive(enemy)
+					&& !enemy.Enemy.tags.peaceful
+					&& (enemy.vp > 0.5 || enemy.lifetime < 900
+						|| (!KDHostile(enemy)
+							&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 7))) {
 					for (let f of KDGameData.HostileFactions) {
-						if ((KDGetFaction(enemy) != "Player") && KDFactionRelation(f, "Chase") > -0.01 && KDFactionRelation(f, "Jail") > -0.01 && (
+						if ((KDGetFaction(enemy) != "Player") && (
 							(KDFactionRelation(f, KDGetFaction(enemy)) > 0.15 && KDFactionRelation(f, KDGetFaction(enemy)) < 0.5 && // Favored
 							KDFactionRelation("Player", KDGetFaction(enemy)) < 0.2)
 							|| (KDFactionRelation(f, KDGetFaction(enemy)) >= 0.5 && // Allied

@@ -50,7 +50,7 @@ function KinkyDungeonItemCount(Name) {
 	return 0;
 }
 
-function KinkyDungeonGetShopItem(Level, Rarity, Shop) {
+function KinkyDungeonGetShopItem(Level, Rarity, Shop, ShopItems) {
 	let Table = [];
 	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
 	if (params.ShopExclusives) {
@@ -97,7 +97,7 @@ function KinkyDungeonGetShopItem(Level, Rarity, Shop) {
 
 	// No duplicates
 	for (let R = Rarity; R >= 0; R--) {
-		let available = Table.filter((item) => (item.rarity == R && !KDMapData.ShopItems.some((item2) => {return item2.name == item.name;})));
+		let available = Table.filter((item) => (item.rarity == R && !ShopItems.some((item2) => {return item2.name == item.name;})));
 		if (available.length > 0) return available[Math.floor(KDRandom() * available.length)];
 	}
 	return null;
