@@ -45,13 +45,13 @@ KDToggleStunFlash,Flash Screen on Stun
 KDToggleArousalHearts,Advanced Distraction VFX
 KDToggleVibeHearts,Advanced Toy VFX
 KDToggleShowNPCStatuses,Show NPC Status
-KDToggleFancyWalls,Enhanced Fog of War
-KDToggleFancyShadows,Smooth Lighting
+KDToggleFancyWalls,Improved Fog of War
+KDToggleFancyShadows,Advanced Fog Shader
+KDToggleLightmapFilter,Advanced Light Shader
 KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
 KDToggleGraphicsQuality,High Quality Animations
-KDToggleLightmapFilter,Desaturate Unseen Areas
 KDToggleEnemyAnimations,Enemy Animations
 KinkyDungeonFastWait,Wait Quickly
 

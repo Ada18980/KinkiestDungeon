@@ -509,6 +509,8 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
 	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
+	KDUpdateEnemyCache = true;
+
 
 	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
 
@@ -672,13 +674,15 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	}
 
 	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
+	KDUpdateEnemyCache = true;
 	// Else make a new one
 	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
 
-	/** @type {KDMapData} */
-	KDMapData = KDDefaultMapData(KDGameData.RoomType, KDGameData.MapMod);
-	KDCurrentWorldSlot = worldLocation;
 	for (let iterations = 0; iterations < 100; iterations++) {
+
+		/** @type {KDMapData} */
+		KDMapData = KDDefaultMapData(KDGameData.RoomType, KDGameData.MapMod);
+		KDCurrentWorldSlot = worldLocation;
 
 		KDInitTempValues(seed);
 		KDMapData.Grid = "";
@@ -705,7 +709,6 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			mapMod = KDMapMods[KDGameData.MapMod];
 		}
 
-		KDMapData.Entities = allies;
 
 		altRoom = KDGameData.RoomType;
 		altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
@@ -1101,6 +1104,11 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				KinkyDungeonSendEvent("tickFlags", {delta: 1});
 			KinkyDungeonSendEvent("postQuest", {});
 
+
+			for (let e of allies) {
+				KDAddEntity(e);
+			}
+
 			for (let e of KinkyDungeonGetAllies()) {
 				let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
 				if (!point) point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, undefined, true);
@@ -1260,10 +1268,7 @@ function KinkyDungeonIsReachable(testX, testY, testLockX, testLockY) {
 function KinkyDungeonGetAllies() {
 	let temp = [];
 	for (let e of KDMapData.Entities) {
-		if (e.Enemy && e.Enemy.keepLevel) {
-			KDMoveEntity(e, KDMapData.StartPosition.x, KDMapData.StartPosition.y, false,undefined, undefined, true);
-			e.visual_x = KDMapData.StartPosition.x;
-			e.visual_y = KDMapData.StartPosition.y;
+		if (e.Enemy && e.Enemy.keepLevel && KDAllied(e)) {
 			temp.push(e);
 		}
 	}
