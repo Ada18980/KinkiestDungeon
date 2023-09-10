@@ -1,6 +1,12 @@
 CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1000 lines of changelogs)
 
-4.61 (August 2023)
+4.62 (Sep 2023)
+- Fix duplicate shop items
+- Fix ally summons not carrying over across levels
+- Fix fuuka's zombies (and all bosses really) from not aggroing on player
+- Fix game calling auto-equipped items cursed when they aren't
+
+4.61 (Sep 2023)
 - Bugfix patch to hopefully fix a lot of the prison and map persistence bugs
 - Truss em Up now applies status effects from restraints but also takes 1 turn
 - Wall can now be cast on doors to do a special effect
@@ -12,7 +18,7 @@ CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1
 - New sensory perks added
 - New game-changing perk,: Curse Seeker, Novice Pet (and upgrades)
 
-4.6 (August 2023)
+4.6 (Sep 2023)
 Features
 - You can now backtrack to previous levels! This is a start toward a future system to make the map more sane and understandable
 - The shopkeeper is now in regular games! She basically functions as a very expensive shrine you can backtrack to the start of the game for
