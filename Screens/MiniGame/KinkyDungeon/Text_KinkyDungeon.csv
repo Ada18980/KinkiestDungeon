@@ -11072,4 +11072,5 @@ DungeonNamePerkRoom,"Shrine"
 DungeonNameJail,"High-Security Prison"
 DungeonNameDollRoom,"Doll Sorting Station"
 
-KDCursedChestEquip,A cursed NEWITM flies out of the chest and latches tightly to you!
+KDCursedChestEquipCursed,"A cursed NEWITM flies out of the chest and latches tightly to you!"
+KDCursedChestEquip,"With a puff of magic, a NEWITM appears on your body!"

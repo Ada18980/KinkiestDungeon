@@ -351,7 +351,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			if (!equipped) {
 				KDGiveInventoryVariant(variant, "", unlockcurse);
 			} else {
-				KinkyDungeonSendTextMessage(10, TextGet("KDCursedChestEquip")
+				KinkyDungeonSendTextMessage(10, TextGet("KDCursedChestEquip" + (unlockcurse ? "Cursed" : ""))
 					.replace("NEWITM", TextGet("Restraint" + variant.template)),
 				"#aa88ff", 10);
 			}

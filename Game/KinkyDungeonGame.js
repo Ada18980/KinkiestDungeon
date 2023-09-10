@@ -506,7 +506,12 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	if (!KDWorldMap[x + ',' + y]) return false;
 	if (!KDWorldMap[x + ',' + y].data[room]) return false;
 
+	// Create enemies first so we can spawn them in the set pieces if needed
+	let allies = KinkyDungeonGetAllies();
+	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
+
 	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
+
 
 	// Load the room
 	let NewMapData = JSON.parse(JSON.stringify(KDWorldMap[x + ',' + y].data[room]));
@@ -528,6 +533,19 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	if (ignoreAware && aware) {
 		KinkyDungeonLoseJailKeys();
 		KinkyDungeonSendActionMessage(10, TextGet("KDClimbUpTrapped"), "#ff0000", 3);
+	}
+
+	for (let e of allies) {
+		KDAddEntity(e);
+	}
+
+	for (let e of KinkyDungeonGetAllies()) {
+		let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
+		if (!point) point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, undefined, true);
+		if (!point) point = {x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y};
+		KDMoveEntity(e, point.x, point.y, false,undefined, undefined, true);
+		e.visual_x = point.x;
+		e.visual_y = point.y;
 	}
 
 	// Strip non-persistent items
@@ -627,6 +645,9 @@ function KDInitTempValues(seed) {
  * @param {number} [direction]
  */
 function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement, seed, forceFaction, worldLocation, useExisting, origMapType = "", direction = 0) {
+	// Create enemies first so we can spawn them in the set pieces if needed
+	let allies = KinkyDungeonGetAllies();
+
 	KDGameData.RoomType = RoomType;
 	KDGameData.MapMod = MapMod;
 	let mapMod = null;
@@ -650,6 +671,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		return;
 	}
 
+	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
 	// Else make a new one
 	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
 
@@ -657,6 +679,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	KDMapData = KDDefaultMapData(KDGameData.RoomType, KDGameData.MapMod);
 	KDCurrentWorldSlot = worldLocation;
 	for (let iterations = 0; iterations < 100; iterations++) {
+
 		KDInitTempValues(seed);
 		KDMapData.Grid = "";
 		KDMapData.Tiles = {};
@@ -682,8 +705,6 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			mapMod = KDMapMods[KDGameData.MapMod];
 		}
 
-		// Create enemies first so we can spawn them in the set pieces if needed
-		let allies = KinkyDungeonGetAllies();
 		KDMapData.Entities = allies;
 
 		altRoom = KDGameData.RoomType;
@@ -1081,9 +1102,12 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			KinkyDungeonSendEvent("postQuest", {});
 
 			for (let e of KinkyDungeonGetAllies()) {
-				KDMoveEntity(e, KDMapData.StartPosition.x, KDMapData.StartPosition.y, false,undefined, undefined, true);
-				e.visual_x = KDMapData.StartPosition.x;
-				e.visual_y = KDMapData.StartPosition.y;
+				let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
+				if (!point) point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, undefined, true);
+				if (!point) point = {x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y};
+				KDMoveEntity(e, point.x, point.y, false,undefined, undefined, true);
+				e.visual_x = point.x;
+				e.visual_y = point.y;
 			}
 
 			KinkyDungeonAdvanceTime(0);
