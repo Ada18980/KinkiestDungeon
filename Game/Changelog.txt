@@ -5,6 +5,7 @@ CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1
 - Fix ally summons not carrying over across levels
 - Fix fuuka's zombies (and all bosses really) from not aggroing on player
 - Fix game calling auto-equipped items cursed when they aren't
+- Split Smooth Lighting and Enhanced Fog of War in the game options menu
 
 4.61 (Sep 2023)
 - Bugfix patch to hopefully fix a lot of the prison and map persistence bugs

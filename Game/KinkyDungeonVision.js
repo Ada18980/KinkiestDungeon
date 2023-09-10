@@ -467,7 +467,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 						}
 						l = Math.max(0, Math.min(1, (1-light)));
 
-						if (KDToggles.FancyWalls) {
+						if (KDToggles.FancyShadows) {
 							pad = 36;
 							KDDraw(kdgamefogsmooth, kdpixifogsprites, `${RX},${RY},_@@`,
 								KinkyDungeonRootDirectory + "Vision.png",
@@ -485,7 +485,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 							kdgamefog.drawRect((-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad, KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2);
 							kdgamefog.endFill();
 						}
-					} else if (KDToggles.FancyWalls &&
+					} else if (KDToggles.FancyShadows &&
 						((KinkyDungeonVisionGet(RX-1, RY) > 0 || (allowFog && KinkyDungeonFogGet(RX-1, RY) > 0))
 						|| (KinkyDungeonVisionGet(RX+1, RY) > 0 || (allowFog && KinkyDungeonFogGet(RX+1, RY) > 0))
 						|| (KinkyDungeonVisionGet(RX, RY-1) > 0 || (allowFog && KinkyDungeonFogGet(RX, RY-1) > 0))
