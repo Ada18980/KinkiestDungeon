@@ -836,7 +836,9 @@ let KDEventMapInventory = {
 		},
 		"tickleDrain": (e, item, data) => {
 			if (!data.delta) return;
+			if (KinkyDungeonFlags.get("tickleDrain")) return;
 			if (e.power) {
+				KinkyDungeonSetFlag("tickleDrain", 3 + Math.floor(KDRandom() * 4));
 				KinkyDungeonChangeDistraction(-e.power * KDBuffResist(KinkyDungeonPlayerBuffs, "tickle"), false, 0.01);
 				KinkyDungeonSendTextMessage(0.5, TextGet("KinkyDungeonTickleDrain"), "lightblue", 2, true);
 			}
