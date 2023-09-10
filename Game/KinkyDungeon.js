@@ -99,9 +99,8 @@ let KDToggles = {
 	EnableMinimap: true,
 	Drool: true,
 	DrawArmor: true,
-	TurnCounter: true,
-	ShowNPCStatuses: true,
 	StunFlash: true,
+	ParticlesFX: true,
 	ArousalHearts: true,
 	VibeHearts: true,
 	FancyWalls: true,
@@ -109,6 +108,8 @@ let KDToggles = {
 	EnemyAnimations: true,
 	TransparentUI: false,
 	PlayerTransparencyDuringBullets: true,
+	TurnCounter: true,
+	ShowNPCStatuses: true,
 };
 
 let KDDefaultKB = {

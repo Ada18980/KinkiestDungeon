@@ -41,8 +41,9 @@ KDToggleMusic,Enable Music
 KDToggleTransparentUI,Transparent UI
 KDToggleTurnCounter,Turn Counter
 KDToggleStunFlash,Flash Screen on Stun
-KDToggleArousalHearts,Advanced Distraction VFX
-KDToggleVibeHearts,Advanced Toy VFX
+KDToggleParticlesFX,Map Particles
+KDToggleArousalHearts,Distraction Particles
+KDToggleVibeHearts,Vibration Particles
 KDToggleShowNPCStatuses,Show NPC Status
 KDTogglePlayerTransparencyDuringBullets,Projectiles Make Player Transparent
 KDToggleFancyWalls,Improved Fog of War

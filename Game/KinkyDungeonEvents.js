@@ -5322,9 +5322,10 @@ let KDEventMapGeneric = {
 		// Shockwave rendering code
 		"shockwave": (e, data) => {
 			if (KDEventData.shockwaves) {
-				for (let s of KDEventData.shockwaves) {
-					KDAddShockwave((s.x - data.CamX + 0.5) * KinkyDungeonGridSizeDisplay, (s.y - data.CamY + 0.5) * KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay * (s.radius + 1) * 2, s.sprite);
-				}
+				if (KDToggles.ParticlesFX)
+					for (let s of KDEventData.shockwaves) {
+						KDAddShockwave((s.x - data.CamX + 0.5) * KinkyDungeonGridSizeDisplay, (s.y - data.CamY + 0.5) * KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay * (s.radius + 1) * 2, s.sprite);
+					}
 				KDEventData.shockwaves = [];
 			}
 
