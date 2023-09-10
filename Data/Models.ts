@@ -1,4 +1,5 @@
 let SHOWMESHPOINTS = false;
+let StruggleAnimation = false;
 
 /**
  * Returns a table with the priorities for each layer based on order of the array
@@ -149,40 +150,42 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	let containerID = `${X},${Y},${Zoom}`;
 	let refreshfilters = false;
 
-	if (MC.Containers.get(containerID)) {
-		let mesh = MC.Containers.get(containerID).Mesh;
-		let rt = MC.Containers.get(containerID).RenderTexture;
-		let buffer = mesh.geometry.getBuffer('aVertexPosition');
-		let matrix = MC.Containers.get(containerID).Matrix;
+	if (StruggleAnimation) // PROTOTYPE struggle animation
+		if (MC.Containers.get(containerID)) {
+			let mesh = MC.Containers.get(containerID).Mesh;
+			let rt = MC.Containers.get(containerID).RenderTexture;
+			let buffer = mesh.geometry.getBuffer('aVertexPosition');
+			let matrix = MC.Containers.get(containerID).Matrix;
 
-		// Assign locations
-		let x = 0;
-		let y = 0;
-		let width = 100;
-		let height = 100;
-        for (let i = 0; i + 1 < buffer.data.length; i+= 2)
-        {
-			// x
-            buffer.data[i] = matrix[i] + MODELWIDTH*0.01*Math.sin(Math.max(0,Math.PI*(0.6*height-y)/(0.6*height)))*(Math.sin((CommonTime() % 2000)/2000 * 2*Math.PI))*Zoom;
-			// y
-            buffer.data[i+1] = matrix[i+1] + MODELWIDTH*0.003*Math.sin(Math.PI+Math.max(0,Math.PI*(0.6*height-y)/(0.6*height))) * Math.cos((CommonTime() % 2000)/2000 * 4*Math.PI)*Zoom;
-			if (SHOWMESHPOINTS && Zoom == 1 && x < width*.5 && y > height*.25 && y < height*.75) {
-				KDDraw(kdcanvas, kdpixisprites, "buffer" + i, KinkyDungeonRootDirectory + "ShrineAura.png",
-				-4+(buffer.data[i])-MODELWIDTH*MODEL_SCALE*0.25, -4+(buffer.data[i+1])-MODELHEIGHT*MODEL_SCALE*(0.25)-MODELWIDTH/10, 8, 8,
-				undefined, {
-					zIndex: 100,
-					tint: 0x00ff00,
-				});
-			}
+			// Assign locations
+			let x = 0;
+			let y = 0;
+			let width = 100;
+			let height = 100;
+			let timt = 1000;
+			for (let i = 0; i + 1 < buffer.data.length; i+= 2)
+			{
+				// x
+				buffer.data[i] = matrix[i] + MODELWIDTH*0.005*Math.sin(Math.max(0,Math.PI*(0.6*height-y)/(0.6*height)))*(Math.sin((CommonTime() % timt)/timt * 2*Math.PI))*Zoom;
+				// y
+				buffer.data[i+1] = matrix[i+1] + MODELWIDTH*0.001*Math.sin(Math.PI+Math.max(0,Math.PI*(0.6*height-y)/(0.6*height))) * Math.cos((CommonTime() % timt)/timt * 4*Math.PI)*Zoom;
+				if (SHOWMESHPOINTS && Zoom == 1 && x < width*.5 && y > height*.25 && y < height*.75) {
+					KDDraw(kdcanvas, kdpixisprites, "buffer" + i, KinkyDungeonRootDirectory + "ShrineAura.png",
+					-4+(buffer.data[i])-MODELWIDTH*MODEL_SCALE*0.25, -4+(buffer.data[i+1])-MODELHEIGHT*MODEL_SCALE*(0.25)-MODELWIDTH/10, 8, 8,
+					undefined, {
+						zIndex: 100,
+						tint: 0x00ff00,
+					});
+				}
 
-			x += 1;
-			if (x >= width) {
-				y += 1;
-				x = 0;
+				x += 1;
+				if (x >= width) {
+					y += 1;
+					x = 0;
+				}
 			}
-        }
-		buffer.update();
-	}
+			buffer.update();
+		}
 
 	if (MC.Containers.get(containerID) && !MC.Update.has(containerID) && MC.Refresh.has(containerID)) {
 		MC.Update.delete(containerID);
@@ -819,6 +822,8 @@ function KDGetColorableLayers(Model: Model): string[] {
 	for (let layer of Object.values(Model.Layers)) {
 		if (!layer.NoColorize && !layer.InheritColor) {
 			ret.push(layer.Name);
+		} else if (layer.InheritColor && !ret.includes(layer.InheritColor)) {
+			ret.push(layer.InheritColor);
 		}
 	}
 	return ret;

@@ -5,21 +5,14 @@
  * In general, this is accomplished by having higher priority items cover more of the original
  */
 
-let slimefilter = {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":1.7000000000000002,"green":0.5166666666666666,"blue":2.3833333333333333,"alpha":1};
-
-
-
 AddModel({
-	Name: "SlimeMouth",
-	Folder: "Slime",
-	Parent: "SlimeHead",
+	Name: "RubberMouth",
+	Folder: "Rubber",
+	Parent: "RubberHead",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseMouth"],
-	Filters: {
-		"Mouth": slimefilter,
-	},
 	Layers: ToLayerMap([
 		{ Name: "FaceMouth", Layer: "GagWrap", Pri: 9,
 			Invariant: true,
@@ -29,16 +22,13 @@ AddModel({
 });
 
 AddModel({
-	Name: "SlimeEyes",
-	Folder: "Slime",
-	Parent: "SlimeHead",
+	Name: "RubberEyes",
+	Folder: "Rubber",
+	Parent: "RubberHead",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseEyes"],
-	Filters: {
-		"Eyes": slimefilter,
-	},
 	Layers: ToLayerMap([
 		{ Name: "FaceEyes", Layer: "BlindfoldWrap", Pri: 9,
 			Invariant: true,
@@ -48,17 +38,13 @@ AddModel({
 });
 
 AddModel({
-	Name: "SlimeHead",
-	Folder: "Slime",
-	Parent: "Slime",
+	Name: "RubberHead",
+	Folder: "Rubber",
+	Parent: "Rubber",
 	TopLevel: true,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseEyes", "EncaseMouth", "EncaseHead"],
-	Filters: {
-		"Eyes": slimefilter,
-		"Mouth": slimefilter,
-	},
 	Layers: ToLayerMap([
 		{ Name: "FaceFull", Layer: "Mask", Pri: 9,
 			Invariant: true,
@@ -68,16 +54,13 @@ AddModel({
 });
 
 AddModel({
-	Name: "SlimeBoots",
-	Folder: "Slime",
-	Parent: "SlimeLegs",
+	Name: "RubberBoots",
+	Folder: "Rubber",
+	Parent: "RubberLegs",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseFeet"],
-	Filters: {
-		"Feet": slimefilter,
-	},
 	Layers: ToLayerMap([
 		{ Name: "Feet", Layer: "OverSocks", Pri: 9,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
@@ -88,95 +71,76 @@ AddModel({
 });
 
 AddModel({
-	Name: "SlimeTorsoLower",
-	Folder: "Slime",
-	Parent: "SlimeLegs",
+	Name: "RubberTorsoLower",
+	Folder: "Rubber",
+	Parent: "RubberLegs",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseTorsoLower"],
-	Filters: {
-		"TorsoLower": slimefilter,
-	},
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "WrappingTorso", Pri: -6,
 			Invariant: true,
-			ApplyFilterToLayerGroup: ToMap(["SlimeTorsoLower"]),
 		},
 	])
 });
 
 AddModel({
-	Name: "SlimeThighs",
-	Folder: "Slime",
-	Parent: "SlimeLegs",
+	Name: "RubberThighs",
+	Folder: "Rubber",
+	Parent: "RubberLegs",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["FeetLinked"],
-	Filters: {
-		"Legs": slimefilter,
-	},
 	Layers: ToLayerMap([
 		{ Name: "Legs", Layer: "OverSocks", Pri: 11,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
-			ApplyFilterToLayerGroup: ToMap(["SlimeLegs"]),
 		},
 	])
 });
 
 
 AddModel({
-	Name: "SlimeLegs",
-	Folder: "Slime",
-	Parent: "Slime",
+	Name: "RubberLegs",
+	Folder: "Rubber",
+	Parent: "Rubber",
 	TopLevel: true,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["FeetLinked", "TorsoLowerTight", "EncaseTorsoLower"],
-	Filters: {
-		"Legs": slimefilter,
-		"TorsoLower": slimefilter,
-	},
 	Layers: ToLayerMap([
-		...GetModelLayers("SlimeThighs"),
-		...GetModelLayers("SlimeTorsoLower"),
+		...GetModelLayers("RubberThighs"),
+		...GetModelLayers("RubberTorsoLower"),
 	])
 });
 
 
 AddModel({
-	Name: "SlimeFeet",
-	Folder: "Slime",
-	Parent: "SlimeLegs",
+	Name: "RubberFeet",
+	Folder: "Rubber",
+	Parent: "RubberLegs",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["FeetLinked"],
-	Filters: {
-		"Ankles": slimefilter,
-	},
 	Layers: ToLayerMap([
 		{ Name: "Ankles", Layer: "OverSocks", Pri: 10,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
-			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "Shoes"]),
 		},
 	])
 });
 
 AddModel({
-	Name: "SlimeArmLeft",
-	Folder: "Slime",
-	Parent: "SlimeArms",
+	Name: "RubberArmLeft",
+	Folder: "Rubber",
+	Parent: "RubberArms",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseArmLeft"],
-	Filters: {
-		"ArmLeft": slimefilter,
-	},
 	Layers: ToLayerMap([
 		{ Name: "ArmLeft", Layer: "BindArmLeft", Pri: -5,
 			Poses: ToMap(["Boxtie", "Front", "Up", "Wristtie"]),
@@ -186,16 +150,13 @@ AddModel({
 	])
 });
 AddModel({
-	Name: "SlimeArmRight",
-	Folder: "Slime",
-	Parent: "SlimeArms",
+	Name: "RubberArmRight",
+	Folder: "Rubber",
+	Parent: "RubberArms",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseArmRight"],
-	Filters: {
-		"ArmRight": slimefilter,
-	},
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "BindArmRight", Pri: -5,
 			Poses: ToMap(["Boxtie", "Front", "Up", "Wristtie"]),
@@ -206,15 +167,12 @@ AddModel({
 });
 
 AddModel({
-	Name: "SlimeTorsoUpper",
-	Folder: "Slime",
-	Parent: "SlimeArms",
+	Name: "RubberTorsoUpper",
+	Folder: "Rubber",
+	Parent: "RubberArms",
 	TopLevel: false,
 	Restraint: true,
-	Filters: {
-		"TorsoUpper": slimefilter,
-	},
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
 		{ Name: "TorsoUpper", Layer: "WrappingTorso", Pri: -5,
@@ -233,36 +191,29 @@ AddModel({
 
 
 AddModel({
-	Name: "SlimeArms",
-	Folder: "Slime",
-	Parent: "Slime",
+	Name: "RubberArms",
+	Folder: "Rubber",
+	Parent: "Rubber",
 	TopLevel: true,
 	Restraint: true,
-	Filters: {
-		"TorsoUpper": slimefilter,
-		"Arms": slimefilter,
-	},
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
-		...GetModelLayers("SlimeArmLeft"),
-		...GetModelLayers("SlimeArmRight"),
-		...GetModelLayers("SlimeTorsoUpper"),
+		...GetModelLayers("RubberArmLeft"),
+		...GetModelLayers("RubberArmRight"),
+		...GetModelLayers("RubberTorsoUpper"),
 	])
 });
 
 
 AddModel({
-	Name: "SlimeHandLeft",
-	Folder: "Slime",
-	Parent: "SlimeArms",
+	Name: "RubberHandLeft",
+	Folder: "Rubber",
+	Parent: "RubberArms",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseHandLeft"],
-	Filters: {
-		"HandLeft": slimefilter,
-	},
 	Layers: ToLayerMap([
 		{ Name: "HandLeft", Layer: "BindHandLeft", Pri: -5,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie"]),
@@ -272,16 +223,13 @@ AddModel({
 	])
 });
 AddModel({
-	Name: "SlimeHandRight",
-	Folder: "Slime",
-	Parent: "SlimeArms",
+	Name: "RubberHandRight",
+	Folder: "Rubber",
+	Parent: "RubberArms",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Slime"],
+	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseHandRight"],
-	Filters: {
-		"HandRight": slimefilter,
-	},
 	Layers: ToLayerMap([
 		{ Name: "HandRight", Layer: "BindHandRight", Pri: -5,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie"]),
