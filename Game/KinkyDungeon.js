@@ -2630,11 +2630,7 @@ function KinkyDungeonHandleClick() {
 		}
 	} else if (KinkyDungeonState == "Save") {
 		if (!KinkyDungeonIsPlayer()) KinkyDungeonState = "Game";
-		if (MouseIn(875, 750, 350, 64)) {
-			KinkyDungeonState = "Game";
-			ElementRemove("saveDataField");
-			return true;
-		} else if (MouseIn(1275, 750, 350, 64)) {
+		if (MouseIn(1075, 750, 350, 64)) {
 			KinkyDungeonState = "Game";
 			ElementRemove("saveDataField");
 			return true;
