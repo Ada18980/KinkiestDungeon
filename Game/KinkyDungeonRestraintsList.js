@@ -1230,6 +1230,8 @@ const KinkyDungeonRestraints = [
 			{trigger:"tick",  type: "PeriodicTeasing", power: 3, time: 20, edgeOnly: false, cooldown: {"normal": 40, "tease": 20}, chance: 0.01},
 			{trigger:"tick",  type: "PeriodicDenial", power: 2, time: 30, edgeOnly: true, cooldown: {"normal": 70, "tease": 20}, chance: 0.02},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 4, time: 10, edgeOnly: false, cooldown: {"normal": 90, "tease": 5}, chance: 0.03},
+			{trigger:"tryOrgasm",  type: "ForcedOrgasmPower", power: 1},
+			{trigger:"tryOrgasm",  type: "ForcedOrgasmMin", power: 3},
 		]},
 
 	{inventory: true, arousalMode: true, name: "TrapPlug5", unlimited: true, Asset: "VibratingDildo", Color: "Default", Group: "ItemVulva", plugSize: 1.0, power: 5, weight: 1,
@@ -1240,6 +1242,8 @@ const KinkyDungeonRestraints = [
 			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: false},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 2, time: 36, edgeOnly: false, cooldown: {"normal": 60, "tease": 30}, chance: 0.05},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 4, time: 24, edgeOnly: false, cooldown: {"normal": 90, "tease": 15}, chance: 0.03},
+			{trigger:"tryOrgasm",  type: "ForcedOrgasmPower", power: 3},
+			{trigger:"tryOrgasm",  type: "ForcedOrgasmMin", power: 6},
 		]},
 
 

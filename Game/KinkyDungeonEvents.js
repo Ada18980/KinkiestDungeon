@@ -1123,7 +1123,16 @@ let KDEventMapInventory = {
 			} else {
 				data.chance *= 0;
 			}
-		}
+		},
+		"ForcedOrgasmPower": (e, item, data) => {
+			data.eventBonus += e.power;
+		},
+		"ForcedOrgasmMin": (e, item, data) => {
+			if (data.amount < e.power) {
+				data.amount = e.power;
+				KinkyDungeonSendTextMessage(6, TextGet("KDForcedOrgasmMin"), "#ffaaaa", 5);
+			}
+		},
 	},
 	"hit": {
 		"linkItem": (e, item, data) => {
