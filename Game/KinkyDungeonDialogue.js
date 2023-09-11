@@ -214,12 +214,20 @@ function KDAllySpeaker(Turns, Follow) {
 	}
 }
 
-function KDAggroSpeaker(Turns = 300) {
+/**
+ *
+ * @param {number} Turns
+ * @param {boolean} NoAlertFlag
+ */
+function KDAggroSpeaker(Turns = 300, NoAlertFlag = false) {
 	let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 	if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 		if (!(enemy.hostile > 0)) {
 			enemy.hostile = Turns;
 		} else enemy.hostile = Math.max(enemy.hostile, Turns);
+		if (NoAlertFlag) {
+			KinkyDungeonSetEnemyFlag(enemy, "nosignalothers", Turns);
+		}
 	}
 }
 
@@ -1472,7 +1480,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				// If we fail, we aggro the enemy
 				KDIncreaseOfferFatigue(-20);
 				KDGameData.CurrentDialogMsg = "OfferDominantFailure";
-				KDAggroSpeaker(10);
+				KDAggroSpeaker(100, true);
 				KDAddOpinion(KDGetSpeaker(), -20);
 			} else {
 				// If we succeed, we get the speaker enemy and bind them
