@@ -2636,3 +2636,30 @@ let KDOndeath = {
 		KDAddQuest(o.quest);
 	},
 };
+
+/** @type {Record<string, SpecialCondition>} */
+let KDSpecialConditions = {
+	"canRestrainWithExtra": {
+		resetCD: false,
+		criteria: (enemy, AIData) => {
+			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || KDDefaultRestraintThresh;
+			return KDGetRestraintsEligible(
+				{tags: KDGetTags(enemy, true)}, MiniGameKinkyDungeonLevel,
+				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				enemy.Enemy.bypass,
+					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
+					!(enemy.Enemy.ignoreStaminaForBinds || (true && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
+					false,
+					!(KinkyDungeonStatsChoice.has("TightRestraints") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss),
+					KDGetExtraTags(enemy, true),
+					false,
+					{
+						maxPower: rThresh + 0.01,
+						looseLimit: true,
+						onlyUnlimited: true,
+						ignore: enemy.items,
+					}, enemy
+			).length > 0;
+		}
+	}
+};
