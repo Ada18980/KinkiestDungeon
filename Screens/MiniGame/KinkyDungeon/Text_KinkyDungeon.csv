@@ -39,6 +39,7 @@ KDToggleDrool,Art: Drool/Tears
 KDToggleDrawArmor,Art: Draw Armor
 KDToggleMusic,Enable Music
 KDTogglePlayerTransparencyDuringBullets,Projectiles Make Player Transparent
+KDToggleBloom,GFX: Bloom & Glow
 KDToggleTransparentUI,Game: Transparent UI
 KDToggleTurnCounter,Game: Turn Counter
 KDToggleStunFlash,GFX: Flash Screen on Stun

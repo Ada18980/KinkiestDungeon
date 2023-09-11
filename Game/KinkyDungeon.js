@@ -97,8 +97,8 @@ let KDToggles = {
 	Music: true,
 	Sound: true,
 	EnableMinimap: true,
-	Drool: true,
 	DrawArmor: true,
+	Bloom: true,
 	StunFlash: true,
 	ParticlesFX: true,
 	ArousalHearts: true,
@@ -110,6 +110,7 @@ let KDToggles = {
 	PlayerTransparencyDuringBullets: true,
 	TurnCounter: true,
 	ShowNPCStatuses: true,
+	Drool: true,
 };
 
 let KDDefaultKB = {
