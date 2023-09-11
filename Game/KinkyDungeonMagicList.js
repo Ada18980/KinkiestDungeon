@@ -212,12 +212,13 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				{type: "ChangeSPCost", trigger: "tryOrgasm", mult: 0.5},
 				{type: "ChangeWPCost", trigger: "tryOrgasm", mult: 0.5},
 			]},
-		{name: "OrgasmResist", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+		{name: "OrgasmResist", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
+				{type: "OrgasmResistBuff", trigger: "tick"},
 				{type: "OrgasmResist", trigger: "calcInvolOrgasmChance", power: 0},
-				{type: "ChangeEdgeDrain", trigger: "calcEdgeDrain", mult: 0.3, always: true},
-				{type: "Buff", trigger: "tick", power: 1.0, buffType: "soulDamageResist", always: true},
-				{type: "Buff", trigger: "tick", power: 1.0, buffType: "charmDamageResist", always: true},
+				{type: "ChangeEdgeDrain", trigger: "calcEdgeDrain", mult: 0.3},
+				{type: "Buff", trigger: "tick", power: 1.0, buffType: "soulDamageResist"},
+				{type: "Buff", trigger: "tick", power: 1.0, buffType: "charmDamageResist"},
 			]},
 		{name: "EdgeMana1", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "DistractionCast", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			blockedBy: ["OrgasmMana1"], events: [
