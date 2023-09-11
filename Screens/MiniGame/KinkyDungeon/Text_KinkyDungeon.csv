@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.62"
+KinkyDungeon,"Kinky Dungeon v4.63"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -4726,10 +4726,16 @@ KinkyDungeonSpellManaRegen,Inner Power
 KinkyDungeonSpellDescriptionManaRegen,"As a wizard, you are able to harness a power source to regenerate mana up to 20% of your maximum mana. This regeneration is paused for 6 turns after attacking or casting a spell."
 
 KinkyDungeonSpellManaRegenPlus,Battlemage
-KinkyDungeonSpellDescriptionManaRegenPlus,"Your innate mana regeneration is no longer paused after attacking or casting a spell."
+KinkyDungeonSpellDescriptionManaRegenPlus,"Your innate mana regeneration is no longer paused after attacking."
+
+KinkyDungeonSpellManaRegenPlus2,Relentless Casting
+KinkyDungeonSpellDescriptionManaRegenPlus2,"Your innate mana regeneration is no longer paused after casting spells."
+
+KinkyDungeonSpellManaRecharge,Arcane Recharge
+KinkyDungeonSpellDescriptionManaRecharge,"Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 60 psychic damage to self, restores 30 mana. Can refill the mana pool."
 
 KinkyDungeonSpellOrgasmMana1,Way of Pleasure
-KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 40 mana as long as you have willpower to spare. Does not restore Mana Pool. Blocks Way of Discipline."
+KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 25 mana, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Discipline."
 
 KinkyDungeonSpellOrgasmBuff,Intense Power
 KinkyDungeonSpellDescriptionOrgasmBuff,"After letting go of yourself, you feel an immense surge of power, increasing magic damage by 40% for 8 turns after you regain control, and by 10% while you remain satisfied."
@@ -4743,10 +4749,10 @@ KinkyDungeonSpellDescriptionOrgasmResist,"+100 Psychic and Charm Resist. You can
 
 
 KinkyDungeonSpellEdgeMana1,Way of Discipline
-KinkyDungeonSpellDescriptionEdgeMana1,"You have chosen the path of absolute discipline. Being in an Edged state increases passive mana recovery, and if you have willpower to spare you regenerate 1 mana per 5 turns. Does not restore Mana Pool. Blocks Way of Pleasure."
+KinkyDungeonSpellDescriptionEdgeMana1,"You have chosen the path of absolute discipline. Being in an Edged state increases passive mana recovery and you regenerate 0.5 mana per turn, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Pleasure."
 
 KinkyDungeonSpellDenyMana,Way of Denial
-KinkyDungeonSpellDescriptionDenyMana,"Harnessing your mental discipline, you regenerate 50 mana each time you are denied, so long as you have willpower to spare. Does not restore Mana Pool."
+KinkyDungeonSpellDescriptionDenyMana,"Harnessing your mental discipline, you regenerate 20 mana each time you are denied, restoring the same amount to the Mana Pool if you have willpower to spare."
 
 
 KinkyDungeonSpellApprenticeFire,Flame Novice
@@ -11362,3 +11368,7 @@ DungeonNameDollRoom,"Doll Sorting Station"
 
 KDCursedChestEquipCursed,"A cursed NEWITM flies out of the chest and latches tightly to you!"
 KDCursedChestEquip,"With a puff of magic, a NEWITM appears on your body!"
+
+KDManaRecharge_Success,"You draw upon chaotic energies, restoring mana!"
+KDManaRecharge_Mixed,"You draw upon chaotic energies, but your mind is unable to hold back the arcane forces!"
+KDManaRecharge_Fail,"The attempt to call upon chaotic energies fails."

@@ -68,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "ManaRegen","ManaRegenPlus","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
+		["Bondage", "ManaRecharge", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
 	],
 
 	//Page 1: Elements
@@ -179,7 +179,13 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{type: "ManaRegen", trigger: "tick", mult: 0.2, power: 0.5},
 		]},
 		{name: "ManaRegenPlus", tags: ["mana", "offense"], school: "Elements", manacost: 0, components: [], prerequisite: "ManaRegen", hideWithout: "ManaRegen", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",},
+		{name: "ManaRegenPlus2", tags: ["mana", "offense"], school: "Elements", manacost: 0, components: [], prerequisite: "ManaRegen", hideWithout: "ManaRegen", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",},
 
+
+		{name: "ManaRecharge", tags: ["will", "utility"], prerequisite: "ManaRegen", hideUnlearnable: true, school: "Elements", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "ManaRecharge", trigger: "toggleSpell", power: 6.0, mult: 0.5, damage: "soul", count: 2},
+			]},
 
 		{name: "DistractionCast", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "DistractionCast", trigger: "calcMiscast"},
@@ -188,7 +194,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		]},
 		{name: "OrgasmMana1", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "DistractionCast", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			blockedBy: ["EdgeMana1"], events: [
-				{type: "RestoreOrgasmMana", trigger: "orgasm", power: 4.0},
+				{type: "RestoreOrgasmMana", trigger: "orgasm", power: 5.0},
 			]},
 		{name: "OrgasmBuff", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "OrgasmMana1", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
@@ -206,21 +212,21 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				{type: "ChangeSPCost", trigger: "tryOrgasm", mult: 0.5},
 				{type: "ChangeWPCost", trigger: "tryOrgasm", mult: 0.5},
 			]},
-		{name: "OrgasmResist", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+		{name: "OrgasmResist", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "OrgasmResist", trigger: "calcInvolOrgasmChance", power: 0},
-				{type: "ChangeEdgeDrain", trigger: "calcEdgeDrain", mult: 0.3},
-				{type: "Buff", trigger: "tick", power: 1.0, buffType: "soulDamageResist"},
-				{type: "Buff", trigger: "tick", power: 1.0, buffType: "charmDamageResist"},
+				{type: "ChangeEdgeDrain", trigger: "calcEdgeDrain", mult: 0.3, always: true},
+				{type: "Buff", trigger: "tick", power: 1.0, buffType: "soulDamageResist", always: true},
+				{type: "Buff", trigger: "tick", power: 1.0, buffType: "charmDamageResist", always: true},
 			]},
 		{name: "EdgeMana1", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "DistractionCast", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			blockedBy: ["OrgasmMana1"], events: [
-				{type: "RestoreEdgeMana", trigger: "tick", power: 0.02},
+				{type: "RestoreEdgeMana", trigger: "tick", power: 0.1},
 				{type: "EdgeRegenBoost", trigger: "calcManaPool", power: 0.04},
 			]},
 		{name: "DenyMana", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "EdgeMana1", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
-				{type: "RestoreDenyMana", trigger: "deny", power: 1.0},
+				{type: "RestoreDenyMana", trigger: "deny", power: 4.0},
 			]},
 
 		{name: "SPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},

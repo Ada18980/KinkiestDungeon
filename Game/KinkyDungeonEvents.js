@@ -2426,7 +2426,8 @@ let KDEventMapSpell = {
 			if (KinkyDungeonStatWill > 0) {
 				let willPercentage = data.wpcost < 0 ? -KinkyDungeonStatWill/data.wpcost : 1.0;
 				if (willPercentage > 0)
-					KinkyDungeonChangeMana(e.power * willPercentage);
+					KinkyDungeonChangeMana(0, false, e.power * willPercentage);
+				KinkyDungeonChangeMana(e.power, false, 0, false, willPercentage > 0.5);
 			}
 		},
 		"OrgasmDamageBuff": (e, spell, data) => {
@@ -2457,7 +2458,8 @@ let KDEventMapSpell = {
 			if (KinkyDungeonStatWill > 0) {
 				let willPercentage = data.edgewpcost < 0 ? -KinkyDungeonStatWill/data.edgewpcost : 1.0;
 				if (willPercentage > 0)
-					KinkyDungeonChangeMana(e.power * willPercentage);
+					KinkyDungeonChangeMana(0, false, e.power * willPercentage);
+				KinkyDungeonChangeMana(e.power, false, 0, false, willPercentage > 0.5);
 			}
 		},
 	},
@@ -2548,7 +2550,7 @@ let KDEventMapSpell = {
 			}
 		},
 		"ManaRegenSuspend": (e, spell, data) => {
-			if (!KDHasSpell("ManaRegenPlus")) {
+			if (!KDHasSpell("ManaRegenPlus2")) {
 				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
 					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: e.time,
 				});
@@ -2621,8 +2623,11 @@ let KDEventMapSpell = {
 				});
 		},
 		"RestoreEdgeMana": (e, spell, data) => {
-			if (KinkyDungeonStatWill > 0 && KDIsEdged(KinkyDungeonPlayerEntity) && data.delta > 0) {
-				KinkyDungeonChangeMana(e.power, true);
+			if (KDIsEdged(KinkyDungeonPlayerEntity) && data.delta > 0) {
+				KinkyDungeonChangeMana(e.power, true, 0, false, KinkyDungeonStatWill > 0);
+				if (KinkyDungeonStatWill > 0) {
+					KinkyDungeonChangeMana(0, true, e.power);
+				}
 			}
 		},
 		"Parry": (e, spell, data) => {
@@ -3053,6 +3058,36 @@ let KDEventMapSpell = {
 						}
 
 				}
+		},
+		"ManaRecharge": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+				KinkyDungeonDealDamage({damage: e.power, type: e.damage});
+				if (KinkyDungeonStatWill > 0) {
+					KinkyDungeonChangeMana(e.mult * e.power, false, 0, false, true);
+					KinkyDungeonSendTextMessage(5, TextGet("KDManaRecharge_Success"), "#9074ab", 10);
+				} else {
+					let restraintToAdd = KinkyDungeonGetRestraint({tags: ["crystalRestraints"]}, MiniGameKinkyDungeonLevel + 10, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+						true, "", false, false, false);
+
+					if (restraintToAdd) {
+						KinkyDungeonAddRestraintIfWeaker(restraintToAdd, 10, true, "", true, false, undefined, "Observer", true);
+						if (e.count)
+							for (let i = 1; i < (e.count || 1); i++) {
+								restraintToAdd = KinkyDungeonGetRestraint({tags: ["crystalRestraints"]}, MiniGameKinkyDungeonLevel + 10, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+									true, "", false, false, false);
+								if (restraintToAdd) KinkyDungeonAddRestraintIfWeaker(restraintToAdd, 10, true, "", true, false, undefined, "Observer", true);
+							}
+
+						KinkyDungeonChangeMana(e.mult * e.power, false, 0, false, true);
+						KinkyDungeonSendTextMessage(10, TextGet("KDManaRecharge_Mixed"), "#9074ab", 10);
+					} else {
+						KinkyDungeonSendTextMessage(5, TextGet("KDManaRecharge_Fail"), "#9074ab", 10);
+					}
+				}
+
+
+			}
 		},
 		"Light": (e, spell, data) => {
 			if (data.spell?.name == spell?.name) {
