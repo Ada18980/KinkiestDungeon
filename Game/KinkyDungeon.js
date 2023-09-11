@@ -110,6 +110,7 @@ let KDToggles = {
 	PlayerTransparencyDuringBullets: true,
 	TurnCounter: true,
 	ShowNPCStatuses: true,
+	ForceWarnings: false,
 	Drool: true,
 };
 

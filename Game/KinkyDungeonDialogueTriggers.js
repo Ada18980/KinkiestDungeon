@@ -184,16 +184,16 @@ let KDDialogueTriggers = {
  * @param {string[]} restraintTags - Tags of required restraints
  * @returns {boolean}
  */
-function KDDefaultPrereqs(enemy, AIData, dist, maxdist, chance, restraintTags) {
+function KDDefaultPrereqs(enemy, AIData, dist, maxdist, chance, restraintTags, force) {
 	return dist < maxdist
-			&& !AIData.domMe
+			&& (!AIData.domMe || force)
 			&& !KDEnemyHasFlag(enemy, "playstart")
-			&& !KinkyDungeonFlags.get("DangerFlag")
-			&& !KinkyDungeonFlags.get("BondageOffer")
+			&& (!KinkyDungeonFlags.get("DangerFlag") || force)
+			&& (!KinkyDungeonFlags.get("BondageOffer") || force)
 			&& !KinkyDungeonFlags.get("NoTalk")
-			&& (KinkyDungeonStatsChoice.get("Undeniable") || KDRandom() < chance)
+			&& (KinkyDungeonStatsChoice.get("Undeniable") || KDRandom() < chance || force)
 			&& (!restraintTags || KinkyDungeonGetRestraint({tags: restraintTags}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined)
-			&& (KinkyDungeonStatsChoice.get("Undeniable") || !KDIsBrat(enemy));
+			&& (KinkyDungeonStatsChoice.get("Undeniable") || !KDIsBrat(enemy) || force);
 }
 function KDShopTrigger(name) {
 	return {
