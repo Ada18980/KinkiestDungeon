@@ -498,6 +498,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		player: player,
 		delta: 1,
 		gaggedMiscastFlag: gaggedMiscastFlag,
+		channel: spell.channel,
 	});
 
 
@@ -818,7 +819,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 				KinkyDungeonAggroAction('magic', {});
 			if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "cast_" + spell.school.toLowerCase(), 1);
 		}
-		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (data.channel ? data.channel - 1 : 0));
 		KDSendSpellCast(spell.name);
 
 		KinkyDungeonSendEvent("playerCast", data);
@@ -834,9 +835,9 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		}
 		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 		if (spell.staminacost) KinkyDungeonChangeStamina(-spell.staminacost, false, true);
-		if (spell.channel) {
-			KinkyDungeonSetFlag("channeling", spell.channel);
-			KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, spell.channel);
+		if (data.channel) {
+			KinkyDungeonSetFlag("channeling", data.channel);
+			KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, data.channel);
 			KinkyDungeonSleepTime = CommonTime() + 200;
 		}
 		if (spell.components) {

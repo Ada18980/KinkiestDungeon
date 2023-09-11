@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.63"
+KinkyDungeon,"Kinky Dungeon v4.64"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -4719,6 +4719,13 @@ KinkyDungeonSpellAmpuleBlue,Latex Ampule
 KinkyDungeonSpellShadowStrike,Shadowy chains appear from a rift in space!
 KinkyDungeonInfernoBurn,The roaring inferno deals 10 damage to you!
 
+
+KinkyDungeonSpellRogueTraps,Devious Ingenuity
+KinkyDungeonSpellDescriptionRogueTraps,"Trap-type spells and consumables take 1 turn to cast instead of several."
+
+
+
+
 KinkyDungeonSpellDistractionCast,Mana Burst
 KinkyDungeonSpellDescriptionDistractionCast,"As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus..."
 
@@ -5278,10 +5285,11 @@ KinkyDungeonSpellDescriptionBomb,Channel for 1 turn for a bomb that does DamageD
 KinkyDungeonSpellCastBomb,Fire in the hole!
 KinkyDungeonSpellTargetBomb,Choose target AoE location
 
-KinkyDungeonSpellSnare,Rope Snare
-KinkyDungeonSpellDescriptionSnare,An invisible trap on the ground that stuns anyone who walks on it for Duration turns and applies 150 points of binding.
-KinkyDungeonSpellCastSnare,You set an invisible trap!
-KinkyDungeonSpellTargetSnare,Select where to put the trap (it will be invisible)
+KinkyDungeonSpellSnare,Rope Rune
+KinkyDungeonSpellRopeRuneStrike,Rope Rune
+KinkyDungeonSpellDescriptionSnare,"An AoE trap on the ground that deals 25 chain damage, roots for 8 turns, and applies 80 points of binding."
+KinkyDungeonSpellCastSnare,You conjure a rope trap!
+KinkyDungeonSpellTargetSnare,Choose location for trap
 
 KinkyDungeonSpellRopeStrike,Rope Burst
 KinkyDungeonSpellDescriptionRopeStrike,An explosion of rope deals DamageDealt chain damage in a 3x3 AoE and applies 40 points of rope binding. Snares for Duration turns.

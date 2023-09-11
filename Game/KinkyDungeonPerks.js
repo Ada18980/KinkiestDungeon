@@ -194,6 +194,7 @@ let KDPerkCount = {
  * @type {Record<string, KDPerk>}
  */
 let KinkyDungeonStatsPresets = {
+	"MC_Rogue":  {category: "Multiclass", id: "MC_Rogue", cost: 2, blockclass: ["Rogue"], tags: ["start", "mc"]},
 	"MC_Wizard":  {category: "Multiclass", id: "MC_Wizard", cost: 2, blockclass: ["Wizard"], tags: ["start", "mc"]},
 	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", debuff: true, cost: 2, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
 
@@ -681,6 +682,9 @@ let KDPerkStart = {
 	},
 	MC_Wizard: () => {
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaRegen"));
+	},
+	MC_Rogue: () => {
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("RogueTraps"));
 	},
 };
 

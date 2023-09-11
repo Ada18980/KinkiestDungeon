@@ -34,6 +34,7 @@ let KDClassStart = {
 		KinkyDungeonInventoryAddWeapon("Bow");
 		KDGameData.PreviousWeapon = "Bow";
 		KDSetWeapon("Dirk");
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("RogueTraps"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Bondage"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));
