@@ -5838,6 +5838,8 @@ KinkyDungeonVibing2,"Your vibrating toys are difficult to ignore..."
 KinkyDungeonVibing3,"Your toys buzz strongly, making it difficult to concentrate!"
 KinkyDungeonVibing4,"You tremble as the toys give off intense vibrations!"
 KinkyDungeonVibing5,"Your toys torture you with intense pulsations!"
+KinkyDungeonVibing6,"Your whole body resonates with the intense stimulation!"
+KinkyDungeonVibing7,"The stimulation is so intense you can hardly breath!"
 KinkyDungeonEndVibe,Your toys stop vibrating.
 KinkyDungeonPlugWalk0,You feel slightly full as you move...
 KinkyDungeonPlugWalk1,Your movement disturbs the plugs inside of you...
@@ -11119,3 +11121,5 @@ KDCursedChestEquip,"With a puff of magic, a NEWITM appears on your body!"
 KDManaRecharge_Success,"You draw upon chaotic energies, restoring mana!"
 KDManaRecharge_Mixed,"You draw upon chaotic energies, but your mind is unable to hold back the arcane forces!"
 KDManaRecharge_Fail,"The attempt to call upon chaotic energies fails."
+
+KDForcedOrgasmMin,"The vibrator holds at full power to drive you over the edge!"

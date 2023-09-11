@@ -1506,6 +1506,10 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 	let data = {
 		auto: Auto,
 		player: KinkyDungeonPlayerEntity,
+		playSelfAmount: Bonus != undefined ? 0 : playSelfAmount,
+		bonus: Bonus || 0,
+		eventBonus: 0,
+		eventMult: 1,
 		amount: amount,
 		chance: chance,
 		denied: denied,
@@ -1525,6 +1529,9 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 	};
 
 	KinkyDungeonSendEvent("tryOrgasm", data);
+
+	data.amount += data.eventBonus;
+	data.amount *= data.eventMult;
 
 	if (data.cancelOrgasm) return;
 	if (data.amount > KinkyDungeonPlaySelfOrgasmThreshold && KDRandom() < data.chance) {
