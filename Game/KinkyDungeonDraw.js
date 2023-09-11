@@ -1110,12 +1110,8 @@ function KinkyDungeonDrawGame() {
 
 
 				// Draw targeting reticule
-				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !KinkyDungeonShowInventory
-					&& MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height) && KinkyDungeonIsPlayer()
-					&& !MouseIn(0, 0, 500, 1000) && !MouseIn(1750, 0, 250, 1000)
-					&& !KDButtonHovering
-					&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))
-				) {
+				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !KinkyDungeonShowInventory && KinkyDungeonIsPlayer()
+					&& KDMouseInPlayableArea()) {
 					if (KinkyDungeonTargetingSpell) {
 						KinkyDungeonSetTargetLocation();
 
@@ -3587,4 +3583,15 @@ function KDGetLightColor(x, y) {
 	let color = KDAvgColor(KinkyDungeonColorGet(x, y), KinkyDungeonShadowGet(x, y), light, 1);
 	color = KDAvgColor(color, 0xffffff, 1, 0.5); // Brighten
 	return color;
+}
+
+/**
+ *
+ * @returns {boolean}
+ */
+function KDMouseInPlayableArea() {
+	return MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)
+		&& !MouseIn(0, 0, 500, 1000) && !MouseIn(1750, 0, 250, 1000)
+		&& !KDButtonHovering
+		&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))
 }

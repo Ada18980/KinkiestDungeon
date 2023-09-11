@@ -110,6 +110,7 @@ let KDToggles = {
 	TransparentUI: false,
 	TurnCounter: true,
 	ShowNPCStatuses: true,
+	ForceWarnings: false,
 	Drool: true,
 };
 

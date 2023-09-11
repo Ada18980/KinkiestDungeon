@@ -508,31 +508,87 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		}
 	};
 	dialog.options.Flirt = {playertext: name + "Flirt", response: "Default",
-		prerequisiteFunction: (gagged, player) => {
-			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
-			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				return KinkyDungeonCanPlay(enemy) && !enemy.playWithPlayer;
-			}
-			return false;
-		},
-		clickFunction: (gagged, player) => {
-			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
-			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				KinkyDungeonSetEnemyFlag(enemy, "forcePlay", 20);
-				KinkyDungeonSetEnemyFlag(enemy, "noHarshPlay", 20);
-				KinkyDungeonSetEnemyFlag(enemy, "allyPlay", 80);
-				enemy.aware = true;
-				enemy.gx = enemy.x;
-				enemy.gy = enemy.y;
-				enemy.path = undefined;
-				enemy.playWithPlayerCD = 0;
-				// Make the enemy see you
-				enemy.vp = Math.max(enemy.vp || 0, 2);
-			}
-			KDGameData.CurrentDialogMsg = name + "Flirt" + (enemy.personality || "");
-			return false;
-		},
-		leadsToStage: "", dontTouchText: true,
+		options: {
+			"Leave": {playertext: "Leave", response: "Default",
+				leadsToStage: "",
+			},
+			PlayRequest: {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (gagged, player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						return KinkyDungeonCanPlay(enemy) && !enemy.playWithPlayer;
+					}
+					return false;
+				},
+				clickFunction: (gagged, player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						KinkyDungeonSetEnemyFlag(enemy, "forcePlay", 20);
+						KinkyDungeonSetEnemyFlag(enemy, "noHarshPlay", 20);
+						KinkyDungeonSetEnemyFlag(enemy, "allyPlay", 80);
+						enemy.aware = true;
+						enemy.gx = enemy.x;
+						enemy.gy = enemy.y;
+						enemy.path = undefined;
+						enemy.playWithPlayerCD = 0;
+						// Make the enemy see you
+						enemy.vp = Math.max(enemy.vp || 0, 3);
+						KDStunTurns(1, true);
+					}
+					KDGameData.CurrentDialogMsg = name + "Flirt" + (enemy.personality || "");
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true, exitDialogue: true,
+			},
+			BondageOffer: {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (gagged, player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						KinkyDungeonSetEnemyFlag(enemy, "allyOffer", 1);
+						let dialogue = KDGetDialogueTrigger(enemy, {
+							aggressive: false,
+							playAllowed: true,
+							playerDist: 1,
+							allowPlayExceptionSub: true,
+							ignoreNoAlly: true,
+							ignoreCombat: true,
+						}, ["BondageOffer"]);
+						KinkyDungeonSetEnemyFlag(enemy, "allyOffer", 0);
+						return dialogue != "";
+					}
+					return false;
+				},
+				options: {
+					"Yes": {playertext: "Default", response: "Default",
+						clickFunction: (gagged, player) => {
+							let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+							if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+								KinkyDungeonSetEnemyFlag(enemy, "allyOffer", 1);
+								let dialogue = KDGetDialogueTrigger(enemy, {
+									aggressive: false,
+									playAllowed: true,
+									playerDist: 1,
+									allowPlayExceptionSub: true,
+									ignoreNoAlly: true,
+									ignoreCombat: true,
+								}, ["BondageOffer"]);
+								if (dialogue) {
+									KDStartDialog(dialogue,enemy.Enemy.name, true, enemy.personality, enemy);
+									return true;
+								}
+							}
+							return false;
+						},
+						exitDialogue: true,
+					},
+					"No": {playertext: "Default", response: "Default",
+						leadsToStage: "Flirt",
+					},
+				},
+			},
+		}
 	};
 	/*dialog.options.LetMePass = {playertext: name + "LetMePass", response: "Default",
 		prerequisiteFunction: (gagged, player) => {
@@ -1171,6 +1227,7 @@ function KDYesNoTemplate(setupFunction, yesFunction, noFunction, domFunction) {
 	 * @type {KinkyDialogue}
 	 */
 	let dialogue = {
+		tags: ["BondageOffer"],
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			KinkyDungeonSetFlag("BondageOffer", KDOfferCooldown);
@@ -1275,7 +1332,7 @@ function KDDialogueTriggerOffer(name, goddess, restraintTags, allowedPrisonState
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.1,restraintTags));
+			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.1,restraintTags,KDEnemyHasFlag(enemy, "allyOffer") || KDEnemyHasFlag(enemy, "forceOffer")));
 		},
 		weight: (enemy, dist) => {
 			if (requireFlags && !requireFlags.some((element) => KinkyDungeonFlags.get(element))) {

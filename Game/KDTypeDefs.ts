@@ -1789,6 +1789,8 @@ interface KDJailPoint extends KDPoint {type: string, radius: number, requireLeas
 interface KinkyDialogue {
 	/** REPLACETEXT -> Replacement */
 	data?: Record<string, string>;
+	/** Tags for filtering */
+	tags?: string[];
 	/** Shows the quick inventory */
 	inventory?: boolean;
 	/** Function to play when clicked. If not specified, nothing happens.  Bool is whether or not to abort current click*/
@@ -2093,10 +2095,23 @@ type AIType = {
 
 }
 
+interface KDAITriggerData {
+	/** Determines that the AI can play with the player and initiate a play event */
+	playAllowed?: boolean,
+	/** A SUBSET of hostile. In some cases an enemy will be hostile but not aggressive.
+	 * neutrals and allies cannot be aggressive */
+	aggressive?: boolean,
+	playerDist?: number,
+
+	allowPlayExceptionSub?: boolean,
+	ignoreNoAlly?: boolean,
+	ignoreCombat?: boolean,
+};
+
 /** Container for KD AI data
  * Persistently stored as AIData variable for use in some
  */
-type KDAIData = {
+interface KDAIData extends KDAITriggerData {
 	/** The target of the AI, NOT the KinkyDungeonPlayerEntity but rather a target entity which CAN be the player */
 	player?: entity,
 
@@ -2115,9 +2130,7 @@ type KDAIData = {
 	harmless?: boolean,
 	/** Enemy belongs to a hostile faction */
 	hostile?: boolean,
-	/** A SUBSET of hostile. In some cases an enemy will be hostile but not aggressive.
-	 * neutrals and allies cannot be aggressive */
-	aggressive?: boolean,
+
 	/** Enemy belongs to an allied faction */
 	allied?: boolean,
 	/** This enemy is feeling dominated by the player and will generally act submissive */
@@ -2214,7 +2227,7 @@ type KDAIData = {
 	blindSight?: number,
 	sneakMult?: number,
 	directionOffset?: number,
-	playerDist?: number,
+
 	playerDistDirectional?: number,
 	canSensePlayer?: boolean,
 	canSeePlayer?: boolean,
@@ -2224,8 +2237,6 @@ type KDAIData = {
 	canSeePlayerVeryClose?: boolean,
 	canShootPlayer?: boolean,
 
-	/** Determines that the AI can play with the player and initiate a play event */
-	playAllowed?: boolean,
 	/** Chance of starting a play event */
 	playChance?: number,
 	/** Indicates that a play event has started */
