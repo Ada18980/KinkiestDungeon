@@ -191,6 +191,10 @@ let kdSpritesDrawn = new Map();
 /**
  * @type {Map<string, any>}
  */
+let kdlightsprites = new Map();
+/**
+ * @type {Map<string, any>}
+ */
 let kdpixisprites = new Map();
 /**
  * @type {Map<string, any>}
@@ -934,7 +938,7 @@ function KinkyDungeonDrawGame() {
 				// Get lighting grid
 				if (KinkyDungeonUpdateLightGrid) {
 					KDUpdateFog = true;
-					KDUpdateVision();
+					KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset);
 				}
 				// Draw fog of war
 				let CamPos = {x: CamX, y: CamY};
@@ -3030,7 +3034,7 @@ function GetAdjacentList(list, index, width) {
 }
 
 
-function KDUpdateVision() {
+function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 	KinkyDungeonUpdateLightGrid = false;
 	KDRedrawFog = 2;
 
@@ -3039,6 +3043,7 @@ function KDUpdateVision() {
 	let data = {
 		lights: [],
 		maplights: [],
+		effecttilelights: [],
 	};
 	let l = null;
 	for (let t of Object.keys(KDMapData.Tiles)) {
@@ -3057,9 +3062,43 @@ function KDUpdateVision() {
 			data.lights.push(l);
 		}
 	}
+	for (let location of Object.values(KDMapData.EffectTiles)) {
+		for (let tile of Object.values(location)) {
+			if (tile.duration > 0) {
+				if (tile.lightColor) {
+					l = {x: tile.x, y:tile.y + (tile.yoffset || 0), y_orig: tile.y, brightness: tile.brightness, color: tile.lightColor};
+					data.effecttilelights.push(l);
+				}
+			}
+		}
+	}
 	KinkyDungeonSendEvent("getLights", data);
+
 	KinkyDungeonMakeBrightnessMap(KDMapData.GridWidth, KDMapData.GridHeight, KDMapData.MapBrightness, data.lights, KDVisionUpdate);
 	KinkyDungeonMakeVisionMap(KDMapData.GridWidth, KDMapData.GridHeight, viewpoints, data.lights, KDVisionUpdate, KDMapData.MapBrightness);
+
+
+	if (CamX && KDToggles.Bloom) {
+		let pad = (324-KinkyDungeonGridSizeDisplay)/2;
+		for (let light of [...data.lights, ...data.maplights, ...data.effecttilelights]) {
+			if (KinkyDungeonVisionGet(light.x_orig || light.x, light.y_orig || light.y)) {
+				KDDraw(kdgameboard, kdlightsprites, `${light.x},${light.y}_${light.brightness}_${light.color || 0xffffff}`,
+					KinkyDungeonRootDirectory + "Light.png",
+					(light.x - CamX - CamX_offset + (light.visualxoffset || 0))*KinkyDungeonGridSizeDisplay - pad,
+					(-CamY - CamY_offset + light.y + (light.visualyoffset || 0))*KinkyDungeonGridSizeDisplay - pad,
+					KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2,
+					undefined, {
+						tint: light.color || 0xffffff,
+						alpha: Math.min(1, Math.max(0.001, light.brightness/20)),
+						blendMode: PIXI.BLEND_MODES.ADD,
+						zIndex: -0.1,
+					},
+				);
+			}
+		}
+		KDCullSpritesList(kdlightsprites);
+	}
+
 	KDVisionUpdate = 0;
 }
 
