@@ -2416,7 +2416,7 @@ let KDEventMapSpell = {
 	},
 	"calcInvolOrgasmChance": {
 		"OrgasmResist": (e, spell, data) => {
-			if (KinkyDungeonStatWill >= 0.1) {
+			if (KinkyDungeonStatWill >= 0.1 && !KinkyDungeonPlayerBuffs?.d_OrgasmResist) {
 				data.invol_chance *= e.power;
 			}
 		},
@@ -2608,6 +2608,14 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
+		"OrgasmResistBuff": (e, spell, data) => {
+			if (!KinkyDungeonPlayerBuffs?.d_OrgasmResist)
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
+					{id: "e_OrgasmResist", aura: "#ffffff", aurasprite: "Null", type: "e_OrgasmResist", duration: 2, power: 1, buffSprite: true,
+						click: "OrgasmResist",
+						player: true, enemies: true}
+				);
+		},
 		"ManaRegen": (e, spell, data) => {
 			if (KinkyDungeonStatMana + KinkyDungeonStatManaPool < KinkyDungeonStatManaMax * e.mult && !KinkyDungeonPlayerBuffs.ManaRegenSuspend) {
 				KinkyDungeonChangeMana(e.power, false, 0, false, false);

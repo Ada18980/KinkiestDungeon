@@ -4741,8 +4741,11 @@ KinkyDungeonSpellOrgasmFrequency,Pleasure Training I
 KinkyDungeonSpellDescriptionOrgasmFrequency,"You remain satisfied for much less time after letting go. Letting go costs 50% less stamina."
 KinkyDungeonSpellOrgasmFrequency2,Pleasure Training II
 KinkyDungeonSpellDescriptionOrgasmFrequency2,"You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total) and 50% less willpower."
+
 KinkyDungeonSpellOrgasmResist,Mental Resistance
-KinkyDungeonSpellDescriptionOrgasmResist,"+100 Psychic and Charm Resist. You can no longer let go involuntarily unless your willpower is 0, and willpower drains 70% slower while edged."
+KinkyDungeonSpellDescriptionOrgasmResist,"+100 Psychic and Charm Resist. You can no longer let go involuntarily unless your willpower is 0 (click the buff to toggle), and willpower drains 70% slower while edged."
+KinkyDungeonBuffe_OrgasmResist,"Mental Resistance: You cannot orgasm except by choice. Click to toggle."
+KinkyDungeonBuffd_OrgasmResist,"Mental Resistance: You are allowing yourself to let go if forced to. Click to toggle."
 
 
 KinkyDungeonSpellEdgeMana1,Way of Discipline

@@ -199,4 +199,19 @@ let KDBuffClick = {
 			);
 		}
 	},
+	"OrgasmResist": (buff, entity) => {
+		// Toggle SlimeMimic on/off
+		let b = KinkyDungeonPlayerBuffs.d_OrgasmResist;
+		if (b && b.duration > 0) {
+			b.duration = 0;
+			KinkyDungeonApplyBuffToEntity(entity,
+				{id: "e_OrgasmResist", click: "OrgasmResist", type: "e_OrgasmResist", buffSprite: true, aura: "#ffffff", aurasprite: "Null", duration: 9999, power: 1}
+			);
+		} else {
+			KinkyDungeonApplyBuffToEntity(entity,
+				{id: "d_OrgasmResist", click: "OrgasmResist", type: "d_OrgasmResist", buffSprite: true, aura: "#ffffff", aurasprite: "Null", duration: 9999, power: 1}
+			);
+			if (KinkyDungeonPlayerBuffs.e_OrgasmResist) KinkyDungeonPlayerBuffs.e_OrgasmResist.duration = 0;
+		}
+	},
 };
