@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>6</int>
         <key>texturePackerVersion</key>
-        <string>7.0.2</string>
+        <string>7.0.3</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -195,6 +195,12 @@
             <key type="filename">../Game/Bullets/AreaElectrifyHit.png</key>
             <key type="filename">../Game/Bullets/ArmbinderBolt.png</key>
             <key type="filename">../Game/Bullets/ArmbinderBoltHit.png</key>
+            <key type="filename">../Game/Bullets/ArrowBolt.png</key>
+            <key type="filename">../Game/Bullets/ArrowBoltHit.png</key>
+            <key type="filename">../Game/Bullets/ArrowNormal.png</key>
+            <key type="filename">../Game/Bullets/ArrowNormalHit.png</key>
+            <key type="filename">../Game/Bullets/ArrowVine.png</key>
+            <key type="filename">../Game/Bullets/ArrowVineHit.png</key>
             <key type="filename">../Game/Bullets/AwakenStrikeHit.png</key>
             <key type="filename">../Game/Bullets/BanditBola.png</key>
             <key type="filename">../Game/Bullets/BanditBolaHit.png</key>
@@ -361,14 +367,22 @@
             <key type="filename">../Game/Bullets/ManyCablesHit.png</key>
             <key type="filename">../Game/Bullets/ManyChains.png</key>
             <key type="filename">../Game/Bullets/ManyChainsHit.png</key>
+            <key type="filename">../Game/Bullets/ManyMithrilBolts.png</key>
+            <key type="filename">../Game/Bullets/ManyMithrilBoltsHit.png</key>
+            <key type="filename">../Game/Bullets/ManyObsidianBolts.png</key>
+            <key type="filename">../Game/Bullets/ManyObsidianBoltsHit.png</key>
             <key type="filename">../Game/Bullets/ManyOrbs.png</key>
             <key type="filename">../Game/Bullets/ManyOrbsHit.png</key>
+            <key type="filename">../Game/Bullets/ManyShadowHands.png</key>
+            <key type="filename">../Game/Bullets/ManyShadowHandsHit.png</key>
             <key type="filename">../Game/Bullets/ManySlimes.png</key>
             <key type="filename">../Game/Bullets/ManySlimesHit.png</key>
             <key type="filename">../Game/Bullets/MiniCable.png</key>
             <key type="filename">../Game/Bullets/MiniCableHit.png</key>
             <key type="filename">../Game/Bullets/MiniSlime.png</key>
             <key type="filename">../Game/Bullets/MiniSlimeHit.png</key>
+            <key type="filename">../Game/Bullets/MithrilBolt.png</key>
+            <key type="filename">../Game/Bullets/MithrilBoltHit.png</key>
             <key type="filename">../Game/Bullets/MonolithBeam.png</key>
             <key type="filename">../Game/Bullets/MonolithBeamBeam.png</key>
             <key type="filename">../Game/Bullets/MonolithBeamBeamHit.png</key>
@@ -381,6 +395,12 @@
             <key type="filename">../Game/Bullets/NurseBolaHit.png</key>
             <key type="filename">../Game/Bullets/NurseSyringe.png</key>
             <key type="filename">../Game/Bullets/NurseSyringeHit.png</key>
+            <key type="filename">../Game/Bullets/ObserverBeam.png</key>
+            <key type="filename">../Game/Bullets/ObserverBeamBeam.png</key>
+            <key type="filename">../Game/Bullets/ObserverBeamBeamHit.png</key>
+            <key type="filename">../Game/Bullets/ObserverBeamBeamTrail.png</key>
+            <key type="filename">../Game/Bullets/ObserverBeamBeamTrailHit.png</key>
+            <key type="filename">../Game/Bullets/ObserverBeamHit.png</key>
             <key type="filename">../Game/Bullets/ObsidianBolt.png</key>
             <key type="filename">../Game/Bullets/ObsidianBoltHit.png</key>
             <key type="filename">../Game/Bullets/OrgasmStrikeHit.png</key>
@@ -637,6 +657,7 @@
             <key type="filename">../Game/EffectTiles/SlimeFrozen.png</key>
             <key type="filename">../Game/EffectTiles/Smoke.png</key>
             <key type="filename">../Game/EffectTiles/Sparks.png</key>
+            <key type="filename">../Game/EffectTiles/StarryTrail.png</key>
             <key type="filename">../Game/EffectTiles/Steam.png</key>
             <key type="filename">../Game/EffectTiles/Torch.png</key>
             <key type="filename">../Game/EffectTiles/TorchOrb.png</key>
@@ -648,6 +669,10 @@
             <key type="filename">../Game/EffectTiles/Wire.png</key>
             <key type="filename">../Game/EffectTiles/WireSparks.png</key>
             <key type="filename">../Game/EffectTiles/WireSparksAct.png</key>
+            <key type="filename">../Game/Enemies/Adventurer_Brat_Fighter.png</key>
+            <key type="filename">../Game/Enemies/Adventurer_Dom_Fighter.png</key>
+            <key type="filename">../Game/Enemies/Adventurer_Sub_Fighter.png</key>
+            <key type="filename">../Game/Enemies/Adventurer_Switch_Fighter.png</key>
             <key type="filename">../Game/Enemies/AirMote.png</key>
             <key type="filename">../Game/Enemies/Alchemist.png</key>
             <key type="filename">../Game/Enemies/AlchemistPet.png</key>
@@ -787,8 +812,14 @@
             <key type="filename">../Game/Enemies/ConjurerTickler.png</key>
             <key type="filename">../Game/Enemies/CorruptedAdventurer.png</key>
             <key type="filename">../Game/Enemies/Cuffs.png</key>
+            <key type="filename">../Game/Enemies/CustomSprite/Alisa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Myrtrice.png</key>
+            <key type="filename">../Game/Enemies/CustomSprite/Parov.png</key>
+            <key type="filename">../Game/Enemies/CustomSprite/Rook.png</key>
+            <key type="filename">../Game/Enemies/CustomSprite/Selly.png</key>
+            <key type="filename">../Game/Enemies/CustomSpriteBound/Alisa.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Myrtrice.png</key>
+            <key type="filename">../Game/Enemies/CustomSpriteBound/Rook.png</key>
             <key type="filename">../Game/Enemies/Cyborg.png</key>
             <key type="filename">../Game/Enemies/Decoy.png</key>
             <key type="filename">../Game/Enemies/Demon.png</key>
@@ -835,6 +866,8 @@
             <key type="filename">../Game/Enemies/EncasedDoll.png</key>
             <key type="filename">../Game/Enemies/EncasedFactoryDoll.png</key>
             <key type="filename">../Game/Enemies/EnforcerBot.png</key>
+            <key type="filename">../Game/Enemies/EpicenterCursed.png</key>
+            <key type="filename">../Game/Enemies/EpicenterCursed2.png</key>
             <key type="filename">../Game/Enemies/FactoryDoll.png</key>
             <key type="filename">../Game/Enemies/FaithfulZombie.png</key>
             <key type="filename">../Game/Enemies/FastSlime.png</key>
@@ -865,6 +898,7 @@
             <key type="filename">../Game/Enemies/JungleDryad.png</key>
             <key type="filename">../Game/Enemies/LatexCube.png</key>
             <key type="filename">../Game/Enemies/LatexCubeHidden.png</key>
+            <key type="filename">../Game/Enemies/LatexCubeMetal.png</key>
             <key type="filename">../Game/Enemies/LatexCubeSmall.png</key>
             <key type="filename">../Game/Enemies/LatexCubeSmallHidden.png</key>
             <key type="filename">../Game/Enemies/LearnedRope.png</key>
@@ -899,6 +933,7 @@
             <key type="filename">../Game/Enemies/Ninja.png</key>
             <key type="filename">../Game/Enemies/NinjaStalker.png</key>
             <key type="filename">../Game/Enemies/Nurse.png</key>
+            <key type="filename">../Game/Enemies/Observer.png</key>
             <key type="filename">../Game/Enemies/OldDrone.png</key>
             <key type="filename">../Game/Enemies/OldTapeDrone.png</key>
             <key type="filename">../Game/Enemies/OrbGuardian.png</key>
@@ -962,6 +997,7 @@
             <key type="filename">../Game/Enemies/UnforseenRope.png</key>
             <key type="filename">../Game/Enemies/VinePlant.png</key>
             <key type="filename">../Game/Enemies/Wall.png</key>
+            <key type="filename">../Game/Enemies/WallDoor.png</key>
             <key type="filename">../Game/Enemies/Water.png</key>
             <key type="filename">../Game/Enemies/WaterMote.png</key>
             <key type="filename">../Game/Enemies/WitchChain.png</key>
@@ -984,6 +1020,10 @@
             <key type="filename">../Game/Enemies/WolfTapeDrones.png</key>
             <key type="filename">../Game/Enemies/Wolfgirl.png</key>
             <key type="filename">../Game/Enemies/WolfgirlPet.png</key>
+            <key type="filename">../Game/EnemiesBound/Adventurer_Brat.png</key>
+            <key type="filename">../Game/EnemiesBound/Adventurer_Dom.png</key>
+            <key type="filename">../Game/EnemiesBound/Adventurer_Sub.png</key>
+            <key type="filename">../Game/EnemiesBound/Adventurer_Switch.png</key>
             <key type="filename">../Game/EnemiesBound/Alchemist.png</key>
             <key type="filename">../Game/EnemiesBound/AlchemistPet.png</key>
             <key type="filename">../Game/EnemiesBound/Alkahestor.png</key>
@@ -1004,6 +1044,7 @@
             <key type="filename">../Game/EnemiesBound/CorruptedAdventurer.png</key>
             <key type="filename">../Game/EnemiesBound/Cyborg.png</key>
             <key type="filename">../Game/EnemiesBound/Demon.png</key>
+            <key type="filename">../Game/EnemiesBound/Deputy.png</key>
             <key type="filename">../Game/EnemiesBound/Dollmaker.png</key>
             <key type="filename">../Game/EnemiesBound/DollmakerBoss.png</key>
             <key type="filename">../Game/EnemiesBound/Dragon.png</key>
@@ -1121,6 +1162,7 @@
             <key type="filename">../Game/EnemiesBound/Jailer.png</key>
             <key type="filename">../Game/EnemiesBound/JungleDryad.png</key>
             <key type="filename">../Game/EnemiesBound/LesserSkeleton.png</key>
+            <key type="filename">../Game/EnemiesBound/Librarian.png</key>
             <key type="filename">../Game/EnemiesBound/MageZombie.png</key>
             <key type="filename">../Game/EnemiesBound/Maid.png</key>
             <key type="filename">../Game/EnemiesBound/MaidforceHead.png</key>
@@ -1141,6 +1183,7 @@
             <key type="filename">../Game/EnemiesBound/SlimeAdv.png</key>
             <key type="filename">../Game/EnemiesBound/SlimeEnthusiast.png</key>
             <key type="filename">../Game/EnemiesBound/TalismanZombie.png</key>
+            <key type="filename">../Game/EnemiesBound/TapedDoll.png</key>
             <key type="filename">../Game/EnemiesBound/Witch.png</key>
             <key type="filename">../Game/EnemiesBound/WitchChain.png</key>
             <key type="filename">../Game/EnemiesBound/WitchEarth.png</key>
@@ -1186,6 +1229,8 @@
             <key type="filename">../Game/FloorGeneric/ChestShadowOpen.png</key>
             <key type="filename">../Game/FloorGeneric/ChestSilver.png</key>
             <key type="filename">../Game/FloorGeneric/ChestSilverOpen.png</key>
+            <key type="filename">../Game/FloorGeneric/Chests/Kitty.png</key>
+            <key type="filename">../Game/FloorGeneric/Chests/KittyOpen.png</key>
             <key type="filename">../Game/FloorGeneric/Conveyor/Conveyor.png</key>
             <key type="filename">../Game/FloorGeneric/Conveyor/Down.png</key>
             <key type="filename">../Game/FloorGeneric/Conveyor/DownLeft.png</key>
@@ -1429,11 +1474,37 @@
             <key type="filename">../Game/Floors/Floor_jng/ShrineBroken.png</key>
             <key type="filename">../Game/Floors/Floor_jng/ShrineC.png</key>
             <key type="filename">../Game/Floors/Floor_jng/ShrineEmpty.png</key>
-            <key type="filename">../Game/Floors/Floor_jng/StairsDown.png</key>
-            <key type="filename">../Game/Floors/Floor_jng/StairsUp.png</key>
             <key type="filename">../Game/Floors/Floor_jng/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_jng/Wall.png</key>
             <key type="filename">../Game/Floors/Floor_jng/WallVert.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/Barrel.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/Bars.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/BarsVert.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/BarsVertCont.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/Brickwork.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/Doodad.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/Door.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/DoorOpen.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/DoorVert.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/DoorVertCont.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/DoorVertOpen.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/DoorVertOpenCont.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/Floor.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/Grate.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/GrateHoriz.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/GrateVert.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/MimicBlock.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/OrbEmpty.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/RubbleLooted.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/Shrine.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/ShrineBroken.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/ShrineC.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/ShrineEmpty.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/StairsDown.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/StairsUp.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/Trap.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_lib/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_lib/Bars.png</key>
             <key type="filename">../Game/Floors/Floor_lib/BarsVert.png</key>
@@ -1493,6 +1564,57 @@
             <key type="filename">../Game/Floors/Floor_ore/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_ore/Wall.png</key>
             <key type="filename">../Game/Floors/Floor_ore/WallVert.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/Barrel.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/Brickwork.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/Doodad.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/Door.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/DoorOpen.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/DoorVert.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/DoorVertCont.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/DoorVertOpen.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/DoorVertOpenCont.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/Floor.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/Grate.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/GrateHoriz.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/GrateVert.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/MimicBlock.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/OrbEmpty.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/RubbleLooted.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/Shrine.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/ShrineBroken.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/ShrineC.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/ShrineEmpty.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/Tile.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/Trap.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/WallVert.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/Barrel.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/Bars.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/BarsOld.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/BarsVert.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/BarsVertCont.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/Brickwork.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/Doodad.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/Door.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/DoorOpen.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/DoorVert.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/DoorVertCont.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/DoorVertOpen.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/DoorVertOpenCont.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/Floor.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/Grate.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/GrateHoriz.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/GrateVert.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/MimicBlock.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/OrbEmpty.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/RubbleLooted.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/Shrine.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/ShrineBroken.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/ShrineC.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/ShrineEmpty.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/Trap.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_tmb/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_tmb/Bars.png</key>
             <key type="filename">../Game/Floors/Floor_tmb/BarsOld.png</key>
@@ -1552,31 +1674,27 @@
             <key type="filename">../Game/Floors/Floor_tmp/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/Wall.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/WallVert.png</key>
-            <key type="filename">../Game/Icons/HeartEmpty.png</key>
-            <key type="filename">../Game/Icons/HeartFull.png</key>
-            <key type="filename">../Game/Icons/HeartHalf.png</key>
-            <key type="filename">../Game/Icons/ManaEmpty.png</key>
-            <key type="filename">../Game/Icons/ManaFull.png</key>
-            <key type="filename">../Game/Icons/ManaHalf.png</key>
-            <key type="filename">../Game/Icons/StaminaEmpty.png</key>
-            <key type="filename">../Game/Icons/StaminaFull.png</key>
-            <key type="filename">../Game/Icons/StaminaHalf.png</key>
             <key type="filename">../Game/Items/AncientPowerSource.png</key>
             <key type="filename">../Game/Items/AncientPowerSourceSpent.png</key>
             <key type="filename">../Game/Items/Arbiter.png</key>
             <key type="filename">../Game/Items/ArcaneCrystal.png</key>
             <key type="filename">../Game/Items/Axe.png</key>
+            <key type="filename">../Game/Items/BagOfGoodies.png</key>
             <key type="filename">../Game/Items/Blaster.png</key>
             <key type="filename">../Game/Items/BlueKey.png</key>
             <key type="filename">../Game/Items/Bola.png</key>
             <key type="filename">../Game/Items/BoltCutters.png</key>
             <key type="filename">../Game/Items/Bomb.png</key>
             <key type="filename">../Game/Items/BondageBuster.png</key>
+            <key type="filename">../Game/Items/Bow.png</key>
             <key type="filename">../Game/Items/Brownies.png</key>
             <key type="filename">../Game/Items/ChainSword.png</key>
             <key type="filename">../Game/Items/Claymore.png</key>
             <key type="filename">../Game/Items/Crop.png</key>
+            <key type="filename">../Game/Items/Crossbow.png</key>
             <key type="filename">../Game/Items/DarkKatana.png</key>
+            <key type="filename">../Game/Items/DildoBat.png</key>
+            <key type="filename">../Game/Items/DildoBatPlus.png</key>
             <key type="filename">../Game/Items/Dirk.png</key>
             <key type="filename">../Game/Items/DollID.png</key>
             <key type="filename">../Game/Items/Dragonslaver.png</key>
@@ -1608,6 +1726,7 @@
             <key type="filename">../Game/Items/MagicAxe.png</key>
             <key type="filename">../Game/Items/MagicFlail.png</key>
             <key type="filename">../Game/Items/MagicHammer.png</key>
+            <key type="filename">../Game/Items/MagicRope.png</key>
             <key type="filename">../Game/Items/MagicSpear.png</key>
             <key type="filename">../Game/Items/MagicSword.png</key>
             <key type="filename">../Game/Items/ManaOrb.png</key>
@@ -1651,14 +1770,21 @@
             <key type="filename">../Game/Items/StaffIncineration.png</key>
             <key type="filename">../Game/Items/StaffPermafrost.png</key>
             <key type="filename">../Game/Items/StaffStorm.png</key>
+            <key type="filename">../Game/Items/StaffTape.png</key>
             <key type="filename">../Game/Items/StormBreaker.png</key>
             <key type="filename">../Game/Items/Sword.png</key>
             <key type="filename">../Game/Items/TheEncaser.png</key>
             <key type="filename">../Game/Items/Torch.png</key>
             <key type="filename">../Game/Items/Unarmed.png</key>
+            <key type="filename">../Game/Items/VibeRemote.png</key>
             <key type="filename">../Game/Items/VibeWand.png</key>
             <key type="filename">../Game/Items/WaterRune.png</key>
             <key type="filename">../Game/Lock.png</key>
+            <key type="filename">../Game/ShopBasic/3Bola.png</key>
+            <key type="filename">../Game/ShopBasic/3Bomb.png</key>
+            <key type="filename">../Game/ShopBasic/BlueKey.png</key>
+            <key type="filename">../Game/ShopBasic/Lockpick.png</key>
+            <key type="filename">../Game/ShopBasic/RedKey.png</key>
             <key type="filename">../Game/ShrineAura.png</key>
             <key type="filename">../Game/SpellReady.png</key>
             <key type="filename">../Game/Spells/AirMote.png</key>
@@ -1675,10 +1801,13 @@
             <key type="filename">../Game/Spells/ApprenticeLightning.png</key>
             <key type="filename">../Game/Spells/ApprenticeMagic.png</key>
             <key type="filename">../Game/Spells/ApprenticeWater.png</key>
+            <key type="filename">../Game/Spells/ArrowFireSpell.png</key>
+            <key type="filename">../Game/Spells/ArrowVineSpell.png</key>
             <key type="filename">../Game/Spells/Awaken.png</key>
             <key type="filename">../Game/Spells/BigBoulderLaunch.png</key>
             <key type="filename">../Game/Spells/Blink.png</key>
             <key type="filename">../Game/Spells/Bomb.png</key>
+            <key type="filename">../Game/Spells/Bondage.png</key>
             <key type="filename">../Game/Spells/BoulderKick.png</key>
             <key type="filename">../Game/Spells/BoulderLaunch.png</key>
             <key type="filename">../Game/Spells/Camo.png</key>
@@ -1821,6 +1950,8 @@
             <key type="filename">../Game/Target.png</key>
             <key type="filename">../Game/TargetMove.png</key>
             <key type="filename">../Game/TargetSpell.png</key>
+            <key type="filename">../Game/UI/ItemAura.png</key>
+            <key type="filename">../Game/UI/ItemAuraBG.png</key>
             <key type="filename">../Game/WarningAlly.png</key>
             <key type="filename">../Game/WarningBacking.png</key>
             <key type="filename">../Game/WarningBackingHighlight.png</key>
@@ -1861,6 +1992,7 @@
             <key type="filename">../Game/Aura/Slimed.png</key>
             <key type="filename">../Game/Aura/Toy.png</key>
             <key type="filename">../Game/UI/DollmakerTarget.png</key>
+            <key type="filename">../Game/Vision.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -1895,6 +2027,7 @@
             <key type="filename">../Game/Locks/White.png</key>
             <key type="filename">../Game/Poses/SetPose.png</key>
             <key type="filename">../Game/Struggle.png</key>
+            <key type="filename">../Game/UI/XRay.png</key>
             <key type="filename">../Game/UseTool.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -1927,6 +2060,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/Buffs/BlankBuff.png</key>
+            <key type="filename">../Game/Buffs/BuffDots.png</key>
             <key type="filename">../Game/Buffs/Denied.png</key>
             <key type="filename">../Game/Buffs/Edged.png</key>
             <key type="filename">../Game/Buffs/Help.png</key>
@@ -1970,17 +2104,26 @@
             <key type="filename">../Game/Buffs/buff/buffChillWalk.png</key>
             <key type="filename">../Game/Buffs/buff/buffChilled.png</key>
             <key type="filename">../Game/Buffs/buff/buffConduction.png</key>
+            <key type="filename">../Game/Buffs/buff/buffCorrupted.png</key>
+            <key type="filename">../Game/Buffs/buff/buffCursed.png</key>
+            <key type="filename">../Game/Buffs/buff/buffCursedDistract.png</key>
+            <key type="filename">../Game/Buffs/buff/buffCursingCircle.png</key>
             <key type="filename">../Game/Buffs/buff/buffCutting.png</key>
+            <key type="filename">../Game/Buffs/buff/buffDildoBatBuff.png</key>
             <key type="filename">../Game/Buffs/buff/buffDisenchantSelf.png</key>
             <key type="filename">../Game/Buffs/buff/buffDistractionCast.png</key>
             <key type="filename">../Game/Buffs/buff/buffDrenched.png</key>
             <key type="filename">../Game/Buffs/buff/buffEmpower.png</key>
+            <key type="filename">../Game/Buffs/buff/buffForcedSubmission.png</key>
             <key type="filename">../Game/Buffs/buff/buffGreaterInvisibility.png</key>
             <key type="filename">../Game/Buffs/buff/buffHaunted.png</key>
             <key type="filename">../Game/Buffs/buff/buffIgnite.png</key>
             <key type="filename">../Game/Buffs/buff/buffInvisibility.png</key>
             <key type="filename">../Game/Buffs/buff/buffLeatherBurst.png</key>
             <key type="filename">../Game/Buffs/buff/buffLightningRod.png</key>
+            <key type="filename">../Game/Buffs/buff/buffNovicePet.png</key>
+            <key type="filename">../Game/Buffs/buff/buffNovicePetBad.png</key>
+            <key type="filename">../Game/Buffs/buff/buffNovicePetVeryBad.png</key>
             <key type="filename">../Game/Buffs/buff/buffPoisonDagger.png</key>
             <key type="filename">../Game/Buffs/buff/buffScrollArms.png</key>
             <key type="filename">../Game/Buffs/buff/buffScrollLegs.png</key>
@@ -2000,6 +2143,7 @@
             <key type="filename">../Game/Buffs/buff/buffTabletWill.png</key>
             <key type="filename">../Game/Buffs/buff/buffUnsteady.png</key>
             <key type="filename">../Game/Buffs/buff/buffUnsteady2.png</key>
+            <key type="filename">../Game/Buffs/buff/buffd_SlimeMimic.png</key>
             <key type="filename">../Game/Buffs/damageresist.png</key>
             <key type="filename">../Game/Buffs/debuff.png</key>
             <key type="filename">../Game/Buffs/dmg.png</key>
@@ -2102,6 +2246,8 @@
             </struct>
             <key type="filename">../Game/Bullets/ArcaneStrikeHit.png</key>
             <key type="filename">../Game/Bullets/AreaElectrify.png</key>
+            <key type="filename">../Game/Bullets/ArrowFire.png</key>
+            <key type="filename">../Game/Bullets/ArrowFireHit.png</key>
             <key type="filename">../Game/Bullets/BearTrapStrike.png</key>
             <key type="filename">../Game/Bullets/BearTrapStrikeHit.png</key>
             <key type="filename">../Game/Bullets/BigBoulder.png</key>
@@ -2242,6 +2388,7 @@
             <key type="filename">../Game/Bullets/ZoneOfExcitementHit.png</key>
             <key type="filename">../Game/Bullets/ZoneOfPurity.png</key>
             <key type="filename">../Game/Bullets/ZoneOfPurityHit.png</key>
+            <key type="filename">../Game/VisionNeg.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -2260,6 +2407,10 @@
             <key type="filename">../Game/Bullets/BigThunderstormHit.png</key>
             <key type="filename">../Game/Bullets/CrushingFate.png</key>
             <key type="filename">../Game/Bullets/CrushingFateHit.png</key>
+            <key type="filename">../Game/Bullets/CursingCircle.png</key>
+            <key type="filename">../Game/Bullets/CursingCircle2.png</key>
+            <key type="filename">../Game/Bullets/CursingCircle2Hit.png</key>
+            <key type="filename">../Game/Bullets/CursingCircleHit.png</key>
             <key type="filename">../Game/Bullets/Earthquake.png</key>
             <key type="filename">../Game/Bullets/EarthquakeHit.png</key>
             <key type="filename">../Game/Bullets/FocusedFlash.png</key>
@@ -2307,6 +2458,8 @@
                 <false/>
             </struct>
             <key type="filename">../Game/ChangeSpell.png</key>
+            <key type="filename">../Game/UI/Expand.png</key>
+            <key type="filename">../Game/UI/Shrink.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -2374,6 +2527,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/DialogBackground.png</key>
+            <key type="filename">../Game/Logo.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -2401,21 +2555,6 @@
                 <rect>22,9,43,18</rect>
                 <key>scale9Paddings</key>
                 <rect>22,9,43,18</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Game/Fog/Fog.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>64,64,128,128</rect>
-                <key>scale9Paddings</key>
-                <rect>64,64,128,128</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -2483,6 +2622,7 @@
             <key type="filename">../Game/Outfits/Maid.png</key>
             <key type="filename">../Game/Outfits/OutfitDefault.png</key>
             <key type="filename">../Game/Outfits/Wolfgirl.png</key>
+            <key type="filename">../Game/ShopBasic/MaidUniform.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -2524,6 +2664,21 @@
                 <rect>11,11,22,22</rect>
                 <key>scale9Paddings</key>
                 <rect>11,11,22,22</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/Lighting.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>81,81,162,162</rect>
+                <key>scale9Paddings</key>
+                <rect>81,81,162,162</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -2573,6 +2728,22 @@
                 <rect>5,5,10,10</rect>
                 <key>scale9Paddings</key>
                 <rect>5,5,10,10</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/Particles/Shockwave.png</key>
+            <key type="filename">../Game/Particles/ShockwaveEnemy.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>128,128,256,256</rect>
+                <key>scale9Paddings</key>
+                <rect>128,128,256,256</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -2809,6 +2980,22 @@
                 <rect>4,9,7,17</rect>
                 <key>scale9Paddings</key>
                 <rect>4,9,7,17</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/UI/ZoomIn.png</key>
+            <key type="filename">../Game/UI/ZoomOut.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,9,19,18</rect>
+                <key>scale9Paddings</key>
+                <rect>9,9,19,18</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

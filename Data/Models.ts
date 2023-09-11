@@ -213,7 +213,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			SpriteList: new Map(),
 			Matrix: Object.assign([], Mesh.geometry.getBuffer('aVertexPosition').data),
 		};
-		console.log("Matrix: " + Container.Matrix);
+		//console.log("Matrix: " + Container.Matrix);
 		Container.Mesh.zIndex = 1;
 		Container.Mesh.pivot.set(MODELWIDTH*MODEL_SCALE * 1 * Zoom, MODELHEIGHT*MODEL_SCALE * 1 * Zoom);
 		created = true;
