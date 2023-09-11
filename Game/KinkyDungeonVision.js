@@ -525,7 +525,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 										(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad,
 										(-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
 										KinkyDungeonGridSizeDisplay/2 + pad*2,
-										KinkyDungeonGridSizeDisplay + pad*2);
+										KinkyDungeonGridSizeDisplay + pad);
 									kdgamefog.endFill();
 								}
 								if (!v_tr) {
@@ -534,7 +534,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 										(-CamX_offset + X + 0.5)*KinkyDungeonGridSizeDisplay - pad,
 										(-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
 										KinkyDungeonGridSizeDisplay/2 + pad*2,
-										KinkyDungeonGridSizeDisplay + pad*2);
+										KinkyDungeonGridSizeDisplay + pad);
 									kdgamefog.endFill();
 								}
 								if (!v_tu && !v_tdl && !v_tdr) {

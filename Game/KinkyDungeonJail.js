@@ -282,9 +282,11 @@ function KinkyDungeonStartChase(enemy, Type, faction, force) {
 	} else if (KDLocalChaseTypes.includes(Type) && (enemy || faction)) {
 		for (let e of KDMapData.Entities) {
 			if (KDHostile(e) && KDFactionAllied(faction ? faction : KDGetFaction(enemy), e) && (!enemy || !enemy.Enemy.tags.peaceful) && KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, 7, 8, false, false)) {
-				if (!e.hostile) e.hostile = KDMaxAlertTimerAggro;
-				else KDMakeHostile(e);//e.hostile = Math.max(KDMaxAlertTimerAggro, e.hostile);
-				e.ceasefire = undefined;
+				if (!enemy || e == enemy || KDEnemyCanSignalOthers(enemy)) {
+					if (!e.hostile) e.hostile = KDMaxAlertTimerAggro;
+					else KDMakeHostile(e);//e.hostile = Math.max(KDMaxAlertTimerAggro, e.hostile);
+					e.ceasefire = undefined;
+				}
 			}
 		}
 	}
