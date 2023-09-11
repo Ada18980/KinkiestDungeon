@@ -1,5 +1,9 @@
 CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1000 lines of changelogs)
 
+4.64 (Sep 2023)
+- Rope Snare has been renamed to Rope Rune, standardized with the other runes, weaker now but AoE and roots in place instead of stuns
+- Rogue now starts with an ability that makes traps not channel
+
 4.63 (Sep 2023)
 - Trainee has been buffed: Everything now restores a baseline amount, plus restoring the mana pool if you have willpower.
 - Mental Resistance can now toggle the orgasm prevention effect (QoL)

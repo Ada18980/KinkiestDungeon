@@ -68,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "ManaRecharge", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
+		["Bondage", "ManaRecharge", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "RogueTraps", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
 	],
 
 	//Page 1: Elements
@@ -172,6 +172,9 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "NovicePet2", tags: ["mana", "utility"], spellPointCost: 1, school: "Elements", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet1", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "NovicePet3", tags: ["mana", "utility"], spellPointCost: 0, school: "Elements", manacost: 0, components: [], prerequisite: "NovicePet2", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "NovicePetX", tags: ["mana", "utility"], spellPointCost: 3, school: "Elements", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet3", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+
+
+
 
 		{name: "ManaRegen", tags: ["mana", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "ManaRegenSuspend", trigger: "playerCast", time:6},
@@ -481,15 +484,15 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			components: ["Verbal"], noTargetEnemies: true, noTargetPlayer: true, level:1, type:"hit", noSprite: true, onhit:"summon",
 			summon: [{name: "StaticSphere", count: 1, time: 12, bound: true}], power: 1.5, time: 12, delay: -1, range: 6, size: 1, aoe: 0, lifetime: 1, damage: "inert"},
 
-		{name: "LightningRune", castCondition: "noStationaryBullet", tags: ["electric", "offense", "defense", "utility"], prerequisite: "ApprenticeLightning", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 2,
+		{name: "LightningRune", castCondition: "noStationaryBullet", tags: ["electric", "offense", "defense", "utility", "trap", "trapReducible"], prerequisite: "ApprenticeLightning", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 2,
 			components: ["Legs"], noTargetPlayer: true, CastInWalls: false, level:1, type:"inert",
 			onhit:"aoe", time: 5, delay: 3, power: 4.5, range: 2.99, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "LightningRuneStrike", target: "onhit", directional:false, offset: false}, channel: 5},
-		{name: "FlameRune", castCondition: "noStationaryBullet", tags: ["fire", "offense", "defense"], prerequisite: "ApprenticeFire", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 2,
+		{name: "FlameRune", castCondition: "noStationaryBullet", tags: ["fire", "offense", "defense", "trap", "trapReducible"], prerequisite: "ApprenticeFire", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 2,
 			components: ["Legs"], noTargetPlayer: true, CastInWalls: false, level:1, type:"inert",
 			onhit:"aoe", delay: 3, power: 5.5, range: 2.99, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "FlameRuneStrike", target: "onhit", directional:false, offset: false}, channel: 5},
-		{name: "FreezeRune", castCondition: "noStationaryBullet", tags: ["ice", "offense", "defense", "utility"], prerequisite: "ApprenticeIce", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 5,
+		{name: "FreezeRune", castCondition: "noStationaryBullet", tags: ["ice", "offense", "defense", "utility", "trap", "trapReducible"], prerequisite: "ApprenticeIce", noise: 0, sfx: "Fwoosh", school: "Elements", spellPointCost: 1, manacost: 5,
 			components: ["Legs"], noTargetPlayer: true, CastInWalls: false, level:1, type:"inert",
 			onhit:"aoe", time: 30, delay: 3, power: 3, range: 2.99, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "FreezeRuneStrike", target: "onhit", directional:false, offset: false}, channel: 5},
@@ -546,9 +549,11 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "TickleCloud", color: "#ffffff", prerequisite: "ApprenticeSummon", tags: ["tickle", "aoe", "dot", "offense", "utility", "denial"], piercing: true, noUniqueHits: true, noise: 1, landsfx: "Tickle", hitsfx: "Tickle", school: "Elements", manacost: 2,
 			components: ["Arms"], hitSpin: 1, bulletSpin: 0.4, level:1, type:"dot", onhit:"aoe", delay: 9, power: 0.5, range: 3.99, size: 1, aoe: 0.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"},
 		},//, distractEff: 2.0
-		{name: "Snare", color: "#ff8899", castCondition: "noStationaryBullet", prerequisite: "ApprenticeRope", tags: ["rope", "binding", "denial", "utility", "offense"], sfx: "FireSpell",
-			school: "Conjure", manacost: 2, components: ["Legs"], noTargetEnemies: true, level:1, type:"inert", onhit:"lingering", lifetime:90, bindType: "Rope",
-			time: 8, bind: 15, delay: 5, range: 1.5, damage: "stun", playerEffect: {name: "MagicRope", time: 3, count: 3}}, // Creates a magic rope trap that creates magic ropes on anything that steps on it. They are invisible once placed. Enemies get rooted, players get fully tied!
+		{name: "Snare", color: "#ff8899", castCondition: "noStationaryBullet", tags: ["rope", "binding", "denial", "utility", "offense", "trap", "trapReducible"],
+			prerequisite: "ApprenticeRope", noise: 0, sfx: "Fwoosh", school: "Conjure", spellPointCost: 1, manacost: 2,
+			components: ["Legs"], noTargetPlayer: true, CastInWalls: false, level:1, type:"inert",
+			onhit:"aoe", delay: 3, power: 5.5, range: 2.99, size: 1, lifetime: 1, damage: "inert",
+			spellcast: {spell: "RopeRuneStrike", target: "onhit", directional:false, offset: false}, channel: 5},
 
 		{name: "LeatherBurst", prerequisite: "ApprenticeLeather", tags: ["buff", "offense", "binding"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: [], level:1, passive: true, type:"",
 			events: [{type: "LeatherBurst", trigger: "playerCast", power: 3}]},
@@ -851,6 +856,10 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{trigger: "canSprint", type: "Vault"},
 		]},
 
+		{name: "RogueTraps", tags: ["utility"], school: "Illusion", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "RogueTraps", trigger: "beforeCast"},
+		]},
+
 		{name: "Analyze", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 2.5, defaultOff: true, cancelAutoMove: true, costOnToggle: true, components: [], level:1, type:"passive",
 			events: [{type: "Analyze", trigger: "toggleSpell", power: 5, time: 20}, {type: "Analyze", trigger: "tick", power: 5, time: 20}]},
 
@@ -1150,15 +1159,27 @@ let KinkyDungeonSpellListEnemies = [
 		hitColor: 0x8888ff, hitLight: 6, components: ["Arms"], level:1, type:"hit", noTerrainHit: true, onhit:"aoe", time: 1, delay: 1, power: 2.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
 	{name: "StaticSphereStrike", sfx: "Shock", manacost: 2, bulletColor: 0x8888ff, bulletLight: 2,
 		hitColor: 0x8888ff, hitLight: 6, components: ["Verbal"], level:1, type:"hit", noTerrainHit: true, onhit:"aoe", time: 1, delay: 1, power: 1.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
-	{name: "LightningRuneStrike", bulletColor: 0x8888ff, bulletLight: 2,
+	{name: "LightningRuneStrike", bulletColor: 0x8888ff, bulletLight: 2, tags: ["electric", "trap"],
+		hideWarnings: true,
 		effectTileDurationMod: 2, effectTile: {
 			name: "Sparks",
 			duration: 3,
 		},
 		hitColor: 0x8888ff, hitLight: 6, hitsfx: "Shock", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", time: 4, delay: 300, power: 4.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
-	{name: "FlameRuneStrike", bulletColor: 0xb83716, bulletLight: 2,
+	{name: "FlameRuneStrike", bulletColor: 0xb83716, bulletLight: 2, tags: ["fire", "trap"],
+		hideWarnings: true,
 		hitColor: 0xe64539, hitLight: 6, hitsfx: "Lightning", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", delay: 300, power: 5.5, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "fire"},
-	{name: "FreezeRuneStrike", hitsfx: "Freeze", manacost: 2, bulletColor: 0x8888ff, bulletLight: 2,
+	{name: "RopeRuneStrike", bulletColor: 0xff73ef, bulletLight: 2, tags: ["rope", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "Ropes",
+			duration: 20,
+		},
+		hitColor: 0xff73ef, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
+	{name: "FreezeRuneStrike", hitsfx: "Freeze", manacost: 2, bulletColor: 0x8888ff, bulletLight: 2, tags: ["ice", "trap"],
+		hideWarnings: true,
 		hitColor: 0x8888ff, hitLight: 6, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", time: 30, delay: 300, power: 3.0, range: 2, size: 3, aoe: 0.5, lifetime: 1, damage: "ice"},
 	{name: "EarthformSingle", tags: ["earth", "utility", "summon"], noSprite: true, minRange: 0, landsfx: "Bones", hideUnlearnable: true, manacost: 4, components: ["Legs"], prerequisite: ["Earthform"],
 		level:1, type:"hit", onhit:"summon", summon: [{name: "EarthenMonolith", faction: "Rock" , count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: 1, range: 4, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},

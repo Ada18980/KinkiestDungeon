@@ -182,7 +182,7 @@ let KDEventMapInventory = {
 		}
 	},
 	"afterCalcManaPool": {
-		"MultManaPoolRegen": (e, spell, data) => {
+		"MultManaPoolRegen": (e, item, data) => {
 			data.manaPoolRegen *= e.power;
 		},
 	},
@@ -2350,6 +2350,13 @@ let KDEventMapSpell = {
 			}
 		}
 	},
+	"beforeCast": {
+		"RogueTraps": (e, spell, data) => {
+			if (data.spell && data.spell.tags?.includes("trapReducible") && data.channel) {
+				data.channel = 0;
+			}
+		}
+	},
 	"calcComp": {
 		"OneWithSlime": (e, spell, data) => {
 			if (data.spell && data.spell.tags && data.failed.length > 0 && (data.spell.tags.includes("slime") || data.spell.tags.includes("latex"))) {
@@ -2421,6 +2428,7 @@ let KDEventMapSpell = {
 			}
 		},
 	},
+
 	"orgasm": {
 		"RestoreOrgasmMana": (e, spell, data) => {
 			if (KinkyDungeonStatWill > 0) {
