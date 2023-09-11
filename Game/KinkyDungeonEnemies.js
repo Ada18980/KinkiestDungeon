@@ -5264,7 +5264,8 @@ function KDCaptureNearby(enemy) {
  */
 function KinkyDungeonGetLoadoutForEnemy(enemy, guaranteed) {
 	if (enemy.Enemy.tags.noshop) return "";
-	let loadout_list = [];
+	/** @type {Record<string, number>} */
+	let loadout_list = {};
 	for (let s of Object.values(KDLoadouts)) {
 		let end = false;
 		if (s.tags) {
@@ -5303,12 +5304,20 @@ function KinkyDungeonGetLoadoutForEnemy(enemy, guaranteed) {
 		}
 		if (!hasTag) end = true;
 		if (!hasTag2) end = true;
-		if (!end && (guaranteed || !s.chance || KDRandom() < s.chance)) {
-			for (let i = 0; i < (s.multiplier || 1); i++)
-				loadout_list.push(s.name);
+		if (!end) { // (guaranteed || !s.chance || KDRandom() < s.chance)
+			/*for (let i = 0; i < (s.multiplier || 1); i++)
+				loadout_list.push(s.name);*/
+			loadout_list[s.name] = (s. chance || 1) * (s.multiplier || 1);
 		}
 	}
-	if (loadout_list.length > 0) return loadout_list[Math.floor(KDRandom() * loadout_list.length)];
+	if (!guaranteed) {
+		loadout_list.Null = 1;
+	}
+	//if (Object.entries() > 0) {
+	let ret = KDGetByWeight(loadout_list);
+	if (ret != "Null") return ret;
+	//}
+	//return loadout_list[Math.floor(KDRandom() * loadout_list.length)];
 	return "";
 }
 

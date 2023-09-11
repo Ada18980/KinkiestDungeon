@@ -10,7 +10,7 @@ let KDLoadouts = {
 		tags: ["elite"],
 		singletag: ["human", "elf", "alchemist", "dragon", "witch", "apprentice", "mummy", "jailer"],
 		forbidtags: ["submissive", "gagged"],
-		chance: 0.1,
+		chance: 0.5,
 		items: ["RedKey"],
 	},
 	"thief": {
@@ -50,7 +50,7 @@ let KDLoadouts = {
 		tags: ["alchemist"],
 		singletag: ["alchemist"],
 		forbidtags: ["submissive", "gagged"],
-		chance: 0.35,
+		chance: 0.5,
 		items: ["PotionMana"],
 	},
 	"magus": {
@@ -58,9 +58,9 @@ let KDLoadouts = {
 		tags: [],
 		singletag: ["dressmaker", "elf", "witch", "apprentice", "mummy", "fungal"],
 		forbidtags: ["submissive", "gagged"],
-		chance: 0.01,
+		chance: 0.04,
 		multiplier: 10,
-		items: ["BlueKey", "ScrollVerbal", "ScrollLegs", "ScrollArms"],
+		items: ["BlueKey", "PotionMana", "ScrollVerbal", "ScrollLegs", "ScrollArms"],
 	},
 	"magusElite": {
 		name: "magusElite",
@@ -70,7 +70,7 @@ let KDLoadouts = {
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.6,
 		multiplier: 10,
-		items: ["BlueKey", "ScrollVerbal", "ScrollLegs", "ScrollArms"],
+		items: ["BlueKey", "PotionMana", "PotionMana", "ScrollVerbal", "ScrollLegs", "ScrollArms"],
 	},
 	"scroll_arm": {
 		name: "scroll_arm",
@@ -101,7 +101,7 @@ let KDLoadouts = {
 		tags: [],
 		singletag: ["witch", "apprentice", "fungal", "elf", "dressmaker"],
 		forbidtags: [],
-		chance: 0.08,
+		chance: 0.5,
 		items: ["PotionMana"],
 	},
 	"police": {
@@ -110,7 +110,7 @@ let KDLoadouts = {
 		singletag: ["human", "bountyhunter"],
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.2,
-		items: ["RedKey"],
+		items: ["RedKey", "WristShackles"],
 	},
 	"ninja": {
 		name: "ninja",
@@ -118,7 +118,7 @@ let KDLoadouts = {
 		singletag: ["ninja", "maid", "bountyhunter"],
 		forbidtags: [],
 		chance: 0.7,
-		items: ["SmokeBomb"],
+		items: ["SmokeBomb", "RopeSnakeArmsBoxtie"],
 	},
 	"bandit_I": {
 		name: "bandit_I",
@@ -176,7 +176,7 @@ let KDLoadouts = {
 		singletag: ["trainer"],
 		forbidtags: [],
 		chance: 0.4,
-		items: ["AncientPowerSource"],
+		items: ["AncientPowerSource", "RedKey"],
 	},
 	"nevermere": {
 		name: "nevermere",
@@ -184,7 +184,15 @@ let KDLoadouts = {
 		singletag: ["trainer", "wolfgirl"],
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.15,
-		items: ["AncientPowerSource", "RedKey"],
+		items: ["AncientPowerSource"],
+	},
+	"nevermerespent": {
+		name: "nevermerespent",
+		tags: ["nevermere"],
+		singletag: ["trainer", "wolfgirl"],
+		forbidtags: ["submissive", "gagged"],
+		chance: 0.5,
+		items: ["AncientPowerSourceSpent"],
 	},
 	"agent": {
 		name: "agent",
@@ -217,7 +225,7 @@ let KDLoadouts = {
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.2,
 		multiplier: 4,
-		items: ["ScrollPurity", "BlueKey"],
+		items: ["ScrollPurity", "PotionMana", "BlueKey"],
 	},
 	"religiousMiniboss": {
 		name: "religiousMiniboss",
@@ -226,7 +234,7 @@ let KDLoadouts = {
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.5,
 		multiplier: 10,
-		items: ["ScrollPurity", "BlueKey"],
+		items: ["ScrollPurity", "PotionMana", "BlueKey"],
 	},
 	"religiousBoss": {
 		name: "religiousBoss",
@@ -235,7 +243,7 @@ let KDLoadouts = {
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.8,
 		multiplier: 10,
-		items: ["ScrollPurity", "BlueKey"],
+		items: ["ScrollPurity", "PotionMana", "BlueKey"],
 	},
 	"keyholder": {
 		name: "keyholder",
@@ -248,7 +256,7 @@ let KDLoadouts = {
 	},
 	"potMana_minor": {
 		name: "potMana_minor",
-		tags: ["jail"],
+		tags: ["jailer"],
 		singletag: [],
 		forbidtags: [],
 		chance: 0.05,
@@ -256,7 +264,7 @@ let KDLoadouts = {
 	},
 	"potStam_minor": {
 		name: "potStam_minor",
-		tags: ["jail"],
+		tags: ["jailer"],
 		singletag: [],
 		forbidtags: [],
 		chance: 0.05,
@@ -264,7 +272,7 @@ let KDLoadouts = {
 	},
 	"potWill_minor": {
 		name: "potWill_minor",
-		tags: ["jail"],
+		tags: ["jailer"],
 		singletag: [],
 		forbidtags: [],
 		chance: 0.04,
@@ -272,15 +280,15 @@ let KDLoadouts = {
 	},
 	"potMana": {
 		name: "potMana",
-		tags: ["jail"],
+		tags: ["jailer"],
 		singletag: [],
 		forbidtags: ["minor"],
-		chance: 0.05,
+		chance: 0.1,
 		items: ["PotionMana"],
 	},
 	"potStam": {
 		name: "potStam",
-		tags: ["jail"],
+		tags: ["jailer"],
 		singletag: [],
 		forbidtags: ["minor"],
 		chance: 0.05,
@@ -288,7 +296,7 @@ let KDLoadouts = {
 	},
 	"potWill": {
 		name: "potWill",
-		tags: ["jail"],
+		tags: ["jailer"],
 		singletag: [],
 		forbidtags: ["minor"],
 		chance: 0.04,
@@ -296,7 +304,7 @@ let KDLoadouts = {
 	},
 	"potFrigid": {
 		name: "potFrigid",
-		tags: ["jail"],
+		tags: ["jailer"],
 		singletag: [],
 		forbidtags: ["minor"],
 		chance: 0.08,
@@ -310,31 +318,4 @@ let KDLoadouts = {
 		chance: 1.0,
 		items: ["RedKey", "Keyring"],
 	},
-};
-
-/** @type {Record<string, SpecialCondition>} */
-let KDSpecialConditions = {
-	"canRestrainWithExtra": {
-		resetCD: false,
-		criteria: (enemy, AIData) => {
-			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || KDDefaultRestraintThresh;
-			return KDGetRestraintsEligible(
-				{tags: KDGetTags(enemy, true)}, MiniGameKinkyDungeonLevel,
-				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
-				enemy.Enemy.bypass,
-					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
-					!(enemy.Enemy.ignoreStaminaForBinds || (true && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
-					false,
-					!(KinkyDungeonStatsChoice.has("TightRestraints") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss),
-					KDGetExtraTags(enemy, true),
-					false,
-					{
-						maxPower: rThresh + 0.01,
-						looseLimit: true,
-						onlyUnlimited: true,
-						ignore: enemy.items,
-					}, enemy
-			).length > 0;
-		}
-	}
 };
