@@ -32,12 +32,13 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @type {function ()} */
-let guessLanguage = null;
+
+// /** @type {GuessLanguage} */
+// let guessLanguage = null;
 
 (function (global, undefined) {
 
-	guessLanguage = function () {
+	let guessLanguage = function () {
 
 		let models = global._languageData || {};
 
@@ -659,7 +660,11 @@ let guessLanguage = null;
 			return dist;
 		}
 
+		/**
+		 * @typedef {Object} GuessLanguage
+		 */
 		return {
+			/** @function */
 			detect: function (text) {
 				// Return the ISO 639-2 language identifier, i.e. 'en'.
 
@@ -673,6 +678,7 @@ let guessLanguage = null;
 				return identify(text);
 
 			},
+			/** @function */
 			info: function (text) {
 				// Return language info tuple (id, code, name), i.e. ('en', 26110, 'English').
 
@@ -694,6 +700,7 @@ let guessLanguage = null;
 
 
 			},
+			/** @function */
 			code: function (text) {
 				// Return the language IANA code, i.e. 26110.
 
@@ -714,6 +721,7 @@ let guessLanguage = null;
 				return IANA_MAP[language];
 
 			},
+			/** @function */
 			name: function (text) {
 				// Return the full language name, i.e. 'English'.
 
