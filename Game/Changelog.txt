@@ -1,5 +1,9 @@
 CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1000 lines of changelogs)
 
+4.66 (Sep 2023)
+- Returned the original multiple-clicks-to-walk feature since there is now fast travel.
+- Added 'One-Click Move' to options menu to walk like before
+
 4.65 (Sep 2023)
 - Flirting menu now has two options, 1st is to initiate a play event, 2nd is to start a bondage offer
 - New option to hide bullet and enemy warnings if the mouse is not on the map

@@ -55,6 +55,7 @@ KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
 KDToggleGraphicsQuality,GFX: High Quality Animations
 KDToggleEnemyAnimations,GFX: Enemy Animations
+KDToggleLazyWalk,Game: One-Click Move
 KinkyDungeonFastWait,Wait Quickly
 
 KDHelpless,Helpless!

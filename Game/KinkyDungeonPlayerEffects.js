@@ -167,8 +167,8 @@ let KDPlayerEffects = {
 	},
 	"EncaseBoltDrone": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
-			if (KinkyDungeonMovePoints >= 0) {
-				KinkyDungeonMovePoints = -1;
+			if (KDGameData.MovePoints >= 0) {
+				KDGameData.MovePoints = -1;
 				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBoltDroneSlow"), "yellow", 1);
 			} else {
 				KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncaseRandom"], "Dollsmith", false, false, false, false);
@@ -549,7 +549,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 					effect = true;
 				}
-				KinkyDungeonMovePoints = -1;
+				KDGameData.MovePoints = -1;
 			}
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSlime"), "#ff0000", playerEffect.time);
 
@@ -559,7 +559,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			}
 		} else if (playerEffect.name == "MiniSlime") {
 			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45 && KDRandom() < 0.33) {
-				KinkyDungeonMovePoints = -1;
+				KDGameData.MovePoints = -1;
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonMiniSlime2"), "#ff0000", 2);
 			} else
 				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonMiniSlime"), "#ff0000", 1);
@@ -582,7 +582,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonRemoveLowLevelRope"), "lightGreen", 2);
 		} else if (playerEffect.name == "Shock") {
 			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
-			KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+			KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonShock"), "#ff0000", playerEffect.time);
 			effect = true;
@@ -596,7 +596,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				//KinkyDungeonCallGuard(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 				//}
 				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonCoronaShock"), "#ff0000", playerEffect.time);
 				effect = true;
@@ -610,7 +610,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				}//else if (KDGameData.PrisonerState != 'jail' && KDGameData.PrisonerState != 'parole') {
 				//KinkyDungeonCallGuard(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 				//}
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonCrystalBind"), "#ff0000", 3);
 				effect = true;
@@ -618,7 +618,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 		} else if (playerEffect.name == "MysticShock") {
 			if (KDTestSpellHits(spell, 0, 1.0)) {
 				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonMysticShock"), "#ff0000", playerEffect.time);
 				if (spell.power > 0) {
 					KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
@@ -628,7 +628,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 		} else if (playerEffect.name == "RobotShock") {
 			if (KDTestSpellHits(spell, 0, 1.0)) {
 				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonRobotShock"), "#ff0000", playerEffect.time);
 				if (spell.power > 0) {
 					KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
@@ -638,7 +638,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 		} else if (playerEffect.name == "HeatBlast") {
 			if (KDTestSpellHits(spell, 0, 1.0)) {
 				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns || 0, KinkyDungeonSlowMoveTurns + 2);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonHeatBlast"), "#ff0000", playerEffect.time + 1);
 				if (spell.power > 0) {
@@ -670,7 +670,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleChain"), "#ff0000", playerEffect.time);
 					effect = true;
 				} else {
-					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
 
 				}
@@ -724,7 +724,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 		} else if (playerEffect.name == "SingleRope" || playerEffect.name == "BanditBola") {
 			if (KDTestSpellHits(spell, 0, 1.0)) {
 				if (playerEffect.name == "BanditBola") {
-					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				}
 				let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 				if (restraintAdd) {
@@ -733,7 +733,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleRope"), "#ff0000", playerEffect.time);
 					effect = true;
 				} else {
-					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
 				}
 				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
@@ -756,7 +756,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 					effect = true;
 				} else {
 					KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
-					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonRestrainingDeviceStun"), "yellow", playerEffect.time);
 				}
 				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
@@ -779,7 +779,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonGlue"), "yellow", 2);
 				effect = true;
 			} else {
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonGlueSlow"), "yellow", playerEffect.time);
 				effect = true;
 			}
@@ -863,7 +863,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonRopeEngulfDress"), "#ff0000", 3);
 					effect = true;
 				} else {
-					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
 
 				}
@@ -892,7 +892,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonVineEngulfDress"), "#ff0000", 3);
 					effect = true;
 				} else {
-					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
 
 				}
@@ -914,7 +914,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonObsidianEngulf"), "#ff0000", 2);
 				effect = true;
 			} else {
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
 
 			}
@@ -942,7 +942,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCharmWrapsDress"), "#ff0000", 3);
 					effect = true;
 				} else {
-					KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
 
 				}
@@ -968,7 +968,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonEnchantedArrow"), "#ff0000", 2);
 				effect = true;
 			} else {
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", playerEffect.time);
 
 			}
@@ -1066,7 +1066,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonFreeze"), "#ff0000", playerEffect.time);
 			} else {
 				sfx = "Bones";
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1);
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1);
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonChill"), "#ff0000", playerEffect.time);
 			}
 			KinkyDungeonSetFlag("chill", 1);

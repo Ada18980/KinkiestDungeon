@@ -1371,7 +1371,7 @@ let KDEventMapInventory = {
 				if (KDRandom() < e.chance || (KDGameData.WarningLevel > 2 && KDRandom() < e.warningchance)) {
 					if (e.stun && KDGameData.WarningLevel > 2) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
-						KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints - 1); // This is to prevent stunlock while slowed heavily
+						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					KDGameData.WarningLevel += 1;
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
@@ -1396,7 +1396,7 @@ let KDEventMapInventory = {
 				if (KDRandom() < e.chance || (KDGameData.WarningLevel > 2 && KDRandom() < e.warningchance) || data.group == "ItemNeck") {
 					if (e.stun && KDGameData.WarningLevel > 2) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
-						KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints - 1); // This is to prevent stunlock while slowed heavily
+						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					data.escapePenalty += e.bind ? e.bind : 0.1;
 					KDGameData.WarningLevel += 1;
@@ -1518,7 +1518,7 @@ let KDEventMapInventory = {
 				if (KDRandom() < e.chance || (KDGameData.WarningLevel > 2 && KDRandom() < e.warningchance)) {
 					if (e.stun && KDGameData.WarningLevel > 2) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
-						KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints - 1); // This is to prevent stunlock while slowed heavily
+						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					KDGameData.WarningLevel += 1;
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
@@ -1532,7 +1532,7 @@ let KDEventMapInventory = {
 				if (!e.chance || KDRandom() < e.chance) {
 					if (e.stun) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
-						KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints - 1); // This is to prevent stunlock while slowed heavily
+						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
 					if (!data.cursePunish) {
@@ -1583,7 +1583,7 @@ let KDEventMapInventory = {
 			KinkyDungeonSetEnemyFlag(enemy, "remoteShockCooldown", 7);
 			if (e.stun) {
 				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints - 1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 			}
 			KinkyDungeonDealDamage({damage: e.power, type: e.damage});
 			const msg = TextGet(e.msg ? e.msg : "KinkyDungeonRemoteShock")
@@ -1692,7 +1692,7 @@ let KDEventMapInventory = {
 				if (KDRandom() < e.chance || (KDGameData.WarningLevel > 2 && KDRandom() < e.warningchance)) {
 					if (e.stun && KDGameData.WarningLevel > 2) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
-						KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints - 1); // This is to prevent stunlock while slowed heavily
+						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					KDGameData.WarningLevel += 1;
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
@@ -1706,7 +1706,7 @@ let KDEventMapInventory = {
 				if (!e.chance || KDRandom() < e.chance ) {
 					if (e.stun) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
-						KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints - 1); // This is to prevent stunlock while slowed heavily
+						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
 					if (!data.cursePunish) {
@@ -2769,8 +2769,8 @@ let KDEventMapSpell = {
 				let manacost = -KinkyDungeonGetManaCost(spell);
 				e.prevSlowLevel = KinkyDungeonSlowLevel;
 				KinkyDungeonSlowLevel = Math.max(0, KinkyDungeonSlowLevel - e.power);
-				if (KinkyDungeonHasMana(1.5) && KinkyDungeonMovePoints < 0) {
-					KinkyDungeonMovePoints = 0;
+				if (KinkyDungeonHasMana(1.5) && KDGameData.MovePoints < 0) {
+					KDGameData.MovePoints = 0;
 					manacost -= 1.5;
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonFleetFootedIgnoreSlow"), "lightgreen", 2);
 				}

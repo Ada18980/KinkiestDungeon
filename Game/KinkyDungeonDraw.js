@@ -1006,7 +1006,7 @@ function KinkyDungeonDrawGame() {
 							alpha: KinkyDungeonGetPlayerTextureTransparency(),
 						});
 				}
-				if ((KinkyDungeonMovePoints < 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevel") > 0) && KinkyDungeonSlowLevel < 10) {
+				if ((KDGameData.MovePoints < 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevel") > 0) && KinkyDungeonSlowLevel < 10) {
 					KDDraw(kdstatusboard, kdpixisprites, "c_slow", KinkyDungeonRootDirectory + "Conditions/Slow.png",
 						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
@@ -1201,6 +1201,10 @@ function KinkyDungeonDrawGame() {
 									if (path?.length > 1) {
 										dist *= path.length;
 									}
+									if (KDGameData.MovePoints) {
+										dist -= KDGameData.MovePoints;
+									}
+									dist = Math.ceil(Math.max(0, dist));
 									DrawTextKD("x" + dist, (KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
 								}
 							}
@@ -1229,6 +1233,10 @@ function KinkyDungeonDrawGame() {
 							if (!KinkyDungeonEnemyAt(xx, yy) || KDCanPassEnemy(KinkyDungeonPlayerEntity, KinkyDungeonEnemyAt(xx, yy))) {
 								let dist = Math.round(KinkyDungeonSlowLevel);
 
+								if (KDGameData.MovePoints) {
+									dist -= KDGameData.MovePoints;
+								}
+								dist = Math.ceil(Math.max(0, dist));
 								DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
 							}
 						}
@@ -1722,7 +1730,7 @@ function KinkyDungeonDrawGame() {
 				zIndex: 1,
 				alpha: 0.1,
 			});
-		} else if (KDToggles.StunFlash && (KinkyDungeonFlags.get("playerStun") || (KinkyDungeonMovePoints < 0 && KinkyDungeonSlowLevel < 9))) {
+		} else if (KDToggles.StunFlash && (KinkyDungeonFlags.get("playerStun") || (KDGameData.MovePoints < 0 && KinkyDungeonSlowLevel < 9))) {
 			FillRectKD(kdcanvas, kdpixisprites, "screenoverlayst", {
 				Left: 0,
 				Top: 0,
