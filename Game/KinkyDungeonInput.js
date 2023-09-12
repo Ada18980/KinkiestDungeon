@@ -22,8 +22,8 @@ function KDProcessInput(type, data) {
 			KinkyDungeonToggleAutoPass = data.AutoPass;
 			KinkyDungeonToggleAutoSprint = data.sprint;
 			KinkyDungeonSuppressSprint = data.SuppressSprint;
-			KinkyDungeonMove(data.dir, data.delta, data.AllowInteract, data.SuppressSprint);
-			break;
+			return KinkyDungeonMove(data.dir, data.delta, data.AllowInteract, data.SuppressSprint) ? "move" : "nomove";
+			//break;
 		case "setMoveDirection":
 			KinkyDungeonMoveDirection = data.dir;
 			break;

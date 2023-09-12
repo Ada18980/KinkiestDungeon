@@ -1550,7 +1550,8 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 			KDMapData.Bullets.push(newB);
 			KinkyDungeonUpdateSingleBulletVisual(newB, false);
 
-			KinkyDungeonMoveTo(b.x, b.y, true);
+			KDMovePlayer(b.x, b.y, true);
+			//KinkyDungeonMoveTo(b.x, b.y, true);
 		}
 		if (b.bullet.effectTile) {
 			KDCreateAoEEffectTiles(b.x, b.y, b.bullet.effectTile, b.bullet.effectTileDurationMod, (b.bullet.spell.effectTileAoE ? b.bullet.spell.effectTileAoE : ((b.bullet.spell.aoe) ? b.bullet.spell.aoe : 0.5)), undefined, b.bullet.spell.effectTileDensity, KDBulletAoEMod(b));

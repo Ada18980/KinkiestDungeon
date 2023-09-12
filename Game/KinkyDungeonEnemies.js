@@ -3582,7 +3582,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			let moveMult = KDBoundEffects(enemy) * 0.5;
 			let attackMult = KinkyDungeonGetBuffedStat(enemy.buffs, "AttackSlow");
 			let attackTiles = enemy.warningTiles ? enemy.warningTiles : [dir];
-			let ap = (KinkyDungeonMovePoints < 0 && !KinkyDungeonHasWill(0.1) && KinkyDungeonLeashingEnemy()?.id == enemy.id) ? enemy.Enemy.movePoints+moveMult+1 : enemy.Enemy.attackPoints + attackMult;
+			let ap = (KDGameData.MovePoints < 0 && !KinkyDungeonHasWill(0.1) && KinkyDungeonLeashingEnemy()?.id == enemy.id) ? enemy.Enemy.movePoints+moveMult+1 : enemy.Enemy.attackPoints + attackMult;
 			if (!KinkyDungeonEnemyTryAttack(enemy, player, attackTiles, delta, enemy.x + dir.x, enemy.y + dir.y, (enemy.usingSpecial && enemy.Enemy.specialAttackPoints) ? enemy.Enemy.specialAttackPoints : ap, undefined, undefined, enemy.usingSpecial, AIData.refreshWarningTiles, AIData.attack, AIData.MovableTiles)) {
 				if (enemy.warningTiles.length == 0 || (AIData.refreshWarningTiles && enemy.usingSpecial)) {
 					let minrange = enemy.Enemy.tilesMinRange ? enemy.Enemy.tilesMinRange : 1;
@@ -3628,7 +3628,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					: KinkyDungeonMultiplicativeStat(((player.Enemy && player.Enemy.evasion) ? player.Enemy.evasion : 0)) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(player.buffs, "Evasion"));
 				let playerBlock = 1.01 * (player.player) ? KinkyDungeonPlayerBlock()
 					: KinkyDungeonMultiplicativeStat(((player.Enemy && player.Enemy.block) ? player.Enemy.block : 0)) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(player.buffs, "Block"));
-				if (AIData.playerDist < 1.5 && player.player && AIData.attack.includes("Bind") && enemy.Enemy.bound && KDRandom() * AIData.accuracy >= 1-playerEvasion && KDRandom() * AIData.accuracy >= 1-playerBlock && KinkyDungeonMovePoints > -1 && KinkyDungeonTorsoGrabCD < 1 && KinkyDungeonLastAction == "Move") {
+				if (AIData.playerDist < 1.5 && player.player && AIData.attack.includes("Bind") && enemy.Enemy.bound && KDRandom() * AIData.accuracy >= 1-playerEvasion && KDRandom() * AIData.accuracy >= 1-playerBlock && KDGameData.MovePoints > -1 && KinkyDungeonTorsoGrabCD < 1 && KinkyDungeonLastAction == "Move") {
 					let caught = false;
 					for (let tile of enemy.warningTiles) {
 						if (enemy.x + tile.x == player.x && enemy.y + tile.y == player.y) {
@@ -3659,7 +3659,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								roll = Math.min(roll, KDRandom());
 							}
 							if (roll < KinkyDungeonTorsoGrabChance + bonus) {
-								KinkyDungeonMovePoints = -1;
+								KDGameData.MovePoints = -1;
 								let msg = TextGet("KinkyDungeonTorsoGrab").replace("RestraintName", TextGet("Restraint" + harnessRestraintName)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name));
 
 								KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
@@ -3961,7 +3961,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								|| Math.abs(enemy.x - leashPos.x) > 1.5
 								|| Math.abs(enemy.y - leashPos.y) > 1.5)
 							) {
-								if (!KinkyDungeonHasWill(0.1) && KDRandom() < 0.25) KinkyDungeonMovePoints = -1;
+								if (!KinkyDungeonHasWill(0.1) && KDRandom() < 0.25) KDGameData.MovePoints = -1;
 								// Leash pullback
 								if (AIData.playerDist < 1.5) {
 									let path = KinkyDungeonFindPath(enemy.x, enemy.y, leashPos.x, leashPos.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, undefined, undefined, undefined, enemy);
@@ -4146,7 +4146,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 
 						if (AIData.attack.includes("Slow")) {
-							KinkyDungeonMovePoints = Math.max(KinkyDungeonMovePoints - 2, -1);
+							KDGameData.MovePoints = Math.max(KDGameData.MovePoints - 2, -1);
 							if (enemy.usingSpecial && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Slow")) {
 								enemy.specialCD = enemy.Enemy.specialCD;
 							}
@@ -4163,7 +4163,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (AIData.attack.includes("Stun")) {
 							let time = enemy.Enemy.stunTime ? enemy.Enemy.stunTime : 1;
 							KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, time);
-							KinkyDungeonMovePoints = Math.max(Math.min(-1, -time+1), KinkyDungeonMovePoints-time); // This is to prevent stunlock while slowed heavily
+							KDGameData.MovePoints = Math.max(Math.min(-1, -time+1), KDGameData.MovePoints-time); // This is to prevent stunlock while slowed heavily
 							if (enemy.usingSpecial && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Stun")) {
 								enemy.specialCD = enemy.Enemy.specialCD;
 							}
@@ -5289,7 +5289,7 @@ function KDPlayerIsDisabled() {
 }
 function KDPlayerIsStunned() {
 	return KDPlayerIsDisabled() || KinkyDungeonFlags.get("playerStun")
-		|| (KinkyDungeonMovePoints < 0 || KDGameData.KneelTurns > 0 || KinkyDungeonSleepiness > 0);
+		|| (KDGameData.MovePoints < 0 || KDGameData.KneelTurns > 0 || KinkyDungeonSleepiness > 0);
 }
 function KDPlayerIsImmobilized() {
 	return KinkyDungeonSlowLevel > 9 || KinkyDungeonGetRestraintItem("ItemDevices");

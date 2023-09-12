@@ -110,7 +110,6 @@ let KinkyDungeonStatDistractionGainChaste = -0.1; // Cumulative w/ groin and bra
 // Restraint stats
 
 let KinkyDungeonSlowLevel = 0; // Adds to the number of move points you need before you move
-let KinkyDungeonMovePoints = 0;
 
 let KinkyDungeonBlindLevelBase = 0; // Base, increased by buffs and such, set to 0 after consumed in UpdateStats
 let KinkyDungeonBlindLevel = 0; // Blind level 1: -33% vision, blind level 2: -67% vision, Blind level 3: Vision radius = 1
@@ -211,7 +210,7 @@ function KinkyDungeonDefaultStats(Load) {
 
 	KinkyDungeonPlayerBuffs = {};
 
-	KinkyDungeonMovePoints = 0;
+	KDGameData.MovePoints = 0;
 	KDInitInventory();
 	KinkyDungeonInventoryAdd({name: "Default", type: Outfit, id: KinkyDungeonGetItemID()});
 	KinkyDungeonInventoryAddWeapon("Unarmed");
@@ -1290,7 +1289,7 @@ function KinkyDungeonCanKneel() {
 
 function KinkyDungeonCalculateSlowLevel(delta) {
 	KinkyDungeonSlowLevel = 0;
-	if (KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).immobile;})) {KinkyDungeonSlowLevel += 100; KinkyDungeonMovePoints = -1;}
+	if (KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).immobile;})) {KinkyDungeonSlowLevel += 100; KDGameData.MovePoints = -1;}
 	else {
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if ((KDRestraint(inv).blockfeet || KDRestraint(inv).hobble)) {

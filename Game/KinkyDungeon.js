@@ -112,6 +112,7 @@ let KDToggles = {
 	ShowNPCStatuses: true,
 	ForceWarnings: false,
 	Drool: true,
+	LazyWalk: false,
 };
 
 let KDDefaultKB = {
@@ -303,11 +304,13 @@ let KDOptOut = false;
 * ShopRewardProgram: number,
 * tickAlertTimer: boolean,
 * HostileFactions: string[],
+* MovePoints: number,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	MovePoints: 0,
 	InventoryAction: "",
 	BondageTarget: -1,
 	ShopRewardProgram: 0,
@@ -1574,9 +1577,13 @@ function KinkyDungeonRun() {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					if (KinkyDungeonFastMovePath.length > 0) {
 						let next = KinkyDungeonFastMovePath[0];
-						KinkyDungeonFastMovePath.splice(0, 1);
-						if (Math.max(Math.abs(next.x-KinkyDungeonPlayerEntity.x), Math.abs(next.y-KinkyDungeonPlayerEntity.y)) < 1.5)
-							KDSendInput("move", {dir: {x:next.x-KinkyDungeonPlayerEntity.x, y:next.y-KinkyDungeonPlayerEntity.y}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
+						//KinkyDungeonFastMovePath.splice(0, 1);
+						if (Math.max(Math.abs(next.x-KinkyDungeonPlayerEntity.x), Math.abs(next.y-KinkyDungeonPlayerEntity.y)) < 1.5) {
+							if (KDSendInput("move", {dir: {x:next.x-KinkyDungeonPlayerEntity.x, y:next.y-KinkyDungeonPlayerEntity.y}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true)
+								== "move") {
+								KinkyDungeonFastMovePath.splice(0, 1);
+							}
+						}
 						else KinkyDungeonFastMovePath = [];
 					}
 					KinkyDungeonSleepTime = CommonTime() + 100 * (0.25 + KDAnimSpeed * 0.75);

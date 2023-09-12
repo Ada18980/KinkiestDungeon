@@ -951,7 +951,7 @@ let KDCommandCaptureBindings = {
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleVine"), "#ff0000", spell.time);
 			} else {
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", spell.time);
 				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			}
@@ -968,7 +968,7 @@ let KDCommandCaptureBindings = {
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleRope"), "#ff0000", spell.time);
 			} else {
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", spell.time);
 				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			}
@@ -992,7 +992,7 @@ let KDCommandCaptureBindings = {
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleFabric"), "#ff0055", spell.time);
 			} else {
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", spell.time);
 				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			}
@@ -1016,7 +1016,7 @@ let KDCommandCaptureBindings = {
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleBelt"), "#ff0000", spell.time);
 			} else {
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", spell.time);
 				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			}
@@ -1038,7 +1038,7 @@ let KDCommandCaptureBindings = {
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleChain"), "#ff0000", spell.time);
 			} else {
-				KinkyDungeonMovePoints = Math.max(-1, KinkyDungeonMovePoints-1); // This is to prevent stunlock while slowed heavily
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", spell.time);
 				KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			}

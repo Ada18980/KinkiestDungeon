@@ -615,7 +615,7 @@ function KDStaggerEnemy(enemy) {
 }
 
 
-function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets) {
+function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets, suppressNoise) {
 	KinkyDungeonPlayerEntity.lastx = KinkyDungeonPlayerEntity.x;
 	KinkyDungeonPlayerEntity.lasty = KinkyDungeonPlayerEntity.y;
 	let cancel = {cancelmove: false, returnvalue: false};
@@ -645,7 +645,7 @@ function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets) {
 		lastY: KinkyDungeonPlayerEntity.lasty,
 		moveX: moveX,
 		moveY: moveY,
-		sound: (sprint) ? (4): 0,
+		sound: (sprint && !suppressNoise) ? (4): 0,
 		dist: KDistChebyshev(KinkyDungeonPlayerEntity.lastx - moveX, KinkyDungeonPlayerEntity.lasty - moveY),
 	};
 	KinkyDungeonSendEvent("playerMove", data);
@@ -660,6 +660,7 @@ function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets) {
 }
 
 function KDSlip(dir) {
+	KinkyDungeonFastMovePath = [];
 	let maxSlip = 2;
 	let maxReached = 0;
 	for (let i = 0; i < maxSlip; i++) {
@@ -671,7 +672,7 @@ function KDSlip(dir) {
 				|| ((tile.statuses?.frozen || tile.name.includes("Frozen")) && tile.tags?.includes("slipperywhenfrozen"));}))
 			&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y))
 			&& !KinkyDungeonEnemyAt(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y)) {
-			KDMovePlayer(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y, false, true);
+			KDMovePlayer(KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y, false, true, false, true);
 			KinkyDungeonHandleStepOffTraps(KinkyDungeonPlayerEntity, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonPlayerEntity.x + dir.x, KinkyDungeonPlayerEntity.y + dir.y);
 			KinkyDungeonHandleTraps(KinkyDungeonPlayerEntity, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true);
 			maxReached = i;
