@@ -1580,7 +1580,7 @@ function KinkyDungeonRun() {
 						//KinkyDungeonFastMovePath.splice(0, 1);
 						if (Math.max(Math.abs(next.x-KinkyDungeonPlayerEntity.x), Math.abs(next.y-KinkyDungeonPlayerEntity.y)) < 1.5) {
 							if (KDSendInput("move", {dir: {x:next.x-KinkyDungeonPlayerEntity.x, y:next.y-KinkyDungeonPlayerEntity.y}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true)
-								== "move") {
+								== "move" || (KDGameData.MovePoints == 0 && KinkyDungeonSlowLevel > 1)) {
 								KinkyDungeonFastMovePath.splice(0, 1);
 							}
 						}
