@@ -2770,7 +2770,7 @@ let KDEventMapSpell = {
 				e.prevSlowLevel = KinkyDungeonSlowLevel;
 				KinkyDungeonSlowLevel = Math.max(0, KinkyDungeonSlowLevel - e.power);
 				if (KinkyDungeonHasMana(1.5) && KDGameData.MovePoints < 0) {
-					KDGameData.MovePoints = 0;
+					KDGameData.MovePoints = Math.min(0, KDGameData.MovePoints + 1);
 					manacost -= 1.5;
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonFleetFootedIgnoreSlow"), "lightgreen", 2);
 				}
