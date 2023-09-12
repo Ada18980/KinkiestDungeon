@@ -1194,15 +1194,22 @@ function KinkyDungeonDrawGame() {
 								(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 									zIndex: 100,
 								});
-							if (KinkyDungeonSlowLevel > 1 && KinkyDungeonSlowLevel < 10) {
+							if ((KinkyDungeonSlowLevel > 1 || KDGameData.MovePoints < 0) && KinkyDungeonSlowLevel < 10) {
 								if (!KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY) || KDCanPassEnemy(KinkyDungeonPlayerEntity, KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY))) {
-									let dist = Math.round(KinkyDungeonSlowLevel);
+									let diststart = Math.max(1, Math.round(KinkyDungeonSlowLevel));
+									let dist = diststart;
 									let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
 									if (path?.length > 1) {
 										dist *= path.length;
 									}
-									if (KDGameData.MovePoints) {
-										dist -= KDGameData.MovePoints;
+									if (KDGameData.MovePoints < 0) {
+										if (path?.length > 1) {
+											dist -= Math.min(0, KDGameData.MovePoints + 1);
+										} else dist = 1 - KDGameData.MovePoints;
+									} else if (!KDToggles.LazyWalk) {
+										if (path?.length > 1) {
+											dist -= Math.max(0, diststart - 1);
+										} else dist = 1;
 									}
 									dist = Math.ceil(Math.max(0, dist));
 									DrawTextKD("x" + dist, (KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
@@ -1229,13 +1236,13 @@ function KinkyDungeonDrawGame() {
 									yy = newY;
 								}
 							}
-						} else if (KinkyDungeonSlowLevel > 1 && KinkyDungeonSlowLevel < 10) {
+						} else if ((KinkyDungeonSlowLevel > 1 || KDGameData.MovePoints < 0) && KinkyDungeonSlowLevel < 10) {
 							if (!KinkyDungeonEnemyAt(xx, yy) || KDCanPassEnemy(KinkyDungeonPlayerEntity, KinkyDungeonEnemyAt(xx, yy))) {
-								let dist = Math.round(KinkyDungeonSlowLevel);
+								let dist = Math.max(1, Math.round(KinkyDungeonSlowLevel));
 
-								if (KDGameData.MovePoints) {
-									dist -= KDGameData.MovePoints;
-								}
+								if (KDGameData.MovePoints < 0) {
+									dist = 1 - KDGameData.MovePoints;
+								} else if (!KDToggles.LazyWalk) dist = 1;
 								dist = Math.ceil(Math.max(0, dist));
 								DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
 							}
@@ -1730,7 +1737,7 @@ function KinkyDungeonDrawGame() {
 				zIndex: 1,
 				alpha: 0.1,
 			});
-		} else if (KDToggles.StunFlash && (KinkyDungeonFlags.get("playerStun") || (KDGameData.MovePoints < 0 && KinkyDungeonSlowLevel < 9))) {
+		} else if (KDToggles.StunFlash && (KinkyDungeonFlags.get("playerStun"))) {
 			FillRectKD(kdcanvas, kdpixisprites, "screenoverlayst", {
 				Left: 0,
 				Top: 0,

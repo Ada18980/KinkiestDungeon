@@ -3659,7 +3659,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								roll = Math.min(roll, KDRandom());
 							}
 							if (roll < KinkyDungeonTorsoGrabChance + bonus) {
-								KDGameData.MovePoints = -1;
+								KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);
 								let msg = TextGet("KinkyDungeonTorsoGrab").replace("RestraintName", TextGet("Restraint" + harnessRestraintName)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name));
 
 								KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
@@ -3961,7 +3961,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								|| Math.abs(enemy.x - leashPos.x) > 1.5
 								|| Math.abs(enemy.y - leashPos.y) > 1.5)
 							) {
-								if (!KinkyDungeonHasWill(0.1) && KDRandom() < 0.25) KDGameData.MovePoints = -1;
+								if (!KinkyDungeonHasWill(0.1) && KDRandom() < 0.25) KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);
 								// Leash pullback
 								if (AIData.playerDist < 1.5) {
 									let path = KinkyDungeonFindPath(enemy.x, enemy.y, leashPos.x, leashPos.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, undefined, undefined, undefined, enemy);

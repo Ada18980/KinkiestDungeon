@@ -1289,7 +1289,7 @@ function KinkyDungeonCanKneel() {
 
 function KinkyDungeonCalculateSlowLevel(delta) {
 	KinkyDungeonSlowLevel = 0;
-	if (KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).immobile;})) {KinkyDungeonSlowLevel += 100; KDGameData.MovePoints = -1;}
+	if (KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).immobile;})) {KinkyDungeonSlowLevel += 100; KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);}
 	else {
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if ((KDRestraint(inv).blockfeet || KDRestraint(inv).hobble)) {

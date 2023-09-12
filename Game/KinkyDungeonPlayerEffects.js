@@ -168,7 +168,7 @@ let KDPlayerEffects = {
 	"EncaseBoltDrone": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			if (KDGameData.MovePoints >= 0) {
-				KDGameData.MovePoints = -1;
+				KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);
 				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBoltDroneSlow"), "yellow", 1);
 			} else {
 				KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncaseRandom"], "Dollsmith", false, false, false, false);
@@ -549,7 +549,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 					effect = true;
 				}
-				KDGameData.MovePoints = -1;
+				KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);
 			}
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSlime"), "#ff0000", playerEffect.time);
 
@@ -559,7 +559,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			}
 		} else if (playerEffect.name == "MiniSlime") {
 			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45 && KDRandom() < 0.33) {
-				KDGameData.MovePoints = -1;
+				KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonMiniSlime2"), "#ff0000", 2);
 			} else
 				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonMiniSlime"), "#ff0000", 1);

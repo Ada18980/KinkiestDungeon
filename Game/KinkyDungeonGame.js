@@ -3931,12 +3931,12 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 							quick = true;
 						}
 
-						if (KinkyDungeonStatBind) KDGameData.MovePoints = 0;
-						let MovePoints = KDGameData.MovePoints;
+						if (KinkyDungeonStatBind) KDGameData.MovePoints = Math.min(0, KDGameData.MovePoints);
+						//let MovePoints = KDGameData.MovePoints;
 
 						let willSprint = KinkyDungeonToggleAutoSprint && !SuppressSprint;
 
-						if (KDGameData.MovePoints >= ((!KDToggles.LazyWalk && !willSprint) ? Math.max(1, KinkyDungeonSlowLevel) : 1)) {// Math.max(1, KinkyDungeonSlowLevel) // You need more move points than your slow level, unless your slow level is 1
+						if (KDGameData.MovePoints >= 1) {// Math.max(1, KinkyDungeonSlowLevel) // You need more move points than your slow level, unless your slow level is 1
 							let xx = KinkyDungeonPlayerEntity.x;
 							let yy = KinkyDungeonPlayerEntity.y;
 
@@ -4010,11 +4010,11 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 							}
 							KDGameData.MovePoints = Math.min(KDGameData.MovePoints + 1, 0);
 						}
-						if (moved) {
+						/*if (moved) {
 							if (MovePoints > 0) {
 								newDelta = Math.max(1, newDelta - MovePoints);
 							}
-						}
+						}*/
 
 						if (moveObject == 'R') {
 							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
@@ -4033,8 +4033,12 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 				// KinkyDungeonAdvanceTime(1, false, d != 0); // was moveDirection.delta, but became too confusing
 
 				if (newDelta > 1 && newDelta < 10 && !quick) {
-					KinkyDungeonSlowMoveTurns = newDelta - 1;
-					KinkyDungeonSleepTime = CommonTime() + 200;
+					if (KDToggles.LazyWalk) {
+						KinkyDungeonSlowMoveTurns = newDelta - 1;
+						KinkyDungeonSleepTime = CommonTime() + 200;
+					} else {
+						KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 1-newDelta);
+					}
 				}
 			} else {
 				KDGameData.MovePoints = Math.min(KDGameData.MovePoints + 1, 0);
@@ -4140,7 +4144,7 @@ function KinkyDungeonMoveTo(moveX, moveY, willSprint, allowPass) {
 			return 1;
 		}
 	}
-	if (cencelled || xx != KinkyDungeonPlayerEntity.x || yy != KinkyDungeonPlayerEntity.y) {
+	if (cencelled || (xx == KinkyDungeonPlayerEntity.x && yy == KinkyDungeonPlayerEntity.y)) {
 		KDGameData.MovePoints = 0;
 		return 0;
 	}
@@ -4195,7 +4199,6 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	KinkyDungeonSFX = [];
 	KDPlayerHitBy = [];
 
-	//if (KDGameData.MovePoints < 0 && KinkyDungeonStatBind < 1) KDGameData.MovePoints = 0;
 	KinkyDungeonUpdateAngel(delta);
 
 	KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
