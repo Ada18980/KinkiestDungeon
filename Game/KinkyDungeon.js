@@ -1579,8 +1579,9 @@ function KinkyDungeonRun() {
 						let next = KinkyDungeonFastMovePath[0];
 						//KinkyDungeonFastMovePath.splice(0, 1);
 						if (Math.max(Math.abs(next.x-KinkyDungeonPlayerEntity.x), Math.abs(next.y-KinkyDungeonPlayerEntity.y)) < 1.5) {
+							let MP = KDGameData.MovePoints;
 							if (KDSendInput("move", {dir: {x:next.x-KinkyDungeonPlayerEntity.x, y:next.y-KinkyDungeonPlayerEntity.y}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true)
-								== "move" || (KDGameData.MovePoints == 0 && KinkyDungeonSlowLevel > 1)) {
+								== "move" || MP == KDGameData.MovePoints) {
 								KinkyDungeonFastMovePath.splice(0, 1);
 							}
 						}
