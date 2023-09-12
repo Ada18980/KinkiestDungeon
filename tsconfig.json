@@ -108,6 +108,7 @@
         "Data/Models.ts",
         "Data/ModelList.ts",
         "Data/ModelList_Restraints.ts",
+        "Data/ModelList_Cuffs.ts",
         "Data/ModelList_Slime.ts",
         "Data/ModelList_Rubber.ts",
         "Data/ModelDresses.ts",

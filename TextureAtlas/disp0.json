@@ -1,0 +1,117 @@
+{"frames": {
+
+"DisplacementMaps/AnklesSquishClosed.png":
+{
+	"frame": {"x":1,"y":1,"w":1240,"h":1754},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1240,"h":1754},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"DisplacementMaps/ForeArm2SquishWristtie.png":
+{
+	"frame": {"x":1243,"y":1,"w":1240,"h":765},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1240,"h":765},
+	"sourceSize": {"w":1240,"h":765}
+},
+"DisplacementMaps/FrogThigh1SquishKneel.png":
+{
+	"frame": {"x":1671,"y":1243,"w":335,"h":244},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":316,"y":842,"w":335,"h":244},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"DisplacementMaps/FrogThigh1SquishKneelClosed.png":
+{
+	"frame": {"x":1623,"y":1586,"w":244,"h":160},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":332,"y":908,"w":244,"h":160},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"DisplacementMaps/FrogThigh2SquishKneel.png":
+{
+	"frame": {"x":1431,"y":1603,"w":246,"h":190},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":350,"y":892,"w":246,"h":190},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"DisplacementMaps/FrogThigh2SquishKneelClosed.png":
+{
+	"frame": {"x":1243,"y":1603,"w":288,"h":186},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":365,"y":861,"w":288,"h":186},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"DisplacementMaps/FrogThigh3SquishKneel.png":
+{
+	"frame": {"x":1243,"y":1243,"w":358,"h":227},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":372,"y":841,"w":358,"h":227},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"DisplacementMaps/FrogThigh3SquishKneelClosed.png":
+{
+	"frame": {"x":1472,"y":1243,"w":341,"h":197},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":398,"y":811,"w":341,"h":197},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"DisplacementMaps/LeftFrogtieSquishKneel.png":
+{
+	"frame": {"x":1785,"y":1489,"w":204,"h":201},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":554,"y":821,"w":204,"h":201},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"DisplacementMaps/LeftFrogtieSquishKneelClosed.png":
+{
+	"frame": {"x":1785,"y":1692,"w":199,"h":196},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":554,"y":821,"w":199,"h":196},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"DisplacementMaps/Leg1SquishClosed.png":
+{
+	"frame": {"x":1243,"y":1,"w":1240,"h":765},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1240,"h":765},
+	"sourceSize": {"w":1240,"h":765}
+},
+"DisplacementMaps/RightFrogtieSquishKneel.png":
+{
+	"frame": {"x":1,"y":1757,"w":115,"h":63},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":398,"y":815,"w":115,"h":63},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"DisplacementMaps/RightFrogtieSquishKneelClosed.png":
+{
+	"frame": {"x":1,"y":1757,"w":115,"h":63},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":398,"y":815,"w":115,"h":63},
+	"sourceSize": {"w":1240,"h":1754}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "disp0.png",
+	"format": "RGBA8888",
+	"size": {"w":2009,"h":1892},
+	"scale": "0.5",
+	"related_multi_packs": [ "disp1.json", "disp2.json", "disp3.json", "disp4.json", "disp5.json", "disp6.json", "disp7.json", "disp8.json", "disp9.json", "disp10.json", "disp11.json", "disp12.json", "disp13.json", "disp14.json", "disp15.json", "disp16.json", "disp17.json", "disp18.json", "disp19.json", "disp20.json", "disp21.json", "disp22.json", "disp23.json", "disp24.json", "disp25.json", "disp26.json", "disp27.json", "disp28.json", "disp29.json", "disp30.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:a33a2aeee3cbafad07edf473305f2f4e:58ab6384b21be4fcb19090d291916fe4:45c5672cfaeea038b4da790cab0ef26d$"
+}
+}

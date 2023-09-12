@@ -1,6 +1,7 @@
 let LAYERS_BASE = [
 	"HatDeco",
 	"Hat",
+	"Brows", // Brows should get hidden with mask
 	"HeadbandDeco",
 	"Headband",
 	"HairFront",
@@ -20,7 +21,6 @@ let LAYERS_BASE = [
 	"BlindfoldWrap",
 	"GagWrap",
 	// Head
-	"Brows",
 	"Eyes",
 	"Mouth",
 	"Blush",
@@ -57,7 +57,7 @@ let LAYERS_BASE = [
 
 	"ForeSleeveLeft",
 	"ForeSleeveDecoLeft",
-	"GloveLeft",
+	"ForeGloveLeft",
 	"ForeHandLeft",
 
 	"ForeWristRight",
@@ -65,7 +65,7 @@ let LAYERS_BASE = [
 
 	"ForeSleeveRight",
 	"ForeSleeveDecoRight",
-	"GloveRight",
+	"ForeGloveRight",
 	"ForeHandRight",
 
 
@@ -113,6 +113,17 @@ let LAYERS_BASE = [
 	"BindChest",
 	"BraChest",
 	"Chest",
+
+
+	// Crossed arms bondage -- left arm is mostly hidden, no hands
+	"BindCrossWristRight",
+	"BindForeArmLeft",
+	"BindForeArmRight",
+
+	// Crossed arms -- order is inverted
+	"CrossArmRight",
+	"CrossArmLeft",
+
 
 	"WrappingTorso",
 
@@ -175,6 +186,7 @@ let LAYERS_BASE = [
 
 	// Left arm body - reserved for body and catsuits
 	"WristLeft",
+	"GloveLeft",
 	"HandLeft",
 	"ArmLeft",
 
@@ -227,6 +239,7 @@ let LAYERS_BASE = [
 
 	// Right arm body - reserved for body and catsuits
 	"WristRight",
+	"GloveRight",
 	"HandRight",
 	"ArmRight",
 

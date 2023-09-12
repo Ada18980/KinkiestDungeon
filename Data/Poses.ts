@@ -1,13 +1,14 @@
-let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked", "Front", "Up"];
+let ARMPOSES = ["Free", "Boxtie", "Wristtie", "Yoked", "Front", "Up", "Crossed"];
 /** List of poses where the left wrist is invisible */
-let WRISTHIDELEFT = ["Boxtie", "Wristtie", "Up"];
+let WRISTHIDELEFT = ["Boxtie", "Wristtie", "Up", "Crossed"];
 /** List of poses where the right wrist is invisible */
 let WRISTHIDERIGHT = ["Boxtie", "Wristtie", "Up"];
 /** Poses where the torso needs a correction */
 let SHOULDERPOSES = ["Up"];
 /** Poses where the arms are hidden (usually b/c forearms are visible) */
 let HIDEARMPOSES = [];
-let FOREARMPOSES = ["Front"];
+let FOREARMPOSES = ["Front", "Crossed"];
+let CROSSARMPOSES = ["Crossed"];
 let HANDRIGHTPOSES = ["Free", "Boxtie", "Yoked"];
 let HANDLEFTPOSES = ["Free", "Yoked"];
 let FOREHANDRIGHTPOSES = ["Front"];
@@ -69,6 +70,9 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 	},
 	Front: {
 		global_default: "Boxtie",
+	},
+	Crossed: {
+		global_default: "Front",
 	},
 };
 

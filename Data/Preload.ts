@@ -2,6 +2,7 @@ PIXI.Assets.init();
 
 let linearList = [
 	"TextureAtlas/atlas0.json",
+	"TextureAtlas/disp0.json",
 ];
 
 let nearestList = [

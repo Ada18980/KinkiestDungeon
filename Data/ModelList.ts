@@ -63,6 +63,7 @@ AddModel({
 			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
 			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(BROWPOSES),
+			HidePoses: ToMap(["EncaseHead"]),
 		},
 		{ Name: "Brows2", Layer: "Brows", Pri: 0,
 			Sprite: "", // Because pose is called BrowsNeutral lol
@@ -71,6 +72,7 @@ AddModel({
 			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
 			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(BROW2POSES),
+			HidePoses: ToMap(["EncaseHead"]),
 		},
 	])
 });
@@ -263,12 +265,12 @@ AddModel({
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 0,
 			InheritColor: "Torso",
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES]),
-			GlobalDefaultOverride: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 		},
 		{ Name: "ArmLeft", Layer: "ArmLeft", Pri: 0,
 			InheritColor: "Torso",
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES]),
-			GlobalDefaultOverride: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 		},
 		{ Name: "ShoulderRight", Layer: "ShoulderRight", Pri: 0,
 			InheritColor: "Torso",
@@ -281,12 +283,14 @@ AddModel({
 		{ Name: "ForeArmRight", Layer: "ForeArmRight", Pri: 0,
 			InheritColor: "Torso",
 			Poses: ToMap(FOREARMPOSES),
-			GlobalDefaultOverride: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossArmRight"},
 		},
 		{ Name: "ForeArmLeft", Layer: "ForeArmLeft", Pri: 0,
 			InheritColor: "Torso",
 			Poses: ToMap(FOREARMPOSES),
-			GlobalDefaultOverride: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossArmLeft"},
 		},
 		{ Name: "HandRight", Layer: "HandRight", Pri: 0,
 			InheritColor: "Torso",

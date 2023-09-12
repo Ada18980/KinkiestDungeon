@@ -1,0 +1,21 @@
+{"frames": {
+
+"DisplacementMaps/Thigh1SquishClosed.png":
+{
+	"frame": {"x":1,"y":1,"w":1240,"h":1754},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1240,"h":1754},
+	"sourceSize": {"w":1240,"h":1754}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "disp20.png",
+	"format": "RGBA8888",
+	"size": {"w":1242,"h":1756},
+	"scale": "0.5",
+	"related_multi_packs": [ "disp0.json", "disp1.json", "disp2.json", "disp3.json", "disp4.json", "disp5.json", "disp6.json", "disp7.json", "disp8.json", "disp9.json", "disp10.json", "disp11.json", "disp12.json", "disp13.json", "disp14.json", "disp15.json", "disp16.json", "disp17.json", "disp18.json", "disp19.json", "disp21.json", "disp22.json", "disp23.json", "disp24.json", "disp25.json", "disp26.json", "disp27.json", "disp28.json", "disp29.json", "disp30.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:a33a2aeee3cbafad07edf473305f2f4e:58ab6384b21be4fcb19090d291916fe4:45c5672cfaeea038b4da790cab0ef26d$"
+}
+}
