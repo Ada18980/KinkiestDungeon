@@ -2554,7 +2554,12 @@ type KDTrapType = (tile: KDTile, entity: entity, x: number, y: number) => {msg: 
 type KDSprites = {[_: string]: (x: number, y: number, fog: boolean, noReplace: string) => string}
 
 declare const zip: any;
-declare const guessLanguage: any;
+declare const guessLanguage: {
+	detect(text: string): string;
+	info(text: string): [string, string, string];
+	code(text: string): [number];
+	name(text: string): string;
+};
 
 declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') & {
 	// Filters says it's deprecated and should be referenced `PIXI.<filter>` rather than `PIXI.filters.<filter>`
