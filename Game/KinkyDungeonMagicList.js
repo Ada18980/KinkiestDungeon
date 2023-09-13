@@ -1130,7 +1130,7 @@ let KinkyDungeonSpellListEnemies = [
 			{
 				id: "DildoBatBuff", type: "DildoBatBuff", duration: 11, power: 3.0, player: true, enemies: false, tags: [],
 				aura: "#ffff55", events: [
-					{trigger: "playerAttack", type: "ElementalEffect", power: 3.0, damage: "charm", prereq: "HaveDildoBatPlus"},
+					{trigger: "playerAttack", type: "ElementalEffect", crit: 3.0, power: 3.0, damage: "charm", prereq: "HaveDildoBatPlus"},
 				]
 			},
 		], onhit:"", time:10, power: 3.0, range: 2, size: 1, damage: "",
@@ -1294,7 +1294,7 @@ let KinkyDungeonSpellListEnemies = [
 		bulletColor: 0xffff00, bulletLight: 5,
 		spellcast: {spell: "BondageBustBeam", target: "target", directional:true, offset: false}, noMiscast: true, channel: 1},
 	{name: "BondageBustBeam", hitsfx: "Shock", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 3, time: 3, delay: 0, range: 8, speed: 50, size: 1, damage: "electric",
-		trailColor: 0xffff00, trailLight: 3,
+		trailColor: 0xffff00, trailLight: 3, crit: 1.5,
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "Shock", time: 3}},
 	{name: "HeartArrow", sfx: "MagicSlash", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "soul", speed: 2,
 		events: [
@@ -1314,7 +1314,7 @@ let KinkyDungeonSpellListEnemies = [
 
 
 	{name: "CoronaBeam", sfx: "FireSpell",
-		trailColor: 0xffff77, trailLight: 3, noise: 2,
+		trailColor: 0xffff77, trailLight: 3, noise: 2, crit: 1.5,
 		school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 12, delay: 0, range: 8, speed: 50, size: 1, damage: "fire",
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1},
 	{name: "AllyCrackle", sfx: "Shock", school: "Elements", manacost: 4, components: ["Arms"], level:1, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 4, delay: 0, time: 1, range: 4, speed: 4, size: 1, damage: "electric",
