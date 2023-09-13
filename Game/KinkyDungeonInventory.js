@@ -605,11 +605,12 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 			DrawTextKD(TextGet("KinkyDungeonRarity") + TextGet("KinkyDungeonRarity" + consumable.rarity), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 410, "#000000", KDTextTan, 22, undefined, 130);
 		} else if (item.item.type == Weapon) {
 			let weapon = KDWeapon(item.item);
-			DrawTextKD(TextGet("KinkyDungeonWeaponDamage") + (weapon.dmg * 10), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 350, "#000000", KDTextTan, undefined, undefined, 130);
-			DrawTextKD(TextGet("KinkyDungeonWeaponAccuracy") + Math.round(weapon.chance * 100) + "%", xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 390, "#000000", KDTextTan, undefined, undefined, 130);
+			DrawTextKD(TextGet("KinkyDungeonWeaponDamage") + (weapon.dmg * 10), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 350, "#000000", KDTextTan, 24, undefined, 130);
+			DrawTextKD(TextGet("KinkyDungeonWeaponCrit") + ((weapon.crit || KDDefaultCrit) * 10), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 380, "#000000", KDTextTan, 24, undefined, 130);
+			DrawTextKD(TextGet("KinkyDungeonWeaponAccuracy") + Math.round(weapon.chance * 100) + "%", xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 410, "#000000", KDTextTan, 24, undefined, 130);
 			let cost = -KinkyDungeonStatStaminaCostAttack;
 			if (weapon.staminacost) cost = weapon.staminacost;
-			DrawTextKD(TextGet("KinkyDungeonWeaponStamina") + Math.round(10*cost), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 430, "#000000", KDTextTan, undefined, undefined, 130);
+			DrawTextKD(TextGet("KinkyDungeonWeaponStamina") + Math.round(10*cost), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 440, "#000000", KDTextTan, 24, undefined, 130);
 		}
 
 	} else {

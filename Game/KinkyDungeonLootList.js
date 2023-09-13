@@ -306,6 +306,9 @@ let KinkyDungeonLootTable = {
 		{name: "Rapier", minLevel: 3, weight:0.8, weapon: "Rapier", noweapon: ["Rapier"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Katana", minLevel: 3, weight:0.8, weapon: "Katana", noweapon: ["Katana"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 
+		{name: "CrossbowHeavy", minLevel: 5, weight:0.8, weapon: "CrossbowHeavy", noweapon: ["CrossbowHeavy"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Longbow", minLevel: 3, weight:0.8, weapon: "Longbow", noweapon: ["Longbow"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+
 		{name: "StaffTape", minLevel: 0, weight:1, weapon: "StaffTape", noweapon: ["StaffTape"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "DildoBatPlus", minLevel: 0, weight:1.0, weapon: "DildoBatPlus", noweapon: ["DildoBatPlus"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 

@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.66"
+KinkyDungeon,"Kinky Dungeon v4.67"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -1231,7 +1231,7 @@ ItemPickupScissors,"You pick up a pair of scissors."
 
 KinkyDungeonInventoryItemDirk,Dagger
 KinkyDungeonInventoryItemDirkDesc,"Designed with subterfuge in mind."
-KinkyDungeonInventoryItemDirkDesc2,"Deals slash damage. Deals 55 pierce damage instead on unaware targets."
+KinkyDungeonInventoryItemDirkDesc2,"Deals slash damage. Deals 40 pierce damage instead on unaware targets, before crit modifiers."
 ItemPickupDirk,"You pick up a dagger."
 
 KinkyDungeonInventoryItemKatana,Katana
@@ -1362,6 +1362,7 @@ KinkyDungeonInventoryItemAxeDesc2,"Also deals 20 damage to enemies next to you. 
 KinkyDungeonNoWeaponKnife,Knife
 KinkyDungeonNoWeapon,Unarmed
 KinkyDungeonAccuracy,"Accuracy: "
+KinkyDungeonCrit,"Crit Damage Multiplier (damage dealt to unaware and vulnerable targets): "
 KinkyDungeonPlayerNoKeys,Find the keys..
 KinkyDungeonPlayerYesKeys,Find the exit!
 KinkyDungeonPlayerHelp,"You are receiving help from a friendly ally."
@@ -1393,10 +1394,11 @@ KinkyDungeonVibing4,Your toys vibrate intensely!
 KinkyDungeonVibing5,The vibration is torturous!
 
 KinkyDungeonPlayerEdged,"Edged!"
-KinkyDungeonPlayerStatisfied,"Satisfied~"
+KinkyDungeonPlayerStatisfied,"Satisfied. Miscast chance is reduced."
 
 
 KinkyDungeonWeaponDamage,"Damage: "
+KinkyDungeonWeaponCrit,"Crit Multiplier: "
 KinkyDungeonWeaponAccuracy,"Accuracy: "
 KinkyDungeonWeaponStamina,"SP Cost: "
 
@@ -5225,8 +5227,12 @@ KinkyDungeonSpellEvasive2,Dodge II
 KinkyDungeonSpellDescriptionEvasive2,"+15 Evasion (25 total)"
 KinkyDungeonSpellEvasive3,Dodge III
 KinkyDungeonSpellDescriptionEvasive3,"+25 Evasion (50 total)"
-KinkyDungeonSpellCriticalStrike,Critical Strike
-KinkyDungeonSpellDescriptionCriticalStrike,"Excess accuracy (over 100%) is converted to bonus physical damage percentage at 50% efficiency."
+KinkyDungeonSpellCriticalStrike,Precise Critical
+KinkyDungeonSpellDescriptionCriticalStrike,"When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency."
+KinkyDungeonSpellCriticalStrikeMagic,Precise Magic
+KinkyDungeonSpellDescriptionCriticalStrikeMagic,"When landing a critical strike with magic damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency."
+KinkyDungeonSpellMagicalOverload,Magical Overload
+KinkyDungeonSpellDescriptionMagicalOverload,"When landing a critical strike with magic damage, crit multiplier is increased by 25% of your current DP."
 
 
 KinkyDungeonSpellBruteForce1,Brute Force
@@ -11198,11 +11204,11 @@ KinkyDungeonInventoryItemMagicRopeDesc2,"Deals chain damage and applies 50 point
 ItemPickupMagicRope,"You find some enchanted rope."
 KDMagicRopeBackfire,"Without mana to control it, the enchanted rope springs back upon you!"
 
-KinkyDungeonInventoryItemBow,Wooden Bow
+KinkyDungeonInventoryItemBow,Light Bow
 KinkyDungeonInventoryItemBowDesc,"Pointy stick delivery system."
-KinkyDungeonInventoryItemBowDesc2,"Deals crush damage. Draws 10 charge and 1.5 stamina to fire an ordinary arrow, dealing 20 pierce damage."
+KinkyDungeonInventoryItemBowDesc2,"Reload time: None. Deals crush damage on melee. Draws 10 charge and 20 stamina to fire an ordinary arrow, dealing 30 pierce damage."
 ItemPickupBow,"You find a wooden bow."
-KinkyDungeonSpecialBow,"10 charge to fire an arrow. Deals 20 pierce damage."
+KinkyDungeonSpecialBow,"10 charge to fire an arrow. Deals 30 pierce damage."
 KinkyDungeonSpellTargetArrowNormal,Choose projectile path
 KinkyDungeonSpellArrowNormal,Arrow
 KinkyDungeonSpellCastArrowNormal,"You loose an arrow!"
@@ -11220,12 +11226,11 @@ KinkyDungeonSpellArrowVineBind,"A sudden burst of vines overtakes you as you fin
 
 LootArcheryKit,"You find a bow and a glowing crystal. The bow is scribed with runes of duplication."
 
-
 KinkyDungeonInventoryItemCrossbow,Crossbow
-KinkyDungeonInventoryItemCrossbowDesc,"Pointy stick delivery system."
-KinkyDungeonInventoryItemCrossbowDesc2,"Deals crush damage, Skips a turn after firing. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 50 pierce damage."
+KinkyDungeonInventoryItemCrossbowDesc,"Watch where you're pointing that thing!"
+KinkyDungeonInventoryItemCrossbowDesc2,"Reload time: 3 stationary turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 65 pierce damage."
 ItemPickupCrossbow,"You find a crossbow."
-KinkyDungeonSpecialCrossbow,"25 charge to fire an arrow. Deals 50 pierce damage."
+KinkyDungeonSpecialCrossbow,"20 charge to fire a bolt. Deals 65 pierce damage."
 KinkyDungeonSpellTargetArrowBolt,Choose projectile path
 KinkyDungeonSpellArrowBolt,Bolt
 KinkyDungeonSpellCastArrowBolt,"You pull the trigger!"
@@ -11410,3 +11415,42 @@ KDManaRecharge_Mixed,"You draw upon chaotic energies, but your mind is unable to
 KDManaRecharge_Fail,"The attempt to call upon chaotic energies fails."
 
 KDForcedOrgasmMin,"The vibrator holds at full power to drive you over the edge!"
+
+KDPrereqFailLoaded,"The weapon needs to be loaded to fire."
+
+
+KinkyDungeonInventoryItemBowRecurve,Recurve Bow
+KinkyDungeonInventoryItemBowRecurveDesc,"Curvy, just like its user."
+KinkyDungeonInventoryItemBowRecurveDesc2,"Reload time: 1 turn. Deals crush damage on melee. Draws 14 charge and 35 stamina to fire an ordinary arrow, dealing 40 pierce damage."
+ItemPickupBowRecurve,"You find a recurve bow."
+KinkyDungeonSpecialBowRecurve,"14 charge to fire an arrow. Deals 40 pierce damage."
+KinkyDungeonSpellTargetArrowRecurve,Choose projectile path
+KinkyDungeonSpellArrowRecurve,Recurve Bow Arrow
+KinkyDungeonSpellCastArrowRecurve,"You loose a strong arrow!"
+
+KinkyDungeonInventoryItemLongbow,Longbow
+KinkyDungeonInventoryItemLongbowDesc,"Great for building both empires and muscle."
+KinkyDungeonInventoryItemLongbowDesc2,"Reload time: 2 turns. Deals crush damage on melee. Draws 18 charge and 60 stamina to fire an ordinary arrow, dealing 60 pierce damage."
+ItemPickupLongbow,"You find a huge longbow."
+KinkyDungeonSpecialLongbow,"18 charge to fire an arrow. Deals 60 pierce damage."
+KinkyDungeonSpellTargetArrowLongbow,Choose projectile path
+KinkyDungeonSpellArrowLongbow,Longbow Arrow
+KinkyDungeonSpellCastArrowLongbow,"You loose a mighty arrow!"
+
+KinkyDungeonInventoryItemCrossbowPistol,Pistol Crossbow
+KinkyDungeonInventoryItemCrossbowPistolDesc,"Lethal. Sustainable. Portable."
+KinkyDungeonInventoryItemCrossbowPistolDesc2,"Reload time: 3 turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 45 pierce damage."
+ItemPickupCrossbowPistol,"You find a pistol crossbow."
+KinkyDungeonSpecialCrossbowPistol,"15 charge to fire a bolt. Deals 45 pierce damage."
+KinkyDungeonSpellTargetArrowBoltPistol,Choose projectile path
+KinkyDungeonSpellArrowBoltPistol,Pistol Bolt
+KinkyDungeonSpellCastArrowBoltPistol,"You pull the trigger!"
+
+KinkyDungeonInventoryItemCrossbowHeavy,Arbalest
+KinkyDungeonInventoryItemCrossbowHeavyDesc,"At this point why not just use a gun?"
+KinkyDungeonInventoryItemCrossbowHeavyDesc2,"Reload time: 5 stationary turns. Deals crush damage on melee. Draws 25 charge and no stamina to fire an ordinary arrow, dealing 100 pierce damage."
+ItemPickupCrossbowHeavy,"You find an arbalest."
+KinkyDungeonSpecialCrossbowHeavy,"25 charge to fire a bolt. Deals 100 pierce damage."
+KinkyDungeonSpellTargetArrowBoltHeavy,Choose projectile path
+KinkyDungeonSpellArrowBoltHeavy,Heavy Bolt
+KinkyDungeonSpellCastArrowBoltHeavy,"You pull the trigger!"

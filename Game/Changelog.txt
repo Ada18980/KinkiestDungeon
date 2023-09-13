@@ -1,5 +1,14 @@
 CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1000 lines of changelogs)
 
+4.67 (Sep 2023)
+- Bows and crossbows now use a mechanic where they must be loaded before firing
+- New weapons: Pistol Crossbow, Recurve Bow, Longbow, Arbalest
+- Weapons now have a 'critical strike' modifier, which determines the damage boost they do to unaware or vulnerable targets. spells and bullets can also have one.
+- Spells can now crit
+- Critical Strike renamed to Precise Critical, affects only critical strikes
+- New upgrade: Magical Overload (+crit based on total DP)
+- Fixed a crash where there were no factions available to place a guarded chest (now defaults to bandits)
+
 4.66 (Sep 2023)
 - Returned the original multiple-clicks-to-walk feature since there is now fast travel.
 - Added 'One-Click Move' to options menu to walk like before

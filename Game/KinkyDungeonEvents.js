@@ -1878,9 +1878,9 @@ const KDEventMapBuff = {
 				// Enemy attacking enemy? hostile
 				&& (data.attacker.player || !data.target.player || KinkyDungeonAggressive(data.attacker))))) {
 				if (data.attacker.player) {
-					KinkyDungeonDealDamage({damage: e.power, type: e.damage, bind: e.bind, time: e.time, bindType: e.bindType,});
+					KinkyDungeonDealDamage({damage: e.power, type: e.damage, crit: e.crit, bind: e.bind, time: e.time, bindType: e.bindType,});
 				} else {
-					KinkyDungeonDamageEnemy(data.attacker, {damage: e.power, type: e.damage, bind: e.bind, bindType: e.bindType, time: e.time}, false, true, undefined, undefined, entity);
+					KinkyDungeonDamageEnemy(data.attacker, {damage: e.power, type: e.damage, crit: e.crit, bind: e.bind, bindType: e.bindType, time: e.time}, false, true, undefined, undefined, entity);
 				}
 				if (e.requiredTag)
 					KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, e.requiredTag, 1);
@@ -2882,14 +2882,14 @@ let KDEventMapSpell = {
 				}
 			}
 		},
-		"CritBoost": (e, spell, data) => {
+		/*"CritBoost": (e, spell, data) => {
 			if (data.eva&& !data.miss && !data.disarm && data.targetX && data.targetY && data.enemy && KDHostile(data.enemy)) {
 				if (KDCheckPrereq(null, e.prereq, e, data)) {
 					let power = Math.max(0, Math.max((Math.max(KinkyDungeonPlayerDamage.chance || 0, KinkyDungeonGetEvasion()) - 1)*e.power));
 					data.buffdmg = Math.max(0, data.buffdmg + (KinkyDungeonPlayerDamage.dmg || 0) * power);
 				}
 			}
-		},
+		},*/
 	},
 	"calcDisplayDamage": {
 		"BoostDamage": (e, spell, data) => {
@@ -2899,10 +2899,23 @@ let KDEventMapSpell = {
 				}
 			}
 		},
-		"CritBoost": (e, spell, data) => {
+		/*"CritBoost": (e, spell, data) => {
 			if (KDCheckPrereq(null, e.prereq, e, data)) {
 				let power = Math.max(0, Math.max(((KinkyDungeonPlayerDamage.chance || 0) - 1)*e.power));
 				data.buffdmg = Math.max(0, data.buffdmg + (KinkyDungeonPlayerDamage.dmg || 0) * power);
+			}
+		},*/
+	},
+	"calcCrit": {
+		"CritBoost": (e, spell, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data)) {
+				let power = Math.max(0, Math.max(((data.accuracy || 0) - 1)*e.power));
+				data.critboost = Math.max(0, data.critboost + (data.accuracy || 0) * power);
+			}
+		},
+		"MagicalOverload": (e, spell, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data)) {
+				data.critmult *= 1 + (e.power * KinkyDungeonStatDistraction / 10);
 			}
 		},
 	},
@@ -3207,6 +3220,18 @@ let KDEventMapWeapon = {
 			}
 		},
 	},
+	"playerCastSpecial": {
+		"Unload": (e, weapon, data) => {
+			let player = data.player || KinkyDungeonPlayerEntity;
+			if (!e.prereq || !KDPrereqs[e.prereq] || KDPrereqs[e.prereq](player, e, data)) {
+				let buff = KDEntityGetBuff(player, weapon.name + "Load");
+				if (buff) {
+					buff.power *= e.mult;
+					buff.power += e.power;
+				}
+			}
+		},
+	},
 	"afterPlayerAttack": {
 		"DoubleStrike": (e, weapon, data) => {
 			if (!KinkyDungeonAttackTwiceFlag && (!e.chance || KDRandom() < e.chance)) {
@@ -3291,6 +3316,26 @@ let KDEventMapWeapon = {
 					KinkyDungeonPlayerBuffs[weapon.name + "Charge"].aura = e.color;
 				} else {
 					KinkyDungeonPlayerBuffs[weapon.name + "Charge"].aura = "#888888";
+				}
+			}
+		},
+		"Reload": (e, weapon, data) => {
+			let player = data.player || KinkyDungeonPlayerEntity;
+			if (KinkyDungeonSlowMoveTurns < 1 && (!e.prereq || !KDPrereqs[e.prereq] || KDPrereqs[e.prereq](player, e, data))) {
+				let currentLoad = KDEntityBuffedStat(player, weapon.name + "Load") || 0;
+				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+					id: weapon.name + "Load",
+					type: weapon.name + "Load",
+					aura: e.color,
+					aurasprite: "Reload",
+					//buffSprite: true,
+					power: Math.min(e.power, currentLoad + data.delta),
+					duration: 9999,
+				});
+				if (currentLoad >= e.power) {
+					KinkyDungeonPlayerBuffs[weapon.name + "Load"].aura = undefined;
+				} else {
+					KinkyDungeonPlayerBuffs[weapon.name + "Load"].aura = e.color;
 				}
 			}
 		},

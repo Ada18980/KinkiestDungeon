@@ -9,21 +9,28 @@ let KinkyDungeonWeapons = {
 	"Unarmed": {name: "Unarmed", dmg: 2, chance: 0.9, type: "unarmed", unarmed: true, rarity: 0, shop: false, noequip: true, sfx: "Unarmed"},
 
 	// Knives
-	"Knife": {name: "Knife", dmg: 2.4, chance: 0.9, staminacost: 1.5, type: "slash", unarmed: false, rarity: 1, cutBonus: 0.05, shop: true, sfx: "Unarmed", light: true},
-	"EnchKnife": {name: "EnchKnife", dmg: 2.6, chance: 0.9, staminacost: 1.5, type: "cold", unarmed: false, rarity: 1, cutBonus: 0.05, magic: true, shop: true, sfx: "MagicSlash", light: true},
-	"Dirk": {name: "Dirk", dmg: 2.8, chance: 1.0, staminacost: 1.8, type: "slash", unarmed: false, rarity: 2, shop: true, cutBonus: 0.05, light: true, sfx: "LightSwing",
+	"Knife": {name: "Knife", dmg: 2.0, chance: 0.9, staminacost: 1.5, type: "slash", unarmed: false, rarity: 1, cutBonus: 0.05, shop: true, sfx: "Unarmed", light: true,
+		crit: 1.5,
+	},
+	"EnchKnife": {name: "EnchKnife", dmg: 2.5, chance: 0.9, staminacost: 1.5, type: "cold", unarmed: false, rarity: 1, cutBonus: 0.05, magic: true, shop: true, sfx: "MagicSlash", light: true,
+		crit: 1.5,
+	},
+	"Dirk": {name: "Dirk", dmg: 2.5, chance: 1.0, staminacost: 1.8, type: "slash", unarmed: false, rarity: 2, shop: true, cutBonus: 0.05, light: true, sfx: "LightSwing",
+		crit: 1.5,
 		events: [
-			{type: "ChangeDamageUnaware", trigger: "beforePlayerAttack", power: 5.5, damage: "pierce"},
+			{type: "ChangeDamageUnaware", trigger: "beforePlayerAttack", power: 4, damage: "pierce"},
 		],
 	},
 
 	// Shields
 	"Shield": {name: "Shield", dmg: 2.0, chance: 0.6, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 2, shop: false, sfx: "HeavySwing",
+		crit: 1.1,
 		events: [
 			{type: "blockBuff", trigger: "tick", power: 0.6},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 4}
 		]},
 	"ShieldTower": {name: "ShieldTower", dmg: 4.0, chance: 0.25, staminacost: 6.0,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
+		crit: 1.1,
 		events: [
 			{type: "armorBuff", trigger: "tick", power: 3.0},
 			{type: "blockBuff", trigger: "tick", power: 1.2},
@@ -31,12 +38,14 @@ let KinkyDungeonWeapons = {
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 7}
 		]},
 	"ShieldReinforced": {name: "ShieldReinforced", dmg: 3.0, chance: 0.4, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
+		crit: 1.1,
 		events: [
 			{type: "armorBuff", trigger: "tick", power: 1.5},
 			{type: "blockBuff", trigger: "tick", power: 0.8},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 5}
 		]},
 	"ShieldMagic": {name: "ShieldMagic", dmg: 3.0, chance: 0.4, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
+		crit: 1.1,
 		events: [
 			{type: "spellWardBuff", trigger: "tick", power: 2.0},
 			{type: "blockBuff", trigger: "tick", power: 0.8},
@@ -48,12 +57,14 @@ let KinkyDungeonWeapons = {
 	"ChainSword": {name: "ChainSword", dmg: 2.5, bind: 0.5, bindType: "Metal", chance: 1.6, staminacost: 2.4, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.01, sfx: "Chain"},
 	"SlimeSword": {name: "SlimeSword", dmg: 2.4, bind: 2.5, bindEff: 0, bindType: "Slime", chance: 1.3, staminacost: 2.6, type: "glue", unarmed: false, rarity: 3, shop: true, sfx: "RubberBolt"},
 	"Katana": {name: "Katana", dmg: 3, chance: 1.5, staminacost: 3.0, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.01, sfx: "LightSwing",
+		crit: 1.5,
 		events: [
 			{type: "Patience", trigger: "tick", power: 11, buffType: "KatanaCharge", color: "#ffffff"},
 			{type: "KatanaBoost", trigger: "beforePlayerAttack", power: 0.25, sfx: "Fwoosh"},
 		]
 	},
 	"DarkKatana": {name: "DarkKatana", dmg: 3, chance: 2.0, staminacost: 2.6, type: "cold", unarmed: false, rarity: 4, shop: false, magic: true, cutBonus: 0.01, sfx: "LightSwing",
+		crit: 2.0,
 		events: [
 			{type: "DamageMultInShadow", trigger: "beforePlayerAttack", power: 2.0, sfx: "Fwoosh"},
 		]
@@ -66,11 +77,13 @@ let KinkyDungeonWeapons = {
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, time: 5, damage: "frost"}, {type: "WeaponLight", trigger: "getLights", power: 3, color: "#92e8c0"}]
 	},
 	"Foil": {name: "Foil", dmg: 0.8, chance: 1.5, staminacost: 1.5, type: "pierce", unarmed: false, rarity: 3, shop: true, sfx: "Miss",
+		crit: 2.0,
 		events: [
 			{type: "ChangeDamageVulnerable", trigger: "beforePlayerAttack", power: 3.0, damage: "pierce"},
 		],
 	},
 	"Rapier": {name: "Rapier", dmg: 2.5, chance: 1.3, staminacost: 3.0, type: "slash", unarmed: false, rarity: 3, shop: true, sfx: "LightSwing",
+		crit: 1.5,
 		events: [
 			{type: "ChangeDamageVulnerable", trigger: "beforePlayerAttack", power: 5.0, damage: "pierce"},
 		],
@@ -97,8 +110,10 @@ let KinkyDungeonWeapons = {
 
 	// Flails
 	"Flail": {name: "Flail", dmg: 2.5, chance: 1.25, staminacost: 3.0, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "LightSwing",
+		crit: 1.5,
 		events: [{type: "Cleave", trigger: "playerAttack", power: 1, damage: "crush"}]},
 	"MagicFlail": {name: "MagicFlail", dmg: 3, chance: 1.25, staminacost: 3.0, type: "crush", unarmed: false, rarity: 4, magic: true, shop: false, sfx: "LightSwing",
+		crit: 1.6,
 		events: [{type: "Cleave", trigger: "playerAttack", power: 3, damage: "crush"}]},
 
 	// Spears
@@ -219,14 +234,59 @@ let KinkyDungeonWeapons = {
 		special: {type: "spell", spell: "BlasterBlast", requiresEnergy: true, energyCost: 0.01, range: 8}},
 
 	// Bows
-	"Bow": {name: "Bow", dmg: 1.2, chance: 0.75, staminacost: 1, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "Miss",
+	"Bow": {name: "Bow", dmg: 1.0, chance: 0.8, staminacost: 1, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "Miss",
 		clumsy: true,
+		crit: 1.5,
 		tags: ["bow", "normalbow"],
 		special: {type: "spell", spell: "ArrowNormal", requiresEnergy: true, energyCost: 0.01, range: 6}},
+	"BowRecurve": {name: "BowRecurve", dmg: 1.3, chance: 0.7, staminacost: 1, type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "Miss",
+		clumsy: true,
+		crit: 1.5,
+		tags: ["bow", "normalbow"],
+		events: [
+			{type: "Reload", trigger: "tick", requireEnergy: true, energyCost: 0.014, power: 1, color: "#ffffff", prereq: "LightLoad"},
+			{type: "Unload", trigger: "playerCastSpecial", power: 0, mult: 0},
+		],
+		special: {type: "spell", spell: "ArrowRecurve", prereq: "Loaded", requiresEnergy: true, energyCost: 0.014, range: 6}},
+	"Longbow": {name: "Longbow", dmg: 1.4, chance: 0.6, staminacost: 1, type: "crush", unarmed: false, rarity: 4, shop: true, sfx: "Miss",
+		clumsy: true,
+		crit: 1.5,
+		tags: ["bow", "normalbow"],
+		events: [
+			{type: "Reload", trigger: "tick", requireEnergy: true, energyCost: 0.018, power: 2, color: "#ffffff", prereq: "LightLoad"},
+			{type: "Unload", trigger: "playerCastSpecial", power: 0, mult: 0},
+		],
+		special: {type: "spell", spell: "ArrowLongbow", prereq: "Loaded", requiresEnergy: true, energyCost: 0.018, range: 8}},
+
 	"Crossbow": {name: "Crossbow", dmg: 1.5, chance: 0.5, staminacost: 1, type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "Miss",
 		clumsy: true,
-		tags: ["bow", "normalbow"],
-		special: {type: "spell", spell: "ArrowBolt", requiresEnergy: true, energyCost: 0.015, range: 8}},
+		crit: 2.0,
+		tags: ["bow", "normalbow", "crossbow"],
+		events: [
+			{type: "Reload", trigger: "tick", requireEnergy: true, energyCost: 0.02, power: 3, color: "#ffffff", prereq: "HeavyLoad"},
+			{type: "Unload", trigger: "playerCastSpecial", power: 0, mult: 0},
+		],
+		special: {type: "spell", spell: "ArrowBolt", prereq: "Loaded", requiresEnergy: true, energyCost: 0.02, range: 8}},
+
+	"CrossbowPistol": {name: "CrossbowPistol", dmg: 1.5, chance: 1.0, staminacost: 1, type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "Miss",
+		clumsy: true,
+		crit: 2.0,
+		tags: ["bow", "normalbow", "crossbow"],
+		events: [
+			{type: "Reload", trigger: "tick", requireEnergy: true, energyCost: 0.015, power: 3, color: "#ffffff", prereq: "LightLoad"},
+			{type: "Unload", trigger: "playerCastSpecial", power: 0, mult: 0},
+		],
+		special: {type: "spell", spell: "ArrowBoltPistol", prereq: "Loaded", requiresEnergy: true, energyCost: 0.015, range: 9}},
+
+	"CrossbowHeavy": {name: "CrossbowHeavy", dmg: 3.0, chance: 0.3, staminacost: 2.0, type: "crush", unarmed: false, rarity: 4, shop: true, sfx: "Miss",
+		clumsy: true,
+		crit: 2.0,
+		tags: ["bow", "normalbow", "crossbow"],
+		events: [
+			{type: "Reload", trigger: "tick", requireEnergy: true, energyCost: 0.025, power: 5, color: "#ffffff", prereq: "HeavyLoad"},
+			{type: "Unload", trigger: "playerCastSpecial", power: 0, mult: 0},
+		],
+		special: {type: "spell", spell: "ArrowBoltHeavy", prereq: "Loaded", requiresEnergy: true, energyCost: 0.025, range: 12}},
 
 	// Divine
 	"MoiraiScissors": {name: "MoiraiScissors", dmg: 1.5, chance: 1.1, staminacost: 1.5, type: "slash", unarmed: false, rarity: 10, shop: false, magic: true, cutBonus: 0.2, sfx: "Cut",
