@@ -606,7 +606,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 		} else if (item.item.type == Weapon) {
 			let weapon = KDWeapon(item.item);
 			DrawTextKD(TextGet("KinkyDungeonWeaponDamage") + (weapon.dmg * 10), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 350, "#000000", KDTextTan, 24, undefined, 130);
-			DrawTextKD(TextGet("KinkyDungeonWeaponCrit") + ((weapon.crit || KDDefaultCrit) * 10), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 380, "#000000", KDTextTan, 24, undefined, 130);
+			DrawTextKD(TextGet("KinkyDungeonWeaponCrit") + ((weapon.crit || KDDefaultCrit) * 100) + "%", xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 380, "#000000", KDTextTan, 24, undefined, 130);
 			DrawTextKD(TextGet("KinkyDungeonWeaponAccuracy") + Math.round(weapon.chance * 100) + "%", xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 410, "#000000", KDTextTan, 24, undefined, 130);
 			let cost = -KinkyDungeonStatStaminaCostAttack;
 			if (weapon.staminacost) cost = weapon.staminacost;
