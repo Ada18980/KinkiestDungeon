@@ -116,7 +116,7 @@ let KinkyDungeonLearnableSpells = [
 		// Intellect
 		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser2", "StaffUser3"],
 		// Misc
-		["CriticalStrike", "OrgasmFrequency", "OrgasmFrequency2", "OrgasmResist"],
+		["CriticalStrike", "MagicalOverload", "OrgasmFrequency", "OrgasmFrequency2", "OrgasmResist"],
 	],
 ];
 
@@ -846,8 +846,17 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{type: "Buff", trigger: "tick", power: 0.25, buffType: "Evasion"},
 		]},
 		{name: "CriticalStrike", tags: ["damage", "offense", "buff"], school: "Illusion", spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
-			{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+			//{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+			//{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+			{trigger: "calcCrit", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+		]},
+		{name: "MagicalOverload", tags: ["damage", "offense", "buff"], school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{trigger: "calcCrit", type: "MagicalOverload", prereq: "damageType", kind: "magic", power: 0.25},
+		]},
+		{name: "CriticalStrikeMagic", tags: ["damage", "offense", "buff"], school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			//{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+			//{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+			{trigger: "calcCrit", type: "CritBoost", prereq: "damageType", kind: "magic", power: 0.5},
 		]},
 		{name: "Vault", tags: ["damage", "utility", "buff"], prerequisite: "Evasive1", school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{trigger: "canSprint", type: "VaultBasic"},
@@ -1236,19 +1245,37 @@ let KinkyDungeonSpellListEnemies = [
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "MysticShock", time: 3}},
 
 
-	{name: "ArrowBolt", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
-		channel: 1,
-		projectileTargeting:true, onhit:"", power: 5, delay: 0, range: 10, damage: "pierce", speed: 4},
 	{name: "ArrowNormal", tags: ["arrowreplace"], color: "#88ff88", sfx: "Arrow", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
-		staminacost: 1.5,
-		projectileTargeting:true, onhit:"", power: 2, delay: 0, range: 7.5, damage: "pierce", speed: 2.5},
+		staminacost: 2,
+		crit: 1.5,
+		projectileTargeting:true, onhit:"", power: 2.5, delay: 0, range: 7.5, damage: "pierce", speed: 2.5},
+	{name: "ArrowRecurve", tags: ["arrowreplace"], color: "#88ff88", sfx: "Arrow", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
+		staminacost: 3.5,
+		crit: 1.5,
+		projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 8.5, damage: "pierce", speed: 3},
+	{name: "ArrowLongbow", tags: ["arrowreplace"], color: "#88ff88", sfx: "Arrow", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
+		staminacost: 6.0,
+		crit: 1.5,
+		projectileTargeting:true, onhit:"", power: 6.0, delay: 0, range: 10, damage: "pierce", speed: 3.5},
+	{name: "ArrowBolt", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
+		crit: 2.0,
+		projectileTargeting:true, onhit:"", power: 6.5, delay: 0, range: 10, damage: "pierce", speed: 3},
+	{name: "ArrowBoltPistol", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
+		crit: 2.0,
+		projectileTargeting:true, onhit:"", power: 4.5, delay: 0, range: 7.5, damage: "pierce", speed: 2.5},
+	{name: "ArrowBoltHeavy", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
+		crit: 2.0,
+		projectileTargeting:true, onhit:"", power: 10, delay: 0, range: 14, damage: "pierce", speed: 4},
+
 	{name: "ArrowFire", tags: ["arrowspecial"], color: "#ffff00", sfx: "FireSpell", landsfx: "Lightning", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
+		crit: 1.5,
 		effectTileDurationMod: 12, effectTile: {
 			name: "Ember",
 			duration: -4,
 		},
 		onhit:"aoe", power: 4, noDirectDamage: true, delay: 0, range: 7.5, aoe: 1.5, lifetime: 1, damage: "fire", speed: 2.5, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 4}},
 	{name: "ArrowVine", tags: ["arrowspecial"], color: "#55ff55", sfx: "FireSpell", landsfx: "MagicSlash", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
+		crit: 1.5,
 		bindType: "Vine",
 		effectTileDurationMod: 10, effectTile: {
 			name: "Vines",

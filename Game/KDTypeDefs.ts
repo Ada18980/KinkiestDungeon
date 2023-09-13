@@ -936,6 +936,8 @@ interface enemy extends KDHasTags {
 		/** The chance per tick that the enemy will use their remote remote to punish the player when they are within range */
 		punishRemoteChance?: number,
 	}
+	/** Crit strike modifier of the enemy's attacks */
+	crit?: number,
 	/** */
 	bypass?: boolean,
 	/** */
@@ -1111,6 +1113,7 @@ interface weapon {
 	chance: number;
 	type: string;
 	bind?: number;
+	crit?: number;
 	bindType?: string;
 	distract?: number;
 	bindEff?: number;
@@ -1142,6 +1145,7 @@ interface weapon {
 	special?: {
 		type: string,
 		spell?: string,
+		prereq?: string,
 		selfCast?: boolean,
 		requiresEnergy?: boolean,
 		energyCost?: number,
@@ -1166,6 +1170,7 @@ interface KinkyDungeonEvent {
 	count?: number;
 	player?: boolean;
 	bind?: number;
+	crit?: number;
 	distract?: number;
 	mult?: number;
 	kind?: string;
@@ -1476,6 +1481,8 @@ type KDPerk = {
 }
 
 interface spell {
+	/** Crit damage multiplier of the spell */
+	crit?: number;
 	/** Sound efgfect that plays when you miscast */
 	miscastSfx?: string,
 	/** This spell doesnt hurt the target upon directly hitting, only the AoE */

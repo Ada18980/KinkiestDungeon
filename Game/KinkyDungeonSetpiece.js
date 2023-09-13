@@ -907,8 +907,11 @@ function KDCreateDoors(Left, Top, Width, Height, openChance = 0, convertDoodads 
 
 function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToChestList) {
 	// Determine faction
-	let factionList = [
+	let bandit = [
 		{faction: "Bandit", tags: ["bandit"], rtags: ["bandit"], ftags: ["miniboss", "boss"]},
+	];
+	let factionList = [
+		...bandit,
 		{faction: "Dragon", tags: ["dragon"], rtags: ["dragon"], ftags: ["miniboss", "boss"]},
 		{faction: "AncientRobot", tags: ["robot"], rtags: ["robot"], ftags: ["miniboss", "boss", "oldrobot"]},
 		{faction: "Maidforce", tags: ["maid"], rtags: ["maid"], ftags: ["miniboss", "boss"]},
@@ -946,6 +949,9 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 		});
 	}
 	let factionSelected = factionList[Math.floor(KDRandom() * factionList.length)];
+	if (!factionSelected) {
+		factionSelected = bandit[0];
+	}
 	// Place the chest
 	if (!NoAddToChestList) {
 		chestlist.push({x: cornerX + 1, y: cornerY + 1, priority: true, Faction: factionSelected.faction, NoTrap: true});

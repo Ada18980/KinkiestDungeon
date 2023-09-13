@@ -1228,12 +1228,14 @@ function KDUpdatePerksBonus() {
 function KinkyDungeonCalculateMiscastChance() {
 	let flags = {
 		miscastChance: Math.max(0, KinkyDungeonStatDistractionMiscastChance * Math.min(1, KinkyDungeonStatDistraction / (KinkyDungeonStatDistractionMax||1))),
+		satisfiedAmount: 0.3,
 	};
 	if (KinkyDungeonStatsChoice.has("AbsoluteFocus")) {
 		flags.miscastChance = Math.min(flags.miscastChance * 2, 1);
 	}
 	if (KinkyDungeonStatsChoice.get("Distracted")) flags.miscastChance += KDDistractedAmount;
 	KinkyDungeonSendEvent("calcMiscast", flags);
+	if (flags.satisfiedAmount && KDGameData.OrgasmStamina > 0.5) flags.miscastChance = Math.max(0, flags.miscastChance - flags.satisfiedAmount);
 	KinkyDungeonMiscastChance = Math.max(0, flags.miscastChance || 0);
 }
 
