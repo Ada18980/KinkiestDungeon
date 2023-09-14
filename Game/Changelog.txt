@@ -1,5 +1,9 @@
 CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1000 lines of changelogs)
 
+4.68 (Sep 2023)
+- Handcuffs now have Simple Locks which can be easily removed and don't consume a key after the first time
+- Simple Locks create a Simple Key consumable in your inventory which lasts an unlimited number of uses and lets you remove simple locks
+
 4.67 (Sep 2023)
 - Bows and crossbows now use a mechanic where they must be loaded before firing
 - New weapons: Pistol Crossbow, Recurve Bow, Longbow, Arbalest
