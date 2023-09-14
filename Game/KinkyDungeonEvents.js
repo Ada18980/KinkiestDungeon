@@ -988,6 +988,15 @@ let KDEventMapInventory = {
 			}
 		},
 	},
+	"postUnlock": {
+		"RequireLocked": (e, item, data) => {
+			if (data.item == item && !item.lock && !item.curse) {
+				KinkyDungeonRemoveRestraintSpecific(item, true, false, false);
+				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveCuffsNoLock")
+					.replace("RSTNME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+			}
+		},
+	},
 	"postRemoval": {
 		"replaceItem": (e, item, data) => {
 			if (data.item === item && !data.add && !data.shrine && e.list) {
@@ -1017,7 +1026,7 @@ let KDEventMapInventory = {
 					}
 				}
 				if (!cuffsbase) {
-					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false);
+					KinkyDungeonRemoveRestraintSpecific(item, false, false, false);
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveCuffs"), "lightgreen", 2);
 				}
 			}
@@ -3330,12 +3339,14 @@ let KDEventMapWeapon = {
 					aurasprite: "Reload",
 					//buffSprite: true,
 					power: Math.min(e.power, currentLoad + data.delta),
-					duration: 9999,
+					duration: 2,
 				});
 				if (currentLoad >= e.power) {
 					KinkyDungeonPlayerBuffs[weapon.name + "Load"].aura = undefined;
+					KinkyDungeonPlayerBuffs[weapon.name + "Load"].duration = 9999;
 				} else {
 					KinkyDungeonPlayerBuffs[weapon.name + "Load"].aura = e.color;
+					KinkyDungeonPlayerBuffs[weapon.name + "Load"].duration = 2;
 				}
 			}
 		},
@@ -5472,4 +5483,13 @@ function KDEventPrereq(e, item, tags) {
 		}
 	}
 	return true;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDIsHumanoid(enemy) {
+	return (enemy?.player) || (enemy?.Enemy.bound && !enemy.Enemy.nonHumanoid);
 }

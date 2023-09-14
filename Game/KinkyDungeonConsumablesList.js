@@ -28,6 +28,7 @@ let KinkyDungeonConsumables = {
 	"ScrollPurity" : {name: "ScrollPurity", noHands: true, rarity: 4, shop: true, type: "shrineRemove", shrine: "Vibes", sfx: "FireSpell"},
 
 	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock"},
+	"CuffKeys" : {name: "CuffKeys", rarity: 0, shop: false, type: "CuffKeys", noConsumeOnUse: true},
 };
 
 // Separate for organizational purposes

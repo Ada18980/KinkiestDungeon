@@ -12,6 +12,7 @@ let KDCornerTiles = {
 	'B': true,
 	'M': true,
 	'm': true,
+	'F': true,
 };
 
 /**

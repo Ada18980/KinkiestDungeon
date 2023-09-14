@@ -2283,12 +2283,13 @@ type EnemyEvent = {
 }
 
 type KDLockType = {
+	consume_key: boolean;
 	lockmult: number;
 
 	penalty?: Record<string, number>;
 
 	pickable: boolean;
-	pick_time: number;
+	pick_speed: number;
 	pick_diff: number;
 	pick_lim?: number;
 	canPick: (data: any) => boolean;

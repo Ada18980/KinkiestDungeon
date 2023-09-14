@@ -1861,11 +1861,11 @@ function KDModFavor(Faction, Amount) {
 	KDGameData.Favors[Faction] = Math.max(KDGameData.Favors[Faction] + Amount, 0);
 }
 
-function KinkyDungeonCheckLOS(enemy, player, distance, maxdistance, allowBlind, allowBars) {
+function KinkyDungeonCheckLOS(enemy, player, distance, maxdistance, allowBlind, allowBars, maxFails) {
 	let bs = (enemy && enemy.Enemy && enemy.Enemy.blindSight) ? enemy.Enemy.blindSight : 0;
 	if (KinkyDungeonStatsChoice.get("KillSquad")) bs += 20;
 	if (player.player && enemy.Enemy && (enemy.Enemy.playerBlindSight || KDAllied(enemy.Enemy))) bs = enemy.Enemy.playerBlindSight;
-	return distance <= maxdistance && ((allowBlind && bs >= distance) || KinkyDungeonCheckPath(enemy.x, enemy.y, player.x, player.y, allowBars));
+	return distance <= maxdistance && ((allowBlind && bs >= distance) || KinkyDungeonCheckPath(enemy.x, enemy.y, player.x, player.y, allowBars, false, maxFails));
 }
 
 function KinkyDungeonTrackSneak(enemy, delta, player, darkmult) {
