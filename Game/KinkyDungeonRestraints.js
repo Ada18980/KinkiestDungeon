@@ -686,8 +686,9 @@ function KinkyDungeonIsLockable(restraint) {
  *
  * @param {item} item
  * @param {string} lock
+ * @param {boolean} NoEvent
  */
-function KinkyDungeonLock(item, lock) {
+function KinkyDungeonLock(item, lock, NoEvent = false) {
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
 			item.lock = lock;
@@ -701,7 +702,19 @@ function KinkyDungeonLock(item, lock) {
 			}
 		}
 	} else {
+		if (KDLocks[lock] && KDLocks[lock].doUnlock) KDLocks[lock].doUnlock({item: item});
 		item.lock = lock;
+		if (!NoEvent) {
+			if (item.events) {
+				for (let e of item.events) {
+					if (e.trigger == "postUnlock" && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+						KinkyDungeonHandleInventoryEvent("postUnlock", e, item, {item: item, id: KinkyDungeonGetItemID()});
+					}
+				}
+			}
+			KinkyDungeonSendEvent("postUnlock", {item: item});
+		}
+
 		InventoryUnlock(KinkyDungeonPlayer,  KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group);
 		if (!KinkyDungeonRestraintsLocked.includes( KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group))
 			InventoryUnlock(Player, KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group);
@@ -917,6 +930,14 @@ function KinkyDungeonPlayerGetRestraintsWithLocks(Locks, recursive) {
 function KinkyDungeonRemoveKeysUnlock(lock) {
 	if (KDLocks[lock]) KDLocks[lock].removeKeys({unlock: true});
 }
+/**
+ *
+ * @param {string} lock
+ */
+function KinkyDungeonRemoveKeysDropped(lock) {
+	if (KDLocks[lock]) KDLocks[lock].removeKeys({dropped: true});
+}
+
 
 /**
  *
@@ -1507,7 +1528,7 @@ function KinkyDungeonUnlockAttempt(lock) {
 		let keytype = KinkyDungeonGetKey(lock);
 		if (keytype) {
 			KinkyDungeonDropItem({name: keytype+"Key"}, KinkyDungeonPlayerEntity, true);
-			KDLocks[lock].removeKeys({dropped: true});
+			KinkyDungeonRemoveKeysDropped(lock);
 		}
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Miss.ogg");
 	} else {
@@ -1547,6 +1568,12 @@ function KDGetRestraintAffinity(item, data) {
  */
 function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChancePre, ApplyGhost, ApplyPlayerBonus, Msg) {
 	let escapeChance = escapeChancePre != undefined ? escapeChancePre : KDRestraint(restraint).escapeChance[StruggleType] != undefined ? KDRestraint(restraint).escapeChance[StruggleType] : 1.0;
+	let lockType = (restraint.lock && KDLocks[restraint.lock]) ? KDLocks[restraint.lock] : null;
+	if (lockType) {
+		let extraChance = (StruggleType == "Pick" && lockType.pick_diff) ? lockType.pick_diff : 0;
+		if (extraChance) escapeChance += extraChance;
+	}
+
 	let limitChance = limitChancePre != undefined ? limitChancePre : (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
 		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.05);
 
@@ -2296,6 +2323,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 							+ ".ogg");
 						if (!restraint.pickProgress) restraint.pickProgress = 0;
 						let mult = 0.5 + 0.6 * (progress);
+						if (lockType?.pick_speed) mult /= lockType.pick_speed;
 						if (KinkyDungeonStatsChoice.get("Locksmith")) mult *= KDLocksmithSpeedBonus;
 						if (KinkyDungeonStatsChoice.get("Clueless")) mult *= KDCluelessSpeedBonus;
 						mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
@@ -2314,7 +2342,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 						let keytype = KinkyDungeonGetKey(restraint.lock);
 						if (keytype) {
 							KinkyDungeonDropItem({name: keytype+"Key"}, KinkyDungeonPlayerEntity, true);
-							KinkyDungeonRemoveKeysUnlock(restraint.lock);
+							KinkyDungeonRemoveKeysDropped(restraint.lock);
 						}
 					} else {
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
@@ -3319,6 +3347,32 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 		return Math.max(1, restraint.power);
 	}
 	return 0;
+}
+
+/**
+ * It removes a restraint from the player
+ * @param {item} item - The item to remove.
+ * @param {boolean} [Keep] - If true, the item will be kept in the player's inventory.
+ * @param {boolean} [Add] - If true, this is part of the process of adding another item and should not trigger infinite recursion
+ * @param {boolean} [NoEvent] - If true, the item will not trigger any events.
+ * @param {boolean} [Shrine] - If the item is being removed from a shrine, this is true.
+ * @param {boolean} [UnLink] - If the item is being removed as part of an unlinking process
+ * @param {entity} [Remover] - Who removes this
+ * @returns {boolean} true if the item was removed, false if it was not.
+ */
+function KinkyDungeonRemoveRestraintSpecific(item, Keep, Add, NoEvent, Shrine, UnLink, Remover) {
+	let rest = KinkyDungeonGetRestraintItem(KDRestraint(item)?.Group);
+	if (rest == item) {
+		return KinkyDungeonRemoveRestraint(KDRestraint(item).Group, Keep, Add, NoEvent, Shrine, UnLink, Remover);
+	} else if (KDRestraint(item)) {
+		let list = KDDynamicLinkList(rest, true);
+		for (let i = 1; i < list.length; i++) {
+			if (list[i] == item) {
+				return KinkyDungeonRemoveDynamicRestraint(list[i-1], Keep, NoEvent, Remover);
+			}
+		}
+	}
+	return false;
 }
 
 /**
