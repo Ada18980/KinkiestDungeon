@@ -1718,13 +1718,13 @@ KillDragonPoison,"The Poison Dragonheart retreats in a green mist."
 AttackDragonPoisonBind,"The Poison Dragonheart apprehends you! (+RestraintAdded)"
 AttackDragonPoisonStun,"The Poison Dragonheart smacks you with her axe! (DamageTaken)"
 AttackDragonPoison,"The Poison Dragonheart thrums her claws across your figure! (DamageTaken)"
-AttackDragonPoisonLock,"The Dragonheart locks your restraint! (DamageTaken)"
+AttackDragonPoisonLock,"The Dragonheart locks your restraint using natural magics! (DamageTaken)"
 
 NameDragonCrystal,Crystal Dragonheart
 KillDragonCrystal,"The Crystal Dragonheart screams and falls to the ground dramatically."
 AttackDragonCrystalBind,"The Crystal Dragonheart apprehends you! (+RestraintAdded)"
 AttackDragonCrystal,"The Crystal Dragonheart squeezes you in a big hug! (DamageTaken)"
-AttackDragonCrystalLock,"The Dragonheart locks your restraint! (DamageTaken)"
+AttackDragonCrystalLock,"The Dragonheart grows a crystalline lock on your restraints! (DamageTaken)"
 
 KinkyDungeonSummonMultiChaoticCrystal,Many crystals rise up out of the ground!
 KinkyDungeonSummonSingleChaoticCrystal,A crystal rises up out of the ground!
@@ -1760,8 +1760,13 @@ AttackSoulCrystalActive,"The soul crystal leeches strength from you! (DamageTake
 NameDragonShadow,Shadow Dragonheart
 KillDragonShadow,"The Shadow Dragonheart frowns and runs away."
 AttackDragonShadowBind,"The Shadow Dragonheart apprehends you! (+RestraintAdded)"
+AttackDragonShadowLock,"The Shadow Dragonheart conjures a shadowly lock! (DamageTaken)"
 AttackDragonShadowPull,"The Shadow Dragonheart extends her scythe and pulls you closer!!!"
 AttackDragonShadow,"The Shadow Dragonheart catches you with her scythe! (DamageTaken)"
+
+
+
+
 
 NameDragonLeader,Dragonheart Leader
 KillDragonLeader,"The Dragonheart Leader admits defeat."
@@ -2498,7 +2503,9 @@ KinkyDungeonSummonMultiShadowHand,Several dark hands emerge from the shadows!
 NameCorruptedAdventurer,Corrupted Adventurer
 KillCorruptedAdventurer,"The corrupted adventurer falls into a deep sleep."
 AttackCorruptedAdventurerBind,"The corrupted aventurer's many arms latch onto you! (+RestraintAdded)"
+AttackCorruptedAdventurerLock,"The corrupted aventurer clicks a lock on from behind you! (DamageTaken)"
 AttackCorruptedAdventurer,"The corrupted adventurer drags her chilling fingers across your vulnerable skin! (DamageTaken)"
+
 
 NameShadowGhast,Shadowy Ghast
 KillShadowGhast,"The shadowy ghast screeches and disappears..."
