@@ -4321,6 +4321,8 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	KinkyDungeonUpdateStats(0);
 
+	KDTickNeeds(delta);
+
 	let Dstart = performance.now();
 	KinkyDungeonDressPlayer();
 	if (KDDebug) console.log(`Dressing ${KinkyDungeonCurrentTick} took ${(performance.now() - Dstart)} milliseconds.`);
