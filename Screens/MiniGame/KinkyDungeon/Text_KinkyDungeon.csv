@@ -379,11 +379,11 @@ KinkyDungeonSpellSecondWind1,Triumphant Wind
 KinkyDungeonSpellDescriptionSecondWind1,"Second Wind now regenerates up to 25% of your max WP"
 
 KinkyDungeonStatLockedUp,"Locked Up"
-KinkyDungeonStatDescLockedUp,"While wearing a chastity belt, your Distraction floor lowers when you perform actions such as defeating enemies, opening chests, and breaking orbs. (Upgrades available in spell tree)"
+KinkyDungeonStatDescLockedUp,"While wearing a chastity belt, your Desire lowers when you perform actions such as defeating enemies, opening chests, and breaking orbs. (Upgrades available in spell tree)"
 KinkyDungeonSpellLockedUp0,Locked Up Perk
-KinkyDungeonSpellDescriptionLockedUp0,"While wearing a chastity belt, your Distraction floor lowers when you perform actions such as capturing, opening chests, and breaking orbs."
+KinkyDungeonSpellDescriptionLockedUp0,"While wearing a chastity belt, your Desire lowers when you perform actions such as capturing, opening chests, and breaking orbs."
 KinkyDungeonSpellLockedUp1,Controlled Urges
-KinkyDungeonSpellDescriptionLockedUp1,"Locked Up is 150% effective. Gain +70 psychic/charm resist from a chastity belt and +30 from a chastity bra. While not wearing a chastity belt, your distraction floor increases slowly."
+KinkyDungeonSpellDescriptionLockedUp1,"Locked Up is 150% effective. Gain +70 psychic/charm resist from a chastity belt and +30 from a chastity bra. While not wearing a chastity belt, your Desire increases slowly."
 KinkyDungeonSpellLockedUp2,Ready for Training
 KinkyDungeonSpellDescriptionLockedUp2,"Locked Up is 200% effective. +25% stamina regen per 100 current DP. Playing with yourself is less effective while vibrators are off or set to edge. Slow level is increased by 1 when you aren't wearing any chastity."
 KinkyDungeonSpellLockedUp3,Efficient Denial
@@ -740,7 +740,7 @@ StatStamina,"SP: CURRENT/MAX"
 StatWillpower,"Willpower: CURRENT/MAX"
 StatMana,"MP: CURRENT/MAX"
 TooltipMana,"Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool."
-TooltipDistraction,"Your minimum distraction increases over time as you encounter distracting things."
+TooltipDistraction,"Your Desire increases over time as you encounter distracting things."
 TooltipStamina,"Stamina recovers more quickly when you aren't spending it."
 TooltipWill,"Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape."
 TooltipCharge,"Charge is used to power various magic items and weapons."
@@ -2971,6 +2971,8 @@ KinkyDungeonObjectShrine,"A shrine to the goddess of TYPE. A pool of mana glimme
 KinkyDungeonObjectShrineCommerce,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectDoor,"That door is open. Do you want to close it?"
 KinkyDungeonCloseDoorDone,"You slam the door and jam it shut!"
+KinkyDungeonShrinePassion,"Passion"
+KinkyDungeonShrineFrustration,"Frustration"
 KinkyDungeonShrineGhost,"Submissiveness"
 KinkyDungeonShrinePrisoner,"Security Level"
 KinkyDungeonShrineCharms,"Undead"
@@ -3648,7 +3650,7 @@ RestraintTrapPlugDesc,"A sizeable plug that makes you happy... a little too happ
 RestraintTrapPlugDesc2,"It vibrates periodically and adds distraction when moving. Type: Pleasure"
 RestraintTrapPlug2,Teaser Plug
 RestraintTrapPlug2Desc,"A sizeable plug that will tease you but never let you go..."
-RestraintTrapPlug2Desc2,"It vibrates weakly periodically. Type: Teasing, Edging"
+RestraintTrapPlug2Desc2,"It vibrates weakly periodically. Type: Teasing, Denial"
 RestraintTrapPlug3,Torment Plug
 RestraintTrapPlug3Desc,"A sizeable plug that will make your life unbearably pleasurable..."
 RestraintTrapPlug3Desc2,"It vibrates strongly periodically and has a denial setting. Type: Denial"
@@ -11199,3 +11201,6 @@ KinkyDungeonInventoryItemCuffKeys,Simple Keys
 KinkyDungeonInventoryItemCuffKeysUse,"You twirl the keys around your finger."
 KinkyDungeonInventoryItemCuffKeysDesc,"A handy key for getting out of common handcuffs and shackles."
 KinkyDungeonInventoryItemCuffKeysDesc2,"It's not sophisticated enough to work on higher-quality locks, but can be used many times."
+
+
+KDRep,Rep

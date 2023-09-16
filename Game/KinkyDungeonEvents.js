@@ -4852,6 +4852,26 @@ let KDEventMapGeneric = {
 			//}
 		}
 	},
+	"orgasm": {
+		"tickNeeds": (e, data) => {
+			KDNeedsOrgasm(data);
+		}
+	},
+	"playSelf": {
+		"tickNeeds": (e, data) => {
+			KDNeedsPlaySelf(data);
+		}
+	},
+	"edge": {
+		"tickNeeds": (e, data) => {
+			KDNeedsEdge(data);
+		}
+	},
+	"deny": {
+		"tickNeeds": (e, data) => {
+			KDNeedsDeny(data);
+		}
+	},
 	"defeat": {
 		"dollRoomRemove": (e, enemy, data) => {
 			// Removes the excess dollsmiths that are spawned when you escape the dollroom

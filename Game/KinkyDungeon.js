@@ -3198,6 +3198,7 @@ function KinkyDungeonLoadGame(String) {
 				KDUpdateVision();
 			}
 			KinkyDungeonFloaters = [];
+			KDFixNeeds();
 			KinkyDungeonAdvanceTime(0, true, true);
 			return true;
 		}

@@ -1442,6 +1442,7 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonPlayCorner"), "#88FF00", 4);
 	}
 	KDGameData.PlaySelfTurns = data.playTime;
+	KinkyDungeonSetFlag("PlayWithSelf", KDGameData.PlaySelfTurns + 3);
 	KDGameData.DistractionCooldown = data.distractionCooldown;
 
 	return amount;
@@ -1539,7 +1540,7 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 		// You finally shudder and tremble as a wave of pleasure washes over you...
 		KinkyDungeonStatBlind = data.stunTime + 2;
 		//KinkyDungeonOrgasmStunTime = 4;
-		KinkyDungeonSetFlag("OrgSuccess", 3);
+		KinkyDungeonSetFlag("OrgSuccess", data.stunTime + 3);
 		KinkyDungeonSetFlag("PlayerOrgasm", data.stunTime);
 		KinkyDungeonSetFlag("PlayerOrgasmFilter", data.stunTime + 1);
 		KDGameData.OrgasmStamina = data.satisfaction;
@@ -1573,11 +1574,11 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 		}
 		if (denied && KinkyDungeonVibeLevel > 0) {
 			msg = "KinkyDungeonDeny";
-			KinkyDungeonSetFlag("OrgDenied", 3);
+			KinkyDungeonSetFlag("OrgDenied", KDGameData.PlaySelfTurns + 3);
 			KinkyDungeonSendEvent("deny", data);
 		} else {
 			msg = "KinkyDungeonEdge";
-			KinkyDungeonSetFlag("OrgEdged", 3);
+			KinkyDungeonSetFlag("OrgEdged", KDGameData.PlaySelfTurns + 3);
 			KinkyDungeonSendEvent("edge", data);
 		}
 	}
