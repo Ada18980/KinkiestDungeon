@@ -96,8 +96,10 @@ async function KDExecuteMods() {
 	if (KDAllModFiles.length > 0)
 		KDModsLoaded = true;
 
+	KDLoadPerks();
 	KinkyDungeonRefreshRestraintsCache();
 	KinkyDungeonRefreshEnemiesCache();
+	KDAwaitingModLoad = false;
 }
 
 

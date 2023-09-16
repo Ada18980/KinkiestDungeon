@@ -5,6 +5,13 @@ const KDRAGE = -31;
 const KDPLEASED = 15;
 const KDFRIENDLY = 35;
 
+let KDStatRep = ["Ghost", "Prisoner", "Passion", "Frustration"];
+
+let KDRepColor = {
+	Passion: "#ff5555",
+	Frustration: "#ff9999",
+};
+
 let KDFactionGoddess = {
 	"Metal": {
 		"Angel": 0.002,
@@ -137,7 +144,7 @@ function KDPearlRequirement() {
 }
 
 function KinkyDungeonInitReputation() {
-	KinkyDungeonGoddessRep = {"Ghost" : -50, "Prisoner" : -50};
+	KinkyDungeonGoddessRep = {"Ghost" : -50, "Prisoner" : -50, "Frustration" : -50, "Passion" : -50};
 	for (let shrine in KinkyDungeonShrineBaseCosts) {
 		KinkyDungeonGoddessRep[shrine] = KinkyDungeonStatsChoice.get("Cursed") ? -50 : 0;
 	}
@@ -234,7 +241,7 @@ function KinkyDungeonChangeRep(Rep, Amount) {
 		if (Math.abs(KinkyDungeonGoddessRep[Rep] - start) > 0.1) {
 			let value = KinkyDungeonGoddessRep[Rep] - start;
 			let amount = Math.round((value)*10)/10;
-			KinkyDungeonSendFloater({x: 1100, y: 800 - KDRecentRepIndex * 40}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonShrine" + Rep)} ${TextGet("KDrep")}`, "white", 5, true);
+			KinkyDungeonSendFloater({x: 1100, y: 800 - KDRecentRepIndex * 40}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonShrine" + Rep)} ${!KDStatRep.includes(Rep) ? TextGet("KDRep") : ""}`, "white", 5, true);
 			KDRecentRepIndex += 1;
 		}
 
@@ -337,13 +344,19 @@ function KinkyDungeonDrawReputation() {
 			let color = "#ffff00";
 			let goddessColor = "white";
 			let goddessSuff = "";
-			if (value < -10) {
-				if (value < -30) color = "#ff0000";
-				else color = "#ff8800";
-			} else if (value >= 10) {
-				if (value >= 30) color = "#00ff00";
-				else color = "#88ff00";
+			if (KDRepColor[rep]) color = KDRepColor[rep];
+			else {
+				if (value < -10) {
+					if (value < -30) color = "#ff0000";
+					else color = "#ff8800";
+				} else if (value >= 10) {
+					if (value >= 30) color = "#00ff00";
+					else color = "#88ff00";
+				}
 			}
+
+
+
 			if (tooltip) {
 				goddessColor = "#888888";
 				if (KDFactionGoddess[rep] && KDFactionGoddess[rep][tooltip] != 0) {
@@ -357,7 +370,7 @@ function KinkyDungeonDrawReputation() {
 				}
 			}
 			let suff = "";
-			if (rep != "Ghost" && rep != "Prisoner") suff = "" + KinkyDungeonRepName(value);
+			if (!KDStatRep.includes(rep)) suff = "" + KinkyDungeonRepName(value);
 			DrawTextKD(TextGet("KinkyDungeonShrine" + rep) + goddessSuff, canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i, goddessColor, "black", undefined, "left");
 			if (suff) {
 				DrawTextFitKD(suff, canvasOffsetX_ui + 275 + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
@@ -601,7 +614,7 @@ function KinkyDungeonPenanceCost(rep) {
  * @returns {boolean}
  */
 function KinkyDungeonCanPenance(rep, value) {
-	return value < 40 && !KDGameData.KinkyDungeonPenance && KinkyDungeonBullets.length < 1;
+	return value < 40 && !KDGameData.KinkyDungeonPenance && KDMapData.Bullets.length < 1;
 }
 
 /**
@@ -664,7 +677,7 @@ function KinkyDungeonCanRescue(rep, value) {
 function KinkyDungeonUpdateAngel(delta) {
 	// Remove it
 	if (KinkyDungeonFlags.get("AngelHelp") > 0 && KinkyDungeonFlags.get("AngelHelp") < 5) {
-		for (let t of Object.entries(KinkyDungeonTiles)) {
+		for (let t of Object.entries(KDMapData.Tiles)) {
 			if (t[1].Type == "Angel") {
 				let x = parseInt(t[0].split(',')[0]);
 				let y = parseInt(t[0].split(',')[1]);
@@ -687,7 +700,7 @@ function KinkyDungeonUpdateAngel(delta) {
 			KinkyDungeonAngel().gx = KinkyDungeonPlayerEntity.x;
 			KinkyDungeonAngel().gy = KinkyDungeonPlayerEntity.y;
 			if (KDGameData.KDPenanceMode == "") {
-				KinkyDungeonBullets = [];
+				KDMapData.Bullets = [];
 				if (KDGameData.KDPenanceStage == 0) {
 					let divineRestraints = [];
 					for (let inv of KinkyDungeonAllRestraint()) {
@@ -745,11 +758,11 @@ function KinkyDungeonUpdateAngel(delta) {
 	if (!KDGameData.KinkyDungeonPenance || (KinkyDungeonAngel())) {
 		if (KDGameData.KinkyDungeonAngel) {
 			KDGameData.KDPenanceStageEnd += delta;
-			if (!KinkyDungeonEntities.includes(KinkyDungeonAngel())) {
+			if (!KDMapData.Entities.includes(KinkyDungeonAngel())) {
 				KDGameData.KinkyDungeonAngel = 0;
 			} else if (KDAllied(KinkyDungeonAngel()) && KinkyDungeonAngel() && (!KDGameData.KinkyDungeonPenance || KDHostile(KinkyDungeonAngel())) && (KDGameData.KDPenanceStageEnd > 10 && KDRandom() < 0.2)) {
 				KDClearItems(KinkyDungeonAngel());
-				KDSpliceIndex(KinkyDungeonEntities.indexOf(KinkyDungeonAngel()), 1);
+				KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonAngel()), 1);
 				KDGameData.KinkyDungeonAngel = 0;
 				KDGameData.KinkyDungeonPenance = false;
 			}

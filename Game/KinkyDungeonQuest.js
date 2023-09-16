@@ -136,7 +136,9 @@ let KDQuests = {
 							if (ee) {
 								ee.faction = "Delinquent";
 								ee.factionrep = {"Maidforce": 0.01};
-								ee.AI = "looseguard";
+								if (KDCanOverrideAI(ee))
+									ee.AI = "looseguard";
+								else ee.AI = KDGetAIOverride(ee, 'looseguard');
 							}
 						}
 					}
@@ -149,7 +151,9 @@ let KDQuests = {
 							if (ee) {
 								ee.faction = "Delinquent";
 								ee.factionrep = {"Maidforce": 0.0025};
-								ee.AI = "looseguard";
+								if (KDCanOverrideAI(ee))
+									ee.AI = "looseguard";
+								else ee.AI = KDGetAIOverride(ee, 'looseguard');
 							}
 						}
 					}
@@ -185,7 +189,7 @@ let KDQuests = {
 							let ee = DialogueCreateEnemy(point.x, point.y, e.name);
 							if (ee) {
 								ee.faction = "Wolfhunter";
-								ee.AI = "looseguard";
+								ee.AI = "patrol";
 							}
 						}
 					}
@@ -197,7 +201,7 @@ let KDQuests = {
 							let ee = DialogueCreateEnemy(point.x, point.y, e.name);
 							if (ee) {
 								ee.faction = "Wolfhunter";
-								ee.AI = "looseguard";
+								ee.AI = "patrol";
 							}
 						}
 					}
@@ -296,7 +300,7 @@ function KDQuestTick(quests) {
 function KDRemoveQuest(quest) {
 	if (!KDGameData.Quests)
 		KDGameData.Quests = [];
-	else
+	else if (KDGameData.Quests.indexOf(quest) > -1)
 		KDGameData.Quests.splice(KDGameData.Quests.indexOf(quest), 1);
 }
 function KDAddQuest(quest) {

@@ -62,8 +62,14 @@ function KinkyDungeonCrashReportStateData() {
 		`Test mode: ${TestMode}`,
 		`Debug mode: ${KDDebugMode}`,
 		`Kinky Dungeon state: ${KinkyDungeonState}`,
+		`Kinky Dungeon draw state: ${KinkyDungeonDrawState}`,
 		`Kinky Dungeon running: ${KinkyDungeonGameRunning}`,
 		`Loaded mod files: [${modFiles}]`,
+		`Dialogue Speaker: [${KDGameData.CurrentDialogMsgSpeaker}]`,
+		`Room Type: [${KDGameData.RoomType}]`,
+		`Map Mod: [${KDGameData.MapMod}]`,
+		`Last action: [${KinkyDungeonLastAction}]`,
+		`Last turns action: [${KinkyDungeonLastTurnAction}]`,
 	].join("\n");
 }
 

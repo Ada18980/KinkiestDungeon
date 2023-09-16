@@ -179,3 +179,39 @@ let KDBuffReference = {
 };
 
 let KDDisenchantSelf = {id: "DisenchantSelf", aura: "#8888ff", type: "Disenchant", power: 9.9, player: true, enemies: true, duration: 10,};
+
+/** @type {Record<string, (entity: entity, buff: any) => void>}>} */
+let KDCustomBuff = {
+};
+
+/**
+ * @type {Record<string, (buff, entity) => void>}}
+ */
+let KDBuffClick = {
+	"SlimeMimic": (buff, entity) => {
+		// Toggle SlimeMimic on/off
+		let b = KinkyDungeonPlayerBuffs.d_SlimeMimic;
+		if (b && b.duration > 0) {
+			b.duration = 0;
+		} else {
+			KinkyDungeonApplyBuffToEntity(entity,
+				{id: "d_SlimeMimic", click: "SlimeMimic", type: "d_SlimeMimic", aura: "#ffffff", aurasprite: "Null", duration: 9999, power: 1}
+			);
+		}
+	},
+	"OrgasmResist": (buff, entity) => {
+		// Toggle SlimeMimic on/off
+		let b = KinkyDungeonPlayerBuffs.d_OrgasmResist;
+		if (b && b.duration > 0) {
+			b.duration = 0;
+			KinkyDungeonApplyBuffToEntity(entity,
+				{id: "e_OrgasmResist", click: "OrgasmResist", type: "e_OrgasmResist", buffSprite: true, aura: "#ffffff", aurasprite: "Null", duration: 9999, power: 1}
+			);
+		} else {
+			KinkyDungeonApplyBuffToEntity(entity,
+				{id: "d_OrgasmResist", click: "OrgasmResist", type: "d_OrgasmResist", buffSprite: true, aura: "#ffffff", aurasprite: "Null", duration: 9999, power: 1}
+			);
+			if (KinkyDungeonPlayerBuffs.e_OrgasmResist) KinkyDungeonPlayerBuffs.e_OrgasmResist.duration = 0;
+		}
+	},
+};

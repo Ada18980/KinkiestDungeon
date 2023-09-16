@@ -15,14 +15,14 @@ function KinkyDungeonMultiplayerUpdate(Delay) {
 		}
 
 		if (MN.length > 0) {
-			let data = KinkyDungeonPackData(KinkyDungeonGrid_Last != KinkyDungeonGrid, true, KinkyDungeonMultiplayerInventoryFlag, CommonTime() > KinkyDungeonNextDataSendStatsTime + KinkyDungeonNextDataSendStatsTimeDelay);
+			let data = KinkyDungeonPackData(KinkyDungeonGrid_Last != KDMapData.Grid, true, KinkyDungeonMultiplayerInventoryFlag, CommonTime() > KinkyDungeonNextDataSendStatsTime + KinkyDungeonNextDataSendStatsTimeDelay);
 			KinkyDungeonSendData(data);
 		}
 
 		KinkyDungeonNextDataSendTime = CommonTime();
 
 		if (CommonTime() > KinkyDungeonNextDataSendStatsTime + KinkyDungeonNextDataSendStatsTimeDelay) KinkyDungeonNextDataSendStatsTime = CommonTime();
-		KinkyDungeonGrid_Last = KinkyDungeonGrid;
+		KinkyDungeonGrid_Last = KDMapData.Grid;
 		KinkyDungeonMultiplayerInventoryFlag = false;
 	}
 }
@@ -75,7 +75,7 @@ function KinkyDungeonUpdateFromData() {
 		return false;
 	}
 	if (KinkyDungeonGameData.enemies) {
-		KinkyDungeonEntities = [];
+		KDMapData.Entities = [];
 		KDUpdateEnemyCache = true;
 		let enemies = JSON.parse(KinkyDungeonGameData.enemies);
 
@@ -109,35 +109,35 @@ function KinkyDungeonUpdateFromData() {
 	}
 
 	if (KinkyDungeonGameData.bullets) {
-		KinkyDungeonBullets = [];
+		KDMapData.Bullets = [];
 		let bullets = JSON.parse(KinkyDungeonGameData.bullets);
 
 		for (let N = 0; N < bullets.length; N++) {
 			let bullet = bullets[N].split('/');
 			let i = 1;
 			let name = bullet[i++];
-			KinkyDungeonBullets.push({spriteID:name + CommonTime(), x:bullet[i], xx:bullet[i++], y:bullet[i], yy:bullet[i++], vx:bullet[i++], vy:bullet[i++],
+			KDMapData.Bullets.push({spriteID:name + CommonTime(), x:bullet[i], xx:bullet[i++], y:bullet[i], yy:bullet[i++], vx:bullet[i++], vy:bullet[i++],
 				bullet:{name: name, width:bullet[i++], height:bullet[i++]}});
 		}
 	}
 	if (KinkyDungeonGameData.items) {
-		KinkyDungeonGroundItems = [];
+		KDMapData.GroundItems = [];
 		let items = JSON.parse(KinkyDungeonGameData.items);
 
 		for (let N = 0; N < items.length; N++) {
 			let item = items[N].split('/');
 			let i = 1;
-			KinkyDungeonGroundItems.push({name:item[i++], x:item[i++], y:item[i++]});
+			KDMapData.GroundItems.push({name:item[i++], x:item[i++], y:item[i++]});
 		}
 	}
 
 	if (KinkyDungeonGameData.map)
-		KinkyDungeonGrid = KinkyDungeonGameData.map;
+		KDMapData.Grid = KinkyDungeonGameData.map;
 	if (KinkyDungeonGameData.meta) {
 		KinkyDungeonUpdateLightGrid = true;
 
-		KinkyDungeonGridWidth = Math.round(KinkyDungeonGameData.meta.w);
-		KinkyDungeonGridHeight = Math.round(KinkyDungeonGameData.meta.h);
+		KDMapData.GridWidth = Math.round(KinkyDungeonGameData.meta.w);
+		KDMapData.GridHeight = Math.round(KinkyDungeonGameData.meta.h);
 		KinkyDungeonPlayerEntity.x = Math.round(KinkyDungeonGameData.meta.x);
 		KinkyDungeonPlayerEntity.y = Math.round(KinkyDungeonGameData.meta.y);
 
@@ -162,7 +162,7 @@ function KinkyDungeonUpdateFromData() {
  * @returns {string} - String containing game data
  */
 function KinkyDungeonPackData(IncludeMap, IncludeItems, IncludeInventory, IncludeStats) {
-	let enemies = JSON.stringify(KinkyDungeonEntities, (key, value) => {
+	let enemies = JSON.stringify(KDMapData.Entities, (key, value) => {
 		if (CommonIsNumeric(key) && typeof value === "object") {
 			if (value.Enemy) {
 				return "E/" + value.Enemy.name + "/" + (value.stun ? value.stun : 0) + "/"+value.x+"/"+value.y;
@@ -171,7 +171,7 @@ function KinkyDungeonPackData(IncludeMap, IncludeItems, IncludeInventory, Includ
 		return value;
 	});
 
-	let items = IncludeItems ? JSON.stringify(KinkyDungeonGroundItems, (key, value) => {
+	let items = IncludeItems ? JSON.stringify(KDMapData.GroundItems, (key, value) => {
 		if (CommonIsNumeric(key) && typeof value === "object") {
 			if (value.name) {
 				return "G/" + value.name + "/"+value.x+"/"+value.y;
@@ -180,7 +180,7 @@ function KinkyDungeonPackData(IncludeMap, IncludeItems, IncludeInventory, Includ
 		return value;
 	}) : "";
 
-	let bullets = JSON.stringify(KinkyDungeonBullets, (key, value) => {
+	let bullets = JSON.stringify(KDMapData.Bullets, (key, value) => {
 		if (CommonIsNumeric(key) && typeof value === "object") {
 			if (value.bullet) {
 				return "B/" + value.bullet.name + "/"+value.x+"/"+value.y + "/"+(Math.round(value.vx*10)/10)+"/"+(Math.round(value.vy*10)/10 + "/"+value.bullet.width + "/"+value.bullet.height);
@@ -189,7 +189,7 @@ function KinkyDungeonPackData(IncludeMap, IncludeItems, IncludeInventory, Includ
 		return "";
 	});
 
-	let map = IncludeMap ? KinkyDungeonGrid : "";
+	let map = IncludeMap ? KDMapData.Grid : "";
 
 	let inventory = IncludeInventory ? JSON.stringify(Array.from(KinkyDungeonInventory.get(Restraint).values()), (key, value) => {
 		if (CommonIsNumeric(key) && typeof value === "object") {
@@ -200,7 +200,7 @@ function KinkyDungeonPackData(IncludeMap, IncludeItems, IncludeInventory, Includ
 		return "";
 	}) : "";
 
-	let meta = {w: KinkyDungeonGridWidth, h: KinkyDungeonGridHeight, x:KinkyDungeonPlayerEntity ? KinkyDungeonPlayerEntity.x : 0, y:KinkyDungeonPlayerEntity ? KinkyDungeonPlayerEntity.y : 0,};
+	let meta = {w: KDMapData.GridWidth, h: KDMapData.GridHeight, x:KinkyDungeonPlayerEntity ? KinkyDungeonPlayerEntity.x : 0, y:KinkyDungeonPlayerEntity ? KinkyDungeonPlayerEntity.y : 0,};
 
 	if (IncludeStats) {
 		meta.sp = Math.round(KinkyDungeonStatStamina);

@@ -1,5 +1,20 @@
 "use strict";
 
+let KDCornerTiles = {
+	'A': true,
+	'a': true,
+	'c': true,
+	'o': true,
+	'O': true,
+	'-': true,
+	'=': true,
+	'+': true,
+	'B': true,
+	'M': true,
+	'm': true,
+	'F': true,
+};
+
 /**
  * Updates local tiles such as conveyors
  * @type {Record<string, (delta: number, X?: number, Y?: number) => void>}
@@ -392,7 +407,23 @@ let KDMoveObjectFunctions = {
 			KinkyDungeonChestConfirm = true;
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2, true);
 		} else {
-			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType, roll, KinkyDungeonTilesGet(moveX + "," +moveY), undefined, noTrap);
+			let data = {
+				chestType: chestType,
+				roll: roll,
+				x: moveX,
+				y: moveY,
+				tile: KinkyDungeonTilesGet(moveX + "," +moveY),
+				noTrap: noTrap,
+				level: MiniGameKinkyDungeonLevel,
+				index: KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				lootTrap: lootTrap,
+			};
+			KinkyDungeonSendEvent("beforeChest", data);
+			chestType = data.chestType;
+			roll = data.roll;
+			noTrap = data.noTrap;
+			lootTrap = data.lootTrap;
+			KinkyDungeonLoot(data.level, data.index, chestType, roll, data.tile, undefined, noTrap);
 			if (lootTrap) {
 				KDTrigPanic();
 				KDSpawnLootTrap(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, lootTrap.trap, lootTrap.mult, lootTrap.duration);
@@ -508,12 +539,16 @@ function KDSlimeImmuneEntity(entity) {
 
 function KDSlimeWalker(entity) {
 	if (KDSlimeImmuneEntity(entity)) return true;
-	else if (!entity.player && entity.Enemy?.tags.flying) return true;
+	else if (!entity.player && KDIsFlying(entity)) return true;
 	return false;
 }
 
 function KDSlimeImmune(enemy) {
-	return enemy.Enemy?.tags.slime || enemy.Enemy?.tags.glueimmune || enemy.Enemy?.tags.glueresist || enemy.Enemy?.tags.slimewalk || KDEntityBuffedStat(enemy, "glueDamageResist") >= 0.45;
+	return enemy.Enemy?.tags.slime
+		|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "resist")
+		|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "immune")
+		|| enemy.Enemy?.tags.slimewalk
+		|| KDEntityBuffedStat(enemy, "glueDamageResist") >= 0.45;
 }
 /**
  * These happen when stepped on
@@ -1124,10 +1159,10 @@ let KDEffectTileBulletFunctions = {
 				if (type == "fire" && b.bullet.damage.damage > 0) {
 					tile.duration = 0;
 					KDSmokePuff(tile.x, tile.y, 1.5, 0.1, true);
-					KDCreateEffectTile(tile.x, tile.y, {
+					KDCreateAoEEffectTiles(tile.x, tile.y, {
 						name: "Steam",
 						duration: 6,
-					}, 2); // Create steam
+					}, 2, 2.5, undefined, 0.75);
 				}
 				if (type == "electric" && b.bullet.damage.damage > 0) {
 					KDCreateEffectTile(tile.x, tile.y, {
@@ -1163,4 +1198,7 @@ let KDStairsAltAction = {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
 		}
 	},
+	"Null": (toTile, suppressCheckPoint) => {
+		// Beep
+	}
 };

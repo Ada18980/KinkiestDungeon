@@ -1,6 +1,205 @@
+CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1000 lines of changelogs)
+
+4.68 (Sep 2023)
+- Handcuffs now have Simple Locks which can be easily removed and don't consume a key after the first time
+- Simple Locks create a Simple Key consumable in your inventory which lasts an unlimited number of uses and lets you remove simple locks
+- Many enemies now use Simple Locks instead
+Bugfix
+- Fix bug where enemies cant pathfind back to their home spot
+- fix bug where enemy cancels attack randomly
+
+4.67 (Sep 2023)
+- Bows and crossbows now use a mechanic where they must be loaded before firing
+- New weapons: Pistol Crossbow, Recurve Bow, Longbow, Arbalest
+- Weapons now have a 'critical strike' modifier, which determines the damage boost they do to unaware or vulnerable targets. spells and bullets can also have one.
+- Spells can now crit
+- Critical Strike renamed to Precise Critical, affects only critical strikes
+- New upgrade: Magical Overload (+crit based on total DP)
+- Fixed a crash where there were no factions available to place a guarded chest (now defaults to bandits)
+
+4.66 (Sep 2023)
+- Returned the original multiple-clicks-to-walk feature since there is now fast travel.
+- Added 'One-Click Move' to options menu to walk like before
+
+4.65 (Sep 2023)
+- Flirting menu now has two options, 1st is to initiate a play event, 2nd is to start a bondage offer
+- New option to hide bullet and enemy warnings if the mouse is not on the map
+
+4.64 (Sep 2023)
+- Rope Snare has been renamed to Rope Rune, standardized with the other runes, weaker now but AoE and roots in place instead of stuns
+- Rogue now starts with an ability that makes traps not channel
+
+4.63 (Sep 2023)
+- Trainee has been buffed: Everything now restores a baseline amount, plus restoring the mana pool if you have willpower.
+- Mental Resistance can now toggle the orgasm prevention effect (QoL)
+- New wizard spell: Arcane Recharge
+- Split battlemage into two upgrades, one for attacking and one for casting
+
+4.62 (Sep 2023)
+- Fix duplicate shop items
+- Fix ally summons not carrying over across levels
+- Fix fuuka's zombies (and all bosses really) from not aggroing on player
+- Fix game calling auto-equipped items cursed when they aren't
+- Split Smooth Lighting and Enhanced Fog of War in the game options menu
+
+4.61 (Sep 2023)
+- Bugfix patch to hopefully fix a lot of the prison and map persistence bugs
+- Truss em Up now applies status effects from restraints but also takes 1 turn
+- Wall can now be cast on doors to do a special effect
+- Perks which increase enemy resistance flatly now instead increase HP
+- You can no longer stack multiple trap type spells on the same tile
+- Added some lighting changes
+- Added a rudimentary UI background that can be toggled off in the game options
+- Added kitty chests in the Ancient Tombs
+- New sensory perks added
+- New game-changing perk,: Curse Seeker, Novice Pet (and upgrades)
+
+4.6 (Sep 2023)
+Features
+- You can now backtrack to previous levels! This is a start toward a future system to make the map more sane and understandable
+- The shopkeeper is now in regular games! She basically functions as a very expensive shrine you can backtrack to the start of the game for
+- You can now apply non-special bindings from your inventory to enemies that are disabled, adding some points of binding
+Changes
+- Some changes to enemy behavior based on the map faction and whether or not you are hostile to them
+
+4.52 (August 2023)
+Features
+- Can now flirt with NPCs to trigger a play event
+- New sound feature that makes enemies more visible depending on situation
+QoL
+- Plugs and vibes now indicate the type of vibrations they do in their description
+- Item and spells show their images in their description always
+- Scarves now deal Plush damage (plush content will be expanded in future)
+
+4.51 (August 2023)
+Features
+- Shadow hands now take you to the Edge of Reality
+- Patron NPCs now tell your their name when they first become aware of you!
+- Added lesser shadow chests to the Edge of Reality
+- Added much more variety to the enchanted restraints you get grom chests
+- Enemies now mumble helplessly if they can't speak
+- Optional enemy struggle animations (toggle off in game options)
+- Enemies now have semi-directional vision (they can still see behind themselves, just not as clearly)
+- Added a lot more Fuuka dialogue (about those reincarnated ones...) for those interested in lore. Talk to her after defeating the Dollmaker for an extra branch!
+- Added 4 types of Fighter
+- Convincing Disguise can now be toggled
+- Added indication of which spell you are currently casting
+- Added some new map tiles with more guarded chests and vent puzzles. Take True Sight to see through walls!
+Changes
+- Security level only increases by 10% instead of 20% when escaping
+- Security level now only increases when escaping if you are unarmed or if you attacked an enemy on the way out
+- Second Wind now restores WP when free
+- Added more restraints to the loot tables
+- Cursed armor now no longer functions as armor while cursed but otherwise functions normally
+- Enchantments can no longer have duplicates
+- The Underground Jungle is now the Overgrown Ruins, with new graphical variation in the tileset
+- Catgirl enemies (Bast mummies + one of the new fighters) are now weak to water/acid damage
+Bugfix
+- CMD: Unlock now properly castable with Conjurer perk
+- Fix issue where kitty blindfold was treated as a gag in code
+- Fixed an issue with flexible map tiles creating unreachable zones
+- Removing cursed restraints with a shrine correctly deletes the curse
+- Fixed longstanding issue where clicking on an upcast spell in the spell list would sometimes choose the wrong spell
+Modding
+- Added tool to get the category and tag of a generated map tile (useful for post-worldgen tweaks like the Overgrown Ruins)
+- Enchantments and hexes (cursed item effects) can now see a list of other enchantments/curses (respectively) already applied to the item
+- New 'resistance profiles' which allows you to set specific sets of resistances that are shared between enemies and easy to apply/change across categories
+
+4.5 (August 2023)
+Features
+- Cursed Loot is here! Currently only cursed item set are the Stardust/Moondust Curse
+- Added Cursed Epicenters, powerful new enemies that spawn only from shadow/gold chests when you are wearing a cursed item
+- Added 6 new curses exclusive to the Stardust Curse
+- Optimize fog rendering while the player isn't moving
+Content
+- Added Shadow Heels
+Bugfix
+- Fix bug where gold locks layered under something were not being updated
+- Fix jail mode setting not remembered after refreshing the page
+- hopefully fixed bug where removing an cursed enchanted restraint did not preserve in inventory
+- Fix glitches relating to item data not being preserved through links
+- Fixed issues where linked items were not triggering events properly
+
+4.4 (August 2023)
+Features
+- Added X-ray vision feature to view your character through wrappings (such as slime) and tape
+Content
+- Added some lower level versions of the plug gag and panel gag
+- Added Shadow Latex restraints
+Bugfix
+- Fix bug where the game drops an equipped restraint instead of the one in inventory
+- Fix bug where linking an enchanted restraint on top of an existing one would not carry over its special properties
+
+4.35 (August 2023)
+Features
+- Armor and restraints are now separate in inventory screen
+- Some armors now have multiple enchantments
+- Can now drop items from the inventory
+- Added special and mundane filters to armor and restraints screens
+- Allow removing and struggling in the inventory
+Tweaks
+- Inventory scrolls faster
+- There are more shadow chests in hard mode
+- Cursed items now display 'Cursed' instead of unlocked
+- Restoration shrines are more common
+- Enchanted restraints added to silver chests
+- Changed colors of slash, crush, and pierce damage types
+- Fixed double '-' in enchantment tooltip
+- Cursed items not only have more enchantments but also better enchantments
+- Curbed the enchantment strength of tougher restraints and higher level armors somewhat
+- Prevented long enchantment tooltips from overflowing the inventory background
+Bugfix
+- Enchanted armor names are displayed property when dropped
+- Torch weapon is now properly tinted a fire color
+- Minimap border expanded to reflect actual area the minimap occupies
+- Enchantments which add elemental damage to attacks no longer hit if the player misses
+- Fix hard mode deactivating mid run
+- Fix bug where vibe modifiers didn't stack properly
+Modding
+- Added a function to get the current number of cursed items
+- Added loot prerequisites to require a certain number of cursed items for the loot to appear
+- Added "specialChests" event to allow adding more special chest types to levels via event
+
+4.34 (August 2023)
+Features
+- Added enchantments to armor
+Modding
+-Reworked curse system entirely
+
+4.33 (August 2023)
+Features
+- Added a new minimap in the top of the screen, hover over it to enlarge!
+Content
+- New enchantments applied to armor, giving random stat boosts. More common on cursed items--beware!
+Bugfix
+- Fix bug "Can't hear you" perk broken
+- Fix bug where floating weapon still took accuracy penalties from arms being bound (due to the way it was being calculated)
+Modding
+- New system for temporary variants of items, created dynamically using a helper function
+
+4.32 (July 2023)
+- New feature (standalone only, unreleased): Option to desaturate areas that are dark (and lighten them a bit) in order to make light vs. dark regions more apparent
+- Added two new upgrades for the wizard class
+- New perks: Wizard multiclass, No Police
+- Added a more powerful anti-magic gag, and also made it so enemies will use it on you in jail
+- Lockpicking on prisoner NPCs now has a chance to trigger a safety shield
+- Ice restraints now eventually melt off
+
+4.31 (July 2023)
+- Added ability to add temporary curses onto items using console -- TODO test this to make sure the curse is persistent and gets filtered when the item is removed
+- New weapons: Industrial Tape Wand, Bag of Goodies, Magic Remote, Rubber Stick, Blade of Fla'peh, Enchanted Rope, Wooden Bow, Crossbow
+- New series of spells which modify arrows fired by bows
+- Some enemies now come pre-equipped with a toy
+- Added quick inventory setups
+- Large, slow enemies have reduced evasion
+- Pristine is 70% reduction now instead of 100% and bug fixed so it works on regular levels
+
+
+
+OLD CHANGELOGS
+
 1.2 (Apr 10 2021)
 - First Beta Release
-
 
 1.3 (May 2021)
 Loot and Rewards
@@ -1342,76 +1541,15 @@ Minor Changes:
 - New mechanic: When demons jail you they will try to summon a portal and take you to a special area instead.
 - Sleeping now restores 100% max mana
 
-4.31 (July 2023)
-- Added ability to add temporary curses onto items using console -- TODO test this to make sure the curse is persistent and gets filtered when the item is removed
-- New weapons: Industrial Tape Wand, Bag of Goodies, Magic Remote, Rubber Stick, Blade of Fla'peh, Enchanted Rope, Wooden Bow, Crossbow
-- New series of spells which modify arrows fired by bows
-- Some enemies now come pre-equipped with a toy
-- Added quick inventory setups
-- Large, slow enemies have reduced evasion
-- Pristine is 70% reduction now instead of 100% and bug fixed so it works on regular levels
 
-4.32 (July 2023)
-- New feature (standalone only, unreleased): Option to desaturate areas that are dark (and lighten them a bit) in order to make light vs. dark regions more apparent
-- Added two new upgrades for the wizard class
-- New perks: Wizard multiclass, No Police
-- Added a more powerful anti-magic gag, and also made it so enemies will use it on you in jail
-- Lockpicking on prisoner NPCs now has a chance to trigger a safety shield
-- Ice restraints now eventually melt off
 
-4.33 (August 2023)
-Features
-- Added a new minimap in the top of the screen, hover over it to enlarge!
-Content
-- New enchantments applied to armor, giving random stat boosts. More common on cursed items--beware!
-Bugfix
-- Fix bug "Can't hear you" perk broken
-- Fix bug where floating weapon still took accuracy penalties from arms being bound (due to the way it was being calculated)
-Modding
-- New system for temporary variants of items, created dynamically using a helper function
 
-4.34 (August 2023)
-Features
-- Added enchantments to armor
-Modding
--Reworked curse system entirely
 
-4.35 (August 2023)
-Features
-- Armor and restraints are now separate in inventory screen
-- Some armors now have multiple enchantments
-- Can now drop items from the inventory
-- Added special and mundane filters to armor and restraints screens
-- Allow removing and struggling in the inventory
-Tweaks
-- Inventory scrolls faster
-- There are more shadow chests in hard mode
-- Cursed items now display 'Cursed' instead of unlocked
-- Restoration shrines are more common
-- Enchanted restraints added to silver chests
-- Changed colors of slash, crush, and pierce damage types
-- Fixed double '-' in enchantment tooltip
-- Cursed items not only have more enchantments but also better enchantments
-- Curbed the enchantment strength of tougher restraints and higher level armors somewhat
-- Prevented long enchantment tooltips from overflowing the inventory background
-Bugfix
-- Enchanted armor names are displayed property when dropped
-- Torch weapon is now properly tinted a fire color
-- Minimap border expanded to reflect actual area the minimap occupies
-- Enchantments which add elemental damage to attacks no longer hit if the player misses
-Modding
-- Added a function to get the current number of cursed items
-- Added loot prerequisites to require a certain number of cursed items for the loot to appear
-- Added "specialChests" event to allow adding more special chest types to levels via event
 
 
 TODO
-- Negative enchantments?
-- CURSED LOOT (dialogue with a cursed collar that morphs your cursed restraints into their "true" form)
+The white bird that ties people up in Fate: Zero
 
-TODO: Mushrooms in the jungle
-
-TODO
 Warden (more comprehensive cuffs)
 Detective (Stealth, wanders around laying traps throughout the level)
 Nurse (applies straitjackets and stuff)

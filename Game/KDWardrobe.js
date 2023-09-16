@@ -80,7 +80,7 @@ for (let i = 0; i < KDSavedColorCount; i++) {
 
 //KDTextField("MapTileSkin", 1000 - 400 - 100, 150, 200, 60,);
 
-let KDWardrobe_PoseArms = ["Free", "Boxtie", "Wristtie", "Yoked", "Front", "Up"];
+let KDWardrobe_PoseArms = ["Free", "Crossed", "Front", "Yoked", "Boxtie", "Wristtie", "Up"];
 let KDWardrobe_PoseLegs = ["Spread", "Closed", "Kneel", "Hogtie", "KneelClosed",];
 let KDWardrobe_PoseEyes = EYEPOSES;
 let KDWardrobe_PoseEyes2 = EYE2POSES;
@@ -240,7 +240,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 	}
 }
 
-function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false, dress = false, updateDesired = false) {
+function KDDrawPoseButtons(C, X = 960, Y = 750, allowRemove = false, dress = false, updateDesired = false) {
 	let buttonClick = (arms, legs, eyes, eyes2, brows, brows2, blush, mouth, update = true) => {
 		return (bdata) => {
 			if (allowRemove && arms == KDWardrobe_CurrentPoseArms) KDWardrobe_CurrentPoseArms = "";
@@ -305,7 +305,7 @@ function KDDrawPoseButtons(C, X = 1000, Y = 750, allowRemove = false, dress = fa
 	let AvailableLegs = KDGetAvailablePosesLegs(C);
 
 	let buttonWidth = 52;
-	let buttonSpacing = 60;
+	let buttonSpacing = 55;
 	let xoff = KDWardrobe_PoseLegs.length % 2 != KDWardrobe_PoseArms.length % 2 ? buttonWidth/2 : 0;
 	for (let i = 0; i < KDWardrobe_PoseArms.length; i++) {
 		DrawButtonKDEx("PoseArms" + i,

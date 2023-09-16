@@ -11,7 +11,7 @@ function KinkyDungeonSendBuffEvent(Event, data) {
 			}
 		}
 	}
-	for (let ent of KinkyDungeonEntities) {
+	for (let ent of KDMapData.Entities) {
 		if (ent.buffs) {
 			for (let buff of Object.values(ent.buffs)) {
 				if (buff && buff.events) {
@@ -35,17 +35,21 @@ function KinkyDungeonTickBuffs(list, delta, endFloor, entity) {
 			else if (!value.duration || value.duration < 0) KinkyDungeonExpireBuff(list, key);
 			else {
 				if (value.type == "restore_mp") KinkyDungeonChangeMana(value.power);
-				if (value.type == "restore_wp") KinkyDungeonChangeWill(value.power);
-				if (value.type == "restore_sp") KinkyDungeonChangeStamina(value.power);
-				if (value.type == "restore_ap") KinkyDungeonChangeDistraction(value.power, true);
+				else if (value.type == "restore_wp") KinkyDungeonChangeWill(value.power);
+				else if (value.type == "restore_sp") KinkyDungeonChangeStamina(value.power);
+				else if (value.type == "restore_ap") KinkyDungeonChangeDistraction(value.power, true);
 
-				if (value.type == "SpellCastConstant" && value.spell && entity) {
+				else if (value.type == "SpellCastConstant" && value.spell && entity) {
 					KinkyDungeonCastSpell(entity.x, entity.y, KinkyDungeonFindSpell(value.spell, true), undefined, undefined, undefined);
 				}
 
-				if (value.type == "Flag") {
+				else if (value.type == "Flag") {
 					KinkyDungeonSetFlag(value.id, 1 + delta);
 				}
+				else if (KDCustomBuff[value.type]) {
+					KDCustomBuff[value.type](entity, value);
+				}
+
 
 				if (!(value.infinite))
 					value.duration -= delta;
@@ -129,13 +133,13 @@ function KinkyDungeonUpdateBuffs(delta, endFloor) {
 	// Tick down buffs the buffs
 	KinkyDungeonSendEvent("tickBuffs", {delta: delta});
 	KinkyDungeonTickBuffs(KinkyDungeonPlayerBuffs, delta, endFloor, KinkyDungeonPlayerEntity);
-	for (let enemy of KinkyDungeonEntities) {
+	for (let enemy of KDMapData.Entities) {
 		if (!enemy.buffs) enemy.buffs = {};
 		KinkyDungeonTickBuffs(enemy.buffs, delta, endFloor, enemy);
 	}
 
 	// Apply the buffs from bullets
-	for (let b of KinkyDungeonBullets) {
+	for (let b of KDMapData.Bullets) {
 		if (b.bullet.spell && b.bullet.spell.buffs) { // Apply the buff
 			for (let buff of b.bullet.spell.buffs) {
 
@@ -143,7 +147,7 @@ function KinkyDungeonUpdateBuffs(delta, endFloor) {
 					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff);
 				}
 				if (buff.enemies) {
-					for (let enemy of KinkyDungeonEntities) {
+					for (let enemy of KDMapData.Entities) {
 						if ((KDHostile(enemy) || !buff.noAlly)
 							&& (KDAllied(enemy) || !buff.onlyAlly)
 							&& (!b.bullet.spell.filterTags || b.bullet.spell.filterTags.some((tag) => {return enemy.Enemy.tags[tag];}))
@@ -158,11 +162,20 @@ function KinkyDungeonUpdateBuffs(delta, endFloor) {
 	}
 }
 
+/**  */
+function KDBuffEnabled(list, buff, onlyPositiveDuration) {
+	return (!onlyPositiveDuration || buff.duration > 0)
+		&& (!buff.disabletypes || !buff.disabletypes.some((tag) => {
+			return list[tag] != undefined;
+		}));
+}
+
 function KinkyDungeonGetBuffedStat(list, Stat, onlyPositiveDuration) {
 	let stat = 0;
 	if (list)
 		for (let buff of Object.values(list)) {
-			if (buff && buff.type == Stat && (!onlyPositiveDuration || buff.duration > 0)) {
+			if (buff && buff.type == Stat
+				&& KDBuffEnabled(list, buff, onlyPositiveDuration)) {
 				stat += buff.power;
 			}
 		}
@@ -172,7 +185,8 @@ function KinkyDungeonGetMaxBuffedStat(list, Stat, onlyPositiveDuration) {
 	let stat = 0;
 	if (list)
 		for (let buff of Object.values(list)) {
-			if (buff && buff.type == Stat && (!onlyPositiveDuration || buff.duration > 0)) {
+			if (buff && buff.type == Stat
+				&& KDBuffEnabled(list, buff, onlyPositiveDuration)) {
 				stat = Math.max(stat, buff.power);
 			}
 		}
@@ -204,7 +218,7 @@ function KinkyDungeonApplyBuff(list, origbuff, changes) {
 		KinkyDungeonExpireBuff(list, id);
 	} else {
 		if (!list[id] && buff.sfxApply) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + buff.sfxApply + ".ogg");
-		if (!list[id] || (list[id].power > 0 && buff.power >= list[id].power) || (list[id].power < 0 && ((buff.power > 0 && buff.power >= list[id].power) || buff.power <= list[id].power))) list[id] = buff;
+		if (!list[id] || (list[id].power >= 0 && buff.power >= list[id].power) || (list[id].power < 0 && ((buff.power > 0 && buff.power >= list[id].power) || buff.power <= list[id].power))) list[id] = buff;
 		if ((list[id].power && buff.power == list[id].power && buff.duration >= list[id].duration)) list[id].duration = buff.duration;
 
 		if (buff.tags)
@@ -233,15 +247,15 @@ function KDEntityHasBuff(entity, buff) {
 		return KinkyDungeonHasBuff(KinkyDungeonPlayerBuffs, buff);
 	} else return KinkyDungeonHasBuff(entity.buffs, buff);
 }
-function KDEntityBuffedStat(entity, stat) {
+function KDEntityBuffedStat(entity, stat, onlyPositiveDuration) {
 	if (entity.player) {
-		return KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, stat);
-	} else return KinkyDungeonGetBuffedStat(entity.buffs, stat);
+		return KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, stat, onlyPositiveDuration);
+	} else return KinkyDungeonGetBuffedStat(entity.buffs, stat, onlyPositiveDuration);
 }
-function KDEntityMaxBuffedStat(entity, stat) {
+function KDEntityMaxBuffedStat(entity, stat, onlyPositiveDuration) {
 	if (entity.player) {
-		return KinkyDungeonGetMaxBuffedStat(KinkyDungeonPlayerBuffs, stat);
-	} else return KinkyDungeonGetMaxBuffedStat(entity.buffs, stat);
+		return KinkyDungeonGetMaxBuffedStat(KinkyDungeonPlayerBuffs, stat, onlyPositiveDuration);
+	} else return KinkyDungeonGetMaxBuffedStat(entity.buffs, stat, onlyPositiveDuration);
 }
 
 function KDEntityGetBuff(entity, buff) {

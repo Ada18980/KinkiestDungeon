@@ -3,6 +3,51 @@
  * @type {Record<mapKey,floorParams>}
  */
 const KinkyDungeonMapParams = {
+	"menu":{
+		music: {
+			"GENERIC-DOLLRACK.ogg": 4,
+		},
+
+		"background" : "RainyForstPathNight",
+		"openness" : 3, // Openness of rooms
+		"density" : 3, // Density of tunnels (inverse of room spawn chance)
+		"crackchance" : 0.07,
+		"barchance" : 0.2,
+		"brightness" : 7,
+		"chestcount" : 5,
+		"shrinecount" : 16,
+		"shrinechance" : 0.75,
+		"ghostchance" : 1,
+		"doorchance" : 0.67,
+		"nodoorchance" : 0.1,
+		"doorlockchance" : -0.1,
+		"trapchance" : 0.5,
+		"grateChance" : 0.4,
+		"rubblechance" : 0.4,
+		"brickchance" : 0.1,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 0.7, // If a forbidden gold chance is generated. Otherwise a silver chest will appear
+		"forbiddenGreaterChance" : 0.33, // Chance after a forbidden area is generated with a restraint, otherwise its a lesser gold chest
+		"torchchance": 0.35,
+		"torchchanceboring": 1.0,
+
+		tagModifiers: {},
+		enemyTags: [],
+
+		"traps": [],
+		"min_width" : 5,
+		"max_width" : 7,
+		"min_height" : 5,
+		"max_height" : 6,
+		"defeat_outfit": "Prisoner",
+		"shrines": [],
+
+		"setpieces": [],
+
+		"shortcuts": [],
+		"mainpath": [],
+
+	},
 	"grv":{//DungeonName0,-Graveyard-
 		"background" : "RainyForstPathNight",
 		"openness" : 3, // Openness of rooms
@@ -11,7 +56,7 @@ const KinkyDungeonMapParams = {
 		"barchance" : 0.2,
 		"brightness" : 7,
 		"chestcount" : 5,
-		"shrinecount" : 11,
+		"shrinecount" : 16,
 		"shrinechance" : 0.75,
 		"ghostchance" : 1,
 		"doorchance" : 0.67,
@@ -98,7 +143,7 @@ const KinkyDungeonMapParams = {
 		"barchance" : 0.2,
 		"brightness" : 4,
 		"chestcount" : 7,
-		"shrinecount" : 12,
+		"shrinecount" : 15,
 		"chargerchance": 0.5,
 		"litchargerchance": 0.5,
 		"chargercount": 7,
@@ -197,7 +242,7 @@ const KinkyDungeonMapParams = {
 		"barchance" : 0.05,
 		"brightness" : 6,
 		"chestcount" : 7,
-		"shrinecount" : 13,
+		"shrinecount" : 14,
 		"shrinechance" : 0.4,
 		"ghostchance" : 0.5,
 		"doorchance" : 0.2,
@@ -215,6 +260,78 @@ const KinkyDungeonMapParams = {
 
 		worldGenCode: () => {
 			KDAddPipes(0.03, 0.6, 0.8, 0.1);
+			// List of coordinates that are naturalized
+			let naturalized = {};
+			let cavernized = {};
+			// Start nature near plants, mushrooms, etc
+			for (let x = 0; x < KDMapData.GridWidth-1; x++)
+				for (let y = 0; y < KDMapData.GridHeight-1; y++) {
+					let category = KDMapData.CategoryIndex ? KDGetCategoryIndex(x, y)?.category : "";
+					/*let enemy = KinkyDungeonEnemyAt(x, y);
+					let tile = KinkyDungeonMapGet(x, y);
+					if ((enemy && (enemy.Enemy.faction == "Plant" || enemy.Enemy.faction == "Natural"))
+						|| (tile != '2' && KDRandom() < 0.001)
+						|| (tile == 'X' && KDRandom() < 0.04)) {
+						naturalized[x + ',' + y] = true;
+					}*/
+					if ((category == "jungle" || category == "natural" || category == "garden") && KDRandom() < 0.1) naturalized[x + ',' + y] = true;
+					if (category == "cavern" && KDRandom() < 0.1) cavernized[x + ',' + y] = true;
+				}
+			// dilate a few times
+			let wallchance = 0.1;
+			let wallchanceCav = 0.01;
+			let cavChance = 0.01;
+			for (let i = 6 + 4*KDRandom(); i>0; i--) {
+				for (let x = 0; x < KDMapData.GridWidth-1; x++)
+					for (let y = 0; y < KDMapData.GridHeight-1; y++) {
+
+						let chance = KinkyDungeonMapGet(x, y) == '1' ? wallchance : 0.3;
+						if (KinkyDungeonMapGet(x, y) == '4') chance = 0; // no cracks in plants
+						if (KinkyDungeonMapGet(x, y) == 'X') chance = 1; // plants have guaranteed spread chance if a bordering plant is natural
+						if (!naturalized[x + ',' + y]) {
+							if (naturalized[(x+1) + ',' + (y)] && KDRandom() < chance) {
+								if (KDRandom() < cavChance) cavernized[x + ',' + y] = true;
+								else naturalized[x + ',' + y] = true;
+							} else if (naturalized[(x-1) + ',' + (y)] && KDRandom() < chance) {
+								if (KDRandom() < cavChance) cavernized[x + ',' + y] = true;
+								else naturalized[x + ',' + y] = true;
+							} else if (naturalized[(x) + ',' + (y+1)] && KDRandom() < chance) {
+								if (KDRandom() < cavChance) cavernized[x + ',' + y] = true;
+								else naturalized[x + ',' + y] = true;
+							} else if (naturalized[(x) + ',' + (y-1)] && KDRandom() < chance) {
+								if (KDRandom() < cavChance) cavernized[x + ',' + y] = true;
+								else naturalized[x + ',' + y] = true;
+							}
+						}
+					}
+			}
+			for (let i = 6 + 4*KDRandom(); i>0; i--) {
+				for (let x = 0; x < KDMapData.GridWidth-1; x++)
+					for (let y = 0; y < KDMapData.GridHeight-1; y++) {
+
+						let chance = KinkyDungeonMapGet(x, y) == '1' ? wallchanceCav : 0.3;
+						if (!cavernized[x + ',' + y]) {
+							if (cavernized[(x+1) + ',' + (y)] && KDRandom() < chance) {
+								cavernized[x + ',' + y] = true;
+							} else if (cavernized[(x-1) + ',' + (y)] && KDRandom() < chance) {
+								cavernized[x + ',' + y] = true;
+							} else if (cavernized[(x) + ',' + (y+1)] && KDRandom() < chance) {
+								cavernized[x + ',' + y] = true;
+							} else if (cavernized[(x) + ',' + (y-1)] && KDRandom() < chance) {
+								cavernized[x + ',' + y] = true;
+							}
+						}
+					}
+			}
+			// now we finalize
+			for (let x = 0; x < KDMapData.GridWidth-1; x++)
+				for (let y = 0; y < KDMapData.GridHeight-1; y++) {
+					if (cavernized[x + ',' + y] && !KDMapData.TilesSkin[x + ',' + y]) {
+						KDMapData.TilesSkin[x + ',' + y] = {skin: "cry", force: true};
+					} else if (naturalized[x + ',' + y] && !KDMapData.TilesSkin[x + ',' + y]) {
+						KDMapData.TilesSkin[x + ',' + y] = {skin: "jngWild", force: true};
+					}
+				}
 		},
 
 		tagModifiers: {
@@ -286,7 +403,7 @@ const KinkyDungeonMapParams = {
 		"chargerchance": 0.9,
 		"litchargerchance": 0.2,
 		"chargercount": 10,
-		"shrinecount" : 10,
+		"shrinecount" : 18,
 		"shrinechance" : 0.5,
 		"ghostchance" : 0.5,
 		"doorchance" : 0.9,
@@ -391,7 +508,7 @@ const KinkyDungeonMapParams = {
 		"chargerchance": 0.8,
 		"litchargerchance": 0.65,
 		"chargercount": 6,
-		"shrinecount" : 13,
+		"shrinecount" : 16,
 		"shrinechance" : 0.5,
 		"ghostchance" : 0.5,
 		"doorchance" : 0.4,
@@ -408,13 +525,17 @@ const KinkyDungeonMapParams = {
 		torchchance: 0.1,
 		torchchanceboring: 0.1,
 
+		specialChests: {
+			kitty: 3,
+		},
+
 		music: {
 			"AREA2-ANCIENTTOMBS.ogg": 10,
 		},
 
 		worldGenCode: () => {
-			for (let X = 1; X < KinkyDungeonGridWidth - 1; X++) {
-				for (let Y = 1; Y < KinkyDungeonGridHeight - 1; Y++) {
+			for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
+				for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
 					if (KinkyDungeonMapGet(X, Y) == 'X' && KDRandom() < 0.15 + 0.45 * Math.min(1, KinkyDungeonDifficulty/30)) {
 						KinkyDungeonMapSet(X, Y, '3');
 						DialogueCreateEnemy(X, Y, "MummyCursed");
@@ -490,7 +611,7 @@ const KinkyDungeonMapParams = {
 		"chargerchance": 0.8,
 		"litchargerchance": 0.25,
 		"chargercount": 6,
-		"shrinecount" : 15,
+		"shrinecount" : 11,
 		"shrinechance" : 0.5,
 		"ghostchance" : 0.5,
 		"doorchance" : 0.0,
@@ -576,7 +697,7 @@ const KinkyDungeonMapParams = {
 		"litchargerchance": 1.0,
 		"chargercount": 4,
 		"chestcount" : 10,
-		"shrinecount" : 13,
+		"shrinecount" : 9,
 		"shrinechance" : 0.8,
 		"ghostchance" : 0.5,
 		"doorchance" : 0.05,
@@ -674,7 +795,7 @@ const KinkyDungeonMapParams = {
 		"chargerchance": 0.9,
 		"litchargerchance": 0.2,
 		"chargercount": 10,
-		"shrinecount" : 10,
+		"shrinecount" : 13,
 		"shrinechance" : 0.5,
 		"ghostchance" : 0.7,
 		"doorchance" : 0.9,
@@ -873,7 +994,7 @@ const KinkyDungeonMapParams = {
 		"crackchance" : 0.09,
 		"barchance" : 0.2,
 		"brightness" : 4,
-		"chestcount" : 7,
+		"chestcount" : 0,
 		"shrinecount" : 12,
 		"chargerchance": 0.5,
 		"litchargerchance": 0.5,

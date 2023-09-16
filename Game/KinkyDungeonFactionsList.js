@@ -15,10 +15,149 @@ let KinkyDungeonFactionColors = {
 	"Witch": ["#222222", "#8359b3"],
 };
 
+/**
+ * @type {Record<string, KDFactionProps>}
+ */
+let KDFactionProperties = {
+	Dressmaker: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 5;
+			if (tags.includes("dressmaker")) w += 40;
+			if (tags.includes("magical")) w += 5;
+			if (tags.includes("book")) w += 5;
+			if (tags.includes("manakin")) w += 15;
+			if (tags.includes("dollsmith")) w += 10;
+			return w;
+		},
+	},
+	Bountyhunter: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 10;
+			if (tags.includes("bountyhunter")) w += 40;
+			if (tags.includes("ninja")) w += 20;
+			if (tags.includes("police")) w += 20;
+			if (tags.includes("human")) w += 5;
+			if (tags.includes("tech")) w += 5;
+			return w;
+		},
+	},
+	AncientRobot: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 0;
+			if (tags.includes("robot")) w += 100;
+			if (tags.includes("oldrobot")) w += 10;
+			if (tags.includes("electric")) w += 5;
+			if (tags.includes("metal")) w += 5;
+			if (tags.includes("factory")) w += 15;
+			if (tags.includes("industrial")) w += 15;
+			return w;
+		},
+	},
+	Elf: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 0;
+			if (tags.includes("elf")) w += 50;
+			if (tags.includes("nature")) w += 40;
+			if (tags.includes("magical")) w += 20;
+			if (tags.includes("jungle")) w += 10;
+			return w;
+		},
+	},
+	Bast: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 0;
+			if (tags.includes("bast")) w += 100;
+			if (tags.includes("mummy")) w += 50;
+			if (tags.includes("egyptian")) w += 10;
+			return w;
+		},
+	},
+	Maidforce: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 5;
+			if (tags.includes("maid")) w += 100;
+			if (tags.includes("slime")) w += 20;
+			if (tags.includes("urban")) w += 5;
+			if (tags.includes("library")) w += 20;
+			if (tags.includes("tech")) w += 5;
+			return w;
+		},
+	},
+	Dragon: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 5;
+			if (tags.includes("dragon")) w += 40;
+			if (tags.includes("elemental")) w += 15;
+			if (tags.includes("magical")) w += 5;
+			if (tags.includes("adventurer")) w += 5;
+			if (tags.includes("crystalline")) w += 5;
+			return w;
+		},
+	},
+	Elemental: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 0;
+			if (tags.includes("elemental")) w += 40;
+			if (tags.includes("magical")) w += 20;
+			if (tags.includes("book")) w += 10;
+			if (tags.includes("library")) w += 10;
+			if (tags.includes("witch")) w += 20;
+			if (tags.includes("shadow")) w += 5;
+			if (tags.includes("angel")) w += 5;
+			return w;
+		},
+	},
+	Apprentice: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 5;
+			if (tags.includes("apprentice")) w += 40;
+			if (tags.includes("witch")) w += 25;
+			if (tags.includes("library")) w += 20;
+			if (tags.includes("magical")) w += 20;
+			if (tags.includes("book")) w += 15;
+			return w;
+		},
+	},
+	Nevermere: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 5;
+			if (tags.includes("nevermere")) w += 40;
+			if (tags.includes("metal")) w += 15;
+			if (tags.includes("crystalline")) w += 10;
+			if (tags.includes("wolfgirl")) w += 5;
+			if (tags.includes("tech")) w += 5;
+			return w;
+		},
+	},
+	Alchemist: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 5;
+			if (tags.includes("alchemist")) w += 40;
+			if (tags.includes("latex")) w += 25;
+			if (tags.includes("tech")) w += 15;
+			if (tags.includes("slime")) w += 15;
+			if (tags.includes("library")) w += 20;
+			if (tags.includes("magical")) w += 5;
+			return w;
+		},
+	},
+	Bandit: {
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			let w = 20;
+			if (tags.includes("bandit")) w += 40;
+			if (tags.includes("cavern")) w += 15;
+			if (tags.includes("jungle")) w += 5;
+			if (tags.includes("nature")) w += 5;
+			return w;
+		},
+	},
+};
+
 /** Hidden factions do not auto-rep change when you attack them */
 let KinkyDungeonHiddenFactions = [
 	"Plant",
 	"Natural",
+	"Door",
 	"Player",
 	"Enemy",
 	"Jail",
@@ -40,6 +179,9 @@ let KinkyDungeonHiddenFactions = [
 	"Chase",
 	"Mushy",
 	"Witch",
+	"Curse",
+	"Observer",
+	"Door",
 ];
 
 
@@ -110,6 +252,8 @@ let KinkyDungeonTooltipFactions = [
 	"Wolfhunter",
 	"Rock",
 	"Rage",
+	"Curse",
+	"Observer",
 ];
 
 /** Tag for these factions, these also can have increased chances to appear on a map */
@@ -134,6 +278,7 @@ let KinkyDungeonFactionRelationsBase = {
 	"Player": {
 		Enemy: -1.0,
 		Jail: -1.0,
+		Chase: -1,
 		Prisoner: 0.1,
 
 		// Wild factions
@@ -176,25 +321,42 @@ let KinkyDungeonFactionRelationsBase = {
 	"Natural": {
 		Player: -1,
 		Jail: -1,
+		Chase: -1,
+	},
+	"Door": {
+		Player: -1,
+		Jail: -1,
+		Chase: -1,
 	},
 	"Ghost": {
 		Player: -1.0,
 		Jail: -0.25,
+		Chase: -1,
 	},
 	"Observer": {
 		Player: -1.0,
 		Jail: -1,
+		Chase: -1,
 	},
 	"Rock": {
 		Player: -1.0,
+		Jail: -0.1,
+		Chase: -1,
 	},
 	"Rebel": {
 		Jail: -0.1,
+		Chase: -1,
+	},
+	"Adventurer": {
+		Jail: -0.1,
+		Chase: -1,
 	},
 	"Demon": {
 		Elf: -1.0,
 		Bast: -1.0,
 		Witch: 0.25,
+		Jail: -0.25,
+		Chase: -1,
 
 		Bountyhunter: -0.5,
 		Bandit: -0.5,
@@ -229,11 +391,13 @@ let KinkyDungeonFactionRelationsBase = {
 		Player: -1,
 		Maidforce: -1,
 		Chase: -1,
+		Jail: -0.25,
 	},
 	"Wolfhunter": {
 		Player: -1,
 		Nevermere: -1,
 		Chase: -1,
+		Jail: -0.25,
 	},
 	"Trap": {
 		Enemy: 1.0,
@@ -281,12 +445,20 @@ let KinkyDungeonFactionRelationsBase = {
 
 		Chase: -1,
 	},
+	"Curse": {
+		Player: -1.0,
+		Jail: -0.25,
+
+		Chase: -1,
+	},
 	"Prisoner": {
 	},
 	"Jail": {
+		// Dummy faction, used for deciding if a faction will attack you as a prisoner
 	},
 	"Slime": {
-		Jail: -0.25,
+		Jail: -1,
+		Chase: -1,
 
 		Bountyhunter: -0.5,
 		Bandit: -0.6,
@@ -303,12 +475,14 @@ let KinkyDungeonFactionRelationsBase = {
 		Mushy: 0.1,
 	},
 	"Latex": {
-		Jail: -0.25,
+		Jail: -1,
+		Chase: -1,
 
 		Maidforce: -1.0,
 	},
 	"Mold": {
-		Jail: -0.25,
+		Jail: -1,
+		Chase: -1,
 
 		Enemy: -0.5,
 		Bountyhunter: -0.5,
@@ -327,7 +501,8 @@ let KinkyDungeonFactionRelationsBase = {
 		AncientRobot: -1.0,
 	},
 	"Beast": {
-		Jail: -0.25,
+		Jail: -1,
+		Chase: -1,
 
 		Bountyhunter: -0.4,
 		Bandit: -0.4,
@@ -344,13 +519,16 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"KinkyConstruct": {
 		Jail: -0.25,
+		Chase: -1,
+
 		Apprentice: -0.55,
 		Witch: 0.4,
 		Dressmaker: 0.4,
 		Dragon: -1.0,
 	},
 	"Plant": {
-		Jail: -0.25,
+		Jail: -1,
+		Chase: -1,
 	},
 	"Nevermere": {
 		"Alchemist": 1.0,
@@ -386,6 +564,8 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Bandit": {
 		"Mushy": -0.6,
+		"Apprentice": -0.1,
+		"Witch": 0.2,
 	},
 	"Elemental": {
 		"KinkyConstruct": 0.55,

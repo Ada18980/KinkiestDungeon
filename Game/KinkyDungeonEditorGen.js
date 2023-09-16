@@ -119,6 +119,10 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 					for (let yy = 1; yy <= tile.h; yy++) {
 						tilesFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile;
 						indexFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile.index[xx + ',' + yy];
+						KDMapData.CategoryIndex[(indX + xx - 1) + "," + (indY + yy - 1)] = {
+							category: tile.category,
+							tags: tags,
+						};
 					}
 			}
 
@@ -227,7 +231,7 @@ function KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, r
 	let maxWeight = 0;
 
 	for (let mapTile of Object.values(KDMapTilesList)) {
-		if (mapTile.primInd == index || (mapTile.flexEdge && mapTile.flexEdge['1,1'])) {
+		if (mapTile.primInd == index || (mapTile.flexEdge && mapTile.flexEdge['1,1'] && (mapTile.primInd.includes(index) || (mapTile.flexEdgeSuper && mapTile.flexEdgeSuper['1,1'])))) {
 			if (!KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, indexFilled)) continue;
 
 			if (!KDCheckMapTileAccess(mapTile, indX, indY, indexFilled, requiredAccess)) continue;
@@ -422,14 +426,14 @@ function KD_PasteTile(tile, x, y, data) {
 		let xx = parseInt(tileLoc[0].split(',')[0]);
 		let yy = parseInt(tileLoc[0].split(',')[1]);
 		if (xx != undefined && yy != undefined) {
-			KinkyDungeonTilesSkin[(xx + x) + "," + (yy + y)] = tileLoc[1];
+			KDMapData.TilesSkin[(xx + x) + "," + (yy + y)] = tileLoc[1];
 		}
 	}
 	/*for (let jail of tile.Jail) {
 		let newJail = Object.assign({}, jail);
 		newJail.x += x;
 		newJail.y += y;
-		KDGameData.JailPoints.push(newJail);
+		KDMapData.JailPoints.push(newJail);
 
 	}*/
 
@@ -655,23 +659,23 @@ let KDTileGen = {
 			return null;
 		}
 		KinkyDungeonMapSet(x, y, '5');
-		KDGameData.JailPoints.push({x: x, y: y, type: "dropoff", direction: tileGenerator.direction || {x: 0, y: -1}, radius: 1, restrainttags: ["dollstand"]});
+		KDMapData.JailPoints.push({x: x, y: y, type: "dropoff", direction: tileGenerator.direction || {x: 0, y: -1}, radius: 1, restrainttags: ["dollstand"]});
 		//KinkyDungeonTilesSkinSet(x + "," + y, 'Bel');
 		return {Sprite: "Floor", Overlay: tileGenerator.Overlay || "DollDropoff"};
 	},
 	"Cage": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		KDGameData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Furniture: "Cage"};
 	},
 	"DisplayStand": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		KDGameData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Furniture: "DisplayStand"};
 	},
 	"Furniture": (x, y, tile, tileGenerator, data) => {
 		//KinkyDungeonMapSet(x, y, tileGenerator.tile);
-		KDGameData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Furniture: tileGenerator.Furniture};
 	},
 	"Table": (x, y, tile, tileGenerator, data) => {
@@ -822,4 +826,17 @@ function KDAggregateTileTags(x, y, w, h, tilesFilled, globalTags) {
 		}
 
 	return tags;
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @returns {{category: string, tags: string[]}}
+ */
+function KDGetCategoryIndex(x, y) {
+	if (KDMapData.CategoryIndex) {
+		return KDMapData.CategoryIndex[Math.ceil(x/KDTE_Scale) + ',' + Math.ceil(y/KDTE_Scale)];
+	}
+	return {category: "", tags: []};
 }

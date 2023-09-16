@@ -26,407 +26,116 @@ let KDDialogueTriggers = {
 			return KDStrictPersonalities.includes(enemy.personality) ? 10 : 1;
 		},
 	},
-	"OfferDress": {
-		dialogue: "OfferDress",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Sub"],
-		requireTagsSingle: ["dressRestraints", "bindingDress"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["bindingDress"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
-		},
-	},
-	"OfferKigu": {
-		dialogue: "OfferKigu",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Sub"],
-		requireTagsSingle: ["kiguRestraints"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["kiguRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
-		},
-	},
-	"OfferArmor": {
-		dialogue: "OfferArmor",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Sub"],
-		requireTagsSingle: ["melee"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.1,["shackleGag"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100);
-		},
-	},
-	"OfferChain": {
-		dialogue: "OfferChain",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Sub"],
-		requireTagsSingle: ["chainRestraints", "witch"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["chainRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
-		},
-	},
-	"OfferVine": {
-		dialogue: "OfferVine",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom"],
-		requireTagsSingle: ["vineRestraints"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["vineRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Rope)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
-		},
-	},
-	"OfferObsidian": {
-		dialogue: "OfferObsidian",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom", "Sub"],
-		requireTagsSingle: ["obsidianRestraints"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["obsidianRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Elements)/100);
-		},
-	},
-	"OfferMaidRestraint": {
-		dialogue: "OfferMaidRestraint",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Sub"],
-		requireTagsSingle: ["maidRestraints"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["maidRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100);
-		},
-	},
-	"OfferDragon": {
-		dialogue: "OfferDragon",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom"],
-		requireTagsSingle: ["dragonRestraints"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["dragonRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Leather)/100;
-		},
-	},
-	"OfferComfy": {
-		dialogue: "OfferComfy",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Sub"],
-		requireTagsSingle: ["submissive"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["comfyRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Conjure)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100);
-		},
-	},
-	"OfferShackles": {
-		dialogue: "OfferShackles",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom"],
-		requireTagsSingle: ["shackleRestraints", "steelCuffs", "handcuffer"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["shackleRestraints", "steelCuffs"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Prisoner)/100);
-		},
-	},
-	"OfferKitty": {
-		dialogue: "OfferKitty",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom", "Sub"],
-		requireTagsSingle: ["kittyRestraints"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["kittyRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Leather)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
-		},
-	},
-	"OfferMithrilRope": {
-		dialogue: "OfferMithrilRope",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom","Sub"],
-		requireTagsSingle: ["mithrilRope","mithrilRopeHogtie"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["mithrilRope","mithrilRopeHogtie"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Rope)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
-		},
-	},
-	"OfferMithril": {
-		dialogue: "OfferMithril",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom","Sub"],
-		requireTagsSingle: ["mithrilRestraints"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["mithrilRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
-		},
-	},
-	"OfferWolfRestraint": {
-		dialogue: "OfferWolfRestraint",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom"],
-		requireTagsSingle: ["trainer"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["wolfRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
-		},
-	},
-	"OfferSlime": {
-		dialogue: "OfferSlime",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom"],
-		requireTags: ["alchemist","human"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["slimeRestraintsRandom"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Will)/100);
-		},
-	},
-	"OfferScarf": {
-		dialogue: "OfferScarf",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom", "Sub"],
-		requireTagsSingle: ["scarfRestraints","ropeAuxiliary"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["scarfRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Rope)/100;
-		},
-	},
-	"OfferAutoTape": {
-		dialogue: "OfferAutoTape",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Robot"],
-		requireTags: ["robot","autoTape"],
-		excludeTags: ["zombie", "skeleton"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["autoTape"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Metal + 50)/100;
-		},
-	},
-	"OfferHiTechCables": {
-		dialogue: "OfferHiTechCables",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Robot"],
-		requireTags: ["robot"],
-		requireTagsSingle: ["hitechCables", "cableGag"],
-		excludeTags: ["zombie", "skeleton"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["hitechCables", "cableGag"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Metal + 50)/100;
-		},
-	},
-	"OfferIce": {
-		dialogue: "OfferIce",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom"],
-		requireTagsSingle: ["iceRestraints", "ice", "apprentice", "witch", "water"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["iceRestraints"]));
-		},
-		weight: (enemy, dist) => {
-			return 0.5 + 0.1 * Math.max(Math.abs(KinkyDungeonGoddessRep.Elements)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
-		},
-	},
-	"OfferLatex": {
-		dialogue: "OfferLatex",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Sub"],
-		requireTagsSingle: ["latexRestraints", "latexRestraintsHeavy"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.25,["latexRestraints", "latexRestraintsHeavy"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.max(Math.abs(KinkyDungeonGoddessRep.Latex)/100, Math.abs(KinkyDungeonGoddessRep.Conjure)/100);
-		},
-	},
+	"OfferDress": KDDialogueTriggerOffer("OfferDress", ["Rope", "Conjure"], ["bindingDress"],
+		["parole", ""],  ["Sub", "Brat"],
+		["dressmaker", "bindingDress"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferKigu": KDDialogueTriggerOffer("OfferKigu", ["Latex", "Conjure"], ["kiguRestraints"],
+		["parole", ""],  ["Dom", "Brat"],
+		["dressmaker"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferArmor": KDDialogueTriggerOffer("OfferArmor", ["Metal", "Illusion"], ["shackleGag"],
+		["parole", ""],  ["Sub", "Brat"],
+		["shackleGag", "metal", "shackleRestraints", "chain"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferChain": KDDialogueTriggerOffer("OfferChain", ["Metal", "Conjure"], ["chainRestraints"],
+		["parole", ""],  ["Sub", "Brat"],
+		["chainRestraints", "metal", "handcuffer"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferVine": KDDialogueTriggerOffer("OfferVine", ["Will", "Rope"], ["vineRestraints"],
+		["parole", ""],  ["Dom", ""],
+		["nature", "vineRestraints"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferObsidian": KDDialogueTriggerOffer("OfferObsidian", ["Metal", "Elements"], ["obsidianRestraints"],
+		["parole", ""],  undefined,
+		["obsidianRestraints"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferMaidRestraint": KDDialogueTriggerOffer("OfferMaidRestraint", ["Latex", "Illusion"], ["maidRestraints"],
+		["parole", ""],  ["Sub", "Brat"],
+		["maid"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferDragon": KDDialogueTriggerOffer("OfferDragon", ["Leather"], ["dragonRestraints"],
+		["parole", ""],  ["Dom", "", "Brat"],
+		["dragon"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferComfy": KDDialogueTriggerOffer("OfferComfy", ["Metal", "Prisoner"], ["comfyRestraints"],
+		["parole", ""],  undefined,
+		["submissive"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferShackles": KDDialogueTriggerOffer("OfferShackles", ["Metal", "Prisoner"], ["shackleRestraints", "steelCuffs"],
+		["parole", ""],  ["Dom", ""],
+		["shackleRestraints", "steelCuffs", "handcuffer", "police"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferKitty": KDDialogueTriggerOffer("OfferKitty", ["Leather", "Will"], ["kittyRestraints"],
+		["parole", ""],  ["Dom", "Brat", "Sub"],
+		["mummy", "kittyRestraints"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferMithrilRope": KDDialogueTriggerOffer("OfferMithrilRope", ["Metal", "Will"], ["mithrilRope","mithrilRopeHogtie"],
+		["parole", ""],  ["Dom", "Brat", "Sub"],
+		["elf"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferMithril": KDDialogueTriggerOffer("OfferMithril", ["Metal", "Will"], ["mithrilRestraints"],
+		["parole", ""],  ["Dom", "Brat", ""],
+		["elf"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferWolfRestraint": KDDialogueTriggerOffer("OfferWolfRestraint", ["Metal", "Latex"], ["wolfRestraints"],
+		["parole", ""],  ["Dom", ""],
+		["trainer"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferSlime": KDDialogueTriggerOffer("OfferSlime", ["Latex", "Prisoner"], ["slimeRestraintsRandom"],
+		["parole", ""],  ["Dom", "Brat"],
+		["alchemist", "apprentice", "wizard"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferScarf": KDDialogueTriggerOffer("OfferScarf", ["Rope", "Leather"], ["scarfRestraints","ropeAuxiliary"],
+		["parole", ""],  undefined,
+		["scarfRestraints","ropeAuxiliary", "dressmaker"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferAutoTape": KDDialogueTriggerOffer("OfferAutoTape", ["Metal"], ["autoTape"],
+		["parole", ""],  ["Robot"],
+		["autoTape"], undefined, ["robot"], ["zombie", "skeleton"],
+		undefined, undefined),
+
+	"OfferHiTechCables": KDDialogueTriggerOffer("OfferHiTechCables", ["Metal"], ["hitechCables", "cableGag"],
+		["parole", ""],  ["Robot"],
+		["hitechCables", "cableGag"], undefined, ["robot"], ["zombie", "skeleton"],
+		undefined, undefined),
+
+	"OfferIce": KDDialogueTriggerOffer("OfferIce", ["Elements"], ["iceRestraints"],
+		["parole", ""],  ["Dom"],
+		["apprentice", "witch"], ["iceRestraints", "ice", "water"], undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferLatex": KDDialogueTriggerOffer("OfferLatex", ["Latex", "Conjure"], ["latexRestraints", "latexRestraintsHeavy"],
+		["parole", ""],  ["Sub", "Brat"],
+		["latexRestraints", "latexRestraintsHeavy", "alchemist"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferRopes": KDDialogueTriggerOffer("OfferRopes", ["Rope"], ["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie"],
+		["parole", ""],  ["Dom", ""],
+		["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie", "rope"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
+	"OfferLeather": KDDialogueTriggerOffer("OfferLeather", ["Leather"], ["armbinderSpell", "straitjacketSpell", "legbinderSpell", "harnessSpell", "gagSpell", "blindfoldSpell", "leathercuffsSpell"],
+		["parole", ""],  undefined,
+		["leatherRestraints", "leatherRestraintsHeavy"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
 	"OfferChastity": {
 		dialogue: "OfferChastity",
 		allowedPrisonStates: ["parole", ""],
@@ -451,47 +160,6 @@ let KDDialogueTriggers = {
 			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Elements)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
 		},
 	},
-	"OfferRopes": {
-		dialogue: "OfferRopes",
-		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Dom"],
-		requireTagsSingle: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsWrist", "ropeRestraintsHogtie"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.5,["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.4 * Math.abs(KinkyDungeonGoddessRep.Rope + 50)/100;
-		},
-	},
-	"OfferLeather": {
-		dialogue: "OfferLeather",
-		allowedPrisonStates: ["parole", ""],
-		requireTagsSingle: ["leatherRestraints", "leatherRestraintsHeavy"],
-		excludeTags: ["zombie", "skeleton", "robot"],
-		playRequired: true,
-		nonHostile: true,
-		noCombat: true,
-		noAlly: true,
-		blockDuringPlaytime: false,
-		onlyDuringPlay: true,
-		allowPlayExceptionSub: true,
-		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.5,["leatherRestraintsHeavy"]));
-		},
-		weight: (enemy, dist) => {
-			return 1 + 0.5 * Math.abs(KinkyDungeonGoddessRep.Leather + 50)/100;
-		},
-	},
-
-
 
 	"PotionSell": KDShopTrigger("PotionSell"),
 	"ElfCrystalSell": KDShopTrigger("ElfCrystalSell"),
@@ -516,18 +184,17 @@ let KDDialogueTriggers = {
  * @param {string[]} restraintTags - Tags of required restraints
  * @returns {boolean}
  */
-function KDDefaultPrereqs(enemy, AIData, dist, maxdist, chance, restraintTags) {
+function KDDefaultPrereqs(enemy, AIData, dist, maxdist, chance, restraintTags, force) {
 	return dist < maxdist
-			&& !AIData.domMe
+			&& (!AIData.domMe || force)
 			&& !KDEnemyHasFlag(enemy, "playstart")
-			&& !KinkyDungeonFlags.get("DangerFlag")
-			&& !KinkyDungeonFlags.get("BondageOffer")
+			&& (!KinkyDungeonFlags.get("DangerFlag") || force)
+			&& (!KinkyDungeonFlags.get("BondageOffer") || force)
 			&& !KinkyDungeonFlags.get("NoTalk")
-			&& (KinkyDungeonStatsChoice.get("Undeniable") || KDRandom() < chance)
-			&& (!restraintTags || KinkyDungeonGetRestraint({tags: restraintTags}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined)
-			&& (KinkyDungeonStatsChoice.get("Undeniable") || !KDIsBrat(enemy));
+			&& (KinkyDungeonStatsChoice.get("Undeniable") || KDRandom() < chance || force)
+			&& (!restraintTags || KinkyDungeonGetRestraint({tags: restraintTags}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined)
+			&& (KinkyDungeonStatsChoice.get("Undeniable") || !KDIsBrat(enemy) || force);
 }
-
 function KDShopTrigger(name) {
 	return {
 		dialogue: name,

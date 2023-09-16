@@ -21,8 +21,8 @@ function KDTestMapGen(count, Ranges, Checkpoints) {
 				for (let i = 0; i < count; i++) {
 					if (i % (count/KDLevelsPerCheckpoint) == 0)
 						console.log(`Testing iteration ${i} on floor ${MiniGameKinkyDungeonLevel}`);
-					KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], f, true);
-					let accessible = KinkyDungeonIsAccessible(KinkyDungeonStartPosition.x, KinkyDungeonStartPosition.y);
+					KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], "", "", f, true);
+					let accessible = KinkyDungeonIsAccessible(KDMapData.StartPosition.x, KDMapData.StartPosition.y);
 					if (!accessible) {
 						console.log(`Error, stairs are inaccessible on iteration ${i}`);
 						return false;
@@ -50,7 +50,7 @@ function KDTestFullRunthrough(GameLoops, Init, NGP) {
 		if (!EnemySpawnData["" + MiniGameKinkyDungeonCheckpoint]) {
 			EnemySpawnData["" + MiniGameKinkyDungeonCheckpoint] = {};
 		}
-		for (let e of KinkyDungeonEntities) {
+		for (let e of KDMapData.Entities) {
 			if (EnemySpawnData["" + MiniGameKinkyDungeonCheckpoint][e.Enemy.name] == undefined)
 				EnemySpawnData["" + MiniGameKinkyDungeonCheckpoint][e.Enemy.name] = 1;
 			else EnemySpawnData["" + MiniGameKinkyDungeonCheckpoint][e.Enemy.name] += 1;
@@ -90,18 +90,27 @@ function KDTestjailer(iter) {
 			if (!totals.null) totals.null = 1;
 			else totals.null = totals.null + 1;
 		}
-		KDSpliceIndex(KinkyDungeonEntities.indexOf(KinkyDungeonJailGuard()), 1);
+		KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonJailGuard()), 1);
 		KDGameData.KinkyDungeonJailGuard = 0;
 	}
 	console.log(totals);
 }
 
-async function KDExportTranslationFile() {
+async function KDExportTranslationFile(cull) {
 	await sleep(1000);
 	let file = "";
+	let cache = cull ? {} : undefined;
+	if (cache) {
+		for (let i = 0; i + 1 < Object.values(TranslationCache)[0].length; i++) {
+			cache[Object.values(TranslationCache)[0][i + 1]] = Object.values(TranslationCache)[0][i];
+		}
+	}
 	for (let c of Object.values(TextScreenCache.cache)) {
-		file = file + '\n' + c;
-		file = file + '\n';
+		if (!cache || !cache[c]) {
+			file = file + '\n' + c;
+			file = file + '\n';
+		}
+
 	}
 	navigator.clipboard.writeText(file);
 }

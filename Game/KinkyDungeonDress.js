@@ -161,7 +161,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
 				if (StandalonePatched) {
 					let model = KinkyDungeonPlayer.Appearance[A].Model;
-					if ((!model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name])
+					if ((!model.Restraint && !model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name])
 						|| model.Protected || model.SuperProtected) {
 						//KinkyDungeonPlayer.Appearance.splice(A, 1);
 						//A -= 1;
@@ -225,6 +225,11 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 			if (alreadyClothed[clothes.Group || clothes.Item]) continue;
 			data.updateDress = true;
 			if (!clothes.Lost && KinkyDungeonCheckClothesLoss) {
+				if (StandalonePatched) {
+					if (IsModelLost(Character, clothes.Item))
+						clothes.Lost = true;
+				}
+
 				if (clothes.Group == "Necklace") {
 					if (KinkyDungeonGetRestraintItem("ItemTorso") && KDRestraint(KinkyDungeonGetRestraintItem("ItemTorso")).harness) clothes.Lost = true;
 					if (KinkyDungeonGetRestraintItem("ItemArms") && KDGroupBlocked("ItemBreast")) clothes.Lost = true;
@@ -937,7 +942,7 @@ let KDExpressions = {
 		},
 	},
 	"OrgSuccess": {
-		priority: 10,
+		priority: 14,
 		criteria: (C) => {
 			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("OrgSuccess")) {
 				return true;
@@ -990,6 +995,44 @@ let KDExpressions = {
 				Brows2Pose: "Brows2Angry",
 				BlushPose: "BlushExtreme",
 				MouthPose: "MouthEmbarrassed",
+			};
+		},
+	},
+	"DenialPassion": {
+		priority: 9,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && (KinkyDungeonFlags.get("OrgDenied") || KinkyDungeonFlags.get("OrgEdged")) && KinkyDungeonGoddessRep.Passion > 10) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesSurprised",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsSad",
+				Brows2Pose: "Brows2Sad",
+				BlushPose: "BlushExtreme",
+				MouthPose: "MouthSmile",
+			};
+		},
+	},
+	"PlayWithSelf": {
+		priority: 12,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && (KinkyDungeonFlags.get("PlayWithSelf"))) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: KinkyDungeonFlags.get("VibeContinued") ? "EyesDazed" : "EyesNeutral",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsNeutral",
+				Brows2Pose: "Brows2Neutral",
+				BlushPose: "BlushHigh",
+				MouthPose: "MouthSmile",
 			};
 		},
 	},
@@ -1068,6 +1111,125 @@ let KDExpressions = {
 				BrowsPose: "",
 				Brows2Pose: "",
 				BlushPose: "",
+				MouthPose: "",
+			};
+		},
+	},
+	"Frustrated": {
+		stackable: true,
+		priority: 2.25,
+		criteria: (C) => {
+			return KinkyDungeonGoddessRep.Frustration > -20;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "BrowsSad",
+				Brows2Pose: "Brows2Sad",
+				BlushPose: "",
+				MouthPose: "",
+			};
+		},
+	},
+	"FrustratedMouth": {
+		stackable: true,
+		priority: 0.25,
+		criteria: (C) => {
+			return KinkyDungeonGoddessRep.Frustration > 20;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "MouthEmbarrassed",
+			};
+		},
+	},
+	"Passionate": {
+		stackable: true,
+		priority: 2.2,
+		criteria: (C) => {
+			return KinkyDungeonGoddessRep.Passion > -5;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "MouthSmile",
+			};
+		},
+	},
+	"PassionateBlush1": {
+		stackable: true,
+		priority: 2.2,
+		criteria: (C) => {
+			return KinkyDungeonGoddessRep.Passion > -40;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "BlushLow",
+				MouthPose: "",
+			};
+		},
+	},
+	"PassionateBlush2": {
+		stackable: true,
+		priority: 4,
+		criteria: (C) => {
+			return KinkyDungeonGoddessRep.Passion > -10;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "BlushMedium",
+				MouthPose: "",
+			};
+		},
+	},
+	"PassionateBlush3": {
+		stackable: true,
+		priority: 7,
+		criteria: (C) => {
+			return KinkyDungeonGoddessRep.Passion > 20;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "BlushHigh",
+				MouthPose: "",
+			};
+		},
+	},
+	"PassionateBlush4": {
+		stackable: true,
+		priority: 10,
+		criteria: (C) => {
+			return KinkyDungeonGoddessRep.Passion > 40;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "BlushExtreme",
 				MouthPose: "",
 			};
 		},

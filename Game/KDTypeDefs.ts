@@ -2,13 +2,14 @@ type Named = {
 	name: string,
 }
 
+interface NamedAndTyped extends Named {
+	/** Type of the item*/
+	type?: string,
+}
+
 /** Kinky Dungeon Typedefs*/
-interface item extends Named {
+interface item extends NamedAndTyped {
 	id: number,
-	/** Contains string data */
-	dataString?: Record<string, string>;
-	/** Contains numeric data */
-	dataNumber?: Record<string, number>;
 	/** Used in order to boost performance */
 	linkCache?: string[],
 	/** If the item has a different curse from the base curse */
@@ -328,8 +329,8 @@ interface KDRestraintPropsBase {
 	bindhands?: number,
 	/** harnesses allow enemies to grab you and slow you */
 	harness?: boolean,
-	/** hobble is the simplest kind of slowing restraint, increasing slow by 1*/
-	hobble?: boolean,
+	/** hobble is the simplest kind of slowing restraint, increasing slow by this amount*/
+	hobble?: number,
 	/** Blocking feet is for restraints that tie the legs together, forcing the player into SLow Level 2 or higher */
 	blockfeet?: boolean,
 	/** Your total gag level is the sum of the gag values of all your variables. Ball gags have 0.3-0.75 based on size and harness, muzzles are 1.0 */
@@ -419,6 +420,8 @@ interface KDRestraintPropsBase {
 	enchantedDrain?: number,
 	/** Whether or not this is an Ancient item, prison respects it */
 	enchanted?: boolean,
+	/** Whether or not this is special in some way*/
+	special?: boolean,
 	/** Faction color index */
 	factionColor?: number[][],
 	/** Determines if it gets hidden by the 'Hide Armor' option */
@@ -469,6 +472,7 @@ interface floorParams {
 	torchchance?: number,
 	torchlitchance?: number,
 	music: Record<string, number>,
+	specialChests?: Record<string, number>,
 	/** Will add more/less torches on the main path */
 	torchchanceboring?: number,
 	torchreplace?: {
@@ -585,6 +589,9 @@ interface KDLoadout {name: string, tags?: string[], singletag: string[], singlet
 interface enemy extends KDHasTags {
 	/** This enemy will always kite the player even if player is harmless*/
 	alwaysKite?: boolean,
+	/** This enemy will give an intro when it first sees you*/
+	intro?: string,
+
 
 	/** These enemies always carry these items at the start */
 	startingItems?: string[]
@@ -634,6 +641,21 @@ interface enemy extends KDHasTags {
 		/** This enemy is affected by lighting */
 		lighting?: boolean,
 
+	},
+	/** Sound properties */
+	Sound?: {
+		/** Sound multiplier while moving, default 1 */
+		moveAmount?: number,
+		/** Constant sound amount */
+		baseAmount?: number,
+		/** Cast sound amount */
+		castAmount?: number,
+		/** Attack sound amount */
+		attackAmount?: number,
+		/** alert sound amount */
+		alertAmount?: number,
+		/** Decay per turn */
+		decay?: number,
 	},
 
 	/** Behavior tags */
@@ -713,6 +735,10 @@ interface enemy extends KDHasTags {
 	regen?: number,
 	/** */
 	visionRadius?: number,
+	/** Enemy will not get a vision bonus in one direction*/
+	nonDirectional?: boolean,
+	/** Enemy will not flip based on the enemy direction*/
+	noFlip?: boolean,
 	/** Max enemy hp*/
 	maxhp?: number,
 	/** HP the enemy starts at */
@@ -757,6 +783,8 @@ interface enemy extends KDHasTags {
 	dmgType?: string,
 	/** */
 	bound?: string,
+	/** Enemy is not a humanoid, used for skeletons */
+	nonHumanoid?: boolean,
 	/** */
 	color?: string,
 	/** counts toward the player's permanent summmon limit */
@@ -908,6 +936,8 @@ interface enemy extends KDHasTags {
 		/** The chance per tick that the enemy will use their remote remote to punish the player when they are within range */
 		punishRemoteChance?: number,
 	}
+	/** Crit strike modifier of the enemy's attacks */
+	crit?: number,
 	/** */
 	bypass?: boolean,
 	/** */
@@ -922,6 +952,8 @@ interface enemy extends KDHasTags {
 	alwaysBlock?: boolean,
 	/** Info for enemy resistance */
 	Resistance?: {
+		/** Applies a resistance profile to the enemy, which is a preset set of tags */
+		profile?: string[],
 		/** This enemy cannot dodge if the attacking weapon is magical */
 		alwaysHitByMagic?: boolean,
 		/** This enemy cannot BLOCK if the attacking weapon is magical */
@@ -932,7 +964,7 @@ interface enemy extends KDHasTags {
 	/** */
 	noAlert?: boolean,
 	/** The enemy will follow enemies defined by this block*/
-	master?: {type: string, range: number, loose?: boolean, aggressive?: boolean, dependent?: boolean},
+	master?: masterInfo,
 	/** */
 	pullTowardSelf?: boolean,
 	/** */
@@ -1059,6 +1091,8 @@ interface enemy extends KDHasTags {
 	immobile?: boolean;
 	/** Stops casting spells after there are this many enemies */
 	enemyCountSpellLimit?: number;
+	/** List of animations to be applied */
+	Animations?: string[];
 
 }
 
@@ -1079,6 +1113,7 @@ interface weapon {
 	chance: number;
 	type: string;
 	bind?: number;
+	crit?: number;
 	bindType?: string;
 	distract?: number;
 	bindEff?: number;
@@ -1110,6 +1145,7 @@ interface weapon {
 	special?: {
 		type: string,
 		spell?: string,
+		prereq?: string,
 		selfCast?: boolean,
 		requiresEnergy?: boolean,
 		energyCost?: number,
@@ -1117,7 +1153,9 @@ interface weapon {
 }
 
 interface KinkyDungeonEvent {
+	trim?: boolean,
 	cost?: number,
+	cursetype?: string,
 	/** This is from a temporary event curse */
 	curse?: boolean,
 	tags?: string[],
@@ -1132,6 +1170,7 @@ interface KinkyDungeonEvent {
 	count?: number;
 	player?: boolean;
 	bind?: number;
+	crit?: number;
 	distract?: number;
 	mult?: number;
 	kind?: string;
@@ -1194,11 +1233,40 @@ interface KinkyDungeonEvent {
 	prevSlowLevel?: number;
 }
 
+
+type masterInfo = {
+	type: string,
+	range: number,
+	loose?: boolean,
+	aggressive?: boolean,
+	dependent?: boolean,
+	maxDist?: number,
+	masterTag?: string,
+}
+
 interface entity {
 	visual_hp?: number,
 	visual_boundlevel?: number,
 	visual_distraction?: number,
 	visual_lifetime?: number,
+
+	/** The enemy will follow enemies defined by this block*/
+	master?: masterInfo,
+
+	// Direction
+	flip?: boolean,
+
+	// Custom play line
+	playLine?: string,
+	// Custom intro
+	intro?: string,
+
+	// Animations
+	offX?: number,
+	offY?: number,
+	scaleX?: number,
+	scaleY?: number,
+	animTime?: number,
 	/** Spawn location */
 	spawnX?: number,
 	/** Spawn location */
@@ -1209,6 +1277,8 @@ interface entity {
 	domVariance?: number,
 	hideTimer?: boolean,
 	Enemy: enemy,
+	/** Amount of sound the entity is currently producing */
+	sound?: number,
 	/** List an enemy ID. Enemy will be bound to this one and dies if not found. BoundTo of -1 indicates bound to the player, and will expire if the player is jailed or passes out*/
 	boundTo?: number,
 	/** This enemy is weakly bound and simply stunning the caster will delete it */
@@ -1335,6 +1405,8 @@ interface KinkyDialogueTrigger {
 	requireTags?: string[];
 	/** Require one of these tags */
 	requireTagsSingle?: string[];
+	/** Require one of these tags */
+	requireTagsSingle2?: string[];
 	/** Require play to be POSSIBLE */
 	playRequired?: boolean;
 	/** Require play to be ONGOING */
@@ -1409,6 +1481,10 @@ type KDPerk = {
 }
 
 interface spell {
+	/** Crit damage multiplier of the spell */
+	crit?: number;
+	/** Sound efgfect that plays when you miscast */
+	miscastSfx?: string,
 	/** This spell doesnt hurt the target upon directly hitting, only the AoE */
 	noDirectDamage?: true,
 	/** This spell does not leave a warning to the player */
@@ -1493,6 +1569,8 @@ interface spell {
 	/** Buffs applied by the hit will effect everyone */
 	buffAll?: boolean,
 	name: string;
+	/** Spell does not advance time */
+	quick?: boolean;
 	/** spell required to unlock this one */
 	prerequisite?: string | string[];
 	/** blocked if you have this spell */
@@ -1550,7 +1628,7 @@ interface spell {
 	minRange?: number;
 	noSprite?: boolean;
 	/** Verbal, arms, or legs */
-	components?: any[];
+	components?: string[];
 	/** Spell level */
 	level: number;
 	/** Whether the spell is passive (like the summon count up) or active like the bolt or toggle spells*/
@@ -1718,6 +1796,8 @@ interface KDJailPoint extends KDPoint {type: string, radius: number, requireLeas
 interface KinkyDialogue {
 	/** REPLACETEXT -> Replacement */
 	data?: Record<string, string>;
+	/** Tags for filtering */
+	tags?: string[];
 	/** Shows the quick inventory */
 	inventory?: boolean;
 	/** Function to play when clicked. If not specified, nothing happens.  Bool is whether or not to abort current click*/
@@ -1833,6 +1913,12 @@ interface VibeMod {
 	denyChanceLikelyMod?: number,
 }
 
+interface KDInventoryActionDef {
+	valid: (player: entity, item: item) => boolean;
+	click: (player: entity, item: item) => void;
+	cancel: (player: entity, delta: number) => boolean;
+}
+
 interface KinkyDungeonSave {
 	KinkyDungeonPlayerEntity: any;
 	level: number;
@@ -1868,7 +1954,10 @@ interface KinkyDungeonSave {
 	spells: string[];
 	inventory: item[];
 	KDGameData: KDGameDataBase;
+	KDMapData: KDMapDataType;
+	KDWorldMap: Record<string, KDWorldSlot>;
 	KDEventData: Object;
+	KDCurrentWorldSlot: {x: number, y: number};
 	flags: [string, number][];
 	stats: {
 		picks: number;
@@ -1885,23 +1974,66 @@ interface KinkyDungeonSave {
 		diff: number;
 	};
 	faction: Record<string, Record<string, number>>;
-
-
-	KinkyDungeonTiles: Record<string, any>;
-	KinkyDungeonTilesSkin: Record<string, any>;
-	KinkyDungeonTilesMemory: Record<string, any>;
-	KinkyDungeonEffectTiles: Record<string, Record<string, effectTile>>;
-	KinkyDungeonRandomPathablePoints: Record<string, {x: number, y: number, tags?:string[]}>;
-	KinkyDungeonEntities: entity[];
-	KinkyDungeonBullets: any[];
-	KinkyDungeonGrid: string;
-	KinkyDungeonGridWidth: number;
-	KinkyDungeonGridHeight: number;
-	KinkyDungeonFogGrid: any[];
-	KinkyDungeonStartPosition: {x: number, y: number};
-	KinkyDungeonEndPosition: {x: number, y: number};
 }
 
+interface KDWorldSlot {
+	data: Record<string, KDMapDataType>;
+	x: number;
+	y: number;
+	color: string;
+	name: string;
+	main: string;
+}
+
+interface KDMapDataType {
+	Checkpoint: string,
+	Title: string,
+
+
+	GroundItems: {x: number, y: number, name: string, amount?: number} [];
+
+	Grid: string;
+	GridWidth: number;
+	GridHeight: number;
+	FogGrid: any[];
+
+
+	MainPath: string,
+	ShortcutPath: string,
+
+	Tiles: Record<string, any>;
+	TilesSkin: Record<string, any>;
+	TilesMemory: Record<string, any>;
+	EffectTiles: Record<string, Record<string, effectTile>>;
+	RandomPathablePoints: Record<string, {x: number, y: number, tags?:string[]}>;
+	Entities: entity[];
+	Bullets: any[];
+	StartPosition: {x: number, y: number};
+	EndPosition: {x: number, y: number};
+	ShortcutPosition: {x: number, y: number};
+
+	PatrolPoints: {x: number, y: number}[];
+
+	MapBrightness: number;
+
+	ConstantX: boolean;
+
+	RoomType: string,
+	MapMod: string,
+
+
+	JailPoints: KDJailPoint[],
+
+	ShopItems: shopItem[],
+	PoolUses: number,
+	PoolUsesGrace: number,
+
+	CategoryIndex: Record<string, {category: string, tags: string[]}>,
+
+	JailFaction: string[],
+	GuardFaction: string[],
+	MapFaction: string,
+}
 
 
 type MapMod = {
@@ -1920,6 +2052,9 @@ type MapMod = {
 }
 
 type AIType = {
+	noOverride?: boolean,
+	/** allows you to set an alternative AI type when requested */
+	override?: Record<string, string>,
 	/** The AI will only wander to visible points */
 	strictwander?: boolean,
 	/** This enemy is stealthy until the ambush is triggered */
@@ -1930,8 +2065,13 @@ type AIType = {
 	init: (enemy, player, aidata) => void,
 	/** Happens before movement. Return true to skip movement loop*/
 	beforemove: (enemy, player, aidata) => boolean,
-	/** Whether the enemy chases the player if it sees them */
+	/** Whether the enemy chases the target if it sees them */
 	chase: (enemy, player, aidata) => boolean,
+	/** Similar to chase but not quite.
+	 * Will the enemy choose to go to the last seen target location?
+	 * If it sees the target
+	 * Can be false if you want an enemy to be more reserved about where it goes*/
+	trackvisibletarget: (enemy, player, aidata) => boolean,
 	/** Whether enemy will chase the player across a long distance */
 	persist: (enemy, player, aidata) => boolean,
 	/** Whether the enemy moves toward gx */
@@ -1965,7 +2105,159 @@ type AIType = {
 
 }
 
+interface KDAITriggerData {
+	/** Determines that the AI can play with the player and initiate a play event */
+	playAllowed?: boolean,
+	/** A SUBSET of hostile. In some cases an enemy will be hostile but not aggressive.
+	 * neutrals and allies cannot be aggressive */
+	aggressive?: boolean,
+	playerDist?: number,
+
+	allowPlayExceptionSub?: boolean,
+	ignoreNoAlly?: boolean,
+	ignoreCombat?: boolean,
+};
+
+/** Container for KD AI data
+ * Persistently stored as AIData variable for use in some
+ */
+interface KDAIData extends KDAITriggerData {
+	/** The target of the AI, NOT the KinkyDungeonPlayerEntity but rather a target entity which CAN be the player */
+	player?: entity,
+
+	/** Whether to do a defeat or not */
+	defeat?: boolean,
+	/** Whether this enemy is idle or not. Gets set to true by default and false if the enemy does ANYTHING */
+	idle?: boolean,
+	/** Indicates that the enemy has moved, therefore cant attack or cast unless it has the necessary properties */
+	moved?: boolean,
+	/** Refresh the warning tiles due to whatever reason */
+	refreshWarningTiles?: boolean,
+
+	/** Enemy will ignore the player, i.e. will not attack the player or chase the player or do anything to the player */
+	ignore?: boolean,
+	/** Player is rather tied up and not considered a big threat generally */
+	harmless?: boolean,
+	/** Enemy belongs to a hostile faction */
+	hostile?: boolean,
+
+	/** Enemy belongs to an allied faction */
+	allied?: boolean,
+	/** This enemy is feeling dominated by the player and will generally act submissive */
+	domMe?: boolean,
+
+	/** Hit SFX */
+	hitsfx?: string,
+
+	/** Enemy is pretty distracted */
+	highdistraction?: boolean,
+	/** Enemy is totally distracted */
+	distracted?: boolean,
+	/** Level of bondage on this enemy, 0-4 */
+	bindLevel?: number,
+
+	/** Enemy can ignore locks when opening doors */
+	ignoreLocks?: boolean,
+	/** Movable tiles for the enemy */
+	MovableTiles?: string,
+	/** Tiles that the enemy will try to avoid if possible but can still move into if needed */
+	AvoidTiles?: string,
+
+	// Enemy attack stats
+	/** Enemy attack type, changes based on special, etc */
+	attack?: string,
+	range?: number,
+	width?: number,
+	accuracy?: number,
+	damage?: string,
+	power?: number,
+	/** Enemy has a vibe remote and will vibe the player if it hits the player */
+	vibe?: boolean,
+
+	/** Enemy is CAPABLE of leashing, it is a leashing enemy */
+	leashing?: boolean,
+	/** Enemy would add a leash if it would be aggressive to the player */
+	addLeash?: boolean,
+	/** Desired restraining level of the player.
+	 * If the player is this restrained,
+	 * then the enemy will not add any new bindings and will focus on leashing */
+	targetRestraintLevel?: number,
+	/** What happens if the player is below the target restraint level */
+	addMoreRestraints?: boolean,
+
+	/** The enemy is ABLE to aggro the target, either due to aggression or dominant play */
+	canAggro?: boolean,
+	/** The enemy actually aggros the target and will make attacks */
+	wantsToAttack?: boolean,
+	/** The enemy actually aggros the target and will cast spells */
+	wantsToCast?: boolean,
+	/** The enemy wants to pull the player instead of just attacking */
+	wantsToLeash?: boolean,
+	/** The enemy wants to leash the player, but prefers to pull instead of attack */
+	focusOnLeash?: boolean,
+	/** Enemy will move toward its target rather than its gx/gy position */
+	moveTowardPlayer?: boolean,
+
+	/** The enemy plans to leash the player,
+	 * important to declare b/c otherwise enemy can close cages, etc during play*/
+	intentToLeash?: boolean,
+	/** The player is wearing a leash restraint and can be leash pulled */
+	leashed?: boolean,
+	/** Enemy stops moving when in range of the player */
+	holdStillWhenNear?: boolean,
+
+	/** Position to leash/pull the player to */
+	leashPos?: {x: number, y: number},
+	/** nearest jail to take the player to */
+	nearestJail?: {x: number, y: number, type: string, radius: number},
+
+	/** Enemy to follow */
+	master?: entity,
+	/** Chance that the enemy will kite */
+	kiteChance?: number,
+	/** Enemy has decided to kite */
+	kite?: boolean,
+	/** This variable is supposed to make the enemy not take potshots at you while in furniture*/
+	ignoreRanged?: boolean,
+
+	/** It's time to change patrol points */
+	patrolChange?: boolean,
+	/** This enemy is an ALLY and will follow the player */
+	allyFollowPlayer?: boolean,
+	/** an override situation to not follow the player
+	 * Usually done by neutral enemies or allies that the player has told to hold still
+	 */
+	dontFollow?: boolean,
+
+	// Vision and awareness stuff
+	visionMod?: number,
+	followRange?: number,
+	visionRadius?: number,
+	chaseRadius?: number,
+	blindSight?: number,
+	sneakMult?: number,
+	directionOffset?: number,
+
+	playerDistDirectional?: number,
+	canSensePlayer?: boolean,
+	canSeePlayer?: boolean,
+	canSeePlayerChase?: boolean,
+	canSeePlayerMedium?: boolean,
+	canSeePlayerClose?: boolean,
+	canSeePlayerVeryClose?: boolean,
+	canShootPlayer?: boolean,
+
+	/** Chance of starting a play event */
+	playChance?: number,
+	/** Indicates that a play event has started */
+	startedDialogue?: boolean,
+	/** Play event that has started */
+	playEvent?: boolean,
+}
+
 type EnemyEvent = {
+	/** Extremely important for leash events */
+	overrideIgnore?: boolean,
 	forceattack?: boolean,
 	aggressive?: boolean,
 	nonaggressive?: boolean,
@@ -1974,9 +2266,9 @@ type EnemyEvent = {
 	/** This event wont get cleared by mass resets, like when you are deposited into a cage */
 	noMassReset?: boolean,
 	/** Determines if the enemy will attack you */
-	decideAttack?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
+	decideAttack?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
 	/** Determines if the enemy will cast spells */
-	decideSpell?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
+	decideSpell?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
 	/** Determines weight */
 	weight: (enemy: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
 	/** Run when triggered */
@@ -1994,12 +2286,13 @@ type EnemyEvent = {
 }
 
 type KDLockType = {
+	consume_key: boolean;
 	lockmult: number;
 
 	penalty?: Record<string, number>;
 
 	pickable: boolean;
-	pick_time: number;
+	pick_speed: number;
 	pick_diff: number;
 	pick_lim?: number;
 	canPick: (data: any) => boolean;
@@ -2023,6 +2316,17 @@ type KDLockType = {
 
 	loot_special: boolean;
 	loot_locked: boolean;
+}
+
+type KDBondageStatus = {
+	silence: number,
+	bind: number,
+	slow: number,
+	blind: number,
+	disarm: number,
+	toy: number,
+	plug: number,
+	belt: number,
 }
 
 type KDMapTile = {
@@ -2065,6 +2369,8 @@ type KDMapTile = {
 
 interface KDBondage {
 	color: string,
+	/** Multiplier for enemy bondage */
+	enemyBondageMult: number,
 	/** Order in which enemies will struggle */
 	priority: number,
 	/** Multiplier for struggle rate */
@@ -2102,13 +2408,21 @@ interface KDBondageMachineFunc {
 interface KDDroppedItemProp {
 	/** When blindfolded, this item will be invisible if your blind level is equal to this or higher */
 	tinyness?: number,
+	/** This item will be kept when moving between floors*/
+	persistent?: boolean,
 }
 
 type KDParticleData = {
+	camX?: number,
+	camY?: number,
+
 	zIndex: number,
 	fadeEase?: string,
 	time: number,
 	phase?: number,
+
+	scale?: number,
+	scale_delta?: number,
 
 	rotation?: number,
 
@@ -2142,6 +2456,10 @@ interface KDCursedDef {
 	customIcon_RemoveSuccess?: string,
 	/** TODO NOT IMPLEMENTED for a future RemoveCursesWithShrine function */
 	shrineRemove?: string[],
+	level: number,
+	weight: (item, allHex?) => number,
+	customStruggle?: (item: item, Curse?: string) => void,
+	customInfo?: (item: item, Curse?: string) => void,
 	onApply?: (item: item, host?: item) => void,
 	condition: (item: item) => boolean,
 	remove: (item: item, host: item) => void, events?: KinkyDungeonEvent[]
@@ -2154,6 +2472,21 @@ type KDInventoryVariant = {
 	events: KinkyDungeonEvent[],
 	/** The original restraint this is based on */
 	template: string,
+	/** If true, this item will not be forcibly kept whenever being added or removed */
+	noKeep?: boolean,
+}
+
+interface KDSpellComponent {
+	/** Returns true if the component is ignored in this case even for partial applications */
+	ignore: (spell: spell, x: number, y: number) => boolean,
+	/** Returns true if the spell can be cast, or false otherwise */
+	check: (spell: spell, x: number, y: number) => boolean,
+	/** Run when the spell is cast */
+	cast?: (spell: spell, data: any) => void,
+	/** Get the name of the component when hovering over spell icon */
+	stringShort: (ret: string) => string,
+	/** Get the name of the component in the spell description */
+	stringLong: (spell: spell) => string,
 }
 
 type SpecialCondition = {
@@ -2220,6 +2553,11 @@ interface KDSeal {
 	events: KinkyDungeonEvent[],
 }
 
+interface KDFactionProps {
+	/** Weight to have them show up in a given floor type and floor count (and in future floor X and floor Y) */
+	weight: (Floor: number, Checkpoint: string, tags: string[], X: number, Y: number) => number,
+}
+
 type KDTile = any;
 
 type KDTrapType = (tile: KDTile, entity: entity, x: number, y: number) => {msg: string, triggered: boolean}
@@ -2227,7 +2565,12 @@ type KDTrapType = (tile: KDTile, entity: entity, x: number, y: number) => {msg: 
 type KDSprites = {[_: string]: (x: number, y: number, fog: boolean, noReplace: string) => string}
 
 declare const zip: any;
-declare const guessLanguage: any;
+declare const guessLanguage: {
+	detect(text: string): string;
+	info(text: string): [string, string, string];
+	code(text: string): [number];
+	name(text: string): string;
+};
 
 declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') & {
 	// Filters says it's deprecated and should be referenced `PIXI.<filter>` rather than `PIXI.filters.<filter>`
@@ -2237,5 +2580,12 @@ declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') &
 
 // We can't refer to a type as `PIXI.Container`, nor `typeof PIXI.Container`, but `import(pixi.js).Container` does work
 type PIXIContainer = import('pixi.js').Container;
+type PIXIMesh = import('pixi.js').Mesh;
+type PIXIRenderTexture = import('pixi.js').RenderTexture;
+type PIXIPlane = import('pixi.js').SimplePlane;
+type PIXIBuffer = import('pixi.js').Buffer;
+type IArrayBuffer = import('pixi.js').IArrayBuffer;
+type PIXIArray = import('pixi.js').ITypedArray;
 type PIXIAdjustmentFilter = import('pixi-filters').AdjustmentFilter;
+type PIXIFilter = import('pixi.js').Filter;
 
