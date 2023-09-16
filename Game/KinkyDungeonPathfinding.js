@@ -82,7 +82,7 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 
 	while(open.size > 0) {
 		// Trim if it takes too long
-		if (trimLongDistance && closed.size > KDPFTrim) {
+		if (trimLongDistance && (closed.size > KDPFTrim || open.size > 3*KDPFTrim)) {
 			console.log("Quit pathfinding");
 			return undefined; // Give up
 		}

@@ -485,7 +485,7 @@ function KDProcessInput(type, data) {
 					tile = tiles[Math.floor(tiles.length * KDRandom())];
 					if (tile) {
 						KinkyDungeonMapSet(tile.x, tile.y, "$");
-						KinkyDungeonTilesSet(tile.x + "," + tile.y, {Type: "Angel"});
+						KinkyDungeonTilesSet(tile.x + "," + tile.y, {Type: "Angel", Light: 5, lightColor: 0xffffff});
 						KDStartDialog("AngelHelp","Angel", true, "");
 					}
 					KDGameData.RescueFlag = true;

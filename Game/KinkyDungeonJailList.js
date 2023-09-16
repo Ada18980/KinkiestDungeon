@@ -136,7 +136,8 @@ let KDGuardActions = {
 			}
 		},
 		handle: (guard, xx, yy) => {
-
+			guard.gx = KinkyDungeonPlayerEntity.x;
+			guard.gy = KinkyDungeonPlayerEntity.y;
 		},
 	},
 	"jailTease": {
@@ -149,8 +150,8 @@ let KDGuardActions = {
 		},
 		handle: (guard, xx, yy, delta) => {
 			let playerHasVibrator = Array.from(KinkyDungeonAllRestraint()).some(i => KDRestraint(i).allowRemote);
-			guard.gx = guard.x;
-			guard.gy = guard.y;
+			guard.gx = xx - 2;
+			guard.gy = yy;
 			if (playerHasVibrator) {
 				let extraCharge = Math.round(2 + (KinkyDungeonGoddessRep.Ghost + 50) * KDRandom() * 0.15);
 				KinkyDungeonSendEvent("remoteVibe", {enemy: guard.Enemy.name, power: extraCharge, overcharge: true, noSound: false});
@@ -253,8 +254,8 @@ let KDGuardActions = {
 						KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
 					}
 					guard.CurrentAction = "jailWander";
-					guard.gx = guard.x;
-					guard.gy = guard.y;
+					guard.gx = KinkyDungeonPlayerEntity.x;
+					guard.gy = KinkyDungeonPlayerEntity.y;
 					KDGameData.GuardApplyTime = 0;
 				} else if (oldRestraintItem) {
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartRemoving")
@@ -263,10 +264,12 @@ let KDGuardActions = {
 					KDGameData.GuardApplyTime += delta;
 				} else {
 					guard.CurrentAction = "jailWander";
-					guard.gx = guard.x;
-					guard.gy = guard.y;
+					guard.gx = KinkyDungeonPlayerEntity.x;
+					guard.gy = KinkyDungeonPlayerEntity.y;
 					KDGameData.GuardApplyTime = 0;
 				}
+				guard.gx = KinkyDungeonPlayerEntity.x;
+				guard.gy = KinkyDungeonPlayerEntity.y;
 			} else {
 				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 2);
 				KDGameData.GuardApplyTime = 0;
@@ -305,8 +308,8 @@ let KDGuardActions = {
 							KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonJailerCheck"), "yellow", 3, true);
 					}
 					guard.CurrentAction = "jailWander";
-					guard.gx = guard.x;
-					guard.gy = guard.y;
+					guard.gx = KinkyDungeonPlayerEntity.x;
+					guard.gy = KinkyDungeonPlayerEntity.y;
 					KDGameData.GuardApplyTime = 0;
 				} else if (newRestraint) {
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
@@ -316,6 +319,8 @@ let KDGuardActions = {
 
 					KDGameData.GuardApplyTime += delta;
 				}
+				guard.gx = KinkyDungeonPlayerEntity.x;
+				guard.gy = KinkyDungeonPlayerEntity.y;
 			} else {
 				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 7);
 				KDGameData.GuardApplyTime = 0;
@@ -350,8 +355,8 @@ let KDGuardActions = {
 						KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
 					}
 					guard.CurrentAction = "jailWander";
-					guard.gx = guard.x;
-					guard.gy = guard.y;
+					guard.gx = KinkyDungeonPlayerEntity.x;
+					guard.gy = KinkyDungeonPlayerEntity.y;
 					KDGameData.GuardApplyTime = 0;
 				} else if (oldRestraintItem) {
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartLocking")
@@ -364,6 +369,8 @@ let KDGuardActions = {
 					guard.gy = guard.y;
 					KDGameData.GuardApplyTime = 0;
 				}
+				guard.gx = KinkyDungeonPlayerEntity.x;
+				guard.gy = KinkyDungeonPlayerEntity.y;
 			} else {
 				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 2);
 				KDGameData.GuardApplyTime = 0;

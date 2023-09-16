@@ -444,7 +444,7 @@ let KDEventMapInventory = {
 				let alreadyDone = KDItemDataQuery(item, "cursedDamage") || 0;
 				let count = KDItemDataQuery(item, "cursedDamageHP") || Math.round(e.power + KDRandom() * e.limit);
 				KDItemDataSet(item, "cursedDamageHP", count);
-				if (alreadyDone < count) {
+				if (alreadyDone + e.mult * data.dmg < count) {
 					alreadyDone += e.mult * data.dmg;
 					KDItemDataSet(item, "cursedDamage", alreadyDone);
 					if (alreadyDone >= KDItemDataQuery(item, "cursedDamageCheckpoint") || 0) {
