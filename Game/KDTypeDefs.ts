@@ -2052,6 +2052,9 @@ type MapMod = {
 }
 
 type AIType = {
+	noOverride?: boolean,
+	/** allows you to set an alternative AI type when requested */
+	override?: Record<string, string>,
 	/** The AI will only wander to visible points */
 	strictwander?: boolean,
 	/** This enemy is stealthy until the ambush is triggered */

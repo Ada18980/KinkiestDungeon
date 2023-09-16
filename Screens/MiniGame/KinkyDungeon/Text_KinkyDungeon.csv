@@ -377,12 +377,27 @@ KinkyDungeonStatDescFutileStruggles,"Lose 2 WP every time you remove a non-trivi
 KinkyDungeonStatSecondWind,"Second Wind"
 KinkyDungeonStatDescSecondWind,"Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)"
 KinkyDungeonSpellSecondWind0,Second Wind Perk
+KinkyDungeonSpellDescriptionSecondWind0,Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage.
 KinkyDungeonSpellSecondWind1,Triumphant Wind
 KinkyDungeonSpellDescriptionSecondWind1,"Second Wind now regenerates up to 25% of your max WP"
+
+KinkyDungeonStatLockedUp,"Locked Up"
+KinkyDungeonStatDescLockedUp,"While wearing a chastity belt, your Distraction floor lowers when you perform actions such as defeating enemies, opening chests, and breaking orbs. (Upgrades available in spell tree)"
+KinkyDungeonSpellLockedUp0,Locked Up Perk
+KinkyDungeonSpellDescriptionLockedUp0,"While wearing a chastity belt, your Distraction floor lowers when you perform actions such as capturing, opening chests, and breaking orbs."
+KinkyDungeonSpellLockedUp1,Controlled Urges
+KinkyDungeonSpellDescriptionLockedUp1,"Locked Up is 150% effective. Gain +70 psychic/charm resist from a chastity belt and +30 from a chastity bra. While not wearing a chastity belt, your distraction floor increases slowly."
+KinkyDungeonSpellLockedUp2,Ready for Training
+KinkyDungeonSpellDescriptionLockedUp2,"Locked Up is 200% effective. +25% stamina regen per 100 current DP. Playing with yourself is less effective while vibrators are off or set to edge. Slow level is increased by 1 when you aren't wearing any chastity."
+KinkyDungeonSpellLockedUp3,Efficient Denial
+KinkyDungeonSpellDescriptionLockedUp3,"Locked Up is 300% effective. When Locked Up triggers, you gain -30% mana costs and +25% physical damage for 7 turns (35 when opening a chest or breaking orbs). You cannot orgasm unless you are wearing a chastity belt, and slow level is increased by 2."
+KinkyDungeonSpellLockedUpX,Recalcitrant
+KinkyDungeonSpellDescriptionLockedUpX,"Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back."
 
 KinkyDungeonStatNovicePet,"Novice Pet"
 KinkyDungeonStatDescNovicePet,"You can now sprint while wearing a petsuit. (Upgrades available in spell tree)"
 KinkyDungeonSpellNovicePet0,Novice Pet Perk
+KinkyDungeonSpellDescriptionNovicePet0,"You can now sprint while wearing a petsuit."
 KinkyDungeonSpellNovicePet1,Eager Pet
 KinkyDungeonSpellDescriptionNovicePet1,"+1 slow reduction while wearing a petsuit, but sprint costs are increased by 30% when not wearing a petsuit."
 KinkyDungeonSpellNovicePet2,Experienced Pet
@@ -448,6 +463,8 @@ KinkyDungeonStatSlimePref,"More Encasement"
 KinkyDungeonStatDescSlimePref,"Enemies that encase you (e.g slimes, latex cubes) will appear more frequently."
 KinkyDungeonStatSlimeOptout,"Less Encasement"
 KinkyDungeonStatDescSlimeOptout,"Fewer encasement-related enemies will appear, although this does not remove it entirely."
+
+
 
 
 KinkyDungeonStatMC_Trainee,"Trainee"

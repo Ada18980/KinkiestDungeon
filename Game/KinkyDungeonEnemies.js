@@ -3414,7 +3414,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						enemy.gy = player.y;
 					}
 				} else {
-					if (enemy.aware) {
+					if (enemy.aware && KinkyDungeonAggressive(enemy, player)) {
 						enemy.path = undefined;
 					}
 					enemy.aware = false;
@@ -3892,7 +3892,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												//onlyLimited: !enemy.Enemy.RestraintFilter?.limitedRestraintsOnly,
 												looseLimit: true,
 												require: enemy.Enemy.RestraintFilter?.unlimitedRestraints ? undefined : enemy.items,
-											}, enemy);
+											}, enemy, undefined, true);
 
 										if (!rest) {
 											rest = KinkyDungeonGetRestraint(
@@ -3910,7 +3910,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 													looseLimit: true,
 													onlyUnlimited: true,
 													ignore: enemy.items,
-												}, enemy);
+												}, enemy, undefined, true);
 										} else {
 											restraintFromInventory.push(rest.name);
 										}
@@ -5651,7 +5651,7 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 			for (let r of restraintsToAdd) {
 				let bb = 0;
 				if (count >= protection) {
-					bb = KinkyDungeonAddRestraintIfWeaker(r, (enemy?.Enemy.power || spell?.power || 0), KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, enemy?.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, faction, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, enemy) * 2;
+					bb = KinkyDungeonAddRestraintIfWeaker(r, (enemy?.Enemy.power || spell?.power || 0), KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, enemy?.Enemy.useLock ? enemy.Enemy.useLock : undefined, undefined, undefined, undefined, faction, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, enemy, true) * 2;
 					if (bb) {
 						if (KDGroupBlocked(r.Group) && !enemy?.Enemy.bypass) {
 							KinkyDungeonSendTextMessage(
@@ -5668,9 +5668,12 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 						}
 						added.push(r);
 						KDSendStatus('bound', r.name, "enemy_" + name);
+						count += 1;
 					}
+					count += 0;
+				} else {
+					count += 1;
 				}
-				count += 1;
 			}
 		}
 	} else {
@@ -5968,4 +5971,38 @@ function KDGetDialogueTrigger(enemy, Data, requireTags) {
 		}
 	}
 	return "";
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDCanOverrideAI(enemy) {
+	let AI = KDGetAI(enemy);
+	if (KDAIType[AI] && KDAIType[AI].noOverride) return false;
+	return true;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {string} index
+ * @returns {string}
+ */
+function KDGetAIOverride(enemy, index) {
+	let AI = KDGetAI(enemy);
+	if (KDAIType[AI] && KDAIType[AI].override) return KDAIType[AI].override[index];
+	return undefined;
+}
+/**
+ *
+ * @param {enemy} Enemy
+ * @param {string} index
+ * @returns {string}
+ */
+function KDGetAITypeOverride(Enemy, index) {
+	let AI = Enemy.AI;
+	if (KDAIType[AI] && KDAIType[AI].override) return KDAIType[AI].override[index];
+	return undefined;
 }
