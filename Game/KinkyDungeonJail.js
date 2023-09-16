@@ -435,7 +435,7 @@ function KinkyDungeonHandleJailSpawns(delta) {
 
 	// This is an important piece to make it so guards don't clog up the jail space
 	for (let enemy of KDMapData.Entities) {
-		if (enemy.gxx == xx && enemy.gyy == yy) {
+		if (enemy.gxx == xx && enemy.gyy == yy && enemy != KinkyDungeonJailGuard()) {
 			enemy.AI = KDGetAIOverride(enemy, "hunt") || "hunt";
 		}
 	}
