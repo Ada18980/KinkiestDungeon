@@ -1059,8 +1059,9 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 
 
 	KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, 's');
-	if (KDGameData.DollRoomCount > 0)
+	if (KDGameData.DollRoomCount > 0) {
 		KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y, 'S');
+	}
 }
 
 function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
@@ -1105,8 +1106,6 @@ function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, ope
 			KinkyDungeonTilesSet(point1.x + "," + point1.y, {AltStairAction: "RandomTeleport"});
 		}
 	}
-
-	//KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y, 'S');
 }
 
 function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
@@ -1147,6 +1146,9 @@ function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness,
 
 	KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, 's');
 	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y, 'S');
+	KinkyDungeonTilesSet(KDMapData.StartPosition.x + ',' + KDMapData.StartPosition.y, {
+		RoomType: "Tunnel",
+	}); // Has to be tunnel
 }
 
 function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {

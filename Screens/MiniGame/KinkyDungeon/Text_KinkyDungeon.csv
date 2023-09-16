@@ -6038,6 +6038,8 @@ KinkyDungeonSpellsSchoolElements,Elements
 KinkyDungeonSpellsSchoolConjure,Conjuration
 KinkyDungeonSpellsSchoolIllusion,Illusion
 KinkyDungeonSpellsSchoolAny,Generic
+KinkyDungeonSpellsSchoolUpgrade,Upgrade
+KinkyDungeonSpellsSchoolSpecial,Special
 KinkyDungeonSpellsBuy,"Learn Spell"
 KinkyDungeonSpellsPoints,"Spell Points: "
 

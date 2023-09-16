@@ -142,10 +142,15 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["MaidforceHead", [
 		{name: "FrostLunar", color: "#0055ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		//{name: "Marine", color: "#4477ff", prisoner: true, free: true, customPlayLine: "", customIntro: "Hi! I'm Marine Kelley. 'Miss Marine', to you.", customSprite: ""},
 	],
 	],
 	["WitchFlame", [
 		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customPlayLine: "", customIntro: "All creatures are made to bow to me.", customSprite: "Myrtrice"},
+	],
+	],
+	["WitchIce", [
+		{name: "Verina", color: "#44ff66", prisoner: true, free: false, customPlayLine: "", customIntro: "Have you seen my girlfriend around here?", customSprite: ""},
 	],
 	],
 	["WitchSlime", [

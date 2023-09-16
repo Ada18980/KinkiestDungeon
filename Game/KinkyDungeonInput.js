@@ -376,7 +376,7 @@ function KDProcessInput(type, data) {
 					let maxSpellLevel = 4;
 					for (let k of Object.keys(KinkyDungeonSpellList)) {
 						for (let sp of KinkyDungeonSpellList[k]) {
-							if (KinkyDungeonCheckSpellPrerequisite(sp) && sp.school == k && !sp.secret) {
+							if (KinkyDungeonCheckSpellPrerequisite(sp) && sp.school == k && !sp.secret && !sp.passive) {
 								for (let iii = 0; iii < maxSpellLevel - sp.level; iii++)
 									spellList.push(sp);
 							}
