@@ -93,6 +93,7 @@
         "Game/KinkyDungeonDialogueList.js",
         "Game/KinkyDungeonFactions.js",
         "Game/KinkyDungeonFactionsList.js",
+        "Game/KinkyDungeonNeeds.js",
         "Game/KinkyDungeonMistress.js",
         "Game/KinkyDungeonJailList.js",
         "Game/KinkyDungeonTests.js",
