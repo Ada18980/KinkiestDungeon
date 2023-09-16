@@ -241,8 +241,9 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 			|| KDEnemyHasFlag(enemy, "StayHere")))
 			nearestDistance = 100000;
 
-		if ((enemy.Enemy.visionRadius || enemy.Enemy.blindSight) && !(enemy.Enemy.noAttack && !enemy.Enemy.spells))
-			for (let e of KDMapData.Entities) {
+		if ((enemy.Enemy.visionRadius || enemy.Enemy.blindSight) && !(enemy.Enemy.noAttack && !enemy.Enemy.spells)) {
+			let ent = KDNearbyEnemies(enemy.x, enemy.y, Math.min(nearestDistance, visionRadius));
+			for (let e of ent) {
 				if (e == enemy) continue;
 				if (KDHelpless(e)) continue;
 				if (KDGetFaction(e) == "Natural") continue;
@@ -276,7 +277,7 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 					}
 				}
 			}
-
+		}
 		if (nearestVisible) return nearestVisible;
 	}
 	return KinkyDungeonPlayerEntity;
@@ -3128,7 +3129,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					// We will follow the player if aggressive, playing, or not told to not follow
 					AIData.aggressive || enemy.playWithPlayer || !KDEnemyHasFlag(enemy, "NoFollow"))
 			) {
-				let pp = KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, true);
+				let pp = KDistChebyshev(enemy.x - player.x, enemy.y - player.y) < 1.5 ? null : KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, true);
 				if (pp) {
 					// Go to a place near the target
 					enemy.gx = pp.x;
@@ -3153,8 +3154,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			enemy.aware = true;
 			// Share aggro
 			if (AIData.hostile && AIData.aggressive && !enemy.rage && KDEnemyCanSignalOthers(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
-				for (let e of KDMapData.Entities) {
-					if (KDHostile(e) && KinkyDungeonAggressive(e) && !enemy.rage && e != enemy && KDistChebyshev(e.x - enemy.x, e.y - enemy.y) <= KinkyDungeonEnemyAlertRadius) {
+				let ent = KDNearbyEnemies(enemy.x, enemy.y, KinkyDungeonEnemyAlertRadius);
+				for (let e of ent) {
+					if (KDHostile(e) && KinkyDungeonAggressive(e) && !enemy.rage && e != enemy) {
 						if (player.player && KDPlayerLight < 1.5) {
 							if (!e.aware) {
 								KDAddThought(e.id, "Blind", 3, 3);
@@ -3321,6 +3323,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				// TODO evaluate whether we should check gxx and gyy instead of gx and gy (station point vs goto point)
 				&& ((enemy.gx != enemy.x || enemy.gy != enemy.y || enemy.path || enemy.fx || enemy.fy) ? true : false);
 
+			// Also if the enemy is supposed to go to the player (goal x and y are same as players) and the enemy can see, it just does it
+			if (player && enemy.aware && AIData.canSensePlayer && enemy.gx == player.x && enemy.gy == player.y) {
+				AIData.moveTowardPlayer = true;
+			}
+
 			// try 12 times to find a moveable tile, with some random variance
 			// First part is player chasing behavior
 
@@ -3330,68 +3337,74 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				&& AIData.moveTowardPlayer) {
 				//enemy.aware = true;
 
-				for (let T = 0; T < 12; T++) {
-					let dir = KDGetDir(enemy, player);
-					let splice = false;
-					if (T > 2 && T < 8) dir = KinkyDungeonGetDirectionRandom(dir.x * 10, dir.y * 10); // Fan out a bit
-					if (T >= 8 || (enemy.path && !AIData.canSeePlayer) || (!AIData.canSeePlayer && !(enemy.Enemy.stopToCast && AIData.canShootPlayer))) {
-						if (!enemy.path && (KinkyDungeonAlert || (enemy.vp > 0 && enemy.aware) || AIData.canSeePlayer)) {
-							if (!AIData.canSeePlayer) {
-								if (AIData.canShootPlayer) {
-									KDAddThought(enemy.id, "Shoot", 4, 2);
-								} else if (AIData.canSensePlayer) {
-									KDAddThought(enemy.id, "Sense", 2, 6);
-								} else {
-									KDAddThought(enemy.id, "Search", 2, 6);
+				if (KDistChebyshev(enemy.x - player.x, enemy.y - player.y) > AIData.followRange) {
+					for (let T = 0; T < 12; T++) {
+						let dir = KDGetDir(enemy, player);
+						let splice = false;
+						if (T > 2 && T < 8) dir = KinkyDungeonGetDirectionRandom(dir.x * 10, dir.y * 10); // Fan out a bit
+						if (T >= 8 || (enemy.path && !AIData.canSeePlayer) || (!AIData.canSeePlayer && !(enemy.Enemy.stopToCast && AIData.canShootPlayer))) {
+							if (!enemy.path && (KinkyDungeonAlert || (enemy.vp > 0 && enemy.aware) || AIData.canSeePlayer)) {
+								if (!AIData.canSeePlayer) {
+									if (AIData.canShootPlayer) {
+										KDAddThought(enemy.id, "Shoot", 4, 2);
+									} else if (AIData.canSensePlayer) {
+										KDAddThought(enemy.id, "Sense", 2, 6);
+									} else {
+										KDAddThought(enemy.id, "Search", 2, 6);
+									}
 								}
-							}
-							enemy.path = KinkyDungeonFindPath(enemy.x, enemy.y, player.x, player.y,
-								KDEnemyHasFlag(enemy, "blocked"), KDEnemyHasFlag(enemy, "blocked"),
-								enemy == KinkyDungeonLeashingEnemy() || AIData.ignoreLocks, AIData.MovableTiles,
-								undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
-						} if (enemy.path && enemy.path.length > 0 && Math.max(Math.abs(enemy.path[0].x - enemy.x),Math.abs(enemy.path[0].y - enemy.y)) < 1.5) {
-							dir = {x: enemy.path[0].x - enemy.x, y: enemy.path[0].y - enemy.y, delta: KDistChebyshev(enemy.path[0].x - enemy.x, enemy.path[0].y - enemy.y)};
-							if (!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
-								|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
+								enemy.path = KinkyDungeonFindPath(enemy.x, enemy.y, player.x, player.y,
+									KDEnemyHasFlag(enemy, "blocked"), KDEnemyHasFlag(enemy, "blocked"),
+									enemy == KinkyDungeonLeashingEnemy() || AIData.ignoreLocks, AIData.MovableTiles,
+									undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
+							} if (enemy.path && enemy.path.length > 0 && Math.max(Math.abs(enemy.path[0].x - enemy.x),Math.abs(enemy.path[0].y - enemy.y)) < 1.5) {
+								dir = {x: enemy.path[0].x - enemy.x, y: enemy.path[0].y - enemy.y, delta: KDistChebyshev(enemy.path[0].x - enemy.x, enemy.path[0].y - enemy.y)};
+								if (!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
+									|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
+									enemy.path = undefined;
+									KinkyDungeonSetEnemyFlag(enemy, "failpath", enemy == KinkyDungeonJailGuard() ? 2 : 20);
+									KinkyDungeonSetEnemyFlag(enemy, "blocked", 24);
+								}
+								splice = true;
+							} else {
 								enemy.path = undefined;
 								KinkyDungeonSetEnemyFlag(enemy, "failpath", enemy == KinkyDungeonJailGuard() ? 2 : 20);
-								KinkyDungeonSetEnemyFlag(enemy, "blocked", 24);
+								if (!AIData.canSensePlayer) {
+									if (enemy.aware) KDAddThought(enemy.id, "Lose", 1, 4);
+									enemy.aware = false;
+								}
+
+								//dir = KinkyDungeonGetDirectionRandom(0, 0); // Random...
 							}
-							splice = true;
-						} else {
+						}
+						if (dir.delta > 1.5) {
 							enemy.path = undefined;
-							KinkyDungeonSetEnemyFlag(enemy, "failpath", enemy == KinkyDungeonJailGuard() ? 2 : 20);
-							if (!AIData.canSensePlayer) {
-								if (enemy.aware) KDAddThought(enemy.id, "Lose", 1, 4);
-								enemy.aware = false;
-							}
+							KinkyDungeonSetEnemyFlag(enemy, "failpath", 20);
+						}
+						else if (KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
+							if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y)) AIData.moved = true;
+							if (AIData.moved && splice && enemy.path) enemy.path.splice(0, 1);
+							AIData.idle = false;
 
-							//dir = KinkyDungeonGetDirectionRandom(0, 0); // Random...
+							// If we moved we will pick a candidate for next turns attempt
+							if (AIData.moved) {
+								dir = KDGetDir(enemy, player);
+								if (KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
+									enemy.fx = enemy.x + dir.x;
+									enemy.fy = enemy.y + dir.y;
+								}
+							}
+							break;
+						} else {
+							enemy.fx = undefined;
+							enemy.fy = undefined;
 						}
 					}
-					if (dir.delta > 1.5) {
-						enemy.path = undefined;
-						KinkyDungeonSetEnemyFlag(enemy, "failpath", 20);
-					}
-					else if (KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
-						if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y)) AIData.moved = true;
-						if (AIData.moved && splice && enemy.path) enemy.path.splice(0, 1);
-						AIData.idle = false;
-
-						// If we moved we will pick a candidate for next turns attempt
-						if (AIData.moved) {
-							dir = KDGetDir(enemy, player);
-							if (KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
-								enemy.fx = enemy.x + dir.x;
-								enemy.fy = enemy.y + dir.y;
-							}
-						}
-						break;
-					} else {
-						enemy.fx = undefined;
-						enemy.fy = undefined;
-					}
+				} else {
+					enemy.fx = undefined;
+					enemy.fy = undefined;
 				}
+
 			} else if (
 				// We can move
 				!KDIsImmobile(enemy)
@@ -3413,7 +3426,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						enemy.gx = player.x;
 						enemy.gy = player.y;
 					}
-				} else {
+				} else if (!AIData.canSensePlayer) {
 					if (enemy.aware && KinkyDungeonAggressive(enemy, player)) {
 						enemy.path = undefined;
 					}
@@ -3467,9 +3480,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (KinkyDungeonPlayerEntity.x == enemy.x + dir.x && KinkyDungeonPlayerEntity.y == enemy.y + dir.y) enemy.path = undefined;
 					}
 				}
-			} else if (Math.abs(enemy.x - enemy.gx) < 2 || Math.abs(enemy.y - enemy.gy) < 2) AIData.patrolChange = true;
+			} else if (!AIData.moveTowardPlayer && (Math.abs(enemy.x - enemy.gx) < 2 || Math.abs(enemy.y - enemy.gy) < 2)) AIData.patrolChange = true;
 
-			if (!KDIsImmobile(enemy) && !AIType.aftermove(enemy, player, AIData)) {
+			if (!KDIsImmobile(enemy) && !AIType.aftermove(enemy, player, AIData) && !AIData.moveTowardPlayer) {
 				if (AIType.resetguardposition(enemy, player, AIData) && !AIData.allyFollowPlayer && Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 1.5 && enemy.gxx && enemy.gyy) {
 					enemy.gx = enemy.gxx;
 					enemy.gy = enemy.gyy;
@@ -3508,7 +3521,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											ey = AIData.master.y;
 										} else if (KDRandom() < cohesion) {
 											let minDist = enemy.Enemy.cohesionRange ? enemy.Enemy.cohesionRange : AIData.visionRadius;
-											for (let e of KDMapData.Entities) {
+											let ent = KDNearbyEnemies(enemy.x, enemy.y, minDist);
+											for (let e of ent) {
 												if (e == enemy) continue;
 												if (['guard', 'ambush'].includes(KDGetAI(enemy))) continue;
 												if (!(

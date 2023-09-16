@@ -267,61 +267,6 @@ function KinkyDungeonChangeRep(Rep, Amount) {
 }
 
 function KinkyDungeonHandleReputation() {
-	let i = 0;
-	let maxY = 560;
-	let XX = 0;
-	let spacing = 60;
-	let yPad = 50;
-	if (KDFactionRepIndex < 0.1)
-		for (let rep in KinkyDungeonGoddessRep) {
-			let value = KinkyDungeonGoddessRep[rep];
-
-			if (rep) {
-				if (spacing * i > maxY) {
-					if (XX == 0) i = 0;
-					XX = 600;
-				}
-				if (KinkyDungeonShrineBaseCosts[rep]) {
-					if (KDRepSelectionMode == "" && KinkyDungeonAllRestraint().length > 0 && MouseIn(600, 800, 250, 50)) {
-						KDRepSelectionMode = "Rescue";
-						return true;
-					} else if (KDRepSelectionMode == "" && MouseIn(900, 800, 250, 50)) {
-						KDRepSelectionMode = "Champion";
-						return true;
-					}
-
-
-
-					if (KDRepSelectionMode == "Aid" && MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40) && KinkyDungeonCanAidMana(rep, value)) {
-						// Aid
-						KDSendInput("aid", {rep: rep, value: value});
-						KinkyDungeonDrawState = "Game";
-						KDRepSelectionMode = "";
-					} else if (KDRepSelectionMode == "Rescue" && MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40) && KinkyDungeonCanRescue(rep, value)) {
-						// Rescue
-						if (KDSendInput("rescue", {rep: rep, value: value}) != "FailRescue") {
-							KinkyDungeonDrawState = "Game";
-							KDRepSelectionMode = "";
-						}
-						return true;
-					} else if (KDRepSelectionMode == "Penance" && MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40) && KinkyDungeonCanPenance(rep, value)) {
-						// Penance
-						KDSendInput("penance", {rep: rep, value: value});
-						KDRepSelectionMode = "";
-						KinkyDungeonDrawState = "Game";
-						return true;
-					} else if (KDRepSelectionMode == "Champion" && MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40)) {
-						// Champion
-						KDSendInput("champion", {rep: rep, value: value});
-						return true;
-					}
-				}
-
-				i++;
-			}
-		}
-	//if (!noReturn)
-	KDRepSelectionMode = "";
 	return true;
 }
 
@@ -383,40 +328,47 @@ function KinkyDungeonDrawReputation() {
 
 			if (KDFactionRepIndex < 0.1) {
 				if (KDRepSelectionMode == "") {
-					DrawButtonVis(600, 800, 250, 50, TextGet("KinkyDungeonAskRescue"), KinkyDungeonAllRestraint().length > 0 ? "white" : "#999999");
+					DrawButtonKDEx("rescueswitch", (bdata) => {
+						if (KinkyDungeonAllRestraint().length > 0)
+							KDRepSelectionMode = "Rescue";
+						return true;
+					}, true, 600, 800, 250, 50, TextGet("KinkyDungeonAskRescue"), KinkyDungeonAllRestraint().length > 0 ? "white" : "#999999");
 					//DrawButtonVis(1200, 800, 250, 50, TextGet("KinkyDungeonAskPenance"), "white");
 					//DrawButtonVis(900, 800, 250, 50, TextGet("KinkyDungeonAskAid"), "white");
-					DrawButtonVis(900, 800, 250, 50, TextGet("KinkyDungeonAskChampion"), "white");
+					DrawButtonKDEx("champswitch", (bdata) => {
+						KDRepSelectionMode = "Champion";
+						return true;
+					}, true, 900, 800, 250, 50, TextGet("KinkyDungeonAskChampion"), "white");
 				} else {
-					DrawButtonVis(900, 800, 250, 50, TextGet("KinkyDungeonBack"), "white");
+					DrawButtonKDEx("backtorep", (bdata) => {
+						KDRepSelectionMode = "";
+						return true;
+					}, true, 600, 800, 550, 50, TextGet("KinkyDungeonBack"), "white");
 				}
 
 				if (KinkyDungeonShrineBaseCosts[rep]) {
 					//DrawButtonVis(canvasOffsetX_ui + 275 + XX + 400, yPad + canvasOffsetY_ui + spacing * i - 20, 100, 40, TextGet("KinkyDungeonAid"), value > 10 ? "white" : "pink");
 					if (KDRepSelectionMode == "Rescue") {
-						DrawButtonVis(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet("KinkyDungeonRescue"), (KinkyDungeonCanRescue(rep, value)) ? "white" : (KinkyDungeonAllRestraint().length > 0 && !KinkyDungeonRescued[rep] ? "pink" : "#999999"));
+						DrawButtonKDEx("rep_rescue" + rep, (bdata) => {
+							if (KinkyDungeonCanRescue(rep, value)) {
+								if (KDSendInput("rescue", {rep: rep, value: value}) != "FailRescue") {
+									KinkyDungeonDrawState = "Game";
+									KDRepSelectionMode = "";
+								}
+							}
+							return true;
+						}, true, canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet("KinkyDungeonRescue"), (KinkyDungeonCanRescue(rep, value)) ? "white" : (KinkyDungeonAllRestraint().length > 0 && !KinkyDungeonRescued[rep] ? "pink" : "#999999"));
 						if (MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40)) {
 							DrawTextFitKD(TextGet("KinkyDungeonRescueDesc"), 1100, 900, 1250, "white", "black");
 							// Rescue
 						}
 					}
-					if (KDRepSelectionMode == "Penance") {
-						DrawButtonVis(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet("KinkyDungeonPenance"), (KinkyDungeonCanPenance(rep, value)) ? "white" : (KDGameData.KinkyDungeonPenance ? "purple" : "#999999"));
-						if (MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40)) {
-							DrawTextFitKD(TextGet("KinkyDungeonPenanceDesc").replace("AMOUNT", "" + KinkyDungeonPenanceCost(rep)), 1100, 900, 1250, "white", "black");
-							// Rescue
-						}
-					}
-					if (KDRepSelectionMode == "Aid") {
-						DrawButtonVis(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet("KinkyDungeonAidMana"), (KinkyDungeonCanAidMana(rep, value)) ? "white" : "#999999");
-						if (MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40)) {
-							DrawTextFitKD(TextGet("KinkyDungeonAidManaDesc").replace("AMOUNT", "" + (KinkyDungeonAidManaCost(rep, value))).replace("MANALEVEL", "" + (KinkyDungeonAidManaAmount(rep, value) * 10)), 1100, 900, 1250, "white", "black");
-							// Rescue
-						}
-					}
 					if (KDRepSelectionMode == "Champion") {
 						let isChampion = KDGameData.Champion == rep;
-						DrawButtonVis(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet(isChampion ? "KinkyDungeonChampionCurrent" : "KinkyDungeonChampionSwitch"),
+						DrawButtonKDEx("rep_champ" + rep, (bdata) => {
+							KDSendInput("champion", {rep: rep, value: value});
+							return true;
+						}, true, canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet(isChampion ? "KinkyDungeonChampionCurrent" : "KinkyDungeonChampionSwitch"),
 							(isChampion) ? "white" : "#999999");
 						if (MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40)) {
 							DrawTextFitKD(TextGet("KinkyDungeonChampionDesc"), 1100, 900, 1250, "white", "black");

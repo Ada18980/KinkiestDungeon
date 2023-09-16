@@ -156,7 +156,7 @@ function KDUpdateVibeSounds() {
 			if (KinkyDungeonVibeLevel <= 0) {
 				power = "Off";
 			}
-			if (power != "Off") {
+			if (power != "Off" && vibe.location.length > 0 && vibe.location[0] == location) {
 				let sound = (KDVibeSoundRedirect[location] && KDVibeSound[KDVibeSoundRedirect[location]]) ? KDVibeSound[KDVibeSoundRedirect[location]] : "Vibe1";
 				KDUpdateVibeSound(KDVibeSoundRedirect[location] ? KDVibeSoundRedirect[location] : "ItemVulva", KinkyDungeonRootDirectory + `Audio/${sound}_${power}.ogg`, globalVolume);
 			} else
