@@ -1570,7 +1570,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				box.currentCount += 0.05;
 			}
 			if (Enemy && (!InJail || (Enemy.tags.jailer || Enemy.tags.jail || Enemy.tags.leashing))) {
-				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, AI: AI, faction: faction};
+				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, AI: KDGetAITypeOverride(Enemy, AI) || Enemy.AI, faction: faction};
 				if (spawnPoint) {
 					e.spawnX = X;
 					e.spawnY = Y;
@@ -1605,8 +1605,10 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 						};
 				} else if (currentCluster) currentCluster.count += 1;
 				if (!currentCluster && Enemy.guardChance && KDRandom() < Enemy.guardChance) {
-					e.AI = "looseguard";
-				} else if (currentCluster && currentCluster.AI) e.AI = currentCluster.AI;
+					if (KDCanOverrideAI(e))
+						e.AI = "looseguard";
+					else e.AI = KDGetAIOverride(e, 'looseguard');
+				} else if (currentCluster && currentCluster.AI) e.AI = KDGetAIOverride(e, currentCluster.AI);
 				if (Enemy.tags.mimicBlock && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))) KinkyDungeonMapSet(X, Y, '3');
 				if (Enemy.tags.minor) incrementCount = 0.2; else incrementCount = currentCluster ? 0.5 : 1.0; // Minor enemies count as 1/5th of an enemy
 				if (Enemy.difficulty) incrementCount += Enemy.difficulty;

@@ -29,7 +29,7 @@ let KDJailEvents = {
 			}
 			//KinkyDungeonGetEnemyByName((KinkyDungeonGoddessRep.Prisoner < 0 ? "Guard" : "GuardHeavy"));
 			let guard = {summoned: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
-				x:xx, y:yy, gx: xx - 2, gy: yy, CurrentAction: "jailWander", keys: true, AI: "guard",
+				x:xx, y:yy, gx: xx - 2, gy: yy, CurrentAction: "jailWander", keys: true, AI: KDGetAITypeOverride(Enemy, "guard"),
 				hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
 			if (mainFaction) guard.faction = mainFaction;
 			if (!KinkyDungeonFlags.get("JailIntro")) {

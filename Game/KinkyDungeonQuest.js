@@ -136,7 +136,9 @@ let KDQuests = {
 							if (ee) {
 								ee.faction = "Delinquent";
 								ee.factionrep = {"Maidforce": 0.01};
-								ee.AI = "looseguard";
+								if (KDCanOverrideAI(ee))
+									ee.AI = "looseguard";
+								else ee.AI = KDGetAIOverride(ee, 'looseguard');
 							}
 						}
 					}
@@ -149,7 +151,9 @@ let KDQuests = {
 							if (ee) {
 								ee.faction = "Delinquent";
 								ee.factionrep = {"Maidforce": 0.0025};
-								ee.AI = "looseguard";
+								if (KDCanOverrideAI(ee))
+									ee.AI = "looseguard";
+								else ee.AI = KDGetAIOverride(ee, 'looseguard');
 							}
 						}
 					}

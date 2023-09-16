@@ -5105,7 +5105,7 @@ let KDEventMapGeneric = {
 					&& KinkyDungeonGagTotal(false) < 0.01
 					&& KinkyDungeonGetBlindLevel() < 1)
 				{
-					KinkyDungeonChangeWill(KinkyDungeonInDanger() ? 0.01 : 0.2, false);
+					KinkyDungeonChangeWill(0.2, false);
 				}
 				if (!KinkyDungeonFlags.get("SecondWindSpell")) {
 					KinkyDungeonSetFlag("SecondWindSpell", -1);

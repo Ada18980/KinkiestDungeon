@@ -1036,7 +1036,9 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 			if (Enemy) {
 				let e = DialogueCreateEnemy(point.x, point.y, Enemy.name);
 				e.faction = "Enemy";
-				e.AI = "looseguard";
+				if (KDCanOverrideAI(e))
+					e.AI = "looseguard";
+				else e.AI = KDGetAIOverride(e, 'looseguard');
 			}
 		}
 	}

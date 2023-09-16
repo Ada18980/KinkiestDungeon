@@ -2625,13 +2625,19 @@ let KDLocks = {
 			return true;
 		},
 		removeKeys: (data) => {
-			if (!KinkyDungeonInventoryGet("CuffKeys")) {
+			if (data?.unlock && !KinkyDungeonInventoryGet("CuffKeys") && KinkyDungeonRedKeys > 0) {
 				KinkyDungeonRedKeys -= 1;
 				KinkyDungeonSendTextMessage(4, TextGet("KDConvertToHandcuffsKey"), "lightgreen", 2);
 				KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("CuffKeys"), 1);
+			} else if (!data?.unlock) {
+				if (KinkyDungeonRedKeys > 0) {
+					KinkyDungeonRedKeys -= 1;
+					KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
+				} else if (KinkyDungeonInventoryGet("CuffKeys")) {
+					KinkyDungeonDropItem({name: "CuffKeys"}, KinkyDungeonPlayerEntity, true, true);
+					KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("CuffKeys"), -1);
+				}
 			}
-			if (!data?.unlock)
-				KinkyDungeonRedKeys -= 1;
 		},
 		failUnlock: (data) => {
 			return "Fail";
@@ -2684,6 +2690,9 @@ let KDLocks = {
 		},
 		removeKeys: (data) => {
 			KinkyDungeonRedKeys -= 1;
+			if (!data?.unlock) {
+				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
+			}
 		},
 		failUnlock: (data) => {
 			return "Fail";
@@ -2737,6 +2746,9 @@ let KDLocks = {
 		},
 		removeKeys: (data) => {
 			KinkyDungeonRedKeys -= 1;
+			if (!data?.unlock) {
+				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
+			}
 		},
 		failUnlock: (data) => {
 			return "Fail";
@@ -2790,6 +2802,9 @@ let KDLocks = {
 		},
 		removeKeys: (data) => {
 			KinkyDungeonRedKeys -= 1;
+			if (!data?.unlock) {
+				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
+			}
 		},
 		failUnlock: (data) => {
 			return "Fail";
@@ -2846,6 +2861,9 @@ let KDLocks = {
 		},
 		removeKeys: (data) => {
 			KinkyDungeonBlueKeys -= 1;
+			if (!data?.unlock) {
+				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
+			}
 		},
 		failUnlock: (data) => {
 			return "Fail";
@@ -2901,6 +2919,9 @@ let KDLocks = {
 			return true;
 		},
 		removeKeys: (data) => {
+			if (!data?.unlock && KinkyDungeonItemCount("MistressKey") > 0) {
+				KinkyDungeonDropItem({name: "MistressKey"}, KinkyDungeonPlayerEntity, true);
+			}
 			KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("MistressKey"), -1);
 		},
 		failUnlock: (data) => {
