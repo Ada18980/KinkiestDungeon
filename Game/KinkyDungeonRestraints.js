@@ -1883,7 +1883,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	if ((StruggleType == "Struggle") && !data.hasAffinity && data.escapeChance <= 0 && data.escapeChance >= -edgeBonus && (!KDRestraint(restraint).alwaysEscapable || !KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
 		let typesuff = "";
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Struggle) ? KDGetEscapeSFX(restraint).Struggle : "Struggle")
+				+ ".ogg");
 		if (affinity && !KinkyDungeonGetAffinity(false, affinity, struggleGroup)) typesuff = "Wrong" + affinity;
 		if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "NeedEdge" + typesuff)
@@ -1908,11 +1910,16 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			increasedAttempts = true;
 			restraint.attempts += 1;
 			if (data.escapeChance <= -0.5) restraint.attempts += 1;
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
+				+ ".ogg");
 		} else {
 			let typesuff = "";
 			if (removeFail || (data.origEscapeChance <= 0 && data.helpChance)) typesuff = "3";
 			else if (KDRestraint(restraint).specStruggleTypes && KDRestraint(restraint).specStruggleTypes.includes(StruggleType)) typesuff = "2";
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
+				+ ".ogg");
 			if (typesuff == "" && failSuffix) typesuff = failSuffix;
 			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "Impossible" + typesuff)
@@ -1957,7 +1964,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	if ((StruggleType == "Remove") && !data.hasAffinity && data.escapeChance == 0 && (!KDRestraint(restraint).alwaysEscapable || !KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
 		let typesuff = "";
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+			+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
+			+ ".ogg");
 		if (affinity && !KinkyDungeonGetAffinity(false, affinity, struggleGroup)) typesuff = "Wrong" + affinity;
 		if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "NeedEdge" + typesuff)
@@ -1983,7 +1992,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	if (possible && data.escapeChance == 0 && (!KDRestraint(restraint).alwaysEscapable || !KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
 		let typesuff = "";
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+			+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
+			+ ".ogg");
 		if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "Strict" + typesuff)
 			.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
@@ -2060,7 +2071,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				if (data.escapeChance <= -0.5) restraint.attempts += 0.5;
 			}
 		} else {
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
+				+ ".ogg");
 			let suff = "";
 			if (suff == "" && failSuffix) suff = failSuffix;
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
@@ -2117,7 +2130,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		// Main struggling block
 		if ((data.wcost > 0 && !KinkyDungeonHasWill(-data.wcost, false)) && (data.escapeChance <= data.willEscapePenalty && !KinkyDungeonHasWill(0.01, false))) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.NoWill) ? KDRestraint(restraint).sfxEscape.NoWill : "Struggle")
+				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoWill) ? KDGetEscapeSFX(restraint).NoWill : "Struggle")
 				+ ".ogg");
 			KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
 				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
@@ -2131,7 +2144,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			return "Will";
 		} else if (!KinkyDungeonHasStamina(-data.cost, true)) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.NoStamina) ? KDRestraint(restraint).sfxEscape.NoStamina : "Struggle")
+				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoStamina) ? KDGetEscapeSFX(restraint).NoStamina : "Struggle")
 				+ ".ogg");
 			KinkyDungeonWaitMessage(true);
 		} else if (data.escapeChance > 0) {
@@ -2168,7 +2181,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					data.escapeChance -= extraLimPenalty;
 					if (data.escapeChance <= 0) {
 						// Replace with frustrated moan later~
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
+						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
+							+ ".ogg");
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
 							.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 						KinkyDungeonLastAction = "Struggle";
@@ -2184,7 +2199,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					data.escapeChance -= limitPenalty;
 					if (data.escapeChance <= 0) {
 						// Replace with frustrated moan later~
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
+						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
+							+ ".ogg");
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
 							.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 						KinkyDungeonLastAction = "Struggle";
@@ -2204,7 +2221,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				if (data.escapeChance <= 0) {
 					// Replace with frustrated moan later~
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-						+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.NoWill) ? KDRestraint(restraint).sfxEscape.NoWill : "Struggle")
+						+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoWill) ? KDGetEscapeSFX(restraint).NoWill : "Struggle")
 						+ ".ogg");
 					KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
 						.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
@@ -2220,7 +2237,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			}
 
 			if (data.escapeChance <= 0) {
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+					+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
+					+ ".ogg");
 				// Replace with frustrated moan later~
 				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Barely")
 					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
@@ -2252,24 +2271,24 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				if (StruggleType == "Cut") {
 					if (((handsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound) || (armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound)) && KinkyDungeonWeaponCanCut(true) && KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name) {
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.KnifeDrop) ? KDRestraint(restraint).sfxEscape.KnifeDrop : "Miss")
+							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).KnifeDrop) ? KDGetEscapeSFX(restraint).KnifeDrop : "Miss")
 							+ ".ogg");
 						Pass = "Drop";
 						KinkyDungeonDisarm(KinkyDungeonPlayerEntity, "Cut");
 					} else {
 						if (KDItemIsMagic(restraint) && !data.canCutMagic) {
 							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-								+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.NoMagic) ? KDRestraint(restraint).sfxEscape.NoMagic : "SoftShield")
+								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoMagic) ? KDGetEscapeSFX(restraint).NoMagic : "SoftShield")
 								+ ".ogg");
 							Pass = "Fail";
 						} else {
 							if (KDToggles.Sound) {
 								if (KDItemIsMagic(restraint))
 									AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-									+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.MagicCut) ? KDRestraint(restraint).sfxEscape.MagicCut : "Cut")
+									+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).MagicCut) ? KDGetEscapeSFX(restraint).MagicCut : "Cut")
 									+ ".ogg");
 								else AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-									+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.Cut) ? KDRestraint(restraint).sfxEscape.Cut : "Cut")
+									+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Cut) ? KDGetEscapeSFX(restraint).Cut : "Cut")
 									+ ".ogg");
 							}
 							let mult = 1.0 - 0.9 * Math.min(1.0, progress);
@@ -2306,20 +2325,20 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					if (lockType && lockType.breakChance(data)) { // Chance to break pick
 						Pass = "Break";
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.PickBreak) ? KDRestraint(restraint).sfxEscape.PickBreak : "PickBreak")
+							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).PickBreak) ? KDGetEscapeSFX(restraint).PickBreak : "PickBreak")
 							+ ".ogg");
 						KinkyDungeonLockpicks -= 1;
 						KinkyDungeonPickBreakProgress = 0;
 					} else if (!KinkyDungeonStatsChoice.get("Psychic") && (handsBound || (armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound))) {
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.PickDrop) ? KDRestraint(restraint).sfxEscape.PickDrop : "Miss")
+							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).PickDrop) ? KDGetEscapeSFX(restraint).PickDrop : "Miss")
 							+ ".ogg");
 						Pass = "Drop";
 						KinkyDungeonDropItem({name: "Pick"}, KinkyDungeonPlayerEntity, true);
 						KinkyDungeonLockpicks -= 1;
 					} else {
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.Pick) ? KDRestraint(restraint).sfxEscape.Pick : "Pick")
+							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Pick) ? KDGetEscapeSFX(restraint).Pick : "Pick")
 							+ ".ogg");
 						if (!restraint.pickProgress) restraint.pickProgress = 0;
 						let mult = 0.5 + 0.6 * (progress);
@@ -2336,7 +2355,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				} else if (StruggleType == "Unlock") {
 					if (!KinkyDungeonStatsChoice.get("Psychic") && (handsBound || (armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound))) {
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.KeyDrop) ? KDRestraint(restraint).sfxEscape.KeyDrop : "Miss")
+							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).KeyDrop) ? KDGetEscapeSFX(restraint).KeyDrop : "Miss")
 							+ ".ogg");
 						Pass = "Drop";
 						let keytype = KinkyDungeonGetKey(restraint.lock);
@@ -2346,7 +2365,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 						}
 					} else {
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.Pick) ? KDRestraint(restraint).sfxEscape.Pick : "Pick")
+							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Pick) ? KDGetEscapeSFX(restraint).Pick : "Pick")
 							+ ".ogg");
 						let mult = 0.2 + 1.8 * (progress);
 						if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
@@ -2360,7 +2379,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					}
 				} else if (StruggleType == "Remove") {
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-						+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.Remove) ? KDRestraint(restraint).sfxEscape.Remove : "Struggle")
+						+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Remove) ? KDGetEscapeSFX(restraint).Remove : "Struggle")
 						+ ".ogg");
 					let mult = 0.3 + 1.7 * (progress * progress);
 					if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
@@ -2373,7 +2392,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					);
 				} else if (StruggleType == "Struggle") {
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-						+ ((KDRestraint(restraint).sfxEscape && KDRestraint(restraint).sfxEscape.Struggle) ? KDRestraint(restraint).sfxEscape.Struggle : "Struggle")
+						+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Struggle) ? KDGetEscapeSFX(restraint).Struggle : "Struggle")
 						+ ".ogg");
 					let mult = 1.25 - 0.75 * (progress);
 					if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
@@ -2804,7 +2823,7 @@ function KinkyDungeonLinkableAndStricter(oldRestraint, newRestraint, item, newLo
 }
 
 function KinkyDungeonGenerateRestraintTrap() {
-	let enemy = KinkyDungeonGetEnemy(["chestTrap"], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["chestTrap"]);
+	let enemy = KinkyDungeonGetEnemy(["chestTrap"], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["chestTrap"]);
 	if (enemy) return enemy.name;
 	return "GreedyGhast";
 }
@@ -3338,7 +3357,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 		KinkyDungeonUpdateStruggleGroups();
 		if (!KinkyDungeonRestraintAdded) {
 			KinkyDungeonRestraintAdded = true;
-			let sfx = (restraint && restraint.sfx) ? restraint.sfx : "Struggle";
+			let sfx = (restraint && KDGetRestraintSFX(restraint)) ? KDGetRestraintSFX(restraint) : "Struggle";
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 		}
 		let end = performance.now();
@@ -3469,7 +3488,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 					KinkyDungeonSendEvent("postRemoval", {item: rest, add: Add, keep: Keep, shrine: Shrine});
 				}
 
-				let sfx = (rest && rest.sfxRemove) ? rest.sfxRemove : "Struggle";
+				let sfx = (rest && KDGetRemoveSFX(rest)) ? KDGetRemoveSFX(rest) : "Struggle";
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 
 				KinkyDungeonCalculateSlowLevel();
@@ -3548,7 +3567,7 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover) {
 				KinkyDungeonSendEvent("postRemoval", {item: rest, keep: Keep, shrine: false, dynamic: true});
 			}
 
-			let sfx = (rest && rest.sfxRemove) ? rest.sfxRemove : "Struggle";
+			let sfx = (rest && KDGetRemoveSFX(rest)) ? KDGetRemoveSFX(rest) : "Struggle";
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 
 			KinkyDungeonCalculateSlowLevel();
@@ -3720,27 +3739,27 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 		if (StruggleType == "Unlock") {
 			if (lockType && lockType.canUnlock(data)) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-					+ ((KDRestraint(restraint).sfxFinishEscape && KDRestraint(restraint).sfxFinishEscape.Unlock) ? KDRestraint(restraint).sfxFinishEscape.Unlock : "Unlock")
+					+ ((KDGetFinishEscapeSFX(restraint) && KDGetFinishEscapeSFX(restraint).Unlock) ? KDGetFinishEscapeSFX(restraint).Unlock : "Unlock")
 					+ ".ogg");
 				KinkyDungeonRemoveKeysUnlock(restraint.lock);
 				KinkyDungeonLock(restraint, "");
 			}
 		} else {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDRestraint(restraint).sfxFinishEscape && KDRestraint(restraint).sfxFinishEscape.Unlock) ? KDRestraint(restraint).sfxFinishEscape.Unlock : "Unlock")
+				+ ((KDGetFinishEscapeSFX(restraint) && KDGetFinishEscapeSFX(restraint).Unlock) ? KDGetFinishEscapeSFX(restraint).Unlock : "Unlock")
 				+ ".ogg");
 			KinkyDungeonLock(restraint, "");
 		}
 	} else {
 		if (KDToggles.Sound) {
 			if (StruggleType == "Cut") AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDRestraint(restraint).sfxFinishEscape && KDRestraint(restraint).sfxFinishEscape.Cut) ? KDRestraint(restraint).sfxFinishEscape.Cut : "Cut")
+				+ ((KDGetFinishEscapeSFX(restraint) && KDGetFinishEscapeSFX(restraint).Cut) ? KDGetFinishEscapeSFX(restraint).Cut : "Cut")
 				+ ".ogg");
 			else if (StruggleType == "Remove") AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDRestraint(restraint).sfxFinishEscape && KDRestraint(restraint).sfxFinishEscape.Remove) ? KDRestraint(restraint).sfxFinishEscape.Remove : "Unbuckle")
+				+ ((KDGetFinishEscapeSFX(restraint) && KDGetFinishEscapeSFX(restraint).Remove) ? KDGetFinishEscapeSFX(restraint).Remove : "Unbuckle")
 				+ ".ogg");
 			else AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDRestraint(restraint).sfxFinishEscape && KDRestraint(restraint).sfxFinishEscape.Struggle) ? KDRestraint(restraint).sfxFinishEscape.Struggle : "Struggle")
+				+ ((KDGetFinishEscapeSFX(restraint) && KDGetFinishEscapeSFX(restraint).Struggle) ? KDGetFinishEscapeSFX(restraint).Struggle : "Struggle")
 				+ ".ogg");
 		}
 		if (KDRandom() < destroyChance) {
@@ -3750,9 +3769,9 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 		let trap = restraint.trap;
 		KDSendStatus('escape', restraint.name, StruggleType);
 		if (KDToggles.Sound && destroy) {
-			if (KDRestraint(restraint).sfxFinishEscape && KDRestraint(restraint).sfxFinishEscape.Destroy) {
+			if (KDGetFinishEscapeSFX(restraint) && KDGetFinishEscapeSFX(restraint).Destroy) {
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-					+ (KDRestraint(restraint).sfxFinishEscape.Destroy)
+					+ (KDGetFinishEscapeSFX(restraint).Destroy)
 					+ ".ogg");
 			}
 		}
@@ -4146,4 +4165,35 @@ function KDGetTotalRestraintPower(player, requireSingleTag, requireAllTags, igno
 		power += KinkyDungeonRestraintPower(item);
 	}
 	return power;
+}
+
+function KDGetEscapeSFX(restraint) {
+	if (KDRestraint(restraint).sfxEscape) return KDRestraint(restraint).sfxEscape;
+	if (KDRestraint(restraint).sfxGroup && KDSFXGroups[KDRestraint(restraint).sfxGroup]) {
+		return KDSFXGroups[KDRestraint(restraint).sfxGroup].sfxEscape;
+	}
+	return null;
+}
+
+function KDGetRestraintSFX(restraint) {
+	if (KDRestraint(restraint).sfx) return KDRestraint(restraint).sfx;
+	if (KDRestraint(restraint).sfxGroup && KDSFXGroups[KDRestraint(restraint).sfxGroup]) {
+		return KDSFXGroups[KDRestraint(restraint).sfxGroup].sfx;
+	}
+	return null;
+}
+
+function KDGetFinishEscapeSFX(restraint) {
+	if (KDRestraint(restraint).sfxFinishEscape) return KDRestraint(restraint).sfxFinishEscape;
+	if (KDRestraint(restraint).sfxGroup && KDSFXGroups[KDRestraint(restraint).sfxGroup]) {
+		return KDSFXGroups[KDRestraint(restraint).sfxGroup].sfxFinishEscape;
+	}
+	return null;
+}
+function KDGetRemoveSFX(restraint) {
+	if (KDRestraint(restraint).sfxRemove) return KDRestraint(restraint).sfxRemove;
+	if (KDRestraint(restraint).sfxGroup && KDSFXGroups[KDRestraint(restraint).sfxGroup]) {
+		return KDSFXGroups[KDRestraint(restraint).sfxGroup].sfxRemove;
+	}
+	return null;
 }

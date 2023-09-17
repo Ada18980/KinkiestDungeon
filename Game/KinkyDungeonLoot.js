@@ -967,7 +967,7 @@ function KDCanCurse(tags) {
  * @param {number} y
  */
 function KDSummonCurseTrap(x, y) {
-	let enemy = KinkyDungeonGetEnemy(["curseTrap"], MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["epicenter"]);
+	let enemy = KinkyDungeonGetEnemy(["curseTrap"], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["epicenter"]);
 	if (enemy) {
 		let point = KinkyDungeonGetNearbyPoint(x, y, true);
 		if (point) {

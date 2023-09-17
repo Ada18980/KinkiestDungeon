@@ -1070,12 +1070,12 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		KinkyDungeonSetFlag("conveyed", 1);
 	}
 	if (nearestJail.restraint) {
-		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(nearestJail.restraint), MiniGameKinkyDungeonLevel, false, undefined);
+		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(nearestJail.restraint), KDGetEffLevel(),false, undefined);
 	}
 	if (nearestJail.restrainttags) {
-		let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], false, undefined);
+		let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], false, undefined);
 		if (restraint)
-			KinkyDungeonAddRestraintIfWeaker(restraint, MiniGameKinkyDungeonLevel, false, undefined);
+			KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
 	}
 
 	KinkyDungeonLoseJailKeys();
