@@ -8,9 +8,11 @@ CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1
 Balance
 - Can no longer get upgrades via Random Spells
 - Arbalest now pierces enemies and has 250% crit modifier
+- Fireball is now Fireblast, added Fireball as further upgrade
 Bugfix
 - Fix bug where enemies cant pathfind back to their home spot
 - fix bug where enemy cancels attack randomly
+- fix bug where guards run off into oblivion instead of tending to the prisoner
 
 4.67 (Sep 2023)
 - Bows and crossbows now use a mechanic where they must be loaded before firing

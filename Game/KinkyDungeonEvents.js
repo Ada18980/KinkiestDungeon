@@ -718,10 +718,10 @@ let KDEventMapInventory = {
 			if (!data.delta) return;
 			if (!e.chance || KDRandom() < e.chance) {
 				if (!KDGameData.CurrentVibration && KDIsVibeCD(e.cooldown)) {
-					KinkyDungeonStartVibration(item.name, "normal", KDGetVibeLocation(item), e.power, e.time, undefined, 12, undefined, undefined, undefined, false, 0.1, 1.0);
+					KinkyDungeonStartVibration(item.name, "normal", KDGetVibeLocation(item), e.power, e.time, undefined, 12, undefined, undefined, undefined, false, 0.5, 1.0);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 				} else {
-					KinkyDungeonAddVibeModifier(item.name, "tease", KDRestraint(item).Group, 0, 9, e.power, false, true, false, false, true, 0.1, 1.0);
+					KinkyDungeonAddVibeModifier(item.name, "tease", KDRestraint(item).Group, 0, 9, e.power, false, true, false, false, true, 0.4, 1.0);
 				}
 			}
 		},
@@ -2481,12 +2481,10 @@ let KDEventMapSpell = {
 	},
 	"deny": {
 		"RestoreDenyMana": (e, spell, data) => {
-			if (KinkyDungeonStatWill > 0) {
-				let willPercentage = data.edgewpcost < 0 ? -KinkyDungeonStatWill/data.edgewpcost : 1.0;
-				if (willPercentage > 0)
-					KinkyDungeonChangeMana(0, false, e.power * willPercentage);
-				KinkyDungeonChangeMana(e.power, false, 0, false, willPercentage > 0.5);
-			}
+			let willPercentage = data.edgewpcost < 0 ? -KinkyDungeonStatWill/data.edgewpcost : 1.0;
+			if (willPercentage > 0)
+				KinkyDungeonChangeMana(0, false, e.power * willPercentage);
+			KinkyDungeonChangeMana(e.power, false, 0, false, willPercentage > 0.5);
 		},
 	},
 	"afterCalcMana": {
