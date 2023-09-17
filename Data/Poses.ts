@@ -211,15 +211,20 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 		if (!CheckPoseOrTags(C, "HandsFront")) {
 			delete poses.Front;
 		}
+		if (!CheckPoseOrTags(C, "HandsCrossed")) {
+			delete poses.Crossed;
+		}
 		if (CheckPoseOrTags(C, "HandsBehind") || CheckPoseOrTags(C, "HandsFront")) {
 			delete poses.Up;
 			delete poses.Front;
+			delete poses.Crossed;
 		}
 		if (CheckPoseOrTags(C, "HandsUp")) {
 			delete poses.Boxtie;
 			delete poses.Wristtie;
 			delete poses.Front;
 			delete poses.Yoked;
+			delete poses.Crossed;
 		}
 		if (!CheckPoseOrTags(C, "Yoked")) {
 			delete poses.Yoked;
@@ -227,6 +232,7 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 			delete poses.Front;
 			delete poses.Boxtie;
 			delete poses.Wristtie;
+			delete poses.Crossed;
 		}
 	}
 	//} else {
