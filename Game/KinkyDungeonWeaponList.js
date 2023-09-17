@@ -112,7 +112,7 @@ let KinkyDungeonWeapons = {
 		]},
 
 	// Flails
-	"Flail": {name: "Flail", dmg: 2.5, chance: 1.4, staminacost: 280, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "LightSwing",
+	"Flail": {name: "Flail", dmg: 2.5, chance: 1.4, staminacost: 2.8, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "LightSwing",
 		crit: 1.5,
 		events: [{type: "Cleave", trigger: "playerAttack", power: 1, damage: "crush"}]},
 	"MagicFlail": {name: "MagicFlail", dmg: 3, chance: 1.25, staminacost: 3.0, type: "crush", unarmed: false, rarity: 4, magic: true, shop: false, sfx: "LightSwing",

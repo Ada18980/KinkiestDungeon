@@ -242,7 +242,7 @@ function KDAvgColor(color1, color2, w1, w2) {
 function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapBrightness) {
 	let flags = {
 		SeeThroughWalls: 0,
-		nightVision: 1.0,
+		nightVision: KDNightVision,
 	};
 
 	KinkyDungeonSendEvent("vision",{update: delta, flags: flags});
@@ -394,16 +394,17 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 		}
 	} else {
 		// Generate the grid
+		let minDist = KDMinVisionDist;
 		let dist = 0;
 		let fog = true;//KDAllowFog();
 		for (let X = 0; X < KDMapData.GridWidth; X++) {
 			for (let Y = 0; Y < KDMapData.GridHeight; Y++)
 				if (X >= 0 && X <= width-1 && Y >= 0 && Y <= height-1) {
 					dist = KDistChebyshev(KinkyDungeonPlayerEntity.x - X, KinkyDungeonPlayerEntity.y - Y);
-					if (dist < 3) {
+					if (dist < Math.ceil(minDist)) {
 						let distE = KDistEuclidean(KinkyDungeonPlayerEntity.x - X, KinkyDungeonPlayerEntity.y - Y);
-						if (fog && dist < 3
-							&& distE < 2.9
+						if (fog && dist < Math.ceil(minDist)
+							&& distE < minDist
 							&& KinkyDungeonCheckPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, X, Y, true, true, flags.SeeThroughWalls ? flags.SeeThroughWalls + 1 : 1, true)) {
 							KDMapData.FogGrid[X + Y*(width)] = Math.max(KDMapData.FogGrid[X + Y*(width)], 3);
 						}

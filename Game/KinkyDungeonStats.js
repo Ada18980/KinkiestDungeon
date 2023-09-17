@@ -23,6 +23,7 @@ let KDStamDamageThreshBonus = 0.05;
 let KDSleepRegenWill = KDSleepWillFractionJail * KDMaxStatStart/40;
 
 let KinkyDungeonStatDistractionMax = KDMaxStatStart;
+let KDDistractionLowerPercMult = 0.1;
 let KinkyDungeonStatDistractionLower = 0;
 let KinkyDungeonStatDistractionLowerCap = 0.9;
 let KinkyDungeonStatArousalLowerRegenSleep = 0; // Decrease lower distraction in sleep?
@@ -269,6 +270,8 @@ function KinkyDungeonDefaultStats(Load) {
 }
 
 let KDMaxVisionDist = 8;
+let KDMinVisionDist = 2.9;
+let KDNightVision = 2.9;
 
 function KinkyDungeonGetVisionRadius() {
 	let data = {
@@ -278,9 +281,13 @@ function KinkyDungeonGetVisionRadius() {
 		blindMult: (KinkyDungeonStatsChoice.get("Blackout") || KinkyDungeonStatsChoice.get("TotalBlackout")) ? 2 : 1,
 		visionMult: 1.0,
 		max: 8,
+		min: 2.9,
+		nightVision: 1.0,
 	};
 	KinkyDungeonSendEvent("calcVision", data);
 	KDMaxVisionDist = data.max;
+	KDMinVisionDist = data.min;
+	KDNightVision = data.nightVision;
 	return (KDGameData.SleepTurns > 2) ? 1 : (Math.max((data.noperipheral) ? 1 : 2, Math.round(data.visionMult*(KDMaxVisionDist-data.blindlevel * data.blindMult))));
 }
 
@@ -466,9 +473,9 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 	if (data.teaseTypes.includes(data.type)) {
 		let amt = data.dmg;
 		if (data.bypassTeaseTypes.includes(data.type)) {
-			KinkyDungeonTeaseLevelBypass += amt;
+			KinkyDungeonTeaseLevelBypass += amt * (1 + (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0));
 		} else {
-			KinkyDungeonTeaseLevel += amt;
+			KinkyDungeonTeaseLevel += amt * (1 + (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0));
 		}
 	}
 
@@ -958,18 +965,46 @@ function KDGetDistractionRate(delta) {
 	let distractionRate = (KinkyDungeonVibeLevel == 0 && KDGameData.OrgasmNextStageTimer < 4 && !(KDGameData.DistractionCooldown > 0)) ? (!KinkyDungeonStatsChoice.get("arousalMode") ? KinkyDungeonStatDistractionRegen * KDDistractionDecayMultDistractionMode * mult : (KDGameData.PlaySelfTurns < 1 ? mult * KinkyDungeonStatDistractionRegen*(
 		(KinkyDungeonChastityMult() > 0.9 ? KDNoUnchasteMult : (KinkyDungeonChastityMult() > 0 ? KDNoUnchasteBraMult : 1.0))) : 0)) : (KinkyDungeonDistractionPerVibe * KinkyDungeonVibeLevel);
 
+	let distractionBonus = KinkyDungeonSetMaxStats(delta).distractionRate;
+	if (KinkyDungeonStatDistraction < KinkyDungeonStatDistractionLower) {
+		distractionRate = Math.max(0, distractionRate);
+	} else if (KDGameData.PlaySelfTurns < 1) distractionRate += distractionBonus;
+
+	if (distractionRate < 0 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionLower && KinkyDungeonStatDistraction + distractionRate < KinkyDungeonStatDistractionLower) {
+		distractionRate = Math.max(distractionRate, KinkyDungeonStatDistraction - KinkyDungeonStatDistractionLower);
+	}
+
 	if (KDGameData.OrgasmStamina > 0 && delta > 0) {
 		let amount = (KDGameData.OrgasmStamina || 0)/24;
 		KDGameData.OrgasmStamina = Math.max(0, KDGameData.OrgasmStamina*0.98 - delta/70);
 		distractionRate += -amount;
 	}
 
-	let distractionBonus = KinkyDungeonSetMaxStats(delta).distractionRate;
-	if (KDGameData.PlaySelfTurns < 1) distractionRate += distractionBonus;
+	if (KinkyDungeonStatDistraction < KinkyDungeonStatDistractionLower) {
+		distractionRate +=
+		Math.min(
+			Math.max(0, KinkyDungeonStatDistractionLower - KinkyDungeonStatDistraction),
+			KDGetDistractionDesireRate());
+	}
 	if (!KDGameData.DistractionCooldown) KDGameData.DistractionCooldown = 0;
 	if (KDGameData.DistractionCooldown > 0) KDGameData.DistractionCooldown = Math.max(0, KDGameData.DistractionCooldown - delta);
+
+
+
 	return distractionRate;
 }
+
+function KDGetDistractionDesireRate() {
+	let data = {
+		amount: KDDistractionLowerPercMult * KinkyDungeonStatDistractionMax,
+		mult: 1,
+		bonus: 0,
+	};
+
+	KinkyDungeonSendEvent("desireRate", data);
+	return data.amount * data.mult + data.bonus;
+}
+
 
 /**
  *
@@ -1010,7 +1045,9 @@ function KinkyDungeonUpdateStats(delta) {
 	if (KinkyDungeonVibeLevel > 0 || KinkyDungeonTeaseLevel > 0) {
 		KDGameData.OrgasmNextStageTimer = Math.min(KDOrgasmStageTimerMax, KDGameData.OrgasmNextStageTimer + delta);
 		let data = {
-			invol_chance: (KDGameData.OrgasmStage >= KinkyDungeonMaxOrgasmStage) ? 1.0 : (KDOrgasmStageTimerMaxChance + (1 - KinkyDungeonStatWill/KinkyDungeonStatWillMax) * KinkyDungeonStatDistractionLower / KinkyDungeonStatDistractionMax),
+			invol_chance: (KDGameData.OrgasmStage >= KinkyDungeonMaxOrgasmStage) ?
+				1.0 :
+				(KDOrgasmStageTimerMaxChance + (1 - KinkyDungeonStatWill/KinkyDungeonStatWillMax) * (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0)),
 			invol_satisfied_threshold: KinkyDungeonStatDistractionMax * 0.75,
 		};
 		KinkyDungeonSendEvent("calcInvolOrgasmChance", data);
@@ -1041,7 +1078,7 @@ function KinkyDungeonUpdateStats(delta) {
 	if (delta > 0 && KinkyDungeonVibeLevel > 0) {
 		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonVibing" + Math.max(0, Math.min(5, Math.round(KinkyDungeonVibeLevel)))), "#ff88ff", 2, true, true);
 	}
-	let arousalPercent = distractionRate > 0 ? 0.04 : 0;
+	let arousalPercent = distractionRate > 0 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionLower ? 0.04 : 0;
 
 	if (KDGameData.OrgasmStage > 0 && !KinkyDungeonFlags.get("orgasmStageTimer") && KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.75) {
 		KDGameData.OrgasmStage = Math.max(0, KDGameData.OrgasmStage - delta);
@@ -1255,7 +1292,7 @@ function KinkyDungeonGetBlindLevel() {
 
 function KinkyDungeonCapStats() {
 	KinkyDungeonStatDistractionLower = Math.max(0, Math.min(KinkyDungeonStatDistractionLower, KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerCap));
-	KinkyDungeonStatDistraction = Math.max(KinkyDungeonStatDistractionLower, Math.min(KinkyDungeonStatDistraction, KinkyDungeonStatDistractionMax));
+	KinkyDungeonStatDistraction = Math.max(0, Math.min(KinkyDungeonStatDistraction, KinkyDungeonStatDistractionMax));
 	KinkyDungeonStatStamina = Math.max(0, Math.min(KinkyDungeonStatStamina, KinkyDungeonStatStaminaMax));
 	KinkyDungeonStatMana = Math.max(0, Math.min(KinkyDungeonStatMana, KinkyDungeonStatManaMax));
 	KinkyDungeonStatManaPool = Math.max(0, Math.min(KinkyDungeonStatManaPool, KinkyDungeonStatManaPoolMax));

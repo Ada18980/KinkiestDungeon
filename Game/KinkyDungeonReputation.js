@@ -11,6 +11,16 @@ let KDRepColor = {
 	Passion: "#ff5555",
 	Frustration: "#ff9999",
 };
+let KDRepNameColor = {
+	Leather: "#3e0000",
+	Latex: "#692464",
+	Rope: "#494f11",
+	Metal: "#2f68cc",
+	Will: "#2f573d",
+	Elements: "#ad2f45",
+	Conjure: "#2f4a3d",
+	Illusion: "#551d78",
+};
 
 let KDFactionGoddess = {
 	"Metal": {
@@ -316,13 +326,17 @@ function KinkyDungeonDrawReputation() {
 			}
 			let suff = "";
 			if (!KDStatRep.includes(rep)) suff = "" + KinkyDungeonRepName(value);
-			DrawTextKD(TextGet("KinkyDungeonShrine" + rep) + goddessSuff, canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i, goddessColor, "black", undefined, "left");
+			DrawTextKD(TextGet("KinkyDungeonShrine" + rep) + goddessSuff, canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i, goddessColor, KDRepNameColor[rep] || "#000000", undefined, "left");
 			if (suff) {
 				DrawTextFitKD(suff, canvasOffsetX_ui + 275 + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
 			DrawProgressBar(canvasOffsetX_ui + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value, color, KDTextGray2);
 			if (KinkyDungeonShrineBaseCosts[rep])
 				KDDrawRestraintBonus(rep, canvasOffsetX_ui + 275 + XX - 70, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
+
+			if (MouseIn(canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i - 1 - spacing/2, 500, spacing - 2)) {
+				DrawTextFitKD(TextGet("KDRepDescription" + rep), 1100, 880, 1250, "#ffffff", "#000000");
+			}
 
 			DrawTextKD(" " + (Math.round(value)+50) + " ", canvasOffsetX_ui + 275 + XX + 100,  2+yPad + canvasOffsetY_ui + spacing * i, "white", "black");
 
@@ -359,7 +373,7 @@ function KinkyDungeonDrawReputation() {
 							return true;
 						}, true, canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet("KinkyDungeonRescue"), (KinkyDungeonCanRescue(rep, value)) ? "white" : (KinkyDungeonAllRestraint().length > 0 && !KinkyDungeonRescued[rep] ? "pink" : "#999999"));
 						if (MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40)) {
-							DrawTextFitKD(TextGet("KinkyDungeonRescueDesc"), 1100, 900, 1250, "white", "black");
+							DrawTextFitKD(TextGet("KinkyDungeonRescueDesc"), 1100, 880, 1250, "white", "black");
 							// Rescue
 						}
 					}
@@ -371,7 +385,7 @@ function KinkyDungeonDrawReputation() {
 						}, true, canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet(isChampion ? "KinkyDungeonChampionCurrent" : "KinkyDungeonChampionSwitch"),
 							(isChampion) ? "white" : "#999999");
 						if (MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40)) {
-							DrawTextFitKD(TextGet("KinkyDungeonChampionDesc"), 1100, 900, 1250, "white", "black");
+							DrawTextFitKD(TextGet("KinkyDungeonChampionDesc"), 1100, 880, 1250, "white", "black");
 							// Rescue
 						}
 					}
