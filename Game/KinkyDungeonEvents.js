@@ -3339,14 +3339,14 @@ let KDEventMapWeapon = {
 					aurasprite: "Reload",
 					//buffSprite: true,
 					power: Math.min(e.power, currentLoad + data.delta),
-					duration: 2,
+					duration: 7,
 				});
 				if (currentLoad >= e.power) {
 					KinkyDungeonPlayerBuffs[weapon.name + "Load"].aura = undefined;
 					KinkyDungeonPlayerBuffs[weapon.name + "Load"].duration = 9999;
 				} else {
 					KinkyDungeonPlayerBuffs[weapon.name + "Load"].aura = e.color;
-					KinkyDungeonPlayerBuffs[weapon.name + "Load"].duration = 2;
+					KinkyDungeonPlayerBuffs[weapon.name + "Load"].duration = 7;
 				}
 			}
 		},

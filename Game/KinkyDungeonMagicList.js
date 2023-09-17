@@ -1272,8 +1272,8 @@ let KinkyDungeonSpellListEnemies = [
 		crit: 2.0,
 		projectileTargeting:true, onhit:"", power: 4.5, delay: 0, range: 7.5, damage: "pierce", speed: 2.5},
 	{name: "ArrowBoltHeavy", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
-		crit: 2.0,
-		projectileTargeting:true, onhit:"", power: 10, delay: 0, range: 14, damage: "pierce", speed: 4},
+		crit: 2.5, pierceEnemies: true,
+		projectileTargeting:true, onhit:"", power: 7, delay: 0, range: 14, damage: "pierce", speed: 4},
 
 	{name: "ArrowFire", tags: ["arrowspecial"], color: "#ffff00", sfx: "FireSpell", landsfx: "Lightning", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
 		crit: 1.5,

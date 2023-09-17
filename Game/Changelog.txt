@@ -7,6 +7,7 @@ CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1
 - Added thumbcuffs and hinged cuffs
 Balance
 - Can no longer get upgrades via Random Spells
+- Arbalest now pierces enemies and has 250% crit modifier
 Bugfix
 - Fix bug where enemies cant pathfind back to their home spot
 - fix bug where enemy cancels attack randomly

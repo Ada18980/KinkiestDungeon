@@ -11529,7 +11529,7 @@ KinkyDungeonSpellCastArrowBoltPistol,"You pull the trigger!"
 
 KinkyDungeonInventoryItemCrossbowHeavy,Arbalest
 KinkyDungeonInventoryItemCrossbowHeavyDesc,"At this point why not just use a gun?"
-KinkyDungeonInventoryItemCrossbowHeavyDesc2,"Reload time: 5 stationary turns. Deals crush damage on melee. Draws 25 charge and no stamina to fire an ordinary arrow, dealing 100 pierce damage."
+KinkyDungeonInventoryItemCrossbowHeavyDesc2,"Reload time: 5 stationary turns. Deals crush damage on melee. Draws 25 charge and no stamina to fire an ordinary arrow, dealing 70 pierce damage, passing through units."
 ItemPickupCrossbowHeavy,"You find an arbalest."
 KinkyDungeonSpecialCrossbowHeavy,"25 charge to fire a bolt. Deals 100 pierce damage."
 KinkyDungeonSpellTargetArrowBoltHeavy,Choose projectile path
