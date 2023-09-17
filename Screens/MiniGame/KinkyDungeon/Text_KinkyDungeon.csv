@@ -740,7 +740,7 @@ StatStamina,"SP: CURRENT/MAX"
 StatWillpower,"Willpower: CURRENT/MAX"
 StatMana,"MP: CURRENT/MAX"
 TooltipMana,"Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool."
-TooltipDistraction,"Your Desire increases over time as you encounter distracting things."
+TooltipDistraction,"Your Desire is the baseline Distraction you decay toward, and is increased by distracting things."
 TooltipStamina,"Stamina recovers more quickly when you aren't spending it."
 TooltipWill,"Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape."
 TooltipCharge,"Charge is used to power various magic items and weapons."
@@ -11264,3 +11264,20 @@ KinkyDungeonInventoryItemCuffKeysDesc2,"It's not sophisticated enough to work on
 
 
 KDRep,Rep
+
+KDMagicWeapon,Magical Weapon
+
+KDRepDescriptionGhost,"Your Submissiveness determines how easily your character can resist the temptations of bondage."
+KDRepDescriptionPrisoner,"Your Security Level determines how tightly enemies will secure you in prison."
+KDRepDescriptionPassion,"Your Passion determines how likely you are to lose control of yourself involuntarily."
+KDRepDescriptionFrustration,"Your Frustration affects how quickly your Passion grows. More Frustration = More Passion"
+
+KDRepDescriptionLeather,"Nivah, Goddess of Dragons"
+KDRepDescriptionLatex,"Minivir, Goddess of Alchemy"
+KDRepDescriptionRope,"Akasha, Goddess of Magic"
+KDRepDescriptionMetal,"Oriel, Goddess of Technology"
+
+KDRepDescriptionWill,"Ninril, Giver of Life"
+KDRepDescriptionElements,"Mata, Architect of Reality"
+KDRepDescriptionConjure,"Aether, Keeper of the Cosmos"
+KDRepDescriptionIllusion,"Oblivion, Keeper of Secrets"

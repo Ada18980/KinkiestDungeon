@@ -1478,7 +1478,7 @@ const KinkyDungeonRestraints = [
 		events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}],
 		escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 10, "Pick": 5},
 		enemyTags: {"shackleRestraints":2}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"]},
-	{name: "LegShackles2", debris: "Chains", Asset: "LeatherLegCuffs", LinkableBy: [...KDBindable, ...KDDevices], UnLink: "LegShackles", Group: "ItemFeet",
+	{name: "LegShackles2", debris: "Chains", Asset: "LeatherLegCuffs", LinkableBy: [...KDBindable, ...KDDevices], UnLink: "LegShackles", Group: "ItemLegs",
 		sfxGroup: "Handcuffs",
 		blockfeet: true, addTag: ["FeetLinked"],Type: "Closed", Color: ["Default", "Default"], power: 5, weight: 2, escapeChance: {"Struggle": -0.05, "Cut": -0.3, "Remove": 10, "Pick": 5},
 		enemyTags: {"shackleRestraints":2}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
