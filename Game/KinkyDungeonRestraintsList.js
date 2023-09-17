@@ -1452,6 +1452,7 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"trap":100, "handcuffer": 10, "cuffsSpell": 10}, playerTags: {}, minLevel: 5, allFloors: true, shrine: ["Metal", "Cuffs"]},
 
 	{inventory: true, trappable: true, name: "ThumbCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true,
+		AssetGroup: "ItemArms",
 		sfxGroup: "Handcuffs",
 		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDBindable], Group: "ItemHands",
 		Color: "Default", bindarms: true, power: 6, weight: 15, DefaultLock: "White",
