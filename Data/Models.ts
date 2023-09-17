@@ -221,7 +221,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		//kdcanvas.addChild(Container.Container);
 		kdcanvas.addChild(Container.Mesh);
 		Container.Container.sortableChildren = true;
-		Container.Container.cacheAsBitmap = true;
+		//Container.Container.cacheAsBitmap = true;
 		if (zIndex) Container.Container.zIndex = zIndex;
 		Container.Container.filterArea = new PIXI.Rectangle(0,0,MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE);
 	}
@@ -263,25 +263,27 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		if (modified && !created) {
 			MC.Refresh.add(containerID);
 			MC.Update.delete(containerID);
+		} else if (modified) {
+			if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
+				PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
+
+			if (flip && Container.Container?.scale.x > 0)
+				Container.Container.scale.x *= -1;
+			else if (!flip && Container.Container?.scale.x < 0)
+				Container.Container.scale.x *= -1;
+
+
+			//Container.Container.pivot.set(-MODELWIDTH*MODEL_SCALE * Container.Container.scale.x * 0.25 * Zoom, -MODELHEIGHT*MODEL_SCALE * Container.Container.scale.y * 0.25 * Zoom);
+			//Container.Mesh.x += Container.Container.pivot.x;
+			//Container.Mesh.y += Container.Container.pivot.y;
+			//if (MC.Containers.get(containerID).RenderTexture)
+			PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
+				clear: true,
+				renderTexture: MC.Containers.get(containerID).RenderTexture,
+			});
 		}
 		Container.SpritesDrawn.clear();
-		if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
-			PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
 
-		if (flip && Container.Container?.scale.x > 0)
-			Container.Container.scale.x *= -1;
-		else if (!flip && Container.Container?.scale.x < 0)
-			Container.Container.scale.x *= -1;
-
-
-		//Container.Container.pivot.set(-MODELWIDTH*MODEL_SCALE * Container.Container.scale.x * 0.25 * Zoom, -MODELHEIGHT*MODEL_SCALE * Container.Container.scale.y * 0.25 * Zoom);
-		//Container.Mesh.x += Container.Container.pivot.x;
-		//Container.Mesh.y += Container.Container.pivot.y;
-
-		PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
-			clear: true,
-			renderTexture: MC.Containers.get(containerID).RenderTexture,
-		});
 	}
 
 	// Store it in the map so we don't have to create it again
@@ -427,7 +429,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
 						DisplaceFilters[dg].push(
 							{
-								amount: l.DisplaceAmount || 100,
+								amount: l.DisplaceAmount || 50,
 								hash: id + m.Name + "," + l.Name,
 								sprite: KDDraw(
 									ContainerContainer.Container,
