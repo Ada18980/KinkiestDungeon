@@ -68,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "ManaRecharge", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "RogueTraps", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1","DenyMana"],
+		["Bondage", "ManaRecharge", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "RogueTraps", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -76,7 +76,7 @@ let KinkyDungeonLearnableSpells = [
 		// Verbal
 		["Firecracker", "Incinerate", "Gust", "Freeze", "FlashFreeze", "Hailstorm", "IceBreath", "Tremor", "Earthquake", "Shield", "GreaterShield", "IronBlood", "Electrify", "Thunderstorm", "StaticSphere", "Rainstorm"],
 		// Arms
-		["Firebolt", "Fireball", "WindBlast", "Icebolt", "Snowball", "IceOrb", "Icicles", "IceLance", "StoneSkin", "Shock", "Crackle", "LightningBolt", "WaterBall", "TidalBall"],
+		["Firebolt", "Fireblast", "Fireball", "WindBlast", "Icebolt", "Snowball", "IceOrb", "Icicles", "IceLance", "StoneSkin", "Shock", "Crackle", "LightningBolt", "WaterBall", "TidalBall"],
 		// Legs
 		["Ignite", "Fissure", "Sleet", "BoulderLaunch", "BigBoulderLaunch", "Earthform", "EarthformRing", "EarthformMound", "EarthformLine", "BoulderKick", "Volcanism", "FlameRune", "FreezeRune", "LightningRune",],
 		// Passive
@@ -227,6 +227,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			blockedBy: ["OrgasmMana1"], events: [
 				{type: "RestoreEdgeMana", trigger: "tick", power: 0.1},
 				{type: "EdgeRegenBoost", trigger: "calcManaPool", power: 0.04},
+				//{type: "RestoreDenyMana", trigger: "deny", power: 4.0},
 			]},
 		{name: "DenyMana", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], prerequisite: "EdgeMana1", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
@@ -354,24 +355,42 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "Firebolt", tags: ["fire", "bolt", "offense"], prerequisite: "ApprenticeFire", sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt",
 			bulletColor: 0xb83716, bulletLight: 4,
 			hitColor: 0xe64539, hitLight: 6,
+			hideWarnings: true,
 			projectileTargeting:true, onhit:"", power: 4.0, delay: 0, range: 50, damage: "fire", speed: 3, playerEffect: {name: "Damage"},
 			effectTileDurationMod: 3, effectTile: {
 				name: "Ember",
 				duration: 3,
 			}}, // Throws a fireball in a direction that moves 1 square each turn
-		{name: "Fireball", prerequisite: "Firebolt", tags: ["fire", "bolt", "aoe", "offense"], noise: 3, sfx: "FireSpell", school: "Elements", manacost: 7, components: ["Arms"], level:1,
-			upcastFrom: "Firebolt", upcastLevel: 2,
-			bulletColor: 0xb83716, bulletLight: 5.5,
+		{name: "Fireblast", prerequisite: "Firebolt", tags: ["fire", "bolt", "aoe", "offense"], noise: 4, sfx: "FireSpell", school: "Elements", manacost: 6, components: ["Arms"], level:1,
+			upcastFrom: "Firebolt", upcastLevel: 1,
+			hideWarnings: true,
+			bulletColor: 0xb83716, bulletLight: 6.5,
 			hitColor: 0xe64539, hitLight: 8,
 			landsfx: "Lightning",
-			type:"bolt", projectileTargeting:true, onhit:"aoe", power: 6, delay: 0, range: 50, aoe: 1.5, size: 3, lifetime:1, damage: "fire", speed: 2, playerEffect: {name: "Damage"},
+			type:"bolt", projectileTargeting:true, onhit:"aoe", power: 5, delay: 0, range: 50, aoe: 1.5, size: 3, lifetime:1, damage: "fire", speed: 2, playerEffect: {name: "Damage"},
 			effectTileDurationModTrail: 8, effectTileTrail: {
-				name: "Smoke",
+				name: "Ember",
 				duration: 2,
 			},
 			effectTileDurationMod: 6, effectTile: {
 				name: "Ember",
+				duration: 5,
+			}}, // Throws a fireball in a direction that moves 1 square each turn
+
+		{name: "Fireball", prerequisite: "Fireblast", tags: ["fire", "bolt", "aoe", "offense"], noise: 8, sfx: "FireSpell", school: "Elements", manacost: 11, components: ["Arms"], level:1,
+			upcastFrom: "Firebolt", upcastLevel: 2,
+			bulletColor: 0xb83716, bulletLight: 8,
+			hitColor: 0xe64539, hitLight: 11,
+			landsfx: "Lightning",
+			hideWarnings: true,
+			type:"bolt", projectileTargeting:true, onhit:"aoe", power: 9, delay: 0, range: 50, aoe: 2.8, size: 5, lifetime:1, damage: "fire", speed: 1.5, playerEffect: {name: "Damage"},
+			effectTileDurationModTrail: 12, effectTileTrail: {
+				name: "Ember",
 				duration: 4,
+			},
+			effectTileDurationMod: 8, effectTile: {
+				name: "Ember",
+				duration: 7,
 			}}, // Throws a fireball in a direction that moves 1 square each turn
 		{name: "Icebolt", tags: ["ice", "bolt", "offense"], prerequisite: "ApprenticeIce", sfx: "MagicSlash", hitsfx: "Freeze", school: "Elements", manacost: 4, components: ["Arms"], level:1, type:"bolt",
 			bulletColor: 0x92e4e8, bulletLight: 3,

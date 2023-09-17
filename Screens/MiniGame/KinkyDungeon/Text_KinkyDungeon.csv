@@ -5027,9 +5027,14 @@ KinkyDungeonSpellTargetElectrify,Choose target location
 KinkyDungeonSpellCastAreaElectrify,The elemental channels the force of the storm!
 
 KinkyDungeonSpellFireball,Fireball
-KinkyDungeonSpellDescriptionFireball,A slow moving ball of flame that explodes for 120 fire damage to the target and DamageDealt damage to surrounding enemies.
-KinkyDungeonSpellCastFireball,You a hurl a fireball!
+KinkyDungeonSpellDescriptionFireball,A slow moving ball of flame that explodes for 180 fire damage to the target and DamageDealt damage to surrounding enemies.
+KinkyDungeonSpellCastFireball,You a hurl a massive fireball!
 KinkyDungeonSpellTargetFireball,Choose aim direction
+
+KinkyDungeonSpellFireblast,Fireblast
+KinkyDungeonSpellDescriptionFireblast,A slow moving ball of flame that explodes for 100 fire damage to the target and DamageDealt damage to surrounding enemies.
+KinkyDungeonSpellCastFireblast,You a hurl a blast of flame!
+KinkyDungeonSpellTargetFireblast,Choose aim direction
 
 KinkyDungeonSpellIncinerate,Incinerate
 KinkyDungeonSpellDescriptionIncinerate,A tornado of flame that does DamageDealt damage per turn for LifeTime turns.
