@@ -107,9 +107,10 @@ let KDGuardActions = {
 			// Random meandering about the cell, sometimes stopping near the player
 			if (KDRandom() < 0.2) {
 				guard.gx = xx - 2;
-				if (KDRandom() < 0.5)
-					guard.gy = yy + Math.round(KDRandom() * KinkyDungeonJailLeash * 2 - KinkyDungeonJailLeash);
-				else
+				if (KDRandom() < 0.5) {
+					guard.gx = xx;
+					guard.gy = yy + Math.round(KDRandom() * KinkyDungeonJailLeashY * 2 - KinkyDungeonJailLeashY);
+				} else
 					guard.gy = KinkyDungeonPlayerEntity.y;
 			}
 			KDGameData.GuardApplyTime = 0;

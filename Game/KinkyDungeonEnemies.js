@@ -3280,6 +3280,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				}
 			}
 
+			// First we will cancel the path if Gx or Gy has been updated
+			if (enemy.path?.length > 0) {
+				let lastPoint = enemy.path[enemy.path.length-1];
+				if ((enemy.gx && lastPoint.x != enemy.gx) || (enemy.gy && lastPoint.y != enemy.gy)) {
+					enemy.path = undefined;
+				}
+			}
+
 
 			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || KDDefaultRestraintThresh;
 

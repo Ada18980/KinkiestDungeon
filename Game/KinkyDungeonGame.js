@@ -134,6 +134,7 @@ let KinkyDungeonLastMoveTimerCooldownStart = 50;
 
 
 let KinkyDungeonJailLeash = 3;
+let KinkyDungeonJailLeashY = 3;
 let KinkyDungeonJailLeashX = 3;
 
 let KinkyDungeonSaveInterval = 10;
