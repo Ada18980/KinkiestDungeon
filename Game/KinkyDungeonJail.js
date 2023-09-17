@@ -722,7 +722,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 						KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions = Math.min(3, KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions + 1);
 					}
 				}
-				if (KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions == 3 && KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints > 1) KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints = 1;
+				if (KinkyDungeonJailGuard()?.KinkyDungeonJailTourInfractions == 3 && KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints > 1) KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints = 1;
 				KinkyDungeonJailGuard().gx = KinkyDungeonPlayerEntity.x;
 				KinkyDungeonJailGuard().gy = KinkyDungeonPlayerEntity.y;
 				KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
@@ -739,14 +739,18 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 						KinkyDungeonTargetTile = null;
 						KinkyDungeonTargetTileLocation = "";
 						KDMovePlayer(KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, false);
-						KinkyDungeonJailGuard().x = guardPath[0].x;
-						KinkyDungeonJailGuard().y = guardPath[0].y;
+						if (KinkyDungeonJailGuard()) {
+							KinkyDungeonJailGuard().x = guardPath[0].x;
+							KinkyDungeonJailGuard().y = guardPath[0].y;
+						}
 					}
 					let enemy = KinkyDungeonEnemyAt(guardPath[0].x, guardPath[0].y);
 					if (enemy) {
 						KDMoveEntity(enemy, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, true, undefined, undefined, true);
-						KinkyDungeonJailGuard().x = guardPath[0].x;
-						KinkyDungeonJailGuard().y = guardPath[0].y;
+						if (KinkyDungeonJailGuard()) {
+							KinkyDungeonJailGuard().x = guardPath[0].x;
+							KinkyDungeonJailGuard().y = guardPath[0].y;
+						}
 					}
 				} else KinkyDungeonJailGuardGetLeashWaypoint(xx, yy, type);
 				KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
