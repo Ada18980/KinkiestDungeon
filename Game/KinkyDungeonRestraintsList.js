@@ -1431,30 +1431,66 @@ const KinkyDungeonRestraints = [
 
 	//region These restraints are easy, so they dont have maxwill
 	{inventory: true, name: "WristShackles", debris: "Chains", Asset: "WristShackles", linkCategory: "Cuffs", linkSize: 0.33, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable],
+		sfxGroup: "Handcuffs",
 		Group: "ItemArms", Color: "Default", bindarms: true, Type: "Behind", power: 1, weight: 2, escapeChance: {"Struggle": -0.05, "Cut": -0.25, "Remove": 10, "Pick": 5},
 		DefaultLock: "White",
 		events: [{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true}],
 		enemyTags: {"shackleRestraints":7, "handcuffer": 6, "Unchained": -8}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"]},
 	{inventory: true, trappable: true, name: "TrapCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true, linkCategory: "Cuffs", linkSize: 0.33, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemArms",
+		sfxGroup: "Handcuffs",
 		Color: "Default", bindarms: true, power: 2, weight: 2, DefaultLock: "White",
 		events: [{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true}],
 		escapeChance: {"Struggle": -0.5, "Cut": -0.1, "Remove": 10, "Pick": 0.5}, enemyTags: {"trap":100, "handcuffer": 1, "cuffsSpell": 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"]},
+
+	{inventory: true, trappable: true, name: "HingedCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true,
+		sfxGroup: "Handcuffs",
+		linkCategory: "Cuffs", linkSize: 0.51, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemArms",
+		Color: "Default", bindarms: true, power: 5, weight: 15, DefaultLock: "White",
+		events: [{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true}],
+		helpChance: {"Remove": 0.4, "Pick": 0.4, "Unlock": 1.0},
+		escapeChance: {"Struggle": -0.7, "Cut": -0.2, "Remove": -0.2, "Pick": -0.25, "Unlock": -0.25},
+		enemyTags: {"trap":100, "handcuffer": 10, "cuffsSpell": 10}, playerTags: {}, minLevel: 5, allFloors: true, shrine: ["Metal", "Cuffs"]},
+
+	{inventory: true, trappable: true, name: "ThumbCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true,
+		sfxGroup: "Handcuffs",
+		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDBindable], Group: "ItemHands",
+		Color: "Default", bindarms: true, power: 6, weight: 15, DefaultLock: "White",
+		bindhands: 0.4,
+		events: [{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true}],
+		helpChance: {"Pick": 0.4, "Unlock": 1.0},
+		escapeChance: {"Struggle": -0.4, "Cut": -0.2, "Remove": -0.2, "Pick": -0.12, "Unlock": -0.05},
+		enemyTags: {"trap":1, "handcuffer": 1, "cuffsSpell": 1, "thumbcuffs": 10},
+		playerTags: {"ItemArmsEmpty": -13}, minLevel: 8, allFloors: true, shrine: ["Metal", "Cuffs", "Thumbcuffs"]},
+
+
 	{inventory: true, name: "WolfCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true, linkCategory: "SmartCuffs", linkSize: 0.55, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable],
+		sfxGroup: "Handcuffs",
 		Color: "Default", Group: "ItemArms", bindarms: true, power: 5, weight: 2, DefaultLock: "Red",
 		events: [{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true}],
-		maxwill: 0.8, escapeChance: {"Struggle": -0.5, "Cut": -0.1, "Remove": 10, "Pick": 0.0}, enemyTags: {"wolfCuffs": 8, "cuffsSpell": 100}, playerTags: {}, minLevel: 5, allFloors: true, shrine: ["Metal", "Cuffs"]},
+		maxwill: 0.8, escapeChance: {"Struggle": -0.5, "Cut": -0.15, "Remove": 10, "Pick": 0.0}, enemyTags: {"wolfCuffs": 8, "cuffsSpell": 100}, playerTags: {}, minLevel: 5, allFloors: true, shrine: ["Metal", "Cuffs"]},
 
 
 
-	{inventory: true, name: "LegShackles", debris: "Chains", Asset: "LeatherLegCuffs", LinkableBy: ["Legbinders", "Hobbleskirts", "Belts", "Ties"],
+	{inventory: true, name: "LegShackles", debris: "Chains", Asset: "LeatherLegCuffs", LinkableBy: ["Legbinders", "Hobbleskirts", "Belts", "Ties"], Link: "LegShackles2",
+		sfxGroup: "Handcuffs",
 		Group: "ItemLegs", hobble: 1, Type: "Chained", Color: ["Default", "#888888", "#AAAAAA"], power: 3, weight: 2,
+		events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}],
 		escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 10, "Pick": 5},
 		enemyTags: {"shackleRestraints":2}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"]},
+	{name: "LegShackles2", debris: "Chains", Asset: "LeatherLegCuffs", LinkableBy: [...KDBindable, ...KDDevices], UnLink: "LegShackles", Group: "ItemFeet",
+		sfxGroup: "Handcuffs",
+		blockfeet: true, addTag: ["FeetLinked"],Type: "Closed", Color: ["Default", "Default"], power: 5, weight: 2, escapeChance: {"Struggle": -0.05, "Cut": -0.3, "Remove": 10, "Pick": 5},
+		enemyTags: {"shackleRestraints":2}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}]},
+
 	{inventory: true, name: "FeetShackles", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], Link: "FeetShackles2",
+		sfxGroup: "Handcuffs",
 		Group: "ItemFeet", hobble: 1, Type: "Chained", Color: ["Default", "Default"], power: 5, weight: 2, escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 10, "Pick": 5},
 		enemyTags: {"shackleRestraints":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
 		events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}]},
 	{name: "FeetShackles2", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], UnLink: "FeetShackles", Group: "ItemFeet",
+		sfxGroup: "Handcuffs",
 		blockfeet: true, addTag: ["FeetLinked"],Type: "Closed", Color: ["Default", "Default"], power: 5, weight: 2, escapeChance: {"Struggle": -0.05, "Cut": -0.3, "Remove": 10, "Pick": 5},
 		enemyTags: {"shackleRestraints":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
 		events: [
@@ -3088,5 +3124,33 @@ let KDControlHarnessCategories = {
 				);
 			}
 		},
+	},
+};
+
+/**
+ * @type {Record<string, KDSFXGroup>}
+ */
+let KDSFXGroups = {
+	"Handcuffs": {
+		sfx: "LockHeavy",
+		sfxEscape: {
+			Struggle: "LockLight",
+			Cut: "ClangLight",
+			Remove: "LockLight",
+			Pick: "Pick",
+			Unlock: "Unlock",
+			NoWill: "LockLight",
+			NoStamina: "LockLight",
+			NoMagic: "Shield",
+		},
+		sfxFinishEscape: {
+			Struggle: "Clang",
+			Cut: "Clang",
+			Remove: "Unlock",
+			Pick: "Unlock",
+			Unlock: "Unlock",
+			Destroy: "ClangHeavy",
+		},
+		sfxRemove: "Unlock",
 	},
 };

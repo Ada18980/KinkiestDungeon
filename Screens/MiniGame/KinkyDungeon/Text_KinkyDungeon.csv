@@ -4403,23 +4403,37 @@ RestraintSturdyLeatherBeltsFeetDesc,"A ludicrous amount of belts secured with a 
 RestraintSturdyLeatherBeltsFeetDesc2,"Lockable and fully adjustable to ensure snugness."
 
 RestraintWristShackles,Iron Cuffs
-RestraintWristShacklesDesc,"Heavy shackles with a rudimentary lock."
+RestraintWristShacklesDesc,"Tough shackles with a rudimentary lock."
 RestraintWristShacklesDesc2,"You could pick these with a hairpin."
 RestraintAnkleShackles,Iron Shackles
-RestraintAnkleShacklesDesc,"Heavy shackles with a rudimentary lock."
-RestraintAnkleShacklesDesc2,"You could pick these with a hairpin."
+RestraintAnkleShacklesDesc,"Tough shackles with a rudimentary lock."
+RestraintAnkleShacklesDesc2,"Tough to walk in."
+
+RestraintThumbCuffs,Thumbcuffs
+RestraintThumbCuffsDesc,"Interferes with the use of your hands."
+RestraintThumbCuffsDesc2,"Another layer of restriction."
+RestraintHingedCuffs,Hinged Handcuffs
+RestraintHingedCuffsDesc,"Hinged cuffs with a rudimentary lock."
+RestraintHingedCuffsDesc2,"It's difficult to pick these, let alone unlock yourself..."
 
 RestraintLegShackles,Thigh Shackles
 RestraintLegShacklesDesc,"Heavy shackles with a rudimentary lock."
 RestraintLegShacklesDesc2,"You could pick these with a hairpin."
+KinkyDungeonLinkLegShackles,"The enemy attaches your leg shackles together!"
+RestraintLegShackles2,Linked Thigh Shackles
+RestraintLegShackles2Desc,"Heavy shackles with a rudimentary lock."
+RestraintLegShackles2Desc2,"You could pick these with a hairpin."
+KinkyDungeonUnLinkLegShackles2,"The leg shackles chain detaches!"
+
 RestraintFeetShackles,Ankle Shackles
 RestraintFeetShacklesDesc,"Heavy shackles with a rudimentary lock."
 RestraintFeetShacklesDesc2,"You could pick these with a hairpin."
 RestraintFeetShackles2,Linked Ankle Shackles
-KinkyDungeonLinkFeetShackles,"The enemy attaches your ankle cuffs together!"
+KinkyDungeonLinkFeetShackles,"The enemy attaches your ankle shackles together!"
 RestraintFeetShackles2Desc,"Heavy shackles with a rudimentary lock."
 RestraintFeetShackles2Desc2,"You could pick these with a hairpin."
-KinkyDungeonUnLinkFeetShackles2,"The ankle cuff chain detaches!"
+KinkyDungeonUnLinkFeetShackles2,"The ankle shackles chain detaches!"
+
 RestraintSteelMuzzleGag,Steel Muzzle
 RestraintSteelMuzzleGagDesc,"A heavy muzzle with a rudimentary lock."
 RestraintSteelMuzzleGagDesc2,"You could pick this with a hairpin."
@@ -7339,6 +7353,47 @@ KinkyDungeonRemindJailNursePickpocket,"A gift? Thank you so much!"
 KinkyDungeonRemindJailNurseLock,"You won't be getting out of that any time soon!"
 KinkyDungeonRemindJailNurseIntro,"Nurse PTRN, reporting for duty!"
 
+
+KinkyDungeonRemindJailPlayBratDoctor0,"No! I didn't do anything wrong..."
+KinkyDungeonRemindJailPlayBratDoctor1,"Don't punish me! Please!"
+KinkyDungeonRemindJailPlayBratDoctor2,"I did what the manual said!"
+KinkyDungeonRemindJailPlaySubDoctor0,"It's your turn, dear~"
+KinkyDungeonRemindJailPlaySubDoctor1,"Looks like I'm the patient now~"
+KinkyDungeonRemindJailPlaySubDoctor2,"I seem to have caught something, won't you help?"
+KinkyDungeonRemindJailPlayDoctor0,"It's time for your daily dose of cuddling~"
+KinkyDungeonRemindJailPlayDoctor1,"I diagose you with excessive subbiness."
+KinkyDungeonRemindJailPlayDoctor2,"Seems like you've caught a case of female hysteria..."
+KinkyDungeonRemindJailPlayDoctorStruggle,"Those are supposed to keep you still you know..."
+KinkyDungeonRemindJailPlayDoctorLeash,"You've got an appointment scheduled."
+KinkyDungeonRemindJailPlayDoctorFree,"Lets get you back in your jacket~"
+KinkyDungeonRemindJailPlayDoctorLoot,"Patients are not allowed to have toys."
+KinkyDungeonRemindJailPlayDoctorKey,"Oh no you don't, sweetie!"
+KinkyDungeonRemindJailChaseDoctorAlert,"I diagnose you with a case of bratty behavior..."
+KinkyDungeonRemindJailChaseDoctorAttack0,"Have you had your daily cuddles yet?"
+KinkyDungeonRemindJailChaseDoctorAttack1,"It's time for your edging treatment~"
+KinkyDungeonRemindJailChaseDoctorAttack2,"Sexual health is physical health, my dear~"
+KinkyDungeonRemindJailChaseDoctorSpell0,"Oh my, that's dangerous!"
+KinkyDungeonRemindJailChaseDoctorSpell1,"Patients are forbidden from casting spells!"
+KinkyDungeonRemindJailChaseDoctorSpell2,"Keep those pretty hands to yourself, dear~"
+KinkyDungeonRemindJailChaseDoctorSpellItem,"Where'd you find that, dear?"
+KinkyDungeonRemindJailChaseDoctorShrine,"Silly girl, your illness can't be cured by a prayer."
+KinkyDungeonRemindJailChaseDoctorChest,"That's not yours, sweetie~"
+KinkyDungeonRemindJailChaseDoctorOrb,"You shouldn't break things, you know~"
+KinkyDungeonRemindJailChaseDoctorJailbreak,"I knew something was amiss!"
+KinkyDungeonRemindJailDoctorGrab,"You won't be getting away that easily, dear~"
+KinkyDungeonRemindJailDoctorDisarm,"Won't be needing this~"
+KinkyDungeonRemindJailDoctorHit,"Hey, who said you could do that!"
+KinkyDungeonRemindJailDoctorHitPlayer,"I'm so excited!"
+KinkyDungeonRemindJailDoctorMiss,"A slippery one, aren't you?"
+KinkyDungeonRemindJailDoctorBlock,"Now now, you can't just resist like that~"
+KinkyDungeonRemindJailDoctorMissedMe,"Tsk tsk. You can do better, dear~"
+KinkyDungeonRemindJailDoctorBlockedMe,"Tsk tsk. You can do better, dear~"
+KinkyDungeonRemindJailDoctorLeash,"Lets get you back to your cell!"
+KinkyDungeonRemindJailDoctorPull,"So nice of you to join me!"
+KinkyDungeonRemindJailDoctorStun,"Now let's see, good patients should be still..."
+KinkyDungeonRemindJailDoctorPickpocket,"A gift? Thank you so much!"
+KinkyDungeonRemindJailDoctorLock,"You won't be getting out of that any time soon!"
+KinkyDungeonRemindJailDoctorIntro,"PTRN MD here. Let's see what we've got..."
 
 KinkyDungeonRemindJailPlayBratTemplate0,""
 KinkyDungeonRemindJailPlayBratTemplate1,""

@@ -281,7 +281,7 @@ function KDBasicRestraintsMachine_Player(tags, count, msg) {
 	for (let i = 0; i < count; i++) {
 		let restraint = KinkyDungeonGetRestraint({tags: tags}, 10, 'grv', false, undefined, undefined, undefined, false);
 		if (restraint) {
-			succ = KinkyDungeonAddRestraintIfWeaker(restraint, MiniGameKinkyDungeonLevel, false, undefined, undefined, undefined, undefined, "AncientRobot", true) || succ;
+			succ = KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined, undefined, undefined, undefined, "AncientRobot", true) || succ;
 		}
 	}
 	if (succ) {

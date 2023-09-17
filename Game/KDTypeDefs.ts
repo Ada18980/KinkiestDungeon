@@ -307,6 +307,8 @@ interface KDRestraintPropsBase {
 	sfxRemove?: string,
 	/** Equip sound */
 	sfx?: string,
+	/* useful for easily extending sounds */
+	sfxGroup?: string,
 	/** The vibrator will start vibing whenever another linked vibe starts */
 	linkedVibeTags?: string[],
 	vibeLocation?: string,
@@ -2542,6 +2544,38 @@ interface KDSealGroup {
 	seals: KDSeal[],
 }
 
+interface KDSFXGroup {
+	/** Sound when using an escape method*/
+	sfxEscape?: {
+		Struggle?: string,
+		Cut?: string,
+		Remove?: string,
+		Pick?: string,
+		Unlock?: string,
+		NoStamina?: string,
+		NoWill?: string,
+		NoMagic?: string,
+		MagicCut?: string,
+		PickBreak?: string,
+		KnifeBreak?: string,
+		KnifeDrop?: string,
+		KeyDrop?: string,
+		PickDrop?: string,
+	},
+	sfxFinishEscape?: {
+		Struggle?: string,
+		Cut?: string,
+		Remove?: string,
+		Pick?: string,
+		Unlock?: string,
+		Destroy?: string,
+	}
+	/** Remove sound */
+	sfxRemove?: string,
+	/** Equip sound */
+	sfx?: string,
+}
+
 interface KDSeal {
 	/** Name of the seal buff */
 	name: string,
@@ -2588,4 +2622,5 @@ type IArrayBuffer = import('pixi.js').IArrayBuffer;
 type PIXIArray = import('pixi.js').ITypedArray;
 type PIXIAdjustmentFilter = import('pixi-filters').AdjustmentFilter;
 type PIXIFilter = import('pixi.js').Filter;
+
 
