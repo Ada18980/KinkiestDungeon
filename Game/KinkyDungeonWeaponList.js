@@ -310,7 +310,7 @@ let KinkyDungeonWeapons = {
 
 	"CrossbowHeavy": {name: "CrossbowHeavy", dmg: 3.0, chance: 0.3, staminacost: 2.0, type: "crush", unarmed: false, rarity: 4, shop: true, sfx: "Miss",
 		clumsy: true,
-		crit: 2.0,
+		crit: 2.5,
 		tags: ["bow", "normalbow", "crossbow"],
 		events: [
 			{type: "Reload", trigger: "tick", requireEnergy: true, energyCost: 0.025, power: 5, color: "#ffffff", prereq: "HeavyLoad"},
