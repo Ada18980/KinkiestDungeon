@@ -368,10 +368,11 @@ function KinkyDungeonDoEnemyBlock(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 
 function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 	if (Enemy && Enemy.Enemy && (!Spell || !Spell.enemySpell) && (!Faction || Faction == "Player") && !(Enemy.rage > 0) && (!Attacker || Attacker.player || Attacker.Enemy.allied)) {
-		if ((Enemy.playWithPlayer || !KDHostile(Enemy)) && KDCanDom(Enemy)) {
+		if (Enemy.playWithPlayer && (KDCanDom(Enemy) || !KDHostile(Enemy))) {
 			KDAddThought(Enemy.id, "Embarrassed", 5, 1);
 			Enemy.distraction = (Enemy.distraction || 0) + Enemy.Enemy.maxhp * 0.1;
-			KDAddOpinion(Enemy, 10);
+			if (KDCanDom(Enemy))
+				KDAddOpinion(Enemy, 1);
 		} else {
 			if (Enemy && !Enemy.Enemy.allied) {
 				if (Enemy.vp) Enemy.vp = Math.min(2, Enemy.vp*2);
@@ -491,7 +492,7 @@ function KDArmorFormula(DamageAmount, Armor) {
 }
 
 
-function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, attacker, Delay, noAlreadyHit, noVuln) {
+function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, attacker, Delay, noAlreadyHit, noVuln, Critical) {
 	if (bullet && !noAlreadyHit) {
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
@@ -525,6 +526,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		froze: 0,
 		vulnerable: (Enemy.vulnerable || (KDHostile(Enemy) && !Enemy.aware)) && Damage && !Damage.novulnerable && (!Enemy.Enemy.tags || !Enemy.Enemy.tags.nonvulnerable),
 		vulnConsumed: false,
+		critical: Critical,
 	};
 
 	if (KDDamageEquivalencies[predata.type]) predata.bufftype = KDDamageEquivalencies[predata.type];
@@ -552,9 +554,11 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 					.replace("AMOUNT", "" + Math.round(10 * dmgBonus))
 					.replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), "lightgreen", 2);
 
+			predata.critical = true;
 
-			if (predata.dmg > 0 || predata.bind > 0)
+			if (predata.dmg > 0 || predata.bind > 0) {
 				predata.vulnConsumed = true;
+			}
 		}
 	}
 
@@ -693,7 +697,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			else if (!(Spell && Spell.hitsfx) && predata.dmgDealt > 0 && bullet) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DealDamage.ogg");
 			if (Damage && Damage.damage) {
 				if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
-					if (predata.vulnConsumed) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: {x: Enemy.x, y: Enemy.y - 0.5}, Color: "#ffff00", Delay: Delay});
+					if (predata.critical) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: {x: Enemy.x, y: Enemy.y - 0.5}, Color: "#ffff00", Delay: Delay});
 					KDDamageQueue.push({floater: Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), Entity: Enemy, Color: "#ff4444", Delay: Delay});
 				}
 				//KinkyDungeonSendFloater(Enemy, Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), "#ff4444");
@@ -1008,6 +1012,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 		Damage: Damage,
 		buffdmg: buffdmg,
 		vulnConsumed: false,
+		critical: false,
 		vulnerable: (Enemy.vulnerable || (KDHostile(Enemy) && !Enemy.aware)) && dmg && !dmg.novulnerable && (!Enemy.Enemy.tags || !Enemy.Enemy.tags.nonvulnerable),
 	};
 	KinkyDungeonSendEvent("beforePlayerAttack", predata);
@@ -1022,14 +1027,14 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 			.replace("AMOUNT", "" + Math.round(10 * dmgBonus))
 			.replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), "lightgreen", 2);
 
-
+		predata.critical = true;
 		if (dmg.damage > 0 || dmg.bind > 0)
 			predata.vulnConsumed = true;
 	}
 
 
 	let hp = Enemy.hp;
-	KinkyDungeonDamageEnemy(Enemy, (predata.eva) ? dmg : null, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, predata.vulnConsumed);
+	KinkyDungeonDamageEnemy(Enemy, (predata.eva) ? dmg : null, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, predata.vulnConsumed, predata.critical);
 	if (predata.eva && KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.sfx) {
 		if (KDToggles.Sound) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg"});
 		//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg");

@@ -1638,11 +1638,17 @@ clickFunction: (gagged, player) => {
  * @param {number} x
  * @param {number} y
  * @param {number} radius
+ * @param {boolean} [unaware]
  * @returns {entity}
  */
-function DialogueBringNearbyEnemy(x, y, radius) {
+function DialogueBringNearbyEnemy(x, y, radius, unaware) {
 	for (let e of KDMapData.Entities) {
-		if (!KDHelpless(e) && KDistChebyshev(x - e.x, y - e.y) <= radius && KinkyDungeonAggressive(e) && !KDIsImmobile(e) && !e.Enemy.tags.temporary && (!KDAIType[KDGetAI(e)]?.ambush || e.ambushtrigger)) {
+		if (!KDHelpless(e)
+			&& KDistChebyshev(x - e.x, y - e.y) <= radius
+			&& KinkyDungeonAggressive(e)
+			&& !KDIsImmobile(e) && !e.Enemy.tags.temporary
+			&& (!KDAIType[KDGetAI(e)]?.ambush || e.ambushtrigger)
+			&& (!unaware || !e.aware)) {
 			let point = KinkyDungeonNoEnemy(x, y, true) ? {x:x, y:y} : KinkyDungeonGetNearbyPoint(x, y, true);
 			if (point) {
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonDiscovered"), "#ff0000", 1);

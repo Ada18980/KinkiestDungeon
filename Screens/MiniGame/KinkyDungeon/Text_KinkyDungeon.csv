@@ -472,6 +472,8 @@ KinkyDungeonStatMC_Rogue,"Rogue"
 KinkyDungeonStatDescMC_Rogue,"Your training has given you access to the powers of the Rogue class."
 KinkyDungeonStatMC_Wizard,"Wizard"
 KinkyDungeonStatDescMC_Wizard,"Your training has given you access to the powers of the Wizard class."
+KinkyDungeonStatMC_Peasant,"Peasant"
+KinkyDungeonStatDescMC_Peasant,"You possess the agricultural mastery of the Peasant class."
 
 
 KinkyDungeonStatPanic,"Panic!!!"
@@ -4766,6 +4768,11 @@ KinkyDungeonSpellAmpuleBlue,Latex Ampule
 KinkyDungeonSpellShadowStrike,Shadowy chains appear from a rift in space!
 KinkyDungeonInfernoBurn,The roaring inferno deals 10 damage to you!
 
+KinkyDungeonSpellPeasant,The Reaping
+KinkyDungeonSpellDescriptionPeasant,"+20% damage to plants"
+
+KinkyDungeonSpellRogueTargets,"High Profile"
+KinkyDungeonSpellDescriptionRogueTargets,"Several enemies on each map will be high value, rewarding more gold and items for defeating them but increasing their strength."
 
 KinkyDungeonSpellRogueTraps,Devious Ingenuity
 KinkyDungeonSpellDescriptionRogueTraps,"Trap-type spells and consumables take 1 turn to cast instead of several."
@@ -11304,3 +11311,5 @@ KDArcaneEnergy,Arcane Energy
 
 KinkyDungeonSpellArcaneBarrier,Arcane Barrier
 KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, the shield absorbs incoming damage and consumes Arcane Energy equal to the damage absorbed. While you have Arcane Energy and this is active, you also gain Bondage Resist equal to 4x the Arcane Energy pool, to a max of +200."
+
+KinkyDungeonBuffHighValueFound,You sense that a high value target is near.

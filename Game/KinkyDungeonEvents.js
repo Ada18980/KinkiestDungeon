@@ -2356,8 +2356,44 @@ function KinkyDungeonHandleOutfitEvent(Event, e, outfit, data) {
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
  */
 let KDEventMapSpell = {
+	"postQuest": {
+		"RogueTargets": (e, spell, data) => {
+			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+			if (altType && altType.spawns === false) return;
+			// Select some enemies and make them high value
+			let eligible = [];
+			for (let enemy of KDMapData.Entities) {
+				// Avoid stuff like minor rope snakes, summons, allies, immobile stuff, bosses, and prisoners
+				if (enemy.Enemy.tags.leashing && !enemy.summoned && !enemy.lifetime && !enemy.Enemy.tags.stageBoss && !KDIsImmobile(enemy) && !KDEnemyHasFlag(enemy, "imprisoned") && !KDAllied(enemy) && (!enemy.Enemy.tags.minor || enemy.Enemy.bound)) {
+					let chance = 0.1;
+					if (!enemy.Enemy.tags.minor) {
+						chance = 0.2;
+					}
+					if (enemy.Enemy.tags.elite) {
+						chance = 0.4;
+					}
+					if (enemy.Enemy.tags.miniboss) {
+						chance = 0.7;
+					}
+					if (enemy.Enemy.tags.boss) {
+						chance = 1.0;
+					}
+					if (KDRandom() < chance) eligible.push(enemy);
+				}
+			}
+			let maxHV = Math.max(KDMapData.Entities.length * 0.1, eligible.length * 0.5);
+			for (let i = 0; i < maxHV && eligible.length > 0; i++) {
+				let index = Math.floor(KDRandom()*eligible.length);
+				let enemy = eligible[index];
+				eligible.splice(index, 1);
+
+				// Select this enemy
+				KDMakeHighValue(enemy);
+			}
+		}
+	},
 	"blockPlayer": {
-		"Riposte": (e, item, data) => {
+		"Riposte": (e, spell, data) => {
 			KinkyDungeonDamageEnemy(data.enemy, {
 				type: "stun",
 				damage: 0,
@@ -2706,6 +2742,21 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
+		"RogueTargets": (e, item, data) => {
+			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+			if (altType && altType.spawns === false) return;
+
+			let player = KinkyDungeonPlayerEntity;
+			let nearby = KDNearbyEnemies(player.x, player.y, 12);
+			for (let enemy of nearby) {
+				if (KDEntityHasBuff(enemy, "HighValue")) {
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
+						{id: "HighValueFound", type: "HighValueFound", duration: 2, power: 0, buffSprite: true, aura: "#ffff00"}
+					);
+					return;
+				}
+			}
+		},
 		"ArcaneEnergyBondageResist": (e, spell, data) => {
 			let player = KinkyDungeonPlayerEntity;
 			let buff = KDEntityGetBuff(player, spell.name + "AEBR");
@@ -2916,6 +2967,11 @@ let KDEventMapSpell = {
 				if ((!e.humanOnly || data.enemy.Enemy.bound) && (!e.chance || KDRandom() < e.chance)) {
 					data.dmg = Math.max(data.dmg * e.power, 0);
 				}
+			}
+		},
+		"Peasant": (e, spell, data) => {
+			if (data.dmg > 0 && data.enemy && data.enemy.Enemy.tags.plant) {
+				data.dmg = Math.max(data.dmg * e.mult, 0);
 			}
 		},
 		"MakeVulnerable": (e, spell, data) => {
@@ -3129,8 +3185,8 @@ let KDEventMapSpell = {
 			data.hearingMult *= e.mult;
 		},
 	},
-	/*"draw": {
-		"EnemySense": (e, spell, data) => {
+	"draw": {
+		/*"EnemySense": (e, spell, data) => {
 			let activate = false;
 			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && !KinkyDungeonPlayerBuffs.EnemySense) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell) * data.update);
@@ -3156,8 +3212,26 @@ let KDEventMapSpell = {
 				KinkyDungeonDisableSpell("EnemySense");
 				KinkyDungeonExpireBuff(KinkyDungeonPlayerBuffs, "EnemySense");
 			}
+		},*/
+		"RogueTargets": (e, spell, data) => {
+			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+			if (altType && altType.spawns === false) return;
+			for (let enemy of KDMapData.Entities) {
+				if (KDEntityHasBuff(enemy, "HighValue")
+					&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0
+					//&& KDCanSeeEnemy(enemy)
+				) {
+					KDDraw(kdcanvas, kdpixisprites, enemy.id + "_hvtarg", KinkyDungeonRootDirectory + "UI/HighValueTarget.png",
+						(enemy.visual_x - data.CamX - data.CamX_offset - 0.5) * KinkyDungeonGridSizeDisplay,
+						(enemy.visual_y - data.CamY - data.CamY_offset - 0.5) * KinkyDungeonGridSizeDisplay,
+						KinkyDungeonSpriteSize * 2, KinkyDungeonSpriteSize * 2, undefined, {
+							zIndex: 10,
+						});
+				}
+			}
+
 		},
-	},*/
+	},
 	"getLights": {
 		"Light": (e, spell, data) => {
 			let activate = false;
@@ -3258,6 +3332,11 @@ let KDEventMapSpell = {
 			if (data.enemy && data.enemy.freeze > 0 && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.enemy.playerdmg && KDHostile(data.enemy) && KDistChebyshev(data.enemy.x - KinkyDungeonPlayerEntity.x, data.enemy.y - KinkyDungeonPlayerEntity.y) < 10) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 				KinkyDungeonCastSpell(data.enemy.x, data.enemy.y, KinkyDungeonFindSpell("ShatterStrike", true), undefined, undefined, undefined);
+			}
+		},
+		"RogueTargets": (e, spell, data) => {
+			if (data.enemy && KDEntityHasBuff(data.enemy, "HighValue")) {
+				KinkyDungeonAddGold(Math.round(data.enemy.Enemy.maxhp*5));
 			}
 		}
 	},

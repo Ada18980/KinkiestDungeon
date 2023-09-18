@@ -6035,3 +6035,59 @@ function KDGetAITypeOverride(Enemy, index) {
 	if (KDAIType[AI] && KDAIType[AI].override) return KDAIType[AI].override[index];
 	return undefined;
 }
+
+/**
+ *
+ * @param {entity} enemy
+ */
+function KDMakeHighValue(enemy) {
+	KinkyDungeonApplyBuffToEntity(enemy, {
+		id: "HighValue",
+		type: "MoveSpeed",
+		power: 0.1,
+		duration: 9999,
+	});
+
+	// Hitpoint bonuses
+	let hp = Math.round(KDRandom()*10) + enemy.Enemy.maxhp * (1.5 + Math.round(KDRandom()*10)/10);
+	enemy.Enemy.maxhp = hp;
+	enemy.hp = hp;
+
+	// MS bonus
+	if (KDRandom() * 0.5) {
+		KinkyDungeonApplyBuffToEntity(enemy, {
+			id: "HighValue_MS",
+			type: "MoveSpeed",
+			power: 0.1 * Math.ceil(KDRandom()*10),
+			duration: 9999,
+		});
+	}
+
+	// AS bonus
+	if (KDRandom() * 0.5) {
+		KinkyDungeonApplyBuffToEntity(enemy, {
+			id: "HighValue_AS",
+			type: "AttackSpeed",
+			power: 0.1 * Math.ceil(KDRandom()*10),
+			duration: 9999,
+		});
+	}
+
+	// Power bonus
+	if (KDRandom() * 0.5) {
+		let power = enemy.Enemy.power + Math.round(KDRandom() * 3);
+		enemy.Enemy.power = power;
+	}
+
+	// Items
+	if (!enemy.items) enemy.items = [];
+	for (let i = Math.round(KDRandom()*2) ; i < 3; i++) {
+		enemy.items.unshift("AncientPowerSource");
+	}
+	for (let i = Math.round(KDRandom()*2) ; i < 2; i++) {
+		enemy.items.unshift("PotionMana");
+	}
+	for (let i = Math.round(KDRandom()*2) ; i < 2; i++) {
+		enemy.items.unshift("PotionWill");
+	}
+}

@@ -68,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "ManaRecharge", "ArcaneBlast", "ArcaneBarrier", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "RogueTraps", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "ManaRecharge", "ArcaneBlast", "ArcaneBarrier", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueTraps", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -142,8 +142,56 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "SummonUp1", hide: true, tags: ["upgrade"], hideLearned: true, hideUnlearnable: true, school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "SummonUp2", hide: true, tags: ["upgrade"], hideLearned: false, hideUnlearnable: true, prerequisite: "SummonUp1", school: "Any", manacost: 0, components: [], level:2, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
+
+		{name: "Athlete", tags: ["stamina", "utility"], school: "Any", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Buff", trigger: "tick", power: 0.67, buffType: "SprintEfficiency"},
+		]},
+		{name: "Sneaky", tags: ["buff", "utility"], school: "Any", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Buff", trigger: "tick", power: 0.5, prereq: "Waiting", buffType: "Sneak", mult: 1, tags: ["SlowDetection", "move", "cast"]},
+		]},
+		{name: "Evasive1", tags: ["buff", "defense"], school: "Any", spellPointCost: 1, hideLearned: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Buff", trigger: "tick", power: 0.1, buffType: "Evasion"},
+		]},
+		{name: "Evasive2", tags: ["buff", "defense"], school: "Any", spellPointCost: 1, hideLearned: true, prerequisite: "Evasive1", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Buff", trigger: "tick", power: 0.15, buffType: "Evasion"},
+		]},
+		{name: "Evasive3", tags: ["buff", "defense"], school: "Any", spellPointCost: 1, prerequisite: "Evasive2", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Buff", trigger: "tick", power: 0.25, buffType: "Evasion"},
+		]},
+		{name: "CriticalStrike", tags: ["damage", "offense", "buff"], school: "Any", spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			//{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+			//{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+			{trigger: "calcCrit", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+		]},
+		{name: "MagicalOverload", tags: ["damage", "offense", "buff"], school: "Any", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{trigger: "calcCrit", type: "MagicalOverload", prereq: "damageType", kind: "magic", power: 0.25},
+		]},
+		{name: "CriticalStrikeMagic", tags: ["damage", "offense", "buff"], school: "Any", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			//{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+			//{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+			{trigger: "calcCrit", type: "CritBoost", prereq: "damageType", kind: "magic", power: 0.5},
+		]},
+		{name: "Vault", tags: ["damage", "utility", "buff"], prerequisite: "Evasive1", school: "Any", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{trigger: "canSprint", type: "VaultBasic"},
+		]},
+		{name: "VaultAdv", tags: ["damage", "utility", "buff"], prerequisite: "Vault", school: "Any", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{trigger: "canSprint", type: "Vault"},
+		]},
 	],
 	"Special": [
+		{name: "RogueTargets", tags: ["utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "RogueTargets", trigger: "tick"},
+			{type: "RogueTargets", trigger: "postQuest"},
+			{type: "RogueTargets", trigger: "kill"},
+			{type: "RogueTargets", trigger: "draw"},
+		]},
+		{name: "RogueTraps", tags: ["utility"], school: "Special", manacost: 0, components: [], prerequisite: "RogueTargets", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "RogueTraps", trigger: "beforeCast"},
+		]},
+		{name: "Peasant", tags: ["offense"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Peasant", trigger: "beforeDamageEnemy", mult: 1.2},
+		]},
+
 		{name: "ArcaneBlast", tags: ["arcane", "offense", "aoe"], prerequisite: "ManaRegen", noise: 4.5, sfx: "Shock", castCondition: "hasArcaneEnergy",
 			effectTileDurationModTrail: 2, effectTileTrail: {
 				name: "Sparks",
@@ -883,45 +931,6 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{goToPage: 3, name: "ApprenticeProjection", tags: ["magic"], autoLearn: ["Decoy"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{goToPage: 3, name: "ApprenticeKnowledge", tags: ["magic"], autoLearn: ["TrueSteel"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
-		{name: "Athlete", tags: ["stamina", "utility"], school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "Buff", trigger: "tick", power: 0.67, buffType: "SprintEfficiency"},
-		]},
-		{name: "Sneaky", tags: ["buff", "utility"], school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "Buff", trigger: "tick", power: 0.5, prereq: "Waiting", buffType: "Sneak", mult: 1, tags: ["SlowDetection", "move", "cast"]},
-		]},
-		{name: "Evasive1", tags: ["buff", "defense"], school: "Illusion", spellPointCost: 1, hideLearned: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "Buff", trigger: "tick", power: 0.1, buffType: "Evasion"},
-		]},
-		{name: "Evasive2", tags: ["buff", "defense"], school: "Illusion", spellPointCost: 1, hideLearned: true, prerequisite: "Evasive1", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "Buff", trigger: "tick", power: 0.15, buffType: "Evasion"},
-		]},
-		{name: "Evasive3", tags: ["buff", "defense"], school: "Illusion", spellPointCost: 1, prerequisite: "Evasive2", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "Buff", trigger: "tick", power: 0.25, buffType: "Evasion"},
-		]},
-		{name: "CriticalStrike", tags: ["damage", "offense", "buff"], school: "Illusion", spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			//{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
-			//{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
-			{trigger: "calcCrit", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
-		]},
-		{name: "MagicalOverload", tags: ["damage", "offense", "buff"], school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{trigger: "calcCrit", type: "MagicalOverload", prereq: "damageType", kind: "magic", power: 0.25},
-		]},
-		{name: "CriticalStrikeMagic", tags: ["damage", "offense", "buff"], school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			//{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
-			//{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
-			{trigger: "calcCrit", type: "CritBoost", prereq: "damageType", kind: "magic", power: 0.5},
-		]},
-		{name: "Vault", tags: ["damage", "utility", "buff"], prerequisite: "Evasive1", school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{trigger: "canSprint", type: "VaultBasic"},
-		]},
-		{name: "VaultAdv", tags: ["damage", "utility", "buff"], prerequisite: "Vault", school: "Illusion", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{trigger: "canSprint", type: "Vault"},
-		]},
-
-		{name: "RogueTraps", tags: ["utility"], school: "Illusion", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "RogueTraps", trigger: "beforeCast"},
-		]},
-
 		{name: "Analyze", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 2.5, defaultOff: true, cancelAutoMove: true, costOnToggle: true, components: [], level:1, type:"passive",
 			events: [{type: "Analyze", trigger: "toggleSpell", power: 5, time: 20}, {type: "Analyze", trigger: "tick", power: 5, time: 20}]},
 
@@ -1296,29 +1305,36 @@ let KinkyDungeonSpellListEnemies = [
 
 
 	{name: "ArrowNormal", tags: ["arrowreplace"], color: "#88ff88", sfx: "Arrow", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
+		faction: "Player",
 		staminacost: 2,
 		crit: 1.5,
 		projectileTargeting:true, onhit:"", power: 2.5, delay: 0, range: 7.5, damage: "pierce", speed: 2.5},
 	{name: "ArrowRecurve", tags: ["arrowreplace"], color: "#88ff88", sfx: "Arrow", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
+		faction: "Player",
 		staminacost: 3.5,
 		crit: 1.5,
 		projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 8.5, damage: "pierce", speed: 3},
 	{name: "ArrowLongbow", tags: ["arrowreplace"], color: "#88ff88", sfx: "Arrow", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
+		faction: "Player",
 		staminacost: 6.0,
 		crit: 1.5,
 		projectileTargeting:true, onhit:"", power: 6.0, delay: 0, range: 10, damage: "pierce", speed: 3.5},
 	{name: "ArrowBolt", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
 		crit: 2.0,
+		faction: "Player",
 		projectileTargeting:true, onhit:"", power: 6.5, delay: 0, range: 10, damage: "pierce", speed: 3},
 	{name: "ArrowBoltPistol", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
 		crit: 2.0,
+		faction: "Player",
 		projectileTargeting:true, onhit:"", power: 4.5, delay: 0, range: 7.5, damage: "pierce", speed: 2.5},
 	{name: "ArrowBoltHeavy", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
 		crit: 2.5, pierceEnemies: true,
+		faction: "Player",
 		projectileTargeting:true, onhit:"", power: 7, delay: 0, range: 14, damage: "pierce", speed: 4},
 
 	{name: "ArrowFire", tags: ["arrowspecial"], color: "#ffff00", sfx: "FireSpell", landsfx: "Lightning", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
 		crit: 1.5,
+		faction: "Player",
 		effectTileDurationMod: 12, effectTile: {
 			name: "Ember",
 			duration: -4,
@@ -1326,6 +1342,7 @@ let KinkyDungeonSpellListEnemies = [
 		onhit:"aoe", power: 4, noDirectDamage: true, delay: 0, range: 7.5, aoe: 1.5, lifetime: 1, damage: "fire", speed: 2.5, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 4}},
 	{name: "ArrowVine", tags: ["arrowspecial"], color: "#55ff55", sfx: "FireSpell", landsfx: "MagicSlash", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
 		crit: 1.5,
+		faction: "Player",
 		bindType: "Vine",
 		effectTileDurationMod: 10, effectTile: {
 			name: "Vines",
