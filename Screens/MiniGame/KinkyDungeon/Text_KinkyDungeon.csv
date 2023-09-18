@@ -1203,7 +1203,7 @@ KinkyDungeonInventoryItemStaffBindDesc2,"+20% chain damage. Deals chain damage a
 
 KinkyDungeonInventoryItemArcaneCrystal,Arcane Orb
 KinkyDungeonInventoryItemArcaneCrystalDesc,"Look into my eyes..."
-KinkyDungeonInventoryItemArcaneCrystalDesc2,"Deals shadow damage. Can be used without hands. Does not benefit from enemies being vulnerable."
+KinkyDungeonInventoryItemArcaneCrystalDesc2,"Deals shadow damage. Can be used without hands. Can not critically strike."
 KinkyDungeonInventoryItemStaffFlame,Staff of Flame
 KinkyDungeonInventoryItemStaffFlameDesc,"A magical weapon made for novices to use."
 KinkyDungeonInventoryItemStaffFlameDesc2,"+15% fire damage. Deals fire damage."
@@ -1328,7 +1328,7 @@ KinkyDungeonInventoryItemTheEncaserDesc,"You can enter slime form for 25 turns, 
 KinkyDungeonInventoryItemTheEncaserDesc2,"Deals glue damage. Roots targets for 2 turns on a hit."
 KinkyDungeonInventoryItemFourSeasons,Four Seasons
 KinkyDungeonInventoryItemFourSeasonsDesc,"Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element."
-KinkyDungeonInventoryItemFourSeasonsDesc2,"Deals shadow damage. +25% fire, ice, acid, crush, electric, pressure damage."
+KinkyDungeonInventoryItemFourSeasonsDesc2,"Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage."
 KinkyDungeonInventoryItemArbiter,The Arbiter
 KinkyDungeonInventoryItemArbiterDesc,"I have altered the rules. Pray I do not alter them further."
 KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 110% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm"
@@ -3740,9 +3740,9 @@ RestraintVinePlantFeet,Ankle Vines
 RestraintVinePlantFeetDesc,"A tie keeping your feet secured together."
 RestraintVinePlantFeetDesc2,"The vines twitch as they try to wrap around tighter."
 
-RestraintWolfCuffs,Quik-Bind Cuffs
-RestraintWolfCuffsDesc,"A set of high-security cuffs that are both restrictive and quick to apply."
-RestraintWolfCuffsDesc2,"It uses a twelve-disc detainer lock."
+RestraintWolfCuffs,High-Security Cuffs
+RestraintWolfCuffsDesc,"A set of irish-8-style cuffs that are both restrictive and quick to apply."
+RestraintWolfCuffsDesc2,"It uses a standard lock rather than a simple one."
 RestraintWolfArmbinder,Wolfbinder
 RestraintWolfArmbinderDesc,"A sophisticated training system used to keep wolfgirls from scratching their owners."
 RestraintWolfArmbinderDesc2,"Despite the harsh position, it is padded, breathable, and suitable for long term wear."
@@ -4416,6 +4416,14 @@ RestraintHingedCuffs,Hinged Handcuffs
 RestraintHingedCuffsDesc,"Hinged cuffs with a rudimentary lock."
 RestraintHingedCuffsDesc2,"It's difficult to pick these, let alone unlock yourself..."
 
+RestraintIrish8Cuffs,Heavy Handcuffs
+RestraintIrish8CuffsDesc,"A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock."
+RestraintIrish8CuffsDesc2,"The position is too awkward to free yourself, even with a key..."
+
+RestraintAnkleIrish8Cuffs,Heavy Leg Irons
+RestraintAnkleIrish8CuffsDesc,"A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock."
+RestraintAnkleIrish8CuffsDesc2,"The position is awkward, but it's on your feet so you can remove them yourself if you have free hands."
+
 RestraintLegShackles,Thigh Shackles
 RestraintLegShacklesDesc,"Heavy shackles with a rudimentary lock."
 RestraintLegShacklesDesc2,"You could pick these with a hairpin."
@@ -4858,11 +4866,11 @@ KinkyDungeonSpellTargetFirebolt,Choose aim direction
 
 
 KinkyDungeonSpellWindBlast,Windblast
-KinkyDungeonSpellDescriptionWindBlast,"Three scattered puffs of wind that do DamageDealt pressure damage at close range, stun briefly, and push targets back."
+KinkyDungeonSpellDescriptionWindBlast,"Three scattered puffs of wind that do DamageDealt blast damage at close range, stun briefly, and push targets back."
 KinkyDungeonSpellCastWindBlast,You press your wrists together and conjure a blast of wind!
 KinkyDungeonSpellTargetWindBlast,Choose aim direction
 KinkyDungeonSpellGust,Gust
-KinkyDungeonSpellDescriptionGust,"Three puffs of wind in a tight cone that deal DamageDealt pressure damage and push targets back."
+KinkyDungeonSpellDescriptionGust,"Three puffs of wind in a tight cone that deal DamageDealt blast damage and push targets back."
 KinkyDungeonSpellCastGust,You exhale a mighty wind!
 KinkyDungeonSpellTargetGust,Choose aim direction
 
@@ -5329,7 +5337,7 @@ KinkyDungeonSpellSummonUp2,Many Summons
 KinkyDungeonSpellDescriptionSummonUp2,Increases the permanent summon cap by +1 (from 3 to 4)
 
 KinkyDungeonSpellBomb,Bomb
-KinkyDungeonSpellDescriptionBomb,Channel for 1 turn for a bomb that does DamageDealt fire damage in an area after DelayTime turns.
+KinkyDungeonSpellDescriptionBomb,Channel for 1 turn for a bomb that does DamageDealt blast damage in an area after DelayTime turns.
 KinkyDungeonSpellCastBomb,Fire in the hole!
 KinkyDungeonSpellTargetBomb,Choose target AoE location
 
@@ -6693,6 +6701,7 @@ KDStatusTooltipEnemyFlying,Flying
 
 KinkyDungeonDamageTypeacid,"Acid"
 KinkyDungeonDamageTypecold,"Shadow"
+KinkyDungeonDamageTypearcane,"Arcane"
 KinkyDungeonDamageTypefrost,"Ice"
 KinkyDungeonDamageTypeice,"Ice"
 KinkyDungeonDamageTypefire,"Fire"
@@ -6711,7 +6720,8 @@ KinkyDungeonDamageTypedrain,"Mana Draining"
 KinkyDungeonDamageTypeelectric,"Electric"
 KinkyDungeonDamageTypeshock,"Shock"
 KinkyDungeonDamageTypeplush,"Plush"
-KinkyDungeonDamageTypestun,"Pressure"
+KinkyDungeonDamageTypestun,"Blast"
+KinkyDungeonDamageTypeblast,"Blast"
 KinkyDungeonDamageTypechain,"Chain"
 KinkyDungeonDamageTypehappygas,"Charm"
 KinkyDungeonDamageTypeglue,"Glue"
@@ -6734,8 +6744,8 @@ KinkyDungeonHeartWill,"+Willpower"
 KinkyDungeonHeartMana,"+Magic"
 KinkyDungeonHeartDiscard,"Discard (destroys it permanently!)"
 
-KinkyDungeonVulnerable,The EnemyName is vulnerable and took an extra AMOUNT base damage!
-KinkyDungeonUnseen,The EnemyName isn't aware of you and took an extra AMOUNT base damage!
+KinkyDungeonVulnerable,You crit the vulnerable EnemyName for AMOUNT extra damage!
+KinkyDungeonUnseen,You crit the unsuspecting EnemyName for AMOUNT extra damage!
 KinkyDungeonStealPick,The enemy steals a pick from you!
 KinkyDungeonStealKnife,The enemy takes away your knife!
 KinkyDungeonStealRedKey,The enemy steals a key from your body!
@@ -11281,3 +11291,16 @@ KDRepDescriptionWill,"Ninril, Giver of Life"
 KDRepDescriptionElements,"Mata, Architect of Reality"
 KDRepDescriptionConjure,"Aether, Keeper of the Cosmos"
 KDRepDescriptionIllusion,"Oblivion, Keeper of Secrets"
+
+KinkyDungeonBuffArcaneEnergy,Arcane Energy is stored by casting spells.
+
+KinkyDungeonSpellArcaneBlast,Arcane Blast
+KinkyDungeonSpellDescriptionArcaneBlast,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. Casting this spell consumes it to deal up 25% Max Mana as Arcane damage. Pierces enemies and walls."
+KinkyDungeonSpellCastArcaneBlast,Your eyes glow as energy surges from within!
+KinkyDungeonSpellTargetArcaneBlast,Choose aim direction
+
+KDCritical,Critical Hit!
+KDArcaneEnergy,Arcane Energy
+
+KinkyDungeonSpellArcaneBarrier,Arcane Barrier
+KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, the shield absorbs incoming damage and consumes Arcane Energy equal to the damage absorbed. While you have Arcane Energy and this is active, you also gain Bondage Resist equal to 4x the Arcane Energy pool, to a max of +200."

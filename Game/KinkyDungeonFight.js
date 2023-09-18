@@ -58,6 +58,7 @@ let KDDamageEquivalencies = {
 	"souldrain": "soul",
 	"drain": "soul",
 	"shock": "electric",
+	"blast": "stun",
 };
 
 let KDDamageBinds = {
@@ -108,6 +109,7 @@ let KinkyDungeonPlayerDamage = KinkyDungeonPlayerDamageDefault;
 let KinkyDungeonDamageTypes = {
 	acid: {name: "acid", color: "#c8d45d", bg: "black"},
 	cold: {name: "cold", color: "#554bd4", bg: "black"},
+	arcane: {name: "arcane", color: "#ff5277", bg: "black"},
 	ice: {name: "ice", color: "#00D8FF", bg: "black"},
 	frost: {name: "ice", color: "#00D8FF", bg: "black"},
 	fire: {name: "fire", color: "#FF6A00", bg: "black"},
@@ -690,8 +692,10 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			if (Spell && Spell.hitsfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Spell.hitsfx + ".ogg");
 			else if (!(Spell && Spell.hitsfx) && predata.dmgDealt > 0 && bullet) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DealDamage.ogg");
 			if (Damage && Damage.damage) {
-				if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0)
+				if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
+					if (predata.vulnConsumed) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: {x: Enemy.x, y: Enemy.y - 0.5}, Color: "#ffff00", Delay: Delay});
 					KDDamageQueue.push({floater: Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), Entity: Enemy, Color: "#ff4444", Delay: Delay});
+				}
 				//KinkyDungeonSendFloater(Enemy, Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), "#ff4444");
 			}
 			//forceKill = (Enemy.hp <= Enemy.Enemy.maxhp*0.1 || Enemy.hp <= 0.52) && KDistChebyshev(Enemy.x - KinkyDungeonPlayerEntity.x, Enemy.y - KinkyDungeonPlayerEntity.y) < 1.5;

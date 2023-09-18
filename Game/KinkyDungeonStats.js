@@ -470,6 +470,8 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 		data.dmg *= KDPerkParams.KDEnemyDamageMult;
 	}
 
+	KinkyDungeonSendEvent("duringPlayerDamage", data);
+
 	if (data.teaseTypes.includes(data.type)) {
 		let amt = data.dmg;
 		if (data.bypassTeaseTypes.includes(data.type)) {

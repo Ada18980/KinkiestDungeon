@@ -499,6 +499,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		delta: 1,
 		gaggedMiscastFlag: gaggedMiscastFlag,
 		channel: spell.channel,
+		castID: KinkyDungeonGetSpellID(),
+		manacost: (!enemy && !bullet && player) ? KinkyDungeonGetManaCost(spell) : 0,
 	});
 
 
@@ -836,7 +838,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "cast_" + t, 1);
 			}
 		}
-		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+		KinkyDungeonChangeMana(-data.manacost);
 		if (spell.staminacost) KinkyDungeonChangeStamina(-spell.staminacost, false, true);
 		if (data.channel) {
 			KinkyDungeonSetFlag("channeling", data.channel);
