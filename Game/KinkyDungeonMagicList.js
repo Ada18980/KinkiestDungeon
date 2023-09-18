@@ -211,7 +211,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			events: [
 				{type: "ArcaneStore", trigger: "playerCast", always: true},
 				{type: "ArcaneEnergyBondageResist", trigger: "tick", power: 200, mult: 4},
-				{type: "ArcaneBarrier", trigger: "duringPlayerDamage", power: 1},
+				{type: "ArcaneBarrier", trigger: "duringPlayerDamage", power: 0},
 			]},
 
 
