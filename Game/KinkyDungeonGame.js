@@ -3808,10 +3808,16 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 
 		} else {
 			if (!capture) {
+				let data = {
+					target: Enemy,
+					attackCost: attackCost,
+					skipTurn: false,
+				};
+				KinkyDungeonSendEvent("beforePlayerLaunchAttack", data);
 				if (attackCost < 0 && KinkyDungeonStatsChoice.has("BerserkerRage")) {
-					KinkyDungeonChangeDistraction(0.7 - 0.5 * attackCost, false, 0.33);
+					KinkyDungeonChangeDistraction(0.7 - 0.5 * data.attackCost, false, 0.33);
 				}
-				KinkyDungeonAttackEnemy(Enemy, {
+				KinkyDungeonAttackEnemy(data.target, {
 					damage: KinkyDungeonPlayerDamage.dmg,
 					type: KinkyDungeonPlayerDamage.type,
 					distract: KinkyDungeonPlayerDamage.distract,
@@ -3823,7 +3829,8 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					novulnerable: KinkyDungeonPlayerDamage.novulnerable,
 					tease: KinkyDungeonPlayerDamage.tease});
 
-				KinkyDungeonChangeStamina(attackCost, false, 1);
+				if (data.skipTurn) skip = true;
+				KinkyDungeonChangeStamina(data.attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "attack", 1);
 			} else {
 				KinkyDungeonAggro(Enemy, undefined, KinkyDungeonPlayerEntity);

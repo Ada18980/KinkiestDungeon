@@ -1637,6 +1637,8 @@ interface spell {
 	level: number;
 	/** Whether the spell is passive (like the summon count up) or active like the bolt or toggle spells*/
 	passive?: boolean;
+	/** An active spell but it has passive effects */
+	mixedPassive?: boolean;
 	/** costOnToggle */
 	costOnToggle?: boolean;
 	/** Type of the spell */

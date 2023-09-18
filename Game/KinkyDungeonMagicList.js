@@ -68,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "ManaRecharge", "ArcaneBlast", "ArcaneBarrier", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueTraps", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "BattleRhythm", "LimitSurge", "ManaRecharge", "ArcaneBlast", "ArcaneBarrier", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueTraps", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -206,12 +206,29 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 
 
-		{name: "ArcaneBarrier", tags: ["arcane", "will", "utility"], prerequisite: "ManaRegen", hideUnlearnable: true, school: "Special", manacost: 0, components: [], defaultOff: true, level:1,
+		{name: "ArcaneBarrier", tags: ["arcane", "will", "utility"], prerequisite: "ManaRegen", hideUnlearnable: true, school: "Special", manacost: 0, components: [], level:1,
 			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "ArcaneStore", trigger: "playerCast", always: true},
 				{type: "ArcaneEnergyBondageResist", trigger: "tick", power: 200, mult: 4},
 				{type: "ArcaneBarrier", trigger: "duringPlayerDamage"},
+			]},
+
+
+		{name: "BattleRhythm", tags: ["fight", "will", "stamina"], prerequisite: "Null", hideUnlearnable: true, school: "Special", manacost: 0, components: [], level:1,
+			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "BattleRhythmStore", trigger: "beforePlayerLaunchAttack", always: true},
+				{type: "BattleRhythm", trigger: "doAttackCalculation"},
+				{type: "BREvasionBlock", trigger: "tick", mult: 0.1, power: 0.1},
+				{type: "BRDecay", trigger: "tick", power: 0.01},
+
+			]},
+
+
+		{name: "LimitSurge", tags: ["will", "stamina", "utility"], prerequisite: "BattleRhythm", hideUnlearnable: true, school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "LimitSurge", trigger: "toggleSpell", power: 5.0, mult: 1.0, time: 2},
 			]},
 
 		{name: "SecondWind0", tags: ["mana", "utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
@@ -234,7 +251,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "ManaRegenPlus2", tags: ["mana", "offense"], school: "Special", manacost: 0, components: [], prerequisite: "ManaRegen", hideWithout: "ManaRegen", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",},
 
 
-		{name: "ManaRecharge", tags: ["will", "utility"], prerequisite: "ManaRegen", hideUnlearnable: true, school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+		{name: "ManaRecharge", tags: ["will", "mana", "utility"], prerequisite: "ManaRegen", hideUnlearnable: true, school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "ManaRecharge", trigger: "toggleSpell", power: 6.0, mult: 0.5, damage: "soul", count: 2},
 			]},

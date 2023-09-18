@@ -12,6 +12,9 @@ let KDClassStart = {
 			KinkyDungeonInventoryAddLoose("Breastplate");
 		KDGameData.PreviousWeapon = "Shield";
 		KDSetWeapon("Sword");
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("BattleRhythm"));
+		KinkyDungeonSpellChoicesToggle.push(true);
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Bondage"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));

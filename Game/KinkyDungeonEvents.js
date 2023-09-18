@@ -2566,6 +2566,32 @@ let KDEventMapSpell = {
 			}
 		}
 	},
+	"doAttackCalculation": {
+		"BattleRhythm": (e, spell, data) => {
+			if (data.target?.player && data.attacker) {
+				let player = KinkyDungeonPlayerEntity;
+				let buff = KDEntityGetBuff(player, "BattleRhythm");
+				let power = KDEntityBuffedStat(player, "BattleRhythm");
+				let efficiency = KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "EfficiencyBattleRhythm"));
+				let mult = power;
+				let wouldHit = (data.EvasionRoll * data.accuracy > 1 - data.playerEvasion)
+					&& (data.BlockRoll * data.accuracy > 1 - data.playerBlock);
+				data.accuracy *= Math.max(0, 1 - mult);
+				let wouldHit2 = (data.EvasionRoll * data.accuracy > 1 - data.playerEvasion)
+					&& (data.BlockRoll * data.accuracy > 1 - data.playerBlock);
+				if (power > 0 && wouldHit && !wouldHit2 && KDGameData.AncientEnergyLevel >= (e.energyCost || 0)) {
+					if (buff) {
+						let enemyPower = (data.attacker.Enemy?.power || 1) * 0.01;
+						KinkyDungeonSendTextMessage(4, TextGet("KDBattleRhythmDodge"), "#ff8800", 2);
+						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency*enemyPower*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 3);
+						buff.power = Math.max(0, buff.power - efficiency*enemyPower);
+						if (buff.power <= 0) buff.duration = 0;
+						buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
+					}
+				}
+			}
+		},
+	},
 	"playerCast": {
 		"ArcaneStore": (e, spell, data) => {
 			if (data.spell && data.spell.name != "ArcaneBlast" && data.manacost > 0 && !KinkyDungeonFlags.get("ArcaneStore" + data.castID)) {
@@ -2768,6 +2794,29 @@ let KDEventMapSpell = {
 			} else {
 				buff.power = amount;
 				buff.duration = 2;
+			}
+		},
+		"BREvasionBlock": (e, spell, data) => {
+			let player = KinkyDungeonPlayerEntity;
+			if (KDEntityBuffedStat(player, "BattleRhythm") > e.mult) {
+				KinkyDungeonApplyBuffToEntity(player,
+					{id: spell.name + "BREvasion", type: "Evasion", duration: 2, power: e.power}
+				);
+				KinkyDungeonApplyBuffToEntity(player,
+					{id: spell.name + "BRBlock", type: "Block", duration: 2, power: e.power}
+				);
+			}
+		},
+		"BRDecay": (e, spell, data) => {
+			let player = KinkyDungeonPlayerEntity;
+			if (KDEntityBuffedStat(player, "BattleRhythm") > 0 && !KinkyDungeonFlags.get("PlayerCombat")) {
+				let buff = KDEntityGetBuff(player, "BattleRhythm");
+				if (buff) {
+					buff.power = Math.max(0, buff.power - data.delta*e.power);
+					buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.power)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 3);
+					if (buff.power == 0) buff.duration = 0;
+				}
 			}
 		},
 		"OrgasmResistBuff": (e, spell, data) => {
@@ -3093,6 +3142,43 @@ let KDEventMapSpell = {
 			}
 		},
 	},
+	"beforePlayerLaunchAttack": {
+		"BattleRhythmStore": (e, spell, data) => {
+			if (data.target && -data.attackCost > 0 && !KinkyDungeonFlags.get("BRStore" + data.target.id)) {
+				let player = KinkyDungeonPlayerEntity;
+				let buff = KDEntityGetBuff(player, "BattleRhythm");
+				let max = KinkyDungeonMultiplicativeStat(1 + KDEntityBuffedStat(player, "MaxBattleRhythm"));
+				let mult = 0.2 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(player, "MultBattleRhythm"));
+				let powerAdded = 0.1 * -data.attackCost * mult;
+				if (!buff) {
+					powerAdded = Math.min(powerAdded, max);
+					KinkyDungeonApplyBuffToEntity(player,
+						{
+							id: "BattleRhythm",
+							type: "BattleRhythm",
+							aura: "#ff8800",
+							aurasprite: "Null",
+							buffSprite: true,
+							//buffSprite: true,
+							power: powerAdded,
+							duration: 9999,
+							text: Math.round(100 * powerAdded),
+						}
+					);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round(powerAdded*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 3);
+				} else {
+					let origPower = buff.power;
+					buff.power += powerAdded;
+					buff.power = Math.min(buff.power, max);
+					buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 3);
+				}
+
+				// Set a flag to prevent duplicating this event
+				KinkyDungeonSetFlag("ArcaneStore" + data.castID, 1);
+			}
+		},
+	},
 	"playerAttack": {
 		"FlameBlade": (e, spell, data) => {
 			if (KinkyDungeonPlayerDamage && ((KinkyDungeonPlayerDamage.name && KinkyDungeonPlayerDamage.name != "Unarmed") || KinkyDungeonStatsChoice.get("Brawler")) && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.targetX && data.targetY && (data.enemy && KDHostile(data.enemy))) {
@@ -3293,6 +3379,25 @@ let KDEventMapSpell = {
 				}
 
 
+			}
+		},
+		"LimitSurge": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+				if (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax) {
+					let willPercentage = KinkyDungeonStatWill/e.power;
+					KinkyDungeonChangeWill(-e.power);
+					if (willPercentage >= 1) {
+						KinkyDungeonChangeStamina(Math.min(willPercentage, 1.0) * e.mult * KinkyDungeonStatStaminaMax);
+						KinkyDungeonSendTextMessage(5, TextGet("KDLimitSurge_Success"), "#ff8800", 10);
+					} else {
+						KinkyDungeonChangeStamina(Math.min(willPercentage, 1.0) * e.mult * KinkyDungeonStatStaminaMax);
+						KDStunTurns(e.time);
+						KinkyDungeonSendTextMessage(5, TextGet("KDLimitSurge_Fail"), "#ff5555", 10);
+					}
+				} else {
+					KinkyDungeonSendTextMessage(5, TextGet("KDLimitSurge_No"), "#ff8800", 10);
+				}
 			}
 		},
 		"Light": (e, spell, data) => {

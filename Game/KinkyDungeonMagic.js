@@ -1574,7 +1574,7 @@ function KinkyDungeonSendMagicEvent(Event, data, forceSpell) {
 	}
 	for (let i = 0; i < KinkyDungeonSpells.length; i++) {
 		let spell = KinkyDungeonSpells[i];
-		if (spell && spell.passive && spell.events) {
+		if (spell && (spell.passive) && spell.events) {
 			for (let e of spell.events) {
 				if (e.trigger == Event) {
 					KinkyDungeonHandleMagicEvent(Event, e, spell, data);

@@ -3219,7 +3219,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	// If an enemy was trying to attack the player but the player got behind them somehow, they get stunned
 	let flanked = KDCheckVulnerableBackstab(enemy);
-	if (player.player && flanked && !enemy.stun && !enemy.Enemy.tags.nosurpriseflank && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
+	if (player.player && flanked && !enemy.stun && !enemy.Enemy.tags.nosurpriseflank && !KDIsPlayerTethered(KinkyDungeonPlayerEntity) && KinkyDungeonFlags.get("teleported")) {
 		enemy.stun = 1;
 	}
 
@@ -3722,9 +3722,31 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				let eventable = KDEventableAttackTypes.some((type) => {return AIData.attack.includes(type);});
 				let dash = AIData.attack.includes("Dash");
 
-				let missed = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashMiss)) && KDRandom() * AIData.accuracy < 1 - playerEvasion;
-				let blockedAtk = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashBlock)) && KDRandom() * AIData.accuracy < 1 - playerBlock;
+				let preDataPreBlock = {
+					playerEvasion: playerEvasion,
+					playerBlock: playerBlock,
+					eventable: eventable || (dash && enemy.Enemy.Dash?.EventOnDashMiss) || (dash && enemy.Enemy.Dash?.EventOnDashMiss),
+					attack: AIData.attack,
+					enemy: enemy,
+					damagetype: AIData.damage,
+					attacker: enemy,
+					target: player,
+					hit: hit,
+					accuracy: AIData.accuracy,
+					EvasionRoll: KDRandom(),
+					BlockRoll: KDRandom(),
+				};
+				KinkyDungeonSendEvent("beforeAttackCalculation", preDataPreBlock);
+				KinkyDungeonSendEvent("doAttackCalculation", preDataPreBlock);
+
+				let missed = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashMiss)) && preDataPreBlock.EvasionRoll * preDataPreBlock.accuracy < 1 - preDataPreBlock.playerEvasion;
+				let blockedAtk = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashBlock)) && preDataPreBlock.BlockRoll * preDataPreBlock.accuracy < 1 - preDataPreBlock.playerBlock;
 				let preData = {
+					playerEvasion: preDataPreBlock.playerEvasion,
+					playerBlock: preDataPreBlock.playerBlock,
+					EvasionRoll: preDataPreBlock.EvasionRoll,
+					BlockRoll: preDataPreBlock.BlockRoll,
+					accuracy: preDataPreBlock.accuracy,
 					eventable: eventable || (dash && enemy.Enemy.Dash?.EventOnDashMiss) || (dash && enemy.Enemy.Dash?.EventOnDashMiss),
 					attack: AIData.attack,
 					enemy: enemy,
@@ -3734,6 +3756,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					missed: missed,
 					blocked: blockedAtk,
 					hit: hit,
+					preBlockData: preDataPreBlock,
 				};
 				KinkyDungeonSendEvent("beforeAttack", preData);
 
