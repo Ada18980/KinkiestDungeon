@@ -2552,7 +2552,7 @@ let KDEventMapSpell = {
 				let player = KinkyDungeonPlayerEntity;
 				let buff = KDEntityGetBuff(player, "ArcaneEnergy");
 				let amount = KDEntityBuffedStat(player, "ArcaneEnergy");
-				let efficiency = KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "EfficiencyArcaneEnergy"));
+				let efficiency = KinkyDungeonMultiplicativeStat(-(e.power + KDEntityBuffedStat(player, "EfficiencyArcaneEnergy")));
 
 				let dmgBefore = data.dmg;
 				data.dmg = Math.max(0, data.dmg - Math.max(0, amount * (e.mult || 1)));
