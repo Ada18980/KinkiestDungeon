@@ -2054,7 +2054,7 @@ let KDDialogue = {
 								}
 								KinkyDungeonRedKeys -= 1;
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
-									DialogueBringNearbyEnemy(player.x, player.y, 8);
+									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDGameData.CurrentDialogMsg = "PrisonerJailUnlockSlow";
 								} else {
 									KDGameData.CurrentDialogMsg = "PrisonerJailUnlock";
@@ -2110,7 +2110,7 @@ let KDDialogue = {
 									if (e.Enemy.tags.gagged) {
 										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
 									}
-									DialogueBringNearbyEnemy(player.x, player.y, 8);
+									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 								}
 
 							}

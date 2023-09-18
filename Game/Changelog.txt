@@ -5,7 +5,9 @@ CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1
 - Simple Locks create a Simple Key consumable in your inventory which lasts an unlimited number of uses and lets you remove simple locks
 - Many enemies now use Simple Locks instead
 - Added thumbcuffs and hinged cuffs
-- Added Arcane Blast, Arcane Barrier
+- Added Arcane Blast, Arcane Barrier to wizard class
+- Added 'The Reaping' to the peasant class
+- Added 'High Profile' to the Rogue class
 Balance
 - Can no longer get upgrades via Random Spells
 - Arbalest now pierces enemies and has 250% crit modifier
