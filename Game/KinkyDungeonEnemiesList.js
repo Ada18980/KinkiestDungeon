@@ -2395,7 +2395,7 @@ let KinkyDungeonEnemies = [
 		},
 		tags: KDMapInit(["leashing", "guardCall", "genericJailer", "dressmaker", "imprisonable", "jail", "jailer", "conjurer", "acidweakness", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "nurseRestraints"]),
 		followLeashedOnly: true, kite: 1.5, kiteChance: 0.3, followRange: 4, castWhileMoving: true, spells: ["NurseBola", "NurseSyringe"], miscastmsg: "KDBanditMiscast", miscastsfx: "Miss", stopToCast: true, spellRdy: true, noKiteWhenHarmless: true, noSpellsWhenHarmless: true, dontKiteWhenDisabled: true,
-		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 13, minLevel:0, weight:-40, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindWillLock", projectileTargeting: true,
+		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 11, minLevel:0, weight:-40, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindWillLock", projectileTargeting: true,
 		attackWidth: 1, attackRange: 1, power: 3, dmgType: "charm", fullBoundBonus: 3, focusPlayer: true, attackLock: "White",
 		terrainTags: {"secondhalf":2, "lastthird":1, "jailGuard": 50, "Guard": 50, "willAnger": 49, "willRage": 4, "ropeAnger": 3, "ropeRage": 2, "dressmaker": 50, "NoNurse": -10000}, allFloors: true, shrines: ["Will", "Rope"],
 		events: [
@@ -2421,7 +2421,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffffff"},
 		],
-		spellCooldownMult: 0.7, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 8, spellResist: 0.35, minLevel:0, weight: -12, movePoints: 2, attackPoints: 2, attack: "SpellMeleeBindLockAll", projectileAttack: true,
+		spellCooldownMult: 0.7, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 10, maxhp: 12, spellResist: 2.0, minLevel:0, weight: -12, movePoints: 2, attackPoints: 2, attack: "SpellMeleeBindLockAll", projectileAttack: true,
 		attackWidth: 1, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 3, focusPlayer: true, attackLock: "Purple",
 		terrainTags: {"secondhalf":2, "lastthird":1, "open": 10, "miniboss": -5, "dressmaker": 12, "elementsAnger": 7, "elementsRage": 5}, allFloors: true, shrines: ["Conjure", "Elements"],
 		dropTable: [{name: "ScrollArms", weight: 2}, {name: "ScrollVerbal", weight: 2}, {name: "ScrollLegs", weight: 2}, {name: "ScrollPurity", weight: 1}]},
