@@ -6,6 +6,7 @@ CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1
 - Fixed a few bugs hopefully
 - NG+ is much harder now
 - Latex elemental should no longer use cuffs
+- Trainee should be more likely to orgasm while using Mana Burst
 
 4.68 (Sep 2023)
 - Handcuffs now have Simple Locks which can be easily removed and don't consume a key after the first time
