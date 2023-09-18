@@ -972,7 +972,7 @@ function KDGetDistractionRate(delta) {
 		distractionRate = Math.max(0, distractionRate);
 	} else if (KDGameData.PlaySelfTurns < 1) distractionRate += distractionBonus;
 
-	if (distractionRate < 0 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionLower && KinkyDungeonStatDistraction + distractionRate < KinkyDungeonStatDistractionLower) {
+	if (distractionRate < 0 && KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionLower && KinkyDungeonStatDistraction + distractionRate < KinkyDungeonStatDistractionLower) {
 		distractionRate = Math.max(distractionRate, KinkyDungeonStatDistraction - KinkyDungeonStatDistractionLower);
 	}
 
