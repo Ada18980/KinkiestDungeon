@@ -2574,11 +2574,12 @@ let KDEventMapSpell = {
 				let power = KDEntityBuffedStat(player, "BattleRhythm");
 				let efficiency = KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "EfficiencyBattleRhythm"));
 				let mult = power;
-				let wouldHit = (data.EvasionRoll * data.accuracy > 1 - data.playerEvasion)
-					&& (data.BlockRoll * data.accuracy > 1 - data.playerBlock);
-				data.accuracy *= Math.max(0, 1 - mult);
-				let wouldHit2 = (data.EvasionRoll * data.accuracy > 1 - data.playerEvasion)
-					&& (data.BlockRoll * data.accuracy > 1 - data.playerBlock);
+				let wouldHit = (data.EvasionRoll * data.accuracy > data.BaseEvasion - data.playerEvasion)
+					&& (data.BlockRoll * data.accuracy > data.BaseBlock - data.playerBlock);
+				data.BaseEvasion += mult;
+				data.BaseBlock += mult;
+				let wouldHit2 = (data.EvasionRoll * data.accuracy > data.BaseEvasion - data.playerEvasion)
+					&& (data.BlockRoll * data.accuracy > data.BaseBlock - data.playerBlock);
 				if (power > 0 && wouldHit && !wouldHit2 && KDGameData.AncientEnergyLevel >= (e.energyCost || 0)) {
 					if (buff) {
 						let enemyPower = (data.attacker.Enemy?.power || 1) * 0.01;
@@ -2718,9 +2719,9 @@ let KDEventMapSpell = {
 		},
 		"DistractionCast": (e, spell, data) => {
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.99 || KinkyDungeonPlayerBuffs.DistractionCast) {
-				let tb = KinkyDungeonGetManaCost(data.spell) * 0.5;
+				let tb = KinkyDungeonGetManaCost(data.spell) * 0.6;
 				KinkyDungeonTeaseLevelBypass += tb;
-				KDGameData.OrgasmStage = Math.max((KDGameData.OrgasmStage + Math.ceil(tb)) || tb, KinkyDungeonMaxOrgasmStage);
+				KDGameData.OrgasmStage = Math.min((KDGameData.OrgasmStage + Math.ceil(tb)) || tb, KinkyDungeonMaxOrgasmStage);
 			}
 		},
 		"LightningRod": (e, spell, data) => {
