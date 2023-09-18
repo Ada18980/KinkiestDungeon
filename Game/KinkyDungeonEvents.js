@@ -5280,6 +5280,83 @@ let KDEventMapGeneric = {
 				}
 			}
 		},
+		/** For new game plus, we make the game harder by replacing basic enemies with harder ones */
+		"NGPlusReplace": (ev, data) => {
+			if (!KinkyDungeonNewGame) return;
+			let chance = 1 - (0.8**KinkyDungeonNewGame);
+			let bosschance = 1 - (0.9**KinkyDungeonNewGame);
+
+			for (let e of KDMapData.Entities) {
+				if (KDRandom() < chance && !KDEntityHasBuff(e, "HighValue")) {
+					let Enemy = null;
+					switch(e.Enemy.name) {
+						case "WitchShock": Enemy = KinkyDungeonGetEnemyByName("WitchMagnet"); break;
+						case "WitchChain": Enemy = KinkyDungeonGetEnemyByName("WitchMetal"); break;
+						case "Drone": Enemy = KinkyDungeonGetEnemyByName("CaptureBot"); break;
+						case "CaptureBot": Enemy = KinkyDungeonGetEnemyByName("Cyborg"); break;
+						case "EnforcerBot": Enemy = KinkyDungeonGetEnemyByName("BotMissile"); break;
+						case "Alchemist": Enemy = KinkyDungeonGetEnemyByName("Alkahestor"); break;
+						case "WolfgirlPet": Enemy = KinkyDungeonGetEnemyByName("WolfGuard"); break;
+						case "WolfApprentice": Enemy = KinkyDungeonGetEnemyByName("WolfOperative"); break;
+						case "WolfTapeDrones": Enemy = KinkyDungeonGetEnemyByName("WolfShieldDrone"); break;
+						case "Bandit": Enemy = KinkyDungeonGetEnemyByName("BanditHunter"); break;
+						case "BanditHunter": Enemy = KinkyDungeonGetEnemyByName("BanditGrappler"); break;
+						case "BanditGrappler": Enemy = KinkyDungeonGetEnemyByName("BanditChief"); break;
+						case "SmallSlime": Enemy = KinkyDungeonGetEnemyByName("SlimeAdv"); break;
+						case "FastSlime": Enemy = KinkyDungeonGetEnemyByName("LatexCube"); break;
+						case "LatexCubeSmall": Enemy = KinkyDungeonGetEnemyByName("LatexCubeMetal"); break;
+						case "Dragon": Enemy = KinkyDungeonGetEnemyByName("DragonShield"); break;
+						case "DragonShield": Enemy = KinkyDungeonGetEnemyByName("DragonLeader"); break;
+						case "ElementalFire": Enemy = KinkyDungeonGetEnemyByName("ElementalWater"); break;
+						case "Pixie": Enemy = KinkyDungeonGetEnemyByName("ElfRanger"); break;
+						case "Statue": Enemy = KinkyDungeonGetEnemyByName("StatueDart"); break;
+						case "SoulCrystal": Enemy = KinkyDungeonGetEnemyByName("SoulCrystalActive"); break;
+						case "ShadowHand": Enemy = KinkyDungeonGetEnemyByName("ShadowGhast"); break;
+						case "ShadowGhast": Enemy = KinkyDungeonGetEnemyByName("CorruptedAdventurer"); break;
+						case "Gag": Enemy = KinkyDungeonGetEnemyByName("AnimArmbinder"); break;
+						case "Scarves": Enemy = KinkyDungeonGetEnemyByName("MonsterRope"); break;
+						case "RopeSnake": Enemy = KinkyDungeonGetEnemyByName("ElementalRope"); break;
+						case "LearnedRope": Enemy = KinkyDungeonGetEnemyByName("ElementalLeather"); break;
+						case "Apprentice": Enemy = KinkyDungeonGetEnemyByName("WitchRope"); break;
+						case "Apprentice2": Enemy = KinkyDungeonGetEnemyByName("Conjurer"); break;
+						case "HighWizard": Enemy = KinkyDungeonGetEnemyByName("Fungal"); break;
+						case "Dressmaker": Enemy = KinkyDungeonGetEnemyByName("Librarian"); break;
+						case "Cleric": Enemy = KinkyDungeonGetEnemyByName("Mummy"); break;
+						case "BlindZombie": Enemy = KinkyDungeonGetEnemyByName("NawashiZombie"); break;
+						case "FastZombie": Enemy = KinkyDungeonGetEnemyByName("SamuraiZombie"); break;
+						case "Ninja": Enemy = KinkyDungeonGetEnemyByName("Nawashi"); break;
+						case "Maidforce": Enemy = KinkyDungeonGetEnemyByName("MaidforceStalker"); break;
+						case "MaidforcePara": Enemy = KinkyDungeonGetEnemyByName("MaidforceHead"); break;
+						case "LesserSkeleton": Enemy = KinkyDungeonGetEnemyByName("GreaterSkeleton"); break;
+						case "Skeleton": Enemy = KinkyDungeonGetEnemyByName("HeavySkeleton"); break;
+						case "OldDrone": Enemy = KinkyDungeonGetEnemyByName("OldTapeDrone"); break;
+					}
+					if (Enemy) {
+						KDSpliceIndex(KDMapData.Entities.indexOf(e), 1);
+						e.Enemy = JSON.parse(JSON.stringify(Enemy));
+						KDAddEntity(e);
+
+						if (!e.CustomName)
+							KDProcessCustomPatron(Enemy, e, 0.2);
+						KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
+						let shop = KinkyDungeonGetShopForEnemy(e, false);
+						if (shop) {
+							KinkyDungeonSetEnemyFlag(e, "Shop", -1);
+							KinkyDungeonSetEnemyFlag(e, shop, -1);
+						}
+						let loadout = KinkyDungeonGetLoadoutForEnemy(e, false);
+						KDSetLoadout(e, loadout);
+					}
+					if (KDRandom() < bosschance) {
+						e.Enemy.power *= 1.5;
+						e.Enemy.maxhp = e.Enemy.maxhp*2;
+					}
+					e.hp = e.Enemy.maxhp;
+				}
+
+
+			}
+		},
 	},
 	"hit": {
 		"StunBondage": (e, data) => {

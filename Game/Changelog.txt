@@ -4,6 +4,7 @@ CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1
 - Flanking an enemy now only stuns them if you teleport
 - Added 'Battle Rhythm' and 'Limit Surge' to the Fighter class
 - Fixed a few bugs hopefully
+- NG+ is much harder now
 
 4.68 (Sep 2023)
 - Handcuffs now have Simple Locks which can be easily removed and don't consume a key after the first time

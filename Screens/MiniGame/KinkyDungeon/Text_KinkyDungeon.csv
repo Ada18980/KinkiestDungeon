@@ -4419,7 +4419,7 @@ RestraintThumbCuffsDesc,"Interferes with the use of your hands."
 RestraintThumbCuffsDesc2,"Another layer of restriction."
 RestraintHingedCuffs,Hinged Handcuffs
 RestraintHingedCuffsDesc,"Hinged cuffs with a rudimentary lock."
-RestraintHingedCuffsDesc2,"It's difficult to pick these, let alone unlock yourself..."
+RestraintHingedCuffsDesc2,"Difficult to unlock, let alone pick by yourself."
 
 RestraintIrish8Cuffs,Heavy Handcuffs
 RestraintIrish8CuffsDesc,"A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock."
