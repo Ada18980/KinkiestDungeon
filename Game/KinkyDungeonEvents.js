@@ -2552,7 +2552,7 @@ let KDEventMapSpell = {
 				let player = KinkyDungeonPlayerEntity;
 				let buff = KDEntityGetBuff(player, "ArcaneEnergy");
 				let amount = KDEntityBuffedStat(player, "ArcaneEnergy");
-				let efficiency = KinkyDungeonMultiplicativeStat(-(e.power + KDEntityBuffedStat(player, "EfficiencyArcaneEnergy")));
+				let efficiency = KinkyDungeonMultiplicativeStat(-e.power + KDEntityBuffedStat(player, "EfficiencyArcaneEnergy"));
 
 				let dmgBefore = data.dmg;
 				data.dmg = Math.max(0, data.dmg - Math.max(0, amount * (e.mult || 1)));
@@ -2572,14 +2572,13 @@ let KDEventMapSpell = {
 				let player = KinkyDungeonPlayerEntity;
 				let buff = KDEntityGetBuff(player, "BattleRhythm");
 				let power = KDEntityBuffedStat(player, "BattleRhythm");
-				let efficiency = KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "EfficiencyBattleRhythm"));
+				let efficiency = 2.5 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(player, "EfficiencyBattleRhythm"));
 				let mult = power;
-				let wouldHit = (data.EvasionRoll * data.accuracy > data.BaseEvasion - data.playerEvasion)
-					&& (data.BlockRoll * data.accuracy > data.BaseBlock - data.playerBlock);
-				data.BaseEvasion += mult;
-				data.BaseBlock += mult;
-				let wouldHit2 = (data.EvasionRoll * data.accuracy > data.BaseEvasion - data.playerEvasion)
-					&& (data.BlockRoll * data.accuracy > data.BaseBlock - data.playerBlock);
+				let wouldHit = (data.EvasionRoll > data.BaseEvasion*KinkyDungeonMultiplicativeStat(data.accuracy - 1) - data.playerEvasion)
+					&& (data.BlockRoll > data.BaseBlock*KinkyDungeonMultiplicativeStat(data.accuracy - 1) - data.playerBlock);
+				data.accuracy = Math.max(0, data.accuracy-mult);
+				let wouldHit2 = (data.EvasionRoll > data.BaseEvasion*KinkyDungeonMultiplicativeStat(data.accuracy - 1) - data.playerEvasion)
+					&& (data.BlockRoll > data.BaseBlock*KinkyDungeonMultiplicativeStat(data.accuracy - 1) - data.playerBlock);
 				if (power > 0 && wouldHit && !wouldHit2 && KDGameData.AncientEnergyLevel >= (e.energyCost || 0)) {
 					if (buff) {
 						let enemyPower = (data.attacker.Enemy?.power || 1) * 0.01;
@@ -2634,7 +2633,7 @@ let KDEventMapSpell = {
 				let player = KinkyDungeonPlayerEntity;
 				let buff = KDEntityGetBuff(player, "ArcaneEnergy");
 				let power = KDEntityBuffedStat(player, "ArcaneEnergy");
-				let efficiency = KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "EfficiencyArcaneEnergy"));
+				let efficiency = KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(player, "EfficiencyArcaneEnergy"));
 				if (power > 0 && data.bulletfired && KDGameData.AncientEnergyLevel >= (e.energyCost || 0)) {
 					let damage = Math.min(KinkyDungeonStatManaMax * e.mult, power);
 
