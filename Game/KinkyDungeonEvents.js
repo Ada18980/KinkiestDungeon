@@ -2718,7 +2718,7 @@ let KDEventMapSpell = {
 		},
 		"DistractionCast": (e, spell, data) => {
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.99 || KinkyDungeonPlayerBuffs.DistractionCast) {
-				let tb = KinkyDungeonGetManaCost(data.spell) * 0.25;
+				let tb = KinkyDungeonGetManaCost(data.spell) * 0.5;
 				KinkyDungeonTeaseLevelBypass += tb;
 				KDGameData.OrgasmStage = Math.max((KDGameData.OrgasmStage + Math.ceil(tb)) || tb, KinkyDungeonMaxOrgasmStage);
 			}
