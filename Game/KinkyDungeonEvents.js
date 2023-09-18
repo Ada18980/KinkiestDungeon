@@ -5347,7 +5347,7 @@ let KDEventMapGeneric = {
 						let loadout = KinkyDungeonGetLoadoutForEnemy(e, false);
 						KDSetLoadout(e, loadout);
 					}
-					if (KDRandom() < bosschance) {
+					if (KDRandom() < bosschance || e.Enemy.tags.stageBoss) {
 						e.Enemy.power *= 1.5;
 						e.Enemy.maxhp = e.Enemy.maxhp*2;
 					}
