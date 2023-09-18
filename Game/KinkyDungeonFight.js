@@ -399,7 +399,7 @@ function KinkyDungeonPlayerEvasion() {
 	let playerEvasionMult = 1.0;
 	let eva = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion");
 	let playerEvasionPenalty = eva > 0 ? Math.min(eva, KDPlayerEvasionPenalty()) : 0;
-	let val = playerEvasionMult * KinkyDungeonMultiplicativeStat(eva - playerEvasionPenalty
+	let val = playerEvasionMult * KinkyDungeonMultiplicativeStat(eva * (1 - playerEvasionPenalty)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "EvasionProtected"));
 
 	return val;
@@ -409,7 +409,7 @@ function KinkyDungeonPlayerBlock() {
 	let playerBlockMult = 1.0;
 	let blk = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block");
 	let playerBlockPenalty = blk > 0 ? Math.min(blk, KDPlayerBlockPenalty()) : 0;
-	let val = playerBlockMult * KinkyDungeonMultiplicativeStat(blk - playerBlockPenalty
+	let val = playerBlockMult * KinkyDungeonMultiplicativeStat(blk * (1 - playerBlockPenalty)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BlockProtected"));
 
 	return val;
@@ -1617,7 +1617,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 			KDMapData.Bullets.push(newB);
 			KinkyDungeonUpdateSingleBulletVisual(newB, false);
 
+			KinkyDungeonSetFlag("teleported", 1);
 			KDMovePlayer(b.x, b.y, true);
+
 			//KinkyDungeonMoveTo(b.x, b.y, true);
 		}
 		if (b.bullet.effectTile) {
