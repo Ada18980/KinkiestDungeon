@@ -3645,13 +3645,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						}
 					}
 				}
-				let BaseBlock = 0.75;
-				let BaseEvasion = 0.75;
+				// Easier to evase harness grabs
+				let BaseBlock = KinkyDungeonMultiplicativeStat(0.0 + AIData.accuracy - 1);
+				let BaseEvasion = KinkyDungeonMultiplicativeStat(0.25 + AIData.accuracy - 1);
 				let playerEvasion = 1.01 * (player.player) ? KinkyDungeonPlayerEvasion()
 					: KinkyDungeonMultiplicativeStat(((player.Enemy && player.Enemy.evasion) ? player.Enemy.evasion : 0)) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(player.buffs, "Evasion"));
 				let playerBlock = 1.01 * (player.player) ? KinkyDungeonPlayerBlock()
 					: KinkyDungeonMultiplicativeStat(((player.Enemy && player.Enemy.block) ? player.Enemy.block : 0)) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(player.buffs, "Block"));
-				if (AIData.playerDist < 1.5 && player.player && AIData.attack.includes("Bind") && enemy.Enemy.bound && KDRandom() * AIData.accuracy >= BaseEvasion-playerEvasion && KDRandom() * AIData.accuracy >= BaseBlock-playerBlock && KDGameData.MovePoints > -1 && KinkyDungeonTorsoGrabCD < 1 && KinkyDungeonLastAction == "Move") {
+				if (AIData.playerDist < 1.5 && player.player && AIData.attack.includes("Bind") && enemy.Enemy.bound && KDRandom() >= BaseEvasion-playerEvasion && KDRandom() >= BaseBlock-playerBlock && KDGameData.MovePoints > -1 && KinkyDungeonTorsoGrabCD < 1 && KinkyDungeonLastAction == "Move") {
 					let caught = false;
 					for (let tile of enemy.warningTiles) {
 						if (enemy.x + tile.x == player.x && enemy.y + tile.y == player.y) {
@@ -3742,8 +3743,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				KinkyDungeonSendEvent("beforeAttackCalculation", preDataPreBlock);
 				KinkyDungeonSendEvent("doAttackCalculation", preDataPreBlock);
 
-				let missed = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashMiss)) && preDataPreBlock.EvasionRoll * preDataPreBlock.accuracy < preDataPreBlock.BaseEvasion - preDataPreBlock.playerEvasion;
-				let blockedAtk = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashBlock)) && preDataPreBlock.BlockRoll * preDataPreBlock.accuracy < preDataPreBlock.BaseBlock - preDataPreBlock.playerBlock;
+				preDataPreBlock.BaseEvasion *= KinkyDungeonMultiplicativeStat(0.0 + preDataPreBlock.accuracy - 1);
+				preDataPreBlock.BaseBlock *= KinkyDungeonMultiplicativeStat(0.0 + preDataPreBlock.accuracy - 1);
+
+				let missed = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashMiss)) && preDataPreBlock.EvasionRoll < preDataPreBlock.BaseEvasion - preDataPreBlock.playerEvasion;
+				let blockedAtk = (eventable || (dash && enemy.Enemy.Dash?.EventOnDashBlock)) && preDataPreBlock.BlockRoll < preDataPreBlock.BaseBlock - preDataPreBlock.playerBlock;
 				let preData = {
 					playerEvasion: preDataPreBlock.playerEvasion,
 					playerBlock: preDataPreBlock.playerBlock,
