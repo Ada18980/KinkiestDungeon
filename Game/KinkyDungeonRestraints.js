@@ -2986,7 +2986,7 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
 	if (restraint.bypass) bypass = true;
 	return (restraint.linkCategory && KDLinkCategorySize(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group),
 		restraint.linkCategory, ignoreItem) + KDLinkSize(restraint) <= (NoStack ? 0.1 : 1.0))
-		|| (!restraint.linkCategory
+		|| ((!restraint.linkCategory || restraint.noDupe)
 			&& !KDDynamicLinkList(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), true).some((item) => {
 				return restraint.name == item.name && ignoreItem?.id != item.id;
 			}));

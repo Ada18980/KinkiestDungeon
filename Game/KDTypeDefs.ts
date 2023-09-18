@@ -224,6 +224,8 @@ interface KDRestraintPropsBase {
 	linkCategory?: string;
 	/** Stacking size, can't exceed 1 */
 	linkSize?: number;
+	/** Even with the link size, this one can't be duplicated */
+	noDupe?: boolean;
 	/** Enemies ignore you while you are wearing it */
 	ignoreNear?: boolean,
 	/** Enemies wont cast spells or ranged attacks while you are wearing it */
@@ -1947,6 +1949,7 @@ interface KinkyDungeonSave {
 	statchoice: [string, boolean][];
 	mapIndex: Record<string, string>;
 	id: number;
+	idspell: number;
 	choices: number[];
 	choices2: boolean[];
 	buffs: Record<string, any>;

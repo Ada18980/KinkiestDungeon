@@ -665,8 +665,14 @@ function KinkyDungeonDrawInputs() {
 			let pri = 0;
 			if (b.duration) pri += Math.min(90, b.duration);
 			if (count) pri += Math.min(10, count);
+			let t = TextGet("KinkyDungeonBuff" + b.id) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ` (${b.duration})` : "");
+			if (b.buffTextReplace) {
+				for (let replace of Object.entries(b.buffTextReplace)) {
+					t = t.replace(replace[0], replace[1]);
+				}
+			}
 			statsDraw[b.id] = {
-				text: TextGet("KinkyDungeonBuff" + b.id) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ` (${b.duration})` : ""),
+				text: t,
 				count: b.text ? b.text :
 					((count ? `${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ((count ? " " : "") + `${b.duration}`) : "")),
 				icon: (KDBuffSprites[b.id] || b.buffSprite) ? "buff/buff" + b.id : undefined,

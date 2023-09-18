@@ -68,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "ManaRecharge", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "RogueTraps", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "ManaRecharge", "ArcaneBlast", "ArcaneBarrier", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "RogueTraps", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -144,6 +144,28 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 	],
 	"Special": [
+		{name: "ArcaneBlast", tags: ["arcane", "offense", "aoe"], prerequisite: "ManaRegen", noise: 4.5, sfx: "Shock", castCondition: "hasArcaneEnergy",
+			effectTileDurationModTrail: 2, effectTileTrail: {
+				name: "Sparks",
+				duration: 3,
+			},
+			events: [
+				{type: "ArcaneStore", trigger: "playerCast"},
+				{type: "ArcaneBlast", trigger: "playerCast", mult: 0.25},
+			],
+			school: "Special", manacost: 1, components: [], level:1, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 0.0, delay: 0, time: 1, range: 8, speed: 8, size: 1, damage: "arcane",
+			trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1.0},
+
+
+
+		{name: "ArcaneBarrier", tags: ["arcane", "will", "utility"], prerequisite: "ManaRegen", hideUnlearnable: true, school: "Special", manacost: 0, components: [], defaultOff: true, level:1,
+			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "ArcaneStore", trigger: "playerCast", always: true},
+				{type: "ArcaneEnergyBondageResist", trigger: "tick", power: 200, mult: 4},
+				{type: "ArcaneBarrier", trigger: "duringPlayerDamage"},
+			]},
+
 		{name: "SecondWind0", tags: ["mana", "utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "SecondWind1", tags: ["mana", "utility"], spellPointCost: 2, school: "Special", manacost: 0, components: [], prerequisite: "SecondWind0", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
@@ -473,12 +495,13 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1.0, playerEffect: {name: "Shock", time: 1}},
 		{name: "Fissure", tags: ["fire", "denial", "dot", "aoe", "offense"], noUniqueHits: true, prerequisite: "Ignite", noise: 7, sfx: "FireSpell", school: "Elements", manacost: 8, components: ["Legs"], level:1, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 5.5, delay: 0, range: 4, speed: 4, size: 1, damage: "fire",
 			trailPower: 1.5, trailLifetime: 6, piercingTrail: true, trailDamage:"fire", trail:"lingering", trailChance: 1, playerEffect: {name: "DamageNoMsg", hitTag: "Fissure", time: 1, damage:"fire", power: 3}},
-		//{name: "Shield", sfx: "MagicSlash", school: "Elements", manacost: 1, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, level:1, type:"inert", block: 10, onhit:"", power: 0, delay: 2, range: 1.5, size: 1, damage: ""}, // Creates a shield that blocks projectiles for 1 turn
+		//{name: "Shield", sfx: "MagicSlash", school: "Elements", manacost: 1, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, level:1, type:"inert", block: 10, onhit:"", power: 0,delay: 2, range: 1.5, size: 1, damage: ""}, // Creates a shield that blocks projectiles for 1 turn
 		{name: "Shield", tags: ["shield", "defense"], prerequisite: "ApprenticeEarth", sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
 			buffs: [
 				{id: "Shield", type: "SpellResist", aura: "#73efe8", duration: 50, power: 3.0, player: true, enemies: true, tags: ["defense", "damageTaken"]},
 			], onhit:"", time:50, power: 0, range: 2, size: 1, damage: ""},
-		{name: "GreaterShield", tags: ["shield", "defense", "utility"], prerequisite: "Shield", spellPointCost: 1, sfx: "MagicSlash", school: "Elements", manacost: 1, components: ["Verbal"], noTargetEnemies: true, noTargetPlayer: true, level:1, type:"inert", block: 20, onhit:"", power: 0, delay: 5, range: 2.99, size: 1, damage: ""}, // Creates a shield that blocks projectiles for 5 turns
+		{name: "GreaterShield", tags: ["shield", "defense", "utility"], prerequisite: "Shield", spellPointCost: 1, sfx: "MagicSlash", school: "Elements", manacost: 1, components: ["Verbal"],
+			noTargetEnemies: true, noTargetPlayer: true, level:1, type:"inert", block: 20, onhit:"", power: 0, delay: 5, range: 2.99, size: 1, damage: ""}, // Creates a shield that blocks projectiles for 5 turns
 		{name: "IceBreath", tags: ["ice", "denial", "offense", "utility", "aoe"], prerequisite: "Hailstorm", sfx: "MagicSlash", hitsfx: "Freeze", school: "Elements", manacost: 8,
 			upcastFrom: "Hailstorm", upcastLevel: 1,
 			components: ["Verbal"], level:1, type:"inert", onhit:"lingering", time: 1, delay: 1, range: 3, size: 3, aoe: 1.5, lifetime: 10, power: 5, lifetimeHitBonus: 5, damage: "ice"}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
@@ -571,7 +594,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			effectTileDurationMod: 7, hitSpin: 0.2, effectTile: {
 				name: "Smoke",
 				duration: -1,
-			}, type:"inert", onhit:"aoe", time: 3, delay: 5, power: 10, range: 3, size: 3, aoe: 1.5, lifetime: 1, damage: "fire", playerEffect: {name: "Damage"}, channel: 1},
+			}, type:"inert", onhit:"aoe", time: 3, delay: 5, power: 10, range: 3, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}, channel: 1},
 
 		{name: "FeatherCloud", color: "#ffffff", prerequisite: "TickleCloud", tags: ["tickle", "aoe", "dot", "offense", "utility", "denial"], noUniqueHits: true, noise: 1, landsfx: "Tickle", hitsfx: "Tickle", school: "Elements", manacost: 4,
 			components: ["Arms"], hitSpin: 0.7, bulletSpin: 0.4, level:1, type:"inert", onhit:"aoe", delay: 1, power: 2.0, distract: 6.0, range: 2.5, size: 3, aoe: 1, lifetime: 3, damage: "tickle", playerEffect: {name: "Damage"},
@@ -1951,6 +1974,9 @@ let KDCastConditions = {
 
 /** @type {Record<string, (player: entity, x: number, y: number) => boolean>} */
 let KDPlayerCastConditions = {
+	"hasArcaneEnergy": (player, x, y) => {
+		return KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ArcaneEnergy") > 0;
+	},
 	"noStationaryBullet": (player, x, y) => {
 		return !KDMapData.Bullets.some((b) => {
 			return b.x == x && b.y == y;

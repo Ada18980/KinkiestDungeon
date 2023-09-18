@@ -4502,6 +4502,12 @@ function KinkyDungeonGetEnemyID() {
 	if (KinkyDungeonEnemyID > 100000000) KinkyDungeonEnemyID = 0;
 	return KinkyDungeonEnemyID++;
 }
+// Unique ID for enemies, to prevent bullets from hitting them
+// Dont want to pass object handles around in case we ever allow saving a room
+function KinkyDungeonGetSpellID() {
+	if (KinkyDungeonSpellID > 100000000) KinkyDungeonSpellID = 0;
+	return KinkyDungeonSpellID++;
+}
 // Unique ID for items for identification reasons
 // Dont want to pass object handles around in case we ever allow saving a room
 function KinkyDungeonGetItemID() {
@@ -4510,6 +4516,7 @@ function KinkyDungeonGetItemID() {
 }
 
 let KinkyDungeonEnemyID = 1;
+let KinkyDungeonSpellID = 1;
 
 function KinkyDungeonNoEnemy(x, y, Player) {
 

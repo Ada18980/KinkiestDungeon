@@ -2510,7 +2510,81 @@ let KDEventMapSpell = {
 			if (KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax > 0.99 || KinkyDungeonPlayerBuffs.DistractionCast) data.miscastChance -= 1.0;
 		},
 	},
+	"duringPlayerDamage": {
+		"ArcaneBarrier": (e, spell, data) => {
+			if (data.dmg > 0) {
+				let player = KinkyDungeonPlayerEntity;
+				let buff = KDEntityGetBuff(player, "ArcaneEnergy");
+				let amount = KDEntityBuffedStat(player, "ArcaneEnergy");
+				let efficiency = KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "EfficiencyArcaneEnergy"));
+
+				let dmgBefore = data.dmg;
+				data.dmg = Math.max(0, data.dmg - Math.max(0, amount * (e.mult || 1)));
+
+				if (buff) {
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((dmgBefore - data.dmg)*efficiency*10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", 3);
+					buff.power = Math.max(0, buff.power - (dmgBefore - data.dmg)*efficiency);
+					if (buff.power <= 0) buff.duration = 0;
+					buff.text = Math.round(10 * KDEntityBuffedStat(player, "ArcaneEnergy"));
+				}
+			}
+		}
+	},
 	"playerCast": {
+		"ArcaneStore": (e, spell, data) => {
+			if (data.spell && data.spell.name != "ArcaneBlast" && data.manacost > 0 && !KinkyDungeonFlags.get("ArcaneStore" + data.castID)) {
+				let player = KinkyDungeonPlayerEntity;
+				let buff = KDEntityGetBuff(player, "ArcaneEnergy");
+				let max = KinkyDungeonStatManaMax + KDEntityBuffedStat(player, "MaxArcaneEnergy");
+				let mult = 0.4 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(player, "MultArcaneEnergy"));
+				let powerAdded = data.manacost * mult;
+				if (!buff) {
+					powerAdded = Math.min(powerAdded, max);
+					KinkyDungeonApplyBuffToEntity(player,
+						{
+							id: "ArcaneEnergy",
+							type: "ArcaneEnergy",
+							aura: "#8888ff",
+							aurasprite: "Null",
+							buffSprite: true,
+							//buffSprite: true,
+							power: powerAdded,
+							duration: 9999,
+							text: Math.round(10 * powerAdded),
+						}
+					);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round(powerAdded*10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", 3);
+				} else {
+					let origPower = buff.power;
+					buff.power += powerAdded;
+					buff.power = Math.min(buff.power, max);
+					buff.text = Math.round(10 * KDEntityBuffedStat(player, "ArcaneEnergy"));
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower)*10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", 3);
+				}
+
+				// Set a flag to prevent duplicating this event
+				KinkyDungeonSetFlag("ArcaneStore" + data.castID, 1);
+			}
+		},
+		"ArcaneBlast": (e, spell, data) => {
+			if (data.spell && data.spell.name == "ArcaneBlast") {
+				let player = KinkyDungeonPlayerEntity;
+				let buff = KDEntityGetBuff(player, "ArcaneEnergy");
+				let power = KDEntityBuffedStat(player, "ArcaneEnergy");
+				let efficiency = KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "EfficiencyArcaneEnergy"));
+				if (power > 0 && data.bulletfired && KDGameData.AncientEnergyLevel >= (e.energyCost || 0)) {
+					let damage = Math.min(KinkyDungeonStatManaMax * e.mult, power);
+
+					data.bulletfired.bullet.damage.damage = damage;
+					if (buff) {
+						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency*damage*10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", 3);
+						buff.power = Math.max(0, buff.power - efficiency*damage);
+						if (buff.power <= 0) buff.duration = 0;
+						buff.text = Math.round(10 * KDEntityBuffedStat(player, "ArcaneEnergy"));
+					}
+				}
+			}
+		},
 		"ArrowFireSpell": (e, spell, data) => {
 			if (data.bulletfired && data.bulletfired.bullet?.spell?.tags?.some((t) => {return e.tags.includes(t);}) && KDGameData.AncientEnergyLevel > (e.energyCost || 0)) {
 				KinkyDungeonChangeCharge((-e.energyCost || 0));
@@ -2632,6 +2706,19 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
+		"ArcaneEnergyBondageResist": (e, spell, data) => {
+			let player = KinkyDungeonPlayerEntity;
+			let buff = KDEntityGetBuff(player, spell.name + "AEBR");
+			let amount = Math.min(e.power, e.mult * KDEntityBuffedStat(player, "ArcaneEnergy"));
+			if (!buff) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
+					{id: spell.name + "AEBR", type: "RestraintBlock", duration: 2, power: amount/10}
+				);
+			} else {
+				buff.power = amount;
+				buff.duration = 2;
+			}
+		},
 		"OrgasmResistBuff": (e, spell, data) => {
 			if (!KinkyDungeonPlayerBuffs?.d_OrgasmResist)
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
