@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.69"
+KinkyDungeon,"Kinky Dungeon v4.7"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -996,6 +996,14 @@ KinkyDungeonInventoryItemWolfgirlDesc2,"No bonuses, no penalties."
 KinkyDungeonInventoryItemMaid,Maid Uniform
 KinkyDungeonInventoryItemMaidDesc,An elegant dress meant to denote a maid's status.
 KinkyDungeonInventoryItemMaidDesc2,"Massively increases accuracy against slime mold."
+
+KinkyDungeonInventoryItemBast,Harem Outfit
+KinkyDungeonInventoryItemBastDesc,A skimpy outfit with antiquated connotations.
+KinkyDungeonInventoryItemBastDesc2,"Harkening back to an old era."
+
+KinkyDungeonInventoryItemBikini,Combat Bikini
+KinkyDungeonInventoryItemBikiniDesc,A minimalist outfit designed for ease of use.
+KinkyDungeonInventoryItemBikiniDesc2,"Or perhaps it's just sexy..."
 
 KinkyDungeonInventoryItemMaidUniform,Maid Uniform
 KinkyDungeonInventoryItemMaidUniformDesc,An elegant dress meant to denote a maid's status.
@@ -3220,7 +3228,7 @@ RestraintWolfPantiesDesc2,"It's incredibly tight and difficult to remove once it
 
 KDCantEquip,"You don't meet the conditions to equip that."
 
-RestraintExpArmbinder,Latex Boxtie Binder
+RestraintExpArmbinder,Experimental Boxtie Binder
 RestraintExpArmbinderDesc,"A secure but comfortable binder meant for long-term wear by the alchemists' pets."
 RestraintExpArmbinderDesc2,"Made from imbued latex, it will be hard to cut but not impossible."
 RestraintExpArmbinderHarness,Binder Straps Cincher
@@ -3840,6 +3848,9 @@ RestraintLatexStraitjacketDesc2,"It has too much grip to struggle out of, but is
 RestraintLatexArmbinder,Latex Armbinder
 RestraintLatexArmbinderDesc,A tight armbinder that pins your arms tightly behind your back, enclosed completely.
 RestraintLatexArmbinderDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
+RestraintLatexBoxbinder,Latex Boxbinder
+RestraintLatexBoxbinderDesc,"A secure but comfortable binder meant for long-term wear."
+RestraintLatexBoxbinderDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexLegbinder,Latex Legbinder
 RestraintLatexLegbinderDesc,A tight legbinder that keeps your legs together!
 RestraintLatexLegbinderDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
@@ -4791,6 +4802,7 @@ KinkyDungeonSpellDescriptionRogueTraps,"Trap-type spells and consumables take 1 
 
 
 
+
 KinkyDungeonSpellDistractionCast,Mana Burst
 KinkyDungeonSpellDescriptionDistractionCast,"As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus..."
 
@@ -4804,7 +4816,7 @@ KinkyDungeonSpellManaRegenPlus2,Relentless Casting
 KinkyDungeonSpellDescriptionManaRegenPlus2,"Your innate mana regeneration is no longer paused after casting spells."
 
 KinkyDungeonSpellManaRecharge,Arcane Recharge
-KinkyDungeonSpellDescriptionManaRecharge,"Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 60 psychic damage to self, restores 30 mana. Can refill the mana pool."
+KinkyDungeonSpellDescriptionManaRecharge,"Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 80 psychic damage to self and drains 10% of your max Willpower to fully restore mana. Does not refill the mana pool."
 
 KinkyDungeonSpellOrgasmMana1,Way of Pleasure
 KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 25 mana, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Discipline."
@@ -5112,19 +5124,19 @@ KinkyDungeonSpellTargetShock,Choose aim direction (max range 4 tiles)
 
 KinkyDungeonSpellLightningRune,Lightning Rune
 KinkyDungeonSpellLightningRuneStrike,Lightning Rune
-KinkyDungeonSpellDescriptionLightningRune,A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 5 turns to setup.
+KinkyDungeonSpellDescriptionLightningRune,A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 3 turns to setup. 200% crit multiplier.
 KinkyDungeonSpellCastLightningRune,You conjure a charged trap!
 KinkyDungeonSpellTargetLightningRune,Choose location for trap
 
 KinkyDungeonSpellFreezeRune,Freeze Rune
 KinkyDungeonSpellFreezeRuneStrike,Freeze Rune
-KinkyDungeonSpellDescriptionFreezeRune,A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 5 turns to setup.
+KinkyDungeonSpellDescriptionFreezeRune,A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 3 turns to setup. 200% crit multiplier.
 KinkyDungeonSpellCastFreezeRune,You conjure an icy trap!
 KinkyDungeonSpellTargetFreezeRune,Choose location for trap
 
 KinkyDungeonSpellFlameRune,Flame Rune
 KinkyDungeonSpellFlameRuneStrike,Flame Rune
-KinkyDungeonSpellDescriptionFlameRune,A trap that deals DamageDealt fire damage in an area. Takes 5 turns to setup.
+KinkyDungeonSpellDescriptionFlameRune,A trap that deals DamageDealt fire damage in an area. Takes 3 turns to setup. 200% crit multiplier.
 KinkyDungeonSpellCastFlameRune,You conjure an incendiary trap!
 KinkyDungeonSpellTargetFlameRune,Choose location for trap
 
@@ -5313,7 +5325,7 @@ KinkyDungeonSpellDescriptionSlimeMimic,"While standing still on slime, or fully 
 KinkyDungeonSpellStaffUser1,Magical Implements
 KinkyDungeonSpellDescriptionStaffUser1,"While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%."
 KinkyDungeonSpellStaffUser2,Mage Circuits
-KinkyDungeonSpellDescriptionStaffUser2,"Increases the size of the passive mana pool by +100."
+KinkyDungeonSpellDescriptionStaffUser2,"Increases the size of the passive mana pool by +200."
 KinkyDungeonSpellStaffUser3,Archmage
 KinkyDungeonSpellDescriptionStaffUser3,"Upcasted spells cost 25% less mana."
 
@@ -5361,7 +5373,7 @@ KinkyDungeonSpellTargetBomb,Choose target AoE location
 
 KinkyDungeonSpellSnare,Rope Rune
 KinkyDungeonSpellRopeRuneStrike,Rope Rune
-KinkyDungeonSpellDescriptionSnare,"An AoE trap on the ground that deals 25 chain damage, roots for 8 turns, and applies 80 points of binding."
+KinkyDungeonSpellDescriptionSnare,"An AoE trap on the ground that deals 25 chain damage, roots for 8 turns, and applies 80 points of binding. Takes 3 turns to setup. 200% crit multiplier."
 KinkyDungeonSpellCastSnare,You conjure a rope trap!
 KinkyDungeonSpellTargetSnare,Choose location for trap
 
@@ -11523,7 +11535,8 @@ KDCursedChestEquip,"With a puff of magic, a NEWITM appears on your body!"
 
 KDManaRecharge_Success,"You draw upon chaotic energies, restoring mana!"
 KDManaRecharge_Mixed,"You draw upon chaotic energies, but your mind is unable to hold back the arcane forces!"
-KDManaRecharge_Fail,"The attempt to call upon chaotic energies fails."
+KDManaRecharge_Fail,"Your attempt to call upon chaotic energies fails."
+KDArcaneRecharge_No,"You are already at max mana."
 
 KDForcedOrgasmMin,"The vibrator holds at full power to drive you over the edge!"
 
@@ -11595,8 +11608,8 @@ KDRepDescriptionElements,"Mata, Architect of Reality"
 KDRepDescriptionConjure,"Aether, Keeper of the Cosmos"
 KDRepDescriptionIllusion,"Oblivion, Keeper of Secrets"
 
-KinkyDungeonBuffArcaneEnergy,Arcane Energy is stored by casting spells.
-KinkyDungeonBuffBattleRhythm,Battle Rhythm is gained by spending stamina through attacks.
+KinkyDungeonBuffArcaneEnergy,"Arcane Energy is stored by casting spells, up to 100% Max mana."
+KinkyDungeonBuffBattleRhythm,"Battle Rhythm is gained by spending stamina through attacks, up to 50 total."
 
 KinkyDungeonSpellArcaneBlast,Arcane Blast
 KinkyDungeonSpellDescriptionArcaneBlast,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. Casting this spell consumes it to deal up 25% Max Mana as Arcane damage. Pierces enemies and walls."
@@ -11616,3 +11629,30 @@ KinkyDungeonBuffHighValueFound,You sense that a high value target is near.
 KDLimitSurge_Success,You push yourself beyond physical limits!
 KDLimitSurge_Fail,You try to push yourself beyond your capabilities and falter...
 KDLimitSurge_No,You are already at max stamina.
+
+
+
+KinkyDungeonSpellRogueTraps2,Well-Placed Traps
+KinkyDungeonSpellDescriptionRogueTraps2,"Trap spells always critically strike."
+
+KinkyDungeonSpellRogueEscape,Hard to Catch
+KinkyDungeonSpellDescriptionRogueEscape,"Adjacent NPCs count as corners/hooks for purposes of escaping. After being restrained, escape speed and power is increased for 12 turns. Removed if you restrain yourself."
+
+KinkyDungeonBuffRogueEscape,Struggling is improved and escape is quicker!
+
+KinkyDungeonSpellAkashicConflux,Akashic Conflux
+KinkyDungeonSpellDescriptionAkashicConflux,"Costs 100 Arcane Energy and refunds 100 Mana. Bringing memories to life, you call upon your magical knowledge to ignore arm, leg, and verbal spell components for 3 turns."
+KinkyDungeonBuffAkashicConflux,"You can ignore Arm, Leg, and Verbal components!"
+KDAkashicConflux_Yes,"Magical whisperings circle around you, enabling you to cast spells without components!"
+KDAkashicConflux_No,"You don't have enough Arcane Energy. You need AMNT."
+
+
+KinkyDungeonSpellChaoticOverflow,Chaotic Overflow
+KinkyDungeonSpellDescriptionChaoticOverflow,"Draw upon 25% of your max Willpower to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences..."
+KDChaoticOverflow_Yes,"Chaotic energy flows through you!!!"
+KDChaoticOverflow_NoBind,"You try to call forth the chaotic energy, but it isn't interested in you anymore..."
+KDChaoticOverflow_No,"You don't have enough Willpower. You need at least 25%."
+KDChaoticOverflow_Already,"You are already full of chaotic energy!"
+KDChaoticOverflow_End,"Chaotic energy overtakes you, crystallizing into physical form..."
+
+KinkyDungeonBuffChaoticOverflow,"Chaotic energy flows through you! You have a bad feeling about this..."

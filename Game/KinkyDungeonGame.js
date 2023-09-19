@@ -2021,6 +2021,7 @@ function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, 
 							&& !shrinePoints.get((X-1) + "," + (Y-1))
 							&& !shrinePoints.get((X) + "," + (Y+1))
 							&& !shrinePoints.get((X) + "," + (Y-1))
+							&& !KinkyDungeonEnemyAt(X, Y)
 							&& !(Object.keys(KDGetEffectTiles(X, Y)).length > 0)
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y-1))
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X, Y-1))
@@ -2325,6 +2326,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 							&& !chestPoints.get((X) + "," + (Y+1))
 							&& !chestPoints.get((X) + "," + (Y-1))
 							&& !chestPoints.get((X) + "," + (Y))
+							&& !KinkyDungeonEnemyAt(X, Y)
 							&& !(Object.keys(KDGetEffectTiles(X, Y)).length > 0)
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y-1))
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X, Y-1))
@@ -3831,14 +3833,14 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 
 				if (data.skipTurn) skip = true;
 				KinkyDungeonChangeStamina(data.attackCost, false, 1);
-				KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "attack", 1);
+				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "attack", 1);
 			} else {
 				KinkyDungeonAggro(Enemy, undefined, KinkyDungeonPlayerEntity);
 				Enemy.hp = 0;
 				KinkyDungeonKilledEnemy = Enemy;
 				KinkyDungeonSendEvent("capture", {enemy: Enemy, attacker: KinkyDungeonPlayerEntity, skip: skip});
 				KinkyDungeonChangeStamina(attackCost, false, 1);
-				KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "capture", 1);
+				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "capture", 1);
 			}
 
 			KinkyDungeonLastAction = "Attack";
@@ -4103,7 +4105,7 @@ function KinkyDungeonMoveTo(moveX, moveY, willSprint, allowPass) {
 	let xx = KinkyDungeonPlayerEntity.x;
 	let yy = KinkyDungeonPlayerEntity.y;
 	if (KinkyDungeonPlayerEntity.x != moveX || KinkyDungeonPlayerEntity.y != moveY) {
-		KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "move", 1);
+		KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "move", 1);
 		stepOff = true;
 	}
 	if (xx != moveX || yy != moveY) {

@@ -714,7 +714,7 @@ function KinkyDungeonDrawInputs() {
 	let XXspacing = spriteSize + 3;
 	let YYspacing = spriteSize + 3;
 	let currCategory = "";
-	let MaxHeight = 300 + spriteSize;
+	let MaxHeight = 270 + spriteSize;
 	let ShowAll = KDToggleShowAllBuffs;
 
 	// (KDMinBuffX && MouseIn(KDMinBuffX, minYY - spriteSize, 2000, MaxHeight)) || MouseIn(minXX, minYY - spriteSize, 250, MaxHeight);

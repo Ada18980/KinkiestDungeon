@@ -1439,21 +1439,18 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("KDPerkConfig1", (bdata) => {
 			KinkyDungeonPerksConfig = "1";
 			KinkyDungeonLoadStats();
-			KDUpdatePlugSettings(true);
 			return true;
 		}, true, 270, 930, 100, 54, TextGet("KinkyDungeonConfig") + "1", KinkyDungeonPerksConfig == "1" ? "#ffffff" : "#888888", "");
 
 		DrawButtonKDEx("KDPerkConfig2", (bdata) => {
 			KinkyDungeonPerksConfig = "2";
 			KinkyDungeonLoadStats();
-			KDUpdatePlugSettings(true);
 			return true;
 		}, true, 380, 930, 100, 54, TextGet("KinkyDungeonConfig") + "2", KinkyDungeonPerksConfig == "2" ? "#ffffff" : "#888888", "");
 
 		DrawButtonKDEx("KDPerkConfig3", (bdata) => {
 			KinkyDungeonPerksConfig = "3";
 			KinkyDungeonLoadStats();
-			KDUpdatePlugSettings(true);
 			return true;
 		}, true, 490, 930, 100, 54, TextGet("KinkyDungeonConfig") + "3", KinkyDungeonPerksConfig == "3" ? "#ffffff" : "#888888", "");
 
@@ -2197,6 +2194,7 @@ function KDSendEvent(type) {
 
 function KinkyDungeonLoadStats() {
 	KinkyDungeonStatsChoice = new Map();
+	KDUpdatePlugSettings(false);
 	let statsChoice = localStorage.getItem('KinkyDungeonStatsChoice' + KinkyDungeonPerksConfig);
 	if (statsChoice) {
 		let statsArray = JSON.parse(statsChoice);
@@ -2207,6 +2205,7 @@ function KinkyDungeonLoadStats() {
 			}
 		}
 	}
+	KDUpdatePlugSettings(true);
 }
 
 let KinkyDungeonGameFlag = false;

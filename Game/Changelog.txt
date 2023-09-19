@@ -1,13 +1,22 @@
 CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1000 lines of changelogs)
 
+4.7 (Sep 2023)
+- Added some new upgrades to Rogue (Well-Placed Traps, Hard to Catch)
+- Mage Circuits now gives +200 mana pool and costs 1 spell point
+- Archmage no longer requires Mage Circuits
+- Arcane Recharge replaced with Akashic Conflux, changed to "Consume 100 Arcane Energy to gain 100 mana and ignore components for 3 turns"
+- New trainee spell: "Chaotic Overflow" - Spend 25% WP to refill mana and ignore spell components for 10 turns, but receive a crystal restraint at the end.
+- Some other formula tweaks and bugfixes
+
 4.69 (Sep 2023)
 - Flanking an enemy now only stuns them if you teleport
 - Added 'Battle Rhythm' and 'Limit Surge' to the Fighter class
-- Fixed a few bugs hopefully
 - NG+ is much harder now
 - Latex elemental should no longer use cuffs
+- Added latex boxbinder
 - Trainee should be more likely to orgasm while using Mana Burst
 - Changed accuracy formulas for enemies
+- Made enemies more picky about which types of restraints they put on you
 
 4.68 (Sep 2023)
 - Handcuffs now have Simple Locks which can be easily removed and don't consume a key after the first time

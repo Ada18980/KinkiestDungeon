@@ -85,7 +85,7 @@ let KDPlayerEffects = {
 		if (applyCurse) {
 			if (!KinkyDungeonPlayerBuffs.CursingCircle) {
 				KinkyDungeonSendTextMessage(9, TextGet("KDEpicenterCurseEffectStart"), "#8E72AA", playerEffect.time);
-				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "CursingCircle",
 					aura: "#8E72AA",
 					type: "CursingCircle",
@@ -698,7 +698,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			if (KDTestSpellHits(spell, 0, 1.0)) {
 				KinkyDungeonSendTextMessage(6, TextGet("KDPoisonDagger"), "#33ff00", 2);
 				KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
-				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "PoisonDagger", aura: "#22ff44", type: "Sleepiness", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "PoisonDagger", aura: "#22ff44", type: "Sleepiness", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
 				effect = true;
 			}
 		} else if (playerEffect.name == "SporesSick") {
@@ -707,7 +707,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			effect = true;
 		} else if (playerEffect.name == "Flummox") {
-			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "Flummox", type: "Flummox", duration: 5, power: 1.0, player: true, mushroom: true, tags: ["overlay", "darkness"]});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Flummox", type: "Flummox", duration: 5, power: 1.0, player: true, mushroom: true, tags: ["overlay", "darkness"]});
 			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonFlummox"), "#a583ff", 2);
 			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			effect = true;
@@ -825,16 +825,16 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 							KinkyDungeonPassOut();
 						} else if (KinkyDungeonPlayerBuffs[buff2.id]) {
 							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRopeEngulfEnd3"), "#ff0000", 5);
-							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
-							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
-							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff3);
+							KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
+							KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
+							KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff3);
 						}  else if (KinkyDungeonPlayerBuffs[buff1.id]) {
 							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRopeEngulfEnd2"), "#ff0000", 4);
-							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
-							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
+							KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
+							KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
 						} else {
 							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRopeEngulfEnd1"), "#ff0000", 4);
-							KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
+							KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
 						}
 					}
 
@@ -1009,7 +1009,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 		} else if (playerEffect.name == "NurseSyringe") {
 			if (KDTestSpellHits(spell, 1.0, 1.0)) {
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNurseSyringe"), "#ff0000", 8);
-				KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {id: "NurseSyringe", aura: "#22ff44", type: "Sleepiness", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "NurseSyringe", aura: "#22ff44", type: "Sleepiness", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
 				effect = true;
 			}
 		} else if (playerEffect.name == "TrapSleepDart") {
@@ -1023,7 +1023,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			KinkyDungeonSendTextMessage(4, TextGet("KDEffectDrench"), "#9999ff", 3);
 			for (let b of spell.buffs) {
 				if (b.id.includes("Drenched")) {
-					KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, b);
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, b);
 				}
 			}
 			if (spell.power > 0 && spell.damage == 'acid')
@@ -1100,18 +1100,18 @@ function KDTripleBuffKill(Name, Target, time, FinalEffect = (target) => KinkyDun
 		FinalEffect(Target);
 	} else if (KinkyDungeonPlayerBuffs[buff2.id]) {
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "3"), "#ff5555", time + 1);
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff3);
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff3);
 		ThirdEffect(Target);
 	}  else if (KinkyDungeonPlayerBuffs[buff1.id]) {
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "2"), "#ff5555", time);
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff2);
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
 		SecondEffect(Target);
 	} else {
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "1"), "#ff5555", time);
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff1);
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
 		FirstEffect(Target);
 	}
 }

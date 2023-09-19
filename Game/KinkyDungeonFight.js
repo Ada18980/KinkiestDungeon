@@ -527,6 +527,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		vulnerable: (Enemy.vulnerable || (KDHostile(Enemy) && !Enemy.aware)) && Damage && !Damage.novulnerable && (!Enemy.Enemy.tags || !Enemy.Enemy.tags.nonvulnerable),
 		vulnConsumed: false,
 		critical: Critical,
+		forceCrit: false,
 	};
 
 	if (KDDamageEquivalencies[predata.type]) predata.bufftype = KDDamageEquivalencies[predata.type];
@@ -543,9 +544,11 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		else predata.faction = "Player";
 	}
 
+	KinkyDungeonSendEvent("beforeCrit", predata);
+
 	// Only player can crit on spells
-	if (!predata.nocrit && predata.faction == "Player" && predata.type != 'heal') {
-		if (predata.vulnerable && (predata.dmg > 0.5 || predata.bind > 1)) {
+	if (!predata.nocrit && (predata.faction == "Player" || predata.forceCrit) && predata.type != 'heal') {
+		if ((predata.vulnerable && (predata.dmg > 0.5 || predata.bind > 1)) || predata.forceCrit) {
 			predata.crit = KinkyDungeonGetCrit(KDGetSpellAccuracy(), Damage, Enemy) || KDDefaultCrit;
 			let dmgBonus = predata.dmg * (predata.crit - 1);
 			predata.dmg = Math.max(0, predata.dmg + dmgBonus);
@@ -556,7 +559,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 			predata.critical = true;
 
-			if (predata.dmg > 0 || predata.bind > 0) {
+			if (!predata.forceCrit && (predata.dmg > 0 || predata.bind > 0)) {
 				predata.vulnConsumed = true;
 			}
 		}
@@ -612,12 +615,6 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 		if (damageAmp) predata.dmg *= damageAmp;
 
-		let time = predata.time ? predata.time : 0;
-		if (spellResist && !KinkyDungeonMeleeDamageTypes.includes(predata.type)) {
-			if (time)
-				time = Math.max(0, Math.ceil(time * KDArmorFormula(predata.dmg, spellResist)));
-			predata.dmg = Math.max(0, predata.dmg * KDArmorFormula(predata.dmg, spellResist));
-		}
 
 
 		if (Enemy.Enemy.tags) {
@@ -656,6 +653,12 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		let forceKill = false;
 
 
+		let time = predata.time ? predata.time : 0;
+		if (spellResist && !KinkyDungeonMeleeDamageTypes.includes(predata.type)) {
+			if (time)
+				time = Math.max(0, Math.ceil(time * KDArmorFormula(predata.dmg, spellResist)));
+			predata.dmg = Math.max(0, predata.dmg * KDArmorFormula(predata.dmg, spellResist));
+		}
 
 		if (predata.type != "inert" && resistDamage < 2) {
 			if (resistDamage == 1 || (resistStun > 0 && predata.type == "stun")) {
@@ -676,7 +679,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			if (Enemy.Enemy.tags && Enemy.Enemy.tags.playerinstakill && attacker && attacker.player) predata.dmgDealt = Enemy.hp;
 			else if (buffreduction && predata.dmgDealt > 0) {
 				predata.dmgDealt = Math.max(predata.dmgDealt - buffreduction, 0);
-				KinkyDungeonTickBuffTag(Enemy.buffs, "damageTaken", 1);
+				KinkyDungeonTickBuffTag(Enemy, "damageTaken", 1);
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Shield.ogg");
 			}
 
@@ -927,7 +930,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		KinkyDungeonAggro(Enemy, Spell, attacker, predata.faction);
 
 	if (predata.dmg > 0) {
-		KinkyDungeonTickBuffTag(Enemy.buffs, "takeDamage", 1);
+		KinkyDungeonTickBuffTag(Enemy, "takeDamage", 1);
 		KinkyDungeonSetEnemyFlag(Enemy, "wander", 0);
 	}
 
@@ -1083,10 +1086,10 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 		KinkyDungeonSleepTime = CommonTime() + 200;
 	}
 
-	KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "damage", 1);
-	KinkyDungeonTickBuffTag(Enemy.buffs, "incomingHit", 1);
+	KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "damage", 1);
+	KinkyDungeonTickBuffTag(Enemy, "incomingHit", 1);
 	if (predata.eva)
-		KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "hit", 1);
+		KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "hit", 1);
 
 
 	KinkyDungeonSendEvent("afterPlayerAttack", data);
@@ -1473,7 +1476,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 							&& (!buff.noAlly || !b.bullet.faction || KDFactionRelation(b.bullet.faction, KDGetFaction(enemy)) < 0.5)
 							&& (!buff.onlyAlly || !b.bullet.faction || KDFactionRelation(b.bullet.faction, KDGetFaction(enemy)) >= 0.5)) {
 							if (!enemy.buffs) enemy.buffs = {};
-							KinkyDungeonApplyBuff(enemy.buffs, buff);
+							KinkyDungeonApplyBuffToEntity(enemy, buff);
 						}
 					}
 				}

@@ -152,6 +152,11 @@ interface KDRestraintPropsBase {
 	events?: KinkyDungeonEvent[],
 	enemyTags?: Record<string, number>,
 	playerTags?: Record<string, number>,
+	playerTagsMult?: Record<string, number>,
+	/** Like playerTags, but applies if there is NOT the playertag */
+	playerTagsMissing?: Record<string, number>,
+	/** Like playerTags, but applies if there is NOT the playertag*/
+	playerTagsMissingMult?: Record<string, number>,
 	shrine?: string[],
 
 	debris?: string,
@@ -2501,6 +2506,14 @@ type SpecialCondition = {
 	criteria: (enemy: entity, AIData: any) => boolean,
 }
 
+type KDEventData_affinity = {
+    entity: entity;
+    forceTrue: number;
+    forceFalse: number;
+    affinity: string;
+    group: string;
+    Message: boolean;
+};
 type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
 type KDEventData_CurseCount = {restraints: {item: item, host: item}[], count: number, activatedOnly: boolean}
 

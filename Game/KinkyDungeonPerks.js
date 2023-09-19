@@ -47,19 +47,19 @@ let KDPerkIcons = {
 
 let KDPerkUpdateStats = {
 	"Rigger": () => {
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "Rigger1",
 			type: "glueDamageBuff",
 			power: KDRiggerDmgBoost,
 			duration: 2
 		});
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "Rigger2",
 			type: "chainDamageBuff",
 			power: KDRiggerDmgBoost,
 			duration: 2
 		});
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "Rigger3",
 			type: "BindAmp",
 			power: KDRiggerBindBoost,
@@ -67,52 +67,52 @@ let KDPerkUpdateStats = {
 		});
 	},
 	"Ticklish": () => {
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "Ticklish", type: "tickleDamageResist", power: -0.5, duration: 2
 		});
 	},
 	"Stoic": () => {
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "Stoic", type: "tickleDamageResist", power: 0.82, duration: 2
 		});
 	},
 	"Lascivious": () => {
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "Lascivious", type: "gropeDamageResist", power: -0.5, duration: 2
 		});
 	},
 	"Unperturbed": () => {
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "Unperturbed", type: "gropeDamageResist", power: 0.82, duration: 2
 		});
 	},
 	"PainTolerance": () => {
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "PainTolerance", type: "painDamageResist", power: 2.0, duration: 2
 		});
 	},
 	"Sticky": () => {
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "StickySituation", type: "glueDamageResist", power: -0.4, duration: 2
 		});
 	},
 	"EnemyResist": () => {
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "EnemyResist", type: "TeaseBuff", power: KDPerkParams.KDEnemyResistBuff, duration: 2
 		});
-		/*KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		/*KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "EnemyResist1", type: "soulDamageBuff", power: KDEnemyResistBuff, duration: 2
 		});
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "EnemyResist2", type: "tickleDamageBuff", power: KDEnemyResistBuff, duration: 2
 		});
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "EnemyResist3", type: "painDamageBuff", power: KDEnemyResistBuff, duration: 2
 		});
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "EnemyResist4", type: "gropeDamageBuff", power: KDEnemyResistBuff, duration: 2
 		});
-		KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "EnemyResist5", type: "charmDamageBuff", power: KDEnemyResistBuff, duration: 2
 		});*/
 	},
@@ -124,7 +124,7 @@ let KDPerkUpdateStats = {
 	},
 	"Dodge": () => {
 		if (KinkyDungeonMiscastChance < 0.001) {
-			KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "FocusedDodge", type: "Evasion", power: 0.4, duration: 1, sfxApply: "Fwoosh"
 			});
 		}
