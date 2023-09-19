@@ -755,7 +755,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			if (Math.sqrt((KinkyDungeonPlayerEntity.x - targetX) * (KinkyDungeonPlayerEntity.x - targetX) + (KinkyDungeonPlayerEntity.y - targetY) * (KinkyDungeonPlayerEntity.y - targetY)) <= aoe) {
 				for (let buff of spell.buffs) {
 					if (buff.player) {
-						KinkyDungeonApplyBuff(KinkyDungeonPlayerBuffs, buff);
+						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff);
 						if (KinkyDungeonPlayerEntity.x == targetX && KinkyDungeonPlayerEntity.y == targetY) data.target = KinkyDungeonPlayerEntity;
 						casted = true;
 					}
@@ -766,7 +766,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					for (let buff of spell.buffs) {
 						if (!spell.filterTags || KDMatchTags(spell.filterTags, e)) {
 							if (!e.buffs) e.buffs = {};
-							KinkyDungeonApplyBuff(e.buffs, buff);
+							KinkyDungeonApplyBuffToEntity(e, buff);
 							if (e.x == targetX && e.y == targetY) data.target = e;
 							casted = true;
 						}
@@ -822,7 +822,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		} else {
 			if (!spell.noAggro)
 				KinkyDungeonAggroAction('magic', {});
-			if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "cast_" + spell.school.toLowerCase(), 1);
+			if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + spell.school.toLowerCase(), 1);
 		}
 		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (data.channel ? data.channel - 1 : 0));
 		KDSendSpellCast(spell.name);
@@ -832,10 +832,10 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		//let cost = spell.staminacost ? spell.staminacost : KinkyDungeonGetCost(spell.level);
 
 		//KinkyDungeonStatWillpowerExhaustion += spell.exhaustion + 1;
-		KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "cast", 1);
+		KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast", 1);
 		if (spell.tags) {
 			for (let t of spell.tags) {
-				KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "cast_" + t, 1);
+				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + t, 1);
 			}
 		}
 		KinkyDungeonChangeMana(-data.manacost);

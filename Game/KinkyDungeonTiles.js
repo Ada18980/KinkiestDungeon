@@ -43,9 +43,9 @@ function KinkyDungeonHandleTilesEnemy(enemy, delta) {
 			let b3 = Object.assign({}, KDDrenched3);
 			b3.duration = 6;
 
-			KinkyDungeonApplyBuff(enemy.buffs, b1);
-			KinkyDungeonApplyBuff(enemy.buffs, b2);
-			KinkyDungeonApplyBuff(enemy.buffs, b3);
+			KinkyDungeonApplyBuffToEntity(enemy, b1);
+			KinkyDungeonApplyBuffToEntity(enemy, b2);
+			KinkyDungeonApplyBuffToEntity(enemy, b3);
 		}
 		*/
 	}

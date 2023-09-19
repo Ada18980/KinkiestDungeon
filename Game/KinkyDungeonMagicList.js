@@ -68,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "BattleRhythm", "LimitSurge", "ManaRecharge", "ArcaneBlast", "ArcaneBarrier", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueTraps", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast","OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "BattleRhythm", "LimitSurge", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueTraps", "RogueTraps2", "RogueEscape", "ManaRegen","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -129,6 +129,7 @@ let KinkyDungeonLearnableSpells = [
  */
 let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. When you plan to use a mystic seal, you get 3 spells to choose from.
 	"Any": [
+
 		{name: "SPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "WPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
@@ -142,6 +143,14 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "SummonUp1", hide: true, tags: ["upgrade"], hideLearned: true, hideUnlearnable: true, school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "SummonUp2", hide: true, tags: ["upgrade"], hideLearned: false, hideUnlearnable: true, prerequisite: "SummonUp1", school: "Any", manacost: 0, components: [], level:2, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
+		{name: "OrgasmResist", tags: ["will", "utility"], school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "OrgasmResistBuff", trigger: "tick"},
+				{type: "OrgasmResist", trigger: "calcInvolOrgasmChance", power: 0},
+				{type: "ChangeEdgeDrain", trigger: "calcEdgeDrain", mult: 0.3},
+				{type: "Buff", trigger: "tick", power: 1.0, buffType: "soulDamageResist"},
+				{type: "Buff", trigger: "tick", power: 1.0, buffType: "charmDamageResist"},
+			]},
 
 		{name: "Athlete", tags: ["stamina", "utility"], school: "Any", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "Buff", trigger: "tick", power: 0.67, buffType: "SprintEfficiency"},
@@ -177,6 +186,45 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "VaultAdv", tags: ["damage", "utility", "buff"], prerequisite: "Vault", school: "Any", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{trigger: "canSprint", type: "Vault"},
 		]},
+		{name: "IronWill", tags: ["will", "defense"], school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "IronWill", trigger: "calcMaxStats", power: 0.4},
+		]},
+		{name: "SteadfastGuard", tags: ["will", "defense"], school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "SteadfastGuard", trigger: "calcMaxStats", mult: 0.5, power: 5, },
+		]},
+		{name: "WillStruggle", tags: ["will", "utility"], school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "WillStruggle", mult: 0.01, power: 5, StruggleType: "Struggle", trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellWillStruggleMsg"},
+		]},
+		{name: "Riposte", tags: ["will", "offense"], school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Riposte", trigger: "blockPlayer"},
+		]},
+		{name: "Parry", tags: ["will", "defense"], school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Parry", power: 0.15, trigger: "tick"},
+		]},
+		{name: "GuardBoost", tags: ["defense"], prerequisite: "WillParry", school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "GuardBoost", trigger: "tick"},
+		]},
+		{name: "WillParry", tags: ["defense"], prerequisite: "Parry", school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "WillParry", mult: 0.01, trigger: "tick"},
+		]},
+		{name: "SteelParry", tags: ["defense"], prerequisite: "WillParry", school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "SteelParry", mult: 0.01, trigger: "tick"},
+		]},
+		{name: "DaggerParry", tags: ["defense"], prerequisite: "Parry", school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "DaggerParry", power: 0.15, trigger: "tick"},
+		]},
+		{name: "StaffUser1", tags: ["utility"], school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "StaffUser1", trigger: "afterCalcMana", power: 0.8},
+		]},
+		{name: "StaffUser2", tags: ["utility"], prerequisite: "StaffUser1", school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0.5, damage: "inert", events: [
+			{type: "IncreaseManaPool", trigger: "calcMaxStats", power: 20},
+		]},
+		{name: "ManaPoolUp", tags: ["utility"], hideUnlearnable: true, school: "Any", manacost: 0, components: [], level:2, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0.5, damage: "inert", events: [
+			{type: "IncreaseManaPool", trigger: "calcMaxStats", power: 10},
+		]},
+		{name: "StaffUser3", tags: ["utility"], prerequisite: "StaffUser1", school: "Any", manacost: 0, components: [], level:3, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "StaffUser3", trigger: "beforeMultMana", power: 0.75},
+		]},
 	],
 	"Special": [
 		{name: "RogueTargets", tags: ["utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
@@ -185,14 +233,21 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{type: "RogueTargets", trigger: "kill"},
 			{type: "RogueTargets", trigger: "draw"},
 		]},
-		{name: "RogueTraps", tags: ["utility"], school: "Special", manacost: 0, components: [], prerequisite: "RogueTargets", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+		{name: "RogueTraps", tags: ["utility"], school: "Special", manacost: 0, components: [], prerequisite: "RogueTargets", hideWithout: "RogueTargets", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "RogueTraps", trigger: "beforeCast"},
+		]},
+		{name: "RogueTraps2", tags: ["utility"], school: "Special", manacost: 0, components: [], prerequisite: "RogueTraps", hideWithout: "RogueTargets", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "RogueTraps2", trigger: "beforeCrit"},
+		]},
+		{name: "RogueEscape", tags: ["utility"], school: "Special", manacost: 0, components: [], prerequisite: "RogueTargets", hideWithout: "RogueTargets", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "RogueEscape", trigger: "postApply", power: 2, time: 12},
+			{type: "RogueEscape", trigger: "affinity", dist: 1.5},
 		]},
 		{name: "Peasant", tags: ["offense"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "Peasant", trigger: "beforeDamageEnemy", mult: 1.2},
 		]},
 
-		{name: "ArcaneBlast", tags: ["arcane", "offense", "aoe"], prerequisite: "ManaRegen", hideUnlearnable: true, noise: 4.5, sfx: "Shock", castCondition: "hasArcaneEnergy",
+		{name: "ArcaneBlast", tags: ["arcane", "offense", "aoe"], prerequisite: "ManaRegen", hideWithout: "ManaRegen", noise: 4.5, sfx: "Shock", castCondition: "hasArcaneEnergy",
 			effectTileDurationModTrail: 2, effectTileTrail: {
 				name: "Sparks",
 				duration: 3,
@@ -206,7 +261,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 
 
-		{name: "ArcaneBarrier", tags: ["arcane", "will", "utility"], prerequisite: "ManaRegen", hideUnlearnable: true, school: "Special", manacost: 0, components: [], level:1,
+		{name: "ArcaneBarrier", tags: ["arcane", "will", "utility"], prerequisite: "ManaRegen", hideWithout: "ManaRegen", school: "Special", manacost: 0, components: [], level:1,
 			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "ArcaneStore", trigger: "playerCast", always: true},
@@ -226,7 +281,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			]},
 
 
-		{name: "LimitSurge", tags: ["will", "stamina", "utility"], prerequisite: "BattleRhythm", hideUnlearnable: true, school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+		{name: "LimitSurge", tags: ["will", "stamina", "utility"], prerequisite: "BattleRhythm", hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "LimitSurge", trigger: "toggleSpell", power: 5.0, mult: 1.0, time: 2},
 			]},
@@ -251,9 +306,20 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "ManaRegenPlus2", tags: ["mana", "offense"], school: "Special", manacost: 0, components: [], prerequisite: "ManaRegen", hideWithout: "ManaRegen", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",},
 
 
-		{name: "ManaRecharge", tags: ["will", "mana", "utility"], prerequisite: "ManaRegen", hideUnlearnable: true, school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+		{name: "AkashicConflux", tags: ["will", "mana", "utility"], prerequisite: "ArcaneBlast", hideWithout: "ManaRegen", school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
-				{type: "ManaRecharge", trigger: "toggleSpell", power: 6.0, mult: 0.5, damage: "soul", count: 2},
+				{type: "ArcaneStore", trigger: "playerCast"},
+				{type: "AkashicConflux", trigger: "toggleSpell", power: 10.0, time: 3},
+			]},
+
+		{name: "ChaoticOverflow", tags: ["will", "mana", "utility"], castCondition: "requireCrystallable", prerequisite: "DistractionCast", hideWithout: "DistractionCast", school: "Special", manacost: 0, components: [], defaultOff: true, time: 10, level:1, type:"passive", onhit:"", delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "ChaoticOverflow", trigger: "toggleSpell", time: 10, mult: 0.25},
+			]},
+
+		{name: "ManaRecharge", tags: ["will", "mana", "utility"], prerequisite: "ManaRegen", hideWithout: "ManaRegen", school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "ManaRecharge", trigger: "toggleSpell", power: 8.0, mult: 0.1, damage: "soul", count: 3},
 			]},
 
 		{name: "DistractionCast", tags: ["will", "utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
@@ -282,14 +348,6 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				{type: "ChangeOrgasmStamina", trigger: "orgasm", mult: 0.1},
 				{type: "ChangeSPCost", trigger: "tryOrgasm", mult: 0.5},
 				{type: "ChangeWPCost", trigger: "tryOrgasm", mult: 0.5},
-			]},
-		{name: "OrgasmResist", tags: ["will", "utility"], school: "Special", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
-			events: [
-				{type: "OrgasmResistBuff", trigger: "tick"},
-				{type: "OrgasmResist", trigger: "calcInvolOrgasmChance", power: 0},
-				{type: "ChangeEdgeDrain", trigger: "calcEdgeDrain", mult: 0.3},
-				{type: "Buff", trigger: "tick", power: 1.0, buffType: "soulDamageResist"},
-				{type: "Buff", trigger: "tick", power: 1.0, buffType: "charmDamageResist"},
 			]},
 		{name: "EdgeMana1", tags: ["will", "utility"], school: "Special", manacost: 0, components: [], prerequisite: "DistractionCast", hideWithout: "DistractionCast", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			blockedBy: ["OrgasmMana1"], events: [
@@ -342,45 +400,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "TemperaturePlay", tags: ["fire", "ice", "offense"], prerequisite: ["ApprenticeIce", "ApprenticeFire"], school: "Elements", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "TemperaturePlay", trigger: "beforeDamageEnemy", power: 0.3},
 		]},
-		{name: "IronWill", tags: ["will", "defense"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "IronWill", trigger: "calcMaxStats", power: 0.4},
-		]},
-		{name: "SteadfastGuard", tags: ["will", "defense"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "SteadfastGuard", trigger: "calcMaxStats", mult: 0.5, power: 5, },
-		]},
-		{name: "WillStruggle", tags: ["will", "utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "WillStruggle", mult: 0.01, power: 5, StruggleType: "Struggle", trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellWillStruggleMsg"},
-		]},
-		{name: "Riposte", tags: ["will", "offense"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "Riposte", trigger: "blockPlayer"},
-		]},
-		{name: "Parry", tags: ["will", "defense"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "Parry", power: 0.15, trigger: "tick"},
-		]},
-		{name: "GuardBoost", tags: ["defense"], prerequisite: "WillParry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "GuardBoost", trigger: "tick"},
-		]},
-		{name: "WillParry", tags: ["defense"], prerequisite: "Parry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "WillParry", mult: 0.01, trigger: "tick"},
-		]},
-		{name: "SteelParry", tags: ["defense"], prerequisite: "WillParry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "SteelParry", mult: 0.01, trigger: "tick"},
-		]},
-		{name: "DaggerParry", tags: ["defense"], prerequisite: "Parry", school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "DaggerParry", power: 0.15, trigger: "tick"},
-		]},
-		{name: "StaffUser1", tags: ["utility"], school: "Elements", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "StaffUser1", trigger: "afterCalcMana", power: 0.8},
-		]},
-		{name: "StaffUser2", tags: ["utility"], prerequisite: "StaffUser1", school: "Elements", manacost: 0, components: [], level:2, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0.5, damage: "inert", events: [
-			{type: "IncreaseManaPool", trigger: "calcMaxStats", power: 10},
-		]},
-		{name: "ManaPoolUp", tags: ["utility"], hideUnlearnable: true, school: "Elements", manacost: 0, components: [], level:2, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0.5, damage: "inert", events: [
-			{type: "IncreaseManaPool", trigger: "calcMaxStats", power: 10},
-		]},
-		{name: "StaffUser3", tags: ["utility"], prerequisite: "StaffUser2", school: "Elements", manacost: 0, components: [], level:3, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "StaffUser3", trigger: "beforeMultMana", power: 0.75},
-		]},
+
 		{name: "Burning", tags: ["fire", "offense"], prerequisite: "ApprenticeFire", school: "Elements", spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "Burning", trigger: "beforeDamageEnemy", damage: "fire"},
 		]},
@@ -1253,6 +1273,7 @@ let KinkyDungeonSpellListEnemies = [
 		hitColor: 0x8888ff, hitLight: 6, components: ["Verbal"], level:1, type:"hit", noTerrainHit: true, onhit:"aoe", time: 1, delay: 1, power: 1.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
 	{name: "LightningRuneStrike", bulletColor: 0x8888ff, bulletLight: 2, tags: ["electric", "trap"],
 		hideWarnings: true,
+		crit: 2,
 		effectTileDurationMod: 2, effectTile: {
 			name: "Sparks",
 			duration: 3,
@@ -1260,9 +1281,11 @@ let KinkyDungeonSpellListEnemies = [
 		hitColor: 0x8888ff, hitLight: 6, hitsfx: "Shock", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", time: 4, delay: 300, power: 4.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
 	{name: "FlameRuneStrike", bulletColor: 0xb83716, bulletLight: 2, tags: ["fire", "trap"],
 		hideWarnings: true,
+		crit: 2,
 		hitColor: 0xe64539, hitLight: 6, hitsfx: "Lightning", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", delay: 300, power: 5.5, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "fire"},
 	{name: "RopeRuneStrike", bulletColor: 0xff73ef, bulletLight: 2, tags: ["rope", "trap"],
 		hideWarnings: true,
+		crit: 2,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Ropes",
 			duration: 20,
@@ -1272,6 +1295,7 @@ let KinkyDungeonSpellListEnemies = [
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 	{name: "FreezeRuneStrike", hitsfx: "Freeze", manacost: 2, bulletColor: 0x8888ff, bulletLight: 2, tags: ["ice", "trap"],
 		hideWarnings: true,
+		crit: 2,
 		hitColor: 0x8888ff, hitLight: 6, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", time: 30, delay: 300, power: 3.0, range: 2, size: 3, aoe: 0.5, lifetime: 1, damage: "ice"},
 	{name: "EarthformSingle", tags: ["earth", "utility", "summon"], noSprite: true, minRange: 0, landsfx: "Bones", hideUnlearnable: true, manacost: 4, components: ["Legs"], prerequisite: ["Earthform"],
 		level:1, type:"hit", onhit:"summon", summon: [{name: "EarthenMonolith", faction: "Rock" , count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: 1, range: 4, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},

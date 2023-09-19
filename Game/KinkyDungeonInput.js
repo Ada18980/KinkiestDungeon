@@ -135,6 +135,7 @@ function KDProcessInput(type, data) {
 		}
 		case "equip":
 			KDDelayedActionPrune(["Action", "Equip"]);
+			KinkyDungeonSetFlag("SelfBondage", 1);
 			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0, true, "", KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem), KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, false, data.curse, undefined, undefined, data.inventoryAs);
 			if (success != undefined) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
@@ -552,7 +553,7 @@ function KDProcessInput(type, data) {
 			break;
 		}
 		case "upcastcancel": {
-			KinkyDungeonTickBuffTag(KinkyDungeonPlayerBuffs, "upcast", 1);
+			KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "upcast", 1);
 			break;
 		}
 		case "spellLearn": {

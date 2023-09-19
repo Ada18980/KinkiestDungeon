@@ -34,15 +34,16 @@ let StruggleTypeHandThresh = {
 };
 
 
-let KDRestraintArchetypes = ["Rope", "Latex", "Ribbon", "Leather", "Cyber", "Metal"];
+let KDRestraintArchetypes = ["Rope", "Latex", "Ribbon", "Leather", "Cyber", "Metal", "Armbinders", "Boxbinders", "Straitjackets", "Legbinders"];
 
 /**
  * Returns the multiplier of a restraint based on the player's current restraint counts
  * @param {entity} player
  * @param {restraint} restraint
+ * @param {string[]} augmentedInventory
  * @returns {number} - multiplier for apparent power
  */
-function KDRestraintPowerMult(player, restraint) {
+function KDRestraintPowerMult(player, restraint, augmentedInventory) {
 	if (player != KinkyDungeonPlayerEntity) return 1;
 	if (!restraint) return 1;
 	let keyProperties = restraint.shrine.filter((element) => {return KDRestraintArchetypes.includes(element);});
@@ -56,6 +57,18 @@ function KDRestraintPowerMult(player, restraint) {
 			relatedRestraints.push(r);
 		} else {
 			opposedRestraints.push(r);
+		}
+	}
+	if (augmentedInventory) {
+		for (let name of augmentedInventory) {
+			let r = {name: name};
+			if (keyProperties.some((element) => {
+				return KDRestraint(r).shrine.includes(element);
+			})) {
+				relatedRestraints.push(r);
+			} else {
+				opposedRestraints.push(r);
+			}
 		}
 	}
 	let maxMult = 2;
@@ -1014,9 +1027,27 @@ let KDAffinityList = ["Hook", "Edge", "Sticky", "Sharp"];
  *
  * @param {boolean} Message - Show a message?
  * @param {string} affinity
+ * @param {string} [group]
+ * @param {string} [entity]
  * @returns {boolean}
  */
-function KinkyDungeonGetAffinity(Message, affinity, group) {
+function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
+	if (!entity) entity = KinkyDungeonPlayerEntity;
+	/**
+	 * @param {KDEventData_affinity} data
+	*/
+	let data = {
+		forceTrue: 0,
+		forceFalse: 0,
+		affinity: affinity,
+		group: group,
+		Message: Message,
+		entity: entity,
+	};
+	KinkyDungeonSendEvent("affinity", data);
+	if (data.forceFalse > 0 && data.forceFalse >= data.forceTrue) return false;
+	if (data.forceTrue > 0) return true;
+
 	let effectTiles = KDGetEffectTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 	let groupIsHigh = !group || (
 		group.startsWith("ItemM")
@@ -2255,7 +2286,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 			// Pass block
 			let progress = restraint.cutProgress ? restraint.cutProgress : 0;
-			let struggleTime = KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 : KDStruggleTime;
+			let struggleTime = KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 : Math.max(1, KDStruggleTime - KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "FastStruggle"));
 			if (KinkyDungeonStatsChoice.get("FranticStruggle")) data.cost *= 1.5;
 
 			if (((StruggleType == "Cut" && progress >= 1 - data.escapeChance)
@@ -2565,10 +2596,11 @@ let KDNoOverrideTags = [
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {string} [curse] - Going to add this curse
  * @param {boolean} [useAugmented] - useAugmented
+ * @param {string[]} [augmentedInventory]
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns {{restraint: restraint, weight: number}[]}
  */
-function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, filterEps = 0.9, minWeightFallback = true, useAugmented = false) {
+function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, filterEps = 0.9, minWeightFallback = true, useAugmented = false, augmentedInventory = undefined) {
 	let RestraintsList = [];
 
 	if (KinkyDungeonStatsChoice.has("NoWayOut")) RequireWill = false;
@@ -2638,11 +2670,19 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 		}
 		if ((!LeashingOnly || (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints"))
 			&& (!RequireWill || !restraint.maxwill || willPercent <= restraint.maxwill || (LeashingOnly && (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints"))))
-			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse)) {
+			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse, augmentedInventory)) {
 				if (restraint.playerTags)
 					for (let tag in restraint.playerTags)
-						if ((!agnostic || !KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) r.w += restraint.playerTags[tag];
-
+						if ((!agnostic || KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) r.w += restraint.playerTags[tag];
+				if (restraint.playerTagsMult)
+					for (let tag in restraint.playerTagsMult)
+						if ((!agnostic || KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) r.w *= restraint.playerTagsMult[tag];
+				if (restraint.playerTagsMissing)
+					for (let tag in restraint.playerTagsMissing)
+						if ((!agnostic || KDNoOverrideTags.includes(tag)) && !KinkyDungeonPlayerTags.get(tag)) r.w += restraint.playerTagsMissing[tag];
+				if (restraint.playerTagsMissingMult)
+					for (let tag in restraint.playerTagsMissingMult)
+						if ((!agnostic || KDNoOverrideTags.includes(tag)) && !KinkyDungeonPlayerTags.get(tag)) r.w *= restraint.playerTagsMissingMult[tag];
 				if (r.w > 0 && (r.w > filterEps))
 					RestraintsList.push({
 						restraint: restraint,
@@ -2654,7 +2694,7 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 	if (minWeightFallback && RestraintsList.length == 0) {
 		return KDGetRestraintsEligible(
 			enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack,
-			extraTags, agnostic, filter, securityEnemy, curse, 0, false, useAugmented);
+			extraTags, agnostic, filter, securityEnemy, curse, 0, false, useAugmented, augmentedInventory);
 	}
 
 	return RestraintsList;
@@ -2675,14 +2715,15 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {string} [curse] - Planning to add this curse
  * @param {boolean} [useAugmented] - useAugmented
+ * @param {string[]} [augmentedInventory] -
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns
  */
-function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, useAugmented) {
+function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, useAugmented, augmentedInventory) {
 	let restraintWeightTotal = 0;
 	let restraintWeights = [];
 
-	let Restraints = KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, undefined, undefined, useAugmented);
+	let Restraints = KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, undefined, undefined, useAugmented, augmentedInventory);
 
 	for (let rest of Restraints) {
 		let restraint = rest.restraint;
@@ -2845,9 +2886,10 @@ function KDGetLockVisual(item) {
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {boolean} [useAugmentedPower] - Bypass is treated separately for these groups
  * @param {string} [curse] - Bypass is treated separately for these groups
+ * @param {string[]} [augmentedInventory]
  * @returns {boolean} - Restraint can be added
  */
-function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpower, securityEnemy, useAugmentedPower, curse) {
+function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpower, securityEnemy, useAugmentedPower, curse, augmentedInventory) {
 	if (!curse && restraint.curse) curse = restraint.curse;
 	if (restraint.bypass) Bypass = true;
 	// Limits
@@ -2871,7 +2913,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 		if (!pass) return false;
 	}
 	if (!r) r = KinkyDungeonGetRestraintItem(restraint.Group);
-	let power = KinkyDungeonRestraintPower(r, false, restraint) * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint) : 1);
+	let power = KinkyDungeonRestraintPower(r, false, restraint) * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1);
 	let linkUnder = KDGetLinkUnder(r, restraint, Bypass, NoStack, Deep, securityEnemy);
 
 	let linkableCurrent = r && KDRestraint(r) && KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
@@ -2883,7 +2925,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	while (link && !linkableCurrent) {
 		let linkableUnder = KinkyDungeonLinkableAndStricter(KDRestraint(link), restraint, link);
 		if (!linkableUnder) {
-			power = Math.max(power, KinkyDungeonRestraintPower(link, false, restraint) * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint) : 1));
+			power = Math.max(power, KinkyDungeonRestraintPower(link, false, restraint) * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1));
 			link = link.dynamicLink;
 		} else {
 			link = null;
@@ -2898,7 +2940,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 		|| linkableCurrent
 		// We are weak enough to override
 		|| (!KDRestraint(r).enchanted
-			&& (!noOverpower && power < restraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint) : 1) * KinkyDungeonGetLockMult(newLock, undefined, curse)))
+			&& (!noOverpower && power < restraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1) * KinkyDungeonGetLockMult(newLock, undefined, curse)))
 	) {
 		if (bypasses())
 			return true; // Recursion!!
@@ -3006,13 +3048,14 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {boolean} [useAugmentedPower] - Augment power to keep consistency
  * @param {string} [inventoryAs] - inventoryAs for the item
+ * @param {string[]} [augmentedInventory]
  * @param {Record<string, any>} [data] - data for the item
  * @returns {number}
  */
-function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs, data) {
+function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs, data, augmentedInventory) {
 	if (typeof restraint === "string") restraint = KinkyDungeonGetRestraintByName(restraint);
 	if (restraint.bypass) Bypass = true;
-	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep, false, securityEnemy, (useAugmentedPower == undefined && securityEnemy != undefined) || useAugmentedPower, Curse)) {
+	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep, false, securityEnemy, (useAugmentedPower == undefined && securityEnemy != undefined) || useAugmentedPower, Curse, augmentedInventory)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
 		let linkUnder = null;
 		linkUnder = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy);
