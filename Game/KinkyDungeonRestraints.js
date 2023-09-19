@@ -62,12 +62,14 @@ function KDRestraintPowerMult(player, restraint, augmentedInventory) {
 	if (augmentedInventory) {
 		for (let name of augmentedInventory) {
 			let r = {name: name};
-			if (keyProperties.some((element) => {
-				return KDRestraint(r).shrine.includes(element);
-			})) {
-				relatedRestraints.push(r);
-			} else {
-				opposedRestraints.push(r);
+			if (KDRestraint(r)) {
+				if (keyProperties.some((element) => {
+					return KDRestraint(r).shrine.includes(element);
+				})) {
+					relatedRestraints.push(r);
+				} else {
+					opposedRestraints.push(r);
+				}
 			}
 		}
 	}
@@ -2597,10 +2599,12 @@ let KDNoOverrideTags = [
  * @param {string} [curse] - Going to add this curse
  * @param {boolean} [useAugmented] - useAugmented
  * @param {string[]} [augmentedInventory]
+ * @param {object} [options]
+ * @param {boolean} [options.dontAugmentWeight]
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns {{restraint: restraint, weight: number}[]}
  */
-function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, filterEps = 0.9, minWeightFallback = true, useAugmented = false, augmentedInventory = undefined) {
+function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, filterEps = 0.9, minWeightFallback = true, useAugmented = false, augmentedInventory = undefined, options) {
 	let RestraintsList = [];
 
 	if (KinkyDungeonStatsChoice.has("NoWayOut")) RequireWill = false;
@@ -2643,12 +2647,19 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 			if (!restraint.arousalMode || arousalMode) {
 				let enabled = false;
 				let weight = restraint.weight;
-				for (let t of tags.keys())
+				for (let t of tags.keys()) {
 					if (restraint.enemyTags[t] != undefined) {
 						weight += restraint.enemyTags[t];
 						enabled = true;
 					}
+					if (restraint.enemyTagsMult && restraint.enemyTagsMult[t] != undefined) {
+						weight *= restraint.enemyTagsMult[t];
+					}
+				}
 				if (enabled) {
+					if (!(options?.dontAugmentWeight === false)) {
+						weight *= KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory);
+					}
 					cache.push({r: restraint, w:weight});
 				}
 			}
@@ -2716,14 +2727,16 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
  * @param {string} [curse] - Planning to add this curse
  * @param {boolean} [useAugmented] - useAugmented
  * @param {string[]} [augmentedInventory] -
+ * @param {object} [options]
+ * @param {boolean} [options.dontAugmentWeight]
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns
  */
-function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, useAugmented, augmentedInventory) {
+function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, useAugmented, augmentedInventory, options) {
 	let restraintWeightTotal = 0;
 	let restraintWeights = [];
 
-	let Restraints = KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, undefined, undefined, useAugmented, augmentedInventory);
+	let Restraints = KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, undefined, undefined, useAugmented, augmentedInventory, options);
 
 	for (let rest of Restraints) {
 		let restraint = rest.restraint;
@@ -4013,6 +4026,9 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 			/** @type {Record<string, number>} */
 			let enemyTags = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
+			/** @type {Record<string, number>} */
+			let enemyTagsMult = {};
+			enemyTagsMult[tagBase + (part[1].enemyTagSuffix || "")] = 1;
 			let shrine = Object.assign(KDGetRestraintTags(origRestraint), allTag);
 			for (let t of removeTag) {
 				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);
@@ -4023,6 +4039,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 				power: origRestraint.power + basePower,
 				shrine: shrine,
 				enemyTags: enemyTags,
+				enemyTagsMult: enemyTagsMult,
 				events: Object.assign(Object.assign([], origRestraint.events), extraEvents),
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : undefined,

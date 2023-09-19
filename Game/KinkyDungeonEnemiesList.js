@@ -1597,6 +1597,10 @@ let KinkyDungeonEnemies = [
 		visionRadius: 7, maxhp: 8, minLevel:0, weight:-1, movePoints: 1.5, attackPoints: 3, attack: "SpellMeleeWillBindLock", attackWidth: 1, attackRange: 1, power: 2, dmgType: "pain", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":2, "thirdhalf":1, "open": 1, "elementsAnger": 12, "elementsRage": 6, "temple": 5, "elemental": 6}, allFloors: true, shrines: ["Elements", "Metal"],
 		attackLock: "White",
+		RestraintFilter: {
+			bonusRestraints: 1,
+			requiredItems: ["ObsidianArmCuffs"],
+		},
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}, {name: "EarthRune", weight: 1}],
 		events: [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Ember", time: 3, power: 2, chance: 0.2, aoe: 1.5},
@@ -1607,6 +1611,9 @@ let KinkyDungeonEnemies = [
 		spells: ["IceSlowPrepare"], spellCooldownMult: 1, spellCooldownMod: 1, followLeashedOnly: true, noSpellLeashing: true, spellRdy: true, projectileTargeting: true,
 		visionRadius: 7, maxhp: 8, minLevel:3, weight:-2, movePoints: 1.5, attackPoints: 3, attack: "SpellMeleeWillBindLockAll", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2, multiBind: 2,
 		terrainTags: {"secondhalf":1, "thirdhalf":1, "open": 1, "elementsAnger": 8, "elementsRage": 3, "temple": 6, "elemental": 6, "ice": 4}, allFloors: true, shrines: ["Elements"], attackLock: "Purple",
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
 		events: [
 			{trigger: "afterEnemyTick", type: "createIce", power: 1, chance: 1.0, aoe: 1.0},
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#00ffff"},
@@ -1617,6 +1624,10 @@ let KinkyDungeonEnemies = [
 		visionRadius: 7, maxhp: 12, minLevel:3, weight:-2, movePoints: 1.5, followLeashedOnly: true, projectileTargeting: true,
 		attackPoints: 3, attack: "MeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 5, dmgType: "charm", pullTowardSelf: true, pullDist: 2, pullMsg: true,
 		attackLock: "Purple",
+		RestraintFilter: {
+			bonusRestraints: 1,
+			requiredItems: ["LatexArmbinder", "LatexStraitjacket", "LatexBoxbinder"],
+		},
 		terrainTags: {"secondhalf":1, "thirdhalf":1, "open": 1, "elementsAnger": 8, "elementsRage": 3, "illusionAnger": 2, "latexAnger": 2, "temple": 5, "elemental": 4, "water": 4}, allFloors: true, shrines: ["Elements"],
 		events: [{trigger: "afterEnemyTick", type: "createWater", power: 2, chance: 1.0, aoe: 0.5}],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "WaterRune", weight: 2}]},
@@ -1625,6 +1636,10 @@ let KinkyDungeonEnemies = [
 		specialCD: 15, specialAttack: "Dash", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4, specialMinrange: 1.5, specialsfx: "Miss", castWhileMoving: true, dashThruWalls: true,
 		spells: ["ArmorUp", "Earthfield"], spellCooldownMult: 1, spellCooldownMod: 14, followLeashedOnly: true, spellRdy: true,
 		attackLock: "White",
+		RestraintFilter: {
+			bonusRestraints: 2,
+			requiredItems: ["LatexArmbinder", "LatexStraitjacket", "LatexBoxbinder"],
+		},
 		visionRadius: 7, maxhp: 12, minLevel:7, weight:-2, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":1, "thirdhalf":2, "elementsAnger": 12, "elementsRage": 6, "temple": 6, "elemental": 4, "earth": 4}, allFloors: true, shrines: ["Elements", "Metal"],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "EarthRune", weight: 3}],
@@ -1634,6 +1649,10 @@ let KinkyDungeonEnemies = [
 		specialCD: 5, specialAttack: "Dash", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 3, specialMinrange: 1.5, specialsfx: "Miss", castWhileMoving: true, dashThruWalls: true, dashThrough: true,
 		spells: ["AreaElectrify"], spellCooldownMult: 1, spellCooldownMod: 3, followLeashedOnly: true, disarm: 1, noSpellLeashing: true, spellRdy: true, noChannel: true,
 		attackLock: "White",
+		RestraintFilter: {
+			bonusRestraints: 2,
+			requiredItems: ["ObsidianArmCuffs"],
+		},
 		visionRadius: 7, maxhp: 12, minLevel:4, weight:-2, movePoints: 1, attackPoints: 2, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 3,
 		terrainTags: {"secondhalf":1, "thirdhalf":2, "elementsAnger": 12, "elementsRage": 6, "temple": 5, "elemental": 4, "electric": 4, "air": 4}, allFloors: true, shrines: ["Elements", "Latex"],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]},
@@ -2078,7 +2097,10 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["rope"],
 		},
-		visionRadius: 6, maxhp: 15, minLevel:3, weight:-2, movePoints: 1.5, attackPoints: 3, attack: "MeleeBind", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 2.5, dmgType: "chain", fullBoundBonus: 2.5,
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		visionRadius: 6, maxhp: 12, minLevel:0, weight:-2, movePoints: 1.5, attackPoints: 3, attack: "MeleeBind", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 2.5, dmgType: "chain", fullBoundBonus: 2.5,
 		terrainTags: {"secondhalf":2, "thirdhalf":1, "ropeAnger": 4, "ropeRage": 4, "temple": 8, "doortrap": 4, "elemental": 3, "witch": 5, "rope": 4}, allFloors: true, shrines: ["Rope", "Elements"],
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "Knife", ignoreInInventory: true, weight: 3, noSummon: true}],
 		events: [
@@ -2090,7 +2112,10 @@ let KinkyDungeonEnemies = [
 	{name: "ElementalLeather", faction: "Elemental", playLine: "Elemental", clusterWith: "elemental", bound: "ElementalLeather", squeeze: true, color: "#9999a0",
 		tags: KDMapInit(["opendoors", "elemental", "leather", "melee", "chainresist", "crushresist", "jail", "antiMagic", "jailer", "leatherRestraints", "leatherRestraintsHeavy", "ballGagRestraints", "leashing", "search", "doortrap"]),
 		armor: 2, followRange: 1, AI: "hunt", guardChance: 0.6, kite: 1.5,
-		visionRadius: 6, maxhp: 12, minLevel:2, weight:-2, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindLock", attackWidth: 1, attackRange: 2.5, tilesMinRange: 1, power: 2.5, dmgType: "pain", fullBoundBonus: 2.5, projectileTargeting: true,
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		visionRadius: 6, maxhp: 10, minLevel:0, weight:-2, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindLock", attackWidth: 1, attackRange: 2.5, tilesMinRange: 1, power: 2.5, dmgType: "pain", fullBoundBonus: 2.5, projectileTargeting: true,
 		terrainTags: {"secondhalf":2, "thirdhalf":1, "leatherAnger": 4, "leatherRage": 4, "temple": 8, "doortrap": 5, "elemental": 3, "witch": 5, "leather": 4}, allFloors: true, shrines: ["Leather", "Elements"],
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "EarthRune", weight: 2, noSummon: true}],
 		events: [
@@ -2324,6 +2349,9 @@ let KinkyDungeonEnemies = [
 		attackWidth: 1, attackRange: 1, power: 1, dmgType: "electric", fullBoundBonus: 1, noLeashUnlessExhausted: true, attackLock: "Purple",
 		terrainTags: {"lastthird":1, "miniboss": -10, "tech": -10, "metalAnger": 4, "elementsAnger": 6, "increasingWeight": 0.5, "electric": 6}, allFloors: true, shrines: [], followLeashedOnly: true,
 		dropTable: [{name: "BlueKey", weight: 3}, {name: "ScrollArms", weight: 1}, {name: "ScrollVerbal", weight: 1}, {name: "ScrollLegs", weight: 1}],
+		RestraintFilter: {
+			requiredItems: ["MagneticArmCuffs", "MagneticAnkleCuffs"],
+		},
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#8888ff"},
 			{trigger: "afterEnemyTick", type: "electrifyLocal", power: 1, aoe: 1.5},

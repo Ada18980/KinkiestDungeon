@@ -5523,6 +5523,7 @@ let KDEventMapGeneric = {
 						KDSetLoadout(e, loadout);
 					}
 					if (KDRandom() < bosschance || e.Enemy.tags.stageBoss) {
+						e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
 						e.Enemy.power *= 1.5;
 						e.Enemy.maxhp = e.Enemy.maxhp*2;
 					}

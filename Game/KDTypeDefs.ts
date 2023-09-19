@@ -151,6 +151,7 @@ interface KDRestraintPropsBase {
 
 	events?: KinkyDungeonEvent[],
 	enemyTags?: Record<string, number>,
+	enemyTagsMult?: Record<string, number>,
 	playerTags?: Record<string, number>,
 	playerTagsMult?: Record<string, number>,
 	/** Like playerTags, but applies if there is NOT the playertag */
@@ -450,6 +451,8 @@ interface restraint extends KDRestraintProps {
 	escapeChance: any,
 
 	enemyTags: Record<string, number>,
+	/** Multiplies the weight AFTER, useful for minimizing things */
+	enemyTagsMult?: Record<string, number>,
 	playerTags: Record<string, number>,
 	shrine: string[],
 }
