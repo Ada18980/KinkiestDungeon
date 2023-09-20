@@ -1504,7 +1504,7 @@ function KinkyDungeonPickAttempt() {
 		KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle"), "#ff0000", 2, true);
 	} else if (!KinkyDungeonHasStamina(-cost, true)) {
 		chargecosts = false;
-		KinkyDungeonWaitMessage(true);
+		KinkyDungeonWaitMessage(true, 0);
 	} else if (KinkyDungeonTargetTile && KinkyDungeonTargetTile.pickProgress >= 1){//KDRandom() < escapeChance
 		Pass = "Success";
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
@@ -2179,7 +2179,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
 				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoStamina) ? KDGetEscapeSFX(restraint).NoStamina : "Struggle")
 				+ ".ogg");
-			KinkyDungeonWaitMessage(true);
+			KinkyDungeonWaitMessage(true, 0);
 		} else if (data.escapeChance > 0) {
 
 			let extraLim = (StruggleType == "Pick" && lockType.pick_lim) ? Math.max(0, lockType.pick_lim) : 0;

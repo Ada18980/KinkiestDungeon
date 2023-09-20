@@ -3847,7 +3847,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 			KDGameData.ConfirmAttack = false;
 		}
 	} else {
-		KinkyDungeonWaitMessage();
+		KinkyDungeonWaitMessage(false, 1);
 	}
 
 	if (!noadvance) {
@@ -4018,7 +4018,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 							}
 						} else {
 							if (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax) {
-								KinkyDungeonWaitMessage();
+								KinkyDungeonWaitMessage(false, quick ? 0 : 1);
 							}
 							KDGameData.MovePoints = Math.min(KDGameData.MovePoints + 1, 0);
 						}
@@ -4054,7 +4054,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 				}
 			} else {
 				KDGameData.MovePoints = Math.min(KDGameData.MovePoints + 1, 0);
-				KinkyDungeonWaitMessage();
+				KinkyDungeonWaitMessage(false, 1);
 				KinkyDungeonAdvanceTime(1); // was moveDirection.delta, but became too confusing
 			}
 		} else if (KDMapData.GroundItems.some((item) => {return item.x == moveX && item.y == moveY;})) {
@@ -4077,7 +4077,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 	return moved;
 }
 
-function KinkyDungeonWaitMessage(NoTime) {
+function KinkyDungeonWaitMessage(NoTime, delta) {
 	if (!KDIsAutoAction()) {
 		if (KinkyDungeonStatWillpowerExhaustion > 1) KinkyDungeonSendActionMessage(3, TextGet("WaitSpellExhaustion"), "orange", 2);
 		else if (!KinkyDungeonHasStamina(2.5, false)) KinkyDungeonSendActionMessage(1, TextGet("WaitExhaustion"
@@ -4089,8 +4089,10 @@ function KinkyDungeonWaitMessage(NoTime) {
 		else KinkyDungeonSendActionMessage(1, TextGet("Wait" + (KinkyDungeonStatDistraction > 12 ? "Aroused" : "")), "silver", 2);
 	}
 
-	if (!NoTime && KinkyDungeonStatStamina < KinkyDungeoNStatStaminaLow)
-		KinkyDungeonStatStamina += KinkyDungeonStatStaminaRegenWait;
+	if (!NoTime && delta > 0) {
+		if (!KDGameData.Wait) KDGameData.Wait = 0;
+		KDGameData.Wait += delta;
+	}
 
 	KinkyDungeonLastAction = "Wait";
 	KinkyDungeonTrapMoved = false;

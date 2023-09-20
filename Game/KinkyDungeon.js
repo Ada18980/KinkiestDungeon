@@ -305,6 +305,7 @@ let KDOptOut = false;
 * tickAlertTimer: boolean,
 * HostileFactions: string[],
 * MovePoints: number,
+* Wait: number,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
@@ -456,6 +457,7 @@ let KDGameDataBase = {
 	HighestLevelCurrent: 1,
 	tickAlertTimer: false,
 	HostileFactions: [],
+	Wait: 0,
 };
 /**
  * @type {KDGameDataBase}
