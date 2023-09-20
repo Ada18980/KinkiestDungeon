@@ -1,12 +1,22 @@
 CURRENT CHANGELOGS (only down to 4.31 because I am too lazy to manually invert 1000 lines of changelogs)
 
+4.71 (Sep 2023)
+- Fix encased enemy sprite not showing
+- Fixed mimics being passive
+- Fixed slime ball not damaging the player when self cast
+- Made enemies more likely to use high level restraints on you when playing
+- Fixed shatter proccing infinitely on helpless enemy with Staff of Permafrost out.
+- fixed psychic perk doesn't let you unlock some restraints that you should be able to
+
 4.7 (Sep 2023)
 - Added some new upgrades to Rogue (Well-Placed Traps, Hard to Catch)
 - Mage Circuits now gives +200 mana pool and costs 1 spell point
 - Archmage no longer requires Mage Circuits
 - Arcane Recharge replaced with Akashic Conflux, changed to "Consume 100 Arcane Energy to gain 100 mana and ignore components for 3 turns"
 - New trainee spell: "Chaotic Overflow" - Spend 25% WP to refill mana and ignore spell components for 10 turns, but receive a crystal restraint at the end.
+- Stamina regen is doubled while waiting
 - Some other formula tweaks and bugfixes
+
 
 4.69 (Sep 2023)
 - Flanking an enemy now only stuns them if you teleport

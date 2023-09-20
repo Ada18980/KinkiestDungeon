@@ -1933,7 +1933,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		return "NeedEdge";
 	}
 
-	let removeFail = (data.struggleType == "Unlock" || data.struggleType == "Pick") && !(KinkyDungeonHasHelp()) && KDGetEscapeChance(restraint, "Remove", undefined, undefined, false, false).escapeChance <= 0;
+	let removeFail = ((data.struggleType == "Unlock" && !KinkyDungeonStatsChoice.get("Psychic")) || data.struggleType == "Pick") && !(KinkyDungeonHasHelp()) && KDGetEscapeChance(restraint, "Remove", undefined, undefined, false, false).escapeChance <= 0;
 
 	if (removeFail) data.escapeChance = 0;
 

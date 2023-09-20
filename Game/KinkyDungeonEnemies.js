@@ -234,8 +234,8 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 		let nearestVisible = undefined;
 
 		if (enemy.Enemy.focusPlayer && KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, pdist, visionRadius, false, false) && !KinkyDungeonCheckPath(enemy.x, enemy.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true)) pdist = 1.5;
-
-		let nearestDistance = (AI_Data && AI_Data.hostile) ? pdist - 0.1 : 100000;
+		let hostile = KDHostile(enemy);
+		let nearestDistance = (hostile) ? pdist - 0.1 : 100000;
 		if (KDGetFaction(enemy) == "Player"
 			&& (KDEnemyHasFlag(enemy, "NoFollow")
 			|| KDEnemyHasFlag(enemy, "StayHere")))
@@ -258,7 +258,7 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 						&& (enemy.Enemy.allied || (!KDGameData.PrisonerState || KDGameData.PrisonerState == "chase")))
 						? KDistChebyshev(e.x - KinkyDungeonPlayerEntity.x, e.y - KinkyDungeonPlayerEntity.y) :
 						-1;
-					if (pdist_enemy > 0 && pdist_enemy < 1.5 && AI_Data.hostile) KinkyDungeonSetFlag("AIHelpPlayer", 4);
+					if (pdist_enemy > 0 && pdist_enemy < 1.5 && hostile) KinkyDungeonSetFlag("AIHelpPlayer", 4);
 					if (pdist_enemy > 0 && KinkyDungeonFlags.get("AIHelpPlayer") && dist > 2.5) {
 						if (pdist_enemy > 2.5) dist += 2;
 						else dist = Math.max(1.01 + dist/4, dist/3);
@@ -442,10 +442,10 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				let buffSpritePower = 0;
 				if (enemy.buffs) {
 					for (let b of Object.values(enemy.buffs)) {
-						if (b.replaceSpriteBound && KDBoundEffects(enemy) > 3 && b.replacePower || b.power > buffSpritePower) {
+						if (b.replaceSpriteBound && KDBoundEffects(enemy) > 3 && (b.replacePower || b.power > buffSpritePower)) {
 							buffSpritePower = b.replacePower || b.power;
 							buffSprite = b.replaceSpriteBound;
-						} else if (b.replaceSprite && b.replacePower || b.power > buffSpritePower) {
+						} else if (b.replaceSprite && (b.replacePower || b.power > buffSpritePower)) {
 							buffSpritePower = b.replacePower || b.power;
 							buffSprite = b.replaceSprite;
 						}
@@ -2397,12 +2397,12 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				enemy.disarmflag = 0;
 				enemy.fx = undefined;
 				enemy.fy = undefined;
-				if (enemy.stun > 0 && enemy.stun <= delta)
-					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "stun"});
-				if (enemy.freeze > 0 && enemy.freeze <= delta)
-					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "freeze"});
 				let smult = 1 - 0.167 * KDBoundEffects(enemy);
 				let fmult = KDHelpless(enemy) ? 0.1 : 1 - 0.2 * KDBoundEffects(enemy);
+				if (enemy.stun > 0 && enemy.stun <= delta*smult)
+					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "stun"});
+				if (enemy.freeze > 0 && enemy.freeze <= delta*fmult)
+					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "freeze"});
 				if (enemy.stun > 0) enemy.stun = Math.max(enemy.stun - delta * smult, 0);
 				if (enemy.freeze > 0) enemy.freeze = Math.max(enemy.freeze - delta * fmult, 0);
 			} else if (enemy.channel > 0) {
@@ -2839,7 +2839,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	AIData.targetRestraintLevel = 0.25 + (enemy.aggro && !enemy.playWithPlayer ? enemy.aggro : 0) + 0.004 * (KinkyDungeonGoddessRep.Prisoner + 50);
 	if (enemy.aggro > 0 && delta > 0 && enemy.aggro > enemy.hp / enemy.Enemy.maxhp) enemy.aggro = enemy.aggro * 0.95;
-	if (KinkyDungeonStatsChoice.has("NoWayOut") || KinkyDungeonCanPlay(enemy) || enemy.hp < enemy.Enemy.maxhp * 0.5 || !KDIsHumanoid(enemy)) AIData.targetRestraintLevel = 999;
+	if (KinkyDungeonStatsChoice.has("NoWayOut") || (enemy.playWithPlayer > 0 && !KinkyDungeonAggressive(enemy)) || enemy.hp < enemy.Enemy.maxhp * 0.5 || !KDIsHumanoid(enemy)) AIData.targetRestraintLevel = 999;
 	if (enemy.Enemy.Behavior?.thorough) AIData.targetRestraintLevel = Math.max(AIData.targetRestraintLevel, enemy.Enemy.Behavior?.thorough);
 	AIData.addLeash = AIData.leashing && KDBoundPowerLevel >= AIData.targetRestraintLevel && (!KinkyDungeonGetRestraintItem("ItemNeck") || !KinkyDungeonGetRestraintItem("ItemNeckRestraints"));
 	if (!AIData.addLeash && AIData.leashing && enemy.IntentLeashPoint && (!KinkyDungeonGetRestraintItem("ItemNeck") || !KinkyDungeonGetRestraintItem("ItemNeckRestraints"))) AIData.addLeash = true;
@@ -3918,7 +3918,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 											true,
 											"",
-											true,
+											!KDPlayerIsStunned(),
 											false,
 											false);
 										replace.push({keyword:"RestraintAdded", value: TextGet("Restraint" + rest.name)});
@@ -3936,7 +3936,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 											enemy.Enemy.bypass,
 											enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
-											!(enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
+											!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 											!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
 											!KinkyDungeonStatsChoice.has("TightRestraints"),
 											KDGetExtraTags(enemy, enemy.usingSpecial),
@@ -3954,7 +3954,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 												enemy.Enemy.bypass,
 												enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
-												!(enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
+												!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 												!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
 												!KinkyDungeonStatsChoice.has("TightRestraints"),
 												KDGetExtraTags(enemy, enemy.usingSpecial),
