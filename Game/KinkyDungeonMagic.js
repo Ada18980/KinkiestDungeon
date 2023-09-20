@@ -810,7 +810,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			let special = KinkyDungeonPlayerDamage ? KinkyDungeonPlayerDamage.special : null;
 			if (special) {
 				let energyCost = KinkyDungeonPlayerDamage.special.energyCost;
-				if (KDGameData.AncientEnergyLevel < energyCost) return;
+				if (KDGameData.AncientEnergyLevel < energyCost) return {result: "Fail", data: data};
 				if (energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - energyCost);
 
 				KinkyDungeonSendEvent("playerCastSpecial", data);
