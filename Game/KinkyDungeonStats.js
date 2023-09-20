@@ -62,7 +62,7 @@ let KDNarcolepticRegen = -0.06;
 let KinkyDungeonStatStaminaRegenJail = 0.125;
 let KinkyDungeonStatStaminaRegenSleep = KinkyDungeonStatStaminaMax/40;
 let KinkyDungeonStatStaminaRegenSleepBedMultiplier = 1.5;
-let KinkyDungeonStatStaminaRegenWait = 0;
+let KinkyDungeonStatStaminaRegenWait = 0.5;
 let KinkyDungeoNStatStaminaLow = 4;
 let KDSprintCostBase = 1; // Cost of sprinting
 let KDSprintCostSlowLevel = [0.5, 1.0, 1.5, 2.0]; // Extra cost per slow level
@@ -1095,10 +1095,23 @@ function KinkyDungeonUpdateStats(delta) {
 	if (KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) == 'B') sleepRegen *= 2;
 	let stamMult = KDGameData.StaminaSlow > 0 ? Math.max(0.5, (!KinkyDungeonCanStand() ? 0.5 : 1.0) - 0.1 * KDGameData.StaminaSlow) : 1.0;
 	let stamRegen = KDGameData.StaminaPause > 0 ? 0 : KinkyDungeonSetMaxStats().staminaRate * stamMult;
+
+	// Process wait equation
 	if (delta > 0 && KDGameData.StaminaPause > 0) KDGameData.StaminaPause -= delta;
 	if (delta > 0 && KDGameData.StaminaSlow > 0) KDGameData.StaminaSlow -= delta;
 	if (delta > 0 && KDGameData.KneelTurns > 0) KDGameData.KneelTurns -= delta;
+	if (KDGameData.Wait > 0) {
+		if (delta > 0) {
+			KDGameData.Wait -= delta;
+			if (delta > 0 && KDGameData.StaminaPause > 0) KDGameData.StaminaPause -= delta;
+			if (delta > 0 && KDGameData.StaminaSlow > 0) KDGameData.StaminaSlow -= delta;
+		}
+
+		stamRegen *= 2;
+	}
+
 	KinkyDungeonStaminaRate = KDGameData.SleepTurns > 0 && KDGameData.SleepTurns < KinkyDungeonSleepTurnsMax - 1? sleepRegen : stamRegen;
+
 	let statData = {
 		manaPoolRegen: KinkyDungeonStatManaPoolRegen,
 		player: KinkyDungeonPlayerEntity,
@@ -1159,7 +1172,10 @@ function KinkyDungeonUpdateStats(delta) {
 	} else {
 		//KinkyDungeonStatDistractionLower += distractionRate*delta * arousalPercent;
 	}
+
 	KinkyDungeonChangeStamina(KinkyDungeonStaminaRate*delta, true, undefined, true);
+	KDGameData.Wait = Math.max(0, KDGameData.Wait);
+
 	KinkyDungeonStatMana += KinkyDungeonStatManaRate;
 	KinkyDungeonStatManaPool -= ManaPoolDrain;
 
