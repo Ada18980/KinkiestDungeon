@@ -787,7 +787,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 		},
 		{name: "SlimeBall", color: "#ff00ff", prerequisite: "ApprenticeLatex", tags: ["latex", "slime", "denial", "bolt", "offense"], noise: 1, sfx: "FireSpell", school: "Conjure", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 3,  power: 4, delay: 0, range: 50, damage: "glue", speed: 2,
-			trailPower: 4, trailLifetime: 10, trailTime: 3, trailDamage:"glue", trail:"lingering", trailChance: 1.0,
+			trailPower: 4, trailLifetime: 10, trailTime: 3, trailDamage:"glue", trail:"lingering", trailChance: 1.0, playerEffect: {name: "Slime", time: 3}, trailPlayerEffect: {name: "na"},
 			effectTileDurationModTrail: 4, effectTileTrail: {
 				name: "Slime",
 				duration: 4,

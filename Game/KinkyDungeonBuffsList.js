@@ -57,7 +57,7 @@ let KDSlimed = {
 	]
 };
 let KDEncased = {
-	id: "Encased", type: "SlimeProgress", power: 2.0, player: false, enemies: true, duration: 9999, range: 0.5, replaceSprite: "EncasedDoll", tags: ["encased"], events: [
+	id: "Encased", type: "SlimeProgress", power: 2.0, player: false, enemies: true, duration: 9999, range: 0.5, replaceSpriteBound: "EncasedFactoryDoll", replaceSprite: "EncasedDoll", tags: ["encased"], events: [
 		{type: "RemoveSlimeWalk", duration: 1, trigger: "tick"},
 		{type: "RemoveFree", trigger: "tick"},
 		{type: "ApplySlowed", duration: 1, power: -2.0, trigger: "tick"},
@@ -71,7 +71,7 @@ let KDEncased = {
 	]
 };
 let KDEncasedDoll = {
-	id: "EncasedDoll", type: "SlimeProgress", power: 2.0, player: false, enemies: true, duration: 9999, range: 0.5, replaceSprite: "EncasedFactoryDoll", tags: ["encased"], events: [
+	id: "EncasedDoll", type: "SlimeProgress", power: 2.0, player: false, enemies: true, duration: 9999, range: 0.5, replaceSpriteBound: "EncasedFactoryDoll", replaceSprite: "EncasedFactoryDoll", tags: ["encased"], events: [
 		{type: "RemoveSlimeWalk", duration: 1, trigger: "tick"},
 		{type: "RemoveFree", trigger: "tick"},
 		{type: "ApplySlowed", duration: 1, power: -2.0, trigger: "tick"},
