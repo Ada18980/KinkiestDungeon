@@ -17,6 +17,7 @@ AddModel({
 		{ Name: "FaceMouth", Layer: "GagWrap", Pri: 9,
 			Invariant: true,
 			NoOverride: true,
+			InheritColor: "Rubber",
 		},
 	])
 });
@@ -33,6 +34,7 @@ AddModel({
 		{ Name: "FaceEyes", Layer: "BlindfoldWrap", Pri: 9,
 			Invariant: true,
 			NoOverride: true,
+			InheritColor: "Rubber",
 		},
 	])
 });
@@ -49,6 +51,7 @@ AddModel({
 		{ Name: "FaceFull", Layer: "Mask", Pri: 9,
 			Invariant: true,
 			NoOverride: true,
+			InheritColor: "Rubber",
 		},
 	])
 });
@@ -66,6 +69,7 @@ AddModel({
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,
+			InheritColor: "Rubber",
 		},
 	])
 });
@@ -81,6 +85,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "WrappingTorso", Pri: -6,
 			Invariant: true,
+			InheritColor: "Rubber",
 		},
 	])
 });
@@ -97,6 +102,7 @@ AddModel({
 		{ Name: "Legs", Layer: "OverSocks", Pri: 11,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			InheritColor: "Rubber",
 		},
 	])
 });
@@ -129,6 +135,7 @@ AddModel({
 		{ Name: "Ankles", Layer: "OverSocks", Pri: 10,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			InheritColor: "Rubber",
 		},
 	])
 });
@@ -146,6 +153,7 @@ AddModel({
 			Poses: ToMap(["Boxtie", "Front", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmLeft"},
 			GlobalDefaultOverride: ToMap(["Front"]),
+			InheritColor: "Rubber",
 		},
 	])
 });
@@ -162,6 +170,7 @@ AddModel({
 			Poses: ToMap(["Boxtie", "Front", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmRight"},
 			GlobalDefaultOverride: ToMap(["Front"]),
+			InheritColor: "Rubber",
 		},
 	])
 });
@@ -177,10 +186,11 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "TorsoUpper", Layer: "WrappingTorso", Pri: -5,
 			Invariant: true,
+			InheritColor: "Rubber",
 		},
 		{ Name: "Chest", Layer: "BindChest", Pri: 101,
 			Invariant: true,
-			InheritColor: "TorsoUpper",
+			InheritColor: "Rubber",
 
 			CrossHideOverride: true,
 			HideOverrideLayerMulti: ["ChestBinding"],
@@ -218,7 +228,9 @@ AddModel({
 		{ Name: "HandLeft", Layer: "BindHandLeft", Pri: -5,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeHandLeft"},
+			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
+			InheritColor: "Rubber",
 		},
 	])
 });
@@ -234,7 +246,9 @@ AddModel({
 		{ Name: "HandRight", Layer: "BindHandRight", Pri: -5,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeHandRight"},
+			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
+			InheritColor: "Rubber",
 		},
 	])
 });

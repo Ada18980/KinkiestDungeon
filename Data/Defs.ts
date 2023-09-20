@@ -79,6 +79,7 @@ let LAYERS_BASE = [
 	"Chestplate",
 
 	// Bondage
+	"BindArm",
 	"BindWristLeft",
 	"BindWristRight",
 	"BindArmLeft",
@@ -309,6 +310,19 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+	]),
+	// endregion
+
+	//region generic
+	"Arms": ToMap([
+		"Shirt",
+		"SleeveLeft",
+		"SleeveDecoLeft",
+		"SleeveRight",
+		"SleeveDecoRight",
+		"ArmLeft",
+		"ArmRight",
+		"TorsoUpper"
 	]),
 	// endregion
 

@@ -18,12 +18,13 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseMouth"],
 	Filters: {
-		"Mouth": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "FaceMouth", Layer: "GagWrap", Pri: 9,
 			Invariant: true,
 			NoOverride: true,
+			InheritColor: "Slime",
 		},
 	])
 });
@@ -37,12 +38,13 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseEyes"],
 	Filters: {
-		"Eyes": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "FaceEyes", Layer: "BlindfoldWrap", Pri: 9,
 			Invariant: true,
 			NoOverride: true,
+			InheritColor: "Slime",
 		},
 	])
 });
@@ -56,13 +58,13 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseEyes", "EncaseMouth", "EncaseHead"],
 	Filters: {
-		"Eyes": slimefilter,
-		"Mouth": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "FaceFull", Layer: "Mask", Pri: 9,
 			Invariant: true,
 			NoOverride: true,
+			InheritColor: "Slime",
 		},
 	])
 });
@@ -76,13 +78,14 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseFeet"],
 	Filters: {
-		"Feet": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "Feet", Layer: "OverSocks", Pri: 9,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,
+			InheritColor: "Slime",
 		},
 	])
 });
@@ -96,12 +99,13 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseTorsoLower"],
 	Filters: {
-		"TorsoLower": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "WrappingTorso", Pri: -6,
 			Invariant: true,
 			ApplyFilterToLayerGroup: ToMap(["SlimeTorsoLower"]),
+			InheritColor: "Slime",
 		},
 	])
 });
@@ -115,13 +119,14 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["FeetLinked"],
 	Filters: {
-		"Legs": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "Legs", Layer: "OverSocks", Pri: 11,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeLegs"]),
+			InheritColor: "Slime",
 		},
 	])
 });
@@ -136,8 +141,7 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["FeetLinked", "TorsoLowerTight", "EncaseTorsoLower"],
 	Filters: {
-		"Legs": slimefilter,
-		"TorsoLower": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		...GetModelLayers("SlimeThighs"),
@@ -155,13 +159,14 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["FeetLinked"],
 	Filters: {
-		"Ankles": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "Ankles", Layer: "OverSocks", Pri: 10,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "Shoes"]),
+			InheritColor: "Slime",
 		},
 	])
 });
@@ -175,13 +180,14 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseArmLeft"],
 	Filters: {
-		"ArmLeft": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "ArmLeft", Layer: "BindArmLeft", Pri: -5,
 			Poses: ToMap(["Boxtie", "Front", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmLeft"},
 			GlobalDefaultOverride: ToMap(["Front"]),
+			InheritColor: "Slime",
 		},
 	])
 });
@@ -194,13 +200,14 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseArmRight"],
 	Filters: {
-		"ArmRight": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "BindArmRight", Pri: -5,
 			Poses: ToMap(["Boxtie", "Front", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmRight"},
 			GlobalDefaultOverride: ToMap(["Front"]),
+			InheritColor: "Slime",
 		},
 	])
 });
@@ -212,21 +219,21 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Filters: {
-		"TorsoUpper": slimefilter,
+		"Slime": slimefilter,
 	},
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
 		{ Name: "TorsoUpper", Layer: "WrappingTorso", Pri: -5,
 			Invariant: true,
+			InheritColor: "Slime",
 		},
 		{ Name: "Chest", Layer: "BindChest", Pri: 101,
 			Invariant: true,
-			InheritColor: "TorsoUpper",
-
 			CrossHideOverride: true,
 			HideOverrideLayerMulti: ["ChestBinding"],
 			ForceSingleOverride: true,
+			InheritColor: "Slime",
 		},
 	])
 });
@@ -239,8 +246,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Filters: {
-		"TorsoUpper": slimefilter,
-		"Arms": slimefilter,
+		"Slime": slimefilter,
 	},
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest"],
@@ -261,13 +267,15 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseHandLeft"],
 	Filters: {
-		"HandLeft": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "HandLeft", Layer: "BindHandLeft", Pri: -5,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeHandLeft"},
+			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
+			InheritColor: "Slime",
 		},
 	])
 });
@@ -280,13 +288,15 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseHandRight"],
 	Filters: {
-		"HandRight": slimefilter,
+		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
 		{ Name: "HandRight", Layer: "BindHandRight", Pri: -5,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeHandRight"},
+			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
+			InheritColor: "Slime",
 		},
 	])
 });
