@@ -26,7 +26,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.71"
+KinkyDungeon,"Kinky Dungeon v4.72"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -1387,7 +1387,8 @@ KinkyDungeonInventoryItemAxeDesc2,"Also deals 20 damage to enemies next to you. 
 KinkyDungeonNoWeaponKnife,Knife
 KinkyDungeonNoWeapon,Unarmed
 KinkyDungeonAccuracy,"Accuracy: "
-KinkyDungeonCrit,"Crit Damage Multiplier (damage dealt to unaware and vulnerable targets): "
+KinkyDungeonCrit,"Crit Multiplier: "
+KinkyDungeonBindCrit,"Bind Crit Multiplier: "
 KinkyDungeonPlayerNoKeys,Find the keys..
 KinkyDungeonPlayerYesKeys,Find the exit!
 KinkyDungeonPlayerHelp,"You are receiving help from a friendly ally."
@@ -4791,9 +4792,6 @@ KinkyDungeonSpellLimitSurge,"Limit Surge"
 KinkyDungeonSpellDescriptionLimitSurge,"Take 50 Willpower damage to fully restore Stamina. This amount cannot be reduced. If your Willpower ends up 0 because of this, you are stunned for 2 turns."
 
 
-KinkyDungeonSpellRogueTargets,"High Profile"
-KinkyDungeonSpellDescriptionRogueTargets,"Several enemies on each map will be high value, rewarding more gold and items for defeating them but increasing their strength."
-
 KinkyDungeonSpellRogueTraps,Devious Ingenuity
 KinkyDungeonSpellDescriptionRogueTraps,"Trap-type spells and consumables take 1 turn to cast instead of several."
 
@@ -4805,13 +4803,13 @@ KinkyDungeonSpellDistractionCast,Mana Burst
 KinkyDungeonSpellDescriptionDistractionCast,"As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus..."
 
 KinkyDungeonSpellManaRegen,Inner Power
-KinkyDungeonSpellDescriptionManaRegen,"As a wizard, you are able to harness a power source to regenerate mana up to 20% of your maximum mana. This regeneration is paused for 6 turns after attacking or casting a spell."
+KinkyDungeonSpellDescriptionManaRegen,"As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana AFTER other modifiers."
 
 KinkyDungeonSpellManaRegenPlus,Battlemage
-KinkyDungeonSpellDescriptionManaRegenPlus,"Your innate mana regeneration is no longer paused after attacking."
+KinkyDungeonSpellDescriptionManaRegenPlus,"Inner Power is no longer paused after attacking."
 
 KinkyDungeonSpellManaRegenPlus2,Relentless Casting
-KinkyDungeonSpellDescriptionManaRegenPlus2,"Your innate mana regeneration is no longer paused after casting spells."
+KinkyDungeonSpellDescriptionManaRegenPlus2,"Inner Power is no longer paused after casting spells."
 
 KinkyDungeonSpellManaRecharge,Arcane Recharge
 KinkyDungeonSpellDescriptionManaRecharge,"Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 80 psychic damage to self and drains 10% of your max Willpower to fully restore mana. Does not refill the mana pool."
@@ -11333,6 +11331,8 @@ KinkyDungeonSpellCastArcaneBlast,Your eyes glow as energy surges from within!
 KinkyDungeonSpellTargetArcaneBlast,Choose aim direction
 
 KDCritical,Critical Hit!
+KDRogueCritical,Super Critical!
+KDBindCritical,Surprise Bondage!
 KDArcaneEnergy,Arcane Energy
 KDBattleRhythm,Rhythm
 KDBattleRhythmDodge,You avoid the attack in a flurry of impressive maneuvers!
@@ -11392,3 +11392,23 @@ KDRemoveCurseOrHex,Select a restraint to remove the curse from
 KDRemoveCurseOrHexFail,You don't have any restraints that can be removed
 
 KinkyDungeonBuffInnerPowerArcaneStore,"As you are low on mana, you are unable to store Arcane Energy."
+KinkyDungeonBuffManaRegenSuspend,"You are recharging your next mana cost reduction."
+
+
+
+KinkyDungeonSpellManaRegenFast,Fast Recharge I
+KinkyDungeonSpellDescriptionManaRegenFast,"Inner power now recharges after 12 turns instead of 16."
+
+KinkyDungeonSpellManaRegenFast2,Fast Recharge II
+KinkyDungeonSpellDescriptionManaRegenFast2,"Inner power now recharges after 8 turns instead of 16."
+
+
+KinkyDungeonSpellRogueTargets,"Precise Targeting"
+KinkyDungeonSpellDescriptionRogueTargets,"Your first critical hit on a target is 1.5x more powerful."
+
+KinkyDungeonSpellRogueBind,"Surprise Bondage"
+KinkyDungeonSpellDescriptionRogueBind,"Binding from critical hits is 40% stronger"
+
+KinkyDungeonStatHighProfile,"High Profile"
+KinkyDungeonStatDescHighProfile,"Several enemies on each map will be high value, rewarding more gold and items for defeating them but increasing their strength."
+
