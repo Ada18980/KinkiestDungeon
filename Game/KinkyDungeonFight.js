@@ -533,7 +533,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		bindType: (Damage) ? Damage.bindType : 0,
 		flags: (Damage) ? Damage.flags : undefined,
 		boundBonus: (Damage) ? Damage.boundBonus : 0,
-		bindEff: (Damage) ? Damage.bindEff : 1,
+		bindEff: (Damage) ? (Damage.bindEff || 1) : 1,
 		distract: (Damage) ? Damage.distract : 0,
 		distractEff: (Damage) ? Damage.distractEff : 0,
 		incomingDamage: Damage,
