@@ -2554,6 +2554,7 @@ const KinkyDungeonRestraints = [
 			},
 			shrine: ["Armor", "ChestArmor", "MetalArmor", "Heavy"],
 			armor: true,
+			LinkAll: true, NoLinkOver: true,
 			protection: 1,
 			events: [
 				{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
@@ -2578,6 +2579,7 @@ const KinkyDungeonRestraints = [
 			},
 			shrine: ["Armor", "TorsoArmor", "Light"],
 			armor: true,
+			LinkAll: true, NoLinkOver: true,
 			protection: 1,
 			strictness: 0.05,
 			protectionCursed: true,
@@ -2607,6 +2609,7 @@ const KinkyDungeonRestraints = [
 			strictness: 0.08,
 			shrine: ["Armor", "TorsoArmor", "MetalArmor", "Heavy"],
 			armor: true,
+			LinkAll: true, NoLinkOver: true,
 			events: [
 				{trigger: "tick", type: "armorBuff", power: 1.0, inheritLinked: true},
 				{trigger: "tick", type: "restraintBlock", power: 2.5, inheritLinked: true},
@@ -2631,6 +2634,7 @@ const KinkyDungeonRestraints = [
 			},
 			shrine: ["Armor", "TorsoArmor", "MetalArmor", "Heavy"],
 			armor: true,
+			LinkAll: true, NoLinkOver: true,
 			debris: "Belts",
 			protection: 3,
 			protectionCursed: true,
@@ -2658,6 +2662,7 @@ const KinkyDungeonRestraints = [
 			},
 			shrine: ["Armor", "Robe", "Mage"],
 			armor: true,
+			LinkAll: true, NoLinkOver: true,
 			debris: "Belts",
 			protection: 1,
 			displayPower: 10,
@@ -2683,6 +2688,7 @@ const KinkyDungeonRestraints = [
 			},
 			shrine: ["Armor", "PelvisArmor", "MetalArmor", "Heavy"],
 			armor: true,
+			LinkAll: true, NoLinkOver: true,
 			protection: 2,
 			debris: "Belts",
 			protectionCursed: true,
@@ -2708,6 +2714,7 @@ const KinkyDungeonRestraints = [
 			},
 			shrine: ["Armor", "GlovesArmor", "MetalArmor", "Heavy"],
 			armor: true,
+			LinkAll: true, NoLinkOver: true,
 			debris: "Belts",
 			protection: 1,
 			events: [
@@ -2733,6 +2740,7 @@ const KinkyDungeonRestraints = [
 			},
 			shrine: ["Armor", "GlovesArmor", "Light"],
 			armor: true,
+			LinkAll: true, NoLinkOver: true,
 			debris: "Belts",
 			protection: 1,
 		}, "Leather Gloves", "Protecting you in style.", "Provides minor protection against enemy attacks.")
@@ -2751,6 +2759,7 @@ const KinkyDungeonRestraints = [
 			},
 			shrine: ["Armor", "ArmArmor", "MetalArmor", "Heavy"],
 			armor: true,
+			LinkAll: true, NoLinkOver: true,
 			debris: "Belts",
 			protection: 1,
 		}, "Steel Bracers", "Dependable protection for the average adventurer.", "Provides minor protection against enemy attacks.")
@@ -2771,6 +2780,7 @@ const KinkyDungeonRestraints = [
 			},
 			shrine: ["Armor", "BootsArmor", "MetalArmor", "Heavy"],
 			armor: true,
+			LinkAll: true, NoLinkOver: true,
 			protection: 1,
 			debris: "Belts",
 			events: [
@@ -2796,6 +2806,7 @@ const KinkyDungeonRestraints = [
 			},
 			shrine: ["Armor", "BootsArmor", "Light"],
 			armor: true,
+			LinkAll: true, NoLinkOver: true,
 			debris: "Belts",
 			protection: 1,
 		}, "Hide Boots", "For stepping into all kinds of trouble!", "Provides minor protection against enemy attacks.")

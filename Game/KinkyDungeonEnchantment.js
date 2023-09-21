@@ -162,7 +162,7 @@ let KDEventEnchantmentModular = {
 			let amt = 1 + Math.round(KDRandom() * 3 * Math.pow(power, 0.5));
 			amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 			return [
-				{original: "ManaCost", trigger: "afterCalcMana", type: "ManaCost", power: 1 - Math.min(0.99, amt*0.01)},
+				{original: "ManaCost", trigger: "calcMultMana", type: "ManaCost", power: 1 - Math.min(0.99, amt*0.01)},
 				{original: "ManaCost", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCost", power: -amt, color: "#0000ff", bgcolor: "#8888ff"},
 				{original: "ManaCost", trigger: "icon", type: "tintIcon", power: 5, color: "#0000ff"},
 			];}},

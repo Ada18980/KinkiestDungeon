@@ -49,7 +49,7 @@ let KinkyDungeonSpellSpecials = {
 						passthrough: spell2.noTerrainHit, noEnemyCollision: spell2.noEnemyCollision, alwaysCollideTags: spell2.alwaysCollideTags, nonVolatile:spell2.nonVolatile, noDoubleHit: spell2.noDoubleHit,
 						pierceEnemies: spell2.pierceEnemies, piercing: spell2.piercing, events: spell2.events,
 						lifetime:miscast || selfCast ? 1 : (spell2.bulletLifetime ? spell2.bulletLifetime : 1000), origin: {x: entity.x, y: entity.y}, range: spell2.range, hit:spell2.onhit,
-						damage: {evadeable: spell2.evadeable, damage:spell2.power, type:spell2.damage, crit: spell2.crit, bind: spell2.bind, bindEff: spell2.bindEff, distract: spell2.distract, distractEff: spell2.distractEff, boundBonus: spell2.boundBonus, time:spell2.time, flags:spell2.damageFlags}, spell: spell2}, miscast);
+						damage: {evadeable: spell2.evadeable, damage:spell2.power, type:spell2.damage, crit: spell2.crit, bindcrit: spell2.bindcrit, bind: spell2.bind, bindEff: spell2.bindEff, distract: spell2.distract, distractEff: spell2.distractEff, boundBonus: spell2.boundBonus, time:spell2.time, flags:spell2.damageFlags}, spell: spell2}, miscast);
 				b.visual_x = entity.x;
 				b.visual_y = entity.y;
 			} else return "Fail";

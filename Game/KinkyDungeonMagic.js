@@ -386,6 +386,8 @@ function KinkyDungeonGetManaCost(Spell) {
 	//if (data.costscale > 0) data.cost = Math.max(0, data.cost); // Keep it from rounding to 0
 	if (data.lvlcostscale && Spell.level && Spell.manacost) data.cost += Spell.level * data.lvlcostscale;
 	KinkyDungeonSendEvent("beforeMultMana", data);
+	KinkyDungeonSendEvent("calcMultMana", data);
+	KinkyDungeonSendEvent("afterMultMana", data);
 	KinkyDungeonSendEvent("afterCalcMana", data);
 
 	if (KinkyDungeonStatsChoice.get("Slayer") && Spell.school == "Elements" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
@@ -415,9 +417,15 @@ function KinkyDungeonGetChargeCost(Spell) {
 	return data.cost;
 }
 
+/**
+ *
+ * @param {spell} Spell
+ * @returns {number}
+ */
 function KinkyDungeonGetCost(Spell) {
 	let cost = Spell.level;
 	if (Spell.level > 1 && !Spell.passive && KinkyDungeonStatsChoice.get("Novice")) cost *= 2;
+	if (Spell.classSpecific && KDGameData.Class != Spell.classSpecific) cost *= 2;
 	if (Spell.spellPointCost) return Spell.spellPointCost;
 	return cost;
 }
@@ -698,7 +706,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 					pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
 					lifetime:miscast || selfCast ? 1 : (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: entity.x, y: entity.y}, range: spellRange, hit:spell.onhit,
-					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, crit: spell.crit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, miscast);
+					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff,
+						bind: spell.bind, crit: spell.crit, bindcrit: spell.bindcrit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, miscast);
 			b.visual_x = entity.x;
 			b.visual_y = entity.y;
 			data.bulletfired = b;
@@ -724,7 +733,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
 					bulletSpin: spell.bulletSpin,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
-					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, crit: spell.crit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell
+					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff,
+						bind: spell.bind, crit: spell.crit, bindcrit: spell.bindcrit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell
 				}, miscast);
 			data.bulletfired = b;
 		} else if (spell.type == "hit") {
@@ -745,7 +755,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					targetX: tX, targetY: tY,
 					source: entity?.player ? -1 : entity?.id, lifetime:spell.lifetime, cast: cast, dot: spell.dot, events: spell.events, aoe: spell.aoe,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
-					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, crit: spell.crit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}};
+					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff,
+						bind: spell.bind, bindcrit: spell.bindcrit, crit: spell.crit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}};
 			KinkyDungeonBulletHit(b, 1);
 			data.bulletfired = b;
 		} else if (spell.type == "buff") {
