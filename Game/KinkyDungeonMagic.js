@@ -792,6 +792,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 				if (!enemy && !bullet && player && ret == "Cast") {
 					KinkyDungeonSendEvent("playerCast", data);
 				}
+				KinkyDungeonSendEvent("afterPlayerCast", data);
 				return {result: ret, data: data};
 			}
 		}
@@ -825,6 +826,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 				if (energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - energyCost);
 
 				KinkyDungeonSendEvent("playerCastSpecial", data);
+				KinkyDungeonSendEvent("afterPlayerCastSpecial", data);
 			}
 
 			KinkyDungeonTargetingSpellItem = null;
@@ -839,6 +841,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		KDSendSpellCast(spell.name);
 
 		KinkyDungeonSendEvent("playerCast", data);
+		KinkyDungeonSendEvent("afterPlayerCast", data);
 
 		//let cost = spell.staminacost ? spell.staminacost : KinkyDungeonGetCost(spell.level);
 

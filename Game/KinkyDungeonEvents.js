@@ -2636,9 +2636,18 @@ let KDEventMapSpell = {
 			}
 		},
 	},
+	"afterPlayerCast": {
+		"ManaRegenSuspend": (e, spell, data) => {
+			if (!KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend") || !KDHasSpell("ManaRegenPlus2")) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: KDHasSpell("ManaRegenFast") ? 8 : e.time, aura: "#ff5555", buffSprite: true,
+				});
+			}
+		},
+	},
 	"playerCast": {
 		"ArcaneStore": (e, spell, data) => {
-			if (data.spell && KinkyDungeonStatMana + KinkyDungeonStatManaPool > KinkyDungeonStatManaMax * 0.2 && data.manacost > 0 && !KinkyDungeonFlags.get("ArcaneStore" + data.castID)) {
+			if (data.spell && data.manacost > 0 && !KinkyDungeonFlags.get("ArcaneStore" + data.castID)) {
 				let player = KinkyDungeonPlayerEntity;
 				let buff = KDEntityGetBuff(player, "ArcaneEnergy");
 				let max = KinkyDungeonStatManaMax + KDEntityBuffedStat(player, "MaxArcaneEnergy");
@@ -2751,13 +2760,6 @@ let KDEventMapSpell = {
 				data.bulletfired.bullet.hitColor = 0x55ff55;
 				data.bulletfired.bullet.hitLight = 5;
 
-			}
-		},
-		"ManaRegenSuspend": (e, spell, data) => {
-			if (!KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend") || !KDHasSpell("ManaRegenPlus2")) {
-				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: KDHasSpell("ManaRegenFast") ? 8 : e.time, aura: "#ff5555", buffSprite: true,
-				});
 			}
 		},
 		"DistractionCast": (e, spell, data) => {
