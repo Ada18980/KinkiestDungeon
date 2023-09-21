@@ -533,7 +533,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		bindType: (Damage) ? Damage.bindType : 0,
 		flags: (Damage) ? Damage.flags : undefined,
 		boundBonus: (Damage) ? Damage.boundBonus : 0,
-		bindEff: (Damage) ? Damage.bindEff : 0,
+		bindEff: (Damage) ? Damage.bindEff : 1,
 		distract: (Damage) ? Damage.distract : 0,
 		distractEff: (Damage) ? Damage.distractEff : 0,
 		incomingDamage: Damage,
@@ -577,6 +577,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			KinkyDungeonSendEvent("duringCrit", predata);
 			let dmgBonus = predata.dmg * (predata.crit - 1);
 			predata.dmg = Math.max(0, predata.dmg + dmgBonus);
+			predata.bindEff *= predata.bindcrit;
 			if (!NoMsg)
 				KinkyDungeonSendTextMessage(4, TextGet((Enemy.vulnerable || Enemy.distraction > Enemy.Enemy.maxhp) ? "KinkyDungeonVulnerable" : "KinkyDungeonUnseen")
 					.replace("AMOUNT", "" + Math.round(10 * dmgBonus))
@@ -764,23 +765,22 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		if ((predata.dmg || predata.bind) && Enemy.Enemy.bound && (resistDamage < 2) && (predata.bind || KinkyDungeonBindingDamageTypes.includes(predata.type))) {
 			effect = true;
 			if (!Enemy.boundLevel) Enemy.boundLevel = 0;
-			let efficiency = predata.bindEff ? predata.bindEff : 1.0;
 			if (resistStun == -2) {
-				efficiency *= 2;
+				predata.bindEff *= 2;
 			} else if (resistStun == -1) {
-				efficiency *= 1.5;
+				predata.bindEff *= 1.5;
 			}
 			if (resistDamage == 1 || resistStun == 1) {
-				efficiency *= 0.75;
+				predata.bindEff *= 0.75;
 			}
 			if (resistDamage == 2) {
-				efficiency *= 0.5;
+				predata.bindEff *= 0.5;
 			}
 			if (resistStun == 2) {
-				efficiency *= 0.5;
+				predata.bindEff *= 0.5;
 			}
-			if (predata.vulnerable || Enemy.boundLevel > Enemy.Enemy.maxhp) {
-				efficiency *= 2;
+			if (Enemy.boundLevel > Enemy.Enemy.maxhp) {
+				predata.bindEff *= 2;
 			}
 
 			if (!(Enemy.boundLevel > 0)) {
@@ -791,10 +791,10 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			}
 
 
-			let amt = efficiency * (predata.bind ? predata.bind : predata.dmg);
-			if (predata.vulnerable && efficiency * (predata.bind ? predata.bind : predata.dmg) > 0.01 && Enemy.boundLevel < Enemy.Enemy.maxhp * 0.4) {
+			let amt = predata.bindEff * (predata.bind ? predata.bind : predata.dmg);
+			/*if (predata.vulnerable && predata.bindEff * (predata.bind ? predata.bind : predata.dmg) > 0.01 && Enemy.boundLevel < Enemy.Enemy.maxhp * 0.4) {
 				amt += Enemy.Enemy.maxhp * 0.2;
-			}
+			}*/
 			// Determine binding type based on damage and spell -- best guess
 			if (amt > 0 && !predata.bindType) {
 				if (KDDamageBinds[predata.type]) predata.bindType = KDDamageBinds[predata.type];

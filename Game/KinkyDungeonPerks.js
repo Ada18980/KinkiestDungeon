@@ -247,6 +247,7 @@ let KinkyDungeonStatsPresets = {
 	"ResilientFoes": {category: "Enemies", id: "ResilientFoes", cost: -1},
 	"KillSquad": {category: "Major", id: 41, cost: -3, block: ["Conspicuous"]},
 	"Stealthy": {category: "Major", id: 38, cost: 0},
+	"HighProfile": {category: "Map", id: "HighProfile", cost: 0},
 	"Conspicuous": {category: "Enemies", id: 39, cost: -1, block: ["KillSquad"]},
 	"Dominant": {category: "Map", id: "Dominant", cost: 2, block: ["Oppression"]},
 	"Oppression": {category: "Map", id: 50, cost: -1, block: ["Dominant"]},
