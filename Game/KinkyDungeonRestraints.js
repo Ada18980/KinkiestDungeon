@@ -4257,3 +4257,55 @@ function KDGetRemoveSFX(restraint) {
 	}
 	return null;
 }
+
+/**
+ *
+ * @param {item} item
+ * @param {number} level
+ * @returns {boolean}
+ */
+function KDHasRemovableCurse(item, level) {
+	if (item.curse && KDCurses[item.curse] && KDCurses[item.curse].level <= level) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ *
+ * @param {item} item
+ * @param {number} level
+ * @returns {boolean}
+ */
+function KDHasRemovableHex(item, level) {
+	if (item.events && item.events.some((event) => {
+		return event.trigger == "CurseTransform" && KDEventHexModular[event.original] && KDEventHexModular[event.original].level <= level;
+	})) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ *
+ * @param {item} item
+ * @param {number} level
+ * @returns {KinkyDungeonEvent[]}
+ */
+function KDGetRemovableHex(item, level) {
+	if (item.events) {
+		return item.events.filter((event) => {
+			return event.trigger == "CurseTransform" && KDEventHexModular[event.original] && KDEventHexModular[event.original].level <= level;
+		});
+	}
+	return [];
+}
+
+/**
+ *
+ * @param {item} item
+ * @returns {KDInventoryVariant}
+ */
+function KDGetInventoryVariant(item) {
+	return KinkyDungeonInventoryVariants[item.inventoryAs || item.name];
+}

@@ -195,6 +195,8 @@ let KDOptOut = false;
 /**
 *  @typedef {{
 * InventoryAction: string,
+* CurseLevel: number,
+* UsingConsumable: string,
 * BondageTarget: number,
 * KeysNeeded: boolean,
 * JailRemoveRestraintsTimer: number;
@@ -302,19 +304,25 @@ let KDOptOut = false;
 * HighestLevel: number,
 * KDChasingEnemies: entity[],
 * ShopRewardProgram: number,
+* ShopRewardProgramThreshold: number,
 * tickAlertTimer: boolean,
 * HostileFactions: string[],
 * MovePoints: number,
 * Wait: number,
+* TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	TeleportLocations: {},
+	CurseLevel: 0,
+	UsingConsumable: "",
 	MovePoints: 0,
 	InventoryAction: "",
 	BondageTarget: -1,
 	ShopRewardProgram: 0,
+	ShopRewardProgramThreshold: 500,
 
 	QuickLoadouts: {},
 	CurrentLoadout: 0,

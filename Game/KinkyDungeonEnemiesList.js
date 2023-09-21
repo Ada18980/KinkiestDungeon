@@ -832,7 +832,7 @@ let KinkyDungeonEnemies = [
 	{name: "Cyborg", faction: "AncientRobot",
 		playLine: "Cyborg",
 		bound: "Cyborg", color: "#2a319c",
-		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "elite", "robot", "cyborg", "cyberdollrestraints", "controlharness", "handcuffer", "antiMagic",
+		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "elite", "robot", "cyborg", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer", "antiMagic",
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
 		noDisplace: true, disarm: 0.5,
 		armor: 2,
@@ -845,6 +845,9 @@ let KinkyDungeonEnemies = [
 		Sound: {
 			baseAmount: 3.5,
 			alertAmount: 8,
+		},
+		RestraintFilter: {
+			requiredItems: ["CyberDollJacket"],
 		},
 		events: [
 			{trigger: "defeat", type: "delete", chance: 1.0},

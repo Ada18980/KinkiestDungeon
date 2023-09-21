@@ -490,6 +490,9 @@ const KDSprites = {
 	"l": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
+	";": (x, y, Fog, noReplace) => {
+		return "Floor";
+	},
 	"V": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
@@ -528,6 +531,11 @@ const KDOverlays = {
 	},
 	"l": (x, y, Fog, noReplace) => {
 		return "Leyline";
+	},
+	";": (x, y, Fog, noReplace) => {
+		let tile = KinkyDungeonTilesGet(x + "," + y);
+		if (tile?.Portal) return tile.Portal;
+		return "";
 	},
 	"+": (x, y, Fog, noReplace) => {
 		return "Charger";

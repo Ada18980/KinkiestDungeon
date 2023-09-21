@@ -1186,6 +1186,7 @@ interface KinkyDungeonEvent {
 	distract?: number;
 	mult?: number;
 	kind?: string;
+	original?: string;
 	variance?: number;
 	damage?: string;
 	buffTypes?: string[];

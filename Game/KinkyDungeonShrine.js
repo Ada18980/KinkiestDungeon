@@ -190,7 +190,8 @@ function KDAddBasic(item) {
 }
 
 function KinkyDungeonPayShrine(type) {
-	KinkyDungeonGold -= KinkyDungeonShrineCost(type);
+	let cost = KinkyDungeonShrineCost(type);
+	KinkyDungeonGold -= cost;
 	let ShrineMsg = "";
 	let rep = 0;
 
@@ -245,6 +246,17 @@ function KinkyDungeonPayShrine(type) {
 			ShrineMsg = TextGet("KinkyDungeonPayShrineCommerce").replace("ItemBought", TextGet("KinkyDungeonInventoryItem" + item.name));
 			KDMapData.ShopItems.splice(KinkyDungeonShopIndex, 1);
 			if (KinkyDungeonShopIndex > 0) KinkyDungeonShopIndex -= 1;
+
+			KDGameData.ShopRewardProgram += cost;
+			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, true);
+			if (!KDGameData.ShopRewardProgramThreshold) KDGameData.ShopRewardProgramThreshold = 500;
+			if (!KDGameData.ShopRewardProgram) KDGameData.ShopRewardProgram = 0;
+			if (point && KDGameData.ShopRewardProgram > KDGameData.ShopRewardProgramThreshold) {
+				KDGameData.ShopRewardProgram = 0;
+				KDGameData.ShopRewardProgramThreshold += 100;
+				KinkyDungeonMapSet(point.x, point.y, ';');
+				KinkyDungeonTilesSet("" + (point.x) + "," + (point.y), {Portal: "CommercePortal", Light: 5, lightColor: 0xffff88});
+			}
 
 			rep = item.rarity + 1;
 			KDSendStatus('goddess', type, 'shrineBuy');

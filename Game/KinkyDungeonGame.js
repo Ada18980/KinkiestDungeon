@@ -61,7 +61,7 @@ let KinkyDungeonPOI = [];
 let KDDefaultAvoidTiles = "gtVN@";
 let KinkyDungeonGroundTiles = "023w][?/";
 let KinkyDungeonWallTiles = "14";
-let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@lSsRrdzTgLNVt5"; // Objects which can be moved into: floors, debris, open doors, staircases
+let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@l;SsRrdzTgLNVt5"; // Objects which can be moved into: floors, debris, open doors, staircases
 // 5 is skinned floor, you can give it whatever sprite you want
 // 6 is skinned wall, you can give it whatever sprite you want
 let KinkyDungeonMovableTilesSmartEnemy = "D" + KinkyDungeonMovableTilesEnemy; //Smart enemies can open doors as well
@@ -512,9 +512,7 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
 	KDUpdateEnemyCache = true;
 
-
 	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
-
 
 	// Load the room
 	let NewMapData = JSON.parse(JSON.stringify(KDWorldMap[x + ',' + y].data[room]));
