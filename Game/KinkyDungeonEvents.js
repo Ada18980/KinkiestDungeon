@@ -2664,7 +2664,7 @@ let KDEventMapSpell = {
 	},
 	"playerCast": {
 		"ArcaneStore": (e, spell, data) => {
-			if (data.spell && data.spell.name != "ArcaneBlast" && data.manacost > 0 && !KinkyDungeonFlags.get("ArcaneStore" + data.castID)) {
+			if (data.spell && KinkyDungeonStatMana + KinkyDungeonStatManaPool > KinkyDungeonStatManaMax * 0.2 && data.manacost > 0 && !KinkyDungeonFlags.get("ArcaneStore" + data.castID)) {
 				let player = KinkyDungeonPlayerEntity;
 				let buff = KDEntityGetBuff(player, "ArcaneEnergy");
 				let max = KinkyDungeonStatManaMax + KDEntityBuffedStat(player, "MaxArcaneEnergy");
@@ -2899,7 +2899,14 @@ let KDEventMapSpell = {
 		},
 		"ManaRegen": (e, spell, data) => {
 			if (KinkyDungeonStatMana + KinkyDungeonStatManaPool < KinkyDungeonStatManaMax * e.mult && !KinkyDungeonPlayerBuffs.ManaRegenSuspend) {
+
 				KinkyDungeonChangeMana(e.power, false, 0, false, false);
+				if (KinkyDungeonStatMana > KinkyDungeonStatManaMax * e.mult) KinkyDungeonStatMana = KinkyDungeonStatManaMax * e.mult;
+			}
+			if (KinkyDungeonStatMana + KinkyDungeonStatManaPool <= KinkyDungeonStatManaMax * e.mult) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
+					{id: "InnerPowerArcaneStore", aura: "#ff5555", aurasprite: "Null", type: "DisableArcaneStore", duration: 2, power: 1, buffSprite: true}
+				);
 			}
 		},
 		"SatisfiedDamageBuff": (e, spell, data) => {

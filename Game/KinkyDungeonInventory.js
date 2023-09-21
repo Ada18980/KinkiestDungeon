@@ -913,7 +913,7 @@ function KinkyDungeonDrawInventory() {
 					KDSendInput("struggle", {group: sg.group, index: itemIndex, type: "Struggle"});
 				}
 				return true;
-			}, itemIndex >= 0 && KDCanStruggle(item), canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 55, TextGet("KinkyDungeonStruggle"),
+			}, itemIndex >= 0 && KDCanStruggle(item), canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 275, 55, TextGet("KinkyDungeonStruggle"),
 			(itemIndex >= 0 && KDCanRemove(item)) ? "#ffffff" : "#888888", "", "");
 			DrawButtonKDEx("removeItem", (bdata) => {
 				if (itemIndex >= 0 && KDCanRemove(item)) {
@@ -922,8 +922,19 @@ function KinkyDungeonDrawInventory() {
 					KDSendInput("struggle", {group: sg.group, index: itemIndex, type: (item.lock) ? "Unlock" : "Remove"});
 				}
 				return true;
-			}, itemIndex >= 0 && KDCanRemove(item), canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale + 60, 350, 55, TextGet("KinkyDungeon" + ((item.lock) ? "Unlock" : "Remove")),
+			}, itemIndex >= 0 && KDCanRemove(item), canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale + 60, 275, 55, TextGet("KinkyDungeon" + ((item.lock) ? "Unlock" : "Remove")),
 			(itemIndex >= 0 && KDCanRemove(item)) ? "#ffffff" : "#888888", "", "");
+
+			if (KDGameData.InventoryAction) {
+				DrawButtonKDEx("inventoryAction", (bdata) => {
+					KDSendInput("inventoryAction", {player: KinkyDungeonPlayerEntity, item: filteredInventory[KinkyDungeonCurrentPageInventory].item});
+					return true;
+				}, true, canvasOffsetX_ui + 640*KinkyDungeonBookScale + 325, canvasOffsetY_ui + 483*KinkyDungeonBookScale + 60, 275, 55,
+				TextGet("KDInventoryAction" + KDGameData.InventoryAction),
+				KDInventoryAction[KDGameData.InventoryAction] && KDInventoryAction[KDGameData.InventoryAction].valid(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item)
+					? "#ffffff" : "#888888",
+				"", "");
+			}
 		}
 	}
 	if (KinkyDungeonCurrentPageInventory >= filteredInventory.length) KinkyDungeonCurrentPageInventory = Math.max(0, KinkyDungeonCurrentPageInventory - 1);

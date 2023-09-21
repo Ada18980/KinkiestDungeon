@@ -29,6 +29,8 @@ let KinkyDungeonConsumables = {
 
 	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock"},
 	"CuffKeys" : {name: "CuffKeys", rarity: 0, shop: false, type: "CuffKeys", noConsumeOnUse: true},
+
+	"DivineTear" : {name: "DivineTear", rarity: 4, shop: true, delay: 3, power: 10, noHands: true, duration: 0, sfx: "Cookie", type: "RemoveCurseOrHex", noConsumeOnUse: true},
 };
 
 // Separate for organizational purposes
@@ -67,6 +69,18 @@ let KinkyDungneonShopRestraints = {
 
 /** @type {Record<string, (consumable) => void>} */
 let KDConsumableEffects = {
+	"RemoveCurseOrHex": (Consumable) => {
+		if (KinkyDungeonAllRestraintDynamic().some((r) => {return KDHasRemovableCurse(r.item, Consumable.power) || KDHasRemovableHex(r.item, Consumable.power);})) {
+			KDGameData.InventoryAction = "RemoveCurseOrHex";
+			KDGameData.CurseLevel = Consumable.power;
+			KDGameData.UsingConsumable = Consumable.name;
+			KinkyDungeonDrawState = "Inventory";
+			KinkyDungeonCurrentFilter = Restraint;
+			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHex"), "#ff5555", 1, true);
+		} else {
+			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHexFail"), "#ff5555", 1, true);
+		}
+	},
 	"subAdd": (Consumable) => {
 		let amount = Consumable.data?.subAdd || 5;
 		KinkyDungeonChangeRep("Ghost", amount);

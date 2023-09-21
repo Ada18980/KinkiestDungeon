@@ -4,6 +4,72 @@
  * @type {Record<string, KDInventoryActionDef>}
  */
 let KDInventoryAction = {
+	"RemoveCurseOrHex": {
+		valid: (player, item) => {
+			if (!(item?.type == Restraint)) return false;
+			return KDHasRemovableCurse(item, KDGameData.CurseLevel) || KDHasRemovableHex(item, KDGameData.CurseLevel);
+		},
+		/** Happens when you click the button */
+		click: (player, item) => {
+			if (KDHasRemovableCurse(item, KDGameData.CurseLevel) || KDHasRemovableHex(item, KDGameData.CurseLevel)) {
+				if (KDHasRemovableCurse(item, KDGameData.CurseLevel))
+					item.curse = undefined;
+				let removeHexes = {};
+				for (let e of KDGetRemovableHex(item, KDGameData.CurseLevel)) {
+					removeHexes[e.original] = true;
+				}
+				let newEvents = [];
+				for (let event of item.events) {
+					if (!event.original || !removeHexes[event.original]) newEvents.push(event);
+				}
+				item.events = newEvents;
+				let transform = false;
+				for (let event of newEvents) {
+					if (event.trigger == "CurseTransform") transform = true;
+				}
+				if (!transform) {
+					for (let event of newEvents) {
+						if (event.trigger == "curseCount") {
+							newEvents.splice(newEvents.indexOf(event), 1);
+							break;
+						}
+					}
+				}
+
+				if (KDGetInventoryVariant(item)) {
+					KDGetInventoryVariant(item).events = JSON.parse(JSON.stringify(item.events));
+				}
+
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Evil.ogg");
+
+				if (KDGameData.UsingConsumable) {
+					KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonInventoryItem" + KDGameData.UsingConsumable + "Use"), "#ff5555", 1, true);
+					let con = KinkyDungeonInventoryGetConsumable(KDGameData.UsingConsumable);
+					if (con) {
+						if (con.quantity > 1) con.quantity -= 1;
+						else {
+							KDGameData.InventoryAction = "";
+							KDGameData.UsingConsumable = "";
+							KinkyDungeonInventoryRemove(con);
+						}
+					}
+					KinkyDungeonLastAction = "";
+					KinkyDungeonAdvanceTime(1, true, true);
+				}
+			}
+		},
+		/** Return true to cancel it */
+		cancel: (player, delta) => {
+			if (delta > 0) {
+				if (KinkyDungeonLastTurnAction
+					|| !(KinkyDungeonAllRestraintDynamic().some((r) => {return KDHasRemovableCurse(r.item, KDGameData.CurseLevel) || KDHasRemovableHex(r.item, KDGameData.CurseLevel);}))) {
+					KDGameData.UsingConsumable = "";
+					return true;
+				}
+			}
+			return false;
+		},
+	},
 	"Bondage": {
 		/** Returns if the button is greyed out */
 		valid: (player, item) => {

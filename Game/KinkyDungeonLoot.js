@@ -469,6 +469,10 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 2);
 	}
+	else if (Loot.name == "DivineTear") {
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DivineTear, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 2);
+	}
 	else if (Loot.name == "Scrolls") {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 2);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, 2 + Math.floor(KDRandom() * 3));

@@ -916,6 +916,7 @@ LootBookshelfBlueKey,"You find a magical key lying atop an open tome!"
 LootBookshelfScroll,"You find a useful scroll wedged between some treatises!"
 LootBookshelfTrap,"You find a glowing book containing a binding spell!"
 
+LootChestDivineTear,"You discover a golden cookie, wrapped in foil. Beside it are two power crystals."
 LootChestMistressKey,You find a golden key surrounded by strange golden crystals.
 LootChestAncientCores,You find a set of strange golden crystals.
 LootChestScrolls,"You find a pack of scrolls used for spellcasting, and some strange golden crystals."
@@ -11514,6 +11515,7 @@ KDCasting,"Casting SPNME"
 KDClimbUpTrapped,"The door suddenly locks behind you!"
 
 KDInventoryActionBondage,"Apply To Target"
+KDInventoryActionRemoveCurseOrHex,"Purify"
 
 
 KDBondageFailNoTarget,You need to target an NPC
@@ -11608,7 +11610,7 @@ KDRepDescriptionElements,"Mata, Architect of Reality"
 KDRepDescriptionConjure,"Aether, Keeper of the Cosmos"
 KDRepDescriptionIllusion,"Oblivion, Keeper of Secrets"
 
-KinkyDungeonBuffArcaneEnergy,"Arcane Energy is stored by casting spells, up to 100% Max mana."
+KinkyDungeonBuffArcaneEnergy,"Arcane Energy is stored by casting spells, up to 100% Max mana. Note: Inner Power disables this."
 KinkyDungeonBuffBattleRhythm,"Battle Rhythm is gained by spending stamina through attacks, up to 50 total."
 
 KinkyDungeonSpellArcaneBlast,Arcane Blast
@@ -11656,3 +11658,23 @@ KDChaoticOverflow_Already,"You are already full of chaotic energy!"
 KDChaoticOverflow_End,"Chaotic energy overtakes you, crystallizing into physical form..."
 
 KinkyDungeonBuffChaoticOverflow,"Chaotic energy flows through you! You have a bad feeling about this..."
+
+
+ItemPickupDivineTear,"You find a shimmering macaron."
+KinkyDungeonInventoryItemDivineTear,Heavenly Crunch Macaron
+KinkyDungeonInventoryItemDivineTearUse,"You feel holy energy neutralizing the cursed magic..."
+KinkyDungeonInventoryItemDivineTearDesc,"Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful."
+KinkyDungeonInventoryItemDivineTearDesc2,"Unlocks a common cursed item and/or removes all curses from one currently worn item of your choice."
+
+rCommercePortal,"Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)"
+rCommercePortalGo,"(You step through the portal. An unperturbed shopkeeper greets you.)|Another visitor? Oh, it's just you~"
+dCommercePortal_Go,"(Enter the portal)"
+
+rCommercePortalReturn,"(It's the return portal)"
+rCommercePortalReturnGo,"(You step through the portal and return to your adventure)"
+dCommercePortalReturn_Go,"(Enter the portal)"
+
+KDRemoveCurseOrHex,Select a restraint to remove the curse from
+KDRemoveCurseOrHexFail,You don't have any restraints that can be removed
+
+KinkyDungeonBuffInnerPowerArcaneStore,"As you are low on mana, you are unable to store Arcane Energy."

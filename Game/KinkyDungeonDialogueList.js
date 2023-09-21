@@ -713,6 +713,89 @@ let KDDialogue = {
 			},
 		}
 	},
+	"CommercePortal": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("noportal", 1);
+			if (!KDGameData.TeleportLocations) KDGameData.TeleportLocations = {};
+			KDGameData.TeleportLocations.commerce = {x: KDCurrentWorldSlot.x, y: KDCurrentWorldSlot.y, type: KDGameData.RoomType, level: MiniGameKinkyDungeonLevel, checkpoint: MiniGameKinkyDungeonCheckpoint};
+			return false;
+		},
+		options: {
+			"Go": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					MiniGameKinkyDungeonLevel = 0;
+					KDCurrentWorldSlot = {x: 0, y: 0};
+					let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+
+					if (KDTile() && KDTile().Portal == "CommercePortal") {
+						KinkyDungeonMapSet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, '0');
+						KDTileDelete();
+					}
+
+					KinkyDungeonCreateMap(params, "ShopStart", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, false, undefined);
+
+					// Place return portal
+					KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, ';');
+					KinkyDungeonTilesSet("" + (KDMapData.EndPosition.x) + "," + (KDMapData.EndPosition.y), {Portal: "CommercePortalReturn", Light: 5, lightColor: 0xffff88});
+
+					KinkyDungeonSetFlag("noportal", 3);
+
+
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"CommercePortalReturn": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("noportal", 1);
+			return false;
+		},
+		options: {
+			"Go": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					if (!KDGameData.TeleportLocations) KDGameData.TeleportLocations = {};
+					MiniGameKinkyDungeonLevel = KDGameData.TeleportLocations.commerce.level;
+					KDCurrentWorldSlot = {x: KDGameData.TeleportLocations.commerce.x, y: KDGameData.TeleportLocations.commerce.y};
+					let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[KDGameData.TeleportLocations.commerce.checkpoint]];
+
+					if (KDTile() && KDTile().Portal == "CommercePortalReturn") {
+						KinkyDungeonMapSet(player.x, player.y, '0');
+						KDTileDelete();
+					}
+
+					KinkyDungeonCreateMap(params, KDGameData.TeleportLocations.commerce.type, "", KDGameData.TeleportLocations.commerce.level,
+						undefined, undefined, undefined, KDCurrentWorldSlot, true, undefined);
+
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
 	"TableFood": {
 		response: "Default",
 		clickFunction: (gagged, player) => {

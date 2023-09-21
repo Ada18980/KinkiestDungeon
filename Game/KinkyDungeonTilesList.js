@@ -354,6 +354,12 @@ let KDMoveObjectFunctions = {
 		}
 		return false;
 	},
+	';': (moveX, moveY) => {
+		if (!KinkyDungeonFlags.get("noportal") && KDTile(moveX, moveY) && KDTile(moveX, moveY).Portal) {
+			KDStartDialog(KDTile(moveX, moveY).Portal, "", true);
+		}
+		return false;
+	},
 	'D': (moveX, moveY) => { // Open the door
 		KinkyDungeonAdvanceTime(1, true);
 		let open = !KinkyDungeonStatsChoice.get("Doorknobs") || !KinkyDungeonIsHandsBound(true, true, 0.45);
