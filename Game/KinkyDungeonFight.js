@@ -226,6 +226,7 @@ function isUnarmed(weapon) {
 let KinkyDungeonEvasionPityModifier = 0; // Current value
 let KinkyDungeonEvasionPityModifierIncrementPercentage = 0.5; // Percent of the base hit chance to add
 let KDDefaultCrit = 1.3;
+let KDDefaultBindCrit = 1.3;
 
 function KinkyDungeonGetCrit(accuracy, Damage, Enemy) {
 	if (accuracy == undefined) accuracy = KinkyDungeonGetEvasion();
@@ -238,6 +239,20 @@ function KinkyDungeonGetCrit(accuracy, Damage, Enemy) {
 		critboost: 0.0,
 	};
 	KinkyDungeonSendEvent("calcCrit", data);
+
+	return (data.basecrit + data.critboost) * data.critmult;
+}
+function KinkyDungeonGetBindCrit(accuracy, Damage, Enemy) {
+	if (accuracy == undefined) accuracy = KinkyDungeonGetEvasion();
+	let data = {
+		Damage: Damage,
+		accuracy: accuracy,
+		enemy: Enemy,
+		basecrit: Damage?.bindcrit || Damage?.crit || KDDefaultBindCrit,
+		critmult: 1.0,
+		critboost: 0.0,
+	};
+	KinkyDungeonSendEvent("calcBindCrit", data);
 
 	return (data.basecrit + data.critboost) * data.critmult;
 }
@@ -507,8 +522,9 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		spell: Spell,
 		bullet: bullet,
 		attacker: attacker,
-		nocrit: noVuln || Spell?.nocrit || Enemy?.Enemy.tags?.nocrit || Damage?.nocrit,
+		nocrit: Spell?.nocrit || Enemy?.Enemy.tags?.nocrit || Damage?.nocrit,
 		crit: KDDefaultCrit,
+		bindcrit: KDDefaultBindCrit,
 		type: (Damage) ? Damage.type : 0,
 		bufftype: (Damage) ? Damage.type : 0,
 		time: (Damage) ? Damage.time : 0,
@@ -528,6 +544,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		vulnConsumed: false,
 		critical: Critical,
 		forceCrit: false,
+		customCrit: false,
 	};
 
 	if (KDDamageEquivalencies[predata.type]) predata.bufftype = KDDamageEquivalencies[predata.type];
@@ -550,6 +567,14 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	if (!predata.nocrit && (predata.faction == "Player" || predata.forceCrit) && predata.type != 'heal') {
 		if ((predata.vulnerable && (predata.dmg > 0.5 || predata.bind > 1)) || predata.forceCrit) {
 			predata.crit = KinkyDungeonGetCrit(KDGetSpellAccuracy(), Damage, Enemy) || KDDefaultCrit;
+			predata.bindcrit = KinkyDungeonGetBindCrit(KDGetSpellAccuracy(), Damage, Enemy) || KDDefaultBindCrit;
+
+			predata.critical = true;
+			if (!predata.forceCrit && (predata.dmg > 0 || predata.bind > 0)) {
+				predata.vulnConsumed = true;
+			}
+
+			KinkyDungeonSendEvent("duringCrit", predata);
 			let dmgBonus = predata.dmg * (predata.crit - 1);
 			predata.dmg = Math.max(0, predata.dmg + dmgBonus);
 			if (!NoMsg)
@@ -557,11 +582,9 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 					.replace("AMOUNT", "" + Math.round(10 * dmgBonus))
 					.replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), "lightgreen", 2);
 
-			predata.critical = true;
 
-			if (!predata.forceCrit && (predata.dmg > 0 || predata.bind > 0)) {
-				predata.vulnConsumed = true;
-			}
+
+			KinkyDungeonSendEvent("afterCrit", predata);
 		}
 	}
 
@@ -700,7 +723,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			else if (!(Spell && Spell.hitsfx) && predata.dmgDealt > 0 && bullet) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DealDamage.ogg");
 			if (Damage && Damage.damage) {
 				if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
-					if (predata.critical) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: {x: Enemy.x, y: Enemy.y - 0.5}, Color: "#ffff00", Delay: Delay});
+					if (predata.critical && !predata.customCrit) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: {x: Enemy.x, y: Enemy.y - 0.5}, Color: "#ffff00", Delay: Delay});
 					KDDamageQueue.push({floater: Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), Entity: Enemy, Color: "#ff4444", Delay: Delay});
 				}
 				//KinkyDungeonSendFloater(Enemy, Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), "#ff4444");
@@ -843,7 +866,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			else Enemy.slow = Math.max(Enemy.slow, time);
 		}
 
-		if (predata.vulnConsumed) {
+		if (predata.vulnConsumed && !noVuln) {
 			Enemy.vulnerable = 0;
 		}
 
@@ -1014,7 +1037,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 		eva: !disarm && evaded,
 		Damage: Damage,
 		buffdmg: buffdmg,
-		vulnConsumed: false,
+		vulnConsumed: Enemy.vulnerable > 0,
 		critical: false,
 		vulnerable: (Enemy.vulnerable || (KDHostile(Enemy) && !Enemy.aware)) && dmg && !dmg.novulnerable && (!Enemy.Enemy.tags || !Enemy.Enemy.tags.nonvulnerable),
 	};
@@ -1022,7 +1045,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 
 	if (predata.buffdmg) dmg.damage = Math.max(0, dmg.damage + predata.buffdmg);
 
-	if (predata.vulnerable && (predata.eva)) {
+	/*if (predata.vulnerable && (predata.eva)) {
 		let crit = KinkyDungeonGetCrit(KinkyDungeonGetEvasion(), KinkyDungeonPlayerDamage, Enemy) || KDDefaultCrit;
 		let dmgBonus = Math.max(Math.min(dmg.damage, KDVulnerableDmg), dmg.damage * (crit - 1));
 		dmg.damage = Math.max(0, dmg.damage + dmgBonus);
@@ -1033,7 +1056,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 		predata.critical = true;
 		if (dmg.damage > 0 || dmg.bind > 0)
 			predata.vulnConsumed = true;
-	}
+	}*/
 
 
 	let hp = Enemy.hp;
@@ -1492,7 +1515,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 					damage:(b.bullet.spell.aoedamage) ? b.bullet.spell.aoedamage : b.bullet.spell.power, type:b.bullet.spell.damage,
 					hitevents: b.bullet.spell.hitevents,
 					distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
-					bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
+					bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindcrit: b.bullet.spell.bindcrit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
 		KDMapData.Bullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false, d);
 
@@ -1537,7 +1560,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 							effectTileLinger: b.bullet.spell.effectTileLinger, effectTileDurationModLinger: b.bullet.spell.effectTileDurationModLinger,
 							hitevents: b.bullet.spell.hitevents,
 							damage: {
-								damage:b.bullet.spell.power, type:b.bullet.spell.damage, bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time,
+								damage:b.bullet.spell.power, type:b.bullet.spell.damage, bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindcrit: b.bullet.spell.bindcrit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time,
 								distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
 							}, lifetime: b.bullet.spell.lifetime + LifetimeBonus, name:b.bullet.name+"Hit", width:1, height:1}};
 					KDMapData.Bullets.push(newB);
@@ -1553,7 +1576,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 					damage:(b.bullet.spell.aoedamage) ? b.bullet.spell.aoedamage : b.bullet.spell.power, type:b.bullet.spell.damage,
 					hitevents: b.bullet.spell.hitevents,
 					distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
-					bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time
+					bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindcrit: b.bullet.spell.bindcrit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time
 				}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
 		KDMapData.Bullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false);
@@ -1615,7 +1638,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 						damage:(b.bullet.spell.aoedamage) ? b.bullet.spell.aoedamage : b.bullet.spell.power, type:b.bullet.spell.damage, boundBonus: b.bullet.spell.boundBonus,
 						hitevents: b.bullet.spell.hitevents,
 						distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
-						bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height
+						bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindcrit: b.bullet.spell.bindcrit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height
 				}};
 			KDMapData.Bullets.push(newB);
 			KinkyDungeonUpdateSingleBulletVisual(newB, false);
@@ -1759,7 +1782,7 @@ function KinkyDungeonBulletTrail(b) {
 									damage:b.bullet.spell.trailPower, type:b.bullet.spell.trailDamage, boundBonus: b.bullet.spell.boundBonus,
 									hitevents: b.bullet.spell.hitevents,
 									distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
-									bind: b.bullet.spell.trailBind, crit: b.bullet.spell.crit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.trailTime}, lifetime: b.bullet.spell.trailLifetime, name:b.bullet.name+"Trail", width:1, height:1}};
+									bind: b.bullet.spell.trailBind, crit: b.bullet.spell.crit, bindcrit: b.bullet.spell.bindcrit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.trailTime}, lifetime: b.bullet.spell.trailLifetime, name:b.bullet.name+"Trail", width:1, height:1}};
 						KDMapData.Bullets.push(newB);
 						KinkyDungeonUpdateSingleBulletVisual(newB, false);
 					}

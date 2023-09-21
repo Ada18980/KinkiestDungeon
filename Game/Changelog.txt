@@ -1,19 +1,24 @@
 CURRENT CHANGELOGS
 
 Vague todo:
-- Multiclass spell point cost penalty
 - Automatic settings disable for potato PCs
-- Add blue chest in every floor?
-- Cursed items should allow stacking with everything
-- Add teleport to floor 0 temporarily after spending enough gold
-- Add single use curse remover item
--
+- Make enemies take time to teleport in from traps
+
+
+- Multiclass spell point cost penalty (done)
+- Add blue chest in every floor? (done)
+- Cursed items should allow stacking with everything (done)
+- Add teleport to floor 0 temporarily after spending enough gold (done)
+- Add single use curse remover item (done)
 
 
 4.71 (Sep 2023)
+- Replaced High Profile with Precise Targeting for Rogue class
+- Added High Profile perk
 - Added Commerce Goddess Rewards Program
 - Added Heavenly Crunch Macaron to shops and gold chests
-- Disabled Arcane Energy storage while below 20% max mana total (as wizard)
+- Inner Power now reduces mana costs instead of regenerating mana
+- Spell point costs are now doubled for spells obtained thru multiclass (will affect all classes in old saves :( )
 Bugfixes
 - Fix encased enemy sprite not showing
 - Fixed mimics being passive

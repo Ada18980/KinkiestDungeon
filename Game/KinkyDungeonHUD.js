@@ -315,10 +315,11 @@ function KinkyDungeonDrawInputs() {
 	if (KinkyDungeonPlayerDamage) {
 		let accuracy = KinkyDungeonGetEvasion();
 		let crit = KinkyDungeonGetCrit(accuracy, KinkyDungeonPlayerDamage);
+		let bindcrit = KinkyDungeonGetBindCrit(accuracy, KinkyDungeonPlayerDamage);
 		//if (accuracy != 1.0) {
 		let weapon = KinkyDungeonWeapons[KinkyDungeonPlayerWeapon] || KinkyDungeonPlayerDamage;
 		statsDraw.accuracy = {
-			text: TextGet("KinkyDungeonAccuracy") + Math.round(accuracy * 100) + "%, " + TextGet("KinkyDungeonCrit") + Math.round(crit * 100) + "%",
+			text: TextGet("KinkyDungeonAccuracy") + Math.round(accuracy * 100) + "%, " + TextGet("KinkyDungeonCrit") + Math.round(crit * 100) + "%, " + TextGet("KinkyDungeonBindCrit") + Math.round(bindcrit * 100) + "%",
 			count: Math.round(accuracy * 100) + "%",
 			icon: "infoAccuracy",//accuracy > weapon.chance * 1.01 ? "infoAccuracyBuff" : (accuracy < weapon.chance * 0.99 ? "infoAccuracyDebuff" : "infoAccuracy"),
 			countcolor: accuracy > weapon.chance * 1.01 ? "#c4efaa" : (accuracy < weapon.chance * 0.99 ? "#ff5555" : "#ffffff"),

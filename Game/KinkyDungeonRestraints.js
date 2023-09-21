@@ -3112,21 +3112,23 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 
 /**
  *
- * @param {restraint} oldRestraint
- * @param {restraint} newRestraint
+ * @param {restraint} oldRestraint - Restraint on bottom
+ * @param {restraint} newRestraint - Restraint on top
  * @param {item} [item]
  * @param {item} [ignoreItem] - Item to ignore for purpose of calculating size
  * @param {item} [linkUnderItem] - Item to ignore for total link chain calculation
  * @returns {boolean}
  */
 function KinkyDungeonIsLinkable(oldRestraint, newRestraint, item, ignoreItem, linkUnderItem) {
+	if (newRestraint.NoLinkOver) return false;
 	if (!oldRestraint.nonbinding && newRestraint.nonbinding) return false;
 	if (oldRestraint && newRestraint && oldRestraint && oldRestraint.Link) {
 		if (newRestraint.name == oldRestraint.Link) return true;
 	}
 	if (item && !KDCheckLinkSize(item, newRestraint, false, false, undefined, ignoreItem)) return false;
 	if (item && !KDCheckLinkTotal(item, newRestraint, linkUnderItem)) return false;
-	if (oldRestraint && newRestraint && oldRestraint && oldRestraint.LinkableBy && newRestraint.shrine) {
+	if (oldRestraint && newRestraint && oldRestraint && (oldRestraint.LinkableBy || oldRestraint.LinkAll) && newRestraint.shrine) {
+		if (oldRestraint.LinkAll) return true;
 		for (let l of oldRestraint.LinkableBy) {
 			for (let s of newRestraint.shrine) {
 				if (l == s) {
@@ -3162,7 +3164,9 @@ function KDCheckLinkTotal(oldRestraint, newRestraint, ignoreItem) {
 		let pass = false;
 		let r = KDRestraint(link);
 		if (link != ignoreItem) {
-			if (r.LinkableBy && newRestraint.shrine) {
+			if (r.LinkAll) {
+				pass = true;
+			} else if (r.LinkableBy && newRestraint.shrine) {
 				for (let l of r.LinkableBy) {
 					if (!pass)
 						for (let s of newRestraint.shrine) {
@@ -3197,7 +3201,7 @@ function KDUpdateLinkCaches(restraint) {
  * @returns {string[]}
  */
 function KDGetLinkCache(restraint) {
-	let cache = Object.assign([], KDRestraint(restraint).LinkableBy);
+	let cache = Object.assign([], KDRestraint(restraint).LinkableBy || []);
 	let link = restraint.dynamicLink;
 	while (link) {
 		let r = KDRestraint(link);
@@ -3205,7 +3209,7 @@ function KDGetLinkCache(restraint) {
 			for (let l of cache) {
 				if (!r.LinkableBy.includes(l)) cache.splice(cache.indexOf(l), 1);
 			}
-		} else return [];
+		} else if (!r.LinkAll) return [];
 		link = link.dynamicLink;
 	}
 	return cache;

@@ -309,6 +309,7 @@ let KDOptOut = false;
 * HostileFactions: string[],
 * MovePoints: number,
 * Wait: number,
+* Class: string,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
@@ -466,6 +467,7 @@ let KDGameDataBase = {
 	tickAlertTimer: false,
 	HostileFactions: [],
 	Wait: 0,
+	Class: "",
 };
 /**
  * @type {KDGameDataBase}

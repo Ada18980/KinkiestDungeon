@@ -436,6 +436,10 @@ interface KDRestraintPropsBase {
 	factionColor?: number[][],
 	/** Determines if it gets hidden by the 'Hide Armor' option */
 	armor?: boolean,
+	/** The item can be linked by anything */
+	LinkAll?: boolean,
+	/** The item cannot be linked over anything */
+	NoLinkOver?: boolean,
 	/** Power to display, not actual power */
 	displayPower?: number,
 };
@@ -1126,6 +1130,7 @@ interface weapon {
 	type: string;
 	bind?: number;
 	crit?: number;
+	bindcrit?: number;
 	bindType?: string;
 	distract?: number;
 	bindEff?: number;
@@ -1183,6 +1188,7 @@ interface KinkyDungeonEvent {
 	player?: boolean;
 	bind?: number;
 	crit?: number;
+	bindcrit?: number;
 	distract?: number;
 	mult?: number;
 	kind?: string;
@@ -1626,6 +1632,8 @@ interface spell {
 	aoe?: number;
 	/** bind */
 	bind?: number;
+	/** bind crit mult*/
+	bindcrit?: number;
 	/** distract */
 	distract?: number;
 	/** Bonus daMAGE TO BOUND TATRGETS */
@@ -1640,6 +1648,8 @@ interface spell {
 	chargecost?: number;
 	minRange?: number;
 	noSprite?: boolean;
+	/** Specific to a class */
+	classSpecific?: string;
 	/** Verbal, arms, or legs */
 	components?: string[];
 	/** Spell level */
