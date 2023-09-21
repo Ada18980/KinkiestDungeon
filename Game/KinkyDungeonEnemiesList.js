@@ -577,6 +577,9 @@ let KinkyDungeonEnemies = [
 			Resist: "Clang",
 			Damage: "ArmorHit",
 		},
+		GFX: {
+			lighting: true,
+		},
 		Sound: {
 			baseAmount: 0.0,
 			moveAmount: 10,
@@ -590,6 +593,9 @@ let KinkyDungeonEnemies = [
 		evasion: -0.5, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", bypass: true, difficulty: 0.15, guardChance: 0,
 		nonDirectional: true,
 		useLock: "White",
+		GFX: {
+			lighting: true,
+		},
 		visionRadius: 100, ambushRadius: 1.9, blindSight: 100, maxhp: 20, minLevel:2, weight:-1, movePoints: 1.5, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 3, dmgType: "tickle", fullBoundBonus: 1,
 		terrainTags: {"rubble": 100, "adjChest": 15, "passage": 14, "illusionRage": 2, "illusionAnger": 2}, allFloors: true, shrines: ["Illusion"],
 		dropTable: [{name: "RedKey", weight: 1}, {name: "Gold", amountMin: 10, amountMax: 40, weight: 6}, {name: "ScrollArms", weight: 1}, {name: "ScrollVerbal", weight: 1}, {name: "ScrollLegs", weight: 1}]},
@@ -597,12 +603,18 @@ let KinkyDungeonEnemies = [
 	{name: "VinePlant", faction: "Plant", clusterWith: "plant", color: "#00FF00", blockVisionWhileStationary: true, tags: KDMapInit(["nature", "removeDoorSpawn", "ignorenoSP", "plant", "minor", "melee", "slashsevereweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", specialCD: 99, specialAttack: "Stun", specialAttackPoints: 1, specialRemove: "Bind", difficulty: 0.05, guardChance: 0,
 		evasion: -0.5,
+		GFX: {
+			lighting: true,
+		},
 		nonDirectional: true,
 		visionRadius: 3, ambushRadius: 1.9, blindSight: 5, maxhp: 10, minLevel:2, weight:25, movePoints: 1.5, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
 	{name: "Bramble", faction: "Plant", clusterWith: "plant", color: "#00FF00", hitsfx: "DealDamage",
 		sneakThreshold: 0.01,
 		nonDirectional: true,
+		GFX: {
+			lighting: true,
+		},
 		tags: KDMapInit(["removeDoorSpawn", "immobile", "nature", "plant", "minor", "melee", "slashsevereweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist"]),
 		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "wander", specialCD: 2, specialAttack: "Slow", specialAttackPoints: 1,
 		visionRadius: 1.5, blindSight: 1.5, maxhp: 16, minLevel:0, weight:-80, movePoints: 99999, attackPoints: 1, attack: "MeleeWill", attackWidth: 8, attackRange: 1, power: 1, dmgType: "pain",
@@ -2463,6 +2475,9 @@ let KinkyDungeonEnemies = [
 		],
 		Resistance: {
 			profile: ["catgirl"],
+		},
+		GFX: {
+			lighting: true,
 		},
 		visionRadius: 10, ambushRadius: 2.01, blindSight: 10, maxhp: 12, minLevel:0, weight:5, movePoints: 1, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "charm", fullBoundBonus: 1,
 		terrainTags: {"secondhalf":5, "lastthird":5, "door": 50}, floors:KDMapInit(["tmb"]), shrines: ["Will"],
