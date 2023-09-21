@@ -302,7 +302,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 
 		{name: "ManaRegen", tags: ["mana", "utility"], school: "Special", manacost: 0, components: [], classSpecific: "Wizard", prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "ManaRegenSuspend", trigger: "playerCast", time:16},
+			{type: "ManaRegenSuspend", trigger: "afterPlayerCast", time:16},
 			{type: "ManaRegenSuspend", trigger: "playerAttack", time:16},
 			//{type: "ManaRegenOld", trigger: "tick", mult: 0.2, power: 0.5},
 			{type: "ManaRegen", trigger: "afterMultMana", mult: 0.2},
