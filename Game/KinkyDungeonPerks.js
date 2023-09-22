@@ -687,7 +687,7 @@ let KDPerkStart = {
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaRegen"));
 	},
 	MC_Rogue: () => {
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell("RogueTraps"));
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("RogueTargets"));
 	},
 	MC_Peasant: () => {
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Peasant"));
