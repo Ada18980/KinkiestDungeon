@@ -6107,6 +6107,7 @@ function KDMakeHighValue(enemy) {
 
 	// Hitpoint bonuses
 	let hp = Math.round(KDRandom()*10) + enemy.Enemy.maxhp * (1.5 + Math.round(KDRandom()*10)/10);
+	enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
 	enemy.Enemy.maxhp = hp;
 	enemy.hp = hp;
 
