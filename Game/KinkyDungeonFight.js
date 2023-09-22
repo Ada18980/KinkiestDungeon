@@ -811,6 +811,12 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			}
 			// Do the deed
 			KDTieUpEnemy(Enemy, amt, predata.bindType, predata.dmg);
+
+			if (!NoMsg)
+				KinkyDungeonSendTextMessage(4, TextGet("KDIsBound")
+					.replace("AMNT", "" + Math.round(10 * amt))
+					.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)), "lightgreen", 2);
+
 		}
 		if ((predata.dmg || predata.distract) && Enemy.Enemy.bound && (resistDamage < 2)
 			&& (predata.distract || KinkyDungeonDistractDamageTypes.includes(predata.type) || (KDLoosePersonalities.includes(Enemy.personality) && KinkyDungeonMasochistDamageTypes.includes(predata.type)))) {
@@ -851,7 +857,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				else if (KDLoosePersonalities.includes(Enemy.personality)) Thought = "Play";
 				if (!(Enemy.boundLevel > 0)) KDAddThought(Enemy.id, Thought, 6, 3);
 				KDAddThought(Enemy.id, Thought, 6, 3);
-				KDDamageQueue.push({floater: TextGet("KDHelpless"), Entity: {x: Enemy.x - 0.5 + Math.random(), y: Enemy.y - 0.5 + Math.random()}, Color: "#ff5555", Time: 2, Delay: Delay});
+				KDDamageQueue.push({floater: TextGet("KDHelpless"), Entity: {x: Enemy.x - 0.5 + Math.random(), y: Enemy.y - 1 + Math.random()}, Color: "#ff5555", Time: 2, Delay: Delay});
 			}
 			if (killed)
 				Enemy.hp = 0.001;
@@ -867,7 +873,8 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		}
 
 		if (predata.vulnConsumed && !noVuln) {
-			Enemy.vulnerable = 0;
+			KinkyDungeonSetEnemyFlag(Enemy, "removeVuln", 1);
+			//Enemy.vulnerable = 0;
 		}
 
 		if ((resistDamage < 2) && (KinkyDungeonVulnerableDamageTypes.includes(predata.type))) { // Being immune to the damage stops the stun as well
@@ -910,10 +917,11 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		Enemy.playerdmg += predata.dmgDealt;
 	}
 
-	if (!NoMsg && (predata.dmgDealt > 0 || !Spell || effect) && (!Damage || Damage.damage > 0)) KinkyDungeonSendActionMessage(4 + predata.dmgDealt * 0.01, (Damage && predata.dmgDealt > 0) ?
+	if (!NoMsg && (predata.dmgDealt > 0 || !Spell || effect) && (!Damage || Damage.damage > 0)) {KinkyDungeonSendActionMessage(4 + predata.dmgDealt * 0.01, (Damage && predata.dmgDealt > 0) ?
 		TextGet((Ranged) ? "PlayerRanged" + mod : "PlayerAttack" + mod).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)).replace("AttackName", atkname).replace("DamageDealt", "" + Math.round(predata.dmgDealt * 10)).replace("DamageType", ("" + damageName).toLowerCase())
 		: TextGet("PlayerMiss" + ((Damage && !miss) ? "Armor" : "")).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)),
 			(Damage && (predata.dmg > 0 || effect)) ? "orange" : "#ff0000", 2, undefined, undefined, Enemy);
+	}
 
 	if (Enemy && Enemy.Enemy && KDAmbushAI(Enemy) && Spell) {
 		Enemy.ambushtrigger = true;
@@ -1118,7 +1126,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 	KinkyDungeonSendEvent("afterPlayerAttack", data);
 
 	if (data.vulnConsumed) {
-		Enemy.vulnerable = 0;
+		KinkyDungeonSetEnemyFlag(Enemy, "removeVuln", 1);
 	}
 }
 

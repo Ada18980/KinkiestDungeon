@@ -4327,6 +4327,13 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	if (KDGameData.MovePoints < 0 || KinkyDungeonStatBlind) {
 		KinkyDungeonSetFlag("Quickness", 0);
 	}
+
+	for (let en of KDMapData.Entities) {
+		if (KDEnemyHasFlag(en, "removeVuln")) {
+			en.vulnerable = 0;
+		}
+	}
+
 	KinkyDungeonSendEvent("tickAfter", {delta: delta});
 
 	KinkyDungeonUpdateStats(0);

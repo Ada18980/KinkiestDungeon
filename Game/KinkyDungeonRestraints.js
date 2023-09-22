@@ -1797,6 +1797,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	 * hasAffinity: boolean,
 	 * restraintEscapeChance: number,
 	 * cost: number,
+	 * noise: number,
 	 * wcost: number,
 	 * escapePenalty: number,
 	 * willEscapePenalty: number,
@@ -1814,6 +1815,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		helpChance: helpChance,
 		cutSpeed: 0.25,
 		affinity: affinity,
+		noise: StruggleType == "Struggle" ? 4 : 0,
 		strict: KinkyDungeonStrictness(true, struggleGroup, restraint),
 		hasAffinity: KinkyDungeonGetAffinity(true, affinity, struggleGroup),
 		restraintEscapeChance: KDRestraint(restraint).escapeChance[StruggleType],
@@ -2494,8 +2496,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				result: Pass,
 			});
 			KinkyDungeonLastAction = "Struggle";
-			if (StruggleType == "Struggle") {
-				KinkyDungeonMakeNoise(4, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+			if (data.noise) {
+				KinkyDungeonMakeNoise(data.noise, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			}
 		}
 

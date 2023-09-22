@@ -5059,13 +5059,14 @@ function KDPushModifier(power, enemy, allowNeg = false) {
  * @param {any} Damage
  * @returns {*}
  */
-function KDTieUpEnemy(enemy, amount, type = "Leather", Damage) {
+function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, noMsg) {
 	if (!enemy) return 0;
 	let data = {
 		amount: amount,
 		specialAmount: amount,
 		type: type, // Type of BONDAGE, e.g. leather, rope, etc
 		Damage: Damage,
+		noMsg: noMsg,
 	};
 
 	KinkyDungeonSendEvent("bindEnemy", data);
@@ -5077,6 +5078,10 @@ function KDTieUpEnemy(enemy, amount, type = "Leather", Damage) {
 		if (!enemy.specialBoundLevel)
 			enemy.specialBoundLevel = {};
 		enemy.specialBoundLevel[type] = (enemy.specialBoundLevel[type] || 0) + data.specialAmount;
+	}
+
+	if (!data.noMsg) {
+		KDDamageQueue.push({floater: TextGet("KDTieUp").replace("AMNT", Math.round(data.amount*10) + ""), Entity: {x: enemy.x, y: enemy.y - 1}, Color: "#ff8800", Delay: 0});
 	}
 
 	return data;
