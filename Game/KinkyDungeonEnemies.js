@@ -5076,7 +5076,7 @@ function KDPushModifier(power, enemy, allowNeg = false) {
  * @param {any} Damage
  * @returns {*}
  */
-function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, noMsg) {
+function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, noMsg, Delay) {
 	if (!enemy) return 0;
 	let data = {
 		amount: amount,
@@ -5098,7 +5098,7 @@ function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, noMsg) {
 	}
 
 	if (!data.noMsg) {
-		KDDamageQueue.push({floater: TextGet("KDTieUp").replace("AMNT", Math.round(data.amount*10) + ""), Entity: {x: enemy.x, y: enemy.y - 1}, Color: "#ff8800", Delay: 0});
+		KDDamageQueue.push({floater: TextGet("KDTieUp").replace("AMNT", Math.round(data.amount*10) + ""), Entity: enemy, Color: "#ff8800", Delay: Delay});
 	}
 
 	return data;

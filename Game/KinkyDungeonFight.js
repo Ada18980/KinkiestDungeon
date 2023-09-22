@@ -545,6 +545,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		critical: Critical,
 		forceCrit: false,
 		customCrit: false,
+		Delay: Delay,
 	};
 
 	if (KDDamageEquivalencies[predata.type]) predata.bufftype = KDDamageEquivalencies[predata.type];
@@ -725,8 +726,9 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			else if (!(Spell && Spell.hitsfx) && predata.dmgDealt > 0 && bullet) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DealDamage.ogg");
 			if (Damage && Damage.damage) {
 				if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
-					if (predata.critical && !predata.customCrit) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: {x: Enemy.x, y: Enemy.y - 0.5}, Color: "#ffff00", Delay: Delay});
-					KDDamageQueue.push({floater: Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), Entity: Enemy, Color: "#ff4444", Delay: Delay});
+					if (predata.critical && !predata.customCrit) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: Enemy, Color: "#ffff00", Delay: Delay});
+					KDDamageQueue.push({floater: Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[predata.type].name)} ${TextGet("KDdmg")}`,
+						Entity: Enemy, Color: "#ff4444", Delay: Delay, });
 				}
 				//KinkyDungeonSendFloater(Enemy, Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), "#ff4444");
 			}
@@ -822,7 +824,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				}
 			}
 			// Do the deed
-			KDTieUpEnemy(Enemy, amt, predata.bindType, predata.dmg);
+			KDTieUpEnemy(Enemy, amt, predata.bindType, predata.dmg, false, Delay);
 
 			if (!NoMsg && predata.faction == "Player") {
 				KinkyDungeonSendTextMessage(4, TextGet(effmult == 1 ? "KDIsBound" : (effmult > 1 ? "KDDisabledBonus" : "KDUnflinchingPenalty"))
@@ -870,7 +872,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				else if (KDLoosePersonalities.includes(Enemy.personality)) Thought = "Play";
 				if (!(Enemy.boundLevel > 0)) KDAddThought(Enemy.id, Thought, 6, 3);
 				KDAddThought(Enemy.id, Thought, 6, 3);
-				KDDamageQueue.push({floater: TextGet("KDHelpless"), Entity: {x: Enemy.x - 0.5 + Math.random(), y: Enemy.y - 1 + Math.random()}, Color: "#ff5555", Time: 2, Delay: Delay});
+				KDDamageQueue.push({floater: TextGet("KDHelpless"), Entity: Enemy, Color: "#ff5555", Time: 2, Delay: Delay});
 			}
 			if (killed)
 				Enemy.hp = 0.001;
@@ -943,7 +945,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 	if (!Damage && predata.type != "inert" && predata.dmgDealt <= 0) {
 		KDAddThought(Enemy.id, "Laugh", 4, 1);
-		KDDamageQueue.push({floater: TextGet("KDMissed"), Entity: {x: Enemy.x - 0.5 + Math.random(), y: Enemy.y - 0.5 + Math.random()}, Color: "#ff5555", Time: 2, Delay: Delay});
+		KDDamageQueue.push({floater: TextGet("KDMissed"), Entity: Enemy, Color: "#ff5555", Time: 2, Delay: Delay});
 		if (KDRandom() < actionDialogueChanceIntense)
 			KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
 
@@ -956,7 +958,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			KDAddThought(Enemy.id, "Laugh", 5, 3);
 			if (KDRandom() < actionDialogueChanceIntense)
 				KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
-			KDDamageQueue.push({floater: TextGet("KDBlocked"), Entity: {x: Enemy.x - 0.5 + Math.random(), y: Enemy.y - 0.5 + Math.random()}, Color: "#ff5555", Time: 2, Delay: Delay});
+			KDDamageQueue.push({floater: TextGet("KDBlocked"), Entity: Enemy, Color: "#ff5555", Time: 2, Delay: Delay});
 		}
 
 		let type = KinkyDungeonMeleeDamageTypes.includes(predata.type) ? "Block" : "Resist";

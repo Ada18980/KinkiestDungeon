@@ -3054,14 +3054,14 @@ let KDEventMapSpell = {
 				data.crit *= e.mult;
 				data.bindcrit *= e.mult;
 				KinkyDungeonSetEnemyFlag(data.enemy, "RogueTarget", -1);
-				KDDamageQueue.push({floater: TextGet("KDRogueCritical"), Entity: {x: data.enemy.x, y: data.enemy.y - 0.5}, Color: "#ff5555", Delay: 0});
+				KDDamageQueue.push({floater: TextGet("KDRogueCritical"), Entity: data.enemy, Color: "#ff5555", Delay: data.Delay});
 				data.customCrit = true;
 			}
 		},
 		"RogueBind": (e, spell, data) => {
 			if (data.dmg > 0 && data.critical && data.enemy && !data.customCrit && KDHostile(data.enemy)) {
 				if (data.bind || KinkyDungeonBindingDamageTypes.includes(data.type) || data.bindEff) {
-					KDDamageQueue.push({floater: TextGet("KDBindCritical"), Entity: {x: data.enemy.x, y: data.enemy.y - 0.5}, Color: "#ff55aa", Delay: 0});
+					KDDamageQueue.push({floater: TextGet("KDBindCritical"), Entity: data.enemy, Color: "#ff55aa", Delay: data.Delay});
 					data.customCrit = true;
 				}
 

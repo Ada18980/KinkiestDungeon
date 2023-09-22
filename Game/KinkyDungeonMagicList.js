@@ -1132,8 +1132,8 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "GagBolt", tags: ["binding", "leather", "bolt", "offense"], minRange: 1.5, sfx: "MagicSlash", hitsfx: "LightSwing", school: "Conjure", manacost: 3, components: ["Arms"], level:1, type:"bolt",
 		projectileTargeting:true, onhit:"", time: 0,  power: 2.0, delay: 0, range: 15, damage: "chain", speed: 5, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "gagSpell"},
 		events: [
-			{type: "SilenceHumanoid", trigger: "bulletHitEnemy", time: 15},
 			{type: "ElementalIfNotSilenced", trigger: "bulletHitEnemy", damage: "chain", power: 0, bind: 4},
+			{type: "SilenceHumanoid", trigger: "bulletHitEnemy", time: 15},
 		], effectTileDurationMod: 10, effectTileAoE: 0.5, effectTile: {
 			name: "Belts",
 			duration: 20,
@@ -1162,8 +1162,8 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "BlindfoldBolt", tags: ["binding", "leather", "bolt", "offense"], minRange: 1.5, sfx: "MagicSlash", hitsfx: "LightSwing", school: "Conjure", manacost: 3, components: ["Arms"], level:1, type:"bolt",
 		projectileTargeting:true, onhit:"", time: 0,  power: 2.0, delay: 0, range: 15, damage: "chain", speed: 5, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "blindfoldSpell"},
 		events: [
-			{type: "BlindHumanoid", trigger: "bulletHitEnemy", time: 20},
 			{type: "ElementalIfNotBlinded", trigger: "bulletHitEnemy", damage: "chain", power: 0, bind: 4},
+			{type: "BlindHumanoid", trigger: "bulletHitEnemy", time: 20},
 		], effectTileDurationMod: 10, effectTileAoE: 0.5, effectTile: {
 			name: "Belts",
 			duration: 20,
@@ -1172,8 +1172,8 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "CuffsBolt", tags: ["binding", "metal", "bolt", "offense"], minRange: 1.5, sfx: "MagicSlash", hitsfx: "LightSwing", school: "Conjure", manacost: 4, components: ["Arms"], level:1, type:"bolt",
 		projectileTargeting:true, onhit:"", time: 0,  power: 3.0, delay: 0, range: 15, damage: "chain", speed: 5, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 3, tag: "cuffsSpell"},
 		events: [
-			{type: "DisarmHumanoid", trigger: "bulletHitEnemy", time: 6},
 			{type: "ElementalIfNotDisarmed", trigger: "bulletHitEnemy", damage: "chain", power: 0, bind: 4},
+			{type: "DisarmHumanoid", trigger: "bulletHitEnemy", time: 6},
 		], effectTileDurationMod: 10, effectTileAoE: 0.5, effectTile: {
 			name: "Chains",
 			duration: 20,

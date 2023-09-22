@@ -173,12 +173,19 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../Models/Armbinder/Boxtie cross strap.png</key>
-            <key type="filename">../Models/Armbinder/Boxtie gwen strap.png</key>
-            <key type="filename">../Models/Armbinder/Boxtie.png</key>
-            <key type="filename">../Models/Armbinder/Wristtie cross strap.png</key>
-            <key type="filename">../Models/Armbinder/Wristtie gwen strap.png</key>
-            <key type="filename">../Models/Armbinder/Wristtie.png</key>
+            <key type="filename">../Models/Armbinder/BinderLeftBoxtie.png</key>
+            <key type="filename">../Models/Armbinder/BinderLeftWristtie.png</key>
+            <key type="filename">../Models/Armbinder/BinderRightBoxtie.png</key>
+            <key type="filename">../Models/Armbinder/CrossBoxtie.png</key>
+            <key type="filename">../Models/Armbinder/CrossWristtie.png</key>
+            <key type="filename">../Models/Armbinder/GwenBoxtie.png</key>
+            <key type="filename">../Models/Armbinder/GwenWristtie.png</key>
+            <key type="filename">../Models/Armbinder/SecureBoxtie.png</key>
+            <key type="filename">../Models/Armbinder/SecureWristtie.png</key>
+            <key type="filename">../Models/Armbinder/StrapsLeftBoxtie.png</key>
+            <key type="filename">../Models/Armbinder/StrapsLeftWristtie.png</key>
+            <key type="filename">../Models/Armbinder/StrapsRightBoxtie.png</key>
+            <key type="filename">../Models/Armbinder/StrapsRightWristtie.png</key>
             <key type="filename">../Models/ArmorChain/Shirt.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChest.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChestHogtie.png</key>
@@ -741,6 +748,21 @@
                 <rect>620,877,1240,1754</rect>
                 <key>scale9Paddings</key>
                 <rect>620,877,1240,1754</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/Armbinder/BinderRightWristtie.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>0,0,1,1</rect>
+                <key>scale9Paddings</key>
+                <rect>0,0,1,1</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
