@@ -25,8 +25,8 @@ let KinkyDungeonPreviewSpell = null;
 
 let KinkyDungeonSpellChoices = [0, 1, 2];
 let KinkyDungeonSpellChoicesToggle = [true, true];
-let KinkyDungeonSpellChoiceCount = 21;
-let KinkyDungeonSpellChoiceCountPerPage = 7;
+let KinkyDungeonSpellChoiceCount = 30;
+let KinkyDungeonSpellChoiceCountPerPage = 10;
 let KDSpellPage = 0;
 
 let KinkyDungeonSpellOffset = 100;
@@ -125,7 +125,7 @@ let KinkyDungeonSpellPress = "";
 function KinkyDungeonResetMagic() {
 	KinkyDungeonSpellChoices = [];
 	KinkyDungeonSpellChoicesToggle = [];
-	KinkyDungeonSpellChoiceCount = 21;
+	KinkyDungeonSpellChoiceCount = 30;
 	KinkyDungeonSpells = [];
 	Object.assign(KinkyDungeonSpells, KinkyDungeonSpellsStart); // Copy the dictionary
 	KinkyDungeonMysticSeals = 1.3;
@@ -342,12 +342,7 @@ function KinkyDungeonHandleSpell() {
 	let clicked = false;
 	for (let i = 0; i < KinkyDungeonSpellChoiceCountPerPage; i++) {
 		let index = i + KDSpellPage*KinkyDungeonSpellChoiceCountPerPage;
-		let buttonWidth = 40;
-		if (MouseIn(1650 + (90 - buttonWidth), 180 + i*KinkyDungeonSpellChoiceOffset - buttonWidth, buttonWidth, buttonWidth) && KinkyDungeonSpellChoices[i]) {
-			KinkyDungeonDrawState = "MagicSpells";
-			KDSwapSpell = index;
-			return true;
-		}
+
 		if (KinkyDungeonSpellPress == KinkyDungeonKeySpell[i]) {
 			let result = KinkyDungeonClickSpell(index);
 			spell = result.spell;
@@ -374,6 +369,34 @@ function KinkyDungeonHandleSpell() {
 	return false;
 }
 
+/**
+ *
+ * @param {spell} Spell
+ * @returns {number}
+ */
+function KinkyDungeonGetStaminaCost(Spell) {
+	let data = {
+		spell: Spell,
+		cost: Spell.staminacost || 0,
+		costscale: KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StaminaCostMult")),
+	};
+	KinkyDungeonSendEvent("calcStamina", data);
+	if (data.costscale) data.cost = Math.floor(1000* data.cost * data.costscale)/1000;
+	//if (data.costscale > 0) data.cost = Math.max(0, data.cost); // Keep it from rounding to 0
+	if (data.lvlcostscale && Spell.level && Spell.staminacost) data.cost += Spell.level * data.lvlcostscale;
+	KinkyDungeonSendEvent("beforeMultStamina", data);
+	KinkyDungeonSendEvent("calcMultStamina", data);
+	KinkyDungeonSendEvent("afterMultStamina", data);
+	KinkyDungeonSendEvent("afterCalcStamina", data);
+
+	return data.cost;
+}
+
+/**
+ *
+ * @param {spell} Spell
+ * @returns {number}
+ */
 function KinkyDungeonGetManaCost(Spell) {
 	let data = {
 		spell: Spell,
@@ -397,22 +420,23 @@ function KinkyDungeonGetManaCost(Spell) {
 	return data.cost;
 }
 
+/**
+ *
+ * @param {spell} Spell
+ * @returns {number}
+ */
 function KinkyDungeonGetChargeCost(Spell) {
 	let data = {
 		spell: Spell,
 		cost: Spell.chargecost || 0,
 		costscale: KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ChargeCostMult")),
-		lvlcostscale: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ChargeCostLevelMult"),
 	};
 	KinkyDungeonSendEvent("calcCharge", data);
 	if (data.costscale) data.cost = Math.floor(1000* data.cost * data.costscale)/1000;
-	if (data.lvlcostscale && Spell.level && Spell.manacost) data.cost += Spell.level * data.lvlcostscale;
 	KinkyDungeonSendEvent("beforeMultCharge", data);
+	KinkyDungeonSendEvent("calcMultCharge", data);
+	KinkyDungeonSendEvent("afterMultCharge", data);
 	KinkyDungeonSendEvent("afterCalcCharge", data);
-
-	if (KinkyDungeonStatsChoice.get("Slayer") && Spell.school == "Elements" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
-	if (KinkyDungeonStatsChoice.get("Conjurer") && Spell.school == "Conjure" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
-	if (KinkyDungeonStatsChoice.get("Magician") && Spell.school == "Illusion" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
 
 	return data.cost;
 }
@@ -1142,14 +1166,14 @@ function KinkyDungeonDrawMagic() {
 				let w = 225;
 				let h = 50;
 				let x_start = canvasOffsetX_ui + 640*KinkyDungeonBookScale + 40;
-				let y_start = canvasOffsetY_ui + 150;
+				let y_start = canvasOffsetY_ui + 50;
 				for (let I = 0; I < KinkyDungeonSpellChoiceCount; I++) {
 					let x = x_start + w * Math.floor(I / KinkyDungeonSpellChoiceCountPerPage);
 					let y = y_start + h * (I % KinkyDungeonSpellChoiceCountPerPage);
 
 					if (KinkyDungeonSpells[KinkyDungeonSpellChoices[I]])
 						KDDraw(kdcanvas, kdpixisprites, "kdspellPreview" + KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].name, KinkyDungeonRootDirectory + "Spells/" + KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].name + ".png", x - h, y, h, h);
-					DrawTextFitKD(`${1 + (I % KinkyDungeonSpellChoiceCountPerPage)}`, x - h, y + h*0.5, h*0.25, "#efefef", "#888888");
+					DrawTextFitKD(`${1 + (I % KinkyDungeonSpellChoiceCountPerPage)}`, x - h, y + h*0.5, h*0.5, "#efefef", "#888888");
 					DrawButtonKDEx("SpellSlotBook" + I, (bdata) => {
 						if (KinkyDungeonSpells[KinkyDungeonSpellChoices[I]] == spell) {
 							KDSendInput("spellRemove", {I:I});

@@ -1588,6 +1588,7 @@ interface spell {
 	/** Buffs applied by the hit will effect everyone */
 	buffAll?: boolean,
 	name: string;
+	customCost?: string,
 	/** Spell does not advance time */
 	quick?: boolean;
 	/** spell required to unlock this one */

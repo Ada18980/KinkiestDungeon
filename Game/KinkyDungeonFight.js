@@ -226,7 +226,7 @@ function isUnarmed(weapon) {
 let KinkyDungeonEvasionPityModifier = 0; // Current value
 let KinkyDungeonEvasionPityModifierIncrementPercentage = 0.5; // Percent of the base hit chance to add
 let KDDefaultCrit = 1.3;
-let KDDefaultBindCrit = 1.3;
+let KDDefaultBindCrit = 1.5;
 
 function KinkyDungeonGetCrit(accuracy, Damage, Enemy) {
 	if (accuracy == undefined) accuracy = KinkyDungeonGetEvasion();
@@ -248,7 +248,7 @@ function KinkyDungeonGetBindCrit(accuracy, Damage, Enemy) {
 		Damage: Damage,
 		accuracy: accuracy,
 		enemy: Enemy,
-		basecrit: Damage?.bindcrit || Damage?.crit || KDDefaultBindCrit,
+		basecrit: Damage?.bindcrit || KDDefaultBindCrit,
 		critmult: 1.0,
 		critboost: 0.0,
 	};
@@ -681,7 +681,8 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		if (spellResist && !KinkyDungeonMeleeDamageTypes.includes(predata.type)) {
 			if (time)
 				time = Math.max(0, Math.ceil(time * KDArmorFormula(predata.dmg, spellResist)));
-			predata.dmg = Math.max(0, predata.dmg * KDArmorFormula(predata.dmg, spellResist));
+			//predata.dmg = Math.max(0, predata.dmg * KDArmorFormula(predata.dmg, spellResist));
+			armor = spellResist;
 		}
 
 		if (predata.type != "inert" && resistDamage < 2) {
@@ -765,6 +766,8 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		if ((predata.dmg || predata.bind) && Enemy.Enemy.bound && (resistDamage < 2) && (predata.bind || KinkyDungeonBindingDamageTypes.includes(predata.type))) {
 			effect = true;
 			if (!Enemy.boundLevel) Enemy.boundLevel = 0;
+
+			let effmult = 1;
 			if (resistStun == -2) {
 				predata.bindEff *= 2;
 			} else if (resistStun == -1) {
@@ -772,15 +775,24 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			}
 			if (resistDamage == 1 || resistStun == 1) {
 				predata.bindEff *= 0.75;
+				effmult *= 0.75;
 			}
-			if (resistDamage == 2) {
+			if (resistDamage == 2 || resistStun == 2) {
 				predata.bindEff *= 0.5;
+				effmult *= 0.5;
 			}
-			if (resistStun == 2) {
-				predata.bindEff *= 0.5;
-			}
-			if (Enemy.boundLevel > Enemy.Enemy.maxhp) {
+			if (KinkyDungeonIsDisabled(Enemy)) {
 				predata.bindEff *= 2;
+				effmult *= 2;
+			} else if (KinkyDungeonIsSlowed(Enemy)) {
+				predata.bindEff *= 1.5;
+				effmult *= 1.5;
+			}
+
+			if (predata.faction == "Player") {
+				let bindAmpModBase = KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
+				let amp = KDGetBindAmp(Enemy, bindAmpModBase);
+				predata.bindEff *= amp;
 			}
 
 			if (!(Enemy.boundLevel > 0)) {
@@ -812,10 +824,11 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			// Do the deed
 			KDTieUpEnemy(Enemy, amt, predata.bindType, predata.dmg);
 
-			if (!NoMsg)
-				KinkyDungeonSendTextMessage(4, TextGet("KDIsBound")
+			if (!NoMsg && predata.faction == "Player") {
+				KinkyDungeonSendTextMessage(4, TextGet(effmult == 1 ? "KDIsBound" : (effmult > 1 ? "KDDisabledBonus" : "KDUnflinchingPenalty"))
 					.replace("AMNT", "" + Math.round(10 * amt))
 					.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)), "lightgreen", 2);
+			}
 
 		}
 		if ((predata.dmg || predata.distract) && Enemy.Enemy.bound && (resistDamage < 2)

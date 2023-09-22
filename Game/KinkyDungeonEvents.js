@@ -3050,7 +3050,7 @@ let KDEventMapSpell = {
 	},
 	"duringCrit": {
 		"RogueTargets": (e, spell, data) => {
-			if (data.dmg > 0 && data.critical && data.enemy && KDHostile(data.enemy) && !KDEnemyHasFlag(data.enemy, "RogueTarget")) {
+			if (data.dmg > 0 && data.critical && data.enemy && !data.customCrit && KDHostile(data.enemy) && !KDEnemyHasFlag(data.enemy, "RogueTarget")) {
 				data.crit *= e.mult;
 				data.bindcrit *= e.mult;
 				KinkyDungeonSetEnemyFlag(data.enemy, "RogueTarget", -1);
@@ -3059,9 +3059,8 @@ let KDEventMapSpell = {
 			}
 		},
 		"RogueBind": (e, spell, data) => {
-			if (data.dmg > 0 && data.critical && data.enemy && KDHostile(data.enemy)) {
-				data.bindcrit *= e.mult;
-				if (data.bind || KinkyDungeonBindDamageTypes.includes(data.type) || data.bindEff) {
+			if (data.dmg > 0 && data.critical && data.enemy && !data.customCrit && KDHostile(data.enemy)) {
+				if (data.bind || KinkyDungeonBindingDamageTypes.includes(data.type) || data.bindEff) {
 					KDDamageQueue.push({floater: TextGet("KDBindCritical"), Entity: {x: data.enemy.x, y: data.enemy.y - 0.5}, Color: "#ff55aa", Delay: 0});
 					data.customCrit = true;
 				}
@@ -3069,6 +3068,7 @@ let KDEventMapSpell = {
 			}
 		},
 	},
+
 	"beforeDamageEnemy": {
 
 		"MultiplyDamageStealth": (e, spell, data) => {
@@ -3165,15 +3165,22 @@ let KDEventMapSpell = {
 			}
 		},*/
 	},
+	"calcBindCrit": {
+		"RogueBind": (e, spell, data) => {
+			if (!e.prereq || KDCheckPrereq(null, e.prereq, e, data)) {
+				data.critboost += e.power;
+			}
+		},
+	},
 	"calcCrit": {
 		"CritBoost": (e, spell, data) => {
-			if (KDCheckPrereq(null, e.prereq, e, data)) {
+			if (!e.prereq || KDCheckPrereq(null, e.prereq, e, data)) {
 				let power = Math.max(0, Math.max(((data.accuracy || 0) - 1)*e.power));
 				data.critboost = Math.max(0, data.critboost + power);
 			}
 		},
 		"MagicalOverload": (e, spell, data) => {
-			if (KDCheckPrereq(null, e.prereq, e, data)) {
+			if (!e.prereq || KDCheckPrereq(null, e.prereq, e, data)) {
 				data.critmult *= 1 + (e.power * KinkyDungeonStatDistraction / 10);
 			}
 		},

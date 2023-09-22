@@ -1039,7 +1039,7 @@ function KinkyDungeonDrawInputs() {
 		DrawButtonKDEx("CycleSpellButton", () => {
 			KDCycleSpellPage();
 			return true;
-		}, true, 1650, 95, 90, 35, `pg. ${KDSpellPage}`, "#ffffff");
+		}, true, 1570, 5, 140, 35, `pg. ${KDSpellPage}`, "#ffffff");
 	}
 	for (let ii = KinkyDungeonSpellChoiceCount - 1; ii > 0; ii--) {
 		if (!(KinkyDungeonSpellChoices[ii] >= 0)) KinkyDungeonSpellChoices = KinkyDungeonSpellChoices.slice(0, ii);
@@ -1049,10 +1049,10 @@ function KinkyDungeonDrawInputs() {
 	let KDUpcastLevel = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellEmpower");
 
 	if (KinkyDungeonSpellChoices.length > 0) {
-		let empowerY = Math.min(7, KinkyDungeonSpellChoices.length);
-		let empowerYY = empowerY * KinkyDungeonSpellChoiceOffset + 140;
+		let empowerY = Math.min(KinkyDungeonSpellChoiceCountPerPage, KinkyDungeonSpellChoices.length);
+		let empowerYY = empowerY * KinkyDungeonSpellChoiceOffset + 40;
 		let hasUpcast = KDCanUpcast();
-		let padY = 90 + (KinkyDungeonSpellChoices.length > KinkyDungeonSpellChoiceCountPerPage ? 0 : 40);
+		let padY = 5 + (KinkyDungeonSpellChoices.length > KinkyDungeonSpellChoiceCountPerPage ? 0 : 35);
 		let pages = Math.floor(KinkyDungeonSpellChoices.length / KinkyDungeonSpellChoiceCountPerPage);
 		let pageExtra = 40;
 		if (!KDToggles.TransparentUI) {
@@ -1104,11 +1104,15 @@ function KinkyDungeonDrawInputs() {
 		let buttonWidth = 40;
 		let buttonPad = 80;
 		if (KinkyDungeonSpellChoices[i])
-			DrawButtonVis(1650 + (90 - buttonWidth), 140 + i*KinkyDungeonSpellChoiceOffset, buttonWidth, buttonWidth, "", "#ffffff", KinkyDungeonRootDirectory + "ChangeSpell.png", undefined, undefined, true);
+			DrawButtonKDEx("chgangespell" + i, (bdata) => {
+				KinkyDungeonDrawState = "MagicSpells";
+				KDSwapSpell = index;
+				return true;
+			}, true, 1650 + (90 - buttonWidth), 40 + i*KinkyDungeonSpellChoiceOffset, buttonWidth, buttonWidth, "", "#ffffff", KinkyDungeonRootDirectory + "ChangeSpell.png", undefined, undefined, true);
 		let tooltip = false;
 		let buttonDim = {
 			x: 1700 - buttonPad,
-			y: 140 + i*KinkyDungeonSpellChoiceOffset,
+			y: 40 + i*KinkyDungeonSpellChoiceOffset,
 			w: 76,
 			h: 76,
 			wsmall: 46,
@@ -1124,9 +1128,28 @@ function KinkyDungeonDrawInputs() {
 
 			if (spell.components && spell.components.length > 0) comp = components;
 			// Render MP cost
-			let cost = Math.round(KinkyDungeonGetManaCost(spell) * 10) + "m";
-			DrawTextFitKD(cost, 1650 + (89 - buttonWidth/2), 140 + i*KinkyDungeonSpellChoiceOffset + buttonWidth*1.4, buttonWidth * 0.35 * Math.min(3, cost.length),
-				"#ccddFF", "#333333", undefined, "center");
+			let data = {
+				spell: spell,
+				cost: Math.round(KinkyDungeonGetManaCost(spell) * 10) + "m",
+				color: "#ccddFF",
+			};
+			if (data.cost == "0m") {
+				let c2 = Math.round(KinkyDungeonGetStaminaCost(spell) * 10) + "sp";
+				if (c2 != "0sp") {
+					data.cost = c2;
+				}
+			}
+			if (data.cost == "0m") {
+				let c2 = Math.round(KinkyDungeonGetChargeCost(spell) * 10) + "c";
+				if (c2 != "0c") {
+					data.cost = c2;
+				}
+			}
+			if (spell.customCost && KDCustomCost[spell.customCost]) {
+				KDCustomCost[spell.customCost](data);
+			}
+			DrawTextFitKD(data.cost, 1650 + (89 - buttonWidth/2), 40 + i*KinkyDungeonSpellChoiceOffset + buttonWidth*1.4, buttonWidth * 0.35 * Math.min(3, data.cost.length),
+				data.color, "#333333", undefined, "center");
 
 
 
@@ -1169,8 +1192,8 @@ function KinkyDungeonDrawInputs() {
 			}
 
 			if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
-				DrawTextFitKD(TextGet("KinkyDungeonSpell"+ spell.name), 1700 - buttonPad - 30, 140 + buttonPad/2 + i*KinkyDungeonSpellChoiceOffset, 300, "#ffffff", "#333333", undefined, "right");
-				DrawTextFitKD(comp, 1700 - 2 - buttonPad / 2, 200 + i*KinkyDungeonSpellChoiceOffset, Math.min(10 + comp.length * 8, buttonPad), "#ffffff", KDTextGray0);
+				DrawTextFitKD(TextGet("KinkyDungeonSpell"+ spell.name), 1700 - buttonPad - 30, 40 + buttonPad/2 + i*KinkyDungeonSpellChoiceOffset, 300, "#ffffff", "#333333", undefined, "right");
+				DrawTextFitKD(comp, 1700 - 2 - buttonPad / 2, 1000 + i*KinkyDungeonSpellChoiceOffset, Math.min(10 + comp.length * 8, buttonPad), "#ffffff", KDTextGray0);
 				tooltip = true;
 			}
 			// Render number

@@ -1029,7 +1029,7 @@ let KDBarAdvanceRateMin = 1.0/1000;
 function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, CamY, CamXoffset, CamYoffset) {
 	KDDialogueSlots = {};
 	let tooltip = false;
-	let bindAmpModBase = KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
+	//let bindAmpModBase = KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
 	for (let enemy of KDMapData.Entities) {
 		// Handle enemy bars
 		if (enemy.boundLevel != undefined && !(enemy.visual_boundlevel == enemy.boundLevel)) {
@@ -1057,7 +1057,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 					let spacing = 6;
 					// Draw binding bars
 					let helpless = KDHelpless(enemy);
-					let bindAmpMod = KDGetBindAmp(enemy, bindAmpModBase);
+					let bindAmpMod = 1;//KDGetBindAmp(enemy, bindAmpModBase);
 					if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
 						if (!helpless) {
 							let visualbond = bindAmpMod * enemy.visual_boundlevel;
@@ -1486,6 +1486,23 @@ function KDDrawEnemyTooltip(enemy, offset) {
 					size: 20,
 				});
 			}
+		}
+		if (enemy.Enemy.tags.unstoppable) {
+			let st = TextGet("KDunstoppable");
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 20,
+			});
+		} else if (enemy.Enemy.tags.unflinching) {
+			let st = TextGet("KDunflinching");
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 20,
+			});
 		}
 	}
 
@@ -2149,7 +2166,7 @@ function KDBoundEffects(enemy) {
 	if (!enemy.Enemy.bound) return 0;
 	if (!enemy.boundLevel) return 0;
 	let boundLevel = enemy.boundLevel ? enemy.boundLevel : 0;
-	let bindAmp = KDGetBindAmp(enemy); //KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
+	let bindAmp = 1;//KDGetBindAmp(enemy); //KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
 	boundLevel *= bindAmp;
 	if (boundLevel > enemy.Enemy.maxhp || (enemy.hp <= 0.1*enemy.Enemy.maxhp && boundLevel > enemy.hp)) return 4; // Totally tied
 	if (boundLevel > enemy.Enemy.maxhp*0.75) return 3;
