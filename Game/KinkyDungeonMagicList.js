@@ -235,7 +235,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{type: "RogueTargets", trigger: "duringCrit", mult: 1.5},
 		]},
 		{name: "RogueBind", tags: ["utility"], school: "Special", manacost: 0, components: [], classSpecific: "Rogue", prerequisite: "RogueTargets", hideWithout: "RogueTargets", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "RogueBind", trigger: "duringCrit", mult: 1.4},
+			{type: "RogueBind", trigger: "duringCrit"},
+			{type: "RogueBind", trigger: "calcBindCrit", power: 0.4},
 		]},
 		{name: "RogueTraps", tags: ["utility"], school: "Special", manacost: 0, components: [], classSpecific: "Rogue", prerequisite: "RogueTargets", hideWithout: "RogueTargets", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "RogueTraps", trigger: "beforeCast"},
@@ -252,6 +253,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		]},
 
 		{name: "ArcaneBlast", tags: ["arcane", "offense", "aoe"], prerequisite: "ManaRegen", classSpecific: "Wizard", noise: 4.5, sfx: "Shock", castCondition: "hasArcaneEnergy",
+			customCost: "arcane_blast",
 			effectTileDurationModTrail: 2, effectTileTrail: {
 				name: "Sparks",
 				duration: 3,
@@ -313,7 +315,9 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "ManaRegenFast2", tags: ["mana", "offense"], school: "Special", manacost: 0, components: [], prerequisite: "ManaRegenFast", classSpecific: "Wizard", hideWithout: "ManaRegen", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",},
 
 
-		{name: "AkashicConflux", tags: ["will", "mana", "utility"], prerequisite: "ArcaneBlast", classSpecific: "Wizard", hideWithout: "ManaRegen", school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+		{name: "AkashicConflux", tags: ["will", "mana", "utility"], prerequisite: "ArcaneBlast", classSpecific: "Wizard", hideWithout: "ManaRegen", school: "Special",
+			customCost: "arcane_akashic",
+			manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "ArcaneStore", trigger: "playerCast"},
 				{type: "AkashicConflux", trigger: "toggleSpell", power: 10.0, time: 3},
@@ -2053,5 +2057,20 @@ let KDPlayerCastConditions = {
 		return !KDMapData.Bullets.some((b) => {
 			return b.x == x && b.y == y;
 		});
+	},
+};
+
+let KDCustomCost = {
+	"stamina": (data) => {
+		data.cost = KinkyDungeonGetStaminaCost(data.spell) + "sp";
+	},
+	"arcane_blast": (data) => {
+		data.cost = Math.min(KinkyDungeonStatManaMax * 2.5, Math.round(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "ArcaneEnergy") * 10)) + "E";
+	},
+	"arcane_akashic": (data) => {
+		data.cost = "100E";
+	},
+	"rhythm": (data) => {
+
 	},
 };

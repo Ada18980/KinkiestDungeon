@@ -830,6 +830,9 @@ KinkyDungeonKeySpell4,Spell 4
 KinkyDungeonKeySpell5,Spell 5
 KinkyDungeonKeySpell6,Spell 6
 KinkyDungeonKeySpell7,Spell 7
+KinkyDungeonKeySpell8,Spell 8
+KinkyDungeonKeySpell9,Spell 9
+KinkyDungeonKeySpell0,Spell 10
 KinkyDungeonKeySpellPage,Cycle Spell Page
 KinkyDungeonKeyUpcast,Upcast Spells
 KinkyDungeonKeyUpcastCancel,Cancel Upcast
@@ -1342,7 +1345,7 @@ KinkyDungeonInventoryItemFourSeasonsDesc,"Activate to reduce the cost of your ne
 KinkyDungeonInventoryItemFourSeasonsDesc2,"Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage."
 KinkyDungeonInventoryItemArbiter,The Arbiter
 KinkyDungeonInventoryItemArbiterDesc,"I have altered the rules. Pray I do not alter them further."
-KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 110% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm"
+KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm"
 KinkyDungeonInventoryItemBondageBuster,Bondage Buster
 KinkyDungeonInventoryItemBondageBusterDesc,"Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge."
 KinkyDungeonInventoryItemBondageBusterDesc2,"Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns."
@@ -1424,7 +1427,9 @@ KinkyDungeonPlayerStatisfied,"Satisfied. Miscast chance is reduced."
 
 
 KinkyDungeonWeaponDamage,"Damage: "
-KinkyDungeonWeaponCrit,"Crit Multiplier: "
+KinkyDungeonWeaponDamageBind,"Bind: "
+KinkyDungeonWeaponCrit,"Crit: "
+KinkyDungeonWeaponBindCrit,"Crit: "
 KinkyDungeonWeaponAccuracy,"Accuracy: "
 KinkyDungeonWeaponStamina,"SP Cost: "
 
@@ -4918,7 +4923,7 @@ KinkyDungeonSpellCastShadowSlash,You create a tear in space with your finger!
 KinkyDungeonSpellTargetShadowSlash,Choose aim direction
 
 KinkyDungeonSpellBlink,Portal
-KinkyDungeonSpellDescriptionBlink,Teleport to a nearby location (including into darkness) with twice the range.
+KinkyDungeonSpellDescriptionBlink,Teleport to a nearby location (including into darkness) with twice the range. Stuns an enemy if you teleport behind them.
 KinkyDungeonSpellCastBlink,You call upon a misty portal to transport you!
 KinkyDungeonSpellTargetBlink,Choose target location
 
@@ -11415,3 +11420,20 @@ KinkyDungeonStatDescHighProfile,"Several enemies on each map will be high value,
 
 KDTieUp,+AMNT Bondage!
 KDIsBound,"TargetEnemy receives AMNT binding!"
+KDDisabledBonus,"TargetEnemy is disabled and receives an increased AMNT binding!"
+KDUnflinchingPenalty,"TargetEnemy resists bondage and receives a reduced AMNT binding!"
+
+KDDisguiseFailNoTarget,You need to target an NPC
+KDDisguiseFailInvalidTarget,Target must be helpless.
+KDDisguiseTarget,You steal the target's disguise!
+KDDisguiseRelease,You remove your disguise.
+KDDisguiseFailSameDisguise,You are already wearing that faction's disguise.
+KinkyDungeonSpellDisguise,"Steal Disguise"
+KinkyDungeonSpellTargetDisguise,"Choose target to steal from"
+KinkyDungeonSpellCastDisguise,"You steal the target's disguise!"
+KinkyDungeonSpellDescriptionDisguise,"Steal's a helpless enemy's clothes, adding a great deal of distraction to her and stealing her disguise for yourself. Until you recast this on yourself, you gain a stealth bonus against members of the same faction."
+
+
+
+KDunstoppable,"Unstoppable (Ignore status/bondage)"
+KDunflinching,"Unflinching (Resist status/bondage)"
