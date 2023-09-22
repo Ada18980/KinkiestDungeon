@@ -11412,3 +11412,6 @@ KinkyDungeonSpellDescriptionRogueBind,"Binding from critical hits is 40% stronge
 KinkyDungeonStatHighProfile,"High Profile"
 KinkyDungeonStatDescHighProfile,"Several enemies on each map will be high value, rewarding more gold and items for defeating them but increasing their strength."
 
+
+KDTieUp,+AMNT Bondage!
+KDIsBound,"TargetEnemy receives AMNT binding!"

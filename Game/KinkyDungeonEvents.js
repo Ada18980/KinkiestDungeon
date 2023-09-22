@@ -1490,7 +1490,7 @@ let KDEventMapInventory = {
 							time: e.time,
 							bind: e.bind,
 							bindType: e.bindType,
-						}, false, e.power <= 0.1, undefined, undefined, undefined);
+						}, false, e.power <= 0.1, undefined, undefined, undefined, undefined, undefined, data.vulnConsumed);
 					}
 				}
 			}
@@ -1949,7 +1949,7 @@ const KDEventMapBuff = {
 						time: e.time,
 						bind: e.bind,
 						bindType: e.bindType,
-					}, false, e.power <= 0.5, undefined, undefined, undefined);
+					}, false, e.power <= 0.5, undefined, undefined, undefined, undefined, undefined, data.vulnConsumed);
 				}
 			}
 		},
@@ -3052,6 +3052,7 @@ let KDEventMapSpell = {
 		"RogueTargets": (e, spell, data) => {
 			if (data.dmg > 0 && data.critical && data.enemy && KDHostile(data.enemy) && !KDEnemyHasFlag(data.enemy, "RogueTarget")) {
 				data.crit *= e.mult;
+				data.bindcrit *= e.mult;
 				KinkyDungeonSetEnemyFlag(data.enemy, "RogueTarget", -1);
 				KDDamageQueue.push({floater: TextGet("KDRogueCritical"), Entity: {x: data.enemy.x, y: data.enemy.y - 0.5}, Color: "#ff5555", Delay: 0});
 				data.customCrit = true;
@@ -3673,7 +3674,7 @@ let KDEventMapWeapon = {
 						type: e.damage,
 						damage: bonus * e.power,
 						time: e.time
-					}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
+					}, false, false, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 
 					KDReduceBinding(data.enemy, bonus);
 					if (data.enemy.hp <= 0 && KDHelpless(data.enemy)) data.enemy.hp = 0.01;
@@ -3954,7 +3955,7 @@ let KDEventMapWeapon = {
 						time: e.time,
 						bind: e.bind,
 						bindType: e.bindType,
-					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity);
+					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 				}
 			}
 		},
@@ -3974,7 +3975,7 @@ let KDEventMapWeapon = {
 						time: e.time,
 						bind: e.bind,
 						bindType: e.bindType,
-					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity);
+					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 				}
 			}
 		},
@@ -3991,7 +3992,7 @@ let KDEventMapWeapon = {
 							time: e.time,
 							bind: e.bind,
 							bindType: e.bindType,
-						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
+						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, en == data.enemy && data.vulnConsumed);
 						KDCreateEffectTile(en.x, en.y, {
 							name: "Sparks",
 							duration: 2,
@@ -4063,7 +4064,7 @@ let KDEventMapWeapon = {
 						time: e.time,
 						bind: e.bind,
 						bindType: e.bindType,
-					}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
+					}, false, false, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 				}
 			}
 		},
@@ -4076,7 +4077,7 @@ let KDEventMapWeapon = {
 						time: e.time,
 						bind: e.bind,
 						bindType: e.bindType,
-					}, false, true, undefined, undefined, KinkyDungeonPlayerEntity);
+					}, false, true, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 				}
 			}
 		},
@@ -4090,7 +4091,7 @@ let KDEventMapWeapon = {
 							time: e.time,
 							bind: e.bind,
 							bindType: e.bindType,
-						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
+						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 					}
 				}
 			}
@@ -4105,7 +4106,7 @@ let KDEventMapWeapon = {
 							time: e.time,
 							bind: e.bind,
 							bindType: e.bindType,
-						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
+						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 					}
 				}
 			}
@@ -4120,7 +4121,7 @@ let KDEventMapWeapon = {
 							time: e.time,
 							bind: e.bind,
 							bindType: e.bindType,
-						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
+						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 					} else if (data.enemy.vulnerable > 0 && !data.enemy.Enemy.tags.nonvulnerable) {
 						KinkyDungeonDamageEnemy(data.enemy, {
 							type: e.damage,
@@ -4128,7 +4129,7 @@ let KDEventMapWeapon = {
 							time: e.time,
 							bind: e.bind,
 							bindType: e.bindType,
-						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
+						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 					}
 				}
 			}
@@ -4143,7 +4144,7 @@ let KDEventMapWeapon = {
 							time: e.time,
 							bind: e.bind,
 							bindType: e.bindType,
-						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
+						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 					}
 				}
 			}
@@ -4158,7 +4159,7 @@ let KDEventMapWeapon = {
 							time: e.time,
 							bind: e.bind,
 							bindType: e.bindType,
-						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
+						}, false, false, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 					}
 				}
 			}
@@ -5603,7 +5604,7 @@ let KDEventMapGeneric = {
 					KinkyDungeonDamageEnemy(data.enemy, {
 						type: "electric",
 						damage: KinkyDungeonPlayerDamage.dmg * 0.3,
-					}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
+					}, false, false, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
 				}
 			}
 		},
