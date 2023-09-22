@@ -725,8 +725,6 @@ let KDDialogue = {
 			"Go": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
-					MiniGameKinkyDungeonLevel = 0;
-					KDCurrentWorldSlot = {x: 0, y: 0};
 					let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
 
 					if (KDTile() && KDTile().Portal == "CommercePortal") {
@@ -734,7 +732,9 @@ let KDDialogue = {
 						KDTileDelete();
 					}
 
-					KinkyDungeonCreateMap(params, "ShopStart", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, false, undefined);
+					MiniGameKinkyDungeonLevel = 0;
+
+					KinkyDungeonCreateMap(params, "ShopStart", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, {x: 0, y: 0}, false, undefined);
 
 					// Place return portal
 					KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, ';');
@@ -768,18 +768,19 @@ let KDDialogue = {
 			"Go": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
-					if (!KDGameData.TeleportLocations) KDGameData.TeleportLocations = {};
-					MiniGameKinkyDungeonLevel = KDGameData.TeleportLocations.commerce.level;
-					KDCurrentWorldSlot = {x: KDGameData.TeleportLocations.commerce.x, y: KDGameData.TeleportLocations.commerce.y};
-					let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[KDGameData.TeleportLocations.commerce.checkpoint]];
-
 					if (KDTile() && KDTile().Portal == "CommercePortalReturn") {
 						KinkyDungeonMapSet(player.x, player.y, '0');
 						KDTileDelete();
 					}
 
+					if (!KDGameData.TeleportLocations) KDGameData.TeleportLocations = {};
+					MiniGameKinkyDungeonLevel = KDGameData.TeleportLocations.commerce.level;
+					let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[KDGameData.TeleportLocations.commerce.checkpoint]];
+
+
+
 					KinkyDungeonCreateMap(params, KDGameData.TeleportLocations.commerce.type, "", KDGameData.TeleportLocations.commerce.level,
-						undefined, undefined, undefined, KDCurrentWorldSlot, true, undefined);
+						undefined, undefined, undefined, {x: KDGameData.TeleportLocations.commerce.x, y: KDGameData.TeleportLocations.commerce.y}, true, undefined);
 
 					return false;
 				},
