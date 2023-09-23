@@ -522,12 +522,13 @@ AddModel({
 
 
 AddModel({
-	Name: "Armbinder",
+	Name: "SmoothArmbinder",
 	Folder: "Armbinder",
-	TopLevel: true,
 	Restraint: true,
-	Categories: ["Restraints", "Leather", "Armbinders"],
+	TopLevel: false,
+	Parent: "Armbinder",
 	AddPose: ["HideHands"],
+	Categories: ["Restraints", "Latex", "Armbinders"],
 	Layers: ToLayerMap([
 		{ Name: "BinderLeft", Layer: "BindArmLeft", Pri: 30,
 			HideWhenOverridden: true,
@@ -545,6 +546,20 @@ AddModel({
 			DisplaceLayers: ToMap(["Arms"]),
 			DisplaceAmount: 100,
 		},
+	])
+});
+
+
+
+AddModel({
+	Name: "Armbinder",
+	Folder: "Armbinder",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Leather", "Armbinders"],
+	AddPose: ["HideHands"],
+	Layers: ToLayerMap([
+		...GetModelLayers("SmoothArmbinder"),
 		{ Name: "StrapsLeft", Layer: "BindArmLeft", Pri: 31,
 			HideWhenOverridden: true,
 			Poses: ToMap(["Wristtie", "Boxtie"]),
@@ -561,6 +576,7 @@ AddModel({
 });
 
 
+
 AddModel({
 	Name: "ArmbinderCross",
 	Folder: "Armbinder",
@@ -571,6 +587,24 @@ AddModel({
 	Categories: ["Restraints", "Leather", "Armbinders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Armbinder"),
+		{ Name: "Cross", Layer: "BindArms", Pri: 30,
+			HideWhenOverridden: true,
+			Poses: ToMap(["Wristtie", "Boxtie"]),
+			InheritColor: "Straps",
+		},
+	])
+});
+
+AddModel({
+	Name: "SmoothArmbinderCross",
+	Folder: "Armbinder",
+	Restraint: true,
+	TopLevel: false,
+	Parent: "Armbinder",
+	AddPose: ["HideHands"],
+	Categories: ["Restraints", "Latex", "Armbinders"],
+	Layers: ToLayerMap([
+		...GetModelLayers("SmoothArmbinder"),
 		{ Name: "Cross", Layer: "BindArms", Pri: 30,
 			HideWhenOverridden: true,
 			Poses: ToMap(["Wristtie", "Boxtie"]),
@@ -598,6 +632,24 @@ AddModel({
 });
 
 AddModel({
+	Name: "SmoothArmbinderSecure",
+	Folder: "Armbinder",
+	Restraint: true,
+	TopLevel: false,
+	Parent: "Armbinder",
+	AddPose: ["HideHands"],
+	Categories: ["Restraints", "Latex", "Armbinders"],
+	Layers: ToLayerMap([
+		...GetModelLayers("SmoothArmbinder"),
+		{ Name: "Secure", Layer: "BindArms", Pri: 30,
+			HideWhenOverridden: true,
+			Poses: ToMap(["Wristtie", "Boxtie"]),
+			InheritColor: "Straps",
+		},
+	])
+});
+
+AddModel({
 	Name: "ArmbinderGwen",
 	Folder: "Armbinder",
 	Restraint: true,
@@ -607,6 +659,25 @@ AddModel({
 	Categories: ["Restraints", "Leather", "Armbinders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Armbinder"),
+		{ Name: "Gwen", Layer: "BindArms", Pri: 30,
+			HideWhenOverridden: true,
+			Poses: ToMap(["Wristtie", "Boxtie"]),
+			InheritColor: "Straps",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "SmoothArmbinderGwen",
+	Folder: "Armbinder",
+	Restraint: true,
+	TopLevel: false,
+	Parent: "Armbinder",
+	AddPose: ["HideHands"],
+	Categories: ["Restraints", "Latex", "Armbinders"],
+	Layers: ToLayerMap([
+		...GetModelLayers("SmoothArmbinder"),
 		{ Name: "Gwen", Layer: "BindArms", Pri: 30,
 			HideWhenOverridden: true,
 			Poses: ToMap(["Wristtie", "Boxtie"]),

@@ -54,6 +54,10 @@ let DisplacementMaps = [
 	"Thigh3SquishHogtie.png",
 	"Thigh3SquishKneelClosed.png",
 	"Yoke.png",
+	"BinderLeftBoxtie.png",
+	"BinderLeftWristtie.png",
+	"BinderRightBoxtie.png",
+	"BinderRightWristtie.png",
 ];
 
 let linearList = [
