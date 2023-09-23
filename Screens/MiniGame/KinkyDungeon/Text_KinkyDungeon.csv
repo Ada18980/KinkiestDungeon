@@ -729,7 +729,7 @@ StatKey,Missing key
 StatMiscastChance,"Chance for a spell to fizzle: "
 StatEvasion,"Dodge Chance: Percent%, based on EVASIONSUM Evasion, -EVASIONPENALTY% penalty from bindings"
 StatBlock,"Block Chance: Percent%, based on BLOCKSUM Block, -BLOCKPENALTY% penalty from bindings"
-StatRestraintBlock,"Chance to resist a level 10 restraint: Percent%"
+StatRestraintBlock,"Chance to resist a level 10 restraint: AMNT1%, based on AMNT2 Bondage Resist."
 StatVision,"Sight Range: RADIUS"
 StatSpeed,"Speed: SPD"
 StatSpeedNormal,"Normal"
@@ -11438,3 +11438,4 @@ KinkyDungeonSpellDescriptionDisguise,"Steal's a helpless enemy's clothes, adding
 
 KDunstoppable,"Unstoppable (Ignore status/bondage)"
 KDunflinching,"Unflinching (Resist status/bondage)"
+KDBlindsight,Blindsight (See through walls)

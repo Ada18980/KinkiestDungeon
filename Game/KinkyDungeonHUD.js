@@ -508,7 +508,9 @@ function KinkyDungeonDrawInputs() {
 	let restraintblock = KDRestraintBlockPower(KinkyDungeonGetPlayerStat("RestraintBlock"), 10);
 	if (restraintblock < 1)
 		statsDraw.restraintblock = {
-			text: TextGet("StatRestraintBlock").replace("Percent", ("") + Math.round((1 - restraintblock) * 100)),
+			text: TextGet("StatRestraintBlock")
+				.replace("AMNT1", ("") + Math.round((1 - restraintblock) * 100))
+				.replace("AMNT2", ("") + Math.round(10 * KinkyDungeonGetPlayerStat("RestraintBlock"))),
 			count: ("") + Math.round((1 - restraintblock) * 100) + "%",
 			icon: "restraintblock",
 			countcolor: "#65d45d",
@@ -1149,7 +1151,7 @@ function KinkyDungeonDrawInputs() {
 				KDCustomCost[spell.customCost](data);
 			}
 			DrawTextFitKD(data.cost, 1650 + (89 - buttonWidth/2), 40 + i*KinkyDungeonSpellChoiceOffset + buttonWidth*1.4, buttonWidth * 0.35 * Math.min(3, data.cost.length),
-				data.color, "#333333", undefined, "center");
+				data.color, "#333333", undefined, "center", 73);
 
 
 
@@ -1197,7 +1199,7 @@ function KinkyDungeonDrawInputs() {
 				tooltip = true;
 			}
 			// Render number
-			DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 10, "#ffffff", KDTextGray0);
+			DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, "#ffffff", KDTextGray0, 18, undefined, 73);
 
 
 			//let cost = KinkyDungeonGetManaCost(spell) + TextGet("KinkyDungeonManaCost") + comp;
