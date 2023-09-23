@@ -2620,6 +2620,12 @@ interface KDSeal {
 	events: KinkyDungeonEvent[],
 }
 
+interface KDSpecialEnemyBuff {
+	filter: (enemy: entity, type: string) => boolean;
+	weight: (enemy: entity, type: string) => number;
+	apply: (enemy: entity, type: string) => void;
+}
+
 interface KDFactionProps {
 	/** Weight to have them show up in a given floor type and floor count (and in future floor X and floor Y) */
 	weight: (Floor: number, Checkpoint: string, tags: string[], X: number, Y: number) => number,

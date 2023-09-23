@@ -5076,14 +5076,14 @@ function KDPushModifier(power, enemy, allowNeg = false) {
  * @param {any} Damage
  * @returns {*}
  */
-function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, noMsg, Delay) {
+function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, Msg, Delay) {
 	if (!enemy) return 0;
 	let data = {
 		amount: amount,
 		specialAmount: amount,
 		type: type, // Type of BONDAGE, e.g. leather, rope, etc
 		Damage: Damage,
-		noMsg: noMsg,
+		Msg: Msg,
 	};
 
 	KinkyDungeonSendEvent("bindEnemy", data);
@@ -5097,7 +5097,7 @@ function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, noMsg, Delay) {
 		enemy.specialBoundLevel[type] = (enemy.specialBoundLevel[type] || 0) + data.specialAmount;
 	}
 
-	if (!data.noMsg) {
+	if (data.Msg) {
 		KDDamageQueue.push({floater: TextGet("KDTieUp").replace("AMNT", Math.round(data.amount*10) + ""), Entity: enemy, Color: "#ff8800", Delay: Delay});
 	}
 
@@ -6148,4 +6148,25 @@ function KDMakeHighValue(enemy) {
 	for (let i = Math.round(KDRandom()*2) ; i < 2; i++) {
 		enemy.items.unshift("PotionWill");
 	}
+
+	let buff = KDGetByWeight(KDGetSpecialBuffList(enemy, "HighValue"));
+	if (buff) {
+		KDSpecialBuffs[buff].apply(enemy, "HighValue");
+	}
+}
+
+/**
+ * Gets a list of curses applied to the item
+ * @param {entity} enemy
+ * @param {string} type
+ * @returns {Record<string, number>}
+ */
+function KDGetSpecialBuffList(enemy, type) {
+	/** @type {Record<string, number>} */
+	let ret = {};
+	for (let obj of Object.keys(KDSpecialBuffs)) {
+		if (KDSpecialBuffs[obj].filter(enemy, type))
+			ret[obj] = KDSpecialBuffs[obj].weight(enemy, type);
+	}
+	return ret;
 }

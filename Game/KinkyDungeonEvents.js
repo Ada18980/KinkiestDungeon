@@ -2264,6 +2264,17 @@ const KDEventMapBuff = {
 			}
 		},
 	},
+
+	"afterEnemyTick": {
+		"nurseAura": (e, buff, enemy, data) => {
+			KDEventMapEnemy[e.trigger][e.type](e, enemy, data);
+		},
+		// Simple spell checkerboard pattern
+		"spellX": (e, buff, enemy, data) => {
+			KDEventMapEnemy[e.trigger][e.type](e, enemy, data);
+		},
+	},
+
 	"tickAfter": {
 		"ApplyConduction": (e, buff, entity, data) => {
 			if (!buff.duration) return;
@@ -5117,6 +5128,39 @@ let KDEventMapEnemy = {
 				}
 			}
 		},
+		// Simple spell checkerboard pattern
+		"spellX": (e, enemy, data) => {
+			if (data.delta
+				&& (e.always || enemy.aware || enemy.vp > 0.5)
+				&& (e.always || KDNearbyEnemies(enemy.x, enemy.y, 1.5, enemy).length > 0|| KinkyDungeonAggressive(enemy))
+				&& KinkyDungeonCanCastSpells(enemy)
+				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				if (!KDEnemyHasFlag(enemy, e.spell + "spellXCD") && (!e.chance || KDRandom() < e.chance)) {
+					let slots = [];
+					if (KDEnemyHasFlag(enemy, e.spell + "spellXAlt")) {
+						slots = [{x: -1, y: -1}, {x: 1, y: -1}, {x: 1, y: 1}, {x: -1, y: 1}];
+						KinkyDungeonSetEnemyFlag(enemy, e.spell + "spellXAlt", 0);
+					} else {
+						slots = [{x: -1, y: 0}, {x: 1, y: 0}, {x: 0, y: 1}, {x: 0, y: -1}];
+						KinkyDungeonSetEnemyFlag(enemy, e.spell + "spellXAlt", -1);
+					}
+					slots = slots.filter((slot) => {
+						return (enemy.x + slot.x > 0 && enemy.y + slot.y > 0 && enemy.x + slot.x < KDMapData.GridWidth && enemy.y + slot.y < KDMapData.GridHeight)
+							&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(enemy.x + slot.x, enemy.y + slot.y));
+					});
+					KinkyDungeonSetEnemyFlag(enemy, e.spell + "spellXCD", e.time);
+					if (slots.length > 0) {
+						let cnt = 0;
+						for (let S of slots) {
+							let slot = e.count ? slots[Math.floor(KDRandom() * slots.length)] : S;
+							KinkyDungeonCastSpell(enemy.x + slot.x, enemy.y + slot.y, KinkyDungeonFindSpell(e.spell, true), enemy, undefined, undefined);
+							cnt += 1;
+							if (cnt >= e.count) break;
+						}
+					}
+				}
+			}
+		},
 		"createEffectTile": (e, enemy, data) => {
 			if (data.delta &&((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 				if (!e.chance || KDRandom() < e.chance) {
@@ -5494,6 +5538,7 @@ let KDEventMapGeneric = {
 			if (!KinkyDungeonNewGame) return;
 			let chance = 1 - (0.8**KinkyDungeonNewGame);
 			let bosschance = 1 - (0.9**KinkyDungeonNewGame);
+			let regbuffchance = 1 - (0.95**KinkyDungeonNewGame);
 
 			for (let e of KDMapData.Entities) {
 				if (KDRandom() < chance && !KDEntityHasBuff(e, "HighValue")) {
@@ -5557,9 +5602,19 @@ let KDEventMapGeneric = {
 						KDSetLoadout(e, loadout);
 					}
 					if (KDRandom() < bosschance || e.Enemy.tags.stageBoss) {
+						let buff = KDGetByWeight(KDGetSpecialBuffList(e, "NGP_Boss"));
+						if (buff) {
+							KDSpecialBuffs[buff].apply(e, "NGP_Boss");
+						}
+
 						e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
 						e.Enemy.power *= 1.5;
 						e.Enemy.maxhp = e.Enemy.maxhp*2;
+					} else if (KDRandom() < regbuffchance) {
+						let buff = KDGetByWeight(KDGetSpecialBuffList(e, "NGP_Reg"));
+						if (buff) {
+							KDSpecialBuffs[buff].apply(e, "NGP_Reg");
+						}
 					}
 					e.hp = e.Enemy.maxhp;
 				}

@@ -761,8 +761,8 @@ let KinkyDungeonEnemies = [
 			Damage: "RobotHit",
 		},
 		Sound: {
-			baseAmount: 3,
-			moveAmount: 3,
+			baseAmount: 0,
+			moveAmount: 0,
 			alertAmount: 12,
 		},
 		RestraintFilter: {
@@ -773,7 +773,7 @@ let KinkyDungeonEnemies = [
 		sneakThreshold: 1,
 		evasion: -9,
 		attack: "SpellMeleeWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 2, dmgType: "electric",
-		minLevel:0, weight:-50, terrainTags: {"oldrobot": 7, "oldrobotturret": 50, open: 50, "latexOptout": -100}, shrines: ["Latex"], floors:KDMapInit(["bel"]),
+		minLevel:0, weight:-50, terrainTags: {"oldrobot": 7, "oldrobotturret": 50, "oldrobotturretspawn": 150, open: 50, "latexOptout": -50}, shrines: ["Latex"], floors:KDMapInit(["bel"]),
 		ondeath: [{type: "spellOnSelf", spell: "RubberSlime"}],
 		dropTable: [{name: "AncientPowerSourceSpent", weight: 9, noSummon: true}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
 
@@ -793,8 +793,8 @@ let KinkyDungeonEnemies = [
 			Damage: "RobotHit",
 		},
 		Sound: {
-			baseAmount: 3,
-			moveAmount: 3,
+			baseAmount: 0,
+			moveAmount: 0,
 			alertAmount: 12,
 		},
 		RestraintFilter: {
@@ -805,7 +805,7 @@ let KinkyDungeonEnemies = [
 		sneakThreshold: 1,
 		evasion: -9,
 		attack: "SpellMeleeWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 2, dmgType: "electric",
-		minLevel: 7, weight:-50, terrainTags: {"oldrobot": 7, "oldrobotturret": 30, open: 50, "latexOptout": -24}, shrines: ["Latex"], floors:KDMapInit(["bel"]),
+		minLevel: 7, weight:-50, terrainTags: {"oldrobot": 7, "oldrobotturret": 30, oldrobotturretspawn: 100, open: 50, "latexOptout": -24}, shrines: ["Latex"], floors:KDMapInit(["bel"]),
 		ondeath: [{type: "spellOnSelf", spell: "RubberSlime"}],
 		dropTable: [{name: "AncientPowerSourceSpent", weight: 8, noSummon: true}, {name: "AncientPowerSource", weight: 2, noSummon: true}]},
 
@@ -2750,4 +2750,101 @@ let KDSpecialConditions = {
 			).length > 0;
 		}
 	}
+};
+/**
+ * @type {Record<string, KDSpecialEnemyBuff>}
+ */
+let KDSpecialBuffs = {
+	"HealingAura": {
+		filter: (enemy, type) => {
+			return ["HighValue", "NGP_Boss"].includes(type);
+		},
+		weight: (enemy, type) => {
+			return 10 + (enemy.Enemy.shrines?.includes("Will") ? 20 : 0);
+		},
+		apply: (enemy, type) => {
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "HealingAuraSBuff",
+				aura: "#ffffff",
+				aurasprite: "HealingAura",
+				duration: 9999,
+				power: 1,
+				events: [
+					{trigger: "afterEnemyTick", type: "nurseAura", power: 0.3, dist: 1.5},
+				],
+			});
+		},
+	},
+	"ElectrifyX": {
+		filter: (enemy, type) => {
+			return ["HighValue", "NGP_Boss"].includes(type);
+		},
+		weight: (enemy, type) => {
+			return 10 + (enemy.Enemy.shrines?.includes("Metal") ? 20 : 0);
+		},
+		apply: (enemy, type) => {
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "ElectrifyX",
+				duration: 9999,
+				power: 1,
+				events: [
+					{trigger: "afterEnemyTick", type: "spellX", time: 4, spell: "WitchElectrify"},
+				],
+			});
+		},
+	},
+	"FireexpX": {
+		filter: (enemy, type) => {
+			return ["HighValue", "NGP_Boss"].includes(type);
+		},
+		weight: (enemy, type) => {
+			return 10 + (enemy.Enemy.tags?.fire ? 20 : 0);
+		},
+		apply: (enemy, type) => {
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "FireexpX",
+				duration: 9999,
+				power: 1,
+				events: [
+					{trigger: "afterEnemyTick", type: "spellX", time: 3, spell: "Fireexp"},
+				],
+			});
+		},
+	},
+	"IceexpX": {
+		filter: (enemy, type) => {
+			return ["HighValue", "NGP_Boss"].includes(type);
+		},
+		weight: (enemy, type) => {
+			return 10 + ((enemy.Enemy.tags?.ice || enemy.Enemy.tags?.water) ? 20 : 0);
+		},
+		apply: (enemy, type) => {
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "IceexpX",
+				duration: 9999,
+				power: 1,
+				events: [
+					{trigger: "afterEnemyTick", type: "spellX", time: 6, spell: "Iceexp"},
+				],
+			});
+		},
+	},
+	"BearTrapper": {
+		filter: (enemy, type) => {
+			return ["HighValue", "NGP_Boss"].includes(type);
+		},
+		weight: (enemy, type) => {
+			return 10 + (enemy.Enemy.attack?.includes("Bind") ? 20 : 0);
+		},
+		apply: (enemy, type) => {
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "BearTrapper",
+				duration: 9999,
+				power: 1,
+				events: [
+					{trigger: "afterEnemyTick", type: "spellX", time: 8, spell: "BearTrap", always: true, count: 1},
+				],
+			});
+		},
+	},
 };

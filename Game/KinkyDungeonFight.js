@@ -124,6 +124,7 @@ let KinkyDungeonDamageTypes = {
 	stun: {name: "stun", color: "#f4f390", bg: "black"},
 	chain: {name: "chain", color: "#ffffff", bg: "black"},
 	tickle: {name: "tickle", color: "#72a6b7", bg: "black"},
+	plush: {name: "plush", color: "#92c6d7", bg: "black"},
 	crush: {name: "crush", color: "#a16640", bg: "black"},
 	grope: {name: "grope", color: "#ffabe5", bg: "black"},
 	slash: {name: "slash", color: "#a14052", bg: "black"},
@@ -824,7 +825,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				}
 			}
 			// Do the deed
-			KDTieUpEnemy(Enemy, amt, predata.bindType, predata.dmg, false, Delay);
+			KDTieUpEnemy(Enemy, amt, predata.bindType, predata.dmg, predata.faction == "Player", Delay);
 
 			if (!NoMsg && predata.faction == "Player") {
 				KinkyDungeonSendTextMessage(4, TextGet(effmult == 1 ? "KDIsBound" : (effmult > 1 ? "KDDisabledBonus" : "KDUnflinchingPenalty"))

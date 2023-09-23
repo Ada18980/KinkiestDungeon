@@ -1140,7 +1140,7 @@ function KDKickEnemies(nearestJail, ignoreAware) {
 	}
 	for (let e of KDMapData.Entities) {
 		if (!e.Enemy.tags.temporary) {
-			if (e.aware && KDHostile(e) && KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, KDistEuclidean(e.x - KinkyDungeonPlayerEntity.x, e.y - KinkyDungeonPlayerEntity.y),
+			if (e.aware && !KDIsImmobile(e) && KDHostile(e) && KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, KDistEuclidean(e.x - KinkyDungeonPlayerEntity.x, e.y - KinkyDungeonPlayerEntity.y),
 				10, true, false)) {
 				atLeastOneAware = true;
 			} else e.aware = false;
