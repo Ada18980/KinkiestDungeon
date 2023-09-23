@@ -2033,7 +2033,7 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
 						tint: string2hex(t.color || "#ff5555"),
 						zIndex: 1.31,
-						alpha: 0.75,
+						//alpha: 0.75,
 					});
 				KDDraw(kdgameboard, kdpixisprites, tx + "," + ty + "_w_b" + t.color, KinkyDungeonRootDirectory + "WarningBacking.png",
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,

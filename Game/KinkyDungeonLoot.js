@@ -973,7 +973,7 @@ function KDCanCurse(tags) {
 function KDSummonCurseTrap(x, y) {
 	let enemy = KinkyDungeonGetEnemy(["curseTrap"], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["epicenter"]);
 	if (enemy) {
-		let point = KinkyDungeonGetNearbyPoint(x, y, true);
+		let point = {x: x, y: y};//KinkyDungeonGetNearbyPoint(x, y, true);
 		if (point) {
 			DialogueCreateEnemy(point.x, point.y, enemy.name);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SummonCurse.ogg");
