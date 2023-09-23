@@ -5235,12 +5235,12 @@ KinkyDungeonSpellLatexWall,Wall of Latex
 KinkyDungeonSpellDescriptionLatexWall,"Unlocks horizontal and vertical latex walls that encase enemies that walk through."
 
 KinkyDungeonSpellLatexWallVert,Wall of Latex (Vert)
-KinkyDungeonSpellDescriptionLatexWallVert,"Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded."
+KinkyDungeonSpellDescriptionLatexWallVert,"Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased, take 50 glue damage if not encased, and blinded."
 KinkyDungeonSpellCastLatexWallVert,You tap your foot and a wall of latex stretches out across the corridor.
 KinkyDungeonSpellTargetLatexWallVert,Choose vertical wall origin (5 tiles high)
 
 KinkyDungeonSpellLatexWallHoriz,Wall of Latex (Horiz)
-KinkyDungeonSpellDescriptionLatexWallHoriz,"Creates a horizontal wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded."
+KinkyDungeonSpellDescriptionLatexWallHoriz,"Creates a horizontal wall of latex for 20 turns. Enemies that pass through are encased, take 50 glue damage if not encased, and blinded."
 KinkyDungeonSpellCastLatexWallHoriz,You tap your foot and a wall of latex stretches out across the corridor.
 KinkyDungeonSpellTargetLatexWallHoriz,Choose horizontal wall origin (5 tiles wide)
 
