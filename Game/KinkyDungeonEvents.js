@@ -4730,6 +4730,16 @@ let KDEventMapEnemy = {
 		},
 	},
 	"tick": {
+		"EpicenterAssignHP": (e, enemy, data) => {
+			if (!KDEnemyHasFlag(enemy, "assignedHP")) {
+				let factor = 0.1 + 1.9*KDGameData.HighestLevel / (KinkyDungeonMaxLevel - 1);
+
+				enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
+				enemy.Enemy.maxhp = enemy.Enemy.maxhp*factor;
+
+				KinkyDungeonSetEnemyFlag(enemy, "assignedHP", -1);
+			}
+		},
 		"AdventurerAssignFaction": (e, enemy, data) => {
 			if (!enemy.faction) {
 				let nearbyEnemies = KDNearbyEnemies(enemy.x, enemy.y, e.dist);
