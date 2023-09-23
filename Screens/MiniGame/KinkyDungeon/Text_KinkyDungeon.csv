@@ -6721,9 +6721,9 @@ KDStatusTooltipEnemySlow,Slowed
 KDStatusTooltipEnemySilence,Silenced
 KDStatusTooltipEnemyDisarm,Disarmed
 KDStatusTooltipEnemyBlind,Blinded
-KDStatusTooltipEnemyBound1,Restrained!
-KDStatusTooltipEnemyBound2,Restricted!
-KDStatusTooltipEnemyBound3,Immobilized!
+KDStatusTooltipEnemyBound1,Apprehended!
+KDStatusTooltipEnemyBound2,Restrained!
+KDStatusTooltipEnemyBound3,Restricted!
 KDStatusTooltipEnemyBound4,Fully Bound!
 KDStatusTooltipEnemyBound5,Trussed up!
 KDStatusTooltipEnemyBound6,Tightly Secured!

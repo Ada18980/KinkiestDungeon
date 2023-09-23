@@ -147,7 +147,7 @@ let KinkyDungeonSpellSpecials = {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en && en.boundLevel > 0) {
 			KinkyDungeonApplyBuffToEntity(en, {
-				id: "Lockdown", aura: "#a96ef5", type: "MinBoundLevel", duration: 9000, power: Math.min(en.Enemy.maxhp, en.boundLevel), maxCount: 1, tags: ["lock", "debuff", "commandword", "CM1"]
+				id: "Lockdown", aura: "#a96ef5", type: "MinBoundLevel", duration: 9000, power: Math.min(en.Enemy.maxhp + 0.01, en.boundLevel), maxCount: 1, tags: ["lock", "debuff", "commandword", "CM1"]
 			});
 			KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyLock1", true), undefined, undefined, undefined);
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
