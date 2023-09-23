@@ -1198,12 +1198,18 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 						} else if (!bb && enemy.vp > 0.01 && KDHostile(enemy) && enemy.Enemy && !enemy.Enemy.noAlert && enemy.Enemy.movePoints < 90 && !KDAmbushAI(enemy)) {
 							let sneakThreshold = enemy.Enemy.sneakThreshold ? enemy.Enemy.sneakThreshold : 2;
 							if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak")) sneakThreshold = Math.max(0.1, sneakThreshold + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak"));
-							if (enemy.vp > sneakThreshold/2)
+							if (enemy.vp > sneakThreshold/2) {
 								KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_vp", KinkyDungeonRootDirectory + "Conditions/vp.png",
 									canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 									KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 										zIndex: 22,
 									});
+							}
+							if (enemy.vp < sneakThreshold)
+								KinkyDungeonBar(
+									canvasOffsetX + (xx - CamX - CamXoffset + 0.15)*KinkyDungeonGridSizeDisplay,
+									canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - 0,
+									KinkyDungeonGridSizeDisplay * 0.7, 7, enemy.vp / sneakThreshold * 100, "#ffffff", "#333333");
 						}
 						if (enemy.vulnerable > 0)
 							KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_vuln", KinkyDungeonRootDirectory + "Conditions/Vulnerable.png",
@@ -1486,6 +1492,15 @@ function KDDrawEnemyTooltip(enemy, offset) {
 					size: 20,
 				});
 			}
+		}
+		if (enemy.Enemy.blindSight > 0) {
+			let st = TextGet("KDBlindsight");
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 20,
+			});
 		}
 		if (enemy.Enemy.tags.unstoppable) {
 			let st = TextGet("KDunstoppable");
@@ -2168,7 +2183,7 @@ function KDBoundEffects(enemy) {
 	let boundLevel = enemy.boundLevel ? enemy.boundLevel : 0;
 	let bindAmp = 1;//KDGetBindAmp(enemy); //KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
 	boundLevel *= bindAmp;
-	if (boundLevel > enemy.Enemy.maxhp || (enemy.hp <= 0.1*enemy.Enemy.maxhp && boundLevel > enemy.hp)) return 4; // Totally tied
+	if (boundLevel >= enemy.Enemy.maxhp || (enemy.hp <= 0.1*enemy.Enemy.maxhp && boundLevel > enemy.hp)) return 4; // Totally tied
 	if (boundLevel > enemy.Enemy.maxhp*0.75) return 3;
 	if (boundLevel > enemy.Enemy.maxhp*0.5) return 2;
 	if (boundLevel > enemy.Enemy.maxhp*0.25) return 1;
