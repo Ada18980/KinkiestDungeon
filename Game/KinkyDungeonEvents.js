@@ -650,28 +650,28 @@ let KDEventMapInventory = {
 			}
 		},
 		"armorBuff": (e, item, data) => {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Armor", type: "Armor", power: e.power, duration: 2,});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.original || "") + item.name + "Armor", type: "Armor", power: e.power, duration: 2,});
 		},
 		"spellWardBuff": (e, item, data) => {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "SpellResist", type: "SpellResist", power: e.power, duration: 2,});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.original || "") + item.name + "SpellResist", type: "SpellResist", power: e.power, duration: 2,});
 		},
 		"sneakBuff": (e, item, data) => {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Sneak", type: "SlowDetection", power: e.power, duration: 2,});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.original || "") + item.name + "Sneak", type: "SlowDetection", power: e.power, duration: 2,});
 		},
 		"evasionBuff": (e, item, data) => {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Evasion", type: "Evasion", power: e.power, duration: 2,});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.original || "") + item.name + "Evasion", type: "Evasion", power: e.power, duration: 2,});
 		},
 		"blockBuff": (e, item, data) => {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Block", type: "Block", power: e.power, duration: 2,});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.original || "") + item.name + "Block", type: "Block", power: e.power, duration: 2,});
 		},
 		"buff": (e, item, data) => {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + e.buff, type: e.buff, power: e.power, duration: 2,
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.original || "") + item.name + e.buff, type: e.buff, power: e.power, duration: 2,
 				tags: e.tags,
 				currentCount: e.mult ? -1 : undefined,
 				maxCount: e.mult,});
 		},
 		"restraintBlock": (e, item, data) => {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: item.name + "Block", type: "RestraintBlock", power: e.power, duration: 2,});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.original || "") + item.name + "Block", type: "RestraintBlock", power: e.power, duration: 2,});
 		},
 		"ShadowHandTether": (e, item, data) => {
 			let enemy = (item.tx && item.ty) ? KinkyDungeonEnemyAt(item.tx, item.ty) : undefined;
@@ -696,7 +696,7 @@ let KDEventMapInventory = {
 		},
 		"Buff": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: item.name,
+				id: (e.original || "") + item.name + e.buffType,
 				type: e.buffType,
 				power: e.power,
 				tags: e.tags,
@@ -727,7 +727,7 @@ let KDEventMapInventory = {
 		},
 		"AccuracyBuff": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: item.name + e.type + e.trigger,
+				id: (e.original || "") + item.name + e.type + e.trigger,
 				type: "Accuracy",
 				duration: 1,
 				power: e.power
@@ -735,7 +735,7 @@ let KDEventMapInventory = {
 		},
 		"spellRange": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: item.name + e.type + e.trigger,
+				id: (e.original || "") + item.name + e.type + e.trigger,
 				type: "spellRange",
 				duration: 1,
 				power: e.power
@@ -743,7 +743,7 @@ let KDEventMapInventory = {
 		},
 		"SneakBuff": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: item.name + e.type + e.trigger,
+				id: (e.original || "") + item.name + e.type + e.trigger,
 				type: "Sneak",
 				duration: 1,
 				power: e.power
@@ -751,7 +751,7 @@ let KDEventMapInventory = {
 		},
 		"EvasionBuff": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: item.name + e.type + e.trigger,
+				id: (e.original || "") + item.name + e.type + e.trigger,
 				type: "Evasion",
 				duration: 1,
 				power: e.power
@@ -803,7 +803,7 @@ let KDEventMapInventory = {
 				if (KinkyDungeonSlowLevel > 0) {
 					if (e.energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-						id: item.name + e.type + e.trigger,
+						id: (e.original || "") + item.name + e.type + e.trigger,
 						type: "SlowLevel",
 						duration: 2,
 						power: e.power
