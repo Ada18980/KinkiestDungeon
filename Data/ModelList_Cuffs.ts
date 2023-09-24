@@ -53,3 +53,51 @@ AddModel({
 		...GetModelLayers("ShacklesWristRight"),
 	])
 });
+
+
+AddModel({
+	Name: "ShacklesAnklesLeft",
+	Folder: "Cuffs",
+	TopLevel: false,
+	Parent: "ShacklesAnkles",
+	Categories: ["Restraints","Cuffs"],
+	AddPose: ["AnkleLeft"],
+	Layers: ToLayerMap([
+		{ Name: "AnkleLeft", Layer: "AnkleLeft", Pri: 30,
+			Poses: ToMap([...FOOTLEFTPOSES]),
+			DisplacementSprite: "AnkleCuffLeft",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+	])
+});
+
+AddModel({
+	Name: "ShacklesAnklesRight",
+	Folder: "Cuffs",
+	TopLevel: false,
+	Parent: "ShacklesAnkles",
+	Categories: ["Restraints","Cuffs"],
+	AddPose: ["AnkleRight"],
+	Layers: ToLayerMap([
+		{ Name: "AnkleRight", Layer: "AnkleRight", Pri: 30,
+			Poses: ToMap([...FOOTRIGHTPOSES]),
+			DisplacementSprite: "AnkleCuffRight",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "ShacklesAnkles",
+	Folder: "Cuffs",
+	TopLevel: true,
+	Categories: ["Restraints","Cuffs"],
+	AddPose: ["AnkleRight", "AnkleLeft"],
+	Layers: ToLayerMap([
+		...GetModelLayers("ShacklesAnklesRight"),
+		...GetModelLayers("ShacklesAnklesLeft"),
+	])
+});
