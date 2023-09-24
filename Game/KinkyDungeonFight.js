@@ -107,6 +107,7 @@ let KinkyDungeonPlayerDamageDefault = {name: "", dmg: 2, chance: 0.9, type: "una
 let KinkyDungeonPlayerDamage = KinkyDungeonPlayerDamageDefault;
 
 let KinkyDungeonDamageTypes = {
+	heal: {name: "heal", color: "#88ff88", bg: "black"},
 	acid: {name: "acid", color: "#c8d45d", bg: "black"},
 	cold: {name: "cold", color: "#554bd4", bg: "black"},
 	arcane: {name: "arcane", color: "#ff5277", bg: "black"},
