@@ -228,6 +228,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				}
 			}
 			KDGameData.HighestLevelCurrent = Math.max(KDGameData.HighestLevelCurrent || 1, MiniGameKinkyDungeonLevel);
+			KDGameData.HighestLevel = Math.max(KDGameData.HighestLevel || 1, MiniGameKinkyDungeonLevel);
 
 
 			if (!data.overrideRoomType) {
