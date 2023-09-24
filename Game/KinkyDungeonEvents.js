@@ -4732,7 +4732,7 @@ let KDEventMapEnemy = {
 	"tick": {
 		"EpicenterAssignHP": (e, enemy, data) => {
 			if (!KDEnemyHasFlag(enemy, "assignedHP")) {
-				let factor = 0.1 + 1.9*KDGameData.HighestLevel / (KinkyDungeonMaxLevel - 1);
+				let factor = 0.1 + 1.9*(KDGameData.HighestLevel || 1) / (KinkyDungeonMaxLevel - 1);
 
 				enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
 				enemy.Enemy.maxhp = enemy.Enemy.maxhp*factor;

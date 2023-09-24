@@ -767,12 +767,15 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		}, bulletSpin: 1, school: "Conjure", manacost: 3.5, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 1, power: 3, bind: 4, time: 6, range: 3.5, size: 3, aoe: 1.5, lifetime: 1, damage: "chain",  bindType: "Rope", playerEffect: {name: "MagicRope", time: 4}},
 		{name: "Slime", color: "#ff00ff", prerequisite: "SlimeSplash", tags: ["latex", "slime", "aoe", "offense"], landsfx: "MagicSlash", school: "Conjure", manacost: 4, components: ["Legs"], level:1, type:"inert",
 			upcastFrom: "SlimeSplash", upcastLevel: 1,
+			requireLOS: true,
 			effectTileDurationMod: 12, effectTile: {
 				name: "Slime",
 				duration: 8,
 			},
 			onhit:"lingering", time: 4, delay: 1, range: 3.5, size: 3, aoe: 1.5, lifetime: 3, power: 4, damage: "glue", playerEffect: {name: "SlimeTrap", time: 3}}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
-		{name: "SlimeSplash", color: "#ff00ff", prerequisite: "ApprenticeLatex", tags: ["latex", "slime", "aoe", "offense"], landsfx: "MagicSlash", school: "Conjure", manacost: 1.4, components: ["Legs"], level:1, type:"inert",
+		{name: "SlimeSplash", color: "#ff00ff", prerequisite: "ApprenticeLatex", tags: ["latex", "slime", "aoe", "offense"], landsfx: "MagicSlash", school: "Conjure",
+			manacost: 1.4, components: ["Legs"], level:1, type:"inert",
+			requireLOS: true,
 			effectTileDurationMod: 4, effectTile: {
 				name: "Slime",
 				duration: 6,
@@ -780,6 +783,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			onhit:"lingering", time: 0, delay: 1, range: 2.5, size: 1, aoe: 1.01, lifetime: 1, power: 1, damage: "glue", playerEffect: {name: "SlimeTrap", time: 3}}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
 		{name: "SlimeEruption", color: "#ff00ff", prerequisite: "Slime", tags: ["latex", "slime", "aoe", "denial", "offense"], landsfx: "MagicSlash", school: "Conjure", manacost: 7, components: ["Legs"], level:1, type:"inert",
 			upcastFrom: "SlimeSplash", upcastLevel: 2,
+			requireLOS: true,
 			effectTileDurationMod: 16, effectTile: {
 				name: "Slime",
 				duration: 8,
@@ -919,6 +923,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 		{name: "Coalesce", prerequisite: "Spread", tags: ["latex", "slime", "aoe", "utility", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 4, components: ["Verbal"], level:1,
 			type:"special", special: "Coalesce",
+			requireLOS: true,
 			onhit:"", time:0, power: 0.5, range: 3.5, size: 1, aoe: 2.5, damage: "glue"},
 
 		{name: "ElasticGrip", prerequisite: "ApprenticeLatex", tags: ["latex", "utility"], sfx: "FireSpell", school: "Conjure", manacost: 2, components: ["Arms"], level:1,
@@ -940,6 +945,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 		{name: "Spread", prerequisite: "ApprenticeLatex", tags: ["slime", "latex", "utility",], sfx: "MagicSlash", school: "Conjure", manacost: 1.0, components: ["Verbal"], level:1,
 			type:"special", special: "Spread",
+			requireLOS: true,
 			onhit:"", time:0, power: 0, range: 3.99, size: 1, aoe: 2, damage: "inert"},
 
 		{name: "Animate", prerequisite: "Awaken", tags: ["slime", "latex", "summon"], sfx: "MagicSlash", school: "Conjure", manacost: 6, components: ["Verbal"], level:1,
