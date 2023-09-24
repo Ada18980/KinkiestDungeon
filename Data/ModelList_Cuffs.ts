@@ -17,9 +17,10 @@ AddModel({
 		{ Name: "WristLeft", Layer: "BindWristLeft", Pri: 1,
 			Poses: ToMapSubtract([...ARMPOSES], [...WRISTHIDELEFT]),
 			SwapLayerPose: {Front: "BindForeWristLeft"},
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			DisplacementSprite: "CuffLeft",
-			DisplaceLayers: ToMap(["Yoke"]),
-			DisplaceAmount: 40,
+			DisplaceLayers: ToMap(["Cuffs"]),
+			DisplaceAmount: 90,
 		},
 	])
 });
@@ -34,9 +35,10 @@ AddModel({
 		{ Name: "WristRight", Layer: "BindWristRight", Pri: 1,
 			Poses: ToMapSubtract([...ARMPOSES], [...WRISTHIDERIGHT]),
 			SwapLayerPose: {Front: "BindForeWristRight"},
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			DisplacementSprite: "CuffRight",
-			DisplaceLayers: ToMap(["Yoke"]),
-			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["Cuffs"]),
+			DisplaceAmount: 90,
 		},
 	])
 });
@@ -51,6 +53,58 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesWristLeft"),
 		...GetModelLayers("ShacklesWristRight"),
+	])
+});
+
+
+
+AddModel({
+	Name: "ShacklesElbowLeft",
+	Folder: "Cuffs",
+	TopLevel: false,
+	Parent: "ShacklesElbows",
+	Categories: ["Restraints","Cuffs"],
+	AddPose: ["ElbowLeft"],
+	Layers: ToLayerMap([
+		{ Name: "ElbowLeft", Layer: "BindElbowLeft", Pri: 1,
+			Poses: ToMap([...ARMPOSES]),
+			SwapLayerPose: {Front: "BindForeElbowLeft"},
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			DisplacementSprite: "ElbowCuffLeft",
+			DisplaceLayers: ToMap(["Cuffs"]),
+			DisplaceAmount: 50,
+		},
+	])
+});
+AddModel({
+	Name: "ShacklesElbowRight",
+	Folder: "Cuffs",
+	TopLevel: false,
+	Parent: "ShacklesElbows",
+	Categories: ["Restraints","Cuffs"],
+	AddPose: ["ElbowRight"],
+	Layers: ToLayerMap([
+		{ Name: "ElbowRight", Layer: "BindElbowRight", Pri: 1,
+			Poses: ToMap([...ARMPOSES]),
+			SwapLayerPose: {Front: "BindForeElbowRight"},
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			DisplacementSprite: "ElbowCuffRight",
+			DisplaceLayers: ToMap(["Cuffs"]),
+			DisplaceAmount: 100,
+		},
+	])
+});
+
+AddModel({
+	Name: "ShacklesElbows",
+	Folder: "Cuffs",
+	TopLevel: true,
+	Parent: "Shackles",
+	Categories: ["Restraints","Cuffs"],
+	AddPose: ["ElbowLeft", "ElbowRight"],
+	Layers: ToLayerMap([
+		...GetModelLayers("ShacklesElbowLeft"),
+		...GetModelLayers("ShacklesElbowRight"),
 	])
 });
 
@@ -99,5 +153,85 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesAnklesRight"),
 		...GetModelLayers("ShacklesAnklesLeft"),
+	])
+});
+
+
+
+AddModel({
+	Name: "ShacklesThighLeft",
+	Folder: "Cuffs",
+	TopLevel: false,
+	Parent: "ShacklesThigh",
+	Categories: ["Restraints","Cuffs"],
+	AddPose: ["ThighLeft"],
+	Layers: ToLayerMap([
+		{ Name: "ThighLeft", Layer: "ThighLeft", Pri: 30,
+			Poses: ToMap([...LEGPOSES]),
+			DisplacementSprite: "ThighCuffLeft",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+	])
+});
+
+AddModel({
+	Name: "ShacklesThighRight",
+	Folder: "Cuffs",
+	TopLevel: false,
+	Parent: "ShacklesThigh",
+	Categories: ["Restraints","Cuffs"],
+	AddPose: ["ThighRight"],
+	Layers: ToLayerMap([
+		{ Name: "ThighRight", Layer: "ThighRight", Pri: 30,
+			Poses: ToMap([...LEGPOSES]),
+			DisplacementSprite: "ThighCuffRight",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "ShacklesThigh",
+	Folder: "Cuffs",
+	TopLevel: true,
+	Categories: ["Restraints","Cuffs"],
+	AddPose: ["ThighRight", "ThighLeft"],
+	Layers: ToLayerMap([
+		...GetModelLayers("ShacklesThighRight"),
+		...GetModelLayers("ShacklesThighLeft"),
+	])
+});
+
+
+AddModel({
+	Name: "IronCollar",
+	Folder: "Cuffs",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Collar", Layer: "Collar", Pri: 25,
+			Invariant: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "IronBelt",
+	Folder: "Cuffs",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Belt", Layer: "BeltBondage", Pri: 25,
+			Invariant: true,
+			DisplacementSprite: "Belt",
+			DisplaceLayers: ToMap(["RopeTorso"]),
+			DisplaceAmount: 50,
+		},
 	])
 });

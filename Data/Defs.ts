@@ -84,6 +84,8 @@ let LAYERS_BASE = [
 	"BindWristRight",
 	"BindArmLeft",
 	"BindArmRight",
+	"BindElbowLeft",
+	"BindElbowRight",
 	"BindHandLeft",
 	"BindHandRight",
 
@@ -161,6 +163,8 @@ let LAYERS_BASE = [
 	"Thighs3",
 	"Thighs2",
 	"Thighs1",
+	"ThighLeft",
+	"ThighRight",
 	"Ankles",
 	"Ankles3",
 	"Ankles2",
@@ -471,6 +475,18 @@ let LayerGroups = {
 		"SleeveDecoRight",
 		"ArmLeft",
 		"ArmRight",
+	]),
+	"Cuffs": ToMap([
+		// Affect clothes only not skintight
+		"Shirt",
+		"GloveLeft",
+		"GloveRight",
+		"SleeveLeft",
+		"SleeveDecoLeft",
+		"SleeveRight",
+		"SleeveDecoRight",
+		//"ArmLeft",
+		//"ArmRight",
 	]),
 	// endregion
 };
