@@ -4002,11 +4002,11 @@ RestraintMaidDressDesc2,"Makes sure you focus on your work and not fooling aroun
 RestraintMaidBelt,Reinforced Leather Belt
 RestraintMaidBeltDesc,"A leather belt used to keep your legs hobbled."
 RestraintMaidBeltDesc2,"It's made of a very tough reinforced leather. It will take some time to cut."
-RestraintMaidAnkleCuffs,Steel Cuffs
+RestraintMaidAnkleCuffs,Maid Cuffs
 RestraintMaidAnkleCuffsDesc,"A pair of steel cuffs used by the Maidforce."
 RestraintMaidAnkleCuffsDesc2,"They are made of solid steel."
 KinkyDungeonLinkMaidAnkleCuffs,"The enemy attaches your ankle cuffs together!"
-RestraintMaidAnkleCuffs2,Linked Steel Cuffs
+RestraintMaidAnkleCuffs2,Maid Cuff Link
 RestraintMaidAnkleCuffs2Desc,"A pair of steel cuffs used by the Maidforce."
 RestraintMaidAnkleCuffs2Desc2,"They are made of solid steel."
 KinkyDungeonUnLinkMaidAnkleCuffs2,"The ankle cuff chain detaches!"
