@@ -1272,16 +1272,16 @@ let KinkyDungeonSpellListEnemies = [
 		extraCast: [{spell: "Slimethrower2"}, {spell: "SlimeSuit"}]},
 	{name: "AvatarForm", sfx: "PowerMagic", school: "Elements", manacost: 8, components: ["Verbal"], mustTarget: true, level:1, type:"buff", noMiscast: true,
 		buffs: [
-			{id: "AvatarFire", aura: "#f1641f", type: "event", duration: 9999, power: 5, player: true, enemies: false, maxCount: 1, tags: ["cast_fire"], events: [
+			{id: "AvatarFire", aura: "#f1641f", type: "event", duration: 9999, power: 5, player: true, enemies: false, maxCount: 1, tags: ["cast_fire", "trigger_fire"], events: [
 				{trigger: "calcMana", type: "AvatarFire", power: 5.0},
 			]},
-			{id: "AvatarWater", aura: "#2789cd", type: "event", duration: 9999, power: 5, player: true, enemies: false, maxCount: 1, tags: ["cast_water"], events: [
+			{id: "AvatarWater", aura: "#2789cd", type: "event", duration: 9999, power: 5, player: true, enemies: false, maxCount: 1, tags: ["cast_water", "trigger_water"], events: [
 				{trigger: "calcMana", type: "AvatarWater", power: 5.0},
 			]},
-			{id: "AvatarAir", aura: "#c9d4fd", type: "event", duration: 9999, power: 5, player: true, enemies: false, maxCount: 1, tags: ["cast_air"], events: [
+			{id: "AvatarAir", aura: "#c9d4fd", type: "event", duration: 9999, power: 5, player: true, enemies: false, maxCount: 1, tags: ["cast_air", "trigger_air"], events: [
 				{trigger: "calcMana", type: "AvatarAir", power: 5.0},
 			]},
-			{id: "AvatarEarth", aura: "#61a53f", type: "event", duration: 9999, power: 5, player: true, enemies: false, maxCount: 1, tags: ["cast_earth"], events: [
+			{id: "AvatarEarth", aura: "#61a53f", type: "event", duration: 9999, power: 5, player: true, enemies: false, maxCount: 1, tags: ["cast_earth", "trigger_earth"], events: [
 				{trigger: "calcMana", type: "AvatarEarth", power: 5.0},
 			]},
 		], onhit:"", time:10, power: 0, range: 2, size: 1, damage: ""},
