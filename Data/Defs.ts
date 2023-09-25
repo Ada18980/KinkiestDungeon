@@ -41,6 +41,8 @@ let LAYERS_BASE = [
 	"Collar",
 
 	// Bondage
+	"BindForeElbowLeft",
+	"BindForeElbowRight",
 	"BindForeWristLeft",
 	"BindForeWristRight",
 	"BindForeArmLeft",
@@ -119,6 +121,8 @@ let LAYERS_BASE = [
 
 
 	// Crossed arms bondage -- left arm is mostly hidden, no hands
+	"BindCrossElbowLeft",
+	"BindCrossElbowRight",
 	"BindCrossWristRight",
 	"BindForeArmLeft",
 	"BindForeArmRight",

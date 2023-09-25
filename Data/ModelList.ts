@@ -368,14 +368,14 @@ AddModel({
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 1,
 			InheritColor: "TorsoUpper",
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES], "Hogtie"),
-			GlobalDefaultOverride: ToMap(["Hogtie", "Front"]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "Front", "Crossed"]),
 			AppendPose: ToMapDupe(["Hogtie"]),
 			AppendPoseRequire: ToMap(["Wristtie"]),
 		},
 		{ Name: "ArmLeft", Layer: "ArmLeft", Pri: 1,
 			InheritColor: "TorsoUpper",
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES], "Hogtie"),
-			GlobalDefaultOverride: ToMap(["Hogtie", "Front"]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "Front", "Crossed"]),
 			AppendPose: ToMapDupe(["Hogtie"]),
 			AppendPoseRequire: ToMap(["Wristtie"]),
 		},
@@ -391,12 +391,12 @@ AddModel({
 		{ Name: "ForeArmRight", Layer: "ForeArmRight", Pri: 1,
 			InheritColor: "TorsoUpper",
 			Poses: ToMap(FOREARMPOSES),
-			GlobalDefaultOverride: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 		},
 		{ Name: "ForeArmLeft", Layer: "ForeArmLeft", Pri: 1,
 			InheritColor: "TorsoUpper",
 			Poses: ToMap(FOREARMPOSES),
-			GlobalDefaultOverride: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 		},
 		{ Name: "HandRight", Layer: "HandRight", Pri: 1,
 			InheritColor: "TorsoUpper",
@@ -585,7 +585,7 @@ AddModel({
 		{ Name: "GauntletLeft", Layer: "GloveLeft", Pri: 15,
 			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Boxtie", "Up"]),
 			HideWhenOverridden: true,
-			GlobalDefaultOverride: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 		},
 	])
 });
@@ -600,7 +600,7 @@ AddModel({
 		{ Name: "GauntletRight", Layer: "GloveRight", Pri: 15,
 			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Up"]),
 			HideWhenOverridden: true,
-			GlobalDefaultOverride: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 		},
 	])
 });
@@ -1260,7 +1260,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Tops"],
 	Layers: ToLayerMap([
-		{ Name: "Bra", Layer: "Chest", Pri: 5,
+		{ Name: "Bra", Layer: "Chest", Pri: 5.5,
 			Poses: ToMap([...ARMPOSES]),
 			MorphPoses: {Yoked: "Yoked"},
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
@@ -1329,7 +1329,7 @@ AddModel({
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		{ Name: "Armband", Layer: "Sleeves", Pri: 3,
-			Poses: ToMap(["Yoked", "Wristtie", "Free", "Boxtie", "Front"]),
+			Poses: ToMap(["Yoked", "Wristtie", "Free", "Boxtie", "Front", "Crossed"]),
 			MorphPoses: {Yoked: "Yoked", Boxtie: "Boxtie", Free: "Free", Wristtie: "Wristtie", Front: "Boxtie"},
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmRight"],
 			Invariant: true,
@@ -1539,7 +1539,8 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "SleeveLeft", Layer: "SleeveLeft", Pri: 40,
 			Poses: ToMap([...ARMPOSES]),
-			GlobalDefaultOverride: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			MorphPoses: {Crossed: "Front"},
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmLeft"],
 			//AppendPose: ToMapDupe(["RopesUpper"], {ArmLeftTight: "Tight"}),
@@ -1554,7 +1555,8 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "SleeveRight", Layer: "SleeveRight", Pri: 40,
 			Poses: ToMap([...ARMPOSES]),
-			GlobalDefaultOverride: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			MorphPoses: {Crossed: "Front"},
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmRight"],
 			//AppendPose: ToMapDupe(["RopesUpper"], {ArmRightTight: "Tight"}),
@@ -1584,7 +1586,8 @@ AddModel({
 	Categories: ["Tops"],
 	Layers: ToLayerMap([
 		{ Name: "SleeveDecoLeft", Layer: "SleeveDecoLeft", Pri: 40,
-			Poses: ToMap(["Free", "Yoked", "Front"]),
+			Poses: ToMap(["Free", "Yoked", "Front", "Crossed"]),
+			MorphPoses: {Crossed: "Front"},
 			GlobalDefaultOverride: ToMap(["Front"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmLeft"],
 			HideWhenOverridden: true,
@@ -1598,7 +1601,8 @@ AddModel({
 	Categories: ["Tops"],
 	Layers: ToLayerMap([
 		{ Name: "SleeveDecoRight", Layer: "SleeveDecoRight", Pri: 40,
-			Poses: ToMap(["Free", "Yoked", "Front"]),
+			Poses: ToMap(["Free", "Yoked", "Front", "Crossed"]),
+			MorphPoses: {Crossed: "Front"},
 			GlobalDefaultOverride: ToMap(["Front"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmRight"],
 			HideWhenOverridden: true,
@@ -1687,120 +1691,3 @@ AddModel({
 	])
 });
 
-
-
-AddModel({
-	Name: "BunnySockLeft",
-	Folder: "Bunny",
-	Parent: "BunnySocks",
-	Layers: ToLayerMap([
-		{ Name: "SockLeft", Layer: "StockingLeft", Pri: -1,
-			Poses: ToMap([...LEGPOSES]),
-			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
-		},
-		{ Name: "FootSockLeftHogtie", Layer: "SockLeftHogtie", Pri: -1,
-			Poses: ToMap(["Hogtie"]),
-			InheritColor: "SockLeft",
-			Invariant: true,
-		},
-	])
-});
-AddModel({
-	Name: "BunnySockRight",
-	Folder: "Bunny",
-	Parent: "BunnySocks",
-	Layers: ToLayerMap([
-		{ Name: "SockRight", Layer: "StockingRight", Pri: -1,
-			Poses: ToMap([...LEGPOSES]),
-			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
-		},
-		{ Name: "FootSockRightKneel", Layer: "SockRightKneel", Pri: 1.5,
-			HidePoses: ToMap(["FeetLinked"]),
-			Poses: ToMap(["Kneel"]),
-			InheritColor: "SockRight",
-			Invariant: true,
-		},
-	])
-});
-
-AddModel({
-	Name: "BunnySocks",
-	Folder: "Bunny",
-	Parent: "Bunny",
-	TopLevel: true,
-	Categories: ["Socks"],
-	Layers: ToLayerMap([
-		...GetModelLayers("BunnySockRight"),
-		...GetModelLayers("BunnySockLeft"),
-	])
-});
-
-
-
-AddModel({
-	Name: "BunnyGloveLeft",
-	Folder: "Bunny",
-	Parent: "Bunny",
-	Categories: ["Gloves"],
-	Layers: ToLayerMap([
-		{ Name: "GloveLeft", Layer: "GloveLeft", Pri: -1,
-			Poses: ToMap([...ARMPOSES]),
-			GlobalDefaultOverride: ToMap(["Front"]),
-		},
-	])
-});
-
-AddModel({
-	Name: "BunnyGloveRight",
-	Folder: "Bunny",
-	Parent: "Bunny",
-	Categories: ["Gloves"],
-	Layers: ToLayerMap([
-		{ Name: "GloveRight", Layer: "GloveRight", Pri: -1,
-			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
-			GlobalDefaultOverride: ToMap(["Front"]),
-		},
-	])
-});
-
-AddModel({
-	Name: "BunnyGloves",
-	Folder: "Bunny",
-	Parent: "Bunny",
-	TopLevel: true,
-	Categories: ["Gloves"],
-	Layers: ToLayerMap([
-		...GetModelLayers("BunnyGloveLeft"),
-		...GetModelLayers("BunnyGloveRight"),
-	])
-});
-
-AddModel({
-	Name: "BunnyLeotard",
-	Folder: "Bunny",
-	Parent: "Bunny",
-	TopLevel: true,
-	Categories: ["Bodysuits"],
-	Layers: ToLayerMap([
-		{ Name: "Leotard", Layer: "Bodysuit", Pri: -1,
-			Poses: ToMap([...LEGPOSES]),
-		},
-		{ Name: "LeotardChest", Layer: "Chest", Pri: 1.5,
-			Invariant: true,
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
-			InheritColor: "Leotard",
-		},
-	])
-});
-
-AddModel({
-	Name: "Bunny",
-	Folder: "Bunny",
-	TopLevel: true,
-	Categories: ["Uniforms"],
-	Layers: ToLayerMap([
-		...GetModelLayers("BunnyLeotard"),
-		...GetModelLayers("BunnyGloves"),
-		...GetModelLayers("BunnySocks"),
-	])
-});

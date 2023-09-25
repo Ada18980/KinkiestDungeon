@@ -108,6 +108,7 @@
         "Data/Poses.ts",
         "Data/Models.ts",
         "Data/ModelList.ts",
+        "Data/ModelList_Leotards.ts",
         "Data/ModelList_Restraints.ts",
         "Data/ModelList_Cuffs.ts",
         "Data/ModelList_Slime.ts",

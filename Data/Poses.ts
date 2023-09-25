@@ -72,7 +72,7 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		global_default: "Boxtie",
 	},
 	Crossed: {
-		global_default: "Front",
+		global_default: "Boxtie",
 	},
 };
 
