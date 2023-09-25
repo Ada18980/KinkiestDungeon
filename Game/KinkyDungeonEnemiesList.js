@@ -204,9 +204,10 @@ let KinkyDungeonEnemies = [
 		visionRadius: 20, playerBlindSight: 100, maxhp: 8, minLevel:0, weight:-1000, movePoints: 1, attackPoints: 1, attack: "Spell", attackRange: 0, power: 1,
 		terrainTags: {}, floors:KDMapInit([])},
 
-	{name: "Golem", tags: KDMapInit(["construct", "nosignal", "poisonimmune", "soulimmune", "player", "melee", "fireresist", "unstoppable", "tickleresist", "groperesist", "electricresist", "notalk"]), keepLevel: true, allied: true, armor: 2.0, spellResist: 0.4, followRange: 1, AI: "hunt",
+	{name: "Golem", tags: KDMapInit(["construct", "nosignal", "poisonimmune", "soulimmune", "player", "melee", "fireresist", "unstoppable", "tickleresist", "groperesist", "electricresist", "notalk"]),
+		keepLevel: true, allied: true, armor: 2.0, spellResist: 0.4, followRange: 1, AI: "hunt",
 		visionRadius: 20, playerBlindSight: 100, maxhp: 18, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "MeleeWill", attackRange: 1, attackWidth: 1, power: 4.5, accuracy: 0.7, CountLimit: true,
-		nonDirectional: true,
+		nonDirectional: true, dmgType: "crush",
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "StormCrystal", tags: KDMapInit(["construct", "nosignal", "flying", "poisonimmune", "soulimmune", "player", "ranged", "unstoppable", "meleeresist", "tickleimmune", "electricimmune", "soulimmune", "temporary", "notalk", "nonvulnerable", "immobile", "nobrain", "nosignal"]), immobile: true, noblockplayer: true, allied: true, armor: 1.5, followRange: 1, AI: "wander", evasion: -10,
 		spells: ["AllyCrackle"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,

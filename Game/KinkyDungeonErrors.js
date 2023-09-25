@@ -75,6 +75,7 @@ function KinkyDungeonCrashReportStateData() {
 		`Map Mod: [${KDGameData.MapMod}]`,
 		`Last action: [${KinkyDungeonLastAction}]`,
 		`Last turns action: [${KinkyDungeonLastTurnAction}]`,
+		`RestraintDebugLog: [${KDRestraintDebugLog}]`,
 	].join("\n");
 }
 

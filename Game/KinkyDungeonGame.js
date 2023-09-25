@@ -4355,6 +4355,10 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	if (delta > 0) {
 		KDPruneInventoryVariants(true, true, true);
 	}
+
+	if (KDRestraintDebugLog.length > 100) {
+		KDRestraintDebugLog = KDRestraintDebugLog.splice(0, 10);
+	}
 }
 let KDAllowDialogue = true;
 

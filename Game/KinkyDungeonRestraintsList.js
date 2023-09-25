@@ -1624,7 +1624,7 @@ const KinkyDungeonRestraints = [
 
 
 
-	{inventory: true, name: "LegShackles", debris: "Chains", Asset: "LeatherLegCuffs", LinkableBy: ["Legbinders", "Hobbleskirts", "Belts", "Ties"], Link: "LegShackles2",
+	{inventory: true, name: "LegShackles", debris: "Chains", Asset: "LeatherLegCuffs", LinkableBy: [...KDBindable, ...KDDevices], Link: "LegShackles2",
 		sfxGroup: "Handcuffs",
 		Group: "ItemLegs", hobble: 1, Type: "Chained", Color: ["Default", "#888888", "#AAAAAA"], power: 3,
 		events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}],

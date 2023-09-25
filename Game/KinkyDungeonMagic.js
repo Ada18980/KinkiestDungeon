@@ -821,8 +821,26 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			if (ret) {
 				if (!enemy && !bullet && player && ret == "Cast") {
 					KinkyDungeonSendEvent("playerCast", data);
+					if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + spell.school.toLowerCase(), 1);
+					KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast", 1);
+					if (spell.tags) {
+						for (let t of spell.tags) {
+							KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + t, 1);
+						}
+					}
+					if (data.channel) {
+						KinkyDungeonSetFlag("channeling", data.channel);
+						KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, data.channel);
+						KinkyDungeonSleepTime = CommonTime() + 200;
+					}
+					if (spell.components) {
+						for (let comp of spell.components) {
+							if (KDSpellComponentTypes[comp].cast)
+								KDSpellComponentTypes[comp].cast(spell, data);
+						}
+					}
+					KinkyDungeonSendEvent("afterPlayerCast", data);
 				}
-				KinkyDungeonSendEvent("afterPlayerCast", data);
 				return {result: ret, data: data};
 			}
 		}
@@ -871,7 +889,6 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		KDSendSpellCast(spell.name);
 
 		KinkyDungeonSendEvent("playerCast", data);
-		KinkyDungeonSendEvent("afterPlayerCast", data);
 
 		//let cost = spell.staminacost ? spell.staminacost : KinkyDungeonGetCost(spell.level);
 
@@ -895,6 +912,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					KDSpellComponentTypes[comp].cast(spell, data);
 			}
 		}
+		KinkyDungeonSendEvent("afterPlayerCast", data);
 		KinkyDungeonLastAction = "Spell";
 		KinkyDungeonMiscastPityModifier = 0;
 	} else {
