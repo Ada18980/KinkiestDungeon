@@ -2591,7 +2591,7 @@ let KDEventMapSpell = {
 	"afterMultMana": {
 		"ManaRegen": (e, spell, data) => {
 			if (!KinkyDungeonPlayerBuffs.ManaRegenSuspend) {
-				if (data.spell && !data.spell.passive)
+				if (data.spell && (!data.spell.passive && !data.passive))
 					data.cost = Math.max(0, data.cost - KinkyDungeonStatManaMax*e.mult);
 			}
 		},
@@ -3191,10 +3191,10 @@ let KDEventMapSpell = {
 	},
 	"beforePlayerAttack" : {
 		"Shatter": (e, spell, data) => {
-			if (KinkyDungeonPlayerDamage && (KinkyDungeonPlayerDamage.name == "IceBreaker") && data.enemy && data.enemy.freeze > 0 && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, true))) {
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell, false, true));
+			if (KinkyDungeonPlayerDamage && (KinkyDungeonPlayerDamage.name == "IceBreaker") && data.enemy && data.enemy.freeze > 0 && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, true))) {
+				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell, true));
 				KinkyDungeonCastSpell(data.enemy.x, data.enemy.y, KinkyDungeonFindSpell("ShatterStrike", true), undefined, undefined, undefined);
-				KDTriggerSpell(data, false, false);
+				//KDTriggerSpell(data, false, true);
 			}
 		},
 		"BoostDamage": (e, spell, data) => {
@@ -3659,16 +3659,16 @@ let KDEventMapSpell = {
 			if (data.enemy && data.status == "freeze" && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, true)) && data.enemy.playerdmg && KDHostile(data.enemy) && KDistChebyshev(data.enemy.x - KinkyDungeonPlayerEntity.x, data.enemy.y - KinkyDungeonPlayerEntity.y) < 10) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell, false, true));
 				KinkyDungeonCastSpell(data.enemy.x, data.enemy.y, KinkyDungeonFindSpell("ShatterStrike", true), undefined, undefined, undefined);
-				KDTriggerSpell(data, false, false);
+				//KDTriggerSpell(data, false, false);
 			}
 		}
 	},
 	"kill": {
 		"Shatter": (e, spell, data) => {
-			if (data.enemy && data.enemy.freeze > 0 && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, true)) && data.enemy.playerdmg && KDHostile(data.enemy) && KDistChebyshev(data.enemy.x - KinkyDungeonPlayerEntity.x, data.enemy.y - KinkyDungeonPlayerEntity.y) < 10) {
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell, false, true));
+			if (data.enemy && data.enemy.freeze > 0 && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, true)) && data.enemy.playerdmg && KDHostile(data.enemy) && KDistChebyshev(data.enemy.x - KinkyDungeonPlayerEntity.x, data.enemy.y - KinkyDungeonPlayerEntity.y) < 10) {
+				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell, true));
 				KinkyDungeonCastSpell(data.enemy.x, data.enemy.y, KinkyDungeonFindSpell("ShatterStrike", true), undefined, undefined, undefined);
-				KDTriggerSpell(data, false, false);
+				//KDTriggerSpell(data, false, false);
 			}
 		},
 	},
