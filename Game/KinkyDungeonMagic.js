@@ -374,8 +374,10 @@ function KinkyDungeonHandleSpell() {
  * @param {spell} Spell
  * @returns {number}
  */
-function KinkyDungeonGetStaminaCost(Spell) {
+function KinkyDungeonGetStaminaCost(Spell, Passive, Toggle) {
 	let data = {
+		passive: Passive,
+		toggle: Toggle,
 		spell: Spell,
 		cost: Spell.staminacost || 0,
 		costscale: KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StaminaCostMult")),
@@ -397,8 +399,10 @@ function KinkyDungeonGetStaminaCost(Spell) {
  * @param {spell} Spell
  * @returns {number}
  */
-function KinkyDungeonGetManaCost(Spell) {
+function KinkyDungeonGetManaCost(Spell, Passive, Toggle) {
 	let data = {
+		passive: Passive,
+		toggle: Toggle,
 		spell: Spell,
 		cost: Spell.manacost,
 		costscale: KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ManaCostMult")),
@@ -425,8 +429,10 @@ function KinkyDungeonGetManaCost(Spell) {
  * @param {spell} Spell
  * @returns {number}
  */
-function KinkyDungeonGetChargeCost(Spell) {
+function KinkyDungeonGetChargeCost(Spell, Passive, Toggle) {
 	let data = {
+		passive: Passive,
+		toggle: Toggle,
 		spell: Spell,
 		cost: Spell.chargecost || 0,
 		costscale: KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ChargeCostMult")),
