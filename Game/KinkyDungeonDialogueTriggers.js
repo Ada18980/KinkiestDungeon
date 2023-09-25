@@ -101,7 +101,7 @@ let KDDialogueTriggers = {
 		["alchemist", "apprentice", "wizard"], undefined, undefined, ["zombie", "skeleton", "robot"],
 		undefined, undefined),
 
-	"OfferScarf": KDDialogueTriggerOffer("OfferScarf", ["Rope", "Leather"], ["scarfRestraints","ropeAuxiliary"],
+	"OfferScarf": KDDialogueTriggerOffer("OfferScarf", ["Rope"], ["scarfRestraints"],
 		["parole", ""],  undefined,
 		["scarfRestraints","ropeAuxiliary", "dressmaker"], undefined, undefined, ["zombie", "skeleton", "robot"],
 		undefined, undefined),
