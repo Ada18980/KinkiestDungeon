@@ -107,6 +107,8 @@
         "Data/Defs.ts",
         "Data/Poses.ts",
         "Data/Models.ts",
+        "Data/ModelListBase.ts",
+        "Data/ModelListFace.ts",
         "Data/ModelList.ts",
         "Data/ModelList_Leotards.ts",
         "Data/ModelList_Restraints.ts",

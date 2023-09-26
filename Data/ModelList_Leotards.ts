@@ -84,6 +84,11 @@ AddModel({
 			Poses: ToMap([...ARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 		},
+		{ Name: "ForeGloveLeft", Layer: "ForeGloveLeft", Pri: -1,
+			Poses: ToMap([...FOREARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveLeft"},
+		},
 	])
 });
 
@@ -96,6 +101,11 @@ AddModel({
 		{ Name: "GloveRight", Layer: "GloveRight", Pri: -1,
 			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "ForeGloveRight", Layer: "ForeGloveRight", Pri: -1,
+			Poses: ToMap([...FOREARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveRight"},
 		},
 	])
 });

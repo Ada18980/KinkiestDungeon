@@ -45,30 +45,30 @@ let LAYERS_BASE = [
 	"BindForeElbowRight",
 	"BindForeWristLeft",
 	"BindForeWristRight",
-	"BindForeArmLeft",
-	"BindForeArmRight",
 	"BindForeHandLeft",
 	"BindForeHandRight",
+	"BindForeArmLeft",
+	"BindForeArmRight",
 
 	"ForeWrists",
 
 
 	// Forearms (only in HandsFront)
 	"ForeWristLeft",
-	"ForeArmLeft",
 
 	"ForeSleeveLeft",
 	"ForeSleeveDecoLeft",
 	"ForeGloveLeft",
 	"ForeHandLeft",
+	"ForeArmLeft",
 
 	"ForeWristRight",
-	"ForeArmRight",
 
 	"ForeSleeveRight",
 	"ForeSleeveDecoRight",
 	"ForeGloveRight",
 	"ForeHandRight",
+	"ForeArmRight",
 
 
 
@@ -128,7 +128,9 @@ let LAYERS_BASE = [
 	"BindForeArmRight",
 
 	// Crossed arms -- order is inverted
+	"CrossGloveRight",
 	"CrossArmRight",
+	"CrossGloveLeft",
 	"CrossArmLeft",
 
 

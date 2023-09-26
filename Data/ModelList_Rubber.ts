@@ -151,7 +151,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "ArmLeft", Layer: "BindArmLeft", Pri: -5,
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
-			SwapLayerPose: {Front: "BindForeArmLeft"},
+			SwapLayerPose: {Front: "BindForeArmLeft", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			InheritColor: "Rubber",
 		},
@@ -168,7 +168,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "BindArmRight", Pri: -5,
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
-			SwapLayerPose: {Front: "BindForeArmRight"},
+			SwapLayerPose: {Front: "BindForeArmRight", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			InheritColor: "Rubber",
 		},
