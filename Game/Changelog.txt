@@ -18,6 +18,7 @@ Vague todo:
 - Added Heavenly Crunch Macaron to shops and gold chests
 - Inner Power now reduces mana costs instead of regenerating mana
 - Spell point costs are now doubled for spells obtained thru multiclass (will affect all classes in old saves :( )
+- Enemies now say things when helping their allies in combat
 
 4.71 (Sep 2023)
 Bugfixes

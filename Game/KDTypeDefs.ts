@@ -2627,6 +2627,13 @@ interface KDSpecialEnemyBuff {
 }
 
 interface KDFactionProps {
+	/** Negative - will join their allies on sight against you
+	 * Neutral - will only join if they see you attacking their ally or their ally is otherwise neutral with you
+	 * Positive - will only join if their ally would otherwise be neutral with you
+	 */
+	honor: number,
+	/** Honor toward specific factions */
+	honor_specific: Record<string, number>,
 	/** Weight to have them show up in a given floor type and floor count (and in future floor X and floor Y) */
 	weight: (Floor: number, Checkpoint: string, tags: string[], X: number, Y: number) => number,
 }

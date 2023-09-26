@@ -20,6 +20,10 @@ let KinkyDungeonFactionColors = {
  */
 let KDFactionProperties = {
 	Dressmaker: {
+		honor: -1,
+		honor_specific: {
+			Witch: 1,
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 5;
 			if (tags.includes("dressmaker")) w += 40;
@@ -31,6 +35,9 @@ let KDFactionProperties = {
 		},
 	},
 	Bountyhunter: {
+		honor: 1,
+		honor_specific: {
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 10;
 			if (tags.includes("bountyhunter")) w += 40;
@@ -42,6 +49,10 @@ let KDFactionProperties = {
 		},
 	},
 	AncientRobot: {
+		honor: 0,
+		honor_specific: {
+			Dollsmith: -1,
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 0;
 			if (tags.includes("robot")) w += 100;
@@ -54,6 +65,11 @@ let KDFactionProperties = {
 		},
 	},
 	Elf: {
+		honor: 1,
+		honor_specific: {
+			Plant: 0,
+			Nature: 0,
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 0;
 			if (tags.includes("elf")) w += 50;
@@ -64,6 +80,9 @@ let KDFactionProperties = {
 		},
 	},
 	Bast: {
+		honor: 0,
+		honor_specific: {
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 0;
 			if (tags.includes("bast")) w += 100;
@@ -73,6 +92,9 @@ let KDFactionProperties = {
 		},
 	},
 	Maidforce: {
+		honor: 1,
+		honor_specific: {
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 5;
 			if (tags.includes("maid")) w += 100;
@@ -84,6 +106,9 @@ let KDFactionProperties = {
 		},
 	},
 	Dragon: {
+		honor: 1,
+		honor_specific: {
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 5;
 			if (tags.includes("dragon")) w += 40;
@@ -95,6 +120,9 @@ let KDFactionProperties = {
 		},
 	},
 	Elemental: {
+		honor: -1,
+		honor_specific: {
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 0;
 			if (tags.includes("elemental")) w += 40;
@@ -108,6 +136,11 @@ let KDFactionProperties = {
 		},
 	},
 	Apprentice: {
+		honor: 1,
+		honor_specific: {
+			Witch: 0,
+			Wizard: -1,
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 5;
 			if (tags.includes("apprentice")) w += 40;
@@ -119,6 +152,9 @@ let KDFactionProperties = {
 		},
 	},
 	Nevermere: {
+		honor: -1,
+		honor_specific: {
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 5;
 			if (tags.includes("nevermere")) w += 40;
@@ -130,6 +166,9 @@ let KDFactionProperties = {
 		},
 	},
 	Alchemist: {
+		honor: 0,
+		honor_specific: {
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 5;
 			if (tags.includes("alchemist")) w += 40;
@@ -142,6 +181,9 @@ let KDFactionProperties = {
 		},
 	},
 	Bandit: {
+		honor: -1,
+		honor_specific: {
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 20;
 			if (tags.includes("bandit")) w += 40;

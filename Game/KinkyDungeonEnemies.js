@@ -1424,21 +1424,24 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		bg: "#000000",
 		size: 12,
 	});
-	let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinion(enemy)/10)));
-	let str = TextGet("KDTooltipOpinion"+opinion);
-	TooltipList.push({
-		str: str,
-		fg: "#ffffff",
-		bg: KDTextGray0,
-		size: 20,
-	});
-	let ttt = KDGetAwareTooltip(enemy);
-	TooltipList.push({
-		str: TextGet("KDTooltipAware" + ttt.suff),
-		fg: ttt.color,
-		bg: "#000000",
-		size: 20,
-	});
+	if (!enemy.Enemy.tags?.nobrain) {
+		let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinion(enemy)/10)));
+		let str = TextGet("KDTooltipOpinion"+opinion);
+		TooltipList.push({
+			str: str,
+			fg: "#ffffff",
+			bg: KDTextGray0,
+			size: 20,
+		});
+
+		let ttt = KDGetAwareTooltip(enemy);
+		TooltipList.push({
+			str: TextGet("KDTooltipAware" + ttt.suff),
+			fg: ttt.color,
+			bg: "#000000",
+			size: 20,
+		});
+	}
 	if (enemy.Enemy.armor) {
 		let st = TextGet("KinkyDungeonTooltipArmor").replace("AMOUNT", "" + Math.round(10* enemy.Enemy.armor));
 		TooltipList.push({
@@ -2633,13 +2636,28 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 						|| (!KDHostile(enemy)
 							&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 7))) {
 					for (let f of KDGameData.HostileFactions) {
-						if ((KDGetFaction(enemy) != "Player") && (
-							(KDFactionRelation(f, KDGetFaction(enemy)) > 0.15 && KDFactionRelation(f, KDGetFaction(enemy)) < 0.5 && // Favored
-							KDFactionRelation("Player", KDGetFaction(enemy)) < 0.2)
-							|| (KDFactionRelation(f, KDGetFaction(enemy)) >= 0.5 && // Allied
-							KDFactionRelation("Player", KDGetFaction(enemy)) < 0.4)
+						let f2 = KDGetFaction(enemy);
+						if ((f2 != "Player") && (
+							// Either the player has aggroed second faction for some reason or this faction is dishonorable
+							KDGetHonor(f, f2) < 0
+							|| !KDFactionHostile("Player", f2)
 						)
+							&& (
+								(KDFactionRelation(f, f2) > 0.15 && KDFactionRelation(f, f2) < 0.5 && // Favored
+									KDFactionRelation("Player", f2) < 0.2)
+								|| (KDFactionRelation(f, f2) >= 0.5 && // Allied
+									KDFactionRelation("Player", f2) < 0.4)
+							)
 						) {
+							if (!(enemy.hostile > 0) &&
+								(enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || KDGetEnemyPlayLine(enemy))) {
+								let h = f == (KDGetFaction(enemy)) ? "Defend" : "Honor";
+								let suff = KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) + h : h;
+								let index = ("" + Math.floor(Math.random() * 3));
+
+								if (!enemy.dialogue || !enemy.dialogueDuration)
+									KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailChase" + suff + index).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 7, (!KDGameData.PrisonerState) ? 3 : 5);
+							}
 							KDMakeHostile(enemy, KDMaxAlertTimer);
 						}
 					}

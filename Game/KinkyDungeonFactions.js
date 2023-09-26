@@ -144,3 +144,19 @@ function KDGetFactionProps(list, Floor, Checkpoint, tags, bonustags, X = 0, Y = 
 	}
 	return mp;
 }
+
+/**
+ * Gets the honor from faction a toward faction b
+ * @param {string} a
+ * @param {string} b
+ * @returns {number}
+ */
+function KDGetHonor(a, b) {
+	if (KDFactionProperties[a]) {
+		if (KDFactionProperties[a].honor_specific[b]) {
+			return KDFactionProperties[a].honor_specific[b];
+		}
+		return KDFactionProperties[a].honor;
+	}
+	return -1;
+}
