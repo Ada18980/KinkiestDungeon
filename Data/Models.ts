@@ -49,6 +49,7 @@ class ModelContainer {
 	Poses: Record<string, boolean>;
 	TempPoses: Record<string, boolean>;
 	readonly Update: Set<string>;
+	readonly ForceUpdate: Set<string>;
 	readonly Refresh: Set<string>;
 	readonly Mods: Map<string, PoseMod[]>;
 
@@ -62,6 +63,7 @@ class ModelContainer {
 		this.HighestPriority = {};
 		this.Mods = new Map();
 		this.Update = new Set();
+		this.ForceUpdate = new Set();
 		this.Refresh = new Set();
 	}
 
@@ -225,10 +227,6 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		if (zIndex) Container.Container.zIndex = zIndex;
 		Container.Container.filterArea = new PIXI.Rectangle(0,0,MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE);
 	}
-	if (!MC.ContainersDrawn.get(containerID)) {
-		MC.ContainersDrawn.set(containerID, MC.Containers.get(containerID));
-		MC.Update.delete(containerID);
-	}
 
 	// Actual loop for drawing the models on the character
 
@@ -260,6 +258,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		}
 
 		// We only refresh if it actually needs to be updated
+		if (!MC.ForceUpdate.has(containerID)) modified = true; // Force refresh if we are forced to
 		if (modified && !created) {
 			MC.Refresh.add(containerID);
 			MC.Update.delete(containerID);
@@ -281,9 +280,17 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 				clear: true,
 				renderTexture: MC.Containers.get(containerID).RenderTexture,
 			});
+			MC.ForceUpdate.add(containerID);
 		}
 		Container.SpritesDrawn.clear();
+	}
 
+	// Update the updated array
+	if (!MC.ContainersDrawn.get(containerID)) {
+		MC.ContainersDrawn.set(containerID, MC.Containers.get(containerID));
+		if (!MC.Refresh.has(containerID))
+			// We only update if we are not planning to refresh next turn
+			MC.Update.add(containerID);
 	}
 
 	// Store it in the map so we don't have to create it again
@@ -547,6 +554,8 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						zIndex: -ModelLayers[origlayer] + (LayerPri(MC, l, m, mods) || 0),
 						anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
 						anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
+						normalizeAnchorX: MODELWIDTH,
+						normalizeAnchorY: MODELHEIGHT,
 						scalex: sx != 1 ? sx : undefined,
 						scaley: sy != 1 ? sy : undefined,
 						filters: filters,
@@ -561,6 +570,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 }
 
 function FilterHash(filter) {
+	if (!filter) return "";
 	let str = "";
 	for (let f of Object.values(filter)) str = str + "_" + Math.round((f as number) * 1000);
 	return str;
@@ -814,6 +824,14 @@ function UpdateModels(C: Character) {
 	//MC.addModel(ModelDefs.Breastplate);
 	MC.addModel(ModelDefs.Bandit);
 	*/
+}
+
+
+function ForceRefreshModels(C: Character) {
+	let MC: ModelContainer = KDCurrentModels.get(C);
+	if (!MC) return;
+	MC.Update.clear();
+	MC.ForceUpdate.clear();
 }
 
 /**

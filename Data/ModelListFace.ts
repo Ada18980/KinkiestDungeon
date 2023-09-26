@@ -16,24 +16,18 @@ AddModel({
 			Sprite: "", // Because pose is called EyesNeutral lol
 			OffsetX: 942,
 			OffsetY: 200,
-			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
-			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(EYEPOSES),
 		},
 		{ Name: "Eyes2", Layer: "Eyes", Pri: 0,
 			Sprite: "", // Because pose is called EyesNeutral lol
 			OffsetX: 942,
 			OffsetY: 200,
-			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
-			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(EYE2POSES),
 		},
 		{ Name: "Whites", Layer: "Eyes", Pri: -1,
 			OffsetX: 942,
 			OffsetY: 200,
 			NoColorize: true,
-			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
-			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(EYEPOSES),
 		},
 		{ Name: "Whites2", Layer: "Eyes", Pri: -1,
@@ -41,8 +35,6 @@ AddModel({
 			OffsetX: 942,
 			OffsetY: 200,
 			NoColorize: true,
-			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
-			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(EYE2POSES),
 		},
 	])
@@ -60,8 +52,6 @@ AddModel({
 			Sprite: "", // Because pose is called BrowsNeutral lol
 			OffsetX: 942,
 			OffsetY: 200,
-			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
-			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(BROWPOSES),
 			HidePoses: ToMap(["EncaseHead"]),
 		},
@@ -69,8 +59,6 @@ AddModel({
 			Sprite: "", // Because pose is called BrowsNeutral lol
 			OffsetX: 942,
 			OffsetY: 200,
-			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
-			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(BROW2POSES),
 			HidePoses: ToMap(["EncaseHead"]),
 		},
@@ -89,8 +77,6 @@ AddModel({
 			Sprite: "", // Because pose is called MouthNeutral lol
 			OffsetX: 942,
 			OffsetY: 200,
-			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
-			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(MOUTHPOSES),
 			HidePoses: ToMap(["HideMouth"]),
 		},
@@ -108,8 +94,6 @@ AddModel({
 			Sprite: "", // Because pose is called MouthNeutral lol
 			OffsetX: 942,
 			OffsetY: 200,
-			AnchorModX: MODELWIDTH/641, // Dont know sprite dimensions until loaded...
-			AnchorModY: MODELHEIGHT/664,
 			Poses: ToMap(BLUSHPOSES),
 		},
 	])
