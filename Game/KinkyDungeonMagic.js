@@ -876,8 +876,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 				KinkyDungeonSendEvent("playerCastSpecial", data);
 				KinkyDungeonSendEvent("afterPlayerCastSpecial", data);
 			}
-
-			KinkyDungeonTargetingSpellItem = null;
+			KinkyDungeonTargetingSpellWeapon = null;
 			if (!spell.noAggro)
 				KinkyDungeonAggroAction('item', {});
 		} else {
