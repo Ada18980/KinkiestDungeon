@@ -2591,7 +2591,7 @@ AttackTickleTerrorBind,"The monstrous spirit binds you to make you more vulnerab
 NameHugHorror,Hug Horror
 KillHugHorror,"The hug horror vanishes... for now"
 AttackHugHorror,"The monstrous spirit gives a crushing hug!!! (DamageTaken)"
-AttackHugHorrorSlow,"The monstrous spirit gives a crushing hug!!! (DamageTaken)"
+AttackHugHorrorStun,"The monstrous spirit envelops you in tightness, holding you in place! (DamageTaken)"
 AttackHugHorrorBind,"The monstrous spirit's chains latch on! (+RestraintAdded)"
 
 NameGreedyGhast,Greedy Ghast
