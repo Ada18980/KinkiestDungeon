@@ -121,6 +121,8 @@ function KinkyDungeonSetDress(Dress, Outfit, Character, NoRestraints) {
 
 let KDNaked = false;
 let KDRefresh = false;
+let KDLastForceRefresh = 0;
+let KDLastForceRefreshInterval = 300;
 
 /**
  * It sets the player's appearance based on their stats.
@@ -151,6 +153,11 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 		// if true, nakeds the player, then reclothes
 		if (KinkyDungeonCheckClothesLoss) {
 			// We refresh all the restraints
+			if (StandalonePatched && CommonTime() > KDLastForceRefresh + KDLastForceRefreshInterval) {
+				// Force refresh the model
+				ForceRefreshModels(Character);
+				KDLastForceRefresh = CommonTime();
+			}
 
 			// First we remove all restraints and clothes
 			let clothGroups = {};

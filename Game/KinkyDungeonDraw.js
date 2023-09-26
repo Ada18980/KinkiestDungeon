@@ -3014,10 +3014,19 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 				sprite.scale.y = sprite.scale.y * options.scaley;
 			}
 			if (options.anchorx != undefined) {
-				sprite.anchor.x = options.anchorx;
+				if (options.normalizeAnchorX) {
+					sprite.anchor.x = options.anchorx * (options.normalizeAnchorX/sprite.texture.width);
+				} else {
+					sprite.anchor.x = options.anchorx;
+				}
+
 			}
 			if (options.anchory != undefined) {
-				sprite.anchor.y = options.anchory;
+				if (options.normalizeAnchorY) {
+					sprite.anchor.y = options.anchory * (options.normalizeAnchorY/sprite.texture.height);
+				} else {
+					sprite.anchor.y = options.anchory;
+				}
 			}
 		}
 		if (SpritesDrawn)
