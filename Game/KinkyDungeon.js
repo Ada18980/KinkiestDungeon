@@ -834,6 +834,7 @@ function KinkyDungeonRun() {
 		let refresh = false;
 		if (CommonTime() > lastGlobalRefresh + GlobalRefreshInterval) {
 			lastGlobalRefresh = CommonTime();
+			//console.log("refresh");
 			refresh = true;
 		}
 

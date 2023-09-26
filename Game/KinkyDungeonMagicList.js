@@ -68,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "BattleRhythm", "LimitSurge", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "RogueTraps2", "RogueEscape", "ManaRegen","ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "BattleRhythm", "LimitSurge", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -114,7 +114,7 @@ let KinkyDungeonLearnableSpells = [
 		// Dex
 		["Athlete", "Sneaky", "Evasive1", "Evasive2", "Evasive3", "Vault", "VaultAdv", "ArrowFireSpell", "ArrowVineSpell"],
 		// Intellect
-		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser2", "StaffUser3"],
+		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser3"],
 		// Misc
 		["CriticalStrike", "MagicalOverload", "OrgasmFrequency", "OrgasmFrequency2", "OrgasmResist"],
 	],
@@ -216,9 +216,6 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "StaffUser1", tags: ["utility"], school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "StaffUser1", trigger: "calcMultMana", power: 0.8},
 		]},
-		{name: "StaffUser2", tags: ["utility"], prerequisite: "StaffUser1", school: "Any", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0.5, damage: "inert", events: [
-			{type: "IncreaseManaPool", trigger: "calcMaxStats", power: 20},
-		]},
 		{name: "ManaPoolUp", tags: ["utility"], hideUnlearnable: true, school: "Any", manacost: 0, components: [], level:2, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0.5, damage: "inert", events: [
 			{type: "IncreaseManaPool", trigger: "calcMaxStats", power: 10},
 		]},
@@ -227,6 +224,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		]},
 	],
 	"Special": [
+
 		{name: "RogueTargets", tags: ["utility"], school: "Special", manacost: 0, components: [], classSpecific: "Rogue", prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			//{type: "RogueTargets", trigger: "tick"},
 			//{type: "RogueTargets", trigger: "postQuest"},
@@ -268,6 +266,10 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 
 
+		{name: "StaffUser2", tags: ["utility"], school: "Special", prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0.5, damage: "inert", events: [
+			{type: "IncreaseManaPool", trigger: "calcMaxStats", power: 40},
+		]},
+
 		{name: "ArcaneBarrier", tags: ["arcane", "will", "utility"], prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen", school: "Special", manacost: 0, components: [], level:1,
 			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
@@ -305,17 +307,29 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 
 
-		{name: "ManaRegen", tags: ["mana", "utility"], school: "Special", manacost: 0, components: [], classSpecific: "Mage", prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-			{type: "ManaRegenSuspend", trigger: "afterPlayerCast", time:16},
-			{type: "ManaRegenSuspend", trigger: "afterSpellTrigger", time:16},
-			{type: "ManaRegenSuspend", trigger: "playerAttack", time:16},
-			//{type: "ManaRegenOld", trigger: "tick", mult: 0.2, power: 0.5},
-			{type: "ManaRegen", trigger: "afterMultMana", mult: 0.2},
-		]},
+		{name: "ManaRegen", tags: ["mana", "utility"], school: "Special", manacost: 0, components: [], classSpecific: "Mage", prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0,
+			range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+
+				{type: "ManaRegenSuspend", trigger: "afterPlayerCast", time:16},
+				{type: "ManaRegenSuspend", trigger: "afterSpellTrigger", time:16},
+				{type: "ManaRegenSuspend", trigger: "playerAttack", time:16},
+				//{type: "ManaRegenOld", trigger: "tick", mult: 0.2, power: 0.5},
+				{type: "ManaRegen", trigger: "afterMultMana", mult: 0.2},
+			]},
 		{name: "ManaRegenPlus", tags: ["mana", "offense"], school: "Special", manacost: 0, components: [], prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",},
 		{name: "ManaRegenPlus2", tags: ["mana", "offense"], school: "Special", manacost: 0, components: [], prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",},
 		{name: "ManaRegenFast", tags: ["mana", "offense"], school: "Special", manacost: 0, components: [], prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen", hideLearned: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",},
 		{name: "ManaRegenFast2", tags: ["mana", "offense"], school: "Special", manacost: 0, components: [], prerequisite: "ManaRegenFast", classSpecific: "Mage", hideWithout: "ManaRegen", level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",},
+
+		{name: "ManaHarvesting", tags: ["mana", "offense"], school: "Special", manacost: 0, components: [], prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen",
+			level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "ArcaneStore", trigger: "spellTrigger", always: true},
+				{type: "ArcaneStore", trigger: "playerCast", always: true},
+				{type: "ManaHarvesting", trigger: "kill", always: true},
+			]
+		},
+
 
 
 		{name: "AkashicConflux", tags: ["will", "mana", "utility"], prerequisite: "ArcaneBlast", classSpecific: "Mage", hideWithout: "ManaRegen", school: "Special",

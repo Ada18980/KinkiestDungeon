@@ -26,7 +26,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.72"
+KinkyDungeon,"Kinky Dungeon v4.73"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -5327,7 +5327,7 @@ KinkyDungeonSpellDescriptionSlimeMimic,"While standing still on slime, or fully 
 KinkyDungeonSpellStaffUser1,Magical Implements
 KinkyDungeonSpellDescriptionStaffUser1,"While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%."
 KinkyDungeonSpellStaffUser2,Mage Circuits
-KinkyDungeonSpellDescriptionStaffUser2,"Increases the size of the passive mana pool by +200."
+KinkyDungeonSpellDescriptionStaffUser2,"Increases the size of the passive mana pool by +400."
 KinkyDungeonSpellStaffUser3,Archmage
 KinkyDungeonSpellDescriptionStaffUser3,"Upcasted spells cost 25% less mana."
 
@@ -11661,7 +11661,7 @@ KDRepDescriptionElements,"Mata, Architect of Reality"
 KDRepDescriptionConjure,"Aether, Keeper of the Cosmos"
 KDRepDescriptionIllusion,"Oblivion, Keeper of Secrets"
 
-KinkyDungeonBuffArcaneEnergy,"Arcane Energy is stored by casting spells, up to 100% Max mana. Note: Inner Power disables this."
+KinkyDungeonBuffArcaneEnergy,"Arcane Energy is stored by casting spells, up to 100% Max mana."
 KinkyDungeonBuffBattleRhythm,"Battle Rhythm is gained by spending stamina through attacks, up to 50 total."
 
 KinkyDungeonSpellArcaneBlast,Arcane Blast
@@ -11736,10 +11736,10 @@ KinkyDungeonBuffManaRegenSuspend,"You are recharging your next mana cost reducti
 
 
 KinkyDungeonSpellManaRegenFast,Fast Recharge I
-KinkyDungeonSpellDescriptionManaRegenFast,"Inner power now recharges after 12 turns instead of 16."
+KinkyDungeonSpellDescriptionManaRegenFast,"Inner power now recharges after 10 turns instead of 16."
 
 KinkyDungeonSpellManaRegenFast2,Fast Recharge II
-KinkyDungeonSpellDescriptionManaRegenFast2,"Inner power now recharges after 8 turns instead of 16."
+KinkyDungeonSpellDescriptionManaRegenFast2,"Inner power now recharges after 4 turns instead of 16."
 
 
 KinkyDungeonSpellRogueTargets,"Precise Targeting"
@@ -11772,3 +11772,7 @@ KinkyDungeonSpellDescriptionDisguise,"Steal's a helpless enemy's clothes, adding
 KDunstoppable,"Unstoppable (Ignore status/bondage)"
 KDunflinching,"Unflinching (Resist status/bondage)"
 KDBlindsight,Blindsight (See through walls)
+
+
+KinkyDungeonSpellManaHarvesting,Mana Harvesting
+KinkyDungeonSpellDescriptionManaHarvesting,"Defeating or capturing a spellcaster-type enemy recovers 10 arcane energy, reduced to 1 for other humanoids."
