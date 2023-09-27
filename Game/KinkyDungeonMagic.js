@@ -603,6 +603,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 	let originaltY = tY;
 	let originalSpeed = spell.speed;
 	let castCount = spell.shotgunCount ? spell.shotgunCount : 1;
+	let base = spell.shotgunSpread ? KDRandom()*Math.PI*2 : 0;
 	for (let castI = 0; castI < castCount; castI++) {
 		// Reset tx
 		tX = originaltX;
@@ -619,7 +620,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		}
 		// Add spread
 		if (spell.shotgunSpread) {
-			let ang = KDRandom() * 2 * Math.PI;
+			let ang = base + 2 * Math.PI * (castCount > 1 ? ((castI / (castCount - 1))) : KDRandom());// * 2 * Math.PI;
 			tX += spell.shotgunSpread * ((castI+1) / castCount) * Math.cos(ang);
 			tY += spell.shotgunSpread * ((castI+1) / castCount) * Math.sin(ang);
 		}

@@ -4891,6 +4891,7 @@ KinkyDungeonGlueSlowDamage,The glue slows you down! (-DamageDealt SP)
 KinkyDungeonSpellFirebolt,Firebolt
 KinkyDungeonSpellAllyFirebolt,Elemental's Firebolt
 KinkyDungeonSpellAllyWindBlast,Elemental's Gust
+KinkyDungeonSpellEnemyWindBlast,Gust
 KinkyDungeonSpellDescriptionFirebolt,A ball of flame that does DamageDealt damage.
 KinkyDungeonSpellCastFirebolt,You a hurl a firebolt!
 KinkyDungeonSpellTargetFirebolt,Choose aim direction
@@ -6826,8 +6827,10 @@ KinkyDungeonPerksModeDesc1,"Gain 10 extra perks, to give you a false sense of se
 KDHardMode,"Hard Mode:"
 KinkyDungeonHardMode0,Normal Mode
 KinkyDungeonHardMode1,Hard Mode
+KinkyDungeonExtremeMode,Extreme
 KinkyDungeonHardModeDesc0,"A supposedly reasonable difficulty curve."
 KinkyDungeonHardModeDesc1,"Play the game the way it was intended. Cruel and restrictive."
+KinkyDungeonExtremeModeDesc,"Play at your own peril."
 
 KinkyDungeonSexyMode0,Distracted
 KinkyDungeonSexyMode1,Aroused
@@ -11788,3 +11791,5 @@ KDBlindsight,Blindsight (See through walls)
 
 KinkyDungeonSpellManaHarvesting,Mana Harvesting
 KinkyDungeonSpellDescriptionManaHarvesting,"Defeating or capturing a spellcaster-type enemy recovers 10 arcane energy, reduced to 1 for other humanoids."
+
+KDEnemyWindBlast,A powerful wind pushes you away!!!

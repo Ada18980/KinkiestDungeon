@@ -6190,24 +6190,24 @@ function KDMakeHighValue(enemy) {
 		enemy.items.unshift("PotionWill");
 	}
 
-	let buff = KDGetByWeight(KDGetSpecialBuffList(enemy, "HighValue"));
+	let buff = KDGetByWeight(KDGetSpecialBuffList(enemy, ["HighValue"]));
 	if (buff) {
-		KDSpecialBuffs[buff].apply(enemy, "HighValue");
+		KDSpecialBuffs[buff].apply(enemy, ["HighValue"]);
 	}
 }
 
 /**
  * Gets a list of curses applied to the item
  * @param {entity} enemy
- * @param {string} type
+ * @param {string[]} types
  * @returns {Record<string, number>}
  */
-function KDGetSpecialBuffList(enemy, type) {
+function KDGetSpecialBuffList(enemy, types) {
 	/** @type {Record<string, number>} */
 	let ret = {};
 	for (let obj of Object.keys(KDSpecialBuffs)) {
-		if (KDSpecialBuffs[obj].filter(enemy, type))
-			ret[obj] = KDSpecialBuffs[obj].weight(enemy, type);
+		if (KDSpecialBuffs[obj].filter(enemy, types))
+			ret[obj] = KDSpecialBuffs[obj].weight(enemy, types);
 	}
 	return ret;
 }

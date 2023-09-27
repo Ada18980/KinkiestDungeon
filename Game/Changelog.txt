@@ -16,6 +16,7 @@ Vague todo:
 - Mage Circuits is now wizard-exclusive, adds +400 mana pool instead
 - New Wizard upgrade: Mana Harvesting
 - Hard Mode is moved to the game setup screen, and now you can choose to have extra perk points
+- Fixed some bugs with mana costs
 
 4.72 (Sep 2023)
 - Replaced High Profile with Precise Targeting for Rogue class

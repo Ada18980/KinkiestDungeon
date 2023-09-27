@@ -1284,7 +1284,7 @@ let KinkyDungeonSpellListEnemies = [
 			]},
 		], onhit:"", time:10, power: 0, range: 2, size: 1, damage: "",
 		extraCast: [{spell: "Slimethrower2"}, {spell: "SlimeSuit"}]},
-	{name: "AvatarForm", sfx: "PowerMagic", school: "Elements", manacost: 8, components: ["Verbal"], mustTarget: true, level:1, type:"buff", noMiscast: true,
+	{name: "AvatarForm", sfx: "PowerMagic", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, level:1, type:"buff", noMiscast: true,
 		buffs: [
 			{id: "AvatarFire", aura: "#f1641f", type: "event", duration: 9999, power: 5, player: true, enemies: false, maxCount: 1, tags: ["cast_fire", "trigger_fire"], events: [
 				{trigger: "calcMana", type: "AvatarFire", power: 5.0},
@@ -1472,6 +1472,13 @@ let KinkyDungeonSpellListEnemies = [
 	{allySpell: true, name: "AllyFirebolt", sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4.5, delay: 0, range: 50, damage: "fire", speed: 3},
 	{allySpell: true, name: "AllyWindBlast", sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt",
 		projectileTargeting:true, onhit:"", power: 2.0, time: 2, delay: 0, range: 50, damage: "stun", speed: 1, hitSpin: 1, bulletSpin: 1,
+		events: [{type: "Knockback", trigger: "bulletHitEnemy", power: 1.0, dist: 1.0},]},
+	{enemySpell: true, name: "EnemyWindBlast", tags: ["air", "bolt", "offense", "utility"],
+		slowStart: true,
+		prerequisite: "ApprenticeAir", sfx: "FireSpell", school: "Elements", manacost: 2.5, components: ["Arms"], level:1, type:"bolt",
+		projectileTargeting:true, onhit:"", power: 1.0, time: 2, delay: 0, range: 2.99, damage: "stun", speed: 3, hitSpin: 1, bulletSpin: 1,
+		shotgunCount: 3, shotgunDistance: 4, shotgunSpread: 3, shotgunSpeedBonus: 1,
+		playerEffect: {name: "EnemyWindBlast", power: 0.5, damage: "stun", dist: 1.0},
 		events: [{type: "Knockback", trigger: "bulletHitEnemy", power: 1.0, dist: 1.0},]},
 	{allySpell: true, name: "AllyShadowStrike", minRange: 0, sfx: "MagicSlash", school: "Illusion", manacost: 3, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", power: 6, time: 2, delay: 1, range: 1.5, size: 1, aoe: 0.75, lifetime: 1, damage: "cold"},
 	{allySpell: true, name: "HeelShadowStrike", sfx: "MagicSlash", school: "Illusion", manacost: 3, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", power: 2.5, time: 4, delay: 1, range: 1.5, size: 1, aoe: 0.75, lifetime: 1, damage: "cold"},
