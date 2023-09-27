@@ -14,6 +14,7 @@ let LAYERS_BASE = [
 	"GagFlat",
 	"GagStraps",
 	"Gag",
+	"GagUnder",
 	// Hair mid
 	"Hair",
 	"Circlet",

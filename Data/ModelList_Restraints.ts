@@ -162,6 +162,209 @@ AddModel(GetModelWithExtraLayers("PlugMuzzleGagHarnessSecure", "MuzzleGagHarness
 ], "MuzzleGag", false));
 
 
+
+
+AddModel({
+	Name: "Stuffing",
+	Folder: "GagTape",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Stuffing", Layer: "GagUnder", Pri: -100,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "TapeFull",
+	Folder: "GagTape",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Full", Layer: "GagMuzzle", Pri: -50,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			InheritColor: "Tape",
+		},
+	])
+});
+
+AddModel({
+	Name: "TapeWrap",
+	Folder: "GagTape",
+	TopLevel: false,
+	Parent: "TapeFull",
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Full", Layer: "GagFlat", Pri: 0,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			InheritColor: "Tape",
+		},
+	])
+});
+
+AddModel({
+	Name: "TapeCleave",
+	Folder: "GagTape",
+	TopLevel: false,
+	Parent: "TapeFull",
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Cleave", Layer: "Gag", Pri: -100,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			InheritColor: "Tape",
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "ClothCleave",
+	Folder: "GagCloth",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Cleave", Layer: "Gag", Pri: -25,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Cloth",
+		},
+	])
+});
+AddModel({
+	Name: "ClothCleaveThick",
+	Folder: "GagCloth",
+	TopLevel: false,
+	Parent: "ClothCleave",
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "CleaveThick", Layer: "Gag", Pri: -20,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Cloth",
+		},
+	])
+});
+
+AddModel({
+	Name: "ClothKnot",
+	Folder: "GagCloth",
+	TopLevel: false,
+	Parent: "ClothCleave",
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Knot", Layer: "Gag", Pri: 0,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Cloth",
+		},
+	])
+});
+
+AddModel({
+	Name: "ClothOTN",
+	Folder: "GagCloth",
+	TopLevel: false,
+	Parent: "ClothCleave",
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "OTN", Layer: "GagMuzzle", Pri: -30,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Cloth",
+		},
+	])
+});
+
+AddModel({
+	Name: "ClothOTM",
+	Folder: "GagCloth",
+	TopLevel: false,
+	Parent: "ClothCleave",
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "OTM", Layer: "GagFlat", Pri: -1,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Cloth",
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "BlindfoldBasic",
+	Folder: "Blindfold",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Layers: ToLayerMap([
+		{ Name: "Basic", Layer: "Blindfold", Pri: 0,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Blindfold",
+		},
+		{ Name: "BasicRim", Layer: "Blindfold", Pri: 0.1,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			NoOverride: true,
+			InheritColor: "Rim",
+		},
+	])
+});
+
 AddModel({
 	Name: "RopeBoxtie1",
 	Folder: "Rope",
@@ -178,6 +381,7 @@ AddModel({
 		},
 	])
 });
+
 
 AddModel({
 	Name: "RopeWristtie1",
