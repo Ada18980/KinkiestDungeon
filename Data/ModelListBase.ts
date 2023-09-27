@@ -112,7 +112,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
-		{ Name: "TwintailLeft", Layer: "HairFront", Pri: 0,
+		{ Name: "TwintailLeft", Layer: "HairBack", Pri: 0,
 		},
 	])
 });
