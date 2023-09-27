@@ -2762,9 +2762,45 @@ let KDSpecialConditions = {
  * @type {Record<string, KDSpecialEnemyBuff>}
  */
 let KDSpecialBuffs = {
+	"Armored": {
+		filter: (enemy, type) => {
+			return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);
+		},
+		weight: (enemy, type) => {
+			return 40;
+		},
+		apply: (enemy, type) => {
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "Armored",
+				aura: "#ffffff",
+				aurasprite: "Armored",
+				duration: 9999,
+				power: 3,
+				type: "Armor",
+			});
+		},
+	},
+	"EnergyShield": {
+		filter: (enemy, type) => {
+			return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);
+		},
+		weight: (enemy, type) => {
+			return 40;
+		},
+		apply: (enemy, type) => {
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "EnergyShield",
+				aura: "#ffffff",
+				aurasprite: "EnergyShield",
+				duration: 9999,
+				power: 3,
+				type: "SpellResist",
+			});
+		},
+	},
 	"HealingAura": {
 		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Boss"].includes(type);
+			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
 		},
 		weight: (enemy, type) => {
 			return 10 + (enemy.Enemy.shrines?.includes("Will") ? 20 : 0);
@@ -2782,9 +2818,29 @@ let KDSpecialBuffs = {
 			});
 		},
 	},
+	"Missiles": {
+		filter: (enemy, type) => {
+			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
+		},
+		weight: (enemy, type) => {
+			return 4 + (enemy.Enemy.shrines?.includes("Latex") ? 40 : 0);
+		},
+		apply: (enemy, type) => {
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "Missiles",
+				duration: 9999,
+				power: 4,
+				aura: "#ffffff",
+				aurasprite: "Missiles4",
+				events: [
+					{trigger: "afterEnemyTick", type: "Missiles", time: 12, spell: "RubberMissile"},
+				],
+			});
+		},
+	},
 	"ElectrifyX": {
 		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Boss"].includes(type);
+			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
 		},
 		weight: (enemy, type) => {
 			return 10 + (enemy.Enemy.shrines?.includes("Metal") ? 20 : 0);
@@ -2802,7 +2858,7 @@ let KDSpecialBuffs = {
 	},
 	"FireexpX": {
 		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Boss"].includes(type);
+			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
 		},
 		weight: (enemy, type) => {
 			return 10 + (enemy.Enemy.tags?.fire ? 20 : 0);
@@ -2820,7 +2876,7 @@ let KDSpecialBuffs = {
 	},
 	"IceexpX": {
 		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Boss"].includes(type);
+			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
 		},
 		weight: (enemy, type) => {
 			return 10 + ((enemy.Enemy.tags?.ice || enemy.Enemy.tags?.water) ? 20 : 0);
@@ -2838,7 +2894,7 @@ let KDSpecialBuffs = {
 	},
 	"BearTrapper": {
 		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Boss"].includes(type);
+			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
 		},
 		weight: (enemy, type) => {
 			return 10 + (enemy.Enemy.attack?.includes("Bind") ? 20 : 0);

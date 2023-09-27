@@ -1442,8 +1442,15 @@ function KDDrawEnemyTooltip(enemy, offset) {
 			size: 20,
 		});
 	}
-	if (enemy.Enemy.armor) {
-		let st = TextGet("KinkyDungeonTooltipArmor").replace("AMOUNT", "" + Math.round(10* enemy.Enemy.armor));
+	let armor = (enemy.Enemy.armor || 0) + KinkyDungeonGetBuffedStat(enemy.buffs, "Armor");
+	let spellResist = (enemy.Enemy.spellResist || 0) + KinkyDungeonGetBuffedStat(enemy.buffs, "SpellResist");
+	let armorBreak = KinkyDungeonGetBuffedStat(enemy.buffs, "ArmorBreak");
+	let spellResistBreak = KinkyDungeonGetBuffedStat(enemy.buffs, "SpellResistBreak");
+	let evasion = KinkyDungeonMultiplicativeStat(enemy.Enemy.evasion)
+		* KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(enemy.buffs, "Evasion"));
+	if (armor) {
+		let st = TextGet("KinkyDungeonTooltipArmor").replace("AMOUNT", "" + Math.round(10* armor)
+			+ (armorBreak ? ` - ${Math.round(10* armorBreak)}` : ""));
 		TooltipList.push({
 			str: st,
 			fg: "#ffffff",
@@ -1451,8 +1458,9 @@ function KDDrawEnemyTooltip(enemy, offset) {
 			size: 20,
 		});
 	}
-	if (enemy.Enemy.spellResist) {
-		let st = TextGet("KinkyDungeonTooltipSpellResist").replace("AMOUNT", "" + Math.round(10* enemy.Enemy.spellResist));
+	if (spellResist) {
+		let st = TextGet("KinkyDungeonTooltipSpellResist").replace("AMOUNT", "" + Math.round(10* spellResist)
+			+ (spellResistBreak ? ` - ${Math.round(10* spellResistBreak)}` : ""));
 		TooltipList.push({
 			str: st,
 			fg: "#ffffff",
@@ -1460,8 +1468,8 @@ function KDDrawEnemyTooltip(enemy, offset) {
 			size: 20,
 		});
 	}
-	if (enemy.Enemy.evasion) {
-		let st = TextGet("KinkyDungeonTooltipEvasion").replace("AMOUNT", "" + Math.round(100 - 100 * KinkyDungeonMultiplicativeStat(enemy.Enemy.evasion)));
+	if (evasion != 1.0) {
+		let st = TextGet("KinkyDungeonTooltipEvasion").replace("AMOUNT", "" + Math.round(100 - 100 * evasion));
 		TooltipList.push({
 			str: st,
 			fg: "#ffffff",

@@ -64,6 +64,7 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 	let globalTags = Object.assign({}, data.params.globalTags || {});
 
 	if (KinkyDungeonStatsChoice.get("arousalMode")) globalTags.arousalMode = true;
+	if (KinkyDungeonStatsChoice.get("hardMode")) globalTags.hardMode = true;
 
 	while (tileOrder.length > 0) {
 		let tileOrderInd = Math.floor(KDRandom() * tileOrder.length);

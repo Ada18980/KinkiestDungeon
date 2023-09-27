@@ -2273,6 +2273,61 @@ const KDEventMapBuff = {
 		"spellX": (e, buff, enemy, data) => {
 			KDEventMapEnemy[e.trigger][e.type](e, enemy, data);
 		},
+		// Has 4 missiles, launches 1 at a time, reloads every e.time turns
+		"Missiles": (e, buff, enemy, data) => {
+			if (data.delta
+				&& KinkyDungeonCanCastSpells(enemy)
+				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+
+				let nearby = KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy);
+				if ((e.always || enemy.aware || enemy.vp > 0.5)
+					&& (e.always || nearby.length > 0 || KinkyDungeonAggressive(enemy))) {
+					if (buff.power > 0) {
+						let player = KinkyDungeonPlayerEntity;
+						let playerdist = KDistChebyshev(enemy.x - player.x, enemy.y - player.y);
+						if (nearby.length > 0) {
+							nearby = nearby.filter((en) => {
+								return KDistChebyshev(enemy.x - en.x, enemy.y - en.y) < playerdist;
+							});
+							if (nearby.length > 0) {
+								player = nearby[Math.floor(KDRandom() * nearby.length)];
+							}
+						}
+
+						if (KinkyDungeonCheckLOS(enemy, player, KDistChebyshev(enemy.x - player.x, enemy.y - player.y), 11 - buff.power, false, true, 2)) {
+							let origin = enemy;
+							let spell = KinkyDungeonFindSpell(e.spell, true);
+							let b = KinkyDungeonLaunchBullet(origin.x, origin.y,
+								player.x,player.y,
+								0.5, {noSprite: spell.noSprite, faction: KDGetFaction(enemy), name:spell.name, block: spell.block, width:spell.size, height:spell.size, summon:spell.summon,
+									targetX: player.x, targetY: player.y, cast: Object.assign({}, spell.spellcast),
+									source: enemy.id, dot: spell.dot,
+									bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
+									bulletSpin: spell.bulletSpin,
+									effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
+									effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
+									passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
+									pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
+									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+									damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, false);
+							b.visual_x = origin.x;
+							b.visual_y = origin.y;
+							let dist = KDistEuclidean(player.x - origin.x, player.y - origin.y);
+							b.vy = 0.5 * (player.y - origin.y)/dist;
+							b.vx = 0.5 * (player.x - origin.x)/dist;
+
+							buff.power -= 1;
+						}
+					}
+				}
+
+				if (buff.power < 4 && !KDEnemyHasFlag(enemy, "MissilesReload")) {
+					buff.power += 1;
+					KinkyDungeonSetEnemyFlag(enemy, "MissilesReload", e.time);
+				}
+				buff.aurasprite = "Missiles" + Math.floor(buff.power);
+			}
+		},
 	},
 
 	"tickAfter": {
@@ -5583,48 +5638,7 @@ let KDEventMapGeneric = {
 			for (let e of KDMapData.Entities) {
 				if (KDRandom() < chance && !KDEntityHasBuff(e, "HighValue")) {
 					let Enemy = null;
-					switch(e.Enemy.name) {
-						case "WitchShock": Enemy = KinkyDungeonGetEnemyByName("WitchMagnet"); break;
-						case "WitchChain": Enemy = KinkyDungeonGetEnemyByName("WitchMetal"); break;
-						case "Drone": Enemy = KinkyDungeonGetEnemyByName("CaptureBot"); break;
-						case "CaptureBot": Enemy = KinkyDungeonGetEnemyByName("Cyborg"); break;
-						case "EnforcerBot": Enemy = KinkyDungeonGetEnemyByName("BotMissile"); break;
-						case "Alchemist": Enemy = KinkyDungeonGetEnemyByName("Alkahestor"); break;
-						case "WolfgirlPet": Enemy = KinkyDungeonGetEnemyByName("WolfGuard"); break;
-						case "WolfApprentice": Enemy = KinkyDungeonGetEnemyByName("WolfOperative"); break;
-						case "WolfTapeDrones": Enemy = KinkyDungeonGetEnemyByName("WolfShieldDrone"); break;
-						case "Bandit": Enemy = KinkyDungeonGetEnemyByName("BanditHunter"); break;
-						case "BanditHunter": Enemy = KinkyDungeonGetEnemyByName("BanditGrappler"); break;
-						case "BanditGrappler": Enemy = KinkyDungeonGetEnemyByName("BanditChief"); break;
-						case "SmallSlime": Enemy = KinkyDungeonGetEnemyByName("SlimeAdv"); break;
-						case "FastSlime": Enemy = KinkyDungeonGetEnemyByName("LatexCube"); break;
-						case "LatexCubeSmall": Enemy = KinkyDungeonGetEnemyByName("LatexCubeMetal"); break;
-						case "Dragon": Enemy = KinkyDungeonGetEnemyByName("DragonShield"); break;
-						case "DragonShield": Enemy = KinkyDungeonGetEnemyByName("DragonLeader"); break;
-						case "ElementalFire": Enemy = KinkyDungeonGetEnemyByName("ElementalWater"); break;
-						case "Pixie": Enemy = KinkyDungeonGetEnemyByName("ElfRanger"); break;
-						case "Statue": Enemy = KinkyDungeonGetEnemyByName("StatueDart"); break;
-						case "SoulCrystal": Enemy = KinkyDungeonGetEnemyByName("SoulCrystalActive"); break;
-						case "ShadowHand": Enemy = KinkyDungeonGetEnemyByName("ShadowGhast"); break;
-						case "ShadowGhast": Enemy = KinkyDungeonGetEnemyByName("CorruptedAdventurer"); break;
-						case "Gag": Enemy = KinkyDungeonGetEnemyByName("AnimArmbinder"); break;
-						case "Scarves": Enemy = KinkyDungeonGetEnemyByName("MonsterRope"); break;
-						case "RopeSnake": Enemy = KinkyDungeonGetEnemyByName("ElementalRope"); break;
-						case "LearnedRope": Enemy = KinkyDungeonGetEnemyByName("ElementalLeather"); break;
-						case "Apprentice": Enemy = KinkyDungeonGetEnemyByName("WitchRope"); break;
-						case "Apprentice2": Enemy = KinkyDungeonGetEnemyByName("Conjurer"); break;
-						case "HighWizard": Enemy = KinkyDungeonGetEnemyByName("Fungal"); break;
-						case "Dressmaker": Enemy = KinkyDungeonGetEnemyByName("Librarian"); break;
-						case "Cleric": Enemy = KinkyDungeonGetEnemyByName("Mummy"); break;
-						case "BlindZombie": Enemy = KinkyDungeonGetEnemyByName("NawashiZombie"); break;
-						case "FastZombie": Enemy = KinkyDungeonGetEnemyByName("SamuraiZombie"); break;
-						case "Ninja": Enemy = KinkyDungeonGetEnemyByName("Nawashi"); break;
-						case "Maidforce": Enemy = KinkyDungeonGetEnemyByName("MaidforceStalker"); break;
-						case "MaidforcePara": Enemy = KinkyDungeonGetEnemyByName("MaidforceHead"); break;
-						case "LesserSkeleton": Enemy = KinkyDungeonGetEnemyByName("GreaterSkeleton"); break;
-						case "Skeleton": Enemy = KinkyDungeonGetEnemyByName("HeavySkeleton"); break;
-						case "OldDrone": Enemy = KinkyDungeonGetEnemyByName("OldTapeDrone"); break;
-					}
+					if (KDHardModeReplace[e.Enemy.name]) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
 					if (Enemy) {
 						KDSpliceIndex(KDMapData.Entities.indexOf(e), 1);
 						e.Enemy = JSON.parse(JSON.stringify(Enemy));
@@ -5654,6 +5668,55 @@ let KDEventMapGeneric = {
 						let buff = KDGetByWeight(KDGetSpecialBuffList(e, "NGP_Reg"));
 						if (buff) {
 							KDSpecialBuffs[buff].apply(e, "NGP_Reg");
+						}
+					}
+					e.hp = e.Enemy.maxhp;
+				}
+
+
+			}
+		},
+		"HardModeReplace": (ev, data) => {
+			if (!KinkyDungeonStatsChoice.get("hardMode")) return;
+			let chance = 0.2;
+			let bosschance = 0.3;
+			let bosshpchance = 0.4;
+
+			for (let e of KDMapData.Entities) {
+				if (KDRandom() < chance && !KDEntityHasBuff(e, "HighValue")) {
+					let Enemy = null;
+					if (KDHardModeReplace[e.Enemy.name]) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
+					if (Enemy) {
+						KDSpliceIndex(KDMapData.Entities.indexOf(e), 1);
+						e.Enemy = JSON.parse(JSON.stringify(Enemy));
+						KDAddEntity(e);
+
+						if (!e.CustomName)
+							KDProcessCustomPatron(Enemy, e, 0.2);
+						KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
+						let shop = KinkyDungeonGetShopForEnemy(e, false);
+						if (shop) {
+							KinkyDungeonSetEnemyFlag(e, "Shop", -1);
+							KinkyDungeonSetEnemyFlag(e, shop, -1);
+						}
+						let loadout = KinkyDungeonGetLoadoutForEnemy(e, false);
+						KDSetLoadout(e, loadout);
+					}
+					if (KDRandom() < bosschance || e.Enemy.tags.stageBoss) {
+						let buff = KDGetByWeight(KDGetSpecialBuffList(e, "Hardmode_Boss"));
+						if (buff) {
+							KDSpecialBuffs[buff].apply(e, "Hardmode_Boss");
+						}
+
+						if (KDRandom() < bosshpchance) {
+							e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
+							e.Enemy.power *= 1.5;
+							e.Enemy.maxhp = e.Enemy.maxhp*2;
+						}
+					} else {
+						let buff = KDGetByWeight(KDGetSpecialBuffList(e, "Hardmode_Reg"));
+						if (buff) {
+							KDSpecialBuffs[buff].apply(e, "Hardmode_Reg");
 						}
 					}
 					e.hp = e.Enemy.maxhp;
@@ -6241,3 +6304,46 @@ function KDAddArcaneEnergy(player, powerAdded) {
 	}
 
 }
+
+let KDHardModeReplace = {
+	"WitchShock": "WitchMagnet",
+	"WitchChain": "WitchMetal",
+	"Drone": "CaptureBot",
+	"CaptureBot": "Cyborg",
+	"EnforcerBot": "BotMissile",
+	"Alchemist": "Alkahestor",
+	"WolfgirlPet": "WolfGuard",
+	"WolfApprentice": "WolfOperative",
+	"WolfTapeDrones": "WolfShieldDrone",
+	"Bandit": "BanditHunter",
+	"BanditHunter": "BanditGrappler",
+	"BanditGrappler": "BanditChief",
+	"SmallSlime": "SlimeAdv",
+	"FastSlime": "LatexCube",
+	"LatexCubeSmall": "LatexCubeMetal",
+	"Dragon": "DragonShield",
+	"DragonShield": "DragonLeader",
+	"ElementalFire": "ElementalWater",
+	"Pixie": "ElfRanger",
+	"Statue": "StatueDart",
+	"SoulCrystal": "SoulCrystalActive",
+	"ShadowHand": "ShadowGhast",
+	"ShadowGhast": "CorruptedAdventurer",
+	"Gag": "AnimArmbinder",
+	"Scarves": "MonsterRope",
+	"RopeSnake": "ElementalRope",
+	"LearnedRope": "ElementalLeather",
+	"Apprentice": "WitchRope",
+	"Apprentice2": "Conjurer",
+	"HighWizard": "Fungal",
+	"Dressmaker": "Librarian",
+	"Cleric": "Mummy",
+	"BlindZombie": "NawashiZombie",
+	"FastZombie": "SamuraiZombie",
+	"Ninja": "Nawashi",
+	"Maidforce": "MaidforceStalker",
+	"MaidforcePara": "MaidforceHead",
+	"LesserSkeleton": "GreaterSkeleton",
+	"Skeleton": "HeavySkeleton",
+	"OldDrone": "OldTapeDrone",
+};

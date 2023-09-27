@@ -397,7 +397,7 @@ function KDGetPerkCost(perk) {
 }
 
 function KinkyDungeonGetStatPoints(Stats) {
-	let total = 0;
+	let total = KinkyDungeonStatsChoice.get("perksMode") ? 10 : 0;
 	for (let k of Stats.keys()) {
 		if (Stats.get(k)) {
 			if (KinkyDungeonStatsPresets[k]) {
