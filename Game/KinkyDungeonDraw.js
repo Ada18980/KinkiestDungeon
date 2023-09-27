@@ -2070,7 +2070,7 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 
 		let offX = 0;
 		let offY = 0;
-		if (Entity.Enemy) {
+		if (Entity.Enemy && KinkyDungeonVisionGet(Entity.x, Entity.y) > 0) {
 			let ret = KDAnimEnemy(Entity);
 			offX = ret.offX;
 			offY = ret.offY;

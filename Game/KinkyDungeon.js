@@ -657,6 +657,13 @@ function KinkyDungeonLoad() {
 					KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
 				}
 			}
+			if (localStorage.getItem("KDSfxVolume")) {
+				let parsed = parseInt(localStorage.getItem("KDSfxVolume"));
+				if (parsed != undefined) {
+					KDSfxVolumeListIndex = parsed;
+					KDSfxVolume = KDSfxVolumeList[KDSfxVolumeListIndex];
+				}
+			}
 			if (localStorage.getItem("KDAnimSpeed")) {
 				let parsed = parseInt(localStorage.getItem("KDAnimSpeed"));
 				if (parsed != undefined) {
@@ -680,6 +687,7 @@ function KinkyDungeonLoad() {
 
 			KinkyDungeonSaveMode = localStorage.getItem("KinkyDungeonSaveMode") != undefined ? localStorage.getItem("KinkyDungeonSaveMode") == "True" : false;
 			KinkyDungeonHardMode = localStorage.getItem("KinkyDungeonHardMode") != undefined ? localStorage.getItem("KinkyDungeonHardMode") == "True" : false;
+			KinkyDungeonExtremeMode = localStorage.getItem("KinkyDungeonExtremeMode") != undefined ? localStorage.getItem("KinkyDungeonExtremeMode") == "True" : false;
 			KinkyDungeonPerksMode = localStorage.getItem("KinkyDungeonPerksMode") != undefined ? localStorage.getItem("KinkyDungeonPerksMode") == "True" : false;
 			KinkyDungeonRandomMode = localStorage.getItem("KinkyDungeonRandomMode") != undefined ? localStorage.getItem("KinkyDungeonRandomMode") == "True" : false;
 			KinkyDungeonEasyMode = localStorage.getItem("KinkyDungeonEasyMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonEasyMode")) || 0 : 0;
@@ -797,6 +805,7 @@ let KinkyDungeonRandomMode = false;
 let KinkyDungeonEasyMode = 0;
 let KinkyDungeonSaveMode = false;
 let KinkyDungeonHardMode = false;
+let KinkyDungeonExtremeMode = false;
 let KinkyDungeonPerksMode = false;
 let KinkyDungeonSexyPiercing = false;
 let KinkyDungeonSexyPlug = false;
@@ -1380,8 +1389,10 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KDHardMode"), 875 - 50, 530 + 2, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 		DrawButtonKDEx("KinkyDungeonHardMode0", (bdata) => {
+			KinkyDungeonExtremeMode = false;
 			KinkyDungeonHardMode = false;
 			localStorage.setItem("KinkyDungeonHardMode", KinkyDungeonHardMode ? "True" : "False");
+			localStorage.setItem("KinkyDungeonExtremeMode", KinkyDungeonExtremeMode ? "True" : "False");
 			return true;
 		}, true, 875, 510, 275, 50, TextGet("KinkyDungeonHardMode0"), !KinkyDungeonHardMode ? "#ffffff" : "#888888", "");
 		if (MouseInKD("KinkyDungeonHardMode")) {
@@ -1389,12 +1400,16 @@ function KinkyDungeonRun() {
 		}
 
 		DrawButtonKDEx("KinkyDungeonHardMode1", (bdata) => {
+			if (KinkyDungeonHardMode) {
+				KinkyDungeonExtremeMode = true;
+			}
 			KinkyDungeonHardMode = true;
 			localStorage.setItem("KinkyDungeonHardMode", KinkyDungeonHardMode ? "True" : "False");
+			localStorage.setItem("KinkyDungeonExtremeMode", KinkyDungeonExtremeMode ? "True" : "False");
 			return true;
-		}, true, 1175, 510, 275, 50, TextGet("KinkyDungeonHardMode1"), KinkyDungeonHardMode ? "#ffffff" : "#888888", "");
+		}, true, 1175, 510, 275, 50, TextGet(KinkyDungeonExtremeMode ? "KinkyDungeonExtremeMode" : "KinkyDungeonHardMode1"), KinkyDungeonHardMode ? "#ffffff" : "#888888", "");
 		if (MouseInKD("KinkyDungeonHardMode1")) {
-			DrawTextFitKD(TextGet("KinkyDungeonHardModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+			DrawTextFitKD(TextGet(KinkyDungeonExtremeMode ? "KinkyDungeonExtremeModeDesc" : "KinkyDungeonHardModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
 
@@ -2465,6 +2480,7 @@ function KDUpdatePlugSettings(evalHardMode) {
 	KinkyDungeonStatsChoice.set("randomMode", KinkyDungeonRandomMode ? true : undefined);
 	KinkyDungeonStatsChoice.set("saveMode", KinkyDungeonSaveMode ? true : undefined);
 	KinkyDungeonStatsChoice.set("hardMode", KinkyDungeonHardMode ? true : undefined);
+	KinkyDungeonStatsChoice.set("extremeMode", KinkyDungeonExtremeMode ? true : undefined);
 	KinkyDungeonStatsChoice.set("perksMode", KinkyDungeonPerksMode ? true : undefined);
 	KinkyDungeonStatsChoice.set("easyMode", KinkyDungeonEasyMode == 1 ? true : undefined);
 	KinkyDungeonStatsChoice.set("norescueMode", KinkyDungeonEasyMode == 2 ? true : undefined);
@@ -3188,6 +3204,7 @@ function KinkyDungeonLoadGame(String) {
 			KinkyDungeonRandomMode = KinkyDungeonStatsChoice.get("randomMode");
 			KinkyDungeonSaveMode = KinkyDungeonStatsChoice.get("saveMode");
 			KinkyDungeonHardMode = KinkyDungeonStatsChoice.get("hardMode");
+			KinkyDungeonExtremeMode = KinkyDungeonStatsChoice.get("extremeMode");
 			KinkyDungeonPerksMode = KinkyDungeonStatsChoice.get("perksMode");
 			KinkyDungeonEasyMode = KinkyDungeonStatsChoice.get("norescueMode") ? 2 : (KinkyDungeonStatsChoice.get("easyMode") ? 1 : 0);
 

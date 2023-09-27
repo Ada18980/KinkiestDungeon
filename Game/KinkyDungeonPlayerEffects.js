@@ -165,6 +165,22 @@ let KDPlayerEffects = {
 		}
 		return {sfx: "Dollify", effect: true};
 	},
+	"EnemyWindBlast": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 1.0, 1.0)) {
+			let dist = playerEffect.dist;
+			for (let i = 0; i < dist; i++) {
+				let newX = target.x + Math.round(1 * Math.sign(bullet.vx));
+				let newY = target.y + Math.round(1 * Math.sign(bullet.vy));
+				if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
+				&& (dist == 1 || KinkyDungeonCheckProjectileClearance(target.x, target.y, newX, newY))) {
+					KDMovePlayer(newX, newY, false);
+				}
+			}
+			KinkyDungeonSendTextMessage(4, TextGet("KDEnemyWindBlast"), "yellow", 1);
+			KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
+		}
+		return {sfx: "Fwosh", effect: true};
+	},
 	"EncaseBoltDrone": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			if (KDGameData.MovePoints >= 0) {

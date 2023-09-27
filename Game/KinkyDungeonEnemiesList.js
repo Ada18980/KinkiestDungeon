@@ -2763,54 +2763,76 @@ let KDSpecialConditions = {
  */
 let KDSpecialBuffs = {
 	"Armored": {
-		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);
+		filter: (enemy, types) => {
+			return types.some((type) => {return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);});
 		},
-		weight: (enemy, type) => {
+		weight: (enemy, types) => {
 			return 40;
 		},
-		apply: (enemy, type) => {
+		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Armored",
 				aura: "#ffffff",
 				aurasprite: "Armored",
+				noAuraColor: true,
 				duration: 9999,
 				power: 3,
 				type: "Armor",
 			});
 		},
 	},
-	"EnergyShield": {
-		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);
+	"Fast": {
+		filter: (enemy, types) => {
+			return types.some((type) => {return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);});
 		},
-		weight: (enemy, type) => {
+		weight: (enemy, types) => {
 			return 40;
 		},
-		apply: (enemy, type) => {
+		apply: (enemy, types) => {
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "Fast",
+				aura: "#ffffff",
+				aurasprite: "Fast",
+				noAuraColor: true,
+				duration: 9999,
+				power: 0.5,
+				type: "MoveSpeed",
+			});
+		},
+	},
+	"EnergyShield": {
+		filter: (enemy, types) => {
+			return types.some((type) => {return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);});
+		},
+		weight: (enemy, types) => {
+			return 40;
+		},
+		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "EnergyShield",
 				aura: "#ffffff",
 				aurasprite: "EnergyShield",
 				duration: 9999,
+				noAuraColor: true,
 				power: 3,
 				type: "SpellResist",
 			});
 		},
 	},
 	"HealingAura": {
-		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
+		filter: (enemy, types) => {
+			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss", "Extreme"].includes(type);});
 		},
-		weight: (enemy, type) => {
+		weight: (enemy, types) => {
 			return 10 + (enemy.Enemy.shrines?.includes("Will") ? 20 : 0);
 		},
-		apply: (enemy, type) => {
+		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "HealingAuraSBuff",
 				aura: "#ffffff",
 				aurasprite: "HealingAura",
 				duration: 9999,
+				noAuraColor: true,
 				power: 1,
 				events: [
 					{trigger: "afterEnemyTick", type: "nurseAura", power: 0.3, dist: 1.5},
@@ -2819,33 +2841,55 @@ let KDSpecialBuffs = {
 		},
 	},
 	"Missiles": {
-		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
+		filter: (enemy, types) => {
+			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss", "Extreme"].includes(type);});
 		},
-		weight: (enemy, type) => {
+		weight: (enemy, types) => {
 			return 4 + (enemy.Enemy.shrines?.includes("Latex") ? 40 : 0);
 		},
-		apply: (enemy, type) => {
+		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Missiles",
 				duration: 9999,
 				power: 4,
 				aura: "#ffffff",
 				aurasprite: "Missiles4",
+				noAuraColor: true,
 				events: [
-					{trigger: "afterEnemyTick", type: "Missiles", time: 12, spell: "RubberMissile"},
+					{trigger: "afterEnemyTick", count: 4, type: "Missiles", time: 12 + ((enemy.Enemy.tags?.minor) ? 10 : (enemy.Enemy.tags?.elite || enemy.Enemy.tags?.miniboss || enemy.Enemy.tags?.boss) ? 0 : 5), spell: "RubberMissile"},
+				],
+			});
+		},
+	},
+	"Airbender": {
+		filter: (enemy, types) => {
+			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss", "Extreme"].includes(type);});
+		},
+		weight: (enemy, types) => {
+			return 4 + ((enemy.Enemy.kite || enemy.Enemy.tags?.ranged) ? 20 : 0);
+		},
+		apply: (enemy, types) => {
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "Airbender",
+				duration: 9999,
+				power: 2,
+				aura: "#ffffff",
+				aurasprite: "Airbender1",
+				noAuraColor: true,
+				events: [
+					{trigger: "afterEnemyTick", count: 2, type: "Airbender", time: 4 + ((enemy.Enemy.tags?.minor) ? 4 : (enemy.Enemy.tags?.elite || enemy.Enemy.tags?.miniboss || enemy.Enemy.tags?.boss) ? 0 : 2), spell: "EnemyWindBlast"},
 				],
 			});
 		},
 	},
 	"ElectrifyX": {
-		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
+		filter: (enemy, types) => {
+			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);});
 		},
-		weight: (enemy, type) => {
+		weight: (enemy, types) => {
 			return 10 + (enemy.Enemy.shrines?.includes("Metal") ? 20 : 0);
 		},
-		apply: (enemy, type) => {
+		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "ElectrifyX",
 				duration: 9999,
@@ -2857,13 +2901,13 @@ let KDSpecialBuffs = {
 		},
 	},
 	"FireexpX": {
-		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
+		filter: (enemy, types) => {
+			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);});
 		},
-		weight: (enemy, type) => {
+		weight: (enemy, types) => {
 			return 10 + (enemy.Enemy.tags?.fire ? 20 : 0);
 		},
-		apply: (enemy, type) => {
+		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "FireexpX",
 				duration: 9999,
@@ -2875,13 +2919,13 @@ let KDSpecialBuffs = {
 		},
 	},
 	"IceexpX": {
-		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
+		filter: (enemy, types) => {
+			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);});
 		},
-		weight: (enemy, type) => {
+		weight: (enemy, types) => {
 			return 10 + ((enemy.Enemy.tags?.ice || enemy.Enemy.tags?.water) ? 20 : 0);
 		},
-		apply: (enemy, type) => {
+		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "IceexpX",
 				duration: 9999,
@@ -2893,13 +2937,13 @@ let KDSpecialBuffs = {
 		},
 	},
 	"BearTrapper": {
-		filter: (enemy, type) => {
-			return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);
+		filter: (enemy, types) => {
+			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);});
 		},
-		weight: (enemy, type) => {
+		weight: (enemy, types) => {
 			return 10 + (enemy.Enemy.attack?.includes("Bind") ? 20 : 0);
 		},
-		apply: (enemy, type) => {
+		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "BearTrapper",
 				duration: 9999,

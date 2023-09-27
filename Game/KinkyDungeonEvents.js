@@ -2279,7 +2279,7 @@ const KDEventMapBuff = {
 				&& KinkyDungeonCanCastSpells(enemy)
 				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 
-				let nearby = KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy);
+				let nearby = (e.always || enemy.aware || enemy.vp > 0.5) ? KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy) : [];
 				if ((e.always || enemy.aware || enemy.vp > 0.5)
 					&& (e.always || nearby.length > 0 || KinkyDungeonAggressive(enemy))) {
 					if (buff.power > 0) {
@@ -2294,7 +2294,7 @@ const KDEventMapBuff = {
 							}
 						}
 
-						if (KinkyDungeonCheckLOS(enemy, player, KDistChebyshev(enemy.x - player.x, enemy.y - player.y), 11 - buff.power, false, true, 2)) {
+						if (KinkyDungeonCheckLOS(enemy, player, KDistChebyshev(enemy.x - player.x, enemy.y - player.y), 11 - Math.min(4, buff.power), false, true, 2)) {
 							let origin = enemy;
 							let spell = KinkyDungeonFindSpell(e.spell, true);
 							let b = KinkyDungeonLaunchBullet(origin.x, origin.y,
@@ -2317,15 +2317,72 @@ const KDEventMapBuff = {
 							b.vx = 0.5 * (player.x - origin.x)/dist;
 
 							buff.power -= 1;
+							KinkyDungeonSetEnemyFlag(enemy, "MissilesReload", e.time);
 						}
 					}
 				}
 
-				if (buff.power < 4 && !KDEnemyHasFlag(enemy, "MissilesReload")) {
+				if (buff.power < (e.count || 4) && !KDEnemyHasFlag(enemy, "MissilesReload") && enemy.attackPoints < 1) {
 					buff.power += 1;
 					KinkyDungeonSetEnemyFlag(enemy, "MissilesReload", e.time);
 				}
 				buff.aurasprite = "Missiles" + Math.floor(buff.power);
+			}
+		},
+		"Airbender": (e, buff, enemy, data) => {
+			if (data.delta
+				&& KinkyDungeonCanCastSpells(enemy)
+				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+
+				let nearby = (e.always || enemy.aware || enemy.vp > 0.5) ? KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy) : [];
+				if ((e.always || enemy.aware || enemy.vp > 0.5)
+					&& (e.always || nearby.length > 0 || KinkyDungeonAggressive(enemy))) {
+					if (buff.power > 0) {
+						let player = KinkyDungeonPlayerEntity;
+						let playerdist = KDistChebyshev(enemy.x - player.x, enemy.y - player.y);
+						if (nearby.length > 0) {
+							nearby = nearby.filter((en) => {
+								return KDistChebyshev(enemy.x - en.x, enemy.y - en.y) < playerdist;
+							});
+							if (nearby.length > 0) {
+								player = nearby[Math.floor(KDRandom() * nearby.length)];
+							}
+						}
+
+						if (KinkyDungeonCheckLOS(enemy, player, KDistChebyshev(enemy.x - player.x, enemy.y - player.y), 3, false, true, 2)) {
+							let origin = enemy;
+							let spell = KinkyDungeonFindSpell(e.spell, true);
+							let b = KinkyDungeonLaunchBullet(origin.x, origin.y,
+								player.x,player.y,
+								0.5, {noSprite: spell.noSprite, faction: KDGetFaction(enemy), name:spell.name, block: spell.block, width:spell.size, height:spell.size, summon:spell.summon,
+									targetX: player.x, targetY: player.y,//cast: Object.assign({}, spell.spellcast),
+									source: enemy.id, dot: spell.dot,
+									bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
+									bulletSpin: spell.bulletSpin,
+									effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
+									effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
+									passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
+									pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
+									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+									damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags},
+									spell: spell}, false);
+							b.visual_x = origin.x;
+							b.visual_y = origin.y;
+							let dist = KDistEuclidean(player.x - origin.x, player.y - origin.y);
+							b.vy = spell.speed * (player.y - origin.y)/dist;
+							b.vx = spell.speed * (player.x - origin.x)/dist;
+
+							buff.power -= 1;
+							KinkyDungeonSetEnemyFlag(enemy, "AirbenderReload", e.time);
+						}
+					}
+				}
+
+				if (buff.power < (e.count || 2) && !KDEnemyHasFlag(enemy, "AirbenderReload")) {
+					buff.power += 1;
+					KinkyDungeonSetEnemyFlag(enemy, "AirbenderReload", e.time);
+				}
+				buff.aurasprite = "Airbender" + Math.floor(buff.power);
 			}
 		},
 	},
@@ -5635,7 +5692,9 @@ let KDEventMapGeneric = {
 			let bosschance = 1 - (0.9**KinkyDungeonNewGame);
 			let regbuffchance = 1 - (0.95**KinkyDungeonNewGame);
 
-			for (let e of KDMapData.Entities) {
+
+			let entities = Object.assign([], KDMapData.Entities);
+			for (let e of entities) {
 				if (KDRandom() < chance && !KDEntityHasBuff(e, "HighValue")) {
 					let Enemy = null;
 					if (KDHardModeReplace[e.Enemy.name]) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
@@ -5656,18 +5715,18 @@ let KDEventMapGeneric = {
 						KDSetLoadout(e, loadout);
 					}
 					if (KDRandom() < bosschance || e.Enemy.tags.stageBoss) {
-						let buff = KDGetByWeight(KDGetSpecialBuffList(e, "NGP_Boss"));
+						let buff = KDGetByWeight(KDGetSpecialBuffList(e, ["NGP_Boss"]));
 						if (buff) {
-							KDSpecialBuffs[buff].apply(e, "NGP_Boss");
+							KDSpecialBuffs[buff].apply(e, ["NGP_Boss"]);
 						}
 
 						e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
 						e.Enemy.power *= 1.5;
 						e.Enemy.maxhp = e.Enemy.maxhp*2;
 					} else if (KDRandom() < regbuffchance) {
-						let buff = KDGetByWeight(KDGetSpecialBuffList(e, "NGP_Reg"));
+						let buff = KDGetByWeight(KDGetSpecialBuffList(e, ["NGP_Reg"]));
 						if (buff) {
-							KDSpecialBuffs[buff].apply(e, "NGP_Reg");
+							KDSpecialBuffs[buff].apply(e, ["NGP_Reg"]);
 						}
 					}
 					e.hp = e.Enemy.maxhp;
@@ -5682,7 +5741,19 @@ let KDEventMapGeneric = {
 			let bosschance = 0.3;
 			let bosshpchance = 0.4;
 
-			for (let e of KDMapData.Entities) {
+			let boss = ["Hardmode_Boss"];
+			let reg = ["Hardmode_Reg"];
+
+			if (KinkyDungeonStatsChoice.get("extremeMode")) {
+				chance = 1.0;
+				bosschance = 0.4;
+				bosshpchance = 1.0;
+				boss.push("ExtremeBoss", "Extreme");
+				reg.push("ExtremeReg", "Extreme");
+			}
+
+			let entities = Object.assign([], KDMapData.Entities);
+			for (let e of entities) {
 				if (KDRandom() < chance && !KDEntityHasBuff(e, "HighValue")) {
 					let Enemy = null;
 					if (KDHardModeReplace[e.Enemy.name]) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
@@ -5702,21 +5773,24 @@ let KDEventMapGeneric = {
 						let loadout = KinkyDungeonGetLoadoutForEnemy(e, false);
 						KDSetLoadout(e, loadout);
 					}
+					let bossBuff = false;
 					if (KDRandom() < bosschance || e.Enemy.tags.stageBoss) {
-						let buff = KDGetByWeight(KDGetSpecialBuffList(e, "Hardmode_Boss"));
+						let buff = KDGetByWeight(KDGetSpecialBuffList(e, boss));
 						if (buff) {
-							KDSpecialBuffs[buff].apply(e, "Hardmode_Boss");
+							KDSpecialBuffs[buff].apply(e, boss);
 						}
+						bossBuff = true;
 
 						if (KDRandom() < bosshpchance) {
 							e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
 							e.Enemy.power *= 1.5;
 							e.Enemy.maxhp = e.Enemy.maxhp*2;
 						}
-					} else {
-						let buff = KDGetByWeight(KDGetSpecialBuffList(e, "Hardmode_Reg"));
+					}
+					if (!bossBuff || KinkyDungeonStatsChoice.get("extremeMode")) {
+						let buff = KDGetByWeight(KDGetSpecialBuffList(e, reg));
 						if (buff) {
-							KDSpecialBuffs[buff].apply(e, "Hardmode_Reg");
+							KDSpecialBuffs[buff].apply(e, reg);
 						}
 					}
 					e.hp = e.Enemy.maxhp;

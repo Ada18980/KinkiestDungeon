@@ -689,6 +689,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		KDMapData.TilesSkin = {};
 		KDMapData.EffectTiles = {};
 		KDMapData.Bullets = []; // Clear all bullets
+		KDMapData.Entities = []; // Clear all entities
 		KDMapData.EndPosition = null;
 		KDMapData.ShortcutPosition = null;
 		KDMapData.PatrolPoints = [];

@@ -136,6 +136,11 @@ interface KDRestraintProps extends KDRestraintPropsBase {
 interface KDRestraintPropsBase {
 	/** Used in standalone to replace Color */
 	Filters?: Record<string, LayerFilter>,
+	/** TODO Used in standalone to indicate which faction colors map to which filter
+	 * color is the faction color type
+	 * override is whether the faction color overrides the filter. If true it will replace the filter in the model. If false it will apply it over the model's filter.
+	*/
+	FactionFilters?: Record<string, {color: string, override: boolean}>,
 	/** This item is unaffected by shrines */
 	noShrine?:boolean,
 	/** This item is beneficial and player wont try to struggle from it */
@@ -2621,9 +2626,9 @@ interface KDSeal {
 }
 
 interface KDSpecialEnemyBuff {
-	filter: (enemy: entity, type: string) => boolean;
-	weight: (enemy: entity, type: string) => number;
-	apply: (enemy: entity, type: string) => void;
+	filter: (enemy: entity, type: string[]) => boolean;
+	weight: (enemy: entity, type: string[]) => number;
+	apply: (enemy: entity, type: string[]) => void;
 }
 
 interface KDFactionProps {
