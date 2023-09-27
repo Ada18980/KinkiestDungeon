@@ -79,6 +79,7 @@ const KinkyDungeonMapParams = {
 
 		tagModifiers: {
 			"temple": 0.4,
+			"library": 0.5,
 			"jungle": 0,
 			"cavern": 0,
 		},
@@ -178,6 +179,7 @@ const KinkyDungeonMapParams = {
 			"open": 0.5,
 			"jungle": 0,
 			"cavern": 0,
+			"library": 0.25,
 		},
 
 		"setpieces": [
@@ -339,6 +341,7 @@ const KinkyDungeonMapParams = {
 			"door": 0.5,
 			"jungle": 100,
 			"cavern": 60,
+			"temple": 5,
 		},
 
 		music: {
@@ -442,6 +445,7 @@ const KinkyDungeonMapParams = {
 			"jungle": 0,
 			"cavern": 0,
 			"temple": 3,
+			"library": 0.7,
 		},
 		globalTags: {
 			"temple": true,
@@ -556,6 +560,8 @@ const KinkyDungeonMapParams = {
 			"temple": 2,
 			"jungle": 0,
 			"cavern": 0,
+			"library": 0.1,
+			"urban": 0.5,
 		},
 		globalTags: {
 			"egyptian": true,
@@ -647,6 +653,8 @@ const KinkyDungeonMapParams = {
 			"urban": 2,
 			"jungle": 0,
 			"cavern": 0,
+			"library": 4,
+			"temple": 0.5,
 		},
 
 		"shortcuts": [
@@ -733,6 +741,7 @@ const KinkyDungeonMapParams = {
 			"cavern": 80,
 			"urban": 0.5,
 			"door": 0.5,
+			"library": 0.0,
 		},
 
 		"setpieces": [
@@ -829,6 +838,7 @@ const KinkyDungeonMapParams = {
 			"temple": 3,
 			"urban": 0.4,
 			"dungeon": 0,
+			"library": 1,
 		},
 		globalTags: {
 			"temple": true,
@@ -928,6 +938,7 @@ const KinkyDungeonMapParams = {
 			"dungeon": 0,
 			"factory": 2.0,
 			"bellows": 3.0,
+			"library": 0.1,
 		},
 		globalTags: {
 			"factory": true,
@@ -1034,6 +1045,7 @@ const KinkyDungeonMapParams = {
 			"open": 0.5,
 			"jungle": 0,
 			"cavern": 0,
+			"library": 0,
 		},
 
 		"setpieces": [
