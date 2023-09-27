@@ -600,7 +600,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	let resistStun = 0;
 	let resistSlow = 0;
 	let resistDamage = 0;
-	let spellResist = (Damage && Enemy.Enemy.armor && !KinkyDungeonMeleeDamageTypes.includes(predata.type)) ? Enemy.Enemy.spellResist : 0;
+	let spellResist = (Damage && Enemy.Enemy.spellResist && !KinkyDungeonMeleeDamageTypes.includes(predata.type)) ? Enemy.Enemy.spellResist : 0;
 	if (KinkyDungeonGetBuffedStat(Enemy.buffs, "SpellResist")) spellResist += KinkyDungeonGetBuffedStat(Enemy.buffs, "SpellResist");
 	let armor = (Damage && Enemy.Enemy.armor && KinkyDungeonMeleeDamageTypes.includes(predata.type)) ? Enemy.Enemy.armor : 0;
 	if (KinkyDungeonGetBuffedStat(Enemy.buffs, "Armor")) armor += KinkyDungeonGetBuffedStat(Enemy.buffs, "Armor");
@@ -686,7 +686,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			if (time && spellResist)
 				time = Math.max(0, Math.ceil(time * KDArmorFormula(predata.dmg, spellResist)));
 			//predata.dmg = Math.max(0, predata.dmg * KDArmorFormula(predata.dmg, spellResist));
-			armor = spellResist;
+			armor = spellResist || 0;
 		}
 
 		if (predata.type != "inert" && resistDamage < 2) {

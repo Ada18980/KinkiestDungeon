@@ -1414,7 +1414,7 @@ function KinkyDungeonRun() {
 			KinkyDungeonEasyMode = 1;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode + "");
 			return true;
-		}, true, 1275, 570, 175, 50, TextGet("KinkyDungeonEasyMode1"), KinkyDungeonEasyMode == 1 ? "#ffffff" : "#888888", "");
+		}, true, 875, 570, 175, 50, TextGet("KinkyDungeonEasyMode1"), KinkyDungeonEasyMode == 1 ? "#ffffff" : "#888888", "");
 		if (MouseInKD("KinkyDungeonEasyMode1")) {
 			DrawTextFitKD(TextGet("KinkyDungeonEasyModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
@@ -1423,7 +1423,7 @@ function KinkyDungeonRun() {
 			KinkyDungeonEasyMode = 2;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode + "");
 			return true;
-		}, true, 875, 570, 175, 50, TextGet("KinkyDungeonEasyMode2"), KinkyDungeonEasyMode == 2 ? "#ffffff" : "#888888", "");
+		}, true, 1275, 570, 175, 50, TextGet("KinkyDungeonEasyMode2"), KinkyDungeonEasyMode == 2 ? "#ffffff" : "#888888", "");
 		if (MouseInKD("KinkyDungeonEasyMode2")) {
 			DrawTextFitKD(TextGet("KinkyDungeonEasyModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
