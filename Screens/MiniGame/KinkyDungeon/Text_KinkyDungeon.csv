@@ -6685,9 +6685,9 @@ KinkyDungeonHappyGas,"The air swirls with traces of pleasing magic..."
 KinkyDungeonSporeGas,"The spores make you feel sleepy..."
 
 KinkyDungeonTooltipWeakness,"DAMAGETYPE: MULTIPLIERx modifier"
-KinkyDungeonTooltipArmor,"Base Physical Armor: AMOUNT"
-KinkyDungeonTooltipSpellResist,"Base Magic Armor: AMOUNT"
-KinkyDungeonTooltipEvasion,"Base Evasion: AMOUNT%"
+KinkyDungeonTooltipArmor,"Physical Armor: AMOUNT"
+KinkyDungeonTooltipSpellResist,"Magic Armor: AMOUNT"
+KinkyDungeonTooltipEvasion,"Evasion: AMOUNT%"
 KinkyDungeonTooltipDealsDamage,"Deals DAMAGETYPE damage"
 KDTooltipDisarm,"Can disarm (chance: DISARMCHANCE%)"
 KDTooltipDamageResists,Resistances:
@@ -6819,6 +6819,18 @@ KinkyDungeonRemoveLowLevelRope,"Many ropes emerge around you, removing weaker ro
 KDClasses,"Choose Class:"
 
 KDSexyMode,"Distraction Mode:"
+
+KDPerksMode,"Perks Mode:"
+KinkyDungeonPerksMode0,Standard
+KinkyDungeonPerksMode1,Extra
+KinkyDungeonPerksModeDesc0,"No pain, no gain."
+KinkyDungeonPerksModeDesc1,"Gain 10 extra perks, to give you a false sense of security."
+
+KDHardMode,"Hard Mode:"
+KinkyDungeonHardMode0,Normal Mode
+KinkyDungeonHardMode1,Hard Mode
+KinkyDungeonHardModeDesc0,"A supposedly reasonable difficulty curve."
+KinkyDungeonHardModeDesc1,"Play the game the way it was intended. Cruel and restrictive."
 
 KinkyDungeonSexyMode0,Distracted
 KinkyDungeonSexyMode1,Aroused
@@ -7892,7 +7904,7 @@ KinkyDungeonRemindJailPlayOfficer0,"Looks like you've had too much time to yours
 KinkyDungeonRemindJailPlayOfficer1,"Why don't you come with me for a sec?"
 KinkyDungeonRemindJailPlayOfficer2,"Let me see your ID..."
 KinkyDungeonRemindJailPlayOfficerStruggle,"You have the right to remain silent."
-KinkyDungeonRemindJailPlayOfficerLeash,"No resisting arrest."
+KinkyDungeonRemindJailPlayOfficerLeash,"Let's have a chat."
 KinkyDungeonRemindJailPlayOfficerFree,"Who set you loose?"
 KinkyDungeonRemindJailPlayOfficerLoot,"I'll be confiscating that."
 KinkyDungeonRemindJailPlayOfficerKey,"Aye, you're gonna need clearance for that, missy."

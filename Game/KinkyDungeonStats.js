@@ -1043,7 +1043,7 @@ function KinkyDungeonUpdateStats(delta) {
 		//KinkyDungeonSendActionMessage(5, TextGet("KinkyDungeonSleepDeprivation"), "pink", 3);
 	}
 	KinkyDungeonDifficulty = KinkyDungeonNewGame * 20;
-	if (KinkyDungeonStatsChoice.get("hardMode")) KinkyDungeonDifficulty += 10;
+	//if (KinkyDungeonStatsChoice.get("hardMode")) KinkyDungeonDifficulty += 10;
 	KinkyDungeonTeaseLevel = Math.max(KinkyDungeonTeaseLevel * (1 - KinkyDungeonChastityMult()) + (delta > 0 ? KinkyDungeonTeaseLevelBypass : 0), 0);
 	if (KinkyDungeonVibeLevel > 0 || KinkyDungeonTeaseLevel > 0) {
 		KDGameData.OrgasmNextStageTimer = Math.min(KDOrgasmStageTimerMax, KDGameData.OrgasmNextStageTimer + delta);
