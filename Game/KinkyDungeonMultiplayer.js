@@ -76,6 +76,7 @@ function KinkyDungeonUpdateFromData() {
 	}
 	if (KinkyDungeonGameData.enemies) {
 		KDMapData.Entities = [];
+		KDCommanderRoles = new Map();
 		KDUpdateEnemyCache = true;
 		let enemies = JSON.parse(KinkyDungeonGameData.enemies);
 

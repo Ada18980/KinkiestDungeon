@@ -1085,6 +1085,7 @@ function KDTE_Create(w, h, chkpoint = 'grv') {
 	KDMapData.EffectTiles = {};
 	KDMapData.TilesSkin = {};
 	KDMapData.Entities = [];
+	KDCommanderRoles = new Map();
 	KDMapData.TilesMemory = {};
 
 	KinkyDungeonPOI = [];

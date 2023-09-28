@@ -131,8 +131,12 @@ let KDGuardActions = {
 				guard.CurrentAction = "jailWander";
 				// Unlock all jail doors
 				for (let T of Object.values(KDMapData.Tiles)) {
-					if (T.Lock && T.Jail) T.Lock = undefined;
-					if (T.Type == "Lock") T.Type = undefined;
+					if (T.Type == "Door") {
+						if (T.Lock && T.Jail) {
+							T.Lock = undefined;
+							T.Type = undefined;
+						}
+					}
 				}
 			}
 		},

@@ -60,7 +60,8 @@ let KinkyDungeonPOI = [];
 
 let KDDefaultAvoidTiles = "gtVN@";
 let KinkyDungeonGroundTiles = "023w][?/";
-let KinkyDungeonWallTiles = "14";
+let KinkyDungeonWallTiles = "14,";
+let KinkyDungeonBlockTiles = "14,bgX";
 let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@l;SsRrdzTgLNVt5"; // Objects which can be moved into: floors, debris, open doors, staircases
 // 5 is skinned floor, you can give it whatever sprite you want
 // 6 is skinned wall, you can give it whatever sprite you want
@@ -317,6 +318,7 @@ function KDResetEventData(Data) {
 
 function KinkyDungeonInitialize(Level, Load) {
 	KDCurrentWorldSlot = {x: 0, y: 0};
+	KDUpdateChokes = true;
 
 	if (StandalonePatched)
 		KDInitCurrentPose(true);
@@ -364,6 +366,7 @@ function KinkyDungeonInitialize(Level, Load) {
 		KDClearItems(e);
 	}
 	KDMapData.Entities = [];
+	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
 	KDMapData.Bullets = [];
 	KDMapData.GroundItems = [];
@@ -510,6 +513,7 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
 	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
+	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
 
 	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
@@ -673,6 +677,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	}
 
 	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
+	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
 	// Else make a new one
 	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
@@ -690,6 +695,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		KDMapData.EffectTiles = {};
 		KDMapData.Bullets = []; // Clear all bullets
 		KDMapData.Entities = []; // Clear all entities
+		KDCommanderRoles = new Map();
 		KDMapData.EndPosition = null;
 		KDMapData.ShortcutPosition = null;
 		KDMapData.PatrolPoints = [];
@@ -1149,6 +1155,7 @@ function KinkyDungeonGenNavMap(fromPoint) {
 		if (!KinkyDungeonTilesGet(a[0]) || !KinkyDungeonTilesGet(a[0]).OffLimits)
 			KDMapData.RandomPathablePoints[a[0]] = {x: X, y:Y, tags:tags};
 	}
+	KDUpdateChokes = true;
 }
 
 
@@ -2157,7 +2164,7 @@ function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, 
 			for (let i = 0; i < 30; i++) {
 				if (spawned < maxspawn) {
 					let Enemy = KinkyDungeonGetEnemy(
-						tags, MiniGameKinkyDungeonLevel + KinkyDungeonDifficulty/5,
+						tags, KDGetEffLevel(),
 						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 						'0', requireTags, true);
 					if (Enemy) {
@@ -4334,6 +4341,7 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 			en.vulnerable = 0;
 		}
 	}
+	KDCommanderUpdate(delta);
 
 	KinkyDungeonSendEvent("tickAfter", {delta: delta});
 

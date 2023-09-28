@@ -147,6 +147,7 @@ let KDAIType = {
 		wanderDelay_short: (enemy, AIData) => {return 10 + Math.floor(KDRandom() * 20);},
 	},
 	"guard": {
+		guard: true,
 		init: (enemy, player, AIData) => {
 			AIData.visionMod *= 0.7;},
 		beforemove: (enemy, player, AIData) => {return false;},
@@ -176,6 +177,7 @@ let KDAIType = {
 		wanderDelay_short: (enemy, AIData) => {return 15 + Math.floor(KDRandom() * 30);},
 	},
 	"looseguard": {
+		guard: true,
 		strictwander: true,
 		init: (enemy, player, AIData) => {},
 		beforemove: (enemy, player, AIData) => {return false;},
@@ -200,6 +202,7 @@ let KDAIType = {
 		wanderDelay_short: (enemy, AIData) => {return 15 + Math.floor(KDRandom() * 30);},
 	},
 	"verylooseguard": {
+		guard: true,
 		strictwander: true,
 		init: (enemy, player, AIData) => {},
 		beforemove: (enemy, player, AIData) => {return false;},

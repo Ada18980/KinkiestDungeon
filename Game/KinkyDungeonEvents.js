@@ -2702,7 +2702,7 @@ let KDEventMapSpell = {
 	},
 	"afterMultMana": {
 		"ManaRegen": (e, spell, data) => {
-			if (!KinkyDungeonPlayerBuffs.ManaRegenSuspend) {
+			if (!KinkyDungeonPlayerBuffs.ManaRegenSuspend || KinkyDungeonPlayerBuffs.ManaRegenSuspend.duration < 1) {
 				if (data.spell && (!data.spell.passive && !data.passive))
 					data.cost = Math.max(0, data.cost - KinkyDungeonStatManaMax*e.mult);
 			}
@@ -4879,6 +4879,7 @@ let KDEventMapEnemy = {
 
 				enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
 				enemy.Enemy.maxhp = enemy.Enemy.maxhp*factor;
+				enemy.hp = enemy.Enemy.maxhp;
 
 				KinkyDungeonSetEnemyFlag(enemy, "assignedHP", -1);
 			}
@@ -5788,7 +5789,7 @@ let KDEventMapGeneric = {
 							e.Enemy.maxhp = e.Enemy.maxhp*2;
 						}
 					}
-					if (!bossBuff || KinkyDungeonStatsChoice.get("extremeMode")) {
+					if (!bossBuff || KinkyDungeonStatsChoice.get("extremeMode") || e.Enemy.tags.stageBoss) {
 						let buff = KDGetByWeight(KDGetSpecialBuffList(e, reg));
 						if (buff) {
 							KDSpecialBuffs[buff].apply(e, reg);

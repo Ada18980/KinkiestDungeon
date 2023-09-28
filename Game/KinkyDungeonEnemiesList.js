@@ -2833,6 +2833,7 @@ let KDSpecialBuffs = {
 	},
 	"Fast": {
 		filter: (enemy, types) => {
+			if (KDIsImmobile(enemy)) return false;
 			return types.some((type) => {return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);});
 		},
 		weight: (enemy, types) => {
@@ -2852,6 +2853,7 @@ let KDSpecialBuffs = {
 	},
 	"Muscle": {
 		filter: (enemy, types) => {
+			if (!enemy.Enemy.attack?.includes("Melee") && !enemy.Enemy.specialAttack?.includes("Melee")) return false;
 			return types.some((type) => {return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);});
 		},
 		weight: (enemy, types) => {
@@ -2896,6 +2898,7 @@ let KDSpecialBuffs = {
 	},
 	"HealingAura": {
 		filter: (enemy, types) => {
+			if (enemy.Enemy.tags?.robot || enemy.Enemy.tags?.construct || enemy.Enemy.tags?.nobrain) return false;
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss", "Extreme"].includes(type);});
 		},
 		weight: (enemy, types) => {
@@ -2920,7 +2923,7 @@ let KDSpecialBuffs = {
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss", "Extreme"].includes(type);});
 		},
 		weight: (enemy, types) => {
-			return 4 + (enemy.Enemy.shrines?.includes("Latex") ? 40 : 0);
+			return 4 + (enemy.Enemy.shrines?.includes("Latex") || enemy.Enemy.tags?.robot ? 40 : 0);
 		},
 		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
@@ -3013,6 +3016,7 @@ let KDSpecialBuffs = {
 	},
 	"BearTrapper": {
 		filter: (enemy, types) => {
+			if (KDIsImmobile(enemy)) return false;
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);});
 		},
 		weight: (enemy, types) => {

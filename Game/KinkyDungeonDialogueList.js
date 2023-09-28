@@ -1161,6 +1161,7 @@ let KDDialogue = {
 						door = {x: player.x, y: player.y}; // Better glitch than break game
 					}
 					KDMapData.Entities = [];
+					KDCommanderRoles = new Map();
 					KDGameData.RespawnQueue = [];
 					KDUpdateEnemyCache = true;
 					let e = DialogueCreateEnemy(door.x, door.y, "ShopkeeperRescue");
