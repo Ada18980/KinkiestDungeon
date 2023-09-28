@@ -6829,8 +6829,8 @@ KinkyDungeonHardMode0,Normal Mode
 KinkyDungeonHardMode1,Hard Mode
 KinkyDungeonExtremeMode,Extreme
 KinkyDungeonHardModeDesc0,"A supposedly reasonable difficulty curve."
-KinkyDungeonHardModeDesc1,"Play the game the way it was intended. Cruel and restrictive."
-KinkyDungeonExtremeModeDesc,"Play at your own peril."
+KinkyDungeonHardModeDesc1,"Play the game the way it was intended. Cruel and restrictive. "
+KinkyDungeonExtremeModeDesc,"Play at your own peril. Unlocked by double-clicking the Hard Mode button."
 
 KinkyDungeonSexyMode0,Distracted
 KinkyDungeonSexyMode1,Aroused

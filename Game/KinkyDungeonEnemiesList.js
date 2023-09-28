@@ -2800,6 +2800,31 @@ let KDSpecialBuffs = {
 			});
 		},
 	},
+	"Muscle": {
+		filter: (enemy, types) => {
+			return types.some((type) => {return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);});
+		},
+		weight: (enemy, types) => {
+			return 40;
+		},
+		apply: (enemy, types) => {
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "Muscle",
+				aura: "#ffffff",
+				aurasprite: "Muscle",
+				noAuraColor: true,
+				duration: 9999,
+				power: enemy.Enemy.power*2,
+				type: "AttackPower",
+			});
+			KinkyDungeonApplyBuffToEntity(enemy, {
+				id: "Muscle2",
+				duration: 9999,
+				power: 1,
+				type: "AttackWidth",
+			});
+		},
+	},
 	"EnergyShield": {
 		filter: (enemy, types) => {
 			return types.some((type) => {return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);});
