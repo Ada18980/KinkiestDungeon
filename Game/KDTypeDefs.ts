@@ -2084,11 +2084,14 @@ type MapMod = {
 }
 
 type AIType = {
+	/** Indicates that this enemy AI cannot be overridden */
 	noOverride?: boolean,
 	/** allows you to set an alternative AI type when requested */
 	override?: Record<string, string>,
 	/** The AI will only wander to visible points */
 	strictwander?: boolean,
+	/** Indicates that this is a protective AI */
+	guard?: boolean,
 	/** This enemy is stealthy until the ambush is triggered */
 	ambush?: boolean,
 	/** This is the tile for the AI which registers as tooltip */
@@ -2629,6 +2632,26 @@ interface KDSpecialEnemyBuff {
 	filter: (enemy: entity, type: string[]) => boolean;
 	weight: (enemy: entity, type: string[]) => number;
 	apply: (enemy: entity, type: string[]) => void;
+}
+
+type KDCommanderOrderData = {
+	delta: number,
+
+	combat: boolean,
+	// Temp vars
+	aggressive: boolean,
+}
+
+interface KDCommanderOrder {
+	filter: (enemy: entity, data: KDCommanderOrderData) => boolean;
+	weight: (enemy: entity, data: KDCommanderOrderData) => number;
+	apply: (enemy: entity, data: KDCommanderOrderData) => void;
+	maintain: (enemy: entity, data: KDCommanderOrderData) => boolean;
+	update: (enemy: entity, data: KDCommanderOrderData) => void;
+	remove: (enemy: entity, data: KDCommanderOrderData) => void;
+
+	global_before: (data: KDCommanderOrderData) => void;
+	global_after: (data: KDCommanderOrderData) => void;
 }
 
 interface KDFactionProps {

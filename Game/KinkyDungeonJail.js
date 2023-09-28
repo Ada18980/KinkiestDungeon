@@ -1186,6 +1186,7 @@ function KDKickEnemies(nearestJail, ignoreAware) {
 		}
 	}
 	KDMapData.Entities = enemies;
+	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
 	return atLeastOneAware;
 }

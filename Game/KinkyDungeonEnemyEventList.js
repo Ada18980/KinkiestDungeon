@@ -18,6 +18,7 @@ let KDIntentEvents = {
 			if (enemy.playWithPlayer > 0) return 0;
 			if (KDSelfishLeash(enemy)) return 0;
 			if (KDEnemyHasFlag(enemy, "noHarshPlay")) return 0;
+			if (KDEnemyHasFlag(enemy, "dontChase")) return 0;
 			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]);
 			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) < 14 ? (hostile ? 120 : 40) : 0;
 		},
@@ -149,7 +150,7 @@ let KDIntentEvents = {
 		overrideIgnore: true, // Even friendly will do it...
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
-			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released")) ?
+			return (hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released")) && !KDEnemyHasFlag(enemy, "dontChase")) ?
 				((KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]) && !KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"])) ? 0 : 100)
 			: 0;
 		},
@@ -299,7 +300,7 @@ let KDIntentEvents = {
 		forceattack: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
-			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released") && KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])) ? 200 : 0;
+			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released") && !KDEnemyHasFlag(enemy, "dontChase") && KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])) ? 200 : 0;
 		},
 		trigger: (enemy, AIData) => {
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
@@ -381,6 +382,7 @@ let KDIntentEvents = {
 			if (KDGameData.PrisonerState == 'jail') return 0;
 			if (KDSelfishLeash(enemy)) return 0;
 			if (KinkyDungeonGetRestraintItem("ItemDevices")) return 0;
+			if (KDEnemyHasFlag(enemy, "dontChase")) return 0;
 			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]);
 			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) < 14 ? (hostile ? 120 : (AIData.domMe ? 0 : 40)) : 0;
 		},

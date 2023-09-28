@@ -6934,6 +6934,9 @@ KinkyDungeonRemindJailChaseFuukaDefendHonor2,"You can't do that!"
 KinkyDungeonRemindJailChaseFuukaHonor0,"Leave them alone!"
 KinkyDungeonRemindJailChaseFuukaHonor1,"You can't do that!"
 KinkyDungeonRemindJailChaseFuukaHonor2,"Hey, stop that!"
+KinkyDungeonRemindJailChaseFuukaCommandDefend,""
+KinkyDungeonRemindJailChaseFuukaCommandAssault,""
+KinkyDungeonRemindJailChaseFuukaCommandBlock,""
 
 KinkyDungeonRemindJailPlayDollmaker0,"Look, another one of my dolls~"
 KinkyDungeonRemindJailPlayDollmaker1,"Come to me, my lovely thing~"
@@ -6978,6 +6981,9 @@ KinkyDungeonRemindJailChaseDollmakerDefendHonor2,"You've had your chance."
 KinkyDungeonRemindJailChaseDollmakerHonor0,"Fine, then."
 KinkyDungeonRemindJailChaseDollmakerHonor1,"Know your place!"
 KinkyDungeonRemindJailChaseDollmakerHonor2,"You've had your chance."
+KinkyDungeonRemindJailChaseDollmakerCommandDefend,""
+KinkyDungeonRemindJailChaseDollmakerCommandAssault,""
+KinkyDungeonRemindJailChaseDollmakerCommandBlock,""
 
 
 
@@ -7031,6 +7037,9 @@ KinkyDungeonRemindJailChaseDefendHonor2,"That was a mistake!"
 KinkyDungeonRemindJailChaseHonor0,"I'm joining in!"
 KinkyDungeonRemindJailChaseHonor1,"Hand on, I'm coming!"
 KinkyDungeonRemindJailChaseHonor2,"I'm here!"
+KinkyDungeonRemindJailChaseCommandDefend,"Here I come!"
+KinkyDungeonRemindJailChaseCommandAssault,"Come and get me!"
+KinkyDungeonRemindJailChaseCommandBlock,"You'll never escape!"
 
 
 KinkyDungeonRemindJailPlayBratGagged0,"Mmmmph!!!"
@@ -7082,6 +7091,9 @@ KinkyDungeonRemindJailChaseGaggedDefendHonor2,"Mmmmmmmgh!"
 KinkyDungeonRemindJailChaseGaggedHonor0,"Mmph!"
 KinkyDungeonRemindJailChaseGaggedHonor1,"Mmm~"
 KinkyDungeonRemindJailChaseGaggedHonor2,"Mmmmmmmph..."
+KinkyDungeonRemindJailChaseGaggedCommandDefend,""
+KinkyDungeonRemindJailChaseGaggedCommandAssault,"MMMMMPH!!!"
+KinkyDungeonRemindJailChaseGaggedCommandBlock,""
 
 
 
@@ -7135,6 +7147,9 @@ KinkyDungeonRemindJailChaseGaggedMummyDefendHonor2,"Mmmmmmmgh!"
 KinkyDungeonRemindJailChaseGaggedMummyHonor0,"Mmph!"
 KinkyDungeonRemindJailChaseGaggedMummyHonor1,"Mmm~"
 KinkyDungeonRemindJailChaseGaggedMummyHonor2,"Mmmmmmmph..."
+KinkyDungeonRemindJailChaseGaggedMummyCommandDefend,""
+KinkyDungeonRemindJailChaseGaggedMummyCommandAssault,"MMMMMPH!!!"
+KinkyDungeonRemindJailChaseGaggedMummyCommandBlock,""
 
 KinkyDungeonRemindJailPlayBratBandit0,"You'll never catch me!"
 KinkyDungeonRemindJailPlayBratBandit1,"Where'd you come from?"
@@ -7185,6 +7200,9 @@ KinkyDungeonRemindJailChaseBanditDefendHonor2,"Hey girls, got room for one more?
 KinkyDungeonRemindJailChaseBanditHonor0,"We work for the highest bidder."
 KinkyDungeonRemindJailChaseBanditHonor1,"Nothing personal."
 KinkyDungeonRemindJailChaseBanditHonor2,"Sorry, it's just the way things work."
+KinkyDungeonRemindJailChaseBanditCommandDefend,"I'm coming!"
+KinkyDungeonRemindJailChaseBanditCommandAssault,"You're mine."
+KinkyDungeonRemindJailChaseBanditCommandBlock,"You can't get away."
 
 KinkyDungeonRemindJailPlayBratSkeleton0,"This is a bug, please report"
 KinkyDungeonRemindJailPlayBratSkeleton1,"This is a bug, please report"
@@ -7235,6 +7253,9 @@ KinkyDungeonRemindJailChaseSkeletonDefendHonor2,"!"
 KinkyDungeonRemindJailChaseSkeletonHonor0,"!"
 KinkyDungeonRemindJailChaseSkeletonHonor1,"*rattles*"
 KinkyDungeonRemindJailChaseSkeletonHonor2,"!!!"
+KinkyDungeonRemindJailChaseSkeletonCommandDefend,""
+KinkyDungeonRemindJailChaseSkeletonCommandAssault,""
+KinkyDungeonRemindJailChaseSkeletonCommandBlock,"*marches*"
 
 KinkyDungeonRemindJailPlayBratCyborg0,"This... this unit is doing a good job! I swear!"
 KinkyDungeonRemindJailPlayBratCyborg1,"It's just business as usual, nothing to see here..."
@@ -7285,6 +7306,9 @@ KinkyDungeonRemindJailChaseCyborgDefendHonor2,"Give up or I'll call reinforcemen
 KinkyDungeonRemindJailChaseCyborgHonor0,"Ack! We have an unruly subject!"
 KinkyDungeonRemindJailChaseCyborgHonor1,"Target needs retraining..."
 KinkyDungeonRemindJailChaseCyborgHonor2,"Sorry, rules are rules~"
+KinkyDungeonRemindJailChaseCyborgCommandDefend,""
+KinkyDungeonRemindJailChaseCyborgCommandAssault,""
+KinkyDungeonRemindJailChaseCyborgCommandBlock,""
 
 
 KinkyDungeonRemindJailPlayBratRobot0,"Bug"
@@ -7336,6 +7360,9 @@ KinkyDungeonRemindJailChaseRobotDefendHonor2,"Combat detected. Engaging in corre
 KinkyDungeonRemindJailChaseRobotHonor0,"Updating target registry. Proceed to attack."
 KinkyDungeonRemindJailChaseRobotHonor1,"Target updated."
 KinkyDungeonRemindJailChaseRobotHonor2,"New target detected. Please submit to detainment."
+KinkyDungeonRemindJailChaseRobotCommandDefend,"Moving to assist."
+KinkyDungeonRemindJailChaseRobotCommandAssault,"Moving to capture."
+KinkyDungeonRemindJailChaseRobotCommandBlock,"Forming blockade."
 
 KinkyDungeonRemindJailPlayBratAlchemist0,"Looks like I'm up to no good... better stop me!"
 KinkyDungeonRemindJailPlayBratAlchemist1,"Careful where you point that thing!"
@@ -7386,6 +7413,9 @@ KinkyDungeonRemindJailChaseAlchemistDefendHonor2,"I hate having to clean up afte
 KinkyDungeonRemindJailChaseAlchemistHonor0,"Eh, whatever, I'll help."
 KinkyDungeonRemindJailChaseAlchemistHonor1,"You're ruining my experiment!"
 KinkyDungeonRemindJailChaseAlchemistHonor2,"Sheesh, what a pest!"
+KinkyDungeonRemindJailChaseAlchemistCommandDefend,"Need an assistant?"
+KinkyDungeonRemindJailChaseAlchemistCommandAssault,"I smell an opportunity!"
+KinkyDungeonRemindJailChaseAlchemistCommandBlock,"Do I have to?"
 
 KinkyDungeonRemindJailPlayBratDressmaker0,"Oh my, looks like I'm in trouble!"
 KinkyDungeonRemindJailPlayBratDressmaker1,"What a shame it would be if I got caught~"
@@ -7436,6 +7466,9 @@ KinkyDungeonRemindJailChaseDressmakerDefendHonor2,"*snaps her fingers* Looks lik
 KinkyDungeonRemindJailChaseDressmakerHonor0,"That one is pretty. May I have her instead?"
 KinkyDungeonRemindJailChaseDressmakerHonor1,"I'd like to place a bid too~"
 KinkyDungeonRemindJailChaseDressmakerHonor2,"Oooh, that one's mine!"
+KinkyDungeonRemindJailChaseDressmakerCommandDefend,""
+KinkyDungeonRemindJailChaseDressmakerCommandAssault,""
+KinkyDungeonRemindJailChaseDressmakerCommandBlock,""
 
 
 KinkyDungeonRemindJailPlayBratLibrarian0,"No! I don't want to read your magazines!"
@@ -7487,6 +7520,9 @@ KinkyDungeonRemindJailChaseLibrarianDefendHonor2,"Stop making a mess!"
 KinkyDungeonRemindJailChaseLibrarianHonor0,"You're too dangerous to have around."
 KinkyDungeonRemindJailChaseLibrarianHonor1,"I don't care what happens to you as long as you're out of here."
 KinkyDungeonRemindJailChaseLibrarianHonor2,"Get out of my library!"
+KinkyDungeonRemindJailChaseLibrarianCommandDefend,""
+KinkyDungeonRemindJailChaseLibrarianCommandAssault,""
+KinkyDungeonRemindJailChaseLibrarianCommandBlock,""
 
 KinkyDungeonRemindJailPlayBratNurse0,"No! I didn't do anything wrong..."
 KinkyDungeonRemindJailPlayBratNurse1,"Don't punish me! Please!"
@@ -7537,6 +7573,9 @@ KinkyDungeonRemindJailChaseNurseDefendHonor2,"Moving in to support!"
 KinkyDungeonRemindJailChaseNurseHonor0,"Let's mediate things, shall we?"
 KinkyDungeonRemindJailChaseNurseHonor1,"Why don't you calm down so we can talk. Or not~"
 KinkyDungeonRemindJailChaseNurseHonor2,"Now now, what do we have here?"
+KinkyDungeonRemindJailChaseNurseCommandDefend,""
+KinkyDungeonRemindJailChaseNurseCommandAssault,""
+KinkyDungeonRemindJailChaseNurseCommandBlock,""
 
 
 KinkyDungeonRemindJailPlayBratDoctor0,"No! I didn't do anything wrong..."
@@ -7588,6 +7627,9 @@ KinkyDungeonRemindJailChaseDoctorDefendHonor2,"Looks like the gloves are off~"
 KinkyDungeonRemindJailChaseDoctorHonor0,"Must I do everything myself..."
 KinkyDungeonRemindJailChaseDoctorHonor1,"Let me get my tools."
 KinkyDungeonRemindJailChaseDoctorHonor2,"I'll take a look."
+KinkyDungeonRemindJailChaseDoctorCommandDefend,""
+KinkyDungeonRemindJailChaseDoctorCommandAssault,""
+KinkyDungeonRemindJailChaseDoctorCommandBlock,""
 
 KinkyDungeonRemindJailPlayBratTemplate0,""
 KinkyDungeonRemindJailPlayBratTemplate1,""
@@ -7638,6 +7680,9 @@ KinkyDungeonRemindJailChaseTemplateDefendHonor2,""
 KinkyDungeonRemindJailChaseTemplateHonor0,""
 KinkyDungeonRemindJailChaseTemplateHonor1,""
 KinkyDungeonRemindJailChaseTemplateHonor2,""
+KinkyDungeonRemindJailChaseTemplateCommandDefend,""
+KinkyDungeonRemindJailChaseTemplateCommandAssault,""
+KinkyDungeonRemindJailChaseTemplateCommandBlock,""
 
 
 
@@ -7691,6 +7736,9 @@ KinkyDungeonRemindJailChaseAdventurer_Brat_FighterDefendHonor2,"You asked for it
 KinkyDungeonRemindJailChaseAdventurer_Brat_FighterHonor0,"Me? Help? Alright!"
 KinkyDungeonRemindJailChaseAdventurer_Brat_FighterHonor1,"Sorry miss, I'm on an escort mission."
 KinkyDungeonRemindJailChaseAdventurer_Brat_FighterHonor2,"There goes my nice, relaxing day..."
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterCommandDefend,""
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterCommandAssault,""
+KinkyDungeonRemindJailChaseAdventurer_Brat_FighterCommandBlock,""
 
 
 KinkyDungeonRemindJailPlayBratAdventurer_Sub_Fighter0,"I wonder what to do with all these cuffs..."
@@ -7742,6 +7790,9 @@ KinkyDungeonRemindJailChaseAdventurer_Sub_FighterDefendHonor2,"Hey miss, I'm goi
 KinkyDungeonRemindJailChaseAdventurer_Sub_FighterHonor0,"Why don't you fight ME instead~"
 KinkyDungeonRemindJailChaseAdventurer_Sub_FighterHonor1,"What kind of trouble are we getting into today?"
 KinkyDungeonRemindJailChaseAdventurer_Sub_FighterHonor2,"Oooh, fun!"
+KinkyDungeonRemindJailChaseAdventurer_Sub_FighterCommandDefend,""
+KinkyDungeonRemindJailChaseAdventurer_Sub_FighterCommandAssault,""
+KinkyDungeonRemindJailChaseAdventurer_Sub_FighterCommandBlock,""
 
 
 KinkyDungeonRemindJailPlayBratAdventurer_Switch_Fighter0,"Give me another chance!"
@@ -7793,6 +7844,9 @@ KinkyDungeonRemindJailChaseAdventurer_Switch_FighterDefendHonor2,"I'm the one yo
 KinkyDungeonRemindJailChaseAdventurer_Switch_FighterHonor0,"I've got orders to take you down."
 KinkyDungeonRemindJailChaseAdventurer_Switch_FighterHonor1,"There's a bounty on your head~"
 KinkyDungeonRemindJailChaseAdventurer_Switch_FighterHonor2,"The bounty will be mine..."
+KinkyDungeonRemindJailChaseAdventurer_Switch_FighterCommandDefend,""
+KinkyDungeonRemindJailChaseAdventurer_Switch_FighterCommandAssault,""
+KinkyDungeonRemindJailChaseAdventurer_Switch_FighterCommandBlock,""
 
 
 KinkyDungeonRemindJailPlayBratAdventurer_Dom_Fighter0,"Be nice!"
@@ -7844,6 +7898,9 @@ KinkyDungeonRemindJailChaseAdventurer_Dom_FighterDefendHonor2,"You've made a mis
 KinkyDungeonRemindJailChaseAdventurer_Dom_FighterHonor0,"Capture her? Fine, but I expect payment."
 KinkyDungeonRemindJailChaseAdventurer_Dom_FighterHonor1,"I just follow the money, miss~"
 KinkyDungeonRemindJailChaseAdventurer_Dom_FighterHonor2,"Can't let you have all the fun, can I?"
+KinkyDungeonRemindJailChaseAdventurer_Dom_FighterCommandDefend,""
+KinkyDungeonRemindJailChaseAdventurer_Dom_FighterCommandAssault,""
+KinkyDungeonRemindJailChaseAdventurer_Dom_FighterCommandBlock,""
 
 KinkyDungeonRemindJailPlayBratDragonShadowGwen0,"Let's play all night!"
 KinkyDungeonRemindJailPlayBratDragonShadowGwen1,"Let's play all night!"
@@ -7894,6 +7951,9 @@ KinkyDungeonRemindJailChaseDragonShadowGwenDefendHonor2,"Tick tock, what a shock
 KinkyDungeonRemindJailChaseDragonShadowGwenHonor0,"Time for me to intervene..."
 KinkyDungeonRemindJailChaseDragonShadowGwenHonor1,"Don't balk! Your time was up anyways~"
 KinkyDungeonRemindJailChaseDragonShadowGwenHonor2,"Playtime's over!"
+KinkyDungeonRemindJailChaseDragonShadowGwenCommandDefend,"I bet you won't last long!"
+KinkyDungeonRemindJailChaseDragonShadowGwenCommandAssault,"Playtime's over!"
+KinkyDungeonRemindJailChaseDragonShadowGwenCommandBlock,"Give me a moment~"
 
 
 
@@ -7946,6 +8006,9 @@ KinkyDungeonRemindJailChaseOfficerDefendHonor2,"Lay down your weapons and don't 
 KinkyDungeonRemindJailChaseOfficerHonor0,"I have a warrant for your arrest..."
 KinkyDungeonRemindJailChaseOfficerHonor1,"You're a wanted girl."
 KinkyDungeonRemindJailChaseOfficerHonor2,"You're under arrest."
+KinkyDungeonRemindJailChaseOfficerCommandDefend,"Backup has arrived."
+KinkyDungeonRemindJailChaseOfficerCommandAssault,"Requesting backup!"
+KinkyDungeonRemindJailChaseOfficerCommandBlock,"Calling in a blockade!"
 
 
 KinkyDungeonRemindJailPlayBratHunter0,"I'm not in trouble, am I?"
@@ -7997,6 +8060,9 @@ KinkyDungeonRemindJailChaseHunterDefendHonor2,"What, did you think I'd just stan
 KinkyDungeonRemindJailChaseHunterHonor0,"There's a bounty on your head, miss."
 KinkyDungeonRemindJailChaseHunterHonor1,"I won't let you get away. That bounty is mine."
 KinkyDungeonRemindJailChaseHunterHonor2,"Didn't expect me to show up, did you?"
+KinkyDungeonRemindJailChaseHunterCommandDefend,"Need backup?"
+KinkyDungeonRemindJailChaseHunterCommandAssault,"Time for a test of skill."
+KinkyDungeonRemindJailChaseHunterCommandBlock,"I'll get you! Eventually..."
 
 
 KinkyDungeonRemindJailPlayBratWolfgirl0,"I'm not in trouble, am I?"
@@ -8048,6 +8114,9 @@ KinkyDungeonRemindJailChaseWolfgirlDefendHonor2,"Hey! We were just talking! No s
 KinkyDungeonRemindJailChaseWolfgirlHonor0,"I'll help capture her! For a 50% share that is~"
 KinkyDungeonRemindJailChaseWolfgirlHonor1,"We deal in the finest products... like you, if you catch my drift~"
 KinkyDungeonRemindJailChaseWolfgirlHonor2,"I smell a shady business opportunity~"
+KinkyDungeonRemindJailChaseWolfgirlCommandDefend,"*growls menacingly*"
+KinkyDungeonRemindJailChaseWolfgirlCommandAssault,"Let's make this fun~"
+KinkyDungeonRemindJailChaseWolfgirlCommandBlock,"What's that about backup?"
 
 
 KinkyDungeonRemindJailPlayBratElf0,"An outsider!"
@@ -8099,6 +8168,9 @@ KinkyDungeonRemindJailChaseElfDefendHonor2,"Justice shall be had!"
 KinkyDungeonRemindJailChaseElfHonor0,"I shall defend you from this outsider!"
 KinkyDungeonRemindJailChaseElfHonor1,"The outsider betrays our ally!"
 KinkyDungeonRemindJailChaseElfHonor2,"You have faltered in your ways. I shall correct that!"
+KinkyDungeonRemindJailChaseElfCommandDefend,"Truly concerning."
+KinkyDungeonRemindJailChaseElfCommandAssault,"You leave me no choice."
+KinkyDungeonRemindJailChaseElfCommandBlock,"I stand firm."
 
 
 KinkyDungeonRemindJailPlayBratDryad0,"I don't like the way you're looking at me!"
@@ -8150,6 +8222,9 @@ KinkyDungeonRemindJailChaseDryadDefendHonor2,"Such betrayal!"
 KinkyDungeonRemindJailChaseDryadHonor0,"Nature guides us!"
 KinkyDungeonRemindJailChaseDryadHonor1,"Nature protects those who are worthy!"
 KinkyDungeonRemindJailChaseDryadHonor2,"I share the will of the Goddess!"
+KinkyDungeonRemindJailChaseDryadCommandDefend,"They won't get away with this!"
+KinkyDungeonRemindJailChaseDryadCommandAssault,"Face my wrath!"
+KinkyDungeonRemindJailChaseDryadCommandBlock,"Nature protects!"
 
 
 KinkyDungeonRemindJailPlayBratMushy0,"Bug"
@@ -8201,6 +8276,9 @@ KinkyDungeonRemindJailChaseMushyDefendHonor2,"Fight!"
 KinkyDungeonRemindJailChaseMushyHonor0,"Fight!"
 KinkyDungeonRemindJailChaseMushyHonor1,"Protect!"
 KinkyDungeonRemindJailChaseMushyHonor2,"Defend!"
+KinkyDungeonRemindJailChaseMushyCommandDefend,""
+KinkyDungeonRemindJailChaseMushyCommandAssault,"Rawr!"
+KinkyDungeonRemindJailChaseMushyCommandBlock,""
 
 
 KinkyDungeonRemindJailPlayBratFungal0,"So this is what it's like..."
@@ -8252,6 +8330,9 @@ KinkyDungeonRemindJailChaseFungalDefendHonor2,"Our friends are in need."
 KinkyDungeonRemindJailChaseFungalHonor0,"You have been judged and found wanting."
 KinkyDungeonRemindJailChaseFungalHonor1,"We sense disarray."
 KinkyDungeonRemindJailChaseFungalHonor2,"We stand together."
+KinkyDungeonRemindJailChaseFungalCommandDefend,"We support each other."
+KinkyDungeonRemindJailChaseFungalCommandAssault,"You leave us no choice."
+KinkyDungeonRemindJailChaseFungalCommandBlock,"You cannot comprehend our tactics."
 
 
 KinkyDungeonRemindJailPlayBratMummy0,"Meow!!!"
@@ -8303,6 +8384,9 @@ KinkyDungeonRemindJailChaseMummyDefendHonor2,"I won't let you touch her!"
 KinkyDungeonRemindJailChaseMummyHonor0,"Nya! Need some help friends?"
 KinkyDungeonRemindJailChaseMummyHonor1,"We're in this together!"
 KinkyDungeonRemindJailChaseMummyHonor2,"I think you could use some help against this adventurer~"
+KinkyDungeonRemindJailChaseMummyCommandDefend,"Let's get them!"
+KinkyDungeonRemindJailChaseMummyCommandAssault,"I've caught you!"
+KinkyDungeonRemindJailChaseMummyCommandBlock,"Let's play cat and mouse~"
 
 
 KinkyDungeonRemindJailPlayBratElemental0,"Gasp! An adventurer!"
@@ -8354,6 +8438,9 @@ KinkyDungeonRemindJailChaseElementalDefendHonor2,"Now now, a mortal should know 
 KinkyDungeonRemindJailChaseElementalHonor0,"Why don't we turn the tables?"
 KinkyDungeonRemindJailChaseElementalHonor1,"It'll be fun seeing you squirm~"
 KinkyDungeonRemindJailChaseElementalHonor2,"We are the keepers of balance."
+KinkyDungeonRemindJailChaseElementalCommandDefend,"Do not mess with us!"
+KinkyDungeonRemindJailChaseElementalCommandAssault,"I shall take you myself~"
+KinkyDungeonRemindJailChaseElementalCommandBlock,"Where do you think you're going?"
 
 
 KinkyDungeonRemindJailPlayBratDomMaid0,"Not the edging training! Anything but that!"
@@ -8405,6 +8492,9 @@ KinkyDungeonRemindJailChaseDomMaidDefendHonor2,"We defend our partners, unlike s
 KinkyDungeonRemindJailChaseDomMaidHonor0,"Target sighted. Taking her down."
 KinkyDungeonRemindJailChaseDomMaidHonor1,"Our influence is everywhere~"
 KinkyDungeonRemindJailChaseDomMaidHonor2,"We have orders to stop you!"
+KinkyDungeonRemindJailChaseDomMaidCommandDefend,"Moving to assist!"
+KinkyDungeonRemindJailChaseDomMaidCommandAssault,"You really think you're special, huh?"
+KinkyDungeonRemindJailChaseDomMaidCommandBlock,"Combat formation bravo."
 
 
 KinkyDungeonRemindJailPlayBratSubMaid0,"I'm sorry! I didn't mean to break that vase!"
@@ -8456,6 +8546,9 @@ KinkyDungeonRemindJailChaseSubMaidDefendHonor2,"Wait, you can't do that!"
 KinkyDungeonRemindJailChaseSubMaidHonor0,"Me? Help? Right!"
 KinkyDungeonRemindJailChaseSubMaidHonor1,"I'm sorry miss..."
 KinkyDungeonRemindJailChaseSubMaidHonor2,"I was ordered to capture you... please don't resist."
+KinkyDungeonRemindJailChaseSubMaidCommandDefend,"I-I'm coming!"
+KinkyDungeonRemindJailChaseSubMaidCommandAssault,"Please surrender, miss!"
+KinkyDungeonRemindJailChaseSubMaidCommandBlock,"I'll just stay here!"
 
 
 KinkyDungeonRemindJailPlayBratHeadMaid0,"I'll be heading out..."
@@ -8507,6 +8600,9 @@ KinkyDungeonRemindJailChaseHeadMaidDefendHonor2,"Hands off our partners."
 KinkyDungeonRemindJailChaseHeadMaidHonor0,"Looks like you've made a few enemies along the way."
 KinkyDungeonRemindJailChaseHeadMaidHonor1,"I won't let you interrupt our plans."
 KinkyDungeonRemindJailChaseHeadMaidHonor2,"Excuse me, we were holding a meeting~"
+KinkyDungeonRemindJailChaseHeadMaidCommandDefend,"Don't get ahead of yourself."
+KinkyDungeonRemindJailChaseHeadMaidCommandAssault,"I'll do this myself."
+KinkyDungeonRemindJailChaseHeadMaidCommandBlock,"I'll support from the rear."
 
 KinkyDungeonRemindJailPlayBratWitch0,"Looks like I've earned some punishment..."
 KinkyDungeonRemindJailPlayBratWitch1,"I'll turn you into a newt! If you don't stop me..."
@@ -8558,6 +8654,9 @@ KinkyDungeonRemindJailChaseWitchDefendHonor2,"Looks like I've found my test subj
 KinkyDungeonRemindJailChaseWitchHonor0,"Another test subject!"
 KinkyDungeonRemindJailChaseWitchHonor1,"I want her!"
 KinkyDungeonRemindJailChaseWitchHonor2,"She's a cute one!"
+KinkyDungeonRemindJailChaseWitchCommandDefend,"Oh no you don't?"
+KinkyDungeonRemindJailChaseWitchCommandAssault,"I'll make you my pet!"
+KinkyDungeonRemindJailChaseWitchCommandBlock,"Tsk tsk, you won't get away!"
 
 KinkyDungeonRemindJailPlayBratSelly0,"Looks like I've earned some punishment..."
 KinkyDungeonRemindJailPlayBratSelly1,"I'll turn you into a newt! If you don't stop me..."
@@ -8609,6 +8708,9 @@ KinkyDungeonRemindJailChaseSellyDefendHonor2,"Why don't we have a little talk~"
 KinkyDungeonRemindJailChaseSellyHonor0,"My, my, you look too cute..."
 KinkyDungeonRemindJailChaseSellyHonor1,"I like you. I'll save you a spot at home~"
 KinkyDungeonRemindJailChaseSellyHonor2,"Going somewhere, are we?"
+KinkyDungeonRemindJailChaseSellyCommandDefend,"Not so fast~"
+KinkyDungeonRemindJailChaseSellyCommandAssault,"Why don't we have a little talk~"
+KinkyDungeonRemindJailChaseSellyCommandBlock,"Going somewhere, are we?"
 
 KinkyDungeonRemindJailPlayBratApprentice0,"I promise I'll be back later!"
 KinkyDungeonRemindJailPlayBratApprentice1,"I didn't do anything wrong!"
@@ -8659,6 +8761,9 @@ KinkyDungeonRemindJailChaseApprenticeDefendHonor2,""
 KinkyDungeonRemindJailChaseApprenticeHonor0,"Me? Capture her? Okay mistress..."
 KinkyDungeonRemindJailChaseApprenticeHonor1,"Okay miss, I'll do that..."
 KinkyDungeonRemindJailChaseApprenticeHonor2,"But he's going to tie me up..."
+KinkyDungeonRemindJailChaseApprenticeCommandDefend,"Be careful!"
+KinkyDungeonRemindJailChaseApprenticeCommandAssault,"That's it! You made me mad!"
+KinkyDungeonRemindJailChaseApprenticeCommandBlock,"I'll just... go."
 
 KinkyDungeonRemindJailPlayBratNecromancer0,"Sticks and stones may break my bones... but you'll never catch me!"
 KinkyDungeonRemindJailPlayBratNecromancer1,"Got a bone to pick with me?"
@@ -8709,6 +8814,9 @@ KinkyDungeonRemindJailChaseNecromancerDefendHonor2,"That's my friend you bonehea
 KinkyDungeonRemindJailChaseNecromancerHonor0,"Did you really think I wouldn't see through that?"
 KinkyDungeonRemindJailChaseNecromancerHonor1,"You're bad to the bone..."
 KinkyDungeonRemindJailChaseNecromancerHonor2,"*yawns* Alright alright..."
+KinkyDungeonRemindJailChaseNecromancerCommandDefend,"Stand straight!"
+KinkyDungeonRemindJailChaseNecromancerCommandAssault,"Why don't you bend the knee..."
+KinkyDungeonRemindJailChaseNecromancerCommandBlock,"Who goes there?"
 
 KinkyDungeonRemindJailPlayBratZombie0,"Scary..."
 KinkyDungeonRemindJailPlayBratZombie1,"Run... Away..."
@@ -8759,6 +8867,9 @@ KinkyDungeonRemindJailChaseZombieDefendHonor2,"Give... hugs..."
 KinkyDungeonRemindJailChaseZombieHonor0,"Must... help..."
 KinkyDungeonRemindJailChaseZombieHonor1,"Must... protect..."
 KinkyDungeonRemindJailChaseZombieHonor2,"Save... friend..."
+KinkyDungeonRemindJailChaseZombieCommandDefend,"Stop..."
+KinkyDungeonRemindJailChaseZombieCommandAssault,"Come... here..."
+KinkyDungeonRemindJailChaseZombieCommandBlock,"*giggles*"
 
 KinkyDungeonInsufficientEnergy,The weapon requires power from an Ancient Crystal to function.
 KinkyDungeonSpecialDragonslaver,Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to launch binding belts

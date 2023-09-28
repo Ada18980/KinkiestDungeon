@@ -3147,6 +3147,7 @@ function KinkyDungeonLoadGame(String) {
 			KDThoughtBubbles = new Map();
 
 			KDMapData.Entities = [];
+			KDCommanderRoles = new Map();
 			KDUpdateEnemyCache = true;
 			if (saveData.flags && saveData.flags.length) KinkyDungeonFlags = new Map(saveData.flags);
 			MiniGameKinkyDungeonLevel = saveData.level;
@@ -3255,6 +3256,7 @@ function KinkyDungeonLoadGame(String) {
 				if (saveData.KinkyDungeonTilesMemory) KDMapData.TilesMemory = saveData.KinkyDungeonTilesMemory;
 				if (saveData.KinkyDungeonRandomPathablePoints) KDMapData.RandomPathablePoints = saveData.KinkyDungeonRandomPathablePoints;
 				if (saveData.KinkyDungeonEntities) KDMapData.Entities = saveData.KinkyDungeonEntities;
+				KDCommanderRoles = new Map();
 				if (saveData.KinkyDungeonBullets) KDMapData.Bullets = saveData.KinkyDungeonBullets;
 				if (saveData.KinkyDungeonStartPosition) KDMapData.StartPosition = saveData.KinkyDungeonStartPosition;
 				if (saveData.KinkyDungeonEndPosition) KDMapData.EndPosition = saveData.KinkyDungeonEndPosition;

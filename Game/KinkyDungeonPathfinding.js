@@ -12,6 +12,7 @@ let KDPathCacheIgnoreLocks = new Map();
 
 function KDUpdateDoorNavMap() {
 	KDPathCache = new Map();
+	KDUpdateChokes = true;
 }
 
 let KDPathfindingCacheHits = 0;
