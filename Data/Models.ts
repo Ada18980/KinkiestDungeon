@@ -119,8 +119,8 @@ function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: Mo
 function DisposeCharacter(C: Character): void {
 	if (KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {
-			Container.Container.destroy();
 			kdcanvas.removeChild(Container.Container);
+			Container.Container.destroy();
 		}
 
 	}
