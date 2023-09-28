@@ -3793,6 +3793,7 @@ let KDEventMapWeapon = {
 						let charge = KinkyDungeonPlayerBuffs[weapon.name + "Charge"] ? KinkyDungeonPlayerBuffs[weapon.name + "Charge"].duration : 0;
 						if (charge >= 9) dmgMult *= 2;
 						data.bulletfired.bullet.damage.damage = data.bulletfired.bullet.damage.damage + dmgMult * charge;
+						data.bulletfired.bullet.damage.bind = (data.bulletfired.bullet.damage.bind || 0) + dmgMult * charge;
 						KinkyDungeonPlayerBuffs[weapon.name + "Charge"].duration = 0;
 
 						if (e.energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost * charge);

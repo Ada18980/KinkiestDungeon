@@ -223,7 +223,7 @@ let KinkyDungeonWeapons = {
 		crit: 1.1, unarmed: false, rarity: 1, shop: true, sfx: "Struggle", bindType: "Rope"},
 	"MagicRope": {name: "MagicRope", dmg: 1.0, bind: 5, chance: 1.0, staminacost: 1.0, type: "chain", unarmed: false, rarity: 3, magic: true, shop: true, sfx: "TapeStruggle", bindType: "Rope",
 		events: [
-			{type: "MagicRope", trigger: "playerAttack", power: 0, cost: 1, bindType: "Magic", bind: 3},
+			{type: "MagicRope", trigger: "playerAttack", power: 0, cost: 1, bindType: "Magic", bind: 5},
 			{type: "WeaponLight", trigger: "getLights", power: 3, color: "#92e8c0"}
 		],
 	},

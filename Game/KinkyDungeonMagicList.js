@@ -487,7 +487,6 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				duration: 14,
 			}
 		},
-		{name: "Freeze", color: "#92e8c0", tags: ["ice", "utility", "offense"], prerequisite: "ApprenticeIce", sfx: "Freeze", school: "Elements", manacost: 3, components: ["Verbal"], noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, time:6, power: 0, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "ice"},
 		{name: "FlashFreeze", color: "#92e8c0", tags: ["ice", "utility", "offense", "aoe"], prerequisite: "Freeze", sfx: "Freeze", school: "Elements", manacost: 5, components: ["Verbal"],
 			level:2, type:"hit", onhit:"instant", evadeable: false, power: 2.0, range: 2.99, size: 3, lifetime: 1, aoe: 1.5, damage: "ice",
 			events: [{type: "ElementalOnDrench", trigger: "bulletHitEnemy", damage: "ice", time: 8, power: 0.0},]},
@@ -550,6 +549,14 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				name: "Ember",
 				duration: 7,
 			}}, // Throws a fireball in a direction that moves 1 square each turn
+
+		{name: "Freeze", color: "#92e8c0", tags: ["ice", "utility", "offense"], prerequisite: "ApprenticeIce", sfx: "Freeze", school: "Elements", manacost: 3, components: ["Verbal"],
+			effectTileDurationMod: 10, effectTile: {
+				name: "Ice",
+				duration: 20,
+			},
+			noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, time:6, power: 3, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "frost",
+			events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 6, power: 0},]},
 		{name: "Icebolt", tags: ["ice", "bolt", "offense"], prerequisite: "ApprenticeIce", sfx: "MagicSlash", hitsfx: "Freeze", school: "Elements", manacost: 4, components: ["Arms"], level:1, type:"bolt",
 			bulletColor: 0x92e4e8, bulletLight: 3,
 			hitColor: 0x92e4e8, hitLight: 5,
@@ -1444,7 +1451,7 @@ let KinkyDungeonSpellListEnemies = [
 		bulletColor: 0xffff00, bulletLight: 5,
 		spellcast: {spell: "BondageBustBeam", target: "target", directional:true, offset: false}, noMiscast: true, channel: 1},
 	{name: "BondageBustBeam", hitsfx: "Shock", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 3, time: 3, delay: 0, range: 8, speed: 50, size: 1, damage: "electric",
-		trailColor: 0xffff00, trailLight: 3, crit: 1.5,
+		trailColor: 0xffff00, trailLight: 3, crit: 1.5, bind: 3, bindType: "Energy",
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "Shock", time: 3}},
 	{name: "HeartArrow", sfx: "MagicSlash", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "soul", speed: 2,
 		events: [
@@ -1946,6 +1953,15 @@ let KinkyDungeonSpellListEnemies = [
 
 /** @type {Record<string, KDBondage>} */
 let KDSpecialBondage = {
+	"Energy": {
+		priority: 25,
+		color: "#ffff00",
+		struggleRate: 0.7,
+		powerStruggleBoost: 0.3,
+		healthStruggleBoost: 1.5,
+		mageStruggleBoost: 1.5,
+		enemyBondageMult: 1.0,
+	},
 	"Magic": {
 		priority: -5,
 		color: "#92e8c0",

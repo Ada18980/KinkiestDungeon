@@ -1236,6 +1236,7 @@ KinkyDungeonInventoryItemStaffPermafrostDesc2,"+10% ice damage. Deals ice damage
 KinkyDungeonInventoryItemStaffChain,Staff of Chains
 KinkyDungeonInventoryItemStaffChainDesc,"A magical weapon made for novices in the art of bondage."
 KinkyDungeonInventoryItemStaffChainDesc2,"+10% chain damage. Deals chain damage. 150% binding efficiency."
+ItemPickupStaffChain,"You pick up a staff of chains. You have fond memories..."
 
 ItemPickupStaffBind,"You pick up a staff of binding. You remember these from wizard school..."
 ItemPickupStaffStorm,"You pick up a staff of the storm. Your hair stands on end."
@@ -1243,7 +1244,6 @@ ItemPickupStaffIncineration,"You pick up a staff of incineration. It rumbles wit
 ItemPickupStaffDoll,"You pick up a staff with a name on it: DOLLMAKER"
 ItemPickupStaffFrostbite,"You pick up a staff of frostbite. Your hand feels numb just reaching for it."
 
-ItemPickupStaffChain,"You pick up a staff of chains. You have fond memories..."
 ItemPickupStaffElectric,"You pick up a staff of the storm. It tingles."
 ItemPickupStaffFlame,"You pick up a staff of flames. It feels warm."
 ItemPickupArcaneCrystal,"You find a purple crystal. You feel your mystic powers flood into it."
@@ -1350,7 +1350,7 @@ KinkyDungeonInventoryItemArbiter,The Arbiter
 KinkyDungeonInventoryItemArbiterDesc,"I have altered the rules. Pray I do not alter them further."
 KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm"
 KinkyDungeonInventoryItemBondageBuster,Bondage Buster
-KinkyDungeonInventoryItemBondageBusterDesc,"Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge."
+KinkyDungeonInventoryItemBondageBusterDesc,"Can fire a beam (1 turn channel) that deals 30 electric damage and applies an equal amount of energy bondage. Charges when not fired, dealing 90 total damage at 10 turns of charge."
 KinkyDungeonInventoryItemBondageBusterDesc2,"Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns."
 KinkyDungeonInventoryItemBlaster,Nevermere Blaster
 KinkyDungeonInventoryItemBlasterDesc,"Can fire a blast that deals 25 electric damage."
@@ -4958,7 +4958,7 @@ KinkyDungeonSpellCastIceOrb,You a hurl a frigid orb!
 KinkyDungeonSpellTargetIceOrb,Choose aim direction
 
 KinkyDungeonSpellFreeze,Freeze
-KinkyDungeonSpellDescriptionFreeze,Freeze an adjacent target for Duration turns.
+KinkyDungeonSpellDescriptionFreeze,Chill an adjacent target for DamageDealt ice damage and slows for Duration turns. Freezes if already slowed or drenched.
 KinkyDungeonSpellCastFreeze,You utter dark words of ice-cold truths.
 KinkyDungeonSpellTargetFreeze,Choose a target to freeze
 
@@ -11677,7 +11677,7 @@ KinkyDungeonSpecialDildoBatPlus,"40 charge to deal 30 charm damage per hit for 1
 
 KinkyDungeonInventoryItemMagicRope,Enchanted Rope
 KinkyDungeonInventoryItemMagicRopeDesc,"She who lives by the rope, is tied up by the rope."
-KinkyDungeonInventoryItemMagicRopeDesc2,"Deals chain damage and applies 50 points of rope binding. Draws 10 mana per hit to apply 30 extra points of magical binding. If you don't have mana, you fail to control the rope..."
+KinkyDungeonInventoryItemMagicRopeDesc2,"Deals chain damage and applies 50 points of rope binding. Draws 10 mana per hit to apply 50 extra points of magical binding. If you don't have mana, you fail to control the rope..."
 ItemPickupMagicRope,"You find some enchanted rope."
 KDMagicRopeBackfire,"Without mana to control it, the enchanted rope springs back upon you!"
 
@@ -12080,3 +12080,13 @@ KinkyDungeonSpellManaHarvesting,Mana Harvesting
 KinkyDungeonSpellDescriptionManaHarvesting,"Defeating or capturing a spellcaster-type enemy recovers 10 arcane energy, reduced to 1 for other humanoids."
 
 KDEnemyWindBlast,A powerful wind pushes you away!!!
+
+KinkyDungeonInventoryItemStaffRope,Staff of Ropes
+KinkyDungeonInventoryItemStaffRopeDesc,"An enchanted rope kept in check by a magical seal. Surely this won't backfire..."
+KinkyDungeonInventoryItemStaffRopeDesc2,"+20% rope bindings applied. Deals chain damage. Active: Spend 25 mana to unleash the ropes in a wide AoE."
+ItemPickupStaffRope,"You pick up a staff of ropes. Finally, a way to contain its power!"
+
+KinkyDungeonInventoryItemStaffBelts,Staff of Belts
+KinkyDungeonInventoryItemStaffBeltsDesc,"Belts within belts, a fractal belt pattern buckled into oblivion."
+KinkyDungeonInventoryItemStaffBeltsDesc2,"+20% leather bindings applied. Leather spells apply debuffs for 30% longer. Deals chain damage. Active: Pull an enemy toward you and apply a small amount of bondage."
+ItemPickupStaffBelts,"You pick up a staff of belts wrapped tightly in leather."
