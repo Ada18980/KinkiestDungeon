@@ -16,6 +16,8 @@ let KDUpdateChokes = true;
 
 let KDCOMMANDERMAXNEIGHBORS = 2;
 
+let KDChokeTiles = ['d', 'D', 'g', 's', 'S', 'H'];
+
 /**
  * The Commander determines role assignments and orders enemies
  * @param {number} delta
@@ -25,10 +27,13 @@ function KDCommanderUpdate(delta) {
 	let data = {
 		delta: delta,
 		aggressive: false,
+		fleeThresh: 0.6,
+		VavgWeight: 2,
 		combat: KinkyDungeonFlags.get("PlayerCombat") > 0,
+		invalidChoke: {},
 	};
 
-	let start = performance.now();
+	//let start = performance.now();
 
 	KinkyDungeonSendEvent("beforeCommanderTick", data);
 
@@ -39,7 +44,7 @@ function KDCommanderUpdate(delta) {
 	KDCommanderUpdateRoles(data);
 	KDCommanderUpdateOrders(data);
 
-	console.log(performance.now() - start);
+	//console.log(performance.now() - start);
 }
 
 /**
@@ -47,43 +52,93 @@ function KDCommanderUpdate(delta) {
  * @param {KDCommanderOrderData} data
  */
 function KDCommanderUpdateChokes(data) {
+
+	KDMovable = new Map();
+	KDSmartMovable = new Map();
+
 	KDCommanderChokes = {};
 	/** @type {Record<string, {x:number, y:number}>} */
 	let chokes = {};
 	// Identify potential chokes
+	let hp, hn, vp, vn = false;
 	for (let x = 1; x < KDMapData.GridWidth - 1; x++) {
 		for (let y = 1; y < KDMapData.GridHeight - 1; y++) {
 			if (
-				['d', 'D', 'g'].includes(KinkyDungeonMapGet(x, y)) // is door or grate
-				|| (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x, y))
-					&& ((!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x + 1, y))
-						&& !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x - 1, y)))
-					|| (!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x, y + 1))
-						&& !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x, y - 1)))
-					|| (!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x + 2, y))
-						&& !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x - 2, y)))
-					|| (!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x, y + 2))
-						&& !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x, y - 2)))
-					)) // is part of map grid border
+				KDChokeTiles.includes(KinkyDungeonMapGet(x, y)) // is door or grate
 			) {
+				chokes[x+','+y] = {x:x, y: y};
+			}
+			else {
+				hp = !KDIsSmartMovable(x + 1, y);
+				hn = !KDIsSmartMovable(x - 1, y);
+				vp = !KDIsSmartMovable(x, y + 1);
+				vn = !KDIsSmartMovable(x, y - 1);
+				if (KDIsSmartMovable(x, y)
+					&& (
+						((!vp && !vn) && (
+							(hp && hn)
+							|| ((hp || !KDIsSmartMovable(x + 2, y))
+								&& (hn || !KDIsSmartMovable(x - 1, y))
+							)
+							|| ((hp || !KDIsSmartMovable(x + 1, y))
+								&& (hn || !KDIsSmartMovable(x - 2, y))
+							)
+						))
+						||
+						((!hp && !hn) && (
+							(vp && vn)
+							|| ((vp || !KDIsSmartMovable(x, y + 2))
+								&& (vn || !KDIsSmartMovable(x, y - 1))
+							)
+							|| ((vp || !KDIsSmartMovable(x, y + 1))
+								&& (vn || !KDIsSmartMovable(x, y - 2))
+							)
+						))
+					))// is part of map grid border
+				{
+					chokes[x+','+y] = {x:x, y: y};
+				}
+			}
+		}
+	}
+	// 2nd pass
+	for (let x = 1; x < KDMapData.GridWidth - 1; x++) {
+		for (let y = 1; y < KDMapData.GridHeight - 1; y++) {
+			hp = !KDIsSmartMovable(x + 1, y) || chokes[(x+1)+','+(y)] != undefined;
+			hn = !KDIsSmartMovable(x - 1, y) || chokes[(x-1)+','+(y)] != undefined;
+			vp = !KDIsSmartMovable(x, y + 1) || chokes[(x)+','+(y+1)] != undefined;
+			vn = !KDIsSmartMovable(x, y - 1) || chokes[(x)+','+(y-1)] != undefined;
+			if (KDIsSmartMovable(x, y)
+				&& (
+					((!vp && !vn) && (
+						(hp && hn)
+					))
+					||
+					((!hp && !hn) && (
+						(vp && vn)
+					))
+				))// is part of map grid border
+			{
 				chokes[x+','+y] = {x:x, y: y};
 			}
 		}
 	}
+
 	// Add any chokes with suitable geometry
 	let check = (x, y) => {
 		return chokes[x+','+y] != undefined
-			|| !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x, y));
+			|| !KDIsSmartMovable(x, y);
 	};
 	let h = false, v = false, ho = false, vo = false, n = 0;
 	for (let choke of Object.values(chokes)) {
 		v = (check(choke.x, choke.y + 1) && check(choke.x, choke.y - 1));
 		h = (check(choke.x + 1, choke.y) && check(choke.x - 1, choke.y));
-		vo = (!check(choke.x, choke.y + 1) || !check(choke.x, choke.y - 1));
-		ho = (!check(choke.x + 1, choke.y) || !check(choke.x - 1, choke.y));
+		vo = (KDIsSmartMovable(choke.x, choke.y + 2) && KDIsSmartMovable(choke.x, choke.y - 2));
+		ho = (KDIsSmartMovable(choke.x + 2, choke.y) && KDIsSmartMovable(choke.x - 2, choke.y));
 		if (
 			(v && ho)
 			|| (h && vo)
+			|| KDChokeTiles.includes(KinkyDungeonMapGet(choke.x, choke.y))
 		) {
 			n = 0;
 			// Count neighbors. Less is better
@@ -91,7 +146,7 @@ function KDCommanderUpdateChokes(data) {
 			if (h && chokes[(choke.x-1)+','+(choke.y)]) n += 1;
 			if (v && chokes[(choke.x)+','+(choke.y+1)]) n += 1;
 			if (v && chokes[(choke.x)+','+(choke.y-1)]) n += 1;
-			if (n <= KDCOMMANDERMAXNEIGHBORS)
+			if (n <= KDCOMMANDERMAXNEIGHBORS && KDPointWanderable(choke.x, choke.y))
 				KDCommanderChokes[choke.x+','+choke.y] = {x: choke.x, y: choke.y, neighbors: n};
 		}
 
@@ -175,6 +230,8 @@ let KDAssaulterList = [];
 let KDMaxAssaulters = 3; // Only this many enemies will explicitly assault you
 
 let KDStationedChokepoints = {};
+let KD_Avg_VX = 0;
+let KD_Avg_VY = 0;
 
 /**
  * @type {Record<string, KDCommanderOrder>}
@@ -203,6 +260,10 @@ let KDCommanderOrders = {
 					KDEnemiesTargetingPlayer += 1;
 				}
 			}
+			if (data.delta > 0 && KinkyDungeonPlayerEntity.lastx && KinkyDungeonPlayerEntity.lasty) {
+				KD_Avg_VX = (data.VavgWeight * KD_Avg_VX + (KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx)) / (1 + data.VavgWeight);
+				KD_Avg_VY = (data.VavgWeight  * KD_Avg_VY + (KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty)) / (1 + data.VavgWeight);
+			}
 		},
 		global_after: (data) => {
 
@@ -230,17 +291,25 @@ let KDCommanderOrders = {
 
 		// Role maintenance
 		maintain: (enemy, data) => {
+			if (KDAssaulters > KDMaxAssaulters && KDRandom() < 0.2) {
+				if (!KDEnemyIsTemporary(enemy))
+					return false;
+			}
 			return (!enemy.IntentAction && data.aggressive && enemy.aware && !KinkyDungeonIsDisabled(enemy));
 		},
 		remove: (enemy, data) => {
-			KDAssaulters -= 1;
-			if (KDAssaulterList.indexOf(enemy) > -1)
-				KDAssaulterList.splice(KDAssaulterList.indexOf(enemy), 1);
+			if (!KDEnemyIsTemporary(enemy)) {
+				KDAssaulters -= 1;
+				if (KDAssaulterList.indexOf(enemy) > -1)
+					KDAssaulterList.splice(KDAssaulterList.indexOf(enemy), 1);
+			}
 		},
 		update: (enemy, data) => {
-			// Increment the number of assaulters
-			KDAssaulters += 1;
-			KDAssaulterList.push(enemy);
+			// Increment the number of assaulters but only if the enemy isnt temporary
+			if (!KDEnemyIsTemporary(enemy)) {
+				KDAssaulters += 1;
+				KDAssaulterList.push(enemy);
+			}
 
 			// AI control
 			enemy.gx = KinkyDungeonPlayerEntity.x;
@@ -251,7 +320,7 @@ let KDCommanderOrders = {
 		global_before: ( data) => {
 			// Reset the number of assaulters
 			KDAssaulters = 0;
-			KDMaxAssaulters = 1;
+			KDMaxAssaulters = 3;
 			KDAssaulterList = [];
 		},
 		global_after: (data) => {
@@ -307,9 +376,20 @@ let KDCommanderOrders = {
 		filter: (enemy, data) => {
 			let aware = enemy.aware || enemy.vp > 0 || KDGameData.tickAlertTimer;
 			if (!enemy.IntentAction && data.aggressive && aware && !KDEnemyHasFlag(enemy, "noGuard")) {
-				let dist = KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y);
+				let xx = KinkyDungeonPlayerEntity.x + KD_Avg_VX*5;
+				let yy = KinkyDungeonPlayerEntity.y + KD_Avg_VY*5;
+				let d1 = KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y);
+				let dist = Math.min(
+					d1,
+					KDistChebyshev(enemy.x - xx, enemy.y - yy)
+				);
 				// Only if the enemy notices the player or has left their station, and is within a radius
-				return dist > 2.5 && (dist < 20 || enemy.aware || enemy.vp > 0) && (enemy.aware || enemy.x != enemy.gxx || enemy.y != enemy.gyy);
+				return (d1 > 1.5
+					|| KDAssaulters >= KDMaxAssaulters
+					|| enemy.hp > enemy.Enemy.maxhp * 0.6)
+					&& (dist < 16 || enemy.aware || enemy.vp > 0)
+					&& (enemy.aware || enemy.x != enemy.gxx || enemy.y != enemy.gyy)
+					&& (!enemy.aware || !KDEnemyIsTemporary(enemy));
 			}
 			return false;
 		},
@@ -320,10 +400,10 @@ let KDCommanderOrders = {
 			else if (enemy.Enemy.tags.miniboss) w = 10;
 			else if (enemy.Enemy.tags.stageBoss) w = 0;
 			else if (enemy.Enemy.tags.boss) w = 1;
-			return enemy.Enemy.kite ? w*0.3 : w;
+			return (enemy.Enemy.kite || enemy.Enemy.tags?.ranged || enemy.Enemy.tags?.caster) ? w : w*0.3;
 		},
 		apply: (enemy, data) => {
-			if (enemy.aware || enemy.vp > 0.1)
+			if (enemy.aware)
 				KinkyDungeonSendDialogue(enemy,
 					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandBlock")
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
@@ -332,9 +412,20 @@ let KDCommanderOrders = {
 
 		// Role maintenance
 		maintain: (enemy, data) => {
-			if (!enemy.IntentAction && !(KDEnemyHasFlag(enemy, "noGuard") || KDEnemyHasFlag(enemy, "targ_ally") || KDEnemyHasFlag(enemy, "targ_npc")) && KDGameData.tickAlertTimer) {
-				let dist = KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y);
-				return dist > 1.5 && (dist < 20 || enemy.aware || enemy.vp > 0);
+			if (!enemy.IntentAction && !(KDEnemyHasFlag(enemy, "noGuard") || KDEnemyHasFlag(enemy, "targ_ally") || KDEnemyHasFlag(enemy, "targ_npc"))
+				&& (KDGameData.tickAlertTimer || KDEnemyHasFlag(enemy, "CMDR_stationed") || KDEnemyHasFlag(enemy, "CMDR_moveToChoke"))
+				&& (!enemy.aware || !KDEnemyIsTemporary(enemy))) {
+				let xx = KinkyDungeonPlayerEntity.x + KD_Avg_VX*2;
+				let yy = KinkyDungeonPlayerEntity.y + KD_Avg_VY*2;
+				let d1 = KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y);
+				let dist = Math.min(
+					d1,
+					KDistChebyshev(enemy.x - xx, enemy.y - yy)
+				);
+				return (d1 > 1.5
+					|| KDAssaulters >= KDMaxAssaulters
+					|| enemy.hp > enemy.Enemy.maxhp * 0.6)
+				&& (dist < 24 || enemy.aware || enemy.vp > 0);
 			}
 			return false;
 		},
@@ -342,37 +433,46 @@ let KDCommanderOrders = {
 		},
 		update: (enemy, data) => {
 			let choke = null;
-			let dist = (KDEnemyHasFlag(enemy, "failChoke") ? 15 : 6);
-			let d = 0;
+			let fc = KDEnemyHasFlag(enemy, "failChoke");
+			let dist = fc ? 14 : 7;
+			let d = 0, dd = 0;
 			let x = enemy.x;
 			let y = enemy.y;
 
 			let xx = KinkyDungeonPlayerEntity.x;
 			let yy = KinkyDungeonPlayerEntity.y;
-			let fc = KDEnemyHasFlag(enemy, "failChoke");
-			if (fc && KinkyDungeonPlayerEntity.lastx && KinkyDungeonPlayerEntity.lasty) {
-				xx += (KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx)*7;
-				yy += (KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty)*7;
-			}
+
+			let weight_Cdist = 0.7;
+			let weight_Pdist = 0.4;
+
 
 			KinkyDungeonSetEnemyFlag(enemy, "dontChase", 2);
 			KinkyDungeonSetEnemyFlag(enemy, "wander", 5 + Math.round(5 * KDRandom()));
 			// Look for good chokes first, prioritizing them
-			if (KDStationedChokepoints[enemy.x + "," + enemy.y] != enemy.id && enemy.idle && !KDEnemyHasFlag(enemy, "CMDR_stationed") && !KDEnemyHasFlag(enemy, "CMDR_moveToChoke")) {
-				for (let neighbors = 0; neighbors <= KDCOMMANDERMAXNEIGHBORS; neighbors ++)
+			if (KDStationedChokepoints[enemy.gx + "," + enemy.gy] != enemy.id && enemy.idle && !KDEnemyHasFlag(enemy, "CMDR_stationed") && !KDEnemyHasFlag(enemy, "CMDR_moveToChoke")) {
+
+
+				for (let neighbors = 1; neighbors <= KDCOMMANDERMAXNEIGHBORS; neighbors ++)
 					for (let X = Math.floor(x - dist); X < Math.ceil(x + dist); X++)
 						for (let Y = Math.floor(y - dist); Y < Math.ceil(y + dist); Y++) {
 							if (KDCommanderChokes[X + "," + Y]
-								&& KDCommanderChokes[X + "," + Y].neighbors == neighbors
+								&& KDCommanderChokes[X + "," + Y].neighbors <= neighbors
 								&& (!KDStationedChokepoints[X + "," + Y] || KDStationedChokepoints[X + "," + Y] == enemy.id)
-								&& KDistChebyshev(xx - X, yy - Y) < (fc ? 9 : 5)
-								&& KDistChebyshev(xx - X, yy - Y) > 1
 							) {
-								d = KDistEuclidean(X - x, Y - y);
-								if (d < dist) {
-									choke = KDCommanderChokes[X + "," + Y];
-									dist = d;
+								if (!data.invalidChoke[X + ',' + Y]) {
+									dd = KDistChebyshev(xx - X, yy - Y);
+									if (dd < 8
+										&& dd > 1) {
+										d = weight_Cdist * KDistEuclidean(X - x, Y - y) + weight_Pdist * dd;
+										if (d < dist) {
+											choke = KDCommanderChokes[X + "," + Y];
+											dist = d;
+										}
+									} else {
+										data.invalidChoke[X + ',' + Y] = true;
+									}
 								}
+
 							}
 						}
 
@@ -382,8 +482,11 @@ let KDCommanderOrders = {
 					enemy.gy = choke.y;
 					if (enemy.x == enemy.gx && enemy.y == enemy.gy) {
 						KinkyDungeonSetEnemyFlag(enemy, "CMDR_stationed", 5 + Math.round(9 * KDRandom()));
+						KinkyDungeonSetEnemyFlag(enemy, "allowpass", 5 + Math.round(9 * KDRandom()));
 					} else {
-						KinkyDungeonSetEnemyFlag(enemy, "CMDR_moveToChoke", 7 + Math.round(7 * KDRandom()));
+						KinkyDungeonSetEnemyFlag(enemy, "CMDR_moveToChoke", 1 + Math.round(3 * KDRandom()));
+						if (!KDEnemyHasFlag(enemy, "blocked"))
+							KinkyDungeonSetEnemyFlag(enemy, "blocked", Math.round(2 * KDRandom())); // To assist in pathing
 					}
 				} else {
 					if (!KDEnemyHasFlag(enemy, "failChoke")) {
@@ -392,6 +495,8 @@ let KDCommanderOrders = {
 						KinkyDungeonSetEnemyFlag(enemy, "noGuard", 10 + Math.round(9 * KDRandom()));
 					}
 				}
+			} else if (KDCommanderChokes[enemy.gx + "," + enemy.gy]) {
+				KDStationedChokepoints[enemy.gx + "," + enemy.gy] = enemy.id;
 			}
 
 		},
@@ -399,9 +504,55 @@ let KDCommanderOrders = {
 		// Global role variables
 		global_before: ( data) => {
 			KDStationedChokepoints = {};
+			data.invalidChoke = {};
 		},
 		global_after: (data) => {
-
+			if (KDAssaulters == 0) {
+				for (let id of KDCommanderRoles.entries()) {
+					if (id[1] == "guard" && KinkyDungeonFindID(id[0])?.aware) {
+						KDCommanderRoles.delete(id[0]);
+					}
+				}
+			}
 		},
+	},
+
+
+	flee: {
+		// Run away!!!
+		// Role assignment
+		filter: (enemy, data) => {
+			if (!enemy.IntentAction
+				&& data.aggressive
+				&& !KDIsImmobile(enemy)
+				&& (!KDAIType[KDGetAI(enemy)]
+					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
+				&& (enemy.hp < enemy.Enemy.maxhp * data.fleeThresh || enemy.Enemy.tags?.minor)
+				&& !KDEnemyHasFlag(enemy, "targ_player")) return true;
+			return false;
+		},
+		weight: (enemy, data) => {
+			return data.combat ? 100 : 15;
+		},
+		apply: (enemy, data) => {
+			if (enemy.aware || enemy.vp > 0.1)
+				KinkyDungeonSendDialogue(enemy,
+					TextGet("KinkyDungeonRemindJailPlayBrat" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + Math.floor(KDRandom() * 3))
+						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
+					6, 8, false, true);
+		},
+
+		// Role maintenance
+		maintain: (enemy, data) => {
+			return (!enemy.IntentAction && data.aggressive && enemy.vp > 0 && KDEnemyHasFlag(enemy, "targ_player"));
+		},
+		remove: (enemy, data) => {},
+		update: (enemy, data) => {
+			KinkyDungeonSetEnemyFlag(enemy, "runAway", 5 + Math.round(5 * KDRandom()));
+		},
+
+		// Global role variables
+		global_before: ( data) => {},
+		global_after: (data) => {},
 	},
 };

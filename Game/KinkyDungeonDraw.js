@@ -763,6 +763,7 @@ let KDLastKeyTime = {
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
+	KDTetherGraphics.clear();
 	// Breath the sound outlines
 	if (StandalonePatched)
 		kdoutlinefilter.alpha = 0.5 + 0.1 * Math.sin(2 * Math.PI * (CommonTime() % 2000 / 2000) );
@@ -2830,6 +2831,11 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 			let allowFog = KDAllowFog();
 			if (RY >= 0 && RY < KDMapData.GridHeight && RX >= 0 && RX < KDMapData.GridWidth && (KinkyDungeonVisionGet(RX, RY) > 0 || (allowFog && KinkyDungeonFogGet(RX, RY) > 0))) {
 				if (Debug) {
+					if (KDCommanderChokes && KDCommanderChokes[RX + "," + RY]) {
+						DrawTextFitKD("Choke", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, KinkyDungeonGridSizeDisplay, "#aaaaaA");
+
+					}
+
 					if ( KinkyDungeonTilesGet(RX + "," + RY)) {
 						if (KinkyDungeonTilesGet(RX + "," + RY).Lock)
 							DrawTextFitKD(KinkyDungeonTilesGet(RX + "," + RY).Lock, (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, "#aaaaaA");

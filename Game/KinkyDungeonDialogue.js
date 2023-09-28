@@ -1642,9 +1642,10 @@ clickFunction: (gagged, player) => {
  * @returns {entity}
  */
 function DialogueBringNearbyEnemy(x, y, radius, unaware) {
-	for (let e of KDMapData.Entities) {
+	let nearby = KDNearbyEnemies(x, y, radius);
+	for (let e of nearby) {
 		if (!KDHelpless(e)
-			&& KDistChebyshev(x - e.x, y - e.y) <= radius
+			//&& KDistChebyshev(x - e.x, y - e.y) <= radius
 			&& KinkyDungeonAggressive(e)
 			&& !KDIsImmobile(e) && !e.Enemy.tags.temporary
 			&& (!KDAIType[KDGetAI(e)]?.ambush || e.ambushtrigger)

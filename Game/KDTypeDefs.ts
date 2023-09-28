@@ -2636,10 +2636,13 @@ interface KDSpecialEnemyBuff {
 
 type KDCommanderOrderData = {
 	delta: number,
+	VavgWeight: number,
 
+	fleeThresh: number,
 	combat: boolean,
 	// Temp vars
 	aggressive: boolean,
+	invalidChoke: Record<string, boolean>,
 }
 
 interface KDCommanderOrder {

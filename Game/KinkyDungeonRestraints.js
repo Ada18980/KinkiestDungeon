@@ -375,7 +375,6 @@ function KinkyDungeonDrawTethers(Entity, CamX, CamY) {
 		kdgameboard.addChild(KDTetherGraphics);
 	}
 
-	KDTetherGraphics.clear();
 
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (inv && KDRestraint(inv).tether && inv.tx && inv.ty) {

@@ -825,7 +825,7 @@ async function sleep(msec) {
 let KDMarkAsCache = [];
 
 let lastGlobalRefresh = 0;
-let GlobalRefreshInterval = 1000;
+let GlobalRefreshInterval = 2000;
 let KDGlobalRefresh = false;
 
 let KDLogoStartTime = 0;

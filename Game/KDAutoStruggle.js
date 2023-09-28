@@ -191,7 +191,7 @@ function KDAS_GetMovableWigglePoint(player, goCloser) {
 	for (let XX = Math.floor(player.x - dist); XX <= Math.ceil(player.x + dist); XX++) {
 		for (let YY = Math.floor(player.y - dist); YY <= Math.ceil(player.y + dist); YY++) {
 			let pdist = KDistEuclidean(XX - wpx, YY - wpy);
-			if (KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(XX, YY))
+			if (KDIsSmartMovable(XX, YY)
 				&& pdist <= dist
 				&& (!goCloser || pdist < currentPdist)
 				&& KDistChebyshev(player.x - XX, player.y - YY) < 1.5) {

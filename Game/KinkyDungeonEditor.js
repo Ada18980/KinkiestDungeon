@@ -726,7 +726,7 @@ let KDTE_MAXDIM = 5;
 let KDTELoadConfirm = false;
 
 function KDTE_Clear(x, y, force = false) {
-	if (force || !KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(x, y))) {
+	if (force || !KDIsSmartMovable(x, y)) {
 		KinkyDungeonMapSetForce(x, y, '0');
 		KinkyDungeonTilesDelete(x + "," + y);
 		delete KDMapData.TilesSkin[x + "," + y];

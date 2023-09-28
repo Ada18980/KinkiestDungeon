@@ -167,11 +167,13 @@ function KinkyDungeonUpdateBuffs(delta, endFloor) {
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff);
 				}
 				if (buff.enemies) {
-					for (let enemy of KDMapData.Entities) {
+					let nearby = KDNearbyEnemies(b.x, b.y, buff.range);
+					for (let enemy of nearby) {
 						if ((KDHostile(enemy) || !buff.noAlly)
 							&& (KDAllied(enemy) || !buff.onlyAlly)
 							&& (!b.bullet.spell.filterTags || b.bullet.spell.filterTags.some((tag) => {return enemy.Enemy.tags[tag];}))
-							&& buff.range >= Math.sqrt((enemy.x - b.x) * (enemy.x - b.x) + (enemy.y - b.y) * (enemy.y - b.y))) {
+							//&& buff.range >= Math.sqrt((enemy.x - b.x) * (enemy.x - b.x) + (enemy.y - b.y) * (enemy.y - b.y))
+						) {
 							KinkyDungeonApplyBuffToEntity(enemy, buff);
 						}
 					}
