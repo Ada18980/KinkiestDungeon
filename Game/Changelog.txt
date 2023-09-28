@@ -11,6 +11,9 @@ Vague todo:
 - Add teleport to floor 0 temporarily after spending enough gold (done)
 - Add single use curse remover item (done)
 
+4.74 (Sep 2023)
+- Added experimental new AI, let me know how things go
+
 4.73 (Sep 2023)
 - Enemies now say things when helping their allies in combat
 - Mage Circuits is now wizard-exclusive, adds +400 mana pool instead
