@@ -2884,8 +2884,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 
 	AIData.attack = enemy.Enemy.attack;
-	AIData.range = enemy.Enemy.attackRange == 1 ? 1.5 : enemy.Enemy.attackRange;
-	AIData.width = enemy.Enemy.attackWidth;
+	AIData.range = (enemy.Enemy.attackRange == 1 ? 1.5 : enemy.Enemy.attackRange) + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackRange");
+	AIData.width = enemy.Enemy.attackWidth + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackWidth");
 	AIData.bindLevel = KDBoundEffects(enemy);
 	AIData.accuracy = enemy.Enemy.accuracy ? enemy.Enemy.accuracy : 1.0;
 	if (enemy.distraction) AIData.accuracy = AIData.accuracy / (1 + 1.5 * enemy.distraction / enemy.Enemy.maxhp);
@@ -2893,7 +2893,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (enemy.blind > 0) AIData.accuracy = 0;
 	AIData.vibe = false;
 	AIData.damage = enemy.Enemy.dmgType;
-	AIData.power = enemy.Enemy.power;
+	AIData.power = enemy.Enemy.power + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackPower");
 
 	AIData.targetRestraintLevel = 0.25 + (enemy.aggro && !enemy.playWithPlayer ? enemy.aggro : 0) + 0.004 * (KinkyDungeonGoddessRep.Prisoner + 50);
 	if (enemy.aggro > 0 && delta > 0 && enemy.aggro > enemy.hp / enemy.Enemy.maxhp) enemy.aggro = enemy.aggro * 0.95;
@@ -2983,13 +2983,17 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (player.player && enemy.Enemy && enemy.Enemy.playerFollowRange) AIData.followRange = enemy.Enemy.playerFollowRange == 1.5 ? 1.5 : enemy.Enemy.playerFollowRange;
 
 	if (!enemy.warningTiles) enemy.warningTiles = [];
-	AIData.canSensePlayer = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, true, true);
-	AIData.canSeePlayer = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDistDirectional, AIData.visionRadius, false, false);
-	AIData.canSeePlayerChase = !AIData.distracted && (enemy.aware ? KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.chaseRadius, false, false) : false);
-	AIData.canSeePlayerMedium = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDistDirectional, AIData.visionRadius/2, false, true);
-	AIData.canSeePlayerClose = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/2, false, true);
-	AIData.canSeePlayerVeryClose = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/3, false, true);
-	AIData.canShootPlayer = !AIData.distracted && KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, false, true);
+	AIData.canSensePlayer = !AIData.distracted
+		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, true, true);
+	if (AIData.canSensePlayer && !AIData.distracted) {
+		AIData.canSeePlayer = KinkyDungeonCheckLOS(enemy, player, AIData.playerDistDirectional, AIData.visionRadius, false, false);
+		AIData.canSeePlayerChase = (enemy.aware ? KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.chaseRadius, false, false) : false);
+		AIData.canSeePlayerMedium = KinkyDungeonCheckLOS(enemy, player, AIData.playerDistDirectional, AIData.visionRadius/2, false, true);
+		AIData.canSeePlayerClose = KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/2, false, true);
+		AIData.canSeePlayerVeryClose = KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/3, false, true);
+		AIData.canShootPlayer = KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, false, true);
+	}
+
 
 	if (KinkyDungeonLastTurnAction && AIData.canSeePlayer) {
 		if (!enemy.aggro) enemy.aggro = 0;
@@ -3264,9 +3268,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			AIData.kite = true;
 		} else
 			AIData.followRange = 1.5;
-	} else if (AIData.aggressive && enemy.attackPoints && !enemy.Enemy.attackWhileMoving && AIData.followRange < ((enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange)
+	} else if (AIData.aggressive && enemy.attackPoints && !enemy.Enemy.attackWhileMoving && AIData.followRange < ((enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || AIData.range)
 		&& enemy.Enemy.attack?.includes("Melee")) {
-		AIData.followRange = Math.max(1.5, (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || enemy.Enemy.attackRange || AIData.followRange);
+		AIData.followRange = Math.max(1.5, (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || AIData.range || AIData.followRange);
 	}
 
 	if ((AIType.resetguardposition(enemy, player, AIData)) && (!enemy.gxx || !enemy.gyy)) {
