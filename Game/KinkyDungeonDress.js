@@ -122,7 +122,7 @@ function KinkyDungeonSetDress(Dress, Outfit, Character, NoRestraints) {
 let KDNaked = false;
 let KDRefresh = false;
 let KDLastForceRefresh = 0;
-let KDLastForceRefreshInterval = 300;
+let KDLastForceRefreshInterval = 700;
 
 /**
  * It sets the player's appearance based on their stats.

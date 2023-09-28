@@ -4487,13 +4487,16 @@ function KinkyDungeonCloseDoor(data) {
  */
 let KDEnemyCache = null;
 let KDUpdateEnemyCache = true;
+let KDIDCache = new Map();
 
 function KDGetEnemyCache() {
 	if (KDUpdateEnemyCache || !KDEnemyCache) {
 		KDUpdateEnemyCache = false;
 		KDEnemyCache = new Map();
+		KDIDCache = new Map();
 		for (let e of KDMapData.Entities) {
 			KDEnemyCache.set(e.x + "," + e.y, e);
+			KDIDCache.set(e.id, e);
 		}
 	}
 	return KDEnemyCache;

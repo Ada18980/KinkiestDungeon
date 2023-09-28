@@ -10,9 +10,46 @@ let KDPathCache = new Map();
  */
 let KDPathCacheIgnoreLocks = new Map();
 
+let KDSmartMovable = new Map();
+let KDMovable = new Map();
+
 function KDUpdateDoorNavMap() {
 	KDPathCache = new Map();
 	KDUpdateChokes = true;
+	KDMovable = new Map();
+	KDSmartMovable = new Map();
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @returns {boolean}
+ */
+function KDIsMovable(x, y) {
+	if (KDMovable.has(x+','+y)) {
+		return KDMovable.get(x+','+y);
+	} else {
+		let m = KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x, y));
+		KDMovable.set(x+','+y, m);
+		return m;
+	}
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @returns {boolean}
+ */
+function KDIsSmartMovable(x, y) {
+	if (KDSmartMovable.has(x+','+y)) {
+		return KDSmartMovable.get(x+','+y);
+	} else {
+		let m = KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(x, y));
+		KDSmartMovable.set(x+','+y, m);
+		return m;
+	}
 }
 
 let KDPathfindingCacheHits = 0;
