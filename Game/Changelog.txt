@@ -16,6 +16,11 @@ Vague todo:
 - Mage Circuits is now wizard-exclusive, adds +400 mana pool instead
 - New Wizard upgrade: Mana Harvesting
 - Hard Mode is moved to the game setup screen, and now you can choose to have extra perk points
+- Bondage buster buffed to add binding
+- Edge of reality smaller and more intelligible
+- Freeze does damage now and has similar stipulations to ice shard
+- Enchanted rope now does 50 magic binding instead of 30
+- Many enemies had their armor increased
 - Fixed some bugs with mana costs
 
 4.72 (Sep 2023)
