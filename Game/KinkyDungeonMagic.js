@@ -1279,6 +1279,8 @@ function KDCorrectCurrentSpellPage(pages) {
 	return ret;
 }
 
+let KDMagicFilter = "";
+
 function KinkyDungeonListSpells(Mode) {
 	let i = 0;
 	//let ii = 0;
@@ -1351,6 +1353,13 @@ function KinkyDungeonListSpells(Mode) {
 		return true;
 	}, KDSpellListIndex < longestList - KDMaxSpellPerColumn + 1, 1160, 800, 90, 40, "", KDSpellListIndex < longestList - KDMaxSpellPerColumn + 1 ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
 
+	let TF = KDTextField("MagicFilter", 1690, 120, 280, 45, "text", "", "45");
+	if (TF.Created) {
+		TF.Element.oninput = (event) => {
+			KDMagicFilter = ElementValue("MagicFilter");
+		};
+	}
+
 	// Draw the spells themselves
 	for (let pg of spellPages) {
 		let column = col;//Math.floor((spacing * i) / (maxY));
@@ -1380,7 +1389,9 @@ function KinkyDungeonListSpells(Mode) {
 				&& (!selectedFilters.includes("learned") || (learned))
 				&& (!selectedFilters.includes("noupgrade") || (!upgrade && !upcast))
 				&& (!selectedFilters.includes("yesupgrade") || (upgrade || passive))
-				&& (!selectedFilters.includes("upcast") || (upcast))) {
+				&& (!selectedFilters.includes("upcast") || (upcast))
+				&& (!KDMagicFilter || TextGet("KinkyDungeonSpell" + (spell.name)).toLocaleLowerCase().includes(KDMagicFilter.toLocaleLowerCase()))
+			) {
 
 				if (iii < Math.round(KDSpellListIndexVis)) {
 					iii += 1;

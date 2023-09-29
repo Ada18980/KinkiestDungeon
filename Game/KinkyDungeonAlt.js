@@ -189,8 +189,8 @@ let alts = {
 		Title: "DemonTransition",
 		noWear: false, // Disables doodad wear
 		bossroom: false,
-		width: 20,
-		height: 20,
+		width: 14,
+		height: 14,
 		nopatrols: false,
 		onExit: (data) => {
 			// Return to the normal map

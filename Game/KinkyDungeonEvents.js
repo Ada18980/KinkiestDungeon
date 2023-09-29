@@ -1451,7 +1451,7 @@ let KDEventMapInventory = {
 
 				let brightness = KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 				if (brightness > 4) {
-					data.escapeChance += 0.1 * brightness;
+					data.escapeChancer += 0.1 * brightness;
 					KinkyDungeonSendTextMessage(7, TextGet("KDShadowBuff"), "#99ff99", 2, true);
 				}
 
