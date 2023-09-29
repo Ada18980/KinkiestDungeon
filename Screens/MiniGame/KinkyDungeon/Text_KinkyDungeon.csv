@@ -476,8 +476,11 @@ KinkyDungeonStatMC_Peasant,"Peasant"
 KinkyDungeonStatDescMC_Peasant,"You possess the agricultural mastery of the Peasant class."
 
 
-KinkyDungeonStatPanic,"Panic!!!"
-KinkyDungeonStatDescPanic,"When you step on a trap, you are stunned for 2 turns."
+KinkyDungeonStatPanic,"Panic! (Chests)"
+KinkyDungeonStatDescPanic,"When you open a trapped chest, you are stunned for 2 turns."
+
+KinkyDungeonStatPanic2,"Panic! (Traps)"
+KinkyDungeonStatDescPanic2,"When you step on a trap, you are stunned for 2 turns."
 KDPanic,Panic sets in! (Stunned 2 turns)
 
 KinkyDungeonStatButterfingers,"Butterfingers"

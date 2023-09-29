@@ -848,6 +848,7 @@ let KinkyDungeonSpellSpecials = {
 					if (enemyType) {
 						en.Enemy = JSON.parse(JSON.stringify(enemyType));
 					}
+					en.hp = Math.min(en.Enemy.maxhp, en.hp);
 					en.hostile = 0;
 					en.faction = "Player";
 				}

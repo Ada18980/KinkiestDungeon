@@ -297,6 +297,7 @@ let KinkyDungeonStatsPresets = {
 	"Prisoner": {category: "Start", id: "Prisoner", cost: 0},
 
 	"Panic": {category: "Map", id: "Panic", cost: -1},
+	"Panic2": {category: "Map", id: "Panic2", cost: -1},
 
 	"Rusted": {category: "Map", id: "Rusted", cost: 1},
 
