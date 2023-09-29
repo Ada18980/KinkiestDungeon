@@ -19,6 +19,7 @@ Vague todo:
 - Split the panic perk into two different ones (by popular request) for chest traps vs floor traps
 - New enemy, Masterful Lock
 - Many animated restraints now have backup restraint types
+- Also fixed some bugs with certain restraints never being applied due to a calculation not working as intended
 
 4.73 (Sep 2023)
 - Enemies now say things when helping their allies in combat
