@@ -3536,7 +3536,7 @@ let KDShopBuyConfirm = false;
 let KDFocusableTextFields = [
 	"PerksFilter",
 	"InvFilter",
-	"SpellFilter",
+	"MagicFilter",
 ];
 
 function KinkyDungeonGameKeyDown() {
