@@ -13,6 +13,7 @@ Vague todo:
 
 4.74 (Sep 2023)
 - Added experimental new AI, let me know how things go
+- Enemies can now sprint for a short time and recharge when idle
 
 4.73 (Sep 2023)
 - Enemies now say things when helping their allies in combat

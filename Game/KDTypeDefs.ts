@@ -762,6 +762,10 @@ interface enemy extends KDHasTags {
 	noFlip?: boolean,
 	/** Max enemy hp*/
 	maxhp?: number,
+	/** Number of turns an enemy can sprint for */
+	stamina?: number,
+	/** Sprint speed multiplier. Default 1.5*/
+	sprintspeed?: number,
 	/** HP the enemy starts at */
 	startinghp?: number,
 	/** */
@@ -1279,6 +1283,8 @@ interface entity {
 
 	// Direction
 	flip?: boolean,
+
+	exertion?: number,
 
 	// Custom play line
 	playLine?: string,

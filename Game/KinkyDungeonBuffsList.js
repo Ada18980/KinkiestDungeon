@@ -35,7 +35,7 @@ let KDBoundByFate = {id: "BoundByFate", type: "Fate", power: 1, player: true, du
 ]};
 
 let KDEager = {
-	id: "Eager", type: "MoveSpeed", power: 0.95, duration: 1, events: [
+	id: "Eager", type: "MoveSpeed", power: 0.1, duration: 1, events: [
 		{type: "ApplyVuln", duration: 1, trigger: "tick"},
 		{type: "ApplyVuln", duration: 1, power: -1.0, trigger: "tickAfter"},
 	]
