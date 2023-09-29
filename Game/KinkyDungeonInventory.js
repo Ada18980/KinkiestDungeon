@@ -727,6 +727,7 @@ function KinkyDungeonDrawInventory() {
 
 	let TF = KDTextField("InvFilter", 1460, 150, 350, 54, "text", "", "45");
 	if (TF.Created) {
+		KDInvFilter = "";
 		TF.Element.oninput = (event) => {
 			KDInvFilter = ElementValue("InvFilter");
 		};
@@ -1074,16 +1075,24 @@ let KDInventoryStatus = {
 function KinkyDungeonDrawQuickInv() {
 	let H = 80;
 	let V = 80;
-	let fC = KinkyDungeonFilterInventory(Consumable, false, !KDInventoryStatus.HideQuickInv);
+	let fC = KinkyDungeonFilterInventory(Consumable, false, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter);
 	let consumables = fC.slice(KDScrollOffset.Consumable, KDScrollOffset.Consumable + KDItemsPerScreen.Consumable);
-	let fW = KinkyDungeonFilterInventory(Weapon, false, !KDInventoryStatus.HideQuickInv);
+	let fW = KinkyDungeonFilterInventory(Weapon, false, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter);
 	let weapons = fW.slice(KDScrollOffset.Weapon, KDScrollOffset.Weapon + KDItemsPerScreen.Weapon);
 	let fR = [
-		...KinkyDungeonFilterInventory(LooseRestraint, true, !KDInventoryStatus.HideQuickInv),
-		...KinkyDungeonFilterInventory(Armor, true, !KDInventoryStatus.HideQuickInv)];
+		...KinkyDungeonFilterInventory(LooseRestraint, true, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter),
+		...KinkyDungeonFilterInventory(Armor, true, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter)];
 	let restraints = fR.slice(KDScrollOffset.Restraint, KDScrollOffset.Restraint + KDItemsPerScreen.Restraint);
 	let Wheight = KinkyDungeonQuickGrid(weapons.length-1, H, V, 6).y;
 	let Rheight = 480;
+
+	let TF = KDTextField("QInvFilter", 525, 150, 250, 54, "text", "", "45");
+	if (TF.Created) {
+		KDInvFilter = "";
+		TF.Element.oninput = (event) => {
+			KDInvFilter = ElementValue("QInvFilter");
+		};
+	}
 
 	KDScrollOffset.Consumable = Math.max(0, Math.min(Math.ceil((fC.length - KDItemsPerScreen.Consumable)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Consumable));
 	KDScrollOffset.Restraint = Math.max(0, Math.min(Math.ceil((fR.length - KDItemsPerScreen.Restraint)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Restraint));
@@ -1360,13 +1369,13 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 
 	let H = 80;
 	let V = 80;
-	let fC = KinkyDungeonFilterInventory(Consumable, false, !KDInventoryStatus.HideQuickInv);
+	let fC = KinkyDungeonFilterInventory(Consumable, false, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter);
 	let consumables = fC.slice(KDScrollOffset.Consumable, KDScrollOffset.Consumable + KDItemsPerScreen.Consumable);
-	let fW = KinkyDungeonFilterInventory(Weapon, false, !KDInventoryStatus.HideQuickInv);
+	let fW = KinkyDungeonFilterInventory(Weapon, false, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter);
 	let weapons = fW.slice(KDScrollOffset.Weapon, KDScrollOffset.Weapon + KDItemsPerScreen.Weapon);
 	let fR = [
-		...KinkyDungeonFilterInventory(LooseRestraint, true, !KDInventoryStatus.HideQuickInv),
-		...KinkyDungeonFilterInventory(Armor, true, !KDInventoryStatus.HideQuickInv)];
+		...KinkyDungeonFilterInventory(LooseRestraint, true, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter),
+		...KinkyDungeonFilterInventory(Armor, true, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter)];
 	let restraints = fR.slice(KDScrollOffset.Restraint, KDScrollOffset.Restraint + KDItemsPerScreen.Restraint);
 	let Wheight = KinkyDungeonQuickGrid(weapons.length-1, H, V, 6).y;
 	let Rheight = 480;

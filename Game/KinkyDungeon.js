@@ -1538,7 +1538,6 @@ function KinkyDungeonRun() {
 
 		let TF = KDTextField("PerksFilter", 600, 930, 210, 54, "text", "", "45");
 		if (TF.Created) {
-
 			TF.Element.oninput = (event) => {
 				KDPerksFilter = ElementValue("PerksFilter");
 			};

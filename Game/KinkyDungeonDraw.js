@@ -849,22 +849,25 @@ function KinkyDungeonDrawGame() {
 		DrawTextFitKD(TextGet("KinkyDungeon"), 1865, 50, 200, "#ffffff", KDTextGray2);
 	}
 
-
 	if ((KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
-		if (KinkyDungeonDrawState == "Magic") {
-			KinkyDungeonDrawState = "MagicSpells";
+		if (document.activeElement && KDFocusableTextFields.includes(document.activeElement.id)) {
 			KinkyDungeonGameKey.keyPressed[9] = false;
 		} else {
-			KinkyDungeonDrawState = "Game";
-			KinkyDungeonMessageToggle = false;
-			KinkyDungeonTargetingSpell = null;
-			KinkyDungeonTargetTile = null;
-			KinkyDungeonTargetTileLocation = "";
-			KinkyDungeonSpellPress = "";
-			KDModalArea = false;
-			KDCloseQuickInv();
-			KDRepSelectionMode = "";
-			KinkyDungeonGameKey.keyPressed[9] = false;
+			if (KinkyDungeonDrawState == "Magic") {
+				KinkyDungeonDrawState = "MagicSpells";
+				KinkyDungeonGameKey.keyPressed[9] = false;
+			} else {
+				KinkyDungeonDrawState = "Game";
+				KinkyDungeonMessageToggle = false;
+				KinkyDungeonTargetingSpell = null;
+				KinkyDungeonTargetTile = null;
+				KinkyDungeonTargetTileLocation = "";
+				KinkyDungeonSpellPress = "";
+				KDModalArea = false;
+				KDCloseQuickInv();
+				KDRepSelectionMode = "";
+				KinkyDungeonGameKey.keyPressed[9] = false;
+			}
 		}
 	}
 
