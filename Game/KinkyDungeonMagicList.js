@@ -1713,6 +1713,14 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "RobotBolt", color: "#ff5277", sfx: "Laser", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "electric", speed: 2, playerEffect: {name: "RobotShock", time: 2}},
 	{enemySpell: true, name: "RubberBullets",  bindType: "Slime", color: "#ffff00", minRange: 2.9, sfx: "Gunfire", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "glue", speed: 3, playerEffect: {name: "RubberBullets", power: 4, count: 1, damage: "glue"}},
 
+	{enemySpell: true, name: "Minigun", castCondition: "Windup_Ready", bindType: "Slime", color: "#ffff00", minRange: 1.5, sfx: "MiniFire", manacost: 0, components: ["Arms"],
+		fastStart: true,
+		shotgunCount: 3, shotgunDistance: 6, shotgunSpread: 1.5, shotgunSpeedBonus: 1.5,
+		level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 1, time: 0, delay: 0, range: 50, damage: "glue", speed: 1.5, playerEffect: {name: "RubberBullets", power: 1, count: 1, damage: "glue"}},
+	{enemySpell: true, name: "MinigunWindup", castCondition: "Windup_Start", minRange: 1.5,
+		tags: [], sfx: "MiniWind", school: "Any", manacost: 0, components: [], noise: 3,
+		noTargetPlayer: true, mustTarget: true, level:1, type:"special", onhit:"", special: "Windup", noSprite: true, evadeable: false, power: 0, time: 3, range: 20, size: 1, lifetime: 1, aoe: 0.5, damage: "inert",
+	},
 
 	{enemySpell: true, name: "Fireexp", color: "#ffff00", minRange: 0, landsfx: "FireSpell", manacost: 5,
 		effectTileDurationMod: 2, effectTile: {
@@ -2048,6 +2056,14 @@ let KDMagicDefs = {
 
 /** @type {Record<string, (enemy: entity, target: entity, spell?: spell) => boolean>} */
 let KDCastConditions = {
+	"Windup_Start": (enemy, target) => {
+		if (!KDEnemyHasFlag(enemy, "windup")) return true;
+		return false;
+	},
+	"Windup_Ready": (enemy, target) => {
+		if (KDEnemyHasFlag(enemy, "windup")) return true;
+		return false;
+	},
 	"commandword": (enemy, target) => {
 		if (KDEnemyHasFlag(enemy, "commandword")) return false;
 		return KDEntityHasBuffTags(target, "commandword");

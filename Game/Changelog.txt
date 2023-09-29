@@ -17,7 +17,7 @@ Vague todo:
 - Added inventory and spell filters
 - Using Remove Slime on encased adventurers frees them from their predicament
 - Split the panic perk into two different ones (by popular request) for chest traps vs floor traps
-- New enemy, Masterful Lock
+- New enemies, Masterful Lock, Heavy Weapons Maid
 - Many animated restraints now have backup restraint types
 - Also fixed some bugs with certain restraints never being applied due to a calculation not working as intended
 

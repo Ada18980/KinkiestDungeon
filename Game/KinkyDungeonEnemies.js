@@ -2846,6 +2846,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.visionMod = visionMod;
 	AIData.followRange = enemy.Enemy.followRange == 1 ? 1.5 : enemy.Enemy.followRange;
 	AIData.visionRadius = enemy.Enemy.visionRadius ? (enemy.Enemy.visionRadius + ((enemy.lifetime > 0 && enemy.Enemy.visionSummoned) ? enemy.Enemy.visionSummoned : 0)) : 0;
+	AIData.visionRadius = Math.max(1.5, AIData.visionRadius + KinkyDungeonGetBuffedStat(enemy.buffs, "Vision"));
 	let AIType = KDAIType[enemy.AI ? enemy.AI : enemy.Enemy.AI];
 	if (AIData.visionMod && AIData.visionRadius > 1.5) AIData.visionRadius = Math.max(1.5, AIData.visionRadius * AIData.visionMod);
 	AIData.chaseRadius = (enemy.Enemy.Awareness?.chaseradius != undefined) ? enemy.Enemy.Awareness.chaseradius
