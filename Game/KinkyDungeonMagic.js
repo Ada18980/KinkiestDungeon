@@ -1390,7 +1390,9 @@ function KinkyDungeonListSpells(Mode) {
 				&& (!selectedFilters.includes("noupgrade") || (!upgrade && !upcast))
 				&& (!selectedFilters.includes("yesupgrade") || (upgrade || passive))
 				&& (!selectedFilters.includes("upcast") || (upcast))
-				&& (!KDMagicFilter || TextGet("KinkyDungeonSpell" + (spell.name)).toLocaleLowerCase().includes(KDMagicFilter.toLocaleLowerCase()))
+				&& (!KDMagicFilter
+					|| TextGet("KinkyDungeonSpell" + (spell.name)).toLocaleLowerCase().includes(KDMagicFilter.toLocaleLowerCase())
+					|| spell.tags?.some((tag) => {return tag.toLocaleLowerCase().includes(KDMagicFilter.toLocaleLowerCase());}))
 			) {
 
 				if (iii < Math.round(KDSpellListIndexVis)) {
