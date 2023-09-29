@@ -838,6 +838,20 @@ let KinkyDungeonSpellSpecials = {
 					en.boundLevel = Math.max(0, en.boundLevel - 5);
 				}
 				KinkyDungeonRemoveBuffsWithTag(en, ["encased", "slimed"]);
+				if (en.Enemy.tags?.rescueslime && !KDEnemyIsTemporary(en)) {
+					// Replace with a random adventurer. We do NOT refresh the health
+					let newType = KDRandom() < 0.25 ? "Adventurer_Sub_Fighter"
+						: (KDRandom() < 0.25 ? "Adventurer_Brat_Fighter"
+							: KDRandom() < 0.25 ? "Adventurer_Switch_Fighter"
+								: "Adventurer_Dom_Fighter");
+					let enemyType = KinkyDungeonGetEnemyByName(newType);
+					if (enemyType) {
+						en.Enemy = JSON.parse(JSON.stringify(enemyType));
+					}
+					en.hostile = 0;
+					en.faction = "Player";
+				}
+
 				KinkyDungeonApplyBuffToEntity(en, KDGlueResist, {duration: 10});
 			}
 		}
