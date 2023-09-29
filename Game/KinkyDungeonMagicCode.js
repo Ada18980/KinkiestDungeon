@@ -148,8 +148,8 @@ let KinkyDungeonSpellSpecials = {
 			KinkyDungeonSetEnemyFlag(entity, "winding", spell.time);
 			KinkyDungeonSetEnemyFlag(entity, "winding2", spell.time - 1);
 		} else if (!KDEnemyHasFlag(entity, "winding2")) {
-			KinkyDungeonSetEnemyFlag(entity, "windup", 12);
-			KinkyDungeonApplyBuffToEntity(entity, {id: "MinigunSight", type: "Vision", duration:12, power: 7});
+			KinkyDungeonSetEnemyFlag(entity, "windup", 9);
+			KinkyDungeonApplyBuffToEntity(entity, {id: "ExtraSight", type: "Vision", duration:9, power: 7});
 		}
 		KinkyDungeonPlaySound(spell.sfx, entity);
 		return "Cast";

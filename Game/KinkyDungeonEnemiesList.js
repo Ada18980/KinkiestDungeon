@@ -415,7 +415,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "tick", type: "secretToy"},
 		],
 		sneakThreshold: 3, kite: 3.5, kiteChance: 0.75,
-		visionRadius: 8, maxhp: 10, minLevel:4, weight:-9, movePoints: 3, attackPoints: 4, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "pain", fullBoundBonus: 4,
+		visionRadius: 8, maxhp: 10, minLevel:3, weight:-9, movePoints: 3.2, attackPoints: 4, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "pain", fullBoundBonus: 4,
 		terrainTags: {"secondhalf":2, "lastthird":-1, "open": 8, "illusionAnger": 9, "illusionPleased": 9, "illusionFriendly": 5, "illusionRage": 3, "latexAnger": 3, "maid": 10}, shrines: ["Illusion"], allFloors: true,
 		attackLock: "White",
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]},
