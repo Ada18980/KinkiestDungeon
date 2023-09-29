@@ -2592,6 +2592,8 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					enemy.attackPoints = 0;
 					enemy.warningTiles = [];
 
+					KDEnemyChangeSprint(enemy, -delta);
+
 					// Also let go of leashes here
 					if (enemy == KinkyDungeonLeashingEnemy() && (
 						!enemy.playWithPlayer
@@ -3175,7 +3177,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					( // The most common is that the player is not currently leashed
 						!KDGameData.KinkyDungeonLeashedPlayer
 						|| !KDIsPlayerTethered(player))
-					|| KinkyDungeonFlags.get("overrideleashprotection") // The player is leashed but something allows her to be attacked anyway
+					|| KinkyDungeonFlags
+						.get("overrideleashprotection") // The player is leashed but something allows her to be attacked anyway
 					|| KDIsPlayerTetheredToLocation(player, enemy.x, enemy.y, enemy) // The player is attached to this enemy
 					|| enemy.id == KinkyDungeonLeashingEnemy()?.id // The player is being leashed by this enemy
 					|| KinkyDungeonFlags.has("PlayerCombat") // If the player is fighting back
@@ -4775,8 +4778,15 @@ function KinkyDungeonEntityAt(x, y, requireVision, vx, vy) {
 	return null;
 }
 
+let KDDefaultEnemySprint = 1.5;
+
 function KinkyDungeonEnemyTryMove(enemy, Direction, delta, x, y) {
 	let speedMult = KinkyDungeonGetBuffedStat(enemy.buffs, "MoveSpeed") ? KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(enemy.buffs, "MoveSpeed")) : 1;
+	if (KDEnemyCanSprint(enemy)) {
+		speedMult *= enemy.Enemy.sprintspeed || KDDefaultEnemySprint;
+		KDEnemyChangeSprint(enemy, delta);
+	}
+
 	if (enemy.bind > 0) enemy.movePoints += speedMult * delta/10;
 	else if (enemy.slow > 0) enemy.movePoints += speedMult * delta/2;
 	else enemy.movePoints += KDGameData.SleepTurns > 0 ? 4*delta * speedMult : delta * speedMult;
@@ -6304,4 +6314,19 @@ function KDEnemyRank(enemy) {
 		if (tags.minor) return 0;
 	}
 	return 1;
+}
+
+/**
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDEnemyCanSprint(enemy) {
+	let amt = enemy.Enemy.stamina || 0;
+	return (enemy.exertion || 0) < amt;
+}
+/**
+ * @param {entity} enemy
+ */
+function KDEnemyChangeSprint(enemy, amt) {
+	enemy.exertion = Math.max(0, amt + (enemy.exertion || 0));
 }
