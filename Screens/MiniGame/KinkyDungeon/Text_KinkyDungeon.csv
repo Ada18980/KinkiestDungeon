@@ -2299,6 +2299,9 @@ AttackLockBind,"A chain locks itself in place on your body! (DamageTaken)"
 AttackLockDash,"The lock dashes to you!"
 AttackLock,"The floating locks and chains rub themselves across your body! (DamageTaken)"
 
+NameLockMaster,Masterful Lock
+KillLockMaster,"The lock falls to the floor, disenchanted."
+
 NamePlayerGag,Conjured Gag
 KillPlayerGag,"The conjured gag buckles itself in place and falls."
 AttackPlayerGagBind,"The gag wedges itself firmly in your mouth and buckles itself! (+RestraintAdded)"
@@ -12205,3 +12208,6 @@ KinkyDungeonInventoryItemStaffBelts,Staff of Belts
 KinkyDungeonInventoryItemStaffBeltsDesc,"Belts within belts, a fractal belt pattern buckled into oblivion."
 KinkyDungeonInventoryItemStaffBeltsDesc2,"+20% leather bindings applied. Leather spells apply debuffs for 30% longer. Deals chain damage. Active: Pull an enemy toward you and apply a small amount of bondage."
 ItemPickupStaffBelts,"You pick up a staff of belts wrapped tightly in leather."
+
+KinkyDungeonLockBullet,"A LKTYP lock clasps on to one of your restraints!"
+KinkyDungeonLockBulletFail,"You are caught in a constricting field! (Dmgdlt)"

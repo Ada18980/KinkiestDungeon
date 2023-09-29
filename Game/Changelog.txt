@@ -17,6 +17,8 @@ Vague todo:
 - Added inventory and spell filters
 - Using Remove Slime on encased adventurers frees them from their predicament
 - Split the panic perk into two different ones (by popular request) for chest traps vs floor traps
+- New enemy, Masterful Lock
+- Many animated restraints now have backup restraint types
 
 4.73 (Sep 2023)
 - Enemies now say things when helping their allies in combat

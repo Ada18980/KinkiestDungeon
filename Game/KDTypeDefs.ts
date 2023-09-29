@@ -619,6 +619,8 @@ interface enemy extends KDHasTags {
 
 	/** Restraint filters */
 	RestraintFilter?: {
+		/** Increases effective level */
+		levelBonus?: number,
 		/** Starts with more restraints!! */
 		bonusRestraints?: number,
 		/** This enemy can apply restraints without needing them in her pockets */
