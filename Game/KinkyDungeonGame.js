@@ -3941,6 +3941,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 						KDDelayedActionPrune(["Action", "World"]);
 						KinkyDungeonTargetTileLocation = "" + moveX + "," + moveY;
 						KinkyDungeonTargetTile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+
 						if (moveObject == 'd') {
 							KinkyDungeonCloseDoor({targetTile: KinkyDungeonTargetTileLocation});
 						} else {
@@ -4397,10 +4398,16 @@ function KinkyDungeonTargetTileMsg() {
 	if (KDObjectMessages[KinkyDungeonTargetTile.Type]) {
 		KDObjectMessages[KinkyDungeonTargetTile.Type]();
 	} else if (KinkyDungeonTargetTile.Lock) {
+		if (KinkyDungeonTargetTile.Faction)
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectFaction")
+				.replace("FACTION", TextGet("KinkyDungeonFaction" + KinkyDungeonTargetTile.Faction)), "#ff0000", 2, true);
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Locked.ogg");
 		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonObjectLock").replace("TYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTargetTile.Name)), "#ffffff", 1, true);
 	} else {
 		let suff = "";
+		if (KinkyDungeonTargetTile.Faction)
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectFaction")
+				.replace("FACTION", TextGet("KinkyDungeonFaction" + KinkyDungeonTargetTile.Faction)), "#ff0000", 2, true);
 		if (KinkyDungeonTargetTile.Name == "Commerce") suff = "Commerce";
 		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonObject" + KinkyDungeonTargetTile.Type + suff).replace("TYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTargetTile.Name)), "#ffffff", 1, true);
 	}
