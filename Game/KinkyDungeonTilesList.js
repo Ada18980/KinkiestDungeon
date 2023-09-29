@@ -431,7 +431,7 @@ let KDMoveObjectFunctions = {
 			lootTrap = data.lootTrap;
 			KinkyDungeonLoot(data.level, data.index, chestType, roll, data.tile, undefined, noTrap);
 			if (lootTrap) {
-				KDTrigPanic();
+				KDTrigPanic(true);
 				KDSpawnLootTrap(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, lootTrap.trap, lootTrap.mult, lootTrap.duration);
 			}
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ChestOpen.ogg");

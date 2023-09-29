@@ -15,6 +15,8 @@ Vague todo:
 - Added experimental new AI, let me know how things go
 - Enemies can now sprint for a short time and recharge when idle
 - Added inventory and spell filters
+- Using Remove Slime on encased adventurers frees them from their predicament
+- Split the panic perk into two different ones (by popular request) for chest traps vs floor traps
 
 4.73 (Sep 2023)
 - Enemies now say things when helping their allies in combat

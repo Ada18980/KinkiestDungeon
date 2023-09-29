@@ -260,9 +260,9 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 	KinkyDungeonTrapMoved = false;
 }
 
-function KDTrigPanic() {
-	if (KinkyDungeonStatsChoice.has("Panic")) {
-		KinkyDungeonSendActionMessage(10, TextGet("KDPanic"), "#ff0000", 3);
+function KDTrigPanic(chest) {
+	if ((!chest && KinkyDungeonStatsChoice.has("Panic2")) || (chest && KinkyDungeonStatsChoice.has("Panic"))) {
+		KinkyDungeonSendActionMessage(10, TextGet("KDPanic"), "#ff0000", 4);
 		KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, 2);
 	}
 }
