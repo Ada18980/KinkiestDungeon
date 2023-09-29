@@ -898,8 +898,10 @@ const KinkyDungeonRestraints = [
 		limitChance: {"Struggle": 0.05, "Cut": 0.05, "Remove": 0.035, "Unlock": 0.3}, // Hard to escape the arms box by struggling
 		escapeChance: {"Struggle": 0.1, "Cut": 0.15, "Remove": 0.1, "Pick": 0.35},
 		maxwill: 0.25, enemyTags: {"expRestraints" : 5}, playerTags: {"ItemArmsEmpty": -4.8}, minLevel: 7, allFloors: true, shrine: ["Latex", "Boxbinders", "Block_ItemHands"]},
-	{alwaysRender: true, inventory: true, name: "ExpArmbinderHarness", debris: "Belts", accessible: true, Asset: "Corset4", Color: "#383E4D", Group: "ItemTorso", strictness: 0.1, power: 9, weight: -10, OverridePriority: 26, LinkableBy: [...KDHarnessLink],
+	{alwaysRender: true, inventory: true, name: "ExpArmbinderHarness", debris: "Belts", accessible: true, Asset: "Corset4", Color: "#383E4D", Group: "ItemTorso", strictness: 0.1, power: 9, weight: -10, OverridePriority: 26,
+		LinkableBy: [...KDHarnessLink],
 		escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0.15},
+		enemyTagsMult: {"backup_harness": 0.05},
 		maxwill: 0.6, enemyTags: {"expRestraints" : 9}, playerTags: {"Boxbinders": 20, "Armbinders": 20}, minLevel: 7, allFloors: true, shrine: ["Latex", "ArmbinderHarness"],
 		events: [{trigger: "postRemoval", type: "armbinderHarness"}], requireSingleTagToEquip: ["Armbinders", "Boxbinders"]},
 	{inventory: true, name: "ExpCollar", debris: "Belts", inaccessible: true, Asset: "LatexPostureCollar", gag: 0.4, Color: "#4E7DFF", Group: "ItemNeck", LinkableBy: [...KDCollarLink], factionColor: [[0]], power: 8, weight: -2, strictness: 0.05, escapeChance: {"Struggle": 0, "Cut": 0.15, "Remove": 0.2, "Pick": 0.25},
@@ -1159,10 +1161,16 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region Trap items. Note that traps do not respect stamina, so its okay for these to have reasonable maxwill
-	{alwaysRender: true, inventory: true, name: "TrapArmbinderHarness", debris: "Belts", Asset: "LeatherHarness", accessible: true, Color: "Default", Group: "ItemTorso", OverridePriority: 26, LinkableBy: [...KDHarnessLink], power: 3, strictness: 0.1, weight: -100, escapeChance: {"Struggle": -0.1, "Cut": 0.25, "Remove": 0.25, "Pick": 0.15},
-		enemyTags: {"leatherRestraintsHeavy":2, "armbinderSpell": 1, "harnessSpell": 1}, playerTags: {"ItemArmsEmpty": -1000, "Armbinders": 100}, minLevel: 4, allFloors: true, shrine: ["Leather", "ArmbinderHarness"],
+	{alwaysRender: true, inventory: true, name: "TrapArmbinderHarness", debris: "Belts", Asset: "LeatherHarness", accessible: true, Color: "Default", Group: "ItemTorso", OverridePriority: 26, LinkableBy: [...KDHarnessLink], power: 3, strictness: 0.1, weight: -100,
+		escapeChance: {"Struggle": -0.1, "Cut": 0.25, "Remove": 0.25, "Pick": 0.15},
+		enemyTags: {"leatherRestraintsHeavy":2, "armbinderSpell": 1, "harnessSpell": 1, "binderharnessSpell": 10}, playerTags: {"ItemArmsEmpty": -1000, "Armbinders": 100, "Boxbinders": 100},
+		enemyTagsMult: {"backup_harness": 0.05},
+		minLevel: 4, allFloors: true, shrine: ["Leather", "ArmbinderHarness"],
 		maxwill: 0.6, events: [{trigger: "postRemoval", type: "armbinderHarness"}], requireSingleTagToEquip: ["Armbinders", "Boxbinders"]},
 	{renderWhenLinked: ["Belts"], inventory: true, trappable: true, name: "TrapArmbinder", debris: "Belts", inaccessible: true, strictness: 0.1, Asset: "LeatherArmbinder", LinkableBy: [...KDArmbinderLink], Type: "WrapStrap", Group: "ItemArms", Color: "Default", bindarms: true, bindhands: 1.0, power: 6, weight: 2,
+		limitChance: {"Struggle": 0.15, "Cut": 0.1, "Unlock": 0.2},
+		maxwill: 0.25, escapeChance: {"Struggle": 0.1, "Cut": 0.5, "Remove": 0.35, "Pick": 0.5}, enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "armbinderSpell": 10}, playerTags: {"ItemArmsEmpty": -8}, minLevel: 4, allFloors: true, shrine: ["Leather", "Armbinders", "Block_ItemHands"]},
+	{renderWhenLinked: ["Belts"], inventory: true, trappable: true, name: "TrapBoxbinder", debris: "Belts", inaccessible: true, strictness: 0.1, Asset: "BoxTieArmbinder", LinkableBy: [...KDArmbinderLink], Group: "ItemArms", Color: ["Default", "Default"], bindarms: true, bindhands: 1.0, power: 6, weight: 2,
 		limitChance: {"Struggle": 0.15, "Cut": 0.1, "Unlock": 0.2},
 		maxwill: 0.25, escapeChance: {"Struggle": 0.1, "Cut": 0.5, "Remove": 0.35, "Pick": 0.5}, enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "armbinderSpell": 10}, playerTags: {"ItemArmsEmpty": -8}, minLevel: 4, allFloors: true, shrine: ["Leather", "Armbinders", "Block_ItemHands"]},
 	{inventory: true, trappable: true, name: "TrapYoke", Asset: "Yoke", accessible: true, Group: "ItemArms",
@@ -1170,7 +1178,9 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 10, "Pick": -0.15, "Unlock": -0.15},
 		helpChance: {"Pick": 0.5, "Unlock": 1.0}, enemyTags: {"trap":9, "yokeSpell": 10, "Unchained": -9}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Yokes"]},
 	{alwaysRender: true, inventory: true, trappable: true, name: "TrapHarness", debris: "Belts", strictness: 0.05, Asset: "LeatherStrapHarness", accessible: true, LinkableBy: [...KDHarnessLink], OverridePriority: 26, Color: "#222222", Group: "ItemTorso", power: 2, weight: 2,
-		escapeChance: {"Struggle": 0.1, "Cut": 0.3, "Remove": 0.8, "Pick": 0.4}, enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "harnessSpell": 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Harnesses"]},
+		escapeChance: {"Struggle": 0.1, "Cut": 0.3, "Remove": 0.8, "Pick": 0.4}, enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "harnessSpell": 10},
+		enemyTagsMult: {"backup_harness": 0.05},
+		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Harnesses"]},
 	{inventory: true, trappable: true, name: "TrapGag", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], Asset: "BallGag",
 		Model: "BallGag",
 		factionColor: [[], [0]], gag: 0.35, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", power: 3, weight: 2,
@@ -1197,7 +1207,7 @@ const KinkyDungeonRestraints = [
 		power: 4, weight: 2,
 		linkCategory: "AnkleCuffs", linkSize: 0.51, noDupe: true, playerTagsMissingMult: {"ItemLegsFull":0.05},
 		sfxGroup: "Handcuffs",
-		escapeChance: {"Struggle": -0.5, "Cut": -0.4, "Remove": 10, "Pick": 0.5}, enemyTags: {"trap":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"]},
+		escapeChance: {"Struggle": -0.5, "Cut": -0.4, "Remove": 10, "Pick": 0.5}, enemyTags: {"trap":100, "cuffsSpell": 7}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"]},
 
 	{inventory: true, arousalMode: true, trappable: true, name: "TrapBelt", Asset: "PolishedChastityBelt", OverridePriority: 26, Color: "Default", Group: "ItemPelvis", LinkableBy: ["Ornate"], chastity: true,
 		power: 5, weight: 0, DefaultLock: "Red",
@@ -1602,7 +1612,7 @@ const KinkyDungeonRestraints = [
 		playerTagsMult: {Metal: 2},
 		playerTagsMissing: {Metal: -8},
 		playerTagsMissingMult: {Metal: 0.2},
-		escapeChance: {"Struggle": -0.6, "Cut": -0.4, "Remove": 0.1, "Pick": 0.4}, enemyTags: {"handcuffer":4, "shackleRestraints": 1}, enemyTagsMult: {handcuffer: 0.2, Unchained: 0.1}, minLevel: 7, allFloors: true, shrine: ["Metal", "Cuffs"]},
+		escapeChance: {"Struggle": -0.6, "Cut": -0.4, "Remove": 0.1, "Pick": 0.4}, enemyTags: {"handcuffer":4, "shackleRestraints": 1, "cuffsSpell": 7}, enemyTagsMult: {handcuffer: 0.2, Unchained: 0.1}, minLevel: 7, allFloors: true, shrine: ["Metal", "Cuffs"]},
 
 
 

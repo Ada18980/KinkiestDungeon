@@ -2660,7 +2660,9 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 				}
 				if (enabled) {
 					if (!(options?.dontAugmentWeight === false)) {
-						weight *= KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory);
+						let mult = KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory);
+						if (Math.sign(mult) != Math.sign(weight)) mult = 1;
+						weight *= mult;
 					}
 					cache.push({r: restraint, w:weight});
 				}

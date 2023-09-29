@@ -219,6 +219,38 @@ let KDPlayerEffects = {
 		}
 		return {sfx: "Evil", effect: true};
 	},
+	"LockBullet": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 1.0, 1.0)) {
+			//KDPlayerEffectRestrain(spell, playerEffect.count, ["mithrilRope"], "Elemental", false, false, false, false);
+
+			let Lockable = KinkyDungeonPlayerGetLockableRestraints();
+			let Lstart = 0;
+			let Lmax = Lockable.length-1;
+			let locked = false;
+			if (Lmax >= 0) {
+				Lstart = Math.floor(Lmax*KDRandom()); // Lock one at random
+				for (let L = Lstart; L <= Lmax; L++) {
+					let l = playerEffect.type ? KDProcessLock(playerEffect.type) : KinkyDungeonGenerateLock(true);
+					KinkyDungeonLock(Lockable[L], l); // Lock it!
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonLockBullet")
+						.replace("LKTYP", TextGet(`Kinky${l}LockType`)), "orange", 1);
+					locked = true;
+				}
+			}
+
+			if (!locked) {
+				let dmg = KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
+				if (dmg.string)
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonLockBulletFail")
+						.replace("Dmgdlt", dmg.string), "yellow", 1);
+				if (!KinkyDungeonFlags.get("slowSpellFlag")) {
+					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1);
+					KinkyDungeonSetFlag("slowSpellFlag", playerEffect.time || 2);
+				}
+			}
+		}
+		return {sfx: "LockHeavy", effect: true};
+	},
 	"CelestialBolt": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			KDPlayerEffectRestrain(spell, playerEffect.count, ["celestialRopes"], "Angel", false, false, false, false);
