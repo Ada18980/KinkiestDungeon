@@ -12273,5 +12273,6 @@ KinkyDungeonInventoryItemStaffBeltsDesc,"Belts within belts, a fractal belt patt
 KinkyDungeonInventoryItemStaffBeltsDesc2,"+20% leather bindings applied. Leather spells apply debuffs for 30% longer. Deals chain damage. Active: Pull an enemy toward you and apply a small amount of bondage."
 ItemPickupStaffBelts,"You pick up a staff of belts wrapped tightly in leather."
 
+KinkyDungeonSpellLockBullet,"Binding Lock"
 KinkyDungeonLockBullet,"A LKTYP lock clasps on to one of your restraints!"
 KinkyDungeonLockBulletFail,"You are caught in a constricting field! (Dmgdlt)"
