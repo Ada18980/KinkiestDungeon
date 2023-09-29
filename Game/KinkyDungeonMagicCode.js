@@ -143,6 +143,17 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoTarget"), "#ff5555", 1, true);
 		return "Fail";
 	},
+	"Windup": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		if (!KDEnemyHasFlag(entity, "winding")) {
+			KinkyDungeonSetEnemyFlag(entity, "winding", spell.time);
+			KinkyDungeonSetEnemyFlag(entity, "winding2", spell.time - 1);
+		} else if (!KDEnemyHasFlag(entity, "winding2")) {
+			KinkyDungeonSetEnemyFlag(entity, "windup", 12);
+			KinkyDungeonApplyBuffToEntity(entity, {id: "MinigunSight", type: "Vision", duration:12, power: 7});
+		}
+		KinkyDungeonPlaySound(spell.sfx, entity);
+		return "Cast";
+	},
 	"Lockdown": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en && en.boundLevel > 0) {
