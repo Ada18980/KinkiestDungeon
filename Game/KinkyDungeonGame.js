@@ -3533,8 +3533,17 @@ function KinkyDungeonListenKeyMove() {
 
 let KDShopBuyConfirm = false;
 
+let KDFocusableTextFields = [
+	"PerksFilter",
+	"InvFilter",
+	"SpellFilter",
+];
+
 function KinkyDungeonGameKeyDown() {
 	let moveDirection = null;
+
+	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
+
 
 	for (let keybinding of Object.values(KDKeyCheckers)) {
 		if (keybinding()) return true;

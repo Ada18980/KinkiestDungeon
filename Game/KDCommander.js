@@ -275,7 +275,7 @@ let KDCommanderOrders = {
 		// Only a certain number will do this
 		// Role assignment
 		filter: (enemy, data) => {
-			if (enemy.IntentAction || !data.aggressive || KDAssaulters > KDMaxAssaulters || !enemy.aware || !KDEnemyHasFlag(enemy, "targ_player")) return false;
+			if (enemy.IntentAction || !data.aggressive || KDAssaulters > KDMaxAssaulters || !enemy.aware || !KDEnemyHasFlag(enemy, "targ_player") || KDIsImmobile(enemy)) return false;
 			return (!KDAIType[KDGetAI(enemy)]
 			|| (!KDAIType[KDGetAI(enemy)].guard && (!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)));
 		},
@@ -376,7 +376,7 @@ let KDCommanderOrders = {
 		// Role assignment
 		filter: (enemy, data) => {
 			let aware = enemy.aware || enemy.vp > 0 || KDGameData.tickAlertTimer;
-			if (!enemy.IntentAction && data.aggressive && aware && !KDEnemyHasFlag(enemy, "noGuard")) {
+			if (!enemy.IntentAction && data.aggressive && aware && !KDIsImmobile(enemy) && !KDEnemyHasFlag(enemy, "noGuard")) {
 				let xx = KinkyDungeonPlayerEntity.x + KD_Avg_VX*4;
 				let yy = KinkyDungeonPlayerEntity.y + KD_Avg_VY*4;
 				let d1 = KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y);

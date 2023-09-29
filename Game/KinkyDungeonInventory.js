@@ -12,6 +12,8 @@ let KinkyDungeonFilters = [
 	Armor,
 ];
 
+let KDInvFilter = "";
+
 let KDFilterTransform = {
 	'armor': 'looserestraint',
 };
@@ -148,7 +150,7 @@ function KinkyDungeonHandleInventory() {
 	let filter = KinkyDungeonCurrentFilter;
 	if (KDFilterTransform[KinkyDungeonCurrentFilter]) filter = KDFilterTransform[KinkyDungeonCurrentFilter];
 
-	let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter);
+	let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, undefined, KDInvFilter);
 
 	if (KinkyDungeonCurrentPageInventory > 0 && MouseIn(canvasOffsetX_ui + 100, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 60)) {
 		KinkyDungeonCurrentPageInventory -= 1;
@@ -163,7 +165,7 @@ function KinkyDungeonHandleInventory() {
 
 	if (KinkyDungeonDrawInventorySelected(filteredInventory[KinkyDungeonCurrentPageInventory])) {
 		if (filter == Consumable && MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 55)) {
-			let item = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter)[KinkyDungeonCurrentPageInventory];
+			let item = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, undefined, KDInvFilter)[KinkyDungeonCurrentPageInventory];
 			if (!item || !item.name) return true;
 
 
@@ -462,9 +464,10 @@ function KDGetItemPreview(item) {
  * @param {boolean} [ignoreHidden]
  * @param {boolean} [ignoreFilters]
  * @param {string} [click] - this filter will be handled and thus updates the filters
+ * @param {string} [namefilter]
  * @returns {{name: any; item: any; preview: string; previewcolor?: string; previewcolorbg?: string}[]}
  */
-function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilters, click) {
+function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilters, click, namefilter) {
 	let filter_orig = Filter;
 	if (KDFilterTransform[Filter]) Filter = KDFilterTransform[Filter];
 
@@ -500,14 +503,17 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 					}
 				}
 			}
+
 			let preview = KDGetItemPreview(item);
-			if (preview && (item.type != LooseRestraint || (!enchanted || KDRestraint(item).enchanted || KDRestraint(item).showInQuickInv || item.showInQuickInv)))
+			let pre = (item.type == LooseRestraint || item.type == Restraint) ? "Restraint" : "KinkyDungeonInventoryItem";
+			if (preview && (item.type != LooseRestraint || (!enchanted || KDRestraint(item).enchanted || KDRestraint(item).showInQuickInv || item.showInQuickInv))
+				&& (!namefilter || TextGet(pre + ("" + preview.name)).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())))
 				ret.push(preview);
 			if (item.dynamicLink) {
 				let link = item.dynamicLink;
 				for (let I = 0; I < 30; I++) {
 					preview = KDGetItemPreview(link);
-					if (preview && (link.type == Restraint))
+					if (preview && (link.type == Restraint) && (!namefilter || TextGet(pre + ("" + preview.name)).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())))
 						ret.push(preview);
 					if (link.dynamicLink) {
 						link = link.dynamicLink;
@@ -673,7 +679,7 @@ function KinkyDungeonDrawInventory() {
 
 	let filter = KinkyDungeonCurrentFilter;
 	if (KDFilterTransform[KinkyDungeonCurrentFilter]) filter = KDFilterTransform[KinkyDungeonCurrentFilter];
-	let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined);
+	let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, undefined, KDInvFilter);
 
 	/*if (filteredInventory.length == 0) {
 		// Reset all the filters first, then give up
@@ -696,7 +702,7 @@ function KinkyDungeonDrawInventory() {
 	if (KinkyDungeonCurrentPageInventory >= filteredInventory.length) KinkyDungeonCurrentPageInventory = 0;
 
 	let defaultIndex = 0;
-	if (KinkyDungeonFilterInventory(KinkyDungeonFilters[0]).length == 0) {
+	if (KinkyDungeonFilterInventory(KinkyDungeonFilters[0], undefined, undefined, undefined, undefined, KDInvFilter).length == 0) {
 		defaultIndex = 1;
 	}
 
@@ -718,6 +724,13 @@ function KinkyDungeonDrawInventory() {
 			(KinkyDungeonCurrentFilter == KinkyDungeonFilters[I]) ? "White" : col, "", "");
 	}
 
+
+	let TF = KDTextField("InvFilter", 1460, 150, 350, 54, "text", "", "45");
+	if (TF.Created) {
+		TF.Element.oninput = (event) => {
+			KDInvFilter = ElementValue("InvFilter");
+		};
+	}
 
 	if (filteredInventory.length > 0) {
 		let useIcons = KDInventoryUseIconConfig[filter];
@@ -838,7 +851,7 @@ function KinkyDungeonDrawInventory() {
 			DrawButtonKDEx("invchoice_filter_" + i, (bdata) => {
 				KDFilterFilters[KinkyDungeonCurrentFilter][filters[i][0]] = !KDFilterFilters[KinkyDungeonCurrentFilter][filters[i][0]];
 				KinkyDungeonInventoryOffset = 0;
-				KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, filters[i][0]);
+				KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, filters[i][0], KDInvFilter);
 				return true;
 			}, true, canvasOffsetX_ui + xx * 200 + 640*KinkyDungeonBookScale + 132, canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
 			TextGet("KDFilterFilters" + filters[i][0]), filters[i][1] ? "#ffffff" : "#aaaaaa", undefined, undefined, undefined, !filters[i][1], KDTextGray1, 20);
