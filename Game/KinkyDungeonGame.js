@@ -1,5 +1,14 @@
 "use strict";
 
+
+let KDFocusableTextFields = [
+	"PerksFilter",
+	"InvFilter",
+	"QInvFilter",
+	"MagicFilter",
+];
+
+
 let KinkyDungeonGagMumbleChance = 0.02;
 let KinkyDungeonGagMumbleChancePerRestraint = 0.0025;
 
@@ -3480,6 +3489,8 @@ function KinkyDungeonGetMovable() {
 }
 
 function KinkyDungeonListenKeyMove() {
+	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
+
 	if (KinkyDungeonLastMoveTimer < performance.now() && KinkyDungeonControlsEnabled() && KinkyDungeonDrawState == "Game" && !KDModalArea) {
 		let moveDirection = null;
 		let moveDirectionDiag = null;
@@ -3532,16 +3543,13 @@ function KinkyDungeonListenKeyMove() {
 }
 
 let KDShopBuyConfirm = false;
-
-let KDFocusableTextFields = [
-	"PerksFilter",
-	"InvFilter",
-	"MagicFilter",
-];
-
 function KinkyDungeonGameKeyDown() {
 	let moveDirection = null;
 
+	if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey && document.activeElement && KDFocusableTextFields.includes(document.activeElement.id)) {
+		// @ts-ignore
+		document.activeElement.blur();
+	}
 	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
 
 
@@ -3618,12 +3626,12 @@ function KinkyDungeonGameKeyDown() {
 			KDClickButton("perks<");
 		}
 	} else if (KinkyDungeonDrawState != "Restart" && KinkyDungeonDrawState != "Keybindings" && KinkyDungeonDrawState != "Perks2") {
-		if (KinkyDungeonDrawState == "Inventory" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey)) {
+		if (KinkyDungeonDrawState == "Inventory" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey)) {
 			if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonCurrentPageInventory += 1;
 			} else if (KinkyDungeonCurrentPageInventory > 0) {
 				KinkyDungeonCurrentPageInventory -= 1;
-			} else if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey) {
+			} else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
 			}
 		} else if (KinkyDungeonDrawState == "Magic" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey)) {
@@ -3641,13 +3649,13 @@ function KinkyDungeonGameKeyDown() {
 				}
 				else KinkyDungeonDrawState = "MagicSpells";
 			}
-		} else if (KinkyDungeonDrawState == "MagicSpells" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey)) {
+		} else if (KinkyDungeonDrawState == "MagicSpells" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey)) {
 			if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonCurrentSpellsPage += 1;
 				if (KinkyDungeonCurrentSpellsPage >= KinkyDungeonLearnableSpells.length) KinkyDungeonCurrentSpellsPage = 0;
 			} else if (KinkyDungeonCurrentSpellsPage > 0) {
 				KinkyDungeonCurrentSpellsPage -= 1;
-			} else if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey) {
+			} else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
 			}
 		} else
@@ -3673,6 +3681,9 @@ function KinkyDungeonGameKeyUp(lastPress) {
 	//if (KDGameData.CurrentDialog) return;
 	//if (!KinkyDungeonControlsEnabled()) return;
 	let delta = CommonTime() - lastPress;
+
+	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
+
 
 	// Holding for a minute = fail
 	if (delta > 60000) return;

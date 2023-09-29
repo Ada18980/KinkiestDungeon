@@ -1355,8 +1355,10 @@ function KinkyDungeonListSpells(Mode) {
 
 	let TF = KDTextField("MagicFilter", 1690, 120, 280, 45, "text", "", "45");
 	if (TF.Created) {
+		KDMagicFilter = "";
 		TF.Element.oninput = (event) => {
 			KDMagicFilter = ElementValue("MagicFilter");
+
 		};
 	}
 
