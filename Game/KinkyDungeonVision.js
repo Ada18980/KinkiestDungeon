@@ -458,7 +458,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 
 					if (visible) {
 
-						fog = KinkyDungeonStatBlind > 0 ? 0 : Math.min(0.5, KinkyDungeonFogGet(RX, RY)/10);
+						fog = Math.min(0.5, KinkyDungeonFogGet(RX, RY)/10);
 						lightDiv = (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(RX, RY))) ? KDLightCropValue : KDLightCropValue * 0.7;
 						light = Math.max(KDMapExtraData.VisionGrid[RX + RY*KDMapData.GridWidth]/lightDiv, fog);
 						//let lightColor = KDMapExtraData.ColorGrid[RX + RY*KDMapData.GridWidth];

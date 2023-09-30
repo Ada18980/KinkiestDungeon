@@ -586,7 +586,7 @@ function KinkyDungeonDrawInputs() {
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerDamageResist").replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type)) + Math.round(resist * 100) + "%", X2, 900 - i * 25, 150, color, "#333333"); i++;
 		}
 
-		if (boost > 0) {
+		if (boost != 0) {
 			statsDraw[type + "_buff"] = {
 				text: TextGet("KinkyDungeonPlayerDamageBuff").replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type)).replace("PERCENT", Math.round(boost * 100) + "%"),
 				count: "+" + Math.round(boost * 100) + "%",

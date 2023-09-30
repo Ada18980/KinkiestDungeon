@@ -79,7 +79,8 @@ let KDSpellTagBinds = {
 let KDResistanceProfiles = {
 	rope: KDMapInit(["poisonresist", "fireweakness", "slashweakness", "acidweakness", "chainresist", ]),
 	construct: KDMapInit(["soulimmune", "charmimmune", "poisonimmune"]),
-	catgirl: KDMapInit(["acidweakness", "stunweakness", "coldresist"]),
+	catgirl: KDMapInit(["acidweakness", "stunweakness", "coldresist", "plushweakness"]),
+	alchemist: KDMapInit(["electricresist", "iceweakness", "glueresist", "acidresist", "gropeweakness"]),
 };
 
 /**

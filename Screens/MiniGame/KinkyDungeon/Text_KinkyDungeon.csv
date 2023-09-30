@@ -4905,7 +4905,7 @@ KinkyDungeonSpellDescriptionApprenticeKnowledge,"Unlocks knowledge and critical-
 
 
 KinkyDungeonSpellGlue,Glue
-KinkyDungeonGlue,The glue attaches to your legs as you try to move through!
+KinkyDungeonGlue,The glue sticks to you and engulfs your legs!
 KinkyDungeonGlueSlow,The glue slows you down!
 KinkyDungeonGlueSlowDamage,The glue slows you down! (-DamageDealt SP)
 
@@ -12310,3 +12310,23 @@ RestraintResinDesc,"A layer of transparent resin derived from Green Latex. Unlik
 RestraintResinDesc2,"It's like you're an art piece!"
 
 KDWindup,"You hear a motor whirring..."
+KDLatexBubble,A bubble of latex envelops you!
+KinkyDungeonBuffLatexBubble,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
+
+KinkyDungeonSpellLatexBubble,Latex Bubble
+
+NameLabAssistant,Lab Assistant
+KillLabAssistant,"The assistant envelops herself in her own bubble for protection."
+AttackLabAssistantBind,"The assistant restrains you! (+RestraintAdded)"
+AttackLabAssistant,"The assistant gropes you playfully! (DamageTaken)"
+AttackLabAssistantLock,"The assistant applies a lock! (DamageTaken)"
+AttackLabAssistantBlind,"The assistant splashes a solvent in your face, blinding you! (DamageTaken)"
+
+KinkyDungeonSpellGlueBomb,Glue Bomb
+
+NameGlueTechnician,Glue Technician
+KillGlueTechnician,"The technician screams and runs."
+AttackGlueTechnicianBind,"The technician slaps adhesive restraints onto your body! (+RestraintAdded)"
+AttackGlueTechnician,"The technician polishes your restraints thoroughly! (DamageTaken)"
+AttackGlueTechnicianSlow,"The technician pours glue on you to make you stay still! (DamageTaken)"
+AttackGlueTechnicianLocks,"The technician inspects your restraints and adds a lock to spec! (DamageTaken)"
