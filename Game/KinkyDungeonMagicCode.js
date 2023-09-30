@@ -152,6 +152,8 @@ let KinkyDungeonSpellSpecials = {
 			KinkyDungeonApplyBuffToEntity(entity, {id: "ExtraSight", type: "Vision", duration:9, power: 7});
 		}
 		KinkyDungeonPlaySound(spell.sfx, entity);
+
+		KinkyDungeonSendTextMessage(4, TextGet("KDWindup"), "#888888", 2);
 		return "Cast";
 	},
 	"Lockdown": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
