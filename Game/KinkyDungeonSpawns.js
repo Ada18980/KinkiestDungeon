@@ -244,6 +244,7 @@ function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, requir
 				for (let tag of tags)
 					if (enemy.terrainTags[tag]) weight += enemy.terrainTags[tag];
 
+				if (enemy.weightMult) weightMulti *= enemy.weightMult;
 				if (weight > minWeight)
 					enemyWeightTotal += Math.max(0, weight*weightMulti);
 			}
