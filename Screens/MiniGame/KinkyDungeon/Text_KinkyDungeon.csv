@@ -12043,3 +12043,5 @@ AttackGlueTechnicianBind,"The technician slaps adhesive restraints onto your bod
 AttackGlueTechnician,"The technician polishes your restraints thoroughly! (DamageTaken)"
 AttackGlueTechnicianSlow,"The technician pours glue on you to make you stay still! (DamageTaken)"
 AttackGlueTechnicianLocks,"The technician inspects your restraints and adds a lock to spec! (DamageTaken)"
+
+KDEffectTileTooltipCMDGlue,"Quite sticky, innit?"

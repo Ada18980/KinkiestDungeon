@@ -3351,6 +3351,9 @@ let KDEffectTileTooltips = {
 	'Slime': {
 		color: "#d952ff",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff", "KDEffectTileTooltipCMDSlime");}},
+	'Glue': {
+		color: "#ffff00",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffff00", "KDEffectTileTooltipCMDGlue");}},
 	'Latex': {
 		color: "#d952ff",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},

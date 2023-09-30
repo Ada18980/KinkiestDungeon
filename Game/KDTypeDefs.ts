@@ -786,6 +786,8 @@ interface enemy extends KDHasTags {
 	attackRange?: number,
 	/** */
 	terrainTags?: Record<string, number>,
+	/** Multiplies the weight AFTER modifiers */
+	weightMult?: number,
 	/** */
 	floors?: Record<string, boolean>,
 	/** Enemy events */
