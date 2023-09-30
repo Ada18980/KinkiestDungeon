@@ -181,6 +181,31 @@ let KDPlayerEffects = {
 		}
 		return {sfx: "Fwosh", effect: true};
 	},
+	"LatexBubble": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 0.5, 0.0)) {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "LatexBubble",
+				aura: "#2789cd",
+				aurasprite: "LatexBubble",
+				noAuraColor: true,
+				buffSprite: true,
+				type: "meleeDamageBuff",
+				power: -0.3,
+				duration: playerEffect.time,
+				tags: ["debuff"],
+			});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "LatexBubble2",
+				type: "Blindness",
+				power: 4,
+				duration: playerEffect.time,
+				tags: ["debuff"],
+			});
+			KinkyDungeonSendTextMessage(4, TextGet("KDLatexBubble"), "#2789cd", 1);
+			KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
+		}
+		return {sfx: "Fwosh", effect: true};
+	},
 	"EncaseBoltDrone": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			if (KDGameData.MovePoints >= 0) {

@@ -613,6 +613,20 @@ let KDEffectTileFunctions = {
 		}
 		return false;
 	},
+	"Glue": (delta, entity, tile) => {
+		if (tile.pauseDuration > 0) {
+			// Meep
+		} else if (!KDEntityHasBuff(entity, "Drenched")) {
+			let slimeWalker = KDSlimeWalker(entity);
+			if (!slimeWalker) {
+				KinkyDungeonApplyBuffToEntity(entity, KDSlimed, {
+					aurasprite: "Glued",
+				});
+				return true;
+			}
+		}
+		return false;
+	},
 	"Latex": (delta, entity, tile) => {
 		if (tile.pauseDuration > 0) {
 			// Meep
@@ -1080,6 +1094,16 @@ let KDEffectTileBulletFunctions = {
 				if (newT)
 					tile.pauseDuration = newT.duration;
 			} else if ((type == "ice" || type == "frost" || type == "acid")) {
+				tile.duration = 0;
+				KDSmokePuff(tile.x, tile.y, 1.5, 0.1, true);
+			}
+		}
+		return true;
+	},
+	"Glue": (b, tile, d) => {
+		if (b.bullet.damage) {
+			let type = b.bullet.damage.type;
+			if (type == "acid") {
 				tile.duration = 0;
 				KDSmokePuff(tile.x, tile.y, 1.5, 0.1, true);
 			}

@@ -923,7 +923,7 @@ const KinkyDungeonRestraints = [
 		LinkableBy: [...KDHarnessLink],
 		escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0.15},
 		enemyTagsMult: {"backup_harness": 0.05},
-		maxwill: 0.6, enemyTags: {"expRestraints" : 9}, playerTags: {"Boxbinders": 20, "Armbinders": 20}, minLevel: 7, allFloors: true, shrine: ["Latex", "ArmbinderHarness"],
+		maxwill: 0.6, enemyTags: {"expRestraints" : 20}, playerTags: {}, playerTagsMissing: {"Boxbinders": -20, "Armbinders": -20}, minLevel: 7, allFloors: true, shrine: ["Latex", "ArmbinderHarness"],
 		events: [{trigger: "postRemoval", type: "armbinderHarness"}], requireSingleTagToEquip: ["Armbinders", "Boxbinders"]},
 	{inventory: true, name: "ExpCollar", debris: "Belts", inaccessible: true, Asset: "LatexPostureCollar", gag: 0.4, Color: "#4E7DFF", Group: "ItemNeck", LinkableBy: [...KDCollarLink], factionColor: [[0]], power: 8, weight: -2, strictness: 0.05, escapeChance: {"Struggle": 0, "Cut": 0.15, "Remove": 0.2, "Pick": 0.25},
 		maxwill: 0.25, enemyTags: {"expRestraints" : 2.1, "latexCollar": 1}, playerTags: {"ItemMouthFull": 2, "ItemMouth2Full": 2, "ItemMouth3Full": 2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Posture", "Collars", "HighCollars"]},
@@ -1182,9 +1182,10 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region Trap items. Note that traps do not respect stamina, so its okay for these to have reasonable maxwill
-	{alwaysRender: true, inventory: true, name: "TrapArmbinderHarness", debris: "Belts", Asset: "LeatherHarness", accessible: true, Color: "Default", Group: "ItemTorso", OverridePriority: 26, LinkableBy: [...KDHarnessLink], power: 3, strictness: 0.1, weight: -100,
+	{alwaysRender: true, inventory: true, name: "TrapArmbinderHarness", debris: "Belts", Asset: "LeatherHarness", accessible: true, Color: "Default", Group: "ItemTorso", OverridePriority: 26, LinkableBy: [...KDHarnessLink], power: 3, strictness: 0.1,
+		weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.25, "Remove": 0.25, "Pick": 0.15},
-		enemyTags: {"leatherRestraintsHeavy":2, "armbinderSpell": 1, "harnessSpell": 1, "binderharnessSpell": 10}, playerTags: {"ItemArmsEmpty": -1000, "Armbinders": 100, "Boxbinders": 100},
+		enemyTags: {"leatherRestraintsHeavy":2, "armbinderSpell": 1, "harnessSpell": 1, "binderharnessSpell": 10}, playerTags: {"ItemArmsEmpty": -1000}, playerTagsMissing: {"Armbinders": -100, "Boxbinders": -100},
 		enemyTagsMult: {"backup_harness": 0.05},
 		minLevel: 4, allFloors: true, shrine: ["Leather", "ArmbinderHarness"],
 		maxwill: 0.6, events: [{trigger: "postRemoval", type: "armbinderHarness"}], requireSingleTagToEquip: ["Armbinders", "Boxbinders"]},

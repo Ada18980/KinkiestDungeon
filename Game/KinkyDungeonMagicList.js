@@ -1549,17 +1549,36 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "SleepGas", color: "#00ff00", sfx: "Miss", school: "Illusion", manacost: 4, specialCD: 24, components: ["Verbal"], level:1, type:"inert", passthrough: true, noTerrainHit: true, buffs: [
 		{id: "SleepGas", type: "Sleepiness", power: 1, player: true, enemies: false, tags: ["sleep"], range: 1.5}], onhit:"", time:6, aoe: 1.5, power: 1, delay: 8, range: 4, size: 3, damage: "poison", playerEffect: {name: "DamageNoMsg", damage: "poison", power: 1}}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 
-	{enemySpell: true, name: "Glue", color: "#ffff00", landsfx: "Freeze", school: "Conjure", manacost: 9, components: ["Legs"], level:1, type:"inert", onhit:"lingering", time: 4, delay: 1, range: 4, size: 3, aoe: 1.5, lifetime: 24, power: 4, lifetimeHitBonus: 76, damage: "glue", playerEffect: {name: "Glue", count: 1, damage: "glue", power: 4, time: 1}}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
+
+	{enemySpell: true, name: "GlueBomb", color: "#ffff00", minRange: 2.5, sfx: "Miss", school: "Conjure",
+		manacost: 2, specialCD: 12, components: ["Arms"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3.5, range: 4.5, size: 3, aoe: 1.5, lifetime: 1,
+		effectTileDurationMod: 10, effectTileAoE: 1.5, effectTile: {
+			name: "Glue",
+			duration: 20,
+		},
+		damage: "glue", playerEffect: {name: "Glue", count: 3, damage: "glue", power: 4, time: 1}},
+
+	{enemySpell: true, name: "Glue", color: "#ffff00", landsfx: "Freeze", school: "Conjure",
+		manacost: 9, components: ["Arms"], level:1, type:"inert", onhit:"lingering", time: 4, delay: 1, range: 4, size: 3, aoe: 1.5, lifetime: 24, power: 4, lifetimeHitBonus: 76, damage: "glue",
+		playerEffect: {name: "Glue", count: 1, damage: "glue", power: 4, time: 1}}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
 
 	{enemySpell: true, name: "RedSlime", sfx: "Miss", manacost: 4, specialCD: 15, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 4, delay: 0, range: 50, damage: "glue", speed: 1.5, playerEffect: {name: "DamageNoMsg", power: 4, damage: "glue"},
 		spellcast: {spell: "SummonSingleRedSlime", target: "onhit", directional:false, offset: false, strict: true}},
 
 	{enemySpell: true, name: "AmpuleBlue", sfx: "Miss", manacost: 5, specialCD: 15, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 4, delay: 0, range: 50, damage: "glue", speed: 1, playerEffect: {name: "AmpuleBlue", damage: "glue", power: 4, count: 1}},
-
+	{enemySpell: true, name: "LatexBubble", bindType: "Slime", color: "#2789cd", sfx: "RubberBolt", manacost: 4, specialCD: 14, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
+		pierceEnemies: true,
+		time: 3, power: 2, delay: 0, range: 12, damage: "glue", speed: 1, trailLifetime: 10, trailDamage:"glue", trail:"lingering", trailPower: 2, trailChance: 1.0, playerEffect: {name: "LatexBubble", time: 12},
+	},
 	{enemySpell: true, name: "AmpuleGreen", sfx: "Miss", manacost: 4, specialCD: 15, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, delay: 0, range: 50, damage: "crush", speed: 1, playerEffect: {name: "Ampule", damage: "inert"},
 		spellcast: {spell: "SleepGas", target: "onhit", directional:false, offset: false}},
 	{enemySpell: true, name: "AmpuleYellow", sfx: "Miss", manacost: 7, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, delay: 0, range: 50, damage: "crush", speed: 1, playerEffect: {name: "Ampule", damage: "inert"},
-		spellcast: {spell: "Glue", target: "onhit", directional:false, offset: false}},
+		effectTileDurationMod: 10, effectTileAoE: 1.5, effectTile: {
+			name: "Glue",
+			duration: 20,
+		},
+		//spellcast: {spell: "Glue", target: "onhit", directional:false, offset: false}
+	},
 	{enemySpell: true, name: "AmpuleRed", sfx: "Miss", manacost: 7, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, delay: 0, range: 50, damage: "crush", speed: 1, playerEffect: {name: "Ampule", damage: "inert"},
 		spellcast: {spell: "SummonRedSlime", target: "onhit", directional:true, offset: false}},
 
@@ -1667,10 +1686,9 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "ManyMithrilBolts", sfx: "MagicSlash", minRange: 0, manacost: 4, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
 		spellcast: {spell: "MithrilBolt", target: "target", directional:true, randomDirection: true, noTargetMoveDir: true, spread: 1.5, offset: false}, channel: 3},
 
-
 	{enemySpell: true, name: "ShadowBolt",  bindType: "Slime", color: "#6a15fa", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ShadowBolt", count: 1, time: 3, power: 3, damage: "cold"}},
 	{enemySpell: true, name: "ObsidianBolt",  bindType: "Metal", color: "#ff5277", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ObsidianBolt", count: 1, time: 3, power: 3, damage: "cold"}},
-	{enemySpell: true, name: "LockBullet",  bindType: "Magic", color: "#9f96d5", sfx: "LockLight", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, pierceEnemies: true, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "LockBullet", type: "Purple", count: 1, time: 7, power: 2, damage: "chain"}},
+	{enemySpell: true, name: "LockBullet",  bindType: "Magic", color: "#9f96d5", sfx: "LockLight", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, pierceEnemies: true, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "LockBullet", type: "Purple", count: 1, time: 9, power: 2, damage: "chain"}},
 	{enemySpell: true, name: "MithrilBolt",  bindType: "Ropes", color: "#999999", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "MithrilBolt", count: 1, time: 3, power: 3, damage: "cold"}},
 	{enemySpell: true, name: "RubberBolt",  bindType: "Slime", color: "#ff3388", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 4, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "RubberBolt", count: 1, time: 4, power: 4, damage: "glue"}},
 	{enemySpell: true, name: "EncaseBolt",  bindType: "Slime", color: "#a04abd", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "EncaseBolt", count: 1, time: 4, power: 2, damage: "glue"}},
@@ -1757,7 +1775,7 @@ let KinkyDungeonSpellListEnemies = [
 			name: "Slime",
 			duration: 10,
 		},}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
-	{enemySpell: true, name: "WitchSlimeBall", bindType: "Slime", color: "#ff00ff", sfx: "FireSpell", manacost: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
+	{enemySpell: true, name: "WitchSlimeBall", bindType: "Slime", color: "#ff00ff", sfx: "RubberBolt", manacost: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
 		time: 2,  power: 2, delay: 0, range: 50, damage: "glue", speed: 1, trailLifetime: 10, trailDamage:"glue", trail:"lingering", trailPower: 2, trailChance: 1.0, playerEffect: {name: "Slime", time: 3},
 		effectTileDurationModTrail: 4, effectTileTrail: {
 			name: "Slime",

@@ -39,6 +39,13 @@ let KDEffectTiles = {
 		affinities: ["Sticky"],
 		tags: ["slime", "freezeover", "flammable", "conductive", "terrain"],
 	},
+	"Glue": {
+		name: "Glue",
+		duration: 10,
+		priority: 1,
+		affinities: ["Sticky"],
+		tags: ["glue", "terrain"],
+	},
 	"Latex": {
 		name: "Latex",
 		duration: 80,
