@@ -720,6 +720,27 @@ const KinkyDungeonRestraints = [
 	},
 	//endregion
 
+	//region resin
+	{renderWhenLinked: ["Corsets", "Harnesses", ...KDBindable, "Latex", "Leather", "Metal", "Rope"], inventory: true, name: "Resin",
+		inaccessible: true, factionColor: [[0]], Asset: "TransparentCatsuit", AssetGroup: "Suit", Color: ["#3873C3"],
+		Group: "ItemDevices", power: 10, weight: 0, escapeChance: {"Struggle": -0.4, "Cut": -0.3, "Remove": -100},
+		enemyTags: {"resinRestraints" : 10, 'resin': 10,},
+		bindhands: 1.0,
+		bindarms: true,
+		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture"], ignoreSpells: true, removeOnLeash: true, immobile: true,
+
+		alwaysDress: [
+			{Item: "SeethroughSuit", Group: "Suit", Color: ['#63ab3f'], override: true, factionColor: [[0]]},
+			{Item: "SeethroughSuit", Group: "SuitLower", Color: ['#63ab3f'], override: true, factionColor: [[0]]},
+			{Item: "SeethroughSuit", Group: "Gloves", Color: ['#63ab3f'], override: true, factionColor: [[0]]}],
+		events: [
+			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
+			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
+			{trigger: "beforeStruggleCalc", type: "latexDebuff", power: 0.15, inheritLinked: true},
+		]
+	},
+	//endregion
+
 	//region redLatex
 
 	{inventory: true, unlimited: true, name: "RedLatexOTNGag", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink],
@@ -1079,11 +1100,11 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"barrel":100}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Furniture"], ignoreSpells: true, removeOnLeash: true, ignoreIfNotLeash: true,
 		events: [{trigger: "tick", type: "barrelDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	// Cage trap
-	{removePrison: true, name: "CageTrap", Asset: "Cage", Color: ['Default', 'Default', '#000000'], Group: "ItemDevices", power: 3, weight: 1, immobile: true, alwaysStruggleable: true,
+	{removePrison: true, name: "CageTrap", Asset: "Cage", Color: ['Default', 'Default', '#000000'], Group: "ItemDevices", power: 3, weight: 1, alwaysStruggleable: true,
 		DefaultLock: "Red",
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35, "Pick": 0.33, "Unlock": 0.7},
 		helpChance: {"Remove": 0.5, "Pick": 0.5, "Unlock": 1.0},
-		enemyTags: {"cage":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture"], ignoreSpells: true, removeOnLeash: true,
+		enemyTags: {"cage":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture"], ignoreSpells: true, removeOnLeash: true, immobile: true,
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	// Sarcophagus
 	{removePrison: true, name: "Sarcophagus", Asset: "DisplayCase", Color: ['Default'], Group: "ItemDevices", power: 10, weight: 1, immobile: true, alwaysStruggleable: true,

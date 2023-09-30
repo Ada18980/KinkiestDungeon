@@ -9265,6 +9265,34 @@ dOfferScarfForce_No,"Hey! Stop! (PERCENT chance to avoid)"
 dOfferScarfForce_NoGag,"(Shake your head and whine) (PERCENT chance to avoid)"
 
 
+rOfferResin,"(An excited SPEAKER turns to you)|Eureka, I've done it!|Do you want to see?"
+rOfferResinYes,"(The SPEAKER pulls out a pressurized flask)|Behold! A gaseous form of latex!|I've coated the interior with a layer of inert slime to keep it secure.|Here, have a look!|(She holds out the container)"
+rOfferResinYes_Yes,"(The flask springs a leak)|Oh no! That wasn't supposed to happen!|(The gas crystalizes into a RESTRAINT across your body)"
+rOfferResinYes_No,"(The SPEAKER scoffs)|You'll see... you'll all see!"
+rOfferResinNo,"(The SPEAKER sighs)|So hard to find good help out here..."
+rOfferResinForce,"(The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(She unscrews the cap)"
+rOfferResinForceYes,"(The green gas starts leaking)|Oh no! It wasn't supposed to do that!"
+rOfferResinForce_No,"(You push her out of the way, but she frowns)|Hmph. This is your fault."
+rOfferResinForce_Yes,"(You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!"
+rOfferResinForce_Failure,"(The gas moves toward you, as if by its own will)|(The gas crystalizes into a RESTRAINT across your body)|That wasn't supposed to happen..."
+
+dOfferResin_Yes,"Seems interesting!"
+dOfferResin_YesGag,"(Nod slowly)"
+dOfferResin_No,"Seems boring."
+dOfferResin_NoGag,"(Shake your head)"
+
+dOfferResinYes_Yes,"Are you sure this is a good idea?"
+dOfferResinYes_YesGag,"(Nod again)"
+dOfferResinYes_No,"Keep that away from me!"
+dOfferResinYes_NoGag,"(Shake your head)"
+
+dOfferResinForce_Yes,"I'll stop it!"
+dOfferResinForce_YesGag,"(Run toward her to help)"
+dOfferResinForce_No,"(Run away!) (PERCENT chance to avoid)"
+dOfferResinForce_NoGag,"(Run away!) (PERCENT chance to avoid)"
+
+
+
 
 rOfferSlime,"(A messy looking SPEAKER turns to you)|Hmm, curious. Very curious.|Can you help me with an experiment?"
 rOfferSlimeYes,"(The SPEAKER pulls out a flask)|I isolated some slime, but it's inert.|Would you let me spill some on you?"
@@ -12276,3 +12304,7 @@ ItemPickupStaffBelts,"You pick up a staff of belts wrapped tightly in leather."
 KinkyDungeonSpellLockBullet,"Binding Lock"
 KinkyDungeonLockBullet,"A LKTYP lock clasps on to one of your restraints!"
 KinkyDungeonLockBulletFail,"You are caught in a constricting field! (Dmgdlt)"
+
+RestraintResin,Resin Coating
+RestraintResinDesc,"A layer of transparent resin derived from Green Latex. Unlike other forms of latex, this one is solid and fixes you in place."
+RestraintResinDesc2,"It's like you're an art piece!"

@@ -339,6 +339,7 @@ let KDDialogue = {
 	"OfferMithrilRope": KDYesNoBasic("OfferMithrilRope", ["Rope"], ["Ghost"], ["mithrilRope","mithrilRopeHogtie"], [55, 0, 75, 0], [-25, 0, 40, 15]),
 	"OfferWolfRestraint": KDYesNoBasic("OfferWolfRestraint", ["Metal"], ["Ghost"], ["wolfRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15]),
 	"OfferSlime": KDYesNoBasic("OfferSlime", ["Latex"], ["Ghost"], ["slimeRestraintsRandom"], [55, 0, 75, 0], [-25, 0, 40, 15]),
+	"OfferResin": KDYesNoBasic("OfferResin", ["Latex"], ["Ghost"], ["resinRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15]),
 	"OfferScarf": KDYesNoBasic("OfferScarf", ["Rope"], ["Ghost"], ["scarfRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15]),
 	"OfferAutoTape": KDYesNoBasic("OfferAutoTape", ["Metal"], ["Ghost"], ["autoTape"], [55, 0, 75, 0], [-200, -200, -200, -200], 2, 3),
 	"OfferHiTechCables": KDYesNoBasic("OfferHiTechCables", ["Metal"], ["Ghost"], ["hitechCables","cableGag"], [55, 0, 75, 0], [-200, -200, -200, -200], 2, 3),
