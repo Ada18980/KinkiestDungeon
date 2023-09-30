@@ -2659,11 +2659,6 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 					}
 				}
 				if (enabled) {
-					if (!(options?.dontAugmentWeight === false)) {
-						let mult = KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory);
-						if (Math.sign(mult) != Math.sign(weight)) mult = 1;
-						weight *= mult;
-					}
 					cache.push({r: restraint, w:weight});
 				}
 			}
@@ -2698,6 +2693,14 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 				if (restraint.playerTagsMissingMult)
 					for (let tag in restraint.playerTagsMissingMult)
 						if ((!agnostic || KDNoOverrideTags.includes(tag)) && !KinkyDungeonPlayerTags.get(tag)) r.w *= restraint.playerTagsMissingMult[tag];
+
+
+				if (!(options?.dontAugmentWeight === false)) {
+					let mult = KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory);
+					if (Math.sign(mult) != Math.sign(r.w)) mult = 1;
+					r.w *= mult;
+				}
+
 				if (r.w > 0 && (r.w > filterEps))
 					RestraintsList.push({
 						restraint: restraint,
