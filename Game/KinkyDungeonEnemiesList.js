@@ -773,8 +773,8 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["alchemist"],
 		},
-		visionRadius: 6, maxhp: 6, minLevel:1, weight:0, movePoints: 2.5, attackPoints: 3, attack: "SpellMeleeBlindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "acid", fullBoundBonus: 1, blindTime: 3,
-		terrainTags: {"secondhalf":2, "thirdhalf":-4, "latexAnger": 4, "latexRage": 4, "latexPleased": 2, "latexFriendly": 2, "alchemist": 20}, shrines: ["Latex"], allFloors: true,
+		visionRadius: 6, maxhp: 6, minLevel:1, weight:1, movePoints: 2.5, attackPoints: 3, attack: "SpellMeleeBlindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "acid", fullBoundBonus: 1, blindTime: 3,
+		terrainTags: {"secondhalf":2, "thirdhalf":-4, "latexAnger": 4, "latexRage": 4, "latexPleased": 2, "latexFriendly": 2, "alchemist": 40}, shrines: ["Latex"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}]},
 
 	{name: "SummonedDrone", playLine: "Robot",
