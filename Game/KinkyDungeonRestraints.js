@@ -371,6 +371,7 @@ let KDGameBoardAddedTethers = false;
  * @returns {void}
  */
 function KinkyDungeonDrawTethers(Entity, CamX, CamY) {
+	KDTetherGraphics.clear();
 	if (!KDGameBoardAddedTethers) {
 		kdgameboard.addChild(KDTetherGraphics);
 	}
