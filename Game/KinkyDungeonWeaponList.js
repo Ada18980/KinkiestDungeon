@@ -124,15 +124,18 @@ let KinkyDungeonWeapons = {
 	"Flail": {name: "Flail", dmg: 2.5, chance: 1.4, staminacost: 2.8, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "LightSwing",
 		crit: 1.5,
 		events: [{type: "Cleave", trigger: "playerAttack", power: 1, damage: "crush"}]},
-	"MagicFlail": {name: "MagicFlail", dmg: 3, chance: 1.25, staminacost: 3.0, type: "crush", unarmed: false, rarity: 4, magic: true, shop: false, sfx: "LightSwing",
-		crit: 1.6,
-		events: [{type: "Cleave", trigger: "playerAttack", power: 3, damage: "crush"}]},
+	"MagicFlail": {name: "MagicFlail", dmg: 2.5, chance: 1.5, staminacost: 3.0, type: "crush", unarmed: false, rarity: 4, magic: true, shop: false, sfx: "LightSwing",
+		crit: 2.0,
+		events: [{type: "MagicFlail", trigger: "playerAttack", power: 2, damage: "shadow", crit: 2.0}]},
 
 	// Spears
 	"Spear": {name: "Spear", dmg: 4.0, chance: 1.0, staminacost: 3.3, type: "pierce", unarmed: false, rarity: 2, shop: false, sfx: "LightSwing",
 		crit: 1.4,
+		special: {type: "attack", range: 2.99},
 		events: [{type: "Pierce", trigger: "playerAttack", power: 4.0, damage: "pierce"}]},
 	"MagicSpear": {name: "MagicSpear", dmg: 4.0, chance: 1.5, staminacost: 3.3, type: "pierce", unarmed: false, rarity: 4, magic: true, shop: true, sfx: "LightSwing",
+		crit: 1.5,
+		special: {type: "attack", range: 2.99},
 		events: [{type: "Pierce", trigger: "playerAttack", power: 4.0, damage: "pierce", dist: 2}]},
 
 	// Specialty Weapons
@@ -246,7 +249,10 @@ let KinkyDungeonWeapons = {
 		arousalMode: true,
 		playSelfMsg: "KinkyDungeonPlaySelfVibeWand",
 		playSelfSound: "Vibe",
-		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 2, chance: 0.2}]},
+		events: [
+			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 2, chance: 0.2},
+			{type: "ElementalEffectStamCost", trigger: "playerAttack", power: 1, damage: "charm", offhand: true, offhandonly: true, cost: 0.5, sfx: "Vibe"},
+		]},
 	"BagOfGoodies": {name: "BagOfGoodies", arousalMode: true, dmg: 0.4, chance: 1.0, staminacost: 0.5, type: "charm", unarmed: false, rarity: 2, shop: false, sfx: "Vibe",
 		crit: 1.1,
 		playSelfBonus: 3,

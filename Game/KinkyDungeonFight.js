@@ -2115,7 +2115,7 @@ function KinkyDungeonSendWeaponEvent(Event, data) {
 	}
 	if (KDGameData.Offhand && (!KinkyDungeonPlayerDamage || KinkyDungeonPlayerDamage.name != KDGameData.Offhand)
 		&& KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)) {
-		let weapon = KinkyDungeonInventoryGetWeapon(KDGameData.Offhand);
+		let weapon = KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand));
 		for (let e of weapon.events) {
 			if (e.trigger == Event && e.offhand && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
 				KinkyDungeonHandleWeaponEvent(Event, e, KDWeapon(weapon), data);
