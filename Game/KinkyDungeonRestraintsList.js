@@ -1560,7 +1560,7 @@ const KinkyDungeonRestraints = [
 		helpChance: {"Remove": 0.2}, maxwill: 0.15, enemyTags: {"petsuitSpell": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Petsuits", "Conjure"]},
 	// Only apply if already wearing KittySuit
 	{inventory: true, name: "KittyPetSuit", inaccessible: true, debris: "Belts", Asset: "BitchSuit", Color: "Default", Group: "ItemArms", DefaultLock: "Blue",
-		bindarms: true, bindhands: 1.0, blockfeet: true, addTag: ["ForceKneel"],power: 14, weight: 0,
+		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"],power: 14, weight: 0,
 		hobble: 2,
 		escapeChance: {"Struggle": -0.2, "Cut": 0.1, "Remove": -0.1, "Pick": 0.15},
 		alwaysDress: [
@@ -1642,6 +1642,7 @@ const KinkyDungeonRestraints = [
 
 
 	{inventory: true, trappable: true, name: "ThumbCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true,
+		hideTags: ["Armbinders", "Boxbinders", "Boxties", "Wristies", "BoundArms"],
 		AssetGroup: "ItemArms",
 		sfxGroup: "Handcuffs",
 		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDBindable], Group: "ItemHands",
