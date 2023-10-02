@@ -26,7 +26,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.74"
+KinkyDungeon,"Kinky Dungeon v4.75"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -1104,7 +1104,7 @@ KinkyDungeonInventoryItemMagicKeyDesc,"A magical key with the power to open blue
 KinkyDungeonInventoryItemMagicKeyDesc2,"Blue locks can't be otherwise picked."
 KinkyDungeonInventoryItemEnchKnife,Magic Knife
 KinkyDungeonInventoryItemEnchKnifeDesc,"A magical blade, suitable against ghosts."
-KinkyDungeonInventoryItemEnchKnifeDesc2,"Deals shadow damage. Can cut enchanted ropes."
+KinkyDungeonInventoryItemEnchKnifeDesc2,"Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%"
 KinkyDungeonInventoryItemBola,Bola
 KinkyDungeonInventoryItemBolaDesc,"A pair of weights attached to a rope. Can be thrown."
 KinkyDungeonInventoryItemBolaDesc2,"Deals 90 points of binding, 40 chain damage, and rooting a target for 4 turns."
@@ -1273,7 +1273,7 @@ ItemPickupScissors,"You pick up a pair of scissors."
 
 KinkyDungeonInventoryItemDirk,Dagger
 KinkyDungeonInventoryItemDirkDesc,"Designed with subterfuge in mind."
-KinkyDungeonInventoryItemDirkDesc2,"Deals slash damage. Deals 40 pierce damage instead on unaware targets, before crit modifiers."
+KinkyDungeonInventoryItemDirkDesc2,"Deals slash damage. Deals 40 pierce damage instead on unaware targets, before crit modifiers. Offhand: +10% Base Weapon Crit"
 ItemPickupDirk,"You pick up a dagger."
 
 KinkyDungeonInventoryItemKatana,Katana
@@ -1317,7 +1317,7 @@ KinkyDungeonInventoryItemBoltCuttersDesc,"The universal key."
 KinkyDungeonInventoryItemBoltCuttersDesc2,"Also assists in cutting restraints when equipped."
 KinkyDungeonInventoryItemKnife,Knife
 KinkyDungeonInventoryItemKnifeDesc,"A go-to for travelers and adventurers."
-KinkyDungeonInventoryItemKnifeDesc2,"Deals slash damage."
+KinkyDungeonInventoryItemKnifeDesc2,"Deals slash damage. Offhand: +10 Block"
 KinkyDungeonInventoryItemTorch,Torch
 KinkyDungeonInventoryItemTorchDesc,"Second only to the mighty towel in usefulness."
 KinkyDungeonInventoryItemTorchDesc2,"Deals fire damage. Provides light."
@@ -12058,3 +12058,23 @@ AttackGlueTechnicianSlow,"The technician pours glue on you to make you stay stil
 AttackGlueTechnicianLocks,"The technician inspects your restraints and adds a lock to spec! (DamageTaken)"
 
 KDEffectTileTooltipCMDGlue,"Quite sticky, innit?"
+
+KDWeaponTag_magic,Magic
+KDWeaponTagD_magic,"Magic: Ignores evasion of ghost type enemies, can be used with abilities that require magic weapons."
+KDWeaponTag_light,Light
+KDWeaponTagD_light,"Light: Can be used to cut even with bound arms. -50% accuracy penalty from being bound."
+KDWeaponTag_offhand,Offhand
+KDWeaponTagD_offhand,"Offhand: This weapon can be dual-wielded by the Fighter class."
+KDWeaponTag_clumsy,Clumsy
+KDWeaponTagD_clumsy,"Clumsy: Weapon can't be used while arms are tied."
+KDWeaponTag_noHands,Hands-Free
+KDWeaponTagD_noHands,"Hands-Free: Weapon can be used without free hands."
+KDWeaponTag_shield,Shield
+KDWeaponTagD_shield,"Shield: This weapon is intended for defensive use."
+KDWeaponTag_illum,Illumination
+KDWeaponTagD_illum,"Illumination: This weapon is a light source."
+
+KinkyDungeonSpellOffhand,"Dual Wield"
+KinkyDungeonSpellDescriptionOffhand,"Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage."
+
+KDInventoryActionOffhand,"Equip Offhand"

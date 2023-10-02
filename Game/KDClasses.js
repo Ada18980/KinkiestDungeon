@@ -15,6 +15,8 @@ let KDClassStart = {
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("BattleRhythm"));
 		KinkyDungeonSpellChoicesToggle.push(true);
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Offhand"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Bondage"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("CommandWord"));

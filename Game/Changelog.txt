@@ -11,6 +11,9 @@ Vague todo:
 - Add teleport to floor 0 temporarily after spending enough gold (done)
 - Add single use curse remover item (done)
 
+4.75 (Sep 2023)
+- Add Dual Wield to fighter class
+
 4.74 (Sep 2023)
 - Added experimental new AI, let me know how things go
 - Enemies can now sprint for a short time and recharge when idle

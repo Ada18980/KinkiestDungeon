@@ -293,6 +293,7 @@ let KDOptOut = false;
 * DelayedActions: KDDelayedAction[],
 * OfferCount: number,
 * ItemID: number,
+* Offhand: string,
 * ShopkeeperFee: number,
 * DollCount: number,
 * ChestsGenerated: string[],
@@ -447,6 +448,7 @@ let KDGameDataBase = {
 	TimeSinceLastVibeEnd: {},
 
 	OfferFatigue: 0,
+	Offhand: "",
 
 	Favors: {},
 	PreviousWeapon: null,

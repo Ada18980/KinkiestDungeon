@@ -17,6 +17,14 @@ let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility"
 	onhit:"", time:25, power: 0, range: 2.8, size: 1, damage: ""};
 let KDBondageSpell = {name: "Bondage", tags: ["binding", "utility", "offense"], quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "Bondage", noMiscast: true,
 	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
+let KDOffhandSpell = {name: "Offhand", tags: ["utility", "defense", "offense"], quick: true, school: "Special", prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm",
+	manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+	events: [
+		{type: "Offhand", trigger: "toggleSpell", },
+		{type: "Offhand", trigger: "draw", always: true,},
+		{type: "Offhand", trigger: "tick", always: true,},
+	],
+	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
 
 /**
  * These are starting spells
@@ -68,7 +76,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "BattleRhythm", "LimitSurge", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "Offhand", "BattleRhythm", "LimitSurge", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -129,6 +137,7 @@ let KinkyDungeonLearnableSpells = [
  */
 let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. When you plan to use a mystic seal, you get 3 spells to choose from.
 	"Any": [
+		KDBondageSpell,
 
 		{name: "SPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "WPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
@@ -224,6 +233,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		]},
 	],
 	"Special": [
+		KDOffhandSpell,
 
 		{name: "RogueTargets", tags: ["utility"], school: "Special", manacost: 0, components: [], classSpecific: "Rogue", prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			//{type: "RogueTargets", trigger: "tick"},
@@ -907,7 +917,6 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			type:"special", special: "CommandRelease",
 			onhit:"", time:0, power: 10.0, range: 2.5, size: 1, aoe: 1.5, damage: "inert"},
 		KDCommandWord,
-		KDBondageSpell,
 
 		{name: "CommandSlime", prerequisite: "ApprenticeLatex", tags: ["command", "slime", "defense"], sfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Verbal"], level:1,
 			type:"special", special: "CommandSlime",

@@ -11,14 +11,21 @@ let KinkyDungeonWeapons = {
 	// Knives
 	"Knife": {name: "Knife", dmg: 2.0, chance: 0.9, staminacost: 1.5, type: "slash", unarmed: false, rarity: 1, cutBonus: 0.05, shop: true, sfx: "Unarmed", light: true,
 		crit: 1.5,
+		events: [
+			{type: "blockBuff", trigger: "tick",  offhand: true, offhandonly: true, power: 0.1},
+		],
 	},
 	"EnchKnife": {name: "EnchKnife", dmg: 2.5, chance: 0.9, staminacost: 1.5, type: "cold", unarmed: false, rarity: 1, cutBonus: 0.05, magic: true, shop: true, sfx: "MagicSlash", light: true,
 		crit: 1.5,
+		events: [
+			{type: "buffMagicCrit", trigger: "calcCrit",  offhand: true, offhandonly: true, power: 0.2},
+		],
 	},
 	"Dirk": {name: "Dirk", dmg: 2.5, chance: 1.0, staminacost: 1.8, type: "slash", unarmed: false, rarity: 2, shop: true, cutBonus: 0.05, light: true, sfx: "LightSwing",
 		crit: 1.75,
 		events: [
 			{type: "ChangeDamageUnaware", trigger: "beforePlayerAttack", power: 4, damage: "pierce"},
+			{type: "buffWeaponCrit", trigger: "calcCrit",  offhand: true, offhandonly: true, power: 0.1},
 		],
 	},
 
@@ -26,29 +33,29 @@ let KinkyDungeonWeapons = {
 	"Shield": {name: "Shield", dmg: 2.0, chance: 0.6, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 2, shop: false, sfx: "HeavySwing",
 		crit: 1.1,
 		events: [
-			{type: "blockBuff", trigger: "tick", power: 0.6},
+			{type: "blockBuff", trigger: "tick", power: 0.6, offhand: true,},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 4}
 		]},
 	"ShieldTower": {name: "ShieldTower", dmg: 4.0, chance: 0.25, staminacost: 6.0,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
 		crit: 1.1,
 		events: [
-			{type: "armorBuff", trigger: "tick", power: 3.0},
-			{type: "blockBuff", trigger: "tick", power: 1.2},
-			{type: "slowLevel", trigger: "tick", power: 1},
+			{type: "armorBuff", trigger: "tick",  offhand: true,power: 3.0},
+			{type: "blockBuff", trigger: "tick",  offhand: true,power: 1.2},
+			{type: "slowLevel", trigger: "tick",  offhand: true,power: 1},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 7}
 		]},
 	"ShieldReinforced": {name: "ShieldReinforced", dmg: 3.0, chance: 0.4, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
 		crit: 1.1,
 		events: [
-			{type: "armorBuff", trigger: "tick", power: 1.5},
-			{type: "blockBuff", trigger: "tick", power: 0.8},
+			{type: "armorBuff", trigger: "tick",  offhand: true,power: 1.5},
+			{type: "blockBuff", trigger: "tick",  offhand: true,power: 0.8},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 5}
 		]},
 	"ShieldMagic": {name: "ShieldMagic", dmg: 3.0, chance: 0.4, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
 		crit: 1.1,
 		events: [
-			{type: "spellWardBuff", trigger: "tick", power: 2.0},
-			{type: "blockBuff", trigger: "tick", power: 0.8},
+			{type: "spellWardBuff", trigger: "tick",  offhand: true,power: 2.0},
+			{type: "blockBuff", trigger: "tick",  offhand: true,power: 0.8},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 5}
 		]},
 
@@ -71,10 +78,12 @@ let KinkyDungeonWeapons = {
 	},
 	"MagicSword": {name: "MagicSword", dmg: 3, chance: 2, staminacost: 2.3, type: "slash", unarmed: false, rarity: 4, shop: false, magic: true, cutBonus: 0.1, sfx: "LightSwing"},
 	"Flamberge": {name: "Flamberge", dmg: 2.0, chance: 1.0, staminacost: 2.8, type: "fire", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "FireSpell", magic: true,
-		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, damage: "slash"}, {type: "WeaponLight", trigger: "getLights", power: 5}],
+		tags: ["illum"],
+		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, damage: "slash"}, {type: "WeaponLight", trigger: "getLights", offhand: true, power: 5}],
 		special: {type: "ignite"},},
 	"FrostSword": {name: "FrostSword", dmg: 1.5, chance: 1.0, staminacost: 2.5, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.1, sfx: "LesserFreeze", magic: true,
-		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, time: 5, damage: "frost"}, {type: "WeaponLight", trigger: "getLights", power: 3, color: "#92e8c0"}]
+		tags: ["illum"],
+		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 2.0, time: 5, damage: "frost"}, {type: "WeaponLight", trigger: "getLights", offhand: true, power: 3, color: "#92e8c0"}]
 	},
 	"Foil": {name: "Foil", dmg: 0.8, chance: 1.5, staminacost: 1.5, type: "pierce", unarmed: false, rarity: 3, shop: true, sfx: "Miss",
 		crit: 2.0,
@@ -187,15 +196,17 @@ let KinkyDungeonWeapons = {
 
 	// Tier 1 orbs
 	"ArcaneCrystal": {name: "ArcaneCrystal", dmg: 3.3, chance: 0.8, staminacost: 3.0, type: "cold", noHands: true, unarmed: false, novulnerable: true, magic: true, rarity: 2, shop: true, sfx: "Laser",
-		events: [{type: "WeaponLight", trigger: "getLights", power: 3.5, color: "#6700ff"}]},
+		tags: ["illum"],
+		events: [{type: "WeaponLight", trigger: "getLights", offhand: true, power: 3.5, color: "#6700ff"}]},
 
 	// Techy
 	"Slimethrower": {name: "Slimethrower", dmg: 3.5, chance: 1.0, staminacost: 6.0, type: "crush", unarmed: false, rarity: 10, shop: false, sfx: "HeavySwing",
 		crit: 1.1,
 		special: {type: "spell", spell: "Slimethrower", requiresEnergy: true, energyCost: 0.015}},
 	"EscortDrone": {name: "EscortDrone", dmg: 1.5, chance: 1.0, staminacost: 0.0, type: "electric", noHands: true, unarmed: false, rarity: 10, shop: false, sfx: "Laser",
+		tags: ["illum"],
 		crit: 1.1,
-		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, chance: 0.33, damage: "electric", time: 4}, {type: "WeaponLight", trigger: "getLights", power: 4}]},
+		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, chance: 0.33, damage: "electric", time: 4}, {type: "WeaponLight", offhand: true, trigger: "getLights", power: 4}]},
 
 	// Special
 	"BoltCutters": {name: "BoltCutters", dmg: 3.5, staminacost: 3.8, chance: 1.0, type: "crush", unarmed: false, rarity: 3, shop: false, cutBonus: 0.3, sfx: "Unarmed",
@@ -206,7 +217,8 @@ let KinkyDungeonWeapons = {
 		events: [{type: "ApplyBuff", trigger: "playerAttack", buff: {id: "ArmorDown", type: "ArmorBreak", duration: 6, power: -1.5, player: true, enemies: true, tags: ["debuff", "armor"]}}]},
 	"Torch": {name: "Torch", dmg: 1.5, chance: 0.75, type: "fire", unarmed: false, rarity: 1, shop: true, sfx: "FireSpell",
 		crit: 1.1,
-		events: [{type: "WeaponLight", trigger: "getLights", power: 6, color: "#ff8933"}],
+		tags: ["illum"],
+		events: [{type: "WeaponLight", trigger: "getLights", offhand: true, power: 6, color: "#ff8933"}],
 		special: {type: "ignite"},},
 
 	// BDSM Gear
@@ -222,9 +234,10 @@ let KinkyDungeonWeapons = {
 	"Rope": {name: "Rope", dmg: 1.0, bind: 5, chance: 1.0, staminacost: 1.0, type: "chain",
 		crit: 1.1, unarmed: false, rarity: 1, shop: true, sfx: "Struggle", bindType: "Rope"},
 	"MagicRope": {name: "MagicRope", dmg: 1.0, bind: 5, chance: 1.0, staminacost: 1.0, type: "chain", unarmed: false, rarity: 3, magic: true, shop: true, sfx: "TapeStruggle", bindType: "Rope",
+		tags: ["illum"],
 		events: [
 			{type: "MagicRope", trigger: "playerAttack", power: 0, cost: 1, bindType: "Magic", bind: 5},
-			{type: "WeaponLight", trigger: "getLights", power: 3, color: "#92e8c0"}
+			{type: "WeaponLight", trigger: "getLights", offhand: true, power: 3, color: "#92e8c0"}
 		],
 	},
 	"VibeWand": {name: "VibeWand", dmg: 2.0, chance: 1.0, staminacost: 1.5, type: "charm", unarmed: false, rarity: 1, shop: true, sfx: "Vibe",

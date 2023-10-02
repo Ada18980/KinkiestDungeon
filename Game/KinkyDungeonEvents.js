@@ -2943,6 +2943,14 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
+		"Offhand": (e, spell, data) => {
+			if (KDGameData.Offhand && (
+				!KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)
+				|| !KinkyDungeonCanUseWeapon(false, undefined, KinkyDungeonInventoryGetWeapon(KDGameData.Offhand))
+			)) {
+				KDGameData.Offhand = "";
+			}
+		},
 		"ArcaneEnergyBondageResist": (e, spell, data) => {
 			let player = KinkyDungeonPlayerEntity;
 			let buff = KDEntityGetBuff(player, spell.name + "AEBR");
@@ -3480,6 +3488,17 @@ let KDEventMapSpell = {
 		},
 	},
 	"draw": {
+		"Offhand": (e, spell, data) => {
+			if (KDGameData.Offhand) {
+				// Draw the offhand weapon
+				KDDraw(kdcanvas, kdpixisprites, "kdoffhand", KinkyDungeonRootDirectory + `Items/${KDGameData.Offhand}.png`,
+					1400,
+					200,
+					100, 100, undefined, {
+						zIndex: 5,
+					});
+			}
+		},
 		/*"EnemySense": (e, spell, data) => {
 			let activate = false;
 			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && !KinkyDungeonPlayerBuffs.EnemySense) {
@@ -3642,6 +3661,16 @@ let KDEventMapSpell = {
 
 				}
 
+			}
+		},
+		"Offhand": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				KDGameData.InventoryAction = "Offhand";
+				KDGameData.Offhand = "";
+				KinkyDungeonDrawState = "Inventory";
+				KinkyDungeonCurrentFilter = Weapon;
 			}
 		},
 		"ManaRecharge": (e, spell, data) => {
@@ -3874,6 +3903,12 @@ let KDEventMapWeapon = {
 		"evasionBuff": (e, weapon, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: weapon.name + "Evasion", type: "Evasion", power: e.power, duration: 2,});
 		},
+		"critBoost": (e, weapon, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: weapon.name + "CritBoost", type: "CritBoost", power: e.power, duration: 2,});
+		},
+		"critMult": (e, weapon, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: weapon.name + "CritMult", type: "CritMult", power: e.power, duration: 2,});
+		},
 		"armorBuff": (e, weapon, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: weapon.name + "Armor", type: "Armor", power: e.power, duration: 2,});
 		},
@@ -4006,6 +4041,18 @@ let KDEventMapWeapon = {
 			}
 			if (trigger) {
 				if (e.energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - e.energyCost);
+			}
+		},
+	},
+	"calcCrit": {
+		"buffMagicCrit": (e, weapon, data) => {
+			if (!KinkyDungeonMeleeDamageTypes.includes(data.Damage?.type)) {
+				data.critboost += e.power;
+			}
+		},
+		"buffWeaponCrit": (e, weapon, data) => {
+			if (data.Damage?.name == KinkyDungeonPlayerDamage?.name) {
+				data.critboost += e.power;
 			}
 		},
 	},

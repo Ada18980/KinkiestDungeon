@@ -1187,6 +1187,8 @@ interface weapon {
 interface KinkyDungeonEvent {
 	trim?: boolean,
 	cost?: number,
+	offhand?: boolean,
+	offhandonly?: boolean,
 	cursetype?: string,
 	/** This is from a temporary event curse */
 	curse?: boolean,
