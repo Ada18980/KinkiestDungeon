@@ -854,7 +854,7 @@ KinkyDungeonKeySpellPage,Cycle Spell Page
 KinkyDungeonKeyUpcast,Upcast Spells
 KinkyDungeonKeyUpcastCancel,Cancel Upcast
 KinkyDungeonKeySwitchWeapon,Swap Weapon
-KinkyDungeonKeySpellWeapon,Ranged Attack
+KinkyDungeonKeySpellWeapon,Weapon Ability
 KinkyDungeonKeyWait,Wait
 KinkyDungeonKeySkip,Cancel/Back
 KinkyDungeonKeyEnter,Enter
@@ -1314,7 +1314,7 @@ KinkyDungeonInventoryItemFlailDesc,"Very fast and hard to dodge as long as you k
 KinkyDungeonInventoryItemFlailDesc2,"Also deals 10 damage to targets next to you. Deals crush damage."
 KinkyDungeonInventoryItemSpear,Spear
 KinkyDungeonInventoryItemSpearDesc,"Speak softly and carry a pointy stick."
-KinkyDungeonInventoryItemSpearDesc2,"Deals pierce damage to the target and one square behind it."
+KinkyDungeonInventoryItemSpearDesc2,"Deals pierce damage to the target and one square behind it. Can be used to make a ranged attack."
 KinkyDungeonInventoryItemBoltCutters,Bolt Cutters
 KinkyDungeonInventoryItemBoltCuttersDesc,"The universal key."
 KinkyDungeonInventoryItemBoltCuttersDesc2,"Also assists in cutting restraints when equipped."
@@ -1338,7 +1338,7 @@ KinkyDungeonInventoryItemEscortDroneDesc,"A semi-autonomous drone with a persona
 KinkyDungeonInventoryItemEscortDroneDesc2,"Deals electric damage. 33% chance to stun for 4 turns."
 KinkyDungeonInventoryItemVibeWand,Magic Wand
 KinkyDungeonInventoryItemVibeWandDesc,"Its powers extend beyond the traditional schools of magic."
-KinkyDungeonInventoryItemVibeWandDesc2,"Deals charm damage. 20% chance to stun the target for 2 turns."
+KinkyDungeonInventoryItemVibeWandDesc2,"Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +10 charm damage on attack for 5 stamina."
 KinkyDungeonInventoryItemFeather,Feather
 KinkyDungeonInventoryItemFeatherDesc,"A feather taken from some large fluffy being."
 KinkyDungeonInventoryItemFeatherDesc2,"Deals tickle damage. Distracts enemies."
@@ -1362,7 +1362,7 @@ KinkyDungeonInventoryItemFourSeasonsDesc,"Activate to reduce the cost of your ne
 KinkyDungeonInventoryItemFourSeasonsDesc2,"Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage."
 KinkyDungeonInventoryItemArbiter,The Arbiter
 KinkyDungeonInventoryItemArbiterDesc,"I have altered the rules. Pray I do not alter them further."
-KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm"
+KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm"
 KinkyDungeonInventoryItemBondageBuster,Bondage Buster
 KinkyDungeonInventoryItemBondageBusterDesc,"Can fire a beam (1 turn channel) that deals 30 electric damage and applies an equal amount of energy bondage. Charges when not fired, dealing 90 total damage at 10 turns of charge."
 KinkyDungeonInventoryItemBondageBusterDesc2,"Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns."
@@ -1388,10 +1388,10 @@ KinkyDungeonInventoryItemPickaxeDesc,"Used for drilling holes in rock and armor.
 KinkyDungeonInventoryItemPickaxeDesc2,"Deals pierce damage. Reduces enemy armor by 15 for 6 turns."
 KinkyDungeonInventoryItemMagicFlail,Enchanted Flail
 KinkyDungeonInventoryItemMagicFlailDesc,"A blessed censer that distributes pain equally."
-KinkyDungeonInventoryItemMagicFlailDesc2,"Deals crush damage to the target and all enemies near the target."
+KinkyDungeonInventoryItemMagicFlailDesc2,"Deals crush damage. Deals 20 bonus shadow damage to the target and enemies near the target."
 KinkyDungeonInventoryItemMagicSpear,Enchanted Spear
 KinkyDungeonInventoryItemMagicSpearDesc,"Seeks and pierces hearts with ease."
-KinkyDungeonInventoryItemMagicSpearDesc2,"Deals pierce damage to the target and two squares behind it."
+KinkyDungeonInventoryItemMagicSpearDesc2,"Deals pierce damage to the target and two squares behind it. Can be used to make a ranged attack."
 KinkyDungeonInventoryItemMagicHammer,Enchanted Hammer
 KinkyDungeonInventoryItemMagicHammerDesc,"Made of a magical, resonant material."
 KinkyDungeonInventoryItemMagicHammerDesc2,"Deals crush damage and knocks the target back. Helps to bash open restraints while cutting."
@@ -11599,22 +11599,22 @@ ItemPickupFrostSword,"You pick up an icy sword."
 
 KinkyDungeonInventoryItemShield,Targe
 KinkyDungeonInventoryItemShieldDesc,"Hide behind it while you still can."
-KinkyDungeonInventoryItemShieldDesc2,"+60 Block. Deals crush damage and stuns for 4 turns."
+KinkyDungeonInventoryItemShieldDesc2,"+60 Block. Deals crush damage and stuns for 4 turns. Offhand: Gives the same block bonus."
 ItemPickupShield,"You pick up a wooden shield."
 
 KinkyDungeonInventoryItemShieldTower,Tower Shield
 KinkyDungeonInventoryItemShieldTowerDesc,"Now with more leg room."
-KinkyDungeonInventoryItemShieldTowerDesc2,"+120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns."
+KinkyDungeonInventoryItemShieldTowerDesc2,"+120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns. Offhand: Gives the same block and armor bonus."
 ItemPickupShieldTower,"You pick up a metal tower shield."
 
 KinkyDungeonInventoryItemShieldReinforced,Reinforced Shield
 KinkyDungeonInventoryItemShieldReinforcedDesc,"New and improved, but also clumsier."
-KinkyDungeonInventoryItemShieldReinforcedDesc2,"+80 Block, +15 Physical Armor. Deals crush damage and stuns for 5 turns."
+KinkyDungeonInventoryItemShieldReinforcedDesc2,"+80 Block, +15 Physical Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus."
 ItemPickupShieldReinforced,"You pick up a reinforced shield."
 
 KinkyDungeonInventoryItemShieldMagic,Runic Shield
 KinkyDungeonInventoryItemShieldMagicDesc,"For when you've been tied up one too many times..."
-KinkyDungeonInventoryItemShieldMagicDesc2,"+80 Block, +20 Magic Armor. Deals crush damage and stuns for 5 turns."
+KinkyDungeonInventoryItemShieldMagicDesc2,"+80 Block, +20 Magic Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus."
 ItemPickupShieldMagic,"You pick up a runic shield."
 
 KinkyDungeonSpellGreaterInvisibility,Vanish
@@ -12349,7 +12349,7 @@ KDEffectTileTooltipCMDGlue,"Quite sticky, innit?"
 KDWeaponTag_magic,Magic
 KDWeaponTagD_magic,"Magic: Ignores evasion of ghost type enemies, can be used with abilities that require magic weapons."
 KDWeaponTag_light,Light
-KDWeaponTagD_light,"Light: Can be used to cut even with bound arms. -50% accuracy penalty from being bound."
+KDWeaponTagD_light,"Light: Can be used to cut even with bound arms. 50% reduced accuracy penalty from being bound. Can be held in mouth."
 KDWeaponTag_offhand,Offhand
 KDWeaponTagD_offhand,"Offhand: This weapon can be dual-wielded by the Fighter class."
 KDWeaponTag_clumsy,Clumsy
@@ -12365,3 +12365,8 @@ KinkyDungeonSpellOffhand,"Dual Wield"
 KinkyDungeonSpellDescriptionOffhand,"Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage."
 
 KDInventoryActionOffhand,"Equip Offhand"
+
+KinkyDungeonSpecialSpear,Make a ranged attack with the spear.
+KinkyDungeonSpecialMagicSpear,Make a ranged attack with the spear.
+
+KinkyDungeonSpellWeaponAttack,Ranged Attack

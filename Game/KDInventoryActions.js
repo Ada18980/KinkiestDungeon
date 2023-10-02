@@ -72,7 +72,7 @@ let KDInventoryAction = {
 	},
 	"Offhand": {
 		valid: (player, item) => {
-			if (!(item?.type == Weapon && item.events?.some((e) => {
+			if (!(item?.type == Weapon && KDWeapon(item).events?.some((e) => {
 				return e.offhand;
 			}))) return false;
 			return KinkyDungeonCanUseWeapon(false, undefined, item);

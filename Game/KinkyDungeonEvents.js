@@ -4172,6 +4172,26 @@ let KDEventMapWeapon = {
 						bind: e.bind,
 						bindType: e.bindType,
 					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
+					if (e.sfx) {
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+					}
+				}
+			}
+		},
+		"ElementalEffectStamCost": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm) {
+				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy) && KinkyDungeonHasStamina(e.cost)) {
+					KinkyDungeonDamageEnemy(data.enemy, {
+						type: e.damage,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						bindType: e.bindType,
+					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
+					KinkyDungeonChangeStamina(-e.cost);
+					if (e.sfx) {
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+					}
 				}
 			}
 		},
@@ -4228,16 +4248,31 @@ let KDEventMapWeapon = {
 		},
 		"Cleave": (e, weapon, data) => {
 			if (data.enemy && !data.disarm) {
-				for (let enemy of KDMapData.Entities) {
+				let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5);
+				for (let enemy of nearby) {
 					if (enemy != data.enemy && KDHostile(enemy) && !KDHelpless(data.enemy)) {
-						let dist = Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y));
-						if (dist < 1.5 && KinkyDungeonEvasion(enemy) && Math.max(Math.abs(enemy.x - data.enemy.x), Math.abs(enemy.y - data.enemy.y))) {
+						if (KinkyDungeonEvasion(enemy)) {
 							KinkyDungeonDamageEnemy(enemy, {
 								type: e.damage,
 								damage: e.power,
 								time: e.time
 							}, false, true, undefined, undefined, KinkyDungeonPlayerEntity);
 						}
+					}
+				}
+			}
+		},
+		"MagicFlail": (e, weapon, data) => {
+			if (data.enemy && !data.disarm) {
+				let nearby = KDNearbyEnemies(data.enemy.x, data.enemy.y, 1.5);
+				for (let enemy of nearby) {
+					if (KDHostile(enemy) && !KDHelpless(data.enemy)) {
+						KinkyDungeonDamageEnemy(enemy, {
+							type: e.damage,
+							damage: e.power,
+							time: e.time,
+							crit: e.crit,
+						}, false, true, undefined, undefined, KinkyDungeonPlayerEntity);
 					}
 				}
 			}
@@ -4255,6 +4290,8 @@ let KDEventMapWeapon = {
 		"Pierce": (e, weapon, data) => {
 			if (data.enemy && !data.disarm) {
 				let dist = e.dist ? e.dist : 1;
+				// Does not apply to ranged attacks
+				if (KDistEuclidean(data.enemy.x - KinkyDungeonPlayerEntity.x, data.enemy.y - KinkyDungeonPlayerEntity.y) > 1.5) return;
 				for (let i = 1; i <= dist; i++) {
 					let xx = data.enemy.x + i * (data.enemy.x - KinkyDungeonPlayerEntity.x);
 					let yy = data.enemy.y + i * (data.enemy.y - KinkyDungeonPlayerEntity.y);
