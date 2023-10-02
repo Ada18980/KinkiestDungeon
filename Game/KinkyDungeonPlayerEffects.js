@@ -838,22 +838,24 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 
 		} else if (playerEffect.name == "Glue") {
 			let added = [];
-			if (KinkyDungeonLastAction == "Move")
-				for (let i = 0; i < playerEffect.count; i++) {
-					let restraintAdd = KinkyDungeonGetRestraint({tags: ["glueRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
-					if (restraintAdd) {
-						KDPlayerEffectRestrain(spell, 1, ["glueRestraints"], faction);
-						KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
-						added.push(restraintAdd);
-						effect = true;
-					}
+			let GlueRes = 1;
+			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") >= 0.7) GlueRes = 3;
+			else if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") >= 0.35) GlueRes = 2;
+			for (let i = 0; i < Math.ceil((playerEffect.count || 1) / GlueRes); i++) {
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["glueRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+				if (restraintAdd) {
+					KDPlayerEffectRestrain(spell, 1, ["glueRestraints"], faction);
+					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
+					added.push(restraintAdd);
+					effect = true;
 				}
+			}
 			if (added.length > 0) {
 				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonGlue"), "yellow", 2);
 				effect = true;
 			} else {
-				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonGlueSlow"), "yellow", playerEffect.time);
+				//KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
+				//KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonGlueSlow"), "yellow", playerEffect.time);
 				effect = true;
 			}
 			if (playerEffect.power) {

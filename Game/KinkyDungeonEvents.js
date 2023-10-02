@@ -2764,7 +2764,7 @@ let KDEventMapSpell = {
 			if (!KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend") || !KDHasSpell("ManaRegenPlus2")) {
 				let duration = KDHasSpell("ManaRegenFast2") ? e.time*0.25 : (KDHasSpell("ManaRegenFast") ? e.time*0.625 : e.time);
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: Math.ceil(duration), aura: "#ff5555", buffSprite: true,
+					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: Math.ceil(duration), aura: "#ff5555", buffSprite: true, aurasprite: "AuraX",
 				});
 			}
 		},
@@ -2775,7 +2775,7 @@ let KDEventMapSpell = {
 				let duration = KDHasSpell("ManaRegenFast2") ? e.time*0.25 : (KDHasSpell("ManaRegenFast") ? e.time*0.625 : e.time);
 				if (!data.notToggle) duration *= 0.5;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: Math.ceil(duration), aura: "#ff5555", buffSprite: true,
+					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: Math.ceil(duration), aura: "#ff5555", buffSprite: true, aurasprite: "AuraX",
 				});
 			}
 		},
@@ -3391,7 +3391,7 @@ let KDEventMapSpell = {
 				if (KDHasSpell("ManaRegenFast2")) time *= 0.25;
 				else if (KDHasSpell("ManaRegenFast")) time *= 0.625;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: Math.ceil(time), aura: "#ff5555", buffSprite: true,
+					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: Math.ceil(time), aura: "#ff5555", buffSprite: true, aurasprite: "AuraX",
 				});
 			}
 		},

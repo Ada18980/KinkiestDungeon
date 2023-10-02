@@ -456,6 +456,16 @@ KinkyDungeonStatDescTapePref,"Tape-wielding enemies (such as Tape Bots) occur mo
 KinkyDungeonStatTapeOptout,"Less Tape"
 KinkyDungeonStatDescTapeOptout,"Fewer tape-related enemies will appear, although this does not remove tape entirely."
 
+
+KinkyDungeonStatRobotVetoTape,"No Tape Bots"
+KinkyDungeonStatDescRobotVetoTape,"The old civilization did not use tape-based restraints in their capture robots."
+KinkyDungeonStatRobotVetoCable,"Less Cable Bots"
+KinkyDungeonStatDescRobotVetoTape,"The old civilization used significantly less cable-based restraints in their capture robots."
+KinkyDungeonStatRobotVetoResin,"No Resin Bots"
+KinkyDungeonStatDescRobotVetoTape,"The old civilization did not use crystal resin-based restraints in their capture robots."
+KinkyDungeonStatRobotVetoLatex,"Lexx Latex Bots"
+KinkyDungeonStatDescRobotVetoTape,"The old civilization used significantly less latex-based restraints in their capture robots."
+
 KinkyDungeonStatSlimePref,"More Encasement"
 KinkyDungeonStatDescSlimePref,"Enemies that encase you (e.g slimes, latex cubes) will appear more frequently."
 KinkyDungeonStatSlimeOptout,"Less Encasement"
