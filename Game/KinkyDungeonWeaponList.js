@@ -227,13 +227,23 @@ let KinkyDungeonWeapons = {
 	// BDSM Gear
 	"Feather": {name: "Feather", dmg: 0.5, chance: 2.0,
 		crit: 1.5,
+		events: [
+			{type: "ElementalEffectStamCost", trigger: "playerAttack", power: 0.5, damage: "tickle", offhand: true, offhandonly: true, cost: 0.3, sfx: "Tickle"},
+		],
 		staminacost: 0.5, distract: 2, type: "tickle", unarmed: false, rarity: 1, shop: true, sfx: "Tickle"},
 	"Crop": {name: "Crop", dmg: 2.5, chance: 1.0, staminacost: 2.0,
+		events: [
+			{type: "ElementalEffectStamCost", trigger: "playerAttack", power: 0.5, damage: "pain", offhand: true, offhandonly: true, cost: 0.3, sfx: "Whip"},
+		],
 		crit: 1.8, distract: 3, type: "pain", tease: true, unarmed: false, rarity: 2, shop: true, sfx: "Whip"},
 	"IceCube": {name: "IceCube", dmg: 1.5, chance: 1.0, staminacost: 1.0,
 		crit: 2.0,
 		distract: 1, type: "ice", tease: true, unarmed: false, rarity: 1, shop: true, sfx: "Freeze",
-		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "ice", time: 3, chance: 0.1}]},
+		events: [
+			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "ice", time: 3, chance: 0.1},
+			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "frost", time: 2, offhand: true},
+		]
+	},
 	"Rope": {name: "Rope", dmg: 1.0, bind: 5, chance: 1.0, staminacost: 1.0, type: "chain",
 		crit: 1.1, unarmed: false, rarity: 1, shop: true, sfx: "Struggle", bindType: "Rope"},
 	"MagicRope": {name: "MagicRope", dmg: 1.0, bind: 5, chance: 1.0, staminacost: 1.0, type: "chain", unarmed: false, rarity: 3, magic: true, shop: true, sfx: "TapeStruggle", bindType: "Rope",
@@ -251,7 +261,7 @@ let KinkyDungeonWeapons = {
 		playSelfSound: "Vibe",
 		events: [
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 2, chance: 0.2},
-			{type: "ElementalEffectStamCost", trigger: "playerAttack", power: 1, damage: "charm", offhand: true, offhandonly: true, cost: 0.5, sfx: "Vibe"},
+			{type: "ElementalEffectStamCost", trigger: "playerAttack", power: 0.5, damage: "charm", offhand: true, offhandonly: true, cost: 0.3, sfx: "Vibe"},
 		]},
 	"BagOfGoodies": {name: "BagOfGoodies", arousalMode: true, dmg: 0.4, chance: 1.0, staminacost: 0.5, type: "charm", unarmed: false, rarity: 2, shop: false, sfx: "Vibe",
 		crit: 1.1,
@@ -259,14 +269,17 @@ let KinkyDungeonWeapons = {
 		playSelfMsg: "KinkyDungeonPlaySelfBagOfGoodies",
 		playSelfSound: "Vibe",
 		events: [
-			{type: "ApplyToy", trigger: "playerAttack", duration: 40},
+			{type: "ApplyToy", trigger: "playerAttack", duration: 40, offhand: true},
 		],
 		special: {type: "spell", spell: "CommandVibrateBagOfGoodies", requiresEnergy: true, energyCost: 0.01, range: 4.5},
 	},
 	"VibeRemote": {name: "VibeRemote", dmg: 0.1, chance: 0.4, staminacost: 0.5, type: "charm", unarmed: false, rarity: 2, shop: true, magic: true, sfx: "Vibe",
 		crit: 1.1,
 		arousalMode: true,
-		events: [{type: "ActivateVibration", trigger: "playerAttack", power: 1, time: 5}],
+		events: [
+			{type: "ActivateVibration", trigger: "playerAttack", power: 1, time: 15},
+			{type: "ActivateVibration", trigger: "playerAttack", power: 2, time: 5, offhand: true, offhandonly: true}
+		],
 		special: {type: "spell", spell: "CommandVibrateVibeRemote", requiresEnergy: true, energyCost: 0.015}},
 
 

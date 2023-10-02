@@ -1263,7 +1263,7 @@ ItemPickupStaffPermafrost,"You pick up a staff of permafrost. It feels icy to th
 
 KinkyDungeonInventoryItemCrop,Crop
 KinkyDungeonInventoryItemCropDesc,"For those unruly subs."
-KinkyDungeonInventoryItemCropDesc2,"Deals pain damage. Highly distracting."
+KinkyDungeonInventoryItemCropDesc2,"Deals pain damage. Highly distracting. Offhand: +5 pain damage on attack for 3 stamina."
 ItemPickupCrop,"You pick up a riding crop."
 
 KinkyDungeonInventoryItemScissors,Scissors
@@ -1335,13 +1335,13 @@ KinkyDungeonInventoryItemEscortDroneDesc,"A semi-autonomous drone with a persona
 KinkyDungeonInventoryItemEscortDroneDesc2,"Deals electric damage. 33% chance to stun for 4 turns."
 KinkyDungeonInventoryItemVibeWand,Magic Wand
 KinkyDungeonInventoryItemVibeWandDesc,"Its powers extend beyond the traditional schools of magic."
-KinkyDungeonInventoryItemVibeWandDesc2,"Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +10 charm damage on attack for 5 stamina."
+KinkyDungeonInventoryItemVibeWandDesc2,"Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +5 charm damage on attack for 3 stamina."
 KinkyDungeonInventoryItemFeather,Feather
-KinkyDungeonInventoryItemFeatherDesc,"A feather taken from some large fluffy being."
+KinkyDungeonInventoryItemFeatherDesc,"A feather taken from some large fluffy being. Offhand: +5 tickle damage on attack for 3 stamina."
 KinkyDungeonInventoryItemFeatherDesc2,"Deals tickle damage. Distracts enemies."
 KinkyDungeonInventoryItemIceCube,Ice Cube
 KinkyDungeonInventoryItemIceCubeDesc,"A magical cube of ice that never melts. Convenient!"
-KinkyDungeonInventoryItemIceCubeDesc2,"Deals 10 ice damage with a 10% chance to freeze for 3 turns."
+KinkyDungeonInventoryItemIceCubeDesc2,"Deals 10 ice damage with a 10% chance to freeze for 1 turn. Slows targets on hit. Offhand: Slows the target."
 KinkyDungeonInventoryItemRope,Rope
 KinkyDungeonInventoryItemRopeDesc,"A kidnapper's most versatile tool."
 KinkyDungeonInventoryItemRopeDesc2,"Deals chain damage and applies 50 points of binding."
@@ -11573,13 +11573,13 @@ ItemPickupStaffTape,"You pick up a staff of chains. You have fond memories..."
 
 KinkyDungeonInventoryItemBagOfGoodies,Bag of Goodies
 KinkyDungeonInventoryItemBagOfGoodiesDesc,"Someone's secret stash."
-KinkyDungeonInventoryItemBagOfGoodiesDesc2,"Deals charm damage. Applies a toy to targets hit for 40 turns. "
+KinkyDungeonInventoryItemBagOfGoodiesDesc2,"Deals charm damage. Applies a toy to targets hit for 40 turns. Offhand: Applies a toy to targets you hit."
 ItemPickupBagOfGoodies,"You find a bag filled with various toys and vibrators..."
 KinkyDungeonPlaySelfBagOfGoodies,"You play with yourself using some of the toys in the bag..."
 
 KinkyDungeonInventoryItemVibeRemote,Magic Remote
 KinkyDungeonInventoryItemVibeRemoteDesc,"The key to absolute power."
-KinkyDungeonInventoryItemVibeRemoteDesc2,"Deals (tiny) charm damage. Triggers long-duration edging on basic attack if the target has a toy."
+KinkyDungeonInventoryItemVibeRemoteDesc2,"Triggers long-duration edging on basic attack if the target has a toy. Offhand: Applies short-duration teasing to targets you hit."
 ItemPickupVibeRemote,"You find a bag filled with various toys and vibrators..."
 
 KinkyDungeonSpellCommandVibrateVibeRemote,Vibrator Remote
