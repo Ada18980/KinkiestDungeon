@@ -175,6 +175,23 @@ function KDSetWeapon(Weapon, forced) {
 	if (!forced)
 		KinkyDungeonPlayerWeaponLastEquipped = Weapon;
 }
+/*
+function KDCanWieldWeapon(weapon, HandsFree, NoOverride) {
+	let flags = {
+		KDDamageHands: true.valueOf,
+		KDDamageArms: true.valueOf,
+	};
+	if (!NoOverride)
+		KinkyDungeonSendEvent("calcDamage", {flags: flags});
+	if (weapon && weapon.noHands) HandsFree = true;
+	let armBondage = KinkyDungeonIsArmsBound(false, true);
+	if (!HandsFree
+		|| (KinkyDungeonStatsChoice.get("Brawler") && !KinkyDungeonPlayerWeapon)
+		|| (weapon.clumsy && flags.KDDamageArms && armBondage)) {
+		return false;
+	}
+	return true;
+}*/
 
 function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 	let flags = {
@@ -187,7 +204,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 	let damage = KinkyDungeonPlayerDamageDefault;
 	let weapon = KinkyDungeonWeapons[KinkyDungeonPlayerWeapon];
 	if (weapon && weapon.noHands) HandsFree = true;
-	if (!HandsFree || (KinkyDungeonStatsChoice.get("Brawler") && !KinkyDungeonPlayerWeapon)) {
+	if (!KinkyDungeonCanUseWeapon(NoOverride, undefined, weapon)) {
 		damage = KinkyDungeonPlayerDamageDefault;
 		if (!NoOverride)
 			KDSetWeapon('Unarmed', true);
@@ -199,7 +216,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 
 	let handBondage = KDHandBondageTotal(true);
 	let armBondage = KinkyDungeonIsArmsBound(false, true);
-	if (armBondage && (flags.KDDamageArms || weapon.unarmed) && (!weapon?.noHands)) {
+	if (armBondage && (flags.KDDamageArms || weapon.unarmed) && (!weapon?.noHands) && !weapon.light) {
 		KinkyDungeonPlayerDamage.chance *= 0.5;
 	} else if (handBondage && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
 		KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, handBondage));
@@ -212,7 +229,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 		}
 	}
 	if ((KDIsHogtied() || KDIsKneeling()) && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
-		KinkyDungeonPlayerDamage.chance /= 1.5;
+		KinkyDungeonPlayerDamage.chance *= KDIsHogtied() ? 0.1 : 0.5;
 	}
 
 	return KinkyDungeonPlayerDamage;
@@ -238,8 +255,8 @@ function KinkyDungeonGetCrit(accuracy, Damage, Enemy) {
 		accuracy: accuracy,
 		enemy: Enemy,
 		basecrit: Damage?.crit || KDDefaultCrit,
-		critmult: 1.0,
-		critboost: 0.0,
+		critmult: 1.0 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "CritMult"),
+		critboost: 0.0 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "CritBoost"),
 	};
 	KinkyDungeonSendEvent("calcCrit", data);
 
@@ -2091,8 +2108,17 @@ function KinkyDungeonSendWeaponEvent(Event, data) {
 	if (!KDMapHasEvent(KDEventMapWeapon, Event)) return;
 	if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.events) {
 		for (let e of KinkyDungeonPlayerDamage.events) {
-			if (e.trigger == Event && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+			if (e.trigger == Event && !e.offhandonly && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
 				KinkyDungeonHandleWeaponEvent(Event, e, KinkyDungeonPlayerDamage, data);
+			}
+		}
+	}
+	if (KDGameData.Offhand && (!KinkyDungeonPlayerDamage || KinkyDungeonPlayerDamage.name != KDGameData.Offhand)
+		&& KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)) {
+		let weapon = KinkyDungeonInventoryGetWeapon(KDGameData.Offhand);
+		for (let e of weapon.events) {
+			if (e.trigger == Event && e.offhand && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+				KinkyDungeonHandleWeaponEvent(Event, e, KDWeapon(weapon), data);
 			}
 		}
 	}
@@ -2288,3 +2314,4 @@ function KDDealEnvironmentalDamage(x, y, aoe, Damage, Attacker) {
 		KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, Damage.type, {name: "EnvDamage", power: Damage.damage, damage: Damage.type}, undefined, KDGetFaction(Attacker), undefined);
 	}
 }
+

@@ -952,10 +952,14 @@ function KinkyDungeonCanUseWeapon(NoOverride, e, weapon) {
 	let flags = {
 		HandsFree: false,
 		clumsy: weapon?.clumsy,
+		weapon: weapon,
 	};
 	if (!NoOverride)
 		KinkyDungeonSendEvent("getWeapon", {event: e, flags: flags});
-	return flags.HandsFree || KinkyDungeonPlayerDamage.noHands || (!KinkyDungeonIsHandsBound(false, true) && ((!KinkyDungeonStatsChoice.get("WeakGrip") && !flags.clumsy) || !KinkyDungeonIsArmsBound(false, true)));
+	return flags.HandsFree
+		|| KinkyDungeonPlayerDamage.noHands
+		|| (!KinkyDungeonIsHandsBound(false, true)
+			&& ((!KinkyDungeonStatsChoice.get("WeakGrip") && !flags.clumsy) || !KinkyDungeonIsArmsBound(false, true)));
 }
 
 let KDBlindnessCap = 0;
