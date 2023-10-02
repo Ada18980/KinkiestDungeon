@@ -313,6 +313,7 @@ let KDOptOut = false;
 * MovePoints: number,
 * Wait: number,
 * Class: string,
+* FloorRobotType: Record<string, string>,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
@@ -471,6 +472,8 @@ let KDGameDataBase = {
 	HostileFactions: [],
 	Wait: 0,
 	Class: "",
+
+	FloorRobotType: {},
 };
 /**
  * @type {KDGameDataBase}
