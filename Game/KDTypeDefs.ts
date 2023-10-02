@@ -247,6 +247,8 @@ interface KDRestraintPropsBase {
 	Model?: string,
 	/** Used for when the visual asset in BC is different from the actual group of the item*/
 	AssetGroup?: string,
+	/** Dont render item if has the tags */
+	hideTags?: string[],
 	Color?: string[] | string,
 	/** Maximum level, wont be used at this or higher. Inclusive. */
 	maxLevel?: number,

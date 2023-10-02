@@ -3691,6 +3691,14 @@ let KDEventMapSpell = {
 						KDStunTurns(e.time);
 						KinkyDungeonSendTextMessage(5, TextGet("KDLimitSurge_Fail"), "#ff5555", 10);
 					}
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+						id: "LimitSurge",
+						type: "StatGainStamina",
+						aura: "#55ff55",
+						//buffSprite: true,
+						power: 0.3,
+						duration: 20,
+					});
 				} else {
 					KinkyDungeonSendTextMessage(5, TextGet("KDLimitSurge_No"), "#ff8800", 10);
 				}

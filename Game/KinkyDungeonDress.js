@@ -190,18 +190,25 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 
 			//KinkyDungeonPlayer.Appearance = [];
 
+			let tags = KinkyDungeonPlayerTags;
 
 			// Next we revisit all the player's restraints
 			if (!NoRestraints) {
 				for (let inv of KinkyDungeonAllRestraint()) {
 					let renderTypes = KDRestraint(inv).shrine;
-					KDApplyItem(inv, KinkyDungeonPlayerTags);
+					if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
+						KDApplyItem(inv, KinkyDungeonPlayerTags);
+
+					}
 					restraints.push(inv);
 					if (inv.dynamicLink) {
 						let link = inv.dynamicLink;
 						for (let I = 0; I < 30; I++) {
 							if (KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
-								KDApplyItem(link, KinkyDungeonPlayerTags);
+								if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
+									KDApplyItem(link, KinkyDungeonPlayerTags);
+
+								}
 								restraints.push(link);
 							}
 							if (link.dynamicLink) {

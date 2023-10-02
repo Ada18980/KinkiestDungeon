@@ -2805,7 +2805,7 @@ function KinkyDungeonUpdateRestraints(delta) {
 		if (KDRestraint(inv).blockfeet)
 			playerTags.set("BoundFeet", true);
 		if (KDRestraint(inv).bindarms)
-			playerTags.set("BoundHands", true);
+			playerTags.set("BoundArms", true);
 		if (KDRestraint(inv).bindhands)
 			playerTags.set("BoundHands", true);
 		if (KDRestraint(inv).blindfold)
@@ -3074,7 +3074,12 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
  * @returns {number}
  */
 function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs, data, augmentedInventory) {
-	if (typeof restraint === "string") restraint = KinkyDungeonGetRestraintByName(restraint);
+	if (typeof restraint === "string") {
+		KDRestraintDebugLog.push("Lookup" + restraint);
+		restraint = KinkyDungeonGetRestraintByName(restraint);
+	} else {
+		KDRestraintDebugLog.push("AddWeaker" + restraint.name);
+	}
 	if (restraint.bypass) Bypass = true;
 	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep, false, securityEnemy, (useAugmentedPower == undefined && securityEnemy != undefined) || useAugmentedPower, Curse, augmentedInventory)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);

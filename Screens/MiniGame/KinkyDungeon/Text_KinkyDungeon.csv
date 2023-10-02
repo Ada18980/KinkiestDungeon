@@ -4812,7 +4812,10 @@ KinkyDungeonSpellBattleRhythm,"Battle Rhythm"
 KinkyDungeonSpellDescriptionBattleRhythm,"Stores 20% of the stamina spent from attacks as Rhythm, up to a total of 50. While you have over 10 Rhythm, you gain +10 Block and Evasion. Enemy base accuracy against you is decreased by a % equal to your Rhythm. If an attack misses or is blocked because of this, reduce Rhythm by 25% of the enemy attack power. Decays when not attacking."
 
 KinkyDungeonSpellLimitSurge,"Limit Surge"
-KinkyDungeonSpellDescriptionLimitSurge,"Take 50 Willpower damage to fully restore Stamina. This amount cannot be reduced. If your Willpower ends up 0 because of this, you are stunned for 2 turns."
+KinkyDungeonSpellDescriptionLimitSurge,"Take 50 Willpower damage (this amount cannot be reduced) to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns."
+
+KinkyDungeonSpellCombatProwess,"Combat Prowess"
+KinkyDungeonSpellDescriptionCombatProwess,"Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%. Also, while you are above 0 WP you gain 1 slow resist."
 
 
 KinkyDungeonSpellRogueTraps,Devious Ingenuity
