@@ -80,6 +80,7 @@ let KinkyDungeonSpellSpecials = {
 		let dash_y = targetY;
 		let push_x = targetX;
 		let push_y = targetY;
+		let powerful = false;
 		if (en) {
 			if (KinkyDungeonHasStamina(-cost)) {
 				let dist = KDistChebyshev(en.x - entity.x, en.y - entity.y);
@@ -101,16 +102,22 @@ let KinkyDungeonSpellSpecials = {
 					}
 				}
 				if (space) {
+					let origHP = en.hp;
 					let result = KinkyDungeonLaunchAttack(en, 1);
+					if (en.hp <= origHP * 0.2 + 0.01) powerful = true;
+					let failPush = true;
 					if (result == "confirm" || result == "dialogue") return "Fail";
 					if (result == "hit" || result == "capture") {
-						if (KinkyDungeonNoEnemy(push_x, push_y) && KDIsMovable(push_x, push_y)) {
+						if (powerful && KinkyDungeonNoEnemy(push_x, push_y) && KDIsMovable(push_x, push_y)) {
 							let xx = en.x;
 							let yy = en.y;
 							KDMoveEntity(en, push_x, push_y, false);
 							KDMovePlayer(xx, yy, true, true);
+							failPush = false;
 						} else if (KinkyDungeonNoEnemy(dash_x, dash_y) && KDIsMovable(dash_x, dash_y)) {
 							KDMovePlayer(dash_x, dash_y, true, true);
+						}
+						if (failPush && powerful) {
 							KinkyDungeonDamageEnemy(en, {
 								type: "crush",
 								damage: 2,
