@@ -2320,7 +2320,8 @@ let KinkyDungeonEnemies = [
 		visionRadius: 5.5, visionSummoned: 12, maxhp: 10, minLevel: 3, weight:0, movePoints: 2,
 		stamina: 5,
 		sprintspeed: 2.0,
-		attackPoints: 1,attack: "Spell", attackWidth: 1, tilesMinRange: 1, attackRange: 1, power: 1, dmgType: "chain", fullBoundBonus: 2,
+		attackLock: "Purple",
+		attackPoints: 3, attack: "SpellMeleeLockWill", attackWidth: 1, tilesMinRange: 1, attackRange: 1, power: 1, dmgType: "soul", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":2, "lastthird":2, "doortrap": 8, "trap": 100}, allFloors: true, shrines: ["Metal"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},

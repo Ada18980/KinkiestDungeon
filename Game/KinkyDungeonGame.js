@@ -3788,13 +3788,19 @@ function KinkyDungeonSendActionMessage(priority, text, color, time, noPush, noDu
 
 let KinkyDungeonNoMoveFlag = false;
 
-function KDAttackCost() {
-	let attackCost = KinkyDungeonStatStaminaCostAttack;
-	if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.staminacost) attackCost = -KinkyDungeonPlayerDamage.staminacost;
-	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackStamina")) {
-		attackCost = Math.min(0, attackCost * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackStamina")));
-	}
-	return attackCost;
+function KDAttackCost(weapon) {
+	let data = {
+		attackCost: KinkyDungeonStatStaminaCostAttack,
+		bonus: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackStaminaBonus"),
+		mult: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackStamina")),
+	};
+	if (!weapon) weapon = KinkyDungeonPlayerDamage;
+	if (weapon && weapon.staminacost) data.attackCost = -weapon.staminacost;
+
+	KinkyDungeonSendEvent("attackCost", data);
+
+	data.attackCost = Math.min(0, (data.attackCost + data.bonus) * data.mult);
+	return data.attackCost;
 }
 
 function KinkyDungeonLaunchAttack(Enemy, skip) {

@@ -89,15 +89,23 @@ function KDProcessInput(type, data) {
 			break;
 		case "switchWeapon": {
 			KDDelayedActionPrune(["Action", "SwitchWeapon"]);
-			let oldweapon = KinkyDungeonPlayerWeapon;
-			KDGameData.PreviousWeapon = oldweapon;
+			if (!data.noOld) {
+				let oldweapon = KinkyDungeonPlayerWeapon;
+				KDGameData.PreviousWeapon = oldweapon;
+			}
 			KDSetWeapon(data.weapon);
 			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon(undefined, undefined, KinkyDungeonWeapons[data.weapon]));
+			let time = KinkyDungeonWeapons[data.weapon].heavy ? 2 : 1;
 			if (KinkyDungeonStatsChoice.has("Disorganized")) {
-				KinkyDungeonAdvanceTime(1);
-				KinkyDungeonSlowMoveTurns = 2;
+				time += 2;
 			} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
+				time -= 1;
+
+			if (time > 0) {
 				KinkyDungeonAdvanceTime(1);
+				if (time > 1)
+					KinkyDungeonSlowMoveTurns = time - 1;
+			}
 			KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonEquipWeapon").replace("WEAPONNAME", TextGet("KinkyDungeonInventoryItem" + data.weapon)), "white", 5);
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
 			break;
@@ -713,6 +721,9 @@ function KDProcessInput(type, data) {
 			break;
 
 		}
+	}
+	if (data.GameData) {
+		Object.assign(KDGameData, data.GameData);
 	}
 	return "";
 }

@@ -948,6 +948,13 @@ function KinkyDungeonSetMaxStats(delta) {
 	return {distractionRate: data.distractionRate, staminaRate: data.staminaRate};
 }
 
+/**
+ *
+ * @param {boolean} [NoOverride]
+ * @param {boolean} [e]
+ * @param {weapon} [weapon]
+ * @returns {boolean}
+ */
 function KinkyDungeonCanUseWeapon(NoOverride, e, weapon) {
 	let flags = {
 		HandsFree: false,

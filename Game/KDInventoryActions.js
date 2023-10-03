@@ -72,14 +72,13 @@ let KDInventoryAction = {
 	},
 	"Offhand": {
 		valid: (player, item) => {
-			if (!(item?.type == Weapon && KDWeapon(item).events?.some((e) => {
-				return e.offhand;
-			}))) return false;
-			return KinkyDungeonCanUseWeapon(false, undefined, item);
+			if (!(item?.type == Weapon && KDCanOffhand(item))) return false;
+			return KinkyDungeonCanUseWeapon(false, undefined, KDWeapon(item));
 		},
 		/** Happens when you click the button */
 		click: (player, item) => {
 			KDGameData.Offhand = item.name;
+			KDGameData.OffhandOld = item.name;
 			KinkyDungeonAdvanceTime(1, true, true);
 			KinkyDungeonDrawState = "Game";
 		},
