@@ -1152,6 +1152,7 @@ interface weapon {
 	distractEff?: number;
 	light?: boolean;
 	heavy?: boolean;
+	massive?: boolean;
 	boundBonus?: number;
 	tease?: boolean;
 	rarity: number;
@@ -1172,6 +1173,8 @@ interface weapon {
 	clumsy?: boolean;
 	/** Skip turns after attacking */
 	channel?: number;
+	/** Slows player after attacking */
+	channelslow?: boolean;
 	novulnerable?: boolean;
 	tags?: string[];
 	special?: {

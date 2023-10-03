@@ -76,7 +76,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "Offhand", "BattleRhythm", "LimitSurge", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "Offhand", "BattleRhythm", "LimitSurge", "CombatTraining", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -305,6 +305,14 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			events: [
 				{type: "LimitSurge", trigger: "toggleSpell", power: 5.0, mult: 1.0, time: 2},
 			]},
+
+		{name: "CombatTraining", tags: ["will", "stamina", "utility"], prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], level:1, type:"", passive: true, onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "CombatTraining", trigger: "attackCost", power: 0.4, mult: 0.01},
+				{type: "CombatTrainingSlowResist", trigger: "tick"},
+				{type: "CombatTrainingSlowRecovery", trigger: "tickAfter"},
+			]},
+
 
 		{name: "SecondWind0", tags: ["mana", "utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "SecondWind1", tags: ["mana", "utility"], spellPointCost: 2, school: "Special", manacost: 0, components: [], prerequisite: "SecondWind0", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},

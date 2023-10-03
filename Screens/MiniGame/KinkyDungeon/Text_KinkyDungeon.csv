@@ -590,7 +590,7 @@ KinkyDungeonPlayerReduction,"All Damage Reduction: "
 KinkyDungeonPlayerDamageResist,"You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier."
 KinkyDungeonPlayerDamageBuff,"You deal PERCENT more DAMAGETYPE damage."
 KinkyDungeonPlayerBindBuff,"Your bindings are PERCENT more effective."
-KinkyDungeonPlayerDamage,"Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage."
+KinkyDungeonPlayerDamage,"Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA."
 KinkyDungeonPlayerPlugged,"Plugged!"
 KinkyDungeonPlayerPluggedExtreme,"Plugged up!!!"
 KinkyDungeonPlayerDenied,"Denied! You won't be getting off that easy~"
@@ -2124,6 +2124,13 @@ AttackClericBind,"The Bast Cleric restrains you! (+RestraintAdded)"
 AttackClericStun,"A ray of light shoots out and paralyzes you! (DamageTaken)"
 AttackClericLock,"The Bast Cleric pulls out a lock and slips it on! (DamageTaken)"
 
+NameClericHigh,High Cleric
+KillClericHigh,"The High Cleric locks herself in ritual bondage as punishment for failure."
+AttackClericHigh,"The High Cleric holds up her staff and you feel intense vibrations throughout your body! (DamageTaken)"
+AttackClericHighBind,"The High Cleric summons animated restraints to bind you! (+RestraintAdded)"
+AttackClericHighStun,"A flurry of mummy wrappings encase you and stun you! (DamageTaken)"
+AttackClericHighLock,"The High Cleric smiles as she conjures many locks on your restraints! (DamageTaken)"
+
 NameSummonedSkeleton,Skeleton
 KillSummonedSkeleton,"The skeleton falls to pieces."
 AttackSummonedSkeletonBind,"The Skeleton restrains you! (+RestraintAdded)"
@@ -2316,6 +2323,8 @@ AttackLock,"The floating locks and chains rub themselves across your body! (Dama
 
 NameLockMaster,Masterful Lock
 KillLockMaster,"The lock falls to the floor, disenchanted."
+AttackLockMaster,The Masterful Lock clicks seductively in your face! (DamageTaken)
+AttackLockMasterLock,The Masterful Lock conjures a lock onto one of your restraints! (DamageTaken)
 
 NamePlayerGag,Conjured Gag
 KillPlayerGag,"The conjured gag buckles itself in place and falls."
@@ -4824,8 +4833,6 @@ KinkyDungeonSpellDescriptionBattleRhythm,"Stores 20% of the stamina spent from a
 KinkyDungeonSpellLimitSurge,"Limit Surge"
 KinkyDungeonSpellDescriptionLimitSurge,"Take 50 Willpower damage (this amount cannot be reduced) to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns."
 
-KinkyDungeonSpellCombatProwess,"Combat Prowess"
-KinkyDungeonSpellDescriptionCombatProwess,"Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%. Also, while you are above 0 WP you gain 1 slow resist."
 
 
 KinkyDungeonSpellRogueTraps,Devious Ingenuity
@@ -11312,22 +11319,22 @@ ItemPickupFrostSword,"You pick up an icy sword."
 
 KinkyDungeonInventoryItemShield,Targe
 KinkyDungeonInventoryItemShieldDesc,"Hide behind it while you still can."
-KinkyDungeonInventoryItemShieldDesc2,"+60 Block. Deals crush damage and stuns for 4 turns. Offhand: Gives the same block bonus."
+KinkyDungeonInventoryItemShieldDesc2,"+60 Block. Deals crush damage and stuns for 4 turns. Offhand: Gives the same block bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
 ItemPickupShield,"You pick up a wooden shield."
 
 KinkyDungeonInventoryItemShieldTower,Tower Shield
 KinkyDungeonInventoryItemShieldTowerDesc,"Now with more leg room."
-KinkyDungeonInventoryItemShieldTowerDesc2,"+120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns. Offhand: Gives the same block and armor bonus."
+KinkyDungeonInventoryItemShieldTowerDesc2,"+120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
 ItemPickupShieldTower,"You pick up a metal tower shield."
 
 KinkyDungeonInventoryItemShieldReinforced,Reinforced Shield
 KinkyDungeonInventoryItemShieldReinforcedDesc,"New and improved, but also clumsier."
-KinkyDungeonInventoryItemShieldReinforcedDesc2,"+80 Block, +15 Physical Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus."
+KinkyDungeonInventoryItemShieldReinforcedDesc2,"+80 Block, +15 Physical Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
 ItemPickupShieldReinforced,"You pick up a reinforced shield."
 
 KinkyDungeonInventoryItemShieldMagic,Runic Shield
 KinkyDungeonInventoryItemShieldMagicDesc,"For when you've been tied up one too many times..."
-KinkyDungeonInventoryItemShieldMagicDesc2,"+80 Block, +20 Magic Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus."
+KinkyDungeonInventoryItemShieldMagicDesc2,"+80 Block, +20 Magic Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
 ItemPickupShieldMagic,"You pick up a runic shield."
 
 KinkyDungeonSpellGreaterInvisibility,Vanish
@@ -12071,6 +12078,10 @@ KDWeaponTag_noHands,Hands-Free
 KDWeaponTagD_noHands,"Hands-Free: Weapon can be used without free hands."
 KDWeaponTag_shield,Shield
 KDWeaponTagD_shield,"Shield: This weapon is intended for defensive use."
+KDWeaponTag_heavy,Heavy
+KDWeaponTagD_heavy,"Heavy: This weapon takes +1 turns to switch to. Cannot be reduced to 0 by perks or upgrades."
+KDWeaponTag_massive,Massive
+KDWeaponTagD_massive,"Massive: This weapon either stuns or slows you after attacking with it. Handle with care!"
 KDWeaponTag_illum,Illumination
 KDWeaponTagD_illum,"Illumination: This weapon is a light source."
 
@@ -12083,3 +12094,12 @@ KinkyDungeonSpecialSpear,Make a ranged attack with the spear.
 KinkyDungeonSpecialMagicSpear,Make a ranged attack with the spear.
 
 KinkyDungeonSpellWeaponAttack,Ranged Attack
+
+
+KinkyDungeonSpellCombatTraining,"Combat Training"
+KinkyDungeonSpellDescriptionCombatTraining,"Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist."
+
+KDoffhandTooltip,This is your currently held offhand weapon. Click to switch to it.
+KDoffhand2Tooltip,This is your previously held weapon. Click to switch to it.
+
+KDCantWield,You can't hold the WPN in your current state.

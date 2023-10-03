@@ -20,6 +20,8 @@ let KDWeaponTags = {
 	"clumsy": true,
 	"offhand": true,
 	"shield": true,
+	"heavy": true,
+	"massive": true,
 	"illum": true,
 };
 
@@ -631,6 +633,12 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 			}
 			if (weapon?.clumsy) {
 				tags.push("clumsy");
+			}
+			if (weapon?.heavy) {
+				tags.push("heavy");
+			}
+			if (weapon?.massive) {
+				tags.push("massive");
 			}
 			if (weapon?.events) {
 				if (weapon.events.some((e) => {return e.offhand;})) {

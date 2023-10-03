@@ -204,10 +204,14 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 	let damage = KinkyDungeonPlayerDamageDefault;
 	let weapon = KinkyDungeonWeapons[KinkyDungeonPlayerWeapon];
 	if (weapon && weapon.noHands) HandsFree = true;
-	if (!KinkyDungeonCanUseWeapon(NoOverride, undefined, weapon)) {
+	if (!KinkyDungeonCanUseWeapon(NoOverride, undefined, weapon) && !weapon?.unarmed) {
 		damage = KinkyDungeonPlayerDamageDefault;
-		if (!NoOverride)
+		if (!NoOverride) {
+			if (weapon)
+				KinkyDungeonSendTextMessage(10, TextGet("KDCantWield").replace("WPN", TextGet("KinkyDungeonInventoryItem" + weapon.name)),
+					"#ff5555", 1, false, true);
 			KDSetWeapon('Unarmed', true);
+		}
 	} else if (KinkyDungeonPlayerWeapon && KinkyDungeonWeapons[KinkyDungeonPlayerWeapon]) {
 		damage = KinkyDungeonWeapons[KinkyDungeonPlayerWeapon];
 	}
@@ -1070,8 +1074,10 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 	let dmg = Damage;
 	let buffdmg = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg");
 	let channel = KinkyDungeonPlayerDamage?.channel || 0;
+	let slow = KinkyDungeonPlayerDamage?.channelslow || 0;
 	let predata = {
 		channel: channel,
+		slow: slow,
 		targetX: Enemy.x,
 		targetY: Enemy.y,
 		enemy: Enemy,
@@ -1137,6 +1143,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 	}
 	let data = {
 		channel: predata.channel,
+		slow: predata.slow,
 		targetX: Enemy.x,
 		targetY: Enemy.y,
 		enemy: Enemy,
@@ -1147,6 +1154,9 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 	};
 	KinkyDungeonSendEvent("playerAttack", data);
 
+	if (data.slow) {
+		KDGameData.MovePoints = Math.min(KDGameData.MovePoints, -1);
+	}
 	if (data.channel) {
 		KinkyDungeonSetFlag("channeling", data.channel);
 		KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, data.channel);
@@ -2113,7 +2123,7 @@ function KinkyDungeonSendWeaponEvent(Event, data) {
 			}
 		}
 	}
-	if (KDGameData.Offhand && (!KinkyDungeonPlayerDamage || KinkyDungeonPlayerDamage.name != KDGameData.Offhand)
+	if (KDGameData.Offhand
 		&& KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)) {
 		let weapon = KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand));
 		for (let e of weapon.events) {
@@ -2315,3 +2325,10 @@ function KDDealEnvironmentalDamage(x, y, aoe, Damage, Attacker) {
 	}
 }
 
+
+
+function KDCanOffhand(item) {
+	return item && KDWeapon(item)?.events?.some((e) => {
+		return e.offhand;
+	});
+}

@@ -1087,15 +1087,21 @@ function KinkyDungeonWordWrap(str, maxWidthTranslate, maxWidthEnglish) {
 		//Engilsh
 		while (str.length > maxWidth) {
 			let found = false;
+			if (str.slice(0, maxWidth).indexOf("\n") >= 0) {
+				let i = str.indexOf("\n");
+				res = res + [str.slice(0, i), newLineStr].join('');
+				str = str.slice(i + 1);
+				found = true;
+			} else
 			// Inserts new line at first whitespace of the line
-			for (let i = maxWidth - 1; i >= 0; i--) {
-				if (KinkyDungeonTestWhite(str.charAt(i),"English")) {
-					res = res + [str.slice(0, i), newLineStr].join('');
-					str = str.slice(i + 1);
-					found = true;
-					break;
+				for (let i = maxWidth - 1; i >= 0; i--) {
+					if (KinkyDungeonTestWhite(str.charAt(i),"English")) {
+						res = res + [str.slice(0, i), newLineStr].join('');
+						str = str.slice(i + 1);
+						found = true;
+						break;
+					}
 				}
-			}
 			// Inserts new line at maxWidth position, the word is too long to wrap
 			if (!found) {
 				res += [str.slice(0, maxWidth), newLineStr].join('');
@@ -1168,7 +1174,8 @@ function KinkyDungeonDrawMagic() {
 		if (KinkyDungeonPreviewSpell)
 			DrawTextKD(TextGet("KinkyDungeonMagicCost") + KinkyDungeonGetCost(spell), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale*0.6 + 185, KDTextGray0, KDTextTan, 24);
 		DrawTextKD(TextGet("KinkyDungeonMagicManaCost") + (spell.manacost * 10), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale*0.6 + 160, KDTextGray0, KDTextTan, 24);
-		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription"+ spell.name).replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)), 14, 32).split('\n');
+		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription"+ spell.name).replace(/[|]+/g, "\n").replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)), 14, 32).split('\n');
+
 		let i = 0;
 		for (let N = 0; N < textSplit.length; N++) {
 			DrawTextKD(textSplit[N],

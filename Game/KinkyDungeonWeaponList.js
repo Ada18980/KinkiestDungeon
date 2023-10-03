@@ -32,30 +32,34 @@ let KinkyDungeonWeapons = {
 	// Shields
 	"Shield": {name: "Shield", dmg: 2.0, chance: 0.6, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 2, shop: false, sfx: "HeavySwing",
 		crit: 1.1,
+		clumsy: true,
 		events: [
-			{type: "blockBuff", trigger: "tick", power: 0.6, offhand: true,},
+			{type: "blockBuff", trigger: "tick", power: 0.6, offhand: true, kind: "Shield",},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 4}
 		]},
 	"ShieldTower": {name: "ShieldTower", dmg: 4.0, chance: 0.25, staminacost: 6.0,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
-		crit: 1.1,
+		clumsy: true, heavy: true, massive: true,
+		crit: 1.1, channelslow: true,
 		events: [
-			{type: "armorBuff", trigger: "tick",  offhand: true,power: 3.0},
-			{type: "blockBuff", trigger: "tick",  offhand: true,power: 1.2},
-			{type: "slowLevel", trigger: "tick",  offhand: true,power: 1},
+			{type: "armorBuff", trigger: "tick", offhand: true, kind: "Shield", power: 3.0},
+			{type: "blockBuff", trigger: "tick", offhand: true, kind: "Shield", power: 1.2},
+			{type: "slowLevel", trigger: "tick", offhand: true, kind: "Shield", power: 1},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 7}
 		]},
 	"ShieldReinforced": {name: "ShieldReinforced", dmg: 3.0, chance: 0.4, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
 		crit: 1.1,
+		clumsy: true, heavy: true,
 		events: [
-			{type: "armorBuff", trigger: "tick",  offhand: true,power: 1.5},
-			{type: "blockBuff", trigger: "tick",  offhand: true,power: 0.8},
+			{type: "armorBuff", trigger: "tick", offhand: true, kind: "Shield", power: 1.5},
+			{type: "blockBuff", trigger: "tick", offhand: true, kind: "Shield", power: 0.8},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 5}
 		]},
 	"ShieldMagic": {name: "ShieldMagic", dmg: 3.0, chance: 0.4, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",
 		crit: 1.1,
+		clumsy: true, heavy: true,
 		events: [
-			{type: "spellWardBuff", trigger: "tick",  offhand: true,power: 2.0},
-			{type: "blockBuff", trigger: "tick",  offhand: true,power: 0.8},
+			{type: "spellWardBuff", trigger: "tick", offhand: true, kind: "Shield", power: 2.0},
+			{type: "blockBuff", trigger: "tick",  offhand: true, kind: "Shield", power: 0.8},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 5}
 		]},
 

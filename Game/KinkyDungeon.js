@@ -294,6 +294,8 @@ let KDOptOut = false;
 * OfferCount: number,
 * ItemID: number,
 * Offhand: string,
+* OffhandOld: string,
+* OffhandReturn: string,
 * ShopkeeperFee: number,
 * DollCount: number,
 * ChestsGenerated: string[],
@@ -449,6 +451,8 @@ let KDGameDataBase = {
 
 	OfferFatigue: 0,
 	Offhand: "",
+	OffhandOld: "",
+	OffhandReturn: "",
 
 	Favors: {},
 	PreviousWeapon: null,
@@ -2514,6 +2518,7 @@ let KDHardModeThresh = 10;
 let KDAwaitingModLoad = false;
 
 function KinkyDungeonHandleClick() {
+	KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 	if (KDAwaitingModLoad) return true;
 	if (KDProcessButtons()) return true;
 
