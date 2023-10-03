@@ -1815,7 +1815,14 @@ let KinkyDungeonSpellListEnemies = [
 		},
 		components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 3.5, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "ice", playerEffect: {name: "Chill", damage: "ice", power: 3, time: 3}},
 
-	{enemySpell: true, name: "HeatBolt", color: "#ffff00", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "fire", speed: 2, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 5}},
+	{enemySpell: true, name: "TomeArcane", school: "Element", manacost: 0, components: [], level:1, type:"hit", onhit:"instant",
+		noTerrainHit: true, power: 5, delay: 1, range: 1.5, size: 3, aoe: 1.5, lifetime: 1, damage: "arcane", playerEffect: {name: "HeatBlast", time: 1, damage: "arcane", power: 5}},
+
+	{enemySpell: true, name: "TomeBondage", school: "Element", manacost: 0, components: [], level:1, type:"hit", onhit:"instant",
+		noTerrainHit: true, power: 2.0, bind: 10, bindType: "Magic", delay: 1, range: 1.5, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsMagicChainsWeak", tags: ["chainRestraintsMagic"], count: 3, power: 5.0, damage: "chain"}},
+
+	{enemySpell: true, name: "HeatBolt", color: "#ffff00", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "fire",
+		speed: 2, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 5}},
 	{enemySpell: true, noFirstChoice: true, name: "Hairpin", color: "#ffffff", minRange: 2.9, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "pain", speed: 2, playerEffect: {name: "Hairpin", power: 2, damage: "pain", time: 1}},
 	{enemySpell: true, name: "PoisonDragonBlast",  bindType: "Vine", color: "#88ff88", sfx: "FireSpell", hitsfx: "Bones", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "grope", speed: 3, effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "Vines",

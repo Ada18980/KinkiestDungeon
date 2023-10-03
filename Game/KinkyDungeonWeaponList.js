@@ -207,12 +207,14 @@ let KinkyDungeonWeapons = {
 		events: [{type: "WeaponLight", trigger: "getLights", offhand: true, power: 3.5, color: "#6700ff"}]},
 	"ArcaneTome": {name: "ArcaneTome", dmg: 1.0, chance: 1.0, staminacost: 1.5, crit: 1.5,
 		type: "arcane", unarmed: false, novulnerable: true, magic: true, rarity: 2, shop: true, sfx: "Laser",
+		special: {type: "spell", selfCast: true, spell: "TomeArcane", prereq: "HasWill"},
 		events: [
 			{type: "Buff", kind: "Book", trigger: "tick", power: 0.05, buffType: "magicDamageBuff", offhand: true},
 		]},
 	"BondageTome": {name: "BondageTome", dmg: 1.0, chance: 1.0, staminacost: 1.5, crit: 1.25,
 		type: "chain", unarmed: false, novulnerable: true, magic: true, rarity: 2, shop: true, sfx: "Chain",
 		bindType: "Magic", bindEff: 1.5, bindcrit: 2.0,
+		special: {type: "spell", selfCast: true, spell: "TomeBondage", prereq: "HasWill"},
 		events: [
 			{type: "Buff", kind: "Book", trigger: "tick", power: 0.1, buffType: "BindAmp", offhand: true},
 		]},

@@ -2238,6 +2238,9 @@ function KDDisarmEnemy(enemy, time) {
 }
 
 let KDPrereqs = {
+	"HasWill": (enemy, e, data) => {
+		return KinkyDungeonStatWill >= 0.1;
+	},
 	"noCorruption": (enemy, e, data) => {
 		return !KinkyDungeonFlags.get("CurseTypeCorruption")
 		|| (KinkyDungeonFlags.get("CurseTypeLight") && KinkyDungeonFlags.get("CurseTypeCorruption")
