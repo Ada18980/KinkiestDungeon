@@ -2839,7 +2839,7 @@ let KDDialogue = {
 		clickFunction: (gagged, player) => {
 			let point = KinkyDungeonGetNearbyPoint(KDMapData.StartPosition.x + 10, KDMapData.StartPosition.y - 5, true,undefined, true, true);
 			if (!point) {
-				point = {x: KDMapData.StartPosition.x + 10, y: KDMapData.StartPosition.y - 7};
+				point = {x: KDMapData.StartPosition.x + 10, y: KDMapData.StartPosition.y - 5};
 			}
 			let e = DialogueCreateEnemy(point.x, point.y, "DollmakerBoss2");
 			e.hostile = 300;

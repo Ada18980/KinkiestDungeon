@@ -3111,7 +3111,7 @@ let KDEventMapSpell = {
 		"Buff": (e, spell, data) => {
 			if (KDCheckPrereq(null, e.prereq, e, data))
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-					id: spell.name + e.buffType,
+					id: (e.kind || spell.name) + e.buffType,
 					type: e.buffType,
 					power: e.power,
 					tags: e.tags,
@@ -4078,7 +4078,7 @@ let KDEventMapWeapon = {
 		"Buff": (e, weapon, data) => {
 			if (KDCheckPrereq(null, e.prereq, e, data))
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-					id: weapon.name + e.buffType,
+					id: (e.kind || weapon.name) + e.buffType,
 					type: e.buffType,
 					power: e.power,
 					tags: e.tags,
@@ -4091,7 +4091,7 @@ let KDEventMapWeapon = {
 			if (KDCheckPrereq(null, e.prereq, e, data))
 				for (let buff of e.buffTypes)
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-						id: weapon.name + buff,
+						id: (e.kind || weapon.name) + buff,
 						type: buff,
 						power: e.power,
 						tags: e.tags,
