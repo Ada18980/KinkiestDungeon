@@ -470,7 +470,7 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY) {
 	};
 	KinkyDungeonSendEvent("beforeNoise", data);
 	for (let e of KDMapData.Entities) {
-		if (!e.aware && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistEuclidean(e.x - data.x, e.y - data.y) <= data.radius) {
+		if ((!e.aware || e.idle) && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistEuclidean(e.x - data.x, e.y - data.y) <= data.radius) {
 			e.gx = data.x;
 			e.gy = data.y;
 			KDAddThought(e.id, "Search", 2, 2 + 3*KDistEuclidean(e.x - data.x, e.y - data.y));
@@ -554,8 +554,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		moveDirection = {x:0, y:0, delta:1};
 	}
 
-	let noiseX = targetX;
-	let noiseY = targetY;
+	//let noiseX = targetX;
+	//let noiseY = targetY;
 
 	if (enemy && player) {
 		entity = enemy;
@@ -713,8 +713,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			let size = (spell.size) ? spell.size : 1;
 			let xx = entity.x;
 			let yy = entity.y;
-			noiseX = entity.x;
-			noiseY = entity.y;
+			//noiseX = entity.x;
+			//noiseY = entity.y;
 			if (!spell.noDirectionOffset) {
 				if (!bullet || (bullet.spell && bullet.spell.cast && bullet.spell.cast.offset)) {
 					xx += moveDirection.x;
@@ -855,9 +855,9 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell(extraCast.spell, true), undefined, undefined, undefined);
 	}
 
-	if (spell.noise) {
+	/*if (spell.noise && !(spell.delay > 0)) {
 		KinkyDungeonMakeNoise(spell.noise, noiseX, noiseY);
-	}
+	}*/
 
 	if (!enemy && !bullet && player) { // Costs for the player
 		KinkyDungeonSetFlag("PlayerCombat", 8);
