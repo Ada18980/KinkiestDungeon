@@ -3002,7 +3002,7 @@ let KDEventMapSpell = {
 				if (buff) {
 					buff.power = Math.max(0, buff.power - data.delta*e.power);
 					buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.power)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 3);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.power)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 0.5);
 					if (buff.power == 0) buff.duration = 0;
 				}
 			}
@@ -3385,8 +3385,8 @@ let KDEventMapSpell = {
 			if (data.target && -data.attackCost > 0 && !KinkyDungeonFlags.get("BRStore" + data.target.id)) {
 				let player = KinkyDungeonPlayerEntity;
 				let buff = KDEntityGetBuff(player, "BattleRhythm");
-				let max = KinkyDungeonMultiplicativeStat(1 + KDEntityBuffedStat(player, "MaxBattleRhythm"));
-				let mult = 0.2 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(player, "MultBattleRhythm"));
+				let max = 0.4 * KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "MaxBattleRhythm"));
+				let mult = 0.1 * KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "MultBattleRhythm"));
 				let powerAdded = 0.1 * -data.attackCost * mult;
 				if (!buff) {
 					powerAdded = Math.min(powerAdded, max);
@@ -3413,7 +3413,7 @@ let KDEventMapSpell = {
 				}
 
 				// Set a flag to prevent duplicating this event
-				KinkyDungeonSetFlag("ArcaneStore" + data.castID, 1);
+				//KinkyDungeonSetFlag("BattleRhythm" + data.castID, 1);
 			}
 		},
 	},

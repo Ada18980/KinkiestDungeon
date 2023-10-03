@@ -674,7 +674,8 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonCoronaShock"), "#ff0000", playerEffect.time);
 				effect = true;
 			}
-		} else if (playerEffect.name == "CrystalBind") {
+		} else
+		if (playerEffect.name == "CrystalBind") {
 			if (KDTestSpellHits(spell, 0.0, 1.0)) {
 				let restraintAdd = KinkyDungeonGetRestraint({tags: ["crystalRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 				if (restraintAdd) {
