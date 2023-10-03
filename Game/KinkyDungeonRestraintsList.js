@@ -737,6 +737,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
 			{trigger: "beforeStruggleCalc", type: "latexDebuff", power: 0.15, inheritLinked: true},
+			{trigger: "afterPlayerDamage", type: "shatter", mult: 1.5, subMult: 0.5, count: 9, inheritLinked: true},
 		]
 	},
 	//endregion
