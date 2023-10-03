@@ -12042,7 +12042,7 @@ KinkyDungeonLockBulletFail,"You are caught in a constricting field! (Dmgdlt)"
 
 RestraintResin,Resin Coating
 RestraintResinDesc,"A layer of transparent resin derived from Green Latex. Unlike other forms of latex, this one is solid and fixes you in place."
-RestraintResinDesc2,"It's like you're an art piece!"
+RestraintResinDesc2,"It's like you're an art piece! If only you had some way to blast it off..."
 
 KDWindup,"You hear a motor whirring..."
 KDLatexBubble,A bubble of latex envelops you!
@@ -12166,3 +12166,6 @@ KinkyDungeonSpellTomeBondage,Chain Spirit
 KinkyDungeonSpellCastTomeBondage,You open the book and suddenly a binding aura surrounds you!
 KinkyDungeonSpellTomeArcane,Mathematical Error
 KinkyDungeonSpellCastTomeArcane,You open the book to an unfinished page and the magic ink short-circuits!
+
+KDShatterProgress,"Cracks begin to form in your RestraintName!"
+KDShatter,"Your RestraintName shatters and falls off!"

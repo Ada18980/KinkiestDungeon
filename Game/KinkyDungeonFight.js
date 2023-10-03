@@ -38,7 +38,8 @@ let KDBerserkerAmp = 0.3;
 let KDUnstableAmp = 0.6;
 
 let KDFightParams = {
-	KDFreezeMeleeMult: 2.0,
+	KDFreezeMeleeMult: 1.5,
+	KDFreezeShatterMult: 2.5,
 };
 
 let KinkyDungeonOpenObjects = KinkyDungeonTransparentObjects; // Objects bullets can pass thru
@@ -51,6 +52,7 @@ let KinkyDungeonFreezeDamageTypes = ["ice"];
 let KinkyDungeonSlowDamageTypes = ["crush", "slash", "pierce", "frost", "cold", "poison"];
 let KinkyDungeonVulnerableDamageTypes = ["tickle", "acid", "magicbind"];
 let KinkyDungeonMeltDamageTypes = ["fire"];
+let KinkyDungeonShatterDamageTypes = ["crush", "stun"];
 
 let KDDamageEquivalencies = {
 	"frost": "ice",
@@ -629,9 +631,12 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	if (KinkyDungeonGetBuffedStat(Enemy.buffs, "ArmorBreak")) armor -= Math.min(Math.max(0, armor), KinkyDungeonGetBuffedStat(Enemy.buffs, "ArmorBreak"));
 	if (KinkyDungeonGetBuffedStat(Enemy.buffs, "SpellResistBreak")) spellResist -= Math.min(Math.max(0, spellResist), KinkyDungeonGetBuffedStat(Enemy.buffs, "SpellResistBreak"));
 
-	if (Enemy.freeze > 0 && Damage && KinkyDungeonMeleeDamageTypes.includes(predata.type)) {
+	if (Enemy.freeze > 0 && Damage && KinkyDungeonShatterDamageTypes.includes(predata.type)) {
+		predata.dmg *= KDFightParams.KDFreezeShatterMult;
+	} else if (Enemy.freeze > 0 && Damage && KinkyDungeonMeleeDamageTypes.includes(predata.type)) {
 		predata.dmg *= KDFightParams.KDFreezeMeleeMult;
 	}
+
 
 	let miss = !(!Damage || !Damage.evadeable || KinkyDungeonEvasion(Enemy, (true && Spell), !KinkyDungeonMeleeDamageTypes.includes(predata.type), attacker));
 	if (Damage && !miss) {
@@ -735,7 +740,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			}
 
 			if (Enemy.freeze > 0 && predata.dmgDealt > 0) {
-				if ((KinkyDungeonMeleeDamageTypes.includes(predata.type))) {
+				if ((KinkyDungeonShatterDamageTypes.includes(predata.type)) || (KinkyDungeonMeleeDamageTypes.includes(predata.type))) {
 					Enemy.freeze = 0;
 				} else if (!["ice", "frost"].includes(predata.type)) {
 					Enemy.freeze = Math.max(0, Enemy.freeze - predata.dmgDealt * (predata.type == "fire" ? 0.75 : 0.25));
