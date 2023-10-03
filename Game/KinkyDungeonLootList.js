@@ -194,6 +194,8 @@ let KinkyDungeonLootTable = {
 		{name: "scroll_legs", minLevel: 0, weight:1, message:"LootBookshelfScroll", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "scroll_verbal", minLevel: 0, weight:1, message:"LootBookshelfScroll", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "trap_book", minLevel: 1, weight:5, message:"LootBookshelfTrap", messageColor:"#ff0000", messageTime: 3, allFloors: true},
+		{name: "ArcaneTome", minLevel: 0, weapon: "ArcaneTome", weight:2, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["ArcaneTome"]},
+		{name: "BondageTome", minLevel: 0, weapon: "BondageTome", weight:2, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["BondageTome"]},
 	],
 	"pearl": [
 		{name: "pearlReward", minLevel: 0, weight:1, message:"LootPearlChest", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["pearlChest"],},

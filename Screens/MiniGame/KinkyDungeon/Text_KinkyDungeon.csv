@@ -1231,7 +1231,8 @@ KinkyDungeonInventoryItemStaffBindDesc2,"+20% chain damage. Deals chain damage a
 
 KinkyDungeonInventoryItemArcaneCrystal,Arcane Orb
 KinkyDungeonInventoryItemArcaneCrystalDesc,"Look into my eyes..."
-KinkyDungeonInventoryItemArcaneCrystalDesc2,"Deals shadow damage. Can be used without hands. Can not critically strike."
+KinkyDungeonInventoryItemArcaneCrystalDesc2,"Deals arcane damage. Can be used without hands. Can not critically strike."
+ItemPickupArcaneCrystal,"You find a purple crystal. You feel your mystic powers flood into it."
 KinkyDungeonInventoryItemStaffFlame,Staff of Flame
 KinkyDungeonInventoryItemStaffFlameDesc,"A magical weapon made for novices to use."
 KinkyDungeonInventoryItemStaffFlameDesc2,"+15% fire damage. Deals fire damage. Offhand: Applies passive bonus."
@@ -1257,7 +1258,6 @@ ItemPickupStaffFrostbite,"You pick up a staff of frostbite. Your hand feels numb
 
 ItemPickupStaffElectric,"You pick up a staff of the storm. It tingles."
 ItemPickupStaffFlame,"You pick up a staff of flames. It feels warm."
-ItemPickupArcaneCrystal,"You find a purple crystal. You feel your mystic powers flood into it."
 ItemPickupStaffGlue,"You pick up a staff of slime."
 ItemPickupStaffPermafrost,"You pick up a staff of permafrost. It feels icy to the touch."
 
@@ -4641,6 +4641,8 @@ KDEffectTileTooltipLatexThin,Liquid Latex
 KDEffectTileTooltipLatexThinDesc,"Engulfs creatures"
 KDEffectTileTooltipSlime,Slime
 KDEffectTileTooltipSlimeDesc,"Slows creatures"
+KDEffectTileTooltipGlue,Glue
+KDEffectTileTooltipGlueDesc,"Slows creatures"
 KDEffectTileTooltipIce,Ice
 KDEffectTileTooltipIceDesc,"Chilling and slippery"
 KDEffectTileTooltipWater,Water
@@ -12143,3 +12145,16 @@ KinkyDungeonSpellDescriptionRogueOffhand,"Designate an Offhand weapon to gain pa
 
 KinkyDungeonSpellWizardOffhand,"Dual Wield (Wizard)"
 KinkyDungeonSpellDescriptionWizardOffhand,"Designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand."
+
+KinkyDungeonInventoryItemArcaneTome,Arcane Tome
+KinkyDungeonInventoryItemArcaneTomeDesc,"Contains advanced formulas and thrilling tales of thirsty wizards."
+KinkyDungeonInventoryItemArcaneTomeDesc2,"+5% magic damage. Offhand: Applies passive bonus."
+ItemPickupArcaneTome,"You find a magical tome."
+
+KinkyDungeonInventoryItemBondageTome,Tome of Bondage
+KinkyDungeonInventoryItemBondageTomeDesc,"Contains a malevolent spirit that wishes only to tie up damsels."
+KinkyDungeonInventoryItemBondageTomeDesc2,"+10% binding effectiveness. Offhand: Applies passive bonus."
+ItemPickupBondageTome,"You find a magical tome with a sealed padlock on it."
+
+KinkyDungeonSpellManaPoolUp,Leyline Map
+KinkyDungeonSpellDescriptionManaPoolUp,You know the location of ancient leylines and can draw upon 100 additional mana.
