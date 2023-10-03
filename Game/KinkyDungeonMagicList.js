@@ -76,7 +76,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "Offhand", "BattleRhythm", "LimitSurge", "CombatTraining", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "Offhand", "BattleRhythm", "LimitSurge", "Charge", "CombatTraining", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "ToolsOfTheTrade", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -120,7 +120,7 @@ let KinkyDungeonLearnableSpells = [
 		// Strength
 		["IronWill", "SteadfastGuard", "WillStruggle", "Parry", "WillParry", "SteelParry", "GuardBoost", "DaggerParry", "Riposte"],
 		// Dex
-		["Athlete", "Sneaky", "Evasive1", "Evasive2", "Evasive3", "Vault", "VaultAdv", "ArrowFireSpell", "ArrowVineSpell"],
+		["Athlete", "Sneaky", "Evasive1", "Evasive2", "Evasive3", "Vault", "ArrowFireSpell", "ArrowVineSpell"],
 		// Intellect
 		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser3"],
 		// Misc
@@ -256,6 +256,14 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{type: "RogueEscape", trigger: "postApply", power: 2, time: 12},
 			{type: "RogueEscape", trigger: "affinity", dist: 1.5},
 		]},
+
+
+		{name: "ToolsOfTheTrade", tags: ["will", "mana", "utility"], prerequisite: "RogueTargets", classSpecific: "Rogue", hideWithout: "RogueTargets", school: "Special",
+			manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "ToolsOfTheTrade", trigger: "toggleSpell"},
+			]},
+
 		{name: "Peasant", tags: ["offense"], school: "Special", manacost: 0, components: [], classSpecific: "Peasant", prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "Peasant", trigger: "beforeDamageEnemy", mult: 1.2},
 		]},
@@ -300,6 +308,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 			]},
 
+		{name: "Charge", tags: ["utility", "offense"], school: "Special", prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", manacost: 0, customCost: "SprintPlusAttack", components: [], level:1, type:"special", special: "Charge", noMiscast: true,
+			onhit:"", time:25, power: 0, range: 2.99, size: 1, damage: ""},
 
 		{name: "LimitSurge", tags: ["will", "stamina", "utility"], prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
@@ -489,6 +499,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				duration: -4,
 			}
 		},
+
+
 		{name: "Hailstorm", color: "#92e8c0", prerequisite: "ApprenticeIce", tags: ["ice", "aoe", "dot", "offense", "utility", "denial"], noUniqueHits: true, noise: 3, sfx: "FireSpell", school: "Elements", manacost: 7,
 			components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 1, power: 1.0, time: 2, range: 2.5, size: 3, aoe: 1.5, lifetime: 8, damage: "frost", playerEffect: {name: "Damage"},
 			pierceEnemies: true,
@@ -1645,6 +1657,15 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "BoundByFate", color: "#dddddd", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
 		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 7, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "BoundByFate", time: 6}},
 
+
+	{name: "Gunpowder", landsfx: "Bones", tags: ["fire", "aoe", "offense"], noise: 0, sfx: "FireSpell", school: "Elements", manacost: 0,
+		components: ["Arms"], level:1, type:"hit", onhit:"aoe", delay: 1, power: 0, range: 3.5, size: 3, aoe: 1, lifetime: 1, damage: "inert",
+		effectTileDurationMod: 0, effectTile: {
+			name: "Gunpowder",
+			duration: 400,
+		}
+	},
+
 	{enemySpell: true, name: "Feathers", color: "#ffffff", sfx: "Tickle", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"}},
 	{enemySpell: true, name: "NurseBola", color: "#ff2200", sfx: "Miss", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "NurseBola"}}, // Throws a chain which stuns the target for 1 turn
 	{enemySpell: true, name: "NurseSyringe", color: "#ff00ff", minRange: 1.5, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, speed: 1,
@@ -2178,8 +2199,11 @@ let KDPlayerCastConditions = {
 };
 
 let KDCustomCost = {
+	"SprintPlusAttack": (data) => {
+		data.cost = Math.round(10 * -(KDAttackCost() + KDSprintCost())) + "sp";
+	},
 	"stamina": (data) => {
-		data.cost = KinkyDungeonGetStaminaCost(data.spell) + "sp";
+		data.cost = Math.round(10 * KinkyDungeonGetStaminaCost(data.spell)) + "sp";
 	},
 	"arcane_blast": (data) => {
 		data.cost = Math.min(KinkyDungeonStatManaMax * 2.5, Math.round(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "ArcaneEnergy") * 10)) + "E";

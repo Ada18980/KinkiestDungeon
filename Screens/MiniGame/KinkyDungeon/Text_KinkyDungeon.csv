@@ -12103,3 +12103,35 @@ KDoffhandTooltip,This is your currently held offhand weapon. Click to switch to 
 KDoffhand2Tooltip,This is your previously held weapon. Click to switch to it.
 
 KDCantWield,You can't hold the WPN in your current state.
+
+KinkyDungeonSpellCharge,"Charge!"
+KinkyDungeonSpellDescriptionCharge,"Dash and make an attack attack against a target within 2 tiles. If it deals 20% of their current hp in damage, you knock them back and take their place, otherwise they take 20 crush damage from hitting the wall. If the attack misses, you still dash. Costs stamina equal to your sprint cost plus your attack cost."
+KinkyDungeonSpellCastCharge,You charge at the target!
+KinkyDungeonSpellTargetCharge,Choose a target.
+
+KDChargeFail_NoTarget,You need to target an enemy.
+KDChargeFail_NoStamina,You don't have enough stamina.
+KDChargeFail_NoSprint,You need to be able to sprint.
+KDChargeFail_NoAttack,You need to be able to attack.
+KDChargeFail_NoSpace,There is no room to dash!
+KDChargeFail_AttackMiss,You missed!
+
+KinkyDungeonSpellToolsOfTheTrade,"Tools of the Trade"
+KinkyDungeonSpellDescriptionToolsOfTheTrade,"Allows you to craft bombs, smoke bombs, and invisibility potions."
+
+rToolsOfTheTrade,"(You start having crafty thoughts...)|(Gunpowder can be obtained from chests or Alchemists)|(Ectoplasm can be obtained from ghosts)"
+rToolsOfTheTradeSmokeBomb,"(You craft a Smoke Bomb)"
+rToolsOfTheTradeBomb,"(You craft a Bomb)"
+rToolsOfTheTradePotionInvisibility,"(You craft an Invisibility Potion)"
+rToolsOfTheTradeFail,"(You don't have the required material)"
+dToolsOfTheTrade_SmokeBomb,(Use 1 Gunpowder to make a Smoke Bomb)
+dToolsOfTheTrade_Bomb,(Use 2 Gunpowder to make a Bomb)
+dToolsOfTheTrade_PotionInvisibility,(Use 3 Ectoplasm to make an Invisibility Potion)
+
+KinkyDungeonSpellGunpowder,Gunpowder
+KinkyDungeonInventoryItemGunpowder,Gunpowder
+KinkyDungeonInventoryItemGunpowderUse,"You toss some gunpowder on the floor! No picking it back up now..."
+KinkyDungeonInventoryItemGunpowderDesc,"Highly flammable. Do not eat."
+KinkyDungeonInventoryItemGunpowderDesc2,"Creates gunpowder tiles on the target area, which can be ignited."
+ItemPickupGunpowder,"You pick up a sack of gunpowder."
+KinkyDungeonSpellCastGunpowder,You toss some gunpowder on the floor!

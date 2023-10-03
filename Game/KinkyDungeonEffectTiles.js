@@ -67,6 +67,12 @@ let KDEffectTiles = {
 		priority: 5,
 		tags: ["bind", "rope", "flammable", "terrain"],
 	},
+	"Gunpowder": {
+		name: "Gunpowder",
+		duration: 400,
+		priority: 2,
+		tags: ["flammable"],
+	},
 	"Fabric": {
 		name: "Fabric",
 		duration: 30,
