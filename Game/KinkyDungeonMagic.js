@@ -1390,7 +1390,8 @@ function KinkyDungeonListSpells(Mode) {
 				&& YY < KDMaxSpellYY + spacing
 				&& (!spell.hideLearned || !learned)
 				&& (!spell.hideUnlearnable || prereq || learned)
-				&& (!spell.hideWithout || KDHasSpell(spell.hideWithout))
+				&& (learned || !spell.hideWithout || KDHasSpell(spell.hideWithout))
+				&& (!spell.hideWith || !KDHasSpell(spell.hideWith))
 				&& (!spell.arousalMode || KinkyDungeonStatsChoice.has("arousalMode"))
 				&& (selectedFilters.length == 0 || (selectedFilters.every((element) => {return genericfilters.includes(element) || (spell.tags && spell.tags.includes(element));})))
 				&& (!selectedFilters.includes("learnable") || (prereq || learned || prereqHost))

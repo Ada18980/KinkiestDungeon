@@ -696,6 +696,9 @@ let KDPerkStart = {
 	MC_Fighter: () => {
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("BattleRhythm"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Offhand"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+
 	},
 };
 

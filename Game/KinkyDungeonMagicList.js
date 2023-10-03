@@ -17,14 +17,6 @@ let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility"
 	onhit:"", time:25, power: 0, range: 2.8, size: 1, damage: ""};
 let KDBondageSpell = {name: "Bondage", tags: ["binding", "utility", "offense"], quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "Bondage", noMiscast: true,
 	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
-let KDOffhandSpell = {name: "Offhand", tags: ["utility", "defense", "offense"], quick: true, school: "Special", prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm",
-	manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
-	events: [
-		{type: "Offhand", trigger: "toggleSpell", },
-		{type: "Offhand", trigger: "draw", always: true,},
-		{type: "Offhand", trigger: "tick", always: true,},
-	],
-	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
 
 /**
  * These are starting spells
@@ -76,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "Offhand", "BattleRhythm", "LimitSurge", "Charge", "CombatTraining", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "ToolsOfTheTrade", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "Offhand", "RogueOffhand", "BattleRhythm", "LimitSurge", "Charge", "CombatTraining", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "ToolsOfTheTrade", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -233,8 +225,19 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		]},
 	],
 	"Special": [
-		KDOffhandSpell,
+		{name: "Offhand", tags: ["utility", "defense", "offense"], quick: true, school: "Special", prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			events: [
+				{type: "Offhand", trigger: "toggleSpell", },
+				{type: "Offhand", trigger: "draw", always: true,},
+				{type: "Offhand", trigger: "tick", always: true,},
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 
+		{name: "RogueOffhand", tags: ["utility", "defense", "offense"], school: "Special", prerequisite: "RogueTargets", classSpecific: "Rogue", hideWithout: "RogueTargets",
+			hideLearned: true, hideWith: "Offhand",
+			manacost: 0, components: [], level:1, spellPointCost: 1, type:"", passive: true, autoLearn: ["Offhand"],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 		{name: "RogueTargets", tags: ["utility"], school: "Special", manacost: 0, components: [], classSpecific: "Rogue", prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			//{type: "RogueTargets", trigger: "tick"},
 			//{type: "RogueTargets", trigger: "postQuest"},
