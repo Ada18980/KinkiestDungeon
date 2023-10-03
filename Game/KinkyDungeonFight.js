@@ -2366,7 +2366,14 @@ function KDDealEnvironmentalDamage(x, y, aoe, Damage, Attacker) {
 
 
 function KDCanOffhand(item) {
-	return item && KDWeapon(item)?.events?.some((e) => {
-		return e.offhand;
-	});
+	let data = {
+		item: item,
+		canOffhand: KDWeapon(item)?.events?.some((e) => {
+			return e.offhand;
+		}),
+	};
+
+	KinkyDungeonSendEvent("canOffhand", data);
+
+	return data.item && data.canOffhand;
 }

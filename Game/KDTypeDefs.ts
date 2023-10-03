@@ -1621,6 +1621,8 @@ interface spell {
 	hideUnlearnable?: boolean,
 	/** Spell is hidden if you didnt learn this spell */
 	hideWithout?: string,
+	/** Spell is hidden if you learned a specific spell */
+	hideWith?: string,
 	/** Spell is hidden if you DID learn it */
 	hideLearned?: boolean,
 	/** Automatically learns the spells when you learn it (thru magic screen) */

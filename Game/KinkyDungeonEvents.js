@@ -2966,6 +2966,7 @@ let KDEventMapSpell = {
 			if (KDGameData.Offhand && (
 				!KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)
 				|| !KinkyDungeonCanUseWeapon(false, undefined, KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)))
+				|| !KDCanOffhand(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand))
 			)) {
 				KDGameData.Offhand = "";
 			}
@@ -5625,6 +5626,15 @@ function KinkyDungeonHandleEnemyEvent(Event, e, enemy, data) {
  * @type {Object.<string, Object.<string, function(string, *): void>>}
  */
 let KDEventMapGeneric = {
+	"canOffhand": {
+		"RogueOffhand": (e, data) => {
+			if (data.canOffhand && KDHasSpell("RogueOffhand") && !KDHasSpell("BattleRhythm")) {
+				if (KDWeapon(data.item)?.clumsy || KDWeapon(data.item)?.heavy || KDWeapon(data.item)?.massive) {
+					data.canOffhand = false;
+				}
+			}
+		},
+	},
 	"calcEnemyTags": {
 		"perkTags": (e, data) => {
 			// This event adds tags to enemy tag determination based on perk prefs
