@@ -12437,11 +12437,19 @@ KinkyDungeonInventoryItemArcaneTome,Arcane Tome
 KinkyDungeonInventoryItemArcaneTomeDesc,"Contains advanced formulas and thrilling tales of thirsty wizards."
 KinkyDungeonInventoryItemArcaneTomeDesc2,"+5% magic damage. Offhand: Applies passive bonus."
 ItemPickupArcaneTome,"You find a magical tome."
+KinkyDungeonSpecialArcaneTome,"Open the book. What can go wrong?"
 
 KinkyDungeonInventoryItemBondageTome,Tome of Bondage
 KinkyDungeonInventoryItemBondageTomeDesc,"Contains a malevolent spirit that wishes only to tie up damsels."
 KinkyDungeonInventoryItemBondageTomeDesc2,"+10% binding effectiveness. Offhand: Applies passive bonus."
 ItemPickupBondageTome,"You find a magical tome with a sealed padlock on it."
+KinkyDungeonSpecialBondageTome,"Open the book. What can go wrong?"
 
 KinkyDungeonSpellManaPoolUp,Leyline Map
 KinkyDungeonSpellDescriptionManaPoolUp,You know the location of ancient leylines and can draw upon 100 additional mana.
+
+KDPrereqFailHasWill,"You don't want to open the book... (need willpower)"
+KinkyDungeonSpellTomeBondage,Chain Spirit
+KinkyDungeonSpellCastTomeBondage,You open the book and suddenly a binding aura surrounds you!
+KinkyDungeonSpellTomeArcane,Mathematical Error
+KinkyDungeonSpellCastTomeArcane,You open the book to an unfinished page and the magic ink short-circuits!

@@ -346,7 +346,7 @@ let KDBaseDamageTypes = {
 	manaTypesStrong:[],
 	willTypesVeryWeak:["tickle", "souldrain"],
 	willTypesWeak:["ice", "frost", "poison", "stun", "electric", "acid", "grope", "pierce", "slash", "crush", "unarmed", "glue", "chain"],
-	willTypesStrong:["cold", "fire", "charm", "soul", "pain", "shock", "plush"],
+	willTypesStrong:["cold", "fire", "charm", "soul", "pain", "shock", "plush", "arcane"],
 };
 
 function KDGetStamDamageThresh() {
@@ -421,7 +421,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 	};
 
 	if (KinkyDungeonStatsChoice.get("Masochist")) {
-		let types = ["pain", "electric", "slash", "pierce", "crush", "fire", "ice", "frost", "acid"];
+		let types = ["pain", "electric", "slash", "pierce", "crush", "fire", "ice", "frost", "acid", "arcane"];
 		data.distractionTypesStrong.push(...types);
 		data.arouseMod = Math.max(data.arouseMod, 2.0);
 		data.arouseTypes.push(...types);
