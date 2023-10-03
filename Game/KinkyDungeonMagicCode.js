@@ -72,6 +72,73 @@ let KinkyDungeonSpellSpecials = {
 	"dress": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		KinkyDungeonSetDress(spell.outfit);
 	},
+	"Charge": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let cost = KDAttackCost() + KDSprintCost();
+		let en = KinkyDungeonEntityAt(targetX, targetY);
+		let space = false;
+		let dash_x = targetX;
+		let dash_y = targetY;
+		let push_x = targetX;
+		let push_y = targetY;
+		if (en) {
+			if (KinkyDungeonHasStamina(-cost)) {
+				let dist = KDistChebyshev(en.x - entity.x, en.y - entity.y);
+				if (dist < 1.5) {
+					// if enemy is nearby we need room to push them
+					push_x = en.x*2 - entity.x;
+					push_y = en.y*2 - entity.y;
+					if (KinkyDungeonNoEnemy(push_x, push_y) && KDIsMovable(push_x, push_y)) {
+						space = true;
+					}
+				} else {
+					// Otherwise we need a space between us and the enemy
+					dash_x = Math.round((en.x + entity.x) / 2);
+					dash_y = Math.round((en.y + entity.y) / 2);
+					push_x = en.x + dash_x - entity.x;
+					push_y = en.y + dash_y - entity.y;
+					if (KinkyDungeonNoEnemy(dash_x, dash_y) && KDIsMovable(dash_x, dash_y)) {
+						space = true;
+					}
+				}
+				if (space) {
+					let result = KinkyDungeonLaunchAttack(en, 1);
+					if (result == "confirm" || result == "dialogue") return "Fail";
+					if (result == "hit" || result == "capture") {
+						if (KinkyDungeonNoEnemy(push_x, push_y) && KDIsMovable(push_x, push_y)) {
+							let xx = en.x;
+							let yy = en.y;
+							KDMoveEntity(en, push_x, push_y, false);
+							KDMovePlayer(xx, yy, true, true);
+						} else if (KinkyDungeonNoEnemy(dash_x, dash_y) && KDIsMovable(dash_x, dash_y)) {
+							KDMovePlayer(dash_x, dash_y, true, true);
+							KinkyDungeonDamageEnemy(en, {
+								type: "crush",
+								damage: 2,
+								time: 2,
+								bind: 0,
+							}, false, false, spell, undefined, entity);
+						}
+						KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonSpellCastCharge"), "#ffff00", 1, false);
+						KinkyDungeonChangeStamina(KDSprintCost());
+					} else if (result == "miss") {
+						if (KinkyDungeonNoEnemy(dash_x, dash_y) && KDIsMovable(dash_x, dash_y)) {
+							KDMovePlayer(dash_x, dash_y, true, true);
+						}
+						KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_AttackMiss"), "#ff5555", 1, true);
+					}
+					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg");
+					return "Cast";
+				} else {
+					KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoSpace"), "#ff5555", 1, true);
+				}
+			} else {
+				KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoStamina"), "#ff5555", 1, true);
+			}
+		} else {
+			KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoTarget"), "#ff5555", 1, true);
+		}
+		return "Fail";
+	},
 	"Bondage": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
@@ -953,7 +1020,7 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonTargetingSpellWeapon = null;
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
-			KinkyDungeonLaunchAttack(en, true);
+			KinkyDungeonLaunchAttack(en, 1);
 			return "Cast";
 		} else return "Fail";
 	},
@@ -961,7 +1028,7 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonTargetingSpellWeapon = null;
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
-			KinkyDungeonLaunchAttack(en, true);
+			KinkyDungeonLaunchAttack(en, 1);
 			return "Cast";
 		} else {
 			return KinkyDungeonActivateWeaponSpell(true) ? "Cast" : "Fail";

@@ -13,6 +13,12 @@ Vague todo:
 
 4.75 (Sep 2023)
 - Add Dual Wield to fighter class
+- Added Combat Training to fighter class
+- New Fighter ability: Charge (Toggle: If you hit an enemy with space behind them and deal at least 10% of their HP in damage, you knock them back and take their space.)
+- New Rogue ability: Tools of the Trade (Allows crafting bombs and smoke bombs from Gunpowder (dropped from alchemists), invisibility potions from ectoplasm)
+Vault changes:
+- Regular vault now allows you to slide under flying enemies
+- Removed Improved Vault
 
 4.74 (Sep 2023)
 - Added experimental new AI, let me know how things go

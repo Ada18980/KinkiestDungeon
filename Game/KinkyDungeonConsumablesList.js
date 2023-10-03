@@ -12,6 +12,7 @@ let KinkyDungeonConsumables = {
 	"SmokeBomb" : {name: "SmokeBomb", noHands: true, rarity: 2, costMod: -1, shop: true, type: "spell", spell: "Shroud", sfx: "FireSpell"},
 	"PotionInvisibility" : {name: "PotionInvisibility", potion: true, rarity: 3, costMod: -1, shop: true, type: "spell", spell: "Invisibility", sfx: "PotionDrink"},
 	"Ectoplasm" : {name: "Ectoplasm", noHands: true, rarity: 1, shop: false, type: "spell", spell: "LesserInvisibility", sfx: "Invis"},
+	"Gunpowder" : {name: "Gunpowder", rarity: 1, shop: true, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "Gunpowder", sfx: "FireSpell"},
 	"EarthRune" : {name: "EarthRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "Earthrune", sfx: "HeavySwing"},
 	"WaterRune" : {name: "WaterRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "Waterrune", sfx: "HeavySwing"},
 	"Bola" : {name: "Bola", rarity: 0, costMod: -1, shop: false, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "PlayerBola"},

@@ -734,6 +734,10 @@ let KDEffectTileCreateFunctionsCreator = {
 		KDInferno(newTile, existingTile, 4);
 		return true;
 	},
+	"Gunpowder": (newTile, existingTile) => {
+		KDInferno(newTile, existingTile, 20);
+		return true;
+	},
 	"Vines": (newTile, existingTile) => {
 		KDInferno(newTile, existingTile, 6);
 		return true;
@@ -948,6 +952,10 @@ let KDEffectTileCreateFunctionsExisting = {
 		KDInferno(existingTile, newTile, 4);
 		return true;
 	},
+	"Gunpowder": (newTile, existingTile) => {
+		KDInferno(existingTile, newTile, 20);
+		return true;
+	},
 	"Vines": (newTile, existingTile) => {
 		KDInferno(existingTile, newTile, 6);
 		return true;
@@ -1050,6 +1058,10 @@ let KDIgnitionSources = ["fire", "electric"];
  */
 let KDEffectTileBulletFunctions = {
 	"Ropes": (b, tile, d) => {
+		KDIgnition(b, tile, d);
+		return true;
+	},
+	"Gunpowder": (b, tile, d) => {
 		KDIgnition(b, tile, d);
 		return true;
 	},

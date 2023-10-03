@@ -556,8 +556,8 @@ function KinkyDungeonUpdateSingleEffectTileStandalone(delta, tile,) {
  * @param {number} d
  */
 function KinkyDungeonBulletInteractionSingleEffectTile(b, tile, d) {
-	if (tile.duration > 0 && KDEffectTileBulletFunctions[tile.functionName]) {
-		KDEffectTileBulletFunctions[tile.functionName](b, tile, d);
+	if (tile.duration > 0 && KDEffectTileBulletFunctions[tile.functionName || tile.name]) {
+		KDEffectTileBulletFunctions[tile.functionName || tile.name](b, tile, d);
 	}
 }
 

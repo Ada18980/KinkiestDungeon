@@ -3803,9 +3803,16 @@ function KDAttackCost(weapon) {
 	return data.attackCost;
 }
 
+/**
+ *
+ * @param {entity} Enemy
+ * @param {number} [skip]
+ * @returns {string}
+ */
 function KinkyDungeonLaunchAttack(Enemy, skip) {
 	let attackCost = KDAttackCost();
 	let capture = false;
+	let result = "fail";
 
 	if (Enemy && KDHelpless(Enemy) && Enemy.hp < 0.52) {
 		attackCost = 0;
@@ -3819,6 +3826,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				if (Enemy.specialdialogue) d = Enemy.specialdialogue; // Special dialogue override
 				KDStartDialog(d, Enemy.Enemy.name, true, Enemy.personality, Enemy);
 				noadvance = true;
+				result = "dialogue";
 			}
 			/*} else if (KDEnemyHasFlag(Enemy, "Shop")) {
 				for (let shop of KDShops) {
@@ -3838,6 +3846,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				KinkyDungeonSendActionMessage(10, TextGet("KDGameData.ConfirmAttack"), "#ff0000", 1);
 				KDGameData.ConfirmAttack = true;
 				noadvance = true;
+				result = "confirm";
 			}
 
 		} else {
@@ -3851,7 +3860,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				if (attackCost < 0 && KinkyDungeonStatsChoice.has("BerserkerRage")) {
 					KinkyDungeonChangeDistraction(0.7 - 0.5 * data.attackCost, false, 0.33);
 				}
-				KinkyDungeonAttackEnemy(data.target, {
+				if (KinkyDungeonAttackEnemy(data.target, {
 					damage: KinkyDungeonPlayerDamage.dmg,
 					type: KinkyDungeonPlayerDamage.type,
 					distract: KinkyDungeonPlayerDamage.distract,
@@ -3861,9 +3870,13 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					bindEff: KinkyDungeonPlayerDamage.bindEff,
 					boundBonus: KinkyDungeonPlayerDamage.boundBonus,
 					novulnerable: KinkyDungeonPlayerDamage.novulnerable,
-					tease: KinkyDungeonPlayerDamage.tease});
+					tease: KinkyDungeonPlayerDamage.tease})) {
+					result = "hit";
+				} else {
+					result = "miss";
+				}
 
-				if (data.skipTurn) skip = true;
+				if (data.skipTurn) skip = 1;
 				KinkyDungeonChangeStamina(data.attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "attack", 1);
 			} else {
@@ -3873,6 +3886,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				KinkyDungeonSendEvent("capture", {enemy: Enemy, attacker: KinkyDungeonPlayerEntity, skip: skip});
 				KinkyDungeonChangeStamina(attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "capture", 1);
+				result = "capture";
 			}
 
 			KinkyDungeonLastAction = "Attack";
@@ -3887,6 +3901,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 		if (!skip)
 			KinkyDungeonAdvanceTime(1);
 	}
+	return result;
 }
 
 function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
@@ -4172,13 +4187,15 @@ function KinkyDungeonMoveTo(moveX, moveY, willSprint, allowPass) {
 					xTo: moveX*2 - xx,
 					yTo: moveY*2 - yy,
 					cancelSprint: false,
-					sprintCostMult: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SprintEfficiency")),
+					sprintCost: 0,
 				};
+
+				data.sprintCost = KDSprintCost(data);
 
 				KinkyDungeonSendEvent("sprint", data);
 
 				if (!data.cancelSprint) {
-					KinkyDungeonChangeStamina((-KDSprintCostBase - KDSprintCostSlowLevel[Math.round(KinkyDungeonSlowLevel)]) * data.sprintCostMult, false, 1);
+					KinkyDungeonChangeStamina(data.sprintCost, false, 1);
 					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
 					if (KinkyDungeonSlowLevel < 2) {
 						// Move faster
@@ -4724,4 +4741,22 @@ function KDCanPassEnemy(player, Enemy) {
  */
 function KDIsInBounds(x, y, pad = 1) {
 	return x >= pad && x <= KDMapData.GridWidth-pad-1 && y >= pad && y <= KDMapData.GridHeight-pad-1;
+}
+
+/**
+ *
+ * @param {*} sprintdata
+ * @returns {number}
+ */
+function KDSprintCost(sprintdata) {
+	let data = {
+		sprintdata: sprintdata,
+		sprintCostMult: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SprintEfficiency")),
+		cost: (-KDSprintCostBase - KDSprintCostSlowLevel[Math.round(KinkyDungeonSlowLevel)]),
+		boost: 0,
+	};
+
+	KinkyDungeonSendEvent("calcSprint", data);
+
+	return (data.cost + data.boost) * data.sprintCostMult;
 }

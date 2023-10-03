@@ -2595,7 +2595,8 @@ let KDEventMapSpell = {
 		"VaultBasic": (e, spell, data) => {
 			if (!data.passThru) {
 				let enemy = KinkyDungeonEntityAt(data.nextPosx, data.nextPosy);
-				if (enemy && !enemy?.player && !KDIsImmobile(enemy) && (enemy.vulnerable || KinkyDungeonIsSlowed(enemy) || KinkyDungeonIsDisabled(enemy))) {
+				if (enemy && !enemy?.player && !KDIsImmobile(enemy)
+					&& (KDIsFlying(enemy) || enemy.vulnerable || KinkyDungeonIsSlowed(enemy) || KinkyDungeonIsDisabled(enemy))) {
 					data.passThru = true;
 				}
 			}
@@ -3728,6 +3729,13 @@ let KDEventMapSpell = {
 
 				}
 
+			}
+		},
+		"ToolsOfTheTrade": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				KDStartDialog("ToolsOfTheTrade");
 			}
 		},
 		"Offhand": (e, spell, data) => {

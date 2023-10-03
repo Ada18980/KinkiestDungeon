@@ -98,7 +98,7 @@ function KDProcessInput(type, data) {
 			let time = KinkyDungeonWeapons[data.weapon].heavy ? 2 : 1;
 			if (KinkyDungeonStatsChoice.has("Disorganized")) {
 				time += 2;
-			} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
+			} else if (KinkyDungeonStatsChoice.has("QuickDraw"))
 				time -= 1;
 
 			if (time > 0) {

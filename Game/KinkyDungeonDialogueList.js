@@ -714,6 +714,79 @@ let KDDialogue = {
 			},
 		}
 	},
+	"ToolsOfTheTrade": {
+		response: "Default",
+		inventory: true,
+		clickFunction: (gagged, player) => {
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+			"SmokeBomb": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					let amount = KinkyDungeonInventoryGetConsumable("Gunpowder")?.quantity;
+					if (amount >= 1) {
+						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("Gunpowder"), -1);
+						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("SmokeBomb"), 1);
+					} else {
+						KDGameData.CurrentDialogMsg = "ToolsOfTheTradeFail";
+					}
+					KDGameData.CurrentDialogStage = "";
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Bomb": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					let amount = KinkyDungeonInventoryGetConsumable("Gunpowder")?.quantity;
+					if (amount >= 2) {
+						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("Gunpowder"), -2);
+						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("Bomb"), 1);
+					} else {
+						KDGameData.CurrentDialogMsg = "ToolsOfTheTradeFail";
+					}
+					KDGameData.CurrentDialogStage = "";
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"PotionInvisibility": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					let amount = KinkyDungeonInventoryGetConsumable("Gunpowder")?.quantity;
+					if (amount >= 3) {
+						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("Ectoplasm"), -3);
+						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("PotionInvisibility"), 1);
+					} else {
+						KDGameData.CurrentDialogMsg = "ToolsOfTheTradeFail";
+					}
+					KDGameData.CurrentDialogStage = "";
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
 	"CommercePortal": {
 		response: "Default",
 		clickFunction: (gagged, player) => {

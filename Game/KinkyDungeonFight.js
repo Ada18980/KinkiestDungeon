@@ -1061,6 +1061,12 @@ function KinkyDungeonDisarm(Enemy, suff) {
 	return false;
 }
 
+/**
+ *
+ * @param {entity} Enemy
+ * @param {*} Damage
+ * @returns {boolean}
+ */
 function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 	let disarm = false;
 	if (Enemy.Enemy && Enemy.Enemy.disarm && Enemy.disarmflag > 0) {
@@ -1174,6 +1180,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 	if (data.vulnConsumed) {
 		KinkyDungeonSetEnemyFlag(Enemy, "removeVuln", 1);
 	}
+	return predata.eva;
 }
 
 let KDBulletWarnings = [];
@@ -1186,7 +1193,7 @@ function KDUpdateBulletEffects(b, d) {
 		let rad = b.bullet.aoe || 0.5;
 		for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
 			for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
-				if (AOECondition(b.x, b.y, b.x + X, b.y + Y, rad, KDBulletAoEMod(b)) && (X != 0 || Y != 0)) {
+				if (AOECondition(b.x, b.y, b.x + X, b.y + Y, rad, KDBulletAoEMod(b))) {
 					KDEffectTileInteractions(b.x + X, b.y + Y, b, d);
 				}
 			}
