@@ -1506,7 +1506,8 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 		}
 		//KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + b.bullet.spell.landsfx + ".ogg");
 	}
-	KinkyDungeonSendEvent("beforeBulletHit", {bullet: b, target: undefined, outOfRange:outOfRange, outOfTime: outOfTime});
+	let data = {bullet: b, target: undefined, outOfRange:outOfRange, outOfTime: outOfTime, noise: b.bullet.spell?.noise || b.bullet.noise};
+	KinkyDungeonSendEvent("beforeBulletHit", data);
 
 	if (b.bullet.cast && (!b.bullet.cast.chance || KDRandom() < b.bullet.cast.chance) && (!b.bullet.spell || !b.bullet.spell.noCastOnHit)) {
 		let xx = b.bullet.cast.tx;
@@ -1531,6 +1532,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 				hitevents: b.bullet.spell.hitevents,
 				faction: b.bullet.faction, lifetime: 1, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height
 			}};
+		if (data.noise) {
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+		}
 		KDMapData.Bullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false, d);
 		if (b.bullet.effectTile) {
@@ -1546,6 +1550,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 					hitevents: b.bullet.spell.hitevents, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
 			KDMapData.Bullets.push(newB);
 			KinkyDungeonUpdateSingleBulletVisual(newB, false, d);
+		}
+		if (data.noise) {
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
 		}
 		if (b.bullet.spell) {
 			let aoe = b.bullet.spell.aoe ? b.bullet.spell.aoe : 0.5;
@@ -1580,6 +1587,10 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 		KDMapData.Bullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false, d);
 
+		if (data.noise) {
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+		}
+
 		if (b.bullet.effectTile) {
 			KDCreateAoEEffectTiles(b.x, b.y, b.bullet.effectTile, b.bullet.effectTileDurationMod, (b.bullet.spell.effectTileAoE ? b.bullet.spell.effectTileAoE : ((b.bullet.spell.aoe) ? b.bullet.spell.aoe : 0.5)), undefined, b.bullet.spell.effectTileDensity, KDBulletAoEMod(b));
 		}
@@ -1587,6 +1598,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 		if (!KinkyDungeonBulletsCheckCollision(b, true, true, d)) {
 			if (!(b.bullet.spell && (b.bullet.spell.piercing || (b.bullet.spell.pierceEnemies && KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(b.x, b.y)))))) {
 				let ind = KDMapData.Bullets.indexOf(b);
+				if (data.noise) {
+					KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+				}
 				if (ind > -1)
 					KDMapData.Bullets.splice(ind, 1);
 				KinkyDungeonBulletsID[b.spriteID] = null;
@@ -1625,6 +1639,10 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 								distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, bindEff: b.bullet.spell.bindEff,
 							}, lifetime: b.bullet.spell.lifetime + LifetimeBonus, name:b.bullet.name+"Hit", width:1, height:1}};
 					KDMapData.Bullets.push(newB);
+
+					if (data.noise) {
+						KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+					}
 					KinkyDungeonUpdateSingleBulletVisual(newB, false, dd);
 				}
 			}
@@ -1641,6 +1659,10 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 				}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
 		KDMapData.Bullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false);
+
+		if (data.noise) {
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+		}
 
 		if (b.bullet.spell && (b.bullet.spell.playerEffect || b.bullet.playerEffect) && AOECondition(b.x, b.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, b.spell.aoe, KDBulletAoEMod(b))) {
 			KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, b.bullet.damage.type, b.bullet.playerEffect ? b.bullet.playerEffect : b.bullet.spell.playerEffect, b.bullet.spell, b.bullet.faction, b);
@@ -1667,6 +1689,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 	} else if (b.bullet.hit == "cast" && b.bullet.spell && b.bullet.spell.spellcasthit) {
 		let cast = b.bullet.spell.spellcasthit;
 		let rad = (b.bullet.spell.aoe) ? b.bullet.spell.aoe : 0;
+		if (data.noise) {
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+		}
 		if (cast.countPerCast) {
 			for (let cc = 0; cc < cast.countPerCast; cc++) {
 				let spell = KinkyDungeonFindSpell(cast.spell, true);
@@ -1703,6 +1728,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 				}};
 			KDMapData.Bullets.push(newB);
 			KinkyDungeonUpdateSingleBulletVisual(newB, false);
+			if (data.noise) {
+				KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+			}
 
 			KinkyDungeonSetFlag("teleported", 1);
 			KDMovePlayer(b.x, b.y, true);
@@ -1713,6 +1741,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 			KDCreateAoEEffectTiles(b.x, b.y, b.bullet.effectTile, b.bullet.effectTileDurationMod, (b.bullet.spell.effectTileAoE ? b.bullet.spell.effectTileAoE : ((b.bullet.spell.aoe) ? b.bullet.spell.aoe : 0.5)), undefined, b.bullet.spell.effectTileDensity, KDBulletAoEMod(b));
 		}
 	} else if (b.bullet.hit == "summon") {
+		if (data.noise) {
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+		}
 		if (b.bullet.effectTile) {
 			KDCreateAoEEffectTiles(b.x, b.y, b.bullet.effectTile, b.bullet.effectTileDurationMod, (b.bullet.spell.effectTileAoE ? b.bullet.spell.effectTileAoE : ((b.bullet.spell.aoe) ? b.bullet.spell.aoe : 0.5)), undefined, b.bullet.spell.effectTileDensity, KDBulletAoEMod(b));
 		}

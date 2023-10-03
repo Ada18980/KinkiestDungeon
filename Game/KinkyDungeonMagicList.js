@@ -540,6 +540,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			events: [{type: "Knockback", trigger: "bulletHitEnemy", power: 0.8, dist: 1.0},]},
 
 		{name: "Firebolt", tags: ["fire", "bolt", "offense"], prerequisite: "ApprenticeFire", sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt",
+			noise: 3,
 			bulletColor: 0xb83716, bulletLight: 4,
 			hitColor: 0xe64539, hitLight: 6,
 			hideWarnings: true,
@@ -548,7 +549,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				name: "Ember",
 				duration: 3,
 			}}, // Throws a fireball in a direction that moves 1 square each turn
-		{name: "Fireblast", prerequisite: "Firebolt", tags: ["fire", "bolt", "aoe", "offense"], noise: 4, sfx: "FireSpell", school: "Elements", manacost: 6, components: ["Arms"], level:1,
+		{name: "Fireblast", prerequisite: "Firebolt", tags: ["fire", "bolt", "aoe", "offense"], sfx: "FireSpell", school: "Elements", manacost: 6, components: ["Arms"], level:1,
+			noise: 5,
 			upcastFrom: "Firebolt", upcastLevel: 1,
 			hideWarnings: true,
 			bulletColor: 0xb83716, bulletLight: 6.5,
@@ -564,7 +566,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				duration: 5,
 			}}, // Throws a fireball in a direction that moves 1 square each turn
 
-		{name: "Fireball", prerequisite: "Fireblast", tags: ["fire", "bolt", "aoe", "offense"], noise: 8, sfx: "FireSpell", school: "Elements", manacost: 11, components: ["Arms"], level:1,
+		{name: "Fireball", prerequisite: "Fireblast", tags: ["fire", "bolt", "aoe", "offense"], sfx: "FireSpell", school: "Elements", manacost: 11, components: ["Arms"], level:1,
+			noise: 8,
 			upcastFrom: "Firebolt", upcastLevel: 2,
 			bulletColor: 0xb83716, bulletLight: 8,
 			hitColor: 0xe64539, hitLight: 11,
@@ -597,6 +600,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			projectileTargeting:true, onhit:"", time: 4,  power: 3.5, delay: 0, range: 50, damage: "frost", speed: 3, playerEffect: {name: "Chill", damage: "ice", power: 3, time: 3},
 			events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 4, power: 0},]},
 		{name: "Snowball", color: "#92e8c0", tags: ["ice", "bolt", "offense"], prerequisite: "ApprenticeIce", sfx: "Freeze", hitsfx: "LesserFreeze", school: "Elements", manacost: 5, components: ["Arms"], level:1, type:"bolt",
+			noise: 5,
 			bulletColor: 0x92e4e8, bulletLight: 6,
 			projectileTargeting:true, onhit:"lingering", time: 3,  power: 2.0, delay: 0, lifetime: 6, lifetimeHitBonus: 2, range: 50, aoe: 2.5, damage: "frost", speed: 3, playerEffect: {name: "Damage"},
 			effectTileDurationMod: 2, effectTile: {
@@ -604,6 +608,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				duration: 6,
 			}, effectTileDensity: 0.5},
 		{name: "IceLance", color: "#92e8c0", tags: ["ice", "bolt", "offense", "aoe"], prerequisite: "Icicles", sfx: "Lightning", hitsfx: "Freeze", school: "Elements", pierceEnemies: true,
+			noise: 4,
 			upcastFrom: "Icicles", upcastLevel: 2,
 			manacost: 7, components: ["Arms"], level:1, type:"bolt",
 			bulletColor: 0x92e4e8, bulletLight: 4,
@@ -615,6 +620,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			projectileTargeting:true, onhit:"", time: 3,  power: 10, delay: 0, range: 50, damage: "frost", speed: 6, playerEffect: {name: "Damage"},
 			events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 3, power: 0},]},
 		{name: "IceOrb", color: "#92e8c0", tags: ["ice", "bolt", "offense", "utility", "aoe"], prerequisite: "Snowball", sfx: "LesserFreeze", hitsfx: "LesserFreeze", school: "Elements",
+			noise: 6,
 			upcastFrom: "Snowball", upcastLevel: 1,
 			manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, pierceEnemies: true, delay: 0, range: 50, damage: "frost", speed: 2,
 			bulletColor: 0x92e4e8, bulletLight: 5,
@@ -622,7 +628,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				name: "Ice",
 				duration: 10,
 			}},
-		{name: "Icicles", tags: ["ice", "bolt", "offense"], prerequisite: "Icebolt", noise: 3, sfx: "MagicSlash", school: "Elements", manacost: 6, components: ["Arms"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
+		{name: "Icicles", tags: ["ice", "bolt", "offense"], prerequisite: "Icebolt", sfx: "MagicSlash", school: "Elements", manacost: 6, components: ["Arms"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
+			noise: 3,
 			spellcast: {spell: "Icicle", target: "target", directional:true, offset: false}, channel: 3},
 		{name: "BoulderLaunch", tags: ["earth", "bolt", "offense"], prerequisite: "ApprenticeEarth", sfx: "Telekinesis", school: "Elements", manacost: 2, components: ["Legs"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 4, delay: 1, power: 4, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "Boulder", target: "target", directional:true, offset: false}, channel: 1},
@@ -1538,9 +1545,12 @@ let KinkyDungeonSpellListEnemies = [
 		power: 3, delay: 0, range: 50, damage: "frost", speed: 2, playerEffect: {name: "Damage"},
 		bulletColor: 0x92e4e8, bulletLight: 3,
 		events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 3, power: 0},]},
-	{name: "Boulder", sfx: "Bones", hitsfx: "HeavySwing", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", block: 8, time: 4,  power: 4, delay: 0, range: 50, damage: "crush", speed: 2, playerEffect: {name: "Damage"}}, // Throws a blast of ice which stuns the target for 4 turns
+	{name: "Boulder", sfx: "Bones", hitsfx: "HeavySwing", school: "Elements", manacost: 3, components: ["Arms"], level:1,
+		noise: 5,
+		type:"bolt", projectileTargeting:true, onhit:"", block: 8, time: 4,  power: 4, delay: 0, range: 50, damage: "crush", speed: 2, playerEffect: {name: "Damage"}}, // Throws a blast of ice which stuns the target for 4 turns
 	{allySpell: true, name: "BoulderKicked", sfx: "Bones", hitsfx: "HeavySwing", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 4,  power: 4, delay: 0, range: 50, damage: "crush", speed: 2, playerEffect: {name: "Damage"}}, // Throws a blast of ice which stuns the target for 4 turns
 	{name: "BigBoulder", sfx: "Bones", hitsfx: "HeavySwing", school: "Elements", manacost: 7, components: ["Arms"], level:1, type:"bolt", noDirectDamage: true,
+		noise: 7,
 		projectileTargeting:true, alwaysCollideTags: ["summonedRock"], onhit:"aoe", block: 20, time: 8,  power: 12, aoe: 1.5, size: 3, delay: 0, lifetime: 1, range: 50, damage: "crush", speed: 1, playerEffect: {name: "Damage"}}, // Throws a blast of ice which stuns the target for 4 turns
 
 
