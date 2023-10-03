@@ -2368,7 +2368,9 @@ function KDDealEnvironmentalDamage(x, y, aoe, Damage, Attacker) {
 function KDCanOffhand(item) {
 	let data = {
 		item: item,
-		canOffhand: KDWeapon(item)?.events?.some((e) => {
+		is2handed: KDWeapon(item)?.clumsy,
+		is2handedPrimary: KinkyDungeonPlayerDamage?.clumsy,
+		canOffhand: !KinkyDungeonPlayerDamage?.clumsy && KDWeapon(item)?.events?.some((e) => {
 			return e.offhand;
 		}),
 	};
