@@ -68,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "Offhand", "RogueOffhand", "BattleRhythm", "LimitSurge", "Charge", "CombatTraining", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "ToolsOfTheTrade", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "Offhand", "RogueOffhand", "WizardOffhand", "BattleRhythm", "LimitSurge", "Charge", "CombatTraining", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "ToolsOfTheTrade", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -236,6 +236,17 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 		{name: "RogueOffhand", tags: ["utility", "defense", "offense"], school: "Special", prerequisite: "RogueTargets", classSpecific: "Rogue", hideWithout: "RogueTargets",
 			hideLearned: true, hideWith: "Offhand",
+			events: [
+				{trigger: "canOffhand", type: "RogueOffhand"},
+			],
+			manacost: 0, components: [], level:1, spellPointCost: 1, type:"", passive: true, autoLearn: ["Offhand"],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+		{name: "WizardOffhand", tags: ["utility", "defense", "offense"], school: "Special", prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen",
+			hideLearned: true, hideWith: "Offhand",
+			events: [
+				{trigger: "canOffhand", type: "WizardOffhand"},
+				{trigger: "tick", type: "WizardOffhand"},
+			],
 			manacost: 0, components: [], level:1, spellPointCost: 1, type:"", passive: true, autoLearn: ["Offhand"],
 			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 		{name: "RogueTargets", tags: ["utility"], school: "Special", manacost: 0, components: [], classSpecific: "Rogue", prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [

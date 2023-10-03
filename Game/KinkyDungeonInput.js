@@ -108,6 +108,14 @@ function KDProcessInput(type, data) {
 			}
 			KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonEquipWeapon").replace("WEAPONNAME", TextGet("KinkyDungeonInventoryItem" + data.weapon)), "white", 5);
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
+
+			// Reequip offhand if able
+			if (KDGameData.OffhandOld && !KDGameData.Offhand
+				&& KinkyDungeonInventoryGetWeapon(KDGameData.OffhandOld)
+				&& KinkyDungeonCanUseWeapon(false, undefined, KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.OffhandOld)))
+				&& KDCanOffhand(KinkyDungeonInventoryGetWeapon(KDGameData.OffhandOld))) {
+				KDGameData.Offhand = KDGameData.OffhandOld;
+			}
 			break;
 		}
 		case "unequipWeapon":

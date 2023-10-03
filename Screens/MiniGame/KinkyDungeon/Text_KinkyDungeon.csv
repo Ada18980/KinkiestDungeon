@@ -1218,35 +1218,35 @@ KDDollmakerTooManyDolls,"You are unable to control more than 3 dolls. The new do
 
 KinkyDungeonInventoryItemStaffIncineration,Staff of Incineration
 KinkyDungeonInventoryItemStaffIncinerationDesc,"A magical weapon made for intermediates to use."
-KinkyDungeonInventoryItemStaffIncinerationDesc2,"+25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn."
+KinkyDungeonInventoryItemStaffIncinerationDesc2,"+25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn. Offhand: Applies passive bonus."
 KinkyDungeonInventoryItemStaffStorm,Staff of Storms
 KinkyDungeonInventoryItemStaffStormDesc,"A magical weapon made for intermediates to use."
-KinkyDungeonInventoryItemStaffStormDesc2,"+20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area."
+KinkyDungeonInventoryItemStaffStormDesc2,"+20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area. Offhand: Applies electric damage bonus."
 KinkyDungeonInventoryItemStaffFrostbite,Staff of Frostbite
 KinkyDungeonInventoryItemStaffFrostbiteDesc,"A magical weapon with a 33% chance to freeze the target for 4 turns."
-KinkyDungeonInventoryItemStaffFrostbiteDesc2,"+20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn."
+KinkyDungeonInventoryItemStaffFrostbiteDesc2,"+20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn. Offhand: Applies ice damage bonus."
 KinkyDungeonInventoryItemStaffBind,Staff of Binding
 KinkyDungeonInventoryItemStaffBindDesc,"A magical weapon made to use on novices."
-KinkyDungeonInventoryItemStaffBindDesc2,"+20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency."
+KinkyDungeonInventoryItemStaffBindDesc2,"+20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency. Offhand: Applies chain damage bonus."
 
 KinkyDungeonInventoryItemArcaneCrystal,Arcane Orb
 KinkyDungeonInventoryItemArcaneCrystalDesc,"Look into my eyes..."
 KinkyDungeonInventoryItemArcaneCrystalDesc2,"Deals shadow damage. Can be used without hands. Can not critically strike."
 KinkyDungeonInventoryItemStaffFlame,Staff of Flame
 KinkyDungeonInventoryItemStaffFlameDesc,"A magical weapon made for novices to use."
-KinkyDungeonInventoryItemStaffFlameDesc2,"+15% fire damage. Deals fire damage."
+KinkyDungeonInventoryItemStaffFlameDesc2,"+15% fire damage. Deals fire damage. Offhand: Applies passive bonus."
 KinkyDungeonInventoryItemStaffGlue,Staff of Slime
 KinkyDungeonInventoryItemStaffGlueDesc,"A slimy and magical implement.."
-KinkyDungeonInventoryItemStaffGlueDesc2,"+10% glue damage. Deals glue damage."
+KinkyDungeonInventoryItemStaffGlueDesc2,"+10% glue damage. Deals glue damage. Offhand: Applies passive bonus."
 KinkyDungeonInventoryItemStaffElectric,Staff of Shocking
 KinkyDungeonInventoryItemStaffElectricDesc,"A magical weapon made for novices to use."
-KinkyDungeonInventoryItemStaffElectricDesc2,"+10% electric damage. Deals electric damage. 10% chance to stun for 3 turns."
+KinkyDungeonInventoryItemStaffElectricDesc2,"+10% electric damage. Deals electric damage. 10% chance to stun for 3 turns. Offhand: Applies electric damage bonus."
 KinkyDungeonInventoryItemStaffPermafrost,Staff of Permafrost
 KinkyDungeonInventoryItemStaffPermafrostDesc,"A magical weapon with a 15% chance to freeze the target for 4 turns."
-KinkyDungeonInventoryItemStaffPermafrostDesc2,"+10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration)"
+KinkyDungeonInventoryItemStaffPermafrostDesc2,"+10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration). Offhand: Applies ice damage bonus."
 KinkyDungeonInventoryItemStaffChain,Staff of Chains
 KinkyDungeonInventoryItemStaffChainDesc,"A magical weapon made for novices in the art of bondage."
-KinkyDungeonInventoryItemStaffChainDesc2,"+10% chain damage. Deals chain damage. 150% binding efficiency."
+KinkyDungeonInventoryItemStaffChainDesc2,"+10% chain damage. Deals chain damage. 150% binding efficiency. Offhand: Applies chain damage bonus."
 ItemPickupStaffChain,"You pick up a staff of chains. You have fond memories..."
 
 ItemPickupStaffBind,"You pick up a staff of binding. You remember these from wizard school..."
@@ -1353,10 +1353,10 @@ KinkyDungeonInventoryItemDragonslaverDesc,"A powerful weapon with an ancient mec
 KinkyDungeonInventoryItemDragonslaverDesc2,"Deals slash damage. Can make ranged attacks.. Drains 0.75% ancient energy to fire a line of belts that deal 40 chain damage and 40 binding."
 KinkyDungeonInventoryItemTheEncaser,Metamorphosis
 KinkyDungeonInventoryItemTheEncaserDesc,"You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked."
-KinkyDungeonInventoryItemTheEncaserDesc2,"Deals glue damage. Roots targets for 2 turns on a hit."
+KinkyDungeonInventoryItemTheEncaserDesc2,"Deals glue damage. Roots targets for 2 turns on a hit. Offhand: Roots targets on hit."
 KinkyDungeonInventoryItemFourSeasons,Four Seasons
 KinkyDungeonInventoryItemFourSeasonsDesc,"Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element."
-KinkyDungeonInventoryItemFourSeasonsDesc2,"Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage."
+KinkyDungeonInventoryItemFourSeasonsDesc2,"Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus."
 KinkyDungeonInventoryItemArbiter,The Arbiter
 KinkyDungeonInventoryItemArbiterDesc,"I have altered the rules. Pray I do not alter them further."
 KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm"
@@ -12066,14 +12066,16 @@ AttackGlueTechnicianLocks,"The technician inspects your restraints and adds a lo
 
 KDEffectTileTooltipCMDGlue,"Quite sticky, innit?"
 
+KDWeaponTag_bow,Bow
+KDWeaponTagD_bow,"Bow: This is a ranged weapon with a weapon ability."
 KDWeaponTag_magic,Magic
 KDWeaponTagD_magic,"Magic: Ignores evasion of ghost type enemies, can be used with abilities that require magic weapons."
 KDWeaponTag_light,Light
 KDWeaponTagD_light,"Light: Can be used to cut even with bound arms. 50% reduced accuracy penalty from being bound. Can be held in mouth."
 KDWeaponTag_offhand,Offhand
 KDWeaponTagD_offhand,"Offhand: This weapon can be dual-wielded by some classes."
-KDWeaponTag_clumsy,Clumsy
-KDWeaponTagD_clumsy,"Clumsy: Weapon can't be used while arms are tied."
+KDWeaponTag_clumsy,2 Handed
+KDWeaponTagD_clumsy,"2 Handed: While wielding this as your primary weapon, you cannot wield an offhand weapon. Also this weapon can't be used while arms are tied."
 KDWeaponTag_noHands,Hands-Free
 KDWeaponTagD_noHands,"Hands-Free: Weapon can be used without free hands."
 KDWeaponTag_shield,Shield
@@ -12137,4 +12139,7 @@ ItemPickupGunpowder,"You pick up a sack of gunpowder."
 KinkyDungeonSpellCastGunpowder,You toss some gunpowder on the floor!
 
 KinkyDungeonSpellRogueOffhand,"Dual Wield (Rogue)"
-KinkyDungeonSpellDescriptionRogueOffhand,"Designate an Offhand weapon to gain passive effects such as a light source, or extra crit damage.|Rogues cannot wield clumsy, heavy, or massive weapons in the offhand unless they are multiclass."
+KinkyDungeonSpellDescriptionRogueOffhand,"Designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass."
+
+KinkyDungeonSpellWizardOffhand,"Dual Wield (Wizard)"
+KinkyDungeonSpellDescriptionWizardOffhand,"Designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand."

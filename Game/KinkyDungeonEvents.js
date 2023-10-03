@@ -2499,6 +2499,22 @@ function KinkyDungeonHandleOutfitEvent(Event, e, outfit, data) {
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
  */
 let KDEventMapSpell = {
+	"canOffhand": {
+		"RogueOffhand": (e, spell, data) => {
+			if (data.canOffhand && KDHasSpell("RogueOffhand") && !KDHasSpell("BattleRhythm")) {
+				if (KDWeapon(data.item)?.clumsy || KDWeapon(data.item)?.heavy || KDWeapon(data.item)?.massive) {
+					data.canOffhand = false;
+				}
+			}
+		},
+		"WizardOffhand": (e, spell, data) => {
+			if (data.canOffhand && KDHasSpell("WizardOffhand") && !KDHasSpell("BattleRhythm")) {
+				if (!KDWeapon(data.item)?.magic) {
+					data.canOffhand = false;
+				}
+			}
+		},
+	},
 	"attackCost": {
 		"CombatTraining": (e, spell, data) => {
 			if (KinkyDungeonStatWill > 0) {
@@ -2952,6 +2968,20 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
+		"WizardOffhand": (e, spell, data) => {
+			if (!KDHasSpell("BattleRhythm")) {
+				if (KDGameData.Offhand && KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)) {
+					let weapon = KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand));
+					if (weapon?.clumsy || weapon?.heavy || weapon?.massive)
+						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+							id: "WizardOffhand",
+							type: "SlowLevel",
+							power: 1,
+							duration: 2
+						});
+				}
+			}
+		},
 		"CombatTrainingSlowResist": (e, spell, data) => {
 			if (KinkyDungeonStatWill >= 0.1) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
@@ -5626,15 +5656,6 @@ function KinkyDungeonHandleEnemyEvent(Event, e, enemy, data) {
  * @type {Object.<string, Object.<string, function(string, *): void>>}
  */
 let KDEventMapGeneric = {
-	"canOffhand": {
-		"RogueOffhand": (e, data) => {
-			if (data.canOffhand && KDHasSpell("RogueOffhand") && !KDHasSpell("BattleRhythm")) {
-				if (KDWeapon(data.item)?.clumsy || KDWeapon(data.item)?.heavy || KDWeapon(data.item)?.massive) {
-					data.canOffhand = false;
-				}
-			}
-		},
-	},
 	"calcEnemyTags": {
 		"perkTags": (e, data) => {
 			// This event adds tags to enemy tag determination based on perk prefs
