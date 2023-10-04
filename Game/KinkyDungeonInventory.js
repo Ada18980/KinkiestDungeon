@@ -155,6 +155,8 @@ function KDRestraintSpecial(item) {
 
 function KDSwitchWeapon() {
 	let previousWeapon = KDGameData.PreviousWeapon ? KDGameData.PreviousWeapon : null;
+	if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[1]) previousWeapon = KDGameData.Offhand || KDGameData.OffhandOld;
+	else if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[2]) previousWeapon = KDGameData.OffhandReturn;
 	if (!previousWeapon || KinkyDungeonInventoryGet(previousWeapon))
 		KDSendInput("switchWeapon", {weapon: previousWeapon});
 }

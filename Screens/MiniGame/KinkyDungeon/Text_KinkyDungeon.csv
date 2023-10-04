@@ -847,10 +847,15 @@ KinkyDungeonKeySpell7,Spell 7
 KinkyDungeonKeySpell8,Spell 8
 KinkyDungeonKeySpell9,Spell 9
 KinkyDungeonKeySpell0,Spell 10
+KinkyDungeonKeySpellConfig1,Load Hotbar 1
+KinkyDungeonKeySpellConfig2,Load Hotbar 2
+KinkyDungeonKeySpellConfig3,Load Hotbar 3
 KinkyDungeonKeySpellPage,Cycle Spell Page
 KinkyDungeonKeyUpcast,Upcast Spells
 KinkyDungeonKeyUpcastCancel,Cancel Upcast
 KinkyDungeonKeySwitchWeapon,Swap Weapon
+KinkyDungeonKeySwitchWeaponOffhand,Switch to Offhand
+KinkyDungeonKeySwitchWeaponOffhandPrevious,Switch from Offhand
 KinkyDungeonKeySpellWeapon,Weapon Ability
 KinkyDungeonKeyWait,Wait
 KinkyDungeonKeySkip,Cancel/Back
@@ -6861,8 +6866,10 @@ KDSexyMode,"Distraction Mode:"
 KDPerksMode,"Perks Mode:"
 KinkyDungeonPerksMode0,Standard
 KinkyDungeonPerksMode1,Extra
+KinkyDungeonPerksMode2,Less
 KinkyDungeonPerksModeDesc0,"No pain, no gain."
 KinkyDungeonPerksModeDesc1,"Gain 10 extra perks, to give you a false sense of security."
+KinkyDungeonPerksModeDesc2,"Lose 10 perk points, just to keep things interesting."
 
 KDHardMode,"Hard Mode:"
 KinkyDungeonHardMode0,Normal Mode
@@ -12170,3 +12177,9 @@ KinkyDungeonSpellCastTomeArcane,You open the book to an unfinished page and the 
 
 KDShatterProgress,"Cracks begin to form in your RestraintName!"
 KDShatter,"Your RestraintName shatters and falls off!"
+
+KinkyDungeonLoadConfig,"Load Hotbar "
+KinkyDungeonSaveConfig,"Save Hotbar "
+KinkyDungeonClearConfig,"Clear Hotbar"
+
+KDConfirmSpellsClear,Confirm clearing hotbar?

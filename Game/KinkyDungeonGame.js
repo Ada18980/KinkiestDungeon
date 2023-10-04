@@ -3596,6 +3596,14 @@ function KinkyDungeonGameKeyDown() {
 			KinkyDungeonHandleSpell();
 		}
 		return true;
+	} else if (KinkyDungeonKeySpellConfig.includes(KinkyDungeonKeybindingCurrentKey)) {
+		if (KinkyDungeonState == "Game") {
+			let index = 1 + KinkyDungeonKeySpellConfig.indexOf(KinkyDungeonKeybindingCurrentKey);
+			if (localStorage.getItem('KinkyDungeonSpellsChoice' + KinkyDungeonSpellsConfig)) {
+				KinkyDungeonSpellsConfig = index + "";
+				KinkyDungeonLoadSpellsConfig();
+			}
+		}
 	} else if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonKeyWeapon.includes(KinkyDungeonKeybindingCurrentKey)) {
 		KinkyDungeonSpellPress = KinkyDungeonKeybindingCurrentKey;
 		KinkyDungeonRangedAttack();
