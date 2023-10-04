@@ -192,7 +192,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	if (MC.Containers.get(containerID) && !MC.Update.has(containerID) && MC.Refresh.has(containerID)) {
 		MC.Update.delete(containerID);
 		MC.Refresh.delete(containerID);
-		console.log("Refreshed!")
+		//console.log("Refreshed!")
 		// Refresh the container!
 		//kdcanvas.removeChild(MC.Containers.get(containerID).Container);
 		kdcanvas.removeChild(MC.Containers.get(containerID).Mesh);

@@ -1288,6 +1288,7 @@
         <key>ignoredWarnings</key>
         <array>
             <string>large-max-texture-size</string>
+            <string>pixijs-multipack-2023-05-25</string>
         </array>
         <key>commonDivisorX</key>
         <uint>1</uint>
