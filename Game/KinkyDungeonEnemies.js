@@ -1395,16 +1395,16 @@ function KDDrawEnemyTooltip(enemy, offset) {
 	}
 	let statuses = [];
 
-	if (enemy.vulnerable) statuses.push({name: "Vulnerable", count: undefined});
+	if (enemy.vulnerable > 0) statuses.push({name: "Vulnerable", count: undefined});
 	if (KDIsFlying(enemy)) statuses.push({name: "Flying", count: undefined});
 	if (KDEntityBuffedStat(enemy, "Vibration")) statuses.push({name: "Vibed", count: undefined});
-	if (enemy.stun) statuses.push({name: "Stunned", count:  Math.round(enemy.stun)});
-	if (enemy.bind) statuses.push({name: "Bind", count:  Math.round(enemy.bind)});
-	if (enemy.slow) statuses.push({name: "Slow", count:  Math.round(enemy.slow)});
-	if (enemy.silence) statuses.push({name: "Silence", count:  Math.round(enemy.silence)});
-	if (enemy.disarm) statuses.push({name: "Disarm", count:  Math.round(enemy.disarm)});
-	if (enemy.blind) statuses.push({name: "Blind", count:  Math.round(enemy.blind)});
-	if (enemy.slow || KDEntityBuffedStat(enemy, "MoveSpeed") < 0) statuses.push({name: "Slow", count:  Math.round(enemy.slow)});
+	if (enemy.stun > 0) statuses.push({name: "Stunned", count:  Math.round(enemy.stun)});
+	if (enemy.bind > 0) statuses.push({name: "Bind", count:  Math.round(enemy.bind)});
+	if (enemy.slow > 0) statuses.push({name: "Slow", count:  Math.round(enemy.slow)});
+	if (enemy.silence > 0) statuses.push({name: "Silence", count:  Math.round(enemy.silence)});
+	if (enemy.disarm > 0) statuses.push({name: "Disarm", count:  Math.round(enemy.disarm)});
+	if (enemy.blind > 0) statuses.push({name: "Blind", count:  Math.round(enemy.blind)});
+	if (enemy.slow > 0 || KDEntityBuffedStat(enemy, "MoveSpeed") < 0) statuses.push({name: "Slow", count:  Math.round(enemy.slow)});
 	if (KDBoundEffects(enemy)) statuses.push({name: "Bound" + (KDHelpless(enemy) ? 10 : KDBoundEffects(enemy))});
 	if (KDEntityBuffedStat(enemy, "Plug")) statuses.push({name: "Plug", count: undefined});
 	if (KDEntityBuffedStat(enemy, "Chastity")) statuses.push({name: "Belt", count: undefined});
