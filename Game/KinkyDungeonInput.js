@@ -95,7 +95,7 @@ function KDProcessInput(type, data) {
 			}
 			KDSetWeapon(data.weapon);
 			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon(undefined, undefined, KinkyDungeonWeapons[data.weapon]));
-			let time = KinkyDungeonWeapons[data.weapon].heavy ? 2 : 1;
+			let time = (data.weapon && KinkyDungeonWeapons[data.weapon] && KinkyDungeonWeapons[data.weapon].heavy) ? 2 : 1;
 			if (KinkyDungeonStatsChoice.has("Disorganized")) {
 				time += 2;
 			} else if (KinkyDungeonStatsChoice.has("QuickDraw"))

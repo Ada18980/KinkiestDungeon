@@ -104,7 +104,7 @@ let KinkyDungeonSpellSpecials = {
 				if (space) {
 					let origHP = en.hp;
 					let result = KinkyDungeonLaunchAttack(en, 1);
-					if (en.hp <= origHP * 0.2 + 0.01) powerful = true;
+					if (en.hp <= origHP * 0.8 + 0.01) powerful = true;
 					let failPush = true;
 					if (result == "confirm" || result == "dialogue") return "Fail";
 					if (result == "hit" || result == "capture") {
