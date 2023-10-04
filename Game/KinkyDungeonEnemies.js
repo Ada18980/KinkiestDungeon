@@ -2226,11 +2226,12 @@ function KDCanBind(enemy) {
 
 function KDBoundEffects(enemy) {
 	if (!enemy.Enemy.bound) return 0;
+	if (KDEnemyHasFlag(enemy, "imprisoned")) return 4;
 	if (!enemy.boundLevel) return 0;
 	let boundLevel = enemy.boundLevel ? enemy.boundLevel : 0;
 	let bindAmp = 1;//KDGetBindAmp(enemy); //KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
 	boundLevel *= bindAmp;
-	if (boundLevel >= enemy.Enemy.maxhp || (enemy.hp <= 0.1*enemy.Enemy.maxhp && boundLevel > enemy.hp) || KDEnemyHasFlag(enemy, "imprisoned")) return 4; // Totally tied
+	if (boundLevel >= enemy.Enemy.maxhp || (enemy.hp <= 0.1*enemy.Enemy.maxhp && boundLevel > enemy.hp)) return 4; // Totally tied
 	if (boundLevel > enemy.Enemy.maxhp*0.75) return 3;
 	if (boundLevel > enemy.Enemy.maxhp*0.5) return 2;
 	if (boundLevel > enemy.Enemy.maxhp*0.25) return 1;
