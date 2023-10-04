@@ -203,6 +203,7 @@ let LAYERS_BASE = [
 	"ArmLeft",
 
 	// Shoes
+	"BindFeet",
 	"ShoeLeftOver",
 	"ShoeRightOver",
 	"OverShoes",
