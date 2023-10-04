@@ -113,7 +113,7 @@ let KDEventEnchantmentModular = {
 		},
 		events: (item, Loot, curse, primaryEnchantment, enchantments) => {
 			let power = Math.max(KDGetItemPower(item), 5);
-			let amt = 20 + Math.round(KDRandom() * 20 * Math.pow(power, 0.75));
+			let amt = 20 + Math.round(KDRandom() * 15 * Math.pow(power, 0.75));
 			amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 			return [
 				{original: "BondageResist", trigger: "tick", type: "restraintBlock", power: amt/10, inheritLinked: true},
