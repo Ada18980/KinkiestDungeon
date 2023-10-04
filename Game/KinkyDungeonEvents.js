@@ -452,7 +452,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"cursedDamage": (e, item, data) => {
-			if (data.dmg > 0) {
+			if (data.dmg > 0 && data.type != "cold") {
 				/** @type {number} */
 				let alreadyDone = KDItemDataQuery(item, "cursedDamage") || 0;
 				let count = KDItemDataQuery(item, "cursedDamageHP") || Math.round(e.power + KDRandom() * e.limit);

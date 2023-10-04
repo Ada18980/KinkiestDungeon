@@ -11728,7 +11728,7 @@ RestraintCursedCollar2Desc,"'You thought you could run forever, didn't you? Fate
 RestraintCursedCollar2Desc2,"Cannot be removed while you are wearing other Star Cursed items."
 
 KinkyDungeonCurseUnlockCursedDamage,"The cursed seal on the RestraintName vanishes into a brief veil of stardust."
-KinkyDungeonCurseInfoCursedDamage,"The Star Curse protects the RestraintName. Take AMNT more damage to weaken the curse."
+KinkyDungeonCurseInfoCursedDamage,"The Star Curse protects the RestraintName. Take AMNT more damage to weaken the curse. Shadow damage does not assist."
 KinkyDungeonCurseStruggleCursedDamage,"You struggle uselessly, sealed in your fate."
 KDcurseDamageDamage,"You feel your restraints starting to weaken..."
 
