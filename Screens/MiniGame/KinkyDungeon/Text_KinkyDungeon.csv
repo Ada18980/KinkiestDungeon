@@ -11999,6 +11999,7 @@ KinkyDungeonStatHighProfile,"High Profile"
 KinkyDungeonStatDescHighProfile,"Several enemies on each map will be high value, rewarding more gold and items for defeating them but increasing their strength."
 
 
+KDTieUpEnemy,"You apply the RSTR to the ENNME! (AMNT% bound)"
 KDTieUp,+AMNT Bondage!
 KDIsBound,"TargetEnemy receives AMNT binding!"
 KDDisabledBonus,"TargetEnemy is disabled and receives an increased AMNT binding!"
