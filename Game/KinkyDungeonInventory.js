@@ -858,13 +858,14 @@ function KinkyDungeonDrawInventory() {
 			DrawButtonKDEx("KDBack", (bdata) => {
 				KDConfigHotbar = !KDConfigHotbar;
 				return true;
-			}, true, canvasOffsetX_ui + 640*KinkyDungeonBookScale + 325, canvasOffsetY_ui + 483*KinkyDungeonBookScale - 60, 200, 55, TextGet("KDBack"), "#ffffff", "");
+			}, true, canvasOffsetX_ui + 640*KinkyDungeonBookScale + 325, canvasOffsetY_ui + 483*KinkyDungeonBookScale - 60, 190, 55, TextGet("KDBack"), "#ffffff", "");
 
 		} else {
-			DrawButtonKDEx("KDAddToHotbar", (bdata) => {
-				KDConfigHotbar = !KDConfigHotbar;
-				return true;
-			}, true, canvasOffsetX_ui + 640*KinkyDungeonBookScale + 325, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 200, 55, TextGet("KDAddToHotbar"), "#ffffff", "");
+			if (filter != Outfit)
+				DrawButtonKDEx("KDAddToHotbar", (bdata) => {
+					KDConfigHotbar = !KDConfigHotbar;
+					return true;
+				}, true, canvasOffsetX_ui + 640*KinkyDungeonBookScale + 325, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 190, 55, TextGet("KDAddToHotbar"), "#ffffff", "");
 
 			KDConfigHotbar = false;
 			for (let i = 0; i < numRows*maxList && yy < maxList; i++) {

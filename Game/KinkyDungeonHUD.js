@@ -1208,12 +1208,14 @@ function KinkyDungeonDrawInputs() {
 			let arm = KinkyDungeonArmorChoices[index];
 			let consumable = KinkyDungeonConsumableChoices[index];
 			// Draw the main icon
+			let name = item;
+			if (arm && KinkyDungeonInventoryVariants[arm]) name = KinkyDungeonInventoryVariants[arm].template;
 			DrawButtonKD("UseItem" + index, true, buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, "", "rgba(0, 0, 0, 0)",
-				KinkyDungeonRootDirectory + (arm ? "Items/Restraint/" : "Items/") + item + ".png", "", false, true);
+				KinkyDungeonRootDirectory + (arm ? "Items/Restraint/" : "Items/") + name + ".png", "", false, true);
 
 
 			if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
-				DrawTextFitKD(TextGet((arm ? "Restraint" : "KinkyDungeonInventoryItem") + item), 1700 - buttonPad - 30, 40 + buttonPad/2 + i*KinkyDungeonSpellChoiceOffset, 300,
+				DrawTextFitKD(TextGet((arm ? "Restraint" : "KinkyDungeonInventoryItem") + name), 1700 - buttonPad - 30, 40 + buttonPad/2 + i*KinkyDungeonSpellChoiceOffset, 300,
 					"#ffffff", "#333333", undefined, "right");
 				tooltip = true;
 			}
