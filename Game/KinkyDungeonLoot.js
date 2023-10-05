@@ -278,10 +278,10 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		let forceequip = Loot.forceEquip || (hexed && (Loot.forceEquipCursed || KinkyDungeonStatsChoice.get("CurseSeeker"))) || (!hexed && (Loot.forceEquipUncursed));
 		if (Loot.armortags) {
 			let newarmor = KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "",
-				undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, forceequip);
+				undefined, undefined, undefined, undefined, true, undefined, undefined, undefined, forceequip);
 			if (!newarmor && forceequip) {
 				KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "",
-					undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, false);
+					undefined, undefined, undefined, undefined, true, undefined, undefined, undefined, false);
 			}
 			if (newarmor) armor = newarmor.name;
 		}

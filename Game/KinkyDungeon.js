@@ -77,9 +77,10 @@ let KinkyDungeonKeySprint = ['ShiftLeft'];
 let KinkyDungeonKeyWeapon = ['ControlRight',];
 let KinkyDungeonKeyUpcast = ['KeyR', 'ControlLeft'];
 let KinkyDungeonKeyMenu = ['KeyT', 'KeyI', 'KeyP', 'KeyM', 'KeyL']; // QuikInv, Inventory, Reputation, Magic, Log
-let KinkyDungeonKeyToggle = ['Backquote', 'KeyB', 'KeyV', 'KeyN', 'Comma', 'Slash']; // Log, Passing, Door, Auto Struggle, Auto Pathfind
+let KinkyDungeonKeyToggle = ['KeyO', 'KeyB', 'KeyV', 'KeyN', 'Semicolon', 'Quote']; // Log, Passing, Door, Auto Struggle, Auto Pathfind
 let KinkyDungeonKeySpellPage = ['Backquote'];
 let KinkyDungeonKeySwitchWeapon = ['KeyF', 'KeyG', 'KeyH']; // Swap, Offhand, OffhandPrevious
+let KinkyDungeonKeySwitchLoadout = ['Comma', 'Period', 'Slash']; // Swap, Offhand, OffhandPrevious
 
 let KDLoadingTextKeys = {};
 
@@ -147,6 +148,9 @@ let KDDefaultKB = {
 	Enter: KinkyDungeonKeyEnter[0],
 	Sprint: KinkyDungeonKeySprint[0],
 
+	SwitchLoadout1: KinkyDungeonKeySwitchLoadout[0],
+	SwitchLoadout2: KinkyDungeonKeySwitchLoadout[1],
+	SwitchLoadout3: KinkyDungeonKeySwitchLoadout[2],
 	SpellPage: KinkyDungeonKeySpellPage[0],
 	SwitchWeapon: KinkyDungeonKeySwitchWeapon[0],
 	SwitchWeaponOffhand: KinkyDungeonKeySwitchWeapon[1],
@@ -1764,148 +1768,158 @@ function KinkyDungeonRun() {
 		// Draw key buttons
 		DrawButtonKDEx("KBUp", () => {KinkyDungeonKeybindingsTemp.Up = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 100, 300, 38, TextGet("KinkyDungeonKeyUp") + ": '" + (KinkyDungeonKeybindingsTemp.Up) + "'",
-			KinkyDungeonKeybindingsTemp.Up == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Up == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBDown", () => {KinkyDungeonKeybindingsTemp.Down = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 140, 300, 38, TextGet("KinkyDungeonKeyDown") + ": '" + (KinkyDungeonKeybindingsTemp.Down) + "'",
-			KinkyDungeonKeybindingsTemp.Down == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Down == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBLeft", () => {KinkyDungeonKeybindingsTemp.Left = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 180, 300, 38, TextGet("KinkyDungeonKeyLeft") + ": '" + (KinkyDungeonKeybindingsTemp.Left) + "'",
-			KinkyDungeonKeybindingsTemp.Left == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Left == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBRight", () => {KinkyDungeonKeybindingsTemp.Right = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 220, 300, 38, TextGet("KinkyDungeonKeyRight") + ": '" + (KinkyDungeonKeybindingsTemp.Right) + "'",
-			KinkyDungeonKeybindingsTemp.Right == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Right == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 		DrawButtonKDEx("KBUpLleft", () => {KinkyDungeonKeybindingsTemp.UpLeft = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 260, 300, 38, TextGet("KinkyDungeonKeyUpLeft") + ": '" + (KinkyDungeonKeybindingsTemp.UpLeft) + "'",
-			KinkyDungeonKeybindingsTemp.UpLeft == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.UpLeft == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBUpRight", () => {KinkyDungeonKeybindingsTemp.UpRight = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 300, 300, 38, TextGet("KinkyDungeonKeyUpRight") + ": '" + (KinkyDungeonKeybindingsTemp.UpRight) + "'",
-			KinkyDungeonKeybindingsTemp.UpRight == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.UpRight == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBDownLeft", () => {KinkyDungeonKeybindingsTemp.DownLeft = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 340, 300, 38, TextGet("KinkyDungeonKeyDownLeft") + ": '" + (KinkyDungeonKeybindingsTemp.DownLeft) + "'",
-			KinkyDungeonKeybindingsTemp.DownLeft == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.DownLeft == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBDownRight", () => {KinkyDungeonKeybindingsTemp.DownRight = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 380, 300, 38, TextGet("KinkyDungeonKeyDownRight") + ": '" + (KinkyDungeonKeybindingsTemp.DownRight) + "'",
-			KinkyDungeonKeybindingsTemp.DownRight == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.DownRight == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 		DrawButtonKDEx("KBWait", () => {KinkyDungeonKeybindingsTemp.Wait = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 420, 300, 38, TextGet("KinkyDungeonKeyWait") + ": '" + (KinkyDungeonKeybindingsTemp.Wait) + "'",
-			KinkyDungeonKeybindingsTemp.Wait == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Wait == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 
 
 		DrawButtonKDEx("KDOffhand", () => {KinkyDungeonKeybindingsTemp.SwitchWeaponOffhand = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 470, 300, 38, TextGet("KinkyDungeonKeyOffhand") + ": '" + (KinkyDungeonKeybindingsTemp.SwitchWeaponOffhand) + "'",
-			KinkyDungeonKeybindingsTemp.SwitchWeaponOffhand == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.SwitchWeaponOffhand == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KDOffhandPrev", () => {KinkyDungeonKeybindingsTemp.SwitchWeaponOffhandPrevious = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 510, 300, 38, TextGet("KinkyDungeonKeyOffhandPrevious") + ": '" + (KinkyDungeonKeybindingsTemp.SwitchWeaponOffhandPrevious) + "'",
-			KinkyDungeonKeybindingsTemp.SwitchWeaponOffhandPrevious == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.SwitchWeaponOffhandPrevious == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 		DrawButtonKDEx("KDHotbar1", () => {KinkyDungeonKeybindingsTemp.SpellConfig1 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 560, 300, 38, TextGet("KinkyDungeonKeySpellConfig1") + ": '" + (KinkyDungeonKeybindingsTemp.SpellConfig1) + "'",
-			KinkyDungeonKeybindingsTemp.SpellConfig1 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.SpellConfig1 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KDHotbar2", () => {KinkyDungeonKeybindingsTemp.SpellConfig2 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 600, 300, 38, TextGet("KinkyDungeonKeySpellConfig2") + ": '" + (KinkyDungeonKeybindingsTemp.SpellConfig2) + "'",
-			KinkyDungeonKeybindingsTemp.SpellConfig2 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.SpellConfig2 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KDHotbar3", () => {KinkyDungeonKeybindingsTemp.SpellConfig3 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 640, 300, 38, TextGet("KinkyDungeonKeySpellConfig3") + ": '" + (KinkyDungeonKeybindingsTemp.SpellConfig3) + "'",
-			KinkyDungeonKeybindingsTemp.SpellConfig3 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.SpellConfig3 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
+
+		DrawButtonKDEx("KDSwitchLoadout1", () => {KinkyDungeonKeybindingsTemp.SwitchLoadout1 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
+			1075, 690, 300, 38, TextGet("KinkyDungeonKeySwitchLoadout1") + ": '" + (KinkyDungeonKeybindingsTemp.SwitchLoadout1) + "'",
+			KinkyDungeonKeybindingsTemp.SwitchLoadout1 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
+		DrawButtonKDEx("KDSwitchLoadout2", () => {KinkyDungeonKeybindingsTemp.SwitchLoadout2 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
+			1075, 730, 300, 38, TextGet("KinkyDungeonKeySwitchLoadout2") + ": '" + (KinkyDungeonKeybindingsTemp.SwitchLoadout2) + "'",
+			KinkyDungeonKeybindingsTemp.SwitchLoadout2 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
+		DrawButtonKDEx("KDSwitchLoadout3", () => {KinkyDungeonKeybindingsTemp.SwitchLoadout3 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
+			1075, 770, 300, 38, TextGet("KinkyDungeonKeySwitchLoadout3") + ": '" + (KinkyDungeonKeybindingsTemp.SwitchLoadout3) + "'",
+			KinkyDungeonKeybindingsTemp.SwitchLoadout3 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 
 		DrawButtonKDEx("KBSpell1", () => {KinkyDungeonKeybindingsTemp.Spell1 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 100, 300, 38, TextGet("KinkyDungeonKeySpell1") + ": '" + (KinkyDungeonKeybindingsTemp.Spell1) + "'",
-			KinkyDungeonKeybindingsTemp.Spell1 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Spell1 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBSpell2", () => {KinkyDungeonKeybindingsTemp.Spell2 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 140, 300, 38, TextGet("KinkyDungeonKeySpell2") + ": '" + (KinkyDungeonKeybindingsTemp.Spell2) + "'",
-			KinkyDungeonKeybindingsTemp.Spell2 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Spell2 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBSpell3", () => {KinkyDungeonKeybindingsTemp.Spell3 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 180, 300, 38, TextGet("KinkyDungeonKeySpell3") + ": '" + (KinkyDungeonKeybindingsTemp.Spell3) + "'",
-			KinkyDungeonKeybindingsTemp.Spell3 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Spell3 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBSpell4", () => {KinkyDungeonKeybindingsTemp.Spell4 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 220, 300, 38, TextGet("KinkyDungeonKeySpell4") + ": '" + (KinkyDungeonKeybindingsTemp.Spell4) + "'",
-			KinkyDungeonKeybindingsTemp.Spell4 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Spell4 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBSpell5", () => {KinkyDungeonKeybindingsTemp.Spell5 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 260, 300, 38, TextGet("KinkyDungeonKeySpell5") + ": '" + (KinkyDungeonKeybindingsTemp.Spell5) + "'",
-			KinkyDungeonKeybindingsTemp.Spell5 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Spell5 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBSpell6", () => {KinkyDungeonKeybindingsTemp.Spell6 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 300, 300, 38, TextGet("KinkyDungeonKeySpell6") + ": '" + (KinkyDungeonKeybindingsTemp.Spell6) + "'",
-			KinkyDungeonKeybindingsTemp.Spell6 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Spell6 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBSpell7", () => {KinkyDungeonKeybindingsTemp.Spell7 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 340, 300, 38, TextGet("KinkyDungeonKeySpell7") + ": '" + (KinkyDungeonKeybindingsTemp.Spell7) + "'",
-			KinkyDungeonKeybindingsTemp.Spell7 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Spell7 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBSpell8", () => {KinkyDungeonKeybindingsTemp.Spell8 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 380, 300, 38, TextGet("KinkyDungeonKeySpell8") + ": '" + (KinkyDungeonKeybindingsTemp.Spell8) + "'",
-			KinkyDungeonKeybindingsTemp.Spell8 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Spell8 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBSpell9", () => {KinkyDungeonKeybindingsTemp.Spell9 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 420, 300, 38, TextGet("KinkyDungeonKeySpell9") + ": '" + (KinkyDungeonKeybindingsTemp.Spell9) + "'",
-			KinkyDungeonKeybindingsTemp.Spell9 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Spell9 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBSpell0", () => {KinkyDungeonKeybindingsTemp.Spell0 = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 460, 300, 38, TextGet("KinkyDungeonKeySpell0") + ": '" + (KinkyDungeonKeybindingsTemp.Spell0) + "'",
-			KinkyDungeonKeybindingsTemp.Spell0 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Spell0 == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 		DrawButtonKDEx("KBSpellPage", () => {KinkyDungeonKeybindingsTemp.SpellPage = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 520, 300, 50, TextGet("KinkyDungeonKeySpellPage") + ": '" + (KinkyDungeonKeybindingsTemp.SpellPage) + "'",
-			KinkyDungeonKeybindingsTemp.SpellPage == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.SpellPage == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 		DrawButtonKDEx("KBUpcast", () => {KinkyDungeonKeybindingsTemp.Upcast = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 580, 300, 50, TextGet("KinkyDungeonKeyUpcast") + ": '" + (KinkyDungeonKeybindingsTemp.Upcast) + "'",
-			KinkyDungeonKeybindingsTemp.Upcast == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Upcast == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBUpcastCancel", () => {KinkyDungeonKeybindingsTemp.UpcastCancel = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 640, 300, 50, TextGet("KinkyDungeonKeyUpcastCancel") + ": '" + (KinkyDungeonKeybindingsTemp.UpcastCancel) + "'",
-			KinkyDungeonKeybindingsTemp.UpcastCancel == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.UpcastCancel == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 		DrawButtonKDEx("KBSwitchWeapon", () => {KinkyDungeonKeybindingsTemp.SwitchWeapon = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 700, 300, 50, TextGet("KinkyDungeonKeySwitchWeapon") + ": '" + (KinkyDungeonKeybindingsTemp.SwitchWeapon) + "'",
-			KinkyDungeonKeybindingsTemp.SwitchWeapon == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.SwitchWeapon == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBSpellWeapon", () => {KinkyDungeonKeybindingsTemp.SpellWeapon = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			675, 760, 300, 50, TextGet("KinkyDungeonKeySpellWeapon") + ": '" + (KinkyDungeonKeybindingsTemp.SpellWeapon) + "'",
-			KinkyDungeonKeybindingsTemp.SpellWeapon == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.SpellWeapon == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 		DrawButtonKDEx("KBSkip", () => {KinkyDungeonKeybindingsTemp.Skip = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			1075, 700, 300, 50, TextGet("KinkyDungeonKeySkip") + ": '" + (KinkyDungeonKeybindingsTemp.Skip) + "'",
-			KinkyDungeonKeybindingsTemp.Skip == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			675, 820, 300, 50, TextGet("KinkyDungeonKeySkip") + ": '" + (KinkyDungeonKeybindingsTemp.Skip) + "'",
+			KinkyDungeonKeybindingsTemp.Skip == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBEnter", () => {KinkyDungeonKeybindingsTemp.Enter = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-			1075, 760, 300, 50, TextGet("KinkyDungeonKeyEnter") + ": '" + (KinkyDungeonKeybindingsTemp.Enter) + "'",
-			KinkyDungeonKeybindingsTemp.Enter == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			1075, 820, 300, 50, TextGet("KinkyDungeonKeyEnter") + ": '" + (KinkyDungeonKeybindingsTemp.Enter) + "'",
+			KinkyDungeonKeybindingsTemp.Enter == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 
 		DrawButtonKDEx("KBMsgLog", () => {KinkyDungeonKeybindingsTemp.MsgLog = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 100, 300, 38, TextGet("KinkyDungeonKeyMsgLog") + ": '" + (KinkyDungeonKeybindingsTemp.MsgLog) + "'",
-			KinkyDungeonKeybindingsTemp.MsgLog == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.MsgLog == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBDoor", () => {KinkyDungeonKeybindingsTemp.Door = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 145, 300, 38, TextGet("KinkyDungeonKeyDoor") + ": '" + (KinkyDungeonKeybindingsTemp.Door) + "'",
-			KinkyDungeonKeybindingsTemp.Door == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Door == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBPass", () => {KinkyDungeonKeybindingsTemp.Pass = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 190, 300, 38, TextGet("KinkyDungeonKeyPass") + ": '" + (KinkyDungeonKeybindingsTemp.Pass) + "'",
-			KinkyDungeonKeybindingsTemp.Pass == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Pass == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBAStruggle", () => {KinkyDungeonKeybindingsTemp.AStruggle = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 235, 300, 38, TextGet("KinkyDungeonKeyAStruggle") + ": '" + (KinkyDungeonKeybindingsTemp.AStruggle) + "'",
-			KinkyDungeonKeybindingsTemp.AStruggle == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.AStruggle == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBAPathfind", () => {KinkyDungeonKeybindingsTemp.APathfind = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 280, 300, 38, TextGet("KinkyDungeonKeyAPathfind") + ": '" + (KinkyDungeonKeybindingsTemp.APathfind) + "'",
-			KinkyDungeonKeybindingsTemp.APathfind == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.APathfind == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBASprint", () => {KinkyDungeonKeybindingsTemp.Sprint = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 325, 300, 38, TextGet("KinkyDungeonKeySprint") + ": '" + (KinkyDungeonKeybindingsTemp.Sprint) + "'",
-			KinkyDungeonKeybindingsTemp.Sprint == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Sprint == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBInspect", () => {KinkyDungeonKeybindingsTemp.AInspect = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 370, 300, 38, TextGet("KinkyDungeonKeyInspect") + ": '" + (KinkyDungeonKeybindingsTemp.AInspect) + "'",
-			KinkyDungeonKeybindingsTemp.AInspect == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.AInspect == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 		DrawButtonKDEx("KBQInventory", () => {KinkyDungeonKeybindingsTemp.QInventory = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 425, 300, 45, TextGet("KinkyDungeonKeyQInventory") + ": '" + (KinkyDungeonKeybindingsTemp.QInventory) + "'",
-			KinkyDungeonKeybindingsTemp.QInventory == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.QInventory == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBInventory", () => {KinkyDungeonKeybindingsTemp.Inventory = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 475, 300, 45, TextGet("KinkyDungeonKeyInventory") + ": '" + (KinkyDungeonKeybindingsTemp.Inventory) + "'",
-			KinkyDungeonKeybindingsTemp.Inventory == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Inventory == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBReputation", () => {KinkyDungeonKeybindingsTemp.Reputation = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 525, 300, 45, TextGet("KinkyDungeonKeyReputation") + ": '" + (KinkyDungeonKeybindingsTemp.Reputation) + "'",
-			KinkyDungeonKeybindingsTemp.Reputation == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Reputation == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBMagic", () => {KinkyDungeonKeybindingsTemp.Magic = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 575, 300, 45, TextGet("KinkyDungeonKeyMagic") + ": '" + (KinkyDungeonKeybindingsTemp.Magic) + "'",
-			KinkyDungeonKeybindingsTemp.Magic == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Magic == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 		DrawButtonKDEx("KBLog", () => {KinkyDungeonKeybindingsTemp.Log = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 625, 300, 45, TextGet("KinkyDungeonKeyLog") + ": '" + (KinkyDungeonKeybindingsTemp.Log) + "'",
-			KinkyDungeonKeybindingsTemp.Log == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "");
+			KinkyDungeonKeybindingsTemp.Log == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
 
 		if (KinkyDungeonKeybindingCurrentKey)
 			DrawTextKD(TextGet("KinkyDungeonCurrentPress") + ": '" + (KinkyDungeonKeybindingCurrentKey) + "'", 1250, 900, "#ffffff", KDTextGray2);
@@ -2517,6 +2531,7 @@ function KDCommitKeybindings() {
 	KinkyDungeonKeySpellPage = [KinkyDungeonKeybindings.SpellPage];
 	KinkyDungeonKeySwitchWeapon = [KinkyDungeonKeybindings.SwitchWeapon, KinkyDungeonKeybindings.SwitchWeaponOffhand, KinkyDungeonKeybindings.SwitchWeaponOffhandPrevious];
 	KinkyDungeonKeySprint = [KinkyDungeonKeybindings.Sprint];
+	KinkyDungeonKeySwitchLoadout = [KinkyDungeonKeybindings.SwitchLoadout1, KinkyDungeonKeybindings.SwitchLoadout2, KinkyDungeonKeybindings.SwitchLoadout3];
 
 	KinkyDungeonGameKey.KEY_WAIT = (KinkyDungeonKeybindings.Wait);
 	KinkyDungeonGameKey.KEY_SKIP = (KinkyDungeonKeybindings.Skip);
@@ -3150,6 +3165,9 @@ function KinkyDungeonGenerateSaveData() {
 	save.id = KinkyDungeonEnemyID;
 	save.idspell = KinkyDungeonSpellID;
 	save.choices = KinkyDungeonSpellChoices;
+	save.choices_wep = KinkyDungeonWeaponChoices;
+	save.choices_arm = KinkyDungeonArmorChoices;
+	save.choices_con = KinkyDungeonConsumableChoices;
 	save.choices2 = KinkyDungeonSpellChoicesToggle;
 	save.buffs = KinkyDungeonPlayerBuffs;
 	save.lostitems = KinkyDungeonLostItems;
@@ -3257,6 +3275,9 @@ function KinkyDungeonLoadGame(String) {
 			if (saveData.seed) KDsetSeed(saveData.seed);
 			if (saveData.pcosts) KinkyDungeonPenanceCosts = saveData.pcosts;
 			if (saveData.choices) KinkyDungeonSpellChoices = saveData.choices;
+			if (saveData.choices_wep) KinkyDungeonWeaponChoices = saveData.choices_wep;
+			if (saveData.choices_arm) KinkyDungeonArmorChoices = saveData.choices_arm;
+			if (saveData.choices_con) KinkyDungeonConsumableChoices = saveData.choices_con;
 			if (saveData.choices2) KinkyDungeonSpellChoicesToggle = saveData.choices2;
 			if (saveData.buffs) KinkyDungeonPlayerBuffs = saveData.buffs;
 			if (saveData.gold != undefined) KinkyDungeonGold = saveData.gold;

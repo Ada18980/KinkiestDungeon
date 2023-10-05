@@ -1997,6 +1997,9 @@ interface KinkyDungeonSave {
 	id: number;
 	idspell: number;
 	choices: number[];
+	choices_wep: string[];
+	choices_arm: string[];
+	choices_con: string[];
 	choices2: boolean[];
 	buffs: Record<string, any>;
 	lostitems: any[];

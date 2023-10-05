@@ -26,7 +26,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.75"
+KinkyDungeon,"Kinky Dungeon v4.76"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -850,12 +850,15 @@ KinkyDungeonKeySpell0,Spell 10
 KinkyDungeonKeySpellConfig1,Load Hotbar 1
 KinkyDungeonKeySpellConfig2,Load Hotbar 2
 KinkyDungeonKeySpellConfig3,Load Hotbar 3
+KinkyDungeonKeySwitchLoadout1,Load Loadout 1
+KinkyDungeonKeySwitchLoadout2,Load Loadout 2
+KinkyDungeonKeySwitchLoadout3,Load Loadout 3
 KinkyDungeonKeySpellPage,Cycle Spell Page
 KinkyDungeonKeyUpcast,Upcast Spells
 KinkyDungeonKeyUpcastCancel,Cancel Upcast
 KinkyDungeonKeySwitchWeapon,Swap Weapon
-KinkyDungeonKeySwitchWeaponOffhand,Switch to Offhand
-KinkyDungeonKeySwitchWeaponOffhandPrevious,Switch from Offhand
+KinkyDungeonKeyOffhand,Switch to Offhand
+KinkyDungeonKeyOffhandPrevious,Switch from Offhand
 KinkyDungeonKeySpellWeapon,Weapon Ability
 KinkyDungeonKeyWait,Wait
 KinkyDungeonKeySkip,Cancel/Back
@@ -12183,3 +12186,6 @@ KinkyDungeonSaveConfig,"Save Hotbar "
 KinkyDungeonClearConfig,"Clear Hotbar"
 
 KDConfirmSpellsClear,Confirm clearing hotbar?
+
+KDAddToHotbar,Add to Hotbar
+KDBack,Back

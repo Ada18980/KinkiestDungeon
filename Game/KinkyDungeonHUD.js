@@ -1044,10 +1044,7 @@ function KinkyDungeonDrawInputs() {
 			return true;
 		}, true, 1570, 5, 140, 35, `pg. ${KDSpellPage}`, "#ffffff");
 	}
-	for (let ii = KinkyDungeonSpellChoiceCount - 1; ii > 0; ii--) {
-		if (!(KinkyDungeonSpellChoices[ii] >= 0)) KinkyDungeonSpellChoices = KinkyDungeonSpellChoices.slice(0, ii);
-		else break;
-	}
+	KDCullSpellChoices();
 
 	let KDUpcastLevel = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellEmpower");
 
@@ -1076,28 +1073,30 @@ function KinkyDungeonDrawInputs() {
 			);
 		}
 
-		DrawButtonKDEx("empowerSpell",
-			(bdata) => {
-				KDSendInput("upcast", {});
-				return true;
-			}, true,
-			1700 - 80, empowerYY, 76, 76, "", "",
-			KinkyDungeonRootDirectory + "Spells/" + KDEmpowerSprite + (hasUpcast ? "" : "Fail") + ".png", undefined, false, true,
-		);
-		if (KDUpcastLevel > 0)
-			DrawButtonKDEx("empowerSpellCancel",
+		if (KinkyDungeonSpellChoices.some((num) => {return KinkyDungeonSpells[num] != undefined;})) {
+			DrawButtonKDEx("empowerSpell",
 				(bdata) => {
-					KDSendInput("upcastcancel", {});
+					KDSendInput("upcast", {});
 					return true;
 				}, true,
-				1700 - 80, empowerYY + KinkyDungeonSpellChoiceOffset, 76, 76, "", "",
-				KinkyDungeonRootDirectory + "Spells/" + KDEmpowerSprite + "Cancel" + ".png", undefined, false, true,
+				1700 - 80, empowerYY, 76, 76, "", "",
+				KinkyDungeonRootDirectory + "Spells/" + KDEmpowerSprite + (hasUpcast ? "" : "Fail") + ".png", undefined, false, true,
 			);
-		if (MouseIn(1700 - 80, empowerYY, 76, 76)) {
-			DrawTextFitKD(TextGet("KDSpellEmpower" + (hasUpcast ? "" : "Fail")), 1700 - 100, empowerYY + 40, 1000, "#ffffff", undefined, undefined, "right");
-		}
-		if (MouseIn(1700 - 80, empowerYY + KinkyDungeonSpellChoiceOffset, 76, 76)) {
-			DrawTextFitKD(TextGet("KDSpellEmpowerCancel"), 1700 - 100, empowerYY + 40 + KinkyDungeonSpellChoiceOffset, 1000, "#ffffff", undefined, undefined, "right");
+			if (KDUpcastLevel > 0)
+				DrawButtonKDEx("empowerSpellCancel",
+					(bdata) => {
+						KDSendInput("upcastcancel", {});
+						return true;
+					}, true,
+					1700 - 80, empowerYY + KinkyDungeonSpellChoiceOffset, 76, 76, "", "",
+					KinkyDungeonRootDirectory + "Spells/" + KDEmpowerSprite + "Cancel" + ".png", undefined, false, true,
+				);
+			if (MouseIn(1700 - 80, empowerYY, 76, 76)) {
+				DrawTextFitKD(TextGet("KDSpellEmpower" + (hasUpcast ? "" : "Fail")), 1700 - 100, empowerYY + 40, 1000, "#ffffff", undefined, undefined, "right");
+			}
+			if (MouseIn(1700 - 80, empowerYY + KinkyDungeonSpellChoiceOffset, 76, 76)) {
+				DrawTextFitKD(TextGet("KDSpellEmpowerCancel"), 1700 - 100, empowerYY + 40 + KinkyDungeonSpellChoiceOffset, 1000, "#ffffff", undefined, undefined, "right");
+			}
 		}
 	}
 
@@ -1106,8 +1105,8 @@ function KinkyDungeonDrawInputs() {
 		let index = i + KDSpellPage * KinkyDungeonSpellChoiceCountPerPage;
 		let buttonWidth = 40;
 		let buttonPad = 80;
-		if (KinkyDungeonSpellChoices[i])
-			DrawButtonKDEx("chgangespell" + i, (bdata) => {
+		if (KinkyDungeonSpellChoices[i] >= 0)
+			DrawButtonKDEx("changespell" + i, (bdata) => {
 				KinkyDungeonDrawState = "MagicSpells";
 				KDSwapSpell = index;
 				return true;
@@ -1200,10 +1199,34 @@ function KinkyDungeonDrawInputs() {
 				tooltip = true;
 			}
 			// Render number
-			DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, "#ffffff", KDTextGray0, 18, undefined, 73);
+			DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, "#ffffff", KDTextGray0, 18, undefined, 101);
 
 
 			//let cost = KinkyDungeonGetManaCost(spell) + TextGet("KinkyDungeonManaCost") + comp;
+		} else if (KinkyDungeonConsumableChoices[index] || KinkyDungeonWeaponChoices[index] || KinkyDungeonArmorChoices[index]) {
+			let item = KinkyDungeonConsumableChoices[index] || KinkyDungeonWeaponChoices[index] || KinkyDungeonArmorChoices[index];
+			let arm = KinkyDungeonArmorChoices[index];
+			let consumable = KinkyDungeonConsumableChoices[index];
+			// Draw the main icon
+			DrawButtonKD("UseItem" + index, true, buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, "", "rgba(0, 0, 0, 0)",
+				KinkyDungeonRootDirectory + (arm ? "Items/Restraint/" : "Items/") + item + ".png", "", false, true);
+
+
+			if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
+				DrawTextFitKD(TextGet((arm ? "Restraint" : "KinkyDungeonInventoryItem") + item), 1700 - buttonPad - 30, 40 + buttonPad/2 + i*KinkyDungeonSpellChoiceOffset, 300,
+					"#ffffff", "#333333", undefined, "right");
+				tooltip = true;
+			}
+			// Render number
+			DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, "#ffffff", KDTextGray0, 18, undefined, 101);
+			if (consumable) {
+				let con = KinkyDungeonInventoryGetConsumable(consumable);
+				if (con) {
+					DrawTextFitKD((con.quantity || 0) + 'x', 1650 + (90 - buttonWidth), 40 + i*KinkyDungeonSpellChoiceOffset + buttonWidth*1.4,
+						buttonWidth,
+						"#ffffff", KDTextGray0, 18, "left");
+				}
+			}
 		}
 		if (!tooltip) {
 			let icon = 0;
@@ -1215,6 +1238,10 @@ function KinkyDungeonDrawInputs() {
 				// Now we have our page...
 				let indexPaged = (i + pg * KinkyDungeonSpellChoiceCountPerPage) % (KinkyDungeonSpellChoiceCount);
 				let spellPaged = KinkyDungeonSpells[KinkyDungeonSpellChoices[indexPaged]];
+				let item = KinkyDungeonConsumableChoices[indexPaged] || KinkyDungeonWeaponChoices[indexPaged] || KinkyDungeonArmorChoices[indexPaged];
+				let arm = KinkyDungeonArmorChoices[indexPaged];
+				let consumable = KinkyDungeonConsumableChoices[indexPaged];
+				//let weapon = KinkyDungeonWeaponChoices[index];
 				if (spellPaged) {
 					// Draw the main spell icon
 					if (spellPaged.type == "passive" && KinkyDungeonSpellChoicesToggle[indexPaged]) {
@@ -1260,6 +1287,21 @@ function KinkyDungeonDrawInputs() {
 						//Width: buttonDim.wsmall,
 						//Height: buttonDim.hsmall,
 						//});
+					}
+				} else if (item) {
+					icon += 1;
+					KDDraw(kdcanvas, kdpixisprites, "spellIcon" + icon + "," + indexPaged, KinkyDungeonRootDirectory + (arm ? "Items/Restraint/" : "Items/") + item + ".png"
+						,buttonDim.x - buttonDim.wsmall * page, buttonDim.y, buttonDim.wsmall, buttonDim.hsmall, undefined, {
+							zIndex: 71,
+						});
+					DrawButtonKD("UseItem" + indexPaged, true, buttonDim.x - buttonDim.wsmall * page, buttonDim.y, buttonDim.wsmall, buttonDim.hsmall, "",
+						"rgba(0, 0, 0, 0)", "", "", false, true);
+					if (consumable) {
+						let con = KinkyDungeonInventoryGetConsumable(consumable);
+						if (con) {
+							DrawTextFitKD((con.quantity || 0) + "x", buttonDim.x - buttonDim.wsmall * page + buttonDim.wsmall*0.7, buttonDim.y + buttonDim.hsmall - 12, 50,
+								"#ffffff", KDTextGray0, 12);
+						}
 					}
 				}
 			}
@@ -2259,4 +2301,20 @@ function KDDrawBottomBarButtons(skip) {
 		KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
 		return true;
 	}, true, bx + bindex * (bwidth + bspacing), 925, bwidth, 60, logtxt, "#ffffff", KinkyDungeonRootDirectory + "UI/button_logbook.png", undefined, undefined, false, "", 24, true); bindex++;
+}
+
+function KDCullSpellChoices() {
+	for (let ii = KinkyDungeonSpellChoiceCount - 1; ii > 0; ii--) {
+		if (!(KinkyDungeonSpellChoices[ii] >= 0
+			|| KinkyDungeonWeaponChoices[ii]
+			|| KinkyDungeonArmorChoices[ii]
+			|| KinkyDungeonConsumableChoices[ii]
+		)) {
+			KinkyDungeonSpellChoices = KinkyDungeonSpellChoices.slice(0, ii);
+			KinkyDungeonWeaponChoices = KinkyDungeonWeaponChoices.slice(0, ii);
+			KinkyDungeonArmorChoices = KinkyDungeonArmorChoices.slice(0, ii);
+			KinkyDungeonConsumableChoices = KinkyDungeonConsumableChoices.slice(0, ii);
+		}
+		else break;
+	}
 }
