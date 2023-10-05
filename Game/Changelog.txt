@@ -11,6 +11,11 @@ Vague todo:
 - Add teleport to floor 0 temporarily after spending enough gold (done)
 - Add single use curse remover item (done)
 
+4.76 (Sep 2023)
+- Added ability to switch hotbar configs
+- Added ability to add weapons, consumables, armor to hotbar
+- Added keybindings for switching offhand weapons, hotbar configs, and fast-equipping loadouts
+
 4.75 (Sep 2023)
 - Add Dual Wield to fighter class and partial version to Rogue class and wizard class
 - New weapons: Arcane Tome, Bondage Tome

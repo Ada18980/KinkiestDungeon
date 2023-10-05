@@ -531,6 +531,9 @@ function KDProcessInput(type, data) {
 			KDDelayedActionPrune(["Action", "SwitchSpell"]);
 			KinkyDungeonEvasionPityModifier = 0.0;
 			KinkyDungeonSpellChoices[data.I] = data.CurrentSpell;
+			KinkyDungeonWeaponChoices[data.I] = "";
+			KinkyDungeonConsumableChoices[data.I] = "";
+			KinkyDungeonArmorChoices[data.I] = "";
 			KinkyDungeonSpellChoicesToggle[data.I] = !KinkyDungeonSpells[KinkyDungeonSpellChoices[data.I]].defaultOff;
 			if (KinkyDungeonSpellChoicesToggle[data.I] && KinkyDungeonSpells[KinkyDungeonSpellChoices[data.I]].costOnToggle) {
 				if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(KinkyDungeonSpells[KinkyDungeonSpellChoices[data.I]]))) {
@@ -543,9 +546,40 @@ function KDProcessInput(type, data) {
 			} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
 				KinkyDungeonAdvanceTime(1);
 			break;
+		case "itemChoice":
+			KDDelayedActionPrune(["Action", "SwitchSpell"]);
+			KinkyDungeonEvasionPityModifier = 0.0;
+			KinkyDungeonSpellChoices[data.I] = -1;
+			KinkyDungeonWeaponChoices[data.I] = "";
+			KinkyDungeonConsumableChoices[data.I] = "";
+			KinkyDungeonArmorChoices[data.I] = "";
+			KinkyDungeonSpellChoicesToggle[data.I] = true;
+
+			if (KinkyDungeonFindConsumable(data.name)) {
+				KinkyDungeonConsumableChoices[data.I] = data.name;
+			} else if (KinkyDungeonFindWeapon(data.name)) {
+				KinkyDungeonWeaponChoices[data.I] = data.name;
+			} else {
+				KinkyDungeonArmorChoices[data.I] = data.name;
+			}
+			/*
+			if (KinkyDungeonSpellChoicesToggle[data.I] && KinkyDungeonSpells[KinkyDungeonSpellChoices[data.I]].costOnToggle) {
+				if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(KinkyDungeonSpells[KinkyDungeonSpellChoices[data.I]]))) {
+					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(KinkyDungeonSpells[KinkyDungeonSpellChoices[data.I]]));
+				} else KinkyDungeonSpellChoicesToggle[data.I] = false;
+			}
+			if (KinkyDungeonStatsChoice.has("Disorganized")) {
+				KinkyDungeonAdvanceTime(1);
+				KinkyDungeonSlowMoveTurns = 2;
+			} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
+				KinkyDungeonAdvanceTime(1);*/
+			break;
 		case "spellRemove":
 			KinkyDungeonEvasionPityModifier = 0.0;
 			KinkyDungeonSpellChoices[data.I] = -1;
+			KinkyDungeonWeaponChoices[data.I] = "";
+			KinkyDungeonConsumableChoices[data.I] = "";
+			KinkyDungeonArmorChoices[data.I] = "";
 			KinkyDungeonSpellChoicesToggle[data.I] = true;
 			break;
 		case "spellCastFromBook": {

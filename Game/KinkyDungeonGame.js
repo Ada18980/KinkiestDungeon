@@ -3627,6 +3627,14 @@ function KinkyDungeonGameKeyDown() {
 		KDSwitchWeapon();
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 		return true;
+	} else if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonKeySwitchLoadout.includes(KinkyDungeonKeybindingCurrentKey)) {
+		let i = 1 + KinkyDungeonKeySwitchLoadout.indexOf(KinkyDungeonKeybindingCurrentKey);
+		// Load the loadout
+		KDGameData.CurrentLoadout = i;
+		KDLoadQuickLoadout(i, true);
+
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+		return true;
 	} else if (KinkyDungeonState == "Stats") {
 		if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
 			KDClickButton("perks>");
