@@ -2237,7 +2237,7 @@ let KDCustomCost = {
 		data.cost = Math.round(10 * KinkyDungeonGetStaminaCost(data.spell)) + "sp";
 	},
 	"arcane_blast": (data) => {
-		data.cost = Math.min(KinkyDungeonStatManaMax * 2.5, Math.round(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "ArcaneEnergy") * 10)) + "E";
+		data.cost = Math.min(KinkyDungeonStatManaMax * 2.5, Math.round(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ArcaneEnergy") * 10)) + "E";
 	},
 	"arcane_akashic": (data) => {
 		data.cost = "100E";

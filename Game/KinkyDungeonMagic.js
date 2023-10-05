@@ -1685,7 +1685,7 @@ function KinkyDungeonSendMagicEvent(Event, data, forceSpell) {
 		let spell = KinkyDungeonSpells[KinkyDungeonSpellChoices[i]];
 		if (spell && spell.events) {
 			for (let e of spell.events) {
-				if (e.trigger == Event && (KinkyDungeonSpellChoicesToggle[i] || e.always || spell.name == forceSpell?.name)) {
+				if (e.trigger == Event && ((KinkyDungeonSpellChoicesToggle[i] && spell.type == "passive") || spell.type != "passive" || e.always || spell.name == forceSpell?.name)) {
 					KinkyDungeonHandleMagicEvent(Event, e, spell, data);
 				}
 			}
