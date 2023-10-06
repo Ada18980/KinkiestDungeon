@@ -1211,11 +1211,11 @@ function KinkyDungeonDrawInputs() {
 			let name = item;
 			if (arm && KinkyDungeonInventoryVariants[arm]) name = KinkyDungeonInventoryVariants[arm].template;
 			DrawButtonKD("UseItem" + index, true, buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, "", "rgba(0, 0, 0, 0)",
-				KinkyDungeonRootDirectory + (arm ? "Items/Restraint/" : "Items/") + name + ".png", "", false, true);
+				KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)}).preview, "", false, true);
 
 
 			if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
-				DrawTextFitKD(TextGet((arm ? "Restraint" : "KinkyDungeonInventoryItem") + name), 1700 - buttonPad - 30, 40 + buttonPad/2 + i*KinkyDungeonSpellChoiceOffset, 300,
+				DrawTextFitKD(TextGet((arm ? "Restraint" : ("KinkyDungeonInventoryItem")) + name), 1700 - buttonPad - 30, 40 + buttonPad/2 + i*KinkyDungeonSpellChoiceOffset, 300,
 					"#ffffff", "#333333", undefined, "right");
 				tooltip = true;
 			}
@@ -1292,7 +1292,7 @@ function KinkyDungeonDrawInputs() {
 					}
 				} else if (item) {
 					icon += 1;
-					KDDraw(kdcanvas, kdpixisprites, "spellIcon" + icon + "," + indexPaged, KinkyDungeonRootDirectory + (arm ? "Items/Restraint/" : "Items/") + item + ".png"
+					KDDraw(kdcanvas, kdpixisprites, "spellIcon" + icon + "," + indexPaged,  KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)}).preview
 						,buttonDim.x - buttonDim.wsmall * page, buttonDim.y, buttonDim.wsmall, buttonDim.hsmall, undefined, {
 							zIndex: 71,
 						});
