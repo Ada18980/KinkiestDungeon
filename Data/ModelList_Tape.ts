@@ -115,6 +115,54 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "TapeArmLeft",
+	Folder: "Tape",
+	Parent: "TapeArms",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Tape"],
+	AddPose: ["EncaseArmLeft"],
+	Layers: ToLayerMap([
+		{ Name: "ArmLeft", Layer: "BindArmLeft", Pri: -5,
+			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
+			SwapLayerPose: {Front: "BindForeArmLeft", Crossed: "BindCrossArmRight"},
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+
+			DisplacementSprite: "TapeLeft",
+			DisplaceLayers: ToMap(["ArmsAll"]),
+			DisplacementMorph: {Crossed: "Crossed"},
+			DisplacementInvariant: true,
+			DisplaceAmount: 100,
+
+			NoDisplace: true,
+		},
+	])
+});
+AddModel({
+	Name: "TapeArmRight",
+	Folder: "Tape",
+	Parent: "TapeArms",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Tape"],
+	AddPose: ["EncaseArmRight"],
+	Layers: ToLayerMap([
+		{ Name: "ArmRight", Layer: "BindArmRight", Pri: -5,
+			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
+			SwapLayerPose: {Front: "BindForeArmRight", Crossed: "BindCrossArmRight"},
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+
+			DisplacementSprite: "TapeRight",
+			DisplaceLayers: ToMap(["ArmsAll"]),
+			DisplacementMorph: {Crossed: "Crossed"},
+			DisplacementInvariant: true,
+			DisplaceAmount: 100,
+
+			NoDisplace: true,
+		},
+	])
+});
 
 AddModel({
 	Name: "TapeArms",
@@ -125,8 +173,8 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
-		//...GetModelLayers("TapeArmLeft"),
-		//...GetModelLayers("TapeArmRight"),
+		...GetModelLayers("TapeArmLeft"),
+		...GetModelLayers("TapeArmRight"),
 		...GetModelLayers("TapeTorsoUpper"),
 	])
 });

@@ -42,6 +42,7 @@ let LAYERS_BASE = [
 	"Collar",
 
 	// Bondage
+	"BindForeArms",
 	"BindForeElbowLeft",
 	"BindForeElbowRight",
 	"BindForeWristLeft",
@@ -122,6 +123,7 @@ let LAYERS_BASE = [
 
 
 	// Crossed arms bondage -- left arm is mostly hidden, no hands
+	"BindCrossArms",
 	"BindCrossElbowLeft",
 	"BindCrossElbowRight",
 	"BindCrossWristRight",
@@ -335,6 +337,66 @@ let LayerGroups = {
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper"
+	]),
+	"ArmsAll": ToMap([
+		"Shirt",
+		"SleeveLeft",
+		"SleeveDecoLeft",
+		"SleeveRight",
+		"SleeveDecoRight",
+		"ArmLeft",
+		"ArmRight",
+		"TorsoUpper",
+
+		"ChestStraps",
+
+		"ForeSleeveLeft",
+		"ForeSleeveDecoLeft",
+		"GloveLeft",
+		"ForeHandLeft",
+
+		"ForeWristRight",
+		"ForeArmRight",
+
+		"ForeSleeveRight",
+		"ForeSleeveDecoRight",
+		"GloveRight",
+		"ForeHandRight",
+
+
+		"CrossGloveRight",
+		"CrossArmRight",
+		"CrossGloveLeft",
+		"CrossArmLeft",
+
+
+		// Bindings too
+
+		"BindWristLeft",
+		"BindWristRight",
+		"BindArmLeft",
+		"BindArmRight",
+		"BindElbowLeft",
+		"BindElbowRight",
+		"BindHandLeft",
+		"BindHandRight",
+
+
+		"BindForeElbowLeft",
+		"BindForeElbowRight",
+		"BindForeWristLeft",
+		"BindForeWristRight",
+		"BindForeHandLeft",
+		"BindForeHandRight",
+		"BindForeArmLeft",
+		"BindForeArmRight",
+
+
+		"BindCrossElbowLeft",
+		"BindCrossElbowRight",
+		"BindCrossWristRight",
+		"BindForeArmLeft",
+		"BindForeArmRight",
 	]),
 	// endregion
 

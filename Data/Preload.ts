@@ -87,6 +87,11 @@ let DisplacementMaps = [
 	"ThighCuffRightKneelClosed.png",
 	"ThighCuffLeftSpread.png",
 	"ThighCuffRightClosed.png",
+	"TapeLeftCrossed.png",
+	"TapeRightCrossed.png",
+	"TapeLeft.png",
+	"TapeRight.png",
+	"Null.png",
 ];
 
 let linearList = [
