@@ -93,18 +93,6 @@ let LAYERS_BASE = [
 	"BindHandLeft",
 	"BindHandRight",
 
-	// Certain pieces of armor go over the shirt
-	"BeltBondage",
-	"BeltCharm",
-	"Belt",
-	"BeltDeco",
-
-	"BaggyShirt",
-
-	// Skirts that dont follow shilhouette
-	"OverSkirtDeco",
-	"OverSkirt",
-	"Greaves",
 
 
 
@@ -121,14 +109,16 @@ let LAYERS_BASE = [
 	"BraChest",
 	"Chest",
 
+	"StrapsUnderbustOver",
+	"WrappingTorsoOver",
 
 	// Crossed arms bondage -- left arm is mostly hidden, no hands
 	"BindCrossArms",
 	"BindCrossElbowLeft",
 	"BindCrossElbowRight",
 	"BindCrossWristRight",
-	"BindForeArmLeft",
-	"BindForeArmRight",
+	"BindCrossArmLeft",
+	"BindCrossArmRight",
 
 	// Crossed arms -- order is inverted
 	"CrossGloveRight",
@@ -137,9 +127,25 @@ let LAYERS_BASE = [
 	"CrossArmLeft",
 
 
-	"WrappingTorso",
+	// Certain pieces of armor go over the shirt
+	"BeltBondage",
+	"BeltCharm",
+	"Belt",
+	"BeltDeco",
+
+	"BaggyShirt",
+
+	// Skirts that dont follow shilhouette
+	"OverSkirtDeco",
+	"OverSkirt",
+	"Greaves",
 
 	"StrapsUnderbust",
+	"OverCrotchStrap",
+	"HarnessMid",
+
+	"WrappingTorso",
+
 
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
@@ -150,12 +156,13 @@ let LAYERS_BASE = [
 	"Underarms",
 	"Bra",
 
-	"HarnessMid",
 	"CorsetOver",
 
 	// Skirts that dont follow shilhouette and are puffy
 	"SkirtPoofyDeco",
 	"SkirtPoofy",
+
+	"WrappingLegsOver",
 
 
 	// Corsets that go under harness and skirt
@@ -180,6 +187,8 @@ let LAYERS_BASE = [
 	"Ankles1",
 	"AnkleLeft",
 	"AnkleRight",
+
+	"WrappingLegs",
 
 	// Pants
 	"PantsAccLeft",
@@ -274,6 +283,10 @@ let LayerGroups = {
 		"Chest",
 		"Shirt",
 	]),
+	"CrotchRope": ToMap([
+		"HarnessMid",
+	]),
+
 
 	// region slime
 	"SlimeLegs": ToMap([
@@ -324,6 +337,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"BindFeet",
 	]),
 	// endregion
 
@@ -336,7 +350,17 @@ let LayerGroups = {
 		"SleeveDecoRight",
 		"ArmLeft",
 		"ArmRight",
-		"TorsoUpper"
+		"TorsoUpper",
+
+		"CrossGloveRight",
+		"CrossArmRight",
+		"CrossGloveLeft",
+		"CrossArmLeft",
+		/*"BindCrossElbowLeft",
+		"BindCrossElbowRight",
+		"BindCrossWristRight",
+		"BindForeArmLeft",
+		"BindForeArmRight",*/
 	]),
 	"ArmsAll": ToMap([
 		"Shirt",
@@ -349,6 +373,72 @@ let LayerGroups = {
 		"TorsoUpper",
 
 		"ChestStraps",
+		"StrapsUnderbust",
+		"StrapsUnderbustOver",
+
+		"ForeSleeveLeft",
+		"ForeSleeveDecoLeft",
+		"GloveLeft",
+		"ForeHandLeft",
+
+		"ForeWristRight",
+		"ForeArmRight",
+
+		"ForeSleeveRight",
+		"ForeSleeveDecoRight",
+		"GloveRight",
+		"ForeHandRight",
+
+
+		"CrossGloveRight",
+		"CrossArmRight",
+		"CrossGloveLeft",
+		"CrossArmLeft",
+
+
+		// Bindings too
+
+		"BindWristLeft",
+		"BindWristRight",
+		"BindArmLeft",
+		"BindArmRight",
+		"BindElbowLeft",
+		"BindElbowRight",
+		"BindHandLeft",
+		"BindHandRight",
+
+
+		"BindForeElbowLeft",
+		"BindForeElbowRight",
+		"BindForeWristLeft",
+		"BindForeWristRight",
+		"BindForeHandLeft",
+		"BindForeHandRight",
+		"BindForeArmLeft",
+		"BindForeArmRight",
+
+
+		"BindCrossElbowLeft",
+		"BindCrossElbowRight",
+		"BindCrossWristRight",
+		"BindForeArmLeft",
+		"BindForeArmRight",
+	]),
+	"ArmsAllAndHarness": ToMap([
+		"HarnessMid",
+
+		"Shirt",
+		"SleeveLeft",
+		"SleeveDecoLeft",
+		"SleeveRight",
+		"SleeveDecoRight",
+		"ArmLeft",
+		"ArmRight",
+		"TorsoUpper",
+
+		"ChestStraps",
+		"StrapsUnderbust",
+		"StrapsUnderbustOver",
 
 		"ForeSleeveLeft",
 		"ForeSleeveDecoLeft",
@@ -409,7 +499,12 @@ let LayerGroups = {
 		"SleeveDecoRight",
 		"ArmLeft",
 		"ArmRight",
-		"TorsoUpper"
+		"TorsoUpper",
+
+		"CrossGloveRight",
+		"CrossArmRight",
+		"CrossGloveLeft",
+		"CrossArmLeft",
 	]),
 	"RopeTorso": ToMap([
 		"Shirt",

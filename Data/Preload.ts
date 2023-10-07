@@ -14,6 +14,11 @@ let DisplacementMaps = [
 	"BootsKneel.png",
 	"BootsKneelClosed.png",
 	"BootsSpread.png",
+	"BootsShortClosed.png",
+	"BootsShortHogtie.png",
+	"BootsShortKneel.png",
+	"BootsShortKneelClosed.png",
+	"BootsShortSpread.png",
 	"Calf1SquishClosed.png",
 	"Calf1SquishKneelClosed.png",
 	"Calf2SquishClosed.png",
@@ -92,10 +97,12 @@ let DisplacementMaps = [
 	"TapeLeft.png",
 	"TapeRight.png",
 	"Null.png",
+	"TapeAnklesSquishClosed.png",
+	"TapeAnklesSquishKneel.png",
 ];
 
 let linearList = [
-	"TextureAtlas/atlas0.json",
+	//"TextureAtlas/atlas0.json",
 	...DisplacementMaps.map((e) => {return "DisplacementMaps/" + e;}),
 ];
 

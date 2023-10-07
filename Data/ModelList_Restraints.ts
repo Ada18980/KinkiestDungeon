@@ -366,6 +366,24 @@ AddModel({
 });
 
 AddModel({
+	Name: "RopeCrosstie1",
+	Folder: "Rope",
+	Parent: "RopeHarness",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["Crossties"],
+	Layers: ToLayerMap([
+		{ Name: "ArmStrap", Layer: "StrapsUnderbustOver", Pri: 0,
+			Poses: ToMap(["Crossed"]),
+			MorphPoses: {Crossed:"Crossed"},
+			DisplacementSprite: "ArmStrap",
+			DisplacementMorph: {Crossed:"Crossed"},
+			DisplaceLayers: ToMap(["Rope1"]),
+		},
+	])
+});
+AddModel({
 	Name: "RopeBoxtie1",
 	Folder: "Rope",
 	Parent: "RopeHarness",
@@ -374,11 +392,11 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["Boxties"],
 	Layers: ToLayerMap([
-		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
+		/*{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
 			Poses: ToMap(["Boxtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
-		},
+		},*/
 	])
 });
 
@@ -392,11 +410,11 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["Wristties"],
 	Layers: ToLayerMap([
-		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
+		/*{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
-		},
+		},*/
 		{ Name: "ForeArm1", Layer: "ForeArmBondageLeft", Pri: 0,
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm1Squish",
@@ -415,6 +433,14 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["RopesLower"],
 	Layers: ToLayerMap([
+		{ Name: "Arm1", Layer: "StrapsUnderbustOver", Pri: 0,
+			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
+			DisplacementSprite: "Arm1Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
+		},
+		/*{ Name: "Arm1Over", Layer: "StrapsUnderbustOver", Pri: 0,
+			Poses: ToMap(["Boxtie", "Wristtie"]),
+		},*/
 		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
 			DisplacementSprite: "Arm2Squish",
@@ -451,6 +477,10 @@ AddModel({
 			DisplacementSprite: "ArmHarnessSquish",
 			DisplaceLayers: ToMap(["Rope1"]),
 			Invariant: true,
+		},
+		{ Name: "ArmStrapHarness", Layer: "ChestStraps", Pri: -2,
+			Poses: ToMap(["Crossed"]),
+			MorphPoses: {Crossed:"Crossed"},
 		},
 		{ Name: "ArmHarnessUp", Sprite: "ArmHarness", Layer: "ChestStraps", Pri: -1,
 			Poses: ToMap([...ARMPOSES]),
@@ -501,9 +531,16 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
-	//AddPose: ["CrotchStrap"],
+	AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
 		{ Name: "Harness", Layer: "HarnessOver", Pri: 0,
+			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			DisplacementSprite: "HarnessSquish",
+			DisplaceLayers: ToMap(["RopeTorso"]),
+		},
+		{ Name: "HarnessLower", Layer: "HarnessMid", Pri: 0,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 			DisplacementInvariant: true,
@@ -558,11 +595,13 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["FeetLinked", "RopesAnkle"],
 	Layers: ToLayerMap([
-		{ Name: "Ankles", Layer: "OverShoes", Pri: 1,
+		{ Name: "Ankles", Layer: "OverShoes", Pri: 11,
 			Poses: ToMap(["Closed", "KneelClosed"]),
 			DisplacementSprite: "AnklesSquish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RopeCalf"]),
+			AppendPose: {EncaseFeet: "Over"},
+			NoAppendDisplacement: true,
 		},
 	])
 });
@@ -587,6 +626,8 @@ AddModel({
 			DisplacementSprite: "Calf1Squish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RopeCalf"]),
+			AppendPose: {EncaseAnkles: "Over"},
+			NoAppendDisplacement: true,
 		},
 	])
 });
@@ -598,6 +639,8 @@ AddModel(GetModelWithExtraLayers("RopeAnkles2", "RopeAnkles1", [
 		DisplacementSprite: "Calf2Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RopeCalf"]),
+		AppendPose: {EncaseAnkles: "Over"},
+		NoAppendDisplacement: true,
 	},
 ], "RopeHarness", false));
 
@@ -609,6 +652,8 @@ AddModel(GetModelWithExtraLayers("RopeAnkles3", "RopeAnkles2", [
 		DisplacementSprite: "Calf3Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RopeCalf"]),
+		AppendPose: {EncaseAnkles: "Over"},
+		NoAppendDisplacement: true,
 	},
 ], "RopeHarness", false));
 
@@ -630,6 +675,8 @@ AddModel({
 			DisplacementSprite: "Thigh1Squish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RopeThighs"]),
+			AppendPose: {EncaseLegs: "Over"},
+			NoAppendDisplacement: true,
 		},
 	])
 });
@@ -642,6 +689,8 @@ AddModel(GetModelWithExtraLayers("RopeLegs2", "RopeLegs1", [
 		DisplacementSprite: "Thigh2Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RopeThighs"]),
+		AppendPose: {EncaseLegs: "Over"},
+		NoAppendDisplacement: true,
 	},
 ], "RopeHarness", false));
 
@@ -654,6 +703,8 @@ AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
 		DisplacementSprite: "Thigh3Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RopeThighs"]),
+		AppendPose: {EncaseLegs: "Over"},
+		NoAppendDisplacement: true,
 	},
 ], "RopeHarness", false));
 

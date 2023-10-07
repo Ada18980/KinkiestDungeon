@@ -108,6 +108,8 @@ interface ModelLayer extends Namable {
 	MorphPoses?: Record<string, string>,
 	/** Overrides globaL_default of the listed poses */
 	GlobalDefaultOverride?: Record<string, boolean>,
+	/** AppendPose does not apply to the displacement map */
+	NoAppendDisplacement?: boolean,
 	/** When this pose is present it appends it to the name. Only one can be appended this way */
 	AppendPose?: Record<string, string>,
 	/** Lists the poses that can be affected by AppendPose*/
@@ -138,6 +140,8 @@ interface ModelLayer extends Namable {
 	DisplacementInvariant?: boolean,
 	/** Applies this layer's filter to a layer when the filter isn't hidden */
 	ApplyFilterToLayerGroup?: Record<string, boolean>,
+	/** Which filter to apply */
+	ApplyFilter?: string,
 	/** Disables color filters */
 	NoColorize?: boolean,
 	/** Inherits colorization from another layer */

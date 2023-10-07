@@ -5,6 +5,8 @@
  * In general, this is accomplished by having higher priority items cover more of the original
  */
 
+let tapefilter = {"gamma":1,"saturation":0.0,"contrast":2,"brightness":3,"red":1,"green":1,"blue":1,"alpha":1};
+
 AddModel({
 	Name: "TapeBoots",
 	Folder: "Tape",
@@ -14,9 +16,12 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseFeet"],
 	Layers: ToLayerMap([
-		{ Name: "Feet", Layer: "BindFeet", Pri: 10,
+		{ Name: "Feet", Layer: "OverShoes", Pri: 10,
 			Poses: ToMap(["Closed", "KneelClosed"]),
-			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			//GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			DisplacementSprite: "TapeAnklesSquish",
+			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["RopeCalf"]),
 			InheritColor: "Tape",
 		},
 	])
@@ -28,9 +33,9 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseFeet"],
+	AddPose: ["EncaseAnkles"],
 	Layers: ToLayerMap([
-		{ Name: "Ankles", Layer: "OverSocks", Pri: 10,
+		{ Name: "Ankles", Layer: "Ankles1", Pri: 0,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
@@ -40,12 +45,35 @@ AddModel({
 
 
 AddModel({
+	Name: "TapeLegs",
+	Folder: "Tape",
+	TopLevel: false,
+	Parent: "TapeBottom",
+	Restraint: true,
+	Categories: ["Restraints", "Tape"],
+	AddPose: ["FeetLinked", "EncaseTorsoLower", "EncaseLegs"],
+	Layers: ToLayerMap([
+		{ Name: "Legs", Layer: "WrappingLegs", Pri: -5,
+			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			InheritColor: "Tape",
+		},
+		{ Name: "StrapCover", Layer: "OverCrotchStrap", Pri: -5,
+			Poses: ToMap(["Closed", "Hogtie"]),
+			RequirePoses: ToMap(["CrotchStrap"]),
+			InheritColor: "Tape",
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
 	Name: "TapeBottom",
 	Folder: "Tape",
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["FeetLinked", "EncaseTorsoLower"],
+	AddPose: ["FeetLinked", "EncaseTorsoLower", "EncaseLegs"],
 	Layers: ToLayerMap([
 		{ Name: "Bottom", Layer: "WrappingTorso", Pri: -5,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
@@ -124,14 +152,14 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseArmLeft"],
 	Layers: ToLayerMap([
-		{ Name: "ArmLeft", Layer: "BindArmLeft", Pri: -5,
+		{ Name: "ArmLeft", Layer: "WrappingTorsoOver", Pri: -5, // BindArmLeft
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmLeft", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 
 			DisplacementSprite: "TapeLeft",
-			DisplaceLayers: ToMap(["ArmsAll"]),
-			DisplacementMorph: {Crossed: "Crossed"},
+			DisplaceLayers: ToMap(["ArmsAllAndHarness"]),
+			DisplacementMorph: {Crossed: "Crossed", Boxtie: "Boxtie"},
 			DisplacementInvariant: true,
 			DisplaceAmount: 100,
 
@@ -148,14 +176,14 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseArmRight"],
 	Layers: ToLayerMap([
-		{ Name: "ArmRight", Layer: "BindArmRight", Pri: -5,
+		{ Name: "ArmRight", Layer: "WrappingTorsoOver", Pri: -5, // BindArmRight
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmRight", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 
 			DisplacementSprite: "TapeRight",
-			DisplaceLayers: ToMap(["ArmsAll"]),
-			DisplacementMorph: {Crossed: "Crossed"},
+			DisplaceLayers: ToMap(["ArmsAllAndHarness"]),
+			DisplacementMorph: {Crossed: "Crossed", Boxtie: "Boxtie"},
 			DisplacementInvariant: true,
 			DisplaceAmount: 100,
 

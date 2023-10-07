@@ -5972,7 +5972,7 @@ let KDEventMapGeneric = {
 				if (!KDIsHumanoid(e)) continue;
 				if (KDRandom() < chance && !KDEntityHasBuff(e, "HighValue")) {
 					let Enemy = null;
-					if (KDHardModeReplace[e.Enemy.name]) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
+					if (KDHardModeReplace[e.Enemy.name] && KDRandom() < 0.5) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
 					if (Enemy) {
 						KDSpliceIndex(KDMapData.Entities.indexOf(e), 1);
 						e.Enemy = JSON.parse(JSON.stringify(Enemy));

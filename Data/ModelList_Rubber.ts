@@ -97,7 +97,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rubber"],
-	AddPose: ["FeetLinked"],
+	AddPose: ["FeetLinked", "EncaseLegs"],
 	Layers: ToLayerMap([
 		{ Name: "Legs", Layer: "OverSocks", Pri: 11,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
@@ -115,7 +115,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Rubber"],
-	AddPose: ["FeetLinked", "TorsoLowerTight", "EncaseTorsoLower"],
+	AddPose: ["FeetLinked", "TorsoLowerTight", "EncaseTorsoLower", "EncaseLegs"],
 	Layers: ToLayerMap([
 		...GetModelLayers("RubberThighs"),
 		...GetModelLayers("RubberTorsoLower"),
@@ -130,7 +130,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Rubber"],
-	AddPose: ["FeetLinked"],
+	AddPose: ["FeetLinked", "EncaseAnkles"],
 	Layers: ToLayerMap([
 		{ Name: "Ankles", Layer: "OverSocks", Pri: 10,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),

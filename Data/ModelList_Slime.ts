@@ -117,7 +117,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Slime"],
-	AddPose: ["FeetLinked"],
+	AddPose: ["FeetLinked", "EncaseLegs"],
 	Filters: {
 		"Slime": slimefilter,
 	},
@@ -139,7 +139,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Slime"],
-	AddPose: ["FeetLinked", "TorsoLowerTight", "EncaseTorsoLower"],
+	AddPose: ["FeetLinked", "TorsoLowerTight", "EncaseTorsoLower", "EncaseLegs"],
 	Filters: {
 		"Slime": slimefilter,
 	},
@@ -157,7 +157,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Slime"],
-	AddPose: ["FeetLinked"],
+	AddPose: ["FeetLinked", "EncaseAnkles"],
 	Filters: {
 		"Slime": slimefilter,
 	},
