@@ -2606,6 +2606,7 @@ const KinkyDungeonRestraints = [
 			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			debris: "Belts",
+			Model: "Breastplate",
 			escapeChance: {
 				"Struggle": 10,
 				"Cut": -0.5,
