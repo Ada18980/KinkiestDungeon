@@ -132,15 +132,33 @@ kdUItext.sortableChildren = true;
 let kdstatusboard = new PIXI.Container();
 kdstatusboard.zIndex = 5;
 kdstatusboard.sortableChildren = true;
+let kdfloatercanvas = new PIXI.Container();
+kdfloatercanvas.zIndex = 100;
+kdfloatercanvas.sortableChildren = false;
+kdstatusboard.addChild(kdfloatercanvas);
+
+
+let kditemsboard = new PIXI.Container();
+kditemsboard.zIndex = -2;
+kditemsboard.sortableChildren = false;
+let kdwarningboard = new PIXI.Container();
+kdwarningboard.zIndex = -0.3;
+kdwarningboard.sortableChildren = true;
+let kdwarningboardOver = new PIXI.Container();
+kdwarningboardOver.zIndex = 2.22;
+kdwarningboardOver.sortableChildren = false;
 // @ts-ignore
 let kdgameboard = new PIXI.Container();
 kdgameboard.sortableChildren = true;
 kdgameboard.zIndex = -50;
 kdgameboard.addChild(kdmapboard);
+kdgameboard.addChild(kdwarningboard);
 kdgameboard.addChild(kdbulletboard);
 kdgameboard.addChild(kdenemyboard);
 kdgameboard.addChild(kdeffecttileboard);
 kdgameboard.addChild(kdgamesound);
+kdgameboard.addChild(kdwarningboardOver);
+kdgameboard.addChild(kditemsboard);
 // @ts-ignore
 let kdui = new PIXI.Graphics();
 let kdcanvas = new PIXI.Container();
@@ -170,7 +188,7 @@ if (StandalonePatched) {
 
 let kdparticles = new PIXI.Container();
 kdparticles.zIndex = 10;
-kdparticles.sortableChildren = true;
+kdparticles.sortableChildren = false;
 kdcanvas.addChild(kdparticles);
 //kdgameboard.addChild(kdparticles);
 
@@ -1895,9 +1913,9 @@ function KinkyDungeonDrawFloaters(CamX, CamY) {
 		if (i <= max) {
 			let x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
 			let y = floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay;
-			DrawTextKD(floater.text,
+			DrawTextFitKDTo(kdfloatercanvas, floater.text,
 				x, y - floater.speed*floater.t,
-				floater.color, KDTextGray1, undefined, undefined, 120, KDEase(floater.t / floater.lifetime));
+				1000, floater.color, KDTextGray1, undefined, undefined, 120, KDEase(floater.t / floater.lifetime));
 		}
 		if (floater.t < floater.lifetime) newFloaters.push(floater);
 		i += 1;

@@ -153,11 +153,11 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 		// if true, nakeds the player, then reclothes
 		if (KinkyDungeonCheckClothesLoss) {
 			// We refresh all the restraints
-			if (StandalonePatched && CommonTime() > KDLastForceRefresh + KDLastForceRefreshInterval) {
+			/*if (StandalonePatched && CommonTime() > KDLastForceRefresh + KDLastForceRefreshInterval) {
 				// Force refresh the model
 				ForceRefreshModels(Character);
 				KDLastForceRefresh = CommonTime();
-			}
+			}*/
 
 			// First we remove all restraints and clothes
 			let clothGroups = {};
