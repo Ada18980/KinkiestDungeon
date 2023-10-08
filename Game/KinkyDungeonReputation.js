@@ -721,20 +721,6 @@ function KinkyDungeonUpdateAngel(delta) {
 			}
 		}
 	}
-	if (!KDGameData.KinkyDungeonPenance || (KinkyDungeonAngel())) {
-		if (KDGameData.KinkyDungeonAngel) {
-			KDGameData.KDPenanceStageEnd += delta;
-			if (!KDMapData.Entities.includes(KinkyDungeonAngel())) {
-				KDGameData.KinkyDungeonAngel = 0;
-			} else if (KDAllied(KinkyDungeonAngel()) && KinkyDungeonAngel() && (!KDGameData.KinkyDungeonPenance || KDHostile(KinkyDungeonAngel())) && (KDGameData.KDPenanceStageEnd > 10 && KDRandom() < 0.2)) {
-				KDClearItems(KinkyDungeonAngel());
-				KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonAngel()), 1);
-				KDGameData.KinkyDungeonAngel = 0;
-				KDGameData.KinkyDungeonPenance = false;
-			}
-		}
-	}
-
 }
 
 /**

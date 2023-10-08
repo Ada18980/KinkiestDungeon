@@ -708,10 +708,6 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 				}
 			}
 
-			for (let N = 0; N < textSplit.length; N++) {
-				DrawTextFitKD(textSplit[N],
-					xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5  + 155 + i * 23, 350, "#000000", KDTextTan, 20, undefined, 130); i++;}
-
 
 			let bindEff = weapon.bindEff || (KinkyDungeonBindingDamageTypes.includes(weapon.type) ? 1 : 0);
 			let bind = weapon.bind;
@@ -728,6 +724,11 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 			if (weapon.staminacost) cost = weapon.staminacost;
 			DrawTextKD(TextGet("KinkyDungeonWeaponStamina") + Math.round(10*cost), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 440, "#000000", KDTextTan, 24, undefined, 130);
 		}
+
+
+		for (let N = 0; N < textSplit.length; N++) {
+			DrawTextFitKD(textSplit[N],
+				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5  + 155 + i * 23, 350, "#000000", KDTextTan, 20, undefined, 130); i++;}
 
 	} else {
 		for (let N = 0; N < textSplit.length; N++) {
