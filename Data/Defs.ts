@@ -279,8 +279,15 @@ let LAYERS_BASE = [
 
 /** Handy way of referencing multiple layers */
 let LayerGroups = {
+	"Breastplate": ToMap([
+		"Chest",
+		"Shirt",
+	]),
 	"ChestBinding": ToMap([
 		"Chest",
+		//"Shirt",
+	]),
+	"TopBinding": ToMap([
 		"Shirt",
 	]),
 	"CrotchRope": ToMap([

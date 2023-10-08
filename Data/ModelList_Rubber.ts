@@ -186,6 +186,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "TorsoUpper", Layer: "WrappingTorso", Pri: -5,
 			Invariant: true,
+			HideOverrideLayerMulti: ["TopBinding"],
 			InheritColor: "Rubber",
 		},
 		{ Name: "Chest", Layer: "BindChest", Pri: 101,

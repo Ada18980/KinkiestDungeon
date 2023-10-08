@@ -365,6 +365,25 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "BlindfoldTape",
+	Folder: "Blindfold",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Layers: ToLayerMap([
+		{ Name: "Tape", Layer: "Blindfold", Pri: -1,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Tape",
+		},
+	])
+});
+
 AddModel({
 	Name: "RopeCrosstie1",
 	Folder: "Rope",

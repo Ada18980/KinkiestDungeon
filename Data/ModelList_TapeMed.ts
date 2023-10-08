@@ -5,12 +5,10 @@
  * In general, this is accomplished by having higher priority items cover more of the original
  */
 
-let tapefilter = {"gamma":1,"saturation":0.0,"contrast":2,"brightness":3,"red":1,"green":1,"blue":1,"alpha":1};
-
 AddModel({
-	Name: "TapeBoots",
-	Folder: "Tape",
-	Parent: "TapeBottom",
+	Name: "TapeMedBoots",
+	Folder: "TapeMed",
+	Parent: "TapeMedBottom",
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
@@ -27,9 +25,9 @@ AddModel({
 	])
 });
 AddModel({
-	Name: "TapeAnkles",
-	Folder: "Tape",
-	Parent: "TapeBottom",
+	Name: "TapeMedAnkles",
+	Folder: "TapeMed",
+	Parent: "TapeMedBottom",
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
@@ -45,13 +43,13 @@ AddModel({
 
 
 AddModel({
-	Name: "TapeLegs",
-	Folder: "Tape",
+	Name: "TapeMedLegs",
+	Folder: "TapeMed",
 	TopLevel: false,
-	Parent: "TapeBottom",
+	Parent: "TapeMedBottom",
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["FeetLinked", "EncaseTorsoLower", "EncaseLegs"],
+	AddPose: ["FeetLinked", "EncaseLegs"],
 	Layers: ToLayerMap([
 		{ Name: "Legs", Layer: "WrappingLegs", Pri: -5,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
@@ -68,25 +66,25 @@ AddModel({
 });
 
 AddModel({
-	Name: "TapeBottom",
-	Folder: "Tape",
+	Name: "TapeMedBottom",
+	Folder: "TapeMed",
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["FeetLinked", "EncaseTorsoLower", "EncaseLegs"],
+	AddPose: ["FeetLinked", "EncaseLegs"],
 	Layers: ToLayerMap([
-		{ Name: "Bottom", Layer: "WrappingTorso", Pri: -5,
+		/*{ Name: "Bottom", Layer: "WrappingTorso", Pri: -5,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
-		},
+		},*/
 	])
 });
 /*
 AddModel({
-	Name: "TapeArmLeft",
-	Folder: "Tape",
-	Parent: "TapeArms",
+	Name: "TapeMedArmLeft",
+	Folder: "TapeMed",
+	Parent: "TapeMedArms",
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
@@ -101,9 +99,9 @@ AddModel({
 	])
 });
 AddModel({
-	Name: "TapeArmRight",
-	Folder: "Tape",
-	Parent: "TapeArms",
+	Name: "TapeMedArmRight",
+	Folder: "TapeMed",
+	Parent: "TapeMedArms",
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
@@ -119,13 +117,12 @@ AddModel({
 });*/
 
 AddModel({
-	Name: "TapeTorsoUpper",
-	Folder: "Tape",
-	Parent: "TapeArms",
+	Name: "TapeMedTorsoUpper",
+	Folder: "TapeMed",
+	Parent: "TapeMedArms",
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
 		{ Name: "Top", Layer: "WrappingTorso", Pri: -4,
 			Poses: ToMap(["Boxtie", "Crossed", "Wristtie"]),
@@ -136,82 +133,81 @@ AddModel({
 			Invariant: true,
 			InheritColor: "Tape",
 
-			CrossHideOverride: true,
-			HideOverrideLayerMulti: ["ChestBinding"],
-			ForceSingleOverride: true,
+			//CrossHideOverride: true,
+			//HideOverrideLayerMulti: ["ChestBinding"],
+			//ForceSingleOverride: true,
 		},
 	])
 });
 
 AddModel({
-	Name: "TapeArmLeft",
-	Folder: "Tape",
-	Parent: "TapeArms",
+	Name: "TapeMedArmLeft",
+	Folder: "TapeMed",
+	Parent: "TapeMedArms",
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseArmLeft"],
 	Layers: ToLayerMap([
 		{ Name: "ArmLeft", Layer: "WrappingTorsoOver", Pri: -5, // BindArmLeft
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmLeft", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 
-			DisplacementSprite: "TapeLeft",
+			DisplacementSprite: "TapeMedLeft",
 			DisplaceLayers: ToMap(["ArmsAllAndHarness"]),
-			DisplacementMorph: {Crossed: "Crossed", Boxtie: "Boxtie"},
+			DisplacementMorph: {Crossed: "Crossed", Boxtie: "Boxtie", Wristtie: "Wristtie"},
 			DisplacementInvariant: true,
 			DisplaceAmount: 100,
 
 			NoDisplace: true,
+			InheritColor: "Tape",
 		},
 	])
 });
 AddModel({
-	Name: "TapeArmRight",
-	Folder: "Tape",
-	Parent: "TapeArms",
+	Name: "TapeMedArmRight",
+	Folder: "TapeMed",
+	Parent: "TapeMedArms",
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseArmRight"],
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "WrappingTorsoOver", Pri: -5, // BindArmRight
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmRight", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 
-			DisplacementSprite: "TapeRight",
+			DisplacementSprite: "TapeMedRight",
 			DisplaceLayers: ToMap(["ArmsAllAndHarness"]),
-			DisplacementMorph: {Crossed: "Crossed", Boxtie: "Boxtie"},
+			DisplacementMorph: {Crossed: "Crossed", Boxtie: "Boxtie", Wristtie: "Wristtie"},
 			DisplacementInvariant: true,
 			DisplaceAmount: 100,
 
 			NoDisplace: true,
+			InheritColor: "Tape",
 		},
 	])
 });
 
 AddModel({
-	Name: "TapeArms",
-	Folder: "Tape",
-	Parent: "Tape",
+	Name: "TapeMedArms",
+	Folder: "TapeMed",
+	Parent: "TapeMed",
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
-		...GetModelLayers("TapeArmLeft"),
-		...GetModelLayers("TapeArmRight"),
-		...GetModelLayers("TapeTorsoUpper"),
+		...GetModelLayers("TapeMedArmLeft"),
+		...GetModelLayers("TapeMedArmRight"),
+		...GetModelLayers("TapeMedTorsoUpper"),
 	])
 });
 
 
 AddModel({
-	Name: "TapeHandLeft",
-	Folder: "Tape",
-	Parent: "TapeArms",
+	Name: "TapeMedHandLeft",
+	Folder: "TapeMed",
+	Parent: "TapeMedArms",
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
@@ -227,9 +223,9 @@ AddModel({
 	])
 });
 AddModel({
-	Name: "TapeHandRight",
-	Folder: "Tape",
-	Parent: "TapeArms",
+	Name: "TapeMedHandRight",
+	Folder: "TapeMed",
+	Parent: "TapeMedArms",
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],

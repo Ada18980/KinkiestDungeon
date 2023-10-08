@@ -181,6 +181,9 @@ AddModel({
 			HideWhenOverridden: true,
 			MorphPoses: {Hogtie: "Hogtie"},
 			Invariant: true,
+			DisplacementSprite: "Breastplate",
+			DisplaceAmount: 20,
+			DisplaceLayers: ToMap(["Breastplate"]),
 		},
 	])
 });
