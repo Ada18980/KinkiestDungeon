@@ -16,6 +16,14 @@
 	"spriteSourceSize": {"x":461,"y":1208,"w":136,"h":409},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/ArmorPlate/BootLeftKneel.png":
+{
+	"frame": {"x":535,"y":1873,"w":388,"h":160},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":505,"y":925,"w":388,"h":160},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/ArmorPlate/BootRightClosed.png":
 {
 	"frame": {"x":1539,"y":804,"w":161,"h":445},
@@ -122,7 +130,7 @@
 },
 "Models/FaceKoi/BlushExtreme.png":
 {
-	"frame": {"x":1860,"y":1972,"w":168,"h":59},
+	"frame": {"x":1865,"y":1972,"w":168,"h":59},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":49,"y":190,"w":168,"h":59},
@@ -200,20 +208,20 @@
 	"spriteSourceSize": {"x":676,"y":480,"w":208,"h":538},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Rope/Arm2Wristtie.png":
+{
+	"frame": {"x":1561,"y":1972,"w":304,"h":63},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":465,"y":484,"w":304,"h":63},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Rope/Crotchrope.png":
 {
 	"frame": {"x":357,"y":1788,"w":257,"h":178},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":459,"y":739,"w":257,"h":178},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Rope/Thigh3ClosedOver.png":
-{
-	"frame": {"x":1561,"y":1972,"w":299,"h":51},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":446,"y":927,"w":299,"h":51},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Rubber/AnklesKneelClosed.png":
@@ -264,14 +272,6 @@
 	"spriteSourceSize": {"x":563,"y":629,"w":172,"h":61},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Tape/ArmLeftWristtie.png":
-{
-	"frame": {"x":535,"y":1873,"w":175,"h":377},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":607,"y":383,"w":175,"h":377},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Witch/SkirtKneelCrotchStrap.png":
 {
 	"frame": {"x":1052,"y":1813,"w":509,"h":205},
@@ -309,9 +309,9 @@
 	"version": "1.1",
 	"image": "atlas4.png",
 	"format": "RGBA8888",
-	"size": {"w":2046,"h":2048},
+	"size": {"w":2046,"h":2045},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:1b1a811097f61a9d5f6a34225440f49d:acafdb96d7c0332a7176c7624ed1dab0:8c162df9f922c894dc40293099b50393$"
+	"smartupdate": "$TexturePacker:SmartUpdate:94817d0e0d7bf0ba92e5ce9f21c575ba:6cdbdfd5a4f8d76e001b945dd6f273e5:8c162df9f922c894dc40293099b50393$"
 }
 }

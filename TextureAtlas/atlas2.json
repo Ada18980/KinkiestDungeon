@@ -416,6 +416,14 @@
 	"spriteSourceSize": {"x":470,"y":1011,"w":247,"h":46},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Tape/StrapCover.png":
+{
+	"frame": {"x":1570,"y":1318,"w":45,"h":24},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":553,"y":895,"w":45,"h":24},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Witch/ShoeRightClosed.png":
 {
 	"frame": {"x":1786,"y":1928,"w":125,"h":85},
@@ -464,6 +472,6 @@
 	"size": {"w":2045,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:1b1a811097f61a9d5f6a34225440f49d:acafdb96d7c0332a7176c7624ed1dab0:8c162df9f922c894dc40293099b50393$"
+	"smartupdate": "$TexturePacker:SmartUpdate:94817d0e0d7bf0ba92e5ce9f21c575ba:6cdbdfd5a4f8d76e001b945dd6f273e5:8c162df9f922c894dc40293099b50393$"
 }
 }

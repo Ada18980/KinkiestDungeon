@@ -259,6 +259,16 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 
 		// We only refresh if it actually needs to be updated
 		if (!MC.ForceUpdate.has(containerID)) modified = true; // Force refresh if we are forced to
+
+		if (flip && Container.Container?.scale.x > 0) {
+			Container.Container.scale.x *= -1;
+			modified = true;
+		}
+		else if (!flip && Container.Container?.scale.x < 0) {
+			Container.Container.scale.x *= -1;
+			modified = true;
+		}
+
 		if (modified && !created) {
 			MC.Refresh.add(containerID);
 			MC.Update.delete(containerID);
@@ -266,10 +276,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
 				PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
 
-			if (flip && Container.Container?.scale.x > 0)
-				Container.Container.scale.x *= -1;
-			else if (!flip && Container.Container?.scale.x < 0)
-				Container.Container.scale.x *= -1;
+
+
 
 
 			//Container.Container.pivot.set(-MODELWIDTH*MODEL_SCALE * Container.Container.scale.x * 0.25 * Zoom, -MODELHEIGHT*MODEL_SCALE * Container.Container.scale.y * 0.25 * Zoom);

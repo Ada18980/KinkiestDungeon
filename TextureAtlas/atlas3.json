@@ -240,20 +240,20 @@
 	"spriteSourceSize": {"x":462,"y":570,"w":306,"h":66},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Rope/Arm1OverBoxtie.png":
+{
+	"frame": {"x":0,"y":1970,"w":306,"h":63},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":462,"y":570,"w":306,"h":63},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Rope/Arm2Boxtie.png":
 {
 	"frame": {"x":535,"y":1603,"w":308,"h":54},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":465,"y":484,"w":308,"h":54},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Rope/Arm2Wristtie.png":
-{
-	"frame": {"x":0,"y":1970,"w":304,"h":63},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":465,"y":484,"w":304,"h":63},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Rope/Calf1KneelClosed.png":
@@ -346,7 +346,7 @@
 },
 "Models/Warrior/Belt.png":
 {
-	"frame": {"x":304,"y":1970,"w":216,"h":56},
+	"frame": {"x":306,"y":1970,"w":216,"h":56},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":476,"y":664,"w":216,"h":56},
@@ -384,6 +384,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:1b1a811097f61a9d5f6a34225440f49d:acafdb96d7c0332a7176c7624ed1dab0:8c162df9f922c894dc40293099b50393$"
+	"smartupdate": "$TexturePacker:SmartUpdate:94817d0e0d7bf0ba92e5ce9f21c575ba:6cdbdfd5a4f8d76e001b945dd6f273e5:8c162df9f922c894dc40293099b50393$"
 }
 }
