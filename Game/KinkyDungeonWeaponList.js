@@ -130,7 +130,7 @@ let KinkyDungeonWeapons = {
 		events: [{type: "Cleave", trigger: "playerAttack", power: 1, damage: "crush"}]},
 	"MagicFlail": {name: "MagicFlail", dmg: 2.5, chance: 1.5, staminacost: 3.0, type: "crush", unarmed: false, rarity: 4, magic: true, shop: false, sfx: "LightSwing",
 		crit: 2.0,
-		events: [{type: "MagicFlail", trigger: "playerAttack", power: 2, damage: "shadow", crit: 2.0}]},
+		events: [{type: "MagicFlail", trigger: "playerAttack", power: 2, damage: "cold", crit: 2.0}]},
 
 	// Spears
 	"Spear": {name: "Spear", dmg: 4.0, chance: 1.0, staminacost: 3.3, type: "pierce", unarmed: false, rarity: 2, shop: false, sfx: "LightSwing",

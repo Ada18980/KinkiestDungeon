@@ -4386,7 +4386,7 @@ let KDEventMapWeapon = {
 			if (data.enemy && !data.disarm) {
 				let nearby = KDNearbyEnemies(data.enemy.x, data.enemy.y, 1.5);
 				for (let enemy of nearby) {
-					if (KDHostile(enemy) && !KDHelpless(data.enemy)) {
+					if (KDHostile(enemy) && !KDHelpless(enemy)) {
 						KinkyDungeonDamageEnemy(enemy, {
 							type: e.damage,
 							damage: e.power,
