@@ -92,10 +92,25 @@ let DisplacementMaps = [
 	"ThighCuffRightKneelClosed.png",
 	"ThighCuffLeftSpread.png",
 	"ThighCuffRightClosed.png",
-	"TapeLeftCrossed.png",
-	"TapeRightCrossed.png",
-	"TapeLeft.png",
-	"TapeRight.png",
+
+	"TapeFullLeftCrossed.png",
+	"TapeFullRightCrossed.png",
+	"TapeFullLeftBoxtie.png",
+	"TapeFullRightBoxtie.png",
+	"TapeFullLeftWristtie.png",
+	"TapeFullRightWristtie.png",
+	"TapeFullLeft.png",
+	"TapeFullRight.png",
+
+	"TapeTopLeftCrossed.png",
+	"TapeTopRightCrossed.png",
+	"TapeTopLeftBoxtie.png",
+	"TapeTopRightBoxtie.png",
+	"TapeTopLeftWristtie.png",
+	"TapeTopRightWristtie.png",
+	"TapeTopLeft.png",
+	"TapeTopRight.png",
+
 	"TapeMedLeftCrossed.png",
 	"TapeMedRightCrossed.png",
 	"TapeMedLeftBoxtie.png",
@@ -104,6 +119,7 @@ let DisplacementMaps = [
 	"TapeMedRightWristtie.png",
 	"TapeMedLeft.png",
 	"TapeMedRight.png",
+
 	"TapeLightLeftCrossed.png",
 	"TapeLightRightCrossed.png",
 	"TapeLightLeftBoxtie.png",
@@ -112,6 +128,7 @@ let DisplacementMaps = [
 	"TapeLightRightWristtie.png",
 	"TapeLightLeft.png",
 	"TapeLightRight.png",
+
 	"Null.png",
 	"TapeAnklesSquishClosed.png",
 	"TapeAnklesSquishKneel.png",
@@ -119,7 +136,7 @@ let DisplacementMaps = [
 ];
 
 let linearList = [
-	"TextureAtlas/atlas0.json",
+	//"TextureAtlas/atlas0.json",
 	...DisplacementMaps.map((e) => {return "DisplacementMaps/" + e;}),
 ];
 
@@ -150,7 +167,7 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 		let result = preload ? PIXI.Assets.backgroundLoad(dataFile) : PIXI.Assets.load(dataFile);
 
 		result.then(() => {
-			console.log(PIXI.Cache);
+			//console.log(dataFile);
 			KDLoadingDone += amount;
 		});
 		//let atlas = await result;

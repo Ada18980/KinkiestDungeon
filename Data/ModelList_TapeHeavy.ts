@@ -118,14 +118,15 @@ AddModel({
 	])
 });*/
 
+
 AddModel({
-	Name: "TapeHeavyTorsoUpper",
+	Name: "TapeHeavyArms",
 	Folder: "TapeHeavy",
-	Parent: "TapeHeavyArms",
-	TopLevel: false,
+	Parent: "TapeHeavy",
+	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseTorsoUpper", "EncaseChest"],
+	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
 		{ Name: "Top", Layer: "WrappingTorso", Pri: -4,
 			Poses: ToMap(["Boxtie", "Crossed", "Wristtie"]),
@@ -141,24 +142,12 @@ AddModel({
 			HideOverrideLayerMulti: ["ChestBinding"],
 			ForceSingleOverride: true,
 		},
-	])
-});
-
-AddModel({
-	Name: "TapeHeavyArmLeft",
-	Folder: "TapeHeavy",
-	Parent: "TapeHeavyArms",
-	TopLevel: false,
-	Restraint: true,
-	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseArmLeft"],
-	Layers: ToLayerMap([
 		{ Name: "ArmLeft", Layer: "WrappingTorsoOver", Pri: -5, // BindArmLeft
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmLeft", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 
-			DisplacementSprite: "TapeLeft",
+			DisplacementSprite: "TapeHeavyLeft",
 			DisplaceLayers: ToMap(["ArmsAllAndHarness"]),
 			DisplacementMorph: {Crossed: "Crossed", Boxtie: "Boxtie"},
 			DisplacementInvariant: true,
@@ -167,23 +156,12 @@ AddModel({
 			NoDisplace: true,
 			InheritColor: "Tape",
 		},
-	])
-});
-AddModel({
-	Name: "TapeHeavyArmRight",
-	Folder: "TapeHeavy",
-	Parent: "TapeHeavyArms",
-	TopLevel: false,
-	Restraint: true,
-	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseArmRight"],
-	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "WrappingTorsoOver", Pri: -5, // BindArmRight
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmRight", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 
-			DisplacementSprite: "TapeRight",
+			DisplacementSprite: "TapeHeavyRight",
 			DisplaceLayers: ToMap(["ArmsAllAndHarness"]),
 			DisplacementMorph: {Crossed: "Crossed", Boxtie: "Boxtie"},
 			DisplacementInvariant: true,
@@ -192,21 +170,6 @@ AddModel({
 			NoDisplace: true,
 			InheritColor: "Tape",
 		},
-	])
-});
-
-AddModel({
-	Name: "TapeHeavyArms",
-	Folder: "TapeHeavy",
-	Parent: "TapeHeavy",
-	TopLevel: true,
-	Restraint: true,
-	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest"],
-	Layers: ToLayerMap([
-		...GetModelLayers("TapeArmLeft"),
-		...GetModelLayers("TapeArmRight"),
-		...GetModelLayers("TapeTorsoUpper"),
 	])
 });
 
