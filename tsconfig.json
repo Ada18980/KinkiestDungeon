@@ -113,6 +113,8 @@
         "Data/ModelList.ts",
         "Data/ModelList_Leotards.ts",
         "Data/ModelList_Restraints.ts",
+        "Data/ModelList_Rope.ts",
+        "Data/ModelList_Ribbon.ts",
         "Data/ModelList_Cuffs.ts",
         "Data/ModelList_Slime.ts",
         "Data/ModelList_Rubber.ts",
