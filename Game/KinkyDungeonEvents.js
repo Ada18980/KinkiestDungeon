@@ -683,7 +683,7 @@ let KDEventMapInventory = {
 				currentCount: e.mult ? -1 : undefined,
 				maxCount: e.mult,});
 		},
-		"restraintBlock": (e, item, data) => {
+		"RestraintBlock": (e, item, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.original || "") + item.name + "Block", type: "RestraintBlock", power: e.power, duration: 2,});
 		},
 		"ShadowHandTether": (e, item, data) => {
@@ -4392,7 +4392,7 @@ let KDEventMapWeapon = {
 							damage: e.power,
 							time: e.time,
 							crit: e.crit,
-						}, false, true, undefined, undefined, KinkyDungeonPlayerEntity);
+						}, false, enemy != data.enemy, undefined, undefined, KinkyDungeonPlayerEntity);
 					}
 				}
 			}

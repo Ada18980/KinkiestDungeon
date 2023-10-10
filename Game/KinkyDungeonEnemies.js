@@ -5824,7 +5824,7 @@ function KDGetExtraTags(enemy, useSpecial) {
  * @returns {restraint[]}
  */
 function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, restraintFromInventory, spell) {
-	let restraintblock = KinkyDungeonGetPlayerStat("RestraintBlock");
+	let restraintblock = KDCalcRestraintBlock();
 	let restraintpower = 0;
 	for (let r of restraintsToAdd) {
 		if (r)

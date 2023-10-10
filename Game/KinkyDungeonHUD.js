@@ -343,7 +343,7 @@ function KinkyDungeonDrawInputs() {
 		text: TextGet("StatEvasion")
 			.replace("Percent", ("") + Math.round((1 - evasion) * 100))
 			.replace("EVASIONSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion")) * 100))
-			.replace("EVASIONPENALTY", ("") + Math.round((KDPlayerEvasionPenalty()) * 100)),
+			.replace("EVASIONPENALTY", ("") + Math.round((1 - KinkyDungeonMultiplicativeStat(KDPlayerEvasionPenalty())) * -100)),
 		count: ("") + Math.round((1 - evasion) * 100) + "%",
 		icon: "infoEvasion",
 		countcolor: evasion < 1 ? "#65d45d" : (evasion == 1 ? "#ffffff" : "#ff5555"),
@@ -353,7 +353,7 @@ function KinkyDungeonDrawInputs() {
 		text: TextGet("StatBlock")
 			.replace("Percent", ("") + Math.round((1 - block) * 100))
 			.replace("BLOCKSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block")) * 100))
-			.replace("BLOCKPENALTY", ("") + Math.round((KDPlayerBlockPenalty()) * 100)),
+			.replace("BLOCKPENALTY", ("") + Math.round((1 - KinkyDungeonMultiplicativeStat(KDPlayerBlockPenalty())) * -100)),
 		count: ("") + Math.round((1 - block) * 100) + "%",
 		icon: "infoBlock",
 		countcolor: block < 1 ? "#65d45d" : (block == 1 ? "#ffffff" : "#ff5555"),
@@ -505,12 +505,13 @@ function KinkyDungeonDrawInputs() {
 		statsDraw.spellarmor = {text: TextGet("KinkyDungeonPlayerSpellResist") + Math.round(spellarmor*10), count: (spellarmor > 0 ? "+" : "") + Math.round(spellarmor*10), category: "buffs", icon: "spellarmor", color: "#73efe8", bgcolor: "#333333", priority: spellarmor + 1};
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerSpellResist") + Math.round(spellarmor*10), X2, 900 - i * 25, 200, "#73efe8", "#333333"); i++; i++;
 	}
-	let restraintblock = KDRestraintBlockPower(KinkyDungeonGetPlayerStat("RestraintBlock"), 10);
-	if (restraintblock < 1)
+	let restraintblock = KDRestraintBlockPower(KDCalcRestraintBlock(), 10);
+	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlock"))
 		statsDraw.restraintblock = {
 			text: TextGet("StatRestraintBlock")
 				.replace("AMNT1", ("") + Math.round((1 - restraintblock) * 100))
-				.replace("AMNT2", ("") + Math.round(10 * KinkyDungeonGetPlayerStat("RestraintBlock"))),
+				.replace("AMNT2", ("") + Math.round(10 * KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlock")))
+				.replace("RESBLKPENALTY", Math.round((1 - KinkyDungeonMultiplicativeStat(KDRestraintBlockPenalty())) * -100) + ("%")),
 			count: ("") + Math.round((1 - restraintblock) * 100) + "%",
 			icon: "restraintblock",
 			countcolor: "#65d45d",
@@ -1477,39 +1478,6 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 	DrawTextFitKD("" + KinkyDungeonGold, x+50+50+50+40, y + textheight + i * heightPerBar + itemsAdj, 50, "#ffffff", "#333333", fs);
 	if (MouseIn(x+150, y + 40 - 40 + i * heightPerBar + itemsAdj, 80, 80)) DrawTextKD(TextGet("KinkyDungeonInventoryItemGold"), MouseX - 10, MouseY, "#ffffff", "#333333");
 
-	/*
-	let statAdj = 98;
-	let stati = 0;
-	let statspacing = 40;
-	DrawButtonVis(x + 10, y + statAdj + statspacing * stati + i * heightPerBar, width - 15, 40, TextGet("StatMiscastChance").replace("Percent", Math.round(100 * Math.max(0, KinkyDungeonMiscastChance)) + "%"),
-		(KinkyDungeonMiscastChance > 0.5) ? "#ff0000" : ((KinkyDungeonMiscastChance > 0) ? "pink" : "#ffffff"), KinkyDungeonRootDirectory + "UI/miscast.png", undefined, undefined, true, "", 24, true); stati++;
-	if (KinkyDungeonPlayerDamage) {
-		DrawButtonVis(x + 10, y + statAdj + statspacing * stati + i * heightPerBar, width - 15, 40, TextGet("KinkyDungeonAccuracy") + Math.round(KinkyDungeonGetEvasion() * 100) + "%",
-			(KinkyDungeonGetEvasion() < KinkyDungeonPlayerDamage.chance * 0.99) ? "#ff0000" :
-			(KinkyDungeonGetEvasion() > KinkyDungeonPlayerDamage.chance * 1.01) ? "lightgreen" : "#ffffff", KinkyDungeonRootDirectory + "UI/accuracy.png", undefined, undefined, true, "", 24, true); stati++;
-	}
-	let evasion = KinkyDungeonPlayerEvasion();
-	DrawButtonVis(x + 10, y + statAdj + statspacing * stati + i * heightPerBar, width - 15, 40, TextGet("StatEvasion").replace("Percent", ("") + Math.round((1 - evasion) * 100)),
-		(evasion > 1) ? "#ff0000" : (evasion < 1 ? "lightgreen" : "#ffffff"), KinkyDungeonRootDirectory + "UI/evasion.png", undefined, undefined, true, "", 24, true); stati++;
-	let speed = TextGet("StatSpeed" + (KinkyDungeonSlowLevel > 9 ? "Immobile" : (KDGameData.MovePoints < 0 ? "Stun" : (KinkyDungeonSlowLevel > 2 ? "VerySlow" : (KinkyDungeonSlowLevel > 1 ? "Slow" : "Normal")))));
-	DrawButtonVis(x + 10, y + statAdj + statspacing * stati + i * heightPerBar, width - 15, 40, TextGet("StatSpeed").replace("SPD", speed),
-		(KinkyDungeonMiscastChance > 0.5) ? "#ff0000" : ((KinkyDungeonSlowLevel > 1 || KDGameData.MovePoints < 0) ? (KinkyDungeonSlowLevel < 10 ? "pink" : "#ff0000") : "#ffffff"), KinkyDungeonRootDirectory + "UI/speed.png", undefined, undefined, true, "", 24, true); stati++;
-	let radius = KinkyDungeonGetVisionRadius();
-	DrawButtonVis(x + 10, y + statAdj + statspacing * stati + i * heightPerBar, width - 15, 40, TextGet("StatVision").replace("RADIUS", "" + radius),
-		(KinkyDungeonMiscastChance > 0.5) ? "#ff0000" : ((radius < 6) ? (radius > 3 ? "pink" : "#ff0000") : "#ffffff"), KinkyDungeonRootDirectory + "UI/vision.png", undefined, undefined, true, "", 24, true); stati++;
-	let jailstatus = "KinkyDungeonPlayerNotJailed";
-	if (KDGameData.PrisonerState == 'jail') {
-		jailstatus = "KinkyDungeonPlayerJail";
-	} else if (KDGameData.PrisonerState == 'parole') {
-		jailstatus = "KinkyDungeonPlayerParole";
-	} else if (KDGameData.PrisonerState == 'chase') {
-		jailstatus = "KinkyDungeonPlayerChase";
-	}
-	DrawButtonVis(x + 10, y + statAdj + statspacing * stati + i * heightPerBar, width - 15, 40, TextGet(jailstatus),
-			(!KDGameData.PrisonerState) ? "#ffffff" : (KDGameData.PrisonerState == "parole" ? "lightgreen" : (KDGameData.PrisonerState == "jail" ? "yellow" : "#ff0000")), KinkyDungeonRootDirectory + "UI/jail.png", undefined, undefined, true, "", 24, true); stati++;
-	DrawButtonVis(x + 10, y + statAdj + statspacing * stati + i * heightPerBar, width - 15, 40, TextGet("StatKey" + (KDCanEscape() ? "Escape" : "")),
-		KDCanEscape() ? "lightgreen" : "#ffffff", KinkyDungeonRootDirectory + "UI/key.png", undefined, undefined, true, "", 24, true); stati++;
-	*/
 	let switchAdj = 460;//395;
 	let actionButtonAdj = 460;
 	let actionBarWidth = 64;

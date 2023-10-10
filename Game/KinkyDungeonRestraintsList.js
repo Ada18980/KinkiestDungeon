@@ -2617,7 +2617,7 @@ const KinkyDungeonRestraints = [
 			LinkAll: true, NoLinkOver: true,
 			protection: 1,
 			events: [
-				{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
+				{trigger: "tick", type: "RestraintBlock", power: 1, inheritLinked: true},
 				{trigger: "tick", type: "sneakBuff", power: -0.15, inheritLinked: true},
 			],
 		}, "Breastplate", "Rock-solid and form-fitting.", "Provides minor protection against enemy attacks. Decreases stealth.")
@@ -2644,7 +2644,7 @@ const KinkyDungeonRestraints = [
 			strictness: 0.05,
 			protectionCursed: true,
 			events: [
-				{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
+				{trigger: "tick", type: "RestraintBlock", power: 1, inheritLinked: true},
 			],
 		}, "Adventuring Corset", "Protects your organs and your sense of style.", "Provides minor protection against enemy attacks at the cost of flexibility.")
 		, [...KDHexVariantList.Base]);
@@ -2672,7 +2672,7 @@ const KinkyDungeonRestraints = [
 			LinkAll: true, NoLinkOver: true,
 			events: [
 				{trigger: "tick", type: "armorBuff", power: 1.0, inheritLinked: true},
-				{trigger: "tick", type: "restraintBlock", power: 2.5, inheritLinked: true},
+				{trigger: "tick", type: "RestraintBlock", power: 2.5, inheritLinked: true},
 				{trigger: "tick", type: "evasionBuff", power: -0.5, inheritLinked: true},
 				{trigger: "tick", type: "sneakBuff", power: -0.5, inheritLinked: true},
 			],
@@ -2702,7 +2702,7 @@ const KinkyDungeonRestraints = [
 			displayPower: 10,
 			events: [
 				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
-				{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
+				{trigger: "tick", type: "RestraintBlock", power: 5, inheritLinked: true},
 			],
 		}, "Light Plate Armor", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
 		, [...KDHexVariantList.Base]);
@@ -2755,7 +2755,7 @@ const KinkyDungeonRestraints = [
 			displayPower: 8,
 			events: [
 				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
-				{trigger: "tick", type: "restraintBlock", power: 5, inheritLinked: true},
+				{trigger: "tick", type: "RestraintBlock", power: 5, inheritLinked: true},
 			],
 		}, "Armored Skirt", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
 		, [...KDHexVariantList.Base]);
@@ -2779,7 +2779,7 @@ const KinkyDungeonRestraints = [
 			protection: 1,
 			events: [
 				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
-				{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
+				{trigger: "tick", type: "RestraintBlock", power: 1, inheritLinked: true},
 				{trigger: "playerAttack", type: "armorNoise", chance: 1, dist: 8, sfx: "Chain", msg: "KinkyDungeonPunishPlayerArmor", inheritLinked: true},
 				{trigger: "playerCast", type: "armorNoise", chance: 1, dist: 11, punishComponent: "Arms", sfx: "Chain", msg: "KinkyDungeonPunishPlayerArmor", inheritLinked: true},
 			],
@@ -2845,7 +2845,7 @@ const KinkyDungeonRestraints = [
 			debris: "Belts",
 			events: [
 				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
-				{trigger: "tick", type: "restraintBlock", power: 1, inheritLinked: true},
+				{trigger: "tick", type: "RestraintBlock", power: 1, inheritLinked: true},
 				{trigger: "tick", type: "sneakBuff", power: -0.35, inheritLinked: true},
 			],
 		}, "Armored Boots", "Noisy, but fashionable!", "Provides +5 armor and protection against enemy attacks. Decreases stealth.")
