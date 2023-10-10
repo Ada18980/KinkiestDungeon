@@ -1203,6 +1203,31 @@ function KinkyDungeonUpdateStats(delta) {
 		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonOrgasmExhaustion" + vibe + suff), "#ff0000", 2, true);
 	}
 
+	if (!KinkyDungeonHasWill(0.1)) {
+		// Add Surrender debuff
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			id: "NoWP",
+			duration: 1,
+			buffSprite: true,
+			aura: "#ff5555",
+			aurasprite: "NoWP",
+			type: "EvasionPenalty",
+			power: 1,
+		});
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			id: "NoWP2",
+			duration: 1,
+			type: "BlockPenalty",
+			power: 1,
+		});
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			id: "NoWP3",
+			duration: 1,
+			type: "RestraintBlockPenalty",
+			power: 1,
+		});
+	}
+
 	KinkyDungeonStatBlind = Math.max(0, KinkyDungeonStatBlind - delta);
 	KinkyDungeonStatFreeze = Math.max(0, KinkyDungeonStatFreeze - delta);
 	KinkyDungeonStatBind = Math.max(0, KinkyDungeonStatBind - delta);

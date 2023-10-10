@@ -427,13 +427,34 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 function KDPlayerEvasionPenalty() {
 	let evasionPenalty = .25 * KinkyDungeonSlowLevel;
 
+	evasionPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "EvasionPenalty");
+
 	return evasionPenalty;
 }
 function KDPlayerBlockPenalty() {
 	let blockPenalty = Math.min(0.5, .1 * KinkyDungeonBlindLevel);
 	if (KinkyDungeonIsArmsBound(false, true)) blockPenalty = blockPenalty + (1 - blockPenalty) * 0.7;
 
+	blockPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BlockPenalty");
+
 	return Math.min(1, blockPenalty);
+}
+function KDRestraintBlockPenalty() {
+	let RestraintBlockPenalty = .15 * KinkyDungeonSlowLevel;
+	if (KinkyDungeonIsArmsBound(false, true)) RestraintBlockPenalty += .4;
+
+	RestraintBlockPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlockPenalty");
+
+	return RestraintBlockPenalty;
+}
+
+function KDCalcRestraintBlock() {
+	let RestraintBlock = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlock");
+	let RestraintBlockPenalty = KDRestraintBlockPenalty();
+	let val = RestraintBlock * KinkyDungeonMultiplicativeStat(RestraintBlockPenalty)
+		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlockProtected");
+
+	return val;
 }
 
 function KinkyDungeonPlayerEvasion() {
