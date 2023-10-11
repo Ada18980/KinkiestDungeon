@@ -141,8 +141,42 @@ let LAYERS_BASE = [
 	"Greaves",
 
 	"StrapsUnderbust",
-	"OverCrotchStrap",
+
+	"OverCrotchStrapMid",
 	"HarnessMid",
+	"WrappingTorsoMid",
+
+	// Left Leg
+	"KneeAccLeft",
+	"Thighs",
+	"Thighs3",
+	"Thighs2",
+	"Thighs1",
+	"ThighLeft",
+	"Ankles",
+	"Ankles3",
+	"Ankles2",
+	"Ankles1",
+	"AnkleLeft",
+
+	"WrappingLegs",
+
+	"PantsAccLeft",
+	"PantLeft",
+
+	"BindFeet",
+	"ShoeLeftOver",
+	"OverShoes",
+	"ShoeLeftDeco",
+	"ShoeLeft",
+	"OverSocks",
+	"StockingLeft",
+	"FootLeft",
+	"LegLeft",
+
+	// Lower harness
+	"OverCrotchStrap",
+	"HarnessLower",
 
 	"WrappingTorso",
 
@@ -172,28 +206,10 @@ let LAYERS_BASE = [
 	"SkirtDeco",
 	"Skirt",
 
-	"KneeAccLeft",
+	// Right leg
 	"KneeAccRight",
-	// Over feet Bondage
-	"Thighs",
-	"Thighs3",
-	"Thighs2",
-	"Thighs1",
-	"ThighLeft",
 	"ThighRight",
-	"Ankles",
-	"Ankles3",
-	"Ankles2",
-	"Ankles1",
-	"AnkleLeft",
 	"AnkleRight",
-
-	"WrappingLegs",
-
-	// Pants
-	"PantsAccLeft",
-	"PantLeft",
-
 	"PantsAccRight",
 	"PantRight",
 	"Pants",
@@ -213,21 +229,14 @@ let LAYERS_BASE = [
 	"HandLeft",
 	"ArmLeft",
 
-	// Shoes
-	"BindFeet",
-	"ShoeLeftOver",
+	// Right Shoes
 	"ShoeRightOver",
-	"OverShoes",
-	"ShoeLeftDeco",
-	"ShoeLeft",
 	"ShoeRightDeco",
 	"ShoeRight",
 
 
 
 	// Lower body underwear
-	"OverSocks",
-	"StockingLeft",
 	"StockingRight",
 
 	"Panties",
@@ -240,8 +249,6 @@ let LAYERS_BASE = [
 	// Lower body body - reserved for body and catsuits
 	// Note that the lower torso is complex, you should avoid internal overlaps as much as possible
 	// External overlaps are fine, e.g. right leg goes over
-	"FootLeft",
-	"LegLeft",
 	"FootRight",
 	"LegRight",
 	"ShoeLeftHogtie",
@@ -291,7 +298,7 @@ let LayerGroups = {
 		"Shirt",
 	]),
 	"CrotchRope": ToMap([
-		"HarnessMid",
+		"HarnessLower",
 	]),
 
 
@@ -432,7 +439,7 @@ let LayerGroups = {
 		"BindForeArmRight",
 	]),
 	"ArmsAllAndHarness": ToMap([
-		"HarnessMid",
+		"HarnessLower",
 
 		"Shirt",
 		"SleeveLeft",
@@ -580,32 +587,6 @@ let LayerGroups = {
 		"FootRightKneel",
 	]),
 
-	"LegCuffs": ToMap([
-		"PantLeft",
-		"PantRight",
-		"Pants",
-
-		// Shoes
-		"ShoeLeftDeco",
-		"ShoeLeft",
-		"ShoeRightDeco",
-		"ShoeRight",
-
-		"OverSocks",
-		"StockingLeft",
-		"StockingRight",
-
-		"LegLeft",
-		"LegRight",
-
-		"ShoeLeftHogtie",
-		"SockLeftHogtie",
-		"FootLeftHogtie",
-		"ShoeRightKneel",
-		"SockRightKneel",
-		"FootRightKneel",
-	]),
-
 	"RopeCalf": ToMap([
 		"PantLeft",
 		"PantRight",
@@ -636,7 +617,149 @@ let LayerGroups = {
 	]),
 	// endregion
 
+
+	// Region Ribbon
+	"Ribbon1": ToMap([
+		"Shirt",
+		"SleeveLeft",
+		"SleeveDecoLeft",
+		"SleeveRight",
+		"SleeveDecoRight",
+		"ArmLeft",
+		"ArmRight",
+		"TorsoUpper",
+
+		"CrossGloveRight",
+		"CrossArmRight",
+		"CrossGloveLeft",
+		"CrossArmLeft",
+	]),
+	"RibbonTorso": ToMap([
+		"Shirt",
+		"CorsetLiner",
+		// Skirts that dont follow shilhouette and are puffy
+		"SkirtPoofyDeco",
+		"SkirtPoofy",
+		// Skirts that are slim and follow the shilhouette
+		"SkirtDeco",
+		"Skirt",
+
+		"PantLeft",
+		"PantRight",
+		"Pants",
+
+		"OverSocks",
+		"StockingLeft",
+		"StockingRight",
+
+		"Panties",
+
+		"TorsoUpper",
+		"Butt",
+		"TorsoLower",
+		"Torso",
+	]),
+
+	"RibbonFore": ToMap([
+		"ForeSleeveLeft",
+		"ForeSleeveDecoLeft",
+		"GloveLeft",
+		"ForeHandLeft",
+
+		"ForeWristRight",
+		"ForeArmRight",
+
+		"ForeSleeveRight",
+		"ForeSleeveDecoRight",
+		"GloveRight",
+		"ForeHandRight",
+	]),
+
+	"RibbonThighs": ToMap([
+		"PantLeft",
+		"PantRight",
+		"Pants",
+
+		"OverSocks",
+		"StockingLeft",
+		"StockingRight",
+
+		"Panties",
+
+		"TorsoUpper",
+		"Butt",
+		"TorsoLower",
+		"Torso",
+		"LegLeft",
+		"LegRight",
+
+		"ShoeLeftHogtie",
+		"SockLeftHogtie",
+		"FootLeftHogtie",
+		"ShoeRightKneel",
+		"SockRightKneel",
+		"FootRightKneel",
+	]),
+
+	"RibbonCalf": ToMap([
+		"PantLeft",
+		"PantRight",
+		"Pants",
+
+		// Shoes
+		"ShoeLeftDeco",
+		"ShoeLeft",
+		"ShoeRightDeco",
+		"ShoeRight",
+
+		"OverSocks",
+		"StockingLeft",
+		"StockingRight",
+
+		"LegLeft",
+		"LegRight",
+
+		"ShoeLeftHogtie",
+		"SockLeftHogtie",
+		"FootLeftHogtie",
+		"ShoeRightKneel",
+		"SockRightKneel",
+		"FootRightKneel",
+	]),
+	"RibbonToeTie": ToMap([
+		"ShoeLeft", "ShoeRight", "ShoeLeftHogtie", "ShoeRightKneel"
+	]),
+	// endregion
+
 	// region metal
+
+
+	"LegCuffs": ToMap([
+		"PantLeft",
+		"PantRight",
+		"Pants",
+
+		// Shoes
+		"ShoeLeftDeco",
+		"ShoeLeft",
+		"ShoeRightDeco",
+		"ShoeRight",
+
+		"OverSocks",
+		"StockingLeft",
+		"StockingRight",
+
+		"LegLeft",
+		"LegRight",
+
+		"ShoeLeftHogtie",
+		"SockLeftHogtie",
+		"FootLeftHogtie",
+		"ShoeRightKneel",
+		"SockRightKneel",
+		"FootRightKneel",
+	]),
+
 	"Yoke": ToMap([
 		"Shirt",
 		"GloveLeft",

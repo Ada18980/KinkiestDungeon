@@ -58,7 +58,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
 		},
-		{ Name: "StrapCover", Layer: "OverCrotchStrap", Pri: -5,
+		{ Name: "StrapCover", Layer: "OverCrotchStrapMid", Pri: -5,
 			Poses: ToMap(["Closed", "Hogtie"]),
 			RequirePoses: ToMap(["CrotchStrap"]),
 			InheritColor: "Tape",

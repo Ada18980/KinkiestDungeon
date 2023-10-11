@@ -342,6 +342,11 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//MorphPoses: {Hogtie: "Hogtie"},
 		},
+		{ Name: "ShortsLeft", Layer: "PantLeft", Pri: 7,
+			Poses: ToMap([...LEGPOSES]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			//MorphPoses: {Hogtie: "Hogtie"},
+		},
 	])
 });
 
