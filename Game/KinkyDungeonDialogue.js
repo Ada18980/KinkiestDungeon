@@ -516,6 +516,12 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		}
 	};
 	dialog.options.Flirt = {playertext: name + "Flirt", response: "Default",
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy)
+				KDGameData.CurrentDialogMsg = name + "Flirt" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || ""));
+			return false;
+		},
 		options: {
 			"Leave": {playertext: "Leave", response: "Default",
 				leadsToStage: "",
@@ -544,7 +550,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 						enemy.vp = Math.max(enemy.vp || 0, 3);
 						KDStunTurns(1, true);
 					}
-					KDGameData.CurrentDialogMsg = name + "Flirt" + (enemy.personality || "");
+					KDGameData.CurrentDialogMsg = name + "Flirt" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || ""));
 					return false;
 				},
 				leadsToStage: "", dontTouchText: true, exitDialogue: true,
@@ -553,7 +559,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				playertext: "Default", response: "Default", gag: true,
 				prerequisiteFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
-					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker && KDEnemyCanTalk(enemy)) {
 						KinkyDungeonSetEnemyFlag(enemy, "allyOffer", 1);
 						let dialogue = KDGetDialogueTrigger(enemy, {
 							aggressive: false,

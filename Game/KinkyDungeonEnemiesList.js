@@ -1161,7 +1161,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, maxhp: 10, minLevel:3, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"latexAnger": 2, "latexRage": 2, "alchemist": 7}, shrines: ["Latex"], allFloors: true,
 		dropTable: []},
-	{name: "WolfgirlPet", faction: "Nevermere", clusterWith: "nevermere", bound: "WolfgirlPet", playLine: "Gagged", color: "#009C79", tags: KDMapInit(["opendoors", "wolfSub", "nevermere", "submissive", "noshop", "gagged", "wolfPet", "alwaysAlert", "imprisonable", "wolfgirl", "minor", "ignorenoSP", "alchemist", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]),
+	{name: "WolfgirlPet", faction: "Nevermere", clusterWith: "nevermere", bound: "WolfgirlPet", playLine: "Gagged", color: "#009C79", tags: KDMapInit(["opendoors", "wolfSub", "nevermere", "submissive", "noshop", "gagged", "wolfPet", "alwaysAlert", "imprisonable", "wolfgirl", "minor", "ignorenoSP", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]),
 		ignorechance: 0, armor: 1, followRange: 2, AI: "hunt",  cohesion: 0.9,
 		master: {type: "Wolfgirl", range: 2, loose: true, aggressive: true}, sneakThreshold: 1, blindSight: 2, projectileAttack: true, strictAttackLOS: true, difficulty: 0.5, events: [
 			{trigger: "tick", type: "secretToy"},
@@ -1171,7 +1171,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, maxhp: 10, minLevel:0, weight:0.1, movePoints: 1, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"metalAnger": 3, "metalRage": 3, "metalPleased": 2, "metalFriendly": 2, "nevermere": 2}, shrines: ["Metal"], allFloors: true,
 		dropTable: []},
-	{name: "WolfGuard", faction: "Nevermere", clusterWith: "nevermere", bound: "WolfGuard", color: "#00dCa9", playLine: "Gagged", tags: KDMapInit(["opendoors", "wolfSub", "nevermere", "submissive", "noshop", "gagged", "wolfPet", "autoTape", "alwaysAlert", "leashing", "wolfLeash", "imprisonable", "wolfgirl", "alchemist", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]),
+	{name: "WolfGuard", faction: "Nevermere", clusterWith: "nevermere", bound: "WolfGuard", color: "#00dCa9", playLine: "Gagged", tags: KDMapInit(["opendoors", "wolfSub", "nevermere", "submissive", "noshop", "gagged", "wolfPet", "autoTape", "alwaysAlert", "leashing", "wolfLeash", "imprisonable", "wolfgirl", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]),
 		ignorechance: 0, armor: 2.5, followRange: 2, AI: "hunt",  cohesion: 0.5, events: [
 			{trigger: "tick", type: "secretToy"},
 		],
@@ -3230,15 +3230,20 @@ let KDSpecialBuffs = {
 			return 4 + (enemy.Enemy.shrines?.includes("Latex") || enemy.Enemy.tags?.robot ? 40 : 0);
 		},
 		apply: (enemy, types) => {
+			let count = Math.min(4, Math.max(1, Math.ceil(KDGetEffLevel()/3)));
+			if ((enemy.Enemy.tags?.boss)) count = 4;
+			else if (enemy.Enemy.tags?.miniboss) count = Math.max(count, 3);
+			else if (enemy.Enemy.tags?.elite) count = Math.max(count, 2);
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Missiles",
 				duration: 9999,
-				power: 4,
+				power: count,
 				aura: "#ffffff",
 				aurasprite: "Missiles4",
 				noAuraColor: true,
 				events: [
-					{trigger: "afterEnemyTick", count: 4, type: "Missiles", time: 12 + ((enemy.Enemy.tags?.minor) ? 10 : (enemy.Enemy.tags?.elite || enemy.Enemy.tags?.miniboss || enemy.Enemy.tags?.boss) ? 0 : 5), spell: "RubberMissile"},
+					{trigger: "afterEnemyTick", count: count, type: "Missiles",
+						time: 12 + ((enemy.Enemy.tags?.minor) ? 10 : (enemy.Enemy.tags?.elite || enemy.Enemy.tags?.miniboss || enemy.Enemy.tags?.boss) ? 0 : 5), spell: "RubberMissile"},
 				],
 			});
 		},
@@ -3251,15 +3256,16 @@ let KDSpecialBuffs = {
 			return 4 + ((enemy.Enemy.kite || enemy.Enemy.tags?.ranged) ? 20 : 0);
 		},
 		apply: (enemy, types) => {
+			let count = 2;
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Airbender",
 				duration: 9999,
-				power: 2,
+				power: count,
 				aura: "#ffffff",
 				aurasprite: "Airbender1",
 				noAuraColor: true,
 				events: [
-					{trigger: "afterEnemyTick", count: 2, type: "Airbender", time: 4 + ((enemy.Enemy.tags?.minor) ? 4 : (enemy.Enemy.tags?.elite || enemy.Enemy.tags?.miniboss || enemy.Enemy.tags?.boss) ? 0 : 2), spell: "EnemyWindBlast"},
+					{trigger: "afterEnemyTick", count: count, type: "Airbender", time: 4 + ((enemy.Enemy.tags?.minor) ? 4 : (enemy.Enemy.tags?.elite || enemy.Enemy.tags?.miniboss || enemy.Enemy.tags?.boss) ? 0 : 2), spell: "EnemyWindBlast"},
 				],
 			});
 		},
