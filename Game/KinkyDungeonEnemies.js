@@ -3129,9 +3129,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (KDEnemyHasFlag(enemy, "forcePlay")) AIData.playChance = 1.0;
 
-	if (KinkyDungeonCanPlay(enemy) && enemy != KinkyDungeonJailGuard() && !KinkyDungeonFlags.get("NPCCombat") && !enemy.Enemy.alwaysHostile && !(enemy.rage > 0) && !(enemy.hostile > 0) && player.player && AIData.canSeePlayer && (aware) && KDEnemyCanTalk(enemy) && !KinkyDungeonInJail(KDJailFilters)) {
+	if (KinkyDungeonCanPlay(enemy) && enemy != KinkyDungeonJailGuard() && !KinkyDungeonFlags.get("NPCCombat") && !enemy.Enemy.alwaysHostile
+		&& !(enemy.rage > 0) && !(enemy.hostile > 0)
+		&& player.player && AIData.canSeePlayer && (aware) && !KinkyDungeonInJail(KDJailFilters)) {
 		AIData.playAllowed = true;
-		if (!(enemy.playWithPlayerCD > 0) && !(enemy.playWithPlayer > 0) && KDRandom() < AIData.playChance && !KDAllied(enemy)) {
+
+		if (KDEnemyHasFlag(enemy, "allyPlay")) AIData.ignoreNoAlly = true;
+		if (!(enemy.playWithPlayerCD > 0) && !(enemy.playWithPlayer > 0) && KDRandom() < AIData.playChance && (!KDAllied(enemy) || AIData.ignoreNoAlly)) {
 			AIData.playEvent = true;
 		}
 	}
@@ -6168,8 +6172,9 @@ function KDGetDialogueTrigger(enemy, Data, requireTags) {
 					}
 				}
 			}
+			if (!hastag) end = true;
 			if (!end && (!trigger.prerequisite || trigger.prerequisite(enemy, Data.playerDist, Data))) {
-				weight =  trigger.weight(enemy, Data.playerDist);
+				weight = trigger.weight(enemy, Data.playerDist);
 			}
 		}
 		if (weight > 0) {
@@ -6236,7 +6241,7 @@ function KDMakeHighValue(enemy) {
 	});
 
 	// Hitpoint bonuses
-	let hp = Math.round(KDRandom()*10) + enemy.Enemy.maxhp * (1.5 + Math.round(KDRandom()*10)/10);
+	let hp = Math.round(KDRandom()*10) + Math.min(20, enemy.Enemy.maxhp * 10) * (1.5 + Math.round(KDRandom()*10)/10);
 	enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
 	enemy.Enemy.maxhp = hp;
 	enemy.hp = hp;
@@ -6269,13 +6274,13 @@ function KDMakeHighValue(enemy) {
 
 	// Items
 	if (!enemy.items) enemy.items = [];
-	for (let i = Math.round(KDRandom()*2) ; i < 3; i++) {
+	for (let i = Math.round(KDRandom()*3) ; i < 2; i++) {
 		enemy.items.unshift("AncientPowerSource");
 	}
 	for (let i = Math.round(KDRandom()*2) ; i < 2; i++) {
 		enemy.items.unshift("PotionMana");
 	}
-	for (let i = Math.round(KDRandom()*2) ; i < 2; i++) {
+	for (let i = Math.round(KDRandom()*3) ; i < 2; i++) {
 		enemy.items.unshift("PotionWill");
 	}
 

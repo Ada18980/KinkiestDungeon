@@ -6392,7 +6392,7 @@ let KDEventMapGeneric = {
 	"kill": {
 		"HighProfile": (e, data) => {
 			if (data.enemy && KDEntityHasBuff(data.enemy, "HighValue")) {
-				KinkyDungeonAddGold(Math.round(data.enemy.Enemy.maxhp*5));
+				KinkyDungeonAddGold(Math.round(Math.pow(data.enemy.Enemy.maxhp, 0.5)*10));
 			}
 		}
 	},

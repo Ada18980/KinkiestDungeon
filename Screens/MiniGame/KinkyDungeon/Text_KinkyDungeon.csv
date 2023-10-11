@@ -10444,6 +10444,9 @@ rGenericAllyFlirtDom,"(The SPEAKER grins)|I will make sure you enjoy yourself~"
 rGenericAllyFlirtSub,"(The SPEAKER blushes)|Mmm~ Let's do this!"
 rGenericAllyFlirtBrat,"(The SPEAKER backs up)|I'm not in trouble, am I?"
 rGenericAllyFlirtRobot,"(The SPEAKER beeps)|This unit does not know how to respond..."
+rGenericAllyFlirtGagged,"(The SPEAKER moans)|Mmmmmph~"
+
+
 
 dGenericAllyFlirt_BondageOffer,"Got something for me?"
 dGenericAllyFlirt_BondageOfferGag,"(Present your body to her~)"
