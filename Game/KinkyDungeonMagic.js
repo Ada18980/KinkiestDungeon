@@ -99,11 +99,17 @@ let KDSpellComponentTypes = {
 };
 
 function KinkyDungeonSearchSpell(list, name) {
+	if (KDSpellMemo[name]) return KDSpellMemo[name];
 	for (let spell of list) {
-		if (spell.name == name) return spell;
+		if (spell.name == name) {
+			KDSpellMemo[name] = spell;
+			return spell;
+		}
 	}
 	return null;
 }
+
+let KDSpellMemo = {};
 
 function KinkyDungeonFindSpell(name, SearchEnemies) {
 	if (SearchEnemies) {
@@ -1322,6 +1328,35 @@ function KDCorrectCurrentSpellPage(pages) {
 
 let KDMagicFilter = "";
 
+/**
+ *
+ * @param {spell} spell
+ * @returns {boolean}
+ */
+function KDFilterSpell(spell) {
+	let prereq = spell ? KinkyDungeonCheckSpellPrerequisite(spell) : false;
+	let prereqHost = spell ? (spell.upcastFrom && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.upcastFrom))) : false;
+	let learned = spell ? KinkyDungeonSpellIndex(spell.name) >= 0 : false;
+	let upgrade = spell ? spell.passive : false;
+	let passive = spell ? spell.type == "passive" : false;
+	let upcast = spell ? spell.upcastFrom : false;
+	return (!spell.hideLearned || !learned)
+	&& (!spell.hideUnlearnable || prereq || learned)
+	&& (learned || !spell.hideWithout || KDHasSpell(spell.hideWithout))
+	&& (!spell.hideWith || !KDHasSpell(spell.hideWith))
+	&& (!spell.arousalMode || KinkyDungeonStatsChoice.has("arousalMode"))
+	&& (selectedFilters.length == 0 || (selectedFilters.every((element) => {return genericfilters.includes(element) || (spell.tags && spell.tags.includes(element));})))
+	&& (!selectedFilters.includes("learnable") || (prereq || learned || prereqHost))
+	&& (!selectedFilters.includes("unlearned") || (!learned))
+	&& (!selectedFilters.includes("learned") || (learned))
+	&& (!selectedFilters.includes("noupgrade") || (!upgrade && !upcast))
+	&& (!selectedFilters.includes("yesupgrade") || (upgrade || passive))
+	&& (!selectedFilters.includes("upcast") || (upcast))
+	&& (!KDMagicFilter
+		|| TextGet("KinkyDungeonSpell" + (spell.name)).toLocaleLowerCase().includes(KDMagicFilter.toLocaleLowerCase())
+		|| spell.tags?.some((tag) => {return tag.toLocaleLowerCase().includes(KDMagicFilter.toLocaleLowerCase());}));
+}
+
 function KinkyDungeonListSpells(Mode) {
 	let i = 0;
 	//let ii = 0;
@@ -1381,9 +1416,14 @@ function KinkyDungeonListSpells(Mode) {
 
 	let longestList = 0;
 	for (let pg of spellPages) {
-		longestList = Math.max(longestList, pg.length);
+		longestList = Math.max(longestList, pg.filter(
+			(sp) => {
+				return KDFilterSpell(KinkyDungeonFindSpell(sp));
+			}
+		).length);
 	}
 	if (KDSpellListIndex > longestList) KDSpellListIndex = 0;
+
 
 	DrawButtonKDEx("spellsUp", (bdata) => {
 		KDSpellListIndex = Math.max(0, KDSpellListIndex - 3);
@@ -1412,31 +1452,12 @@ function KinkyDungeonListSpells(Mode) {
 		let YY = 0;
 		for (let sp of pg) {
 			let spell = KinkyDungeonFindSpell(sp, false);
-			let prereq = spell ? KinkyDungeonCheckSpellPrerequisite(spell) : false;
-			let prereqHost = spell ? (spell.upcastFrom && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.upcastFrom))) : false;
-			let learned = spell ? KinkyDungeonSpellIndex(spell.name) >= 0 : false;
-			let upgrade = spell ? spell.passive : false;
-			let passive = spell ? spell.type == "passive" : false;
-			let upcast = spell ? spell.upcastFrom : false;
+
 			if (spell
 				&& (KDSwapSpell == -1 || KinkyDungeonSpellIndex(spell.name) >= 0)
 				//&& i < KDMaxSpellPerColumn
 				&& YY < KDMaxSpellYY + spacing
-				&& (!spell.hideLearned || !learned)
-				&& (!spell.hideUnlearnable || prereq || learned)
-				&& (learned || !spell.hideWithout || KDHasSpell(spell.hideWithout))
-				&& (!spell.hideWith || !KDHasSpell(spell.hideWith))
-				&& (!spell.arousalMode || KinkyDungeonStatsChoice.has("arousalMode"))
-				&& (selectedFilters.length == 0 || (selectedFilters.every((element) => {return genericfilters.includes(element) || (spell.tags && spell.tags.includes(element));})))
-				&& (!selectedFilters.includes("learnable") || (prereq || learned || prereqHost))
-				&& (!selectedFilters.includes("unlearned") || (!learned))
-				&& (!selectedFilters.includes("learned") || (learned))
-				&& (!selectedFilters.includes("noupgrade") || (!upgrade && !upcast))
-				&& (!selectedFilters.includes("yesupgrade") || (upgrade || passive))
-				&& (!selectedFilters.includes("upcast") || (upcast))
-				&& (!KDMagicFilter
-					|| TextGet("KinkyDungeonSpell" + (spell.name)).toLocaleLowerCase().includes(KDMagicFilter.toLocaleLowerCase())
-					|| spell.tags?.some((tag) => {return tag.toLocaleLowerCase().includes(KDMagicFilter.toLocaleLowerCase());}))
+				&& KDFilterSpell(spell)
 			) {
 
 				if (iii < Math.round(KDSpellListIndexVis)) {
@@ -1490,7 +1511,27 @@ function KinkyDungeonListSpells(Mode) {
 								zIndex: 110,
 							},
 						);
-					DrawButtonVis(xx,
+
+					DrawButtonKDExScroll("spellmagiclist" + spell.name,
+						(amount) => {
+							KDSpellListIndex = Math.max(0, Math.min(longestList - KDMaxSpellPerColumn + 1,
+								KDSpellListIndex + Math.round(amount/h)));
+						},
+						(bdata) => {
+							if (spell) {
+								if (KDSwapSpell == -1) {
+									KinkyDungeonSetPreviewSpell(spell);
+								} else if (!spell.upcastFrom) {
+									let ind = KinkyDungeonSpellIndex(spell.name);
+									if (!KinkyDungeonSpellChoices.includes(ind)) {
+										KinkyDungeonClickSpellChoice(KDSwapSpell, ind);
+										KinkyDungeonDrawState = "Game";
+									}
+								}
+								return true;
+							}
+						}, true,
+						xx,
 						yy,
 						w,
 						h,
@@ -1499,10 +1540,9 @@ function KinkyDungeonListSpells(Mode) {
 						// Image: KinkyDungeonSpellChoices.includes(index) ? (KinkyDungeonRootDirectory + "UI/Tick.png") : ""
 						(spell.upcastFrom ? 20 : 24),
 						false,
-						false,
-						20,
 						{
-							alpha: index >= 0 ? 0.9 : 0.9
+							alpha: index >= 0 ? 0.9 : 0.9,
+							zIndex: 20,
 						});
 					DrawTextFitKD(TextGet("KinkyDungeonSpell" + spell.name),
 						xx + h + 2 + (spell.upcastFrom ? 0 : 8),
@@ -1631,20 +1671,6 @@ function KinkyDungeonHandleMagicSpells() {
 			return filters.includes(filter);
 		});
 		KDSpellListIndex = 0;
-		return true;
-	}
-
-	let spell = KinkyDungeonListSpells("Click");
-	if (spell) {
-		if (KDSwapSpell == -1) {
-			KinkyDungeonSetPreviewSpell(spell);
-		} else if (!spell.upcastFrom) {
-			let index = KinkyDungeonSpellIndex(spell.name);
-			if (!KinkyDungeonSpellChoices.includes(index)) {
-				KinkyDungeonClickSpellChoice(KDSwapSpell, index);
-				KinkyDungeonDrawState = "Game";
-			}
-		}
 		return true;
 	}
 
