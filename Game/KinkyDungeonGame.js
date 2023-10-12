@@ -3665,13 +3665,23 @@ function KinkyDungeonGameKeyDown() {
 				}
 				else KinkyDungeonDrawState = "MagicSpells";
 			}
-		} else if (KinkyDungeonDrawState == "MagicSpells" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey)) {
+		} else if (KinkyDungeonDrawState == "MagicSpells"
+			&& (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey
+				|| KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey
+				|| KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey
+				|| KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey
+				|| KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey)) {
 			if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonCurrentSpellsPage += 1;
 				if (KinkyDungeonCurrentSpellsPage >= KinkyDungeonLearnableSpells.length) KinkyDungeonCurrentSpellsPage = 0;
-			} else if (KinkyDungeonCurrentSpellsPage > 0) {
+			} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey && KinkyDungeonCurrentSpellsPage > 0) {
 				KinkyDungeonCurrentSpellsPage -= 1;
-			} else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
+			} else if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
+				KDClickButton("spellsUp");
+			} else if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
+				KDClickButton("spellsDown");
+			}
+			else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
 			}
 		} else

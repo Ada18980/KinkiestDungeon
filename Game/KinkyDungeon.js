@@ -2096,7 +2096,7 @@ function KDCullSpritesList(list) {
 }
 
 /**
- * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number}>}
+ * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number, scrollfunc?: (amount: number) => boolean}>}
  */
 let KDButtonsCache = {
 
@@ -2178,6 +2178,47 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
 }
 
 
+
+/**
+ * Draws a button component
+ * @param {string} name - Name of the button element
+ * @param {(bdata: any) => boolean} func - Whether or not you can click on it
+ * @param {boolean} enabled - Whether or not you can click on it
+ * @param {number} Left - Position of the component from the left of the canvas
+ * @param {number} Top - Position of the component from the top of the canvas
+ * @param {number} Width - Width of the component
+ * @param {number} Height - Height of the component
+ * @param {string} Label - Text to display in the button
+ * @param {string} Color - Color of the component
+ * @param {string} [Image] - URL of the image to draw inside the button, if applicable
+ * @param {string} [HoveringText] - Text of the tooltip, if applicable
+ * @param {boolean} [Disabled] - Disables the hovering options if set to true
+ * @param {boolean} [NoBorder] - Disables border
+ * @param {string} [FillColor] - BG color
+ * @param {number} [FontSize] - Font size
+ * @param {boolean} [ShiftText] - Shift text to make room for the button
+ * @param {object} [options] - Additional options
+ * @param {boolean} [options.noTextBG] - Dont show text backgrounds
+ * @param {number} [options.alpha] - Dont show text backgrounds
+ * @param {number} [options.zIndex] - zIndex
+ * @param {boolean} [options.scaleImage] - zIndex
+ * @param {string} [options.tint] - tint
+ * @returns {void} - Nothing
+ */
+function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
+	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	KDButtonsCache[name] = {
+		Left,
+		Top,
+		Width,
+		Height,
+		enabled,
+		func,
+		priority: (options?.zIndex || 0),
+		scrollfunc: scrollfunc,
+	};
+}
+
 /**
  * Draws a button component
  * @param {any} Container - Container to draw to
@@ -2217,6 +2258,38 @@ function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Heig
 	};
 }
 
+function KDMouseWheel(event) {
+	if (!KDProcessButtonScroll(event.deltaY)) {
+		// If we fail we dilate the buttons vertically
+		//KDProcessButtonScroll(event.deltaY, 15);
+	}
+}
+
+/**
+ *
+ * @param {number} amount
+ * @param {number} padV
+ * @returns {boolean}
+ */
+function KDProcessButtonScroll(amount, padV = 0) {
+	let buttons = [];
+	for (let button of Object.entries(KDButtonsCache)) {
+		if (button[1].enabled && button[1].scrollfunc) {
+			if (MouseInKD(button[0], 0, padV)) {
+				buttons.push(button[1]);
+			}
+		}
+	}
+	if (buttons.length > 0) {
+		buttons = buttons.sort((a, b) => {return b.priority - a.priority;});
+		buttons[0].scrollfunc(amount);
+		return true;
+	}
+
+
+	return false;
+}
+
 function KDProcessButtons() {
 	let buttons = [];
 	for (let button of Object.entries(KDButtonsCache)) {
@@ -2247,10 +2320,10 @@ function KDClickButton(name) {
 	return false;
 }
 
-function MouseInKD(name) {
+function MouseInKD(name, padX = 0, padV = 0) {
 	let button = KDButtonsCache[name];
 	if (button && button.enabled) {
-		return MouseIn(button.Left, button.Top, button.Width, button.Height);
+		return MouseIn(button.Left - padX, button.Top - padV, button.Width + 2*padX, button.Height + 2*padV);
 	}
 	return false;
 }
@@ -2996,6 +3069,9 @@ window.addEventListener('touchstart', function() {
 });
 window.addEventListener('mouseup', function() {
 	mouseDown = false;
+});
+window.addEventListener('wheel', function(event) {
+	KDMouseWheel(event);
 });
 
 /**

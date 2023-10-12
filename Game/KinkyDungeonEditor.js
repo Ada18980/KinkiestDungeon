@@ -410,7 +410,12 @@ function KDDrawEditorUI() {
 		let index = i + Math.round(KDEditorTileBrushIndexVisual);
 		if (index >= brushKeys.length) break;
 
-		DrawButtonKDEx("brush" + i, (bdata) => {
+		DrawButtonKDExScroll("brush" + i, (amount) => {
+
+			KDEditorTileBrushIndex = Math.min(brushKeys.length - 4, KDEditorTileBrushIndex + 3*Math.round(amount/grid));
+			KDEditorTileBrushIndex = Math.max(0, KDEditorTileBrushIndex);
+		},
+		(bdata) => {
 			KDEditorTileBrush = brushKeys[index];
 			return true;
 		}, true, xx , yy, width, grid-5, brushKeys[index], brushKeys[index] == KDEditorTileBrush ? "#ffffff" : (brushKeys[index].startsWith('-') ? "#77ff77" : "#888888"));
@@ -440,7 +445,11 @@ function KDDrawEditorUI() {
 		let index = i + Math.round(KDEditorTileBrushIndex2Visual);
 		if (index >= brushKeys.length) break;
 
-		DrawButtonKDEx("brush2_" + i, (bdata) => {
+		DrawButtonKDExScroll("brush2_" + i, (amount) => {
+			KDEditorTileBrushIndex2 = Math.min(brushKeys.length - 4, KDEditorTileBrushIndex2 + 2*Math.round(amount/grid));
+			KDEditorTileBrushIndex2 = Math.max(0, KDEditorTileBrushIndex2);
+		},
+		(bdata) => {
 			KDEditorTileBrush = brushKeys[index];
 			return true;
 		}, true, xx , yy, width, grid-5, brushKeys[index], brushKeys[index] == KDEditorTileBrush ? "#ffffff" : (brushKeys[index].startsWith('-') ? "#77ff77" : "#888888"));
@@ -473,7 +482,12 @@ function KDDrawEditorUI() {
 		let index = i + Math.round(KDEditorTileNameIndexVisual);
 		if (index >= tileKeys.length) break;
 
-		DrawButtonKDEx("tilename" + i, (bdata) => {
+		DrawButtonKDExScroll("tilename" + i, (amount) => {
+
+			KDEditorTileNameIndex = Math.min(tileKeys.length - 4, KDEditorTileNameIndex + 5*Math.round(amount/grid));
+			KDEditorTileNameIndex = Math.max(0, KDEditorTileNameIndex);
+		},
+		(bdata) => {
 			if (KDEditorCurrentMapTileName != tileKeys[index] || !KDTELoadConfirm) {
 				KDEditorCurrentMapTileName = tileKeys[index];
 				ElementValue("MapTileTitle", KDEditorCurrentMapTileName);
