@@ -2264,6 +2264,7 @@ function KDMouseWheel(event) {
 		KDProcessButtonScroll(event.deltaY, 15);
 	}
 	KDFunctionPerksScroll(event.deltaY || event.deltaX);
+	KDFunctionSpellPageScroll(event.deltaY || event.deltaX);
 }
 
 function KDFunctionPerksScroll(amount) {
@@ -2272,6 +2273,15 @@ function KDFunctionPerksScroll(amount) {
 			KDClickButton("perks>");
 		} else {
 			KDClickButton("perks<");
+		}
+	}
+}
+function KDFunctionSpellPageScroll(amount) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" ) {
+		if (amount > 0) {
+			KDCycleSpellPage(false, true);
+		} else {
+			KDCycleSpellPage(true, true);
 		}
 	}
 }

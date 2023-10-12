@@ -12104,7 +12104,7 @@ KDWeaponTag_illum,Illumination
 KDWeaponTagD_illum,"Illumination: This weapon is a light source."
 
 KinkyDungeonSpellOffhand,"Dual Wield"
-KinkyDungeonSpellDescriptionOffhand,"Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage."
+KinkyDungeonSpellDescriptionOffhand,"Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|(Must equip Dual Wield spell to equip an offhand weapon)"
 
 KDInventoryActionOffhand,"Equip Offhand"
 
