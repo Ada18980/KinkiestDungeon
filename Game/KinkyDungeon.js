@@ -2261,7 +2261,18 @@ function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Heig
 function KDMouseWheel(event) {
 	if (!KDProcessButtonScroll(event.deltaY)) {
 		// If we fail we dilate the buttons vertically
-		//KDProcessButtonScroll(event.deltaY, 15);
+		KDProcessButtonScroll(event.deltaY, 15);
+	}
+	KDFunctionPerksScroll(event.deltaY || event.deltaX);
+}
+
+function KDFunctionPerksScroll(amount) {
+	if (KinkyDungeonState == "Stats" || KinkyDungeonDrawState == "Perks2" ) {
+		if (amount > 0) {
+			KDClickButton("perks>");
+		} else {
+			KDClickButton("perks<");
+		}
 	}
 }
 
