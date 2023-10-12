@@ -12,6 +12,7 @@ let KDDialogueTriggers = {
 		playRequired: true,
 		noCombat: true,
 		noAlly: true,
+		talk: true,
 		blockDuringPlaytime: false,
 		prerequisite: (enemy, dist, AIData) => {
 			return (KinkyDungeonPlayerDamage
@@ -150,6 +151,7 @@ let KDDialogueTriggers = {
 		nonHostile: true,
 		noCombat: true,
 		noAlly: true,
+		talk: true,
 		blockDuringPlaytime: true,
 		prerequisite: (enemy, dist, AIData) => {
 			return (dist < 1.5
@@ -206,6 +208,7 @@ function KDShopTrigger(name) {
 		allowedPrisonStates: ["parole", ""],
 		nonHostile: true,
 		noCombat: true,
+		talk: true,
 		excludeTags: ["noshop"],
 		blockDuringPlaytime: true,
 		prerequisite: (enemy, dist, AIData) => {

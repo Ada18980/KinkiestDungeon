@@ -1342,6 +1342,7 @@ function KDDialogueTriggerOffer(name, goddess, restraintTags, allowedPrisonState
 		nonHostile: true,
 		noCombat: true,
 		noAlly: true,
+		talk: true,
 		blockDuringPlaytime: false,
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
