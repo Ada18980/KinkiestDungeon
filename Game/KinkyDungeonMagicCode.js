@@ -120,7 +120,7 @@ let KinkyDungeonSpellSpecials = {
 						if (failPush && powerful) {
 							KinkyDungeonDamageEnemy(en, {
 								type: "crush",
-								damage: 2,
+								damage: 0.15 * en.Enemy.maxhp,
 								time: 2,
 								bind: 0,
 							}, false, false, spell, undefined, entity);

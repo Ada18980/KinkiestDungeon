@@ -936,6 +936,8 @@ interface enemy extends KDHasTags {
 	bindOnDisableSpecial?: boolean,
 	/** The regular attack only binds on kneeling players*/
 	bindOnDisable?: boolean,
+	/** Enemy will still try to bind even if (bindOnDisable) is true, if the player isn't actively fighting*/
+	smartBind?: boolean,
 	/** Sfx when an attack lands*/
 	hitsfx?: string,
 	/** All lockable restraints will use this lock*/
@@ -1439,6 +1441,8 @@ interface KinkyDialogueTrigger {
 	/** Only allows the following personalities to do it */
 	allowedPersonalities?: string[];
 	blockDuringPlaytime?: boolean;
+	/** Whether or not the enemy must be able to talk */
+	talk?: boolean,
 	noAlly?: boolean,
 	/** Exclude if enemy has one of these tags */
 	excludeTags?: string[];
@@ -2173,6 +2177,7 @@ interface KDAITriggerData {
 	allowPlayExceptionSub?: boolean,
 	ignoreNoAlly?: boolean,
 	ignoreCombat?: boolean,
+	canTalk?: boolean,
 };
 
 /** Container for KD AI data
@@ -2181,6 +2186,8 @@ interface KDAITriggerData {
 interface KDAIData extends KDAITriggerData {
 	/** The target of the AI, NOT the KinkyDungeonPlayerEntity but rather a target entity which CAN be the player */
 	player?: entity,
+	/** Whether or not the enemy can talk */
+	canTalk?: boolean,
 
 	/** Whether to do a defeat or not */
 	defeat?: boolean,

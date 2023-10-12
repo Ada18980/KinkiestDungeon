@@ -3126,6 +3126,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	};
 	KinkyDungeonSendEvent("calcPlayChance", playData);
 	AIData.playChance = playData.playChance;
+	AIData.canTalk = KDEnemyCanTalk(enemy);
 
 	if (KDEnemyHasFlag(enemy, "forcePlay")) AIData.playChance = 1.0;
 
@@ -4037,7 +4038,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Lock").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 4);
 
 						} else if (AIData.attack.includes("Bind")
-							&& ((!enemy.usingSpecial && !enemy.Enemy.bindOnDisable) || (enemy.usingSpecial && !enemy.Enemy.bindOnDisableSpecial) || !KinkyDungeonHasWill(0.01) || !KinkyDungeonHasStamina(2.5) || KDIsKneeling() || KDIsHogtied())) {
+							&& (((enemy.Enemy.smartBind && !KinkyDungeonFlags.get("PlayerCombat"))
+								|| (!enemy.usingSpecial && !enemy.Enemy.bindOnDisable) || (enemy.usingSpecial && !enemy.Enemy.bindOnDisableSpecial)) || !KinkyDungeonHasWill(0.01) || !KinkyDungeonHasStamina(2.5) || KDIsKneeling() || KDIsHogtied())) {
 
 							if (AIData.addMoreRestraints || AIData.addLeash || enemy.usingSpecial) {
 								if (!AIData.intentToLeash && !KinkyDungeonFlags.get("Released") && enemy.Enemy.bound
@@ -6119,6 +6121,7 @@ function KDGetDialogueTrigger(enemy, Data, requireTags) {
 		let weight = 0;
 		if ((!trigger.blockDuringPlaytime || enemy.playWithPlayer < 1 || !enemy.playWithPlayer)
 			&& (!trigger.noAlly || !KDAllied(enemy) || Data.ignoreNoAlly)
+			&& (!trigger.talk || Data.canTalk)
 			&& (!trigger.playRequired || Data.playAllowed)
 			&& (!trigger.noCombat || !KinkyDungeonFlags.get("NPCCombat") || Data.ignoreCombat)
 			&& (!trigger.nonHostile || !Data.aggressive)
