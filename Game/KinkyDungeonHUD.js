@@ -1054,7 +1054,7 @@ function KinkyDungeonDrawInputs() {
 		let empowerYY = empowerY * KinkyDungeonSpellChoiceOffset + 40;
 		let hasUpcast = KDCanUpcast();
 		let padY = 5 + (KinkyDungeonSpellChoices.length > KinkyDungeonSpellChoiceCountPerPage ? 0 : 35);
-		let pages = Math.floor(KinkyDungeonSpellChoices.length / KinkyDungeonSpellChoiceCountPerPage);
+		let pages = Math.floor(Math.max(0, KinkyDungeonSpellChoices.length-1) / KinkyDungeonSpellChoiceCountPerPage);
 		let pageExtra = 40;
 		if (!KDToggles.TransparentUI) {
 			DrawRectKD(
@@ -1314,14 +1314,23 @@ function KinkyDungeonDrawInputs() {
 
 }
 
-function KDCycleSpellPage(reverse) {
+function KDCycleSpellPage(reverse, noWrap) {
 	if (reverse) {
-		if (KDSpellPage <= 0) {
-			KDSpellPage = KinkyDungeonSpellChoices.length - 1;
-		} else KDSpellPage -= 1;
-	} else if (KDSpellPage * KinkyDungeonSpellChoiceCountPerPage + KinkyDungeonSpellChoiceCountPerPage >= KinkyDungeonSpellChoices.length) {
-		KDSpellPage = 0;
+		KDSpellPage -= 1;
 	} else KDSpellPage += 1;
+
+	if (KDSpellPage < 0) {
+		if (!noWrap)
+			KDSpellPage = KinkyDungeonSpellChoices.length - 1;
+		else KDSpellPage = 0;
+	}
+	if (KDSpellPage * KinkyDungeonSpellChoiceCountPerPage >= KinkyDungeonSpellChoices.length) {
+		if (!noWrap)
+			KDSpellPage = 0;
+		else {
+			KDSpellPage = Math.floor((Math.max(0, KinkyDungeonSpellChoices.length - 1))/KinkyDungeonSpellChoiceCountPerPage);
+		}
+	}
 }
 function KinkyDungeonCanSleep() {
 	if (KDGameData.CurrentVibration) return false;
