@@ -48,6 +48,7 @@ KDToggleParticlesFX,GFX: Map Particles
 KDToggleArousalHearts,GFX: Distraction Particles
 KDToggleVibeHearts,GFX: Vibration Particles
 KDToggleShowNPCStatuses,Game: Show NPC Status
+KDToggleShowSpellRange,Game: Show Spell Range
 KDToggleFancyWalls,GFX: Trim Edge Walls
 KDToggleFancyShadows,GFX: Fog Shader
 KDToggleIntenseOrgasm,Intense 'Let Go' VFX

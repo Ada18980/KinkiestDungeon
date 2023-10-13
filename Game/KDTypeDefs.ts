@@ -1817,6 +1817,8 @@ interface spell {
 	projectileTargeting?: boolean;
 	/** CastInWalls */
 	CastInWalls?: boolean;
+	/** Allows casting into fog of war */
+	CastInDark?: boolean;
 	/** noTargetEnemies */
 	noTargetEnemies?: boolean;
 	/** Exception list for NoTargetEnemies */

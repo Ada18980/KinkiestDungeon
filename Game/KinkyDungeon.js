@@ -113,6 +113,7 @@ let KDToggles = {
 	PlayerTransparencyDuringBullets: true,
 	TurnCounter: true,
 	ShowNPCStatuses: true,
+	ShowSpellRange: true,
 	ForceWarnings: false,
 	Drool: true,
 	LazyWalk: false,
