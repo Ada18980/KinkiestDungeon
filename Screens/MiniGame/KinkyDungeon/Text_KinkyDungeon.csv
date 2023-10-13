@@ -4841,7 +4841,7 @@ KinkyDungeonSpellBattleRhythm,"Battle Rhythm"
 KinkyDungeonSpellDescriptionBattleRhythm,"Stores 10% of the stamina spent from attacks as Rhythm, up to a total of 40. While you have over 10 Rhythm, you gain +10 Block and Evasion. Enemy base accuracy against you is decreased by a % equal to your Rhythm. If an attack misses or is blocked because of this, reduce Rhythm by 25% of the enemy attack power. Decays when not attacking."
 
 KinkyDungeonSpellLimitSurge,"Limit Surge"
-KinkyDungeonSpellDescriptionLimitSurge,"Take 50 Willpower damage (this amount cannot be reduced) to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns."
+KinkyDungeonSpellDescriptionLimitSurge,"Spend 50 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns."
 
 
 
@@ -7357,9 +7357,9 @@ KinkyDungeonRemindJailChaseCyborgCommandAssault,""
 KinkyDungeonRemindJailChaseCyborgCommandBlock,""
 
 
-KinkyDungeonRemindJailPlayBratRobot0,"Bug"
-KinkyDungeonRemindJailPlayBratRobot1,"Bug"
-KinkyDungeonRemindJailPlayBratRobot2,"Bug"
+KinkyDungeonRemindJailPlayBratRobot0,"Unit is retreating."
+KinkyDungeonRemindJailPlayBratRobot1,"Activating self-preservation instincts."
+KinkyDungeonRemindJailPlayBratRobot2,"Commence tactical withdrawal."
 KinkyDungeonRemindJailPlaySubRobot0,"Maintenance needed."
 KinkyDungeonRemindJailPlaySubRobot1,"Unit needs repair."
 KinkyDungeonRemindJailPlaySubRobot2,"Commence transfer of power protocol."
@@ -8273,9 +8273,9 @@ KinkyDungeonRemindJailChaseDryadCommandAssault,"Face my wrath!"
 KinkyDungeonRemindJailChaseDryadCommandBlock,"Nature protects!"
 
 
-KinkyDungeonRemindJailPlayBratMushy0,"Bug"
-KinkyDungeonRemindJailPlayBratMushy1,"Bug"
-KinkyDungeonRemindJailPlayBratMushy2,"Bug"
+KinkyDungeonRemindJailPlayBratMushy0,"Run away!"
+KinkyDungeonRemindJailPlayBratMushy1,"Run!"
+KinkyDungeonRemindJailPlayBratMushy2,"Scary!"
 KinkyDungeonRemindJailPlaySubMushy0,"This is a bug, please report"
 KinkyDungeonRemindJailPlaySubMushy1,"This is a bug, please report"
 KinkyDungeonRemindJailPlaySubMushy2,"This is a bug, please report"

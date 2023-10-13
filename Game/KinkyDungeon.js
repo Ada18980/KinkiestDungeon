@@ -2261,10 +2261,16 @@ function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Heig
 function KDMouseWheel(event) {
 	if (!KDProcessButtonScroll(event.deltaY)) {
 		// If we fail we dilate the buttons vertically
-		KDProcessButtonScroll(event.deltaY, 15);
-	}
+		if (KDProcessButtonScroll(event.deltaY, 15)) return;
+	} else return;
 	KDFunctionPerksScroll(event.deltaY || event.deltaX);
 	KDFunctionSpellPageScroll(event.deltaY || event.deltaX);
+	KDFunctionMagicPageScroll(event.deltaY || event.deltaX);
+	KDFunctionInventoryScroll(event.deltaY || event.deltaX);
+	KDFunctionMsgScroll(event.deltaY);
+	KDFunctionRestraintIndexScroll(event.deltaY);
+	KDFunctionDialogueScroll(event.deltaY);
+	KDFunctionShopScroll(event.deltaY);
 }
 
 function KDFunctionPerksScroll(amount) {
@@ -2285,6 +2291,67 @@ function KDFunctionSpellPageScroll(amount) {
 		}
 	}
 }
+function KDFunctionMagicPageScroll(amount) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Magic" ) {
+		if (amount > 0) {
+			KDClickButton("magicnextpage");
+		} else {
+			KDClickButton("magiclastpage");
+		}
+	}
+}
+function KDFunctionInventoryScroll(amount) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Inventory" ) {
+		if (amount > 0) {
+			KDClickButton("invnextpage");
+		} else {
+			KDClickButton("invlastpage");
+		}
+	}
+}
+function KDFunctionMsgScroll(amount) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonMessageToggle) {
+		if (amount > 0) {
+			KDClickButton("logscrolldown");
+		} else {
+			KDClickButton("logscrollup");
+		}
+	}
+}
+function KDFunctionRestraintIndexScroll(amount) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonDrawStruggleHover && currentDrawnSG && currentDrawnSGLength) {
+		if (amount > 0) {
+			if ((KDStruggleGroupLinkIndex[currentDrawnSG.group] < currentDrawnSGLength - 1)) KDStruggleGroupLinkIndex[currentDrawnSG.group] += 1;
+		} else {
+			if ((KDStruggleGroupLinkIndex[currentDrawnSG.group] > 0)) KDStruggleGroupLinkIndex[currentDrawnSG.group] -= 1;
+		}
+	}
+}
+function KDFunctionDialogueScroll(amount) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KDGameData.CurrentDialog) {
+		if (amount > 0) {
+			KDClickButton("dialogueDOWN");
+		} else {
+			KDClickButton("dialogueUP");
+		}
+	}
+}
+function KDFunctionShopScroll(amount) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonTargetTile?.Type == "Shrine" && KinkyDungeonTargetTile.Name == "Commerce") {
+		if (amount < 0) {
+			KinkyDungeonShopIndex = (KinkyDungeonShopIndex + 1) % KDMapData.ShopItems.length;
+			KDShopBuyConfirm = false;
+			return true;
+		} else {
+			KinkyDungeonShopIndex = KinkyDungeonShopIndex - 1;
+			if (KinkyDungeonShopIndex < 0) KinkyDungeonShopIndex = KDMapData.ShopItems.length - 1;
+			KDShopBuyConfirm = false;
+			return true;
+		}
+	}
+	return false;
+}
+
 
 /**
  *
