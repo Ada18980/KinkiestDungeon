@@ -11,7 +11,13 @@ Vague todo:
 - Add teleport to floor 0 temporarily after spending enough gold (done)
 - Add single use curse remover item (done)
 
-4.76 (Sep 2023)
+
+4.77 (Oct 2023)
+- Added scroll wheel support in a number of menus, including spell list, perk list, map editor, and hotbar pages
+- TODO add to single spell display, inventory, quick inv, restraint scrolling, dialogue, shop, log, rep
+
+
+4.76 (Oct 2023)
 - Added ability to switch hotbar configs
 - Added ability to add weapons, consumables, armor to hotbar
 - Added keybindings for switching offhand weapons, hotbar configs, and fast-equipping loadouts
