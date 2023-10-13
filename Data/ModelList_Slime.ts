@@ -81,7 +81,7 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "Feet", Layer: "OverSocks", Pri: 9,
+		{ Name: "Feet", Layer: "OverShoes", Pri: 9,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,
@@ -122,7 +122,7 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "Legs", Layer: "OverSocks", Pri: 11,
+		{ Name: "Legs", Layer: "OverShoes", Pri: 11,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeLegs"]),
@@ -162,7 +162,7 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "Ankles", Layer: "OverSocks", Pri: 10,
+		{ Name: "Ankles", Layer: "OverShoes", Pri: 10,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "Shoes"]),

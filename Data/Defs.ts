@@ -165,8 +165,8 @@ let LAYERS_BASE = [
 	"PantLeft",
 
 	"BindFeet",
-	"ShoeLeftOver",
 	"OverShoes",
+	"ShoeLeftOver",
 	"ShoeLeftDeco",
 	"ShoeLeft",
 	"OverSocks",
@@ -352,6 +352,7 @@ let LayerGroups = {
 		"AnkleLeft",
 		"AnkleRight",
 		"BindFeet",
+		"OverShoes",
 	]),
 	// endregion
 

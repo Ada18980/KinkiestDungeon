@@ -221,7 +221,7 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["FeetLinked"],
 	Layers: ToLayerMap([
-		{ Name: "Toe", Layer: "OverSocks", Pri: 10,
+		{ Name: "Toe", Layer: "OverShoes", Pri: 10,
 			Poses: ToMap(["Closed"]),
 			CrossHideOverride: true,
 			HideOverrideLayerMulti: ["ToeTie"],
