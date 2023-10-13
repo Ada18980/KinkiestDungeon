@@ -99,10 +99,8 @@ let KDSpellComponentTypes = {
 };
 
 function KinkyDungeonSearchSpell(list, name) {
-	if (KDSpellMemo[name]) return KDSpellMemo[name];
 	for (let spell of list) {
 		if (spell.name == name) {
-			KDSpellMemo[name] = spell;
 			return spell;
 		}
 	}
@@ -112,16 +110,26 @@ function KinkyDungeonSearchSpell(list, name) {
 let KDSpellMemo = {};
 
 function KinkyDungeonFindSpell(name, SearchEnemies) {
+	if (KDSpellMemo[name]) return KDSpellMemo[name];
 	if (SearchEnemies) {
 		let spell = KinkyDungeonSearchSpell(KinkyDungeonSpellListEnemies, name);
-		if (spell) return spell;
+		if (spell) {
+			KDSpellMemo[name] = spell;
+			return spell;
+		}
 	}
 	let spell2 = KinkyDungeonSearchSpell(KinkyDungeonSpellsStart, name);
-	if (spell2) return spell2;
+	if (spell2) {
+		KDSpellMemo[name] = spell2;
+		return spell2;
+	}
 	for (let key in KinkyDungeonSpellList) {
 		let list = KinkyDungeonSpellList[key];
 		let spell = KinkyDungeonSearchSpell(list, name);
-		if (spell) return spell;
+		if (spell) {
+			KDSpellMemo[name] = spell;
+			return spell;
+		}
 	}
 	return KinkyDungeonSearchSpell(KinkyDungeonSpells, name);
 }
@@ -1043,6 +1051,11 @@ function KDGetPrerequisite(spell) {
 	return str;
 }
 
+/**
+ *
+ * @param {spell} spell
+ * @returns {boolean}
+ */
 function KinkyDungeonCheckSpellPrerequisite(spell) {
 	if (!spell) return true;
 	if (spell.upcastFrom && !KDHasSpell(spell.upcastFrom)) return false;
