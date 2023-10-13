@@ -964,7 +964,7 @@ function KinkyDungeonCanUseWeapon(NoOverride, e, weapon) {
 	if (!NoOverride)
 		KinkyDungeonSendEvent("getWeapon", {event: e, flags: flags});
 	return flags.HandsFree
-		|| KinkyDungeonPlayerDamage.noHands
+		|| weapon?.noHands
 		|| (!KinkyDungeonIsHandsBound(false, true)
 			&& ((!KinkyDungeonStatsChoice.get("WeakGrip") && !flags.clumsy) || !KinkyDungeonIsArmsBound(false, true)));
 }
