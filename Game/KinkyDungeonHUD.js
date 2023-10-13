@@ -724,6 +724,8 @@ function KinkyDungeonDrawInputs() {
 
 	// (KDMinBuffX && MouseIn(KDMinBuffX, minYY - spriteSize, 2000, MaxHeight)) || MouseIn(minXX, minYY - spriteSize, 250, MaxHeight);
 
+	currentDrawnSG = null;
+	currentDrawnSGLength = 0;
 	let smoothSnap = 5;
 	if (!ShowAll) {
 		if (KDMinBuffX)
@@ -844,8 +846,11 @@ function KinkyDungeonDrawInputs() {
 			}
 			if (MouseIn(((!sg.left) ? (260) : 0), y-48, 230, (ButtonWidth + 45)) && sg) {
 
-				if (MouseY < y)
+
+
+				if (MouseY < y) {
 					KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 700);
+				}
 
 				let data = {
 					struggleGroup: sg,
@@ -905,6 +910,10 @@ function KinkyDungeonDrawInputs() {
 					O = lastO + 1;
 				}
 
+				if (!currentDrawnSG) {
+					currentDrawnSG = sg;
+					currentDrawnSGLength = surfaceItems.length;
+				}
 
 				if (data.extraLines.length > 0) {
 					for (let lineIndex = 0; lineIndex < data.extraLines.length; lineIndex++) {
@@ -2297,3 +2306,6 @@ function KDCullSpellChoices() {
 		else break;
 	}
 }
+
+let currentDrawnSG = null;
+let currentDrawnSGLength = 0;

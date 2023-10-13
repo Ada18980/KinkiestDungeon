@@ -325,7 +325,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "Charge", tags: ["utility", "offense"], school: "Special", prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", manacost: 0, customCost: "SprintPlusAttack", components: [], level:1, type:"special", special: "Charge", noMiscast: true,
 			onhit:"", time:25, power: 0, range: 2.99, size: 1, damage: ""},
 
-		{name: "LimitSurge", tags: ["will", "stamina", "utility"], prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+		{name: "LimitSurge", tags: ["will", "stamina", "utility"], prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", school: "Special", customCost: "LimitSurge", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "LimitSurge", trigger: "toggleSpell", power: 5.0, mult: 1.0, time: 2},
 			]},
@@ -2231,18 +2231,26 @@ let KDPlayerCastConditions = {
 
 let KDCustomCost = {
 	"SprintPlusAttack": (data) => {
-		data.cost = Math.round(10 * -(KDAttackCost() + KDSprintCost())) + "sp";
+		data.cost = Math.round(10 * -(KDAttackCost() + KDSprintCost())) + "SP";
+		data.color = "#88ff88";
+	},
+	"LimitSurge": (data) => {
+		data.cost = "50WP";
+		data.color = "#ff5555";
 	},
 	"stamina": (data) => {
-		data.cost = Math.round(10 * KinkyDungeonGetStaminaCost(data.spell)) + "sp";
+		data.cost = Math.round(10 * KinkyDungeonGetStaminaCost(data.spell)) + "SP";
+		data.color = "#88ff88";
 	},
 	"arcane_blast": (data) => {
 		data.cost = Math.min(KinkyDungeonStatManaMax * 2.5, Math.round(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ArcaneEnergy") * 10)) + "E";
+		data.color = "#8888ff";
 	},
 	"arcane_akashic": (data) => {
 		data.cost = "100E";
+		data.color = "#ffff00";
 	},
 	"rhythm": (data) => {
-
+		data.cost = "";
 	},
 };

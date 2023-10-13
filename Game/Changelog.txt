@@ -14,7 +14,9 @@ Vague todo:
 
 4.77 (Oct 2023)
 - Added scroll wheel support in a number of menus, including spell list, perk list, map editor, and hotbar pages
-- TODO add to single spell display, inventory, quick inv, restraint scrolling, dialogue, shop, log, rep
+- Added scroll wheel to single spell display, quick inv, inventory, restraint scrolling, dialogue, shop, message log
+- TODO add to log, rep
+- Bugfixes
 
 
 4.76 (Oct 2023)

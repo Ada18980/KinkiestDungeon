@@ -123,22 +123,39 @@ function KDDrawDialogue() {
 			}
 			if (II >= KDMaxDialogue) {
 				DrawButtonKDEx("dialogueUP", (bdata) => {
-					KDOptionOffset -= 1;
+					if (KDOptionOffset > 0)
+						KDOptionOffset -= 1;
 					return true;
 				}, KDOptionOffset > 0, 1350, 450, 90, 40, "", KDOptionOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png",
 				undefined, undefined, undefined, undefined, undefined, undefined, {
 					zIndex: 122,
 				});
 				DrawButtonKDEx("dialogueDOWN", (bdata) => {
-					KDOptionOffset += 1;
+					if (KDOptionOffset + KDMaxDialogue < entries.length)
+						KDOptionOffset += 1;
 					return true;
 				}, KDOptionOffset + KDMaxDialogue < entries.length, 1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40, "", KDOptionOffset + KDMaxDialogue < entries.length ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png",
 				undefined, undefined, undefined, undefined, undefined, undefined, {
 					zIndex: 122,
 				});
 			}
-			if (KDDialogueData.CurrentDialogueIndex < 0) KDDialogueData.CurrentDialogueIndex = 0;
-			if (KDDialogueData.CurrentDialogueIndex >= II) KDDialogueData.CurrentDialogueIndex = II - 1;
+			if (KDDialogueData.CurrentDialogueIndex >= II - 1) {
+				if (KDOptionOffset + KDMaxDialogue < entries.length) {
+					KDOptionOffset += 1;
+					KDDialogueData.CurrentDialogueIndex = II - 2;
+				} else {
+					KDDialogueData.CurrentDialogueIndex = II - 1;
+				}
+			}
+			if (KDDialogueData.CurrentDialogueIndex <= 0) {
+				if (KDOptionOffset > 0) {
+					KDDialogueData.CurrentDialogueIndex = 1;
+					KDOptionOffset -= 1;
+				} else {
+					KDDialogueData.CurrentDialogueIndex = 0;
+				}
+			}
+
 		}
 
 	} else if (!KDGameData.CurrentDialog) {
