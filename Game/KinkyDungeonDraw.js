@@ -1158,30 +1158,62 @@ function KinkyDungeonDrawGame() {
 						);
 
 						let spellRange = KinkyDungeonTargetingSpell.range * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "spellRange"));
-						let free = KinkyDungeonOpenObjects.includes(KinkyDungeonMapGet(KinkyDungeonTargetX, KinkyDungeonTargetY)) || KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) < 0.1;
-						KinkyDungeonSpellValid = (!KinkyDungeonTargetingSpell.castCondition
-							|| (!KDPlayerCastConditions[KinkyDungeonTargetingSpell.castCondition] || KDPlayerCastConditions[KinkyDungeonTargetingSpell.castCondition](KinkyDungeonPlayerEntity, KinkyDungeonTargetX, KinkyDungeonTargetY)))
-							&& ((KinkyDungeonTargetingSpell.projectileTargeting || spellRange >= Math.sqrt((KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x) *(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x) + (KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) * (KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y))) &&
-							(KinkyDungeonTargetingSpell.projectileTargeting || KinkyDungeonTargetingSpell.CastInWalls || free) &&
-							(!KinkyDungeonTargetingSpell.WallsOnly || !KinkyDungeonOpenObjects.includes(KinkyDungeonMapGet(KinkyDungeonTargetX, KinkyDungeonTargetY))));
-						if (KinkyDungeonTargetingSpell.noTargetEnemies) {
-							let enemy = KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY);
-							let faction = KDGetFaction(enemy);
-							if (enemy && (!KinkyDungeonTargetingSpell.exceptionFactions || !KinkyDungeonTargetingSpell.exceptionFactions.includes(faction)))
-								KinkyDungeonSpellValid = false;
+
+						let spellValid = (x, y, projAimOverride) => {
+							let free = KinkyDungeonOpenObjects.includes(KinkyDungeonMapGet(x, y)) || KinkyDungeonVisionGet(x, y) < 0.1;
+							if (!KinkyDungeonTargetingSpell.projectileTargeting && !KinkyDungeonTargetingSpell.CastInDark && !KinkyDungeonVisionGet(x, y)) return false;
+							let Valid = (!KinkyDungeonTargetingSpell.castCondition
+								|| (!KDPlayerCastConditions[KinkyDungeonTargetingSpell.castCondition] || KDPlayerCastConditions[KinkyDungeonTargetingSpell.castCondition](KinkyDungeonPlayerEntity, x, y)))
+								&& (
+									((!projAimOverride && KinkyDungeonTargetingSpell.projectileTargeting)
+									|| spellRange >= Math.sqrt((x - KinkyDungeonPlayerEntity.x) *(x - KinkyDungeonPlayerEntity.x) + (y - KinkyDungeonPlayerEntity.y) * (y - KinkyDungeonPlayerEntity.y)))
+									&& (KinkyDungeonTargetingSpell.projectileTargeting || KinkyDungeonTargetingSpell.CastInWalls || free)
+									&& (!KinkyDungeonTargetingSpell.WallsOnly || !KinkyDungeonOpenObjects.includes(KinkyDungeonMapGet(x, y))));
+							if (KinkyDungeonTargetingSpell.noTargetEnemies) {
+								let enemy = KinkyDungeonEnemyAt(x, y);
+								let faction = KDGetFaction(enemy);
+								if (enemy && (!KinkyDungeonTargetingSpell.exceptionFactions || !KinkyDungeonTargetingSpell.exceptionFactions.includes(faction)))
+									Valid = false;
+							}
+							if (KinkyDungeonTargetingSpell.noTargetAllies) {
+								let enemy = KinkyDungeonEnemyAt(x, y);
+								if (enemy && KDAllied(enemy))
+									Valid = false;
+							}
+							if (KinkyDungeonTargetingSpell.selfTargetOnly && (KinkyDungeonPlayerEntity.x != x || KinkyDungeonPlayerEntity.y != y)) Valid = false;
+							if ((KinkyDungeonTargetingSpell.requireLOS || (projAimOverride && KinkyDungeonTargetingSpell.projectileTargeting
+								&& (!KinkyDungeonTargetingSpell.piercing
+									&& !KinkyDungeonTargetingSpell.noTerrainHit)
+							)) &&
+								!KinkyDungeonCheckPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, x, y,
+									true, true, 1, true)) Valid = false;
+							if (KinkyDungeonTargetingSpell.noTargetPlayer && KinkyDungeonPlayerEntity.x == x && KinkyDungeonPlayerEntity.y == y) Valid = false;
+							if (KinkyDungeonTargetingSpell.mustTarget && KinkyDungeonNoEnemy(x, y, true)) Valid = false;
+							if (KinkyDungeonTargetingSpell.minRange && KDistEuclidean(x - KinkyDungeonPlayerEntity.x, y - KinkyDungeonPlayerEntity.y) < KinkyDungeonTargetingSpell.minRange) Valid = false;
+
+							return Valid;
+						};
+
+						KinkyDungeonSpellValid = spellValid(KinkyDungeonTargetX, KinkyDungeonTargetY);
+
+						if (KDToggles.ShowSpellRange ) {
+							for (let X = 0; X < KinkyDungeonGridWidthDisplay; X++) {
+								for (let Y = 0; Y < KinkyDungeonGridHeightDisplay; Y++) {
+									let XX = X + CamX;
+									let YY = Y + CamY;
+									if (KDIsInBounds(XX, YY, 1)) {
+										if (spellValid(XX, YY, true)) {
+											KDDraw(kdstatusboard, kdpixisprites, XX + "," + YY + "_range", KinkyDungeonRootDirectory + "SpellRange.png",
+												(X)*KinkyDungeonGridSizeDisplay, (Y)*KinkyDungeonGridSizeDisplay,
+												KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+													zIndex: 98,
+												});
+										}
+									}
+
+								}
+							}
 						}
-						if (KinkyDungeonTargetingSpell.noTargetAllies) {
-							let enemy = KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY);
-							if (enemy && KDAllied(enemy))
-								KinkyDungeonSpellValid = false;
-						}
-						if (KinkyDungeonTargetingSpell.selfTargetOnly && (KinkyDungeonPlayerEntity.x != KinkyDungeonTargetX || KinkyDungeonPlayerEntity.y != KinkyDungeonTargetY)) KinkyDungeonSpellValid = false;
-						if (KinkyDungeonTargetingSpell.requireLOS &&
-							!KinkyDungeonCheckPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY,
-								true, true, 1, true)) KinkyDungeonSpellValid = false;
-						if (KinkyDungeonTargetingSpell.noTargetPlayer && KinkyDungeonPlayerEntity.x == KinkyDungeonTargetX && KinkyDungeonPlayerEntity.y == KinkyDungeonTargetY) KinkyDungeonSpellValid = false;
-						if (KinkyDungeonTargetingSpell.mustTarget && KinkyDungeonNoEnemy(KinkyDungeonTargetX, KinkyDungeonTargetY, true)) KinkyDungeonSpellValid = false;
-						if (KinkyDungeonTargetingSpell.minRange && KDistEuclidean(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x, KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) < KinkyDungeonTargetingSpell.minRange) KinkyDungeonSpellValid = false;
 
 						if (KinkyDungeonSpellValid)
 							if (KinkyDungeonTargetingSpell.projectileTargeting) {

@@ -113,6 +113,7 @@ let KDToggles = {
 	TransparentUI: false,
 	TurnCounter: true,
 	ShowNPCStatuses: true,
+	ShowSpellRange: true,
 	ForceWarnings: false,
 	Drool: true,
 	LazyWalk: false,
