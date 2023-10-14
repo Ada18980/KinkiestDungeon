@@ -18,6 +18,7 @@ Vague todo:
 - Added scroll wheel to single spell display, quick inv, inventory, restraint scrolling, dialogue, shop, message log
 - Enemies now take time to teleport in from traps
 - New options for passthrough
+- Can now walk through enemies via dialogue instead of having to toggle the setting
 - Bugfixes
 
 
