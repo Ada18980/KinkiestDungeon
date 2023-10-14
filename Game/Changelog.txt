@@ -14,6 +14,7 @@ Vague todo:
 - TODO add scroll to log, rep
 
 4.77 (Oct 2023)
+- Keybindings have changed format to allow for characters like !, @, #, etc
 - Added scroll wheel support in a number of menus, including spell list, perk list, map editor, and hotbar pages
 - Added scroll wheel to single spell display, quick inv, inventory, restraint scrolling, dialogue, shop, message log
 - Enemies now take time to teleport in from traps
