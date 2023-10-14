@@ -1090,7 +1090,7 @@ function KinkyDungeonRun() {
 			return true;
 		}, true, 1000-350/2, 600, 350, 64, TextGet("GameConfigKeys"), "#ffffff", "");
 
-		if (KinkyDungeonKeybindingsTemp.Spell?1 && KinkyDungeonKeybindingsTemp.Spell1.length > 1 && (KinkyDungeonKeybindingsTemp.Spell1.includes("Digit") || KinkyDungeonKeybindingsTemp.Spell1.includes("Key")))
+		if (KinkyDungeonKeybindingsTemp?.Spell1 && KinkyDungeonKeybindingsTemp.Spell1.length > 1 && (KinkyDungeonKeybindingsTemp.Spell1.includes("Digit") || KinkyDungeonKeybindingsTemp.Spell1.includes("Key")))
 			DrawTextFitKD(TextGet("KDKeysUpdate" + (KDEasterEgg ? "EasterEgg" : "")), 1000-350/2, 600 + 32, 500, "#ffffff", undefined, 18, "right");
 
 		DrawButtonKDEx("GameToggles", () => {
