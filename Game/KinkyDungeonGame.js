@@ -4707,10 +4707,16 @@ let KDKeyCheckers = {
 
 			if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KDGameData.CurrentDialog) {
 				if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
-					KDDialogueData.CurrentDialogueIndex += 1;
+					if (KDDialogueData.CurrentDialogueIndex < KDMaxDialogue - 1)
+						KDDialogueData.CurrentDialogueIndex += 1;
+					else
+						KDClickButton("dialogueDOWN");
 					return true;
 				} else if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
-					KDDialogueData.CurrentDialogueIndex = Math.max(0, KDDialogueData.CurrentDialogueIndex - 1);
+					if (KDDialogueData.CurrentDialogueIndex > 0)
+						KDDialogueData.CurrentDialogueIndex = Math.max(0, KDDialogueData.CurrentDialogueIndex - 1);
+					else
+						KDClickButton("dialogueUP");
 					return true;
 				} else if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey) {
 					KDClickButton("dialogue" + KDDialogueData.CurrentDialogueIndex);
