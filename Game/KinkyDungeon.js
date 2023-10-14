@@ -6,6 +6,7 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
 let CanvasWidth = 2000;
 let CanvasHeight = 1000;
 let KDStartTime = 0;
+let KDEasterEgg = Math.random() < 0.01;
 
 /** These languages have characters which are rendered bigger than English. */
 let KDBigLanguages = ["CN", "KR", "JP"];
@@ -1088,6 +1089,10 @@ function KinkyDungeonRun() {
 			}
 			return true;
 		}, true, 1000-350/2, 600, 350, 64, TextGet("GameConfigKeys"), "#ffffff", "");
+
+		if (KinkyDungeonKeybindingsTemp.Spell1 && KinkyDungeonKeybindingsTemp.Spell1.length > 1 && (KinkyDungeonKeybindingsTemp.Spell1.includes("Digit") || KinkyDungeonKeybindingsTemp.Spell1.includes("Key")))
+			DrawTextFitKD(TextGet("KDKeysUpdate" + (KDEasterEgg ? "EasterEgg" : "")), 1000-350/2, 600 + 32, 500, "#ffffff", undefined, 18, "right");
+
 		DrawButtonKDEx("GameToggles", () => {
 			KinkyDungeonState = "Toggles";
 			return true;
