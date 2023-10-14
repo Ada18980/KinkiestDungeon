@@ -12249,3 +12249,6 @@ KDAddToHotbar,Add to Hotbar
 KDBack,Back
 
 KinkyDungeonBuffNoWP,"Surrender: Your willpower is 0, giving huge penalties to Block, Evasion, and Bondage Resist."
+
+KDKeysUpdate,"Update your Keybindings!!! -->"
+KDKeysUpdateEasterEgg,"I have altered the keybindings. Pray I do not alter them further."
