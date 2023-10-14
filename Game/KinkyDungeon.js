@@ -66,21 +66,21 @@ let KDLoadingDone = 1;
 let KDLoadingMax = 1;
 
 //let KinkyDungeonKeyLower = [87+32, 65+32, 83+32, 68+32, 81+32, 45+32, 90+32, 43+32]; // WASD
-let KinkyDungeonKey = ['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyQ', 'KeyE', 'KeyZ', 'KeyC'];
+let KinkyDungeonKey = ['W', 'A', 'S', 'D', 'Q', 'E', 'Z', 'C'];
 //let KinkyDungeonKeyNumpad = [56, 52, 50, 54, 55, 57, 49, 51]; // Numpad
-let KinkyDungeonKeySpell = ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0']; // 1 2 3 4 5 6 7
-let KinkyDungeonKeySpellConfig = ['BracketLeft', 'BracketRight', 'Backslash'];
-let KinkyDungeonKeyWait = ['KeyX'];
+let KinkyDungeonKeySpell = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']; // 1 2 3 4 5 6 7
+let KinkyDungeonKeySpellConfig = ['<', '@', '#'];
+let KinkyDungeonKeyWait = ['X'];
 let KinkyDungeonKeySkip = ['Space'];
 let KinkyDungeonKeyEnter = ['Enter'];
 let KinkyDungeonKeySprint = ['ShiftLeft'];
-let KinkyDungeonKeyWeapon = ['ControlRight',];
-let KinkyDungeonKeyUpcast = ['KeyR', 'ControlLeft'];
-let KinkyDungeonKeyMenu = ['KeyT', 'KeyI', 'KeyP', 'KeyM', 'KeyL']; // QuikInv, Inventory, Reputation, Magic, Log
-let KinkyDungeonKeyToggle = ['KeyO', 'KeyB', 'KeyV', 'KeyN', 'Semicolon', 'Quote']; // Log, Passing, Door, Auto Struggle, Auto Pathfind
+let KinkyDungeonKeyWeapon = ['R',];
+let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
+let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L']; // QuikInv, Inventory, Reputation, Magic, Log
+let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight"]; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect
 let KinkyDungeonKeySpellPage = ['Backquote'];
-let KinkyDungeonKeySwitchWeapon = ['KeyF', 'KeyG', 'KeyH']; // Swap, Offhand, OffhandPrevious
-let KinkyDungeonKeySwitchLoadout = ['Comma', 'Period', 'Slash']; // Swap, Offhand, OffhandPrevious
+let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H']; // Swap, Offhand, OffhandPrevious
+let KinkyDungeonKeySwitchLoadout = ['[', ']', '\\'];
 
 let KDLoadingTextKeys = {};
 
@@ -328,6 +328,7 @@ let KDOptOut = false;
 * MovePoints: number,
 * Wait: number,
 * Class: string,
+* FocusControlToggle: Record<string, boolean>,
 * FloorRobotType: Record<string, string>,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
@@ -335,6 +336,7 @@ let KDOptOut = false;
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	FocusControlToggle: {},
 	TeleportLocations: {},
 	CurseLevel: 0,
 	UsingConsumable: "",
@@ -2163,6 +2165,7 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {string} [options.tint] - tint
+ * @param {string} [options.hotkey] - hotkey
  * @returns {void} - Nothing
  */
 function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
@@ -2204,6 +2207,7 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {string} [options.tint] - tint
+ * @param {string} [options.hotkey] - hotkey
  * @returns {void} - Nothing
  */
 function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
@@ -2380,6 +2384,7 @@ function KDProcessButtonScroll(amount, padV = 0) {
 }
 
 function KDProcessButtons() {
+	KDFocusControls = "";
 	let buttons = [];
 	for (let button of Object.entries(KDButtonsCache)) {
 		if (button[1].enabled && button[1].func) {
@@ -3197,8 +3202,8 @@ let KinkyDungeonGameKey = {
 	},
 	keyDownEvent : {
 		handleEvent : function (event) {
-			let code = event.code;
-			if (!KDLastKeyTime[code]) {
+			let code = !(event.code.includes("Digit") || (event.key.length == 1 && event.code != "Space")) ? event.code : event.key.toUpperCase();
+			if (!KDLastKeyTime[code] || code.includes("Shift")) {
 				KinkyDungeonKeybindingCurrentKey = code;
 				KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
 			}
@@ -3258,7 +3263,8 @@ let KinkyDungeonGameKey = {
 	},
 	keyUpEvent : {
 		handleEvent : function (event) {
-			let code = event.code;
+			let code = !(event.code.includes("Digit") || (event.key.length == 1 && event.code != "Space")) ? event.code : event.key.toUpperCase();
+
 			KinkyDungeonKeybindingCurrentKeyRelease = code;
 			if (KinkyDungeonKeybindingCurrentKeyRelease) KinkyDungeonGameKeyUp(KDLastKeyTime[KinkyDungeonKeybindingCurrentKeyRelease]);
 			if (KDLastKeyTime[code]) delete KDLastKeyTime[code];

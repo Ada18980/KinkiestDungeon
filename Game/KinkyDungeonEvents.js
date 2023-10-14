@@ -2788,7 +2788,7 @@ let KDEventMapSpell = {
 					if (buff) {
 						let enemyPower = (data.attacker.Enemy?.power || 1) * 0.01;
 						KinkyDungeonSendTextMessage(4, TextGet("KDBattleRhythmDodge"), "#ff8800", 2);
-						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency*enemyPower*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 3);
+						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency*enemyPower*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
 						buff.power = Math.max(0, buff.power - efficiency*enemyPower);
 						if (buff.power <= 0) buff.duration = 0;
 						buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
@@ -3045,7 +3045,7 @@ let KDEventMapSpell = {
 				if (buff) {
 					buff.power = Math.max(0, buff.power - data.delta*e.power);
 					buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.power)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 0.2);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.power)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 0.1);
 					if (buff.power == 0) buff.duration = 0;
 				}
 			}
@@ -3446,13 +3446,13 @@ let KDEventMapSpell = {
 							text: Math.round(100 * powerAdded),
 						}
 					);
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round(powerAdded*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 3);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round(powerAdded*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
 				} else {
 					let origPower = buff.power;
 					buff.power += powerAdded;
 					buff.power = Math.min(buff.power, max);
 					buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 3);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
 				}
 
 				// Set a flag to prevent duplicating this event
@@ -3593,7 +3593,8 @@ let KDEventMapSpell = {
 				200,
 				100, 100,
 				"", "#ffffff", KinkyDungeonRootDirectory + `Items/${KDGameData.Offhand || KDGameData.OffhandOld}.png`, TextGet("KDoffhandTooltip"), false, true,
-				undefined, undefined, undefined, {tint: KDGameData.Offhand ? "#ffffff" : "#444444", scaleImage: true, zIndex: 5}
+				undefined, undefined, undefined, {tint: KDGameData.Offhand ? "#ffffff" : "#444444", scaleImage: true, zIndex: 5,
+					hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[1]),}
 				);
 
 				if (KDGameData.OffhandReturn && KDGameData.OffhandReturn != (KDGameData.Offhand || KDGameData.OffhandOld)) {
@@ -3606,7 +3607,8 @@ let KDEventMapSpell = {
 					300,
 					100, 100,
 					"", "#ffffff", KinkyDungeonRootDirectory + `Items/${KDGameData.OffhandReturn}.png`, TextGet("KDoffhand2Tooltip"), false, true,
-					undefined, undefined, undefined, {scaleImage: true, zIndex: 5}
+					undefined, undefined, undefined, {scaleImage: true, zIndex: 5,
+						hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[2]),}
 					);
 				}
 			}

@@ -739,6 +739,12 @@ function KinkyDungeonDrawEnemiesStatus(canvasOffsetX, canvasOffsetY, CamX, CamY)
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: 2.1,
 						});
+				} else if (enemy.teleporting > 0) {
+					KDDraw(kdenemystatusboard, kdpixisprites, "frz" + enemy.id, KinkyDungeonRootDirectory + "Conditions/Teleporting.png",
+						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
+						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+							zIndex: 2.11,
+						});
 				}
 			}
 		}
@@ -819,7 +825,7 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 						}, true);
 				}
 			}
-			if (enemy.Enemy.spells && (enemy.Enemy.spellRdy && (!KDAmbushAI(enemy) || enemy.ambushtrigger)) && !(enemy.castCooldown > 1) && (!(enemy.silence > 0) && !(enemy.stun > 0) && !(enemy.freeze > 0) && !KDHelpless(enemy))) {
+			if (enemy.Enemy.spells && (enemy.Enemy.spellRdy && (!KDAmbushAI(enemy) || enemy.ambushtrigger)) && !(enemy.castCooldown > 1) && (!(enemy.silence > 0) && !(enemy.stun > 0) && !(enemy.freeze > 0) && !(enemy.teleporting > 0) && !KDHelpless(enemy))) {
 				let tx = enemy.visual_x;
 				let ty = enemy.visual_y;
 				//  && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(tx, ty))
@@ -1171,6 +1177,12 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 							KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
 								KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 8, enemy.visual_lifetime / enemy.maxlifetime * 100, "#cccccc", "#000000"); II++;
 						}
+					}
+
+					if (enemy.teleporting > 0 && enemy.teleportingmax > 1 && enemy.teleporting < enemy.teleportingmax) {
+						// Draw lifetime bar
+						KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
+							KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 8, (enemy.teleportingmax - enemy.teleporting) / enemy.teleportingmax * 100, "#92e8c0", "#4c6885"); II++;
 					}
 				}
 			}
@@ -2349,7 +2361,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				if (enemy.slow <= 0)
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "slow"});
 			}
-			if (enemy.boundLevel > 0 && !(enemy.stun > 0 || enemy.freeze > 0) && (enemy.hp > enemy.Enemy.maxhp * 0.1)) {
+			if (enemy.boundLevel > 0 && !(enemy.stun > 0 || enemy.freeze > 0 || enemy.teleporting > 0) && (enemy.hp > enemy.Enemy.maxhp * 0.1)) {
 				let SM = KDGetEnemyStruggleMod(enemy);
 				let newBound = KDPredictStruggle(enemy, SM, delta);
 				enemy.boundLevel = newBound.boundLevel;
@@ -2496,6 +2508,13 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				if (enemy.channel <= 0)
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "channel"});
 			}
+			if (enemy.teleporting > 0) {
+				enemy.warningTiles = [];
+				if (enemy.teleporting > 0) enemy.teleporting -= delta;
+
+				if (enemy.teleporting <= 0)
+					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "teleporting"});
+			}
 		}
 	}
 
@@ -2542,6 +2561,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					KinkyDungeonIsDisabled(enemy)
 					|| KDHelpless(enemy)
 					|| enemy.channel > 0
+					|| enemy.teleporting > 0
 				)) {
 					let start = performance.now();
 

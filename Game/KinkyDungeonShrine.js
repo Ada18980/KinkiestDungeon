@@ -466,7 +466,7 @@ let KDGoddessRevengeMobTypes = {
  */
 function KDSummonRevengeMobs(x, y, Goddess, mult = 1.0, LevelBoost = 2) {
 	let spawned = 0;
-	let maxspawn = 1 + Math.round(Math.min(2 + KDRandom() * 2, KinkyDungeonDifficulty/25) + Math.min(2 + KDRandom() * 2, 0.5*MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint));
+	let maxspawn = 2 + Math.round(Math.min(3 + KDRandom() * 2, KinkyDungeonDifficulty/10) + Math.min(3 + KDRandom() * 2, 1*MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint));
 	if (mult) maxspawn *= mult;
 
 	let types = KDGoddessRevengeMobTypes[Goddess];
@@ -485,9 +485,11 @@ function KDSummonRevengeMobs(x, y, Goddess, mult = 1.0, LevelBoost = 2) {
 				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 				'0', requireTags, false, undefined, filter, requireSingleTag);
 			if (Enemy) {
-				let pass = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 10, false, undefined, i < 24, false, "Ambush", true, 1.5, true, undefined, true, true).length;
+				let pass = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 10, false, undefined, i < 24, false, "Ambush", true, 1.5, true, undefined, true, true);
 
-				if (pass) {
+				if (pass.length > 0) {
+					pass[0].teleporting = 5;
+					pass[0].teleportingmax = 5;
 					if (Enemy.tags.minor) spawned += 0.4;
 					else spawned += 1;
 				}

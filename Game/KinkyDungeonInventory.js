@@ -157,8 +157,9 @@ function KDRestraintSpecial(item) {
 
 function KDSwitchWeapon() {
 	let previousWeapon = KDGameData.PreviousWeapon ? KDGameData.PreviousWeapon : null;
-	if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[1]) previousWeapon = KDGameData.Offhand || KDGameData.OffhandOld;
-	else if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[2]) previousWeapon = KDGameData.OffhandReturn;
+	if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[1]) KDClickButton("offhandswitch");//previousWeapon = KDGameData.Offhand || KDGameData.OffhandOld;
+	else if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[2]) KDClickButton("offhandswitch2");//previousWeapon = KDGameData.OffhandReturn;
+	else
 	if (!previousWeapon || KinkyDungeonInventoryGet(previousWeapon))
 		KDSendInput("switchWeapon", {weapon: previousWeapon});
 }
@@ -1329,7 +1330,11 @@ function KinkyDungeonDrawQuickInv() {
 			}
 
 			return true;
-		}, true, 630, QL_y + 70 * i, 120, 60, i + "", "#dddddd", "", undefined, false, KDGameData.CurrentLoadout != i || KDQuickLoadoutSave, KDButtonColor);
+		}, true, 630, QL_y + 70 * i, 120, 60, i + "", "#dddddd", "",
+		undefined, false, KDGameData.CurrentLoadout != i || KDQuickLoadoutSave, KDButtonColor,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySwitchLoadout[i]),
+		});
 		if (MouseIn(630, QL_y + 70 * i, 120, 60)) {
 			for (let ii = 0; ii < 20 && ii < (KDGameData.QuickLoadouts ? (KDGameData.QuickLoadouts[i+""] ? KDGameData.QuickLoadouts[i+""].length : 0) : 0); ii++) {
 				let item = KDGameData.QuickLoadouts[i+""][ii];

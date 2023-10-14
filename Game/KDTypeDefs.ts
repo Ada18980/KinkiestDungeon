@@ -556,7 +556,7 @@ interface floorParams {
 	shortcuts: {Level: number, checkpoint: string, chance:number}[	],
 	mainpath: {Level: number, checkpoint: string, chance?: number}[],
 
-	traps: {Name: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true}[],
+	traps: {Name: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true, teleportTime?: number}[],
 
 	min_width : number,
 	max_width : number,
@@ -1401,6 +1401,8 @@ interface entity {
 	disarm?: number,
 	slow?: number,
 	freeze?: number,
+	teleporting?: number,
+	teleportingmax?: number,
 	stun?: number,
 	silence?: number,
 	vulnerable?: number,

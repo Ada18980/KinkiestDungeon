@@ -1994,7 +1994,10 @@ function KinkyDungeonDrawMessages(NoLog) {
 			KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle;
 			KDLogIndex = 0;
 			return true;
-		}, true, 1750, 82, 100, 50, TextGet("KinkyDungeonLog"), "#ffffff");
+		}, true, 1750, 82, 100, 50, TextGet("KinkyDungeonLog"), "#ffffff",
+		undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[0]),
+		});
 	if (!KinkyDungeonMessageToggle || NoLog) {
 		let i = 0;
 		if (!MouseIn(KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2, 62, KDMsgWidthMin, KDLogDist*(2 + KDMaxConsoleMsg)) || KinkyDungeonDrawState != "Game") {
@@ -2577,6 +2580,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {string} [options.tint] - tint
+ * @param {string} [options.hotkey] - hotkey
  * @returns {void} - Nothing
  */
 function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2609,6 +2613,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {boolean} [options.unique] - This button is not differentiated by position
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {string} [options.tint] - tint
+ * @param {string} [options.hotkey] - hotkey
  * @returns {void} - Nothing
  */
 function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2658,11 +2663,20 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 		}
 		textPush = img.orig.width;
 	}
-	DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
-		Color,
-		(options && options.noTextBG) ? "none" : undefined,
-		FontSize, undefined, zIndex + 0.001, undefined, undefined, options?.unique);
+	if (Label)
+		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
+			Color,
+			(options && options.noTextBG) ? "none" : undefined,
+			FontSize, undefined, zIndex + 0.001, undefined, undefined, options?.unique);
 
+	if (options?.hotkey) {
+		let size = (FontSize*0.6) || 14;
+		DrawTextFitKDTo(Container || kdcanvas, options?.hotkey, Left + Width - 4,
+			Top + (size / 2) + 2, Width*0.7,
+			'#ffffff',
+			(options && options.noTextBG) ? "none" : undefined,
+			size, "right", zIndex + 0.02, undefined, undefined);
+	}
 	// Draw the tooltip
 	if ((HoveringText != null) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
 		DrawTextFitKDTo(Container || kdcanvas, HoveringText, 1000, MouseY, 1500, "#ffffff");
@@ -3706,4 +3720,14 @@ function KDMouseInPlayableArea() {
 		&& !MouseIn(0, 0, 500, 1000) && !MouseIn(1750, 0, 250, 1000)
 		&& !KDButtonHovering
 		&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))
+}
+
+/**
+ *
+ * @param {string} hotkey
+ * @returns {string}
+ */
+function KDHotkeyToText(hotkey) {
+	if (!hotkey) return "---";
+	return hotkey.replace("Digit", "").replace("Key", "").replace("Control", "Ctrl");
 }

@@ -491,7 +491,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
 		],
-		terrainTags: {"ghost" : 1.9, "increasingWeight": 0.2, "chestTrap": 50, "goddessRage": 4}, shrines: ["Illusion"], allFloors: true,
+		terrainTags: {"ghost" : 1.9, "increasingWeight": 0.2, "chestTrap": 50, revenge: 50, "goddessRage": 4}, shrines: ["Illusion"], allFloors: true,
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
 	{name: "HugHorror", faction: "Ghost", color: "#FFFFFF", tags: KDMapInit(["illusionTrap", "chestTrap", "ignorenoSP", "ghostRestraints", "spooky", "ghost", "flying", "melee", "glueimmune", "chainimmune", "meleeresist"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  noAlert: true,
 		spells: ["GhostAttack"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
@@ -500,14 +500,14 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
 		],
-		terrainTags: {"ghost" : 1.9, "increasingWeight": 0.2, "chestTrap": 50, "goddessRage": 4}, shrines: ["Illusion"], allFloors: true,
+		terrainTags: {"ghost" : 1.9, "increasingWeight": 0.2, "chestTrap": 50, revenge: 50, "goddessRage": 4}, shrines: ["Illusion"], allFloors: true,
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
 	{name: "GreedyGhast", faction: "Ghost", color: "#FFFFFF", tags: KDMapInit(["illusionTrap", "chestTrap", "ignorenoSP", "ghost", "flying", "melee", "spooky", "glueimmune", "chainimmune", "meleeresist"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  noAlert: true,
 		visionRadius: 6, blindSight: 4, evasion: 0.5, maxhp: 7, minLevel:2, weight:0.1, movePoints: 2, attackPoints: 2, attack: "MeleeWill", attackWidth: 3, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 3,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
 		],
-		terrainTags: {"ghost" : 1.9, "increasingWeight": 0.05, "chestTrap": 100, "goddessRage": 5}, shrines: ["Illusion"], allFloors: true,
+		terrainTags: {"ghost" : 1.9, "increasingWeight": 0.05, "chestTrap": 100, revenge: 50, "goddessRage": 5}, shrines: ["Illusion"], allFloors: true,
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
 
 	{name: "OrbGuardian", faction: "Ghost", alwaysHostile: true, clusterWith: "ghost", tags: KDMapInit(["divine", "melee", "flying", "glueimmune", "chainimmune"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",
@@ -736,11 +736,11 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":1, "thirdhalf":1, "latexAnger": 4, "latexRage": 4, "latexPleased": 3, "latexFriendly": 5, "alchemist": 10}, shrines: ["Latex"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Gunpowder", amount: 3, weight: 10}]},
 	{name: "ElementalLatex", faction: "Elemental", hidetimerbar: true, playLine: "Elemental", clusterWith: "alchemist", bound: "ElementalLatex", squeeze: true,
-		tags: KDMapInit(["opendoors", "elemental", "slashweakness", "melee", "glueimmune", "coldweakness", "electricresist", "pierceweakness", "acidweakness", "latexRestraints", "latexGag", "leashing", "search", "doortrap"]),
+		tags: KDMapInit(["opendoors", "latexTrap", "elemental", "slashweakness", "melee", "glueimmune", "coldweakness", "electricresist", "pierceweakness", "acidweakness", "latexRestraints", "latexGag", "leashing", "search", "doortrap"]),
 		armor: 0, followRange: 1, AI: "hunt", spellResist: 1.5,
 		stamina: 6,
 		visionRadius: 7, maxhp: 20, minLevel:4, weight:-3, movePoints: 2, attackPoints: 2, attack: "MeleeWillBind", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 3,
-		terrainTags: {"secondhalf":2, "thirdhalf":1, "latexAnger": 4, "latexRage": 4, "latexPleased": 2, "latexFriendly": 3, "temple": 4, "doortrap":2, "alchemist": 5, "witch": 5}, allFloors: true, shrines: ["Latex", "Elements"],
+		terrainTags: {"secondhalf":2, "thirdhalf":1, "latexAnger": 4, "latexRage": 4, "latexPleased": 2, "latexFriendly": 3, "temple": 4, "doortrap":2, revenge: 5, "alchemist": 5, "witch": 5}, allFloors: true, shrines: ["Latex", "Elements"],
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "EarthRune", weight: 1, noSummon: true}]},
 	{name: "GlueTechnician", faction: "Alchemist", clusterWith: "alchemist", playLine: "Alchemist", bound: "GlueTechnician", color: "#ffee43",
 		tags: KDMapInit(["opendoors", "leashing", "human", "alchemist", "ranged", "unflinching", "elite", "expRestraints", "leatherRestraints", "leatherRestraintsHeavy", "latexGag", "handcuffer", "jail", "jailer", "hunter"]),
@@ -1428,7 +1428,7 @@ let KinkyDungeonEnemies = [
 		master: {type: "WitchSlime", range: 2, loose: true, aggressive: true},
 		visionRadius: 4.5, blindSight: 2.5, maxhp: 10, minLevel:2, weight:2, movePoints: 1.7,
 		attackPoints: 3, attack: "MeleeBindSlow", attackWidth: 1, attackRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 2,
-		terrainTags: {"latexAnger": 3, "latexRage": 3, "alchemist": 2, "slimeBonus": 2, "slime": 5, "slimeOptOut": -2, "slimePref": 2, "jungle": 8}, shrines: ["Latex"], allFloors: true,
+		terrainTags: {"latexAnger": 3, "latexRage": 3, "alchemist": 2, "slimeBonus": 2, "slime": 5, "slimeOptOut": -2, "slimePref": 2, "jungle": 8, revenge: 10}, shrines: ["Latex"], allFloors: true,
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],},
@@ -2016,7 +2016,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "beforeDamage", type: "shadowEngulf", power: 0, color: "#880044"},
 			{trigger: "afterEnemyTick", type: "shadowDebuff", power: -0.5},
 		],
-		terrainTags: {"trap": 100}, shrines: [], allFloors: true},
+		terrainTags: {"trap": 100, revenge: 10}, shrines: [], allFloors: true},
 
 	{name: "ShadowGhast", faction: "Ghost", clusterWith: "ghost", color: "#880044", tags: KDMapInit(["opendoors", "shadowHandEnemy", "shadowTrap", "ghost", "soulimmune", "fireweakness", "melee", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
 		ignorechance: 0, armor: 0, followRange: 1, AI: "huntshadow", hitsfx: "Evil", ignoreflag: ["ShadowHand"], failAttackflag: ["ShadowHand"], failAttackflagDuration: 2,
@@ -2028,11 +2028,11 @@ let KinkyDungeonEnemies = [
 			{trigger: "beforeDamage", type: "shadowEngulf", power: 0, color: "#880044"},
 			{trigger: "afterEnemyTick", type: "shadowDebuff", power: -0.5},
 		],
-		terrainTags: {"shadowcreature" : 20, "increasingWeight": 0.1, "trap": 10, "goddessRage": 1}, shrines: [], allFloors: true,
+		terrainTags: {"shadowcreature" : 20, "increasingWeight": 0.1, "trap": 10, revenge: 10, "goddessRage": 1}, shrines: [], allFloors: true,
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
 
 	{name: "CorruptedAdventurer", faction: "Ghost", clusterWith: "ghost", bound: "CorruptedAdventurer", playLine: "Elemental", color: "#880044",
-		tags: KDMapInit(["shadowHandEnemy", "ghost", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainresist", "shadowHands", "opendoors"]),
+		tags: KDMapInit(["shadowHandEnemy", "shadowTrap", "ghost", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainresist", "shadowHands", "opendoors"]),
 		followRange: 1, ignoreflag: ["ShadowDommed"], failAttackflag: ["ShadowDommed"],
 		spells: ["ShadowBolt"], spellCooldownMult: 1, spellCooldownMod: 0,
 		AI: "huntshadow",  visionRadius: 10, maxhp: 20, minLevel: 3, weight:-1, movePoints: 4, disarm: 0.33,
@@ -2043,19 +2043,19 @@ let KinkyDungeonEnemies = [
 		],
 		attackPoints: 4, attack: "MeleeBindWillSpellLock", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "cold", multiBind: 2,
 		attackLock: "White",
-		terrainTags: {"shadowcreature" : 9, "increasingWeight": 0.1, "goddessRage": 3}, shrines: [], allFloors: true,
+		terrainTags: {"shadowcreature" : 9, revenge: 3, "increasingWeight": 0.1, "goddessRage": 3}, shrines: [], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Ectoplasm", weight: 10}]
 	},
 
 	{name: "ChainBeing", clusterWith: "elemental", bound: "ChainBeing", playLine: "Elemental", color: "#c7a9fa",
-		tags: KDMapInit(["construct", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainimmune", "obsidianRestraints", "chainRestraintsMagic", "leashing"]),
+		tags: KDMapInit(["construct", "metalTrap", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainimmune", "obsidianRestraints", "chainRestraintsMagic", "leashing"]),
 		armor: 1.5, kite: 1.5, followRange: 3, AI: "hunt",
 		spells: ["ObsidianBolt"], spellCooldownMult: 1, spellCooldownMod: 1, followLeashedOnly: true, stopToCast: true, spellRdy: true, projectileTargeting: true,
 		visionRadius: 10, maxhp: 11, minLevel: 0, weight:-10, movePoints: 2,
 		attackPoints: 4, attack: "MeleeBindLockAllSpell", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 2, dmgType: "soul", fullBoundBonus: 2.5,
 		attackLock: "White",
 		stamina: 3,
-		terrainTags: {"shadowcreature" : 6, "increasingWeight": 0.1, "metalAnger": 10, "metalPleased": 10, }, shrines: ["Metal"], allFloors: true,
+		terrainTags: {"shadowcreature" : 6, revenge: 6, "increasingWeight": 0.1, "metalAnger": 10, "metalPleased": 10, }, shrines: ["Metal"], allFloors: true,
 		events: [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Chains", time: 5, power: 1, chance: 0.5, aoe: 0.5},
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
@@ -2132,7 +2132,7 @@ let KinkyDungeonEnemies = [
 		specialCD: 8, specialAttack: "Dash", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
 		visionRadius: 3, visionSummoned: 12, maxhp: 4, minLevel: 0, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {"trap": 50, gag: -40}, allFloors: true, shrines: [], summonTags: ["gag"],
+		terrainTags: {"trap": 50, revenge: 50, gag: -40}, allFloors: true, shrines: [], summonTags: ["gag"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2154,7 +2154,7 @@ let KinkyDungeonEnemies = [
 		},
 		visionRadius: 6, visionSummoned: 12, maxhp: 10, minLevel: 5, weight:0, movePoints: 2, attackPoints: 3, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {"trap": 30, legbinder: -25}, allFloors: true, shrines: [], summonTags: ["legbinder"],
+		terrainTags: {"trap": 30, revenge: 30, legbinder: -25}, allFloors: true, shrines: [], summonTags: ["legbinder"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2176,7 +2176,7 @@ let KinkyDungeonEnemies = [
 		},
 		visionRadius: 6, visionSummoned: 12, maxhp: 8, minLevel: 3, weight:0, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {"trap": 30, armbinder: -25}, allFloors: true, shrines: [], summonTags: ["armbinder"],
+		terrainTags: {"trap": 30, revenge: 30, armbinder: -25}, allFloors: true, shrines: [], summonTags: ["armbinder"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2196,7 +2196,7 @@ let KinkyDungeonEnemies = [
 		},
 		visionRadius: 6, visionSummoned: 12, maxhp: 6, minLevel: 0, weight:0, movePoints: 1.5, attackPoints: 2, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 1,
-		terrainTags: {"trap": 25, harness: -20}, allFloors: true, shrines: [], summonTags: ["harness"],
+		terrainTags: {"trap": 25, revenge: 25, harness: -20}, allFloors: true, shrines: [], summonTags: ["harness"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2217,7 +2217,7 @@ let KinkyDungeonEnemies = [
 		specialCD: 8, specialAttack: "Dash", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
 		visionRadius: 9, visionSummoned: 12, maxhp: 4, minLevel: 4, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {"trap": 25, blindfold: -20}, allFloors: true, shrines: [], summonTags: ["blindfold"],
+		terrainTags: {"trap": 25, revenge: 25, blindfold: -20}, allFloors: true, shrines: [], summonTags: ["blindfold"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2239,7 +2239,7 @@ let KinkyDungeonEnemies = [
 		},
 		visionRadius: 9, visionSummoned: 12, maxhp: 12, minLevel: 7, weight:0, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {"trap": 20, "leatherRage": 5, jacket: -20}, allFloors: true, shrines: [], summonTags: ["jacket"],
+		terrainTags: {"trap": 20, revenge: 20, "leatherRage": 5, jacket: -20}, allFloors: true, shrines: [], summonTags: ["jacket"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2259,7 +2259,7 @@ let KinkyDungeonEnemies = [
 		},
 		specialCD: 8, specialAttack: "Dash", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
 		visionRadius: 4, visionSummoned: 12, maxhp: 2, minLevel: 0, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "charm", fullBoundBonus: 1,
-		terrainTags: {"doortrap": 6, "trap": 50, cuffs: -40}, allFloors: true, shrines: ["Metal"], summonTags: ["cuffs"],
+		terrainTags: {"doortrap": 6, revenge: 50, "trap": 50, cuffs: -40}, allFloors: true, shrines: ["Metal"], summonTags: ["cuffs"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2278,7 +2278,7 @@ let KinkyDungeonEnemies = [
 			levelBonus: 4,
 		},
 		visionRadius: 6, visionSummoned: 12, maxhp: 5, minLevel: 2, weight:0, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 2, dmgType: "charm", fullBoundBonus: 1,
-		terrainTags: {"doortrap": 6, "trap": 35, chastity: -25}, allFloors: true, shrines: ["Metal"], summonTagsMulti: ["chastity"],
+		terrainTags: {"doortrap": 6, revenge: 35, "trap": 35, chastity: -25}, allFloors: true, shrines: ["Metal"], summonTagsMulti: ["chastity"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2297,7 +2297,7 @@ let KinkyDungeonEnemies = [
 			levelBonus: 4,
 		},
 		visionRadius: 6, visionSummoned: 12, maxhp: 5, minLevel: 4, weight:0, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 2, dmgType: "charm", fullBoundBonus: 1,
-		terrainTags: {"doortrap": 6, "trap": 35, yoke: -30}, allFloors: true, shrines: ["Metal"], summonTags: ["yoke"],
+		terrainTags: {"doortrap": 6, revenge: 35, "trap": 35, yoke: -30}, allFloors: true, shrines: ["Metal"], summonTags: ["yoke"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2314,7 +2314,7 @@ let KinkyDungeonEnemies = [
 		nonDirectional: true,
 		specialCD: 8, specialAttack: "MeleeDash", specialRemove: "SuicideMeleeBindLockWill", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
 		visionRadius: 3, visionSummoned: 12, maxhp: 4, minLevel: 0, weight:0, movePoints: 1, attackPoints: 3, attack: "SuicideMeleeBindLockWill", attackWidth: 3, tilesMinRange: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
-		terrainTags: {"secondhalf":1, "lastthird":1, "doortrap": 5, "trap": 100}, allFloors: true, shrines: ["Metal"],
+		terrainTags: {"secondhalf":1, "lastthird":1, revenge: 60, "doortrap": 5, "trap": 100}, allFloors: true, shrines: ["Metal"],
 		maxLevel: 3,
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
@@ -2337,7 +2337,7 @@ let KinkyDungeonEnemies = [
 		sprintspeed: 2.0,
 		attackLock: "Purple",
 		attackPoints: 3, attack: "SpellMeleeLockWill", attackWidth: 1, tilesMinRange: 1, attackRange: 1, power: 1, dmgType: "soul", fullBoundBonus: 2,
-		terrainTags: {"secondhalf":2, "lastthird":2, "doortrap": 8, "trap": 100}, allFloors: true, shrines: ["Metal"],
+		terrainTags: {"secondhalf":2, "lastthird":2, "doortrap": 8, revenge: 50, "trap": 100}, allFloors: true, shrines: ["Metal"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2349,7 +2349,7 @@ let KinkyDungeonEnemies = [
 			profile: ["construct"],
 		},
 		attackWidth: 3, tilesMinRange: 1, attackRange: 1, power: 1, dmgType: "tickle", ondeath: [{type: "spellOnSelf", spell: "Feathers"}],
-		terrainTags: {"secondhalf":2, "lastthird":-1, "increasingLevel": -1.5, "doortrap": 8}, allFloors: true, shrines: [], difficulty: 0.7, hitsfx: "Tickle",},
+		terrainTags: {"secondhalf":2, "lastthird":-1, "increasingLevel": -1.5, revenge: 7, "doortrap": 8}, allFloors: true, shrines: [], difficulty: 0.7, hitsfx: "Tickle",},
 	{name: "Scarves", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["ignoreharmless", "construct", "nosignal", "flying", "poisonresist", "soulimmune", "melee", "scarfRestraints", "minor", "firesevereweakness", "acidweakness", "slashweakness", "meleeresist", "doortrap"]), ignorechance: 0.75, armor: 0, followRange: 1, AI: "hunt",  ignoreflag: ["scarves"], failAttackflag: ["scarves"], squeeze: true,
 		visionRadius: 3, visionSummoned: 12, maxhp: 1, minLevel: 0, maxLevel: 3, weight:1, movePoints: 1.5, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "plush", fullBoundBonus: 1,
 		Attack: {
@@ -2360,7 +2360,7 @@ let KinkyDungeonEnemies = [
 		},
 		stamina: 6,
 		nonDirectional: true,
-		terrainTags: {"secondhalf":-1, "lastthird":-2, "increasingLevel": -2, "doortrap": 6, "ribbon": 3}, allFloors: true, shrines: [], difficulty: 0.4},
+		terrainTags: {"secondhalf":-1, "lastthird":-2, "increasingLevel": -2, revenge: 12, "doortrap": 6, "ribbon": 3}, allFloors: true, shrines: [], difficulty: 0.4},
 	{name: "Ribbons", faction: "KinkyConstruct", color: "#f135a4", clusterWith: "dressmaker", tags: KDMapInit(["ropeTrap", "ignoreharmless", "construct", "nosignal", "ribbon", "melee", "magicRibbons", "minor", "meleeresist", "doortrap", "flying"]), ignorechance: 0.75, armor: 0, followRange: 1, AI: "hunt",  ignoreflag: ["ribbons"], failAttackflag: ["ribbons"], squeeze: true,
 		visionRadius:5, visionSummoned: 12, maxhp: 6, minLevel: 0, weight:0, movePoints: 1.25, attackPoints: 3, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "chain", fullBoundBonus: 1,
 		Resistance: {
@@ -2370,7 +2370,7 @@ let KinkyDungeonEnemies = [
 		Attack: {
 			mustBindorFail: true,
 		},
-		terrainTags: { "dressmaker": 7, "conjureAnger": 4, "ribbon": 3}, allFloors: true, shrines: ["Conjure", "Rope"], difficulty: 0.2, ondeath: [{type: "spellOnSelf", spell: "RibbonBurst"}]},
+		terrainTags: { "dressmaker": 7, "conjureAnger": 4, "ribbon": 3, revenge: 4}, allFloors: true, shrines: ["Conjure", "Rope"], difficulty: 0.2, ondeath: [{type: "spellOnSelf", spell: "RibbonBurst"}]},
 	{name: "RopeSnake", faction: "KinkyConstruct", clusterWith: "construct", color: "#ffae70", tags: KDMapInit(["ropeTrap", "ignoreharmless", "construct", "nosignal", "melee", "ropeRestraints", "minor", "doortrap"]), ignorechance: 0.75, followRange: 1, AI: "wander", squeeze: true,
 		Resistance: {
 			profile: ["rope", "construct"],
@@ -2381,7 +2381,7 @@ let KinkyDungeonEnemies = [
 		},
 		stamina: 6,
 		visionRadius: 3, maxhp: 4, minLevel: 0, weight:3, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "chain", fullBoundBonus: 1,
-		terrainTags: {"increasingWeight":-3, "trap": 40}, allFloors: true, shrines: ["Rope"],
+		terrainTags: {"increasingWeight":-3, revenge: 40, "trap": 40}, allFloors: true, shrines: ["Rope"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2393,7 +2393,7 @@ let KinkyDungeonEnemies = [
 		},
 		stamina: 6,
 		visionRadius: 10, blindSight: 8, maxhp: 4, minLevel: 0, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "chain", fullBoundBonus: 1,
-		terrainTags: {"secondhalf":1, "lastthird":3, "trap": 20}, allFloors: true, shrines: ["Rope"],
+		terrainTags: {"secondhalf":1, "lastthird":3, revenge: 20, "trap": 20}, allFloors: true, shrines: ["Rope"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2409,7 +2409,7 @@ let KinkyDungeonEnemies = [
 		},
 		specialCD: 8, specialAttack: "Dash", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
 		visionRadius: 5, maxhp: 8, minLevel: 2, weight:1, movePoints: 1, attackPoints: 3, attack: "MeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 1, attackRange: 2.5, power: 2, multiBind: 2, dmgType: "chain", fullBoundBonus: 2,
-		terrainTags: {"trap": 30}, allFloors: true, shrines: ["Rope"],
+		terrainTags: {"trap": 30, revenge: 30}, allFloors: true, shrines: ["Rope"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},
 		],
@@ -2423,7 +2423,7 @@ let KinkyDungeonEnemies = [
 		},
 		stamina: 2,
 		visionRadius: 6, maxhp: 20, minLevel: 3, weight:0, movePoints: 3, attackPoints: 3, attack: "MeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 5, multiBind: 6, dmgType: "chain", fullBoundBonus: 6,
-		terrainTags: {"secondhalf":1, "lastthird":4, "increasingWeight":2, "trap": 20}, allFloors: true, shrines: ["Rope"],
+		terrainTags: {"secondhalf":1, "lastthird":4, "increasingWeight":2, "trap": 20, revenge: 20}, allFloors: true, shrines: ["Rope"],
 		ondeath: [
 			{type: "summon", enemy: "RopeSnake", range: 2.5, count: 3, strict: true, lifetime: 30},
 			{type: "summon", enemy: "LearnedRope", range: 2.5, count: 1, strict: true, lifetime: 30},
@@ -2444,7 +2444,7 @@ let KinkyDungeonEnemies = [
 			unlimitedRestraints: true,
 		},
 		visionRadius: 6, maxhp: 14, minLevel:0, weight:-2, movePoints: 1.5, attackPoints: 3, attack: "MeleeBind", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 2.5, dmgType: "chain", fullBoundBonus: 2.5,
-		terrainTags: {"secondhalf":2, "thirdhalf":1, "ropeAnger": 4, "ropeRage": 4, "temple": 8, "doortrap": 4, "elemental": 3, "witch": 5, "rope": 4}, allFloors: true, shrines: ["Rope", "Elements"],
+		terrainTags: {"secondhalf":2, "thirdhalf":1, "ropeAnger": 4, "ropeRage": 4, "temple": 8, "doortrap": 4, revenge: 5, "elemental": 3, "witch": 5, "rope": 4}, allFloors: true, shrines: ["Rope", "Elements"],
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "Knife", ignoreInInventory: true, weight: 3, noSummon: true}],
 		events: [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Ropes", time: 5, power: 1, chance: 0.5, aoe: 0.5},
@@ -2460,7 +2460,7 @@ let KinkyDungeonEnemies = [
 		},
 		stamina: 3,
 		visionRadius: 6, maxhp: 10, minLevel:0, weight:-2, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindLock", attackWidth: 1, attackRange: 2.5, tilesMinRange: 1, power: 2.5, dmgType: "pain", fullBoundBonus: 2.5, projectileTargeting: true,
-		terrainTags: {"secondhalf":2, "thirdhalf":1, "leatherAnger": 4, "leatherRage": 4, "temple": 8, "doortrap": 5, "elemental": 3, "witch": 5, "leather": 4}, allFloors: true, shrines: ["Leather", "Elements"],
+		terrainTags: {"secondhalf":2, "thirdhalf":1, "leatherAnger": 4, "leatherRage": 4, "temple": 8, "doortrap": 5, revenge: 5, "elemental": 3, "witch": 5, "leather": 4}, allFloors: true, shrines: ["Leather", "Elements"],
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "EarthRune", weight: 2, noSummon: true}],
 		events: [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Belts", time: 5, power: 1, chance: 0.5, aoe: 0.5},
