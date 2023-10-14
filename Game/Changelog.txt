@@ -11,11 +11,13 @@ Vague todo:
 - Add teleport to floor 0 temporarily after spending enough gold (done)
 - Add single use curse remover item (done)
 
+- TODO add scroll to log, rep
 
 4.77 (Oct 2023)
 - Added scroll wheel support in a number of menus, including spell list, perk list, map editor, and hotbar pages
 - Added scroll wheel to single spell display, quick inv, inventory, restraint scrolling, dialogue, shop, message log
-- TODO add to log, rep
+- Enemies now take time to teleport in from traps
+- New options for passthrough
 - Bugfixes
 
 

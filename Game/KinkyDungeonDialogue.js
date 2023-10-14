@@ -613,7 +613,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 			},
 		}
 	};
-	/*dialog.options.LetMePass = {playertext: name + "LetMePass", response: "Default",
+	dialog.options.LetMePass = {playertext: name + "LetMePass", response: "Default",
 		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
@@ -663,7 +663,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				leadsToStage: "",
 			},
 		}
-	};*/
+	};
 	dialog.options.StopFollowingMe = {playertext: name + "StopFollowingMe", response: "Default",
 		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);

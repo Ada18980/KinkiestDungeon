@@ -393,25 +393,32 @@ function KinkyDungeonClickSpell(i) {
 
 let KDSwapSpell = -1;
 
-function KinkyDungeonHandleSpell() {
-	let spell = null;
+function KinkyDungeonHandleSpell(ind) {
 	let clicked = false;
-	for (let i = 0; i < KinkyDungeonSpellChoiceCountPerPage; i++) {
-		let index = i + KDSpellPage*KinkyDungeonSpellChoiceCountPerPage;
+	let spell = null;
+	if (!ind) {
+		for (let i = 0; i < KinkyDungeonSpellChoiceCountPerPage; i++) {
+			let index = i + KDSpellPage*KinkyDungeonSpellChoiceCountPerPage;
 
-		if (KinkyDungeonSpellPress == KinkyDungeonKeySpell[i]) {
-			let result = KinkyDungeonClickSpell(index);
-			spell = result.spell;
-			clicked = result.clicked;
+			if (KinkyDungeonSpellPress == KinkyDungeonKeySpell[i]) {
+				let result = KinkyDungeonClickSpell(index);
+				spell = result.spell;
+				clicked = result.clicked;
+			}
 		}
-	}
-	for (let ii = 0; ii < KinkyDungeonSpellChoiceCount; ii++) {
-		if (MouseInKD("SpellCast" + ii) || MouseInKD("UseItem" + ii)) {
-			let result = KinkyDungeonClickSpell(ii);
-			spell = result.spell;
-			clicked = result.clicked;
+		for (let ii = 0; ii < KinkyDungeonSpellChoiceCount; ii++) {
+			if (MouseInKD("SpellCast" + ii) || MouseInKD("UseItem" + ii)) {
+				let result = KinkyDungeonClickSpell(ii);
+				spell = result.spell;
+				clicked = result.clicked;
+			}
 		}
+	} else {
+		let result = KinkyDungeonClickSpell(ind);
+		spell = result.spell;
+		clicked = result.clicked;
 	}
+
 	if (spell) {
 		// Otherwise.
 		KinkyDungeonTargetingSpell = spell;

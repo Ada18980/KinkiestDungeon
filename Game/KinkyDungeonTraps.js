@@ -94,26 +94,38 @@ let KDTrapTypes = {
 			if (entity.player)
 				KinkyDungeonAddRestraintIfWeaker(restraint, tile.Power, false);
 		}
-		let created = KinkyDungeonSummonEnemy(x, y, "VinePlant", tile.Power, 1).length;
-		if (created > 0) {
+		let created = KinkyDungeonSummonEnemy(x, y, "VinePlant", tile.Power, 1);
+		for (let en of created) {
+			en.stun = 1;
+		}
+		if (created.length > 0) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 			KinkyDungeonTilesDelete(x + "," + y);
 		}
 		return {
 			triggered: true,
-			msg: created > 0 ? "Default" : "",
+			msg: created.length > 0 ? "Default" : "",
 		};
 	},
 	SpawnEnemies: (tile, entity, x, y) => {
 		let radius = tile.Power > 4 ? 4 : 2;
-		let created = KinkyDungeonSummonEnemy(x, y, tile.Enemy, tile.Power, radius, true, undefined, undefined, true, "Ambush", true, 1.5, true).length;
-		if (created > 0) {
+		let created = KinkyDungeonSummonEnemy(
+			x, y, tile.Enemy, tile.Power, radius, true, undefined, undefined, true, "Ambush", true, 1.5, true);
+		for (let en of created) {
+			if (tile.teleportTime) {
+				en.teleporting = 1+tile.teleportTime;
+				en.teleportingmax = 1+tile.teleportTime;
+			} else {
+				en.stun = 2;
+			}
+		}
+		if (created.length > 0) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 			KinkyDungeonTilesDelete(x + "," + y);
 		}
 		return {
-			triggered: created > 0,
-			msg: created > 0 ? TextGet("KinkyDungeonTrapSpawn" + tile.Enemy) : "",
+			triggered: created.length > 0,
+			msg: created.length > 0 ? TextGet("KinkyDungeonTrapSpawn" + tile.Enemy) : "",
 		};
 	},
 	SpecificSpell: (tile, entity, x, y) => {
@@ -269,11 +281,11 @@ function KDTrigPanic(chest) {
 
 /**
  *
- * @returns {{ Name: string; Enemy?: string; Spell?: string; Level: number; Power: number; Weight: number; strict?: true;}[]}
+ * @returns {{ Name: string; Enemy?: string; Spell?: string; Level: number; Power: number; Weight: number; strict?: true; teleportTime?: number}[]}
  */
 function KinkyDungeonGetGoddessTrapTypes() {
 	/**
-	 * @type {{ Name: string; Enemy?: string; Spell?: string; Level: number; Power: number; Weight: number; strict?: true;}[]}
+	 * @type {{ Name: string; Enemy?: string; Spell?: string; Level: number; Power: number; Weight: number; strict?: true; teleportTime?: number,}[]}
 	 */
 	let trapTypes = [];
 	if (KinkyDungeonGoddessRep.Rope < KDANGER) {
@@ -316,15 +328,15 @@ function KinkyDungeonGetGoddessTrapTypes() {
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalAir", Level: 0, Power: 2, Weight: 5 });
 	}
 	if (KinkyDungeonGoddessRep.Elements < KDRAGE) {
-		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalFire", Level: 0, Power: 4, Weight: 10 });
-		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalIce", Level: 0, Power: 4, Weight: 10 });
-		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalWater", Level: 0, Power: 4, Weight: 10 });
-		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalEarth", Level: 0, Power: 4, Weight: 10 });
-		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalAir", Level: 0, Power: 4, Weight: 10 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true, teleportTime: 3, Enemy: "ElementalFire", Level: 0, Power: 4, Weight: 10 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true,teleportTime: 3, Enemy: "ElementalIce", Level: 0, Power: 4, Weight: 10 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true,teleportTime: 3, Enemy: "ElementalWater", Level: 0, Power: 4, Weight: 10 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true,teleportTime: 3, Enemy: "ElementalEarth", Level: 0, Power: 4, Weight: 10 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true,teleportTime: 3, Enemy: "ElementalAir", Level: 0, Power: 4, Weight: 10 });
 	}
 	if (KinkyDungeonGoddessRep.Conjure < KDANGER) {
 		trapTypes.push({ Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 15 });
-		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "TickleHand", Level: 0, Power: 6, Weight: 10 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true, teleportTime: 3, Enemy: "TickleHand", Level: 0, Power: 6, Weight: 10 });
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "Dressmaker", Level: 0, Power: 2, Weight: 5 });
 	}
 	if (KinkyDungeonGoddessRep.Conjure < KDRAGE) {

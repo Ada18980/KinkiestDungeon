@@ -2162,6 +2162,7 @@ function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, 
 			let spawned = 0;
 			let mult = tile[1].lootTrap.mult;
 			let trap = tile[1].lootTrap.trap;
+			let time = tile[1].lootTrap.time || 3;
 			//let duration = tile[1].lootTrap.duration;
 			let maxspawn = 1 + Math.round(Math.min(2 + KDRandom() * 2, KinkyDungeonDifficulty/25) + Math.min(2 + KDRandom() * 2, 0.5*MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint));
 			if (mult) maxspawn *= mult;
@@ -2185,6 +2186,7 @@ function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, 
 						if (point) {
 							if (!KinkyDungeonTilesGet(point.x + ',' + point.y)) KinkyDungeonTilesSet(point.x + ',' + point.y, {});
 							KinkyDungeonTilesGet(point.x + ',' + point.y).lootTrapEnemy = Enemy.name;
+							KinkyDungeonTilesGet(point.x + ',' + point.y).lootTrapTime = time;
 							KDCreateEffectTile(point.x, point.y, {
 								name: "Runes",
 								duration: 9999,
@@ -3714,7 +3716,7 @@ function KinkyDungeonGameKeyUp(lastPress) {
 	// Holding for a minute = fail
 	if (delta > 60000) return;
 	// tap = fail
-	if (delta < 250) return;
+	if (delta < 250 && !(!KinkyDungeonKeybindingCurrentKey.includes("Shift") && KinkyDungeonKeybindingCurrentKeyRelease.includes("Shift"))) return;
 
 	if (KinkyDungeonState == "Game") {
 		if (document.activeElement) {
@@ -4757,10 +4759,30 @@ function KDGetAltType(Floor) {
 	return altType;
 }
 
+/**
+ *
+ * @param {entity} player
+ * @param {entity} Enemy
+ * @returns {boolean}
+ */
 function KDCanPassEnemy(player, Enemy) {
 	return !KDIsImmobile(Enemy)
 	&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
-	&& (KinkyDungeonToggleAutoPass || KDEnemyHasFlag(Enemy, "passthrough") || (KinkyDungeonFlags.has("Passthrough")) || Enemy.Enemy.noblockplayer);
+	&& ((KinkyDungeonToggleAutoPass
+		&& (
+			!KDGameData.FocusControlToggle || (
+				(KDGameData.FocusControlToggle.AutoPassHelplessEnemies || !(KDHostile(Enemy) && KDHelpless(Enemy))) &&
+				(KDGameData.FocusControlToggle.AutoPassHelplessAllies || !(!KDHostile(Enemy) && KDHelpless(Enemy))) &&
+				(KDGameData.FocusControlToggle.AutoPassAllies || !(KDAllied(Enemy))) &&
+				(KDGameData.FocusControlToggle.AutoPassNeutral || !(!KDAllied(Enemy) && !KDAllied(Enemy))) &&
+				(KDGameData.FocusControlToggle.AutoPassShop || !(KDEnemyHasFlag(Enemy, "Shop"))) &&
+				(KDGameData.FocusControlToggle.AutoPassSpecial || !(Enemy.specialdialogue)) &&
+				(KDGameData.FocusControlToggle.AutoPassSummons || !(Enemy.Enemy.allied))
+			)
+		))
+		|| KDEnemyHasFlag(Enemy, "passthrough")
+		|| (KinkyDungeonFlags.has("Passthrough"))
+		|| Enemy.Enemy.noblockplayer);
 }
 
 

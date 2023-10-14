@@ -867,8 +867,15 @@ function KDSpawnLootTrap(x, y, trap, mult, duration) {
 			if (etiles?.length > 0) {
 				let Enemy = KinkyDungeonGetEnemyByName(tile.tile.lootTrapEnemy);
 				if (Enemy) {
-					if (KinkyDungeonSummonEnemy(tile.x, tile.y, Enemy.name, 1, 0.5, true, (duration || Enemy.tags.construct) ? (duration || 40) : undefined, undefined, false, "Ambush", true, undefined, true, undefined, duration > 300, false))
-						spawned += 1;
+					let created = KinkyDungeonSummonEnemy(tile.x, tile.y, Enemy.name, 1, 0.5, true, (duration || Enemy.tags.construct) ? (duration || 40) : undefined, undefined, false, "Ambush", true, undefined, true, undefined, duration > 300, false);
+					if (tile.tile.lootTrapEnemy) {
+						for (let en of created) {
+							en.teleporting = tile.tile.lootTrapEnemy;
+							en.teleportingmax = tile.tile.lootTrapEnemy;
+						}
+					}
+					if (created.length > 0)
+						spawned += created.length;
 					for (let et of etiles) {
 						et.duration = 0;
 					}
@@ -900,18 +907,22 @@ let KDChestTrapWeights = {
 	metalTrap: {
 		weight: () => {return 100 - (KinkyDungeonGoddessRep.Metal);},
 		mult: 1,
+		time: 2,
 	},
 	leatherTrap: {
 		weight: () => {return 100 - (KinkyDungeonGoddessRep.Leather);},
 		mult: 1.2,
+		time: 2,
 	},
 	latexTrap: {
 		weight: () => {return 100 - (KinkyDungeonGoddessRep.Latex);},
 		mult: 1.2,
+		time: 2,
 	},
 	ropeTrap: {
 		weight: () => {return 110 - (KinkyDungeonGoddessRep.Rope) - (KinkyDungeonGoddessRep.Conjure);},
 		mult: 1.4,
+		time: 2,
 	},
 	illusionTrap: {
 		weight: () => {return Math.max(0, -2*(KinkyDungeonGoddessRep.Illusion));},
@@ -922,10 +933,10 @@ let KDChestTrapWeights = {
 let KDTrapChestType = {
 	"default" : (guaranteed, x, y, chestType, lock, noTrap) => {
 		let obj = KDGetWeightedString(KDChestTrapWeights) || "metalTrap";
-		return {trap: obj, mult: KDChestTrapWeights[obj].mult};
+		return {trap: obj, mult: KDChestTrapWeights[obj].mult, time: KDChestTrapWeights[obj].time};
 	},
 	"shadow" : (guaranteed, x, y, chestType, lock, noTrap) => {
-		return {trap: "shadowTrap", mult: 2.5, duration: 300};
+		return {trap: "shadowTrap", mult: 2.5, duration: 300, time: 3};
 	},
 };
 
@@ -975,7 +986,10 @@ function KDSummonCurseTrap(x, y) {
 	if (enemy) {
 		let point = {x: x, y: y};//KinkyDungeonGetNearbyPoint(x, y, true);
 		if (point) {
-			DialogueCreateEnemy(point.x, point.y, enemy.name);
+			let en = DialogueCreateEnemy(point.x, point.y, enemy.name);
+
+			en.teleporting = 4;
+			en.teleportingmax = 4;
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SummonCurse.ogg");
 			KinkyDungeonSendTextMessage(8, TextGet("KDSummonCurse"), "#9074ab", 5);
 		}
