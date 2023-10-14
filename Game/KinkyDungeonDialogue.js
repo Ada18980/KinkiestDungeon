@@ -139,21 +139,11 @@ function KDDrawDialogue() {
 					zIndex: 122,
 				});
 			}
-			if (KDDialogueData.CurrentDialogueIndex >= II - 1) {
-				if (KDOptionOffset + KDMaxDialogue < entries.length) {
-					KDOptionOffset += 1;
-					KDDialogueData.CurrentDialogueIndex = II - 2;
-				} else {
-					KDDialogueData.CurrentDialogueIndex = II - 1;
-				}
+			if (KDDialogueData.CurrentDialogueIndex > II - 1) {
+				KDDialogueData.CurrentDialogueIndex = II - 1;
 			}
-			if (KDDialogueData.CurrentDialogueIndex <= 0) {
-				if (KDOptionOffset > 0) {
-					KDDialogueData.CurrentDialogueIndex = 1;
-					KDOptionOffset -= 1;
-				} else {
-					KDDialogueData.CurrentDialogueIndex = 0;
-				}
+			if (KDDialogueData.CurrentDialogueIndex < 0) {
+				KDDialogueData.CurrentDialogueIndex = 0;
 			}
 
 		}

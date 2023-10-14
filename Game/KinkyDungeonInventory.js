@@ -1407,6 +1407,7 @@ function KinkyDungeonDrawQuickInv() {
 				"", "#ffffff", item.preview, undefined, undefined, true, undefined, undefined, undefined,
 				{
 					zIndex: 109,
+					scaleImage: true,
 				}
 			);
 			/*
@@ -1494,6 +1495,7 @@ function KinkyDungeonDrawQuickInv() {
 				"", "#ffffff", item.preview, undefined, undefined, true, undefined, undefined, undefined,
 				{
 					zIndex: 109,
+					scaleImage: true,
 				}
 			);
 			/*KDDraw(kdcanvas, kdpixisprites, "weaponsicon" + w,
@@ -1597,6 +1599,7 @@ function KinkyDungeonDrawQuickInv() {
 				"", "#ffffff", item.preview, undefined, undefined, true, undefined, undefined, undefined,
 				{
 					zIndex: 109,
+					scaleImage: true,
 				}
 			);
 			//DrawImageEx(item.preview, point.x, 1000 - V - Rheight + point.y, {Width: 80, Height: 80});
