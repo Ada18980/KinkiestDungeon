@@ -44,7 +44,7 @@ let KDFightParams = {
 
 let KinkyDungeonOpenObjects = KinkyDungeonTransparentObjects; // Objects bullets can pass thru
 let KinkyDungeonMeleeDamageTypes = ["unarmed", "crush", "slash", "pierce", "grope", "pain", "chain", "tickle"];
-let KinkyDungeonTeaseDamageTypes = ["tickle", "charm", "grope", "pain"];
+let KinkyDungeonTeaseDamageTypes = ["tickle", "charm", "grope", "pain", "plush"];
 let KinkyDungeonPacifistDamageTypes = ["tickle", "charm", "grope", "pain", "chain", "glue", "grope", "soul"];
 let KinkyDungeonStunDamageTypes = ["fire", "electric", "stun"];
 let KinkyDungeonBindDamageTypes = ["chain", "glue"];

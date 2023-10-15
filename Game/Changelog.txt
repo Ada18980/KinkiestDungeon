@@ -21,6 +21,7 @@ Vague todo:
 - New options for passthrough
 - Can now walk through enemies via dialogue instead of having to toggle the setting
 - Enemies now set up barricades to impede your progress
+- Added filters to weapon inventory tab
 - Bugfixes
 
 
