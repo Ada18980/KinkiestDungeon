@@ -430,15 +430,17 @@ function KDChangeWardrobe(C) {
  * @param {Character} C
  */
 function KDDrawModelList(X, C) {
-	let clickCategory = (index) => {
+	let clickCategory = (en, index) => {
 		return (bdata) => {
+			if (!en) return false;
 			KDModelList_Categories_index = index;
 			KDUpdateModelList(1);
 			return true;
 		};
 	};
-	let clickToplevel = (index) => {
+	let clickToplevel = (en, index) => {
 		return (bdata) => {
+			if (!en) return false;
 			KDModelList_Toplevel_index = index;
 			KDUpdateModelList(2);
 			let name = KDModelList_Sublevel[KDModelList_Sublevel_index] || "";
@@ -449,9 +451,9 @@ function KDDrawModelList(X, C) {
 			return true;
 		};
 	};
-	let clickSublevel = (index, name) => {
+	let clickSublevel = (en, index, name) => {
 		return (bdata) => {
-
+			if (!en) return false;
 
 			let removed = false;
 			for (let appIndex = 0; appIndex < C.Appearance.length; appIndex++) {
@@ -508,33 +510,34 @@ function KDDrawModelList(X, C) {
 
 		let index_cat = i + KDModelList_Categories_viewindex.index;
 		let category = KDModelList_Categories[index_cat];
-		if (category)
-			DrawButtonKDExScroll("ClickCategory" + i, (amount) => {KDModelList_Categories_viewindex.index += Math.min(5, Math.abs(amount)/buttonHeight) * Math.sign(amount); cullIndex();},
-				clickCategory(index_cat), true, X+0, 100 + buttonSpacing * i, 190, buttonHeight,
-				TextGet("cat_" + category),
-				hasCategories[category] ? "#ffffff" : faded, "",
-				undefined, undefined, index_cat != KDModelList_Categories_index, KDButtonColor);
+		//if (category)
+		DrawButtonKDExScroll("ClickCategory" + i, (amount) => {KDModelList_Categories_viewindex.index += Math.min(5, Math.abs(amount)/buttonHeight) * Math.sign(amount); cullIndex();},
+			clickCategory(category, index_cat), true, X+0, 100 + buttonSpacing * i, 190, buttonHeight,
+			!category ? "" : TextGet("cat_" + category),
+			hasCategories[category] ? "#ffffff" : faded, "",
+			undefined, undefined, index_cat != KDModelList_Categories_index, KDButtonColor);
 
 
 		let index_top = i + KDModelList_Toplevel_viewindex.index;
 		let toplevel = KDModelList_Toplevel[index_top];
-		if (toplevel)
-			DrawButtonKDExScroll("ClickToplevel" + i, (amount) => {KDModelList_Toplevel_viewindex.index += Math.min(5, Math.abs(amount)/buttonHeight) * Math.sign(amount); cullIndex();},
-				clickToplevel(index_top), true, X+220, 100 + buttonSpacing * i, 190, buttonHeight,
-				TextGet("m_" + toplevel),
-				(KDCurrentModels.get(C).Models.has(toplevel) || hasTopLevel[toplevel]) ? "#ffffff" : faded, "",
-				undefined, undefined, index_top != KDModelList_Toplevel_index, KDButtonColor);
+		//if (toplevel)
+		DrawButtonKDExScroll("ClickToplevel" + i, (amount) => {KDModelList_Toplevel_viewindex.index += Math.min(5, Math.abs(amount)/buttonHeight) * Math.sign(amount); cullIndex();},
+			clickToplevel(toplevel, index_top), true, X+220, 100 + buttonSpacing * i, 190, buttonHeight,
+			!toplevel ? "" : TextGet("m_" + toplevel),
+			(KDCurrentModels.get(C).Models.has(toplevel) || hasTopLevel[toplevel]) ? "#ffffff" : faded, "",
+			undefined, undefined, index_top != KDModelList_Toplevel_index, KDButtonColor);
 
 
 
 		let index_sub = i + KDModelList_Sublevel_viewindex.index;
 		let sublevel = KDModelList_Sublevel[index_sub];
+		//if (sublevel) {
+		DrawButtonKDExScroll("ClickSublevel" + i, (amount) => {KDModelList_Sublevel_viewindex.index += Math.min(5, Math.abs(amount)/buttonHeight) * Math.sign(amount); cullIndex();},
+			clickSublevel(sublevel, index_sub, sublevel), true, X+440, 100 + buttonSpacing * i, 190, buttonHeight,
+			!sublevel ? "" : TextGet("m_" + sublevel),
+			KDCurrentModels.get(C).Models.has(sublevel) ? "#ffffff" : faded, "",
+			undefined, undefined, index_sub != KDModelList_Sublevel_index, KDButtonColor);
 		if (sublevel) {
-			DrawButtonKDExScroll("ClickSublevel" + i, (amount) => {KDModelList_Sublevel_viewindex.index += Math.min(5, Math.abs(amount)/buttonHeight) * Math.sign(amount); cullIndex();},
-				clickSublevel(index_sub, sublevel), true, X+440, 100 + buttonSpacing * i, 190, buttonHeight,
-				TextGet("m_" + sublevel),
-				KDCurrentModels.get(C).Models.has(sublevel) ? "#ffffff" : faded, "",
-				undefined, undefined, index_sub != KDModelList_Sublevel_index, KDButtonColor);
 			if (index_sub == KDModelList_Sublevel_index && KDCurrentModels.get(C).Models.has(sublevel)) {
 				KDSelectedModel = C.Appearance.find((value) => {
 					return value.Model.Name == sublevel;

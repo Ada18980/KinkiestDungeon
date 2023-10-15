@@ -5056,6 +5056,12 @@ function KinkyDungeonHandleBulletEvent(Event, e, b, data) {
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, entity, *): void>>}
  */
 let KDEventMapEnemy = {
+	"enemyMove": {
+		"damageOnMove": (e, enemy, data) => {
+			if (enemy == data.enemy)
+				KinkyDungeonDamageEnemy(enemy, {damage: enemy.Enemy.maxhp * e.mult + e.power, type: "crush"}, false, true, undefined, undefined, undefined);
+		}
+	},
 	"passout": {
 		"delete": (e, enemy, data) => {
 			if (!e.chance || KDRandom() < e.chance)
