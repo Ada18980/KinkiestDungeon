@@ -183,13 +183,19 @@ AddModel({
 			DisplacementSprite: "HarnessSquish",
 			DisplaceLayers: ToMap(["RibbonTorso"]),
 		},
-		{ Name: "HarnessLower", Layer: "HarnessMid", Pri: 0,
-			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
-			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+		{ Name: "HarnessMid", Layer: "HarnessMid", Pri: 0,
 			Invariant: true,
 			DisplacementInvariant: true,
 			DisplacementSprite: "HarnessSquish",
 			DisplaceLayers: ToMap(["RibbonTorso"]),
+		},
+		{ Name: "HarnessLower", Layer: "HarnessMid", Pri: 0,
+			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			Invariant: true,
+			//DisplacementInvariant: true,
+			//DisplacementSprite: "HarnessSquish",
+			//DisplaceLayers: ToMap(["RibbonTorso"]),
 		},
 	])
 });
@@ -244,8 +250,6 @@ AddModel({
 			DisplacementSprite: "AnklesSquish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RibbonCalf"]),
-			AppendPose: {EncaseFeet: "Over"},
-			NoAppendDisplacement: true,
 		},
 	])
 });
@@ -270,8 +274,6 @@ AddModel({
 			DisplacementSprite: "Calf1Squish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RibbonCalf"]),
-			AppendPose: {EncaseAnkles: "Over"},
-			NoAppendDisplacement: true,
 		},
 	])
 });
@@ -283,8 +285,6 @@ AddModel(GetModelWithExtraLayers("RibbonAnkles2", "RibbonAnkles1", [
 		DisplacementSprite: "Calf2Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RibbonCalf"]),
-		AppendPose: {EncaseAnkles: "Over"},
-		NoAppendDisplacement: true,
 	},
 ], "RibbonHarness", false));
 
@@ -296,8 +296,6 @@ AddModel(GetModelWithExtraLayers("RibbonAnkles3", "RibbonAnkles2", [
 		DisplacementSprite: "Calf3Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RibbonCalf"]),
-		AppendPose: {EncaseAnkles: "Over"},
-		NoAppendDisplacement: true,
 	},
 ], "RibbonHarness", false));
 
@@ -319,8 +317,6 @@ AddModel({
 			DisplacementSprite: "Thigh1Squish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RibbonThighs"]),
-			AppendPose: {EncaseLegs: "Over"},
-			NoAppendDisplacement: true,
 		},
 	])
 });
@@ -333,8 +329,6 @@ AddModel(GetModelWithExtraLayers("RibbonLegs2", "RibbonLegs1", [
 		DisplacementSprite: "Thigh2Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RibbonThighs"]),
-		AppendPose: {EncaseLegs: "Over"},
-		NoAppendDisplacement: true,
 	},
 ], "RibbonHarness", false));
 
@@ -347,7 +341,5 @@ AddModel(GetModelWithExtraLayers("RibbonLegs3", "RibbonLegs2", [
 		DisplacementSprite: "Thigh3Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RibbonThighs"]),
-		AppendPose: {EncaseLegs: "Over"},
-		NoAppendDisplacement: true,
 	},
 ], "RibbonHarness", false));
