@@ -3365,6 +3365,44 @@ let KDEffectTileTooltips = {
 			});
 		}
 	},
+	'BoobyTrapMagic': {
+		color: "#92e8c0",
+		code: (tile, x, y, TooltipList) => {
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name),
+				fg: "#92e8c0",
+				bg: "#000000",
+				size: 24,
+				center: true,
+			});
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 16,
+				center: true,
+			});
+		}
+	},
+	'BoobyTrap': {
+		color: "#ffffff",
+		code: (tile, x, y, TooltipList) => {
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 24,
+				center: true,
+			});
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 16,
+				center: true,
+			});
+		}
+	},
 	'Inferno': {
 		color: "#ff8855",
 		code: (tile, x, y, TooltipList) => {

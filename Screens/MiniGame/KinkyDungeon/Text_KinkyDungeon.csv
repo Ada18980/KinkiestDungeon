@@ -4672,6 +4672,10 @@ KDEffectTileTooltipRunes,Summoning Runes
 KDEffectTileTooltipRunesDesc,"Mystical runes used for summoning"
 KDEffectTileTooltipRunesTrap,Casting Runes
 KDEffectTileTooltipRunesTrapDesc,"Mystical runes used for casting spells"
+KDEffectTileTooltipBoobyTrap,Suspicious Mechanism
+KDEffectTileTooltipBoobyTrapDesc,"A suspicious mechanism that seems to have been hastily put together."
+KDEffectTileTooltipBoobyTrapMagic,Suspicious Runes
+KDEffectTileTooltipBoobyTrapMagicDesc,"A suspicious magic circle that was scrawled recently."
 KDEffectTileTooltipEmber,Embers
 KDEffectTileTooltipEmberDesc,Ignition source. Blocks vision.
 KDEffectTileTooltipInferno,Inferno
@@ -6028,7 +6032,6 @@ KinkyDungeonGagMumbleAroused7,Mmmmmm~~~
 
 KinkyDungeonBlindSelf,"You are blinded!"
 KinkyDungeonDamageSelf,"You took DamageDealt damage!"
-KinkyDungeonMagicRopeSelf,"Your own rope trap springs upon you!"
 KinkyDungeonSlime,"You get caught in sticky slime!"
 KinkyDungeonMiniSlime,"The slime ball sticks to you!"
 KinkyDungeonMiniSlime2,"The slime ball sticks to you and slows you!"
@@ -12278,3 +12281,13 @@ KDFilterFiltersShield,Shield
 KDFilterFiltersToy,Toy
 KDFilterFiltersBondage,Bondage
 KDFilterFiltersTease,Teasing
+
+KinkyDungeonMagicRope,"A rope trap springs upon you!"
+KinkyDungeonMagicRibbon,"A ribbon trap springs upon you!"
+KinkyDungeonMagicChain,"A chain trap springs upon you!"
+KinkyDungeonMagicVine,"Magical vines wrap around you suddenly!"
+KinkyDungeonMagicBelt,"A belt trap springs upon you!"
+KinkyDungeonMagicLeather,"You find yourself suddenly bound tightly by magic gear!"
+KinkyDungeonMagicRubber,"Magical rubber emerges from the floor and encases you!"
+KinkyDungeonMagicSlime,"Slime appears at your feet and starts encasing you!"
+KinkyDungeonMagicLatex,"You find yourself suddenly bound tightly in latex gear!"

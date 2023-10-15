@@ -121,7 +121,7 @@ function KDDrawDialogue() {
 					II += 1;
 				}
 			}
-			if (II >= KDMaxDialogue) {
+			if (II >= KDMaxDialogue || KDOptionOffset > 0) {
 				DrawButtonKDEx("dialogueUP", (bdata) => {
 					if (KDOptionOffset > 0)
 						KDOptionOffset -= 1;
