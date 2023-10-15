@@ -34,11 +34,11 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["Boxties"],
 	Layers: ToLayerMap([
-		/*{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
+		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
 			Poses: ToMap(["Boxtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
-		},*/
+		},
 	])
 });
 
@@ -75,11 +75,11 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["RopesLower"],
 	Layers: ToLayerMap([
-		{ Name: "Arm1", Layer: "StrapsUnderbustOver", Pri: 0,
+		/*{ Name: "Arm1", Layer: "StrapsUnderbustOver", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
-		},
+		},*/
 		/*{ Name: "Arm1Over", Layer: "StrapsUnderbustOver", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie"]),
 		},*/
@@ -104,7 +104,7 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["RopesUpper"],
 	Layers: ToLayerMap([
-		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
+		/*{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
 			DisplacementSprite: "Arm2Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
@@ -113,7 +113,7 @@ AddModel({
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm2Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
-		},
+		},*/
 		{ Name: "ArmHarness", Layer: "ChestStraps", Pri: -1,
 			Poses: ToMapSubtract([...ARMPOSES], ["Up"]),
 			DisplacementSprite: "ArmHarnessSquish",

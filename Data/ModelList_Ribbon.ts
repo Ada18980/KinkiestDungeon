@@ -35,11 +35,11 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["Boxties"],
 	Layers: ToLayerMap([
-		/*{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
+		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
 			Poses: ToMap(["Boxtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
-		},*/
+		},
 	])
 });
 
@@ -76,11 +76,11 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["RibbonsLower"],
 	Layers: ToLayerMap([
-		{ Name: "Arm1", Layer: "StrapsUnderbustOver", Pri: 0,
+		/*{ Name: "Arm1", Layer: "StrapsUnderbustOver", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
-		},
+		},*/
 		/*{ Name: "Arm1Over", Layer: "StrapsUnderbustOver", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie"]),
 		},*/
@@ -105,7 +105,7 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["RibbonsUpper"],
 	Layers: ToLayerMap([
-		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
+		/*{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
 			DisplacementSprite: "Arm2Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
@@ -114,7 +114,7 @@ AddModel({
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm2Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
-		},
+		},*/
 		{ Name: "ArmHarness", Layer: "ChestStraps", Pri: -1,
 			Poses: ToMapSubtract([...ARMPOSES], ["Up"]),
 			DisplacementSprite: "ArmHarnessSquish",
@@ -206,7 +206,7 @@ AddModel({
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 			DisplacementInvariant: true,
-			DisplacementSprite: "CrotchRibbonSquish",
+			DisplacementSprite: "CrotchRopeSquish",
 			DisplaceLayers: ToMap(["RibbonTorso"]),
 
 		},
@@ -239,7 +239,7 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["FeetLinked", "RibbonsAnkle"],
 	Layers: ToLayerMap([
-		{ Name: "Ankles", Layer: "OverShoes", Pri: 11,
+		{ Name: "Feet", Layer: "OverShoes", Pri: 11,
 			Poses: ToMap(["Closed", "KneelClosed"]),
 			DisplacementSprite: "AnklesSquish",
 			DisplaceAmount: 50,
