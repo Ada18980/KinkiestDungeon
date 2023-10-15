@@ -2028,7 +2028,8 @@ function KDBulletCanHitEntity(bullet, enemy, inWarningOnly, overrideCollide) {
 function KDBulletEffectTiles(bullet) {
 	if (bullet.bullet.spell && bullet.bullet.spell.type == "dot") {
 		if (bullet.bullet.spell.effectTileDoT) {
-			KDCreateAoEEffectTiles(bullet.x, bullet.y, bullet.bullet.spell.effectTileDoT, bullet.bullet.spell.effectTileDurationModDoT, (bullet.bullet.spell.effectTileAoE ? bullet.bullet.spell.effectTileAoE : ((bullet.bullet.spell.aoe) ? bullet.bullet.spell.aoe : 0.5)), undefined, bullet.bullet.spell.effectTileDensityDoT, KDBulletAoEMod(bullet));
+			KDCreateAoEEffectTiles(bullet.x, bullet.y, bullet.bullet.spell.effectTileDoT, bullet.bullet.spell.effectTileDurationModDoT,
+				(bullet.bullet.spell.effectTileDistDoT ? bullet.bullet.spell.effectTileDistDoT : (bullet.bullet.spell.effectTileAoE ? bullet.bullet.spell.effectTileAoE : ((bullet.bullet.spell.aoe) ? bullet.bullet.spell.aoe : 0.5))), undefined, bullet.bullet.spell.effectTileDensityDoT, KDBulletAoEMod(bullet));
 		}
 	}
 

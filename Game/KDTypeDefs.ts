@@ -1589,6 +1589,7 @@ interface spell {
 	effectTileDensityTrail?: number,
 	effectTileTrailAoE?: number,
 	effectTileDoT?: effectTileRef,
+	effectTileDistDoT?: number,
 	effectTileDurationModDoT?: number,
 	effectTileDensityDoT?: number,
 	effectTileDensity?: number,
@@ -2659,6 +2660,11 @@ interface KDSeal {
 	aurasprite: string,
 	/** Events of the seal buff */
 	events: KinkyDungeonEvent[],
+}
+
+interface KDBoobyTrap {
+	filter: (enemy: entity, x: number, y: number, type: string[]) => boolean;
+	weight: (enemy: entity, x: number, y: number, type: string[]) => number;
 }
 
 interface KDSpecialEnemyBuff {

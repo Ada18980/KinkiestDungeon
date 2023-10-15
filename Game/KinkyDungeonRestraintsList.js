@@ -1739,13 +1739,13 @@ const KinkyDungeonRestraints = [
 
 	{renderWhenLinked: ["Ties"], inventory: true, name: "SturdyLeatherBeltsArms", debris: "Belts", accessible: true, Asset: "SturdyLeatherBelts", LinkableBy: ["Wrapping", "Ties"], Type: "Three", Color: "Default", Group: "ItemArms", bindarms: true, power: 2.5, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.5, "Remove": 0.22},
-		maxwill: 0.9, enemyTags: {"leatherRestraints":6}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "ArmBind"]},
+		maxwill: 0.9, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "ArmBind"]},
 	{renderWhenLinked: ["Ties"], inventory: true, name: "SturdyLeatherBeltsFeet", debris: "Belts", accessible: true, Asset: "SturdyLeatherBelts", LinkableBy: ["Wrapping", "Ties"], Type: "Three", Color: "Default", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"] ,power: 2, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.5, "Remove": 0.5},
-		maxwill: 1.0, enemyTags: {"leatherRestraints":6}, playerTags: {"ItemLegsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "LegBind"]},
+		maxwill: 1.0, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTagsMissingMult: {"ItemLegsFull": 0.05}, playerTags: {"ItemLegsFull":-8}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "LegBind"]},
 	{renderWhenLinked: ["Legbinders", "Hobbleskirts", "Ties"], accessible: true, inventory: true, name: "SturdyLeatherBeltsLegs", debris: "Belts", Asset: "SturdyLeatherBelts", LinkableBy: ["Wrapping", "Legbinders", "Hobbleskirts", "Ties"], Type: "Two", Color: "Default", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 2, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.5, "Remove": 0.5},
-		maxwill: 0.8, enemyTags: {"leatherRestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "LegBind"]},
+		maxwill: 0.8, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "LegBind"]},
 
 
 	{inventory: true, name: "AsylumAnkleCuffs", debris: "Belts", Asset: "LeatherAnkleCuffs", LinkableBy: ["Wrapping", "Ties", "Belts"], Link: "AsylumAnkleCuffs2", Type: "Chained", Color: ["Default", "#814F21", "Default"], Group: "ItemFeet", hobble: 1, power: 9, weight: 0,

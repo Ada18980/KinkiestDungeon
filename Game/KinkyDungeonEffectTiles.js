@@ -113,6 +113,18 @@ let KDEffectTiles = {
 		priority: 10,
 		tags: ["magic", "runetrap", "rune", "hiddenmagic"],
 	},
+	"BoobyTrap": {
+		name: "BoobyTrap",
+		duration: 9999,
+		priority: 10,
+		tags: ["trap", "hiddenmagic"],
+	},
+	"BoobyTrapMagic": {
+		name: "BoobyTrapMagic",
+		duration: 9999,
+		priority: 10,
+		tags: ["magic", "rune", "trap", "hiddenmagic"],
+	},
 	"Belts": {
 		name: "Belts",
 		duration: 30,

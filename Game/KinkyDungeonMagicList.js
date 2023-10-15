@@ -840,7 +840,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "RopeStrike", prerequisite: "RopeBoltLaunch", tags: ["rope", "binding", "aoe", "offense"], sfx: "MagicSlash", effectTileDurationMod: 10, effectTile: {
 			name: "Ropes",
 			duration: 20,
-		}, bulletSpin: 1, school: "Conjure", manacost: 3.5, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 1, power: 3, bind: 4, time: 6, range: 3.5, size: 3, aoe: 1.5, lifetime: 1, damage: "chain",  bindType: "Rope", playerEffect: {name: "MagicRope", time: 4}},
+		}, bulletSpin: 1, school: "Conjure", manacost: 3.5, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 1, power: 3, bind: 4, time: 6, range: 3.5, size: 3, aoe: 1.5, lifetime: 1, damage: "chain",  bindType: "Rope", playerEffect: {name: "MagicRope", time: 4, tags: ["rest_rope_weakmagic"], msg: "Rope"}},
 		{name: "Slime", color: "#ff00ff", prerequisite: "SlimeSplash", tags: ["latex", "slime", "aoe", "offense"], landsfx: "MagicSlash", school: "Conjure", manacost: 4, components: ["Legs"], level:1, type:"inert",
 			upcastFrom: "SlimeSplash", upcastLevel: 1,
 			requireLOS: true,
@@ -1383,7 +1383,7 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 		hitColor: 0xff73ef, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
-		playerEffect: {name: "MagicRope", time: 3, count: 3},
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["rest_rope_weakmagic"], msg: "Rope"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 	{name: "FreezeRuneStrike", hitsfx: "Freeze", manacost: 2, bulletColor: 0x8888ff, bulletLight: 2, tags: ["ice", "trap"],
 		hideWarnings: true,
@@ -2027,6 +2027,132 @@ let KinkyDungeonSpellListEnemies = [
 			{id: "WaterRune", type: "SpellResist", power: 3.0, player: true, enemies: true, onlyAlly: true, tags: ["spellresist", "defense"], range: 1.5},
 			{id: "WaterRune2", type: "MoveSpeed", power: -1.0, player: false, enemies: true, noAlly: true, tags: ["slow", "debuff"], range: 1.5},
 		], onhit:"", time:9, aoe: 1.5, power: 0, delay: 9, range: 4, size: 3, damage: ""}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
+
+	{enemySpell: true, name: "RuneTrap_Rope", bulletColor: 0xff73ef, bulletLight: 1, tags: ["rope", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "Ropes",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		hitColor: 0xff73ef, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["rest_rope_weakmagic"], msg: "Rope"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
+
+	{enemySpell: true, name: "RuneTrap_Chain", bulletColor: 0xcf52ff, bulletLight: 1, tags: ["rope", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "Chains",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		hitColor: 0xcf52ff, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["chainRestraintsMagic"], msg: "Chain"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
+
+	{enemySpell: true, name: "RuneTrap_Ribbon", bulletColor: 0xcf52ff, bulletLight: 1, tags: ["rope", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "Fabric",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		hitColor: 0xcf52ff, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["ribbonRestraints", "magicRibbonsHarsh"], msg: "Ribbon"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
+
+	{enemySpell: true, name: "RuneTrap_Vine", bulletColor: 0x3b7d4f, bulletLight: 1, tags: ["rope", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "Vines",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		hitColor: 0x3b7d4f, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["vineRestraints"], msg: "Vine"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
+
+	{enemySpell: true, name: "RuneTrap_Belt", bulletColor: 0xffffff, bulletLight: 1, tags: ["rope", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "Belts",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		hitColor: 0xffffff, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["beltRestraints"], msg: "Belt"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
+
+	{enemySpell: true, name: "RuneTrap_Leather", bulletColor: 0xffffff, bulletLight: 1, tags: ["rope", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "Chains",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		hitColor: 0xffffff, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["leatherRestraints", "leatherRestraintsHeavy"], msg: "Leather"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
+
+	{enemySpell: true, name: "RuneTrap_Latex", bulletColor: 0x4fa4b8, bulletLight: 1, tags: ["rope", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "Belts",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		hitColor: 0x4fa4b8, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexRestraints", "latexRestraintsHeavy"], msg: "Latex"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
+
+	{enemySpell: true, name: "RuneTrap_Rubber", bulletColor: 0xff5277, bulletLight: 1, tags: ["rope", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "Slime",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		hitColor: 0xff5277, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexEncaseRandom"], msg: "Rubber"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
+
+	{enemySpell: true, name: "RuneTrap_Slime", bulletColor: 0xff5277, bulletLight: 1, tags: ["rope", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "Slime",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		hitColor: 0xff5277, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 1, tags: ["slimeRestraints"], msg: "Slime"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
 	{enemySpell: true, name: "TrapCharmWeak", sfx: "Struggle", manacost: 4, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsCharmWeak", tags: ["ribbonRestraints"], count: 4}},
 	{enemySpell: true, name: "TrapRibbons", sfx: "Struggle", manacost: 4, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 4, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsRibbons", tags: ["magicRibbons"], count: 3}},

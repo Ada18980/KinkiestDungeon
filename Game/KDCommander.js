@@ -530,16 +530,26 @@ let KDCommanderOrders = {
 			}
 
 			// Place barricades
-			if (enemy.Enemy.bound && (!enemy.Enemy.tags?.minor || KDRandom() < 0.25)) {
+			if (enemy.Enemy.bound && !KDHelpless(enemy) && (!enemy.Enemy.tags?.minor || KDRandom() < 0.25)) {
 				let placed = false;
 				for (let xxx = enemy.x - 1; xxx <= enemy.x + 1; xxx++) {
 					for (let yyy = enemy.y - 1; yyy <= enemy.y + 1; yyy++) {
-						if (!placed && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(xxx, yyy)) && KDStationedChokepointsDist[xxx + ',' + yyy] && KinkyDungeonNoEnemy(xxx, yyy, true) && !KinkyDungeonVisionGet(xxx, yyy)) {
-							let en = DialogueCreateEnemy(xxx, yyy, KDGetBarricade(enemy, xxx, yyy));
-							if (en) {
-								en.maxlifetime = 50;
-								en.lifetime = 200;
+						if (!placed && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(xxx, yyy)) && KDStationedChokepointsDist[xxx + ',' + yyy]
+							&& !KinkyDungeonVisionGet(xxx, yyy)) {
+							let trap = !KDEffectTileTags(xxx, yyy).trap ? KDGetTrapSpell(enemy, xxx, yyy) : "";
+							if (trap && KDRandom() < 0.5) {
+								placed = true;
+								KinkyDungeonCastSpell(xxx, yyy, KinkyDungeonFindSpell(trap, true), enemy, undefined);
+							} else if (KinkyDungeonNoEnemy(xxx, yyy, true)) {
+								let en = DialogueCreateEnemy(xxx, yyy, KDGetBarricade(enemy, xxx, yyy));
+								if (en) {
+									placed = true;
+									en.faction = KDGetFaction(enemy);
+									en.maxlifetime = 50;
+									en.lifetime = 200;
+								}
 							}
+
 						}
 					}
 				}
@@ -618,3 +628,100 @@ function KDGetBarricade(enemy, x, y) {
 	if (enemy.Enemy.Security?.level_tech > 0 || KDRandom() < 0.1 * KDEnemyRank(enemy)) return "BarricadeConcrete";
 	return "Barricade";
 }
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} x
+ * @param {number} y
+ * @param {string[]} type
+ * @returns {string}
+ */
+function KDGetTrapSpell(enemy, x, y, type = []) {
+	/** @type {Record<string, number>} */
+	let traps = {};
+	for (let obj of Object.keys(KDBoobyTraps)) {
+		if (KDBoobyTraps[obj].filter(enemy, x, y, type))
+			traps[obj] = KDBoobyTraps[obj].weight(enemy, x, y, type);
+	}
+	return KDGetByWeight(traps);
+}
+
+
+/**
+ * @type {Record<string, KDBoobyTrap>}
+ */
+let KDBoobyTraps = {
+	"RuneTrap_Rope": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.rope || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.ropeRestraints);
+		},
+		weight: (enemy, x, y, type) => {
+			return 15;
+		},
+	},
+	"RuneTrap_Belt": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.leather || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.leatherRestraints);
+		},
+		weight: (enemy, x, y, type) => {
+			return 15;
+		},
+	},
+	"RuneTrap_Chain": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.metal || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.chainRestraints) || enemy.Enemy.tags?.magicchain;
+		},
+		weight: (enemy, x, y, type) => {
+			return 15;
+		},
+	},
+	"RuneTrap_Ribbon": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.ribbon || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.ribbonRestraints || enemy.Enemy.tags?.ribbonRestraintsHarsh));
+		},
+		weight: (enemy, x, y, type) => {
+			return 15;
+		},
+	},
+	"RuneTrap_Leather": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.leather || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.leatherRestraints && enemy.Enemy.tags?.antiMagic);
+		},
+		weight: (enemy, x, y, type) => {
+			return 7;
+		},
+	},
+	"RuneTrap_Latex": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.latex || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.latexRestraints);
+		},
+		weight: (enemy, x, y, type) => {
+			return 7;
+		},
+	},
+	"RuneTrap_Rubber": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.latex || enemy.Enemy.tags?.slime || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.latexEncase || enemy.Enemy.tags?.latexEncaseRandom));
+		},
+		weight: (enemy, x, y, type) => {
+			return 20;
+		},
+	},
+	"RuneTrap_Slime": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.alchemist || enemy.Enemy.tags?.slime || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.slimeRestraints || enemy.Enemy.tags?.slimeRestraintsRandom));
+		},
+		weight: (enemy, x, y, type) => {
+			return 20;
+		},
+	},
+	"RuneTrap_Vine": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.elf || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.nature || enemy.Enemy.tags?.vineRestraints));
+		},
+		weight: (enemy, x, y, type) => {
+			return 20;
+		},
+	},
+};

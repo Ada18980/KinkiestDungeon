@@ -4,6 +4,18 @@
  * @type {Record<string, (target, damage, playerEffect, spell, faction, bullet, entity) => {sfx: string, effect: boolean}>}
  */
 let KDPlayerEffects = {
+	"MagicRope": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let roped = KDPlayerEffectRestrain(spell, playerEffect.count || 2, playerEffect.tags, undefined, false, false, false, false);
+
+		if (roped) KDSendStatus('bound', "WeakMagicRopeArms", "spell_" + spell.name);
+		else {
+			let dmg = KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
+			KinkyDungeonSendTextMessage(Math.min(playerEffect.power, 5), TextGet("KinkyDungeonDamageSelf").replace("DamageDealt", dmg.string), "#ff5555", 1);
+		}
+		KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonMagic" + (playerEffect.msg || "Rope")), "#ff0000", playerEffect.time);
+
+		if (roped) return {sfx: "MagicSlash", effect: true}; return {sfx: "Shield", effect: false};
+	},
 	"EnvDamage": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
 		KinkyDungeonSendTextMessage(Math.min(playerEffect.power, 5), TextGet("KinkyDungeonDamageSelf").replace("DamageDealt", dmg.string), "#ff0000", 1);
@@ -583,14 +595,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				}
 				effect = true;
 			}
-		} else if (playerEffect.name == "MagicRope") {
-			let roped = KDPlayerEffectRestrain(spell, playerEffect.count || 2, ["rest_rope_weakmagic"], undefined, false, false, false, false);
-
-			if (roped) KDSendStatus('bound', "WeakMagicRopeArms", "spell_" + spell.name);
-			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonMagicRopeSelf"), "#ff0000", playerEffect.time);
-			if (roped)
-				effect = true;
-		} else if (playerEffect.name == "SlimeTrap") {
+		}else if (playerEffect.name == "SlimeTrap") {
 			let slimeWalker = false;
 			for (let inv of KinkyDungeonAllRestraint()) {
 				if (KDRestraint(inv).slimeWalk) {
