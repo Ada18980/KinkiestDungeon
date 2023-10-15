@@ -4809,6 +4809,7 @@ KinkyDungeonFiltermana,Magic
 KinkyDungeonFilterdamage,Damage
 KinkyDungeonFilterdistract,Distraction
 
+
 KDSpellEmpower,Empower to upcast spells
 KDSpellEmpowerCancel,Cancel empowerment
 KDSpellEmpowerMsg,"You channel mana through your body! Empowerment level: LEVEL"
@@ -12551,3 +12552,16 @@ KillBarricadeConcrete,"You shatter the barrier!"
 
 NameBarricadeMagic,Magical Barrier
 KillBarricadeMagic,"You destroy the barrier!"
+
+KDFilterFiltersMagic,Magic
+KDFilterFiltersDivine,Divine
+KDFilterFiltersMagical,Magic Damage
+KDFilterFiltersPhysical,Physical Damage
+KDFilterFiltersAbility,Special Ability
+KDFilterFiltersRanged,Ranged
+KDFilterFiltersMelee,Melee
+KDFilterFiltersStaff,Staff
+KDFilterFiltersShield,Shield
+KDFilterFiltersToy,Toy
+KDFilterFiltersBondage,Bondage
+KDFilterFiltersTease,Teasing

@@ -83,6 +83,27 @@ KDFilterFilters[Restraint] = {
 	Ancient: false,
 	Cursed: false,
 };
+KDFilterFilters[Weapon] = {
+	Mundane: false,
+	Magic: false,
+	Shield: false,
+	Ranged: false,
+	Melee: false,
+	Ability: false,
+	Physical: false,
+	Magical: false,
+	Light: false,
+	Heavy: false,
+	/*Sword: false,
+	Spear: false,
+	Hammer: false,
+	Axe: false,
+	Mace: false,*/
+	Staff: false,
+	Toy: false,
+	Bondage: false,
+	Tease: false,
+};
 
 
 /** @type {Record<string, Record<string, (item: item, handle: boolean) => boolean>>} */
@@ -105,6 +126,64 @@ let KDSpecialFilters = {
 		Mundane: (item, handle) => {
 			if (handle) KDFilterFilters[Armor].Enchanted = false;
 			return !KinkyDungeonInventoryVariants[item.inventoryAs || item.name];
+		},
+	},
+	weapon: {
+		Mundane: (item, handle) => {
+			if (handle) KDFilterFilters[Weapon].Magic = false;
+			return !KDWeapon(item)?.magic;
+		},
+		Magic: (item, handle) => {
+			if (handle) KDFilterFilters[Weapon].Mundane = false;
+			return KDWeapon(item)?.magic;
+		},
+		Divine: (item, handle) => {
+			return KDWeapon(item)?.tags?.includes("divine");
+		},
+		Ranged: (item, handle) => {
+			if (handle) KDFilterFilters[Weapon].Melee = false;
+			return KDWeapon(item)?.tags?.includes("ranged");
+		},
+		Melee: (item, handle) => {
+			if (handle) KDFilterFilters[Weapon].Ranged = false;
+			return KDWeapon(item)?.tags?.includes("ranged");
+		},
+		Ability: (item, handle) => {
+			return KDWeapon(item)?.special != undefined;
+		},
+		Physical: (item, handle) => {
+			if (handle) KDFilterFilters[Weapon].Magical = false;
+			return KinkyDungeonMeleeDamageTypes.includes(KDWeapon(item)?.type);
+		},
+		Magical: (item, handle) => {
+			if (handle) KDFilterFilters[Weapon].Physical = false;
+			return !KinkyDungeonMeleeDamageTypes.includes(KDWeapon(item)?.type);
+		},
+		Light: (item, handle) => {
+			if (handle) KDFilterFilters[Weapon].Heavy = false;
+			return KDWeapon(item)?.light;
+		},
+		Heavy: (item, handle) => {
+			if (handle) KDFilterFilters[Weapon].Light = false;
+			return KDWeapon(item)?.heavy || KDWeapon(item)?.clumsy || KDWeapon(item)?.massive;
+		},
+		Toy: (item, handle) => {
+			return KDWeapon(item)?.tags?.includes("toy");
+		},
+		Bondage: (item, handle) => {
+			return KDWeapon(item)?.tags?.includes("bondage");
+		},
+		Utility: (item, handle) => {
+			return KDWeapon(item)?.tags?.includes("utility");
+		},
+		Staff: (item, handle) => {
+			return KDWeapon(item)?.tags?.includes("staff");
+		},
+		Shield: (item, handle) => {
+			return KDWeapon(item)?.tags?.includes("shield");
+		},
+		Tease: (item, handle) => {
+			return KinkyDungeonTeaseDamageTypes.includes(KDWeapon(item)?.type) || KDWeapon(item)?.tease;
 		},
 	},
 	restraint: {
@@ -508,6 +587,13 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 							if (KDRestraint(item) && !filters.every((filter) => {
 								if (KDSpecialFilters[filter_orig] && KDSpecialFilters[filter_orig][filter]) return KDSpecialFilters[filter_orig][filter](item, filter == click);
 								return KDRestraint(item).shrine?.includes(filter);
+							})) continue;
+							break;
+						}
+						case Weapon: {
+							if (KDWeapon(item) && !filters.every((filter) => {
+								if (KDSpecialFilters[filter_orig] && KDSpecialFilters[filter_orig][filter]) return KDSpecialFilters[filter_orig][filter](item, filter == click);
+								return KDWeapon(item)?.tags?.includes(filter);
 							})) continue;
 							break;
 						}
