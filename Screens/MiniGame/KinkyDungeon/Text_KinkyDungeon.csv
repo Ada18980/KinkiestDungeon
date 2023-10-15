@@ -1678,7 +1678,7 @@ AttackSummonedZombie,"The zombie gropes your body! (DamageTaken)"
 
 NameSummonedDrone,Support Drone
 KillSummonedDrone,"The support drone retreats to recharge its weapon!"
-AttackSummonedDrone,"The support drone electrocutes you! (DamageTaken)"
+AttackSummonedDrone,"The support drone zaps you! (DamageTaken)"
 KinkyDungeonSummonSingleSummonedDrone,The Dollmaker commands a drone to attack you!
 KinkyDungeonSummonMultiSummonedDrone,The Dollmaker commands her drones to attack you!
 
@@ -1900,7 +1900,7 @@ AttackWolfgirlPet,"The wolfgirl cuddles with you! (DamageTaken)"
 NameWolfGuard,Wolfguard
 KillWolfGuard,"The wolfguard's suit punishes her for poor performance!"
 AttackWolfGuardDash,"The wolfguard lunges at you and strikes you!"
-AttackWolfGuard,"The wolfguard's escort drones electrocute you! (DamageTaken)"
+AttackWolfGuard,"The wolfguard's escort drones shock you! (DamageTaken)"
 AttackWolfGuardBind,"The wolfguard's escort drones deploy some restraints! (+RestraintAdded)"
 
 NameWolfgirl,Wolfgirl Trainer
@@ -1989,7 +1989,7 @@ AttackTapeBotLock,"The tape unit releases small drones which lock onto your rest
 
 NameForcefieldBot,Force Field Unit
 KillForcefieldBot,"The forcefield unit releases magic smoke and explodes."
-AttackForcefieldBot,"The forcefield electrocutes you! (DamageTaken)"
+AttackForcefieldBot,"The forcefield unit zaps you! (DamageTaken)"
 AttackForcefieldBotBind,"The forcefield unit extends its appendages and wraps them around you! (+RestraintAdded)"
 AttackForcefieldBotLock,"The forcefield unit releases small drones which lock onto your restraints! (DamageTaken)"
 
@@ -2537,8 +2537,8 @@ NameGuardHeavy,Armed Guard
 KillGuardHeavy,"The armed guard retreats, but drops a keyring!"
 AttackGuardHeavyLock,"The guard locks your restraints!"
 AttackGuardHeavyBind,"The guard shocks you and slaps on some restraints! (+RestraintAdded)"
-AttackGuardHeavy,"The guard electrocutes you with her taser!!!"
-AttackGuardHeavyStun,"The guard electrocutes you with her taser!!!"
+AttackGuardHeavy,"The guard shocks you with her taser!!!"
+AttackGuardHeavyStun,"The guard shocks you with her taser!!!"
 
 KinkyDungeonChangeRestraints,"The EnemyName replaces your OldRestraintName with a NewRestraintName"
 KinkyDungeonRemoveRestraints,"The EnemyName removes your OldRestraintName"
@@ -12252,3 +12252,15 @@ KinkyDungeonBuffNoWP,"Surrender: Your willpower is 0, giving huge penalties to B
 
 KDKeysUpdate,"Update your Keybindings!!! -->"
 KDKeysUpdateEasterEgg,"I have altered the keybindings. Pray I do not alter them further."
+
+NameBarricade,Barricade
+KillBarricade,"You knock over the barricade!"
+
+NameBarricadeRobot,Anti-Damsel Barrier
+KillBarricadeRobot,"You disable the barrier!"
+
+NameBarricadeConcrete,Barrier
+KillBarricadeConcrete,"You shatter the barrier!"
+
+NameBarricadeMagic,Magical Barrier
+KillBarricadeMagic,"You destroy the barrier!"

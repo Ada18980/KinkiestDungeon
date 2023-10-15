@@ -305,6 +305,10 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 let KinkyDungeonConfirmStairs = false;
 
 function KinkyDungeonHandleMoveObject(moveX, moveY, moveObject) {
+	if (KDMapData.GroundItems.some((item) => {return item.x == moveX && item.y == moveY;})) {
+		// We can pick up items inside walls, in case an enemy drops it into bars
+		KinkyDungeonItemCheck(moveX, moveY, MiniGameKinkyDungeonLevel);
+	}
 	if (KDMoveObjectFunctions[moveObject]) {
 		return KDMoveObjectFunctions[moveObject](moveX, moveY);
 	}

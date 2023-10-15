@@ -3986,6 +3986,10 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 				if (AllowInteract) {
 					if (KDObjectClick[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type]) {
 						KDObjectClick[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type](moveX, moveY);
+						if (KDMapData.GroundItems.some((item) => {return item.x == moveX && item.y == moveY;})) {
+							// We can pick up items inside walls, in case an enemy drops it into bars
+							KinkyDungeonItemCheck(moveX, moveY, MiniGameKinkyDungeonLevel);
+						}
 					} else {
 						KDDelayedActionPrune(["Action", "World"]);
 						KinkyDungeonTargetTileLocation = "" + moveX + "," + moveY;
@@ -3995,6 +3999,12 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 							KinkyDungeonCloseDoor({targetTile: KinkyDungeonTargetTileLocation});
 						} else {
 							KinkyDungeonTargetTileMsg();
+							if (KDMapData.GroundItems.some((item) => {return item.x == moveX && item.y == moveY;})) {
+								// We can pick up items inside walls, in case an enemy drops it into bars
+								KinkyDungeonItemCheck(moveX, moveY, MiniGameKinkyDungeonLevel);
+								KinkyDungeonInterruptSleep();
+								KinkyDungeonAdvanceTime(1);
+							}
 						}
 					}
 				}

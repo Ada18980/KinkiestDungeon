@@ -373,6 +373,7 @@ let KDCommanderOrders = {
 
 	guard: {
 		// Guard AI will try to station at a nearby chokepoint
+		// Also produces barricades
 		// Role assignment
 		filter: (enemy, data) => {
 			let aware = enemy.aware || enemy.vp > 0 || KDGameData.tickAlertTimer;
@@ -528,6 +529,23 @@ let KDCommanderOrders = {
 				KinkyDungeonSetEnemyFlag(enemy, "noGuard", 10 + Math.round(9 * KDRandom()));
 			}
 
+			// Place barricades
+			if (enemy.Enemy.bound && (!enemy.Enemy.tags?.minor || KDRandom() < 0.25)) {
+				let placed = false;
+				for (let xxx = enemy.x - 1; xxx <= enemy.x + 1; xxx++) {
+					for (let yyy = enemy.y - 1; yyy <= enemy.y + 1; yyy++) {
+						if (!placed && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(xxx, yyy)) && KDStationedChokepointsDist[xxx + ',' + yyy] && KinkyDungeonNoEnemy(xxx, yyy, true) && !KinkyDungeonVisionGet(xxx, yyy)) {
+							let en = DialogueCreateEnemy(xxx, yyy, KDGetBarricade(enemy, xxx, yyy));
+							if (en) {
+								en.maxlifetime = 50;
+								en.lifetime = 200;
+							}
+						}
+					}
+				}
+			}
+
+
 		},
 
 		// Global role variables
@@ -586,3 +604,17 @@ let KDCommanderOrders = {
 		global_after: (data) => {},
 	},
 };
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} x
+ * @param {number} y
+ * @returns {string}
+ */
+function KDGetBarricade(enemy, x, y) {
+	if (enemy.Enemy.tags.robot || enemy.Enemy.tags.cyborg) return "BarricadeRobot";
+	if (enemy.Enemy.unlockCommandLevel > 0) return "BarricadeMagic";
+	if (enemy.Enemy.Security?.level_tech > 0 || KDRandom() < 0.1 * KDEnemyRank(enemy)) return "BarricadeConcrete";
+	return "Barricade";
+}

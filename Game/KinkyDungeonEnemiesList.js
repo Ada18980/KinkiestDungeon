@@ -1540,6 +1540,92 @@ let KinkyDungeonEnemies = [
 		],
 		dropTable: [{name: "Nothing", weight: 10}, {name: "StaffChain", weight: 3, ignoreInInventory: true}, {name: "StaffBind", weight: 0.5, ignoreInInventory: true}],
 	},
+
+	{name: "Barricade", faction: "Door",
+		/*cueSfx: {
+			Block: "Clang",
+			Resist: "Clang",
+			Damage: "ArmorHit",
+		},*/
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+			"soulimmune", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "glueresist", "acidweakness", "tickleimmune", "gropeimmune", "painimmune", "charmimmune",
+		]), spellResist: 0, sneakThreshold: 0.01,
+		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
+		visionRadius: 0, maxhp: 8, minLevel:0, weight:-1, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
+		terrainTags: {"obstacle": 2, "obstacletile": 5, "increasingWeight":-0.5,}, allFloors: true, shrines: [],
+		events: [
+			{trigger: "enemyMove", type: "damageOnMove", power: 1, mult: 0.25},
+		],
+	},
+
+	{name: "BarricadeConcrete", faction: "Door",
+		cueSfx: {
+			Block: "Clang",
+			Resist: "Clang",
+			Damage: "ArmorHit",
+		},
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+			"soulimmune", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "glueresist", "tickleimmune", "gropeimmune", "painimmune", "charmimmune",
+		]), spellResist: 0, sneakThreshold: 0.01,
+		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
+		visionRadius: 0, maxhp: 10, minLevel:0, weight:-1, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
+		terrainTags: {"obstacle": 4, "obstacletile": 8, "increasingWeight":-1,}, allFloors: true, shrines: [],
+		events: [
+			{trigger: "enemyMove", type: "damageOnMove", power: 1, mult: 0.25},
+		],
+	},
+
+	{name: "BarricadeRobot", faction: "Door",
+		cueSfx: {
+			Block: "Clang",
+			Resist: "Clang",
+			Damage: "ArmorHit",
+		},
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+			"soulimmune", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "glueresist", "acidweakness", "tickleimmune", "gropeimmune", "painimmune", "charmimmune",
+		]), spellResist: 1, sneakThreshold: 0.01,
+		evasion: -9, ignorechance: 1.0, armor: 1, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
+		visionRadius: 0, maxhp: 10, minLevel:0, weight:-10, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
+		terrainTags: {"obstacle": 4, "obstacletile": 8, "increasingWeight":-1,}, allFloors: true, shrines: [],
+		events: [
+			{trigger: "enemyMove", type: "damageOnMove", power: 1, mult: 0.25},
+		],
+	},
+
+	{name: "BarricadeMagic", faction: "Door",
+		cueSfx: {
+			Block: "Clang",
+			Resist: "Clang",
+			Damage: "ArmorHit",
+		},
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+			"soulimmune", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "glueresist", "acidweakness", "tickleimmune", "gropeimmune", "painimmune", "charmimmune",
+		]), spellResist: 3, sneakThreshold: 0.01,
+		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
+		visionRadius: 0, maxhp: 6, minLevel:0, weight:-10, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
+		terrainTags: {"obstacle": 4, "obstacletile": 8, "increasingWeight":-1,}, allFloors: true, shrines: [],
+		events: [
+			{trigger: "enemyMove", type: "damageOnMove", power: 1, mult: 0.25},
+		],
+	},
+
+
 	{name: "StoneDoor", faction: "Door", blockVision: true,
 		cueSfx: {
 			Block: "Clang",
