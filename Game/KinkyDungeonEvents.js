@@ -5076,7 +5076,7 @@ let KDEventMapEnemy = {
 	},
 	"enemyCast": {
 		"RandomRespawn": (e, enemy, data) => {
-			if (data.enemy == enemy && KDMapData.Entities.length < 300) {
+			if (data.enemy == enemy && KDMapData.Entities.length < 300 && (!e.chance || KDRandom() < e.chance)) {
 				let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, 10, 10);
 				if (point) {
 					let ee = DialogueCreateEnemy(point.x, point.y, enemy.Enemy.name);
@@ -5205,6 +5205,15 @@ let KDEventMapEnemy = {
 		},
 	},
 	"death": {
+		"RandomRespawn": (e, enemy, data) => {
+			if (data.enemy == enemy && KDMapData.Entities.length < 300 && (!e.chance || KDRandom() < e.chance)) {
+				let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, 10, 10);
+				if (point) {
+					let ee = DialogueCreateEnemy(point.x, point.y, enemy.Enemy.name);
+					ee.faction = enemy.faction;
+				}
+			}
+		},
 		"frogDies": (e, enemy, data) => {
 			if (enemy.Enemy.name == "Conjurer" && data.enemy.Enemy.name == "Frog" && !KinkyDungeonFlags.get("frogDied")
 				&& KDistChebyshev(enemy.x - data.enemy.x, enemy.y - data.enemy.y) < 10

@@ -2509,6 +2509,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":1, "lastthird":3, revenge: 20, "trap": 20}, allFloors: true, shrines: ["Rope"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},
+			{trigger: "death", type: "RandomRespawn", chance: 0.33},
 		],
 	},
 	{name: "LearnedRope", faction: "KinkyConstruct", clusterWith: "construct", color: "#ffae70", tags: KDMapInit(["ignoreharmless", "construct", "nosignal", "melee", "ropeRestraints", "ropeRestraints2", "search"]), ignorechance: 0.75, followRange: 1, AI: "hunt",  squeeze: true, disarm: 0.5,
