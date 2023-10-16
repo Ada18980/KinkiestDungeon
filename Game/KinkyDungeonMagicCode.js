@@ -72,6 +72,56 @@ let KinkyDungeonSpellSpecials = {
 	"dress": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		KinkyDungeonSetDress(spell.outfit);
 	},
+	"MoiraiScissors": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let enList = KDNearbyEnemies(tX, tY, spell.range);
+
+		if (enList.length > 0) {
+			let succeed = false;
+			for (let en of enList) {
+				if (KDAllied(en) && en.boundLevel > 0) {
+					succeed = true;
+					// Free allies
+					en.boundLevel = 0;
+					en.specialBoundLevel = {};
+				}
+				if (KDHostile(en) && KDIsHumanoid(en)) {
+					succeed = true;
+					// Disrobe enemies
+					KinkyDungeonApplyBuffToEntity(en, {
+						id: "MoiraiDisrobe",
+						aura: "#ff88ff",
+						aurasprite: "Disrobe",
+						duration: spell.time,
+						power: spell.power,
+						type: "charmDamageResist",
+					});
+					KinkyDungeonApplyBuffToEntity(en, {
+						id: "MoiraiDisrobe2",
+						duration: spell.time,
+						power: 10,
+						type: "ArmorBreak",
+					});
+					KinkyDungeonApplyBuffToEntity(en, {
+						id: "MoiraiDisrobe3",
+						duration: spell.time,
+						power: 10,
+						type: "SpellResistBreak",
+					});
+				}
+			}
+			if (succeed) {
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
+				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+				KinkyDungeonChangeCharge(KinkyDungeonGetChargeCost(spell));
+				return "Cast";
+			}
+
+			KinkyDungeonSendActionMessage(3, TextGet("KDMoiraiFail"), "#ff5555", 2);
+			return "Fail";
+		}
+		KinkyDungeonSendActionMessage(3, TextGet("KDMoiraiFail"), "#ff5555", 2);
+		return "Fail";
+	},
 	"Charge": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let cost = KDAttackCost() + KDSprintCost();
 		let en = KinkyDungeonEntityAt(targetX, targetY);

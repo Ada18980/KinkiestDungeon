@@ -2514,6 +2514,17 @@ function KinkyDungeonHandleOutfitEvent(Event, e, outfit, data) {
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
  */
 let KDEventMapSpell = {
+	"afterPlayerAttack": {
+		"BattleTrance": (e, weapon, data) => {
+			if (!KinkyDungeonAttackTwiceFlag && (!e.chance || KDRandom() < e.chance) && KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BattleRhythm") >= 0.395) {
+				if (data.enemy && data.enemy.hp > 0 && !(KDHelpless(data.enemy) && data.enemy.hp < 0.6)) {
+					KinkyDungeonAttackTwiceFlag = true;
+					KinkyDungeonLaunchAttack(data.enemy, 1);
+					KinkyDungeonAttackTwiceFlag = false;
+				}
+			}
+		},
+	},
 	"canOffhand": {
 		"RogueOffhand": (e, spell, data) => {
 			if (data.canOffhand && KDHasSpell("RogueOffhand") && !KDHasSpell("BattleRhythm")) {
@@ -2983,6 +2994,18 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
+		"BattleTrance": (e, weapon, data) => {
+			if (!KinkyDungeonAttackTwiceFlag && (!e.chance || KDRandom() < e.chance) && KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BattleRhythm") >= 0.395) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					id: "BattleTrance",
+					type: "indicate",
+					power: 1,
+					duration: 2,
+					aura: "#ff8844",
+					buffSprite: true,
+				});
+			}
+		},
 		"WizardOffhand": (e, spell, data) => {
 			if (!KDHasSpell("BattleRhythm")) {
 				if (KDGameData.Offhand && KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)) {
@@ -3448,13 +3471,13 @@ let KDEventMapSpell = {
 							text: Math.round(100 * powerAdded),
 						}
 					);
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round(powerAdded*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
+					KinkyDungeonSendFloater(data.target, `+${Math.round(powerAdded*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
 				} else {
 					let origPower = buff.power;
 					buff.power += powerAdded;
 					buff.power = Math.min(buff.power, max);
 					buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
+					KinkyDungeonSendFloater(data.target, `+${Math.round((buff.power - origPower)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
 				}
 
 				// Set a flag to prevent duplicating this event
@@ -3891,6 +3914,14 @@ let KDEventMapSpell = {
 		}
 	},
 	"kill": {
+		"Sowing": (e, spell, data) => {
+			if (data.enemy && !KDIsHumanoid(data.enemy) && data.enemy.playerdmg > 0) {
+				KDCreateEffectTile(data.enemy.x, data.enemy.y, {
+					name: "Vines",
+					duration: 20,
+				}, 10);
+			}
+		},
 		"Shatter": (e, spell, data) => {
 			if (data.enemy && data.enemy.freeze > 0 && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, true)) && data.enemy.playerdmg && KDHostile(data.enemy) && KDistChebyshev(data.enemy.x - KinkyDungeonPlayerEntity.x, data.enemy.y - KinkyDungeonPlayerEntity.y) < 10) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell, true));
@@ -4181,6 +4212,14 @@ let KDEventMapWeapon = {
 		},
 	},
 	"beforePlayerAttack": {
+		"ApplyBuff": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm) {
+				if (data.enemy && (!e.chance || KDRandom() < e.chance)) {
+					if (!data.enemy.buffs) data.enemy.buffs = {};
+					KinkyDungeonApplyBuffToEntity(data.enemy, e.buff);
+				}
+			}
+		},
 		"KatanaBoost": (e, weapon, data) => {
 			if (data.enemy && !data.miss && !data.disarm && data.Damage && data.Damage.damage) {
 				if (data.enemy && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {

@@ -68,7 +68,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "Offhand", "RogueOffhand", "WizardOffhand", "BattleRhythm", "LimitSurge", "Charge", "CombatTraining", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "RogueTargets", "RogueBind", "RogueTraps", "ToolsOfTheTrade", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "Offhand", "RogueOffhand", "WizardOffhand", "BattleRhythm", "BattleTrance", "LimitSurge", "Charge", "CombatTraining", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "Sowing", "RogueTargets", "RogueBind", "RogueTraps", "ToolsOfTheTrade", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -278,9 +278,15 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				{type: "ToolsOfTheTrade", trigger: "toggleSpell"},
 			]},
 
-		{name: "Peasant", tags: ["offense"], school: "Special", manacost: 0, components: [], classSpecific: "Peasant", prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+		{name: "Peasant", tags: ["planbt", "offense"], school: "Special", manacost: 0, components: [], classSpecific: "Peasant", prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "Peasant", trigger: "beforeDamageEnemy", mult: 1.2},
 		]},
+		{name: "Sowing", tags: ["plant", "utility"], prerequisite: "Peasant", classSpecific: "Peasant", hideWithout: "Peasant", school: "Special", manacost: 0, components: [], level:1,
+			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "Sowing", trigger: "kill"},
+			]},
+
 
 		{name: "ArcaneBlast", tags: ["arcane", "offense", "aoe"], prerequisite: "ManaRegen", classSpecific: "Mage", noise: 4.5, sfx: "Shock", castCondition: "hasArcaneEnergy",
 			customCost: "arcane_blast",
@@ -321,6 +327,17 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				{type: "BRDecay", trigger: "tick", power: 0.01},
 
 			]},
+
+		{name: "BattleTrance", tags: ["fight", "will", "stamina"], prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", hideUnlearnable: true, school: "Special", manacost: 0, components: [], level:1,
+			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "BattleTrance", trigger: "afterPlayerAttack",},
+				{type: "BattleTrance", trigger: "tick",},
+			]},
+
+		{name: "MoiraiScissors", tags: ["defense", "offense"], school: "Special", chargecost: 0.05, manacost: 0, customCost: "SprintPlusAttack", components: [], level:1, type:"special", special: "MoiraiScissors", noMiscast: true,
+			onhit:"", time:25, power: -1, range: 4.5, size: 1, damage: ""},
+
 
 		{name: "Charge", tags: ["utility", "offense"], school: "Special", prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", manacost: 0, customCost: "SprintPlusAttack", components: [], level:1, type:"special", special: "Charge", noMiscast: true,
 			onhit:"", time:25, power: 0, range: 2.99, size: 1, damage: ""},
@@ -1592,7 +1609,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "IceSlowPrepare", color: "#00ffff", minRange: 0, sfx: "MagicSlash", school: "Illusion", manacost: 8, components: ["Arms"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 12, range: 5, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
 		spellcast: {spell: "IceSlow", target: "target", directional:true, offset: false}, channel: 1},
 
-	{enemySpell: true, name: "FlashBomb", color: "#ff2200", minRange: 0, sfx: "Miss", school: "Illusion", manacost: 3, specialCD: 12, components: ["Verbal"],
+	{enemySpell: true, name: "FlashBomb", color: "#ff2200", minRange: 0, sfx: "Miss", school: "Illusion", manacost: 3, specialCD: 12, components: ["Verbal"], hideWarnings: true,
 		hitColor: 0xffffff, hitLight: 7,
 		level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 1, range: 4, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 3}},
 	{enemySpell: true, name: "EnemyFlash", color: "#ffffff", minRange: 0, noise: 8, sfx: "FireSpell", school: "Illusion", manacost: 4, components: ["Verbal"], level:1,
@@ -1706,7 +1723,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "SporesSick", color: "#55ff55", noCastMsg: true, hitsfx: "DamageWeak", selfcast: true, manacost: 0, components: ["Verbal"], level:1, type:"hit", onhit:"aoe", time: 5, delay: 0, power: 0.5, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "SporesSick", power: 2, damage: "poison"}},
 	{enemySpell: true, name: "SoulCrystalBind", color: "#ff5277", minRange: 0, sfx: "Evil", manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "drain", playerEffect: {name: "ObsidianEngulf", count: 1, power: 6, damage: "drain"}},
 
-	{enemySpell: true, name: "MinerBomb", color: "#ff2200", selfcast: true, noise: 5, sfx: "FireSpell", hitsfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
+	{enemySpell: true, name: "MinerBomb", color: "#ff2200", selfcast: true, noise: 5, sfx: "FireSpell", hitsfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1, hideWarnings: true,
 		effectTileDurationMod: 7, effectTile: {
 			name: "Smoke",
 			duration: -1,

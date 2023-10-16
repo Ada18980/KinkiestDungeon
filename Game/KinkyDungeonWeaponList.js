@@ -426,11 +426,14 @@ let KinkyDungeonWeapons = {
 		special: {type: "spell", spell: "ArrowBoltHeavy", prereq: "Loaded", requiresEnergy: true, energyCost: 0.025, range: 12}},
 
 	// Divine
-	"MoiraiScissors": {name: "MoiraiScissors", crit: 2.0, dmg: 1.5, chance: 1.1, staminacost: 1.5, type: "slash", unarmed: false, rarity: 10, shop: false, magic: true, cutBonus: 0.2, sfx: "Cut",
+	"MoiraiScissors": {name: "MoiraiScissors", crit: 2.0, dmg: 3.0, chance: 1.1, staminacost: 2.0, type: "slash", unarmed: false, rarity: 10, shop: false, magic: true, cutBonus: 0.4, sfx: "Cut",
 		tags: ["divine"],
+		special: {type: "spell", spell: "MoiraiScissors", selfCast: true, requiresEnergy: true, energyCost: 0.05},
 		events: [
-			{type: "DoubleStrike", trigger: "afterPlayerAttack", requireEnergy: true, energyCost: 0.005},
-			{type: "ConvertBindingToDamage", trigger: "afterPlayerAttack", power: 1.0, bind: 3.0, damage: "soul"},
+			{type: "ApplyBuff", trigger: "beforePlayerAttack", buff: {id: "MoiraiScissors", type: "ArmorBreak", duration: 1, power: 10, player: true, enemies: true, tags: ["debuff", "armor"]}},
+			{type: "ApplyBuff", trigger: "beforePlayerAttack", buff: {id: "MoiraiScissors2", type: "SpellResistBreak", duration: 1, power: 10, player: true, enemies: true, tags: ["debuff", "armor"]}},
+			//{type: "DoubleStrike", trigger: "afterPlayerAttack", requireEnergy: true, energyCost: 0.005},
+			//{type: "ConvertBindingToDamage", trigger: "afterPlayerAttack", power: 1.0, bind: 3.0, damage: "soul"},
 		],
 	},
 	"Dreamcatcher": {name: "Dreamcatcher", crit: 1.5, dmg: 2.5, chance: 1.0, staminacost: 1.5, type: "cold", unarmed: false, rarity: 10, shop: false, magic: true, cutBonus: 0.15, sfx: "Fwoosh",

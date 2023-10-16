@@ -705,7 +705,32 @@ function KDInferno(existingTile, newTile, duration) {
 			name: "Inferno",
 			duration: duration,
 		}, 2);
+		return true;
 	}
+	return false;
+}
+/**
+ *
+ * @param {effectTile} existingTile
+ * @param {effectTile} newTile
+ * @param {string} type
+ * @param {number} duration
+ * @param {number} chance
+ * @returns {boolean}
+ */
+function KDGrow(existingTile, newTile, type, duration = 20, chance = 0.1, refreshDuration = 20) {
+	if (newTile.tags.includes("water") && KDRandom() < chance) {
+		existingTile.duration = Math.max(existingTile.duration, refreshDuration);
+		let xx = Math.floor(KDRandom() * 3) - 1;
+		let yy = Math.floor(KDRandom() * 3) - 1;
+		if (xx == 0 && yy == 0) xx = KDRandom() > 0.5 ? 1 : -1;
+		KDCreateEffectTile(existingTile.x + xx, existingTile.y + yy, {
+			name: type,
+			duration: duration,
+		}, 2);
+		return true;
+	}
+	return false;
 }
 
 /**
