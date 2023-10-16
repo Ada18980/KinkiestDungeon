@@ -957,7 +957,9 @@ let KDEffectTileCreateFunctionsExisting = {
 		return true;
 	},
 	"Vines": (newTile, existingTile) => {
-		KDInferno(existingTile, newTile, 6);
+		if (!KDInferno(existingTile, newTile, 6)) {
+			KDGrow(existingTile, newTile, "Vines");
+		}
 		return true;
 	},
 	"TorchUnlit": (newTile, existingTile) => {

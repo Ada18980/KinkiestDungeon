@@ -1383,7 +1383,9 @@ KinkyDungeonInventoryItemMessengerOfLoveDesc,"Love shines in many ways..."
 KinkyDungeonInventoryItemMessengerOfLoveDesc2,"Can fire an arrow that makes an enemy extremely lustful, causing them to attack others. Lasts forever on lesser enemies, 30 turns on high-level enemies, and 10 turns on bosses."
 KinkyDungeonInventoryItemMoiraiScissors,Moirai's Scissors
 KinkyDungeonInventoryItemMoiraiScissorsDesc,"Cutting the threads of fate."
-KinkyDungeonInventoryItemMoiraiScissorsDesc2,"Deals slash damage. Adds up to 30 bonus psychic damage her hit by converting binding into damage. Drains 5 charge to attack twice."
+KinkyDungeonInventoryItemMoiraiScissorsDesc2,"Deals slash damage. Ignores up to 100 Magic and Physical armor. Active ability: Spend 50 charge to free all nearby allies and disrobe enemies, increasing charm damage on them by 100% and applying the armor shred."
+KinkyDungeonSpellCastMoiraiScissors,"With a single snip of the magic scissors, everyone's clothes fall off."
+KDMoiraiFail,No eligible targets within 4 tiles
 KinkyDungeonInventoryItemSlimethrower,Latex Projector
 KinkyDungeonInventoryItemSlimethrowerDesc,"Deals crush damage. Can be used to spray a '+' shaped pool of slime."
 KinkyDungeonInventoryItemSlimethrowerDesc2,"Drains 1.5% ancient energy to create a pool of slime that deals 35 glue damage per tile and slows enemies."
@@ -4854,6 +4856,9 @@ KinkyDungeonInfernoBurn,The roaring inferno deals 10 damage to you!
 KinkyDungeonSpellPeasant,The Reaping
 KinkyDungeonSpellDescriptionPeasant,"+20% damage to plants"
 
+KinkyDungeonSpellSowing,Reap What You Sow
+KinkyDungeonSpellDescriptionSowing,"Defeating a non-humanoid enemy causes vines to sprout on their space temporarily."
+
 
 KinkyDungeonSpellBattleRhythm,"Battle Rhythm"
 KinkyDungeonSpellDescriptionBattleRhythm,"Stores 10% of the stamina spent from attacks as Rhythm, up to a total of 40. While you have over 10 Rhythm, you gain +10 Block and Evasion. Enemy base accuracy against you is decreased by a % equal to your Rhythm. If an attack misses or is blocked because of this, reduce Rhythm by 25% of the enemy attack power. Decays when not attacking."
@@ -4861,7 +4866,8 @@ KinkyDungeonSpellDescriptionBattleRhythm,"Stores 10% of the stamina spent from a
 KinkyDungeonSpellLimitSurge,"Limit Surge"
 KinkyDungeonSpellDescriptionLimitSurge,"Spend 50 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns."
 
-
+KinkyDungeonSpellBattleTrance,"Battle Trance"
+KinkyDungeonSpellDescriptionBattleTrance,"While at 40 Battle Rhythm, you attack twice per turn."
 
 KinkyDungeonSpellRogueTraps,Devious Ingenuity
 KinkyDungeonSpellDescriptionRogueTraps,"Trap-type spells and consumables take 1 turn to cast instead of several."
@@ -12384,3 +12390,4 @@ KinkyDungeonSpellVineexp,Tangling Vines
 KinkyDungeonSpellBubbleexp,Enchanted Bubble
 KDWaterBubble,A bubble of magic water envelops you!
 KinkyDungeonBuffWaterBubble,"Magical water reduces your accuracy and slows you significantly!"
+KinkyDungeonBuffBattleTrance,You attack twice!
