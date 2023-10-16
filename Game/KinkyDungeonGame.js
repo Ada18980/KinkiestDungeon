@@ -319,6 +319,9 @@ function KinkyDungeonNewGamePlus() {
 function KDResetData(Data) {
 	if (!Data) Data = KDGameDataBase;
 	KDGameData = JSON.parse(JSON.stringify( Data));
+	for (let control of Object.keys(KDFocusControlButtons)) {
+		KDInitFocusControl(control);
+	}
 }
 function KDResetEventData(Data) {
 	if (!Data) Data = KDEventDataBase;
@@ -3716,7 +3719,7 @@ function KinkyDungeonGameKeyUp(lastPress) {
 	// Holding for a minute = fail
 	if (delta > 60000) return;
 	// tap = fail
-	if (delta < 250 && !(!KinkyDungeonKeybindingCurrentKey.includes("Shift") && KinkyDungeonKeybindingCurrentKeyRelease.includes("Shift"))) return;
+	if (delta < 250 && !(KDToggles.ShiftLatch && !KinkyDungeonKeybindingCurrentKey.includes("Shift") && KinkyDungeonKeybindingCurrentKeyRelease.includes("Shift"))) return;
 
 	if (KinkyDungeonState == "Game") {
 		if (document.activeElement) {
@@ -4731,7 +4734,7 @@ let KDKeyCheckers = {
 						KDClickButton("dialogueUP");
 					return true;
 				} else if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey) {
-					KDClickButton("dialogue" + KDDialogueData.CurrentDialogueIndex);
+					KDClickButton(KDOptionOffset + "dialogue" + (KDDialogueData.CurrentDialogueIndex));
 					return true;
 				} else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 					// Get the current dialogue and traverse down the tree
@@ -4746,7 +4749,7 @@ let KDKeyCheckers = {
 								&& (!entries[i][1].gagRequired || gagged)
 								&& (!entries[i][1].gagDisabled || !gagged)) {
 								if (entries[i][0] == "Leave" || entries[i][0] == "Continue" || entries[i][1].skip) {
-									KDClickButton("dialogue" + i);
+									KDClickButton(KDOptionOffset + "dialogue" + (i));
 									return true;
 								}
 							}

@@ -1621,7 +1621,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "AmpuleBlue", sfx: "Miss", manacost: 5, specialCD: 15, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 4, delay: 0, range: 50, damage: "glue", speed: 1, playerEffect: {name: "AmpuleBlue", damage: "glue", power: 4, count: 1}},
 	{enemySpell: true, name: "LatexBubble", bindType: "Slime", color: "#2789cd", sfx: "RubberBolt", manacost: 4, specialCD: 14, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
 		pierceEnemies: true,
-		time: 3, power: 2, delay: 0, range: 12, damage: "glue", speed: 1, trailLifetime: 10, trailDamage:"glue", trail:"lingering", trailPower: 2, trailChance: 1.0, playerEffect: {name: "LatexBubble", time: 12},
+		time: 3, power: 2, delay: 0, range: 12, damage: "glue", speed: 1, trailLifetime: 10, trailDamage:"glue", trail:"lingering", trailPower: 2, trailChance: 1.0, playerEffect: {name: "LatexBubble", time: 12, power: 2, damage: "glue"},
 	},
 	{enemySpell: true, name: "AmpuleGreen", sfx: "Miss", manacost: 4, specialCD: 15, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, delay: 0, range: 50, damage: "crush", speed: 1, playerEffect: {name: "Ampule", damage: "inert"},
 		spellcast: {spell: "SleepGas", target: "onhit", directional:false, offset: false}},
@@ -1675,6 +1675,12 @@ let KinkyDungeonSpellListEnemies = [
 		selfcast: true, noTerrainHit: true,
 		manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 4, delay: 3, power: 4, range: 7, size: 5, aoe: 2.5, lifetime: 1, damage: "soul",
 		playerEffect: {name: "CursingCircle", count: 1, kind: "cursedCollar2", power: 3.5, damage: "soul", time: 40}},
+
+	{enemySpell: true, name: "GravityPull", meleeOrigin: true, color: "#dddddd", minRange: 0, sfx: "Teleport", bulletSpin: 0.25, hideWarnings: true,
+		manacost: 3, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 1, range: 3.5, size: 5, aoe: 2.5, lifetime: 1, damage: "cold", playerEffect: {name: "GravityPull", dist: 2}},
+
+	{enemySpell: true, name: "GravityPullEarth", specialCD: 7, color: "#ff8933", minRange: 0, sfx: "Teleport", bulletSpin: 0.25, hideWarnings: true,
+		manacost: 3, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 3, delay: 2, power: 1, range: 4.5, size: 5, aoe: 2.5, lifetime: 1, damage: "crush", playerEffect: {name: "GravityPull", dist: 2, power: 2, damage: "crush"}},
 
 	{enemySpell: true, name: "CrushingFate", color: "#dddddd", minRange: 0, sfx: "MagicSlash", bulletSpin: 0.25,
 		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 4, delay: 6, power: 5, range: 7, size: 5, aoe: 2.5, lifetime: 1, damage: "crush", playerEffect: {name: "MoonBondage", count: 2, kind: "mithrilRestraints"}},
@@ -1748,6 +1754,11 @@ let KinkyDungeonSpellListEnemies = [
 	{name: "ManyMithrilBolts", sfx: "MagicSlash", minRange: 0, manacost: 4, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
 		spellcast: {spell: "MithrilBolt", target: "target", directional:true, randomDirection: true, noTargetMoveDir: true, spread: 1.5, offset: false}, channel: 3},
 
+	{enemySpell: true, name: "ShadowGrasp",  bindType: "Magic", color: "#ff00ff", minRange: 0, landsfx: "MagicSlash", manacost: 7, components: ["Legs"], level:1, type:"inert", onhit:"aoe",
+		bulletSpin: 0.5, hitSpin: 0.3,
+		time: 2, delay: 1, range: 4, power: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "cold", playerEffect: {name: "ShadowBolt", count: 3, time: 4, power: 5, damage: "cold"},
+	},
+
 	{enemySpell: true, name: "ShadowBolt",  bindType: "Slime", color: "#6a15fa", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ShadowBolt", count: 1, time: 3, power: 3, damage: "cold"}},
 	{enemySpell: true, name: "ObsidianBolt",  bindType: "Metal", color: "#ff5277", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ObsidianBolt", count: 1, time: 3, power: 3, damage: "cold"}},
 	{enemySpell: true, name: "LockBullet",  bindType: "Magic", color: "#9f96d5", sfx: "LockLight", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, pierceEnemies: true, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "LockBullet", type: "Purple", count: 1, time: 9, power: 2, damage: "chain"}},
@@ -1802,6 +1813,19 @@ let KinkyDungeonSpellListEnemies = [
 		noTargetPlayer: true, mustTarget: true, level:1, type:"special", onhit:"", special: "Windup", noSprite: true, evadeable: false, power: 0, time: 3, range: 20, size: 1, lifetime: 1, aoe: 0.5, damage: "inert",
 	},
 
+	{enemySpell: true, name: "Vineexp", color: "#88ff88", bindType: "Vine", minRange: 0, landsfx: "Bones", manacost: 5,
+		effectTileDurationMod: 8, effectTile: {
+			name: "Vines",
+			duration: 20,
+		},
+		components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 2.5, bind: 2.2, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "grope", playerEffect: {name: "VineEngulf", power: 2}},
+
+	{enemySpell: true, name: "Bubbleexp", color: "#4444ff", bindType: "Magic", minRange: 0, landsfx: "Bones", manacost: 5, block: 5,
+		effectTileDurationMod: 8, effectTile: {
+			name: "Water",
+			duration: 20,
+		},
+		components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 2.0, bind: 1, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "acid", playerEffect: {name: "WaterBubble", time: 8, power: 2, damage: "acid"}},
 	{enemySpell: true, name: "Fireexp", color: "#ffff00", minRange: 0, landsfx: "FireSpell", manacost: 5,
 		effectTileDurationMod: 2, effectTile: {
 			name: "Ember",

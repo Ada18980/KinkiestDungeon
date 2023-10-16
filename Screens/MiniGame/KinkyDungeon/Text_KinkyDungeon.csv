@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.77"
+KinkyDungeon,"Kinky Dungeon v4.78"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -57,7 +57,8 @@ KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
 KDToggleGraphicsQuality,GFX: High Quality Animations
 KDToggleEnemyAnimations,GFX: Enemy Animations
-KDToggleLazyWalk,Game: One-Click Move
+KDToggleLazyWalk,Controls: One-Click Move
+KDToggleShiftLatch,Controls: Latch Shift Key
 KinkyDungeonFastWait,Wait Quickly
 
 KDHelpless,Helpless!
@@ -1659,7 +1660,9 @@ KillElementalEarth,"The earth elemental sinks into the ground."
 AttackElementalEarthBind,"The earth elemental pins you and slaps on some restraints! (+RestraintAdded)"
 AttackElementalEarthLock,"The earth elemental locks a restraint!"
 AttackElementalEarthDash,"The earth elemental dashes through the earth!"
-AttackElementalEarth,"The earth elemental gives you a heavy massage! (DamageTaken)"
+AttackElementalEarth,"The earth elemental gives you a soft massage! (DamageTaken)"
+
+
 
 NameElementalAir,Air Elemental
 KillElementalAir,"There is no more elemental. Must have been just the wind."
@@ -2612,6 +2615,15 @@ AttackDemonMoon,"The moon demon places you under its curse! (DamageTaken)"
 KinkyDungeonMoonBondage,The weight of inescapable bondage falls upon you! (DamageTaken)
 AttackDemonMoonLock,"The demon giggles as it locks your restraints! (DamageTaken)"
 KinkyDungeonSpellCrushingFate,Crushing Fate
+
+NameDemonVoid,Void Demon
+KillDemonVoid,"The void demon is exorcised."
+AttackDemonVoidBind,"The void demon places you in dark, glassy restraints. (+RestraintAdded)"
+AttackDemonVoid,"The void demon places you under its curse! (DamageTaken)"
+KinkyDungeonGravityPull,You are sucked in by a powerful gravitational force!!! (DamageTaken)
+KinkyDungeonGravityPull2,You are sucked in by a powerful gravitational force!!!
+AttackDemonVoidLock,"The demon cracks its knuckles as it locks your restraints! (DamageTaken)"
+KinkyDungeonSpellGravityPull,Cosmic Force
 
 NameDemonVoid,Void Demon
 KillDemonVoid,"The void demon is exorcised."
@@ -6064,7 +6076,7 @@ KinkyDungeonEnchantedArrow,"The elven arrow flashes and wraps you in mithril rop
 KinkyDungeonRopeEngulf,"Ropes wrap themselves around your body from all sides!"
 KinkyDungeonSarcoEngulf,"Wrappings appear and wrap you head to toe!"
 KinkyDungeonRopeEngulfWeak,"Ropes wrap themselves around your body from all sides!"
-KinkyDungeonVineEngulf,"Nature magic causes vines to sprout around you!"
+KinkyDungeonVineEngulf,"Vines sprout around you and grab hold of your limbs!"
 KinkyDungeonRopeEngulfDress,"Your clothes are stripped and replaced!"
 KinkyDungeonSarcoEngulfDress,"Your clothes are stripped and replaced!"
 KinkyDungeonVineEngulfDress,"Vines tear off your clothes!"
@@ -12539,7 +12551,7 @@ KDConfirmSpellsClear,Confirm clearing hotbar?
 KDAddToHotbar,Add to Hotbar
 KDBack,Back
 
-KinkyDungeonBuffNoWP,"Surrender: Your willpower is 0, giving huge penalties to Block, Evasion, and Bondage Resist."
+KinkyDungeonBuffNoWP,"Surrender: Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist."
 
 KDKeysUpdate,"Update your Keybindings!!! -->"
 KDKeysUpdateEasterEgg,"I have altered the keybindings. Pray I do not alter them further."
@@ -12555,6 +12567,16 @@ KillBarricadeConcrete,"You shatter the barrier!"
 
 NameBarricadeMagic,Magical Barrier
 KillBarricadeMagic,"You destroy the barrier!"
+
+NameBarricadeShadow,Mass of Shadow Hands
+KillBarricadeShadow,"You banish the shadow hands!"
+AttackBarricadeShadow,"The shadow hands caress you and latch on! (DamageTaken)"
+AttackBarricadeShadowBind,"The shadow hands caress you and latch on! (+RestraintAdded)"
+
+NameBarricadeShadowMetal,Shadow Chains
+KillBarricadeShadowMetal,"You break through the chains!"
+NameBarricadeMetal,Conjured Chains
+KillBarricadeMetal,"You break through the chains!"
 
 KDFilterFiltersMagic,Magic
 KDFilterFiltersDivine,Divine
@@ -12601,3 +12623,51 @@ KinkyDungeonStatElf,"Elven Ancestry"
 KinkyDungeonStatDescElf,"You were blessed with immortality by Ninril, Goddess of Restoration, granting -50% sprint cost and -30 Physical Resist. While your WP is above 0, you regenerate WP and heal nearby allies."
 KinkyDungeonStatMummy,"Bast's Blessing"
 KinkyDungeonStatDescMummy,"You were granted undead immortality by Bast, granting a bite, claws, catlike senses, and stamina regen scaling with your current WP. Your WP gain is halved and you get -100 Fire Resist."
+
+
+KDFocusControlsAutoPassHelplessAllies,"Pass thru helpless allies"
+KDFocusControlsAutoPassHelplessEnemies,"Pass thru helpless allies"
+KDFocusControlsAutoPassAllies,"Pass thru allies"
+KDFocusControlsAutoPassNeutral,"Pass thru neutrals"
+KDFocusControlsAutoPassSummons,"Pass thru summons"
+KDFocusControlsAutoPassShop,"Pass thru shopkeepers"
+KDFocusControlsAutoPassSpecial,"Pass thru special NPCs"
+
+KDFocusControlsAutoPathSuppressBeforeCombat,"Stop when enemies are first sighted"
+KDFocusControlsAutoPathSuppressDuringCombat,"Suppress during combat"
+
+KinkyDungeonSpellShadowGrasp,Shadowy Grasp
+
+
+NameBarricadeAir,Magical Tornado
+AttackBarricadeAir,"The tornado blasts you with powerful winds! (DamageTaken)"
+KillBarricadeAir,"You dispel the tornado!"
+NameBarricadeFire,Shield of Flame
+KillBarricadeFire,"You dispel the shield!"
+NameBarricadeVine,Overgrowth
+KillBarricadeVine,"You cut through the overgrowth!"
+NameBarricadeWater,Wall of Water
+KillBarricadeWater,"You dispel the water wall!"
+NameBarricadeIce,Ice Spikes
+KillBarricadeIce,"You break through the ice!"
+NameBarricadeEarth,Earth Monoliths
+KillBarricadeEarth,"You shatter the monoliths!"
+KinkyDungeonSpellGravityPullEarth,Gravitational Pull
+KinkyDungeonSpellCastGravityPullEarth,"The earth emits a deep hum below your feet..."
+NameBarricadeElectric,Electrified Sphere
+KillBarricadeElectric,"You smash the electrified sphere!"
+AttackBarricadeElectric,"A bolt of lightning arcs to you! (DamageTaken)"
+
+NameKeeperEarth,Keeper of Earth
+KillKeeperEarth,"The earth keeper sinks into the wall."
+AttackKeeperEarthBind,"The earth keeper conjures restraints on your body! (+RestraintAdded)"
+AttackKeeperEarthLock,"The earth keeper locks a restraint!"
+AttackKeeperEarthSlow,"The earth keeper knocks you away with a powerful kick!"
+AttackKeeperEarth,"The earth keeper massages you gently! (DamageTaken)"
+KDKeeperKick,"The earth keeper knocks you away with a strong kick! (DamageTaken)"
+
+
+KinkyDungeonSpellVineexp,Tangling Vines
+KinkyDungeonSpellBubbleexp,Enchanted Bubble
+KDWaterBubble,A bubble of magic water envelops you!
+KinkyDungeonBuffWaterBubble,"Magical water reduces your accuracy and slows you significantly!"

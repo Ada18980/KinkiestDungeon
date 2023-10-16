@@ -118,6 +118,7 @@ let KDToggles = {
 	ForceWarnings: false,
 	Drool: true,
 	LazyWalk: false,
+	ShiftLatch: true,
 };
 
 let KDDefaultKB = {
@@ -1936,7 +1937,7 @@ function KinkyDungeonRun() {
 	} else if (KinkyDungeonState == "Toggles") {
 
 		let XX = 840;
-		let YYstart = 200;
+		let YYstart = 60;
 		let YYmax = 680;
 		let YY = YYstart;
 		let YYd = 70;
@@ -2273,14 +2274,14 @@ function KDMouseWheel(event) {
 		// If we fail we dilate the buttons vertically
 		if (KDProcessButtonScroll(event.deltaY, 15)) return;
 	} else return;
-	KDFunctionPerksScroll(event.deltaY || event.deltaX);
-	KDFunctionSpellPageScroll(event.deltaY || event.deltaX);
-	KDFunctionMagicPageScroll(event.deltaY || event.deltaX);
-	KDFunctionInventoryScroll(event.deltaY || event.deltaX);
-	KDFunctionMsgScroll(event.deltaY);
-	KDFunctionRestraintIndexScroll(event.deltaY);
-	KDFunctionDialogueScroll(event.deltaY);
-	KDFunctionShopScroll(event.deltaY);
+	if (KDFunctionDialogueScroll(event.deltaY)) return;
+	if (KDFunctionPerksScroll(event.deltaY || event.deltaX)) return;
+	if (KDFunctionMagicPageScroll(event.deltaY || event.deltaX)) return;
+	if (KDFunctionInventoryScroll(event.deltaY || event.deltaX)) return;
+	if (KDFunctionMsgScroll(event.deltaY)) return;
+	if (KDFunctionRestraintIndexScroll(event.deltaY)) return;
+	if (KDFunctionShopScroll(event.deltaY)) return;
+	if (KDFunctionSpellPageScroll(event.deltaY || event.deltaX)) return;
 }
 
 function KDFunctionPerksScroll(amount) {
@@ -2290,7 +2291,9 @@ function KDFunctionPerksScroll(amount) {
 		} else {
 			KDClickButton("perks<");
 		}
+		return true;
 	}
+	return false;
 }
 function KDFunctionSpellPageScroll(amount) {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" ) {
@@ -2299,7 +2302,9 @@ function KDFunctionSpellPageScroll(amount) {
 		} else {
 			KDCycleSpellPage(true, true);
 		}
+		return true;
 	}
+	return false;
 }
 function KDFunctionMagicPageScroll(amount) {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Magic" ) {
@@ -2308,7 +2313,9 @@ function KDFunctionMagicPageScroll(amount) {
 		} else {
 			KDClickButton("magiclastpage");
 		}
+		return true;
 	}
+	return false;
 }
 function KDFunctionInventoryScroll(amount) {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Inventory" ) {
@@ -2317,7 +2324,9 @@ function KDFunctionInventoryScroll(amount) {
 		} else {
 			KDClickButton("invlastpage");
 		}
+		return true;
 	}
+	return false;
 }
 function KDFunctionMsgScroll(amount) {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonMessageToggle) {
@@ -2326,7 +2335,9 @@ function KDFunctionMsgScroll(amount) {
 		} else {
 			KDClickButton("logscrollup");
 		}
+		return true;
 	}
+	return false;
 }
 function KDFunctionRestraintIndexScroll(amount) {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonDrawStruggleHover && currentDrawnSG && currentDrawnSGLength) {
@@ -2335,7 +2346,9 @@ function KDFunctionRestraintIndexScroll(amount) {
 		} else {
 			if ((KDStruggleGroupLinkIndex[currentDrawnSG.group] > 0)) KDStruggleGroupLinkIndex[currentDrawnSG.group] -= 1;
 		}
+		return true;
 	}
+	return false;
 }
 function KDFunctionDialogueScroll(amount) {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KDGameData.CurrentDialog) {
@@ -2344,7 +2357,9 @@ function KDFunctionDialogueScroll(amount) {
 		} else {
 			KDClickButton("dialogueUP");
 		}
+		return true;
 	}
+	return false;
 }
 function KDFunctionShopScroll(amount) {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonTargetTile?.Type == "Shrine" && KinkyDungeonTargetTile.Name == "Commerce") {
@@ -2389,7 +2404,7 @@ function KDProcessButtonScroll(amount, padV = 0) {
 }
 
 function KDProcessButtons() {
-	KDFocusControls = "";
+	//KDFocusControls = "";
 	let buttons = [];
 	for (let button of Object.entries(KDButtonsCache)) {
 		if (button[1].enabled && button[1].func) {
@@ -3022,7 +3037,7 @@ function KinkyDungeonHandleClick() {
 	} else if (KinkyDungeonState == "Keybindings") {
 		// Replaced by DrawButtonKDEx
 	} else if (KinkyDungeonState == "Toggles") {
-		let YYstart = 200;
+		let YYstart = 60;
 		let YY = YYstart;
 		let YYd = 70;
 
@@ -3208,7 +3223,7 @@ let KinkyDungeonGameKey = {
 	keyDownEvent : {
 		handleEvent : function (event) {
 			let code = !(event.code.includes("Digit") || (event.key.length == 1 && event.code != "Space")) ? event.code : event.key.toUpperCase();
-			if (!KDLastKeyTime[code] || code.includes("Shift")) {
+			if (!KDLastKeyTime[code] || (!code.includes("Shift") && event.shiftKey)) {
 				KinkyDungeonKeybindingCurrentKey = code;
 				KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
 			}

@@ -473,9 +473,11 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 
 	KinkyDungeonSendEvent("duringPlayerDamage", data);
 
-	if (data.teaseTypes.includes(data.type)) {
+	if (data.teaseTypes.includes(data.type) || (
+		KinkyDungeonStatsChoice.get("Masochist") && data.distractionTypesStrong.includes(data.type)
+	)) {
 		let amt = data.dmg;
-		if (data.bypassTeaseTypes.includes(data.type)) {
+		if (data.bypassTeaseTypes.includes(data.type) || KinkyDungeonStatsChoice.get("Masochist")) {
 			KinkyDungeonTeaseLevelBypass += amt * (1 + (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0));
 		} else {
 			KinkyDungeonTeaseLevel += amt * (1 + (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0));
