@@ -597,6 +597,10 @@ function KDProcessInput(type, data) {
 			}
 			break;
 		}
+		case "focusControlToggle": {
+			KDInputFocusControlToggle(data.key, data.value);
+			break;
+		}
 		case "upcast": {
 			KDDelayedActionPrune(["Action", "Cast"]);
 			KDEmpower(data, KinkyDungeonPlayerEntity);

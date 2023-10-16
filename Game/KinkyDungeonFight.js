@@ -1183,6 +1183,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 		disarm: disarm,
 		damage: Damage,
 		vulnConsumed: predata.vulnConsumed,
+		attacker: KinkyDungeonPlayerEntity,
 	};
 	KinkyDungeonSendEvent("playerAttack", data);
 

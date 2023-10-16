@@ -881,6 +881,7 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonTargetTileLocation = "";
 				KinkyDungeonSpellPress = "";
 				KDModalArea = false;
+				KDSetFocusControl("");
 				KDCloseQuickInv();
 				KDRepSelectionMode = "";
 				KinkyDungeonGameKey.keyPressed[9] = false;
@@ -1352,7 +1353,7 @@ function KinkyDungeonDrawGame() {
 					}
 				}
 
-				let tooltipOffset = 0;
+				let tooltipOffset = KDFocusControls ? 70 : 0;
 				for (let t of tooltips) {
 					tooltipOffset = t(tooltipOffset);
 				}

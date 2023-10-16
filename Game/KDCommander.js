@@ -541,12 +541,15 @@ let KDCommanderOrders = {
 								placed = true;
 								KinkyDungeonCastSpell(xxx, yyy, KinkyDungeonFindSpell(trap, true), enemy, undefined);
 							} else if (KinkyDungeonNoEnemy(xxx, yyy, true)) {
-								let en = DialogueCreateEnemy(xxx, yyy, KDGetBarricade(enemy, xxx, yyy));
-								if (en) {
-									placed = true;
-									en.faction = KDGetFaction(enemy);
-									en.maxlifetime = 50;
-									en.lifetime = 200;
+								let barricade = KDGetBarricade(enemy, xxx, yyy);
+								if (barricade) {
+									let en = DialogueCreateEnemy(xxx, yyy, barricade);
+									if (en) {
+										placed = true;
+										en.faction = KDGetFaction(enemy);
+										en.maxlifetime = 50;
+										en.lifetime = 200;
+									}
 								}
 							}
 
@@ -622,12 +625,152 @@ let KDCommanderOrders = {
  * @param {number} y
  * @returns {string}
  */
-function KDGetBarricade(enemy, x, y) {
-	if (enemy.Enemy.tags.robot || enemy.Enemy.tags.cyborg) return "BarricadeRobot";
+function KDGetBarricade(enemy, x, y, type = []) {
+	/** @type {Record<string, number>} */
+	let traps = {};
+	let max = 0;
+	for (let obj of Object.keys(KDBarricades)) {
+		if (KDBarricades[obj].filter(enemy, x, y, type)) {
+			traps[obj] = KDBarricades[obj].weight(enemy, x, y, type);
+			if (traps[obj] > max) max = traps[obj];
+		}
+	}
+	// Cull low level stuff
+	for (let t of Object.keys(traps)) {
+		if (traps[t] < max*0.1) traps[t] = 0;
+	}
+	return KDGetByWeight(traps);
+	/*if (enemy.Enemy.tags.robot || enemy.Enemy.tags.cyborg) return "BarricadeRobot";
 	if (enemy.Enemy.unlockCommandLevel > 0) return "BarricadeMagic";
 	if (enemy.Enemy.Security?.level_tech > 0 || KDRandom() < 0.1 * KDEnemyRank(enemy)) return "BarricadeConcrete";
-	return "Barricade";
+	return "Barricade";*/
 }
+
+/**
+ * @type {Record<string, KDBoobyTrap>}
+ */
+let KDBarricades = {
+	"Barricade": {
+		filter: (enemy, x, y, type) => {
+			return !enemy.Enemy.tags.leather && !enemy.Enemy.tags.rope && !enemy.Enemy.tags.slime;
+		},
+		weight: (enemy, x, y, type) => {
+			return 1;
+		},
+	},
+	"BarricadeRobot": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags.robot || enemy.Enemy.tags.cyborg;
+		},
+		weight: (enemy, x, y, type) => {
+			return 20;
+		},
+	},
+	"BarricadeMagic": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.unlockCommandLevel > 0;
+		},
+		weight: (enemy, x, y, type) => {
+			return 15;
+		},
+	},
+	"BarricadeConcrete": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.Security?.level_tech > 0 || KDRandom() < 0.1 * KDEnemyRank(enemy);
+		},
+		weight: (enemy, x, y, type) => {
+			return 11;
+		},
+	},
+	"BarricadeMetal": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.metal;
+		},
+		weight: (enemy, x, y, type) => {
+			return 25;
+		},
+	},
+	"ChaoticCrystal": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.chaos;
+		},
+		weight: (enemy, x, y, type) => {
+			return 25;
+		},
+	},
+	"GiantMushroom": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.mushroom;
+		},
+		weight: (enemy, x, y, type) => {
+			return 25;
+		},
+	},
+	"BarricadeFire": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.fire;
+		},
+		weight: (enemy, x, y, type) => {
+			return 25;
+		},
+	},
+	"BarricadeWater": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.water;
+		},
+		weight: (enemy, x, y, type) => {
+			return 25;
+		},
+	},
+	"BarricadeIce": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.ice;
+		},
+		weight: (enemy, x, y, type) => {
+			return 25;
+		},
+	},
+	"BarricadeEarth": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.earth;
+		},
+		weight: (enemy, x, y, type) => {
+			return 25;
+		},
+	},
+	"BarricadeElectric": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.electric;
+		},
+		weight: (enemy, x, y, type) => {
+			return 25;
+		},
+	},
+	"BarricadeAir": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.air;
+		},
+		weight: (enemy, x, y, type) => {
+			return 25;
+		},
+	},
+	"BarricadeShadowMetal": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.shadow || enemy.Enemy.tags?.demon;
+		},
+		weight: (enemy, x, y, type) => {
+			return 11;
+		},
+	},
+	"BarricadeShadow": {
+		filter: (enemy, x, y, type) => {
+			return enemy.Enemy.tags?.shadow;
+		},
+		weight: (enemy, x, y, type) => {
+			return 25;
+		},
+	},
+};
 
 /**
  *

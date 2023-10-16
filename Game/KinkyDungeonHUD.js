@@ -74,6 +74,10 @@ let KDFocusControlButtons = {
 		Shop: false,
 		Special: false,
 	},
+	"AutoPath": {
+		SuppressBeforeCombat: false,
+		SuppressDuringCombat: true,
+	},
 };
 
 /**
@@ -1654,6 +1658,8 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 		KinkyDungeonToggleAutoPass = !KinkyDungeonToggleAutoPass;
 		if (KinkyDungeonToggleAutoPass) {
 			KDSetFocusControl("AutoPass");
+		} else {
+			KDSetFocusControl("");
 		}
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60, "", "",
@@ -1680,28 +1686,34 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[2]),
 	});
 
-	if (KDFocusControls && KDFocusControlButtons[KDFocusControls]) {
+	let focusTooltip = "";
+
+	if (KDFocusControls && KDFocusControlButtons[KDFocusControls] && !KDModalArea) {
 		let list = Object.entries(KDFocusControlButtons[KDFocusControls]);
 		let bWidth = 60;
 		let bHeight = 60;
 		let spacing = bWidth + 10;
-		let xx = 1730 - spacing * list.length;
+		let xx = 1730 - 250 - spacing * list.length;
 
 		let setTo = KDFocusControls;
 
 		for (let button of list) {
 			DrawButtonKDEx("focus" + KDFocusControls + button[0], (bdata) => {
-				if (!KDGameData.FocusControlToggle) KDGameData.FocusControlToggle = {};
-				KDGameData.FocusControlToggle[setTo +  button[0]] = !KDGameData.FocusControlToggle[setTo +  button[0]];
+				KDSetFocusControlToggle(setTo + button[0], !(KDGameData.FocusControlToggle && KDGameData.FocusControlToggle[setTo +  button[0]]));
 				KDFocusControls = setTo; // This is to refresh after KDProcessButtons
 				return true;
 			}, true, xx, 900 - bHeight + 15, bWidth, bHeight,
 			"", "", KinkyDungeonRootDirectory + `UI/${KDFocusControls}/${ button[0]}.png`,
 			undefined, undefined, !KDGameData.FocusControlToggle || !KDGameData.FocusControlToggle[KDFocusControls +  button[0]], KDTextGray1, undefined, false, {
 				alpha: 0.7,
+				zIndex: 110,
 				//hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[2]),
 			});
+			if (MouseIn(xx, 900 - bHeight + 15, bWidth, bHeight)) focusTooltip = "KDFocusControls" + setTo + button[0];
 			xx += spacing;
+		}
+		if (focusTooltip) {
+			DrawTextFitKD(TextGet(focusTooltip), Math.min(1900, MouseX), y+i*heightPerBar + actionButtonAdj - 15, 250, "#ffffff", undefined, 18);
 		}
 	}
 
@@ -1719,6 +1731,7 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 			KinkyDungeonFastMove = !KinkyDungeonFastMove;
 		KinkyDungeonFastMoveSuppress = false;
 		KinkyDungeonFastMovePath = [];
+		KDSetFocusControl("AutoPath");
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, 60,
 	"", "", KinkyDungeonRootDirectory + (KinkyDungeonFastMove ? "FastMove" : "FastMoveOff") + ".png",
@@ -1892,20 +1905,6 @@ function KinkyDungeonHandleHUD() {
 				return true;
 			}
 		}
-		/*if (KinkyDungeonIsPlayer() && MouseIn(1925, 925, 60, 60)) {
-			if (!KinkyDungeonFastMoveSuppress)
-				KinkyDungeonFastMove = !KinkyDungeonFastMove;
-			KinkyDungeonFastMoveSuppress = false;
-			KinkyDungeonFastMovePath = [];
-			return true;
-		} else if (KinkyDungeonIsPlayer() && MouseIn(1860, 925, 60, 60)) {
-			if (!KinkyDungeonFastStruggleSuppress)
-				KinkyDungeonFastStruggle = !KinkyDungeonFastStruggle;
-			KinkyDungeonFastStruggleSuppress = false;
-			KinkyDungeonFastStruggleGroup = "";
-			KinkyDungeonFastStruggleType = "";
-			return true;
-		}*/
 
 		if (KinkyDungeonIsPlayer() && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height))
 			KinkyDungeonSetTargetLocation();
@@ -2442,12 +2441,32 @@ let currentDrawnSGLength = 0;
  */
 function KDSetFocusControl(control) {
 	KDFocusControls = control;
-	if (!KDGameData.FocusControlToggle) KDGameData.FocusControlToggle = {};
-	if (KDFocusControlButtons[KDFocusControls]) {
-		for (let button of Object.entries(KDFocusControlButtons[KDFocusControls])) {
-			if (KDGameData.FocusControlToggle[KDFocusControls + button[0]] == undefined) {
-				KDGameData.FocusControlToggle[KDFocusControls + button[0]] = button[1];
+
+	if (control)
+		KDInitFocusControl(control);
+}
+/**
+ * Sets the focus control and also initializes default settings
+ * @param {string} control
+ */
+function KDInitFocusControl(control) {
+	KDSetFocusControlToggle("", "");
+	if (KDFocusControlButtons[control]) {
+		for (let button of Object.entries(KDFocusControlButtons[control])) {
+			if (KDGameData.FocusControlToggle[control + button[0]] == undefined) {
+				//KDGameData.FocusControlToggle[control + button[0]] = button[1];
+				KDSetFocusControlToggle(control + button[0], button[1]);
 			}
 		}
 	}
+}
+
+function KDSetFocusControlToggle(key, value) {
+	KDSendInput("focusControlToggle", {key: key, value: value});
+}
+
+function KDInputFocusControlToggle(key, value) {
+	if (!KDGameData.FocusControlToggle) KDGameData.FocusControlToggle = {};
+	if (key)
+		KDGameData.FocusControlToggle[key] = value;
 }

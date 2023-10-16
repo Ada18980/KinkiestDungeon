@@ -324,10 +324,15 @@ function KDAmbushAI(enemy) {
 
 let KinkyDungeonFastMoveSuppress = false;
 let KinkyDungeonFastStruggleSuppress = false;
+let KDInDanger = false;
+
 function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	let reenabled = false;
 	let reenabled2 = false;
-	if (KinkyDungeonFastMoveSuppress) { //&& !CommonIsMobile
+	let wasInDanger = KDInDanger;
+	KDInDanger = false;
+
+	if (KinkyDungeonFastMoveSuppress) {
 		KinkyDungeonFastMove = true;
 		KinkyDungeonFastMovePath = [];
 		KinkyDungeonFastMoveSuppress = false;
@@ -355,14 +360,21 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				KinkyDungeonFastStruggleSuppress = true;
 			}
 			if (KinkyDungeonFastMove) {
-				if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
-					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
-				KinkyDungeonFastMove = false;
-				KinkyDungeonFastMovePath = [];
-				reenabled = false;
-				//if (!CommonIsMobile)
-				KinkyDungeonFastMoveSuppress = true;
+				if (!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat) {
+					if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+					KinkyDungeonFastMovePath = [];
+				}
+
+				// Cancel fast move if there is no current path
+				if (KinkyDungeonFastMovePath?.length == 0 && KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat) {
+					KinkyDungeonFastMoveSuppress = true;
+					KinkyDungeonFastMove = false;
+					reenabled = false;
+				}
 			}
+
+			KDInDanger = true;
 		}
 	}
 	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDMaxVisionDist + 1, undefined, true);
@@ -380,13 +392,19 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KinkyDungeonFastMove &&
 						!enemy.Enemy.tags.harmless &&
 						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
-						if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
-							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
-						KinkyDungeonFastMove = false;
-						KinkyDungeonFastMovePath = [];
-						reenabled = false;
-						if (!CommonIsMobile)
+						if (!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat) {
+							if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
+								KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+							KinkyDungeonFastMovePath = [];
+						}
+
+						// Cancel fast move if there is no current path
+						if (KinkyDungeonFastMovePath?.length == 0 && KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat) {
 							KinkyDungeonFastMoveSuppress = true;
+							KinkyDungeonFastMove = false;
+							reenabled = false;
+						}
+						KDInDanger = true;
 					}
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KinkyDungeonFastStruggle &&
 						!enemy.Enemy.tags.harmless &&
@@ -4603,7 +4621,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (spell.castCondition && (!KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, enemy, spell))) spell = null;
 					}
 				} else if (spell?.castCondition && (KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, player, spell))) spell = null;
-				let minSpellRange = (spell && spell.minRange != undefined) ? spell.minRange : ((spell && (spell.selfcast || spell.buff || (spell.range && spell.range < 1.6))) ? 0 : 1.5);
+				let minSpellRange = (spell && spell.minRange != undefined) ? spell.minRange : ((spell && (spell.selfcast || (enemy.Enemy.selfCast && enemy.Enemy.selfCast[spell.name]) || spell.buff || (spell.range && spell.range < 1.6))) ? 0 : 1.5);
 				if (spell && spell.heal && spelltarget.hp >= spelltarget.Enemy.maxhp) spell = null;
 				if (spell && !(!minSpellRange || (AIData.playerDist > minSpellRange))) spell = null;
 				if (spell && !(!spell.minRange || (AIData.playerDist > spell.minRange))) spell = null;
@@ -4628,7 +4646,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					xx = spelltarget.x;
 					yy = spelltarget.y;
 				}
-				if (spell && spell.selfcast) {
+				if (spell && (spell.selfcast || (enemy.Enemy.selfCast && enemy.Enemy.selfCast[spell.name]))) {
 					xx = enemy.x;
 					yy = enemy.y;
 					if (!spell.noCastMsg)

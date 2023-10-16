@@ -2279,6 +2279,8 @@ const KDEventMapBuff = {
 	},
 
 	"afterEnemyTick": {
+
+
 		"nurseAura": (e, buff, enemy, data) => {
 			KDEventMapEnemy[e.trigger][e.type](e, enemy, data);
 		},
@@ -5309,8 +5311,44 @@ let KDEventMapEnemy = {
 			}
 		},
 	},
-
+	"afterPlayerAttack": {
+		"spellReflect": (e, enemy, data) => {
+			if (data.enemy == enemy && KinkyDungeonCanCastSpells(enemy)) {
+				if (!e.time || !KDEnemyHasFlag(enemy, "spellReflect" + e.spell)) {
+					KinkyDungeonCastSpell(data.attacker.x, data.attacker.y, KinkyDungeonFindSpell(e.spell, true), enemy, undefined, undefined);
+					if (e.time) {
+						KinkyDungeonSetEnemyFlag(enemy, "spellReflect" + e.spell, e.time);
+					}
+				}
+			}
+		}
+	},
+	"hit": {
+		"spellReflect": (e, enemy, data) => {
+			if (data.target == enemy && KinkyDungeonCanCastSpells(enemy)) {
+				if (!e.time || !KDEnemyHasFlag(enemy, "spellReflect" + e.spell)) {
+					KinkyDungeonCastSpell(data.attacker.x, data.attacker.y, KinkyDungeonFindSpell(e.spell, true), enemy, undefined, undefined);
+					if (e.time) {
+						KinkyDungeonSetEnemyFlag(enemy, "spellReflect" + e.spell, e.time);
+					}
+				}
+			}
+		}
+	},
 	"afterEnemyTick": {
+		//{trigger: "afterEnemyTick", type: "requireNearbyEnemyTag", power: 1.25, dist: 3.5, tags: ["air"]},
+		"requireNearbyEnemyTag": (e, enemy, data) => {
+			if (data.delta && !KDHelpless(enemy)
+				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				let nearby = KDNearbyEnemies(enemy.x, enemy.y, e.dist).filter((en) => {return en.Enemy.tags
+					&& !en.Enemy.tags.nobrain
+					&& !en.Enemy.tags.nosustain
+					&& e.tags.some((tag) => {return en.Enemy.tags[tag] != undefined;});});
+				if (nearby.length == 0) {
+					enemy.hp -= e.power * data.delta;
+				}
+			}
+		},
 		"ShopkeeperRescueAI": (e, enemy, data) => {
 			// We heal nearby allies and self
 			if (data.delta && !KDHelpless(enemy) && !KinkyDungeonIsDisabled(enemy) && KDEnemyHasFlag(enemy, "RescuingPlayer")
@@ -5480,6 +5518,34 @@ let KDEventMapEnemy = {
 				if (!e.chance || KDRandom() < e.chance) {
 					if (enemy.aware && KinkyDungeonAggressive(enemy) && (KDPlayerIsStunned())) {
 						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "charm", {name: "MaidChastity", power: 2, damage: "charm"});
+					}
+				}
+			}
+		},
+		"bubbleBarrier": (e, enemy, data) => {
+			if (data.delta && (enemy.aware || enemy.vp > 0.5 || e.always) && (e.always|| KDNearbyEnemies(enemy.x, enemy.y, 1.5, enemy).length > 0 || KinkyDungeonAggressive(enemy)) && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				if (!e.chance || KDRandom() < e.chance) {
+					let count = e.power ? e.power : 1;
+					let rad = e.aoe ? e.aoe : 1.5;
+					let minrad = 0.5;
+					for (let i = 0; i < count; i++) {
+						let slots = [];
+						for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
+							for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
+								if (Math.sqrt(X*X+Y*Y) <= rad && (!minrad || Math.sqrt(X*X+Y*Y) >= minrad)) {
+									if ((enemy.x + X > 0 && enemy.y + Y > 0 && enemy.x + X < KDMapData.GridWidth && enemy.y + Y < KDMapData.GridHeight)
+										&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(enemy.x + X, enemy.y + Y)))
+										slots.push({x:X, y:Y});
+								}
+							}
+
+						if (slots.length > 0) {
+							let slot = slots[Math.floor(KDRandom() * slots.length)];
+							if (slot) {
+								KinkyDungeonCastSpell(enemy.x + slot.x, enemy.y + slot.y, KinkyDungeonFindSpell("Bubbleexp", true), enemy, undefined, undefined);
+							}
+						}
+
 					}
 				}
 			}

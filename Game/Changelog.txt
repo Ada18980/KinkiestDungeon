@@ -13,6 +13,12 @@ Vague todo:
 
 - TODO add scroll to log, rep
 
+4.78 (Oct 2023)
+- New enemies: Void Demon, Keeper of Earth
+- New barricade types
+- New options for auto pathfinding
+- Masochist perk now allows you to orgasm when taking sufficient damage
+
 4.77 (Oct 2023)
 - Keybindings have changed format to allow for characters like !, @, #, etc
 - Added scroll wheel support in a number of menus, including spell list, perk list, map editor, and hotbar pages

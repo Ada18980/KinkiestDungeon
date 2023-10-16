@@ -836,6 +836,8 @@ interface enemy extends KDHasTags {
 	unlockCommandLevel?: number,
 	/** This enemy must wait this long between unlock command attempts. Default is 90*/
 	unlockCommandCD?: number,
+	/** Enemy will self cast these */
+	selfCast?: Record<string, boolean>,
 	/** */
 	spellCooldownMult?: number,
 	/** */
@@ -1320,6 +1322,7 @@ interface entity {
 	domVariance?: number,
 	hideTimer?: boolean,
 	Enemy: enemy,
+
 	/** Amount of sound the entity is currently producing */
 	sound?: number,
 	/** List an enemy ID. Enemy will be bound to this one and dies if not found. BoundTo of -1 indicates bound to the player, and will expire if the player is jailed or passes out*/

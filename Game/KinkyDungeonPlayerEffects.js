@@ -193,6 +193,44 @@ let KDPlayerEffects = {
 		}
 		return {sfx: "Fwosh", effect: true};
 	},
+	"PushAway": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 1.0, 1.0)) {
+			let dist = playerEffect.dist;
+			for (let i = 0; i < dist; i++) {
+				let newX = target.x + Math.round(1 * Math.sign(entity.x));
+				let newY = target.y + Math.round(1 * Math.sign(entity.y));
+				if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
+				&& (dist == 1 || KinkyDungeonCheckProjectileClearance(target.x, target.y, newX, newY))) {
+					KDMovePlayer(newX, newY, false);
+				}
+			}
+			let dmg = KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage});
+			KinkyDungeonSendTextMessage(4, TextGet(playerEffect.msg || "KDEnemyWindBlast").replace("DamageTaken", dmg.string), "#ffff00", 1);
+		}
+		return {sfx: "Fwosh", effect: true};
+	},
+	"GravityPull": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 1.0, 0.0)) {
+			let dist = playerEffect.dist;
+			for (let i = 0; i < dist; i++) {
+				let dd = KDistEuclidean(KinkyDungeonPlayerEntity.x - bullet.x, KinkyDungeonPlayerEntity.y - bullet.y);
+				let newX = Math.round(KinkyDungeonPlayerEntity.x + (bullet.x - KinkyDungeonPlayerEntity.x)/dd);
+				let newY = Math.round(KinkyDungeonPlayerEntity.y + (bullet.y - KinkyDungeonPlayerEntity.y)/dd);
+				if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
+				&& (dist == 1 || KinkyDungeonCheckProjectileClearance(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, newX, newY))) {
+					KDMovePlayer(newX, newY, false);
+				}
+			}
+			if (playerEffect.power) {
+				let dmg = KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage});
+				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonGravityPull2").replace("DamageTaken", dmg.string), "#8800ff", 2);
+			} else {
+				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonGravityPull"), "#8800ff", 2);
+			}
+			KDStunTurns(1);
+		}
+		return {sfx: "Evil", effect: true};
+	},
 	"LatexBubble": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KDTestSpellHits(spell, 0.5, 0.0)) {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
@@ -214,6 +252,31 @@ let KDPlayerEffects = {
 				tags: ["debuff"],
 			});
 			KinkyDungeonSendTextMessage(4, TextGet("KDLatexBubble"), "#2789cd", 1);
+			KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
+		}
+		return {sfx: "Fwosh", effect: true};
+	},
+	"WaterBubble": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "WaterBubble",
+				aura: "#2789cd",
+				aurasprite: "WaterBubble",
+				noAuraColor: true,
+				buffSprite: true,
+				type: "Accuracy",
+				power: -0.5,
+				duration: playerEffect.time,
+				tags: ["debuff"],
+			});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "WaterBubble2",
+				type: "SlowLevel",
+				power: 3,
+				duration: playerEffect.time,
+				tags: ["debuff", "slow"],
+			});
+			KinkyDungeonSendTextMessage(4, TextGet("KDWaterBubble"), "#2789cd", 1);
 			KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
 		}
 		return {sfx: "Fwosh", effect: true};
@@ -661,7 +724,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 		} else if (playerEffect.name == "Shock") {
 			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
 			KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
-			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+			KinkyDungeonDealDamage({damage: spell?.power || playerEffect.power || 1, type: spell?.damage || "electric"}, bullet);
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonShock"), "#ff0000", playerEffect.time);
 			effect = true;
 		} else if (playerEffect.name == "CoronaShock") {
