@@ -485,6 +485,10 @@ let KDEffectTileFunctionsStandalone = {
 		}
 		return true;
 	},
+	"Vines": (delta, tile) => {
+		KDGrow(tile, "Vines");
+		return false;
+	},
 	"SlimeBurning": (delta, tile) => {
 		if (tile.duration > 0 && !(tile.pauseDuration > 0)) {
 			KDCreateEffectTile(tile.x, tile.y, {
@@ -569,6 +573,7 @@ let KDEffectTileFunctions = {
 		}, 0);
 		return false;
 	},
+
 	"PressurePlate": (delta, entity, tile) => {
 		let tags = KDEffectTileTags(tile.x, tile.y);
 		if (!tags.ppactive) {
@@ -957,9 +962,7 @@ let KDEffectTileCreateFunctionsExisting = {
 		return true;
 	},
 	"Vines": (newTile, existingTile) => {
-		if (!KDInferno(existingTile, newTile, 6)) {
-			KDGrow(existingTile, newTile, "Vines");
-		}
+		KDInferno(existingTile, newTile, 6);
 		return true;
 	},
 	"TorchUnlit": (newTile, existingTile) => {

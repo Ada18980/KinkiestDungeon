@@ -711,20 +711,19 @@ function KDInferno(existingTile, newTile, duration) {
 }
 /**
  *
- * @param {effectTile} existingTile
- * @param {effectTile} newTile
+ * @param {effectTile} tile
  * @param {string} type
  * @param {number} duration
  * @param {number} chance
  * @returns {boolean}
  */
-function KDGrow(existingTile, newTile, type, duration = 20, chance = 0.1, refreshDuration = 20) {
-	if (newTile.tags.includes("water") && KDRandom() < chance) {
-		existingTile.duration = Math.max(existingTile.duration, refreshDuration);
+function KDGrow( tile, type, duration = 20, chance = 0.1, refreshDuration = 20) {
+	if (KDEffectTileTags(tile.x, tile.y).water && KDRandom() < chance) {
+		tile.duration = Math.max(tile.duration, refreshDuration);
 		let xx = Math.floor(KDRandom() * 3) - 1;
 		let yy = Math.floor(KDRandom() * 3) - 1;
 		if (xx == 0 && yy == 0) xx = KDRandom() > 0.5 ? 1 : -1;
-		KDCreateEffectTile(existingTile.x + xx, existingTile.y + yy, {
+		KDCreateEffectTile(tile.x + xx, tile.y + yy, {
 			name: type,
 			duration: duration,
 		}, 2);
