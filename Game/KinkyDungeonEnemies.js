@@ -4027,6 +4027,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 								let leashPos = AIData.nearestJail;
 								let findMaster = undefined;
+								if (enemy.IntentLeashPoint) leashPos = enemy.IntentLeashPoint;
 								if (!leashToExit && enemy.Enemy.pullTowardSelf && (Math.abs(player.x - enemy.x) > 1.5 || Math.abs(player.y - enemy.y) > 1.5)) {
 									findMaster = enemy;
 									if (findMaster) leashPos = {x: findMaster.x, y: findMaster.y, type: "", radius: 1};
@@ -4048,7 +4049,6 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									}
 								}
 
-								if (enemy.IntentLeashPoint) leashPos = enemy.IntentLeashPoint;
 
 								if (AIData.playerDist < 1.5 || (AIData.attack.includes("Pull")) || !KinkyDungeonGetRestraintItem("ItemDevices"))
 									AIData.leashPos = leashPos;

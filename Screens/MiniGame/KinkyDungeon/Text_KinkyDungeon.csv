@@ -12658,7 +12658,7 @@ NameBarricadeElectric,Electrified Sphere
 KillBarricadeElectric,"You smash the electrified sphere!"
 AttackBarricadeElectric,"A bolt of lightning arcs to you! (DamageTaken)"
 
-NameKeeperEarth,Keeper of Earth
+NameKeeperEarth,Earth Keeper
 KillKeeperEarth,"The earth keeper sinks into the wall."
 AttackKeeperEarthBind,"The earth keeper conjures restraints on your body! (+RestraintAdded)"
 AttackKeeperEarthLock,"The earth keeper locks a restraint!"
