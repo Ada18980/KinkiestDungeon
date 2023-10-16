@@ -2842,6 +2842,10 @@ let KDDialogue = {
 				point = {x: KDMapData.StartPosition.x + 10, y: KDMapData.StartPosition.y - 5};
 			}
 			let e = DialogueCreateEnemy(point.x, point.y, "DollmakerBoss2");
+			e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
+			if (KinkyDungeonStatsChoice.get("extremeMode")) e.Enemy.maxhp *= 4;
+			else if (KinkyDungeonStatsChoice.get("hardMode")) e.Enemy.maxhp *= 2;
+			e.hp = e.Enemy.maxhp;
 			e.hostile = 300;
 			return false;
 		},
@@ -2864,6 +2868,10 @@ let KDDialogue = {
 				point = KinkyDungeonGetRandomEnemyPoint(false, false, null);
 			}
 			let e = DialogueCreateEnemy(point.x, point.y, "DollmakerBoss3");
+			e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
+			if (KinkyDungeonStatsChoice.get("extremeMode")) e.Enemy.maxhp *= 4;
+			else if (KinkyDungeonStatsChoice.get("hardMode")) e.Enemy.maxhp *= 2;
+			e.hp = e.Enemy.maxhp;
 			e.hostile = 300;
 			return false;
 		},
@@ -3125,6 +3133,10 @@ let KDDialogue = {
 				point = KinkyDungeonGetRandomEnemyPoint(false, false, null);
 			}
 			let e = DialogueCreateEnemy(point.x, point.y, "Fuuka2");
+			e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
+			if (KinkyDungeonStatsChoice.get("extremeMode")) e.Enemy.maxhp *= 4;
+			else if (KinkyDungeonStatsChoice.get("hardMode")) e.Enemy.maxhp *= 2;
+			e.hp = e.Enemy.maxhp;
 			e.hostile = 300;
 			return false;
 		},

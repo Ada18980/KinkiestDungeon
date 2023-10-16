@@ -12672,6 +12672,16 @@ AttackKeeperEarthSlow,"The earth keeper knocks you away with a powerful kick!"
 AttackKeeperEarth,"The earth keeper massages you gently! (DamageTaken)"
 KDKeeperKick,"The earth keeper knocks you away with a strong kick! (DamageTaken)"
 
+NameKeeperFire,Flame Keeper
+KillKeeperFire,"The flame keeper steps away into a fiery portal."
+AttackKeeperFireBind,"The flame keeper grabs you, and volcanic restraints emerge from her armor! (+RestraintAdded)"
+AttackKeeperFireLock,"The flame keeper locks a restraint!"
+AttackKeeperFireDash,"The flame keeper flanks you!"
+AttackKeeperFire,"The flame keeper offers a painful caress! (DamageTaken)"
+KDKeeperFlameDash,"The flame keeper rides forth on a wave of fire!"
+
+KinkyDungeonSpellFlameTrail,Smoldering Trail
+KinkyDungeonSpellFlameKeeperBlade,Fiery Greatsword
 
 KinkyDungeonSpellVineexp,Tangling Vines
 KinkyDungeonSpellBubbleexp,Enchanted Bubble
