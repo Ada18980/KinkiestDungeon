@@ -14,7 +14,7 @@ Vague todo:
 - TODO add scroll to log, rep
 
 4.78 (Oct 2023)
-- New enemies: Void Demon, Keeper of Earth
+- New enemies: Void Demon, Earth Keeper
 - New barricade types
 - New options for auto pathfinding
 - Masochist perk now allows you to orgasm when taking sufficient damage
