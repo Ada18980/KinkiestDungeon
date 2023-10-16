@@ -4001,7 +4001,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 					if (player.player) {
 						if (player.player
-							&& AIData.playerDist < AIData.range
+							&& AIData.playerDist <= AIData.range
 							&& (AIData.aggressive || AIData.attack.includes("Pull") || enemy.IntentLeashPoint)
 							&& ( // If we are already leashing or pulling or we are a leashing type that is able to leash
 								((!enemy.Enemy.noLeashUnlessExhausted || !KinkyDungeonHasWill(0.1))
