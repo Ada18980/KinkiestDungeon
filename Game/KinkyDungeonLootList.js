@@ -217,7 +217,7 @@ let KinkyDungeonLootTable = {
 			armor: "KittyPetSuit",
 			amtMult: 4,
 			maxEnchants: 3,
-			forceEquip: true,
+			//forceEquip: true,
 			cursesuffix: "",
 			hexlist: "Common", enchantlist: "Common", hexchance: 0.5, enchantchance: 1, alwaysenchanthex: true,
 			unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,

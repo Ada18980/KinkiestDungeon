@@ -13,6 +13,13 @@ Vague todo:
 
 - TODO add scroll to log, rep
 
+4.79 (Oct 2023)
+- New perks: Fortified, Minefield
+- Fixed some bugs
+- New barricade type: Blast Door
+- You can now buy items from NPC inventories, but they will gouge you if they aren't a shopkeeper!
+- Added a few new shop types
+
 4.78 (Oct 2023)
 - New enemies: Void Demon, Earth Keeper
 - New barricade types

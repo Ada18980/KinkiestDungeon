@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.78"
+KinkyDungeon,"Kinky Dungeon v4.79"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -5766,7 +5766,7 @@ KinkyDungeonSpellCastEarthfield,The EnemyName creates a zone of increased defens
 KinkyDungeonSpellCastParasolBuff,"EnemyName uses a charm to buff an enemy's Magic Armor and Evasion!"
 KinkyDungeonSpellCastZombieBuff,"EnemyName uses a glowing talisman to buff an undead's physical armor and speed!"
 KinkyDungeonSpellCastEarthrune,You create a zone of increased defense!
-KinkyDungeonSpellCastWaterrune,You create a protective zone!
+KinkyDungeonSpellCastWaterRune,You create a protective zone!
 KinkyDungeonSpellCastIcerune,You create a fan of icicles!
 
 KinkyDungeonSpellWall,Wall
@@ -7423,7 +7423,7 @@ KinkyDungeonRemindJailRobotPull,"Apply takedown protocol."
 KinkyDungeonRemindJailRobotStun,"Aggressive target detected. Deploying countermeasures."
 KinkyDungeonRemindJailRobotPickpocket,"Contraband detected. Confiscating."
 KinkyDungeonRemindJailRobotLock,"Increasing strictness level."
-KinkyDungeonRemindJailRobotIntro,"Unit PRTN identifying."
+KinkyDungeonRemindJailRobotIntro,"Unit PTRN identifying."
 KinkyDungeonRemindJailChaseRobotDefend0,"Red alert. Joining combat."
 KinkyDungeonRemindJailChaseRobotDefend1,"Battle stations."
 KinkyDungeonRemindJailChaseRobotDefend2,"Target identified."
@@ -8285,7 +8285,7 @@ KinkyDungeonRemindJailDryadPull,"You will come with me."
 KinkyDungeonRemindJailDryadStun,"I regret to inform you that your battle ends here."
 KinkyDungeonRemindJailDryadPickpocket,"You won't be needing that."
 KinkyDungeonRemindJailDryadLock,"There we go."
-KinkyDungeonRemindJailDryadIntro,"My name? Uh... let's go with PRTN."
+KinkyDungeonRemindJailDryadIntro,"My name? Uh... let's go with PTRN."
 KinkyDungeonRemindJailChaseDryadDefend0,"You will not get away with this, outsider!"
 KinkyDungeonRemindJailChaseDryadDefend1,"You shall pay with your freedom."
 KinkyDungeonRemindJailChaseDryadDefend2,"Ninril demands justice."
@@ -8339,7 +8339,7 @@ KinkyDungeonRemindJailMushyPull,"Come here!"
 KinkyDungeonRemindJailMushyStun,"Got her!!!"
 KinkyDungeonRemindJailMushyPickpocket,"Take!"
 KinkyDungeonRemindJailMushyLock,"Secure!"
-KinkyDungeonRemindJailMushyIntro,"Greetings Madame, you may call me PRTN."
+KinkyDungeonRemindJailMushyIntro,"Greetings Madame, you may call me PTRN."
 KinkyDungeonRemindJailChaseMushyDefend0,"Defend!"
 KinkyDungeonRemindJailChaseMushyDefend1,"Protect!"
 KinkyDungeonRemindJailChaseMushyDefend2,"Fight!"
@@ -8447,7 +8447,7 @@ KinkyDungeonRemindJailMummyPull,"Come along."
 KinkyDungeonRemindJailMummyStun,"*grins*"
 KinkyDungeonRemindJailMummyPickpocket,"You won't be needing this."
 KinkyDungeonRemindJailMummyLock,"Quit struggling~"
-KinkyDungeonRemindJailMummyIntro,"My true name is unpronouncible in your tongue. But you may call me PRTN."
+KinkyDungeonRemindJailMummyIntro,"My true name is unpronouncible in your tongue. But you may call me PTRN."
 KinkyDungeonRemindJailChaseMummyDefend0,"She brings curses!"
 KinkyDungeonRemindJailChaseMummyDefend1,"An intruder confronts us!"
 KinkyDungeonRemindJailChaseMummyDefend2,"Your fate is already sealed~"
@@ -8609,7 +8609,7 @@ KinkyDungeonRemindJailDomMaidPull,"Get over here!"
 KinkyDungeonRemindJailDomMaidStun,"Hmph. Stay down."
 KinkyDungeonRemindJailDomMaidPickpocket,"Give me that."
 KinkyDungeonRemindJailDomMaidLock,"'Click!'"
-KinkyDungeonRemindJailDomMaidIntro,"Mistress PRTN, reporting for duty."
+KinkyDungeonRemindJailDomMaidIntro,"Mistress PTRN, reporting for duty."
 KinkyDungeonRemindJailChaseDomMaidDefend0,"No time to waste."
 KinkyDungeonRemindJailChaseDomMaidDefend1,"Looks like the reports are correct. Stop her!"
 KinkyDungeonRemindJailChaseDomMaidDefend2,"Moving in to assist."
@@ -10352,8 +10352,28 @@ rBlacksmithShopAxe,"(The SPEAKER nods)|The best defense is a good offense."
 rBlacksmithShopShield,"(The SPEAKER nods)|You can never be too careful."
 rBlacksmithShopTrapCuffs,"(The SPEAKER smiles)|Can never be too prepared~"
 
+rShopBuy,"(Select an item to buy from the SPEAKER)"
+rShopBuyAttack,"(Attack the SPEAKER?)"
+dShopBuy,(Buy ITM# for IC# gp)
+rShopBuyItem,"(The SPEAKER sells you the item)"
+rShopBuy_Fail,"(The SPEAKER shakes her head)|I think you'd be better off without that~"
+rShopBuy_FailSub,"(The SPEAKER looks embarassed)|I can't sell you that, miss..."
+rShopBuy_FailBrat,"(The SPEAKER blushes)|Actually, I was saving that for myself..."
+rShopBuy_FailDom,"(The SPEAKER grins)|Good girls don't need one of those~"
+rShopBuy_FailRobot,"(The SPEAKER buzzes)|Error, insufficient access privileges."
+rShopBuy_NoMoney,"(The SPEAKER giggles at your empty pockets)|You can't afford such things, silly~"
+rShopBuy_NoMoneySub,"(The SPEAKER pauses nervously)|Um miss, I don't think you can afford that..."
+rShopBuy_NoMoneyBrat,"(The SPEAKER frowns)|What does this look like, a charity?"
+rShopBuy_NoMoneyDom,"(The SPEAKER smules)|You'll have to secure that by other means, I think~"
+rShopBuy_NoMoneyRobot,"(The SPEAKER beeps)|Insufficient currency."
 
-rPotionSell,"(The SPEAKER approaches you with an offer)|Greetings! I am a potion trader.|Give me your strongest potions!|I pay cash!"
+dShopBuySell,(Look at what she wants to buy)
+dShopBuyAttack,You're giving me everything you have.
+dShopBuyAttackGag,(Flail threateningly at her)
+dShopBuyAttack_Confirm,(Do it)
+dShopBuyAttack_Leave,(Back off)
+
+rPotionSell,"(The SPEAKER approaches you with an offer)|Greetings! I am the potion seller.|I buy and sell only the strongest potions!|"
 rPotionSellAttack,"(The SPEAKER doesn't look surprised)|Okay, just let me set these down real quick..."
 rPotionSellPotionMana,"(The SPEAKER smiles)|A spellcaster will have great use for this!"
 rPotionSellManaOrb,"(The SPEAKER smiles)|Wow! That's a lot of mana!|It requires a skilled mage to tap into, though..."
@@ -10403,6 +10423,8 @@ rWolfgirlSellMistressKey,"(The SPEAKER grins)|Are you willing to part with this?
 rWolfgirlSellAncientPowerSource,"(The SPEAKER smiles)|Aha!|Fantastic."
 rWolfgirlSellAncientPowerSourceSpent,"(The SPEAKER frowns)|I'll take it, I guess..."
 rWolfgirlSellEnchantedGrinder,"(The SPEAKER smiles)|Oooh~!|I love technology!"
+rWolfgirlSellManaOrb,"(The SPEAKER nods)|A rare find!"
+
 
 rNinjaSell,"(The SPEAKER surprises you)|Greetings, traveler.|I am looking for tools to aid in my mission."
 rNinjaSellAttack,"(The SPEAKER doesn't look surprised)|That's how it is, then."
@@ -10411,12 +10433,45 @@ rNinjaSellBomb,"(The SPEAKER bows)|A bit dangerous, but I'll take it."
 rNinjaSellBola,"(The SPEAKER bows)|A tool of the trade."
 rNinjaSellPotionInvisibility,"(The SPEAKER bows)|A most valuable find."
 
+rGunSell,"(The SPEAKER tilts her shades)|I like to think of myself as a dealer in quality tools."
+rGunSellAttack,"(The SPEAKER reaches for her hip)|I'd think twice if I were you..."
+rGunSellBlaster,"(The SPEAKER smiles)|Nevermere keeps a tight grip on their blueprints.|Thank you."
+rGunSellEscortDrone,"(The SPEAKER smiles)|Nevermere keeps a tight grip on their blueprints.|Thank you."
+rGunSellCrossbow,"(The SPEAKER smiles)|There's always a buyer.|That's just the way things are."
+rGunSellCrossbowPistol,"(The SPEAKER smiles)|Portable. Sustainable. A smart choice."
+rGunSellCrossbowHeavy,"(The SPEAKER smiles)|That's what I'm talking about."
+rGunSellGunpowder,"(The SPEAKER nods)|Yeah... that'll do."
+
+rBombSell,"(The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordnance in order to...|...add to my collection.|Anyway, got any bombs?"
+rBombSellAttack,"(The SPEAKER reaches for her backpack)|I'll blow you away!"
+rBombSellSmokeBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
+rBombSellBomb,"(The SPEAKER rubs her hands together)|Excellent..."
+rBombSellGunpowder,"(The SPEAKER smiles)|Yes! I can make more bombs!"
+
+rCookieSell,"(A distracted SPEAKER munches on a cookie)"
+rCookieSellAttack,"(The SPEAKER continues eating her snack)"
+rCookieSellCookie,"(The SPEAKER plucks the cookie out of your hand)|My favorite!"
+rCookieSellBrownies,"(The SPEAKER eats the brownies slowly, savoring every bite)|Kind of dense, but really good!"
+rCookieSellDonut,"(The SPEAKER takes a bite out of the donut)|A bit heavy on the sprinkles..."
+rCookieSellCookieJailer,"(The SPEAKER blushes)|This is... my new favorite."
+rCookieSellDivineTear,"(The SPEAKER's eyes widen as she wolfs down the golden cookie)|Truly divine..."
+
+
+
+rDressSell,"(The SPEAKER is reading a kinky fashion magazine)|Why hello gorgeous~|You seem like you know your way around fashion.|Say, I've been on the hunt for unique designs..."
+rDressSellAttack,"(The SPEAKER pouts)|I don't like your attitude."
+rDressSellBindingDress,"(The SPEAKER smiles)|Classic vintage!|I approve~"
+rDressSellDressBra,"(The SPEAKER giggles)|A girls best friend, eh?"
+rDressSellDressGag,"(The SPEAKER giggles)|A girls best friend, eh?"
+rDressSellMikoDress,"(The SPEAKER gasps)|What an amazing find!!!"
+
 rGhostSell,"(The SPEAKER runs up to you)|Hello!|You wouldn't happen to have seen any ghosts lately?|I'm gathering evidence!"
 rGhostSellAttack,"(The SPEAKER gasps)|You wouldn't!"
 rGhostSellElfCrystal,"(The SPEAKER shakes your hand)|Ah! Ghosts love these!"
 rGhostSellEctoplasm,"(The SPEAKER smiles)|This looks like strong evidence for my investigation!"
 rGhostSellPotionInvisibility,"(The SPEAKER grins)|Woah! That's so cool!"
 
+dItemShopBuy,(Look at what she has to sell)
 dItemShopAttack,You're giving me everything you have.
 dItemShopAttackGag,(Flail threateningly at her)
 dItemShopAttack_Confirm,(Do it)
@@ -12631,6 +12686,12 @@ KinkyDungeonStatMummy,"Bast's Blessing"
 KinkyDungeonStatDescMummy,"You were granted undead immortality by Bast, granting a bite, claws, catlike senses, and stamina regen scaling with your current WP. Your WP gain is halved and you get -100 Fire Resist."
 
 
+KinkyDungeonStatFortify_Trap,"Minefield"
+KinkyDungeonStatDescFortify_Trap,"Booby traps set by enemies are much more common."
+KinkyDungeonStatFortify_Barricade,"Fortified"
+KinkyDungeonStatDescFortify_Barricade,"Barricades set up by enemies do not expire, and enemies set them up even when not alerted."
+
+
 KDFocusControlsAutoPassHelplessAllies,"Pass thru helpless allies"
 KDFocusControlsAutoPassHelplessEnemies,"Pass thru helpless allies"
 KDFocusControlsAutoPassAllies,"Pass thru allies"
@@ -12688,3 +12749,16 @@ KinkyDungeonSpellBubbleexp,Enchanted Bubble
 KDWaterBubble,A bubble of magic water envelops you!
 KinkyDungeonBuffWaterBubble,"Magical water reduces your accuracy and slows you significantly!"
 KinkyDungeonBuffBattleTrance,You attack twice!
+
+KDDoorAccessDenied0,"Access denied."
+KDDoorAccessDenied1,"Facility is under lockdown."
+KDDoorAccessDenied2,"Please scan ID to continue."
+
+NameBarricadeSecurityDoor,Security Door
+KillBarricadeSecurityDoor,"You break through the security door!"
+
+NameBarricadeHighSecurityDoor,High Security Door
+KillBarricadeHighSecurityDoor,"You knock down the security door!"
+
+NameBarricadeBlastDoor,Blast Door
+KillBarricadeBlastDoor,"You knock down the blast door!"

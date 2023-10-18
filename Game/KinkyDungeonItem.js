@@ -117,7 +117,7 @@ function KinkyDungeonDropItem(Item, Origin, AllowOrigin, noMsg, allowEnemies) {
 	return false;
 }
 
-function KinkyDungeonItemEvent(Item) {
+function KinkyDungeonItemEvent(Item, nomsg) {
 	let color = "white";
 	let priority = 1;
 	let sfx = "Coins";
@@ -239,9 +239,12 @@ function KinkyDungeonItemEvent(Item) {
 
 	}
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
-	KinkyDungeonSendActionMessage(priority, TextGet("ItemPickup" + name).replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1);
-	if (!KDCanSeeDroppedItem(Item))
-		KinkyDungeonSendActionMessage(priority + 1, TextGet("ItemFoundHidden").replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1);
+	if (!nomsg) {
+		KinkyDungeonSendActionMessage(priority, TextGet("ItemPickup" + name).replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1);
+		if (!KDCanSeeDroppedItem(Item))
+			KinkyDungeonSendActionMessage(priority + 1, TextGet("ItemFoundHidden").replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1);
+
+	}
 }
 
 

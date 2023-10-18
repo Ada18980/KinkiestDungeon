@@ -248,7 +248,7 @@ function KinkyDungeonPayShrine(type) {
 			if (KinkyDungeonShopIndex > 0) KinkyDungeonShopIndex -= 1;
 
 			KDGameData.ShopRewardProgram += cost;
-			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, true);
+			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, true, true);
 			if (!KDGameData.ShopRewardProgramThreshold) KDGameData.ShopRewardProgramThreshold = 500;
 			if (!KDGameData.ShopRewardProgram) KDGameData.ShopRewardProgram = 0;
 			if (point && KDGameData.ShopRewardProgram > KDGameData.ShopRewardProgramThreshold) {

@@ -713,7 +713,7 @@ function KinkyDungeonLoad() {
 			KinkyDungeonSaveMode = localStorage.getItem("KinkyDungeonSaveMode") != undefined ? localStorage.getItem("KinkyDungeonSaveMode") == "True" : false;
 			KinkyDungeonHardMode = localStorage.getItem("KinkyDungeonHardMode") != undefined ? localStorage.getItem("KinkyDungeonHardMode") == "True" : false;
 			KinkyDungeonExtremeMode = localStorage.getItem("KinkyDungeonExtremeMode") != undefined ? localStorage.getItem("KinkyDungeonExtremeMode") == "True" : false;
-			KinkyDungeonPerksMode = localStorage.getItem("KinkyDungeonPerksMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonEasyMode")) || 0 : 0;
+			KinkyDungeonPerksMode = localStorage.getItem("KinkyDungeonPerksMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerksMode")) || 0 : 0;
 			KinkyDungeonRandomMode = localStorage.getItem("KinkyDungeonRandomMode") != undefined ? localStorage.getItem("KinkyDungeonRandomMode") == "True" : false;
 			KinkyDungeonEasyMode = localStorage.getItem("KinkyDungeonEasyMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonEasyMode")) || 0 : 0;
 
@@ -2728,7 +2728,7 @@ let afterLoaded = false;
 
 /**
  * Dummy function. You can modify this function as part of your mod like so:
- * function _KDModsAfterLoad = KDModsAfterLoad;
+ * let _KDModsAfterLoad = KDModsAfterLoad;
  * KDModsAfterLoad = () => {
  * [Your stuff here]
  * _KDModsAfterLoad();

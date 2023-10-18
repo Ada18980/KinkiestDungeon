@@ -376,7 +376,8 @@ let KDCommanderOrders = {
 		// Also produces barricades
 		// Role assignment
 		filter: (enemy, data) => {
-			let aware = enemy.aware || enemy.vp > 0 || KDGameData.tickAlertTimer;
+			let fort = KinkyDungeonStatsChoice.get("Fortify_Barricade");
+			let aware = enemy.aware || enemy.vp > 0 || KDGameData.tickAlertTimer || fort;
 			if (!enemy.IntentAction && data.aggressive && aware && !KDIsImmobile(enemy) && !KDEnemyHasFlag(enemy, "noGuard")) {
 				let xx = KinkyDungeonPlayerEntity.x + KD_Avg_VX*4;
 				let yy = KinkyDungeonPlayerEntity.y + KD_Avg_VY*4;
@@ -389,8 +390,8 @@ let KDCommanderOrders = {
 				return (d1 > 1.5
 					|| KDAssaulters >= KDMaxAssaulters
 					|| enemy.hp > enemy.Enemy.maxhp * 0.6)
-					&& (dist < 12 || enemy.aware || enemy.vp > 0)
-					&& (enemy.aware || enemy.x != enemy.gxx || enemy.y != enemy.gyy)
+					&& (dist < 12 || enemy.aware || enemy.vp > 0 || fort)
+					&& (enemy.aware || enemy.x != enemy.gxx || enemy.y != enemy.gyy || fort)
 					&& (!enemy.aware || !KDEnemyIsTemporary(enemy));
 			}
 			return false;
@@ -414,8 +415,9 @@ let KDCommanderOrders = {
 
 		// Role maintenance
 		maintain: (enemy, data) => {
+			let fort = KinkyDungeonStatsChoice.get("Fortify_Barricade");
 			if (!enemy.IntentAction && !(KDEnemyHasFlag(enemy, "noGuard") || KDEnemyHasFlag(enemy, "targ_ally") || KDEnemyHasFlag(enemy, "targ_npc"))
-				&& (KDGameData.tickAlertTimer || KDEnemyHasFlag(enemy, "CMDR_stationed") || KDEnemyHasFlag(enemy, "CMDR_moveToChoke"))
+				&& (KDGameData.tickAlertTimer || fort || KDEnemyHasFlag(enemy, "CMDR_stationed") || KDEnemyHasFlag(enemy, "CMDR_moveToChoke"))
 				&& (!enemy.aware || !KDEnemyIsTemporary(enemy))) {
 				let xx = KinkyDungeonPlayerEntity.x + KD_Avg_VX*2;
 				let yy = KinkyDungeonPlayerEntity.y + KD_Avg_VY*2;
@@ -427,7 +429,7 @@ let KDCommanderOrders = {
 				return (d1 > 1.5
 					|| KDAssaulters >= KDMaxAssaulters
 					|| enemy.hp > enemy.Enemy.maxhp * 0.6)
-				&& (dist < 24 || enemy.aware || enemy.vp > 0);
+				&& (dist < 24 || enemy.aware || enemy.vp > 0 || fort);
 			}
 			return false;
 		},
@@ -531,24 +533,35 @@ let KDCommanderOrders = {
 
 			// Place barricades
 			if (enemy.Enemy.bound && !KDHelpless(enemy) && (!enemy.Enemy.tags?.minor || KDRandom() < 0.25)) {
-				let placed = false;
+				//let placed = false;
+				let cpOverride = KinkyDungeonStatsChoice.get("Fortify_Trap");
+				let ltOverride = KinkyDungeonStatsChoice.get("Fortify_Barricade");
 				for (let xxx = enemy.x - 1; xxx <= enemy.x + 1; xxx++) {
 					for (let yyy = enemy.y - 1; yyy <= enemy.y + 1; yyy++) {
-						if (!placed && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(xxx, yyy)) && KDStationedChokepointsDist[xxx + ',' + yyy]
+						if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(xxx, yyy))
 							&& !KinkyDungeonVisionGet(xxx, yyy)) {
-							let trap = !KDEffectTileTags(xxx, yyy).trap ? KDGetTrapSpell(enemy, xxx, yyy) : "";
-							if (trap && KDRandom() < 0.5) {
-								placed = true;
+							let checkpoint = KDStationedChokepointsDist[xxx + ',' + yyy];
+							let trap = !KDEffectTileTags(xxx, yyy).trap ? KDGetTrapSpell(enemy, xxx, yyy, checkpoint) : "";
+							if (trap && KDRandom() < (checkpoint ? 0.5 : (cpOverride ? 0.01 : 0))) {
+								//placed = true;
 								KinkyDungeonCastSpell(xxx, yyy, KinkyDungeonFindSpell(trap, true), enemy, undefined);
 							} else if (KinkyDungeonNoEnemy(xxx, yyy, true)) {
-								let barricade = KDGetBarricade(enemy, xxx, yyy);
+								let barricade = KDGetBarricade(enemy, xxx, yyy, checkpoint);
 								if (barricade) {
 									let en = DialogueCreateEnemy(xxx, yyy, barricade);
 									if (en) {
-										placed = true;
+										//placed = true;
 										en.faction = KDGetFaction(enemy);
-										en.maxlifetime = 50;
-										en.lifetime = 200;
+										let lt = KDBarricades[barricade].lifetime;
+										if (lt != undefined) {
+											if (!ltOverride) {
+												en.maxlifetime = 50;
+												en.lifetime = 200;
+											}
+										} else if (lt < 9000) {
+											en.maxlifetime = lt*0.25;
+											en.lifetime = lt;
+										}
 									}
 								}
 							}
@@ -623,15 +636,17 @@ let KDCommanderOrders = {
  * @param {entity} enemy
  * @param {number} x
  * @param {number} y
+ * @param {boolean} checkpoint
  * @returns {string}
  */
-function KDGetBarricade(enemy, x, y, type = []) {
+function KDGetBarricade(enemy, x, y, checkpoint = false, type = []) {
 	/** @type {Record<string, number>} */
 	let traps = {};
 	let max = 0;
+	if (!checkpoint) return ""; // TODO allow optional
 	for (let obj of Object.keys(KDBarricades)) {
-		if (KDBarricades[obj].filter(enemy, x, y, type)) {
-			traps[obj] = KDBarricades[obj].weight(enemy, x, y, type);
+		if (KDBarricades[obj].filter(enemy, x, y, checkpoint, type)) {
+			traps[obj] = KDBarricades[obj].weight(enemy, x, y, checkpoint, type);
 			if (traps[obj] > max) max = traps[obj];
 		}
 	}
@@ -651,122 +666,135 @@ function KDGetBarricade(enemy, x, y, type = []) {
  */
 let KDBarricades = {
 	"Barricade": {
-		filter: (enemy, x, y, type) => {
-			return !enemy.Enemy.tags.leather && !enemy.Enemy.tags.rope && !enemy.Enemy.tags.slime;
+		filter: (enemy, x, y, checkpoint, type) => {
+			return !enemy.Enemy.tags.leather && !enemy.Enemy.tags.rope && !enemy.Enemy.tags.slime && !enemy.Enemy.tags.robot && !enemy.Enemy.tags.dollsmith && !enemy.Enemy.tags.cyborg;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 1;
 		},
 	},
-	"BarricadeRobot": {
-		filter: (enemy, x, y, type) => {
-			return enemy.Enemy.tags.robot || enemy.Enemy.tags.cyborg;
+	"BarricadeBlastDoor": {
+		filter: (enemy, x, y, checkpoint, type) => {
+			let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
+			let params = KinkyDungeonMapParams[altRoom?.useGenParams ? altRoom.useGenParams : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+			if (params?.enemyTags?.includes("oldrobot"))
+				return true;
+			return false;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
+			return 100;
+		},
+		lifetime: 9999,
+	},
+	"BarricadeRobot": {
+		filter: (enemy, x, y, checkpoint, type) => {
+			return (enemy.Enemy.tags.robot || enemy.Enemy.tags.cyborg) && !enemy.Enemy.tags.oldrobot;
+		},
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 20;
 		},
 	},
 	"BarricadeMagic": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.unlockCommandLevel > 0;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 15;
 		},
 	},
 	"BarricadeConcrete": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.Security?.level_tech > 0 || KDRandom() < 0.1 * KDEnemyRank(enemy);
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 11;
 		},
 	},
 	"BarricadeMetal": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.metal;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 25;
 		},
 	},
 	"ChaoticCrystal": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.chaos;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 25;
 		},
 	},
 	"GiantMushroom": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.mushroom;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 25;
 		},
 	},
 	"BarricadeFire": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.fire;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 25;
 		},
 	},
 	"BarricadeWater": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.water;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 25;
 		},
 	},
 	"BarricadeIce": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.ice;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 25;
 		},
 	},
 	"BarricadeEarth": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.earth;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 25;
 		},
 	},
 	"BarricadeElectric": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.electric;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 25;
 		},
 	},
 	"BarricadeAir": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.air;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 25;
 		},
 	},
 	"BarricadeShadowMetal": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.shadow || enemy.Enemy.tags?.demon;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 11;
 		},
 	},
 	"BarricadeShadow": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.shadow;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 25;
 		},
 	},
@@ -777,15 +805,16 @@ let KDBarricades = {
  * @param {entity} enemy
  * @param {number} x
  * @param {number} y
+ * @param {boolean} checkpoint
  * @param {string[]} type
  * @returns {string}
  */
-function KDGetTrapSpell(enemy, x, y, type = []) {
+function KDGetTrapSpell(enemy, x, y, checkpoint = false, type = []) {
 	/** @type {Record<string, number>} */
 	let traps = {};
 	for (let obj of Object.keys(KDBoobyTraps)) {
-		if (KDBoobyTraps[obj].filter(enemy, x, y, type))
-			traps[obj] = KDBoobyTraps[obj].weight(enemy, x, y, type);
+		if (KDBoobyTraps[obj].filter(enemy, x, y, checkpoint, type))
+			traps[obj] = KDBoobyTraps[obj].weight(enemy, x, y, checkpoint, type);
 	}
 	return KDGetByWeight(traps);
 }
@@ -796,74 +825,74 @@ function KDGetTrapSpell(enemy, x, y, type = []) {
  */
 let KDBoobyTraps = {
 	"RuneTrap_Rope": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.rope || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.ropeRestraints);
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 15;
 		},
 	},
 	"RuneTrap_Belt": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.leather || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.leatherRestraints);
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 15;
 		},
 	},
 	"RuneTrap_Chain": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.metal || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.chainRestraints) || enemy.Enemy.tags?.magicchain;
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 15;
 		},
 	},
 	"RuneTrap_Ribbon": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.ribbon || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.ribbonRestraints || enemy.Enemy.tags?.ribbonRestraintsHarsh));
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 15;
 		},
 	},
 	"RuneTrap_Leather": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.leather || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.leatherRestraints && enemy.Enemy.tags?.antiMagic);
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 7;
 		},
 	},
 	"RuneTrap_Latex": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.latex || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.latexRestraints);
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 7;
 		},
 	},
 	"RuneTrap_Rubber": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.latex || enemy.Enemy.tags?.slime || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.latexEncase || enemy.Enemy.tags?.latexEncaseRandom));
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 20;
 		},
 	},
 	"RuneTrap_Slime": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.alchemist || enemy.Enemy.tags?.slime || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.slimeRestraints || enemy.Enemy.tags?.slimeRestraintsRandom));
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 20;
 		},
 	},
 	"RuneTrap_Vine": {
-		filter: (enemy, x, y, type) => {
+		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.elf || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.nature || enemy.Enemy.tags?.vineRestraints));
 		},
-		weight: (enemy, x, y, type) => {
+		weight: (enemy, x, y, checkpoint, type) => {
 			return 20;
 		},
 	},
