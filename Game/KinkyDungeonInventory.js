@@ -146,7 +146,7 @@ let KDSpecialFilters = {
 		},
 		Melee: (item, handle) => {
 			if (handle) KDFilterFilters[Weapon].Ranged = false;
-			return KDWeapon(item)?.tags?.includes("ranged");
+			return !KDWeapon(item)?.tags?.includes("ranged");
 		},
 		Ability: (item, handle) => {
 			return KDWeapon(item)?.special != undefined;

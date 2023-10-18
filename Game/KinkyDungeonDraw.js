@@ -3163,7 +3163,7 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 		}
 	}
 	for (let b of KDMapData.Bullets) {
-		if (b.bullet?.bulletColor) {
+		if (b.bullet?.bulletColor && b.bullet.bulletLight > 0) {
 			l = {x: b.x, y:b.y, y_orig: b.y, brightness: b.bullet.bulletLight, color: b.bullet.bulletColor};
 			data.lights.push(l);
 		}

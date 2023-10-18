@@ -1414,8 +1414,8 @@ function KDShopBuyDialogue(name) {
 					if (enemy.items?.length > 0) items = enemy.items;
 				}
 				let item = items[i];
-				let tooSubby = (KinkyDungeonGoddessRep.Ghost + 50) / 10 > KDItemSubThreshold(item);
-				if (!tooSubby && KinkyDungeonGold >= KDGameData.CurrentDialogMsgValue["ItemCost"+i]) {
+				let tooSubby = ((KinkyDungeonGoddessRep.Ghost + 50) / 10) > KDItemSubThreshold(item);
+				if (!tooSubby && KinkyDungeonGold >= KDGameData.CurrentDialogMsgValue["IC"+i]) {
 					KinkyDungeonItemEvent({name: item, amount: 1}, true);
 
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
