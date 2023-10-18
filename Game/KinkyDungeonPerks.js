@@ -201,6 +201,8 @@ let KinkyDungeonStatsPresets = {
 	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 2, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
 
 	"NovicePet":  {category: "Major", id: "NovicePet", cost: 1},
+	"Fortify_Barricade":  {category: "Major", id: "Fortify_Barricade", cost: -2},
+	"Fortify_Trap":  {category: "Major", id: "Fortify_Trap", cost: -2},
 	"CurseSeeker":  {category: "Major", id: "CurseSeeker", cost: -3},
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1},
 	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1},

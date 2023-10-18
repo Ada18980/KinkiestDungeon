@@ -2800,7 +2800,7 @@ let KDEventMapSpell = {
 				if (power > 0 && wouldHit && !wouldHit2 && KDGameData.AncientEnergyLevel >= (e.energyCost || 0)) {
 					if (buff) {
 						let enemyPower = (data.attacker.Enemy?.power || 1) * 0.01;
-						KinkyDungeonSendTextMessage(4, TextGet("KDBattleRhythmDodge"), "#ff8800", 2);
+						KinkyDungeonSendTextMessage(4, TextGet("KDBattleRhythmDodge"), "#aaff00", 2);
 						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency*enemyPower*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
 						buff.power = Math.max(0, buff.power - efficiency*enemyPower);
 						if (buff.power <= 0) buff.duration = 0;
@@ -5101,7 +5101,12 @@ let KDEventMapEnemy = {
 		"damageOnMove": (e, enemy, data) => {
 			if (enemy == data.enemy)
 				KinkyDungeonDamageEnemy(enemy, {damage: enemy.Enemy.maxhp * e.mult + e.power, type: "crush"}, false, true, undefined, undefined, undefined);
-		}
+		},
+		"removeIfRobot": (e, enemy, data) => {
+			if (data.enemy?.Enemy.tags?.robot && KDistChebyshev(data.enemy.x - enemy.x, data.enemy.y - enemy.y) < 1.5) {
+				enemy.hp = 0;
+			}
+		},
 	},
 	"passout": {
 		"delete": (e, enemy, data) => {
@@ -5360,7 +5365,13 @@ let KDEventMapEnemy = {
 					}
 				}
 			}
-		}
+		},
+		"tauntMsg": (e, enemy, data) => {
+			if (data.enemy == enemy) {
+				KinkyDungeonSendDialogue(enemy, TextGet(e.msg + Math.floor(Math.random() * e.power)), KDGetColor(enemy), e.time || 6, 1, true, true);
+			}
+		},
+
 	},
 	"hit": {
 		"spellReflect": (e, enemy, data) => {

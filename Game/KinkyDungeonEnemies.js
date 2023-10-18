@@ -1902,8 +1902,8 @@ function KDDropItems(enemy) {
 		KinkyDungeonItemDrop(enemy.x, enemy.y, enemy.Enemy.dropTable, enemy.summoned);
 		enemy.droppedItems = true;
 		let dropped = null;
-		if (enemy.data && enemy.data.shop && KDShops[enemy.data.shop] && KDShops[enemy.data.shop].items) {
-			for (let i of KDShops[enemy.data.shop].items) {
+		if (enemy.data && enemy.data.shop && KDShops[enemy.data.shop] && KDShops[enemy.data.shop].itemsdrop) {
+			for (let i of KDShops[enemy.data.shop].itemsdrop) {
 				if (!enemy.tempitems || !enemy.tempitems.includes(i)) {
 					dropped = {x:enemy.x, y:enemy.y, name: i};
 					KDMapData.GroundItems.push(dropped);

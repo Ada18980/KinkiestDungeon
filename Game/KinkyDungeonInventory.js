@@ -1315,7 +1315,7 @@ function KinkyDungeonDrawQuickInv() {
 	let Wheight = KinkyDungeonQuickGrid(weapons.length-1, H, V, 6).y;
 	let Rheight = 480;
 
-	let TF = KDTextField("QInvFilter", 525, 150, 250, 54, "text", "", "45");
+	let TF = KDTextField("QInvFilter", 75, 350, 350, 54, "text", "", "45");
 	if (TF.Created) {
 		KDInvFilter = "";
 		TF.Element.oninput = (event) => {

@@ -398,7 +398,7 @@ let KinkyDungeonEnemies = [
 		stamina: 4,
 		visionRadius: 7, maxhp: 1, minLevel:0, weight:-10, movePoints: 1.25, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "grope",
 		terrainTags: {}, shrines: ["Illusion"], floors:KDMapInit([]),},
-	{name: "MaidforceMafia", faction: "Maidforce", bound: "MaidforceMafia", clusterWith: "maid", color: "#814BB7", playLine: "GunnerMaid", tags: KDMapInit(["leashing", "opendoors", "imprisonable", "tickleweakness", "human", "elite", "maid", "ranged", "maidRestraints", "handcuffer", "maidVibeRestraintsLimited", "jail", "jailer", "hunter"]), followLeashedOnly: true, followRange: 4, AI: "hunt", guardChance: 0.6, projectileAttack: true, evasion: -0.25,
+	{name: "MaidforceMafia", faction: "Maidforce", bound: "MaidforceMafia", clusterWith: "maid", color: "#814BB7", playLine: "GunnerMaid", tags: KDMapInit(["leashing", "gun", "opendoors", "imprisonable", "tickleweakness", "human", "elite", "maid", "ranged", "maidRestraints", "handcuffer", "maidVibeRestraintsLimited", "jail", "jailer", "hunter"]), followLeashedOnly: true, followRange: 4, AI: "hunt", guardChance: 0.6, projectileAttack: true, evasion: -0.25,
 		spells: ["RubberBullets"],  spellCooldownMult: 1, spellCooldownMod: 0, kite: 3, noKiteWhenHarmless: true, noSpellsWhenHarmless: true, armor: 0.8,
 		events: [
 			{trigger: "tick", type: "secretToy"},
@@ -412,7 +412,7 @@ let KinkyDungeonEnemies = [
 		attackLock: "White",
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]},
 	{name: "MaidforceMini", faction: "Maidforce", bound: "MaidforceMini", clusterWith: "maid", color: "#814BB7", playLine: "GunnerMaid",
-		tags: KDMapInit(["leashing", "opendoors", "imprisonable", "tickleweakness", "human", "elite", "maid", "ranged", "maidRestraintsLight", "handcuffer", "jail", "jailer", "hunter"]),
+		tags: KDMapInit(["leashing", "opendoors", "imprisonable", "tickleweakness", "human", "elite", "maid", "ranged", "maidRestraintsLight", "handcuffer", "gun", "jail", "jailer", "hunter"]),
 		followLeashedOnly: true, followRange: 12, AI: "hunt", guardChance: 0.7, projectileAttack: true, evasion: -1.0,
 		spells: ["Minigun", "MinigunWindup"],  spellCooldownMult: 1, spellCooldownMod: 0, noKiteWhenHarmless: true, noSpellsWhenHarmless: true, armor: 1.0, stopToCast: true,
 		events: [
@@ -1619,6 +1619,33 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"obstacle": 4, "obstacletile": 8, "increasingWeight":-1,}, allFloors: true, shrines: [],
 		events: [
 			{trigger: "enemyMove", type: "damageOnMove", power: 1, mult: 0.25},
+		],
+	},
+
+
+	{name: "BarricadeBlastDoor", faction: "Door", color: "#ff9944",
+		nonDirectional: true, noFlip: true,
+		cueSfx: {
+			Block: "Clang",
+			Resist: "Clang",
+			Damage: "ArmorHit",
+		},
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
+		GFX: {
+			lighting: true,
+		},
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+			"soulimmune", "slashresist", "pierceresist", "electricimmune", "unarmedresist", "chainimmune", "glueresist", "tickleimmune", "gropeimmune", "painimmune", "charmimmune",
+		]), spellResist: 0, sneakThreshold: 0.01, immobile: true,
+		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, blockVision: true,
+		visionRadius: 0, maxhp: 11, minLevel:0, weight:-1, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
+		terrainTags: {"obstacle": 4, "obstacletile": 14, "increasingWeight":-1,}, floors:KDMapInit(["bel"]), shrines: [],
+		events: [
+			{trigger: "enemyMove", type: "removeIfRobot"},
+			{trigger: "afterPlayerAttack", type: "tauntMsg", msg: "KDDoorAccessDenied", power: 3},
 		],
 	},
 

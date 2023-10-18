@@ -2063,13 +2063,13 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "Earthfield", selfcast: true, sfx: "Bones", school: "Illusion", manacost: 5, components: ["Verbal"], level:1, type:"inert", buffs: [{id: "Earthfield", type: "Armor", power: 2.0, player: false, enemies: true, noAlly: true, tags: ["armor", "defense"], range: 1.5}], onhit:"", time:6, aoe: 1.5, power: 0, delay: 8, range: 4, size: 3, damage: ""}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 	{name: "Earthrune", selfcast: true, sfx: "Bones", school: "Illusion", manacost: 5, components: ["Verbal"], level:1, type:"inert", buffs: [{id: "Earthfield", type: "Armor", power: 2.0, player: true, enemies: true, onlyAlly: true, tags: ["armor", "defense"], range: 1.5}], onhit:"", time:9, aoe: 1.5, power: 0, delay: 9, range: 4, size: 3, damage: ""}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 	{name: "Icerune", sfx: "MagicSlash", hitsfx: "Freeze", school: "Elements", manacost: 8, components: ["Verbal"], level:1, type:"inert", onhit:"lingering", time: 1, delay: 1, range: 3, size: 3, aoe: 1.5, lifetime: 5, power: 4, lifetimeHitBonus: 3, damage: "ice"}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
-	{name: "Waterrune", selfcast: true, sfx: "Bones", school: "Illusion", manacost: 5, components: ["Verbal"], level:1, type:"inert",
+	{name: "WaterRune", selfcast: true, sfx: "Bones", school: "Illusion", manacost: 5, components: ["Verbal"], level:1, type:"inert",
 		buffs: [
 			{id: "WaterRune", type: "SpellResist", power: 3.0, player: true, enemies: true, onlyAlly: true, tags: ["spellresist", "defense"], range: 1.5},
 			{id: "WaterRune2", type: "MoveSpeed", power: -1.0, player: false, enemies: true, noAlly: true, tags: ["slow", "debuff"], range: 1.5},
 		], onhit:"", time:9, aoe: 1.5, power: 0, delay: 9, range: 4, size: 3, damage: ""}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 
-	{enemySpell: true, name: "RuneTrap_Rope", bulletColor: 0xff73ef, bulletLight: 1, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Rope", bulletColor: 0xff73ef, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Ropes",
@@ -2083,7 +2083,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["rest_rope_weakmagic"], msg: "Rope"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Chain", bulletColor: 0xcf52ff, bulletLight: 1, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Chain", bulletColor: 0xcf52ff, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Chains",
@@ -2097,7 +2097,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["chainRestraintsMagic"], msg: "Chain"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Ribbon", bulletColor: 0xcf52ff, bulletLight: 1, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Ribbon", bulletColor: 0xcf52ff, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Fabric",
@@ -2111,7 +2111,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["ribbonRestraints", "magicRibbonsHarsh"], msg: "Ribbon"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Vine", bulletColor: 0x3b7d4f, bulletLight: 1, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Vine", bulletColor: 0x3b7d4f, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Vines",
@@ -2125,7 +2125,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["vineRestraints"], msg: "Vine"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Belt", bulletColor: 0xffffff, bulletLight: 1, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Belt", bulletColor: 0xffffff, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Belts",
@@ -2139,7 +2139,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["beltRestraints"], msg: "Belt"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Leather", bulletColor: 0xffffff, bulletLight: 1, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Leather", bulletColor: 0xffffff, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Chains",
@@ -2153,7 +2153,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["leatherRestraints", "leatherRestraintsHeavy"], msg: "Leather"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Latex", bulletColor: 0x4fa4b8, bulletLight: 1, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Latex", bulletColor: 0x4fa4b8, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Belts",
@@ -2167,7 +2167,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexRestraints", "latexRestraintsHeavy"], msg: "Latex"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
-	{enemySpell: true, name: "RuneTrap_Rubber", bulletColor: 0xff5277, bulletLight: 1, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Rubber", bulletColor: 0xff5277, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Slime",
@@ -2181,7 +2181,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexEncaseRandom"], msg: "Rubber"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
-	{enemySpell: true, name: "RuneTrap_Slime", bulletColor: 0xff5277, bulletLight: 1, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Slime", bulletColor: 0xff5277, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Slime",

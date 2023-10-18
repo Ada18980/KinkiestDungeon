@@ -14,24 +14,24 @@ let KinkyDungeonConsumables = {
 	"Ectoplasm" : {name: "Ectoplasm", noHands: true, rarity: 1, shop: false, type: "spell", spell: "LesserInvisibility", sfx: "Invis"},
 	"Gunpowder" : {name: "Gunpowder", rarity: 1, shop: true, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "Gunpowder", sfx: "FireSpell"},
 	"EarthRune" : {name: "EarthRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "Earthrune", sfx: "HeavySwing"},
-	"WaterRune" : {name: "WaterRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "Waterrune", sfx: "HeavySwing"},
+	"WaterRune" : {name: "WaterRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "WaterRune", sfx: "HeavySwing"},
 	"Bola" : {name: "Bola", rarity: 0, costMod: -1, shop: false, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "PlayerBola"},
 	"IceRune" : {name: "IceRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "Icerune", sfx: "Freeze"},
 	"Bomb" : {name: "Bomb", rarity: 1, costMod: -1, shop: false, type: "spell", spell: "Bomb", sfx: "MagicSlash"},
 	"ElfCrystal" : {name: "ElfCrystal", noHands: true, rarity: 3, costMod: -1, shop: false, type: "spell", spell: "Slippery", sfx: "MagicSlash"},
 	"EnchantedGrinder" : {name: "EnchantedGrinder", noHands: true, rarity: 4, shop: true, type: "spell", spell: "Cutting", sfx: "Laser"},
 	"MistressKey" : {name: "MistressKey", rarity: 8, costMod: -1, shop: false, type: "goldKey"},
-	"AncientPowerSource" : {name: "AncientPowerSource", noHands: true, rarity: 4, costMod: -1, shop: true, type: "charge", amount: 0.250},
-	"AncientPowerSourceSpent" : {name: "AncientPowerSourceSpent", noHands: true, rarity: 3, costMod: -1, shop: false, type: "recharge"},
-	"ScrollArms" : {name: "ScrollArms", noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoArmsComp", duration: 12, power: 1, aura: "#aaffaa", sfx: "FireSpell"},
-	"ScrollVerbal" : {name: "ScrollVerbal", noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoVerbalComp", duration: 12, power: 1, aura: "#aaaaff", sfx: "FireSpell"},
-	"ScrollLegs" : {name: "ScrollLegs", noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoLegsComp", duration: 12, power: 1, aura: "#ffaaaa", sfx: "FireSpell"},
-	"ScrollPurity" : {name: "ScrollPurity", noHands: true, rarity: 4, shop: true, type: "shrineRemove", shrine: "Vibes", sfx: "FireSpell"},
+	"AncientPowerSource" : {name: "AncientPowerSource", noHands: true, rarity: 4, costMod: -2, shop: true, type: "charge", amount: 0.250},
+	"AncientPowerSourceSpent" : {name: "AncientPowerSourceSpent", noHands: true, rarity: 3, costMod: -3, shop: false, type: "recharge"},
+	"ScrollArms" : {name: "ScrollArms", sub: 0.25, noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoArmsComp", duration: 12, power: 1, aura: "#aaffaa", sfx: "FireSpell"},
+	"ScrollVerbal" : {name: "ScrollVerbal", sub: 0.25, noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoVerbalComp", duration: 12, power: 1, aura: "#aaaaff", sfx: "FireSpell"},
+	"ScrollLegs" : {name: "ScrollLegs", sub: 0.25, noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoLegsComp", duration: 12, power: 1, aura: "#ffaaaa", sfx: "FireSpell"},
+	"ScrollPurity" : {name: "ScrollPurity", sub: 0.25, noHands: true, rarity: 4, shop: true, type: "shrineRemove", shrine: "Vibes", sfx: "FireSpell"},
 
 	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock"},
-	"CuffKeys" : {name: "CuffKeys", rarity: 0, shop: false, type: "CuffKeys", noConsumeOnUse: true},
+	"CuffKeys" : {name: "CuffKeys", rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
 
-	"DivineTear" : {name: "DivineTear", rarity: 4, shop: true, delay: 3, power: 10, noHands: true, duration: 0, sfx: "Cookie", type: "RemoveCurseOrHex", noConsumeOnUse: true},
+	"DivineTear" : {name: "DivineTear", rarity: 4, sub: 0.05, shop: true, delay: 3, power: 10, noHands: true, duration: 0, sfx: "Cookie", type: "RemoveCurseOrHex", noConsumeOnUse: true},
 };
 
 // Separate for organizational purposes

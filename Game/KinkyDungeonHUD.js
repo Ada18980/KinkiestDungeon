@@ -75,7 +75,7 @@ let KDFocusControlButtons = {
 		Special: false,
 	},
 	"AutoPath": {
-		SuppressBeforeCombat: false,
+		SuppressBeforeCombat: true,
 		SuppressDuringCombat: true,
 	},
 };

@@ -72,6 +72,8 @@ interface item extends NamedAndTyped {
 
 interface consumable {
 	name: string,
+	/** 1 - (Rarity * sub value) = sub threshold */
+	sub?: number,
 	rarity: number,
 	type: string,
 	shop?: boolean,
@@ -245,6 +247,8 @@ interface KDRestraintPropsBase {
 	alwaysStruggleable?: boolean,
 	/** Model to use in standalone. Defaults to Asset */
 	Model?: string,
+	/** Sell price of the item */
+	value?: number,
 	/** Used for when the visual asset in BC is different from the actual group of the item*/
 	AssetGroup?: string,
 	/** Dont render item if has the tags */
@@ -2666,8 +2670,9 @@ interface KDSeal {
 }
 
 interface KDBoobyTrap {
-	filter: (enemy: entity, x: number, y: number, type: string[]) => boolean;
-	weight: (enemy: entity, x: number, y: number, type: string[]) => number;
+	filter: (enemy: entity, x: number, y: number, checkpoint: boolean, type: string[]) => boolean;
+	weight: (enemy: entity, x: number, y: number, checkpoint: boolean, type: string[]) => number;
+	lifetime?: number;
 }
 
 interface KDSpecialEnemyBuff {

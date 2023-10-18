@@ -19,8 +19,10 @@ let KDResertNGTags = [
 	"BossDialogueFuuka"
 ];
 
+
+let KDShopPersonalities = ["", "Sub", "Dom", "Brat", "Robot"];
 /**
- * @type {Record<string, {name: string, tags: string[], singletag: string[], chance: number, items?: string[]}>}
+ * @type {Record<string, {name: string, tags: string[], singletag: string[], chance: number, items?: string[], itemsdrop?: string[]}>}
  */
 let KDShops = {};
 
@@ -3203,12 +3205,27 @@ let KDDialogue = {
 			},
 		}
 	},
-	"PotionSell": KDShopDialogue("PotionSell", ["PotionFrigid", "PotionStamina", "PotionMana", "PotionInvisibility"], [], ["witch", "apprentice", "alchemist", "human", "dragon"], 0.2),
-	"ElfCrystalSell": KDShopDialogue("ElfCrystalSell", ["PotionMana", "ElfCrystal", "EarthRune", "WaterRune", "IceRune"], [], ["elf"], 0.25),
-	"ScrollSell": KDShopDialogue("ScrollSell", ["ScrollArms", "ScrollVerbal", "ScrollLegs", "ScrollPurity"], [], ["witch", "apprentice", "elf", "wizard", "dressmaker"], 0.15),
-	"WolfgirlSell": KDShopDialogue("WolfgirlSell", ["MistressKey", "AncientPowerSource", "AncientPowerSourceSpent", "EnchantedGrinder"], [], ["trainer", "alchemist", "human"], 0.2),
-	"NinjaSell": KDShopDialogue("NinjaSell", ["SmokeBomb", "Bola", "Bomb", "PotionInvisibility"], [], ["ninja", "bountyhunter"], 0.2),
-	"GhostSell": KDShopDialogue("GhostSell", ["Ectoplasm", "PotionInvisibility", "ElfCrystal"], [], ["alchemist", "witch", "apprentice", "dressmaker", "dragon"], 0.1),
+	"ShopBuy": KDShopBuyDialogue("ShopBuy"),
+	"PotionSell": KDShopDialogue("PotionSell", ["PotionFrigid", "PotionStamina", "PotionMana", "PotionInvisibility"], [], ["witch", "apprentice", "alchemist", "human", "dragon"], 0.2,
+		["PotionWill", "PotionFrigid"]),
+	"ElfCrystalSell": KDShopDialogue("ElfCrystalSell", ["PotionMana", "ManaOrb", "ElfCrystal", "EarthRune", "WaterRune", "IceRune"], [], ["elf"], 0.25,
+		["ElfCrystal"]),
+	"ScrollSell": KDShopDialogue("ScrollSell", ["ScrollArms", "ScrollVerbal", "ScrollLegs", "ScrollPurity"], [], ["witch", "apprentice", "elf", "wizard", "dressmaker"], 0.15,
+		["ScrollArms", "ScrollVerbal", "ScrollLegs"]),
+	"WolfgirlSell": KDShopDialogue("WolfgirlSell", ["MistressKey", "ManaOrb", "AncientPowerSource", "AncientPowerSourceSpent", "EnchantedGrinder"], [], ["trainer", "alchemist", "human"], 0.2,
+		["AncientPowerSource", "AncientPowerSourceSpent", "AncientPowerSourceSpent"]),
+	"NinjaSell": KDShopDialogue("NinjaSell", ["SmokeBomb", "Bola", "Bomb", "PotionInvisibility"], [], ["ninja", "bountyhunter"], 0.2,
+		["SmokeBomb", "Bola", "Bomb"]),
+	"BombSell": KDShopDialogue("BombSell", ["SmokeBomb", "Gunpowder", "Bomb", "PotionInvisibility"], [], ["miner", "bandit", "gun", "alchemist"], 0.4,
+		["Bomb", "Bomb", "Bomb"]),
+	"CookieSell": KDShopDialogue("CookieSell", ["Cookie", "Brownies", "Donut", "CookieJailer", "DivineTear"], [], ["human"], 0.14,
+		["Cookie", "Brownies", "Donut"]),
+	"GunSell": KDShopDialogue("GunSell", ["Blaster", "EscortDrone", "Gunpowder", "CrossbowHeavy", "CrossbowPistol", "Crossbow"], [], ["maid", "bandit", "gun", "bountyhunter"], 0.33,
+		["CrossbowPistol", "Gunpowder"]),
+	"GhostSell": KDShopDialogue("GhostSell", ["Ectoplasm", "PotionInvisibility", "ElfCrystal"], [], ["alchemist", "witch", "apprentice", "dressmaker", "dragon"], 0.1,
+		["Ectoplasm", "Ectoplasm", "Ectoplasm"]),
+	"DressSell": KDShopDialogue("DressSell", ["BindingDress", "MikoDress", "DressGag", "DressBra"], [], ["dressmaker"], 0.5,
+		["BindingDress", "DressBra", "DressGag"]),
 	// TODO magic book dialogue in which you can read forward and there are traps
 	"GenericAlly": KDAllyDialogue("GenericAlly", [], [], [], 1),
 };
