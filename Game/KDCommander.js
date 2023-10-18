@@ -880,6 +880,14 @@ let KDBoobyTraps = {
 			return 20;
 		},
 	},
+	"RuneTrap_VacCube": {
+		filter: (enemy, x, y, checkpoint, type) => {
+			return enemy.Enemy.tags?.latex || (enemy.Enemy.tags?.latexEncase || enemy.Enemy.tags?.latexEncaseRandom);
+		},
+		weight: (enemy, x, y, checkpoint, type) => {
+			return 7;
+		},
+	},
 	"RuneTrap_Slime": {
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.alchemist || enemy.Enemy.tags?.slime || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.slimeRestraints || enemy.Enemy.tags?.slimeRestraintsRandom));
