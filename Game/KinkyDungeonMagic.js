@@ -1317,26 +1317,27 @@ function KinkyDungeonDrawMagic() {
 let selectedFilters = ["learnable"];
 let genericfilters = ['learnable', 'unlearned', 'learned', 'noupgrade', 'yesupgrade', "upcast"];
 
+
 let KDSpellListIndex = 0;
 let KDSpellListIndexVis = 0;
 let KDMaxSpellPerColumn = 8;
 let KDMaxSpellYY = 480;
 
 function KDFilterSpellPages() {
-	if (!KDGameData.HiddenSpellPages) return KinkyDungeonLearnableSpells;
+	if (!KDGameData.AllowedSpellPages) KDGameData.AllowedSpellPages = {};
 	let pages = [];
 	for (let i = 0; i < KinkyDungeonLearnableSpells.length; i++) {
-		if (!KDGameData.HiddenSpellPages[KinkyDungeonSpellPages[i]]) {
+		if (KDGameData.AllowedSpellPages[KinkyDungeonSpellPages[i]] || KinkyDungeonSpellPagesDefault[KinkyDungeonSpellPages[i]]) {
 			pages.push(KinkyDungeonLearnableSpells[i]);
 		}
 	}
 	return pages;
 }
 function KDFilterSpellPageNames() {
-	if (!KDGameData.HiddenSpellPages) return KinkyDungeonSpellPages;
+	if (!KDGameData.AllowedSpellPages) KDGameData.AllowedSpellPages = {};
 	let pages = [];
 	for (let i = 0; i < KinkyDungeonLearnableSpells.length; i++) {
-		if (!KDGameData.HiddenSpellPages[KinkyDungeonSpellPages[i]]) {
+		if (KDGameData.AllowedSpellPages[KinkyDungeonSpellPages[i]] || KinkyDungeonSpellPagesDefault[KinkyDungeonSpellPages[i]]) {
 			pages.push(KinkyDungeonSpellPages[i]);
 		}
 	}
@@ -1346,7 +1347,7 @@ function KDFilterSpellPageNames() {
 function KDCorrectCurrentSpellPage(pages) {
 	let ret = 0;
 	for (let i = 0; i < KinkyDungeonCurrentSpellsPage; i++) {
-		if (!KDGameData.HiddenSpellPages[KinkyDungeonSpellPages[i]]) {
+		if (!KDGameData.AllowedSpellPages[KinkyDungeonSpellPages[i]]) {
 			ret += 1;
 		}
 	}

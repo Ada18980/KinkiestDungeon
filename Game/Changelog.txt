@@ -13,6 +13,10 @@ Vague todo:
 
 - TODO add scroll to log, rep
 
+
+4.79.4 (Oct 2023)
+- Added Command spells
+
 4.79.3 (Oct 2023)
 - New perks: Directional Vision, Inertia, Heavy Inertia
 

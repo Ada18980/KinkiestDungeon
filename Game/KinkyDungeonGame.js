@@ -345,6 +345,7 @@ function KinkyDungeonInitialize(Level, Load) {
 
 	KinkyDungeonMessageLog = [];
 	KDGameData.RespawnQueue = [];
+
 	KDInitFactions(true);
 	CharacterReleaseTotal(KinkyDungeonPlayer);
 	KDResetData();
@@ -4762,16 +4763,19 @@ let KDKeyCheckers = {
 					if (dialogue.options) {
 						let entries = Object.entries(dialogue.options);
 
-						let II = 0;
+						let II = -KDOptionOffset;
 						let gagged = KDDialogueGagged();
-						for (let i = KDOptionOffset; i < entries.length && II < KDMaxDialogue; i++) {
+						for (let i = 0; i < entries.length && II < KDMaxDialogue; i++) {
 							if ((!entries[i][1].prerequisiteFunction || entries[i][1].prerequisiteFunction(gagged, KinkyDungeonPlayerEntity))
 								&& (!entries[i][1].gagRequired || gagged)
 								&& (!entries[i][1].gagDisabled || !gagged)) {
-								if (entries[i][0] == "Leave" || entries[i][0] == "Continue" || entries[i][1].skip) {
-									KDClickButton(KDOptionOffset + "dialogue" + (i));
-									return true;
+								if (II >= 0) {
+									if (entries[i][0] == "Leave" || entries[i][0] == "Continue" || entries[i][1].skip) {
+										KDClickButton(KDOptionOffset + "dialogue" + (II));
+										return true;
+									}
 								}
+								II += 1;
 							}
 						}
 					}

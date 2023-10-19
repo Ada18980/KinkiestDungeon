@@ -53,6 +53,19 @@ let KinkyDungeonSpellPages = [
 	"Upgrades",
 ];
 
+let KinkyDungeonSpellPagesDefault = {
+	"Upgrade": true,
+	"Elements": true,
+	"Conjure": true,
+	"Illusion": true,
+	"Upgrades": true,
+};
+
+function KDAddSpellPage(page) {
+	if (!KDGameData.AllowedSpellPages) KDGameData.AllowedSpellPages = {};
+	KDGameData.AllowedSpellPages[page] = true;
+}
+
 /**
  * These spells occur in the menu and the player can learn them
  * Spells with NoBuy cannot be bought, but can be looked at.
@@ -68,7 +81,7 @@ let KinkyDungeonLearnableSpells = [
 		// Illusion
 		["ApprenticeLight", "ApprenticeShadow", "ApprenticeMystery", "ApprenticeProjection", "ApprenticeKnowledge"],
 		// Perk exclusive
-		["Bondage", "Offhand", "RogueOffhand", "WizardOffhand", "BattleRhythm", "BattleTrance", "LimitSurge", "Charge", "CombatTraining", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "Sowing", "RogueTargets", "RogueBind", "RogueTraps", "ToolsOfTheTrade", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
+		["Bondage", "Offhand", "RogueOffhand", "WizardOffhand", "AllyCommand", "BattleRhythm", "BattleTrance", "LimitSurge", "Charge", "CombatTraining", "ArcaneBlast", "AkashicConflux", "ArcaneBarrier", "ManaHarvesting", "SecondWind1", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "Peasant", "Sowing", "RogueTargets", "RogueBind", "RogueTraps", "ToolsOfTheTrade", "RogueTraps2", "RogueEscape", "ManaRegen", "StaffUser2" ,"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2","DistractionCast", "ChaoticOverflow", "OrgasmMana1", "OrgasmBuff", "EdgeMana1"],
 	],
 
 	//Page 1: Elements
@@ -120,7 +133,15 @@ let KinkyDungeonLearnableSpells = [
 	],
 ];
 
-
+/**
+ *
+ * @param {string} page
+ * @param {string[][]} list
+ */
+function KDDefineSpellPage(page, list) {
+	KinkyDungeonSpellPages.push(page);
+	KinkyDungeonLearnableSpells.push(list);
+}
 
 
 /**
@@ -130,6 +151,65 @@ let KinkyDungeonLearnableSpells = [
 let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. When you plan to use a mystic seal, you get 3 spells to choose from.
 	"Any": [
 		KDBondageSpell,
+
+		{name: "AllyCommand", tags: ["utility"], school: "Any", spellPointCost: 1, learnPage: ["Command"],
+			autoLearn: [
+				"AllyToggle",
+				"AllyAttention",
+				"AllyDeselect",
+				"AllyMove",
+				"AllyOnMe",
+				"AllyDisperse",
+				"AllyAggressive",
+				"AllyDefensive",
+				"AllyDeselectAll",
+			],
+			manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{name: "AllyToggle", tags: ["utility"], prerequisite: "AllyCommand", quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "AllyToggle", noMiscast: true,
+			onhit:"", time:25, power: 0, range: 10, size: 1, damage: ""},
+		{name: "AllyAttention", tags: ["utility"], prerequisite: "AllyCommand", quick: true, school: "Any", manacost: 0, components: ["Arms"], aoe: 1.5, level:1, spellPointCost: 0, type:"special", special: "AllyAttention", noMiscast: true,
+			onhit:"", time:25, power: 0, range: 10, size: 1, damage: ""},
+		{name: "AllyDeselect", tags: ["utility"], prerequisite: "AllyCommand", quick: true, school: "Any", manacost: 0, components: ["Arms"], aoe: 1.5, level:1, spellPointCost: 0, type:"special", special: "AllyDeselect", noMiscast: true,
+			onhit:"", time:25, power: 0, range: 10, size: 1, damage: ""},
+		{name: "AllyMove", tags: ["utility"], prerequisite: "AllyCommand", quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "AllyMove", noMiscast: true,
+			onhit:"", time:25, power: 0, range: 10, size: 1, damage: ""},
+
+		{name: "AllyOnMe", tags: ["utility", "defense"], prerequisite: "AllyCommand", quick: true, school: "Any",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			events: [
+				{type: "AllyOnMe", trigger: "toggleSpell", },
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+
+		{name: "AllyDisperse", tags: ["utility", "defense"], prerequisite: "AllyCommand", quick: true, school: "Any",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			events: [
+				{type: "AllyDisperse", trigger: "toggleSpell", },
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+
+		{name: "AllyDefensive", tags: ["utility", "defense"], prerequisite: "AllyCommand", quick: true, school: "Any",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			events: [
+				{type: "AllyDefensive", trigger: "toggleSpell", },
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+
+		{name: "AllyAggressive", tags: ["utility", "defense"], prerequisite: "AllyCommand", quick: true, school: "Any",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			events: [
+				{type: "AllyAggressive", trigger: "toggleSpell", },
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+
+		{name: "AllyDeselectAll", tags: ["utility", "defense"], prerequisite: "AllyCommand", quick: true, school: "Any",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			events: [
+				{type: "AllyDeselectAll", trigger: "toggleSpell", },
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+
+
 
 		{name: "SPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "WPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
@@ -2226,6 +2306,12 @@ let KinkyDungeonSpellListEnemies = [
 	{nonmagical: true, enemySpell: true, name: "SleepDart", sfx: "Miss", manacost: 1, components: [], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "pain", speed: 1, playerEffect: {name: "TrapSleepDart", power: 5}},
 ];
 
+KDDefineSpellPage("Command", [
+	["AllyToggle", "AllyAttention", "AllyDeselect", "AllyDeselectAll"],
+	["AllyMove"],
+	["AllyOnMe", "AllyDisperse"],
+	["AllyDefensive", "AllyAggressive"],
+]);
 
 
 /** @type {Record<string, KDBondage>} */

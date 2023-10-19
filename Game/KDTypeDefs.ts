@@ -1641,6 +1641,8 @@ interface spell {
 	hideLearned?: boolean,
 	/** Automatically learns the spells when you learn it (thru magic screen) */
 	autoLearn?: string[],
+	/** Automatically learns the spell pages when you learn it (thru magic screen) */
+	learnPage?: string[],
 	/** This spell wont trigger an aggro action */
 	noAggro?: boolean;
 	/** Whether the spell defaults to the Player faction */
