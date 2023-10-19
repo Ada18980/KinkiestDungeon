@@ -1980,6 +1980,7 @@ interface VibeMod {
 }
 
 interface KDInventoryActionDef {
+	text?: (player: entity, item: item) => string;
 	valid: (player: entity, item: item) => boolean;
 	click: (player: entity, item: item) => void;
 	cancel: (player: entity, delta: number) => boolean;

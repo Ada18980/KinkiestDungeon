@@ -2007,6 +2007,32 @@ let KDDialogue = {
 			return false;
 		},
 		options: {
+			"Shop": {
+				playertext: "Default", response: "Default",
+				gag: true,
+				clickFunction: (gagged, player) => {
+					if (gagged) {
+						KDGameData.CurrentDialogMsg = "ShopkeeperStartShopGag";
+					}
+					return false;
+				},
+				options: {
+					"Sell": {
+						playertext: "Default", response: "Default",
+						exitDialogue: true,
+						clickFunction: (gagged, player) => {
+							KDGameData.InventoryAction = "Sell";
+							KinkyDungeonDrawState = "Inventory";
+							KinkyDungeonCurrentFilter = Weapon;
+							return false;
+						},
+					},
+					"Return": {
+						playertext: "Return", response: "Default",
+						leadsToStage: "",
+					},
+				}
+			},
 			"Help": {
 				playertext: "Default", response: "Default", gag: true,
 				prerequisiteFunction: (gagged, player) => {
@@ -2043,16 +2069,6 @@ let KDDialogue = {
 				}
 			},
 			"Fee": {
-				playertext: "Default", response: "Default",
-				gagDisabled: true,
-				options: {
-					"Return": {
-						playertext: "Return", response: "Default",
-						leadsToStage: "",
-					},
-				}
-			},
-			"Shop": {
 				playertext: "Default", response: "Default",
 				gagDisabled: true,
 				options: {

@@ -1195,17 +1195,17 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance, item
 			}
 			for (let i = 0; i < items.length; i++) {
 				let item = items[i];
-				if (KinkyDungeonGetRestraintByName(item)) {
+				/*if (KinkyDungeonGetRestraintByName(item)) {
 					KDGameData.CurrentDialogMsgData["Item"+i] = TextGet("Restraint" + item);
 					let power = KinkyDungeonGetRestraintByName(item).power;
 					if (!power || power < 1) power = 1;
 					KDGameData.CurrentDialogMsgValue["ItemCost"+i] = 5 * Math.round(bonus * (KinkyDungeonGetRestraintByName(item).value || (10 + 2 * Math.pow(power, 1.5)))/5);
 					KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];
-				} else {
-					KDGameData.CurrentDialogMsgData["Item"+i] = TextGet("KinkyDungeonInventoryItem" + item);
-					KDGameData.CurrentDialogMsgValue["ItemCost"+i] = Math.round(Math.min(bonus, 1.25) * KinkyDungeonItemCost(KinkyDungeonFindConsumable(item) ? KinkyDungeonFindConsumable(item) : KinkyDungeonFindWeapon(item), true, true));
-					KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];
-				}
+				} else {*/
+				KDGameData.CurrentDialogMsgData["Item"+i] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
+				KDGameData.CurrentDialogMsgValue["ItemCost"+i] = Math.round(Math.min(bonus, 3.0) * KinkyDungeonItemCost(KinkyDungeonGetRestraintByName(item) || (KinkyDungeonFindConsumable(item) ? KinkyDungeonFindConsumable(item) : KinkyDungeonFindWeapon(item)), true, true));
+				KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];
+				//}
 			}
 			return false;
 		},
@@ -1305,18 +1305,18 @@ function KDShopBuyDialogue(name) {
 			for (let i = 0; i < items.length; i++) {
 				let item = items[i];
 				let itemMult = shopCost;
-				if (KinkyDungeonGetRestraintByName(item)) {
+				/*if (KinkyDungeonGetRestraintByName(item)) {
 					KDGameData.CurrentDialogMsgData["ITM"+i] = TextGet("Restraint" + item);
 					let power = KinkyDungeonGetRestraintByName(item).power;
 					if (!power || power < 1) power = 1;
 					KDGameData.CurrentDialogMsgValue["IC"+i] = 5 * Math.round(itemMult * (KinkyDungeonGetRestraintByName(item).value || (10 + 2 * Math.pow(power, 1.5)))/5);
 					KDGameData.CurrentDialogMsgData["IC"+i] = "" + KDGameData.CurrentDialogMsgValue["IC"+i];
-				} else {
-					KDGameData.CurrentDialogMsgData["ITM"+i] = TextGet("KinkyDungeonInventoryItem" + item);
-					KDGameData.CurrentDialogMsgValue["IC"+i] = Math.round(itemMult *
-						KinkyDungeonItemCost(KinkyDungeonFindConsumable(item) ? KinkyDungeonFindConsumable(item) : KinkyDungeonFindWeapon(item)));
-					KDGameData.CurrentDialogMsgData["IC"+i] = "" + KDGameData.CurrentDialogMsgValue["IC"+i];
-				}
+				} else {*/
+				KDGameData.CurrentDialogMsgData["ITM"+i] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
+				KDGameData.CurrentDialogMsgValue["IC"+i] = Math.round(itemMult *
+					KinkyDungeonItemCost(KinkyDungeonGetRestraintByName(item) || (KinkyDungeonFindConsumable(item) ? KinkyDungeonFindConsumable(item) : KinkyDungeonFindWeapon(item))));
+				KDGameData.CurrentDialogMsgData["IC"+i] = "" + KDGameData.CurrentDialogMsgValue["IC"+i];
+				//}
 			}
 			return false;
 		},
@@ -1432,18 +1432,18 @@ function KDShopBuyDialogue(name) {
 					for (let ii = 0; ii < enemy.items.length; ii++) {
 						item = enemy.items[ii];
 						let itemMult = shopCost;
-						if (KinkyDungeonGetRestraintByName(item)) {
+						/*if (KinkyDungeonGetRestraintByName(item)) {
 							KDGameData.CurrentDialogMsgData["ITM"+ii] = TextGet("Restraint" + item);
 							let power = KinkyDungeonGetRestraintByName(item).power;
 							if (!power || power < 1) power = 1;
 							KDGameData.CurrentDialogMsgValue["IC"+ii] = 5 * Math.round(itemMult * (KinkyDungeonGetRestraintByName(item).value || (10 + 2 * Math.pow(power, 1.5)))/5);
 							KDGameData.CurrentDialogMsgData["IC"+ii] = "" + KDGameData.CurrentDialogMsgValue["IC"+ii];
-						} else {
-							KDGameData.CurrentDialogMsgData["ITM"+ii] = TextGet("KinkyDungeonInventoryItem" + item);
-							KDGameData.CurrentDialogMsgValue["IC"+ii] = Math.round(itemMult *
-								KinkyDungeonItemCost(KinkyDungeonFindConsumable(item) ? KinkyDungeonFindConsumable(item) : KinkyDungeonFindWeapon(item)));
-							KDGameData.CurrentDialogMsgData["IC"+ii] = "" + KDGameData.CurrentDialogMsgValue["IC"+ii];
-						}
+						} else {*/
+						KDGameData.CurrentDialogMsgData["ITM"+ii] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
+						KDGameData.CurrentDialogMsgValue["IC"+ii] = Math.round(itemMult *
+							KinkyDungeonItemCost(KinkyDungeonGetRestraintByName(item) || (KinkyDungeonFindConsumable(item) ? KinkyDungeonFindConsumable(item) : KinkyDungeonFindWeapon(item))));
+						KDGameData.CurrentDialogMsgData["IC"+ii] = "" + KDGameData.CurrentDialogMsgValue["IC"+ii];
+						//}
 					}
 				} else {
 					if (tooSubby) {
@@ -1784,17 +1784,17 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup, 
 			}*/
 			for (let i = 0; i < items.length; i++) {
 				let item = items[i];
-				if (KinkyDungeonGetRestraintByName(item)) {
+				/*if (KinkyDungeonGetRestraintByName(item)) {
 					KDGameData.CurrentDialogMsgData["Item"+i] = TextGet("Restraint" + item);
 					let power = KinkyDungeonGetRestraintByName(item).power;
 					if (!power || power < 1) power = 1;
 					KDGameData.CurrentDialogMsgValue["ItemCost"+i] = 5 * Math.round((KinkyDungeonGetRestraintByName(item).value || (10 + 2 * Math.pow(power, 1.5)))/5);
 					KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];
-				} else {
-					KDGameData.CurrentDialogMsgData["Item"+i] = TextGet("KinkyDungeonInventoryItem" + item);
-					KDGameData.CurrentDialogMsgValue["ItemCost"+i] = Math.round(KinkyDungeonItemCost(KinkyDungeonFindConsumableOrBasic(item) ? KinkyDungeonFindConsumableOrBasic(item) : KinkyDungeonFindWeapon(item)) * markup);
-					KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];
-				}
+				} else {*/
+				KDGameData.CurrentDialogMsgData["Item"+i] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
+				KDGameData.CurrentDialogMsgValue["ItemCost"+i] = Math.round(KinkyDungeonItemCost(KinkyDungeonGetRestraintByName(item) || (KinkyDungeonFindConsumableOrBasic(item) ? KinkyDungeonFindConsumableOrBasic(item) : KinkyDungeonFindWeapon(item))) * markup);
+				KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];
+				//}
 			}
 			return false;
 		},

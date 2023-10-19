@@ -120,7 +120,14 @@ function KinkyDungeonGenerateShop(Level) {
  * @returns {number}
  */
 function KinkyDungeonItemCost(item, noScale, sell) {
+	if (!item) return 0;
 	if (item.cost != null) return item.cost;
+
+	if (KinkyDungeonGetRestraintByName(item.name)) {
+		let power = KinkyDungeonGetRestraintByName(item.name).power;
+		if (!power || power < 0.1) power = 0.1;
+		return KinkyDungeonGetRestraintByName(item.name).value || (5 * Math.round(((10 + 2 * Math.pow(power, 1.5)))/5));
+	}
 	if (item.rarity != null) {
 		let rarity = item.rarity;
 		if (item.costMod) rarity += item.costMod;

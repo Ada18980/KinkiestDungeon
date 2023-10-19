@@ -26,7 +26,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.79"
+KinkyDungeon,"Kinky Dungeon v4.79.2"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -10861,9 +10861,13 @@ rShopkeeperStartDanger,"Hah!|You've been here a million times!|You obviously kno
 dShopkeeperStart_Fee,"F-fee? There's a fee?"
 rShopkeeperStartFee,"Yep! It'll cost ya!|Quite worth it if you ask me.|Unless you'd like to spend the rest of your life in chains!"
 dShopkeeperStart_Shop,"Will you buy my loot?"
-rShopkeeperStartShop,"Soon! I'm currently setting up my wares, so you'll have to wait."
+dShopkeeperStart_ShopGag,"(Show her your loot)"
+rShopkeeperStartShop,"Absolutely! I offer the standard market rate for anything.|I'll take enchanted items too!|I've got plenty of volunteers to check for curses~"
+rShopkeeperStartShopGag,"Got something you want to show me?"
+dShopkeeperStartShop_Sell,(Sell Items)
 dShopkeeperStart_Gag,"Mmmph!"
 rShopkeeperStartGag,"Daww! What a cutie!|(She smiles and pats your head gently)"
+
 
 dReturn,"(Return)"
 
@@ -12476,3 +12480,6 @@ KillBarricadeHighSecurityDoor,"You knock down the security door!"
 
 NameBarricadeBlastDoor,Blast Door
 KillBarricadeBlastDoor,"You knock down the blast door!"
+
+KDInventoryActionSell,Sell for VLU gp
+KDSell,You sell the ITM for VLU gp.
