@@ -2022,6 +2022,7 @@ let KDDialogue = {
 						exitDialogue: true,
 						clickFunction: (gagged, player) => {
 							KDGameData.InventoryAction = "Sell";
+							KDGameData.SellMarkup = 0.7;
 							KinkyDungeonDrawState = "Inventory";
 							KinkyDungeonCurrentFilter = Weapon;
 							return false;
@@ -2051,6 +2052,16 @@ let KDDialogue = {
 					}
 					return false;
 				},
+				options: {
+					"Return": {
+						playertext: "Return", response: "Default",
+						leadsToStage: "",
+					},
+				}
+			},
+			"Buy": {
+				playertext: "Default", response: "Default",
+				gag: true,
 				options: {
 					"Return": {
 						playertext: "Return", response: "Default",

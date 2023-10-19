@@ -212,6 +212,7 @@ let KDOptOut = false;
 /**
 *  @typedef {{
 * InventoryAction: string,
+* SellMarkup: number,
 * CurseLevel: number,
 * UsingConsumable: string,
 * BondageTarget: number,
@@ -344,6 +345,7 @@ let KDGameDataBase = {
 	UsingConsumable: "",
 	MovePoints: 0,
 	InventoryAction: "",
+	SellMarkup: 1,
 	BondageTarget: -1,
 	ShopRewardProgram: 0,
 	ShopRewardProgramThreshold: 500,

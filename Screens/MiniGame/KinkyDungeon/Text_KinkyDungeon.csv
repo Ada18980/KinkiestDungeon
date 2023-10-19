@@ -10868,6 +10868,9 @@ dShopkeeperStartShop_Sell,(Sell Items)
 dShopkeeperStart_Gag,"Mmmph!"
 rShopkeeperStartGag,"Daww! What a cutie!|(She smiles and pats your head gently)"
 
+dShopkeeperStart_Buy,"Do you have anything for sale?"
+dShopkeeperStart_BuyGag,"(Look around for items to buy)"
+rShopkeeperStartBuy,"I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~"
 
 dReturn,"(Return)"
 
