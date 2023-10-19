@@ -2028,6 +2028,17 @@ let KDDialogue = {
 							return false;
 						},
 					},
+					"SellBulk": {
+						playertext: "Default", response: "Default",
+						exitDialogue: true,
+						clickFunction: (gagged, player) => {
+							KDGameData.InventoryAction = "SellBulk";
+							KDGameData.SellMarkup = 0.7;
+							KinkyDungeonDrawState = "Inventory";
+							KinkyDungeonCurrentFilter = Weapon;
+							return false;
+						},
+					},
 					"Return": {
 						playertext: "Return", response: "Default",
 						leadsToStage: "",
