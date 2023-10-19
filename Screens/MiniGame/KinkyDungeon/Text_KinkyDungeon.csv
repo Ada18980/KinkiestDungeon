@@ -12773,3 +12773,13 @@ KillBarricadeBlastDoor,"You knock down the blast door!"
 
 KDInventoryActionSell,Sell for VLU gp
 KDSell,You sell the ITM for VLU gp.
+
+KinkyDungeonStatDirectionVision,"Directional Vision"
+KinkyDungeonStatDescDirectionVision,"Your vision is reduced except in the direction you are facing."
+KinkyDungeonStatDirectionSlow,"Inertia"
+KinkyDungeonStatDescDirectionSlow,"Turning 180 degrees while moving requires an extra turn"
+KinkyDungeonStatDirectionSlow2,"Heavy Inertia"
+KinkyDungeonStatDescDirectionSlow2,"Turning 90 degrees while moving requires an extra turn"
+
+KDTurn1,You turn.
+KDTurn2,You turn around.

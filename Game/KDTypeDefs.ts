@@ -673,7 +673,7 @@ interface enemy extends KDHasTags {
 	},
 	/** Sound properties */
 	Sound?: {
-		/** Sound multiplier while moving, default 1 */
+		/** Sound multiplier while moving, default 6 */
 		moveAmount?: number,
 		/** Constant sound amount */
 		baseAmount?: number,

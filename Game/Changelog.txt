@@ -13,6 +13,9 @@ Vague todo:
 
 - TODO add scroll to log, rep
 
+4.79.3 (Oct 2023)
+- New perks: Directional Vision, Inertia, Heavy Inertia
+
 4.79.2 (Oct 2023)
 - Can now sell items to floor 0 shopkeeper
 

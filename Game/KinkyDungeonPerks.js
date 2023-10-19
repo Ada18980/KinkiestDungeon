@@ -204,6 +204,9 @@ let KinkyDungeonStatsPresets = {
 	"Fortify_Barricade":  {category: "Major", id: "Fortify_Barricade", cost: -2},
 	"Fortify_Trap":  {category: "Major", id: "Fortify_Trap", cost: -2},
 	"CurseSeeker":  {category: "Major", id: "CurseSeeker", cost: -3},
+	"DirectionVision":  {category: "Major", id: "DirectionVision", cost: -2},
+	"DirectionSlow":  {category: "Major", id: "DirectionSlow", cost: -1, block: ["DirectionSlow2"]},
+	"DirectionSlow2":  {category: "Major", id: "DirectionSlow2", cost: -2, block: ["DirectionSlow"]},
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1},
 	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1},
 
