@@ -3515,9 +3515,8 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 							rest.enchanted
 							|| (rest.alwaysKeep)
 							|| (inventoryAs && KinkyDungeonInventoryVariants[inventoryAs] && !KinkyDungeonInventoryVariants[inventoryAs].noKeep)
-						)
-					&& !KinkyDungeonInventoryGetLoose(inventoryAs || rest.name)))
-					&& !Add) {
+						)))
+					&& (!Add || UnLink)) {
 					if (inventoryAs) {
 						let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
 						if (origRestraint && rest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed")) {
@@ -3616,8 +3615,7 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover) {
 					|| rest.enchanted
 					|| rest.alwaysKeep
 					|| (inventoryAs && KinkyDungeonInventoryVariants[inventoryAs] && !KinkyDungeonInventoryVariants[inventoryAs].noKeep)
-				)
-				&& !KinkyDungeonInventoryGetLoose(rest.name)) {
+				)) {
 				if (inventoryAs) {
 					let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
 					if (origRestraint && rest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed"))

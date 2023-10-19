@@ -10865,6 +10865,7 @@ dShopkeeperStart_ShopGag,"(Show her your loot)"
 rShopkeeperStartShop,"Absolutely! I offer the standard market rate for anything.|I'll take enchanted items too!|I've got plenty of volunteers to check for curses~"
 rShopkeeperStartShopGag,"Got something you want to show me?"
 dShopkeeperStartShop_Sell,(Sell Items)
+dShopkeeperStartShop_SellBulk,(Sell Whole Stacks of Items)
 dShopkeeperStart_Gag,"Mmmph!"
 rShopkeeperStartGag,"Daww! What a cutie!|(She smiles and pats your head gently)"
 
@@ -12486,6 +12487,7 @@ KillBarricadeBlastDoor,"You knock down the blast door!"
 
 KDInventoryActionSell,Sell for VLU gp
 KDSell,You sell the ITM for VLU gp.
+KDSellBulk,You sell #x ITM for VLU gp.
 
 KinkyDungeonStatDirectionVision,"Directional Vision"
 KinkyDungeonStatDescDirectionVision,"Your vision is reduced except in the direction you are facing."

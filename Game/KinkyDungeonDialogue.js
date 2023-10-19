@@ -1221,7 +1221,7 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance, item
 			return false;
 		},
 	};
-	shop.options.Buy = {gag: true, playertext: "ItemShopBuy", response: "Default",
+	shop.options.Buy = {playertext: "ItemShopBuy", response: "Default",
 		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
