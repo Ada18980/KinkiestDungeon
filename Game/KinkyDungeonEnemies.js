@@ -386,7 +386,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 		let playerDist = KDistChebyshev((enemy.x - KinkyDungeonPlayerEntity.x), (enemy.y - KinkyDungeonPlayerEntity.y));
 		if (enemy.x >= CamX && enemy.y >= CamY && enemy.x < CamX + KinkyDungeonGridWidthDisplay && enemy.y < CamY + KinkyDungeonGridHeightDisplay
 			&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KDCanSeeEnemy(enemy, playerDist)) {
-			if (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KDHelpless(enemy) || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak", true) > 0 && playerDist > 1.5)) {
+			if (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KDAllied(enemy) || KDHelpless(enemy) || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak", true) > 0 && playerDist > 1.5)) {
 				enemy.revealed = true;
 				if (((KinkyDungeonAggressive(enemy) && playerDist <= 6.9) || (playerDist < 1.5 && enemy.playWithPlayer))) {
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KinkyDungeonFastMove &&
@@ -962,7 +962,7 @@ function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", ba
  */
 function KDCanSeeEnemy(enemy, playerDist) {
 	if (playerDist == undefined) playerDist = KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y);
-	return (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KDHelpless(enemy) || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1)
+	return (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KDHelpless(enemy) || KDAllied(enemy) || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1)
 		&& !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)
 		&& playerDist <= KDMaxEnemyViewDist(enemy));
 }
@@ -1098,7 +1098,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 			let yy = enemy.visual_y ? enemy.visual_y : enemy.y;
 			let II = 0;
 			// Draw bars
-			if ((!enemy.Enemy.stealth || KDHelpless(enemy) || playerDist <= enemy.Enemy.stealth + 0.1) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
+			if ((!enemy.Enemy.stealth || KDAllied(enemy) || KDHelpless(enemy) || playerDist <= enemy.Enemy.stealth + 0.1) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
 				if ((KDAllied(enemy) || enemy.distraction > 0 || ((enemy.lifetime != undefined || enemy.hp < enemy.Enemy.maxhp || enemy.boundTo || enemy.boundLevel))) && KDCanSeeEnemy(enemy, playerDist)) {
 					let spacing = 6;
 					// Draw binding bars
@@ -3273,8 +3273,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			// Enemies that arent told to hold still will decide to follow their targets
 			if (KDEnemyHasFlag(enemy, "Defensive")) {
 				// Defensive AI will follow the player
-				enemy.gx = KinkyDungeonPlayerEntity.x;
-				enemy.gy = KinkyDungeonPlayerEntity.y;
+				if (!KDEnemyHasFlag(enemy, "NoFollow")) {
+					enemy.gx = KinkyDungeonPlayerEntity.x;
+					enemy.gy = KinkyDungeonPlayerEntity.y;
+				}
 			} else if (
 				// Dont chase the player if ignoring
 				!AIData.ignore

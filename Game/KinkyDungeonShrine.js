@@ -739,6 +739,11 @@ function KinkyDungeonHandleOrb() {
 							}
 						}
 					}
+					if (spell.learnPage) {
+						for (let sp of spell.learnPage) {
+							KDAddSpellPage(sp);
+						}
+					}
 					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonOrbSpell").replace("SPELL", TextGet("KinkyDungeonSpell" + spell.name)), "lightblue", 2);
 				}
 			} else {

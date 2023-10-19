@@ -632,6 +632,11 @@ function KDProcessInput(type, data) {
 								}
 							}
 						}
+						if (spell.learnPage) {
+							for (let sp of spell.learnPage) {
+								KDAddSpellPage(sp);
+							}
+						}
 						KinkyDungeonSetMaxStats();
 						if (KDToggles.Sound && KinkyDungeonIsPlayer()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 						KinkyDungeonCurrentPage = KinkyDungeonSpellIndex(spell.name);

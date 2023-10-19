@@ -1061,6 +1061,63 @@ let KinkyDungeonSpellSpecials = {
 			return "Fail";
 		}
 	},
+	"AllyToggle": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let en = KinkyDungeonEnemyAt(targetX, targetY);
+		if (en && KDAllied(en)) {
+			if (en.buffs?.AllySelect) en.buffs.AllySelect.duration = 0;
+			else KinkyDungeonApplyBuffToEntity(en, {
+				id: "AllySelect",
+				aura: "#ffffff",
+				aurasprite: "Select",
+				duration: 9999,
+				type: "Sel",
+			});
+			return "Cast";
+		} else return "Fail";
+	},
+	"AllyAttention": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let list = KDNearbyEnemies(targetX, targetY, spell.aoe);
+		let succeed = false;
+		for (let en of list)
+			if (en && KDAllied(en)) {
+				KinkyDungeonApplyBuffToEntity(en, {
+					id: "AllySelect",
+					aura: "#ffffff",
+					aurasprite: "Select",
+					duration: 9999,
+					type: "Sel",
+				});
+				succeed = true;
+			}
+		if (succeed) return "Cast";
+		return "Fail";
+	},
+	"AllyDeselect": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let list = KDNearbyEnemies(targetX, targetY, spell.aoe);
+		let succeed = false;
+		for (let en of list)
+			if (en && KDAllied(en)) {
+				if (en.buffs?.AllySelect) en.buffs.AllySelect.duration = 0;
+				succeed = true;
+			}
+		if (succeed) return "Cast";
+		return "Fail";
+	},
+	"AllyMove": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let list = KDMapData.Entities.filter((en) => {
+			return !KDHelpless(en) && KDAllied(en);
+		});
+		let succeed = false;
+		for (let en of list)
+			if (en && en.buffs?.AllySelect) {
+				en.gx = targetX;
+				en.gy = targetY;
+				KinkyDungeonSetEnemyFlag(en, "NoFollow", 9999);
+				succeed = true;
+			}
+		if (succeed) return "Cast";
+		return "Fail";
+	},
 	"Disarm": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {

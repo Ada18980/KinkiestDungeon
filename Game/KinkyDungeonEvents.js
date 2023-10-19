@@ -2812,7 +2812,7 @@ let KDEventMapSpell = {
 	},
 	"afterPlayerCast": {
 		"ManaRegenSuspend": (e, spell, data) => {
-			if (!KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend") || !KDHasSpell("ManaRegenPlus2")) {
+			if ((data.spell && data.spell.manacost != 0) && (!KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend") || !KDHasSpell("ManaRegenPlus2"))) {
 				let duration = KDHasSpell("ManaRegenFast2") ? e.time*0.25 : (KDHasSpell("ManaRegenFast") ? e.time*0.625 : e.time);
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: Math.ceil(duration), aura: "#ff5555", buffSprite: true, aurasprite: "AuraX",
@@ -2822,7 +2822,7 @@ let KDEventMapSpell = {
 	},
 	"afterSpellTrigger": {
 		"ManaRegenSuspend": (e, spell, data) => {
-			if (!KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend") || !KDHasSpell("ManaRegenPlus2")) {
+			if ((data.spell && data.spell.manacost != 0) && (!KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend") || !KDHasSpell("ManaRegenPlus2"))) {
 				let duration = KDHasSpell("ManaRegenFast2") ? e.time*0.25 : (KDHasSpell("ManaRegenFast") ? e.time*0.625 : e.time);
 				if (!data.notToggle) duration *= 0.5;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
@@ -3807,6 +3807,71 @@ let KDEventMapSpell = {
 				KinkyDungeonSpellChoicesToggle[data.index] = false;
 
 				KDStartDialog("ToolsOfTheTrade");
+			}
+		},
+		"AllyOnMe": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let list = KDMapData.Entities.filter((en) => {
+					return KDAllied(en);
+				});
+				for (let en of list)
+					if (en && en.buffs?.AllySelect) {
+						KinkyDungeonSetEnemyFlag(en, "NoFollow", 0);
+					}
+			}
+		},
+		"AllyDisperse": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let list = KDMapData.Entities.filter((en) => {
+					return KDAllied(en);
+				});
+				for (let en of list)
+					if (en && en.buffs?.AllySelect) {
+						KinkyDungeonSetEnemyFlag(en, "NoFollow", 9999);
+					}
+			}
+		},
+		"AllyDefensive": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let list = KDMapData.Entities.filter((en) => {
+					return KDAllied(en);
+				});
+				for (let en of list)
+					if (en && en.buffs?.AllySelect) {
+						KinkyDungeonSetEnemyFlag(en, "Defensive", 9999);
+					}
+			}
+		},
+		"AllyAggressive": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let list = KDMapData.Entities.filter((en) => {
+					return KDAllied(en);
+				});
+				for (let en of list)
+					if (en && en.buffs?.AllySelect) {
+						KinkyDungeonSetEnemyFlag(en, "Aggressive", 9999);
+					}
+			}
+		},
+		"AllyDeselectAll": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let list = KDMapData.Entities.filter((en) => {
+					return KDAllied(en);
+				});
+				for (let en of list)
+					if (en) {
+						if (en.buffs?.AllySelect) en.buffs.AllySelect.duration = 0;
+					}
 			}
 		},
 		"Offhand": (e, spell, data) => {

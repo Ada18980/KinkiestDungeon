@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.79.2"
+KinkyDungeon,"Kinky Dungeon v4.79.4"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -12783,3 +12783,39 @@ KinkyDungeonStatDescDirectionSlow2,"Turning 90 degrees while moving requires an 
 
 KDTurn1,You turn.
 KDTurn2,You turn around.
+
+KinkyDungeonSpellAllyCommand,Take Command
+KinkyDungeonSpellDescriptionAllyCommand,Unlocks several spells for commanding allies.
+
+KinkyDungeonSpellAllyAttention,Attention!
+KinkyDungeonSpellTargetAllyAttention,Select allies in an area
+KinkyDungeonSpellDescriptionAllyAttention,Designate allies in a 3x3 area to follow orders.
+KinkyDungeonSpellCastAllyAttention,You select the units.
+
+KinkyDungeonSpellAllyDeselect,Deselect
+KinkyDungeonSpellTargetAllyDeselect,Select allies in an area
+KinkyDungeonSpellDescriptionAllyDeselect,Deselect allies in a 3x3 area
+KinkyDungeonSpellCastAllyDeselect,You deselect the units.
+
+KinkyDungeonSpellAllyToggle,Toggle Selection
+KinkyDungeonSpellTargetAllyToggle,Select ally
+KinkyDungeonSpellDescriptionAllyToggle,Toggle an allied unit's selection status.
+KinkyDungeonSpellCastAllyToggle,You toggle the unit's selection.
+
+KinkyDungeonSpellAllyMove,Maneuver
+KinkyDungeonSpellTargetAllyMove,Select target location
+KinkyDungeonSpellDescriptionAllyMove,Order all selected units to move to the targeted point.
+KinkyDungeonSpellCastAllyMove,You order your units to move!
+
+KinkyDungeonSpellAllyDeselectAll,Deselect All
+KinkyDungeonSpellDescriptionAllyDeselectAll,Deselects all selected units.
+KinkyDungeonSpellAllyOnMe,On Me!
+KinkyDungeonSpellDescriptionAllyOnMe,All selected units start following you
+KinkyDungeonSpellAllyDisperse,Disperse
+KinkyDungeonSpellDescriptionDisperse,All selected units stop following you
+KinkyDungeonSpellAllyDefensive,Defensive Order
+KinkyDungeonSpellDescriptionAllyDefensive,All selected units switch to Defensive mode
+KinkyDungeonSpellAllyAggressive,Aggressive Order
+KinkyDungeonSpellDescriptionAllyAggressive,All selected units switch to Aggressive mode
+
+KinkyDungeonSpellsPageCommand,"Command"
