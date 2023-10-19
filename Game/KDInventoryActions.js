@@ -94,7 +94,7 @@ let KDInventoryAction = {
 	},
 	"Sell": {
 		text:  (player, item) => {
-			let value = Math.round(KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
+			let value = Math.round(KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
 			return TextGet("KDInventoryActionSell").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
@@ -102,7 +102,7 @@ let KDInventoryAction = {
 		},
 		/** Happens when you click the button */
 		click: (player, item) => {
-			let value = Math.round(KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
+			let value = Math.round(KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
 			let itemInv = KinkyDungeonInventoryGet(item.name);
 			if (itemInv.type == Consumable)
 				KinkyDungeonChangeConsumable(KDConsumable(itemInv), -1);

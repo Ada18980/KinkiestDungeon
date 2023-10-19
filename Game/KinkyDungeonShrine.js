@@ -124,8 +124,22 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 	if (item.cost != null) return item.cost;
 
 	if (KinkyDungeonGetRestraintByName(item.name)) {
-		let power = KinkyDungeonGetRestraintByName(item.name).power;
+		let restraint = KinkyDungeonGetRestraintByName(item.name);
+		let power = restraint.displayPower || restraint.power;
 		if (!power || power < 0.1) power = 0.1;
+		if (restraint.armor) power += 1;
+		if (restraint.protection) power += 3*restraint.protection;
+		if (KinkyDungeonInventoryVariants[item.name]) {
+			let enchants = {};
+			for (let ev of KinkyDungeonInventoryVariants[item.name].events) {
+				if (ev.original && KDEventEnchantmentModular[ev.original]) enchants[ev.original] = KDEventEnchantmentModular[ev.original].level;
+			}
+			let sum = 0;
+			for (let amt of Object.values(enchants)) {
+				sum += amt;
+			}
+			power += sum;
+		}
 		return KinkyDungeonGetRestraintByName(item.name).value || (5 * Math.round(((10 + 2 * Math.pow(power, 1.5)))/5));
 	}
 	if (item.rarity != null) {
