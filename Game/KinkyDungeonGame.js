@@ -4027,6 +4027,24 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 						if (isNaN(KDGameData.MovePoints)) KDGameData.MovePoints = 0;
 						KDGameData.MovePoints = Math.min(Math.ceil(KinkyDungeonSlowLevel + 1), KDGameData.MovePoints + delta); // Can't store extra move points
 
+						let lastFacingX = KinkyDungeonPlayerEntity.facing_x || 0;
+						let lastFacingY = KinkyDungeonPlayerEntity.facing_y || 0;
+
+						KinkyDungeonPlayerEntity.facing_x = Math.min(1, Math.abs(moveX - KinkyDungeonPlayerEntity.x)) * Math.sign(moveX - KinkyDungeonPlayerEntity.x);
+						KinkyDungeonPlayerEntity.facing_y = Math.min(1, Math.abs(moveY - KinkyDungeonPlayerEntity.y)) * Math.sign(moveY - KinkyDungeonPlayerEntity.y);
+
+						if ((KinkyDungeonPlayerEntity.facing_y || KinkyDungeonPlayerEntity.facing_x)
+							&& (KinkyDungeonStatsChoice.get("DirectionSlow") || KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
+							let D = Math.abs(KinkyDungeonPlayerEntity.facing_y - lastFacingY)**2
+								+ Math.abs(KinkyDungeonPlayerEntity.facing_x - lastFacingX)**2;
+
+							if (D > 3 || (D > 1 && KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
+								KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 0);
+								if (D > 2) KinkyDungeonSendTextMessage(10, TextGet("KDTurn2"), "#ffffff", 1);
+								else KinkyDungeonSendTextMessage(9, TextGet("KDTurn1"), "#ffffff", 1);
+							}
+						}
+
 						if (KinkyDungeonFlags.has("Quickness") && KinkyDungeonSlowLevel < 9) {
 							KDGameData.MovePoints = KinkyDungeonSlowLevel + 1;
 							quick = true;
@@ -4143,6 +4161,8 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 				}
 			} else {
 				KDGameData.MovePoints = Math.min(KDGameData.MovePoints + 1, 0);
+				KinkyDungeonPlayerEntity.facing_x = 0;
+				KinkyDungeonPlayerEntity.facing_y = 0;
 				KinkyDungeonWaitMessage(false, 1);
 				KinkyDungeonAdvanceTime(1); // was moveDirection.delta, but became too confusing
 			}

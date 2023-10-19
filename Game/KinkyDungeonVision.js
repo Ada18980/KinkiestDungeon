@@ -310,6 +310,17 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 				d = KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y);
 				newL = bb + 2 - Math.min(1.5, d * 1.5);
 				if (newL > KinkyDungeonVisionGet(X, Y)) {
+					if (KinkyDungeonStatsChoice.get("DirectionVision") && (KinkyDungeonPlayerEntity.facing_x || KinkyDungeonPlayerEntity.facing_y)
+					&& (
+						(KinkyDungeonPlayerEntity.facing_x || 0) * (X - KinkyDungeonPlayerEntity.x)
+						+ (KinkyDungeonPlayerEntity.facing_y || 0) * (Y - KinkyDungeonPlayerEntity.y) <= 0
+					)
+					//&& ((KinkyDungeonPlayerEntity.facing_x && (X - KinkyDungeonPlayerEntity.x) && Math.sign(KinkyDungeonPlayerEntity.facing_x) != Math.sign(X - KinkyDungeonPlayerEntity.x))
+					//|| (KinkyDungeonPlayerEntity.facing_y && (Y - KinkyDungeonPlayerEntity.y) && Math.sign(KinkyDungeonPlayerEntity.facing_y) != Math.sign(Y - KinkyDungeonPlayerEntity.y)))
+					) {
+						newL = 0;
+					}
+
 					KinkyDungeonVisionSet(X, Y, Math.max(0, newL));
 					maxPass = Math.max(maxPass, newL);
 				}
