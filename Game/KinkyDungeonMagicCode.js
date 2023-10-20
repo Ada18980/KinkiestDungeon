@@ -1112,7 +1112,7 @@ let KinkyDungeonSpellSpecials = {
 			if (en && en.buffs?.AllySelect) {
 				en.gx = targetX;
 				en.gy = targetY;
-				KinkyDungeonSetEnemyFlag(en, "NoFollow", 9999);
+				KinkyDungeonSetEnemyFlag(en, "NoFollow", 9000);
 				succeed = true;
 			}
 		if (succeed) return "Cast";

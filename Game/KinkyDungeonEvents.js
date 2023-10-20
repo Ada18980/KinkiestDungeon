@@ -3831,7 +3831,7 @@ let KDEventMapSpell = {
 				});
 				for (let en of list)
 					if (en && en.buffs?.AllySelect) {
-						KinkyDungeonSetEnemyFlag(en, "NoFollow", 9999);
+						KinkyDungeonSetEnemyFlag(en, "NoFollow", -1);
 					}
 			}
 		},
@@ -3844,7 +3844,7 @@ let KDEventMapSpell = {
 				});
 				for (let en of list)
 					if (en && en.buffs?.AllySelect) {
-						KinkyDungeonSetEnemyFlag(en, "Defensive", 9999);
+						KinkyDungeonSetEnemyFlag(en, "Defensive", -1);
 					}
 			}
 		},
@@ -3857,7 +3857,33 @@ let KDEventMapSpell = {
 				});
 				for (let en of list)
 					if (en && en.buffs?.AllySelect) {
-						KinkyDungeonSetEnemyFlag(en, "Aggressive", 9999);
+						KinkyDungeonSetEnemyFlag(en, "Defensive", 0);
+					}
+			}
+		},
+		"AllyHold": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let list = KDMapData.Entities.filter((en) => {
+					return KDAllied(en);
+				});
+				for (let en of list)
+					if (en && en.buffs?.AllySelect) {
+						KinkyDungeonSetEnemyFlag(en, "StayHere", -1);
+					}
+			}
+		},
+		"AllyCancelHold": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let list = KDMapData.Entities.filter((en) => {
+					return KDAllied(en);
+				});
+				for (let en of list)
+					if (en && en.buffs?.AllySelect) {
+						KinkyDungeonSetEnemyFlag(en, "StayHere", 0);
 					}
 			}
 		},
