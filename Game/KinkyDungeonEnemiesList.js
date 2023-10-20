@@ -1561,6 +1561,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "Barricade", faction: "Door",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		/*cueSfx: {
 			Block: "Clang",
@@ -1586,6 +1587,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "BarricadeVine", faction: "Plant",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		/*cueSfx: {
 			Block: "Clang",
@@ -1612,6 +1614,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "BarricadeConcrete", faction: "Door",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		cueSfx: {
 			Block: "Clang",
@@ -1638,6 +1641,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "BarricadeBlastDoor", faction: "Door", color: "#ff9944",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		cueSfx: {
 			Block: "Clang",
@@ -1664,6 +1668,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "BarricadeMetal", faction: "Door",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		cueSfx: {
 			Block: "Clang",
@@ -1691,6 +1696,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "BarricadeShadowMetal", faction: "Door",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		cueSfx: {
 			Block: "Clang",
@@ -1720,6 +1726,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "BarricadeRobot", faction: "Door",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		cueSfx: {
 			Block: "Clang",
@@ -1742,6 +1749,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "BarricadeMagic", faction: "Door",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		cueSfx: {
 			Block: "Shield",
@@ -1767,6 +1775,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "BarricadeShadow", faction: "Ghost", color: "#8800ff",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		cueSfx: {
 			Block: "Shield",
@@ -1790,6 +1799,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "BarricadeAir", faction: "Elemental", color: "#ffffff",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		effect: {
 			effect: {name: "PushAway", damage: "stun", power: 1, dist: 1},
@@ -1814,6 +1824,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "BarricadeElectric", faction: "Elemental", color: "#ffff00",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		effect: {
 			effect: {name: "Shock", time: 2, power: 2.5},
@@ -1840,6 +1851,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "BarricadeFire", faction: "Elemental", color: "#ffff00",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		Sound: {
 			baseAmount: 1,
@@ -1865,6 +1877,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "BarricadeEarth", faction: "Elemental", color: "#ff8933",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		Sound: {
 			baseAmount: 0,
@@ -1888,6 +1901,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "BarricadeIce", faction: "Elemental", color: "#8899ff",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		Sound: {
 			baseAmount: 0,
@@ -1911,6 +1925,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "BarricadeWater", faction: "Elemental", color: "#4fa4b8",
+		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		Sound: {
 			baseAmount: 0,
@@ -1934,6 +1949,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "StoneDoor", faction: "Door", blockVision: true,
+		lowpriority: true,
 		cueSfx: {
 			Block: "Clang",
 			Resist: "Clang",
@@ -1956,6 +1972,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "SteelDoor", faction: "Door", blockVision: true,
+		lowpriority: true,
 		cueSfx: {
 			Block: "Clang",
 			Resist: "Clang",
@@ -1978,6 +1995,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "DollDoor", faction: "Door", blockVision: true,
+		lowpriority: true,
 		cueSfx: {
 			Block: "Clang",
 			Resist: "Clang",
@@ -2001,6 +2019,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "GiantMushroom", faction: "Natural", clusterWith: "mushroom", tags: KDMapInit(["mushroom", "scenery", "nonvulnerable", "minor", "inactive", "harmless", "immobile", "unstoppable", "soulimmune", "slashweakness", "fireweakness", "glueresist", "poisonimmune", "coldweakness"]), spellResist: 0.33, sneakThreshold: 0.01,
+		lowpriority: true,
 		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, immobile: true,
 		visionRadius: 0, maxhp: 1, minLevel:0, weight:5, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
 		terrainTags: {}, floors:KDMapInit(["cry", "jng"]), shrines: ["Will"], ondeath: [{type: "spellOnSelf", spell: "Spores"}],
