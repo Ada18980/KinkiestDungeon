@@ -153,6 +153,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		KDBondageSpell,
 
 		{name: "AllyCommand", tags: ["utility"], school: "Any", spellPointCost: 1, learnPage: ["Command"],
+			hideLearned: true,
 			autoLearn: [
 				"AllyToggle",
 				"AllyAttention",
@@ -163,6 +164,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				"AllyAggressive",
 				"AllyDefensive",
 				"AllyDeselectAll",
+				"AllyHold",
+				"AllyCancelHold",
 			],
 			manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "AllyToggle", tags: ["utility"], prerequisite: "AllyCommand", quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "AllyToggle", noMiscast: true,
@@ -202,7 +205,21 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			],
 			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 
-		{name: "AllyDeselectAll", tags: ["utility", "defense"], prerequisite: "AllyCommand", quick: true, school: "Any",
+		{name: "AllyHold", tags: ["utility", "defense"], prerequisite: "AllyCommand", quick: true, school: "Any",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			events: [
+				{type: "AllyHold", trigger: "toggleSpell", },
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+
+		{name: "AllyCancelHold", tags: ["utility", "offense"], prerequisite: "AllyCommand", quick: true, school: "Any",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			events: [
+				{type: "AllyCancelHold", trigger: "toggleSpell", },
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+
+		{name: "AllyDeselectAll", tags: ["utility"], prerequisite: "AllyCommand", quick: true, school: "Any",
 			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
 			events: [
 				{type: "AllyDeselectAll", trigger: "toggleSpell", },
@@ -2309,7 +2326,7 @@ let KinkyDungeonSpellListEnemies = [
 KDDefineSpellPage("Command", [
 	["AllyToggle", "AllyAttention", "AllyDeselect", "AllyDeselectAll"],
 	["AllyMove"],
-	["AllyOnMe", "AllyDisperse"],
+	["AllyOnMe", "AllyDisperse", "AllyHold", "AllyCancelHold"],
 	["AllyDefensive", "AllyAggressive"],
 ]);
 

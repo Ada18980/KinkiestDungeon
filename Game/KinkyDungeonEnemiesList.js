@@ -965,7 +965,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ff0000"},
 		],
 		stamina: 8,
-		sprintspeed: 2.0,
+		sprintspeed: 1.8,
 		cueSfx: {
 			Block: "Clang",
 			Resist: "SoftShield",
@@ -993,14 +993,15 @@ let KinkyDungeonEnemies = [
 
 	{name: "Cyborg", faction: "AncientRobot",
 		playLine: "Cyborg",
-		bound: "Cyborg", color: "#2a319c",
+		bound: "Cyborg", color: "#5a71bc",
 		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "elite", "robot", "cyborg", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer", "antiMagic",
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
 		noDisplace: true, disarm: 0.5,
 		armor: 2,
 		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 10, minLevel: 0, weight:-100, movePoints: 1, attackPoints: 2, evasion: -0.2, focusPlayer: true,
 		attack: "MeleeBindLockWillStun", attackWidth: 3, attackRange: 1, power: 4, dmgType: "electric", stunTime: 1, attackLock: "Red",
-		stamina: 4,
+		stamina: 3,
+		sprintspeed: 2.0,
 		RemoteControl: {
 			punishRemote: 4,
 			punishRemoteChance: 0.2,

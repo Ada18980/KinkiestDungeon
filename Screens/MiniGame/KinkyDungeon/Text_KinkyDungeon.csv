@@ -12809,6 +12809,11 @@ KinkyDungeonSpellTargetAllyMove,Select target location
 KinkyDungeonSpellDescriptionAllyMove,Order all selected units to move to the targeted point.
 KinkyDungeonSpellCastAllyMove,You order your units to move!
 
+KinkyDungeonSpellAllyHold,Hold Position
+KinkyDungeonSpellDescriptionAllyHold,Selected units do not pursue enemies.
+KinkyDungeonSpellAllyCancelHold,Free Movement
+KinkyDungeonSpellDescriptionAllyCancelHold,Cancels Hold Position on selected units.
+
 KinkyDungeonSpellAllyDeselectAll,Deselect All
 KinkyDungeonSpellDescriptionAllyDeselectAll,Deselects all selected units.
 KinkyDungeonSpellAllyOnMe,On Me!
