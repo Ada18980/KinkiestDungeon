@@ -270,8 +270,9 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 					)) {
 						if (KinkyDungeonCheckLOS(enemy, e, dist, visionRadius, true, true)
 							&& (KinkyDungeonVisionGet(e.x, e.y) > 0 || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 || e.aware || enemy.aware || e == KinkyDungeonJailGuard() || enemy == KinkyDungeonJailGuard())) {
-							if (enemy.rage || !e.Enemy.lowpriority
-									|| (!KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, pdist, visionRadius, true, true) || !KinkyDungeonCheckPath(enemy.x, enemy.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true))) {
+							if (enemy.rage || !e.Enemy.lowpriority || (enemy.gx == e.x && enemy.gy == e.y)
+									|| (!KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, pdist, visionRadius, true, true)
+									|| !KinkyDungeonCheckPath(enemy.x, enemy.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true))) {
 								nearestVisible = e;
 								nearestDistance = dist;
 							}
