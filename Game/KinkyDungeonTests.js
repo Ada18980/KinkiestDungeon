@@ -90,7 +90,8 @@ function KDTestjailer(iter) {
 			if (!totals.null) totals.null = 1;
 			else totals.null = totals.null + 1;
 		}
-		KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonJailGuard()), 1);
+		KDRemoveEntity(KinkyDungeonJailGuard());
+		//KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonJailGuard()), 1);
 		KDGameData.KinkyDungeonJailGuard = 0;
 	}
 	console.log(totals);

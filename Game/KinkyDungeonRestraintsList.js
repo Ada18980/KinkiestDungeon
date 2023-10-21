@@ -2811,7 +2811,9 @@ const KinkyDungeonRestraints = [
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "Bracers",
 			Group: "ItemArms",
-			Asset: "SteelCuffs",
+			Asset: "FurBolero",
+			Model: "Pauldrons",
+			AssetGroup: "ClothAccessory",
 			showInQuickInv: true, good: true,
 			alwaysKeep: true,
 			escapeChance: {
@@ -2819,12 +2821,60 @@ const KinkyDungeonRestraints = [
 				"Cut": -0.5,
 				"Remove": 10
 			},
-			shrine: ["Armor", "ArmArmor", "MetalArmor", "Heavy"],
+			shrine: ["Armor", "ArmArmor", "Heavy"],
 			armor: true,
 			LinkAll: true, NoLinkOver: true,
 			debris: "Belts",
 			protection: 1,
-		}, "Steel Bracers", "Dependable protection for the average adventurer.", "Provides minor protection against enemy attacks.")
+		}, "Steel Pauldrons", "Dependable protection for the average adventurer.", "Provides minor protection against enemy attacks.")
+		, [...KDHexVariantList.Base]);
+
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "Cape",
+			Group: "ItemArms",
+			Asset: "Cape",
+			AssetGroup: "ClothAccessory",
+			showInQuickInv: true, good: true,
+			alwaysKeep: true,
+			escapeChance: {
+				"Struggle": 10,
+				"Cut": -0.5,
+				"Remove": 10
+			},
+			shrine: ["Armor", "ArmArmor", "Light"],
+			armor: true,
+			LinkAll: true, NoLinkOver: true,
+			debris: "Belts",
+			protection: 1,
+			events: [
+				{trigger: "tick", type: "evasionBuff", power: .25, inheritLinked: true},
+				{trigger: "tick", type: "sneakBuff", power: .15, inheritLinked: true},
+			],
+		}, "Ranger's Cape", "Inbued with the powers of moss and ferns and stuff.", "+25 Evasion. Increases stealth slightly.")
+		, [...KDHexVariantList.Base]);
+
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "MagicArmbands",
+			Group: "ItemArms",
+			Asset: "OrnateCuffs",
+			Color: ["#888888", "#9B63C5"],
+			showInQuickInv: true, good: true,
+			alwaysKeep: true,
+			escapeChance: {
+				"Struggle": 10,
+				"Cut": -0.5,
+				"Remove": 10
+			},
+			shrine: ["Armor", "ArmArmor", "MagicArmor", "Mage"],
+			armor: true,
+			LinkAll: true, NoLinkOver: true,
+			debris: "Chains",
+			protection: 1,
+			events: [
+				{trigger: "perksBonus", type: "spellDamage", power: 0.05, inheritLinked: true},
+				{trigger: "tick", type: "spellWardBuff", power: 0.5, inheritLinked: true},
+			],
+		}, "Oracle's Armbands", "Armbands made of a slightly magical material.", "+5% spell damage. +5 Magic Armor.")
 		, [...KDHexVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
@@ -3067,6 +3117,62 @@ let KDLocks = {
 		pick_speed: 1.0, // Multiplies the picking rate
 		pick_diff: 0.0, // Added to the item's pick difficulty
 		pick_lim: 0.3, // Added to the item's pick limitchance
+
+		canPick: (data) => {
+			return true;
+		},
+		doPick: (data) => {
+			return true;
+		},
+		failPick: (data) => {
+			return "Fail";
+		},
+		breakChance: (data) => {
+			return KDRandom() < KinkyDungeonKeyGetPickBreakChance();
+		},
+
+		// Key
+		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "Red",
+		canUnlock: (data) => {
+			return KinkyDungeonRedKeys > 0;
+		},
+		doUnlock: (data) => {
+			KinkyDungeonRedKeys -= 1;
+			return true;
+		},
+		removeKeys: (data) => {
+			KinkyDungeonRedKeys -= 1;
+			if (!data?.unlock) {
+				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
+			}
+		},
+		failUnlock: (data) => {
+			return "Fail";
+		},
+
+		// Start of level -- for gold locks
+		levelStart: (item) => {
+		},
+		shrineImmune: false,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: false,
+		loot_locked: true,
+	},
+	"HiSec": {
+		consume_key: true,
+		lockmult: 2.5,
+		// Picking
+		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_speed: 1.0, // Multiplies the picking rate
+		pick_diff: 1.0, // Added to the item's pick difficulty
+		pick_lim: 1.0, // Added to the item's pick limitchance
 
 		canPick: (data) => {
 			return true;

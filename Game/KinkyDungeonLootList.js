@@ -8,50 +8,62 @@ let KDAdvancedArmorWeight = 1.5;
 let KDAdvancedArmorWeight_Cursed = 2.0;
 let KDAdvancedArmorWeight_Enchanted = 2.5;
 
-let KD_hexchance_Default = 0.35;
-let KD_enchantchance_Default = 0.8;
+let KD_hexchance_Default = 0.1;
+let KD_hexscale_Default = 0.4; // based on % of max level
+let KD_enchantchance_Default = 0.25;
+let KD_enchantscale_Default = 1/0.7; // % of max level, ~70% of the way through all will be enchanted
 
 let KD_hexchance_EnchantedRestraints = 0.3;
+let KD_hexscale_EnchantedRestraints = 0.7;
+
 
 let KDBasicArmor = [
 	{name: "Breastplate", minLevel: 0, weight: KDBasicArmorWeight,
 		armor: "Breastplate",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["Breastplate"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "Bustier", minLevel: 0, weight: KDBasicArmorWeight,
 		armor: "Bustier",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["Bustier"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "ChainTunic", minLevel: 0, weight: KDBasicArmorWeight * 0.7,
 		armor: "ChainTunic",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["ChainTunic"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "Bracers", minLevel: 0, weight: KDBasicArmorWeight,
 		armor: "Bracers",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["Bracers"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "LeatherGloves", minLevel: 0, weight: KDBasicArmorWeight,
 		armor: "LeatherGloves",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["LeatherGloves"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "Gauntlets", minLevel: 0, weight: KDBasicArmorWeight,
 		armor: "Gauntlets",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["Gauntlets"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "SteelBoots", minLevel: 0, weight: KDBasicArmorWeight,
 		armor: "SteelBoots",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["SteelBoots"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "LeatherBoots", minLevel: 0, weight: KDBasicArmorWeight,
 		armor: "LeatherBoots",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["LeatherBoots"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 ];
@@ -59,29 +71,34 @@ let KDAdvancedArmor = [
 	{name: "SteelArmor", minLevel: 0, weight: KDAdvancedArmorWeight,
 		armor: "SteelArmor",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["SteelArmor"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "SteelSkirt", minLevel: 0, weight: KDAdvancedArmorWeight,
 		armor: "SteelSkirt",
 		hexlist: "Common",
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["SteelSkirt"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "MageArmor", minLevel: 0, weight: KDAdvancedArmorWeight,
 		armor: "MageArmor",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["MageArmor"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 ];
 let KDGoldArmor = [...JSON.parse(JSON.stringify(KDAdvancedArmor)), ...JSON.parse(JSON.stringify(KDBasicArmor))];
 for (let armor of KDGoldArmor) {
 	armor.enchantlist = "Gold";
+	armor.enchantchance = 1.0;
 	armor.amtMult = 2;
 	armor.weight *= 0.2;
 }
 let KDGoldArmor2 = [...JSON.parse(JSON.stringify(KDAdvancedArmor)), ...JSON.parse(JSON.stringify(KDBasicArmor))];
 for (let armor of KDGoldArmor2) {
 	armor.enchantlist = "Common";
+	armor.enchantchance = 1.0;
 	armor.minEnchants = 2;
 	armor.maxEnchants = 3;
 	armor.amtMult = 1.5;
@@ -91,6 +108,8 @@ let KDSilverArmor = [...JSON.parse(JSON.stringify(KDBasicArmor))];
 for (let armor of KDSilverArmor) {
 	armor.amtMult = 1.4;
 	armor.maxEnchants = 2;
+	armor.enchantchance =(armor.enchantchance || 0) * 2;
+	armor.enchantscale = (armor.enchantscale || 0) * 2;
 }
 
 let KDEnchantedRestraints = [
@@ -99,6 +118,7 @@ let KDEnchantedRestraints = [
 		cursesuffix: "",
 		maxEnchants: 2,
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
+		hexscale: KD_hexscale_EnchantedRestraints,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "LatexRestraints", minLevel: 0, weight: KDEnchantedRestraintsWeight*2.5,
@@ -107,6 +127,7 @@ let KDEnchantedRestraints = [
 		amtMult: 1.5,
 		maxEnchants: 2,
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
+		hexscale: KD_hexscale_EnchantedRestraints,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "LeatherRestraints", minLevel: 0, weight: KDEnchantedRestraintsWeight*3,
@@ -115,6 +136,7 @@ let KDEnchantedRestraints = [
 		amtMult: 1.5,
 		maxEnchants: 2,
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
+		hexscale: KD_hexscale_EnchantedRestraints,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "MagicRopes", minLevel: 0, weight: KDEnchantedRestraintsWeight*0.25,
@@ -144,6 +166,7 @@ let KDShadowRestraints = [...JSON.parse(JSON.stringify(KDEnchantedRestraints)),
 		forceEquip: true,
 		cursesuffix: "",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
+		hexscale: KD_hexscale_EnchantedRestraints,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "Star", minLevel: 0, weight: KDEnchantedRestraintsWeight*1,
@@ -154,6 +177,7 @@ let KDShadowRestraints = [...JSON.parse(JSON.stringify(KDEnchantedRestraints)),
 		forceEquip: true,
 		cursesuffix: "",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
+		hexscale: KD_hexscale_EnchantedRestraints,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 
@@ -219,7 +243,8 @@ let KinkyDungeonLootTable = {
 			maxEnchants: 3,
 			//forceEquip: true,
 			cursesuffix: "",
-			hexlist: "Common", enchantlist: "Common", hexchance: 0.5, enchantchance: 1, alwaysenchanthex: true,
+			hexlist: "Common", enchantlist: "Common", hexchance: 0.25, enchantchance: 1, alwaysenchanthex: true,
+			hexscale: 0.75,
 			unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 			message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "staff_incineration", minLevel: 0, weight:4, weapon: "StaffIncineration", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffIncineration"]},

@@ -70,6 +70,35 @@ let KDInventoryAction = {
 			return false;
 		},
 	},
+	"RemoveMagicLock": {
+		valid: (player, item) => {
+			if (!(item?.type == Restraint)) return false;
+			return KDMagicLocks.includes(item.lock);
+		},
+		/** Happens when you click the button */
+		click: (player, item) => {
+			if (KDMagicLocks.includes(item.lock)) {
+				KinkyDungeonLock(item, "");
+
+				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#ffff00", 2);
+				KinkyDungeonChangeMana(-KDGameData.InventoryActionManaCost || 0);
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+
+				KDGameData.InventoryAction = "";
+				KinkyDungeonLastAction = "Cast";
+				KinkyDungeonAdvanceTime(1, true, true);
+			}
+		},
+		/** Return true to cancel it */
+		cancel: (player, delta) => {
+			if (delta > 0) {
+				if (!KinkyDungeonHasMana(KDGameData.InventoryActionManaCost) || !(KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0)) {
+					return true;
+				}
+			}
+			return false;
+		},
+	},
 	"Offhand": {
 		valid: (player, item) => {
 			if (!(item?.type == Weapon && KDCanOffhand(item))) return false;

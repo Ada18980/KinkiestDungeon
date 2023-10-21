@@ -2150,7 +2150,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	// Handle cases where you can't even attempt to unlock or pick
 	if (lockType && (StruggleType == "Unlock" && !lockType.canUnlock(data))
-		|| (StruggleType == "Pick" && lockType && !lockType.pickable)) {
+		|| (StruggleType == "Pick" && lockType && !lockType.canPick(data))) {
 		if (StruggleType == "Unlock")
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleUnlockNo" + restraint.lock + "Key")
 				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "orange", 2, true);
@@ -3453,9 +3453,10 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
  * @param {boolean} [Shrine] - If the item is being removed from a shrine, this is true.
  * @param {boolean} [UnLink] - If the item is being removed as part of an unlinking process
  * @param {entity} [Remover] - Who removes this
+ * @param {boolean} [ForceRemove] - Ignore AlwaysKeep, for example if armor gets confiscated
  * @returns {boolean} true if the item was removed, false if it was not.
  */
-function KinkyDungeonRemoveRestraintSpecific(item, Keep, Add, NoEvent, Shrine, UnLink, Remover) {
+function KinkyDungeonRemoveRestraintSpecific(item, Keep, Add, NoEvent, Shrine, UnLink, Remover, ForceRemove) {
 	let rest = KinkyDungeonGetRestraintItem(KDRestraint(item)?.Group);
 	if (rest == item) {
 		return KinkyDungeonRemoveRestraint(KDRestraint(item).Group, Keep, Add, NoEvent, Shrine, UnLink, Remover);
@@ -3463,7 +3464,7 @@ function KinkyDungeonRemoveRestraintSpecific(item, Keep, Add, NoEvent, Shrine, U
 		let list = KDDynamicLinkList(rest, true);
 		for (let i = 1; i < list.length; i++) {
 			if (list[i] == item) {
-				return KinkyDungeonRemoveDynamicRestraint(list[i-1], Keep, NoEvent, Remover);
+				return KinkyDungeonRemoveDynamicRestraint(list[i-1], Keep, NoEvent, Remover, ForceRemove);
 			}
 		}
 	}
@@ -3479,9 +3480,10 @@ function KinkyDungeonRemoveRestraintSpecific(item, Keep, Add, NoEvent, Shrine, U
  * @param {boolean} [Shrine] - If the item is being removed from a shrine, this is true.
  * @param {boolean} [UnLink] - If the item is being removed as part of an unlinking process
  * @param {entity} [Remover] - Who removes this
+ * @param {boolean} [ForceRemove] - Ignore AlwaysKeep, for example if armor gets confiscated
  * @returns {boolean} true if the item was removed, false if it was not.
  */
-function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, Remover) {
+function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, Remover, ForceRemove) {
 	KDRestraintDebugLog.push("Removing " + Group);
 	KDDelayedActionPrune(["Remove"]);
 	KDStruggleGroupLinkIndex = {};
@@ -3509,7 +3511,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 					KinkyDungeonPlayerNeedsRefresh = true;
 				}
 				let inventoryAs = item.inventoryAs || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
-				if (rest.inventory
+				if (rest.inventory && !ForceRemove
 					&& (Keep
 						|| ((
 							rest.enchanted
@@ -3599,9 +3601,10 @@ function KDIInsertRestraintUnderneath(restraint) {
  * @param {boolean} [Keep] - If true, the item will be kept in the player's inventory.
  * @param {boolean} [NoEvent] - If true, the item will not trigger any events.
  * @param {entity} [Remover] - Who removes this
+ * @param {boolean} [ForceRemove] - Ignore AlwaysKeep, for example if armor gets confiscated
  * @returns {boolean} true if the item was removed, false if it was not.
  */
-function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover) {
+function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, ForceRemove) {
 	let item = hostItem.dynamicLink;
 	if (item) {
 		const rest = KDRestraint(item);
@@ -3610,7 +3613,7 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover) {
 
 		if (!KinkyDungeonCancelFlag) {
 			let inventoryAs = item.inventoryAs || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
-			if (rest.inventory
+			if (rest.inventory && !ForceRemove
 				&& (Keep
 					|| rest.enchanted
 					|| rest.alwaysKeep

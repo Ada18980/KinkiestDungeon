@@ -1774,7 +1774,7 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 	if (enemy.hp <= 0) {
 		let noRepHit = false;
 		KinkyDungeonSendEvent("death", {enemy: enemy});
-		KDSpliceIndex(E, 1);
+		KDRemoveEntity(enemy, true, true, false, E);
 		KinkyDungeonSendEvent("kill", {enemy: enemy, capture: KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture});
 		if (KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture && enemy.playerdmg) {
 			KDDropStolenItems(enemy);
@@ -5215,6 +5215,46 @@ function KDSpliceIndex(index, num = 1) {
 }
 
 /**
+ * Removes an enemy and does some stuff like party management, etc to keep things sanitary
+ * @param {entity} enemy
+ * @param {boolean} [kill]
+ * @param {boolean} [capture]
+ * @param {boolean} [noEvent]
+ * @param {number} [forceIndex]
+ * @returns {boolean}
+ */
+function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
+	let data = {
+		enemy: enemy,
+		kill: kill,
+		capture: capture,
+		cancel: false,
+	};
+	if (!noEvent)
+		KinkyDungeonSendEvent("removeEnemy", data);
+
+	if (data.cancel) return false;
+	if (!KDGameData.Party) KDGameData.Party = []; // Null protection
+	if (!KDGameData.CapturedParty) KDGameData.CapturedParty = [];
+	if (data.kill || data.capture)
+		for (let pm of (KDGameData.Party)) {
+			if (pm.id == data.enemy.id) {
+				KDGameData.Party.splice(KDGameData.Party.indexOf(pm), 1);
+				if (data.capture && KDGetFaction(enemy) == "Player") {
+					//if (!enemy.hostile) { // In the future player will be able to keep as slaves
+					if (!KDGameData.CapturedParty.some((cpm) => {return cpm.id == pm.id;})) {
+						KDGameData.CapturedParty.push(pm);
+					}
+					//}
+				}
+			}
+		}
+
+	KDSpliceIndex(forceIndex || KDMapData.Entities.indexOf(data.enemy), 1);
+	return true;
+}
+
+/**
  *
  * @param {entity} enemy
  * @param {any} target
@@ -5912,12 +5952,13 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 		if (protection >= multiPower) {
 			for (let r of protectRestraints) {
 				if (count < multiPower) {
-					KinkyDungeonRemoveRestraint(KDRestraint(r).Group, true);
+					KinkyDungeonRemoveRestraint(KDRestraint(r).Group, false, undefined, undefined, undefined, undefined, undefined, true);
+					KinkyDungeonDropItem({name: r.name}, KinkyDungeonPlayerEntity, false, true, true);
 					KinkyDungeonSendTextMessage(
 						5, TextGet("KDArmorBlock")
 							.replace("ArmorName", TextGet("Restraint" + r.name))
 							.replace("EnemyName", name),
-						"#ffff00", 1);
+						"#ff8800", 1);
 				}
 				count += KDRestraint(r).protection;
 			}

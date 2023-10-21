@@ -74,7 +74,7 @@ function KinkyDungeonItemDrop(x, y, dropTable, summoned) {
 	return false;
 }
 
-function KinkyDungeonDropItem(Item, Origin, AllowOrigin, noMsg, allowEnemies) {
+function KinkyDungeonDropItem(Item, Origin, PreferOrigin, noMsg, allowEnemies) {
 	let slots = [];
 	for (let X = -Math.ceil(1); X <= Math.ceil(1); X++)
 		for (let Y = -Math.ceil(1); Y <= Math.ceil(1); Y++) {
@@ -82,8 +82,8 @@ function KinkyDungeonDropItem(Item, Origin, AllowOrigin, noMsg, allowEnemies) {
 				slots.push({x:X, y:Y});
 		}
 
-	let foundslot = AllowOrigin ? {x:Origin.x, y:Origin.y} : null;
-	if (!(Origin == KinkyDungeonPlayerEntity && AllowOrigin && KinkyDungeonPlayer.IsEnclose())) {
+	let foundslot = PreferOrigin ? {x:Origin.x, y:Origin.y} : null;
+	if (!(Origin == KinkyDungeonPlayerEntity && PreferOrigin && KinkyDungeonPlayer.IsEnclose())) {
 		if (!foundslot || !(KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(foundslot.x, foundslot.y))
 		&& (allowEnemies || KinkyDungeonNoEnemy(foundslot.x, foundslot.y, true))))
 			for (let C = 0; C < 100; C++) {

@@ -455,7 +455,7 @@ let KDDialogue = {
 					else
 						KinkyDungeonChangeFactionRep("Dressmaker", 0.0007 * power);
 					KDRemoveQuest("DressmakerQuest");
-					KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
+					KDRemoveEntity(KDDialogueEnemy(), false);
 					return false;
 				},
 				prerequisiteFunction: (gagged, player) => {
@@ -518,7 +518,7 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
 					KDRemoveQuest("ApprenticeQuest");
-					KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
+					KDRemoveEntity(KDDialogueEnemy(), false);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)
 						KinkyDungeonChangeFactionRep("Apprentice", 0.015);
@@ -540,7 +540,7 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
 					KDRemoveQuest("ApprenticeQuest");
-					KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
+					KDRemoveEntity(KDDialogueEnemy(), false);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)
 						KinkyDungeonChangeFactionRep("Apprentice", 0.015);
@@ -562,7 +562,7 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
 					KDRemoveQuest("ApprenticeQuest");
-					KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
+					KDRemoveEntity(KDDialogueEnemy(), false);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)
 						KinkyDungeonChangeFactionRep("Apprentice", 0.015);
@@ -584,7 +584,7 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
 					KDRemoveQuest("ApprenticeQuest");
-					KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
+					KDRemoveEntity(KDDialogueEnemy(), false);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollPurity, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)
 						KinkyDungeonChangeFactionRep("Apprentice", 0.015);
@@ -2135,7 +2135,7 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					if (KDDialogueEnemy()) {
 						let e = KDDialogueEnemy();
-						KDSpliceIndex(KDMapData.Entities.indexOf(KDDialogueEnemy()), 1);
+						KDRemoveEntity(KDDialogueEnemy(), false);
 						let created = DialogueCreateEnemy(e.x, e.y, "Bandit");
 						created.allied = 9999;
 						created.personality = e.personality;
