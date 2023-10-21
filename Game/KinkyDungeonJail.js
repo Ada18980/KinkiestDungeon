@@ -505,7 +505,8 @@ function KinkyDungeonHandleJailSpawns(delta) {
 				let g = KinkyDungeonJailGuard();
 				console.log("Despawned guard");
 				KDClearItems(g);
-				KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonJailGuard()), 1);
+				KDRemoveEntity(KinkyDungeonJailGuard());
+				//KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonJailGuard()), 1);
 				if (KinkyDungeonTilesGet((xx-1) + "," + yy) && KinkyDungeonTilesGet((xx-1) + "," + yy).Type == "Door") {
 					KinkyDungeonMapSet(xx-1, yy, 'D');
 					if (KDGameData.PrisonerState == 'jail')

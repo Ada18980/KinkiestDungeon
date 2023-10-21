@@ -1410,6 +1410,18 @@ function KinkyDungeonDrawQuickInv() {
 			return true;
 		}, true, 630, QL_y, 120, 60, TextGet("KDQuickLoadoutSave"), "#dddddd", "", undefined, false, !KDQuickLoadoutSave, KDButtonColor);
 
+		if (KDQuickLoadoutSave) {
+			DrawCheckboxKDEx("QuickLoadout_Weapon", (bdata) => {
+				KDGameData.QuickLoadout_Weapon = !KDGameData.QuickLoadout_Weapon;
+				return true;
+			}, true, 510, 110, 64, 64, TextGet("KDQuickLoadout_Weapon"), KDGameData.QuickLoadout_Weapon, false, "#ffffff");
+
+			DrawCheckboxKDEx("QuickLoadout_Merge", (bdata) => {
+				KDGameData.QuickLoadout_Merge = !KDGameData.QuickLoadout_Merge;
+				return true;
+			}, true, 510, 180, 64, 64, TextGet("KDQuickLoadout_Merge"), KDGameData.QuickLoadout_Merge, false, "#ffffff");
+		}
+
 		for (let i = 1; i <= KDNumOfQuickLoadouts; i++) {
 			DrawButtonKDEx("quickLoadout_num_" + i, (bdata) => {
 				if (KDQuickLoadoutSave) {
@@ -1524,11 +1536,23 @@ function KinkyDungeonDrawQuickInv() {
 					});
 			}
 			if (KDInventoryStatus.SortQuickInv) {
-				KDDraw(kdcanvas, kdpixisprites, "consumablesiconhidden" + c,
+				KDDraw(kdcanvas, kdpixisprites, "consumablesiconsort" + c,
 					KinkyDungeonRootDirectory + "InvItemSort.png", point.x, point.y + 30, 80, 80, undefined, {
 						zIndex: 111,
 					});
 				DrawTextKD("" + (KDGameData.ItemPriority? KDGameData.ItemPriority[item.name] || 0 : 0), point.x + 40, point.y + 30 + 20, "#ffffff", undefined, 30,);
+			} else if (MouseIn(point.x, point.y + 30, 80, 80) || KDGameData.ItemPriority && KDGameData.ItemPriority[item.name] > 0) {
+				DrawButtonKDEx("consumablesiconfav" + c + (KDGameData.ItemPriority && KDGameData.ItemPriority[item.name] ? "b" : "a"), (bdata) => {
+					if (!KDGameData.ItemPriority) KDGameData.ItemPriority = {};
+					if (!(KDGameData.ItemPriority[item.name] > 9)) KDGameData.ItemPriority[item.name] = 10;
+					else KDGameData.ItemPriority[item.name] = 0;
+					KDSortInventory(KinkyDungeonPlayerEntity);
+					return true;
+				},true, point.x + 80 - 32, point.y + 30, 32, 32, "", "#ffffff", KinkyDungeonRootDirectory +
+					(KDGameData.ItemPriority && KDGameData.ItemPriority[item.name] > 0 ? "UI/Star.png" : "UI/StarOff.png"),
+				"", false, true, undefined, undefined, undefined, {
+					zIndex: 111,
+				});
 			}
 			//DrawImageEx(item.preview, point.x, point.y + 30, {Width: 80, Height: 80});
 
@@ -1617,6 +1641,18 @@ function KinkyDungeonDrawQuickInv() {
 						zIndex: 110,
 					});
 				DrawTextKD("" + (KDGameData.ItemPriority? KDGameData.ItemPriority[item.name] || 0 : 0), point.x + 40, 1000 - V - Wheight + point.y + 20, "#ffffff", undefined, 30,);
+			} else if (MouseIn(point.x, 1000 - V - Wheight + point.y, 80, 80) || KDGameData.ItemPriority && KDGameData.ItemPriority[item.name] > 0) {
+				DrawButtonKDEx("weaponsiconfavOfffav" + w + (KDGameData.ItemPriority && KDGameData.ItemPriority[item.name] ? "b" : "a"), (bdata) => {
+					if (!KDGameData.ItemPriority) KDGameData.ItemPriority = {};
+					if (!(KDGameData.ItemPriority[item.name] > 9)) KDGameData.ItemPriority[item.name] = 10;
+					else KDGameData.ItemPriority[item.name] = 0;
+					KDSortInventory(KinkyDungeonPlayerEntity);
+					return true;
+				},true, point.x + 80 - 32, 1000 - V - Wheight + point.y, 32, 32, "", "#ffffff", KinkyDungeonRootDirectory +
+					(KDGameData.ItemPriority && KDGameData.ItemPriority[item.name] > 0 ? "UI/Star.png" : "UI/StarOff.png"),
+				"", false, true, undefined, undefined, undefined, {
+					zIndex: 111,
+				});
 			}
 			//DrawImageEx(item.preview, point.x, 1000 - V - Wheight + point.y, {Width: 80, Height: 80});
 		}
@@ -1734,11 +1770,23 @@ function KinkyDungeonDrawQuickInv() {
 					});
 			}
 			if (KDInventoryStatus.SortQuickInv) {
-				KDDraw(kdcanvas, kdpixisprites, "restraintsiconhid" + w,
+				KDDraw(kdcanvas, kdpixisprites, "restraintsiconsort" + w,
 					KinkyDungeonRootDirectory + "InvItemSort.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 						zIndex: 109,
 					});
 				DrawTextKD("" + (KDGameData.ItemPriority? KDGameData.ItemPriority[item.name] || 0 : 0), point.x + 40, 1000 - V - Rheight + point.y + 20, "#ffffff", undefined, 30,);
+			} else if (MouseIn(point.x, 1000 - V - Rheight + point.y, 80, 80) || KDGameData.ItemPriority && KDGameData.ItemPriority[item.name] > 0) {
+				DrawButtonKDEx("restraintsiconfav" + w + (KDGameData.ItemPriority && KDGameData.ItemPriority[item.name] ? "b" : "a"), (bdata) => {
+					if (!KDGameData.ItemPriority) KDGameData.ItemPriority = {};
+					if (!(KDGameData.ItemPriority[item.name] > 9)) KDGameData.ItemPriority[item.name] = 10;
+					else KDGameData.ItemPriority[item.name] = 0;
+					KDSortInventory(KinkyDungeonPlayerEntity);
+					return true;
+				},true, point.x + 80 - 32, 1000 - V - Rheight + point.y, 32, 32, "", "#ffffff", KinkyDungeonRootDirectory +
+					(KDGameData.ItemPriority && KDGameData.ItemPriority[item.name] > 0 ? "UI/Star.png" : "UI/StarOff.png"),
+				"", false, true, undefined, undefined, undefined, {
+					zIndex: 111,
+				});
 			}
 		}
 	}
@@ -1998,14 +2046,20 @@ function KDLoadQuickLoadout(num, clearFirst) {
 }
 
 function KDSaveQuickLoadout(num) {
+	if (!KDGameData.QuickLoadouts) KDGameData.QuickLoadouts = {};
+	let currentLoadout = KDGameData.QuickLoadouts[num + ""];
+
 	let loadout = [];
 
-	if (KinkyDungeonPlayerWeapon) {
-		loadout.push(KinkyDungeonPlayerWeapon);
+	if (KDGameData.QuickLoadout_Weapon) {
+		if (KinkyDungeonPlayerWeapon) {
+			loadout.push(KinkyDungeonPlayerWeapon);
+		}
+		if (KDGameData.PreviousWeapon) {
+			loadout.push(KDGameData.PreviousWeapon);
+		}
 	}
-	if (KDGameData.PreviousWeapon) {
-		loadout.push(KDGameData.PreviousWeapon);
-	}
+
 
 	for (let item of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(item)?.good || KDRestraint(item)?.armor) {
@@ -2013,9 +2067,19 @@ function KDSaveQuickLoadout(num) {
 		}
 	}
 
+	if (KDGameData.QuickLoadout_Merge && currentLoadout) {
+		for (let item of currentLoadout) {
+			let rest = KDRestraint({name: item});
+			if (rest && !loadout.some((inv) => {
+				return rest.Group == KDRestraint({name: inv})?.Group;
+			})) {
+				loadout.push(item);
+			}
+		}
+	}
 
 
-	if (!KDGameData.QuickLoadouts) KDGameData.QuickLoadouts = {};
+
 	KDGameData.QuickLoadouts[num + ""] = loadout;
 }
 

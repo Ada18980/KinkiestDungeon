@@ -2370,10 +2370,12 @@ type KDLockType = {
 
 	penalty?: Record<string, number>;
 
+	/* For chests, etc*/
 	pickable: boolean;
 	pick_speed: number;
 	pick_diff: number;
 	pick_lim?: number;
+	/** For restraints */
 	canPick: (data: any) => boolean;
 	doPick: (data: any) => boolean;
 	failPick: (data: any) => string;

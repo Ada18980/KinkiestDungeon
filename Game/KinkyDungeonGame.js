@@ -565,20 +565,6 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 		e.visual_x = point.x;
 		e.visual_y = point.y;
 	}
-
-	// Strip non-persistent items
-	if (!KDMapData.GroundItems) KDMapData.GroundItems = [];
-	let persistentItems = KDMapData.GroundItems.filter((item) => {
-		return KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent;
-	});
-	let lostItems = KDMapData.GroundItems.filter((item) => {
-		return !(KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent);
-	});
-
-	KDMapData.GroundItems = persistentItems;
-	for (let item of lostItems) {
-		KDAddLostItemSingle(item.name, item.amount || 1);
-	}
 	return true;
 }
 
@@ -666,6 +652,21 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
 
+	// Strip non-persistent items
+	if (!KDMapData.GroundItems) KDMapData.GroundItems = [];
+	let persistentItems = KDMapData.GroundItems.filter((item) => {
+		return KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent;
+	});
+	let lostItems = KDMapData.GroundItems.filter((item) => {
+		return !(KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent);
+	});
+
+	KDMapData.GroundItems = persistentItems;
+	for (let item of lostItems) {
+		KDAddLostItemSingle(item.name, item.amount || 1);
+	}
+
+	// Setup
 	KDGameData.RoomType = RoomType;
 	KDGameData.MapMod = MapMod;
 	let mapMod = null;

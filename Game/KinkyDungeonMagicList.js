@@ -13,8 +13,8 @@
 // trail, trailchance, traildamage, traillifetime: for lingering projectiles left behind the projectile
 // onhit: What happens on AoE. Deals aoedamage damage, or just power otherwise
 
-let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 9, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
-	onhit:"", time:25, power: 0, range: 2.8, size: 1, damage: ""};
+let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 6, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
+	onhit:"", time:25, power: 2, range: 2.8, size: 1, damage: ""};
 let KDBondageSpell = {name: "Bondage", tags: ["binding", "utility", "offense"], quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "Bondage", noMiscast: true,
 	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
 
@@ -99,7 +99,7 @@ let KinkyDungeonLearnableSpells = [
 	//Page 2: Conjuration
 	[
 		// Verbal
-		["CommandWord", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "CommandVibrate", "CommandOrgasm", "ZoneOfExcitement", "Lockdown", "Chastity", "ZoneOfPurity", "Heal", "Heal2", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Blink", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
+		["CommandWord", "CommandWordGreater", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "CommandVibrate", "CommandOrgasm", "ZoneOfExcitement", "Lockdown", "Chastity", "ZoneOfPurity", "Heal", "Heal2", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Blink", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
 		// Arms
 		["TickleCloud", "FeatherCloud", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
@@ -881,6 +881,10 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{goToPage: 2, name: "ApprenticeSummon", tags: ["magic"], autoLearn: ["Ally"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{goToPage: 2, name: "ApprenticeLatex", tags: ["magic"], autoLearn: ["SlimeBall"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{goToPage: 2, name: "ApprenticePhysics", tags: ["magic"], autoLearn: ["Wall"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+
+		{name: "CommandWordGreater", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 14, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
+			prerequisite: "CommandWord",
+			onhit:"", time:100, power: 10, aoe: 0.5, range: 4.5, size: 1, damage: ""},
 
 		{name: "Bomb", color: "#ff0000", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 5, sfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
 			effectTileDurationMod: 7, hitSpin: 0.2, effectTile: {

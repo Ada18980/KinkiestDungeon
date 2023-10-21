@@ -5523,7 +5523,7 @@ let KDEventMapEnemy = {
 						if (KDistChebyshev(enemy.x - KDMapData.StartPosition.x, enemy.y - KDMapData.StartPosition.y) < 1.5
 							&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 2.5) {
 							KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), "#ffffff", 4);
-							KDSpliceIndex(KDMapData.Entities.indexOf(enemy), 1);
+							KDRemoveEntity(enemy);
 							//KDGameData.RoomType = "ShopStart";
 							//KDGameData.MapMod = ""; // Reset the map mod
 							MiniGameKinkyDungeonLevel = 0;
@@ -6139,7 +6139,7 @@ let KDEventMapGeneric = {
 					let Enemy = null;
 					if (KDHardModeReplace[e.Enemy.name]) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
 					if (Enemy) {
-						KDSpliceIndex(KDMapData.Entities.indexOf(e), 1);
+						KDRemoveEntity(e);
 						e.Enemy = JSON.parse(JSON.stringify(Enemy));
 						KDAddEntity(e);
 
@@ -6199,7 +6199,7 @@ let KDEventMapGeneric = {
 					let Enemy = null;
 					if (KDHardModeReplace[e.Enemy.name] && KDRandom() < 0.5) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
 					if (Enemy) {
-						KDSpliceIndex(KDMapData.Entities.indexOf(e), 1);
+						KDRemoveEntity(e);
 						e.Enemy = JSON.parse(JSON.stringify(Enemy));
 						KDAddEntity(e);
 

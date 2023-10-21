@@ -209,9 +209,12 @@ let KDJourney = "";
 
 let KDOptOut = false;
 
+let KDDefaultMaxParty = 3;
+
 /**
 *  @typedef {{
 * InventoryAction: string,
+* InventoryActionManaCost: number,
 * SellMarkup: number,
 * CurseLevel: number,
 * UsingConsumable: string,
@@ -331,6 +334,12 @@ let KDOptOut = false;
 * MovePoints: number,
 * Wait: number,
 * Class: string,
+* Party: entity[],
+* CapturedParty: entity[],
+* PlayerName: string,
+* QuickLoadout_Weapon: boolean,
+* QuickLoadout_Merge: boolean,
+* MaxParty: number,
 * FocusControlToggle: Record<string, boolean>,
 * FloorRobotType: Record<string, string>,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
@@ -339,12 +348,19 @@ let KDOptOut = false;
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	PlayerName: "Ada",
+	Party: [],
+	CapturedParty: [],
+	MaxParty: KDDefaultMaxParty,
+	QuickLoadout_Weapon: true,
+	QuickLoadout_Merge: true,
 	FocusControlToggle: {},
 	TeleportLocations: {},
 	CurseLevel: 0,
 	UsingConsumable: "",
 	MovePoints: 0,
 	InventoryAction: "",
+	InventoryActionManaCost: 0,
 	SellMarkup: 1,
 	BondageTarget: -1,
 	ShopRewardProgram: 0,

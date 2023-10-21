@@ -14,8 +14,19 @@ Vague todo:
 - TODO add scroll to log, rep
 
 
+4.80 (Oct 2023)
+- Enchantments and curses now scale in occurrence with level
+- Added some variation to the standard lock visuals
+- Added High Security lock type
+- Armor now gets thrown on the floor if it falls off
+- Loadouts can now be set to merge armor into the loadout instead of replacing all armor
+
+4.79.5 (Oct 2023)
+- CMD: Unlock now unlocks one lock, but is 33% cheaper
+- New spell: CMD: Greater Unlock
+
 4.79.4 (Oct 2023)
-- Added Command spells
+- Added Take Command spells
 
 4.79.3 (Oct 2023)
 - New perks: Directional Vision, Inertia, Heavy Inertia

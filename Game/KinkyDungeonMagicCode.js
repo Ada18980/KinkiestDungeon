@@ -226,7 +226,7 @@ let KinkyDungeonSpellSpecials = {
 				if (KDHostile(en) && en.hp <= en.Enemy.maxhp * 0.1) {
 					en.ceasefire = 50;
 				} else if (!KDHostile(en) && en.hp <= en.Enemy.maxhp * 0.1) {
-					en.allied = 100;
+					en.faction = "Player";
 					let ff = KDGetFactionOriginal(en);
 					if (!KinkyDungeonHiddenFactions.includes(ff)) {
 						KinkyDungeonChangeFactionRep(ff, 0.005);
@@ -238,7 +238,7 @@ let KinkyDungeonSpellSpecials = {
 							b.duration = 0;
 						}
 					}
-				en.boundLevel = Math.max(0, en.boundLevel);
+				en.boundLevel = Math.max(0, en.boundLevel - spell.power);
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				return "Cast";
@@ -247,12 +247,19 @@ let KinkyDungeonSpellSpecials = {
 			return "Fail";
 		} else if (targetX == KinkyDungeonPlayerEntity.x && targetY == KinkyDungeonPlayerEntity.y) {
 			if (KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0) {
-				for (let r of KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks, true)) {
-					KinkyDungeonLock(r, "");
+				if (spell.aoe > 0) {
+					for (let r of KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks, true)) {
+						KinkyDungeonLock(r, "");
+					}
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#ffff00", 2);
+					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+				} else {
+					KDGameData.InventoryAction = "RemoveMagicLock";
+					KinkyDungeonDrawState = "Inventory";
+					KinkyDungeonCurrentFilter = Restraint;
+					KDGameData.InventoryActionManaCost = KinkyDungeonGetManaCost(spell);
 				}
-				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#ffff00", 2);
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				return "Cast";
 			}
 			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoLocks"), "#ff5555", 1, true);
