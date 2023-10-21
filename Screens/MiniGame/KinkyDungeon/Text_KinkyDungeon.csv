@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.79.5"
+KinkyDungeon,"Kinky Dungeon v4.80"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -3372,21 +3372,6 @@ KinkyDungeonInventoryItemSlimeWalkers,Slime Walkers
 KinkyDungeonInventoryItemSlimeWalkersDesc,"A pair of heels coated in a nonstick material."
 KinkyDungeonInventoryItemSlimeWalkersDesc2,"They will slow you down, but you can walk on slime without getting stuck!"
 
-RestraintGlovesDexterity,"Gloves of Dexterity"
-RestraintGlovesDexterityDesc,"A pair of gloves that makes your hits strike with elven grace--and force."
-RestraintGlovesDexterityDesc2,"Increases accuracy by +50. Reduces melee damage by 30%."
-KinkyDungeonInventoryItemGlovesDexterity,"Gloves of Dexterity"
-KinkyDungeonInventoryItemGlovesDexterityDesc,"A pair of gloves that makes your hits strike with elven grace--and force."
-KinkyDungeonInventoryItemGlovesDexterityDesc2,"Increases accuracy by +50. Reduces melee damage by 30%."
-LootGlovesDexterity,"You find a pair of leather gloves with a magic rune."
-
-RestraintBracersTide,"Bracers of Roaring Tides"
-RestraintBracersTideDesc,"A pair of bracers that conjures a mighty wave upon attacking."
-RestraintBracersTideDesc2,"Creates an AoE delayed explosion on attack that stuns enemies and deals 10 acid damage."
-KinkyDungeonInventoryItemBracersTide,"Bracers of Roaring Tides"
-KinkyDungeonInventoryItemBracersTideDesc,"A pair of bracers that conjures a mighty wave upon attacking."
-KinkyDungeonInventoryItemBracersTideDesc2,"Creates an AoE delayed explosion on attack that stuns enemies and deals 10 acid damage."
-LootBracersTide,"You find a pair of bracers that are transparent like water."
 
 KDCursedArmorUncurse,The curse on the RestraintName is lifted!
 KDShopConfirm,Press RIGHT to confirm buy!
