@@ -239,6 +239,8 @@ let LAYERS_BASE = [
 	// Lower body underwear
 	"StockingRight",
 
+	"CorsetUnder", // Corsets go here when wearing pants
+
 	"Panties",
 
 	// Upper body underwear and bodysuits

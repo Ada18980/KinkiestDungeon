@@ -336,6 +336,7 @@ AddModel({
 	Parent: "Bandit",
 	TopLevel: true,
 	Categories: ["Pants"],
+	AddPose: ["Pants"],
 	Layers: ToLayerMap([
 		{ Name: "Shorts", Layer: "Pants", Pri: 7,
 			Poses: ToMap([...LEGPOSES]),
@@ -587,6 +588,7 @@ AddModel({
 	Categories: ["Corsets"],
 	Layers: ToLayerMap([
 		{ Name: "Corset", Layer: "CorsetOver", Pri: 1,
+			SwapLayerPose: {Pants: "CorsetLower"},
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
 			Invariant: true,
@@ -739,6 +741,7 @@ AddModel({
 	Categories: ["Corsets"],
 	Layers: ToLayerMap([
 		{ Name: "Corset", Layer: "CorsetOver", Pri: 1,
+		SwapLayerPose: {Pants: "CorsetLower"},
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
 			Invariant: true,
