@@ -2936,6 +2936,13 @@ const KinkyDungeonRestraints = [
  */
 let KDLocks = {
 	"White": {
+		filter: (Guaranteed, Floor, AllowGold, Type) => {
+			return Floor < 11;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type) => {
+			return Math.max(10, 100 - Floor * 10);
+		},
+
 		consume_key: false,
 		lockmult: 1.4,
 		// Picking
@@ -2999,6 +3006,13 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Red": {
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return true;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 50;
+		},
+
 		consume_key: true,
 		lockmult: 2.0,
 		// Picking
@@ -3054,6 +3068,13 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Red_Med": {
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return true;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 15 + Floor * 3;
+		},
+
 		consume_key: true,
 		lockmult: 2.1,
 		// Picking
@@ -3110,6 +3131,13 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Red_Hi": {
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return true;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 15 + Floor * 3;
+		},
+
 		consume_key: true,
 		lockmult: 2.2,
 		// Picking
@@ -3166,12 +3194,19 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"HiSec": {
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return Floor > 2;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 16 + Floor * 4;
+		},
+
 		consume_key: true,
 		lockmult: 2.5,
 		// Picking
 		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
-		pick_speed: 1.0, // Multiplies the picking rate
-		pick_diff: 1.0, // Added to the item's pick difficulty
+		pick_speed: 0.5, // Multiplies the picking rate
+		pick_diff: -1.0, // Added to the item's pick difficulty
 		pick_lim: 1.0, // Added to the item's pick limitchance
 
 		canPick: (data) => {
@@ -3221,7 +3256,79 @@ let KDLocks = {
 		loot_special: false,
 		loot_locked: true,
 	},
+	"Disc": {
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return Floor > 1;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 20 + Floor * 5;
+		},
+
+		consume_key: true,
+		lockmult: 2.35,
+		// Picking
+		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_speed: 0.5, // Multiplies the picking rate
+		pick_diff: -0.25, // Added to the item's pick difficulty
+		pick_lim: 0.3, // Added to the item's pick limitchance
+
+		canPick: (data) => {
+			let pick = KinkyDungeonInventoryGet("DiscPick");
+			//if (!data.noMsg) KinkyDungeonSendTextMessage(10, TextGet("KDNeedDiscPick"), "#ffffff", 2, true);
+			return pick != undefined;
+		},
+		doPick: (data) => {
+			return true;
+		},
+		failPick: (data) => {
+			return "Fail";
+		},
+		breakChance: (data) => {
+			return KDRandom() < KinkyDungeonKeyGetPickBreakChance();
+		},
+
+		// Key
+		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "Red",
+		canUnlock: (data) => {
+			return KinkyDungeonRedKeys > 0;
+		},
+		doUnlock: (data) => {
+			KinkyDungeonRedKeys -= 1;
+			return true;
+		},
+		removeKeys: (data) => {
+			KinkyDungeonRedKeys -= 1;
+			if (!data?.unlock) {
+				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
+			}
+		},
+		failUnlock: (data) => {
+			return "Fail";
+		},
+
+		// Start of level -- for gold locks
+		levelStart: (item) => {
+		},
+		shrineImmune: false,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: false,
+		loot_locked: true,
+	},
 	"Blue": {
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return Type != "Door" && Floor > 4;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 8 * Floor - 30;
+		},
+
 		consume_key: true,
 		lockmult: 3.0,
 		penalty: {
@@ -3281,6 +3388,13 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"Gold": {
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return !AllowGold && Floor > 10;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 2 * Floor - 15;
+		},
+
 		consume_key: true,
 		lockmult: 3.25,
 		penalty: {
@@ -3344,6 +3458,13 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"Purple": {
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return true;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 30 + 30 * (Data?.enemy?.Enemy.unlockCommandLevel > 0 ? Data?.enemy?.Enemy.unlockCommandLevel : (Data?.enemy ? -1 : 0));
+		},
+
 		consume_key: false,
 		lockmult: 2.5,
 

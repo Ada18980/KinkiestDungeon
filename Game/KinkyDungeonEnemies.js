@@ -4076,7 +4076,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								Lstart = Math.floor(Lmax*KDRandom()); // Lock one at random
 							}
 							for (let L = Lstart; L <= Lmax; L++) {
-								let l = enemy.Enemy.attackLock ? KDProcessLock(enemy.Enemy.attackLock) : KinkyDungeonGenerateLock(true);
+								let l = enemy.Enemy.attackLock ? KDProcessLock(enemy.Enemy.attackLock) : KinkyDungeonGenerateLock(true, KDGetEffLevel() + enemy.Enemy.power || 0, undefined, "Enemy", {enemy: enemy});
 								KinkyDungeonLock(Lockable[L], l); // Lock it!
 								priorityBonus += KDRestraint(Lockable[L]).power;
 							}
@@ -6435,4 +6435,22 @@ function KDEnemyCanSprint(enemy) {
  */
 function KDEnemyChangeSprint(enemy, amt) {
 	enemy.exertion = Math.max(0, amt + (enemy.exertion || 0));
+}
+
+let KDShopMoneyBase = 450;
+let KDShopMoneyPerFloor = 50;
+let KDShopMoneyPerRank = 200;
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {boolean} [dontSet]
+ * @returns {number}
+ */
+function KDSetShopMoney(enemy, dontSet) {
+	let money = KDShopMoneyBase + KDShopMoneyPerFloor * KDGetEffLevel() + KDShopMoneyPerRank * (KDEnemyRank(enemy)**2);
+	KinkyDungeonSendEvent("shopMoney", {enemy: enemy, dontSet: dontSet});
+	if (!dontSet)
+		enemy.gold = money;
+	return money;
 }

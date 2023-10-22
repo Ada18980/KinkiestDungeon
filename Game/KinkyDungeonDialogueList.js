@@ -3258,6 +3258,8 @@ let KDDialogue = {
 		["Bomb", "Bomb", "Bomb"]),
 	"CookieSell": KDShopDialogue("CookieSell", ["Cookie", "Brownies", "Donut", "CookieJailer", "DivineTear"], [], ["human"], 0.14,
 		["Cookie", "Brownies", "Donut"]),
+	"ThiefSell": KDShopDialogue("ThiefSell", ["DiscPick", "CuffKeys", "Bomb", "SmokeBomb"], [], ["human"], 0.1,
+		["DiscPick", "CuffKeys"]),
 	"GunSell": KDShopDialogue("GunSell", ["Blaster", "EscortDrone", "Gunpowder", "CrossbowHeavy", "CrossbowPistol", "Crossbow"], [], ["maid", "bandit", "gun", "bountyhunter"], 0.33,
 		["CrossbowPistol", "Gunpowder"]),
 	"GhostSell": KDShopDialogue("GhostSell", ["Ectoplasm", "PotionInvisibility", "ElfCrystal"], [], ["alchemist", "witch", "apprentice", "dressmaker", "dragon"], 0.1,

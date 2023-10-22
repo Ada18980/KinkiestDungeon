@@ -330,7 +330,7 @@ let KDPlayerEffects = {
 			if (Lmax >= 0) {
 				Lstart = Math.floor(Lmax*KDRandom()); // Lock one at random
 				for (let L = Lstart; L <= Lmax; L++) {
-					let l = playerEffect.type ? KDProcessLock(playerEffect.type) : KinkyDungeonGenerateLock(true);
+					let l = playerEffect.type ? KDProcessLock(playerEffect.type) : KinkyDungeonGenerateLock(true, undefined, undefined, undefined, {bullet: bullet});
 					KinkyDungeonLock(Lockable[L], l); // Lock it!
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonLockBullet")
 						.replace("LKTYP", TextGet(`Kinky${l}LockType`)), "orange", 1);

@@ -2196,6 +2196,7 @@ function KinkyDungeonHandleHUD() {
 					if (shop) {
 						KinkyDungeonSetEnemyFlag(e, "Shop", -1);
 						KinkyDungeonSetEnemyFlag(e, shop, -1);
+						KDSetShopMoney(e);
 					}
 				}
 				return true;

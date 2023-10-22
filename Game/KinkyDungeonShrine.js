@@ -140,7 +140,11 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 			}
 			power += sum;
 		}
-		return KinkyDungeonGetRestraintByName(item.name).value || (5 * Math.round(((10 + 2 * Math.pow(power, 1.5)))/5));
+		let costt = KinkyDungeonGetRestraintByName(item.name).value || (5 * Math.round(((10 + 2 * Math.pow(power, 1.5)))/5));
+		if (KinkyDungeonStatsChoice.has("PriceGouging") && !sell) {
+			costt *= 5;
+		}
+		return costt;
 	}
 	if (item.rarity != null) {
 		let rarity = item.rarity;

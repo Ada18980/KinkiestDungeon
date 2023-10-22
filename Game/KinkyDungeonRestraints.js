@@ -1483,7 +1483,7 @@ function KinkyDungeonPickAttempt() {
 
 	KinkyDungeonInterruptSleep();
 
-	if (KDLocks[lock] && !KDLocks[lock].pickable) {
+	if (KDLocks[lock] && !KDLocks[lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation})) {
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleCantPick" + lock + "Lock"), "orange", 2, true);
 		Pass = "Fail";
 	}

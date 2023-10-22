@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.80"
+KinkyDungeon,"Kinky Dungeon v4.80.1"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -2770,7 +2770,8 @@ KinkyDungeonStruggleUnlockNoUnknownKey,"You don't have a key for this lock."
 KinkyDungeonStruggleCantPickBlueLock,"The lock seems to be magical and rejects all picking attempts!"
 KinkyDungeonStruggleCantPickGoldLock,"The lock is definitely magical and forces your pick out!"
 KinkyDungeonStruggleCantPickPurpleLock,"The lock doesn't even have a keyhole to pick!"
-KinkyDungeonStruggleCantHiSecLock,"The lock is brimming with security features and is nigh impossible to pick!"
+KinkyDungeonStruggleCantPickDiscLock,"You need a special tool to pick this kind of lock."
+KinkyDungeonStruggleCantPickHiSecLock,"The lock is brimming with security features and is nigh impossible to pick!"
 
 KinkyDungeonStruggleUnlockJammed,"The key sticks in the lock and jams, mangling the key!"
 
@@ -2978,6 +2979,7 @@ KinkyRedLockType,"Standard"
 KinkyRed_MedLockType,"Standard"
 KinkyRed_HiLockType,"Standard"
 KinkyHiSecLockType,"Secure"
+KinkyDiscLockType,"Disc"
 KinkyWhiteLockType,"Simple"
 KinkyBlueLockType,"Runic"
 KinkyPurpleLockType,"Magic"
@@ -2987,6 +2989,7 @@ KinkyRedLock,"Standard Lock"
 KinkyRed_MedLock,"Standard Lock"
 KinkyRed_HiLock,"Standard Lock"
 KinkyHiSecLock,"Secure Lock"
+KinkyDiscLock,"Disc Lock"
 KinkyWhiteLock,"Simple Lock"
 KinkyBlueLock,"Runic Lock"
 KinkyPurpleLock,"Purple Lock"
@@ -2994,6 +2997,7 @@ KinkyRedLockAbr,""
 KinkyRed_HiLockAbr,""
 KinkyRed_MedLockAbr,""
 KinkyHiSecLockAbr,""
+KinkyDiscLockAbr,""
 KinkyWhiteLockAbr,""
 KinkyGreenLockAbr,"(G)"
 KinkyWhiteLockAbr,"(S)"
@@ -10443,6 +10447,13 @@ rBombSellSmokeBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
 rBombSellBomb,"(The SPEAKER rubs her hands together)|Excellent..."
 rBombSellGunpowder,"(The SPEAKER smiles)|Yes! I can make more bombs!"
 
+rThiefSell,"(The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my frift."
+rThiefSellAttack,"(The SPEAKER pulls out a knife)|Thought so. You won't take me that easily!"
+rThiefSellCuffKeys,"(The SPEAKER nods)|Could help out in a bind."
+rThiefSellDiscPick,"(The SPEAKER nods)|I could use one of these!"
+rThiefSellBomb,"(The SPEAKER smiles)|For when things go south..."
+rThiefSellSmokeBomb,"(The SPEAKER smiles)|For when things go south..."
+
 rCookieSell,"(A distracted SPEAKER munches on a cookie)"
 rCookieSellAttack,"(The SPEAKER continues eating her snack)"
 rCookieSellCookie,"(The SPEAKER plucks the cookie out of your hand)|My favorite!"
@@ -12324,6 +12335,13 @@ KinkyDungeonInventoryItemCuffKeysDesc,"A handy key for getting out of common han
 KinkyDungeonInventoryItemCuffKeysDesc2,"It's not sophisticated enough to work on higher-quality locks, but can be used many times."
 
 
+ItemPickupDiscPick,"You pick up a tool for picking disc detainer locks."
+KinkyDungeonInventoryItemDiscPick,Disc Lock Tool
+KinkyDungeonInventoryItemDiscPickUse,"You examine the tool. It has a replaceable tip for picking disc detainer locks."
+KinkyDungeonInventoryItemDiscPickDesc,"A handy tool for picking disc detainer locks."
+KinkyDungeonInventoryItemDiscPickDesc2,"Features a replaceable head in case an unskilled user breaks it. Requires lockpicks to use."
+
+
 KDRep,Rep
 
 KDMagicWeapon,Magical Weapon
@@ -12826,3 +12844,7 @@ KDInventoryActionRemoveMagicLock,Unlock using magic
 
 KDQuickLoadout_Weapon,Include Weapons,
 KDQuickLoadout_Merge,Merge Armor
+
+KDNeedDiscPick,You need a special tool to pick this kind of lock.
+
+KDNotEnoughMoneyVendor,The NPC does not have enough money left!

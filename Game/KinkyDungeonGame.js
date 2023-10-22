@@ -98,8 +98,8 @@ let KDOpenDoorTiles = ["DoorOpen", "DoorVertOpenCont", "DoorVertOpen"];
 let KinkyDungeonTargetTile = null;
 let KinkyDungeonTargetTileLocation = "";
 
-const KinkyDungeonBaseLockChance = 0.1;
-const KinkyDungeonScalingLockChance = 0.1; // Lock chance per 6 floors. Does not affect the guaranteed locked chest each level
+const KinkyDungeonBaseLockChance = 0.12;
+const KinkyDungeonScalingLockChance = 0.16; // Lock chance per 6 floors. Does not affect the guaranteed locked chest each level
 const KinkyDungeonBlueLockChance = -0.1;
 const KinkyDungeonBlueLockChanceScaling = 0.015; // per floor
 const KinkyDungeonBlueLockChanceScalingMax = 0.4;
@@ -1607,6 +1607,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				if (shop) {
 					KinkyDungeonSetEnemyFlag(e, "Shop", -1);
 					KinkyDungeonSetEnemyFlag(e, shop, -1);
+					KDSetShopMoney(e);
 				}
 				let loadout = KinkyDungeonGetLoadoutForEnemy(e, false);
 				KDSetLoadout(e, loadout);
@@ -2096,7 +2097,7 @@ function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, 
 			KinkyDungeonMapSet(chest.x, chest.y, 'C');
 
 			// Add a lock on the chest! For testing purposes ATM
-			let lock = KinkyDungeonGenerateLock((extra && count == 0) ? true : false, Floor);
+			let lock = KinkyDungeonGenerateLock((extra && count == 0) ? true : false, Floor, false, "Chest", {x: chest.x, y: chest.y, tile: KinkyDungeonTilesGet("" + chest.x + "," + chest.y)});
 			if (chest.Loot) lock = chest.Lock;
 			if (silverchest == 0 && !chest.Loot) {
 				silverchest += 1;
@@ -2741,16 +2742,36 @@ function KDRandomizeRedLock() {
 	return "Red";
 }
 
+
+/**
+ * @param {boolean} [Guaranteed]
+ * @param {number} [Floor]
+ * @param {boolean} [AllowGold]
+ * @param {string} [Type] - Used to customize the type
+ * @param {any} [Data] - Used to customize the type
+ *
+ */
+function KDGetLockList(Guaranteed, Floor, AllowGold, Type, Data) {
+	/** @type {Record<string, number>} */
+	let ret = {};
+	for (let obj of Object.keys(KDLocks)) {
+		if (KDLocks[obj].filter(Guaranteed, Floor, AllowGold, Type, Data))
+			ret[obj] = KDLocks[obj].weight(Guaranteed, Floor, AllowGold, Type, Data);
+	}
+	return ret;
+}
+
 /**
  * Generates a lock
  * @param {boolean} [Guaranteed]
  * @param {number} [Floor]
  * @param {boolean} [AllowGold]
  * @param {string} [Type] - Used to customize the type
+ * @param {any} [Data] - Used to customize the type
  * @returns {string}
  */
-function KinkyDungeonGenerateLock(Guaranteed, Floor, AllowGold, Type) {
-	let level = (Floor) ? Floor : MiniGameKinkyDungeonLevel;
+function KinkyDungeonGenerateLock(Guaranteed, Floor, AllowGold, Type, Data) {
+	let level = (Floor) ? Floor : KDGetEffLevel();
 	//let Params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
 
 	let chance = (level == 0) ? 0 : KinkyDungeonBaseLockChance;
@@ -2761,9 +2782,12 @@ function KinkyDungeonGenerateLock(Guaranteed, Floor, AllowGold, Type) {
 	let lock = undefined;
 
 	if (KDRandom() < chance) {
+		// Get list
+		lock = KDGetByWeight(KDGetLockList(Guaranteed, level, AllowGold, Type, Data));
+
 		// Now we get the amount failed by
 		// Default: red lock
-		let locktype = KDRandom();
+		/*let locktype = KDRandom();
 		let locktype2 = KDRandom();
 
 		let modifiers = "";
@@ -2788,11 +2812,11 @@ function KinkyDungeonGenerateLock(Guaranteed, Floor, AllowGold, Type) {
 			else lock = "Blue" + modifiers;
 		} else {
 			lock = KDRandomizeRedLock() + modifiers;
-		}
+		}*/
 	}
-	if (Type == "Door") {
+	/*if (Type == "Door") {
 		if (lock.includes("Blue") || lock.includes("Gold")) lock = KDRandomizeRedLock();
-	}
+	}*/
 
 	return lock;
 }
@@ -2841,7 +2865,7 @@ function KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapCh
 		KinkyDungeonMapSet(X, Y, (closed ? 'D' : 'd'));
 		KinkyDungeonTilesSet("" + X + "," + Y, {Type: "Door"});
 		if (closed && KDRandom() < doorlockchance && KinkyDungeonIsAccessible(X, Y)) {
-			KinkyDungeonTilesGet("" + X + "," + Y).Lock = KinkyDungeonGenerateLock(true, Floor);
+			KinkyDungeonTilesGet("" + X + "," + Y).Lock = KinkyDungeonGenerateLock(true, Floor, undefined, "Door", {x: X, y: Y, tile: KinkyDungeonTilesGet("" + X + "," + Y)});
 		}
 
 		doorlist.splice(N, 1);
@@ -2914,7 +2938,7 @@ function KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapCh
 								lock = true;
 							}
 							if (lock) {
-								KinkyDungeonTilesGet("" + X + "," + Y).Lock = KinkyDungeonGenerateLock(true, Floor, false, "Door");
+								KinkyDungeonTilesGet("" + X + "," + Y).Lock = KinkyDungeonGenerateLock(true, Floor, false, "Door", {x: X, y: Y, tile: KinkyDungeonTilesGet("" + X + "," + Y)});
 								KinkyDungeonMapSet(X, Y, 'D');
 							}
 						}

@@ -109,12 +109,17 @@ function KDDrawDialogue() {
 								tt = tt.replace(d[0], d[1]);
 							}
 						}
+						let notGrey = !entries[i][1].greyoutFunction || entries[i][1].greyoutFunction(gagged, KinkyDungeonPlayerEntity);
 						DrawButtonKDEx(KDOptionOffset + "dialogue" + II, (bdata) => {
-							KDOptionOffset = 0;
-							KDDialogueData.CurrentDialogueIndex = 0;
-							KDSendInput("dialogue", {dialogue: KDGameData.CurrentDialog, dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0], click: true});
+							if (notGrey) {
+								KDOptionOffset = 0;
+								KDDialogueData.CurrentDialogueIndex = 0;
+								KDSendInput("dialogue", {dialogue: KDGameData.CurrentDialog, dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0], click: true});
+							}
 							return true;
-						}, KinkyDungeonDialogueTimer < CommonTime(), 700, 450 + II * 60, 600, 50, tt, KinkyDungeonDialogueTimer < CommonTime() ? "#ffffff" : "#888888", undefined, undefined, undefined, undefined,
+						}, KinkyDungeonDialogueTimer < CommonTime(), 700, 450 + II * 60, 600, 50,
+						(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? "#ffffff" : "#888888", undefined,
+						undefined, undefined, undefined,
 						KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined, undefined, undefined, {
 							zIndex: 122,
 						});
@@ -1262,6 +1267,14 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance, item
 			prerequisiteFunction: (gagged, player) => {
 				return KinkyDungeonInventoryGet(item) != undefined;
 			},
+			greyoutFunction: (gagged, player) => {
+				let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+				if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+					return KDGameData.CurrentDialogMsgValue["ItemCost"+i] < enemy.gold;
+				}
+				return false;
+			},
+			greyoutTooltip: "KDNotEnoughMoneyVendor",
 			clickFunction: (gagged, player) => {
 				let itemInv = KinkyDungeonInventoryGet(item);
 				if (itemInv.type == Consumable)
@@ -1277,6 +1290,7 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance, item
 					enemy.items.push(itemInv.name);
 				}
 				KinkyDungeonAddGold(KDGameData.CurrentDialogMsgValue["ItemCost"+i]);
+				enemy.gold = enemy.gold ? Math.max(0, enemy.gold - KDGameData.CurrentDialogMsgValue["ItemCost"+i]) : 0;
 				return false;
 			},
 			leadsToStage: "", dontTouchText: true,

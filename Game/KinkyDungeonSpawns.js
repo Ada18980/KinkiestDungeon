@@ -423,6 +423,7 @@ function KinkyDungeonHandleWanderingSpawns(delta) {
 						if (shop) {
 							KinkyDungeonSetEnemyFlag(e, "Shop", -1);
 							KinkyDungeonSetEnemyFlag(e, shop, -1);
+							KDSetShopMoney(e);
 						}
 
 						if (Enemy.tags.minor) count += 0.1; else count += 1; // Minor enemies count as 1/10th of an enemy
