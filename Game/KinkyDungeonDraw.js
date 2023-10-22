@@ -2664,7 +2664,12 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 		}
 		textPush = img.orig.width;
 	}
-	if (Label)
+
+	// Draw the tooltip
+	if ((HoveringText != null) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
+		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04), "#ffffff", undefined, undefined, undefined, zIndex + 1);
+		//DrawHoverElements.push(() => DrawButtonHover(Left, Top, Width, Height, HoveringText));
+	} else if (Label)
 		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
 			Color,
 			(options && options.noTextBG) ? "none" : undefined,
@@ -2677,11 +2682,6 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			'#ffffff',
 			(options && options.noTextBG) ? "none" : undefined,
 			size, "right", zIndex + 0.02, undefined, undefined);
-	}
-	// Draw the tooltip
-	if ((HoveringText != null) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
-		DrawTextFitKDTo(Container || kdcanvas, HoveringText, 1000, MouseY, 1500, "#ffffff");
-		//DrawHoverElements.push(() => DrawButtonHover(Left, Top, Width, Height, HoveringText));
 	}
 }
 

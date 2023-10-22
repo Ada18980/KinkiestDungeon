@@ -6150,6 +6150,7 @@ let KDEventMapGeneric = {
 						if (shop) {
 							KinkyDungeonSetEnemyFlag(e, "Shop", -1);
 							KinkyDungeonSetEnemyFlag(e, shop, -1);
+							KDSetShopMoney(e);
 						}
 						let loadout = KinkyDungeonGetLoadoutForEnemy(e, false);
 						KDSetLoadout(e, loadout);
@@ -6210,6 +6211,7 @@ let KDEventMapGeneric = {
 						if (shop) {
 							KinkyDungeonSetEnemyFlag(e, "Shop", -1);
 							KinkyDungeonSetEnemyFlag(e, shop, -1);
+							KDSetShopMoney(e);
 						}
 						let loadout = KinkyDungeonGetLoadoutForEnemy(e, false);
 						KDSetLoadout(e, loadout);

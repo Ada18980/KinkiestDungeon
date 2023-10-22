@@ -1355,6 +1355,7 @@ interface entity {
 	personality?: string,
 	patrolIndex?: number,
 	flags?: Record<string, number>,
+	gold?: number,
 	noDrop?: boolean,
 	droppedItems?: boolean,
 	specialdialogue?: string,
@@ -2365,6 +2366,9 @@ type EnemyEvent = {
 }
 
 type KDLockType = {
+	filter: (Guaranteed: boolean, Floor: number, AllowGold: boolean, Type: string, data: any) => boolean;
+	weight: (Guaranteed: boolean, Floor: number, AllowGold: boolean, Type: string, data: any) => number;
+
 	consume_key: boolean;
 	lockmult: number;
 

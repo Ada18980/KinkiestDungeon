@@ -1,5 +1,7 @@
 "use strict";
 
+let KDMarketRateDecay = 0.95;
+
 /**
  * @type {Record<string, KDInventoryActionDef>}
  */
@@ -123,7 +125,15 @@ let KDInventoryAction = {
 	},
 	"Sell": {
 		text:  (player, item) => {
-			let value = Math.round(KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
+			let mult = 1;
+			let quantity = 1;
+			let quantitystart = 0;
+			if (KDGameData.ItemsSold && KDGameData.ItemsSold[item.name]) {
+				quantitystart = KDGameData.ItemsSold[item.name];
+			}
+			// Use partial sum formula (maths)
+			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
 			return TextGet("KDInventoryActionSell").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
@@ -131,12 +141,23 @@ let KDInventoryAction = {
 		},
 		/** Happens when you click the button */
 		click: (player, item) => {
-			let value = Math.round(KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
+			let mult = 1;
+			let quantity = 1;
+			let quantitystart = 0;
+			if (KDGameData.ItemsSold && KDGameData.ItemsSold[item.name]) {
+				quantitystart = KDGameData.ItemsSold[item.name];
+			}
+			// Use partial sum formula (maths)
+
+			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
 			let itemInv = KinkyDungeonInventoryGet(item.name);
 			if (itemInv.type == Consumable)
 				KinkyDungeonChangeConsumable(KDConsumable(itemInv), -1);
 			else KinkyDungeonInventoryRemove(itemInv);
 			KinkyDungeonAddGold(value);
+			if (!KDGameData.ItemsSold) KDGameData.ItemsSold = {};
+			KDGameData.ItemsSold[item.name] = (KDGameData.ItemsSold[item.name] || 0) + 1;
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDSell")
 				.replace("ITM", TextGet( (itemInv.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem") + item.name))
@@ -155,7 +176,16 @@ let KDInventoryAction = {
 	},
 	"SellBulk": {
 		text:  (player, item) => {
-			let value = ((item.quantity) ? item.quantity : 1) * Math.round(KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
+			let mult = 1;
+			let quantity = ((item.quantity) ? item.quantity : 1);
+			let quantitystart = 0;
+			if (KDGameData.ItemsSold && KDGameData.ItemsSold[item.name]) {
+				quantitystart = KDGameData.ItemsSold[item.name];
+			}
+			// Use partial sum formula (maths)
+
+			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
 			return TextGet("KDInventoryActionSell").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
@@ -163,11 +193,22 @@ let KDInventoryAction = {
 		},
 		/** Happens when you click the button */
 		click: (player, item) => {
-			let value = ((item.quantity) ? item.quantity : 1) * Math.round(KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
+			let mult = 1;
+			let quantity = ((item.quantity) ? item.quantity : 1);
+			let quantitystart = 0;
+			if (KDGameData.ItemsSold && KDGameData.ItemsSold[item.name]) {
+				quantitystart = KDGameData.ItemsSold[item.name];
+			}
+			// Use partial sum formula (maths)
+
+			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
 			let itemInv = KinkyDungeonInventoryGet(item.name);
 			if (itemInv.type == Consumable)
 				KinkyDungeonChangeConsumable(KDConsumable(itemInv), -itemInv.quantity);
 			else KinkyDungeonInventoryRemove(itemInv);
+			if (!KDGameData.ItemsSold) KDGameData.ItemsSold = {};
+			KDGameData.ItemsSold[item.name] = (KDGameData.ItemsSold[item.name] || 0) + quantity;
 			KinkyDungeonAddGold(value);
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDSellBulk")

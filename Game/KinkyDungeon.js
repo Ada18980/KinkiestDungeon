@@ -339,6 +339,7 @@ let KDDefaultMaxParty = 3;
 * PlayerName: string,
 * QuickLoadout_Weapon: boolean,
 * QuickLoadout_Merge: boolean,
+* ItemsSold: Record<string, number>,
 * MaxParty: number,
 * FocusControlToggle: Record<string, boolean>,
 * FloorRobotType: Record<string, string>,
@@ -356,6 +357,8 @@ let KDGameDataBase = {
 	QuickLoadout_Merge: true,
 	FocusControlToggle: {},
 	TeleportLocations: {},
+
+	ItemsSold: {},
 	CurseLevel: 0,
 	UsingConsumable: "",
 	MovePoints: 0,

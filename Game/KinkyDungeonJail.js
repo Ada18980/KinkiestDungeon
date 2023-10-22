@@ -510,7 +510,7 @@ function KinkyDungeonHandleJailSpawns(delta) {
 				if (KinkyDungeonTilesGet((xx-1) + "," + yy) && KinkyDungeonTilesGet((xx-1) + "," + yy).Type == "Door") {
 					KinkyDungeonMapSet(xx-1, yy, 'D');
 					if (KDGameData.PrisonerState == 'jail')
-						KinkyDungeonTilesGet((xx-1) + "," + yy).Lock = KinkyDungeonGenerateLock(true, MiniGameKinkyDungeonLevel);
+						KinkyDungeonTilesGet((xx-1) + "," + yy).Lock = KinkyDungeonGenerateLock(true, KDGetEffLevel(), false, "Door", {x: (xx-1), y: yy, tile: KinkyDungeonTilesGet((xx-1) + "," + yy)});
 					if (KDGameData.PrisonerState == 'jail' && KinkyDungeonVisionGet(g.x, g.y))
 						KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardDisappear").replace("EnemyName", TextGet("Name" + g.Enemy.name)), "#ff0000", 6);
 					if (KinkyDungeonPlayerInCell(true))

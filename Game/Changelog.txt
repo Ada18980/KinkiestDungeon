@@ -14,6 +14,11 @@ Vague todo:
 - TODO add scroll to log, rep
 
 
+4.80.1 (Oct 2023)
+- The shopkeeper offers diminishing returns for items sold to her
+- Shop NPCs have a limited amount of gold they will give you
+- New lock types: Secure, Disc
+
 4.80 (Oct 2023)
 - Enchantments and curses now scale in occurrence with level
 - Added some variation to the standard lock visuals

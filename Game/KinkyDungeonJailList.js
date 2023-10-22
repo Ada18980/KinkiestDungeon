@@ -351,7 +351,7 @@ let KDGuardActions = {
 				let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
 				if (KDGameData.GuardApplyTime > applyTime) {
 					if (oldRestraintItem && !oldRestraintItem.lock && KinkyDungeonIsLockable(KDRestraint(oldRestraintItem))) {
-						let lock = KinkyDungeonGenerateLock(true, KDGetEffLevel(),false);
+						let lock = KinkyDungeonGenerateLock(true, KDGetEffLevel(),false, undefined, {enemy: KinkyDungeonJailGuard()});
 						KinkyDungeonLock(oldRestraintItem, lock);
 						let msg = TextGet("KinkyDungeonJailerFinishLocking")
 							.replace("EnemyName", TextGet("Name" + guard.Enemy.name))
