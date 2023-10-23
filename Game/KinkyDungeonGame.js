@@ -667,15 +667,28 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	}
 
 	// Setup
+	// Remove enemies if the room isnt main and wont regen
+	let altRoom = KDGameData.RoomType;
+	let mapMod = KDGameData.MapMod ? KDMapMods[KDGameData.MapMod] : null;
+	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
+
+	if (altType?.alwaysRegen && (!altRoom || !altType?.makeMain)) {
+		// Clear all enemies and remove them so that we pick up allies
+		for (let en of KDMapData.Entities) {
+			if (!KDIsInParty(en))
+				KDRemoveEntity(en, false, true, true);
+		}
+	}
+
 	KDGameData.RoomType = RoomType;
 	KDGameData.MapMod = MapMod;
-	let mapMod = null;
+	mapMod = null;
 	if (KDGameData.MapMod) {
 		mapMod = KDMapMods[KDGameData.MapMod];
 	}
 
-	let altRoom = KDGameData.RoomType;
-	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
+	altRoom = KDGameData.RoomType;
+	altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
 
 	let constantX = altType?.constantX;
 
@@ -701,6 +714,12 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		/** @type {KDMapData} */
 		KDMapData = KDDefaultMapData(KDGameData.RoomType, KDGameData.MapMod);
 		KDCurrentWorldSlot = worldLocation;
+		if (iterations > 0) {
+			// Clear so party prisoners are reused
+			for (let en of KDMapData.Entities) {
+				KDRemoveEntity(en, false, true, true);
+			}
+		}
 
 		KDInitTempValues(seed);
 		KDMapData.Grid = "";
@@ -1289,7 +1308,7 @@ function KinkyDungeonIsReachable(testX, testY, testLockX, testLockY) {
 function KinkyDungeonGetAllies() {
 	let temp = [];
 	for (let e of KDMapData.Entities) {
-		if (e.Enemy && e.Enemy.keepLevel && KDAllied(e)) {
+		if (e.Enemy && (e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e)) {
 			temp.push(e);
 		}
 	}
@@ -3583,6 +3602,12 @@ function KinkyDungeonGameKeyDown() {
 	}
 	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
 
+	for (let b of Object.entries(KDButtonsCache)) {
+		if (b[1].hotkeyPress == KinkyDungeonKeybindingCurrentKey) {
+			KDClickButton(b[0]);
+			return true;
+		}
+	}
 
 	for (let keybinding of Object.values(KDKeyCheckers)) {
 		if (keybinding()) return true;

@@ -911,39 +911,39 @@ let KDActivateMapTile = {
 			KinkyDungeonMapSet(x, y, 'z');
 		else
 			KinkyDungeonMapSet(x, y, 'Z');
-		return true;
+		return false;
 	},
 	"Conveyor_Toggle": (tile, x, y) => {
 		if (tile.SwitchMode == "Off") tile.SwitchMode = "On";
 		else tile.SwitchMode = "Off";
-		return true;
+		return false;
 	},
 	"Conveyor_Switch": (tile, x, y) => {
 		if (tile.DX) tile.DX *= -1;
 		else if (tile.DY) tile.DY *= -1;
-		return true;
+		return false;
 	},
 	"AutoDoor_HoldOpen": (tile, x, y) => {
 		KinkyDungeonMapSet(x, y, 'z');
-		return true;
+		return false;
 	},
 	"AutoDoor_HoldClosed": (tile, x, y) => {
 		let entity = KinkyDungeonEntityAt(x, y);
-		if (entity) return true;
+		if (entity) return false;
 
 		KinkyDungeonMapSet(x, y, 'Z');
-		return true;
+		return false;
 	},
 	"AutoDoor_Open": (tile, x, y) => {
 		KinkyDungeonMapSet(x, y, 'z');
-		return true;
+		return false;
 	},
 	"AutoDoor_Close": (tile, x, y) => {
 		let entity = KinkyDungeonEntityAt(x, y);
-		if (entity) return true;
+		if (entity) return false;
 
 		KinkyDungeonMapSet(x, y, 'Z');
-		return true;
+		return false;
 	},
 
 };

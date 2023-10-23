@@ -381,8 +381,8 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				break;
 			case "GuaranteedCell": {
 				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, true, false, 1, true, true, true);
-				KinkyDungeonMapSet(cornerX+4, cornerY+2, 'd');
-				KinkyDungeonTilesSet("" + (cornerX+4) + "," + (cornerY+2), {Type: "Door", NoTrap: true, Jail: true, ReLock: true, OffLimits: true});
+				KinkyDungeonMapSet(cornerX+4, cornerY+2, 'D');
+				KinkyDungeonTilesSet("" + (cornerX+4) + "," + (cornerY+2), {Type: "Door", Lock: "Red", NoTrap: true, Jail: true, ReLock: true, OffLimits: true});
 				KDMapData.PatrolPoints.push({x: cornerX + 5, y: cornerY + 2});
 
 				let sidestyle = Math.floor(KDRandom() * 3);
@@ -801,25 +801,52 @@ function KDUnblock(x, y) {
 }
 
 function SetpieceSpawnPrisoner(x, y) {
-	let Enemy = KinkyDungeonGetEnemy(["imprisonable",
-		"ropeAnger", "ropeRage",
-		"metalAnger", "metalRage",
-		"latexAnger", "latexRage",
-		"conjureAnger", "conjureRage",
-		"elementsAnger", "elementsRage",
-		"illusionAnger", "illusionRage",
-		"leatherAnger", "leatherRage",
-		"willAnger", "willRage"], MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], KinkyDungeonMapGet(x, y), ["imprisonable"]);
-	if (Enemy) {
-		let e = DialogueCreateEnemy(x, y, Enemy.name);
+	let Enemy = null;
+	let noJam = false;
+	if (KDGameData.CapturedParty?.length > 0) {
+		let index = Math.floor(KDRandom() * KDGameData.CapturedParty.length);
+		let e = KDGameData.CapturedParty[index];
+		Enemy = e.Enemy;
+		if (!KDGameData.SpawnedPartyPrisoners) KDGameData.SpawnedPartyPrisoners = {};
+		KDGameData.SpawnedPartyPrisoners[e.id + ""] = Math.max(MiniGameKinkyDungeonLevel, 1);
+		KDGameData.CapturedParty.splice(index, 1);
+		noJam = true;
+		e.x = x;
+		e.y = y;
+		KDAddEntity(e);
+
 		e.faction = "Prisoner";
 		e.boundLevel = e.hp * 11;
 		e.specialdialogue = "PrisonerJail";
 		e.items = [];
+		if (noJam)
+			KinkyDungeonSetEnemyFlag(e, "nojam", -1);
 		KinkyDungeonSetEnemyFlag(e, "noswap", -1);
 		KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
-		KDProcessCustomPatron(Enemy, e, 1.0);
+	} else {
+		Enemy = KinkyDungeonGetEnemy(["imprisonable",
+			"ropeAnger", "ropeRage",
+			"metalAnger", "metalRage",
+			"latexAnger", "latexRage",
+			"conjureAnger", "conjureRage",
+			"elementsAnger", "elementsRage",
+			"illusionAnger", "illusionRage",
+			"leatherAnger", "leatherRage",
+			"willAnger", "willRage"], MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], KinkyDungeonMapGet(x, y), ["imprisonable"]);
+		if (Enemy) {
+			let e = DialogueCreateEnemy(x, y, Enemy.name);
+			e.faction = "Prisoner";
+			e.boundLevel = e.hp * 11;
+			e.specialdialogue = "PrisonerJail";
+			e.items = [];
+			if (noJam)
+				KinkyDungeonSetEnemyFlag(e, "nojam", -1);
+			KinkyDungeonSetEnemyFlag(e, "noswap", -1);
+			KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
+			KDProcessCustomPatron(Enemy, e, 1.0);
+		}
 	}
+
 }
 
 

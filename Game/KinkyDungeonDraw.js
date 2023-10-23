@@ -770,6 +770,7 @@ let KDSpecialChests = {
 	"shadow" : "ChestShadow",
 	"lessershadow" : "ChestShadow",
 	"kitty" : "Chests/Kitty",
+	"robot" : "Chests/Robot",
 };
 
 /**
@@ -785,31 +786,40 @@ function KinkyDungeonDrawGame() {
 	if (StandalonePatched)
 		kdoutlinefilter.alpha = 0.5 + 0.1 * Math.sin(2 * Math.PI * (CommonTime() % 2000 / 2000) );
 	KDButtonHovering = false;
+
+	let tooltips = [];
+
 	if (kdminimap.visible) {
-		let zIndex = KDExpandMinimap ? 150 : 90;
+		let zIndex = MouseIn(490, 0, KDMinimapWidth()+21, KDMinimapHeight()+21) ? 150 : 90;
 		if (KDExpandMinimap) {
 			let spacing = 40;
 			let starty = 15;
 			let ii = 0;
 			DrawButtonKDEx("minimapzoomin", (bdata) => {
 				KDMinimapExpandedSize = Math.max(KDMinimapW, KDMinimapExpandedSize - KDMinimapExpandedSizeTick);
+				KDRedrawMM = 2;
 				KDUpdateMinimapTarget(true);
 				return true;
 			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/ZoomIn.png", undefined, false, true,
 			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
 			DrawButtonKDEx("minimapzoomout", (bdata) => {
 				KDMinimapExpandedSize = Math.min(KDMinimapWBig, KDMinimapExpandedSize + KDMinimapExpandedSizeTick);
+				KDRedrawMM = 2;
 				KDUpdateMinimapTarget(true);
 				return true;
 			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/ZoomOut.png", undefined, false, true,
 			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
 			DrawButtonKDEx("minimapexpand", (bdata) => {
 				KDMinimapExpandedZoom = Math.min(KDMinimapScaleBig, KDMinimapExpandedZoom + KDMinimapExpandedZoomTick);
+				KDRedrawMM = 2;
+				KDUpdateMinimapTarget(true);
 				return true;
 			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Expand.png", undefined, false, true,
 			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
 			DrawButtonKDEx("minimapshrink", (bdata) => {
 				KDMinimapExpandedZoom = Math.max(KDMinimapExpandedZoomTick, KDMinimapExpandedZoom - KDMinimapExpandedZoomTick);
+				KDRedrawMM = 2;
+				KDUpdateMinimapTarget(true);
 				return true;
 			}, true, 500, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Shrink.png", undefined, false, true,
 			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
@@ -821,7 +831,7 @@ function KinkyDungeonDrawGame() {
 			KDExpandMinimap = !KDExpandMinimap;
 			return true;
 		}, true, 490, 0, KDMinimapWidth()+21, KDMinimapHeight()+21, "", KDButtonColor, undefined, undefined, false, true,
-		"#000000", undefined, undefined, {zIndex: zIndex-2, alpha: 0.});
+		"#000000", undefined, undefined, {zIndex: zIndex-2, alpha: 0., hotkey: KDHotkeyToText(KinkyDungeonKeyMap[0]), hotkeyPress: KinkyDungeonKeyMap[0]});
 
 		if (KDMinimapWCurrent != KDMinimapWTarget || KDMinimapHCurrent != KDMinimapHTarget) {
 			KDRedrawMM = 2;
@@ -834,6 +844,54 @@ function KinkyDungeonDrawGame() {
 		if (Math.abs(KDMinimapHCurrent - KDMinimapHTarget) < 5) KDMinimapHCurrent = KDMinimapHTarget;
 
 
+	}
+	if (KDGameData.Party) {
+		let PartyX = 500;
+		let PartyY = Math.min(500, KDMinimapHeight()+41);
+		let PartyDy = 72;
+		let PartyPad = 8;
+
+		for (let i = 0; i < KDGameData.Party.length; i++) {
+			let PM = KinkyDungeonFindID(KDGameData.Party[i].id);
+			if (PM) {
+				KDDrawEnemySprite(kdstatusboard, PM, PartyX/KinkyDungeonGridSizeDisplay, PartyY/KinkyDungeonGridSizeDisplay, 0, 0, true, 110, "PM");
+				KinkyDungeonBarTo(kdstatusboard, PartyX, PartyY,
+					PartyDy, 10, PM.visual_hp / PM.Enemy.maxhp * 100, "#88ff88", "#ff5555", undefined, undefined, undefined, undefined, undefined, 111);
+
+				let selected = (PM.buffs?.AllySelect?.duration > 0);
+
+				DrawButtonKDExTo(kdstatusboard, "PM" + i + "click", (bdata) => {
+					KDSendInput("select", {enemy: PM});
+					return true;
+				}, true, PartyX, PartyY, PartyDy, PartyDy, "", KDButtonColor, undefined, undefined, false, !selected,
+				"#000000", undefined, undefined, {zIndex: 109,});
+
+				if (selected) {
+					DrawButtonKDExTo(kdstatusboard, "PM" + i + "remove", (bdata) => {
+						KDSendInput("cancelParty", {enemy: PM});
+						return true;
+					}, true, PartyX + 170, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/X.png", undefined, false, false,
+					"#000000", undefined, undefined, {zIndex: 109,});
+					DrawButtonKDExTo(kdstatusboard, "PM" + i + "come", (bdata) => {
+						KDSendInput("onMe", {enemy: PM, player: KinkyDungeonPlayerEntity});
+						return true;
+					}, true, PartyX + 90, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Recall.png", undefined, false, false,
+					"#000000", undefined, undefined, {zIndex: 109,});
+
+					DrawButtonKDExTo(kdstatusboard, "PM" + i + "choose", (bdata) => {
+						KDSendInput("selectOnly", {enemy: PM});
+						return true;
+					}, true, PartyX + 130, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Select.png", undefined, false, false,
+					"#000000", undefined, undefined, {zIndex: 109,});
+				}
+
+				if (MouseIn(PartyX, PartyY, PartyDy, PartyDy)) {
+					tooltips.push((offset) => KDDrawEnemyTooltip(PM, offset));
+				}
+
+			}
+			PartyY += PartyDy + PartyPad;
+		}
 	}
 
 	if (StandalonePatched)
@@ -956,6 +1014,7 @@ function KinkyDungeonDrawGame() {
 				CamX_offsetVis: CamX_offsetVis,
 				CamY_offsetVis: CamY_offsetVis,
 				delta: KDDrawDelta,
+				tooltips: tooltips,
 			};
 
 			KinkyDungeonSetMoveDirection();
@@ -1322,8 +1381,7 @@ function KinkyDungeonDrawGame() {
 
 				let cursorX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamX;
 				let cursorY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
-				let tooltips = [];
-				if (KinkyDungeonVisionGet(cursorX, cursorY) > 0) {
+				if (KinkyDungeonVisionGet(cursorX, cursorY) > 0 || tooltips.length > 0) {
 
 					let ambushTile = "";
 					let enemy = KinkyDungeonEnemyAt(cursorX, cursorY);
@@ -2582,6 +2640,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
+ * @param {string} [options.hotkeyPress] - hotkey
  * @returns {void} - Nothing
  */
 function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2615,6 +2674,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
+ * @param {string} [options.hotkeyPress] - hotkey
  * @returns {void} - Nothing
  */
 function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -2666,7 +2726,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 	}
 
 	// Draw the tooltip
-	if ((HoveringText != null) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
+	if ((HoveringText) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
 		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04), "#ffffff", undefined, undefined, undefined, zIndex + 1);
 		//DrawHoverElements.push(() => DrawButtonHover(Left, Top, Width, Height, HoveringText));
 	} else if (Label)
@@ -2919,6 +2979,10 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 					if ( KinkyDungeonTilesGet(RX + "," + RY)) {
 						if (KinkyDungeonTilesGet(RX + "," + RY).Lock)
 							DrawTextFitKD(KinkyDungeonTilesGet(RX + "," + RY).Lock, (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, "#aaaaaA");
+						if (KinkyDungeonTilesGet(RX + "," + RY).MazeBlock)
+							DrawTextFitKD("MazeBlock", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + 10, KinkyDungeonGridSizeDisplay, "#aaaaaA");
+						if (KinkyDungeonTilesGet(RX + "," + RY).MazeSeed)
+							DrawTextFitKD("MazeSeed", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + 10, KinkyDungeonGridSizeDisplay, "#aaaaaA");
 
 						if (KinkyDungeonTilesGet(RX + "," + RY).AI)
 							DrawTextFitKD(KinkyDungeonTilesGet(RX + "," + RY).AI, (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, "#aaaaaA");

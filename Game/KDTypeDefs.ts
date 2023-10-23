@@ -2533,6 +2533,8 @@ interface KDCursedDef {
 	lock?: boolean,
 	/** Power multiplier of the curse, similar to a lock's lockmult */
 	powerMult?: number,
+	/** Fixed power increase */
+	powerBoost?: number,
 	/** This curse keeps events with the curse property from vanishing */
 	activatecurse?: boolean,
 	/** custom icon for removing (failure) */

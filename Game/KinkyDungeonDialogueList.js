@@ -447,7 +447,7 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					let items = KinkyDungeonGetRestraintsWithShrine("BindingDress", true, true);
 					// Get the most powerful item
-					let item = items.length > 0 ? items.reduce((prev, current) => (KDRestraint(prev).power * KinkyDungeonGetLockMult(prev.lock, prev) > KDRestraint(current).power * KinkyDungeonGetLockMult(current.lock, current)) ? prev : current) : null;
+					let item = items.length > 0 ? items.reduce((prev, current) => (KinkyDungeonRestraintPower(prev, true) > KinkyDungeonRestraintPower(current, true)) ? prev : current) : null;
 
 					let power = item ? KDRestraint(item).power : 5;
 					if (KDFactionRelation("Player", "Dressmaker") < 0.25)
@@ -2242,7 +2242,7 @@ let KDDialogue = {
 								KinkyDungeonSetEnemyFlag(e, "imprisoned", 0);
 								e.allied = 9999;
 								e.specialdialogue = undefined;
-								KinkyDungeonAggroFaction("Jail");
+								KDAggroMapFaction();
 								let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
 								e.faction = "Player";
 								if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDMapData.MapFaction == faction)) {
@@ -2261,6 +2261,7 @@ let KDDialogue = {
 										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
 									}
 								}
+								KDAddToParty(e);
 							}
 						} else {
 							KDGameData.CurrentDialogStage = "";
@@ -2285,7 +2286,7 @@ let KDDialogue = {
 					if (KinkyDungeonLockpicks > 0) {
 						if (!KinkyDungeonIsHandsBound(false, true, 0.45)) {
 							if (KDDialogueEnemy()) {
-								if (KDRandom() < KDGameData.CurrentDialogMsgValue.JamPercent) {
+								if (KDRandom() < KDGameData.CurrentDialogMsgValue.JamPercent && KDDialogueEnemy() && !KDEnemyHasFlag(KDDialogueEnemy(), "nojam")) {
 									let e = KDDialogueEnemy();
 									KinkyDungeonSetEnemyFlag(e, "LockJammed", -1);
 									KDGameData.CurrentDialogStage = "JammedRecent";
@@ -2296,7 +2297,8 @@ let KDDialogue = {
 									KinkyDungeonSetEnemyFlag(e, "imprisoned", 0);
 									e.allied = 9999;
 									e.specialdialogue = undefined;
-									KinkyDungeonAggroFaction("Jail");
+									KDAggroMapFaction();
+
 									let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
 									e.faction = "Player";
 									if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDMapData.MapFaction == faction)) {
@@ -2310,6 +2312,7 @@ let KDDialogue = {
 										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
 									}
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
+									KDAddToParty(e);
 								}
 
 							}

@@ -610,6 +610,57 @@ function KDProcessInput(type, data) {
 			KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "upcast", 1);
 			break;
 		}
+		case "select": {
+			if (data.enemy && KDAllied(data.enemy)) {
+				if (data.enemy.buffs?.AllySelect?.duration > 0) data.enemy.buffs.AllySelect.duration = 0;
+				else KinkyDungeonApplyBuffToEntity(data.enemy, {
+					id: "AllySelect",
+					aura: "#ffffff",
+					aurasprite: "Select",
+					duration: 9999,
+					type: "Sel",
+					power: 1,
+				});
+			}
+			break;
+		}
+		case "selectOnly": {
+			for (let e of KDMapData.Entities) {
+				if (e.id != data.enemy?.id && e.buffs?.AllySelect) e.buffs.AllySelect.duration = 0;
+				else if (e.id == data.enemy?.id) KinkyDungeonApplyBuffToEntity(e, {
+					id: "AllySelect",
+					aura: "#ffffff",
+					aurasprite: "Select",
+					duration: 9999,
+					type: "Sel",
+					power: 1,
+				});
+			}
+			KinkyDungeonSendTextMessage(10, TextGet("KDOrderSelect").replace("ENMY", TextGet("Name" + data.enemy.Enemy.name)), "#ffffff", 1);
+
+			break;
+		}
+		case "cancelParty": {
+			if (data.enemy) {
+				let enemy = KinkyDungeonFindID(data.enemy.id);
+				if (enemy.buffs?.AllySelect) enemy.buffs.AllySelect.duration = 0;
+				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
+				KDRemoveFromParty(enemy, false);
+				KinkyDungeonSendTextMessage(10, TextGet("KDOrderRemove").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1);
+			}
+			break;
+		}
+		case "onMe": {
+			if (data.enemy && data.player) {
+				let enemy = KinkyDungeonFindID(data.enemy.id);
+				enemy.gx = data.player.x;
+				enemy.gy = data.player.y;
+				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 0);
+				KinkyDungeonSetEnemyFlag(enemy, "Defensive", -1);
+				KinkyDungeonSendTextMessage(10, TextGet("KDOrderRemove").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1);
+			}
+			break;
+		}
 		case "spellLearn": {
 			KDDelayedActionPrune(["Action", "SwitchSpell"]);
 			KinkyDungeonEvasionPityModifier = 0.0;

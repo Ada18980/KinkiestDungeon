@@ -82,6 +82,7 @@ let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight"]; // 
 let KinkyDungeonKeySpellPage = ['Backquote'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H']; // Swap, Offhand, OffhandPrevious
 let KinkyDungeonKeySwitchLoadout = ['[', ']', '\\'];
+let KinkyDungeonKeyMap = ['+'];
 
 let KDLoadingTextKeys = {};
 
@@ -149,6 +150,7 @@ let KDDefaultKB = {
 	Wait: KinkyDungeonKeyWait[0],
 	Skip: KinkyDungeonKeySkip[0],
 	Enter: KinkyDungeonKeyEnter[0],
+	Map: KinkyDungeonKeyMap[0],
 	Sprint: KinkyDungeonKeySprint[0],
 
 	SwitchLoadout1: KinkyDungeonKeySwitchLoadout[0],
@@ -241,6 +243,7 @@ let KDDefaultMaxParty = 3;
 * KinkyDungeonPenanceCostCurrent: number;
 * KinkyDungeonAngel: number;
 * KDPenanceStage: number;
+* SpawnedPartyPrisoners: Record<string, number>;
 * KDPenanceStageEnd: number;
 * AngelCurrentRep: string;
 * KDPenanceMode: string;
@@ -343,6 +346,7 @@ let KDDefaultMaxParty = 3;
 * MaxParty: number,
 * FocusControlToggle: Record<string, boolean>,
 * FloorRobotType: Record<string, string>,
+* EpicenterLevel: number,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
@@ -372,6 +376,7 @@ let KDGameDataBase = {
 	QuickLoadouts: {},
 	CurrentLoadout: 0,
 	Training: {},
+	SpawnedPartyPrisoners: {},
 	CollectedOrbs: 0,
 	CollectedHearts: 0,
 	DollRoomCount: 0,
@@ -515,6 +520,7 @@ let KDGameDataBase = {
 	HostileFactions: [],
 	Wait: 0,
 	Class: "",
+	EpicenterLevel: 0,
 
 	FloorRobotType: {},
 };
@@ -1114,7 +1120,9 @@ function KinkyDungeonRun() {
 
 		if (KinkyDungeonKeybindingsTemp?.Spell1 && KinkyDungeonKeybindingsTemp.Spell1.length > 1 && (KinkyDungeonKeybindingsTemp.Spell1.includes("Digit") || KinkyDungeonKeybindingsTemp.Spell1.includes("Key")))
 			DrawTextFitKD(TextGet("KDKeysUpdate" + (KDEasterEgg ? "EasterEgg" : "")), 1000-350/2, 600 + 32, 500, "#ffffff", undefined, 18, "right");
-
+		else if (Object.keys(KDDefaultKB).some((key) => {return KinkyDungeonKeybindingsTemp && !KinkyDungeonKeybindingsTemp[key];})) {
+			DrawTextFitKD(TextGet("KDKeysNoBound" + (KDEasterEgg ? "EasterEgg" : "")), 1000-350/2, 600 + 32, 500, "#ffffff", undefined, 18, "right");
+		}
 		DrawButtonKDEx("GameToggles", () => {
 			KinkyDungeonState = "Toggles";
 			return true;
@@ -1796,6 +1804,85 @@ function KinkyDungeonRun() {
 
 
 		// Draw key buttons
+		/*let KeyPointers = {
+			Down: {index: 2, list: KinkyDungeonKey},
+			DownLeft: {index: 6, list: KinkyDungeonKey},
+			DownRight: {index: 7, list: KinkyDungeonKey},
+			Left: {index: 1, list: KinkyDungeonKey},
+			Right: {index: 3, list: KinkyDungeonKey},
+			Up: {index: 0, list: KinkyDungeonKey},
+			UpLeft: {index: 4, list: KinkyDungeonKey},
+			UpRight: {index: 5, list: KinkyDungeonKey},
+
+			Spell1: {index: 0, list: KinkyDungeonKeySpell},
+			Spell2: {index: 1, list: KinkyDungeonKeySpell},
+			Spell3: {index: 2, list: KinkyDungeonKeySpell},
+			Spell4: {index: 3, list: KinkyDungeonKeySpell},
+			Spell5: {index: 4, list: KinkyDungeonKeySpell},
+			Spell6: {index: 5, list: KinkyDungeonKeySpell},
+			Spell7: {index: 6, list: KinkyDungeonKeySpell},
+			Spell8: {index: 7, list: KinkyDungeonKeySpell},
+			Spell9: {index: 8, list: KinkyDungeonKeySpell},
+			Spell0: {index: 9, list: KinkyDungeonKeySpell},
+			SpellWeapon: {index: 0, list: KinkyDungeonKeyWeapon},
+			SpellConfig1: {index: 0, list: KinkyDungeonKeySpellConfig},
+			SpellConfig2: {index: 1, list: KinkyDungeonKeySpellConfig},
+			SpellConfig3: {index: 2, list: KinkyDungeonKeySpellConfig},
+
+			Wait: {index: 0, list: KinkyDungeonKeyWait},
+			Skip: {index: 0, list: KinkyDungeonKeySkip},
+			Enter: {index: 0, list: KinkyDungeonKeyEnter},
+			Map: {index: 0, list: KinkyDungeonKeyMap},
+			Sprint: {index: 0, list: KinkyDungeonKeySprint},
+
+			SwitchLoadout1: {index: 0, list: KinkyDungeonKeySwitchLoadout},
+			SwitchLoadout2: {index: 1, list: KinkyDungeonKeySwitchLoadout},
+			SwitchLoadout3: {index: 2, list: KinkyDungeonKeySwitchLoadout},
+			SpellPage: {index: 0, list: KinkyDungeonKeySpellPage},
+			SwitchWeapon: {index: 0, list: KinkyDungeonKeySwitchWeapon},
+			SwitchWeaponOffhand: {index: 1, list: KinkyDungeonKeySwitchWeapon},
+			SwitchWeaponOffhandPrevious: {index: 2, list: KinkyDungeonKeySwitchWeapon},
+
+			QInventory: {index: 0, list: KinkyDungeonKeyMenu},
+			Inventory: {index: 1, list: KinkyDungeonKeyMenu},
+			Reputation: {index: 2, list: KinkyDungeonKeyMenu},
+			Magic: {index: 3, list: KinkyDungeonKeyMenu},
+			Log: {index: 4, list: KinkyDungeonKeyMenu},
+
+			Upcast: {index: 0, list: KinkyDungeonKeyUpcast},
+			UpcastCancel: {index: 1, list: KinkyDungeonKeyUpcast},
+
+			MsgLog: {index: 0, list: KinkyDungeonKeyToggle},
+			Pass: {index: 1, list: KinkyDungeonKeyToggle},
+			Door: {index: 2, list: KinkyDungeonKeyToggle},
+			AStruggle: {index: 3, list: KinkyDungeonKeyToggle},
+			APathfind: {index: 4, list: KinkyDungeonKeyToggle},
+			AInspect: {index: 5, list: KinkyDungeonKeyToggle},
+		};*/
+
+		let maxY = 850;
+
+		let sY = 100;
+
+		let X = 500;
+		let Y = sY;
+		let dX = 300;
+		let dY = 40;
+		let pad = 5;
+
+		for (let key of Object.keys(KDDefaultKB)) {
+			DrawButtonKDEx("KB" + key, () => {KinkyDungeonKeybindingsTemp[key] = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
+				X, Y, dX, dY, TextGet("KinkyDungeonKey" + key) + ": '" + (KinkyDungeonKeybindingsTemp[key]) + "'",
+				KinkyDungeonKeybindingsTemp[key] == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true,);
+
+			Y += dY + pad;
+			if (Y > maxY) {
+				Y = sY;
+				X += dX + pad;
+			}
+		}
+
+		/*
 		DrawButtonKDEx("KBUp", () => {KinkyDungeonKeybindingsTemp.Up = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1075, 100, 300, 38, TextGet("KinkyDungeonKeyUp") + ": '" + (KinkyDungeonKeybindingsTemp.Up) + "'",
 			KinkyDungeonKeybindingsTemp.Up == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
@@ -1950,7 +2037,7 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("KBLog", () => {KinkyDungeonKeybindingsTemp.Log = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 			1475, 625, 300, 45, TextGet("KinkyDungeonKeyLog") + ": '" + (KinkyDungeonKeybindingsTemp.Log) + "'",
 			KinkyDungeonKeybindingsTemp.Log == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true);
-
+		*/
 		if (KinkyDungeonKeybindingCurrentKey)
 			DrawTextKD(TextGet("KinkyDungeonCurrentPress") + ": '" + (KinkyDungeonKeybindingCurrentKey) + "'", 1250, 900, "#ffffff", KDTextGray2);
 
@@ -2126,7 +2213,7 @@ function KDCullSpritesList(list) {
 }
 
 /**
- * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number, scrollfunc?: (amount: number) => boolean}>}
+ * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number, scrollfunc?: (amount: number) => boolean, hotkeyPress?: string}>}
  */
 let KDButtonsCache = {
 
@@ -2193,6 +2280,7 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
+ * @param {string} [options.hotkeyPress] - hotkey
  * @returns {void} - Nothing
  */
 function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
@@ -2205,6 +2293,7 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
 		enabled,
 		func,
 		priority: (options?.zIndex || 0),
+		hotkeyPress: options?.hotkeyPress,
 	};
 }
 
@@ -2235,6 +2324,7 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
+ * @param {string} [options.hotkeyPress] - hotkey
  * @returns {void} - Nothing
  */
 function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
@@ -2248,6 +2338,7 @@ function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width,
 		func,
 		priority: (options?.zIndex || 0),
 		scrollfunc: scrollfunc,
+		hotkeyPress: options?.hotkeyPress,
 	};
 }
 
@@ -2274,6 +2365,8 @@ function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width,
  * @param {boolean} [options.noTextBG] - Dont show text backgrounds
  * @param {number} [options.alpha] - Dont show text backgrounds
  * @param {number} [options.zIndex] - zIndex
+ * @param {string} [options.hotkey] - hotkey
+ * @param {string} [options.hotkeyPress] - hotkey
  * @param {boolean} [options.unique] - This button is unique, so X and Y are not differentiators
  * @returns {void} - Nothing
  */
@@ -2286,7 +2379,8 @@ function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Heig
 		Height,
 		enabled,
 		func,
-		priority: (options?.zIndex || 0)
+		priority: (options?.zIndex || 0),
+		hotkeyPress: options?.hotkeyPress,
 	};
 }
 
@@ -2735,6 +2829,7 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.AInspect,
 	];
 
+	KinkyDungeonKeyMap = [KinkyDungeonKeybindings.Map];
 	KinkyDungeonKeyEnter = [KinkyDungeonKeybindings.Enter];
 	KinkyDungeonKeySpellPage = [KinkyDungeonKeybindings.SpellPage];
 	KinkyDungeonKeySwitchWeapon = [KinkyDungeonKeybindings.SwitchWeapon, KinkyDungeonKeybindings.SwitchWeaponOffhand, KinkyDungeonKeybindings.SwitchWeaponOffhandPrevious];
