@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.80.1"
+KinkyDungeon,"Kinky Dungeon v4.81"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -862,12 +862,14 @@ KinkyDungeonKeySpellPage,Cycle Spell Page
 KinkyDungeonKeyUpcast,Upcast Spells
 KinkyDungeonKeyUpcastCancel,Cancel Upcast
 KinkyDungeonKeySwitchWeapon,Swap Weapon
-KinkyDungeonKeyOffhand,Switch to Offhand
-KinkyDungeonKeyOffhandPrevious,Switch from Offhand
+KinkyDungeonKeySwitchWeaponOffhand,Switch to Offhand
+KinkyDungeonKeySwitchWeaponOffhandPrevious,Switch from Offhand
 KinkyDungeonKeySpellWeapon,Weapon Ability
 KinkyDungeonKeyWait,Wait
 KinkyDungeonKeySkip,Cancel/Back
 KinkyDungeonKeyEnter,Enter
+KinkyDungeonKeyAInspect,Inspect
+KinkyDungeonKeyMap,Expand Minimap
 
 KinkyDungeonKeyMsgLog,Message Log
 KinkyDungeonKeyDoor,Close Door
@@ -10634,6 +10636,19 @@ dGenericAllyDontHelpMe_Confirm,"(Stop receiving help)"
 dGenericAllyDontHelpMe_Leave,"(Never mind...)"
 rGenericAllyDontHelpMe_Confirm,"(The SPEAKER will no longer help you.)"
 rGenericAllyDontHelpMe_Leave,"(You sigh as you realize you really need her help.)"
+dGenericAllyRemoveParty,"(Kick her out of your party)"
+rGenericAllyRemoveParty,"(Confirm? She will stop following you)"
+dGenericAllyRemoveParty_Confirm,"(Remove from party)"
+dGenericAllyRemoveParty_Leave,"(Never mind...)"
+rGenericAllyRemoveParty_Confirm,"(The SPEAKER understands.)"
+rGenericAllyRemoveParty_Leave,"(You decide to keep her.)"
+dGenericAllyJoinParty,"(Add her to your party)"
+rGenericAllyJoinParty,"(Confirm? She will follow you across floors. You can only have 3 party members)"
+dGenericAllyJoinParty_Confirm,"(Add to party)"
+dGenericAllyJoinParty_Leave,"(Never mind...)"
+rGenericAllyJoinParty_Confirm,"(The SPEAKER is happy to join you)"
+rGenericAllyJoinParty_Leave,"(You decide not to.)"
+
 dGenericAllyShop,"(Sell items)"
 dGenericAllyShopBuy,"(Buy items)"
 
@@ -12338,7 +12353,7 @@ KinkyDungeonInventoryItemCuffKeysDesc2,"It's not sophisticated enough to work on
 ItemPickupDiscPick,"You pick up a tool for picking disc detainer locks."
 KinkyDungeonInventoryItemDiscPick,Disc Lock Tool
 KinkyDungeonInventoryItemDiscPickUse,"You examine the tool. It has a replaceable tip for picking disc detainer locks."
-KinkyDungeonInventoryItemDiscPickDesc,"A handy tool for picking disc detainer locks."
+KinkyDungeonInventoryItemDiscPickDesc,"A handy tool for picking disc detainer locks, popularized by a certain pair of professionals."
 KinkyDungeonInventoryItemDiscPickDesc2,"Features a replaceable head in case an unskilled user breaks it. Requires lockpicks to use."
 
 
@@ -12635,6 +12650,8 @@ KDBack,Back
 
 KinkyDungeonBuffNoWP,"Surrender: Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist."
 
+KDKeysNoBound,"Unbound Keybindings! -->"
+KDKeysNoBoundEasterEgg,"You've not enough keys!!! -->"
 KDKeysUpdate,"Update your Keybindings!!! -->"
 KDKeysUpdateEasterEgg,"I have altered the keybindings. Pray I do not alter them further."
 
@@ -12848,3 +12865,7 @@ KDQuickLoadout_Merge,Merge Armor
 KDNeedDiscPick,You need a special tool to pick this kind of lock.
 
 KDNotEnoughMoneyVendor,The NPC does not have enough money left!
+
+KDOrderCome,You order the ENMY to come to you.
+KDOrderSelect,You deselect all allies and select only the ENMY.
+KDOrderRemove,You remove the ENMY from your party.

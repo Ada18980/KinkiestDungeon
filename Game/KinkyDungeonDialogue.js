@@ -502,7 +502,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 						if (!enemy.Enemy.allied) {
 							KDMakeHostile(enemy);
 							let faction = KDGetFactionOriginal(enemy);
-							if (!KinkyDungeonHiddenFactions.includes(faction)) {
+							if (!KinkyDungeonHiddenFactions.includes(faction) && !enemy.Enemy.tags?.scenery) {
 								KinkyDungeonChangeRep("Ghost", -5);
 								KinkyDungeonChangeFactionRep(faction, -0.06);
 							}
@@ -978,6 +978,43 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				leadsToStage: "",
 			},
 		}
+	};
+	dialog.options.JoinParty = {playertext: name + "JoinParty", response: "Default",
+		prerequisiteFunction: (gagged, player) => {
+			if (KDGameData.Party?.length >= KDGameData.MaxParty) return false;
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				return KDAllied(enemy) && !KDIsInParty(enemy);
+			}
+			return false;
+		},
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 0);
+				KDAddToParty(enemy);
+			}
+			return false;
+		},
+		leadsToStage: "", dontTouchText: true,
+	};
+	dialog.options.RemoveParty = {playertext: name + "RemoveParty", response: "Default",
+		prerequisiteFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				return KDIsInParty(enemy);
+			}
+			return false;
+		},
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
+				KDRemoveFromParty(enemy, false);
+			}
+			return false;
+		},
+		leadsToStage: "", dontTouchText: true,
 	};
 	KDAllyDialog[name] = {name: name, tags: requireTags, singletag: requireSingleTag, excludeTags: excludeTags, weight: weight};
 	return dialog;
@@ -2045,4 +2082,9 @@ function KDGetShopCost(enemy) {
 	shopCost *= KinkyDungeonMultiplicativeStat(0.02*KDGetModifiedOpinion(enemy));
 	shopCost += 1;
 	return shopCost;
+}
+
+function KDAggroMapFaction() {
+	if (KDMapData.JailFaction && KDMapData.JailFaction[0])
+		KinkyDungeonAggroFaction(KDMapData.JailFaction[0]);
 }

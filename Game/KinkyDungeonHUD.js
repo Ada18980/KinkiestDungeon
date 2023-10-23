@@ -1952,14 +1952,13 @@ function KinkyDungeonHandleHUD() {
 		if (KinkyDungeonIsPlayer() && KinkyDungeonTargetTile) {
 			if (KinkyDungeonTargetTile.Type &&
 				((KinkyDungeonTargetTile.Type == "Lock" && KinkyDungeonTargetTile.Lock) || (KinkyDungeonTargetTile.Type == "Door" && KinkyDungeonTargetTile.Lock))) {
-				if (KinkyDungeonLockpicks > 0 && (KinkyDungeonTargetTile.Lock.includes("Red") || KinkyDungeonTargetTile.Lock.includes("Blue")) && MouseIn(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60)) {
+				if (KinkyDungeonLockpicks > 0 && (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation})) && MouseIn(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60)) {
 					// Done, converted to input
 					KDSendInput("pick", {targetTile: KinkyDungeonTargetTileLocation});
 					return true;
 				}
 
-				if (((KinkyDungeonTargetTile.Lock.includes("Red") && KinkyDungeonRedKeys > 0)
-					|| (KinkyDungeonTargetTile.Lock.includes("Blue") && KinkyDungeonBlueKeys > 0)) && MouseIn(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60)) {
+				if ((KDLocks[KinkyDungeonTargetTile.Lock].canUnlock({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation})) && MouseIn(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60)) {
 					// Done, converted to input
 					KDSendInput("unlock", {targetTile: KinkyDungeonTargetTileLocation});
 					return true;

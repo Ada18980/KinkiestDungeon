@@ -216,6 +216,19 @@ let KDTilePalette = {
 	'OffLimits': {type: "offlimits"},
 	'Jail': {type: "jail"},
 	'Keyring': {type: "Keyring"},
+	'MazeSeed': {type: "MazeSeed",
+		customfields: {
+			newest: {type: "number"},
+			oldest: {type: "number"},
+			scale: {type: "number"},
+			branchchance: {type: "number"},
+			hbias: {type: "number"},
+			vbias: {type: "number"},
+			wobble: {type: "number"},
+			pillarToDoodad: {type: "boolean"},
+		}
+	},
+	'MazeBlock': {type: "MazeBlock"},
 };
 
 function KDGetTileIndexImg(index) {
@@ -808,6 +821,35 @@ let KDTE_Brush = {
 				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
 		} else {
 			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
+		}
+	},
+	'MazeBlock': (brush, curr, noSwap) => {
+		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
+			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).MazeBlock) {
+				if (!noSwap)
+					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).MazeBlock = false;
+			} else
+				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).MazeBlock = true;
+		} else {
+			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {MazeBlock: true});
+		}
+	},
+	'MazeSeed': (brush, curr, noSwap) => {
+		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
+			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).MazeSeed) {
+				if (!noSwap)
+					delete KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).MazeSeed;
+			} else
+				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).MazeSeed = {newest: 0.25, oldest: 0.25};
+		} else {
+			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {MazeSeed: {newest: 0.25, oldest: 0.25}});
+		}
+
+		if (brush.customfields && KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)?.MazeSeed) {
+			for (let field of Object.entries(brush.customfields)) {
+				if (KDTE_GetField(field) != undefined)
+					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).MazeSeed[field[0]] = KDTE_GetField(field);
+			}
 		}
 	},
 	'jail': (brush, curr, noSwap) => {

@@ -284,10 +284,11 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			//Container.Mesh.x += Container.Container.pivot.x;
 			//Container.Mesh.y += Container.Container.pivot.y;
 			//if (MC.Containers.get(containerID).RenderTexture)
-			PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
-				clear: true,
-				renderTexture: MC.Containers.get(containerID).RenderTexture,
-			});
+            if (MC.Containers.get(containerID).RenderTexture)
+				PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
+					clear: true,
+					renderTexture: MC.Containers.get(containerID).RenderTexture,
+				});
 			MC.ForceUpdate.add(containerID);
 		}
 		Container.SpritesDrawn.clear();

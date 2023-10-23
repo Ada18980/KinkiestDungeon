@@ -1078,6 +1078,7 @@ let KinkyDungeonSpellSpecials = {
 				aurasprite: "Select",
 				duration: 9999,
 				type: "Sel",
+				power: 1,
 			});
 			return "Cast";
 		} else return "Fail";
@@ -1093,6 +1094,7 @@ let KinkyDungeonSpellSpecials = {
 					aurasprite: "Select",
 					duration: 9999,
 					type: "Sel",
+					power: 1,
 				});
 				succeed = true;
 			}

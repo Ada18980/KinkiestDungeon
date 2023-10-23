@@ -588,7 +588,7 @@ AddModel({
 	Categories: ["Corsets"],
 	Layers: ToLayerMap([
 		{ Name: "Corset", Layer: "CorsetOver", Pri: 1,
-			SwapLayerPose: {Pants: "CorsetLower"},
+			SwapLayerPose: {Pants: "CorsetUnder"},
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
 			Invariant: true,
@@ -741,7 +741,7 @@ AddModel({
 	Categories: ["Corsets"],
 	Layers: ToLayerMap([
 		{ Name: "Corset", Layer: "CorsetOver", Pri: 1,
-		SwapLayerPose: {Pants: "CorsetLower"},
+		SwapLayerPose: {Pants: "CorsetUnder"},
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
 			Invariant: true,

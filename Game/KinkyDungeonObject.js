@@ -54,16 +54,16 @@ let KDObjectDraw = {
 function KinkyDungeonDrawDoor() {
 	if (KinkyDungeonTargetTile.Lock) {
 		let action = false;
-		if (KinkyDungeonLockpicks > 0 && (KinkyDungeonTargetTile.Lock.includes("Red") || KinkyDungeonTargetTile.Lock.includes("Blue"))) {
-			DrawButtonVis(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonPickDoor"), "#ffffff", "", "");
+		if ((KDLocks[KinkyDungeonTargetTile.Lock].pickable)) {
+			DrawButtonVis(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonPickDoor"),
+			(KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation})) ? "#ffffff" : "#ff0000", "", "");
 			action = true;
 			KDModalArea = true;
 		}
 
-		if (KinkyDungeonTargetTile.Lock.includes("Red") || KinkyDungeonTargetTile.Lock.includes("Blue")) {
+		if ((KDLocks[KinkyDungeonTargetTile.Lock].unlockable)) {
 			DrawButtonVis(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonUnlockDoor"),
-			(KinkyDungeonTargetTile.Lock.includes("Red") && KinkyDungeonRedKeys > 0)
-			|| (KinkyDungeonTargetTile.Lock.includes("Blue") && KinkyDungeonBlueKeys > 0) ? "#ffffff" : "#ff0000", "", "");
+			(KDLocks[KinkyDungeonTargetTile.Lock].canUnlock({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation})) ? "#ffffff" : "#ff0000", "", "");
 			action = true;
 			KDModalArea = true;
 		}
@@ -95,16 +95,16 @@ function KinkyDungeonDrawDoor() {
 function KinkyDungeonDrawLock() {
 	if (KinkyDungeonTargetTile.Lock) {
 		let action = false;
-		if (KinkyDungeonLockpicks > 0 && (KinkyDungeonTargetTile.Lock.includes("Red") || KinkyDungeonTargetTile.Lock.includes("Blue"))) {
-			DrawButtonVis(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonPickDoor"), "#ffffff", "", "");
+		if ((KDLocks[KinkyDungeonTargetTile.Lock].pickable)) {
+			DrawButtonVis(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonPickDoor"),
+			(KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation})) ? "#ffffff" : "#ff0000", "", "");
 			action = true;
 			KDModalArea = true;
 		}
 
-		if (KinkyDungeonTargetTile.Lock.includes("Red") || KinkyDungeonTargetTile.Lock.includes("Blue")) {
+		if ((KDLocks[KinkyDungeonTargetTile.Lock].unlockable)) {
 			DrawButtonVis(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonUnlockDoor"),
-			(KinkyDungeonTargetTile.Lock.includes("Red") && KinkyDungeonRedKeys > 0)
-			|| (KinkyDungeonTargetTile.Lock.includes("Blue") && KinkyDungeonBlueKeys > 0) ? "#ffffff" : "#ff0000", "", "");
+			(KDLocks[KinkyDungeonTargetTile.Lock].canUnlock({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation})) ? "#ffffff" : "#ff0000", "", "");
 			action = true;
 			KDModalArea = true;
 		}

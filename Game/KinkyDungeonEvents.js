@@ -5232,9 +5232,13 @@ let KDEventMapEnemy = {
 	"tick": {
 		"EpicenterAssignHP": (e, enemy, data) => {
 			if (!KDEnemyHasFlag(enemy, "assignedHP")) {
-				let factor = 0.1 + 1.9*(KDGameData.HighestLevel || 1) / (KinkyDungeonMaxLevel - 1);
+				let factor = 0.1 + 0.1*Math.round(19*(KDGameData.EpicenterLevel || 1)**0.75) / (KinkyDungeonMaxLevel - 1);
+
+				if (!KDGameData.EpicenterLevel) KDGameData.EpicenterLevel = 0;
+				KDGameData.EpicenterLevel += 1;
 
 				enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
+				enemy.Enemy.spellCooldownMult = enemy.Enemy.spellCooldownMult*(1/(1+factor));
 				enemy.Enemy.maxhp = enemy.Enemy.maxhp*factor;
 				enemy.hp = enemy.Enemy.maxhp;
 

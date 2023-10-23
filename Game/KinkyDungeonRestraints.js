@@ -789,7 +789,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 		 */
 		let items = KinkyDungeonAllRestraint().filter((r) => {return ((!KDRestraint(r).noShrine && (!KDGetCurse(r) || !KDCurses[KDGetCurse(r)].noShrine)) || ignoreShrine) && KDRestraint(r).shrine && KDRestraint(r).shrine.includes(shrine) && (ignoreGold || r.lock != "Gold");});
 		// Get the most powerful item
-		let item = items.length > 0 ? items.reduce((prev, current) => (KDRestraint(prev).power * KinkyDungeonGetLockMult(prev.lock, prev) > KDRestraint(current).power * KinkyDungeonGetLockMult(current.lock, current)) ? prev : current) : null;
+		let item = items.length > 0 ? items.reduce((prev, current) => (KinkyDungeonRestraintPower(prev, true) > KinkyDungeonRestraintPower(current, true)) ? prev : current) : null;
 		if (item) {
 			item.curse = undefined;
 			KinkyDungeonRemoveRestraint(KDRestraint(item).Group, Keep, false, false, true, undefined, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
@@ -802,7 +802,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 			items = KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, true);
 
 			// Get the most powerful item
-			item = items.length > 0 ? items.reduce((prev, current) => (KDRestraint(prev).power * KinkyDungeonGetLockMult(prev.lock, prev) > KDRestraint(current).power * KinkyDungeonGetLockMult(current.lock, current)) ? prev : current) : null;
+			item = items.length > 0 ? items.reduce((prev, current) => (KinkyDungeonRestraintPower(prev, true) > KinkyDungeonRestraintPower(current, true)) ? prev : current) : null;
 			if (item) {
 				let groupItem = KinkyDungeonGetRestraintItem(KDRestraint(item).Group);
 				if (groupItem == item) {
@@ -2571,8 +2571,8 @@ function KinkyDungeonGetRestraintByName(Name) {
 function KinkyDungeonGetLockMult(Lock, item, curse) {
 	let mult = 1;
 	if (Lock && KDLocks[Lock]) mult = KDLocks[Lock].lockmult;
-	if (item && KDGetCurse(item)) mult = KDCursePower(KDGetCurse(item));
-	if (curse) mult = KDCursePower(curse);
+	if (item && KDGetCurse(item)) mult = KDCurseMult(KDGetCurse(item));
+	if (curse) mult = KDCurseMult(curse);
 
 	return mult;
 }
@@ -2843,6 +2843,11 @@ function KinkyDungeonUpdateRestraints(delta) {
 	return playerTags;
 }
 
+function KDGetCursePower(item) {
+	if (!item || !KDGetCurse(item)) return 0;
+	return KDCursePower(KDGetCurse(item));
+}
+
 /**
  *
  * @param {item} item
@@ -2853,7 +2858,7 @@ function KinkyDungeonUpdateRestraints(delta) {
 function KinkyDungeonRestraintPower(item, NoLink, toLink) {
 	if (item && item.type == Restraint) {
 		let lockMult = item ? KinkyDungeonGetLockMult(item.lock, item) : 1;
-		let power = KDRestraint(item).power * lockMult;
+		let power = KDRestraint(item).power * lockMult + KDGetCursePower(item);
 
 		if (item.dynamicLink && !NoLink) {
 			let link = item.dynamicLink;
@@ -2861,7 +2866,7 @@ function KinkyDungeonRestraintPower(item, NoLink, toLink) {
 				let lock = link.lock;
 				let mult = KinkyDungeonGetLockMult(lock, link);
 				let pp = link ? (KDRestraint({name: link.name}).power) : 0;
-				power = Math.max(power, pp * mult);
+				power = Math.max(power, pp * mult + KDGetCursePower(link));
 			}
 		}
 		return power;

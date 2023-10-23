@@ -14,6 +14,17 @@ Vague todo:
 - TODO add scroll to log, rep
 
 
+4.81 (Oct 2023)
+- Epicenters now scale with number of epicenters spawned, not with level
+- Added party member system (they come with you across levels, and appear in prisons if they get defeated)
+- Added some times with new fancy maze generation features
+- Hopefully fixed the following bugs:
+Curses being overwritten
+Selling items deletes whole stack
+Crash while fighting
+Impossible to unlock chests and doors
+Threatening barricades affects rep
+
 4.80.1 (Oct 2023)
 - The shopkeeper offers diminishing returns for items sold to her
 - Shop NPCs have a limited amount of gold they will give you

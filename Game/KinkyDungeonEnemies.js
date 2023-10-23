@@ -460,52 +460,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					}
 				}
 
-				let buffSprite = "";
-				let buffSpritePower = 0;
-				if (enemy.buffs) {
-					for (let b of Object.values(enemy.buffs)) {
-						if (b.replaceSpriteBound && KDBoundEffects(enemy) > 3 && (b.replacePower || b.power > buffSpritePower)) {
-							buffSpritePower = b.replacePower || b.power;
-							buffSprite = b.replaceSpriteBound;
-						} else if (b.replaceSprite && (b.replacePower || b.power > buffSpritePower)) {
-							buffSpritePower = b.replacePower || b.power;
-							buffSprite = b.replaceSprite;
-						}
-					}
-				}
-
-				if (buffSprite) sprite = buffSprite;
-
-				if (!enemy.Enemy.bound || (KDBoundEffects(enemy) < 4 && !KDHelpless(enemy))) {
-					let sp = sprite;
-					if (!enemy.ambushtrigger && enemy.Enemy.GFX?.AmbushSprite && KDAmbushAI(enemy)) sp = enemy.Enemy.GFX.AmbushSprite;
-					else if (enemy.CustomSprite && !buffSprite) sp = "CustomSprite/" + enemy.CustomSprite;
-					let w = (enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay) * (enemy.scaleX || 1);
-					let h = (enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay) * (enemy.scaleY || 1);
-					let color = (enemy.Enemy.GFX?.lighting) ? KDGetLightColor(enemy.x, enemy.y) : undefined;
-					let spr = KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + "Enemies/" + sp + ".png",
-						(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (enemy.flip ? -1 : 1)*(w - KinkyDungeonGridSizeDisplay)/2,
-						(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
-						w, h, undefined, color != undefined ? {tint: color} : undefined);
-					if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
-					else if (!enemy.flip && spr?.scale.x < 0) spr.scale.x = -spr.scale.x;
-				} else {
-					let sp = buffSprite || enemy.Enemy.bound;
-					let dir = "EnemiesBound/";
-					if (enemy.CustomSprite && !buffSprite) {
-						dir = "Enemies/";
-						sp = "CustomSpriteBound/" + enemy.CustomSprite;
-					}
-					let w = (enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay) * (enemy.scaleX || 1);
-					let h = (enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay) * (enemy.scaleY || 1);
-					let color = (enemy.Enemy.GFX?.lighting) ? KDGetLightColor(enemy.x, enemy.y) : undefined;
-					let spr = KDDraw(kdenemyboard, kdpixisprites, "spr_" + enemy.id, KinkyDungeonRootDirectory + dir + sp + ".png",
-						(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (enemy.flip ? -1 : 1)*(w - KinkyDungeonGridSizeDisplay)/2,
-						(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
-						w, h, undefined, color != undefined ? {tint: color} : undefined);
-					if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
-					else if (!enemy.flip && spr?.scale.x < 0) spr.scale.x = -spr.scale.x;
-				}
+				sprite = KDDrawEnemySprite(kdenemyboard, enemy, tx, ty, CamX, CamY);
 			}
 		} else {
 			// Can't see the enemy so we draw sound instead
@@ -531,6 +486,85 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	} else if (reenabled2 && KinkyDungeonFastStruggle) {
 		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 	}
+}
+
+/**
+ *
+ * @param {entity} enemy
+ */
+function KDDrawEnemySprite(board, enemy, tx, ty, CamX, CamY, StaticView, zIndex = 0, id = "") {
+	let buffSprite = "";
+	let buffSpritePower = 0;
+	let sprite = enemy.Enemy.name;
+	if (enemy.buffs) {
+		for (let b of Object.values(enemy.buffs)) {
+			if (b.replaceSpriteBound && KDBoundEffects(enemy) > 3 && (b.replacePower || b.power > buffSpritePower)) {
+				buffSpritePower = b.replacePower || b.power;
+				buffSprite = b.replaceSpriteBound;
+			} else if (b.replaceSprite && (b.replacePower || b.power > buffSpritePower)) {
+				buffSpritePower = b.replacePower || b.power;
+				buffSprite = b.replaceSprite;
+			}
+		}
+	}
+
+	if (buffSprite) sprite = buffSprite;
+
+	/**
+	 * @type {any}
+	 */
+	let o = null;
+
+	if (!enemy.Enemy.bound || (KDBoundEffects(enemy) < 4 && !KDHelpless(enemy))) {
+		let sp = sprite;
+		if (!enemy.ambushtrigger && enemy.Enemy.GFX?.AmbushSprite && KDAmbushAI(enemy)) sp = enemy.Enemy.GFX.AmbushSprite;
+		else if (enemy.CustomSprite && !buffSprite) sp = "CustomSprite/" + enemy.CustomSprite;
+		let w = (enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay) * (enemy.scaleX || 1);
+		let h = (enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay) * (enemy.scaleY || 1);
+		let color = (enemy.Enemy.GFX?.lighting) ? KDGetLightColor(enemy.x, enemy.y) : undefined;
+		if (color) {
+			if (!o) o = {tint: color};
+		}
+		if (zIndex) {
+			if (!o) o = {zIndex: zIndex};
+			else o.zIndex = zIndex;
+		}
+		let spr = KDDraw(board, kdpixisprites, "spr_" + enemy.id + id, KinkyDungeonRootDirectory + "Enemies/" + sp + ".png",
+			(tx + (enemy.offX || 0) - CamX + ((enemy.flip && !StaticView) ? 1 : 0))*KinkyDungeonGridSizeDisplay - ((enemy.flip && !StaticView) ? -1 : 1)*(w - KinkyDungeonGridSizeDisplay)/2,
+			(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
+			w, h, undefined, o);
+		if (!StaticView) {
+			if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
+			else if (!enemy.flip && spr?.scale.x < 0) spr.scale.x = -spr.scale.x;
+		}
+
+	} else {
+		let sp = buffSprite || enemy.Enemy.bound;
+		let dir = "EnemiesBound/";
+		if (enemy.CustomSprite && !buffSprite) {
+			dir = "Enemies/";
+			sp = "CustomSpriteBound/" + enemy.CustomSprite;
+		}
+		let w = (enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay) * (enemy.scaleX || 1);
+		let h = (enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay) * (enemy.scaleY || 1);
+		let color = (enemy.Enemy.GFX?.lighting) ? KDGetLightColor(enemy.x, enemy.y) : undefined;
+		if (color) {
+			if (!o) o = {tint: color};
+		}
+		if (zIndex) {
+			if (!o) o = {zIndex: zIndex};
+			else o.zIndex = zIndex;
+		}
+		let spr = KDDraw(board, kdpixisprites, "spr_" + enemy.id + id, KinkyDungeonRootDirectory + dir + sp + ".png",
+			(tx + (enemy.offX || 0) - CamX + ((enemy.flip && !StaticView) ? 1 : 0))*KinkyDungeonGridSizeDisplay - ((enemy.flip && !StaticView) ? -1 : 1)*(w - KinkyDungeonGridSizeDisplay)/2,
+			(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
+			w, h, undefined, o);
+		if (!StaticView) {
+			if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
+			else if (!enemy.flip && spr?.scale.x < 0) spr.scale.x = -spr.scale.x;
+		}
+	}
+	return sprite;
 }
 
 /**
@@ -1823,16 +1857,21 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 				let amount = 0;
 
 				if (!KinkyDungeonHiddenFactions.includes(faction)) {
-					if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.boss)
-						amount = 0.04;
-					else if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.miniboss)
-						amount = 0.02;
-					else if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.elite)
-						amount = 0.01;
-					if (enemy.Enemy && enemy.Enemy.tags && !enemy.Enemy.tags.minor)
-						amount = 0.004;
-					if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.minor)
-						amount = KDRandom() < 0.33 ? 0.004 : 0.001;
+
+					if (enemy.Enemy.tags?.scenery) amount = 0;
+					else {
+						if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.boss)
+							amount = 0.04;
+						else if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.miniboss)
+							amount = 0.02;
+						else if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.elite)
+							amount = 0.01;
+						if (enemy.Enemy && enemy.Enemy.tags && !enemy.Enemy.tags.minor)
+							amount = 0.004;
+						if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.minor)
+							amount = KDRandom() < 0.33 ? 0.004 : 0.001;
+					}
+
 
 				}
 				if (amount && !noRepHit && !enemy.Enemy.Reputation?.noRepLoss) {
@@ -3312,7 +3351,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
 			enemy.aware = true;
 			// Share aggro
-			if (player.player && AIData.hostile && AIData.aggressive && !enemy.rage && KDEnemyCanSignalOthers(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
+			if (player.player && KDHostile(enemy) && AIData.aggressive && !enemy.rage && KDEnemyCanSignalOthers(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
 				let ent = KDNearbyEnemies(enemy.x, enemy.y, KinkyDungeonEnemyAlertRadius);
 				for (let e of ent) {
 					if (KDHostile(e) && KinkyDungeonAggressive(e) && !enemy.rage && e != enemy) {
@@ -3360,7 +3399,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 
 	if (!AIData.aggressive && player.player && (enemy.playWithPlayer || KDAllied(enemy))) {
-		if (AIData.domMe && KDIsBrat(enemy)) {
+		if (enemy.playWithPlayer && AIData.domMe && KDIsBrat(enemy)) {
 			AIData.followRange = 2.9;
 			AIData.kite = true;
 		} else
@@ -5186,74 +5225,6 @@ function KDGetIntentEvent(enemy, data, play, allied, hostile, aggressive) {
 	return (e, a) => {};
 }
 
-function KDAddEntity(entity) {
-	let data = {
-		enemy: entity,
-		x: entity.x,
-		y: entity.y,
-		type: entity.Enemy,
-		typeOverride: false,
-		data: undefined,
-		loadout: undefined,
-	};
-	KinkyDungeonSendEvent("addEntity", data);
-	KDMapData.Entities.push(entity);
-	KDSetLoadout(entity, data.loadout);
-	if (!entity.data && entity.Enemy.data) entity.data = entity.Enemy.data;
-	if (data.data) {
-		if (!entity.data) entity.data = {};
-		Object.assign(entity.data, data.data);
-	}
-	KDUpdateEnemyCache = true;
-}
-function KDSpliceIndex(index, num = 1) {
-	if (KDMapData.Entities[index]) {
-		KDCommanderRoles.delete(KDMapData.Entities[index].id);
-	}
-	KDMapData.Entities.splice(index, num);
-	KDUpdateEnemyCache = true;
-}
-
-/**
- * Removes an enemy and does some stuff like party management, etc to keep things sanitary
- * @param {entity} enemy
- * @param {boolean} [kill]
- * @param {boolean} [capture]
- * @param {boolean} [noEvent]
- * @param {number} [forceIndex]
- * @returns {boolean}
- */
-function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
-	let data = {
-		enemy: enemy,
-		kill: kill,
-		capture: capture,
-		cancel: false,
-	};
-	if (!noEvent)
-		KinkyDungeonSendEvent("removeEnemy", data);
-
-	if (data.cancel) return false;
-	if (!KDGameData.Party) KDGameData.Party = []; // Null protection
-	if (!KDGameData.CapturedParty) KDGameData.CapturedParty = [];
-	if (data.kill || data.capture)
-		for (let pm of (KDGameData.Party)) {
-			if (pm.id == data.enemy.id) {
-				KDGameData.Party.splice(KDGameData.Party.indexOf(pm), 1);
-				if (data.capture && KDGetFaction(enemy) == "Player") {
-					//if (!enemy.hostile) { // In the future player will be able to keep as slaves
-					if (!KDGameData.CapturedParty.some((cpm) => {return cpm.id == pm.id;})) {
-						KDGameData.CapturedParty.push(pm);
-					}
-					//}
-				}
-			}
-		}
-
-	KDSpliceIndex(forceIndex || KDMapData.Entities.indexOf(data.enemy), 1);
-	return true;
-}
-
 /**
  *
  * @param {entity} enemy
@@ -6453,4 +6424,175 @@ function KDSetShopMoney(enemy, dontSet) {
 	if (!dontSet)
 		enemy.gold = money;
 	return money;
+}
+
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean} true if the NPC is in the party
+ */
+function KDIsInParty(enemy) {
+	if (!KDGameData.Party) KDGameData.Party = []; // Null protection
+	for (let pm of (KDGameData.Party)) {
+		if (pm.id == enemy.id) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean} true if the NPC has been previously captured
+ */
+function KDIsInCapturedParty(enemy) {
+	if (!KDGameData.CapturedParty) KDGameData.CapturedParty = []; // Null protection
+	for (let pm of (KDGameData.CapturedParty)) {
+		if (pm.id == enemy.id) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Returns the enemies in the map data based on the party members
+ * @returns {entity[]} Array of enemies from KDMapData.Entities
+ */
+function KDGetPartyRefs() {
+	if (!KDGameData.Party) KDGameData.Party = []; // Null protection
+	let ret = [];
+	for (let pm of (KDGameData.Party)) {
+		let entity = KinkyDungeonFindID(pm.id);
+		if (entity) ret.push(entity);
+	}
+	return ret;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {entity}
+ */
+function KDCapturedPartyMemberIsOnMap(enemy) {
+	if (!KDGameData.CapturedParty) KDGameData.CapturedParty = []; // Null protection
+	for (let pm of (KDGameData.CapturedParty)) {
+		let entity = KinkyDungeonFindID(pm.id);
+		if (entity) return entity;
+	}
+	return null;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean} - Returns true if the NPC was added
+ */
+function KDAddToParty(enemy) {
+	if (KDIsInParty(enemy)) return false;
+	if (KDGameData.Party.length >= KDGameData.MaxParty) return false;
+	// Add a copy to the party
+	enemy.faction = "Player";
+	KDGameData.Party.push(JSON.parse(JSON.stringify(enemy)));
+	return true;
+
+}
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean} - Returns true if the NPC was added
+ */
+function KDAddToCapturedParty(enemy) {
+	if (KDIsInCapturedParty(enemy)) return false;
+	// Add a copy to the party
+	KDGameData.CapturedParty.push(JSON.parse(JSON.stringify(enemy)));
+	return true;
+
+}
+
+/**
+ * Removes a party member and optionally adds to capture list
+ * @param {entity} enemy - The enemy to be removed
+ * @param {boolean} capture - Whether to add to CapturedParty
+ * @returns {boolean} - Whether the party member was found or not
+ */
+function KDRemoveFromParty(enemy, capture) {
+	if (!KDGameData.Party) KDGameData.Party = []; // Null protection
+	if (!KDGameData.CapturedParty) KDGameData.CapturedParty = [];
+	for (let pm of (KDGameData.Party)) {
+		if (pm.id == enemy.id) {
+			KDGameData.Party.splice(KDGameData.Party.indexOf(pm), 1);
+			if (capture) {
+				//if (!enemy.hostile) { // In the future player will be able to keep as slaves
+				KDAddToCapturedParty(pm);
+				//}
+			}
+			return true;
+		}
+	}
+	return false;
+}
+
+
+
+function KDAddEntity(entity) {
+	let data = {
+		enemy: entity,
+		x: entity.x,
+		y: entity.y,
+		type: entity.Enemy,
+		typeOverride: false,
+		data: undefined,
+		loadout: undefined,
+	};
+	KinkyDungeonSendEvent("addEntity", data);
+	KDMapData.Entities.push(entity);
+	KDSetLoadout(entity, data.loadout);
+	if (!entity.data && entity.Enemy.data) entity.data = entity.Enemy.data;
+	if (data.data) {
+		if (!entity.data) entity.data = {};
+		Object.assign(entity.data, data.data);
+	}
+	KDUpdateEnemyCache = true;
+}
+function KDSpliceIndex(index, num = 1) {
+	if (KDMapData.Entities[index]) {
+		KDCommanderRoles.delete(KDMapData.Entities[index].id);
+	}
+	KDMapData.Entities.splice(index, num);
+	KDUpdateEnemyCache = true;
+}
+
+/**
+ * Removes an enemy and does some stuff like party management, etc to keep things sanitary
+ * @param {entity} enemy
+ * @param {boolean} [kill]
+ * @param {boolean} [capture]
+ * @param {boolean} [noEvent]
+ * @param {number} [forceIndex]
+ * @returns {boolean}
+ */
+function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
+	let data = {
+		enemy: enemy,
+		kill: kill,
+		capture: capture,
+		cancel: false,
+	};
+	if (!noEvent)
+		KinkyDungeonSendEvent("removeEnemy", data);
+
+	if (data.cancel) return false;
+	if (data.kill || data.capture) {
+		if (KDGameData.SpawnedPartyPrisoners && KDGameData.SpawnedPartyPrisoners[enemy.id + ""]) {
+			KDAddToCapturedParty(enemy);
+		} else {
+			KDRemoveFromParty(data.enemy, data.capture && KDGetFaction(data.enemy) == "Player");
+		}
+	}
+
+	KDSpliceIndex(forceIndex || KDMapData.Entities.indexOf(data.enemy), 1);
+	return true;
 }

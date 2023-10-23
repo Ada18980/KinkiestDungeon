@@ -386,6 +386,9 @@ function KD_PasteTile(tile, x, y, data) {
 	let tileWidth = KDTE_Scale * tile.w;
 	let tileHeight = KDTE_Scale * tile.h;
 
+	let MazeSeeds = [];
+	let MazeBlock = [];
+
 	for (let xx = 0; xx < tileWidth; xx++)
 		for (let yy = 0; yy < tileHeight; yy++) {
 			let tileTile = tile.grid[xx + yy*(tileWidth+1)];
@@ -405,6 +408,7 @@ function KD_PasteTile(tile, x, y, data) {
 		}
 	}
 
+
 	if (tile.POI)
 		for (let origPoi of tile.POI) {
 			let poi = Object.assign({}, origPoi);
@@ -418,9 +422,18 @@ function KD_PasteTile(tile, x, y, data) {
 		let xx = parseInt(tileLoc[0].split(',')[0]);
 		let yy = parseInt(tileLoc[0].split(',')[1]);
 		if (xx != undefined && yy != undefined) {
+			if (tileLoc[1].MazeSeed) {
+				MazeSeeds.push({x: xx, y: yy, seed: tileLoc[1].MazeSeed});
+			} else if (tileLoc[1].MazeBlock) {
+				MazeBlock.push({x: xx, y: yy});
+			}
 			let gennedTile = KDCreateTile(xx+x, yy+y, Object.assign({}, tileLoc[1]), data);
 			if (gennedTile)
 				KinkyDungeonTilesSet((xx + x) + "," + (yy + y), gennedTile);
+			if (tileLoc[1] && tileLoc[1].OffLimits) {
+				if (!KinkyDungeonTilesGet((xx + x) + "," + (yy + y))) KinkyDungeonTilesSet((xx + x) + "," + (yy + y), {OffLimits: true});
+				else KinkyDungeonTilesGet((xx + x) + "," + (yy + y)).OffLimits = true;
+			}
 		}
 	}
 	for (let tileLoc of Object.entries(tile.Skin)) {
@@ -448,7 +461,151 @@ function KD_PasteTile(tile, x, y, data) {
 		}
 	}
 
+	if (MazeSeeds.length > 0) {
+		for (let seed of MazeSeeds) {
+			let maze = KDGenMaze(seed.x, seed.y, tile, seed.seed, MazeBlock);
+			for (let t of maze) {
+				if (KinkyDungeonMapGet(t.x + x, t.y + y) == '1')
+					KinkyDungeonMapSet(t.x + x, t.y + y, '0');
+			}
+			let pillarToDoodad = seed.seed?.pillarToDoodad || false;
+			if (pillarToDoodad) {
+				for (let xx = 1; xx < tileWidth-1; xx++)
+					for (let yy = 1; yy < tileHeight-1; yy++) {
+						let neighbors = 0;
+						for (let xxx = -1; xxx <= 1; xxx++)
+							for (let yyy = -1; yyy <= 1; yyy++) {
+								if (!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x + xx + xxx, y + yy + yyy))) {
+									neighbors += 1;
+								}
+							}
+						if (neighbors == 1 && KinkyDungeonMapGet(x + xx, y + yy) == '1') KinkyDungeonMapSet(x + xx, y + yy, 'X');
+					}
+			}
+		}
+
+	}
+
 	return tile.tags;
+}
+
+/**
+ *
+ * @param {number} startX
+ * @param {number} startY
+ * @param {any} tile
+ * @param {any} seed
+ * @param {{x: number, y: number}[]} MazeBlock
+ * @returns {{x: number, y: number}[]}
+ */
+function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
+	let tileWidth = KDTE_Scale * tile.w;
+	let tileHeight = KDTE_Scale * tile.h;
+	let scale = seed?.scale || 1;
+	let branchchance = seed?.branchchance || 0;
+	let hbias = seed?.hbias || 0;
+	let vbias = seed?.vbias || 0;
+	let wobble = seed?.wobble || 0;
+
+	//let getGrid = (x, y) => {
+	//return tile.grid[x + y*(tileWidth+1)];
+	//};
+	let isMazeBlock = (x, y) => {
+		return tile.Tiles[x + ',' + y] && tile.Tiles[x + ',' + y].MazeBlock;
+	};
+
+	let ActivatedTiles = {};
+
+	let isValid = (x, y, allowActivated) => {
+		if (x >= 0 && y >= 0 && x+scale <= tileWidth && y+scale <= tileHeight) {
+			//if (getGrid(x, y) != '1') return false;
+			if (isMazeBlock(x, y)) return false;
+			if (!allowActivated && ActivatedTiles[x + ',' + y]) return false;
+			return true;
+		}
+		return false;
+	};
+
+
+	// Growing Tree algorithm
+	let CarvedTiles = [];
+	let ActiveTiles = [];
+
+	let chooseNext = () => {
+		if (ActiveTiles.length == 0) return null; // We are done
+		if (seed) {
+			if (seed.newest && KDRandom() < seed.newest) return ActiveTiles[ActiveTiles.length - 1];
+			if (seed.oldest && KDRandom() < seed.oldest) return ActiveTiles[0];
+		}
+		return ActiveTiles[Math.floor(KDRandom() * ActiveTiles.length)];
+	};
+
+	// xe = x_edge, ye = y_edge
+	let spread = (x, y, xe, ye) => {
+		// Carve a path if its valid
+		// Chance to merge into an existing path
+		if (isValid(x, y, KDRandom() < branchchance) && !isMazeBlock(xe, ye)) {
+			ActiveTiles.push({x: x, y: y});
+			ActivatedTiles[(x) + ',' + (y)] = true;
+			let wob = KDRandom() < wobble;
+			let wobx = Math.floor(scale*KDRandom());
+			let woby = Math.floor(scale*KDRandom());
+			for (let xx = 0; xx < scale; xx++)
+				for (let yy = 0; yy < scale; yy++)
+					if (!wob || (xx != wobx && yy != woby))
+						CarvedTiles.push({x:xx+xe, y:yy+ye});
+			return true;
+		}
+		return false;
+	};
+
+	let operate = (x, y) => {
+		for (let xx = 0; xx < scale; xx++)
+			for (let yy = 0; yy < scale; yy++)
+				CarvedTiles.push({x:xx+x, y:yy+y});
+
+		// Make a random adjacent tile valid
+		let succeed = false;
+		let options = [
+			{x: x + 2*scale, y: y, xe:x+1*scale, ye:y},
+			{x: x - 2*scale, y: y, xe:x-1*scale, ye:y},
+			{x: x, y: y+2*scale, xe:x, ye:y+1*scale},
+			{x: x, y: y-2*scale, xe:x, ye:y-1*scale},
+		];
+		while (options.length > 0) {
+			let i = Math.floor(options.length * KDRandom());
+			// Bias
+			if (hbias && options[i].x == x && options.length > 2 && KDRandom() < hbias) continue;
+			else if (vbias && options[i].y == y && options.length > 2 && KDRandom() < vbias) continue;
+			// Try all
+			if (spread(options[i].x, options[i].y, options[i].xe, options[i].ye)) {
+				succeed = true;
+				break;
+			}
+			options.splice(i, 1);
+		}
+
+		// Remove this from active tiles if no luck
+		if (!succeed) {
+			for (let t of ActiveTiles) {
+				if (t.x == x && t.y == y) ActiveTiles.splice(ActiveTiles.indexOf(t), 1); // TODO optimize
+			}
+		}
+
+
+		// Choose the next tile
+		return chooseNext();
+	};
+
+	// Start with the seed tile
+	ActiveTiles.push({x: startX, y: startY});
+	let activeTile = operate(startX, startY);
+
+	while (activeTile) {
+		activeTile = operate(activeTile.x, activeTile.y);
+	}
+
+	return CarvedTiles;
 }
 
 
@@ -577,7 +734,7 @@ let KDTileGen = {
 					NoTrap: tileGenerator.NoTrap,
 					Type: tileGenerator.Lock ? "Lock" : undefined, Lock: tileGenerator.Lock == "Red" ? KDRandomizeRedLock() : tileGenerator.Lock,
 					Loot: tileGenerator.Lock == "Blue" ? "blue" : (tileGenerator.Loot ? tileGenerator.Loot : "chest"),
-					//Faction: tileGenerator.Faction,
+					Faction: tileGenerator.Faction,
 					Roll: KDRandom(),
 					Special: tileGenerator.Lock == "Blue",
 					RedSpecial: tileGenerator.Lock?.includes("Red"),
