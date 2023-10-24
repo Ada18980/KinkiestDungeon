@@ -655,9 +655,16 @@ function KDProcessInput(type, data) {
 				let enemy = KinkyDungeonFindID(data.enemy.id);
 				enemy.gx = data.player.x;
 				enemy.gy = data.player.y;
-				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 0);
-				KinkyDungeonSetEnemyFlag(enemy, "Defensive", -1);
-				KinkyDungeonSendTextMessage(10, TextGet("KDOrderRemove").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1);
+				if (KDEnemyHasFlag(data.enemy, "NoFollow")) {
+					KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 0);
+					KinkyDungeonSetEnemyFlag(enemy, "Defensive", -1);
+					KinkyDungeonSendTextMessage(10, TextGet("KDOrderOnMe").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1);
+				} else {
+					KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
+					KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
+					KinkyDungeonSendTextMessage(10, TextGet("KDOrderDisperse").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1);
+				}
+
 			}
 			break;
 		}

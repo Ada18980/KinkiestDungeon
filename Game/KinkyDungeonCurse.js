@@ -97,7 +97,7 @@ let KDCurses = {
 		remove: (item, host) => {},
 		customInfo: (item, Curse) => {
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse)
-				.replace("RestraintName", TextGet("Restraint" + KDRestraint(item).name))
+				.replace("RestraintName", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item).name))
 				.replace("AMNT", "" + (Math.round(10 * ((KDItemDataQuery(item, "cursedDamageHP") || 0) - (KDItemDataQuery(item, "cursedDamage") || 0))) || "???")),
 			"#ffffff", 2);
 		},

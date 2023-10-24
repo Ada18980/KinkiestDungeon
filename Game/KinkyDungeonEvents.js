@@ -636,7 +636,10 @@ let KDEventMapInventory = {
 					KinkyDungeonChangeMana(-e.power);
 					KDItemDataSet(item, "manaDrained", alreadyDone);
 				}
-			} else {KDChangeItemName(item, item.type, "MagicGag2");}
+			} else {
+				KinkyDungeonChangeMana(-e.power * (e.mult || 0));
+			}
+			// else {KDChangeItemName(item, item.type, "MagicGag2");}
 		},
 		"DollmakerMask": (e, item, data) => {
 			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
@@ -1162,7 +1165,7 @@ let KDEventMapInventory = {
 				let added = false;
 				if (data.restraintsAdded) {
 					for (let r of data.restraintsAdded) {
-						if (r.name === item.name) {
+						if (r.r.name === item.name) {
 							added = true;
 							break;
 						}
@@ -1233,6 +1236,11 @@ let KDEventMapInventory = {
 					}
 				}
 			}
+		},
+	},
+	"apply": {
+		"FilterLayer": (e, item, data) => {
+			data.Filters[e.kind] = e.filter;
 		},
 	},
 	"missPlayer": {

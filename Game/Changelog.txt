@@ -14,6 +14,10 @@ Vague todo:
 - TODO add scroll to log, rep
 
 
+4.81.1 (Oct 2023)
+- Bugfixes
+- Anti-magic gags are now a variation of regular gags
+
 4.81 (Oct 2023)
 - Epicenters now scale with number of epicenters spawned, not with level
 - Added party member system (they come with you across levels, and appear in prisons if they get defeated)

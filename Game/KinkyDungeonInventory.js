@@ -642,9 +642,14 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 	if (!item) return false;
 	let name = item.name;
 	let prefix = "KinkyDungeonInventoryItem";
-	if (item.item.type == Restraint || item.item.type == LooseRestraint) prefix = "Restraint";
+	let nameText = TextGet(prefix + name);
+	if (item.item.type == Restraint || item.item.type == LooseRestraint) {
+		prefix = "Restraint";
+		nameText = KDGetItemName(item.item);
+	}
 
-	DrawTextFitKD(TextGet(prefix + name), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5, 300, "#000000", KDTextTan, undefined, undefined, 129);
+
+	DrawTextFitKD(nameText, xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5, 300, "#000000", KDTextTan, undefined, undefined, 129);
 	//let wrapAmount = KDBigLanguages.includes(TranslationLanguage) ? 9 : 22;
 	let textSplit = KinkyDungeonWordWrap(TextGet(prefix + name + "Desc"), 13*1.3, 30*1.3).split('\n');
 	let textSplit2 = KinkyDungeonWordWrap(TextGet(prefix + name + "Desc2"), 12, 28).split('\n');
@@ -1446,7 +1451,7 @@ function KinkyDungeonDrawQuickInv() {
 			if (MouseIn(630, QL_y + 70 * i, 120, 60)) {
 				for (let ii = 0; ii < 20 && ii < (KDGameData.QuickLoadouts ? (KDGameData.QuickLoadouts[i+""] ? KDGameData.QuickLoadouts[i+""].length : 0) : 0); ii++) {
 					let item = KDGameData.QuickLoadouts[i+""][ii];
-					let str = KDRestraint({name: item}) ? TextGet("Restraint" + item) : TextGet("KinkyDungeonInventoryItem" + item);
+					let str = KDRestraint({name: item}) ? KDGetRestraintNameName(item) : TextGet("KinkyDungeonInventoryItem" + item);
 					DrawTextKD(str, 770, QL_y + ii * 25, KinkyDungeonInventoryGet(item) ? "#ffffff" : "#ff5555", undefined, 22, "left");
 				}
 			}
@@ -2178,6 +2183,7 @@ function KDMorphToInventoryVariant(item, variant, prefix = "", curse) {
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
 	let newname = prefix + variant.template + KinkyDungeonGetItemID() + (curse ? curse : "");
+	if (prefix) variant.prefix = prefix;
 	if (curse) {
 		variant = JSON.parse(JSON.stringify(variant));
 		variant.curse = curse;
@@ -2210,6 +2216,7 @@ function KDGiveInventoryVariant(variant, prefix = "", curse = undefined) {
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
 	let newname = prefix + variant.template + KinkyDungeonGetItemID() + (curse ? curse : "");
+	if (prefix) variant.prefix = prefix;
 	if (curse) {
 		variant = JSON.parse(JSON.stringify(variant));
 		variant.curse = curse;
@@ -2242,6 +2249,7 @@ function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, 
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
 	let newname = prefix + variant.template + KinkyDungeonGetItemID() + (curse ? curse : "");
+	if (prefix) variant.prefix = prefix;
 	if (curse) {
 		variant = JSON.parse(JSON.stringify(variant));
 		variant.curse = curse;

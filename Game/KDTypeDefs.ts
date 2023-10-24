@@ -470,6 +470,12 @@ interface restraint extends KDRestraintProps {
 	enemyTagsMult?: Record<string, number>,
 	playerTags: Record<string, number>,
 	shrine: string[],
+	/**
+	 * A map of:
+	 * key - Name of the ApplyVariant
+	 * value - weight modifiers
+	 */
+	ApplyVariants?: Record<string, {weightMod: number, playerTags?: Record<string, number>, playerTagsMult?: Record<string, number>, playerTagsMissing?: Record<string, number>, playerTagsMissingMult?: Record<string, number>, enemyTags: Record<string, number>, enemyTagsMult?: Record<string, number>}>,
 }
 
 interface KDEscapeChanceList {
@@ -1236,6 +1242,7 @@ interface KinkyDungeonEvent {
 	msg?: string;
 	prereq?: string;
 	color?: string;
+	filter?: LayerFilter;
 	bgcolor?: string;
 	/** Vibe */
 	edgeOnly?: boolean;
@@ -2553,6 +2560,8 @@ interface KDCursedDef {
 }
 
 type KDInventoryVariant = {
+	/** Name prefix */
+	prefix?: string,
 	/** The curse to apply with this inventory variant */
 	curse?: string,
 	/** extra events added on */
@@ -2684,6 +2693,18 @@ interface KDBoobyTrap {
 	filter: (enemy: entity, x: number, y: number, checkpoint: boolean, type: string[]) => boolean;
 	weight: (enemy: entity, x: number, y: number, checkpoint: boolean, type: string[]) => number;
 	lifetime?: number;
+}
+
+interface ApplyVariant {
+	hexes: string[],
+	enchants: string[],
+	level: number,
+	powerBonus: number,
+	curse?: string,
+	noKeep?: boolean,
+	prefix?: string,
+	minfloor: number,
+	maxfloor?: number,
 }
 
 interface KDSpecialEnemyBuff {

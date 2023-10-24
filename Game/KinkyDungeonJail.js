@@ -78,11 +78,13 @@ function KinkyDungeonUpdateJailKeys() {
 }
 
 function KinkyDungeonAggroFaction(faction, noAllyRepPenalty) {
+	if (faction == "Player") return false;
 	let list = [];
 	let list2 = [];
 	for (let enemy of KDMapData.Entities) {
 		if (enemy.Enemy.tags.peaceful) continue;
 		let enemyfaction = KDGetFaction(enemy);
+		if (enemyfaction == "Player") continue;
 		if ((enemyfaction == faction || KDFactionRelation(enemyfaction, faction) > 0.4)) {
 			let dist = KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y);
 			if (KinkyDungeonCheckLOS(enemy, KinkyDungeonPlayerEntity, dist, enemy.Enemy.visionRadius, false, true)) {
@@ -99,7 +101,7 @@ function KinkyDungeonAggroFaction(faction, noAllyRepPenalty) {
 		let amount = 0.04;
 		if (list.length > 0) {
 			for (let e of list) {
-				if (!e.allied) {
+				if (!KDAllied(e)) {
 					KDMakeHostile(e);
 				}
 			}
