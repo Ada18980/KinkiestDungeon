@@ -845,9 +845,9 @@ function KinkyDungeonDrawGame() {
 
 
 	}
-	if (KDGameData.Party) {
+	if (KDGameData.Party && KinkyDungeonDrawState == "Game") {
 		let PartyX = 500;
-		let PartyY = Math.min(500, KDMinimapHeight()+41);
+		let PartyY = Math.min(500, KDMinimapHeight()+81);
 		let PartyDy = 72;
 		let PartyPad = 8;
 
@@ -875,7 +875,7 @@ function KinkyDungeonDrawGame() {
 					DrawButtonKDExTo(kdstatusboard, "PM" + i + "come", (bdata) => {
 						KDSendInput("onMe", {enemy: PM, player: KinkyDungeonPlayerEntity});
 						return true;
-					}, true, PartyX + 90, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Recall.png", undefined, false, false,
+					}, true, PartyX + 90, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + ((!KDEnemyHasFlag(PM, "NoFollow")) ? "UI/Recall.png" : "UI/Disperse.png"), undefined, false, false,
 					"#000000", undefined, undefined, {zIndex: 109,});
 
 					DrawButtonKDExTo(kdstatusboard, "PM" + i + "choose", (bdata) => {

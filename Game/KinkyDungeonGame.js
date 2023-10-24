@@ -4018,7 +4018,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 	} else {
 		let MovableTiles = KinkyDungeonGetMovable();
 		let moveObject = KinkyDungeonMapGet(moveX, moveY);
-		if (MovableTiles.includes(moveObject) && (passThroughSprint || KinkyDungeonNoEnemy(moveX, moveY) || (Enemy && Enemy.allied) || allowPass)) { // If the player can move to an empy space or a door
+		if (MovableTiles.includes(moveObject) && (passThroughSprint || KinkyDungeonNoEnemy(moveX, moveY) || (Enemy && KDAllied(Enemy)) || allowPass)) { // If the player can move to an empy space or a door
 			KDGameData.ConfirmAttack = false;
 			let quick = false;
 

@@ -1433,7 +1433,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Armor != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = TextGet("Restraint" + KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor);
 							return false;
 						},
 						options: {
@@ -1488,7 +1488,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Restraint != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = TextGet("Restraint" + KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint);
 							return false;
 						},
 						options: {
@@ -1534,7 +1534,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Collar != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = TextGet("Restraint" + KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar);
 							return false;
 						},
 						options: {
@@ -1580,7 +1580,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Catsuit != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = TextGet("Restraint" + KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit);
 							return false;
 						},
 						options: {
@@ -1780,7 +1780,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Armor != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = TextGet("Restraint" + KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor);
 							return false;
 						},
 						options: {
@@ -1834,7 +1834,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Restraint != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = TextGet("Restraint" + KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint);
 							return false;
 						},
 						options: {
@@ -1880,7 +1880,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Collar != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = TextGet("Restraint" + KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar);
 							return false;
 						},
 						options: {
@@ -1926,7 +1926,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Catsuit != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = TextGet("Restraint" + KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit);
 							return false;
 						},
 						options: {
@@ -2245,6 +2245,8 @@ let KDDialogue = {
 								KDAggroMapFaction();
 								let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
 								e.faction = "Player";
+								KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
+								KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
 								if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDMapData.MapFaction == faction)) {
 									if (KDFactionRelation("Player", faction) < 0.25)
 										KinkyDungeonChangeFactionRep(faction, 0.005);
@@ -2301,6 +2303,8 @@ let KDDialogue = {
 
 									let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
 									e.faction = "Player";
+									KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
+									KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
 									if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDMapData.MapFaction == faction)) {
 										if (KDFactionRelation("Player", faction) < 0.25)
 											KinkyDungeonChangeFactionRep(faction, 0.005);

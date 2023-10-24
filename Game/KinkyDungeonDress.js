@@ -775,6 +775,7 @@ function KDApplyItem(inv, tags) {
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
 		let faction = inv.faction ? inv.faction : "";
 
+		// TODO faction color system
 		let color = (typeof restraint.Color === "string") ? [restraint.Color] : restraint.Color;
 		if (restraint.factionColor && faction && KinkyDungeonFactionColors[faction]) {
 			for (let i = 0; i < restraint.factionColor.length; i++) {
@@ -784,6 +785,13 @@ function KDApplyItem(inv, tags) {
 			}
 		}
 
+
+		let data = {
+			Filters: restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters || {},
+			faction: faction,
+		};
+		KinkyDungeonSendEvent("apply", data);
+
 		//let already = InventoryGet(KinkyDungeonPlayer, AssetGroup);
 		//let difficulty = already?.Property?.Difficulty || 0;
 
@@ -791,7 +799,7 @@ function KDApplyItem(inv, tags) {
 		let placed = null;
 
 		if (!restraint.armor || KDToggles.DrawArmor) {
-			placed = KDAddModel(KinkyDungeonPlayer, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], color, restraint.Filters, inv);
+			placed = KDAddModel(KinkyDungeonPlayer, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], color, data.Filters, inv);
 		}
 
 		if (placed) {
@@ -841,6 +849,12 @@ function KDApplyItemLegacy(inv, tags) {
 			}
 		}
 
+		let data = {
+			color: color,
+			faction: faction,
+		};
+		KinkyDungeonSendEvent("legacyApply", data);
+
 		//let already = InventoryGet(KinkyDungeonPlayer, AssetGroup);
 		//let difficulty = already?.Property?.Difficulty || 0;
 
@@ -848,7 +862,7 @@ function KDApplyItemLegacy(inv, tags) {
 		let placed = null;
 
 		if (!restraint.armor || KDToggles.DrawArmor) {
-			placed = KDAddAppearance(KinkyDungeonPlayer, AssetGroup, AssetGet("3DCGFemale", AssetGroup, restraint.Asset), color, undefined, undefined, undefined, inv);
+			placed = KDAddAppearance(KinkyDungeonPlayer, AssetGroup, AssetGet("3DCGFemale", AssetGroup, restraint.Asset), data.color, undefined, undefined, undefined, inv);
 		}
 
 		if (placed) {
@@ -871,9 +885,9 @@ function KDApplyItemLegacy(inv, tags) {
 			}*/
 
 			if (restraint.Modules) {
-				let data = ModularItemDataLookup[AssetGroup + restraint.Asset];
-				let asset = data.asset;
-				let modules = data.modules;
+				let D = ModularItemDataLookup[AssetGroup + restraint.Asset];
+				let asset = D.asset;
+				let modules = D.modules;
 				placed.Property = ModularItemMergeModuleValues({ asset, modules }, restraint.Modules);
 				placed.Property.LockedBy = inv.lock ? "MetalPadlock" : undefined;
 			} else if (type) TypedItemSetOptionByName(KinkyDungeonPlayer, placed, type, false);

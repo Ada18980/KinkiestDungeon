@@ -914,7 +914,7 @@ function KinkyDungeonDrawInputs() {
 						//if (d != item)//KDRestraint(item) && (!KDRestraint(item).UnLink || d.name != KDRestraint(item).UnLink))
 						//{
 						drawn = true;
-						let msg = TextGet("Restraint" + d.name);
+						let msg = KDGetItemName(d);//TextGet("Restraint" + d.name);
 						DrawTextKD(msg, 530, MY + O * lineSize, d == item ? "#ffffff" : (surfaceItems.includes(d) ? "#999999" : "#aa5555"), "#333333", fontSize, "left", 150);
 						O++;
 						//}
@@ -946,7 +946,7 @@ function KinkyDungeonDrawInputs() {
 					let drawn = false;
 					for (let s of strictItems) {
 						drawn = true;
-						let msg = TextGet("Restraint" + s);
+						let msg = KDGetRestraintNameName(s);//TextGet("Restraint" + s);
 						DrawTextKD(msg, 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left");
 						O++;
 					}
@@ -967,12 +967,11 @@ function KinkyDungeonDrawInputs() {
 
 
 			let color = "#ffffff";
-			let locktext = "";
 			if (item && (item.lock || (KDGetCurse(item) && KDCurses[KDGetCurse(item)].lock))) {color = "#ffaadd";}
 
-			let GroupText = (sg.name && item) ? ("Restraint" + item.name) : ("KinkyDungeonGroup"+ sg.group); // The name of the group to draw.
+			let GroupText = (sg.name && item) ? (KDGetItemName(item)) : ( TextGet("KinkyDungeonGroup"+ sg.group)); // The name of the group to draw.
 
-			DrawTextFitKD(TextGet(GroupText) + locktext, x + ((!sg.left) ? ButtonWidth - (drawLayers ? ButtonWidth : 0) : 0), y-24, 240 - (drawLayers ? ButtonWidth : 0), color, "#333333", undefined, sg.left ? "left" : "right");
+			DrawTextFitKD(GroupText, x + ((!sg.left) ? ButtonWidth - (drawLayers ? ButtonWidth : 0) : 0), y-24, 240 - (drawLayers ? ButtonWidth : 0), color, "#333333", undefined, sg.left ? "left" : "right");
 
 			if (drawLayers) {
 				DrawButtonKDEx("surfaceItems"+sg.group, (bdata) => {

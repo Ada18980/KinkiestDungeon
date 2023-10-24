@@ -493,13 +493,13 @@ let KDPlayerEffects = {
  * @param {string} faction
  * @param {boolean} [noDeep]
  * @param {boolean} [bypass] - Bypass inaccessible things
- * @returns {restraint[]}
+ * @returns {{r:restraint, v: ApplyVariant}[]}
  */
 function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, allowEvade = false, allowBlock = false, allowBondageResist = true) {
 	let restraintsToAdd = [];
 	let player = KinkyDungeonPlayerEntity;
 	for (let i = 0; i < count; i++) {
-		let restraintAdd = KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel + (spell?.power || 0), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+		let restraintAdd = KDGetRestraintWithVariants({tags: tags}, MiniGameKinkyDungeonLevel + (spell?.power || 0), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 
 		if (restraintAdd) {
 			let playerEvasion = allowEvade ? KinkyDungeonPlayerEvasion() : 0;

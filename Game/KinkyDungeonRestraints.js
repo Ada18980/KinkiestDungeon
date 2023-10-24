@@ -2604,8 +2604,10 @@ let KDNoOverrideTags = [
  * @param {string[]} [augmentedInventory]
  * @param {object} [options]
  * @param {boolean} [options.dontAugmentWeight]
+ * @param {boolean} [options.ApplyVariants]
+ * @param {boolean} [options.dontPreferVariant]
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
- * @returns {{restraint: restraint, weight: number}[]}
+ * @returns {{restraint: restraint, variant?: ApplyVariant, weight: number}[]}
  */
 function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, filterEps = 0.9, minWeightFallback = true, useAugmented = false, augmentedInventory = undefined, options) {
 	let RestraintsList = [];
@@ -2666,6 +2668,8 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 		}
 	}
 
+	let add = false;
+	let addedVar = false;
 	for (let r of cache) {
 		let restraint = r.r;
 		if (filter) {
@@ -2680,8 +2684,12 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 			if (filter.require && !filter.require.includes(r.r.name)) continue;
 		}
 		if ((!LeashingOnly || (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints"))
-			&& (!RequireWill || !restraint.maxwill || willPercent <= restraint.maxwill || (LeashingOnly && (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints"))))
+			&& (!RequireWill || !restraint.maxwill || willPercent <= restraint.maxwill || (LeashingOnly && (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints")))) {
+
+			add = false;
+			addedVar = false;
 			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse, augmentedInventory)) {
+
 				if (restraint.playerTags)
 					for (let tag in restraint.playerTags)
 						if ((!agnostic || KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) r.w += restraint.playerTags[tag];
@@ -2702,18 +2710,64 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 					r.w *= mult;
 				}
 
-				if (r.w > 0 && (r.w > filterEps))
-					RestraintsList.push({
-						restraint: restraint,
-						weight: r.w,
-					});
+				if (r.w > 0 && (r.w > filterEps)) {
+					add = true;
+				}
 			}
+
+			if (options?.ApplyVariants && restraint.ApplyVariants) {
+				for (let variant of Object.entries(restraint.ApplyVariants)) {
+					if (Level >= KDApplyVariants[variant[0]].minfloor && !(Level >= KDApplyVariants[variant[0]].maxfloor) && (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse, augmentedInventory,
+						KDApplyVariants[variant[0]].powerBonus))) {
+
+						let w = r.w + (variant[1].weightMod || 0);
+
+						if (variant[1].enemyTags)
+							for (let tag in variant[1].enemyTags)
+								if (tags.get(tag)) w += variant[1].enemyTags[tag];
+
+						if (variant[1].enemyTagsMult)
+							for (let tag in variant[1].enemyTagsMult)
+								if (tags.get(tag)) w *= variant[1].enemyTagsMult[tag];
+
+						if (variant[1].playerTags)
+							for (let tag in variant[1].playerTags)
+								if ((!agnostic || KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) w += variant[1].playerTags[tag];
+						if (variant[1].playerTagsMult)
+							for (let tag in variant[1].playerTagsMult)
+								if ((!agnostic || KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) w *= variant[1].playerTagsMult[tag];
+						if (variant[1].playerTagsMissing)
+							for (let tag in variant[1].playerTagsMissing)
+								if ((!agnostic || KDNoOverrideTags.includes(tag)) && !KinkyDungeonPlayerTags.get(tag)) w += variant[1].playerTagsMissing[tag];
+						if (variant[1].playerTagsMissingMult)
+							for (let tag in variant[1].playerTagsMissingMult)
+								if ((!agnostic || KDNoOverrideTags.includes(tag)) && !KinkyDungeonPlayerTags.get(tag)) w *= variant[1].playerTagsMissingMult[tag];
+
+						if (r.w > 0 && (r.w > filterEps)) {
+							addedVar = true;
+							RestraintsList.push({
+								restraint: restraint,
+								variant: KDApplyVariants[variant[0]],
+								weight: w,
+							});
+						}
+					}
+				}
+			}
+
+			if (add && (!addedVar || options?.dontPreferVariant)) {
+				RestraintsList.push({
+					restraint: restraint,
+					weight: r.w,
+				});
+			}
+		}
 	}
 
 	if (minWeightFallback && RestraintsList.length == 0) {
 		return KDGetRestraintsEligible(
 			enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack,
-			extraTags, agnostic, filter, securityEnemy, curse, 0, false, useAugmented, augmentedInventory);
+			extraTags, agnostic, filter, securityEnemy, curse, 0, false, useAugmented, augmentedInventory, options);
 	}
 
 	return RestraintsList;
@@ -2737,6 +2791,8 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
  * @param {string[]} [augmentedInventory] -
  * @param {object} [options]
  * @param {boolean} [options.dontAugmentWeight]
+ * @param {boolean} [options.ApplyVariants]
+ * @param {boolean} [options.dontPreferVariant]
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns
  */
@@ -2759,6 +2815,54 @@ function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill
 	for (let L = restraintWeights.length - 1; L >= 0; L--) {
 		if (selection > restraintWeights[L].weight) {
 			return restraintWeights[L].restraint;
+		}
+	}
+}
+
+/**
+ *
+ * @param {KDHasTags} enemy
+ * @param {*} Level
+ * @param {*} Index
+ * @param {*} Bypass
+ * @param {*} Lock
+ * @param {*} RequireWill
+ * @param {*} LeashingOnly
+ * @param {*} NoStack
+ * @param {*} extraTags
+ * @param {*} agnostic - Determines if playertags and current bondage are ignored
+ * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
+ * @param {string} [curse] - Planning to add this curse
+ * @param {boolean} [useAugmented] - useAugmented
+ * @param {string[]} [augmentedInventory] -
+ * @param {object} [options]
+ * @param {boolean} [options.dontAugmentWeight]
+ * @param {boolean} [options.ApplyVariants]
+ * @param {boolean} [options.dontPreferVariant]
+ * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
+ * @returns {{r: restraint, v: ApplyVariant}}
+ */
+function KDGetRestraintWithVariants(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, useAugmented, augmentedInventory, options) {
+	let restraintWeightTotal = 0;
+	let restraintWeights = [];
+
+	if (!options) options = {ApplyVariants: true,};
+	else options.ApplyVariants = true;
+	let Restraints = KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, undefined, undefined, useAugmented, augmentedInventory, options);
+
+	for (let rest of Restraints) {
+		let restraint = rest.restraint;
+		let weight = rest.weight;
+		restraintWeights.push({restraint: restraint, variant: rest.variant, weight: restraintWeightTotal});
+		weight += rest.weight;
+		restraintWeightTotal += Math.max(0, weight);
+	}
+
+	let selection = KDRandom() * restraintWeightTotal;
+
+	for (let L = restraintWeights.length - 1; L >= 0; L--) {
+		if (selection > restraintWeights[L].weight) {
+			return {r: restraintWeights[L].restraint, v: restraintWeights[L].variant};
 		}
 	}
 }
@@ -2913,9 +3017,10 @@ function KDGetLockVisual(item) {
  * @param {boolean} [useAugmentedPower] - Bypass is treated separately for these groups
  * @param {string} [curse] - Bypass is treated separately for these groups
  * @param {string[]} [augmentedInventory]
+ * @param {number} [powerBonus]
  * @returns {boolean} - Restraint can be added
  */
-function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpower, securityEnemy, useAugmentedPower, curse, augmentedInventory) {
+function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpower, securityEnemy, useAugmentedPower, curse, augmentedInventory, powerBonus = 0) {
 	if (!curse && restraint.curse) curse = restraint.curse;
 	if (restraint.bypass) Bypass = true;
 	// Limits
@@ -2939,7 +3044,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 		if (!pass) return false;
 	}
 	if (!r) r = KinkyDungeonGetRestraintItem(restraint.Group);
-	let power = KinkyDungeonRestraintPower(r, false, restraint) * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1);
+	let power = powerBonus + (KinkyDungeonRestraintPower(r, false, restraint) * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1));
 	let linkUnder = KDGetLinkUnder(r, restraint, Bypass, NoStack, Deep, securityEnemy);
 
 	let linkableCurrent = r && KDRestraint(r) && KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
@@ -2966,7 +3071,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 		|| linkableCurrent
 		// We are weak enough to override
 		|| (!KDRestraint(r).enchanted
-			&& (!noOverpower && power < restraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1) * KinkyDungeonGetLockMult(newLock, undefined, curse)))
+			&& (!noOverpower && power < (curse ? (KDCursePower(curse)) : 0) + restraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1) * KinkyDungeonGetLockMult(newLock, undefined, curse)))
 	) {
 		if (bypasses())
 			return true; // Recursion!!
@@ -3061,6 +3166,28 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
 }
 
 /**
+ *
+ * @param {restraint} restraint
+ * @param {ApplyVariant} variant
+ * @returns {KDInventoryVariant}
+ */
+function KDApplyVarToInvVar(restraint, variant) {
+	let events = [];
+	for (let e of variant.hexes) {
+		events.push(...JSON.parse(JSON.stringify(KDEventHexModular[e].events)));
+	}
+	for (let e of variant.enchants) {
+		events.push(...JSON.parse(JSON.stringify(KDEventEnchantmentModular[e].events)));
+	}
+	return {
+		template: restraint.name,
+		events: events,
+		curse: variant.curse,
+		noKeep: variant.noKeep,
+	};
+}
+
+/**
  * @param {restraint | string} restraint
  * @param {number} [Tightness]
  * @param {boolean} [Bypass]
@@ -3076,15 +3203,22 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
  * @param {string} [inventoryAs] - inventoryAs for the item
  * @param {string[]} [augmentedInventory]
  * @param {Record<string, any>} [data] - data for the item
+ * @param {ApplyVariant} [variant] - variant for the item
  * @returns {number}
  */
-function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs, data, augmentedInventory) {
+function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs, data, augmentedInventory, variant) {
 	if (typeof restraint === "string") {
 		KDRestraintDebugLog.push("Lookup" + restraint);
 		restraint = KinkyDungeonGetRestraintByName(restraint);
 	} else {
 		KDRestraintDebugLog.push("AddWeaker" + restraint.name);
 	}
+
+	if (variant) {
+		return KDEquipInventoryVariant(KDApplyVarToInvVar(restraint, variant),
+			variant.prefix, Tightness, Bypass, Lock, Keep, Trapped, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs);
+	}
+
 	if (restraint.bypass) Bypass = true;
 	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep, false, securityEnemy, (useAugmentedPower == undefined && securityEnemy != undefined) || useAugmentedPower, Curse, augmentedInventory)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
@@ -3140,7 +3274,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
  */
 function KinkyDungeonIsLinkable(oldRestraint, newRestraint, item, ignoreItem, linkUnderItem) {
 	if (newRestraint.NoLinkOver) return false;
-	if (!oldRestraint.nonbinding && newRestraint.nonbinding) return false;
+	//if (!oldRestraint.nonbinding && newRestraint.nonbinding) return false;
 	if (oldRestraint && newRestraint && oldRestraint && oldRestraint.Link) {
 		if (newRestraint.name == oldRestraint.Link) return true;
 	}
@@ -4345,3 +4479,35 @@ function KDGetInventoryVariant(item) {
 }
 
 let KDRestraintDebugLog = [];
+
+/**
+ *
+ * @param {item} item
+ */
+function KDGetItemName(item) {
+	let base = TextGet("Restraint" + KDRestraint(item).name);
+	let variant = KinkyDungeonInventoryVariants[item.inventoryAs || item.name];
+	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
+	return base;
+}
+/**
+ *
+ * @param {restraint} restraint
+ * @param {ApplyVariant} [variant]
+ */
+function KDGetRestraintName(restraint, variant) {
+	let base = TextGet("Restraint" + restraint.name);
+	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
+	return base;
+}
+/**
+ *
+ * @param {string} name
+ */
+function KDGetRestraintNameName(name) {
+	let base = TextGet("Restraint" + name);
+	//let variant = KinkyDungeonInventoryVariants[item.inventoryAs || item.name];
+	//if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
+	return base;
+}
+

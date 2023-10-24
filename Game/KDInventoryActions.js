@@ -253,7 +253,7 @@ let KDInventoryAction = {
 					KDTieUpEnemy(enemy, level*mult, type);
 					KinkyDungeonSendTextMessage(10,
 						TextGet("KDTieUpEnemy")
-							.replace("RSTR", TextGet("Restraint" + KDRestraint(item)?.name))
+							.replace("RSTR", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item)?.name))
 							.replace("ENNME", TextGet("Name" + enemy.Enemy.name))
 							.replace("AMNT", "" + Math.round(100 * enemy.boundLevel / enemy.Enemy.maxhp)),
 						"#ffffff", 1);

@@ -500,12 +500,14 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						if (!enemy.Enemy.allied) {
-							KDMakeHostile(enemy);
 							let faction = KDGetFactionOriginal(enemy);
-							if (!KinkyDungeonHiddenFactions.includes(faction) && !enemy.Enemy.tags?.scenery) {
+							if (faction == "Player") {
+								enemy.faction = "Enemy"; // They become an enemy
+							} else if (!KinkyDungeonHiddenFactions.includes(faction) && !enemy.Enemy.tags?.scenery) {
 								KinkyDungeonChangeRep("Ghost", -5);
 								KinkyDungeonChangeFactionRep(faction, -0.06);
 							}
+							KDMakeHostile(enemy);
 						} else {
 							enemy.hp = 0;
 						}
@@ -984,7 +986,8 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 			if (KDGameData.Party?.length >= KDGameData.MaxParty) return false;
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				return KDAllied(enemy) && !KDIsInParty(enemy);
+				return KDAllied(enemy) && !KDIsInParty(enemy) && !KDEnemyHasFlag(enemy, "shop") && !enemy.Enemy.tags?.peaceful && !enemy.Enemy.allied;
+				// No shopkeepers, noncombatants, or summons...
 			}
 			return false;
 		},
@@ -1237,13 +1240,6 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance, item
 			}
 			for (let i = 0; i < items.length; i++) {
 				let item = items[i];
-				/*if (KinkyDungeonGetRestraintByName(item)) {
-					KDGameData.CurrentDialogMsgData["Item"+i] = TextGet("Restraint" + item);
-					let power = KinkyDungeonGetRestraintByName(item).power;
-					if (!power || power < 1) power = 1;
-					KDGameData.CurrentDialogMsgValue["ItemCost"+i] = 5 * Math.round(bonus * (KinkyDungeonGetRestraintByName(item).value || (10 + 2 * Math.pow(power, 1.5)))/5);
-					KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];
-				} else {*/
 				KDGameData.CurrentDialogMsgData["Item"+i] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
 				KDGameData.CurrentDialogMsgValue["ItemCost"+i] = Math.round(Math.min(bonus, 3.0) * KinkyDungeonItemCost(KinkyDungeonGetRestraintByName(item) || (KinkyDungeonFindConsumable(item) ? KinkyDungeonFindConsumable(item) : KinkyDungeonFindWeapon(item)), true, true));
 				KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];
@@ -1356,13 +1352,6 @@ function KDShopBuyDialogue(name) {
 			for (let i = 0; i < items.length; i++) {
 				let item = items[i];
 				let itemMult = shopCost;
-				/*if (KinkyDungeonGetRestraintByName(item)) {
-					KDGameData.CurrentDialogMsgData["ITM"+i] = TextGet("Restraint" + item);
-					let power = KinkyDungeonGetRestraintByName(item).power;
-					if (!power || power < 1) power = 1;
-					KDGameData.CurrentDialogMsgValue["IC"+i] = 5 * Math.round(itemMult * (KinkyDungeonGetRestraintByName(item).value || (10 + 2 * Math.pow(power, 1.5)))/5);
-					KDGameData.CurrentDialogMsgData["IC"+i] = "" + KDGameData.CurrentDialogMsgValue["IC"+i];
-				} else {*/
 				KDGameData.CurrentDialogMsgData["ITM"+i] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
 				KDGameData.CurrentDialogMsgValue["IC"+i] = Math.round(itemMult *
 					KinkyDungeonItemCost(KinkyDungeonGetRestraintByName(item) || (KinkyDungeonFindConsumable(item) ? KinkyDungeonFindConsumable(item) : KinkyDungeonFindWeapon(item))));
@@ -1483,13 +1472,6 @@ function KDShopBuyDialogue(name) {
 					for (let ii = 0; ii < enemy.items.length; ii++) {
 						item = enemy.items[ii];
 						let itemMult = shopCost;
-						/*if (KinkyDungeonGetRestraintByName(item)) {
-							KDGameData.CurrentDialogMsgData["ITM"+ii] = TextGet("Restraint" + item);
-							let power = KinkyDungeonGetRestraintByName(item).power;
-							if (!power || power < 1) power = 1;
-							KDGameData.CurrentDialogMsgValue["IC"+ii] = 5 * Math.round(itemMult * (KinkyDungeonGetRestraintByName(item).value || (10 + 2 * Math.pow(power, 1.5)))/5);
-							KDGameData.CurrentDialogMsgData["IC"+ii] = "" + KDGameData.CurrentDialogMsgValue["IC"+ii];
-						} else {*/
 						KDGameData.CurrentDialogMsgData["ITM"+ii] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
 						KDGameData.CurrentDialogMsgValue["IC"+ii] = Math.round(itemMult *
 							KinkyDungeonItemCost(KinkyDungeonGetRestraintByName(item) || (KinkyDungeonFindConsumable(item) ? KinkyDungeonFindConsumable(item) : KinkyDungeonFindWeapon(item))));
@@ -1695,7 +1677,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 			if (r) {
 				KDGameData.CurrentDialogMsgData = {
 					"Data_r": r.name,
-					"RESTRAINT": TextGet("Restraint" + r.name),
+					"RESTRAINT": KDGetRestraintName(r),
 				};
 
 				// Percent chance your dominant action ("Why don't you wear it instead?") succeeds
@@ -1835,13 +1817,6 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup, 
 			}*/
 			for (let i = 0; i < items.length; i++) {
 				let item = items[i];
-				/*if (KinkyDungeonGetRestraintByName(item)) {
-					KDGameData.CurrentDialogMsgData["Item"+i] = TextGet("Restraint" + item);
-					let power = KinkyDungeonGetRestraintByName(item).power;
-					if (!power || power < 1) power = 1;
-					KDGameData.CurrentDialogMsgValue["ItemCost"+i] = 5 * Math.round((KinkyDungeonGetRestraintByName(item).value || (10 + 2 * Math.pow(power, 1.5)))/5);
-					KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];
-				} else {*/
 				KDGameData.CurrentDialogMsgData["Item"+i] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
 				KDGameData.CurrentDialogMsgValue["ItemCost"+i] = Math.round(KinkyDungeonItemCost(KinkyDungeonGetRestraintByName(item) || (KinkyDungeonFindConsumableOrBasic(item) ? KinkyDungeonFindConsumableOrBasic(item) : KinkyDungeonFindWeapon(item))) * markup);
 				KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];

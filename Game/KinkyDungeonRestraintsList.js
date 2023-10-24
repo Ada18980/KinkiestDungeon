@@ -495,6 +495,12 @@ const KinkyDungeonRestraints = [
 		factionColor: [[2], [1], [0]],
 		maxwill: 0.75, escapeChance: {"Struggle": -0.4, "Cut": -0.2, "Remove": 0.05, "Pick": -0.1},
 		enemyTags: {"cyberdollrestraints" : 10},
+		ApplyVariants: {
+			"AntiMagic": {
+				weightMod: 0,
+				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+			},
+		},
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagRemoveBlindfold", inheritLinked: true,StruggleType: "Remove", power: 0.35, requiredTag: "Blindfolds"},
@@ -701,6 +707,12 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, name: "LatexBallGag", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "BallGag", gag: 0.75, Color: ["#4EA1FF", "Default"], Type: "Tight", Group: "ItemMouth", power: 7, weight: 0, escapeChance: {"Struggle": -0.05, "Cut": 0.04, "Remove": 0.4, "Pick": 0.25},
 		Model: "BallGag",
+		ApplyVariants: {
+			"AntiMagic": {
+				weightMod: 0,
+				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+			},
+		},
 		maxwill: 0.8, enemyTags: {"latexRestraints" : 3, "latexGag" : 10, "jailRestraints": 1}, playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Gags", "BallGags"]},
 
 	{inventory: true, name: "LatexOTNGag", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], factionColor: [[0], [0], [0]], Asset: "KittyGag", gag: 0.5, Color: ["#4EA1FF", "#4EA1FF", "#4EA1FF"], Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 4, weight: -6, escapeChance: {"Struggle": 0.05, "Cut": 0.18, "Remove": 0.1},
@@ -750,6 +762,12 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.8, enemyTags: {"redLatexBasic":6}, playerTags: {"ItemMouthFull": 6}, minLevel: 0, allFloors: true, shrine: ["Latex", "RedLatex", "Gags", "FlatGags"]},
 	{inventory: true, unlimited: true, name: "RedLatexBallGag", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "BallGag", gag: 0.75, Color: ["#ff5277", "#882222"],
 		Model: "BallGag",
+		ApplyVariants: {
+			"AntiMagic": {
+				weightMod: 0,
+				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+			},
+		},
 		Type: "Tight", Group: "ItemMouth", power: 6, weight: 0, escapeChance: {"Struggle": -0.1, "Cut": -0.1, "Remove": -0.1},
 		maxwill: 0.8, enemyTags: {"redLatexBasic" : 5}, playerTags: {"latexAnger": 2, "latexRage": 2}, minLevel: 0, allFloors: true, shrine: ["Latex", "RedLatex", "Gags", "BallGags"]},
 
@@ -803,6 +821,12 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagRemoveBlindfold", inheritLinked: true,StruggleType: "Remove", power: 0.35, requiredTag: "Blindfolds"},
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagStruggleBlindfold", inheritLinked: true,StruggleType: "Struggle", power: 0.25, requiredTag: "Blindfolds"},
 		],
+		ApplyVariants: {
+			"AntiMagic": {
+				weightMod: 0,
+				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+			},
+		},
 		Color: ['#5edc73', '#428E4F', '#6E6E6E', '#FFFFFF', '#000000'], Group: "ItemMouth", power: 9, weight: 0,
 		maxwill: 0.75, escapeChance: {"Struggle": -0.3, "Cut": 0.0, "Remove": 0.05, "Pick": 0.2},
 		enemyTags: {"wolfRestraints" : 8}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Gags", "BallGags", "Metal"]},
@@ -838,6 +862,12 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagRemoveBlindfold", inheritLinked: true,StruggleType: "Remove", power: 0.35, requiredTag: "Blindfolds"},
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagStruggleBlindfold", inheritLinked: true,StruggleType: "Struggle", power: 0.25, requiredTag: "Blindfolds"},
 		],
+		ApplyVariants: {
+			"AntiMagic": {
+				weightMod: 0,
+				enemyTags: {antiMagic: 6, dressRestraints: 2},
+			},
+		},
 		gag: 0.65, Type: "Tight", Color: ["#8762c7", "Default"], Group: "ItemMouth", power: 8, strictness: 0.2, weight: 5, magic: true,
 		escapeChance: {"Struggle": -0.2, "Cut": 0.2, "Remove": 0.2, "Pick": 0.2},
 		maxwill: 0.6, enemyTags: {"dressRestraints":3}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["Rope", "Gags", "BallGags"]},
@@ -1163,6 +1193,12 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagRemoveBlindfold", inheritLinked: true,StruggleType: "Remove", power: 0.35, requiredTag: "Blindfolds"},
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagStruggleBlindfold", inheritLinked: true,StruggleType: "Struggle", power: 0.25, requiredTag: "Blindfolds"},
 		],
+		ApplyVariants: {
+			"AntiMagic": {
+				weightMod: 0,
+				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+			},
+		},
 		strictness: 0.2, gag: 0.65, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", power: 8, weight: 2,
 		escapeChance: {"Struggle": -0.25, "Cut": -0.05, "Remove": 0.18, "Pick": 0.25}, enemyTags: {"ballGagRestraints" : 4, "gagSpell": 100}, playerTags: {}, minLevel: 5, allFloors: true, shrine: ["Leather", "Latex", "Gags", "BallGags"]},
 	{renderWhenLinked: [...KDLegbinderRender], inventory: true, name: "HighsecLegbinder", debris: "Belts", Asset: "LegBinder", inaccessible: true, LinkableBy: [...KDLegbinderLink], Color: "Default", Group: "ItemLegs", blockfeet: true,
@@ -1211,6 +1247,12 @@ const KinkyDungeonRestraints = [
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Harnesses"]},
 	{inventory: true, trappable: true, name: "TrapGag", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], Asset: "BallGag",
 		Model: "BallGag",
+		ApplyVariants: {
+			"AntiMagic": {
+				weightMod: 0,
+				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+			},
+		},
 		factionColor: [[], [0]], gag: 0.35, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", power: 3, weight: 2,
 		maxwill: 0.6, escapeChance: {"Struggle": 0.25, "Cut": 0.45, "Remove": 0.3, "Pick": 0.4}, enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "gagSpell": 8}, playerTags: {}, minLevel: 0, allFloors: true,
 		shrine: ["Leather", "Latex", "Gags", "BallGags"]},
@@ -1451,11 +1493,23 @@ const KinkyDungeonRestraints = [
 	// Generic ball gag thats stronger than the trap one
 	{inventory: true, name: "MagicGag", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], gag: 0.35,
 		Model: "BallGag",
+		ApplyVariants: {
+			"AntiMagic": {
+				weightMod: 0,
+				enemyTags: {antiMagic: 20, ballGagRestraintsMagic: 2},
+			},
+		},
 		Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", DefaultLock: "Red", power: 3, weight: 2,
 		escapeChance: {"Struggle": 0.0, "Cut": 0.45, "Remove": 0.65, "Pick": 0.3},
 		maxwill: 0.9, enemyTags: {"ballGagRestraints" : 4, "gagSpell": 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Gags", "BallGags"]},
 	{inventory: true, name: "MagicGag2", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]],
 		Model: "BallGag",
+		ApplyVariants: {
+			"AntiMagic": {
+				weightMod: 0,
+				enemyTags: {antiMagic: 20, ballGagRestraintsMagic: 2},
+			},
+		},
 		gag: 0.45, Type: "Tight", Color: ["Default", "#ff00ff"], Group: "ItemMouth", DefaultLock: "Purple", magic: true, power: 5, weight: 2,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.12, "Remove": 0.45, "Pick": 0.25},
 		enemyTags: {"ballGagRestraintsMagic" : 4, "gagSpellStrong": 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Gags", "BallGags", "Conjure"]},
@@ -1469,7 +1523,8 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 8, power: 0.4},
 		],
-		enemyTags: {"ballGagRestraintsMagic" : 2, "antiMagic": 6}, playerTags: {}, minLevel: 3, maxLevel: 7, allFloors: true, shrine: ["Illusion", "Leather", "Gags", "BallGags", "Conjure"]},
+		//"ballGagRestraintsMagic" : 2, "antiMagic": 6
+		enemyTags: {}, playerTags: {}, minLevel: 3, maxLevel: 7, allFloors: true, shrine: ["Illusion", "Leather", "Gags", "BallGags", "Conjure"]},
 	{inventory: true, name: "AntiMagicGag2", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
 		Model: "BallGag",
 		Filters: {
@@ -1480,7 +1535,8 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 30, power: 0.4},
 		],
-		enemyTags: {"ballGagRestraintsMagic" : 0.3, "antiMagic": 2}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Illusion", "Latex", "Gags", "BallGags", "Conjure"]},
+		//"ballGagRestraintsMagic" : 0.3, "antiMagic": 2
+		enemyTags: {}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Illusion", "Latex", "Gags", "BallGags", "Conjure"]},
 
 	// Generic stronger gag
 	{inventory: true, trappable: true, name: "PanelGag", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Asset: "DeepthroatGag", gag: 0.7,
@@ -1503,6 +1559,12 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagRemoveBlindfold", inheritLinked: true,StruggleType: "Remove", power: 0.15, requiredTag: "Blindfolds"},
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagStruggleBlindfold", inheritLinked: true,StruggleType: "Struggle", power: 0.1, requiredTag: "Blindfolds"},
 		],
+		ApplyVariants: {
+			"AntiMagic": {
+				weightMod: 0,
+				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+			},
+		},
 		gag: 0.65, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", power: 4, strictness: 0.2, weight: 3,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.25, "Remove": 0.15, "Pick": 0.2},
 		maxwill: 0.6, enemyTags: {"leatherRestraints":1, "leatherRestraintsHeavy": 1, "ropeAuxiliary": 8, "leatherGags": 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Gags", "BallGags"]},
@@ -1861,8 +1923,10 @@ const KinkyDungeonRestraints = [
 
 	// End magnetic cuffs
 
-	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "ScaleArmCuffs", debris: "Belts", accessible: true, Asset: "LeatherCuffs", linkCategory: "Cuffs", linkSize: 0.55, LinkableBy: [...KDDevices,...KDBindable], Link: "ScaleArmCuffs2", Color: ["#9B1818", "#675F50"], Group: "ItemArms", bindarms: false, power: 7, weight: 0,
-		escapeChance: {"Struggle": -0.2, "Cut": -0.05, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"dragonRestraints":1}, playerTags: {"ItemArmsFull":2}, minLevel: 7, allFloors: true, shrine: ["Leather", "Cuffs", "ArmCuffsBase"],
+	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "ScaleArmCuffs", debris: "Belts", accessible: true, Asset: "LeatherCuffs", linkCategory: "Cuffs", linkSize: 0.55,
+		LinkableBy: [...KDDevices,...KDBindable], Link: "ScaleArmCuffs2", Color: ["#9B1818", "#675F50"], Group: "ItemArms", bindarms: false, power: 7, weight: 0,
+		escapeChance: {"Struggle": -0.2, "Cut": -0.05, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"dragonRestraints":1}, playerTags: {"ItemArmsFull":2},
+		minLevel: 7, allFloors: true, shrine: ["Leather", "Cuffs", "ArmCuffsBase"],
 		maxwill: 0.7, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "defeat", type: "linkItem", chance: 1.0}]},
 	{name: "ScaleArmCuffs2", debris: "Belts", accessible: true, Asset: "LeatherCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "ScaleArmCuffs3", UnLink: "ScaleArmCuffs", Color: ["#9B1818", "#675F50"], Group: "ItemArms", bindarms: true, power: 7, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": -0.15, "Remove": 0.2, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Leather", "Cuffs"],
@@ -1962,6 +2026,12 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagRemoveBlindfold", inheritLinked: true,StruggleType: "Remove", power: 0.35, requiredTag: "Blindfolds"},
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagStruggleBlindfold", inheritLinked: true,StruggleType: "Struggle", power: 0.25, requiredTag: "Blindfolds"},
 		],
+		ApplyVariants: {
+			"AntiMagic": {
+				weightMod: 0,
+				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+			},
+		},
 		strictness: 0.3, Color: ['#680000', '#680000', '#680000', '#680000', '#680000'], Group: "ItemMouth", power: 7, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.05, "Remove": 0.1, "Pick": 0.25},
 		maxwill: 0.6, enemyTags: {"dragonRestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 7, allFloors: true, shrine: ["Leather", "Latex", "Gags", "BallGags"]},

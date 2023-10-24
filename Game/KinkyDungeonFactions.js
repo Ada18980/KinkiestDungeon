@@ -68,6 +68,7 @@ function KDGetFaction(enemy) {
  */
 function KDGetFactionOriginal(enemy) {
 	let E = enemy.Enemy;
+	if (enemy.player) return "Player";
 	if (enemy.faction) return enemy.faction;
 	if (E && E.faction) return E.faction;
 	return "Enemy";

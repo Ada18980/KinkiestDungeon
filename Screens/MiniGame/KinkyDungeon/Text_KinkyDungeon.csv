@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.81"
+KinkyDungeon,"Kinky Dungeon v4.81.1"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -6319,6 +6319,8 @@ KinkyDungeonCurseStruggle5Keys,"The item is extremely secure with five separate 
 KinkyDungeonCurseUnlock5Keys,"You insert your 5 keys into the lock and the item finally comes off."
 
 curseFrom,"[RNAME]"
+
+curseInfoAntiMagic,"Magic-Draining: This item drains your mana quickly up to a limit, then slowly after."
 
 curseInfoTickle,"Curse of Tickling: This item is tickling you without end!"
 curseInfoPunish,"Curse of Punishment: Inflicts psychic damage when you attack or cast a spell."
@@ -12866,6 +12868,10 @@ KDNeedDiscPick,You need a special tool to pick this kind of lock.
 
 KDNotEnoughMoneyVendor,The NPC does not have enough money left!
 
-KDOrderCome,You order the ENMY to come to you.
+KDOrderOnMe,You order the ENMY to come to you.
+KDOrderDisperse,You order the ENMY to disperse.
 KDOrderSelect,You deselect all allies and select only the ENMY.
 KDOrderRemove,You remove the ENMY from your party.
+
+KDVarPrefAntiMagic,Anti-Magic
+KDVarPrefEnchanted,Enchanted
