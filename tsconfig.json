@@ -30,6 +30,7 @@
         "Game/KDHex.js",
         "Game/KDAIList.js",
         "Game/KDLoadoutList.js",
+        "Game/KDApplyVariants.js",
         "Game/KDInventoryActions.js",
         "Game/KinkyDungeonStats.js",
         "Game/KinkyDungeonEditorTiles.js",
