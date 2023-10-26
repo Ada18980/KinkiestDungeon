@@ -77,7 +77,7 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
 	Layers: ToLayerMap([
-		{ Name: "Top", Layer: "WrappingTorso", Pri: -4,
+		{ Name: "Top", Layer: "WrappingTorsoMid", Pri: -4,
 			Poses: ToMap(["Boxtie", "Crossed", "Wristtie"]),
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			InheritColor: "Tape",

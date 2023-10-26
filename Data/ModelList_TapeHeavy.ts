@@ -75,7 +75,8 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["FeetLinked", "EncaseTorsoLower", "EncaseLegs"],
 	Layers: ToLayerMap([
-		{ Name: "Bottom", Layer: "WrappingTorso", Pri: -5,
+		{ Name: "Bottom", Layer: "WrappingTorsoMid", Pri: -5,
+			SwapLayerPose: {Kneel: "WrappingTorso", KneelClosed: "WrappingTorso"},
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
@@ -128,7 +129,7 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
-		{ Name: "Top", Layer: "WrappingTorso", Pri: -4,
+		{ Name: "Top", Layer: "WrappingTorsoMid", Pri: -4,
 			Poses: ToMap(["Boxtie", "Crossed", "Wristtie"]),
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			HideOverrideLayerMulti: ["TopBinding"],

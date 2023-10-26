@@ -146,6 +146,32 @@ let LAYERS_BASE = [
 	"HarnessMid",
 	"WrappingTorsoMid",
 
+
+
+	// For form-fitting stuff that nonetheless goes over a shirt
+	"Bustier",
+	"Shirt",
+	// For things that go directly under the breasts
+	"Underbust",
+	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
+	"Underarms",
+	"Bra",
+
+	"CorsetOver",
+
+	// Skirts that dont follow shilhouette and are puffy
+	"SkirtPoofyDeco",
+	"SkirtPoofy",
+
+	"WrappingLegsOver",
+
+	// Corsets that go under harness and poofy skirt
+	"Corset",
+
+	// Skirts that are slim and follow the shilhouette
+	"SkirtDeco",
+	"Skirt",
+
 	// Left Leg
 	"KneeAccLeft",
 	"Thighs",
@@ -177,34 +203,8 @@ let LAYERS_BASE = [
 	// Lower harness
 	"OverCrotchStrap",
 	"HarnessLower",
-
 	"WrappingTorso",
 
-
-	// For form-fitting stuff that nonetheless goes over a shirt
-	"Bustier",
-	"Shirt",
-	// For things that go directly under the breasts
-	"Underbust",
-	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
-	"Underarms",
-	"Bra",
-
-	"CorsetOver",
-
-	// Skirts that dont follow shilhouette and are puffy
-	"SkirtPoofyDeco",
-	"SkirtPoofy",
-
-	"WrappingLegsOver",
-
-
-	// Corsets that go under harness and skirt
-	"Corset",
-
-	// Skirts that are slim and follow the shilhouette
-	"SkirtDeco",
-	"Skirt",
 
 	// Right leg
 	"KneeAccRight",

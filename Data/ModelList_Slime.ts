@@ -102,7 +102,8 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "TorsoLower", Layer: "WrappingTorso", Pri: -6,
+		{ Name: "TorsoLower", Layer: "WrappingTorsoMid", Pri: -6,
+			SwapLayerPose: {Kneel: "WrappingTorso", KneelClosed: "WrappingTorso"},
 			Invariant: true,
 			ApplyFilterToLayerGroup: ToMap(["SlimeTorsoLower"]),
 			InheritColor: "Slime",
@@ -224,7 +225,7 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
-		{ Name: "TorsoUpper", Layer: "WrappingTorso", Pri: -5,
+		{ Name: "TorsoUpper", Layer: "WrappingTorsoMid", Pri: -5,
 			Invariant: true,
 			HideOverrideLayerMulti: ["TopBinding"],
 			InheritColor: "Slime",
