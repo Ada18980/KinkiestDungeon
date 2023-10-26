@@ -173,6 +173,15 @@ let KDEventMapInventory = {
 			if (item == data.item)
 				KinkyDungeonSendEvent("EngageCurse", {});
 		},
+		"cursePrefix": (e, item, data) => {
+			if (item == data.item) {
+				let variant = KinkyDungeonInventoryVariants[item.inventoryAs || item.name];
+				if (variant) {
+					if (variant.prefix == "Enchanted")
+						variant.prefix = "Cursed";
+				}
+			}
+		},
 	},
 	"calcOrgThresh": {
 		"CurseSensitivity": (e, item, data) => {
@@ -452,13 +461,15 @@ let KDEventMapInventory = {
 			}
 		},
 		"cursedDamage": (e, item, data) => {
-			if (data.dmg > 0 && data.type != "cold") {
+			if (data.dmg > 0 && data.type != "cold" && KinkyDungeonStatWill > 0) {
 				/** @type {number} */
 				let alreadyDone = KDItemDataQuery(item, "cursedDamage") || 0;
 				let count = KDItemDataQuery(item, "cursedDamageHP") || Math.round(e.power + KDRandom() * e.limit);
 				KDItemDataSet(item, "cursedDamageHP", count);
-				if (alreadyDone + e.mult * data.dmg < count) {
-					alreadyDone += e.mult * data.dmg;
+				let amt = e.mult * data.dmg;
+				if (KinkyDungeonStatWill < 1) amt *= 1 * KinkyDungeonStatWill;
+				if (alreadyDone + amt < count) {
+					alreadyDone += amt;
 					KDItemDataSet(item, "cursedDamage", alreadyDone);
 					if (alreadyDone >= KDItemDataQuery(item, "cursedDamageCheckpoint") || 0) {
 						KinkyDungeonSendTextMessage(4, TextGet("KDcurseDamageDamage"), "#9074ab", 2, false, true);

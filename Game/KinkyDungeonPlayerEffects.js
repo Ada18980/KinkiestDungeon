@@ -844,6 +844,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 			if (KDTestSpellHits(spell, 0, 1.0)) {
 				KinkyDungeonSendTextMessage(6, TextGet("KDPoisonDagger"), "#33ff00", 2);
 				KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
+				// TODO make this get more intense over time
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "PoisonDagger", aura: "#22ff44", type: "Sleepiness", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
 				effect = true;
 			}

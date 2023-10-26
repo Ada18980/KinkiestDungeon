@@ -373,6 +373,18 @@ function KinkyDungeonInventoryRemove(item) {
 		}
 	}
 }
+/**
+ * Does not remove equipped restraints
+ * @param item {item}
+ */
+function KinkyDungeonInventoryRemoveSafe(item) {
+	if (item) {
+		let type = KDInventoryType(item);
+		if (type != Restraint && KinkyDungeonInventory.has(type)) {
+			KinkyDungeonInventory.get(type).delete(item.name);
+		}
+	}
+}
 
 /**
  *

@@ -49,7 +49,10 @@ let KDEventHexModular = {
 			{trigger: "apply", type: "FilterLayer", inheritLinked: true, kind: "Ball", filter:
 				{"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":3.016666666666667,"blue":3.95,"alpha":1},
 			},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "AntiMagic", color: "#92e8c0", inheritLinked: true, original: "AntiMagic", always: true},
+			//{trigger: "drawSGTooltip", type: "curseInfo", msg: "AntiMagic", color: "#92e8c0", inheritLinked: true, original: "AntiMagic", always: true},
+
+			{original: "AntiMagic", trigger: "inventoryTooltip", type: "varModifier", msg: "AntiMagic", color: "#000000", bgcolor: "#ff0000"},
+			{original: "AntiMagic", trigger: "icon", type: "tintIcon", power: 8, bgcolor: "#ff0000", color: "#ff0000"},
 		]},
 	"Light": {level: 1,
 		weight: (item, allHex) => {
@@ -61,6 +64,7 @@ let KDEventHexModular = {
 			{type: "ItemLight", trigger: "getLights", prereq: "noCorruption", power: 3.5, color: "#ffff55", inheritLinked: true, curse: true, original: "Light"},
 			{trigger: "tick", type: "sneakBuff", power: -1.0, inheritLinked: true, curse: true, original: "Light"},
 			{trigger: "drawSGTooltip", type: "curseInfo", prereq: "noCorruption", msg: "Illumination", color: "#ff5555", inheritLinked: true, original: "Light"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"Attraction": {level: 1,
 		weight: (item, allHex) => {
@@ -70,7 +74,8 @@ let KDEventHexModular = {
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Attraction"},
 			{type: "CurseAttraction", trigger: "calcPlayChance", power: 0.5, inheritLinked: true, curse: true, original: "Attraction"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Attraction", color: "#ff5555", inheritLinked: true, original: "Attraction"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Attraction", color: "#ff5555", inheritLinked: true, original: "Attraction"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"Sensitivity": {level: 1,
 		weight: (item, allHex) => {
@@ -80,7 +85,8 @@ let KDEventHexModular = {
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Sensitivity"},
 			{type: "CurseSensitivity", trigger: "calcOrgThresh", power: 0.5, inheritLinked: true, curse: true, original: "Sensitivity"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Sensitivity", color: "#ff5555", inheritLinked: true, original: "Sensitivity"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Sensitivity", color: "#ff5555", inheritLinked: true, original: "Sensitivity"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"Submission": {level: 1,
 		weight: (item, allHex) => {
@@ -90,7 +96,8 @@ let KDEventHexModular = {
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Submission"},
 			{type: "CurseSubmission", trigger: "orgasm", power: 10, inheritLinked: true, curse: true, original: "Submission"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Submission", color: "#ff5555", inheritLinked: true, original: "Submission"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Submission", color: "#ff5555", inheritLinked: true, original: "Submission"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"Distraction": {level: 1,
 		weight: (item, allHex) => {
@@ -100,7 +107,8 @@ let KDEventHexModular = {
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Distraction"},
 			{type: "multDistractionPos", trigger: "changeDistraction", power: 1.5, inheritLinked: true, curse: true, original: "Distraction"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Distraction", color: "#ff5555", inheritLinked: true, original: "Distraction"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Distraction", color: "#ff5555", inheritLinked: true, original: "Distraction"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"Breathlessness": {level: 1,
 		weight: (item, allHex) => {
@@ -110,7 +118,8 @@ let KDEventHexModular = {
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Breathlessness"},
 			{type: "multStaminaPos", trigger: "changeStamina", power: 0.6, inheritLinked: true, curse: true, original: "Breathlessness"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Breathlessness", color: "#ff5555", inheritLinked: true, original: "Breathlessness"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Breathlessness", color: "#ff5555", inheritLinked: true, original: "Breathlessness"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"Futility": {level: 1,
 		weight: (item, allHex) => {
@@ -120,7 +129,8 @@ let KDEventHexModular = {
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Futility"},
 			{type: "multWillPos", trigger: "changeWill", power: 0.5, inheritLinked: true, curse: true, original: "Futility"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Futile", color: "#ff5555", inheritLinked: true, original: "Futility"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Futile", color: "#ff5555", inheritLinked: true, original: "Futility"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"Tickle": {level: 1,
 		weight: (item, allHex) => {
@@ -130,7 +140,8 @@ let KDEventHexModular = {
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Tickle"},
 			{trigger: "tick", type: "tickleDrain", power: -0.1, inheritLinked: true, curse: true, original: "Tickle"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Tickle", color: "#ff5555", inheritLinked: true, original: "Tickle"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Tickle", color: "#ff5555", inheritLinked: true, original: "Tickle"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"Punish": {level: 2,
 		weight: (item, allHex) => {
@@ -141,7 +152,8 @@ let KDEventHexModular = {
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Punish"},
 			{trigger: "playerAttack", type: "cursePunish", chance: 1, damage: "souldrain", power: 1, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerCurse", inheritLinked: true, curse: true, original: "Punish"},
 			{trigger: "playerCast", type: "cursePunish", chance: 1, damage: "souldrain", power: 1, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerCurse", inheritLinked: true, curse: true, original: "Punish"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Punish", color: "#ff5555", inheritLinked: true, original: "Punish"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Punish", color: "#ff5555", inheritLinked: true, original: "Punish"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 
 	//region Cursed
@@ -152,7 +164,8 @@ let KDEventHexModular = {
 		events: [
 			{trigger: "tick", type: "CursedHeal", power: 0.5, inheritLinked: true, curse: true, original: "CursedHeal"},
 			{trigger: "orgasm", type: "CursedHeal", power: 10.0, inheritLinked: true, curse: true, original: "CursedHeal"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedHeal", color: "#9074ab", inheritLinked: true, original: "CursedHeal"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedHeal", color: "#9074ab", inheritLinked: true, original: "CursedHeal"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"CursedCorruption": {level: 6,
 		weight: (item, allHex) => {
@@ -160,7 +173,8 @@ let KDEventHexModular = {
 		},
 		events: [
 			{trigger: "tick", type: "CursedCorruption", power: 0.1, limit: -0.9, inheritLinked: true, curse: true, original: "CursedCorruption"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedCorruption", color: "#9074ab", inheritLinked: true, original: "CursedCorruption"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedCorruption", color: "#9074ab", inheritLinked: true, original: "CursedCorruption"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"CursedDistract": {level: 4,
 		weight: (item, allHex) => {
@@ -168,7 +182,8 @@ let KDEventHexModular = {
 		},
 		events: [
 			{trigger: "afterPlayerDamage", type: "CursedDistract", power: 0.3, time: 10, mult: 0.5, inheritLinked: true, curse: true, original: "CursedDistract"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedDistract", color: "#9074ab", inheritLinked: true, original: "CursedDistract"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedDistract", color: "#9074ab", inheritLinked: true, original: "CursedDistract"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"CursedPunishment": {level: 8,
 		weight: (item, allHex) => {
@@ -176,7 +191,8 @@ let KDEventHexModular = {
 		},
 		events: [
 			{trigger: "kill", type: "CursedPunishment", time: 4, dist: 8, inheritLinked: true, curse: true, original: "CursedPunishment"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedPunishment", color: "#9074ab", inheritLinked: true, original: "CursedPunishment"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedPunishment", color: "#9074ab", inheritLinked: true, original: "CursedPunishment"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"CursedSubmission": {level: 8,
 		weight: (item, allHex) => {
@@ -184,7 +200,8 @@ let KDEventHexModular = {
 		},
 		events: [
 			{trigger: "tickAfter", type: "CursedSubmission", dist: 2.5, count: 2, tags: ["shadowHands"], inheritLinked: true, curse: true, original: "CursedSubmission"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedSubmission", color: "#9074ab", inheritLinked: true, original: "CursedSubmission"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedSubmission", color: "#9074ab", inheritLinked: true, original: "CursedSubmission"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	"CursedDenial": {level: 8,
 		weight: (item, allHex) => {
@@ -194,7 +211,8 @@ let KDEventHexModular = {
 			{trigger: "tryOrgasm", type: "CursedDenial", mult: 0, power: 1.0, inheritLinked: true, curse: true, original: "CursedDenial"},
 			{trigger: "orgasm", type: "CursedDenial", count: 3, inheritLinked: true, curse: true, original: "CursedDenial"},
 			{trigger: "edge", type: "CursedDenial", count: 3, inheritLinked: true, curse: true, original: "CursedDenial"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedDenial", color: "#9074ab", inheritLinked: true, original: "CursedDenial"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedDenial", color: "#9074ab", inheritLinked: true, original: "CursedDenial"},
+			{trigger: "postApply", type: "cursePrefix"},
 		]},
 	//endregion
 };

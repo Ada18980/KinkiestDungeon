@@ -13,6 +13,10 @@ Vague todo:
 
 - TODO add scroll to log, rep
 
+4.81.2 (Oct 2023)
+- Fixed enemies with pulls taking you to jail while playing
+- Star Curse now requires willpower for damage to count
+- Some Qol (Cursed items now change their prefix to 'cursed' when equipped)
 
 4.81.1 (Oct 2023)
 - Bugfixes

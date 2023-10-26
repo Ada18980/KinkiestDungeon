@@ -458,9 +458,9 @@ function KinkyDungeonCurseUnlock(group, index, Curse) {
  */
 function KDCursePower(curse) {
 	if (KDCurses[curse]) {
-		return KDCurses[curse].powerBoost || 3;
+		return KDCurses[curse].powerBoost || 5;
 	}
-	return 1;
+	return 0;
 }
 
 /**

@@ -52,7 +52,7 @@ let KDInventoryAction = {
 						else {
 							KDGameData.InventoryAction = "";
 							KDGameData.UsingConsumable = "";
-							KinkyDungeonInventoryRemove(con);
+							KinkyDungeonInventoryRemoveSafe(con);
 						}
 					}
 					KinkyDungeonLastAction = "";
@@ -155,7 +155,7 @@ let KDInventoryAction = {
 			if (itemInv.type == Consumable)
 				KinkyDungeonChangeConsumable(KDConsumable(itemInv), -1);
 			else if (itemInv.quantity > 1) itemInv.quantity -= 1;
-			else KinkyDungeonInventoryRemove(itemInv);
+			else KinkyDungeonInventoryRemoveSafe(itemInv);
 			KinkyDungeonAddGold(value);
 			if (!KDGameData.ItemsSold) KDGameData.ItemsSold = {};
 			KDGameData.ItemsSold[item.name] = (KDGameData.ItemsSold[item.name] || 0) + 1;
@@ -207,7 +207,7 @@ let KDInventoryAction = {
 			let itemInv = KinkyDungeonInventoryGet(item.name);
 			if (itemInv.type == Consumable)
 				KinkyDungeonChangeConsumable(KDConsumable(itemInv), -itemInv.quantity);
-			else KinkyDungeonInventoryRemove(itemInv);
+			else KinkyDungeonInventoryRemoveSafe(itemInv);
 			if (!KDGameData.ItemsSold) KDGameData.ItemsSold = {};
 			KDGameData.ItemsSold[item.name] = (KDGameData.ItemsSold[item.name] || 0) + quantity;
 			KinkyDungeonAddGold(value);
@@ -285,7 +285,7 @@ let KDInventoryAction = {
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockLight.ogg");
 
 					if (item.quantity > 1) item.quantity -= 1;
-					else KinkyDungeonInventoryRemove(item);
+					else KinkyDungeonInventoryRemoveSafe(item);
 					KinkyDungeonAdvanceTime(1, true, true);
 
 					break;
