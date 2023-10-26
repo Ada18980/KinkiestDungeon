@@ -3044,7 +3044,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 		if (!pass) return false;
 	}
 	if (!r) r = KinkyDungeonGetRestraintItem(restraint.Group);
-	let power = powerBonus + (KinkyDungeonRestraintPower(r, false, restraint) * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, KDRestraint(r), augmentedInventory) : 1));
+	let power = powerBonus + (KinkyDungeonRestraintPower(r, false, restraint) * (r && useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, KDRestraint(r), augmentedInventory) : 1));
 	let linkUnder = KDGetLinkUnder(r, restraint, Bypass, NoStack, Deep, securityEnemy);
 
 	let linkableCurrent = r && KDRestraint(r) && KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
