@@ -27,7 +27,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.81.1"
+KinkyDungeon,"Kinky Dungeon v4.81.2"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -12146,6 +12146,8 @@ KDVariableModifier_DPDecay,"Calming: AMNT Distraction Decay"
 KDVariableModifier_DPGain,"Distracting: AMNT Distraction Per Turn"
 KDVariableModifier_DPGainWhenAttacked,"Sensitivity: AMNT AP from attacks"
 
+KDVariableModifier_AntiMagic,"Drains mana from the wearer."
+
 KDVariableModifier_,"AMNT Stat"
 
 KinkyDungeonDrop,Drop On Floor
@@ -12191,7 +12193,7 @@ RestraintCursedCollar2Desc,"'You thought you could run forever, didn't you? Fate
 RestraintCursedCollar2Desc2,"Cannot be removed while you are wearing other Star Cursed items."
 
 KinkyDungeonCurseUnlockCursedDamage,"The cursed seal on the RestraintName vanishes into a brief veil of stardust."
-KinkyDungeonCurseInfoCursedDamage,"The Star Curse protects the RestraintName. Take AMNT more damage to weaken the curse. Shadow damage does not assist."
+KinkyDungeonCurseInfoCursedDamage,"The Star Curse protects the RestraintName. Take AMNT more damage to weaken the curse. Unaffected by Shadow damage or damage taken at 0 WP."
 KinkyDungeonCurseStruggleCursedDamage,"You struggle uselessly, sealed in your fate."
 KDcurseDamageDamage,"You feel your restraints starting to weaken..."
 
@@ -12875,3 +12877,4 @@ KDOrderRemove,You remove the ENMY from your party.
 
 KDVarPrefAntiMagic,Anti-Magic
 KDVarPrefEnchanted,Enchanted
+KDVarPrefCursed,Cursed

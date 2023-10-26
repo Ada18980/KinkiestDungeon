@@ -3405,7 +3405,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			AIData.kite = true;
 		} else
 			AIData.followRange = 1.5;
-	} else if (AIData.aggressive && enemy.attackPoints && !enemy.Enemy.attackWhileMoving && AIData.followRange < ((enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || AIData.range)
+	}
+	//else, AIData.aggressive &&
+	if (enemy.attackPoints && !enemy.Enemy.attackWhileMoving && AIData.followRange < ((enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || AIData.range)
 		&& enemy.Enemy.attack?.includes("Melee")) {
 		AIData.followRange = Math.max(1.5, (enemy.usingSpecial ? enemy.Enemy.specialRange : undefined) || AIData.range || AIData.followRange);
 	}
@@ -3640,14 +3642,19 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				&& (Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0))  {
 				if (AIData.focusOnLeash && AIData.moveTowardPlayer && AIData.wantsToLeash) {
 					// Only break awareness if the AI cant chase player
-					if (!enemy.IntentLeashPoint) {
-						KDAssignLeashPoint(enemy);
-						enemy.gx = AIData.nearestJail.x;
-						enemy.gy = AIData.nearestJail.y;
-					} else {
-						enemy.gx = enemy.IntentLeashPoint.x;
-						enemy.gy = enemy.IntentLeashPoint.y;
+					if (player.player) {
+						if (!enemy.IntentLeashPoint) {
+							if ((AIData.aggressive)) {
+								KDAssignLeashPoint(enemy);
+								enemy.gx = AIData.nearestJail.x;
+								enemy.gy = AIData.nearestJail.y;
+							}
+						} else {
+							enemy.gx = enemy.IntentLeashPoint.x;
+							enemy.gy = enemy.IntentLeashPoint.y;
+						}
 					}
+
 					if (enemy.x == enemy.gx && enemy.y == enemy.gy) {
 						enemy.gx = player.x;
 						enemy.gy = player.y;
@@ -4081,7 +4088,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 								KDAssignLeashPoint(enemy);
 
-								let leashPos = AIData.nearestJail;
+								let leashPos = AIData.aggressive ? (AIData.nearestJail) : {x: enemy.x, y: enemy.y, type: "", radius: 1};
 								let findMaster = undefined;
 								if (enemy.IntentLeashPoint) leashPos = enemy.IntentLeashPoint;
 								if (!leashToExit && enemy.Enemy.pullTowardSelf && (Math.abs(player.x - enemy.x) > 1.5 || Math.abs(player.y - enemy.y) > 1.5)) {

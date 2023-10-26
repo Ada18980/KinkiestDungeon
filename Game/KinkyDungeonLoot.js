@@ -348,7 +348,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			};
 			let equipped = 0;
 			if (forceequip) {
-				equipped = KDEquipInventoryVariant(variant, "", 0, true, undefined, true, false, "Curse", true, unlockcurse, undefined, false);
+				equipped = KDEquipInventoryVariant(variant, enchantVariant ? "Enchanted" : "", 0, true, undefined, true, false, "Curse", true, unlockcurse, undefined, false);
 			}
 			if (!equipped) {
 				KDGiveInventoryVariant(variant, enchantVariant ? "Enchanted" : "", unlockcurse);

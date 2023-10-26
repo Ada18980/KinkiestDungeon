@@ -3084,7 +3084,7 @@ let KDLocks = {
 		},
 
 		consume_key: true,
-		lockmult: 2.0,
+		lockmult: 1.7,
 		// Picking
 		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		pick_speed: 1.0, // Multiplies the picking rate
@@ -3146,7 +3146,7 @@ let KDLocks = {
 		},
 
 		consume_key: true,
-		lockmult: 2.1,
+		lockmult: 1.8,
 		// Picking
 		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		pick_speed: 1.0, // Multiplies the picking rate
@@ -3209,7 +3209,7 @@ let KDLocks = {
 		},
 
 		consume_key: true,
-		lockmult: 2.2,
+		lockmult: 1.9,
 		// Picking
 		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		pick_speed: 1.0, // Multiplies the picking rate
@@ -3272,7 +3272,7 @@ let KDLocks = {
 		},
 
 		consume_key: true,
-		lockmult: 2.5,
+		lockmult: 2.2,
 		// Picking
 		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		pick_speed: 0.5, // Multiplies the picking rate
@@ -3335,7 +3335,7 @@ let KDLocks = {
 		},
 
 		consume_key: true,
-		lockmult: 2.35,
+		lockmult: 2,
 		// Picking
 		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		pick_speed: 0.5, // Multiplies the picking rate
@@ -3466,7 +3466,7 @@ let KDLocks = {
 		},
 
 		consume_key: true,
-		lockmult: 3.25,
+		lockmult: 3.3,
 		penalty: {
 			"Struggle": 0.2,
 			"Cut": 0.3,
@@ -3536,7 +3536,7 @@ let KDLocks = {
 		},
 
 		consume_key: false,
-		lockmult: 2.5,
+		lockmult: 2.2,
 
 		// Picking
 		pickable: false, // rather than calling the function (which could vary) this is for classifying the lock
