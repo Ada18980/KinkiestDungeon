@@ -88,6 +88,7 @@ let KDCurses = {
 		noShrine: true,
 		activatecurse: true,
 		level: 9,
+		customIcon_hud: "StarCurse",
 		weight: (item) => {
 			return 1;
 		},
