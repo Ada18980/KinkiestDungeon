@@ -378,7 +378,7 @@ let KDEventMapInventory = {
 		"curseInfo": (e, item, data) => {
 			if (item == data.item || KDRestraint(item)?.Group == data.group) {
 				let curse = KDGetCurse(item);
-				let pre = item == data.item ? "" : "[" + TextGet("Restraint" + item.name) + "] ";
+				let pre = "[" + TextGet("Restraint" + item.name) + "] ";
 				if (curse && KDCurses[curse].activatecurse && (!e.prereq || KDCheckPrereq(undefined, e.prereq, e, data))) {
 					data.extraLines.push(pre + TextGet("curseInfo" + e.msg));
 				} else {
@@ -461,7 +461,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"cursedDamage": (e, item, data) => {
-			if (data.dmg > 0 && data.type != "cold" && KinkyDungeonStatWill > 0) {
+			if (data.dmg > 0 && !["cold", "soul", "charm"].includes(data.type) && KinkyDungeonStatWill > 0) {
 				/** @type {number} */
 				let alreadyDone = KDItemDataQuery(item, "cursedDamage") || 0;
 				let count = KDItemDataQuery(item, "cursedDamageHP") || Math.round(e.power + KDRandom() * e.limit);

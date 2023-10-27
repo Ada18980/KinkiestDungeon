@@ -2548,6 +2548,8 @@ interface KDCursedDef {
 	customIcon_RemoveFailure?: string,
 	/** custom icon for removing (success) */
 	customIcon_RemoveSuccess?: string,
+	/** custom icon for the struggle groups display */
+	customIcon_hud?: string,
 	/** TODO NOT IMPLEMENTED for a future RemoveCursesWithShrine function */
 	shrineRemove?: string[],
 	level: number,
