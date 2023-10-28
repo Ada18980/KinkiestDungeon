@@ -861,7 +861,7 @@ function KinkyDungeonDrawInputs() {
 				}
 				item = surfaceItems[KDStruggleGroupLinkIndex[sg.group]];
 			}
-			if (MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth+2)) && sg) {
+			if (MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth+3)) && sg) {
 
 
 
