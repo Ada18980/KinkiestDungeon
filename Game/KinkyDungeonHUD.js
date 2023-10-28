@@ -861,13 +861,13 @@ function KinkyDungeonDrawInputs() {
 				}
 				item = surfaceItems[KDStruggleGroupLinkIndex[sg.group]];
 			}
-			if (MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth)) && sg) {
+			if (MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth+2)) && sg) {
 
 
 
-				if (MouseY < y) {
-					KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 700);
-				}
+				//if (MouseY < y) {
+				KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 700);
+				//}
 
 				let data = {
 					struggleGroup: sg,
@@ -977,6 +977,7 @@ function KinkyDungeonDrawInputs() {
 			//if (item && (item.lock || KDGetCurse(item)) {color = "#ffaadd";}
 			let icon = item.lock;
 			if (KDGetCurse(item)) icon = KDCurses[KDGetCurse(item)]?.customIcon_hud || "Curse";
+			if (!icon && sg.blocked) icon = "Blocked";
 
 			if (icon) {
 				KDDraw(kdcanvas, kdpixisprites, "icon" + sg.name + icon, KinkyDungeonRootDirectory + `Locks/${icon}.png`,
