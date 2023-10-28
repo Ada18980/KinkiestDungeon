@@ -13,6 +13,15 @@ Vague todo:
 
 - TODO add scroll to log, rep
 
+
+4.82 (Oct 2023)
+- New restraint UI
+- Enemies will now try to help each other out of bondage sometimes
+- Changed Fuuka dialogue
+- Added intro at the beginning (option to turn it off in Game Options)
+- Statdust curse now unaffected by psychic or charm dmg
+- Some bug fixes
+
 4.81.2 (Oct 2023)
 - Fixed enemies with pulls taking you to jail while playing
 - Star Curse now requires willpower for damage to count
