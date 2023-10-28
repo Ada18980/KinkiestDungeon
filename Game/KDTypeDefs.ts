@@ -2719,6 +2719,8 @@ type KDCommanderOrderData = {
 	delta: number,
 	VavgWeight: number,
 
+	globalIgnore: boolean,
+
 	fleeThresh: number,
 	combat: boolean,
 	// Temp vars

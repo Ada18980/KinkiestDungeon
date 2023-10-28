@@ -222,7 +222,7 @@ function KDGetBindAmp(enemy, override) {
 }
 
 function KDHelpless(enemy) {
-	return enemy && !enemy.player && (enemy.hp <= enemy.Enemy.maxhp * 0.1 || enemy.hp <= 0.52 || enemy.boundLevel > 10 * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
+	return enemy && !enemy.player && (enemy.hp <= 0.52 || enemy.boundLevel > 10 * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
 }
 
 function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI_Data) {
@@ -2042,21 +2042,22 @@ function KinkyDungeonMultiplicativeStat(Stat) {
  * @param {number} x
  * @param {number} y
  * @param {number} dist
- * @param {entity} [hostileEnemy]
+ * @param {entity} [hostileEnemy] - Select enemies hostile to this one
  * @param {boolean} [cheb] - use chebyshev distance
+ * @param {entity} [nonhostileEnemy] - Select enemies not hostile to this one
  * @returns {entity[]}
  */
-function KDNearbyEnemies(x, y, dist, hostileEnemy, cheb) {
+function KDNearbyEnemies(x, y, dist, hostileEnemy, cheb, nonhostileEnemy) {
 	let cache = KDGetEnemyCache();
 	let list = [];
 	if (!cache) {
 		if (cheb) {
 			for (let e of KDMapData.Entities) {
-				if (KDistChebyshev(x - e.x, y - e.y) <= dist && (!hostileEnemy || KDHostile(e, hostileEnemy))) list.push(e);
+				if (KDistChebyshev(x - e.x, y - e.y) <= dist && (!hostileEnemy || KDHostile(e, hostileEnemy)) && (!nonhostileEnemy || !KDHostile(e, hostileEnemy))) list.push(e);
 			}
 		} else {
 			for (let e of KDMapData.Entities) {
-				if (KDistEuclidean(x - e.x, y - e.y) <= dist && (!hostileEnemy || KDHostile(e, hostileEnemy))) list.push(e);
+				if (KDistEuclidean(x - e.x, y - e.y) <= dist && (!hostileEnemy || KDHostile(e, hostileEnemy)) && (!nonhostileEnemy || !KDHostile(e, hostileEnemy))) list.push(e);
 			}
 		}
 
@@ -2420,7 +2421,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				if (enemy.slow <= 0)
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "slow"});
 			}
-			if (enemy.boundLevel > 0 && !(enemy.stun > 0 || enemy.freeze > 0 || enemy.teleporting > 0) && (enemy.hp > enemy.Enemy.maxhp * 0.1)) {
+			if (enemy.boundLevel > 0 && !(enemy.stun > 0 || enemy.freeze > 0 || enemy.teleporting > 0) && (enemy.hp > 0.52)) {
 				let SM = KDGetEnemyStruggleMod(enemy);
 				let newBound = KDPredictStruggle(enemy, SM, delta);
 				enemy.boundLevel = newBound.boundLevel;

@@ -44,6 +44,9 @@ let KinkyDungeonBackground = "BrickWall";
 let KinkyDungeonPlayer = null;
 let KinkyDungeonState = "Logo";
 
+let KDIntroProgress = [0, 0, 0, 0];
+let KDIntroStage = -1;
+
 let KinkyDungeonRep = 0; // Variable to store max level to avoid losing it if the server doesnt take the rep update
 
 function KDSetDefaultKeybindings() {
@@ -98,6 +101,7 @@ let kdSpecialModePerks = [
 let KinkyDungeonGraphicsQuality = true;
 
 let KDToggles = {
+	SkipIntro: false,
 	VibeSounds: true,
 	Music: true,
 	Sound: true,
@@ -979,7 +983,7 @@ function KinkyDungeonRun() {
 
 
 	if ((KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "TileEditor") {
-		let BG = (KinkyDungeonState == "Consent" || KinkyDungeonState == "Logo") ? "Logo" : "BrickWall";
+		let BG = (KinkyDungeonState == "Consent" || KinkyDungeonState == "Intro" || KinkyDungeonState == "Logo") ? "Logo" : "BrickWall";
 		if (StandalonePatched) {
 			KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + (StandalonePatched ? ".png" : ".jpg"), 0, 0, CanvasWidth, CanvasHeight, undefined, {
 				zIndex: -115,
@@ -1258,6 +1262,26 @@ function KinkyDungeonRun() {
 			}*/
 			KDLoadingFinished = true;
 		}
+
+	} else if (KinkyDungeonState == "Intro") {
+		if (KDIntroStage < 0) KDIntroStage = 0;// Placeholder
+		let currentProgress = KDIntroStage < KDIntroProgress.length ? KDIntroProgress[KDIntroStage] : 1.5;
+		if (currentProgress < 3) KDIntroProgress[KDIntroStage] += KDDrawDelta*0.001;
+		else KDIntroStage += 1;
+
+		for (let i = 0; i < KDIntroProgress.length; i++) {
+			let progress = KDIntroProgress[i];
+			if (progress > 0) {
+				let textSplit = TextGet("KDIntroScene" + (i + 1)).split('|');
+				let ii = 0;
+				for (let s of textSplit) {
+					DrawTextKD(s, 1000, 150 + 200 * i + 33*ii, "#ffffff", KDTextGray2, 24, undefined, undefined, Math.max(0.01, Math.min(progress - ii * 0.33, 0.999)));
+					ii += 1;
+				}
+			}
+		}
+
+
 
 	} else if (KinkyDungeonState == "TileEditor") {
 		KDDrawTileEditor();
@@ -3053,7 +3077,8 @@ function KinkyDungeonHandleClick() {
 	} else if (KinkyDungeonState == "Consent") {
 		if (KDLoadingFinished) {
 			if (MouseIn(1000-450/2, 720, 450, 64)) {
-				KinkyDungeonState = "Menu";
+				if (KDToggles.SkipIntro) KinkyDungeonState = "Menu"; else KinkyDungeonState = "Intro";
+
 				if (KDPatched) {
 					KDSendEvent('optin');
 				} else {
@@ -3075,7 +3100,7 @@ function KinkyDungeonHandleClick() {
 					KDSendEvent('optout');
 				}
 				KDOptOut = true;
-				KinkyDungeonState = "Menu";
+				if (KDToggles.SkipIntro) KinkyDungeonState = "Menu"; else KinkyDungeonState = "Intro";
 
 				CharacterReleaseTotal(KinkyDungeonPlayer);
 				KinkyDungeonDressSet();
@@ -3229,6 +3254,22 @@ function KinkyDungeonHandleClick() {
 function KinkyDungeonClick() {
 	if (KinkyDungeonState == "Logo") KinkyDungeonState = "Consent";
 	else
+	if (KinkyDungeonState == "Intro") {
+		let currentProgress = KDIntroStage < KDIntroProgress.length ? KDIntroProgress[KDIntroStage] : 1;
+		if (currentProgress < 2) {
+			for (let i = 0; i <= KDIntroStage && i < KDIntroProgress.length; i++) {
+				KDIntroProgress[i] = 2;
+			}
+
+		}
+		KDIntroStage += 1;
+		if (KDIntroStage > KDIntroProgress.length)
+			KinkyDungeonState = "Menu";
+		else if (KDIntroStage < KDIntroProgress.length)
+			KDIntroProgress[KDIntroStage] = -0.33; // UI delay
+		else
+			KDIntroProgress[KDIntroStage - 1] = 4; // UI delay
+	} else
 	if (KinkyDungeonHandleClick()) {
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 	}

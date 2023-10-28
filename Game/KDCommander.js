@@ -31,6 +31,7 @@ function KDCommanderUpdate(delta) {
 		VavgWeight: 2,
 		combat: KinkyDungeonFlags.get("PlayerCombat") > 0,
 		invalidChoke: {},
+		globalIgnore: KinkyDungeonFlags.get("PlayerDommed") && !KDPlayerDeservesPunishment(undefined, KinkyDungeonPlayerEntity),
 	};
 
 	//let start = performance.now();
@@ -275,6 +276,7 @@ let KDCommanderOrders = {
 		// Only a certain number will do this
 		// Role assignment
 		filter: (enemy, data) => {
+			if (data.globalIgnore) return false;
 			if (enemy.IntentAction || !data.aggressive || KDAssaulters > KDMaxAssaulters || !enemy.aware || !KDEnemyHasFlag(enemy, "targ_player") || KDIsImmobile(enemy)) return false;
 			return (!KDAIType[KDGetAI(enemy)]
 			|| (!KDAIType[KDGetAI(enemy)].guard && (!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)));
@@ -334,6 +336,7 @@ let KDCommanderOrders = {
 		// Role assignment
 		filter: (enemy, data) => {
 			if (KDAssaulters < 1) return false;
+			if (data.globalIgnore) return false;
 			if (enemy.IntentAction || !data.aggressive || enemy.vp == 0 || !KDEnemyHasFlag(enemy, "targ_player")) return false;
 			return (!KDAIType[KDGetAI(enemy)]
 			|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)));
@@ -377,6 +380,7 @@ let KDCommanderOrders = {
 		// Role assignment
 		filter: (enemy, data) => {
 			let fort = KinkyDungeonStatsChoice.get("Fortify_Barricade");
+			if (!fort && data.globalIgnore) return false;
 			let aware = enemy.aware || enemy.vp > 0 || KDGameData.tickAlertTimer || fort;
 			if (!enemy.IntentAction && data.aggressive && aware && !KDIsImmobile(enemy) && !KDEnemyHasFlag(enemy, "noGuard")) {
 				let xx = KinkyDungeonPlayerEntity.x + KD_Avg_VX*4;
@@ -623,6 +627,73 @@ let KDCommanderOrders = {
 		remove: (enemy, data) => {},
 		update: (enemy, data) => {
 			KinkyDungeonSetEnemyFlag(enemy, "runAway", 5 + Math.round(5 * KDRandom()));
+		},
+
+		// Global role variables
+		global_before: ( data) => {},
+		global_after: (data) => {},
+	},
+
+	helpStruggle: {
+		// Move toward struggling allies to help them
+		filter: (enemy, data) => {
+			if (!enemy.IntentAction
+				&& (enemy.attackPoints < 1)
+				&& !KDIsImmobile(enemy)
+				&& !KDHelpless(enemy)
+				&& (!KDAIType[KDGetAI(enemy)]
+					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
+				&& KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius || 1.5, undefined, true, enemy).some((en) => {
+					return en != enemy && en.boundLevel > 0 && !KDEnemyHasFlag(en, "imprisoned");
+				})
+			) return true;
+			return false;
+		},
+		weight: (enemy, data) => {
+			return data.combat ? 50 : 400;
+		},
+		apply: (enemy, data) => {
+			if ((enemy.aware || enemy.vp > 0.1) && KDRandom() < 0.15)
+				KinkyDungeonSendDialogue(enemy,
+					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandDefend")
+						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
+					7, 7, false, true);
+
+		},
+
+		// Role maintenance
+		maintain: (enemy, data) => {
+			if (!KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius || 1.5, undefined, true, enemy).some((en) => {
+				return en != enemy && en.boundLevel > 0 && !KDEnemyHasFlag(en, "imprisoned");
+			})) return false;
+			return (!enemy.IntentAction && (enemy.attackPoints < 1)
+				&& !KDHelpless(enemy));
+		},
+		remove: (enemy, data) => {},
+		update: (enemy, data) => {
+			if (!KDEnemyHasFlag(enemy, "tickHS")) {
+				let search = KDNearbyEnemies(enemy.x, enemy.y, 1.5, undefined, true, enemy).filter((en) => {
+					return en != enemy && en.boundLevel > 0 && !KDEnemyHasFlag(en, "imprisoned");
+				});
+				if (search.length == 0) search = KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius || 2.5, undefined, true, enemy).filter((en) => {
+					return en != enemy && en.boundLevel > 0 && !KDEnemyHasFlag(en, "imprisoned");
+				});
+				if (search.length > 0) {
+					let help = search[Math.floor(KDRandom() * search.length)];
+					let point = KinkyDungeonGetNearbyPoint(help.x, help.y, true, undefined, true);
+					if (point) {
+						enemy.gx = point.x;
+						enemy.gy = point.y;
+					} else {
+						enemy.gx = help.x;
+						enemy.gy = help.y;
+					}
+
+					if (help.hp <= 0.52 && KDistChebyshev(enemy.x - help.x, enemy.y - help.y) < 1.5) help.hp = 0.6;
+				}
+				KinkyDungeonSetEnemyFlag(enemy, "tickHS", 5 + Math.round(5 * KDRandom()));
+			}
+
 		},
 
 		// Global role variables
