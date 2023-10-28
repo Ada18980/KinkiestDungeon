@@ -1327,7 +1327,10 @@ KinkyDungeonInventoryItemFlailDesc,"Very fast and hard to dodge as long as you k
 KinkyDungeonInventoryItemFlailDesc2,"Also deals 10 damage to targets next to you. Deals crush damage."
 KinkyDungeonInventoryItemSpear,Spear
 KinkyDungeonInventoryItemSpearDesc,"Speak softly and carry a pointy stick."
-KinkyDungeonInventoryItemSpearDesc2,"Deals pierce damage to the target and one square behind it. Can be used to make a ranged attack."
+KinkyDungeonInventoryItemSpearDesc2,"Deals pierce damage to the target and one square behind it. Can be used to make a ranged attack 2 tiles away."
+KinkyDungeonInventoryItemPike,Pike
+KinkyDungeonInventoryItemPikeDesc,"An 11 foot pole, for things you wouldn't want to touch with a 10 foot pole."
+KinkyDungeonInventoryItemPikeDesc2,"Deals pierce damage to the target and one square behind it. Can be used to make a ranged attack 3 tiles away."
 KinkyDungeonInventoryItemBoltCutters,Bolt Cutters
 KinkyDungeonInventoryItemBoltCuttersDesc,"The universal key."
 KinkyDungeonInventoryItemBoltCuttersDesc2,"Also assists in cutting restraints when equipped."
@@ -4593,6 +4596,7 @@ ItemPickupRope,"You find some treated hemp rope."
 ItemPickupFeather,"You pick up a feather."
 ItemPickupFlail,"You pick up a heavy flail."
 ItemPickupSpear,"You pick up a shortspear."
+ItemPickupPike,"You pick up a long spear."
 ItemPickupPickaxe,"You pick up a pickaxe."
 ItemPickupMagicSword,"You pick up an enchanted sword."
 ItemPickupMagicAxe,"You pick up an enchanted axe."
@@ -12570,6 +12574,7 @@ KDInventoryActionOffhand,"Equip Offhand"
 
 KinkyDungeonSpecialSpear,Make a ranged attack with the spear.
 KinkyDungeonSpecialMagicSpear,Make a ranged attack with the spear.
+KinkyDungeonSpecialPike,Make a ranged attack with the pike.
 
 KinkyDungeonSpellWeaponAttack,Ranged Attack
 
