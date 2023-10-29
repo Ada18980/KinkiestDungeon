@@ -650,7 +650,7 @@ let KDCommanderOrders = {
 				&& (!KDAIType[KDGetAI(enemy)]
 					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
 				&& KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius || 1.5, undefined, true, enemy).some((en) => {
-					return en != enemy && en.boundLevel > 0 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
+					return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
 				})
 			) return true;
 			return false;
@@ -670,7 +670,7 @@ let KDCommanderOrders = {
 		// Role maintenance
 		maintain: (enemy, data) => {
 			if (!KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius || 1.5, undefined, true, enemy).some((en) => {
-				return en != enemy && en.boundLevel > 0 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
+				return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
 			})) return false;
 			return (!enemy.IntentAction && (enemy.attackPoints < 1)
 				&& !KDHelpless(enemy));
@@ -679,10 +679,10 @@ let KDCommanderOrders = {
 		update: (enemy, data) => {
 			if (!KDEnemyHasFlag(enemy, "tickHS")) {
 				let search = KDNearbyEnemies(enemy.x, enemy.y, 1.5, undefined, true, enemy).filter((en) => {
-					return en != enemy && en.boundLevel > 0 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
+					return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
 				});
 				if (search.length == 0) search = KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius || 2.5, undefined, true, enemy).filter((en) => {
-					return en != enemy && en.boundLevel > 0 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
+					return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
 				});
 				if (search.length > 0) {
 					let help = search[Math.floor(KDRandom() * search.length)];
