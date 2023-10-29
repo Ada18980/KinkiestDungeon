@@ -4316,7 +4316,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 			/** @type {Record<string, number>} */
 			let enemyTagsMult = {};
 			enemyTagsMult[tagBase + (part[1].enemyTagSuffix || "")] = 1;
-			let shrine = [...KDGetRestraintTags(origRestraint), ...allTag];
+			let shrine = [...allTag, ...KDGetRestraintTags(origRestraint)];
 			for (let t of removeTag) {
 				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);
 			}
@@ -4380,7 +4380,7 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 			let enemyTags = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Random"] = baseWeight + 3;
-			let shrine = [...KDGetRestraintTags(origRestraint), ...allTag];
+			let shrine = [ ...allTag, ...KDGetRestraintTags(origRestraint)];
 			for (let t of removeTag) {
 				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);
 			}

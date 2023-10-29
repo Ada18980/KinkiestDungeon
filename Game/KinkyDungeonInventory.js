@@ -521,8 +521,7 @@ function KDGetItemPreview(item) {
 		};
 		KinkyDungeonSendEvent("icon", data);
 		ret = {name: item.name, item: item, preview:
-			StandalonePatched ? (KDTex(KinkyDungeonRootDirectory + `/Items/Restraint/${KDRestraint(item).name}.png`)?.valid ? KinkyDungeonRootDirectory + `/Items/Restraint/${KDRestraint(item).name}.png` : KinkyDungeonRootDirectory + `/Items/Restraint.png`) :
-			`Assets/Female3DCG/${Group}/Preview/${KDRestraint(item).Asset}.png`
+			KDGetRestraintPreviewImage(KDRestraint(item)),
 		};
 		if (data.color) {
 			ret.previewcolor = data.color;
@@ -541,8 +540,7 @@ function KDGetItemPreview(item) {
 		};
 		KinkyDungeonSendEvent("icon", data);
 		ret = {name: KDRestraint(item).name, item: item, preview:
-			StandalonePatched ? (KDTex(KinkyDungeonRootDirectory + `/Items/Restraint/${KDRestraint(item).name}.png`)?.valid ? KinkyDungeonRootDirectory + `/Items/Restraint/${KDRestraint(item).name}.png` : KinkyDungeonRootDirectory + `/Items/Restraint.png`) :
-			`Assets/Female3DCG/${Group}/Preview/${KDRestraint(item).Asset}.png`};
+			KDGetRestraintPreviewImage(KDRestraint(item))};
 		if (data.color) {
 			ret.previewcolor = data.color;
 		}
@@ -556,6 +554,30 @@ function KDGetItemPreview(item) {
 	else if (item.type == 'basic') ret = {name: item.name, item: item, preview: KinkyDungeonRootDirectory + `/ShopBasic/${item.name}.png`};
 	//else if (item && item.name) ret.push({name: item.name, item: item, preview: ``});
 	return ret;
+}
+
+/**
+ *
+ * @param {restraint} restraint
+ * @returns {string}
+ */
+function KDGetRestraintPreviewImage(restraint) {
+	try {
+		if (KDTex(KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.name}.png`)?.valid) return KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.name}.png`;
+	} catch (e) {
+		console.log(e);
+	}
+
+	try {
+		for (let tag of restraint.shrine) {
+			if (KDTex(KinkyDungeonRootDirectory + `/Items/Restraint/${tag}.png`)?.valid) return KinkyDungeonRootDirectory + `/Items/Restraint/${tag}.png`;
+		}
+	} catch (e) {
+		console.log(e);
+	}
+	return KinkyDungeonRootDirectory + `/Items/Restraint.png`;
+	/*return StandalonePatched ? (KDTex(KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.name}.png`)?.valid ? KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.name}.png` : KinkyDungeonRootDirectory + `/Items/Restraint.png`) :
+			`Assets/Female3DCG/${restraint.Group}/Preview/${restraint.Asset}.png`*/
 }
 
 
