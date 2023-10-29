@@ -101,8 +101,6 @@ let LAYERS_BASE = [
 	"NecklaceCharm",
 	"Necklace",
 
-	// Skirts that dont follow shilhouette and are puffy
-	"SkirtPoofyLeftLeg",
 
 	"HarnessOver",
 	"BindChest",
@@ -205,6 +203,15 @@ let LAYERS_BASE = [
 	"HarnessLower",
 	"WrappingTorso",
 
+	// These are for the base skirt layer when kneeling
+	// The over layer is for kneeling
+	// Skirts that dont follow shilhouette and are puffy
+	"SkirtPoofyLowerDeco",
+	"SkirtPoofyLower",
+
+	// Skirts that are slim and follow the shilhouette
+	"SkirtLowerDeco",
+	"SkirtLower",
 
 	// Right leg
 	"KneeAccRight",

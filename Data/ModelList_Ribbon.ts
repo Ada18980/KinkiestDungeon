@@ -194,11 +194,14 @@ AddModel({
 		},
 		{ Name: "HarnessLower", Layer: "HarnessMid", Pri: 0,
 			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
-			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			Invariant: true,
 			//DisplacementInvariant: true,
 			//DisplacementSprite: "HarnessSquish",
 			//DisplaceLayers: ToMap(["RibbonTorso"]),
+		},
+		{ Name: "HarnessLowerStrap", Layer: "HarnessMid", Pri: 0,
+			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			Invariant: true,
 		},
 	])
 });
@@ -211,13 +214,17 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
-		{ Name: "CrotchRibbon", Layer: "HarnessLower", Pri: 1,
+		{ Name: "Crotch", Layer: "HarnessMid", Pri: 1,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 			DisplacementInvariant: true,
 			DisplacementSprite: "CrotchRopeSquish",
 			DisplaceLayers: ToMap(["RibbonTorso"]),
 
+		},
+		{ Name: "CrotchStrap", Layer: "HarnessMid", Pri: 0,
+			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			Invariant: true,
 		},
 	])
 });

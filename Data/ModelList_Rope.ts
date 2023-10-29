@@ -183,12 +183,14 @@ AddModel({
 			DisplaceLayers: ToMap(["RopeTorso"]),
 		},
 		{ Name: "HarnessLower", Layer: "HarnessMid", Pri: 0,
-			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
-			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			Invariant: true,
 			DisplacementInvariant: true,
 			DisplacementSprite: "HarnessSquish",
 			DisplaceLayers: ToMap(["RopeTorso"]),
+		},
+		{ Name: "HarnessLowerStrap", Layer: "HarnessMid", Pri: 0,
+			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			Invariant: true,
 		},
 	])
 });
@@ -201,13 +203,17 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
-		{ Name: "Crotchrope", Layer: "HarnessLower", Pri: 1,
+		{ Name: "Crotchrope", Layer: "HarnessMid", Pri: 1,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 			DisplacementInvariant: true,
 			DisplacementSprite: "CrotchropeSquish",
 			DisplaceLayers: ToMap(["RopeTorso"]),
 
+		},
+		{ Name: "CrotchropeStrap", Layer: "HarnessMid", Pri: 0,
+			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			Invariant: true,
 		},
 	])
 });
