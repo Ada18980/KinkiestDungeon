@@ -3552,30 +3552,6 @@ RestraintWeakMagicRopeLegs,Leg Ropes
 RestraintWeakMagicRopeLegsDesc,"Faintly glowing ropes from a magic trap."
 RestraintWeakMagicRopeLegsDesc2,"I wonder who was responsible?"
 
-RestraintStrongMagicRopeHogtie,Magic Hogtie
-RestraintStrongMagicRopeHogtieDesc,"It pulls your wrists up to your ankles! So tight!"
-RestraintStrongMagicRopeHogtieDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeArms,Magic Arm Rope
-RestraintStrongMagicRopeArmsDesc,"Strongly glowing ropes."
-RestraintStrongMagicRopeArmsDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeCuffs,Magic Rope Cuffs
-RestraintStrongMagicRopeCuffsDesc,"Strongly glowing ropes."
-RestraintStrongMagicRopeCuffsDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeCuffsAdv,Magic Ropework
-RestraintStrongMagicRopeCuffsAdvDesc,"Strongly glowing ropes tied in an intricate pattern, making hand restraints more secure."
-RestraintStrongMagicRopeCuffsAdvDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeLegs,Magic Leg Rope
-RestraintStrongMagicRopeLegsDesc,"Strongly glowing ropes."
-RestraintStrongMagicRopeLegsDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeFeet,Magic Ankle Rope
-RestraintStrongMagicRopeFeetDesc,"Strongly glowing ropes."
-RestraintStrongMagicRopeFeetDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeCrotch,Magic Crotch Rope
-RestraintStrongMagicRopeCrotchDesc,"Strongly glowing ropes."
-RestraintStrongMagicRopeCrotchDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeToe,Magic Toe Rope
-RestraintStrongMagicRopeToeDesc,"Strongly glowing ropes."
-RestraintStrongMagicRopeToeDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
 
 RestraintMithrilRopeHogtie,Mithril Hogtie
 RestraintMithrilRopeHogtieDesc,"It pulls your wrists up to your ankles! So tight!"
@@ -11955,6 +11931,37 @@ KDFilterFiltersChains,Chains
 KDFilterFiltersGags,Gags
 KDFilterFiltersBoots,Boots
 KDFilterFiltersToys,Toys
+
+RestraintStrongMagicRopeArmsBoxtie,Spellbound Boxtie
+RestraintStrongMagicRopeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
+RestraintStrongMagicRopeArmsBoxtieDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeCuffs,Spellbound Rope Cuffs
+RestraintStrongMagicRopeCuffsDesc,"A quick tie for apprehending prisoners."
+RestraintStrongMagicRopeCuffsDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeCuffsAdv,Spellbound Ropework
+RestraintStrongMagicRopeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
+RestraintStrongMagicRopeCuffsAdvDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeHogtie,Spellbound Hogtie
+RestraintStrongMagicRopeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintStrongMagicRopeHogtieDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeBelt,Spellbound Rope Belt
+RestraintStrongMagicRopeBeltDesc,"A harness acting as a handle to pull you around"
+RestraintStrongMagicRopeBeltDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeHarness,Spellbound Harness
+RestraintStrongMagicRopeHarnessDesc,"A harness that secures your other restraints and makes them tighter."
+RestraintStrongMagicRopeHarnessDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeCrotch,Spellbound Crotch Rope
+RestraintStrongMagicRopeCrotchDesc,"A tight rope impressing upon your most private areas..."
+RestraintStrongMagicRopeCrotchDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeArmsWrist,Spellbound Wrist Tie
+RestraintStrongMagicRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
+RestraintStrongMagicRopeArmsWristDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeLegs,Spellbound Leg Tie
+RestraintStrongMagicRopeLegsDesc,"A tie that hobbles your legs together.."
+RestraintStrongMagicRopeLegsDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeFeet,Spellbound Ankle Tie
+RestraintStrongMagicRopeFeetDesc,"A tie keeping your feet secured together."
+RestraintStrongMagicRopeFeetDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
 
 
 RestraintWeakMagicRopeArmsBoxtie,Magic Boxtie
