@@ -686,14 +686,20 @@ let KDCommanderOrders = {
 				});
 				if (search.length > 0) {
 					let help = search[Math.floor(KDRandom() * search.length)];
-					let point = KinkyDungeonGetNearbyPoint(help.x, help.y, true, undefined, true);
-					if (point) {
-						enemy.gx = point.x;
-						enemy.gy = point.y;
+					if (KDistChebyshev(help.x-enemy.x, help.y-enemy.y) < 1.5) {
+						enemy.gx = enemy.x;
+						enemy.gy = enemy.y;
 					} else {
-						enemy.gx = help.x;
-						enemy.gy = help.y;
+						let point = KinkyDungeonGetNearbyPoint(help.x, help.y, true, undefined, true);
+						if (point) {
+							enemy.gx = point.x;
+							enemy.gy = point.y;
+						} else {
+							enemy.gx = help.x;
+							enemy.gy = help.y;
+						}
 					}
+
 
 					KDStruggleAssisters[help.id] = enemy.id;
 
