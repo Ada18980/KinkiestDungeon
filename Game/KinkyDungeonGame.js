@@ -1382,7 +1382,8 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 	}
 
 	// These tags are disallowed unless working in the specific box
-	let filterTags = ["boss", "miniboss", "elite", "minor"];
+	let filterTagsBase = ["boss", "miniboss", "elite", "minor"];
+	let filterTagsSpawn = ["boss", "miniboss"];
 	let filterTagsCluster = ["boss", "miniboss"];
 
 	let spawnBoxes = [
@@ -1477,7 +1478,10 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		let levelBoost = 0;
 		let forceIndex = undefined;
 
+		let filterTags = JSON.parse(JSON.stringify(filterTagsBase));
+
 		if (currentCluster && !(3 * KDRandom() < currentCluster.count)) {
+			filterTags = JSON.parse(JSON.stringify(filterTagsCluster));
 			required.push(currentCluster.required);
 			X = currentCluster.x - 2 + Math.floor(KDRandom() * 5);
 			Y = currentCluster.y - 2 + Math.floor(KDRandom() * 5);
@@ -1489,6 +1493,8 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		} else {
 			currentCluster = null;
 			if (spawns.length > 0 && KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(spawns[0].x, spawns[0].y))) {
+
+				filterTags = JSON.parse(JSON.stringify(filterTagsSpawn));
 				spawnPoint = true;
 				let specific = false;
 				if (spawns[0].required) {
@@ -1500,7 +1506,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 
 				if (spawns[0].tags) {
 					specific = true;
-					tags = spawns[0].tags;
+					tags = JSON.parse(JSON.stringify(spawns[0].tags));
 					for (let t of tags) {
 						if (filterTags.includes(t)) filterTags.splice(filterTags.indexOf(t), 1);
 					}
