@@ -563,7 +563,7 @@ function KDGetItemPreview(item) {
  */
 function KDGetRestraintPreviewImage(restraint) {
 	try {
-		if (KDTex(KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.name}.png`)?.valid) return KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.name}.png`;
+		if (KDTex(KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.preview || restraint.name}.png`)?.valid) return KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.preview || restraint.name}.png`;
 	} catch (e) {
 		console.log(e);
 	}

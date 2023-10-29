@@ -378,6 +378,7 @@ function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = un
 	});
 	return {
 		//protection: 0,
+		preview: restraint.preview || restraint.name,
 		protectionCursed: true,
 		escapeChance: escapeChance,
 		DefaultLock: lock,
