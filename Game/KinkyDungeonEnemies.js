@@ -221,8 +221,22 @@ function KDGetBindAmp(enemy, override) {
 	return 1;
 }
 
+/**
+ * Bound and unable to do anything
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
 function KDHelpless(enemy) {
 	return enemy && !enemy.player && (enemy.hp <= 0.52 || enemy.boundLevel > 10 * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
+}
+
+/**
+ * Bound with no way out
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDIsHopeless(enemy) {
+	return enemy && !enemy.player && (enemy.boundLevel > 10 * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
 }
 
 function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI_Data) {
@@ -5936,7 +5950,8 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 			for (let r of protectRestraints) {
 				if (count < multiPower) {
 					KinkyDungeonRemoveRestraint(KDRestraint(r).Group, false, undefined, undefined, undefined, undefined, undefined, true);
-					KinkyDungeonDropItem({name: r.name}, KinkyDungeonPlayerEntity, false, true, true);
+					// @ts-ignore
+					KinkyDungeonDropItem({name: r.inventoryVariant || r.inventoryAs || r.name}, KinkyDungeonPlayerEntity, false, true, true);
 					KinkyDungeonSendTextMessage(
 						5, TextGet("KDArmorBlock")
 							.replace("ArmorName", KDGetItemName(r))
