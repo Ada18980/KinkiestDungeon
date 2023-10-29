@@ -3290,7 +3290,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 				tightness: Tightness, curse: Curse, faction: faction, dynamicLink: linkUnder.dynamicLink };
 
 			if (!Curse) KinkyDungeonLock(linkUnder.dynamicLink, Lock);
-			if (inventoryAs) linkUnder.dynamicLink.inventoryAs = inventoryAs;
+			if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
 			if (!safeLink) {
 				let lk = linkUnder.dynamicLink;
 				// Remove the original by iterating down and identifying one we can delete
@@ -3309,7 +3309,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 							(!KDGetCurse(link) && Curse)
 							|| (!Curse && Lock && !KDGetCurse(link) && !link.lock)
 							|| (Curse && KDCurses[Curse].level > KDCurses[KDGetCurse(link)]?.level)
-							|| (Lock && KDLocks[link.lock].lockmult > KDLocks[link.lock]?.lockmult)
+							|| (Lock && KDLocks[Lock].lockmult > KDLocks[link.lock]?.lockmult)
 						)
 						) {
 							lastlink.dynamicLink = link.dynamicLink;
@@ -3621,7 +3621,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 					tightness: tight, lock: "", faction: faction, dynamicLink: dynamicLink,
 					data: data,
 				};
-				if (inventoryAs) item.inventoryAs = inventoryAs;
+				if (inventoryAs) item.inventoryVariant = inventoryAs;
 				KDRestraintDebugLog.push("Adding " + item.name);
 				KinkyDungeonInventoryAdd(item);
 				KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: item, host: undefined, keep: Keep, Link: Link});
@@ -3768,7 +3768,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 					}
 					KinkyDungeonPlayerNeedsRefresh = true;
 				}
-				let inventoryAs = item.inventoryAs || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
+				let inventoryAs = item.inventoryVariant || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
 				if (rest.inventory && !ForceRemove
 					&& (Keep
 						|| ((
@@ -3785,7 +3785,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 
 						if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
 							let loose = {name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:item.events || origRestraint.events, quantity: 1};
-							if (item.inventoryAs) loose.inventoryAs = item.inventoryAs;
+							if (item.inventoryVariant) loose.inventoryVariant = item.inventoryVariant;
 							if (KinkyDungeonInventoryVariants[inventoryAs]) loose.showInQuickInv = true;
 							KinkyDungeonInventoryAdd(loose);
 						} else {
@@ -3870,7 +3870,7 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 			KinkyDungeonSendEvent("remove", {item: rest, keep: Keep, shrine: false, dynamic: true});
 
 		if (!KinkyDungeonCancelFlag) {
-			let inventoryAs = item.inventoryAs || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
+			let inventoryAs = item.inventoryVariant || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
 			if (rest.inventory && !ForceRemove
 				&& (Keep
 					|| rest.enchanted
@@ -3883,7 +3883,7 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 						KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + rest.name)), "#aaffaa", 1);
 					if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
 						let loose = {name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:item.events || origRestraint.events, quantity: 1};
-						if (item.inventoryAs) loose.inventoryAs = item.inventoryAs;
+						if (item.inventoryVariant) loose.inventoryVariant = item.inventoryVariant;
 						if (KinkyDungeonInventoryVariants[inventoryAs]) loose.showInQuickInv = true;
 						KinkyDungeonInventoryAdd(loose);
 					} else KinkyDungeonInventoryGetLoose(inventoryAs).quantity += 1;
@@ -4009,7 +4009,7 @@ function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 			if (newRestraint) {
 
 				KDRestraintDebugLog.push("Adding Unlinked " + newRestraint.name);
-				KinkyDungeonAddRestraint(newRestraint, UnLink.tightness, true, UnLink.lock, Keep, undefined, undefined, UnLink?.events, UnLink.faction, true, UnLink.dynamicLink, UnLink.curse, undefined, undefined, UnLink.inventoryAs, UnLink.data);
+				KinkyDungeonAddRestraint(newRestraint, UnLink.tightness, true, UnLink.lock, Keep, undefined, undefined, UnLink?.events, UnLink.faction, true, UnLink.dynamicLink, UnLink.curse, undefined, undefined, UnLink.inventoryVariant, UnLink.data);
 
 				KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true});
 				if (KDRestraint(item).UnLink) {
@@ -4594,7 +4594,8 @@ function KDGetRemovableHex(item, level) {
  * @returns {KDInventoryVariant}
  */
 function KDGetInventoryVariant(item) {
-	return KinkyDungeonInventoryVariants[item.inventoryAs || item.name];
+	// @ts-ignore
+	return KinkyDungeonInventoryVariants[item.inventoryVariant || item.inventoryAs || item.name];
 }
 
 let KDRestraintDebugLog = [];
@@ -4605,7 +4606,7 @@ let KDRestraintDebugLog = [];
  */
 function KDGetItemName(item) {
 	let base = TextGet("Restraint" + KDRestraint(item).name);
-	let variant = KinkyDungeonInventoryVariants[item.inventoryAs || item.name];
+	let variant = KinkyDungeonInventoryVariants[item.inventoryVariant || item.name];
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }

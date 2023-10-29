@@ -381,7 +381,7 @@ function KinkyDungeonClickSpell(i) {
 		}
 		if (!equipped && newItem) {
 			KDSendInput("equip", {name: item.name,
-				inventoryAs: item.name != newItem.name ?
+				inventoryVariant: item.name != newItem.name ?
 					item.name : undefined,
 				group: newItem.Group, curse: item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.events)});
 		}

@@ -121,11 +121,11 @@ let KDSpecialFilters = {
 	armor: {
 		Enchanted: (item, handle) => {
 			if (handle) KDFilterFilters[Armor].Mundane = false;
-			return KinkyDungeonInventoryVariants[item.inventoryAs || item.name] != undefined;
+			return KinkyDungeonInventoryVariants[item.inventoryVariant || item.name] != undefined;
 		},
 		Mundane: (item, handle) => {
 			if (handle) KDFilterFilters[Armor].Enchanted = false;
-			return !KinkyDungeonInventoryVariants[item.inventoryAs || item.name];
+			return !KinkyDungeonInventoryVariants[item.inventoryVariant || item.name];
 		},
 	},
 	weapon: {
@@ -189,13 +189,13 @@ let KDSpecialFilters = {
 	restraint: {
 		Special: (item, handle) => {
 			if (handle) KDFilterFilters[Restraint].Mundane = false;
-			return (KDRestraint(item)?.armor && KinkyDungeonInventoryVariants[item.inventoryAs || item.name] != undefined)
+			return (KDRestraint(item)?.armor && KinkyDungeonInventoryVariants[item.inventoryVariant || item.name] != undefined)
 				|| (!KDRestraint(item)?.armor && (KDRestraintSpecial(item)));
 		},
 		Mundane: (item, handle) => {
 			if (handle) KDFilterFilters[Restraint].Special = false;
 			return !(
-				(KDRestraint(item)?.armor && KinkyDungeonInventoryVariants[item.inventoryAs || item.name] != undefined)
+				(KDRestraint(item)?.armor && KinkyDungeonInventoryVariants[item.inventoryVariant || item.name] != undefined)
 				|| (!KDRestraint(item)?.armor && (KDRestraintSpecial(item)))
 			);
 		},
@@ -295,7 +295,7 @@ function KinkyDungeonHandleInventory() {
 					KDConfirmOverInventoryAction = true;
 					return true;
 				} else if (KDSendInput("equip", {name: filteredInventory[KinkyDungeonCurrentPageInventory].item.name,
-					inventoryAs: filteredInventory[KinkyDungeonCurrentPageInventory].item.name != newItem.name ?
+					inventoryVariant: filteredInventory[KinkyDungeonCurrentPageInventory].item.name != newItem.name ?
 						filteredInventory[KinkyDungeonCurrentPageInventory].item.name : undefined,
 					group: newItem.Group, curse: filteredInventory[KinkyDungeonCurrentPageInventory].item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], filteredInventory[KinkyDungeonCurrentPageInventory].item.events)})) return true;
 
@@ -577,7 +577,7 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 	let category = KinkyDungeonInventory.get(Filter);
 	if (category)
 		for (let item of category.values()) {
-			if (ignoreHidden && KDGameData.HiddenItems && KDGameData.HiddenItems[item.inventoryAs || item.name]) continue;
+			if (ignoreHidden && KDGameData.HiddenItems && KDGameData.HiddenItems[item.inventoryVariant || item.name]) continue;
 
 			// Special filters here
 			if (filter_orig == Armor && !KDRestraint(item)?.armor) continue;
@@ -1739,7 +1739,7 @@ function KinkyDungeonDrawQuickInv() {
 						}
 						if (!equipped && newItem) {
 							if (KDSendInput("equip", {name: item.item.name,
-								inventoryAs: item.item.name != newItem.name ?
+								inventoryVariant: item.item.name != newItem.name ?
 									item.item.name : undefined,
 								group: newItem.Group, curse: item.item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.item.events)})) return true;
 						}
@@ -1964,7 +1964,7 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 					}
 					if (!equipped && newItem) {
 						if (KDSendInput("equip", {name: item.item.name,
-							inventoryAs: item.item.name != newItem.name ?
+							inventoryVariant: item.item.name != newItem.name ?
 								item.item.name : undefined,
 							group: newItem.Group, curse: item.item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.item.events)})) return true;
 					}
@@ -2050,7 +2050,7 @@ function KDLoadQuickLoadout(num, clearFirst) {
 					let currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 					KDSendInput("equip", {
 						name: restraintItem.name,
-						inventoryAs: restraintItem.name != newItem.name ?
+						inventoryVariant: restraintItem.name != newItem.name ?
 							restraintItem.name : undefined,
 						group: newItem.Group,
 						curse: restraintItem.curse,
@@ -2133,8 +2133,8 @@ function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground
 	if (worn) {
 		let list = KinkyDungeonAllRestraintDynamic();
 		for (let inv of list) {
-			if ((inv.item.inventoryAs && KinkyDungeonInventoryVariants[inv.item.inventoryAs])) {
-				found[inv.item.inventoryAs] = true;
+			if ((inv.item.inventoryVariant && KinkyDungeonInventoryVariants[inv.item.inventoryVariant])) {
+				found[inv.item.inventoryVariant] = true;
 			}
 			// The following is unneeded for now
 			/*else if (KinkyDungeonInventoryVariants[inv.item.name]) {
@@ -2214,7 +2214,7 @@ function KDMorphToInventoryVariant(item, variant, prefix = "", curse) {
 		item.name = variant.template;
 		item.curse = curse;
 		item.events = events;
-		item.inventoryAs = newname;
+		item.inventoryVariant = newname;
 	}
 }
 

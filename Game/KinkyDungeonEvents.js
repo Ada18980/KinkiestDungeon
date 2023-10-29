@@ -175,7 +175,7 @@ let KDEventMapInventory = {
 		},
 		"cursePrefix": (e, item, data) => {
 			if (item == data.item) {
-				let variant = KinkyDungeonInventoryVariants[item.inventoryAs || item.name];
+				let variant = KinkyDungeonInventoryVariants[item.inventoryVariant || item.name];
 				if (variant) {
 					if (variant.prefix == "Enchanted")
 						variant.prefix = "Cursed";
@@ -516,7 +516,7 @@ let KDEventMapInventory = {
 
 				// Load the current inventory variant
 				/** @type {KDInventoryVariant} */
-				let newvariant = JSON.parse(JSON.stringify(KinkyDungeonInventoryVariants[item.inventoryAs || item.name] || {}));
+				let newvariant = JSON.parse(JSON.stringify(KinkyDungeonInventoryVariants[item.inventoryVariant || item.name] || {}));
 				/** @type {restraint} - New restraint to transform to*/
 				let newRestraint = null;
 				if (data.newRestraintTags) {

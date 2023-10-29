@@ -7,12 +7,18 @@
  * Location and location/neighbors
  * @type {Record<string, {x: number, y: number, neighbors: number}>} */
 let KDCommanderChokes = null;
+let KDUpdateChokes = true;
+
+/**
+ * Who is helping the struggler
+ * @type {Record<string, number>} */
+let KDStruggleAssisters = {};
+
+
 /**
  * Enemy ID and role
  * @type {Map<number, string>} */
 let KDCommanderRoles = new Map();
-
-let KDUpdateChokes = true;
 
 let KDCOMMANDERMAXNEIGHBORS = 2;
 
@@ -644,7 +650,7 @@ let KDCommanderOrders = {
 				&& (!KDAIType[KDGetAI(enemy)]
 					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
 				&& KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius || 1.5, undefined, true, enemy).some((en) => {
-					return en != enemy && en.boundLevel > 0 && !KDEnemyHasFlag(en, "imprisoned");
+					return en != enemy && en.boundLevel > 0 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
 				})
 			) return true;
 			return false;
@@ -664,7 +670,7 @@ let KDCommanderOrders = {
 		// Role maintenance
 		maintain: (enemy, data) => {
 			if (!KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius || 1.5, undefined, true, enemy).some((en) => {
-				return en != enemy && en.boundLevel > 0 && !KDEnemyHasFlag(en, "imprisoned");
+				return en != enemy && en.boundLevel > 0 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
 			})) return false;
 			return (!enemy.IntentAction && (enemy.attackPoints < 1)
 				&& !KDHelpless(enemy));
@@ -673,10 +679,10 @@ let KDCommanderOrders = {
 		update: (enemy, data) => {
 			if (!KDEnemyHasFlag(enemy, "tickHS")) {
 				let search = KDNearbyEnemies(enemy.x, enemy.y, 1.5, undefined, true, enemy).filter((en) => {
-					return en != enemy && en.boundLevel > 0 && !KDEnemyHasFlag(en, "imprisoned");
+					return en != enemy && en.boundLevel > 0 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
 				});
 				if (search.length == 0) search = KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius || 2.5, undefined, true, enemy).filter((en) => {
-					return en != enemy && en.boundLevel > 0 && !KDEnemyHasFlag(en, "imprisoned");
+					return en != enemy && en.boundLevel > 0 && !KDIsHopeless(en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
 				});
 				if (search.length > 0) {
 					let help = search[Math.floor(KDRandom() * search.length)];
@@ -689,6 +695,8 @@ let KDCommanderOrders = {
 						enemy.gy = help.y;
 					}
 
+					KDStruggleAssisters[help.id] = enemy.id;
+
 					if (help.hp <= 0.52 && KDistChebyshev(enemy.x - help.x, enemy.y - help.y) < 1.5) help.hp = 0.6;
 				}
 				KinkyDungeonSetEnemyFlag(enemy, "tickHS", 5 + Math.round(5 * KDRandom()));
@@ -697,7 +705,15 @@ let KDCommanderOrders = {
 		},
 
 		// Global role variables
-		global_before: ( data) => {},
+		global_before: ( data) => {
+			let struggleList = JSON.parse(JSON.stringify(KDStruggleAssisters));
+			KDStruggleAssisters = {};
+			for (let en of KDMapData.Entities) {
+				if (struggleList[en.id] != undefined && KDCommanderRoles.get(en.id) == 'helpStruggle') {
+					KDStruggleAssisters[struggleList[en.id]] = en.id;
+				}
+			}
+		},
 		global_after: (data) => {},
 	},
 };

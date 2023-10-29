@@ -3525,6 +3525,7 @@ function KinkyDungeonGenerateSaveData() {
 	save.statchoice = Array.from(KinkyDungeonStatsChoice);
 	save.mapIndex = KinkyDungeonMapIndex;
 	save.flags = Array.from(KinkyDungeonFlags);
+	save.KDCommanderRoles = Array.from(KDCommanderRoles);
 	save.faction = KinkyDungeonFactionRelations;
 	save.perks = KDUnlockedPerks;
 	save.inventoryVariants = KinkyDungeonInventoryVariants;
@@ -3720,7 +3721,6 @@ function KinkyDungeonLoadGame(String) {
 				if (saveData.KinkyDungeonTilesMemory) KDMapData.TilesMemory = saveData.KinkyDungeonTilesMemory;
 				if (saveData.KinkyDungeonRandomPathablePoints) KDMapData.RandomPathablePoints = saveData.KinkyDungeonRandomPathablePoints;
 				if (saveData.KinkyDungeonEntities) KDMapData.Entities = saveData.KinkyDungeonEntities;
-				KDCommanderRoles = new Map();
 				if (saveData.KinkyDungeonBullets) KDMapData.Bullets = saveData.KinkyDungeonBullets;
 				if (saveData.KinkyDungeonStartPosition) KDMapData.StartPosition = saveData.KinkyDungeonStartPosition;
 				if (saveData.KinkyDungeonEndPosition) KDMapData.EndPosition = saveData.KinkyDungeonEndPosition;
@@ -3732,6 +3732,8 @@ function KinkyDungeonLoadGame(String) {
 				KinkyDungeonResetFog();
 				if (saveData.KinkyDungeonFogGrid) KDMapData.FogGrid = saveData.KinkyDungeonFogGrid;
 			}
+
+			if (saveData.KDCommanderRoles) KDCommanderRoles = new Map(saveData.KDCommanderRoles);
 
 			KDUpdateEnemyCache = true;
 

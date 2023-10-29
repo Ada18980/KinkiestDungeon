@@ -3058,7 +3058,7 @@ KinkyDungeonObject,"object"
 
 KinkyDungeonObjectCharger,"It appears to be a receptacle for an ancient crystal."
 KinkyDungeonObjectChargerDestroyed,"It's a pile of slag emitting a strange magic smoke..."
-KinkyDungeonObjectLock,"That object is locked"
+KinkyDungeonObjectLock,"That object is locked with a LKTP."
 KinkyDungeonObjectShrine,"A shrine to the goddess of TYPE. A pool of mana glimmers below."
 KinkyDungeonObjectShrineCommerce,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectDoor,"That door is open. Do you want to close it?"
@@ -12886,6 +12886,6 @@ KDVarPrefEnchanted,Enchanted
 KDVarPrefCursed,Cursed
 
 KDIntroScene1,"Long ago, war raged across the globe.|Countless lives were lost fighting over pieces of rock in a vast ocean.|People turned to science, religion, and magic, anything to escape this cruel fate."
-KDIntroScene2,"Then the archmagus, Sarial Vinlaga, discovered the secret of immortality.|Sharing her research across the globe, she laid the groundwork for an era of peace.|A great civilization arose, where magic and technology flourished."
+KDIntroScene2,"Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharing her research across the globe, she laid the groundwork for an era of peace.|A great civilization arose, where magic and technology flourished."
 KDIntroScene3,"But in the end, Sariel's experiments left her weakened and unable to save herself.|Without a leader, the Old Civilization collapsed into tyranny.|Refugees fled across the sea in search of a new life, and the old empire was forgotten."
 KDIntroScene4,"It is now three hundred years after the fall.|Explorers have rediscovered a lost island full of old technology.|Now, adventurers flock to the ancient ruins in search of wealth."
