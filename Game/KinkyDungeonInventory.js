@@ -500,10 +500,10 @@ return null;*/
 /**
  *
  * @param {NamedAndTyped} item
- * @returns {{name: any; item: any; preview: string, previewcolor?: string; previewcolorbg?: string;}}
+ * @returns {{name: any; item: any; preview: string, preview2?: string, previewcolor?: string; previewcolorbg?: string;}}
  */
 function KDGetItemPreview(item) {
-	/** @type {{name: any; item: any; preview: string, previewcolor?: string; previewcolorbg?: string;}} */
+	/** @type {{name: any; item: any; preview: string, preview2?: string, previewcolor?: string; previewcolorbg?: string;}} */
 	let ret = null;
 	let Group = "";
 	if (item.type == Restraint && KDRestraint(item).Group) Group = KDRestraint(item).Group;
@@ -520,8 +520,9 @@ function KDGetItemPreview(item) {
 			item: item,
 		};
 		KinkyDungeonSendEvent("icon", data);
-		ret = {name: item.name, item: item, preview:
-			KDGetRestraintPreviewImage(KDRestraint(item)),
+		ret = {name: item.name, item: item,
+			preview: KDGetRestraintPreviewImage(KDRestraint(item)),
+			preview2: KDGetGroupPreviewImage(KDRestraint(item).Group),
 		};
 		if (data.color) {
 			ret.previewcolor = data.color;
@@ -539,8 +540,10 @@ function KDGetItemPreview(item) {
 			item: item,
 		};
 		KinkyDungeonSendEvent("icon", data);
-		ret = {name: KDRestraint(item).name, item: item, preview:
-			KDGetRestraintPreviewImage(KDRestraint(item))};
+		ret = {name: KDRestraint(item).name, item: item,
+			preview: KDGetRestraintPreviewImage(KDRestraint(item)),
+			preview2: KDGetGroupPreviewImage(KDRestraint(item).Group),
+		};
 		if (data.color) {
 			ret.previewcolor = data.color;
 		}
@@ -555,6 +558,23 @@ function KDGetItemPreview(item) {
 	//else if (item && item.name) ret.push({name: item.name, item: item, preview: ``});
 	return ret;
 }
+
+
+/**
+ *
+ * @param {string} Group
+ * @returns {string}
+ */
+function KDGetGroupPreviewImage(Group) {
+	try {
+		if (KDTex(KinkyDungeonRootDirectory + `/Items/Group/${Group}.png`)?.valid) return KinkyDungeonRootDirectory + `/Items/Group/${Group}.png`;
+	} catch (e) {
+		console.log(e);
+	}
+
+	return KinkyDungeonRootDirectory + `/Items/Restraint.png`;
+}
+
 
 /**
  *
@@ -589,7 +609,7 @@ function KDGetRestraintPreviewImage(restraint) {
  * @param {boolean} [ignoreFilters]
  * @param {string} [click] - this filter will be handled and thus updates the filters
  * @param {string} [namefilter]
- * @returns {{name: any; item: any; preview: string; previewcolor?: string; previewcolorbg?: string}[]}
+ * @returns {{name: any; item: any; preview: string; preview2?: string; previewcolor?: string; previewcolorbg?: string}[]}
  */
 function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilters, click, namefilter) {
 	let filter_orig = Filter;
@@ -659,7 +679,7 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 
 /**
  *
- * @param {{name: any, item: item, preview: string}} item
+ * @param {{name: any, item: item, preview: string, preview2?: string}} item
  * @param {boolean} [noscroll]
  * @param {boolean} [treatAsHover]
  * @param {number} xOffset
@@ -711,6 +731,11 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 			item.preview, xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 40, 100, 100, undefined, {
 				zIndex: 129,
 			}, undefined, undefined, undefined, true);
+		if (item.preview2)
+			KDDraw(kdcanvas, kdpixisprites, "preview2",
+				item.preview2, xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 40, 100, 100, undefined, {
+					zIndex: 129.1,
+				}, undefined, undefined, undefined, true);
 		//} else {
 		// Draw desc2//}
 
@@ -1028,6 +1053,13 @@ function KinkyDungeonDrawInventory() {
 					undefined, undefined, index != KinkyDungeonCurrentPageInventory, KDTextGray1, undefined, undefined, {
 						scaleImage: true,
 					});
+					if (useIcons && filteredInventory[index].preview2)
+						KDDraw(kdcanvas, kdpixisprites, "invchoice_2_" + i,
+							filteredInventory[index].preview2, canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 135, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+							undefined, {
+								zIndex: 100.003,
+								alpha: 0.9,
+							});
 					if (filteredInventory[index].previewcolor) {
 						KDDraw(kdcanvas, kdpixisprites, "invchoice_halo" + i,
 							KinkyDungeonRootDirectory + "/UI/ItemAura.png", canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 135, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
@@ -1775,6 +1807,13 @@ function KinkyDungeonDrawQuickInv() {
 					scaleImage: true,
 				}
 			);
+			if (item.preview2)
+				KDDraw(kdcanvas, kdpixisprites, "restraintsicon2" + w,
+					item.preview2, point.x, 1000 - V - Rheight + point.y, 80, 80,
+					undefined, {
+						zIndex: 109.003,
+						alpha: 0.9,
+					});
 			//DrawImageEx(item.preview, point.x, 1000 - V - Rheight + point.y, {Width: 80, Height: 80});
 			/*KDDraw(kdcanvas, kdpixisprites, "restraintsicon" + w,
 				item.preview, point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {

@@ -989,9 +989,12 @@ function KinkyDungeonDrawInputs() {
 
 			if (!mini)
 				DrawTextFitKD(GroupText, x + (icon? ButtonWidth : 0) + ((!sg.left) ? ButtonWidth - (drawLayers ? ButtonWidth : 0) : 0), y + ButtonWidth/2, 250 - (icon ? ButtonWidth : 0), color, "#333333", 24, sg.left ? "left" : "right");
-			else
+			else {
 				KDDraw(kdcanvas, kdpixisprites, "iconrest" + sg.name + GroupText, KDGetItemPreview(item).preview,
 					x + 3, y + 5, ButtonWidth, ButtonWidth, undefined, {zIndex: 69});
+				KDDraw(kdcanvas, kdpixisprites, "iconrest2" + sg.name + GroupText, KDGetItemPreview(item).preview2,
+					x + 3, y + 5, ButtonWidth, ButtonWidth, undefined, {zIndex: 69.1});
+			}
 
 			if (drawLayers) {
 				KDDraw(kdcanvas, kdpixisprites, "layers" + sg.name, KinkyDungeonRootDirectory + "Layers.png",
@@ -1382,10 +1385,16 @@ function KinkyDungeonDrawInputs() {
 					}
 				} else if (item) {
 					icon += 1;
-					KDDraw(kdcanvas, kdpixisprites, "spellIcon" + icon + "," + indexPaged,  KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)}).preview
+					let prev = KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)});
+					KDDraw(kdcanvas, kdpixisprites, "spellIcon" + icon + "," + indexPaged,  prev.preview
 						,buttonDim.x - buttonDim.wsmall * page, buttonDim.y, buttonDim.wsmall, buttonDim.hsmall, undefined, {
 							zIndex: 71,
 						});
+					if (prev.preview2)
+						KDDraw(kdcanvas, kdpixisprites, "spellIcon2" + icon + "," + indexPaged,  prev.preview2
+							,buttonDim.x - buttonDim.wsmall * page, buttonDim.y, buttonDim.wsmall, buttonDim.hsmall, undefined, {
+								zIndex: 71,
+							});
 					DrawButtonKD("UseItem" + indexPaged, true, buttonDim.x - buttonDim.wsmall * page, buttonDim.y, buttonDim.wsmall, buttonDim.hsmall, "",
 						"rgba(0, 0, 0, 0)", "", "", false, true);
 
