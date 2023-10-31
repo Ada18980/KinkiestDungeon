@@ -13,6 +13,8 @@ Vague todo:
 
 - TODO add scroll to log, rep
 
+4.82.1 (Oct 2023)
+- Added some changes to mobile touch controls to make it easier to use
 
 4.82 (Oct 2023)
 - New restraint UI
