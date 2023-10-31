@@ -1057,7 +1057,7 @@ function KinkyDungeonDrawInventory() {
 						KDDraw(kdcanvas, kdpixisprites, "invchoice_2_" + i,
 							filteredInventory[index].preview2, canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 135, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
 							undefined, {
-								zIndex: 100.003,
+								zIndex: 100.1,
 								alpha: 0.9,
 							});
 					if (filteredInventory[index].previewcolor) {
@@ -1811,7 +1811,7 @@ function KinkyDungeonDrawQuickInv() {
 				KDDraw(kdcanvas, kdpixisprites, "restraintsicon2" + w,
 					item.preview2, point.x, 1000 - V - Rheight + point.y, 80, 80,
 					undefined, {
-						zIndex: 109.003,
+						zIndex: 110.1,
 						alpha: 0.9,
 					});
 			//DrawImageEx(item.preview, point.x, 1000 - V - Rheight + point.y, {Width: 80, Height: 80});
