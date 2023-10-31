@@ -3389,7 +3389,7 @@ window.addEventListener('touchmove', function(event) {
 	}
 });
 window.addEventListener('touchend', function(event) {
-	if (CommonIsMobile && mouseDown && !MouseClicked && KDMouseInPlayableArea()) {
+	if (CommonIsMobile && mouseDown && !MouseClicked) {
 		KDClick();
 		MouseClicked = true;
 	} else MouseClicked = false;
