@@ -3033,6 +3033,7 @@ function KDGetLockVisual(item) {
  * @returns {boolean} - Restraint can be added
  */
 function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpower, securityEnemy, useAugmentedPower, curse, augmentedInventory, powerBonus = 0) {
+	if (!KinkyDungeonIsLockable(restraint)) Lock = "";
 	if (!curse && restraint.curse) curse = restraint.curse;
 	if (restraint.bypass) Bypass = true;
 	// Limits
@@ -3257,6 +3258,7 @@ function KDApplyVarToInvVar(restraint, variant) {
  * @returns {number}
  */
 function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs, data, augmentedInventory, variant) {
+	if (!KinkyDungeonIsLockable(restraint)) Lock = "";
 	if (typeof restraint === "string") {
 		KDRestraintDebugLog.push("Lookup" + restraint);
 		restraint = KinkyDungeonGetRestraintByName(restraint);
@@ -4380,7 +4382,7 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 			let enemyTags = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Random"] = baseWeight + 3;
-			let shrine = [ ...allTag, ...KDGetRestraintTags(origRestraint)];
+			let shrine = [ ...allTag,...KDGetRestraintTags(origRestraint)];
 			for (let t of removeTag) {
 				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);
 			}
