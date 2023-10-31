@@ -241,7 +241,7 @@ function CommonGetRetry(Path: string, Callback: (this: XMLHttpRequest, xhr: XMLH
  * @param event - The event that triggered this
  */
 function CommonClick(event: MouseEvent | TouchEvent): void {
-	KinkyDungeonClick();
+	//KinkyDungeonClick();
 }
 
 /**

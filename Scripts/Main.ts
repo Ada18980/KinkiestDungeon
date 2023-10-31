@@ -139,39 +139,42 @@ function KeyDown(event: KeyboardEvent): void {
  * When the user clicks, we fire the click event for other screens
  */
 function Click(event: MouseEvent): void {
-	if (!CommonIsMobile) {
-		MouseMove(event);
-		CommonClick(event);
-	}
+	//if (!CommonIsMobile) {
+	//MouseMove(event);
+	//CommonClick(event);
+	//}
 }
 
 /**
  * When the user touches the screen (mobile only), we fire the click event for other screens
  */
 function TouchStart(event: TouchEvent): void {
-	if (CommonIsMobile && PIXICanvas) {
+	/*if (CommonIsMobile && PIXICanvas) {
 		TouchMove(event.touches[0]);
-		CommonClick(event);
+		//CommonClick(event);
 		CommonTouchList = event.touches;
-	}
+		mouseDown = true;
+	}*/
 }
 
 /**
  * When the user touches the screen (mobile only), we fire the click event for other screens
  */
 function TouchEnd(event: TouchEvent): void {
-	if (CommonIsMobile && PIXICanvas)
-		CommonTouchList = event.touches;
+	//if (CommonIsMobile && PIXICanvas) {
+	//CommonTouchList = event.touches;
+	//mouseDown = false;
+	//}
 }
 
 /**
  * When touch moves, we keep it's position for other scripts
  */
 function TouchMove(touch: Touch): void {
-	if (PIXICanvas) {
-		MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
-		MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
-	}
+	//if (PIXICanvas) {
+	//MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
+	//MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
+	//}
 }
 
 /**
