@@ -2321,6 +2321,7 @@ function KinkyDungeonHandleHUD() {
 	if (KDModalArea && MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height)) return true;
 	if (MouseIn(0, 0, 500, 1000)) return true;
 	if (MouseIn(1650, 0, 350, 1000)) return true;
+	if (MouseIn(0, 900, 2000, 100)) return true;
 	KDModalArea = false;
 	return false;
 }

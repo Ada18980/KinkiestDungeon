@@ -3498,7 +3498,7 @@ function KinkyDungeonClickGame(Level) {
 				KinkyDungeonSetMoveDirection();
 
 				if (KinkyDungeonTargetingSpell) {
-					if (MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)) {
+					if (KDMouseInPlayableArea()) {
 						if (KinkyDungeoCheckComponents(KinkyDungeonTargetingSpell).length == 0 || (
 							(KinkyDungeonStatsChoice.get("Slayer") && KinkyDungeonTargetingSpell.school == "Elements")
 							|| (KinkyDungeonStatsChoice.get("Conjurer") && KinkyDungeonTargetingSpell.school == "Conjure")
@@ -3510,7 +3510,7 @@ function KinkyDungeonClickGame(Level) {
 							}
 						} else KinkyDungeonTargetingSpell = null;
 					} else KinkyDungeonTargetingSpell = null;
-				} else if (KinkyDungeonIsPlayer() && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)) {
+				} else if (KinkyDungeonIsPlayer() && KDMouseInPlayableArea()) {
 					let fastMove = KinkyDungeonFastMove && !KinkyDungeonToggleAutoSprint;
 					if (fastMove && KDistChebyshev(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x, KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) > 0.5
 						&& (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5)) {

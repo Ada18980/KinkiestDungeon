@@ -190,6 +190,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round(filters[key]*10)/10), X + width/2, YY, width, "#ffffff", "#000000", 20);
 		KinkyDungeonBar(X, YY - 15, width, 30, filters[key]/5*100, KDColorSliderColor[key] || "#ffffff", "#000000");
 		if ((mouseDown || MouseClicked) && MouseIn(X, YY - 15, width, 30)) {
+			MouseClicked = false;
 			KDChangeWardrobe(C);
 			if (!Model.Filters) Model.Filters = {};
 			if (!Model.Filters[KDCurrentLayer])

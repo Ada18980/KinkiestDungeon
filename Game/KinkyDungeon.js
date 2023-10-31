@@ -933,7 +933,8 @@ function KinkyDungeonRun() {
 	if (!CommonIsMobile)
 		document.addEventListener('contextmenu', event => {
 			if (CommonIsMobile || document.activeElement?.id != "MainCanvas") {
-				// Nothing!!
+				// Trigger mouse clicked
+				//MouseClicked = true;
 			} else {
 				event.preventDefault();
 				let code = KinkyDungeonKeySkip[0];
@@ -1003,6 +1004,11 @@ function KinkyDungeonRun() {
 	if (KinkyDungeonState != "Consent" && KinkyDungeonState != "Logo" && (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats" && KinkyDungeonState != "TileEditor")
 		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
 
+	if (CommonIsMobile && mouseDown && !KDMouseInPlayableArea()) {
+		KDDraw(kdcanvas, kdpixisprites, "cursor", KinkyDungeonRootDirectory + "Cursor.png", MouseX, MouseY, 72, 72, undefined, {
+			zIndex: 300,
+		});
+	}
 
 	if (KinkyDungeonState == "Logo") {
 		if (CommonTime() > KDLogoStartTime + KDLogoEndTime) {
@@ -2202,7 +2208,7 @@ function KinkyDungeonRun() {
 	//MainCanvas.textBaseline = "middle";
 
 	KDLastButtonsCache = {};
-	MouseClicked = false;
+	//MouseClicked = false;
 
 	if ((!KDDebugMode && KinkyDungeonDrawState == "Restart") || (KDDebugMode && (KinkyDungeonDrawState != "Restart" || KinkyDungeonState != "Game"))) {
 		ElementRemove("DebugEnemy");
@@ -3252,6 +3258,10 @@ function KinkyDungeonHandleClick() {
  * @returns {void} - Nothing
  */
 function KinkyDungeonClick() {
+	//
+}
+
+function KDClick() {
 	if (KinkyDungeonState == "Logo") KinkyDungeonState = "Consent";
 	else
 	if (KinkyDungeonState == "Intro") {
@@ -3331,19 +3341,68 @@ function KinkyDungeonKeyDown() {
 let mouseDown = false;
 let MouseClicked = false;
 
+window.addEventListener('click', function(event) {
+	MouseMove(event);
+	if (!CommonIsMobile || !MouseClicked) {
+		//let touch = event.touches[0];
+		KDClick();
+	}
+	MouseClicked = true;
+	mouseDown = false;
+	//CommonClick(event);
+});
 window.addEventListener('mousedown', function() {
 	mouseDown = true;
-	MouseClicked = true;
+	if (!CommonIsMobile)
+		MouseClicked = true;
 });
-window.addEventListener('touchstart', function() {
+window.addEventListener('touchstart', function(event) {
 	MouseClicked = true;
+	if (CommonIsMobile) {
+		let touch = event.touches[0];
+		if (PIXICanvas) {
+			MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
+			MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
+		} else if (MainCanvas) {
+			MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
+			MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+		}
+		//CommonClick(event);
+		CommonTouchList = event.touches;
+		mouseDown = true;
+		MouseClicked = false;
+	}
+});
+
+window.addEventListener('touchmove', function(event) {
+	let touch = event.touches[0];
+	let startedInPlayableArea = KDMouseInPlayableArea();
+	if (PIXICanvas) {
+		MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
+		MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
+	} else if (MainCanvas) {
+		MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
+		MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+	}
+	if ((startedInPlayableArea && !KDMouseInPlayableArea() && !KinkyDungeonTargetingSpell) || (!startedInPlayableArea && KDMouseInPlayableArea())) {
+		MouseClicked = true; // To prevent KDClick on end
+	}
+});
+window.addEventListener('touchend', function(event) {
+	if (CommonIsMobile && mouseDown && !MouseClicked && KDMouseInPlayableArea()) {
+		KDClick();
+		MouseClicked = true;
+	} else MouseClicked = false;
 });
 window.addEventListener('mouseup', function() {
 	mouseDown = false;
+	if (!CommonIsMobile)
+		MouseClicked = false;
 });
 window.addEventListener('wheel', function(event) {
 	KDMouseWheel(event);
 });
+
 
 /**
  * Game keyboard input handler object: Handles keyboard inputs.

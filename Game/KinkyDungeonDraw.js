@@ -1307,7 +1307,7 @@ function KinkyDungeonDrawGame() {
 												});
 							}
 
-					} else if (KinkyDungeonFastMove && !(!KinkyDungeonSuppressSprint && KinkyDungeonToggleAutoSprint && KDCanSprint()) && (KinkyDungeonMoveDirection.x != 0 || KinkyDungeonMoveDirection.y != 0)) {
+					} else if ((KinkyDungeonFastMove && !(!KinkyDungeonSuppressSprint && KinkyDungeonToggleAutoSprint && KDCanSprint()) && (KinkyDungeonMoveDirection.x != 0 || KinkyDungeonMoveDirection.y != 0))) {
 						KinkyDungeonSetTargetLocation();
 
 
@@ -1339,7 +1339,7 @@ function KinkyDungeonDrawGame() {
 								}
 							}
 						}
-					} else if ((KinkyDungeonMoveDirection.x != 0 || KinkyDungeonMoveDirection.y != 0)) {
+					} else if ((mouseDown && KDMouseInPlayableArea()) || (KinkyDungeonMoveDirection.x != 0 || KinkyDungeonMoveDirection.y != 0)) {
 						let xx = KinkyDungeonMoveDirection.x + KinkyDungeonPlayerEntity.x;
 						let yy = KinkyDungeonMoveDirection.y + KinkyDungeonPlayerEntity.y;
 						if (KinkyDungeonSlowLevel < 2 && MouseIn(canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)) {
@@ -3820,7 +3820,9 @@ function KDGetLightColor(x, y) {
  */
 function KDMouseInPlayableArea() {
 	return MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)
-		&& !MouseIn(0, 0, 500, 1000) && !MouseIn(1750, 0, 250, 1000)
+		&& !MouseIn(0, 0, 500, 1000)
+		&& !MouseIn(1750, 0, 250, 1000)
+		&& !MouseIn(0, 900, 2000, 100)
 		&& !KDButtonHovering
 		&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))
 }
