@@ -644,13 +644,18 @@ let KDCommanderOrders = {
 		// Move toward struggling allies to help them
 		filter: (enemy, data) => {
 			if (!enemy.IntentAction
+				&& KDIsHumanoid(enemy)
 				&& (enemy.attackPoints < 1)
 				&& !KDIsImmobile(enemy)
 				&& !KDHelpless(enemy)
+				&& (!enemy.aware || KDAssaulters >= KDMaxAssaulters)
 				&& (!KDAIType[KDGetAI(enemy)]
 					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
 				&& KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius/2 || 1.5, undefined, true, enemy).some((en) => {
-					return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !KDHostile(enemy, en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
+					return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !KDHostile(enemy, en) && (!KDStruggleAssisters[en.id] || KDStruggleAssisters[en.id] == enemy.id)
+					&& !KDEnemyHasFlag(en, "imprisoned")
+					&& (!KDEntityHasBuffTags(en, "commandword") || enemy.Enemy.unlockCommandLevel > 0)
+					;
 				})
 			) return true;
 			return false;
@@ -670,19 +675,30 @@ let KDCommanderOrders = {
 		// Role maintenance
 		maintain: (enemy, data) => {
 			if (!KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius/2 || 1.5, undefined, true, enemy).some((en) => {
-				return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !KDHostile(enemy, en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
+				return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !KDHostile(enemy, en) && (!KDStruggleAssisters[en.id] || KDStruggleAssisters[en.id] == enemy.id)
+				&& !KDEnemyHasFlag(en, "imprisoned")
+				&& (!KDEntityHasBuffTags(en, "commandword") || enemy.Enemy.unlockCommandLevel > 0)
+				;
 			})) return false;
-			return (!enemy.IntentAction && (enemy.attackPoints < 1)
+			return (!enemy.IntentAction
+				&& (enemy.attackPoints < 1)
+				&& (!enemy.aware || KDAssaulters >= KDMaxAssaulters)
 				&& !KDHelpless(enemy));
 		},
 		remove: (enemy, data) => {},
 		update: (enemy, data) => {
 			if (!KDEnemyHasFlag(enemy, "tickHS")) {
 				let search = KDNearbyEnemies(enemy.x, enemy.y, 1.5, undefined, true, enemy).filter((en) => {
-					return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !KDHostile(enemy, en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
+					return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !KDHostile(enemy, en) && (!KDStruggleAssisters[en.id] || KDStruggleAssisters[en.id] == enemy.id)
+					&& !KDEnemyHasFlag(en, "imprisoned")
+					&& (!KDEntityHasBuffTags(en, "commandword") || enemy.Enemy.unlockCommandLevel > 0)
+					;
 				});
 				if (search.length == 0) search = KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius/2 || 1.5, undefined, true, enemy).filter((en) => {
-					return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !KDHostile(enemy, en) && !(KDStruggleAssisters[en.id] == enemy.id) && !KDEnemyHasFlag(en, "imprisoned");
+					return en != enemy && KDBoundEffects(en) > 1 && !KDIsHopeless(en) && !KDHostile(enemy, en) && (!KDStruggleAssisters[en.id] || KDStruggleAssisters[en.id] == enemy.id)
+					&& !KDEnemyHasFlag(en, "imprisoned")
+					&& (!KDEntityHasBuffTags(en, "commandword") || enemy.Enemy.unlockCommandLevel > 0)
+					;
 				});
 				if (search.length > 0) {
 					let help = search[Math.floor(KDRandom() * search.length)];
