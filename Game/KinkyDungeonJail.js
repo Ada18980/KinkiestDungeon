@@ -629,7 +629,7 @@ function KinkyDungeonMissingJailUniform() {
 					undefined,
 					!KinkyDungeonStatsChoice.has("TightRestraints") ? true : undefined,
 					undefined,
-					KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, KinkyDungeonJailGuard(),)
+					KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, KinkyDungeonJailGuard(), undefined, undefined, undefined, (jrest.variant && KDApplyVariants[jrest.variant]?.powerBonus) ? KDApplyVariants[jrest.variant].powerBonus : 0)
 				&& (!currentItem.dynamicLink || !KDDynamicLinkList(currentItem, true).some((item) => {return rest.name == item.name;})))
 			)
 			&& (KinkyDungeonStatsChoice.get("arousalMode") || !rest.arousalMode)

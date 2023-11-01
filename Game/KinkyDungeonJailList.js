@@ -304,7 +304,7 @@ let KDGuardActions = {
 						let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
 						let added = KinkyDungeonAddRestraintIfWeaker(newRestraint, 0,
 							true, undefined, undefined, undefined, undefined, KDGetFaction(KinkyDungeonJailGuard()),
-							KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, KinkyDungeonJailGuard());
+							KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, KinkyDungeonJailGuard(), undefined, undefined, undefined, undefined, (jrest.variant && KDApplyVariants[jrest.variant]) ? KDApplyVariants[jrest.variant] : undefined);
 						if (added) {
 							let restraintModification = oldRestraintItem ? "ChangeRestraints" : "AddRestraints";
 							let msg = TextGet("KinkyDungeon" + restraintModification).replace("EnemyName", TextGet("Name" + guard.Enemy.name));
@@ -460,8 +460,8 @@ let KDJailOutfits = {
 		restraints: [
 			{Name: "Stuffing", Level: 20},
 			{Name: "TrapGag", Level: 20},
-			{Name: "HighsecBallGag", Level: 50, Variant: "AntiMagic", Condition: "Mage"},
-			{Name: "HighsecBallGag", Level: 45},
+			{Name: "HighsecBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
+			{Name: "HighsecBallGag", Level: 35},
 			{Name: "HighsecMuzzle", Level: 70},
 			{Name: "FeetShackles", Level: 5},
 			{Name: "HighsecShackles", Level: 40},
@@ -623,7 +623,7 @@ let KDJailOutfits = {
 			{Name: "SturdyLeatherBeltsFeet", Level: 60},
 			{Name: "TrapArmbinder", Level: 50},
 			{Name: "TrapMittens", Level: 0},
-			{Name: "TrapGag", Level: 35, Variant: "AntiMagic", Condition: "Mage"},
+			{Name: "PanelGag", Level: 35, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "TrapGag", Level: 10},
 			{Name: "PanelGag", Level: 20},
 			{Name: "TrapHarness", Level: 40},
