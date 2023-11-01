@@ -219,6 +219,10 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 			delete poses.Front;
 			delete poses.Crossed;
 		}
+		if (CheckPoseOrTags(C, "ElbowTied") && poses.Wristtie) {
+			delete poses.Boxtie;
+			delete poses.Up;
+		}
 		if (CheckPoseOrTags(C, "HandsUp")) {
 			delete poses.Boxtie;
 			delete poses.Wristtie;

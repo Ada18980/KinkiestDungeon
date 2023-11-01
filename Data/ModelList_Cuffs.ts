@@ -108,6 +108,20 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "ShacklesArms",
+	Folder: "Cuffs",
+	TopLevel: true,
+	Parent: "Shackles",
+	Categories: ["Restraints","Cuffs"],
+	AddPose: ["ElbowLeft", "ElbowRight", "WristLeft", "WristRight"],
+	Layers: ToLayerMap([
+		...GetModelLayers("ShacklesWristLeft"),
+		...GetModelLayers("ShacklesWristRight"),
+		...GetModelLayers("ShacklesElbowLeft"),
+		...GetModelLayers("ShacklesElbowRight"),
+	])
+});
 
 AddModel({
 	Name: "ShacklesAnklesLeft",
@@ -119,6 +133,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "AnkleLeft", Layer: "AnkleLeft", Pri: 30,
 			Poses: ToMap([...FOOTLEFTPOSES]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			DisplacementSprite: "AnkleCuffLeft",
 			DisplaceLayers: ToMap(["LegCuffs"]),
 			DisplaceAmount: 50,
@@ -168,6 +183,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "ThighLeft", Layer: "ThighLeft", Pri: 30,
 			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			DisplacementSprite: "ThighCuffLeft",
 			DisplaceLayers: ToMap(["LegCuffs"]),
 			DisplaceAmount: 50,
