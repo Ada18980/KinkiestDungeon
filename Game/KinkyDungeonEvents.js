@@ -140,6 +140,7 @@ let KDEventMapInventory = {
 		*/
 		"ControlHarness": (e, item, data) => {
 			let itemAdded = data.item;
+			if (!itemAdded) return;
 			let itemtags = KDRestraint(itemAdded)?.shrine;
 			console.log(itemtags);
 			// Ignore anything that isnt futuristic

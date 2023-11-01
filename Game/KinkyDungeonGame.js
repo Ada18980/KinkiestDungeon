@@ -1082,7 +1082,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			// Place enemies after player
 			if (!altType || altType.enemies) {
 
-				KinkyDungeonPlaceEnemies(spawnPoints, false, tags, bonus, Floor, width, height, altRoom,
+				KinkyDungeonPlaceEnemies(spawnPoints, false, tags, bonus, Floor, width, height, altType,
 					randomFactions, factionEnemy);
 			}
 
@@ -1451,6 +1451,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				return spawn.force;
 			});
 			culledSpawns = true;
+			currentCluster = null;
 			if (spawns.length == 0) break;
 		}
 
@@ -1480,7 +1481,12 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 
 		let filterTags = JSON.parse(JSON.stringify(filterTagsBase));
 
-		if (currentCluster && !(3 * KDRandom() < currentCluster.count)) {
+		if (altRoom && altRoom.factionSpawnsRequired) {
+			let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]]] : "jailer";
+			if (jt) tags.push(jt);
+		}
+
+		if (currentCluster && !(3 * KDRandom() < currentCluster.count) && !culledSpawns) {
 			filterTags = JSON.parse(JSON.stringify(filterTagsCluster));
 			required.push(currentCluster.required);
 			X = currentCluster.x - 2 + Math.floor(KDRandom() * 5);
@@ -1566,7 +1572,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		}
 
 		if ((spawnPoint && KinkyDungeonNoEnemy(X, Y, true)) || (
-			KDMapData.RandomPathablePoints["" + X + "," + Y]
+			KDMapData.RandomPathablePoints["" + X + "," + Y] && !culledSpawns
 			//(!KinkyDungeonTilesGet("" + X + "," + Y) || !KinkyDungeonTilesGet("" + X + "," + Y).OffLimits)
 			&& Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) > playerDist && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))
 			&& KinkyDungeonNoEnemy(X, Y, true) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits))) {
@@ -1609,14 +1615,18 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				forceIndex || KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 				KinkyDungeonMapGet(X, Y),
 				required,
-				ncount > neutralCount && (!box || !box.ignoreAllyCount),
+				{
+					requireHostile: ((!altRoom || altRoom.reduceNeutrals) && ncount > neutralCount && (!box || !box.ignoreAllyCount)) ? "Player" : "",
+					requireAllied: altRoom?.factionSpawnsRequired ? KDGetMainFaction() : "",
+					requireNonHostile: altRoom?.neutralSpawnsRequired ? KDGetMainFaction() : "",
+				},
 				BonusTags,
 				currentCluster ? filterTagsCluster : filterTags);
 			if (box && !Enemy) {
 				box.currentCount += 0.05;
 			}
 			if (Enemy && (!InJail || (Enemy.tags.jailer || Enemy.tags.jail || Enemy.tags.leashing))) {
-				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, AI: KDGetAITypeOverride(Enemy, AI) || Enemy.AI, faction: faction};
+				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, AI: KDGetAITypeOverride(Enemy, AI) || AI || Enemy.AI, faction: faction};
 				if (spawnPoint) {
 					e.spawnX = X;
 					e.spawnY = Y;
@@ -2207,7 +2217,7 @@ function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, 
 					let Enemy = KinkyDungeonGetEnemy(
 						tags, KDGetEffLevel(),
 						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
-						'0', requireTags, true);
+						'0', requireTags, {requireHostile: "Player"});
 					if (Enemy) {
 						let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, undefined, true, (xx, yy) => {
 							return !KDEffectTileTags(xx, yy).rune;

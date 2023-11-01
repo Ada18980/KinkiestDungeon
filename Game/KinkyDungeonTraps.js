@@ -180,7 +180,7 @@ let KDTrapTypesStepOff = {
 					let Enemy = KinkyDungeonGetEnemy(
 						tags, MiniGameKinkyDungeonLevel,
 						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
-						'0', requireTags, true);
+						'0', requireTags, {requireHostile: "Player"});
 					if (Enemy) {
 						KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, Enemy.tags.construct ? 23 : undefined, undefined, true, "Ambush", true, 1.5, true, undefined, true);
 						if (Enemy.tags.minor) spawned += 0.4;

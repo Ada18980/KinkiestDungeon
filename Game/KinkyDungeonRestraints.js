@@ -3291,10 +3291,10 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 				data: data,
 				tightness: Tightness, curse: Curse, faction: faction, dynamicLink: linkUnder.dynamicLink };
 
+			let lk = linkUnder.dynamicLink;
 			if (!Curse) KinkyDungeonLock(linkUnder.dynamicLink, Lock);
 			if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
 			if (!safeLink) {
-				let lk = linkUnder.dynamicLink;
 				// Remove the original by iterating down and identifying one we can delete
 				let lastlink = KinkyDungeonGetRestraintItem(restraint.Group);
 				let link = KinkyDungeonGetRestraintItem(restraint.Group).dynamicLink;
@@ -3325,11 +3325,12 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 
 			}
 
+			linkUnder = KinkyDungeonAllRestraint().find((inv) => {return inv.dynamicLink == lk;});
 			if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {
-				KDCurses[Curse].onApply(linkUnder.dynamicLink, linkUnder);
+				KDCurses[Curse].onApply(lk, linkUnder);
 			}
 			if (r) KDUpdateLinkCaches(r);
-			KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: linkUnder.dynamicLink, host: linkUnder, keep: Keep, Link: true});
+			KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: lk, host: linkUnder, keep: Keep, Link: true});
 		} else {
 			ret = KinkyDungeonAddRestraint(restraint, Tightness + Math.round(0.1 * KinkyDungeonDifficulty), Bypass, Lock, Keep, false, !linkableCurrent, events, faction, undefined, undefined, Curse, undefined, securityEnemy, inventoryAs, data);
 		}
@@ -4290,6 +4291,98 @@ let KDRopeParts = {
 	"Crotch": {},
 };
 
+let KDCuffParts = {
+	"AnkleCuffs": {base: true, Link: "AnkleCuffs2"},
+	"AnkleCuffs2": {Link: "AnkleCuffs3", UnLink: "AnkleCuffs"}, //, ModelSuffix: "Chained"
+	"AnkleCuffs3": {UnLink: "AnkleCuffs2"},
+	"LegCuffs": {base: true, Link: "LegCuffs2"},
+	"LegCuffs2": {UnLink: "LegCuffs"}, //, ModelSuffix: "Chained"
+	"ArmCuffs": {base: true, Link: "ArmCuffs2"},
+	"ArmCuffs2": {Link: "ArmCuffs3", UnLink: "ArmCuffs"}, //, ModelSuffix: "Chained"
+	"ArmCuffs3": {UnLink: "ArmCuffs4"},
+	"ArmCuffs4": {UnLink: "ArmCuffs", Link: "ArmCuffs3"},
+};
+
+/**
+ *
+ * @param {string} CopyOf - The cuff family to copy
+ * @param {string} idSuffix - The suffix to add to the cuff family
+ * @param {string} ModelSuffix - The suffix for the cuff model to use
+ * @param {string} tagBase - The base for the enemy tags
+ * @param {string[]} allTag - adds a tag to all of the cuffs if specified
+ * @param {number} basePower - Base opower level
+ * @param {KDRestraintPropsBase} properties - Restraint properties to override
+ * @param {KinkyDungeonEvent[]} extraEvents - Extra events to add on to the base cuffs
+ * @param {KDEscapeChanceList} baseStruggle - Increase to base struggle amounts
+ * @param {KDEscapeChanceList} multStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {Record<string, LayerFilter>} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {boolean} [noGeneric] - does not add this to tagBaseRestraints, only tagBaseCuffs
+ * @param {Record<string, string>} [CuffAssets] - mapping of Group to Assets
+ * @param {Record<string, string>} [CuffModels] - mapping of Group to Models
+ * param {{name: string, description: string}} strings - Generic strings for the cuff type
+ */
+function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], baseStruggle, multStruggle, Filters, baseWeight = 10, noGeneric, CuffAssets = {}, CuffModels = {}) {
+	for (let part of Object.entries(KDCuffParts)) {
+		let cuffPart = part[0];
+		let cuffInfo = part[1];
+		// Only if we have something to copy
+		let origRestraint = KinkyDungeonGetRestraintByName(CopyOf + cuffPart);
+		if (origRestraint) {
+			// For each category of rope items we dupe the original item and apply modifications based on the category parameters
+			/** @type {Record<string, number>} */
+			let enemyTags = {};
+			if (cuffInfo.base) {
+				enemyTags[tagBase + (part[1].enemyTagSuffix || "Cuffs")] = baseWeight;
+				if (!noGeneric)
+					enemyTags[tagBase + ("Restraints")] = baseWeight;
+				enemyTags[tagBase + ("LessCuffs")] = 0.1 - baseWeight;
+				enemyTags[tagBase + ("NoCuffs")] = -1000;
+			}
+			/** @type {Record<string, number>} */
+			let enemyTagsMult = {};
+			if (cuffInfo.base)
+				enemyTagsMult[tagBase + (part[1].enemyTagSuffix || "")] = 1;
+			let shrine = [...allTag, ...KDGetRestraintTags(origRestraint)];
+			for (let t of removeTag) {
+				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);
+			}
+			/** @type {KDRestraintPropsBase} */
+			let props = {
+				Model: CuffModels[origRestraint.Group] || (origRestraint.Model + ModelSuffix + (cuffInfo.ModelSuffix || "")),
+				Asset: CuffAssets[origRestraint.Group] || (origRestraint.Asset),
+				power: origRestraint.power + basePower,
+				shrine: shrine,
+				enemyTags: enemyTags,
+				enemyTagsMult: enemyTagsMult,
+				events: cuffInfo.base ? [...extraEvents, ...(origRestraint.events || [])] : [...(origRestraint.events || [])],
+				escapeChance: Object.assign({}, origRestraint.escapeChance),
+				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+			};
+			if (cuffInfo.Link) props.Link = idSuffix + cuffInfo.Link;
+			if (cuffInfo.UnLink) props.UnLink = idSuffix + cuffInfo.UnLink;
+			if (Filters && props.Filters) {
+				for (let layer of Object.keys(Filters)) {
+					props.Filters[layer] = Object.assign({}, Filters[layer]);
+				}
+			}
+			if (baseStruggle) {
+				for (let type of Object.entries(baseStruggle)) {
+					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
+				}
+			}
+			if (multStruggle) {
+				for (let type of Object.entries(multStruggle)) {
+					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) * type[1]))/10000;
+				}
+			}
+			let newRestraint = KinkyDungeonCloneRestraint(CopyOf + cuffPart, idSuffix + cuffPart, Object.assign(props, properties));
+			console.log("Added " + newRestraint.name);
+			console.log(newRestraint);
+		}
+	}
+}
+
+
 /**
  *
  * @param {string} CopyOf - The rope family to copy
@@ -4305,7 +4398,7 @@ let KDRopeParts = {
  * @param {LayerFilter} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents, baseStruggle, multStruggle, Filters, baseWeight = 10) {
+function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], baseStruggle, multStruggle, Filters, baseWeight = 10) {
 	for (let part of Object.entries(KDRopeParts)) {
 		let ropePart = part[0];
 		// Only if we have something to copy
@@ -4315,6 +4408,8 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 			/** @type {Record<string, number>} */
 			let enemyTags = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
+
+
 			/** @type {Record<string, number>} */
 			let enemyTagsMult = {};
 			enemyTagsMult[tagBase + (part[1].enemyTagSuffix || "")] = 1;
@@ -4329,7 +4424,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 				shrine: shrine,
 				enemyTags: enemyTags,
 				enemyTagsMult: enemyTagsMult,
-				events: Object.assign(Object.assign([], origRestraint.events), extraEvents),
+				events: [...extraEvents, ...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : undefined,
 			};
@@ -4371,7 +4466,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
  * @param {LayerFilter} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents, baseStruggle, multStruggle, Filters, baseWeight = 100) {
+function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], baseStruggle, multStruggle, Filters, baseWeight = 100) {
 	for (let part of Object.entries(KDSlimeParts)) {
 		let restraintPart = part[0];
 		// Only if we have something to copy
@@ -4392,7 +4487,7 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 				power: origRestraint.power + basePower,
 				shrine: shrine,
 				enemyTags: enemyTags,
-				events: Object.assign(Object.assign([], origRestraint.events), extraEvents),
+				events: [...extraEvents, ...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : undefined,
 			};

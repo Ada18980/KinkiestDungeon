@@ -403,6 +403,18 @@ function KinkyDungeonInventoryGet(Name) {
  * @param Name
  * @return {null|item}
  */
+function KinkyDungeonInventoryGetSafe(Name) {
+	for (let m of KinkyDungeonInventory.entries()) {
+		if (m[0] != Restraint && m[1].has(Name)) return m[1].get(Name);
+	}
+	return null;
+}
+
+/**
+ *
+ * @param Name
+ * @return {null|item}
+ */
 function KinkyDungeonInventoryGetLoose(Name) {
 	return KinkyDungeonInventory.get(LooseRestraint).get(Name);
 }

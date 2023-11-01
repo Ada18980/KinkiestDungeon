@@ -132,7 +132,6 @@ type KDHasTags = {
 interface KDRestraintProps extends KDRestraintPropsBase {
 	name: string,
 	Group: string,
-	Asset: string,
 }
 
 interface KDRestraintPropsBase {
@@ -247,6 +246,7 @@ interface KDRestraintPropsBase {
 	alwaysStruggleable?: boolean,
 	/** Model to use in standalone. Defaults to Asset */
 	Model?: string,
+	Asset?: string,
 	/** Sell price of the item */
 	value?: number,
 	/** Used for when the visual asset in BC is different from the actual group of the item*/
@@ -2343,6 +2343,8 @@ interface KDAIData extends KDAITriggerData {
 	/** Play event that has started */
 	playEvent?: boolean,
 }
+
+interface KDJailRestraint {Name: string, Level: number, Variant?: string, Condition?: string};
 
 type EnemyEvent = {
 	/** Extremely important for leash events */

@@ -415,6 +415,11 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 					SetpieceSpawnPrisoner(cornerX+1, cornerY+3);
 				}
 				KDMapData.JailPoints.push({x: cornerX+2, y: cornerY+2, type: "jail", radius: 1});
+				let t = [];
+				let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]]] : "jailer";
+				t.push(jt);
+				spawnPoints.push({x:cornerX+5, y:cornerY + 1, required: ["jail", ...t], tags: t, AI: "guard", force: true, faction: KDGetMainFaction() || "Enemy"});
+				spawnPoints.push({x:cornerX+5, y:cornerY + 3, required: ["jail", ...t], tags: t, AI: "guard", force: true, faction: KDGetMainFaction() || "Enemy"});
 				KDTorch(cornerX + 2, cornerY, altType, MapParams);
 				break;
 			}
@@ -422,6 +427,12 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, true, false, 1, true, true);
 				KinkyDungeonMapSet(cornerX+3, cornerY+1, 'D');
 				KinkyDungeonTilesSet("" + (cornerX+3) + "," + (cornerY+1), {Type: "Door", NoTrap: true, Jail: true, ReLock: true, OffLimits: true});
+
+
+				let t = [];
+				let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]]] : "jailer";
+				t.push(jt);
+				spawnPoints.push({x:cornerX+4, y:cornerY + 2, required: ["jail", ...t], tags: t, AI: "guard", force: true, faction: KDGetMainFaction() || "Enemy"});
 
 				KinkyDungeonMapSet(cornerX+3, cornerY+2, 'b');
 
@@ -640,8 +651,8 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				KinkyDungeonMapSet(cornerX + 1, cornerY + 1 + Math.floor(rad/2) - 1, 'b');
 				KinkyDungeonMapSet(cornerX + 1, cornerY + 1 + Math.floor(rad/2) + 1, 'b');
 				KinkyDungeonMapSet(cornerX + 1, cornerY + 1 + Math.floor(rad/2), 'D');
-				spawnPoints.push({x:cornerX, y:cornerY + 1 + Math.floor(rad/2)-1, required: ["cacheguard"], tags: ["bandit"], AI: "guard"});
-				spawnPoints.push({x:cornerX, y:cornerY + 1 + Math.floor(rad/2)+1, required: ["cacheguard"], tags: ["bandit"], AI: "guard"});
+				spawnPoints.push({x:cornerX, y:cornerY + 1 + Math.floor(rad/2)-1, required: ["cacheguard"], tags: ["bandit"], AI: "guard", force: true});
+				spawnPoints.push({x:cornerX, y:cornerY + 1 + Math.floor(rad/2)+1, required: ["cacheguard"], tags: ["bandit"], AI: "guard", force: true});
 				KinkyDungeonTilesSet((cornerX + 1) + "," + (cornerY + 1 + Math.floor(rad/2)), {Type: "Door", Lock: "Red", OffLimits: true, ReLock: true});
 				break;
 			}
