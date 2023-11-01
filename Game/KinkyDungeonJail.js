@@ -367,28 +367,66 @@ function KDSetPlayCD(enemy, mult, base = 10) {
 /**
  *
  * @param {string} Group
- * @returns {restraint}
+ * @returns {{restraint: restraint, variant: string}}
  */
 function KinkyDungeonGetJailRestraintForGroup(Group) {
 	/**
 	 * @type {restraint}
 	 */
 	let cand = null;
+	let variant = "";
 	let candLevel = 0;
-	for (let r of KDGetJailRestraints()) {
-		let level = 0;
-		if (KinkyDungeonGoddessRep.Prisoner) level = Math.max(0, KinkyDungeonGoddessRep.Prisoner + 50);
-		if (!r.Level || level >= r.Level) {
-			let candidate = KinkyDungeonGetRestraintByName(r.Name);
-			if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
-				if (candLevel == 0 || r.Level > candLevel) {
-					cand = candidate;
-					candLevel = candidate.nonbinding ? 0 : r.Level;
+	let currentItem = KinkyDungeonGetRestraintItem(Group);
+	// Try first with ones that are linkable
+	if (currentItem) {
+		for (let r of KDGetJailRestraints()) {
+			let level = 0;
+			if (KinkyDungeonGoddessRep.Prisoner) level = Math.max(0, KinkyDungeonGoddessRep.Prisoner + 50);
+			if (!r.Level || level >= r.Level) {
+				let candidate = KinkyDungeonGetRestraintByName(r.Name);
+				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
+					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+						if (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), candidate)) {
+							cand = candidate;
+							variant = r.Variant;
+							candLevel = candidate.nonbinding ? 0 : r.Level;
+						}
+
+					}
 				}
 			}
 		}
 	}
-	return cand;
+	// Otherwise go for the regular candidate
+	if (!cand) {
+		for (let r of KDGetJailRestraints()) {
+			let level = 0;
+			if (KinkyDungeonGoddessRep.Prisoner) level = Math.max(0, KinkyDungeonGoddessRep.Prisoner + 50);
+			if (!r.Level || level >= r.Level) {
+				let candidate = KinkyDungeonGetRestraintByName(r.Name);
+				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
+					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+						cand = candidate;
+						variant = r.Variant;
+						candLevel = candidate.nonbinding ? 0 : r.Level;
+					}
+				}
+			}
+		}
+	}
+	return {restraint: cand, variant: variant};
+}
+
+/**
+ *
+ * @param {KDJailRestraint} r
+ * @returns {boolean}
+ */
+function KDJailCondition(r) {
+	if (r.Condition && KDJailConditions[r.Condition]) {
+		return KDJailConditions[r.Condition](r);
+	}
+	return true;
 }
 
 function KinkyDungeonGetJailRestraintLevelFor(Name) {
@@ -581,7 +619,8 @@ function KinkyDungeonMissingJailUniform() {
 			if (KinkyDungeonGetRestraintItem("ItemHood")) g = "ItemHood";
 			else g = "ItemHood";
 		}
-		let rest = KinkyDungeonGetJailRestraintForGroup(g);
+		let jrest = KinkyDungeonGetJailRestraintForGroup(g);
+		let rest = jrest.restraint;
 		let currentItem = KinkyDungeonGetRestraintItem(g);
 		if (rest
 			&& (!currentItem || (
@@ -590,7 +629,7 @@ function KinkyDungeonMissingJailUniform() {
 					undefined,
 					!KinkyDungeonStatsChoice.has("TightRestraints") ? true : undefined,
 					undefined,
-					KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, KinkyDungeonJailGuard())
+					KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, KinkyDungeonJailGuard(),)
 				&& (!currentItem.dynamicLink || !KDDynamicLinkList(currentItem, true).some((item) => {return rest.name == item.name;})))
 			)
 			&& (KinkyDungeonStatsChoice.get("arousalMode") || !rest.arousalMode)
@@ -611,7 +650,8 @@ function KinkyDungeonTooMuchRestraint() {
 	}
 	let RemoveGroups = [];
 	for (let g of Groups) {
-		let rest = KinkyDungeonGetJailRestraintForGroup(g);
+		let jrest = KinkyDungeonGetJailRestraintForGroup(g);
+		let rest = jrest.restraint;
 		let currentItem = KinkyDungeonGetRestraintItem(g);
 		let cutoffpower = KinkyDungeonStatsChoice.get("KinkyPrison") ? -50 : 4;
 		let lockMult = currentItem ? Math.max(1, KinkyDungeonGetLockMult(currentItem.lock, currentItem) - 0.5) : (currentItem && KinkyDungeonIsLockable(KDRestraint(currentItem)) ? 0.4 : 1);
@@ -1281,7 +1321,7 @@ function KDExpireFlags(enemy) {
  * @param {string[]} [overrideTags]
  * @param {boolean} [requireJail]
  * @param {boolean} [requireParole]
- * @returns {{Name: string, Level: number}[]}
+ * @returns {KDJailRestraint[]}
  */
 function KDGetJailRestraints(overrideTags, requireJail, requireParole) {
 	let restraints = [];

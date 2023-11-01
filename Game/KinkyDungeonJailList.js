@@ -19,9 +19,9 @@ let KDJailEvents = {
 			let mainFaction = KDGetMainFaction();
 			// Jail tag
 			let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]]] : "jailer";
-			let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], false, undefined, ["gagged"]);
+			let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], undefined, undefined, ["gagged"]);
 			if (!Enemy) {
-				Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], false, undefined, ["gagged"]);
+				Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], undefined, undefined, ["gagged"]);
 				if (!Enemy) {
 					jt = "genericJailer";
 					Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"]);
@@ -29,7 +29,7 @@ let KDJailEvents = {
 			}
 			//KinkyDungeonGetEnemyByName((KinkyDungeonGoddessRep.Prisoner < 0 ? "Guard" : "GuardHeavy"));
 			let guard = {summoned: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
-				x:xx, y:yy, gx: xx - 2, gy: yy, CurrentAction: "jailWander", keys: true, AI: KDGetAITypeOverride(Enemy, "guard"),
+				x:xx, y:yy, gx: xx - 2, gy: yy, CurrentAction: "jailWander", keys: true, AI: KDGetAITypeOverride(Enemy, "guard") || "guard",
 				hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
 			if (mainFaction) guard.faction = mainFaction;
 			if (!KinkyDungeonFlags.get("JailIntro")) {
@@ -160,10 +160,11 @@ let KDGuardActions = {
 			if (playerHasVibrator) {
 				let extraCharge = Math.round(2 + (KinkyDungeonGoddessRep.Ghost + 50) * KDRandom() * 0.15);
 				KinkyDungeonSendEvent("remoteVibe", {enemy: guard.Enemy.name, power: extraCharge, overcharge: true, noSound: false});
-			} else if (guard.Enemy.dmgType === "grope" || guard.Enemy.dmgType === "tickle") {
+			} else {
 				let touchesPlayer = KinkyDungeonCheckLOS(KinkyDungeonJailGuard(), KinkyDungeonPlayerEntity, KDistChebyshev(guard.x - KinkyDungeonPlayerEntity.x, guard.y - KinkyDungeonPlayerEntity.y), 1.5, false, false);
 				if (touchesPlayer) {
-					let dmg = KinkyDungeonDealDamage({damage: guard.Enemy.power * 0.1, type: guard.Enemy.dmgType}, undefined, undefined, true);
+					KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer - 5, 0);
+					let dmg = KinkyDungeonDealDamage({damage: guard.Enemy.power * 1, type: guard.Enemy.dmgType}, undefined, undefined, true);
 					if (dmg && dmg.string)
 						KinkyDungeonSendTextMessage(5, TextGet("Attack" + guard.Enemy.name).replace("DamageTaken", dmg.string), "yellow", 3);
 				} else {
@@ -296,7 +297,8 @@ let KDGuardActions = {
 			let touchesPlayer = KinkyDungeonCheckLOS(guard, KinkyDungeonPlayerEntity, playerDist, 1.5, false, false);
 			if (touchesPlayer) {
 				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 7);
-				let newRestraint = KinkyDungeonGetJailRestraintForGroup(guard.CurrentRestraintSwapGroup);
+				let jrest = KinkyDungeonGetJailRestraintForGroup(guard.CurrentRestraintSwapGroup);
+				let newRestraint = jrest.restraint;
 				if (KDGameData.GuardApplyTime > applyTime) {
 					if (newRestraint) {
 						let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
@@ -447,7 +449,7 @@ let KDJailReleaseTurns = [
 let KDSecurityLevelHiSec = 0;
 
 /**
- * @type {Record<string, {overridelowerpriority: boolean, priority: number, jail: boolean, parole: boolean, restraints: {Name: string, Level: number}[]}>}
+ * @type {Record<string, {overridelowerpriority: boolean, priority: number, jail: boolean, parole: boolean, restraints: {Name: string, Level: number, Variant?: string, Condition?: string}[]}>}
 */
 let KDJailOutfits = {
 	"jailer": {
@@ -458,7 +460,9 @@ let KDJailOutfits = {
 		restraints: [
 			{Name: "Stuffing", Level: 20},
 			{Name: "TrapGag", Level: 20},
-			{Name: "HighsecBallGag", Level: 50},
+			{Name: "HighsecBallGag", Level: 50, Variant: "AntiMagic", Condition: "Mage"},
+			{Name: "HighsecBallGag", Level: 45},
+			{Name: "HighsecMuzzle", Level: 70},
 			{Name: "FeetShackles", Level: 5},
 			{Name: "HighsecShackles", Level: 40},
 			{Name: "LegShackles", Level: 15},
@@ -466,6 +470,8 @@ let KDJailOutfits = {
 			{Name: "WristShackles", Level: 0},
 			{Name: "TrapArmbinder", Level: 40},
 			{Name: "HighsecArmbinder", Level: 70},
+			{Name: "HighsecBoxbinder", Level: 70},
+			{Name: "HighsecStraitjacket", Level: 70},
 			{Name: "PrisonBelt", Level: 30},
 			{Name: "TrapPlug", Level: 30},
 			{Name: "TrapPlug2", Level: 45},
@@ -497,22 +503,13 @@ let KDJailOutfits = {
 		parole: false,
 		restraints: [
 			{Name: "LatexBoots", Level: 40},
+			{Name: "LatexBallGag", Level: 10, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "LatexBallGag", Level: 0},
 			{Name: "LatexCorset", Level: 65},
 			{Name: "LatexLegbinder", Level: 80},
 			{Name: "LatexArmbinder", Level: 30},
 			{Name: "LatexStraitjacket", Level: 60},
 			{Name: "LatexCatsuit", Level: 100},
-		],
-	},
-	"antiMagic": {
-		overridelowerpriority: true,
-		priority: 5,
-		jail: true,
-		parole: true,
-		restraints: [
-			{Name: "AntiMagicGag2", Level: 20},
-			{Name: "AntiMagicGag", Level: 50},
 		],
 	},
 	"wolfRestraints": {
@@ -526,6 +523,7 @@ let KDJailOutfits = {
 			{Name: "WolfAnkleCuffs", Level: 10},
 			{Name: "WolfHarness", Level: 20},
 			{Name: "ControlHarness", Level: 80},
+			{Name: "WolfBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "WolfBallGag", Level: 30},
 			{Name: "WolfCollar", Level: 0},
 			{Name: "WolfPanties", Level: 60},
@@ -540,6 +538,7 @@ let KDJailOutfits = {
 			{Name: "ExpArmbinder", Level: 0},
 			{Name: "ExpArmbinderHarness", Level: 60},
 			{Name: "ExpAnkleCuffs", Level: 30},
+			{Name: "LatexBallGag", Level: 25, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "LatexBallGag", Level: 5},
 			{Name: "ExpCollar", Level: 40},
 			{Name: "ExpBoots", Level: 50},
@@ -556,12 +555,13 @@ let KDJailOutfits = {
 			{Name: "DragonLegCuffs", Level: 60},
 			{Name: "DragonAnkleCuffs", Level: 10},
 			{Name: "DragonBoots", Level: 90},
+			{Name: "DragonBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "DragonBallGag", Level: 30},
 			{Name: "DragonMuzzleGag", Level: 60},
 			{Name: "DragonCollar", Level: 0},
 		],
 	},
-	"cyberdollrestraints": {
+	"dollsmith": {
 		overridelowerpriority: true,
 		priority: 7,
 		jail: true,
@@ -571,6 +571,7 @@ let KDJailOutfits = {
 			{Name: "TrackingCollar", Level: 20},
 			{Name: "CyberBelt", Level: 0},
 			{Name: "CyberBra", Level: 0},
+			{Name: "CyberBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "CyberBallGag", Level: 20},
 			{Name: "CyberPlugGag", Level: 40},
 			{Name: "CyberMuzzle", Level: 75},
@@ -588,6 +589,7 @@ let KDJailOutfits = {
 		parole: true,
 		restraints: [
 			{Name: "KittyPaws", Level: 0},
+			{Name: "KittyGag", Level: 25, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "KittyGag", Level: 10},
 			{Name: "KittyMuzzle", Level: 45},
 			{Name: "KittyBlindfold", Level: 60},
@@ -604,6 +606,7 @@ let KDJailOutfits = {
 			{Name: "ObsidianArmCuffs", Level: 0},
 			{Name: "ObsidianLegCuffs", Level: 60},
 			{Name: "ObsidianAnkleCuffs", Level: 10},
+			{Name: "ObsidianGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "ObsidianGag", Level: 30},
 			{Name: "ObsidianCollar", Level: 0},
 		],
@@ -620,6 +623,7 @@ let KDJailOutfits = {
 			{Name: "SturdyLeatherBeltsFeet", Level: 60},
 			{Name: "TrapArmbinder", Level: 50},
 			{Name: "TrapMittens", Level: 0},
+			{Name: "TrapGag", Level: 35, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "TrapGag", Level: 10},
 			{Name: "PanelGag", Level: 20},
 			{Name: "TrapHarness", Level: 40},
@@ -635,5 +639,23 @@ let KDJailOutfits = {
 			{Name: "NippleClamps", Level: 60},
 			{Name: "DressBra", Level: 60},
 		],
+	},
+};
+
+/**
+ * @type {Record<string, (r: KDJailRestraint) => boolean>}
+ */
+let KDJailConditions = {
+	Mage: (r) => {
+		return KinkyDungeonStatManaMax > 17;
+	},
+	Warrior: (r) => {
+		return KinkyDungeonStatWillMax > 17;
+	},
+	Rogue: (r) => {
+		return KinkyDungeonStatStaminaMax > 17;
+	},
+	Kinky: (r) => {
+		return KinkyDungeonStatDistractionMax > 17;
 	},
 };
