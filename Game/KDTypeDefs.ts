@@ -1402,6 +1402,7 @@ interface entity {
 	lasty?: number,
 	fx?: number,
 	fy?: number,
+	action?: string,
 	path?: {x: number, y: number}[],
 	gx?: number,
 	gy?: number,
@@ -1409,6 +1410,8 @@ interface entity {
 	gyy?: number,
 	rage?: number,
 	hostile?: number,
+	/** Indicates that an enemy has been modified and does not eliminate enemy data */
+	modified?: boolean,
 	faction?: string,
 	allied?: number,
 	ceasefire?: number,
@@ -2682,6 +2685,13 @@ interface KDSFXGroup {
 	sfxRemove?: string,
 	/** Equip sound */
 	sfx?: string,
+}
+
+interface KDEnemyAction {
+	/** Enemy will not willingly let go of leashes during this action */
+	holdleash?: boolean;
+	end?: (enemy) => void;
+	maintain: (enemy, delta) => boolean;
 }
 
 interface KDSeal {

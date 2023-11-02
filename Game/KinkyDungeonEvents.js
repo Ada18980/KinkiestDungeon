@@ -5261,6 +5261,7 @@ let KDEventMapEnemy = {
 				enemy.Enemy.spellCooldownMult = enemy.Enemy.spellCooldownMult*(1/(1+factor));
 				enemy.Enemy.maxhp = enemy.Enemy.maxhp*factor;
 				enemy.hp = enemy.Enemy.maxhp;
+				enemy.modified = true;
 
 				KinkyDungeonSetEnemyFlag(enemy, "assignedHP", -1);
 			}
@@ -6165,6 +6166,7 @@ let KDEventMapGeneric = {
 					if (Enemy) {
 						KDRemoveEntity(e);
 						e.Enemy = JSON.parse(JSON.stringify(Enemy));
+						e.modified = true;
 						KDAddEntity(e);
 
 						if (!e.CustomName)
@@ -6188,6 +6190,7 @@ let KDEventMapGeneric = {
 						e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
 						e.Enemy.power *= 1.5;
 						e.Enemy.maxhp = e.Enemy.maxhp*2;
+						e.modified = true;
 					} else if (KDRandom() < regbuffchance) {
 						let buff = KDGetByWeight(KDGetSpecialBuffList(e, ["NGP_Reg"]));
 						if (buff) {
@@ -6226,6 +6229,7 @@ let KDEventMapGeneric = {
 					if (Enemy) {
 						KDRemoveEntity(e);
 						e.Enemy = JSON.parse(JSON.stringify(Enemy));
+						e.modified = true;
 						KDAddEntity(e);
 
 						if (!e.CustomName)
@@ -6252,6 +6256,7 @@ let KDEventMapGeneric = {
 							e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
 							e.Enemy.power *= 1.5;
 							e.Enemy.maxhp = e.Enemy.maxhp*2;
+							e.modified = true;
 						}
 					}
 					if (!bossBuff || KinkyDungeonStatsChoice.get("extremeMode") || e.Enemy.tags.stageBoss) {
@@ -6682,6 +6687,7 @@ let KDEventMapGeneric = {
 				data.type.maxhp *= KDEnemyResistHPMult;
 				data.enemy.hp *= KDEnemyResistHPMult;
 				data.enemy.Enemy = data.type;
+				data.enemy.modified = true;
 			}
 		},
 		"ResilientFoes": (e, data) => {
@@ -6690,6 +6696,7 @@ let KDEventMapGeneric = {
 				data.type.maxhp *= KDResilientHPMult;
 				data.enemy.hp *= KDResilientHPMult;
 				data.enemy.Enemy = data.type;
+				data.enemy.modified = true;
 			}
 		},
 		"Stealthy": (e, data) => {
@@ -6698,6 +6705,7 @@ let KDEventMapGeneric = {
 				data.type.maxhp *= KDStealthyHPMult;
 				data.enemy.hp *= KDStealthyHPMult;
 				data.enemy.Enemy = data.type;
+				data.enemy.modified = true;
 			}
 		},
 	},

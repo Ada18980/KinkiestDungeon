@@ -3182,9 +3182,14 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
  */
 function KDTex(Image, Nearest) {
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
-	let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, {scaleMode: PIXI.SCALE_MODES.NEAREST}) : PIXI.Texture.from(KDModFiles[Image] || Image);
-	kdpixitex.set(Image, tex);
-	return tex;
+	try {
+		let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, {scaleMode: PIXI.SCALE_MODES.NEAREST}) : PIXI.Texture.from(KDModFiles[Image] || Image);
+		kdpixitex.set(Image, tex);
+		return tex;
+	} catch (e) {
+		console.log("Failed to find texture " + Image);
+		return null;
+	}
 }
 
 /**

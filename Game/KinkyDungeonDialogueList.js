@@ -2894,6 +2894,7 @@ let KDDialogue = {
 			else if (KinkyDungeonStatsChoice.get("hardMode")) e.Enemy.maxhp *= 2;
 			e.hp = e.Enemy.maxhp;
 			e.hostile = 300;
+			e.modified = true;
 			return false;
 		},
 		options: {
@@ -2920,6 +2921,7 @@ let KDDialogue = {
 			else if (KinkyDungeonStatsChoice.get("hardMode")) e.Enemy.maxhp *= 2;
 			e.hp = e.Enemy.maxhp;
 			e.hostile = 300;
+			e.modified = true;
 			return false;
 		},
 		options: {
@@ -3185,6 +3187,7 @@ let KDDialogue = {
 			else if (KinkyDungeonStatsChoice.get("hardMode")) e.Enemy.maxhp *= 2;
 			e.hp = e.Enemy.maxhp;
 			e.hostile = 300;
+			e.modified = true;
 			return false;
 		},
 		options: {

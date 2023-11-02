@@ -533,9 +533,10 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY) {
 	};
 	KinkyDungeonSendEvent("beforeNoise", data);
 	for (let e of KDMapData.Entities) {
-		if ((!e.aware || e.idle) && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistEuclidean(e.x - data.x, e.y - data.y) <= data.radius) {
+		if ((!e.aware || e.idle) && (!e.action || e.action == "investigatesound") && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistEuclidean(e.x - data.x, e.y - data.y) <= data.radius) {
 			e.gx = data.x;
 			e.gy = data.y;
+			e.action = "investigatesound";
 			KDAddThought(e.id, "Search", 2, 2 + 3*KDistEuclidean(e.x - data.x, e.y - data.y));
 			data.enemiesHeard.push(e);
 		}

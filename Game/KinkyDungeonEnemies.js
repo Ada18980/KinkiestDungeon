@@ -2656,6 +2656,8 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					if (ret.defeat) {
 						defeat = true;
 						defeatEnemy = enemy;
+					} else {
+						KDMaintainEnemyAction(enemy, delta);
 					}
 
 					//TODO pass items to more dominant nearby enemies
@@ -2697,6 +2699,8 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					if (enemy == KinkyDungeonLeashingEnemy() && (
 						!enemy.playWithPlayer
 						&& !enemy.IntentAction
+						&& !enemy.CurrentAction
+						&& (!enemy.action || !KDEnemyAction[enemy.action]?.holdleash)
 						&& !enemy.IntentLeashPoint
 						&& !KinkyDungeonFlags.get("PlayerDommed")
 						&& !KinkyDungeonAggressive(enemy, KinkyDungeonPlayerEntity)
@@ -6340,6 +6344,7 @@ function KDMakeHighValue(enemy) {
 	enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
 	enemy.Enemy.maxhp = hp;
 	enemy.hp = hp;
+	enemy.modified = true;
 
 	// MS bonus
 	if (KDRandom() * 0.5) {
