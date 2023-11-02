@@ -616,8 +616,9 @@ function KinkyDungeonMissingJailUniform() {
 			else g = "ItemMouth";
 		}
 		if (gr == "ItemH") {
-			if (KinkyDungeonGetRestraintItem("ItemHood")) g = "ItemHood";
-			else g = "ItemHood";
+			//if (KinkyDungeonGetRestraintItem("ItemHood")) g = "ItemHood";
+			//else
+			g = "ItemHead";
 		}
 		let jrest = KinkyDungeonGetJailRestraintForGroup(g);
 		let rest = jrest.restraint;
