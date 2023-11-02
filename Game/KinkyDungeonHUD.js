@@ -769,7 +769,8 @@ function KinkyDungeonDrawInputs() {
 	}
 	DrawButtonKDEx(
 		"KDToggleShowAllBuffs", (bdata) => {
-			KDToggleShowAllBuffs = !KDToggleShowAllBuffs;
+			if (MouseX > 1700)
+				KDToggleShowAllBuffs = !KDToggleShowAllBuffs;
 			return true;
 		},
 		true,
