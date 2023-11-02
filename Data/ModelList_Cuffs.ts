@@ -21,6 +21,7 @@ AddModel({
 			DisplacementSprite: "CuffLeft",
 			DisplaceLayers: ToMap(["Cuffs"]),
 			DisplaceAmount: 90,
+			InheritColor: "BaseMetal",
 		},
 	])
 });
@@ -39,6 +40,7 @@ AddModel({
 			DisplacementSprite: "CuffRight",
 			DisplaceLayers: ToMap(["Cuffs"]),
 			DisplaceAmount: 90,
+			InheritColor: "BaseMetal",
 		},
 	])
 });
@@ -73,6 +75,7 @@ AddModel({
 			DisplacementSprite: "ElbowCuffLeft",
 			DisplaceLayers: ToMap(["Cuffs"]),
 			DisplaceAmount: 50,
+			InheritColor: "BaseMetal",
 		},
 	])
 });
@@ -91,6 +94,7 @@ AddModel({
 			DisplacementSprite: "ElbowCuffRight",
 			DisplaceLayers: ToMap(["Cuffs"]),
 			DisplaceAmount: 100,
+			InheritColor: "BaseMetal",
 		},
 	])
 });
@@ -137,6 +141,7 @@ AddModel({
 			DisplacementSprite: "AnkleCuffLeft",
 			DisplaceLayers: ToMap(["LegCuffs"]),
 			DisplaceAmount: 50,
+			InheritColor: "BaseMetal",
 		},
 	])
 });
@@ -154,6 +159,7 @@ AddModel({
 			DisplacementSprite: "AnkleCuffRight",
 			DisplaceLayers: ToMap(["LegCuffs"]),
 			DisplaceAmount: 50,
+			InheritColor: "BaseMetal",
 		},
 	])
 });
@@ -187,6 +193,7 @@ AddModel({
 			DisplacementSprite: "ThighCuffLeft",
 			DisplaceLayers: ToMap(["LegCuffs"]),
 			DisplaceAmount: 50,
+			InheritColor: "BaseMetal",
 		},
 	])
 });
@@ -204,6 +211,7 @@ AddModel({
 			DisplacementSprite: "ThighCuffRight",
 			DisplaceLayers: ToMap(["LegCuffs"]),
 			DisplaceAmount: 50,
+			InheritColor: "BaseMetal",
 		},
 	])
 });
@@ -231,6 +239,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Collar", Layer: "Collar", Pri: 25,
 			Invariant: true,
+			InheritColor: "BaseMetal",
 		},
 	])
 });
@@ -248,6 +257,7 @@ AddModel({
 			DisplacementSprite: "Belt",
 			DisplaceLayers: ToMap(["RopeTorso"]),
 			DisplaceAmount: 50,
+			InheritColor: "BaseMetal",
 		},
 	])
 });
