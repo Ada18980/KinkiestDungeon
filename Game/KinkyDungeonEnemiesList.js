@@ -3875,3 +3875,41 @@ let KDSpecialBuffs = {
 		},
 	},
 };
+
+/**
+ *
+ * @param {entity} enemy
+ */
+function KDEndEnemyAction(enemy) {
+	if (KDEnemyAction[enemy.action]?.end) {
+		KDEnemyAction[enemy.action].end(enemy);
+	}
+	enemy.action = "";
+}
+/**
+ *
+ * @param {entity} enemy
+ */
+function KDMaintainEnemyAction(enemy, delta) {
+	if (!KDEnemyAction[enemy.action]?.maintain || !KDEnemyAction[enemy.action].maintain(enemy, delta)) {
+		KDEndEnemyAction(enemy);
+	}
+}
+
+/**
+ * @type {Record<string, KDEnemyAction>}
+ */
+let KDEnemyAction = {
+	"investigatesound": {
+		holdleash: true,
+		end: (enemy) => {
+			// Reset position
+			enemy.gx = enemy.x;
+			enemy.gy = enemy.y;
+		},
+		maintain: (enemy, delta) => {
+			// Stops investigating if alerted
+			return !(enemy.idle || (KinkyDungeonAggressive(enemy) && enemy.aware) || enemy.attackPoints || KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) <= 1.5);
+		},
+	},
+};

@@ -418,8 +418,8 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				let t = [];
 				let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]]] : "jailer";
 				t.push(jt);
-				spawnPoints.push({x:cornerX+5, y:cornerY + 1, required: ["jail", ...t], tags: t, AI: "guard", force: true, faction: KDGetMainFaction() || "Enemy"});
-				spawnPoints.push({x:cornerX+5, y:cornerY + 3, required: ["jail", ...t], tags: t, AI: "guard", force: true, faction: KDGetMainFaction() || "Enemy"});
+				spawnPoints.push({x:cornerX+5, y:cornerY + 1, required: ["jail", ...t], tags: t, AI: "guard", force: true, keys: true, faction: KDGetMainFaction() || "Enemy"});
+				spawnPoints.push({x:cornerX+5, y:cornerY + 3, required: ["jail", ...t], tags: t, AI: "guard", force: true, keys: true, faction: KDGetMainFaction() || "Enemy"});
 				KDTorch(cornerX + 2, cornerY, altType, MapParams);
 				break;
 			}
@@ -432,7 +432,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				let t = [];
 				let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]]] : "jailer";
 				t.push(jt);
-				spawnPoints.push({x:cornerX+4, y:cornerY + 2, required: ["jail", ...t], tags: t, AI: "guard", force: true, faction: KDGetMainFaction() || "Enemy"});
+				spawnPoints.push({x:cornerX+4, y:cornerY + 2, required: ["jail", ...t], tags: t, AI: "guard", force: true, keys: true, faction: KDGetMainFaction() || "Enemy"});
 
 				KinkyDungeonMapSet(cornerX+3, cornerY+2, 'b');
 

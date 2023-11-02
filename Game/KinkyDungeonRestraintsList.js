@@ -852,7 +852,8 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region Cosplay
-	{inventory: true, name: "BindingDress", debris: "Fabric", inaccessible: true, remove: ["Cloth", "Bra"], Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#473488'], Group: "ItemArms", LinkableBy: [...KDDressLink], bindarms: true, bindhands: 1.0, power: 8, weight: 0,
+	{inventory: true, name: "BindingDress", debris: "Fabric", inaccessible: true, remove: ["Cloth", "Bra"], Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#473488'], Group: "ItemArms",
+		LinkableBy: [...KDDressLink], alwaysRender: true, bindarms: true, bindhands: 1.0, power: 8, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": -0.2, "Pick": 0.15}, helpChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.075},
 		limitChance: {"Struggle": 0.125, "Cut": 0.125, "Remove": 0.1, "Unlock": 0.5},
 		alwaysDress: [
@@ -1168,11 +1169,11 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"bed":100}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Furniture"], ignoreSpells: true, removeOnLeash: true,
 		events: [{trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	//region High security prison restraints
-	{inventory: true, name: "HighsecArmbinder", debris: "Belts", strictness: 0.1, Asset: "LeatherArmbinder", inaccessible: true, LinkableBy: [...KDArmbinderLink], Type: "Strap", Group: "ItemArms", bindarms: true, bindhands: 1.0, Color: "#333333",
+	{inventory: true, name: "HighsecArmbinder", debris: "Belts", strictness: 0.1, Asset: "LeatherArmbinder", inaccessible: true, LinkableBy: [...KDArmbinderLink], renderWhenLinked: [...KDArmbinderLink], Type: "Strap", Group: "ItemArms", bindarms: true, bindhands: 1.0, Color: "#333333",
 		limitChance: {"Unlock": 0.2}, power: 7, weight: 2,
 		struggleMaxSpeed: {"Remove": 0.5, "Pick": 0.1},
 		escapeChance: {"Struggle": -0.25, "Cut": 0.1, "Remove": 0.15, "Pick": 0.1}, enemyTags: {"leatherRestraintsHeavy":4, "armbinderSpell": 100}, playerTags: {"ItemArmsEmpty": -10}, minLevel: 8, allFloors: true, shrine: ["Leather", "Armbinders", "Block_ItemHands"]},
-	{inventory: true, name: "HighsecBoxbinder", debris: "Belts", strictness: 0.1, Asset: "BoxTieArmbinder", inaccessible: true, LinkableBy: [...KDBoxbinderLink], Group: "ItemArms", bindarms: true, bindhands: 1.0, Color: "#333333",
+	{inventory: true, name: "HighsecBoxbinder", debris: "Belts", strictness: 0.1, Asset: "BoxTieArmbinder", inaccessible: true, LinkableBy: [...KDBoxbinderLink], renderWhenLinked: [...KDBoxbinderLink], Group: "ItemArms", bindarms: true, bindhands: 1.0, Color: "#333333",
 		limitChance: {"Unlock": 0.2}, power: 7, weight: 2,
 		escapeChance: {"Struggle": -0.28, "Cut": 0.13, "Remove": 0.10, "Pick": 0.1}, enemyTags: {"leatherRestraintsHeavy":4, "armbinderSpell": 100}, playerTags: {"ItemArmsEmpty": -10},
 		struggleMaxSpeed: {"Remove": 0.25, "Pick": 0.08},
@@ -1969,7 +1970,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.175, "Cut": 0.1, "Remove": 0.15, "Pick": 0.15},
 		maxwill: 0.3, enemyTags: {"maidRestraints":5, "maidRestraintsNonChastity": 10, "noMaidJacket":-5}, playerTags: {"ItemArmsEmpty": -9}, minLevel: 7, allFloors: true, shrine: ["Latex", "Straitjackets", "Block_ItemHands", "Illusion"]},
 	{inventory: true, name: "MaidDress", debris: "Fabric", inaccessible: true, Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#191919'],
-		Group: "ItemArms", LinkableBy: [...KDDressLink], bindarms: true, bindhands: 1.0, power: 8.5, weight: 0,
+		Group: "ItemArms", LinkableBy: [...KDDressLink], alwaysRender: true, bindarms: true, bindhands: 1.0, power: 8.5, weight: 0,
 		remove: ["Suit", "Cloth", "Bra", "SuitLower", "ClothLower", "Hat", "Socks", "Shoes"],
 		escapeChance: {"Struggle": -0.175, "Cut": 0.1, "Remove": -0.2, "Pick": 0.15},
 		helpChance: {"Remove": 0.075},

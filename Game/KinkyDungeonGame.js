@@ -500,12 +500,40 @@ function KDSaveRoom(slot, saveconstantX) {
 	let CurrentLocation = KDWorldMap[(saveconstantX ? 0 : slot.x) + "," + slot.y];
 	if (!CurrentLocation) KDCreateWorldLocation(0, slot.y);
 
+	// Pack enemies
+	KDPackEnemies(KDMapData);
+
 	let CurrentMapData = JSON.parse(JSON.stringify(KDMapData));
 
 	if (CurrentLocation) {
 		CurrentLocation.data[CurrentMapData.RoomType] = CurrentMapData;
 	}
 }
+
+/**
+ * Decompress enemies
+ * @param {KDMapDataType} data
+ */
+function KDUnPackEnemies(data) {
+	for (let enemy of data.Entities) {
+		if (!enemy.modified) {
+			enemy.Enemy = KinkyDungeonGetEnemyByName(enemy.Enemy.name);
+		}
+	}
+}
+/**
+ * Compress enemies to reduce file size
+ * @param {KDMapDataType} data
+ */
+function KDPackEnemies(data) {
+	for (let enemy of data.Entities) {
+		if (!enemy.modified) {
+			// @ts-ignore
+			enemy.Enemy = {name: enemy.Enemy.name};
+		}
+	}
+}
+
 
 /**
  * Loads a map from a world location
@@ -533,6 +561,9 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 
 	// Load the room
 	let NewMapData = JSON.parse(JSON.stringify(KDWorldMap[x + ',' + y].data[room]));
+
+	// UnPack enemies
+	KDUnPackEnemies(NewMapData);
 
 	KDMapData = NewMapData;
 	KDGameData.RoomType = KDMapData.RoomType;
@@ -1478,6 +1509,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 		let tags = [];
 		let levelBoost = 0;
 		let forceIndex = undefined;
+		let keys = false;
 
 		let filterTags = JSON.parse(JSON.stringify(filterTagsBase));
 
@@ -1529,6 +1561,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				}
 				X = spawns[0].x;
 				Y = spawns[0].y;
+				if (spawns[0].keys) keys = true;
 				AI = spawns[0].AI;
 				levelBoost = spawns[0].levelBoost || 0;
 				forceIndex = spawns[0].forceIndex;
@@ -1630,6 +1663,9 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				if (spawnPoint) {
 					e.spawnX = X;
 					e.spawnY = Y;
+					if (keys) {
+						e.keys = true;
+					}
 				}
 				KDAddEntity(e);
 				let clusterChance = 0.5; //1.1 + 0.9 * MiniGameKinkyDungeonLevel/KinkyDungeonMaxLevel;
