@@ -687,7 +687,7 @@ function KinkyDungeonDrawInputs() {
 			let pri = 0;
 			if (b.duration) pri += Math.min(90, b.duration);
 			if (count) pri += Math.min(10, count);
-			let t = TextGet("KinkyDungeonBuff" + b.id) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ` (${b.duration})` : "");
+			let t = TextGet("KinkyDungeonBuff" + (b.desc || b.id)) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ` (${b.duration})` : "");
 			if (b.buffTextReplace) {
 				for (let replace of Object.entries(b.buffTextReplace)) {
 					t = t.replace(replace[0], replace[1]);
@@ -697,7 +697,7 @@ function KinkyDungeonDrawInputs() {
 				text: t,
 				count: b.text ? b.text :
 					((count ? `${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ((count ? " " : "") + `${b.duration}`) : "")),
-				icon: (KDBuffSprites[b.id] || b.buffSprite) ? "buff/buff" + b.id : undefined,
+				icon: (KDBuffSprites[b.id] || b.buffSprite) ? "buff/buff" + (b.buffSpriteSpecific || b.id) : undefined,
 				//countcolor: b.aura ? b.aura : b.labelcolor,
 				category: "buffs", color: b.aura ? b.aura : b.labelcolor, bgcolor: "#333333", priority: pri,
 				buffid: b.id,
@@ -954,7 +954,7 @@ function KinkyDungeonDrawInputs() {
 					let drawn = false;
 					for (let s of strictItems) {
 						drawn = true;
-						let msg = KDGetRestraintNameName(s);//TextGet("Restraint" + s);
+						let msg = KDGetItemNameString(s);//TextGet("Restraint" + s);
 						DrawTextKD(msg, 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left");
 						O++;
 					}
@@ -1293,7 +1293,7 @@ function KinkyDungeonDrawInputs() {
 			let consumable = KinkyDungeonConsumableChoices[index];
 			// Draw the main icon
 			let name = item;
-			if (arm && KinkyDungeonInventoryVariants[arm]) name = KinkyDungeonInventoryVariants[arm].template;
+			if (arm && KinkyDungeonRestraintVariants[arm]) name = KinkyDungeonRestraintVariants[arm].template;
 			//DrawButtonKD("UseItem" + index, true, buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, "", "rgba(0, 0, 0, 0)",
 			//KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)}).preview, "", false, true);
 			DrawButtonKDEx("UseItem" + index,

@@ -706,7 +706,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 		}
 
-		if (Enemy.boundLevel > 0 && (KinkyDungeonTeaseDamageTypes.includes(predata.type) || Damage.tease)) {
+		if (Enemy.boundLevel > 0 && (KinkyDungeonTeaseDamageTypes.includes(predata.type) || KDIsTeasing(Damage))) {
 			let eff = KDBoundEffects(Enemy);
 			let mult = 1.0;
 			if (eff > 0) {
@@ -2269,6 +2269,20 @@ function KDDisarmEnemy(enemy, time) {
 	enemy.disarm = Math.max(time, enemy.disarm);
 }
 
+let KDConditions = {
+	"DamageTypeTeasing": (e, data) => {
+		return data.damage && KDIsTeasing(data.damage);
+	},
+	"spellType": (e, data) => {
+		return data.spell?.tags?.includes(e.kind);
+	},
+};
+function KDCheckCondition(e, data) {
+	if (!e.condition) return true;
+	if (KDConditions[e.condition]) return KDConditions[e.condition](e, data);
+	return false;
+}
+
 let KDPrereqs = {
 	"HasWill": (enemy, e, data) => {
 		return KinkyDungeonStatWill >= 0.1;
@@ -2379,6 +2393,10 @@ function KDCreateParticle(xx, yy, name) {
 		bullet:{faction: "Rage", spell:undefined, damage: undefined, lifetime: 2, passthrough:true, name:name, width:1, height:1}};
 	KDMapData.Bullets.push(newB);
 	KinkyDungeonUpdateSingleBulletVisual(newB, false);
+}
+
+function KDIsTeasing(Damage) {
+	return Damage && (Damage.tease || KinkyDungeonTeaseDamageTypes.includes(Damage.type));
 }
 
 /**

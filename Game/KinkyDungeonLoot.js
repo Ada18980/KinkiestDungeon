@@ -310,7 +310,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		if (Loot.enchantlist && (Loot.enchantchance == undefined || KDRandom() < Loot.enchantchance + (Loot.enchantscale|| 0) * levelPercent || (Loot.nouncursed && !hexVariant && KinkyDungeonInventoryGet(Loot.nouncursed)) || (hexVariant && Loot.alwaysenchanthex))) {
 			while (enchants > 0) {
 				let ench = KDGetByWeight(
-					KinkyDungeonGetEnchantmentsByListWeighted(Loot.enchantlist, armor, false, Loot.enchantlevelmin, Loot.enchantlevelmax, [enchantVariant, ...enchant_extra])
+					KinkyDungeonGetEnchantmentsByListWeighted(Loot.enchantlist, KDModifierEnum.restraint, armor, false, Loot.enchantlevelmin, Loot.enchantlevelmax, [enchantVariant, ...enchant_extra])
 				);
 				if (!enchantVariant) {
 					enchantVariant = ench;
@@ -336,12 +336,12 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 				events.push(...KDEventHexModular[c].events);
 			}
 			if (enchantVariant) {
-				events.push(...KDEventEnchantmentModular[enchantVariant].events(armor, Loot, hexVariant, enchantVariant, hex_extra));
+				events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.restraint].events(armor, Loot, hexVariant, enchantVariant, hex_extra));
 			}
 			for (let e of enchant_extra) {
-				events.push(...KDEventEnchantmentModular[e].events(armor, Loot, hexVariant, enchantVariant, enchant_extra));
+				events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(armor, Loot, hexVariant, enchantVariant, enchant_extra));
 			}
-			/** @type {KDInventoryVariant} */
+			/** @type {KDRestraintVariant} */
 			let variant = {
 				template: armor,
 				events: events,
@@ -769,7 +769,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 							`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 7);
 						remove = true;
 					} else if (lostitem.type == LooseRestraint && KinkyDungeonGetRestraintByName(lostitem.name)) {
-						if (KinkyDungeonGetRestraintByName(lostitem.name).armor || KinkyDungeonInventoryVariants[lostitem.name] != undefined)
+						if (KinkyDungeonGetRestraintByName(lostitem.name).armor || KinkyDungeonRestraintVariants[lostitem.name] != undefined)
 							KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
 								`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);
 						remove = true;

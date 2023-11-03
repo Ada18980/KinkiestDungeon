@@ -1,5 +1,24 @@
 'use strict';
 
+/**
+ * @enum {PosNeutNeg}
+ */
+let KDPosNeutNeg = {
+	positive:1,
+	neutral:0,
+	negative:-1,
+};
+
+/**
+ * @enum {ModifierEnum}
+ */
+let KDModifierEnum = {
+	restraint:0,
+	looserestraint:0,
+	weapon:1,
+	consumable:2,
+};
+
 function addTextKey(Name, Text) {
 	let ct = 0;
 	for (let screen of TextAllScreenCache.entries()) {
@@ -118,6 +137,128 @@ function KinkyDungeonGetCurses(Restraint, includeOrig, minLevel, maxLevel) {
 /**
  * Gets a list of curses applied to the item
  * @param {string | string[]} List
+ * @param {ModifierEnum} Type
+ * @param {number} [minLevel] - for gating curse severity
+ * @param {number} [maxLevel] - for gating curse severity
+ * @returns {string[]}
+ */
+function KinkyDungeonGetVariantEffectByList(List, Type, minLevel, maxLevel) {
+	let temp = [];
+	if (typeof List === "string") {
+		List = [List];
+	}
+	for (let l of List) {
+		if (KDModifierEffectVariantList[l]) {
+			let keys = KDModifierEffectVariantList[l].filter((key) => {
+				return (!minLevel || KDModifierEffects[key].types[Type]?.level >= minLevel)
+					&& (!maxLevel || KDModifierEffects[key].types[Type]?.level < maxLevel);
+			}).map((element) => {return element;});
+			temp.push(...keys);
+		}
+	}
+	return temp;
+}
+
+/**
+ * Gets a list of curses applied to the item
+ * @param {string | string[]} List
+ * @param {string} item
+ * @param {ModifierEnum} Type
+ * @param {number} [minLevel] - for gating curse severity
+ * @param {number} [maxLevel] - for gating curse severity
+ * @param {PosNeutNeg} [positive] - for gating severity
+ * @returns {Record<string, number>}
+ */
+function KinkyDungeonGetVariantEffectByListWeighted(List, Type, item, minLevel, maxLevel, positive) {
+	let list = KinkyDungeonGetVariantEffectByList(List, Type, minLevel, maxLevel);
+	/** @type {Record<string, number>} */
+	let ret = {};
+	for (let obj of list) {
+		if (KDModifierEffects[obj].types[Type]?.filter(item, positive))
+			ret[obj] = KDModifierEffects[obj].types[Type].weight(item, positive);
+	}
+	return ret;
+}
+
+
+/**
+ * Gets a list of curses applied to the item
+ * @param {string | string[]} List
+ * @param {ModifierEnum} Type
+ * @param {number} [minLevel] - for gating curse severity
+ * @param {number} [maxLevel] - for gating curse severity
+ * @returns {string[]}
+ */
+function KinkyDungeonGetVariantConditionByList(List, Type, minLevel, maxLevel) {
+	let temp = [];
+	if (typeof List === "string") {
+		List = [List];
+	}
+	for (let l of List) {
+		if (KDModifierConditionVariantList[l]) {
+			let keys = KDModifierConditionVariantList[l].filter((key) => {
+				return (!minLevel || KDModifierConditions[key].types[Type]?.level >= minLevel)
+					&& (!maxLevel || KDModifierConditions[key].types[Type]?.level < maxLevel);
+			}).map((element) => {return element;});
+			temp.push(...keys);
+		}
+	}
+	return temp;
+}
+
+/**
+ * Gets a list of curses applied to the item
+ * @param {string | string[]} List
+ * @param {string} item
+ * @param {ModifierEnum} Type
+ * @param {number} [minLevel] - for gating curse severity
+ * @param {number} [maxLevel] - for gating curse severity
+ * @param {KDModifierEffect[]} [effect_positive] - for gating severity
+ * @param {KDModifierEffect[]} [effect_neutral] - for gating severity
+ * @param {KDModifierEffect[]} [effect_negative] - for gating severity
+ * @returns {Record<string, number>}
+ */
+function KinkyDungeonGetVariantConditionByListWeighted(List, Type, item, minLevel, maxLevel, effect_positive, effect_neutral, effect_negative) {
+	let list = KinkyDungeonGetVariantConditionByList(List, Type, minLevel, maxLevel);
+	/** @type {Record<string, number>} */
+	let ret = {};
+	for (let obj of list) {
+		if (KDModifierConditions[obj].types[Type]?.filter(item, effect_positive, effect_neutral, effect_negative))
+			ret[obj] = KDModifierConditions[obj].types[Type].weight(item, effect_positive, effect_neutral, effect_negative);
+	}
+	return ret;
+}
+
+/**
+ *
+ * @param {string | string[]} ListEffect
+ * @param {string | string[]} ListCondition
+ * @param {string} item
+ * @param {ModifierEnum} Type
+ * @param {number} minLevel
+ * @param {number} maxLevel
+ * @param {PosNeutNeg} pos
+ */
+function KDGenerateEffectConditionPair(ListEffect, ListCondition, Type, item, minLevel, maxLevel, pos) {
+	let effect = KDGetByWeight(KinkyDungeonGetVariantEffectByListWeighted(ListEffect, Type, item, minLevel, maxLevel, pos));
+	let epo = [];
+	let enu = [];
+	let eng = [];
+	if (KDModifierEffects[effect]) {
+		if (pos == KDPosNeutNeg.positive) epo.push(KDModifierEffects[effect]);
+		if (pos == KDPosNeutNeg.neutral) enu.push(KDModifierEffects[effect]);
+		if (pos == KDPosNeutNeg.negative) eng.push(KDModifierEffects[effect]);
+	} else return null;
+	let condition = KDGetByWeight(KinkyDungeonGetVariantConditionByListWeighted(ListCondition, Type, item, minLevel, maxLevel, epo, enu, eng));
+	if (condition)
+		return KDModifierConditions[condition].types[Type].events(item, epo, enu, eng);
+	return null;
+}
+
+
+/**
+ * Gets a list of curses applied to the item
+ * @param {string | string[]} List
  * @param {boolean} [includeOrig] - includes thje original item
  * @param {number} [minLevel] - for gating curse severity
  * @param {number} [maxLevel] - for gating curse severity
@@ -164,12 +305,13 @@ function KinkyDungeonGetHexByListWeighted(List, item, includeOrig, minLevel, max
 /**
  * Gets a list of curses applied to the item
  * @param {string | string[]} List
+ * @param {ModifierEnum} Type
  * @param {boolean} [includeOrig] - includes thje original item
  * @param {number} [minLevel] - for gating curse severity
  * @param {number} [maxLevel] - for gating curse severity
  * @returns {string[]}
  */
-function KinkyDungeonGetEnchantmentsByList(List, includeOrig, minLevel, maxLevel) {
+function KinkyDungeonGetEnchantmentsByList(List, Type, includeOrig, minLevel, maxLevel) {
 	let temp = [];
 	if (typeof List === "string") {
 		List = [List];
@@ -177,8 +319,8 @@ function KinkyDungeonGetEnchantmentsByList(List, includeOrig, minLevel, maxLevel
 	for (let l of List) {
 		if (KDEnchantVariantList[l]) {
 			let keys = KDEnchantVariantList[l].filter((key) => {
-				return (!minLevel || KDEventEnchantmentModular[key].level >= minLevel)
-					&& (!maxLevel || KDEventEnchantmentModular[key].level < maxLevel);
+				return (!minLevel || KDEventEnchantmentModular[key].types[Type].level >= minLevel)
+					&& (!maxLevel || KDEventEnchantmentModular[key].types[Type].level < maxLevel);
 			}).map((element) => {return element;});
 			temp.push(...keys);
 		}
@@ -191,18 +333,20 @@ function KinkyDungeonGetEnchantmentsByList(List, includeOrig, minLevel, maxLevel
  * Gets a list of curses applied to the item
  * @param {string | string[]} List
  * @param {string} item
+ * @param {ModifierEnum} Type
  * @param {boolean} [includeOrig] - includes thje original item
  * @param {number} [minLevel] - for gating curse severity
  * @param {number} [maxLevel] - for gating curse severity
  * @param {string[]} [allEnchant] - for gating curse severity
  * @returns {Record<string, number>}
  */
-function KinkyDungeonGetEnchantmentsByListWeighted(List, item, includeOrig, minLevel, maxLevel, allEnchant) {
-	let list = KinkyDungeonGetEnchantmentsByList(List, includeOrig, minLevel, maxLevel);
+function KinkyDungeonGetEnchantmentsByListWeighted(List, Type, item, includeOrig, minLevel, maxLevel, allEnchant) {
+	let list = KinkyDungeonGetEnchantmentsByList(List, Type, includeOrig, minLevel, maxLevel);
 	/** @type {Record<string, number>} */
 	let ret = {};
 	for (let obj of list) {
-		ret[obj] = KDEventEnchantmentModular[obj].weight(item, allEnchant);
+		if (KDEventEnchantmentModular[obj].types[Type]?.filter(item, allEnchant))
+			ret[obj] = KDEventEnchantmentModular[obj].types[Type].weight(item, allEnchant);
 	}
 	return ret;
 }

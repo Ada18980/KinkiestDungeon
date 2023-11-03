@@ -76,13 +76,14 @@ let KDEventMapInventoryIcon = {
 /**
  *
  * @param {string} Event
- * @param {KinkyDungeonEvent} kinkyDungeonEvent
+ * @param {KinkyDungeonEvent} e
  * @param {item} item
  * @param {*} data
  */
-function KinkyDungeonHandleInventoryIconEvent(Event, kinkyDungeonEvent, item, data) {
-	if (Event === kinkyDungeonEvent.trigger && KDEventMapInventoryIcon[Event] && KDEventMapInventoryIcon[Event][kinkyDungeonEvent.type]) {
-		KDEventMapInventoryIcon[Event][kinkyDungeonEvent.type](kinkyDungeonEvent, item, data);
+function KinkyDungeonHandleInventoryIconEvent(Event, e, item, data) {
+	if (Event === e.trigger && KDEventMapInventoryIcon[Event] && KDEventMapInventoryIcon[Event][e.type]) {
+		if (KDCheckCondition(e, data))
+			KDEventMapInventoryIcon[Event][e.type](e, item, data);
 	}
 }
 
@@ -97,6 +98,25 @@ let KDEventMapInventorySelected = {
 			if (item == data.item) {
 				data.extraLines.push(TextGet("KDVariableModifier_" + e.msg)
 					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
+					.replace("TYPE", `${e.kind}`));
+				data.extraLineColor.push(e.color || "#ffffff");
+				data.extraLineColorBG.push(e.bgcolor || "#000000");
+			}
+		},
+		"conditionModifier": (e, item, data) => {
+			if (item == data.item) {
+				data.extraLines.push(TextGet("KDModifierCondition_" + e.msg)
+					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
+					.replace("TYPE", `${e.kind}`));
+				data.extraLineColor.push(e.color || "#ffffff");
+				data.extraLineColorBG.push(e.bgcolor || "#000000");
+			}
+		},
+		"effectModifier": (e, item, data) => {
+			if (item == data.item) {
+				data.extraLines.push(TextGet("KDModifierEffect_" + e.msg)
+					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
+					.replace("DRTN", `${Math.round(e.duration)}`)
 					.replace("TYPE", `${e.kind}`));
 				data.extraLineColor.push(e.color || "#ffffff");
 				data.extraLineColorBG.push(e.bgcolor || "#000000");
@@ -124,6 +144,33 @@ function KinkyDungeonHandleInventorySelectedEvent(Event, kinkyDungeonEvent, item
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
  */
 let KDEventMapInventory = {
+	"dynamic": {
+		"BuffSelf": (e, item, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data)) {
+				let b = {
+					id: (e.kind || item.name) + e.buffType,
+					type: e.buffType,
+					power: e.power,
+					tags: e.tags,
+					currentCount: e.mult ? -1 : undefined,
+					maxCount: e.mult,
+					duration: e.time,
+				};
+				if (e.desc) {
+					b.aura = e.color || "#ffffff";
+					b.desc = e.desc;
+
+				}
+				if (e.buffSprite != undefined) {
+					if (e.buffSprite) {
+						b.buffSpriteSpecific = e.buffSprite;
+					}
+					b.buffSprite = true;
+				}
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, b);
+			}
+		},
+	},
 	"curseCount": {
 		/**
 		 * @param {KDEventData_CurseCount} data
@@ -176,7 +223,7 @@ let KDEventMapInventory = {
 		},
 		"cursePrefix": (e, item, data) => {
 			if (item == data.item) {
-				let variant = KinkyDungeonInventoryVariants[item.inventoryVariant || item.name];
+				let variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
 				if (variant) {
 					if (variant.prefix == "Enchanted")
 						variant.prefix = "Cursed";
@@ -516,8 +563,8 @@ let KDEventMapInventory = {
 				let curse = KDGetByWeight(KinkyDungeonGetCurseByListWeighted([data.curselist || listname], KDRestraint(item).name, false, 0, 1000));
 
 				// Load the current inventory variant
-				/** @type {KDInventoryVariant} */
-				let newvariant = JSON.parse(JSON.stringify(KinkyDungeonInventoryVariants[item.inventoryVariant || item.name] || {}));
+				/** @type {KDRestraintVariant} */
+				let newvariant = JSON.parse(JSON.stringify(KinkyDungeonRestraintVariants[item.inventoryVariant || item.name] || {}));
 				/** @type {restraint} - New restraint to transform to*/
 				let newRestraint = null;
 				if (data.newRestraintTags) {
@@ -1777,13 +1824,14 @@ let KDEventMapInventory = {
 /**
  *
  * @param {string} Event
- * @param {KinkyDungeonEvent} kinkyDungeonEvent
+ * @param {KinkyDungeonEvent} e
  * @param {item} item
  * @param {*} data
  */
-function KinkyDungeonHandleInventoryEvent(Event, kinkyDungeonEvent, item, data) {
-	if (Event === kinkyDungeonEvent.trigger && KDEventMapInventory[Event] && KDEventMapInventory[Event][kinkyDungeonEvent.type]) {
-		KDEventMapInventory[Event][kinkyDungeonEvent.type](kinkyDungeonEvent, item, data);
+function KinkyDungeonHandleInventoryEvent(Event, e, item, data) {
+	if (Event === e.trigger && KDEventMapInventory[e.dynamic ? "dynamic" : Event] && KDEventMapInventory[e.dynamic ? "dynamic" : Event][e.type]) {
+		if (KDCheckCondition(e, data))
+			KDEventMapInventory[e.dynamic ? "dynamic" : Event][e.type](e, item, data);
 	}
 }
 
@@ -1792,6 +1840,20 @@ function KinkyDungeonHandleInventoryEvent(Event, kinkyDungeonEvent, item, data) 
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, entity, *): void>>}
  */
 const KDEventMapBuff = {
+	"dynamic": {
+		"BuffSelf": (e, buff, entity, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data))
+				KinkyDungeonApplyBuffToEntity(entity, {
+					id: (e.kind || buff.id) + e.buffType,
+					type: e.buffType,
+					power: e.power,
+					tags: e.tags,
+					currentCount: e.mult ? -1 : undefined,
+					maxCount: e.mult,
+					duration: e.time
+				});
+		},
+	},
 	"expireBuff": {
 		"ChaoticOverflow": (e, buff, entity, data) => {
 			if (buff == data.buff) {
@@ -2494,8 +2556,9 @@ const KDEventMapBuff = {
  * @param {*} data
  */
 function KinkyDungeonHandleBuffEvent(Event, e, buff, entity, data) {
-	if (Event === e.trigger && KDEventMapBuff[Event] && KDEventMapBuff[Event][e.type]) {
-		KDEventMapBuff[Event][e.type](e, buff, entity, data);
+	if (Event === e.trigger && KDEventMapBuff[e.dynamic ? "dynamic" : Event] && KDEventMapBuff[e.dynamic ? "dynamic" : Event][e.type]) {
+		if (KDCheckCondition(e, data))
+			KDEventMapBuff[e.dynamic ? "dynamic" : Event][e.type](e, buff, entity, data);
 	}
 }
 
@@ -2525,8 +2588,9 @@ let KDEventMapOutfit = {
  * @param {*} data
  */
 function KinkyDungeonHandleOutfitEvent(Event, e, outfit, data) {
-	if (Event === e.trigger && KDEventMapOutfit[Event] && KDEventMapOutfit[Event][e.type]) {
-		KDEventMapOutfit[Event][e.type](e, outfit, data);
+	if (Event === e.trigger && KDEventMapOutfit[e.dynamic ? "dynamic" : Event] && KDEventMapOutfit[e.dynamic ? "dynamic" : Event][e.type]) {
+		if (KDCheckCondition(e, data))
+			KDEventMapOutfit[e.dynamic ? "dynamic" : Event][e.type](e, outfit, data);
 	}
 }
 
@@ -3221,6 +3285,7 @@ let KDEventMapSpell = {
 			}
 			if (KinkyDungeonPlayerBuffs.Analyze && KinkyDungeonPlayerBuffs.Analyze.duration > 1) {
 				// Nothing!
+				KDTriggerSpell(spell, data, false, false);
 			} else if (!activate) {
 				KinkyDungeonDisableSpell("Analyze");
 				KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "Analyze");
@@ -4005,7 +4070,6 @@ let KDEventMapSpell = {
 					KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "Analyze");
 				}
 				KinkyDungeonAdvanceTime(0, true, true);
-
 			}
 		},
 		"PassTime": (e, spell, data) => {
@@ -4063,8 +4127,9 @@ let KDEventMapSpell = {
  * @param {*} data
  */
 function KinkyDungeonHandleMagicEvent(Event, e, spell, data) {
-	if (Event === e.trigger && KDEventMapSpell[Event] && KDEventMapSpell[Event][e.type]) {
-		KDEventMapSpell[Event][e.type](e, spell, data);
+	if (Event === e.trigger && KDEventMapSpell[e.dynamic ? "dynamic" : Event] && KDEventMapSpell[e.dynamic ? "dynamic" : Event][e.type]) {
+		if (KDCheckCondition(e, data))
+			KDEventMapSpell[e.dynamic ? "dynamic" : Event][e.type](e, spell, data);
 	}
 }
 
@@ -4073,6 +4138,20 @@ function KinkyDungeonHandleMagicEvent(Event, e, spell, data) {
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, weapon, *): void>>}
  */
 let KDEventMapWeapon = {
+	"dynamic": {
+		"BuffSelf": (e, weapon, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data))
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					id: (e.kind || weapon.name) + e.buffType,
+					type: e.buffType,
+					power: e.power,
+					tags: e.tags,
+					currentCount: e.mult ? -1 : undefined,
+					maxCount: e.mult,
+					duration: e.time
+				});
+		},
+	},
 	"beforePlayerDamage": {
 		"StormBreakerCharge": (e, weapon, data) => {
 			if (data.dmg > 0 && (!e.damageTrigger || e.damageTrigger == data.type)) {
@@ -4812,8 +4891,9 @@ let KDEventMapWeapon = {
  * @param {*} data
  */
 function KinkyDungeonHandleWeaponEvent(Event, e, weapon, data) {
-	if (Event === e.trigger && KDEventMapWeapon[Event] && KDEventMapWeapon[Event][e.type]) {
-		KDEventMapWeapon[Event][e.type](e, weapon, data);
+	if (Event === e.trigger && KDEventMapWeapon[e.dynamic ? "dynamic" : Event] && KDEventMapWeapon[e.dynamic ? "dynamic" : Event][e.type]) {
+		if (KDCheckCondition(e, data))
+			KDEventMapWeapon[e.dynamic ? "dynamic" : Event][e.type](e, weapon, data);
 	}
 }
 
@@ -5196,8 +5276,9 @@ let KDEventMapBullet = {
  * @param {*} data
  */
 function KinkyDungeonHandleBulletEvent(Event, e, b, data) {
-	if (Event === e.trigger && b.bullet && KDEventMapBullet[Event] && KDEventMapBullet[Event][e.type]) {
-		KDEventMapBullet[Event][e.type](e, b, data);
+	if (Event === e.trigger && b.bullet && KDEventMapBullet[e.dynamic ? "dynamic" : Event] && KDEventMapBullet[e.dynamic ? "dynamic" : Event][e.type]) {
+		if (KDCheckCondition(e, data))
+			KDEventMapBullet[e.dynamic ? "dynamic" : Event][e.type](e, b, data);
 	}
 }
 
@@ -5322,9 +5403,10 @@ let KDEventMapEnemy = {
 			if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
 				if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
 					KDTripleBuffKill("ShadowEngulf", KinkyDungeonPlayerEntity, 9, (tt) => {
-						if (KDGameData.RoomType != "DemonTransition")
-							KDEnterDemonTransition();
-						else
+						if (KDGameData.RoomType != "DemonTransition") {
+							AIData.defeat = true;
+							KDCustomDefeat = KDEnterDemonTransition;
+						} else
 							KinkyDungeonPassOut();
 					}, "Blindness",
 					(target) => {
@@ -5908,8 +5990,9 @@ let KDEventMapEnemy = {
  * @param {*} data
  */
 function KinkyDungeonHandleEnemyEvent(Event, e, enemy, data) {
-	if (Event === e.trigger && KDEventMapEnemy[Event] && KDEventMapEnemy[Event][e.type]) {
-		KDEventMapEnemy[Event][e.type](e, enemy, data);
+	if (Event === e.trigger && KDEventMapEnemy[e.dynamic ? "dynamic" : Event] && KDEventMapEnemy[e.dynamic ? "dynamic" : Event][e.type]) {
+		if (KDCheckCondition(e, data))
+			KDEventMapEnemy[e.dynamic ? "dynamic" : Event][e.type](e, enemy, data);
 	}
 }
 

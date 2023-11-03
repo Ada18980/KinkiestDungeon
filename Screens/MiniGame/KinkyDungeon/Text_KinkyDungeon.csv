@@ -26,7 +26,7 @@ RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
 
-KinkyDungeon,"Kinky Dungeon v4.82.1"
+KinkyDungeon,"Kinky Dungeon v4.83"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -4826,6 +4826,7 @@ KinkyDungeonFilteralteration,Alteration
 KinkyDungeonFilterlight,Light
 KinkyDungeonFiltershadow,Shadow
 KinkyDungeonFilterknowledge,Knowledge
+KinkyDungeonFilterarrow,Archery
 KinkyDungeonFilterutility,Utility
 KinkyDungeonFilterupgrade,Upgrades
 KinkyDungeonFiltermagic,Spell Tree
@@ -11886,24 +11887,29 @@ KDIceMeltCancelProgress,"Your RestraintName hardens with the application of fros
 KinkyDungeonSpellNull,Unique
 KDdmg,dmg
 
-KDVariableModifier_Evasion,"Elven Grace: AMNT Evasion"
-KDVariableModifier_Accuracy,"Seeking: AMNT% Accuracy"
-KDVariableModifier_SpellWard,"Warding: AMNT Magic Armor"
-KDVariableModifier_Armor,"Sturdy: AMNT Physical Armor"
-KDVariableModifier_BondageResist,"Escape: AMNT Bondage Resist"
-KDVariableModifier_DamageResist,"Resistance: AMNT TYPE Resist"
-KDVariableModifier_DamageBuff,"Runic: AMNT% TYPE Damage"
-KDVariableModifier_BaseDamageBuffMelee,"Might: AMNT% weapon phys. dmg"
-KDVariableModifier_BaseDamageBuffMagic,"Amplify: AMNT% weapon magic dmg"
-KDVariableModifier_ElementalEcho,"Spellblade: Infuse weapon AMNT% TYPE"
-KDVariableModifier_ElementalDmg,"Infuse: AMNT TYPE on attack"
-KDVariableModifier_ManaCost,"Efficient: AMNT% Mana Costs"
-KDVariableModifier_ManaRegen,"Empower: AMNT% regen from mana pool"
-KDVariableModifier_ManaRegenOnKill,"Drain: AMNT mana pool on capture"
-KDVariableModifier_Sneak,"Camouflage: AMNT% Visibility"
-KDVariableModifier_DPDecay,"Calming: AMNT Distraction Decay"
-KDVariableModifier_DPGain,"Distracting: AMNT Distraction Per Turn"
-KDVariableModifier_DPGainWhenAttacked,"Sensitivity: AMNT AP from attacks"
+KDVariableModifier_Evasion,"AMNT Evasion"
+KDVariableModifier_Accuracy,"AMNT% Accuracy"
+KDVariableModifier_SpellWard,"AMNT Magic Armor"
+KDVariableModifier_Armor,"AMNT Physical Armor"
+KDVariableModifier_BondageResist,"AMNT Bondage Resist"
+KDVariableModifier_DamageResist,"AMNT TYPE Resist"
+KDVariableModifier_DamageBuff,"AMNT% TYPE Damage"
+KDVariableModifier_BaseDamageBuffMelee,"AMNT% weapon phys. dmg"
+KDVariableModifier_BaseDamageBuffMagic,"AMNT% weapon magic dmg"
+KDVariableModifier_ElementalEcho,"Infuse weapon AMNT% TYPE"
+KDVariableModifier_ElementalDmg,"AMNT TYPE on attack"
+KDVariableModifier_ManaCost,"AMNT% Mana Costs"
+KDVariableModifier_ManaCostSpecific,"AMNT% TYPE Mana Costs"
+KDVariableModifier_ManaRegen,"AMNT% regen from mana pool"
+KDVariableModifier_ManaRegenOnKill,"AMNT mana pool on capture"
+KDVariableModifier_Sneak,"AMNT% Visibility"
+KDVariableModifier_DPDecay,"AMNT Distraction Decay"
+KDVariableModifier_DPGain,"AMNT Distraction Per Turn"
+KDVariableModifier_DPGainWhenAttacked,"AMNT AP from attacks"
+
+KDModifierCondition_OnTease,"After attacking with a teasing weapon:"
+
+KDModifierEffect_SpellDamageBuff,"Gain AMNT% Spell Damage for DRTN turns"
 
 KDVariableModifier_AntiMagic,"Drains mana from the wearer."
 
@@ -12643,3 +12649,6 @@ KDIntroScene1,"Long ago, war raged across the globe.|Countless lives were lost f
 KDIntroScene2,"Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharing her research across the globe, she laid the groundwork for an era of peace.|A great civilization arose, where magic and technology flourished."
 KDIntroScene3,"But in the end, Sariel's experiments left her weakened and unable to save herself.|Without a leader, the Old Civilization collapsed into tyranny.|Refugees fled across the sea in search of a new life, and the old empire was forgotten."
 KDIntroScene4,"It is now three hundred years after the fall.|Explorers have rediscovered a lost island full of old technology.|Now, adventurers flock to the ancient ruins in search of wealth."
+
+
+KinkyDungeonBuffSpellDamageBuff,An item has increased your spell damage!

@@ -1433,7 +1433,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Armor != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetItemNameString(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor);
 							return false;
 						},
 						options: {
@@ -1451,7 +1451,7 @@ let KDDialogue = {
 										if (curs) {
 											events.push(...KDEventHexModular[curs].events);
 										}
-										/** @type {KDInventoryVariant} */
+										/** @type {KDRestraintVariant} */
 										let variant = {
 											template: armor,
 											events: events,
@@ -1488,7 +1488,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Restraint != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetItemNameString(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint);
 							return false;
 						},
 						options: {
@@ -1502,7 +1502,7 @@ let KDDialogue = {
 									if (curs) {
 										events.push(...KDEventHexModular[curs].events);
 									}
-									/** @type {KDInventoryVariant} */
+									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,
@@ -1534,7 +1534,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Collar != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetItemNameString(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar);
 							return false;
 						},
 						options: {
@@ -1548,7 +1548,7 @@ let KDDialogue = {
 									if (curs) {
 										events.push(...KDEventHexModular[curs].events);
 									}
-									/** @type {KDInventoryVariant} */
+									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,
@@ -1580,7 +1580,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Catsuit != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetItemNameString(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit);
 							return false;
 						},
 						options: {
@@ -1594,7 +1594,7 @@ let KDDialogue = {
 									if (curs) {
 										events.push(...KDEventHexModular[curs].events);
 									}
-									/** @type {KDInventoryVariant} */
+									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,
@@ -1780,7 +1780,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Armor != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetItemNameString(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor);
 							return false;
 						},
 						options: {
@@ -1798,7 +1798,7 @@ let KDDialogue = {
 										if (curs) {
 											events.push(...KDEventHexModular[curs].events);
 										}
-										/** @type {KDInventoryVariant} */
+										/** @type {KDRestraintVariant} */
 										let variant = {
 											template: armor,
 											events: events,
@@ -1834,7 +1834,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Restraint != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetItemNameString(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint);
 							return false;
 						},
 						options: {
@@ -1848,7 +1848,7 @@ let KDDialogue = {
 									if (curs) {
 										events.push(...KDEventHexModular[curs].events);
 									}
-									/** @type {KDInventoryVariant} */
+									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,
@@ -1880,7 +1880,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Collar != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetItemNameString(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar);
 							return false;
 						},
 						options: {
@@ -1894,7 +1894,7 @@ let KDDialogue = {
 									if (curs) {
 										events.push(...KDEventHexModular[curs].events);
 									}
-									/** @type {KDInventoryVariant} */
+									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,
@@ -1926,7 +1926,7 @@ let KDDialogue = {
 							return KDGameData.CurrentDialogMsgData?.RESTRAINTNAME_Catsuit != undefined;
 						},
 						clickFunction: (gagged, player) => {
-							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetRestraintNameName(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit);
+							KDGameData.CurrentDialogMsgData.RESTRAINTNAME = KDGetItemNameString(KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit);
 							return false;
 						},
 						options: {
@@ -1940,7 +1940,7 @@ let KDDialogue = {
 									if (curs) {
 										events.push(...KDEventHexModular[curs].events);
 									}
-									/** @type {KDInventoryVariant} */
+									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,

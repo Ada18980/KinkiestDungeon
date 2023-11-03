@@ -170,7 +170,7 @@ let KinkyDungeonRestraintsCache = new Map();
  * @returns {restraint}
  */
 function KDRestraint(item) {
-	if (KinkyDungeonInventoryVariants[item.name]) return KinkyDungeonRestraintsCache.get(KinkyDungeonInventoryVariants[item.name].template);
+	if (KinkyDungeonRestraintVariants[item.name]) return KinkyDungeonRestraintsCache.get(KinkyDungeonRestraintVariants[item.name].template);
 	return KinkyDungeonRestraintsCache.get(item.name);
 }
 
@@ -2556,7 +2556,7 @@ function KinkyDungeonGetRestraintByName(Name) {
 	} else {
 		KinkyDungeonRefreshRestraintsCache();
 	}
-	if (KinkyDungeonInventoryVariants[Name]) Name = KinkyDungeonInventoryVariants[Name].template;
+	if (KinkyDungeonRestraintVariants[Name]) Name = KinkyDungeonRestraintVariants[Name].template;
 
 	return KinkyDungeonRestraintsCache.get(Name);
 }
@@ -3220,7 +3220,7 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
  *
  * @param {restraint} restraint
  * @param {ApplyVariant} variant
- * @returns {KDInventoryVariant}
+ * @returns {KDRestraintVariant}
  */
 function KDApplyVarToInvVar(restraint, variant) {
 	let events = [];
@@ -3228,7 +3228,7 @@ function KDApplyVarToInvVar(restraint, variant) {
 		events.push(...JSON.parse(JSON.stringify(KDEventHexModular[e].events)));
 	}
 	for (let e of variant.enchants) {
-		events.push(...JSON.parse(JSON.stringify(KDEventEnchantmentModular[e].events)));
+		events.push(...JSON.parse(JSON.stringify(KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events)));
 	}
 	return {
 		template: restraint.name,
@@ -3777,7 +3777,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 						|| ((
 							rest.enchanted
 							|| (rest.alwaysKeep)
-							|| (inventoryAs && KinkyDungeonInventoryVariants[inventoryAs] && !KinkyDungeonInventoryVariants[inventoryAs].noKeep)
+							|| (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs] && !KinkyDungeonRestraintVariants[inventoryAs].noKeep)
 						)))
 					&& (!Add || UnLink)) {
 					if (inventoryAs) {
@@ -3789,7 +3789,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 						if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
 							let loose = {name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:item.events || origRestraint.events, quantity: 1};
 							if (item.inventoryVariant) loose.inventoryVariant = item.inventoryVariant;
-							if (KinkyDungeonInventoryVariants[inventoryAs]) loose.showInQuickInv = true;
+							if (KinkyDungeonRestraintVariants[inventoryAs]) loose.showInQuickInv = true;
 							KinkyDungeonInventoryAdd(loose);
 						} else {
 							if (!KinkyDungeonInventoryGetLoose(inventoryAs).quantity) KinkyDungeonInventoryGetLoose(inventoryAs).quantity = 0;
@@ -3878,7 +3878,7 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 				&& (Keep
 					|| rest.enchanted
 					|| rest.alwaysKeep
-					|| (inventoryAs && KinkyDungeonInventoryVariants[inventoryAs] && !KinkyDungeonInventoryVariants[inventoryAs].noKeep)
+					|| (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs] && !KinkyDungeonRestraintVariants[inventoryAs].noKeep)
 				)) {
 				if (inventoryAs) {
 					let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
@@ -3887,7 +3887,7 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 					if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
 						let loose = {name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:item.events || origRestraint.events, quantity: 1};
 						if (item.inventoryVariant) loose.inventoryVariant = item.inventoryVariant;
-						if (KinkyDungeonInventoryVariants[inventoryAs]) loose.showInQuickInv = true;
+						if (KinkyDungeonRestraintVariants[inventoryAs]) loose.showInQuickInv = true;
 						KinkyDungeonInventoryAdd(loose);
 					} else KinkyDungeonInventoryGetLoose(inventoryAs).quantity += 1;
 				} else KinkyDungeonInventoryAdd({name: rest.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:rest.events});
@@ -4685,15 +4685,6 @@ function KDGetRemovableHex(item, level) {
 	return [];
 }
 
-/**
- *
- * @param {item} item
- * @returns {KDInventoryVariant}
- */
-function KDGetInventoryVariant(item) {
-	// @ts-ignore
-	return KinkyDungeonInventoryVariants[item.inventoryVariant || item.inventoryAs || item.name];
-}
 
 let KDRestraintDebugLog = [];
 
@@ -4702,8 +4693,23 @@ let KDRestraintDebugLog = [];
  * @param {item} item
  */
 function KDGetItemName(item) {
-	let base = TextGet("Restraint" + KDRestraint(item).name);
-	let variant = KinkyDungeonInventoryVariants[item.inventoryVariant || item.name];
+	let base = "";
+	let variant = null;
+	switch(item.type) {
+		case Restraint:
+		case LooseRestraint:
+			base = TextGet("Restraint" + KDRestraint(item).name);
+			variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
+			break;
+		case Consumable:
+			base = TextGet("KinkyDungeonInventoryItem" + KDConsumable(item).name);
+			variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
+			break;
+		case Weapon:
+			base = TextGet("KinkyDungeonInventoryItem" + KDWeapon(item).name);
+			variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
+			break;
+	}
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }
@@ -4719,12 +4725,31 @@ function KDGetRestraintName(restraint, variant) {
 }
 /**
  *
+ * @param {consumable} consumable
+ * @param {ApplyVariant} [variant]
+ */
+function KDGetConsumableName(consumable, variant) {
+	let base = TextGet("KinkyDungeonInventoryItem" + consumable.name);
+	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
+	return base;
+}
+/**
+ *
+ * @param {weapon} weapon
+ * @param {ApplyVariant} [variant]
+ */
+function KDGetWeaponName(weapon, variant) {
+	let base = TextGet("KinkyDungeonInventoryItem" + weapon.name);
+	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
+	return base;
+}
+
+/**
+ *
  * @param {string} name
  */
-function KDGetRestraintNameName(name) {
-	let base = TextGet("Restraint" + name);
-	//let variant = KinkyDungeonInventoryVariants[item.inventoryAs || item.name];
-	//if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
+function KDGetItemNameString(name) {
+	let base = TextGet((KinkyDungeonGetRestraintByName(name) ? "Restraint" : "KinkyDungeonInventoryItem") + name);
 	return base;
 }
 

@@ -38,8 +38,8 @@ let KDInventoryAction = {
 					}
 				}
 
-				if (KDGetInventoryVariant(item)) {
-					KDGetInventoryVariant(item).events = JSON.parse(JSON.stringify(item.events));
+				if (KDGetRestraintVariant(item)) {
+					KDGetRestraintVariant(item).events = JSON.parse(JSON.stringify(item.events));
 				}
 
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Evil.ogg");

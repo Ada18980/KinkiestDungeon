@@ -220,11 +220,11 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 		KDGameData.JailKey = true;
 		KinkyDungeonAggroAction('key', {});
 	} else if (KinkyDungeonGetRestraintByName(Item.name)) {
-		if (KinkyDungeonInventoryVariants[Item.name]) {
-			KDGiveInventoryVariant(KinkyDungeonInventoryVariants[Item.name], undefined, KinkyDungeonInventoryVariants[Item.name].curse);
+		if (KinkyDungeonRestraintVariants[Item.name]) {
+			KDGiveInventoryVariant(KinkyDungeonRestraintVariants[Item.name], undefined, KinkyDungeonRestraintVariants[Item.name].curse);
 			color = "#aaaaff";
 			name = "Generic";
-			replace = TextGet("Restraint" + KinkyDungeonInventoryVariants[Item.name].template);
+			replace = TextGet("Restraint" + KinkyDungeonRestraintVariants[Item.name].template);
 		} else {
 			if (!KinkyDungeonInventoryGetLoose(Item.name)) {
 				KinkyDungeonInventoryAdd({name: Item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:Item.events, quantity: 1});

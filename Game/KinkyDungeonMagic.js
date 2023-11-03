@@ -1852,7 +1852,7 @@ function KDDrawHotbar(xLoc, yLoc, name, fn) {
 		} else {
 			spell = KinkyDungeonConsumableChoices[I] || KinkyDungeonWeaponChoices[I] || KinkyDungeonArmorChoices[I];
 			armor = KinkyDungeonArmorChoices[I];
-			if (armor && KinkyDungeonInventoryVariants[armor]) spell = KinkyDungeonInventoryVariants[armor].template;
+			if (armor && KinkyDungeonRestraintVariants[armor]) spell = KinkyDungeonRestraintVariants[armor].template;
 			if (spell) {
 				label = TextGet((armor ? "Restraint" : "KinkyDungeonInventoryItem") + spell);
 				KDDraw(kdcanvas, kdpixisprites, "kdspellPreview" + spell, KDGetItemPreview({name: spell, type: KinkyDungeonConsumableChoices[I] ? Consumable : (armor ? LooseRestraint : Weapon)}).preview, x - h, y, h, h);

@@ -956,10 +956,13 @@ function KDGetJailDoor(x, y) {
 }
 
 function KDDefeatedPlayerTick() {
+	KDGameData.KinkyDungeonJailGuard = 0;
+	KDGameData.KinkyDungeonLeashingEnemy = 0;
 	KinkyDungeonSetFlag("playerDefeated", 1);
 }
 
 function KDEnterDemonTransition() {
+	KDDefeatedPlayerTick();
 	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
 	KDGameData.PrisonerState = 'jail';
 	//KDGameData.RoomType = "DemonTransition"; // We do a tunnel every other room

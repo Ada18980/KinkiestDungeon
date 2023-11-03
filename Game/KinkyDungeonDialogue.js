@@ -1486,26 +1486,6 @@ function KDShopBuyDialogue(name) {
 					}
 					if (enemy && KDShopPersonalities.includes(KDGetPersonality(enemy))) KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + KDGetPersonality(enemy);
 				}
-
-				/*let itemInv = KinkyDungeonInventoryGet(item);
-				if (itemInv?.type == Consumable || KinkyDungeonFindConsumable[item])
-					KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable[item], 1);
-				else if (KinkyDungeonInventoryVariants[item]) {
-					KDGiveInventoryVariant(KinkyDungeonInventoryVariants[item]);
-				} else {
-					if (KinkyDungeonFindWeapon[item])
-						KinkyDungeonInventoryAddWeapon(item);
-					else if (KinkyDungeonGetRestraintByName(item)) {
-						if (itemInv) itemInv.quantity = (itemInv.quantity || 1) + 1;
-						else KinkyDungeonInventoryAdd({name: item, id: KinkyDungeonGetItemID(), quantity: 1, type: LooseRestraint, events:KinkyDungeonGetRestraintByName(item).events});
-					}
-					else {
-
-						KDAddBasic({name: item});
-					}
-				}*/
-
-
 				return false;
 			},
 			leadsToStage: "", dontTouchText: true,
