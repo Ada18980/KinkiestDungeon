@@ -1187,6 +1187,8 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				e.visual_x = point.x;
 				e.visual_y = point.y;
 			}
+			KDUpdateEnemyCache = true;
+			KDUnPackEnemies(KDMapData);
 
 			KinkyDungeonAdvanceTime(0);
 		}
@@ -1198,6 +1200,8 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	KDPathCache = new Map();
 	KDPathCacheIgnoreLocks = new Map();
 	KDRedrawFog = 2;
+	KDUpdateEnemyCache = true;
+	KDUnPackEnemies(KDMapData);
 	KinkyDungeonAdvanceTime(0);
 
 	KinkyDungeonGenNavMap();

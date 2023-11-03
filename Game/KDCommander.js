@@ -198,7 +198,7 @@ function KDCommanderUpdateOrders(data) {
 				data.aggressive = KinkyDungeonAggressive(enemy);
 				let role = KDCommanderOrders[id[1]];
 				if (role) {
-					if (role.maintain(enemy, data)) {
+					if (!KDHelpless(enemy) && role.maintain(enemy, data)) {
 						role.update(enemy, data);
 					} else {
 						KDCommanderRoles.delete(enemy.id);

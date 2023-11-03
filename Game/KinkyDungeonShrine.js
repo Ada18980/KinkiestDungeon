@@ -129,10 +129,10 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		if (!power || power < 0.1) power = 0.1;
 		if (restraint.armor) power += 1;
 		if (restraint.protection) power += 3*restraint.protection;
-		if (KinkyDungeonInventoryVariants[item.name]) {
+		if (KinkyDungeonRestraintVariants[item.name]) {
 			let enchants = {};
-			for (let ev of KinkyDungeonInventoryVariants[item.name].events) {
-				if (ev.original && KDEventEnchantmentModular[ev.original]) enchants[ev.original] = KDEventEnchantmentModular[ev.original].level;
+			for (let ev of KinkyDungeonRestraintVariants[item.name].events) {
+				if (ev.original && KDEventEnchantmentModular[ev.original]) enchants[ev.original] = KDEventEnchantmentModular[ev.original].types[KDModifierEnum.restraint].level;
 			}
 			let sum = 0;
 			for (let amt of Object.values(enchants)) {
@@ -273,7 +273,7 @@ function KinkyDungeonPayShrine(type) {
 			if (KinkyDungeonShopIndex > 0) KinkyDungeonShopIndex -= 1;
 
 			KDGameData.ShopRewardProgram += cost;
-			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, true, true);
+			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true);
 			if (!KDGameData.ShopRewardProgramThreshold) KDGameData.ShopRewardProgramThreshold = 500;
 			if (!KDGameData.ShopRewardProgram) KDGameData.ShopRewardProgram = 0;
 			if (point && KDGameData.ShopRewardProgram > KDGameData.ShopRewardProgramThreshold) {

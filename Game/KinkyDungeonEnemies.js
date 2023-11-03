@@ -2191,6 +2191,17 @@ function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlay
 	return undefined;
 }
 
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {boolean} [allowNearPlayer]
+ * @param {entity} [Enemy]
+ * @param {boolean} [Adjacent]
+ * @param {boolean} [ignoreOffLimits]
+ * @param {(x: number, y: number) => boolean} [callback]
+ * @returns {{x: number, y: number}}
+ */
 function KinkyDungeonGetNearbyPoint(x, y, allowNearPlayer=false, Enemy, Adjacent, ignoreOffLimits, callback) {
 	let slots = [];
 	for (let X = -Math.ceil(1); X <= Math.ceil(1); X++)
@@ -3938,7 +3949,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							}
 							if (roll < KinkyDungeonTorsoGrabChance + bonus) {
 								KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);
-								let msg = TextGet("KinkyDungeonTorsoGrab").replace("RestraintName", KDGetRestraintNameName(harnessRestraintName)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name));
+								let msg = TextGet("KinkyDungeonTorsoGrab").replace("RestraintName", KDGetItemNameString(harnessRestraintName)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name));
 
 								KinkyDungeonSendTextMessage(5, msg, "#ff8800", 1);
 
@@ -4834,7 +4845,7 @@ function KDIsImmobile(enemy) {
  * @returns
  */
 function KinkyDungeonCanSwapWith(e, Enemy) {
-	if (KDIsImmobile(e)) return false; // Definition of noSwap
+	if (KDIsImmobile(e) && (e.Enemy.immobile || !(Enemy == KinkyDungeonJailGuard() || Enemy == KinkyDungeonLeashingEnemy()))) return false; // Definition of noSwap
 	if (e && KDEnemyHasFlag(e, "noswap")) return false; // Definition of noSwap
 
 	if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits && Enemy != KinkyDungeonJailGuard() && !KinkyDungeonAggressive(Enemy)) return false;

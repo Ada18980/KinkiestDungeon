@@ -3587,7 +3587,7 @@ function KinkyDungeonGenerateSaveData() {
 	save.KDCommanderRoles = Array.from(KDCommanderRoles);
 	save.faction = KinkyDungeonFactionRelations;
 	save.perks = KDUnlockedPerks;
-	save.inventoryVariants = KinkyDungeonInventoryVariants;
+	save.inventoryVariants = KinkyDungeonRestraintVariants;
 
 	let spells = [];
 	/**@type {item[]} */
@@ -3718,7 +3718,7 @@ function KinkyDungeonLoadGame(String) {
 			if (saveData.KDGameData != undefined) KDGameData = Object.assign({}, saveData.KDGameData);
 			KDEventData = JSON.parse(JSON.stringify(KDEventDataBase));
 			if (saveData.KDEventData != undefined) KDEventData = Object.assign({}, saveData.KDEventData);
-			if (saveData.inventoryVariants) KinkyDungeonInventoryVariants = saveData.inventoryVariants;
+			if (saveData.inventoryVariants) KinkyDungeonRestraintVariants = saveData.inventoryVariants;
 
 			if (saveData.statchoice != undefined) KinkyDungeonStatsChoice = new Map(saveData.statchoice);
 

@@ -1,12 +1,10 @@
 "use strict";
 
-let KDBasicArmorWeight = 2.8;
-let KDBasicArmorWeight_Cursed = 0.4;
-let KDBasicArmorWeight_Enchanted = 0.6;
+let KDBasicArmorWeight = 3.5;
+let KDBasicArmorWeight_Cursed = 2;
 let KDEnchantedRestraintsWeight = 1.0;
-let KDAdvancedArmorWeight = 1.5;
+let KDAdvancedArmorWeight = 1.9;
 let KDAdvancedArmorWeight_Cursed = 2.0;
-let KDAdvancedArmorWeight_Enchanted = 2.5;
 
 let KD_hexchance_Default = 0.1;
 let KD_hexscale_Default = 0.4; // based on % of max level

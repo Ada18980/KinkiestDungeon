@@ -13,6 +13,15 @@ Vague todo:
 
 - TODO add scroll to log, rep
 
+
+4.83 (Nov 2023)
+- Fixed several bugs involving pathfinding
+- Fixed a bug involving favorited items not working correctly with enchanted armor
+- Added a few new enchantment types
+- Made changes to jail under the hood
+- changed enemy composition in high security prisons
+-
+
 4.82.1 (Oct 2023)
 - Added some changes to mobile touch controls to make it easier to use
 

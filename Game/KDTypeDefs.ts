@@ -1133,7 +1133,9 @@ interface enemy extends KDHasTags {
 	noChannel?: boolean,
 	/** Focuses player over summmons, ignores decoys */
 	focusPlayer?: boolean;
-	/** Cant be swapped by another enemy pathing */
+	/** Cant be swapped by another enemy pathing, even if the enemy is a jailer or leasher.
+	 * For barricades and other dynamically placed barriers, use "immobile" so it doesnt block important enemies
+	 */
 	immobile?: boolean;
 	/** Stops casting spells after there are this many enemies */
 	enemyCountSpellLimit?: number;
@@ -1202,7 +1204,13 @@ interface weapon {
 		range?: number,};
 }
 
+
 interface KinkyDungeonEvent {
+	/** A dynamic event is specified as 'dynamic' and is specified under ItemMap.dynamic
+	 * (replace ItemMap with the event map you need)
+	 * This lets you use the same code for multiple events, which is risky but convenient
+	*/
+	dynamic?: boolean,
 	trim?: boolean,
 	cost?: number,
 	offhand?: boolean,
@@ -1210,6 +1218,32 @@ interface KinkyDungeonEvent {
 	cursetype?: string,
 	/** This is from a temporary event curse */
 	curse?: boolean,
+	/**
+	 * For Dynamic events there is no easy way of getting the 'target' of a targeted event,
+	 * for example bulletHitEnemy or playerAttack
+	 * targetType specifies the key in the event data that leads to an entity target
+	 *
+	 * Certain constants apply:
+	 * KDPLAYER - the current player entity
+	 * KDGUARD - the current jail guard
+	 * KDLEASHER - the current leasher
+	 * KDNEAREST - the nearest entity to the player
+	 * KDNEARESTHOSTILE - the nearest hostile enemy
+	 */
+	targetType?: string,
+	/**
+	 * For Dynamic events there is no easy way of getting the 'attacker' of a targeted event,
+	 * for example bulletHitEnemy or playerAttack
+	 * attackerType specifies the key in the event data that leads to an entity which is responsible for the event
+	 *
+	 * Certain constants apply:
+	 * KDPLAYER - the current player entity
+	 * KDGUARD - the current jail guard
+	 * KDLEASHER - the current leasher
+	 * KDNEAREST - the nearest entity to the player
+	 * KDNEARESTHOSTILE - the nearest hostile enemy
+	 */
+	attackerType?: string,
 	tags?: string[],
 	duration?: number,
 	always?: boolean,
@@ -1240,7 +1274,12 @@ interface KinkyDungeonEvent {
 	chance?: number;
 	buff?: any;
 	lock?: string;
+	desc?: string;
+	buffSprite?: string;
 	msg?: string;
+	/** Like a prereq, but always active even if the event doesnt specify*/
+	condition?: string;
+	/** Specifies a prereq that the event itself can use */
 	prereq?: string;
 	color?: string;
 	filter?: LayerFilter;
@@ -2012,7 +2051,7 @@ interface KinkyDungeonSave {
 	dress: string;
 	gold: number;
 	points: number;
-	inventoryVariants: Record<string, KDInventoryVariant>;
+	inventoryVariants: Record<string, KDRestraintVariant>;
 	grounditems: any;
 	perks: string[];
 	levels: {
@@ -2568,17 +2607,35 @@ interface KDCursedDef {
 	remove: (item: item, host: item) => void, events?: KinkyDungeonEvent[]
 }
 
-type KDInventoryVariant = {
+type KDRestraintVariant = {
 	/** Name prefix */
 	prefix?: string,
 	/** The curse to apply with this inventory variant */
 	curse?: string,
+	/** The lock to apply with this inventory variant */
+	lock?: string,
 	/** extra events added on */
 	events: KinkyDungeonEvent[],
 	/** The original restraint this is based on */
 	template: string,
 	/** If true, this item will not be forcibly kept whenever being added or removed */
 	noKeep?: boolean,
+}
+type KDWeaponVariant = {
+	/** Name prefix */
+	prefix?: string,
+	/** extra events added on */
+	events: KinkyDungeonEvent[],
+	/** The original weapon this is based on */
+	template: string,
+}
+type KDConsumableVariant = {
+	/** Name prefix */
+	prefix?: string,
+	/** extra events added on */
+	events: KinkyDungeonEvent[],
+	/** The original consumable this is based on */
+	template: string,
 }
 
 interface KDSpellComponent {
@@ -2722,6 +2779,56 @@ interface ApplyVariant {
 	minfloor: number,
 	maxfloor?: number,
 }
+
+enum PosNeutNeg {
+	positive=1,
+	neutral=0,
+	negative=-1,
+}
+
+enum ModifierEnum {
+	restraint,
+	weapon,
+	consumable,
+}
+
+interface KDEnchantmentType {
+	level: number,
+	filter: (item: string, allEnchant: string[]) => boolean,
+	weight: (item: string, allEnchant: string[]) => number,
+	events: (item: string, Loot: any, curse: string, primaryEnchantment: string, enchantments: string[]) => KinkyDungeonEvent[]
+}
+
+interface KDEnchantment {
+	tags: string[],
+	types: Record<ModifierEnum, KDEnchantmentType>,
+}
+
+
+interface KDModifierEffectType {
+	level: number,
+	filter: (item: string, positive: PosNeutNeg) => boolean;
+	weight: (item: string, positive: PosNeutNeg) => number;
+	events: (item: string, positive: PosNeutNeg) => KinkyDungeonEvent[];
+}
+
+interface KDModifierEffect {
+	tags: string[],
+	types: Record<ModifierEnum, KDModifierEffectType>
+}
+
+interface KDModifierConditionType {
+	level: number,
+	filter: (item: string, effect_positive: KDModifierEffect[], effect_neutral: KDModifierEffect[], effect_negative: KDModifierEffect[]) => boolean;
+	weight: (item: string, effect_positive: KDModifierEffect[], effect_neutral: KDModifierEffect[], effect_negative: KDModifierEffect[]) => number;
+	events: (item: string, effect_positive: KDModifierEffect[], effect_neutral: KDModifierEffect[], effect_negative: KDModifierEffect[]) => KinkyDungeonEvent[];
+}
+
+interface KDModifierCondition {
+	tags: string[],
+	types: Record<ModifierEnum, KDModifierConditionType>
+}
+
 
 interface KDSpecialEnemyBuff {
 	filter: (enemy: entity, type: string[]) => boolean;
