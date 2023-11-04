@@ -1866,7 +1866,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				let weaponsToTest = KinkyDungeonAllWeapon();//KinkyDungeonCanUseWeapon() ? KinkyDungeonAllWeapon() : [KinkyDungeonPlayerDamage];
 				for (let inv of weaponsToTest) {
 					if (KDWeapon(inv).cutBonus > maxBonus) maxBonus = KDWeapon(inv).cutBonus;
-					if (KDWeapon(inv).cutBonus != undefined && KDWeapon(inv).magic) data.canCutMagic = true;
+					if (KDWeapon(inv).cutBonus != undefined && KDWeaponIsMagic(inv)) data.canCutMagic = true;
 				}
 				data.escapeChance += maxBonus;
 				data.origEscapeChance += maxBonus;

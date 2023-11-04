@@ -2635,7 +2635,7 @@ let KDEventMapSpell = {
 		},
 		"WizardOffhand": (e, spell, data) => {
 			if (data.canOffhand && KDHasSpell("WizardOffhand") && !KDHasSpell("BattleRhythm")) {
-				if (!KDWeapon(data.item)?.magic) {
+				if (!KDWeaponIsMagic(data.item)) {
 					data.canOffhand = false;
 				}
 			}
@@ -2835,7 +2835,7 @@ let KDEventMapSpell = {
 	},
 	"calcMultMana": {
 		"StaffUser1": (e, spell, data) => {
-			if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.magic)
+			if (KinkyDungeonPlayerDamage && KDWeaponIsMagic({name: KinkyDungeonPlayerWeapon}))
 				data.cost = Math.max(data.cost * e.power, 0);
 		},
 	},
