@@ -25,8 +25,8 @@ function KinkyDungeonCheckProjectileClearance(xx, yy, x2, y2) {
 	return true;
 }
 
-function KinkyDungeonCheckPath(x1, y1, x2, y2, allowBars, blockEnemies, maxFails, blockOnlyLOSBlock) {
-	if (x1 == x2 && y1 == y2) return true;
+function KinkyDungeonCheckPathCount(x1, y1, x2, y2, allowBars, blockEnemies, maxFails, blockOnlyLOSBlock) {
+	if (x1 == x2 && y1 == y2) return 0;
 	let length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
 	// Allowbars = checking for vision only
 	// Otherwise = checking for physical path
@@ -54,12 +54,16 @@ function KinkyDungeonCheckPath(x1, y1, x2, y2, allowBars, blockEnemies, maxFails
 			if (hits >= 2) {
 				fails += 1;
 				if (fails >= maxFailsAllowed)
-					return false;
+					return fails;
 			}
 		}
 	}
 
-	return true;
+	return fails;
+}
+
+function KinkyDungeonCheckPath(x1, y1, x2, y2, allowBars, blockEnemies, maxFails = 1, blockOnlyLOSBlock) {
+	return KinkyDungeonCheckPathCount(x1, y1, x2, y2, allowBars, blockEnemies, maxFails, blockOnlyLOSBlock) < maxFails;
 }
 
 let KDPlayerLight = 0;

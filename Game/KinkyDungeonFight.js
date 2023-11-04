@@ -2,6 +2,9 @@
 let KinkyDungeonKilledEnemy = null;
 let KinkyDungeonAlert = 0;
 
+let KDMINDAMAGENOISE = 2;
+let KDDMGSOUNDMULT = 1.5;
+
 let KDBrawlerAmount = 1.0;
 let KDClumsyAmount = 0.7;
 let KDUnfocusedParams = {
@@ -102,7 +105,7 @@ let KinkyDungeonDistractDamageTypes = ["tickle", "grope", "happygas", "charm"];
 let KinkyDungeonMasochistDamageTypes = ["crush", "pain", "unarmed", "electric", "shock", "fire", "magicbind", "glue", "chain", "souldrain", "drain"];
 
 // Weapons
-let KinkyDungeonPlayerWeapon = null;
+let KinkyDungeonPlayerWeapon = "";
 let KinkyDungeonPlayerWeaponLastEquipped = "";
 /** @type {weapon} */
 let KinkyDungeonPlayerDamageDefault = {name: "", dmg: 2, chance: 0.9, type: "unarmed", unarmed: true, rarity: 0, shop: false, sfx: "Unarmed"};
@@ -146,7 +149,7 @@ let KinkyDungeonDamageTypes = {
  * @returns {weapon}
  */
 function KDWeapon(item) {
-	return KinkyDungeonWeapons[item.name];
+	return KinkyDungeonWeapons[KinkyDungeonWeaponVariants[item.name]?.template || item.name];
 }
 
 function KinkyDungeonFindWeapon(Name) {
@@ -158,8 +161,8 @@ function KinkyDungeonFindWeapon(Name) {
 
 function KinkyDungeonWeaponCanCut(RequireInteract, MagicOnly) {
 	if (KinkyDungeonPlayerWeapon
-		&& KinkyDungeonWeapons[KinkyDungeonPlayerWeapon].cutBonus != undefined
-		&& (!MagicOnly || KinkyDungeonWeapons[KinkyDungeonPlayerWeapon].magic != undefined)
+		&& KDWeapon({name: KinkyDungeonPlayerWeapon}).cutBonus != undefined
+		&& (!MagicOnly || KDWeapon({name: KinkyDungeonPlayerWeapon}).magic != undefined)
 		&& (!RequireInteract || !KinkyDungeonIsHandsBound(false, false, 0.55))) return true;
 	if (KinkyDungeonPlayerBuffs) {
 		for (let b of Object.values(KinkyDungeonPlayerBuffs)) {
@@ -170,6 +173,11 @@ function KinkyDungeonWeaponCanCut(RequireInteract, MagicOnly) {
 }
 
 // We reset the pity timer on weapon switch to prevent issues
+/**
+ *
+ * @param {string} Weapon
+ * @param {boolean} [forced]
+ */
 function KDSetWeapon(Weapon, forced) {
 	if (!Weapon) Weapon = 'Unarmed';
 	KinkyDungeonEvasionPityModifier = 0;
@@ -204,21 +212,26 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 		KinkyDungeonSendEvent("calcDamage", {flags: flags});
 
 	let damage = KinkyDungeonPlayerDamageDefault;
-	let weapon = KinkyDungeonWeapons[KinkyDungeonPlayerWeapon];
+	let weapon = KDWeapon({name: KinkyDungeonPlayerWeapon});
 	if (weapon && weapon.noHands) HandsFree = true;
 	if (!KinkyDungeonCanUseWeapon(NoOverride, undefined, weapon) && !weapon?.unarmed) {
 		damage = KinkyDungeonPlayerDamageDefault;
 		if (!NoOverride) {
-			if (weapon)
-				KinkyDungeonSendTextMessage(10, TextGet("KDCantWield").replace("WPN", TextGet("KinkyDungeonInventoryItem" + weapon.name)),
+			if (weapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))
+				KinkyDungeonSendTextMessage(10, TextGet("KDCantWield").replace("WPN", KDGetItemName(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))),
 					"#ff5555", 1, false, true);
 			KDSetWeapon('Unarmed', true);
 		}
-	} else if (KinkyDungeonPlayerWeapon && KinkyDungeonWeapons[KinkyDungeonPlayerWeapon]) {
-		damage = KinkyDungeonWeapons[KinkyDungeonPlayerWeapon];
+	} else if (KinkyDungeonPlayerWeapon && weapon) {
+		damage = weapon;
 	}
 
-	KinkyDungeonPlayerDamage = Object.assign({}, damage);
+	KinkyDungeonPlayerDamage = JSON.parse(JSON.stringify(damage));
+	if (KinkyDungeonWeaponVariants[KinkyDungeonPlayerWeapon]) {
+		if (!KinkyDungeonPlayerDamage.events) KinkyDungeonPlayerDamage.events = [];
+		KinkyDungeonPlayerDamage.events.push(...KinkyDungeonWeaponVariants[KinkyDungeonPlayerWeapon].events);
+	}
+
 
 	let handBondage = KDHandBondageTotal(true);
 	let armBondage = KinkyDungeonIsArmsBound(false, true);
@@ -996,16 +1009,21 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 	if (!Damage && predata.type != "inert" && predata.dmgDealt <= 0) {
 		KDAddThought(Enemy.id, "Laugh", 4, 1);
-		KDDamageQueue.push({floater: TextGet("KDMissed"), Entity: Enemy, Color: "#ff5555", Time: 2, Delay: Delay});
-		if (KDRandom() < actionDialogueChanceIntense)
-			KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
 
-		if (KDToggles.Sound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx.Miss) {
-			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Enemy.Enemy.cueSfx.Miss + ".ogg");
+		if (Enemy.playerdmg || KinkyDungeonVisionGet(Enemy.x, Enemy.y)) {
+			KDDamageQueue.push({floater: TextGet("KDMissed"), Entity: Enemy, Color: "#ff5555", Time: 2, Delay: Delay});
+			if (KDRandom() < actionDialogueChanceIntense)
+				KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
 		}
-		//KinkyDungeonSendFloater({x: Enemy.x - 0.5 + Math.random(), y: Enemy.y - 0.5 + Math.random()}, TextGet("KDMissed"), "white", 2);
+
+		let vol = KDCanHearSound(KinkyDungeonPlayerEntity, Math.max(KDMINDAMAGENOISE, KDDMGSOUNDMULT * Math.max(predata.dmg, predata.dmgDealt)), Enemy.x, Enemy.y, 1.0);
+		if (vol > 0) {
+			if (KDToggles.Sound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx.Miss) {
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Enemy.Enemy.cueSfx.Miss + ".ogg", undefined, Math.min(1, vol));
+			}
+		}
 	} else if (Damage && Damage.damage > 0 && predata.type != "inert" && predata.dmgDealt <= 0 && !miss) {
-		if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
+		if (KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
 			KDAddThought(Enemy.id, "Laugh", 5, 3);
 			if (KDRandom() < actionDialogueChanceIntense)
 				KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
@@ -1013,12 +1031,18 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		}
 
 		let type = KinkyDungeonMeleeDamageTypes.includes(predata.type) ? "Block" : "Resist";
-		if (KDToggles.Sound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx[type]) {
-			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Enemy.Enemy.cueSfx[type] + ".ogg");
+		let vol = KDCanHearSound(KinkyDungeonPlayerEntity, Math.max(KDMINDAMAGENOISE, KDDMGSOUNDMULT * Math.max(predata.dmg, predata.dmgDealt)), Enemy.x, Enemy.y, 1.0);
+		if (vol > 0) {
+			if (KDToggles.Sound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx[type]) {
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Enemy.Enemy.cueSfx[type] + ".ogg", undefined, Math.min(1, vol));
+			}
 		}
 		//KinkyDungeonSendFloater({x: Enemy.x - 0.5 + Math.random(), y: Enemy.y - 0.5 + Math.random()}, TextGet("KDBlocked"), "white", 2);
 	} else if (predata.dmgDealt > 0 && KDToggles.Sound && Enemy.Enemy.cueSfx && Enemy.Enemy.cueSfx.Damage) {
-		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Enemy.Enemy.cueSfx.Damage + ".ogg");
+		let vol = KDCanHearSound(KinkyDungeonPlayerEntity, Math.max(KDMINDAMAGENOISE, KDDMGSOUNDMULT * Math.max(predata.dmg, predata.dmgDealt)), Enemy.x, Enemy.y, 1.0);
+		if (vol > 0) {
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Enemy.Enemy.cueSfx.Damage + ".ogg", undefined, Math.min(1, vol));
+		}
 		if (KDRandom() < actionDialogueChance)
 			KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "Hit").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5);
 	}
@@ -2196,6 +2220,13 @@ function KinkyDungeonSendWeaponEvent(Event, data) {
 	if (KDGameData.Offhand
 		&& KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)) {
 		let weapon = KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand));
+		if (KinkyDungeonInventoryGetWeapon(KDGameData.Offhand).events) {
+			for (let e of KinkyDungeonInventoryGetWeapon(KDGameData.Offhand).events) {
+				if (e.trigger == Event && e.offhand && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+					KinkyDungeonHandleWeaponEvent(Event, e, KDWeapon(weapon), data);
+				}
+			}
+		}
 		for (let e of weapon.events) {
 			if (e.trigger == Event && e.offhand && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
 				KinkyDungeonHandleWeaponEvent(Event, e, KDWeapon(weapon), data);

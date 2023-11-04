@@ -288,7 +288,19 @@ let KinkyDungeonLootTable = {
 	"tutorial2": [
 		{name: "trap_armbinder", minLevel: 0, weight:1, message:"LootChestTrapMagic", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms"], power: 6},
 	],
+	"magicWeapon": [
+		{name: "CommonWeapon", weaponlist: "CommonWeapon", enchantlist: "CommonWeapon", enchantchance: 1.0, minLevel: 0, weight:1, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "CommonToy", weaponlist: "CommonToy", enchantlist: "CommonWeapon", enchantchance: 1.0, minLevel: 0, weight:1, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+	],
+	// TODO make it so that it wont try to give you a non enchanted weapon you already have
+	/*"weapon": [
+		{name: "CommonWeapon", weaponlist: "CommonWeapon", enchantlist: "CommonWeapon", enchantchance: KD_enchantchance_Default, enchantscale: KD_enchantscale_Default,
+			minLevel: 0, weight:1, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "CommonToy", weaponlist: "CommonToy", enchantlist: "CommonWeapon", enchantchance: KD_enchantchance_Default, enchantscale: KD_enchantscale_Default,
+			minLevel: 0, weight:1, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+	],*/
 	"chest": [
+
 		{name: "ArrowFireSpell", spell: "ArrowFireSpell", nospell: ["ArrowFireSpell"], minLevel: 0, weight: 1.25, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisite: ["hasBow"]},
 		{name: "ArrowVineSpell", spell: "ArrowVineSpell", nospell: ["ArrowVineSpell"], minLevel: 0, weight: 1.25, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisite: ["hasBow"]},
 
@@ -313,6 +325,8 @@ let KinkyDungeonLootTable = {
 		{name: "BagOfGoodies", arousalMode: true, minLevel: 0, weight:0.5, weapon: "BagOfGoodies", noweapon: ["BagOfGoodies"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "VibeRemote", arousalMode: true, minLevel: 0, weight:0.5, weapon: "VibeRemote", noweapon: ["VibeRemote"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		...KDBasicArmor,
+		{name: "MagicWeapon", weaponlist: "CommonWeapon", enchantlist: "CommonWeapon", enchantchance: 1.0, minLevel: 0, weight:2, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "MagicToy", weaponlist: "CommonToy", enchantlist: "CommonWeapon", enchantchance: 1.0, minLevel: 0, weight:2, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		/*{name: "trap_armbinder", trap: true, minLevel: 1, weight:2, message:"LootChestTrapMagic", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms", "ModerateRestraint"], power: 6},
 		{name: "trap_armbinderHeavy", minLevel: 1, weight:2, message:"LootChestTrapMagicHarness", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms", "ModerateRestraint"], submissive: 15, power: 8},
 		{name: "trap_cuffs", trap: true, minLevel: 1, weight:1, message:"LootChestTrapMagic", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemArms"], power: 2},

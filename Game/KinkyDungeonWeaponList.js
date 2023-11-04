@@ -2,6 +2,32 @@
 
 let KinkyDungeonStatStaminaCostAttack = -1.0; // Cost to attack
 
+/** @type {Record<string, Record<string, number>>} */
+let KDWeaponLootList = {
+	"CommonWeapon": {
+		"Sword": 1,
+		"Spear": 1,
+		"Hammer": 1,
+		"Axe": 1,
+		"Knife": 1,
+		"Flail": 1,
+		"Shield": 3,
+		"Foil": 1,
+		"Pike": 0.5,
+		"Katana": 0.5,
+		"Rapier": 0.5,
+		"Dirk": 0.5,
+	},
+	"CommonToy": {
+		"Feather": 1,
+		"Crop": 1,
+		"IceCube": 1,
+		"VibeWand": 1,
+		"DildoBat": 1,
+		"Scissors": 1,
+	},
+};
+
 /**
  * @type {Record<string, weapon>}
  */

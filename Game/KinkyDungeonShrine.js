@@ -149,6 +149,19 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 	if (item.rarity != null) {
 		let rarity = item.rarity;
 		if (item.costMod) rarity += item.costMod;
+		if (KinkyDungeonConsumableVariants[item.name] || KinkyDungeonWeaponVariants[item.name]) {
+			let enchants = {};
+			for (let ev of KinkyDungeonConsumableVariants[item.name] ? KinkyDungeonConsumableVariants[item.name].events : KinkyDungeonWeaponVariants[item.name].events) {
+				if (ev.original && KDEventEnchantmentModular[ev.original]) enchants[ev.original] = KDEventEnchantmentModular[ev.original].types[KDModifierEnum.restraint].level;
+			}
+			let sum = 0;
+			for (let amt of Object.values(enchants)) {
+				sum += amt;
+			}
+			rarity += 0.1*sum;
+		}
+
+
 		let costt = 5 * Math.round((1 + MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint/2.5 * (noScale ? 0 : 1))*(50 + 2 * rarity * rarity * 20)/5);
 		if (costt > 100) costt = 10 * Math.round(costt / 10);
 		if (KinkyDungeonStatsChoice.has("PriceGouging") && !sell) {
@@ -268,7 +281,7 @@ function KinkyDungeonPayShrine(type) {
 			else if (item.shoptype == "basic") {
 				KDAddBasic(item);
 			}
-			ShrineMsg = TextGet("KinkyDungeonPayShrineCommerce").replace("ItemBought", TextGet("KinkyDungeonInventoryItem" + item.name));
+			ShrineMsg = TextGet("KinkyDungeonPayShrineCommerce").replace("ItemBought", KDGetItemNameString(item.name));
 			KDMapData.ShopItems.splice(KinkyDungeonShopIndex, 1);
 			if (KinkyDungeonShopIndex > 0) KinkyDungeonShopIndex -= 1;
 

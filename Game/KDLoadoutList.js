@@ -19,7 +19,7 @@ let KDLoadouts = {
 		singletag: ["bandit", "bountyhunter"],
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.15,
-		items: ["Pick", "Knife"],
+		items: ["Pick", "Knife", "DiscPick"],
 	},
 	"mistress": {
 		name: "mistress",
@@ -118,7 +118,7 @@ let KDLoadouts = {
 		singletag: ["ninja", "maid", "bountyhunter"],
 		forbidtags: [],
 		chance: 0.7,
-		items: ["SmokeBomb", "RopeSnakeArmsBoxtie"],
+		items: ["SmokeBomb", "RopeSnakeArmsBoxtie", "DiscPick"],
 	},
 	"bandit_I": {
 		name: "bandit_I",
@@ -142,7 +142,7 @@ let KDLoadouts = {
 		singletag: ["miniboss", "boss", "elite"],
 		forbidtags: [],
 		chance: 0.5,
-		items: ["PotionStamina", "Bola", "Knife"],
+		items: ["PotionStamina", "Bola", "Knife", "DiscPick"],
 	},
 	"bandit_IV": {
 		name: "bandit_IV",
@@ -160,7 +160,7 @@ let KDLoadouts = {
 		forbidtags: [],
 		chance: 0.1,
 		multiplier: 10,
-		items: ["PotionStamina", "RedKey", "RedKey"],
+		items: ["PotionStamina", "RedKey", "RedKey", "DiscPick"],
 	},
 	"miner": {
 		name: "miner",
@@ -248,7 +248,7 @@ let KDLoadouts = {
 		singletag: ["ninja", "maid", "bountyhunter"],
 		forbidtags: [],
 		chance: 0.1,
-		items: ["SmokeBomb", "PotionInvisibility"],
+		items: ["SmokeBomb", "PotionInvisibility", "DiscPick"],
 	},
 	"ninja_II": {
 		name: "ninja_II",
@@ -256,7 +256,7 @@ let KDLoadouts = {
 		singletag: ["ninja", "maid", "bountyhunter"],
 		forbidtags: [],
 		chance: 0.3,
-		items: ["SmokeBomb", "Bola"],
+		items: ["SmokeBomb", "Bola", "DiscPick"],
 	},
 	"religious": {
 		name: "religious",

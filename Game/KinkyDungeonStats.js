@@ -292,6 +292,33 @@ function KinkyDungeonGetVisionRadius() {
 	return (KDGameData.SleepTurns > 2) ? 1 : (Math.max((data.noperipheral) ? 1 : 2, Math.round(data.visionMult*(KDMaxVisionDist-data.blindlevel * data.blindMult))));
 }
 
+
+/**
+ *
+ * @param {entity} entity
+ * @returns {{radius: number, mult: number, vision: number, visionmult: number, blindsight: number}}
+ */
+function KDEntitySenses(entity) {
+	let data = {
+		noise: 0,
+		base: entity.Enemy.Awareness?.hearingRadius ? entity.Enemy.Awareness.hearingRadius : entity.Enemy.visionRadius,
+		deaflevel: 0,
+		hearingMult: entity.Enemy.Awareness?.hearingMult ? entity.Enemy.Awareness.hearingMult : 1.0,
+		vision: entity.Enemy.visionRadius,
+		visionMult: entity.Enemy.Awareness?.vision ? entity.Enemy.Awareness.vision : 1.0,
+		blindsight: entity.Enemy.blindSight,
+	};
+	KinkyDungeonSendEvent("calcEntityHearing", data);
+	return {
+		radius: Math.round((data.base-data.deaflevel) * data.hearingMult),
+		mult: data.hearingMult,
+		vision: data.vision,
+		visionmult: data.visionMult,
+		blindsight: data.blindsight,
+	};
+}
+
+
 /**
  *
  * @returns {{radius: number, mult: number}}

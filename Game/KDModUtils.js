@@ -356,6 +356,53 @@ function KinkyDungeonGetEnchantmentsByListWeighted(List, Type, item, includeOrig
  * Gets a list of curses applied to the item
  * @param {string | string[]} List
  * @param {boolean} [includeOrig] - includes thje original item
+ * @param {number} [minRarity] - for gating curse severity
+ * @param {number} [maxRarity] - for gating curse severity
+ * @returns {string[]}
+ */
+function KinkyDungeonGetWeaponsByList(List, includeOrig, minRarity, maxRarity) {
+	let temp = [];
+	if (typeof List === "string") {
+		List = [List];
+	}
+	for (let l of List) {
+		if (KDWeaponLootList[l]) {
+			let keys = Object.keys(KDWeaponLootList[l]).filter((key) => {
+				return (!minRarity || KinkyDungeonWeapons[key]?.rarity >= minRarity)
+					&& (!maxRarity || KinkyDungeonWeapons[key]?.rarity < maxRarity);
+			}).map((element) => {return element;});
+			temp.push(...keys);
+		}
+	}
+	if (includeOrig) temp.push("");
+	return temp;
+}
+
+/**
+ * Gets a list of curses applied to the item
+ * @param {string} WeaponList
+ * @param {boolean} [includeOrig] - includes thje original item
+ * @param {number} [minRarity] - for gating curse severity
+ * @param {number} [maxRarity] - for gating curse severity
+ * @returns {Record<string, number>}
+ */
+function KinkyDungeonGetWeaponsByListWeighted(WeaponList, includeOrig, minRarity, maxRarity) {
+	let list = KinkyDungeonGetWeaponsByList(WeaponList, includeOrig, minRarity, maxRarity);
+	/** @type {Record<string, number>} */
+	let ret = {};
+	for (let obj of list) {
+		if (obj)
+			ret[obj] = KDWeaponLootList[WeaponList][obj];
+		else ret[obj] = 1;
+	}
+	return ret;
+}
+
+
+/**
+ * Gets a list of curses applied to the item
+ * @param {string | string[]} List
+ * @param {boolean} [includeOrig] - includes thje original item
  * @param {number} [minLevel] - for gating curse severity
  * @param {number} [maxLevel] - for gating curse severity
  * @returns {string[]}
