@@ -162,7 +162,7 @@ function KinkyDungeonFindWeapon(Name) {
 function KinkyDungeonWeaponCanCut(RequireInteract, MagicOnly) {
 	if (KinkyDungeonPlayerWeapon
 		&& KDWeapon({name: KinkyDungeonPlayerWeapon}).cutBonus != undefined
-		&& (!MagicOnly || KDWeaponIsMagic({name: KinkyDungeonPlayerWeapon}) != undefined)
+		&& (!MagicOnly || KDWeaponIsMagic({name: KinkyDungeonPlayerWeapon}))
 		&& (!RequireInteract || !KinkyDungeonIsHandsBound(false, false, 0.55))) return true;
 	if (KinkyDungeonPlayerBuffs) {
 		for (let b of Object.values(KinkyDungeonPlayerBuffs)) {
