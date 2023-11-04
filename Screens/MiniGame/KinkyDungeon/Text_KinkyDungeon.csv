@@ -1364,7 +1364,7 @@ KinkyDungeonInventoryItemIceCubeDesc2,"Deals 10 ice damage with a 10% chance to 
 KinkyDungeonInventoryItemRope,Rope
 KinkyDungeonInventoryItemRopeDesc,"A kidnapper's most versatile tool."
 KinkyDungeonInventoryItemRopeDesc2,"Deals chain damage and applies 50 points of binding."
-KinkyDungeonInventoryItemMagicSword,Enchanted Sword
+KinkyDungeonInventoryItemMagicSword,Magic Sword
 KinkyDungeonInventoryItemMagicSwordDesc,"Slices through ghosts with ease!"
 KinkyDungeonInventoryItemMagicSwordDesc2,"A sword that guides itself toward its target, making it easy to hit with."
 KinkyDungeonInventoryItemDragonslaver,Dragonslaver
@@ -1398,19 +1398,19 @@ KDMoiraiFail,No eligible targets within 4 tiles
 KinkyDungeonInventoryItemSlimethrower,Latex Projector
 KinkyDungeonInventoryItemSlimethrowerDesc,"Deals crush damage. Can be used to spray a '+' shaped pool of slime."
 KinkyDungeonInventoryItemSlimethrowerDesc2,"Drains 1.5% ancient energy to create a pool of slime that deals 35 glue damage per tile and slows enemies."
-KinkyDungeonInventoryItemMagicAxe,Enchanted Axe
+KinkyDungeonInventoryItemMagicAxe,Magic Axe
 KinkyDungeonInventoryItemMagicAxeDesc,"Sick and vile, like the hearts of your enemies."
 KinkyDungeonInventoryItemMagicAxeDesc2,"Deals shadow damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns."
 KinkyDungeonInventoryItemPickaxe,Pickaxe
 KinkyDungeonInventoryItemPickaxeDesc,"Used for drilling holes in rock and armor."
 KinkyDungeonInventoryItemPickaxeDesc2,"Deals pierce damage. Reduces enemy armor by 15 for 6 turns."
-KinkyDungeonInventoryItemMagicFlail,Enchanted Flail
+KinkyDungeonInventoryItemMagicFlail,Magic Flail
 KinkyDungeonInventoryItemMagicFlailDesc,"A blessed censer that distributes pain equally."
 KinkyDungeonInventoryItemMagicFlailDesc2,"Deals crush damage. Deals 20 bonus shadow damage to the target and enemies near the target."
-KinkyDungeonInventoryItemMagicSpear,Enchanted Spear
+KinkyDungeonInventoryItemMagicSpear,Magic Spear
 KinkyDungeonInventoryItemMagicSpearDesc,"Seeks and pierces hearts with ease."
 KinkyDungeonInventoryItemMagicSpearDesc2,"Deals pierce damage to the target and two squares behind it. Can be used to make a ranged attack."
-KinkyDungeonInventoryItemMagicHammer,Enchanted Hammer
+KinkyDungeonInventoryItemMagicHammer,Magic Hammer
 KinkyDungeonInventoryItemMagicHammerDesc,"Made of a magical, resonant material."
 KinkyDungeonInventoryItemMagicHammerDesc2,"Deals crush damage and knocks the target back. Helps to bash open restraints while cutting."
 KinkyDungeonInventoryItemIceBreaker,Icebreaker
