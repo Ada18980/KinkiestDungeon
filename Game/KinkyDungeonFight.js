@@ -162,7 +162,7 @@ function KinkyDungeonFindWeapon(Name) {
 function KinkyDungeonWeaponCanCut(RequireInteract, MagicOnly) {
 	if (KinkyDungeonPlayerWeapon
 		&& KDWeapon({name: KinkyDungeonPlayerWeapon}).cutBonus != undefined
-		&& (!MagicOnly || KDWeapon({name: KinkyDungeonPlayerWeapon}).magic != undefined)
+		&& (!MagicOnly || KDWeaponIsMagic({name: KinkyDungeonPlayerWeapon}) != undefined)
 		&& (!RequireInteract || !KinkyDungeonIsHandsBound(false, false, 0.55))) return true;
 	if (KinkyDungeonPlayerBuffs) {
 		for (let b of Object.values(KinkyDungeonPlayerBuffs)) {
@@ -338,8 +338,8 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.evasion && ((!(Enemy.stun > 0) && !(Enemy.freeze > 0)) || Enemy.Enemy.alwaysEvade || Enemy.Enemy.evasion < 0)) hitChance *= Math.max(0,
 		(Enemy.aware ? KinkyDungeonMultiplicativeStat(Enemy.Enemy.evasion) : Math.max(1, KinkyDungeonMultiplicativeStat(Enemy.Enemy.evasion))));
-	if (Enemy && Enemy.Enemy && Enemy.Enemy.tags.ghost && (IsMagic || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.magic))) hitChance = Math.max(hitChance, 1.0);
-	if (Enemy && Enemy.Enemy && Enemy.Enemy.Resistance?.alwaysHitByMagic && (IsMagic || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.magic))) hitChance = Math.max(hitChance, 1.0);
+	if (Enemy && Enemy.Enemy && Enemy.Enemy.tags.ghost && (IsMagic || (KinkyDungeonPlayerDamage && KDWeaponIsMagic({name: KinkyDungeonPlayerWeapon})))) hitChance = Math.max(hitChance, 1.0);
+	if (Enemy && Enemy.Enemy && Enemy.Enemy.Resistance?.alwaysHitByMagic && (IsMagic || (KinkyDungeonPlayerDamage && KDWeaponIsMagic({name: KinkyDungeonPlayerWeapon})))) hitChance = Math.max(hitChance, 1.0);
 
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Accuracy")) {
 		hitChance *= KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Accuracy"));
@@ -396,7 +396,7 @@ function KinkyDungeonDoEnemyBlock(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.block && ((!(Enemy.stun > 0) && !(Enemy.freeze > 0)) || Enemy.Enemy.alwaysBlock || Enemy.Enemy.block < 0)) hitChance *= Math.max(0,
 		(Enemy.aware ? KinkyDungeonMultiplicativeStat(Enemy.Enemy.block) : Math.max(1, KinkyDungeonMultiplicativeStat(Enemy.Enemy.block))));
-	if (Enemy && Enemy.Enemy && Enemy.Enemy.Resistance?.alwaysBypassedByMagic && (IsMagic || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.magic))) hitChance = Math.max(hitChance, 1.0);
+	if (Enemy && Enemy.Enemy && Enemy.Enemy.Resistance?.alwaysBypassedByMagic && (IsMagic || (KinkyDungeonPlayerDamage && KDWeaponIsMagic({name: KinkyDungeonPlayerWeapon})))) hitChance = Math.max(hitChance, 1.0);
 
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Accuracy")) {
 		hitChance *= KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Accuracy"));
@@ -2462,4 +2462,15 @@ function KDCanOffhand(item) {
 	KinkyDungeonSendEvent("canOffhand", data);
 
 	return data.item && data.canOffhand;
+}
+
+/**
+ * @param {Named} weapon
+ * @returns {boolean}
+ */
+function KDWeaponIsMagic(weapon) {
+	if (KDWeapon({name: weapon.name})?.magic) return true;
+	// Quik n dirty
+	if (KinkyDungeonWeaponVariants[weapon.name]?.events?.some((e) => {return e.type == "IsMagic" && e.trigger == "calcEvasion";})) return true;
+	return false;
 }

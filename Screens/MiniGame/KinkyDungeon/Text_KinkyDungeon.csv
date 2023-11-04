@@ -4577,7 +4577,7 @@ ItemPickupLeylineMap,"You pick up a Leyline Map."
 ItemPickupKnife,"You pick up a knife."
 ItemPickupTorch,"You pick up a torch."
 ItemPickupKnives,"You found a bundle of discarded knives!"
-ItemPickupEnchKnife,"You pick up an enchanted knife."
+ItemPickupEnchKnife,"You pick up a magic knife."
 ItemPickupMagicKnife,"You pick up a magic knife."
 ItemPickupPick,"You pick up a lockpick."
 ItemPickupRedKey,"You pick up a normal key."
@@ -5410,7 +5410,7 @@ KinkyDungeonSpellSlimeMimic,Convincing Disguise
 KinkyDungeonSpellDescriptionSlimeMimic,"While standing still on slime, or fully bound with at least one latex item, you are harder to notice. Each latex restraint you are wearing increases this amount. Can be toggled off by clicking the buff icon."
 
 KinkyDungeonSpellStaffUser1,Magical Implements
-KinkyDungeonSpellDescriptionStaffUser1,"While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%."
+KinkyDungeonSpellDescriptionStaffUser1,"While holding a magical weapon like a staff or magic knife, your mana costs are reduced by 20%."
 KinkyDungeonSpellStaffUser2,Mage Circuits
 KinkyDungeonSpellDescriptionStaffUser2,"Increases the size of the passive mana pool by +400."
 KinkyDungeonSpellStaffUser3,Archmage
