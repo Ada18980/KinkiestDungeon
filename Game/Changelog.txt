@@ -3,6 +3,8 @@ CURRENT CHANGELOGS
 Vague todo:
 - Automatic settings disable for potato PCs
 - Make enemies take time to teleport in from traps
+- 'Sword of Many' hands free weapon
+- 'Lesser Pants' shorts item
 
 
 - Multiclass spell point cost penalty (done)
@@ -14,13 +16,15 @@ Vague todo:
 - TODO add scroll to log, rep
 
 
+4.83.1 (Nov 2023)
+- Added enchanted weapons
+
 4.83 (Nov 2023)
 - Fixed several bugs involving pathfinding
 - Fixed a bug involving favorited items not working correctly with enchanted armor
 - Added a few new enchantment types
 - Made changes to jail under the hood
 - changed enemy composition in high security prisons
--
 
 4.82.1 (Oct 2023)
 - Added some changes to mobile touch controls to make it easier to use

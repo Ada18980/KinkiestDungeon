@@ -264,10 +264,53 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	let levelPercent = KDGetEffLevel()/(KinkyDungeonMaxLevel - 1);
 
 	let value = 0;
-	if (Loot.weapon) {
-		KinkyDungeonInventoryAddWeapon(Loot.weapon);
-		if (Replacemsg)
-			Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItem" + Loot.weapon));
+
+	if (Loot.weapon || Loot.weaponlist) {
+		let weapon = Loot.weapon;
+
+		if (Loot.weaponlist) weapon = KDGetByWeight(KinkyDungeonGetWeaponsByListWeighted("CommonWeapon", false, (Loot.minRarity || 0), (Loot.maxRarity || 4))) || weapon;
+
+		let enchantVariant = "";
+		let enchant_extra = [];
+		let enchants = (Loot.minEnchants || 1) + Math.floor(KDRandom() * ((Loot.maxEnchants || 1) - (Loot.minEnchants || 1)));
+
+		if (Loot.enchantlist && (Loot.enchantchance == undefined || KDRandom() < Loot.enchantchance + (Loot.enchantscale|| 0) * levelPercent)) {
+			while (enchants > 0) {
+				let ench = KDGetByWeight(
+					KinkyDungeonGetEnchantmentsByListWeighted(Loot.enchantlist, KDModifierEnum.weapon, weapon, false, Loot.enchantlevelmin, Loot.enchantlevelmax, [enchantVariant, ...enchant_extra])
+				);
+				if (!enchantVariant) {
+					enchantVariant = ench;
+				} else {
+					enchant_extra.push(ench);
+				}
+				enchants -= 1;
+			}
+		}
+
+		if (enchantVariant) {
+			let events = JSON.parse(JSON.stringify([])); // no weapon events needed due to the way it's referenced usually
+			if (enchantVariant) {
+				events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.weapon].events(weapon, Loot, "", enchantVariant, enchant_extra));
+			}
+			for (let e of enchant_extra) {
+				events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.weapon].events(weapon, Loot, "", enchantVariant, enchant_extra));
+			}
+			/** @type {KDWeaponVariant} */
+			let variant = {
+				template: weapon,
+				events: events,
+			};
+			KDGiveWeaponVariant(variant, enchantVariant ? "Enchanted" : "");
+
+			if (Replacemsg)
+				Replacemsg = Replacemsg.replace("WeaponAcquired", (enchantVariant ? TextGet("KDVarPrefEnchanted") : "") + ' ' + TextGet("KinkyDungeonInventoryItem" + weapon));
+		} else {
+			KinkyDungeonInventoryAddWeapon(Loot.weapon);
+			if (Replacemsg)
+				Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItem" + weapon));
+		}
+
 	}
 	if (Loot.spell) {
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell(Loot.spell, true));
@@ -336,7 +379,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 				events.push(...KDEventHexModular[c].events);
 			}
 			if (enchantVariant) {
-				events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.restraint].events(armor, Loot, hexVariant, enchantVariant, hex_extra));
+				events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.restraint].events(armor, Loot, hexVariant, enchantVariant, enchant_extra));
 			}
 			for (let e of enchant_extra) {
 				events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(armor, Loot, hexVariant, enchantVariant, enchant_extra));
@@ -358,11 +401,14 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 				"#aa88ff", 10);
 			}
 
+			if (Replacemsg)
+				Replacemsg = Replacemsg.replace("ArmorAcquired", (enchantVariant ? TextGet("KDVarPrefEnchanted") : "") + ' ' + TextGet("Restraint" + armor));
 		} else {
 			KinkyDungeonInventoryAddLoose(armor, unlockcurse);
+			if (Replacemsg)
+				Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + armor));
 		}
-		if (Replacemsg)
-			Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + armor));
+
 	}
 	else if (Loot.name == "spell_points") {
 		let amount = 1;

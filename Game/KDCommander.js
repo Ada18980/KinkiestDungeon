@@ -283,7 +283,8 @@ let KDCommanderOrders = {
 		// Role assignment
 		filter: (enemy, data) => {
 			if (data.globalIgnore) return false;
-			if (enemy.IntentAction || !data.aggressive || KDAssaulters > KDMaxAssaulters || !enemy.aware || !KDEnemyHasFlag(enemy, "targ_player") || KDIsImmobile(enemy)) return false;
+			if (enemy.ignore) return false;
+			if (enemy.IntentAction || !data.aggressive || KDAssaulters > KDMaxAssaulters || !enemy.aware || !KDEnemyHasFlag(enemy, "targ_player") || KDIsImmobile(enemy) || !KDHostile(enemy)) return false;
 			return (!KDAIType[KDGetAI(enemy)]
 			|| (!KDAIType[KDGetAI(enemy)].guard && (!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)));
 		},
@@ -304,7 +305,8 @@ let KDCommanderOrders = {
 				if (!KDEnemyIsTemporary(enemy))
 					return false;
 			}
-			return (!enemy.IntentAction && data.aggressive && enemy.aware && !KinkyDungeonIsDisabled(enemy));
+			if (enemy.ignore) return false;
+			return (!enemy.IntentAction && data.aggressive && enemy.aware && !KinkyDungeonIsDisabled(enemy) && KDHostile(enemy));
 		},
 		remove: (enemy, data) => {
 			if (!KDEnemyIsTemporary(enemy)) {

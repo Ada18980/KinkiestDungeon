@@ -193,16 +193,31 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 		color = "white";
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, 1);
 	} else if (KinkyDungeonFindConsumable(Item.name)) {
-		let item = KinkyDungeonFindConsumable(Item.name);
-		priority = item.rarity;
-		if (item.potion) sfx = "PotionDrink";
-		color = "white";
-		KinkyDungeonChangeConsumable(item, 1);
+		if (KinkyDungeonWeaponVariants[Item.name]) {
+			KDGiveConsumableVariant(KinkyDungeonConsumableVariants[Item.name], undefined);
+			color = "#aaaaff";
+			name = "Generic";
+			replace = TextGet("KinkyDungeonInventoryItem" + KinkyDungeonConsumableVariants[Item.name].template);
+		} else {
+			let item = KinkyDungeonFindConsumable(Item.name);
+			priority = item.rarity;
+			if (item.potion) sfx = "PotionDrink";
+			color = "white";
+			KinkyDungeonChangeConsumable(item, 1);
+		}
 	} else if (KinkyDungeonFindWeapon(Item.name)) {
-		let item = KinkyDungeonFindWeapon(Item.name);
-		priority = Math.min(8, item.rarity + 4);
-		color = "orange";
-		KinkyDungeonInventoryAddWeapon(Item.name);
+		if (KinkyDungeonWeaponVariants[Item.name]) {
+			KDGiveWeaponVariant(KinkyDungeonWeaponVariants[Item.name], undefined);
+			color = "#aaaaff";
+			name = "Generic";
+			replace = TextGet("KinkyDungeonInventoryItem" + KinkyDungeonWeaponVariants[Item.name].template);
+		} else {
+			let item = KinkyDungeonFindWeapon(Item.name);
+			priority = Math.min(8, item.rarity + 4);
+			color = "orange";
+			KinkyDungeonInventoryAddWeapon(Item.name);
+		}
+
 	} else if (Item.name == "Heart") {
 		if (KinkyDungeonStatDistractionMax >= KDMaxStat && KinkyDungeonStatStaminaMax >= KDMaxStat && KinkyDungeonStatManaMax >= KDMaxStat && KinkyDungeonStatWillMax >= KDMaxStat) {
 			KinkyDungeonDrawState = "Game";
@@ -356,7 +371,7 @@ function KDDrawItemsTooltip(items, offset) {
 	});
 	let str = "";
 	for (let item of items) {
-		str = str + (str ? ", " : "") + TextGet(KinkyDungeonGetRestraintByName(item.name) ? ("Restraint" + KDRestraint(item)?.name) : ("KinkyDungeonInventoryItem" + item.name));
+		str = str + (str ? ", " : "") + KDGetItemNameString(item.name);
 	}
 
 	let strSplit = KinkyDungeonWordWrap(str, 12, 28).split('\n');

@@ -4394,7 +4394,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								enemy.items.push(item.name);
 							}
 							if (item) {
-								KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStealItem").replace("ITEMSTOLEN", TextGet("KinkyDungeonInventoryItem" + item.name)), "yellow", 2);
+								KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStealItem").replace("ITEMSTOLEN", KDGetItemName(item)), "yellow", 2);
 								picked = true;
 							}
 						} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonLockpicks > 0 && KDRandom() < 0.5) {
@@ -4793,6 +4793,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (enemy.specialCD > 0) enemy.usingSpecial = false;
 
 	if (AIData.idle) KDAddThought(enemy.id, "Idle", 0.5, 3);
+
+	if (AIData.ignore) enemy.ignore = true;
+	else delete enemy.ignore;
+
 	return {idle: AIData.idle, defeat: AIData.defeat, defeatEnemy: enemy};
 }
 
@@ -5634,6 +5638,10 @@ function KDGetAwareTooltip(enemy) {
 	};
 	if (enemy.aware) {
 		if (KDHostile(enemy)) {
+			if (enemy.ignore) return {
+				suff: "AwareIgnore",
+				color: "#ffff55",
+			};
 			return {
 				suff: "Aware",
 				color: "#ff5555",
@@ -5727,7 +5735,7 @@ function KDStockRestraints(enemy, restMult, count) {
 	let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || (KDDefaultRestraintThresh + (Math.max(0, enemy.Enemy.power - 1) || 0));
 	if (rCount > 0) enemy.items = enemy.items || [];
 	for (let i = 0; i < rCount; i++) {
-		let rest = KinkyDungeonGetRestraint(
+		let r = KDGetRestraintWithVariants(
 			{tags: KDGetTags(enemy, false)}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
 			KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 			enemy.Enemy.bypass,
@@ -5745,7 +5753,9 @@ function KDStockRestraints(enemy, restMult, count) {
 				ignore: enemy.items.concat(enemy.Enemy.RestraintFilter?.ignoreInitial || []),
 				ignoreTags: enemy.Enemy.RestraintFilter?.ignoreInitialTag,
 			}, undefined, undefined, true, enemy.items);
-		if (rest) {
+
+		if (r) {
+			let rest = r.r;
 			enemy.items.push(rest.name);
 			if (KDEnemyIsTemporary(enemy)) {
 				if (!enemy.tempitems) enemy.tempitems = [];
@@ -6123,15 +6133,18 @@ function KDEnemyAddSound(enemy, amount, novisual = false) {
 			mult = 0.4 * ret.mult;
 		}
 		if ((enemy.sound > prevSound || (enemy.sound == prevSound && KDRandom() < mult))
-			&& KDCanHearEnemy(KinkyDungeonPlayerEntity, enemy, 1.5)
 			&& (!KDCanSeeEnemy(enemy) && !(KinkyDungeonVisionGet(enemy.x, enemy.y) > 0))) {
-			if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
-			KDEventData.shockwaves.push({
-				x: enemy.x,
-				y: enemy.y,
-				radius: enemy.sound * 0.15 + 0.5,
-				sprite: "Particles/ShockwaveEnemy.png",
-			});
+			let vol = KDCanHearSound(KinkyDungeonPlayerEntity, enemy.sound, enemy.x, enemy.y, 1.5);
+			if (vol > 0) {
+				if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
+				KDEventData.shockwaves.push({
+					x: enemy.x,
+					y: enemy.y,
+					radius: Math.min(4, vol) * 0.3 + 0.25,
+					sprite: "Particles/ShockwaveEnemy.png",
+				});
+			}
+
 		}
 	}
 }
@@ -6163,6 +6176,57 @@ function KDCanHearEnemy(entity, enemy, mult = 1.0) {
 		return false;// TODO allow enemies to hear each other
 	}
 	return false;
+}
+
+
+/**
+ *
+ * @param {entity} entity
+ * @param {number} sound
+ * @param {number} x
+ * @param {number} y
+ * @param {number} mult
+ * @returns {number}
+ */
+function KDCanHearSound(entity, sound, x, y, mult = 1.0) {
+	if (sound > 0) {
+		if (entity?.player) {
+			let ret = KinkyDungeonGetHearingRadius();
+			let data = {
+				player: entity,
+				enemy: null,
+				hearingRadius: ret.radius,
+				hearingMult: ret.mult,
+				sound: sound,
+				dist: KDistChebyshev(entity.x - x, entity.y - y),
+			};
+			KinkyDungeonSendEvent("playerCanHear", data);
+			if (data.dist < data.hearingRadius * mult && data.sound * data.hearingMult * mult >= data.dist - 0.5)
+				return Math.max(0, -0.1 + data.sound * data.hearingMult * mult
+					/Math.max(1, data.dist - 0.5)
+					/(1 + KinkyDungeonCheckPathCount(entity.x, entity.y, x, y, true, false,
+						Math.max(mult * (0.5 + data.hearingMult), 4), true)));
+			return 0;
+		} else {
+			let ret = KDEntitySenses(entity);
+			let data = {
+				player: entity,
+				enemy: null,
+				hearingRadius: ret.radius,
+				hearingMult: ret.mult,
+				sound: sound,
+				dist: KDistChebyshev(entity.x - x, entity.y - y),
+			};
+			KinkyDungeonSendEvent("entityCanHear", data);
+			if (data.dist < data.hearingRadius * mult && data.sound * data.hearingMult * mult >= data.dist - 0.5)
+				return Math.max(0, -0.1 + data.sound * data.hearingMult * mult
+					/Math.max(1, data.dist - 0.5)
+					/(1 + KinkyDungeonCheckPathCount(entity.x, entity.y, x, y, true, false,
+						Math.max(mult * (0.5 + data.hearingMult), 4), true)));
+			return 0;
+		}
+	}
+	return 0;
 }
 
 /** */

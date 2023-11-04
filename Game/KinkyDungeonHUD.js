@@ -1291,9 +1291,12 @@ function KinkyDungeonDrawInputs() {
 			let item = KinkyDungeonConsumableChoices[index] || KinkyDungeonWeaponChoices[index] || KinkyDungeonArmorChoices[index];
 			let arm = KinkyDungeonArmorChoices[index];
 			let consumable = KinkyDungeonConsumableChoices[index];
+			let wep = KinkyDungeonWeaponChoices[index];
 			// Draw the main icon
 			let name = item;
 			if (arm && KinkyDungeonRestraintVariants[arm]) name = KinkyDungeonRestraintVariants[arm].template;
+			if (consumable && KinkyDungeonConsumableVariants[consumable]) name = KinkyDungeonConsumableVariants[consumable].template;
+			if (wep && KinkyDungeonWeaponVariants[wep]) name = KinkyDungeonWeaponVariants[wep].template;
 			//DrawButtonKD("UseItem" + index, true, buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, "", "rgba(0, 0, 0, 0)",
 			//KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)}).preview, "", false, true);
 			DrawButtonKDEx("UseItem" + index,
@@ -1610,9 +1613,9 @@ function KinkyDungeonDrawStats(x, y, width, heightPerBar) {
 
 	if (KDGameData.PreviousWeapon)
 		KDDraw(kdcanvas, kdpixisprites, "previousweapon", KinkyDungeonRootDirectory + "Items/" + KDGameData.PreviousWeapon + ".png", x + width - 40 + 10, y + switchAdj + 10 + i * heightPerBar, 40, 40);
-	if (KinkyDungeonPlayerWeapon) {
-		DrawTextFitKD(TextGet("StatWeapon") + TextGet("KinkyDungeonInventoryItem" + KinkyDungeonPlayerWeapon), x + (width - 80)/2, y + switchAdj + 30 + i * heightPerBar, width - 80, "#ffffff", "#333333", 24);
-		KDDraw(kdcanvas, kdpixisprites, "currentweapon", KinkyDungeonRootDirectory + "Items/" + KinkyDungeonPlayerWeapon + ".png", x + width - 100 + 20, y + switchAdj + i * heightPerBar, 60, 60);
+	if (KinkyDungeonPlayerWeapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon)) {
+		DrawTextFitKD(TextGet("StatWeapon") + KDGetItemName(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon)), x + (width - 80)/2, y + switchAdj + 30 + i * heightPerBar, width - 80, "#ffffff", "#333333", 24);
+		KDDraw(kdcanvas, kdpixisprites, "currentweapon", KinkyDungeonRootDirectory + "Items/" + KDWeapon(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon)).name + ".png", x + width - 100 + 20, y + switchAdj + i * heightPerBar, 60, 60);
 	} //else  KinkyDungeonNoWeapon
 
 	let playColor = "#283540";

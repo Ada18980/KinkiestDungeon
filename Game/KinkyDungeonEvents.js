@@ -73,6 +73,7 @@ let KDEventMapInventoryIcon = {
 		},
 	},
 };
+
 /**
  *
  * @param {string} Event
@@ -1567,6 +1568,21 @@ let KDEventMapInventory = {
 						KinkyDungeonDamageEnemy(data.enemy, {
 							type: e.damage,
 							damage: e.power,
+							time: e.time,
+							bind: e.bind,
+							bindType: e.bindType,
+						}, false, e.power <= 0.1, undefined, undefined, undefined, undefined, undefined, data.vulnConsumed);
+					}
+				}
+			}
+		},
+		"ElementalEcho": (e, item, data) => {
+			if (data.enemy && !data.miss && !data.disarm) {
+				if ((!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
+						KinkyDungeonDamageEnemy(data.enemy, {
+							type: e.damage,
+							damage: e.power * KinkyDungeonPlayerDamage.dmg,
 							time: e.time,
 							bind: e.bind,
 							bindType: e.bindType,
@@ -4138,6 +4154,11 @@ function KinkyDungeonHandleMagicEvent(Event, e, spell, data) {
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, weapon, *): void>>}
  */
 let KDEventMapWeapon = {
+	"calcEvasion": {
+		"IsMagic": (e, weapon, data) => {
+			data.flags.isMagic = true;
+		},
+	},
 	"dynamic": {
 		"BuffSelf": (e, weapon, data) => {
 			if (KDCheckPrereq(null, e.prereq, e, data))
@@ -4233,6 +4254,14 @@ let KDEventMapWeapon = {
 		},
 	},
 	"tick": {
+		"AccuracyBuff": (e, weapon, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: (e.original || "") + weapon.name + e.type + e.trigger,
+				type: "Accuracy",
+				duration: 1,
+				power: e.power
+			});
+		},
 		"blockBuff": (e, weapon, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.kind || weapon.name) + "Block", type: "Block", power: e.power, duration: 2,});
 		},

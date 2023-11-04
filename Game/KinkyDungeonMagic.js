@@ -1845,6 +1845,8 @@ function KDDrawHotbar(xLoc, yLoc, name, fn) {
 		let spell = "";
 		let label = "";
 		let armor = "";
+		let weapon = "";
+		let consumable = "";
 		if (KinkyDungeonSpells[KinkyDungeonSpellChoices[I]]) {
 			spell = KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].name;
 			label = TextGet("KinkyDungeonSpell" + spell);
@@ -1853,6 +1855,10 @@ function KDDrawHotbar(xLoc, yLoc, name, fn) {
 			spell = KinkyDungeonConsumableChoices[I] || KinkyDungeonWeaponChoices[I] || KinkyDungeonArmorChoices[I];
 			armor = KinkyDungeonArmorChoices[I];
 			if (armor && KinkyDungeonRestraintVariants[armor]) spell = KinkyDungeonRestraintVariants[armor].template;
+			weapon = KinkyDungeonWeaponChoices[I];
+			if (weapon && KinkyDungeonWeaponVariants[weapon]) spell = KinkyDungeonWeaponVariants[weapon].template;
+			consumable = KinkyDungeonConsumableChoices[I];
+			if (weapon && KinkyDungeonConsumableVariants[consumable]) spell = KinkyDungeonConsumableVariants[consumable].template;
 			if (spell) {
 				label = TextGet((armor ? "Restraint" : "KinkyDungeonInventoryItem") + spell);
 				KDDraw(kdcanvas, kdpixisprites, "kdspellPreview" + spell, KDGetItemPreview({name: spell, type: KinkyDungeonConsumableChoices[I] ? Consumable : (armor ? LooseRestraint : Weapon)}).preview, x - h, y, h, h);

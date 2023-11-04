@@ -752,6 +752,12 @@ interface enemy extends KDHasTags {
 	Awareness?: {
 		/** Optional tag to override chase radius */
 		chaseradius?: number,
+		/** Creature hearing multiplier */
+		hearingMult?: number,
+		/** Creature hearing base */
+		hearingRadius?: number,
+		/** Creature vision base, affects awareness gain */
+		vision?: number,
 	}
 	/** Contains data pertaining to the creature's effect on reputation and its behaviors from it */
 	Reputation?: {
@@ -1430,6 +1436,7 @@ interface entity {
 	castCooldownSpecial?: number,
 	specialCharges?: number,
 	usingSpecial?: boolean,
+	ignore?: boolean,
 	specialCD?: number,
 	disarmflag?: number,
 	channel?: number,
@@ -2052,6 +2059,8 @@ interface KinkyDungeonSave {
 	gold: number;
 	points: number;
 	inventoryVariants: Record<string, KDRestraintVariant>;
+	consumableVariants: Record<string, KDConsumableVariant>;
+	weaponVariants: Record<string, KDWeaponVariant>;
 	grounditems: any;
 	perks: string[];
 	levels: {
@@ -2769,6 +2778,7 @@ interface KDBoobyTrap {
 }
 
 interface ApplyVariant {
+	nonstackable?: boolean,
 	hexes: string[],
 	enchants: string[],
 	level: number,

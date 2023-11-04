@@ -3268,7 +3268,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 
 	if (variant) {
 		return KDEquipInventoryVariant(KDApplyVarToInvVar(restraint, variant),
-			variant.prefix, Tightness, Bypass, Lock, Keep, Trapped, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs);
+			variant.prefix, Tightness, Bypass, Lock, Keep, Trapped, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs, variant.nonstackable ? "" : variant.prefix);
 	}
 
 	if (restraint.bypass) Bypass = true;
@@ -3771,7 +3771,8 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 					}
 					KinkyDungeonPlayerNeedsRefresh = true;
 				}
-				let inventoryAs = item.inventoryVariant || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
+				// @ts-ignore
+				let inventoryAs = item.inventoryVariant || item.inventoryAs || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
 				if (rest.inventory && !ForceRemove
 					&& (Keep
 						|| ((
@@ -3873,7 +3874,8 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 			KinkyDungeonSendEvent("remove", {item: rest, keep: Keep, shrine: false, dynamic: true});
 
 		if (!KinkyDungeonCancelFlag) {
-			let inventoryAs = item.inventoryVariant || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
+			// @ts-ignore
+			let inventoryAs = item.inventoryVariant || item.inventoryAs || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
 			if (rest.inventory && !ForceRemove
 				&& (Keep
 					|| rest.enchanted
@@ -4703,11 +4705,11 @@ function KDGetItemName(item) {
 			break;
 		case Consumable:
 			base = TextGet("KinkyDungeonInventoryItem" + KDConsumable(item).name);
-			variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
+			variant = KinkyDungeonConsumableVariants[item.inventoryVariant || item.name];
 			break;
 		case Weapon:
 			base = TextGet("KinkyDungeonInventoryItem" + KDWeapon(item).name);
-			variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
+			variant = KinkyDungeonWeaponVariants[item.inventoryVariant || item.name];
 			break;
 	}
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
@@ -4750,6 +4752,11 @@ function KDGetWeaponName(weapon, variant) {
  */
 function KDGetItemNameString(name) {
 	let base = TextGet((KinkyDungeonGetRestraintByName(name) ? "Restraint" : "KinkyDungeonInventoryItem") + name);
+	let variant = KinkyDungeonRestraintVariants[name] || KinkyDungeonWeaponVariants[name] || KinkyDungeonConsumableVariants[name];
+	if (variant) {
+		base = TextGet((KinkyDungeonGetRestraintByName(variant.template) ? "Restraint" : "KinkyDungeonInventoryItem") + variant.template);
+	}
+	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }
 

@@ -702,7 +702,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 			KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerReleaseGoodGirl").replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#ffff00", 4, 9);
 			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonJailerReleaseGoodGirlMsg")
 				.replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name))
-				.replace("ItemName", TextGet("KinkyDungeonInventoryItem" + item)),
+				.replace("ItemName", KDGetItemNameString(item)),
 			"#88ff88", 1);
 			KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable(item), 1);
 		}

@@ -285,10 +285,10 @@ function KDAlreadyOpened(x, y) {
 	return false;
 }
 
-function KinkyDungeonPlaySound(src, entity) {
+function KinkyDungeonPlaySound(src, entity, vol) {
 	if (KDToggles.Sound && !KinkyDungeonSFX.includes(src)) {
 		if (!entity || KinkyDungeonVisionGet(entity.x, entity.y) > 0) {
-			AudioPlayInstantSoundKD(src);
+			AudioPlayInstantSoundKD(src, vol);
 			KinkyDungeonSFX.push(src);
 		}
 	}
