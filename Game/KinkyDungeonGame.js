@@ -680,6 +680,7 @@ function KDInitTempValues(seed) {
  * @param {number} [direction]
  */
 function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement, seed, forceFaction, worldLocation, useExisting, origMapType = "", direction = 0) {
+	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeNewMap"]);
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
 

@@ -684,9 +684,18 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		}
 		// Add spread
 		if (spell.shotgunSpread) {
-			let ang = base + 2 * Math.PI * (castCount > 1 ? ((castI / (castCount - 1))) : KDRandom());// * 2 * Math.PI;
-			tX += spell.shotgunSpread * ((castI+1) / castCount) * Math.cos(ang);
-			tY += spell.shotgunSpread * ((castI+1) / castCount) * Math.sin(ang);
+			if (spell.shotgunFan) {
+				let dx = tX - entity.x;
+				let dy = tY - entity.y;
+				let dmult = KDistEuclidean(dx, dy);
+				let ang = Math.atan2(dy, dx) - spell.shotgunSpread + 2 * spell.shotgunSpread * (castCount > 1 ? ((castI / (castCount - 1))) : KDRandom());
+				tX = entity.x + Math.cos(ang)*(spell.shotgunDistance || dmult);
+				tY = entity.y + Math.sin(ang)*(spell.shotgunDistance || dmult);
+			} else {
+				let ang = base + 2 * Math.PI * (castCount > 1 ? ((castI / (castCount - 1))) : KDRandom());// * 2 * Math.PI;
+				tX += spell.shotgunSpread * ((castI+1) / castCount) * Math.cos(ang);
+				tY += spell.shotgunSpread * ((castI+1) / castCount) * Math.sin(ang);
+			}
 		}
 
 		let speed = originalSpeed;

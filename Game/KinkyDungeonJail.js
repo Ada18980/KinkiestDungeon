@@ -955,15 +955,17 @@ function KDGetJailDoor(x, y) {
 	return {tile: KinkyDungeonTilesGet((x) + "," + y), x: x, y: y};
 }
 
-function KDDefeatedPlayerTick() {
+function KDDefeatedPlayerTick(nodefeat) {
+	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
+	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeDefeat"]);
 	KDGameData.KinkyDungeonJailGuard = 0;
 	KDGameData.KinkyDungeonLeashingEnemy = 0;
-	KinkyDungeonSetFlag("playerDefeated", 1);
+	if (!nodefeat)
+		KinkyDungeonSetFlag("playerDefeated", 1);
 }
 
 function KDEnterDemonTransition() {
 	KDDefeatedPlayerTick();
-	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
 	KDGameData.PrisonerState = 'jail';
 	//KDGameData.RoomType = "DemonTransition"; // We do a tunnel every other room
 	//KDGameData.MapMod = ""; // Reset the map mod
@@ -991,7 +993,7 @@ function KDEnterDemonTransition() {
 }
 
 function KDEnterDollTerminal(willing, cancelDialogue = true) {
-	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
+	KDDefeatedPlayerTick(!willing);
 	KDGameData.PrisonerState = 'jail';
 	//KDGameData.RoomType = "DollRoom"; // We do a tunnel every other room
 	//KDGameData.MapMod = ""; // Reset the map mod

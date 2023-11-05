@@ -2433,6 +2433,14 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				if (enemy.castCooldownSpecial <= 0)
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "castCooldownSpecial"});
 			}
+			if (enemy.castCooldownUnique) {
+				for (let cd of Object.entries(enemy.castCooldownUnique)) {
+					enemy.castCooldownUnique[cd[0]] = Math.max(0, cd[1]-delta);
+					if (enemy.castCooldownUnique[cd[0]] <= 0)
+						KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "castCooldownUnique", spell: cd[0]});
+				}
+
+			}
 
 			if (enemy.Enemy.specialCharges && enemy.specialCharges <= 0) enemy.specialCD = 999;
 			KinkyDungeonTickFlagsEnemy(enemy, delta);
@@ -4675,13 +4683,27 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			let spell = null;
 			let spelltarget = undefined;
 
-			for (let tries = 0; tries < 6; tries++) {
+			let spellPriority = [];
+			if (enemy.Enemy.Magic?.priority) {
+				spellPriority = Object.entries(enemy.Enemy.Magic.priority);
+				spellPriority.sort((a, b) => {
+					return b[1] - a[1];
+				});
+			}
+
+
+			for (let tries = 0; tries < 6 + spellPriority.length; tries++) {
 				spelltarget = null;
-				spellchoice = enemy.Enemy.spells[Math.floor(KDRandom()*enemy.Enemy.spells.length)];
+				if (tries < spellPriority.length) {
+					spellchoice = spellPriority[tries][0];
+				} else {
+					spellchoice = enemy.Enemy.spells[Math.floor(KDRandom()*enemy.Enemy.spells.length)];
+				}
 				spell = KinkyDungeonFindSpell(spellchoice, true);
 				if (spell && (enemy.blind > 0 && (spell.projectileTargeting))) spell = null;
 				if (spell && ((!spell.castRange && AIData.playerDist > spell.range) || (spell.castRange && AIData.playerDist > spell.castRange))) spell = null;
 				if (spell && spell.specialCD && enemy.castCooldownSpecial > 0) spell = null;
+				if (spell && enemy.castCooldownUnique && enemy.castCooldownUnique[spell.name] > 0) spell = null;
 				if (spell && spell.noFirstChoice && tries <= 2) spell = null;
 				if (spell && spell.projectileTargeting && !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y)) spell = null;
 				if (spell && spell.buff) {
@@ -4733,6 +4755,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				enemy.castCooldown = spell.manacost*enemy.Enemy.spellCooldownMult + enemy.Enemy.spellCooldownMod + 1;
 				if (spell.specialCD)
 					enemy.castCooldownSpecial = spell.specialCD;
+				if (enemy.Enemy.Magic?.castCooldownUnique && enemy.Enemy.Magic.castCooldownUnique[spell.name] != undefined) {
+					if (!enemy.castCooldownUnique) enemy.castCooldownUnique = {};
+					enemy.castCooldownUnique[spell.name] = enemy.Enemy.Magic.castCooldownUnique[spell.name];
+				}
 				let xx = player.x;
 				let yy = player.y;
 				if (spelltarget) {

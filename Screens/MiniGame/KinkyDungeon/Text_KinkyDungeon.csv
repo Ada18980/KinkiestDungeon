@@ -2167,7 +2167,7 @@ AttackGhost,"The Ghost enters your clothing and vanishes!"
 NameMikoGhost,Revenant
 KillMikoGhost,"The revenant pouts as it vanishes."
 AttackMikoGhostBind,"The revenant restrains you! (+RestraintAdded)"
-AttackMikoGhost,"The revenant squeezes your breasts! (DamageTaken)"
+AttackMikoGhost,"The revenant squeezes your breasts and slows you! (DamageTaken)"
 AttackMikoGhostSlow,"The revenant grabs you and caresses your tummy! (DamageTaken)"
 
 NameGreaterSkeleton,Skeleton Warrior
@@ -10693,11 +10693,13 @@ NameFuuka1,"Fuuka"
 KillFuuka1,"Fuuka surrounds herself in defensive talismans!"
 AttackFuuka1Bind,"Fuuka wraps you tightly in restraints! (+RestraintAdded)"
 AttackFuuka1,"Fuuka squeezes your breasts and smiles! (DamageTaken)"
+AttackFuuka1Lock,"Fuuka snaps her fingers and all your restraints are locked! (DamageTaken)"
 
 NameFuuka2,"Angry Fuuka"
 KillFuuka2,"Fuuka surrounds herself in defensive talismans one more time!"
 AttackFuuka2Bind,"Fuuka wraps you furiously in restraints! (+RestraintAdded)"
 AttackFuuka2,"Fuuka pouts as she tickles you relentlessly! (DamageTaken)"
+AttackFuuka2Lock,"Fuuka snaps her fingers and all your restraints are locked! (DamageTaken)"
 
 rFuuka,"(You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?"
 dFuuka_Aggressive,"I should be asking the same of you."
@@ -10849,6 +10851,8 @@ dFuukaFight_Fight3Gag,"Mmmmph..."
 rFuukaLose,"(SPEAKER smiles as she stands over you)|Well well. Look who won."
 rFuukaLoseAccept,"(SPEAKER nods)|Absolutely. Now allow me to make my conditions clear.|You will wear my collar from now on.|Then you will be allowed to go."
 rFuukaLoseDeny,"(SPEAKER giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go... but only wearing my collar."
+rFuukaLoseMagic,"(SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(She brandishes a collar) Now including you!"
+dFuukaLose_Magic,"What's this weird magic?"
 dFuukaLose_Accept,"You beat me fair and square."
 dFuukaLose_AcceptGag,"Mmmph. (Submit)"
 dFuukaLose_Deny,"You cheated!"
@@ -12944,3 +12948,10 @@ KinkyDungeonBuffSpellDamageBuff,An item has increased your spell damage!
 
 
 KDVariableModifier_AoEDamageFrozen,"AMNT ice damage/turn vs. Frozen"
+
+KinkyDungeonSpellFuukaOrb,Sealing Talisman
+KinkyDungeonSpellFuukaOrbMulti,Sealing Talisman
+KinkyDungeonFuukaOrb1,"Fuuka's magic begins sealing your power!"
+KinkyDungeonFuukaOrb2,"Fuuka's magic makes you sluggish!!"
+KinkyDungeonFuukaOrb3,"Fuuka's magic renders you helpless!!!"
+KinkyDungeonBuffFuukaOrb,"Fuuka's magic is restricting you!"

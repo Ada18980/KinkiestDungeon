@@ -388,6 +388,45 @@ let KDPlayerEffects = {
 		KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Demon");
 		return {sfx: "Evil", effect: true};
 	},
+	"FuukaOrb": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		KDTripleBuffKill("FuukaOrb", KinkyDungeonPlayerEntity, 300, (tt) => {
+			// Nothing!
+		}, "Sealing", (tt) => {
+			if (tt?.player) {
+				KinkyDungeonApplyBuffToEntity(tt, {
+					id: "FuukaOrb",
+					duration: 300,
+					tags: ["removeNewMap", "removeDefeat"],
+					power: 1,
+					type: "SlowLevel",
+					aura: "#ff6767",
+					buffSprite: true,
+				});
+			}
+		}, (tt) => {
+			KinkyDungeonApplyBuffToEntity(tt, {
+				id: "FuukaOrb",
+				duration: 300,
+				tags: ["removeNewMap", "removeDefeat"],
+				power: 3,
+				type: "SlowLevel",
+				aura: "#ff6767",
+				buffSprite: true,
+			});
+		},  (tt) => {
+
+			KinkyDungeonApplyBuffToEntity(tt, {
+				id: "FuukaOrb",
+				duration: 300,
+				tags: ["removeNewMap", "removeDefeat"],
+				power: 100,
+				type: "SlowLevel",
+				aura: "#ff6767",
+				buffSprite: true,
+			});
+		}, );
+		return {sfx: "Evil", effect: true};
+	},
 	"SlimeEngulf": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let restraintAdd = KinkyDungeonGetRestraint({tags: ["slimeRestraintsRandom"]}, MiniGameKinkyDungeonLevel + playerEffect.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 		if (!restraintAdd) {
@@ -1241,7 +1280,7 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
  * @param {(target: entity) => void} FinalEffect
  * @param {string} buffType - Buff effect
  */
-function KDTripleBuffKill(Name, Target, time, FinalEffect = (target) => KinkyDungeonPassOut(), buffType = "Blindness", FirstEffect = (target) => {}, SecondEffect = (target) => {}, ThirdEffect = (target) => {}) {
+function KDTripleBuffKill(Name, Target, time, FinalEffect = (target) => KinkyDungeonPassOut(), buffType = "Blindness", FirstEffect = (target) => {}, SecondEffect = (target) => {}, ThirdEffect = (target) => {},) {
 	let buff1 = {id: Name + "1", type: buffType, duration: time + 3, power: 1.0, player: true, tags: ["passout"]};
 	let buff2 = {id: Name + "2", type: buffType, duration: time + 3, power: 2.0, player: true, tags: ["passout"]};
 	let buff3 = {id: Name + "3", type: buffType, duration: time + 3, power: 4.0, player: true, tags: ["passout"]};

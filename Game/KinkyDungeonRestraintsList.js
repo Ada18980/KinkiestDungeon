@@ -387,10 +387,16 @@ const KinkyDungeonRestraints = [
 
 	//region Glue
 	{removePrison: true, name: "GlueBoots", unlimited: true, debris: "Slime", inaccessible: true, Asset: "ToeTape", Type: "Full", Color: "#f0b541", Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 1, weight: 0,  escapeChance: {"Struggle": 0.3, "Cut": 0.0, "Remove": 0.05},
+
+		Model: "SlimeBoots",
 		enemyTags: {"glueRestraints":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Slime"]},
 	{removePrison: true, name: "GlueFeet", unlimited: true, debris: "Slime", inaccessible: true, Asset: "DuctTape", Type: "CompleteFeet", OverridePriority: 24, Color: "#f0b541", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 1, weight: -100,  escapeChance: {"Struggle": 0.25, "Cut": 0.0, "Remove": 0.05},
+
+		Model: "SlimeFeet",
 		enemyTags: {"glueRestraints":100}, playerTags: {"ItemBootsFull":15}, minLevel: 0, allFloors: true, shrine: ["Latex", "Slime"]},
 	{removePrison: true, name: "GlueLegs", unlimited: true, debris: "Slime", inaccessible: true, remove: ["ClothLower"], Asset: "SeamlessHobbleSkirt", Color: "#f0b541", Group: "ItemLegs", blockfeet: true, addTag: ["FeetLinked"],power: 1, weight: -102,  escapeChance: {"Struggle": 0.2, "Cut": 0.0, "Remove": 0.05},
+
+		Model: "SlimeLegs",
 		enemyTags: {"glueRestraints":100}, playerTags: {"ItemBootsFull":2, "ItemFeetFull":2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Hobbleskirts", "Slime"]},
 	//endregion
 
@@ -745,6 +751,12 @@ const KinkyDungeonRestraints = [
 		bindarms: true,
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture"], ignoreSpells: true, removeOnLeash: true, immobile: true,
 
+		Model: "Catsuit",
+		Filters:{
+			TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1.9666666666666666,"blue":1,"alpha":0.48333333333333334},
+			Torso: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1.9666666666666666,"blue":1,"alpha":0.48333333333333334},
+			TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1.9666666666666666,"blue":1,"alpha":0.48333333333333334},
+		},
 		alwaysDress: [
 			{Item: "SeethroughSuit", Group: "Suit", Color: ['#63ab3f'], override: true, factionColor: [[0]]},
 			{Item: "SeethroughSuit", Group: "SuitLower", Color: ['#63ab3f'], override: true, factionColor: [[0]]},
@@ -1021,83 +1033,6 @@ const KinkyDungeonRestraints = [
 
 
 
-	//region MithrilRope
-	{unlimited: true, renderWhenLinked: ["Boxbinders"], changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, inventory: true, name: "MithrilRopeArms", debris: "Ropes", accessible: true, Asset: "NylonRope", Color: "#ffffff", LinkableBy: ["Armbinders", "Wrapping"], Group: "ItemArms", bindarms: true, power: 6, weight: 1, magic: true,
-		affinity: {Remove: ["Hook"],},
-		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"],
-		maxwill: 0.7, enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will", "Boxties"]},
-	{unlimited: true, inventory: false, name: "MithrilRopeHogtie", debris: "Ropes", accessible: true, Asset: "HempRope", Color: "#ffffff", Type: "KneelingHogtie", Group: "ItemArms", bindarms: true, power: 8, weight: 1, magic: true,
-		affinity: {Remove: ["Hook"],},
-		escapeChance: {"Struggle": -0.1, "Cut": 0.15, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"],
-		maxwill: 0.15, enemyTags: {"mithrilRopeHogtie":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Hogties", "Will"],
-		events: [{trigger: "postRemoval", type: "replaceItem", list: ["MithrilRopeArms"], power: 6}]
-	},
-	{unlimited: true, renderWhenLinked: [...KDLegRopesRender], inventory: true, name: "MithrilRopeLegs", debris: "Ropes", accessible: true, Asset: "NylonRope", LinkableBy: [...KDLegRopesBind], Color: "#ffffff", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 5, weight: 1, magic: true,
-		affinity: {Remove: ["Hook"],},
-		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"], strictness: 0.1,
-		maxwill: 0.8, enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will"]},
-	{unlimited: true, inventory: true, name: "MithrilRopeFeet", debris: "Ropes", accessible: true, Asset: "NylonRope", Color: "#ffffff", LinkableBy: ["Wrapping"], Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 5, weight: 1, magic: true,
-		affinity: {Remove: ["Hook"],},
-		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"], strictness: 0.1,
-		enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will"]},
-	{unlimited: true, inventory: true, name: "MithrilRopeHarness", debris: "Ropes", accessible: true, Asset: "NylonRopeHarness", Type: "Star", harness: true, OverridePriority: 26, Color: "#ffffff", Group: "ItemTorso", power: 5, weight: 1, magic: true,
-		affinity: {Remove: ["Hook"],},
-		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"], strictness: 0.1,
-		enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will"]},
-	{unlimited: true, inventory: true, name: "MithrilRopeCrotch", debris: "Ropes", accessible: true, crotchrope: true, strictness: 0.15, Asset: "HempRope", Type: "OverPanties", OverridePriority: 26, Color: "#ffffff", Group: "ItemPelvis", power: 5, weight: 1, magic: true,
-		affinity: {Remove: ["Hook"],},
-		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"],
-		enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will"],
-		events: [{trigger: "struggle", type: "crotchrope"}]},
-	{unlimited: true, inventory: true, name: "MithrilRopeToe", debris: "Ropes", accessible: true, Asset: "ToeTie", OverridePriority: 26, LinkableBy: ["Wrapping"], Color: "#ffffff", Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 5, weight: 1, magic: true,
-		affinity: {Remove: ["Hook"],},
-		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"],
-		enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will"]},
-	//endregion
-
-	//region basecuffs
-	{inventory: true, name: "TemplateLegCuffs", debris: "Chains", accessible: true, Asset: "FuturisticLegCuffs", Link: "TemplateLegCuffs2", LinkableBy: ["Legbinders", "Wrapping", "Hobbleskirts", "Belts"], Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemLegs", power: 9, weight: 0,
-		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
-		maxwill: 0.6, enemyTags: {}, playerTags: {"ItemLegsFull":-2}, minLevel: 7, allFloors: true, shrine: ["Metal", "Cuffs"]},
-	{name: "TemplateLegCuffs2", accessible: true, Asset: "FuturisticLegCuffs", debris: "Chains", UnLink: "TemplateLegCuffs", LinkableBy: [...KDBindable, ...KDDevices],
-		Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'],
-		Group: "ItemLegs", hobble: 1, power: 9, weight: 0,
-		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
-		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
-
-	{inventory: true, name: "TemplateAnkleCuffs", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable], Link: "TemplateAnkleCuffs2", Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemFeet", hobble: 1, power: 9, weight: 0,
-		linkCategory: "AnkleCuffs", linkSize: 0.4, noDupe: true,
-		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs", "AnkleCuffsBase"],
-		maxwill: 0.5, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}]},
-	{name: "TemplateAnkleCuffs2", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable], UnLink: "TemplateAnkleCuffs", Link: "TemplateAnkleCuffs3",
-		Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemFeet", hobble: 1, power: 9, weight: 0,
-		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
-	{name: "TemplateAnkleCuffs3", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable], UnLink: "TemplateAnkleCuffs2", Type: "Closed", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 9, weight: 0,
-		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
-	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "TemplateArmCuffs", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", linkCategory: "Cuffs", linkSize: 0.55,
-		unlimited: true,
-		LinkableBy: [...KDDevices, ...KDBindable], Link: "TemplateArmCuffs2", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: false, power: 9, weight: 0,
-		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.25, "Pick": 0.35}, enemyTags: {}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cuffs", "ArmCuffsBase"],
-		maxwill: 0.4, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "defeat", type: "linkItem", chance: 1.0}]},
-	{name: "TemplateArmCuffs2", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "TemplateArmCuffs3", UnLink: "TemplateArmCuffs", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: true, power: 9, weight: 0,
-		escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 0.2, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true}]},
-	{name: "TemplateArmCuffs3", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Both", LinkableBy: [...KDElbowBind, ...KDBindable], UnLink: "TemplateArmCuffs4", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: true, power: 9, weight: 0, strictness: 0.1,
-		escapeChance: {"Struggle": -0.175, "Cut": -0.3, "Remove": -0.1, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.12, inheritLinked: true}]},
-	{name: "TemplateArmCuffs4", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Elbow", LinkableBy: [...KDElbowBind, ...KDBindable], Link: "TemplateArmCuffs3", UnLink: "TemplateArmCuffs", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: true, power: 9, weight: 0,
-		escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": -0.15, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.5, tags: ["lowwill"]}, {trigger: "beforeStruggleCalc", type: "elbowCuffsBlock", inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}]},
-	//endregion
 
 	//#region Mithril
 	{inventory: true, name: "MithrilCollar", Asset: "ShinySteelCollar", Color: ['#C9B883', '#C9B883'], Group: "ItemNeck", LinkableBy: [...KDCollarLink], power: 9, weight: -2,
@@ -1832,74 +1767,6 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.8, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "LegBind"]},
 
 
-	{inventory: true, name: "AsylumAnkleCuffs", debris: "Belts", Asset: "LeatherAnkleCuffs", LinkableBy: ["Wrapping", "Ties", "Belts"], Link: "AsylumAnkleCuffs2", Type: "Chained", Color: ["Default", "#814F21", "Default"], Group: "ItemFeet", hobble: 1, power: 9, weight: 0,
-		linkCategory: "AnkleCuffs", linkSize: 0.4, noDupe: true,
-		escapeChance: {"Struggle": -0.2, "Cut": -0.05, "Remove": 0.35, "Pick": 0.25}, enemyTags: {"nurseRestraints": 3, "nurseCuffRestraints": 5, "leathercuffsSpell": 3}, playerTags: {"ItemFeetFull":-2}, minLevel: 2, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs", "AnkleCuffsBase"],
-		maxwill: 1.0, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}]},
-	{name: "AsylumAnkleCuffs2", debris: "Belts", Asset: "LeatherAnkleCuffs", LinkableBy: ["Wrapping", "Ties", "Belts"], UnLink: "AsylumAnkleCuffs", Type: "Closed", Color: ["Default", "#814F21", "Default"], Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 9, weight: 0,
-		escapeChance: {"Struggle": -0.2, "Cut": -0.05, "Remove": 0.35, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
-
-	{inventory: true, name: "AsylumLegCuffs", debris: "Belts", Asset: "LeatherLegCuffs", LinkableBy: ["Legbinders", "Ties", "Belts", "Hobbleskirts"], Type: "Chained", Color: ["Default", "#814F21", "Default"], Group: "ItemLegs", hobble: 1, power: 9, weight: 0,
-		escapeChance: {"Struggle": -0.2, "Cut": -0.05, "Remove": 0.3, "Pick": 0.25},
-		maxwill: 0.8, enemyTags: {"nurseRestraints": 3, "nurseCuffRestraints": 5, "leathercuffsSpell": 3}, playerTags: {"ItemLegsFull":-2}, minLevel: 2, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs"]},
-
-	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "AsylumArmCuffs", debris: "Belts", Color: ["#814F21", "Default"], accessible: true, Asset: "LeatherCuffs",
-		unlimited: true,
-		linkCategory: "Cuffs", linkSize: 0.55, LinkableBy: [...KDDevices,...KDBindable], Link: "AsylumArmCuffs2", Group: "ItemArms", bindarms: false, power: 8, weight: 0,
-		escapeChance: {"Struggle": -0.2, "Cut": -0.05, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"nurseRestraints": 3, "nurseCuffRestraints": 5, "leathercuffsSpell": 3}, playerTags: {"ItemArmsFull":-2, "Unchained": 9}, minLevel: 0, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs", "ArmCuffsBase"],
-		maxwill: 1.0, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "defeat", type: "linkItem", chance: 1.0}]},
-	{name: "AsylumArmCuffs2", debris: "Belts", accessible: true, Asset: "LeatherCuffs", Type: "Wrist", Color: ["#814F21", "Default"], LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "AsylumArmCuffs3", UnLink: "AsylumArmCuffs", Group: "ItemArms", bindarms: true, power: 6, weight: 0,
-		escapeChance: {"Struggle": 0, "Cut": -0.15, "Remove": 0.2, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true}]},
-	{name: "AsylumArmCuffs3", debris: "Belts", accessible: true, Asset: "LeatherCuffs", Type: "Both", Color: ["#814F21", "Default"], LinkableBy: [...KDElbowBind, ...KDBindable], UnLink: "AsylumArmCuffs4", Group: "ItemArms", bindarms: true, power: 5, weight: 0, strictness: 0.1,
-		escapeChance: {"Struggle": -0.1, "Cut": -0.15, "Remove": -0.1, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.12, inheritLinked: true}]},
-	{name: "AsylumArmCuffs4", debris: "Belts", accessible: true, Asset: "LeatherCuffs", Type: "Elbow", Color: ["#814F21", "Default"], LinkableBy: [...KDElbowBind, ...KDBindable], Link: "AsylumArmCuffs3", UnLink: "AsylumArmCuffs", Group: "ItemArms", bindarms: true, power: 7, weight: 0,
-		escapeChance: {"Struggle": 0, "Cut": -0.175, "Remove": -0.15, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.5, tags: ["lowwill"]}, {trigger: "beforeStruggleCalc", type: "elbowCuffsBlock", inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}]},
-
-
-
-	{inventory: true, name: "LeatherAnkleCuffs", debris: "Belts", Asset: "LeatherAnkleCuffs", LinkableBy: ["Wrapping", "Ties", "Belts"], Link: "LeatherAnkleCuffs2", Type: "Chained", Color: ["Default", "Default", "Default"], Group: "ItemFeet", hobble: 1, power: 4, weight: 0,
-		unlimited: true,
-		linkCategory: "AnkleCuffs", linkSize: 0.4, noDupe: true,
-		escapeChance: {"Struggle": 0.1, "Cut": 0.1, "Remove": 0.25, "Pick": 0.25}, enemyTags: {"leatherRestraintsHeavy":4, "dragonRestraints":6, "handcuffer": 10, "leathercuffsSpell": 8}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs", "AnkleCuffsBase"],
-		maxwill: 1.0, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}]},
-	{name: "LeatherAnkleCuffs2", debris: "Belts", Asset: "LeatherAnkleCuffs", LinkableBy: ["Wrapping", "Ties", "Belts"], UnLink: "LeatherAnkleCuffs", Type: "Closed", Color: ["Default", "Default", "Default"], Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 4, weight: 0,
-		escapeChance: {"Struggle": -0.1, "Cut": -0.1, "Remove": 0.15, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
-
-
-	{inventory: true, name: "LeatherLegCuffs", debris: "Belts", Asset: "LeatherLegCuffs", LinkableBy: ["Legbinders", "Ties", "Belts", "Hobbleskirts"], Type: "Chained", Color: ["Default", "Default", "Default"], Group: "ItemLegs", hobble: 1, power: 4, weight: 0,
-		escapeChance: {"Struggle": 0.1, "Cut": 0.1, "Remove": 0.3, "Pick": 0.3},
-		maxwill: 0.8, enemyTags: {"leatherRestraints":6, "handcuffer": 2, "leathercuffsSpell": 8}, playerTags: {"ItemLegsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs"]},
-
-	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "LeatherArmCuffs", debris: "Belts", accessible: true, Asset: "LeatherCuffs", linkCategory: "Cuffs", linkSize: 0.55, LinkableBy: [...KDDevices,...KDBindable], Link: "LeatherArmCuffs2", Color: ['Default', 'Default'], Group: "ItemArms", bindarms: false, power: 3, weight: 0,
-		unlimited: true,
-		escapeChance: {"Struggle": 0.1, "Cut": 0.1, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"leatherRestraintsHeavy":4, "dragonRestraints":6, "handcuffer": 10, "leathercuffsSpell": 8}, playerTags: {"ItemArmsFull":-2, "Unchained": 9}, minLevel: 0, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs", "ArmCuffsBase"],
-		maxwill: 1.0, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "defeat", type: "linkItem", chance: 1.0}]},
-	{name: "LeatherArmCuffs2", debris: "Belts", accessible: true, Asset: "LeatherCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "LeatherArmCuffs3", UnLink: "LeatherArmCuffs", Color: ['Default', 'Default'], Group: "ItemArms", bindarms: true, power: 4, weight: 0,
-		escapeChance: {"Struggle": 0, "Cut": -0.1, "Remove": 0.2, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true}]},
-	{name: "LeatherArmCuffs3", debris: "Belts", accessible: true, Asset: "LeatherCuffs", Type: "Both", LinkableBy: [...KDElbowBind, ...KDBindable], UnLink: "LeatherArmCuffs4", Color: ['Default', 'Default'], Group: "ItemArms", bindarms: true, power: 5, weight: 0, strictness: 0.1,
-		escapeChance: {"Struggle": -0.1, "Cut": -0.1, "Remove": -0.1, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.12, inheritLinked: true}]},
-	{name: "LeatherArmCuffs4", debris: "Belts", accessible: true, Asset: "LeatherCuffs", Type: "Elbow", LinkableBy: [...KDElbowBind, ...KDBindable], Link: "LeatherArmCuffs3", UnLink: "LeatherArmCuffs", Color: ['Default', 'Default'], Group: "ItemArms", bindarms: true, power: 4, weight: 0,
-		escapeChance: {"Struggle": 0, "Cut": -0.125, "Remove": -0.15, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.5, tags: ["lowwill"]}, {trigger: "beforeStruggleCalc", type: "elbowCuffsBlock", inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}]},
-
-
-
-
 	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "SteelArmCuffs", debris: "Chains", accessible: true,
 		Asset: "SteelCuffs", linkCategory: "Cuffs", linkSize: 0.55, LinkableBy: [...KDDevices,...KDBindable], Link: "SteelArmCuffs2", Color: ['Default', 'Default'], Group: "ItemArms", bindarms: false, power: 4, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": -0.5, "Remove": 0.15, "Pick": 0.25}, enemyTags: {"steelCuffs":4, "handcuffer": 1}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cuffs", "ArmCuffsBase"],
@@ -1947,24 +1814,6 @@ const KinkyDungeonRestraints = [
 			{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
 
 	// End magnetic cuffs
-
-	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "ScaleArmCuffs", debris: "Belts", accessible: true, Asset: "LeatherCuffs", linkCategory: "Cuffs", linkSize: 0.55,
-		LinkableBy: [...KDDevices,...KDBindable], Link: "ScaleArmCuffs2", Color: ["#9B1818", "#675F50"], Group: "ItemArms", bindarms: false, power: 7, weight: 0,
-		escapeChance: {"Struggle": -0.2, "Cut": -0.05, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"dragonRestraints":1}, playerTags: {"ItemArmsFull":2},
-		minLevel: 7, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs", "ArmCuffsBase"],
-		maxwill: 0.7, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "defeat", type: "linkItem", chance: 1.0}]},
-	{name: "ScaleArmCuffs2", debris: "Belts", accessible: true, Asset: "LeatherCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "ScaleArmCuffs3", UnLink: "ScaleArmCuffs", Color: ["#9B1818", "#675F50"], Group: "ItemArms", bindarms: true, power: 7, weight: 0,
-		escapeChance: {"Struggle": -0.1, "Cut": -0.15, "Remove": 0.2, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true}]},
-	{name: "ScaleArmCuffs3", debris: "Belts", accessible: true, Asset: "LeatherCuffs", Type: "Both", LinkableBy: [...KDElbowBind, ...KDBindable], UnLink: "ScaleArmCuffs4", Color: ["#9B1818", "#675F50"], Group: "ItemArms", bindarms: true, power: 7, weight: 0, strictness: 0.1,
-		escapeChance: {"Struggle": -0.15, "Cut": -0.15, "Remove": -0.1, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.12, inheritLinked: true}]},
-	{name: "ScaleArmCuffs4", debris: "Belts", accessible: true, Asset: "LeatherCuffs", Type: "Elbow", LinkableBy: [...KDElbowBind, ...KDBindable], Link: "ScaleArmCuffs3", UnLink: "ScaleArmCuffs", Color: ["#9B1818", "#675F50"], Group: "ItemArms", bindarms: true, power: 7, weight: 0,
-		escapeChance: {"Struggle": -0.15, "Cut": -0.15, "Remove": -0.15, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.5, tags: ["lowwill"]}, {trigger: "beforeStruggleCalc", type: "elbowCuffsBlock", inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}]},
 
 	//region Maid
 	{inventory: true, name: "MaidJacket", debris: "Belts", Asset: "Bolero", Color: ["#191919", "#A3A3A3"], Group: "ItemArms", bindarms: true, bindhands: 1.0, power: 7.5, weight: 0, strictness: 0.2,
@@ -2031,17 +1880,6 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "DragonStraps", debris: "Belts", Asset: "ThinLeatherStraps", LinkableBy: ["Boxbinders"], Color: "#9B1818", Group: "ItemArms", bindarms: true, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.175, "Cut": -0.05, "Remove": 0.1, "Pick": 0.25},
 		maxwill: 0.7, enemyTags: {"dragonRestraints":6}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Leather", "Belts"]},
-	{inventory: true, name: "DragonLegCuffs", debris: "Belts", Asset: "LeatherLegCuffs", LinkableBy: ["Legbinders", "Ties", "Belts", "Hobbleskirts"], Type: "Chained", Color: ["Default", "#9B1818", "#675F50"], Group: "ItemLegs", hobble: 1, power: 7, weight: 0,
-		escapeChance: {"Struggle": -0.2, "Cut": -0.05, "Remove": 0.3, "Pick": 0.25},
-		maxwill: 0.8, enemyTags: {"dragonRestraints":6}, playerTags: {"ItemLegsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs"]},
-	{inventory: true, name: "DragonAnkleCuffs", debris: "Belts", Asset: "LeatherAnkleCuffs", LinkableBy: [...KDBindable], Link: "DragonAnkleCuffs2", Type: "Chained", Color: ["Default", "#9B1818", "#675F50"], Group: "ItemFeet", hobble: 1, power: 7, weight: 0,
-		linkCategory: "AnkleCuffs", linkSize: 0.4, noDupe: true,
-		escapeChance: {"Struggle": -0.2, "Cut": -0.05, "Remove": 0.3, "Pick": 0.25}, enemyTags: {"dragonRestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 2, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs", "AnkleCuffsBase"],
-		maxwill: 1.0, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}]},
-	{name: "DragonAnkleCuffs2", debris: "Chains", Asset: "LeatherAnkleCuffs", LinkableBy: [...KDBindable], UnLink: "DragonAnkleCuffs", Type: "Closed", Color: ["Default", "#9B1818", "#675F50"], Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 7, weight: 0,
-		escapeChance: {"Struggle": -0.2, "Cut": -0.05, "Remove": 0.3, "Pick": 0.25}, enemyTags: {"dragonRestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "LeatherCuffs", "Cuffs"],
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
 	{inventory: true, name: "DragonBoots", debris: "Belts", Asset: "BalletWedges", Color: "#424242", Group: "ItemBoots", hobble: 1, power: 7, weight: 0, remove: ["Shoes"],
 		escapeChance: {"Struggle": 0.025, "Cut": -0.05, "Remove": 0.05, "Pick": 0.25},
 		enemyTags: {"dragonRestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 2, allFloors: true, shrine: ["Leather", "Boots"]},
@@ -2420,6 +2258,85 @@ const KinkyDungeonRestraints = [
 		failSuffix: {"Remove": "MagicRope"}, events: [{trigger: "struggle", type: "celestialRopePunish"}, {trigger: "struggle", type: "crotchrope"}]},
 	//endregion
 
+	//region TemplateCuffs
+	//region MithrilRope
+	{unlimited: true, renderWhenLinked: ["Boxbinders"], changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, inventory: true, name: "MithrilRopeArms", debris: "Ropes", accessible: true, Asset: "NylonRope", Color: "#ffffff", LinkableBy: ["Armbinders", "Wrapping"], Group: "ItemArms", bindarms: true, power: 6, weight: 1, magic: true,
+		affinity: {Remove: ["Hook"],},
+		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"],
+		maxwill: 0.7, enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will", "Boxties"]},
+	{unlimited: true, inventory: false, name: "MithrilRopeHogtie", debris: "Ropes", accessible: true, Asset: "HempRope", Color: "#ffffff", Type: "KneelingHogtie", Group: "ItemArms", bindarms: true, power: 8, weight: 1, magic: true,
+		affinity: {Remove: ["Hook"],},
+		escapeChance: {"Struggle": -0.1, "Cut": 0.15, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"],
+		maxwill: 0.15, enemyTags: {"mithrilRopeHogtie":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Hogties", "Will"],
+		events: [{trigger: "postRemoval", type: "replaceItem", list: ["MithrilRopeArms"], power: 6}]
+	},
+	{unlimited: true, renderWhenLinked: [...KDLegRopesRender], inventory: true, name: "MithrilRopeLegs", debris: "Ropes", accessible: true, Asset: "NylonRope", LinkableBy: [...KDLegRopesBind], Color: "#ffffff", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 5, weight: 1, magic: true,
+		affinity: {Remove: ["Hook"],},
+		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"], strictness: 0.1,
+		maxwill: 0.8, enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will"]},
+	{unlimited: true, inventory: true, name: "MithrilRopeFeet", debris: "Ropes", accessible: true, Asset: "NylonRope", Color: "#ffffff", LinkableBy: ["Wrapping"], Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 5, weight: 1, magic: true,
+		affinity: {Remove: ["Hook"],},
+		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"], strictness: 0.1,
+		enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will"]},
+	{unlimited: true, inventory: true, name: "MithrilRopeHarness", debris: "Ropes", accessible: true, Asset: "NylonRopeHarness", Type: "Star", harness: true, OverridePriority: 26, Color: "#ffffff", Group: "ItemTorso", power: 5, weight: 1, magic: true,
+		affinity: {Remove: ["Hook"],},
+		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"], strictness: 0.1,
+		enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will"]},
+	{unlimited: true, inventory: true, name: "MithrilRopeCrotch", debris: "Ropes", accessible: true, crotchrope: true, strictness: 0.15, Asset: "HempRope", Type: "OverPanties", OverridePriority: 26, Color: "#ffffff", Group: "ItemPelvis", power: 5, weight: 1, magic: true,
+		affinity: {Remove: ["Hook"],},
+		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"],
+		enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will"],
+		events: [{trigger: "struggle", type: "crotchrope"}]},
+	{unlimited: true, inventory: true, name: "MithrilRopeToe", debris: "Ropes", accessible: true, Asset: "ToeTie", OverridePriority: 26, LinkableBy: ["Wrapping"], Color: "#ffffff", Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 5, weight: 1, magic: true,
+		affinity: {Remove: ["Hook"],},
+		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0.05}, specStruggleTypes: ["Remove", "Struggle"],
+		enemyTags: {"mithrilRope":2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Will"]},
+	//endregion
+
+	//region templatecuffs
+	{inventory: true, name: "TemplateLegCuffs", debris: "Chains", accessible: true, Asset: "FuturisticLegCuffs", Link: "TemplateLegCuffs2", LinkableBy: ["Legbinders", "Wrapping", "Hobbleskirts", "Belts"], Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemLegs", power: 9, weight: 0,
+		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
+		maxwill: 0.6, enemyTags: {}, playerTags: {"ItemLegsFull":-2}, minLevel: 7, allFloors: true, shrine: ["Metal", "Cuffs"]},
+	{name: "TemplateLegCuffs2", accessible: true, Asset: "FuturisticLegCuffs", debris: "Chains", UnLink: "TemplateLegCuffs", LinkableBy: [...KDBindable, ...KDDevices],
+		Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'],
+		Group: "ItemLegs", hobble: 1, power: 9, weight: 0,
+		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
+		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
+
+	{inventory: true, name: "TemplateAnkleCuffs", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable], Link: "TemplateAnkleCuffs2", Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemFeet", hobble: 1, power: 9, weight: 0,
+		linkCategory: "AnkleCuffs", linkSize: 0.4, noDupe: true,
+		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs", "AnkleCuffsBase"],
+		maxwill: 0.5, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}]},
+	{name: "TemplateAnkleCuffs2", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable], UnLink: "TemplateAnkleCuffs", Link: "TemplateAnkleCuffs3",
+		Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemFeet", hobble: 1, power: 9, weight: 0,
+		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
+	{name: "TemplateAnkleCuffs3", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable], UnLink: "TemplateAnkleCuffs2", Type: "Closed", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 9, weight: 0,
+		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
+	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "TemplateArmCuffs", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", linkCategory: "Cuffs", linkSize: 0.55,
+		unlimited: true,
+		LinkableBy: [...KDDevices, ...KDBindable], Link: "TemplateArmCuffs2", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: false, power: 9, weight: 0,
+		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.25, "Pick": 0.35}, enemyTags: {}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cuffs", "ArmCuffsBase"],
+		maxwill: 0.4, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "defeat", type: "linkItem", chance: 1.0}]},
+	{name: "TemplateArmCuffs2", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "TemplateArmCuffs3", UnLink: "TemplateArmCuffs", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: true, power: 9, weight: 0,
+		escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 0.2, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true}]},
+	{name: "TemplateArmCuffs3", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Both", LinkableBy: [...KDElbowBind, ...KDBindable], UnLink: "TemplateArmCuffs4", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: true, power: 9, weight: 0, strictness: 0.1,
+		escapeChance: {"Struggle": -0.175, "Cut": -0.3, "Remove": -0.1, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.12, inheritLinked: true}]},
+	{name: "TemplateArmCuffs4", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Elbow", LinkableBy: [...KDElbowBind, ...KDBindable], Link: "TemplateArmCuffs3", UnLink: "TemplateArmCuffs", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: true, power: 9, weight: 0,
+		escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": -0.15, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.5, tags: ["lowwill"]}, {trigger: "beforeStruggleCalc", type: "elbowCuffsBlock", inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}]},
+	//endregion
+
 	//region VinePlant
 	{unlimited: true, removePrison: true, name: "VinePlantArms", accessible: true, Asset: "NylonRope", Color: ["#006722", "#006722"], Group: "ItemArms", debris: "Vines",
 		affinity: {Remove: ["Hook"],},
@@ -2665,11 +2582,14 @@ const KinkyDungeonRestraints = [
 			},
 			[],
 			{
-				Struggle: 0.2,
-				Cut: 0.25,
-				Remove: 0.1,
+				Struggle: -0.1,
+				Cut: -0.1,
+				Remove: -0.05,
 			},
 			{
+			},
+			{
+				Rope: {"gamma":2.55,"saturation":0.9666666666666667,"contrast":2,"brightness":0.5,"red":1.6833333333333333,"green":1,"blue":2.6500000000000004,"alpha":1},
 			},
 		);
 		KDAddRopeVariants(
@@ -2686,11 +2606,37 @@ const KinkyDungeonRestraints = [
 			},
 			[],
 			{
-				Struggle: 0.15,
-				Cut: 0.2,
+				Struggle: -0.15,
+				Cut: -0.2,
 				Remove: -0.1,
 			},
 			{
+			},
+			{
+				Rope: {"gamma":1.7333333333333334,"saturation":2.1,"contrast":1.4000000000000001,"brightness":0.9666666666666667,"red":0.44999999999999996,"green":1.4000000000000001,"blue":2.6166666666666667,"alpha":1},
+			},
+		);
+		KDAddRopeVariants(
+			"RopeSnake",
+			"MithrilRope",
+			"",
+			"mithrilRope",
+			["Mithril"],
+			[],
+			4,
+			{
+				Color: "#ffffff",
+			},
+			[],
+			{
+				Struggle: 0.15,
+				Cut: -0.35,
+				Remove: -0.05,
+			},
+			{
+			},
+			{
+				Rope: {"gamma":1.7833333333333334,"saturation":1,"contrast":2.45,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			},
 		);
 
@@ -2700,6 +2646,7 @@ const KinkyDungeonRestraints = [
 			"Mithril",
 			"",
 			"mithril",
+			{},
 			["Mithril"],
 			[],
 			0,
@@ -2708,6 +2655,13 @@ const KinkyDungeonRestraints = [
 			},
 			[],
 			{
+				Struggle: 0.0,
+				Cut: 0.0,
+				Remove: 0.0,
+				Pick: 0.00,
+			},
+			{
+			},{
 				Struggle: 0.0,
 				Cut: 0.0,
 				Remove: 0.0,
@@ -2729,12 +2683,148 @@ const KinkyDungeonRestraints = [
 			},
 		);
 
+		KDAddCuffVariants(
+			"Template",
+			"Leather",
+			"",
+			"leatherRestraints",
+			{
+				"leatherRestraintsHeavy":4, "dragonRestraints":6, "handcuffer": 10, "leathercuffsSpell": 8
+			},
+			["LeatherCuffs", "Leather"],
+			["Metal"],
+			-5,
+			{
+				Color: "#999999",
+			},
+			[],
+			{
+				Struggle: 0.6,
+				Cut: 0.3,
+				Remove: 0.05,
+				Pick: 0.05,
+			},
+			{
+			},{
+				Struggle: 0.6,
+				Cut: 0.3,
+				Remove: 0.05,
+				Pick: 0.05,
+			},
+			{
+			}, {
+				BaseMetal: {"gamma":1.3,"saturation":1,"contrast":1.2166666666666668,"brightness":0.4666666666666667,"red":1,"green":1,"blue":1,"alpha":1},
+			}, 6, false,
+			{
+				"ItemArms": "LeatherCuffs",
+				"ItemLegs": "LeatherLegCuffs",
+				"ItemFeet": "LeatherAnkleCuffs",
+			},
+			{
+				"ItemArms": "ShacklesArms",
+				"ItemLegs": "ShacklesThigh",
+				"ItemFeet": "ShacklesAnkles",
+			},
+		);
+
+		KDAddCuffVariants(
+			"Template",
+			"Asylum",
+			"",
+			"nurseRestraints",
+			{
+				"nurseCuffRestraints": 5, "leathercuffsSpell": 3
+			},
+			["Asylum", "LeatherCuffs", "Leather"],
+			["Metal"],
+			-3,
+			{
+				Color: "#554033",
+			},
+			[],
+			{
+				Struggle: 0.35,
+				Cut: 0.2,
+				Remove: -0.05,
+				Pick: -0.05,
+			},
+			{
+			},
+			{
+				Struggle: 0.35,
+				Cut: 0.15,
+				Remove: 0.00,
+				Pick: -0.05,
+			},
+			{
+			}, {
+				BaseMetal: {"gamma":1.3,"saturation":1,"contrast":1.2166666666666668,"brightness":0.4666666666666667,"red":1.6666666666666665,"green":1.25,"blue":1,"alpha":1},
+			}, 6, false,
+			{
+				"ItemArms": "LeatherCuffs",
+				"ItemLegs": "LeatherLegCuffs",
+				"ItemFeet": "LeatherAnkleCuffs",
+			},
+			{
+				"ItemArms": "ShacklesArms",
+				"ItemLegs": "ShacklesThigh",
+				"ItemFeet": "ShacklesAnkles",
+			},
+		);
+
+		KDAddCuffVariants(
+			"Template",
+			"Scale",
+			"",
+			"scaleCuffs",
+			{
+				"dragonRestraints":4
+			},
+			["Scale", "LeatherCuffs", "Leather"],
+			["Metal"],
+			-2,
+			{
+				Color: "#ff5555",
+			},
+			[],
+			{
+				Struggle: 0.3,
+				Cut: 0.15,
+				Remove: 0.00,
+				Pick: 0.00,
+			},
+			{
+			},
+			{
+				Struggle: 0.3,
+				Cut: 0.2,
+				Remove: 0.00,
+				Pick: 0.00,
+			},
+			{
+			}, {
+				BaseMetal: {"gamma":1,"saturation":1,"contrast":1.6166666666666665,"brightness":1,"red":1.7999999999999998,"green":0.8666666666666667,"blue":0.8666666666666667,"alpha":1},
+			}, 6, false,
+			{
+				"ItemArms": "LeatherCuffs",
+				"ItemLegs": "LeatherLegCuffs",
+				"ItemFeet": "LeatherAnkleCuffs",
+			},
+			{
+				"ItemArms": "ShacklesArms",
+				"ItemLegs": "ShacklesThigh",
+				"ItemFeet": "ShacklesAnkles",
+			},
+		);
+
+
 
 		KDAddCuffVariants(
 			"Template",
 			"Obsidian",
 			"",
 			"obsidian",
+			{},
 			["Obsidian"],
 			[],
 			-1,
@@ -2747,6 +2837,14 @@ const KinkyDungeonRestraints = [
 				Cut: -0.05,
 				Remove: 0.05,
 				Pick: 0.05,
+			},
+			{
+			},
+			{
+				Struggle: 0.1,
+				Cut: -0.05,
+				Remove: 0.0,
+				Pick: 0.0,
 			},
 			{
 			}, {

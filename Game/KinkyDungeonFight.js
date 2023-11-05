@@ -19,7 +19,7 @@ let KinkyDungeonBlockMissChancePerBlind = 0.1; // Max 3
 let KinkyDungeonMissChancePerSlow = 0.1; // Max 3
 KDMapData.Bullets = []; // Bullets on the game board
 /**
- * @type {Map<string, {end: boolean, temporary: boolean, spin: number, spinAngle: number, name: string, size: number, spriteID: string, xx:number, yy:number, visual_x: number, visual_y: number, aoe?: boolean, updated: boolean, vx: number, vy: number, scale: number, alpha: number, delay: number}>}
+ * @type {Map<string, {end: boolean, temporary: boolean, zIndex: number, spin: number, spinAngle: number, name: string, size: number, spriteID: string, xx:number, yy:number, visual_x: number, visual_y: number, aoe?: boolean, updated: boolean, vx: number, vy: number, scale: number, alpha: number, delay: number}>}
  */
 let KinkyDungeonBulletsVisual = new Map(); // Bullet sprites on the game board
 let KinkyDungeonBulletsID = {}; // Bullets on the game board
@@ -1470,7 +1470,9 @@ function KinkyDungeonUpdateSingleBulletVisual(b, end, delay) {
 		if (visy == undefined) visy = b.yy;
 
 		let temp = (!b.vx && !b.vy && b.time <= 1 && !b.bullet.hit);
-		KinkyDungeonBulletsVisual.set(b.spriteID, {end: end, temporary: temp, spin: b.bullet.bulletSpin, spinAngle: spinAngle, name: b.bullet.name, spriteID: b.spriteID, size: b.bullet.width ? b.bullet.width : 1, aoe: (b.bullet.spell && b.bullet.spell.aoe) ? b.bullet.spell.aoe : undefined, vx: b.vx, vy: b.vy, xx: b.xx, yy: b.yy, visual_x: visx, visual_y: visy, updated: true, scale: scale, alpha: alpha, delay: dd});
+		let zIndex = (b.vx == 0 && b.vy == 0) ? 2 : 0;
+		zIndex += b.bullet.spell?.power || 0;
+		KinkyDungeonBulletsVisual.set(b.spriteID, {end: end, zIndex: zIndex, temporary: temp, spin: b.bullet.bulletSpin, spinAngle: spinAngle, name: b.bullet.name, spriteID: b.spriteID, size: b.bullet.width ? b.bullet.width : 1, aoe: (b.bullet.spell && b.bullet.spell.aoe) ? b.bullet.spell.aoe : undefined, vx: b.vx, vy: b.vy, xx: b.xx, yy: b.yy, visual_x: visx, visual_y: visy, updated: true, scale: scale, alpha: alpha, delay: dd});
 	}
 }
 
@@ -2156,20 +2158,22 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
 						tint: string2hex(t.color || "#ff5555"),
-						zIndex: 1.31,
-						//alpha: 0.75,
+						zIndex: -0.1,
+						alpha: 0.5,
 					});
-				KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b" + t.color, KinkyDungeonRootDirectory + "WarningBacking.png",
+				/*KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b" + t.color, KinkyDungeonRootDirectory + "WarningBacking.png",
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
 						tint: string2hex(t.color || "#ff5555"),
 						zIndex: -0.2,
-					});
-				KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b_h", KinkyDungeonRootDirectory + "WarningBackingHighlight" + ".png",
+						alpha: 0.5,
+					});*/
+				/*KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b_h", KinkyDungeonRootDirectory + "WarningBackingHighlight" + ".png",
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
 						zIndex: -0.21,
-					});
+						alpha: 0.5,
+					});*/
 			}
 		}
 
@@ -2200,7 +2204,7 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					bullet.size*scale*KinkyDungeonGridSizeDisplay,
 					(!bullet.vy && !bullet.vx) ? bullet.spinAngle : bullet.spinAngle + Math.atan2(bullet.vy, bullet.vx), {
 						alpha : alpha,
-						zIndex: -0.01,
+						zIndex: (bullet.zIndex || 0),
 					}, true);
 			}
 			bullet.delay = undefined;

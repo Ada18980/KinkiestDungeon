@@ -2817,6 +2817,7 @@ let KinkyDungeonEnemies = [
 		squeeze: true,
 		nonDirectional: true, kite: 1.5,
 		spells: ["LockBullet"], castWhileMoving: true, projectileTargeting: true,
+		spellCooldownMod: 0, spellCooldownMult: 1,
 		visionRadius: 5.5, visionSummoned: 12, maxhp: 10, minLevel: 3, weight:0, movePoints: 2,
 		stamina: 5,
 		sprintspeed: 2.0,
@@ -3425,6 +3426,14 @@ let KinkyDungeonEnemies = [
 		},
 		stamina: 4,
 		unlockCommandLevel: 3, unlockCommandCD: 7,
+		Magic: {
+			castCooldownUnique: {
+				FuukaOrb: 12,
+			},
+			priority: {
+				FuukaOrb: 10,
+			},
+		},
 		spells: ["ZombieOrb", "ManyOrbs", "SummonZombies", "EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 1.5, projectileAttack: true, accuracy: 0.7, noChannel: true,
 		visionRadius: 8, maxhp: 80, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "White",
@@ -3437,9 +3446,17 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 7, color: "#ffffff"},
 		],
+		Magic: {
+			castCooldownUnique: {
+				FuukaOrbMulti: 12,
+			},
+			priority: {
+				FuukaOrbMulti: 10,
+			},
+		},
 		stamina: 6,
 		unlockCommandLevel: 3, unlockCommandCD: 7,
-		spells: ["ZombieOrb", "ManyOrbs", "SummonMikoGhosts", "SummonZombies", "EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 0.85, noChannel: true,
+		spells: ["ZombieOrb", "ManyOrbs", "SummonMikoGhosts", "SummonZombies", "EnemyCM_self", "FuukaOrbMulti"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 0.85, noChannel: true,
 		visionRadius: 12, maxhp: 45, minLevel:0, weight:-1000, movePoints: 1, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "Purple",
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "BlueKey", weight: 10}], ondeath: [{type: "dialogue", dialogue:"FuukaWin", click: true}]},

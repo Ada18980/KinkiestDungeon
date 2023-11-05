@@ -3100,10 +3100,40 @@ let KDDialogue = {
 				enemy.hostile = 0;
 				enemy.ceasefire = 4;
 				KinkyDungeonSetFlag("BossUnlocked", -1);
+				KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeDefeat"]);
 			}
 			return false;
 		},
 		options: {
+			"Magic": { gagDisabled: true,
+				playertext: "Default", response: "Default",
+				options: {
+					"Continue1": {
+						playertext: "FuukaLose_Continue1", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue2": {
+						playertext: "FuukaLose_Continue2", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue3": {
+						playertext: "FuukaLose_Continue3", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+				}
+			},
 			"Accept": { gag: true,
 				playertext: "Default", response: "Default",
 				options: {

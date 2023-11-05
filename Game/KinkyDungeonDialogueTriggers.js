@@ -175,7 +175,9 @@ let KDDialogueTriggers = {
 	//"GhostSell": KDShopTrigger("GhostSell"),
 	//"WolfgirlSell": KDShopTrigger("WolfgirlSell"),
 	"Fuuka": KDBossTrigger("Fuuka", ["Fuuka1", "Fuuka2"]),
-	"FuukaLose": KDBossLose("FuukaLose", ["Fuuka1", "Fuuka2"], ["mikoRestraints"]),
+	"FuukaLose": KDBossLose("FuukaLose", ["Fuuka1", "Fuuka2"], undefined, () => {
+		return KinkyDungeonSlowLevel > 9; // Player immobilized
+	}),
 	"DollmakerLose1": KDBossLose("DollmakerLose", ["DollmakerBoss1"], ["controlharness", "dollmakerrestraints", "leashing"]),
 	"DollmakerLose2": KDBossLose("DollmakerLose", ["DollmakerBoss2", "DollmakerBoss3"], ["controlharness", "cyberdollrestraints", "dollmakerrestraints"]),
 	"Dollmaker": KDBossTrigger("Dollmaker", ["DollmakerBoss1", "DollmakerBoss2", "DollmakerBoss3"]),
@@ -286,7 +288,7 @@ function KDBossTrigger(name, enemyName) {
  * @param {string[]} tags
  * @returns {KinkyDialogueTrigger}
  */
-function KDBossLose(name, enemyName, tags) {
+function KDBossLose(name, enemyName, tags, condition) {
 	return {
 		dialogue: name,
 		prerequisite: (enemy, dist, AIData) => {
@@ -295,7 +297,7 @@ function KDBossLose(name, enemyName, tags) {
 				&& !(KDGameData.SleepTurns > 0)
 				&& enemyName.includes(enemy.Enemy.name)
 				&& !KinkyDungeonFlags.has("BossUnlocked")
-				&& !KinkyDungeonHasWill(0.1)
+				&& ((!condition && !KinkyDungeonHasWill(0.1)) || (condition && condition()))
 				&& (!tags || !KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint])));
 		},
 		weight: (enemy, dist) => {
