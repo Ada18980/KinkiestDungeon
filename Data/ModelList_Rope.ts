@@ -22,6 +22,7 @@ AddModel({
 			DisplacementSprite: "ArmStrap",
 			DisplacementMorph: {Crossed:"Crossed"},
 			DisplaceLayers: ToMap(["Rope1"]),
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -38,6 +39,7 @@ AddModel({
 			Poses: ToMap(["Boxtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -61,6 +63,7 @@ AddModel({
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm1Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -83,15 +86,23 @@ AddModel({
 		/*{ Name: "Arm1Over", Layer: "StrapsUnderbustOver", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie"]),
 		},*/
+		// For wristtie only
+		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
+			Poses: ToMap(["Wristtie"]),
+			DisplacementSprite: "Arm1Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
+		},
 		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
 			DisplacementSprite: "Arm2Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
+			InheritColor: "Rope",
 		},
 		{ Name: "ForeArm2", Layer: "ForeArmBondageLeft", Pri: 0,
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm2Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -119,14 +130,17 @@ AddModel({
 			DisplacementSprite: "ArmHarnessSquish",
 			DisplaceLayers: ToMap(["Rope1"]),
 			Invariant: true,
+			InheritColor: "Rope",
 		},
 		{ Name: "ArmStrapHarness", Layer: "ChestStraps", Pri: -2,
 			Poses: ToMap(["Crossed"]),
 			MorphPoses: {Crossed:"Crossed"},
+			InheritColor: "Rope",
 		},
 		{ Name: "ArmHarnessUp", Sprite: "ArmHarness", Layer: "ChestStraps", Pri: -1,
 			Poses: ToMap([...ARMPOSES]),
 			Invariant: true,
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -146,6 +160,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Front"]),
 			DisplacementSprite: "CuffsSquish",
 			DisplaceLayers: ToMap(["RopeFore"]),
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -162,6 +177,7 @@ AddModel({
 			Invariant: true,
 			DisplacementSprite: "BeltSquish",
 			DisplaceLayers: ToMap(["RopeCalf"]),
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -181,16 +197,19 @@ AddModel({
 			DisplacementInvariant: true,
 			DisplacementSprite: "HarnessSquish",
 			DisplaceLayers: ToMap(["RopeTorso"]),
+			InheritColor: "Rope",
 		},
 		{ Name: "HarnessLower", Layer: "HarnessMid", Pri: 0,
 			Invariant: true,
 			DisplacementInvariant: true,
 			DisplacementSprite: "HarnessSquish",
 			DisplaceLayers: ToMap(["RopeTorso"]),
+			InheritColor: "Rope",
 		},
 		{ Name: "HarnessLowerStrap", Layer: "HarnessMid", Pri: 0,
 			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			Invariant: true,
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -209,11 +228,13 @@ AddModel({
 			DisplacementInvariant: true,
 			DisplacementSprite: "CrotchropeSquish",
 			DisplaceLayers: ToMap(["RopeTorso"]),
+			InheritColor: "Rope",
 
 		},
 		{ Name: "CrotchropeStrap", Layer: "HarnessMid", Pri: 0,
 			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			Invariant: true,
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -231,6 +252,7 @@ AddModel({
 			Poses: ToMap(["Closed"]),
 			CrossHideOverride: true,
 			HideOverrideLayerMulti: ["ToeTie"],
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -251,6 +273,7 @@ AddModel({
 			DisplaceLayers: ToMap(["RopeCalf"]),
 			AppendPose: {EncaseFeet: "Over"},
 			NoAppendDisplacement: true,
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -277,6 +300,7 @@ AddModel({
 			DisplaceLayers: ToMap(["RopeCalf"]),
 			AppendPose: {EncaseAnkles: "Over"},
 			NoAppendDisplacement: true,
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -290,6 +314,7 @@ AddModel(GetModelWithExtraLayers("RopeAnkles2", "RopeAnkles1", [
 		DisplaceLayers: ToMap(["RopeCalf"]),
 		AppendPose: {EncaseAnkles: "Over"},
 		NoAppendDisplacement: true,
+		InheritColor: "Rope",
 	},
 ], "RopeHarness", false));
 
@@ -303,6 +328,7 @@ AddModel(GetModelWithExtraLayers("RopeAnkles3", "RopeAnkles2", [
 		DisplaceLayers: ToMap(["RopeCalf"]),
 		AppendPose: {EncaseAnkles: "Over"},
 		NoAppendDisplacement: true,
+		InheritColor: "Rope",
 	},
 ], "RopeHarness", false));
 
@@ -326,6 +352,7 @@ AddModel({
 			DisplaceLayers: ToMap(["RopeThighs"]),
 			AppendPose: {EncaseLegs: "Over"},
 			NoAppendDisplacement: true,
+			InheritColor: "Rope",
 		},
 	])
 });
@@ -340,6 +367,7 @@ AddModel(GetModelWithExtraLayers("RopeLegs2", "RopeLegs1", [
 		DisplaceLayers: ToMap(["RopeThighs"]),
 		AppendPose: {EncaseLegs: "Over"},
 		NoAppendDisplacement: true,
+		InheritColor: "Rope",
 	},
 ], "RopeHarness", false));
 
@@ -354,5 +382,6 @@ AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
 		DisplaceLayers: ToMap(["RopeThighs"]),
 		AppendPose: {EncaseLegs: "Over"},
 		NoAppendDisplacement: true,
+		InheritColor: "Rope",
 	},
 ], "RopeHarness", false));

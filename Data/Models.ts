@@ -202,6 +202,15 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		MC.Containers.delete(containerID);
 		MC.ContainersDrawn.delete(containerID);
 		refreshfilters = true;
+		if (KDGlobalFilterCacheRefresh) {
+			KDGlobalFilterCacheRefresh = false;
+			for (let fc of KDAdjustmentFilterCache.values()) {
+				for (let f of fc) {
+					f.destroy();
+				}
+			}
+			KDAdjustmentFilterCache.clear();
+		}
 	}
 	let created = false;
 	if (!MC.Containers.get(containerID)) {
@@ -504,9 +513,14 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				}
 
 				let fh = m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name]) : "") : "";
-				if (refreshfilters) {
+				/*if (refreshfilters) {
+					if (KDAdjustmentFilterCache.get(fh)) {
+						for (let f of KDAdjustmentFilterCache.get(fh)) {
+							f.destroy();
+						}
+					}
 					KDAdjustmentFilterCache.delete(fh);
-				}
+				}*/
 				let filter = m.Filters ? (m.Filters[l.InheritColor || l.Name] ?
 					(KDAdjustmentFilterCache.get(fh) || [new PIXI.filters.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])])
 					: undefined) : undefined;
