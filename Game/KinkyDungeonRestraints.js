@@ -4311,19 +4311,20 @@ let KDCuffParts = {
  * @param {string} idSuffix - The suffix to add to the cuff family
  * @param {string} ModelSuffix - The suffix for the cuff model to use
  * @param {string} tagBase - The base for the enemy tags
+ * @param {Record<string, number>} extraTags - extra enemy tags
  * @param {string[]} allTag - adds a tag to all of the cuffs if specified
- * @param {number} basePower - Base opower level
+ * @param {number} addPower - Base opower level
  * @param {KDRestraintPropsBase} properties - Restraint properties to override
  * @param {KinkyDungeonEvent[]} extraEvents - Extra events to add on to the base cuffs
- * @param {KDEscapeChanceList} baseStruggle - Increase to base struggle amounts
- * @param {KDEscapeChanceList} multStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {KDEscapeChanceList} addStruggle - Increase to base struggle amounts
+ * @param {KDEscapeChanceList} premultStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
  * @param {Record<string, LayerFilter>} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * @param {boolean} [noGeneric] - does not add this to tagBaseRestraints, only tagBaseCuffs
  * @param {Record<string, string>} [CuffAssets] - mapping of Group to Assets
  * @param {Record<string, string>} [CuffModels] - mapping of Group to Models
  * param {{name: string, description: string}} strings - Generic strings for the cuff type
  */
-function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], baseStruggle, multStruggle, Filters, baseWeight = 10, noGeneric, CuffAssets = {}, CuffModels = {}) {
+function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, allTag, removeTag, addPower, properties, extraEvents = [], addStruggle, premultStruggle, addStruggleLink, premultStruggleLink, Filters, baseWeight = 10, noGeneric, CuffAssets = {}, CuffModels = {}) {
 	for (let part of Object.entries(KDCuffParts)) {
 		let cuffPart = part[0];
 		let cuffInfo = part[1];
@@ -4339,7 +4340,13 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 					enemyTags[tagBase + ("Restraints")] = baseWeight;
 				enemyTags[tagBase + ("LessCuffs")] = 0.1 - baseWeight;
 				enemyTags[tagBase + ("NoCuffs")] = -1000;
+				if (extraTags) {
+					for (let t of Object.entries(extraTags)) {
+						enemyTags[t[0]] = t[1];
+					}
+				}
 			}
+
 			/** @type {Record<string, number>} */
 			let enemyTagsMult = {};
 			if (cuffInfo.base)
@@ -4352,7 +4359,7 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 			let props = {
 				Model: CuffModels[origRestraint.Group] || (origRestraint.Model + ModelSuffix + (cuffInfo.ModelSuffix || "")),
 				Asset: CuffAssets[origRestraint.Group] || (origRestraint.Asset),
-				power: origRestraint.power + basePower,
+				power: origRestraint.power + addPower,
 				shrine: shrine,
 				enemyTags: enemyTags,
 				enemyTagsMult: enemyTagsMult,
@@ -4367,14 +4374,27 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 					props.Filters[layer] = Object.assign({}, Filters[layer]);
 				}
 			}
-			if (baseStruggle) {
-				for (let type of Object.entries(baseStruggle)) {
-					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
+			if (cuffInfo.base) {
+				if (premultStruggle) {
+					for (let type of Object.entries(premultStruggle)) {
+						props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) * type[1]))/10000;
+					}
 				}
-			}
-			if (multStruggle) {
-				for (let type of Object.entries(multStruggle)) {
-					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) * type[1]))/10000;
+				if (addStruggle) {
+					for (let type of Object.entries(addStruggle)) {
+						props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
+					}
+				}
+			} else {
+				if (premultStruggleLink) {
+					for (let type of Object.entries(premultStruggleLink)) {
+						props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) * type[1]))/10000;
+					}
+				}
+				if (addStruggleLink) {
+					for (let type of Object.entries(addStruggleLink)) {
+						props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
+					}
 				}
 			}
 			let newRestraint = KinkyDungeonCloneRestraint(CopyOf + cuffPart, idSuffix + cuffPart, Object.assign(props, properties));
@@ -4395,12 +4415,12 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
  * @param {number} basePower - Base opower level
  * @param {KDRestraintPropsBase} properties - Restraint properties to override
  * @param {KinkyDungeonEvent[]} extraEvents - Extra events to add on
- * @param {KDEscapeChanceList} baseStruggle - Increase to base struggle amounts
- * @param {KDEscapeChanceList} multStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
- * @param {LayerFilter} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {KDEscapeChanceList} addStruggle - Increase to base struggle amounts
+ * @param {KDEscapeChanceList} premultStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {Record<string, LayerFilter>} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], baseStruggle, multStruggle, Filters, baseWeight = 10) {
+function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 10) {
 	for (let part of Object.entries(KDRopeParts)) {
 		let ropePart = part[0];
 		// Only if we have something to copy
@@ -4428,21 +4448,21 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 				enemyTagsMult: enemyTagsMult,
 				events: [...extraEvents, ...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
-				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : undefined,
+				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
 			};
 			if (Filters && props.Filters) {
-				for (let layer of Object.keys(props.Filters)) {
-					props.Filters[layer] = Object.assign({}, Filters);
+				for (let layer of Object.keys(Filters)) {
+					props.Filters[layer] = Object.assign({}, Filters[layer]);
 				}
 			}
-			if (baseStruggle) {
-				for (let type of Object.entries(baseStruggle)) {
-					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
-				}
-			}
-			if (multStruggle) {
-				for (let type of Object.entries(multStruggle)) {
+			if (premultStruggle) {
+				for (let type of Object.entries(premultStruggle)) {
 					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) * type[1]))/10000;
+				}
+			}
+			if (addStruggle) {
+				for (let type of Object.entries(addStruggle)) {
+					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
 				}
 			}
 			let newRestraint = KinkyDungeonCloneRestraint(CopyOf + ropePart, idSuffix + ropePart, Object.assign(props, properties));
@@ -4463,12 +4483,12 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
  * @param {number} basePower - Base opower level
  * @param {KDRestraintPropsBase} properties - Restraint properties to override
  * @param {KinkyDungeonEvent[]} extraEvents - Extra events to add on
- * @param {KDEscapeChanceList} baseStruggle - Increase to base struggle amounts
- * @param {KDEscapeChanceList} multStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
- * @param {LayerFilter} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {KDEscapeChanceList} addStruggle - Increase to base struggle amounts
+ * @param {KDEscapeChanceList} premultStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {Record<string, LayerFilter>} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], baseStruggle, multStruggle, Filters, baseWeight = 100) {
+function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 100) {
 	for (let part of Object.entries(KDSlimeParts)) {
 		let restraintPart = part[0];
 		// Only if we have something to copy
@@ -4491,21 +4511,21 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 				enemyTags: enemyTags,
 				events: [...extraEvents, ...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
-				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : undefined,
+				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
 			};
 			if (Filters && props.Filters) {
-				for (let layer of Object.keys(props.Filters)) {
-					props.Filters[layer] = Object.assign({}, Filters);
+				for (let layer of Object.keys(Filters)) {
+					props.Filters[layer] = Object.assign({}, Filters[layer]);
 				}
 			}
-			if (baseStruggle) {
-				for (let type of Object.entries(baseStruggle)) {
-					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
-				}
-			}
-			if (multStruggle) {
-				for (let type of Object.entries(multStruggle)) {
+			if (premultStruggle) {
+				for (let type of Object.entries(premultStruggle)) {
 					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) * type[1]))/10000;
+				}
+			}
+			if (addStruggle) {
+				for (let type of Object.entries(addStruggle)) {
+					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
 				}
 			}
 			let newRestraint = KinkyDungeonCloneRestraint(CopyOf + restraintPart, idSuffix + restraintPart, Object.assign(props, properties));
@@ -4695,7 +4715,7 @@ let KDRestraintDebugLog = [];
  * @param {item} item
  */
 function KDGetItemName(item) {
-	let base = "";
+	let base = TextGet("KinkyDungeonInventoryItem" + item.name);
 	let variant = null;
 	switch(item.type) {
 		case Restraint:

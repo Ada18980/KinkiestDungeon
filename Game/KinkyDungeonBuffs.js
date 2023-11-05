@@ -136,7 +136,7 @@ function KinkyDungeonRemoveBuffsWithTag(entity, tags) {
 	let list = null;
 	if (entity && entity.player) {
 		list = KinkyDungeonPlayerBuffs;
-	} else if (entity.buffs) list = entity.buffs;
+	} else if (entity?.buffs) list = entity.buffs;
 	if (list)
 		for (const [key, value] of Object.entries(list)) {
 			if (value) {

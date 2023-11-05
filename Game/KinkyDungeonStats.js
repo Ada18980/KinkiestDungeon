@@ -1412,7 +1412,7 @@ function KinkyDungeonCanKneel() {
 
 function KinkyDungeonCalculateSlowLevel(delta) {
 	KinkyDungeonSlowLevel = 0;
-	if (KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).immobile;})) {KinkyDungeonSlowLevel += 100; KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);}
+	if (KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).immobile;})) {KinkyDungeonSlowLevel += 100;}
 	else {
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if ((KDRestraint(inv).blockfeet || KDRestraint(inv).hobble)) {
@@ -1439,6 +1439,9 @@ function KinkyDungeonCalculateSlowLevel(delta) {
 	KinkyDungeonSlowLevel = Math.max(0, KinkyDungeonSlowLevel);
 	if (delta > 0 && KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevelEnergyDrain")) KDGameData.AncientEnergyLevel =
 		Math.max(0, KDGameData.AncientEnergyLevel - Math.max(0, origSlowLevel - KinkyDungeonSlowLevel) * KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevelEnergyDrain"));
+	if (KinkyDungeonSlowLevel > 9) {
+		KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);
+	}
 }
 /**
  * Returns the total level of gagging, 1.0 or higher meaning "fully gagged" and 0.0 being able to speak.

@@ -656,6 +656,16 @@ interface enemy extends KDHasTags {
 		requiredItems?: string[]
 	},
 
+
+
+	/** Magical properties */
+	Magic?: {
+		/** Specific cooldown for each spell. For example, Fuuka's FuukaOrb can only be done every 10 turns */
+		castCooldownUnique?: Record<string, number>,
+		/** Priority for a spell choice */
+		priority?: Record<string, number>,
+	},
+
 	/** Security levels for accessing chastity */
 	Security?: {
 		/** Key security level, for low-tech non-mage factions */
@@ -1434,6 +1444,7 @@ interface entity {
 	ambushtrigger?: boolean,
 	castCooldown?: number,
 	castCooldownSpecial?: number,
+	castCooldownUnique?: Record<string, number>,
 	specialCharges?: number,
 	usingSpecial?: boolean,
 	ignore?: boolean,
@@ -1663,6 +1674,7 @@ interface spell {
 	hide?: boolean,
 
 	shotgunCount?: number,
+	shotgunFan?: boolean,
 	shotgunSpread?: number,
 	shotgunDistance?: number,
 	shotgunSpeedBonus?: number,

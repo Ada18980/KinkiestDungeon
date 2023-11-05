@@ -883,6 +883,7 @@ let KDMarkAsCache = [];
 let lastGlobalRefresh = 0;
 let GlobalRefreshInterval = 2000;
 let KDGlobalRefresh = false;
+let KDGlobalFilterCacheRefresh = true;
 
 let KDLogoStartTime = 0;
 let KDLogoEndTime = 2500;
@@ -905,6 +906,7 @@ function KinkyDungeonRun() {
 			lastGlobalRefresh = CommonTime();
 			//console.log("refresh");
 			refresh = true;
+			KDGlobalFilterCacheRefresh = true;
 		}
 
 		for (let MC of KDCurrentModels.values()) {
@@ -3106,6 +3108,8 @@ function KinkyDungeonClick() {
 }
 
 function KDClick() {
+	//let origState = KinkyDungeonState;
+	//let origDrawState = KinkyDungeonDrawState;
 	if (KinkyDungeonState == "Logo") KinkyDungeonState = "Consent";
 	else
 	if (KinkyDungeonState == "Intro") {
@@ -3128,6 +3132,10 @@ function KDClick() {
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 	}
 	if (KinkyDungeonReplaceConfirm > 0) KinkyDungeonReplaceConfirm -= 1;
+
+	//if (origState != KinkyDungeonState || origDrawState != origDrawState) {
+	lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 100;
+	//}
 }
 
 /**
