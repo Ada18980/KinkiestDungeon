@@ -1880,6 +1880,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "FuukaOrb",  bindType: "Magic", color: "#ffffff", sfx: "Evil",
 		hideWarnings: true,
 		minRange: 0,
+		hitSpin: 0.25,
 		noDirectionOffset: true,
 		manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
 		power: 8, delay: 0, range: 50, damage: "arcane", speed: 0.5,
@@ -1889,10 +1890,27 @@ let KinkyDungeonSpellListEnemies = [
 		hideWarnings: true,
 		shotgunCount: 3, shotgunDistance: 6, shotgunSpread: 1, shotgunSpeedBonus: 0, shotgunFan: true,
 		minRange: 0,
+		hitSpin: 0.25,
 		noDirectionOffset: true,
 		manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
 		power: 8, delay: 0, range: 50, damage: "arcane", speed: 0.5,
 		playerEffect: {name: "FuukaOrb", type: "Purple", count: 1, time: 30, power: 4, damage: "arcane"}},
+
+	{enemySpell: true, name: "ShadowGraspMulti", bindType: "Magic", color: "#aa55ff", sfx: "Evil",
+		bulletColor: 0xaa55ff,
+		bulletLight: 4,
+		bulletSpin: 0.25,
+		hitSpin: 0.25,
+		castCondition: "notImmobile",
+		hideWarnings: true,
+		noTerrainHit: true,
+		shotgunCount: 5, shotgunDistance: 6, shotgunSpread: 2, shotgunSpeedBonus: 0, shotgunFan: true,
+		minRange: 0,
+		noDirectionOffset: true,
+		manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
+		power: 2, time: 12, delay: 0, range: 50, damage: "ice", speed: 0.5,
+		playerEffect: {name: "ShadowSeal", type: "Purple", count: 1, time: 30, power: 4, damage: "ice"}},
+
 
 	{enemySpell: true, name: "ShadowBolt",  bindType: "Slime", color: "#6a15fa", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ShadowBolt", count: 1, time: 3, power: 3, damage: "cold"}},
 	{enemySpell: true, name: "ObsidianBolt",  bindType: "Metal", color: "#ff5277", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ObsidianBolt", count: 1, time: 3, power: 3, damage: "cold"}},
@@ -2455,6 +2473,10 @@ let KDMagicDefs = {
 
 /** @type {Record<string, (enemy: entity, target: entity, spell?: spell) => boolean>} */
 let KDCastConditions = {
+	"notImmobile": (enemy, target) => {
+		if (KinkyDungeonSlowLevel < 10) return true;
+		return false;
+	},
 	"Windup_Start": (enemy, target) => {
 		if (!KDEnemyHasFlag(enemy, "windup")) return true;
 		return false;
