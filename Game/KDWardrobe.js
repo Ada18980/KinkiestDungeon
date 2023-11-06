@@ -201,6 +201,8 @@ function KDDrawColorSliders(X, Y, C, Model) {
 				Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16)}${
 				Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16)}${
 				Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16)}`);
+			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+			ForceRefreshModels(C);
 		}
 		YY += 50;
 	}
@@ -221,6 +223,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 					if (!Model.Filters) Model.Filters = {};
 					if (!Model.Filters[KDCurrentLayer])
 						Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
+					if (Model.Filters[KDCurrentLayer].alpha < 0.001) Model.Filters[KDCurrentLayer].alpha = 0.001;
 					Model.Filters[KDCurrentLayer].red = r;
 					Model.Filters[KDCurrentLayer].green = g;
 					Model.Filters[KDCurrentLayer].blue = b;

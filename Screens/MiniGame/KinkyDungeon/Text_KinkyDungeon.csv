@@ -12668,3 +12668,7 @@ KinkyDungeonFuukaOrb1,"Fuuka's magic begins sealing your power!"
 KinkyDungeonFuukaOrb2,"Fuuka's magic makes you sluggish!!"
 KinkyDungeonFuukaOrb3,"Fuuka's magic renders you helpless!!!"
 KinkyDungeonBuffFuukaOrb,"Fuuka's magic is restricting you!"
+
+KinkyDungeonSpellShadowGraspMulti,Sealing Shadows
+KinkyDungeonBuffShadowSeal,"Shadowy magic is restricting you!"
+KDShadowSeal,"A powerful seal holds you in place temporarily!!!"

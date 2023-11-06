@@ -427,6 +427,20 @@ let KDPlayerEffects = {
 		}, );
 		return {sfx: "Evil", effect: true};
 	},
+	"ShadowSeal": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		KinkyDungeonApplyBuffToEntity(target, {
+			id: "ShadowSeal",
+			duration: 10,
+			tags: ["removeNewMap", "removeDefeat"],
+			power: 100,
+			type: "SlowLevel",
+			aura: "#ff6767",
+			buffSprite: true,
+		});
+		KinkyDungeonMakeNoise(10, target.x, target.y);
+		KinkyDungeonSendTextMessage(8, TextGet("KDShadowSeal"), "#aa55ff", 4);
+		return {sfx: "Evil", effect: true};
+	},
 	"SlimeEngulf": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let restraintAdd = KinkyDungeonGetRestraint({tags: ["slimeRestraintsRandom"]}, MiniGameKinkyDungeonLevel + playerEffect.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 		if (!restraintAdd) {

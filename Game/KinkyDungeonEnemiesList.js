@@ -2546,7 +2546,16 @@ let KinkyDungeonEnemies = [
 		effect: {
 			effect: {name: "TheShadowCurse", power: 4, count: 1},
 		},
-		spells: ["GravityPull"], spellCooldownMult: 1.4, spellCooldownMod: 0, followLeashedOnly: true, castWhileMoving: true, spellRdy: true, projectileTargeting: true,
+		spells: ["GravityPull", "ShadowGraspMulti"], spellCooldownMult: 1.4, spellCooldownMod: 0, followLeashedOnly: true, castWhileMoving: true, spellRdy: true, projectileTargeting: true,
+
+		Magic: {
+			castCooldownUnique: {
+				ShadowGraspMulti: 12,
+			},
+			priority: {
+				ShadowGraspMulti: 10,
+			},
+		},
 		nonDirectional: true,
 		stamina: 4,
 		visionRadius: 15, blindSight: 4, maxhp: 30, minLevel: 0, weight:-10, movePoints: 4, regen: 0.04, keys: true,

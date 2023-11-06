@@ -85,6 +85,7 @@ function KinkyDungeonDressSet() {
 						Property: C.Appearance[A].Property,
 						Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Model.DefaultColor ? C.Appearance[A].Model.DefaultColor : "Default"),
 						Lost: false,
+						Skirt: C.Appearance[A].Model.Group == "Skirt" || C.Appearance[A].Model.Categories.includes("Skirts"),
 					},);
 				}
 			} else {
