@@ -401,6 +401,7 @@ let KDPlayerEffects = {
 					type: "SlowLevel",
 					aura: "#ff6767",
 					buffSprite: true,
+					aurasprite: "AuraSeal",
 				});
 			}
 		}, (tt) => {
@@ -412,6 +413,7 @@ let KDPlayerEffects = {
 				type: "SlowLevel",
 				aura: "#ff6767",
 				buffSprite: true,
+				aurasprite: "AuraSeal",
 			});
 		},  (tt) => {
 
@@ -423,6 +425,7 @@ let KDPlayerEffects = {
 				type: "SlowLevel",
 				aura: "#ff6767",
 				buffSprite: true,
+				aurasprite: "AuraSeal",
 			});
 		}, );
 		return {sfx: "Evil", effect: true};
@@ -436,6 +439,7 @@ let KDPlayerEffects = {
 			type: "SlowLevel",
 			aura: "#ff6767",
 			buffSprite: true,
+			aurasprite: "AuraSeal",
 		});
 		KinkyDungeonMakeNoise(10, target.x, target.y);
 		KinkyDungeonSendTextMessage(8, TextGet("KDShadowSeal"), "#aa55ff", 4);

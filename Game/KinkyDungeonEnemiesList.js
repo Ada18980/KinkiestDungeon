@@ -3040,7 +3040,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "Dollsmith", faction: "Enemy", clusterWith: "smithdoll", bound: "FactoryDoll", playLine: "Robot", color: "#ff3388",
-		tags: KDMapInit(["leashing", "dollsmith", "doll", "opendoors", "closedoors", "jail", "jailer", "melee", "elite", "antiMagic", "glueresist", "crushresist", "electricresist", "handcuffer", "iceweakness", "blacksteelrestraints", "blacksteelcuffs", "teasetoys"]),
+		tags: KDMapInit(["leashing", "dollsmith", "doll", "opendoors", "closedoors", "jail", "jailer", "melee", "elite", "antiMagic", "glueresist", "crushresist", "electricresist", "handcuffer", "iceweakness", "blacksteelrestraints", "blacksteelCuffs", "teasetoys"]),
 		spellResist: 1.0, armor: 1.0,
 		followLeashedOnly: true, followRange: 1,
 		spells: ["RubberBolt"], spellCooldownMult: 2, spellCooldownMod: 0,
@@ -3058,7 +3058,7 @@ let KinkyDungeonEnemies = [
 			requiredItems: ["BlacksteelBelt", "BlacksteelBra"],
 		},
 		summon: [{enemy: "DollsmithDoll", range: 2.5, count: 1, strict: true}, {enemy: "DollsmithDoll", range: 2.5, count: 1, chance: 0.5, strict: true}],
-		specialCD: 6, specialAttack: "WillBind", specialRemove: "Lock", specialExtraTags: ["redLatexBasic"], specialRemoveTags: ["blacksteelrestraints", "blacksteelcuffs", "leashing", "teasetoys"],
+		specialCD: 6, specialAttack: "WillBind", specialRemove: "Lock", specialExtraTags: ["redLatexBasic"], specialRemoveTags: ["blacksteelrestraints", "blacksteelCuffs", "leashing", "teasetoys"],
 		specialAttackPoints: 2, specialWidth: 3, specialMsg: true, specialCondition: "canRestrainWithExtra", specialCDonAttack: true, specialIgnoreStam: true,
 		attackLock: "Red",
 		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 14, minLevel:3, weight:15, movePoints: 2,
