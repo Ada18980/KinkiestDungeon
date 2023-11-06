@@ -155,8 +155,9 @@ AddModel({
 	AddPose: ["Handcuffed"],
 	Layers: ToLayerMap([
 		{ Name: "Cuffs", Layer: "ForeWrists", Pri: 0,
-			Poses: ToMap(["Front"]),
-			GlobalDefaultOverride: ToMap(["Front"]),
+			Poses: ToMap(["Front", "Crossed"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "StrapsUnderbustOver"},
 			DisplacementSprite: "CuffsSquish",
 			DisplaceLayers: ToMap(["RibbonFore"]),
 			InheritColor: "Ribbon",

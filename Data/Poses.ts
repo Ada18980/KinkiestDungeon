@@ -208,13 +208,13 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 	}
 	if (KinkyDungeonIsArmsBound(false, false)) {
 		delete poses.Free;
-		if (!CheckPoseOrTags(C, "HandsFront")) {
+		if (!CheckPoseOrTags(C, "HandsFrontAllowed") && !CheckPoseOrTags(C, "HandsFront")) {
 			delete poses.Front;
 		}
-		if (!CheckPoseOrTags(C, "HandsCrossed")) {
+		if (!CheckPoseOrTags(C, "HandsCrossed") && !CheckPoseOrTags(C, "HandsCrossedAllowed")) {
 			delete poses.Crossed;
 		}
-		if (CheckPoseOrTags(C, "HandsBehind") || CheckPoseOrTags(C, "HandsFront")) {
+		if (CheckPoseOrTags(C, "HandsBehind")) {
 			delete poses.Up;
 			delete poses.Front;
 			delete poses.Crossed;
@@ -229,6 +229,8 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 			delete poses.Front;
 			delete poses.Yoked;
 			delete poses.Crossed;
+		} else if (!CheckPoseOrTags(C, "HandsUpAllowed")) {
+			delete poses.Up;
 		}
 		if (!CheckPoseOrTags(C, "Yoked")) {
 			delete poses.Yoked;

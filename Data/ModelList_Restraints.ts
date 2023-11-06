@@ -13,7 +13,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth"],
+	AddPose: ["HideMouth", "FaceGag"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 1,
 			Sprite: "Ball",
@@ -50,13 +50,53 @@ AddModel(GetModelWithExtraLayers("BallGagHarnessSecure", "BallGagHarness", [
 
 
 AddModel({
+	Name: "LargeBallGag",
+	Folder: "GagLeather",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth", "FaceBigGag"],
+	Layers: ToLayerMap([
+		{ Name: "Ball", Layer: "Gag", Pri: 1,
+			Sprite: "BigBall",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+		{ Name: "Strap", Layer: "GagStraps", Pri: 15,
+			Sprite: "BigBallStrap",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
+AddModel(GetModelWithExtraLayers("LargeBallGagHarness", "LargeBallGag", [
+	{ Name: "Harness", Layer: "GagStraps", Pri: 10,
+		Sprite: "BallHarness",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "LargeBallGag", false));
+AddModel(GetModelWithExtraLayers("LargeBallGagHarnessSecure", "LargeBallGagHarness", [
+	{ Name: "SideStrap", Layer: "GagStraps", Pri: 20,
+		Sprite: "BallSideStrap",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "LargeBallGag", false));
+
+AddModel({
 	Name: "PanelGag",
 	Folder: "GagLeather",
 	TopLevel: true,
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth"],
+	AddPose: ["HideMouth", "FaceCoverGag"],
 	Layers: ToLayerMap([
 		{ Name: "Panel", Layer: "GagFlat", Pri: 1,
 			Sprite: "Panel",
@@ -98,7 +138,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth"],
+	AddPose: ["HideMouth", "FaceCoverGag"],
 	Layers: ToLayerMap([
 		{ Name: "Muzzle", Layer: "GagFlat", Pri: 3,
 			Sprite: "Muzzle",
@@ -171,7 +211,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth"],
+	AddPose: ["HideMouth", "FaceGag"],
 	Layers: ToLayerMap([
 		{ Name: "Stuffing", Layer: "GagUnder", Pri: -100,
 			OffsetX: 942,
@@ -188,7 +228,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags", "Blindfolds", "Masks"],
-	AddPose: ["HideMouth"],
+	AddPose: ["HideMouth", "FaceCoverGag"],
 	Layers: ToLayerMap([
 		{ Name: "Face", Layer: "Mask", Pri: -50,
 			OffsetX: 942,
@@ -206,7 +246,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth"],
+	AddPose: ["HideMouth", "FaceCoverGag"],
 	Layers: ToLayerMap([
 		{ Name: "Full", Layer: "GagMuzzle", Pri: -50,
 			OffsetX: 942,
@@ -323,7 +363,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth"],
+	AddPose: ["HideMouth", "FaceCoverGag"],
 	Layers: ToLayerMap([
 		{ Name: "OTN", Layer: "GagMuzzle", Pri: -30,
 			OffsetX: 942,
@@ -343,7 +383,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth"],
+	AddPose: ["HideMouth", "FaceCoverGag"],
 	Layers: ToLayerMap([
 		{ Name: "OTM", Layer: "GagFlat", Pri: -1,
 			OffsetX: 942,

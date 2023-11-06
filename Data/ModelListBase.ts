@@ -150,6 +150,7 @@ AddModel({
 	Folder: "Body",
 	Layers: ToLayerMap([
 		{ Name: "Head", Layer: "Head", Pri: 0,
+			AppendPose: {FaceCoverGag: "", FaceBigGag: "BigGag", FaceGag: "Gag"},
 		},
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 0,
 			InheritColor: "Torso",
