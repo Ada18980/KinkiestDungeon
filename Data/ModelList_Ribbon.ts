@@ -22,6 +22,7 @@ AddModel({
 			DisplacementSprite: "ArmStrap",
 			DisplacementMorph: {Crossed:"Crossed"},
 			DisplaceLayers: ToMap(["Ribbon1"]),
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -39,6 +40,7 @@ AddModel({
 			Poses: ToMap(["Boxtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -62,6 +64,7 @@ AddModel({
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm1Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -88,11 +91,13 @@ AddModel({
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
 			DisplacementSprite: "Arm2Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
+			InheritColor: "Ribbon",
 		},
 		{ Name: "ForeArm2", Layer: "ForeArmBondageLeft", Pri: 0,
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm2Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -120,17 +125,21 @@ AddModel({
 			DisplacementSprite: "ArmHarnessSquish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
 			Invariant: true,
+			InheritColor: "Ribbon",
 		},
 		{ Name: "ArmHarnessUnderbust", Layer: "StrapsUnderbust", Pri: -2,
 			Invariant: true,
+			InheritColor: "Ribbon",
 		},
 		{ Name: "ArmStrap", Layer: "ChestStraps", Pri: -2,
 			Poses: ToMap(["Crossed"]),
 			MorphPoses: {Crossed:"Crossed"},
+			InheritColor: "Ribbon",
 		},
 		{ Name: "ArmHarnessUp", Sprite: "ArmHarness", Layer: "ChestStraps", Pri: -1,
 			Poses: ToMap([...ARMPOSES]),
 			Invariant: true,
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -150,6 +159,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Front"]),
 			DisplacementSprite: "CuffsSquish",
 			DisplaceLayers: ToMap(["RibbonFore"]),
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -166,6 +176,7 @@ AddModel({
 			Invariant: true,
 			DisplacementSprite: "BeltSquish",
 			DisplaceLayers: ToMap(["RibbonCalf"]),
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -185,16 +196,20 @@ AddModel({
 			DisplacementInvariant: true,
 			DisplacementSprite: "HarnessSquish",
 			DisplaceLayers: ToMap(["RibbonTorso"]),
+			InheritColor: "Ribbon",
 		},
 		{ Name: "HarnessMid", Layer: "HarnessMid", Pri: 0,
 			Invariant: true,
+			AppendPose: {FlattenedUnderbust: "Flattened"},
 			DisplacementInvariant: true,
 			DisplacementSprite: "HarnessSquish",
 			DisplaceLayers: ToMap(["RibbonTorso"]),
+			InheritColor: "Ribbon",
 		},
 		{ Name: "HarnessLower", Layer: "HarnessMid", Pri: 0,
 			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
+			InheritColor: "Ribbon",
 			//DisplacementInvariant: true,
 			//DisplacementSprite: "HarnessSquish",
 			//DisplaceLayers: ToMap(["RibbonTorso"]),
@@ -202,6 +217,7 @@ AddModel({
 		{ Name: "HarnessLowerStrap", Layer: "HarnessMid", Pri: 0,
 			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			Invariant: true,
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -217,6 +233,7 @@ AddModel({
 		{ Name: "Crotch", Layer: "HarnessMid", Pri: 1,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
+			InheritColor: "Ribbon",
 			DisplacementInvariant: true,
 			DisplacementSprite: "CrotchRopeSquish",
 			DisplaceLayers: ToMap(["RibbonTorso"]),
@@ -225,6 +242,7 @@ AddModel({
 		{ Name: "CrotchStrap", Layer: "HarnessMid", Pri: 0,
 			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			Invariant: true,
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -242,6 +260,7 @@ AddModel({
 			Poses: ToMap(["Closed"]),
 			CrossHideOverride: true,
 			HideOverrideLayerMulti: ["ToeTie"],
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -260,6 +279,7 @@ AddModel({
 			DisplacementSprite: "AnklesSquish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RibbonCalf"]),
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -284,6 +304,7 @@ AddModel({
 			DisplacementSprite: "Calf1Squish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RibbonCalf"]),
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -295,6 +316,7 @@ AddModel(GetModelWithExtraLayers("RibbonAnkles2", "RibbonAnkles1", [
 		DisplacementSprite: "Calf2Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RibbonCalf"]),
+		InheritColor: "Ribbon",
 	},
 ], "RibbonHarness", false));
 
@@ -306,6 +328,7 @@ AddModel(GetModelWithExtraLayers("RibbonAnkles3", "RibbonAnkles2", [
 		DisplacementSprite: "Calf3Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RibbonCalf"]),
+		InheritColor: "Ribbon",
 	},
 ], "RibbonHarness", false));
 
@@ -327,6 +350,7 @@ AddModel({
 			DisplacementSprite: "Thigh1Squish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RibbonThighs"]),
+			InheritColor: "Ribbon",
 		},
 	])
 });
@@ -339,6 +363,7 @@ AddModel(GetModelWithExtraLayers("RibbonLegs2", "RibbonLegs1", [
 		DisplacementSprite: "Thigh2Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RibbonThighs"]),
+		InheritColor: "Ribbon",
 	},
 ], "RibbonHarness", false));
 
@@ -351,5 +376,6 @@ AddModel(GetModelWithExtraLayers("RibbonLegs3", "RibbonLegs2", [
 		DisplacementSprite: "Thigh3Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RibbonThighs"]),
+		InheritColor: "Ribbon",
 	},
 ], "RibbonHarness", false));

@@ -182,6 +182,24 @@ AddModel({
 });
 
 AddModel({
+	Name: "TapeFace",
+	Folder: "GagTape",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags", "Blindfolds", "Masks"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Face", Layer: "Mask", Pri: -50,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			InheritColor: "Tape",
+		},
+	])
+});
+
+AddModel({
 	Name: "TapeFull",
 	Folder: "GagTape",
 	TopLevel: true,
@@ -209,7 +227,7 @@ AddModel({
 	Categories: ["Restraints","Gags"],
 	AddPose: ["HideMouth"],
 	Layers: ToLayerMap([
-		{ Name: "Full", Layer: "GagFlat", Pri: 0,
+		{ Name: "Wrap", Layer: "GagFlat", Pri: 0,
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,

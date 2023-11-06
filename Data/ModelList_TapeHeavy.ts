@@ -83,6 +83,21 @@ AddModel({
 		},
 	])
 });
+
+AddModel({
+	Name: "TapeHeavyBottomFull",
+	Folder: "TapeHeavy",
+	TopLevel: false,
+	Parent: "TapeHeavyBottom",
+	Restraint: true,
+	Categories: ["Restraints", "Tape"],
+	AddPose: ["FeetLinked", "EncaseTorsoLower", "EncaseLegs"],
+	Layers: ToLayerMap([
+		...GetModelLayers("TapeHeavyBottom"),
+		...GetModelLayers("TapeHeavyLegs"),
+
+	])
+});
 /*
 AddModel({
 	Name: "TapeHeavyArmLeft",
@@ -127,7 +142,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest"],
+	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest", "FlattenedUnderbust"],
 	Layers: ToLayerMap([
 		{ Name: "Top", Layer: "WrappingTorsoMid", Pri: -4,
 			Poses: ToMap(["Boxtie", "Crossed", "Wristtie"]),
@@ -174,6 +189,20 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "TapeHeavyArmsFull",
+	Folder: "TapeHeavy",
+	Parent: "TapeHeavyArms",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Tape"],
+	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest", "FlattenedUnderbust"],
+	Layers: ToLayerMap([
+		...GetModelLayers("TapeHeavyArms"),
+		...GetModelLayers("TapeFullArms"),
+	])
+});
+
 
 AddModel({
 	Name: "TapeHeavyHandLeft",
@@ -209,5 +238,18 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Front"]),
 			InheritColor: "Tape",
 		},
+	])
+});
+AddModel({
+	Name: "TapeHeavyHands",
+	Folder: "TapeHeavy",
+	Parent: "TapeHeavyArms",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Tape"],
+	AddPose: ["EncaseHandRight", "EncaseHandLeft"],
+	Layers: ToLayerMap([
+		...GetModelLayers("TapeHeavyHandLeft"),
+		...GetModelLayers("TapeHeavyHandRight"),
 	])
 });
