@@ -123,6 +123,7 @@
         "Data/ModelList_TapeMed.ts",
         "Data/ModelList_TapeHeavy.ts",
         "Data/ModelList_TapeLight.ts",
+        "Data/ModelList_Chastity.ts",
         "Data/ModelDresses.ts",
         "Game/KDWardrobe.js",
     ],
