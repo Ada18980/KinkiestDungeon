@@ -83,15 +83,7 @@ let LAYERS_BASE = [
 	"Chestplate",
 
 	// Bondage
-	"BindArm",
-	"BindWristLeft",
-	"BindWristRight",
-	"BindArmLeft",
-	"BindArmRight",
-	"BindElbowLeft",
-	"BindElbowRight",
-	"BindHandLeft",
-	"BindHandRight",
+	"BindArms",
 
 
 
@@ -105,6 +97,7 @@ let LAYERS_BASE = [
 	"HarnessOver",
 	"BindChest",
 	"BraChest",
+	"SuitChest",
 	"Chest",
 
 	"StrapsUnderbustOver",
@@ -226,7 +219,14 @@ let LAYERS_BASE = [
 	"BeltBack",
 
 	// Left arm clothes
-	"ForeArmBondageLeft",
+
+	"BindWristLeft",
+	"BindArmLeft",
+	"BindElbowLeft",
+	"BindHandLeft",
+
+	"LowerArmBondageLeft",
+
 	"SleeveDecoLeft",
 	"SleeveLeft",
 
@@ -272,6 +272,12 @@ let LAYERS_BASE = [
 	"Butt",
 	"TorsoLower",
 	"Torso",
+
+	// Right arm specific bondage
+	"BindWristRight",
+	"BindArmRight",
+	"BindElbowRight",
+	"BindHandRight",
 
 	// Right arm clothes
 	"SleeveDecoRight",
