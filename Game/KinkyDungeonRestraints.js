@@ -692,8 +692,13 @@ function KinkyDungeonGetEnchKnifeBreakChance(modifier) {
 	return chance;
 }
 
+/**
+ *
+ * @param {restraint} restraint
+ * @returns {boolean}
+ */
 function KinkyDungeonIsLockable(restraint) {
-	if (restraint && restraint.escapeChance && (restraint.escapeChance.Pick != undefined && restraint.escapeChance.Unlock != undefined)) return true;
+	if (restraint && restraint.escapeChance && (restraint.escapeChance.Pick != undefined || restraint.escapeChance.Unlock != undefined)) return true;
 	return false;
 }
 
@@ -3258,13 +3263,13 @@ function KDApplyVarToInvVar(restraint, variant) {
  * @returns {number}
  */
 function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs, data, augmentedInventory, variant) {
-	if (!KinkyDungeonIsLockable(restraint)) Lock = "";
 	if (typeof restraint === "string") {
 		KDRestraintDebugLog.push("Lookup" + restraint);
 		restraint = KinkyDungeonGetRestraintByName(restraint);
 	} else {
 		KDRestraintDebugLog.push("AddWeaker" + restraint.name);
 	}
+	if (!KinkyDungeonIsLockable(restraint)) Lock = "";
 
 	if (variant) {
 		return KDEquipInventoryVariant(KDApplyVarToInvVar(restraint, variant),
