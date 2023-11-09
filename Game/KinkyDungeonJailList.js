@@ -537,7 +537,7 @@ let KDJailOutfits = {
 		restraints: [
 			{Name: "ExpArmbinder", Level: 0},
 			{Name: "ExpArmbinderHarness", Level: 60},
-			{Name: "ExpAnkleCuffs", Level: 30},
+			{Name: "BlacksteelAnkleCuffs", Level: 30},
 			{Name: "LatexBallGag", Level: 25, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "LatexBallGag", Level: 5},
 			{Name: "ExpCollar", Level: 40},
@@ -552,8 +552,8 @@ let KDJailOutfits = {
 		restraints: [
 			{Name: "ScaleArmCuffs", Level: 0},
 			{Name: "DragonStraps", Level: 20},
-			{Name: "DragonLegCuffs", Level: 60},
-			{Name: "DragonAnkleCuffs", Level: 10},
+			{Name: "ScaleLegCuffs", Level: 60},
+			{Name: "ScaleAnkleCuffs", Level: 10},
 			{Name: "DragonBoots", Level: 90},
 			{Name: "DragonBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "DragonBallGag", Level: 30},

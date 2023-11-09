@@ -253,6 +253,7 @@ function KinkyDungeonDefaultStats(Load) {
 			// We use magichands for the start scenarios
 			KinkyDungeonStatsChoice.set("MagicHands", true);
 		}
+		KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints(0.0);
 		for (let perk of [...KinkyDungeonStatsChoice.keys()].filter((e) => {return KDPerkStart[e] != undefined;})
 			.sort((a, b) => {
 				return ((KinkyDungeonStatsPresets[a] && KinkyDungeonStatsPresets[a].startPriority) || -1) - ((KinkyDungeonStatsPresets[b] && KinkyDungeonStatsPresets[b].startPriority) || -1);
