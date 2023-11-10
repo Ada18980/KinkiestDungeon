@@ -64,7 +64,7 @@ AddModel({
 			OffsetY: 200,
 			Invariant: true,
 		},
-		{ Name: "Strap", Layer: "GagStraps", Pri: 15,
+		{ Name: "Strap", Layer: "GagStraps", Pri: 13,
 			Sprite: "BigBallStrap",
 			OffsetX: 942,
 			OffsetY: 200,
@@ -73,7 +73,7 @@ AddModel({
 	])
 });
 AddModel(GetModelWithExtraLayers("LargeBallGagHarness", "LargeBallGag", [
-	{ Name: "Harness", Layer: "GagStraps", Pri: 10,
+	{ Name: "Harness", Layer: "GagStraps", Pri: 15,
 		Sprite: "BallHarness",
 		OffsetX: 942,
 		OffsetY: 200,
@@ -98,13 +98,13 @@ AddModel({
 	Categories: ["Restraints","Gags"],
 	AddPose: ["HideMouth", "FaceCoverGag"],
 	Layers: ToLayerMap([
-		{ Name: "Panel", Layer: "GagFlat", Pri: 1,
+		{ Name: "Panel", Layer: "GagFlat", Pri: 5,
 			Sprite: "Panel",
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
 		},
-		{ Name: "Strap", Layer: "GagStraps", Pri: 15,
+		{ Name: "Strap", Layer: "GagStraps", Pri: 17,
 			Sprite: "BallStrap",
 			OffsetX: 942,
 			OffsetY: 200,
@@ -113,7 +113,7 @@ AddModel({
 	])
 });
 AddModel(GetModelWithExtraLayers("PanelGagHarness", "PanelGag", [
-	{ Name: "Harness", Layer: "GagStraps", Pri: 10,
+	{ Name: "Harness", Layer: "GagFlatStraps", Pri: 19,
 		Sprite: "PanelHarness",
 		OffsetX: 942,
 		OffsetY: 200,
@@ -121,7 +121,7 @@ AddModel(GetModelWithExtraLayers("PanelGagHarness", "PanelGag", [
 	},
 ], "PanelGag", false));
 AddModel(GetModelWithExtraLayers("PanelGagHarnessSecure", "PanelGagHarness", [
-	{ Name: "SideStrap", Layer: "GagStraps", Pri: 21,
+	{ Name: "SideStrap", Layer: "GagFlatStraps", Pri: 21,
 		Sprite: "PanelSideStrap",
 		OffsetX: 942,
 		OffsetY: 200,
@@ -140,13 +140,13 @@ AddModel({
 	Categories: ["Restraints","Gags"],
 	AddPose: ["HideMouth", "FaceCoverGag"],
 	Layers: ToLayerMap([
-		{ Name: "Muzzle", Layer: "GagFlat", Pri: 3,
+		{ Name: "Muzzle", Layer: "GagMuzzle", Pri: 3,
 			Sprite: "Muzzle",
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
 		},
-		{ Name: "Strap", Layer: "GagStraps", Pri: 15,
+		{ Name: "Strap", Layer: "GagMuzzleStraps", Pri: 15,
 			Sprite: "MuzzleStrap",
 			OffsetX: 942,
 			OffsetY: 200,
@@ -156,7 +156,7 @@ AddModel({
 });
 
 AddModel(GetModelWithExtraLayers("MuzzleGagHarness", "MuzzleGag", [
-	{ Name: "Harness", Layer: "GagStraps", Pri: 10,
+	{ Name: "Harness", Layer: "GagMuzzleStraps", Pri: 18,
 		Sprite: "MuzzleHarness",
 		OffsetX: 942,
 		OffsetY: 200,
@@ -164,7 +164,7 @@ AddModel(GetModelWithExtraLayers("MuzzleGagHarness", "MuzzleGag", [
 	},
 ], "MuzzleGag", false));
 AddModel(GetModelWithExtraLayers("MuzzleGagHarnessSecure", "MuzzleGagHarness", [
-	{ Name: "SideStrap", Layer: "GagStraps", Pri: 22,
+	{ Name: "SideStrap", Layer: "GagMuzzleStraps", Pri: 22,
 		Sprite: "MuzzleSideStrap",
 		OffsetX: 942,
 		OffsetY: 200,
@@ -182,7 +182,7 @@ AddModel({
 	Restraint: true,
 	Categories: [],
 	Layers: ToLayerMap([
-		{ Name: "Plug", Layer: "GagFlat", Pri: 4,
+		{ Name: "Plug", Layer: "GagMuzzle", Pri: 14,
 			Sprite: "Plug",
 			OffsetX: 942,
 			OffsetY: 200,
