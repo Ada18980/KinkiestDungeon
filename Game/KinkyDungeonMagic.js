@@ -64,6 +64,14 @@ let KDSpellComponentTypes = {
 		ignore: (spell, x, y) => {
 			return (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0);
 		},
+		partialMiscastChance: (spell, x, y) => {
+			let gagTotal = (KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() > 0) ? 1.0 : KinkyDungeonGagTotal();
+			if (KinkyDungeonStatsChoice.get("SmoothTalker") && gagTotal < 0.99) gagTotal = 0;
+			return Math.max(0, Math.min(1, gagTotal));
+		},
+		partialMiscastType: (spell, x, y) => {
+			return "Gagged";
+		},
 	},
 	"Arms": {
 		stringShort: (ret) => {
@@ -73,11 +81,24 @@ let KDSpellComponentTypes = {
 			return TextGet("KinkyDungeonComponentsArms");
 		},
 		check: (spell, x, y) => {
-			if (KinkyDungeonIsArmsBound() && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoArmsComp") > 0)) return false;
+			if (!(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoArmsComp") > 0)) {
+				if (KinkyDungeonStatsChoice.get("SomaticPlus") && KDHandBondageTotal(false) < 0.99) return true;
+				if (KinkyDungeonStatsChoice.get("SomaticMinus") && KinkyDungeonIsHandsBound(false, false, 0.01)) return false;
+				return !KinkyDungeonIsArmsBound(false, false);
+			}
 			return true;
 		},
 		ignore: (spell, x, y) => {
 			return (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoArmsComp") > 0);
+		},
+		partialMiscastChance: (spell, x, y) => {
+			let handsTotal = (!KinkyDungeonStatsChoice.get("SomaticPlus") && KinkyDungeonIsHandsBound(false, false, 0.01)) ? 1.0 : KDHandBondageTotal(false);
+			return Math.max(0, Math.min(1, handsTotal));
+		},
+		partialMiscastType: (spell, x, y) => {
+			if (KinkyDungeonStatsChoice.get("SomaticMinus")) return "Arms";
+			if (KinkyDungeonStatsChoice.get("SomaticPlus")) return "Fingers";
+			return "Bug";
 		},
 	},
 	"Legs": {
@@ -88,11 +109,21 @@ let KDSpellComponentTypes = {
 			return TextGet("KinkyDungeonComponentsLegs");
 		},
 		check: (spell, x, y) => {
-			if ((KinkyDungeonSlowLevel > 1 || KinkyDungeonLegsBlocked()) && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoLegsComp") > 0)) return false;
+			if ((KinkyDungeonSlowLevel > (KinkyDungeonStatsChoice.get("HeelWalker") ? 2 : 1) || (!KinkyDungeonStatsChoice.get("HeelWalker") && KinkyDungeonLegsBlocked())) && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoLegsComp") > 0)) return false;
 			return true;
 		},
 		ignore: (spell, x, y) => {
 			return (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoLegsComp") > 0);
+		},
+		partialMiscastChance: (spell, x, y) => {
+			if (KinkyDungeonStatsChoice.get("HeelWalker")) {
+				if (KinkyDungeonSlowLevel > 1) return 0.5;
+			} else if (KinkyDungeonSlowLevel > 0) return 0.25;
+			return 0;
+		},
+		partialMiscastType: (spell, x, y) => {
+			if (KinkyDungeonStatsChoice.get("PoorForm")) return "PoorForm";
+			return "Legs";
 		},
 	},
 
@@ -273,6 +304,33 @@ function KDEmpower(data, entity) {
 		KinkyDungeonSendActionMessage(5, TextGet("KDSpellEmpowerMsg").replace("LEVEL", "" + newLevel), "#aaaaff", 2);
 		KinkyDungeonAdvanceTime(1, true);
 	}
+}
+
+function KinkyDungeoCheckComponentsPartial(spell, x, y, includeFull) {
+
+	let failedcomp = [];
+	let failedcompFull = [];
+
+	if (spell.components)
+		for (let comp of spell.components) {
+			if (includeFull && !KDSpellComponentTypes[comp].check(spell, x, y)) {
+				failedcompFull.push(comp);
+			} else if (KDSpellComponentTypes[comp].partialMiscastChance(spell, x, y) > 0) {
+				failedcomp.push(comp);
+			}
+		}
+
+	let data = {
+		spell: spell,
+		failed: failedcompFull,
+		partial: failedcomp,
+		x: x || KinkyDungeonPlayerEntity.x,
+		y: y || KinkyDungeonPlayerEntity.y};
+	KinkyDungeonSendEvent("calcCompPartial", data);
+	if (includeFull) {
+		return [...data.partial, ...data.failed];
+	}
+	return data.partial;
 }
 
 function KinkyDungeoCheckComponents(spell, x, y) {
@@ -578,13 +636,30 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 	}
 
 
+
+
 	let gaggedMiscastFlag = false;
-	if (!enemy && !bullet && player && spell.components && spell.components.includes("Verbal") && !KDSpellIgnoreComp(spell) && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoVerbalComp") > 0)) {
-		let gagTotal = (KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() > 0) ? 1.0 : KinkyDungeonGagTotal();
-		flags.miscastChance = flags.miscastChance + Math.max(0, 1 - flags.miscastChance) * Math.min(1, gagTotal);
-		if (gagTotal > 0)
-			gaggedMiscastFlag = true;
+	let gaggedMiscastType = "Gagged";
+	let lastPartialChance = 0;
+
+
+	if (!enemy && !bullet && player && spell.components && !KDSpellIgnoreComp(spell)) {
+		for (let c of spell.components) {
+			if (KDSpellComponentTypes[c]?.partialMiscastChance) {
+				let partialMiscastChance = KDSpellComponentTypes[c].partialMiscastChance(spell, targetX, targetY);
+				if (partialMiscastChance > 0) {
+					if (lastPartialChance == 0 || KDRandom() < partialMiscastChance) {
+						lastPartialChance = partialMiscastChance;
+						gaggedMiscastType = KDSpellComponentTypes[c].partialMiscastType(spell, targetX, targetY);
+					}
+					flags.miscastChance = flags.miscastChance + Math.max(0, 1 - flags.miscastChance) * (partialMiscastChance);
+					gaggedMiscastFlag = true;
+				}
+
+			}
+		}
 	}
+
 
 	let data = Object.assign({...castData}, {
 		spell: spell,
@@ -640,7 +715,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		KinkyDungeonMiscastPityModifier += KinkyDungeonMiscastPityModifierIncrementPercentage * Math.max(1 - flags.miscastChance, 0);
 
 		if (gaggedMiscastFlag)
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellMiscastGagged"), "#FF8800", 2);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellMiscast" + gaggedMiscastType), "#FF8800", 2);
 		else
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellMiscast"), "#FF8800", 2);
 

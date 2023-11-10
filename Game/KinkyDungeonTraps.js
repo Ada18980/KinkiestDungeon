@@ -180,9 +180,11 @@ let KDTrapTypesStepOff = {
 					let Enemy = KinkyDungeonGetEnemy(
 						tags, MiniGameKinkyDungeonLevel,
 						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
-						'0', requireTags, {requireHostile: "Player"});
+						'0', requireTags, {requireHostile: "Player"}, undefined, undefined, undefined, undefined, undefined, true);
 					if (Enemy) {
-						KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, Enemy.tags.construct ? 23 : undefined, undefined, true, "Ambush", true, 1.5, true, undefined, true);
+						if (KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, false, Enemy.tags.construct ? 23 : undefined, true, true, "Ambush", true, 1.5, true, undefined, true).length == 0) {
+							KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, Enemy.tags.construct ? 23 : undefined, false, true, "Ambush", true, 1.5, true, undefined, true);
+						}
 						if (Enemy.tags.minor) spawned += 0.4;
 						else spawned += 1;
 					}
@@ -219,8 +221,8 @@ function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 			let msg = "";
 			let color = "#ff0000";
 
-			if (KDTrapTypes[tile.Trap]) {
-				let res = KDTrapTypes[tile.Trap](tile, entity, x, y);
+			if (KDTrapTypesStepOff[tile.StepOffTrap]) {
+				let res = KDTrapTypesStepOff[tile.StepOffTrap](tile, entity, x, y);
 				msg = res.msg;
 			}
 

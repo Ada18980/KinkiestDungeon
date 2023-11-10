@@ -161,7 +161,7 @@ let KDPerkToggleTags = [
  * @param {boolean} minWeightFallback - Fallback to 0 minweight
  * @returns {enemy}
  */
-function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, alliances, bonusTags, filterTags, requireSingleTag, minWeight = 0.0, minWeightFallback = true) {
+function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, alliances, bonusTags, filterTags, requireSingleTag, minWeight = 0.0, minWeightFallback = true, noOverrideFloor = false) {
 	let enemyWeightTotal = 0;
 	let enemyWeights = [];
 	let tags = Object.assign([], enemytags);
@@ -195,7 +195,7 @@ function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, allian
 		let noOverride = ["boss", "miniboss", "elite", "minor"];
 		let overrideFloor = false;
 		for (let t of tags) {
-			if (!enemy.noOverrideFloor && !noOverride.includes(t)) {
+			if (!noOverrideFloor && !enemy.noOverrideFloor && !noOverride.includes(t)) {
 				// We don't override the floor just for having the seniority tags specified
 				if (enemy.tags[t]) {
 					overrideFloor = true;

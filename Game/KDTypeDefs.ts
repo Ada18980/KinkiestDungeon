@@ -526,10 +526,16 @@ interface floorParams {
 	shrinecount : number,
 	shrinechance : number,
 	ghostchance : number,
+	/** Chance to have a closed door */
 	doorchance: number,
+
+	/** Chance to have an open door */
 	nodoorchance : number,
 	doorlockchance : number,
+	/** Chance to replace a trap on a door tile with a doortrap instead of deleting the door. Default to trapchance */
 	doorlocktrapchance? : number,
+	/** Chance to replace a door with a lock */
+	doortrapchance? : number,
 	minortrapChance? : number,
 	chargerchance?: number,
 	litchargerchance?: number,
@@ -2670,6 +2676,12 @@ interface KDSpellComponent {
 	stringShort: (ret: string) => string,
 	/** Get the name of the component in the spell description */
 	stringLong: (spell: spell) => string,
+
+	/** Returns the component's partial miscast chance, such as from being gagged or wearing heels */
+	partialMiscastChance: (spell: spell, x: number, y: number) => number,
+	/** Returns the message suffix for failing due to a partial miscast chance */
+	partialMiscastType: (spell: spell, x: number, y: number) => string,
+
 }
 
 type SpecialCondition = {

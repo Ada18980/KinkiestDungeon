@@ -15,6 +15,13 @@ Vague todo:
 
 - TODO add scroll to log, rep
 
+TODO add sugar magic ('Blood Energy Magic')
+
+
+4.83.2 (Nov 2023)
+- Added new perks: Poor Form, Deft Fingering, and Poor Coordination, Smooth Talker. Renamed Graceful Walk to Deft Footwork.
+- More doors can be locked in regular maps, and sometimes are replaced with grates
+- fix bug with gold locks on doors
 
 4.83.1 (Nov 2023)
 - Added enchanted weapons
