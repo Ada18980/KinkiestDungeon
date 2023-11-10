@@ -381,7 +381,7 @@ function KDStartDialogInput(Dialogue, Speaker, Click, Personality, enemy) {
 
 function KDDialogueGagged() {
 	let dialogue = KDGetDialogue();
-	let threshold = dialogue.gagThreshold ? dialogue.gagThreshold : 0.01;
+	let threshold = dialogue.gagThreshold ? dialogue.gagThreshold : (KinkyDungeonStatsChoice.get("SmoothTalker") ? 0.99 : 0.01);
 	if (KinkyDungeonGagTotal() >= threshold) return true;
 	return false;
 }
