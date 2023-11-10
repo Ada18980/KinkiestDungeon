@@ -101,6 +101,39 @@ AddModel({
 		},
 	])
 });
+
+
+AddModel({
+	Name: "RibbonBoxtie2",
+	Folder: "Ribbon",
+	Parent: "RibbonHarness",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Ribbon"],
+	AddPose: ["Boxties"],
+	Layers: ToLayerMap([
+		...GetModelLayers("RibbonBoxtie1"),
+		...GetModelLayers("RibbonChestStraps1"),
+	])
+});
+
+
+AddModel({
+	Name: "RibbonWristtie2",
+	Folder: "Ribbon",
+	Parent: "RibbonHarness",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Ribbon"],
+	AddPose: ["Wristties"],
+	Layers: ToLayerMap([
+		...GetModelLayers("RibbonWristtie1"),
+		...GetModelLayers("RibbonChestStraps1"),
+	])
+});
+
+
+
 AddModel({
 	Name: "RibbonChestStraps2",
 	Folder: "Ribbon",

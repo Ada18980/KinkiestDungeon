@@ -202,6 +202,17 @@ AddModel(GetModelWithExtraLayers("PlugMuzzleGagHarnessSecure", "MuzzleGagHarness
 ], "MuzzleGag", false));
 
 
+AddModel(GetModelWithExtraLayers("PlugPanelGag", "PanelGag", [
+	...GetModelLayers("PlugGagPlug"),
+], "PanelGag", false));
+AddModel(GetModelWithExtraLayers("PlugPanelGagHarness", "PanelGagHarness", [
+	...GetModelLayers("PlugGagPlug"),
+], "PanelGag", false));
+AddModel(GetModelWithExtraLayers("PlugPanelGagHarnessSecure", "PanelGagHarnessSecure", [
+	...GetModelLayers("PlugGagPlug"),
+], "PanelGag", false));
+
+
 
 
 AddModel({

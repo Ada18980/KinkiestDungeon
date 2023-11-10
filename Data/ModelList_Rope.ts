@@ -91,6 +91,7 @@ AddModel({
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
+			InheritColor: "Rope",
 		},
 		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
@@ -106,6 +107,35 @@ AddModel({
 		},
 	])
 });
+
+
+AddModel({
+	Name: "RopeBoxtie2",
+	Folder: "Rope",
+	Parent: "RopeHarness",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["Boxties"],
+	Layers: ToLayerMap([
+		...GetModelLayers("RopeBoxtie1"),
+		...GetModelLayers("RopeChestStraps1"),
+	])
+});
+AddModel({
+	Name: "RopeWristtie2",
+	Folder: "Rope",
+	Parent: "RopeHarness",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["Wristties"],
+	Layers: ToLayerMap([
+		...GetModelLayers("RopeWristtie1"),
+		...GetModelLayers("RopeChestStraps1"),
+	])
+});
+
 AddModel({
 	Name: "RopeChestStraps2",
 	Folder: "Rope",
@@ -142,6 +172,34 @@ AddModel({
 			Invariant: true,
 			InheritColor: "Rope",
 		},
+	])
+});
+
+
+AddModel({
+	Name: "RopeBoxtie3",
+	Folder: "Rope",
+	Parent: "RopeHarness",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["Boxties"],
+	Layers: ToLayerMap([
+		...GetModelLayers("RopeBoxtie2"),
+		...GetModelLayers("RopeChestStraps2"),
+	])
+});
+AddModel({
+	Name: "RopeWristtie3",
+	Folder: "Rope",
+	Parent: "RopeHarness",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Rope"],
+	AddPose: ["Wristties"],
+	Layers: ToLayerMap([
+		...GetModelLayers("RopeWristtie2"),
+		...GetModelLayers("RopeChestStraps2"),
 	])
 });
 

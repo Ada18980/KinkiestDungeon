@@ -39,3 +39,25 @@ AddModel({
 		},
 	])
 });
+
+AddModel({
+	Name: "JacketStraps",
+	Folder: "Jacket",
+	TopLevel: false,
+	Parent: "Jacket",
+	Restraint: true,
+	Categories: ["Restraints", "Straps", "Leather"],
+	Layers: ToLayerMap([
+		{ Name: "StrapsArms", Layer: "BindArmLeft", Pri: 3,
+			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
+			SwapLayerPose: {Crossed: "BindCrossArms"},
+			GlobalDefaultOverride: ToMap(["Crossed"]),
+			InheritColor: "BeltsArms",
+		},
+		{ Name: "StrapsChest", Layer: "BindChest", Pri: -10,
+			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
+			GlobalDefaultOverride: ToMap(["Crossed"]),
+			InheritColor: "BeltsChest",
+		},
+	])
+});
