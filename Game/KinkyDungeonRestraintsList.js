@@ -92,9 +92,6 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "DuctTapeHands", unlimited: true, inaccessible: true, Asset: "DuctTape", Color: "Default", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHands",
 		factionColor: [[], [0]],
 		Model: "TapeHeavyHands",
-		Filters: {
-			Tape: {"gamma":0.18333333333333335,"saturation":1,"contrast":0.8333333333333333,"brightness":1.2166666666666668,"red":5,"green":1.607843137254902,"blue":2.3333333333333335,"alpha":1},
-		},
 		bindhands: 0.9, power: 1, weight: 0, escapeChance: {"Struggle": -0.1, "Cut": 0.4, "Remove": 0.4}, struggleMaxSpeed: {"Remove": 0.1},
 		strictness: 0.05, strictnessZones: ["ItemHands"], failSuffix: {"Remove": "Tape"},
 		maxwill: 0.6, enemyTags: {"tapeRestraints":8}, playerTags: {"ItemHandsFull": -4}, minLevel: 0, allFloors: true, shrine: ["Tape"]},
@@ -3753,7 +3750,7 @@ let KDLocks = {
 	},
 	"Gold": {
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
-			return !AllowGold && Floor > 10;
+			return AllowGold && Floor > 10;
 		},
 		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return 2 * Floor - 15;

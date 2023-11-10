@@ -1321,6 +1321,8 @@ function KDHandBondageTotal(Other = false) {
 		if (KDRestraint(inv).bindhands) total += KDRestraint(inv).bindhands;
 		if (!Other && KDRestraint(inv).restricthands) total += KDRestraint(inv).restricthands;
 	}
+	if (KinkyDungeonStatsChoice.get("SomaticMinus")) total *= 2;
+	else if (KinkyDungeonStatsChoice.get("SomaticPlus")) total *= 0.8;
 	return total;
 }
 

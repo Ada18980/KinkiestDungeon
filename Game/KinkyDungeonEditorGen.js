@@ -800,9 +800,12 @@ let KDTileGen = {
 			} else {
 				KinkyDungeonMapSet(x, y, 'd');
 			}
-			return {Type: "Door", Lock: tileGenerator.Lock == "Red" ? KDRandomizeRedLock() : tileGenerator.Lock, OffLimits: tileGenerator.OffLimits};
+			return {Type: "Door", Lock: tileGenerator.Lock == "Red" ? KDRandomizeRedLock() : tileGenerator.Lock, OffLimits: tileGenerator.OffLimits, RequiredDoor: tileGenerator.Priority};
 		} else {
 			KinkyDungeonMapSet(x, y, '2');
+			if (nodoorchance <= 0.99) {
+				return {PotentialDoor: true, OffLimits: tileGenerator.OffLimits};
+			}
 		}
 		return null;
 	},

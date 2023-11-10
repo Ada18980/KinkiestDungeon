@@ -872,6 +872,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		//if (KinkyDungeonGoddessRep.Prisoner && KDGameData.KinkyDungeonSpawnJailers > 0) doorlockchance = doorlockchance + (KDGameData.KinkyDungeonSpawnJailers / KDGameData.KinkyDungeonSpawnJailersMax) * (1.0 - doorlockchance) * (KinkyDungeonGoddessRep.Prisoner + 50)/100;
 		let trapChance = MapParams.trapchance; // Chance of a pathway being split between a trap and a door
 		let doorlocktrapchance = MapParams.doorlocktrapchance ? MapParams.doorlocktrapchance : MapParams.trapchance;
+		let doortrapchance = MapParams.doortrapchance || 0.4;
 		let minortrapChance = MapParams.minortrapChance ? MapParams.minortrapChance : trapChance/3;
 		// Door algorithm is defunct
 		let grateChance = MapParams.grateChance;
@@ -1040,8 +1041,9 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				startTime = performance.now();
 			}
 			let traps2 = [];
-			if (altType && altType.placeDoors)
-				KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapChance, grateChance, Floor, width, height);
+			if (!altType || altType.placeDoors)
+				traps2 = KinkyDungeonPlaceDoors(doorchance, doortrapchance, nodoorchance, doorlockchance, trapChance, grateChance, Floor, width, height,
+				!altType ? KDPlaceMode.MODE_MODIFYPOTENTIALANDEXISTING : (altType.doorPlaceMode || KDPlaceMode.MODE_PLACENEW));
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for door creation`);
 				startTime = performance.now();
@@ -2897,7 +2899,12 @@ function KinkyDungeonGenerateLock(Guaranteed, Floor, AllowGold, Type, Data) {
 	return lock;
 }
 
-function KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapChance, grateChance, Floor, width, height) {
+let KDPlaceMode = {
+	MODE_PLACENEW: 0x0,
+	MODE_MODIFYPOTENTIALANDEXISTING: 0x1,
+	MODE_MODIFYEXISTINGONLY: 0x2,
+};
+function KinkyDungeonPlaceDoors(doorchance, doortrapchance, nodoorchance, doorlockchance, trapChance, grateChance, Floor, width, height, placeMode = KDPlaceMode.MODE_PLACENEW) {
 	let doorlist = [];
 	let doorlist_2ndpass = [];
 	let trapLocations = [];
@@ -2905,7 +2912,13 @@ function KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapCh
 	// Populate the doors
 	for (let X = 1; X < width; X += 1)
 		for (let Y = 1; Y < height; Y += 1)
-			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && KinkyDungeonMapGet(X, Y) != 'D' && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
+			if ((
+				(placeMode == KDPlaceMode.MODE_PLACENEW && KinkyDungeonMapGet(X, Y) != 'D' && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)))
+					|| ((placeMode == KDPlaceMode.MODE_MODIFYEXISTINGONLY || placeMode == KDPlaceMode.MODE_MODIFYPOTENTIALANDEXISTING) && (KinkyDungeonMapGet(X, Y) == 'd' || KinkyDungeonMapGet(X, Y) == 'D'))
+					|| (placeMode == KDPlaceMode.MODE_MODIFYPOTENTIALANDEXISTING && (KinkyDungeonTilesGet(X + "," + Y)?.PotentialDoor))
+			)
+				&& (!KinkyDungeonTilesGet(X + "," + Y)
+					|| (!KinkyDungeonTilesGet(X + "," + Y).OffLimits && !KinkyDungeonTilesGet(X + "," + Y).Lock && !KinkyDungeonTilesGet(X + "," + Y).RequiredDoor))) {
 				// Check the 3x3 area
 				let wallcount = 0;
 				let up = false;
@@ -2924,7 +2937,7 @@ function KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapCh
 						} else if (get == 'D') // No adjacent doors
 							wallcount = 100;
 					}
-				if (wallcount < 5 && ((up && down) != (left && right)) && KDRandom() > nodoorchance) { // Requirements: 4 doors and either a set in up/down or left/right but not both
+				if ((placeMode == KDPlaceMode.MODE_PLACENEW ? (wallcount < 5) : (wallcount > 1 && wallcount < 7)) && ((up && down) != (left && right)) && KDRandom() > nodoorchance) { // Requirements: 4 doors and either a set in up/down or left/right but not both
 					doorlist.push({x:X, y:Y});
 					doorlist_2ndpass.push({x:X, y:Y});
 				}
@@ -2944,12 +2957,16 @@ function KinkyDungeonPlaceDoors(doorchance, nodoorchance, doorlockchance, trapCh
 			KinkyDungeonTilesGet("" + X + "," + Y).Lock = KinkyDungeonGenerateLock(true, Floor, undefined, "Door", {x: X, y: Y, tile: KinkyDungeonTilesGet("" + X + "," + Y)});
 		}
 
+		if (KDRandom() < doortrapchance) {
+			trapLocations.push({x: X, y: Y});
+		}
+
 		doorlist.splice(N, 1);
 	}
 
 	while (doorlist_2ndpass.length > 0) {
 		let N = Math.floor(KDRandom()*doorlist_2ndpass.length);
-		let minLockedRoomSize = 12;
+		let minLockedRoomSize = 8;
 		let maxPlayerDist = 4;
 
 		let door = doorlist_2ndpass[N];
