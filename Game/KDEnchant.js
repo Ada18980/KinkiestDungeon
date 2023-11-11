@@ -322,7 +322,7 @@ let KDEventEnchantmentModular = {
 					let amt = 1 + Math.round((0.4 + 0.6*KDRandom()) * 3 * Math.pow(power, 0.5));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
-						{original: "ManaCost", trigger: "calcMultMana", type: "ManaCost", power: 1 - Math.min(0.99, amt*0.01)},
+						{original: "ManaCost", trigger: "calcMultMana", type: "ManaCost", power: 1 - Math.min(0.99, amt*0.01), inheritLinked: true},
 						{original: "ManaCost", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCost", power: -amt, color: "#0000ff", bgcolor: "#8888ff"},
 						{original: "ManaCost", trigger: "icon", type: "tintIcon", power: 5, color: "#0000ff"},
 					];}},
@@ -348,7 +348,7 @@ let KDEventEnchantmentModular = {
 					let type = CommonRandomItemFromList("", types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
-						{original: "ManaCostSpecific", trigger: "calcMultMana", type: "ManaCost", condition: "spellType", kind: type, power: 1 - Math.min(0.99, amt*0.01)},
+						{original: "ManaCostSpecific", trigger: "calcMultMana", type: "ManaCost", condition: "spellType", kind: type, power: 1 - Math.min(0.99, amt*0.01), inheritLinked: true},
 						{original: "ManaCostSpecific", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCostSpecific", kind: TextGet("KinkyDungeonFilter" + type), power: -amt, color: "#0000ff", bgcolor: "#8888ff"},
 						{original: "ManaCostSpecific", trigger: "icon", type: "tintIcon", power: 5, color: "#0000ff"},
 					];}},
@@ -371,7 +371,7 @@ let KDEventEnchantmentModular = {
 					let amt = 0.5 + Math.round((0.4 + 0.6*KDRandom()) * 1.5 * Math.pow(power, 0.5));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
-						{original: "ManaRegenOnKill", trigger: "capture", type: "ManaBounty", power: amt * 0.1},
+						{original: "ManaRegenOnKill", trigger: "capture", type: "ManaBounty", power: amt * 0.1, inheritLinked: true},
 						{original: "ManaRegenOnKill", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaRegenOnKill", power: amt, color: "#0000ff", bgcolor: "#8888ff"},
 						{original: "ManaRegenOnKill", trigger: "icon", type: "tintIcon", power: 5, color: "#00bbbb"},
 					];}},
@@ -396,7 +396,7 @@ let KDEventEnchantmentModular = {
 					let type = CommonRandomItemFromList("", types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
-						{original: "ElementalEcho", trigger: "playerAttack", type: "ElementalEcho", power: amt * 0.01, damage: type},
+						{original: "ElementalEcho", trigger: "playerAttack", type: "ElementalEcho", power: amt * 0.01, damage: type, inheritLinked: true},
 						{original: "ElementalEcho", trigger: "inventoryTooltip", type: "varModifier", msg: "ElementalEcho", power: amt, kind: TextGet("KinkyDungeonDamageType" + type), bgcolor: KinkyDungeonDamageTypes[type].color, color: KinkyDungeonDamageTypes[type].bg || "#004400"},
 						{original: "ElementalEcho", trigger: "icon", type: "tintIcon", power: 5, color: "#ffff00", bgcolor: KinkyDungeonDamageTypes[type].color},
 					];}},
@@ -441,7 +441,7 @@ let KDEventEnchantmentModular = {
 					let type = CommonRandomItemFromList("", types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
-						{original: "ElementalDmg", trigger: "playerAttack", type: "ElementalEffect", power: amt * 0.1, damage: type},
+						{original: "ElementalDmg", trigger: "playerAttack", type: "ElementalEffect", power: amt * 0.1, damage: type, inheritLinked: true},
 						{original: "ElementalDmg", trigger: "inventoryTooltip", type: "varModifier", msg: "ElementalDmg", power: amt, kind: TextGet("KinkyDungeonDamageType" + type), bgcolor: KinkyDungeonDamageTypes[type].color, color: KinkyDungeonDamageTypes[type].bg || "#004400"},
 						{original: "ElementalDmg", trigger: "icon", type: "tintIcon", power: 5, color: "#ff0000", bgcolor: KinkyDungeonDamageTypes[type].color},
 					];}},
@@ -464,7 +464,7 @@ let KDEventEnchantmentModular = {
 					let amt = 15 + Math.round((0.4 + 0.6*KDRandom()) * 10 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
-						{original: "ManaRegen", trigger: "afterCalcManaPool", type: "MultManaPoolRegen", power: 1 + amt*0.01},
+						{original: "ManaRegen", trigger: "afterCalcManaPool", type: "MultManaPoolRegen", power: 1 + amt*0.01, inheritLinked: true},
 						{original: "ManaRegen", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaRegen", power: amt, color: "#0088ff", bgcolor: "#88aaff"},
 						{original: "ManaRegen", trigger: "icon", type: "tintIcon", power: 2, color: "#0055aa"},
 					];}},
@@ -487,8 +487,8 @@ let KDEventEnchantmentModular = {
 					let amt = 1.5 + Math.round((0.4 + 0.6*KDRandom()) * 3.5 * Math.pow(power, 0.33));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
-						{original: "BaseDamageBuffMelee", trigger: "beforePlayerAttack", type: "AmpDamage", prereq: "damageType", kind: "melee", power: amt*.01},
-						{original: "BaseDamageBuffMelee", trigger: "calcDisplayDamage", type: "AmpDamage", prereq: "damageType", kind: "melee", power: amt*.01},
+						{original: "BaseDamageBuffMelee", trigger: "beforePlayerAttack", type: "AmpDamage", prereq: "damageType", kind: "melee", power: amt*.01, inheritLinked: true},
+						{original: "BaseDamageBuffMelee", trigger: "calcDisplayDamage", type: "AmpDamage", prereq: "damageType", kind: "melee", power: amt*.01, inheritLinked: true},
 						{original: "BaseDamageBuffMelee", trigger: "inventoryTooltip", type: "varModifier", msg: "BaseDamageBuffMelee", power: amt, color: "#000000", bgcolor: "#ff0000"},
 						{original: "BaseDamageBuffMelee", trigger: "icon", type: "tintIcon", power: 4, color: "#ff0000"},
 					];}},
@@ -511,8 +511,8 @@ let KDEventEnchantmentModular = {
 					let amt = 1.8 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.4));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
-						{original: "BaseDamageBuffMagic", trigger: "beforePlayerAttack", type: "AmpDamage", prereq: "damageType", kind: "magic", power: amt*.01},
-						{original: "BaseDamageBuffMagic", trigger: "calcDisplayDamage", type: "AmpDamage", prereq: "damageType", kind: "magic", power: amt*.01},
+						{original: "BaseDamageBuffMagic", trigger: "beforePlayerAttack", type: "AmpDamage", prereq: "damageType", kind: "magic", power: amt*.01, inheritLinked: true},
+						{original: "BaseDamageBuffMagic", trigger: "calcDisplayDamage", type: "AmpDamage", prereq: "damageType", kind: "magic", power: amt*.01, inheritLinked: true},
 						{original: "BaseDamageBuffMagic", trigger: "inventoryTooltip", type: "varModifier", msg: "BaseDamageBuffMagic", power: amt, color: "#000000", bgcolor: "#8800ff"},
 						{original: "BaseDamageBuffMagic", trigger: "icon", type: "tintIcon", power: 5, color: "#8800ff"},
 					];}},
