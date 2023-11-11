@@ -2931,6 +2931,8 @@ declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') &
 type PIXIContainer = import('pixi.js').Container;
 type PIXIMesh = import('pixi.js').Mesh;
 type PIXIRenderTexture = import('pixi.js').RenderTexture;
+type PIXITexture = import('pixi.js').Texture;
+
 type PIXIPlane = import('pixi.js').SimplePlane;
 type PIXIBuffer = import('pixi.js').Buffer;
 type IArrayBuffer = import('pixi.js').IArrayBuffer;
@@ -2938,4 +2940,11 @@ type PIXIArray = import('pixi.js').ITypedArray;
 type PIXIAdjustmentFilter = import('pixi-filters').AdjustmentFilter;
 type PIXIFilter = import('pixi.js').Filter;
 
+
+type PIXIMatrix = import('pixi.js').Matrix;
+type PIXIPoint = import('pixi.js').Point;
+type ISpriteMaskTarget = import('pixi.js').ISpriteMaskTarget;
+
+type PIXICLEAR_MODES = import('pixi.js').CLEAR_MODES;
+type PIXIFilterSystem = import('pixi.js').FilterSystem;
 

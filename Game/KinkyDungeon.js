@@ -3123,8 +3123,9 @@ function KDClick() {
 		KDIntroStage += 1;
 		if (KDIntroStage > KDIntroProgress.length)
 			KinkyDungeonState = "Menu";
-		else if (KDIntroStage < KDIntroProgress.length)
+		else if (KDIntroStage < KDIntroProgress.length) {
 			KDIntroProgress[KDIntroStage] = -0.33; // UI delay
+		}
 		else
 			KDIntroProgress[KDIntroStage - 1] = 4; // UI delay
 	} else
