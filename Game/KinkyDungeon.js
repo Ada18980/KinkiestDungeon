@@ -3114,9 +3114,9 @@ function KDClick() {
 	else
 	if (KinkyDungeonState == "Intro") {
 		let currentProgress = KDIntroStage < KDIntroProgress.length ? KDIntroProgress[KDIntroStage] : 1;
-		if (currentProgress < 2) {
+		if (currentProgress < 3) {
 			for (let i = 0; i <= KDIntroStage && i < KDIntroProgress.length; i++) {
-				KDIntroProgress[i] = 2;
+				KDIntroProgress[i] = 3;
 			}
 
 		}

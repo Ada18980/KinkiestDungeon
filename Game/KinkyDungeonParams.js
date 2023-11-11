@@ -1015,6 +1015,7 @@ const KinkyDungeonMapParams = {
 		"doorchance" : 0.8,
 		"nodoorchance" : 0.05,
 		"doorlockchance" : -0.05,
+		"doorlocktrapchance" : 0,
 		"trapchance" : 0.65,
 		"grateChance" : 0.1,
 		"rubblechance" : 0.3,

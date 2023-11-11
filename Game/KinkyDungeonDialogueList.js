@@ -1308,10 +1308,10 @@ let KDDialogue = {
 			if (!KDGameData.ShopkeeperFee) KDGameData.ShopkeeperFee = 0;
 			KDGameData.ShopkeeperFee += KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1));
 			KDGameData.CurrentDialogMsgValue = {
-				"RESCUECOST": KDGameData.ShopkeeperFee,
+				"RESCUECOST": Math.round(KDGameData.ShopkeeperFee),
 			};
 			KDGameData.CurrentDialogMsgData = {
-				"RESCUECOST": "" + KDGameData.ShopkeeperFee,
+				"RESCUECOST": "" + Math.round(KDGameData.ShopkeeperFee),
 			};
 			return false;
 		},
@@ -1649,13 +1649,13 @@ let KDDialogue = {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			KDGameData.CurrentDialogMsgValue = {
-				"RESCUECOST": KDDialogueParams.ShopkeeperHelpFee + (KDDialogueParams.ShopkeeperHelpFeePerLevel * (KDGameData.HighestLevelCurrent || 1))
+				"RESCUECOST": Math.round(KDDialogueParams.ShopkeeperHelpFee + (KDDialogueParams.ShopkeeperHelpFeePerLevel * (KDGameData.HighestLevelCurrent || 1))
 					+ (KDDialogueParams.ShopkeeperHelpFeePerPower * (KDGetTotalRestraintPower(
 						KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false)
-						|| 1)),
+						|| 1))),
 			};
 			KDGameData.CurrentDialogMsgData = {
-				"RESCUECOST": "" + KDGameData.CurrentDialogMsgValue.RESCUECOST,
+				"RESCUECOST": "" + Math.round(KDGameData.CurrentDialogMsgValue.RESCUECOST),
 			};
 			return false;
 		},
@@ -1999,7 +1999,7 @@ let KDDialogue = {
 		clickFunction: (gagged, player) => {
 			if (!KDGameData.ShopkeeperFee) KDGameData.ShopkeeperFee = 0;
 			KDGameData.CurrentDialogMsgValue = {
-				"RESCUECOST": KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1))),
+				"RESCUECOST": Math.round(KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1)))),
 			};
 			KDGameData.CurrentDialogMsgData = {
 				"RESCUECOST": "" + (KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1)))),

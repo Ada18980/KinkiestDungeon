@@ -871,7 +871,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		if (KinkyDungeonStatsChoice.get("Pristine")) rubblechance *= 0.3;
 		//if (KinkyDungeonGoddessRep.Prisoner && KDGameData.KinkyDungeonSpawnJailers > 0) doorlockchance = doorlockchance + (KDGameData.KinkyDungeonSpawnJailers / KDGameData.KinkyDungeonSpawnJailersMax) * (1.0 - doorlockchance) * (KinkyDungeonGoddessRep.Prisoner + 50)/100;
 		let trapChance = MapParams.trapchance; // Chance of a pathway being split between a trap and a door
-		let doorlocktrapchance = MapParams.doorlocktrapchance ? MapParams.doorlocktrapchance : MapParams.trapchance;
+		let doorlocktrapchance = MapParams.doorlocktrapchance != undefined ? MapParams.doorlocktrapchance : MapParams.trapchance;
 		let doortrapchance = MapParams.doortrapchance || 0.4;
 		let minortrapChance = MapParams.minortrapChance ? MapParams.minortrapChance : trapChance/3;
 		// Door algorithm is defunct

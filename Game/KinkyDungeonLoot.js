@@ -99,7 +99,7 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 							let group = prereq.substring(6);
 							let item = KinkyDungeonGetRestraintItem(group);
 							let power = item && KDRestraint(item) &&  KDRestraint(item).power ? KinkyDungeonRestraintPower(item) : 0;
-							if (power && (power >= loot.power ||  KDRestraint(item).enchanted)) {
+							if (power && (power + 0.01 >= loot.power || KDRestraint(item).enchanted)) {
 								prereqs = false;
 								break;
 							}

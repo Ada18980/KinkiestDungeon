@@ -59,5 +59,10 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			InheritColor: "BeltsChest",
 		},
+		{ Name: "StrapsUnderbust", Layer: "StrapsUnderbust", Pri: -10,
+			Invariant: true,
+			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
+			InheritColor: "BeltsChest",
+		},
 	])
 });

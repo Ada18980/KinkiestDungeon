@@ -24,6 +24,18 @@ AddModel({
 			DisplaceLayers: ToMap(["Rope1"]),
 			InheritColor: "Rope",
 		},
+		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
+			Poses: ToMap(["Boxtie"]),
+			DisplacementSprite: "Arm1Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
+			InheritColor: "Rope",
+		},
+		{ Name: "ForeArm1", Layer: "BindArmLeft", Pri: 0,
+			Poses: ToMap(["Wristtie"]),
+			DisplacementSprite: "ForeArm1Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
+			InheritColor: "Rope",
+		},
 	])
 });
 AddModel({
@@ -35,12 +47,7 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["Boxties"],
 	Layers: ToLayerMap([
-		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
-			Poses: ToMap(["Boxtie"]),
-			DisplacementSprite: "Arm1Squish",
-			DisplaceLayers: ToMap(["Rope1"]),
-			InheritColor: "Rope",
-		},
+		...GetModelLayers("RopeCrosstie1"),
 	])
 });
 
@@ -54,17 +61,7 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["Wristties"],
 	Layers: ToLayerMap([
-		/*{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
-			Poses: ToMap(["Wristtie"]),
-			DisplacementSprite: "Arm1Squish",
-			DisplaceLayers: ToMap(["Rope1"]),
-		},*/
-		{ Name: "ForeArm1", Layer: "BindArmLeft", Pri: 0,
-			Poses: ToMap(["Wristtie"]),
-			DisplacementSprite: "ForeArm1Squish",
-			DisplaceLayers: ToMap(["Rope1"]),
-			InheritColor: "Rope",
-		},
+		...GetModelLayers("RopeCrosstie1"),
 	])
 });
 

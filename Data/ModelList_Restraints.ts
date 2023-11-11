@@ -278,7 +278,7 @@ AddModel({
 	Categories: ["Restraints","Gags"],
 	AddPose: ["HideMouth"],
 	Layers: ToLayerMap([
-		{ Name: "Wrap", Layer: "GagFlat", Pri: 0,
+		{ Name: "Wrap", Layer: "GagFlat", Pri: -50,
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,

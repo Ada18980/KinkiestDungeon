@@ -1,9 +1,17 @@
-# Kinkiest Dungeon
+# Kinky Dungeon
 
-This is the official git repo for Kinky Dungeon. What you will find here is a stripped-down version of the original Bondage Club repo preserving only the components needed to make Kinky Dungeon work.
-As a plus, the code for the game itself is almost identical, meaning that this game will run if pasted into the official BC 
+This source code is made available for those looking to make mods or contribute to Kinky Dungeon.
+You may download it, modify it for personal use, link to it, and use it to develop content under the Kinky Contributor License seen below.
+However, things you may not do:
+- Re-host the code in its entirety
+- Charge money for the source code or any modifications to it
+- Claim it as your own
+- Use assets from the game without permission from Strait Laced Games LLC
 
-As such, this is the new official fork of the game. Visit the page https://ada18980.github.io/KinkiestDungeon/ to play it!
+You may redistribute parts of the code as part of a mod, with the following stipulations:
+- You may not charge for mods or restrict access to unpaid users in any way (passwords, secret links, etc)
+- You may solicit donations (e.g. Patreon) with respect to mods you create
+- You must credit Strait Laced Games LLC
 
 Kinky Contributor License (Takes effect as of March 6 2023):
 Definitions:
