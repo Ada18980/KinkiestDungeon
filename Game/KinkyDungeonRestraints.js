@@ -3091,7 +3091,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 		|| linkableCurrent
 		// We are weak enough to override
 		|| (!KDRestraint(r).enchanted
-			&& (!noOverpower && power < (curse ? (KDCursePower(curse)) : 0) + restraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1) * KinkyDungeonGetLockMult(newLock, undefined, curse)))
+			&& (!noOverpower && power < -0.01 + (curse ? (KDCursePower(curse)) : 0) + restraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1) * KinkyDungeonGetLockMult(newLock, undefined, curse)))
 	) {
 		if (bypasses())
 			return true; // Recursion!!

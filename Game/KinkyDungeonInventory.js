@@ -1641,7 +1641,7 @@ function KinkyDungeonDrawQuickInv() {
 					if (KDInventoryStatus.HideQuickInv) {
 						KDGameData.HiddenItems[item.name] = !KDGameData.HiddenItems[item.name];
 					} else if (KDInventoryStatus.DropQuickInv) {
-						KDSendInput("drop", {item: item.name});
+						KDSendInput("drop", {item: item.item.name});
 					} else if (KDInventoryStatus.SortQuickInv) {
 						if (MouseIn(point.x + H/2, point.y + 30, H/2, V)) {
 							// Sort left
@@ -1655,7 +1655,7 @@ function KinkyDungeonDrawQuickInv() {
 							else if (KDGameData.ItemPriority[item.item?.name|| item.name] < 9) KDGameData.ItemPriority[item.item?.name|| item.name] += 1;
 						}
 					}  else {
-						KDSendInput("consumable", {item: item.name, quantity: 1});
+						KDSendInput("consumable", {item: item.item.name, quantity: 1});
 					}
 					return true;
 				}, true,
@@ -1759,7 +1759,7 @@ function KinkyDungeonDrawQuickInv() {
 					if (KDInventoryStatus.HideQuickInv) {
 						KDGameData.HiddenItems[item.name] = !KDGameData.HiddenItems[item.name];
 					} else if (KDInventoryStatus.DropQuickInv && item.name != "Unarmed") {
-						KDSendInput("drop", {item: item.name});
+						KDSendInput("drop", {item: item.item.name});
 					} else if (KDInventoryStatus.SortQuickInv) {
 						if (MouseIn(point.x + H/2, 1000 - V - Wheight + point.y, H/2, V)) {
 							// Sort left
@@ -2052,7 +2052,7 @@ function KinkyDungeonhandleQuickInv(NoUse) {
 function KDDropItemInv(name, player, playerDropped = true) {
 	let item = KinkyDungeonInventoryGetLoose(name) || KinkyDungeonInventoryGet(name);
 	if (!player) player = KinkyDungeonPlayerEntity;
-	if (item && item.type != Restraint) { // We cant drop equipped items
+	if (item && item.type != Restraint && item.name != KinkyDungeonPlayerWeapon) { // We cant drop equipped items
 		// Drop one of them
 		if (item.quantity > 1) {
 			item.quantity -= 1;

@@ -192,7 +192,7 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 		sfx = "PotionDrink";
 		color = "white";
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, 1);
-	} else if (KinkyDungeonFindConsumable(Item.name)) {
+	} else if (KDConsumable(Item)) {
 		if (KinkyDungeonWeaponVariants[Item.name]) {
 			KDGiveConsumableVariant(KinkyDungeonConsumableVariants[Item.name], undefined);
 			color = "#aaaaff";
@@ -205,7 +205,7 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 			color = "white";
 			KinkyDungeonChangeConsumable(item, 1);
 		}
-	} else if (KinkyDungeonFindWeapon(Item.name)) {
+	} else if (KDWeapon(Item)) {
 		if (KinkyDungeonWeaponVariants[Item.name]) {
 			KDGiveWeaponVariant(KinkyDungeonWeaponVariants[Item.name], undefined);
 			color = "#aaaaff";
@@ -234,7 +234,7 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 	} else if (Item.name == "Keyring") {
 		KDGameData.JailKey = true;
 		KinkyDungeonAggroAction('key', {});
-	} else if (KinkyDungeonGetRestraintByName(Item.name)) {
+	} else if (KDRestraint(Item)) {
 		if (KinkyDungeonRestraintVariants[Item.name]) {
 			KDGiveInventoryVariant(KinkyDungeonRestraintVariants[Item.name], undefined, KinkyDungeonRestraintVariants[Item.name].curse);
 			color = "#aaaaff";
@@ -279,13 +279,26 @@ function KDCanSeeDroppedItem(item) {
 	return true;
 }
 
+/**
+ *
+ * @param {Named} item
+ * @returns {string};
+ */
+function KDGetItemType(item) {
+	if (KDWeapon(item)) return Weapon;
+	if (KDRestraint(item)) return LooseRestraint;
+	if (KDConsumable(item)) return Consumable;
+	if (KDOutfit(item)) return Outfit;
+	return Misc;
+}
+
 function KinkyDungeonDrawItems(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	for (let item of KDMapData.GroundItems) {
-		let sprite = item.name;
-		if (KinkyDungeonGetRestraintByName(item.name)) sprite = "Restraint";
+		let sprite = KDGetItemPreview({name: item.name, type: KDGetItemType(item)})?.preview || (KinkyDungeonRootDirectory + "Items/" + item.name + ".png");
+		//if (KinkyDungeonGetRestraintByName(item.name)) sprite = "Restraint";
 		if (item.x >= CamX && item.y >= CamY && item.x < CamX + KinkyDungeonGridWidthDisplay && item.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(item.x, item.y) > 0) {
 			if (KDCanSeeDroppedItem(item))
-				KDDraw(kditemsboard, kdpixisprites, item.x + "," + item.y + "_" + item.name, KinkyDungeonRootDirectory + "Items/" + sprite + ".png",
+				KDDraw(kditemsboard, kdpixisprites, item.x + "," + item.y + "_" + item.name, sprite,
 					(item.x - CamX)*KinkyDungeonGridSizeDisplay, (item.y - CamY)*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 		}

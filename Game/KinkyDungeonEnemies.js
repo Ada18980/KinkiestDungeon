@@ -5830,13 +5830,13 @@ function KDClearItems(enemy) {
  * @returns {boolean}
  */
 function KDAddLostItemSingle(item, quantity = 1) {
-	if (KinkyDungeonFindWeapon(item)) {
+	if (KDWeapon({name: item})) {
 		KinkyDungeonAddLostItems([{name: item, type: Weapon, id: KinkyDungeonGetItemID()}], false);
 		return true;
-	} else if (KinkyDungeonGetRestraintByName(item) && (KinkyDungeonGetRestraintByName(item).armor || KDRestraintSpecial(item))) {
+	} else if (KDRestraint({name: item}) && (KinkyDungeonGetRestraintByName(item).armor || KDRestraintSpecial(item))) {
 		KinkyDungeonAddLostItems([{name: item, type: LooseRestraint, quantity: 1, id: KinkyDungeonGetItemID()}], false);
 		return true;
-	} else if (KinkyDungeonFindConsumable(item)) {
+	} else if (KDConsumable({name: item})) {
 		KinkyDungeonAddLostItems([{name: item, type: Consumable, quantity: 1, id: KinkyDungeonGetItemID()}], false);
 		return true;
 	}

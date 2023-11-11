@@ -645,7 +645,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 
 	if (!enemy && !bullet && player && spell.components && !KDSpellIgnoreComp(spell)) {
 		for (let c of spell.components) {
-			if (KDSpellComponentTypes[c]?.partialMiscastChance) {
+			if (KDSpellComponentTypes[c]?.partialMiscastChance && KDSpellComponentTypes[c].check(spell, targetX, targetY)) {
 				let partialMiscastChance = KDSpellComponentTypes[c].partialMiscastChance(spell, targetX, targetY);
 				if (partialMiscastChance > 0) {
 					if (lastPartialChance == 0 || KDRandom() < partialMiscastChance) {
