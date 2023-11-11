@@ -1144,6 +1144,10 @@ const KinkyDungeonRestraints = [
 
 	//#region Mithril
 	{inventory: true, name: "MithrilCollar", Asset: "ShinySteelCollar", Color: ['#C9B883', '#C9B883'], Group: "ItemNeck", LinkableBy: [...KDCollarLink], power: 9, weight: -2,
+		Model: "IronCollar",
+		Filters: {
+			BaseMetal: {"gamma":0.6166666666666667,"saturation":1,"contrast":1.3,"brightness":2.4166666666666665,"red":1,"green":1,"blue":1,"alpha":1},
+		},
 		unlimited: true, escapeChance: {"Struggle": -0.1, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		maxwill: 0.25, enemyTags: {"mithrilRestraints":4, 'shopCollar': 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Collars"]},
 	//endregion
@@ -1168,6 +1172,7 @@ const KinkyDungeonRestraints = [
 		events: [{trigger: "tick", type: "barrelDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	// Cage trap
 	{removePrison: true, name: "CageTrap", Asset: "Cage", Color: ['Default', 'Default', '#000000'], Group: "ItemDevices", power: 3, weight: 1, alwaysStruggleable: true,
+		Model: "Cage",
 		DefaultLock: "Red",
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35, "Pick": 0.33, "Unlock": 0.7},
 		helpChance: {"Remove": 0.5, "Pick": 0.5, "Unlock": 1.0},
@@ -1331,11 +1336,11 @@ const KinkyDungeonRestraints = [
 		shrine: ["Leather", "Latex", "Gags", "BallGags"]},
 	{inventory: true, trappable: true, name: "TrapBlindfold", debris: "Belts", Asset: "LeatherBlindfold", LinkableBy: [...KDBlindfoldLink], renderWhenLinked: [...KDBlindfoldLink], Color: "Default", Group: "ItemHead",
 		power: 3, weight: 2,
-		Model: "BlindfoldBasic",
-		Filters: {
+		Model: "BlindfoldLeather",
+		/*Filters: {
 			Blindfold: {"gamma":1,"saturation":1,"contrast":1.8833333333333333,"brightness":0.48333333333333334,"red":1,"green":1,"blue":1,"alpha":1},
 			Rim: {"gamma":1,"saturation":1,"contrast":0.8333333333333333,"brightness":3.1333333333333337,"red":2.5166666666666666,"green":1.1166666666666667,"blue":1.9666666666666666,"alpha":1},
-		},
+		},*/
 		FactionFilters: {
 			Blindfold: {color: "DarkNeutral", override: true},
 			Rim: {color: "Highlight", override: true},
@@ -1344,6 +1349,7 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "ropeAuxiliary": 4, "blindfoldSpell": 10},
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Blindfolds"]},
 	{inventory: true, trappable: true, name: "TrapBoots", debris: "Belts", Asset: "BalletHeels", Color: "Default", Group: "ItemBoots", hobble: 1, power: 3, weight: 2, remove: ["Shoes"],
+		Model: "BalletHeels",
 		maxwill: 0.9, escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.4, "Pick": 0.4}, enemyTags: {"trap":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Boots"]},
 
 	{inventory: true, trappable: true, name: "TrapLegirons", debris: "Chains", Asset: "Irish8Cuffs", LinkableBy: ["Wrapping", "Belts"], Color: "Default", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],
@@ -2083,6 +2089,12 @@ const KinkyDungeonRestraints = [
 	//region ShadowLatex
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexHeels", inaccessible: true, Asset: "FuturisticHeels2", remove: ["Shoes"],
+		Model: "BalletHeels",
+		Filters: {
+			Sole: {"gamma":1.25,"saturation":1,"contrast":1.5333333333333332,"brightness":1,"red":1,"green":1,"blue":2.8666666666666667,"alpha":1},
+			Shoe: {"gamma":1.6,"saturation":0.3833333333333333,"contrast":1.6833333333333333,"brightness":0.43333333333333335,"red":1,"green":1,"blue":1.1166666666666667,"alpha":1},
+		},
+
 		Color: ["#222222", "#4e2a70", "#ffffff", "Default", "#b927a8", "#222222", "#000000"],
 		Group: "ItemBoots", hobble: 1, power: 8, weight: 0,
 		escapeChance: {"Struggle": -0.3, "Cut": -0.05, "Remove": 0.15, "Pick": 0.24},
@@ -2124,6 +2136,10 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.7, enemyTags: {"obsidianRestraints":8}, playerTags: {"ItemMouth3Full":-2, "ItemMouth2Full":2, "ItemMouth1Full":2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Gags", "Obsidian", "Elements", "FlatGags"]},
 	{inventory: true, name: "ObsidianCollar", debris: "Chains", Asset: "OrnateCollar", Color: ["#171222", "#9B63C5"], Group: "ItemNeck", LinkableBy: [...KDCollarLink], power: 9, weight: -2, escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		maxwill: 0.25, enemyTags: {"obsidianRestraints":4, "obsidianNoCuffs": -1000, "obsidianLessCuffs": -3.9, "obsidianCuffs":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Collars", "Obsidian", "Elements", "HighCollars"],
+		Model: "IronCollar",
+		Filters: {
+			BaseMetal: {"gamma":0.95,"saturation":1,"contrast":1.6166666666666665,"brightness":1.7999999999999998,"red":1.0166666666666666,"green":0.9833333333333333,"blue":2.5333333333333337,"alpha":1},
+		},
 		unlimited: true,
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "beforeStruggleCalc", type: "obsidianDebuff", power: 0.15, inheritLinked: true}
