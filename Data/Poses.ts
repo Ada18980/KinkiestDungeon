@@ -16,6 +16,8 @@ let FOREHANDLEFTPOSES = ["Front"];
 let LEGPOSES = ["Spread", "Closed", "Kneel", "KneelClosed", "Hogtie"];
 let FOOTRIGHTPOSES = ["Spread", "Closed"];
 let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel", "KneelClosed"];
+let CALFRIGHTPOSES = ["Spread", "Closed"];
+let CALFLEFTPOSES = ["Spread", "Closed", "Kneel", "KneelClosed", "Hogtie"];
 let KNEELPOSES = ["Kneel", "KneelClosed"];
 let STANDPOSES = ["Spread", "Closed"];
 let CLOSEDPOSES = ["KneelClosed", "Closed"];
@@ -155,7 +157,7 @@ function KDGetAvailablePosesLegs(C: Character): string[] {
 			delete poses.Closed;
 			spread = true;
 		}
-		if (CheckPoseOrTags(C, "Hogties")) {
+		if (CheckPoseOrTags(C, "Hogties") || CheckPoseOrTags(C, "ForceHogtie")) {
 			for (let p of STANDPOSES) {
 				delete poses[p];
 			}

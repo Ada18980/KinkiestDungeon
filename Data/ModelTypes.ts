@@ -100,6 +100,20 @@ interface ModelLayer extends Namable {
 	DisplaceAmount?: number,
 	/** Prevents displacement maps from applying to this item */
 	NoDisplace?: boolean,
+
+	/** Adds a Erase map for heel deletion and such. If the same sprite is in use it wont be duped*/
+	EraseSprite?: string,
+	/** Which layers to apply Erase to */
+	EraseLayers?: Record<string, boolean>,
+	/** MorphPoses but Erase */
+	EraseMorph?: Record<string, string>,
+	/** Amount of Erase */
+	EraseAmount?: number,
+	/** Prevents Erase maps from applying to this item */
+	NoErase?: boolean,
+	/** Invariant displacement */
+	EraseInvariant?: boolean,
+
     /** These layers are ALL REQUIRED to make it appear*/
     RequirePoses?: Record<string, boolean>,
     /** This layer is hidden in this pose*/
@@ -110,6 +124,8 @@ interface ModelLayer extends Namable {
 	GlobalDefaultOverride?: Record<string, boolean>,
 	/** AppendPose does not apply to the displacement map */
 	NoAppendDisplacement?: boolean,
+	/** AppendPose does not apply to the erase map */
+	NoAppendErase?: boolean,
 	/** When this pose is present it appends it to the name. Only one can be appended this way */
 	AppendPose?: Record<string, string>,
 	/** Lists the poses that can be affected by AppendPose*/

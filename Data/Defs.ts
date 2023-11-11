@@ -1,7 +1,10 @@
 let LAYERS_BASE = [
+	"FurnitureFront",
+
 	"HatDeco",
 	"Hat",
 	"Brows", // Brows should get hidden with mask
+	"AnimalEars",
 	"HeadbandDeco",
 	"Headband",
 	"HairFront",
@@ -297,6 +300,8 @@ let LAYERS_BASE = [
 	// Hair and hat back
 	"HairBack",
 	"HatBack",
+
+	"FurnitureBack",
 ];
 
 /** Handy way of referencing multiple layers */
@@ -368,6 +373,26 @@ let LayerGroups = {
 		"AnkleRight",
 		"BindFeet",
 		"OverShoes",
+	]),
+	"Heels": ToMap([
+		"Ankles",
+		"Ankles3",
+		"Ankles2",
+		"Ankles1",
+		"AnkleLeft",
+		"AnkleRight",
+		"BindFeet",
+		"OverShoes",
+		"OverSocks",
+		"FootLeft",
+		"StockingLeft",
+		"FootLeft",
+		"LegLeft",
+		"FootRight",
+		"StockingRight",
+		"FootRight",
+		"LegRight",
+
 	]),
 	// endregion
 

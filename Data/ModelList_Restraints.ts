@@ -232,23 +232,6 @@ AddModel({
 	])
 });
 
-AddModel({
-	Name: "TapeFace",
-	Folder: "GagTape",
-	TopLevel: true,
-	Group: "Mouth",
-	Restraint: true,
-	Categories: ["Restraints","Gags", "Blindfolds", "Masks"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
-	Layers: ToLayerMap([
-		{ Name: "Face", Layer: "Mask", Pri: -50,
-			OffsetX: 942,
-			OffsetY: 200,
-			Invariant: true,
-			InheritColor: "Tape",
-		},
-	])
-});
 
 AddModel({
 	Name: "TapeFull",
@@ -407,51 +390,6 @@ AddModel({
 });
 
 
-
-AddModel({
-	Name: "BlindfoldBasic",
-	Folder: "Blindfold",
-	TopLevel: true,
-	Restraint: true,
-	Categories: ["Restraints", "Blindfolds"],
-	AddPose: ["Blindfolds"],
-	Layers: ToLayerMap([
-		{ Name: "Basic", Layer: "Blindfold", Pri: 0,
-			OffsetX: 942,
-			OffsetY: 200,
-			Invariant: true,
-			HideWhenOverridden: true,
-			InheritColor: "Blindfold",
-		},
-		{ Name: "BasicRim", Layer: "Blindfold", Pri: 0.1,
-			OffsetX: 942,
-			OffsetY: 200,
-			Invariant: true,
-			HideWhenOverridden: true,
-			NoOverride: true,
-			InheritColor: "Rim",
-		},
-	])
-});
-
-
-AddModel({
-	Name: "BlindfoldTape",
-	Folder: "Blindfold",
-	TopLevel: true,
-	Restraint: true,
-	Categories: ["Restraints", "Blindfolds"],
-	AddPose: ["Blindfolds"],
-	Layers: ToLayerMap([
-		{ Name: "Tape", Layer: "Blindfold", Pri: -1,
-			OffsetX: 942,
-			OffsetY: 200,
-			Invariant: true,
-			HideWhenOverridden: true,
-			InheritColor: "Tape",
-		},
-	])
-});
 
 
 AddModel({

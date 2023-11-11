@@ -409,6 +409,8 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 	let ExtraFilters: Record<string, LayerFilter[]> = {};
 	let DisplaceFilters: Record<string, {sprite: any, hash: string, amount: number}[]> = {};
 	let DisplaceFiltersInUse = {};
+	let EraseFilters: Record<string, {sprite: any, hash: string, amount: number}[]> = {};
+	let EraseFiltersInUse = {};
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
 			if (!(drawLayers[m.Name + "," + l.Name] && !ModelLayerHidden(drawLayers, MC, m, l, MC.Poses))) continue;
@@ -455,6 +457,64 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						DisplaceFilters[dg].push(
 							{
 								amount: l.DisplaceAmount || 50,
+								hash: id + m.Name + "," + l.Name,
+								sprite: KDDraw(
+									ContainerContainer.Container,
+									ContainerContainer.SpriteList,
+									id,
+									id,
+									ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
+									rot * Math.PI / 180, {
+										zIndex: -ModelLayers[ll[0]] + (LayerPri(MC, l, m, mods) || 0),
+										anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
+										anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
+										scalex: sx != 1 ? sx : undefined,
+										scaley: sy != 1 ? sy : undefined,
+										alpha: 0.0,
+									}, false,
+									ContainerContainer.SpritesDrawn,
+									Zoom
+								),
+							}
+						);
+					}
+
+				}
+			}
+			// Apply erase
+			if (l.EraseLayers) {
+				for (let ll of Object.entries(l.EraseLayers)) {
+					let id = ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
+					if (EraseFiltersInUse[id]) continue;
+					EraseFiltersInUse[id] = true;
+					// Generic location code
+					let ox = 0;
+					let oy = 0;
+					let ax = 0;
+					let ay = 0;
+					let sx = 1;
+					let sy = 1;
+					let rot = 0;
+					let layer = LayerLayer(MC, l, m, mods);
+					while (layer) {
+						let mod_selected: PoseMod[] = mods[layer] || [];
+						for (let mod of mod_selected) {
+							ox = mod.offset_x || ox;
+							oy = mod.offset_y || oy;
+							ax = mod.rotation_x_anchor || ax;
+							ay = mod.rotation_y_anchor || ay;
+							sx *= mod.scale_x || 1;
+							sy *= mod.scale_y || 1;
+							rot += mod.rotation || 0;
+						}
+						layer = LayerProperties[layer]?.Parent;
+					}
+
+					for (let dg of Object.keys(LayerGroups[ll[0]])) {
+						if (!EraseFilters[dg]) EraseFilters[dg] = [];
+						EraseFilters[dg].push(
+							{
+								amount: l.EraseAmount || 50,
 								hash: id + m.Name + "," + l.Name,
 								sprite: KDDraw(
 									ContainerContainer.Container,
@@ -539,6 +599,23 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [new PIXI.filters.AdjustmentFilter(ef)]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
 							KDAdjustmentFilterCache.set(FilterHash(ef), efilter);
+						}
+						extrafilter.push(...efilter);
+					}
+				}
+				// Add erase filters BEFORE displacement
+				if (!l.NoErase && EraseFilters[origlayer]) {
+					for (let ef of EraseFilters[origlayer]) {
+						let efh = "disp_" + ef.hash;
+						let dsprite = ef.sprite;
+						if (refreshfilters) {
+							KDAdjustmentFilterCache.delete(efh);
+						}
+						let efilter = (KDAdjustmentFilterCache.get(efh) || [new EraseFilter(
+							dsprite,
+						)]);
+						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
+							KDAdjustmentFilterCache.set(efh, efilter);
 						}
 						extrafilter.push(...efilter);
 					}
