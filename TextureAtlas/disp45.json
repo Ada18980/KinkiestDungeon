@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":2032,"h":1366},
 	"sourceSize": {"w":2032,"h":1366}
 },
-"DisplacementMaps/CrotchropeSquish.png":
+"DisplacementMaps/CrotchRopeSquish.png":
 {
 	"frame": {"x":2035,"y":1430,"w":1795,"h":1726},
 	"rotated": false,

@@ -27,7 +27,7 @@ let DisplacementMaps = [
 	"Calf3SquishClosed.png",
 	"Calf3SquishHogtie.png",
 	"Calf3SquishKneelClosed.png",
-	"CrotchropeSquish.png",
+	"CrotchRopeSquish.png",
 	"CuffLeftCrossed.png",
 	"CuffLeftFree.png",
 	"CuffLeftYoked.png",
