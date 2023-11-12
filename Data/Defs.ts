@@ -263,9 +263,11 @@ let LAYERS_BASE = [
 	// External overlaps are fine, e.g. right leg goes over
 	"FootRight",
 	"LegRight",
+	"AnkleLeftHogtie",
 	"ShoeLeftHogtie",
 	"SockLeftHogtie",
 	"FootLeftHogtie",
+	"AnkleRightKneel",
 	"ShoeRightKneel",
 	"SockRightKneel",
 	"FootRightKneel",
@@ -346,6 +348,7 @@ let LayerGroups = {
 		"ShoeRightOver",
 		"SockLeft",
 		"SockRight",
+		"AnkleRightKneel",
 		"ShoeRightKneel",
 		"ShoeLeftHogtie",
 	]),
@@ -620,9 +623,11 @@ let LayerGroups = {
 		"LegLeft",
 		"LegRight",
 
+		"AnkleLeftHogtie",
 		"ShoeLeftHogtie",
 		"SockLeftHogtie",
 		"FootLeftHogtie",
+		"AnkleRightKneel",
 		"ShoeRightKneel",
 		"SockRightKneel",
 		"FootRightKneel",
@@ -646,15 +651,19 @@ let LayerGroups = {
 		"LegLeft",
 		"LegRight",
 
+		"AnkleLeftHogtie",
 		"ShoeLeftHogtie",
 		"SockLeftHogtie",
 		"FootLeftHogtie",
+		"AnkleRightKneel",
 		"ShoeRightKneel",
 		"SockRightKneel",
 		"FootRightKneel",
 	]),
 	"ToeTie": ToMap([
-		"ShoeLeft", "ShoeRight", "ShoeLeftHogtie", "ShoeRightKneel"
+		"ShoeLeft", "ShoeRight", "ShoeLeftHogtie", "ShoeRightKneel",
+		"AnkleLeftHogtie",
+		"AnkleRightKneel",
 	]),
 	// endregion
 
@@ -734,9 +743,11 @@ let LayerGroups = {
 		"LegLeft",
 		"LegRight",
 
+		"AnkleLeftHogtie",
 		"ShoeLeftHogtie",
 		"SockLeftHogtie",
 		"FootLeftHogtie",
+		"AnkleRightKneel",
 		"ShoeRightKneel",
 		"SockRightKneel",
 		"FootRightKneel",
@@ -763,12 +774,16 @@ let LayerGroups = {
 		"ShoeLeftHogtie",
 		"SockLeftHogtie",
 		"FootLeftHogtie",
+		"AnkleLeftHogtie",
+		"AnkleRightKneel",
 		"ShoeRightKneel",
 		"SockRightKneel",
 		"FootRightKneel",
 	]),
 	"RibbonToeTie": ToMap([
-		"ShoeLeft", "ShoeRight", "ShoeLeftHogtie", "ShoeRightKneel"
+		"ShoeLeft", "ShoeRight", "ShoeLeftHogtie", "ShoeRightKneel",
+		"AnkleLeftHogtie",
+		"AnkleRightKneel",
 	]),
 	// endregion
 
@@ -796,6 +811,8 @@ let LayerGroups = {
 		"ShoeLeftHogtie",
 		"SockLeftHogtie",
 		"FootLeftHogtie",
+		"AnkleLeftHogtie",
+		"AnkleRightKneel",
 		"ShoeRightKneel",
 		"SockRightKneel",
 		"FootRightKneel",

@@ -26,7 +26,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 		},
 
-		{ Name: "Chest", Layer: "SuitChest", Pri: -80,
+		{ Name: "Chest", Layer: "BraChest", Pri: 80,
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			DisplacementSprite: "Jacket",

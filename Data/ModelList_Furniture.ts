@@ -23,3 +23,37 @@ AddModel({
 		},
 	])
 });
+
+
+AddModel({
+	Name: "DisplayStand",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Stands"],
+	AddPose: ["Caged"],
+	Layers: ToLayerMap([
+		{ Name: "DisplayFront", Layer: "FurnitureFront", Pri: -50,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "OneBarPrison",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Stands"],
+	AddPose: ["Caged"],
+	Layers: ToLayerMap([
+		{ Name: "OneBarFront", Layer: "TorsoLower", Pri: -50,
+			Poses: ToMap(["Closed", "Spread"]),
+		},
+		{ Name: "OneBarBack", Layer: "FurnitureBack", Pri: 50,
+			Poses: ToMap(["Closed", "Spread"]),
+		},
+	])
+});

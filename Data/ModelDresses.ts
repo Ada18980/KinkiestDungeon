@@ -4,7 +4,9 @@
 let KDModelDresses: {[_: string]: KinkyDungeonDress} = {
 	"Default" : KinkyDungeonDefaultDefaultDress,
 	"Prisoner" : [
-		{Item: "Catsuit", Group: "Suit", Color: "#8A120C", Lost: false},
+		{Item: "Swimsuit", Group: "Suit", Color: "#8A120C", Lost: false, Filters: {
+			Swimsuit: {"gamma":1.5333333333333332,"saturation":0,"contrast":1.7666666666666666,"brightness":1.0166666666666666,"red":2.8000000000000003,"green":1,"blue":1,"alpha":1},
+		}},
 	],
 	"Bandit" : [
 		{Item: "Bandit", Group: "Suit", Color: "Default", Lost: false},

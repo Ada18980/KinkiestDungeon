@@ -53,6 +53,22 @@ AddModel({
 			NoOverride: true,
 			TieToLayer: "BalletRight",
 		},
+
+
+		{ Name: "BalletLaceLeft", Layer: "ShoeLeft", Pri: 50.2,
+			HideWhenOverridden: true,
+			InheritColor: "Laces",
+			Poses: ToMap(["Closed", "Spread"]),
+			NoOverride: true,
+			TieToLayer: "BalletLeft",
+		},
+		{ Name: "BalletLaceRight", Layer: "ShoeRight", Pri: 50.2,
+			HideWhenOverridden: true,
+			InheritColor: "Laces",
+			Poses: ToMap(["Closed", "Spread"]),
+			NoOverride: true,
+			TieToLayer: "BalletRight",
+		},
 	])
 });
 
