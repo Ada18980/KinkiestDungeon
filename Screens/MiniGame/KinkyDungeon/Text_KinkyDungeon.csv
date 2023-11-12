@@ -3563,27 +3563,6 @@ RestraintStuffing,Stuffing
 RestraintStuffingDesc,"A stuffing of cloth."
 RestraintStuffingDesc2,"You could spit it out easily, provided nothing's covering it."
 
-RestraintMithrilRopeHogtie,Mithril Hogtie
-RestraintMithrilRopeHogtieDesc,"It pulls your wrists up to your ankles! So tight!"
-RestraintMithrilRopeHogtieDesc2,"Made of woven mithril and enchanted to require magic blades to cut!"
-RestraintMithrilRopeArms,Mithril Arm Rope
-RestraintMithrilRopeArmsDesc,"Strongly shining ropes."
-RestraintMithrilRopeArmsDesc2,"Made of woven mithril and enchanted to require magic blades to cut!"
-RestraintMithrilRopeLegs,Mithril Leg Rope
-RestraintMithrilRopeLegsDesc,"Strongly shining ropes."
-RestraintMithrilRopeLegsDesc2,"Made of woven mithril and enchanted to require magic blades to cut!"
-RestraintMithrilRopeFeet,Mithril Ankle Rope
-RestraintMithrilRopeFeetDesc,"Strongly shining ropes."
-RestraintMithrilRopeFeetDesc2,"Made of woven mithril and enchanted to require magic blades to cut!"
-RestraintMithrilRopeCrotch,Mithril Crotch Rope
-RestraintMithrilRopeCrotchDesc,"Strongly shining ropes."
-RestraintMithrilRopeCrotchDesc2,"Made of woven mithril and enchanted to require magic blades to cut!"
-RestraintMithrilRopeHarness,Mithril Rope Harness
-RestraintMithrilRopeHarnessDesc,"Strongly shining ropes."
-RestraintMithrilRopeHarnessDesc2,"Made of woven mithril and enchanted to require magic blades to cut!"
-RestraintMithrilRopeToe,Mithril Toe Rope
-RestraintMithrilRopeToeDesc,"Strongly shining ropes."
-RestraintMithrilRopeToeDesc2,"Made of woven mithril and enchanted to require magic blades to cut!"
 
 
 
@@ -3636,6 +3615,52 @@ RestraintMithrilAnkleCuffs3Desc,"A pair of cuffs chaining your feet tightly toge
 RestraintMithrilAnkleCuffs3Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
 KinkyDungeonUnLinkMithrilAnkleCuffs3,"Your ankle cuff chain loosens!"
 
+
+
+RestraintLeatherArmCuffs,Leather Cuffs
+RestraintLeatherArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
+RestraintLeatherArmCuffsDesc2,"Made of tough leather."
+KinkyDungeonLinkLeatherArmCuffs,"The enemy attaches your wrist cuffs together!"
+
+RestraintLeatherArmCuffs2,Wrist Chain
+RestraintLeatherArmCuffs2Desc,"A pair of cuffs keeping your arms behind your back."
+RestraintLeatherArmCuffs2Desc2,"Made of tough leather."
+KinkyDungeonUnLinkLeatherArmCuffs2,"Your cuffs detatch!"
+KinkyDungeonLinkLeatherArmCuffs2,"The enemy attaches your elbow cuffs together!"
+
+RestraintLeatherArmCuffs3,Cuffs Chain
+RestraintLeatherArmCuffs3Desc,"A full set of cuffs keeping your arms in a strict elbow tie!"
+RestraintLeatherArmCuffs3Desc2,"Made of tough leather."
+KinkyDungeonUnLinkLeatherArmCuffs3,"Your wrists detatch, leaving your elbows still bound!"
+
+RestraintLeatherArmCuffs4,Elbow Chain
+RestraintLeatherArmCuffs4Desc,"A pair of cuffs keeping your elbows locked together!."
+RestraintLeatherArmCuffs4Desc2,"Made of tough leather."
+KinkyDungeonUnLinkLeatherArmCuffs4,"Your elbows detatch!"
+KinkyDungeonLinkLeatherArmCuffs4,"The enemy attaches your wrist cuffs back together!"
+
+RestraintLeatherLegCuffs,Leather Leg Cuffs
+RestraintLeatherLegCuffsDesc,"A pair of cuffs on your legs."
+RestraintLeatherLegCuffsDesc2,"Made of tough leather."
+KinkyDungeonLinkLeatherLegCuffs,"The enemy attaches your leg cuffs together!"
+RestraintLeatherLegCuffs2,Thigh Chain
+RestraintLeatherLegCuffs2Desc,"A pair of cuffs chaining your legs together."
+RestraintLeatherLegCuffs2Desc2,"Made of tough leather."
+KinkyDungeonUnLinkLeatherLegCuffs2,"The leg cuff chain detaches!"
+
+RestraintLeatherAnkleCuffs,Leather Ankle Cuffs
+RestraintLeatherAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintLeatherAnkleCuffsDesc2,"Made of tough leather."
+KinkyDungeonLinkLeatherAnkleCuffs,"The enemy attaches your ankle cuffs together!"
+RestraintLeatherAnkleCuffs2,Ankle Chain
+RestraintLeatherAnkleCuffs2Desc,"A pair of cuffs chaining your legs together."
+RestraintLeatherAnkleCuffs2Desc2,"Made of tough leather."
+KinkyDungeonUnLinkLeatherAnkleCuffs2,"The ankle cuff chain detaches!"
+KinkyDungeonLinkLeatherAnkleCuffs2,"Your ankle cuff chain is tightened and pulls your feet together!"
+RestraintLeatherAnkleCuffs3,Ankle Chain
+RestraintLeatherAnkleCuffs3Desc,"A pair of cuffs chaining your feet tightly together."
+RestraintLeatherAnkleCuffs3Desc2,"Made of tough leather."
+KinkyDungeonUnLinkLeatherAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 RestraintStickySlime,Sticky Slime
 RestraintStickySlimeDesc,"A sticky layer of slime keeping you anchored to the ground."
@@ -3992,36 +4017,6 @@ KinkyDungeonUnLinkMagneticAnkleCuffs2,"Your ankle cuffs detatch!"
 
 
 
-RestraintLeatherArmCuffs,Leather Cuffs
-RestraintLeatherArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
-RestraintLeatherArmCuffsDesc2,"They're made of tough leather."
-KinkyDungeonLinkLeatherArmCuffs,"The enemy attaches your wrist cuffs together!"
-
-RestraintLeatherArmCuffs2,Wrist Chain
-RestraintLeatherArmCuffs2Desc,"A pair of cuffs keeping your arms behind your back."
-RestraintLeatherArmCuffs2Desc2,"They're made of tough leather."
-KinkyDungeonUnLinkLeatherArmCuffs2,"Your cuffs detatch!"
-KinkyDungeonLinkLeatherArmCuffs2,"The enemy attaches your elbow cuffs together!"
-
-RestraintLeatherArmCuffs3,Cuffs Chain
-RestraintLeatherArmCuffs3Desc,"A full set of cuffs keeping your arms in a strict elbow tie!"
-RestraintLeatherArmCuffs3Desc2,"They're made of tough leather."
-KinkyDungeonUnLinkLeatherArmCuffs3,"Your wrists detatch, leaving your elbows still bound!"
-
-RestraintLeatherArmCuffs4,Elbow Chain
-RestraintLeatherArmCuffs4Desc,"A pair of cuffs keeping your elbows locked together!."
-RestraintLeatherArmCuffs4Desc2,"They're made of tough leather."
-KinkyDungeonUnLinkLeatherArmCuffs4,"Your elbows detatch!"
-KinkyDungeonLinkLeatherArmCuffs4,"The enemy attaches your wrist cuffs back together!"
-
-RestraintLeatherLegCuffs,Leather Leg Cuffs
-RestraintLeatherLegCuffsDesc,"A pair of cuffs on your legs."
-RestraintLeatherLegCuffsDesc2,"They're made of tough leather."
-KinkyDungeonLinkLeatherLegCuffs,"The enemy attaches your leg cuffs together!"
-RestraintLeatherLegCuffs2,Thigh Chain
-RestraintLeatherLegCuffs2Desc,"A pair of cuffs chaining your legs together."
-RestraintLeatherLegCuffs2Desc2,"They're made of tough leather."
-KinkyDungeonUnLinkLeatherLegCuffs2,"The leg cuff chain detaches!"
 
 
 
@@ -11983,6 +11978,10 @@ RestraintRopeSnakeLegsDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeFeet,Ankle Ropes
 RestraintRopeSnakeFeetDesc,"A tie keeping your feet secured together."
 RestraintRopeSnakeFeetDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeToes,Toe Rope
+RestraintRopeSnakeToesDesc,"A tie keeping your feet tightly together."
+RestraintRopeSnakeToesDesc2,"The ropes squeeze you gently."
+
 
 KinkyDungeonInventoryItemLore,"Notebook Page"
 

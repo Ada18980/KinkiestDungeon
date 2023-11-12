@@ -139,9 +139,9 @@ interface KDRestraintPropsBase {
 	Filters?: Record<string, LayerFilter>,
 	/** TODO Used in standalone to indicate which faction colors map to which filter
 	 * color is the faction color type
-	 * override is whether the faction color overrides the filter. If true it will replace the filter in the model. If false it will apply it over the model's filter.
+	 * override is whether the faction color overrides the filter. If true it will replace the filter in the model. If false it will apply it over the model's filter. Currently unused
 	*/
-	FactionFilters?: Record<string, {color: string, override: boolean}>,
+	factionFilters?: Record<string, {color: string, override: boolean}>,
 	/** This item is unaffected by shrines */
 	noShrine?:boolean,
 	/** This item is beneficial and player wont try to struggle from it */
@@ -445,6 +445,7 @@ interface KDRestraintPropsBase {
 	special?: boolean,
 	/** Faction color index */
 	factionColor?: number[][],
+
 	/** Determines if it gets hidden by the 'Hide Armor' option */
 	armor?: boolean,
 	/** The item can be linked by anything */
@@ -606,6 +607,8 @@ interface overrideDisplayItem {
 	Filters?: Record<string, LayerFilter>,
 	/** Faction color index */
 	factionColor?: number[][],
+	/** Faction filter index */
+	factionFilters?: Record<string, {color: string, override: boolean}>,
 	/** Property for BC compat */
 	Property?: any,
 	/** Whether or not it overrides items already on */
@@ -1372,6 +1375,7 @@ interface entity {
 	// Direction
 	flip?: boolean,
 
+	sprinted?: boolean,
 	exertion?: number,
 
 	// Custom play line
@@ -2780,6 +2784,8 @@ interface KDSFXGroup {
 interface KDEnemyAction {
 	/** Enemy will not willingly let go of leashes during this action */
 	holdleash?: boolean;
+	/** Enemy will sprint during this action */
+	sprint?: boolean;
 	end?: (enemy) => void;
 	maintain: (enemy, delta) => boolean;
 }

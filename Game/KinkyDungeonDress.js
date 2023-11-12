@@ -649,19 +649,29 @@ function KinkyDungeonWearForcedClothes(restraints, C) {
 
 					if (!canReplace) {return;}
 					if (KDProtectedCosplay.includes(dress.Group)){return;}
-					let filters = dress.Filters;
+					let filters = Object.assign({}, dress.Filters || {});
 					/** @type string|string[] */
 					let color = (typeof dress.Color === "string") ? [dress.Color] : dress.Color;
 					let faction = inv.faction;
-					if (inv.faction)
-						if (dress.factionColor && faction && KinkyDungeonFactionColors[faction]) {
-							for (let ii = 0; ii < dress.factionColor.length; ii++) {
-								for (let n of dress.factionColor[ii]) {
-									if (KinkyDungeonFactionColors[faction][ii])
-										color[n] = KinkyDungeonFactionColors[faction][ii]; // 0 is the primary color
+					if (inv.faction) {
+						if (StandalonePatched) {
+							if (dress.factionFilters && faction && KinkyDungeonFactionFilters[faction]) {
+								for (let f of Object.entries(dress.factionFilters)) {
+									if (KinkyDungeonFactionFilters[faction][f[1].color])
+										filters[f[0]] = KinkyDungeonFactionFilters[faction][f[1].color]; // 0 is the primary color
+								}
+							}
+						} else {
+							if (dress.factionColor && faction && KinkyDungeonFactionColors[faction]) {
+								for (let ii = 0; ii < dress.factionColor.length; ii++) {
+									for (let n of dress.factionColor[ii]) {
+										if (KinkyDungeonFactionColors[faction][ii])
+											color[n] = KinkyDungeonFactionColors[faction][ii]; // 0 is the primary color
+									}
 								}
 							}
 						}
+					}
 					if (dress.useHairColor && InventoryGet(C, "HairFront")) color = InventoryGet(C, "HairFront").Color;
 					let item = KDInventoryWear(dress.Item, dress.Group, inv.name, color, filters);
 
@@ -782,19 +792,19 @@ function KDApplyItem(inv, tags) {
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
 		let faction = inv.faction ? inv.faction : "";
 
-		// TODO faction color system
+		// faction color system
 		let color = (typeof restraint.Color === "string") ? [restraint.Color] : restraint.Color;
-		if (restraint.factionColor && faction && KinkyDungeonFactionColors[faction]) {
-			for (let i = 0; i < restraint.factionColor.length; i++) {
-				for (let n of restraint.factionColor[i]) {
-					color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
-				}
+		let filters = Object.assign({}, restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters || {});
+
+		if (restraint.factionFilters && faction && KinkyDungeonFactionFilters[faction]) {
+			for (let f of Object.entries(restraint.factionFilters)) {
+				if (KinkyDungeonFactionFilters[faction][f[1].color])
+					filters[f[0]] = KinkyDungeonFactionFilters[faction][f[1].color];
 			}
 		}
 
-
 		let data = {
-			Filters: restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters || {},
+			Filters: filters,
 			faction: faction,
 		};
 		KinkyDungeonSendEvent("apply", data);
