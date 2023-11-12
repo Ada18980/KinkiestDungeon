@@ -2712,8 +2712,6 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					enemy.attackPoints = 0;
 					enemy.warningTiles = [];
 
-					KDEnemyChangeSprint(enemy, -delta);
-
 					// Also let go of leashes here
 					if (enemy == KinkyDungeonLeashingEnemy() && (
 						!enemy.playWithPlayer
@@ -2732,6 +2730,10 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					KDEnemyAddSound(enemy, enemy.Enemy.Sound?.moveAmount != undefined ? enemy.Enemy.Sound?.moveAmount : KDDefaultEnemyMoveSound);
 				}
 
+				if (enemy.movePoints == 0 && enemy.attackPoints == 0 && !(enemy.warningTiles?.length > 0) && !enemy.sprinted) {
+					KDEnemyChangeSprint(enemy, -delta);
+				}
+				enemy.sprinted = false;
 
 				KinkyDungeonHandleTilesEnemy(enemy, delta);
 
@@ -3645,7 +3647,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							KinkyDungeonSetEnemyFlag(enemy, "failpath", 20);
 						}
 						else if (KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
-							if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y)) AIData.moved = true;
+							if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y, true)) AIData.moved = true;
 							if (AIData.moved && splice && enemy.path) enemy.path.splice(0, 1);
 							AIData.idle = false;
 
@@ -3653,7 +3655,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							if (AIData.moved) {
 								dir = enemy.movePoints >= 1 ? KDGetDir(enemy, player, KinkyDungeonGetDirection) : KDGetDir(enemy, player);
 								if (KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
-									if (!KinkyDungeonEnemyTryMove(enemy, dir, 0, enemy.x + dir.x, enemy.y + dir.y)) {
+									if (!KinkyDungeonEnemyTryMove(enemy, dir, 0, enemy.x + dir.x, enemy.y + dir.y, true)) {
 										// Use up spare move points
 										enemy.fx = enemy.x + dir.x;
 										enemy.fy = enemy.y + dir.y;
@@ -3740,14 +3742,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							&& enemy.y + dir.y == enemy.gy
 						) || !KDPointWanderable(enemy.gx, enemy.gy) || !KDPointWanderable(enemy.x, enemy.y) || KDPointWanderable(enemy.x + dir.x, enemy.y + dir.y))
 						&& KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
-						if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y)) AIData.moved = true;
+						if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y, enemy.action && KDEnemyAction[enemy.action]?.sprint)) AIData.moved = true;
 						if (AIData.moved && splice && enemy.path) enemy.path.splice(0, 1);
 						AIData.idle = false;// If we moved we will pick a candidate for next turns attempt
 						if (AIData.moved) {
 							dir = enemy.movePoints >= 1 ? KDGetDir(enemy, {x: enemy.gx, y: enemy.gy}, KinkyDungeonGetDirection)
 								: KDGetDir(enemy, {x: enemy.gx, y: enemy.gy});
 							if (KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
-								if (!KinkyDungeonEnemyTryMove(enemy, dir, 0, enemy.x + dir.x, enemy.y + dir.y)) {
+								if (!KinkyDungeonEnemyTryMove(enemy, dir, 0, enemy.x + dir.x, enemy.y + dir.y, enemy.action && KDEnemyAction[enemy.action]?.sprint)) {
 									// Use up spare move points
 									enemy.fx = enemy.x + dir.x;
 									enemy.fy = enemy.y + dir.y;
@@ -4953,11 +4955,12 @@ function KinkyDungeonEntityAt(x, y, requireVision, vx, vy) {
 
 let KDDefaultEnemySprint = 1.5;
 
-function KinkyDungeonEnemyTryMove(enemy, Direction, delta, x, y) {
+function KinkyDungeonEnemyTryMove(enemy, Direction, delta, x, y, canSprint) {
 	let speedMult = KinkyDungeonGetBuffedStat(enemy.buffs, "MoveSpeed") ? KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(enemy.buffs, "MoveSpeed")) : 1;
-	if (KDEnemyCanSprint(enemy)) {
+	if (canSprint && KDEnemyCanSprint(enemy)) {
 		speedMult *= enemy.Enemy.sprintspeed || KDDefaultEnemySprint;
 		KDEnemyChangeSprint(enemy, delta);
+		enemy.sprinted = true;
 	}
 
 	if (enemy.bind > 0) enemy.movePoints += speedMult * delta/10;

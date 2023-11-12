@@ -3937,5 +3937,6 @@ let KDEnemyAction = {
 			// Stops investigating if alerted
 			return !(enemy.idle || (KinkyDungeonAggressive(enemy) && enemy.aware) || enemy.attackPoints || KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) <= 1.5);
 		},
+		sprint: true,
 	},
 };

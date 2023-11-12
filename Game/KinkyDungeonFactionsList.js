@@ -15,6 +15,64 @@ let KinkyDungeonFactionColors = {
 	"Witch": ["#222222", "#8359b3"],
 };
 
+let KinkyDungeonFactionFilters = {
+	"Jail": {
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":2.4,"green":1,"blue":1,"alpha":1},
+	},
+	"Bountyhunter": {
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0.1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+	},
+	"Dressmaker": {
+		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1.7666666666666666,"green":1,"blue":2.4166666666666665,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0.11666666666666667,"contrast":1.3166666666666664,"brightness":2.3000000000000003,"red":1,"green":1,"blue":1,"alpha":1},
+	},
+	"Dollsmith": {
+		// Tis inverted, light is dark and dark is light
+		LightNeutral: {"gamma":1.4166666666666665,"saturation":0.1,"contrast":2.05,"brightness":0.3,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.4166666666666665,"green":1,"blue":1.76,"alpha":1},
+		Highlight: {"gamma":1.4166666666666665,"saturation":0.1,"contrast":2.05,"brightness":0.3,"red":1,"green":1,"blue":1,"alpha":1},
+	},
+	"Latex": {
+		DarkNeutral: {"gamma":0.8333333333333333,"saturation":1,"contrast":1.2,"brightness":1.2,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0.11666666666666667,"contrast":1.3166666666666664,"brightness":2.3000000000000003,"red":1,"green":1,"blue":1,"alpha":1},
+	},
+	"Slime": {
+		DarkNeutral: {"gamma":0.8,"saturation":1,"contrast":0.8666666666666667,"brightness":1.4166666666666665,"red":2.05,"green":1,"blue":2.15,"alpha":1},
+		Highlight: {"gamma":0.8,"saturation":1,"contrast":0.8666666666666667,"brightness":1.4166666666666665,"red":2.05,"green":1,"blue":2.15,"alpha":1},
+	},
+	"Alchemist": {
+		DarkNeutral: {"gamma":0.8333333333333333,"saturation":1,"contrast":1.2,"brightness":1.2,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0.11666666666666667,"contrast":1.3166666666666664,"brightness":2.3000000000000003,"red":1,"green":2.466666666666667,"blue":1,"alpha":1},
+	},
+	"Apprentice": {
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":2.4,"alpha":1},
+	},
+	"Witch": {
+		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.6333333333333334,"red":1.3,"green":1,"blue":1.5333333333333332,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0,"contrast":1.4833333333333334,"brightness":1.35,"red":0.48333333333333334,"green":0.6666666666666666,"blue":0.8666666666666667,"alpha":1},
+	},
+	"AncientRobot": {
+		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":2.4166666666666665,"alpha":1},
+		Highlight: {"gamma":1,"saturation":1,"contrast":1.0833333333333335,"brightness":1.6833333333333333,"red":0.55,"green":1.9666666666666666,"blue":1.8333333333333333,"alpha":1},
+	},
+	"Mushy": {
+		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.6333333333333334,"red":1.3,"green":1,"blue":1.5333333333333332,"alpha":1},
+		Highlight: {"gamma":1,"saturation":1,"contrast":1.0833333333333335,"brightness":1.6833333333333333,"red":0.55,"green":1.9666666666666666,"blue":1.8333333333333333,"alpha":1},
+	},
+	"Bast": {
+		// DarkNeutral is much lighter than usual
+		DarkNeutral: {"gamma":1.4166666666666665,"saturation":0,"contrast":1,"brightness":1.1333333333333333,"red":1.3666666666666667,"green":1.2333333333333334,"blue":1,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":2.4,"blue":1,"alpha":1},
+	},
+	"Elf": {
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":2.4,"blue":1,"alpha":1},
+		Highlight: {"gamma":1.4166666666666665,"saturation":0,"contrast":1,"brightness":1.1333333333333333,"red":1.3666666666666667,"green":1.2333333333333334,"blue":1,"alpha":1},
+	},
+};
+
 /**
  * @type {Record<string, KDFactionProps>}
  */
