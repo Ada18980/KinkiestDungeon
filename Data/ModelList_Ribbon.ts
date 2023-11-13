@@ -264,7 +264,7 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
-		{ Name: "Crotch", Layer: "HarnessMid", Pri: 1,
+		{ Name: "Crotch", Layer: "HarnessMid", Pri: -105,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 			InheritColor: "Ribbon",
@@ -273,7 +273,7 @@ AddModel({
 			DisplaceLayers: ToMap(["RibbonTorso"]),
 
 		},
-		{ Name: "CrotchStrap", Layer: "HarnessMid", Pri: 0,
+		{ Name: "CrotchStrap", Layer: "HarnessMid", Pri: -105.1,
 			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			Invariant: true,
 			InheritColor: "Ribbon",

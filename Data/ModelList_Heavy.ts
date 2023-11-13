@@ -7,6 +7,31 @@
 
 
 
+
+AddModel({
+	Name: "JacketArmbinder",
+	Folder: "Jacket",
+	Parent: "Jacket",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Jacket", "Leather"],
+	Layers: ToLayerMap([
+		{ Name: "Arms", Layer: "SleeveLeft", Pri: 90,
+			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
+			SwapLayerPose: {Crossed: "SleevesCrossArms"},
+			GlobalDefaultOverride: ToMap(["Crossed"]),
+			DisplacementSprite: "Jacket",
+			DisplaceAmount: 60,
+			DisplaceLayers: ToMap(["ArmsAll"]),
+		},
+		{ Name: "BeltsArms", Layer: "BindArmLeft", Pri: 3,
+			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
+			SwapLayerPose: {Crossed: "BindCrossArms"},
+			GlobalDefaultOverride: ToMap(["Crossed"]),
+		},
+	])
+});
+
 AddModel({
 	Name: "Jacket",
 	Folder: "Jacket",
@@ -17,7 +42,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Arms", Layer: "SleeveLeft", Pri: 90,
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
-			SwapLayerPose: {Crossed: "BindCrossArms"},
+			SwapLayerPose: {Crossed: "SleevesCrossArms"},
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 		},
 		{ Name: "BeltsArms", Layer: "BindArmLeft", Pri: 3,
@@ -25,7 +50,6 @@ AddModel({
 			SwapLayerPose: {Crossed: "BindCrossArms"},
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 		},
-
 		{ Name: "Chest", Layer: "BraChest", Pri: 80,
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
 			GlobalDefaultOverride: ToMap(["Crossed"]),
@@ -39,6 +63,7 @@ AddModel({
 		},
 	])
 });
+
 
 AddModel({
 	Name: "JacketStraps",
@@ -64,5 +89,50 @@ AddModel({
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
 			InheritColor: "BeltsChest",
 		},
+	])
+});
+
+
+AddModel({
+	Name: "JacketArmbinderSecure",
+	Folder: "Jacket",
+	Parent: "Jacket",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Jacket", "Leather"],
+	Layers: ToLayerMap([
+		{ Name: "Arms", Layer: "SleeveLeft", Pri: 90,
+			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
+			SwapLayerPose: {Crossed: "SleevesCrossArms"},
+			GlobalDefaultOverride: ToMap(["Crossed"]),
+			DisplacementSprite: "Jacket",
+			DisplaceAmount: 60,
+			DisplaceLayers: ToMap(["ArmsAll"]),
+		},
+		...GetModelLayers("JacketStraps"),
+	])
+});
+
+AddModel({
+	Name: "JacketBolero",
+	Folder: "Jacket",
+	Parent: "Jacket",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Jacket", "Leather"],
+	Layers: ToLayerMap([
+		{ Name: "Arms", Layer: "SleeveLeft", Pri: 90,
+			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
+			SwapLayerPose: {Crossed: "SleevesCrossArms"},
+			GlobalDefaultOverride: ToMap(["Crossed"]),
+		},
+		{ Name: "ChestBolero", Layer: "BraChest", Pri: 80,
+			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
+			GlobalDefaultOverride: ToMap(["Crossed"]),
+			DisplacementSprite: "Jacket",
+			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["ArmsAll"]),
+		},
+		...GetModelLayers("JacketStraps"),
 	])
 });

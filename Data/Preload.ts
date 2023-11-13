@@ -144,10 +144,14 @@ let DisplacementMaps = [
 	"JacketBoxtie.png",
 	"JacketWristtie.png",
 	"JacketCrossed.png",
+
+	"JacketArmsBoxtie.png",
+	"JacketArmsWristtie.png",
+	"JacketArmsCrossed.png",
 ];
 
 let linearList = [
-	"TextureAtlas/atlas0.json",
+	//"TextureAtlas/atlas0.json",
 	...DisplacementMaps.map((e) => {return "DisplacementMaps/" + e;}),
 ];
 

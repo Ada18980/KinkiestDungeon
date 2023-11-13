@@ -115,6 +115,7 @@ let LAYERS_BASE = [
 	"BindCrossArmRight",
 
 	// Crossed arms -- order is inverted
+	"SleevesCrossArms",
 	"CrossGloveRight",
 	"CrossArmRight",
 	"CrossGloveLeft",
@@ -378,13 +379,6 @@ let LayerGroups = {
 		"OverShoes",
 	]),
 	"Heels": ToMap([
-		"Ankles",
-		"Ankles3",
-		"Ankles2",
-		"Ankles1",
-		"AnkleLeft",
-		"AnkleRight",
-		"BindFeet",
 		"OverShoes",
 		"OverSocks",
 		"FootLeft",
