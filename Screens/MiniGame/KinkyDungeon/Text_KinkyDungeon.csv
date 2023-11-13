@@ -4928,6 +4928,14 @@ KinkyDungeonInfernoBurn,The roaring inferno deals 10 damage to you!
 KinkyDungeonSpellPeasant,The Reaping
 KinkyDungeonSpellDescriptionPeasant,"+20% damage to plants"
 
+KinkyDungeonSpellPeasantPenalty,Magically Iliterate
+KinkyDungeonSpellDescriptionPeasantPenalty,"You've never read a magic book. Elemental, Conjuration, and Illusion spells cost 3x as many spell points."
+
+KinkyDungeonSpellPeasantPenalty1,Magical Spark
+KinkyDungeonSpellDescriptionPeasantPenalty1,"Reduce the penalty from Magically Iliterate to 2x."
+KinkyDungeonSpellPeasantPenalty2,Magical Training
+KinkyDungeonSpellDescriptionPeasantPenalty2,"Remove the penalty from Magically Iliterate."
+
 KinkyDungeonSpellSowing,Reap What You Sow
 KinkyDungeonSpellDescriptionSowing,"Defeating a non-humanoid enemy causes vines to sprout on their space temporarily."
 

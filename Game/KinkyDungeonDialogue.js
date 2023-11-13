@@ -1298,7 +1298,7 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance, item
 		let item = items[i];
 		shop.options["Item" + i] = {playertext: "ItemShop" + i, response: name + item,
 			prerequisiteFunction: (gagged, player) => {
-				return KinkyDungeonInventoryGet(item) != undefined;
+				return KinkyDungeonInventoryGetSafe(item) != undefined;
 			},
 			greyoutFunction: (gagged, player) => {
 				let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
@@ -1309,10 +1309,10 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance, item
 			},
 			greyoutTooltip: "KDNotEnoughMoneyVendor",
 			clickFunction: (gagged, player) => {
-				let itemInv = KinkyDungeonInventoryGet(item);
+				let itemInv = KinkyDungeonInventoryGetSafe(item);
 				if (itemInv.type == Consumable)
 					KinkyDungeonChangeConsumable(KDConsumable(itemInv), -1);
-				else KinkyDungeonInventoryRemove(itemInv);
+				else KinkyDungeonInventoryRemoveSafe(itemInv);
 				let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 				if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 					let faction = KDGetFactionOriginal(enemy);
