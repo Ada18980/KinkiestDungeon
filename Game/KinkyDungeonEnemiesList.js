@@ -1575,7 +1575,7 @@ let KinkyDungeonEnemies = [
 		GFX: {
 			lighting: true,
 		},
-		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless", "temporary",
 			"soulimmune", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "glueresist", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]), spellResist: 0, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
@@ -1601,7 +1601,7 @@ let KinkyDungeonEnemies = [
 		GFX: {
 			lighting: true,
 		},
-		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless", "plant", "vine",
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless", "plant", "vine", "temporary",
 			"soulimmune", "slashweakness", "fireweakness", "crushresist", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]), spellResist: 0, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, regen: 0.05,
@@ -1628,7 +1628,7 @@ let KinkyDungeonEnemies = [
 		GFX: {
 			lighting: true,
 		},
-		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless", "temporary",
 			"soulimmune", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "glueresist", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]), spellResist: 0, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 1, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
@@ -1655,7 +1655,7 @@ let KinkyDungeonEnemies = [
 		GFX: {
 			lighting: true,
 		},
-		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless", "temporary",
 			"soulimmune", "slashresist", "pierceresist", "electricimmune", "unarmedresist", "chainimmune", "glueresist", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]), spellResist: 0, sneakThreshold: 0.01, immobile: true,
 		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, blockVision: true,
@@ -1685,7 +1685,7 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["construct"],
 		},
-		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless", "temporary",
 			"soulimmune", "electricimmune", "acidweakness", "meleeresist", "glueresist", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]), spellResist: 0, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
@@ -1714,7 +1714,7 @@ let KinkyDungeonEnemies = [
 			profile: ["construct"],
 		},
 		ondeath: [{type: "spellOnSelf", spell: "ShadowGrasp"}],
-		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless", "temporary",
 			"soulimmune", "electricimmune", "acidweakness", "meleeresist", "glueresist", "tickleimmune", "coldimmune", "gropeimmune", "painimmune", "charmimmune",
 		]), spellResist: 1, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 1, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
@@ -1737,7 +1737,7 @@ let KinkyDungeonEnemies = [
 			baseAmount: 0,
 			moveAmount: 0,
 		},
-		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless", "temporary",
 			"soulimmune", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "glueresist", "acidweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]), spellResist: 1, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 1, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
@@ -1763,7 +1763,7 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["construct"],
 		},
-		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
+		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless", "temporary",
 			"soulimmune", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "glueresist", "acidweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]), spellResist: 3, sneakThreshold: 0.01,
 		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, regen: 1,
@@ -1786,7 +1786,7 @@ let KinkyDungeonEnemies = [
 			baseAmount: 0,
 			moveAmount: 0,
 		},
-		tags: KDMapInit(["obstacledoor", "shadow", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune",
+		tags: KDMapInit(["obstacledoor", "shadow", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "temporary",
 			"soulimmune", "meleeresist", "fireweakness", "glueresist", "coldimmune", "tickleresist", "groperesist", "painresist", "charmimmune", "shadowHands", "ghost",
 		]), spellResist: 1, sneakThreshold: 0.01,
 		evasion: -1, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, regen: 0.25,
@@ -1811,7 +1811,7 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["construct"],
 		},
-		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "air",
+		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "air", "temporary",
 			"poisonimmune", "soulimmune", "meleeresist", "pierceimmune", "stunweakness", "glueweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]),
 		spellResist: 0, armor: 0,
@@ -1836,7 +1836,7 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["construct"],
 		},
-		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "electric",
+		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "electric", "temporary",
 			"poisonimmune", "soulimmune", "electricresist", "crushweakness", "acidweakness", "iceweakness", "glueweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]),
 		spellResist: 0, armor: 2,
@@ -1860,7 +1860,7 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["construct"],
 		},
-		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "fire",
+		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "fire", "temporary",
 			"poisonimmune", "soulimmune", "fireimmune", "pierceresist", "acidsevereweakness", "iceweakness", "glueweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]),
 		spellResist: 1, armor: 2,
@@ -1886,7 +1886,7 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["construct"],
 		},
-		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "earth",
+		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "earth", "temporary",
 			"poisonimmune", "soulimmune", "crushweakness", "meleeresist", "chainweakness", "stunweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]),
 		spellResist: 0, armor: 1,
@@ -1910,7 +1910,7 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["construct"],
 		},
-		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "ice",
+		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "ice", "temporary",
 			"poisonimmune", "soulimmune", "crushweakness", "iceimmune", "fireweakness", "stunweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]),
 		spellResist: 0, armor: 1,
@@ -1934,7 +1934,7 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["construct"],
 		},
-		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "water",
+		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "water", "temporary",
 			"poisonweakness", "iceweakness", "soulimmune", "fireresist", "meleeresist", "pierceimmune", "acidimmune", "glueweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]),
 		spellResist: 0, armor: 0,
