@@ -2735,7 +2735,7 @@ let KDEventMapSpell = {
 	},
 	"canSprint": {
 		"VaultBasic": (e, spell, data) => {
-			if (!data.passThru) {
+			if (!data.passThru && KinkyDungeonSlowLevel < 2) {
 				let enemy = KinkyDungeonEntityAt(data.nextPosx, data.nextPosy);
 				if (enemy && !enemy?.player && !KDIsImmobile(enemy)
 					&& (KDIsFlying(enemy) || enemy.vulnerable || KinkyDungeonIsSlowed(enemy) || KinkyDungeonIsDisabled(enemy))) {
@@ -2744,7 +2744,7 @@ let KDEventMapSpell = {
 			}
 		},
 		"Vault": (e, spell, data) => {
-			if (!data.passThru) {
+			if (!data.passThru && KinkyDungeonSlowLevel < 2) {
 				let enemy = KinkyDungeonEntityAt(data.nextPosx, data.nextPosy);
 				if (enemy && !enemy?.player && !KDIsImmobile(enemy)) {
 					data.passThru = true;
