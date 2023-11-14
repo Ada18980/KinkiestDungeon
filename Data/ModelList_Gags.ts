@@ -13,7 +13,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceGag"],
+	AddPose: ["HideMouth", "FaceGag", "StuffMouth"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 1,
 			Sprite: "Ball",
@@ -56,7 +56,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceBigGag"],
+	AddPose: ["HideMouth", "FaceBigGag", "StuffMouth"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 1,
 			Sprite: "BigBall",
@@ -96,7 +96,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["HideMouth", "FaceCoverGag", "StuffMouth"],
 	Layers: ToLayerMap([
 		{ Name: "Panel", Layer: "GagFlat", Pri: 5,
 			Sprite: "Panel",
@@ -138,7 +138,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["HideMouth", "FaceCoverGag", "StuffMouth"],
 	Layers: ToLayerMap([
 		{ Name: "Muzzle", Layer: "GagMuzzle", Pri: 3,
 			Sprite: "Muzzle",
@@ -222,7 +222,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceGag"],
+	AddPose: ["HideMouth", "StuffMouth", "FaceGag"],
 	Layers: ToLayerMap([
 		{ Name: "Stuffing", Layer: "GagUnder", Pri: -100,
 			OffsetX: 942,
@@ -297,7 +297,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth"],
+	AddPose: ["HideMouth", "Mouth"],
 	Layers: ToLayerMap([
 		{ Name: "Wrap", Layer: "GagOver", Pri: -45,
 			OffsetX: 942,
@@ -355,7 +355,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "FaceGag"],
 	Layers: ToLayerMap([
 		{ Name: "CleaveThick", Layer: "Gag", Pri: -20,
 			OffsetX: 942,
@@ -375,7 +375,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "FaceGag"],
 	Layers: ToLayerMap([
 		{ Name: "Knot", Layer: "Gag", Pri: 0,
 			OffsetX: 942,
@@ -442,6 +442,7 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Latex",
+			AppendPose: {StuffMouth: "Flat"}
 		},
 	])
 });

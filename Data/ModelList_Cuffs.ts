@@ -246,6 +246,21 @@ AddModel({
 
 
 AddModel({
+	Name: "SteelCollar",
+	Folder: "Cuffs",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "SteelCollar", Layer: "Collar", Pri: 45,
+			Invariant: true,
+			InheritColor: "BaseMetal",
+		},
+	])
+});
+
+
+AddModel({
 	Name: "IronBelt",
 	Folder: "Cuffs",
 	TopLevel: true,
