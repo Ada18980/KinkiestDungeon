@@ -3289,7 +3289,7 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 		if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
 		if (!safeLink) {
 			// Remove the original by iterating down and identifying one we can delete
-			let lastlink = null;
+			//let lastlink = null;
 			let link = KinkyDungeonGetRestraintItem(restraint.Group);
 
 			/*
@@ -3307,7 +3307,8 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 						|| (Lock && KDLocks[Lock].lockmult > KDLocks[link.lock]?.lockmult)
 					)
 					) {
-						KinkyDungeonRemoveRestraintSpecific(link, true, true, false, false, false, undefined, false);
+						// Add is false here because we are removing AFTER adding the item
+						KinkyDungeonRemoveRestraintSpecific(link, true, false, false, false, false, undefined, false);
 						r = KinkyDungeonGetRestraintItem(restraint.Group);
 						link = null;
 					} else {
