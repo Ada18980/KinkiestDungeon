@@ -3289,8 +3289,8 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 		if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
 		if (!safeLink) {
 			// Remove the original by iterating down and identifying one we can delete
-			let lastlink = KinkyDungeonGetRestraintItem(restraint.Group);
-			let link = KinkyDungeonGetRestraintItem(restraint.Group).dynamicLink;
+			let lastlink = null;
+			let link = KinkyDungeonGetRestraintItem(restraint.Group);
 
 			/*
 			if (!KDGetCurse(currentRestraint) && props.newCurse) return false;
@@ -3298,23 +3298,24 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 			if (props.newCurse && KDCurses[KDGetCurse(currentRestraint)]?.level < KDCurses[props.newCurse]?.level) return false;
 			if (props.newLock && KDLocks[currentRestraint.lock]?.lockmult < KDLocks[props.newLock]?.lockmult) return false;
 			*/
-			//if (lk.name == restraint.name && ((KDGetCurse(lk) || '') == (Curse || '') && ((lk.lock || '') == (Lock || ''))))
-			while (link) {
-				if (lk.name == link.name && (
-					(!KDGetCurse(link) && Curse)
-					|| (!Curse && Lock && !KDGetCurse(link) && !link.lock)
-					|| (Curse && KDCurses[Curse].level > KDCurses[KDGetCurse(link)]?.level)
-					|| (Lock && KDLocks[Lock].lockmult > KDLocks[link.lock]?.lockmult)
-				)
-				) {
-					lastlink.dynamicLink = link.dynamicLink;
-					link = null;
-				} else {
-					lastlink = link;
-					link = link.dynamicLink;
-				}
+			if (lk.name == restraint.name && ((KDGetCurse(lk) || '') == (Curse || '') && ((lk.lock || '') == (Lock || ''))))
+				while (link) {
+					if (lk.name == link.name && (
+						(!KDGetCurse(link) && Curse)
+						|| (!Curse && Lock && !KDGetCurse(link) && !link.lock)
+						|| (Curse && KDCurses[Curse].level > KDCurses[KDGetCurse(link)]?.level)
+						|| (Lock && KDLocks[Lock].lockmult > KDLocks[link.lock]?.lockmult)
+					)
+					) {
+						KinkyDungeonRemoveRestraintSpecific(link, true, true, false, false, false, undefined, false);
+						r = KinkyDungeonGetRestraintItem(restraint.Group);
+						link = null;
+					} else {
+						//lastlink = link;
+						link = link.dynamicLink;
+					}
 
-			}
+				}
 
 		}
 
