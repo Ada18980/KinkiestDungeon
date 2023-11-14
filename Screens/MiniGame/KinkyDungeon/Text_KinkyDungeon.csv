@@ -3315,8 +3315,8 @@ KDCantEquip,"You don't meet the conditions to equip that."
 RestraintExpArmbinder,Experimental Boxtie Binder
 RestraintExpArmbinderDesc,"A secure but comfortable binder meant for long-term wear by the alchemists' pets."
 RestraintExpArmbinderDesc2,"Made from imbued latex, it will be hard to cut but not impossible."
-RestraintExpArmbinderHarness,Binder Straps Cincher
-RestraintExpArmbinderHarnessDesc,"A tight cincher attached to a binder used to ensure restraints will not come off."
+RestraintExpArmbinderHarness,Binder Harness
+RestraintExpArmbinderHarnessDesc,"A tight harness attached to a binder used to ensure restraints will not come off."
 RestraintExpArmbinderHarnessDesc2,"It's tied in the back and reinforced with steel boning."
 RestraintExpAnkleCuffs,Blacksteel Ankle Cuffs
 RestraintExpAnkleCuffsDesc,"Highly durable cuffs made from top-quality ancient metal."
