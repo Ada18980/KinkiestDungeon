@@ -19,7 +19,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			Poses: ToMap([...CALFLEFTPOSES]),
 			DisplacementSprite: "Ballet",
-			DisplaceAmount: 100,
+			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["Heels"]),
 			EraseInvariant: true,
 			EraseMorph: {Spread: "Spread"},
@@ -33,6 +33,11 @@ AddModel({
 			Poses: ToMap([...CALFRIGHTPOSES]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			SwapLayerPose: {Kneel: "ShoeRightKneel"},
+			EraseInvariant: true,
+			EraseMorph: {Closed: "Closed"},
+			EraseSprite: "BalletRightErase",
+			EraseAmount: 100,
+			EraseLayers: ToMap(["HeelRight"]),
 		},
 
 

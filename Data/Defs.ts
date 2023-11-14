@@ -392,6 +392,17 @@ let LayerGroups = {
 		"LegRight",
 
 	]),
+	"HeelRight": ToMap([
+		"FootLeft",
+		"StockingLeft",
+		"FootLeft",
+		"LegLeft",
+		"FootRight",
+		"StockingRight",
+		"FootRight",
+		"LegRight",
+
+	]),
 	// endregion
 
 	//region generic
