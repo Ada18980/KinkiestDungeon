@@ -3298,7 +3298,8 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 			if (props.newCurse && KDCurses[KDGetCurse(currentRestraint)]?.level < KDCurses[props.newCurse]?.level) return false;
 			if (props.newLock && KDLocks[currentRestraint.lock]?.lockmult < KDLocks[props.newLock]?.lockmult) return false;
 			*/
-			if (lk.name == restraint.name && ((KDGetCurse(lk) || '') == (Curse || '') && ((lk.lock || '') == (Lock || ''))))
+			if (lk.name == restraint.name && ((KDGetCurse(lk) || '') == (Curse || '') && ((lk.lock || '') == (Lock || '')))) {
+				let end = false;
 				while (link) {
 					if (lk.name == link.name && (
 						(!KDGetCurse(link) && Curse)
@@ -3311,12 +3312,17 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 						KinkyDungeonRemoveRestraintSpecific(link, true, false, false, false, false, undefined, false);
 						r = KinkyDungeonGetRestraintItem(restraint.Group);
 						link = null;
+						end = true;
 					} else {
 						//lastlink = link;
 						link = link.dynamicLink;
 					}
-
 				}
+				if (!end) {
+					console.log("There was an error! Duplicated restraint");
+					KinkyDungeonSendTextMessage(10, `Error adding ${lk.name}, ${lk.curse}. Please report.`, "#ffffff", 12);
+				}
+			}
 
 		}
 
