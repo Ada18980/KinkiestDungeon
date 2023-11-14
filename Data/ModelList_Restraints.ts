@@ -270,6 +270,44 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "TapeFullOver",
+	Folder: "GagTape",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth", "FaceCoverGag"],
+	Layers: ToLayerMap([
+		{ Name: "Full", Layer: "GagOver", Pri: -50,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			InheritColor: "Tape",
+		},
+	])
+});
+
+AddModel({
+	Name: "TapeWrapOver",
+	Folder: "GagTape",
+	TopLevel: false,
+	Parent: "TapeFull",
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Wrap", Layer: "GagOver", Pri: -45,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			InheritColor: "Tape",
+		},
+	])
+});
+
 AddModel({
 	Name: "TapeCleave",
 	Folder: "GagTape",

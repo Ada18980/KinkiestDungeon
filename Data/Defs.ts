@@ -11,6 +11,7 @@ let LAYERS_BASE = [
 	"MaskOver",
 	// Head items
 	"Blindfold",
+	"GagOver",
 	"GagMuzzleStraps",
 	"GagMuzzle",
 	"GagFlatStraps",

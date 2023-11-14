@@ -265,7 +265,7 @@ AddModel({
 	AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
 		{ Name: "Crotch", Layer: "HarnessMid", Pri: -105,
-			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 			InheritColor: "Ribbon",
 			DisplacementInvariant: true,

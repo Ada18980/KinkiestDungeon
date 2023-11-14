@@ -279,7 +279,7 @@ AddModel({
 	AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
 		{ Name: "Crotchrope", Layer: "HarnessMid", Pri: -100,
-			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 			DisplacementInvariant: true,
 			DisplacementSprite: "CrotchropeSquish",
