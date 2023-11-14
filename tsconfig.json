@@ -130,6 +130,7 @@
         "Data/ModelList_Blindfolds.ts",
         "Data/ModelList_Heels.ts",
         "Data/ModelList_Handcuffs.ts",
+        "Data/ModelList_Harness.ts",
         "Data/ModelList_Furniture.ts",
         "Data/ModelDresses.ts",
         "Game/KDWardrobe.js",

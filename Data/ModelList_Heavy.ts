@@ -71,7 +71,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Jacket",
 	Restraint: true,
-	Categories: ["Restraints", "Straps", "Leather"],
+	Categories: ["Restraints", "Harness", "Leather"],
 	Layers: ToLayerMap([
 		{ Name: "StrapsArms", Layer: "BindArmLeft", Pri: 3,
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
