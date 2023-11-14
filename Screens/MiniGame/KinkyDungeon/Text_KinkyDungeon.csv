@@ -1976,7 +1976,7 @@ KinkyDungeonSpellDroneExplosion,Drone Explosion
 
 NameOldDrone,Rusty Drone
 KillOldDrone,"The drone's mechanisms grind to a halt."
-AttackOldDrone,"The drone uses a short-ranged electrocution attack! (DamageTaken)"
+AttackOldDrone,"The drone uses a short-ranged electric attack! (DamageTaken)"
 AttackOldDroneBind,"The drone disassembles itself, revealing a set of restraining cables! (+RestraintAdded)"
 
 NameOldTapeDrone,Rusty Auto Taper
@@ -1986,15 +1986,15 @@ AttackOldTapeDroneBind,"The wraps you in many layers of tape! (+RestraintAdded)"
 
 NameRubberTurret,Rubber Blaster
 KillRubberTurret,"The turret enters an unstable state, about to spread rubber all over!"
-AttackRubberTurret,"The turret defends itself with a close-range electrocution attack! (DamageTaken)"
+AttackRubberTurret,"The turret defends itself with a close-range electric attack! (DamageTaken)"
 NameRubberSilo,Rubber Launcher
 KillRubberSilo,"The turret enters an unstable state, about to spread rubber all over!"
-AttackRubberSilo,"The turret defends itself with a close-range electrocution attack! (DamageTaken)"
+AttackRubberSilo,"The turret defends itself with a close-range electric attack! (DamageTaken)"
 
 NameDrone,Drone
 KillDrone,"The drone fizzles and falls to the ground!"
 AttackDroneStun,"The drone zaps you with a restraining energy ray! (DamageTaken)"
-AttackDrone,"The drone uses a short-ranged electrocution attack! (DamageTaken)"
+AttackDrone,"The drone uses a short-ranged electric attack! (DamageTaken)"
 AttackDroneBind,"The drone attaches to you! (+RestraintAdded)"
 
 NameCaptureBot,Auto Capture Unit
