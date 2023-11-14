@@ -3245,13 +3245,96 @@ function KDApplyVarToInvVar(restraint, variant) {
 	};
 }
 
+
+/**
+ * @param {restraint} restraint
+ * @param {number} [Tightness]
+ * @param {boolean} [Bypass]
+ * @param {string} [Lock]
+ * @param {boolean} [Keep]
+ * @param {boolean} [Trapped]
+ * @param {KinkyDungeonEvent[]} [events]
+ * @param {string} [faction]
+ * @param {boolean} [Deep] - whether or not it can go deeply in the stack
+ * @param {string} [Curse] - Curse to apply
+ * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
+ * @param {boolean} [reserved] - Reserved do not use
+ * @param {string} [inventoryAs] - inventoryAs for the item
+ * @param {Record<string, any>} [data] - data for the item
+ * @returns {number}
+ */
+function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, reserved, inventoryAs, data) {
+	KDRestraintDebugLog.push("LKUndering " + restraint.name);
+
+	let r = KinkyDungeonGetRestraintItem(restraint.Group);
+	let linkUnder = null;
+	linkUnder = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy, Lock, Curse);
+	let linkableCurrent = r
+		&& KDRestraint(r)
+		&& KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
+
+	let ret = 0;
+	let alwaysLinkUnder = false;
+	if (!linkableCurrent && linkUnder && (!linkableCurrent || !restraint.inaccessible || alwaysLinkUnder)) {
+		// Insert the item underneath
+		ret = Math.max(1, Tightness);
+		KDRestraintDebugLog.push("Linking " + restraint.name  + " under " + linkUnder.name);
+		let safeLink = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy);
+		linkUnder.dynamicLink = {name: restraint.name, id: KinkyDungeonGetItemID(), type: Restraint, events:events ? events : Object.assign([], restraint.events),
+			data: data,
+			tightness: Tightness, curse: Curse, faction: faction, dynamicLink: linkUnder.dynamicLink };
+
+		let lk = linkUnder.dynamicLink;
+		if (!Curse) KinkyDungeonLock(linkUnder.dynamicLink, Lock);
+		if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
+		if (!safeLink) {
+			// Remove the original by iterating down and identifying one we can delete
+			let lastlink = KinkyDungeonGetRestraintItem(restraint.Group);
+			let link = KinkyDungeonGetRestraintItem(restraint.Group).dynamicLink;
+
+			/*
+			if (!KDGetCurse(currentRestraint) && props.newCurse) return false;
+			if (!currentRestraint.lock && (props.newCurse || props.newLock)) return false;
+			if (props.newCurse && KDCurses[KDGetCurse(currentRestraint)]?.level < KDCurses[props.newCurse]?.level) return false;
+			if (props.newLock && KDLocks[currentRestraint.lock]?.lockmult < KDLocks[props.newLock]?.lockmult) return false;
+			*/
+			//if (lk.name == restraint.name && ((KDGetCurse(lk) || '') == (Curse || '') && ((lk.lock || '') == (Lock || ''))))
+			while (link) {
+				if (lk.name == link.name && (
+					(!KDGetCurse(link) && Curse)
+					|| (!Curse && Lock && !KDGetCurse(link) && !link.lock)
+					|| (Curse && KDCurses[Curse].level > KDCurses[KDGetCurse(link)]?.level)
+					|| (Lock && KDLocks[Lock].lockmult > KDLocks[link.lock]?.lockmult)
+				)
+				) {
+					lastlink.dynamicLink = link.dynamicLink;
+					link = null;
+				} else {
+					lastlink = link;
+					link = link.dynamicLink;
+				}
+
+			}
+
+		}
+
+		linkUnder = KinkyDungeonAllRestraint().find((inv) => {return inv.dynamicLink == lk;});
+		if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {
+			KDCurses[Curse].onApply(lk, linkUnder);
+		}
+		if (r) KDUpdateLinkCaches(r);
+		KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: lk, host: linkUnder, keep: Keep, Link: true});
+	}
+	return ret;
+}
+
 /**
  * @param {restraint | string} restraint
  * @param {number} [Tightness]
  * @param {boolean} [Bypass]
  * @param {string} [Lock]
  * @param {boolean} [Keep]
- * @param {boolean} [Trapped]
+ * @param {boolean} [Trapped] - Deprecated do not use
  * @param {KinkyDungeonEvent[]} [events]
  * @param {string} [faction]
  * @param {boolean} [Deep] - whether or not it can go deeply in the stack
@@ -3281,76 +3364,19 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 	if (restraint.bypass) Bypass = true;
 	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep, false, securityEnemy, (useAugmentedPower == undefined && securityEnemy != undefined) || useAugmentedPower, Curse, augmentedInventory)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
-		let linkUnder = null;
-		linkUnder = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy, Lock, Curse);
 		let linkableCurrent = r
 			&& KDRestraint(r)
 			&& KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
 
 		let ret = 0;
-		let alwaysLinkUnder = false;
-		if (!linkableCurrent && linkUnder && (!linkableCurrent || !restraint.inaccessible || alwaysLinkUnder)) {
-			// Insert the item underneath
-			ret = Math.max(1, Tightness);
-			KDRestraintDebugLog.push("Linking " + restraint.name  + " under " + linkUnder.name);
-			let safeLink = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy);
-			linkUnder.dynamicLink = {name: restraint.name, id: KinkyDungeonGetItemID(), type: Restraint, events:events ? events : Object.assign([], restraint.events),
-				data: data,
-				tightness: Tightness, curse: Curse, faction: faction, dynamicLink: linkUnder.dynamicLink };
 
-			let lk = linkUnder.dynamicLink;
-			if (!Curse) KinkyDungeonLock(linkUnder.dynamicLink, Lock);
-			if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
-			if (!safeLink) {
-				// Remove the original by iterating down and identifying one we can delete
-				let lastlink = KinkyDungeonGetRestraintItem(restraint.Group);
-				let link = KinkyDungeonGetRestraintItem(restraint.Group).dynamicLink;
-
-				/*
-				if (!KDGetCurse(currentRestraint) && props.newCurse) return false;
-				if (!currentRestraint.lock && (props.newCurse || props.newLock)) return false;
-				if (props.newCurse && KDCurses[KDGetCurse(currentRestraint)]?.level < KDCurses[props.newCurse]?.level) return false;
-				if (props.newLock && KDLocks[currentRestraint.lock]?.lockmult < KDLocks[props.newLock]?.lockmult) return false;
-				*/
-				if (lk.name == restraint.name && (KDGetCurse(lk) == Curse && lk.lock == Lock))
-					while (link) {
-						if (lk.name == link.name && (
-							(!KDGetCurse(link) && Curse)
-							|| (!Curse && Lock && !KDGetCurse(link) && !link.lock)
-							|| (Curse && KDCurses[Curse].level > KDCurses[KDGetCurse(link)]?.level)
-							|| (Lock && KDLocks[Lock].lockmult > KDLocks[link.lock]?.lockmult)
-						)
-						) {
-							lastlink.dynamicLink = link.dynamicLink;
-							link = null;
-						} else {
-							lastlink = link;
-							link = link.dynamicLink;
-						}
-
-					}
-
-			}
-
-			linkUnder = KinkyDungeonAllRestraint().find((inv) => {return inv.dynamicLink == lk;});
-			if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {
-				KDCurses[Curse].onApply(lk, linkUnder);
-			}
-			if (r) KDUpdateLinkCaches(r);
-			KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: lk, host: linkUnder, keep: Keep, Link: true});
-		} else {
-			ret = KinkyDungeonAddRestraint(restraint, Tightness + Math.round(0.1 * KinkyDungeonDifficulty), Bypass, Lock, Keep, false, !linkableCurrent, events, faction, undefined, undefined, Curse, undefined, securityEnemy, inventoryAs, data);
-		}
-		if (Trapped) {
-			let rest = KinkyDungeonGetRestraintItem(restraint.Group);
-			if (rest && KDRestraint(rest) && KDRestraint(rest).trappable && !rest.trap) {
-				rest.trap = KinkyDungeonGenerateRestraintTrap();
-			}
-		}
 		if (!restraint.good && !restraint.armor) {
 			KinkyDungeonSetFlag("restrained", 2);
 			KinkyDungeonSetFlag("restrained_recently", 5);
 		}
+
+		ret = KinkyDungeonAddRestraint(restraint, Tightness + Math.round(0.1 * KinkyDungeonDifficulty), Bypass, Lock, Keep, false, !linkableCurrent, events, faction, undefined, undefined, Curse, undefined, securityEnemy, inventoryAs, data);
+
 		return ret;
 	}
 	return 0;
@@ -3494,6 +3520,10 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 	let tight = (Tightness) ? Tightness : 0;
 	let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
 	if (restraint) {
+		// First we try linking under
+		let ret = KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, false, events, faction, true, Curse, securityEnemy, true, inventoryAs, data);
+		if (ret) return ret;
+
 		KDRestraintDebugLog.push("StartAdd " + restraint.name);
 		if (!KDGroupBlocked(restraint.Group, true) || Bypass || KDEnemyPassesSecurity(restraint.Group, securityEnemy)) {
 			KinkyDungeonEvasionPityModifier = 0;
