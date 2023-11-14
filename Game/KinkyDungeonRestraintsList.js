@@ -3283,6 +3283,9 @@ const KinkyDungeonRestraints = [
 			6,
 			{
 				Color: ["#aaaaaa", "#aaaaaa", "#aaaaaa"],
+				Filters: {
+					Rubber:  {"gamma":0.8666666666666667,"saturation":0,"contrast":1.9333333333333333,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+				},
 				factionColor: [],
 			},
 			[
