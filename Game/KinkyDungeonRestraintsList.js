@@ -1364,6 +1364,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 10, "Pick": -0.15, "Unlock": -0.15},
 		helpChance: {"Pick": 0.5, "Unlock": 1.0}, enemyTags: {"trap":9, "yokeSpell": 10, "Unchained": -9}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Yokes"]},
 	{alwaysRender: true, inventory: true, trappable: true, name: "TrapHarness", debris: "Belts", strictness: 0.05, Asset: "LeatherStrapHarness", accessible: true,
+		Model: "Harness",
 		LinkableBy: [...KDHarnessLink], OverridePriority: 26, Color: "#222222", Group: "ItemTorso", power: 2, weight: 2,
 		escapeChance: {"Struggle": 0.1, "Cut": 0.3, "Remove": 0.8, "Pick": 0.4}, enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "harnessSpell": 10},
 		enemyTagsMult: {"backup_harness": 0.05},
@@ -1781,8 +1782,6 @@ const KinkyDungeonRestraints = [
 		alwaysDress: [
 			{Item: "KittenEars2", Group: "HairAccessory2", Color: ['Default'], override: false, useHairColor: true,},
 			{Item: "TailStrap", Group: "TailStraps", Color: ['Default'], override: false, useHairColor: true,},
-			//{Item: "LeatherBreastBinder", Group: "Bra", Color: ['Default'], drawOver: true},
-			//{Item: "LeatherHarness", Group: "ItemTorso", Color: ['Default'], drawOver: true}
 		],
 		helpChance: {"Remove": 0.01}, maxwill: 0.15, enemyTags: {"kittyRestraints":0}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Latex", "Petsuits", "Will"]},
 	//endregion
