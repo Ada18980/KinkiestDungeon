@@ -24,6 +24,35 @@ AddModel({
 });
 
 
+AddModel({
+	Name: "StrappyBra",
+	Folder: "Swimsuit",
+	Parent: "StrappySwimsuit",
+	TopLevel: false,
+	Categories: ["Bras"],
+	Layers: ToLayerMap([
+		{ Name: "ChestStrappy", Layer: "SuitChest", Pri: 40,
+			Poses: ToMap([...ARMPOSES]),
+			InheritColor: "Bra",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "StrappySwimsuit",
+	Folder: "Swimsuit",
+	TopLevel: true,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		{ Name: "Strappy", Layer: "Bodysuit", Pri: 40,
+			Poses: ToMap([...LEGPOSES]),
+			Invariant: true,
+		},
+		...GetModelLayers("StrappyBra"),
+	])
+});
+
 
 
 AddModel({
