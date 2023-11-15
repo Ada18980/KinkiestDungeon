@@ -602,7 +602,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 	if (StandalonePatched && KDCurrentModels.get(Character)) {
 
 		if (!InventoryGet(Character, "Body")) KDInventoryWear("Body", "Body");
-		if (!InventoryGet(Character, "Eyes")) KDInventoryWear("KoiEyes", "Eyes");
+		if (!InventoryGet(Character, "Eyes")) KDInventoryWear("HumanEyes", "Eyes");
 		if (!InventoryGet(Character, "Brows")) KDInventoryWear("KoiBrows", "Brows");
 		if (!InventoryGet(Character, "Mouth")) KDInventoryWear("KoiMouth", "Mouth");
 		if (!InventoryGet(Character, "Blush")) KDInventoryWear("KoiBlush", "Blush");
