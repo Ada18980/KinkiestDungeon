@@ -121,7 +121,7 @@ AddModel({
 	Name: "Labcoat",
 	Folder: "Labcoat",
 	TopLevel: true,
-	Categories: ["Tops"],
+	Categories: ["Tops", "Accessories"],
 	Layers: ToLayerMap([
 		// Duplicate yoked is to override Closed override
 		{ Name: "Shoulders", Layer: "Shoulders", Pri: 10,
@@ -152,6 +152,34 @@ AddModel({
 			Poses: ToMap(["Hogtie", "Kneel", "KneelClosed", "Yoked", "Spread", "Closed"]),
 			GlobalDefaultOverride: ToMap(["Hogtie"]),
 			MorphPoses: {Closed: "Spread"},
+		},
+	])
+});
+
+AddModel({
+	Name: "Cape",
+	Folder: "Cape",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		// Duplicate yoked is to override Closed override
+		{ Name: "Shoulders", Layer: "Shoulders", Pri: 10,
+			Poses: ToMap(["Yoked", "Up", "Spread", "Closed", "Kneel", "KneelClosed"]),
+			InheritColor: "Front",
+			MorphPoses: {Yoked: "Yoked", Closed: "Spread"},
+		},
+		{ Name: "ShouldersHogtie", Layer: "Shoulders", Pri: 10,
+			Poses: ToMapSubtract([...ARMPOSES, "Hogtie"], ["Wristtie", "Yoked", "Up"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			HidePoses: ToMap(["Spread", "Closed", "Yoked", "Up"]),
+			InheritColor: "Front",
+			MorphPoses: {Boxtie: "Free", Free: "Free", Hogtie: ""},
+		},
+		{ Name: "Cape", Layer: "Cape", Pri: 0,
+			Poses: ToMap(["Hogtie", "Kneel", "KneelClosed", "Yoked", "Spread", "Closed"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			MorphPoses: {Closed: "Spread"},
+			InheritColor: "Back",
 		},
 	])
 });

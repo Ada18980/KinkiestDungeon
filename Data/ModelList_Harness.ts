@@ -114,3 +114,107 @@ AddModel({
 		...GetModelLayers("HarnessStrap"),
 	])
 });
+
+
+
+AddModel({
+	Name: "FutureHarnessChest",
+	Folder: "FutureHarness",
+	TopLevel: false,
+	Parent: "FutureHarness",
+	Restraint: true,
+	Categories: ["Restraints", "Harness", "Leather"],
+	Layers: ToLayerMap([
+		{ Name: "StrapsChest", Layer: "BindChest", Pri: 60,
+			Invariant: true,
+			InheritColor: "Straps",
+		},
+		{ Name: "DisplayChest", Layer: "BindChest", Pri: 60.2,
+			Invariant: true,
+			InheritColor: "Display",
+			TieToLayer: "StrapsChest",
+			NoOverride: true,
+		},
+		{ Name: "MetalChest", Layer: "BindChest", Pri: 60.1,
+			Invariant: true,
+			InheritColor: "Metal",
+			TieToLayer: "StrapsChest",
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "FutureHarnessMid",
+	Parent: "FutureHarness",
+	TopLevel: false,
+	Folder: "FutureHarness",
+	Restraint: true,
+	Categories: ["Restraints", "Harness", "Metal"],
+	Layers: ToLayerMap([
+		{ Name: "StrapsMid", Layer: "HarnessMid", Pri: 60,
+			Invariant: true,
+			InheritColor: "Straps",
+		},
+		{ Name: "DisplayMid", Layer: "HarnessMid", Pri: 60.2,
+			Invariant: true,
+			InheritColor: "Display",
+			TieToLayer: "StrapsMid",
+			NoOverride: true,
+		},
+		{ Name: "MetalMid", Layer: "HarnessMid", Pri: 60.1,
+			Invariant: true,
+			InheritColor: "Metal",
+			TieToLayer: "StrapsMid",
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "FutureHarnessLower",
+	Parent: "FutureHarness",
+	TopLevel: false,
+	Folder: "FutureHarness",
+	Restraint: true,
+	Categories: ["Restraints", "Harness", "Metal"],
+	Layers: ToLayerMap([
+		{ Name: "StrapsLower", Layer: "HarnessMid", Pri: 59,
+		SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			Invariant: true,
+			InheritColor: "Straps",
+		},
+		{ Name: "DisplayLower", Layer: "HarnessMid", Pri: 59.2,
+		SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			Invariant: true,
+			InheritColor: "Display",
+			TieToLayer: "StrapsMid",
+			NoOverride: true,
+		},
+		{ Name: "MetalLower", Layer: "HarnessMid", Pri: 59.1,
+		SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			Invariant: true,
+			InheritColor: "Metal",
+			TieToLayer: "StrapsMid",
+			NoOverride: true,
+		},
+	])
+});
+
+
+
+
+AddModel({
+	Name: "FutureHarness",
+	Folder: "FutureHarness",
+	TopLevel: true,
+	Parent: "FutureHarness",
+	Restraint: true,
+	Categories: ["Restraints", "Harness", "Metal"],
+	AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		...GetModelLayers("FutureHarnessLower"),
+		...GetModelLayers("FutureHarnessMid"),
+		...GetModelLayers("FutureHarnessChest"),
+	])
+});
