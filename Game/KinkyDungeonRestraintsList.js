@@ -887,6 +887,11 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.5, enemyTags: {"latexRestraints":6}, playerTags: {"ItemMouthFull": 6}, minLevel: 0, allFloors: true, shrine: ["Latex", "Gags", "FlatGags"]},
 
 	{renderWhenLinked: ["Corsets", "Harnesses", ...KDBindable, "Latex", "Leather", "Metal", "Rope"], inventory: true, name: "LatexCatsuit", inaccessible: true, factionColor: [[0]], Asset: "SeamlessCatsuit", AssetGroup: "Suit", Color: ["#3873C3"],
+		Model: "Catsuit",
+		Filters: {
+			TorsoLower: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
+			TorsoUpper: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
+		},
 		LinkableBy: ["Corsets", "Harnesses", ...KDBindable, "Ribbon"],
 		Group: "ItemTorso", power: 7, weight: 0, escapeChance: {"Struggle": -1.0, "Cut": 0.1, "Remove": 0.05},
 		enemyTags: {"latexRestraintsHeavy" : 6, "latexCatsuits": 12, "latexUniform": 12, "latexStart": 10, 'shopCatsuit': 10,}, playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Suits"],
@@ -2338,7 +2343,7 @@ const KinkyDungeonRestraints = [
 	{unlimited: true, removePrison: true, name: "IceGag", debris: "Ice", gag: 0.35, sfx: "Freeze", Asset: "Ribbons", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: "#5DA9E5", Group: "ItemMouth", power: 4, weight: 0, magic: true, escapeChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0}, enemyTags: {"iceRestraints":4}, playerTags: {"ItemMouthFull":-2}, minLevel: 0, allFloors: true, shrine: ["Wrapping", "Ice", "Elements"],
 		Model: "TapeWrapOver",
 		Filters: {
-			Ribbon: {"gamma":0.2833333333333333,"saturation":0.05,"contrast":1.0166666666666666,"brightness":1.1833333333333333,"red":1,"green":2.2333333333333334,"blue":3.3833333333333333,"alpha":1},
+			Tape: {"gamma":0.2833333333333333,"saturation":0.05,"contrast":1.0166666666666666,"brightness":1.1833333333333333,"red":1,"green":2.2333333333333334,"blue":3.3833333333333333,"alpha":1},
 		},
 		maxwill: 0.7, events: [
 			{trigger: "tick", type: "iceDrain", power: -0.025, inheritLinked: true},
@@ -3463,6 +3468,7 @@ const KinkyDungeonRestraints = [
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "MageArmor",
 			Group: "ItemTorso",
+			Model: "RobeSleeves",
 			Asset: "GrandMage",
 			AssetGroup: "Cloth",
 			Color: ["#5555ff"],
@@ -3542,6 +3548,11 @@ const KinkyDungeonRestraints = [
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "LeatherGloves",
 			Group: "ItemHands",
+			Model: "BunnyGloves",
+			Filters: {
+				GloveLeft: {"gamma":0.2833333333333333,"saturation":1,"contrast":3.1666666666666665,"brightness":0.3166666666666667,"red":1.55,"green":0.5666666666666667,"blue":0.2833333333333333,"alpha":1},
+				GloveRight: {"gamma":0.2833333333333333,"saturation":1,"contrast":3.1666666666666665,"brightness":0.3166666666666667,"red":1.55,"green":0.5666666666666667,"blue":0.2833333333333333,"alpha":1},
+			},
 			Asset: "BikerGloves",
 			AssetGroup: "Gloves",
 			showInQuickInv: true, good: true,
@@ -3583,6 +3594,11 @@ const KinkyDungeonRestraints = [
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "Cape",
 			Group: "ItemArms",
+			Model: "Cape",
+			Filters: {
+				Front: {"gamma":1,"saturation":1,"contrast":1.1833333333333333,"brightness":0.48333333333333334,"red":0.95,"green":1.5333333333333332,"blue":1,"alpha":1},
+				Back: {"gamma":1,"saturation":1,"contrast":1.1833333333333333,"brightness":0.21666666666666667,"red":0.95,"green":1.5333333333333332,"blue":1,"alpha":1},
+			},
 			Asset: "Cape",
 			AssetGroup: "ClothAccessory",
 			showInQuickInv: true, good: true,
