@@ -92,6 +92,7 @@ let KDSpellComponentTypes = {
 			return (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoArmsComp") > 0);
 		},
 		partialMiscastChance: (spell, x, y) => {
+			if (!KinkyDungeonIsArmsBound(false, false) && !KinkyDungeonStatsChoice.get("SomaticMinus")) return 0;
 			let handsTotal = (!KinkyDungeonStatsChoice.get("SomaticPlus") && KinkyDungeonIsHandsBound(false, false, 0.01)) ? 1.0 : KDHandBondageTotal(false);
 			return Math.max(0, Math.min(1, handsTotal));
 		},
@@ -366,13 +367,15 @@ function KinkyDungeonHandleSpellChoice(SpellChoice) {
  * @returns {boolean}
  */
 function KDSpellIgnoreComp(spell, x, y) {
+	let ignore = true;
 	if (spell?.components) {
 		for (let c of spell.components) {
-			if (KDSpellComponentTypes[c]?.ignore && KDSpellComponentTypes[c].ignore(spell, x, y)) return true;
+			if (!KDSpellComponentTypes[c]?.ignore || !KDSpellComponentTypes[c].ignore(spell, x, y)) ignore = false;
 		}
 	}
 
-	return (KinkyDungeonStatsChoice.get("Slayer") && spell.school == "Elements")
+	return ignore
+	|| (KinkyDungeonStatsChoice.get("Slayer") && spell.school == "Elements")
 	|| (KinkyDungeonStatsChoice.get("Conjurer") && spell.school == "Conjure")
 	|| (KinkyDungeonStatsChoice.get("Magician") && spell.school == "Illusion");
 }

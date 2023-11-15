@@ -153,7 +153,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			let roomType = "";
 			let currCheckpoint = MiniGameKinkyDungeonCheckpoint;
 			let originalRoom = KDGameData.RoomType;
-			let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
+			let altRoom = KDGameData.RoomType ? KinkyDungeonAltFloor(KDGameData.RoomType) : KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel);
 			let altRoomTarget = (tile && tile.RoomType) ? KinkyDungeonAltFloor(tile.RoomType) : undefined;
 			let AdvanceAmount = KDAdvanceAmount[toTile](altRoom, altRoomTarget);
 
@@ -177,6 +177,15 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				DialogSetReputation("Gaming", KinkyDungeonRep);
 			}
 			MiniGameVictory = false;
+
+			if (altRoom?.alwaysRegen || (altRoom && !altRoom?.makeMain)) {
+				// Clear all enemies and remove them so that we pick up allies
+				for (let en of [...KDMapData.Entities]) {
+					if (!KDIsInParty(en))
+						KDRemoveEntity(en, false, true, true);
+				}
+			}
+
 
 			let newLocation = KDAdvanceLevel(data); // Advance anyway
 			// We increment the save, etc, after the tunnel

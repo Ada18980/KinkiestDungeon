@@ -700,17 +700,11 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 	// Setup
 	// Remove enemies if the room isnt main and wont regen
-	let altRoom = KDGameData.RoomType;
-	let mapMod = KDGameData.MapMod ? KDMapMods[KDGameData.MapMod] : null;
+	let altRoom = KDMapData.RoomType;
+	let mapMod = KDMapData.MapMod ? KDMapMods[KDMapData.MapMod] : null;
 	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
 
-	if (altType?.alwaysRegen && (!altRoom || !altType?.makeMain)) {
-		// Clear all enemies and remove them so that we pick up allies
-		for (let en of KDMapData.Entities) {
-			if (!KDIsInParty(en))
-				KDRemoveEntity(en, false, true, true);
-		}
-	}
+	// ...
 
 	KDGameData.RoomType = RoomType;
 	KDGameData.MapMod = MapMod;
@@ -748,7 +742,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		KDCurrentWorldSlot = worldLocation;
 		if (iterations > 0) {
 			// Clear so party prisoners are reused
-			for (let en of KDMapData.Entities) {
+			for (let en of [...KDMapData.Entities]) {
 				KDRemoveEntity(en, false, true, true);
 			}
 		}
