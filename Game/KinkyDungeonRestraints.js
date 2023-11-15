@@ -3213,10 +3213,13 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
 					// Note: return false means succeed
 					// true means interupt
 					if (!props) return true;
-					if (!KDGetCurse(currentRestraint) && props.newCurse) return false;
-					if (!currentRestraint.lock && (!props.newCurse && props.newLock)) return false;
-					if (props.newCurse && KDCurses[KDGetCurse(currentRestraint)]?.level < KDCurses[props.newCurse]?.level) return false;
-					if (props.newLock && KDLocks[currentRestraint.lock]?.lockmult < KDLocks[props.newLock]?.lockmult) return false;
+					if (!KDGetCurse(currentRestraint)) {
+						if (props.newCurse) return false; // Curse always overrides lock
+						if (!currentRestraint.lock && (props.newCurse || props.newLock)) return false;
+						if (props.newLock && KDLocks[currentRestraint.lock]?.lockmult < KDLocks[props.newLock]?.lockmult) return false;
+					} else {
+						if (props.newCurse && KDCurses[KDGetCurse(currentRestraint)]?.level < KDCurses[props.newCurse]?.level) return false;
+					}
 					return true;
 				}
 				return false;
