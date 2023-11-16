@@ -168,6 +168,9 @@ let LAYERS_BASE = [
 	"SkirtDeco",
 	"Skirt",
 
+	// Panties go here when standing
+	"Panties",
+
 	// Left Leg
 	"KneeAccLeft",
 	"Thighs",
@@ -253,7 +256,8 @@ let LAYERS_BASE = [
 
 	"CorsetUnder", // Corsets go here when wearing pants
 
-	"Panties",
+	// Panties go here when kneeling
+	"PantiesLower",
 
 	// Upper body underwear and bodysuits
 	"CorsetLiner",

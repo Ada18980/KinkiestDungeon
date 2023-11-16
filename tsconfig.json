@@ -116,6 +116,7 @@
         "Data/ModelList_Cosplay.ts",
         "Data/ModelList.ts",
         "Data/ModelList_Leotards.ts",
+        "Data/ModelList_Elf.ts",
         "Data/ModelList_Restraints.ts",
         "Data/ModelList_Rope.ts",
         "Data/ModelList_Ribbon.ts",

@@ -38,6 +38,34 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "StrappyBikini",
+	Folder: "Swimsuit",
+	Parent: "StrappySwimsuit",
+	TopLevel: true,
+	Categories: ["Underwear"],
+	Layers: ToLayerMap([
+		{ Name: "StrappyLower", Layer: "Panties", Pri: 40,
+			Invariant: true,
+			SwapLayerPose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
+		},
+	])
+});
+
+AddModel({
+	Name: "StrappyHarness",
+	Folder: "Swimsuit",
+	Parent: "StrappySwimsuit",
+	TopLevel: true,
+	Categories: ["Corsets"],
+	Layers: ToLayerMap([
+		{ Name: "Strappy", Layer: "Bodysuit", Pri: 40,
+			Poses: ToMap([...LEGPOSES]),
+			Invariant: true,
+		},
+	])
+});
+
 
 AddModel({
 	Name: "StrappySwimsuit",
@@ -45,11 +73,9 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Bodysuits"],
 	Layers: ToLayerMap([
-		{ Name: "Strappy", Layer: "Bodysuit", Pri: 40,
-			Poses: ToMap([...LEGPOSES]),
-			Invariant: true,
-		},
 		...GetModelLayers("StrappyBra"),
+		...GetModelLayers("StrappyHarness"),
+		...GetModelLayers("StrappyBikini"),
 	])
 });
 
