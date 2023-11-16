@@ -12,6 +12,8 @@ let KDOutfitInfo = [];
 let KDOutfitStore = {};
 let KDOutfitOriginalStore = {};
 
+let lastFilterUpdate = 0;
+let FilterUpdateInterval = 90;
 
 let KDModelListMax = 14;
 let KDModelListViewSkip = 7;
@@ -191,18 +193,22 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		KinkyDungeonBar(X, YY - 15, width, 30, filters[key]/5*100, KDColorSliderColor[key] || "#ffffff", "#000000");
 		if ((mouseDown) && MouseIn(X, YY - 15, width, 30)) {
 			MouseClicked = false;
-			KDChangeWardrobe(C);
-			if (!Model.Filters) Model.Filters = {};
-			if (!Model.Filters[KDCurrentLayer])
-				Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
-			Model.Filters[KDCurrentLayer][key] = (MouseX - X) / width * 5;
-			KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
-			ElementValue("KDSelectedColor", `#${
-				Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16)}${
-				Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16)}${
-				Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16)}`);
-			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
-			ForceRefreshModels(C);
+			if (CommonTime() > lastFilterUpdate + FilterUpdateInterval) {
+				lastFilterUpdate = CommonTime();
+				KDChangeWardrobe(C);
+				if (!Model.Filters) Model.Filters = {};
+				if (!Model.Filters[KDCurrentLayer])
+					Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
+				Model.Filters[KDCurrentLayer][key] = (MouseX - X) / width * 5;
+				KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+				ElementValue("KDSelectedColor", `#${
+					Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16)}${
+					Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16)}${
+					Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16)}`);
+				lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+				ForceRefreshModels(C);
+			}
+
 		}
 		YY += 50;
 	}
