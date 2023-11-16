@@ -93,14 +93,18 @@ function ToLayerMap(Layers: ModelLayer[]): {[_: string]: ModelLayer} {
 	return ToNamedMap(Layers);
 }
 
-function GetModelLayers(ModelName: string): ModelLayer[] {
+function GetModelLayers(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number): ModelLayer[] {
 	if (ModelDefs[ModelName]) {
-		return Object.values(ModelDefs[ModelName].Layers);
+		let ret : ModelLayer[] = JSON.parse(JSON.stringify(Object.values(ModelDefs[ModelName].Layers)));
+		for (let layer of ret) {
+			layer.Name = (PrependString || "") + layer.Name + (AppendString || "");
+			if (InheritColor) layer.InheritColor = InheritColor;
+			if (PriBonus) layer.Pri += PriBonus;
+		}
+		return ret;
 	}
 	return [];
 }
-
-
 function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: ModelLayer[], Parent?: string, TopLevel?: boolean): Model {
 	if (ModelDefs[BaseModel]) {
 		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));

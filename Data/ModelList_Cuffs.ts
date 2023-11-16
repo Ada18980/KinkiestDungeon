@@ -10,7 +10,7 @@ AddModel({
 	Name: "ShacklesWristLeft",
 	Folder: "Cuffs",
 	TopLevel: false,
-	Parent: "ShacklesWrists",
+	Parent: "ShacklesArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristLeft"],
 	Layers: ToLayerMap([
@@ -29,7 +29,7 @@ AddModel({
 	Name: "ShacklesWristRight",
 	Folder: "Cuffs",
 	TopLevel: false,
-	Parent: "ShacklesWrists",
+	Parent: "ShacklesArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristRight"],
 	Layers: ToLayerMap([
@@ -48,8 +48,8 @@ AddModel({
 AddModel({
 	Name: "ShacklesWrists",
 	Folder: "Cuffs",
-	TopLevel: true,
-	Parent: "Shackles",
+	TopLevel: false,
+	Parent: "ShacklesArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristLeft", "WristRight"],
 	Layers: ToLayerMap([
@@ -64,7 +64,7 @@ AddModel({
 	Name: "ShacklesElbowLeft",
 	Folder: "Cuffs",
 	TopLevel: false,
-	Parent: "ShacklesElbows",
+	Parent: "ShacklesArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ElbowLeft"],
 	Layers: ToLayerMap([
@@ -72,6 +72,7 @@ AddModel({
 			Poses: ToMap([...ARMPOSES]),
 			SwapLayerPose: {Front: "BindForeElbowLeft", Crossed: "BindCrossElbowLeft", Up: "BindForeElbowLeft"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			MorphPoses: {Crossed: "Front"},
 			DisplacementSprite: "ElbowCuffLeft",
 			DisplaceLayers: ToMap(["Cuffs"]),
 			DisplaceAmount: 50,
@@ -83,7 +84,7 @@ AddModel({
 	Name: "ShacklesElbowRight",
 	Folder: "Cuffs",
 	TopLevel: false,
-	Parent: "ShacklesElbows",
+	Parent: "ShacklesArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ElbowRight"],
 	Layers: ToLayerMap([
@@ -91,6 +92,7 @@ AddModel({
 			Poses: ToMapSubtract([...ARMPOSES], ["Free"]),
 			SwapLayerPose: {Front: "BindForeElbowRight", Crossed: "BindCrossElbowRight", Up: "BindForeElbowRight"},
 			GlobalDefaultOverride: ToMap(["Front"]),
+			MorphPoses: {Crossed: "Front"},
 			DisplacementSprite: "ElbowCuffRight",
 			DisplaceLayers: ToMap(["Cuffs"]),
 			DisplaceAmount: 100,
@@ -102,8 +104,8 @@ AddModel({
 AddModel({
 	Name: "ShacklesElbows",
 	Folder: "Cuffs",
-	TopLevel: true,
-	Parent: "Shackles",
+	TopLevel: false,
+	Parent: "ShacklesArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ElbowLeft", "ElbowRight"],
 	Layers: ToLayerMap([

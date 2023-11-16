@@ -120,6 +120,7 @@
         "Data/ModelList_Rope.ts",
         "Data/ModelList_Ribbon.ts",
         "Data/ModelList_Cuffs.ts",
+        "Data/ModelList_LeatherCuffs.ts",
         "Data/ModelList_Slime.ts",
         "Data/ModelList_Rubber.ts",
         "Data/ModelList_TapeMed.ts",
