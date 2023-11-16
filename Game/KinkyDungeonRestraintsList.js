@@ -3161,6 +3161,9 @@ const KinkyDungeonRestraints = [
 			-5,
 			{
 				Color: "#999999",
+				factionFilters: {
+					Band: {color: "Highlight", override: true},
+				},
 			},
 			[],
 			{
@@ -3178,7 +3181,7 @@ const KinkyDungeonRestraints = [
 			},
 			{
 			}, {
-				BaseMetal: {"gamma":1.3,"saturation":1,"contrast":1.2166666666666668,"brightness":0.4666666666666667,"red":1,"green":1,"blue":1,"alpha":1},
+
 			}, 6, false,
 			{
 				"ItemArms": "LeatherCuffs",
@@ -3186,9 +3189,9 @@ const KinkyDungeonRestraints = [
 				"ItemFeet": "LeatherAnkleCuffs",
 			},
 			{
-				"ItemArms": "ShacklesArms",
-				"ItemLegs": "ShacklesThigh",
-				"ItemFeet": "ShacklesAnkles",
+				"ItemArms": "CuffsArms",
+				"ItemLegs": "CuffsThigh",
+				"ItemFeet": "CuffsAnkles",
 			},
 		);
 
@@ -3205,6 +3208,9 @@ const KinkyDungeonRestraints = [
 			-3,
 			{
 				Color: "#554033",
+				factionFilters: {
+					Band: {color: "Highlight", override: true},
+				},
 			},
 			[],
 			{
@@ -3223,7 +3229,7 @@ const KinkyDungeonRestraints = [
 			},
 			{
 			}, {
-				BaseMetal: {"gamma":1.3,"saturation":1,"contrast":1.2166666666666668,"brightness":0.4666666666666667,"red":1.6666666666666665,"green":1.25,"blue":1,"alpha":1},
+				Cuff: {"gamma":1.3,"saturation":1,"contrast":1.2166666666666668,"brightness":0.4666666666666667,"red":1.6666666666666665,"green":1.25,"blue":1,"alpha":1},
 			}, 6, false,
 			{
 				"ItemArms": "LeatherCuffs",
@@ -3231,9 +3237,9 @@ const KinkyDungeonRestraints = [
 				"ItemFeet": "LeatherAnkleCuffs",
 			},
 			{
-				"ItemArms": "ShacklesArms",
-				"ItemLegs": "ShacklesThigh",
-				"ItemFeet": "ShacklesAnkles",
+				"ItemArms": "CuffsArms",
+				"ItemLegs": "CuffsThigh",
+				"ItemFeet": "CuffsAnkles",
 			},
 		);
 
@@ -3250,6 +3256,9 @@ const KinkyDungeonRestraints = [
 			-2,
 			{
 				Color: ["#92e8c0", "#171222", "#ff5555"],
+				factionFilters: {
+					Band: {color: "Highlight", override: true},
+				},
 			},
 			[],
 			{
@@ -3268,7 +3277,8 @@ const KinkyDungeonRestraints = [
 			},
 			{
 			}, {
-				BaseMetal: {"gamma":1,"saturation":1,"contrast":1.6166666666666665,"brightness":1,"red":1.7999999999999998,"green":0.8666666666666667,"blue":0.8666666666666667,"alpha":1},
+				Cuff: {"gamma":1,"saturation":1,"contrast":1.6166666666666665,"brightness":1,"red":1.7999999999999998,"green":0.8666666666666667,"blue":0.8666666666666667,"alpha":1},
+				Band: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			}, 6, false,
 			{
 				"ItemArms": "LeatherCuffs",
@@ -3276,9 +3286,9 @@ const KinkyDungeonRestraints = [
 				"ItemFeet": "LeatherAnkleCuffs",
 			},
 			{
-				"ItemArms": "ShacklesArms",
-				"ItemLegs": "ShacklesThigh",
-				"ItemFeet": "ShacklesAnkles",
+				"ItemArms": "CuffsArms",
+				"ItemLegs": "CuffsThigh",
+				"ItemFeet": "CuffsAnkles",
 			},
 		);
 
