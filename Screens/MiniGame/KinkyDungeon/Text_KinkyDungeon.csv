@@ -3200,9 +3200,9 @@ RestraintSarcophagus,Sarcophagus
 RestraintSarcophagusDesc,"A glass-walled chamber sealed with enchanting magic."
 RestraintSarcophagusDesc2,"Time feels like it's going by quickly outside..."
 
-RestraintCageTrap,Cage Trap
-RestraintCageTrapDesc,"A booby-trapped cage!"
-RestraintCageTrapDesc2,"Fit for a pretty toy like you~"
+RestraintCageTrap,Metal Cage
+RestraintCageTrapDesc,"A metal cage with rigid bars, too narrow to put your head through."
+RestraintCageTrapDesc2,"Made for a pretty toy like you~"
 RestraintDisplayTrap,Display Stand
 RestraintDisplayTrapDesc,"A display stand, fit for only the prettiest of trophies!"
 RestraintDisplayTrapDesc2,"Your arms are pinned behind your back and you can barely move!"
@@ -9248,6 +9248,7 @@ rPrisonRepeatPout,"(The SPEAKER shrugs)|Well, I hope you learn."
 rPrisonRepeatBribe,"(The SPEAKER looks greedy)|Oh, you have an idea?"
 rPrisonRepeatBribe_Accept,"(The SPEAKER nods)|I'll put in a good word with you~"
 rPrisonRepeatBribeFail,"(The SPEAKER shakes her head)|Babe, you know who's going to be blamed|if a max-security prisoner escapes?"
+rPrisonRepeatBribePoor,"(The SPEAKER shakes her head)|I'll be honest with you, you're not worth the risk.|It'd help if you had more change~"
 
 dPrisonRepeat_Smile,"(Giggle and smile)"
 dPrisonRepeatSmile_Correct,"Don't you mean 'more fun'?"
@@ -9255,7 +9256,7 @@ dPrisonRepeat_Smile2,"(Giggle and moan)"
 dPrisonRepeat_Struggle,"(Struggle in your bindings)"
 dPrisonRepeat_Pout,"(Pout and glare at her)"
 dPrisonRepeat_Bribe,"(Point to the Jailer's coin pouch)"
-dPrisonRepeatBribe_Accept,"(Give her all your gold)"
+dPrisonRepeatBribe_Accept,"(Give her BRIBECOST gold)"
 
 
 
