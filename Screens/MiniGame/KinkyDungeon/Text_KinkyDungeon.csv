@@ -13049,13 +13049,10 @@ KDVarPrefCursed,Cursed
 
 KDIntroScene1,"Long ago, war raged across the globe.|Countless lives were lost fighting over pieces of rock in a vast ocean.|People turned to science, religion, and magic, anything to escape this cruel fate."
 KDIntroScene2,"Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharing her research across the globe, she laid the groundwork for an era of peace.|A great civilization arose, where magic and technology flourished."
-KDIntroScene3,"But in the end, Sariel's experiments left her weakened and unable to save herself.|Without a leader, the Old Civilization collapsed into tyranny.|Refugees fled across the sea in search of a new life, and the old empire was forgotten."
-KDIntroScene4,"It is now three hundred years after the fall.|Explorers have rediscovered a lost island full of old technology.|Now, adventurers flock to the ancient ruins in search of wealth."
-
+KDIntroScene3,"But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten."
+KDIntroScene4,"Three hundred years later,a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago."
 
 KinkyDungeonBuffSpellDamageBuff,An item has increased your spell damage!
-
-
 
 KDVariableModifier_AoEDamageFrozen,"AMNT ice damage/turn vs. Frozen"
 
