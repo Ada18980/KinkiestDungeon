@@ -257,6 +257,13 @@ let KDDialogue = {
 	},
 	"PrisonRepeat": {
 		response: "Default",
+		clickFunction: (gagged) => {
+			let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KinkyDungeonGoddessRep.Prisoner + 50)));
+			KDGameData.CurrentDialogMsgData = {
+				"BRIBECOST": "" + GoldAmount,
+			};
+			return false;
+		},
 		options: {
 			"Smile": {playertext: "Default", response: "Default",
 				prerequisiteFunction: (gagged, player) => {return !(KinkyDungeonGetRestraintItem("ItemVulva"));},
@@ -306,17 +313,23 @@ let KDDialogue = {
 			},
 			"Bribe": {playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
-					return KinkyDungeonGoddessRep.Prisoner >= -40 && KinkyDungeonGold >= 40;
+					let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KinkyDungeonGoddessRep.Prisoner + 50)));
+					return KinkyDungeonGoddessRep.Prisoner >= -40 && KinkyDungeonGold >= GoldAmount;
 				},
 				options: {
 					"Accept": {playertext: "Default", response: "Default",
 						clickFunction: (gagged, player) => {
+							let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KinkyDungeonGoddessRep.Prisoner + 50)));
 							if (KinkyDungeonGoddessRep.Prisoner >= 49.5) {
 								KDGameData.CurrentDialogMsg = "PrisonRepeatBribeFail";
 								return false;
 							}
-							KinkyDungeonChangeRep("Prisoner", -Math.max(10, Math.min(100, KinkyDungeonGold*0.25)));
-							KinkyDungeonGold = 0;
+							if (KinkyDungeonGold <GoldAmount) {
+								KDGameData.CurrentDialogMsg = "PrisonRepeatBribePoor";
+								return false;
+							}
+							KinkyDungeonChangeRep("Prisoner", -Math.max(10, Math.min(100, GoldAmount*0.25)));
+							KinkyDungeonAddGold(-GoldAmount);
 							KinkyDungeonSetFlag("LeashToPrison", 0);
 							return false;
 						},
