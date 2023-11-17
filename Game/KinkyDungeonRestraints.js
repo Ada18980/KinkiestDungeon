@@ -3294,7 +3294,7 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 			tightness: Tightness, curse: Curse, faction: faction, dynamicLink: linkUnder.dynamicLink };
 
 		let lk = linkUnder.dynamicLink;
-		if (!Curse) KinkyDungeonLock(linkUnder.dynamicLink, Lock);
+		if (!Curse && (Lock || restraint.DefaultLock)) KinkyDungeonLock(linkUnder.dynamicLink, Lock || restraint.DefaultLock);
 		if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
 		if (!safeLink) {
 			// Remove the original by iterating down and identifying one we can delete
