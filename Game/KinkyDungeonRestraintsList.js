@@ -4374,7 +4374,7 @@ let KDControlHarnessCategories = {
 					let newRestraint = KinkyDungeonGetRestraintByName(rName);
 					if (KinkyDungeonGetRestraintItem(KDRestraint(newRestraint).Group)) continue;
 					if (
-						KinkyDungeonAddRestraint(newRestraint, item.tightness, true, "", false, undefined, undefined, undefined, item.faction)) {
+						KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {
 						if (KDToggles.Sound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/RobotEngage.ogg");
 					}
 				}
