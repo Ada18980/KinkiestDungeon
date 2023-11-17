@@ -852,12 +852,12 @@ let KDEventMapInventory = {
 		},
 		"EnchantedAnkleCuffs2": (e, item, data) => {
 			KinkyDungeonRemoveRestraint(KDRestraint(item).Group);
-			KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("EnchantedAnkleCuffs"), 0, true, undefined, false, undefined, undefined, undefined, item.faction);
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("EnchantedAnkleCuffs"), 0, true, undefined, false, undefined, undefined, item.faction, true);
 		},
 		"EnchantedAnkleCuffs": (e, item, data) => {
 			if (KDGameData.AncientEnergyLevel <= 0.0000001) {
 				KinkyDungeonRemoveRestraint(KDRestraint(item).Group);
-				KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("EnchantedAnkleCuffs2"), 0, true, undefined, false, undefined, undefined, undefined, item.faction);
+				KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("EnchantedAnkleCuffs2"), 0, true, undefined, false, undefined, undefined, item.faction, true);
 			}
 		},
 		"RegenMana": (e, item, data) => {
@@ -1409,11 +1409,11 @@ let KDEventMapInventory = {
 		"Kittify": (e, item, data) => {
 			// get defeat, upgrade suit
 			KinkyDungeonRemoveRestraint("ItemArms",false,false,true,false);
-			KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("KittyPetSuit"), 15, undefined, undefined, undefined, undefined, undefined, undefined, item.faction);
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("KittyPetSuit"), 15, undefined, undefined, undefined, undefined, undefined, item.faction, true);
 			// leash if collared
 			let collared = KinkyDungeonGetRestraintItem("ItemNeck");
 			if(collared != undefined){
-				KinkyDungeonAddRestraint(KinkyDungeonGetRestraintByName("BasicLeash"), 1, false, "Red", undefined, undefined, undefined, undefined, item.faction);
+				KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 1, false, "Red", undefined, undefined, undefined, item.faction, true);
 			}
 		},
 	},
@@ -1710,7 +1710,7 @@ let KDEventMapInventory = {
 			const newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
 			if (e.sfx) KinkyDungeonPlaySound(`${KinkyDungeonRootDirectory}/Audio/${e.sfx}.ogg`);
 
-			KinkyDungeonAddRestraint(newRestraint, item.tightness, true, "", false, undefined, undefined, undefined, item.faction, undefined, undefined, undefined, false);
+			KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true, undefined, undefined, undefined);
 
 			if (e.enemyDialogue) {
 				const dialogue = KinkyDungeonGetTextForEnemy(e.enemyDialogue, enemy);
