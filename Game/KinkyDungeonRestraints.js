@@ -3209,7 +3209,7 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
 	)
 		&& ((restraint.linkCategory && !restraint.noDupe)
 			|| !KDDynamicLinkList(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), true).some((item) => {
-				if (restraint.name == item.name && ignoreItem?.id != item.id) {
+				if (restraint.name == item.name && (!ignoreItem || ignoreItem?.id != item.id)) {
 					// Note: return false means succeed
 					// true means interupt
 					if (!props) return true;
