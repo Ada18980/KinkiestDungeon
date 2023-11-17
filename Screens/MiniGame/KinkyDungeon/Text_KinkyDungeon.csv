@@ -744,9 +744,9 @@ KinkyDungeonObjectFaction,This belongs to the FACTION
 DeviousChallenge,"Devious Dungeon Challenge is enabled."
 KinkyDungeonLoading,"Waiting for game data..."
 
-End,"You have surrendered to the dungeon and become its prisoner."
-End2,"Day and night, you wait that rescue may come some day."
-End3,"Better luck next time!"
+End,""
+End2,""
+End3,""
 
 EndWin,"You have reached the end of the playable portion."
 EndWin2,"Come back later for new dungeons!"

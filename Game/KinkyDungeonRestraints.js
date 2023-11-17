@@ -3213,13 +3213,19 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
 					// Note: return false means succeed
 					// true means interupt
 					if (!props) return true;
-					if (!KDGetCurse(currentRestraint)) {
+
+					if ((!KDGetCurse(currentRestraint) && props.newCurse)
+					|| (!props.newCurse && props.newLock && !KDGetCurse(currentRestraint) && !currentRestraint.lock)
+					|| (props.newCurse && KDCurses[props.newCurse].level > KDCurses[KDGetCurse(currentRestraint)]?.level + 0.01)
+					|| (props.newLock && KDLocks[props.newLock].lockmult > (KDLocks[currentRestraint.lock]?.lockmult) + 0.01)) return false;
+
+					/*if (!KDGetCurse(currentRestraint)) {
 						if (props.newCurse) return false; // Curse always overrides lock
 						if (!currentRestraint.lock && (props.newCurse || props.newLock)) return false;
 						if (props.newLock && KDLocks[currentRestraint.lock]?.lockmult + 0.01 < KDLocks[props.newLock]?.lockmult) return false;
 					} else {
 						if (props.newCurse && KDCurses[KDGetCurse(currentRestraint)]?.level + 0.01 < KDCurses[props.newCurse]?.level) return false;
-					}
+					}*/
 					return true;
 				}
 				return false;
@@ -3308,7 +3314,7 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 						(!KDGetCurse(link) && Curse)
 						|| (!Curse && Lock && !KDGetCurse(link) && !link.lock)
 						|| (Curse && KDCurses[Curse].level > KDCurses[KDGetCurse(link)]?.level + 0.01)
-						|| (Lock && KDLocks[Lock].lockmult > KDLocks[link.lock]?.lockmult + 0.01)
+						|| (Lock && KDLocks[Lock].lockmult > (KDLocks[link.lock]?.lockmult) + 0.01)
 					)
 					) {
 						// Add is false here because we are removing AFTER adding the item
