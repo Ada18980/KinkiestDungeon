@@ -208,13 +208,13 @@ function KDProcessInput(type, data) {
 			KinkyDungeonTargetTile = tile;
 			KinkyDungeonTargetTileLocation = data.targetTile;
 			if (KinkyDungeonTargetTile?.Lock) {
-				KinkyDungeonAdvanceTime(1, true);
 				if (KinkyDungeonPickAttempt()) {
 					KinkyDungeonTargetTile.Lock = undefined;
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
 				}
+				KinkyDungeonAdvanceTime(1, true);
 				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			}
 			break;
@@ -226,13 +226,13 @@ function KDProcessInput(type, data) {
 
 			if (KinkyDungeonTargetTile?.Lock) {
 				KDUpdateDoorNavMap();
-				KinkyDungeonAdvanceTime(1, true);
 				if (KinkyDungeonUnlockAttempt(KinkyDungeonTargetTile.Lock)) {
 					KinkyDungeonTargetTile.Lock = undefined;
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
 				}
+				KinkyDungeonAdvanceTime(1, true);
 				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			}
 			break;
@@ -244,7 +244,6 @@ function KDProcessInput(type, data) {
 
 
 			if (KinkyDungeonTargetTile?.Lock) {
-				KinkyDungeonAdvanceTime(1, true);
 				let spell = KinkyDungeonFindSpell("CommandWord", true);
 				let miscast = KinkyDungeonMiscastChance;
 				let gagTotal = KinkyDungeonGagTotal();
@@ -266,6 +265,7 @@ function KDProcessInput(type, data) {
 				} else {
 					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGaggedFail"), "#ff0000", 1);
 				}
+				KinkyDungeonAdvanceTime(1, true);
 				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			}
 
@@ -287,7 +287,6 @@ function KDProcessInput(type, data) {
 			tile = KinkyDungeonTilesGet(data.targetTile);
 			//KinkyDungeonTargetTile = tile;
 			//KinkyDungeonTargetTileLocation = data.targetTile;
-			KinkyDungeonAdvanceTime(1, true);
 			//KinkyDungeonTargetTile = null;
 			if (KinkyDungeonGold >= data.cost) {
 				KinkyDungeonPayShrine(data.type);
@@ -307,6 +306,7 @@ function KDProcessInput(type, data) {
 					KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonPayShrineFail"), "#ff5555", 1, true);
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Damage.ogg");
 			}
+			KinkyDungeonAdvanceTime(1, true);
 			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			break;
 		case "shrineDrink": {
@@ -317,7 +317,6 @@ function KDProcessInput(type, data) {
 			KDDelayedActionPrune(["Action", "World"]);
 			tile = KinkyDungeonTilesGet(data.targetTile);
 			if (tile) tile.drunk = true;
-			KinkyDungeonAdvanceTime(1, true);
 
 			// KinkyDungeonStatsChoice.get("Blessed")
 			let slimed = 0;
@@ -337,6 +336,8 @@ function KDProcessInput(type, data) {
 			KinkyDungeonAggroAction('shrine', {});
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 
+			KinkyDungeonAdvanceTime(1, true);
+
 			let x =  data.targetTile.split(',')[0];
 			let y =  data.targetTile.split(',')[1];
 			KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, slimed ? 1.5 : 1);
@@ -354,6 +355,7 @@ function KDProcessInput(type, data) {
 			if (tile) tile.drunk = true;
 
 			KinkyDungeonAdvanceTime(1, true);
+
 			let x =  data.targetTile.split(',')[0];
 			let y =  data.targetTile.split(',')[1];
 			KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, 1.0);
