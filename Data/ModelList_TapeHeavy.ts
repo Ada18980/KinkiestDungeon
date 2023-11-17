@@ -53,7 +53,7 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["FeetLinked", "EncaseTorsoLower", "EncaseLegs"],
 	Layers: ToLayerMap([
-		{ Name: "Legs", Layer: "WrappingLegs", Pri: -5,
+		{ Name: "Legs", Layer: "WrappingLegsOver", Pri: -5,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
