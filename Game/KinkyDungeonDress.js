@@ -213,6 +213,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 								restraints.push(link);
 							}
 							if (link.dynamicLink) {
+								renderTypes = KDRestraint(link).shrine;
 								link = link.dynamicLink;
 							} else I = 1000;
 						}

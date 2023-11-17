@@ -112,18 +112,25 @@ function KDDynamicLinkListSurface(item) {
 		let link = item.dynamicLink;
 		while (link) {
 			stack.push({item: link, host: last});
-			link = link.dynamicLink;
 			last = link;
+			link = link.dynamicLink;
 		}
 	}
 	let ret = [item];
+	let inaccess = false;
 	// Now that we have the stack we sum things up
-	for (let tuple of stack) {
+	for (let i = 0; i < stack.length; i++) {
+		let tuple = stack[i];
 		let inv = tuple.item;
 		let host = tuple.host;
-		if (
-			(!KDRestraint(host).inaccessible)
-			&& ((KDRestraint(host).accessible) || (KDRestraint(inv).renderWhenLinked && KDRestraint(item).shrine && KDRestraint(inv).renderWhenLinked.some((link) => {return KDRestraint(item).shrine.includes(link);})))
+		if (!inaccess && KDRestraint(host).inaccessible) inaccess = true;
+		if ( KDRestraint(host).alwaysAccessible || (
+			!inaccess
+			&&
+			(
+				KDRestraint(host).accessible || KDRestraint(inv).alwaysRender || (KDRestraint(inv).renderWhenLinked && KDRestraint(host).shrine && KDRestraint(inv).renderWhenLinked.some((link) => {return KDRestraint(host).shrine.includes(link);}))
+			)
+		)
 		) {
 			ret.push(inv);
 		}
@@ -788,6 +795,13 @@ function KinkyDungeonDrawInputs() {
 		}
 	};
 	resetX();
+
+	if (KDToggleShowAllBuffs)
+		KDDraw(kdcanvas, kdpixisprites, "allbuffsX", KinkyDungeonRootDirectory + "UI/X.png",
+			1960, minYY - 29, undefined, undefined, undefined, {
+				zIndex: 101,
+			});
+
 	for (let stat of sorted) {
 		if (((!KDMinBuffX && XX > minXX) || (KDMinBuffX && XX > KDMinBuffX)) && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
 			resetX(stat);
