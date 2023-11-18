@@ -10299,43 +10299,43 @@ You hand over your weapon reluctantly...
 (Leave)
 （离开）
 (The SPEAKER frowns)|Don't lie to me.
-（说话者皱眉）|别骗我。
+（SPEAKER 皱眉）|别骗我。
 (The SPEAKER looks puzzled)|That doesn't seem right...
-（SPEAKER一脸不解）|好像不对……
+（SPEAKER 一脸不解）|好像不对……
 (The SPEAKER chuckles)|What a cute lie.
 （SPEAKER 轻笑）|多么可爱的谎言。
 (The SPEAKER beeps)|Vital signs indicate dishonesty.
 （SPEAKER 发出哔哔声）|生命体征表明不诚实。
 (The SPEAKER furrows her brow)|...Excuse me?
-（SPEAKER皱起眉头）|...打扰一下？
+（SPEAKER 皱起眉头）|...打扰一下？
 (The SPEAKER tilts her head)|Right, sorry.
-（SPEAKER歪着头）|呃，对不起。
+（SPEAKER 歪着头）|呃，对不起。
 (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
-（SPEAKER脸红了）|我……我很抱歉！请继续...
+（SPEAKER 脸红）|我……我很抱歉！请继续...
 (The SPEAKER smiles)|Keep up the good work, girl.
-（SPEAKER微笑）|继续努力，女孩。
+（SPEAKER 微笑）|继续努力，女孩。
 (The SPEAKER beeps)|Vital signs indicate honesty. Carry on.
 （SPEAKER 发出哔哔声）|生命体征表明诚实。继续。
 (The SPEAKER smiles)|Good girl.
-（SPEAKER微笑）|好姑娘。
+（SPEAKER 微笑）|好姑娘。
 (The SPEAKER smiles)|That's a good girl.
-（SPEAKER微笑）|那是个好姑娘。
+（SPEAKER 微笑）|那是个好姑娘。
 (The SPEAKER smiles)|Thank you.
-（SPEAKER微笑）|谢谢。
+（SPEAKER 微笑）|谢谢。
 (The SPEAKER beeps)|Thank you for complying.
 （SPEAKER 发出哔哔声）|感谢您的遵守。
 (The SPEAKER frowns)|Looks like you'll need to be punished. Get her!
-（SPEAKER皱眉）|看来你需要受到惩罚。抓住她！
+（SPEAKER 皱眉）|看来你需要受到惩罚。抓住她！
 (The SPEAKER looks Embarrassed)|Then... then... uh... someone stop her!
-（SPEAKER看起来很尴尬）|那么……那么……呃……来人阻止她！
+（SPEAKER 看起来很尴尬）|那么……那么……呃……来人阻止她！
 (The SPEAKER grins)|Then allow me to personally show you the rules.
-（SPEAKER咧嘴一笑）|那么请允许我亲自向你展示规则。
+（SPEAKER 咧嘴一笑）|那么请允许我亲自向你展示规则。
 (The SPEAKER beeps)|Subject is resisting. Begin capture protocol.
-（扬声器发出哔哔声）|对象在反抗。开始捕获协议。
+（SPEAKER 发出哔哔声）|对象在反抗。开始捕获协议。
 (The SPEAKER calls at you)|You're not supposed to be carrying a weapon.|Hand it over.
-（说话者向你喊话）|你不应该带着武器。|把它交出来。
+（SPEAKER 向你喊话）|你不应该带着武器。|把它交出来。
 (The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply.
-（扬声器靠近您）|检测到违禁品。开始没收。|请遵守。
+（SPEAKER 靠近您）|检测到违禁品。开始没收。|请遵守。
 Yes, miss... (Currently held weapon will be lost)
 是的，小姐……（目前持有的武器将会丢失）
 Mmph... (Nod politely) (Currently held weapon will be lost)
