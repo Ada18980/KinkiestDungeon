@@ -6126,7 +6126,7 @@ Belt
 Plug
 塞
 Vibe
-氛围
+震动
 Piercings
 穿孔
 Nipples
@@ -6141,6 +6141,10 @@ Feet
 脚
 Device
 设备
+You found an item that was too small to see!
+您发现了一个因为太小而看不见的物品！
+You pick up XXX gold.
+你获得了 XXX 金币。
 You retrieve an ancient power crystal.
 你取回了一块远古能量水晶。
 You pick up a magical amulet and use it to boost your stats.
