@@ -1430,10 +1430,10 @@ Missing key
 未找到钥匙
 Chance for a spell to fizzle: 
 施法失败几率：
-Dodge Chance: Percent%, based on EVASIONSUM Evasion, -EVASIONPENALTY% penalty from bindings
-闪避率：Percent%，基于 EVASIONSUM 闪避，扣除来自束缚的 EVASIONPENALTY% 惩罚
-Block Chance: Percent%, based on BLOCKSUM Block, -BLOCKPENALTY% penalty from bindings
-格挡率：Percent%，基于 BLOCKSUM 格挡，扣除来自束缚的 BLOCKPENALTY% 惩罚
+Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
+闪避率：Percent%，基于 EVASIONSUM 闪避和 EVASIONPENALTY% 惩罚。
+Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
+格挡率：Percent%，基于 BLOCKSUM 格挡和 BLOCKPENALTY% 惩罚。
 Chance to resist a level 10 restraint: Percent%
 对10级束缚的抗性：Percent%
 Sight Range: RADIUS
@@ -2032,7 +2032,7 @@ You're not sure how they charged these...
 A mysterious device used by the old civilization, now depleted.
 旧文明使用的神秘装置，现已耗尽。
 Gold
-金色
+金币
 Key
 钥匙
 A key with traces of magic that fades with one use.
@@ -2601,6 +2601,10 @@ Unarmed
 徒手
 Accuracy: 
 准确度：
+Crit Multiplier: 
+暴击倍率：
+Bind Crit Multiplier: 
+捆绑暴击倍率：
 Find the keys..
 寻找钥匙...
 Find the exit!
@@ -4043,6 +4047,10 @@ Hopping!!!
 跳跃中！！！
 Hop!
 跳跃！
+You run!
+你正在跑！
+You hop desperately!
+你正在拼命地跳！
 Close Door
 关门
 Unlock
