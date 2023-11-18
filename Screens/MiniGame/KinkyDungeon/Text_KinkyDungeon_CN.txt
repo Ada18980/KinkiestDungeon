@@ -6662,7 +6662,7 @@ Ribbons
 Empowered with magic
 被赋予了魔法
 Blessed Wrappings
-神圣裹布
+祝福丝带
 Enchanted wrappings
 魔法包裹物
 Summoning Runes
@@ -8480,8 +8480,6 @@ You are blinded!
 你失明了！
 You took DamageDealt damage!
 你受到了DamageDealt点伤害！
-Your own rope trap springs upon you!
-你自己的绳索陷阱涌现到你身上！
 You get caught in sticky slime!
 你陷入粘稠的粘液中！
 The slime ball sticks to you!
@@ -8492,14 +8490,38 @@ You feel a powerful sensation run through your body!
 你会感觉到一种强烈的感觉贯穿你的身体！
 Beams of light wrap around your body and feel warm on your skin!
 光束环绕您的身体，让您的皮肤感到温暖！
+Crystals begin to form around your limbs!
+晶体开始在你的四肢周围形成！
 A magic chain secures itself around your body!
 一条魔链固定在您的身体上！
+A rope wraps itself around your body!
+一根绳子缠绕在你的身上！
+A ribbon animates and becomes entwined around you!
+一条丝带充满活力并缠绕在您周围！
+A belt buckles itself tightly around your body!
+一条皮带紧紧地扣在你的身上！
+A vine slithers across your body and tightens!
+一根藤蔓滑过你的身体并收紧！
 The spell hits you and slows you down!
 咒语击中你并减慢你的速度！
 Rope
 绳索
 Rope Tendrils
 绳卷须
+Blessed Wrappings
+祝福丝带
+The Blessing
+祝福
+A long tendril emerges from the kraken's body!
+一条长长的卷须从海妖的身体里浮现出来！
+Coiled ropes spring up from the floor!
+盘绕的绳子从地板上弹起来！
+A long tendril emerges from the kraken's body!
+一条长长的卷须从海妖的身体里浮现出来！
+Several glowing wrappings emerge!
+几条发光的包裹物出现了！
+A glowing wrapping emerges and starts moving toward you!
+一个发光的包裹物出现并开始向你移动！
 Rope Strike
 绳击
 Animated Vines
@@ -8524,10 +8546,12 @@ Vines tear off your clothes!
 藤蔓撕掉了你的衣服！
 Restraints materialize on your body!
 拘束具在你的身体上出现！
+
 The orb explodes into a burst of ribbons!
 水晶爆裂成一道道丝带！
 The orb tears off your clothes!
 水晶撕裂了你的衣服！
+
 Charm Trap
 绷带陷阱
 Ribbon Trap
@@ -8556,6 +8580,7 @@ Sleep Dart
 睡眠镖
 Sleep Dart
 睡眠镖
+
 A talisman on the floor explodes, sending a cloud of charms flying around you!
 地板上的符箓炸开，一团丝带在你身边飞舞！
 Magical binding ribbons emerge from the walls!
