@@ -109,6 +109,7 @@ let KDToggles = {
 	DrawArmor: true,
 	Bloom: true,
 	StunFlash: true,
+	AsyncRendering: false,
 	ParticlesFX: true,
 	ArousalHearts: true,
 	VibeHearts: true,

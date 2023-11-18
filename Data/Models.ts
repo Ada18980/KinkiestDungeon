@@ -1,6 +1,9 @@
 let SHOWMESHPOINTS = false;
 let StruggleAnimation = false;
 
+let RenderCharacterQueue = new Map();
+let RenderCharacterLock = new Map();
+
 /**
  * Returns a table with the priorities for each layer based on order of the array
  */
@@ -143,6 +146,20 @@ function DisposeCharacter(C: Character): void {
  * @param flip - Mods applied
  */
 function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = [], zIndex: number = 0, flip: boolean = false): void {
+	// Update the RenderCharacterQueue
+	let renderqueue = RenderCharacterQueue.get(C);
+	if (renderqueue && !RenderCharacterLock.get(C)) {
+		if (renderqueue.length > 0) {
+			let renderf = renderqueue.splice(0, 1)[0];
+			if (renderf)
+				renderf();
+		} else {
+			RenderCharacterQueue.delete(C);
+		}
+	}
+
+
+
 	let MC: ModelContainer = !KDCurrentModels.get(C) ? new ModelContainer(
 		C,
 		new Map(),
@@ -297,11 +314,24 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			//Container.Mesh.x += Container.Container.pivot.x;
 			//Container.Mesh.y += Container.Container.pivot.y;
 			//if (MC.Containers.get(containerID).RenderTexture)
-            if (MC.Containers.get(containerID).RenderTexture)
-				PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
-					clear: true,
-					renderTexture: MC.Containers.get(containerID).RenderTexture,
-				});
+            if (MC.Containers.get(containerID).RenderTexture) {
+				if (KDToggles.AsyncRendering) {
+					if (!RenderCharacterQueue.get(C)) RenderCharacterQueue.set(C, []);
+					RenderCharacterQueue.get(C).push(async function() {
+						RenderCharacterLock.set(C, true);
+						PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
+							clear: true,
+							renderTexture: MC.Containers.get(containerID).RenderTexture,
+						});
+						RenderCharacterLock.delete(C);
+					});
+				} else {
+					PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
+						clear: true,
+						renderTexture: MC.Containers.get(containerID).RenderTexture,
+					});
+				}
+			}
 			MC.ForceUpdate.add(containerID);
 		}
 		Container.SpritesDrawn.clear();
