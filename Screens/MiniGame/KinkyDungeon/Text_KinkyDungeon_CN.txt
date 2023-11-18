@@ -743,7 +743,7 @@ You gain 82 grope resist.
 Masochist
 受虐
 Pain is strongly arousing.
-疼痛会使你强烈地兴奋。
+疼痛会使你强烈地性奋。
 Pain Tolerance
 坚韧
 You gain 200 pain resist.
