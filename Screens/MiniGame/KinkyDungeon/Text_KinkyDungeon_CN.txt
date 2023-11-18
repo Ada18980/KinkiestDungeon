@@ -2663,8 +2663,16 @@ Satisfied~
 满意~
 Damage: 
 伤害：
+Bind: 
+捆绑：
+Crit: 
+暴击：
+Crit: 
+暴击：
 Accuracy: 
 准确度：
+SP Cost: 
+体力消耗：
 It appears to be a receptacle
 它似乎是一个容器
 Place live crystal
