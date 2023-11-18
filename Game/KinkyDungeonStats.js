@@ -43,7 +43,7 @@ let KinkyDungeonTeaseLevel = 0;
 /** This is super powerful teasing that bypasses chastity */
 let KinkyDungeonTeaseLevelBypass = 0;
 let KinkyDungeonOrgasmVibeLevel = 0;
-let KinkyDungeonDistractionPerVibe = 0.05; // How much distraction per turn per vibe energy cost
+let KinkyDungeonDistractionPerVibe = 0.2; // How much distraction per turn per vibe energy cost
 let KinkyDungeonDistractionPerPlug = 0.1; // How much distraction per move per plug level
 let KinkyDungeonVibeCostPerIntensity = 0.15;
 
@@ -1006,8 +1006,20 @@ let KDNoRegenFlag = false;
 function KDGetDistractionRate(delta) {
 	let mult = KDNoRegenFlag ? 0 : 1;
 	KDNoRegenFlag = false;
-	let distractionRate = (KinkyDungeonVibeLevel == 0 && KDGameData.OrgasmNextStageTimer < 4 && !(KDGameData.DistractionCooldown > 0)) ? (!KinkyDungeonStatsChoice.get("arousalMode") ? KinkyDungeonStatDistractionRegen * KDDistractionDecayMultDistractionMode * mult : (KDGameData.PlaySelfTurns < 1 ? mult * KinkyDungeonStatDistractionRegen*(
-		(KinkyDungeonChastityMult() > 0.9 ? KDNoUnchasteMult : (KinkyDungeonChastityMult() > 0 ? KDNoUnchasteBraMult : 1.0))) : 0)) : (KinkyDungeonDistractionPerVibe * KinkyDungeonVibeLevel);
+	let VibeDistractionRate = 0;
+	let VibeTargetLevel = 0;
+	// Vibrators are less effective the more aroused you are
+	if (KinkyDungeonVibeLevel > 0) {
+		VibeTargetLevel = 0.3 + 0.2 * KinkyDungeonVibeLevel + 0.5 * 0.01 * (KinkyDungeonGoddessRep.Passion + 50);
+		VibeTargetLevel = KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax + (1 - KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax) * VibeTargetLevel;
+		VibeDistractionRate = Math.max(0, (VibeTargetLevel - KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax) * KinkyDungeonDistractionPerVibe * KinkyDungeonVibeLevel);
+		mult = Math.min(Math.max(0, (-VibeTargetLevel + KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax)), 1);
+	}
+
+	let distractionRate = (VibeDistractionRate == 0 && !(KDGameData.DistractionCooldown > 0)) ? (!KinkyDungeonStatsChoice.get("arousalMode") ?
+		KinkyDungeonStatDistractionRegen * KDDistractionDecayMultDistractionMode * mult : (KDGameData.PlaySelfTurns < 1 ? mult * KinkyDungeonStatDistractionRegen*(
+			(KinkyDungeonChastityMult() > 0.9 ? KDNoUnchasteMult : (KinkyDungeonChastityMult() > 0 ? KDNoUnchasteBraMult : 1.0))) : 0)) :
+		VibeDistractionRate;
 
 	let distractionBonus = KinkyDungeonSetMaxStats(delta).distractionRate;
 	if (KinkyDungeonStatDistraction < KinkyDungeonStatDistractionLower) {
@@ -1091,13 +1103,13 @@ function KinkyDungeonUpdateStats(delta) {
 		let data = {
 			invol_chance: (KDGameData.OrgasmStage >= KinkyDungeonMaxOrgasmStage) ?
 				1.0 :
-				(KDOrgasmStageTimerMaxChance + (1 - KinkyDungeonStatWill/KinkyDungeonStatWillMax) * (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0)),
+				(KDInvolChanceBase + KDWillpowerInvolChanceMult * (1 - KinkyDungeonStatWill/KinkyDungeonStatWillMax) + KDPassionInvolChanceMult * (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0)),
 			invol_satisfied_threshold: KinkyDungeonStatDistractionMax * 0.75,
 		};
 		KinkyDungeonSendEvent("calcInvolOrgasmChance", data);
 		if ((KinkyDungeonTeaseLevel > 0 || KDGameData.OrgasmNextStageTimer >= KDOrgasmStageTimerMax) && (KDRandom() < data.invol_chance && KinkyDungeonControlsEnabled())) {
 			if (KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage) {
-				if (KinkyDungeonCanPlayWithSelf() && KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax > KinkyDungeonDistractionPlaySelfThreshold && !KinkyDungeonInDanger()) {
+				if (KinkyDungeonCanPlayWithSelf() && KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax > KDGetPlaySelfThreshold() && !KinkyDungeonInDanger()) {
 					KinkyDungeonDoPlayWithSelf(KinkyDungeonTeaseLevel);
 					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonPlaySelfAutomatic" + (KinkyDungeonIsArmsBound() ? "Bound" : "")), "#FF5BE9", 5);
 				} else {
@@ -1122,7 +1134,7 @@ function KinkyDungeonUpdateStats(delta) {
 	if (delta > 0 && KinkyDungeonVibeLevel > 0) {
 		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonVibing" + Math.max(0, Math.min(5, Math.round(KinkyDungeonVibeLevel)))), "#ff88ff", 2, true, true);
 	}
-	let arousalPercent = distractionRate > 0 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionLower ? 0.04 : 0;
+	let arousalPercent = distractionRate > 0 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionLower ? 0.01 : 0;
 
 	if (KDGameData.OrgasmStage > 0 && !KinkyDungeonFlags.get("orgasmStageTimer") && KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.75) {
 		KDGameData.OrgasmStage = Math.max(0, KDGameData.OrgasmStage - delta);
@@ -1587,7 +1599,7 @@ let KinkyDungeonOrgasmStageVariation = 4; // determines the text message variati
 /** Threshold at which the player can play with herself */
 let KinkyDungeonDistractionSleepDeprivationThreshold = 0.001;
 /** Threshold at which the player will automatically play with herself if able*/
-let KinkyDungeonDistractionPlaySelfThreshold = 0.3;
+let KinkyDungeonDistractionPlaySelfThreshold = 0.9;
 let KinkyDungeonPlaySelfOrgasmThreshold = 3; // Note that it is impossible if you have a belt on, but possible if you only have a bra on
 
 let KinkyDungeonOrgasmTurnsMax = 10;
@@ -1601,7 +1613,10 @@ let KinkyDungeonOrgasmExhaustionAmount = -0.02;
 let KinkyDungeonOrgasmExhaustionAmountWillful = -0.005;
 
 let KDOrgasmStageTimerMax = 10; // Turns for orgasm stage timer to progress naturally
-let KDOrgasmStageTimerMaxChance = 0.1; // Chance for the event to happen
+let KDWillpowerInvolChanceMult = 0.1; // Chance for the event to happen
+let KDInvolChanceBase = -0.2;
+let KDPassionInvolChanceMult = 0.6;
+
 
 let KDWillpowerMultiplier = 0.5;
 
@@ -1614,6 +1629,12 @@ let KinkyDungeonPlayCost = -0.1;
 
 let KinkyDungeonOrgasmStunTime = 4;
 let KinkyDungeonPlayWithSelfMult = 0.25;
+
+function KDGetPlaySelfThreshold() {
+	return KinkyDungeonDistractionPlaySelfThreshold - 0.01 * (
+		0.4 * (KinkyDungeonGoddessRep.Passion + 50) + 0.9*(KinkyDungeonGoddessRep.Frustration + 50)
+	);
+}
 
 /**
  * Try to let go...

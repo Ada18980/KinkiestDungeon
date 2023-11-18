@@ -41,7 +41,9 @@ function KDTickNeeds(delta) {
  * @param {number} mult
  */
 function KDNeedsPlaySelf(data, mult = 1) {
-	KinkyDungeonChangeRep("Passion", (KDNeedsParams.PassionPerPlay - 0.01*(0.1 + 0.4 * KDRandom())*KDNeedsParams.PassionPerPlay*(KinkyDungeonGoddessRep.Passion + 50)));
+	KinkyDungeonChangeRep("Passion", (KDNeedsParams.PassionPerPlay
+		- 0.01*(0.1 + 0.4 * KDRandom())*KDNeedsParams.PassionPerPlay*(KinkyDungeonGoddessRep.Passion + 50)
+		- 0.01*(0.1 + 0.3 * KDRandom())*KDNeedsParams.PassionPerPlay*(KinkyDungeonGoddessRep.Frustration + 50)));
 	//KinkyDungeonChangeRep("Frustration", -(KDNeedsParams.FrustrationPerOrgasm + 3*KDNeedsParams.FrustrationPerOrgasm*(KinkyDungeonGoddessRep.Frustration + 50)));
 }
 
@@ -72,6 +74,6 @@ function KDNeedsEdge(data, mult = 1) {
  * @param {number} mult
  */
 function KDNeedsDeny(data, mult = 1) {
-	KinkyDungeonChangeRep("Passion", -(2 + (4 + 8 * KDRandom()) * 0.01*(50 - KinkyDungeonGoddessRep.Frustration)));
-	KinkyDungeonChangeRep("Frustration", (15 + (20 * KDRandom()) * 0.01*(KinkyDungeonGoddessRep.Passion + 50)));
+	KinkyDungeonChangeRep("Passion", -(2 + (8 + 12 * KDRandom()) * 0.01*(50 - KinkyDungeonGoddessRep.Frustration)));
+	KinkyDungeonChangeRep("Frustration", (10 + (15 * KDRandom()) * 0.01*(KinkyDungeonGoddessRep.Passion + 50)));
 }
