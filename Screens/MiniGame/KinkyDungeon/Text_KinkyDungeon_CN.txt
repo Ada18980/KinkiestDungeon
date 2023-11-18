@@ -1,19 +1,25 @@
+By Strait-Laced Games
+由 Strait-Laced Games 呈现
+
 Credits
-致谢（素材）
+贡献者
 Patrons
-致谢（资助者）
+赞助
 News and Updates
 新闻和更新
 Support @ Patreon
-资助@Patreon
-Thank you to the following awesome people for supporting me at patreon.com/ada18980|cyberjoel|Samantha Lear|Kara|The-Fisher-King|Laioken|Finn|selly-grim|Dex♪|Churro|Gamefan|Shogo|X27|Blox|Slacker|Nikos S.|Flame|Alexis Octavia|Dmitri S.|Noxgarm|Siegfried K.|Hellgete
-感谢以下这些很棒的人在 patreon.com/ada18980 上支持我|cyberjoel|Samantha Lear|Kara|The-Fisher-King|Laioken|Finn|selly-grim|Dex♪|Churro|Gamefan|Shogo|X27|Blox|Slacker|Nikos S.|Flame|Alexis Octavia|Dmitri S.|Noxgarm|Siegfried K.|Hellgete
+赞助@Patreon
+Thank you to the following awesome people for supporting me at patreon.com/ada18980
+感谢以下这些很棒的人在 patreon.com/ada18980 上赞助了我
 Back
 后退
 Next
-下一个
+下一页
 Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia, Mitki|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+音乐: kocaeli|约束敌人图形: Song|中文翻译: Alexthymia, Mitki|韩语，日语翻译: Phantasm|代码贡献者: Ellie, Demopans, Aelie|音频:|饮用药水 - Jamius|点击 - StrikeWhistler - 已修改|石门_关闭 - AudioTorpedo - 已修改|脚步 - Fission9 - 已修改|火魔法 - Julien Matthey|轻击 - qubodup|重击 - orangesheepdog|空击 - Brsjak - 已修改|Clap - DWSD - 已修改|'门, 正面, 关闭, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'门, 正面, 打开, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|打开箱子 - spookymodem - 已修改|解锁 - BeezleFM|解开 - danhelbling|剪刀 - qubodup|翻找物品 - adcbicycle|仙尘 - jacksonacademyashmore|金属物品破碎 - gristi
+Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
+Door locked.wav - mitchanary - 已修改|Coins.wav - Saviraz|打开石棺 - Breviceps - 已修改|磨刀 - Anthousai|纸声 - Bash360 - 已修改|冻结通电 - JustInvoke - 已修改|水声 - patchytherat - 已修改|grab 3 - ihitokage - 已修改|枪声 - qubodup - 已修改|黄铜掉落 - movingplaid - 已修改|能量武器镭射声 - rkkaleikau - 已修改|雷声 - deleted_user_7146007 - 已修改|把铁链从水槽拖出来 - Hitrison - 已修改|Hihat 7 - TheCoolManARM2 - 已修改|Ambientsoundapp - Lightning Storm.wav - 已修改|kev_durr - Arc Welding.wav - 已修改|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||艺术家与灵感|Hotel01 - https://www.pixiv.net/en/users/5944252 - 画了一个非常棒的狼女|spark utamaro - 对于受到震动器感觉的点子
+
 Language
 语言
 English
@@ -30,6 +36,7 @@ Mods
 模组
 Mods Loaded.
 已加载 Mods
+
 You are an adventurer descending into an ancient underground city of magic.
 你是一个冒险家，前往了一个古老的地下魔法城市。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -38,36 +45,63 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 你会战胜未知的力量，还是屈服于它的黑暗秘密？
 (This game does not contain spiders)
 （本游戏不包含蜘蛛）
+Skip Intro
+跳过简介
+Always Show Warnings
+总是显示警告
+Always Show Minimap
+总是显示小地图
 Enable Sound
 启用音效
-Enable Drool/Tears
-启用流口水/眼泪
-Draw Armor
-绘制子弹
+Art: Drool/Tears
+艺术: 流口水/眼泪
+Art: Draw Armor
+艺术: 渲染盔甲
 Enable Music
 启用音乐
-Turn Counter
-回合计数器
-Flash Screen on Stun
-闪屏眩晕
-Advanced Distraction VFX
-高级魅惑特效
-Advanced Toy VFX
-高级玩具特效
-Show NPC Status
-显示 NPC 状态
-Advanced Fog of War
-高级迷雾
+GFX: Async Rendering (beta)
+GFX: 异步渲染 (测试版)
+GFX: Bloom & Glow
+GFX: 曝光 & 发光
+Game: Transparent UI
+游戏: 透明UI
+Game: Turn Counter
+游戏: 回合计数器
+GFX: Flash Screen on Stun
+GFX: 眩晕时闪屏
+GFX: Map Particles
+GFX: 地图粒子效果
+GFX: Distraction Particles
+GFX: 分心粒子
+GFX: Vibration Particles
+GFX: 震动粒子
+Game: Show NPC Status
+游戏: 显示NPC状态
+Game: Show Spell Range
+游戏: 显示法术范围
+GFX: Trim Edge Walls
+GFX: 整理边缘墙
+GFX: Fog Shader
+GFX: 雾着色器
+GFX: Light Shader
+GFX: 灯光着色器
 Intense 'Let Go' VFX
-强烈高潮特效
+强烈高潮视效
 Enable Toy SFX
-启用玩具音效
+高级玩具特效
 Enable Fullscreen
 启用全屏
-High Quality Animations
-高品质动画
+GFX: High Quality Animations
+GFX: 高品质动画
+GFX: Enemy Animations
+GFX: 敌人动画
+Controls: One-Click Move
+控制: 单击移动
+Controls: Latch Shift Key
+控制: 闩锁移位键
 Wait Quickly
 快速等待
+
 Helpless!
 无助！
 Evaded!
@@ -76,16 +110,25 @@ Blocked!
 阻挡！
 Resisted Bondage!
 反抗束缚！
+
 You bump into a wall.
 你撞到了一堵墙。
+
+Game Resolution:
+游戏分辨率:
+Resolution (needs reload):
+分辨率 (需要重载):
 Toy Volume:
 玩具音量：
 Music Volume:
 音乐音量：
 SFX Volume:
-音效大小:
+特效音量:
 Animation Time:
 动画时间:
+Map Brightness:
+地图亮度:
+
 Select a journey. This will determine the ordering of game areas.
 选择旅程。这将决定游戏区域的顺序。
 Standard: The intended experience
@@ -94,6 +137,7 @@ Random: A chaotic journey
 随机：混乱的旅程
 Harder: A more difficult journey
 更难：更困难的旅程
+
 Select perks to start with.
 选择初始技能
 Having 10+ spare points will trigger Hard Mode, granting unique loot.
@@ -104,14 +148,51 @@ Advanced start (choose perks)
 高级启动（选择额外选项）
 Confirm and start playing!
 确认并开始游戏！
+
+Choose Class:
+选择类别：
+Distraction Mode:
+分心模式：
+Perks Mode:
+额外模式：
+Standard
+标准
+Extra
+附加
+Less
+较少
+No pain, no gain.
+一份耕耘，一份收获。
+Gain 10 extra perks, to give you a false sense of security.
+获得 10 项额外特权，给你一种虚假的安全感。
+Lose 10 perk points, just to keep things interesting.
+失去 10 个特权奖励点，只是为了让事情变得有趣。
+
+Hard Mode:
+难度模式：
+Normal Mode
+正常模式
+Hard Mode
+困难模式
+Extreme
+极端模式
+A supposedly reasonable difficulty curve.
+据称合理的难度曲线。
+Play the game the way it was intended. Cruel and restrictive.
+按照预期的方式进行游戏。残酷且限制。
+Play at your own peril. Unlocked by double-clicking the Hard Mode button.
+玩游戏要自担风险。通过双击“困难模式”按钮解锁。
+
 Point Cost: AMOUNT
 积分成本：AMOUNT
 Points Available: AMOUNT
 可用积分：AMOUNT
+
 Resilient Foes
 顽强之敌
 Enemies take 30% less damage.
 敌人受到的伤害减少 30%。
+
 Strong
 强健
 Boosts the Struggle option when escaping.
@@ -120,6 +201,7 @@ Helpless
 无助
 You are physically weak. Struggling is much less effective.
 你的身体虚弱，挣扎效果要差得多。
+
 Flexible
 灵活
 Slightly boosts the Remove/Unlock option, escaping is 1.5x as fast except picking, and your feet can use items/buckles.
@@ -128,6 +210,7 @@ Inflexible
 笨重
 You get a penalty to the Remove and Unlock action, and escaping is 0.75x as fast.
 减慢移除/解锁的速度，逃脱速度变为原先的 0.75 倍。
+
 Locksmith
 锁匠
 You get a bonus to lockpicking, allowing you to pick some high-security locks previously impossible.
@@ -136,6 +219,7 @@ Clueless
 一头雾水
 You have no idea how to pick locks. Picking is 0.5x as fast and you can't pick most advanced locks.
 你不知道如何撬锁，撬锁速度变为原来的 0.5 倍，而且您无法撬开最先进的锁具。
+
 Psychic
 超凡之力
 You no longer drop keys and picks, can unlock yourself with bound hands, and don't need hands for items/potions.
@@ -144,6 +228,7 @@ Novice
 新手
 All spells above 1st level cost 2x as many spell points.
 所有 1 级以上的法术花费 2 倍的法术点数。
+
 Blessed
 祝福
 You can drink mana from the shrine fountains once per floor without chance of punishment.
@@ -152,6 +237,7 @@ Cursed
 诅咒
 Goddess reputations start at 0 and can never exceed 25.
 所有女神的声望从0开始，永远不能超过25。
+
 Submissive
 温顺小甜心
 Your submissiveness starts at 100 and cannot go below 70.
@@ -160,6 +246,7 @@ Wanted
 通缉犯
 Your security level starts at 100 and cannot go below 70.
 开局安全级别变为 100 ，且游戏中不能低于 70。
+
 Studious
 学识渊博
 You start the game with +3 additional spell points.
@@ -168,6 +255,7 @@ Meditation
 冥想
 You slowly regenerate mana, up to a maximum of 50.
 你缓慢地恢复法力值，最多 50 点。
+
 Willpower
 坚毅
 -50% stamina drain from being at high arousal.
@@ -176,6 +264,7 @@ Bondage Lover
 束缚爱好
 Attempting to escape arouses you.
 试图挣脱会提高你的干扰值。
+
 Focused Dodge
 集中闪避
 While your miscast chance is 0%, you gain +40 Evasion.
@@ -184,6 +273,7 @@ Distracted
 干扰
 +15% miscast chance (at all times)
 增加 15% 施法失败几率（始终）
+
 Brawler
 格斗大师
 Unarmed attacks deal +10 damage.
@@ -196,6 +286,7 @@ Unfocused
 目光分散
 Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction.
 当性奋值超过10%时，准确率将降低至0.9倍，随性奋值的升高准确率将持续降低，最高在90%性奋值时降低至0.6倍。
+
 Pristine
 质朴
 There are no shiny loot objects in the dungeon.
@@ -204,6 +295,7 @@ Lost Technology
 遗落之术
 Ancient power cores break with use, and cannot be recharged.
 远古的能量核心会随着使用而损坏，并且无法充能。
+
 Unchained
 无拘无束
 Start with high Metal reputation, and all metal restraints are easier to escape from.
@@ -212,10 +304,12 @@ Damsel in Chains
 锁链少女
 Metal restraints are harder to escape from.
 金属拘束更难逃脱。
+
 Forgetful
 健忘
 You don't remember where you've been in the level.
 你不记得你在地牢中的位置。
+
 Cursed Locks
 禁锢诅咒
 Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle.
@@ -226,10 +320,12 @@ Undeniable
 无可争辩
 Born with an intense submissive desire, you cannot refuse bondage from dialogues.
 你生来就有强烈的顺从欲望，无法在对话时拒绝束缚请求。
+
 Frantic Struggle
 疯狂挣扎
 Your struggling is 3 times as fast, but less efficient in terms of stamina.
 你的挣扎速度变为原来的 3 倍，但提高挣扎时的体力消耗。
+
 Escape Artist
 逃脱大师
 Start with high Rope reputation, and all rope restraints are easier to escape from.
@@ -238,6 +334,7 @@ Rope Bunny
 绳模
 Rope restraints are harder to escape from.
 绳索拘束更难逃脱。
+
 Slippery
 滑溜溜
 Start with high Latex reputation, and all latex restraints are easier to escape from.
@@ -246,10 +343,12 @@ Latex Doll
 乳胶娃娃
 Latex restraints are harder to escape from.
 乳胶拘束更难逃脱。
+
 Hogtied!
 捆绑
 Start the game trussed up in tight ropes.
 开始游戏时被绳索捆绑。
+
 Escapee
 流亡者
 Start with high Leather reputation, and all leather restraints are easier to escape from.
@@ -258,6 +357,7 @@ Leather-Bound
 皮革拘束
 Leather restraints are harder to escape from.
 皮革拘束更难逃脱。
+
 Slayer
 元素法师
 You can cast Elemental spells without having the components, at twice the cost. Start w/ Firebolt.
@@ -270,10 +370,27 @@ Magician
 幻术法师
 You can cast Illusion spells without having the components, at twice the cost. Start w/ Shadow Dagger.
 你可以以两倍魔力消耗为代价无视施法条件使用幻术。开局获得技能 暗影匕首。
+
 Narcoleptic
 嗜睡症
 You slowly lose stamina over time.
 随着时间的推移，你会慢慢失去体力。
+
+Precise Targeting
+精确定位
+Your first critical hit on a target is 1.5x more powerful
+你对目标的第一次暴击威力增加1.5倍
+
+Surprise Bondage
+突袭束缚
+Binding from critical hits is 40% stronger
+束缚的暴击强度提高40%
+
+High Profile
+高调
+Several enemies on each map will be high value, rewarding more gold and items for defeating them but increasing their strength.
+每张地图上的几个敌人都会有很高的价值，击败他们会奖励更多的金币和物品，同时也会增强他们的力量。
+
 Stealth Mission
 隐匿任务
 You are harder to detect and there are more chests, but enemies take 30% less damage, are more evasive, and drop no gold.
@@ -310,6 +427,7 @@ Conspicuous
 显眼
 Enemies detect you more easily.
 敌人更容易发现你。
+
 Bound Power
 拘束之力
 Your damage and evasion increases based on the number of restraints worn, up to +40% when thoroughly bound.
@@ -318,6 +436,7 @@ Kill Squad
 杀戮小队
 Enemies see you through walls and at greater distance.
 敌人透过墙壁和更远的距离看到你。
+
 Supermarket
 超市
 Commerce shrines can appear in levels and have slightly more items.
@@ -326,6 +445,7 @@ Price Gouging
 敲竹杠
 Items are 5x as expensive in the shop.
 商店里的商品价格是原来的 5 倍。
+
 Supermarket
 超市
 Commerce shrines can appear in levels and have slightly more items.
@@ -334,6 +454,7 @@ Price Gouging
 敲竹杠
 Items are 5x as expensive in the shop.
 商店里的商品价格是原来的 5 倍。
+
 High Security
 高安全性
 Picks are weaker, and randomly generated locks are harsher.
@@ -350,18 +471,33 @@ Search Party
 搜查队伍
 More enemies spawn during sleep.
 更多的敌人在睡眠期间生成。
+
 No Way Out
 无法挣脱
 Enemies will always use the tightest restraints possible and fully bind you.
 敌人将始终使用最严格的拘束具来完全束缚你。
-Graceful Walk
-优雅步伐
-You don't lose stamina when walking with one slowing item, unless it binds your legs together.
-带着一件减速物品走路时不会失去耐力，除非你的腿被绑在一起。
+Deft Footwork
+步法灵巧
+You ignore some consequences of being mildly slowed from heels or slime, and you can cast Leg spells while slowed significantly at 50% miscast chance.
+无视高跟鞋或粘液导致的轻微减速，并且可以在50%的失败率下施放腿部的法术。
+Poor Form
+形式不佳
+Slowing effects on you are amplified.
+减速效果对你的影响会被放大。
+Poor Coordination
+协调性差
+You must have both fingers and arms free to cast arm spells. Hand restraints are more effective on you.
+你必须有两个手指和手臂才能施展手臂法术。束手装置对你更有效。
+Deft Fingering
+指法灵巧
+You can cast arm spells using just your fingers, as long as your hands aren't bound.
+只要你的手没有被束缚，你就可以只用手指施展手臂的法术。
+
 Well-Equipped
 设备精良
 Restraints and traps that are limited by level appear sooner, and enemies will stack many restraints.
 限制在一定层数后出现的拘束具和陷阱会更早的出现，并且敌人会堆叠更多的束缚。
+
 Quick-Draw
 快速拔刀
 Switching weapons and spells does not take a turn.
@@ -370,6 +506,7 @@ Quick-Scribe
 高速咏唱
 Switching spells and casting from spellbook does not take a turn.
 从法术书切换法术和施法不再需要等待一回合。
+
 Disorganized
 杂乱无章
 Switching weapons, learning/choosing spells, and casting from spellbook takes 3 turns.
@@ -378,10 +515,12 @@ Savour the Taste
 细细品味
 Drinking a potion takes 2 turns
 喝一瓶药水需要 2 回合。
+
 Magic Hands
 魔法之手
 Enemies can add restraints underneath existing restraints.
 敌人可以在现有拘束具上添加额外拘束。
+
 Cyber Doll
 赛博娃娃
 Start in Cyber restraints.
@@ -406,6 +545,7 @@ Doll Hunter M
 玩偶猎人M
 You start with the Dollmaker's Mask.
 开局时穿戴玩偶制造商的面具
+
 Vengeance
 复仇
 Defeating an enemy greatly distracts you.
@@ -422,26 +562,45 @@ Absolute Focus
 绝对专注
 Miscast chance is doubled.
 施法失败几率翻倍。
+
 Bound Crusader
 束缚十字军
 Goddesses will expect you to wear their restraints as their champion.
 女神会期望你作为她们的卫士时穿戴她们的拘束具。
+
 Nowhere is Safe
 草木皆兵
 Beds and furniture are often trapped.
 床和木桶经常会是陷阱。
+Apprehended
+逮捕
+When you are bound by an enemy attack or spell, you are stunned 1 turn per restraint added.
+当你被敌人的攻击或法术束缚时，每增加一个束缚，你就会眩晕1回合。
+Feeble Attacks
+虚弱的攻击
+All enemies gain 20 physical and magic armor.
+所有敌人获得20件物理和魔法护甲。
+Glass Cannon
+玻璃大炮
+The effects of you taking damage are increased by 150%.
+你受到伤害的效果会增加150%。
+
 I have... needs
 我...想要...
 Distraction builds up over time.
 干扰值随时间累计。
+
 Hopeless
 绝望的
 Willpower decays over time.
 意志力会随着时间的推移而衰减。
+
 Quickness
 迅疾闪现
 Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock.
 4回合不动后获得"敏捷"，"敏捷"状态下可以瞬间移动 1 格。
+
+
 Expansive Halls
 宽敞之牢
 Increases the size of maps by 1 in each direction.
@@ -454,6 +613,7 @@ Labyrinthine Halls
 辽阔之牢
 Increases the size of maps by 3 in each direction.
 将每个方向的地图大小增加 3。
+
 Rigger
 索具装配工
 Chain and glue damage increased by 20%. Binding on enemies is 30% stronger.
@@ -462,6 +622,32 @@ Pacifist
 和平主义者
 All non-glue, non-chain, or non-teasing damage dealt to humanoid enemies is reduced by 90%.
 对人形敌人造成的所有非胶水、非锁链或非戏弄伤害降低 90%。
+
+Fortified
+强化的
+Barricades set up by enemies do not expire, and enemies set them up even when not alerted.
+敌人设置的路障不会过期，即使没有警报，敌人也会设置路障。
+Minefield
+雷区
+Booby traps set by enemies are much more common.
+敌人设置的诡雷陷阱要常见得多。
+Curse Seeker
+诅咒探索者
+When you pick up cursed armor or restraints from chests, they equip automatically if able.
+当你从箱子中拿起被诅咒的盔甲或束缚具时，如果可以的话会自动装备。
+Directional Vision
+定向视觉
+Your vision is reduced except in the direction you are facing.
+你只能看见你面对的方向。
+Inertia
+惯性
+Turning 180 degrees while moving requires an extra turn
+移动时转动180度需要额外的回合
+Heavy Inertia
+重型惯性
+Turning 90 degrees while moving requires an extra turn
+移动时转动90度需要额外的回合
+
 Burning Desire
 焚心望火
 While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
@@ -470,6 +656,7 @@ Frigid Personality
 冰清玉洁
 While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
 当性奋值为 0% 时，自身造成的寒冰伤害提高 10%，并且可以在冰上无惩罚的行走。
+
 Grounded in Reality
 现实之源
 While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
@@ -478,6 +665,7 @@ Like the Wind
 风之旋律
 While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 1.
 当体力超过 95 %时，闪避 +30，并降低一级减速。
+
 Immovable Object
 坚不可摧
 While above 90% willpower, you gain +150 Bondage Resist and Earth buff spells cost half mana.
@@ -486,6 +674,7 @@ Path of Least Resistance
 腐蚀之盾
 While at 0 willpower, you gain +35 Evasion and deal 20% of your max willpower as acid damage when restrained.
 当意志力为 0 时，闪避 +35，并在被束缚时对敌人造成最大意志力 20% 的酸蚀伤害。
+
 Sticky Situation
 粘滞窘境
 You take 40% more glue damage.
@@ -494,10 +683,14 @@ Breathless
 气喘吁吁
 Taking chain, poison, and crush damage makes you dizzy.
 受到锁链、毒物和碾压伤害会让你头晕目眩。
+
+
+
 Kinky Prisoner
 变态囚犯
 Guards never remove restraints you are already wearing, unless they are applying something tighter.
 警卫永远不会移除您已经佩戴的束缚，除非他们使用更严格的束缚。
+
 Unfair Doors
 困难的门
 Doors are harder to open while your hands are bound.
@@ -516,10 +709,12 @@ You grab the doorknob with your wrists and flex it open.
 你用手腕抓住门把手并用力扭动，成功将门打开。
 You use your flexible feet to open the door.
 你利用灵活的双脚打开了门。
+
 Poor Technique
 技巧欠佳
 Instead of fizzling, most miscasted projectiles and AoE spells will target you instead.
 大多数施法失败的投射物和AOE法术将不会失效，而是会改为以你为目标。
+
 Ticklish
 怕痒
 You take 50% more tickle damage.
@@ -528,6 +723,7 @@ Stoic
 忍耐
 You gain 82% tickle resist.
 你获得 82% 挠痒抗性。
+
 Lascivious
 好色
 You take 50% more grope damage.
@@ -536,6 +732,7 @@ Unperturbed
 冰洁
 You gain 82 grope resist.
 自身抚摸抗性 +82 点。
+
 Masochist
 受虐
 Pain is strongly arousing.
@@ -544,26 +741,97 @@ Pain Tolerance
 坚韧
 You gain 200 pain resist.
 自身疼痛抗性 +200 点。
+
 Fashionable
 时尚之星
 When you are jailed, you keep your outfit.
 入狱可保留你的衣物。
+
 Futile Struggles
 无力挣扎
 Lose 2 WP every time you remove a non-trivial restraint.
 每次移除特殊拘束时消耗 2 WP。
+
 Second Wind
 再生之气
-Gain 2 WP every time you remove a non-trivial restraint. Destroys restraints on removal.
-每次解除特殊束缚时，获得2点意志力，但解除时会摧毁拘束具。
+Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)
+自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。（可在技能树中升级）
+Second Wind Perk
+再生之气特权
+Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage.
+自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。
+Triumphant Wind
+凯旋之气
+Second Wind now regenerates up to 25% of your max WP
+再生之气现在可以恢复你最大 WP 的 25%
+
+Locked Up
+禁锢
+While wearing a chastity belt, your Desire lowers when you perform actions such as defeating enemies, opening chests, and breaking orbs. (Upgrades available in spell tree)
+佩戴贞操带时，当您击败敌人、打开宝箱和打破球体等动作时，您的欲望会降低。（可在技能树中升级）
+Locked Up Perk
+禁锢特权
+While wearing a chastity belt, your Desire lowers when you perform actions such as capturing, opening chests, and breaking orbs.
+佩戴贞操带时，当您击败敌人、打开宝箱和打破球体等动作时，您的欲望会降低。
+Controlled Urges
+抑制冲动
+Locked Up is 150% effective. Gain +70 psychic/charm resist from a chastity belt and +30 from a chastity bra. While not wearing a chastity belt, your Desire increases slowly.
+禁锢有效率为 150%。 通过贞操带获得 +70 精神/魅惑抗性，通过贞操胸罩获得 +30 精神/魅惑抗性。你的欲望会在没有佩戴贞操带时慢慢增加。
+Ready for Training
+准备训练
+Locked Up is 300% effective. When Locked Up triggers, you gain -30% mana costs and +25% physical damage for 7 turns (35 when opening a chest or breaking orbs). You cannot orgasm unless you are wearing a chastity belt, and slow level is increased by 2.
+禁锢有效率为 300%。当锁定触发时，你会增益-30%魔法消耗和+25%的物理伤害，持续7回合（打开箱子或打碎球体时为35）。在未佩戴贞操带时，你将无法达到性高潮，并且缓慢等级增加至2。
+Recalcitrant
+顽固的
+Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back.
+放弃禁锢特权。只有这一次。如果你再获得这项特权，就没有回头路了。
+
+Novice Pet
+新手宠物
+You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
+你现在可以穿着宠物服冲刺了。（可在技能树中升级）
+Novice Pet Perk
+新手宠物特权
+You can now sprint while wearing a petsuit.
+你现在可以穿着宠物服冲刺了。
+Eager Pet
+渴望宠物
++1 slow reduction while wearing a petsuit, but sprint costs are increased by 30% when not wearing a petsuit.
+穿着宠物服时减速+1，但不穿着宠物服时冲刺成本增加 30%。
+Experienced Pet
+经验丰富的宠物
++2 slow reduction total while wearing a petsuit (from +1), but sprint costs are increased by 100% (from 30%) when not wearing a petsuit and slow level is increased by +1.
+穿着宠物套装时，减速总计+2（原为+1），但不穿宠物服时，冲刺成本增加100%（原为30%），并且减速等级增加+1。
+Devoted Pet
+忠诚的宠物
++3 slow reduction total while wearing a petsuit (from +2), but you cannot sprint (from +100% cost) when not wearing a petsuit and slow level is increased by +2 (from +1).
+穿着宠物套装时，减速总计+3（原为+2），但不穿宠物服时，你无法冲刺（原为成本+100%），并且减速等级增加+2（原为+1）。
+Bad Pet
+坏宠物
+Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
+放弃新手宠物特权。只有这一次。如果你再获得这项特权，就没有回头路了。
+You are an expert in wearing a petsuit and your mobility is increased.
+你是穿着宠物服的专家，你的灵活度也得到了提高。
+You are too used to wearing petsuits! Sprinting is impaired.
+你太习惯穿着宠物服了！短跑能力受损。
+You are a disobedient pet. You should put on a petsuit!
+你是个不听话的宠物。你应该穿上宠物服！
+
 Dominant
 支配者
 They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage.
 他们和你一起被困在这里。鬼魂更有帮助，你可以束缚与你对抗的敌人。
+
 Stranger
 未知实体
 Randomizes your relationship to most factions.
 随机化你与大多数派系的关系。
+The Wand is Mightier
+魔杖更强大
+Enemies have 30% more hp; Tease damage multiplier to bound targets is increased by 85%.
+敌人的生命值增加 30%；对束缚目标的挑逗伤害倍数增加 85%。
+Kinky Armory
+变态盔甲
 Wrong Neighborhood
 敌意实体
 All factions are hostile and united against you.
@@ -572,14 +840,21 @@ Trespasser
 入侵者
 You lose reputation with the goddesses every time you advance a floor.
 每次你进入下一层楼时，你会失去女神们的声誉。
+
+Self Bondage Enthusiast
+自缚爱好者
+Start with a basic self-bondage kit.
+从一个基础自缚套装开始。
 Prisoner
 囚犯
 Start the game as a submissive prisoner wandering the halls.
 作为一个在大厅里游荡的顺从囚犯开始游戏。
+
 Rusty Bolts
 生锈螺栓
 Most traps have a 25% misfire chance.
 大多数陷阱有 25% 的失效几率。
+
 Unmasked
 无面罩
 Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
@@ -588,10 +863,28 @@ Blackout
 屏蔽护目
 Blindfolds are stronger. While blindfolded you can only see enemies next to you.
 眼罩变得更强，当佩戴眼罩时，你只能看到身边的敌人。
+
 Total Blackout
 暗影护目
 Blindfolds are extremely punishing and you can't see explored areas while blindfolded.
 眼罩变得非常痛苦，当佩戴眼罩时，你看不到已探索区域。
+Poor Vision
+视力障碍
+Vision radius is significantly reduced.
+可视范围显著减小。
+Keen Hearing
+顺风耳
+You can more easily hear enemies and their movements through walls.
+你可以更容易地透过墙壁听到敌人和他们的行动。
+Archer's Eye
+千里眼
++2 vision radius.
++2 可视范围.
+Night Owl
+猫头鹰
+Your vision in dark areas is improved.
+你在黑暗区域的视力得到增强。
+
 Not a Doll
 非玩偶状态
 You may still enter Doll Terminals, but enemies will not force you onto doll stands.
@@ -600,6 +893,10 @@ No Nurses
 无护士
 Nurses will not appear in the game.
 护士将不再出现在游戏中。
+No Police
+无警察
+Police-based bounty hunters will not appear in the game.
+警方的赏金猎人不会出现在游戏中。
 No Brats
 安静宝宝
 Submissive enemies won't run away from you.
@@ -608,6 +905,7 @@ Brats Only
 淘气宝宝
 Submissive enemies will always be bratty and force you to catch them.
 顺从的敌人总是令人讨厌，迫使你去抓他们。
+
 More Tape
 更多胶带
 Tape-wielding enemies (such as Tape Bots) occur more frequently.
@@ -616,58 +914,117 @@ Less Tape
 更少胶带
 Fewer tape-related enemies will appear, although this does not remove tape entirely.
 较少的与胶带有关的敌人将出现，尽管这并不能完全去除胶带。
-Trainee
-练习生
-Your training has given you access to the spells of the Trainee class. (Aroused mode only)
-你的训练使你能够访问练习生类的法术。（仅在兴奋模式下）
-Warrior
+
+
+No Tape Bots
+无胶带机器人
+The old civilization did not use tape-based restraints in their capture robots.
+旧文明并没有在他们的捕捉机器人中加入使用胶带束缚的能力。
+Less Cable Bots
+减少钢索机器人
+The old civilization used significantly less cable-based restraints in their capture robots.
+旧文明仅在少数的捕捉机器人中加入了使用钢索束缚的能力。
+No Resin Bots
+无树脂机器人
+The old civilization did not use crystal resin-based restraints in their capture robots.
+旧文明并没有在他们的捕捉机器人中加入使用水晶树脂束缚的能力。
+Lexx Latex Bots
+减少乳胶机器人
+The old civilization used significantly less latex-based restraints in their capture robots.
+旧文明仅在少数的捕捉机器人中加入了使用乳胶束缚的能力。
+
+More Encasement
+更多包裹
+Enemies that encase you (e.g slimes, latex cubes) will appear more frequently.
+包裹你的敌人（例如史莱姆、乳胶块）会更频繁地出现。
+Less Encasement
+减少包裹
+Fewer encasement-related enemies will appear, although this does not remove it entirely.
+与包裹相关的敌人会减少，尽管这并不能完全消除它。
+
+
+Fighter
 战士
-Your training has given you access to the spells of the Warrior class.
-你的训练使你能够访问战士类的法术。
+Start with 200 willpower and Iron Will, good at melee and blocking attacks.
+从200点意志力和钢铁意志开始，擅长近战和阻挡攻击。
 Rogue
 流氓
-Your training has given you access to the spells of the Rogue class.
-你的训练使你能够访问盗贼类的法术。
+Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
+从200点耐力和潜行开始，擅长潜行和躲避游戏。
 Wizard
 法师
-Your training has given you access to the spells of the Wizard class.
-你的训练使你能够访问法师类的法术。
-Panic!!!
-惊恐
+Start with 200 mana and Magical Sight, good at casting spells.
+从200点法力和魔之眼开始，擅长施法。
+Peasant
+农民
+You possess the agricultural mastery of the Peasant class.
+你掌握了农民阶级的农业知识。
+Trainee
+练习生
+You are a mage, but haven't finished your formal 'training'. Requires Aroused mode.
+你是一名法师，但还没有完成正式的“训练”。需要兴奋模式。
+
+Panic! (Chests)
+惊恐！（箱子）
+When you open a trapped chest, you are stunned for 2 turns.
+当你开启陷阱箱时，你会晕眩2回合。
+
+Panic! (Traps)
+惊恐！（陷阱）
 When you step on a trap, you are stunned for 2 turns.
 当你踩到陷阱时，你会晕眩2回合。
 Panic sets in! (Stunned 2 turns)
 恐慌！（眩晕2回合）
+
 Butterfingers
 黄油手指
 Having arms bound prevents you from using your hands to struggle or unlock yourself.
 被束缚的手臂会阻止你用手挣扎或解锁自己。
+
 Weak Grip
 弱式握杆
 Having arms bound prevents you from holding weapons or potions.
 被束缚的手臂无法持有武器或药剂。
+
 You kneel down so you can reach the potion with your mouth...
 你跪了下来，这样你就能用嘴巴够到药水了...
+
 Can't Hear You!
 听不见你说话！
 Being gagged blocks you from casting verbal spells regardless of gag power.
 堵嘴会阻止你施放言语咒语，无论堵嘴的等级如何。
+Smooth Talker
+以和为贵
+Being gagged does not increase your miscast chance for verbal spells unless fully gagged.
+除非你的嘴被完全堵住，否则堵嘴不会增加你念错咒语的几率。
+
+Unmasked
+无面罩
+Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
+头套和全覆盖面罩将不会出现，但眼罩更强大。
+
 Ball Gag Lover
-口球爱好
+口球爱好者
 Increase occurrence of ball gags, decrease occurrence of muzzles.
 增加口球的出现频率，减少口套的出现频率。
 Muzzle Lover
-口套爱好
+口套爱好者
 Greatly increases the occurrence of muzzles.
 增加口套的出现频率。
+
 Armbinder Lover
-后手袋爱好
+后手袋爱好者
 More armbinders, less straitjackets.
 增加后手袋的出现频率，减少拘束衣的出现频率。
+
 Jacket Lover
-拘束衣爱好
+拘束衣爱好者
 More straitjackets, less armbinders.
 增加拘束衣的出现频率，减少后手袋的出现频率。
+
+
+
+
 Maid Sweeper
 可爱女仆
 Start in a magically locked maid outfit.
@@ -684,6 +1041,8 @@ Iron Slave
 钢铁奴隶
 Start in a full set of magically locked obsidian cuffs.
 开局时穿戴被魔法锁住的全套黑曜石铐。
+
+
 Mana Burst
 法力冲击
 While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge.
@@ -696,10 +1055,14 @@ Clearheaded
 冷静之术
 Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction.
 魔法可以让你头脑清醒，成功施法时可以减少性奋值。
+
+
 Copy (clipboard)
 复制 (粘贴板)
 Paste (clipboard)
 粘贴 (粘贴板)
+
+
 DAMAGEDEALT electric damage conducts to you!!!
 DAMAGEDEALT 点电击伤害传导到你身上！
 The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!
@@ -966,10 +1329,46 @@ Change Outfit
 换装
 Reset Outfit
 重置外观
-Code
-代码
+Load from Code
+从代码中加载
 Confirm Reset?
 确认重置？
+Confirm Changes
+确认更改
+Revert Changes
+恢复更改
+Confirm Revert?
+确认恢复？
+Save Changes
+保存更改
+Save Changes?
+保存更改？
+Strip Outfit
+脱去衣服
+Confirm Strip?
+确认要脱衣服？
+gamma
+伽马值
+saturation
+饱和度
+contrast
+对比度
+brightness
+亮度
+red
+红
+green
+绿
+blue
+蓝
+alpha
+不透明度
+Reset Layer!
+重置图层！
+Copy
+复制
+Paste
+粘贴
 (Copy the code above and save it on your computer to load later)
 （复制上面的代码并将其保存在您的计算机上以供以后加载）
 You come across a black monolith with its face inscribed in runes.
@@ -1184,6 +1583,7 @@ DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
 【警告】加载 Mod 具有危险性，因为其可在你的计算机上肆意执行任何代码。
 Like connecting to a server, etc. Only load mods from a TRUSTED source.
 就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的 Mod 。
+
 Up
 向上
 Down
@@ -1214,6 +1614,24 @@ Spell 6
 法术 6
 Spell 7
 法术 7
+Spell 8
+法术 8
+Spell 9
+法术 9
+Spell 10
+法术 10
+Load Hotbar 1
+加载热键1
+Load Hotbar 2
+加载热键2
+Load Hotbar 3
+加载热键3
+Load Loadout 1
+加载装备槽1
+Load Loadout 2
+加载装备槽1
+Load Loadout 3
+加载装备槽1
 Cycle Spell Page
 循环法术页面
 Upcast Spells
@@ -1222,20 +1640,29 @@ Cancel Upcast
 停止凝聚
 Swap Weapon
 切换武器
-Ranged Attack
-远程攻击
+Switch to Offhand
+切换到副手
+Switch from Offhand
+从副手切换
+Weapon Ability
+武器能力
 Wait
 等待
 Cancel/Back
 取消/返回
 Enter
 进入
+Inspect
+检查
+Expand Minimap
+展开小地图
+
 Message Log
 消息日志
 Close Door
 关门
 Pass thru allies
-通过盟友
+绕过盟友
 Auto-Struggle
 自动尝试挣脱
 Auto-Pathfind
@@ -1244,6 +1671,7 @@ Sprint/Hop
 疾跑/跳跃
 Inspect
 检查
+
 Quick Inventory
 快速物品栏
 Inventory
@@ -1254,10 +1682,15 @@ Spell List
 法术列表
 Logbook
 日志
+
+Ranged Attack
+远程攻击
+
 Current Key Pressed
 当前按键
 Press a key, then press a button to set that key
 按下一个键，然后按一个按钮来设置该键
+
 Floor FLOORNUMBER: DUNGEONNAME
 楼层 FLOORNUMBER: DUNGEONNAME
 Lockpicks: 
@@ -5520,14 +5953,44 @@ A cold steel collar locked tightly on your neck.
 一个冰冷的钢领紧紧地锁在你的脖子上。
 It appears to attract additional enemies to its wearer.
 它似乎会为佩戴者吸引更多的敌人。
+Uniforms
+制服
+Suits
+套装
+Armor
+盔甲
+Underwear
+内衣
+Bodysuits
+连体衣
+Socks
+袜子
+Shoes
+鞋
+Tops
+上衣
+Sleeves
+袖子
+Corsets
+紧身胸衣
+Skirts
+裙子
+Pants
+短衬裤
+Accessories
+配饰
+Hats
+帽子
+Hairstyles
+发型
 Face
 脸
+Eyes
+眼
+Body
+身体
 Head
 头
-Mouth
-嘴
-Mouth
-嘴
 Mouth
 嘴
 Ears
@@ -8406,6 +8869,8 @@ Start with nothing to your name. For those who want a challenge.
 从你的名字开始。对于那些想要挑战的人。
 Trainee
 练习生
+Spell Choice:
+技能选择：
 Choose Spells
 选择法术
 Random Spells
@@ -8414,12 +8879,30 @@ Break orbs. Get points. Buy spells. It's that simple.
 打破水晶。获得积分。购买法术。就是这么简单。
 Break orbs and pray you get something good.
 打破水晶，祈祷你能得到好东西。
+Save Mode:
+存档模式：
 Save Codes
 存档码
 Roguelike
-单人
+肉鸽游戏
+Grants a save code every floor you can write down. Autosaves only on floor start.
+为您可以写下的每一层授予一个保存代码。 仅在楼层启动时自动保存。
+No save codes, forced autosaves. You are in it to win it.
+没有保存代码，强制自动保存。你是为了赢而来的。
+Prison Strictness:
+监狱严密性：
 Normal
 正常
+Easy
+简单
+Strict
+严密
+If you get captured, you might get rescued if you have good relations.
+当你被抓后，如果你有良好的关系，你可能会获救。
+If you get captured, you will always get rescued and pay a fee.
+当你被抓后，你总是会被营救并支付费用。
+If you get captured, you are totally on your own.
+当你被抓后，你就得完全靠自己了。
 Start Playing
 开始游玩
 Lock your settings in, nice and tight.
@@ -9150,18 +9633,28 @@ Create a '+' shaped pool of slime that deals 35 glue damage per hit
 创建一个十字粘液池，每一击造成 35 点胶水伤害
 Toggles
 切换
-Locks and Restraints
-锁具和拘束具
-General Combat
-一般战斗
-Kinks and Preferences
-怪癖和偏好
+Preferences
+偏好
+Multiclass
+多类别
+Game-Changing
+改变游戏规则
+Restraints
+约束
+Combat
+战斗
+Kinks
+怪癖
+Senses
+感官
 Damage and Resists
 伤害和抵抗
-Wizardry and Sorcery
-魔法和巫术
-Devious Threats
-狡猾的威胁
+Magic
+魔法
+Spell Components
+技能组
+Threats
+威胁
 World Generation
 世界生成
 Starting Scenario
@@ -10728,3 +11221,12 @@ rep
 声望
 Goddesses:
 材质:
+
+Long ago, war raged across the globe.|Countless lives were lost fighting over pieces of rock in a vast ocean.|People turned to science, religion, and magic, anything to escape this cruel fate.
+很久以前，战争在全球肆虐。|无数人在浩瀚海洋中为争夺岩石碎片而丧生。|人们转向科学、宗教和魔法，寻求一切来逃避这种残酷的命运。
+Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharing her research across the globe, she laid the groundwork for an era of peace.|A great civilization arose, where magic and technology flourished.
+然后，大法师Sariel Vinlaga发现了永生的秘密。|她在全球范围内分享了她的研究成果，为和平时代奠定了基础。|一个伟大的文明诞生了，魔法和技术在那里蓬勃发展。
+But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten.
+但最终，Sariel的实验让她变得虚弱无力，无法将自己从死亡中拯救出来。|在没有领袖的统治下，旧文明陷入暴政，军阀奴役了数千人。|难民们漂洋过海寻找新生活，且随着时间的推移，旧帝国被遗忘了。
+Three hundred years later,a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
+三百年后，一群冒险家发现了一座充满古老科技的失落岛屿。|现在，无数游客涌入废墟寻找财富和智慧...|...却对很久以前被封印在里面的狡猾秘密一无所知。
