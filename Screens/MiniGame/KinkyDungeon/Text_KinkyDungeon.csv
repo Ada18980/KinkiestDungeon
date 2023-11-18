@@ -42,6 +42,7 @@ KDToggleSound,Enable Sound
 KDToggleDrool,Art: Drool/Tears
 KDToggleDrawArmor,Art: Draw Armor
 KDToggleMusic,Enable Music
+KDToggleAsyncRendering,GFX: Async Rendering (beta)
 KDToggleBloom,GFX: Bloom & Glow
 KDToggleTransparentUI,Game: Transparent UI
 KDToggleTurnCounter,Game: Turn Counter
