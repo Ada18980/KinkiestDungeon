@@ -8208,9 +8208,9 @@ You breathe in the gas, and a wave of pleasure hits your whole body.
 你吸入了气体，一阵快感袭上你的全身。
 You breathe in the gas, and feel lethargic...
 你吸入了气体，您开始感到昏昏欲睡……
-Inventory
-背包
-Reputation
+Items
+物品
+Rep
 声望
 Spells
 法术
