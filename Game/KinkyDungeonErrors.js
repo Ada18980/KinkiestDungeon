@@ -45,7 +45,7 @@ function KinkyDungeonGenerateErrorReport(event) {
 function KinkyDungeonCrashReportStateData() {
 	let version;
 	try {
-		version = (TextGet("KinkyDungeon") + TextGet("KDVersionStr")) || "Version unknown";
+		version = (TextGet("KinkyDungeon") + " v" + TextGet("KDVersionStr")) || "Version unknown";
 	} catch {
 		version = "Version unknown";
 	}
