@@ -41,8 +41,8 @@ Mods Loaded.
 
 Version
 版本号
-Kinky Dungeon v
-变态地牢 v
+Kinky Dungeon
+变态地牢
 
 You are an adventurer descending into an ancient underground city of magic.
 你是一个冒险家，前往了一个古老的地下魔法城市。
