@@ -39,6 +39,11 @@ Mods
 Mods Loaded.
 已加载 Mods
 
+Version
+版本号
+Kinky Dungeon v
+变态地牢 v
+
 You are an adventurer descending into an ancient underground city of magic.
 你是一个冒险家，前往了一个古老的地下魔法城市。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -11240,8 +11245,8 @@ Goddesses:
 Long ago, war raged across the globe.|Countless lives were lost fighting over pieces of rock in a vast ocean.|People turned to science, religion, and magic, anything to escape this cruel fate.
 很久以前，战争在全球肆虐。|无数人在浩瀚海洋中为争夺岩石碎片而丧生。|人们转向科学、宗教和魔法，寻求一切来逃避这种残酷的命运。
 Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharing her research across the globe, she laid the groundwork for an era of peace.|A great civilization arose, where magic and technology flourished.
-然后，大法师Sariel Vinlaga发现了永生的秘密。|她在全球范围内分享了她的研究成果，为和平时代奠定了基础。|一个伟大的文明诞生了，魔法和技术在那里蓬勃发展。
+然后，大法师萨里尔·文拉加（Sariel Vinlaga）发现了永生的秘密。|她在全球范围内分享了她的研究成果，为和平时代奠定了基础。|一个伟大的文明诞生了，魔法和技术在那里蓬勃发展。
 But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten.
-但最终，Sariel的实验让她变得虚弱无力，无法将自己从死亡中拯救出来。|在没有领袖的统治下，旧文明陷入暴政，军阀奴役了数千人。|难民们漂洋过海寻找新生活，且随着时间的推移，旧帝国被遗忘了。
+但最终，萨里尔（Sariel）的实验让她变得虚弱无力，无法将自己从死亡中拯救出来。|在没有领袖的统治下，旧文明陷入暴政，军阀奴役了数千人。|难民们漂洋过海寻找新生活，且随着时间的推移，旧帝国被遗忘了。
 Three hundred years later,a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
 三百年后，一群冒险家发现了一座充满古老科技的失落岛屿。|现在，无数游客涌入废墟寻找财富和智慧...|...却对很久以前被封印在里面的狡猾秘密一无所知。
