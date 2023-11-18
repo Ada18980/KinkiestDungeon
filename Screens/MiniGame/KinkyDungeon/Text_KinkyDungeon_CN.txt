@@ -8932,22 +8932,22 @@ The spores make you feel sleepy...
 孢子让你感到疲劳...
 DAMAGETYPE: MULTIPLIERx modifier
 DAMAGETYPE：MULTIPLIERx 修正
-Base Physical Armor: AMOUNT
-基础物理护甲：AMOUNT
-Base Magic Armor: AMOUNT
-基础魔法装甲：AMOUNT
-Base Evasion: AMOUNT%
-基础逃避：AMOUNT%
+Physical Armor: AMOUNT
+物理护甲：AMOUNT
+Magic Armor: AMOUNT
+魔法装甲：AMOUNT
+Evasion: AMOUNT%
+逃避：AMOUNT%
 Deals DAMAGETYPE damage
-造成 DAMAGETYPE 的伤害
+造成 DAMAGETYPE 伤害
 Can disarm (chance: DISARMCHANCE%)
-可以解除武装（概率：DISARMCHANCE%）
+可以解下（概率：DISARMCHANCE%）
 Resistances:
 抵抗：
 HP: 
 生命值：
 Binding: 
-捆绑：
+捆绑值：
 Ambivalent
 矛盾
 Likes you
