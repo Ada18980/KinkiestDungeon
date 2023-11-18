@@ -1609,6 +1609,23 @@ Update your Keybindings!!! -->
 I have altered the keybindings. Pray I do not alter them further.
 我修改了按键绑定。祈祷我不要再次修改它们。
 
+Barricade
+路障
+You knock over the barricade!
+你把路障推倒了！
+Anti-Damsel Barrier
+防少女屏障
+You disable the barrier!
+你关闭了屏障！
+Barrier
+屏障
+You shatter the barrier!
+你打破了屏障！
+Magical Barrier
+魔法屏障
+You destroy the barrier!
+你破坏了屏障！
+
 Up
 向上
 Down
@@ -8649,8 +8666,6 @@ Replace Spell 4
 替换法术 4
 Replace Spell 5
 替换法术 5
-???
-？？？
 Unfiled
 空的
 Bondage Witchery
