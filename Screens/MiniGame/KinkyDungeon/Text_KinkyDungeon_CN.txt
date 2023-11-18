@@ -1339,6 +1339,8 @@ Kinky: No save codes, orbs give random spells, start with very little
 Kinky：没有保存代码，魔法水晶提供随机法术，开始时很少
 Log
 日志
+Log (N)
+日记 (N)
 Change Outfit
 换装
 Reset Outfit
