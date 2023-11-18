@@ -79,7 +79,7 @@ GFX: 眩晕时闪屏
 GFX: Map Particles
 GFX: 地图粒子效果
 GFX: Distraction Particles
-GFX: 分心粒子
+GFX: 性奋粒子
 GFX: Vibration Particles
 GFX: 震动粒子
 Game: Show NPC Status
@@ -159,7 +159,7 @@ Confirm and start playing!
 Choose Class:
 选择类别：
 Distraction Mode:
-分心模式：
+性奋模式：
 Perks Mode:
 额外模式：
 Standard
@@ -1460,8 +1460,8 @@ MP: CURRENT/MAX
 魔力值：CURRENT/MAX
 Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool.
 法力从有着 POOLMANA 点储备法力的储备池中缓慢恢复，喝药水可以恢复储备池。
-Your minimum distraction increases over time as you encounter distracting things.
-当你遇到性奋的事情时，你的最小性奋值会随着时间的推移而增加。
+Your Desire is the baseline Distraction you decay toward, and is increased by distracting things.
+你的欲望是你逐渐走向的性奋的基线，并且会因性奋的事物而增加。
 Stamina recovers more quickly when you aren't spending it.
 当你休息时，体力恢复得更快。
 Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape.
@@ -10960,7 +10960,7 @@ There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has 
 Mana potions restore your mana fully.
 法力药剂完全恢复了你的法力。
 Your DP, or Distraction, is a measure of...|How much you are enjoying things.|These sorts of thoughts cloud your mind,|so spellcasting is more difficult when you are distracted.|Go grab the potion over there.
-你的DP，或干扰值，是标准…|你享受事物的程度|这些想法让你的头脑变得模糊，所以当你分心时，施法会更加困难|去那边拿药水。
+你的DP，或干扰值，是标准…|你享受事物的程度|这些想法让你的头脑变得模糊，所以当你性奋时，施法会更加困难|去那边拿药水。
 Did you like that?|Anyway, there's a zombie over there. You should drink that potion.|It will clear your mind so you can cast again.|Hurry, or it will get you!
 你喜欢吗|不管怎样，那边有个僵尸。你应该喝那种药水|它会让你头脑清醒，这样你就可以再次施展|快点，不然它会抓住你的！
 That wasn't so hard, was it?|Now then, there's a treasure chest over here. Why don't you open it?
