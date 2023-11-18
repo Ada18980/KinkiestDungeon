@@ -8012,6 +8012,8 @@ Select which creature to buff
 选择要增益的个体
 You snap your fingers!
 你打了一个响指！
+The slime dissolves your clothing, leaving nothing but rubber against your skin...
+粘液会溶解你的衣服，只留下橡胶贴在你的皮肤上......
 CMD: Lock
 指令：锁定
 Select which creature to lock
