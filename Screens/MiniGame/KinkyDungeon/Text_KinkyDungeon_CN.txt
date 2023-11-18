@@ -969,7 +969,7 @@ You possess the agricultural mastery of the Peasant class.
 Trainee
 练习生
 You are a mage, but haven't finished your formal 'training'. Requires Aroused mode.
-你是一名法师，但还没有完成正式的“训练”。需要兴奋模式。
+你是一名法师，但还没有完成正式的“训练”。需要以性欲模式游玩。
 
 Panic! (Chests)
 惊恐！（箱子）
