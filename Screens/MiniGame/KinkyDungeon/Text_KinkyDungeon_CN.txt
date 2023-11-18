@@ -6147,78 +6147,110 @@ You pick up XXX gold.
 你获得了 XXX 金币。
 You retrieve an ancient power crystal.
 你取回了一块远古能量水晶。
+You retrieve a spent ancient power crystal.
+你取回了一块用过的古代能量水晶。
 You pick up a magical amulet and use it to boost your stats.
 你拿起一个神奇的护身符并用它来提高你的统计数据。
+You pick up a Leyline Map.
+你拿起一张 Leyline 地图。
+You pick up a knife.
+你拿起了一把刀。
+You pick up a torch.
+你拿起了火把。
 You found a bundle of discarded knives!
 你发现了一堆废弃的刀具！
+You pick up a magic knife.
+你拿起了一把魔法刀。
+You pick up a lockpick.
+你拿起了一把撬锁工具。
+You pick up a normal key.
+你拿起了一把普通钥匙。
+You pick up a green key.
+你拿起了一把绿色钥匙。
+You pick up a blue key.
+你拿起了一把蓝色钥匙。
+You pick up a willpower potion.
+你拿起了一瓶意志力药水。
+You pick up a glowing blue mana potion.
+你拿起一瓶发光的蓝色法力药水。
+You pick up a glowing blue orb.
+你拿起一个发光的蓝色球体。
+You pick up an invisibility potion.
+你拿起了一种隐身药水。
+You pick up a handful of ectoplasm.
+你拿起了一把灵浆。
+You pick up a green stamina potion.
+你拿起了一瓶绿色体力钥匙。
+You pick up a frigid white potion.
+你拿起了一瓶冰冷的白色药水。
 You found a peculiar note on the ground and keep it in your journal.
 你在地上发现了一张奇特的便条，并记在日记里。
 You found an uninteresting note on the ground.
 你在地上发现了一张无趣的便条。
 You pick up a heavy hammer.
-你拿起一把重锤。
+你拿起了一把重锤。
 You pick up a set of bolt cutters.
-你拿起一套断线钳。
+你拿起了一套断线钳。
 You pick up a sharp sword.
-你拿起一把锋利的剑。
+你拿起了一把锋利的剑。
 You pick up a flamberge.
-你拿起一个火焰剑。
+你拿起了一个火焰剑。
 You recover your escort drone.
 你收回你的护航无人机。
 You pick up a 'magic' wand...
-你拿起一根“魔法”魔杖...
+你拿起了一根“魔法”魔杖...
 You pick up a magical ice cube.
-你拿起一个神奇的冰块。
+你拿起了一个神奇的冰块。
 You find some treated hemp rope.
 你找到了一些经过处理的麻绳。
 You pick up a feather.
-你捡起一根羽毛。
+你捡起了一根羽毛。
 You pick up a heavy flail.
-你拿起沉重的流星锤。
+你拿起了沉重的流星锤。
 You pick up a shortspear.
-你拿起短矛。
+你拿起了一根短矛。
 You pick up a pickaxe.
-你拿起镐。
+你拿起了一把镐子。
 You pick up an enchanted sword.
-你拿起一把附魔剑。
+你拿起了一把附魔剑。
 You pick up an enchanted axe.
-你拿起一把魔法斧头。
+你拿起了一把魔法斧头。
 You pick up an enchanted hammer.
-你拿起一把附魔锤。
+你拿起了一把附魔锤。
 You pick up a light hammer that's inscribed 'IceBreaker'.
-你拿起一个刻有“破冰者”字样的轻锤。
+你拿起了一个刻有“破冰者”字样的轻锤。
 You pick up an enchanted spear.
-你拿起一把附魔长矛。
+你拿起了一把附魔长矛。
 You pick up an enchanted flail.
-你拿起一个魔法流星锤。
+你拿起了一个魔法流星锤。
 You pick up a powerful axe.
-你拿起一把强大的斧头。
+你拿起了一把强大的斧头。
 You pick up a consumable smoke bomb.
-你拿起一个消耗性烟雾弹。
+你拿起了一个消耗性烟雾弹。
 You find a strange ancient device with a sharp cutting blade.
-你会发现一个奇怪的古老装置，带有锋利的切割刀片。
+你发现了一个奇怪的古老装置，带有锋利的切割刀片。
 You pick up a bola.
-你拿起一个投石索。
+你拿起了一个投石索。
 You pick up a bomb!
-你拿起炸弹！
+你拿起了炸弹！
 You pick up Dragonslaver.
-你拿起驯龙者。
+你拿起了驯龙者。
 You retrieve the Bondage Buster.
-你拿回束缚破坏者。
+你取回了束缚破坏者。
 You retrieve Moirai's scissors.
 你取回了Moirai的剪刀。
 You pick up a bunch of scrolls!
-你拿起一堆卷轴！
+你拿起了一堆卷轴！
 You pick up a Scroll of Sleight.
-你拿起一个诡计卷轴。
+你拿起了一个诡计卷轴。
 You pick up a Scroll of Purity.
-你拿起一个纯洁卷轴。
+你拿起了一个纯洁卷轴。
 You pick up a Scroll of Speech.
-你拿起一个语音卷轴。
+你拿起了一个语音卷轴。
 You pick up a Scroll of Sauntering.
-你拿起一个漫步卷轴。
+你拿起了一个漫步卷轴。
 As you strike again, your weapon is pulled out of your grasp!
-你再次袭击时，你的武器从你手中脱离！
+当你再次袭击时，你的武器从你手中脱离！
 You put away the WEAPONNAME
 你收起 WEAPONNAME
 You equip the WEAPONNAME
@@ -8224,6 +8256,8 @@ Slimes pours out from the walls and ceiling!
 粘液从墙壁和天花板上倾泻而出！
 Ethereal chains appear all around you!
 灵界锁链出现在你身边！
+You hear the sound of glass breaking, and a cloud of green gas rises around you!
+你听到玻璃破碎的声音，一团绿色的气体在你周围升起！
 You hear the sound of glass breaking, and a cloud of pink gas rises around you!
 你听到玻璃破碎的声音，一团粉红色的气体在你周围升起！
 The charms stick themselves all over your body!
@@ -11217,10 +11251,14 @@ Welcome to the dungeon!|Don't panic, this is a turn-based game,|and nothing will
 欢迎来到地牢|不要惊慌，这是一个回合制游戏，|除非你移动，否则什么都不会发生|在您的左侧，您将看到您的角色，显示了她们没有的所有束缚|别担心，你很快就会找到的！
 You might be wondering what all these barrels are for.|Don't worry, they're, uh, totally safe!|When you are inside one you can click on yourself to wait.|Enemies have a hard time seeing you inside a barrel,|so you can wait until they pass by you.
 你可能想知道这些桶是干什么用的|别担心，他们完全安全|当你在里面时，你可以点击自己等待|敌人很难在桶里看到你，所以你可以等到他们从你身边经过。
+On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.|Below that, two icons allow you to toggle automatic escape and movement modes.
+在右侧，您会看到您的统计数据和法术槽。|您的 DP、SP、MP 和 WP 都显示在那里，我们将介绍它们的作用。|在下面，您会看到您当前的消耗品，|您的金币，以及你当前装备的武器。|在其下方，有两个图标可让你切换自动挣脱和移动模式。
 Your WP, or willpower, is an important resource.|Without it, escaping from restraints is more difficult.|There is a willpower potion on the floor up there. Go get it!
 你的WP或意志力是一个重要的资源|没有它，摆脱束缚更加困难|前面的地板上有一种意志力药剂。去拿着吧！
 Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack).
 哦，不！那个陷阱把你的意志力都消灭了|幸运的是你有药水|您可以通过单击意志力旁边的“+”图标来饮用|您还可以在底部栏中查看您的库存|还有一个快速库存图标（背包）。
+Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|
+另一个陷阱！|你会注意到，这个陷阱会大量消耗你的体力，阻止你冲刺或攻击。|（注意：你可以使用底部栏上的“>>”按钮切换冲刺）|你可以在保护自己的同时 退回到上面的房间即可恢复你的耐力。|点击底部栏中的“关门”按钮关上门。|
 Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
 你的MP，或法力，用来施法|为了施展法术，你需要学习一种|点击右下角的咒语按钮|然后点击火焰学徒，学习解锁火焰弹|然后，按空格键返回，然后按向右键切换页面|点击Firebolt，学习它，然后将其分配到法术1。
 On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook.
@@ -11228,7 +11266,7 @@ On the right you'll see your stats and spells slots.|You can click on a spell sl
 There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has a very long range,|so simply cast firebolt and click on the zombie.|Repeat until it is dead.
 那边有个僵尸|幸运的是，僵尸的火力很弱|火焰弹射程很长|所以只需施放火焰弹并点击僵尸即可|重复，直到它死去。
 Mana potions restore your mana fully.
-法力药剂完全恢复了你的法力。
+法力药剂可以完全恢复你的法力。
 Your DP, or Distraction, is a measure of...|How much you are enjoying things.|These sorts of thoughts cloud your mind,|so spellcasting is more difficult when you are distracted.|Go grab the potion over there.
 你的DP，或干扰值，是标准…|你享受事物的程度|这些想法让你的头脑变得模糊，所以当你性奋时，施法会更加困难|去那边拿药水。
 Did you like that?|Anyway, there's a zombie over there. You should drink that potion.|It will clear your mind so you can cast again.|Hurry, or it will get you!
