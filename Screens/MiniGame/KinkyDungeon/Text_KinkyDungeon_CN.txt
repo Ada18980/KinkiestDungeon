@@ -1896,17 +1896,17 @@ You find a weapon! (+WeaponAcquired)
 You find a wearable item! (+ArmorAcquired)
 你找到了一个拘束具！ （+ArmorAcquired）
 You find gold and a magic trap! (+RestraintType) (+XXX gold)
-你找到了金币和一个魔法陷阱！ (+RestrainType) (+XXX gold)
+你找到了金币和一个魔法陷阱！ (+RestraintType) (+XXX gold)
 Swirling belts emerge from the chest and leave you bound! (+RestraintType)
 皮带从箱子中涌出，将你束缚！ （+RestraintType）
 You find gold and a chastity belt that locks around your waist! (+RestraintType) (+XXX gold)
-你发现了金币，同时一条贞操带锁在了你的腰间！ (+RestrainType) (+XXX gold)
+你发现了金币，同时一条贞操带锁在了你的腰间！ (+RestraintType) (+XXX gold)
 You find gold and a tormenting magical trap! (+RestraintType) (+XXX gold)
-你找到了黄金和一个折磨人的魔法陷阱！ (+RestrainType) (+XXX gold)
+你找到了黄金和一个折磨人的魔法陷阱！ (+RestraintType) (+XXX gold)
 You find gold, plus a filling and tormenting magical trap! (+RestraintType) (+XXX gold)
-你找到了金币，外加一个充满且折磨人的魔法陷阱！ (+RestrainType) (+XXX gold)
+你找到了金币，外加一个充满且折磨人的魔法陷阱！ (+RestraintType) (+XXX gold)
 You find gold, plus a devious magical trap! (+RestraintType) (+XXX gold)
-你找到了黄金，外加一个狡猾的魔法陷阱！ (+RestrainType) (+XXX gold)
+你找到了黄金，外加一个狡猾的魔法陷阱！ (+RestraintType) (+XXX gold)
 Magical runes glow as a trap activates inside the chest!
 魔法符文在箱子里闪烁，一个陷阱被触发了！
 You find a special collar that lets you absorb energy from potions.
