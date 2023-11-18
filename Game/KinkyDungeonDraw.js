@@ -922,7 +922,7 @@ function KinkyDungeonDrawGame() {
 	KDRefresh = false;
 
 	if (KDPatched) {
-		DrawTextFitKD(TextGet("KinkyDungeon"), 1865, 50, 200, "#ffffff", KDTextGray2);
+		DrawTextFitKD(TextGet("KinkyDungeon") + TextGet("KDVersionStr"), 1865, 50, 200, "#ffffff", KDTextGray2);
 	}
 
 	if ((KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
