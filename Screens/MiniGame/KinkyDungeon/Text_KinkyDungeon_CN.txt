@@ -1705,7 +1705,70 @@ Ranged Attack
 Current Key Pressed
 当前按键
 Press a key, then press a button to set that key
-按下一个键，然后按一个按钮来设置该键
+按下一个按键，然后按一个按钮来设置该按键
+
+Floor
+地板
+Wall
+墙
+Brickwork
+炉墙
+Furniture
+木桶
+Table
+桌子
+Table
+桌子
+Shrine
+神龛
+Closed Door
+关门
+Open Door
+开门
+Closed Door
+关门
+Open Door
+开门
+Bed
+床
+Bars
+栅栏
+Ruined Shrine
+毁坏的神龛
+Orb Altar
+珠宝祭坛
+Empty Altar
+空祭坛
+Chest
+箱子
+Empty Chest
+空箱子
+Shiny Object
+闪闪发光的物体
+Shiny Object
+闪闪发光的物体
+Cracked Wall
+开裂的墙壁
+Hook
+钩子
+Entrance
+入口
+Exit Stairs
+出口楼梯
+Mysterious Stairs
+神秘的楼梯
+Ghostly Adventurer
+幽灵冒险家
+Button
+按钮
+Conveyor
+传送带
+Doll Terminal
+玩偶终端
+Doll Supply
+玩偶供应
+Bondage Machine
+束缚机器
 
 Floor FLOORNUMBER: DUNGEONNAME
 楼层 FLOORNUMBER: DUNGEONNAME
@@ -6147,22 +6210,131 @@ Equip
 装备
 Equipped
 已装备
+Unlit Torch
+熄灭火把
+Can be lit
+可以点亮
+Torch
+火把
+Provides light
+提供光线
+Lantern
+灯笼
+Provides light
+提供光线
+Magic Lantern
+魔法灯笼
+Provides light
+提供光线
+Unlit Lantern
+熄灭灯笼
+Can be lit
+可以点亮
+Wall Sconce
+壁灯
+Provides light
+提供光线
+Broken Wall Sconce
+破损的壁灯
+It is beyond repair.
+它已经无法修理了。
+Light Portal
+光门
+Provides light
+提供光线
+Empty Portal
+空门
+Stare into the void...
+凝视着虚空。。。
+Liquid Latex
+液态乳胶
+Engulfs creatures
+吞噬生物
+Liquid Latex
+液态乳胶
+Engulfs creatures
+吞噬生物
 Slime
-粘液
+史莱姆
+Slows creatures
+减慢生物速度
+Glue
+胶
+Slows creatures
+减慢生物速度
 Ice
 寒冰
+Chilling and slippery
+又冷又滑
 Water
 水
+A concentration of moisture.
+湿气的浓度。
 Ropes
 绳索
+Looking for a new wearer
+寻找新的佩戴者
 Chains
 锁链
+Broken pieces of chain
+链条碎片
 Belts
 皮带
-Floor
-地板
-Wall
-墙
+Pieces of straps and leather
+皮带和皮革
+Vines
+藤蔓
+Fierce plantlife
+凶猛的植物
+Ribbons
+丝带
+Empowered with magic
+被赋予了魔法
+Blessed Wrappings
+神圣裹布
+Enchanted wrappings
+魔法包裹物
+Summoning Runes
+召唤符文
+Mystical runes used for summoning
+用于召唤的神秘符文
+Casting Runes
+铸造符文
+Mystical runes used for casting spells
+用于施展法术的神秘符文
+Suspicious Mechanism
+可疑装置
+A suspicious mechanism that seems to have been hastily put together.
+一个可疑的装置，似乎是匆忙拼凑起来的。
+Suspicious Runes
+可疑符文
+A suspicious magic circle that was scrawled recently.
+最近被涂写的可疑魔法阵。
+Embers
+余烬
+Ignition source. Blocks vision.
+点火源。阻挡视线。
+Inferno
+地狱
+Deals DAMAGEDEALT fire damage per turn
+每回合造成 DAMAGEDEALT 点火焰伤害
+Steam
+蒸汽
+Blocks vision
+阻挡视野
+Smoke
+烟雾
+Blocks vision
+阻挡视野
+Cracked Earth
+破裂的地球
+Makes creatures unsteady
+使生物不稳定
+Can be controlled using CMD spells
+可以使用 CMD 法术进行控制
+Can be controlled using Rubbermancy
+可以使用 Rubbermancy 控制
+
 Codex Imaginus
 想像法典
 Clavicula Romantica
@@ -11255,7 +11427,7 @@ dmg
 伤害
 rep
 声望
-Goddesses:
+Goddess:
 材质:
 
 Long ago, war raged across the globe.|Countless lives were lost fighting over pieces of rock in a vast ocean.|People turned to science, religion, and magic, anything to escape this cruel fate.
