@@ -3658,36 +3658,152 @@ Shock Witch
 电击女巫
 The shock witch vanishes into a cloud of thunder, leaving behind a keyring.
 电击女巫消失在雷云中，留下一个钥匙圈。
+The witch restrains you! (+RestraintAdded)
+女巫束缚了你！(+RestraintAdded)
+The witch dangles a lock in front of you before putting it on! (DamageTaken)
+女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
+The witch slaps you playfully! (DamageTaken)
+女巫顽皮地打你一巴掌！（DamageTaken）
+Flame Witch
+火焰女巫
+The flame witch vanishes into a pile of ash.
+火焰女巫消失在一堆灰烬中。
+The witch restrains you! (+RestraintAdded)
+女巫束缚了你！(+RestraintAdded)
+The witch dangles a lock in front of you before putting it on! (DamageTaken)
+女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
+The witch slaps you playfully! (DamageTaken)
+女巫顽皮地打你一巴掌！（DamageTaken）
+Earth Witch
+地球女巫
+The earth witch vanishes into a pile of ash.
+火焰女巫消失在一堆灰烬中。
+The witch restrains you! (+RestraintAdded)
+女巫束缚了你！(+RestraintAdded)
+The witch dangles a lock in front of you before putting it on! (DamageTaken)
+女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
+The witch slaps you playfully! (DamageTaken)
+女巫顽皮地打你一巴掌！（DamageTaken）
+Water Witch
+水之女巫
+The water witch vanishes into a pile of ash.
+水之女巫消失在一堆灰烬中。
+The witch restrains you! (+RestraintAdded)
+女巫束缚了你！(+RestraintAdded)
+The witch dangles a lock in front of you before putting it on! (DamageTaken)
+女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
+The witch slaps you playfully! (DamageTaken)
+女巫顽皮地打你一巴掌！（DamageTaken）
+Ice Witch
+冰之女巫
+The ice witch vanishes into a pile of ash.
+冰之女巫消失在一堆灰烬中。
+The witch restrains you! (+RestraintAdded)
+女巫束缚了你！(+RestraintAdded)
+The witch dangles a lock in front of you before putting it on! (DamageTaken)
+女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
+The witch slaps you playfully! (DamageTaken)
+女巫顽皮地打你一巴掌！（DamageTaken）
+
+Magic Stone
+魔法石
+Ice Bolt
+冰箭
+Waterblast
+水压
+
+Rope Witch
+绳索女巫
+The rope witch retreats as her animated ropes chase her.
+当她那充满活力的绳索追赶她时，绳索女巫撤退了。
+The witch restrains you! (+RestraintAdded)
+女巫束缚了你！(+RestraintAdded)
+The witch dangles a lock in front of you before putting it on! (DamageTaken)
+女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
+The witch slaps you playfully! (DamageTaken)
+女巫顽皮地打你一巴掌！（DamageTaken）
+
+Magnet Witch
+磁力女巫
+The witch is pulled away by an unseen force.
+女巫被一股看不见的力量拉走了。
+The witch's restraints fly out and attach themselves to you! (+RestraintAdded)
+女巫的束缚飞出并附着在你身上！(+RestraintAdded)
+The witch dangles a lock in front of you before putting it on! (DamageTaken)
+女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
+The witch's lightning causes your body to tingle! (DamageTaken)
+女巫的闪电让你的身体感到刺痛！（DamageTaken）
+
 Witch's Apprentice
 女巫的学徒
 The apprentice runs off and cries in a corner.
 学徒跑掉了，在角落里哭了起来。
+The apprentice animates restraints to wrap around you! (+RestraintAdded)
+学徒使用束缚将你包裹起来！(+RestraintAdded)
+The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)
+学徒紧张地拿出一把锁，让你戴上！（DamageTaken）
+The apprentice slaps you playfully! (DamageTaken)
+学徒顽皮地打你一巴掌！（DamageTaken）
 Summoner's Apprentice
 召唤师学徒
 The apprentice runs off and cries in a corner.
 学徒跑掉了，在角落里哭了起来。
+The apprentice summons a restraint onto you! (+RestraintAdded)
+学徒召唤对你的束缚！(+RestraintAdded)
+The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)
+学徒紧张地拿出一把锁，让你戴上！（DamageTaken）
+The apprentice tickles you playfully! (DamageTaken)
+学徒顽皮地挠你！（DamageTaken）
 Latex Apprentice
 乳胶学徒
 The apprentice runs off and cries in a corner.
 学徒跑掉了，在角落里哭了起来。
+The apprentice attaches a sticky restraint! (+RestraintAdded)
+学徒对你附上了粘性束缚！(+RestraintAdded)
+The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)
+学徒紧张地拿出一把锁，让你戴上！（DamageTaken）
+The apprentice caresses you playfully! (DamageTaken)
+学徒顽皮爱抚你！（DamageTaken）
 Chain Witch
 锁链女巫
 The chain witch vanishes into a pile of metal dust, leaving behind a keyring.
 锁链女巫消失在一堆金属尘埃中，留下一个钥匙圈。
 The chain witch locks all of your restraints!
 锁链女巫锁住了你所有的拘束具！
+The metal's bindings wrap themselves around you! (+RestraintAdded)
+金属的束缚将你包裹起来！（+RestraintAdded）
+The metal witch tugs sensually at your restraints! (DamageTaken)
+金属女巫性感地拉扯你的束缚！（DamageTaken）
 Slime Witch
 粘液女巫
 The slime witch vanishes into a pool of pink slime, leaving behind a keyring.
 粘液女巫消失在粉红色的粘液池中，留下一个钥匙圈。
+The witch touches her with her sticky grasp! (+RestraintAdded)
+女巫用她那粘粘的手掌触碰了你！（+RestraintAdded）
+The witch creates a magical lock made of hardened latex! (DamageTaken)
+女巫创造了一把由硬化乳胶制成的神奇锁！（DamageTaken）
+The witch squeezes your body playfully! (DamageTaken)
+女巫顽皮地挤压你的身体！（DamageTaken）
 'High' Wizard
 “高阶”法师
 The wizard falls asleep.
 法师睡着了。
+The wizard clips a restraint around your neck! (+RestraintAdded)
+法师将束缚带绑在你的脖子上！（+RestraintAdded）
+The wizard clips a lock to your restraints! (DamageTaken)
+法师在你的束缚上加了一把锁！（DamageTaken）
+The wizard laughs maniacally as she tickles you! (DamageTaken)
+法师在给你挠痒痒的时候疯狂地大笑！（DamageTaken）
 FunGal
 真菌
 The fun-gal retreats into the ground.
 真菌后退到地下。
+The fun-gal clips a restraint around your neck! (+RestraintAdded)
+真菌在你的脖子上绑了一条束缚带！ (+RestraintAdded)
+The fun-gal produces a magical lock on all your restraints! (DamageTaken)
+真菌会对你所有的束缚产生魔法锁！ （DamageTaken）
+The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
+真菌用她修长的手指摩擦你的胸部！ （DamageTaken）
 Crystal Glyph
 水晶雕文
 Tailor
