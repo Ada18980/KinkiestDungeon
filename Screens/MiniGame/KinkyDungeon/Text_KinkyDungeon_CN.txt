@@ -9068,6 +9068,33 @@ Unstoppable
 势不可挡
 Unflinching
 坚定不移
+You found a magical amulet! Choose one of the following to determine its benefits:
+你发现了一个神奇的护身符！ 选择以下选项之一来确定其优点：
+Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%).
+专注：+50% 最大干扰和更快的衰减。 +5% 体力伤害保护（基础：30%）。
+Stamina: +50 max stamina, +50% stamina potion effectiveness.
+体力：+50 最大体力，+50% 体力药水效果。
+Magic: +50 max mana. +50% mana potion effectiveness.
+魔法：+50 最大魔法，+50% 魔法药水效果。
+Willpower: +50 max willpower, +50% willpower potion effectiveness. +1 stamina regen/turn.
+意志：+50最大意志，+50%意志药剂效果。 每回合 +1 体力恢复。
+
++Focus
++专注
++Stamina
++体力
++Willpower
++意志
++Magic
++魔法
+Discard (destroys it permanently!)
+丢弃（永久销毁它！）
+
+You crit the vulnerable EnemyName for AMOUNT extra damage!
+你暴击了脆弱的 EnemyName 造成了 AMOUNT 点额外伤害！
+You crit the unsuspecting EnemyName for AMOUNT extra damage!
+您暴击了毫无戒心的 EnemyName 造成了额外的 AMOUNT 点伤害！
+
 The enemy steals a pick from you!
 敌人从你那里偷了一个撬锁工具！
 The enemy takes away your knife!
