@@ -1574,8 +1574,8 @@ Load from code
 从代码加载
 Back to main menu
 返回主菜单
-Load Mod
-加载 Mod
+Load Mod .zip
+加载 Mod .zip
 Delete Mod
 移除 Mod
 Clear Perks
