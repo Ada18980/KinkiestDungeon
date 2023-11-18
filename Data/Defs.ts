@@ -63,14 +63,16 @@ let LAYERS_BASE = [
 	"ForeWristLeft",
 
 	"ForeSleeveLeft",
+	"ForeMittenLeft",
 	"ForeSleeveDecoLeft",
-	"ForeGloveLeft",
+	"ForeGloveRight",
 	"ForeHandLeft",
 	"ForeArmLeft",
 
 	"ForeWristRight",
 
 	"ForeSleeveRight",
+	"ForeMittenRight",
 	"ForeSleeveDecoRight",
 	"ForeGloveRight",
 	"ForeHandRight",
@@ -117,8 +119,10 @@ let LAYERS_BASE = [
 
 	// Crossed arms -- order is inverted
 	"SleevesCrossArms",
+	"CrossMittenRight",
 	"CrossGloveRight",
 	"CrossArmRight",
+	"CrossMittenLeft",
 	"CrossGloveLeft",
 	"CrossArmLeft",
 
@@ -240,6 +244,7 @@ let LAYERS_BASE = [
 
 	// Left arm body - reserved for body and catsuits
 	"WristLeft",
+	"MittenLeft",
 	"GloveLeft",
 	"HandLeft",
 	"ArmLeft",
@@ -296,6 +301,7 @@ let LAYERS_BASE = [
 
 	// Right arm body - reserved for body and catsuits
 	"WristRight",
+	"MittenRight",
 	"GloveRight",
 	"HandRight",
 	"ArmRight",
@@ -420,6 +426,9 @@ let LayerGroups = {
 		"ArmRight",
 		"TorsoUpper",
 
+		"CrossMittenLeft",
+		"CrossMittenRight",
+
 		"CrossGloveRight",
 		"CrossArmRight",
 		"CrossGloveLeft",
@@ -451,12 +460,20 @@ let LayerGroups = {
 
 		"ForeWristRight",
 		"ForeArmRight",
+		"ForeGloveLeft",
+		"ForeGloveRight",
 
 		"ForeSleeveRight",
 		"ForeSleeveDecoRight",
 		"GloveRight",
 		"ForeHandRight",
 
+		"MittenLeft",
+		"MittenRight",
+		"CrossMittenLeft",
+		"CrossMittenRight",
+		"ForeMittenLeft",
+		"ForeMittenRight",
 
 		"CrossGloveRight",
 		"CrossArmRight",
@@ -515,12 +532,20 @@ let LayerGroups = {
 
 		"ForeWristRight",
 		"ForeArmRight",
+		"ForeGloveLeft",
+		"ForeGloveRight",
 
 		"ForeSleeveRight",
 		"ForeSleeveDecoRight",
 		"GloveRight",
 		"ForeHandRight",
 
+		"MittenLeft",
+		"MittenRight",
+		"CrossMittenLeft",
+		"CrossMittenRight",
+		"ForeMittenLeft",
+		"ForeMittenRight",
 
 		"CrossGloveRight",
 		"CrossArmRight",
@@ -572,6 +597,8 @@ let LayerGroups = {
 		"CrossGloveRight",
 		"CrossArmRight",
 		"CrossGloveLeft",
+		"CrossMittenLeft",
+		"CrossMittenRight",
 		"CrossArmLeft",
 	]),
 	"RopeTorso": ToMap([
@@ -612,6 +639,8 @@ let LayerGroups = {
 		"ForeSleeveRight",
 		"ForeSleeveDecoRight",
 		"GloveRight",
+		"MittenLeft",
+		"MittenRight",
 		"ForeHandRight",
 	]),
 
@@ -690,6 +719,8 @@ let LayerGroups = {
 		"TorsoUpper",
 
 		"CrossGloveRight",
+		"CrossMittenLeft",
+		"CrossMittenRight",
 		"CrossArmRight",
 		"CrossGloveLeft",
 		"CrossArmLeft",
@@ -723,6 +754,7 @@ let LayerGroups = {
 	"RibbonFore": ToMap([
 		"ForeSleeveLeft",
 		"ForeSleeveDecoLeft",
+		"MittenLeft",
 		"GloveLeft",
 		"ForeHandLeft",
 
@@ -731,6 +763,7 @@ let LayerGroups = {
 
 		"ForeSleeveRight",
 		"ForeSleeveDecoRight",
+		"MittenRight",
 		"GloveRight",
 		"ForeHandRight",
 	]),
@@ -830,6 +863,8 @@ let LayerGroups = {
 
 	"Yoke": ToMap([
 		"Shirt",
+		"MittenLeft",
+		"MittenRight",
 		"GloveLeft",
 		"GloveRight",
 		"SleeveLeft",
@@ -842,6 +877,8 @@ let LayerGroups = {
 	"Cuffs": ToMap([
 		// Affect clothes only not skintight
 		"Shirt",
+		"MittenLeft",
+		"MittenRight",
 		"GloveLeft",
 		"GloveRight",
 		"SleeveLeft",
@@ -850,6 +887,20 @@ let LayerGroups = {
 		"SleeveDecoRight",
 		//"ArmLeft",
 		//"ArmRight",
+	]),
+	"Mitts": ToMap([
+		"CrossGloveRight",
+		"CrossHandRight",
+		"CrossGloveLeft",
+		"CrossHandLeft",
+		"GloveRight",
+		"HandRight",
+		"GloveLeft",
+		"HandLeft",
+		"ForeGloveRight",
+		"ForeHandRight",
+		"ForeGloveLeft",
+		"ForeHandLeft",
 	]),
 	// endregion
 };

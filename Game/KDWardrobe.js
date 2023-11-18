@@ -38,6 +38,7 @@ let KDWardrobeCategories = [
 	"Socks",
 	"Shoes",
 	"Tops",
+	"Gloves",
 	"Sleeves",
 	"Corsets",
 	"Skirts",
