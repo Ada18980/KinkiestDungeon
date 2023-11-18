@@ -3092,6 +3092,10 @@ KinkyDungeonTabletTooltip,"Tablet of "
 
 KDGoddessStat_Bonus,"Goddess Blessing: "
 KDGoddessStat_Penalty,"Goddess Curse: "
+KDManaBonus,"Mana Bonus: "
+KDManaPenalty,"Lack of Mana Penalty: "
+KDStruggleManaBonus,"Your excess mana helps you suppress the enchantment!"
+KDStruggleManaPenalty,"Your mana is too weak to fight the magical enchantment..."
 
 KinkyDungeonShrineCursed,"Curses"
 KinkyDungeonShrineDetermination,"Willpower"
