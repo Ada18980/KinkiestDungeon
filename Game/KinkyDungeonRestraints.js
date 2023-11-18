@@ -4355,9 +4355,11 @@ let KDCuffParts = {
  * @param {boolean} [noGeneric] - does not add this to tagBaseRestraints, only tagBaseCuffs
  * @param {Record<string, string>} [CuffAssets] - mapping of Group to Assets
  * @param {Record<string, string>} [CuffModels] - mapping of Group to Models
+ * @param {boolean} [noLockBase] - Removes Pick and Unlock methods of escape
+ * @param {boolean} [noLockLink] - Removes Pick and Unlock methods of escape
  * param {{name: string, description: string}} strings - Generic strings for the cuff type
  */
-function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, allTag, removeTag, addPower, properties, extraEvents = [], addStruggle, premultStruggle, addStruggleLink, premultStruggleLink, Filters, baseWeight = 10, noGeneric, CuffAssets = {}, CuffModels = {}) {
+function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, allTag, removeTag, addPower, properties, extraEvents = [], addStruggle, premultStruggle, addStruggleLink, premultStruggleLink, Filters, baseWeight = 10, noGeneric, CuffAssets = {}, CuffModels = {}, noLockBase, noLockLink) {
 	for (let part of Object.entries(KDCuffParts)) {
 		let cuffPart = part[0];
 		let cuffInfo = part[1];
@@ -4418,6 +4420,10 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 						props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
 					}
 				}
+				if (noLockBase) {
+					delete props.escapeChance.Pick;
+					delete props.escapeChance.Unlock;
+				}
 			} else {
 				if (premultStruggleLink) {
 					for (let type of Object.entries(premultStruggleLink)) {
@@ -4428,6 +4434,10 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 					for (let type of Object.entries(addStruggleLink)) {
 						props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
 					}
+				}
+				if (noLockLink) {
+					delete props.escapeChance.Pick;
+					delete props.escapeChance.Unlock;
 				}
 			}
 			let newRestraint = KinkyDungeonCloneRestraint(CopyOf + cuffPart, idSuffix + cuffPart, Object.assign(props, properties));

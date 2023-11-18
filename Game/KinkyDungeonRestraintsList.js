@@ -2229,6 +2229,7 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region CrystalCuffs
+	/*
 	{inventory: true, name: "CrystalLegCuffs", debris: "Chains", accessible: true, Asset: "OrnateLegCuffs", LinkableBy: ["Legbinders", "Hobbleskirts", "Belts", "Ties"], Type: "Chained", Color: ["#675F50", "#a694cb", "#ff5277"], Group: "ItemLegs", hobble: 1, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.2, "Cut": 0.0, "Remove": 0.2, "Pick": 0.35},
 		maxwill: 0.8, enemyTags: {"crystalRestraints":6}, playerTags: {"ItemLegsFull":-2}, minLevel: 7,
@@ -2260,6 +2261,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.15, "Cut": -0.1, "Remove": -0.15, "Pick": 0.35}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs", "Crystal", "Elements"],
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.5, tags: ["lowwill"]}, {trigger: "struggle", type: "crystalPunish"}, {trigger: "beforeStruggleCalc", type: "elbowCuffsBlock", inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}]},
+	*/
 	//endregion
 
 
@@ -2563,7 +2565,7 @@ const KinkyDungeonRestraints = [
 	//region TemplateCuffs
 	{inventory: true, name: "TemplateLegCuffs", debris: "Chains", accessible: true, Asset: "FuturisticLegCuffs", Link: "TemplateLegCuffs2", LinkableBy: ["Legbinders", "Wrapping", "Hobbleskirts", "Belts"], Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemLegs", power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
-		maxwill: 0.6, enemyTags: {}, playerTags: {"ItemLegsFull":-2}, minLevel: 7, allFloors: true, shrine: ["Metal", "Cuffs"]},
+		maxwill: 0.6, enemyTags: {}, playerTags: {"ItemLegsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cuffs"]},
 	{name: "TemplateLegCuffs2", accessible: true, Asset: "FuturisticLegCuffs", debris: "Chains", UnLink: "TemplateLegCuffs", LinkableBy: [...KDBindable, ...KDDevices],
 		Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'],
 		Group: "ItemLegs", hobble: 1, power: 9, weight: 0,
@@ -2588,7 +2590,7 @@ const KinkyDungeonRestraints = [
 	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "TemplateArmCuffs", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", linkCategory: "Cuffs", linkSize: 0.55,
 		unlimited: true,
 		LinkableBy: [...KDDevices, ...KDBindable], Link: "TemplateArmCuffs2", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: false, power: 9, weight: 0,
-		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.25, "Pick": 0.35}, enemyTags: {}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cuffs", "ArmCuffsBase"],
+		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.25, "Pick": 0.35}, enemyTags: {}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs", "ArmCuffsBase"],
 		maxwill: 0.4, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"]}, {trigger: "defeat", type: "linkItem", chance: 1.0}]},
 	{name: "TemplateArmCuffs2", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "TemplateArmCuffs3", UnLink: "TemplateArmCuffs", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: true, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 0.2, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
@@ -3125,7 +3127,7 @@ const KinkyDungeonRestraints = [
 			},
 			{
 			},{
-				Struggle: -0.05,
+				Struggle: -0.15,
 				Cut: 0.05,
 				Remove: 0.0,
 				Pick: 0.00,
@@ -3167,7 +3169,7 @@ const KinkyDungeonRestraints = [
 			},
 			{
 			},{
-				Struggle: 0.0,
+				Struggle: -0.1,
 				Cut: 0.0,
 				Remove: 0.0,
 				Pick: 0.00,
@@ -3214,7 +3216,7 @@ const KinkyDungeonRestraints = [
 			},
 			{
 			},{
-				Struggle: 0.6,
+				Struggle: 0.25,
 				Cut: 0.3,
 				Remove: 0.05,
 				Pick: 0.05,
@@ -3262,7 +3264,7 @@ const KinkyDungeonRestraints = [
 			{
 			},
 			{
-				Struggle: 0.35,
+				Struggle: 0.15,
 				Cut: 0.15,
 				Remove: 0.00,
 				Pick: -0.05,
@@ -3310,7 +3312,7 @@ const KinkyDungeonRestraints = [
 			{
 			},
 			{
-				Struggle: 0.3,
+				Struggle: 0.12,
 				Cut: 0.2,
 				Remove: 0.00,
 				Pick: 0.00,
@@ -3336,6 +3338,100 @@ const KinkyDungeonRestraints = [
 
 		KDAddCuffVariants(
 			"Template",
+			"Crystal",
+			"",
+			"crystal",
+			{},
+			["Crystal"],
+			[],
+			0,
+			{
+				Color: ["#a694cb", "#ff5277"],
+			},
+			[
+				{trigger: "tick", type: "crystalDrain", power: -0.034, inheritLinked: true},
+				{trigger: "struggle", type: "crystalPunish"},
+			],
+			{
+				Struggle: 0.25,
+				Cut: 0.05,
+				Remove: 0.05,
+				Pick: 0.05,
+			},
+			{
+			},
+			{
+				Struggle: 0,
+				Cut: 0.05,
+				Remove: 0.0,
+				Pick: 0.0,
+			},
+			{
+			}, {
+				BaseMetal: {"gamma":0.95,"saturation":1,"contrast":1.6166666666666665,"brightness":2.29999999999998,"red":2.0166666666666666,"green":0.9833333333333333,"blue":2.5333333333333337,"alpha":1},
+			}, 6, false,
+			{
+				"ItemArms": "OrnateCuffs",
+				"ItemLegs": "OrnateLegCuffs",
+				"ItemFeet": "OrnateAnkleCuffs",
+			},
+			{
+				"ItemArms": "ShacklesArms",
+				"ItemLegs": "ShacklesThigh",
+				"ItemFeet": "ShacklesAnkles",
+			},
+		);
+
+
+
+		KDAddCuffVariants(
+			"Template",
+			"Ice",
+			"",
+			"ice",
+			{},
+			["Ice"],
+			[],
+			-4,
+			{
+				Color: ["#9999ff", "#ff5277"],
+				failSuffix: {"Remove": "Ice"},
+			},
+			[
+				{trigger: "tick", type: "iceDrain", power: -0.02, inheritLinked: true},
+				{trigger: "afterPlayerDamage", type: "iceMelt", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
+			],
+			{
+				Struggle: 0.3,
+				Cut: 0.12,
+				Remove: -1,
+			},
+			{
+			},
+			{
+				Struggle: 0.2,
+				Cut: 0.12,
+				Remove: 0.0,
+			},
+			{
+			}, {
+				BaseMetal: {"gamma":0.733333333333333,"saturation":0.05,"contrast":1.0166666666666666,"brightness":1.1833333333333333,"red":1,"green":2.2333333333333334,"blue":3.3833333333333333,"alpha":1},
+			}, 6, false,
+			{
+				"ItemArms": "OrnateCuffs",
+				"ItemLegs": "OrnateLegCuffs",
+				"ItemFeet": "OrnateAnkleCuffs",
+			},
+			{
+				"ItemArms": "ShacklesArms",
+				"ItemLegs": "ShacklesThigh",
+				"ItemFeet": "ShacklesAnkles",
+			},
+			true, false
+		);
+
+		KDAddCuffVariants(
+			"Template",
 			"Obsidian",
 			"",
 			"obsidian",
@@ -3356,7 +3452,7 @@ const KinkyDungeonRestraints = [
 			{
 			},
 			{
-				Struggle: 0.1,
+				Struggle: -0.05,
 				Cut: -0.05,
 				Remove: 0.0,
 				Pick: 0.0,
