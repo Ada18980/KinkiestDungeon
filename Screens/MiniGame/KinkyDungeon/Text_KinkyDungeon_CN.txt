@@ -6608,6 +6608,40 @@ You a hurl a firebolt!
 你投掷了火焰弹！
 Choose aim direction
 选择发射方向
+Critical Hit!
+暴击！
+Super Critical!
+超级暴击！
+Surprise Bondage!
+突袭束缚！
+Arcane Energy
+奥术能量
+Rhythm
+韵律
+You avoid the attack in a flurry of impressive maneuvers!
+你在一系列令人印象深刻的动作中避开了攻击！
+Arcane Barrier
+奥术屏障
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, the shield absorbs incoming damage and consumes Arcane Energy equal 200% of damage absorbed. While you have Arcane Energy and this is active, you also gain Bondage Resist equal to 4x the Arcane Energy pool, to a max of +200.
+当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，护盾会吸收传入的伤害并消耗相当于吸收伤害 200% 的奥术能量。当你拥有奥术能量并且处于活动状态时，你还会获得相当于奥术能量池 4 倍的束缚抗性，最多为 +200。
+You sense that a high value target is near.
+你感觉到一个高价值目标正在靠近。
+You push yourself beyond physical limits!
+你超越了身体的极限！
+You try to push yourself beyond your capabilities and falter...
+你试图超越自己的极限，却步履蹒跚……
+You are already at max stamina.
+你已经达到最大体力了。
+Well-Placed Traps
+精心布置的陷阱
+Trap spells always critically strike.
+陷阱法术总是会造成暴击。
+Hard to Catch
+难以捕捉
+Adjacent NPCs count as corners/hooks for purposes of escaping. After being restrained, escape speed and power is increased for 12 turns. Removed if you restrain yourself.
+相邻的NPC被视为用于逃生的角落/钩子。被束缚后，逃跑速度和力量增加12回合。如果你束缚自己，就会被移除。
+Struggling is improved and escape is quicker!
+挣扎能力提升，逃跑速度更快！
 Windblast
 暴风
 You press your wrists together and conjure a blast of wind!
