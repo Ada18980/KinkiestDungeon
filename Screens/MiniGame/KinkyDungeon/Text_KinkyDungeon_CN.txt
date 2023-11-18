@@ -1596,9 +1596,9 @@ Unbound Keybindings! -->
 You've not enough keys!!! -->
 你没有这么多按键!!! -->
 Update your Keybindings!!! -->
-需要更新你绑定的按键!!! -->
+你绑定的按键需要更新!!! -->
 I have altered the keybindings. Pray I do not alter them further.
-我修改了键绑定。祈祷我不要再次修改它们。
+我修改了按键绑定。祈祷我不要再次修改它们。
 
 Up
 向上
