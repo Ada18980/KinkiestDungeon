@@ -1723,8 +1723,10 @@ You can't climb down until you get out of this leash...
 在你摆脱牵绳之前，你不能进入下一层......
 You climb down and find yourself in a strange new place.
 你发现自己在一个陌生的新地方。
+Level RestraintLevel (Rarity)
+等级 RestraintLevel (Rarity)
  plus XXX
-加XXX
+ 加 XXX
 Graveyard
 墓地
 Catacombs
