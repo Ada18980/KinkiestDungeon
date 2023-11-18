@@ -957,7 +957,7 @@ Start with 200 willpower and Iron Will, good at melee and blocking attacks.
 Rogue
 流氓
 Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
-从200点耐力和潜行开始，擅长潜行和躲避游戏。
+从200点体力和潜行开始，擅长潜行和躲避游戏。
 Wizard
 法师
 Start with 200 mana and Magical Sight, good at casting spells.
@@ -1156,8 +1156,8 @@ You deal PERCENT more DAMAGETYPE damage.
 你造成的 DAMAGETYPE 伤害增加了 PERCENT。
 Your bindings are PERCENT more effective.
 你的束缚效果提高了 PERCENT。
-Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage.
-你的基础攻击可造成 DAMAGEDEALT 点 DAMAGETYPE 伤害
+Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
+你的基础攻击可造成 DAMAGEDEALT 点 DAMAGETYPE 伤害，花费的体力为 STMNA。
 Plugged!
 插上！
 Plugged up!!!
@@ -1463,7 +1463,7 @@ Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the
 Your minimum distraction increases over time as you encounter distracting things.
 当你遇到性奋的事情时，你的最小性奋值会随着时间的推移而增加。
 Stamina recovers more quickly when you aren't spending it.
-当你休息时，耐力恢复得更快。
+当你休息时，体力恢复得更快。
 Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape.
 意志力通过食物、睡眠和药剂恢复。没有意志力，就很难逃脱。
 Charge is used to power various magic items and weapons.
@@ -2118,7 +2118,7 @@ You drink the stamina potion and feel invigorated.
 A potion brimming with heat and energy.
 充满热量和能量的药水。
 Restores 50% stamina and 250% more over 25 turns. Effect does not stack.
-立即恢复50%最大耐力，并在接下来12回合中恢复67%耐力。效果不能叠加。
+立即恢复50%最大体力，并在接下来12回合中恢复67%体力。效果不能叠加。
 Willpower Potion
 意志力药水
 You drink the willpower potion and feel motivated.
@@ -6194,7 +6194,7 @@ Illusion
 Other
 其它
 Strength
-耐力
+力量
 Dexterity
 灵巧
 Intelligence
@@ -6268,7 +6268,7 @@ Spell Tree
 Willpower
 坚毅
 Stamina
-耐力
+体力
 Magic
 魔法
 Damage
@@ -6968,7 +6968,7 @@ You raise a massive boulder from the ground and kick it forward!
 Choose line direction
 选择直线区域
 Stamina Up I
-耐力提升 I
+体力提升 I
 Increases maximum SP by 12
 最大 SP 增加 12
 Iron Will
@@ -6976,7 +6976,7 @@ Iron Will
 Athlete
 体育健将
 Sprinting costs 40% less stamina.
-疾跑消耗的耐力减少 40%。
+疾跑消耗的体力减少 40%。
 Sneaky
 影于暗处
 You are harder to see when waiting.
@@ -10952,7 +10952,7 @@ That wasn't so hard, was it?|Now then, there's a treasure chest over here. Why d
 Yikes, looks like you're in a bind!|No worries, though. There's a key to those cuffs over there.|Simply hover over the cuffs item test on the left side.|Then, click the lock icon to remove the lock.|Finally, click the buckle to remove the cuffs.
 哎呀，看来你陷入困境了|不过，别担心。那边有一把钥匙|只需将鼠标悬停在左侧的手铐上|然后，单击锁图标以移除锁|最后，单击带扣以卸下手铐。
 I think we all know what's in the next chest.|It's important to understand the different ways you can escape.|You can struggle, which costs the most stamina|but makes other struggle methods faster.|You can cut, which requires a knife in hand.|You can remove, which represents untying or unbuckling.
-我想我们都知道下一个箱子里有什么|重要的是要了解你可以逃避的不同方式|你可以挣扎，这会消耗最多的耐力|但使其他挣扎方法更快|你可以切割，这需要手里拿着刀|您可以语出，这表示松开或解除绑定。
+我想我们都知道下一个箱子里有什么|重要的是要了解你可以逃避的不同方式|你可以挣扎，这会消耗最多的体力|但使其他挣扎方法更快|你可以切割，这需要手里拿着刀|您可以语出，这表示松开或解除绑定。
 Ouch, that looked tight...|Sometimes you won't be able to struggle out of things.|You'll have to find some other way to take it off...
 哎哟，看起来很紧…|有时候你无法摆脱困境|你得想办法把它取下来...
 There's a few zombies up ahead.|Fight your way through and claim the treasure!
