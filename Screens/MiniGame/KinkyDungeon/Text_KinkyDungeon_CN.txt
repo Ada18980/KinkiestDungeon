@@ -1503,7 +1503,7 @@ Quick-Swap Weapon
 Inspect
 检查
 Pass NPCs
-通过 NPC
+绕过 NPC
 Close a Door
 关门
 Sprint/Hop
@@ -3971,54 +3971,52 @@ You realize that would really hurt...
 你知道那真的很痛...
 The chest is too smooth to help. Maybe if you opened it?
 表面太光滑了。也许你可以打开它？
+
 Lockable
 可上锁
 Non-Lockable
 不可上锁
+
 Unlocked
 解锁的
-Red
-红色的
-Red
-红色的
-Red
-红色的
+Lock Type: 
+锁类型：
 Simple
-简单的
-Green
-绿色
-Blue
-蓝色
-Purple
-紫色
-Gold
-金色
-Yellow
-黄色
-Red Lock
-红锁
-Red Lock
-红锁
-Red Lock
-红锁
+简单
+Standard
+标准
+Standard
+标准
+Secure
+安全
+Disc
+圆盘
+Simple
+简单
+Runic
+符文
+Magic
+魔法
+Ancient
+古代
 Simple Lock
 简易锁
-Green Lock
-绿锁
-Blue Lock
-蓝锁
+Standard Lock
+标准锁
+Standard Lock
+标准锁
+Standard Lock
+标准锁
+Secure Lock
+安全锁
+Disc Lock
+圆盘锁
+Simple Lock
+简易锁
+Runic Lock
+符文锁
 Purple Lock
 紫锁
-Yellow Lock
-黄锁
-(G)
-（G）
-(B)
-(乙)
-(G)
-（G）
-(?)
-（？）
 You can't use that without your fingers!
 没有你的手指你不能使用它！
 You struggle against your bindings but it's too strict!.
@@ -4042,7 +4040,7 @@ Logbook (N)
 Passing...
 通过中...
 Pass NPCs
-通过 NPC
+绕过 NPC
 Closing...
 关门中...
 Close door
@@ -4091,8 +4089,8 @@ It appears to be a receptacle for an ancient crystal.
 它似乎是一个古老水晶的容器。
 It's a pile of slag emitting a strange magic smoke...
 那是一堆散发着奇异魔气的炉渣……
-That object is locked
-目标已上锁
+That object is locked with a LKTP.
+目标被 LKTP 上锁。
 A shrine to the goddess of TYPE. A pool of mana glimmers below.
 TYPE 女神的神泉。一池法力在下方闪烁。
 A shrine to the goddess of TYPE.
