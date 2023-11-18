@@ -1584,6 +1584,15 @@ DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
 Like connecting to a server, etc. Only load mods from a TRUSTED source.
 就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的 Mod 。
 
+Unbound Keybindings! -->
+存在未绑定的按键! -->
+You've not enough keys!!! -->
+你没有这么多按键!!! -->
+Update your Keybindings!!! -->
+需要更新你绑定的按键!!! -->
+I have altered the keybindings. Pray I do not alter them further.
+我修改了键绑定。祈祷我不要再次修改它们。
+
 Up
 向上
 Down
