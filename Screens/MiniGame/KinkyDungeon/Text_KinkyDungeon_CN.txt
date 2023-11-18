@@ -4045,12 +4045,305 @@ Trembling, you free yourself from the TargetRestraint!
 你一边颤抖着一边将自己从 TargetRestraint 中解放出来！
 You damage the TargetRestraint enough to wiggle out!
 你对 TargetRestraint 造成的损坏足以让你挣扎出来！
+You stick the knife into a crack in the wall!
+你把刀插进墙上的裂缝里！
+You use your feet to place the knife into a crack!
+你用脚将刀放入裂缝中！
+You glare at the crack in the wall as you realize you couldn't maneuver the knife if you tried.
+你瞪着墙上的裂缝，意识到即使你尝试再多次也无法操纵这把刀。
+You can't hold your knife like this...
+你不能这样握刀...
+
+The TargetRestraint is too secure to struggle out.
+TargetRestraint 安全性太高了，无法挣脱。
+You groan in frustration as you realize the TargetRestraint is too tight to escape.
+当你意识到因为 TargetRestraint 太紧而无法挣脱时，您沮丧地呻吟着。
+The TargetRestraint tightens itself as you try to squeeze out!
+TargetRestraint 会在你尝试挤出时自动收紧！
+You will need someone's help to squeeze out of the TargetRestraint.
+你需要有人的帮助才能挣脱 TargetRestraint。
+The TargetRestraint flashes magically as the Goddess' curse resists your efforts!
+TargetRestraint 会在女神的诅咒抵抗你努力的挣脱时神奇地闪烁！
+You pull and tug but your other restraints keep the TargetRestraint securely in place!
+你又拉又拽，但你的其他束缚具将 TargetRestraint 牢牢地固定在适当的位置！
+You groan and tug but nothing budges on the TargetRestraint. You're bound too tightly by something else.
+你呻吟着，用力拉扯，但 TargetRestraint 上一点动静也没有。 你被其他东西束缚得太紧了。
+You are too tightly bound to have a chance against the TargetRestraint.
+你被束缚得太紧了，没有机会尝试挣脱 TargetRestraint。
+You shake and moan as you realize your struggles against the TargetRestraint are futile.
+当你意识到你与 TargetRestraint 的斗争是徒劳的时，你颤抖和呻吟。
+You can't find a keyhole on the TargetRestraint!
+你在 TargetRestraint 上找不到锁孔！
+You sigh as you give up trying to find any kind of keyhole on the TargetRestraint.
+当你放弃在 TargetRestraint 上寻找任何类型的锁孔时，您叹了口气。
+The TargetRestraint can't be unlocked without a special command!
+如果没有特殊指令，TargetRestraint 无法解锁！
+You can't reach the keyhole on the TargetRestraint by yourself!
+你一个人够不到 TargetRestraint 上的锁孔！
+You can't hold the key to unlock the TargetRestraint with.
+您无法拿钥匙来解锁 TargetRestraint。
+Your bound and shaking hands can't even hold the key for the TargetRestraint.
+您被束缚和颤抖的双手甚至无法握住 TargetRestraint 的钥匙。
+The goddess punishes you for trying to unlock the TargetRestraint!
+女神会因为你试图解锁 TargetRestraint 而惩罚你！
+You try, but something is keeping your hands away from the TargetRestraint.
+你试过了，但是有些东西总是让你的手无法靠近 TargetRestraint。
+You flail the key around uselessly but a strap is preventing you from unlocking the TargetRestraint!
+你徒劳地挥动钥匙，但一条带子阻止你解锁 TargetRestraint！
+This lock on the TargetRestraint is beyond your skill level!
+锁定 TargetRestraint 超出了你的技能水平！
+You whimper as you realize the lock on the TargetRestraint is far too secure.
+当你意识到 TargetRestraint 上的锁安全性太高时，你呜咽起来。
+There is no visible locking mechanism on the TargetRestraint.
+TargetRestraint 上没有可见的锁扣。
+You can't pick the TargetRestraint by yourself, you'll need help.
+您无法自己解开 TargetRestraint，您需要帮助。
+You can't maneuver the lockpick well enough to unlock the TargetRestraint.
+您无法很好地操纵撬锁器来解锁 TargetRestraint。
+You let out a frustrated sigh as your quivering pick makes no progress on the TargetRestraint.
+当你颤抖的尝试撬开 TargetRestriction 时没有进展时，你发出了沮丧的叹息。
+You try to start picking, but the lock on the TargetRestraint is secured by something else.
+您尝试开始撬锁，但 TargetRestraint 上的锁已被其他东西保护。
+You whimper as you realize the lock on the TargetRestraint is shielded by another strap.
+当您意识到 TargetRestraint 上的锁被另一条带子挡住时，您呜咽起来。
+You are distracted from the TargetRestraint by mental images of yourself remaining in bondage...
+你的注意力会被自己仍处于束缚状态的心理形象所分散，无法关注 TargetRestraint……
+
+You wiggle uselessly in the TargetRestraint. Maybe you need some kind of tool...
+你在 TargetRestraint 中无用地摆动。 也许你需要某种工具......
+You rub your body against the floor to no avail, and sigh as the TargetRestraint stays secure.
+你用身体在地板上摩擦，但没有效果，当 TargetRestraint 保持安全时，你叹了口气。
+You contort your body but you don't have leverage on the TargetRestraint. Maybe you need some kind of tool...
+你扭曲着身体，但对 TargetRestraint 无任何效果。 也许你需要某种工具......
+You struggle madly, trying to push against the TargetRestraint. You need more leverage...
+你疯狂地挣扎，试图从 TargetRestraint 抽出。你需要更多的杠杆...
+
+That doesn't seem to work. Maybe something else will help with the TargetRestraint.
+这似乎不起作用。 也许其他东西会对解开 TargetRestraint 有所帮助。
+You squirm helplessly against the furniture. Maybe something else will help with the TargetRestraint.
+你无助地靠在家具上蠕动。 也许其他东西会对解开 TargetRestraint 有所帮助。
+You twist your body trying to use the furniture, but it doesn't seem to work. The TargetRestraint remains tight.
+你扭动着身体试图使用家具，但似乎不起作用。 TargetRestraint 仍然很紧。
+You wiggle and squirm, trying to use the furniture to no avail. The TargetRestraint remains tight.
+你扭动身体，试图使用家具，但无济于事。 TargetRestraint 仍然很紧。
+
+You need something sharp to loosen the fasteners on the TargetRestraint.
+你需要一些锋利的东西来松开 TargetRestraint 上的紧固件。
+This is not a job for your trembling fingers right now.
+这不是你现在正在颤抖的手指的工作。
+Tugging on the TargetRestraint is useless. Maybe if you had something sharp...
+拉扯 TargetRestraint 是没有用的。也许如果你有锋利的东西...
+You sigh as the TargetRestraint resists all your attempts at breaking through.
+当 TargetRestraint 抵御了你所有的挣脱尝试时，你叹了口气。
+
+You fidget with the TargetRestraint but can't quite grip the clasps without some kind of edge.
+你对 TargetRestraint 感到不安，但如果没有某种边缘就无法完全抓住扣子。
+You flail about but cant get any grip on the TargetRestraint.
+你四处挥动，但抓不住 TargetRestraint。
+The TargetRestraint is secured too tightly. If only you had some kind of edge...
+TargetRestraint 固定得太紧。如果有点优势就好了……
+You squirm around, rubbing the TargetRestraint against the smooth floor to no avail...
+您扭动身体，在光滑的地板上摩擦着 TargetRestraint，但无济于事......
+
+The knots on the TargetRestraint are too tight to pull apart without a hook.
+TargetRestraint 上的结太紧，如果没有钩子就无法拉开。
+You struggle fruitlessly against the knots on the TargetRestraint, but they're too tight.
+你徒劳地与 TargetRestraint 上的结进行斗争，但它们太紧了。
+The TargetRestraint is too tight against your body. You'll need more leverage to pull it off.
+TargetRestraint 在你的身体上太紧了。你需要更多的杠杆才能成功。
+You shake yourself around trying to rub off the TargetRestraint, but it's hopeless.
+你摇晃身体试图摆脱 TargetRestraint，但这是没有希望的。
+
+You need more grip to peel off the TargetRestraint...
+您需要更多的抓力才能挣脱 TargetRestraint...
+Your trembling hands cant grip anything as they are, let alone undo the TargetRestraint.
+你颤抖的双手根本抓不住任何东西，更不用说挣脱 TargetRestraint 了。
+You need more grip to peel off the TargetRestraint...
+您需要更多的抓力才能挣脱 TargetRestraint...
+You rub yourself against the floor to no avail...
+你在地板上蹭了蹭，但无济于事……
+
+The fastenings are too tight and secure on the TargetRestraint!
+TargetRestraint 上的紧固件过于紧固！
+You roll around tryng to loosen the TargetRestraint to no avail.
+你翻滚着试图松开 TargetRestraint，但无济于事。
+The TargetRestraint tightens itself as you try to undo it!
+当你尝试挣脱 TargetRestraint 时，它会自行收紧！
+You can't reach the TargetRestraint by yourself!
+你自己无法触碰 TargetRestraint！
+You are too tightly bound to manipulate the TargetRestraint.
+你被束缚得太紧而无法控制 TargetRestraint。
+Your futile struggles do nothing to loosen the fasteners on the TargetRestraint.
+你徒劳的挣扎并不能松开 TargetRestraint 上的紧固件。
+You try to undo the fasteners on the TargetRestraint, but they are blocked by other straps!
+你尝试松开 TargetRestraint 上的紧固件，但它们被其他带子挡住了！
+You rub your body uselessly as you find another strap securing the TargetRestraint.
+当你发现另一条固定 TargetRestraint 的带子时，你徒劳地摩擦着自己的身体。
+You feel the Goddess' hand keeping the TargetRestraint tightly secured!
+你会感觉到女神的手紧紧地抓住了 TargetRestraint！
+The TargetRestraint is too durable to cut.
+TargetRestraint 耐力太高，无法切割。
+Your hopeless attempts fail to even leave a scratch on the TargetRestraint.
+你无望的尝试甚至未能在 TargetRestraint 上留下任何划痕。
+You fail to leave even a scratch on the TargetRestraint!
+你甚至无法在 TargetRestraint 上留下任何划痕！
+You can't get any leverage to cut the TargetRestraint with...
+你无法获得任何杠杆来减少 TargetRestraint 的束缚程度...
+You can't hold the knife firmly enough to cut the TargetRestraint.
+您无法用足够牢固的刀来切割 TargetRestraint。
+You cry out in your bindings as the knife bounces against the TargetRestraint uselessly.
+当刀徒劳地弹到 TargetRestraint 上时，你在束缚中大喊。
+Your arms are kept from having leverage on the TargetRestraint due to another item.
+由于其他物品，你的手臂无法对 TargetRestraint 施加杠杆作用。
+You fiddle with the tool, but your arms lack leverage on the TargetRestraint due to another item
+你摆弄着工具，但由于另一个项目，你的手臂缺乏对 TargetRestraint 的杠杆作用
+The TargetRestraint flashes magically as the Goddess' curse resists your efforts!
+TargetRestraint 会在女神的诅咒抵抗你努力的挣脱时神奇地闪烁！
+You pry at the TargetRestraint...
+你撬动 TargetRestraint...
+You moan as the TargetRestraint squeeze you tightly...
+当 TargetRestraint 紧紧地挤压你时，你呻吟着......
+There's no way the TargetRestraint are just letting go!
+TargetRestraint 不可能就这样解开！
+You whimper as you realize the TargetRestraint won't let go no matter what...
+当你意识到 TargetRestraint 无论如何都无法解开时，你呜咽起来……
+You hear dark laughter as you realize the TargetRestraint won't let go...
+当你意识到 TargetRestraint 无论如何都无法解开时，你听到了阴暗的笑声......
+You hear a dark giggle as fruitlessly try to wiggle free from the TargetRestraint!
+当你徒劳地尝试挣脱 TargetRestraint 时，你听到一声阴暗的咯咯笑声！
+You try to pull away from the TargetRestraint!
+你尝试挣脱 TargetRestraint！
+You blush and try to escape the TargetRestraint's grip!
+你脸红了，试图挣脱 TargetRestraint 的束缚！
+The TargetRestraint's grip is too strong...
+TargetRestraint 的抓力太强了……
+The TargetRestraint's grip is too strong... it's hopeless.
+TargetRestraint 的抓力太强了……毫无希望。
+You're bound too tight to have a chance at shaking off the TargetRestraint.
+你被束缚得太紧了，没有机会挣脱 TargetRestraint。
+You whimper as you give up struggling against the TargetRestraint.
+当你放弃从 TargetRestraint 挣脱时，你呜咽着。
+
+You wiggle around trying to get the TargetRestraint out...
+你扭动身体试图将 TargetRestraint 取出来……
+You squirm around trying to dislodge the TargetRestraint...
+你扭动着试图摆脱 TargetRestraint......
+The TargetRestraint is in too deeply, it won't come out.
+TargetRestraint 陷得太深，出不来。
+You feel the TargetRestraint slide around inside but it won't come out!
+你感觉 TargetRestraint 在里面滑动，但它出不来！
+Your bondage keeps the TargetRestraint firmly in place.
+你的束缚将 TargetRestraint 牢牢固定在适当的位置。
+Your struggling does nothing but shift the TargetRestraint's position inside of you.
+你的挣扎只会改变 TargetRestraint 在你体内的位置。
+
+You wiggle around trying to get the TargetRestraint out...
+你扭动身体试图将 TargetRestraint 取出来……
+You squirm around trying to dislodge the TargetRestraint...
+你扭动着试图摆脱 TargetRestraint......
+The TargetRestraint won't come out.
+TargetRestraint 不会出来。
+You feel the TargetRestraint slide around but it won't come out!
+你感觉 TargetRestraint 四处滑动，但它却出不来！
+Your bondage keeps the TargetRestraint secure in place.
+你的束缚使 TargetRestraint 固定在适当的位置。
+Your struggling does nothing to dislodge the TargetRestraint.
+你的挣扎并不能摆脱 TargetRestraint。
+
+You work to unlace the TargetRestraint...
+你努力解开 TargetRestraint...
+You hurriedly try to unlace the TargetRestraint...
+你匆忙地试图解开 TargetRestraint...
+The TargetRestraint has no laces to loosen!
+TargetRestraint 没有需要松开的带子！
+You sigh as you can't find any laces to loosen on the TargetRestraint.
+你叹了口气，因为在 TargetRestraint 上找不到任何可以松开的带子。
+The laces of the TargetRestraint are tied tight!
+TargetRestraint 的带子已系紧！
+You hopelessly try to untie the lacing on the TargetRestraint, but it's just too tight!
+你绝望地尝试解开 TargetRestraint 上的带子，但它太紧了！
+
+You grasp at the TargetRestraint, trying to peel it off...
+你抓住 TargetRestraint，试图将其剥离......
+You wiggle madly as you try to peel off the TargetRestraint!
+当你试图剥离 TargetRestraint 时，你疯狂地扭动！
+The TargetRestraint reforms as you scoop it away!
+TargetRestriction 在你尝试剥离它的时候发生了变化！
+You can't get the TargetRestraint off at all!
+你根本无法让 TargetRestraint 停下来！
+The TargetRestraint is too fast at reforming!
+TargetRestraint 改变的速度太快了！
+The TargetRestraint reforms too quickly as you try to squirm it off...
+当你试图将其扭开时，TargetRestraint 的改变速度加快了......
+
+You grasp around, looking for a seam on the TargetRestraint..
+你四处抓握，寻找 TargetRestraint 上的接缝。
+You wiggle and squirm, looking for something to pull at on the TargetRestraint...
+你扭动着身体，寻找可以拉动 TargetRestraint 的东西……
+The TargetRestraint encases you in a solid layer!
+TargetRestraint 将你包裹在坚固的固体层中！
+Try as you might, the TargetRestraint hugs you completely without any seams!
+无论你如何尝试，TargetRestraint 都会完全包裹住你，没有任何接缝！
+The TargetRestraint is too tight to get any traction...
+TargetRestraint 太紧，无法获得任何牵引力......
+The TargetRestraint squeezes your body too tightly to get any sort of ply...
+TargetRestraint 将你的身体挤压得太紧，无法获得任何束缚具层数...
+
+You start peeling off the TargetRestraint...
+你开始剥离 TargetRestraint...
+You scratch at the TargetRestraint furiously...
+你疯狂地抓挠 TargetRestraint...
+The TargetRestraint clings to your skin too tightly!
+TargetRestraint 与你的皮肤贴得太紧！
+You groan in frustration as you try to peel the TargetRestraint off but realize it's too sticky.
+当你尝试剥离 TargetRestraint 时，你沮丧地呻吟着，因为它太粘了。
+You can't grip the edges to peel the TargetRestraint off!
+你无法抓住边缘来剥离 TargetRestraint！
+You make a futile attempt to rub the TargetRestraint off.
+你徒劳地尝试摩擦掉 TargetRestraint。
+
+You try to wiggle off the TargetRestraint...
+你尝试挣脱 TargetRestraint...
+You squirm trying to get the TargetRestraint to fall off...
+你蠕动着试图让 TargetRestraint 掉落......
+The TargetRestraint are magical and wrap themselves back around you of their own accord.
+TargetRestraint 非常神奇，它们会自动将你包裹起来。
+The TargetRestraint squeeze you tighter as you try to shake them off.
+当你试图挣脱它们时，TargetRestraint 将你挤压得更紧。
+The TargetRestraint have you bound hopelessly tight!
+TargetRestraint 将你牢牢地束缚住！
+You sigh and moan as the TargetRestraint aren't getting any looser.
+当 TargetRestraint 没有松开一点时，你叹了口气并呻吟道。
+
+You try to untie the TargetRestraint...
+你尝试解开 TargetRestraint...
+You contort yourself trying to reach the knots on the TargetRestraint...
+你扭曲自己试图触及 TargetRestraint 上的绳结...
+The TargetRestraint's knot ties itself back again as soon as you get it loose!
+一旦松开，TargetRestraint 的绳结就会自动重新打结！
+The knots tighten themselves as soon as you reach them, keeping you trapped in the TargetRestraint.
+一旦你碰到它们，绳结就会收紧，让你被困在 TargetRestraint 中。
+You can't reach the knots on the TargetRestraint!
+您无法碰到 TargetRestraint 上的绳结！
+
+Your squirming is in vain as you can't even reach the knots on the TargetRestraint.
+你的蠕动是徒劳的，因为你甚至无法碰到 TargetRestraint 上的绳结。
+
+You try to pull off the TargetRestraint...
+你尝试挣脱 TargetRestraint...
+You tug on your TargetRestraint trying to get them off!
+你拉动 TargetRestraint 试图将它们脱下来！
 That would really hurt...
 那真的会很痛...
 You realize that would really hurt...
 你知道那真的很痛...
+The TargetRestraint tug on your nipples as you squirm!
+当你蠕动时，TargetRestraint 会拉动你的乳头！
+The TargetRestraint tug on your nipples as you squirm!
+当你蠕动时，TargetRestraint 会拉动你的乳头！
+
 The chest is too smooth to help. Maybe if you opened it?
-表面太光滑了。也许你可以打开它？
+箱子表面太光滑了。也许你可以打开它？
 
 Lockable
 可上锁
@@ -4102,7 +4395,7 @@ You can't use that without your fingers!
 You struggle against your bindings but it's too strict!.
 你与你的拘束作斗争，但它太严苛了！
 You drop the pick due to your bound hands!
-由于您的双手被束缚，您放弃了撬锁！
+由于你的双手被束缚，你放弃了撬锁！
 You drop your knife due to your bound hands!
 刀从你缚住的手中掉了出去！
 You drop the precious knife due to your bound hands!
@@ -4316,7 +4609,7 @@ You look like you're right at home!
 Restraining Bed
 拘束床
 A bed with a booby trap designed to trap you on top of it!
-带有拘束装置的床，旨在将您困在上面！
+带有拘束装置的床，旨在将你困在上面！
 You have to get out somehow...
 你必须以某种方式离开......
 Belts emerge from underneath the bed and wrap around you, strapping you down tightly!
@@ -4338,7 +4631,7 @@ What's this? it seems to have a magic spell protecting it from harm!
 Fancy Muzzle
 精致口套
 A muzzle to keep you from spitting out what's underneath.
-口套可防止您吐出下面的东西。
+口套可防止你吐出下面的东西。
 Sorry dear, there's a mystic seal on there to keep it on nice and tight.
 对不起，亲爱的，那里有一个神秘的封印，可以使其保持良好且紧密。
 Red Binding Dress
@@ -4462,7 +4755,7 @@ High-Security BallGag
 A rubber gag shoved tightly between your lips.
 一个橡胶口球紧紧地塞在你的嘴唇之间。
 The mythril straps are nigh-unbreakable, keeping you securely silenced.
-秘银带几乎牢不可破，让您保持安静。
+秘银带几乎牢不可破，让你保持安静。
 Also allows fitting of a leash.
 还允许安装牵绳。
 Also allows fitting of a leash.
@@ -4472,13 +4765,13 @@ Slime Walkers
 A pair of heels coated in a nonstick material.
 一双涂有不粘材料的高跟鞋。
 They will slow you down, but you can walk on slime without getting stuck!
-它们会减慢您的速度，但您可以在粘液上行走而不会被困住！
+它们会减慢你的速度，但你可以在粘液上行走而不会被困住！
 Slime Walkers
 粘液靴子
 A pair of heels coated in a nonstick material.
 一双涂有不粘材料的高跟鞋。
 They will slow you down, but you can walk on slime without getting stuck!
-它们会减慢您的速度，但您可以在粘液上行走而不会被困住！
+它们会减慢你的速度，但你可以在粘液上行走而不会被困住！
 Collar
 项圈
 A classy leather collar.
@@ -4592,7 +4885,7 @@ The harness is comprehensive and it's locked in place.
 Harness Ball Gag
 马具式球口塞
 A gag that stuffs your mouth with a large silicone ball.
-一个塞满您嘴的大硅胶球口塞。
+一个塞满你嘴的大硅胶球口塞。
 The harness is comprehensive and it's locked in place.
 束带很全面，并且锁定到位。
 Bast Gag
@@ -4672,7 +4965,7 @@ Autotape (Head)
 Sticky tape made from a metallic material. Used to great effect in police situations.
 由金属材料制成的胶带。在警察情况下使用效果很好。
 It's very sticky and tough but you could probably get a knife through it.
-它非常粘稠且坚韧，但您可以用刀解决它。
+它非常粘稠且坚韧，但你可以用刀解决它。
 Autotape (Arms)
 自动胶带（手臂）
 Sticky tape made from a metallic material. Used to great effect in police situations.
