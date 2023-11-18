@@ -11633,6 +11633,12 @@ This part of the dungeon has been altered by the goddess of chaos.|The order of 
 地牢的这一部分被混沌女神改变了|你要经过的区域顺序完全是随机的。
 Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
 传说在广阔的丛林中有一座神庙。戴好你的装备，去寻找宝藏吧！
+You've gotten lost in an ancient doll processing facility.|This journey features mostly lategame tilesets.
+你在一个古老的玩偶工厂迷路了|这段旅程主要包含游戏后期的图块集。
+You've gotten lost inside an ancient temple to a kinky goddess.|Will you find your way out, or will you find yourself trapped even deeper?
+你在一座古老的神庙里迷失了方向，被一位变态的女神所迷失。|你会找到出路，还是会发现自己被困得更深？
+You've gotten yourself lost wandering in the ruins.|The order of tilesets is reversed!
+你在废墟中迷失了方向。|图块顺序颠倒了！
 These are the stairs to the tutorial hall.
 这是通往新手教程的楼梯。
 Congratulations! You've completed the tutorial!|Now get in there and stay out of trouble~
