@@ -5962,6 +5962,10 @@ A cold steel collar locked tightly on your neck.
 一个冰冷的钢领紧紧地锁在你的脖子上。
 It appears to attract additional enemies to its wearer.
 它似乎会为佩戴者吸引更多的敌人。
+
+Preloading Character Assets: 
+预载角色资源:
+
 Uniforms
 制服
 Suits
