@@ -324,15 +324,16 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 							renderTexture: MC.Containers.get(containerID).RenderTexture,
 						});
 						RenderCharacterLock.delete(C);
+						MC.ForceUpdate.add(containerID);
 					});
 				} else {
 					PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
 						clear: true,
 						renderTexture: MC.Containers.get(containerID).RenderTexture,
 					});
+					MC.ForceUpdate.add(containerID);
 				}
 			}
-			MC.ForceUpdate.add(containerID);
 		}
 		Container.SpritesDrawn.clear();
 	}
