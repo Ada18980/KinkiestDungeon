@@ -11049,11 +11049,11 @@ Yes, I am here to fight you.
 You're on!
 轮到你了！
 Hmmmph!
-哼！
+哼嗯嗯！
 Let us duel!
 让我们决斗吧！
 Mmmmmghh!
-嗯嗯！
+嗯嗯呜！
 I suppose...
 大概吧...
 Mmmmph...
@@ -11340,6 +11340,198 @@ Your screams are muffled by your gag!
 你的尖叫声被你的堵嘴掩盖了！
 You can hardly make a noise...
 你几乎不能发出声音...
+*clink*
+*叮当声*
+You yelp as the EnemyName activates your RestraintName
+当 EnemyName 激活你的 RestraintName 时你大呼叫
+That should slow you down!
+那应该会减慢你的速度！
+Try running away now~
+现在就尝试逃跑吧~
+Initiating prisoner lockdown protocol
+启动囚犯封锁协议
+Your RestraintName suddenly snap together as the EnemyName activates them
+当 EnemyName 激活它们时，你的 RestraintName 突然合在一起
+
+Turn Count: 
+回合数：
+The Shopkeeper leashes you!
+店主正在牵着你！
+You are brought into the Shopkeeper's establishment...
+你被带进了店主的店里......
+
+It seems to be working! The seal on your RESTRAINTNAME is weakened.
+它似乎正在发挥作用！ 你 RESTRAINTNAME 上的封印被削弱了。
+The cursed seal on your RESTRAINTNAME disappears.
+你的 RESTRAINTNAME 上的诅咒封印消失了。
+You are moved along by the conveyor...
+你被传送带移动着......
+Strange machinery begins sealing you in shiny latex!
+奇怪的机器开始用闪闪发光的乳胶密封你！
+Metallic arms insert something into you!
+金属手臂将一些东西插入了你的体内！
+Metallic arms attach a chastity belt over your waist!
+金属手臂将贞操带戴在你的腰上！
+Metallic arms wrap you in tape!
+金属手臂用胶带包裹你！
+Metallic arms wrap you in strict restraints!
+金属手臂将你牢牢束缚！
+
+You've sprung a trap! You've been stunned.
+你陷入了陷阱了！ 受到了惊吓。
+The bandit leaves behind a sneaky trap...
+强盗留下了一个狡猾的陷阱......
+Damsel Trap
+少女陷阱
+
+The ENEMYNAME transforms nearby dolls into her subjects!
+ENEMYNAME 将附近的玩偶变成了她的臣民！
+The ENEMYNAME transforms nearby dolls into her subjects!
+ENEMYNAME 将附近的玩偶变成了她的臣民！
+
+You wriggle around while struggling...
+你一边挣扎一边扭动……
+
+The missile explodes into a shower of latex that covers you!
+导弹爆炸成乳胶雨，包裹住你！
+Rubber Missile Direct Hit
+橡胶导弹直接命中
+Rubber Missile
+橡胶导弹
+Rubber Nuke Direct Hit
+橡胶核弹直接命中
+Rubber Nuke
+橡胶核弹
+
+(In the center of the room stands a woman wearing a latex dress)|(Around her are robotic servants, obeying her without a word)|(She has been watching you this entire time)
+（房间中央站着一个穿着乳胶裙的女人）|（她周围是机器人仆人，一言不发地服从着她）|（她一直在盯着你）
+And who might you be?
+那么你是谁？
+(Tilt your head)
+（歪着头）
+(The woman's mask reflects the harsh industrial light)|You don't know who I am?|Hmmph, and I suppose my servants haven't told you...|They call me the Dollmaker.
+（女人的面具反射着刺眼的工业光）|你不知道我是谁？|哼，我想我的仆人还没有告诉你……|他们叫我玩偶师。
+So you're the one they talked about.
+所以你就是他们谈论的那个人。
+(Nod and continue)
+（点头继续）
+(Tuck your staff behind your back...)
+（把你的手杖藏在背后……）
+(The Dollmaker points at you)|Is that--?
+（玩偶师指着你）|那是——？
+(Panic!)
+（惊恐！）
+You must be the Dollmaker.
+你一定是玩偶师。
+(The woman chuckles)|Correct.|And you must be the adventurer causing the recent troubles.
+（女子轻笑）|没错。|而你一定就是最近经常惹出麻烦的冒险者。
+I'm famous!
+我很出名！
+(Nod happily)
+（高兴地点头）
+Indeed. And I'm here to bring you down.
+的确。 我是来打倒你的。
+(Scoff at her)
+（嘲笑她）
+(Tuck your staff behind your back...)
+（把你的手杖藏在背后……）
+(The Dollmaker points at you)|Is that--?
+（玩偶师指着你）|那是——？
+(Panic!)
+（惊恐！）
+
+(Attack her without saying anything)
+（二话不说就攻击她）
+
+(The Dollmaker folds her arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll.
+（玩偶师抱起双臂）|无论如何，你的旅途到此结束。|我不喜欢无赖在我的领域里闲逛。|我将亲自带领你走向作为玩偶的新未来。
+Do you have the Mistress' Staff?
+你有女主人的法杖吗？
+(The Dollmaker chuckles)|That trinket?|So that's what you're after!|As a matter of fact, I do not have it.|It belongs to a certain Archmagus.
+（玩偶师轻笑）|那个小饰品？|这就是你要找的东西！|事实上，我没有它。|它属于某位大魔法师。
+Then you are of no use to me.
+那你对我就没什么用了。
+(The Dollmaker summons a drone to her side)|Such arrogance! I'll have to teach you some manners!
+（玩偶师召唤一架无人机到她身边）|真傲慢！看来我得教你一些礼仪！
+What a bother.
+真麻烦啊。
+Who?
+谁？
+(The Dollmaker explains)|Archmagus Sariel Vinlaga. I'm surprised you didn't know.|Not that it matters for a future doll like you.
+（玩偶师解释）|大魔法师萨里尔·文拉加(Sariel Vinlaga)。 我很惊讶你竟然不知道。|当然这对于像你这样的未来玩偶来说并不重要。
+We'll see about that.
+咱们走着瞧。
+...Sariel Vinlaga.
+...萨里尔·文拉加(Sariel Vinlaga)
+(The Dollmaker nods)|Yes. She is down here.|But this information is irrelevant to your future as a doll.
+（玩偶师点头）|是的。 她就在这里。|但是这些信息与你作为玩偶的未来无关。
+The Staff will be mine.
+权杖将是我的。
+Fair enough. Let's fight!
+很公平。让我们来战斗吧！
+We'll see about that!
+我们拭目以待吧！
+Hmmmph!
+哼嗯嗯！
+Feel free to try.
+请随意尝试。
+Mmmmmghh!
+嗯嗯呜！
+Sounds fun... but I really need to get going.
+听起来很有趣……但我真的需要开始了。
+Mmmmph...
+嗯……
+
+(The Dollmaker folds her arms as she walks over)|All tight and shiny!|You'll be my prized possession~
+（玩偶师走过去时双臂交叉）|全身紧绷且闪闪发光！|你将是我最珍贵的财产~
+(The Dollmaker nods)|Already eager to obey!|So beautiful...
+（玩偶师点头）|已经迫不及待地服从我了！|太美丽了……
+(The Dollmaker chuckles)|Oh, but I already have~
+（玩偶师笑）|哦，但我已经有了~
+I have no choice but to submit.
+我别无选择，只能屈服。
+Mmmph. (Submit)
+嗯。（顺从）
+You will never get away with this!
+你永远逃脱不了这个！
+Mmmph! (Struggle weakly)
+嗯嗯！（弱弱地挣扎）
+(Sigh and be forced to wear her visor)
+（叹了口气，被迫戴上面罩）
+(Sigh and be forced to wear her mask)
+（叹了口气，被迫戴上面具）
+(Sigh and be forced to wear whatever she chooses)
+（叹了口气，被迫穿她选择的任何衣服）
+(The Dollmaker places her visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them.
+（玩偶师将她的面罩放在你的脸上）|（咔哒一声，你感觉到它紧紧地锁在了你的头上）|现在......就目前情况而言，我有一个任务要交给你，我的玩偶。|你看，有些玩偶已经逃离我的领域。|我要你去抓住他们。
+
+(The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower.
+（玩偶师突然传送离开）|嗯。看来我不得不动用我的重型火力。
+(The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from her back as she storms toward you!)
+（玩偶师沉入一滩粘液中，然后出现在附近）|（当她冲向你时，机械臂从她的背后长出来！）
+
+(The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The door exit door unlocks with an audible click)
+（玩偶师认输）|你打败了我。|我...我...会让你通过。|（出口处的门解锁了，并且发出咔哒声）
+(SPEAKER looks confused)|What are you... Okay, you can have it...
+（SPEAKER 看起来很困惑）|你要干什... 好吧，你可以拥有它...
+(Wear a doll visor)
+（戴上玩偶面罩）
+(SPEAKER looks confused)|What are you... Okay, you can have it...
+（SPEAKER 看起来很困惑）|你要干什... 好吧，你可以拥有它...
+(Wear a doll mask)
+（戴上玩偶面具）
+(You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into her open mouth and she starts mumbling angrily)
+（你掀起玩偶师的面具，里面是一个撅着嘴的年轻女子）|你要干什——|（你把一个口塞塞入她张开的嘴里，她开始愤怒地咕哝）
+(Gag her)
+（堵住她的嘴）
+
+The Dollmaker calls in drone reinforcements!
+玩偶师呼叫无人机增援！
+The Dollmaker releases many drones with robotic arms to capture you!
+玩偶师释放了许多带有机械臂的无人机来捕捉你！
+Zombies emerge from the ground!
+僵尸从地底冒了出来！
+
 (Nod happily)
 （高兴地点头）
 (Attack her without saying anything)
@@ -11347,15 +11539,15 @@ You can hardly make a noise...
 We'll see about that.
 我们会看到的。
 Hmmmph!
-哼！
+哼嗯嗯！
 Mmmmmghh!
-嗯嗯！
+嗯嗯呜！
 Mmmmph...
 嗯……
 Mmmph. (Submit)
-嗯。 （顺从）
+嗯。(顺从)
 Mmmph! (Struggle weakly)
-嗯！ （弱弱地挣扎）
+嗯嗯！(弱弱地挣扎)
 (Gag her)
 （堵住她的嘴）
 Latex
