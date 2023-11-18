@@ -2872,6 +2872,14 @@ Allied Golem
 友方石魔像
 The words vanish from the golem's forehead as it crashes down.
 石魔像坠落的时候，咒语从他的额头消失了。
+Shopkeeper
+店主
+You have done a terrible deed.
+你做了一件可怕的事。
+Shopkeeper
+店主
+You have done a terrible deed.
+你做了一件可怕的事。
 Crystal Monolith
 水晶巨石
 The crystal fades from the monolith.
