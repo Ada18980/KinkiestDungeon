@@ -1359,6 +1359,8 @@ Save Changes
 保存更改
 Save Changes?
 保存更改？
+Back to Wardrobe
+返回衣柜
 Strip Outfit
 脱去衣服
 Confirm Strip?
