@@ -4224,6 +4224,21 @@ function KDAddDelayedStruggle(amount, time, StruggleType, struggleGroup, index, 
 }
 
 /**
+ *
+ * @param {number} bonus
+ * @param {number} penalty
+ * @param {number} threshold
+ * @param {number} bonusscale
+ * @param {number} penaltyscale
+ * @returns {number}
+ */
+function KDGetManaBonus(bonus, penalty, threshold, bonusscale, penaltyscale) {
+	if (KinkyDungeonStatMana > threshold) return bonus * (KinkyDungeonStatMana - threshold)/bonusscale;
+	else if (KinkyDungeonStatMana < threshold) return penalty * (KinkyDungeonStatMana - threshold)/penaltyscale;
+	return 0;
+}
+
+/**
  * Gets the goddess bonus for this item
  * @param {item} item
  * @param {any} data - Escape chance data

@@ -436,6 +436,14 @@ let KDEventMapInventory = {
 				data.extraLineColor.push(e.color);
 			}
 		},
+		"StruggleManaBonus": (e, item, data) => {
+			if (item == data.item) {
+				let bonus = KDGetManaBonus(e.mult, e.power, e.threshold, e.threshold, e.threshold);
+
+				data.extraLines.push(TextGet("KDMana" + (bonus >= 0 ? "Bonus" : "Penalty")) + Math.round(100 * bonus) + "%");
+				data.extraLineColor.push("#99aaff");
+			}
+		},
 
 	},
 	"perksBonus": {
@@ -1476,6 +1484,18 @@ let KDEventMapInventory = {
 		}
 	},
 	"beforeStruggleCalc": {
+		"StruggleManaBonus": (e, item, data) => {
+			if (item == data.restraint) {
+				let bonus = KDGetManaBonus(e.mult, e.power, e.threshold, e.threshold, e.threshold);
+
+				data.escapeChance += bonus;
+
+				let msg = e.msg ? e.msg : ("KDStruggleMana" + (bonus >= 0 ? "Bonus" : "Penalty"));
+				if (msg) {
+					KinkyDungeonSendTextMessage(5, TextGet(msg).replace("RestraintName", TextGet("Restraint" + data.restraint.name)), bonus > 0 ? "#88ff88" : "#ff5555", 2);
+				}
+			}
+		},
 		"boostWater": (e, item, data) => {
 			if (item == data.restraint && KinkyDungeonPlayerBuffs.Drenched && KinkyDungeonPlayerBuffs.Drenched.duration > 0) {
 				data.escapeChance += e.power;
@@ -3645,6 +3665,7 @@ let KDEventMapSpell = {
 		},
 	},
 	"beforeStruggleCalc": {
+
 		"ModifyStruggle": (e, spell, data) => {
 			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, true)) && data.escapeChance != undefined && (!e.StruggleType || e.StruggleType == data.struggleType)) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell, false, true));
