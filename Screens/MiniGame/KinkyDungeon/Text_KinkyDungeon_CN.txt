@@ -1786,15 +1786,21 @@ Lockpicks:
 Keys: 
 钥匙：
 Magic Keys: 
-法术按键：
+魔法钥匙：
 Knife: 
 刀：
+Mag. Knife: 
+魔法刀：
+You climb down the stairs. The passage closes behind you.
+你进入了下一层。通道在你的身后关闭。
+You climb back up the stairs.
+你爬回了楼梯。
 You climb down to the next level
 你进入新的一层。
 You can't climb down until you get out of this leash...
 在你摆脱牵绳之前，你不能进入下一层......
 You climb down and find yourself in a strange new place.
-你发现自己在一个陌生的新地方。
+你进入了下一层，发现自己身处在一个陌生的新地方。
 Level RestraintLevel (Rarity)
 等级 RestraintLevel (Rarity)
  plus XXX
