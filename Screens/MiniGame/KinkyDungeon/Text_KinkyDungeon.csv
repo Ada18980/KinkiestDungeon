@@ -6190,8 +6190,12 @@ KinkyDungeonSpellTrapLeatherWeak,Belt Trap
 KinkyDungeonSpellTrapCableWeak,Cable Trap
 KinkyDungeonSpellTrapSlimeWeak,Slime Trap
 KinkyDungeonSpellTrapMagicChainsWeak,Chain Trap
+KinkyDungeonSpellTrapShadowLatex,Shadow Latex Trap
+KinkyDungeonSpellTrapObsidian,Demonic Sigil
+KinkyDungeonSpellTrapCrystal,Unstable Crystals
 KinkyDungeonSpellTrapLustCloud,Gas Trap
 KinkyDungeonSpellTrapSCloud,Gas Trap
+KinkyDungeonSpellTrapLatex,Latex Engulfment
 KinkyDungeonSpellTrapSleepDart,Sleep Dart
 KinkyDungeonSpellSleepDart,Sleep Dart
 
@@ -6206,6 +6210,10 @@ KinkyDungeonSpellCastTrapLeatherWeak,"Leather restraints start appearing around 
 KinkyDungeonSpellCastTrapCableWeak,"high-tech cables come out from the floor!"
 KinkyDungeonSpellCastTrapSlimeWeak,"Slimes pours out from the walls and ceiling!"
 KinkyDungeonSpellCastTrapMagicChainsWeak,"Ethereal chains appear all around you!"
+KinkyDungeonSpellCastTrapShadowLatex,"Shadows constrict around you!"
+KinkyDungeonSpellCastTrapObsidian,"An otherworldly sigil appears below you!"
+KinkyDungeonSpellCastTrapCrystal,"Crystals rise up around you!"
+KinkyDungeonSpellCastTrapLatex,"Something shiny seems to be stretched out over the floor!"
 KinkyDungeonSpellCastTrapLustCloud,"You hear the sound of glass breaking, and a cloud of green gas rises around you!"
 KinkyDungeonSpellCastTrapSCloud,"You hear the sound of glass breaking, and a cloud of pink gas rises around you!"
 KinkyDungeonTrapBindingsCharmWeak,"The charms stick themselves all over your body!"
@@ -6218,6 +6226,10 @@ KinkyDungeonTrapBindingsRopeHoly,"The holy ropes secure themselves upon your bod
 KinkyDungeonTrapBindingsLeatherWeak,"The leather restraints attach themselves to your body!"
 KinkyDungeonTrapBindingsCableWeak,"The high-tech cables wrap themselves over your body!"
 KinkyDungeonTrapBindingsSlimeWeak,"The slime pours all over you!"
+KinkyDungeonTrapBindingsLatex,"A giant cube of latex engulfs you!"
+KinkyDungeonTrapBindingsObsidian,"A sinister power wraps itself around you and solidifies!"
+KinkyDungeonTrapBindingsShadowLatex,"Dark magics swirl around you and solidify into shiny rubber!"
+KinkyDungeonTrapBindingsCrystal,"Crystals grow and spread across your limbs!"
 KinkyDungeonTrapBindingsMagicChainsWeak,"The magic chains wrap themselves around your body!"
 KinkyDungeonTrapBindingsDress,"Your clothes are getting ripped away!"
 KinkyDungeonTrapSleepDart,"You feel a prick as a small dart hits you, and you start feeling drowsy..."

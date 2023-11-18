@@ -766,9 +766,10 @@ const KinkyDungeonMapParams = {
 
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
-			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapRopeStrong", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapSCloud", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapCrystal", Level: 0, Power: 3, Weight: 50},
 			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 3, Weight: 10},
 		],
 
@@ -909,7 +910,7 @@ const KinkyDungeonMapParams = {
 		"doorchance" : 0.9,
 		"nodoorchance" : 0.25,
 		"doorlockchance" : -0.05,
-		"trapchance" : 0.1,
+		"trapchance" : 0.2,
 		"grateChance" : 0.8,
 		"rubblechance" : 0.35,
 		"brickchance" : 0.0,
@@ -964,6 +965,8 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpawnEnemies", strict: true, Enemy: "Drone", Level: 0, Power: 3, Weight: 100},
 			{Name: "SpawnEnemies", strict: true, Enemy: "CaptureBot", Level: 0, Power: 2, Weight: 100},
+			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 10},
+			{Name: "SpecificSpell", Spell: "TrapLatex", Level: 0, Power: 3, Weight: 30},
 		],
 
 		"min_width" : 6,
@@ -1061,6 +1064,9 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "ShadowHand", strict: true, Level: 0, Power: 3, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "TickleTerror", strict: true, Level: 0, Power: 1, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "HugHorror", strict: true, Level: 0, Power: 1, Weight: 10},
+			{Name: "SpecificSpell", Spell: "TrapShadowLatex", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapObsidian", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapCrystal", Level: 0, Power: 3, Weight: 25},
 		],
 
 		"min_width" : 5,

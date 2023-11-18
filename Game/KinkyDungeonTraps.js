@@ -154,7 +154,7 @@ let KDTrapTypes = {
 		}
 		return {
 			triggered: spell != undefined,
-			msg: "",
+			msg: TextGet("KinkyDungeonSpellCast" + tile.Spell),
 		};
 	},
 
