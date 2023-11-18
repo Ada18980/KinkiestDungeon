@@ -19,8 +19,10 @@ let KDJacketLink = ["Wrapping", "Belts", "Hogties", "TransportJackets"]; // Stan
 let KDJacketRender = ["Wrapping", "Belts", "BindingDress"]; // Standard link for an armbinder
 let KDLegbinderLink = ["Belts", "Tape", "Wrapping", "Hobbleskirts", "Socks"];
 let KDLegbinderRender = ["Belts", "Tape", "Wrapping"];
-let KDLegRopesBind = ["Legbinders", "Hobbleskirts", "Tape", "Belts", "Wrapping"];
-let KDLegRopesRender = ["Belts", "Ties"];
+let KDLegRopesBind = ["Legbinders", "Hobbleskirts", "Tape", "Belts", "Wrapping", "HeavyCorsets", "Corsets"];
+let KDLegRopesRender = ["Belts", "Ties", "HeavyCorsets", "Corsets"];
+let KDBeltsBind = ["Wrapping", "Ties", "Legbinders", "Hobbleskirts", "HeavyCorsets", "Corsets"];
+let KDBeltsRender = ["Ties", "Legbinders", "Hobbleskirts", "HeavyCorsets", "Corsets"]; // "Wrapping",
 let KDTapeLink = ["Wrapping", "Belts", "Masks", "Mittens", "FlatGags"]; // Standard link for tape style items
 let KDTapeRender = ["Wrapping", "Tape", "Belts", "Masks", "Mittens", "FlatGags", "Ties", "Harnesses", "Corsets"]; // Standard link for tape style items
 let KDRubberLink = ["Wrapping", "Tape", "Belts", "Masks", "Mittens"]; // Standard link for rubber style items
@@ -1968,13 +1970,13 @@ const KinkyDungeonRestraints = [
 	{curse: "5Keys", name: "GhostCollar", Asset: "OrnateCollar", Group: "ItemNeck", LinkableBy: [...KDCollarLink], magic: true, Color: ["#555555", "#AAAAAA"], power: 20, weight: 0, difficultyBonus: 30,
 		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: []},
 
-	{renderWhenLinked: ["Ties"], inventory: true, name: "SturdyLeatherBeltsArms", debris: "Belts", accessible: true, Asset: "SturdyLeatherBelts", LinkableBy: ["Wrapping", "Ties"], Type: "Three", Color: "Default", Group: "ItemArms", bindarms: true, power: 2.5, weight: 0,
+	{renderWhenLinked: [...KDBeltsRender], inventory: true, name: "SturdyLeatherBeltsArms", debris: "Belts", accessible: true, Asset: "SturdyLeatherBelts", LinkableBy: [...KDBeltsBind], Type: "Three", Color: "Default", Group: "ItemArms", bindarms: true, power: 2.5, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.5, "Remove": 0.22},
 		maxwill: 0.9, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "ArmBind"]},
-	{renderWhenLinked: ["Ties"], inventory: true, name: "SturdyLeatherBeltsFeet", debris: "Belts", accessible: true, Asset: "SturdyLeatherBelts", LinkableBy: ["Wrapping", "Ties"], Type: "Three", Color: "Default", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"] ,power: 2, weight: 0,
+	{renderWhenLinked: [...KDBeltsRender], inventory: true, name: "SturdyLeatherBeltsFeet", debris: "Belts", accessible: true, Asset: "SturdyLeatherBelts", LinkableBy: [...KDBeltsBind], Type: "Three", Color: "Default", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"] ,power: 2, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.5, "Remove": 0.5},
 		maxwill: 1.0, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTagsMissingMult: {"ItemLegsFull": 0.05}, playerTags: {"ItemLegsFull":-8}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "LegBind"]},
-	{renderWhenLinked: ["Legbinders", "Hobbleskirts", "Ties"], accessible: true, inventory: true, name: "SturdyLeatherBeltsLegs", debris: "Belts", Asset: "SturdyLeatherBelts", LinkableBy: ["Wrapping", "Legbinders", "Hobbleskirts", "Ties"], Type: "Two", Color: "Default", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 2, weight: 0,
+	{renderWhenLinked: [...KDBeltsRender], accessible: true, inventory: true, name: "SturdyLeatherBeltsLegs", debris: "Belts", Asset: "SturdyLeatherBelts", LinkableBy: [...KDBeltsBind], Type: "Two", Color: "Default", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 2, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.5, "Remove": 0.5},
 		maxwill: 0.8, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "LegBind"]},
 
@@ -2352,49 +2354,53 @@ const KinkyDungeonRestraints = [
 			{trigger: "afterPlayerDamage", type: "iceMelt", mult: 1.2, subMult: 0.5, count: 8, inheritLinked: true},
 		]},
 
-	{removePrison: true, name: "CableArms", debris: "Chains", sfx: "FutureLock", Asset: "NylonRope", changeRenderType: {"ArmBind": "WristElbowHarnessTie"},
+	{renderWhenLinked: [...KDBeltsRender], removePrison: true, name: "CableArms", debris: "Chains", sfx: "FutureLock", Asset: "NylonRope", changeRenderType: {"ArmBind": "WristElbowHarnessTie"},
 		Model: "RibbonWristtie2",
 		Filters: {
 			Ribbon: {"gamma":0.2833333333333333,"saturation":0.05,"contrast":3.4499999999999997,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 		LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Color: ["#333333"], Group: "ItemArms", bindarms: true, power: 6, weight: 0, magic: false,
 		escapeChance: {"Struggle": 0.1, "Cut": 0.00, "Remove": 0.25, "Pick": 0.3},
-		maxwill: 0.8, enemyTags: {"hitechCables":4}, playerTags: {"ItemArmsFull":-2}, minLevel: 6, allFloors: true, shrine: ["Metal", "Ties"]},
-	{renderWhenLinked: [...KDLegRopesRender], removePrison: true, name: "CableLegs", debris: "Chains", sfx: "FutureLock", Asset: "NylonRope", Type: "KneesThighs", LinkableBy: [...KDLegRopesBind], Color: ["#333333", "#333333"], Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 6, weight: 0, magic: false,
+		maxwill: 0.8, enemyTags: {"hitechCables":4}, playerTags: {"ItemArmsFull":-2}, minLevel: 6, allFloors: true, shrine: ["Metal", "Belts"]},
+	{renderWhenLinked: [...KDBeltsRender], removePrison: true, name: "CableLegs", debris: "Chains", sfx: "FutureLock", Asset: "NylonRope", Type: "KneesThighs",
+		LinkableBy: [...KDBeltsBind], Color: ["#333333", "#333333"], Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 6, weight: 0, magic: false,
 		Model: "RibbonLegs2",
 		Filters: {
 			Ribbon: {"gamma":0.2833333333333333,"saturation":0.05,"contrast":3.4499999999999997,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
 		},
-		escapeChance: {"Struggle": 0.1, "Cut": 0.0, "Remove": 0.25, "Pick": 0.3}, enemyTags: {"hitechCables":4}, playerTags: {"ItemLegsFull":-2}, minLevel: 6, allFloors: true, shrine: ["Metal", "Ties"]},
-	{renderWhenLinked: ["HeavyCorsets"], removePrison: true, name: "CableHarness", sfx: "FutureLock", Asset: "NylonRopeHarness", OverridePriority: 27, Color: ["#333333", "#333333"], Type: "Harness", Group: "ItemTorso", power: 2, strictness: 0.05, weight: 0, magic: false,
+		escapeChance: {"Struggle": 0.1, "Cut": 0.0, "Remove": 0.25, "Pick": 0.3}, enemyTags: {"hitechCables":4}, playerTags: {"ItemLegsFull":-2}, minLevel: 6, allFloors: true, shrine: ["Metal", "Belts"]},
+	{renderWhenLinked: [...KDBeltsRender], removePrison: true, name: "CableHarness", sfx: "FutureLock", Asset: "NylonRopeHarness", OverridePriority: 27, Color: ["#333333", "#333333"], Type: "Harness", Group: "ItemTorso", power: 2, strictness: 0.05, weight: 0, magic: false,
+		LinkableBy: [...KDBeltsBind],
 		Model: "RibbonHarness",
 		Filters: {
 			Ribbon: {"gamma":0.2833333333333333,"saturation":0.05,"contrast":3.4499999999999997,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
 		},
-		escapeChance: {"Struggle": 0.1, "Cut": 0.0, "Remove": 0.25, "Pick": 0.3}, enemyTags: {"hitechCables":4}, playerTags: {"ItemTorsoFull":-2}, minLevel: 6, allFloors: true, shrine: ["Metal", "Ties"]},
+		escapeChance: {"Struggle": 0.1, "Cut": 0.0, "Remove": 0.25, "Pick": 0.3}, enemyTags: {"hitechCables":4}, playerTags: {"ItemTorsoFull":-2}, minLevel: 6, allFloors: true, shrine: ["Metal", "Belts"]},
 
-	{removePrison: true, name: "NylonCableArms", debris: "Chains", sfx: "FutureLock", Asset: "NylonRope", changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, maxLevel: 6,
+	{renderWhenLinked: [...KDBeltsRender], removePrison: true, name: "NylonCableArms", debris: "Chains", sfx: "FutureLock", Asset: "NylonRope", changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, maxLevel: 6,
 		Model: "RibbonWristtie2",
 		Filters: {
 			Ribbon: {"gamma":1,"saturation":0.05,"contrast":1.6,"brightness":0.35000000000000003,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 		LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Color: ["#222222"], Group: "ItemArms", bindarms: true, power: 6, weight: 0, magic: false,
 		escapeChance: {"Struggle": 0.12, "Cut": 0.2, "Remove": 0.3, "Pick": 0.35},
-		maxwill: 0.8, enemyTags: {"hitechCables":4}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Ties"]},
-	{renderWhenLinked: [...KDLegRopesRender], removePrison: true, name: "NylonCableLegs", debris: "Chains", sfx: "FutureLock", Asset: "NylonRope", Type: "KneesThighs", maxLevel: 6,
+		maxwill: 0.8, enemyTags: {"hitechCables":4}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Belts"]},
+	{renderWhenLinked: [...KDBeltsRender], removePrison: true, name: "NylonCableLegs", debris: "Chains", sfx: "FutureLock", Asset: "NylonRope", Type: "KneesThighs", maxLevel: 6,
+		LinkableBy: [...KDBeltsBind],
 		Model: "RibbonLegs2",
 		Filters: {
 			Ribbon: {"gamma":1,"saturation":0.05,"contrast":1.6,"brightness":0.35000000000000003,"red":1,"green":1,"blue":1,"alpha":1},
 		},
-		LinkableBy: [...KDLegRopesBind],Color: ["#222222", "#222222"], Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 6, weight: 0, magic: false,
-		escapeChance: {"Struggle": 0.12, "Cut": 0.2, "Remove": 0.3, "Pick": 0.35}, enemyTags: {"hitechCables":4}, playerTags: {"ItemLegsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Ties"]},
-	{renderWhenLinked: ["HeavyCorsets"], removePrison: true, name: "NylonCableHarness", sfx: "FutureLock", Asset: "NylonRopeHarness", OverridePriority: 27, maxLevel: 6,
+		Color: ["#222222", "#222222"], Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 6, weight: 0, magic: false,
+		escapeChance: {"Struggle": 0.12, "Cut": 0.2, "Remove": 0.3, "Pick": 0.35}, enemyTags: {"hitechCables":4}, playerTags: {"ItemLegsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Belts"]},
+	{renderWhenLinked: [...KDBeltsRender], removePrison: true, name: "NylonCableHarness", sfx: "FutureLock", Asset: "NylonRopeHarness", OverridePriority: 27, maxLevel: 6,
+		LinkableBy: [...KDBeltsBind],
 		Model: "RibbonHarness",
 		Filters: {
 			Ribbon: {"gamma":1,"saturation":0.05,"contrast":1.6,"brightness":0.35000000000000003,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 		Color: ["#222222", "#222222"], Type: "Harness", Group: "ItemTorso", power: 2, strictness: 0.05, weight: 0, magic: false,
-		escapeChance: {"Struggle": 0.12, "Cut": 0.2, "Remove": 0.3, "Pick": 0.35}, enemyTags: {"hitechCables":4}, playerTags: {"ItemTorsoFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Ties"]},
+		escapeChance: {"Struggle": 0.12, "Cut": 0.2, "Remove": 0.3, "Pick": 0.35}, enemyTags: {"hitechCables":4}, playerTags: {"ItemTorsoFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Belts"]},
 
 	//region Ribbon
 	{unlimited: true, inventory: true, removePrison: true, name: "RibbonArms", debris: "Fabric", sfx: "MagicSlash", Asset: "Ribbons", Color: "#a583ff", Group: "ItemArms", bindarms: true, power: 6, weight: 0, magic: true,
