@@ -1171,8 +1171,8 @@ let KDExpressions = {
 			return {
 				EyesPose: "",
 				Eyes2Pose: "",
-				BrowsPose: "BrowsSad",
-				Brows2Pose: "Brows2Sad",
+				BrowsPose: KinkyDungeonGoddessRep.Frustration > 0 ? "BrowsAngry" : "BrowsSad",
+				Brows2Pose: KinkyDungeonGoddessRep.Frustration > 0 ? "Brows2Angry" : "Brows2Sad",
 				BlushPose: "",
 				MouthPose: "",
 			};
@@ -1182,7 +1182,7 @@ let KDExpressions = {
 		stackable: true,
 		priority: 0.25,
 		criteria: (C) => {
-			return KinkyDungeonGoddessRep.Frustration > 20;
+			return KinkyDungeonGoddessRep.Frustration - KinkyDungeonGoddessRep.Passion > -25;
 		},
 		expression: (C) => {
 			return {
@@ -1199,7 +1199,7 @@ let KDExpressions = {
 		stackable: true,
 		priority: 2.2,
 		criteria: (C) => {
-			return KinkyDungeonGoddessRep.Passion > -5;
+			return KinkyDungeonGoddessRep.Passion - KinkyDungeonGoddessRep.Frustration > -5 && KinkyDungeonGoddessRep.Passion > -30;
 		},
 		expression: (C) => {
 			return {

@@ -1990,6 +1990,7 @@ interface KinkyDialogue {
 }
 
 interface KinkyVibration {
+	sound: string,
 	// Basic Factors
 	/** Item applying this vibration */
 	source: string,
@@ -2036,6 +2037,7 @@ interface KinkyVibration {
 }
 
 interface VibeMod {
+	sound: string,
 	/** Source of the modifier */
 	source: string,
 	/** Identifier of the modifier */

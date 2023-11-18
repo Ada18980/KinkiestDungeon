@@ -135,10 +135,22 @@ function KDUpdateVibeSounds() {
 		v[1].update = false;
 	}
 	let vibe = KDGameData.CurrentVibration;
+	let sound = KDGameData.CurrentVibration?.sound || "Vibe1";
 	if (vibe && KinkyDungeonState == "Game" && KDToggles.Sound) {
 		let globalVolume = KDToggles.VibeSounds ? KDVibeVolume * (KinkyDungeonDrawState == "Game" ? 1 : 0.5) : 0;
 		let locations = KDSumVibeLocations();
 		KDStopAllVibeSounds(locations);
+
+		let vibeModSoundWeight = 0;
+
+		if (vibe.VibeModifiers) {
+			for (let mod of vibe.VibeModifiers) {
+				if (mod.intensityMod > vibeModSoundWeight || mod.intensitySetpoint > vibeModSoundWeight) {
+					vibeModSoundWeight = Math.max(mod.intensityMod, mod.intensitySetpoint);
+					sound = mod.sound || "Vibe1";
+				}
+			}
+		}
 
 		for (let location of locations) {
 			let power = "Weak";
@@ -158,7 +170,7 @@ function KDUpdateVibeSounds() {
 			}
 			if (power != "Off") {
 				if (vibe.location.length > 0 && vibe.location[0] == location) {
-					let sound = (KDVibeSoundRedirect[location] && KDVibeSound[KDVibeSoundRedirect[location]]) ? KDVibeSound[KDVibeSoundRedirect[location]] : "Vibe1";
+					//let finalSound = sound;//(KDVibeSoundRedirect[location] && KDVibeSound[KDVibeSoundRedirect[location]]) ? KDVibeSound[KDVibeSoundRedirect[location]] : "Vibe1";
 					KDUpdateVibeSound(KDVibeSoundRedirect[location] ? KDVibeSoundRedirect[location] : "ItemVulva", KinkyDungeonRootDirectory + `Audio/${sound}_${power}.ogg`, globalVolume);
 				}
 			} else
@@ -203,6 +215,15 @@ function KDGetVibeLocation(item) {
 	return groups;
 }
 
+function KDRandomizeVibeSound() {
+	let data = {
+		lastVibeSound: KDGameData.CurrentVibration?.sound || "Vibe1",
+		currentVibeSound: "Vibe" + Math.ceil(KDRandom() * 3),
+	};
+	KinkyDungeonSendEvent("vibeSound", data);
+	return data.currentVibeSound;
+}
+
 
 /**
  * Starts a vibration, overriding
@@ -229,6 +250,7 @@ function KinkyDungeonStartVibration(source, name, locations, intensity, duration
 		KinkyDungeonSetFlag("VibeStarted", 8);
 	}
 	KDGameData.CurrentVibration = {
+		sound: KDRandomizeVibeSound(),
 		source: source,
 		name: name,
 		location: locations,
@@ -281,6 +303,7 @@ function KinkyDungeonAddVibeModifier(source, name, location, intensityMod, durat
 		}
 		KDGameData.CurrentVibration.VibeModifiers.push({
 			source: source,
+			sound: KDRandomizeVibeSound(),
 			name: name,
 			location: location,
 			intensityMod: intensityMod,
