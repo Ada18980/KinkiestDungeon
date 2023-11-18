@@ -11519,6 +11519,86 @@ I don't need your advice, strange ghostly person.
 我不需要你的建议，一个奇怪的幽灵。
 (Glare at her)
 （瞪着她）
+Oh, those people that locked you up?|I dealt with them.|Now come along, there's no time to waste!
+噢，那些把你关起来的人？|我已经对付了他们。|现在走吧，没有时间可以浪费了！
+(The SPEAKER giggles)|Treasure? The treasure isn't going anywhere.|Plus, I made a few enemies on the way.|We better not wait till they come back.
+（SPEAKER 咯咯笑）|宝藏？ 宝藏不会去任何地方。|另外，我在路上树敌了。|我们最好不要等到他们回来。
+But what about the treasure!?
+但是宝藏呢！？
+(The SPEAKER ponders your question)|I think we'll have to talk about compensation|AFTER we get out of here.
+（SPEAKER 思考你的问题）|我想我们得先离开这里|之后我们再讨论赔偿问题。
+So how much is this going to cost me?
+那么这要花多少钱？
+
+(You hear footsteps. It's the SPEAKER!)|Why look at you!|Well you seem to be in a bind, don't you?
+（你听到脚步声。是 SPEAKER！）|为什么看着你！|好吧，你似乎陷入了困境，不是吗？
+Not to worry! I'll get you out of here!
+不用担心！ 我会带你离开这里的！
+Hehe, alright! If that's what you want~
+呵呵，好吧！ 如果这就是你想要的~
+
+(Nod slowly)
+（缓缓点头）
+(Shake your head and refuse rescue)
+（摇头拒绝救援）
+Yes please!
+是的！
+Actually I was having fun...
+其实我玩得很开心...
+
+(The SPEAKER, your longtime friend, smiles)|Well well, if it isn't you again!|I see that you've decided to challenge the dungeon again.|Don't forget to bring some gold back with you,|there's a fee for rescue~
+（SPEAKER，你的老朋友，微笑）|好吧好吧，如果不是你的话！|我看到你决定再次挑战地牢。|别忘了带一些金币回来，| 救援是要收费的~
+
+Can you help with these restraints?
+你能帮助挣脱这些束缚吗？
+Pfffmmm hhmmph mmph... (Please Help Me)
+呜呜呜 哼嗯嗯 嗯嗯嗯... （请帮帮我）
+No can do! Even I can't get those off of you.
+没办法啊！ 就连我也无法把它们从你身上拿走。
+
+Caught by...?
+被……抓住了？
+Hah!|You've been here a million times!|You obviously know how dangerous it is, yes?
+哈！|你已经来过这里一百万次了！|你显然知道这里有多危险，是吗？
+F-fee? There's a fee?
+收-收费？这要收费吗？
+Yep! It'll cost ya!|Quite worth it if you ask me.|Unless you'd like to spend the rest of your life in chains!
+是的！这需要你付出代价！|如果你问我的话，那是非常值得的。|除非你想在枷锁中度过余生！
+Will you buy my loot?
+你会买我的战利品吗？
+(Show her your loot)
+（向她展示你的战利品）
+Absolutely! I offer the standard market rate for anything.|I'll take enchanted items too!|I've got plenty of volunteers to check for curses~
+肯定的呀！我提供任何东西的标准市场价格。|我也会带一些有魔法的物品！|我还有很多志愿者来帮我检查诅咒~
+Got something you want to show me?
+有什么东西想给我看吗？
+(Sell Items)
+（出售物品）
+(Sell Whole Stacks of Items)
+（出售整堆物品）
+Mmmph!
+呜呜！
+Daww! What a cutie!|(She smiles and pats your head gently)
+呜哇！好可爱啊pwp！|（微笑着轻轻拍拍你的头）
+Do you have anything for sale?
+你们有东西卖吗？
+(Look around for items to buy)
+（四处寻找可以购买的物品）
+I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~
+对不起甜心，我这里不卖商品。|谁会在地牢里开店呢？ 太疯狂了！|但是你们冒险家带来了稳定的战利品，|所以如果你们有什么东西可以卖给我，我就从你们手里拿走~
+
+(Return)
+(返回)
+
+(The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
+（SPEAKER 带你安全回到她的商店）|那里！ 又好又安全。|现在，至于我的费用...|那将是 RESCUECOST 金币！
+Right! Here's RESCUECOST gp.
+当然！这里是 RESCUECOST 金币。
+Mmmph. (Nod your head and pay RESCUECOST gp)
+呜。（点头并支付 RESCUECOST 金币）
+(The SPEAKER smiles)|Pleasure doing business with ya~
+（SPEAKER 微笑）|很高兴与你做生意~
+
 Mmmph!
 呜呜！
 (Shake your head)
