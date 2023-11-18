@@ -315,7 +315,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			//Container.Mesh.y += Container.Container.pivot.y;
 			//if (MC.Containers.get(containerID).RenderTexture)
             if (MC.Containers.get(containerID).RenderTexture) {
-				if (KDToggles.AsyncRendering) {
+				if (KDToggles.AsyncRendering && KinkyDungeonDrawState == "Game") {
 					if (!RenderCharacterQueue.get(C)) RenderCharacterQueue.set(C, []);
 					RenderCharacterQueue.get(C).push(async function() {
 						RenderCharacterLock.set(C, true);
