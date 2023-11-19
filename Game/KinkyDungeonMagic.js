@@ -1302,11 +1302,11 @@ function KinkyDungeonDrawMagic() {
 				}, undefined, undefined, undefined, true);
 
 
-		DrawTextKD(TextGet("KinkyDungeonSpell"+ spell.name), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5, "#000000", SchoolColor);
-		DrawTextKD(TextGet("KinkyDungeonSpellsSchool" + spell.school), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 40, "#000000", SchoolColor);
+		DrawTextFitKD(TextGet("KinkyDungeonSpell"+ spell.name), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5, 640*KinkyDungeonBookScale * 0.35, "#000000", SchoolColor);
+		DrawTextFitKD(TextGet("KinkyDungeonSpellsSchool" + spell.school), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 40, 640*KinkyDungeonBookScale * 0.35, "#000000", SchoolColor);
 
 		if (spell.prerequisite) {
-			DrawTextKD(TextGet("KDPrerequisite"), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale*0.6 + 80, KDTextGray0, KDTextTan, 24);
+			DrawTextFitKD(TextGet("KDPrerequisite"), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale*0.6 + 80, 640*KinkyDungeonBookScale * 0.35, KDTextGray0, KDTextTan, 24);
 			DrawTextFitKD(KDGetPrerequisite(spell), canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale*0.6 + 105, 640*KinkyDungeonBookScale * 0.35, KDTextGray0, KDTextTan, 24);
 		}
 

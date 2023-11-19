@@ -130,3 +130,11 @@ function KDAddTestVariant(name) {
 		]};
 	KDEquipInventoryVariant(variant);
 }
+
+function KDListMissingModels() {
+	let s = "The following restraints don't have models:\n";
+	for (let r of KinkyDungeonRestraints) {
+		if (!r.Model && !r.name.includes("Template")) s = s + r.name + '\n';
+	}
+	console.log(s);
+}

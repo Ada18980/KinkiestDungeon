@@ -4797,10 +4797,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			//console.log("casted "+ spell.name);
 			}
 		}
-		if (AIData.vibe || (enemy.Enemy.RemoteControl?.remote && AIData.playerDist < enemy.Enemy.RemoteControl?.remote)) {
+		if (AIData.vibe || (enemy.Enemy.RemoteControl?.remote && AIData.playerDist < enemy.Enemy.RemoteControl?.remote && player?.player)) {
 			KinkyDungeonSendEvent("remoteVibe", {enemy: enemy.Enemy.name, power: enemy.Enemy.RemoteControl?.remoteAmount ? enemy.Enemy.RemoteControl?.remoteAmount : 5, overcharge: AIData.vibe, noSound: AIData.vibe});
 		}
-		if (AIData.aggressive && AIData.canSensePlayer && enemy.Enemy.RemoteControl?.punishRemote && AIData.playerDist < enemy.Enemy.RemoteControl?.punishRemote) {
+		if (AIData.aggressive && AIData.canSensePlayer && enemy.Enemy.RemoteControl?.punishRemote && AIData.playerDist < enemy.Enemy.RemoteControl?.punishRemote && player?.player) {
 			KinkyDungeonSendEvent("remotePunish", {enemy});
 		}
 	}

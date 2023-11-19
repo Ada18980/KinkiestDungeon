@@ -15,6 +15,9 @@ let KinkyDungeonFactionColors = {
 	"Witch": ["#222222", "#8359b3"],
 };
 
+/**
+ * @type {Record<string, Record<string, LayerFilter>>}
+ */
 let KinkyDungeonFactionFilters = {
 	"Jail": {
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},

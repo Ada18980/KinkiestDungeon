@@ -301,12 +301,13 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 		}
 
 		if (!NoRestraints) {
-			for (let inv of KinkyDungeonAllRestraint()) {
-				if (KinkyDungeonCheckClothesLoss)
-					if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
-						KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color, KDRestraint(inv).Filters);
-					}
-			}
+			if (!StandalonePatched)
+				for (let inv of KinkyDungeonAllRestraint()) {
+					if (KinkyDungeonCheckClothesLoss)
+						if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
+							KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color, KDRestraint(inv).Filters);
+						}
+				}
 			if (KinkyDungeonCheckClothesLoss)
 				KinkyDungeonWearForcedClothes(restraints);
 		}
@@ -799,8 +800,16 @@ function KDApplyItem(inv, tags) {
 
 		if (restraint.factionFilters && faction && KinkyDungeonFactionFilters[faction]) {
 			for (let f of Object.entries(restraint.factionFilters)) {
-				if (KinkyDungeonFactionFilters[faction][f[1].color])
-					filters[f[0]] = KinkyDungeonFactionFilters[faction][f[1].color];
+				if (KinkyDungeonFactionFilters[faction][f[1].color]) {
+					if (f[1].override || !filters[f[0]]) {
+						filters[f[0]] = KinkyDungeonFactionFilters[faction][f[1].color];
+					} else {
+						filters[f[0]].saturation = 0;
+						filters[f[0]].red = KinkyDungeonFactionFilters[faction][f[1].color].red;
+						filters[f[0]].blue = KinkyDungeonFactionFilters[faction][f[1].color].blue;
+						filters[f[0]].green = KinkyDungeonFactionFilters[faction][f[1].color].green;
+					}
+				}
 			}
 		}
 
@@ -844,8 +853,8 @@ function KDApplyItem(inv, tags) {
 			}
 		}
 		return;
-	}
-	KDApplyItemLegacy(inv, tags);
+	} else
+		KDApplyItemLegacy(inv, tags);
 }
 
 /** Legacy */
