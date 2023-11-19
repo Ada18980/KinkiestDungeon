@@ -6778,8 +6778,52 @@ A gag with a long, mouth-filling plug that muffles speech completely.
 一种带有长长的塞子的塞子，可以完全抑制讲话。
 It's made of a very tough reinforced leather. It will take some time to cut.
 它由非常坚韧的强化皮革制成。需要一些时间来削减。
+Suspicious Mask
+可疑的面具
 You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it.
 你是一个带衬垫的金属眼罩，闪闪发光，旁边还有一个奇怪的水晶。
+A well-fitted mask, covering your entire head neatly and locking in place.
+一款合身的面罩，整齐地覆盖你的整个头部并锁定到位。
+It has eyeholes for you to see out of, but blocks access to the face.
+它有眼孔供你向外看，但挡住了接触脸部的通道。
+
+Shadow Heels
+暗影高跟鞋
+A set of impractical heels that clasp around your ankles. They make it hard to walk
+一套不切实际的高跟鞋，紧箍着你的脚踝。它们使行走变得困难
+The material is stronger than leather, and flexes to make struggling difficult.
+这种材料比皮革更坚固，并且可以弯曲，使挣扎变得困难。
+Shadow Jacket
+暗影拘束衣
+A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
+由超凡脱俗的材料制成的拘束衣。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
+Its grip encases you tightly, but the material is weaker than most metals.
+它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
+Shadow Armbinder
+暗影束手套
+A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
+由超凡脱俗的材料制成的束手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
+Its grip encases you tightly, but the material is weaker than most metals.
+它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
+Shadow Boxbinder
+暗影盒束包扎带
+A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
+由超凡脱俗的材料制成的盒束包扎带。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
+Its grip encases you tightly, but the material is weaker than most metals.
+它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
+Shadow Legbinder
+暗影束腿套
+A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
+由超凡脱俗的材料制成的束腿套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
+Its grip encases you tightly, but the material is weaker than most metals.
+它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
+
+Obsidian Yoke
+黑曜石枷锁
+A yoke made from shining obsidian, stars glittering in the darkness. It pins your arms uselessly at your sides.
+由闪亮的黑曜石制成的枷锁，星星在黑暗中闪闪发光。它将你无用的手臂固定在身体两侧。
+It's made of a dark, glistening volcanic metal.
+它是由一种深色的、闪闪发光的火山金属制成的。
 Obsidian Muzzle
 黑曜石口套
 A muzzle made from segmented metal pieces, fitting securely over your face.
