@@ -4458,6 +4458,19 @@ TargetRestraint 将你牢牢地束缚住！
 You sigh and moan as the TargetRestraint aren't getting any looser.
 当 TargetRestraint 没有松开一点时，你叹了口气并呻吟道。
 
+You look around for a fastener on the TargetRestraint...
+你正在四处寻找 TargetRestraint 上的紧固件……
+Shivering, you look for a fastener on the TargetRestraint...
+你瑟瑟发抖，在 TargetRestraint 上寻找紧固件……
+The TargetRestraint has no fastener!!!
+TargetRestraint 上没有紧固件！
+The TargetRestraint is sealed around your body, with no fasteners to speak of!
+TargetRestraint 密封在你的身体周围，无需任何紧固件！
+The TargetRestraint is firmly sealed around your body.
+TargetRestraint 牢牢地密封在你的身体周围。
+You are sealed in ice. There is no escape.
+你被封印在冰中。跑不了的。
+
 You try to untie the TargetRestraint...
 你尝试解开 TargetRestraint...
 You contort yourself trying to reach the knots on the TargetRestraint...
@@ -4640,9 +4653,36 @@ Illusions
 Commerce
 商业
 Shrine of SHRINETYPE
-SHRINETYPE神泉
+SHRINETYPE神龛
+Goddess Blessing: 
+女神祝福：
+Goddess Curse: 
+女神诅咒：
+Mana Bonus: 
+法力奖励：
+Lack of Mana Penalty: 
+缺乏法力惩罚：
+Your excess mana helps you suppress the enchantment!
+你多余的法力可以帮助你抵抗附魔！
+Your mana is too weak to fight the magical enchantment...
+你的法力太弱，无法对抗魔法附魔。。。
+
+Curses
+诅咒
 Willpower
 坚毅
+
+A tablet inscribed with runes of TYPE.
+刻有 TYPE 符文的石碑。
+Teachings of SHRINETYPE
+SHRINETYPE 教义
+Decypher
+解密
+You read the runes and they imbue you with power!
+你阅读符文，它们就会赋予你力量！
+You try to read the runes but cannot understand them.
+你尝试阅读符文，但无法理解它们。
+
 Allies: 
 盟友：
 Enemies: 
@@ -4847,8 +4887,6 @@ A tight cincher attached to a binder used to ensure restraints will not come off
 连接到用于确保约束不会脱落的活页夹上的紧束带。
 It's tied in the back and reinforced with steel boning.
 它系在背面，并用钢骨加固。
-Blacksteel Ankle Cuffs
-黑钢脚铐
 The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 The ankle cuff chain detaches!
@@ -12313,3 +12351,8 @@ But in the end, Sariel's experiments left her weakened and unable to save hersel
 但最终，萨里尔（Sariel）的实验让她变得虚弱无力，无法将自己从死亡中拯救出来。|在没有领袖的统治下，旧文明陷入暴政，军阀奴役了数千人。|难民们漂洋过海寻找新生活，且随着时间的推移，旧帝国被遗忘了。
 Three hundred years later,a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
 三百年后，一群冒险家发现了一座充满古老科技的失落岛屿。|现在，无数游客涌入废墟寻找财富和智慧...|...却对很久以前被封印在里面的狡猾秘密一无所知。
+
+A powerful seal holds you in place temporarily!!!
+一只强大的海豹将你暂时固定在原地！！！
+You lock yourself in magical locks!
+你把自己锁在魔法锁里！
