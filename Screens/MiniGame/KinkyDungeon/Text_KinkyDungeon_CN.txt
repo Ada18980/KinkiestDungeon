@@ -5646,7 +5646,7 @@ Your elbows detatch!
 The enemy attaches your wrist cuffs back together!
 敌人将你的手腕重新绑在一起！
 Mithril Leg Cuffs
-秘银腿袖
+秘银腿铐
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
 They feel like they aren't even there, but the material is rigid and unyielding.
@@ -5911,12 +5911,13 @@ A tie keeping your feet secured together.
 一条将双脚固定在一起的捆绑。
 The vines twitch as they try to wrap around tighter.
 藤蔓在试图缠绕得更紧时抽搐。
-Quik-Bind Cuffs
-快速绑定手铐
-A set of high-security cuffs that are both restrictive and quick to apply.
-一套高度安全的手铐，既具有限制性又可以快速应用。
-It uses a twelve-disc detainer lock.
-它使用一个十二盘扣锁。
+
+High-Security Cuffs
+高安全性手铐
+A set of irish-8-style cuffs that are both restrictive and quick to apply.
+一套爱尔兰 8 式手铐，既具有束缚性又可快速佩戴。
+It uses a standard lock rather than a simple one.
+它使用标准锁而不是简单锁。
 Wolfbinder
 狼之束手套
 A sophisticated training system used to keep wolfgirls from scratching their owners.
@@ -5984,7 +5985,7 @@ It has both laces and straps.
 Asylum Ankle Cuffs
 安全脚铐
 A pair of chained cuffs made of reinforced leather. They make patients easier to catch.
-一双由增强皮革制成的链式袖口。 他们使患者更容易捕获。
+一双由增强皮革制成的链式铐。 他们使患者更容易捕获。
 They can be thrown from long distances.
 它们可以从长距离扔掉。
 The enemy attaches your ankle cuffs together!
@@ -5992,7 +5993,7 @@ The enemy attaches your ankle cuffs together!
 Cuffs Chain
 链式黑钢手铐
 A pair of chained cuffs made of reinforced leather. They make patients easier to catch.
-一双由增强皮革制成的链式袖口。 他们使患者更容易捕获。
+一双由增强皮革制成的链式铐。 他们使患者更容易捕获。
 They can be thrown from long distances.
 它们可以从长距离扔掉。
 The ankle cuff chain detaches!
@@ -6000,7 +6001,7 @@ The ankle cuff chain detaches!
 Asylum Leg Cuffs
 安全足拷
 A pair of chained cuffs made of reinforced leather. They make patients easier to catch.
-一双由增强皮革制成的链式袖口。 他们使患者更容易捕获。
+一双由增强皮革制成的链式铐。 他们使患者更容易捕获。
 They can be thrown from long distances.
 它们可以从长距离扔掉。
 The enemy attaches your ankle cuffs together!
@@ -6024,7 +6025,7 @@ They're made of tough cowhide.
 Your elbows detatch!
 你的肘部手铐断开了！
 The enemy attaches your wrist cuffs back together!
-敌人将你的手腕重新绑在一起！
+敌人将你的手铐重新绑在一起！
 Comfy Muzzle
 舒适口套
 A lovely muzzle that's extraordinarily comfy!
@@ -6066,7 +6067,7 @@ A set of straps buckling tightly around your body and secured at the wrists.
 It's made from hard-to-cut dragonscale!!!
 它是由难以切割的龙鳞制成的！！！
 Scale Leg Cuffs
-龙鳞腿袖
+龙鳞腿铐
 A pair of chained cuffs made of dragonscale. They slow your stride.
 一对龙鳞制成的锁链铐。他们减慢你的步伐。
 It's made from hard-to-cut dragonscale!!!
