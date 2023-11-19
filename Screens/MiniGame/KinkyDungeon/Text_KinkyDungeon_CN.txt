@@ -1953,6 +1953,19 @@ Spell List
 Logbook
 日志
 
+Dual Wield
+双持
+Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|(Must equip Dual Wield spell to equip an offhand weapon)
+指定副手武器以获得光源、护甲或额外暴击伤害等被动效果。|（必须装备双持法术才能装备副手武器）
+
+Equip Offhand
+装备副手
+
+Make a ranged attack with the spear.
+用矛进行远程攻击。
+Make a ranged attack with the pike.
+用长矛进行远程攻击。
+
 Ranged Attack
 远程攻击
 
