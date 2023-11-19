@@ -5742,16 +5742,22 @@ It pulls your wrists up to your ankles! So tight!
 它把你的手腕拉到你的脚踝！好紧！
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
+Magic Rope Belt
+绳驷马（附魔）
+A harness acting as a handle to pull you around
+能使你被拉住的绳衣
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
 Magic Arm Rope
 手臂绳缚（附魔）
-Strongly glowing ropes.
-强烈发光的绳索。
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
 Magic Rope Cuffs
 绳手铐（附魔）
-Strongly glowing ropes.
-强烈发光的绳索。
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
 Magic Ropework
@@ -5762,26 +5768,26 @@ The knots appear to tie themselves together again, making them impossible to und
 结似乎再次将自己绑在一起，使它们无法解开！
 Magic Leg Rope
 腿部绳缚（附魔）
-Strongly glowing ropes.
-强烈发光的绳索。
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
 Magic Ankle Rope
 脚部绳缚（附魔）
-Strongly glowing ropes.
-强烈发光的绳索。
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
 Magic Crotch Rope
 股绳（附魔）
-Strongly glowing ropes.
-强烈发光的绳索。
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
 Magic Toe Rope
 脚趾绳缚（附魔）
-Strongly glowing ropes.
-强烈发光的绳索。
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
 Mithril Hogtie
@@ -13550,7 +13556,7 @@ A very strict and tight hogtie, good for subduing unruly captives.
 It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
 它会严格地固定住您，让您的肘部几乎与身体完全接触。你拉动连接双脚的绳子并挣扎。
 Rope Belt
-绳衣
+绳驷马
 A harness acting as a handle to pull you around
 能使你被拉住的绳衣
 The ropes squeeze you gently.
