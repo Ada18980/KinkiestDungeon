@@ -10402,6 +10402,8 @@ Pierce
 刺穿
 Slash
 劈砍
+Offhand
+副手
 Pain
 疼痛
 Psychic
