@@ -745,6 +745,36 @@ Glass Cannon
 The effects of you taking damage are increased by 150%.
 你受到伤害的效果会增加150%。
 
+Chef
+厨师
+You defeat the chef and claim her prize.
+你击败了厨师并获得了她的奖品。
+The chef makes sure you'll never steal again! (DamageTaken)
+厨师确保你再也不会偷东西了！（DamageTaken）
+The chef makes sure you'll never steal again! (+RestraintAdded)
+厨师确保你再也不会偷东西了！（+RestraintAdded）
+The chef spanks you with her frying pan! (DamageTaken)
+厨师用煎锅打你屁股！（DamageTaken）
+
+As you finish, you look up and notice that someone is not very happy with you.
+完成后，你抬起头，发现有人对你不太满意。
+
+You find some delicious brownies!
+你发现了一些美味的布朗尼蛋糕！
+Double Fudge Brownies
+双层软糖布朗尼
+You enjoy the brownies one soft, delicious bite at a time.
+你喜欢一口一口的吃松软可口的布朗尼。
+A decadent blend of butter and chocolate topped with fudge and baked to perfection.
+一种由黄油和巧克力混合而成的颓废混合物，上面涂有软糖，烤得恰到好处。
+Restores 30% willpower. Takes a few turns to eat.
+恢复30%意志。需要几回合食用。
+
+A playful ghost now accompanies you on your journey.
+现在，一个顽皮的幽灵将陪伴你踏上旅程。
+The ghost haunting you decides to have a little fun! (+RestraintAdded)
+困扰你的幽灵决定找点乐子！（+RestraintAdded）
+
 I have... needs
 我...想要...
 Distraction builds up over time.
@@ -13233,12 +13263,24 @@ A box tie keeping your arms secured behind your back.
 将您的手臂牢牢固定在背后。
 The ropes squeeze you gently.
 绳索轻轻地压迫你。
+Boxtie
+盒束包扎带
+A box tie keeping your arms secured behind your back.
+盒束包扎带可将你的手臂固定在背后。
+he ropes squeeze you gently.
+绳子轻轻地挤压你。
+Intricate Ropework
+复杂的绳索
 Rope Cuffs
 绳手铐
 A quick tie for apprehending prisoners.
 用于逮捕囚犯的快速捆绑。
 It's not very secure.
 这不是很牢固。
+Intricate Ropework
+复杂的绳索
+A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
+用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
 It's not very secure.
 这不是很牢固。
 Rope Hogtie
@@ -13247,16 +13289,26 @@ A very strict and tight hogtie, good for subduing unruly captives.
 一种非常严苛和牢固的捆绑，适合制服不守规矩的俘虏。
 It's very secure. You tug on the rope connecting your feet and struggle.
 这是非常安全的。你需要首先挣扎开连接你腿的绳子。
+Rope Hogtie
+驷马
+A very strict and tight hogtie, good for subduing unruly captives.
+一种非常严苛和牢固的捆绑，适合制服不守规矩的俘虏。
+It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
+它会严格地固定住您，让您的肘部几乎与身体完全接触。你拉动连接双脚的绳子并挣扎。
 Rope Belt
 绳衣
 A harness acting as a handle to pull you around
 能使你被拉住的绳衣
 The ropes squeeze you gently.
 绳索轻轻地压迫你。
+Rope Harness
+绳束衣
+A harness that secures your other restraints and makes them tighter.
+一种安全带，可固定您的其他束缚并使它们更紧。
 The ropes squeeze you gently.
 绳索轻轻地压迫你。
 Crotch Rope
-下体绳缚
+股缚
 A tight rope impressing upon your most private areas...
 一条紧绷的绳索压迫在您最私密的区域......
 The ropes squeeze you gently.
@@ -13279,6 +13331,49 @@ A tie keeping your feet secured together.
 一条将双脚固定在一起的捆绑。
 The ropes squeeze you gently.
 绳索轻轻地压迫你。
+Toe Rope
+趾绳
+A tie keeping your feet tightly together.
+一条将脚趾头固定在一起的捆绑
+The ropes squeeze you gently.
+绳索轻轻地压迫你。
+
+Notebook Page
+笔记本页
+
+You're going to stay with me for a while~
+你就陪我一段时间吧~
+That's better! Now stay close to me~
+这样更好！ 现在就靠近我吧~
+Looks like our time is coming to an end...
+看来属于我们的时间即将结束了……
+You've been quite adorable! Until next time~
+你本来就很可爱啊！直到下次~
+
+Latex Mimic
+乳胶模仿者
+The latex mimic melts into a shiny puddle.
+乳胶仿品融化成闪亮的水坑。
+The latex mimic spits out a glob of rubber at you! (+RestraintAdded)
+乳胶模仿者向你吐出一团橡胶！（+RestraintAdded）
+The latex mimic stretches out an appendage and pulls you toward it! (DamageTaken)
+乳胶模仿者伸出一个附肢并将你拉向它！（DamageTaken）
+The latex mimic engulfs you in sticky rubber! (DamageTaken)
+乳胶模仿者将你包裹在粘稠的橡胶中！（DamageTaken）
+
+Cyber Warden
+网络管理员
+The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
+网络管理员的西装被锁住了，让她无助地扭动着身体！
+The cyber warden applies an advanced locking technology!
+网络管理员采用了先进的锁定技术！
+The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)
+网络管理员抓住你并施加自紧束缚！（+RestraintAdded）
+The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)
+网络管理员的触摸会产生一系列快速的电击！（DamageTaken）
+The cyber warden's touch applies a series of quick electrical shocks!
+网络管理员的触摸会产生一系列快速的电击！
+
 More Encasement
 更多包裹
 Enemies that encase you (e.g slimes, latex cubes) will appear more frequently.
