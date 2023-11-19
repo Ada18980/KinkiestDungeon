@@ -7575,6 +7575,48 @@ Can be controlled using CMD spells
 Can be controlled using Rubbermancy
 可以使用 Rubbermancy 控制
 
+Find In Inventory
+在背包中查找
+
+A huge rubber cube rises up out of the floor!
+一个巨大的橡胶立方体从地板上升起！
+Latex Cube
+乳胶立方体
+The latex cube hardens into a solid, harmless entity.
+乳胶立方体硬化成固体、无害的实体。
+The latex cube slowly engulfs you! (DamageTaken)
+乳胶立方体正在慢慢吞没你！（DamageTaken）
+The latex cube touches you, spreading latex restraints across your body! (+RestraintAdded)
+乳胶立方体接触你，将乳胶束缚散布到你的全身！（+RestraintAdded）
+
+A small rubber cube rises up out of the floor!
+一个小橡胶立方体从地板上升起！
+Mini Latex Cube
+迷你乳胶立方体
+The mini latex cube hardens into a solid, harmless entity.
+迷你乳胶立方体硬化成固体、无害的实体。
+The mini latex cube sticks to you! (DamageTaken)
+迷你乳胶立方体粘在你身上！（DamageTaken）
+The mini latex cube expands across your body, taking the form of restraints! (+RestraintAdded)
+迷你乳胶立方体在你的身体上扩展，形成束缚！（+RestraintAdded）
+
+Gigantic Slime
+巨型史莱姆
+The gigantic slime fizzles as its body becomes unstable!
+巨型史莱姆随着身体变得不稳定而嘶嘶作响！
+The gigantic slime stretches a pseudopod and engulfs you! (+RestraintAdded)
+巨型史莱姆伸展出伪足，将你吞没！（+添加约束）
+The gigantic slime slowly engulfs you! (DamageTaken)
+巨型史莱姆正在慢慢吞没你！（DamageTaken）
+A group of slimes jump out!
+一群史莱姆跳了出来！
+A slime jumps out!
+一条史莱姆跳了出来！
+A group of speedy slimes jump out!
+一群速度极快的史莱姆跳了出来！
+A speedy slime jumps out!
+一条速度极快的史莱姆跳了出来！
+
 Codex Imaginus
 想像法典
 Clavicula Romantica
