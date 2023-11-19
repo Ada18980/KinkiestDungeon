@@ -11670,6 +11670,20 @@ I-If I have to...
 Ah! Cold! (PERCENT chance to avoid)
 啊! 好冷！（有 PERCENT 的机会避免）
 
+(Approach)
+（靠近）
+(Keep your distance)
+（保持距离）
+
+It does look comfortable~
+看上去确实很舒服~
+(Squirm and bow your head)
+（扭动并低下头）
+It looks too strict! (PERCENT chance to avoid)
+看起来太严格了！（有 PERCENT 的机会避免）
+(Shake your head rapidly) (PERCENT chance to avoid)
+（快速摇头）（有 PERCENT 的机会避免）
+
 Sure.
 当然。
 (Nod slowly)
@@ -13088,6 +13102,8 @@ Hehe, alright! If that's what you want~
 （摇头拒绝救援）
 Yes please!
 是的！
+Nope.
+不要。
 Actually I was having fun...
 其实我玩得很开心...
 
