@@ -9903,6 +9903,14 @@ Slimes pours out from the walls and ceiling!
 粘液从墙壁和天花板上倾泻而出！
 Ethereal chains appear all around you!
 灵界锁链出现在你身边！
+Shadows constrict around you!
+阴影在你周围收缩！
+An otherworldly sigil appears below you!
+一个超凡脱俗的印记出现在你的下方！
+Crystals rise up around you!
+水晶在你周围升起！
+Something shiny seems to be stretched out over the floor!
+地板上似乎有一些闪亮的东西伸展开来！
 You hear the sound of glass breaking, and a cloud of green gas rises around you!
 你听到玻璃破碎的声音，一团绿色的气体在你周围升起！
 You hear the sound of glass breaking, and a cloud of pink gas rises around you!
@@ -9925,6 +9933,14 @@ The high-tech cables wrap themselves over your body!
 高科技钢缆将自己包裹在你的身体上！
 The slime pours all over you!
 粘液洒在你身上！
+A giant cube of latex engulfs you!
+一个巨大的乳胶立方体吞没了你！
+A sinister power wraps itself around you and solidifies!
+一股邪恶的力量将你包裹并凝固！
+Dark magics swirl around you and solidify into shiny rubber!
+黑暗魔法在你周围盘旋，并凝固成闪亮的橡胶！
+Crystals grow and spread across your limbs!
+晶体生长并遍布你的四肢！
 The magic chains wrap themselves around your body!
 魔链缠绕在你的身体上！
 Your clothes are getting ripped away!
@@ -9935,6 +9951,7 @@ You breathe in the gas, and a wave of pleasure hits your whole body.
 你吸入了气体，一阵快感袭上你的全身。
 You breathe in the gas, and feel lethargic...
 你吸入了气体，你开始感到昏昏欲睡……
+
 Items
 物品
 Rep
