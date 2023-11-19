@@ -8943,6 +8943,10 @@ Your skin takes on the appearance of cracked earth!
 你的皮肤开始变得如裂开的土地一样！
 The EnemyName creates a zone of increased defense!
 EnemyName 创造了一个增加防御的区域！
+EnemyName uses a charm to buff an enemy's Magic Armor and Evasion!
+EnemyName 使用魅惑来增强敌人的魔法护甲和闪避！
+EnemyName uses a glowing talisman to buff an undead's physical armor and speed!
+EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 You create a zone of increased defense!
 你创造了一个增加防御的区域！
 You create a protective zone!
