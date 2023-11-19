@@ -7458,6 +7458,48 @@ Dark Portal
 They are trying to take you somewhere!
 他们正试图带你去某个地方！
 
+The Shadow
+阴影
+The Shadow is exorcised... for now.
+阴影已被驱除……暂时。
+The Shadow overwhelms you with its power... (+RestraintAdded)
+阴影以其力量压倒你......（+RestraintAdded）
+The Shadow welcomes you to your new future. (DamageTaken)
+阴影欢迎你来到你的新未来。（DamageTaken）
+The Shadow cackles as your restraints are sealed! (DamageTaken)
+当你的束缚被封印时，阴影咯咯地笑了起来！（DamageTaken）
+The Shadow smiles and vanishes.
+阴影微笑着消失了。
+
+The Shadow smiles and vanishes, leaving you locked in a mysterious RNAME...
+阴影微笑着消失，把你锁在一个神秘的 RNAME 中……
+
+Observer
+观察者
+The observer is banished into the aether.
+观察者被放逐到以太中。
+
+From the Beyond
+来自彼岸
+
+You briefly spot your reflection as a reflective cube appears!
+当一个反光立方体出现时，你短暂地发现了自己的倒影！
+
+The stairs dissolve right before you!
+楼梯就在你面前消失了！
+The stairs dissolve as you step onto them, pulling you with them to somewhere else.
+当你踏上楼梯时，楼梯就会消失，将你拉到其他地方。
+
+A dark energy enters your body... (DamageDealt)
+黑暗能量进入你的身体......（DamageDealt）
+A dark energy lurks within you.
+一股黑暗能量潜伏在你的内心。
+You succumb to a dark desire... (+RestraintAdded)
+你屈服于黑暗的欲望......（+RestraintAdded）
+
+Observer's Gaze
+观察者的目光
+
 Items on Ground:
 地面物品：
 
