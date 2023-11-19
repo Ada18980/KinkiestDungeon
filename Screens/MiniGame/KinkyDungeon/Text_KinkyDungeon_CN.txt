@@ -12043,7 +12043,7 @@ Never! (PERCENT chance to avoid)
 （SPEAKER 微笑）|永远不能准备得太充分~
 
 (Select an item to buy from the SPEAKER)
-（从 SPEAKER 中选择要购买的商品）
+（选择你要从 SPEAKER 购买的商品）
 (Attack the SPEAKER?)
 （攻击 SPEAKER？）
 (以 IC# gp 购入 ITM#)
