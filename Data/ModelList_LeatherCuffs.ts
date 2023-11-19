@@ -200,6 +200,36 @@ AddModel({
 });
 
 AddModel({
+	Name: "LeatherCollarBell",
+	Folder: "LeatherCuffs",
+	Parent: "LeatherCollar",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Accessories"],
+	Layers: ToLayerMap([
+		...GetModelLayers("IronCollar", "", "", "Cuff"),
+		...GetModelLayers("IronCollar", "Band", "", "Band", 0.4),
+		...GetModelLayers("IronCollar", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("IronCollar", "Bell", "", "Bell", 0.5),
+	])
+});
+AddModel({
+	Name: "LeatherCollarBow",
+	Folder: "LeatherCuffs",
+	Parent: "LeatherCollar",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Accessories"],
+	Layers: ToLayerMap([
+		...GetModelLayers("IronCollar", "", "", "Cuff"),
+		...GetModelLayers("IronCollar", "Band", "", "Band", 0.4),
+		...GetModelLayers("IronCollar", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("IronCollar", "BowBell", "", "Bell", 0.6),
+		...GetModelLayers("IronCollar", "Bow", "", "Bow", 0.5),
+	])
+});
+
+AddModel({
 	Name: "LeatherBelt",
 	Folder: "LeatherCuffs",
 	TopLevel: true,

@@ -7,6 +7,7 @@ let LAYERS_BASE = [
 	"AnimalEars",
 	"HeadbandDeco",
 	"Headband",
+	"MouthProp",
 	"HairFront",
 	"MaskOver",
 	// Head items

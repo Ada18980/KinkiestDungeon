@@ -5,6 +5,59 @@
  * In general, this is accomplished by having higher priority items cover more of the original
  */
 
+AddModel({
+	Name: "MaidGag",
+	Folder: "GagFrilly",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth", "FaceGag", "StuffMouth"],
+	Layers: ToLayerMap([
+		{ Name: "FrillyPanel", Layer: "Gag", Pri: 13,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			InheritColor: "Panel",
+		},
+		{ Name: "FrillyStraps", Layer: "GagStraps", Pri: 16,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			InheritColor: "Straps",
+		},
+		{ Name: "FrillyHardware", Layer: "GagStraps", Pri: 14,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			InheritColor: "Hardware",
+		},
+		{ Name: "FrillyHighlights", Layer: "GagStraps", Pri: 14,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			InheritColor: "Highlights",
+		},
+	])
+});
+AddModel({
+	Name: "DusterGag",
+	Folder: "GagFrilly",
+	TopLevel: false,
+	Group: "Mouth",
+	Parent: "MaidGag",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth", "FaceGag", "StuffMouth"],
+	Layers: ToLayerMap([
+		...GetModelLayers("MaidGag"),
+		{ Name: "Duster", Layer: "MouthProp", Pri: 15,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
 
 AddModel({
 	Name: "BallGag",
@@ -503,6 +556,59 @@ AddModel({
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Fabric",
+		},
+	])
+});
+AddModel({
+	Name: "KittyMuzzle",
+	Folder: "GagLeather",
+	TopLevel: false,
+	Group: "Mouth",
+	Restraint: true,
+	Parent: "GagFabric",
+	Categories: ["Restraints","Gags","Fabric"],
+	AddPose: ["HideMouth", "FaceCoverGag"],
+	Layers: ToLayerMap([
+		...GetModelLayers("GagFabric"),
+		{ Name: "KittyMouth", Layer: "GagFlat", Pri: 45.1,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "FabricMuzzle",
+		},
+		{ Name: "Whiskers", Layer: "GagFlat", Pri: 45.1,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "FabricMuzzle",
+		},
+	])
+});
+AddModel({
+	Name: "KittyHarnessPanelGag",
+	Folder: "GagLeather",
+	TopLevel: false,
+	Group: "Mouth",
+	Restraint: true,
+	Parent: "GagFabric",
+	Categories: ["Restraints","Gags","Fabric"],
+	AddPose: ["HideMouth", "FaceCoverGag", "StuffMouth"],
+	Filters: {
+		Panel: {"gamma":0.9833333333333333,"saturation":1,"contrast":0.8,"brightness":3.1,"red":1,"green":1,"blue":1,"alpha":1},
+		Strap: {"gamma":0.8,"saturation":1,"contrast":0.9666666666666667,"brightness":2.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		Harness: {"gamma":0.8,"saturation":1,"contrast":0.9666666666666667,"brightness":2.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		SideStrap: {"gamma":0.8,"saturation":1,"contrast":0.9666666666666667,"brightness":2.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+	},
+	Layers: ToLayerMap([
+		...GetModelLayers("PanelGagHarnessSecure"),
+		{ Name: "KittyMouth", Layer: "GagFlat", Pri: 45.1,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "FabricMuzzle",
 		},
 	])
 });

@@ -71,6 +71,27 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "KittyBlindfold",
+	Folder: "Blindfold",
+	TopLevel: false,
+	Restraint: true,
+	Parent: "BlindfoldLeather",
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Filters: {
+		Blindfold: {"gamma":0.9833333333333333,"saturation":1,"contrast":0.8,"brightness":3.1,"red":1,"green":1,"blue":1,"alpha":1},
+		KittyEyes: {"gamma":1,"saturation":1,"contrast":0.55,"brightness":1.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+	},
+	Layers: ToLayerMap([
+		...GetModelLayers("BlindfoldLeather"),
+		{ Name: "KittyEyes", Layer: "Blindfold", Pri: 2.1,
+			Invariant: true,
+			HideWhenOverridden: true,
+			NoOverride: true,
+		},
+	])
+});
 
 
 AddModel({
