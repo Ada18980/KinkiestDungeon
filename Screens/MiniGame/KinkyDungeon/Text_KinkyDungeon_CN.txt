@@ -12083,8 +12083,8 @@ Give her a Scroll of Purity
 （SPEAKER 微笑）|更像是这样|独家报道：我们其中一人在下一层被抓获|我们需要你去把她救出来。
 (Show interest)
 （表示感兴趣）
-(The SPEAKER sits bound in high-security manacles)|You'll need to open the lock to get her out...
-（SPEAKER 戴着高安全性的手铐坐着）|你需要打开锁才能让她出来...
+(The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get her out.)
+（SPEAKER 戴着高安全性的手铐坐着|你需要打开锁才能让她解开...）
 (You don't have any keys that work on the lock)
 （你没有锁的钥匙。）
 (You can't help her, bound as tightly as you are...)
@@ -12111,6 +12111,9 @@ Give her a Scroll of Purity
 （你发出命令释放 SPEAKER）|非常感谢|走吧！
 (You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
 （你发出命令释放 SPEAKER）|呜呜呜！|(她把堵嘴又锁上了...)
+(The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
+（SPEAKER 戴着高安全性的手铐。|安全护盾已被触发，无法帮助她。）
+
 Use a key to unlock her
 用钥匙解开她
 Try to pick her restraints (JAMPERCENT jam chance)
@@ -12119,18 +12122,117 @@ Use a command word
 使用命令词
 Apologize profusely!
 深深地道歉！
+
 An enemy found you while you were busy!
-敌人在你忙的时候发现了你！
+敌人在你正忙的时候发现了你！
 (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
 （SPEAKER 砰的一声把你吵醒）|醒醒！让我们离开这里|（她设法撬开了你牢房门上的锁。）
+(A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
+（SPEAKER 砰的一声把你吵醒）|醒醒！让我们离开这里|（她设法撬开了你牢房门上的锁。）
+(A SPEAKER wakes you up by melting the door with acid)|These guys were a piece of cake.|Now let's discover a way out of here!
+（SPEAKER 通过酸融化了门后叫醒你）|这些家伙真是小菜一碟。|现在让我们办法离开这里吧！
+(You wake up to find a SPEAKER creeping up outside the door)|You've been marked as a person of interest.|We are here to escort you out of this place.
+（你醒来发现门外有一位 SPEAKER）|你已被标记为感兴趣的人。|我们来这里是为了护送你离开这个地方。
+(A SPEAKER wakes you up by banging on the bars)|Hey wake up!|You should join me and my pals here~|Maybe you'll join them once we're out of here?
+（SPEAKER 通过敲击栅栏来叫醒你）|嘿醒来！|你应该加入我和我的朋友们这里〜|也许我们离开这里后你会加入他们？
+(A SPEAKER wakes you up by banging on the bars)|I have been sent to inform you...|...that you are of good standing with the Council.|That being said, I'm only doing this because of procedure.
+（SPEAKER 通过敲击栅栏来叫醒你）|我被派来通知你...|...你在理事会中享有良好的声誉。|话虽这么说，我这样做只是因为走个程序。
+(A SPEAKER wakes you up by banging on the bars)|Greetings, follower of the blessed kitty!|Because of your faith, we have been sent to rescue you!
+（SPEAKER 通过敲击栏杆将您叫醒）|您好，受祝福的小猫的追随者！|因为您的信仰，我们被派来营救您！
+(You sense a presence nearby and look up to see a SPEAKER)|Because you are one, we have come to free you.|Do not take this as an excuse|to get yourself into further trouble.
+（你感觉到附近有人，抬头看到 SPEAKER）|因为你是我们其中一员，所以我们来释放你。|不要以此为借口|让自己陷入进一步的麻烦。
+(A SPEAKER wakes you up with the sound of copious fabric rustling)|Oh why hello there!|Would you be interested in a trial run of my latest product?|Of course, we'll have to get you out of here first...
+（SPEAKER 用大量织物的沙沙声将您吵醒）|哦，为什么你好！|您有兴趣试用我的最新产品吗？|当然，我们必须先带您离开这里...
+(A SPEAKER wakes you up by banging on the bars)|Hello my pretty~|I thought to myself I'd rather have you than these folk.|Now why don't you come along and follow me...
+（SPEAKER 通过敲击栅栏把你吵醒）|你好我的甜心~|我心想我宁愿拥有你而不是这些人。|现在你为什么不来跟着我......
+(A SPEAKER wakes you up by banging on the bars)|Um... hello!|I received a quest to help you out of here!|Now, where do we go...
+（SPEAKER 通过敲击栅栏来叫醒你）|嗯...你好！|我收到了一个任务，要帮助你离开这里！|现在，我们要去哪里...
+(You wake up to find a SPEAKER whispering to you)|Greetings.|We've been sent to free you.|Let's get moving.
+（你醒来发现 SPEAKER 在对你窃窃私语）|向你问好。|我们被派来释放你。|让我们行动起来吧。
+(A SPEAKER wakes you up by banging loudly)|Hey! Good news!|My friends and I came to rescue you!
+（SPEAKER 通过大声敲打来叫醒你）|嘿！ 好消息！|我和我的朋友们来救你了！
+(A SPEAKER wakes you up by knocking on the bars)|Hey, wake up.|I happen to like you, so we're going to get you out of here.
+（SPEAKER 通过敲击栏杆将你叫醒）|嘿，醒醒。|我碰巧喜欢你，所以我们要带你离开这里。
+(A SPEAKER flashes a bright light in your direction)|Prisoner 74121 located. Commence transfer to different location.
+（SPEAKER 向您的方向发出强光）|囚犯 74121 已找到。开始转移到其他地点。
 (A SPEAKER wakes you up)|We came to rescue you. Come on!
 （SPEAKER 把你叫醒）|我们是来救你的。来吧！
+
+(The bed looks comfy and inviting)|(Napping here will restore up to half of your willpower and 100% of your max mana)|(You can only sleep once per floor, unless jailed)
+(床看起来舒服又诱人)|(在这里小憩可以恢复你一半的意志力和 100% 的最大法力)|(每层楼只能睡一次，除非入狱)
 (You lay in the bed and doze off...)
 （你躺在床上打瞌睡…）
 (Lie down and sleep)
 （躺下睡觉）
-(No really
- I don't want it!)
+
+FOODMSG|(It invites you to partake in its culinary delights)
+FOODMSG|（它邀请你分享它的美食）
+(You eat the food and feel your willpower rising)
+（吃完食物你感觉到你的意志力在上升）
+(Being gagged as you are you cannot enjoy the food)
+（被塞住嘴的时候无法享受食物）
+(You steal the food, hoping nobody will notice...)
+（你偷食物，希望没人会注意到......）
+(Eat it to restore AMOUNT WP)
+(吃掉它可以恢复 AMOUNT WP)
+(Take it!)
+（拿去！）
+
+(Someone left their cookies unattended)
+（有人留下了他们的曲奇无人看管）
+(You smell delicious pizza)
+（你闻到美味的披萨的味道）
+Cookie
+曲奇
+Pizza
+披萨
+
+(There is a button on a control panel here.)
+（这里的控制面板上有一个按钮。）
+(You touch the button and it glows, releasing a pulse of energy!)
+（当你触摸按钮时，它会发光，并释放能量脉冲！）
+(PUSH THE BUTTON)
+（按按钮）
+
+(You find a map of the local leylines.)|(Committing these to memory will allow you to harness additional mana.)
+（你找到当地地脉的地图。）|（将这些记入记忆将使你能够利用额外的法力。）
+(Are you sure?)|(This decision is permanent.)
+（你确定吗？）|（此决定是永久性的。）
+(Gain +100 to Max Mana Pool)
+（最大法力池 +100）
+(I don't want to.)
+（我不想。）
+(Gain +100 to Max Mana Pool)
+（最大法力池 +100）
+(No really, I don't want it!)
+（不，真的，我不想要它！）
+
+(You find a strange elevator with a control panel inside)|(You get the impression this will take you somewhere.)
+（你发现一个奇怪的电梯，里面有一个控制面板）|（你觉得这会带你去某个地方。）
+(Are you sure?)|(This seems like a bad idea!)
+（你确定吗？）|（这似乎是个坏主意！）
+(You activate the control panel and begin to descend...)
+（您激活控制面板并开始下降......）
+(Take me down!)
+（带我下去！）
+(I know what I'm doing!)
+（我知道我在做什么！）
+
+(The conveyor pulls you into a strange elevator)|(A whir of motors suggests this elevator is about to start...)
+（传送带把你拉进陌生的电梯）|（一阵马达的呼呼声表明这台电梯即将启动……）
+(You manage to scramble out the door!)|(It closes violently behind you...)
+（你成功地爬出了门！）|（门在你身后猛烈地关上……）
+(The door slams in front of you before you are able to escape!)|(A purple light turns on, revealing a padded interior)|(You feel the elevator begin to descend...)
+（你还没来得及逃走，门就在你面前关上！）|（紫色的灯光亮起，露出里面的软垫）|（你感觉到电梯开始下降……）
+(There's no point in fighting when you can't win)|(You wait patiently as the elevator descends)
+（当你赢不了的时候，战斗是没有意义的）|（你耐心地等待电梯下降）
+(Try to get out! RESISTCHANCE% success chance)
+（尝试逃脱！RESISTTCHANCE% 成功率）
+(Give up and let it take me)
+（放弃并让它带走我）
+(Wait it out)
+（等待）
+
 (Mystic energies spring forth from the ground)|(Standing here will fully replenish your passive mana pool)|(One use only)
 （神秘能量从地面涌出）|（站在这里将完全补充你的被动法力池）|（仅限一次使用）
 (You step on the magical fissue and its energies absorb into you)|(Afterward, the ground crackles and fizzles, but no energy is left.)
