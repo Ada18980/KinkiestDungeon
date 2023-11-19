@@ -13295,8 +13295,8 @@ dmg
 伤害
 rep
 声望
-Goddess:
-材质:
+Goddess: 
+材质：
 
 Save Loadout
 保存加载
