@@ -11718,11 +11718,11 @@ No thanks, I know what that entails...
 I'll sign it!
 我会签的！
 (Accept the contract)
-（接受合同）
+（接受契约）
 A contract? No way.
-合同？没门。
+契约？没门。
 (Refuse the contract)
-（拒绝合同）
+（拒绝契约）
 Fine. I'll sign it...
 好吧。我会签...
 (Moan and nod)
@@ -11762,11 +11762,11 @@ No thanks, I know what that entails...
 Gladly!
 乐意！
 (Accept the contract)
-（接受合同）
+（接受契约）
 W-where did you get that uniform? (Refuse)
 你、你从哪儿弄来的那件制服？ （拒绝）
 (Refuse the contract)
-（拒绝合同）
+（拒绝契约）
 Fine. I'll sign it...
 好吧。我会签...
 (Moan and nod)
@@ -11806,11 +11806,11 @@ No thanks, I know what that entails...
 Gladly!
 乐意！
 (Accept the contract)
-（接受合同）
+（接受契约）
 W-where did you get that uniform? (Refuse)
 你、你从哪儿弄来的那件制服？ （拒绝）
 (Refuse the contract)
-（拒绝合同）
+（拒绝契约）
 Fine. I'll sign it...
 好吧。我会签...
 (Moan and nod)
@@ -11880,9 +11880,9 @@ Gladly!
 (Moan and nod)
 （呻吟和点头）
 (Accept the contract)
-（接受合同）
+（接受契约）
 (Refuse the contract)
-（拒绝合同）
+（拒绝契约）
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
@@ -11906,7 +11906,7 @@ Gladly!
 (Shake your head)
 （摇头）
 (Refuse the contract)
-（拒绝合同）
+（拒绝契约）
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
@@ -11914,9 +11914,9 @@ Gladly!
 (Shake your head)
 （摇头）
 (Accept the contract)
-（接受合同）
+（接受契约）
 (Refuse the contract)
-（拒绝合同）
+（拒绝契约）
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
@@ -11952,11 +11952,11 @@ No thanks, I know what that entails...
 Gladly!
 乐意！
 (Accept the contract)
-（接受合同）
+（接受契约）
 W-where did you get that uniform? (Refuse)
 你、你从哪儿弄来的那件制服？ （拒绝）
 (Refuse the contract)
-（拒绝合同）
+（拒绝契约）
 Fine. I'll sign it...
 好吧。我会签...
 (Moan and nod)
