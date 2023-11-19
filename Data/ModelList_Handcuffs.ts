@@ -29,3 +29,138 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "HandCuffs",
+	Folder: "Handcuffs",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Cuffs", "Legirons"],
+	AddPose: ["HandCuffed"],
+	Layers: ToLayerMap([
+		{ Name: "CuffsLock", Layer: "BindForeWristLeft", Pri: 40.1,
+			HideWhenOverridden: true,
+			NoOverride: true,
+			TieToLayer: "HandCuffs",
+			InheritColor: "Lock",
+			LockLayer: true,
+			Poses: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+		{ Name: "HandCuffs", Layer: "BindForeWristLeft", Pri: 25,
+			HideWhenOverridden: true,
+			InheritColor: "BaseMetal",
+			Poses: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "HingedCuffs",
+	Folder: "Handcuffs",
+	Parent: "HandCuffs",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Cuffs", "Legirons"],
+	AddPose: ["HandCuffed"],
+	Layers: ToLayerMap([
+		{ Name: "CuffsLock", Layer: "BindForeWristLeft", Pri: 40.1,
+			HideWhenOverridden: true,
+			NoOverride: true,
+			TieToLayer: "HingedCuffs",
+			InheritColor: "Lock",
+			LockLayer: true,
+			Poses: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+		{ Name: "HingedCuffs", Layer: "BindForeWristLeft", Pri: 30,
+			HideWhenOverridden: true,
+			InheritColor: "BaseMetal",
+			Poses: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+	])
+});
+AddModel({
+	Name: "Irish8Cuffs",
+	Folder: "Handcuffs",
+	Parent: "HandCuffs",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Cuffs", "Legirons"],
+	AddPose: ["HandCuffed"],
+	Layers: ToLayerMap([
+		{ Name: "CuffsLock", Layer: "BindForeWristLeft", Pri: 40.1,
+			HideWhenOverridden: true,
+			NoOverride: true,
+			TieToLayer: "Irish8Cuffs",
+			InheritColor: "Lock",
+			LockLayer: true,
+			Poses: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+		{ Name: "Irish8Cuffs", Layer: "BindForeWristLeft", Pri: 35,
+			HideWhenOverridden: true,
+			InheritColor: "BaseMetal",
+			Poses: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "WolfCuffs",
+	Folder: "Handcuffs",
+	Parent: "HandCuffs",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Cuffs", "Legirons"],
+	AddPose: ["HandCuffed"],
+	Layers: ToLayerMap([
+		{ Name: "CuffsLock", Layer: "BindForeWristLeft", Pri: 40.1,
+			HideWhenOverridden: true,
+			NoOverride: true,
+			TieToLayer: "WolfCuffs",
+			InheritColor: "Lock",
+			LockLayer: true,
+			Poses: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+		{ Name: "WolfCuffs", Layer: "BindForeWristLeft", Pri: 40,
+			HideWhenOverridden: true,
+			InheritColor: "BaseMetal",
+			Poses: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+		{ Name: "WolfCuffsChain", Layer: "BindForeWristLeft", Pri: 39.9,
+			HideWhenOverridden: true,
+			NoOverride: true,
+			InheritColor: "Chain",
+			TieToLayer: "WolfCuffs",
+			Poses: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "Thumbcuffs",
+	Folder: "Handcuffs",
+	Parent: "HandCuffs",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Cuffs", "Legirons"],
+	AddPose: ["HandCuffed"],
+	Layers: ToLayerMap([
+		{ Name: "Thumbcuffs", Layer: "BindForeHandLeft", Pri: -50,
+			NoOverride: true,
+			InheritColor: "BaseMetal",
+			Poses: ToMap(["Front"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+		},
+	])
+});
+

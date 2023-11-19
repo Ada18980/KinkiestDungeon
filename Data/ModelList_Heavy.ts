@@ -66,6 +66,40 @@ AddModel({
 
 
 AddModel({
+	Name: "JacketHeavy",
+	Folder: "Jacket",
+	Parent: "Jacket",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Jacket", "Leather"],
+	AddPose: ["EncaseTorsoUpper", "EncaseChest"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Jacket"),
+
+		{ Name: "BinderTorsoLower", Layer: "Corset", Pri: -10,
+			InheritColor: "Lower",
+			Invariant: true,
+		},
+		{ Name: "BeltsTorsoLower", Layer: "HarnessMid", Pri: -10,
+			MorphPoses: {Crossed: "Crossed", Wristtie: "Wristtie", Boxtie: "Boxtie"},
+			InheritColor: "BeltsLower",
+		},
+		{ Name: "Crotch", Layer: "HarnessMid", Pri: -10.1,
+			InheritColor: "Lower",
+			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			NoOverride: true,
+			TieToLayer: "CrotchBelts",
+			Invariant: true,
+		},
+		{ Name: "CrotchBelts", Layer: "HarnessMid", Pri: -10,
+			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			InheritColor: "BeltsLower",
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
 	Name: "JacketStraps",
 	Folder: "Jacket",
 	TopLevel: false,
@@ -134,5 +168,48 @@ AddModel({
 			DisplaceLayers: ToMap(["ArmsAll"]),
 		},
 		...GetModelLayers("JacketStraps"),
+	])
+});
+AddModel({
+	Name: "JacketLeotard",
+	Folder: "Jacket",
+	Parent: "Jacket",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Jacket", "Leather"],
+	Layers: ToLayerMap([
+		...GetModelLayers("JacketBolero"),
+
+		{ Name: "LatexLower", Layer: "Bodysuit", Pri: 13,
+		},
+		{ Name: "LatexChest", Layer: "SuitChest", Pri: 14,
+			InheritColor: "LatexUpper",
+		},
+		{ Name: "LatexUpper", Layer: "Bodysuit", Pri: 14,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "Legbinder",
+	Folder: "Legbinder",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Legbinder", "Leather"],
+	Layers: ToLayerMap([
+		{ Name: "Legbinder", Layer: "WrappingLegsOver", Pri: -20,
+			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			InheritColor: "Binder",
+
+		},
+		{ Name: "LacesLegbinder", Layer: "WrappingLegsOver", Pri: -19.9,
+			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			NoOverride: true,
+			TieToLayer: "LegBinder",
+			InheritColor: "Laces",
+		},
 	])
 });

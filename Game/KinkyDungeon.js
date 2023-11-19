@@ -12,7 +12,7 @@ let KDEasterEgg = Math.random() < 0.01;
 let KDBigLanguages = ["CN", "KR", "JP"];
 let KDBigLanguages2 = ["Chinese", "Korean", "Japanese"];
 /** Language List */
-let KDLanguages = ["", "CN", "KR", "JP", "ES"];
+let KDLanguages = ["", "CN", "KR", "JP", "RU", "ES"];
 
 let KinkyDungeonPlayerNeedsRefresh = false;
 let KinkyDungeonNextRefreshCheck = 0;

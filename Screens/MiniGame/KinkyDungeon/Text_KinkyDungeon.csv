@@ -7,7 +7,7 @@ KinkyDungeonPatreon,Support @ Patreon
 KinkyDungeonPatronsList,"Thank you to the following awesome people for supporting me at patreon.com/ada18980"
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
-KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
+KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
 KinkyDungeonCreditsList1,"Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators"
 
 Language,Language
@@ -17,6 +17,7 @@ KR,Korean
 JP,Japanese
 ES,Spanish
 FR,French
+RU,Russian
 KDMods,Mods
 KDModsLoaded,Mods Loaded.
 
@@ -26,6 +27,7 @@ RestartNeededKR,"재시작 필요！"
 RestartNeededJP,"Restart please!"
 RestartNeededES,"¡Reinicio!"
 RestartNeededFR,"Rechargement requis!"
+RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
@@ -1408,7 +1410,7 @@ KinkyDungeonSpellCastMoiraiScissors,"With a single snip of the magic scissors, e
 KDMoiraiFail,No eligible targets within 4 tiles
 KinkyDungeonInventoryItemSlimethrower,Latex Projector
 KinkyDungeonInventoryItemSlimethrowerDesc,"Deals crush damage. Can be used to spray a '+' shaped pool of slime."
-KinkyDungeonInventoryItemSlimethrowerDesc2,"Drains 1.5% ancient energy to create a pool of slime that deals 35 glue damage per tile and slows enemies."
+KinkyDungeonInventoryItemSlimethrowerDesc2,"Spend 15 charge to create a pool of slime that deals 35 glue damage per tile and slows enemies."
 KinkyDungeonInventoryItemMagicAxe,Magic Axe
 KinkyDungeonInventoryItemMagicAxeDesc,"Sick and vile, like the hearts of your enemies."
 KinkyDungeonInventoryItemMagicAxeDesc2,"Deals shadow damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns."
@@ -2611,11 +2613,11 @@ KillShadowGhast,"The shadowy ghast screeches and disappears..."
 AttackShadowGhastBind,"The shadowy ghast latches onto you with its long arms! (+RestraintAdded)"
 AttackShadowGhast,"The shadowy ghast grips you in its chilling embrace! (DamageTaken)"
 
-NameChainBeing,Obsidian Construct
-KillChainBeing,"The obsidian construct stops moving, its spirit departed."
-AttackChainBeingBind,"The obsidian construct reaches out and touches you, forming metallic restraints! (+RestraintAdded)"
-AttackChainBeingLock,"The obsidian construct uses its chains to lock your restraints! (DamageTaken)"
-AttackChainBeing,"The obsidian construct grips you and drains your willpower! (DamageTaken)"
+NameChainBeing,Corrupted Elemental
+KillChainBeing,"The corrupted elemental dissolves into shadows."
+AttackChainBeingBind,"The corrupted elemental reaches out and touches you, forming metallic restraints! (+RestraintAdded)"
+AttackChainBeingLock,"The corrupted elemental uses its chains to lock your restraints! (DamageTaken)"
+AttackChainBeing,"The corrupted elemental grips you and drains your willpower! (DamageTaken)"
 
 NameDemonStar,Star Demon
 KillDemonStar,"The star demon is exorcised."

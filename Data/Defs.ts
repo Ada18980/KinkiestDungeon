@@ -7,6 +7,7 @@ let LAYERS_BASE = [
 	"AnimalEars",
 	"HeadbandDeco",
 	"Headband",
+	"MouthProp",
 	"HairFront",
 	"MaskOver",
 	// Head items
@@ -316,6 +317,7 @@ let LAYERS_BASE = [
 	"HatBack",
 
 	"FurnitureBack",
+	"BG",
 ];
 
 /** Handy way of referencing multiple layers */
@@ -424,7 +426,7 @@ let LayerGroups = {
 		"SleeveDecoRight",
 		"ArmLeft",
 		"ArmRight",
-		"TorsoUpper",
+		//"TorsoUpper",
 
 		"CrossMittenLeft",
 		"CrossMittenRight",
@@ -903,11 +905,338 @@ let LayerGroups = {
 		"ForeHandLeft",
 	]),
 	// endregion
+
+	// region ALL
+
+	"All": ToMap(
+		[
+			"HatDeco",
+	"Hat",
+	"Brows", // Brows should get hidden with mask
+	"AnimalEars",
+	"HeadbandDeco",
+	"Headband",
+	"HairFront",
+	"MaskOver",
+	// Head items
+	"Blindfold",
+	"GagOver",
+	"GagMuzzleStraps",
+	"GagMuzzle",
+	"GagFlatStraps",
+	"GagFlat",
+	"GagStraps",
+	"Gag",
+	"GagUnder",
+	// Hair mid
+	"Hair",
+	"Circlet",
+	"Mask",
+	"BlindfoldWrap",
+	"GagWrap",
+	// Head
+	"Eyes",
+	"Mouth",
+	"Blush",
+	"Head",
+
+
+	"Yoke",
+
+	// Clothes that go over the chest and hang down
+	"Shoulders",
+
+	// Hair mid
+	"HairMid",
+
+
+	// Collar and collar accessories
+	"CollarAcc",
+	"Collar",
+
+	// Bondage
+	"BindForeArms",
+	"BindForeElbowLeft",
+	"BindForeElbowRight",
+	"BindForeWristLeft",
+	"BindForeWristRight",
+	"BindForeHandLeft",
+	"BindForeHandRight",
+	"BindForeArmLeft",
+	"BindForeArmRight",
+
+	"ForeWrists",
+
+
+	// Forearms (only in HandsFront)
+	"ForeWristLeft",
+
+	"ForeSleeveLeft",
+	"ForeMittenLeft",
+	"ForeSleeveDecoLeft",
+	"ForeGloveRight",
+	"ForeHandLeft",
+	"ForeArmLeft",
+
+	"ForeWristRight",
+
+	"ForeSleeveRight",
+	"ForeMittenRight",
+	"ForeSleeveDecoRight",
+	"ForeGloveRight",
+	"ForeHandRight",
+	"ForeArmRight",
+
+
+
+	// This slot is for things like breastplates and things that go over
+	"WrappingChest",
+
+	"Jacket",
+	"ChestDeco",
+	"ChestStraps",
+	"Chestplate",
+
+	// Bondage
+	"BindArms",
+
+
+
+
+	// Chest is breasts, should only intersect on bottom and side edges, top is indeterminate
+	"Straps",
+	"NecklaceCharm",
+	"Necklace",
+
+
+	"HarnessOver",
+	"BindChest",
+	"BraChest",
+	"SuitChest",
+	"Chest",
+
+	"StrapsUnderbustOver",
+	"WrappingTorsoOver",
+
+	// Crossed arms bondage -- left arm is mostly hidden, no hands
+	"BindCrossArms",
+	"BindCrossElbowLeft",
+	"BindCrossElbowRight",
+	"BindCrossWristRight",
+	"BindCrossArmLeft",
+	"BindCrossArmRight",
+
+	// Crossed arms -- order is inverted
+	"SleevesCrossArms",
+	"CrossMittenRight",
+	"CrossGloveRight",
+	"CrossArmRight",
+	"CrossMittenLeft",
+	"CrossGloveLeft",
+	"CrossArmLeft",
+
+
+	// Certain pieces of armor go over the shirt
+	"BeltBondage",
+	"BeltCharm",
+	"Belt",
+	"BeltDeco",
+
+	"BaggyShirt",
+
+	// Skirts that dont follow shilhouette
+	"OverSkirtDeco",
+	"OverSkirt",
+	"Greaves",
+
+	"StrapsUnderbust",
+
+	"OverCrotchStrapMid",
+	"HarnessMid",
+	"WrappingTorsoMid",
+
+
+
+	// For form-fitting stuff that nonetheless goes over a shirt
+	"Bustier",
+	"Shirt",
+	// For things that go directly under the breasts
+	"Underbust",
+	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
+	"Underarms",
+	"Bra",
+
+	"CorsetOver",
+
+	// Skirts that dont follow shilhouette and are puffy
+	"SkirtPoofyDeco",
+	"SkirtPoofy",
+
+	"WrappingLegsOver",
+
+	// Corsets that go under harness and poofy skirt
+	"Corset",
+
+	// Skirts that are slim and follow the shilhouette
+	"SkirtDeco",
+	"Skirt",
+
+	// Panties go here when standing
+	"Panties",
+
+	// Left Leg
+	"KneeAccLeft",
+	"Thighs",
+	"Thighs3",
+	"Thighs2",
+	"Thighs1",
+	"ThighLeft",
+	"Ankles",
+	"Ankles3",
+	"Ankles2",
+	"Ankles1",
+	"AnkleLeft",
+
+	"WrappingLegs",
+
+	"PantsAccLeft",
+	"PantLeft",
+
+	"BindFeet",
+	"OverShoes",
+	"ShoeLeftOver",
+	"ShoeLeftDeco",
+	"ShoeLeft",
+	"OverSocks",
+	"StockingLeft",
+	"FootLeft",
+	"LegLeft",
+
+	// Lower harness
+	"OverCrotchStrap",
+	"HarnessLower",
+	"WrappingTorso",
+
+	// These are for the base skirt layer when kneeling
+	// The over layer is for kneeling
+	// Skirts that dont follow shilhouette and are puffy
+	"SkirtPoofyLowerDeco",
+	"SkirtPoofyLower",
+
+	// Skirts that are slim and follow the shilhouette
+	"SkirtLowerDeco",
+	"SkirtLower",
+
+	// Right leg
+	"KneeAccRight",
+	"ThighRight",
+	"AnkleRight",
+	"PantsAccRight",
+	"PantRight",
+	"Pants",
+
+	"HarnessUnder",
+
+	"BeltBack",
+
+	// Left arm clothes
+
+	"BindWristLeft",
+	"BindArmLeft",
+	"BindElbowLeft",
+	"BindHandLeft",
+
+	"LowerArmBondageLeft",
+
+	"SleeveDecoLeft",
+	"SleeveLeft",
+
+	// Left arm body - reserved for body and catsuits
+	"WristLeft",
+	"MittenLeft",
+	"GloveLeft",
+	"HandLeft",
+	"ArmLeft",
+
+	// Right Shoes
+	"ShoeRightOver",
+	"ShoeRightDeco",
+	"ShoeRight",
+
+
+
+	// Lower body underwear
+	"StockingRight",
+
+	"CorsetUnder", // Corsets go here when wearing pants
+
+	// Panties go here when kneeling
+	"PantiesLower",
+
+	// Upper body underwear and bodysuits
+	"CorsetLiner",
+	"Bodysuit",
+
+
+	// Lower body body - reserved for body and catsuits
+	// Note that the lower torso is complex, you should avoid internal overlaps as much as possible
+	// External overlaps are fine, e.g. right leg goes over
+	"FootRight",
+	"LegRight",
+	"AnkleLeftHogtie",
+	"ShoeLeftHogtie",
+	"SockLeftHogtie",
+	"FootLeftHogtie",
+	"AnkleRightKneel",
+	"ShoeRightKneel",
+	"SockRightKneel",
+	"FootRightKneel",
+	"ShoulderLeft",
+	"ShoulderRight",
+	"TorsoUpper",
+	"Butt",
+	"TorsoLower",
+	"Torso",
+
+	// Right arm specific bondage
+	"BindWristRight",
+	"BindArmRight",
+	"BindElbowRight",
+	"BindHandRight",
+
+	// Right arm clothes
+	"SleeveDecoRight",
+	"SleeveRight",
+
+	// Right arm body - reserved for body and catsuits
+	"WristRight",
+	"MittenRight",
+	"GloveRight",
+	"HandRight",
+	"ArmRight",
+
+	// Clothes that go behind
+	"BeltFarBack",
+	"Coat",
+	"Cape",
+
+	// Hair and hat back
+	"HairBack",
+	"HatBack",
+		]
+	),
+	// endregion
 };
 
 
 
 let LayerProperties = {
+	FurnitureFront: {
+		Parent: "BG",
+	},
+	FurnitureBack: {
+		Parent: "BG",
+	},
 	Eyes: {
 		Parent: "Head",
 	},

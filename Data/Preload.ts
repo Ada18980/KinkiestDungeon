@@ -1,6 +1,7 @@
 PIXI.Assets.init();
 
 let DisplacementMaps = [
+	"Sarco.png",
 	"AnklesSquishClosed.png",
 	"AnklesSquishKneel.png",
 	"Arm1SquishBoxtie.png",

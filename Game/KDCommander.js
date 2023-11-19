@@ -198,7 +198,7 @@ function KDCommanderUpdateOrders(data) {
 				data.aggressive = KinkyDungeonAggressive(enemy);
 				let role = KDCommanderOrders[id[1]];
 				if (role) {
-					if (!KDHelpless(enemy) && role.maintain(enemy, data)) {
+					if (KDBoundEffects(enemy) < 4 && role.maintain(enemy, data)) {
 						role.update(enemy, data);
 					} else {
 						KDCommanderRoles.delete(enemy.id);
@@ -544,7 +544,7 @@ let KDCommanderOrders = {
 			}
 
 			// Place barricades
-			if (enemy.Enemy.bound && !KDHelpless(enemy) && (!enemy.Enemy.tags?.minor || KDRandom() < 0.25)) {
+			if (enemy.Enemy.bound && KDBoundEffects(enemy) < 4 && (!enemy.Enemy.tags?.minor || KDRandom() < 0.25)) {
 				//let placed = false;
 				let cpOverride = KinkyDungeonStatsChoice.get("Fortify_Trap");
 				let ltOverride = KinkyDungeonStatsChoice.get("Fortify_Barricade");
@@ -652,7 +652,7 @@ let KDCommanderOrders = {
 				&& KDIsHumanoid(enemy)
 				&& (enemy.attackPoints < 1)
 				&& !KDIsImmobile(enemy)
-				&& !KDHelpless(enemy)
+				&& KDBoundEffects(enemy) < 4
 				&& (!enemy.aware || KDAssaulters >= KDMaxAssaulters)
 				&& (!KDAIType[KDGetAI(enemy)]
 					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
@@ -688,7 +688,7 @@ let KDCommanderOrders = {
 			return (!enemy.IntentAction
 				&& (enemy.attackPoints < 1)
 				&& (!enemy.aware || KDAssaulters >= KDMaxAssaulters)
-				&& !KDHelpless(enemy));
+				&& KDBoundEffects(enemy) < 4);
 		},
 		remove: (enemy, data) => {},
 		update: (enemy, data) => {

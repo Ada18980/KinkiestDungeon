@@ -137,7 +137,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["Dressmaker", [
 		{name: "A Lazy Dressmaker", color: "#fad6ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
-		{name: "Alice", color: "#ee99ee", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Alice", color: "#ee99ee", prisoner: true, free: true, customPlayLine: "", customIntro: "Hello, I am a dressmaker and the name's Alice! Need a new dress?", customSprite: ""},
 	],
 	],
 	["Maidforce", [

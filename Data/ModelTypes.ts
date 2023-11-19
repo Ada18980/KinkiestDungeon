@@ -18,6 +18,8 @@ type PoseMod = {
 
 /** A set of properties for poses */
 type PoseProperty = {
+	/** Only applied during this pose */
+	filter_pose?: string[],
 	/** How much this pose rotates the player, in degrees */
 	rotation?: number,
 	rotation_x_anchor?: number,

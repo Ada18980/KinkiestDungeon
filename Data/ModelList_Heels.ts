@@ -168,3 +168,16 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "TallHeelsRestraint",
+	Folder: "Heels",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Shoes"],
+	AddPose: ["Heels"],
+	Layers: ToLayerMap([
+		...GetModelLayers("TallHeels"),
+	])
+});
+

@@ -315,7 +315,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			//Container.Mesh.y += Container.Container.pivot.y;
 			//if (MC.Containers.get(containerID).RenderTexture)
             if (MC.Containers.get(containerID).RenderTexture) {
-				if (KDToggles.AsyncRendering) {
+				if (KDToggles.AsyncRendering && KinkyDungeonDrawState == "Game" && KinkyDungeonState == "Game") {
 					if (!RenderCharacterQueue.get(C)) RenderCharacterQueue.set(C, []);
 					RenderCharacterQueue.get(C).push(async function() {
 						RenderCharacterLock.set(C, true);
@@ -476,10 +476,10 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					while (layer) {
 						let mod_selected: PoseMod[] = mods[layer] || [];
 						for (let mod of mod_selected) {
-							ox = mod.offset_x || ox;
-							oy = mod.offset_y || oy;
-							ax = mod.rotation_x_anchor || ax;
-							ay = mod.rotation_y_anchor || ay;
+							ox = mod.offset_x ? mod.offset_x : ox;
+							oy = mod.offset_y ? mod.offset_y : ox;
+							ax = mod.rotation_x_anchor ? mod.rotation_x_anchor : ax;
+							ay = mod.rotation_y_anchor ? mod.rotation_y_anchor : ay;
 							sx *= mod.scale_x || 1;
 							sy *= mod.scale_y || 1;
 							rot += mod.rotation || 0;
@@ -534,10 +534,10 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					while (layer) {
 						let mod_selected: PoseMod[] = mods[layer] || [];
 						for (let mod of mod_selected) {
-							ox = mod.offset_x || ox;
-							oy = mod.offset_y || oy;
-							ax = mod.rotation_x_anchor || ax;
-							ay = mod.rotation_y_anchor || ay;
+							ox = mod.offset_x ? mod.offset_x : ox;
+							oy = mod.offset_y ? mod.offset_y : ox;
+							ax = mod.rotation_x_anchor ? mod.rotation_x_anchor : ax;
+							ay = mod.rotation_y_anchor ? mod.rotation_y_anchor : ay;
 							sx *= mod.scale_x || 1;
 							sy *= mod.scale_y || 1;
 							rot += mod.rotation || 0;
@@ -596,10 +596,10 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
 					for (let mod of mod_selected) {
-						ox = mod.offset_x || ox;
-						oy = mod.offset_y || oy;
-						ax = mod.rotation_x_anchor || ax;
-						ay = mod.rotation_y_anchor || ay;
+						ox = mod.offset_x ? mod.offset_x : ox;
+						oy = mod.offset_y ? mod.offset_y : ox;
+						ax = mod.rotation_x_anchor ? mod.rotation_x_anchor : ax;
+						ay = mod.rotation_y_anchor ? mod.rotation_y_anchor : ay;
 						sx *= mod.scale_x || 1;
 						sy *= mod.scale_y || 1;
 						rot += mod.rotation || 0;
@@ -1069,10 +1069,10 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number, H
 	while (layer) {
 		let mod_selected: PoseMod[] = mods[layer] || [];
 		for (let mod of mod_selected) {
-			ox = mod.offset_x || ox;
-			oy = mod.offset_y || oy;
-			ax = mod.rotation_x_anchor || ax;
-			ay = mod.rotation_y_anchor || ay;
+			ox = mod.offset_x ? mod.offset_x : ox;
+			oy = mod.offset_y ? mod.offset_y : ox;
+			ax = mod.rotation_x_anchor ? mod.rotation_x_anchor : ax;
+			ay = mod.rotation_y_anchor ? mod.rotation_y_anchor : ay;
 			sx *= mod.scale_x || 1;
 			sy *= mod.scale_y || 1;
 			rot += mod.rotation || 0;
