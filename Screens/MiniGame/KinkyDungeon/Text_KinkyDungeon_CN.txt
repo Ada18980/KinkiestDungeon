@@ -1294,24 +1294,27 @@ Your body struggles to move as you feel a power sealing you!
 你感到一股力量将你的身体束缚，使你难以移动！
 The sarcophagus' door slides open as you are slowly pulled inside...
 石棺的门滑开，你被缓慢地拉进去...
-The hands squeeze you tightly...
-那双手紧紧地握着你……
-More hands clasp over your body...
-更多的双手抱住你的身体…
+The hands squeeze you tightly as a shadowy portal appears...
+当一个阴暗的传送门出现时，那双手紧紧地挤压着你……
+More hands clasp over your body as they pull you toward the portal...
+更多的手抓住你的身体，将你拉向传送门……
 You struggle to breath as you are pulled into the mass of shadow hands...
-你被拉入一团阴影之手中，挣扎的呼吸着...
+你被拉入一团影之手中，呼吸困难...
 The world goes dark...
 世界变暗了……
 You wake up in a different place...
 你在不同的地方醒来...
+
 Arcane Explosion
 奥术爆发
+
 EnemyName says something incomprehensible! Her spell miscasts!
 EnemyName说了一些难以理解的话！她的法术施放失败了！
 EnemyName fumbles her next move!
 EnemyName在下一个动作中搞砸了！
 The EnemyName utters a command word on the TargetName!
 EnemyName对TargetName念出了一个口令！
+
 Nipples
 乳头
 Nipples
@@ -1330,6 +1333,7 @@ Feet
 脚
 Everywhere!
 任何位置！
+
 Physical Armor: 
 物理护甲：
 Magic Armor: 
@@ -1368,6 +1372,7 @@ Intense vibrations!!
 激烈的震动
 Torturous vibrations!!!
 折磨般的震动！
+
 Stunned! You can't move!
 你被晕眩，无法移动！
 Your vision is impaired!
@@ -1402,14 +1407,19 @@ You are gagged! Verbal miscast chance is increased and your potions are less eff
 你的嘴巴被口球堵住了，施放言语法术的失败几率增加，而且药剂的效果减弱！
 Your mouth is totally filled! You can't drink potions and cant cast verbal spells!
 你的嘴巴被堵的死死的，无法施放言语法术和饮用药剂！
+
 Spell Empowerment!
 法术强化！
+
 Let there be light!
 让光明降临！
+
 You're seeing things...
-你看到一些东西...
+你看到了一些东西...
+
 You've been poisoned!
 你中毒了！
+
 -50% MP Cost (Latex)
 乳胶法术的魔力消耗减少 50%。
 -50% MP Cost (Leather)
@@ -1426,12 +1436,14 @@ Regeneration
 咒术的魔力消耗减少 50%。
 -50% MP Cost (Illusion)
 咒术的魔力消耗减少 50%。
+
 Conductive: When you or an enemy takes electric damage, the other takes half of it as well!
 导电：当你或敌人受到电击伤害时，双方都会承受被攻击个体的 50% 电击伤害！
 Lightning Rod: Gain significantly boosted electric resist.
 避雷针：大幅增加电击抗性。
 Drenched: Grants fire resist, ice/electric weakness, and makes you conductive.
 潮湿：提高火焰抗性，但降低对寒冰和电击的抗性，并获得导电。
+
 Chilled: The cold makes it hard to move! You are slowed.
 寒冷：寒冷使得移动变得困难！降低移动速度。
 Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
@@ -1442,16 +1454,19 @@ Unsteady: You're on loose footing. You are easier to hit and are slowed.
 不稳定：你站在不牢固的地面上。你更容易被击中，并且降低移动速度。
 Ignore Ice Tiles
 忽略寒冰效果
+
 Ignited: You are dealing fire damage to yourself and nearby enemies!
 燃烧：你对自己和附近的敌人造成火焰伤害！
 You are on fire and taking damage!
 你正在燃烧并受到伤害！
+
 Arcane Power: Deals bonus damage when you hit an enemy.
 奥术之力：当你击中敌人时，造成额外的伤害。
 Arcane Protection: Reduces damage taken, and deals retaliation damage.
 奥术保护：减少所受伤害，并反弹给造成伤害的敌人。
 Arcane Cunning: You turn invisible briefly after attacking.
 奥术之灵：你在攻击后短暂变得隐形。
+
 -MP Cost (Fire)
 减少火焰法术的 MP 消耗
 -MP Cost (Air)
@@ -1460,6 +1475,7 @@ Arcane Cunning: You turn invisible briefly after attacking.
 减水法术的 MP 消耗
 -MP Cost (Earth)
 减少岩法术的 MP 消耗
+
 Slime Form: You gain bonuses and can slip through bars!
 粘液形态：你获得一些加成，并能穿过栅栏！
 Shroud: Visibility decreased, evasion increased.
