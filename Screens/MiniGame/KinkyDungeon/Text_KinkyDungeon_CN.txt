@@ -1401,7 +1401,7 @@ Your legs are free and unimpeded.
 You are gagged! Verbal miscast chance is increased and your potions are less effective!
 你的嘴巴被口球堵住了，施放言语法术的失败几率增加，而且药剂的效果减弱！
 Your mouth is totally filled! You can't drink potions and cant cast verbal spells!
-你的嘴巴被死死的填满，无法施放言语法术和饮用药剂！
+你的嘴巴被堵的死死的，无法施放言语法术和饮用药剂！
 Spell Empowerment!
 法术强化！
 Let there be light!
