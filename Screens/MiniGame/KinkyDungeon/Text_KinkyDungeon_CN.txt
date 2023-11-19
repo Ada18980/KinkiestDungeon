@@ -1782,7 +1782,7 @@ Table
 Table
 桌子
 Shrine
-神龛
+神泉
 Closed Door
 关门
 Open Door
@@ -1796,7 +1796,7 @@ Bed
 Bars
 栅栏
 Ruined Shrine
-毁坏的神龛
+毁坏的神泉
 Orb Altar
 珠宝祭坛
 Empty Altar
@@ -4831,7 +4831,7 @@ Illusions
 Commerce
 商业
 Shrine of SHRINETYPE
-SHRINETYPE神龛
+SHRINETYPE 神泉
 Goddess Blessing: 
 女神祝福：
 Goddess Curse: 
@@ -4915,16 +4915,27 @@ Drink
 喝
 Bottle
 瓶子
+You have no restraints to 'offer' to the goddess.
+你可以毫无限制地向女神“献祭”。
+This shrine's mana pool is empty.
+该神泉的法力池已空。
+You drink from the pool and and absorb its energies.
+你饮用池中的水并吸收池中的能量。
+You absorb the pool's energies through your face.
+你通过脸部吸收泉水的能量。
+You collect what mana you can in a bottle.
+你可以在瓶子里收集尽可能多的法力。
 You drink from the pool and your mana is restored.
 你从池子里喝下泉水，你的法力就会恢复。
 You drink again, but you feel as if you are trespassing.
 你再次喝下泉水，但你觉得你好像在冒犯。
 You drink again, knowing the risk this may entail...
-你又喝了，知道这可能带来风险......
+你又喝了一次，知道这可能带来风险......
 You have angered the goddess of TYPE!!!
 你惹怒了TYPE女神！！！
 The slime washes off in the fountain!!!
 粘液在喷泉中被冲洗掉了！！！
+
 The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)
 女神提供了一个 ItemTraded for ItemCost (NumCurrent/NumMax)
 Next Offer
