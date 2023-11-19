@@ -3430,6 +3430,20 @@ The wolfgirl trainer squeezes your breasts playfully! (DamageTaken)
 狼女训练师玩弄地挤你的胸！ (DamageTaken)
 The wolfgirl trainer secures you in training gear! (+RestraintAdded)
 狼女训练师给你穿上了训练装备！ （+RestraintAdded）
+The wolfgirl trainer pins you and skillfully locks all of your restraints!
+狼女训练师将你钉住，并巧妙地锁住你所有的束缚具！
+
+Trainer's Apprentice
+训练师学徒
+The trainer's apprentice escapes!
+训练师学徒逃跑了！
+The trainer's apprentice rubs her claws across your chest playfully! (DamageTaken)
+训练师学徒用爪子顽皮地摩擦着你的胸！（DamageTaken）
+The trainer's apprentice secures you in training gear! (+RestraintAdded)
+训练师学徒为你提供训练装备！（+RestraintAdded）
+The trainer's apprentice adds a lock to your restraints.
+训练师学徒给你的束缚具加了一把锁。
+
 The drone uses a short-ranged electrocution attack! (DamageTaken)
 无人机使用短程电击攻击！ (DamageTaken)
 The drone fizzles and falls to the ground!
@@ -11124,11 +11138,11 @@ I will be a good girl!
 (The SPEAKER approaches you in your cell)|Back again, are we? Silly girl.|You know we don't take no for an answer.
 （SPEAKER 在你的牢房里接近你）|又回来了，是吗？傻丫头。|你知道我们不会停你的回答的。
 (The SPEAKER smiles back)|I'm glad you're enjoying yourself.|However, your behavior is still unacceptable.|You need to learn some respect.
-（SPEAKER回以微笑）|我很高兴你玩得开心。|但是，你的行为仍然是不可接受的。|你需要学会尊重。
+（SPEAKER 回以微笑）|我很高兴你玩得开心。|但是，你的行为仍然是不可接受的。|你需要学会尊重。
 (The SPEAKER chuckles)|Looks like you're enjoying your restraints?|Let's make them tighter, shall we?
-（SPEAKER轻笑）|看起来你很享受你的束缚？|让我们把它们收紧，好吗？
+（SPEAKER 轻笑）|看起来你很享受你的束缚？|让我们把它们收紧，好吗？
 (The SPEAKER shrugs)|Well, I hope you learn.
-（SPEAKER耸了耸肩）|好吧，我希望你得到了应有的教训。
+（SPEAKER 耸了耸肩）|好吧，我希望你得到了应有的教训。
 (Giggle and smile)
 （傻笑和微笑）
 (Giggle and moan)
@@ -11142,7 +11156,55 @@ Why don't you wear it instead? (OFFPERC chance, may aggro)
 (Point to her instead) (OFFPERC chance, may aggro)
 （指向她）（OFFPERC 机会，可能会引起敌对）
 (The SPEAKER blushes and accepts)
-（说话人脸红了接受）
+（SPEAKER 脸红并接受）
+(The SPEAKER looks at you curiously)|Oh, you'd be perfect!|Would you please model my latest design?
+（SPEAKER 好奇地看着你）|哦，你好完美！|你能为我的最新设计做模特吗？
+(The SPEAKER holds up a restrictive outfit)|This RESTRAINT might be a tight fit|so hold still while I lace it~
+（SPEAKER 举起了一件有着束缚性的衣服）|这件 RESTRAINT 可能是紧身的|所以我系在束紧它时请保持不动~
+(The SPEAKER giggles)|It looks even better than I thought!|Thank you girl~
+（SPEAKER 咯咯笑）|看起来比我想象的还要好！|谢谢你，女孩~
+(The SPEAKER sighs and moves away)|Such a shame...
+（SPEAKER 叹了口气，走开）|真可惜……
+(The SPEAKER looks disappointed)|Guess I'll find someone else then...
+（SPEAKER 看起来很失望）|我想我会去找其他人......
+(The SPEAKER pouts)|But I just have to see how you look in it!
+（SPEAKER 撅起嘴）|但我只是想看看你穿起来是什么样子嘛！
+(The SPEAKER smiles)|Maybe you'll change your mind when it's on~
+（SPEAKER 微笑）|也许当它开启时你会改变主意的哦~
+(The SPEAKER grumbles)|...fine, but you'd look cute~
+（SPEAKER 嘟囔）|...好吧，但你看起来很可爱嘛~
+(The SPEAKER looks bemused)|Changed your mind?|It does look good on you though~
+（SPEAKER 一脸困惑）|改变主意了？|不过你穿起来确实不错~
+(The SPEAKER snaps her fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
+（SPEAKER 打了个响指）|（你感觉到 RESTRAINT 神奇地出现在你身上）|啊哈！真精彩！你可以走了~
+
+Yes please!
+是的！
+(Nod enthusiastically)
+（热情点头）
+I don't have time for this.
+我没有时间做这个。
+(Shake your head)
+（摇头）
+
+Of course miss.
+当然，小姐。
+(Nod again)
+（再次点头）
+Actually, I'd rather not.
+事实上，我宁愿不。
+(Shake your head)
+（摇头）
+
+Fine, I guess.
+好吧，我想。
+(Giggle and nod)
+（咯咯笑并点头）
+Wait! That's too much! (PERCENT chance to avoid)
+等等！这太过分了！（有 PERCENT 的机会避免）
+(Shake your head and moan) (PERCENT chance to avoid)
+（摇头并呻吟）（有 PERCENT 的机会避免）
+
 (Shake your head)
 （摇头）
 (Nod again)
@@ -11478,9 +11540,9 @@ Go away! (PERCENT chance to avoid)
 (The SPEAKER perks her ears as she sees you)|You've got a nice body.|I think it'll do better with some training!
 （SPEAKER一看到你就竖起耳朵）|你的体型很完美。|我想通过一些训练会做得更好！
 (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
-（SPEAKER 咧嘴笑着递给你一张纸）|Nevermere Training 一直在寻找新人！|你只需要在这里签字……
+（SPEAKER 咧嘴笑着递给你一张纸）|Nevermere 训练师一直在寻找新人！|你只需要在这里签字……
 (The SPEAKER gets you suited up)|There you go! Now go be a good girl!
-（SPEAKER让你穿上衣服）|你去！现在去做一个好女孩吧！
+（SPEAKER让你穿上衣服）|现在去！去做一个好女孩吧！
 (The SPEAKER scoffs)|That's what they all say.
 （SPEAKER 嗤笑）|他们都是这么说的。
 (The SPEAKER frowns)|What a shame.
