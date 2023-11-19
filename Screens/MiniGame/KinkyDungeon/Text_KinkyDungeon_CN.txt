@@ -11388,6 +11388,8 @@ Wait! That's too much! (PERCENT chance to avoid)
 (Shake your head and moan) (PERCENT chance to avoid)
 （摇头并呻吟）（有 PERCENT 的机会避免）
 
+(Wiggle excitedly)
+（兴奋地扭动）
 (Shake your head)
 （摇头）
 (Nod again)
