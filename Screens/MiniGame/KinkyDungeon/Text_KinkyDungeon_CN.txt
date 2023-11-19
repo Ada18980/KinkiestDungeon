@@ -4391,6 +4391,113 @@ The toad pulls you with its tongue!!!
 蟾蜍用舌头拉扯你！！！
 The toad licks you!
 蟾蜍在舔你！
+
+Shadow Hand
+影之手
+The shadow hand retreats into the darkness...
+影之手退入黑暗之中……
+The shadow hand latches onto you!! (+RestraintAdded)
+影之手抓住了你！！（+RestraintAdded）
+The shadow hand stretches its fingers across your body! (DamageTaken)
+影之手将手指伸过你的身体！（DamageTaken）
+A dark hand stretches out beyond the shadows...
+一只漆黑的手从阴影中伸出……
+Several dark hands emerge from the shadows!
+几只漆黑的手从阴影中浮现出来！
+
+Corrupted Adventurer
+堕落的冒险家
+The corrupted adventurer falls into a deep sleep.
+堕落的冒险家陷入了沉睡。
+The corrupted aventurer's many arms latch onto you! (+RestraintAdded)
+堕落的冒险家伸出许多手臂抓住了你！（+RestraintAdded）
+The corrupted aventurer clicks a lock on from behind you! (DamageTaken)
+堕落的冒险家从你身后锁上了一把锁！（DamageTaken）
+The corrupted adventurer drags her chilling fingers across your vulnerable skin! (DamageTaken)
+堕落的冒险家用她冰冷的手指划过你脆弱的皮肤！（DamageTaken）
+
+Shadowy Ghast
+阴暗恶魂
+The shadowy ghast screeches and disappears...
+阴暗的恶魂尖叫一声，消失了……
+The shadowy ghast latches onto you with its long arms! (+RestraintAdded)
+阴暗的恶魂用长长的手臂抓住了你！（+RestraintAdded）
+The shadowy ghast grips you in its chilling embrace! (DamageTaken)
+阴暗的恶魂用冰冷的怀抱紧紧抓住你！（DamageTaken）
+
+Corrupted Elemental
+腐化元素
+The corrupted elemental dissolves into shadows.
+腐化的元素溶解成阴影。
+The corrupted elemental reaches out and touches you, forming metallic restraints! (+RestraintAdded)
+腐化的元素伸出手来触碰你，形成金属束缚！（+RestraintAdded）
+The corrupted elemental uses its chains to lock your restraints! (DamageTaken
+腐化的元素用它的锁链锁住你的束缚！（DamageTaken）
+The corrupted elemental grips you and drains your willpower! (DamageTaken)
+腐化的元素抓住你并耗尽你的意志力！（DamageTaken）
+
+Star Demon
+星魔
+The star demon is exorcised.
+星魔被驱除。
+The star demon places you in shining, starry restraints. (+RestraintAdded)
+星魔将你置于闪亮的星光束缚之中。（+RestraintAdded）
+The demon giggles as it locks your restraints! (DamageTaken)
+恶魔咯咯地笑着锁住了你的束缚！（DamageTaken）
+The star demon places you under its curse! (DamageTaken)
+星魔将你置于它的诅咒之下！（DamageTaken）
+The strings of fate glisten and wrap around you!
+命运之线闪闪发光，缠绕着你！
+Many shining strings surround you!
+许多闪亮的丝线围绕着你！
+Stepping outside of the indicated tiles will result in punishment!
+走出指定的方块将会受到惩罚！
+Bindings of Fate
+命运的束缚
+
+Moon Demon
+月魔
+The moon demon is exorcised.
+月魔已被驱除。
+The moon demon places you in shining, starry restraints. (+RestraintAdded)
+月魔将你置于闪亮、繁星的束缚之中。（+RestraintAdded）
+The moon demon places you under its curse! (DamageTaken)
+月魔将你置于它的诅咒之下！（DamageTaken）
+The weight of inescapable bondage falls upon you! (DamageTaken)
+无法避免的束缚的重量落在你身上！（DamageTaken）
+The demon giggles as it locks your restraints! (DamageTaken)
+恶魔咯咯地笑着锁住了你的束缚！（DamageTaken）
+Crushing Fate
+粉碎的命运
+
+Void Demon
+虚空恶魔
+The void demon is exorcised.
+虚空恶魔已被驱除。
+The void demon places you in dark, glassy restraints. (+RestraintAdded)
+虚空恶魔将你置于黑暗、玻璃般的束缚之中。（+RestraintAdded）
+The void demon places you under its curse! (DamageTaken)
+虚空恶魔将你置于它的诅咒之下！（DamageTaken）
+You are sucked in by a powerful gravitational force!!! (DamageTaken)
+你被强大的引力吸住了！！！（DamageTaken）
+You are sucked in by a powerful gravitational force!!!
+你被强大的引力吸住了！！！
+The demon cracks its knuckles as it locks your restraints! (DamageTaken)
+当恶魔锁住你的束缚时，指关节会发出响声！（DamageTaken）
+Cosmic Force
+宇宙的力量
+
+Demon
+恶魔
+The demon is exorcised.
+恶魔已被驱除。
+The demon places you in dark, glassy restraints. (+RestraintAdded)
+恶魔将你置于黑暗、玻璃般的束缚之中。（+RestraintAdded）
+The demon giggles as it locks your restraints! (DamageTaken)
+恶魔咯咯地笑着锁住了你的束缚！（DamageTaken）
+The demon whacks you with its mace! (DamageTaken)
+恶魔用狼牙棒猛击你！（DamageTaken）
+
 Tickle Hand
 挠痒痒的手
 The hand vanishes!
@@ -4404,7 +4511,7 @@ The tickle terror vanishes... for now
 The monstrous spirit tickles you mercilessly!!! (DamageTaken)
 恶灵在无情地挠你！！！ (DamageTaken)
 The monstrous spirit binds you to make you more vulnerable! (+RestraintAdded)
-恶灵拘束了你，并让你更加脆弱！ （+RestraintAdded）
+恶灵拘束了你，并让你更加脆弱！（+RestraintAdded）
 Hug Horror
 拥抱恶魂
 The hug horror vanishes... for now
