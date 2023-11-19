@@ -4895,6 +4895,8 @@ Armor
 盔甲
 Special
 特别
+Anti-Magic
+反魔法
 Enchanted
 附魔
 Mundane
