@@ -3649,31 +3649,33 @@ Skeleton
 The skeleton falls to pieces.
 骷髅碎了。
 The Skeleton restrains you! (+RestraintAdded)
-骷髅束缚了你！ （+RestraintAdded）
+骷髅束缚了你！（+RestraintAdded）
 The Skeleton tackles you! (DamageTaken)
-骷髅在攻击你！ (DamageTaken)
+骷髅在攻击你！（DamageTake）
 Ghost
 幽灵
 The ghost vanishes.
 幽灵消失了。
 The Ghost restrains you! (+RestraintAdded)
-幽灵束缚了你！ （+RestraintAdded）
+幽灵束缚了你！（+RestraintAdded）
+The Ghost enters your clothing and vanishes!
+幽灵进入了你的衣服然后消失！
 Revenant
 亡魂
 The revenant pouts as it vanishes.
 亡魂生气的消失了。
 The revenant restrains you! (+RestraintAdded)
-亡灵束缚了你！ （+RestraintAdded）
+亡灵束缚了你！（+RestraintAdded）
 The revenant squeezes your breasts! (DamageTaken)
-亡魂在揉捏你的胸！ (DamageTaken)
+亡魂在揉捏你的胸！（DamageTaken）
 The revenant grabs you and caresses your tummy! (DamageTaken)
-亡魂抓住了你，抚摸你的肚子！ (DamageTaken)
+亡魂抓住了你，抚摸你的肚子！（DamageTaken）
 Skeleton Warrior
 骷髅战士
 The skeleton warrior collapses and falls into pieces.
 骷髅战士倒地，摔成碎片。
 The Skeleton lands a wide, crippling blow! (DamageTaken)
-骷髅对周围进行了致命一击！ (DamageTaken)
+骷髅对周围进行了致命一击！（DamageTaken）
 The Skeleton leashes you!
 骷髅牵着你！
 Skeleton Knight
@@ -3681,25 +3683,25 @@ Skeleton Knight
 The skeleton knight collapses and falls into pieces.
 骷髅骑士倒下，化为碎片。
 The skeleton apprehends you and pins you with the haft of its axe! (DamageTaken)
-骷髅抓住了你，并用它的斧柄钉住了你！ (DamageTaken)
+骷髅抓住了你，并用它的斧柄钉住了你！（DamageTaken）
 The skeleton grabs you and slips a black cuff on! (+RestraintAdded)
-骷髅抓住你并套上黑色手铐！ （+RestraintAdded）
+骷髅抓住你并套上黑色手铐！（+RestraintAdded）
 Vine Plant
 藤蔓
 The plant leaks purple juices everywhere as it wilts.
 这种植物在枯萎紫色汁液流的到处都是。
 The vine plant whips you with its tendrils! (DamageTaken)
-藤本植物用它的卷须鞭打你！ (DamageTaken)
+藤本植物用它的卷须鞭打你！（DamageTaken）
 The vine plant wraps its tendrils around you! (+RestraintAdded)
-藤蔓植物将卷须缠绕在您周围！ （+RestraintAdded）
+藤蔓植物将卷须缠绕在您周围！（+RestraintAdded）
 The vine plant grips you tightly! (DamageTaken)
-藤本植物紧紧抓住你！ (DamageTaken)
+藤本植物紧紧抓住你！（DamageTaken）
 Bramble
 荆棘
 The brambles are hacked away.
 荆棘被砍掉了。
 The bramble snares you! (DamageTaken)
-荆棘缠住了你！ (DamageTaken)
+荆棘缠住了你！（DamageTaken）
 The red liquid bubbles and several round slimes pop out!
 红色的液体开始冒泡，几团圆形的粘液团跳了出来！
 The red liquid bubbles and a round slime pops out!
@@ -3719,17 +3721,17 @@ Red Slime
 The red slime bounces away.
 红色粘液团弹跳着离开了。
 The red slime bounces off you! (DamageTaken)
-红色粘液团撞到了你身上！ (DamageTaken)
+红色粘液团撞到了你身上！（DamageTaken）
 The slime shoves itself into your mouth! (+RestraintAdded)
-粘液自己塞进了你的嘴里！ （+RestraintAdded）
+粘液自己塞进了你的嘴里！（+RestraintAdded）
 Slime
 粘液
 The slime melts into a puddle.
 粘液融化成了一摊水。
 The sticky slime splashes against you! (DamageTaken)
-粘稠的粘液泼到你身上！ (DamageTaken)
+粘稠的粘液泼到你身上！（DamageTaken）
 The slime attaches itself to your body! (+RestraintAdded)
-粘液附着在你的身体上！ （+RestraintAdded）
+粘液附着在你的身体上！（+RestraintAdded）
 The slime melts into a puddle.
 粘液融化成了一摊水。
 Fast Slime
@@ -3737,17 +3739,17 @@ Fast Slime
 The slime melts into a puddle.
 粘液融化成了一摊水。
 The sticky slime leaps and splashes against you! (DamageTaken)
-粘稠的粘液跳跃并溅到你身上！ (DamageTaken)
+粘稠的粘液跳跃并溅到你身上！（DamageTaken）
 The slime leaps and attaches itself to your body! (+RestraintAdded)
-粘液跳跃并附着在你的身体上！ （+RestraintAdded）
+粘液跳跃并附着在你的身体上！（+RestraintAdded）
 Large Slime
 大粘液团
 The large slime splits apart!
 巨大的粘液团裂开了！
 The sticky slime splashes against you! (DamageTaken)
-粘稠的粘液泼到你身上！ (DamageTaken)
+粘稠的粘液泼到你身上！（DamageTaken）
 The slime spreads to your body! (+RestraintAdded)
-粘液扩散到你的身体！ （+RestraintAdded）
+粘液扩散到你的身体！（+RestraintAdded）
 A group of slimes jump out!
 粘液团分裂成许多更小的液滴！
 Skeleton
@@ -3755,7 +3757,7 @@ Skeleton
 The Skeleton falls into pieces.
 骷髅碎成了碎片。
 The Skeleton restrains you! (+RestraintAdded)
-骷髅束缚了你！ （+RestraintAdded）
+骷髅束缚了你！（+RestraintAdded）
 The Skeleton latches onto you!
 骷髅锁在你身上！
 Rope Tentacle
@@ -3763,103 +3765,103 @@ Rope Tentacle
 The rope kraken retreats its tentacle.
 绳妖收回了它的触手。
 The rope kraken squeezes you with one of its tentacles! (DamageTaken)
-绳妖用它的一根触手压迫你！ (DamageTaken)
+绳妖用它的一根触手压迫你！（DamageTaken）
 Rope Kraken
 绳妖
 The rope kraken devolves into a bundle of premium bondage rope.
 绳妖演变成一束优质束缚绳索。
 The rope kraken tightly cinches itself around your body! (DamageTaken)
-绳妖的绳子紧紧地缠绕在你的身体上！ (DamageTaken)
+绳妖的绳子紧紧地缠绕在你的身体上！（DamageTaken）
 Magic Rope
 魔绳
 The magic rope returns to being a normal rope.
 魔绳变回普通绳索。
 The magic rope wraps itself tightly around your body! (+RestraintAdded)
-魔绳紧紧地缠绕在你的身体上！ （+RestraintAdded）
-The magic rope wriggles into your outfit! (DamageTaken)
-魔绳蠕动到你的衣服里！ (DamageTaken)
+魔绳紧紧地缠绕在你的身体上！（+RestraintAdded）
+The magic rope wriggles into your outfit!（DamageTaken）
+魔绳蠕动到你的衣服里！（DamageTaken）
 Cloud of Feathers
 一团羽毛
 The feathers fall to the floor.
 羽毛掉到地上。
 The feathers tickle you mercilessly! (DamageTaken)
-羽毛无情地挠你痒痒！ (DamageTaken)
+羽毛无情地挠你痒痒！（DamageTaken）
 Cloud of Scarves
 一团围巾
 The scarves become knotted and fall to the floor.
 围巾打结并掉到地板上。
 The scarves wrap themselves around you! (+RestraintAdded)
-围巾包裹了你！ （+RestraintAdded）
+围巾包裹了你！（+RestraintAdded）
 The scarves rub against your body, tickling you! (DamageTaken)
-围巾摩擦你的身体，让你发痒！ (DamageTaken)
+围巾摩擦你的身体，让你发痒！（DamageTaken）
 Cloud of Ribbons
 一团丝带
 The ribbons knot themselves in a bow and fall to the floor.
 丝带结成蝴蝶结，掉到地上。
 The ribbons wrap themselves around you! (+RestraintAdded)
-丝带包裹了你！ （+RestraintAdded）
+丝带包裹了你！（+RestraintAdded）
 The ribbons wrap themselves around you! (DamageTaken)
-丝带包裹了你！ (DamageTaken)
+丝带包裹了你！（DamageTaken）
 Gravitating Gag
 诱惑的口球
 The gag buckles itself in place and falls.
 口球停在原地并掉在地上。
 The gravitating gag wedges itself firmly in your mouth and buckles itself! (+RestraintAdded)
-诱惑的口球牢牢地塞进你的嘴里，然后自己扣住！ （+RestraintAdded）
+诱惑的口球牢牢地塞进你的嘴里，然后自己扣住！（+RestraintAdded）
 Seductive Shackles
 诱惑的镣铐
 The shackles' chain breaks as they fall to the floor.
 镣铐的链子掉到地上，断了。
 The shackles force themselves around your limbs and click tightly! (+RestraintAdded)
-镣铐将自己强行缠绕在您的四肢上并紧紧地咔哒一声锁住了！ （+RestraintAdded）
+镣铐将自己强行缠绕在您的四肢上并紧紧地咔哒一声锁住了！（+RestraintAdded）
 The shackles click seductively in your face... (DamageTaken)
-镣铐在你面前咔哒咔哒作响……（-DamageTaken SP）
+镣铐在你面前咔哒咔哒作响……（DamageTaken）
 Lurid Legbinder
 可怕的绑腿
 The legbinder unravels.
 绑腿解开了。
 The legbinder zips itself around your legs and squeezes them together! (+RestraintAdded)
-绑腿会自动拉合住你的双腿，并将它们挤压在一起！(+RestraintAdded)
+绑腿会自动拉合住你的双腿，并将它们挤压在一起！（+RestraintAdded）
 The legbinder wraps around and squeezes your body! (DamageTaken)
-绑腿包裹并挤压你的身体！ (DamageTaken)
+绑腿包裹并挤压你的身体！（DamageTaken）
 Bratty Blindfold
 顽皮的眼罩
 The blindfold floats to the floor.
 眼罩飘到地板上。
 The blindfold buckles itself tightly around your head! (+RestraintAdded)
-眼罩紧紧地扣在你的头上！ (+RestraintAdded)
+眼罩紧紧地扣在你的头上！(+RestraintAdded)
 The blindfold crawls over your helpless face! (DamageTaken)
-眼罩在你无助的脸上爬行！ (DamageTaken)
+眼罩在你无助的脸上爬行！（DamageTaken）
 Amorous Armbinder
 色情的束手套
 The armbinder flops to the floor.
 束手套扑通一声倒在地板上。
 The armbinder slips itself around your arms and pushes your elbows together! (+RestraintAdded)
-束手套会绕着你的手臂滑动，并将你的肘部挤压到一起！ (+RestraintAdded)
+束手套会绕着你的手臂滑动，并将你的肘部挤压到一起！（+RestraintAdded）
 The armbinder rubs itself all over your body! (DamageTaken)
-束手套在你身上摩擦！(DamageTaken)
+束手套在你身上摩擦！（DamageTaken）
 Stringent Straitjacket
 严格的紧身衣
 The straitjacket falls apart.
 紧身衣散开了。
 The straitjacket slips itself on over your head and pulls your arms close to your body! (+RestraintAdded)
-紧身衣会在你的头上滑动，并将你的手臂拉到身体附近！ (+RestraintAdded)
+紧身衣会在你的头上滑动，并将你的手臂拉到身体附近！（+RestraintAdded）
 The straitjacket squeezes you tightly! (DamageTaken)
-紧身衣把你挤得紧紧的！ (DamageTaken)
+紧身衣把你挤得紧紧的！（DamageTaken）
 Brusque Belt
 粗暴的贞操带
 The chastity belt falls to the floor with a clang.
 贞操带哐当一声掉在地上。
 The chastity belt secures itself around your waist! (+RestraintAdded)
-贞操带系在了你的腰上！(+RestraintAdded)
+贞操带系在了你的腰上！（+RestraintAdded）
 The chastity belt buzzes against your body alluringly! (DamageTaken)
-贞操带在你诱人的身体上发出了嗡嗡声！(DamageTaken)
+贞操带在你诱人的身体上发出了嗡嗡声！（DamageTaken）
 Yammering Yoke
 咆哮的枷锁
 The yoke falls to the floor with a loud clang.
 枷锁掉落在地板上，发出一声巨响。
 The yoke clasps your arms tightly and forces them to the sides! (+RestraintAdded)
-枷锁紧紧地扣住你的手臂，迫使它们向两侧移动！（+RestraintAdded）
+枷锁紧紧地扣住你的手臂，迫使它们向两侧移动（+RestraintAdded）
 The yoke makes alluring clicking noises! (DamageTaken)
 枷锁发出诱人的咔哒声！（DamageTaken）
 Haughty Harness
@@ -3867,19 +3869,19 @@ Haughty Harness
 The harness unravels.
 束衣解开了。
 The harness buckles itself tightly around your body! (+RestraintAdded)
-束衣紧紧地扣在你身上！ (+RestraintAdded)
+束衣紧紧地扣在你身上！（+RestraintAdded）
 The harness wraps itself around your body and squeezes! (DamageTaken)
-束衣缠绕在你的身体上并挤压！ (DamageTaken)
+束衣缠绕在你的身体上并挤压！（DamageTaken）
 Levitating Locks
 悬浮锁
 The locks and chains fall to the floor in a loud crash.
 锁和锁链掉到地上，发出一声巨响。
 A lock clicks itself onto one of your restraints! (+RestraintAdded)
-一把锁自动锁在了在你的一个拘束具上！ （+RestraintAdded）
+一把锁自动锁在了在你的一个拘束具上！（+RestraintAdded）
 A chain locks itself in place on your body! (DamageTaken)
-一条铁链将自己锁定在您的身体上！ (DamageTaken)
+一条铁链将自己锁定在您的身体上！（DamageTaken）
 The floating locks and chains rub themselves across your body! (DamageTaken)
-浮动锁和链条在您的身体上摩擦！ (DamageTaken)
+浮动锁和链条在您的身体上摩擦！（DamageTaken）
 Masterful Lock
 大师锁
 The lock falls to the floor, disenchanted.
@@ -3893,39 +3895,39 @@ Conjured Gag
 The conjured gag buckles itself in place and falls.
 被咒术口球卡在原地并掉了下来。
 The gag wedges itself firmly in your mouth and buckles itself! (+RestraintAdded)
-口球牢牢地塞进你的嘴里，然后自己扣住！ （+RestraintAdded）
+口球牢牢地塞进你的嘴里，然后自己扣住！（+RestraintAdded）
 The gag rubs itself against you! (DamageTaken)
-口球在你身上摩擦！ (DamageTaken)
+口球在你身上摩擦！（DamageTaken）
 Learned Rope
 学徒绳索
 The learned rope untangles into a mess of rope.
 绳索解开成一堆乱七八糟的绳索。
 The magic rope wraps itself intricately around your body! (+RestraintAdded)
-魔绳错综复杂地缠绕在你的身体上！ （+RestraintAdded）
+魔绳错综复杂地缠绕在你的身体上！（+RestraintAdded）
 The magic rope wriggles into your outfit! (DamageTaken)
-魔绳蠕动到你的衣服里！ (DamageTaken)
+魔绳蠕动到你的衣服里！（DamageTaken）
 Unforseen Rope
 袭击绳索
 The unforseen rope is gone... or is it?
 袭击绳索消失了……是吗？
 The unforseen rope wraps itself clandestinely around your body! (+RestraintAdded)
-袭击绳索悄悄地缠绕在你的身体上！ （+RestraintAdded）
+袭击绳索悄悄地缠绕在你的身体上！（+RestraintAdded）
 The unforseen rope wriggles into your outfit! (DamageTaken)
-袭击绳索会蠕动到你的装备中！ (DamageTaken)
+袭击绳索会蠕动到你的装备中！（DamageTaken）
 Monster Rope
 怪物绳索
 The monster rope bundle collapses into a pile of ropes.
 怪物绳束坍塌成一堆绳索。
 The magic rope wraps itself overwhelmingly around your body! (+RestraintAdded)
-魔绳以压倒性的方式缠绕在你的身体上！ （+RestraintAdded）
+魔绳以压倒性的方式缠绕在你的身体上！（+RestraintAdded）
 The magic rope wriggles into your outfit! (DamageTaken)
-魔绳蠕动到你的衣服里！ (DamageTaken)
+魔绳蠕动到你的衣服里！（DamageTaken）
 Shock Witch
 电击女巫
 The shock witch vanishes into a cloud of thunder, leaving behind a keyring.
 电击女巫消失在雷云中，留下一个钥匙圈。
 The witch restrains you! (+RestraintAdded)
-女巫束缚了你！(+RestraintAdded)
+女巫束缚了你！（+RestraintAdded）
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
 女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
 The witch slaps you playfully! (DamageTaken)
@@ -3935,7 +3937,7 @@ Flame Witch
 The flame witch vanishes into a pile of ash.
 火焰女巫消失在一堆灰烬中。
 The witch restrains you! (+RestraintAdded)
-女巫束缚了你！(+RestraintAdded)
+女巫束缚了你！（+RestraintAdded）
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
 女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
 The witch slaps you playfully! (DamageTaken)
@@ -3945,7 +3947,7 @@ Earth Witch
 The earth witch vanishes into a pile of ash.
 火焰女巫消失在一堆灰烬中。
 The witch restrains you! (+RestraintAdded)
-女巫束缚了你！(+RestraintAdded)
+女巫束缚了你！（+RestraintAdded）
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
 女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
 The witch slaps you playfully! (DamageTaken)
@@ -3955,7 +3957,7 @@ Water Witch
 The water witch vanishes into a pile of ash.
 水之女巫消失在一堆灰烬中。
 The witch restrains you! (+RestraintAdded)
-女巫束缚了你！(+RestraintAdded)
+女巫束缚了你！（+RestraintAdded）
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
 女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
 The witch slaps you playfully! (DamageTaken)
@@ -3965,7 +3967,7 @@ Ice Witch
 The ice witch vanishes into a pile of ash.
 冰之女巫消失在一堆灰烬中。
 The witch restrains you! (+RestraintAdded)
-女巫束缚了你！(+RestraintAdded)
+女巫束缚了你！（+RestraintAdded）
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
 女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
 The witch slaps you playfully! (DamageTaken)
