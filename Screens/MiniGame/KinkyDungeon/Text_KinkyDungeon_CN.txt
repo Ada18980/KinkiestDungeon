@@ -432,6 +432,125 @@ High Profile
 Several enemies on each map will be high value, rewarding more gold and items for defeating them but increasing their strength.
 每张地图上的几个敌人都会有很高的价值，击败他们会奖励更多的金币和物品，同时也会增强他们的力量。
 
+You apply the RSTR to the ENNME! (AMNT% bound)
+你将 RSTR 应用到 ENNME！（AMNT% 束缚）
++AMNT Bondage!
++AMNT 束缚
+TargetEnemy receives AMNT binding!
+TargetEnemy 受到 AMNT 捆绑！
+TargetEnemy is disabled and receives an increased AMNT binding!
+TargetEnemy 被禁用并收到附加的 AMNT 捆绑！
+TargetEnemy resists bondage and receives a reduced AMNT binding!
+TargetEnemy 抵抗捆绑并减少受到的 AMNT 捆绑！
+
+You need to target an NPC
+你需要瞄准一个NPC
+Target must be helpless.
+目标必须得是无助的。
+You steal the target's disguise!
+你窃取了目标的伪装！
+You remove your disguise.
+你卸下了你的窃取。
+You are already wearing that faction's disguise.
+你已经穿上了该派系的伪装。
+Steal Disguise
+窃取伪装
+Choose target to steal from
+选择要窃取的目标
+You steal the target's disguise!
+你窃取了目标的伪装！
+Steal's a helpless enemy's clothes, adding a great deal of distraction to her and stealing her disguise for yourself. Until you recast this on yourself, you gain a stealth bonus against members of the same faction.
+窃取无助的敌人的衣服，给她增添了很大的性奋值，同时也窃取了她的伪装给自己。除非你对自己重新施放这个，否则你会在对抗同一派系的成员时获得隐身奖励。
+
+Unstoppable (Ignore status/bondage)
+势不可挡（无视状态/束缚）
+Unflinching (Resist status/bondage)
+坚定不移（抵抗状态/束缚）
+Blindsight (See through walls)
+盲视（看穿墙壁）
+
+Mana Harvesting
+法力收获
+Defeating or capturing a spellcaster-type enemy recovers 10 arcane energy, reduced to 1 for other humanoids.
+击败或捕获施法者类型的敌人可恢复 10 点奥术能量，而其他类人生物则减少至 1 点。
+
+A powerful wind pushes you away!!!
+一阵强风把你吹走了！！！
+
+Staff of Ropes
+绳索权杖
+An enchanted rope kept in check by a magical seal. Surely this won't backfire...
+一根被魔法封印控制住的魔法绳子。这肯定不会适得其反...
++20% rope bindings applied. Deals chain damage. Active: Spend 25 mana to unleash the ropes in a wide AoE.
++20% 绳索束缚添加。造成连锁伤害。主动：花费 25 点法力在大范围内释放绳索。
+You pick up a staff of ropes. Finally, a way to contain its power!
+你拿起一根绳子。 终于找到了遏制其力量的方法！
+
+Staff of Belts
+皮带权杖
+Belts within belts, a fractal belt pattern buckled into oblivion.
+皮带套着皮带，一种分形的皮带图案被遗忘了。
++20% leather bindings applied. Leather spells apply debuffs for 30% longer. Deals chain damage. Active: Pull an enemy toward you and apply a small amount of bondage.
++20% 皮革束缚添加。皮革法术施加减益效果的时间延长 30%。造成连锁伤害。主动：将敌人拉向你并施加少量束缚。
+You pick up a staff of belts wrapped tightly in leather.
+你拿起一根用皮革紧紧包裹的皮带。
+
+Binding Lock
+束缚具锁
+A LKTYP lock clasps on to one of your restraints!
+LKTYP 锁锁在您的一个束缚具上！
+You are caught in a constricting field! (Dmgdlt)
+你陷入了一个狭窄的区域！（Dmgdlt）
+
+Resin Coating
+树脂涂层
+A layer of transparent resin derived from Green Latex. Unlike other forms of latex, this one is solid and fixes you in place.
+一层源自绿色乳胶的透明树脂。与其他形式的乳胶不同，这种乳胶是固体的，可以将你固定到位。
+It's like you're an art piece! If only you had some way to blast it off...
+就像你是一件艺术品！要是你有办法把它炸掉就好了……
+
+You hear a motor whirring...
+你听到马达嗡嗡作响...
+A bubble of latex envelops you!
+乳胶泡泡包裹着你！
+The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range.
+你周围的乳胶会限制你的攻击，减少 30% 的物理伤害并降低你的可视范围。
+
+Latex Bubble
+乳胶泡泡
+
+Lab Assistant
+实验室助理
+The assistant envelops herself in her own bubble for protection.
+助理将自己包裹在自己的泡泡中以求保护。
+The assistant restrains you! (+RestraintAdded)
+助理束缚了你！（+RestraintAdded）
+The assistant gropes you playfully! (DamageTaken)
+助理调皮地抚摸你！（DamageTaken）
+The assistant applies a lock! (DamageTaken)
+助理为你上了锁！（DamageTaken）
+The assistant splashes a solvent in your face, blinding you! (DamageTaken)
+助理把溶剂泼到你的脸上，让你致盲了！（DamageTaken）
+
+Glue Bomb
+胶水炸弹
+
+Glue Technician
+胶水技师
+The technician screams and runs.
+技师尖叫着跑了。
+The technician slaps adhesive restraints onto your body! (+RestraintAdded)
+技师将将胶水束缚具粘在了你的身上！（+RestraintAdded）
+The technician polishes your restraints thoroughly! (DamageTaken)
+技师彻底打磨你的束缚具！（DamageTaken）
+The technician pours glue on you to make you stay still! (DamageTaken)
+技师将胶水倒在你身上，让你无法动弹！（DamageTaken）
+The technician inspects your restraints and adds a lock to spec! (DamageTaken)
+技师检查你的拘束具并按规格添加锁！（DamageTaken）
+
+Quite sticky, innit?
+很粘，不是吗？
+
 Stealth Mission
 隐匿任务
 You are harder to detect and there are more chests, but enemies have 50% more HP, are more evasive, and drop no gold.
@@ -4686,7 +4805,7 @@ Dresses
 Ties
 捆扎带
 Belts
-束腰带
+皮带
 Wrapping
 包裹物
 Cuffs
