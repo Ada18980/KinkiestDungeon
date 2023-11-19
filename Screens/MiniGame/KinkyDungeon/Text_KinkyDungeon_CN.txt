@@ -2258,8 +2258,8 @@ Divine
 神圣的
 Quantity:
 数量：
-Use Item (Consumes 1)
-使用物品（消耗 1 个）
+Use One
+使用一个
 way of the fist
 拳法之道
 Lockpick
