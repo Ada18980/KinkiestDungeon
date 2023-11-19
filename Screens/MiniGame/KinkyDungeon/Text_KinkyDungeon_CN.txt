@@ -5180,6 +5180,8 @@ The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)
 女神提供了一个 ItemTraded for ItemCost (NumCurrent/NumMax)
 Next Offer
 下一个交易
+Buy (press right)
+购买 (press right)
 Cost: ItemCostgp
 花费：ItemCostgp
 Consumable
@@ -7733,6 +7735,68 @@ Adjacent NPCs count as corners/hooks for purposes of escaping. After being restr
 相邻的NPC被视为用于逃生的角落/钩子。被束缚后，逃跑速度和力量增加12回合。如果你束缚自己，就会被移除。
 Struggling is improved and escape is quicker!
 挣扎能力提升，逃跑速度更快！
+Costs 100 Arcane Energy and refunds 100 Mana. Bringing memories to life, you call upon your magical knowledge to ignore arm, leg, and verbal spell components for 3 turns.
+花费 100 奥术能量并返还 100 法力。将记忆带入生活，无需手臂、腿和言语即可进行施法，持续 3 回合。
+You can ignore Arm, Leg, and Verbal components!
+您可以忽略手臂、腿和言语部分！
+Magical whisperings circle around you, enabling you to cast spells without components!
+魔法低语围绕在你周围，使你能够在无法进行任何行动的情况下施展法术！
+You don't have enough Arcane Energy. You need AMNT.
+你没有足够的奥术能量。你需要 AMNT。
+
+Chaotic Overflow
+混沌溢出
+Draw upon 25% of your max Willpower to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences...
+利用你最大意志力的 25% 在持续时间回合中忽略法术成分并完全恢复你的法力。能量是无法控制的，所以会产生某些后果……
+Chaotic energy flows through you!!!
+混乱的能量流过你的身体！！！
+You try to call forth the chaotic energy, but it isn't interested in you anymore...
+你试图召唤混沌能量，但它对你不再感兴趣了……
+You don't have enough Willpower. You need at least 25%.
+你的意志力不够。至少需要25%。
+You are already full of chaotic energy!
+你已经充满了混沌能量！
+Chaotic energy overtakes you, crystallizing into physical form...
+混乱的能量笼罩着你，结晶成物理形态……
+
+Chaotic energy flows through you! You have a bad feeling about this...
+混乱的能量在你体内流动！你有一种不好的预感……
+
+You find a shimmering macaron.
+你发现了一个闪闪发光的马卡龙。
+Heavenly Crunch Macaron
+神圣脆脆马卡龙
+You feel holy energy neutralizing the cursed magic...
+你感觉到神圣的能量中和了被诅咒的魔法......
+Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful.
+有人说它来自天堂的面包店。其他人则说它只是由实验室材料制成，实际上味道很糟糕。
+Unlocks a common cursed item and/or removes all curses from one currently worn item of your choice.
+解锁一件常见的被诅咒物品 和/或 选择你当前佩戴的一件物品，移除其的所有诅咒。
+
+Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)
+恭喜！ 你的持续惠顾为您赢得了|一（1）次往返最近的附属商店的机会！|只需进入传送门即可继续...|（女神对与使用此传送门有关的任何事故或欺诈概不负责）
+(You step through the portal. An unperturbed shopkeeper greets you.)|Another visitor? Oh, it's just you~
+（你跨过传送门。一位泰然自若的店主向你打招呼。）|又一位访客？哦，原来是你啊~
+(Enter the portal)
+（进入传送门）
+
+(It's the return portal)
+（这是用于返回的传送门）
+(You step through the portal and return to your adventure)
+（你穿过传送门并返回你的冒险）
+(Enter the portal)
+（进入传送门）
+
+Select a restraint to remove the curse from
+选择要解除诅咒的束缚
+You don't have any restraints that can be removed
+你没有任何可以解除的束缚
+
+As you are low on mana, you are unable to store Arcane Energy.
+由于你的法力不足，你无法储存奥术能量。
+You are recharging your next mana cost reduction.
+你正在为下一次的法力消耗减少充能。
+
 Windblast
 暴风
 You press your wrists together and conjure a blast of wind!
