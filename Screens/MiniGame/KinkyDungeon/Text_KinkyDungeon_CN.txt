@@ -4917,6 +4917,8 @@ Devices
 装置
 Toys
 玩具
+Toy
+玩具
 Collars
 项圈
 Straitjackets
