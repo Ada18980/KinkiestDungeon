@@ -3463,12 +3463,18 @@ The leather elemental wraps her long extremities around your body! (+RestraintAd
 皮革精灵使用她修长的四肢将你的身体捆绑起来！ （+RestraintAdded）
 The leather elemental strikes you with her leather belts! (DamageTaken)
 皮革精灵用她的皮带鞭打你！ (DamageTaken)
+The leather elemental clicks a lock onto your restraints! (DamageTaken)
+皮革精灵咔哒一声锁上了你的束缚具！（DamageTaken）
 Slime Enthusiast
 粘液爱好者
 The slime enthusiast screams and runs.
 粘液爱好者尖叫着奔跑。
 The slime enthusiast restrains you! (+RestraintAdded)
-粘液爱好者拘束了你！ （+RestraintAdded）
+粘液爱好者拘束了你！（+RestraintAdded）
+The slime enthusiast hugs you in a rubbery embrace! (DamageTaken)
+粘液爱好者用橡皮般的拥抱抱住了你！（DamageTaken）
+The slime enthusiast looks happy to make sure your restraints are secure! (DamageTaken)
+这位粘液爱好者看起来很高兴你的束缚具是安全的！（DamageTaken）
 Miner
 矿工
 The bandit tosses her pick to the ground and complains about her pay.
@@ -3477,28 +3483,62 @@ The miner restrains you! (+RestraintAdded)
 矿工拘束了你！ （+RestraintAdded）
 The miner pins you with the haft of her pickaxe! (DamageTaken)
 矿工用她的镐柄钉住你！ (DamageTaken)
+The miner pins you with the haft of her pickaxe and adds a lock! (DamageTaken)
+矿工用她的镐柄钉住你并加了一把锁！（DamageTaken）
 You hear a fuse going off...
 你听到引线在燃烧...
 Miner Bomb
 矿工炸弹
 Bandit
 盗贼
-Bandit
-盗贼
 The bandit collapses.
 盗贼崩溃了。
 The bandit restrains you! (+RestraintAdded)
-盗贼拘束了你！（+RestraintAdded）
+盗贼束缚了你！（+RestraintAdded）
+The bandit smiles and applies a lock! (DamageTaken)
+盗贼微笑着上了锁！（DamageTaken）
 The bandit caresses your restrained body! (DamageTaken)
-强盗抚摸着你被束缚的身体！（DamageTaken）
+盗贼抚摸着你被束缚的身体！（DamageTaken）
+Shady Dealer
+黑市商人
+The dealer flees, leaving her goods behind.
+黑商逃跑了，留下了她的货物。
+The dealer uses some high-quality restraints on you! (+RestraintAdded)
+黑商对你使用了一些高质量的束缚！（+RestraintAdded）
+The dealer smiles and applies a lock! (DamageTaken)
+黑商微笑着上了锁！（DamageTaken）
+The dealer kisses and gropes your body! (DamageTaken)
+黑商亲吻并抚摸你的身体！（DamageTaken）
+That dagger was laced with something...
+那把匕首上镶着什么东西……
+You hear a shattering of glass, suddenly the air around you feels thick and moist...
+你听到玻璃破碎的声音，突然周围的空气变得粘稠而潮湿……
+Poison Dagger
+毒匕首
+Lust Bomb
+性欲炸弹
+
+Bandit Guard
+盗贼守卫
+The bandit guard collapses and calls for help.
+盗贼守卫倒下并呼救。
+The bandit guard restrains you! (+RestraintAdded)
+盗贼守卫束缚了你！（+RestraintAdded）
+The bandit rubs and caresses your restrained body! (DamageTaken)
+盗贼摩挲、爱抚着你被束缚的身体！（DamageTaken）
+The bandit scoffs and applies a lock! (DamageTaken)
+盗贼嗤之以鼻，上了锁！（DamageTaken）
+
 Bandit Chief
 盗贼头领
 The bandit scoffs and retreats until next time.
 盗贼嗤之以鼻，撤退了。
 The bandit restrains you tightly! (+RestraintAdded)
-强盗紧紧地束缚了你！（+RestraintAdded）
+盗贼紧紧地束缚了你！（+RestraintAdded）
 The bandit runs her hands all along your restrained body! (DamageTaken)
-强盗的双手顺着你拘束的身体摸来摸去！（DamageTaken）
+盗贼的双手顺着你拘束的身体摸来摸去！（DamageTaken）
+The bandit chuckles and applies a lock! (DamageTaken)
+盗贼嘿嘿一笑，上了锁！（DamageTaken）
 Bandit Pet
 盗贼的宠物
 The bandit blushes and runs away.
@@ -3506,7 +3546,7 @@ The bandit blushes and runs away.
 The girl nervously restrains you! (+RestraintAdded)
 女孩紧张地拘束了你！（+RestraintAdded）
 The bandit tickes you nervously! (DamageTaken)
-强盗紧张地对你挠痒！（DamageTaken）
+盗贼紧张地对你挠痒！（DamageTaken）
 Bandit Hunter
 盗贼猎人
 The bandit hunter retreats.
@@ -3516,7 +3556,7 @@ The bandit hunter restrains you! (+RestraintAdded)
 The bandit hunter caresses your restrained body! (DamageTaken)
 盗贼猎人爱抚你拘束住的身体！ （DamageTaken）
 The bandit hunter calls you an amateur and applies a lock! (DamageTaken)
-强盗猎人称你为业余爱好者并应用锁！（DamageTaken）
+盗贼猎人称你为业余爱好者并应用锁！（DamageTaken）
 Bandit Grappler
 盗贼格斗家
 The bandit grappler retreats.
