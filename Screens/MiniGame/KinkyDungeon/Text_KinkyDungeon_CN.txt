@@ -3335,43 +3335,48 @@ Bandit
 The bandit collapses.
 盗贼崩溃了。
 The bandit restrains you! (+RestraintAdded)
-盗贼拘束了你！ （+RestraintAdded）
+盗贼拘束了你！（+RestraintAdded）
 The bandit caresses your restrained body! (DamageTaken)
-强盗抚摸着你被束缚的身体！ (DamageTaken)
+强盗抚摸着你被束缚的身体！（DamageTaken）
 Bandit Chief
 盗贼头领
 The bandit scoffs and retreats until next time.
 盗贼嗤之以鼻，撤退了。
 The bandit restrains you tightly! (+RestraintAdded)
-强盗紧紧地束缚了你！ （+RestraintAdded）
+强盗紧紧地束缚了你！（+RestraintAdded）
 The bandit runs her hands all along your restrained body! (DamageTaken)
-强盗的双手顺着你拘束的身体摸来摸去！ (DamageTaken)
+强盗的双手顺着你拘束的身体摸来摸去！（DamageTaken）
 Bandit Pet
 盗贼的宠物
 The bandit blushes and runs away.
 盗贼脸红了，跑了。
 The girl nervously restrains you! (+RestraintAdded)
-女孩紧张地拘束了你！ （+RestraintAdded）
+女孩紧张地拘束了你！（+RestraintAdded）
 The bandit tickes you nervously! (DamageTaken)
-强盗紧张地对你挠痒！ (DamageTaken)
+强盗紧张地对你挠痒！（DamageTaken）
 Bandit Hunter
 盗贼猎人
 The bandit hunter retreats.
 盗贼猎人撤退。
 The bandit hunter restrains you! (+RestraintAdded)
-盗贼猎人拘束了你！ （+RestraintAdded）
+盗贼猎人拘束了你！（+RestraintAdded）
 The bandit hunter caresses your restrained body! (DamageTaken)
-盗贼猎人爱抚你拘束住的身体！ (DamageTaken)
+盗贼猎人爱抚你拘束住的身体！ （DamageTaken）
+The bandit hunter calls you an amateur and applies a lock! (DamageTaken)
+强盗猎人称你为业余爱好者并应用锁！（DamageTaken）
 Bandit Grappler
 盗贼格斗家
 The bandit grappler retreats.
 盗贼擒抱者撤退。
 The bandit grappler loops her chains around you! (+RestraintAdded)
-盗贼格斗家将她的锁链缠绕在你身上！ （+RestraintAdded）
+盗贼格斗家将她的锁链缠绕在你身上！（+RestraintAdded）
 The bandit grappler caresses your restrained body! (DamageTaken)
-强盗擒抱者爱抚你拘束住的身体！ (DamageTaken)
+强盗擒抱者爱抚你拘束住的身体！（DamageTaken）
+The bandit giggles and applies a lock! (DamageTaken)
+强盗咯咯地笑着，上了锁！（DamageTaken）
 The bandit grappler hooks you closer!!!
 强盗抓钩将您钩了过去！
+
 Mummy
 木乃伊
 The Mummy collapses and her body vanishes.
@@ -3379,23 +3384,73 @@ The Mummy collapses and her body vanishes.
 The Mummy conjures a mystic wrapping! (+RestraintAdded)
 木乃伊变出了神秘的包层！ （+RestraintAdded）
 The Mummy punishes you with a blow from her staff! (DamageTaken)
-木乃伊用她的法杖惩罚了你！ (DamageTaken)
+木乃伊用她的法杖惩罚了你！ （DamageTaken）
+
+Cursed One
+被诅咒者
+The Cursed One is drawn into an eldritch portal.
+被诅咒者被吸入一扇可怕的传送门。
+The Cursed One's bindings transfer to you! (+RestraintAdded)
+被诅咒者的束缚转移给你了！（+RestraintAdded）
+The Cursed One's bindings emit a strange aura... (DamageTaken)
+被诅咒者的束缚散发出奇怪的光环......（DamageTaken）
+
+Floating Wrapping
+浮动包裹物
+The wrapping falls to the floor, its magic spent.
+包裹物掉落在地板上，它的魔力已经耗尽。
+The floating wrappings attach to you! (+RestraintAdded)
+浮动的包裹物附着在你身上！（+RestraintAdded）
+The wrappings grip you tightly and squeeze you! (DamageTaken)
+包裹物紧紧地抓在你身上并挤压你！（DamageTaken）
+
+Animated Sarcophagus
+动态石棺
+The sarcophagus falls to the ground and crumbles.
+石棺掉落在地上并碎裂。
+The sarcophagus emits long wrappings that pull you closer! (+RestraintAdded)
+石棺发出长长的包裹物，将你拉得更近！（+RestraintAdded）
+The sarcophagus emanates a strange power! (DamageTaken)
+石棺散发着奇异的力量！（DamageTaken）
+
+
 Bast Warrior
 Bast战士
 The Bast Warrior collapses and meows loudly.
 Bast战士倒地并大声喵喵叫。
 The Bast Warrior restrains you! (+RestraintAdded)
-Bast战士拘束了你！ （+RestraintAdded）
+Bast战士拘束了你！（+RestraintAdded）
 The Bast Warrior tickles you with her claws! (DamageTaken)
-Bast战士用她的爪子逗你！ (DamageTaken)
+Bast战士用她的爪子逗你！（DamageTake）
+The Bast Warrior pulls out a lock and slips it on! (DamageTaken)
+Bast战士拔出一把锁并把它锁上！（DamageTaken）
+
 Bast Cleric
 Bast牧师
 The Bast Cleric collapses and meows softly.
 Bast牧师倒下，轻轻地喵喵叫。
 A ray of light shoots out and paralyzes you! (DamageTaken)
-一道光芒射出，让你麻痹！ (DamageTaken)
+一道光芒射出，让你麻痹！（DamageTaken）
+The Bast Cleric restrains you! (+RestraintAdded)
+Bast牧师拘束了你！（+RestraintAdded）
 A ray of light shoots out and paralyzes you! (DamageTaken)
-一道光芒射出，让你麻痹！ (DamageTaken)
+一道光芒射出，让你麻痹！（DamageTaken）
+The Bast Cleric pulls out a lock and slips it on! (DamageTaken)
+Bast牧师拔出一把锁并把它锁上！（DamageTaken）
+
+High Cleric
+高阶牧师
+The High Cleric locks herself in ritual bondage as punishment for failure.
+高阶牧师将自己锁在束缚仪式中，作为对失败的惩罚。
+The High Cleric holds up her staff and you feel intense vibrations throughout your body! (DamageTaken)
+高阶牧师举起她的法杖，你会感觉到全身强烈的振动！（DamageTaken）
+The High Cleric summons animated restraints to bind you! (+RestraintAdded)
+高阶牧师召唤强有力的束缚来束缚你！（+RestraintAdded）
+A flurry of mummy wrappings encase you and stun you! (DamageTaken)
+一堆木乃伊包裹物包裹着你，让你目瞪口呆！（DamageTaken）
+The High Cleric smiles as she conjures many locks on your restraints! (DamageTaken)
+高阶牧师微笑着，她在你的束缚上召唤出许多锁！（DamageTaken）
+
 Skeleton
 骷髅
 The skeleton falls to pieces.
