@@ -2352,8 +2352,8 @@ Magic Knife
 魔刀
 A magical blade, suitable against ghosts.
 一把适用于对抗幽灵的魔法之剑。
-Deals shadow damage. Can cut enchanted ropes.
-造成暗影伤害，可以切断魔法绳索。
+Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%
+造成暗影伤害，可以切断魔法绳索。副手：所有魔法伤害基础暴击增加20%
 Bola
 投石索
 A pair of weights attached to a rope. Can be thrown.
@@ -2556,26 +2556,26 @@ Staff of Incineration
 燃烧之杖
 A magical weapon made for intermediates to use.
 专供中级使用的魔法武器。
-+25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn.
-+25% 火焰伤害，造成火焰伤害。燃烧的敌人每回合受到额外 5 点火焰伤害。
++25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn. Offhand: Applies passive bonus.
++25% 火焰伤害，造成火焰伤害。燃烧的敌人每回合受到额外 5 点火焰伤害。副手：应用被动奖励。
 Staff of Storms
 风暴法杖
 A magical weapon made for intermediates to use.
 专供中级使用的魔法武器。
-+20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area.
-+20% 电击伤害，造成电击伤害。受到电击伤害的敌人会在 5x5 范围内受到额外 15点电击伤害。
++20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area. Offhand: Applies electric damage bonus.
++20% 电击伤害，造成电击伤害。受到电击伤害的敌人会在 5x5 范围内受到额外 15点电击伤害。副手：应用电伤害加成。
 Staff of Frostbite
 冰冻法杖
 A magical weapon with a 33% chance to freeze the target for 4 turns.
 魔法武器，有 33% 的几率冻结目标 4 回合。
-+20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn.
-+20% 寒冰伤害，造成寒冰伤害。被冰冻的敌人每回合受到额外 5 点寒冰伤害。
++20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn. Offhand: Applies ice damage bonus.
++20% 寒冰伤害，造成寒冰伤害。被冰冻的敌人每回合受到额外 5 点寒冰伤害。副手：应用冰伤害加成。
 Staff of Binding
 束缚法杖
 A magical weapon made to use on novices.
 适合新手使用的魔法武器。
-+20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency.
-锁链伤害+20%并定身4回合。绑定效率为150%。
++20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency. Offhand: Applies chain damage bonus.
+锁链伤害+20%并定身4回合。绑定效率为150%。副手：应用锁链伤害加成。
 Arcane Orb
 奥术法球
 Look into my eyes...
@@ -2586,32 +2586,32 @@ Staff of Flame
 烈焰法杖
 A magical weapon made for novices to use.
 供新手使用的魔法武器。
-+15% fire damage. Deals fire damage.
-+15% 火焰伤害，造成火焰伤害
++15% fire damage. Deals fire damage. Offhand: Applies passive bonus.
++15% 火焰伤害，造成火焰伤害。副手：应用被动奖励。
 Staff of Slime
 粘液法杖
 A slimy and magical implement..
 一把又黏又神奇的工具。
-+10% glue damage. Deals glue damage.
-+10% 粘液伤害，造成粘液伤害。
++10% glue damage. Deals glue damage. Offhand: Applies passive bonus.
++10% 粘液伤害，造成粘液伤害。副手：应用被动奖励。
 Staff of Shocking
 电击法杖
 A magical weapon made for novices to use.
 供新手使用的魔法武器。
-+10% electric damage. Deals electric damage. 10% chance to stun for 3 turns.
-+10% 电击伤害，造成电击伤害。有 10% 的几率目标眩晕 3 回合。
++10% electric damage. Deals electric damage. 10% chance to stun for 3 turns. Offhand: Applies electric damage bonus.
++10% 电击伤害，造成电击伤害。有 10% 的几率目标眩晕 3 回合。副手：应用电伤害加成。
 Staff of Permafrost
 冻土法杖
 A magical weapon with a 15% chance to freeze the target for 4 turns.
 一把有着 15% 冻结目标 4 回合的神奇武器。
-+10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration)
-造成寒冰伤害，将敌人的冰冻效果持续时间乘以 1.5 倍（最低增加一回合），且寒冰伤害增加 10%。 
++10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration). Offhand: Applies ice damage bonus.
+造成寒冰伤害，将敌人的冰冻效果持续时间乘以 1.5 倍（最低增加一回合），且寒冰伤害增加 10%。副手：应用冰伤害加成。
 Staff of Chains
 锁链法杖
 A magical weapon made for novices in the art of bondage.
 一把用于束缚艺术的专为初学者设计的魔法武器。
-+10% chain damage. Deals chain damage. 150% binding efficiency.
-造成锁链伤害，绑缚效率变为 150% ，且锁链伤害增加 10%。
++10% chain damage. Deals chain damage. 150% binding efficiency. Offhand: Applies chain damage bonus.
+造成锁链伤害，绑缚效率变为 150% ，且锁链伤害增加 10%。副手：应用锁链伤害加成。
 You pick up a staff of binding. You remember these from wizard school...
 你拿起一根捆绑法杖。你你记得在法师学校见过这些……
 You pick up a staff of the storm. Your hair stands on end.
@@ -2638,8 +2638,8 @@ Crop
 鞭子
 For those unruly subs.
 专为那些反抗的人而设计
-Deals pain damage. Highly distracting.
-对目标造成疼痛伤害，并使其极具性奋。
+Deals pain damage. Highly distracting. Offhand: +5 pain damage on attack for 3 stamina.
+对目标造成疼痛伤害，并使其极具性奋。副手：攻击时 +5 疼痛伤害，持续 3 点耐力。
 You pick up a riding crop.
 你拾起一根鞭子。
 Scissors
@@ -2654,8 +2654,8 @@ Dagger
 匕首
 Designed with subterfuge in mind.
 设计用于秘密行动。
-Deals slash damage. Deals 55 pierce damage instead on unaware targets.
-造成斩击伤害。对于没有发现你的目标造成55点穿刺伤害。
+Deals slash damage. Deals 40 pierce damage instead on unaware targets, before crit modifiers. Offhand: +10% Base Weapon Crit
+造成斩击伤害。在暴击修正之前，对于没有发现你的目标造成40点穿刺伤害。副手：+10% 基础武器暴击
 You pick up a dagger.
 你拾起一把匕首。
 Katana
@@ -2724,7 +2724,7 @@ Also assists in cutting restraints when equipped.
 配备时还有助于切割拘束。
 A go-to for travelers and adventurers.
 旅行者和冒险家的首选。
-Deals slash damage.
+Deals slash damage. 副手: +10 阻挡
 造成斩击伤害。
 Torch
 火把
@@ -2760,20 +2760,20 @@ Magic Wand
 魔法棒
 Its powers extend beyond the traditional schools of magic.
 它的力量超越了传统的魔法。
-Deals charm damage. 20% chance to stun the target for 2 turns.
-造成绷带伤害，有 20% 的几率使目标眩晕 2 回合。
+Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +5 charm damage on attack for 3 stamina.
+造成绷带伤害，有 20% 的几率使目标眩晕 2 回合。副手：攻击时 +5 魅力伤害，持续 3 点耐力。
 Feather
 羽毛
-A feather taken from some large fluffy being.
-从一些毛茸茸的大动物上取下的羽毛。
+A feather taken from some large fluffy being. Offhand: +5 tickle damage on attack for 3 stamina.
+从一些毛茸茸的大动物上取下的羽毛。副手：攻击时 +5 挠痒伤害，持续 3 点耐力。
 Deals tickle damage. Distracts enemies.
 造成挠痒伤害，使敌人性奋。
 Ice Cube
 冰块
 A magical cube of ice that never melts. Convenient!
 一块永远不会融化的神奇冰块。很方便！
-Deals 10 ice damage with a 10% chance to freeze for 3 turns.
-造成 10 点冰属性伤害，并有 10% 的几率冻结 3 回合。
+Deals 10 ice damage with a 10% chance to freeze for 1 turn. Slows targets on hit. Offhand: Slows the target.
+造成 10 点冰属性伤害，并有 10% 的几率冻结 1 回合。击中目标时减慢速度。副手：减慢目标速度
 Rope
 绳索
 A kidnapper's most versatile tool.
@@ -2796,14 +2796,14 @@ Metamorphosis
 变形法杖
 You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked.
 你可以进入粘液形态，持续25回合。在粘液形态下，你可以穿过栅栏，增加 50 点闪避，并在受到攻击时对攻击你的目标造成 25 点粘液伤害。
-Deals glue damage. Roots targets for 2 turns on a hit.
-造成胶水伤害。固定目标 2 回合。
+Deals glue damage. Roots targets for 2 turns on a hit. Offhand: Roots targets on hit.
+造成胶水伤害。固定目标 2 回合。副手：命中时定身目标。
 Four Seasons
 四季法杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 激活后，下一次使用时 -50% 火/水/冰/风/雷/岩属性法术的消耗，但每个属性仅可使用一次。
-Deals shadow damage. +25% fire, ice, acid, crush, electric, pressure damage.
-造成暗影伤害，+25% 火/水/冰/风/雷/岩/压力伤害。
+Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus.
+造成暗影伤害，+25% 火/水/冰/风/雷/岩/压力/爆炸伤害。副手：应用被动奖励。
 The Arbiter
 仲裁者之杖
 I have altered the rules. Pray I do not alter them further.
@@ -3107,7 +3107,7 @@ The maid snaps a lock on one of your restraints! (DamageTaken)
 The maid tickles you with her feather duster! (DamageTaken)
 女仆用她的鸡毛掸子逗你！ (DamageTaken)
 M.F. 'Unseen Blade'
-M.F. "隐秘之刃"
+M.F. '隐秘之刃'
 The maid runs back to the shadows.
 女仆逃回阴影中。
 The maid uses secure restraints on you! (+RestraintAdded)
@@ -3119,7 +3119,7 @@ The maid stealthily rubs your sensitive areas! (DamageTaken)
 The maid throws a smoke bomb at the ground!
 女仆向地面投掷烟雾弹！
 M.F. 'Unseen Blade'
-M.F. "隐秘之刃"
+M.F. '隐秘之刃'
 The maid does a fumbled retreat.
 女仆手忙脚乱地撤退。
 The maid rubs you from many angles! (DamageTaken)
