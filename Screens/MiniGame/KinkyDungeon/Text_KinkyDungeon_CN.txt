@@ -10831,6 +10831,8 @@ Aware of you!
 发现你了！
 Pursuing you!
 正在追击你！
+Ignoring you!
+无视你！
 Slightly suspicious
 感到有点可疑
 Saw something...
