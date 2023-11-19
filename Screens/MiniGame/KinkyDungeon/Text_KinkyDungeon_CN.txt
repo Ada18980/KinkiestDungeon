@@ -5226,12 +5226,24 @@ A deceptively cruel device, making it impossible to reach your nipples.
 一种看起来很残酷的装备，让你无法触及你的乳头。
 Reinforced with steel plates, this will need bolt cutters to take off.
 用钢板加固，这需要断线钳才能取下。
-They will make for some great fun!
-他们会带来一些很大的乐趣！
-They will make for some great fun!
-他们会带来一些很大的乐趣！
-They will make for some great fun!
-他们会带来一些很大的乐趣！
+Massagers
+按摩器
+A pair of little motion-activated teasers. They trigger when you swing your body for an attack.
+一对通过动作激活的挑逗器。当你摆动身体进行攻击时，它们就会触发。
+They will make for some great fun! Type: Edging
+他们会带来很多乐趣！ 类型：寸止
+Advanced Massagers
+高级按摩器
+A pair of sensitive motion-activated teasers. They trigger when you attack or struggle.
+一对较为敏感通过动作激活的挑逗器。当你摆动身体进行攻击或挣扎时，它们就会触发。
+They will make for some great fun! Type: Edging
+他们会带来很多乐趣！ 类型：寸止
+Hi-Tech Massagers
+高科技按摩器
+A pair of highly-sensitive motion-activated teasers. They detect most forms of motion, including sprinting and hopping.
+一对高度敏感通过动作激活的挑逗器。它们可以检测大多数形式的运动，包括冲刺和跳跃。
+They will make for some great fun! Type: Edging
+他们会带来很多乐趣！ 类型：寸止
 Control Harness
 控制束衣
 An advanced harness for controlling high-security prisoners.
@@ -5250,22 +5262,60 @@ A devious device that looks like a ball gag, but has a mouth-filling rod on the 
 一种看起来像口塞的装备，但内部有一个能填满嘴的棒。
 The strap is made of a durable but flexible material
 表带由耐用但柔韧的材料制成
+Latex Mask
+乳胶面具
+A slick layer of blue latex stretched over the mouth.
+一层光滑的蓝色乳胶覆盖在嘴巴上。
+It's very tight and makes it hard to move your mouth.
+它非常紧，让你的嘴很难移动。
+Rubberized Gloves
+橡胶手套
+A mass of alchemical latex stretched over your arms, then hardened to the point that you can barely move your fingers
+一团炼金乳胶覆盖在你的手臂上，然后硬化到你几乎无法移动手指
+Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!
+与典型的橡胶不同，这种材料耐用、柔韧，而且有点粘！
+Rubberized Socks
+橡胶袜子
+A mass of alchemical latex stretched over your legs, then hardened.
+一团炼金乳胶在你的腿上生长，然后变硬。
+Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!
+与典型的橡胶不同，这种材料耐用、柔韧，而且有点粘！
+Rubberized Mask
+橡胶面具
+A mass of alchemical latex stretched over your entire face, then hardened.
+一团炼金乳胶铺满了你的整张脸，然后变硬。
+Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!
+与典型的橡胶不同，这种材料耐用、柔韧，而且有点粘！
+Rubberized Ball Gag
+橡胶口球
+A mass of alchemical latex inflated to fill your mouth, then hardened.
+大量炼金乳胶膨胀并填满你的嘴，然后变硬。
+Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!
+与典型的橡胶不同，这种材料耐用、柔韧，而且有点粘！
+Rubberized OTN Mask
+橡胶覆嘴式面具
+A mass of alchemical latex stretched over your mouth, then hardened.
+一团炼金乳胶在你的嘴上伸展，然后变硬。
+Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!
+与典型的橡胶不同，这种材料耐用、柔韧，而且有点粘！
 Wolf Panties
 狼内裤
 A set of vibrating panties designed to help subdue unruly wolfgirls.
 一套振动内裤，旨在帮助制服不守规矩的狼女。
 It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber.
 它非常紧，一旦夹上就很难取下，但材料是橡胶。
-Latex Boxtie Binder
-乳胶盒带活页夹
+You don't meet the conditions to equip that.
+你不符合佩戴条件。
+Experimental Boxtie Binder
+实验性盒束包扎带
 A secure but comfortable binder meant for long-term wear by the alchemists' pets.
-一种安全而舒适的活页夹，适合炼金术士的宠物长期佩戴。
+一种安全而舒适的包扎带，适合炼金术士的宠物长期佩戴。
 Made from imbued latex, it will be hard to cut but not impossible.
 由灌输乳胶制成，很难切割，但并非不可能。
-Binder Straps Cincher
-活页夹带束紧器
-A tight cincher attached to a binder used to ensure restraints will not come off.
-连接到用于确保约束不会脱落的活页夹上的紧束带。
+Binder Harness
+包扎带束衣
+A tight harness attached to a binder used to ensure restraints will not come off.
+连接到用于确保束缚具不会脱落的紧束带。
 It's tied in the back and reinforced with steel boning.
 它系在背面，并用钢骨加固。
 The enemy attaches your ankle cuffs together!
@@ -5278,8 +5328,86 @@ A strict collar that makes it tougher to escape from other items.
 一个严苛的项圈，使从其他物品中逃脱变得更加困难。
 It has steel boning but could be cut with enough care.
 它有钢骨，但可以小心切割。
+Blacksteel Ballet Heels
+黑钢芭蕾高跟鞋
 A pair of strict boots for making pets more manageable. A skilled person can still walk in these.
 一双严格的靴子，让宠物更易于管理。熟练的人仍然可以行走。
+They are reinforced with top-quality ancient metal.
+它们采用优质古代金属加固。
+
+High-Security Armbinder
+高安全性束手套
+An armbinder enclosing your hands and arms completely, making your hands useless.
+束手套将你的手和手臂完全包住，使你的手变得毫无用处。
+Made of a flexible, yet durable material, it's going to be really tough to escape.
+它由灵活而耐用的材料制成，很难逃脱。
+High-Security Boxbinder
+高安全性盒束包扎带
+A boxbinder enclosing your hands and arms completely, making your hands useless.
+盒束包扎带将你的手和手臂完全包住，使你的手变得毫无用处。
+Made of a flexible, yet durable material, it's going to be really tough to escape.
+它由灵活而耐用的材料制成，很难逃脱。
+High-Security Straitjacket
+高安全性拘束衣
+A straitjacket enclosing your hands and arms completely, making your hands useless
+拘束衣将你的手和手臂完全包住，使你的手变得毫无用处。
+Made of a flexible, yet durable material, it's going to be really tough to escape.
+它由灵活而耐用的材料制成，很难逃脱。
+High-Security Legbinder
+高安全性束腿套
+An mythril legbinder enclosing your legs, making it difficult to move.
+束腿套包裹着你的双腿，使其难以移动。
+Made of a flexible, yet durable material, it's going to be really tough to escape.
+它由灵活而耐用的材料制成，很难逃脱。
+High-Security Shackles
+高安全性脚镣
+A pair of hardened steel shackles around your feet.
+一对硬化脚镣铐在你的脚上。
+Nearly indestructable, you are at the mercy of its lock.
+几乎坚不可摧，你只能受其锁的支配。
+High-Security Ball Gag
+高安全性口球
+A rubber gag shoved tightly between your lips.
+一个橡胶口球紧紧地塞在你的嘴唇之间。
+The cable-reinforced straps are nigh-unbreakable, keeping you securely silenced.
+钢索加固后几乎牢不可破，让你安全的保持安静。
+High-Security Muzzle
+高安全性口套
+A secure muzzle made with cable-reinforced straps.
+由钢索加固制成的安全口套。
+It is especially effective at keeping in other gags.
+它对于保持其他堵嘴物尤其有效。
+
+Potion Absorber
+药水吸收器
+An ancient device that allows direct use of potions even while gagged or bound.
+一种古老的装置，即使在被堵住嘴或被束缚的情况下也可以直接饮用药水。
+Also allows fitting of a leash.
+还可以安装牵绳。
+Potion Absorber
+药水吸收器
+An ancient device that allows direct use of potions even while gagged or bound.
+一种古老的装置，即使在被堵住嘴或被束缚的情况下也可以直接饮用药水。
+Also allows fitting of a leash.
+还可以安装牵绳。
+Slime Walkers
+粘液行者
+A pair of heels coated in a nonstick material.
+一双涂有不粘胶或粘液材料的高跟鞋。
+They will slow you down, but you can walk on slime without getting stuck!
+它们会减慢你的速度，但你可以在粘液上行走而不会被黏住！
+Slime Walkers
+粘液行者
+A pair of heels coated in a nonstick material.
+一双涂有不粘胶或粘液材料的高跟鞋。
+They will slow you down, but you can walk on slime without getting stuck!
+它们会减慢你的速度，但你可以在粘液上行走而不会被黏住！
+
+The curse on the RestraintName is lifted!
+对 RestraintName 的诅咒解除了！
+Press RIGHT to confirm buy!
+按 RIGHT 确认购买！
+
 The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 The enemy attaches your wrist cuffs together!
@@ -5294,46 +5422,6 @@ Your elbows detatch!
 你的肘部手铐断开了！
 The enemy attaches your wrist cuffs back together!
 敌人将你的手腕重新绑在一起！
-High-Security Armbinder
-高安全性束手套
-An mythril armbinder enclosing your hands and arms completely, making your hands useless.
-一个秘银束手套将你的双手和手臂完全包裹起来，让你的双手无法使用。
-Made of a flexible, yet durable material, it's going to be really tough to escape.
-由灵活但耐用的材料制成，很难逃脱。
-High-Security Legbinder
-高安全性束腿套
-An mythril legbinder enclosing your legs, making it difficult to move.
-一个秘银束腿套，包裹住你的双腿，使其难以移动。
-Made of a flexible, yet durable material, it's going to be really tough to escape.
-由灵活但耐用的材料制成，很难逃脱。
-High-Security Shackles
-高安全性脚镣
-A pair of mythril shackles around your feet.
-一对秘银脚镣铐在你的脚上。
-Nearly indestructable, you are at the mercy of its lock.
-几乎坚不可摧，你任由它的锁摆布。
-High-Security BallGag
-高安全性口球
-A rubber gag shoved tightly between your lips.
-一个橡胶口球紧紧地塞在你的嘴唇之间。
-The mythril straps are nigh-unbreakable, keeping you securely silenced.
-秘银带几乎牢不可破，让你保持安静。
-Also allows fitting of a leash.
-还允许安装牵绳。
-Also allows fitting of a leash.
-还允许安装牵绳。
-Slime Walkers
-粘液靴子
-A pair of heels coated in a nonstick material.
-一双涂有不粘材料的高跟鞋。
-They will slow you down, but you can walk on slime without getting stuck!
-它们会减慢你的速度，但你可以在粘液上行走而不会被困住！
-Slime Walkers
-粘液靴子
-A pair of heels coated in a nonstick material.
-一双涂有不粘材料的高跟鞋。
-They will slow you down, but you can walk on slime without getting stuck!
-它们会减慢你的速度，但你可以在粘液上行走而不会被困住！
 Collar
 项圈
 A classy leather collar.
