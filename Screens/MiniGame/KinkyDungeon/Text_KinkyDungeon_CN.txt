@@ -11412,8 +11412,8 @@ Wait! That's too much! (PERCENT chance to avoid)
 （再次点头）
 (Shake your head)
 （摇头）
-(Shake your head and moan) (PERCENT chance to avoid)
-（摇头呻吟）（PERCENT 的概率闪避）
+(Moan and squirm)
+（呻吟和蠕动）
 (Shake your head)
 （摇头）
 (Nod again)
