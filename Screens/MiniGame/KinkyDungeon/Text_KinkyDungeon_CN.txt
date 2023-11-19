@@ -9353,6 +9353,39 @@ The orb explodes into a burst of ribbons!
 The orb tears off your clothes!
 水晶撕裂了你的衣服！
 
+Apply To Target
+应用于目标
+Purify
+净化
+You need to target an NPC
+你需要瞄准一个NPC
+Target must be bindable and disabled.
+目标必须可以被绑架并且已禁用。
+Target acquired!
+目标达成！
+Truss em up!
+把他们捆起来！
+Choose target to bind
+选择要捆绑的目标
+Target Acquired!
+目标达成！
+Designates the target for bondage and allows you to apply items from the inventory. Items used this way cannot be recovered, and can only be applied to enemies that are stunned, fully bound, or otherwise incapacitated.
+指定束缚目标并允许您应用库存中的物品。以这种方式使用的物品无法恢复，只能应用于被击晕、完全束缚或以其他方式丧失能力的敌人。
+
+The Shoppe
+商店
+Journey Selection
+旅程选择
+High-Security Prison
+高戒备监狱
+Doll Sorting Station
+玩偶分拣站
+
+A cursed NEWITM flies out of the chest and latches tightly to you!
+一只被诅咒的 NEWITM 从箱子里飞出，紧紧地抓住你！
+With a puff of magic, a NEWITM appears on your body!
+随着一股魔力，NEWITM 出现在你的身上！
+
 Charm Trap
 绷带陷阱
 Ribbon Trap
