@@ -1275,6 +1275,7 @@ interface KinkyDungeonEvent {
 	bindEff?: number,
 	type: string;
 	trigger: string;
+	threshold?: number,
 	restraint?: string;
 	sfx?: string;
 	power?: number;

@@ -288,8 +288,8 @@ let KinkyDungeonSpellSpecials = {
 		return "Cast";
 	},
 	"Lockdown": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
-		let en = KinkyDungeonEnemyAt(targetX, targetY);
-		if (en && en.boundLevel > 0) {
+		let en = KinkyDungeonEntityAt(targetX, targetY);
+		if (en && !en.player && en.boundLevel > 0) {
 			KinkyDungeonApplyBuffToEntity(en, {
 				id: "Lockdown", aura: "#a96ef5", type: "MinBoundLevel", duration: 9000, power: Math.min(en.Enemy.maxhp + 0.01, en.boundLevel), maxCount: 1, tags: ["lock", "debuff", "commandword", "CM1"]
 			});
@@ -297,7 +297,23 @@ let KinkyDungeonSpellSpecials = {
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			return "Cast";
-		} else return "Fail";
+		} else if (en && en.player) {
+			let lockable = KinkyDungeonPlayerGetLockableRestraints();
+			if (lockable.length > 0) {
+				for (let item of lockable) {
+					KinkyDungeonLock(item, "Purple");
+				}
+				KinkyDungeonSendTextMessage(4, TextGet("KDSelfLock"), "#8888ff", 2);
+				KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyLock1", true), undefined, undefined, undefined);
+				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+				return "Cast";
+			}
+
+
+		}
+
+		return "Fail";
 	},
 	"Wall": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
