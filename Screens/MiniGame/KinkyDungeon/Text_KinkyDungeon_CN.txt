@@ -4608,7 +4608,7 @@ You rub your body against the floor to no avail, and sigh as the TargetRestraint
 You contort your body but you don't have leverage on the TargetRestraint. Maybe you need some kind of tool...
 你扭曲着身体，但对 TargetRestraint 无任何效果。 也许你需要某种工具......
 You struggle madly, trying to push against the TargetRestraint. You need more leverage...
-你疯狂地挣扎，试图从 TargetRestraint 抽出。你需要更多的杠杆...
+你疯狂地挣扎，试图从 TargetRestraint 抽出。你需要更多的外力作用...
 
 That doesn't seem to work. Maybe something else will help with the TargetRestraint.
 这似乎不起作用。 也许其他东西会对解开 TargetRestraint 有所帮助。
@@ -4642,7 +4642,7 @@ TargetRestraint 上的结太紧，如果没有钩子就无法拉开。
 You struggle fruitlessly against the knots on the TargetRestraint, but they're too tight.
 你徒劳地与 TargetRestraint 上的结进行斗争，但它们太紧了。
 The TargetRestraint is too tight against your body. You'll need more leverage to pull it off.
-TargetRestraint 在你的身体上太紧了。你需要更多的杠杆才能成功。
+TargetRestraint 在你的身体上太紧了。你需要更多的外力作用才能成功。
 You shake yourself around trying to rub off the TargetRestraint, but it's hopeless.
 你摇晃身体试图摆脱 TargetRestraint，但这是没有希望的。
 
@@ -4680,15 +4680,15 @@ Your hopeless attempts fail to even leave a scratch on the TargetRestraint.
 You fail to leave even a scratch on the TargetRestraint!
 你甚至无法在 TargetRestraint 上留下任何划痕！
 You can't get any leverage to cut the TargetRestraint with...
-你无法获得任何杠杆来减少 TargetRestraint 的束缚程度...
+你无法获得任何外力作用来减少 TargetRestraint 的束缚程度...
 You can't hold the knife firmly enough to cut the TargetRestraint.
 您无法用足够牢固的刀来切割 TargetRestraint。
 You cry out in your bindings as the knife bounces against the TargetRestraint uselessly.
 当刀徒劳地弹到 TargetRestraint 上时，你在束缚中大喊。
 Your arms are kept from having leverage on the TargetRestraint due to another item.
-由于其他物品，你的手臂无法对 TargetRestraint 施加杠杆作用。
+由于其他物品，你的手臂无法对 TargetRestraint 施加外力作用。
 You fiddle with the tool, but your arms lack leverage on the TargetRestraint due to another item
-你摆弄着工具，但由于另一个项目，你的手臂缺乏对 TargetRestraint 的杠杆作用
+你摆弄着工具，但由于另一个项目，你的手臂缺乏对 TargetRestraint 的外力作用
 The TargetRestraint flashes magically as the Goddess' curse resists your efforts!
 TargetRestraint 会在女神的诅咒抵抗你努力的挣脱时神奇地闪烁！
 You pry at the TargetRestraint...
