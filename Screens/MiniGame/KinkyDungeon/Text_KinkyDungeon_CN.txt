@@ -12283,6 +12283,8 @@ Never! (PERCENT chance to avoid)
 
 (Look at what she wants to buy)
 （看看她想买什么）
+(Look at what she has to sell)
+（看看她都卖什么）
 You're giving me everything you have.
 把你所有东西都交给我。
 (Flail threateningly at her)
