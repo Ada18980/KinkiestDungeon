@@ -8833,8 +8833,16 @@ Conjuration
 咒术
 Illusion
 幻术
+Generic
+通用
+Upgrade
+升级
+Special
+特别
 Learn Spell
 学习法术
+Spell Points: 
+法术点：
 Level: 
 等级：
 Remove Spell 1
