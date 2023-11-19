@@ -65,6 +65,14 @@ var TranslationDictionary = [
 		]
 	},
 	{
+		LanguageCode: "RU",
+		LanguageName: "한국어",
+		EnglishName: "Pусский",
+		Files: [
+			"Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_RU.txt",
+		]
+	},
+	{
 		LanguageCode: "JP",
 		LanguageName: "Japanese",
 		EnglishName: "Japanese",
