@@ -1800,6 +1800,34 @@ DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
 Like connecting to a server, etc. Only load mods from a TRUSTED source.
 就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的 Mod 。
 
+You don't want to open the book... (need willpower)
+你不想打开这本书...（需要意志力）
+Chain Spirit
+锁链精神
+You open the book and suddenly a binding aura surrounds you!
+你打开书，突然一股束缚的光环包围了你！
+Mathematical Error
+数学错误
+You open the book to an unfinished page and the magic ink short-circuits!
+你打开书，还未读完一页，魔法墨水就短路了！
+
+Cracks begin to form in your RestraintName!
+你的 RestraintName 开始出现裂缝！
+Your RestraintName shatters and falls off!
+你的 RestraintName 破碎并掉落！
+Load Hotbar 
+加载快捷栏 
+Save Hotbar 
+保存快捷栏 
+Clear Hotbar
+清空快捷栏
+
+Confirm clearing hotbar?
+确定要清空快捷栏吗？
+
+Add to Hotbar
+添加至快捷栏
+
 Unbound Keybindings! -->
 存在未绑定的按键! -->
 You've not enough keys!!! -->
@@ -7237,7 +7265,7 @@ You retrieve a spent ancient power crystal.
 You pick up a magical amulet and use it to boost your stats.
 你拿起一个神奇的护身符并用它来提高你的统计数据。
 You pick up a Leyline Map.
-你拿起一张 Leyline 地图。
+你拿起一张地脉地图。
 You pick up a knife.
 你拿起了一把刀。
 You pick up a torch.
@@ -7367,7 +7395,9 @@ Unlock
 Struggle
 挣扎
 Leyline Map
-Leyline 地图
+地脉地图
+You know the location of ancient leylines and can draw upon 100 additional mana.
+你知道远古地脉的位置，并且可以额外利用 100 点法力。
 Unlit Torch
 熄灭火把
 Can be lit
