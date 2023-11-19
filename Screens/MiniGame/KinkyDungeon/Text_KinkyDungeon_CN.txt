@@ -2158,6 +2158,8 @@ You find a useful scroll wedged between some treatises!
 你在一些论文之间发现有一个有用的卷轴！
 You find a glowing book containing a binding spell!
 你发现一本发光的书中包含捆绑法术！
+You discover a golden cookie, wrapped in foil. Beside it are two power crystals.
+你发现了一块用箔纸包裹的金色饼干。旁边还有两颗能量晶体。
 You find a golden key surrounded by strange golden crystals.
 你发现一个被奇怪的金色晶体包围的金钥匙。
 You find a set of strange golden crystals.
