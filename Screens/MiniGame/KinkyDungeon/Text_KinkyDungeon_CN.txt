@@ -11728,9 +11728,9 @@ Fine. I'll sign it...
 (Moan and nod)
 （呻吟和点头）
 Never! (PERCENT chance to avoid)
-绝不！ （ PERCENT 的概率闪避）
+绝不！ （PERCENT 的概率闪避）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 （SPEAKER看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
@@ -11772,9 +11772,9 @@ Fine. I'll sign it...
 (Moan and nod)
 （呻吟和点头）
 Never! (PERCENT chance to avoid)
-绝不！ （ PERCENT 的概率闪避）
+绝不！ （PERCENT 的概率闪避）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 （SPEAKER看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
@@ -11816,9 +11816,9 @@ Fine. I'll sign it...
 (Moan and nod)
 （呻吟和点头）
 Never! (PERCENT chance to avoid)
-绝不！ （ PERCENT 的概率闪避）
+绝不！（PERCENT 的概率闪避）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 （SPEAKER 突然移动的速度超出了你的反应）|（当你被压在地上时，你感到一只脚踩在你的背上）|（她给你穿上制服并锁紧......）|你需要额外的训练， 我想...
 (Nod excitedly)
@@ -11828,9 +11828,9 @@ Never! (PERCENT chance to avoid)
 (Moan and nod)
 （呻吟和点头）
 Never! (PERCENT chance to avoid)
-绝不！ （ PERCENT 的概率闪避）
+绝不！（PERCENT 的概率闪避）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 （SPEAKER 突然移动的速度超出了你的反应）|（当你被压在地上时，你感到一只脚踩在你的背上）|（她给你穿上制服并锁紧......）|你需要额外的训练， 我想...
 (Nod excitedly)
@@ -11840,7 +11840,7 @@ Never! (PERCENT chance to avoid)
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (Nod excitedly)
 （兴奋地点头）
 (Shake your head)
@@ -11852,7 +11852,7 @@ W-where did you get that uniform? (Refuse)
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (Nod excitedly)
 （兴奋地点头）
 (Shake your head)
@@ -11860,7 +11860,7 @@ W-where did you get that uniform? (Refuse)
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (Nod excitedly)
 （兴奋地点头）
 (Shake your head)
@@ -11868,7 +11868,7 @@ W-where did you get that uniform? (Refuse)
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 This sounds like an interesting opportunity.
 这听起来像是一个有趣的机会。
 (Nod excitedly)
@@ -11886,7 +11886,7 @@ Gladly!
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (The SPEAKER nods)|Fair enough.
 （SPEAKER点头）|很公平。
 (Nod excitedly)
@@ -11894,13 +11894,13 @@ Gladly!
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (The SPEAKER nods)|Fair enough.
 （SPEAKER点头）|很公平。
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (Nod excitedly)
 （兴奋地点头）
 (Shake your head)
@@ -11910,7 +11910,7 @@ Gladly!
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (Shake your head)
 （摇头）
 (Accept the contract)
@@ -11920,7 +11920,7 @@ Gladly!
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率闪避）
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 （SPEAKER看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
@@ -11962,75 +11962,140 @@ Fine. I'll sign it...
 (Moan and nod)
 （呻吟和点头）
 Never! (PERCENT chance to avoid)
-绝不！ （ PERCENT 的概率闪避）
+绝不！ （PERCENT 的概率闪避）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（ PERCENT 的概率闪避）
-(The SPEAKER approaches you with an offer)|Greetings! I am a potion trader.|Give me your strongest potions!|I pay cash!
-（SPEAKER 向您提出要约）|您好！我是魔药商。|请给我你最强的魔药！|我付现金！
+（摇头皱眉）（PERCENT 的概率闪避）
+
+(The SPEAKER waves)|Greetings,|I manufacture all sorts of goods.|Would you like to buy some?
+（SPEAKER 挥手）|你好，|我这里生产各种各样商品。|你想买一些吗？
+(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
+（SPEAKER 放下锤子，敲响指关节）|把它们放起来！
+(The SPEAKER looks at you.)|But you already have one?
+（SPEAKER 看着你。）|但是你已经有了一个？
+(The SPEAKER folds her arms)|I don't do charity, ma'am.
+（SPEAKER 交叉双臂）|我不做慈善事业，女士。
+(The SPEAKER smirks)|Another adventurer found this lying around.|I wonder who it's for~
+（SPEAKER 傻笑）|另一位冒险家发现了这个。|我想知道它是给谁的~
+(The SPEAKER smiles)|Now don't be up to no good~|Or else I'll have to put you in cuffs...
+（SPEAKER 微笑）|现在别做坏事~|不然我就得给你戴上手铐了……
+(The SPEAKER nods)|A versatile weapon. One of my favorites.
+（SPEAKER 点头）|一种多功能武器。我最喜欢的武器之一。
+(The SPEAKER nods)|Keep your friends close, and your enemies far away.
+（SPEAKER 点头）|让你的朋友亲近，让你的敌人远离。
+(The SPEAKER nods)|Handy to have one of these around.
+（SPEAKER 点头）|身边有这样一个就很方便了。
+(The SPEAKER nods)|The best defense is a good offense.
+（SPEAKER 点头）|最好的防守就是最好的进攻。
+(The SPEAKER nods)|You can never be too careful.
+（SPEAKER 点头）|你再小心也不为过。
+(The SPEAKER smiles)|Can never be too prepared~
+（SPEAKER 微笑）|永远不能准备得太充分~
+
+(Select an item to buy from the SPEAKER)
+（从 SPEAKER 中选择要购买的商品）
+(Attack the SPEAKER?)
+（攻击 SPEAKER？）
+(以 IC# gp 购入 ITM#)
+(The SPEAKER sells you the item)
+（SPEAKER 向你出售该物品）
+(The SPEAKER shakes her head)|I think you'd be better off without that~
+（SPEAKER 摇头）|我认为没有那个你会更好~
+(The SPEAKER looks embarassed)|I can't sell you that, miss...
+（SPEAKER 看上去很尴尬）|我不能把这个卖给你，小姐……
+(The SPEAKER blushes)|Actually, I was saving that for myself...
+（SPEAKER 脸红了）|其实，我是为自己留下的……
+(The SPEAKER grins)|Good girls don't need one of those~
+（SPEAKER 笑）|好女孩不需要这些~
+(The SPEAKER buzzes)|Error, insufficient access privileges.
+（SPEAKER 发出嗡嗡声）|错误，访问权限不足。
+(The SPEAKER giggles at your empty pockets)|You can't afford such things, silly~
+（SPEAKER 对着你空空的口袋咯咯笑）|你买不起这东西的，傻瓜~
+(The SPEAKER pauses nervously)|Um miss, I don't think you can afford that...
+（SPEAKER 紧张地停顿）|嗯，小姐，我认为你负担不起……
+(The SPEAKER frowns)|What does this look like, a charity?
+（SPEAKER 皱起眉头）|你觉得我看起来像什么，慈善机构？
+(The SPEAKER smules)|You'll have to secure that by other means, I think~
+（SPEAKER 微笑）|我想你必须通过其他方式来确保这一点~
+(The SPEAKER beeps)|Insufficient currency.
+（SPEAKER 发出蜂鸣声）|货币不足。
+
+(Look at what she wants to buy)
+（看看她想买什么）
+You're giving me everything you have.
+把你所有东西都交给我。
+(Flail threateningly at her)
+（威胁性地殴打她）
+(Do it)
+（来吧）
+(Back off)
+（退后）
+
+(The SPEAKER approaches you with an offer)|Greetings! I am the potion seller.|I buy and sell only the strongest potions!|
+（SPEAKER 向您提出要约）|您好！我是魔药商。|我只买卖最强的药水！|
 (The SPEAKER doesn't look surprised)|Okay, just let me set these down real quick...
-（SPEAKER 看起来并不惊讶）|好吧，让我快速设置这些...
+（SPEAKER 看起来并不惊讶）|好吧，让我快速地把这些写下来......
 (The SPEAKER smiles)|A spellcaster will have great use for this!
-（SPEAKER微笑）|施法者会需要这些的！
+（SPEAKER 微笑）|施法者会需要这些的！
 (The SPEAKER smiles)|Refreshing!
-（SPEAKER微笑）|耳目一新！
+（SPEAKER 微笑）|耳目一新！
 (The SPEAKER smiles)|They say a bitter tea cures all ails...
-（SPEAKER笑）|据说苦茶能治百病……
+（SPEAKER 笑）|据说苦茶能治百病……
 (The SPEAKER smiles)|An empty flask?|...Oh.
-（SPEAKER微笑）|一个空烧瓶？|...哦。
+（SPEAKER 微笑）|一个空烧瓶？|...哦。
 (The SPEAKER doesn't look surprised)|Then let us have a battle of wits!
-（SPEAKER一脸不惊讶）|那我们就斗智斗勇吧！
+（SPEAKER 一脸不惊讶）|那我们就斗智斗勇吧！
 (The SPEAKER thanks you)|A kind offering! You have my thanks.
-（SPEAKER谢谢你）|好心的奉献！你有我的谢意。
+（SPEAKER 感谢你）|好心的奉献！你有我的谢意。
 (The SPEAKER thanks you)|A fine trinket!|I will enjoy meditating upon it.
-（SPEAKER 谢谢你）|一个精美的小饰品！|我会喜欢冥想它。
+（SPEAKER 感谢你）|一个精美的小饰品！|我会喜欢冥想它。
 (The SPEAKER thanks you)|I can feel a great sadness emanating from it.|It calls for warmth.
-（SPEAKER谢谢你）|我能感觉到一种巨大的悲伤。|它需要温暖。
+（SPEAKER 感谢你）|我能感觉到一种巨大的悲伤。|它需要温暖。
 (The SPEAKER approaches you with an offer)|Hello!|I am searching for magical scrolls.|Would you happen to have any?
 （SPEAKER 向你提议）|你好！|我正在寻找魔法卷轴。|你有吗？
 (The SPEAKER doesn't look surprised)|Rude!
-（SPEAKER看起来并不惊讶）|粗鲁！
+（SPEAKER 看起来并不惊讶）|粗鲁！
 (The SPEAKER smiles)|Thank you!
-（SPEAKER微笑）|谢谢！
+（SPEAKER 微笑）|谢谢！
 (The SPEAKER smiles)|Thank you!
-（SPEAKER微笑）|谢谢！
+（SPEAKER 微笑）|谢谢！
 (The SPEAKER smiles)|Thank you!
-（SPEAKER微笑）|谢谢！
+（SPEAKER 微笑）|谢谢！
 (The SPEAKER raises a brow)|Thank you! This one is rare!
-（SPEAKER挑眉）|谢谢！这个难得！
+（SPEAKER 挑眉）|谢谢！这个难得！
 (The SPEAKER approaches you with an offer)|Hey girl~|You seem like the explorer type.|Happen to have any good finds?
-（SPEAKER向你提出要约）|嘿姑娘~|你看起来像探险家。|碰巧有什么好发现吗？
+（SPEAKER 向你提出要约）|嘿姑娘~|你看起来像探险家。|碰巧有什么好发现吗？
 (The SPEAKER frowns)|Well then.
-（SPEAKER皱眉）|那么好吧。
+（SPEAKER 皱眉）|那么好吧。
 (The SPEAKER grins)|Are you willing to part with this?
-（SPEAKER笑）|你愿意放弃它吗？
+（SPEAKER 笑）|你愿意放弃它吗？
 (The SPEAKER smiles)|Aha!|Fantastic.
-（SPEAKER微笑）|啊哈！|太棒了。
+（SPEAKER 微笑）|啊哈！|太棒了。
 (The SPEAKER frowns)|I'll take it, I guess...
-（SPEAKER皱眉）|我会接受的，大概……
+（SPEAKER 皱眉）|我会接受的，大概……
 (The SPEAKER smiles)|Oooh~!|I love technology!
-（SPEAKER微笑）|Oooh~！|我爱科技！
+（SPEAKER 微笑）|Oooh~！|我爱科技！
 (The SPEAKER surprises you)|Greetings, traveler.|I am looking for tools to aid in my mission.
 （SPEAKER 让你大吃一惊）|你好，旅行者。|我正在寻找工具来帮助我完成任务。
 (The SPEAKER doesn't look surprised)|That's how it is, then.
 （SPEAKER 看起来并不惊讶）|那就这样吧。
 (The SPEAKER bows)|Always be prepared.
-（SPEAKER鞠躬）|时刻准备着。
+（SPEAKER 鞠躬）|时刻准备着。
 (The SPEAKER bows)|A bit dangerous, but I'll take it.
-（SPEAKER鞠躬）|有点危险，但我会接受的。
+（SPEAKER 鞠躬）|有点危险，但我会接受的。
 (The SPEAKER bows)|A tool of the trade.
-（SPEAKER鞠躬）|交易工具。
+（SPEAKER 鞠躬）|交易工具。
 (The SPEAKER bows)|A most valuable find.
-（SPEAKER鞠躬）|最有价值的发现。
+（SPEAKER 鞠躬）|最有价值的发现。
 (The SPEAKER runs up to you)|Hello!|You wouldn't happen to have seen any ghosts lately?|I'm gathering evidence!
-（说话的人跑到你面前）|你好！|你最近有没有碰巧看到任何幽灵？|我正在收集证据！
+（SPEAKER 跑到你面前）|你好！|你最近有没有碰巧看到任何幽灵？|我正在收集证据！
 (The SPEAKER gasps)|You wouldn't!
-（SPEAKER喘息）|你不会的！
+（SPEAKER 喘息）|你不会的！
 (The SPEAKER shakes your hand)|Ah! Ghosts love these!
-（SPEAKER与你握手）|啊！鬼喜欢这些！
+（SPEAKER 与你握手）|啊！鬼喜欢这些！
 (The SPEAKER smiles)|This looks like strong evidence for my investigation!
-（SPEAKER笑）|这似乎是我调查的有力证据！
+（SPEAKER 笑）|这似乎是我调查的有力证据！
 (The SPEAKER grins)|Woah! That's so cool!
-（SPEAKER咧嘴一笑）|哇！这太酷了！
+（SPEAKER 咧嘴一笑）|哇！这太酷了！
 You're giving me everything you have.
 把你所有东西都交给我。
 (Flail threateningly at her)
@@ -12059,6 +12124,28 @@ You're giving me everything you have.
 （以 ItemCost8 gp 出售 Item8）
 (Sell Item9 for ItemCost9 gp)
 （以 ItemCost9 gp 出售 Item9）
+
+(Buy Item0 for ItemCost0 gp)
+（以 ItemCost0 gp 购入 Item0）
+(Buy Item1 for ItemCost1 gp)
+（以 ItemCost1 gp 购入 Item1）
+(Buy Item2 for ItemCost2 gp)
+（以 ItemCost2 gp 购入 Item2）
+(Buy Item3 for ItemCost3 gp)
+（以 ItemCost3 gp 购入 Item3）
+(Buy Item4 for ItemCost4 gp)
+（以 ItemCost4 gp 购入 Item4）
+(Buy Item5 for ItemCost5 gp)
+（以 ItemCost5 gp 购入 Item5）
+(Buy Item6 for ItemCost6 gp)
+（以 ItemCost6 gp 购入 Item6）
+(Buy Item7 for ItemCost7 gp)
+（以 ItemCost7 gp 购入 Item7）
+(Buy Item8 for ItemCost8 gp)
+（以 ItemCost8 gp 购入 Item8）
+(Buy Item9 for ItemCost9 gp)
+（以 ItemCost9 gp 购入 Item9）
+
 (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(She will remain and help you with restraints for 50 turns)
 （SPEAKER在闪光中出现）|我是以女神的名义来的。|我想你需要我的帮助？|（她会留下来在50回合内帮你解开束缚）
 (The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?
