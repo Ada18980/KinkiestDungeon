@@ -5980,66 +5980,92 @@ Magic Egg
 附魔跳蛋
 An energetic little friend that likes to tease you.
 一个喜欢挑逗你的带有能量的小玩具。
-It is charged by residual magic from your spells.
-它由你的法术残留的魔法充电。
+It is charged by residual magic from your spells. Type: Teasing
+它由你的法术残留的魔法充电。类型：戏弄
 Prototype Egg
 原型跳蛋
 A teaser that periodically vibrates.
 周期性振动的小玩具。
-High efficiency mana conversion means longer tease duration.
-高效率法力转换意味着更长的振动持续时间。
+High efficiency mana conversion means longer tease duration. Type: Teasing, Pleasure, Edging
+高效率法力转换意味着更长的振动持续时间。类型：戏弄、快感、寸止
 Vibrating Plug
 振动塞
 A sizeable plug that makes you happy... a little too happy.
 一个让你开心的大插头……有点太开心了。
-It vibrates periodically and allows orgasms.
-它会定期振动并允许性高潮。
+It vibrates periodically and adds distraction when moving. Type: Pleasure
+它会定期振动并在移动时提高干扰值。类型：快感
 Teaser Plug
 逗弄塞
 A sizeable plug that will tease you but never let you go...
 一个相当大的插头，会挑逗你，但永远不会让你高潮......
-It vibrates weakly periodically.
-它周期性地微弱振动。
+It vibrates weakly periodically. Type: Teasing, Denial
+它周期性地微弱振动。类型：戏弄、拒绝
 Torment Plug
 折磨塞
 A sizeable plug that will make your life unbearably pleasurable...
-一个相当大的插头，会让你的生活变得难以忍受......
-It vibrates strongly periodically and has a denial setting.
-它周期性地强烈振动并具有拒绝设置。
+一个相当大的塞子，会让你的生活变得难以忍受......
+It vibrates strongly periodically and has a denial setting. Type: Denial
+它周期性地强烈振动并具有拒绝设置。类型：拒绝
 A sizeable plug that will make your life unbearably pleasurable...
-一个相当大的插头，会让你的生活变得难以忍受......
+一个相当大的塞子，会让你的生活变得难以忍受......
+Thundering Plug
+雷霆塞
+A sizeable plug that will make your life unbearably pleasurable...
+一个相当大的塞子，会让你的生活变得难以忍受......
+Enjoy it while you can. Type: Pleasure, Edging
+当你有空的时候好好享受它。类型：快感、寸止
+Intense Training Plug
+强化训练塞
+An energetic plug that will make your life unbearably pleasurable...
+一个震动幅度相当大的塞子，会让你的生活变得难以忍受......
+You're going to have the time of your life. Type: Pleasure, and lots of it
+你将会度过一生中最美好的时光。类型：快感，而且很多
+Rear Vibrating Plug
+后部振动塞
+A device that attacks from multiple angles.
+从多个角度攻击的装置。
+An enjoyable experience. Type: Edging
+一次愉快的经历。 类型：寸止
 Maid Egg
 女仆跳蛋
 An energetic little friend that likes to tease you and takes orders from the head maid.
 精力充沛的小伙伴，会挑逗你，听从女仆长的吩咐。
-It is charged by residual magic from your spells.
-它由你的法术残留的魔法充电。
+It is charged by residual magic from your spells. Type: Teasing, Edging
+它由你的法术残留的魔法充电。类型：戏弄、寸止
+Stainless Plug
+不锈钢塞子
+A weighty plug that doesn't vibrate, but you'll certainly notice it walking around...
+一个不会振动的沉重塞子，但你肯定会注意到它在你体内四处活动......
+This one goes in the front.
+这个塞在前面。
 Shadow Hand Gag
 影之手口球
 It clasps tightly over the mouth and prevents you from casting your spells!
 它紧紧地扣在嘴上，阻止你施法！
 You have no choice but to struggle.
 你别无选择，只能挣扎。
-You have no choice but to struggle.
-你别无选择，只能挣扎。
-You have no choice but to struggle.
-你别无选择，只能挣扎。
-You have no choice but to struggle.
-你别无选择，只能挣扎。
-You have no choice but to struggle.
-你别无选择，只能挣扎。
-You have no choice but to struggle.
-你别无选择，只能挣扎。
-You have no choice but to struggle.
-你别无选择，只能挣扎。
+Shadow Hands (Legs)
+影之手（腿）
+They are wrapped around your legs!
+它们缠绕在你的腿上！
+Shadow Hands (Arms)
+影之手（手臂）
+They are squeezing you tightly!
+它们紧紧地压着你！
+Shadow Hands (Feet)
+影之手（脚）
+They are holding your feet together!
+它们把你的脚并在一起！
+They are holding your... uh...
+它们拿着你的……呃……
 Holy Wrist Rope
-手腕绳缚（神圣）
+神圣手腕绳缚
 A box tie keeping your arms secured behind your back.
 将您的手臂牢牢固定在背后。
 They are aware of your movements...
 它会对你的动作产生反应...
 Holy Rope Cuffs
-绳手铐（神圣）
+神圣绳手铐
 A quick tie for apprehending prisoners.
 用于逮捕囚犯的快速捆绑。
 They are aware of your movements...
@@ -6051,25 +6077,25 @@ A harness acting as a handle to pull you around
 They are aware of your movements...
 它会对你的动作产生反应...
 Holy Crotch Rope
-下体绳缚（神圣）
+神圣股绳
 A tight rope impressing upon your most private areas...
 一条紧绷的绳索压迫在您最私密的区域......
 They are aware of your movements...
 它会对你的动作产生反应...
 Holy Wrist Rope
-手腕绳缚（神圣）
+神圣手腕绳缚
 A wrist and elbow tie keeping your arms secured behind your back.
 手腕和肘部系带将您的手臂固定在背后。
 They are aware of your movements...
 它会对你的动作产生反应...
 Holy Leg Ropes
-腿部绳缚（神圣）
+神圣腿部绳缚
 A tie that hobbles your legs together..
 一条能把你的腿绑在一起的捆绑。。
 They are aware of your movements...
 它会对你的动作产生反应...
 Holy Ankle Ropes
-脚踝绳缚（神圣）
+神圣脚踝绳缚
 A tie keeping your feet secured together.
 一条将双脚固定在一起的捆绑。
 They are aware of your movements...
