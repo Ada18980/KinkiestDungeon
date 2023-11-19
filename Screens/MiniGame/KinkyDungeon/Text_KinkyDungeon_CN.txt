@@ -7241,32 +7241,64 @@ A ludicrous amount of belts secured with a buckle.
 用一些扣子固定的一些滑稽的皮带。
 Lockable and fully adjustable to ensure snugness.
 可上锁且完全可调，以确保舒适。
-Wrist Cuffs
-手腕手铐
+Iron Cuffs
+铁铐
+Tough shackles with a rudimentary lock.
+带有简陋锁的坚固镣铐。
+You could pick these with a hairpin.
+你可以用发夹撬开这些锁锁。
+Iron Shackles
+铁枷锁
+Tough to walk in.
+很难进去。
+Thumbcuffs
+指铐
+Interferes with the use of your hands.
+妨碍双手的使用。
+Another layer of restriction.
+又一层限制。
+Hinged Handcuffs
+铰链手铐
+Hinged cuffs with a rudimentary lock.
+铰链手铐带有简易锁。
+Difficult to unlock, let alone pick by yourself.
+解锁都困难，更不用说撬开了。
+Heavy Handcuffs
+沉重的手铐
+A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock.
+一套爱尔兰 8 式镣铐，配有基本锁。
+The position is too awkward to free yourself, even with a key...
+这个位置太尴尬了，即使有钥匙也无法自己解开......
+Heavy Leg Irons
+重型脚镣
+A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock.
+一套爱尔兰 8 式镣铐，配有基本锁。
+The position is awkward, but it's on your feet so you can remove them yourself if you have free hands.
+这个位置很尴尬，但它在你的脚上，所以如果你有时间的话，你可以自己把它们解开。
+Thigh Shackles
+大腿镣铐
+Heavy shackles with a rudimentary lock.
+带有简陋锁的沉重枷锁。
+You could pick these with a hairpin.
+你可以用发夹撬开这些锁锁。
+The enemy attaches your leg shackles together!
+敌人把你的脚镣连在一起！
+Linked Thigh Shackles
+链接的大腿镣铐
 Heavy shackles with a rudimentary lock.
 带有简陋锁的重型镣铐。
 You could pick these with a hairpin.
 你可以用发夹撬开这些锁锁。
-Shackles
-镣铐
-Heavy shackles with a rudimentary lock.
-带有简陋锁的重型镣铐。
-You could pick these with a hairpin.
-你可以用发夹撬开这些锁锁。
-Leg Shackles
-脚铐
-Heavy shackles with a rudimentary lock.
-带有简陋锁的重型镣铐。
-You could pick these with a hairpin.
-你可以用发夹撬开这些锁锁。
+The leg shackles chain detaches!
+脚镣链条脱落！
 Ankle Shackles
 脚踝镣铐
 Heavy shackles with a rudimentary lock.
 带有简陋锁的重型镣铐。
 You could pick these with a hairpin.
 你可以用发夹撬开这些锁锁。
-Ankle Shackles
-脚踝镣铐
+Linked Ankle Shackles
+链接的脚踝镣铐
 The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 Heavy shackles with a rudimentary lock.
