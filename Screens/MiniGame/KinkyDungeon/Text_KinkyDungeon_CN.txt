@@ -5582,14 +5582,14 @@ Leather Panel Gag
 皮革面板堵嘴
 A gag that seals your lips tightly and stuffs your mouth with a ball.
 一个堵住你的嘴唇并用一个球塞住你的嘴的堵嘴。
-The harness is comprehensive and it's locked in place.
-束带很全面，并且锁定到位。
+Keep your mouth to yourself!
+管好自己的嘴吧！
 Harness Panel Gag
 马具式面板堵嘴
 A gag that seals your lips tightly and stuffs your mouth with a ball.
 一个堵住你的嘴唇并用一个球塞住你的嘴的堵嘴。
 The harness is comprehensive and it's locked in place.
-安全带很全面并且已用锁锁住。
+束带很全面，并且锁定到位。
 Harness Ball Gag
 马具式球口塞
 A gag that stuffs your mouth with a large silicone ball.
