@@ -28,11 +28,11 @@ AddModel({
 			AppendPoseRequire: ToMap(["Wristtie"]),
 		},
 		{ Name: "ShoulderRight", Layer: "ShoulderRight", Pri: 0,
-			InheritColor: "Torso",
+			InheritColor: "TorsoUpper",
 			Poses: ToMap([...SHOULDERPOSES]),
 		},
 		{ Name: "ShoulderLeft", Layer: "ShoulderLeft", Pri: 0,
-			InheritColor: "Torso",
+			InheritColor: "TorsoUpper",
 			Poses: ToMap([...SHOULDERPOSES]),
 		},
 

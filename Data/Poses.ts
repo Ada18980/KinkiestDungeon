@@ -39,8 +39,35 @@ let BLUSHPOSES = ["BlushLow", "BlushMedium", "BlushHigh", "BlushExtreme"];
 let STANDARD_DEFAULTS = ["Hogtie"];
 
 let PoseProperties: {[_: string]: PoseProperty} = {
+	UprightHogtie: {
+		filter_pose: ["Hogtie"],
+		rotation: 0,
+		pri_rotation: 2,
+		offset_x: 0,
+		offset_y: 0.1,
+		pri_offset: 3,
+		global_default: "Closed",
+		mods: [
+		{
+			Layer: "Head",
+			rotation: -30,
+			rotation_x_anchor: 1190/MODELWIDTH,
+			rotation_y_anchor: 690/MODELHEIGHT,
+			offset_x: 1190/MODELWIDTH,
+			offset_y: 690/MODELHEIGHT,
+		},
+		{
+			Layer: "BG",
+			rotation: -90,
+			rotation_x_anchor: .5,
+			rotation_y_anchor: .5,
+			offset_x: .5,
+			offset_y: .4,
+		}
+		]
+	},
 	Hogtie: {
-		rotation: -95,
+		rotation: -90,
 		pri_rotation: 1,
 		offset_x: 0.32,
 		offset_y: 0.1,
@@ -53,11 +80,29 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 			rotation_y_anchor: 690/MODELHEIGHT,
 			offset_x: 1190/MODELWIDTH,
 			offset_y: 690/MODELHEIGHT,
-		}],
+		},{
+			Layer: "BG",
+			rotation: 90,
+			//rotation_x_anchor: .5,
+			//rotation_y_anchor: .5,
+			//offset_x: 0.641,
+			//offset_y: 0.273,
+			rotation_x_anchor: .5,
+			rotation_y_anchor: .5,
+			offset_x: 0.641,
+			offset_y: 0.273,
+		}
+		],
 	},
+
 	Kneel: {
 		offset_y: 0.15,
 		pri_offset: 1,
+		mods: [{
+			Layer: "BG",
+			offset_x: 0,
+			offset_y: -.15,
+		}],
 	},
 	KneelClosed: {
 		offset_y: 0.15,
@@ -70,6 +115,10 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 			rotation_y_anchor: 2160/MODELHEIGHT,
 			offset_x: 915/MODELWIDTH,
 			offset_y: 2160/MODELHEIGHT,
+		},{
+			Layer: "BG",
+			offset_x: 0,
+			offset_y: -.15,
 		}],
 	},
 	Front: {
@@ -87,6 +136,7 @@ function ModelGetMaxPose(Poses: {[_: string]: boolean}, CheckVar: string, Filter
 	let maxPose = "";
 	for (let p of Object.keys(Poses)) {
 		if (PoseProperties[p] && PoseProperties[p][CheckVar] != undefined
+			&& (!PoseProperties[p].filter_pose || PoseProperties[p].filter_pose.some((pose) => {return Poses[pose];}))
 			&& (!FilterVar || PoseProperties[p][FilterVar])
 			&& (!maxPose || PoseProperties[p][CheckVar] > PoseProperties[maxPose][CheckVar])
 		) {
@@ -96,7 +146,7 @@ function ModelGetMaxPose(Poses: {[_: string]: boolean}, CheckVar: string, Filter
 	return maxPose;
 }
 
-function ModelGetPoseOffsets(Poses) {
+function ModelGetPoseOffsets(Poses: {[_: string]: boolean}) {
 	let pose = ModelGetMaxPose(Poses, "pri_offset");
 	let x = 0;
 	let y = 0;
@@ -105,7 +155,7 @@ function ModelGetPoseOffsets(Poses) {
 	return {X_Offset: x, Y_Offset: y};
 }
 
-function ModelGetPoseRotation(Poses) {
+function ModelGetPoseRotation(Poses: {[_: string]: boolean}) {
 	let pose = ModelGetMaxPose(Poses, "pri_rotation");
 	let x = 0.5;
 	let y = 0.5;
@@ -116,14 +166,15 @@ function ModelGetPoseRotation(Poses) {
 	return {rotation: r, X_Anchor: x, Y_Anchor: y};
 }
 
-function ModelGetPoseMods(Poses): {[_: string]: PoseMod[]} {
+function ModelGetPoseMods(Poses: {[_: string]: boolean}): {[_: string]: PoseMod[]} {
 	let mods: {[_: string]: PoseMod[]} = {};
 	for (let p of Object.keys(Poses)) {
 		if (PoseProperties[p]?.mods) {
-			for (let mod of PoseProperties[p].mods) {
-				if (!mods[mod.Layer]) mods[mod.Layer] = [];
-				mods[mod.Layer].push(mod);
-			}
+			if (!PoseProperties[p].filter_pose || PoseProperties[p].filter_pose.some((pose) => {return Poses[pose];}))
+				for (let mod of PoseProperties[p].mods) {
+					if (!mods[mod.Layer]) mods[mod.Layer] = [];
+					mods[mod.Layer].push(mod);
+				}
 		}
 	}
 	return mods;

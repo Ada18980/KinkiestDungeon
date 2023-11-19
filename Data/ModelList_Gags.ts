@@ -488,6 +488,46 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "GagFabric",
+	Folder: "GagLeather",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Fabric"],
+	AddPose: ["HideMouth", "FaceCoverGag"],
+	Layers: ToLayerMap([
+		{ Name: "FabricMuzzle", Layer: "GagFlat", Pri: 45,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			NoOverride: true,
+			InheritColor: "Fabric",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "GagComfy",
+	Folder: "GagLeather",
+	TopLevel: false,
+	Group: "Mouth",
+	Parent: "GagFabric",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Fabric"],
+	AddPose: ["FaceCoverGag"],
+	Layers: ToLayerMap([
+		{ Name: "FabricMuzzle", Layer: "GagFlat", Pri: 45,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			NoOverride: true,
+			InheritColor: "Fabric",
+		},
+	])
+});
+
 
 
 AddModel({
