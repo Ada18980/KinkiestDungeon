@@ -11421,28 +11421,44 @@ There is no valid space next to you!
 （没关系...）
 (You decide not to)
 （你决定不这么做）
+(Retaliate)
+（报复）
+(Really attack? You will be justified and won't take a rep penalty)|(You will still lose rep if you capture her)
+（真的要攻击？你会被证明是正当防卫，不会受到声望惩罚）|（如果你抓住她，你仍然会失去声望）
 (Attack her)
 （攻击她）
 (Never mind...)
 （没关系...）
 (You decide not to)
 （你决定不这么做）
+(Sneak Attack)
+（偷袭）
+(Really attack? Target is unaware and will be stunned 1 turn.)
+（真的要攻击？目标浑然不觉，晕眩1回合。）
 (Attack her)
 （攻击她）
 (Never mind...)
 （没关系...）
 (You decide not to)
 （你决定不这么做）
-(Walk past)
-（通过交换位置经过）
-(Walk past)
-（通过交换位置经过）
-(Walk past multiple allies)
-（经过多个盟友）
+(Let me through!!)
+（让我过去！！）
+(Walk past this unit)
+（走过这个小队）
+(Walk past all units)
+（走过所有小队）
 (Never mind...)
 （没关系...）
-(Confirm? You will walk through her for a few turns)
-（确认？你会在接下来几回合中可以穿过他）
+(Confirm? You will move through her for a few turns)
+（确认吗？你在接下来几回合中可以穿过他）
+(Attack her)
+（攻击她）
+(Never mind...)
+（没关系...）
+(You decide not to)
+（你决定不这么做）
+(Never mind...)
+（没关系...）
 (Stop following me)
 （停止跟着我）
 (Stop following me)
@@ -11467,6 +11483,16 @@ There is no valid space next to you!
 （你认为你不需要帮助）
 (The SPEAKER refuses to follow your orders)
 （SPEAKER 拒绝听从您的命令）
+(Never mind...)
+（没关系...）
+(The SPEAKER follows your orders)
+（SPEAKER 听从您的命令）
+(The SPEAKER refuses to follow your orders)
+（SPEAKER 拒绝听从您的命令）
+(Hold still)
+（静止不动）
+(Hold still)
+（静止不动）
 (Never mind...)
 （没关系...）
 (The SPEAKER follows your orders)
@@ -11518,15 +11544,45 @@ There is no valid space next to you!
 (Stop receiving help)
 （停止接受帮助）
 (Confirm? You will have to ask again to get help.)
-（确认？您将不得不再次询问以获得帮助。）
+（确认？你将不得不再次询问以获得帮助。）
 (Stop receiving help)
 （停止接受帮助）
 (Never mind...)
 （没关系...）
 (The SPEAKER will no longer help you.)
-（SPEAKER 将不再帮助您。）
+（SPEAKER 将不再帮助你。）
 (You sigh as you realize you really need her help.)
 （当你意识到你真的需要她的帮助时，你叹了口气。）
+(Kick her out of your party)
+（把她踢出你的队伍）
+(Confirm? She will stop following you)
+（确认嘛？她将不再会跟随你）
+(Remove from party)
+（从队伍中移除）
+(Never mind...)
+（没关系...）
+(The SPEAKER understands.)
+（SPEAKER 明白。）
+(You decide to keep her.)
+（你决定留下她。）
+(Add her to your party)
+（将她添加到你的队伍中）
+(Confirm? She will follow you across floors. You can only have 3 party members)
+（确认？她会跟着你穿过楼层。你只能有3名队员）
+(Add to party)
+（添加到队伍）
+(Never mind...)
+（没关系...）
+(The SPEAKER is happy to join you)
+（SPEAKER 很高兴加入你）
+(You decide not to.)
+（你决定不这样做。）
+
+(Sell items)
+（出售物品）
+(Buy items)
+（购买物品）
+
 Fuuka surrounds herself in defensive talismans!
 Fuuka将自己包围在防御丝带中！
 Fuuka wraps you tightly in restraints! (+RestraintAdded)
