@@ -109,8 +109,42 @@ Controls: Latch Shift Key
 Wait Quickly
 快速等待
 
+Vulnerable
+虚弱
+Stunned
+痴呆
+Snared
+受困
+Slowed
+缓慢
+Silenced
+沉默
+Disarmed
+缴械
+Blinded
+致盲
+Apprehended!
+被捕！
+Restrained!
+束缚！
+Fully Bound!
+完全束缚！
+Tightly Secured!
+严密保护！
+Inescapably
+无法避免
+Trussed up!
+捆起来了！
 Helpless!
 无助！
+Belted
+束带
+Wearing a toy
+戴着玩具
+Vibed!
+震动中！
+Flying
+飞行中
 Evaded!
 闪避！
 Blocked!
