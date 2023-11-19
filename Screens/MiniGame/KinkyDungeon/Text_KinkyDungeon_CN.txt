@@ -11648,23 +11648,26 @@ Not really.
 (Shake your head and moan) (PERCENT chance to avoid)
 （摇头呻吟）（PERCENT 的概率闪避）
 (The SPEAKER nervously walks up to you)|Excuse me miss...|Are you a fan of latex by chance?
-（SPEAKER紧张地走到你面前）|请问小姐……|你是不是乳胶爱好者？
+（SPEAKER 紧张地走到你面前）|请问小姐……|你是不是乳胶爱好者？
 (The SPEAKER blushes deeply)|Then would you like to try on this RESTRAINT?
-（SPEAKER脸红了）|那你要不要试试这个RESTRAINT？
+（SPEAKER 脸红了）|那你要不要试试这个RESTRAINT？
 (The SPEAKER smiles)|You look so good in that!
-（SPEAKER笑了）|你穿那个很好看！
+（SPEAKER 笑了）|你穿那个很好看！
 (The SPEAKER frowns)|Aww...
-（SPEAKER皱眉）|哇……
+（SPEAKER 皱眉）|哇……
 (The SPEAKER blushes)|Okay... sorry I asked.
-（SPEAKER脸红了）|好吧……很抱歉。
+（SPEAKER 脸红了）|好吧……很抱歉。
 (The SPEAKER grins and reaches for a RESTRAINT)|Well, too bad--
-（说话者咧嘴一笑，伸手拿来 RESTRAINT ）|好吧，太糟糕了——
+（SPEAKER 咧嘴一笑，伸手拿来 RESTRAINT ）|好吧，太糟糕了——
 (The SPEAKER grins)|I wasn't offering you a choice...|I was asking if you would LIKE it, hehe~
-（SPEAKER笑）|我没有给你选择...|我只是问你是否喜欢，呵呵~
+（SPEAKER 笑）|我没有给你选择...|我只是问你是否喜欢，呵呵~
 (The SPEAKER frowns)|...You're fast!
-（SPEAKER皱眉）|...好快！
+（SPEAKER 皱眉）|...好快！
 (The SPEAKER smiles)|That's right~
-（SPEAKER微笑）|这就对了~
+（SPEAKER 微笑）|这就对了~
+(The SPEAKER restrains you and clicks a lock on)|There! Nice and tight!
+（SPEAKER 制止了你并按下了锁）|那里！又好又紧！
+
 Why of course!
 当然！怎么了？
 (Nod happily)
@@ -11673,6 +11676,7 @@ Not really.
 不。
 (Shake your head)
 （摇头）
+
 That sounds fun!
 这听起来很有趣！
 (Nod again)
@@ -11681,6 +11685,7 @@ No, I don't want that!
 不，我不想要！
 (Shake your head)
 （摇头）
+
 Okay, fine...
 好的...
 (Moan and giggle)
@@ -11689,28 +11694,30 @@ Wait, what? (PERCENT chance to avoid)
 等等，什么？ （PERCENT 的概率闪避）
 (Shake your head and moan) (PERCENT chance to avoid)
 （摇头呻吟）（PERCENT 的概率闪避）
+
 (The SPEAKER nervously walks up to you)|Excuse me miss...|Can you help me out?
-（SPEAKER紧张地走到你面前）|请问小姐……|你能帮帮我吗？
+（SPEAKER 紧张地走到你面前）|请问小姐……|你能帮帮我吗？
 (The SPEAKER blushes deeply)|I managed to unlock my RESTRAINT,|but my mistress expects me to wear it!|Do you mind wearing it instead?
-（说话的人脸红了）|我设法解开了我的 RESTRAINT ，|但我的女主人希望我戴上它！|你介意戴上它吗？
+（SPEAKER 脸红了）|我设法解开了我的 RESTRAINT，|但我的女主人希望我戴上它！|你介意戴上它吗？
 (The SPEAKER smiles)|Thank you so much, miss!
-（SPEAKER微笑）|非常感谢您，小姐！
+（SPEAKER 微笑）|非常感谢您，小姐！
 (The SPEAKER frowns)|I'm going to get in trouble...
-（SPEAKER皱眉）|我要惹麻烦了……
+（SPEAKER 皱眉）|我要惹麻烦了……
 (The SPEAKER blushes)|Oh... okay.
-（SPEAKER脸红了）|哦……好吧。
+（SPEAKER 脸红了）|哦……好吧。
 (The SPEAKER frowns angrily)|Look, I know you're in trouble around here.|Just do me a favor. Please.|I need you to wear this RESTRAINT.
-（SPEAKER愤怒地皱起眉头）|看，我知道你在这附近有麻烦。|帮我一个忙。拜托。|我需要你戴上这个 RESTRAINT 。
+（SPEAKER 愤怒地皱起眉头）|看，我知道你在这附近有麻烦。|帮我一个忙。拜托。|我需要你戴上这个 RESTRAINT 。
 (The SPEAKER pleads with you)|My mistress is a magician!|She put a spell on it that senses if it's being worn.|Please, you have to hurry!
-（说话者恳求你）|我的女主人是个魔术师！|她在上面施了一个咒语，可以感知它是否被戴着。|求求你了，你得快点！
+（SPEAKER 恳求你）|我的女主人是个魔术师！|她在上面施了一个咒语，可以感知它是否被戴着。|求求你了，你得快点！
 (The SPEAKER sighs and wears it herself)|(The lock starts glowing brightly...)
-（SPEAKER叹了口气，自己戴上）|（锁开始发光……）
+（SPEAKER 叹了口气，自己戴上）|（锁开始发光……）
 (The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
-（SPEAKER松了口气）|非常感谢！|我不会忘记你的！
+（SPEAKER 松了口气）|非常感谢！|我不会忘记你的！
 (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Hmmph! Serves you right!|
 （当你转身时，SPEAKER 让你大吃一惊）|（你听到腰部咔哒一声）|嗯！很适合你！
 (The lock on the RESTRAINT starts glowing...)
 （RESTRAINT 上的锁开始发光……）
+
 I would love to help!
 我很乐意提供帮助！
 (Nod eagerly)
@@ -11719,6 +11726,7 @@ Go find someone else.
 去找别人。
 (Shake your head)
 （摇头）
+
 That sounds like a tempting offer.
 这听起来像是一个诱人的提议。
 (Nod again, excited)
@@ -11727,34 +11735,40 @@ That sounds like a tempting offer.
 ...什么？为什么我需要穿它？
 (Shake your head, puzzled)
 （摇头，疑惑）
+
 Fine. I'll do it because you asked.
 好。为了你，我会这样做。
 (Moan and nod slowly)
 （呻吟着慢慢点头）
 I won't help you. Wear it yourself. (PERCENT chance to avoid)
-我不会帮你的。自己穿。 （PERCENT 的概率闪避）
+我不会帮你的。自己穿。（PERCENT 的概率闪避）
 (Shake your head) (PERCENT chance to avoid)
 （摇头）（PERCENT 的概率闪避）
+
 (Look at your belt...)
-（看你的腰带……）
+（看你的贞操带……）
+
 (The SPEAKER walks up to you)|We don't get a lot of visitors.|I take it that you enjoy bondage?
-（SPEAKER向你走来）|访客可是很少见的。|你喜欢束缚吗？
+（SPEAKER 向你走来）|访客可是很少见的。|你喜欢束缚吗？
 (The SPEAKER tilts her head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it.
-（SPEAKER歪着头）|嗯，我这里有一个 RESTRAINT 放在这里，|我觉得你会喜欢的。
+（SPEAKER 歪着头）|嗯，我这里有一个 RESTRAINT 放在这里，|我觉得你会喜欢的。
 (The SPEAKER smiles)|I'm glad you like it!
-（SPEAKER微笑）|很高兴你喜欢！
+（SPEAKER 微笑）|很高兴你喜欢！
 (The SPEAKER frowns)|I guess I'll have to find someone else to wear it.
 （SPEAKER 皱眉）|我想我得找别人穿了。
 (The SPEAKER looks disappointed)|Oh well.
-（SPEAKER看起来很失望）|哦好吧。
+（SPEAKER 看起来很失望）|哦好吧。
 (The SPEAKER grins and reaches toward you!)|Well, I think it'd look great on you!
 （SPEAKER 咧嘴一笑，朝你伸出手！）|嗯，我觉得你穿起来会很好看！
 (The SPEAKER grins)|You don't have a choice, dear~
-（SPEAKER笑）|你别无选择，亲爱的~
+（SPEAKER 笑）|你别无选择，亲爱的~
 (The SPEAKER frowns)|Darn it! Missed my chance.
-（SPEAKER皱眉）|该死！错过了我的机会。
+（SPEAKER 皱眉）|该死！错过了我的机会。
 (The SPEAKER smiles)|Good, good~
-（SPEAKER微笑）|不错，不错~
+（SPEAKER 微笑）|不错，不错~
+(The SPEAKER restrains you and clicks a lock on)|There! Nice and tight!
+（SPEAKER 制止了你并按下了锁）|那里！ 又好又紧！
+
 Why of course!
 当然！怎么了？
 (Nod happily)
@@ -11763,6 +11777,7 @@ Not really.
 不。
 (Shake your head)
 （摇头）
+
 That sounds fun!
 这听起来很有趣！
 (Nod again)
@@ -11771,6 +11786,7 @@ No, I don't want that!
 不，我不想要！
 (Shake your head)
 （摇头）
+
 Okay, fine...
 好的...
 (Moan and giggle)
@@ -11779,28 +11795,30 @@ Wait, what? (PERCENT chance to avoid)
 等等，什么？ （PERCENT 的概率闪避）
 (Shake your head and moan) (PERCENT chance to avoid)
 （摇头呻吟）（PERCENT 的概率闪避）
+
 (The SPEAKER grins as she sees you)|Hey there sweetie~|I think you'd look good in some ropes!
 （SPEAKER 看到你就笑了）|嘿，亲爱的~|我觉得绳子在你身上很好看！
 (The SPEAKER looks at your bound body)|I've got some more ropes for you, babe!
-（说话的人看着你被捆绑的身体）|我给你准备了更多的绳子，宝贝！
+（SPEAKER 看着你被捆绑的身体）|我给你准备了更多的绳子，宝贝！
 (The SPEAKER smiles)|Okay, hold still while I get you rigged up~
-（SPEAKER微笑）|好吧，请等等，让我给你绑好~
+（SPEAKER 微笑）|好吧，请等等，让我给你绑好~
 (The SPEAKER slaps your butt as she ties the last knot)|All trussed up~
-（SPEAKER在打最后一个结时拍拍你的屁股）|全部绑好了~
+（SPEAKER 在打最后一个结时拍拍你的屁股）|全部绑好了~
 (The SPEAKER looks disappointed and packs her rope away)
-（说话者看起来很失望，把她的绳子收起来）
+（SPEAKER 看起来很失望，把她的绳子收起来）
 (The SPEAKER frowns)|Aw. What a missed opportunity!
-（SPEAKER皱眉）|噢。多么难得的机会！
+（SPEAKER 皱眉）|噢。多么难得的机会！
 (The SPEAKER grins and reaches for her satchel)|Well, too bad--
-（说话者咧嘴一笑，伸手去拿她的包）|好吧，太糟糕了——
+（SPEAKER 咧嘴一笑，伸手去拿她的包）|好吧，太糟糕了——
 (The SPEAKER grins)|But I've already brought so much rope with me~
-（SPEAKER笑着）|可是我已经带了这么多绳子了~
+（SPEAKER 笑着）|可是我已经带了这么多绳子了~
 (The SPEAKER frowns)|Suit yourself.
-（SPEAKER皱眉）|随你便。
+（SPEAKER 皱眉）|随你便。
 (The SPEAKER smiles)|Good girl~
-（SPEAKER微笑）|好姑娘~
+（SPEAKER 微笑）|好姑娘~
 (The SPEAKER takes you down and trusses you up tightly)|That'll teach you~
-（SPEAKER把你拉下来，把你绑得紧紧的）|给你长个教训~
+（SPEAKER 把你拉下来，把你绑得紧紧的）|给你长个教训~
+
 I think so too!
 我也这么认为！
 (Nod excitedly)
@@ -11826,23 +11844,23 @@ Go away! (PERCENT chance to avoid)
 (Shake your head and moan) (PERCENT chance to avoid)
 （摇头呻吟）（PERCENT 的概率闪避）
 (The SPEAKER perks her ears as she sees you)|You've got a nice body.|I think it'll do better with some training!
-（SPEAKER一看到你就竖起耳朵）|你的体型很完美。|我想通过一些训练会做得更好！
+（SPEAKER 一看到你就竖起耳朵）|你的体型很完美。|我想通过一些训练会做得更好！
 (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
 （SPEAKER 咧嘴笑着递给你一张纸）|Nevermere 训练师一直在寻找新人！|你只需要在这里签字……
 (The SPEAKER gets you suited up)|There you go! Now go be a good girl!
-（SPEAKER让你穿上衣服）|现在去！去做一个好女孩吧！
+（SPEAKER 让你穿上衣服）|现在去！去做一个好女孩吧！
 (The SPEAKER scoffs)|That's what they all say.
 （SPEAKER 嗤笑）|他们都是这么说的。
 (The SPEAKER frowns)|What a shame.
 （SPEAKER皱眉）|真可惜。
 (The SPEAKER grins and reaches for her baton)|No? Well, I heard you have some debts to pay~
-（SPEAKER咧嘴一笑，伸手接过她的指挥棒）|不是吗？嗯，听说你有些欠债了~
+（SPEAKER 咧嘴一笑，伸手接过她的指挥棒）|不是吗？嗯，听说你有些欠债了~
 (The SPEAKER grins)|I promise you it's a good deal~
-（SPEAKER咧嘴一笑）|我向你保证很划算~
+（SPEAKER 咧嘴一笑）|我向你保证很划算~
 (The SPEAKER frowns)|Fine. I'll look for other candidates.
-（SPEAKER皱眉）|好吧。我会寻找其他候选人。
+（SPEAKER 皱眉）|好吧。我会寻找其他候选人。
 (The SPEAKER smiles)|That's right. Your name, please?
-（SPEAKER微笑）|没错。请你告诉我你的名字？
+（SPEAKER 微笑）|没错。请你告诉我你的名字？
 (The SPEAKER zaps you and places you in restrictive gear)|Hmph. Unruly girls need training!
 （SPEAKER 对你进行电击并将你置于限制性装备中）|哼。不守规矩的女孩需要训练！
 This sounds like an interesting opportunity.
@@ -11870,23 +11888,23 @@ Never! (PERCENT chance to avoid)
 (Shake your head and frown) (PERCENT chance to avoid)
 （摇头皱眉）（PERCENT 的概率闪避）
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
-（SPEAKER看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
+（SPEAKER 看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
-（说话者在清清嗓子前微微一笑）|太棒了！|我这里有你的制服……
+（SPEAKER 在清清嗓子前微微一笑）|太棒了！|我这里有你的制服……
 (The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck.
 （SPEAKER 将你扣上，将系带拉得特别紧……）|（你听到几道锁扣的咔哒声……）|太棒了。你的首要任务是清理这层地板。|祝你好运。
 (The SPEAKER tilts her head and shrugs)|We are always prepared...
-（SPEAKER歪着头耸了耸肩）|我们时刻准备着……
+（SPEAKER 歪着头耸了耸肩）|我们时刻准备着……
 (The SPEAKER nods)|Fair enough.
-（SPEAKER点头）|很公平。
+（SPEAKER 点头）|很公平。
 (The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them...
-（SPEAKER咧嘴一笑，扯出一件轻薄的裙子）|我可以提醒你一下，你已经结交了不少……敌人？|如果你遇到其中一个，那就太可惜了……
+（SPEAKER 咧嘴一笑，扯出一件轻薄的裙子）|我可以提醒你一下，你已经结交了不少……敌人？|如果你遇到其中一个，那就太可惜了……
 (The SPEAKER nods proudly)|We are willing to made some changes to our records~
-（SPEAKER得意地点点头）|我们愿意对我们的记录做些修改~
+（SPEAKER 得意地点点头）|我们愿意对我们的记录做些修改~
 (The SPEAKER frowns)|You won't know what hit you.
-（SPEAKER皱眉）|你不会知道是什么影响了你。
+（SPEAKER 皱眉）|你不会知道是什么影响了你。
 (The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck.
-（SPEAKER微笑）|我很高兴你做出了正确的决定。|现在，你的首要任务是清理这层地板。|祝你好运。
+（SPEAKER 微笑）|我很高兴你做出了正确的决定。|现在，你的首要任务是清理这层地板。|祝你好运。
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 （SPEAKER 突然移动的速度超出了你的反应）|（当你被压在地上时，你感到一只脚踩在你的背上）|（她给你穿上制服并锁紧......）|你需要额外的训练， 我想...
 This sounds like an interesting opportunity.
@@ -11914,23 +11932,23 @@ Never! (PERCENT chance to avoid)
 (Shake your head and frown) (PERCENT chance to avoid)
 （摇头皱眉）（PERCENT 的概率闪避）
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
-（SPEAKER看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
+（SPEAKER 看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
-（说话者在清清嗓子前微微一笑）|太棒了！|我这里有你的制服……
+（SPEAKER 在清清嗓子前微微一笑）|太棒了！|我这里有你的制服……
 (The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck.
 （SPEAKER 将你扣上，将系带拉得特别紧……）|（你听到几道锁扣的咔哒声……）|太棒了。你的首要任务是清理这层地板。|祝你好运。
 (The SPEAKER tilts her head and shrugs)|We are always prepared...
-（SPEAKER歪着头耸了耸肩）|我们时刻准备着……
+（SPEAKER 歪着头耸了耸肩）|我们时刻准备着……
 (The SPEAKER nods)|Fair enough.
-（SPEAKER点头）|很公平。
+（SPEAKER 点头）|很公平。
 (The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them...
-（SPEAKER咧嘴一笑，扯出一件轻薄的裙子）|我可以提醒你一下，你已经结交了不少……敌人？|如果你遇到其中一个，那就太可惜了……
+（SPEAKER 咧嘴一笑，扯出一件轻薄的裙子）|我可以提醒你一下，你已经结交了不少……敌人？|如果你遇到其中一个，那就太可惜了……
 (The SPEAKER nods proudly)|We are willing to made some changes to our records~
-（SPEAKER得意地点点头）|我们愿意对我们的记录做些修改~
+（SPEAKER 得意地点点头）|我们愿意对我们的记录做些修改~
 (The SPEAKER frowns)|You won't know what hit you.
-（SPEAKER皱眉）|你不会知道是什么影响了你。
+（SPEAKER 皱眉）|你不会知道是什么影响了你。
 (The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck.
-（SPEAKER微笑）|我很高兴你做出了正确的决定。|现在，你的首要任务是清理这层地板。|祝你好运。
+（SPEAKER 微笑）|我很高兴你做出了正确的决定。|现在，你的首要任务是清理这层地板。|祝你好运。
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 （SPEAKER 突然移动的速度超出了你的反应）|（当你被压在地上时，你感到一只脚踩在你的背上）|（她给你穿上制服并锁紧......）|你需要额外的训练， 我想...
 This sounds like an interesting opportunity.
@@ -12060,23 +12078,23 @@ Gladly!
 (Shake your head and frown) (PERCENT chance to avoid)
 （摇头皱眉）（PERCENT 的概率闪避）
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
-（SPEAKER看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
+（SPEAKER 看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
-（说话者在清清嗓子前微微一笑）|太棒了！|我这里有你的制服……
+（SPEAKER 在清清嗓子前微微一笑）|太棒了！|我这里有你的制服……
 (The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck.
 （SPEAKER 将你扣上，将系带拉得特别紧……）|（你听到几道锁扣的咔哒声……）|太棒了。你的首要任务是清理这层地板。|祝你好运。
 (The SPEAKER tilts her head and shrugs)|We are always prepared...
-（SPEAKER歪着头耸了耸肩）|我们时刻准备着……
+（SPEAKER 歪着头耸了耸肩）|我们时刻准备着……
 (The SPEAKER nods)|Fair enough.
-（SPEAKER点头）|很公平。
+（SPEAKER 点头）|很公平。
 (The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them...
-（SPEAKER咧嘴一笑，扯出一件轻薄的裙子）|我可以提醒你一下，你已经结交了不少……敌人？|如果你遇到其中一个，那就太可惜了……
+（SPEAKER 咧嘴一笑，扯出一件轻薄的裙子）|我可以提醒你一下，你已经结交了不少……敌人？|如果你遇到其中一个，那就太可惜了……
 (The SPEAKER nods proudly)|We are willing to made some changes to our records~
-（SPEAKER得意地点点头）|我们愿意对我们的记录做些修改~
+（SPEAKER 得意地点点头）|我们愿意对我们的记录做些修改~
 (The SPEAKER frowns)|You won't know what hit you.
-（SPEAKER皱眉）|你不会知道是什么影响了你。
+（SPEAKER 皱眉）|你不会知道是什么影响了你。
 (The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck.
-（SPEAKER微笑）|我很高兴你做出了正确的决定。|现在，你的首要任务是清理这层地板。|祝你好运。
+（SPEAKER 微笑）|我很高兴你做出了正确的决定。|现在，你的首要任务是清理这层地板。|祝你好运。
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 （SPEAKER 突然移动的速度超出了你的反应）|（当你被压在地上时，你感到一只脚踩在你的背上）|（她给你穿上制服并锁紧......）|你需要额外的训练， 我想...
 This sounds like an interesting opportunity.
