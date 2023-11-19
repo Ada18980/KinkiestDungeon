@@ -12113,10 +12113,12 @@ Give her a Scroll of Purity
 （你发出命令释放 SPEAKER）|呜呜呜！|(她把堵嘴又锁上了...)
 Use a key to unlock her
 用钥匙解开她
-Try to pick her restraints
-试着解开她的束缚
+Try to pick her restraints (JAMPERCENT jam chance)
+试着解开她的束缚 （JAMPERCENT 几率）
 Use a command word
 使用命令词
+Apologize profusely!
+深深地道歉！
 An enemy found you while you were busy!
 敌人在你忙的时候发现了你！
 (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
