@@ -4557,6 +4557,8 @@ The magical lock only accepts blue keys and can't be picked.
 魔法锁只接受蓝色钥匙，不能被撬开。
 The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
 魔法锁被强大的魔法守护着。你得等它消退...
+This lock requires a command word to unlock. It doesn't have a keyhole.
+此锁需要指令才能解锁。它没有钥匙孔。
 You don't have a key for this lock.
 你没有这把锁的钥匙。
 The lock seems to be magical and rejects all picking attempts!
@@ -6029,7 +6031,7 @@ You can't seem to enunciate your spells properly with this in.
 Magic Ball Gag
 附魔口球
 A gag enchanted with magic. It grows to fill your mouth so you can hardly speak.
-一个被魔法迷住的插科打诨。它会长到填满你的嘴巴，所以你几乎不能说话。
+一个被附魔的堵嘴物。它会长到填满你的嘴巴，所以你几乎不能说话。
 It's brimming with conjured energy. A normal knife won't work here!
 它充满了魔法能量。普通的刀在这里是行不通的！
 Ballet Heels
