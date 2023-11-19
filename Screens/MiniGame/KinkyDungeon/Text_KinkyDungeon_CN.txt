@@ -4038,13 +4038,13 @@ The armbinder slips itself around your arms and pushes your elbows together! (+R
 The armbinder rubs itself all over your body! (DamageTaken)
 束手套在你身上摩擦！（DamageTaken）
 Stringent Straitjacket
-严格的紧身衣
+严格的拘束衣
 The straitjacket falls apart.
-紧身衣散开了。
+拘束衣散开了。
 The straitjacket slips itself on over your head and pulls your arms close to your body! (+RestraintAdded)
-紧身衣会在你的头上滑动，并将你的手臂拉到身体附近！（+RestraintAdded）
+拘束衣会在你的头上滑动，并将你的手臂拉到身体附近！（+RestraintAdded）
 The straitjacket squeezes you tightly! (DamageTaken)
-紧身衣把你挤得紧紧的！（DamageTaken）
+拘束衣把你挤得紧紧的！（DamageTaken）
 Brusque Belt
 粗暴的贞操带
 The chastity belt falls to the floor with a clang.
@@ -6495,9 +6495,9 @@ The nurses use this on noisy patients!
 It's sturdy leather...
 它由坚固的皮革制成...
 Asylum Jacket
-安全夹克
+精神病拘束衣
 A straitjacket that keeps patients out of trouble.
-一种使患者摆脱麻烦的紧身衣。
+一种使患者摆脱麻烦的拘束衣。
 It has many straps and is very difficult to escape.
 它有许多皮带，很难逃脱。
 Asylum Legbinder
@@ -6563,9 +6563,9 @@ A straitjacket that is padded on the inside.
 It feels tight but is actually made of an ethereal material...
 它感觉很紧，但实际上是由一种空灵的材料制成的……
 Latex Jacket
-乳胶夹克
+乳胶拘束衣
 A tight jacket that holds your arms completely useless.
-一件紧身夹克，让你的手臂完全无法移动。
+一件拘束衣，让你的手臂完全无法移动。
 Latex Armbinder
 乳胶束手套
 A tight armbinder that pins your arms tightly behind your back
@@ -6733,9 +6733,9 @@ Your elbows detatch!
 The enemy attaches your wrist cuffs back together!
 敌人将你的手腕重新绑在一起！
 Maid Jacket
-女仆夹克
+女仆拘束衣
 A bolero jacket keeping your arms pinned snugly. You can't even move them.
-一件波莱罗夹克，让你的手臂紧紧地固定在一起。你甚至不能移动它们。
+一件波莱罗拘束衣，让你的手臂紧紧地固定在一起。你甚至不能移动它们。
 There is no hope of struggling out. Better hope you can cut it...
 没有挣扎的希望。最好希望你能切开它...
 Devious Maid Costume
