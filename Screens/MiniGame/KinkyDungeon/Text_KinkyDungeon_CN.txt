@@ -22,18 +22,20 @@ Door locked.wav - mitchanary - 已修改|Coins.wav - Saviraz|打开石棺 - Brev
 
 Language
 语言
-EN
+English
 英语
-CN
+Chinese
 简体中文
-KR
+Korean
 韩语
-JP
+Japanese
 日语
-ES
+Spanish
 西班牙语
-FR
+French
 法语
+Russian
+俄语
 Mods
 模组
 Mods Loaded.
