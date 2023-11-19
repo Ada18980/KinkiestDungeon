@@ -9538,6 +9538,8 @@ You hear movements all around as you realize you are surrounded!!!
 你听到周围的动静，意识到你已经被包围了！！！
 There is another restraint underneath!
 底下还有一种束缚具！
+Your restraints rub you in sensitive places as you move...
+当你移动时，你的束缚会摩擦你的敏感部位......
 Indifferent
 漠不关心
 Angered
