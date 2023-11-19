@@ -11880,11 +11880,63 @@ There is no valid space next to you!
 (Switch to Aggressive)
 （切换到侵略模式）
 (The SPEAKER will now pursue enemies)
-（ SPEAKER 现在将追击敌人）
+（SPEAKER 现在将追击敌人）
 (Switch to Defensive)
 （切换到防御模式）
 (The SPEAKER will stay close to you or its assigned position)
-（ SPEAKER 将跟随您或待在指定位置）
+（SPEAKER 将跟随您或待在指定位置）
+(Flirting)
+（调情）
+(The SPEAKER smiles)|This will be fun!
+（SPEAKER 微笑）|这会很有趣！
+(The SPEAKER grins)|I will make sure you enjoy yourself~
+（SPEAKER 笑）|我一定会让你玩得开心~
+(The SPEAKER blushes)|Mmm~ Let's do this!
+（SPEAKER 脸红了）|嗯~我们就这么做吧！
+(The SPEAKER backs up)|I'm not in trouble, am I?
+（SPEAKER 后退）|我没有遇到麻烦，不是吗？
+(The SPEAKER beeps)|This unit does not know how to respond...
+（SPEAKER 发出蜂鸣声）|本机器不知道如何响应...
+(The SPEAKER moans)|Mmmmmph~
+（SPEAKER 呻吟）|嗯嗯呜呜~
+Got something for me?
+有东西给我吗？
+(Present your body to her~)
+（把身体献给她~）
+(The SPEAKER smiles)|Am I thinking what you're thinking?
+（SPEAKER 微笑）|咱俩想的一样吗？
+(The SPEAKER grins)|Why yes, I have just the thing~
+（SPEAKER 笑）|为什么是的，我正好有这个东西~
+(The SPEAKER blushes)|Oh... let me check.
+（SPEAKER 脸红了）|哦……让我检查一下。
+(The SPEAKER smirks)|Be careful what you ask for~
+（SPEAKER 傻笑）|小心你的要求~
+(The SPEAKER flashes its lights)|Calculating strictness threshold...
+（SPEAKER 闪烁）|正在计算严格阈值...
+Yes please! (Hold out your wrists)
+是的，请！ （伸出手腕）
+(Nod and blush)
+（点头并脸红）
+Maybe not...
+也许不...
+(Shake your head)
+（摇头）
+
+Why don't we have a little fun?
+我们为什么不找点乐子呢？
+(Play with her)
+（和她一起玩）
+(The SPEAKER smiles)|Am I thinking what you're thinking?
+（SPEAKER 微笑）|咱俩想的一样吗？
+(The SPEAKER grins)|Why yes, I have just the thing~
+（SPEAKER 笑）|为什么是的，我正好有这个东西~
+(The SPEAKER blushes)|Oh... let me check.
+（SPEAKER 脸红了）|哦……让我检查一下。
+(The SPEAKER smirks)|Be careful what you ask for~
+（SPEAKER 傻笑）|小心你的要求~
+(The SPEAKER flashes its lights)|Calculating strictness threshold...
+（SPEAKER 闪烁）|正在计算严格阈值...
+
 (Ask her for help)
 （向她寻求帮助）
 (Ask her for help)
@@ -11899,18 +11951,40 @@ There is no valid space next to you!
 （SPEAKER 将帮助您摆脱束缚）
 (You decide to deal with your problems yourself.)
 （你决定自己处理你的问题。）
+(Plead with her to unlock you with a Command Word)
+（恳求她用指令解锁你）
+(Yes!)
+（是的！）
 (Never mind...)
 （没关系...）
 (Are you sure? She might see you as being submissive)
 （你确定吗？她可能认为你是顺从的）
+(The SPEAKER would rather 'conserve her mana')
+（SPEAKER 宁愿“保存她的法力”）
+(The SPEAKER utters a command word on you)
+（SPEAKER 对你发出指令）
+(Your magical locks continue to restrain you.)
+（你的魔法锁继续束缚着你。）
+(Plead with her to unlock your restraints)
+（恳求她松开你的束缚）
+(Yes!)
+（是的！）
 (Never mind...)
 （没关系...）
 (Are you sure? She might see you as being submissive)
 （你确定吗？她可能认为你是顺从的）
+(The SPEAKER would rather not give up a magic key)
+（SPEAKER 不想为了你使用魔法钥匙）
+(The SPEAKER doesn't have any keys)
+（SPEAKER 没有任何钥匙）
+(The SPEAKER giggles and gives you a key)
+（SPEAKER 咯咯地笑并给了你一把钥匙）
+(You remain locked tight.)
+（你仍然被锁得紧紧的。）
 (Stop receiving help)
 （停止接受帮助）
 (Confirm? You will have to ask again to get help.)
-（确认？你将不得不再次询问以获得帮助。）
+（确定吗？你将不得不再次询问以获得帮助。）
 (Stop receiving help)
 （停止接受帮助）
 (Never mind...)
@@ -11922,7 +11996,7 @@ There is no valid space next to you!
 (Kick her out of your party)
 （把她踢出你的队伍）
 (Confirm? She will stop following you)
-（确认嘛？她将不再会跟随你）
+（确认吗？她将不再会跟随你）
 (Remove from party)
 （从队伍中移除）
 (Never mind...)
@@ -11949,20 +12023,52 @@ There is no valid space next to you!
 (Buy items)
 （购买物品）
 
+The Dollmaker throws a device to the ground, teleporting her instantly!
+玩偶师将一个装置扔到地上，她立马就被传送走了！
+The Dollmaker's necklace flashes as you find yourself suddenly restrained! (+RestraintAdded)
+当你发现自己突然被束缚时，玩偶师的项链会闪烁！（+RestraintAdded）
+The Dollmaker's overbearing presence captivates you~ (DamageTaken)
+玩偶师的霸气让你着迷~（DamageTaken）
+The Dollmaker snaps her fingers as you find yourself locked! (DamageTaken)
+玩偶师打了个响指，你所有的束缚具都被锁定了！（DamageTaken）
+
+The Dollmaker sinks into a pool of latex!
+玩偶师掉进了乳胶池里！
+The Dollmaker's necklace flashes as you find yourself suddenly restrained! (+RestraintAdded)
+当你发现自己突然被束缚时，玩偶师的项链会闪烁！（+RestraintAdded）
+The Dollmaker suggests that you surrender. (DamageTaken)
+玩偶师建议你投降。（DamageTaken）
+The Dollmaker snaps her fingers as you find yourself locked! (DamageTaken)
+玩偶师打了个响指，你所有的束缚具都被锁定了！（DamageTaken）
+
+The Dollmaker falls kneeling to the floor, admitting defeat!
+玩偶师跪倒在地，认输了！
+The Dollmaker snaps her fingers, and many robotic arms restrain you! (+RestraintAdded)
+玩偶师打了个响指，许多机械臂前来束缚你！（+RestraintAdded）
+The Dollmaker orders you to KNEEL! (DamageTaken)
+玩偶师命令你跪下！（DamageTaken）
+The Dollmaker snaps her fingers as you find yourself locked! (DamageTaken)
+玩偶师打了个响指，你所有的束缚具都被锁定了！（DamageTaken）
+
 Fuuka surrounds herself in defensive talismans!
 Fuuka将自己包围在防御丝带中！
 Fuuka wraps you tightly in restraints! (+RestraintAdded)
-Fuuka将你紧紧包裹在束缚中！ （+RestraintAdded）
+Fuuka将你紧紧包裹在束缚中！（+RestraintAdded）
 Fuuka squeezes your breasts and smiles! (DamageTaken)
-Fuuka一边捏着你的胸一边微笑！ (DamageTaken)
+Fuuka一边捏着你的胸一边微笑！（DamageTaken）
+Fuuka snaps her fingers and all your restraints are locked! (DamageTaken)
+Fuuka打了个响指，你所有的束缚具都被锁定了！（DamageTaken）
+
 Angry Fuuka
 愤怒的Fuuka
 Fuuka surrounds herself in defensive talismans one more time!
 Fuuka再一次用防御丝带包围自己！
 Fuuka wraps you furiously in restraints! (+RestraintAdded)
-Fuuka用狂怒地将你包裹起来！ （+RestraintAdded）
+Fuuka用狂怒地将你包裹起来！（+RestraintAdded）
 Fuuka pouts as she tickles you relentlessly! (DamageTaken)
-Fuuka 一边噘嘴一边无情地给你挠痒痒！ (DamageTaken)
+Fuuka 一边噘嘴一边无情地给你挠痒痒！（DamageTaken）
+Fuuka打了个响指，你所有的束缚具都被锁定了！（DamageTaken）
+
 (You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?
 （你发现一个穿着华丽衣服的女孩）|（她瞥了你一眼）|你是谁？
 I should be asking the same of you.
@@ -11984,9 +12090,9 @@ I am an adventurer.
 Mmmmph.
 嗯。
 (SPEAKER blushes)|Ah, right then...
-（SPEAKER脸红了）|啊，那么……
+（SPEAKER 脸红了）|啊，那么……
 (SPEAKER giggles)|Very well. I don't really care who you are.
-（SPEAKER咯咯笑）|很好。我真的不在乎你是谁。
+（SPEAKER 咯咯笑）|很好。我真的不在乎你是谁。
 I do not need to introduce myself.
 我不需要自我介绍。
 Neither do I.
@@ -11996,11 +12102,11 @@ I'm an adventurer. And who are you?
 Mmmmm... (Blush)
 嗯嗯……（脸红）
 (She grins)|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though.
-（笑）|我叫风花，风和歌两个字。|转生的人叫我风歌，|虽然不太亮。
+（笑）|我叫风歌，风和歌两个字。|转生的人叫我风歌，|虽然不太亮。
 Reincarnated ones?
 转世的？
 (SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue.
-（SPEAKER歪着头）|我相信这个词在普通话中是“僵尸”。
+（SPEAKER 歪着头）|我相信这个词在普通话中是“僵尸”。
 I am an adventurer.
 我是冒险家。
 Mmmmph.
@@ -12008,11 +12114,11 @@ Mmmmph.
 (SPEAKER giggles)|Hehe... you sound interested.
 （SPEAKER 咯咯笑）|呵呵……你听起来很感兴趣。
 (SPEAKER frowns)|Never ask a woman about her age!
-（SPEAKER皱眉）|永远不要问女人的年龄！
+（SPEAKER 皱眉）|永远不要问女人的年龄！
 I take it you're the hag in charge?
-我猜你是女主？
+我猜你是负责人？
 You are in charge, right?
-你负责，对吧？
+你是负责人，对吧？
 (Giggle)
 （傻笑）
 Don't mess with me, little girl.
