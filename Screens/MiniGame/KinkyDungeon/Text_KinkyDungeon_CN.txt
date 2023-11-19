@@ -4231,6 +4231,29 @@ You damage the TargetRestraint enough to escape!
 你对 TargetRestraint 造成了足够的损坏，并逃脱了出来！
 The TargetRestraint is destroyed by your attempts.
 TargetRestraint 在你的尝试中被破坏。
+This is as far as you can struggle. You'll have to remove the TargetRestraint some other way.
+这是你能挣扎的极限了。 您必须以其他方式挣脱 TargetRestraint。
+The item is too tight. You'll need to loosen the TargetRestraint somehow first...
+这个物品太紧了。 您需要以某种方式先让 TargetRestraint 松一松...
+The item is to tight to get your tool into position. You'll have to first make the TargetRestraint looser.
+你的工具因为这个物品太紧无法放到需要的位置。 您必须先让 TargetRestraint 变得更宽松。
+You can't quite get your pick into position. Maybe if you loosened the TargetRestraint first...
+你无法完全让你的撬锁器放到需要的位置。 也许如果你先松一松 TargetRestraint...
+The TargetRestraint's lock is tucked in securely under straps. You'll have to get it out from under there...
+TargetRestraint 的锁牢牢地塞在带子下方。你必须把它先从下面拿出来......
+After many failed attempts to unlock the TargetRestraint, you realize this lock is more than you can handle.
+在多次尝试解锁 TargetRestraint 失败后，你意识到这把锁超出了你的能力。
+You can feel some ply but can't quite make any progress against the TargetRestraint...
+你可以感觉到一些压力，但无法在 TargetRestraint 上取得任何进展......
+The TargetRestraint's mechanism lies barely out of reach...
+TargetRestraint 的机制几乎遥不可及......
+Your tool leaves only a scratch against the TargetRestraint...
+你的工具仅在 TargetRestraint 上留下划痕...
+The lock on the TargetRestraint is just above your skill level...
+TargetRestraint 上的锁刚好超出了你的技能水平...
+The keyholes on the TargetRestraint are just barely out of reach...
+TargetRestraint 上的锁孔几乎够不到......
+
 You unlock the TargetRestraint and sigh with relief.
 你解锁 TargetRestraint 并松了一口气。
 You give out a huge moan as you squeeze out of the TargetRestraint!
@@ -4243,6 +4266,7 @@ Trembling, you free yourself from the TargetRestraint!
 你一边颤抖着一边将自己从 TargetRestraint 中解放出来！
 You damage the TargetRestraint enough to wiggle out!
 你对 TargetRestraint 造成的损坏足以让你挣扎出来！
+
 You stick the knife into a crack in the wall!
 你把刀插进墙上的裂缝里！
 You use your feet to place the knife into a crack!
@@ -4581,6 +4605,10 @@ Runic
 符文
 Magic
 魔法
+Back to Menu
+返回菜单
+Item Stack:
+物品堆栈：
 Ancient
 古代
 Simple Lock
@@ -9270,8 +9298,26 @@ The EnemyName locks your RestraintName with a LockType!
 EnemyName 使用 LockType 锁上了您的 RestraintName！
 I am going to change your restraints. Hold still!
 我要更换你的拘束具。站好了！
+Just need to add a little security~
+只需要增加一点安全感即可~
+Got yourself in trouble, eh?
+给自己惹上麻烦了，嗯？
+Looks like you're shaping up to be a good girl~
+看来你是一个好女孩啊~
+Oh! Looks like I've made a mistake...
+哦！ 看来我犯了一个错误...
+404 prisoner not found. Releasing tether.
+404 囚犯未找到。释放系链。
+
+A EnemyName appears to check on you.
+EnemyName 出现来检查你。
+The EnemyName leaves and locks the cell behind her.
+EnemyName 离开并锁上了她身后的牢房。
+
 Layered underneath:
 下方隐藏的拘束具：
+Layered with:
+隐藏的拘束具：
 Increased strictness due to:
 由于以下装备增加了挣扎难度：
 Mana
