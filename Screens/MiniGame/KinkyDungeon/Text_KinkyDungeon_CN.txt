@@ -5103,6 +5103,8 @@ Allies:
 盟友：
 Enemies: 
 敌人：
+Favorable: 
+喜欢：
 Nevermere Trainers
 Nevermere 训练师
 DressUp Co.
